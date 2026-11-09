@@ -11,7 +11,7 @@ print('RED grip worst miss px', round(worst, 2), wt)
 worst = 0; wt = None
 for i in range(int((B.T_KIND + 1.42) * 30), int(B.T_CUT * 30)):
     t = i / 30; L = B.lift_at(t); pat = B.patient_pose(t, L); rp = B.red_pose(t, L, pat)
-    op, og = B.orange_pose(t); sh = B.red_shoulder(rp); B.bend_to(op, sh)
+    op, og = B.orange_pose(t); sh = B.pat_shoulder(pat); B.bend_to(op, sh)
     op.hand_tn = B.OK_.wpt(op, sh)
     w = B.OK_.canvas_pt(op, B.OK_.joints(op)['hand_n'][0])
     d = math.hypot(w[0] - sh[0], w[1] - sh[1])

@@ -1,0 +1,7 @@
+ffprobe: 1080x1920, 30 fps, H.264 9.9 Mbps, AAC 192 kbps 44.1 kHz, 41.3 s, audio and video aligned.
+Loudness -14.0 LUFS integrated, true peak -1.5 dBTP. No silences over 1.2 s, no black frames.
+motion_qc: moving 100% of frames, 0 frozen, 0 stutter, 3 jumps (all three are the planned zoom cuts at 4.70, 8.80 and 38.30 s).
+Transcript (ElevenLabs Scribe vs script): 108/108 words, 100% match, no term flags.
+Voice: ElevenLabs eleven_v4 (Jeremy). Flatness check: no flat window of 3 sentences; pitch spread 8.5 semitones and loudness spread 8.5 dB across sentences; the hook sentence has a wide pitch range (15.2 st).
+Mix: composed score 20 dB under the voice with a 4 dB duck; night wind ambience 26 dB under; 4 effects 10 dB under, an underwater bed under the ice (water slosh on the first yank and the hard yank, glove on shoulder, ice creak as the sled starts). No whooshes.
+Contact tests (code, every frame): the kneeling rescuer's wrists sit exactly on the grip point on the man's parka (0.0 px miss); the second rescuer's hand on the back of his shoulder within 2.6 px after it lands; rope and tail line end in the rescuers' hands by construction.

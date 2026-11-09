@@ -42,7 +42,8 @@ def bed(name, a, b, g=1.0, xf=0.4):
     amb[i:i + n] += g * seg[j:j + n]
 
 
-bed(f'{HERE}/snd/wind.mp3', 0, DUR, 1.0)                                  # the night wind over the lake (the place matters)
+bed(f'{HERE}/snd/wind.mp3', 0, DUR, 1.0)
+bed('underwater_real', B.T_U0, B.T_U1, 1.6)                                # under the ice: the muffled water                                  # the night wind over the lake (the place matters)
 put(fx, 'splash_real', 0.62, 0.7, maxlen=1.2, fade_out=0.5)                   # water sloshes as he is yanked up
 put(fx, 'splash_real', B.T_ROUGH - 0.25, 0.9, maxlen=1.2, fade_out=0.5)        # the hard yank
 put(fx, 'cloth_real', B.T_KIND + 1.3, 0.7, maxlen=0.6)                       # her glove lands on his shoulder
@@ -75,9 +76,9 @@ for name, mg in (('mix_music', 1.0), ('mix_nomusic', 0.0)):
     out = (v + fx + amb + mg * mus) * fade
     st = np.stack([out, out], 1).astype(np.float32)
     tmp = f'{OUT}/{name}_raw.wav'; sf.write(tmp, st / (np.abs(st).max() or 1) * 0.9, SR)
-    r = subprocess.run(['ffmpeg', '-hide_banner', '-i', tmp, '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'], capture_output=True, text=True)
+    r = subprocess.run(['ffmpeg', '-hide_banner', '-i', tmp, '-af', 'loudnorm=I=-13.2:TP=-1.7:LRA=11:print_format=json', '-f', 'null', '-'], capture_output=True, text=True)
     js = json.loads(r.stderr[r.stderr.rindex('{'):])
-    af = (f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={js['input_i']}:measured_TP={js['input_tp']}:measured_LRA={js['input_lra']}:"
+    af = (f"loudnorm=I=-13.2:TP=-1.7:LRA=11:measured_I={js['input_i']}:measured_TP={js['input_tp']}:measured_LRA={js['input_lra']}:"
           f"measured_thresh={js['input_thresh']}:offset={js['target_offset']}:linear=true")
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', tmp, '-af', af, '-ar', '44100', f'{OUT}/{name}.wav'], check=True)
 sp2 = env > 0.2

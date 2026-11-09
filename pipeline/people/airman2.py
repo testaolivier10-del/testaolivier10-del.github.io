@@ -40,7 +40,16 @@ def curve(pts):
 
 
 def opn(a, b, k):
-    r = skia.Op(a, b, k)
+    try:
+        r = skia.Op(a, b, k)
+    except RuntimeError:          # skia path ops can fail on near-degenerate geometry: nudge and retry
+        r = None
+        for d in (0.013, -0.021, 0.037):
+            q = skia.Path(b); q.offset(d, d * 0.7)
+            try:
+                r = skia.Op(a, q, k); break
+            except RuntimeError:
+                continue
     return r if r is not None else skia.Path()
 
 
@@ -49,7 +58,12 @@ def union(ps):
     if not ps: return skia.Path()
     b = skia.OpBuilder()
     for p in ps: b.add(p, skia.PathOp.kUnion_PathOp)
-    return b.resolve() or ps[0]
+    try:
+        return b.resolve() or ps[0]
+    except RuntimeError:          # skia could not resolve the batch: union one at a time (opn nudges a failing pair)
+        out = ps[0]
+        for p in ps[1:]: out = opn(out, p, skia.PathOp.kUnion_PathOp)
+        return out
 
 
 def inter(a, b): return opn(a, b, skia.PathOp.kIntersect_PathOp)

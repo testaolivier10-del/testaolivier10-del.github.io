@@ -1,6 +1,8 @@
 You are a fresh-eyes reviewer for a 41 second vertical (1080x1920) educational YouTube/TikTok Short. You have never seen its build. Be strict and concrete: the bar is a premium, Kurzgesagt-like flat layered house style, and nothing ships below 8/10.
 
-Story: a man went through lake ice at night. One rescuer kneels on a rescue sled at the ice hole and starts hauling him up by the chest (shown as the WRONG, rough move). A lens opens from his chest showing his cold heart (slow beat, an extra twitchy beat); labelled IF JOLTED, the heart goes into ventricular fibrillation (quivers, trace goes chaotic). Back at the hole the rescuer yanks hard; the second rescuer walks up and puts her hand on his shoulder and he eases the man back down. Zoom cut: the man lies flat, wrapped and strapped on the sled, slid slowly across the ice on two ropes (front tow rope and a tail line). A lens from his chest shows a slow steady beat at the end. Course: NREMT (EMT). One idea: a severely hypothermic heart is irritable, so rescuers keep the patient flat and handle him gently.
+Story: a man went through lake ice at night. One rescuer (red suit) kneels on a rescue sled at the ice hole and hauls him up by the chest in hard yanks (shown as the WRONG, rough move). On "He went through the ice" the camera cuts under the ice: his legs hang in black water under the hole. Back above, a big lens opens from his chest showing his cold heart (slow beat, an extra twitchy beat); labelled IF JOLTED, the heart goes into ventricular fibrillation (quivers, the trace goes chaotic). Back at the hole the red rescuer yanks hard; the second rescuer (a woman in a teal suit and blue helmet) walks in from the right, kneels at the far rim and lays her hand on the man's shoulder, and the haul eases him back down. Zoom cut: the man lies flat, wrapped and strapped on the sled at the hole, then is slid slowly across the ice on a tow rope and a tail line. A lens from his chest shows a slow steady beat. Zoom cut to the shore: they walk the sled up to an ambulance whose open doors throw warm light over him. Course: NREMT (EMT). One idea: a severely hypothermic heart is irritable, so rescuers keep the patient flat and handle him gently.
+
+Sections: S1 hook and haul (0 to 4.7 s), S2 under the ice (4.7 to 8.8), S3 heart lens and VF (8.8 to 18.8), S4 rough pull and her hand on him (18.8 to 25.1), S5 the sled slide and payoff lens (25.1 to 38.3), S6 the shore and end (38.3 to 41.3). Planned hard zoom cuts at 4.70, 8.80, 25.10 and 38.30 s.
 
 Narration with word start times is in words.txt. On-screen title lines are in titles.txt. Technical and gate results are in tech.txt.
 
@@ -11,7 +13,9 @@ Look at these images (use the Read tool on each; they are in this folder):
 - pack/sheet_motion_2fps_*.png : the whole video at 2 frames a second (label = time), to judge motion and camera work.
 - motion strips in motion_strips/ if present.
 
+Also grade the two thumbnail concepts thumb_a.png and thumb_b.png (pro Shorts thumbnail, must read at 180x320), 1 to 10, and say which is clearer.
+
 Grade 1 to 10, with one line why and concrete fixes for anything under 9, for each section:
-S1 hook and haul (0 to 4.8 s), S2 through the ice (4.8 to 9.3), S3 heart lens and VF (9.3 to 18.8), S4 rough pull and her hand on his shoulder (18.8 to 25.1), S5 the sled slide (25.1 to 33.1), S6 payoff lens and end (33.1 to 41.3).
+S1 to S6 as defined above.
 Then grade the whole video on: hook, story clarity for a cold viewer, spectacle and payoff, the one idea landing, ending, visual interest and polish (film finish, camera work, no static frame over about 2 s), people (one continuous body, no seams or broken joints), HAND CONTACT AND CAUSE, scene life, phone readability (text size, overlaps, text on bright spots, chips clipped), consistency of quality across the video, accuracy of visuals (anatomy, ECG, rescue technique), "would I watch this for fun", and OVERALL.
 List any concrete flaw with its time and screen position. End with a line: OVERALL x/10, MIN SECTION y/10.

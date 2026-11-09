@@ -4,8 +4,8 @@
   {
    "id": "s1",
    "t0": 0,
-   "t1": 9.28,
-   "what": "night lake, ice hole: RED kneels on the sled and hauls the man up by the chest; ORANGE holds his tether",
+   "t1": 4.7,
+   "what": "night lake, ice hole: RED kneels on the sled and hauls the man up by the chest in hard yanks with splashes",
    "motion_source": "procedural (IK: wrists solved onto the parka every frame; one lift value moves both)",
    "checks": {
     "art": "yes",
@@ -24,8 +24,30 @@
    "notes": ""
   },
   {
+   "id": "s6",
+   "t0": 4.7,
+   "t1": 8.78,
+   "what": "under the ice: his legs in black water below the hole, bubbles, light shafts",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes",
+    "contact": "na"
+   },
+   "notes": ""
+  },
+  {
    "id": "s2",
-   "t0": 9.28,
+   "t0": 8.78,
    "t1": 18.78,
    "what": "the heart lens over the scene, tied to his chest: cold beat, extra beat, IF JOLTED VF",
    "motion_source": "procedural heart (lib/heart.py) and ECG",
@@ -49,7 +71,7 @@
    "id": "s3",
    "t0": 18.78,
    "t1": 25.1,
-   "what": "hard yank; ORANGE walks two planted steps and lays her hand on his shoulder; he eases the man down",
+   "what": "hard yank; TEAL walks in from the right (planted steps), kneels at the rim and lays her hand on the back of his shoulder; RED eases him down",
    "motion_source": "procedural (foot locked walk, IK hands)",
    "checks": {
     "art": "yes",
@@ -92,9 +114,31 @@
   {
    "id": "s5",
    "t0": 33.12,
-   "t1": 41.3,
+   "t1": 38.29,
    "what": "the lens from his chest on the sled: slow steady beat",
    "motion_source": "procedural heart and ECG",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "scene": "yes",
+    "contact": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s7",
+   "t0": 38.29,
+   "t1": 41.3,
+   "what": "the shore: rope in RED's hand, TEAL's hand on the rail, the sled stops at the ambulance's open doors in warm light",
+   "motion_source": "procedural (foot locked walk)",
    "checks": {
     "art": "yes",
     "motion_source": "yes",

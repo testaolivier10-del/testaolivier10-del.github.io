@@ -43,8 +43,8 @@ def _ik(root, tgt, l1, l2, sign):
 
 
 class Body(PP.Person):
-    def __init__(self, scale, palette, head='helmet', helmet=(240, 240, 236), lamp=True, **kw):
-        self.headgear, self.helmet_col, self.lamp = head, helmet, lamp
+    def __init__(self, scale, palette, head='helmet', helmet=(240, 240, 236), lamp=True, ponytail=None, **kw):
+        self.headgear, self.helmet_col, self.lamp, self.ponytail = head, helmet, lamp, ponytail
         super().__init__(scale, palette=palette, cap=False, hat='prop', **kw)
 
     # ------------------------------------------------------------ world <-> pose space
@@ -118,9 +118,18 @@ class Body(PP.Person):
 
     # ------------------------------------------------------------ hats as props
     def _head(self, c, J, ps, l):
-        super()._head(c, J, ps, l)
         h = self._hf(J)
         S = lambda pts: curve([h(*_hp(p)) for p in pts])
+        if self.ponytail is not None:      # a ponytail from under the back of the helmet, down to the collar
+            pt = S([(100, 118), (76, 146), (58, 204), (60, 262), (78, 300), (96, 280), (102, 226), (116, 170), (122, 136)])
+            c.drawPath(pt, P(self.ponytail))
+            q = skia.Path(pt); q.offset(-l[0] * 10, -l[1] * 10); c.drawPath(diff(pt, q), P(mix(self.ponytail, (0, 0, 0), 0.3)))
+            c.drawPath(S([(100, 150), (84, 154), (88, 166), (104, 164)]), P(mix(self.ponytail, (0, 0, 0), 0.45)))
+        super()._head(c, J, ps, l)
+        if self.ponytail is not None:      # lashes and lip colour
+            c.drawLine(*h(*_hp((240, 142))), *h(*_hp((250, 134))), SP((40, 26, 22), 3))
+            c.drawLine(*h(*_hp((236, 141))), *h(*_hp((242, 132))), SP((40, 26, 22), 2.5))
+            c.drawPath(S([(238, 206), (254, 203), (252, 211), (240, 211)]), P((196, 96, 96)))
         if self.headgear == 'helmet':
             shell = S([(66, 150), (64, 100), (86, 58), (130, 30), (190, 24), (236, 46), (258, 84), (264, 116), (250, 122),
                        (206, 104), (150, 108), (104, 128), (90, 162)])
@@ -162,11 +171,14 @@ SUIT_RED = dict(main=(206, 50, 46), sh=(146, 30, 36), hi=(236, 110, 96))
 SUIT_OR = dict(main=(236, 126, 36), sh=(176, 80, 24), hi=(252, 176, 90))
 
 
-def rescuer(scale, suit, helmet):
+SUIT_TEAL = dict(main=(34, 168, 160), sh=(20, 116, 116), hi=(110, 220, 206))
+
+
+def rescuer(scale, suit, helmet, ponytail=None, skin=((226, 168, 132), (196, 136, 106))):
     pal = {A.OL: suit['main'], A.OL_SH: suit['sh'], A.OL_HI: suit['hi'], A.CUFF: suit['main'], A.BELT: (34, 36, 44),
            A.BELT_SH: (20, 22, 28), A.BOOT_C: (40, 42, 50), A.BOOT_SH: (26, 28, 34), A.SOLE: (18, 18, 22),
-           A.SKIN: (226, 168, 132), A.SKIN_SH: (196, 136, 106), A.HAIR: (60, 44, 34), A.HAIR_SH: (40, 30, 24)}
-    return Body(scale, pal, head='helmet', helmet=helmet, forearm=suit['main'], glove=(44, 46, 54), stripe=(230, 232, 210))
+           A.SKIN: skin[0], A.SKIN_SH: skin[1], A.HAIR: ponytail or (60, 44, 34), A.HAIR_SH: (40, 30, 24)}
+    return Body(scale, pal, head='helmet', helmet=helmet, forearm=suit['main'], glove=(44, 46, 54), stripe=(230, 232, 210), ponytail=ponytail)
 
 
 def patient(scale):
@@ -182,6 +194,6 @@ RED = None; ORANGE = None; PATIENT = None
 def make(scale=0.41):
     global RED, ORANGE, PATIENT
     RED = rescuer(scale, SUIT_RED, (240, 240, 236))
-    ORANGE = rescuer(scale, SUIT_OR, (250, 206, 60))
+    ORANGE = rescuer(scale * 0.95, SUIT_TEAL, (70, 110, 220), ponytail=(120, 62, 40), skin=((200, 140, 106), (172, 114, 86)))
     PATIENT = patient(scale)
     return RED, ORANGE, PATIENT
