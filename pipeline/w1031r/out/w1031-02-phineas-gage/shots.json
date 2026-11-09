@@ -1,0 +1,181 @@
+{
+ "video": "w1031-02-phineas-gage",
+ "shots": [
+  {
+   "id": "A",
+   "t0": 0.0,
+   "t1": 5.62,
+   "what": "rock cut, Gage leans over the drill hole packing powder with the iron, both fists on it; grit puffs, a small spark, the big spark",
+   "motion_source": "procedural tamp cycle + per frame arm solve onto the iron",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "hands solved onto the iron every frame (error under 2 px); iron moves only with his push; trees sway, clouds drift, motes; slow push in; upper right calm for the poll sticker"
+  },
+  {
+   "id": "B",
+   "t0": 5.62,
+   "t1": 10.2,
+   "what": "blast: flash and smoke, iron driven up out of the hole tapered end first, he is thrown back, hat knocked off; camera follows the iron into the sky as it turns over",
+   "motion_source": "procedural ballistics (blast drives the iron; gravity after)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "the instant the iron passes his head is inside the flash; smoke as swelling soft puffs; chips under gravity; blast sound only"
+  },
+  {
+   "id": "C",
+   "t0": 10.2,
+   "t1": 12.81,
+   "what": "low view at the landing spot: the iron comes down point first, sticks, dust; Gage lies far up the cut by the smoking hole",
+   "motion_source": "procedural (gravity, then a damped wobble)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "na",
+    "scene": "yes"
+   },
+   "notes": "perspective rock cut with blasted faces, drill grooves, scrub on top; push up the cut into a zoom cut"
+  },
+  {
+   "id": "D",
+   "t0": 12.81,
+   "t1": 17.4,
+   "what": "he lies on his back, workers run in, he sits up propped on his hands, a worker bends with his hand on his shoulder; he talks",
+   "motion_source": "procedural keys + per frame arm solve (hands planted, hand on shoulder); run cycle with stride matched to travel",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "hat lies on the rock behind him; smoke drifting; motes"
+  },
+  {
+   "id": "E",
+   "t0": 17.4,
+   "t1": 26.0,
+   "what": "continuous push to his head; x ray of his head only (no hat on him); ghost iron replays the path; left frontal lobe lights; chips on their words",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "skull: vault, orbit, nasal opening, zygomatic arch, maxilla, mandible, incisors to molars, cervical vertebrae; brain with gyri, central and lateral sulci, temporal lobe, cerebellum, brainstem; iron width to scale; worker hand stays on his shoulder (dimmed)"
+  },
+  {
+   "id": "F1",
+   "t0": 26.0,
+   "t1": 30.55,
+   "what": "before: Gage points the crew to the next drill spot, rolled plan in his fist; the contractor behind him, hand on his shoulder, nods on capable",
+   "motion_source": "procedural + arm solve (hand on shoulder)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "background crew drilling: holder grips the steel, hammer with both hands on the handle"
+  },
+  {
+   "id": "F2",
+   "t0": 30.55,
+   "t1": 36.34,
+   "what": "after (grey day, scar, shut left eye): he jabs a finger and snaps; turns away from the offered open hand; drops the plan, which falls fluttering and lies on the rock",
+   "motion_source": "procedural keys; paper under gravity with flutter",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "the plan leaves from his hand only when he opens it"
+  },
+  {
+   "id": "G",
+   "t0": 36.34,
+   "t1": 41.12,
+   "what": "dusk: Gage walks off left, feet planted, stride matched; two friends watch",
+   "motion_source": "procedural walk (foot locked)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes",
+    "contact": "yes",
+    "scene": "yes"
+   },
+   "notes": "lantern flicker, clouds; end line over the last 1.5 s"
+  }
+ ]
+}

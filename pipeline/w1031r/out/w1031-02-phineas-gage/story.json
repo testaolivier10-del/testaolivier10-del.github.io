@@ -1,0 +1,25 @@
+{
+ "id": "w1031-02-phineas-gage",
+ "format": "short",
+ "duration": 41.1,
+ "answer": {"kind": "action", "what": "the rod tore through his left frontal lobe, which plans ahead and holds back impulses, and he became impulsive and unreliable"},
+ "beats": [
+  {"t0": 0, "t1": 5.6, "kind": "question", "person": true, "diagram": false, "changes": [0, 1.1, 1.75, 2.2, 3.3, 4.4, 5.1],
+   "what": "Gage leans over a drill hole in the rock cut and packs the powder with his iron, both hands on it; grit puffs from the hole on each push, a tiny spark at 1.75 s, a bigger one on 'spark'", "source": "Harlow 1848, 1868; Macmillan"},
+  {"t0": 5.6, "t1": 10.2, "kind": "surprise", "person": true, "diagram": false, "changes": [5.6, 5.8, 6.4, 7.2, 8.3, 9.4],
+   "what": "flash and smoke; the blast drives the iron up out of the hole tapered end first past his face; he is thrown back, hat knocked off; the camera follows the iron into the sky as it turns over", "source": "Harlow 1848; Wikipedia (Phineas Gage)"},
+  {"t0": 10.2, "t1": 12.8, "kind": "result", "person": true, "diagram": false, "changes": [10.2, 11.2, 11.8, 12.4],
+   "what": "low view by the landing spot: the iron slams into the ground point first in front of the camera with dust; far up the cut Gage lies by the smoking hole", "source": "Harlow 1848 (point first, about 80 ft)"},
+  {"t0": 12.8, "t1": 17.4, "kind": "result", "person": true, "diagram": false, "changes": [12.8, 13.7, 14.2, 15.0, 15.5, 16.4],
+   "what": "back by the hole: he lies on his back; workers run in; he sits up propped on his hands, one worker's hand on his shoulder; he talks", "source": "Harlow 1848"},
+  {"t0": 17.4, "t1": 26.0, "kind": "explain", "person": true, "diagram": true, "anchor": true, "changes": [17.4, 18.2, 19.0, 20.1, 20.9, 21.6, 23.4, 24.5],
+   "what": "push into his head; x ray of his head only: skull and brain; a ghost iron replays the path in under the left cheekbone and out the top; the left frontal lobe lights; chips PLANS AHEAD, HOLDS BACK IMPULSES", "source": "Ratiu 2004; Van Horn 2012; AP Psychology CED unit 1"},
+  {"t0": 26.0, "t1": 30.5, "kind": "explain", "person": true, "diagram": false, "changes": [26.0, 26.4, 28.9, 29.6],
+   "what": "before: sunny day, Gage points the crew to the next drill spot, plan in hand; the contractor's hand on his shoulder, he nods", "source": "Harlow 1868 ('most efficient and capable foreman')"},
+  {"t0": 30.5, "t1": 36.2, "kind": "answer", "person": true, "diagram": false, "changes": [30.5, 31.5, 32.4, 33.0, 33.8, 34.6],
+   "what": "after: grey day, scar and shut left eye; he jabs a finger and snaps at the contractor, turns his head away from the offered advice, drops the plan to the ground", "source": "Harlow 1868 (profanity, impatient of advice, plans abandoned)"},
+  {"t0": 36.2, "t1": 41.1, "kind": "payoff", "person": true, "diagram": false, "changes": [36.2, 37.6, 38.7, 39.6],
+   "what": "dusk: Gage walks off alone; his two friends watch him go: no longer Gage", "source": "Harlow 1868 quote"}
+ ],
+ "long_reason": "the accident, the survival, the brain path and the before and after change all need showing for the one idea to land; 41 s with no padding (the voice runs 39.5 s)"
+}
