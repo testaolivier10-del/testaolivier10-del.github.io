@@ -180,9 +180,9 @@ the fixes for it, and three builds (NREMT exam item types and adaptive exam, och
 
 ## Database backups
 
-`docs/backups.md` is the status file: the nightly encrypted dump with a restore test
-(`.github/workflows/db-backup.yml`, `scripts/backup/run.sh`) into Cloudflare KV `levlprep-backups`, owner setup and
-how to restore.
+`docs/backups.md` is the status file: the nightly copy the Worker makes itself (`worker/src/backup.js`, its own
+cron, into Cloudflare KV `levlprep-backups`; nothing for the owner to set up), the weekly proof
+(`.github/workflows/db-backup.yml`, `scripts/backup/check.mjs`) and how to restore.
 
 ## Premium vault and the Cloudflare host
 

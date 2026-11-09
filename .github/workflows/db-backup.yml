@@ -1,61 +1,29 @@
-# Nightly database backup (docs/backups.md).
-#
-# Supabase's free plan keeps no backup we can restore, so this makes our own:
-# dump the public and auth schemas, prove the dump restores into a clean
-# Postgres 17, encrypt it, and store it in the private Cloudflare KV namespace
-# levlprep-backups with a 35-day expiry, so the last month is always there and
-# older copies delete themselves.
-#
-# The repo may be public: nothing here prints data, row counts or secrets.
-# Secrets (repo Settings -> Secrets and variables -> Actions):
-#   SUPABASE_DB_URL     the Session pooler connection string (IPv4), password included
-#   BACKUP_PASSPHRASE   the encryption passphrase (the owner keeps a copy)
-#   CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID   already set for deploy-worker.yml
-name: Database backup
+# Weekly check of the nightly database backup (docs/backups.md). The backup itself runs in the
+# Cloudflare Worker (worker/src/backup.js), which already holds the database key, so no database
+# password is stored anywhere. This job downloads the newest complete backup from the private KV
+# namespace and proves it is whole (scripts/backup/check.mjs). GitHub emails the owner if it fails.
+# Uses only the Cloudflare secrets the Worker deploy already has.
+name: Backup check
 
 on:
   schedule:
-    - cron: '17 10 * * *'   # 02:17 Pacific (03:17 in summer), a quiet hour
+    - cron: '43 16 * * 1'   # Mondays, 08:43 Pacific (09:43 in summer)
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: db-backup
-  cancel-in-progress: false
-
 jobs:
-  backup:
+  check:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    services:
-      restore:
-        image: postgres:17
-        env:
-          POSTGRES_PASSWORD: restoretest
-        ports: ['5432:5432']
-        options: >-
-          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 20
-    env:
-      KV_NAMESPACE_ID: 03af2c257b6f414abc9b89e2b3da2510
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - name: Check secrets are set
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - name: Check the newest backup
         env:
-          DB: ${{ secrets.SUPABASE_DB_URL }}
-          PASS: ${{ secrets.BACKUP_PASSPHRASE }}
-          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: |
-          missing=""
-          [ -n "$DB" ] || missing="$missing SUPABASE_DB_URL"
-          [ -n "$PASS" ] || missing="$missing BACKUP_PASSPHRASE"
-          [ -n "$CF" ] || missing="$missing CLOUDFLARE_API_TOKEN"
-          if [ -n "$missing" ]; then echo "::error::Missing secrets:$missing (docs/backups.md)"; exit 1; fi
-      - name: Dump, restore test, encrypt, upload
-        env:
-          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
-          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: bash scripts/backup/run.sh
+        run: node scripts/backup/check.mjs
