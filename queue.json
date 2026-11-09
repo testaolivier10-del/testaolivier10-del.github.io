@@ -797,7 +797,7 @@
   },
   {
    "id": "w1031-01-cold-heart",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-31",
    "date": null,
    "tiktok_caption": "Hypothermia rescue: why rescuers handle a cold patient so gently. Yank him out of the ice, or slide him out flat: which would you do? A very cold heart is irritable, and one hard jolt can tip it into ventricular fibrillation, so EMTs keep a severely hypothermic patient flat and move him slowly. EMT traps #2. levlprep.com #EMT #NREMT #hypothermia #paramedic",
@@ -819,11 +819,13 @@
     "name": "EMT traps",
     "n": 2
    },
-   "review_blob": "66277a45dedf228860cc292788c9c87a5e92ed7f"
+   "review_blob": "66277a45dedf228860cc292788c9c87a5e92ed7f",
+   "approved_on": "2026-11-09",
+   "approved_blob": "66277a45dedf228860cc292788c9c87a5e92ed7f"
   },
   {
    "id": "w1031-02-phineas-gage",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-31",
    "date": null,
    "tiktok_caption": "Phineas Gage and the iron rod that went through his skull in 1848. Was he still the same person afterward, or not? He lived and talked within minutes, but the rod tore through his left frontal lobe, the part of the brain that plans ahead and keeps you in check, and his friends said he was no longer Gage. AP Psychology, biological bases of behavior. levlprep.com #APPsychology #psychology #brain #history",
@@ -855,11 +857,13 @@
    "posted_yt": false,
    "handoff_sent": null,
    "poll_reminded": null,
-   "review_blob": "c61682637874f20413f979fda91346d81409837f"
+   "review_blob": "c61682637874f20413f979fda91346d81409837f",
+   "approved_on": "2026-11-09",
+   "approved_blob": "c61682637874f20413f979fda91346d81409837f"
   },
   {
    "id": "w1031-03-mirror-mint",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-31",
    "date": null,
    "tiktok_caption": "Mirror image molecules: spearmint and caraway both smell of carvone. Same molecule, so why does one smell like mint and the other like rye bread? The two forms are mirror images that can't be stacked, which makes carvone chiral, and the chiral receptors in your nose respond to each one differently. Organic chemistry, chirality and enantiomers. levlprep.com #organicchemistry #chemistry #chirality",
@@ -877,7 +881,9 @@
    "cta": "spoken",
    "related_video": null,
    "related_set": false,
-   "review_blob": "d3d0a0470fb644de7791ff9fddc3cc9402ec92ef"
+   "review_blob": "d3d0a0470fb644de7791ff9fddc3cc9402ec92ef",
+   "approved_on": "2026-11-09",
+   "approved_blob": "d3d0a0470fb644de7791ff9fddc3cc9402ec92ef"
   },
   {
    "id": "w1101-01-bomber-holes",
