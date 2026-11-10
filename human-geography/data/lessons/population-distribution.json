@@ -1,0 +1,71 @@
+{
+ "topic": "population-distribution",
+ "hook": "Fly over Egypt at night and you will see a thin, bright ribbon of lights running north through a dark desert, then spreading into a fan near the sea. That ribbon is the Nile River. Almost all of Egypt’s people live along it. Why do people crowd into some places and leave others nearly empty?",
+ "prereq": [
+  {
+   "q": "A map gives one value for each state of the United States. What is the scale of analysis?",
+   "options": [
+    "Local (subnational)",
+    "Global",
+    "Regional",
+    "National"
+   ],
+   "correct": 0,
+   "why": "The data are for parts of one country, so the scale of analysis is subnational, even though the map shows the whole country.",
+   "review": "scales-of-analysis"
+  },
+  {
+   "q": "People in a dry place pump water from far away and build a large city. Which idea fits?",
+   "options": [
+    "Possibilism",
+    "Environmental determinism",
+    "Distance decay",
+    "Time-space compression"
+   ],
+   "correct": 0,
+   "why": "Possibilism says nature sets limits but people make choices and adapt.",
+   "review": "human-environment"
+  }
+ ],
+ "figure": {
+  "figure": "population-distribution-factors",
+  "caption": "Physical factors (climate, water, landforms, soil) and human factors (jobs, transport, government, history) together shape where people live."
+ },
+ "chain": [
+  {
+   "cause": "A place has water, a mild climate, flat land and good soil",
+   "effect": "farmers can grow enough food there"
+  },
+  {
+   "cause": "Enough food is grown",
+   "effect": "many people can live close together, and villages and towns grow"
+  },
+  {
+   "cause": "Towns grow on rivers and coasts",
+   "effect": "trade and jobs gather there, which draws even more people"
+  },
+  {
+   "cause": "People move to where the jobs and services are",
+   "effect": "the world’s people end up clustered in a few regions, with large empty areas between"
+  }
+ ],
+ "ideas": [
+  "Where people live is called <b>population distribution</b>. People are not spread evenly: most live in a few large clusters, in East Asia, South Asia and Europe.",
+  "The <b>ecumene</b> is the part of Earth where people live permanently. Very dry, very cold and very high places lie mostly outside it.",
+  "<b>Physical factors</b> (climate, water, landforms, soil) and <b>human factors</b> (jobs, transport, government decisions, history) work together.",
+  "The pattern depends on the <b>scale of analysis</b>: Egypt looks crowded on a world map, but at the local scale almost everyone lives within a few kilometers of the Nile."
+ ],
+ "misconception": {
+  "wrong": "Physical factors alone decide where people live, so people never live in deserts or cold places.",
+  "right": "Physical factors set limits, but human factors such as jobs, government plans and technology matter too. Phoenix grew in a desert, and Brasília was built inland by a government decision."
+ },
+ "check": [
+  "hug-population-distribution-5",
+  "hug-population-distribution-6",
+  "hug-population-distribution-9",
+  "hug-population-distribution-10",
+  "hug-population-distribution-12",
+  "hug-population-distribution-14"
+ ],
+ "summary": "Population distribution is the pattern of where people live. Most of the world’s people live in a few clusters, in East Asia, South Asia and Europe, on low, well-watered land near coasts and rivers. Physical factors and human factors shape the pattern together, and the pattern looks different at the global, national and local scales."
+}

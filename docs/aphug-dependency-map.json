@@ -3327,6 +3327,28 @@
    ]
   },
   {
+   "id": "folk-culture",
+   "term": "folk culture",
+   "aliases": [
+    "folk cultures"
+   ],
+   "taughtIn": "culture-intro",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "popular-culture",
+   "term": "popular culture",
+   "aliases": [
+    "pop culture"
+   ],
+   "taughtIn": "culture-intro",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
    "id": "cultural-landscape",
    "term": "cultural landscape",
    "aliases": [
@@ -3335,6 +3357,15 @@
    "taughtIn": "culture-on-the-land",
    "dependsOn": [
     "culture"
+   ]
+  },
+  {
+   "id": "traditional-architecture",
+   "term": "traditional architecture",
+   "aliases": [],
+   "taughtIn": "culture-on-the-land",
+   "dependsOn": [
+    "cultural-landscape"
    ]
   },
   {
@@ -3509,6 +3540,18 @@
    "term": "creolization",
    "aliases": [
     "creole"
+   ],
+   "taughtIn": "diffusion-history",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "pidgin",
+   "term": "pidgin",
+   "aliases": [
+    "pidgin language",
+    "pidgins"
    ],
    "taughtIn": "diffusion-history",
    "dependsOn": [
@@ -4892,6 +4935,19 @@
    ]
   },
   {
+   "id": "zoning",
+   "term": "zoning",
+   "aliases": [
+    "zoning law",
+    "zoning laws",
+    "zoned"
+   ],
+   "taughtIn": "density-land-use",
+   "dependsOn": [
+    "land-use"
+   ]
+  },
+  {
    "id": "residential-density",
    "term": "residential density",
    "aliases": [
@@ -5037,7 +5093,7 @@
     "informal settlement",
     "informal settlements"
    ],
-   "taughtIn": "urban-change-challenges",
+   "taughtIn": "city-structure",
    "dependsOn": [
     "city"
    ]
@@ -5058,12 +5114,10 @@
   {
    "id": "inclusionary-zoning",
    "term": "inclusionary zoning",
-   "aliases": [
-    "zoning"
-   ],
+   "aliases": [],
    "taughtIn": "urban-change-challenges",
    "dependsOn": [
-    "city"
+    "zoning"
    ]
   },
   {
@@ -5308,6 +5362,17 @@
    ]
   },
   {
+   "id": "gender-wage-gap",
+   "term": "gender wage gap",
+   "aliases": [
+    "gender pay gap"
+   ],
+   "taughtIn": "women-development",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
    "id": "rostow-stages",
    "term": "Rostow's stages of economic growth",
    "aliases": [
@@ -5400,6 +5465,18 @@
    ],
    "taughtIn": "trade-world-economy",
    "dependsOn": []
+  },
+  {
+   "id": "imf",
+   "term": "International Monetary Fund",
+   "aliases": [
+    "IMF",
+    "structural adjustment"
+   ],
+   "taughtIn": "trade-world-economy",
+   "dependsOn": [
+    "neoliberalism"
+   ]
   },
   {
    "id": "outsourcing",

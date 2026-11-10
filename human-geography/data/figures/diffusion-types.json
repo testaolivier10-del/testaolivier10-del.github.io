@@ -1,0 +1,12 @@
+{
+ "diffusion-types-four": {
+  "file": "figures/diffusion-types-four.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 690,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four small grids of places. Relocation: a dashed arrow shows people carrying a trait from the hearth to a far place. Contagious: the trait fills the places nearest the hearth, like a ripple. Hierarchical: arrows run from a big city to smaller towns, skipping the places between. Stimulus: the idea reaches nearby places but changes form there, shown as circles turning into squares."
+ }
+}

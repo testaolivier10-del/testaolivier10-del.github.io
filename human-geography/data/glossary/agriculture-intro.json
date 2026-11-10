@@ -1,0 +1,35 @@
+{
+ "agriculture": {
+  "def": "The raising of crops and animals on purpose for food, fiber and other products."
+ },
+ "intensive-agriculture": {
+  "def": "Farming that puts many inputs (labor, money, machines, fertilizer, water) into each unit of land to get a large output from it, as in market gardening near Rotterdam."
+ },
+ "extensive-agriculture": {
+  "def": "Farming that uses few inputs on each unit of land, spread over large areas, as in ranching on the Pampas of Argentina."
+ },
+ "market-gardening": {
+  "def": "Intensive growing of fruits, vegetables and flowers for nearby city markets; also called truck farming."
+ },
+ "plantation-agriculture": {
+  "def": "Intensive farming of one crop, such as oil palm, bananas or tea, on a large estate, usually in the tropics, for sale far away."
+ },
+ "mixed-crop-livestock": {
+  "def": "Intensive farming that raises crops and animals on the same farm, often feeding the crops to the animals, as in the US Corn Belt."
+ },
+ "shifting-cultivation": {
+  "def": "Extensive farming in which people clear and burn a forest plot, farm it for a few years and then move on while the old plot rests and regrows; also called slash and burn or swidden."
+ },
+ "nomadic-herding": {
+  "def": "Extensive agriculture in which people move herds of animals to fresh grass and water with the seasons, as in Mongolia; also called pastoral nomadism."
+ },
+ "ranching": {
+  "def": "Extensive raising of cattle or sheep that graze large areas of fixed land, usually for sale to distant buyers."
+ },
+ "mediterranean-agriculture": {
+  "def": "Farming suited to hot, dry summers and mild, rainy winters, growing crops such as olives, grapes and citrus in places like southern Spain and central Chile."
+ },
+ "irrigation": {
+  "def": "Supplying water to crops by canals, pipes, ditches or sprinklers, so land can be farmed where rain alone is not enough."
+ }
+}

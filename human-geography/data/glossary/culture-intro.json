@@ -1,0 +1,20 @@
+{
+ "culture": {
+  "def": "The shared practices, beliefs, objects and behaviors that a group of people learns and passes on to the next generation."
+ },
+ "culture-trait": {
+  "def": "One single part of a culture, such as a food, a greeting, a style of house, a holiday or a way of using land."
+ },
+ "cultural-relativism": {
+  "def": "Trying to understand a practice by the standards of the culture it belongs to, before judging it."
+ },
+ "ethnocentrism": {
+  "def": "Judging another culture by the standards of your own culture, often seeing your own as the right or best way."
+ },
+ "folk-culture": {
+  "def": "Culture kept by a small, close group, often rural, taught by family and community, and slow to change. Plain dress and barn raisings among the Amish are examples."
+ },
+ "popular-culture": {
+  "def": "Culture shared by large, mixed groups of people in many places, spread by media and business, and quick to change, such as hit songs, chain restaurants and fashion."
+ }
+}

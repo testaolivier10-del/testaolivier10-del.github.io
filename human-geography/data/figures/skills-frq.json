@@ -1,0 +1,12 @@
+{
+ "skills-frq-verbs": {
+  "file": "figures/skills-frq-verbs.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A staircase of six task verbs, each asking for more than the one above. Identify: name it, a word or a phrase is enough. Define: give its meaning in a full sentence. Describe: give its features, what, where and how much. Explain: say why or how, with because or so. Compare: say how two things differ or match, speaking of both sides. Explain the degree: state the degree first, then explain why."
+ }
+}

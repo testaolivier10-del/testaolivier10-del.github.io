@@ -1,0 +1,365 @@
+{
+ "stimuli": {
+  "skills-reading-s1": {
+   "kind": "map",
+   "title": "Total population of South Asian countries",
+   "map": {
+    "base": "south-asia",
+    "render": "choropleth",
+    "label": "Shaded map of South Asia by total population: India is in the darkest class, Pakistan and Bangladesh in the next, Afghanistan, Nepal and Sri Lanka in the third, and Bhutan in the lightest",
+    "source": "UN World Population Prospects 2024, 2024 estimates",
+    "legendTitle": "Total population (number of people)",
+    "classes": [
+     "Under 10 million",
+     "10 to 99 million",
+     "100 to 999 million",
+     "1 billion or more"
+    ],
+    "values": {
+     "india": 3,
+     "pakistan": 2,
+     "bangladesh": 2,
+     "afghanistan": 1,
+     "nepal": 1,
+     "sri-lanka": 1,
+     "bhutan": 0
+    },
+    "marks": [
+     {
+      "at": "india",
+      "text": "India"
+     },
+     {
+      "at": "bangladesh",
+      "text": "Bangladesh"
+     }
+    ]
+   }
+  },
+  "skills-reading-s2": {
+   "kind": "data",
+   "title": "People living in two towns, 1990 to 2020",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of two invented towns: River Town grows from 20,000 to 50,000 people between 1990 and 2020, while Hill Town falls from 30,000 to 22,000",
+    "xLabel": "Year",
+    "yLabel": "People (thousands)",
+    "series": [
+     {
+      "name": "River Town",
+      "points": [
+       [
+        1990,
+        20
+       ],
+       [
+        2000,
+        28
+       ],
+       [
+        2010,
+        38
+       ],
+       [
+        2020,
+        50
+       ]
+      ]
+     },
+     {
+      "name": "Hill Town",
+      "points": [
+       [
+        1990,
+        30
+       ],
+       [
+        2000,
+        28
+       ],
+       [
+        2010,
+        25
+       ],
+       [
+        2020,
+        22
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-skills-reading-1",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Read the legend of this map. What do the shades measure?",
+   "stimulus": "skills-reading-s1",
+   "options": [
+    "The total number of people in each country",
+    "How many people live in each square kilometer",
+    "How fast each country's population is growing",
+    "The share of each country's people who live in cities"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The legend title and the classes (millions, a billion) show a total: the number of people in each country.",
+    "options": [
+     "Right: the legend title is \"Total population (number of people)\", and the classes are counts of people.",
+     "That would be people per unit of land, a rate. The legend counts people and says nothing about land area.",
+     "Growth needs numbers from two dates. This map shows one count, from 2024.",
+     "A share is a percent. The classes here are counts in millions and billions, not percents."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-2",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the pattern on this map, naming places?",
+   "stimulus": "skills-reading-s1",
+   "options": [
+    "Bangladesh is in the top class and India in the second class",
+    "India is in the top class (1 billion or more) and Bhutan in the lowest (under 10 million)",
+    "Afghanistan and Nepal are in the darkest class, and India is in the lightest class",
+    "Sri Lanka and Pakistan are both in the lowest class"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A good pattern statement names the places and the values: India at 1 billion or more, Bhutan under 10 million.",
+    "options": [
+     "Read the shades again: India is the darkest; Bangladesh is one class lower, with Pakistan.",
+     "Right: it names places, their classes and the values of those classes.",
+     "The map has four classes in use, from Bhutan (lightest) to India (darkest).",
+     "Sri Lanka is in the 10 to 99 million class and Pakistan in the 100 to 999 million class; Bhutan is the lightest."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-3",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "A student looks at this map and writes: \"India is the most crowded country in South Asia, because it is the darkest.\" What is wrong with the claim?",
+   "stimulus": "skills-reading-s1",
+   "options": [
+    "The map has no source line, so a reader has no way to check where its numbers came from",
+    "Dark shades on this map stand for the lowest values, so India has the fewest people shown",
+    "It reads a totals map as a crowding map; Bangladesh fits more people on each square kilometer",
+    "India is shaded in the lightest class, so the student read the colors in reverse"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Totals on a shaded map favor big countries. To judge crowding you need people per unit of land, which this map does not show.",
+    "options": [
+     "The map does have a source line: UN World Population Prospects 2024.",
+     "The legend runs from light (under 10 million) to dark (1 billion or more), so dark means high.",
+     "Right: a total says nothing about how much land the people share. Bangladesh is small and very crowded (UN WPP 2024), yet it is a class lighter than India.",
+     "India is marked on the map and shaded in the darkest class."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-4",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "What trend does the chart show for River Town?",
+   "stimulus": "skills-reading-s2",
+   "options": [
+    "It shrank in each decade, from about 50,000 people in 1990 to about 20,000 in 2020",
+    "It stayed at about 30,000 people from 1990 to 2020, with little change",
+    "It grew until 2000 and then shrank in each decade after that",
+    "It grew each decade, from about 20,000 people in 1990 to about 50,000 in 2020"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "River Town's line rises from 20 to 50 (thousands of people): a rising trend over 30 years.",
+    "options": [
+     "Read the years along the bottom: 1990 is on the left, so the line rises over time.",
+     "That is close to Hill Town's 1990 value, not River Town's line.",
+     "River Town's line rises in each decade; it is Hill Town that falls after 1990.",
+     "Right: a trend gives the direction, the dates and the size of the change."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-5",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In which year did the two towns have about the same number of people?",
+   "stimulus": "skills-reading-s2",
+   "options": [
+    "2000",
+    "1990",
+    "2010",
+    "2020"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The lines cross near 2000, where both towns had about 28,000 people.",
+    "options": [
+     "Right: both lines are at about 28 (thousand) in 2000.",
+     "In 1990 Hill Town had about 30,000 people and River Town about 20,000.",
+     "By 2010 River Town (about 38,000) had passed Hill Town (about 25,000).",
+     "In 2020 the gap was widest: about 50,000 against about 22,000."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-6",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.E",
+   "q": "Which statement can you support with this chart, and which needs other data?",
+   "stimulus": "skills-reading-s2",
+   "options": [
+    "Supported: people moved from Hill Town to River Town. Needs other data: the years",
+    "Supported: Hill Town lost people from 1990 to 2020. Needs other data: why people left",
+    "Supported: River Town has more jobs. Needs other data: the number of people",
+    "Supported: both towns grew over the 30 years. Needs other data: the units on the axis"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A chart shows what changed and when. Why it changed is a claim that needs more evidence.",
+    "options": [
+     "The chart never shows people moving between the towns; one town may have grown for other reasons.",
+     "Right: the chart shows how many people, not why. A reason needs another source, such as interviews or job data.",
+     "Jobs are not on the chart at all, while the number of people is.",
+     "Hill Town shrank, and the units (thousands of people) are on the axis."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-7",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which source line is complete enough to trust for a class report?",
+   "options": [
+    "From the internet, found by searching for the topic",
+    "A website about countries, with facts about each one",
+    "UN World Population Prospects 2024, 2024 estimates",
+    "Government numbers, recent, from the population office"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A useful source line names who made the data and when. Without a year you cannot tell how out of date a number is.",
+    "options": [
+     "It names no maker and no year, so you cannot check it or know how old it is.",
+     "A website is not a named source, and there is no year.",
+     "Right: it names who made the data and the year of the data.",
+     "\"Recent\" is not a year. Numbers like these change, so a year matters."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-8",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In an invented town of 40,000 people, 10,000 people ride a bus each day. What percent of the town's people ride a bus each day?",
+   "numeric": {
+    "from": {
+     "fn": "share",
+     "args": [
+      10000,
+      40000
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "share",
+       "args": [
+        40000,
+        10000
+       ]
+      },
+      "why": "You divided the whole by the part. A share is the part (riders) divided by the whole (all the people), times 100."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Share = part / whole x 100 = $\\frac{10{,}000}{40{,}000} \\times 100 = 25\\%$."
+   }
+  },
+  {
+   "id": "hug-skills-reading-9",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "A table lists \"Hospital beds per 1,000 people\": Town P has 4 and Town Q has 2. Which statement does the table support?",
+   "options": [
+    "Town P has more hospital beds in total than Town Q",
+    "Town Q has more people than Town P",
+    "Town Q has 2 hospital beds, half as many as Town P has",
+    "Town P has more beds for each 1,000 people than Town Q"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Read the unit in the header. \"Per 1,000 people\" is a rate, so it compares how well each town is served, not how many beds each has.",
+    "options": [
+     "A rate does not give a total. If Town Q has many more people, it could have as many beds or more.",
+     "The table gives no populations, so you cannot tell which town is bigger.",
+     "The 2 is a rate, 2 beds for each 1,000 people, not a count of beds.",
+     "Right: the unit is a rate, beds for each 1,000 people, and 4 is more than 2."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-reading-10",
+   "unit": "geo-skills",
+   "topic": "skills-reading",
+   "level": "recall",
+   "diff": 1,
+   "type": "order",
+   "practice": "4.A",
+   "q": "Put the four steps for reading a map, table or chart in order.",
+   "options": [
+    "Read the title: what, where and when",
+    "Read the legend and the units",
+    "Read the source line: who and what year",
+    "Describe the pattern, naming places and values"
+   ],
+   "why": {
+    "correct": "Start with what the figure is about, learn what its marks and units mean, check where the data came from, and only then describe the pattern."
+   }
+  }
+ ]
+}

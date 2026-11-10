@@ -1,0 +1,12 @@
+{
+ "women-in-agriculture-jobs": {
+  "file": "figures/women-in-agriculture-jobs.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bar chart from FAO, The Status of Women in Agrifood Systems, 2023. Share of workers whose job is in agrifood systems: world, 36% of working women and 38% of working men; Sub-Saharan Africa, 66% of women and 60% of men; Southern Asia, 71% of women and 47% of men."
+ }
+}

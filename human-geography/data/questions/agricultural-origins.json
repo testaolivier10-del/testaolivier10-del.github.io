@@ -1,0 +1,474 @@
+{
+ "stimuli": {
+  "agricultural-origins-s1": {
+   "kind": "map",
+   "title": "Some early hearths of agriculture",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with five early farming hearths marked: A in Southwest Asia, B in South Asia, C in Central America, D in Southeast Asia and E in western South America",
+    "legendTitle": "Hearth areas in the questions",
+    "focus": [
+     "iraq",
+     "pakistan",
+     "mexico",
+     "thailand",
+     "peru"
+    ],
+    "marks": [
+     {
+      "at": "iraq",
+      "text": "A"
+     },
+     {
+      "at": "pakistan",
+      "text": "B"
+     },
+     {
+      "at": "mexico",
+      "text": "C"
+     },
+     {
+      "at": "thailand",
+      "text": "D"
+     },
+     {
+      "at": "peru",
+      "text": "E"
+     }
+    ]
+   }
+  },
+  "agricultural-origins-s2": {
+   "kind": "text",
+   "title": "The potato in Ireland",
+   "text": "<p>LevlPrep summary, 2026, based on historians' accounts. The potato was domesticated in the Andes of South America. Spanish ships carried it to Europe in the late 1500s, and it reached Ireland soon after. The potato grew well in Ireland's cool, wet climate and fed a family on a small plot. By the 1840s, millions of poor rural families in Ireland depended on one kind of potato for most of their food. From 1845, a plant disease called blight destroyed the crop several years in a row. In the famine that followed, about 1 million people died and more than 1 million left Ireland, many for the United States.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-agricultural-origins-1",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which letter marks the area of the Fertile Crescent, where wheat and barley were first domesticated?",
+   "options": [
+    "B",
+    "A",
+    "C",
+    "E"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The Fertile Crescent arcs through Southwest Asia, from the eastern Mediterranean through the Tigris and Euphrates valleys. On this map it is A.",
+    "options": [
+     "B marks the Indus River valley in South Asia, another early hearth.",
+     "Right: A is in Southwest Asia, in the area of the Tigris and Euphrates rivers, part of the Fertile Crescent.",
+     "C marks Central America, the hearth of maize, beans and squash.",
+     "E marks the Andes of South America, where potatoes were domesticated."
+    ]
+   },
+   "stimulus": "agricultural-origins-s1"
+  },
+  {
+   "id": "hug-agricultural-origins-2",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Maize (corn) was first domesticated from a wild grass in one marked area. Which letter is it?",
+   "options": [
+    "A",
+    "C",
+    "D",
+    "E"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Central America (often called Mesoamerica) is the hearth of maize, beans and squash. It is C on this map.",
+    "options": [
+     "A is the Fertile Crescent, the hearth of wheat and barley.",
+     "Right: maize was domesticated in what is now southern Mexico, in Central America.",
+     "D is in Southeast Asia, a hearth of crops such as taro and rice.",
+     "E is the Andes, the hearth of the potato."
+    ]
+   },
+   "stimulus": "agricultural-origins-s1"
+  },
+  {
+   "id": "hug-agricultural-origins-3",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Before 1492, crops from areas C and E were not grown in areas A and B. What best explains this pattern?",
+   "options": [
+    "The crops from C and E were domesticated after 1492",
+    "An ocean separated the hearths until the Columbian Exchange",
+    "Areas A and B had climates in which no American crop could grow",
+    "Farmers in A and B did not trade with anyone before 1492"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Distance and the oceans were the barrier. Once ships linked the hemispheres, the Columbian Exchange spread crops between hearths that had developed separately.",
+    "options": [
+     "Maize and potatoes were domesticated thousands of years before 1492.",
+     "Right: the Atlantic and Pacific kept the Americas' crops apart from Afro-Eurasia until ships crossed after 1492.",
+     "Maize and potatoes now grow widely in Southwest and South Asia, so climate was not the barrier.",
+     "People in Southwest and South Asia traded widely; their trade simply did not reach the Americas."
+    ]
+   },
+   "stimulus": "agricultural-origins-s1"
+  },
+  {
+   "id": "hug-agricultural-origins-4",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Farming began separately in several of the marked areas, thousands of kilometers apart. What does this pattern show about the First Agricultural Revolution?",
+   "options": [
+    "Farming began in one place and spread to the others in a few years",
+    "People in several hearths domesticated local plants on their own",
+    "Farming began everywhere on Earth at the same moment",
+    "Farming spread from the Americas to Asia before 1492"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The map shows several hearths with different crops: wheat in A, maize in C, potatoes in E. Each was domesticated from local wild species, a sign of independent invention.",
+    "options": [
+     "Farming arose independently in several hearths, and spreading took thousands of years.",
+     "Right: there was no single origin; people in different regions domesticated their own local wild plants and animals.",
+     "Farming began at different times in different hearths.",
+     "There was no regular contact between the Americas and Asia before 1492."
+    ]
+   },
+   "stimulus": "agricultural-origins-s1"
+  },
+  {
+   "id": "hug-agricultural-origins-5",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "According to the passage, which process brought the potato from the Andes to Ireland?",
+   "options": [
+    "The First Agricultural Revolution",
+    "The Columbian Exchange",
+    "Contagious diffusion across land from the Andes to Ireland",
+    "Stimulus diffusion of a farming idea, not the plant itself"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The Columbian Exchange moved plants, animals and diseases between the Americas and Afro-Eurasia after 1492. The potato is one of its best-known crops.",
+    "options": [
+     "That is the first domestication of plants and animals, thousands of years earlier, in the Andes itself.",
+     "Right: after 1492, ships carried crops such as the potato from the Americas to Europe.",
+     "An ocean lies between them; the potato crossed it by ship.",
+     "The passage says the plant itself was carried to Europe."
+    ]
+   },
+   "stimulus": "agricultural-origins-s2"
+  },
+  {
+   "id": "hug-agricultural-origins-6",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Based on the passage, why was the blight so deadly in Ireland?",
+   "options": [
+    "The potato could not grow in Ireland's cool, wet climate",
+    "Many families depended on one kind of potato for most of their food",
+    "The potato had been brought to Ireland just a few years before 1845",
+    "The blight spread to Ireland from the United States"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Depending on one crop is risky. When blight struck the one potato variety most poor families relied on, their main food source collapsed.",
+    "options": [
+     "The passage says the potato grew well in Ireland's climate.",
+     "Right: when the one crop failed, those families had little else to eat.",
+     "It arrived in the late 1500s, more than 200 years earlier.",
+     "The passage does not say that; it says many Irish people later moved to the United States."
+    ]
+   },
+   "stimulus": "agricultural-origins-s2"
+  },
+  {
+   "id": "hug-agricultural-origins-7",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "In the passage, the famine led more than 1 million people to leave Ireland. For those migrants, what was the famine?",
+   "options": [
+    "A pull factor",
+    "A push factor",
+    "An intervening opportunity",
+    "A form of internal migration"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A famine at home is a push factor. The passage links a farming event to a migration flow, a cross-unit link the exam often asks for.",
+    "options": [
+     "A pull factor draws people to a destination; the famine pushed them from Ireland.",
+     "Right: the famine was a condition at the origin that drove people away.",
+     "An intervening opportunity is a chance found along the way that ends a move early.",
+     "Leaving Ireland for the United States is international migration."
+    ]
+   },
+   "stimulus": "agricultural-origins-s2"
+  },
+  {
+   "id": "hug-agricultural-origins-8",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is domestication?",
+   "options": [
+    "Bringing a plant from one continent to another by ship",
+    "Changing wild plants or animals over generations by choosing which ones breed",
+    "Clearing a forest plot and farming it for a few years",
+    "Watering crops with canals in a dry place"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Domestication is the slow change of wild species into crops and livestock that depend on people, through people choosing which ones to plant or breed.",
+    "options": [
+     "Moving plants between continents is diffusion, such as the Columbian Exchange.",
+     "Right: people kept seeds and animals with traits they wanted, and over many generations the species changed.",
+     "That describes shifting cultivation.",
+     "That is irrigation."
+    ]
+   }
+  },
+  {
+   "id": "hug-agricultural-origins-9",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "After the First Agricultural Revolution, many people stopped moving to hunt and gather and lived in one place year-round. What best explains this change?",
+   "options": [
+    "People traded their crops for food from the Americas",
+    "Fields and herds needed care, and harvests could be stored",
+    "Tractors made it possible to farm from a fixed home",
+    "Nomadic herding spread to each hearth area"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Farming meant staying near fields and herds, and stored surpluses let villages grow. Permanent settlement followed.",
+    "options": [
+     "Farmers in Afro-Eurasia had no contact with the Americas at that time.",
+     "Right: tending crops and storing food tied people to one place.",
+     "Tractors came thousands of years later.",
+     "Herding involves moving, the opposite of living in one place year-round."
+    ]
+   }
+  },
+  {
+   "id": "hug-agricultural-origins-10",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Which was a long-term effect of the food surplus that farming produced in hearths such as the Fertile Crescent?",
+   "options": [
+    "Populations fell because fewer people were needed",
+    "Some people could do jobs other than farming",
+    "Herders replaced farmers across the whole region",
+    "Wild plants replaced crops as the main food"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Farming in hearths like the Fertile Crescent made more food than farmers needed. That surplus supported larger populations, towns and people with other jobs.",
+    "options": [
+     "Food surpluses supported larger, not smaller, populations.",
+     "Right: a surplus feeds people who make tools, trade, write or govern, so jobs became specialized.",
+     "Farming spread; it did not give way to herding.",
+     "Domesticated crops became the main food."
+    ]
+   }
+  },
+  {
+   "id": "hug-agricultural-origins-11",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "In the 1600s and 1700s, horses brought by Spanish settlers spread north into the Great Plains of North America. Nations such as the Comanche and Lakota began to hunt bison on horseback. This is an example of which process?",
+   "options": [
+    "The First Agricultural Revolution in the Americas",
+    "The Columbian Exchange changing life in the Americas",
+    "Domestication of the bison by Plains nations",
+    "Stimulus diffusion of a farming tool from Mexico"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The Columbian Exchange moved animals as well as plants. Horses from Europe spread across the Plains and changed hunting and travel.",
+    "options": [
+     "That is the first domestication of local plants and animals thousands of years earlier.",
+     "Right: the horse came from Afro-Eurasia and transformed how Plains nations hunted and traveled.",
+     "Plains nations hunted wild bison; they did not domesticate them.",
+     "The horse itself was carried across the ocean, then spread across the land."
+    ]
+   }
+  },
+  {
+   "id": "hug-agricultural-origins-12",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which crops reached Europe, Africa and Asia from the Americas through the Columbian Exchange? Select all that apply.",
+   "options": [
+    "Maize (corn)",
+    "Potatoes",
+    "Wheat",
+    "Sugarcane",
+    "Coffee"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Maize, potatoes, tomatoes, cacao and cassava went from the Americas to Afro-Eurasia. Wheat, rice, sugarcane, coffee, cattle and horses went the other way.",
+    "options": [
+     "Right: domesticated in Central America, now grown on every inhabited continent.",
+     "Right: from the Andes of South America.",
+     "Wheat came from the Fertile Crescent and went the other way, to the Americas.",
+     "Sugarcane came from Asia and was carried to the Americas.",
+     "Coffee came from the highlands of Ethiopia in Africa."
+    ]
+   }
+  },
+  {
+   "id": "hug-agricultural-origins-13",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.D",
+   "q": "Put these events in order, from earliest to most recent.",
+   "options": [
+    "Wheat and barley are domesticated in the Fertile Crescent",
+    "Columbus crosses the Atlantic in 1492",
+    "The potato is grown widely in Ireland",
+    "Blight destroys Ireland's potato crop in the 1840s"
+   ],
+   "why": {
+    "correct": "Domestication came about 10,000 years ago; the Columbian Exchange began in 1492; the potato spread in Ireland over the next two centuries; the blight struck from 1845."
+   }
+  },
+  {
+   "id": "hug-agricultural-origins-14",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Farming spread from the Fertile Crescent into Europe over thousands of years, as each generation of farmers cleared land a little farther from the last. Which type of diffusion is this?",
+   "options": [
+    "Relocation diffusion, carried by ship across an ocean",
+    "Hierarchical diffusion, moving first between large cities",
+    "Stimulus diffusion, changing into a new practice",
+    "Expansion diffusion, spreading from place to place"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Farming spread outward from its hearth to neighboring areas, which is expansion diffusion (contagious). The Columbian Exchange, by contrast, carried crops across an ocean: relocation diffusion.",
+    "options": [
+     "Relocation diffusion moves an idea with people to a distant place; here farming crept outward step by step.",
+     "Cities did not yet exist across Europe; farming spread through neighboring lands.",
+     "The same crops and practices spread, not just an idea that was changed.",
+     "Right: farming spread outward from its hearth while staying strong at home, a form of contagious expansion diffusion."
+    ]
+   }
+  },
+  {
+   "id": "hug-agricultural-origins-15",
+   "unit": "unit-5",
+   "topic": "agricultural-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of one effect of the Columbian Exchange in a named place.",
+   "why": {
+    "correct": "A full answer names the item, the place and the effect, joined by \"so\"."
+   },
+   "specific": {
+    "frame": "After 1492, the Columbian Exchange carried ___ to ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "After 1492, the Columbian Exchange carried the potato to Ireland, so poor families could feed themselves from small plots and the population grew.",
+    "slots": {
+     "concept": {
+      "label": "What moved",
+      "options": [
+       "the potato",
+       "wheat"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wheat went from Afro-Eurasia to the Americas, not to Ireland from the Americas."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "Ireland",
+       "the Andes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The Andes is where the potato came from, not where it was carried."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "poor families could feed themselves from small plots and the population grew",
+       "Ireland stopped growing any other crop"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ireland grew other crops too; the effect was more food from small plots."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

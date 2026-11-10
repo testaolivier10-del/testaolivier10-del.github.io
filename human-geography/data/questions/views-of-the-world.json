@@ -1,0 +1,624 @@
+{
+ "stimuli": {
+  "views-of-the-world-s1": {
+   "kind": "map",
+   "title": "Southeast Asia: a reference map with four countries marked",
+   "map": {
+    "base": "southeast-asia",
+    "render": "reference",
+    "label": "Reference map of Southeast Asia with four countries marked: P is Myanmar in the west, Q is Thailand, R is Viet Nam along the eastern coast of the mainland, and S is Indonesia, a chain of islands to the south",
+    "legendTitle": "Countries named in the questions",
+    "focus": [
+     "myanmar",
+     "thailand",
+     "viet-nam",
+     "indonesia"
+    ],
+    "marks": [
+     {
+      "at": "myanmar",
+      "text": "P"
+     },
+     {
+      "at": "thailand",
+      "text": "Q"
+     },
+     {
+      "at": "viet-nam",
+      "text": "R"
+     },
+     {
+      "at": "indonesia",
+      "text": "S"
+     }
+    ]
+   }
+  },
+  "views-of-the-world-s2": {
+   "kind": "map",
+   "title": "Southeast Asia: income groups of countries",
+   "map": {
+    "base": "southeast-asia",
+    "render": "choropleth",
+    "label": "Shaded map of Southeast Asia by World Bank income group: Brunei is high income; Thailand, Malaysia, Viet Nam, Indonesia and the Philippines are upper-middle income; Myanmar, Laos, Cambodia and Timor-Leste are lower-middle income",
+    "source": "World Bank FY27 income groups (July 2026)",
+    "legendTitle": "World Bank FY27 income group (by income per person)",
+    "classes": [
+     "Lower-middle income",
+     "Upper-middle income",
+     "High income"
+    ],
+    "values": {
+     "myanmar": 0,
+     "laos": 0,
+     "cambodia": 0,
+     "timor-leste": 0,
+     "thailand": 1,
+     "malaysia": 1,
+     "viet-nam": 1,
+     "indonesia": 1,
+     "philippines": 1,
+     "brunei": 2
+    },
+    "marks": [
+     {
+      "at": "myanmar",
+      "text": "P"
+     },
+     {
+      "at": "thailand",
+      "text": "Q"
+     },
+     {
+      "at": "viet-nam",
+      "text": "R"
+     },
+     {
+      "at": "indonesia",
+      "text": "S"
+     }
+    ]
+   }
+  },
+  "views-of-the-world-s3": {
+   "kind": "map",
+   "title": "Height of the land in Country A",
+   "map": {
+    "base": "country-a",
+    "render": "isoline",
+    "invented": true,
+    "label": "Isoline map of Country A: lines of equal height above sea level fall from 1,500 meters in the Western Uplands to 100 meters near the South Coast, packed close together in the west and spread far apart in the east",
+    "legendTitle": "Height above sea level (meters, invented)",
+    "isolines": {
+     "unit": "meters above sea level (invented)",
+     "lines": [
+      {
+       "value": 1500,
+       "points": [
+        [
+         80,
+         60
+        ],
+        [
+         100,
+         120
+        ],
+        [
+         95,
+         180
+        ],
+        [
+         85,
+         250
+        ]
+       ],
+       "labelAt": 0.33
+      },
+      {
+       "value": 1000,
+       "points": [
+        [
+         150,
+         40
+        ],
+        [
+         175,
+         120
+        ],
+        [
+         165,
+         200
+        ],
+        [
+         150,
+         290
+        ]
+       ],
+       "labelAt": 1
+      },
+      {
+       "value": 500,
+       "points": [
+        [
+         300,
+         40
+        ],
+        [
+         305,
+         140
+        ],
+        [
+         275,
+         240
+        ],
+        [
+         245,
+         350
+        ]
+       ]
+      },
+      {
+       "value": 100,
+       "points": [
+        [
+         470,
+         40
+        ],
+        [
+         490,
+         160
+        ],
+        [
+         440,
+         260
+        ],
+        [
+         400,
+         360
+        ]
+       ],
+       "labelAt": 0.33
+      }
+     ]
+    },
+    "marks": [
+     {
+      "at": "west",
+      "text": "Western Uplands"
+     },
+     {
+      "at": "coast",
+      "text": "South Coast"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-views-of-the-world-1",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which kind of map is this, and how can you tell?",
+   "stimulus": "views-of-the-world-s1",
+   "options": [
+    "A reference map: it shows where countries and borders are, with no theme",
+    "A thematic map: it shades four of the countries to show a measure",
+    "A thematic map: its legend gives classes of values for the countries",
+    "A reference map: it uses shades to show how many people live in each country"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reference maps show where things are; thematic maps show a measure or theme. This map has locations and labels only.",
+    "options": [
+     "Right: a reference map shows locations and names. The four shaded countries are only highlighted so you can find them.",
+     "The highlight marks the countries in the questions; there are no values, so there is no theme.",
+     "The legend here names countries; it has no classes of values.",
+     "It is a reference map, but the shading carries no values such as how many people live there."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-2",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which two marked countries share a land border?",
+   "stimulus": "views-of-the-world-s1",
+   "options": [
+    "Q and R",
+    "P and Q",
+    "R and S",
+    "P and S"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Read the borders on the map: only Myanmar and Thailand touch among the four marked countries.",
+    "options": [
+     "Thailand (Q) and Viet Nam (R) do not touch: Laos and Cambodia lie between them.",
+     "Right: Myanmar (P) and Thailand (Q) meet along a land border in the west of the mainland.",
+     "Viet Nam (R) is on the mainland and Indonesia (S) is made of islands across the sea.",
+     "Indonesia (S) is separated from Myanmar (P) by sea."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-3",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Using absolute direction, where is Indonesia (S) from Viet Nam (R)?",
+   "stimulus": "views-of-the-world-s1",
+   "options": [
+    "North",
+    "West",
+    "South",
+    "Northeast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Absolute direction uses the compass (north, south, east, west), which stays the same wherever you stand.",
+    "options": [
+     "R is north of S, not the other way around.",
+     "Indonesia stretches east and west, but it lies south of Viet Nam.",
+     "Right: S lies below R on the map, and north is at the top.",
+     "Northeast of Viet Nam is the sea toward the Philippines and Taiwan, not Indonesia."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-4",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "This map shows the same countries as the reference map. What makes it a thematic map?",
+   "stimulus": "views-of-the-world-s2",
+   "options": [
+    "It shows the borders and names of the countries of Southeast Asia",
+    "It shows the same four marked countries as the reference map does",
+    "It shows the sea between the mainland and the many islands of the region",
+    "Each country is shaded by income group, with a legend of classes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A thematic map shows a measure or topic across places; the legend tells you what the shades mean.",
+    "options": [
+     "Borders and names are what a reference map shows; both maps have them.",
+     "The marks help you find places on both maps; they do not make a map thematic.",
+     "The sea is part of the base map on both; it is not the theme.",
+     "Right: a thematic map shows one topic, here income group, with a legend that explains the shades."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-5",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which statement describes the pattern on this map, using the legend?",
+   "stimulus": "views-of-the-world-s2",
+   "options": [
+    "Myanmar (P) is lower-middle; Thailand (Q), Viet Nam (R), Indonesia (S) upper-middle",
+    "Myanmar (P) and Thailand (Q) are both in the high income group, along with Brunei",
+    "The four marked countries share one income group, upper-middle income",
+    "Indonesia (S) is the one upper-middle income country in the region shown"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read each marked country's shade against the legend, then name places and classes.",
+    "options": [
+     "Right: it names places and their classes from the legend (World Bank FY27).",
+     "Neither is high income on this map; the one high income country is Brunei.",
+     "Myanmar is a class lower than the other three marked countries.",
+     "Thailand, Malaysia, Viet Nam and the Philippines share that class with Indonesia."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-6",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.F",
+   "q": "Which question can this map NOT answer?",
+   "stimulus": "views-of-the-world-s2",
+   "options": [
+    "Which income group Brunei was in for the year FY27",
+    "How income differs between cities and villages inside Viet Nam",
+    "Whether Myanmar and Thailand were in the same income group",
+    "Which of the four marked countries were upper-middle income"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A map with one value for each country cannot show differences inside a country. That needs data for smaller units.",
+    "options": [
+     "The map answers this: Brunei is high income.",
+     "Right: each country has one shade, so the map hides any differences inside a country.",
+     "The map answers this: they are in different groups.",
+     "The map answers this: Thailand, Viet Nam and Indonesia."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-7",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "What do the lines on this map join?",
+   "stimulus": "views-of-the-world-s3",
+   "options": [
+    "Points that are the same distance from the South Coast",
+    "The borders between the provinces of Country A",
+    "Points that are the same height above sea level",
+    "Roads that climb from the South Coast up to the uplands"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An isoline joins places with the same value. On this map the value is height above sea level, so the lines show elevation.",
+    "options": [
+     "The lines are labeled in meters above sea level, not distance.",
+     "Province borders are the thin grey lines; the labeled lines cross them.",
+     "Right: an isoline joins points of equal value; the legend says the value here is height in meters.",
+     "A reference map would show roads; these lines carry values of height."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-8",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Where is the land steepest, and how can you tell?",
+   "stimulus": "views-of-the-world-s3",
+   "options": [
+    "Near the South Coast, where the lowest line is drawn",
+    "In the east, where the lines are farthest apart",
+    "In the middle of the country, where the 500 meter line runs north to south",
+    "In the Western Uplands, where the lines are closest together"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The spacing of isolines shows slope: close together is steep, far apart is gentle.",
+    "options": [
+     "The coast is the lowest land, and the lines near it are far apart, so it is gentle.",
+     "Lines far apart mean the height changes slowly: gentle land.",
+     "The 500 meter line is in the middle, but the lines around it are widely spaced.",
+     "Right: close lines mean the height changes a lot over a short distance, which is a steep slope."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-9",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "A company in Country A wants flat, low land for a large new port and warehouses. Using the map, which area fits best?",
+   "stimulus": "views-of-the-world-s3",
+   "options": [
+    "The South Coast, below 100 meters, where the lines are far apart",
+    "The Western Uplands, above 1,500 meters",
+    "The middle of the country, between the 500 and 1,000 meter lines",
+    "The north of the Western Uplands, where the lines bunch together"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read both the values (low) and the spacing (gentle) to choose flat, low land.",
+    "options": [
+     "Right: the land there is low and the wide spacing shows it is gentle.",
+     "That is the highest land and, with close lines, the steepest.",
+     "That land is higher and still well inland from the coast.",
+     "Bunched lines mean steep slopes, the opposite of what the company needs."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-10",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Every flat world map is drawn with a map projection. Which statement about projections is accurate?",
+   "options": [
+    "A good projection keeps shape, area, distance and direction true at once",
+    "A projection that keeps the sizes of areas true has to stretch some shapes",
+    "Projections change the colors of a map but not its shapes",
+    "Projections matter for maps of a town but not for world maps"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A projection is a trade-off: it can keep area, or shape, or some distances or directions true, but never all of them.",
+    "options": [
+     "No flat map keeps all four true; each projection trades some properties for others.",
+     "Right: a round Earth cannot be flattened without distortion, so keeping one property true costs another.",
+     "A projection is the method for flattening the globe; it changes shapes and sizes, not colors.",
+     "Distortion grows with the area shown, so it matters most on world maps."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-11",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "On one common world map, Greenland looks about as large as Africa, yet Africa has about 14 times more land. What does that map distort most?",
+   "options": [
+    "Direction, which it reverses near the equator",
+    "Elevation, which it exaggerates in cold places",
+    "Area, which it stretches more and more toward the poles",
+    "Distance between neighbors on the same continent, such as Europe"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When a map makes a land mass near the pole look far too big, it is distorting area.",
+    "options": [
+     "The problem in the example is size, not direction.",
+     "Elevation is not shown on such a map at all.",
+     "Right: maps that keep local shapes true often inflate areas far from the equator, as with Greenland.",
+     "The example compares the sizes of two land masses, not distances."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-12",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two towns are each 100 km from a city. One is linked by a highway, the other by a winding mountain road, so one trip takes 1 hour and the other 3 hours. What does this show?",
+   "options": [
+    "Absolute distance: both towns are 100 km away, so the two trips are equal",
+    "Relative direction: the two towns lie in different directions from the city",
+    "Elevation: the mountain town is higher, so its road is longer in kilometers",
+    "Relative distance: travel time differs though the absolute distance is equal"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Absolute distance is measured in kilometers or miles; relative distance in time, cost or ease of travel.",
+    "options": [
+     "The absolute distance is equal, but the question is about how long the trips take.",
+     "Nothing in the question says which direction each town lies.",
+     "A mountain road suggests hills, but the point here is time, not height.",
+     "Right: relative distance measures how far a place feels, in time or cost, not kilometers."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-13",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "People in Europe long called Southwest Asia and North Africa \"the Middle East\". What kind of direction does that name use?",
+   "options": [
+    "Relative direction: \"east\" only from the point of view of Europe",
+    "Absolute direction: the region is east of the whole world",
+    "Absolute direction: it measures east from the North Pole",
+    "Relative distance: it measures how long the trip from Europe took"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Relative directions such as \"the Far East\" or \"out West\" change with the speaker's location.",
+    "options": [
+     "Right: relative direction depends on where the speaker stands. From India, the same region lies to the west.",
+     "Absolute directions are compass directions that do not depend on a viewpoint, and nothing is east of the whole world.",
+     "Compass directions are not measured from the North Pole in this way.",
+     "The name is about direction, not travel time."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-14",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "You want a map that shows how many people live in each part of a country, with each dot standing for 10,000 people. Which map type is this?",
+   "options": [
+    "A cartogram",
+    "A dot density map",
+    "An isoline map",
+    "A reference map"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A dot density map shows counts as dots, which makes it easy to see where things are clustered or dispersed.",
+    "options": [
+     "A cartogram resizes whole areas by a value; it does not use dots.",
+     "Right: a dot density map places one dot for a set count, so crowded areas fill with dots.",
+     "An isoline map joins points of equal value with lines.",
+     "A reference map shows locations and names, not counts."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-15",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "A cartogram resizes each country by its number of people. Which change from a normal world map would you expect?",
+   "options": [
+    "Canada and Russia grow larger because they have the most land",
+    "Countries keep their usual sizes, but their colors change with the data",
+    "India and China grow much larger, while Canada and Russia shrink",
+    "Australia grows larger than Asia because it is a whole continent"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A cartogram trades true shape and area for a size that matches the data.",
+    "options": [
+     "A population cartogram shrinks land-rich, thinly peopled countries like these.",
+     "Changing the sizes is the whole point of a cartogram.",
+     "Right: India and China each have over a billion people (UN WPP 2024), while Canada and Russia have huge land areas but far fewer people.",
+     "Australia has far fewer people than Asia, so it would shrink."
+    ]
+   }
+  },
+  {
+   "id": "hug-views-of-the-world-16",
+   "unit": "unit-1",
+   "topic": "views-of-the-world",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "q": "On a map of Iowa, farmhouses are scattered evenly across the plains, while in a Dutch village the houses are packed around a central square. Which pair of terms fits?",
+   "options": [
+    "Clustering in Iowa, dispersal in the village",
+    "Absolute distance in Iowa, relative distance in the village",
+    "Elevation in Iowa, distortion in the village",
+    "Dispersal in Iowa, clustering in the village"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Clustering means features are close together; dispersal means they are spread out.",
+    "options": [
+     "This swaps the terms: the Iowa farmhouses are spread out, and the village houses are grouped.",
+     "Both places show how features are arranged, not how distance is measured.",
+     "Neither term describes how the houses are arranged.",
+     "Right: scattered, spread out features are dispersed; tightly grouped ones are clustered."
+    ]
+   }
+  }
+ ]
+}

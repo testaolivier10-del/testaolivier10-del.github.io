@@ -1,0 +1,486 @@
+{
+ "stimuli": {
+  "urbanization-origins-s1": {
+   "kind": "map",
+   "title": "Five early centers of city growth",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four early city hearths marked: A in Egypt, B in Pakistan and C in China, in a band across North Africa and Asia, and D in central Mexico",
+    "legendTitle": "Early city hearths (letters A to D)",
+    "focus": [
+     "egypt",
+     "pakistan",
+     "china",
+     "mexico"
+    ],
+    "marks": [
+     {
+      "at": [
+       31.2,
+       26
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       68.1,
+       27.3
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       112.5,
+       34.6
+      ],
+      "text": "C"
+     },
+     {
+      "at": [
+       -98.8,
+       19.7
+      ],
+      "text": "D"
+     }
+    ]
+   }
+  },
+  "urbanization-origins-s2": {
+   "kind": "text",
+   "title": "A history of an invented river town",
+   "text": "<p><b>Invented passage for practice.</b> \"Our town began about 900 years ago on a rocky island where the river narrows, so it was easy to defend and to cross. For centuries it grew because the coast road met the river route inland at our bridge, and every merchant paid a toll. In the 1880s the harbor filled with silt, and the new railroad was laid 30 kilometers to the north, through the town of Hartfield. Trade moved there. Our island is as safe and as pretty as ever, but our population has not grown since.\"</p><p>From a local history society booklet (invented), 1952.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-urbanization-origins-1",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which statement best describes the distribution of the hearths marked A, B and C on the map?",
+   "stimulus": "urbanization-origins-s1",
+   "options": [
+    "In a band across North Africa and Asia",
+    "Scattered across the Southern Hemisphere, south of the equator",
+    "Strung along the eastern coasts of the Atlantic Ocean",
+    "Grouped in the far north of Asia, close to the Arctic Ocean"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The three marks sit in Egypt, Pakistan and China, roughly between 25 and 35 degrees north. A pattern names where: a band across North Africa and Asia.",
+    "options": [
+     "Right: the marks form a band across North Africa and Asia in the Northern Hemisphere.",
+     "Each mark lies north of the equator, so this misreads the map.",
+     "The marks in Pakistan and China lie deep inside Asia, far from the Atlantic.",
+     "The marks are in warm, fairly dry middle latitudes, far south of the Arctic."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-2",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Each hearth marked A, B and C lay in a fairly dry region crossed by a large river (the Nile, the Indus and the Huang He). Which explains why the first cities grew in places like these?",
+   "stimulus": "urbanization-origins-s1",
+   "options": [
+    "Dry air kept stored grain fresh for years, so traders came from far away to buy and sell it",
+    "Rivers carried factory goods from inland mills down to busy sea ports on the coast",
+    "Nearby mountains held iron ore, so armies settled close by to make weapons and tools",
+    "River water let farmers grow a food surplus, freeing some people from farming"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The first cities needed a food surplus. River water and the rich soil left by floods let farmers grow more than they ate, which fed builders, traders and rulers.",
+    "options": [
+     "Storage mattered, but the surplus had to be grown first; dry air alone does not explain the river valleys.",
+     "Factories came thousands of years after the first cities.",
+     "Metal working came later and does not explain why each hearth is on a big river.",
+     "Right: surplus first, then people free to do other work, then cities."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-3",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Hearth D, in central Mexico, grew cities with no contact with hearths A, B and C. What does this suggest about how cities began?",
+   "stimulus": "urbanization-origins-s1",
+   "options": [
+    "The idea of the city traveled from Egypt to Mexico with migrants, by relocation diffusion",
+    "Cities need a large river, so the Mexican hearth was probably settled from Egypt",
+    "Cities arose separately wherever farming made a surplus",
+    "Cities began in Mexico first and then spread east across the ocean by expansion diffusion"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An independent start in Mesoamerica means cities were invented more than once. Wherever farming produced a surplus, cities could follow.",
+    "options": [
+     "There was no contact across the ocean then, so no relocation diffusion from Egypt.",
+     "The Mexican hearth had no contact with Egypt, and nothing shows settlement from there.",
+     "Right: several hearths, each with its own farming surplus.",
+     "The hearths in Asia and Africa grew cities thousands of years before the Mexican one."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-4",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which detail from the passage describes the town's site?",
+   "stimulus": "urbanization-origins-s2",
+   "options": [
+    "The coast road met the river route inland at the town bridge",
+    "It stood on a rocky island",
+    "The new railroad was laid 30 kilometers to the north, through Hartfield",
+    "Merchants passing through on the roads paid a toll at the bridge"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Site is the physical character of the place itself: a rocky island at a narrow point in a river.",
+    "options": [
+     "A meeting of routes links the town to other places: that is situation.",
+     "Right: an island and a narrow river are features of the place itself.",
+     "Where the railroad ran is about links to other places: situation.",
+     "Tolls came from traffic between other places, a result of situation."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-5",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which detail from the passage describes the town's situation before the 1880s?",
+   "stimulus": "urbanization-origins-s2",
+   "options": [
+    "Two trade routes met at its bridge",
+    "It stood on a rocky island in the river that was easy to defend",
+    "Its island setting was described as safe and pretty to look at",
+    "The river narrowed right beside the island, making it easy to cross"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Situation is a place's location relative to other places. A crossing of two trade routes links the town to the coast and the inland region.",
+    "options": [
+     "Right: the meeting of two routes is about links to other places.",
+     "The island and its defenses are features of the place: site.",
+     "Safety and beauty describe the place itself, not its links.",
+     "The narrow river is a physical feature of the place: site."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-6",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "According to the passage, why did the town stop growing after the 1880s?",
+   "stimulus": "urbanization-origins-s2",
+   "options": [
+    "Its site worsened when the rocky island slowly eroded away, while its situation improved",
+    "Its population aged, so births fell below deaths year after year",
+    "Its regional government moved the capital and its offices to Hartfield",
+    "Its situation worsened while its site stayed the same"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The silted harbor and the railroad through Hartfield cut the town out of the main routes. Its island was \"as safe as ever\", so the site did not change; its situation did.",
+    "options": [
+     "The passage says the island is as safe as ever; nothing eroded.",
+     "The passage gives no data on births, deaths or ages.",
+     "The passage says trade moved, not the government.",
+     "Right: situation can change when routes change, and that ends growth."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-7",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which change would most improve the invented town's situation?",
+   "stimulus": "urbanization-origins-s2",
+   "options": [
+    "A large new park built along the island's rocky shore",
+    "Tall stone walls rebuilt around the old town on the island",
+    "A highway bridge to the national road network",
+    "A new and larger school for the town's growing number of children"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Situation improves when a place gains links to other places. A highway connection would bring traffic and trade back.",
+    "options": [
+     "A park changes the place itself, not its links.",
+     "Walls are part of the site and its defense, not its links.",
+     "Right: new links to other places raise a town's situation.",
+     "A school serves residents but does not connect the town to other places."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-8",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is an example of urbanization?",
+   "options": [
+    "A family moves from Nairobi, the capital, back to a farm village",
+    "The share of Kenyans in cities rises",
+    "A village in western Kenya keeps the same population for 50 years",
+    "Farmers in Kenya plant more maize on the same amount of land"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Urbanization is a rise in the share of a population that lives in cities.",
+    "options": [
+     "That is a move from city to countryside, the reverse.",
+     "Right: a rising urban share is urbanization.",
+     "No change in where people live is not urbanization.",
+     "Higher farm output may help cities grow, but it is not urbanization itself."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-9",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Mexico City was built on the bed of a drained lake. Parts of the city sink each year as water is pumped from under it. Which idea explains this problem?",
+   "options": [
+    "The city's site: soft lake soil settles",
+    "The city's situation: it lies far inland from the coast and its sea ports",
+    "Rural-to-urban migration: newcomers build homes on the edge of the city",
+    "Distance decay: trade and contact fall with distance from the city center"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The problem comes from the ground itself. A soft lake-bed site compresses when groundwater is pumped out, so the land sinks.",
+    "options": [
+     "Right: the physical character of the place causes the sinking.",
+     "Distance from the coast is situation, and it does not make land sink.",
+     "Migration adds people but does not explain why the ground sinks.",
+     "Distance decay is about interaction, not the ground."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-10",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which best explains why Singapore grew into a great port city?",
+   "options": [
+    "Its site of wide, flat farmland that could feed a large population",
+    "Its rich oil fields, which drew shipping and trading companies from abroad",
+    "Its cool, dry climate, which suited the long storage of trade goods",
+    "Its situation on a main sea route"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Singapore is a small island with little farmland. Its strength is where it sits: ships between the Indian Ocean and the Pacific pass by it.",
+    "options": [
+     "Singapore has very little farmland; its food mostly comes from elsewhere.",
+     "Singapore has no large oil fields of its own.",
+     "Singapore is near the equator, warm all year.",
+     "Right: a location on a main sea route is a strong situation."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-11",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Chicago grew from a small town in the 1830s to over one million people by 1890 (US census). Which change did the most to cause that growth?",
+   "options": [
+    "Its marshy lakeside land was drained and turned into rich farms",
+    "Its winters grew much milder over those sixty years, drawing settlers",
+    "Rail lines met there, beside lake shipping",
+    "It was chosen as the new national capital of the United States"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Transport changed Chicago's situation. As a meeting point of rail and lake routes, it handled the grain, cattle and lumber of the Midwest, and jobs followed.",
+    "options": [
+     "Draining land changes the site a little but does not explain a boom.",
+     "Climate did not change enough to cause growth.",
+     "Right: new links made Chicago a hub, a better situation.",
+     "Chicago has never been the national capital."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-12",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Brazil built Brasília as a new capital far inland and opened it in 1960. Which driver of urbanization does this show?",
+   "options": [
+    "Better communication that let companies run their work from anywhere",
+    "Government policy",
+    "Natural increase, as births outnumbered deaths in the old coastal cities",
+    "A drought on the coast that pushed farm families to move inland"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The government chose the site and moved its offices there to draw people and investment away from the coast. That is policy as a driver of city growth.",
+    "options": [
+     "Communication links helped later, but the city exists because of a policy choice.",
+     "Right: a government decision created a new city.",
+     "Births in coastal cities did not create a city about 1,000 kilometers inland.",
+     "The new capital was planned by the state, not caused by a coastal drought."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-13",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Starting in the 1980s, China slowly loosened rules that had made it hard for rural people to move to cities. What effect did this most likely have?",
+   "options": [
+    "A faster rise in the urban share",
+    "More people moving from the big coastal cities back to inland farms",
+    "Fewer factory jobs in cities, as workers left for the countryside",
+    "A sudden fall in China's total population as families moved abroad"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When a policy that held people in villages eases, people respond to city pull factors, and the urban share climbs.",
+    "options": [
+     "Right: easing limits on moving lets migration, and so urbanization, speed up.",
+     "Easing limits on moving to cities would not push people back to farms.",
+     "City jobs grew in this period; the policy did not cut them.",
+     "A migration rule moves people within the country; it does not shrink the total."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-14",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which details describe a city's site? Select all that apply.",
+   "options": [
+    "A deep natural harbor",
+    "A hill that is easy to defend",
+    "Being one day's sail from three other ports",
+    "Lying where two trade routes cross"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Site is the physical character of the place itself. Distances to other ports and crossing routes describe situation.",
+    "options": [
+     "Right: a harbor is a physical feature of the place.",
+     "Right: a hill is a physical feature of the place.",
+     "Distance to other ports links the city to other places: situation.",
+     "A crossing of routes is about links to other places: situation."
+    ]
+   }
+  },
+  {
+   "id": "hug-urbanization-origins-15",
+   "unit": "unit-6",
+   "topic": "urbanization-origins",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of one driver of urbanization in a named place.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In China from the 1980s on, the government loosened rules that kept rural people in their villages, so millions of people moved to city jobs and the urban share rose fast.",
+    "slots": {
+     "place": {
+      "label": "Place and time",
+      "options": [
+       "China from the 1980s on",
+       "some places in the past"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place and time: a vague place earns no credit."
+      }
+     },
+     "cause": {
+      "label": "Driver",
+      "options": [
+       "the government loosened rules that kept rural people in their villages",
+       "the government built more villages in the countryside"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Building villages would keep people rural; it does not drive urbanization."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "millions moving to city jobs and a fast rise in the urban share",
+       "fewer people living in China"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Migration inside a country moves people; it does not lower the total."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A full explanation names the place, the driver and how the driver raised the urban share."
+   }
+  }
+ ]
+}

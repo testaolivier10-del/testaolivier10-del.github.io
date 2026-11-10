@@ -1,0 +1,537 @@
+{
+ "stimuli": {
+  "cultural-patterns-s1": {
+   "kind": "map",
+   "title": "The Highland people by province of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth of invented Country A by province: the share of people who belong to the Highland ethnic group is highest in the Northern Hills and Western Uplands and lowest in the Capital Region, the Eastern Plains and the South Coast",
+    "legendTitle": "People who belong to the Highland group (percent, invented)",
+    "classes": [
+     "Under 10%",
+     "10% to 39%",
+     "40% to 69%",
+     "70% or more"
+    ],
+    "values": {
+     "north": 3,
+     "west": 3,
+     "central": 2,
+     "northeast": 1,
+     "south": 1,
+     "capital": 0,
+     "east": 0,
+     "coast": 0
+    },
+    "marks": [
+     {
+      "at": "north",
+      "text": "Northern Hills"
+     },
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     }
+    ]
+   }
+  },
+  "cultural-patterns-s2": {
+   "kind": "text",
+   "title": "Murals in Pilsen, Chicago",
+   "text": "<p><b>Pilsen, Chicago</b> (LevlPrep summary, 2026)</p><p>Pilsen, on the Lower West Side of Chicago, Illinois, has been home to a large Mexican American community since the mid-1900s. Artists from the neighborhood have painted dozens of murals on walls, viaducts and schools. Many show Aztec symbols, Mexican history, local families and the Virgin of Guadalupe. The National Museum of Mexican Art opened in Pilsen in 1987. Each year, residents gather for street festivals with music and food from Mexico. Many residents say the murals tell visitors \"this is our neighborhood.\"</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-cultural-patterns-1",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "cultural-patterns-s1",
+   "q": "Which statement best describes the pattern on the map?",
+   "options": [
+    "The Highland share is highest in the northwest and lowest in the east",
+    "The Highland share is highest in the Capital Region and the South Coast",
+    "The Highland group is spread evenly across every province of the country",
+    "The Highland share rises steadily from the west of the country to the east"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "the Northern Hills and Western Uplands are in the top class (70% or more), and the Capital Region, Eastern Plains and South Coast are in the lowest (under 10%).",
+    "options": [
+     "Right: the Northern Hills and Western Uplands are in the top class (70% or more), and the Capital Region, Eastern Plains and South Coast are in the lowest (under 10%).",
+     "Both are in the lightest class on the legend, under 10%, so they have the lowest shares.",
+     "The shades range from under 10% to 70% or more, so the group is concentrated, not even.",
+     "It falls from west to east: the Western Uplands are darkest and the Eastern Plains lightest."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-2",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "stimulus": "cultural-patterns-s1",
+   "q": "What is the scale of analysis of the data on this map?",
+   "options": [
+    "National: the map shows the whole country",
+    "Local (subnational): one value for each province",
+    "Global: the group is compared with the world",
+    "Regional: several countries in a world region"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the scale of analysis is the scale of the data. Each value is for one province inside Country A, so the data are subnational.",
+    "options": [
+     "The map covers one country, but its data are for provinces. Readers mark \"national\" wrong for maps like this.",
+     "Right: the scale of analysis is the scale of the data. Each value is for one province inside Country A, so the data are subnational.",
+     "No values outside Country A appear on the map.",
+     "The map shows the provinces of one invented country, not a world region of several countries."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-3",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "cultural-patterns-s1",
+   "q": "Highland leaders in the Northern Hills ask for their own schools taught in the Highland language. Based on the map, how could the Highland identity act at two scales?",
+   "options": [
+    "It unites the whole country because the group lives in every province",
+    "It divides the Northern Hills but unites the Capital Region",
+    "It unites the northwest but may divide Country A as a whole",
+    "It has no effect, because ethnicity is not part of culture"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "where most people are Highland, a shared identity pulls people together (centripetal). At the national scale, a group concentrated in one corner can pull away from the rest (centrifugal).",
+    "options": [
+     "The map shows the group concentrated in the northwest, with under 10% in several provinces.",
+     "The Northern Hills are mostly Highland, so the identity is more likely to unite them. The Capital Region has few Highland people.",
+     "Right: where most people are Highland, a shared identity pulls people together (centripetal). At the national scale, a group concentrated in one corner can pull away from the rest (centrifugal).",
+     "Ethnicity is a cultural identity, and shared identity is one of the strongest forces that unite or divide."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-4",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "cultural-patterns-s2",
+   "q": "Painting murals of Mexican history on Pilsen's walls is best described as which of these?",
+   "options": [
+    "The physical landscape of Chicago's Lower West Side",
+    "Ethnocentrism toward visitors who come to the neighborhood",
+    "A centrifugal force that divides the neighborhood residents",
+    "Placemaking: residents shaping a place to show who they are"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "placemaking is people shaping a place to express their identity and build a shared sense of place. The murals do exactly that.",
+    "options": [
+     "Murals are made by people, so they are part of the cultural landscape, not the physical one.",
+     "The murals celebrate the community; nothing in the passage judges other cultures.",
+     "The passage says residents feel the murals say \"this is our neighborhood,\" which pulls them together.",
+     "Right: placemaking is people shaping a place to express their identity and build a shared sense of place. The murals do exactly that."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-5",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "cultural-patterns-s2",
+   "q": "According to the passage, how do the murals and festivals act at the neighborhood scale?",
+   "options": [
+    "As a centripetal force that strengthens a shared identity",
+    "As a centrifugal force that splits residents into groups",
+    "As proof that every Chicago neighborhood looks the same",
+    "As a physical feature formed by the river near Pilsen"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "shared symbols and gatherings pull residents together, which is what a centripetal force does.",
+    "options": [
+     "Right: shared symbols and gatherings pull residents together, which is what a centripetal force does.",
+     "The passage describes residents gathering and sharing the murals with pride, not splitting apart.",
+     "Pilsen's murals make it look different from other neighborhoods, not the same.",
+     "Murals and festivals are human-made culture, not physical features."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-6",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "stimulus": "cultural-patterns-s2",
+   "q": "Which detail in the passage best shows that Pilsen has a strong sense of place?",
+   "options": [
+    "Pilsen is located on the Lower West Side of Chicago",
+    "Residents say the murals tell visitors \"this is our neighborhood\"",
+    "The museum opened in 1987, nearly forty years ago",
+    "Murals are painted on walls, viaducts and schools"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "a sense of place is the feeling people have about a place and what it means to them. The residents' words state that feeling.",
+    "options": [
+     "That is the location of the neighborhood, not what it means to people.",
+     "Right: a sense of place is the feeling people have about a place and what it means to them. The residents' words state that feeling.",
+     "A date tells when something happened, not how people feel about the place.",
+     "This says where the murals are, not the meaning residents give the place."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-7",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.F",
+   "stimulus": "cultural-patterns-s2",
+   "q": "Which question would the passage NOT be able to answer?",
+   "options": [
+    "What kinds of images appear in the neighborhood murals",
+    "When the National Museum of Mexican Art opened in Pilsen",
+    "What share of Pilsen residents are Mexican American this year",
+    "What residents say the murals tell people who visit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "the passage gives no counts or recent data on residents. You would need census data, with a year, to answer it.",
+    "options": [
+     "The passage names them: Aztec symbols, Mexican history, local families and the Virgin of Guadalupe.",
+     "The passage says it opened in 1987.",
+     "Right: the passage gives no counts or recent data on residents. You would need census data, with a year, to answer it.",
+     "The passage quotes them: \"this is our neighborhood.\""
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-8",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "analyze",
+   "diff": 3,
+   "type": "model",
+   "practice": "5.B",
+   "q": "Belgium has a Dutch-speaking north (Flanders) and a French-speaking south (Wallonia). Place the right force on each scale.",
+   "model": {
+    "layout": "tiers",
+    "title": "One language, two scales: Belgium",
+    "slots": [
+     {
+      "id": "reg",
+      "name": "Within Flanders: shared Dutch"
+     },
+     {
+      "id": "nat",
+      "name": "Across Belgium: Dutch and French"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "cp",
+      "text": "Centripetal force"
+     },
+     {
+      "id": "cf",
+      "text": "Centrifugal force"
+     },
+     {
+      "id": "pm",
+      "text": "Postmodern architecture"
+     }
+    ],
+    "key": {
+     "reg": "cp",
+     "nat": "cf"
+    },
+    "slips": [
+     {
+      "piece": "cf",
+      "slot": "reg",
+      "why": "Inside Flanders most people share Dutch, so the language pulls them together: a centripetal force at that scale."
+     },
+     {
+      "piece": "cp",
+      "slot": "nat",
+      "why": "Across all of Belgium, two languages in separate regions pull the country apart: a centrifugal force at the national scale."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The same trait can unite one region and divide a country. Shared Dutch unites Flanders; the language divide between Flanders and Wallonia is a centrifugal force for Belgium."
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-9",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In 1995, voters in Quebec, Canada, where most people speak French, voted on whether Quebec should leave Canada. The \"No\" side won with about 50.6% of the vote. What does this close vote show?",
+   "options": [
+    "A shared language pulling all of Canada closer together",
+    "Placemaking by English speakers in the province",
+    "The physical landscape setting Quebec apart from Canada",
+    "A language region can pull against the rest of the country"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "almost half of Quebec voters chose to leave. A language concentrated in one region acted as a centrifugal force at the national scale.",
+    "options": [
+     "The vote was about Quebec leaving Canada, which shows a force pulling apart, not together.",
+     "The vote was about Quebec's future in Canada, not about English speakers shaping a place.",
+     "The vote was driven by language and identity, which are cultural, not physical.",
+     "Right: almost half of Quebec voters chose to leave. A language concentrated in one region acted as a centrifugal force at the national scale."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-10",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Tanzania has more than 100 ethnic groups, each with its own language. After independence, its leaders promoted Swahili as a shared language in schools and government. Which statement best explains the result?",
+   "options": [
+    "A shared language helped unite many groups as one country",
+    "Swahili split the country into separate language regions",
+    "Each ethnic group stopped using every other language",
+    "The policy is an example of the physical landscape at work"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "when people from many groups can speak to each other in one language, they can share schools, news and politics. That makes the language a centripetal force.",
+    "options": [
+     "Right: when people from many groups can speak to each other in one language, they can share schools, news and politics. That makes the language a centripetal force.",
+     "Swahili was promoted everywhere, so it linked regions instead of splitting them.",
+     "Many Tanzanians speak Swahili beside their home language; promoting one shared language did not end the others.",
+     "Language policy is a human choice, part of culture and politics."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-11",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "In Belfast, Northern Ireland, tall \"peace walls\" still separate some mostly Catholic neighborhoods from mostly Protestant ones. What do the walls show on the cultural landscape?",
+   "options": [
+    "Placemaking that unites the whole city",
+    "Religious division acting as a centrifugal force",
+    "Traditional architecture built from local stone",
+    "A physical barrier made by the river through the city"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "walls built between communities that differ in religion mark a force that has pushed people apart.",
+    "options": [
+     "The walls separate neighborhoods; they are a mark of division, not of a shared identity.",
+     "Right: walls built between communities that differ in religion mark a force that has pushed people apart.",
+     "The walls' purpose is separation. Their materials are not the point of the question.",
+     "People built the walls. They are cultural, not physical."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-12",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.C",
+   "q": "Many people in Catalonia, Spain, share the Catalan language, and debates about Catalonia's place in Spain have divided the country. What does this show about centripetal and centrifugal forces?",
+   "options": [
+    "A shared language can act as a centripetal force alone",
+    "Centrifugal forces appear only at the global scale",
+    "One trait can unite at one scale and divide at another",
+    "Language plays no part in uniting or dividing people"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Catalan pulls people together at the regional scale of Catalonia, while the same identity pulls against the rest of Spain at the national scale.",
+    "options": [
+     "The example shows the language uniting Catalonia but dividing Spain, so it acts as both.",
+     "The division here is within one country, at the national scale.",
+     "Right: Catalan pulls people together at the regional scale of Catalonia, while the same identity pulls against the rest of Spain at the national scale.",
+     "Language is one of the strongest forces that unite or divide."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-13",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In Nigeria, most people in the north are Muslim and most people in the south are Christian, with many mixed areas between. Which statement describes this as a regional pattern?",
+   "options": [
+    "Religion is the same in every region of Nigeria",
+    "Religion is clustered, with no place named",
+    "Religion is mostly Muslim in the south of the country",
+    "Religion differs by region: mostly Muslim north, mostly Christian south"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "a strong pattern names where and what: a mostly Muslim north and a mostly Christian south, with mixed areas.",
+    "options": [
+     "The stem says the main religion differs between north and south.",
+     "\"Clustered\" with no place earns no credit. A pattern must say where.",
+     "The stem says the north, not the south, is mostly Muslim.",
+     "Right: a strong pattern names where and what: a mostly Muslim north and a mostly Christian south, with mixed areas."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-14",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how a shared language can act as a centripetal force.",
+   "why": {
+    "correct": "An explain needs its link: say how the shared language pulls people together, and name the place and scale."
+   },
+   "specific": {
+    "frame": "In ___, a shared language is a ___ because ___.",
+    "write": {
+     "mechanism": true,
+     "scale": true
+    },
+    "model": "In Tanzania, at the national scale, Swahili is a centripetal force because people from more than 100 ethnic groups can use it to talk, learn and take part in one government.",
+    "slots": {
+     "place": {
+      "label": "Place and scale",
+      "options": [
+       "Tanzania, at the national scale",
+       "Africa, in general"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A whole continent \"in general\" is too vague. Name a country and the scale."
+      }
+     },
+     "force": {
+      "label": "Force",
+      "options": [
+       "centripetal force",
+       "centrifugal force"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A centrifugal force pulls people apart. A language everyone shares pulls them together."
+      }
+     },
+     "link": {
+      "label": "Because",
+      "options": [
+       "people from many ethnic groups can use it to talk, learn and govern together",
+       "it is spoken mainly in one corner of the country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A language confined to one corner would more likely divide the country."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-15",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is the best example of placemaking?",
+   "options": [
+    "Neighbors painting a mural of their history on a wall",
+    "A river cutting a valley over thousands of years",
+    "A national law setting the speed limit on highways",
+    "A storm knocking down trees along a road"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "placemaking is people shaping a place to show who they are and build a shared sense of place.",
+    "options": [
+     "Right: placemaking is people shaping a place to show who they are and build a shared sense of place.",
+     "That is a physical process, not something people do to express identity.",
+     "A traffic rule does not express a group's identity in a place.",
+     "A storm is a natural event, not people shaping a place."
+    ]
+   }
+  },
+  {
+   "id": "hug-cultural-patterns-16",
+   "unit": "unit-3",
+   "topic": "cultural-patterns",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these could act as centripetal forces for a whole country? Select all that apply.",
+   "options": [
+    "A national holiday that people across the country celebrate",
+    "A national soccer team that the whole country cheers for",
+    "Two languages spoken in two separate regions",
+    "A deep religious divide between north and south",
+    "A group concentrated in one province that wants to leave"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Centripetal forces pull a country together: a shared language, a holiday everyone marks, a team the whole country cheers. Two languages split by region and a deep religious divide pull people apart.",
+    "options": [
+     "Right: a shared celebration builds a shared identity.",
+     "Right: a team that everyone supports pulls people together.",
+     "Languages split by region tend to pull a country apart: a centrifugal force.",
+     "A divide like this tends to push people apart: a centrifugal force.",
+     "Wanting to leave is a force pulling apart, so it is centrifugal."
+    ]
+   }
+  }
+ ]
+}

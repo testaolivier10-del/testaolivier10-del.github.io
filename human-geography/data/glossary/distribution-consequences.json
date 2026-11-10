@@ -1,0 +1,20 @@
+{
+ "population-density": {
+  "def": "The number of people for each unit of land, usually per square kilometer."
+ },
+ "arithmetic-density": {
+  "def": "The total population divided by the total land area. It shows how crowded a place is on average."
+ },
+ "physiological-density": {
+  "def": "The total population divided by the area of arable land. It shows how many people each unit of farmland must feed."
+ },
+ "agricultural-density": {
+  "def": "The number of farmers divided by the area of arable land. A low value usually means large farms that use machines."
+ },
+ "arable-land": {
+  "def": "Land that can be used to grow crops. It leaves out deserts, ice, steep mountains and built-up areas."
+ },
+ "carrying-capacity": {
+  "def": "The number of people an area can support without damaging it. It depends on resources, technology and trade, so it is not the same as density."
+ }
+}

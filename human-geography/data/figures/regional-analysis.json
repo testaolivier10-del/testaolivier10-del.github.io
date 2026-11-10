@@ -1,0 +1,12 @@
+{
+ "regional-analysis-three-kinds": {
+  "file": "figures/regional-analysis-three-kinds.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 352,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels. A formal region shares one trait, drawn as one evenly shaded area, for example where most people speak French. A functional region is organized around a center, drawn as lines from a center to many points, for example a newspaper's delivery area. A perceptual region is what people believe, drawn as two overlapping dashed outlines that do not agree, for example \"the South\" in the United States."
+ }
+}

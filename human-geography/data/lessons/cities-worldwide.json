@@ -1,0 +1,71 @@
+{
+ "topic": "cities-worldwide",
+ "hook": "In 1975 the world had 8 cities of 10 million people or more. In 2025 it had 33, and the largest, Jakarta in Indonesia, held nearly 42 million people (UN DESA, World Urbanization Prospects 2025). At the same time, many cities in the United States grew mostly outward, as families moved to suburbs and offices followed them. Cities are growing bigger in some places and wider in others.",
+ "prereq": [
+  {
+   "q": "What is urbanization?",
+   "options": [
+    "A rise in the share of a population living in cities",
+    "The spread of farming into new regions",
+    "A fall in a city's population",
+    "The growth of villages into towns"
+   ],
+   "correct": 0,
+   "why": "Urbanization is about the share of people who live in cities, not just the number.",
+   "review": "urbanization-origins"
+  },
+  {
+   "q": "Which describes distance decay?",
+   "options": [
+    "Contact between places falls as the distance between them grows",
+    "Places far apart trade more than places close together",
+    "Maps lose accuracy far from the equator",
+    "Cities shrink as they age"
+   ],
+   "correct": 0,
+   "why": "The farther apart two places are, the less they usually interact.",
+   "review": "spatial-concepts"
+  }
+ ],
+ "figure": {
+  "figure": "cities-worldwide-metro",
+  "caption": "A large metro area: an old central city, suburbs, an edge city where highways meet, a boomburb and exurbs among farms."
+ },
+ "chain": [
+  {
+   "cause": "Rural-to-urban migration and natural increase run high in many lower- and middle-income countries",
+   "effect": "their largest cities pass 10 million people and become megacities"
+  },
+  {
+   "cause": "After 1945, US highways, cheap home loans and cars made long commutes easy",
+   "effect": "families moved from central cities to suburbs: suburbanization"
+  },
+  {
+   "cause": "Homes spread at low density across former farmland",
+   "effect": "the metro area sprawls, and most trips need a car"
+  },
+  {
+   "cause": "Offices and stores follow workers and shoppers to the suburbs",
+   "effect": "edge cities grow where highways meet, and boomburbs and exurbs grow beyond them"
+  }
+ ],
+ "ideas": [
+  "A <b>megacity</b> has 10 million people or more; a <b>metacity</b> has 20 million or more. These are conventions, and a city's count depends on where its edge is drawn.",
+  "Most megacities are in Asia (19 of 33 in 2025, UN DESA), and most new ones are growing in lower- and middle-income countries.",
+  "<b>Suburbanization</b> is the movement of people and jobs from central cities to the surrounding suburbs. Low-density spread across the land is <b>urban sprawl</b>.",
+  "An <b>edge city</b> is a suburban center of offices and stores with more jobs than homes. An <b>exurb</b> is a rural-looking area beyond the suburbs where commuters live. A <b>boomburb</b> is a fast-growing suburb that has become a large city of its own."
+ ],
+ "misconception": {
+  "wrong": "An edge city is just a big suburb where people live.",
+  "right": "An edge city is a job center: office towers, malls and hotels, usually at a highway junction, with more jobs than bedrooms. Tysons, Virginia, outside Washington, D.C., is an example. A suburb where most people live and leave each morning for work is not an edge city."
+ },
+ "check": [
+  "hug-cities-worldwide-1",
+  "hug-cities-worldwide-2",
+  "hug-cities-worldwide-5",
+  "hug-cities-worldwide-6",
+  "hug-cities-worldwide-9",
+  "hug-cities-worldwide-10"
+ ],
+ "summary": "Megacities (10 million or more) and metacities (20 million or more) are multiplying, mostly in Asia and Africa. In the United States and other high-income countries, cities spread outward instead: suburbanization and sprawl produced edge cities (suburban job centers), boomburbs (fast-growing suburban cities) and exurbs (commuter homes among farms)."
+}

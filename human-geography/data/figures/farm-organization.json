@@ -1,0 +1,12 @@
+{
+ "farm-organization-chain": {
+  "file": "figures/farm-organization-chain.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Six boxes joined by arrows, left to right: inputs (seed, fertilizer, machines), farm (grows the crop), processor (mills, packs, cooks), distributor (ships and stores), store (sells to shoppers) and consumer (buys and eats). A bracket under the first four boxes says one agribusiness may own or control several steps, which is called vertical integration."
+ }
+}

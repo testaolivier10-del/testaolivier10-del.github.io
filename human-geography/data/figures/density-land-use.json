@@ -1,0 +1,12 @@
+{
+ "density-land-use-gradient": {
+  "file": "figures/density-land-use-gradient.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A side view of a city from downtown on the left to the edge on the right. Tall towers stand downtown, then mid-rise apartment blocks, then row houses, then single-family houses on large lots, then farmland. One empty lot between the mid-rise blocks is being filled with a new apartment building, marked as infill."
+ }
+}

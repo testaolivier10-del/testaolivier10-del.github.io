@@ -1,0 +1,66 @@
+{
+ "topic": "settlement-survey",
+ "hook": "From an airplane over Kansas, the ground looks like graph paper: roads about a mile apart cross at right angles. Over Quebec, farmland runs in long ribbons back from the St. Lawrence River. Those shapes were decided more than 200 years ago, by the way people first measured and divided the land.",
+ "prereq": [
+  {
+   "q": "Points on a map that are close together show which pattern?",
+   "options": [
+    "Clustering",
+    "Dispersal",
+    "Distance decay",
+    "Diffusion"
+   ],
+   "correct": 0,
+   "why": "Clustering means things are close together; dispersal means they are spread out.",
+   "review": "views-of-the-world"
+  },
+  {
+   "q": "Which kind of agriculture puts many inputs into each hectare?",
+   "options": [
+    "Intensive agriculture",
+    "Extensive agriculture",
+    "Nomadic herding",
+    "Ranching"
+   ],
+   "correct": 0,
+   "why": "Intensive agriculture uses much labor, money and equipment on each unit of land.",
+   "review": "agriculture-intro"
+  }
+ ],
+ "figure": {
+  "figure": "settlement-survey-methods",
+  "caption": "Metes and bounds follows natural features; township and range makes a grid; long lots run in strips back from a river."
+ },
+ "chain": [
+  {
+   "cause": "The Land Ordinance of 1785 divided western land into square sections",
+   "effect": "land was sold to single families in squares"
+  },
+  {
+   "cause": "Each family built its house on the land it bought",
+   "effect": "farmhouses spread out, one on each farm"
+  },
+  {
+   "cause": "Homes spread out across the grid",
+   "effect": "the US Midwest has a dispersed settlement pattern"
+  }
+ ],
+ "ideas": [
+  "Rural settlement patterns: <b>clustered</b> (homes in a village, as in many English villages), <b>dispersed</b> (one home on each farm, as in Iowa) and <b>linear</b> (homes along a river or road, as along the Nile in Egypt).",
+  "Survey methods: <b>metes and bounds</b> (natural features, irregular shapes; Virginia), <b>township and range</b> (a square grid; Kansas and Iowa) and <b>long lots</b> (narrow strips from a river; Quebec and Louisiana).",
+  "The survey method is how land was divided; the settlement pattern is where people live. The first often shaped the second."
+ ],
+ "misconception": {
+  "wrong": "Long lot and township and range are kinds of settlement patterns.",
+  "right": "They are survey methods for dividing land. Clustered, dispersed and linear are the settlement patterns, and a survey method can lead to one of them."
+ },
+ "check": [
+  "hug-settlement-survey-1",
+  "hug-settlement-survey-2",
+  "hug-settlement-survey-3",
+  "hug-settlement-survey-4",
+  "hug-settlement-survey-9",
+  "hug-settlement-survey-13"
+ ],
+ "summary": "Rural settlements are clustered, dispersed or linear. Survey methods divide land: metes and bounds follows natural features, township and range makes a square grid, and long lots run in strips from a river. The method used often shaped the settlement pattern, as the grid did in the US Midwest."
+}

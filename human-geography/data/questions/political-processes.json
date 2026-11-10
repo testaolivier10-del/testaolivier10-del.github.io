@@ -1,0 +1,558 @@
+{
+ "stimuli": {
+  "political-processes-s1": {
+   "kind": "map",
+   "title": "When states in Sub-Saharan Africa became independent",
+   "map": {
+    "base": "sub-saharan-africa",
+    "render": "choropleth",
+    "label": "Choropleth map of Sub-Saharan Africa by year of independence: most states became independent from 1960 to 1964, a few in southern and eastern Africa came later, and Liberia, Ethiopia and South Africa were independent before 1950",
+    "source": "Historical record of independence dates (end of colonial rule or, for Eritrea and South Sudan, separation from another African state), compiled by LevlPrep, 2026",
+    "legendTitle": "Year the state became independent",
+    "classes": [
+     "Before 1950",
+     "1950 to 1959",
+     "1960 to 1964",
+     "1965 to 1979",
+     "1980 or later"
+    ],
+    "values": {
+     "liberia": 0,
+     "ethiopia": 0,
+     "south-africa": 0,
+     "ghana": 1,
+     "guinea": 1,
+     "senegal": 2,
+     "mali": 2,
+     "mauritania": 2,
+     "benin": 2,
+     "niger": 2,
+     "nigeria": 2,
+     "cameroon": 2,
+     "togo": 2,
+     "cote-d-ivoire": 2,
+     "burkina-faso": 2,
+     "central-african-republic": 2,
+     "congo": 2,
+     "gabon": 2,
+     "chad": 2,
+     "democratic-republic-of-the-congo": 2,
+     "madagascar": 2,
+     "somalia": 2,
+     "sierra-leone": 2,
+     "tanzania": 2,
+     "uganda": 2,
+     "rwanda": 2,
+     "burundi": 2,
+     "kenya": 2,
+     "malawi": 2,
+     "zambia": 2,
+     "gambia": 3,
+     "botswana": 3,
+     "lesotho": 3,
+     "eswatini": 3,
+     "equatorial-guinea": 3,
+     "guinea-bissau": 3,
+     "angola": 3,
+     "mozambique": 3,
+     "djibouti": 3,
+     "zimbabwe": 4,
+     "namibia": 4,
+     "eritrea": 4,
+     "south-sudan": 4
+    },
+    "noData": "Not shown: Somaliland, whose status is disputed"
+   }
+  },
+  "political-processes-s2": {
+   "kind": "text",
+   "title": "A UN declaration on independence (1960)",
+   "text": "<p>\"All peoples have the right to self-determination; by virtue of that right they freely determine their political status and freely pursue their economic, social and cultural development.\"</p><p>From the UN General Assembly's Declaration on the Granting of Independence to Colonial Countries and Peoples, Resolution 1514, 14 December 1960.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-political-processes-1",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which pattern does the map show?",
+   "options": [
+    "Most states became independent between 1960 and 1964",
+    "Most states became independent before 1950",
+    "Southern Africa became independent before West Africa",
+    "Independence spread from south to north over time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the legend first: the 1960 to 1964 class covers most of the map, from Senegal to Tanzania.",
+    "options": [
+     "Right: The 1960 to 1964 class covers most of West, Central and East Africa.",
+     "Only Liberia, Ethiopia and South Africa fall in that class.",
+     "Most of southern Africa is in the later classes.",
+     "The latest states are in the south and northeast, and West Africa came early."
+    ]
+   },
+   "stimulus": "political-processes-s1"
+  },
+  {
+   "id": "hug-political-processes-2",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Where on the map are most of the states that became independent in 1965 or later?",
+   "options": [
+    "Along the coast of West Africa",
+    "In the Congo Basin and the rest of Central Africa",
+    "Spread evenly across the region",
+    "In southern Africa and the Horn of Africa"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A strong pattern names where: the later classes cluster in southern Africa (Angola to Namibia) and in the Horn of Africa (Eritrea, Djibouti, South Sudan).",
+    "options": [
+     "Most West African coastal states are in the 1960 to 1964 class.",
+     "The Congo Basin states are in the 1960 to 1964 class.",
+     "The later classes cluster in the south and northeast.",
+     "Right: Angola, Mozambique, Zimbabwe, Namibia, Botswana, Lesotho and Eswatini are in the south; Eritrea, Djibouti and South Sudan are in the northeast."
+    ]
+   },
+   "stimulus": "political-processes-s1"
+  },
+  {
+   "id": "hug-political-processes-3",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which process best explains why so many states on the map became independent in the early 1960s?",
+   "options": [
+    "The breakup of the Soviet Union and of Yugoslavia into new states",
+    "Large numbers of Europeans moving into African colonies",
+    "Independence movements as European colonial powers weakened",
+    "African peoples voting to join together in larger states"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "After World War II, independence movements grew stronger and the European colonial powers were weaker. Most of Britain's and France's African colonies became independent around 1960.",
+    "options": [
+     "That happened in 1991 and made states in Europe and Asia.",
+     "Settlers often resisted independence, as in Rhodesia (now Zimbabwe).",
+     "Right: Movements for self-rule grew while Britain and France, weakened by the war, gave up most African colonies.",
+     "Most new states kept their colonial shapes; few merged."
+    ]
+   },
+   "stimulus": "political-processes-s1"
+  },
+  {
+   "id": "hug-political-processes-4",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.E",
+   "q": "What does this map NOT show?",
+   "options": [
+    "The year class of independence for Nigeria",
+    "Which European power ruled each colony",
+    "That South Sudan became independent late",
+    "That Liberia was independent before 1950"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Ask what the legend measures. It is years of independence only; to see the colonial powers, you would need another map.",
+    "options": [
+     "Nigeria is shaded in the 1960 to 1964 class.",
+     "Right: The map shows when states became independent, not which empire they left.",
+     "South Sudan is in the 1980 or later class.",
+     "Liberia is in the before 1950 class."
+    ]
+   },
+   "stimulus": "political-processes-s1"
+  },
+  {
+   "id": "hug-political-processes-5",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which right does the passage name?",
+   "options": [
+    "The right to self-determination",
+    "The right to vote in national elections",
+    "The right of empires to keep their colonies",
+    "The right to move freely between countries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The 1960 declaration says all peoples have the right to self-determination: the right to choose their own political status.",
+    "options": [
+     "Right: The passage names it in its first words.",
+     "The passage speaks of peoples, not individual voters.",
+     "The passage supports peoples who want to choose for themselves.",
+     "The passage says nothing about migration."
+    ]
+   },
+   "stimulus": "political-processes-s2"
+  },
+  {
+   "id": "hug-political-processes-6",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "Which event best fits the idea in the passage?",
+   "options": [
+    "A government moves its capital city to a new site far inland",
+    "Two neighboring states sign a deal to build a bridge across a river",
+    "A colonial power sends more soldiers to its colony to stop protests",
+    "East Timor votes to leave Indonesian rule in 1999 and later becomes independent"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Self-determination means a people decides its own political future. The 1999 vote in East Timor, followed by independence in 2002, is a clear case.",
+    "options": [
+     "Moving a capital is not a people choosing their status.",
+     "That is cooperation between states, not self-determination.",
+     "That works against self-determination.",
+     "Right: A people chose their own political status by a vote."
+    ]
+   },
+   "stimulus": "political-processes-s2"
+  },
+  {
+   "id": "hug-political-processes-7",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "q": "The passage gives \"all peoples\" a right to choose their status, but most new African states kept the borders drawn in colonial times. What tension does this create?",
+   "options": [
+    "The new states were left with no fixed borders",
+    "The colonial borders already matched the homeland of each people exactly",
+    "Some peoples inside the new states also wanted self-determination",
+    "The UN banned new states after 1960"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A right for \"all peoples\" sits uneasily with keeping colonial borders. Groups inside the new states, such as people in southern Sudan, later sought their own states; South Sudan became independent in 2011.",
+    "options": [
+     "They kept the colonial borders.",
+     "They often split peoples or grouped rivals together.",
+     "Right: Colonial borders grouped many peoples into one state, so some later sought their own.",
+     "Dozens of new states joined the UN after 1960."
+    ]
+   },
+   "stimulus": "political-processes-s2"
+  },
+  {
+   "id": "hug-political-processes-8",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is sovereignty?",
+   "options": [
+    "A people's shared culture, language and history",
+    "A state's right and power to govern its own territory without outside control",
+    "A region's power to run its schools inside a state",
+    "The size of a state's land area and its population"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sovereignty is a state's right and power to govern its own territory and people without control from outside.",
+    "options": [
+     "That describes a nation.",
+     "Right: This is the meaning used in political geography.",
+     "That is autonomy, not full sovereignty.",
+     "Sovereignty is about control, not size."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-processes-9",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Soldiers from State M cross into State N and set up a base without State N's permission. Which principle has State M broken?",
+   "options": [
+    "State N's sovereignty",
+    "State M's self-determination",
+    "State N's autonomy as a region",
+    "State M's nation-state status"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each state has sovereignty over its own territory. Moving troops in without permission breaks it.",
+    "options": [
+     "Right: State N alone has the right to control its territory.",
+     "Self-determination is a people's right to choose its status, not a right to enter another state.",
+     "State N is a state, not a region inside one.",
+     "Being a nation-state gives no right to enter another state."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-processes-10",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How is self-determination different from sovereignty?",
+   "options": [
+    "Self-determination is a state's control of territory; sovereignty is a people's right to choose",
+    "They are two names for the same right",
+    "Self-determination applies to cities; sovereignty applies to regions",
+    "One is a people's right to choose its status; the other is a state's control of territory"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A nation uses self-determination to seek a state; once it has one, the state holds sovereignty over its territory.",
+    "options": [
+     "This swaps the two.",
+     "They are linked but not the same.",
+     "Neither is defined by those scales.",
+     "Right: One belongs to peoples (nations), the other to states."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-processes-11",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In India, a mass movement led by figures such as Mohandas Gandhi used protests, boycotts and refusal to obey British laws until India became independent in 1947. What was this?",
+   "options": [
+    "Imperialism by the British Empire",
+    "A colonial system of direct rule",
+    "An independence movement",
+    "A multistate nation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An independence movement is an organized effort by a people under foreign rule to win their own state. India's ended British rule in 1947.",
+    "options": [
+     "Imperialism was Britain's rule over India, the thing the movement opposed.",
+     "Colonialism was the system the movement worked to end.",
+     "Right: An organized effort by a colonized people to win self-rule.",
+     "That term describes a people spread across states, not a movement."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-processes-12",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In 1964, the Organization of African Unity agreed that its members would respect the borders they had at independence. How did this decision shape the map of Africa?",
+   "options": [
+    "Borders were redrawn to give each ethnic group its own state",
+    "Most colonial-era borders stayed in place after independence",
+    "African states merged into one large federation",
+    "Colonial powers kept control of border areas"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Respecting the borders held at independence kept the colonial outlines on the map, even where they split or grouped peoples.",
+    "options": [
+     "The decision did the opposite: it froze the inherited borders.",
+     "Right: States agreed not to redraw the borders they inherited.",
+     "No such merger took place.",
+     "The decision was made by independent African states."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-processes-13",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In 1991, the Soviet Union broke apart. What happened to its territory?",
+   "options": [
+    "It became 15 independent states, such as Ukraine and Kazakhstan",
+    "It became one large nation-state called Russia, ruled from Moscow",
+    "It became colonies of European powers",
+    "It joined with China to form one state"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The breakup of the Soviet Union in 1991 created 15 states, a large wave of new sovereign states in Europe and Asia.",
+    "options": [
+     "Right: Each of its 15 republics became an independent state.",
+     "Russia is one of 15 successor states.",
+     "No outside power took over the republics.",
+     "No such union happened."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-processes-14",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "The UN began in 1945 with 51 member states. It had 193 by 2011. By what percent did UN membership grow, to the nearest whole percent?",
+   "why": {
+    "correct": "Percent change is $\\frac{193 - 51}{51} \\times 100 \\approx 278\\%$. Much of the growth came from new states formed as colonies became independent."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "percentChange",
+       "args": [
+        51,
+        193
+       ]
+      },
+      0
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        193,
+        51
+       ]
+      },
+      "why": "142 is the number of new members, not the percent change. Divide the change by the old value (51), then multiply by 100."
+     },
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          {
+           "fn": "div",
+           "args": [
+            142,
+            193
+           ]
+          },
+          100
+         ]
+        },
+        0
+       ]
+      },
+      "why": "You divided by the new value (193). Percent change divides by the old value, 51."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-political-processes-15",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.B",
+   "q": "Put these events in time order, earliest first.",
+   "options": [
+    "Most of Latin America wins independence from Spain and Portugal",
+    "India becomes independent from British rule",
+    "Ghana becomes independent from British rule",
+    "The Soviet Union breaks into 15 states",
+    "South Sudan becomes independent from Sudan"
+   ],
+   "why": {
+    "correct": "Latin America in the 1810s and 1820s, India in 1947, Ghana in 1957, the Soviet breakup in 1991 and South Sudan in 2011."
+   }
+  },
+  {
+   "id": "hug-political-processes-16",
+   "unit": "unit-4",
+   "topic": "political-processes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how colonialism shaped the borders of one present-day state.",
+   "why": {
+    "correct": "An explain names the place, the cause and the effect, with the link between them."
+   },
+   "specific": {
+    "frame": "In ___, borders were drawn by ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Nigeria, borders were drawn by British colonial officials in the early 1900s, so many different peoples, such as the Hausa, Yoruba and Igbo, ended up in one state at independence in 1960.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Nigeria",
+       "Africa in general"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name one real state; a whole continent is too vague for an explain."
+      }
+     },
+     "cause": {
+      "label": "Who drew them",
+      "options": [
+       "British colonial officials in the early 1900s",
+       "the peoples who lived there"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Colonial borders were drawn by the European powers, not by local peoples."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "many different peoples ended up in one state at independence",
+       "each people got a state of its own"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Colonial borders grouped many peoples together; they did not give each one a state."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

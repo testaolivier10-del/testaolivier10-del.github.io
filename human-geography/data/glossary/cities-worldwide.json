@@ -1,0 +1,23 @@
+{
+ "megacity": {
+  "def": "An urban area with 10 million people or more. The threshold is a convention, and a city's count depends on where its edge is drawn."
+ },
+ "metacity": {
+  "def": "An urban area with 20 million people or more, a convention UN-Habitat used for the largest megacities."
+ },
+ "suburbanization": {
+  "def": "The movement of people, jobs and stores from a central city to the lower-density suburbs around it."
+ },
+ "urban-sprawl": {
+  "def": "The spread of a city at low density over a large area, often across farmland, with homes, shops and jobs far apart."
+ },
+ "edge-city": {
+  "def": "A suburban center of offices, malls and hotels, usually near highway junctions, with more jobs than residents."
+ },
+ "exurb": {
+  "def": "A rural-looking area beyond the suburbs, with homes on large lots, whose residents mostly commute into the metro area."
+ },
+ "boomburb": {
+  "def": "A suburb that has grown very fast into a large city of its own, but is not the main city of its metro area."
+ }
+}

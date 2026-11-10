@@ -1,0 +1,23 @@
+{
+ "state": {
+  "def": "A country: an area with a permanent population, a defined territory and a government that controls it, recognized by other states. The UN has 193 member states."
+ },
+ "nation": {
+  "def": "A group of people who share a culture, such as a language, history or religion, and see themselves as one people, often with a homeland."
+ },
+ "nation-state": {
+  "def": "A state whose people are mostly one nation, so the nation and the state cover about the same area. Iceland is often given as an example."
+ },
+ "stateless-nation": {
+  "def": "A nation that has no independent state of its own, such as the Kurds of Southwest Asia."
+ },
+ "multinational-state": {
+  "def": "A state that holds two or more nations, such as Nigeria or Belgium."
+ },
+ "multistate-nation": {
+  "def": "A nation whose people live in two or more states, such as Koreans in North Korea and South Korea."
+ },
+ "autonomous-region": {
+  "def": "A part of a state that governs many of its own affairs while the national government keeps powers such as defense. A region with fewer powers is called semiautonomous."
+ }
+}

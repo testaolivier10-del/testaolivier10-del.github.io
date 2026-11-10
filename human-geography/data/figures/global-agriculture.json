@@ -1,0 +1,12 @@
+{
+ "global-agriculture-banana-chain": {
+  "file": "figures/global-agriculture-banana-chain.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Seven boxes joined by arrows: a farm in Ecuador, a packing house where fruit is washed and boxed, the port of Guayaquil, a refrigerated ship kept at about 13 degrees Celsius, a port in the United States, a ripening center where gas ripens the fruit, and a store where a shopper buys it. The first three steps are in the exporting country and the last three in the importing country. Each step adds cost and value, and a delay at any step can spoil the fruit."
+ }
+}

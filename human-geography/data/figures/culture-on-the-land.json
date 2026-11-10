@@ -1,0 +1,42 @@
+{
+ "culture-on-the-land-sequent": {
+  "file": "figures/culture-on-the-land-sequent.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 1070,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three drawings of one invented riverbank. About 1850: a fishing camp of wooden lodges, a drying rack and a canoe. About 1920: a brick mill with a smokestack, a rail line and small workers' houses. About 2020: the same mill, now lofts and a cafe, keeps its smokestack beside a glass tower and a riverside path. Each period left marks that the next one built on."
+ },
+ "culture-on-the-land-street": {
+  "file": "figures/culture-on-the-land-street.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A drawn street in a Vietnamese American neighborhood such as Little Saigon in Westminster, California. Signs in Vietnamese and English: a noodle house (Phở Saigon), an Asian market (Chợ), a Buddhist temple (Chùa) with a curved red tile roof, a tailor for áo dài (a long Vietnamese dress) and a bánh mì shop, and a community center. People walk on the sidewalk."
+ },
+ "culture-on-the-land-1925": {
+  "file": "figures/culture-on-the-land-1925.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Scene 1, Main Street of an invented river town in about 1925: a white wooden church with a steeple and cross, a general store with the sign \"Lindqvist & Sons General Store\", a brick flour mill with a smoking smokestack, and two small workers' houses. A horse pulls a cart on the dirt street and two people walk past. Every sign is in English."
+ },
+ "culture-on-the-land-2025": {
+  "file": "figures/culture-on-the-land-2025.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Scene 2, the same Main Street in about 2025: the church still stands; the general store building is now \"Hilal Halal Market\" and a Somali restaurant; the flour mill keeps its smokestack but is now \"Mill Lofts and Coffee\"; the workers' houses are gone and a building holds a \"Global Burger\" chain restaurant and a \"Phones 5G\" store. Cars drive on a paved street and people walk past."
+ }
+}

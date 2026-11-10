@@ -1,0 +1,12 @@
+{
+ "data-in-decisions-flow": {
+  "file": "figures/data-in-decisions-flow.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 356,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three rows, each from data to who decides to the decision. A census count of children by district goes to a local school board, which decides where to build a new school. Satellite images of a flood go to a national government agency, which decides where to send boats and food. A census count of people by state feeds a formula in United States federal law, at the national scale, that sets the seats each state gets in the House."
+ }
+}

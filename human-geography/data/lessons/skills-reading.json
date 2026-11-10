@@ -1,0 +1,45 @@
+{
+ "topic": "skills-reading",
+ "hook": "On a shaded map of South Asia by total population, India is the darkest country and Bangladesh is a class lighter. A quick reader decides India is the most crowded place in the region. It is not: Bangladesh fits far more people on each square kilometer (UN World Population Prospects 2024). The map was right. The reading was wrong, because the reader skipped the legend.",
+ "figure": {
+  "figure": "skills-reading-steps",
+  "caption": "Read the title, then the legend and units, then the source line, and only then describe the pattern."
+ },
+ "chain": [
+  {
+   "cause": "You read the title first",
+   "effect": "you know what the figure measures, where and when"
+  },
+  {
+   "cause": "You read the legend and the units",
+   "effect": "you know whether a shade or a number is a total, a percent or a rate per 1,000 people"
+  },
+  {
+   "cause": "You check the source line for a maker and a year",
+   "effect": "you know how far to trust the numbers and how old they are"
+  },
+  {
+   "cause": "You name the places and give values when you describe the pattern",
+   "effect": "your answer is specific enough to earn credit"
+  }
+ ],
+ "ideas": [
+  "A <b>legend</b> (or key) says what each shade, symbol or line on a map stands for. Read it before you look at the colors.",
+  "Check the <b>units</b>. A <b>total</b> (number of people) favors big places; a <b>percent</b> or a <b>rate</b> (per 1,000 people) lets you compare places of any size.",
+  "A <b>source line</b> names who made the data and the year. \"Invented data for practice\" means the numbers are made up for the exercise.",
+  "A <b>trend</b> is a change over time. Describe it with its direction, its dates and how much it changed."
+ ],
+ "misconception": {
+  "wrong": "The darkest country on a shaded map has the \"most\" of everything, so it is the most crowded or the most important.",
+  "right": "The darkest country has the most of whatever the legend measures. If the legend counts totals, a big country like India is dark simply because it is big."
+ },
+ "check": [
+  "hug-skills-reading-1",
+  "hug-skills-reading-2",
+  "hug-skills-reading-3",
+  "hug-skills-reading-4",
+  "hug-skills-reading-7",
+  "hug-skills-reading-9"
+ ],
+ "summary": "Read every map, table and chart in the same order: title, legend and units, source line, then the pattern. The units tell you whether you are looking at a total, a percent or a rate, which changes what you can claim. A strong pattern statement names real places and gives values, and a trend gives its direction, dates and size."
+}

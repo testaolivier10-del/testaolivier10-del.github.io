@@ -1,0 +1,70 @@
+{
+ "topic": "agricultural-origins",
+ "hook": "Italian food without tomatoes, Irish meals without potatoes and Thai dishes without chili peppers would all have been normal before 1500. Every one of those foods came from the Americas. Farming began in a few hearths around the world, and ships later carried its crops across oceans.",
+ "prereq": [
+  {
+   "q": "Farming spreads outward from its hearth to neighboring areas while staying strong where it began. What type of diffusion is this?",
+   "options": [
+    "Expansion diffusion",
+    "Relocation diffusion",
+    "Stimulus diffusion",
+    "Hierarchical diffusion"
+   ],
+   "correct": 0,
+   "why": "Expansion diffusion spreads outward from a hearth while remaining there; relocation diffusion moves with people to a new place.",
+   "review": "diffusion-types"
+  },
+  {
+   "q": "A family leaves its home because harvests have failed for years. For that family, the failed harvests are what?",
+   "options": [
+    "A push factor",
+    "A pull factor",
+    "An intervening obstacle",
+    "A remittance"
+   ],
+   "correct": 0,
+   "why": "A push factor is a condition at the origin that drives people to leave.",
+   "review": "migration-causes"
+  }
+ ],
+ "figure": {
+  "figure": "agricultural-origins-exchange",
+  "caption": "After 1492, crops, animals and diseases crossed the Atlantic in both directions."
+ },
+ "chain": [
+  {
+   "cause": "People saved seeds and bred animals with useful traits",
+   "effect": "wild species changed into crops and livestock"
+  },
+  {
+   "cause": "Fields and herds needed care and harvests could be stored",
+   "effect": "people settled in permanent villages"
+  },
+  {
+   "cause": "Farming made a food surplus",
+   "effect": "populations grew and some people took other jobs"
+  },
+  {
+   "cause": "After 1492, ships linked the Americas and Afro-Eurasia",
+   "effect": "the Columbian Exchange spread crops, animals and diseases between them"
+  }
+ ],
+ "ideas": [
+  "<b>Domestication</b> turned wild plants and animals into crops and livestock over many generations; the <b>First Agricultural Revolution</b> was the shift to farming that began about 12,000 to 10,000 years ago.",
+  "Farming began on its own in several hearths: the <b>Fertile Crescent</b> (wheat, barley), the Indus River valley, Southeast Asia and Central America (maize), and others such as the Andes (potatoes).",
+  "The <b>Columbian Exchange</b> after 1492 carried maize and potatoes to Afro-Eurasia and wheat, sugarcane, cattle and horses to the Americas. Diseases such as smallpox devastated Indigenous peoples."
+ ],
+ "misconception": {
+  "wrong": "The Columbian Exchange is trade with the country of Colombia.",
+  "right": "It is named for Christopher Columbus. It was the exchange of plants, animals and diseases between the Americas and Afro-Eurasia after 1492."
+ },
+ "check": [
+  "hug-agricultural-origins-1",
+  "hug-agricultural-origins-2",
+  "hug-agricultural-origins-3",
+  "hug-agricultural-origins-4",
+  "hug-agricultural-origins-11",
+  "hug-agricultural-origins-13"
+ ],
+ "summary": "Domestication turned wild species into crops and livestock in several hearths, including the Fertile Crescent, the Indus valley, Southeast Asia and Central America. Farming led to settled villages and surpluses. After 1492 the Columbian Exchange carried crops, animals and diseases between the hemispheres."
+}

@@ -1,0 +1,83 @@
+{
+ "topic": "urbanization-origins",
+ "hook": "In 1950, about one person in five lived in a city. By 2025, UN DESA counted 45 percent of the world's 8.2 billion people in cities (World Urbanization Prospects 2025). Cities did not appear at random. The first ones grew where rivers watered rich farmland, and the biggest ones grew where routes met. This lesson asks two questions: why does a city start where it does, and why do people keep moving to cities?",
+ "prereq": [
+  {
+   "q": "A town is built on a hill inside a bend of a river. Which idea does that detail describe?",
+   "options": [
+    "Its site",
+    "Its situation",
+    "Its relative distance",
+    "Its time-space compression"
+   ],
+   "correct": 0,
+   "why": "Site is the physical character of the place itself: the hill and the river bend. Situation would describe its links to other places.",
+   "review": "spatial-concepts"
+  },
+  {
+   "q": "A family leaves a farm village in Ghana to find work in Accra, the capital. What kind of migration is this?",
+   "options": [
+    "Rural-to-urban migration",
+    "Transhumance",
+    "Forced migration",
+    "Guest worker migration"
+   ],
+   "correct": 0,
+   "why": "They move from the countryside (rural) to a city (urban) inside their own country, by choice.",
+   "review": "forced-voluntary-migration"
+  },
+  {
+   "q": "What did the First Agricultural Revolution give early societies that later made cities possible?",
+   "options": [
+    "A steady surplus of food from domesticated crops and animals",
+    "Machines that replaced farm workers",
+    "High-yield seeds and fertilizer",
+    "Railroads to carry grain to ports"
+   ],
+   "correct": 0,
+   "why": "Domestication let farmers grow more food than they ate. That surplus could feed people who did other work.",
+   "review": "agricultural-origins"
+  }
+ ],
+ "figure": {
+  "figure": "urbanization-origins-site-situation",
+  "caption": "Site is the ground a city stands on; situation is its place in a web of routes and other places."
+ },
+ "chain": [
+  {
+   "cause": "Farmers in river valleys grow more food than they need",
+   "effect": "some people can stop farming and become builders, traders, priests and rulers"
+  },
+  {
+   "cause": "Those people gather in one place to trade and govern",
+   "effect": "the first cities form, often on a site that is easy to defend and near water"
+  },
+  {
+   "cause": "Routes by river, sea, road and later rail meet at a city",
+   "effect": "its situation draws trade and jobs, so it keeps growing"
+  },
+  {
+   "cause": "Jobs and services gather in cities while farm work needs fewer hands",
+   "effect": "people move from rural areas to cities, and the urban share of the population rises: urbanization"
+  }
+ ],
+ "ideas": [
+  "A <b>city</b> is a large, dense settlement where most people work in jobs other than farming. <b>Urbanization</b> is the growth in the share of people who live in cities.",
+  "The first cities grew in river valleys such as the Tigris and Euphrates in Mesopotamia (Iraq), the Nile in Egypt, the Indus in Pakistan and the Huang He in China, and separately in Mesoamerica. A food surplus came first.",
+  "<b>Site</b> is the place itself: the land, water and shape of the ground. <b>Situation</b> is where it sits among other places. A site stays the same; a situation changes when routes change.",
+  "Urbanization is driven by transport, communication, population growth, migration, economic development and government policy, often several at once."
+ ],
+ "misconception": {
+  "wrong": "Site and situation both mean \"where the city is\", so either word fits any location detail.",
+  "right": "Site is about the place itself (Paris began on an island in the Seine). Situation is about its links to other places (Singapore sits on a main sea route at the end of the Strait of Malacca). Ask: does the detail need another place to make sense? Then it is situation."
+ },
+ "check": [
+  "hug-urbanization-origins-8",
+  "hug-urbanization-origins-9",
+  "hug-urbanization-origins-10",
+  "hug-urbanization-origins-4",
+  "hug-urbanization-origins-5",
+  "hug-urbanization-origins-6"
+ ],
+ "summary": "Cities first grew where farming produced a food surplus, mostly in river valleys. Site (the physical place) explains where a city starts; situation (its links to other places) explains much of how it grows, and situation can change. Urbanization, a rising share of people in cities, is driven by transport, communication, population growth, migration, development and policy."
+}

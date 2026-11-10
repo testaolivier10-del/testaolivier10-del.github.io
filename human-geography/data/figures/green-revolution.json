@@ -1,0 +1,22 @@
+{
+ "green-revolution-package": {
+  "file": "figures/green-revolution-package.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four inputs on the left: high-yield seeds, chemical fertilizer, irrigation water, and pesticides and machines. Arrows from all four lead to one box: more grain per hectare. From it, one arrow leads to benefits (more food grown, fewer famines, lower grain prices) and one to costs (heavy water use, chemical runoff, debt for small farms, fewer crop varieties). Caption: the Green Revolution package, about the 1960s to the 1980s."
+ },
+ "green-revolution-timeline": {
+  "file": "figures/green-revolution-timeline.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A timeline with four boxes. First Agricultural Revolution, from about 12,000 years ago: plants and animals domesticated. Second Agricultural Revolution, 1700s and 1800s: crop rotation, new tools and machines. Green Revolution, about the 1960s to the 1980s: high-yield seeds and fertilizer. Genetically modified crops, from the late 1990s: genes changed in a lab. The last box is a different color: it came after the Green Revolution and is not part of it."
+ }
+}

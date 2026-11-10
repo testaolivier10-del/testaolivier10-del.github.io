@@ -1,0 +1,12 @@
+{
+ "diffusion-history-creole": {
+  "file": "figures/diffusion-history-creole.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 600,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Flow diagram: speakers of two languages meet and make a pidgin, a simple mixed language for trade or work that no one speaks from birth. When children grow up speaking it, it becomes a creole, a full first language. Example: Haitian Creole grew from French and West African languages spoken by enslaved people brought to Haiti, and Haiti's 1987 constitution made it an official language beside French."
+ }
+}

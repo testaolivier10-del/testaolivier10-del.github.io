@@ -1,0 +1,591 @@
+{
+ "stimuli": {
+  "population-distribution-s1": {
+   "kind": "map",
+   "title": "Four places on a world map",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four places marked: A in eastern China, B in the Sahara of North Africa, C in northern Canada and D in the Ganges River valley of India and Bangladesh",
+    "legendTitle": "Places in the questions",
+    "marks": [
+     {
+      "at": [
+       115,
+       32
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       5,
+       24
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       -100,
+       64
+      ],
+      "text": "C"
+     },
+     {
+      "at": [
+       84,
+       26
+      ],
+      "text": "D"
+     }
+    ]
+   }
+  },
+  "population-distribution-s2": {
+   "kind": "map",
+   "title": "People per square kilometer in the provinces of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "label": "Choropleth map of Country A by province: people per square kilometer are highest in the Capital Region and along the South Coast and lowest in the Northern Hills and the Southern Forest",
+    "invented": true,
+    "legendTitle": "People per square kilometer (invented data)",
+    "classes": [
+     "Under 10",
+     "10 to 49",
+     "50 to 149",
+     "150 to 499",
+     "500 or more"
+    ],
+    "values": {
+     "capital": 4,
+     "coast": 3,
+     "central": 3,
+     "east": 2,
+     "northeast": 1,
+     "west": 1,
+     "north": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     },
+     {
+      "at": "north",
+      "text": "Northern Hills"
+     },
+     {
+      "at": "coast",
+      "text": "Coast"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-population-distribution-1",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Look at the four lettered places on the map. Which two places are inside the world’s two largest clusters of people?",
+   "stimulus": "population-distribution-s1",
+   "options": [
+    "A and D",
+    "B and C",
+    "A and C",
+    "B and D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Place A (eastern China) and Place D (the Ganges valley) sit in the East Asia and South Asia clusters, where more than half of the world’s people live.",
+    "options": [
+     "Right: eastern China and the Ganges valley of South Asia are the two biggest clusters on Earth.",
+     "the Sahara and northern Canada are two of the emptiest places on Earth.",
+     "eastern China is crowded, but northern Canada has very few people.",
+     "the Ganges valley is crowded, but very few people live in the Sahara."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-2",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Very few people live at Place B. Which physical factor best explains this?",
+   "stimulus": "population-distribution-s1",
+   "options": [
+    "The land is too high and steep for farms, roads or most buildings",
+    "Very little rain falls, so there is little water for crops",
+    "Long, cold winters keep the ground frozen",
+    "Thick rainforest covers most of the land"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Place B is in the Sahara. With so little rain, there is not enough water to grow food, so few people live there.",
+    "options": [
+     "that fits high mountains such as the Himalaya, not the Sahara at Place B.",
+     "Right: Place B is in the Sahara, one of the driest places on Earth.",
+     "that fits Place C in northern Canada, not the hot desert at Place B.",
+     "that fits the Amazon basin, not a desert."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-3",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Place B and Place C both have very few people. Which statement correctly compares the reasons?",
+   "stimulus": "population-distribution-s1",
+   "options": [
+    "Dryness limits where people live at both places",
+    "High mountains limit where people live at both places",
+    "Cold limits where people live at C, while dryness limits it at B",
+    "Heat limits where people live at Place C, while cold limits it at Place B"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Different physical factors can produce the same pattern: few people. Cold limits settlement in northern Canada, at Place C, and lack of water limits it in the Sahara, at Place B.",
+    "options": [
+     "northern Canada is not mainly limited by dryness; its long, cold winters are the problem.",
+     "neither place is mainly a high mountain range.",
+     "Right: northern Canada is cold for most of the year, and the Sahara is very dry.",
+     "this swaps the two climates: C is cold and B is hot and dry."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-4",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "At the global scale, Place A looks like one big cluster of people. What would a map of the same area at the local scale most likely show?",
+   "stimulus": "population-distribution-s1",
+   "options": [
+    "People spread evenly over the whole area, with no crowded or empty parts",
+    "Fewer people, because local maps leave out large parts of the area",
+    "Exactly the same picture as the world map, with no new detail",
+    "Crowded river plains and coast, with emptier hills between them"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The pattern you see depends on the scale of analysis. A world map shows eastern China as one cluster; a local map shows people packed onto river plains and the coast, with fewer in the hills.",
+    "options": [
+     "local maps show more detail, and they reveal uneven patterns that the world map hides.",
+     "a local map covers less area but shows it in more detail; the people are still there.",
+     "changing the scale of analysis changes what you can see; a local map adds detail.",
+     "Right: a closer look shows the cluster has its own pattern: crowded lowlands, thinner hills."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-5",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis are the data on this map?",
+   "stimulus": "population-distribution-s2",
+   "options": [
+    "Local (subnational): each province of Country A has its own value",
+    "National: the map shows the whole of Country A from border to border",
+    "Global: the map compares countries of the world",
+    "Regional: the map compares world regions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The scale of analysis is the scale of the data shown, not the size of the area on the map. One value per province is local (subnational) data.",
+    "options": [
+     "Right: the data are given for parts of one country, which is a subnational scale.",
+     "the map covers one country, but each value is for a province. The scale of analysis is the scale of the data.",
+     "there is only one country on this map.",
+     "a world region would hold several countries; these are provinces of one country."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-6",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which statement best describes the pattern on the map?",
+   "stimulus": "population-distribution-s2",
+   "options": [
+    "People are spread fairly evenly across the eight provinces of Country A, with small differences",
+    "Highest in the Capital Region and South Coast, lowest in the Northern Hills and Southern Forest",
+    "The Northern Hills have the most people per square kilometer",
+    "People are clustered in the north and west of Country A"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A strong description of a pattern names where values are high and where they are low: the Capital Region (500 or more) and the South Coast (150 to 499) are highest; the Northern Hills and the Southern Forest (under 10) are lowest.",
+    "options": [
+     "the provinces fall into five different classes, from under 10 to 500 or more.",
+     "Right: this names where the high and low values are, using the legend.",
+     "the Northern Hills are in the lowest class, under 10.",
+     "the north and west are in the two lowest classes."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-7",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "The South Coast is crowded even though it is far from the capital. Which human factor best explains this?",
+   "stimulus": "population-distribution-s2",
+   "options": [
+    "Rain falls in most months of the year along the coast of Country A",
+    "The coast has flat land near the sea",
+    "A large port gives many people jobs in trade and shipping",
+    "The coast is the farthest province from the hills"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Human factors are things people create: jobs, transport, government and history. A port with jobs in trade is a human factor that draws people to the coast.",
+    "options": [
+     "rain is a physical factor, and the question asks for a human one.",
+     "flat land is a physical factor, not a human one.",
+     "Right: jobs draw people, and a port links the coast to other countries.",
+     "distance from the hills does not by itself draw people."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-8",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question could this map NOT answer?",
+   "stimulus": "population-distribution-s2",
+   "options": [
+    "Which province has the most people per square kilometer",
+    "Whether the South Coast has more people per square kilometer than the Northern Hills",
+    "Which provinces are in the lowest class",
+    "Which towns inside the Northern Hills have the most people"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A province map gives one value for each province. It cannot show differences inside a province, such as which towns are crowded. That is a limit of the data at this scale.",
+    "options": [
+     "the map shows this: the Capital Region is in the highest class.",
+     "the map shows this by comparing their classes.",
+     "the legend and shading show this.",
+     "Right: each province has one value, so the map hides differences inside a province."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-9",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which term names the parts of Earth’s surface where people live permanently?",
+   "options": [
+    "Ecumene",
+    "Population distribution",
+    "Situation",
+    "Formal region"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ecumene is the part of Earth where people live permanently. Antarctica and the center of the Sahara lie outside it.",
+    "options": [
+     "Right: the ecumene is the lived-in part of Earth.",
+     "population distribution is the pattern of where people live, not the lived-in area itself.",
+     "situation is a place’s location relative to other places.",
+     "a formal region shares a trait; it is not the lived-in part of Earth."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-10",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Most of Egypt’s people live in a narrow strip along the Nile River and in its delta. Which statement explains this pattern?",
+   "options": [
+    "The river valley is the coldest part of Egypt",
+    "The river gives water for crops and drinking in a very dry country",
+    "The government moved people away from the coast and into the valley",
+    "The desert is too high and steep to build on"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Egypt is a desert country. The Nile gives water, so people have lived in its valley and delta for thousands of years. That is population distribution shaped by a physical factor.",
+    "options": [
+     "temperature is not the reason; the rest of Egypt is a hot desert with almost no rain.",
+     "Right: water is the physical factor that draws people to the Nile.",
+     "Egypt’s pattern is old; it follows the water of the Nile.",
+     "most of Egypt’s desert is flat or rolling; it is the lack of water that matters."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-11",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Brazil built a new capital, Brasília, far inland in 1960 so that more people would live away from the coast. Which kind of factor shaping population distribution does this show?",
+   "options": [
+    "A physical factor: a better climate inland",
+    "A physical factor: new rivers inland",
+    "A human factor: a government decision",
+    "Environmental determinism: the land forced people to move"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Governments shape where people live. Brasília is a human factor at the national scale: a political decision drew people and jobs inland.",
+    "options": [
+     "the move was a government plan, not a change in climate.",
+     "no new rivers formed; the government chose the site.",
+     "Right: building a capital is a choice people make, so it is a human factor.",
+     "determinism says nature decides; here people decided."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-12",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A student writes, \"Canada’s people are clustered.\" Which change makes this a strong description of the pattern?",
+   "options": [
+    "Canada’s people are very clustered",
+    "Canada has a large area and a small population",
+    "Canada’s people are clustered because of its history, climate and economy",
+    "Most Canadians live in a band near the border with the United States"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Readers give no credit for \"clustered\" alone. A pattern needs a place: in Canada, most people live in a band near the southern border, and few live in the far north.",
+    "options": [
+     "adding \"very\" still does not say where the people are.",
+     "this is true but says nothing about where people live inside Canada.",
+     "a reason does not replace the missing location of the cluster.",
+     "Right: this says where the cluster is, which is what a description needs."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-13",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Phoenix, in the desert of the southwestern United States, has more than a million people. Which idea best fits this case?",
+   "options": [
+    "Possibilism: people adapt, for example by piping water to a dry place",
+    "Environmental determinism: the desert climate made the city grow large",
+    "Physical factors are the reason most people live in deserts",
+    "The ecumene does not include cities in dry places"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The desert limits settlement, but people brought in water and built air conditioning. That is possibilism: people adapt to an environment and choose how to use it.",
+    "options": [
+     "Right: possibilism says the environment sets limits but people choose and adapt.",
+     "determinism says nature decides; deserts usually limit settlement.",
+     "most people do not live in deserts; dry climates usually limit settlement.",
+     "Phoenix is lived in permanently, so it is part of the ecumene."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-14",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which of these are human factors that shape where people live? Select all that apply.",
+   "options": [
+    "Jobs in factories and offices",
+    "Roads and railways",
+    "Rainfall",
+    "Mountains",
+    "Soil good for crops"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Human factors are made by people: jobs, transport, government decisions and history. Physical factors come from nature: climate, water, landforms and soil.",
+    "options": [
+     "Right: jobs are created by people and draw them to a place.",
+     "Right: transport links are built by people and draw settlement along them.",
+     "Rainfall is a physical factor.",
+     "Mountains are a physical factor (a landform).",
+     "Soil is a physical factor."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-15",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of why few people live in a named place.",
+   "specific": {
+    "frame": "At the ___ scale, few people live in ___ because ___.",
+    "write": {
+     "mechanism": true,
+     "scale": true
+    },
+    "model": "At the national scale, few people live in Russia’s Siberia because its long, freezing winters make farming and building hard, so most Russians live in the west of the country.",
+    "slots": {
+     "scale": {
+      "label": "Scale of analysis",
+      "options": [
+       "national",
+       "some"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name a scale of analysis: local, national, regional or global."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "Russia’s Siberia",
+       "cold places"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name a real place; \"cold places\" is too vague to earn credit."
+      }
+     },
+     "cause": {
+      "label": "Cause and its link",
+      "options": [
+       "its long, freezing winters make farming and building hard",
+       "it is cold"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"it is cold\" names a factor but does not say how it limits where people live."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A strong answer names the scale, a real place and a cause with its link: cold winters, so farming and building are hard, so few people live there."
+   }
+  },
+  {
+   "id": "hug-population-distribution-16",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "At the national scale, Australia looks almost empty. Which statement describes its population distribution at a more detailed scale?",
+   "options": [
+    "Australians are spread fairly evenly across the interior and the coasts of the country",
+    "Most Australians live in the dry center of the country",
+    "Australia has no clusters of people",
+    "Most live in east and southeast coastal cities; the dry interior is nearly empty"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "One national number hides a strong pattern. Most Australians live near the east and southeast coasts, where rain falls and the large cities are; the dry interior is nearly empty.",
+    "options": [
+     "the dry interior has very few people.",
+     "the center is dry and has few people; the coasts are where most live.",
+     "Sydney, Melbourne and Brisbane are large clusters on the coast.",
+     "Right: this names where people are and where they are not."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-17",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Many of the world’s large cities are on coasts or rivers. Which explanation links location to population distribution?",
+   "options": [
+    "Coasts and rivers made trade and transport easier, so jobs and people gathered there",
+    "Coasts and rivers are cooler in summer, so people have long preferred to build homes there",
+    "People avoid inland places because most inland land is too steep to build on",
+    "Coasts have fewer people because ships take up space"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Physical and human factors work together. Water made moving goods cheaper, so trade, jobs and then people gathered on coasts and rivers.",
+    "options": [
+     "Right: this links the physical setting to the human factor of trade.",
+     "temperature is not the reason, and the claim is not true.",
+     "much inland land is flat; trade is the reason.",
+     "the pattern is the opposite: many people live on coasts."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-distribution-18",
+   "unit": "unit-2",
+   "topic": "population-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Order these places from most crowded to least crowded.",
+   "options": [
+    "The Ganges River valley in northern India",
+    "The Great Plains of the central United States",
+    "Northern Siberia in Russia"
+   ],
+   "why": {
+    "correct": "The Ganges valley is one of the most crowded farming regions on Earth; the Great Plains have farms and towns but far fewer people; northern Siberia has very few people because of the cold."
+   }
+  }
+ ]
+}

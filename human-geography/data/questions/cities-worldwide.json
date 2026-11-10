@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "cities-worldwide-s1": {
+   "kind": "map",
+   "title": "Seven of the world's largest cities, 2025",
+   "map": {
+    "base": "world",
+    "render": "symbol",
+    "label": "Graduated symbol map of seven very large cities in 2025: the biggest circles are in Asia, at Jakarta, Tokyo, New Delhi, Shanghai and Manila, with one in Africa at Cairo and a smaller one in South America at Sao Paulo",
+    "source": "UN DESA, World Urbanization Prospects 2025 (2025 estimates, Degree of Urbanisation method)",
+    "legendTitle": "Urban area population, 2025",
+    "symbols": {
+     "unit": "million people",
+     "items": [
+      {
+       "at": [
+        106.8,
+        -6.2
+       ],
+       "value": 41.9
+      },
+      {
+       "at": [
+        139.7,
+        35.7
+       ],
+       "value": 33.4
+      },
+      {
+       "at": [
+        31.2,
+        30
+       ],
+       "value": 32
+      },
+      {
+       "at": [
+        77.2,
+        28.6
+       ],
+       "value": 30.2
+      },
+      {
+       "at": [
+        121.5,
+        31.2
+       ],
+       "value": 29.6
+      },
+      {
+       "at": [
+        121,
+        14.6
+       ],
+       "value": 24.7
+      },
+      {
+       "at": [
+        -46.6,
+        -23.5
+       ],
+       "value": 18.9
+      }
+     ],
+     "legend": [
+      10,
+      20,
+      40
+     ]
+    }
+   }
+  },
+  "cities-worldwide-s2": {
+   "kind": "data",
+   "title": "Metro Area M: where people live and work",
+   "invented": true,
+   "table": {
+    "caption": "Metro Area M (invented data for practice): residents and jobs by part of the metro area, in thousands",
+    "cols": [
+     "Part of Metro Area M",
+     "Residents 1950",
+     "Residents 1980",
+     "Residents 2010",
+     "Jobs 2010"
+    ],
+    "rows": [
+     [
+      "Central city",
+      "900",
+      "800",
+      "750",
+      "420"
+     ],
+     [
+      "Inner suburbs",
+      "200",
+      "700",
+      "900",
+      "260"
+     ],
+     [
+      "Northgate (at two highway junctions)",
+      "5",
+      "20",
+      "30",
+      "120"
+     ],
+     [
+      "Outer ring of farms and large lots",
+      "40",
+      "90",
+      "210",
+      "25"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-cities-worldwide-1",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which statement best describes the pattern of the largest cities on the map?",
+   "stimulus": "cities-worldwide-s1",
+   "options": [
+    "Most are in South, Southeast and East Asia",
+    "Most are in North America and western Europe",
+    "They are spread evenly across the six inhabited continents",
+    "Most are in South America, south of the equator"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Five of the seven circles sit in Asia: Jakarta, Tokyo, New Delhi, Shanghai and Manila. One is in Africa and one in South America.",
+    "options": [
+     "Right: the map shows most of the largest cities in Asia.",
+     "No circle on the map is in North America or Europe.",
+     "Asia has five of the seven; that is a cluster, not an even spread.",
+     "One circle, Sao Paulo, is in South America."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-2",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Using the common thresholds of 10 million for a megacity and 20 million for a metacity, which city on the map is a megacity but not a metacity?",
+   "stimulus": "cities-worldwide-s1",
+   "options": [
+    "Manila",
+    "Cairo",
+    "Jakarta",
+    "Sao Paulo"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sao Paulo's circle stands for about 18.9 million people: above 10 million, below 20 million. The other cities shown are above 20 million.",
+    "options": [
+     "Manila's 24.7 million is above 20 million, so it counts as a metacity.",
+     "Cairo's 32 million is well above 20 million.",
+     "Jakarta's 41.9 million is the largest on the map.",
+     "Right: 18.9 million is a megacity, not yet a metacity."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-3",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Older UN tables ranked Tokyo first. The 2025 source for this map ranks Jakarta first after drawing every city's edge the same way. What does this show about city population data?",
+   "stimulus": "cities-worldwide-s1",
+   "options": [
+    "Tokyo lost about half of its people between 2018 and 2025",
+    "Jakarta's growth was caused by a change in its city limits in 2025",
+    "The count depends on how the city's edge is defined",
+    "Population data for very large cities are too rough to compare"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A city's population is only as good as its boundary. Change how the edge is drawn and the ranking can change, so compare figures within one method and one edition.",
+    "options": [
+     "Tokyo did not lose half its people; the method of drawing its edge changed.",
+     "The source drew edges by satellite measures, not by new city limits.",
+     "Right: definitions matter, so name the source and method.",
+     "They can be compared well, within one source and one method."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-4",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Most of the cities on the map are in lower- and middle-income countries. Which best explains why most new megacities grow in such countries?",
+   "stimulus": "cities-worldwide-s1",
+   "options": [
+    "Strict limits on migration out of the countryside",
+    "High rural-to-urban migration plus births well above deaths",
+    "Low birth rates and aging populations in their cities",
+    "The movement of families from cities out to suburbs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Two forces add up: young migrants arrive from villages, and their families add natural increase, so the city grows fast.",
+    "options": [
+     "Limits on migration would slow, not speed, city growth.",
+     "Right: migration and natural increase together drive megacity growth.",
+     "Low births and aging slow growth; that fits Tokyo better than Jakarta.",
+     "Movement to suburbs spreads a city; it does not explain fast growth in total size."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-5",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which trend in residents from 1950 to 2010 does the table show?",
+   "stimulus": "cities-worldwide-s2",
+   "options": [
+    "The suburbs grew while the central city shrank",
+    "The central city grew faster than the suburbs did",
+    "The outer ring of farms lost residents each decade",
+    "Residents spread evenly, with each part gaining about the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inner suburbs rose from 200,000 to 900,000 while the central city fell from 900,000 to 750,000: suburbanization.",
+    "options": [
+     "Right: growth moved outward, the pattern of suburbanization.",
+     "The central city lost residents, from 900 to 750 thousand.",
+     "The outer ring grew, from 40 to 210 thousand.",
+     "The parts changed very differently, from a fall to more than a fourfold rise."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-6",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "In 2010, Northgate had 30,000 residents and 120,000 jobs. Which term best fits Northgate?",
+   "stimulus": "cities-worldwide-s2",
+   "options": [
+    "Exurb",
+    "Boomburb",
+    "Bedroom suburb",
+    "Edge city"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Northgate has four jobs for every resident and sits at two highway junctions: a suburban job center, an edge city.",
+    "options": [
+     "An exurb is a rural-looking area of commuters' homes, with few jobs.",
+     "A boomburb is a large, fast-growing suburban city of residents; Northgate has few residents.",
+     "A bedroom suburb has more residents than jobs, the reverse of Northgate.",
+     "Right: more jobs than residents at a highway junction is an edge city."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-7",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "The outer ring grew from 40,000 to 210,000 residents but had only 25,000 jobs in 2010. What does that suggest about the outer ring?",
+   "stimulus": "cities-worldwide-s2",
+   "options": [
+    "It became the metro area's new downtown",
+    "It turned into an edge city full of offices",
+    "It became an exurb of commuters",
+    "It lost its farms to rising sea levels"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Many new residents but few jobs means most people commute in: an exurb of homes on large lots among farms.",
+    "options": [
+     "A downtown would have many jobs; this ring has few.",
+     "An edge city has more jobs than residents; this ring is the opposite.",
+     "Right: homes with few jobs, far out, describe an exurb.",
+     "The table gives no data on sea level."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-8",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A metro area has 14 million people. Using the usual thresholds, which term fits it?",
+   "options": [
+    "Metacity",
+    "Megacity",
+    "Boomburb",
+    "Edge city"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Ten million or more makes a megacity; 20 million or more a metacity. Fourteen million is a megacity.",
+    "options": [
+     "A metacity needs 20 million or more.",
+     "Right: above 10 million, below 20 million.",
+     "A boomburb is a fast-growing suburb, not a whole metro area.",
+     "An edge city is a job center inside a metro area."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-9",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Tysons, Virginia, near Washington, D.C., has more office space than many downtowns and far more jobs than residents. Which term fits Tysons?",
+   "options": [
+    "Edge city",
+    "Exurb",
+    "Metacity",
+    "Squatter town"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A suburban center of offices and stores, with more jobs than homes, at a highway junction, is an edge city.",
+    "options": [
+     "Right: an edge city is a job center in the suburbs.",
+     "An exurb is a rural-looking commuter area, not an office center.",
+     "A metacity is a whole urban area of 20 million or more.",
+     "Tysons is a planned office and shopping center, not self-built housing."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-10",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Mesa, Arizona, a suburb of Phoenix, grew from a small town to more than 500,000 people by the 2020 US census, yet Phoenix is still the main city of the region. Which term fits Mesa?",
+   "options": [
+    "Edge city",
+    "Exurb",
+    "Megacity",
+    "Boomburb"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A suburb that grows very fast into a large city of its own, but is not the region's main city, is a boomburb.",
+    "options": [
+     "An edge city is mainly a job center; Mesa is mainly where people live.",
+     "An exurb is rural-looking with homes on big lots; Mesa is a large city.",
+     "A megacity has 10 million or more.",
+     "Right: Mesa is a large, fast-growing suburban city."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-11",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A family lives on a 2-hectare lot among horse farms, 70 kilometers from downtown Atlanta, and both parents drive into the metro area for work. What kind of place do they live in?",
+   "options": [
+    "An edge city",
+    "An inner suburb",
+    "An exurb",
+    "A central city"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A rural-looking area beyond the suburbs, where commuters live on large lots, is an exurb.",
+    "options": [
+     "An edge city is an office and shopping center with many jobs.",
+     "Inner suburbs are close to the city and denser.",
+     "Right: rural look, large lots, long commute: an exurb.",
+     "The central city is the old core, not 70 kilometers out."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-12",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which chain best explains how urban sprawl can worsen air quality in a metro area?",
+   "options": [
+    "Tall buildings block the wind, so smog stays near the ground",
+    "Homes and jobs spread far apart, so people drive more, so car exhaust rises",
+    "Farmland near the city grows more crops, so more dust blows in",
+    "More people walk to work, so roads get crowded with walkers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Readers want every link: low-density spread puts homes, shops and jobs far apart; longer trips are made by car; more driving means more exhaust.",
+    "options": [
+     "Tall buildings belong to dense cores, not to sprawl.",
+     "Right: each link is stated, from spread to driving to exhaust.",
+     "Sprawl replaces farmland; it does not add crops.",
+     "Sprawl makes walking harder, not more common."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-13",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which changes helped cause suburbanization in the United States after 1945? Select all that apply.",
+   "options": [
+    "Government-backed home loans",
+    "New highways from downtown to the edge",
+    "A fall in the number of cars per family",
+    "New rules that required offices to stay downtown"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Cheap, government-backed loans and fast highways, plus rising car ownership, made suburban homes affordable and reachable.",
+    "options": [
+     "Right: loans made buying a suburban house easy.",
+     "Right: highways such as those paid for by the 1956 Interstate Highway Act cut commute times.",
+     "Car ownership rose after 1945; it did not fall.",
+     "Offices moved out too; no rule held them downtown."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-14",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the parts of a large US metro area in order, from the center outward.",
+   "options": [
+    "Central city",
+    "Inner suburbs",
+    "Outer suburbs",
+    "Exurbs"
+   ],
+   "why": {
+    "correct": "The old central city is in the middle, ringed by inner and then outer suburbs; the exurbs lie beyond the built-up edge, among farms."
+   }
+  },
+  {
+   "id": "hug-cities-worldwide-15",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.C",
+   "q": "Build an explanation of one effect of urban sprawl in a named metro area.",
+   "specific": {
+    "frame": "In ___, sprawl ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In metro Atlanta, sprawl spread homes across many counties far from jobs, so most people drive long distances and traffic and car exhaust have grown.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "metro Atlanta",
+       "many cities"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place: \"many cities\" earns no credit."
+      }
+     },
+     "cause": {
+      "label": "What sprawl did",
+      "options": [
+       "spread homes across many counties far from jobs",
+       "packed homes into tall towers near downtown"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tall towers near downtown are dense growth, the opposite of sprawl."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "people drive long distances, so traffic and car exhaust grow",
+       "people walk more and use fewer cars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sprawl puts places far apart, so walking gets harder, not easier."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A full explanation names the place, the process and every link to the effect."
+   }
+  }
+ ]
+}

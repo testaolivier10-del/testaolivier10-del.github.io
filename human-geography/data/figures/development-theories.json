@@ -1,0 +1,22 @@
+{
+ "development-theories-rostow": {
+  "file": "figures/development-theories-rostow.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A staircase of five steps rising from left to right: 1 traditional society, 2 preconditions for take-off, 3 take-off, 4 drive to maturity, 5 high mass consumption. An arrow labeled one path, step by step, climbs beside it."
+ },
+ "development-theories-world-system": {
+  "file": "figures/development-theories-world-system.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three stacked boxes. Core at the top: most high-wage, high-tech and decision work. Semiperiphery in the middle: a mix of factories, some research and some farming. Periphery at the bottom: mostly raw materials and low-wage work. An arrow on the left carries raw materials and cheap labor up toward the core; an arrow on the right carries factory goods, loans and profits down from the core."
+ }
+}

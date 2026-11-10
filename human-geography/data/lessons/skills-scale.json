@@ -1,0 +1,67 @@
+{
+ "topic": "skills-scale",
+ "hook": "Egypt is a large country with a moderate number of people for each square kilometer. Yet almost all Egyptians live in a narrow strip along the Nile River and in its delta, and the desert to the east and west is nearly empty. One number for the whole country describes neither the crowded valley nor the empty desert. Which number you use depends on the scale you look at.",
+ "prereq": [
+  {
+   "q": "A legend's classes are \"Under 10 million\" up to \"1 billion or more\". What kind of number does the map show?",
+   "options": [
+    "A total",
+    "A percent",
+    "A rate per 1,000 people",
+    "A trend"
+   ],
+   "correct": 0,
+   "why": "Counts in millions and billions are totals. A percent or a rate would let you compare places of different sizes.",
+   "review": "skills-reading"
+  },
+  {
+   "q": "What should a good source line include?",
+   "options": [
+    "Who made the data and the year",
+    "The colors of the legend",
+    "The title of the map",
+    "The pattern the map shows"
+   ],
+   "correct": 0,
+   "why": "A source line names the maker and the year, so you know how far to trust the numbers and how old they are.",
+   "review": "skills-reading"
+  }
+ ],
+ "figure": {
+  "figure": "skills-scale-two-meanings",
+  "caption": "Map scale is how much the map shrinks the ground. Scale of analysis is the size of the unit each number describes."
+ },
+ "chain": [
+  {
+   "cause": "Data are collected for a unit (the world, a group of countries, a country, a province)",
+   "effect": "that unit sets the scale of analysis"
+  },
+  {
+   "cause": "Values for many small units are averaged into one bigger unit",
+   "effect": "the differences between the small units disappear from view"
+  },
+  {
+   "cause": "A question or decision is about one scale",
+   "effect": "you need data at that scale to answer it well"
+  }
+ ],
+ "ideas": [
+  "<b>Map scale</b> is a ratio such as 1:50,000: 1 cm on the map stands for 50,000 cm (0.5 km) on the ground. A <b>large-scale map</b> (1:5,000) shows a small area in detail; a <b>small-scale map</b> (1:50,000,000) shows a large area with little detail.",
+  "The <b>scale of analysis</b> is the size of the unit the data describe: <b>global</b> (the world), <b>regional</b> (a group of countries), <b>national</b> (one country) or <b>local</b> (part of a country).",
+  "A map of one country shaded by province shows <b>local (subnational)</b> data. It is not national just because it shows a whole country.",
+  "A pattern can change with the scale: one national number can hide big differences between provinces or cities."
+ ],
+ "misconception": {
+  "wrong": "A map that shows one whole country has data at the national scale.",
+  "right": "The scale of analysis is the scale of the data, not the size of the map. If each value is for a province, the data are local (subnational), even when the map shows the whole country."
+ },
+ "check": [
+  "hug-skills-scale-1",
+  "hug-skills-scale-2",
+  "hug-skills-scale-3",
+  "hug-skills-scale-4",
+  "hug-skills-scale-5",
+  "hug-skills-scale-6"
+ ],
+ "summary": "Geographers use \"scale\" in two ways. Map scale is the ratio between the map and the ground: a large-scale map shows a small area in detail. The scale of analysis is the size of the unit the data describe: global, regional, national or local. Name the scale from the data, not from the size of the map, and remember that a pattern at one scale can look different at another."
+}

@@ -1,0 +1,67 @@
+{
+ "topic": "political-processes",
+ "hook": "In 1945, the UN began with 51 member states. By 2011 it had 193. Most of that growth came in a few decades, as colonies in Africa and Asia won their independence. In 1960 alone, 17 African states became independent. Political processes such as colonialism, independence movements and the breakup of large states drew most of the map you see.",
+ "prereq": [
+  {
+   "q": "What is colonialism?",
+   "options": [
+    "One state taking control of another territory and its people, often settling or ruling it directly",
+    "A group of people moving within their own country",
+    "Two states agreeing to trade",
+    "A people sharing one culture"
+   ],
+   "correct": 0,
+   "why": "Colonialism is control of a territory and its people by an outside power.",
+   "review": "diffusion-history"
+  },
+  {
+   "q": "What is a stateless nation?",
+   "options": [
+    "A nation with no independent state of its own",
+    "A state with no nations",
+    "A state with many nations",
+    "A nation that lives in one state"
+   ],
+   "correct": 0,
+   "why": "The Kurds are a large example.",
+   "review": "political-intro"
+  }
+ ],
+ "figure": {
+  "figure": "political-processes-waves",
+  "caption": "Waves of new states, from the Americas to Africa, Asia and the former Soviet Union."
+ },
+ "chain": [
+  {
+   "cause": "European empires took colonies and drew their borders",
+   "effect": "many peoples were ruled from outside and grouped inside borders they did not choose"
+  },
+  {
+   "cause": "Colonized peoples claimed the right of self-determination",
+   "effect": "independence movements grew, and many won sovereign states"
+  },
+  {
+   "cause": "New states mostly kept their colonial borders",
+   "effect": "the colonial outline of the map stayed, along with conflicts inside some states"
+  }
+ ],
+ "ideas": [
+  "<b>Sovereignty</b> is a state's right and power to govern its territory without outside control. <b>Self-determination</b> is a people's right to choose its own political status.",
+  "An <b>independence movement</b> is an organized effort by a people under foreign rule to win a state: India in 1947, Ghana in 1957, Algeria in 1962.",
+  "Colonialism and imperialism drew many borders. After independence, most states kept them (Organization of African Unity, 1964).",
+  "Large states can also break apart: the Soviet Union became 15 states in 1991."
+ ],
+ "misconception": {
+  "wrong": "Self-determination and sovereignty are the same thing.",
+  "right": "Self-determination is a people's claim to choose its government; sovereignty is the control a state holds over its territory. A nation can claim self-determination without having sovereignty."
+ },
+ "check": [
+  "hug-political-processes-1",
+  "hug-political-processes-2",
+  "hug-political-processes-3",
+  "hug-political-processes-8",
+  "hug-political-processes-10",
+  "hug-political-processes-15"
+ ],
+ "summary": "Today's political map is the product of political processes. Colonialism and imperialism put much of the world under European rule and drew many borders. Independence movements used the idea of self-determination to win sovereign states, most of them between 1945 and 1975. The new states mostly kept their colonial borders, and large states such as the Soviet Union later broke apart into new ones."
+}

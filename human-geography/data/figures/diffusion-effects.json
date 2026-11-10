@@ -1,0 +1,12 @@
+{
+ "diffusion-effects-outcomes": {
+  "file": "figures/diffusion-effects-outcomes.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 600,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four cards. Acculturation: a group adopts some traits of another culture and keeps its own. Assimilation: a group takes on the other culture so fully that its own traits fade away. Syncretism: traits blend into something new that neither culture had before. Multiculturalism: many cultures live side by side and each keeps its own traits."
+ }
+}

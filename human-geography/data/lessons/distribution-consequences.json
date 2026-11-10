@@ -1,0 +1,71 @@
+{
+ "topic": "distribution-consequences",
+ "hook": "Bangladesh and Canada show two extremes. Bangladesh fits more than 170 million people into an area smaller than the state of Iowa; Canada spreads about 40 million people over the second-largest country on Earth. Each pattern brings its own problems. One crowds the land and the schools; the other makes every hospital far away. How do geographers measure how crowded a place is?",
+ "prereq": [
+  {
+   "q": "What is population distribution?",
+   "options": [
+    "The pattern of where people live",
+    "The number of people in a country",
+    "How fast a population grows",
+    "The part of Earth where people live permanently"
+   ],
+   "correct": 0,
+   "why": "Population distribution is the pattern of where people live across an area.",
+   "review": "population-distribution"
+  },
+  {
+   "q": "Most Egyptians live in which part of the country?",
+   "options": [
+    "The Nile valley and delta",
+    "The Western Desert",
+    "The Red Sea mountains",
+    "The Sinai Peninsula"
+   ],
+   "correct": 0,
+   "why": "The Nile gives water in a desert country, so people cluster along it.",
+   "review": "population-distribution"
+  }
+ ],
+ "figure": {
+  "figure": "distribution-consequences-densities",
+  "caption": "The same country measured three ways: people per km² of all land, people per km² of arable land and farmers per km² of arable land."
+ },
+ "chain": [
+  {
+   "cause": "Many people live on a small area of farmland",
+   "effect": "physiological density is high"
+  },
+  {
+   "cause": "Physiological density is high",
+   "effect": "each person depends on very little farmland, so land is farmed hard or food is bought from other places"
+  },
+  {
+   "cause": "Few farmers work large areas of farmland with machines",
+   "effect": "agricultural density is low"
+  },
+  {
+   "cause": "People are spread thinly over a large area",
+   "effect": "services such as clinics and schools are far apart and cost more per person"
+  }
+ ],
+ "ideas": [
+  "<b>Arithmetic density</b> = all people ÷ all land. <b>Physiological density</b> = all people ÷ <b>arable land</b> (land that can grow crops). <b>Agricultural density</b> = farmers ÷ arable land.",
+  "High physiological density means each person depends on little farmland. Low agricultural density usually means machines and large farms.",
+  "<b>Carrying capacity</b> is how many people an area can support without damage. It depends on technology and trade, so it is not the same as density.",
+  "Density shapes services: low density makes services far away and costly per person; high density crowds roads, housing and hospitals."
+ ],
+ "misconception": {
+  "wrong": "A place with a very high population density has passed its carrying capacity.",
+  "right": "Density measures crowding. Carrying capacity is how many people an area can support, and it depends on technology, resources and trade. The Netherlands is very dense and grows food to export."
+ },
+ "check": [
+  "hug-distribution-consequences-1",
+  "hug-distribution-consequences-2",
+  "hug-distribution-consequences-3",
+  "hug-distribution-consequences-5",
+  "hug-distribution-consequences-12",
+  "hug-distribution-consequences-14"
+ ],
+ "summary": "Geographers measure crowding in three ways. Arithmetic density divides all people by all land; physiological density divides all people by arable land; agricultural density divides farmers by arable land. Carrying capacity, the number of people an area can support, is a different idea. Distribution and density affect services, society and the environment."
+}

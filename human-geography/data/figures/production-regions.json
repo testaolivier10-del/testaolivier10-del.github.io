@@ -1,0 +1,12 @@
+{
+ "production-regions-bid-rent": {
+  "file": "figures/production-regions-bid-rent.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 456,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph. The vertical axis is the rent a farmer can pay for a hectare of land; the horizontal axis is distance from the market. Three falling lines: market gardening starts highest and falls fastest, grain starts in the middle and falls more slowly, ranching starts lowest and falls slowest. A colored band under the axis shows which use can pay the most at each distance: market gardening nearest the market, then grain, then ranching farthest away."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "cities-worldwide-metro": {
+  "file": "figures/cities-worldwide-metro.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A metro area seen from above. The old central city sits in the middle. Rings of suburbs spread around it, crossed by highways. Where two highways meet in the suburbs stands an edge city of office towers and malls. One fast-growing suburb has become a boomburb. Beyond the built-up edge, scattered houses on large lots among farms form the exurbs."
+ }
+}

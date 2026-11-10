@@ -1,0 +1,32 @@
+{
+ "settlement-survey-methods": {
+  "file": "figures/settlement-survey-methods.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 356,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels drawn from above. Metes and bounds: odd-shaped fields whose edges follow a winding stream, a tree and a rock. Township and range: a grid of equal squares with straight roads at right angles. Long lot: narrow strips of land side by side, each running back from a river, with a farmhouse at the river end of each strip."
+ },
+ "settlement-survey-methods-numbered": {
+  "file": "figures/settlement-survey-methods-numbered.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 356,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three numbered panels drawn from above. Panel 1: odd-shaped fields whose edges follow a winding stream, a tree and a rock. Panel 2: a grid of equal squares with straight roads at right angles and a few farmhouses. Panel 3: narrow strips of land side by side, each running back from a river, with a house at the river end of each strip."
+ },
+ "settlement-survey-patterns": {
+  "file": "figures/settlement-survey-patterns.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 306,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels drawn from above. Clustered: about a dozen houses packed together in one village, with fields all around it. Dispersed: a grid of farm fields with one farmhouse standing alone on each field. Linear: houses lined up along both sides of one winding road, with fields behind them."
+ }
+}

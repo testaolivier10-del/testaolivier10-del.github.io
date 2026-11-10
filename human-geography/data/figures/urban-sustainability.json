@@ -1,0 +1,22 @@
+{
+ "urban-sustainability-tod": {
+  "file": "figures/urban-sustainability-tod.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Left: a rail station in the middle of a ten-minute walking circle, with shops below apartments, offices, a small park, bike lanes and sidewalks, all close together. Right: houses on cul-de-sacs far from a strip mall and an office park, joined only by wide roads, so every trip is by car."
+ },
+ "urban-sustainability-rail-limits": {
+  "file": "figures/urban-sustainability-rail-limits.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An invented metro area. The central city has a solid outline, its city limits, and holds the downtown and an existing rail line with six stations. Around it, the built-up area extends far past the city limits into eight separate suburban cities, each outlined. A proposed rail extension, drawn dashed, would run from the end of the existing line through three suburban cities to an edge city of offices at a highway junction marked E. Letter H marks a large suburb where most homes are single-family houses on cul-de-sacs."
+ }
+}

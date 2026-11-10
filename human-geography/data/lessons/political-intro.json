@@ -1,0 +1,67 @@
+{
+ "topic": "political-intro",
+ "hook": "Ask someone in the United States to name a nation and they will probably name a country. A geographer means something different. The Kurds, a people of tens of millions in Southwest Asia, share a language, history and homeland, yet they have no country of their own. Iceland is a country where almost everyone shares one culture. Nigeria is one country holding hundreds of peoples. Political geography starts by pulling apart two words: nation and state.",
+ "prereq": [
+  {
+   "q": "What is culture, as geographers use the word?",
+   "options": [
+    "The shared beliefs, practices and traits of a group of people",
+    "The physical landscape of a region",
+    "A country's system of government",
+    "The number of people in a place"
+   ],
+   "correct": 0,
+   "why": "Culture is the shared way of life of a group: language, religion, customs, food and more.",
+   "review": "culture-intro"
+  },
+  {
+   "q": "What is an ethnic group?",
+   "options": [
+    "People who share an ancestry and cultural traits such as language or religion",
+    "People who live in the same city",
+    "People of the same age",
+    "People who hold the same job"
+   ],
+   "correct": 0,
+   "why": "Ethnicity is a cultural identity built on shared ancestry, language, religion and customs.",
+   "review": "culture-on-the-land"
+  }
+ ],
+ "figure": {
+  "figure": "political-intro-nations",
+  "caption": "Four ways nations (peoples) and states (countries) fit together."
+ },
+ "chain": [
+  {
+   "cause": "A group of people shares a language, history and homeland",
+   "effect": "they see themselves as one nation"
+  },
+  {
+   "cause": "That nation wants to run its own affairs",
+   "effect": "it seeks a state of its own, or powers inside an existing state"
+  },
+  {
+   "cause": "State borders rarely match where nations live",
+   "effect": "many states hold several nations, and some nations have no state"
+  }
+ ],
+ "ideas": [
+  "A <b>state</b> is a country: a permanent population, a defined territory, a government that controls it, and recognition by other states. A <b>nation</b> is a people who share a culture and see themselves as one.",
+  "A <b>nation-state</b> is one nation in one state (Iceland comes close). A <b>multinational state</b> holds several nations (Nigeria, Belgium).",
+  "A <b>multistate nation</b> lives in two or more states (Koreans). A <b>stateless nation</b> has no state of its own (the Kurds).",
+  "An <b>autonomous region</b> governs many of its own affairs inside a state: Greenland in the Kingdom of Denmark, the Kurdistan Region in Iraq, Native American reservations in the United States."
+ ],
+ "misconception": {
+  "wrong": "A nation and a state are the same thing: both just mean a country.",
+  "right": "A nation is a people; a state is a country with a government. The Kurds are a nation with no state, and Nigeria is one state with many nations."
+ },
+ "check": [
+  "hug-political-intro-1",
+  "hug-political-intro-2",
+  "hug-political-intro-3",
+  "hug-political-intro-4",
+  "hug-political-intro-8",
+  "hug-political-intro-13"
+ ],
+ "summary": "States are the basic political units of the world: each has people, territory, a government and recognition by other states. Nations are peoples who share a culture. When one nation fills one state, the result is a nation-state; most states are multinational, some nations live in several states, and some, such as the Kurds, have no state at all. Autonomous regions govern many of their own affairs inside a larger state."
+}
