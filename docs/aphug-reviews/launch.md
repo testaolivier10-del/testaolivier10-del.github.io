@@ -108,3 +108,41 @@ merges main and opens the PR after AP® Microeconomics merges).
   functions; bodies equal `2026-11i-apmicro.sql`'s with `aphug` added (diffed); the same revokes and grants as
   Micro's added; the stale "Microeconomics was not on this branch" header fixed. `sql-migration.test.mjs` passes. Not
   applied.
+
+## 6. CI and the screen pass
+
+- First full `BROWSER=1 scripts/ci-local.sh` (after a restart; ports are random per run, so the parallel run in
+  `wt-micro` did not collide): every generator and content check, check-site, the tutor banks, the tests,
+  check-console and check-legibility passed. check-a11y failed on one page, AP® Microeconomics' formula page (a
+  scrollable formula cell, `MRP = MP × MR (= MP × P in a competitive product market)` too wide for its column).
+  Micro's own branch had already shortened that row (`ac523e69`); cherry-picked here unchanged, so both branches
+  carry the same change and merge cleanly. Nothing else of Micro's touched.
+- Earlier on this step (commits before the restart): Learn switch in two rows of two, Model Studio's figure fits a
+  short desktop stage, city lab slider values on one line, white plates behind "Suburbs: mostly homes" and "Mill",
+  the population lab's "death rate" label under its curve.
+- Looked at, 360 and 1280, light and dark: course home, path, a notes page with maps (Views of the World), a lesson
+  with a map (Causes of Migration), practice with a map stimulus (Unit 1 sets), Practice exam 1, an FRQ of each
+  type (no stimulus, one, two), the models page and the eight tools. No horizontal overflow, no page errors.
+- The five drill plots the tools review flagged, driven to the apply step in Test yourself: Malthus, bid-rent,
+  Ravenstein and DTM drawn at the size shown (352 units at 360, 400 at 1280), every word 12 px or more on a phone,
+  no two labels overlapping, the axis numbers and legend clear. Rank-size's plot case could not be reached through
+  the harness (its random case is often a written one); its bars are the same code as Ravenstein's and DTM's, and an
+  unfitted render at 360 showed no collisions.
+- Fixed in this pass: the population lab's pyramid kept a 340 px minimum and drew at least 320 units tall, so on a
+  phone stage its axis numbers sat under the stage's foot; it now takes the height left (at least 230 px) and draws
+  at that height (`population-lab.css`, `size()` in `population-lab.js`). The borders lab's sea-zone key read "(12 to
+  200, overlapping the contiguous zone nautical miles)": now "12 to 200 nautical miles, overlapping the contiguous
+  zone". The EEZ slot, zones table and slips were already right.
+- Kept: the six-panel "Kinds of thematic map" figure is small on a phone (as every 720-760 px course figure); its
+  Enlarge button opens it at full size, the course's rule for figures since Phase 1.
+
+## 7. Docs and Premium on sale (decision 12)
+
+- The owner asked for Premium on sale. Done by the lead: Polar product "AP® Human Geography Premium (through June
+  30, 2027)", one-time $25, id `b113bad7-2656-4d3f-a9c4-ae3ffa0ee25e` (Founding member discount applies), and
+  `"hug-2027"` in the Worker's `POLAR_PRODUCTS` (deployed, checked after reload). Here: `onSale: false` removed from
+  `COURSES.aphug`, `sw.js` v120; every generator that reads `premium.js` is unchanged by it (`--check` clean: pricing,
+  courses, site config, tool pages, course homes, lesson meta, Worker, paths). AP® Microeconomics' pass left as it is.
+- Spec: launch row, decision 12, section 9 checklist (product, Worker and `onSale` ticked; migration
+  `2026-11j-aphug.sql` after `2026-11i-apmicro.sql` and the owner grant left for the lead at merge). CLAUDE.md and
+  the architecture's registration note say "on sale".

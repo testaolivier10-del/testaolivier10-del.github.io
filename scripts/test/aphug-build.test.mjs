@@ -87,13 +87,13 @@ test('a published unit builds every page kind, math rendered, maps and plots dra
   assert.ok(CU.topics.find(t => t.id === 'regional-analysis').free, 'Unit 1 is free');
   assert.ok(CU.topics.find(t => t.id === 'transition-model').free, '2.5 is free');
   assert.ok(!CU.topics.find(t => t.id === 'malthusian-theory').free, '2.6 is Premium');
-  // One free tier: the build's FREE_UNITS and premium.js agree; not on sale until the launch steps.
+  // One free tier: the build's FREE_UNITS and premium.js agree; on sale since launch (spec decision 12).
   const prem = readFileSync('assets/premium.js', 'utf8');
   const block = prem.slice(prem.indexOf('    aphug: {'), prem.indexOf('\n    },', prem.indexOf('    aphug: {')));
   assert.deepEqual(FREE_UNITS, ['geo-skills', 'unit-1']);
   assert.equal(FREE_TOPICS.length, 5);
   assert.match(block, /freeChapters: \['geo-skills', 'unit-1'\]/);
-  assert.match(block, /onSale: false/, 'not on sale until the owner checklist (spec section 9)');
+  assert.doesNotMatch(block, /onSale: false/, 'on sale since launch (spec decision 12)');
   assert.match(block, /id: 'hug-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);
 });
 
@@ -104,7 +104,7 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('published and live everywhere it is registered (spec decision 11), Premium not on sale yet', () => {
+test('published and live everywhere it is registered (spec decision 11), Premium on sale (decision 12)', () => {
   assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, ['geo-skills', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6', 'unit-7']);
   assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'aphug'[\s\S]*?aliases: \['human-geography', 'geography', 'humangeo', 'hug'\], paid: true, status: 'live', order: 15/);
   assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'aphug'[^\n]*status: 'live'/);
