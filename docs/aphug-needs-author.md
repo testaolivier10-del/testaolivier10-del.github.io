@@ -61,7 +61,7 @@ their own eval set before the course joins `FRQ_COURSES`.
 
 ## identity: provisional accent, cover and ranks (open, 2026-11-09)
 
-The berry accent (hue 320, `#741B56` on `#F8E7F3`), the cover art (a globe with meridians), the headline "from local
+The teal accent (hue 188, `#094953` on `#E1F1F4`), the clay cover (`#7A3310`) and its art (a globe with meridians), the headline "from local
 to global." and the ranks (Map Reader, Scale Shifter, Pattern Spotter, Region Builder, Model Maker, World Analyst,
 Geography Legend) are provisional. The owner approves them at launch. Tool covers come with each trainer.
 

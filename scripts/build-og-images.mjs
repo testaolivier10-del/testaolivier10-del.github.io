@@ -186,6 +186,16 @@ const CARDS = [
     title: 'Macroeconomics for May 2027, every graph, every shift',
     sub: 'Free notes for every topic, every graph shifted and labeled by hand and checked point by point, and causal chains built link by link.',
   },
+  /* AP® Microeconomics (folder microeconomics/), the same rules: no mark, no
+     counts (docs/apmicro-spec.md section 4). Render with
+     ONLY=microeconomics/assets/og-image.png. */
+  {
+    out: 'microeconomics/assets/og-image.png',
+    badge: 'Free notes',
+    brand: 'LevlPrep',
+    title: 'Microeconomics for May 2027, every curve, every area',
+    sub: 'Free notes for every topic, every graph drawn, shifted and shaded by hand and checked point by point, and payoff matrices argued with both comparisons.',
+  },
   /* AP® Human Geography (folder human-geography/), the same rules: no mark, no
      counts (docs/aphug-spec.md section 4). Render with
      ONLY=human-geography/assets/og-image.png. */

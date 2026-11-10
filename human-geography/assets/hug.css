@@ -4,15 +4,16 @@
    what this course adds: maps (hug-map.js) with their legend and border note, drawn scenes, the
    model item (hug-model.js) and the task verb on free-response parts.
 
-   The course color: berry magenta on every page (body.hug; docs/aphug-spec.md section 4, provisional),
+   The course color: deep ocean teal on every page (body.hug; docs/aphug-spec.md decision 9, provisional),
    the same values as body[data-course="aphug"] in assets/theme.css and IDENTITY.accent in
-   scripts/lib/aphug-build.mjs. Light: --cink #741B56 on --ctint #F8E7F3 8.7:1, 10.3:1 on white, 9.8:1
-   on the page; dark: --cink #F4BEE2 10.7:1 on the dark card, 9.5:1 on the tint rgba(220,100,180,0.10)
-   over it. Hue 320°, between Statistics' plum (298°) and Calculus AB's crimson (342°). Then the math
+   scripts/lib/aphug-build.mjs. Light: --cink #094953 on --ctint #E1F1F4 8.7:1, 10.1:1 on white, 9.5:1
+   on the page; dark: --cink #A8DEE6 11.5:1 on the dark card, 9.6:1 on the tint rgba(80,190,205,0.10)
+   over it. Hue 188°, between NREMT's teal (174°) and Psychology's cerulean (202°); the berry first
+   tried (320°) was taken by AP® Microeconomics (319°). Then the math
    layer: formulas (MathML from hug-math.js), data figures (hug-plot.js: line, bar, scatter, the
    population pyramid) and numbers. */
-body.hug{--ctint:#F8E7F3;--cink:#741B56;}
-:root[data-theme="dark"] body.hug{--ctint:rgba(220,100,180,0.10);--cink:#F4BEE2;}
+body.hug{--ctint:#E1F1F4;--cink:#094953;}
+:root[data-theme="dark"] body.hug{--ctint:rgba(80,190,205,0.10);--cink:#A8DEE6;}
 
 /* ============================================================ 0. Math */
 /* Formulas: MathML, in a math font where the device has one. Display
@@ -44,16 +45,16 @@ math.hug-m mtext{font-family:var(--font-body,inherit);}
 .hug-plot-legend text{font:700 11px var(--font-ui);fill:var(--ink);}
 .hug-plot .hug-plot-legend .hug-plot-bar{fill-opacity:.5;}
 .hug-plot text.hug-plot-pylabel{font-weight:800;paint-order:stroke;stroke:var(--white,#fff);stroke-width:3px;}
-.hug-plot .s1{stroke:#741B56;color:#741B56;} .hug-plot .s2{stroke:#C24E00;color:#C24E00;} .hug-plot .s3{stroke:#009E73;color:#009E73;}
+.hug-plot .s1{stroke:#094953;color:#094953;} .hug-plot .s2{stroke:#C24E00;color:#C24E00;} .hug-plot .s3{stroke:#009E73;color:#009E73;}
 .hug-plot .s4{stroke:#A8508A;color:#A8508A;} .hug-plot .s5{stroke:#7A4F9E;color:#7A4F9E;}
-.hug-plot .hug-plot-pt.s1:not(.is-open){fill:#741B56;} .hug-plot .hug-plot-pt.s2:not(.is-open){fill:#C24E00;} .hug-plot .hug-plot-pt.s3:not(.is-open){fill:#009E73;}
+.hug-plot .hug-plot-pt.s1:not(.is-open){fill:#094953;} .hug-plot .hug-plot-pt.s2:not(.is-open){fill:#C24E00;} .hug-plot .hug-plot-pt.s3:not(.is-open){fill:#009E73;}
 .hug-plot .hug-plot-pt.s4:not(.is-open){fill:#A8508A;} .hug-plot .hug-plot-pt.s5:not(.is-open){fill:#7A4F9E;}
-.hug-plot text.s1{fill:#741B56;stroke:none;} .hug-plot text.s2{fill:#A84400;stroke:none;} .hug-plot text.s3{fill:#00805C;stroke:none;}
-:root[data-theme="dark"] .hug-plot .s1{stroke:#E699CC;color:#E699CC;} :root[data-theme="dark"] .hug-plot .s2{stroke:#F29A5C;color:#F29A5C;}
+.hug-plot text.s1{fill:#094953;stroke:none;} .hug-plot text.s2{fill:#A84400;stroke:none;} .hug-plot text.s3{fill:#00805C;stroke:none;}
+:root[data-theme="dark"] .hug-plot .s1{stroke:#8CCFD9;color:#8CCFD9;} :root[data-theme="dark"] .hug-plot .s2{stroke:#F29A5C;color:#F29A5C;}
 :root[data-theme="dark"] .hug-plot .s3{stroke:#52CFA6;color:#52CFA6;} :root[data-theme="dark"] .hug-plot .s4{stroke:#E0A3CB;color:#E0A3CB;}
 :root[data-theme="dark"] .hug-plot .s5{stroke:#C3A3E0;color:#C3A3E0;}
-:root[data-theme="dark"] .hug-plot .hug-plot-pt.s1:not(.is-open){fill:#E699CC;} :root[data-theme="dark"] .hug-plot .hug-plot-pt.s2:not(.is-open){fill:#F29A5C;}
-:root[data-theme="dark"] .hug-plot text.s1{fill:#E699CC;} :root[data-theme="dark"] .hug-plot text.s2{fill:#F29A5C;} :root[data-theme="dark"] .hug-plot text.s3{fill:#52CFA6;}
+:root[data-theme="dark"] .hug-plot .hug-plot-pt.s1:not(.is-open){fill:#8CCFD9;} :root[data-theme="dark"] .hug-plot .hug-plot-pt.s2:not(.is-open){fill:#F29A5C;}
+:root[data-theme="dark"] .hug-plot text.s1{fill:#8CCFD9;} :root[data-theme="dark"] .hug-plot text.s2{fill:#F29A5C;} :root[data-theme="dark"] .hug-plot text.s3{fill:#52CFA6;}
 /* Series strokes are for paths, lines and points: a label in a series colour keeps a plain glyph. */
 .hug-plot text.s4,.hug-plot text.s5,:root[data-theme="dark"] .hug-plot text.s1,:root[data-theme="dark"] .hug-plot text.s2,:root[data-theme="dark"] .hug-plot text.s3,:root[data-theme="dark"] .hug-plot text.s4,:root[data-theme="dark"] .hug-plot text.s5{stroke:none;}
 /* A source line under real data, or the invented-data note (accuracy-risks.md rule 1). */
@@ -101,7 +102,7 @@ math.hug-m mtext{font-family:var(--font-body,inherit);}
 .hug-model[data-layout="stages"] .hug-model-art,.hug-model[data-layout="tiers"] .hug-model-art{max-width:320px;}
 .hug-model-svg{display:block;width:100%;height:auto;}
 .hug-model-band{stroke:var(--ink);stroke-width:1.2;}
-.hug-model-band.b0{fill:#F8E7F3;} .hug-model-band.b1{fill:#E8D3F2;} .hug-model-band.b2{fill:#D7E6F5;} .hug-model-band.b3{fill:#DCEFE2;}
+.hug-model-band.b0{fill:#E1F1F4;} .hug-model-band.b1{fill:#E8D3F2;} .hug-model-band.b2{fill:#D7E6F5;} .hug-model-band.b3{fill:#DCEFE2;}
 .hug-model-core{fill:#fff;stroke:var(--ink);stroke-width:1.2;}
 .hug-model-arrow{stroke:var(--ink);stroke-width:1.5;}
 .hug-model-num{font:800 15px var(--font-ui);fill:#1B1B1B;}

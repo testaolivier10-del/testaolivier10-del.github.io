@@ -46,6 +46,9 @@ export const APP_STATE_PAGES = [
   'macroeconomics/dashboard.html',
   'macroeconomics/review.html',
   'macroeconomics/search.html',
+  'microeconomics/dashboard.html',
+  'microeconomics/review.html',
+  'microeconomics/search.html',
   'human-geography/dashboard.html',
   'human-geography/review.html',
   'human-geography/search.html',
@@ -63,6 +66,7 @@ export const APP_STATE_PAGES = [
   'psychology/path.html',
   'precalculus/path.html',
   'macroeconomics/path.html',
+  'microeconomics/path.html',
   'human-geography/path.html',
 ];
 

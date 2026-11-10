@@ -21,9 +21,12 @@ const blocks = (sql) => new Map([...sql.matchAll(FN)].map((m) => [m[1], m[0]]));
 // for the tests of earlier course migrations.
 // The schema before AP® Macroeconomics (2026-11a), then before AP® Calculus BC (2026-10o):
 // each later course migration only adds its key at the end of every course list.
-// The schema before AP® Human Geography (2026-11j) first: it only adds 'aphug' after 'apmacro'.
-const PRE_HUG = SCHEMA.replaceAll(", 'apmacro', 'aphug')", ", 'apmacro')").replaceAll('|apmacro|aphug', '|apmacro');
-const PRE_MAC = PRE_HUG.replaceAll(", 'apcalcbc', 'apmacro')", ", 'apcalcbc')");
+// The schema before AP® Human Geography (2026-11j), which adds 'aphug' after 'apmicro', then before
+// AP® Microeconomics (2026-11i), which adds 'apmicro' after 'apmacro' in every course list and the class
+// course checks.
+const PRE_HUG = SCHEMA.replaceAll(", 'apmicro', 'aphug')", ", 'apmicro')").replaceAll('apmicro|aphug|nremt', 'apmicro|nremt').replaceAll('|apmacro|aphug)', '|apmacro)');
+const PRE_MIC = PRE_HUG.replaceAll(", 'apmacro', 'apmicro')", ", 'apmacro')").replaceAll('apmacro|apmicro|nremt', 'apmacro|nremt');
+const PRE_MAC = PRE_MIC.replaceAll(", 'apcalcbc', 'apmacro')", ", 'apcalcbc')");
 const PRE_BC = PRE_MAC.replaceAll(", 'apprecalc', 'apcalcbc')", ", 'apprecalc')");
 
 const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid',
@@ -301,9 +304,8 @@ test('2026-10o-apcalcbc.sql adds apcalcbc to every course check and course list,
 
 test('2026-11a-apmacro.sql adds apmacro to every course check and course list, runs after AP® Calculus BC, matches schema.sql, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  // The last course migration: anything after it (teacher classes, 2026-11b) must not redefine a course list.
-  // (2026-11j-aphug.sql, the next course, has its own test below.)
-  for (const f of files.slice(files.indexOf('2026-11a-apmacro.sql') + 1).filter((x) => x !== '2026-11j-aphug.sql'))
+  // Anything after it but before the next course migration (teacher classes, 2026-11b) must not redefine a course list.
+  for (const f of files.slice(files.indexOf('2026-11a-apmacro.sql') + 1).filter((x) => x < '2026-11i'))
     for (const fn of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid'])
       assert.ok(!blocks(readFileSync(join('scripts/sql/migrations', f), 'utf8')).has(fn), `${f} must not redefine ${fn} after the last course migration`);
   assert.ok(files.indexOf('2026-11a-apmacro.sql') > files.indexOf('2026-10o-apcalcbc.sql'), 'runs after AP® Calculus BC');
@@ -315,7 +317,7 @@ test('2026-11a-apmacro.sql adds apmacro to every course check and course list, r
   for (const f of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid']) {
     assert.ok(fns.has(f), `${f} is redefined`);
     assert.ok(fns.get(f).includes(LIST), `${f} accepts apmacro`);
-    assert.equal(fns.get(f).trim(), blocks(PRE_HUG).get(f).trim(), `${f} matches schema.sql`);
+    assert.equal(fns.get(f).trim(), blocks(PRE_MIC).get(f).trim(), `${f} matches schema.sql`);
   }
   assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
   for (const f of ['premium_add_pass', 'count_premium_paid']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
@@ -323,16 +325,16 @@ test('2026-11a-apmacro.sql adds apmacro to every course check and course list, r
   assert.match(mig, /NOT APPLIED/);
 });
 
-test('2026-11j-aphug.sql adds aphug to every course check and course list, runs last (after AP® Macroeconomics), matches schema.sql, and is not granted to browsers where it must not be', () => {
+test('2026-11j-aphug.sql adds aphug to every course check and course list, runs last (after AP® Microeconomics), matches schema.sql, and is not granted to browsers where it must not be', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
   // The last course migration: anything after it must not redefine a course list.
   for (const f of files.slice(files.indexOf('2026-11j-aphug.sql') + 1))
     for (const fn of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid', 'teach_create_class', 'teach_save_question'])
       assert.ok(!blocks(readFileSync(join('scripts/sql/migrations', f), 'utf8')).has(fn), `${f} must not redefine ${fn} after the last course migration`);
-  assert.ok(files.indexOf('2026-11j-aphug.sql') > files.indexOf('2026-11a-apmacro.sql'), 'runs after AP® Macroeconomics');
+  assert.ok(files.indexOf('2026-11j-aphug.sql') > files.indexOf('2026-11i-apmicro.sql'), 'runs after AP® Microeconomics');
   assert.ok(files.indexOf('2026-11j-aphug.sql') > files.indexOf('2026-11e-classes-courses.sql'), 'runs after the class course checks');
   const mig = readFileSync('scripts/sql/migrations/2026-11j-aphug.sql', 'utf8');
-  const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')";
+  const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')";
   for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
     assert.ok(mig.includes(`add constraint ${t}_course_check check (course in ${LIST})`), `${t} check lists aphug`);
   const fns = blocks(mig), schema = blocks(SCHEMA);
@@ -343,13 +345,13 @@ test('2026-11j-aphug.sql adds aphug to every course check and course list, runs 
   }
   for (const f of ['teach_create_class', 'teach_save_question']) {
     assert.ok(fns.has(f), `${f} is redefined`);
-    assert.ok(fns.get(f).includes('|apmacro|aphug|'), `${f} accepts aphug`);
+    assert.ok(fns.get(f).includes('|apmacro|apmicro|aphug|'), `${f} accepts aphug`);
     assert.equal(fns.get(f).trim(), schema.get(f).trim(), `${f} matches schema.sql`);
     assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to authenticated;`));
   }
   assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
   for (const f of ['premium_add_pass', 'count_premium_paid']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
-  assert.doesNotMatch(mig + SCHEMA, /'apcalcbc'\)|'apmacro'\)|apmacro\)\$'/, 'no course list stops at apcalcbc or apmacro');
+  assert.doesNotMatch(mig + SCHEMA, /'apcalcbc'\)|'apmacro'\)|'apmicro'\)|apmacro\)\$'|apmicro\)\$'/, 'no course list stops at apcalcbc, apmacro or apmicro');
   assert.match(mig, /NOT APPLIED/);
 });
 
@@ -467,10 +469,11 @@ test('2026-11e-classes-courses.sql lets classes and teacher questions be for nre
   assert.ok(files.indexOf('2026-11e-classes-courses.sql') > files.indexOf('2026-11c-classes-v2.sql'), 'runs after 2026-11c');
   const mig = readFileSync('scripts/sql/migrations/2026-11e-classes-courses.sql', 'utf8'), fns = blocks(mig), schema = blocks(PRE_HUG);
   const RE = "'^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|nremt|ochem|anp)$'";
+  const pre = blocks(PRE_MIC);
   for (const f of ['teach_create_class', 'teach_save_question']) {
     assert.ok(fns.has(f), `${f} is redefined`);
     assert.ok(fns.get(f).includes(RE), `${f} accepts the three courses`);
-    assert.equal(fns.get(f).trim(), schema.get(f).trim(), `${f} matches schema.sql`);
+    assert.equal(fns.get(f).trim(), pre.get(f).trim(), `${f} matches schema.sql (before 2026-11i added apmicro)`);
     assert.match(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to authenticated;`));
   }
   // schema.sql keeps 11b's and 11c's definitions in their sections and appends 11e's (section 12);
@@ -503,4 +506,23 @@ test('2026-11f-classes-google-ids.sql: Classroom matches by Google sign-in id, W
   assert.ok(mig.includes('alter table public.class_ext_links add column if not exists announced_at timestamptz;'));
   assert.ok(SCHEMA.includes('alter table public.class_ext_links add column if not exists announced_at timestamptz;'));
   assert.doesNotMatch(mig, /course\s+(?:not\s+)?in\s*\(/, 'no course list after the last course migration');
+});
+
+test('2026-11i-apmicro.sql adds apmicro to every course check, course list, class check and free-usage list, runs before AP® Human Geography, matches schema.sql', () => {
+  const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
+  // The newest course list before 2026-11j-aphug.sql (which has its own test).
+  assert.equal(files.indexOf('2026-11i-apmicro.sql'), files.filter((f) => f !== '2026-11j-aphug.sql').findLastIndex((f) => /'apmacro'|apmacro\|/.test(readFileSync(join('scripts/sql/migrations', f), 'utf8'))), 'the newest migration with a course list');
+  const mig = readFileSync('scripts/sql/migrations/2026-11i-apmicro.sql', 'utf8'), fns = blocks(mig), schema = blocks(PRE_HUG);
+  const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro')";
+  for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
+    assert.ok(mig.includes(`add constraint ${t}_course_check check (course in ${LIST})`), `${t} check lists apmicro`);
+  for (const f of ['report_question', 'join_waitlist', 'count_premium_step', 'premium_add_pass', 'record_exam_completion', 'count_premium_paid', 'teach_create_class', 'teach_save_question', 'free_usage_course_ok']) {
+    assert.ok(fns.has(f), `${f} is redefined`);
+    assert.match(fns.get(f), /'apmicro'|apmicro\|/, `${f} accepts apmicro`);
+    assert.equal(fns.get(f).trim(), schema.get(f).trim(), `${f} matches schema.sql`);
+  }
+  for (const f of ['premium_add_pass', 'count_premium_paid', 'free_usage_course_ok']) assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
+  for (const [name, body] of schema) assert.doesNotMatch(body, /'apmacro'\)|apmacro\|nremt/, `${name}: no course list stops at apmacro`);
+  assert.match(mig, /NOT APPLIED/);
+  assert.ok(files.indexOf('2026-11j-aphug.sql') > files.indexOf('2026-11i-apmicro.sql'), 'AP® Human Geography runs after it');
 });

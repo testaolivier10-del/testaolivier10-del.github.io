@@ -199,10 +199,12 @@ const SHELL_BUDGETS = [
   /* 347.1 -> 347.6 (sounds and dark mode in the username menu, owner 2026-11-07): account.js and theme.css. */
   /* 347.6 -> 348.4 (free limits on the account, owner 2026-11-08, docs/premium-vault.md): premium.js reports and
      reads back the daily questions and free exams of a signed-in free user. Measured 348.1 KB. */
-  /* 348.4 -> 349.4 for registering AP® Human Geography (docs/aphug-spec.md, Phase 0): the fifteenth course in
+  /* 348.4 -> 349 for registering AP® Microeconomics (docs/apmicro-spec.md, Phase 0): the fourteenth course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam
-     date, the theme tint and the shared selector twins (measured 348.9 KB with it; 349.4 keeps the usual margin). */
-  ['site', 349.4],
+     date, the theme tint and the shared selector twins (measured 348.7 KB with it).
+     349 -> 349.8 for registering AP® Human Geography (docs/aphug-spec.md, Phase 0), the fifteenth course, the
+     same lists again (measured 349.3 KB with both). */
+  ['site', 349.8],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -514,6 +516,11 @@ const SHELL_BUDGETS = [
   /* +0.3 (teacher classes v2 A2, 2026-11-04): the ?la= hooks in practice.js and exams.js that hand a class
      assignment to the lazy assets/class/class-run.js (docs/teacher-classes.md). */
   ['macroeconomics', 90.3], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
+  /* AP® Microeconomics (microeconomics/, a fork of the AP® Macroeconomics runtime, docs/apmicro-spec.md
+     decision 1): ApMicroCalc in place of ApMacroCalc, the graph engine extended with areas, curved
+     curves, lines and two panels (mic-graph.js), and the payoff matrix (mic-matrix.js). Measured 111.1 KB at Phase 0 (2026-11-09): mic-graph.js alone is
+     about 27 KB gzipped, against about 9 KB for the Macro graph it replaces. */
+  ['microeconomics', 113],
   /* AP® Human Geography (human-geography/, a fork of the AP® Psychology runtime,
      docs/aphug-spec.md decision 1): ApHugCalc (hug-calc.js) in place of
      ApPsychStats, the model item (hug-model.js) on every question page, the
@@ -835,6 +842,15 @@ const BUDGETS = [
   // 15: published, every term on the page links to its glossary entry (the 29 rows and nine drawn graphs measured 14.2 at launch).
   ['macroeconomics/formula-sheet.html', 15],
   ['macroeconomics/justify.html', 5],
+  ['microeconomics/index.html', 8.5], // as macroeconomics/index.html
+  ['microeconomics/practice.html', 3.8],
+  ['microeconomics/exams.html', 3],
+  ['microeconomics/frq.html', 3],
+  ['microeconomics/glossary.html', 30],
+  ['microeconomics/tools.html', 5],
+  // 24: eighteen drawn graphs (cost curves, firm and market panels, the factor and externality graphs), measured 22.3 at Phase 0.
+  ['microeconomics/formula-sheet.html', 24],
+  ['microeconomics/justify.html', 5],
   ['human-geography/index.html', 8.5], // round 3 course home, see nremt/index.html
   ['human-geography/practice.html', 3.8],
   ['human-geography/exams.html', 3],
@@ -1293,6 +1309,19 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`macroeconomics/unit-sheets/${sheet}`, 14]);
   }
 }
+/* The same for AP® Microeconomics (microeconomics/assets/notes-index.json, build-apmicro.mjs),
+   with AP® Macroeconomics' budgets as the reference until the first unit is published. */
+{
+  const idx = join(ROOT, 'microeconomics', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`microeconomics/lessons/${id}.html`, 22], [`microeconomics/notes/${id}.html`, 22]);
+    const sheets = join(ROOT, 'microeconomics', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`microeconomics/unit-sheets/${sheet}`, 14]);
+  }
+}
 /* The same for AP® Human Geography (human-geography/assets/notes-index.json, build-aphug.mjs),
    with AP® Psychology's budgets as the reference until the first unit is published. */
 {
@@ -1457,6 +1486,14 @@ if (existsSync(MAC_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['macroeconomics/assets/glossary.json', 150], ['macroeconomics/assets/notes-index.json', 4], ['macroeconomics/assets/summaries.json', 40]);
+/* AP® Microeconomics's, the same (build-apmicro.mjs packs by gzipped size, as AP® Macroeconomics). */
+const MIC_BANK_DIR = join(ROOT, 'microeconomics', 'assets', 'bank');
+if (existsSync(MIC_BANK_DIR)) {
+  for (const f of readdirSync(MIC_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`microeconomics/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['microeconomics/assets/glossary.json', 150], ['microeconomics/assets/notes-index.json', 4], ['microeconomics/assets/summaries.json', 40]);
 /* AP® Human Geography's, the same; and each map picture (figures/maps/*.svg,
    drawn at build time on the Natural Earth base maps) and base file. */
 const HUG_BANK_DIR = join(ROOT, 'human-geography', 'assets', 'bank');

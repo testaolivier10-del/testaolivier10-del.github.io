@@ -5605,6 +5605,373 @@
   "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
+ "apmicro": {
+  "name": "AP® Microeconomics",
+  "short": "AP® Microeconomics",
+  "tabname": "AP® Microeconomics",
+  "pill": "AP® Microeconomics · free to start",
+  "beta": true,
+  "h1a": "AP® Microeconomics,",
+  "h1b": "every curve, every area.",
+  "hand": "every curve, every area",
+  "lede": "Each topic taught from scratch for the May 2027 exam, then practice that has you draw, shift and shade every graph, and payoff matrices argued with both comparisons the way the readers score them.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Graph studio",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in the graph skills chapter, Unit 1 and the first four topics of Unit 2. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Unit 1 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "60 questions",
+    "multiple choice · 70 minutes"
+   ],
+   [
+    "Section II",
+    "3 free response",
+    "one long, two short · 60 minutes"
+   ],
+   [
+    "The question bank",
+    "Being written",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Axes, Variables and Points",
+   "Graph skills you need. Its lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Margin Thinker",
+   [
+    "Units",
+    "Graph skills you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with the graph skills: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a skill, with graphs to shift and shade, matrices and calculations. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the May 2027 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "6 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "6 units and 36 topics in the order of the course framework, for the May 2027 exam, plus a graph skills chapter before Unit 1. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "Practice questions that ask you to apply a model to a new situation, as the exam does. Every option has its own explanation, every graph item is checked point by point (the labels, the curve that moves, the area you shade) and every payoff matrix is graded cell by cell.",
+   "<b class=\"ink\">The course is being built.</b> Units appear here as each one passes its accuracy review."
+  ],
+  "map_lede": "Each unit's share of the multiple-choice section, from the course framework. Every notes page is free; the lessons in the graph skills chapter, Unit 1 and Topics 2.1 to 2.4 are free too. The graph skills come first: axes and points, slopes and curve shapes, shifts versus movements along a curve, and reading crossings and areas.",
+  "units": [
+   [
+    "1",
+    "Basic Economic Concepts",
+    "6 topics",
+    "12 to 15%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Supply and Demand",
+    "9 topics",
+    "20 to 25%",
+    false,
+    false
+   ],
+   [
+    "3",
+    "Production, Cost, and the Perfect Competition Model",
+    "7 topics",
+    "22 to 25%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Imperfect Competition",
+    "5 topics",
+    "15 to 22%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Factor Markets",
+    "4 topics",
+    "10 to 13%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Market Failure and the Role of Government",
+    "5 topics",
+    "8 to 13%",
+    false,
+    false
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Make it specific",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "3",
+   "bigs": "free response questions on the exam",
+   "p": "One long question worth 10 points and two short ones worth 5, with rubrics, graphs and matrices checked point by point and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the May 2027 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then applies each model to a situation, one step at a time.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Every graph and area, cost curves from a table, the firm from the short run to the long run, payoff matrices and hiring by MRP, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Eight trainers ",
+  "tools_h2": null,
+  "tools_lede": "Draw, shift and shade every graph the exam asks for, read elasticity and total revenue, size every surplus area, build cost curves from a table, follow a firm from the short run to the long run, argue a payoff matrix, hire where MRP = MRC and fix an externality. The graph studio, the elasticity lab and the game theory lab are free.",
+  "tools": [
+   [
+    "Graph studio",
+    "Draw, label, shift and shade every graph, graded per rubric point.",
+    "free"
+   ],
+   [
+    "Elasticity lab",
+    "Price, income and cross elasticity and the total revenue test.",
+    "free"
+   ],
+   [
+    "Game theory lab",
+    "Dominant strategies, Nash equilibria and both comparisons.",
+    "free"
+   ],
+   [
+    "Surplus lab",
+    "Shade and compute surplus, revenue, subsidy cost and deadweight loss.",
+    "Premium"
+   ],
+   [
+    "Cost lab",
+    "Cost tables to cost curves, with MC through the minimums.",
+    "Premium"
+   ],
+   [
+    "Firm and market",
+    "MR = MC, price from demand, and the profit box.",
+    "Premium"
+   ],
+   [
+    "Factor lab",
+    "MRP = MRC hiring, derived demand and monopsony.",
+    "Premium"
+   ],
+   [
+    "Externality lab",
+    "Market vs efficient quantity, deadweight loss and the fix.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Microeconomics",
+    "h": "Graphs and formulas you must know",
+    "p": "No formula sheet on the exam: every calculation, every graph and every area, when to use it and the classic trap."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Microeconomics",
+    "h": "Make it specific",
+    "p": "The marginal rule with the numbers, the price read from demand, both comparisons in a payoff matrix, built part by part and checked against a rubric."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a skill, with graphs to shift and shade, matrices and calculations."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the May 2027 format."
+   ],
+   [
+    "Free-response practice",
+    "One long and two short questions, with rubrics, graphs and matrices on the page and sample answers."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 3 · Production, Cost, and the Perfect Competition Model",
+    "Free unit practice test"
+   ],
+   "q": "A firm's total cost rises from $240 to $300 when its output rises from 20 to 30 units. What is the marginal cost of each of those units?",
+   "opts": [
+    "$6",
+    "$60",
+    "$10",
+    "$30"
+   ],
+   "more": "Take a free unit practice test",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One question like the ones in the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the table"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See which step the slip skipped"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The graphs and formulas you must know, explained, and the cram-kit study plan outline",
+    "Every lesson in Unit 1, the first four lessons of Unit 2, and every \"Graph skills you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: the graph studio, the elasticity lab and the game theory lab"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: the surplus lab, the cost lab, firm and market, the factor lab and the externality lab",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and skill"
+   ],
+   "name": "AP® Microeconomics"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Microeconomics teacher. It follows the published course framework and open sources, listed on the Sources page. Spot a mistake?",
+  "trainh": "Eight trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#7E1A5E",
+  "tint": "#F8E6F1",
+  "bbg": "#3D0C35",
+  "bac": "#FF9BDF",
+  "t1": "AP®",
+  "t2": "Microeconomics",
+  "coverhand": "every curve, every area",
+  "try": {
+   "ok": 0,
+   "title": "Divide by the change in output.",
+   "why": "Marginal cost is the change in total cost over the change in output: $60 over 10 units is $6 a unit. $60 is the change in total cost alone, the slip readers see most."
+  },
+  "note": "May 2027 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
  "aphug": {
   "name": "AP® Human Geography",
   "short": "AP® Human Geography",
@@ -5965,10 +6332,10 @@
   "beta_note": "This course has not yet been reviewed by an AP® Human Geography teacher. It follows the published course framework and open sources, listed on the Sources page. Spot a mistake?",
   "trainh": "Eight trainers for what the exam marks hardest.",
   "hidden": true,
-  "ink": "#741B56",
-  "tint": "#F8E7F3",
-  "bbg": "#7A1F5C",
-  "bac": "#FFD166",
+  "ink": "#094953",
+  "tint": "#E1F1F4",
+  "bbg": "#7A3310",
+  "bac": "#8FE3EE",
   "t1": "AP® Human",
   "t2": "Geography",
   "coverhand": "every model, every scale",

@@ -44,6 +44,7 @@
     { storagePrefix: 'apprecalc_' },
     { storagePrefix: 'apcalcbc_' },
     { storagePrefix: 'apmacro_' },
+    { storagePrefix: 'apmicro_' },
     { storagePrefix: 'aphug_' },
   ];
   // courses:end

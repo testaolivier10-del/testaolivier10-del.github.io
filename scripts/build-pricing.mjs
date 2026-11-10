@@ -48,6 +48,9 @@
   14. AP® Macroeconomics's the same way (<!-- hub-mac:start/end -->,
       <!-- nf-mac:start/end -->, macroeconomics/manifest.json), hidden until
       its first unit is published (docs/apmacro-spec.md).
+  15. AP® Microeconomics's the same way (<!-- hub-mic:start/end -->,
+      <!-- nf-mic:start/end -->, microeconomics/manifest.json), hidden until
+      its first unit is published (docs/apmicro-spec.md).
   15. AP® Human Geography's the same way (<!-- hub-hug:start/end -->,
       <!-- nf-hug:start/end -->, human-geography/manifest.json), hidden until
       its first unit is published (docs/aphug-spec.md).
@@ -100,6 +103,7 @@ const PSY = ORDER.includes('appsych');
 const PCALC = ORDER.includes('apprecalc');
 const CBC = ORDER.includes('apcalcbc');
 const MAC = ORDER.includes('apmacro');
+const MIC = ORDER.includes('apmicro');
 const HUG = ORDER.includes('aphug');
 /* Once every topic in the map is published the card stops promising more.
    "N published topics" keeps clear of check-site's ochem topic-count claim. */
@@ -115,12 +119,14 @@ const PCALC_MAP = join(ROOT, 'docs', 'apprecalc-dependency-map.json');
 const PCALC_ALL = existsSync(PCALC_MAP) && N.apprecalcTopics >= JSON.parse(readFileSync(PCALC_MAP, 'utf8')).topics.length;
 const MAC_MAP = join(ROOT, 'docs', 'apmacro-dependency-map.json');
 const MAC_ALL = existsSync(MAC_MAP) && N.apmacroTopics >= JSON.parse(readFileSync(MAC_MAP, 'utf8')).topics.length;
+const MIC_MAP = join(ROOT, 'docs', 'apmicro-dependency-map.json');
+const MIC_ALL = existsSync(MIC_MAP) && N.apmicroTopics >= JSON.parse(readFileSync(MIC_MAP, 'utf8')).topics.length;
 const HUG_MAP = join(ROOT, 'docs', 'aphug-dependency-map.json');
 const HUG_ALL = existsSync(HUG_MAP) && N.aphugTopics >= JSON.parse(readFileSync(HUG_MAP, 'utf8')).topics.length;
 const CBC_ALL = N.apcalcbcTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apcalcbc-ced-map.json'), 'utf8')).bcTotal;
 const BIO_ALL = N.apbioTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apbio-dependency-map.json'), 'utf8')).topics.length;
 // Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology, AP® Precalculus, AP® Calculus BC, AP® Macroeconomics).
-const MARK = BIO || CHEM || PHYS || CALC || STAT || ENV || PSY || PCALC || CBC || MAC;
+const MARK = BIO || CHEM || PHYS || CALC || STAT || ENV || PSY || PCALC || CBC || MAC || MIC;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
 const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
@@ -617,6 +623,10 @@ function hubMacCard() {
   return apCard({ href: 'macroeconomics/', tint: 'apmacro', cover: 'apmacro', t2: 'Macroeconomics', hand: 'every graph, every shift', name: 'AP® Macroeconomics',
     line: published(MAC_ALL, N.apmacroTopics, 'with every graph you shift and label by hand') });
 }
+function hubMicCard() {
+  return apCard({ href: 'microeconomics/', tint: 'apmicro', cover: 'apmicro', t2: 'Microeconomics', hand: 'every curve, every area', name: 'AP® Microeconomics',
+    line: published(MIC_ALL, N.apmicroTopics, 'with every graph you draw, shift and shade by hand') });
+}
 function hubHugCard() {
   return apCard({ href: 'human-geography/', tint: 'aphug', cover: 'aphug', t2: 'Human Geography', hand: 'every model, every scale', name: 'AP® Human Geography',
     line: published(HUG_ALL, N.aphugTopics, 'with every model built by hand') });
@@ -641,6 +651,7 @@ function hubPcalcCard() {
   src = between(src, '<!-- hub-pcalc:start -->', '<!-- hub-pcalc:end -->', PCALC ? hubPcalcCard() : '', rel);
   src = between(src, '<!-- hub-cbc:start -->', '<!-- hub-cbc:end -->', CBC ? hubCbcCard() : '', rel);
   src = between(src, '<!-- hub-mac:start -->', '<!-- hub-mac:end -->', MAC ? hubMacCard() : '', rel);
+  src = between(src, '<!-- hub-mic:start -->', '<!-- hub-mic:end -->', MIC ? hubMicCard() : '', rel);
   src = between(src, '<!-- hub-hug:start -->', '<!-- hub-hug:end -->', HUG ? hubHugCard() : '', rel);
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
@@ -650,7 +661,7 @@ function hubPcalcCard() {
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
      from every open course's bank, never typed. AP® Calculus BC counts only its
      own questions: its bank also serves AB's, which apcalc already counts. */
-  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn, apmacro: N.apmacro, aphug: N.aphug };
+  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn, apmacro: N.apmacro, apmicro: N.apmicro, aphug: N.aphug };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
   /* The facts strip under the hero is gone (owner comment 2026-11-02: clutter, it repeated the pill and the
      Free box); the question total, the one fact nothing else said, moved into the hero pill. */
@@ -687,7 +698,7 @@ function hubPcalcCard() {
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
   // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv' && x !== 'appsych' && x !== 'apprecalc' && x !== 'apcalcbc' && x !== 'apmacro' && x !== 'aphug')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv' && x !== 'appsych' && x !== 'apprecalc' && x !== 'apcalcbc' && x !== 'apmacro' && x !== 'apmicro' && x !== 'aphug')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -696,7 +707,7 @@ function hubPcalcCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus AB', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus', apmacro: 'Macroeconomics' , aphug: 'Human Geography' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus AB', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus', apmacro: 'Macroeconomics', apmicro: 'Microeconomics' , aphug: 'Human Geography' };
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
@@ -747,6 +758,11 @@ const MANIFESTS = {
     name: 'LevlPrep Macroeconomics',
     short_name: 'LevlPrep Macro',
     description: `Macroeconomics on the course framework, in its order, for the May 2027 exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the graph skills you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
+  },
+  'microeconomics/manifest.json': {
+    name: 'LevlPrep Microeconomics',
+    short_name: 'LevlPrep Micro',
+    description: `Microeconomics on the course framework, in its order, for the May 2027 exam: every notes page is free forever and Unit 1 is fully interactive, with the graph skills you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'human-geography/manifest.json': {
     name: 'LevlPrep Human Geography',
@@ -846,6 +862,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${MAC_ALL ? `All ${fmt(N.apmacroTopics)} published topics` : `${fmt(N.apmacroTopics)} published topic${N.apmacroTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one and every graph to shift by hand.</p>
     </a>`;
   out = between(out, '<!-- nf-mac:start -->', '<!-- nf-mac:end -->', MAC ? mac : '', rel);
+  const mic = `    <a class="card nf-card" href="/microeconomics/"><img class="sp-cv" src="/assets/covers/apmicro.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Microeconomics</h2>
+      <p>${MIC_ALL ? `All ${fmt(N.apmicroTopics)} published topics` : `${fmt(N.apmicroTopics)} published topic${N.apmicroTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one and every graph to draw and shade by hand.</p>
+    </a>`;
+  out = between(out, '<!-- nf-mic:start -->', '<!-- nf-mic:end -->', MIC ? mic : '', rel);
   const hug = `    <a class="card nf-card" href="/human-geography/"><img class="sp-cv" src="/assets/covers/aphug.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
       <h2>AP® Human Geography</h2>
       <p>${HUG_ALL ? `All ${fmt(N.aphugTopics)} published topics` : `${fmt(N.aphugTopics)} published topic${N.aphugTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one and every model built by hand.</p>

@@ -198,7 +198,7 @@
 .cx-q .cx-opt[aria-disabled="true"],.cx-q .cx-opt:disabled{cursor:default;opacity:1;}
 .cx-q .cx-opt .letter{flex:0 0 26px;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--muted);font:900 12px var(--font-ui);border:0;}
 .cx-q .cx-opt.selected .letter,.cx-q .cx-opt[aria-checked="true"] .letter{background:var(--cink);color:var(--white);box-shadow:none;}
-.cx-q .cx-opt > span:not(.letter):not(.sr-only):not([class*="why"]):not(.bio-mark):not(.chem-mark):not(.phys-mark):not(.calc-mark):not(.pcalc-mark):not(.stat-mark):not(.env-mark):not(.mac-mark):not(.psy-mark){flex:1 1 0;min-width:0;}
+.cx-q .cx-opt > span:not(.letter):not(.sr-only):not([class*="why"]):not(.bio-mark):not(.chem-mark):not(.phys-mark):not(.calc-mark):not(.pcalc-mark):not(.stat-mark):not(.env-mark):not(.mac-mark):not(.mic-mark):not(.psy-mark){flex:1 1 0;min-width:0;}
 .cx-q .cx-opt [class*="opt-why"]{flex-basis:100%;display:block;font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin:2px 0 0;}
 .cx-q .cx-opt:is(.is-right,.correct){background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
 .cx-q .cx-opt:is(.is-wrong,.incorrect,.wrong){background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--bad-text);}
@@ -243,10 +243,10 @@
 .cx-choice b .cx-tag{display:inline-block;}
 /* Bio's and Chemistry's renderers write a visible mark chip themselves
    (.bio-mark, .chem-mark, .phys-mark, .calc-mark, .pcalc-mark, .stat-mark, and Env Sci's, Macro's and Psychology's
-   .env-mark, .mac-mark, .psy-mark, which were missing: the chip showed twice and was squeezed to a sliver); keep one. */
-.cx-q .cx-opt:has(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark,.env-mark,.mac-mark,.psy-mark)::before{content:none;display:none;}
-.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark,.env-mark,.mac-mark,.psy-mark){order:9;}
-.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark,.env-mark,.mac-mark,.psy-mark){flex:0 0 auto;margin-left:auto;white-space:nowrap;}
+   .env-mark, .mac-mark, .mic-mark, .psy-mark, which were missing: the chip showed twice and was squeezed to a sliver); keep one. */
+.cx-q .cx-opt:has(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark,.env-mark,.mac-mark,.mic-mark,.psy-mark)::before{content:none;display:none;}
+.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark,.env-mark,.mac-mark,.mic-mark,.psy-mark){order:9;}
+.cx-q .cx-opt :is(.bio-mark,.chem-mark,.phys-mark,.calc-mark,.pcalc-mark,.stat-mark,.env-mark,.mac-mark,.mic-mark,.psy-mark){flex:0 0 auto;margin-left:auto;white-space:nowrap;}
 .cx-q .cx-opt:is(.is-right,.correct,.is-wrong,.incorrect,.wrong)::before{margin-left:auto;}
 .cx-q .cx-opt [class*="opt-why"]{order:10;}
 /* NREMT pages sit in .wrap, which pads its top; the opener spaces itself. */
@@ -455,7 +455,8 @@ body[data-course="apenv"] .cx-endp3{--sc-bg:#22400F;--sc-ac:#A6DB5C;}
 body[data-course="appsych"] .cx-endp3{--sc-bg:#07608A;--sc-ac:#FFD23F;}
 body[data-course="apprecalc"] .cx-endp3{--sc-bg:#0B4A33;--sc-ac:#8AF0C0;}
 body[data-course="apmacro"] .cx-endp3{--sc-bg:#2E4D0C;--sc-ac:#C8F07A;}
-body[data-course="aphug"] .cx-endp3{--sc-bg:#7A1F5C;--sc-ac:#FFD166;}
+body[data-course="apmicro"] .cx-endp3{--sc-bg:#3D0C35;--sc-ac:#FF9BDF;}
+body[data-course="aphug"] .cx-endp3{--sc-bg:#7A3310;--sc-ac:#8FE3EE;}
 .cx-band{position:relative;overflow:hidden;border-radius:22px;background:var(--sc-bg);color:#fff;padding:22px 24px 30px;
   background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:36px 36px;}
 .cx-band::after{content:"";position:absolute;right:-140px;top:-180px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--sc-ac) 28%,transparent),transparent 62%);pointer-events:none;}

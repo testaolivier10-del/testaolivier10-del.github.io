@@ -89,6 +89,7 @@
     ['appsych', 'AP® Psychology', 'psychology', 'Psychology exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.'],
     ['apprecalc', 'AP® Precalculus', 'precalculus', 'Precalculus exam prep: lessons from scratch, free notes, a function lab, typed answers graded by value, and every free-response type.'],
     ['apmacro', 'AP® Macroeconomics', 'macroeconomics', 'Macroeconomics exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.'],
+    ['apmicro', 'AP® Microeconomics', 'microeconomics', 'Microeconomics exam prep: lessons from scratch, free notes, graphs drawn and shaded by hand, and every free-response question drilled part by part.'],
     ['aphug', 'AP® Human Geography', 'human-geography', 'Human geography exam prep: lessons from scratch, free notes, every model built by hand, and free responses drilled one task verb at a time.']
   ];
   AP.forEach(function(a){

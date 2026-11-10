@@ -216,6 +216,17 @@
       { min: 20, title: 'Policy Planner' },
       { min: 30, title: 'Macroeconomics Legend' },
     ],
+    // docs/apmicro-spec.md section 4 (identity provisional until launch). The
+    // first is also IDENTITY.firstRank in scripts/lib/apmicro-build.mjs.
+    apmicro: [
+      { min: 1,  title: 'Margin Thinker' },
+      { min: 3,  title: 'Curve Shifter' },
+      { min: 6,  title: 'Elasticity Reader' },
+      { min: 10, title: 'Cost Curve Drawer' },
+      { min: 15, title: 'Surplus Shader' },
+      { min: 20, title: 'Game Theorist' },
+      { min: 30, title: 'Microeconomics Legend' },
+    ],
     // docs/aphug-spec.md section 4 (provisional until launch). The first is
     // also IDENTITY.firstRank in scripts/lib/aphug-build.mjs.
     aphug: [
@@ -246,6 +257,7 @@
     { key: 'apprecalc', rankLabel: 'Precalculus rank' },
     { key: 'apcalcbc', rankLabel: 'Calculus BC rank' },
     { key: 'apmacro', rankLabel: 'Macroeconomics rank' },
+    { key: 'apmicro', rankLabel: 'Microeconomics rank' },
     { key: 'aphug', rankLabel: 'Human Geography rank' },
   ];
   // courses:end

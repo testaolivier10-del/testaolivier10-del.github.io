@@ -117,10 +117,10 @@ test('the course home has its own headline, accent and cover', () => {
   assert.match(home, /assets\/hug\.css/);
   assert.match(home, /data-cover="aphug"/);
   assert.match(home, /assets\/covers\/art\/aphug\.svg/);
-  assert.equal(IDENTITY.accent.ink, '#741B56');
+  assert.equal(IDENTITY.accent.ink, '#094953');
   const css = readFileSync(`${D}/assets/hug.css`, 'utf8');
-  assert.match(css, /body\.hug\{--ctint:#F8E7F3;--cink:#741B56;\}/);
-  assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="aphug"\]\{--ctint:#F8E7F3;--cink:#741B56;\}/);
+  assert.match(css, /body\.hug\{--ctint:#E1F1F4;--cink:#094953;\}/);
+  assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="aphug"\]\{--ctint:#E1F1F4;--cink:#094953;\}/);
   assert.ok(existsSync('assets/covers/aphug.svg') && existsSync('assets/covers/art/aphug.svg') && existsSync('assets/covers/thumb/aphug.svg'));
 });
 

@@ -114,8 +114,8 @@ test('A&P: built topics only, read from anp_progress_v1, first sighting recorded
 
 test('AP®: a unit is complete when every topic with a lesson is finished; units come from the path file', () => {
   const { b, M } = load();
-  assert.ok(M.COURSES.apbio && M.COURSES.apmacro && M.COURSES.apcalcbc && M.COURSES.aphug, 'all eleven AP courses issue certificates');
-  assert.equal(Object.keys(M.COURSES).length, 14);
+  assert.ok(M.COURSES.apbio && M.COURSES.apmacro && M.COURSES.apmicro && M.COURSES.aphug && M.COURSES.apcalcbc, 'every AP course issues certificates');
+  assert.equal(Object.keys(M.COURSES).length, 15);
   M.setPath('apstat', { progress: 'apstat_progress_v1', units: [{ id: 'unit-1', label: 'Unit 1', title: 'Data' }, { id: 'skills', label: 'Skills', title: 'Math you need' }],
     topics: [{ id: 'a', u: 0, l: 'lessons/a.html' }, { id: 'b', u: 0, l: 'lessons/b.html' }, { id: 'c', u: 0 }, { id: 'd', u: 1, l: 'lessons/d.html' }] });
   b.localStorage.setItem('apstat_progress_v1', JSON.stringify({ v: 1, q: {}, lessons: { a: 100, b: 300 } }));

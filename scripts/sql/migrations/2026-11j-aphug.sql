@@ -3,7 +3,7 @@
 -- 2026-11i-apmicro.sql (AP® Microeconomics), whose course lists it extends:
 -- migrations run, and are compared with schema.sql, in file-name order.
 -- AP® Microeconomics was not on this branch when this was written, so the lists
--- here end 'apmacro', 'aphug'; when both are merged, add 'apmicro' before
+-- here end 'apmacro', 'apmicro', 'aphug'; when both are merged, add 'apmicro' before
 -- 'aphug' here and in schema.sql. NOT APPLIED anywhere yet.
 --
 -- Run once, BEFORE the AP® Human Geography pass goes on sale: Supabase dashboard ->
@@ -38,7 +38,7 @@ begin
 end
 $$;
 alter table public.premium_passes
-  add constraint premium_passes_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug'));
+  add constraint premium_passes_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug'));
 
 do $$
 declare r record;
@@ -52,7 +52,7 @@ begin
 end
 $$;
 alter table public.premium_funnel
-  add constraint premium_funnel_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug'));
+  add constraint premium_funnel_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug'));
 
 do $$
 declare r record;
@@ -66,7 +66,7 @@ begin
 end
 $$;
 alter table public.exam_completions
-  add constraint exam_completions_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug'));
+  add constraint exam_completions_course_check check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug'));
 
 -- ---------------------------------------------------------------------------
 -- 2. Functions with a course list
@@ -86,7 +86,7 @@ begin
   -- Validated here rather than trusted from the browser. This function is
   -- reachable by anyone who can open the site, so the only things that stop it
   -- becoming a free text-storage service are these bounds.
-  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug') then
     raise exception 'unknown course';
   end if;
   if p_reason not in ('wrong-answer', 'unclear', 'typo', 'outdated', 'other') then
@@ -119,7 +119,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug') then
     raise exception 'unknown course';
   end if;
   if p_email is null or length(p_email) > 254
@@ -145,7 +145,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')
      or p_step is null or p_step not in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start') then
     return;
   end if;
@@ -177,7 +177,7 @@ declare
   v_start timestamptz;
   v_end timestamptz;
 begin
-  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')
+  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')
      or p_pass is null or p_days is null or p_days < 1 or p_days > 400
      or (p_until is not null and p_until > now() + interval '400 days') then
     raise exception 'bad pass';
@@ -216,7 +216,7 @@ as $$
 declare
   v_uid uuid := auth.uid();
 begin
-  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')
+  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')
      or p_questions is null or p_questions < 1 or p_questions > 300 then
     return false;
   end if;
@@ -244,7 +244,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug') then
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug') then
     return;
   end if;
   insert into public.premium_funnel (course, step, n)
@@ -267,7 +267,7 @@ begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
   -- The ten AP® courses, EMT (nremt), organic chemistry (ochem) and A&P (anp).
-  if p_course !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|aphug|nremt|ochem|anp)$' then return null; end if;
+  if p_course !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|apmicro|aphug|nremt|ochem|anp)$' then return null; end if;
   if p_name is null or length(btrim(p_name)) < 1 or length(p_name) > 60 then return null; end if;
   if (select count(*) from public.classes where teacher_id = auth.uid() and not archived) >= 30 then return null; end if;
   insert into public.classes (teacher_id, course, name, code, unit_order)
@@ -290,7 +290,7 @@ declare
 begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
-  if coalesce(p_data->>'course', '') !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|aphug|nremt|ochem|anp)$' then return null; end if;
+  if coalesce(p_data->>'course', '') !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|apmicro|aphug|nremt|ochem|anp)$' then return null; end if;
   if length(coalesce(p_data->>'q', '')) not between 1 and 2000 then return null; end if;
   if jsonb_typeof(p_data->'options') <> 'array' then return null; end if;
   n := jsonb_array_length(p_data->'options');
@@ -320,7 +320,7 @@ $$;
 create or replace function public.free_usage_course_ok(p_course text)
 returns boolean language sql immutable as $$
   select p_course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych',
-                      'apprecalc', 'apcalcbc', 'apmacro', 'aphug');
+                      'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug');
 $$;
 
 grant execute on function public.report_question(text, text, text, text) to anon, authenticated;

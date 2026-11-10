@@ -169,9 +169,10 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
    developed only when quoting a model). Graded questions never hinge on a figure that goes stale within a year.
 8. (2026-11-09) **Only CED-named models are keyed**; others are labeled asides (section 2).
 9. (2026-11-09) **Phase 0 done, as built** (`docs/aphug-phase0.md`, `docs/aphug-architecture.md`). Accent
-   (provisional, needs-author `identity`): berry, hue 320°, light `--cink #741B56` on `--ctint #F8E7F3` (8.7:1;
-   9.8:1 on the page), dark `--cink #F4BEE2` (10.7:1 on the card) on `rgba(220,100,180,0.10)` (9.5:1); soft
-   `#E699CC`; header short name "Human Geography". Cover berry `#7A1F5C` with gold `#FFD166`, a globe with
+   (provisional, needs-author `identity`): deep ocean teal, hue 188° (between NREMT 174° and Psychology 202°;
+   AP® Microeconomics, merged in, took 319°), light `--cink #094953` on `--ctint #E1F1F4` (8.7:1; 9.5:1 on the
+   page), dark `--cink #A8DEE6` (11.5:1 on the card) on `rgba(80,190,205,0.10)` (9.6:1); soft `#8CCFD9`; header
+   short name "Human Geography". Cover clay `#7A3310` with light teal `#8FE3EE` (6.2:1), a globe with
    meridians. Choices the spec left open or that differ from it: (a) a "Skills you need" chapter of 3 topics
    (reading maps and data, scale, FRQ task verbs) placed before 1.1, 71 topics in all; (b) `ApHugCalc` recipes
    `{fn, args, pick}` to 12 significant digits, RNI as a percent, doubling time by the rule of 70 (an error when
@@ -185,8 +186,9 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
    `mcq-options`); set counts per kind are a guess (`mcq-sets`); skill weights not enforced until
    `practicesConfirmed`; (g) the content check refuses non-neutral words for people, undated "currently" claims,
    a dated source without a year, keyed models the CED does not name (outside `.hug-aside`) and verb-demand
-   misses; (h) the AI FRQ grader is not wired (`frq-grader`); (i) the site shell budget went from 348.4 to 349.4
-   KB. Registered hidden, `onSale: false`. SQL migration `2026-11j-aphug.sql` written, not applied.
+   misses; (h) the AI FRQ grader is not wired (`frq-grader`); (i) the site shell budget went from 349 (after AP®
+   Microeconomics) to 349.8 KB. Registered hidden, `onSale: false`, after merging `claude/apmicro` (both courses in every list). SQL migration
+   `2026-11j-aphug.sql` (runs after `2026-11i-apmicro.sql`) written, not applied.
 
 ## 9. Open items for the owner
 

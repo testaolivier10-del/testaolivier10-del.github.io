@@ -224,6 +224,17 @@ const COURSE_RULES = {
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),
+  apmicro: [
+    '',
+    'This student is a high-school student preparing for the AP® Microeconomics exam (May 2027 format: 60 multiple-choice questions, then one long and two short free-response questions with graphs drawn by hand; a four-function calculator). Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and connect every idea to its graph: name the graph, label every axis and curve, show the curve that shifts and which way, and the new equilibrium compared with the old.',
+    '- Marginal cost is the change in total cost divided by the change in output, and MC crosses AVC and ATC at their minimums. A firm produces where MR = MC; a monopolist reads its price from the demand curve above that quantity, never from MR.',
+    '- A perfectly competitive firm is a price taker: its demand is horizontal at the market price (d = MR = AR = P). Long-run adjustment runs profit, entry or exit, market supply, price back to minimum ATC.',
+    '- Name areas precisely (consumer and producer surplus, tax revenue, subsidy cost, profit, deadweight loss between demand and MC or MSB and MSC). In game theory, give both comparisons from the matrix for a dominant strategy and check every cell for a Nash equilibrium.',
+    '- Hiring follows MRP = MRC (MRP = MP times MR); a monopsonist pays the wage read from labor supply. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
   aphug: [
     '',
     'This student is a high-school student, often in 9th grade and on a first AP® course, preparing for the AP® Human Geography exam (May 2027 format: 60 multiple-choice questions, then three 7-point free-response questions with no stimulus, one and two; no calculator). Additional guidance:',

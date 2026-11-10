@@ -28,6 +28,7 @@
     { key: 'apprecalc', paid: true },
     { key: 'apcalcbc', paid: true },
     { key: 'apmacro', paid: true },
+    { key: 'apmicro', paid: true },
     { key: 'aphug', paid: true },
   ];
   // courses:end

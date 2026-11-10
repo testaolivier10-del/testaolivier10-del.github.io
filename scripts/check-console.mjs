@@ -86,7 +86,7 @@ function walk(dir, out = []) {
     if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data')) && !full.endsWith(join('psychology', 'data')) && !full.endsWith(join('precalculus', 'data')) && !full.endsWith(join('macroeconomics', 'data')) && !full.endsWith(join('human-geography', 'data')) && !full.endsWith(join('calculus-bc', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data')) && !full.endsWith(join('psychology', 'data')) && !full.endsWith(join('precalculus', 'data')) && !full.endsWith(join('macroeconomics', 'data')) && !full.endsWith(join('microeconomics', 'data')) && !full.endsWith(join('human-geography', 'data')) && !full.endsWith(join('calculus-bc', 'data'))) walk(full, out); }
     else if (extname(name) === '.html') out.push(full);
   }
   return out;
@@ -612,6 +612,38 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
       const check = page.locator('.mac-pr-stage .mac-q .mac-check').first();
       if (await check.count() && await check.isVisible()) await check.click();
       await page.waitForSelector('.mac-q-feedback .mac-verdict', { timeout: 15000 });
+      if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
+    }));
+  }
+}
+/* AP® Microeconomics Practice, once a unit is published: the first published topic's
+   set loads the bank index, then that unit's file, and explanations only
+   after an answer. Nothing to run before then (microeconomics/assets/notes-index.json
+   is empty), so the flow is data-driven like the course itself. */
+{
+  const idx = join(ROOT, 'microeconomics', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    results.push(await anpFlow('/microeconomics/practice.html (flow)', async (page, bank, problems) => {
+      await page.goto(ORIGIN + '/microeconomics/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
+      // The Practice panel's Start, once the panel has read the topic from the address (after the index loads).
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
+      await page.waitForSelector('.mic-pr-stage .mic-q', { timeout: 15000 });
+      if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
+      // Whatever kind comes first: an option, a number, a prediction table
+      // (one choice per row) or an order (checked as it stands).
+      const q = page.locator('.mic-pr-stage .mic-q').first();
+      const opt = q.locator('.mic-opt').first();
+      if (await opt.count()) await opt.click();
+      else if (await q.locator('.mic-num input, .mic-expr input, input[inputmode]').count()) await q.locator('.mic-num input, .mic-expr input, input[inputmode]').first().fill('1');
+      else for (const g of await q.locator('.mic-dir').all()) await g.locator('button, [role="radio"]').first().click();
+      // A "Make it specific" item: one choice per blank (the set is shuffled, so it can come first).
+      for (const sel of await q.locator('select[data-slot]').all()) await sel.selectOption({ index: 1 });
+      const check = page.locator('.mic-pr-stage .mic-q .mic-check').first();
+      if (await check.count() && await check.isVisible()) await check.click();
+      await page.waitForSelector('.mic-q-feedback .mic-verdict', { timeout: 15000 });
       if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
     }));
   }

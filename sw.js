@@ -373,6 +373,28 @@ COURSE_URLS['macroeconomics'] = [
   'macroeconomics/assets/mac-nav.js',
   'macroeconomics/assets/glossary.json',
 ];
+COURSE_URLS['microeconomics'] = [
+  // The AP® Microeconomics shell (key apmicro, folder microeconomics), as
+  // Macroeconomics with the micro calculations, the graph model and the
+  // payoff matrix.
+  'microeconomics/index.html',
+  'microeconomics/learn.html',
+  'microeconomics/search.html',
+  'microeconomics/tools.html',
+  'microeconomics/dashboard.html',
+  'microeconomics/manifest.json',
+  'microeconomics/assets/mic.css',
+  'microeconomics/assets/mic-curriculum.js',
+  'microeconomics/assets/mic-core.js',
+  'microeconomics/assets/mic-math.js',
+  'microeconomics/assets/mic-calc.js',
+  'microeconomics/assets/mic-graph.js',
+  'microeconomics/assets/mic-matrix.js',
+  'microeconomics/assets/mic-grade.js',
+  'microeconomics/assets/mic-questions.js',
+  'microeconomics/assets/mic-nav.js',
+  'microeconomics/assets/glossary.json',
+];
 COURSE_URLS['human-geography'] = [
   // The AP® Human Geography shell (key aphug, folder human-geography), as
   // Psychology with the geography arithmetic, the map renderer and the model

@@ -197,8 +197,8 @@ topics in course order and may use nothing taught after it.
 
 ### Plot spec (`ApHugPlot`)
 
-As AP® Psychology's `line`, `bar` and `scatter` (with `trend`), plus `pyramid` (above). Colors: course berry
-`#741B56` (dark `#E699CC`), then vermillion `#C24E00`, green `#009E73`, reddish purple `#A8508A`, purple `#7A4F9E`.
+As AP® Psychology's `line`, `bar` and `scatter` (with `trend`), plus `pyramid` (above). Colors: course teal
+`#094953` (dark `#8CCFD9`), then vermillion `#C24E00`, green `#009E73`, reddish purple `#A8508A`, purple `#7A4F9E`.
 
 ## Generator: `scripts/build-aphug.mjs` (+ `scripts/lib/aphug-build.mjs`, `aphug-entry.mjs`, `aphug-exams.mjs`, `aphug-mathlib.mjs`)
 
@@ -209,7 +209,7 @@ As AP® Psychology (`--check`, `--out <dir>`, `APHUG_PUBLISHED=unit-1`, `APHUG_D
 - Maps: `loadCourse` reads the base maps (`loadBases`); `stimulusBody` draws every map once into `C.maps`; the build
   writes them last as `figures/maps/<id>.svg` (an owned directory: a map no page uses is removed).
 - Free lessons: `FREE_UNITS` (`geo-skills`, `unit-1`) and `FREE_TOPICS` (2.1 to 2.5), spec decision 6.
-- Home: from `IDENTITY` (headline "from local to global.", the berry accent, the globe icon, first rank Map Reader)
+- Home: from `IDENTITY` (headline "from local to global.", the teal accent, the globe icon, first rank Map Reader)
   and `scripts/lib/course-homes.json` `aphug`.
 - `formula-sheet.html` "Formulas you must know": `EQ` in `aphug-entry.mjs` (births, deaths and growth; age and
   sex; density; cities and interaction; map scale), each row naming its `ApHugCalc` recipe with a worked line
@@ -228,7 +228,7 @@ As AP® Psychology (`--check`, `--out <dir>`, `APHUG_PUBLISHED=unit-1`, `APHUG_D
 | `pages/cram.js` | Default exam 2027-05-03; the 60 + 3 format; timed sets at 1 minute a question. |
 | `pages/frq-kit.js` | The three types; 0-2 stimuli titled by kind; the verb pill and demand on every part; the verb's live hints. |
 | `pages/practice.js`, `dashboard.js`, `flashcards.js`, `search.js` | Filters for numeric, specific, model and the four set kinds; FRQ type names; skill categories; the "Formulas" deck. |
-| `hug.css` | Berry tint on `body.hug`; maps (picture card, marks, legend, caption), drawn-scene placeholder, the verb pill, the model item; the study, myth and help styles are gone. |
+| `hug.css` | Teal tint on `body.hug`; maps (picture card, marks, legend, caption), drawn-scene placeholder, the verb pill, the model item; the study, myth and help styles are gone. |
 | `tools/hug-plot.js` | `pyramid` added (gutter labels, outward ticks, no vertical axis); `histogram` and `normal` removed; data figures default to 300 px wide. |
 | `tools/hug-tools.js` | The `model` drill step. |
 
@@ -298,7 +298,7 @@ human-geography lessons outside the free tier are vaulted by their `free` marker
 `lib/dashboard-page.mjs`, `lib/practice-panel.mjs`, `lib/videos.mjs`, `lib/app-pages.mjs` (noindex app pages),
 `add-video.mjs`, `build-from-video.mjs`, `build-og-images.mjs` (`human-geography/assets/og-image.png`),
 `build-og-tags.mjs`, `build-sitemap.mjs`, `check-console.mjs`, `check-site.mjs`, `check-overlap.mjs`,
-`check-weight.mjs` (site shell 348.4 -> 349.4, course shell 80, page and data budgets, every map file),
+`check-weight.mjs` (site shell 349 -> 349.8 after AP® Microeconomics, course shell 80, page and data budgets, every map file),
 `check-a11y.mjs` sample pages, `.github/workflows/checks.yml`, `scripts/ci-local.sh`. Not yet: `sources.html`, the
 AI FRQ grader's `FRQ_COURSES` (it grades 10-point rubrics; seven one-point parts need their own calibration,
 needs-author `frq-grader`), the `check-console.mjs` practice flow; all at launch.

@@ -17,7 +17,8 @@ body[data-course="apenv"]{--lp-ac:#474A10;--lp-ct:#EFF0DA;--lp-bg:#22400F;--lp-b
 body[data-course="appsych"]{--lp-ac:#084F78;--lp-ct:#E3F0F8;--lp-bg:#07608A;--lp-ba:#FFD23F}
 body[data-course="apprecalc"]{--lp-ac:#11592F;--lp-ct:#E3F3E8;--lp-bg:#0B4A33;--lp-ba:#8AF0C0}
 body[data-course="apmacro"]{--lp-ac:#355A0A;--lp-ct:#EEF4E0;--lp-bg:#2E4D0C;--lp-ba:#C8F07A}
-body[data-course="aphug"]{--lp-ac:#741B56;--lp-ct:#F8E7F3;--lp-bg:#7A1F5C;--lp-ba:#FFD166}
+body[data-course="apmicro"]{--lp-ac:#7E1A5E;--lp-ct:#F8E6F1;--lp-bg:#3D0C35;--lp-ba:#FF9BDF}
+body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-ba:#8FE3EE}
 :root[data-theme="dark"] body{--lp-ac:var(--lp-ba);--lp-ct:color-mix(in srgb,var(--lp-ba) 15%,transparent)}
 
 .lp-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4)}

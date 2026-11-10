@@ -71,6 +71,7 @@ const AP = {
   appsych: { file: 'psychology/assets/psy-curriculum.js', g: 'ApPsychCurriculum', maps: ['appsych'] },
   apprecalc: { file: 'precalculus/assets/pcalc-curriculum.js', g: 'ApPrecalcCurriculum', maps: ['apprecalc'] },
   apmacro: { file: 'macroeconomics/assets/mac-curriculum.js', g: 'ApMacroCurriculum', maps: ['apmacro'] },
+  apmicro: { file: 'microeconomics/assets/mic-curriculum.js', g: 'ApMicroCurriculum', maps: ['apmicro'] },
   aphug: { file: 'human-geography/assets/hug-curriculum.js', g: 'ApHugCurriculum', maps: ['aphug'] },
 };
 

@@ -1,0 +1,453 @@
+/* AP® Microeconomics flashcards (forked from anatomy-physiology/assets/apps/
+   flashcards.js): spaced repetition over
+     - the glossary (assets/glossary.json): every defined term of a published
+       topic, both ways, term -> definition and definition -> term;
+     - the lesson summaries (assets/summaries.json): "sum up this topic",
+       one card per published topic;
+     - the "Formulas" deck (assets/formulas.json, built from the formulas
+       page): what a formula is for and when to use it on the front; the
+       formula, a worked line and the trap on the back. The exam gives no
+       formula sheet, so these are always available, published topic or not.
+   Decks: everything, a unit, a topic, "Formulas", or "terms from questions I missed".
+   Deep links: ?unit=<id>, ?topic=<id>, ?deck=missed, ?deck=formulas.
+
+   SCHEDULING: the same SM-2 variant as ochem's and A&P's (Again / Hard /
+   Good / Easy, 20 new cards a day, studying ahead never lengthens an
+   interval).
+
+   STORAGE  localStorage['apmicro_flashcards_v1'] (in the apmicro sync namespace,
+   mic-core.js; merged card by card with the site's mergeCardSchedules):
+     { v: 1, cards: { <cardId>: { i, e, d, r, l, t } }, fresh: { day, n }, paid: { day, xp } }
+   Card ids are permanent: gl:<concept>:t, gl:<concept>:d, sm:<topic>, eq:<recipe>.
+
+   Self-grading moves no mastery number (cards never touch
+   apmicro_progress_v1); cards pay XP (2 each, 60 a day at most). */
+(function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
+  var app = document.getElementById('app');
+  var CU = window.ApMicroCurriculum;
+  if(!app || !CU) return;
+  var BASE = window.ApMicroBase || '';
+  var KEY = 'apmicro_flashcards_v1', PREFS = 'apmicro_prefs_v1';
+  var MIN = 60000, AGAIN = 1, HARD = 2, GOOD = 3, EASY = 4;
+  var GRADES = [null, { label: 'Again' }, { label: 'Hard' }, { label: 'Good' }, { label: 'Easy' }];
+  var EASE_START = 2.5, EASE_MIN = 1.3, EASE_MAX = 2.8, MAX_IVL = 365, RELEARN = 10 * MIN, NEW_PER_DAY = 20;
+  var AHEAD_SIZE = 20, AGAIN_GAP = 3, CARD_XP = 2, CARD_XP_CAP = 60;
+
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
+  function reducedMotion(){ try{ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+
+  /* ---- the scheduler ---- */
+  function clamp(x, lo, hi){ return x < lo ? lo : x > hi ? hi : x; }
+  function dayKey(ms){ var d = new Date(ms); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function midnightPlus(ms, days){ var d = new Date(ms); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + days); return d.getTime(); }
+  function isNew(s){ return !s || !s.t; }
+  function isLearning(s){ return !isNew(s) && s.i === 0; }
+  function isEarly(s, now){ return !isNew(s) && !isLearning(s) && s.d > now; }
+  function next(state, g, now, early){
+    var s = state ? { i: state.i || 0, e: state.e || EASE_START, d: state.d || 0, r: state.r || 0, l: state.l || 0, t: state.t || 0 } : { i: 0, e: EASE_START, d: 0, r: 0, l: 0, t: 0 };
+    if(early && !isNew(state) && g !== AGAIN) return s;
+    var learning = s.i < 1;
+    if(g === AGAIN){ if(!learning){ s.l++; s.e -= 0.2; } s.i = 0; s.r = 0; s.d = now + RELEARN; }
+    else {
+      var ivl;
+      if(learning){ ivl = g === EASY ? 4 : 1; if(g === HARD) s.e -= 0.15; if(g === EASY) s.e += 0.15; }
+      else if(g === HARD){ ivl = Math.max(s.i + 1, Math.round(s.i * 1.2)); s.e -= 0.15; }
+      else if(g === GOOD){ ivl = s.i === 1 ? 3 : Math.max(s.i + 1, Math.round(s.i * s.e)); }
+      else { ivl = Math.max(s.i + 2, Math.round(s.i * s.e * 1.3)); s.e += 0.15; }
+      s.i = Math.min(MAX_IVL, ivl); s.r++; s.d = midnightPlus(now, s.i);
+    }
+    s.e = Math.round(clamp(s.e, EASE_MIN, EASE_MAX) * 100) / 100;
+    s.t = now;
+    return s;
+  }
+  function ivlLabel(s, now){
+    if(s.i === 0) return Math.max(1, Math.round((s.d - now) / MIN)) + 'm';
+    var d = s.i;
+    return d < 14 ? d + 'd' : d < 60 ? Math.round(d / 7) + 'w' : d < 365 ? Math.round(d / 30) + 'mo' : Math.round(d / 36.5) / 10 + 'y';
+  }
+  function blank(){ return { v: 1, cards: {}, fresh: { day: '', n: 0 }, paid: { day: '', xp: 0 } }; }
+  function load(){
+    try{
+      var d = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if(!d || d.v !== 1 || !d.cards || typeof d.cards !== 'object') return blank();
+      if(!d.fresh) d.fresh = { day: '', n: 0 };
+      if(!d.paid) d.paid = { day: '', xp: 0 };
+      return d;
+    }catch(e){ return blank(); }
+  }
+  function save(d){ try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e){} }
+  function introducedToday(d, now){ return d.fresh.day === dayKey(now) ? (d.fresh.n || 0) : 0; }
+  try{
+    var SA = window.StudyHubAccount;
+    if(SA && SA.registerNamespace && SA.mergeCardSchedules){ var mm = {}; mm[KEY] = SA.mergeCardSchedules; SA.registerNamespace('apmicro', [KEY], mm); }
+  }catch(e){}
+
+  /* ---- preferences (apmicro_prefs_v1.flashcards) ---- */
+  var prefs = { deck: 'all', kinds: { t: true, d: true, s: true, f: true } };
+  function readPrefs(){ try{ return JSON.parse(localStorage.getItem(PREFS) || '{}') || {}; }catch(e){ return {}; } }
+  (function(){
+    var p = readPrefs().flashcards;
+    if(p && typeof p === 'object'){
+      if(typeof p.deck === 'string') prefs.deck = p.deck;
+      if(p.kinds && typeof p.kinds === 'object') ['t', 'd', 's', 'f'].forEach(function(k){ if(typeof p.kinds[k] === 'boolean') prefs.kinds[k] = p.kinds[k]; });
+    }
+    var q = new URLSearchParams(location.search);
+    ['topic', 'unit'].forEach(function(k){ if(q.get(k)) prefs.deck = k + ':' + q.get(k); });
+    if(q.get('deck') === 'missed') prefs.deck = 'missed';
+    /* From the Practice panel (docs/course-redesign-r4.md decision 5): ?deck= any deck, ?kinds=t,d (card types), ?new=
+       (new cards a day, kept in the prefs), ?go=1 (start studying at once). */
+    var dk = q.get('deck') || '', kd = q.get('kinds') || '', pd = +(q.get('new') || (readPrefs().flashcards || {}).perDay || 0);
+    /* Practice v2: a deck can be a list (deck=unit:a,unit:b or topic:x,topic:y), and new=0 serves due cards only;
+       neither is kept in the prefs, so the page opened directly is as the student left it. */
+    var listDeck = dk.indexOf(',') > -1;
+    if(/^(all|missed|(unit|topic|chapter|core):[\w-]+(,(unit|topic|chapter|core):[\w-]+)*)$/.test(dk)) prefs.deck = dk;
+    if(/^[a-z,]+$/.test(kd)){ var anyK = false; Object.keys(prefs.kinds).forEach(function(k){ prefs.kinds[k] = kd.split(',').indexOf(k) > -1; anyK = anyK || prefs.kinds[k]; }); if(!anyK) Object.keys(prefs.kinds).forEach(function(k){ prefs.kinds[k] = true; }); }
+    if(pd >= 5 && pd <= 50){ NEW_PER_DAY = pd; prefs.perDay = pd; }
+    else if(q.get('new') === '0') NEW_PER_DAY = 0;
+    if(dk || kd || q.get('new')){ var keepDeck = prefs.deck; if(listDeck) prefs.deck = (readPrefs().flashcards || {}).deck || 'all'; savePrefs(); prefs.deck = keepDeck; }
+    if(q.get('deck') === 'formulas') prefs.deck = 'formulas';
+  })();
+  function savePrefs(){ try{ var all = readPrefs(); all.flashcards = prefs; localStorage.setItem(PREFS, JSON.stringify(all)); }catch(e){} }
+
+  /* ---- the cards ---- */
+  var TOPIC = {}, UNIT = {};
+  CU.topics.forEach(function(t){ TOPIC[t.id] = t; });
+  CU.units.forEach(function(u){ UNIT[u.id] = u; });
+  function built(id){ return !!(TOPIC[id] && TOPIC[id].built); }
+  function unitName(u){ var c = UNIT[u]; return c ? (c.part === 'course' ? 'Unit ' + c.n + ': ' : '') + c.title : u; }
+  var CARDS = [], BY_ID = {}, GLOSS = {}, missedConcepts = null;
+  /* Glossary definitions carry math rendered at build time (<math>...</math>);
+     everything else in them is plain text. rich() escapes the text and keeps
+     the math; maskTerm() masks the term in the text only. */
+  var MATH_SPLIT = /(<math[\s\S]*?<\/math>)/;
+  function rich(s){ return String(s == null ? '' : s).split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : esc(x).replace(/&lt;wbr&gt;/g, '<wbr>'); }).join(''); }
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function maskTerm(def, term){
+    var names = [term.replace(/^the\s+/i, '')], paren = term.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
+    if(paren) names = [paren[1], paren[2]];
+    names.forEach(function(n){
+      n = n.trim();
+      var sym = /[A-Z]/.test(n.slice(1)) || /^[A-Z]{2,}/.test(n);
+      if(n.length < (sym ? 2 : 3)) return;
+      var re = new RegExp('(^|[^\\w-])' + escRe(n) + '(s|es)?(?![\\w-])', sym ? 'g' : 'gi');
+      def = def.split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : x.replace(re, '$1_____'); }).join('');
+    });
+    return def;
+  }
+  function buildCards(gloss, sums, eqs){
+    // Formula cards: ordered after every topic, grouped by the page's sections.
+    (eqs || []).forEach(function(e, i){ CARDS.push({ id: e.id, kind: 'f', topic: e.topic, eq: e, order: 1e6 + i }); });
+    Object.keys(gloss || {}).forEach(function(cid){
+      var g = gloss[cid];
+      if(!g || !g.d || !built(g.p)) return;
+      GLOSS[cid] = g;
+      var b = { topic: g.p, concept: cid, term: g.t, def: g.d, order: TOPIC[g.p].n };
+      CARDS.push(Object.assign({ id: 'gl:' + cid + ':t', kind: 't' }, b));
+      CARDS.push(Object.assign({ id: 'gl:' + cid + ':d', kind: 'd', masked: maskTerm(g.d, g.t) }, b));
+    });
+    Object.keys(sums || {}).forEach(function(t){
+      if(built(t) && sums[t]) CARDS.push({ id: 'sm:' + t, kind: 's', topic: t, back: sums[t], order: TOPIC[t].n + 0.5 });
+    });
+    CARDS.sort(function(a, b){ return a.order - b.order; });
+    CARDS.forEach(function(c){ BY_ID[c.id] = c; });
+  }
+  function inDeck(c, deck){
+    if(deck === 'formulas') return c.kind === 'f';
+    if(!prefs.kinds[c.kind]) return false;
+    if(deck === 'all') return true;
+    if(deck === 'missed') return !!(missedConcepts && c.concept && missedConcepts[c.concept]);
+    if(deck.indexOf(',') > -1) return deck.split(',').some(function(d){ return inDeck(c, d); });
+    var p = deck.split(':');
+    if(p[0] === 'topic') return c.topic === p[1];
+    if(p[0] === 'unit') return c.kind !== 'f' && TOPIC[c.topic] && TOPIC[c.topic].unit === p[1];
+    return true;
+  }
+  function deckCards(deck){ return CARDS.filter(function(c){ return inDeck(c, deck); }); }
+  function deckName(deck){
+    if(deck.indexOf(',') > -1) return deck.indexOf('topic:') === 0 ? 'Your chosen topics' : 'Your chosen ' + (deck.indexOf('chapter:') === 0 ? 'chapters' : 'units');
+    if(deck === 'missed') return 'Terms from questions I missed';
+    if(deck === 'formulas') return 'Formulas you must know';
+    var p = deck.split(':');
+    if(p[0] === 'topic' && TOPIC[p[1]]) return TOPIC[p[1]].title;
+    if(p[0] === 'unit' && UNIT[p[1]]) return unitName(p[1]);
+    return 'Every published topic';
+  }
+  function queueFor(cards, now){
+    var d = load(), due = [], fresh = [], learned = 0, soon = 0, week = midnightPlus(now, 7);
+    cards.forEach(function(c){ var s = d.cards[c.id]; if(isNew(s)) fresh.push(c.id); else { learned++; if(s.d <= now) due.push(c.id); else if(s.d < week) soon++; } });
+    due.sort(function(a, b){ return d.cards[a].d - d.cards[b].d; });
+    var allowance = Math.max(0, NEW_PER_DAY - introducedToday(d, now));
+    return { due: due, fresh: fresh.slice(0, allowance), newTotal: fresh.length, learned: learned, total: cards.length, soon: soon };
+  }
+  function loadMissed(){
+    var ids = window.ApMicroCore ? window.ApMicroCore.missed().filter(function(id){ return /^mic-/.test(id); }) : [];
+    if(!ids.length){ missedConcepts = {}; return Promise.resolve(); }
+    return window.ApMicroCore.loadQuestions(BASE, ids).then(function(qs){
+      var text = qs.map(function(q){ return [q.q].concat(q.options || []).concat((q.variables || []).map(function(v){ return v.name; })).join(' '); }).join(' \n ').replace(/<[^>]+>/g, ' ');
+      var found = {};
+      Object.keys(GLOSS).forEach(function(cid){
+        var t = GLOSS[cid].t.replace(/^the\s+/i, '').replace(/\s*\([^)]*\)\s*$/, '');
+        if(t.length >= 3 && new RegExp('(^|[^\\w-])' + escRe(t) + '(s|es)?(?![\\w-])', 'i').test(text)) found[cid] = 1;
+      });
+      missedConcepts = found;
+    }).catch(function(){ missedConcepts = {}; });
+  }
+
+  /* ---- the deck view ---- */
+  var run = null;
+  function kindCount(k){ return CARDS.filter(function(c){ return c.kind === k; }).length; }
+  function renderHome(){
+    run = null;
+    var now = Date.now();
+    if(!CARDS.length){
+      app.innerHTML = '<div class="mic-fc-empty panel"><h2>No cards yet</h2><p>Cards come from the glossary and lesson summaries of published topics. If you are offline, open this page once while online and it will work offline after that.</p></div>';
+      return;
+    }
+    var cards = deckCards(prefs.deck), q = queueFor(cards, now), todo = q.due.length + q.fresh.length;
+    var units = CU.units.filter(function(u){ return CARDS.some(function(c){ return c.kind !== 'f' && TOPIC[c.topic] && TOPIC[c.topic].unit === u.id; }); });
+    var opt = function(v, label){ return '<option value="' + esc(v) + '"' + (v === prefs.deck ? ' selected' : '') + '>' + esc(label) + '</option>'; };
+    var count = function(pred){ return CARDS.filter(function(c){ return prefs.kinds[c.kind] && pred(c); }).length; };
+    var nf = CARDS.filter(function(c){ return c.kind === 'f'; }).length;
+    var sel = opt('all', 'Every published topic (' + count(function(){ return true; }) + ')') + (nf ? opt('formulas', 'Formulas you must know (' + nf + ')') : '') + opt('missed', 'Terms from questions I missed') +
+      '<optgroup label="Units">' + units.map(function(u){ return opt('unit:' + u.id, unitName(u.id) + ' (' + count(function(c){ return c.kind !== 'f' && TOPIC[c.topic].unit === u.id; }) + ')'); }).join('') + '</optgroup>' +
+      units.map(function(u){
+        var ts = CU.topics.filter(function(t){ return t.unit === u.id && CARDS.some(function(c){ return c.kind !== 'f' && c.topic === t.id; }); });
+        return '<optgroup label="Topics: ' + esc(unitName(u.id)) + '">' + ts.map(function(t){ return opt('topic:' + t.id, (t.ced ? t.ced + ' ' : '') + t.title + ' (' + count(function(c){ return c.topic === t.id; }) + ')'); }).join('') + '</optgroup>';
+      }).join('');
+    var kinds = [['t', 'Term → definition', kindCount('t')], ['d', 'Definition → term', kindCount('d')], ['s', 'Topic summaries', kindCount('s')], ['f', 'Formulas', kindCount('f')]];
+    var missedNote = prefs.deck === 'missed' ? (missedConcepts === null ? '<p class="cx-small">Finding the terms in your missed questions…</p>' : !cards.length ? '<p class="cx-small">No missed terms right now. When you get a question wrong, the glossary terms it uses land in this deck.</p>' : '') : '';
+    var stat = function(v, l, cls){ return LevlStudy.stat(l, v, '', cls); };
+    // By unit: progress across every card in each unit (the list NREMT and
+    // Ochem show by topic area and chapter). A row opens that deck.
+    var dd = load();
+    var byUnit = units.map(function(u, i){
+      var cs = CARDS.filter(function(c){ return c.kind !== 'f' && prefs.kinds[c.kind] && TOPIC[c.topic].unit === u.id; });
+      var learned = 0, due = 0;
+      cs.forEach(function(c){ var st = dd.cards[c.id]; if(!isNew(st)){ learned++; if(st.d <= now) due++; } });
+      var deck = 'unit:' + u.id;
+      return '<button type="button" class="cx-prow" data-deck="' + esc(deck) + '" aria-pressed="' + (prefs.deck === deck) + '">' +
+        '<span class="n">' + esc(unitName(u.id)) + '</span>' +
+        '<span class="c">' + (due ? '<span class="due">' + due + ' due</span> &middot; ' : '') + learned + '/' + cs.length + '</span>' +
+        '<span class="bar" aria-hidden="true"><span style="width:' + (cs.length ? Math.round(learned / cs.length * 100) : 0) + '%"></span></span></button>';
+    }).join('');
+    app.innerHTML = '<div class="cx-main">' +
+      '<section class="cx-card cx-deck" aria-labelledby="mic-fc-deck-h"><h2 id="mic-fc-deck-h">Choose a deck</h2>' +
+        '<label class="cx-field" for="mic-fc-deck"><span>Deck</span><select id="mic-fc-deck">' + sel + '</select></label>' +
+        '<fieldset class="cx-group mic-fc-kinds"><legend>Card types</legend><div class="cx-pills">' + kinds.map(function(k){
+          return '<label class="cx-pill"><input type="checkbox" value="' + k[0] + '"' + (prefs.kinds[k[0]] ? ' checked' : '') + '><span>' + esc(k[1]) + ' <small>' + k[2] + '</small></span></label>';
+        }).join('') + '</div></fieldset>' + missedNote + '</section>' +
+      '<section class="cx-card cx-deckcard" aria-labelledby="mic-fc-today-h"><h2 id="mic-fc-today-h">' + esc(deckName(prefs.deck)) + '</h2>' +
+        '<div class="cx-stats">' + stat(q.due.length, 'Due now', q.due.length ? 'is-due' : '') + stat(q.fresh.length, 'New today') + stat(q.learned, 'Learned') + stat(q.total, 'In this deck') + '</div>' +
+        '<p class="cx-small">' + (q.soon ? plural(q.soon, 'card') + ' coming due in the next 7 days. ' : '') + (q.newTotal > q.fresh.length ? plural(q.newTotal - q.fresh.length, 'more new card') + ' will be introduced on later days (' + NEW_PER_DAY + ' a day keeps reviews manageable).' : '') + '</p>' +
+        '<div class="cx-actions">' + (todo ? '<button type="button" class="btn-press" data-act="study">Study ' + plural(todo, 'card') + '</button>' : '<p class="cx-caught">' + (q.total ? 'You are caught up on this deck.' : 'This deck has no cards with the card types chosen.') + '</p>') +
+          (q.learned && !q.due.length ? '<button type="button" class="btn-outline" data-act="ahead">Study ahead</button>' : '') + '</div>' +
+        '<p class="cx-how">Grade yourself honestly: <b>Again</b> if you did not know it, <b>Hard</b> if it took effort, <b>Good</b> if you knew it, <b>Easy</b> if it was instant. Cards do not change your mastery scores; questions do.</p></section>' +
+      (byUnit ? '<section aria-labelledby="mic-fc-u-h"><h2 class="cx-h2" id="mic-fc-u-h">By unit</h2><div class="cx-card cx-plist">' + byUnit + '</div></section>' : '') +
+    '</div>';
+    app.querySelectorAll('[data-deck]').forEach(function(b){
+      b.addEventListener('click', function(){
+        prefs.deck = b.getAttribute('data-deck'); savePrefs(); renderHome();
+        var h = document.getElementById('mic-fc-today-h'); if(h){ h.setAttribute('tabindex', '-1'); h.focus(); }
+      });
+    });
+    var s = document.getElementById('mic-fc-deck');
+    s.addEventListener('change', function(){
+      prefs.deck = s.value; savePrefs();
+      if(prefs.deck === 'missed' && missedConcepts === null){ renderHome(); loadMissed().then(function(){ renderHome(); var x = document.getElementById('mic-fc-deck'); if(x) x.focus(); }); return; }
+      renderHome(); document.getElementById('mic-fc-deck').focus();
+    });
+    app.querySelectorAll('.mic-fc-kinds input').forEach(function(cb){
+      cb.addEventListener('change', function(){
+        prefs.kinds[cb.value] = cb.checked;
+        if(!prefs.kinds.t && !prefs.kinds.d && !prefs.kinds.s) prefs.kinds[cb.value] = true;
+        savePrefs(); renderHome();
+        var again = app.querySelector('.mic-fc-kinds input[value="' + cb.value + '"]'); if(again) again.focus();
+      });
+    });
+    var study = app.querySelector('[data-act="study"]');
+    if(study) study.addEventListener('click', function(){ start(q.due.concat(q.fresh), 'scheduled'); });
+    var ahead = app.querySelector('[data-act="ahead"]');
+    if(ahead) ahead.addEventListener('click', function(){
+      var d = load();
+      start(cards.filter(function(c){ return !isNew(d.cards[c.id]); }).sort(function(a, b){ return d.cards[a.id].d - d.cards[b.id].d; }).slice(0, AHEAD_SIZE).map(function(c){ return c.id; }), 'ahead');
+    });
+  }
+
+  /* ---- a session ---- */
+  function start(ids, mode){
+    if(!ids.length) return;
+    run = { queue: ids.slice(), mode: mode, total: ids.length, done: 0, flipped: false, counts: [0, 0, 0, 0, 0], paidIds: {}, paid: 0, seen: {}, first: {}, from: {}, deck: prefs.deck };
+    showCard();
+  }
+  function frontHtml(c){
+    if(c.kind === 'f') return '<p class="mic-fc-ask">Write the formula, then check.</p><p class="mic-fc-q mic-fc-q-def">' + c.eq.front + '</p><p class="mic-fc-a-sub">' + c.eq.cue + '</p>';
+    if(c.kind === 't') return '<p class="mic-fc-ask">What does this term mean?</p><p class="mic-fc-q">' + esc(c.term) + '</p>';
+    if(c.kind === 'd') return '<p class="mic-fc-ask">Which term is this?</p><p class="mic-fc-q mic-fc-q-def">' + rich(c.masked) + '</p>';
+    return '<p class="mic-fc-ask">Sum up this topic in two or three sentences, then check.</p><p class="mic-fc-q mic-fc-q-def">' + esc(TOPIC[c.topic].title) + '</p>';
+  }
+  function backHtml(c){
+    var t = TOPIC[c.topic];
+    if(c.kind === 'f') return '<p class="mic-fc-a mic-fc-eq">' + c.eq.formula + '</p><p class="mic-fc-a-sub"><b>Worked:</b> ' + c.eq.worked + '</p><p class="mic-fc-a-sub"><b>Trap:</b> ' + c.eq.trap + '</p>' +
+      '<p class="mic-fc-from">' + (t && t.built ? 'Taught in <a href="' + esc(BASE + 'notes/' + c.topic + '.html') + '">' + esc(t.title) + '</a> &middot; ' : '') + '<a href="' + esc(BASE + 'formula-sheet.html') + '">all formulas</a>' +
+      (window.LevlReport ? ' <span class="mic-fc-report">' + window.LevlReport.button('apmicro', c.id) + '</span>' : '') + '</p>';
+    var body = c.kind === 't' ? '<p class="mic-fc-a">' + rich(c.def) + '</p>' : c.kind === 'd' ? '<p class="mic-fc-a mic-fc-a-term">' + esc(c.term) + '</p><p class="mic-fc-a-sub">' + rich(c.def) + '</p>' : '<p class="mic-fc-a">' + rich(c.back) + '</p>';
+    return body + '<p class="mic-fc-from">Taught in <a href="' + esc(BASE + 'lessons/' + c.topic + '.html') + '">' + esc(t.title) + '</a> &middot; <a href="' + esc(BASE + 'notes/' + c.topic + '.html') + '">notes</a>' +
+      (window.LevlReport ? ' <span class="mic-fc-report">' + window.LevlReport.button('apmicro', c.id) + '</span>' : '') + '</p>';
+  }
+  function showCard(){
+    if(!run.queue.length){ finish(); return; }
+    var c = BY_ID[run.queue[0]];
+    if(!c){ run.queue.shift(); showCard(); return; }
+    run.flipped = false;
+    var s = load().cards[c.id];
+    var st = isNew(s) ? '<span class="mic-fc-tag new">New</span>' : isLearning(s) ? '<span class="mic-fc-tag learn">Learning</span>' : '<span class="mic-fc-tag">Review</span>';
+    var p = Math.round(run.done / Math.max(1, run.done + run.queue.length) * 100);
+    app.innerHTML = '<div class="cx-session mic-fc-session"><div class="cx-sbar"><span class="cx-sbar-t">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : run.mode === 'retry' ? ' &middot; missed cards' : '') + '</span><span class="cx-sbar-n">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span><button type="button" class="cx-end" data-act="quit">End session</button></div>' +
+      '<div class="cx-progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></div>' +
+      '<div class="mic-fc-card" id="mic-fc-card"><button type="button" class="mic-fc-face mic-fc-front" data-act="flip" aria-describedby="mic-fc-hint"><span class="mic-fc-meta">' + st + '<span class="mic-fc-tag">' + (c.kind === 's' ? 'Summary' : c.kind === 'f' ? 'Formula' : 'Glossary') + '</span><span>' + esc(c.kind === 'f' ? c.eq.group : TOPIC[c.topic].title) + '</span></span>' +
+        frontHtml(c) + '<span class="mic-fc-tap" id="mic-fc-hint">Tap or press Space to show the answer</span></button></div>' +
+      '<p class="mic-fc-keys" aria-hidden="true"><kbd>Space</kbd> flip &middot; <kbd>1</kbd> Again &middot; <kbd>2</kbd> Hard &middot; <kbd>3</kbd> Good &middot; <kbd>4</kbd> Easy</p><p class="sr-only" aria-live="polite" id="mic-fc-live"></p></div>';
+    app.querySelector('[data-act="quit"]').addEventListener('click', function(){ finish(true); });
+    var front = app.querySelector('[data-act="flip"]');
+    front.addEventListener('click', flip);
+    front.focus({ preventScroll: true });
+  }
+  function flip(){
+    if(!run || run.flipped) return;
+    run.flipped = true;
+    var c = BY_ID[run.queue[0]], now = Date.now(), s = load().cards[c.id] || null, early = isEarly(s, now);
+    var card = document.getElementById('mic-fc-card'), front = card.querySelector('.mic-fc-front');
+    var frontInner = front.innerHTML.replace(/<span class="mic-fc-tap"[\s\S]*?<\/span>/, '');
+    var grades = [1, 2, 3, 4].map(function(g){
+      var stt = next(s, g, now, early), when = early && g !== AGAIN && !isNew(s) ? 'no change' : ivlLabel(stt, now);
+      return '<button type="button" class="mic-fc-g g' + g + '" data-g="' + g + '"><span>' + GRADES[g].label + '</span><small>' + when + '</small></button>';
+    }).join('');
+    card.innerHTML = '<div class="mic-fc-face mic-fc-back" tabindex="-1" aria-labelledby="mic-fc-ans-h"><div class="mic-fc-prompt">' + frontInner + '</div><h3 class="sr-only" id="mic-fc-ans-h">Answer</h3><div class="mic-fc-answer">' + backHtml(c) + '</div></div>' +
+      '<div class="mic-fc-grades" role="group" aria-label="How well did you know it?">' + grades + '</div>';
+    if(!reducedMotion()){ card.classList.remove('is-turning'); void card.offsetWidth; card.classList.add('is-turning'); }
+    card.querySelectorAll('.mic-fc-g').forEach(function(b){ b.addEventListener('click', function(){ grade(+b.getAttribute('data-g')); }); });
+    var live = document.getElementById('mic-fc-live'); if(live) live.textContent = 'Answer shown. Grade it: 1 Again, 2 Hard, 3 Good, 4 Easy.';
+    card.querySelector('.mic-fc-back').focus({ preventScroll: true });
+  }
+  function grade(g){
+    if(!run || !run.flipped) return;
+    var id = run.queue.shift(), now = Date.now(), d = load(), prev = d.cards[id] || null, wasNew = isNew(prev), early = isEarly(prev, now);
+    if(!(id in run.first)){ run.first[id] = g; run.from[id] = isNew(prev) ? 0 : prev.i || 0; }
+    d.cards[id] = next(prev, g, now, early);
+    if(wasNew){ var today = dayKey(now); if(d.fresh.day !== today) d.fresh = { day: today, n: 0 }; d.fresh.n++; }
+    save(d);
+    run.counts[g]++;
+    if(!early && run.mode === 'scheduled' && !run.paidIds[id]){ run.paidIds[id] = 1; run.paid++; }
+    if(!run.seen[id]){ run.seen[id] = 1; run.done++; }
+    if(g === AGAIN) run.queue.splice(Math.min(AGAIN_GAP, run.queue.length), 0, id);
+    showCard();
+  }
+  function settle(){
+    if(!run || !run.paid) return 0;
+    var n = run.paid; run.paid = 0;
+    var d = load(), today = dayKey(Date.now());
+    if(d.paid.day !== today) d.paid = { day: today, xp: 0 };
+    var xp = Math.min(n * CARD_XP, Math.max(0, CARD_XP_CAP - d.paid.xp));
+    d.paid.xp += xp; save(d);
+    try{ if(window.HubProgress){ if(xp) window.HubProgress.award('apmicro', xp); window.HubProgress.recordActivity('apmicro', n); } }catch(e){}
+    return xp;
+  }
+  window.addEventListener('pagehide', function(){ if(run) settle(); });
+  /* The end of a session: the shared score card (docs/score-card.md, LevlStudy.end). A card counts as known when
+     its first grade this session was not Again; it moved up a box when its interval is longer now than when the
+     session met it. The missed list shows each card's front and back, and when it comes back. */
+  function whenLabel(t, now){
+    var m = Math.round((t - now) / MIN);
+    if(m < 60) return 'in ' + plural(Math.max(1, m), 'minute');
+    if(dayKey(t) === dayKey(now)) return 'later today';
+    var days = Math.round((midnightPlus(t, 0) - midnightPlus(now, 0)) / 864e5);
+    return days === 1 ? 'tomorrow' : 'in ' + days + ' days';
+  }
+  function cardBits(c){
+    var f = document.createElement('div'), b = document.createElement('div');
+    f.innerHTML = frontHtml(c); b.innerHTML = backHtml(c);
+    var q = f.querySelector('.mic-fc-q'), a = b.querySelector(c.kind === 'd' ? '.mic-fc-a-term' : '.mic-fc-a'), l = b.querySelector('.mic-fc-from a');
+    return { stem: q ? q.innerHTML : '', ans: a ? a.innerHTML : '', href: l ? l.getAttribute('href') : '', name: l ? l.textContent : '' };
+  }
+  /* A long back (a summary, a worked answer) shows its first sentence in the row and the whole of it when opened. */
+  function brief(h){
+    var t = String(h || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if(t.length <= 140) return [h, ''];
+    var m = t.match(/^.{20,140}?[.;:](?=\s|$)/);
+    return [esc(m ? m[0] : t.slice(0, 120).trim() + '\u2026'), h];
+  }
+  function finish(quit){
+    if(!run) return;
+    var r = run, xp = settle(), graded = r.counts[1] + r.counts[2] + r.counts[3] + r.counts[4];
+    if(graded && window.ApMicroCore) window.ApMicroCore.event('apmicro-session-finish', { mode: 'flashcards', answered: graded, correct: graded - r.counts[1] });
+    run = null;
+    var now = Date.now(), cards = deckCards(r.deck), q = queueFor(cards, now), d = load(), todo = q.due.length + q.fresh.length;
+    var seen = Object.keys(r.first), missIds = seen.filter(function(id){ return r.first[id] === AGAIN; });
+    var up = seen.filter(function(id){ var s = d.cards[id]; return s && (s.i || 0) > r.from[id]; }).length;
+    var nextDue = 0, back = 0;
+    cards.forEach(function(c){ var s = d.cards[c.id]; if(!isNew(s) && s.d > now && (!nextDue || s.d < nextDue)) nextDue = s.d; });
+    missIds.forEach(function(id){ var s = d.cards[id]; if(s && s.d > now && (!back || s.d < back)) back = s.d; });
+    var tally = [4, 3, 2, 1].filter(function(g){ return r.counts[g]; }).map(function(g){ return r.counts[g] + ' ' + GRADES[g].label; }).join(', ');
+    var byTopic = {}, order = [];
+    seen.forEach(function(id){
+      var c = BY_ID[id]; if(!c) return;
+      var t = byTopic[c.topic];
+      if(!t){ var bits = cardBits(c); t = byTopic[c.topic] = { name: TOPIC[c.topic] ? TOPIC[c.topic].title : bits.name, href: bits.href, c: 0, n: 0, mastery: null }; t.links = bits.href ? [{ label: 'Lesson', href: bits.href }] : []; order.push(t); }
+      t.n++; if(r.first[id] !== AGAIN) t.c++;
+    });
+    var practice = { href: BASE + 'practice.html', label: 'Practice questions' };
+    function home(){ renderHome(); var s = document.getElementById('mic-fc-deck'); if(s) s.focus(); }
+    app.innerHTML = '<div class="mic-fc-end">' + LevlStudy.end({
+      kind: 'Flashcards', unit: 'knew it', right: seen.length - missIds.length, total: seen.length,
+      hand: !graded ? 'No cards graded this time.' : up ? plural(up, 'card') + ' moved up a box' : null,
+      chips: [quit && r.done < r.total ? 'Ended early' : '', q.fresh.length ? plural(q.fresh.length, 'new card') + ' left today' : '',
+        q.due.length ? q.due.length + ' due now' : nextDue ? 'Next due ' + whenLabel(nextDue, now) : '', tally, xp ? '+' + xp + ' XP' : ''],
+      sub: r.mode === 'ahead' && graded ? 'Studying ahead earns no XP' : '',
+      missedTitle: back ? 'Back ' + whenLabel(back, now) : 'Missed at first',
+      missed: missIds.map(function(id){ var c = BY_ID[id]; if(!c) return null; var b = cardBits(c), a = brief(b.ans); return { stem: b.stem, you: '', ans: a[0], why: a[1], youWhy: '', href: b.href }; }),
+      step: todo ? { act: 'more', label: 'Study ' + plural(todo, q.due.length ? 'card' : 'new card') } : practice,
+      retry: missIds.length ? { act: 'retry', label: 'Retry ' + plural(missIds.length, 'miss', 'misses') } : null,
+      also: [{ act: 'home', label: 'Change the deck' }, todo ? practice : null],
+      nextTitle: 'Topics', next: order.length > 1 ? LevlStudy.topics(order) : ''
+    }) + '</div>';
+    LevlStudy.wire(app, {
+      more: function(){ start(q.due.concat(q.fresh), 'scheduled'); },
+      retry: function(){ start(missIds, 'retry'); },
+      home: home
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if(!run || e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target, tag = t && t.tagName;
+    if(tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+    if(t && t.closest && t.closest('.auth-modal, [role="dialog"]')) return;
+    if(e.key === ' ' || e.key === 'Enter'){
+      if((tag === 'BUTTON' && !t.hasAttribute('data-act')) || tag === 'A') return;
+      if(tag === 'BUTTON' && t.getAttribute('data-act') !== 'flip') return;
+      if(!run.flipped){ e.preventDefault(); flip(); }
+    } else if(/^[1-4]$/.test(e.key) && run.flipped){ e.preventDefault(); grade(+e.key); }
+  });
+
+  app.innerHTML = '<div class="mic-fc-loading panel" aria-busy="true"><p>Shuffling the deck…</p></div>';
+  function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(){ return null; }); }
+  Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/summaries.json'), getJson(BASE + 'assets/formulas.json')]).then(function(res){
+    buildCards(glossMap(res[0]), res[1], res[2]);
+    if(!(prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length)) prefs.deck = 'all';
+    function fcGo(){
+      if(!/[?&]go=1/.test(location.search)) return;
+      try{ history.replaceState(null, '', location.pathname); }catch(e){}
+      var b = app.querySelector('[data-act="study"]'); if(b) b.click();
+    }
+    if(prefs.deck === 'missed') return loadMissed().then(function(){ renderHome(); fcGo(); });
+    renderHome(); fcGo();
+  });
+})();

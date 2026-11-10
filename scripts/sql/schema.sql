@@ -79,7 +79,7 @@ begin
   -- Validated here rather than trusted from the browser. This function is
   -- reachable by anyone who can open the site, so the only things that stop it
   -- becoming a free text-storage service are these bounds.
-  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug') then
     raise exception 'unknown course';
   end if;
   if p_reason not in ('wrong-answer', 'unclear', 'typo', 'outdated', 'other') then
@@ -576,7 +576,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug') then
     raise exception 'unknown course';
   end if;
   if p_email is null or length(p_email) > 254
@@ -612,7 +612,7 @@ create table if not exists public.premium_passes (
   id          bigint generated always as identity primary key,
   created_at  timestamptz not null default now(),
   user_id     uuid not null references auth.users (id) on delete cascade,
-  course      text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')),
+  course      text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')),
   pass        text not null,          -- 'nremt-90', 'ochem-semester', 'grant', …
   starts_at   timestamptz not null default now(),
   expires_at  timestamptz not null,
@@ -741,7 +741,7 @@ alter table public.premium_guarantee_claims enable row level security;
 -- ---------------------------------------------------------------------------
 create table if not exists public.premium_funnel (
   day    date not null default current_date,
-  course text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')),
+  course text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')),
   step   text not null check (step in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid')),
   n      integer not null default 0,
   primary key (day, course, step)
@@ -756,7 +756,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')
      or p_step is null or p_step not in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start') then
     return;
   end if;
@@ -993,7 +993,7 @@ declare
   v_start timestamptz;
   v_end timestamptz;
 begin
-  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')
+  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')
      or p_pass is null or p_days is null or p_days < 1 or p_days > 400
      or (p_until is not null and p_until > now() + interval '400 days') then
     raise exception 'bad pass';
@@ -1084,7 +1084,7 @@ $$;
 create table if not exists public.exam_completions (
   id          bigint generated always as identity primary key,
   user_id     uuid not null references auth.users (id) on delete cascade,
-  course      text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')),
+  course      text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')),
   questions   integer not null check (questions between 1 and 300),
   finished_at timestamptz not null default now()
 );
@@ -1103,7 +1103,7 @@ as $$
 declare
   v_uid uuid := auth.uid();
 begin
-  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug')
+  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug')
      or p_questions is null or p_questions < 1 or p_questions > 300 then
     return false;
   end if;
@@ -1141,7 +1141,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug') then
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug') then
     return;
   end if;
   insert into public.premium_funnel (course, step, n)
@@ -3480,7 +3480,7 @@ begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
   -- The ten AP® courses, EMT (nremt), organic chemistry (ochem) and A&P (anp).
-  if p_course !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|aphug|nremt|ochem|anp)$' then return null; end if;
+  if p_course !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|apmicro|aphug|nremt|ochem|anp)$' then return null; end if;
   if p_name is null or length(btrim(p_name)) < 1 or length(p_name) > 60 then return null; end if;
   if (select count(*) from public.classes where teacher_id = auth.uid() and not archived) >= 30 then return null; end if;
   insert into public.classes (teacher_id, course, name, code, unit_order)
@@ -3504,7 +3504,7 @@ declare
 begin
   if auth.uid() is null then return null; end if;
   if not exists (select 1 from public.teacher_profiles where user_id = auth.uid()) then return null; end if;
-  if coalesce(p_data->>'course', '') !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|aphug|nremt|ochem|anp)$' then return null; end if;
+  if coalesce(p_data->>'course', '') !~ '^(apbio|apchem|apphys|apcalc|apcalcbc|apstat|apenv|appsych|apprecalc|apmacro|apmicro|aphug|nremt|ochem|anp)$' then return null; end if;
   if length(coalesce(p_data->>'q', '')) not between 1 and 2000 then return null; end if;
   if jsonb_typeof(p_data->'options') <> 'array' then return null; end if;
   n := jsonb_array_length(p_data->'options');
@@ -3606,7 +3606,7 @@ revoke all on public.free_usage from anon, authenticated;
 create or replace function public.free_usage_course_ok(p_course text)
 returns boolean language sql immutable as $$
   select p_course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych',
-                      'apprecalc', 'apcalcbc', 'apmacro', 'aphug');
+                      'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug');
 $$;
 
 -- A local date the browser may claim: within a day of the server's, either way (time zones).

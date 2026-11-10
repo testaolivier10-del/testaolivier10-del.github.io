@@ -1,0 +1,17 @@
+{
+ "lorenz": {
+  "def": "Placeholder: a curve of cumulative income share against cumulative household share."
+ },
+ "gini": {
+  "def": "Placeholder: the area between the line of equality and the Lorenz curve over the area under the line."
+ },
+ "progressive-tax": {
+  "def": "Placeholder: a tax that takes a larger share of a larger income."
+ },
+ "transfer-payment": {
+  "def": "Placeholder: a payment from the government that buys no good or service in return."
+ },
+ "income-wealth": {
+  "def": "Placeholder: an unequal spread of income or of wealth across households."
+ }
+}

@@ -80,9 +80,11 @@ What a fresh session needs to know:
   `scripts/lib/aphug-build.mjs` (plus the CSS values in `hug.css` and `assets/theme.css`, the ranks in
   `assets/hub-progress.js`, the home words in `scripts/lib/course-homes.json` and `COURSES.aphug` in
   `assets/premium.js`), the free trainers in `human-geography/data/pages.json`.
-- Accent (provisional): berry, hue 320°, clear of every other course's accent and cover hue in `assets/theme.css`. Light `--cink #741B56` on `--ctint #F8E7F3` (8.7:1; 9.8:1 on the page); dark
-  `--cink #F4BEE2` on the card (10.7:1) and on its tint `rgba(220,100,180,0.10)` (9.5:1); soft `#E699CC`. Cover
-  `#7A1F5C` with accent `#FFD166`; the icon is a globe with meridians.
+- Accent (provisional): deep ocean teal, hue 188°, in the gap between NREMT's teal (174°) and Psychology's
+  cerulean (202°), clear of every other course including AP® Microeconomics (319°). Light `--cink #094953` on
+  `--ctint #E1F1F4` (8.7:1; 9.5:1 on the page); dark `--cink #A8DEE6` on the card (11.5:1) and on its tint
+  `rgba(80,190,205,0.10)` (9.6:1); soft `#8CCFD9`. Cover clay `#7A3310` with light teal `#8FE3EE`; the icon is a
+  globe with meridians.
 - Free tier (spec decision 6): the skills chapter, Unit 1 and Topics 2.1 to 2.5 (15 of 71 topics, 21%).
 - Base maps: `human-geography/figures/base/` from Natural Earth 1:110m (`world-atlas` 2.0.2), rebuilt by
   `node scripts/build-aphug-basemaps.mjs --atlas <countries-110m.json>`; the regions are ours (needs-author `regions`).

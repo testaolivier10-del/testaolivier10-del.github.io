@@ -48,6 +48,7 @@
     { key: 'apprecalc', dir: 'precalculus' },
     { key: 'apcalcbc', dir: 'calculus-bc' },
     { key: 'apmacro', dir: 'macroeconomics' },
+    { key: 'apmicro', dir: 'microeconomics' },
     { key: 'aphug', dir: 'human-geography' },
   ];
   // courses:end
@@ -191,6 +192,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Microeconomics's, the same way (scripts/build-apmicro.mjs).
+  function micPages(){
+    return fetch('/microeconomics/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/microeconomics/glossary.html', title: 'Glossary', data: '/microeconomics/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   // AP® Human Geography's, the same way (scripts/build-aphug.mjs).
   function hugPages(){
     return fetch('/human-geography/assets/notes-index.json')
@@ -213,6 +222,7 @@
     if(k === 'appsych') return psyPages();
     if(k === 'apprecalc') return pcalcPages();
     if(k === 'apmacro') return macPages();
+    if(k === 'apmicro') return micPages();
     if(k === 'aphug') return hugPages();
     return Promise.resolve(NREMT_PAGES);
   }
@@ -232,6 +242,7 @@
     if(k === 'appsych') return '<a href="/psychology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apprecalc') return '<a href="/precalculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apmacro') return '<a href="/macroeconomics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apmicro') return '<a href="/microeconomics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'aphug') return '<a href="/human-geography/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
@@ -1184,6 +1195,12 @@
       'How do I use the multiplier to close a recessionary gap?',
       'Which way do I label the axes of a foreign exchange graph?'
     ],
+    apmicro: [
+      'Why does MC cross ATC at its minimum?',
+      'Where does a monopolist read its price?',
+      'How do I show a dominant strategy with both comparisons?',
+      'Which area is the deadweight loss of a tax?'
+    ],
     aphug: [
       'What is the difference between scale of analysis and map scale?',
       'How do I tell physiological density from arithmetic density?',
@@ -1205,6 +1222,7 @@
     apenv: 'Ask me anything from this course: every published Environmental Science notes page and the glossary are indexed. I can define a term, explain a calculation or a cause-and-effect chain step by step, or point you at the page it came from.',
     appsych: 'Ask me anything from this course: every published Psychology notes page and the glossary are indexed. I can define a term, apply a concept to a situation, or point you at the page it came from.',
     apmacro: 'Ask me anything from this course: every published Macroeconomics notes page and the glossary are indexed. I can define a term, walk a policy through its causal chain, or point you at the page it came from.',
+    apmicro: 'Ask me anything from this course: every published Microeconomics notes page and the glossary are indexed. I can define a term, walk a graph through its shift or its areas, or point you at the page it came from.',
     aphug: 'Ask me anything from this course: every published Human Geography notes page and the glossary are indexed. I can define a term, apply a model to a real place, or point you at the page it came from.',
     apprecalc: 'Ask me anything from this course: every published Precalculus notes page and the glossary are indexed. I can define a term, work through a function step by step, or point you at the page it came from.'
   };

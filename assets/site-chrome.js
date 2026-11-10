@@ -138,6 +138,7 @@
     { key: 'apprecalc', short: 'Precalculus', dir: 'precalculus' },
     { key: 'apcalcbc', short: 'Calculus BC', dir: 'calculus-bc' },
     { key: 'apmacro', short: 'Macroeconomics', dir: 'macroeconomics' },
+    { key: 'apmicro', short: 'Microeconomics', dir: 'microeconomics' },
     { key: 'aphug', short: 'Human Geography', dir: 'human-geography' },
   ];
   // courses:end
@@ -1082,7 +1083,7 @@
   /* Teacher classes (docs/teacher-classes.md): on a course page (AP®, NREMT, ochem, A&P), for someone
      signed in, fetch the student's side of classes. It does nothing for a
      student in no class of this course beyond one cached read. */
-  var CLASS_DIRS = /^\/(bio|chem|physics|calculus|calculus-bc|statistics|environmental-science|psychology|precalculus|macroeconomics|nremt|ochem|anatomy-physiology)\//;
+  var CLASS_DIRS = /^\/(bio|chem|physics|calculus|calculus-bc|statistics|environmental-science|psychology|precalculus|macroeconomics|microeconomics|nremt|ochem|anatomy-physiology)\//;
   function classBoot(){
     if(!CLASS_DIRS.test(location.pathname)) return;
     var signedIn = false;

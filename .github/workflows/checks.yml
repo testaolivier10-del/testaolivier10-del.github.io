@@ -236,6 +236,18 @@ jobs:
         run: node scripts/build-apmacro.mjs --check
       - name: the AP Macroeconomics content follows its rules
         run: node scripts/check-apmacro-content.mjs --check
+      # AP Microeconomics, the same three checks (docs/apmicro-architecture.md):
+      # the ordering rule, the generated pages against microeconomics/data, and
+      # the authored data against its rules (keys recomputed by ApMicroCalc,
+      # graph and matrix items whose key the grader itself scores right, the
+      # long and short FRQs with their graph parts, pre-registered tools).
+      # Only published units fail.
+      - name: the AP Microeconomics course uses no concept before it is taught
+        run: node scripts/check-apmicro-map.mjs --check
+      - name: the AP Microeconomics pages match their data
+        run: node scripts/build-apmicro.mjs --check
+      - name: the AP Microeconomics content follows its rules
+        run: node scripts/check-apmicro-content.mjs --check
       # AP Human Geography, the same three checks (docs/aphug-architecture.md):
       # the ordering rule, the generated pages against human-geography/data,
       # and the authored data against its rules (keys recomputed by

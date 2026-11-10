@@ -1064,6 +1064,7 @@
     { storagePrefix: 'apprecalc_' },
     { storagePrefix: 'apcalcbc_' },
     { storagePrefix: 'apmacro_' },
+    { storagePrefix: 'apmicro_' },
     { storagePrefix: 'aphug_' },
   ];
   // courses:end
@@ -1975,6 +1976,7 @@
     { key: 'apprecalc', path: '/precalculus/' },
     { key: 'apcalcbc', path: '/calculus-bc/' },
     { key: 'apmacro', path: '/macroeconomics/' },
+    { key: 'apmicro', path: '/microeconomics/' },
     { key: 'aphug', path: '/human-geography/' },
   ];
   // courses:end
