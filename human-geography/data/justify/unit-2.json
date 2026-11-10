@@ -379,15 +379,15 @@
    "practice": "3.A",
    "skill": "legend",
    "title": "Reading a fertility legend",
-   "context": "<p>A world map shades countries by total fertility rate in four classes: under 1.5, 1.5 to 2.0, 2.1 to 2.9, and 3.0 or more children per woman (invented values for practice).</p>",
-   "prompt": "<b>Explain</b> what being in the 1.5 to 2.0 class suggests about a country's future population.",
+   "context": "<p>A world map shades countries by total fertility rate in four classes: under 1.5, 1.5 to under 2.1, 2.1 to under 3.0, and 3.0 or more children per woman (invented values for practice).</p>",
+   "prompt": "<b>Explain</b> what being in the 1.5 to under 2.1 class suggests about a country's future population.",
    "checklist": [
     "Reads the class: below about 2.1 children per woman",
     "Ties it to replacement level",
     "Explains the effect over time, without migration"
    ],
    "earns": {
-    "answer": "A country in the 1.5 to 2.0 class has a total fertility rate below 2.1, about the replacement level where deaths are low, so each generation is smaller than the one before, and without migration its population will age and eventually shrink.",
+    "answer": "A country in the 1.5 to under 2.1 class has a total fertility rate below 2.1, about the replacement level where deaths are low, so each generation is smaller than the one before, and without migration its population will age and eventually shrink.",
     "why": "It reads the class, links it to replacement level and explains the effect."
    },
    "misses": {

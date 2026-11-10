@@ -33,7 +33,7 @@
    "label": "A",
    "verb": "identify",
    "points": 1,
-   "prompt": "Identify the type of region that the whole metro area shown forms, at the regional scale, when it is defined by commuting to jobs.",
+   "prompt": "Identify the type of region that the whole metro area shown forms when it is defined by commuting to jobs.",
    "rubric": [
     {
      "point": "Identifies a functional region (also called a nodal region).",

@@ -132,17 +132,17 @@
   var ZONES = [
     { id: 'ts', name: 'Territorial sea', to: 12, rights: 'The coastal state\'s laws apply, as on land; foreign ships may pass through peacefully (innocent passage).' },
     { id: 'cz', name: 'Contiguous zone', to: 24, rights: 'The coastal state may enforce its customs, tax, immigration and health laws.' },
-    { id: 'eez', name: 'Exclusive economic zone', to: 200, rights: 'The coastal state controls the fish, oil, gas and other resources; ships of every country may sail through.' },
+    { id: 'eez', name: 'Exclusive economic zone', to: 200, rights: 'Measured from the baseline out to 200 nautical miles, beyond the territorial sea (so its first part overlaps the contiguous zone): the coastal state controls the fish, oil, gas and other resources; ships of every country may sail through.' },
     { id: 'hs', name: 'High seas', to: Infinity, rights: 'No state controls them; they are open to every country (international waters).' }
   ];
   function zoneAt(nm){ for(var i = 0; i < ZONES.length; i++) if(nm <= ZONES[i].to) return ZONES[i]; return ZONES[3]; }
   function seaModel(){
     return { layout: 'stages', title: 'Zones of the sea, from the coast outward (UNCLOS)', unit: 'zone',
-      slots: [{ id: 'z1', name: 'Baseline to 12 nautical miles' }, { id: 'z2', name: '12 to 24 nautical miles' }, { id: 'z3', name: '24 to 200 nautical miles' }, { id: 'z4', name: 'Beyond 200 nautical miles' }],
+      slots: [{ id: 'z1', name: 'Baseline to 12 nautical miles' }, { id: 'z2', name: '12 to 24 nautical miles' }, { id: 'z3', name: '12 to 200 nautical miles (overlaps the contiguous zone out to 24)' }, { id: 'z4', name: 'Beyond 200 nautical miles' }],
       pieces: [{ id: 'ts', text: 'Territorial sea' }, { id: 'cz', text: 'Contiguous zone' }, { id: 'eez', text: 'Exclusive economic zone' }, { id: 'hs', text: 'High seas' }, { id: 'dmz', text: 'Demilitarized zone' }],
       key: { z1: 'ts', z2: 'cz', z3: 'eez', z4: 'hs' },
       slips: [{ piece: 'eez', slot: 'z1', why: 'The EEZ reaches out to 200 nautical miles. The first 12, where the state\'s laws apply in full, are the territorial sea.' },
-        { piece: 'ts', slot: 'z3', why: 'The territorial sea is only the first 12 nautical miles. Out to 200 is the exclusive economic zone.' },
+        { piece: 'ts', slot: 'z3', why: 'The territorial sea is only the first 12 nautical miles. The exclusive economic zone runs from the edge of the territorial sea out to 200.' },
         { piece: 'dmz', slot: 'z4', why: 'A demilitarized zone is a strip where armies may not go, usually on land. Beyond 200 nautical miles are the high seas.' }] };
   }
   var SHIPS = [

@@ -174,7 +174,7 @@
     spec = expand(spec);
     var F = frame(spec), out = [], x0 = F.x[0], x1 = F.x[1], y0 = F.y[0], y1 = F.y[1];
     var L = F.pad.l, R = F.w - F.pad.r, T = F.pad.t, B = F.h - F.pad.b;
-    var xt = spec.xTicks === false ? [] : spec.xTickList ? spec.xTickList.map(function(t){ return t.v; }) : spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec.yTicks === false ? [] : spec.yTickList ? spec.yTickList.map(function(t){ return t.v; }) : ticks(y0, y1, 6, spec.yStep);
+    var xt = spec.xTicks === false ? [] : spec.xTickList ? spec.xTickList.map(function(t){ return t.v; }) : spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec.yTicks === false ? [] : spec.yTickList ? spec.yTickList.map(function(t){ return t.v; }) : ticks(y0, y1, Math.max(3, Math.min(6, Math.floor((B - T) / 26))), spec.yStep);
     var xText = function(v){ var t = spec.xTickList && spec.xTickList.filter(function(u){ return u.v === v; })[0]; return t ? esc(String(t.text)) : spec.piX ? piLabel(v) : fmtTick(spec.absX ? Math.abs(v) : v); };
     var yText = function(v){ var t = spec.yTickList && spec.yTickList.filter(function(u){ return u.v === v; })[0]; return t ? String(t.text) : fmtTick(v); };
     // A bar's category name wider than its slot goes on two lines (split at
@@ -218,7 +218,10 @@
       xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L && !spec.centerAxis) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + xText(v) + '</text>'); });
       // One 0 at the corner when both axes start there (two 0s touched on a phone).
       var x0Shown = ax === B && ay === L && xt.some(function(v){ return Math.abs(v) < 1e-12; });
-      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && (ax !== B || x0Shown)) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yText(v) + '</text>'); });
+      // A y label on the bottom edge sits just above the axis when an x label
+      // is printed at the same corner (the Malthus plot's "0" touched "1960").
+      var xAtCorner = ax === B && ay === L && xt.some(function(v){ return Math.abs(F.sx(v) - L) < 1; });
+      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && (ax !== B || x0Shown)) return; var low = xAtCorner && Math.abs(F.sy(v) - B) < 1; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + (low ? -2 : 4)) + '" text-anchor="end">' + yText(v) + '</text>'); });
       // The x-axis name sits under the tick labels, centered, when the axis is
       // the bottom edge (every data plot), so it never covers the data; the
       // picture grows by one line for it. Inside the plot only when the axis
@@ -271,7 +274,7 @@
     });
     (spec.labels || []).forEach(function(t){
       var two = twoLines(t), tx = r2(F.sx(t.at[0]));
-      out.push('<text class="hug-plot-label' + (t.cls ? ' ' + esc(t.cls) : '') + '" x="' + tx + '" y="' + r2(F.sy(t.at[1]) + (t.cls ? 4 : 0)) + '" text-anchor="' + (t.anchor || 'middle') + '">' +
+      out.push('<text class="hug-plot-label' + (t.cls ? ' ' + esc(t.cls) : '') + '" x="' + tx + '" y="' + r2(t.below != null ? B + t.below : F.sy(t.at[1]) + (t.cls ? 4 : 0)) + '" text-anchor="' + (t.anchor || 'middle') + '">' +
         (two ? '<tspan x="' + tx + '">' + esc(two[0]) + '</tspan><tspan x="' + tx + '" dy="12">' + esc(two[1]) + '</tspan>' : esc(plain(t.text))) + '</text>');
     });
     // A legend for two or more series, inside the picture so it travels with it.
@@ -344,7 +347,7 @@
       var gw = 0.7 / groups.length;
       cats.forEach(function(c, j){
         groups.forEach(function(g, gi){ var x0 = j + 0.15 + gi * gw; o.rects.push({ x0: x0, x1: x0 + gw * 0.92, y0: Math.min(Math.max(0, o.y[0]), o.y[1]), y1: g.values[j], cls: g.cls || 's' + (gi % 5 + 1) }); });
-        o.labels.push({ at: [j + 0.5, o.y[0] - (o.y[1] - o.y[0]) * 0.07], text: c, wrap: true });
+        o.labels.push({ at: [j + 0.5, o.y[0]], below: 15, text: c, wrap: true });
       });
       o.legend = groups.length > 1 ? groups.map(function(g, gi){ return { name: g.name, cls: g.cls || 's' + (gi % 5 + 1) }; }) : null;
     } else if(spec.kind === 'scatter'){

@@ -73,9 +73,48 @@
     return '<figure class="hug-map ms-map" data-render="' + esc(spec.render) + '"><div class="hug-map-pic"><img src="' + src + '" alt="' + esc(spec.label) + '" width="' + base.width + '" height="' + base.height + '">' + (over ? '<div class="hug-map-over" aria-hidden="true">' + over + '</div>' : '') + '</div>' + MAP.legendHtml(spec, base) +
       '<figcaption class="hug-small">' + (spec.invented ? '<span class="hug-src">Invented data for practice.</span> ' : '') + '<span class="hug-border-note">' + esc(MAP.note(base)) + '</span>' + (base.invented ? '' : ' <span class="hug-base-src">Base map: Natural Earth.</span>') + '</figcaption></figure>';
   }
+  /* A data plot on the tool's stage is drawn at the size it is shown (its
+     width in px, and the height the stage has left), so its words are never
+     shrunk and then raised to the 12 px phone minimum, which made axis
+     numbers and the legend collide on a short phone stage (tools review,
+     2026-11-09). Redrawn when the stage changes size. */
+  var fitCur = null, fitT = 0, fitOn = false;
+  function fitPlot(host, spec){
+    var body = host.closest && host.closest('.ls-stage-body');
+    if(!body) return;
+    fitCur = { host: host, spec: spec, body: body };
+    if(!fitOn){
+      fitOn = true;
+      window.addEventListener('resize', fitQueue);
+      var stg = body.closest('.ls-stage'); if(stg) stg.addEventListener('ls-stage', fitQueue);
+    }
+    fitQueue(); setTimeout(fitQueue, 400);
+  }
+  function fitQueue(){ if(!fitT) fitT = requestAnimationFrame(function(){ requestAnimationFrame(function(){ fitT = 0; for(var i = 0; i < 3 && fitDraw(); i++); }); }); }
+  // One pass; true when it redrew (a second pass then takes the axis name and legend rows into account).
+  function fitDraw(){
+    var c = fitCur; if(!c || !c.host.isConnected) return false;
+    var card = c.host.querySelector('.ms-plotfig .ms-card'), svg = card && card.querySelector('svg.hug-plot');
+    if(!svg) return false;
+    // Shown up to 520 px wide; drawn at most 400 units wide, so on a wide screen the words grow with the picture.
+    var dw = Math.min(520, Math.round(card.clientWidth));
+    if(dw < 200) return false;
+    var w = Math.min(400, dw), k = dw / w;
+    var vb = svg.viewBox.baseVal, specH = +(svg.getAttribute('data-h') || 0), extra = specH ? vb.height - specH : 0;
+    // The height the stage has left for the picture: from the picture's top to the stage's foot, less the caption under it.
+    var br = c.body.getBoundingClientRect(), sr = svg.getBoundingClientRect(), cr = card.getBoundingClientRect();
+    var avail = c.body.clientHeight - (parseFloat(getComputedStyle(c.body).paddingBottom) || 0) - (sr.top - br.top + c.body.scrollTop) - (cr.bottom - sr.bottom) - 2;
+    var h = Math.round(Math.max(140, Math.min(w * 0.75, avail / k - extra)));
+    if(Math.abs(w - vb.width) < 2 && specH && Math.abs(h - specH) < 3) return false;
+    var s = {}; Object.keys(c.spec).forEach(function(k){ s[k] = c.spec[k]; }); s.width = w; s.height = h;
+    var out = document.createElement('div'); out.innerHTML = PL.svg(s);
+    var nsvg = out.firstChild; nsvg.setAttribute('data-h', h);
+    svg.parentNode.replaceChild(nsvg, svg);
+    return true;
+  }
   function applyFig(host, fig){
     if(!fig){ host.innerHTML = ''; return; }
-    if(fig.kind === 'plot') host.innerHTML = '<figure class="ms-fig ms-plotfig"><div class="ms-card">' + PL.svg(fig.spec) + '<p class="ms-src">Invented data for practice.</p></div></figure>';
+    if(fig.kind === 'plot'){ host.innerHTML = '<figure class="ms-fig ms-plotfig"><div class="ms-card">' + PL.svg(fig.spec) + '<p class="ms-src">Invented data for practice.</p></div></figure>'; fitPlot(host, fig.spec); }
     else if(fig.kind === 'table') host.innerHTML = '<figure class="ms-fig ms-tblfig">' + T.dataTable(fig.cols, fig.rows, fig.caption) + '</figure>';
     else if(fig.kind === 'map'){
       host.innerHTML = '<p class="bt-loading">Loading the map…</p>';

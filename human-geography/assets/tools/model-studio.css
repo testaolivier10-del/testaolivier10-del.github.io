@@ -105,6 +105,11 @@
   .ms-fig-art .hug-model-art{max-width:calc(100cqh - 30px);}
   .ms-legend{gap:2px 10px;}
   .ms-legend li{font-size:12px;}
+  /* A data plot keeps the stage's full width (its axis numbers and legend were
+     drawn for it; shrunk and then raised to the 12 px phone minimum they
+     collided): the stage scrolls instead. */
+  .ms-plotfig .ms-card{max-width:none;}
+  .ms-qfig:has(.ms-plotfig),.ms-plotfig{flex:none;}
 }
 /* Plots use the page's own colors (hug-plot.js themes them), not the white card. */
 .ms-plotfig .ms-card{background:transparent;border:0;padding:0;color:inherit;}

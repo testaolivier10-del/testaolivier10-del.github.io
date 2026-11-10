@@ -8,7 +8,7 @@
    "practice": "2.A",
    "skill": "describe",
    "title": "Describing an elevation pattern",
-   "context": "<p>An isoline map of invented Country A shows lines of equal height above sea level: 1,500 meters in the Western Uplands, then 1,000, 500 and 100 meters toward the South Coast. The lines are close together in the west and far apart in the east (invented data for practice).</p>",
+   "context": "<p>An isoline map of invented Country A shows lines of equal height above sea level: 1,500 meters in the Western Uplands, then 1,000, 500 and 100 meters eastward toward the South Coast. The lines are close together in the west and far apart in the east (invented data for practice).</p>",
    "prompt": "<b>Describe</b> the pattern of elevation the map shows.",
    "checklist": [
     "Says where the land is highest and where it is lowest, with values",
@@ -16,7 +16,7 @@
     "Uses the spacing of the lines: close lines are steep land"
    ],
    "earns": {
-    "answer": "Elevation is highest in the Western Uplands, above 1,500 meters, and falls toward the east to below 100 meters near the South Coast. The lines are closest together in the west, so the land is steepest there, and the east is low and gentle.",
+    "answer": "Elevation is highest in the Western Uplands, above 1,500 meters, and falls eastward to below 100 meters near the South Coast. The lines are closest together in the west, so the land is steepest there, and the east is low and gentle.",
     "why": "It names where, how high and which way the land slopes, and reads the line spacing as steepness."
    },
    "misses": {

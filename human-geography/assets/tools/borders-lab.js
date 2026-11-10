@@ -180,7 +180,7 @@
     return out.join('');
   }
   function seaKey(nm){
-    return '<ol class="bl-zkey">' + B.ZONES.map(function(z, i){ var on = nm != null && B.zoneAt(nm) === z; return '<li' + (on ? ' class="is-on"' : '') + '><b>' + (i + 1) + '. ' + esc(z.name) + '</b> (' + (i === 0 ? 'baseline to 12' : i === 1 ? '12 to 24' : i === 2 ? '24 to 200' : 'beyond 200') + ' nautical miles)</li>'; }).join('') + '</ol>';
+    return '<ol class="bl-zkey">' + B.ZONES.map(function(z, i){ var on = nm != null && B.zoneAt(nm) === z; return '<li' + (on ? ' class="is-on"' : '') + '><b>' + (i + 1) + '. ' + esc(z.name) + '</b> (' + (i === 0 ? 'baseline to 12' : i === 1 ? '12 to 24' : i === 2 ? '12 to 200, overlapping the contiguous zone' : 'beyond 200') + ' nautical miles)</li>'; }).join('') + '</ol>';
   }
 
   /* ------------------------------------------------------- real cases */
@@ -346,7 +346,7 @@
     function more(){
       var el = $('.bl-more'); if(!el) return;
       el.innerHTML = '<h3 class="ls-title-l">Boundary types</h3>' + T.dataTable(['Type', 'What it means'], BT_ORDER.map(function(k){ return [B.BTYPES[k].name, B.BTYPES[k].def]; }), 'Boundary types (CED 4.4)') +
-        '<h3 class="ls-title-l">Zones of the sea (UNCLOS, 1982)</h3>' + T.dataTable(['Zone', 'From the baseline', 'What the coastal state may do'], B.ZONES.map(function(z, i){ return [z.name, i === 0 ? 'to 12 nautical miles' : i === 1 ? '12 to 24' : i === 2 ? '24 to 200' : 'beyond 200', z.rights]; }), 'Law of the sea zones') +
+        '<h3 class="ls-title-l">Zones of the sea (UNCLOS, 1982)</h3>' + T.dataTable(['Zone', 'From the baseline', 'What the coastal state may do'], B.ZONES.map(function(z, i){ return [z.name, i === 0 ? 'to 12 nautical miles' : i === 1 ? '12 to 24' : i === 2 ? '12 to 200 (overlaps the contiguous zone)' : 'beyond 200', z.rights]; }), 'Law of the sea zones') +
         '<h3 class="ls-title-l">Real cases</h3>' + T.dataTable(['', 'Boundary', 'Its history'], B.REAL.map(function(x){ return [x.mark, x.name, x.text]; }), 'Four real boundaries') +
         '<p class="bt-small">The borderland, Country A, Country B, the empire of Corvia and the Ardic and Bessan languages are invented for practice.</p>';
     }

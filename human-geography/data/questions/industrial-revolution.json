@@ -290,7 +290,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "A national share is one number for the whole country, so it hides the regional and local pattern of where factories opened.",
+    "correct": "A national share is one number for the whole country, so it hides the local (subnational) pattern of where factories opened.",
     "options": [
      "Right: national data hide differences between regions; a coalfield region may have changed decades before a farming region.",
      "Invented data still show a trend; the limit is what the scale of the data can and cannot reveal.",

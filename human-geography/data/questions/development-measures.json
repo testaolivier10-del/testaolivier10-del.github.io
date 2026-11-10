@@ -171,7 +171,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "The data are at the national scale: one value per country. They cannot show patterns at a regional or local scale inside a country.",
+    "correct": "The data are at the national scale: one value per country. They cannot show patterns at the local (subnational) scale inside a country.",
     "options": [
      "The table answers this: South Sudan (0.388).",
      "Right: the table gives one national value per country, so it cannot show differences inside a country.",
@@ -414,14 +414,14 @@
    "options": [
     "India's national HDI hides large differences between its states",
     "Kerala's data prove that income has no link to health anywhere",
-    "National data are more accurate than regional data",
+    "National data are more accurate than state data",
     "Literacy can be measured at the national scale but not by state"
    ],
    "correct": 0,
    "why": {
-    "correct": "The same measure at a regional scale reveals variation that the national value hides.",
+    "correct": "The same measure at the local (subnational) scale, state by state, reveals variation that the national value hides.",
     "options": [
-     "Right: a national average smooths over regional differences, so a regional view tells a different story.",
+     "Right: a national average smooths over differences between states, so a state-by-state view tells a different story.",
      "One case cannot show that; it shows income is not the only driver.",
      "Neither is more accurate; they answer questions at different scales.",
      "Literacy is measured by state; that is how Kerala's rate is known."

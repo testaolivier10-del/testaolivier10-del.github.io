@@ -640,17 +640,17 @@
     "write": {
      "mechanism": true
     },
-    "model": "At the regional scale, around Spartanburg, South Carolina, BMW's car plant drew suppliers, so jobs and services grew across the region through the multiplier effect.",
+    "model": "At the local (subnational) scale, around Spartanburg, South Carolina, BMW's car plant drew suppliers, so jobs and services grew across the region through the multiplier effect.",
     "slots": {
      "scale": {
       "label": "Scale of analysis",
       "options": [
-       "regional",
+       "local (subnational)",
        "global"
       ],
       "correct": 0,
       "why": {
-       "1": "The growth spread around one area of one US state: a regional scale."
+       "1": "The growth spread around one area of one US state: a local (subnational) scale, not the whole world."
       }
      },
      "place": {
