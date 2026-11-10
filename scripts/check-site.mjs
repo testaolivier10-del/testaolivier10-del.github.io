@@ -8,6 +8,7 @@ import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, extname, relative, sep, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { premiumCourse } from './vault/rules.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 let failures = 0;
@@ -794,6 +795,12 @@ if (existsSync(sitemapForCoverage)) {
     const topDir = relative(ROOT, file).split(sep)[0];
     if (canon && relative(ROOT, file).includes(sep) && new URL(canon[1]).pathname.split('/')[1] !== topDir) continue;
     const path = '/' + relative(ROOT, file).split(sep).join('/');
+    // Nor a Premium lesson: the public copy is a noindex stub (build-deploy.mjs),
+    // so it must not be listed (docs/site-health.md).
+    if (premiumCourse(path.slice(1), body)) {
+      if (listed.has(path)) fail(`sitemap.xml: lists ${path}, a Premium lesson served as a noindex stub. Run scripts/build-sitemap.mjs`);
+      continue;
+    }
     if (!listed.has(path) && !listed.has(path.replace(/index\.html$/, ''))) {
       fail(`sitemap.xml: no entry for ${path} — run scripts/build-sitemap.mjs`);
     }
