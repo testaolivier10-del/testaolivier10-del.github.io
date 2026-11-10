@@ -2,7 +2,7 @@
  "id": "frq-world-cities-two",
  "type": "two",
  "points": 7,
- "title": "Very large cities, world cities and the urban hierarchy",
+ "title": "Very large cities, city size and the urban hierarchy",
  "units": [
   "unit-3",
   "unit-6"
@@ -23,13 +23,13 @@
  "stimuli": [
   {
    "kind": "map",
-   "title": "Population of selected very large cities, 2025, and two world cities",
+   "title": "Population of selected very large cities, 2025",
    "map": {
     "base": "world",
     "render": "symbol",
-    "label": "Graduated symbol map of seven very large cities in 2025, five of them in Asia (Jakarta, Tokyo, New Delhi, Shanghai, Manila), one in Africa (Cairo) and one in South America (Sao Paulo); letters A and B mark London and New York, two world cities",
-    "source": "UN DESA, World Urbanization Prospects 2025 (2025 estimates, Degree of Urbanisation method); world cities from GaWC, 2024",
-    "legendTitle": "Urban area population, 2025 (letters: world cities named in the questions)",
+    "label": "Graduated symbol map of seven very large cities in 2025, five of them in Asia (Jakarta, Tokyo, New Delhi, Shanghai, Manila), one in Africa (Cairo) and one in South America (Sao Paulo)",
+    "source": "UN DESA, World Urbanization Prospects 2025 (2025 estimates, Degree of Urbanisation method)",
+    "legendTitle": "Urban area population, 2025",
     "symbols": {
      "unit": "million people",
      "items": [
@@ -52,7 +52,7 @@
         31.2,
         30
        ],
-       "value": 32
+       "value": 25.6
       },
       {
        "at": [
@@ -88,23 +88,7 @@
       20,
       40
      ]
-    },
-    "marks": [
-     {
-      "at": [
-       -0.1,
-       51.5
-      ],
-      "text": "A"
-     },
-     {
-      "at": [
-       -74,
-       40.7
-      ],
-      "text": "B"
-     }
-    ]
+    }
    }
   },
   {
@@ -200,19 +184,20 @@
   },
   {
    "label": "D",
-   "verb": "compare",
+   "verb": "explain",
    "points": 1,
-   "prompt": "Using Source 1, compare how cities A and B and the city of Jakarta are important in the world.",
+   "prompt": "Explain one limitation of Source 1 for comparing the populations of the world's very large cities.",
    "rubric": [
     {
-     "point": "Speaks of both: A and B (London and New York) are world cities ranked by global functions such as finance and headquarters, whereas Jakarta is important mainly for its very large population.",
+     "point": "Explains a limitation with its consequence, such as: a city's count depends on where its edge is drawn, so sources using other definitions rank cities differently; or the map shows only selected cities, so it cannot show every very large city; or it shows one year, so it cannot show which cities are growing fastest.",
      "accept": [
-      "London and New York lead in global finance and business, whereas Jakarta is the largest city by population but less central to global business",
-      "both are major cities, but A and B matter for global functions while Jakarta matters for size"
+      "city populations depend on how the edge of the urban area is drawn, so another source (such as older UN tables using each country's own definitions) can give different numbers and rankings",
+      "the map shows only seven selected cities, so very large cities that are left out cannot be compared",
+      "the map shows only 2025, so it cannot show how fast each city is growing"
      ]
     }
    ],
-   "sample": "Cities A and B, London and New York, are important because they host global banks, headquarters and business services that steer the world economy, whereas Jakarta is important mainly because of its huge population, about 41.9 million, and is less central to global finance."
+   "sample": "The populations depend on where each city's edge is drawn. This map uses one satellite-based method, while older UN tables used each country's own city boundaries and ranked Tokyo first, so the same cities can have different sizes and ranks in another source."
   },
   {
    "label": "E",
@@ -250,17 +235,17 @@
    "label": "G",
    "verb": "explain-degree",
    "points": 1,
-   "prompt": "Using both sources, explain the degree to which a city's population predicts its rank as a world city.",
+   "prompt": "Using Source 2, explain the degree to which a primate city such as Z1 benefits the economic development of the whole country.",
    "rubric": [
     {
-     "point": "States a degree first (usually low or limited), then explains with evidence from both sources that global functions, not size, set world city rank.",
+     "point": "States a degree first (high, moderate or low), then explains with evidence from Source 2 both how Z1 helps (its global firm offices draw investment and link the country to the world economy) and how a primate city can hold back other regions (investment and migrants gather in Z1 while Z2 to Z5 lag), or justifies a one-sided degree.",
      "accept": [
-      "to a low degree: Jakarta is the largest city on the map but London and New York are the top world cities, and in Source 2 Z1 has both size and offices",
-      "to a limited degree: size helps (Z1 is largest and has most offices) but the most connected world cities in Source 1 are not the largest"
+      "to a moderate degree: Z1's 85 global firm offices bring investment and links to the world, but money, jobs and migrants gather there, so Z2 to Z5 (only 1 to 9 offices) are left behind",
+      "to a low degree: most global investment stays in Z1, so the gap between Z1 and the smaller cities grows and other regions develop slowly"
      ]
     }
    ],
-   "sample": "To a low degree. In Source 1, the largest city is Jakarta, yet the two most connected world cities, A and B, are London and New York, which are not among the largest cities shown. In Source 2, Z1 is both the largest city and the one with the most global offices, so size can go with world city functions, but it is the functions, not the population, that set the rank."
+   "sample": "To a moderate degree. Z1 holds 85 of the offices of global firms, so it brings foreign investment, jobs and links to the world economy into Country Z. But the smaller cities have only 1 to 9 such offices, so investment, jobs and migrants keep gathering in Z1, which crowds the capital and leaves the other regions behind."
   }
  ]
 }

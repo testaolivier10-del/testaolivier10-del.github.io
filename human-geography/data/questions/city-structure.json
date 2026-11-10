@@ -189,14 +189,14 @@
    "q": "Compared with the concentric zone model, where do the poorest residents live in the field notes, and why?",
    "stimulus": "city-structure-s2",
    "options": [
-    "At the edge, where newcomers can build on unclaimed land",
+    "At the edge, where newcomers build on land they do not own",
     "Near the center, because old housing there is cheap",
     "Along the avenue, because it has the most jobs",
     "In the gated suburb, because land there is free"
    ],
    "correct": 0,
    "why": {
-    "correct": "In many Latin American cities, the newest and poorest arrivals build on unclaimed land at the edge, where they can settle without paying. The concentric zone model puts the poorest near the center instead.",
+    "correct": "In many Latin American cities, the newest and poorest arrivals build on land they do not own at the edge, where they can settle without buying or renting. The concentric zone model puts the poorest near the center instead.",
     "options": [
      "Right: the pattern is reversed from the concentric zone model.",
      "That is where the concentric zone model puts them; the notes put them at the edge.",
@@ -438,7 +438,7 @@
      },
      {
       "id": "w",
-      "name": "Wedge between the two (west)"
+      "name": "Remaining wedge (west)"
      }
     ],
     "pieces": [

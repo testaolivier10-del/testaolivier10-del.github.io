@@ -81,33 +81,33 @@
    "label": "D",
    "verb": "explain",
    "points": 1,
-   "prompt": "Explain how having many separate local governments in the metro area could make the proposed rail extension harder to build.",
+   "prompt": "Explain one way the split between the central city and the eight suburban cities shown can strain the central city's budget.",
    "rubric": [
     {
-     "point": "Explains that the route crosses several suburban cities, each with its own budget, zoning and voters, so all must agree and share costs, and some may refuse because they gain little.",
+     "point": "Explains the fiscal link: many people who work or use services in the central city live and pay property taxes in separate suburban cities, so the central city pays for roads, transit, police and other services without collecting tax from them; or higher-income households moved past the city limits, taking their tax base with them.",
      "accept": [
-      "each suburb must agree and pay, so one city can block or delay the line",
-      "suburbs the line passes through may bear costs while benefits go to downtown and E, so they resist"
+      "commuters from the suburbs use the central city's roads, transit and services but pay property taxes to their own suburb, so the central city bears costs without the revenue",
+      "wealthier families moved to suburbs outside the city limits, so the central city lost tax revenue while still serving poorer residents"
      ]
     }
    ],
-   "sample": "The extension passes through several suburban cities, each with its own budget, zoning and voters, so each must agree to the route and its share of the cost, and a suburb that expects little benefit can delay or block the whole project."
+   "sample": "Most of the metro area's people live in the eight suburban cities, outside the central city's limits. Many of them drive into downtown to work and use its streets, transit and police, but they pay property taxes to their own suburb, so the central city carries the cost of those services without collecting the taxes that would pay for them."
   },
   {
    "label": "E",
    "verb": "explain",
    "points": 1,
-   "prompt": "Explain one way the proposed extension to edge city E could reduce air pollution in the metro area.",
+   "prompt": "Explain one way the proposed extension could change land use near its new stations.",
    "rubric": [
     {
-     "point": "Explains every link: workers ride the train to E instead of driving, so fewer car trips and less exhaust.",
+     "point": "Explains the link from access to land use: the stations make nearby land easier to reach, so land values rise, so developers build denser or mixed-use buildings (apartments, offices, shops) near them.",
      "accept": [
-      "commuters from the central city could take the train to jobs at E, so fewer cars on the highway and less exhaust",
-      "new homes built near the new stations let people ride rather than drive, so car emissions fall"
+      "land near the new stations becomes easier to reach, so its value rises and developers replace low-density uses with apartments, offices and shops",
+      "suburbs along the route may rezone land near stations for denser, mixed-use building, because riders can reach downtown and E by train"
      ]
     }
    ],
-   "sample": "Workers who live in the central city could ride the train to the office jobs at edge city E instead of driving on the highway, so there would be fewer car trips and less exhaust in the air."
+   "sample": "The new stations would make the land around them easy to reach from downtown and from edge city E, so that land would become more valuable, and developers would replace parking lots and single houses near the stations with apartments, offices and shops."
   },
   {
    "label": "F",

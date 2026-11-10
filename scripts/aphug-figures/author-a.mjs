@@ -119,7 +119,7 @@ function add(topic, id, w, h, title, alt, body) { figs.push({ topic, id, w, h, a
     b += box(x, y, 196, 46, v, { fill: i < 2 ? SOFT : i < 4 ? TINT : WARM, stroke: i < 4 ? TEAL : VERM, bold: true, size: 16 });
     b += text(x + 212, y + 29, d, { size: 16 });
   });
-  b += line(24, 400, 24, 60, { stroke: GREY, w: 2, arrow: 'ink' });
+  b += line(24, 60, 24, 400, { stroke: GREY, w: 2, arrow: 'ink' });
   b += `<text x="14" y="230" font-size="15" fill="${GREY}" text-anchor="middle" transform="rotate(-90 14 230)">More is asked</text>`;
   add('skills-frq', 'skills-frq-verbs', 720, 410, 'The six task verbs and what each demands',
     'A staircase of six task verbs, each asking for more than the one above. Identify: name it, a word or a phrase is enough. Define: give its meaning in a full sentence. Describe: give its features, what, where and how much. Explain: say why or how, with because or so. Compare: say how two things differ or match, speaking of both sides. Explain the degree: state the degree first, then explain why.', b);

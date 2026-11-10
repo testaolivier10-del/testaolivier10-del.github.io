@@ -1,6 +1,6 @@
 {
  "census": {
-  "def": "An official count of all the people in a country, usually taken every ten years, with facts about each household such as ages and housing."
+  "def": "An official count of all the people in a country, often taken every ten years, with facts about each household such as ages and housing."
  },
  "data-limitation": {
   "def": "Something a data source cannot show or may get wrong, such as being out of date, missing some people or giving one value for a large area."

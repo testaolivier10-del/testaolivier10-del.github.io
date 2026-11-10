@@ -1,6 +1,6 @@
 {
  "topic": "urban-sustainability",
- "hook": "In 1979, the Portland, Oregon, region drew a line on the map around its built-up area and said: houses and offices go inside, farms and forests stay outside. Decades later, the region is denser than most US metro areas of its size, and many people ride light rail. It also has some of the highest home prices in the region. Was the line a success? It depends on whom you ask, and that is what this topic is about.",
+ "hook": "In 1979, the Portland, Oregon, region drew a line on the map around its built-up area and said: houses and offices go inside, farms and forests stay outside. Decades later, farms and forests still reach close to the city, and many people ride light rail. Home prices also rose fast in the 2010s. Was the line a success? It depends on whom you ask, and that is what this topic is about.",
  "prereq": [
   {
    "q": "What is urban sprawl?",

@@ -8,8 +8,11 @@
 .hug-mr-title{margin:0;font:700 14px var(--font-ui);color:var(--ink);}
 .hug-mr-fig{min-height:200px;}
 .hug-mr-map{margin:0;}
-.hug-mr-map .hug-map-pic svg{display:block;width:100%;height:auto;}
-.ls-root .hug-mr-stage .hug-mr-map .hug-map-pic{max-width:min(100%, calc((100vh - 300px) * 1.5));margin:0 auto;}
+.hug-mr-map .hug-map-pic svg{display:block;width:100% !important;height:auto !important;max-width:none !important;max-height:none !important;}
+/* The legend's circles are drawn at the map's scale, so they get the map's width. */
+.ls-root .hug-mr-stage .hug-mr-map .hug-map-pic,.ls-root .ls-drill-stage .hug-mr-map .hug-map-pic,.ls-root .hug-mr-map .hug-lg-symart{max-width:min(100%, calc((100vh - 330px) * var(--hug-mr-ar,1.5)));margin:0 auto;}
+@media (max-width:640px){ /* The legend's circles are drawn at the map's scale, so they get the map's width. */
+.ls-root .hug-mr-stage .hug-mr-map .hug-map-pic,.ls-root .ls-drill-stage .hug-mr-map .hug-map-pic,.ls-root .hug-mr-map .hug-lg-symart{max-width:100%;} }
 .hug-mr-f{cursor:pointer;}
 .hug-mr-f:hover{fill-opacity:.82;}
 .hug-mr-read{margin:0;min-height:1.4em;font:600 14px/1.4 var(--font-ui);color:var(--ink);}
@@ -34,5 +37,6 @@
 .hug-mr-keyline b{display:inline-block;min-width:1.4em;padding:0 4px;margin-right:2px;border:1.5px solid currentColor;border-radius:6px;text-align:center;}
 .hug-mr-qfig{margin:0;}
 .hug-mr-qfig .table-wrap{margin-top:8px;}
-.ls-root .ls-drill-stage .hug-mr-qfig{overflow:auto;}
+.ls-root .ls-drill-stage .hug-mr-qfig{display:block;flex:1;min-height:0;overflow:auto;}
+.ls-root .ls-drill-stage .hug-mr-qfig > *{flex:none;}
 .ls-root .cd-step.is-right.is-right input[type=text]{box-shadow:inset 0 0 0 2px var(--good-text);border-color:var(--good-text);}

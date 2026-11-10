@@ -49,7 +49,7 @@
   "The four scales of analysis, <b>global</b>, <b>regional</b>, <b>national</b> and <b>local</b>, each fit inside the one above. Name the scale from the unit of the data.",
   "<b>Aggregated data</b> combine smaller units into a larger one. They make comparison easy but hide variation inside.",
   "A pattern at one scale can disappear or reverse at another: one shade for India hides rich and poor states.",
-  "Processes link scales: world demand for avocados changes hillsides in Michoacán, Mexico; rising seas change streets in Miami."
+  "Processes link scales: world demand for avocados changes hillsides in Michoacán, Mexico; rising seas change streets in Miami Beach, Florida."
  ],
  "misconception": {
   "wrong": "The national figure is the real answer, and smaller-scale data just add detail.",

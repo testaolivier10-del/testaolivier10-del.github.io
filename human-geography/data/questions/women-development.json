@@ -116,7 +116,7 @@
    "practice": "2.B",
    "q": "Which explanation best fits a gender wage gap in every kind of work shown on the chart?",
    "options": [
-    "Women work fewer hours",
+    "Women hold most top posts in Country C",
     "Fewer women are managers; more do care work",
     "The chart counts women who work part time and no others",
     "Country C pays each worker the same wage by law"
@@ -125,7 +125,7 @@
    "why": {
     "correct": "A gap that appears in every sector points to causes that cut across sectors: fewer women in senior roles, more unpaid care work and unequal pay for similar work.",
     "options": [
-     "Women often work as many hours or more, counting unpaid care; the gap is in pay, not effort.",
+     "If women held most top posts, their average pay would be close to or above men's, not below it in every sector.",
      "Right: women are crowded into lower-paid roles and more often work part time because of care work.",
      "The chart compares average pay; nothing says it counts part-time women alone.",
      "If every worker earned the same, there would be no gap at all."

@@ -31,7 +31,7 @@
         31.2,
         30
        ],
-       "value": 32
+       "value": 25.6
       },
       {
        "at": [
@@ -165,7 +165,7 @@
     "correct": "Sao Paulo's circle stands for about 18.9 million people: above 10 million, below 20 million. The other cities shown are above 20 million.",
     "options": [
      "Manila's 24.7 million is above 20 million, so it counts as a metacity.",
-     "Cairo's 32 million is well above 20 million.",
+     "Cairo's 25.6 million is well above 20 million.",
      "Jakarta's 41.9 million is the largest on the map.",
      "Right: 18.9 million is a megacity, not yet a metacity."
     ]

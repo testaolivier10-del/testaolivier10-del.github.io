@@ -26,6 +26,22 @@
   if(!T || !M || !M.bordersLab || M.bordersLab.stub) return;
   var B = M.bordersLab, esc = T.esc;
   function n1(v){ return Math.round(v * 10) / 10; }
+  /* Work-around until hug-tools.js is fixed (a request for the lead in
+     docs/aphug-reviews/self-t4.md): drill() hands ApHugModel.mount an
+     onChange that reads its feedback element before it exists, and mount()
+     calls onChange once while it paints. Hold onChange until mount returns. */
+  (function(){
+    var MD = window.ApHugModel;
+    if(!MD || MD.__t4Safe) return;
+    var orig = MD.mount;
+    MD.mount = function(el, m, o){
+      var ready = false, oc = o && o.onChange;
+      var ctl = orig.call(MD, el, m, Object.assign({}, o || {}, { onChange: function(x){ if(ready && oc) oc(x); } }));
+      ready = true;
+      return ctl;
+    };
+    MD.__t4Safe = true;
+  })();
   function phone(){ return (window.innerWidth || 1280) <= 640; }
   function tag(x, y, text, cls, W){
     var w = text.length * 7.6 + 14, h = 22, cx = Math.max(w / 2 + 3, Math.min((W || 9999) - w / 2 - 3, x));
@@ -160,18 +176,18 @@
   function seaX(nm, L, R){ for(var i = 1; i < STOPS.length; i++) if(nm <= STOPS[i][0]){ var a = STOPS[i - 1], b = STOPS[i]; return L + (R - L) * (a[1] + (b[1] - a[1]) * (nm - a[0]) / (b[0] - a[0])); } return R; }
   function seaSvg(W, H, nm, o){
     o = o || {};
-    var land = Math.max(56, W * 0.12), L = land, R = W - 10, top = 40, bot = H - 60, out = [];
+    var land = Math.max(44, W * 0.12), L = land, R = W - 14, top = 34, bot = H - 52, out = [], narrow = W < 420;
     out.push('<rect class="bl-sea" x="' + n1(L) + '" y="' + top + '" width="' + n1(R - L) + '" height="' + (bot - top) + '"/>');
     out.push('<path class="bl-coast" d="M0 ' + (top - 8) + 'H' + n1(L - 6) + 'Q' + n1(L + 4) + ' ' + ((top + bot) / 2) + ' ' + n1(L - 6) + ' ' + (bot + 8) + 'H0Z"/>');
     var bounds = [0, 12, 24, 200, 260];
     for(var i = 0; i < 4; i++){
-      var a = seaX(bounds[i], L, R), b = seaX(bounds[i + 1], L, R), on = nm != null && B.zoneAt(nm) === B.ZONES[i];
+      var a = seaX(bounds[i], L, R), b = seaX(bounds[i + 1], L, R), on = !o.quiet && nm != null && B.zoneAt(nm) === B.ZONES[i];
       out.push('<rect class="bl-zone z' + (i + 1) + (on ? ' is-on' : '') + '" x="' + n1(a) + '" y="' + top + '" width="' + n1(b - a) + '" height="' + (bot - top) + '"/>');
       out.push('<g class="bl-znum"><circle cx="' + n1((a + b) / 2) + '" cy="' + (top + 22) + '" r="12"/><text x="' + n1((a + b) / 2) + '" y="' + (top + 27) + '" text-anchor="middle">' + (i + 1) + '</text></g>');
       if(i < 3) out.push('<path class="bl-lim" d="M' + n1(b) + ' ' + (top - 4) + 'V' + (bot + 6) + '"/><text class="bl-nm" x="' + n1(b) + '" y="' + (bot + 22) + '" text-anchor="middle">' + bounds[i + 1] + '</text>');
     }
     out.push('<text class="bl-nm" x="' + n1(L) + '" y="' + (bot + 22) + '" text-anchor="middle">0</text>');
-    out.push('<text class="bl-cap2" x="' + n1(L) + '" y="' + (bot + 44) + '">Nautical miles from the baseline (not to scale)</text>');
+    out.push('<text class="bl-cap2" x="' + n1(L) + '" y="' + (bot + 42) + '">' + (narrow ? 'Nautical miles (not to scale)' : 'Nautical miles from the baseline (not to scale)') + '</text>');
     out.push('<text class="bl-cap2" x="6" y="' + (top - 16) + '">Coast</text>');
     if(nm != null){
       var sx = seaX(nm, L, R), sy = (top + bot) / 2 + 14;
@@ -180,15 +196,21 @@
     return out.join('');
   }
   function seaKey(nm){
-    return '<ol class="bl-zkey">' + B.ZONES.map(function(z, i){ var on = nm != null && B.zoneAt(nm) === z; return '<li' + (on ? ' class="is-on"' : '') + '><b>' + (i + 1) + '. ' + esc(z.name) + '</b> (' + (i === 0 ? 'baseline to 12' : i === 1 ? '12 to 24' : i === 2 ? '24 to 200' : 'beyond 200') + ' nautical miles)' + (o2(on) ? '' : '') + '</li>'; }).join('') + '</ol>';
-    function o2(x){ return x; }
+    return '<ol class="bl-zkey">' + B.ZONES.map(function(z, i){ var on = nm != null && B.zoneAt(nm) === z; return '<li' + (on ? ' class="is-on"' : '') + '><b>' + (i + 1) + '. ' + esc(z.name) + '</b> (' + (i === 0 ? 'baseline to 12' : i === 1 ? '12 to 24' : i === 2 ? '24 to 200' : 'beyond 200') + ' nautical miles)</li>'; }).join('') + '</ol>';
   }
 
   /* ------------------------------------------------------- real cases */
-  var BASES = {};
+  var BASES = {}, mapLib = null;
+  /* hug-map.js is not on tool pages yet (a request for the lead in
+     docs/aphug-reviews/self-t4.md); until it is, load it once on demand. */
+  function needMap(){
+    if(window.ApHugMap) return Promise.resolve(window.ApHugMap);
+    if(!mapLib) mapLib = new Promise(function(ok, no){ var s = document.createElement('script'); s.src = (window.ApHugBase || '../') + 'assets/hug-map.js'; s.onload = function(){ ok(window.ApHugMap); }; s.onerror = no; document.head.appendChild(s); });
+    return mapLib;
+  }
   function base(id){
     if(BASES[id]) return BASES[id];
-    BASES[id] = fetch((window.ApHugBase || '../') + 'figures/base/' + id + '.json').then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
+    BASES[id] = needMap().then(function(){ return fetch((window.ApHugBase || '../') + 'figures/base/' + id + '.json'); }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
     return BASES[id];
   }
   function realHtml(x, b){
@@ -232,7 +254,7 @@
 
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
-    var scene = 'types', bt = 'antecedent', shape = 'elongated', on = [0, 4], nm = 8, real = 'A', year = 1700, timer = null, LS = null, nid = T.nid('bl'), touched = false;
+    var scene = 'types', bt = 'antecedent', shape = 'elongated', on = [0, 4], nm = 8, real = 'A', year = 1950, timer = null, LS = null, nid = T.nid('bl'), touched = false;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem bl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Borders lab</h2>' +
       '<div class="bl-fig"><div class="bl-pic"><svg class="bl-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg><div class="bl-realbox" hidden></div></div><div class="bl-leg"></div></div>' +
@@ -283,7 +305,7 @@
     var realTok = 0;
     function draw(){
       var z = size(), svg = $('.bl-svg'), box = $('.bl-realbox'), html = '', label = '', leg = '';
-      svg.hidden = scene === 'real'; box.hidden = scene !== 'real';
+      svg.style.display = scene === 'real' ? 'none' : ''; box.hidden = scene !== 'real';
       if(scene === 'types'){
         var f = PRESET[bt];
         html = landSvg(z.W, z.H, f, year);
@@ -378,12 +400,12 @@
     var W = phone() ? 360 : 600, H, inner, label, leg = '';
     if(g.kind === 'boundary'){
       var f = { first: g.facts.first, extra: g.facts.extra === 'consequent' || g.facts.extra === 'superimposed' || g.facts.extra === 'geometric' || g.facts.extra === 'relict' ? g.facts.extra : 'river', drawn: g.facts.drawn, settled: g.facts.settled };
-      H = phone() ? 300 : 400; inner = landSvg(W, H, f, 2000); label = 'The invented borderland as it is today, with a timeline of when the towns were settled and the border was drawn.'; leg = landLegend(f);
+      H = phone() ? 270 : 400; inner = landSvg(W, H, f, 2000); label = 'The invented borderland as it is today, with a timeline of when the towns were settled and the border was drawn.'; leg = landLegend(f);
     } else if(g.kind === 'shape'){
       H = phone() ? 240 : 320; inner = shapeSvg(W, H, g.shape, { flip: g.flip, rot: g.rot }); label = 'The outline of an invented state.';
     } else {
-      H = 300; inner = seaSvg(W, H, g.nm); label = 'Cross-section of the sea from Country A\'s coast, with four numbered zones and a ship ' + g.nm + ' nautical miles out.';
-      leg = '<p class="bt-small">The zones are numbered from the coast outward; their names are what the first step asks.</p>';
+      H = phone() ? 210 : 300; inner = seaSvg(W, H, g.nm, { quiet: true }); label = 'Cross-section of the sea from Country A\'s coast, with four numbered zones and a ship ' + g.nm + ' nautical miles out.';
+      leg = phone() ? '' : '<p class="bt-small">The zones are numbered from the coast outward; their names are what the first step asks.</p>';
     }
     el.innerHTML = '<figure class="cd-fig bl-qfig"><svg class="bl-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + inner + '</svg>' + leg + '</figure>';
   }

@@ -1,6 +1,6 @@
 {
  "topic": "data-in-decisions",
- "hook": "In February 2023, earthquakes struck southern Türkiye and northern Syria. Within days, UN satellite analysts compared images from before and after to map damaged buildings across whole cities, faster than teams on the ground could. Rescue groups used the maps to decide where to search first. Data about places are not just facts: they decide where help, money and services go.",
+ "hook": "In February 2023, earthquakes struck southern Türkiye and northern Syria. Within days, UN satellite analysts began comparing images from before and after to map damaged buildings across many towns, a job teams on foot could not do as quickly. Maps like these help aid groups decide where to send help first. Data about places are not just facts: they decide where help, money and services go.",
  "prereq": [
   {
    "q": "Which is quantitative data?",

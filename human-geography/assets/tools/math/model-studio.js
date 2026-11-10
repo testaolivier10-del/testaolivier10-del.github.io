@@ -105,7 +105,7 @@
       o.push(blob(118, 300, 56, 30, COL.z[3], 25)); o.push(blob(470, 330, 46, 28, COL.z[3], -20)); o.push(blob(92, 92, 46, 26, COL.z[3], -30));
       o.push('<g transform="translate(470 210) rotate(-25)"><rect x="-58" y="-26" width="116" height="52" rx="8" fill="' + COL.z[5] + '" stroke="' + COL.line + '" stroke-width="1.2"/><path d="M-46 -6H46M-46 10H46" stroke="#5B564E" stroke-width="5"/></g>');
       return { svg: frame(o.join(''), 'Galactic city model: an old central city, a beltway around it, highways out from the center, and centers of activity spread along them'),
-        spots: [[pct(cx, cy)], [pct(ec[0], ec[1])], [pct(118, 300), pct(470, 330)], [pct(470, 210)]],
+        spots: [[pct(cx, cy)], [pct(ec[0], ec[1])], [pct(118, 300), pct(470, 330), pct(92, 92)], [pct(470, 210)]],
         labels: [], legend: [{ sw: 'road', text: 'Highway (the loop is a ring road)' }] };
     },
     latin: function(){
@@ -130,7 +130,7 @@
       o.push('<rect x="0" y="335" width="600" height="65" fill="' + COL.water + '"/><path d="M0 335H600" stroke="' + COL.waterLine + '" stroke-width="2"/>');
       o.push(blob(70, 170, 34, 22, COL.z[4])); o.push(blob(540, 160, 34, 22, COL.z[4])); o.push(blob(300, 140, 30, 20, COL.z[4]));
       return { svg: frame(o.join(''), 'Southeast Asian city model: a port on the sea, commercial zones beside it, housing around them and a band of farmland at the edge'),
-        spots: [[pct(300, 320)], [pct(185, 318)], [pct(70, 170), pct(540, 160)], [pct(300, 38)]],
+        spots: [[pct(300, 320)], [pct(185, 318)], [pct(70, 170), pct(540, 160), pct(300, 140)], [pct(300, 38)]],
         labels: [{ x: 9, y: 93, text: 'Sea' }], legend: [LEG.water] };
     },
     africa: function(){
@@ -154,14 +154,14 @@
       o.push(hex(cx, cy, 182, 'fill="' + COL.z[0] + '" stroke="' + COL.accent + '" stroke-width="3"'));
       for(var i = 0; i < 6; i++){ var t = pt(cx, cy, 106, 60 * i); o.push(hex(t[0], t[1], 70, 'fill="none" stroke="#7FA7AE" stroke-width="1.6" stroke-dasharray="5 4"')); }
       var vill = pt(cx, cy, 106, 30);
-      o.push(hex(vill[0], vill[1], rs * 0.62, 'fill="' + COL.z[1] + '" stroke="' + COL.line + '" stroke-width="1.2"'));
+      o.push(hex(vill[0], vill[1], rs * 0.7, 'fill="' + COL.z[1] + '" stroke="' + COL.line + '" stroke-width="1.2"'));
       o.push('<circle cx="' + cx + '" cy="' + cy + '" r="15" fill="' + COL.ink + '"/>');
       for(var j = 0; j < 6; j++){ var q = pt(cx, cy, 106, 60 * j); o.push('<circle cx="' + q[0] + '" cy="' + q[1] + '" r="9" fill="' + COL.ink + '"/>'); }
       for(var k = 0; k < 6; k++){ var v = pt(cx, cy, 106, 60 * k + 30); o.push('<circle cx="' + v[0] + '" cy="' + v[1] + '" r="5" fill="' + COL.ink + '"/>'); }
       var town = pt(cx, cy, 106, 0), v2 = pt(cx, cy, 106, 210), shade = pt(cx, cy, 106, 30);
       return { svg: frame(o.join(''), 'Central place theory: a large hexagon market area around a city, with towns and villages at the corners of smaller hexagons'),
-        spots: [[pct(cx, cy + 34)], [pct(town[0] + 30, town[1])], [pct(v2[0], v2[1] + 28)], [pct(shade[0] + 4, shade[1] + 26)]],
-        labels: [], legend: [{ sw: 'big', text: 'Large dot: a big place' }, { sw: 'small', text: 'Small dot: a small place' }, { sw: 'dash', text: 'Edge of a market area' }] };
+        spots: [[pct(cx, cy + 34)], [pct(town[0] + 30, town[1])], [pct(v2[0], v2[1] + 28)], [pct(shade[0] + 30, shade[1] + 28)]],
+        labels: [], legend: [{ sw: 'dotbig', text: 'Large dot: a bigger place' }, { sw: 'small', text: 'Small dot: a smaller place' }, { sw: 'dash', text: 'Edge of a market area' }] };
     },
     bidrent: function(){
       var o = [], X0 = 70, Y0 = 350;
@@ -174,20 +174,20 @@
         labels: [{ x: 8, y: 5, text: 'Rent' }, { x: 72, y: 94, text: 'Distance from the CBD' }, { x: 11.7, y: 94, text: 'CBD' }], legend: [] };
     },
     malthus: function(){
-      var o = [], X0 = 70, Y0 = 350, P = function(t){ return Y0 - 30 * Math.pow(2, t / 125); }, Fd = function(t){ return Y0 - 30 - 0.52 * t; };
+      var o = [], X0 = 70, Y0 = 350, P = function(t){ return Y0 - 30 * Math.pow(2, t / 100); }, Fd = function(t){ return Y0 - 30 - 0.52 * t; };
       o.push('<path d="M' + X0 + ' 30V' + Y0 + 'H580" fill="none" stroke="' + COL.ink + '" stroke-width="2.5"/>');
       var cross = 0; for(var t = 60; t <= 500; t++){ if(P(t) <= Fd(t)){ cross = t; break; } }
       var pop = [], food = [], gapA = [], gapB = [];
-      for(var x = 0; x <= 420; x += 10) pop.push((X0 + x) + ' ' + r1(P(x)));
+      for(var x = 0; x <= 330; x += 5) pop.push((X0 + x) + ' ' + r1(P(x)));
       for(var y = 0; y <= 500; y += 10) food.push((X0 + y) + ' ' + r1(Fd(y)));
-      for(var g = cross; g <= 420; g += 5){ gapA.push((X0 + g) + ' ' + r1(P(g))); gapB.unshift((X0 + g) + ' ' + r1(Fd(g))); }
+      for(var g = cross; g <= 330; g += 5){ gapA.push((X0 + g) + ' ' + r1(P(g))); gapB.unshift((X0 + g) + ' ' + r1(Fd(g))); }
       o.push('<path d="M' + gapA.concat(gapB).join('L') + 'Z" fill="#F5D9CF"/>');
       o.push('<path d="M' + pop.join('L') + '" fill="none" stroke="#B5481F" stroke-width="4"/>');
       o.push('<path d="M' + food.join('L') + '" fill="none" stroke="' + COL.accent + '" stroke-width="4" stroke-dasharray="12 6"/>');
       o.push('<circle cx="' + (X0 + cross) + '" cy="' + r1(P(cross)) + '" r="9" fill="' + COL.ink + '"/>');
       return { svg: frame(o.join(''), 'Malthus: a curved line that grows faster and faster, a straight line that grows steadily, and the point where they cross'),
-        spots: [[pct(X0 + 222, P(250) - 18)], [pct(570, Fd(500) + 32)], [pct(X0 + cross + 14, P(cross) + 30)], [pct(X0 + 410, (P(410) + Fd(410)) / 2 - 4)]],
-        labels: [{ x: 10, y: 5, text: 'Amount' }, { x: 92, y: 94, text: 'Time' }], legend: [{ sw: 'pop', text: 'Solid line' }, { sw: 'food', text: 'Dashed line' }], cross: cross };
+        spots: [[pct(X0 + 362, P(330) + 6)], [pct(560, Fd(490) + 34)], [pct(X0 + cross + 26, P(cross) + 28)], [pct(X0 + 300, (P(300) + Fd(300)) / 2 + 4)]],
+        labels: [{ x: 10, y: 5, text: 'Amount' }, { x: 92, y: 94, text: 'Time' }], legend: [{ sw: 'popline', text: 'Solid line' }, { sw: 'food', text: 'Dashed line' }, { sw: 'gap', text: 'Shaded: the gap' }], cross: cross };
     },
     ravenstein: function(){
       var o = [];
@@ -201,7 +201,7 @@
       o.push(arrow(88, 66, 288, 180, COL.ink, 3));
       return { svg: frame(o.join(''), 'Ravenstein: arrows of migrants in an invented region with one large city, three towns and many villages'),
         spots: [[pct(140, 250)], [pct(520, 128)], [pct(410, 248)], [pct(178, 140)]],
-        labels: [], legend: [{ sw: 'big', text: 'Large circle: the big city' }, { sw: 'ring', text: 'Small circle: a town' }, { sw: 'small', text: 'Dot: a village' }, LEG.move] };
+        labels: [], legend: [{ sw: 'big', text: 'Large circle: the big city' }, { sw: 'ring', text: 'Small circle: a town' }, { sw: 'small', text: 'Dot: a village' }, LEG.move, { sw: 'darrow', text: 'Dashed arrow: a move out' }] };
     },
     boundaries: function(){
       var o = [];
@@ -483,7 +483,7 @@
         { t: 'All the cities are about the same size', why: 'The bars fall from ' + thou(pops[0]) + ' to ' + thou(pops[4]) + ' thousand.' },
         { t: 'Smaller cities have higher ranks than larger ones', why: 'Rank 1 is the largest city, and size falls as the rank number rises.' }];
       var k = r.pick([3, 4]), want = C.evaluate({ fn: 'rankSize', args: [L, k] });
-      var st2 = numStep('rule', '<b>Now the rule.</b> The largest city has ' + thou(L) + ' thousand people. By the rank-size rule, how many people would the city ranked ' + k + ' have, in thousands?', want,
+      var st2 = numStep('rule', '<b>Now the rule.</b> The largest city has ' + thou(1000 * L) + ' people. By the rank-size rule, how many people would the city ranked ' + k + ' have, in thousands?', want,
         [{ value: L * k, why: 'The rule divides by the rank: the city ranked ' + k + ' has 1/' + k + ' of the largest.' }, { value: L - L / k, why: 'Divide the largest city by the rank; do not subtract.' }, { value: L / (k - 1), why: 'That is the city ranked ' + (k - 1) + '. Divide by ' + k + '.' }], 0, 'thousand');
       st2.practice = '3.B';
       return { fig: { kind: 'plot', spec: spec }, steps: [choiceFrom(R, Wr, { key: 'apply', fig: 'apply', practice: '3.C', level: 'analyze', label: '<b>Apply it.</b> Which pattern do these invented data for ' + name + ' show?' }), st2], primate: primate, pops: pops, L: L, k: k, say: R.t };

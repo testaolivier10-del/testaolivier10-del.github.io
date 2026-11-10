@@ -2,10 +2,10 @@
  "stimuli": {
   "urban-data-s1": {
    "kind": "data",
-   "title": "Census figures for the East Ridge neighborhood",
+   "title": "Census and survey figures for the East Ridge neighborhood",
    "invented": true,
    "table": {
-    "caption": "East Ridge census tract, an invented neighborhood (invented data for practice)",
+    "caption": "East Ridge census tract, an invented neighborhood (invented data for practice; in the United States, tract income and rent figures since 2010 come from the American Community Survey)",
     "cols": [
      "Measure",
      "2000",

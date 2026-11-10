@@ -111,12 +111,12 @@
     {
      "point": "Gives a real example of the same region type at two named scales and says how the scale changes what is studied.",
      "accept": [
-      "a pizza shop delivery area (local) and Chicago's commuting area (regional within a country) as functional regions",
-      "a French-speaking neighborhood (local) and Quebec (a province) as formal regions"
+      "Quebec, a province where most people speak French (local, subnational), and the Sahara, a desert climate across many countries (regional), as formal regions",
+      "a Toronto pizza shop delivery area (local) and an airline hub whose flights tie many countries to one airport (regional or global) as functional regions"
      ]
     }
    ],
-   "sample": "Functional regions exist at more than one scale: at the local scale, a Toronto pizza shop's delivery area is tied to one shop, whereas at a larger scale, the area that commutes into Chicago is tied to a whole city, so the larger region covers many towns and is shaped by highways and trains."
+   "sample": "Formal regions exist at more than one scale: at the local (subnational) scale, Quebec is a formal region because most of its people speak French as their first language, which geographers study with census data for one province of Canada, whereas at the regional scale, the Sahara is a formal region of desert climate that crosses many countries of North Africa, so studying it means comparing climate data across national borders."
   },
   {
    "label": "G",

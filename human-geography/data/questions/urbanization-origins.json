@@ -2,7 +2,7 @@
  "stimuli": {
   "urbanization-origins-s1": {
    "kind": "map",
-   "title": "Five early centers of city growth",
+   "title": "Four early centers of city growth",
    "map": {
     "base": "world",
     "render": "reference",

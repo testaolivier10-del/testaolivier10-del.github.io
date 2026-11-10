@@ -438,18 +438,18 @@
    "diff": 2,
    "type": "single",
    "practice": "5.B",
-   "q": "Sea level is rising around the world as the oceans warm. Officials in Miami, Florida, raise streets and install pumps. How do these scales relate?",
+   "q": "Sea level is rising around the world as the oceans warm and land ice melts. Officials in Miami Beach, Florida, raise streets and install pumps. How do these scales relate?",
    "options": [
     "A local process causes a global effect, which the national government answers",
     "A national process causes a regional effect, which the world answers",
     "A global process has a local effect, which a local government answers",
-    "The scales are unrelated, since Miami's streets are local"
+    "The scales are unrelated, since Miami Beach's streets are local"
    ],
    "correct": 2,
    "why": {
     "correct": "Many local problems have global causes. Name both scales and the link.",
     "options": [
-     "Miami did not cause the global rise; it is responding to it.",
+     "Miami Beach did not cause the global rise; it is responding to it.",
      "The process is global and the response is by a city.",
      "Right: rising seas are global; flooded streets and the city's response are local.",
      "The local problem comes from a global process, so the scales are linked."
@@ -490,21 +490,21 @@
    "diff": 2,
    "type": "single",
    "practice": "5.C",
-   "q": "A world map shows that most of the world's largest cities are in Asia. A map of Japan shows that most Japanese people live on a narrow coastal strip. Which statement uses both scales correctly?",
+   "q": "A world map shades each country by its share of people living in cities. A map of Japan shades each prefecture (a province of Japan) by people per square kilometer. At what scale of analysis are the data on each map?",
    "options": [
-    "At the global scale, Asia holds many large cities; at the national scale, Japan's people crowd its coasts",
-    "At the global scale, Japan's coast is crowded; at the national scale, Asia holds many large cities",
-    "Both maps are at the local scale, because both show cities on coasts",
-    "Both maps are at the global scale, because Japan is part of the world map"
+    "World map: national, one value per country; Japan map: local, one value per prefecture",
+    "World map: global, as it covers the world; Japan map: national, as it covers one country",
+    "Both maps are at the local scale, because both measure where people live in cities",
+    "Both maps are at the global scale, because Japan also appears on the world map"
    ],
    "correct": 0,
    "why": {
-    "correct": "Tie each pattern to the scale of the map that shows it.",
+    "correct": "Name the scale from the unit of each value: countries on the world map, prefectures on the map of Japan. The size of the area each map covers does not decide it.",
     "options": [
-     "Right: each pattern is named at the scale of its own map.",
-     "This swaps the scales: the world map compares regions, and the map of Japan shows one country.",
-     "Neither map is local: one shows the world, the other one country.",
-     "A map of one country shows a national pattern, even though the country is also on the world map."
+     "Right: each value on the world map describes a country (national), and each value on the Japan map describes a prefecture, a part of one country (local, or subnational).",
+     "This names the scale from the size of each map. Each value on the world map is for a country, and each value on the Japan map is for a prefecture, so the scales are national and local.",
+     "The world map has one value for each whole country, which is national data, not local.",
+     "Being on the world map does not change the unit of the Japan map's data: prefectures, a local (subnational) scale."
     ]
    }
   },
@@ -522,7 +522,7 @@
     "write": {
      "scale": true
     },
-    "model": "At the national scale, Country A has half its households above the middle income, whereas at the local scale, the Capital Region is above 65% and the Western Uplands below 35%.",
+    "model": "At the national scale, Country A has half its households above the middle income, whereas at the local scale, the Capital Region is at 65% or more and the Western Uplands below 35%.",
     "slots": {
      "scaleA": {
       "label": "First scale",
@@ -560,7 +560,7 @@
      "patternB": {
       "label": "Pattern at the second scale",
       "options": [
-       "the Capital Region is above 65% and the Western Uplands below 35%",
+       "the Capital Region is at 65% or more and the Western Uplands below 35%",
        "incomes vary"
       ],
       "correct": 0,

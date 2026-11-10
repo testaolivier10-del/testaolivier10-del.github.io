@@ -326,7 +326,7 @@
   }
   function figure(el, p){
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
-    var W = phone() ? 360 : 600, H = phone() ? 270 : 420, inner = '', label = '', leg = '';
+    var W = phone() ? 360 : 600, H = phone() ? 240 : 420, inner = '', label = '', leg = '';
     if(g.kind === 'spread'){
       inner = spreadSvg(W, H, g.spread, 4, { letters: g.letters });
       label = 'Map of Country A: places shaded by the step when they first had the trait, with four places lettered A to D.';

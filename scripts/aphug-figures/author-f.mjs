@@ -162,8 +162,8 @@ fig({
     r(0, 0, 600, 470, '#FFFFFF'),
     r(470, 20, 110, 430, T.water), t(525, 235, 'Lake', { size: 15, anchor: 'middle', weight: 'bold', fill: TEAL }),
     ...[[225, T.farm], [180, T.green], [135, T.sand], [90, T.ver], [45, T.teal]].map(([rad, fill]) => p(`M470 ${235 - rad} A${rad} ${rad} 0 0 0 470 ${235 + rad} Z`, fill, `stroke="${INK}" stroke-width="1.5"`)),
-    l(20, 205, 380, 205, GREY, 3, 'stroke-dasharray="10 6"'), t(30, 196, 'Railroad', { size: 14, fill: GREY }),
-    badge(445, 235, '1'), badge(402, 290, '2'), badge(357, 330, '3'), badge(318, 370, '4'), badge(275, 410, '5'),
+    l(20, 205, 405, 205, GREY, 3, 'stroke-dasharray="10 6"'), t(30, 196, 'Railroad', { size: 14, fill: GREY }),
+    badge(447, 235, '1'), badge(420, 279, '2'), badge(386, 309, '3'), badge(352, 339, '4'), badge(318, 368, '5'),
   ].join(''),
 });
 

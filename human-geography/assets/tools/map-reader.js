@@ -54,7 +54,7 @@
     if(o.hit) svg = svg.replace(/<path d=/g, function(){ return '<path class="hug-mr-f" d='; });
     var over = MAP.overlay(spec, B).filter(function(x){ return x.x != null; }).map(function(x){ return '<span class="hug-map-' + x.kind + (x.low ? ' is-low' : '') + '" style="left:' + x.x + '%;top:' + x.y + '%">' + esc(x.text) + '</span>'; }).join('');
     var src = spec.invented ? 'Invented data for practice.' : spec.source ? 'Source: ' + esc(spec.source) + '.' : '';
-    return '<figure class="hug-map hug-mr-map" data-render="' + esc(spec.render) + '"><div class="hug-map-pic"' + (o.hit ? ' data-base="' + esc(spec.base) + '"' : '') + '>' + svg +
+    return '<figure class="hug-map hug-mr-map" data-render="' + esc(spec.render) + '" style="--hug-mr-ar:' + (B.width / B.height).toFixed(3) + '"><div class="hug-map-pic"' + (o.hit ? ' data-base="' + esc(spec.base) + '"' : '') + '>' + svg +
       (over ? '<div class="hug-map-over" aria-hidden="true">' + over + '</div>' : '') + '</div>' + MAP.legendHtml(spec, B) +
       '<figcaption class="hug-small">' + (src ? '<span class="hug-src">' + src + '</span> ' : '') + '<span class="hug-border-note">' + esc(MAP.note(B)) + '</span>' + (B.invented ? '' : ' <span class="hug-base-src">Base map: Natural Earth.</span>') + '</figcaption></figure>';
   }
@@ -64,7 +64,7 @@
     var sq = c.squares.map(function(q, i){ return '<rect class="hug-mr-sq" data-id="' + esc(q.id) + '" x="' + (q.x - q.s / 2).toFixed(1) + '" y="' + (q.y - q.s / 2).toFixed(1) + '" width="' + q.s.toFixed(1) + '" height="' + q.s.toFixed(1) + '" rx="4"/>'; }).join('');
     var over = c.squares.map(function(q, i){ return '<span class="hug-mr-sql" style="left:' + (100 * q.x / c.width).toFixed(2) + '%;top:' + (100 * q.y / c.height).toFixed(2) + '%">' + L[i] + '</span>'; }).join('');
     var key = c.squares.map(function(q, i){ return '<li><b>' + L[i] + '</b> ' + esc(q.name) + '</li>'; }).join('');
-    return '<figure class="hug-map hug-mr-map hug-mr-carto" data-render="cartogram"><div class="hug-map-pic"><svg viewBox="0 0 ' + c.width + ' ' + c.height + '" role="img" aria-label="Cartogram of Country A: each province is a square sized by its number of people">' +
+    return '<figure class="hug-map hug-mr-map hug-mr-carto" data-render="cartogram" style="--hug-mr-ar:1.5"><div class="hug-map-pic"><svg viewBox="0 0 ' + c.width + ' ' + c.height + '" role="img" aria-label="Cartogram of Country A: each province is a square sized by its number of people">' +
       '<rect width="' + c.width + '" height="' + c.height + '" fill="#FFFFFF"/>' + sq + '</svg><div class="hug-map-over" aria-hidden="true">' + over + '</div></div>' +
       '<div class="hug-legend"><p class="hug-lg-title">' + esc(title || 'People in each province (invented)') + '</p><ul class="hug-mr-ckey">' + key + '</ul><p class="hug-small">Square area shows the number of people. Shapes and positions are not true.</p></div>' +
       '<figcaption class="hug-small"><span class="hug-src">Invented data for practice.</span> <span class="hug-border-note">' + esc(window.ApHugMap.INVENTED_NOTE) + '</span></figcaption></figure>';
@@ -111,8 +111,8 @@
       // Pattern: letters on two places at the high end and one at the low end.
       var v = x.spec.values || {}, D = x.data, mk = R.markable(bid), score = function(f){ return st.type === 'choropleth' ? (v[f.id] == null ? -1 : v[f.id]) * 1e6 + (D.density[f.id] || 0) : D.people[f.id] || 0; };
       var hi = mk.slice().sort(function(a, b){ return score(b) - score(a); }), lo = hi.slice().reverse();
-      var want = [hi[0], hi[1], hi[2], lo[0], lo[1]].filter(Boolean).map(function(f){ return f.id; });
-      return R.legibleMarks(bid, want, 3).map(function(m){ return m.at; });
+      var two = R.legibleMarks(bid, hi.slice(0, 6).map(function(f){ return f.id; }), 2).map(function(m){ return m.at; });
+      return R.legibleMarks(bid, two.concat(lo.slice(0, 6).map(function(f){ return f.id; })), 3).map(function(m){ return m.at; });
     }
     function render(bid){
       var K = R.KINDS[st.type], x = R.exploreSpec(bid, st.type, { breaks: st.breaks }), html, marks = [];
@@ -123,7 +123,9 @@
       cur = { bid: bid, x: x, marks: marks };
       html = st.type === 'cartogram' ? cartoHtml(x.cartogram) : mapHtml(x.spec, { hit: true });
       $('.hug-mr-fig').innerHTML = html;
-      var stg = $('.hug-mr-stage'); if(stg && stg.closest('.ls-stage-body, .ls-root')){ var sc = stg.closest('[class*="stage"]') || stg; try{ stg.scrollTop = 0; if(sc !== stg) sc.scrollTop = 0; }catch(e){} }
+      // A new map starts at its top, whatever the stage was scrolled to.
+      for(var el = $('.hug-mr-fig'); el && el !== document.body; el = el.parentElement){ if(el.scrollTop) el.scrollTop = 0; }
+      setTimeout(function(){ for(var el2 = $('.hug-mr-fig'); el2 && el2 !== document.body; el2 = el2.parentElement){ if(el2.scrollTop) el2.scrollTop = 0; } }, 60);
       $$('.hug-mr-type').forEach(function(b){ var on = b.getAttribute('data-t') === st.type; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       $$('.hug-mr-rd').forEach(function(b){ var on = b.getAttribute('data-r') === st.read; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       $$('.hug-mr-br').forEach(function(b){ var on = b.getAttribute('data-b') === st.breaks; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
@@ -139,7 +141,7 @@
       if(t === 'reference') return '<b>' + esc(f.name) + '</b>. A reference map gives no values: it shows where the place is.';
       if(t === 'isoline') return '<b>' + esc(f.name) + '</b>. On an isoline map, read the lines on either side of a point, not the province.';
       var dens = D.density[id], ppl = D.people[id], cl = cur.x.spec.values ? cur.x.spec.values[id] : null;
-      return '<b>' + esc(f.name) + '</b>: ' + (inv ? nf(ppl) + ' people, ' + nf(dens, 1) + ' per km²' : nf(ppl) + ' people (invented units), ' + nf(dens, 1) + ' per 1,000 km²') + (cl != null && cur.x.spec.classes ? ' · class ' + esc(cur.x.spec.classes[cl]) : '') + ' (invented).';
+      return '<b>' + esc(f.name) + '</b>: ' + (inv ? nf(ppl) + ' people, ' + nf(dens, 1) + ' per km²' : nf(ppl) + ' thousand people, ' + nf(dens, 1) + ' per 1,000 km²') + (cl != null && cur.x.spec.classes ? ' · class ' + esc(cur.x.spec.classes[cl]) : '') + ' (invented).';
     }
     function readout(){ var el = $('.hug-mr-read'); el.innerHTML = st.sel ? valueLine(cur.bid, st.sel) : '<span class="hug-mr-tap">Tap a place to read its invented value.</span>'; }
     function words(bid, x, marks){

@@ -138,26 +138,48 @@ Reviewer check of author D's list. "Verified" names the source read; "open" item
   as the shatterbelt example; Somalia after 1991 as the failed-state example; provincial data called "local
   (subnational)" scale in `devolution-factors` item 6 and FRQ Q3 part A. None is keyed on a disputed status.
 
-## unit-7-facts: Author G facts to verify (open, 2026-11-09)
+## unit-7-facts: Author G facts to verify (reviewed 2026-11-09, partly open)
 
-Unit 7 claims written from memory, kept cautious; a reviewer should check each against its source before launch.
+Reviewer u7 (docs/aphug-reviews/u7.md). WebFetch was not approved in the review session, so no source page or PDF
+could be read; "title-checked" means a web search returned a primary or dated page whose title states the fact.
+Everything else stays open for a pass that can read the sources.
 
-- ILO estimate that about 61% of the world's workers had informal jobs ("Women and Men in the Informal Economy", 2018).
-- Grameen Bank story: Yunus's first loan in 1976; Nobel Peace Prize 2006 shared with the bank.
-- Rana Plaza collapse near Dhaka, 2013, more than 1,100 deaths; Iceland's equal-pay certification law of 2017;
-  Rwanda's majority of women in the lower house since 2008 (IPU); Andhra Pradesh microfinance restrictions, 2010.
-- Dates: Watt's steam engine (1770s), Lowell mills (1820s), 1851 census urban majority in England and Wales, Factory
-  Act 1833, Japan from 1868, shipping containers in the 1950s, Weber 1909, Rostow 1960, Wallerstein 1970s,
-  Prebisch at ECLA, Mexico's 1982 debt crisis, IMF 1944, WTO 1995, OPEC 1960, Mercosur 1991 (founding four), USMCA
-  2020, China's SEZs 1980 (Hainan 1988) and open coastal cities 1984 (Shanghai, Tianjin), Ford's assembly line 1913,
-  BMW Spartanburg 1994, Newfoundland cod moratorium 1992 (about 30,000 jobs), SDGs 2015 for 2030, Our Common Future
-  1987, Greece's 2010 rescue loans.
-- Qualitative claims: Zambia's exports mostly copper and its mid-1970s borrowing after a copper price fall; Côte
-  d'Ivoire the largest cocoa grower; Kenya's large geothermal share (Olkaria, near Lake Naivasha); Iceland's aluminum
-  smelters; Kerala's literacy and life expectancy compared with its income; South Sudan "low income" in FY27.
-- HDI values in `development-measures-s1` come from accuracy-risks.md section 1 (UNDP 2025 report, 2023 data):
-  re-read on the UNDP data center (it was not reachable from the authoring session) and swap in the 2026 report if
-  it is out before launch.
+- ILO "about 61% of the world's workers had informal jobs": now cited as "ILO, 2018 report" (2016 data). OPEN: not
+  re-read; search shows newer ILO figures near 58% (ILOSTAT blog "Decent Work Reality Check: Informality";
+  ILO WESO). Swap to the latest ILO figure with its data year once read.
+- Grameen Bank 1976 first loan; Nobel Peace Prize 2006 shared with the bank. OPEN (low risk, not searched).
+- Rana Plaza, near Dhaka (Savar), 2013, more than 1,100 deaths: title-checked (en.wikipedia.org/wiki/Rana_Plaza_collapse;
+  thedailystar.net "deadliest industrial tragedy"). Count not re-read.
+- Iceland equal-pay certification law of 2017: title-checked (government.is "Questions and Answers on equal pay
+  certification", 2018-01-30; wageindicator.org "Iceland - Legislation on equal pay - March 31, 2017"; NPR 2018-01-05).
+  The size threshold ("larger employers", 25+ staff) not re-read.
+- Rwanda, majority of women in the lower house since the 2008 election: 2008 title-checked (pbs.org "Rwanda elects
+  world's first majority female parliament", 2008-10; IPU "How did Rwanda become no.1 for gender equality", 2022).
+  OPEN: the 2024 election result (needed for "since") not re-read.
+- Andhra Pradesh 2010 microfinance restrictions: OPEN (not searched).
+- Dates list (Watt 1770s ... Greece 2010): OPEN as sources, but the reviewer found each consistent with standard
+  references; none is the only route to a key. IMF "set up in 1944" means the 1944 Bretton Woods agreement.
+- Zambia mostly copper exports and mid-1970s borrowing: OPEN (search found only trade-data pages, not read).
+- Côte d'Ivoire: notes now say "has long been the world's largest grower of cocoa beans". OPEN (titles consistent,
+  no figure read).
+- Kenya's large geothermal share near Lake Naivasha: title-checked (thinkgeoenergy.com "Geothermal supplies largest
+  share to Kenya's growing electricity demand"; powermag.com "Kenya banks on geothermal for majority of its power").
+- Iceland's aluminum smelters: OPEN (low risk).
+- Kerala: wording changed to "though several Indian states have a higher income per person" (the old "not far
+  ahead" was doubtful; Kerala's income is above India's average). OPEN: cite state data with a year if kept.
+- South Sudan "low income" FY27 and the FY27 thresholds: verified through accuracy-risks.md section 1 (World Bank
+  FY27 document, no country moved down).
+- HDI values in `development-measures-s1` and the lesson hook (Iceland 0.972, Norway and Switzerland 0.970, US 0.938,
+  South Sudan 0.388; UNDP 2025 report, 2023 data): match accuracy-risks.md section 1 (UNDP data center). DEADLINE:
+  UNDP announces the 2026 HDR for release on 1 December 2026 (hdr.undp.org "2026 Human Development Report to be
+  released on 1 December"); swap s1, the hook and the notes sentence to the 2026 report then, or keep the 2025 label.
+- "About 6% earned the point" (trade hook): framework.md section 6, 2025 set 2 Q2C CR report. Verified there.
+- FRQ originality (frq-development-table-one vs 2023 set 2 Q2; frq-industrial-cluster-two vs 2023 set 1 Q3): OPEN.
+  The released PDFs (apcentral ap23-frq-human-geography-set-1.pdf and set-2.pdf) could not be read. From the CR
+  summaries in framework.md section 7, the released items cover HDI components, an outcome type, table values and
+  Rostow/DTM (set 2 Q2) and growth pole vs agglomeration plus the galactic city model (set 1 Q3). Ours share
+  concepts (set by the lead's plan) but use invented data and different tasks; a reader of the PDFs must confirm
+  no wording or part sequence was adapted.
 
 ## unit-5-facts: Author E facts to verify (open, 2026-11-09)
 
@@ -186,3 +208,90 @@ dollars or more in sales making 78% of sales; 4% and 69% in 2017).
 - `frq-farm-trade-one` lists `trade-world-economy` (7.6) so it may key comparative advantage; it therefore unlocks
   after Unit 7 topic 7.6, not with Unit 5. If the lead wants it live with Unit 5, part D must change to a Unit 5 or
   earlier concept.
+
+## unit-3-facts: Unit 3 dated facts and open points (reviewer u3, 2026-11-09)
+
+From `docs/aphug-reviews/self-c.md`; checked by the Unit 3 reviewer (report: `docs/aphug-reviews/u3.md`).
+
+Dated facts:
+
+- Quebec 1995: No 50.58%, Yes 49.42%, turnout 93.52%, held 30 Oct 1995. Verified (Élections Québec results page).
+- French radio quota: passed 1994, in force 1 Jan 1996, 40% French-language songs (quota now sits in the 1986 law
+  as amended). Verified (Arcom song-quotas page; Christian Science Monitor, 3 Jan 1996).
+- Māori Language Week since 1975, first kōhanga reo 1982, Māori Language Act in force 1 Aug 1987 (official language).
+  Verified (NZHistory, Manatū Taonga). Māori Television launched 2004. Verified (Te Māngai Pāho timeline).
+  "By the 1970s studies found few young Māori fluent" (the Benton survey) is still open: no source opened this pass.
+- Saudi Arabia ended required sex-segregated restaurant entrances on 8 Dec 2019 (Ministry of Municipal and Rural
+  Affairs; owners may keep them). Verified (Al Jazeera, 8 Dec 2019).
+- Haiti 1987 constitution art. 5: Creole and French official. Verified (Constitute Project text).
+- Canada multiculturalism policy 8 Oct 1971. Verified (Pier 21). TRC final report Dec 2015. Verified (Crown-Indigenous
+  Relations). Residential schools "from the 1880s to 1996" is still open: standard dates, not re-read from a
+  government page this pass.
+- Sequoyah syllabary 1821, 86 symbols; Cherokee Phoenix 21 Feb 1828. Verified (Britannica, Cherokee language).
+- First Walmart 2 July 1962, Rogers, Arkansas. Verified (Walmart corporate history).
+- 550 Madison Avenue completed 1984, Johnson and Burgee, pink granite, "Chippendale" split pediment. Verified
+  (Docomomo US).
+- Owámniyomni = St. Anthony Falls (Dakota). Verified (MNHS Mill City Museum page; Open Rivers, 29 Oct 2024).
+  Mill City Museum in the Washburn A Mill ruins, opened 2003; Washburn A closed 1965; Pillsbury A Mill closed 2003.
+  Verified (Mill City Museum article; National Trust, Pillsbury A Mill); the notes now give these dates.
+- Pilsen: museum founded 1982, opened 1987 as the Mexican Fine Arts Center Museum, renamed 2006. Verified (museum's
+  history page); the notes and stimulus now say "then called".
+- Denali / Mount McKinley: Interior order 3424 (14 Feb 2025) reinstates Mount McKinley; the park keeps the name
+  Denali National Park and Preserve. Verified (DOI order PDF).
+- Pew 2025 (2020 data): 28.8 / 25.6 / 24.2 / 14.9 / 4.1 / Jews about 0.2%; Muslims grew fastest. Verified (Pew).
+- Ethnologue 29th edition is the 2026 edition. Verified (Our World in Data source note). The 7,170 count is from
+  accuracy-risks.md; the Ethnologue page could not be opened this pass (still open, recheck).
+- Hong Kong 1842-1997, Senegal 1960, Philippines 1898-1946, Brazil 1822, Swahili's name from Arabic "coasts",
+  papermaking at Samarkand about 751 and Baghdad by about 800 (EBSCO research starter), Tok Pisin's plantation
+  origin in the late 1800s and official status (Britannica), Boston's first Saint Patrick's Day 1737 and march 1841
+  (Boston Irish). Verified except Hong Kong, Senegal, Philippines, Brazil and the Swahili etymology, which are
+  standard textbook dates not re-read this pass (still open, low risk).
+
+Open points from self-c.md:
+
+1. Scale wording for province data: Unit 3 keys "local (subnational)"; author A's skills topic should use the same
+   words. Still open (cross-unit consistency, not a fact).
+2. Contested name: the 3.7 notes give Denali / Mount McKinley with users and date. Verified (see above).
+3. Religion classification caveat (Hinduism and Judaism accept converts in some forms) in notes and glossary.
+   Still open: a teacher should confirm the wording.
+4. Bank-wide select-all items with one correct option (Unit 3 has 2 of 5). Still open for the lead (bank balance).
+
+## unit-1-facts: Skills chapter and Unit 1 open points (reviewer u1, 2026-11-09, docs/aphug-reviews/u1.md)
+
+1. World Bank FY27 classes on `views-of-the-world-s2` and `scales-of-analysis-s1`: verified from the World Bank
+   blog (1 July 2026) and a matching August 2026 table; the World Bank's own classification page could not be
+   opened from the review container. Confirm Sri Lanka (upper-middle, "narrowly crossed") on the World Bank page
+   before launch. Still open (low risk: keys read from the dated map).
+2. UN WPP: the population.un.org site could not be opened; WPP 2024 figures were confirmed from a WPP 2024 table.
+   Check for a newer revision before launch. Still open.
+3. Scale words: provinces and states are keyed "local (subnational)", as the 2025 scoring accepted and as Unit 3
+   keys them (self-c open point 1 is consistent now). A teacher may want to note that some textbooks call a state
+   "regional". Still open (wording, not a fact).
+4. Figure polish, not changed: the scale bar in `skills-scale-two-meanings` ("0 to 3 km" at 1:50,000) holds at one
+   print size only; `data-in-decisions-flow` puts "A formula in US federal law" under "Who decides". Still open.
+
+## unit-6-facts: Author F's four entries (reviewer u6, 2026-11-09, docs/aphug-reviews/u6.md)
+
+1. `metacity-threshold`: verified. UN-Habitat's *State of the World's Cities 2006/7* (2006) calls conurbations of
+   "more than 20 million people" metacities; the 2024 Set 1 Q3 scoring guideline accepts "over 20 million" for a
+   metacity and gives no megacity figure. UN DESA's World Urbanization Prospects 2025 counts megacities at 10 million
+   or more. The notes now name the UN-Habitat report.
+2. `wup-2025-figures`: verified with one error fixed. UN DESA's December 2025 feature: 33 megacities in 2025, 8 in
+   1975, 19 in Asia, 45% of 8.2 billion in cities (20% in 1950), Jakarta nearly 42 million, Tokyo 33 million, Cairo
+   the only non-Asian city in the top ten, Addis Ababa and Dar es Salaam past 10 million by 2050. City values from
+   WUP 2025 tables (as reproduced by Destatis and by the São Paulo city government's table of the 100 largest
+   agglomerations): Jakarta 41.9, Tokyo 33.4, New Delhi 30.2, Shanghai 29.6, Manila 24.7, Sao Paulo 18.95,
+   **Cairo 25.6, not 32.0** (fixed in `cities-worldwide-s1`, its item 2 explanation and `frq-world-cities-two`).
+   Dhaka: the data tables give 36.6 million and DESA's feature says "almost 40 million"; still open, Dhaka stays
+   off the maps. Check the WUP 2025 data files themselves before launch (population.un.org was not opened).
+3. `flint-task-force`: verified. The Flint Water Advisory Task Force final report (21 March 2016), appointed by
+   Gov. Rick Snyder, lists among its findings "The Flint water crisis is a clear case of environmental injustice"
+   (quoted by Jenner & Block's report summary, 23 March 2016).
+4. `released-overlap-world-cities`: resolved by rewriting. Compared with 2024 Set 1 Q3 (map of metacities and
+   top-tier world cities plus a city table; part C compared metacity and world city): Source 1 no longer marks
+   world cities, part D (world cities vs Jakarta) became a limitation of Source 1, part G (population vs world-city
+   rank) became the degree to which a primate city helps a whole country. A second overlap was found and fixed:
+   `frq-rail-boundary-one` parts D (fragmented governments and building a rail line) and E (transit reducing
+   pollution) matched 2024 Set 2 Q2 G and E; they now ask about the central city's budget and land use near new
+   stations. The stimulus type (a metro map with jurisdictions and a rail line) still resembles 2024 Set 2 Q2's;
+   still open for the owner: keep (parts now differ) or swap the stimulus.

@@ -68,3 +68,5 @@
 .dl-table,.cl-table{border-collapse:collapse;margin:.5em 0;font-size:14px;}
 .dl-table th,.dl-table td,.cl-table th,.cl-table td{border:1px solid var(--line);padding:4px 10px;text-align:right;}
 .dl-table th[scope=row],.cl-table th[scope=row]{text-align:left;}
+@media (max-width:640px){ .dl-qfig figcaption{display:none;} .dl-legend{gap:4px 10px;font-size:12.5px;} }
+.ls-root .dl-legend{padding-right:46px;}

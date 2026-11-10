@@ -3,7 +3,7 @@
   "spatial-concepts-s1": {
    "kind": "text",
    "title": "Singapore: where the city sits (written for practice, LevlPrep 2026)",
-   "text": "<p>Singapore is a small, mostly flat island at the southern tip of the Malay Peninsula, about 137 km north of the equator. Its south shore has deep water sheltered from storms, a good natural harbor. The island lies beside the Strait of Malacca, the narrow sea lane that ships use to travel between the Indian Ocean and the South China Sea. Ships carrying goods between Europe, the Middle East and East Asia pass close by, and many stop to load, unload and refuel.</p>"
+   "text": "<p>Singapore is a small, mostly flat island at the southern tip of the Malay Peninsula, about 140 km north of the equator. Its south shore has deep water sheltered from storms, a good natural harbor. The island lies beside the Strait of Malacca, the narrow sea lane that ships use to travel between the Indian Ocean and the South China Sea. Ships carrying goods between Europe, the Middle East and East Asia pass close by, and many stop to load, unload and refuel.</p>"
   },
   "spatial-concepts-s2": {
    "kind": "data",
@@ -90,7 +90,7 @@
     "Deep water on its south shore makes a sheltered natural harbor",
     "Ships between Europe, the Middle East and East Asia pass close by",
     "The island is small and mostly flat, at the tip of a peninsula",
-    "The island is about 137 km north of the equator"
+    "The island is about 140 km north of the equator"
    ],
    "correct": 1,
    "why": {

@@ -105,3 +105,7 @@
 /* Plots use the page's own colors (hug-plot.js themes them), not the white card. */
 .ms-plotfig .ms-card{background:transparent;border:0;padding:0;color:inherit;}
 .ms-plotfig .ms-src{color:inherit;opacity:.85;}
+.ms-sw-popline{height:0;border-top:4px solid #B5481F;border-radius:0;}
+.ms-sw-gap{background:#F5D9CF;border:1px solid #C9A595;}
+.ms-sw-dotbig{width:14px;height:14px;border-radius:50%;background:#1B1B1B;}
+.ms-sw-darrow{height:0;border-top:3px dashed #B5481F;border-radius:0;}

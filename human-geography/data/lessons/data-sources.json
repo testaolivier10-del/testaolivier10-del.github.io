@@ -1,6 +1,6 @@
 {
  "topic": "data-sources",
- "hook": "Every two weeks, satellites pass over the Amazon rainforest and photograph it. Brazil's space research agency compares the images to measure how much forest was cleared. The pictures show what changed and where. They cannot show why a family cleared a field or what they planned to grow. For that, someone has to go and ask. Geographers use both kinds of data.",
+ "hook": "Satellites photograph the Amazon rainforest again and again. Each year, Brazil's space research agency compares the images to measure how much forest was cleared. The pictures show what changed and where. They cannot show why a family cleared a field or what they planned to grow. For that, someone has to go and ask. Geographers use both kinds of data.",
  "prereq": [
   {
    "q": "What does a reference map show?",

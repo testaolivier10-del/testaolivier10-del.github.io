@@ -217,6 +217,7 @@
     return { kind: 'cartogram', width: 600, height: 400, squares: sq };
   }
 
+  function niceStep(v){ var p = Math.pow(10, Math.floor(Math.log10(Math.max(1, v)))), m = v / p; return (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p; }
   /* -------------------------------------------------- Explore data */
   /* One invented data set per base (fixed seed): people and land area, so
      the same numbers can be drawn as a choropleth (density, a rate), dots
@@ -259,13 +260,13 @@
       spec.values = vals; spec.noData = NO_DATA;
       spec.label = 'Choropleth map of ' + placeName(bid) + ': ' + spec.legendTitle.toLowerCase() + ', highest toward the ' + D.dir;
     } else if(render === 'dot'){
-      var per = inv ? 20000 : Math.max(1, Math.round(Object.keys(D.people).reduce(function(s, k){ return s + D.people[k]; }, 0) / 320));
-      spec.dots = { each: inv ? '1 dot = 20,000 people' : '1 dot = ' + nf(per) + ' people (invented units)', points: dotsFor(r, bid, D.people, per) };
+      var per = inv ? 20000 : niceStep(Object.keys(D.people).reduce(function(s, k){ return s + D.people[k]; }, 0) / 320);
+      spec.dots = { each: inv ? '1 dot = 20,000 people' : '1 dot = ' + (per >= 1000 ? nf(per / 1000) + ' million' : nf(per) + ' thousand') + ' people', points: dotsFor(r, bid, D.people, per) };
       spec.legendTitle = 'Where people live (invented)';
       spec.label = 'Dot density map of ' + placeName(bid) + ': where people live, with dots clustered toward the ' + D.dir;
     } else if(render === 'symbol'){
       var big = markable(bid).sort(function(a, b){ return D.people[b.id] - D.people[a.id]; }).slice(0, inv ? 8 : 9);
-      spec.symbols = { unit: inv ? 'thousand people' : 'invented units of people', items: big.map(function(f){ return { at: f.id, value: inv ? Math.round(D.people[f.id] / 1000) : D.people[f.id] }; }) };
+      spec.symbols = { unit: inv ? 'thousand people' : 'million people', items: big.map(function(f){ return { at: f.id, value: inv ? Math.round(D.people[f.id] / 1000) : Math.max(1, Math.round(D.people[f.id] / 1000)) }; }) };
       spec.legendTitle = 'Total people (invented)';
       spec.label = 'Graduated symbol map of ' + placeName(bid) + ': circles sized by the number of people in each place';
     } else if(render === 'isoline'){
@@ -315,7 +316,7 @@
     } else if(render === 'symbol'){
       var SV = pick(r, COUNT_VARS), cs = countValues(r, bid, dir), big = markable(bid).sort(function(a, b){ return cs[b.id] - cs[a.id]; });
       var chosen = legibleMarks(bid, big.map(function(f){ return f.id; }), 6).map(function(m){ return m.at; });
-      spec.symbols = { unit: SV.unit + ' (invented)', items: chosen.map(function(id){ return { at: id, value: cs[id] * 10 }; }) }; spec.legendTitle = SV.title + ' (invented)';
+      spec.symbols = { unit: SV.unit, items: chosen.map(function(id){ return { at: id, value: cs[id] * 10 }; }) }; spec.legendTitle = SV.title + ' (invented)';
       spec.label = 'Graduated symbol map of ' + placeName(bid) + ': ' + SV.title.toLowerCase() + ', circles sized by amount';
     } else if(render === 'isoline'){
       var IV = pick(r, ISO_VARS), xs = isoXs(r), vals = isoVals(r, IV);
@@ -369,9 +370,11 @@
       var m = anyMap(r, bid, 'symbol'), sp = m.fig.spec, items = sp.symbols.items.slice(0, 4), marks = legibleMarks(bid, items.map(function(i){ return i.at; }), 4);
       if(marks.length < 3) throw again('not enough legible symbols');
       sp.marks = marks; var key = keyOf(bid, marks);
+      // The marked values in clear steps: one place 4 times the smallest, the rest between.
       var byId = {}; sp.symbols.items.forEach(function(i){ byId[i.at] = i.value; });
-      var ranked = marks.slice().sort(function(a, b){ return byId[b.at] - byId[a.at]; }), top = ranked[0];
-      if(byId[ranked[0].at] === byId[ranked[1].at]) byId[ranked[0].at] += 10;
+      var unit0 = pick(r, [50, 100, 200]), mult = M.shuffle(r, [4, 1, 2, 1.5].slice(0, marks.length)), top = null;
+      marks.forEach(function(mk, i){ byId[mk.at] = unit0 * mult[i]; if(mult[i] === 4) top = mk; });
+      sp.symbols.items.forEach(function(i){ if(marks.every(function(mk){ return mk.at !== i.at; })) byId[i.at] = Math.max(unit0, Math.min(unit0 * 3, Math.round(byId[i.at] / 10) * 10)); });
       var opts = marks.map(function(mk){ return [mk.text + ' (' + nameOf(bid, mk.at) + ')', mk === top ? 'Right. Its circle is the largest, so its value is the largest.' : 'Its circle is smaller than ' + top.text + '’s. Compare the circles, not the size of the country.']; });
       var steps = [
         choice('top', 'Which marked place has the largest value?', opts, { fixed: true, correct: marks.indexOf(top) }),

@@ -27,7 +27,7 @@
    "image": {
     "figure": "migration-effects-country-a-flows",
     "alt": "Flow map of Country A, an invented country, with migrants per year. Within the country, arrows run to the Capital Region from the Northern Hills (40,000, the widest), the Western Uplands (25,000) and the Lake District (10,000), and from the Southern Forest to the South Coast (15,000). Dashed arrows show moves abroad: 20,000 a year from the Northern Hills and 15,000 from the South Coast.",
-    "caption": "Invented data for practice. Arrow width shows the number of migrants per year."
+    "caption": "Invented data for practice. Migrants per year, shown by arrow width: Northern Hills to Capital Region 40,000; Western Uplands to Capital Region 25,000; Lake District to Capital Region 10,000; Southern Forest to South Coast 15,000; Northern Hills to abroad 20,000; South Coast to abroad 15,000."
    }
   },
   {
@@ -38,9 +38,9 @@
     "caption": "Households and remittances by province of Country A (invented data for practice)",
     "cols": [
      "Province",
-     "Households with a member working elsewhere",
-     "Households receiving remittances",
-     "Remittances as a share of income, in households receiving them"
+     "Households with a migrant member",
+     "Households getting remittances",
+     "Remittances as share of their income"
     ],
     "rows": [
      [

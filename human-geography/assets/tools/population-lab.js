@@ -94,7 +94,7 @@
   var BIRTH = mono(1), DEATH = mono(2);
   function rateAt(s){ return { cbr: BIRTH(s), cdr: DEATH(s) }; }
   function transSvg(o){
-    var x0 = o.x0 || 0, W = o.w, H = o.H, ph = W < 380, L = x0 + (ph ? 28 : 36), R = x0 + W - (o.hide ? 84 : 8), top = o.top || 26, B = H - 40, mx = 45;
+    var x0 = o.x0 || 0, W = o.w, H = o.H, ph = W < 380, L = x0 + (ph ? 28 : 36), R = x0 + W - (o.hide ? 84 : o.corner ? 46 : 8), top = o.top || 26, B = H - 40, mx = 45;
     var x = function(s){ return L + (R - L) * (s - 0.5) / 5; }, y = function(v){ return B - (B - top) * v / mx; };
     var out = [], b = [], d = [];
     for(var k = 0; k <= 100; k++){ var s = 0.5 + 5 * k / 100, rr = rateAt(s); b.push([x(s), y(rr.cbr)]); d.push([x(s), y(rr.cdr)]); }
@@ -178,7 +178,7 @@
       var vs = $('.hug-pl-views'); if(vs) vs.hidden = side;
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       var big = Math.max.apply(null, pyr.male.concat(pyr.female)) * 1.12, mx = [5, 8, 12, 16, 20].filter(function(v){ return v >= big; })[0] || 26;
-      var trans = transSvg({ w: tw, H: H, stage: stage, cbr: cbr, cdr: cdr, pos: posOf(cbr, cdr, stage), top: 24 });
+      var trans = transSvg({ w: tw, H: H, corner: !side, stage: stage, cbr: cbr, cdr: cdr, pos: posOf(cbr, cdr, stage), top: 24 });
       if(side) svg.innerHTML = pyrSvg(pyr, { W: W, w: pw, H: H, sel: sel, max: mx, bands: true }) + '<g transform="translate(' + (pw + 24) + ' 0)">' + trans + '</g>';
       else svg.innerHTML = view === 'dtm' ? trans : pyrSvg(pyr, { W: W, w: W, H: H, sel: sel, max: mx, bands: true });
     }

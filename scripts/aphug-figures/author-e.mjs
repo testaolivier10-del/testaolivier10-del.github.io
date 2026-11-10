@@ -88,7 +88,7 @@ function surveyPanels(named) {
   for (let i = 0; i < 3; i++) {
     const x = 8 + i * (P + 8);
     b += rect(x, top, P, H, { fill: FIELD2, stroke: INK, w: 1.6, rx: 2 });
-    if (named) b += text(x + P / 2, 30, titles[i], { anchor: 'middle', size: 18, bold: true, fill: TEAL });
+    if (named) b += text(x + P / 2, 32, titles[i], { anchor: 'middle', size: 22, bold: true, fill: TEAL });
     else b += badge(x + P / 2, 24, String(i + 1));
   }
   // Panel 1: irregular parcels following a stream, a tree and a rock as markers.
@@ -134,7 +134,7 @@ add('settlement-survey', 'settlement-survey-methods-numbered', 720, 356, 'Three 
   ['Clustered', 'Dispersed', 'Linear'].forEach((t, i) => {
     const x = 8 + i * (P + 8);
     b += rect(x, top, P, H, { fill: '#D7E8B8', stroke: INK, w: 1.6, rx: 2 });
-    b += text(x + P / 2, 30, t, { anchor: 'middle', size: 18, bold: true, fill: TEAL });
+    b += text(x + P / 2, 32, t, { anchor: 'middle', size: 22, bold: true, fill: TEAL });
   });
   // clustered: houses in a tight village around a church, fields all around
   { const cx = 8 + P / 2, cy = top + H / 2;
@@ -299,13 +299,13 @@ function rings(cx, cy, R, fills) {
   const zones = [[300, 150, FIELD], [235, 112, FIELD2], [170, 78, FOREST], [95, 44, VERM]];
   for (const [rx, ry, f] of zones) b += ellipse(cx, cy, rx, ry, { fill: f, stroke: INK, w: 1.4 });
   b += path(`M4,${cy} L716,${cy}`, { stroke: '#4A90B8', w: 9 });
-  b += text(660, cy - 12, 'River', { anchor: 'middle', size: 15, italic: true, fill: '#1F5F82' });
+  b += text(660, cy - 14, 'River', { anchor: 'middle', size: 19, italic: true, fill: '#1F5F82' });
   // second small town with its own small ring
   b += circle(620, 330, 44, { fill: VERM, stroke: INK, w: 1.4 }) + circle(620, 330, 12, { fill: '#FFFFFF', stroke: INK, w: 2 });
-  b += text(620, 392, 'Small town', { anchor: 'middle', size: 15, bold: true });
-  b += circle(cx, cy, 16, { fill: '#FFFFFF', stroke: INK, w: 2 }) + rect(cx - 52, cy - 44, 104, 24, { fill: '#FFFFFF', stroke: INK, w: 1, rx: 4 }) + text(cx, cy - 26, 'Market town', { anchor: 'middle', size: 15, bold: true });
-  b += badge(cx + 22, cy + 27, 'W', { r: 14 }) + badge(cx + 22, cy + 61, 'X', { r: 14 }) + badge(cx + 22, cy + 95, 'Y', { r: 14 }) + badge(cx + 22, cy + 131, 'Z', { r: 14 });
-  b += badge(70, 60, 'V', { r: 15 });
+  b += text(620, 396, 'Small town', { anchor: 'middle', size: 19, bold: true });
+  b += circle(cx, cy, 16, { fill: '#FFFFFF', stroke: INK, w: 2 }) + rect(cx - 60, cy - 46, 120, 28, { fill: '#FFFFFF', stroke: INK, w: 1, rx: 4 }) + text(cx, cy - 25, 'Market town', { anchor: 'middle', size: 17, bold: true });
+  b += badge(cx + 22, cy + 27, 'W', { r: 16, size: 18 }) + badge(cx + 22, cy + 61, 'X', { r: 16, size: 18 }) + badge(cx + 22, cy + 95, 'Y', { r: 16, size: 18 }) + badge(cx + 22, cy + 131, 'Z', { r: 16, size: 18 });
+  b += badge(70, 60, 'V');
   add('von-thunen', 'von-thunen-river', 720, 420, 'Land use around an invented market town with a river',
     'A drawn map of an invented region. Zones of land use surround a market town in stretched ovals that are much longer east to west, along a river, than north to south. Zones are lettered from the town outward: W nearest the town, then X, Y and Z. Area V, in the far corner, lies outside all the zones. A small town in the southeast has its own small zone the same color as zone W around it.', b);
 }
