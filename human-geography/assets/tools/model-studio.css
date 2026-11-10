@@ -4,7 +4,7 @@
    page's size. */
 .ms-fig{margin:0;}
 .ms-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;color:#1B1B1B;}
-.ms-pic{position:relative;line-height:0;}
+.ms-pic{position:relative;line-height:0;container-type:inline-size;}
 .ms-fig-svg{display:block;width:100%;height:auto;}
 .ms-over{position:absolute;inset:0;pointer-events:none;line-height:1.2;}
 .ms-badge{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:#1B1B1B;color:#fff;border:2px solid #fff;
@@ -70,6 +70,13 @@
 .ms-page .ms-fig-art .hug-model-art{display:block;}
 .ms-page .hug-model-tray{margin-top:4px;}
 @media (prefers-reduced-motion:reduce){.ms-badge{transition:none;}}
+/* On a phone the stage draws the figure small (about 150 px wide): the
+   numbered badges and tags shrink with the drawing so they never cover
+   each other (reviewer, 2026-11-10). */
+@supports (width:1cqw){
+  .ms-badge{width:clamp(16px,8.5cqw,28px);height:clamp(16px,8.5cqw,28px);font-size:clamp(10px,4.2cqw,14px);line-height:calc(clamp(16px,8.5cqw,28px) - 4px);border-width:1.5px;}
+  .ms-tag{font-size:clamp(10px,4cqw,13px);padding:0 clamp(3px,1.6cqw,6px);}
+}
 /* See it: on a wide screen the places revealed so far are listed on the
    stage, beside the drawing; on a phone they are in the panel below. */
 .ms-skey{display:none;}
@@ -106,3 +113,4 @@
 .ms-sw-gap{background:#F5D9CF;border:1px solid #C9A595;}
 .ms-sw-dotbig{width:14px;height:14px;border-radius:50%;background:#1B1B1B;}
 .ms-sw-darrow{height:0;border-top:3px dashed #B5481F;border-radius:0;}
+

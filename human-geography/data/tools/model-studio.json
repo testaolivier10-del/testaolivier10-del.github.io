@@ -18,7 +18,7 @@
    "name": "Demographic transition model",
    "short": "DTM",
    "figure": "dtm",
-   "claim": "Birth and death rates fall in sequence as a society changes, so population growth starts slow, speeds up, then slows again. Your class teaches five stages.",
+   "claim": "Birth and death rates fall in sequence as a society changes, so population growth starts slow, speeds up, then slows again. This course shows five stages; some versions of the model show only four.",
    "origin": "A model built mostly from the history of Europe and North America in the 1800s and 1900s.",
    "assumes": [
     "Death rates fall first, as food, clean water and medicine improve.",

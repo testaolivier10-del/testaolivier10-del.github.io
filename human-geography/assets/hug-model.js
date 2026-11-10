@@ -116,7 +116,10 @@
       var core = 26, step = (116 - core) / n;
       for(var i = n - 1; i >= 0; i--) o.push('<circle class="hug-model-band b' + (i % 4) + '" data-n="' + (i + 1) + '" cx="' + cx + '" cy="' + cy + '" r="' + r1(core + step * (i + 1)) + '"/>');
       o.push('<circle class="hug-model-core" cx="' + cx + '" cy="' + cy + '" r="' + core + '"/>');
-      for(var j = 0; j < n; j++) o.push('<text class="hug-model-num" x="' + cx + '" y="' + r1(cy - core - step * (j + 0.5) + 5) + '" text-anchor="middle">' + (j + 1) + '</text>');
+      // Five or more rings leave bands under 20 units: a smaller number keeps
+      // the numbers from touching (reviewer, 2026-11-10).
+      var small = step < 20 ? ' style="font-size:12.5px"' : '';
+      for(var j = 0; j < n; j++) o.push('<text class="hug-model-num"' + small + ' x="' + cx + '" y="' + r1(cy - core - step * (j + 0.5) + 4.5) + '" text-anchor="middle">' + (j + 1) + '</text>');
     } else if(m.layout === 'sectors'){
       for(var k = 0; k < n; k++){
         var a0 = -Math.PI / 2 + 2 * Math.PI * k / n, a1 = a0 + 2 * Math.PI / n, R = 110, am = (a0 + a1) / 2;
