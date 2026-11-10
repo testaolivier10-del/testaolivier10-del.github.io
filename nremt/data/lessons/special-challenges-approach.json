@@ -1,0 +1,92 @@
+{
+  "id": "special-challenges-approach",
+  "title": "Disabilities, chronic conditions and your approach",
+  "chapter": 37,
+  "section": "ch37-special-challenges",
+  "hook": "<p>You are called for a 24-year-old man with cerebral palsy who is \"not acting right.\" He sits in a wheelchair, his speech is slow and hard to follow, and his arms move in ways he does not fully control. Is any of that new? You cannot tell by looking, and guessing wrong in either direction is a mistake.</p><p>Patients with a disability or a chronic condition get the same emergencies as everyone else. What changes is how you find out what is wrong, how you talk with them, and a few things you must not do.</p>",
+  "steps": [
+    {
+      "find": "The patient has a long-standing condition, and you cannot tell which findings are old and which are new.",
+      "act": "Establish the baseline. Ask the patient or the family directly: what is different today? That answer is often the shortest path to the real problem, and it keeps you from treating an old deficit as a new emergency."
+    },
+    {
+      "find": "The patient has a chronic disease and is now acutely ill.",
+      "act": "Expect one of two things: the chronic condition itself has flared, or an unrelated illness is hitting harder because the patient has less reserve. Either way, the primary assessment runs in the usual order."
+    },
+    {
+      "find": "A patient in kidney failure has a dialysis access in one arm.",
+      "act": "Take the blood pressure on the other arm, never on the access arm. Remember that an access site can bleed."
+    },
+    {
+      "find": "The patient has a hearing or a vision impairment.",
+      "act": "With hearing loss, face the patient directly so they can read your lips; some use hearing aids or sign language. With vision loss, ask how you can help, explain each action before you do it, and bring the cane or the service animal."
+    },
+    {
+      "find": "A patient with autism is frightened, has stopped speaking, and the scene is loud and bright.",
+      "act": "Use ABCS. Awareness: stress changes how the patient reacts, so try picture cards if speech fails. Basic: simple, direct instructions and closed-ended questions, with radios, lights and sirens turned down. Calm: one person does the talking, a familiar caregiver stays close, no show of force, extra time. Safety: keep the familiar setting where you can and say what you will do before each step."
+    },
+    {
+      "find": "The patient escalates into a meltdown, or the care needed is outside your training.",
+      "act": "A meltdown is involuntary, not defiance, so reduce the stimulation instead of correcting the behavior. Restraint is a last resort, only for imminent danger. For care outside your training or scope, contact medical direction instead of improvising."
+    }
+  ],
+  "ideas": [
+    "<b>Disability:</b> a physical, emotional, behavioral or cognitive condition that interferes with everyday activities. Congenital means present at birth; acquired means it developed later from infection, another condition or trauma.",
+    "<b>Baseline first.</b> Normal is specific to this patient. \"What is different today?\" is the key question.",
+    "<b>Routine care still applies.</b> The priorities of the primary assessment are the same whatever the diagnosis or device.",
+    "<b>Cerebral palsy</b> is a permanent problem with motor control. Do not assume the patient's thinking is impaired.",
+    "<b>Neuromuscular disorders</b> (muscular dystrophy, multiple sclerosis, ALS) bring pain, trouble communicating, urinary infections and a risk of respiratory paralysis. A high <b>spinal cord injury</b> can leave a patient ventilator-dependent and prone to pneumonia.",
+    "<b>Autism:</b> patients may report unusual complaints and may tolerate a lot of pain, so examine carefully and without hurry."
+  ],
+  "misconception": {
+    "wrong": "A patient whose speech and movement are badly affected probably cannot understand me, so I should direct my questions to the caregiver.",
+    "right": "Trouble with movement or speech says nothing about understanding. Cerebral palsy affects motor control, and many patients think and understand normally. Speak to the patient, and use the caregiver to learn the baseline."
+  },
+  "check": [
+    {
+      "q": "A woman says her adult son, who has cerebral palsy, \"just isn't himself.\" His speech is slurred and his movements are jerky. What is the most useful first question?",
+      "options": [
+        "How long has he had cerebral palsy?",
+        "What is different about him today?",
+        "Does he understand what we say?",
+        "Which hospital does he usually use?"
+      ],
+      "correct": 1,
+      "why": "You need the baseline before you can spot the change. Slurred speech and jerky movement may be normal for him, so asking what is different today points you at the real problem. Asking whether he understands assumes a cognitive impairment that cerebral palsy does not imply."
+    },
+    {
+      "q": "A hemodialysis patient has a fistula in her left forearm. Where do you take her blood pressure?",
+      "options": [
+        "On the right arm, away from the fistula",
+        "On the left arm, above the fistula",
+        "On the left arm, below the fistula",
+        "On either arm, using a larger cuff"
+      ],
+      "correct": 0,
+      "why": "A blood pressure is never taken on the dialysis access arm, above or below the site. Cuff pressure can damage the access the patient depends on, so the other arm is used."
+    },
+    {
+      "q": "A 10-year-old with autism fell from a swing. He is rocking, covering his ears and not answering. Which approach fits best?",
+      "options": [
+        "Have each crew member try to get him talking",
+        "Raise your voice so he hears you over the noise",
+        "Hold him still so the exam can be done quickly",
+        "Turn down radios and lights and let one EMT speak"
+      ],
+      "correct": 3,
+      "why": "ABCS: keep it basic and calm. Less noise and light, one contact person, a familiar caregiver nearby and extra time. Several voices and louder voices add stimulation, and holding him is restraint, which is a last resort for imminent danger."
+    },
+    {
+      "q": "During your exam, a teenager with autism begins screaming and hitting his own legs. How should you understand this?",
+      "options": [
+        "As defiance that needs firm limits from the crew",
+        "As a sign that he is faking his injury",
+        "As an involuntary response to being overstimulated",
+        "As proof that he has no serious injury"
+      ],
+      "correct": 2,
+      "why": "A meltdown is involuntary behavior brought on by overstimulation. It is not misbehavior, and it does not rule out a serious injury: patients with autism may have a high pain tolerance and unusual complaints, so the exam still has to be careful."
+    }
+  ],
+  "summary": "<p>A disability or chronic condition changes how you assess and communicate, not the priorities of care. Find the patient's baseline by asking what is different today, and remember that a chronic disease can flare or can make an unrelated illness worse. Never take a blood pressure on a dialysis access arm, face a patient with hearing loss, explain your actions to a patient with vision loss, and do not assume cognitive impairment in cerebral palsy. For autism use ABCS (Awareness, Basic, Calm, Safety), treat a meltdown as involuntary, and keep restraint as a last resort. When care falls outside your training, call medical direction.</p>"
+}

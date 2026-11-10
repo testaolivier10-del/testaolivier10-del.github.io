@@ -1,0 +1,107 @@
+{
+  "id": "highway-operations-and-scene-hazards",
+  "title": "Highway operations and scene hazards",
+  "chapter": 40,
+  "section": "ch40-highway",
+  "hook": "<p>It is 2 a.m. on a four-lane highway. A car has hit a utility pole, and a wire is lying across the hood. You park, leave the headlights on so you can see, and start walking toward the car. Your legs begin to tingle.</p><p>You have just made two mistakes that kill rescuers, and the tingling means the ground under you is electrified. A crash scene stays dangerous long after the crash is over.</p>",
+  "steps": [
+    {
+      "find": "You are dispatched to a highway crash and you are not the first unit.",
+      "act": "Stage off the highway and wait until you are requested. Only the first-arriving unit goes straight to the scene."
+    },
+    {
+      "find": "You are the first unit on scene.",
+      "act": "Use upstream blocking: park the vehicle between oncoming traffic and the work area, so a car that fails to stop hits the vehicle and not the crew. Step out only into the safe zone, and only after the whole crew confirms that traffic has stopped."
+    },
+    {
+      "find": "It is dark.",
+      "act": "Red and amber warning lights on, headlights off, directional boards running. Headlights blind oncoming drivers, and a blinded driver cannot see your reflective vest."
+    },
+    {
+      "find": "You are about to work around the wrecked vehicle.",
+      "act": "In traffic, wear an ANSI reflective vest and a helmet. During active extrication, wear full turnout gear, helmet and eye protection. Stay out from in front of an undeployed airbag, and do not stand directly in front of a bumper, which can be loaded with energy from the crash."
+    },
+    {
+      "find": "A utility pole or wires are involved.",
+      "act": "Assume the whole area, including the ground, could be energized. Treat every downed wire as live until a utility professional says otherwise, never move a wire yourself, and stay well back: the ground can be energized 35 feet or more from the wire."
+    },
+    {
+      "find": "You feel tingling in your legs.",
+      "act": "You are on energized ground. Turn around and shuffle away the way you came, with small steps, your feet close together and both feet on the ground the whole time. Do not run or take long strides."
+    },
+    {
+      "find": "A vehicle is on fire, or the vehicle is a hybrid, electric, natural gas or propane vehicle.",
+      "act": "Call the fire department yourself. An A:B:C dry chemical extinguisher handles most vehicle fires; never stand in front of a truck wheel, because tires can blow apart. With an alternative-fuel vehicle, do not intervene if it puts you at risk, and confirm it is truly off, not just silent: with keyless ignition, find the fob and move it well away."
+    }
+  ],
+  "ideas": [
+    "<b>The biggest hazard</b> at a highway crash is the traffic still moving past it.",
+    "<b>The high-visibility vest</b> is federally mandated for work in traffic.",
+    "<b>Match the protection</b> worn by the workers around you.",
+    "<b>Airbags:</b> turning off the ignition does not disable an undeployed airbag. The battery must be disconnected.",
+    "<b>Ground gradient:</b> current spreading through the earth makes the voltage differ from one footstep to the next. Tingling legs are the warning.",
+    "<b>Electricity is invisible.</b> Lines on wood utility poles can carry very high voltage, and nothing about a downed wire shows whether it is live."
+  ],
+  "misconception": {
+    "wrong": "At night I should leave the headlights on at the scene so drivers can see the ambulance and I can see my work.",
+    "right": "Headlights pointed at traffic blind the drivers coming toward you, and a blinded driver cannot see the crew. After dark the setup is warning lights and directional boards on, headlights off."
+  },
+  "check": [
+    {
+      "q": "You are first on scene at a night crash on a two-lane highway, parked facing oncoming traffic. Which lighting is correct?",
+      "options": [
+        "Headlights and all warning lights on",
+        "Headlights on high beam, warning lights off",
+        "Warning lights on, headlights off",
+        "All lights off except the interior lights"
+      ],
+      "correct": 2,
+      "why": "After dark the setup is red and amber warning lights on, headlights off and directional boards operating. Headlights blind oncoming drivers, who then cannot see your reflective vest, so the extra light makes you less safe."
+    },
+    {
+      "q": "Walking toward a car that struck a utility pole, you feel tingling in both legs. What do you do?",
+      "options": [
+        "Turn around and shuffle away with both feet on the ground",
+        "Run back to the ambulance as fast as you can",
+        "Stand still and wait for the power company",
+        "Keep going, since the patient is only a few steps away"
+      ],
+      "correct": 0,
+      "why": "Tingling means you are standing on energized ground. Shuffling with small steps, feet close together and always on the ground, keeps the voltage difference between your feet small. Running or long strides put your feet at different voltages, and going on takes you toward the source."
+    },
+    {
+      "q": "A car's front airbags did not deploy in the crash. The ignition has been switched off. What is true of the airbags?",
+      "options": [
+        "They are disabled once the ignition is off",
+        "They can still deploy until the battery is disconnected",
+        "They can only deploy if the engine is restarted",
+        "They are harmless once the car has stopped moving"
+      ],
+      "correct": 1,
+      "why": "Turning off the ignition does not disable an airbag. An undeployed airbag stays a real danger during extrication, and the battery has to be disconnected."
+    },
+    {
+      "q": "You arrive at a crash and see smoke and flames coming from under the hood. Bystanders are already on their phones. What do you do about the fire department?",
+      "options": [
+        "Assume a bystander has called and begin patient care",
+        "Wait to see whether the fire spreads before calling",
+        "Call only if your own extinguisher fails",
+        "Call for the fire department yourself, right away"
+      ],
+      "correct": 3,
+      "why": "You call the fire department yourself for any vehicle fire and never assume someone else has done it. A crowd of people on phones is exactly the situation where everyone thinks another person made the call."
+    },
+    {
+      "q": "A hybrid car is in a ditch after a crash. It is making no sound and the dash is dark. What should you assume?",
+      "options": [
+        "It is off, because the engine is silent",
+        "It is off, because the dash is dark",
+        "It may still be on until you confirm it is off",
+        "It cannot move, because it is a hybrid"
+      ],
+      "correct": 2,
+      "why": "Silent does not mean off in a hybrid or electric vehicle. You confirm the vehicle is truly off, and with a keyless ignition that means finding the fob and moving it well away from the car."
+    }
+  ],
+  "summary": "<p>Traffic is the main danger at a highway crash. Only the first unit goes to the scene; it blocks upstream of the work area, and the crew steps out only into the safe zone once traffic has stopped. At night, warning lights and directional boards are on and headlights are off. Wear a reflective vest and helmet in traffic and full turnout gear during extrication, and remember that an undeployed airbag stays live until the battery is disconnected and that a bumper can be loaded. Treat every downed wire as live, never move one, and if your legs tingle, turn and shuffle away with both feet on the ground. Call the fire department yourself for a vehicle fire, and confirm that a hybrid or electric vehicle is truly off.</p>"
+}

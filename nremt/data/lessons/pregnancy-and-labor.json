@@ -1,0 +1,108 @@
+{
+  "id": "pregnancy-and-labor",
+  "title": "Pregnancy, labor and the newborn",
+  "chapter": 36,
+  "section": "ch36-pregnancy-labor",
+  "hook": "<p>A woman at 39 weeks, in labor with her third child, says the baby is coming. Her contractions are two minutes apart. When you look during a contraction, you can see the top of the baby's head.</p><p>You are not going to make it to the hospital, and you do not need to. Birth will happen on its own. Your job is to guide it, keep from doing harm, and be ready for a baby who needs help in the first minute.</p>",
+  "steps": [
+    {
+      "find": "A woman in late pregnancy is lying flat and feels dizzy, and her blood pressure has dropped.",
+      "act": "Turn her onto her left side. The uterus is pressing on the inferior vena cava and cutting the blood returning to the heart (supine hypotensive syndrome). The fix is position, so all third-trimester patients are transported on the left side."
+    },
+    {
+      "find": "You are called to a woman in labor.",
+      "act": "Decide whether there is time to transport. Ask her due date, whether this is her first pregnancy and whether she has had prenatal care. Check for crowning during a contraction. The rule: transport unless delivery is expected within a few minutes."
+    },
+    {
+      "find": "The baby is crowning.",
+      "act": "Prepare to deliver where you are and consult medical direction. If crowning starts during transport, stop the ambulance and prepare for delivery. If delivery has not happened within 10 minutes, contact medical direction again about transport."
+    },
+    {
+      "find": "The head is emerging.",
+      "act": "Place one hand on the head with slight pressure so it does not pop out. Never squeeze the head and never pull on the baby. If the amniotic sac is still intact, tear it with your fingers and clear it from the mouth and nose. Feel for a cord around the neck: loosen it gently, and if it will not loosen, clamp it in two places and cut between the clamps."
+    },
+    {
+      "find": "The head is out.",
+      "act": "Guide the head downward to deliver the upper shoulder, then upward to deliver the lower shoulder. Support the baby, who will be slippery. Note the exact time of birth."
+    },
+    {
+      "find": "The baby is born.",
+      "act": "Dry, warm and stimulate. Wrap the baby in a warm blanket; warmth is the first priority. Suction only if needed, the mouth before the nose. If the baby is breathing and crying, there is no hurry to clamp the cord: wait at least 60 seconds. A normal newborn has a pulse above 100, breathes easily, cries vigorously, and is blue only at the hands and feet, if at all."
+    },
+    {
+      "find": "After drying, warming and stimulation, the baby is apneic or gasping, or the heart rate is below 100.",
+      "act": "Begin positive pressure ventilation at 30 to 60 breaths per minute (the 2025 AHA and AAP range; many EMT texts still say 40 to 60). If the heart rate is still below 60 after 30 seconds of ventilation that moves the chest, begin chest compressions with the two-thumbs-encircling technique at 3 compressions to 1 ventilation. Do not stop to work out an APGAR score."
+    }
+  ],
+  "ideas": [
+    "<b>Pregnancy changes the numbers.</b> Blood volume, cardiac output and heart rate go up. Oxygen demand rises while the uterus pushes up on the diaphragm, so the mother has less reserve when she needs more.",
+    "<b>Left side in the third trimester.</b> It takes the uterus off the vena cava.",
+    "<b>Three stages of labor:</b> first, from regular contractions until the cervix is fully dilated; second, from the baby entering the birth canal until birth; third, from birth until the afterbirth is delivered.",
+    "<b>Signs of progress:</b> contractions move from about 30 minutes apart to 3 minutes or less. Bloody show is normal. Crowning means delivery is imminent.",
+    "<b>Guide, do not pull.</b> Slight pressure on the head, never squeeze, never pull.",
+    "<b>APGAR:</b> Appearance, Pulse, Grimace, Activity, Respiratory effort, each scored 0 to 2, at 1 minute and 5 minutes after birth. It is a record of the baby's condition, not a guide to resuscitation.",
+    "<b>The inverted pyramid:</b> almost every baby needs drying, warming and stimulation; fewer need ventilation; very few need compressions. Each step gets 30 seconds, then a reassessment."
+  ],
+  "misconception": {
+    "wrong": "Work out the APGAR score first, because it tells you whether the newborn needs resuscitation.",
+    "right": "APGAR is a documentation and scoring tool. It does not guide resuscitation and must never delay it. A baby who is apneic or gasping or has a heart rate below 100 after drying, warming and stimulation gets ventilation now."
+  },
+  "check": [
+    {
+      "q": "A woman at 36 weeks is lying on her back on your stretcher. She becomes dizzy and pale, and her blood pressure falls from 118/76 to 88/54. What do you do first?",
+      "options": [
+        "Raise her legs and keep her flat on her back",
+        "Sit her fully upright and coach slow breathing",
+        "Give sips of water and recheck in five minutes",
+        "Turn her onto her left side and reassess"
+      ],
+      "correct": 3,
+      "why": "This is supine hypotensive syndrome: the uterus is compressing the inferior vena cava and reducing the blood returning to the heart. The fix is to turn her onto her left side. Raising the legs is tempting because it is a familiar response to low pressure, but it leaves the weight of the uterus on the vena cava."
+    },
+    {
+      "q": "You are transporting a woman in labor when she says she has to push. During the next contraction you see the baby's head at the vaginal opening. What do you do?",
+      "options": [
+        "Stop the ambulance and prepare for delivery",
+        "Have her cross her legs until you arrive",
+        "Drive faster, with lights and siren on",
+        "Hold the head back with firm, steady pressure"
+      ],
+      "correct": 0,
+      "why": "Crowning means delivery is imminent, so the ambulance stops and you prepare to deliver. Racing for the hospital is tempting, but a delivery in a moving ambulance with nobody ready is worse, and delivery is never held back."
+    },
+    {
+      "q": "As the head delivers, you feel the umbilical cord wrapped around the baby's neck. What do you do first?",
+      "options": [
+        "Clamp and cut the cord at once, before the body delivers",
+        "Pull the baby out quickly before the cord tightens",
+        "Try gently to loosen the cord and slip it free",
+        "Push the head back in to take tension off the cord"
+      ],
+      "correct": 2,
+      "why": "A nuchal cord is gently loosened first. Only if it cannot be loosened is it clamped in two places and cut between the clamps. Cutting it straight away is tempting, but the cord is the baby's oxygen supply until the baby breathes, and the baby is never pulled."
+    },
+    {
+      "q": "A newborn has been dried, warmed and stimulated. The baby is gasping and the heart rate is 80. What is the next step?",
+      "options": [
+        "Chest compressions at a ratio of 3 to 1",
+        "Positive pressure ventilation at 30 to 60 a minute",
+        "Deep suctioning of the mouth, then the nose",
+        "Blow-by oxygen and an APGAR score at once"
+      ],
+      "correct": 1,
+      "why": "Apnea, gasping or a heart rate below 100 after the first steps calls for positive pressure ventilation at 30 to 60 breaths per minute. Compressions are the tempting choice because the heart rate is slow, but they start only when the rate stays below 60 after 30 seconds of effective ventilation, and a slow newborn heart is almost always a breathing problem."
+    },
+    {
+      "q": "During ventilation of a newborn, the heart rate falls to 50. Which compression technique and ratio do you use?",
+      "options": [
+        "Two fingers on the sternum, 30 compressions to 2 breaths",
+        "One hand on the sternum, 15 compressions to 2 breaths",
+        "Two thumbs on the sternum, 15 compressions to 2 breaths",
+        "Two thumbs encircling the chest, 3 compressions to 1 breath"
+      ],
+      "correct": 3,
+      "why": "A newborn with a heart rate below 60 gets compressions with the two-thumbs-encircling technique at 3 compressions to 1 ventilation. The 30 to 2 and 15 to 2 ratios are tempting because they are the infant and child CPR ratios, but the newborn ratio keeps ventilation frequent because the cause is almost always respiratory."
+    }
+  ],
+  "summary": "<p>Pregnancy raises blood volume, cardiac output, heart rate and oxygen demand while leaving less reserve, and in the third trimester the uterus can compress the vena cava when the mother lies flat, so she is transported on her left side. Labor has three stages: dilation, delivery of the baby, and delivery of the afterbirth. Transport unless delivery is expected within minutes; crowning means prepare to deliver, even if that means stopping the ambulance. Guide the head with slight pressure, never pull, open an intact sac, deal with a cord around the neck, deliver the upper then the lower shoulder, and note the time. Dry, warm and stimulate the baby and suction only if needed. If the baby is apneic or gasping or the heart rate is under 100, ventilate at 30 to 60 a minute; if it stays under 60 after 30 seconds of effective ventilation, add two-thumb compressions at 3 to 1. APGAR records the baby's condition and never delays care.</p>"
+}

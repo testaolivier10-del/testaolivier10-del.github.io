@@ -1,0 +1,116 @@
+{
+  "id": "alcohol-and-substance-abuse",
+  "title": "Alcohol and substance emergencies",
+  "chapter": 25,
+  "section": "ch25-substance-abuse",
+  "hook": "<p>Police wave you over to a man on a bench. He smells of alcohol, his speech is slurred and he cannot tell you what day it is. \"Just a drunk,\" the officer says.</p><p>Maybe. Or he is a diabetic with a low blood sugar, or he hit his head when he fell, or he is drunk and one of those as well. The most dangerous word on a substance call is \"just\". This lesson covers what alcohol and drugs look like in the field, and how to keep the label from costing the patient his care.</p>",
+  "steps": [
+    {
+      "find": "A patient appears intoxicated: slurred speech, unsteady, confused.",
+      "act": "Do not stop at \"drunk\". Diabetes, epilepsy, head injury, high fever and hypoxia can all look like intoxication, and a patient can be intoxicated and seriously ill at once. Assess for each of them."
+    },
+    {
+      "find": "A heavy drinker who has stopped drinking is sweating, trembling, anxious, hallucinating or having a seizure.",
+      "act": "Recognize alcohol withdrawal and delirium tremens (DTs). Untreated it can be fatal. Transport promptly."
+    },
+    {
+      "find": "A patient is hard to wake or unresponsive, with pinpoint pupils and slow, shallow breathing.",
+      "act": "That is the opioid triad. Support breathing first with basic life support, oxygen and ventilation as needed. If the patient is in respiratory failure and your protocol allows, give naloxone into the nose."
+    },
+    {
+      "find": "A patient is excited or agitated with a fast pulse, fast breathing, dilated pupils and sweating.",
+      "act": "Think stimulant (\"upper\") such as cocaine or methamphetamine. Stay alert: many patients who have taken drugs seem calm and then turn violent."
+    },
+    {
+      "find": "The scene has needles, powders, pills or a possible weapon.",
+      "act": "Scene safety and Standard Precautions come first. Never touch or taste a suspected drug; some are absorbed through skin and mucous membranes."
+    },
+    {
+      "find": "You have dealt with the immediate threats.",
+      "act": "Do a full physical exam and look for track marks (their absence does not rule out injection drug use). Transport, contact medical direction, and watch for seizures and vomiting on the way."
+    }
+  ],
+  "ideas": [
+    "<b>Five categories.</b> Opioids (heroin, fentanyl, oxycodone, codeine), uppers (cocaine, methamphetamine, bath salts), downers (benzodiazepines, barbiturates, GHB), hallucinogens (LSD, PCP, mushrooms) and volatile chemicals (glue, cleaning fluid).",
+    "<b>Uppers speed everything up:</b> fast pulse, fast breathing, dilated pupils, sweating, excitement.",
+    "<b>Downers slow everything down:</b> sluggish, poorly coordinated, with a slow pulse and slow breathing.",
+    "<b>Opioids:</b> very sleepy, pinpoint pupils, slow pulse, and breathing that is slow and shallow.",
+    "<b>Hallucinogens:</b> fast pulse, dilated pupils, and seeing or hearing things that are not there.",
+    "<b>Volatile chemicals:</b> a brief rush, then a dazed patient or a coma, with swollen membranes in the nose and mouth.",
+    "<b>Fentanyl</b> mixed into heroin causes overdoses that are far more potent and come on far faster.",
+    "<b>Refusal of care.</b> Alcohol and drugs can take away a patient's ability to make an informed refusal. Do not simply accept a refusal from an intoxicated patient; assess their capacity and follow your local protocol and medical direction."
+  ],
+  "misconception": {
+    "wrong": "He smells of alcohol, so his confusion is explained and there is nothing more to look for.",
+    "right": "The smell of alcohol explains nothing by itself. Diabetes, epilepsy, head injury, high fever and hypoxia all mimic intoxication, and a patient can be intoxicated and have a heart attack or a low blood sugar at once. Every one of them has to be looked for."
+  },
+  "check": [
+    {
+      "q": "An unresponsive 28-year-old has pinpoint pupils and is breathing 6 times a minute. Which type of substance is most likely?",
+      "options": [
+        "A stimulant such as cocaine",
+        "A hallucinogen such as LSD",
+        "An opioid such as heroin",
+        "A volatile chemical such as glue"
+      ],
+      "correct": 2,
+      "why": "Depressed consciousness, pinpoint pupils and respiratory depression are the opioid triad. Stimulants and hallucinogens give dilated pupils and a fast pulse, the opposite picture."
+    },
+    {
+      "q": "For that same patient, what is your first priority?",
+      "options": [
+        "Looking for track marks on the arms",
+        "Supporting the airway and breathing",
+        "Finding out which drug was taken",
+        "Contacting medical direction for orders"
+      ],
+      "correct": 1,
+      "why": "A patient breathing 6 times a minute is dying of a lack of oxygen, so the airway and ventilation come first, with naloxone if protocol allows. Naming the drug and finding track marks can wait until the patient is being ventilated."
+    },
+    {
+      "q": "A man found on a sidewalk smells of alcohol, is confused and slurs his words. What is the best approach?",
+      "options": [
+        "Assess for other causes such as low blood sugar and head injury",
+        "Let him sleep it off, since alcohol explains the findings",
+        "Hand him over to the police without an assessment",
+        "Wait an hour to see whether he becomes more alert"
+      ],
+      "correct": 0,
+      "why": "Diabetes, head injury, epilepsy, fever and hypoxia can all mimic intoxication, and he may be intoxicated and ill at once. Assuming alcohol explains everything is exactly how a low blood sugar or a brain bleed gets missed."
+    },
+    {
+      "q": "A man who drinks heavily every day stopped two days ago. He is sweating, trembling and seeing things that are not there. What is this, and how serious is it?",
+      "options": [
+        "A hangover, which needs no treatment",
+        "An opioid overdose, which needs naloxone",
+        "A stimulant overdose, which will wear off",
+        "Delirium tremens, which can be fatal"
+      ],
+      "correct": 3,
+      "why": "Sweating, trembling, anxiety and hallucinations after stopping alcohol are delirium tremens. Alcohol withdrawal can cause seizures and death, so these patients are transported promptly."
+    },
+    {
+      "q": "A patient is restless and excited, with a pulse of 132, dilated pupils and heavy sweating. Which category of drug fits best?",
+      "options": [
+        "A downer",
+        "An upper",
+        "An opioid",
+        "A volatile chemical"
+      ],
+      "correct": 1,
+      "why": "Excitement, a fast pulse, fast breathing, dilated pupils and sweating are the signs of a stimulant. Downers and opioids slow the pulse and breathing, and opioids shrink the pupils to pinpoints."
+    },
+    {
+      "q": "You find a small bag of white powder next to an overdose patient. What should you do with it?",
+      "options": [
+        "Smell it closely to identify the drug",
+        "Taste a small amount to confirm what it is",
+        "Avoid touching it with bare skin and never taste it",
+        "Pour it out so that nobody else can use it"
+      ],
+      "correct": 2,
+      "why": "Never touch or taste a suspected illicit substance; some are absorbed through the skin and mucous membranes. Identifying the drug that way is not your job and puts you at risk."
+    }
+  ],
+  "summary": "<p>Never let \"intoxicated\" be the end of the assessment: diabetes, epilepsy, head injury, high fever and hypoxia mimic it, and a patient can be intoxicated and seriously ill together. Alcohol withdrawal with seizures or delirium tremens can kill and needs prompt transport. Commonly misused substances fall into five categories: opioids, uppers, downers, hallucinogens and volatile chemicals. The opioid triad is depressed consciousness, pinpoint pupils and respiratory depression; support breathing first and give naloxone if protocol allows. Care for all of them is scene safety, Standard Precautions, the primary assessment and basic life support, a full exam, transport, and watching for seizures, vomiting and sudden violence.</p>"
+}

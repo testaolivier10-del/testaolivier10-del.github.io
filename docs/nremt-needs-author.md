@@ -49,3 +49,17 @@ Open (tool audit fixes, 2026-10-27, branch fix-nremt-tools):
   ventilating); the rest are flagged, not scored. Confirm that is the right line for examiners' practice.
 - **Formulary, bystander nitroglycerin card.** Its verdict now says why (an EMT assists only with the patient's own
   prescription) instead of quoting the indication line, which read as a reason to give. Confirm the wording.
+
+Open (2026-11-10, all 80 lessons and the bank audit):
+
+- The 62 contested lesson points and the 44 question notes that need a person are listed in
+  `docs/nremt-reviews/needs-decision-2026-11.md`. The biggest: hypothermic arrest shocks (2025 AHA: one shock, then
+  defer until 30°C, class 2b, against older textbook wording), newborn ventilation rate (2025 AHA/AAP 30 to 60,
+  many texts 40 to 60), adult suction time (15 against 10 seconds), open chest wound dressing type, and whether the
+  ACS field triage lists may be reproduced in a paid product (the ACS page asks for written permission).
+- **Chapter 27 has no suicide content** although its title promises it. A carefully worded notes addition (EMT
+  scope, no method detail, 988) is drafted as the last ch27 entry of the reviewer's notes fixes, quoted in
+  `docs/nremt-reviews/lessons-r4.md`. Not applied: owner approval needed. "Excited delirium" also still appears in
+  the ch27 headings (body text updated to "hyperactive delirium with severe agitation").
+- 137 notes fixes were applied so the textbook agrees with the reviewed lessons. Those the reviewer could not open a
+  primary source for are marked "not fetched" in the review logs; a clinician spot check should start there.

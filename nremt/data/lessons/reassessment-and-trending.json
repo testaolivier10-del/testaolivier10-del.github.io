@@ -1,0 +1,103 @@
+{
+  "id": "reassessment-and-trending",
+  "title": "Reassessment and trending",
+  "chapter": 16,
+  "section": "ch16-reassessment",
+  "hook": "<p>Ten minutes into transport, a patient who fell from a ladder says he feels \"about the same.\" His first pulse was 96 and his blood pressure 128/80. Now the pulse is 118 and the pressure is 104/70. Neither set would alarm you by itself. Together they show a patient who is sliding toward shock.</p><p>A patient's condition is a moving target. Reassessment is how you keep watching it, and it is never skipped.</p>",
+  "steps": [
+    {
+      "find": "You have finished your assessment and started care. The patient is on your stretcher.",
+      "act": "Repeat the primary assessment: mental status, airway, the rate and quality of breathing, the rate and quality of the pulse, and skin color and temperature."
+    },
+    {
+      "find": "Something in the repeat primary assessment has changed, for better or worse.",
+      "act": "Reestablish the patient's priority. A stable patient may no longer be stable, and an unstable patient may have improved."
+    },
+    {
+      "find": "It is time for another set of vital signs.",
+      "act": "Take them, record them with the time, and compare them with the baseline set and with every set since. That comparison is trending."
+    },
+    {
+      "find": "You have treated the patient: oxygen, bleeding control, a cervical collar, a splint.",
+      "act": "Repeat the pertinent parts of the history and exam and check every intervention. Is the oxygen still flowing, is the bleeding still controlled, is the collar or splint still doing its job?"
+    },
+    {
+      "find": "You are deciding how often to do all of this.",
+      "act": "Every 15 minutes for a stable patient, every 5 minutes for an unstable or potentially unstable patient. These are minimums. If you suspect any change, repeat at least the primary assessment right away."
+    },
+    {
+      "find": "You arrive at the hospital.",
+      "act": "Give the handoff report in order: name, age and gender; the subjective information (chief complaint, present illness, past history, allergies, medications); the objective information (vital signs, exam findings, scene observations); the interventions and their times; then your reassessment findings."
+    }
+  ],
+  "ideas": [
+    "Reassessment has <b>four components</b>: repeat the primary assessment, reestablish priority, reassess and record vital signs, and repeat the pertinent history and exam while checking interventions.",
+    "<b>Intervals:</b> stable every 15 minutes, unstable or potentially unstable every 5 minutes, and immediately whenever you suspect a change.",
+    "<b>Trending</b> is tracking change over time. A pulse that rises while the blood pressure falls points to shock in a way neither number does alone, which is why a trend is worth more than any single set of vital signs.",
+    "<b>FIRR</b> sums up care after the assessment: Field impression (the body system affected and the probable cause), Interventions, Reassessments and Report.",
+    "<b>Medications beyond oxygen</b> need authorization from medical control, by standing order or direct order per local protocol. Document the time of every intervention and every reassessment.",
+    "<b>Reassessment is never skipped.</b> If lifesaving care leaves you no free hands, your partner does it."
+  ],
+  "misconception": {
+    "wrong": "If the first set of vital signs was normal and the patient says he feels the same, the patient is stable and there is nothing more to check.",
+    "right": "One set of vital signs is a snapshot. Only repeated assessments compared against the baseline show which way the patient is heading, and a patient can worsen while still saying he feels the same."
+  },
+  "check": [
+    {
+      "q": "A patient with chest pain is pale, sweaty and has a blood pressure of 92/60. How often do you reassess at a minimum?",
+      "options": [
+        "Every 5 minutes",
+        "Every 10 minutes",
+        "Every 15 minutes",
+        "Once, on arrival at the hospital"
+      ],
+      "correct": 0,
+      "why": "An unstable or potentially unstable patient is reassessed at least every 5 minutes. Every 15 minutes is the interval for a stable patient, and this patient is not stable."
+    },
+    {
+      "q": "Which pair of readings, taken 10 minutes apart, should worry you most?",
+      "options": [
+        "Pulse 88 then 84, blood pressure 124/78 then 126/80",
+        "Pulse 110 then 96, blood pressure 108/70 then 118/76",
+        "Pulse 76 then 78, blood pressure 138/88 then 134/84",
+        "Pulse 92 then 116, blood pressure 122/80 then 100/68"
+      ],
+      "correct": 3,
+      "why": "A rising pulse with a falling blood pressure is the trend of a patient deteriorating into shock. The pair that looks similar, pulse 110 then 96 with a rising pressure, is a patient who is improving."
+    },
+    {
+      "q": "What is the first component of reassessment?",
+      "options": [
+        "Take a new set of vital signs",
+        "Repeat the primary assessment",
+        "Check that the splint is still secure",
+        "Repeat the SAMPLE history"
+      ],
+      "correct": 1,
+      "why": "Reassessment starts by repeating the primary assessment, because life threats come first. Vital signs are the third component, after you reestablish the patient's priority."
+    },
+    {
+      "q": "You are reassessing a stable patient every 15 minutes. Six minutes after your last check, she suddenly becomes confused. What do you do?",
+      "options": [
+        "Wait for the next scheduled reassessment",
+        "Take a blood pressure and wait to see the trend",
+        "Repeat at least the primary assessment now",
+        "Document the change and tell the hospital on arrival"
+      ],
+      "correct": 2,
+      "why": "The intervals are a minimum, not a schedule to wait for. Any suspected change means repeating at least the primary assessment immediately. A blood pressure alone skips the airway and breathing check that a change in mental status demands."
+    },
+    {
+      "q": "In FIRR, what is the field impression?",
+      "options": [
+        "A final diagnosis confirmed by the hospital",
+        "A list of every intervention and its time",
+        "The first set of baseline vital signs",
+        "Your working impression: body system affected and probable cause"
+      ],
+      "correct": 3,
+      "why": "The field impression is a working impression that names the affected body system and the probable cause. It guides your interventions and can change. It is not a final diagnosis."
+    }
+  ],
+  "summary": "<p>Reassessment turns a snapshot into a trend. Its four components are repeating the primary assessment, reestablishing priority, reassessing and recording vital signs against the baseline, and repeating the pertinent history and exam while checking every intervention. Stable patients are reassessed at least every 15 minutes and unstable or potentially unstable patients at least every 5, and at once when anything changes. Care after the assessment follows FIRR: field impression, interventions, reassessments and a handoff report given in a set order.</p>"
+}

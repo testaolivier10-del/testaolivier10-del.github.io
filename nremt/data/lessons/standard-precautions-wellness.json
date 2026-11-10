@@ -1,0 +1,104 @@
+{
+  "id": "standard-precautions-wellness",
+  "title": "Well-being and standard precautions",
+  "chapter": 2,
+  "section": "ch2-provider-wellness",
+  "hook": "<p>You are suctioning a patient who is vomiting blood. He coughs, and a spray hits your face. You are wearing gloves. You are not wearing eye protection or a mask. He looked like an ordinary, healthy man.</p><p>You cannot tell by looking who carries an infection, so the protection has to go on before you know. This lesson covers the habits that keep you healthy, standard precautions, which protective equipment matches which risk, the diseases to know, and what to do when an exposure happens anyway.</p>",
+  "steps": [
+    {
+      "find": "You are dispatched and arrive on scene. You do not know whether the patient has an infection.",
+      "act": "Assume all body fluids are infectious. That is standard precautions. Decide which protection you need during the scene size-up, and reassess as the patient's condition changes."
+    },
+    {
+      "find": "You will have contact with blood or body fluids: bleeding, suctioning, ventilation or CPR.",
+      "act": "Wear nonlatex gloves, and carry 2 pairs. Use heavy-duty gloves for cleaning the ambulance and equipment or handling broken glass."
+    },
+    {
+      "find": "There is a risk of splash or spatter, such as suctioning, arterial bleeding or childbirth.",
+      "act": "Add eye protection and a surgical mask, or a face shield for suctioning. Add a gown or apron for arterial bleeding, childbirth or multi-trauma."
+    },
+    {
+      "find": "The patient may have tuberculosis (TB), for example a productive cough. The risk is highest in the closed ambulance and during procedures such as suctioning.",
+      "act": "Wear an N-95 or HEPA respirator approved by NIOSH. A surgical mask on you is not enough for an airborne disease."
+    },
+    {
+      "find": "The call is over and your gloves are off.",
+      "act": "Wash your hands after every patient contact, even though you wore gloves. An alcohol-based cleaner is acceptable unless your hands are visibly soiled or anthrax is suspected; then use soap and water."
+    },
+    {
+      "find": "You are exposed by a needlestick or a splash.",
+      "act": "Seek medical care immediately, because delay makes preventive treatment less effective, and report the exposure. Your agency's designated officer handles notification about the source patient."
+    }
+  ],
+  "ideas": [
+    "<b>Healthy habits:</b> a support system of family, colleagues and friends; exercise; enough sleep (a lack of it leads to medical errors, poor decisions, more vehicle collisions and a weaker immune system); eating right; limited alcohol and caffeine; regular checkups and current vaccines.",
+    "<b>How pathogens spread:</b> through blood and body fluids (bloodborne) or through the air in what an infected person coughs or breathes out.",
+    "<b>Employer and employee under OSHA:</b> the employer provides training, a free hepatitis B vaccine, protective equipment and a written exposure control plan, labels hazards with the biohazard symbol and keeps up decontamination procedures. The employee follows the plan and reports exposures.",
+    "<b>Hepatitis B and C</b> spread by blood and body fluids. Hepatitis B has a vaccine; hepatitis C does not. <b>HIV</b> spreads by blood, and the risk from a single exposure is far lower than for hepatitis B (about 0.3% against roughly 6% to 30% for an unvaccinated person after a needlestick). HIV also does not survive well outside the body.",
+    "<b>TB</b> is airborne; treat any productive cough as possible TB. <b>Ebola</b> spreads by blood and body fluids, so screen travel history. <b>SARS, MERS and avian flu</b> spread by respiratory droplets.",
+    "<b>The Ryan White CARE Act</b> gives emergency responders the right to find out whether they were exposed to a life-threatening disease. Airborne exposure (TB): the hospital notifies your designated officer, who notifies you. Bloodborne exposure (HIV, hepatitis B): you must ask for a determination through the designated officer.",
+    "<b>The incubation period</b> is the time between contact with a pathogen and the first symptoms."
+  ],
+  "misconception": {
+    "wrong": "I wore gloves for the whole call, so I do not need to wash my hands afterwards.",
+    "right": "Gloves are not a substitute for handwashing. Gloves can have small holes, and hands are easily contaminated while taking gloves off. Wash your hands after every patient contact, gloves or not."
+  },
+  "check": [
+    {
+      "q": "You are about to care for a coughing patient you suspect has tuberculosis. Which piece of protective equipment does this specifically call for?",
+      "options": [
+        "A surgical mask",
+        "A face shield",
+        "An N-95 or HEPA respirator",
+        "A gown or apron"
+      ],
+      "correct": 2,
+      "why": "TB is airborne, so it calls for a NIOSH-approved N-95 or HEPA respirator. A surgical mask is the tempting choice, but it is for blood and fluid spatter and does not filter airborne particles well enough."
+    },
+    {
+      "q": "What does \"standard precautions\" require you to assume about a patient?",
+      "options": [
+        "That all body fluids are infectious",
+        "That only visible blood is infectious",
+        "That patients who look ill are infectious",
+        "That patients will tell you if they are infectious"
+      ],
+      "correct": 0,
+      "why": "You cannot tell by looking whether a patient is infected, so standard precautions assume all body fluids are infectious. Judging by how ill the patient looks is exactly the guesswork the rule is meant to replace."
+    },
+    {
+      "q": "After a call where you wore gloves throughout, your hands have no visible soiling. What is the correct hand hygiene?",
+      "options": [
+        "None is needed, because the gloves stayed on",
+        "Rinse with water only when back at the station",
+        "Put on a fresh pair of gloves for the next call",
+        "Clean your hands now; an alcohol-based cleaner is fine"
+      ],
+      "correct": 3,
+      "why": "Hands are cleaned after every patient contact even when gloves were worn, and an alcohol-based cleaner is acceptable when hands are not visibly soiled. \"The gloves stayed on\" is the tempting error: gloves do not replace handwashing."
+    },
+    {
+      "q": "You are stuck by a used needle while caring for a patient. What should you do?",
+      "options": [
+        "Finish the shift and mention it at the next meeting",
+        "Seek medical care immediately and report the exposure",
+        "Wait to see whether you develop any symptoms",
+        "Ask the patient whether he has any infections"
+      ],
+      "correct": 1,
+      "why": "Seek medical care immediately, because delay reduces how well preventive treatment works, and report the exposure as the exposure control plan requires. Waiting for symptoms wastes the window in which treatment helps most."
+    },
+    {
+      "q": "Under the Ryan White CARE Act, how does an EMT find out about a possible bloodborne exposure such as HIV?",
+      "options": [
+        "The hospital phones the EMT directly with the result",
+        "The patient is required to tell the EMT in person",
+        "The EMT requests a determination through the designated officer",
+        "The EMT looks up the patient's hospital chart"
+      ],
+      "correct": 2,
+      "why": "For a bloodborne exposure you must ask for a determination yourself, through your agency's designated officer. Automatic notification is what happens after an airborne exposure such as TB, where the hospital notifies the designated officer."
+    }
+  ],
+  "summary": "<p>Looking after yourself is the base of a long career: support, exercise, sleep, good food, limited alcohol and caffeine, checkups and vaccines. Because you cannot tell who is infected, standard precautions treat all body fluids as infectious, with protection chosen at scene size-up and reassessed during the call: gloves for any contact with blood or body fluids, eye protection and a mask or face shield for splash, a gown for heavy bleeding or childbirth, and an N-95 or HEPA respirator for suspected TB. Wash your hands after every patient, gloves or not. OSHA makes the employer provide training, vaccine, equipment and an exposure control plan; the Ryan White CARE Act lets you find out about exposures through your designated officer. After any exposure, get medical care immediately.</p>"
+}

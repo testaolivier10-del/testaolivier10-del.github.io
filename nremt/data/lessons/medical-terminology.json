@@ -1,0 +1,104 @@
+{
+  "id": "medical-terminology",
+  "title": "Medical terms and the language of location",
+  "chapter": 5,
+  "section": "ch5-terminology",
+  "hook": "<p>Your partner calls across the room: \"Sixty-two-year-old, supine, dyspnea, tender in the right upper quadrant, laceration on the distal left forearm.\" In one breath you know how the patient is lying, what the complaint is, where the belly hurts and exactly where the cut is, without looking.</p><p>That only works if both of you use the words the same way. Medical terms are built from a small set of parts, and the words for location all hang on one fixed reference position. Learn the parts and the pairs, and long words stop being a problem.</p>",
+  "steps": [
+    {
+      "find": "You meet a long term you have never seen, such as cholecystitis.",
+      "act": "Take it apart one piece at a time. Chol/e means bile, cyst means a closed sac and -itis means inflammation: inflammation of the sac that holds bile, the gallbladder. A root carries the core meaning, a prefix at the front modifies it, and a suffix at the end completes it."
+    },
+    {
+      "find": "You need to say where an injury is, and the patient is curled on their side on the floor.",
+      "act": "Picture the anatomic position: standing upright, facing forward, palms forward. Every directional term assumes that position no matter how the patient is actually lying, and left and right always mean the patient's left and right."
+    },
+    {
+      "find": "The wound is on the forearm, close to the wrist.",
+      "act": "Use the paired opposites. Distal is farther from the torso and proximal is closer to it, so the wound is on the distal forearm. The other pairs work the same way: medial and lateral, anterior and posterior, superior and inferior."
+    },
+    {
+      "find": "The patient points to pain in the belly, up under the ribs on their right side.",
+      "act": "Name the quadrant. Lines through the navel divide the abdomen into four: right upper (RUQ), left upper (LUQ), right lower (RLQ) and left lower (LLQ). This is the right upper quadrant. On the chest, the midclavicular and midaxillary lines do the same job of pinning down a spot."
+    },
+    {
+      "find": "You have to report how the patient is positioned.",
+      "act": "Use the positional terms: supine is on the back, prone is facedown, the recovery position is on the side, Fowler is sitting with the head of the stretcher raised 45 to 60 degrees, and semi-Fowler is leaning back, half sitting."
+    },
+    {
+      "find": "You are writing the report, handing the patient over, or asking the patient a question.",
+      "act": "Use plain language wherever a term could be misread. Common abbreviations such as CPR and EMS are fine. With patients and families, drop the jargon: ask about a \"heart attack\", not an \"MI\"."
+    }
+  ],
+  "ideas": [
+    "<b>Word parts.</b> A root (cardi, heart) usually cannot stand alone. Add a vowel, almost always an o, and you have a combining form (therm/o + meter = thermometer). A prefix goes in front (dys- + pnea = dyspnea, difficult breathing); a suffix goes on the end (arthr + -itis = arthritis, joint inflammation).",
+    "<b>Prefixes worth knowing cold:</b> brady- (slow), tachy- (fast), hyper- (above normal), hypo- (below normal), dys- (difficult or painful), intra- (within), inter- (between), peri- (around), sub- (below), supra- and super- (above).",
+    "<b>Suffixes worth knowing cold:</b> -itis (inflammation), -algia (pain), -emesis (vomiting), -pnea (breathing), -plegia (paralysis), -rrhea (discharge).",
+    "<b>Three planes.</b> Sagittal (median) cuts the body into right and left halves, frontal (coronal) into front and back, transverse (horizontal) into top and bottom.",
+    "<b>Synonyms.</b> Anterior is the same as ventral (front); posterior is the same as dorsal (back). Palmar is the palm of the hand; plantar is the sole of the foot. Bilateral means both sides; unilateral means one side.",
+    "<b>Reference lines.</b> The midline runs down the center of the body and divides right from left. The midaxillary line runs down from the middle of the armpit and divides front from back. The midclavicular line runs through the center of each collarbone.",
+    "<b>The recovery position</b> (lateral recumbent) is preferred for an unresponsive patient without trauma who is breathing adequately, because it lets fluid drain from the mouth and helps prevent aspiration."
+  ],
+  "misconception": {
+    "wrong": "Directional terms describe the patient the way I find them, and left and right are as I look at the patient.",
+    "right": "Every directional term is defined from the anatomic position (standing, facing forward, palms forward), however the patient is lying. Anterior is the front of the body even when the patient is facedown, and left and right are always the patient's own left and right."
+  },
+  "check": [
+    {
+      "q": "A patient has a deep cut on the lower leg, just above the ankle. Compared with the knee, where is the cut?",
+      "options": [
+        "Proximal to the knee",
+        "Distal to the knee",
+        "Superior to the knee",
+        "Medial to the knee"
+      ],
+      "correct": 1,
+      "why": "Distal means farther from the torso, and the ankle end of the leg is farther from the torso than the knee. Proximal is the tempting mix-up: it means closer to the torso, which would put the cut on the thigh side of the knee."
+    },
+    {
+      "q": "Which plane divides the body into front and back halves?",
+      "options": [
+        "The sagittal plane",
+        "The median plane",
+        "The transverse plane",
+        "The frontal plane"
+      ],
+      "correct": 3,
+      "why": "The frontal (coronal) plane cuts the body into front and back. The sagittal, or median, plane gives right and left halves, and the transverse plane gives top and bottom."
+    },
+    {
+      "q": "You find a patient lying facedown on the floor. How do you describe that position?",
+      "options": [
+        "Prone",
+        "Supine",
+        "Fowler",
+        "Recovery"
+      ],
+      "correct": 0,
+      "why": "Prone is lying on the abdomen, facedown. Supine is the opposite, on the back, and is the one most often confused with it. Fowler is sitting up, and the recovery position is on the side."
+    },
+    {
+      "q": "In the term \"tachypnea\", what does the prefix tell you?",
+      "options": [
+        "The breathing is painful",
+        "The breathing is slow",
+        "The breathing is fast",
+        "The breathing is absent"
+      ],
+      "correct": 2,
+      "why": "Tachy- means fast and -pnea means breathing, so tachypnea is fast breathing. Brady- is the prefix for slow, and dys- is the one for difficult or painful."
+    },
+    {
+      "q": "You are asking a frightened 70-year-old about her history. Which question is the best way to ask about a previous myocardial infarction?",
+      "options": [
+        "\"Any history of MI?\"",
+        "\"Have you ever had a heart attack?\"",
+        "\"Any prior cardiac events of note?\"",
+        "\"Have you had a myocardial infarct?\""
+      ],
+      "correct": 1,
+      "why": "Patients answer plain words correctly. \"Heart attack\" is understood at once, while \"MI\" and \"myocardial infarct\" are jargon a patient may not recognize, and a patient who does not understand the question cannot give you a reliable answer."
+    }
+  ],
+  "summary": "<p>Medical terms are roots joined to prefixes and suffixes, often through a combining vowel, and they come apart one piece at a time. Every directional term is measured from the anatomic position (standing, facing forward, palms forward), and left and right are the patient's. Directions come as paired opposites (medial and lateral, anterior and posterior, superior and inferior, proximal and distal), three planes slice the body, reference lines and the four abdominal quadrants pin down a spot, and positional terms such as supine, prone, recovery and Fowler say how the patient is lying. Abbreviations and jargon cause errors, so use plain language in reports, at handoff and above all with patients.</p>"
+}

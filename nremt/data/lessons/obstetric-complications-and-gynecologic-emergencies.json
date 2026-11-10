@@ -1,0 +1,112 @@
+{
+  "id": "obstetric-complications-and-gynecologic-emergencies",
+  "title": "Childbirth complications and gynecologic emergencies",
+  "chapter": 36,
+  "section": "ch36-complications",
+  "hook": "<p>A woman at 38 weeks felt her water break ten minutes ago. When you check for crowning there is no head. A loop of umbilical cord is lying outside the vagina, and you can feel it pulsing.</p><p>That cord is the baby's whole oxygen supply, and the baby's head is about to press it flat. In most childbirth complications the key is what you do not do. This one also needs your hand, right now, and all the way to the hospital.</p>",
+  "steps": [
+    {
+      "find": "The buttocks or legs are presenting first (breech).",
+      "act": "Transport rapidly. Never pull on the legs. If the body delivers on the way, support it. If the head does not follow within about 3 minutes, slide a gloved hand in along the baby's face and hold the vaginal wall off the nose and mouth with two fingers in a V, and keep it there during transport."
+    },
+    {
+      "find": "A single arm, leg or shoulder is presenting (limb presentation).",
+      "act": "Transport immediately. This baby cannot be delivered in the field. Do not pull on the limb and do not push it back in."
+    },
+    {
+      "find": "The umbilical cord is presenting before the baby (prolapsed cord).",
+      "act": "Position the mother head down with her pelvis raised. With a gloved hand, push the baby's head or buttocks off the cord, and keep it there until you are relieved at the hospital. Do not push the cord back in; keep it covered, moist and warm. Transport rapidly."
+    },
+    {
+      "find": "A woman in the third trimester has heavy vaginal bleeding.",
+      "act": "Think of the placenta. Heavy bleeding with little or no pain suggests placenta previa. Bleeding with abdominal or back pain, often after trauma, suggests abruptio placentae; in abruption the blood can be trapped behind the placenta, so she can be in shock with little bleeding to see. Either way, treat for shock, position her on her left side and transport rapidly."
+    },
+    {
+      "find": "A woman of childbearing age has abdominal pain, with or without vaginal bleeding.",
+      "act": "Assume an ectopic pregnancy until proven otherwise, especially with one-sided pain. A rapid, weak pulse is a later sign and a low blood pressure is a very late sign, so treat for shock and transport before they appear."
+    },
+    {
+      "find": "A pregnant patient has high blood pressure with swelling of the face and hands, a severe headache or vision changes, or is seizing.",
+      "act": "Recognize preeclampsia, and eclampsia once seizures begin. For the seizing patient: open the airway, give oxygen, transport on the left side, keep her warm and call for ALS."
+    },
+    {
+      "find": "A patient whose uterus is at or above the navel (about 20 weeks or more) is in cardiac arrest.",
+      "act": "Resuscitate the mother; that is the baby's best chance. Do CPR with your hands in the usual place on the lower half of the sternum while a second rescuer manually pushes the uterus to the patient's left the whole time. Keep her flat on her back; do not tilt her. Use the AED as you would for anyone."
+    },
+    {
+      "find": "A patient reports a sexual assault.",
+      "act": "Make sure the scene is safe, be nonjudgmental, and treat life threats first. Disturb evidence only as care requires, examine the genitals only for severe bleeding, and discourage bathing or voiding before the hospital."
+    }
+  ],
+  "ideas": [
+    "<b>Breech and limb presentations:</b> the harm comes from pulling. Never pull on the legs or a limb, and never push a limb back in.",
+    "<b>Prolapsed cord:</b> the harm comes from compression. Keep the presenting part off the cord, with your hand, until the hospital takes over.",
+    "<b>Previa and abruption:</b> placenta previa is heavy third-trimester bleeding, often without pain. Abruptio placentae is bleeding with abdominal or back pain, often after trauma.",
+    "<b>Ectopic pregnancy</b> is the working assumption for abdominal pain in any woman of childbearing age, pregnant by her own account or not.",
+    "<b>Shock hides in pregnancy.</b> The resting pulse is already 10 to 15 beats faster, and she can lose 30 to 35 percent of her blood volume before obvious signs. Maternal shock is the most likely cause of prehospital fetal death.",
+    "<b>The uterus cushions minor blows,</b> but major forces can cause uterine rupture, abruptio placentae or organ injury.",
+    "<b>Arrest in pregnancy:</b> standard hand position, manual left uterine displacement, AED as usual."
+  ],
+  "misconception": {
+    "wrong": "A pregnant trauma patient with a pulse of 100 and a normal blood pressure is not in shock.",
+    "right": "Her pulse normally runs 10 to 15 beats faster, and she can lose 30 to 35 percent of her blood volume before obvious signs of shock appear. Normal-looking vital signs after significant trauma do not rule out serious bleeding, and the baby suffers first."
+  },
+  "check": [
+    {
+      "q": "A woman in labor has a loop of umbilical cord protruding from the vagina. What do you do?",
+      "options": [
+        "Push the cord back inside and have her bear down",
+        "Raise her pelvis and hold the baby's head off the cord",
+        "Clamp and cut the cord, then deliver the baby quickly",
+        "Pull gently on the cord to help the baby descend"
+      ],
+      "correct": 1,
+      "why": "With a prolapsed cord the danger is compression of the baby's oxygen supply. The mother is positioned head down with the pelvis raised, and a gloved hand pushes the presenting part off the cord until the hospital takes over. Cutting the cord is tempting because it is what you do after a normal birth, but before birth it cuts off the baby's oxygen completely."
+    },
+    {
+      "q": "A woman at 34 weeks has sudden heavy, bright red vaginal bleeding. She has no abdominal pain and no history of trauma. Which condition fits best?",
+      "options": [
+        "Placenta previa",
+        "Abruptio placentae",
+        "Ectopic pregnancy",
+        "Uterine rupture"
+      ],
+      "correct": 0,
+      "why": "Heavy third-trimester bleeding without abdominal pain is the pattern of placenta previa. Abruptio placentae is the tempting alternative because it is also a third-trimester bleed, but it comes with abdominal or back pain and is often related to trauma."
+    },
+    {
+      "q": "A 26-year-old woman has sharp pain in the lower right abdomen and light vaginal spotting. She says she cannot be pregnant. Her pulse is 96 and her blood pressure is 118/74. How do you treat this?",
+      "options": [
+        "As a likely stomach bug, since her vital signs are normal",
+        "As a menstrual cramp, since she denies being pregnant",
+        "As appendicitis only, since the pain is on the right",
+        "As a possible ectopic pregnancy, with prompt transport"
+      ],
+      "correct": 3,
+      "why": "Any woman of childbearing age with abdominal pain, especially with vaginal bleeding, is assumed to have an ectopic pregnancy until proven otherwise. Being reassured by her normal vital signs is the tempting mistake: a rapid, weak pulse is a later sign and low blood pressure is a very late one."
+    },
+    {
+      "q": "A woman who is 30 weeks pregnant is in cardiac arrest. How is CPR modified?",
+      "options": [
+        "Hands are moved higher on the sternum than usual",
+        "Compressions are made shallower to protect the baby",
+        "The uterus is manually pushed to her left during CPR",
+        "The AED is withheld because of the risk to the baby"
+      ],
+      "correct": 2,
+      "why": "When the uterus is at or above the navel (about 20 weeks or more), it is manually pushed to the left throughout CPR to take it off the vena cava, with the patient kept flat. Moving the hands higher is the tempting answer because it was once taught, but current AHA guidance keeps the standard position on the lower half of the sternum, and an AED is used as needed."
+    },
+    {
+      "q": "During a delivery you see one arm presenting at the vaginal opening. What is the correct action?",
+      "options": [
+        "Transport immediately without pulling or pushing the arm",
+        "Pull gently on the arm with each contraction",
+        "Push the arm back in and wait for the head to appear",
+        "Have the mother push hard to deliver the shoulder"
+      ],
+      "correct": 0,
+      "why": "A limb presentation cannot be delivered in the field, so the patient is transported immediately, and the limb is neither pulled nor pushed back in. Pushing it back is tempting as a way to restart a normal delivery, but it injures the baby and does not correct the position."
+    }
+  ],
+  "summary": "<p>In breech and limb presentations the harm comes from pulling: transport rapidly, never pull on the legs or a limb, and never push a limb back in. In a prolapsed cord the harm comes from compression: raise the mother's pelvis and hold the presenting part off the cord until the hospital takes over. Heavy third-trimester bleeding without pain suggests placenta previa; bleeding with abdominal or back pain, often after trauma, suggests abruptio placentae. Abdominal pain in a woman of childbearing age is an ectopic pregnancy until proven otherwise. Preeclampsia becomes eclampsia when seizures begin: airway, oxygen, left side, warmth, ALS. Shock is hard to see in pregnancy, since the pulse is already faster and 30 to 35 percent of blood volume can be lost first. In cardiac arrest at about 20 weeks or more, use the standard hand position, push the uterus to the left by hand and use the AED. In a sexual assault, treat life threats first and protect evidence.</p>"
+}

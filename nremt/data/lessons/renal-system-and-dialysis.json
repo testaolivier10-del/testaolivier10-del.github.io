@@ -1,0 +1,103 @@
+{
+  "id": "renal-system-and-dialysis",
+  "title": "The renal system and dialysis",
+  "chapter": 28,
+  "section": "ch28-renal",
+  "hook": "<p>A 58-year-old man is short of breath and his ankles are swollen. It looks like heart failure. Then his wife mentions that the dialysis van could not get through the snow, and he has missed his last two sessions.</p><p>A patient whose kidneys do not work depends on a machine to remove fluid and potassium. Miss a session or two and both build up, and the potassium can stop the heart. Dialysis patients are common on EMS calls, and a few rules about them are tested again and again.</p>",
+  "steps": [
+    {
+      "find": "A patient on dialysis has missed sessions and is short of breath with swollen legs.",
+      "act": "Recognize fluid overload, which looks much like congestive heart failure. Support breathing, give oxygen if indicated and transport promptly."
+    },
+    {
+      "find": "The same patient is weak, or goes into cardiac arrest.",
+      "act": "Suspect high potassium, which can cause fatal heart rhythms. Start CPR and use the AED exactly as you would for any arrest. Tell ALS and the hospital that the patient missed dialysis, because high potassium can make the arrest harder to reverse and needs treatment they can give."
+    },
+    {
+      "find": "You need a blood pressure, and one arm has a surgical bulge under the skin with a vibration you can feel.",
+      "act": "That is an A-V fistula, and the vibration (a thrill) means it is working. Never take a blood pressure on that arm. Use the other one."
+    },
+    {
+      "find": "The fistula is bleeding.",
+      "act": "Use direct pressure. Avoid a tourniquet unless the bleeding is life-threatening: the fistula is the patient's lifeline for dialysis and is worth preserving where that is safe, but life comes first."
+    },
+    {
+      "find": "A patient on peritoneal dialysis has abdominal pain and fever, and the drained fluid is cloudy, like chicken broth.",
+      "act": "Suspect peritonitis. Transport, and bring the drained bag along so the fluid can be tested."
+    },
+    {
+      "find": "A patient has one-sided flank pain, fever and looks ill, after several days of urinary symptoms.",
+      "act": "Suspect a kidney infection (pyelonephritis), which can progress to sepsis, especially in older patients. Transport. A kidney transplant patient on anti-rejection drugs with signs of infection is also at high risk for sepsis."
+    }
+  ],
+  "ideas": [
+    "<b>Urinary tract infections</b> are the most common renal and urinary disease: bacterial, usually limited to the bladder. If the infection climbs to the kidney it is <b>pyelonephritis</b>: one-sided flank pain and a sicker patient.",
+    "<b>Kidney stones</b> cause severe one-sided flank pain that moves to the groin as the stone travels down the ureter.",
+    "<b>Acute renal failure</b> (shock, a toxic ingestion) is sometimes reversible. <b>Chronic renal failure</b> (diabetes, high blood pressure) is progressive and often permanent. End-stage renal disease needs dialysis.",
+    "<b>Hemodialysis:</b> blood is filtered through a machine by way of a catheter or A-V fistula, about 3 times a week for 3 to 4 hours. <b>Peritoneal dialysis:</b> fluid is placed in the abdomen through a catheter and drained, more often, at home.",
+    "<b>Missed dialysis</b> means fluid overload and high potassium.",
+    "<b>Transplant patients</b> take immunosuppressant drugs for life, so serious infections and sepsis are more likely."
+  ],
+  "misconception": {
+    "wrong": "Never put a tourniquet on an arm with a dialysis fistula, whatever the bleeding looks like.",
+    "right": "Direct pressure comes first, and the fistula is worth protecting where that is safe. But if bleeding from the arm is life-threatening and pressure does not control it, a tourniquet is used. A lost fistula can be replaced; the patient cannot."
+  },
+  "check": [
+    {
+      "q": "A dialysis patient needs a blood pressure. The left arm has a fistula with a palpable thrill. Where do you take it?",
+      "options": [
+        "On the left arm, just above the fistula",
+        "On the left arm, just below the fistula",
+        "On the right arm, away from the fistula",
+        "On the left arm, with the cuff kept loose"
+      ],
+      "correct": 2,
+      "why": "A blood pressure is never taken on the arm with a fistula, because cuff pressure can damage it. Moving the cuff above or below the fistula on the same arm still squeezes the vessels that feed it."
+    },
+    {
+      "q": "A patient with end-stage renal disease missed two hemodialysis sessions and collapses in cardiac arrest. Which problem is the most likely cause?",
+      "options": [
+        "Low blood sugar",
+        "High potassium",
+        "Low body temperature",
+        "High blood calcium"
+      ],
+      "correct": 1,
+      "why": "Without dialysis, potassium builds up and can cause fatal heart rhythms. Fluid overload also occurs and causes shortness of breath and swelling, but the elevated potassium is the more dangerous consequence."
+    },
+    {
+      "q": "A patient who does peritoneal dialysis at home has belly pain and fever. The drained fluid looks cloudy. What should you do with the bag?",
+      "options": [
+        "Bring it to the hospital with the patient",
+        "Pour it out and rinse the bag at the scene",
+        "Leave it at home for the family to discard",
+        "Reconnect it and run the fluid back in"
+      ],
+      "correct": 0,
+      "why": "Cloudy fluid that looks like chicken broth, with abdominal pain and fever, suggests peritonitis. The drained bag goes with the patient so the fluid can be tested. Throwing it away loses that information."
+    },
+    {
+      "q": "A dialysis fistula in the forearm is bleeding steadily after the patient scratched it. What is your first step?",
+      "options": [
+        "A tourniquet above the fistula at once",
+        "A blood pressure cuff inflated over the site",
+        "Elevation of the arm with no pressure",
+        "Firm direct pressure on the bleeding site"
+      ],
+      "correct": 3,
+      "why": "Fistula bleeding is treated with direct pressure first. A tourniquet is avoided unless the bleeding is life-threatening, because the fistula is the patient's access for dialysis. Elevation alone does not control bleeding."
+    },
+    {
+      "q": "A man who received a kidney transplant two years ago has a fever and feels very unwell. Why is this more worrying than in most patients?",
+      "options": [
+        "His new kidney cannot filter any medications",
+        "His dialysis schedule has probably been missed",
+        "His anti-rejection drugs raise the risk of serious infection",
+        "His transplant makes kidney stones far more likely"
+      ],
+      "correct": 2,
+      "why": "Transplant patients take immunosuppressant drugs for life to prevent rejection, and those drugs make serious infections, including sepsis, more likely. A patient with a working transplant is generally not on dialysis."
+    }
+  ],
+  "summary": "<p>Urinary tract infections are common and usually stay in the bladder; one that reaches the kidney (pyelonephritis) causes flank pain and can lead to sepsis. Kidney stones cause severe flank pain moving to the groin. End-stage renal disease needs hemodialysis through a catheter or fistula, or peritoneal dialysis through the abdomen. Missed dialysis causes fluid overload that looks like heart failure and high potassium that can cause a fatal rhythm. Never take a blood pressure on a fistula arm; control fistula bleeding with direct pressure and save the tourniquet for life-threatening bleeding. Cloudy peritoneal fluid with pain and fever suggests peritonitis, so bring the bag. Transplant patients on immunosuppressants are at high risk of serious infection.</p>"
+}

@@ -195,5 +195,28 @@
     };
   }
 
-  global.NremtQuestionIds = { attach: attach };
+  /* The per-option lines (assets/option-whys.json: { id: [line, ...] } in the bank's STORED option order) for
+     one question, in the order its options are SHOWN. `q` is the question as the page holds it, options already
+     dealt; `orders[id]` is that deal (shown position -> stored index). Each line comes back as escaped HTML
+     with its "Correct: " / "Not this: " label taken off, because the option's colour and mark already say it.
+     null when there is nothing safe to show: file not loaded, not a single or select-all item, no lines for
+     the id, a length that does not match, or a "Correct" label that is not exactly on the keyed options. */
+  var WHY_LABEL = /^(Correct|Not this):\s*/;
+  function shownWhys(map, q, id, orders) {
+    if (!map || !q || id === undefined || !Array.isArray(q.options)) return null;
+    if (q.type && q.type !== 'single' && q.type !== 'multi') return null;
+    var lines = map[id], order = orders && orders[id], n = q.options.length;
+    if (!Array.isArray(lines) || lines.length !== n) return null;
+    if (!Array.isArray(order) || order.length !== n) return null;
+    var key = [].concat(q.correct), out = [];
+    for (var p = 0; p < n; p++) {
+      var line = lines[order[p]];
+      if (typeof line !== 'string' || !line) return null;
+      if ((line.indexOf('Correct:') === 0) !== (key.indexOf(p) > -1)) return null;
+      out.push(line.replace(WHY_LABEL, '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'));
+    }
+    return out;
+  }
+
+  global.NremtQuestionIds = { attach: attach, shownWhys: shownWhys };
 })(typeof window !== 'undefined' ? window : globalThis);

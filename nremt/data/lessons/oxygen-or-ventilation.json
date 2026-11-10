@@ -1,0 +1,102 @@
+{
+  "id": "oxygen-or-ventilation",
+  "title": "Oxygen or ventilation? Making the call",
+  "chapter": 10,
+  "section": "ch10-oxygen-or-ventilation",
+  "hook": "<p>An elderly woman is slumped in her chair. She is breathing 6 times a minute, and her chest barely moves. Her lips are blue. A first responder has already put a non-rebreather mask on her at 15 L/min, and nothing has changed.</p><p>The mask is the wrong tool. Oxygen enriches the air a patient is moving. She is not moving enough air for that to matter. This lesson is about the first decision in every breathing problem: does this patient need oxygen, or does someone need to breathe for them?</p>",
+  "steps": [
+    {
+      "find": "The patient is moving air in adequate volume at an adequate rate, but is hypoxic.",
+      "act": "Give supplemental oxygen. Do not bag this patient: ventilating someone who is breathing adequately adds nothing and risks filling the stomach with air."
+    },
+    {
+      "find": "The breathing is too slow or too fast to move useful volume, the chest rise is shallow or absent, or breath sounds are diminished or absent.",
+      "act": "Ventilate with a bag-valve mask, and give oxygen through the bag while you do. A mask alone enriches a breath that is too small to help."
+    },
+    {
+      "find": "The patient is cyanotic, has an altered mental status, or can speak only a word or two at a time.",
+      "act": "Treat these as signs of inadequate breathing too, and be ready with the bag."
+    },
+    {
+      "find": "A child has nasal flaring, retractions between and below the ribs, grunting or head bobbing.",
+      "act": "Recognize that the work of breathing has become unsustainable. This child is close to needing ventilation."
+    },
+    {
+      "find": "A patient who was fighting hard to breathe a minute ago is now quiet and sleepy.",
+      "act": "Do not read this as improvement. Falling effort and falling consciousness mean exhaustion and rising carbon dioxide. Prepare to ventilate."
+    },
+    {
+      "find": "You are assisting a patient who still has some breathing effort of their own.",
+      "act": "Time each squeeze to the start of the patient's own breath in. Squeezing while the patient is trying to breathe out forces air into the stomach and fights the patient."
+    }
+  ],
+  "ideas": [
+    "<b>Oxygen and ventilation solve different problems.</b> Oxygen enriches the air a patient moves. Ventilation moves air for a patient who is not moving enough.",
+    "<b>The question to ask</b> is not how sick the patient looks, but whether air is moving in adequate volume at an adequate rate.",
+    "<b>A slow, shallow breather has a volume problem,</b> not an oxygen concentration problem.",
+    "<b>Signs that point to the bag:</b> a rate too slow or too fast, shallow or absent chest rise, diminished breath sounds, cyanosis, altered mental status, one or two word sentences.",
+    "<b>Quiet and sleepy after severe distress</b> is tiring, not recovery."
+  ],
+  "misconception": {
+    "wrong": "The sickest breathing patients get the highest oxygen flow, so a non-rebreather at 15 L/min is the top of the ladder.",
+    "right": "A non-rebreather only helps a patient who is moving enough air. When breathing itself is inadequate, the answer is a bag-valve mask with oxygen, because the patient needs volume, not just a richer mix."
+  },
+  "check": [
+    {
+      "q": "A man who took too many pain pills is breathing 6 times a minute with shallow chest rise. His lips are blue. What does he need?",
+      "options": [
+        "A nasal cannula at 4 L/min",
+        "A non-rebreather mask at 15 L/min",
+        "A simple face mask at 8 L/min",
+        "Bag-valve-mask ventilation with oxygen"
+      ],
+      "correct": 3,
+      "why": "Six shallow breaths a minute is a volume problem, so he needs ventilation with oxygen through the bag. The non-rebreather is tempting because it gives the most oxygen of the masks, but it only enriches breaths that are too small to matter."
+    },
+    {
+      "q": "A woman with pneumonia is breathing 20 times a minute with good chest rise and speaks in full sentences. Her oxygen saturation is low. What does she need?",
+      "options": [
+        "Supplemental oxygen",
+        "Bag-valve-mask ventilation",
+        "An oropharyngeal airway",
+        "Suction of the airway"
+      ],
+      "correct": 0,
+      "why": "She is moving air adequately and is hypoxic, so she needs oxygen. Bagging a patient who is breathing adequately adds nothing and risks gastric distention."
+    },
+    {
+      "q": "A teenager having a severe asthma attack has been struggling for 20 minutes. He suddenly becomes quiet, his breathing slows, and he is hard to wake. What is happening?",
+      "options": [
+        "The attack is ending on its own",
+        "He is calmer because the oxygen is working",
+        "He is exhausted and about to need ventilation",
+        "He has fallen asleep from the stress"
+      ],
+      "correct": 2,
+      "why": "A patient in severe distress who goes quiet and sleepy is tiring. Falling effort and consciousness mean rising carbon dioxide, and ventilation comes next. Reading it as improvement is the classic error."
+    },
+    {
+      "q": "You are assisting the breathing of a patient who still takes weak breaths on her own. When do you squeeze the bag?",
+      "options": [
+        "In the middle of each breath out",
+        "At the start of each of her breaths in",
+        "On a fixed count, ignoring her effort",
+        "Only when her chest stops moving"
+      ],
+      "correct": 1,
+      "why": "Timing the squeeze to the start of her own breath in works with her effort. Squeezing against a breath out forces air into the stomach."
+    },
+    {
+      "q": "Which set of findings in a 2-year-old shows that the work of breathing has become unsustainable?",
+      "options": [
+        "Crying loudly with pink skin and tears",
+        "Coughing with a runny nose and a mild fever",
+        "Nasal flaring, retractions, grunting and head bobbing",
+        "Breathing quietly through the nose while asleep"
+      ],
+      "correct": 2,
+      "why": "Nasal flaring, retractions, grunting and head bobbing are the pediatric signs that breathing effort cannot be kept up. A loud cry shows good air movement."
+    }
+  ],
+  "summary": "<p>Supplemental oxygen helps a patient who is moving enough air; ventilation is for a patient who is not. Decide by asking whether air is moving in adequate volume at an adequate rate. If it is and the patient is hypoxic, give oxygen. If it is not, shown by a rate that is too slow or too fast, shallow chest rise, diminished breath sounds, cyanosis, altered mental status or one or two word speech, ventilate with a bag-valve mask and oxygen. A distressed patient who goes quiet and sleepy is tiring. When assisting, time each squeeze to the start of the patient's own breath in.</p>"
+}

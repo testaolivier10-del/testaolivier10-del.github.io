@@ -1,0 +1,116 @@
+{
+  "id": "negligence-confidentiality",
+  "title": "Negligence, confidentiality and crime scenes",
+  "chapter": 4,
+  "section": "ch4-negligence-confidentiality",
+  "hook": "<p>You bring a patient with abdominal pain into a packed emergency department. No nurse is free. Your radio is calling you to another emergency. You put the patient in a wheelchair in the hallway, tell her someone will be with her soon, and leave. An hour later she is found collapsed.</p><p>You meant well, and you may have just committed abandonment. This lesson covers the legal ideas that are tested most often: negligence and its four elements, abandonment, assault and battery, Good Samaritan laws, confidentiality, and how to work at a crime scene.</p>",
+  "steps": [
+    {
+      "find": "You are on duty and dispatched to a patient.",
+      "act": "You have a duty to act. Provide care that meets the standard of care, because failing to do so is a breach of that duty."
+    },
+    {
+      "find": "You need to end your care of a patient.",
+      "act": "Hand over to a provider of equal or higher level, and make sure they have accepted the patient. Ending care without that, and without the patient's consent, is abandonment."
+    },
+    {
+      "find": "A competent patient says no to a procedure or to being touched.",
+      "act": "Do not do it. Unwanted physical contact, or care performed without consent, is battery. Putting a patient in fear of that contact is assault."
+    },
+    {
+      "find": "Someone asks you about a patient: a bystander, a reporter, a friend at dinner.",
+      "act": "Do not share it. Patient information may be shared for treatment, payment and healthcare operations, such as your handoff to hospital staff, but not for unrelated purposes without authorization."
+    },
+    {
+      "find": "You are sent to a patient at a crime scene.",
+      "act": "Do not enter until law enforcement confirms the scene is safe. Then care for the patient first; patient care always comes before preserving evidence."
+    },
+    {
+      "find": "You are treating the patient at the crime scene.",
+      "act": "Disturb as little as you can without compromising care: do not move items unnecessarily, cut around bullet or knife holes in clothing and not through them, and document what you see and hear, including what patients and bystanders say."
+    }
+  ],
+  "ideas": [
+    "<b>A tort</b> is a civil wrong, settled by a lawsuit, as opposed to a crime.",
+    "<b>Negligence needs all four elements:</b> duty to act, breach of duty, damages (actual harm to the patient), and causation (your breach directly caused the harm).",
+    "<b>Duty to act</b> exists once you are on duty and dispatched; in some places also once you begin patient contact while off duty. It varies by state.",
+    "<b><i>Res ipsa loquitur</i></b> (\"the thing speaks for itself\") presumes negligence from the nature of the injury, such as a surgical instrument left inside a patient.",
+    "<b>Good Samaritan laws</b> protect people who give emergency care voluntarily, in good faith and without expecting payment, from liability for ordinary negligence. They do not cover gross negligence or willful misconduct.",
+    "<b>Confidentiality is usually broken by carelessness:</b> talking about patients in elevators, restaurants or on social media, telling bystanders or the media, or leaving reports where others can see them. HIPAA is the federal law that governs sharing of health information.",
+    "<b>Slander</b> is a spoken false statement that damages a reputation; <b>libel</b> is the same in writing.",
+    "<b>Special situations:</b> use medical identification devices when present; organ donor status does not change resuscitation of a living patient; safe haven laws let a parent surrender an unharmed newborn anonymously at a designated place without prosecution."
+  ],
+  "misconception": {
+    "wrong": "If I make any mistake on a call, I am negligent and can be successfully sued.",
+    "right": "Negligence needs all four elements together: a duty to act, a breach of that duty, actual harm to the patient, and proof that the breach caused the harm. A mistake that caused no harm, or harm that your care did not cause, does not make a negligence claim."
+  },
+  "check": [
+    {
+      "q": "An EMT on duty splints a broken wrist poorly, well below the standard of care. The patient heals completely with no lasting problem. Which element of negligence is missing?",
+      "options": [
+        "Duty to act",
+        "Breach of duty",
+        "Damages",
+        "Consent"
+      ],
+      "correct": 2,
+      "why": "The EMT had a duty and breached it, but the patient suffered no actual harm, so the damages element is missing and the claim fails. Breach of duty is the tempting answer because the care was poor, but the breach is the part that is present. Consent is not one of the four elements."
+    },
+    {
+      "q": "You leave a patient in a hospital hallway without giving a report to any staff member, and drive off to another call. What is this?",
+      "options": [
+        "Abandonment",
+        "Battery",
+        "Slander",
+        "Assault"
+      ],
+      "correct": 0,
+      "why": "Abandonment is ending care without making sure that an equal or higher level of care continues. Battery is the tempting legal term, but it means unwanted physical contact or care without consent."
+    },
+    {
+      "q": "A competent patient clearly refuses to have his arm splinted. An EMT holds the arm down and applies the splint anyway. What has the EMT committed?",
+      "options": [
+        "Libel",
+        "Abandonment",
+        "Assault",
+        "Battery"
+      ],
+      "correct": 3,
+      "why": "Battery is actual unwanted physical contact, or care performed without consent. Assault is the close relative: putting the patient in fear of that contact, without the contact itself."
+    },
+    {
+      "q": "An off-duty EMT stops at a crash and gives careful, unpaid emergency care in good faith. What do Good Samaritan laws protect her from?",
+      "options": [
+        "All legal action of any kind",
+        "Liability for ordinary negligence",
+        "Liability for gross negligence",
+        "The duty to keep information confidential"
+      ],
+      "correct": 1,
+      "why": "Good Samaritan laws shield good-faith volunteers from liability for ordinary negligence. They are not total immunity: reckless or grossly negligent care is not protected, which is why \"all legal action\" is wrong."
+    },
+    {
+      "q": "You are caring for a stabbing victim at a crime scene that police have made safe. His shirt has to come off. What should you do?",
+      "options": [
+        "Leave the shirt on so the evidence is untouched",
+        "Wait for a detective before touching the patient",
+        "Cut around the knife hole, not through it",
+        "Cut straight through the hole, as it is quickest"
+      ],
+      "correct": 2,
+      "why": "Patient care comes before evidence, so the shirt comes off, but you cut around bullet or knife holes to preserve them. Leaving the shirt on or waiting for a detective puts evidence ahead of the patient."
+    },
+    {
+      "q": "Which of these is an acceptable way to share patient information?",
+      "options": [
+        "Giving your report to the nurse who takes over the patient",
+        "Describing the call to friends without using the name",
+        "Posting a photo of the scene on social media",
+        "Answering a reporter's questions at the scene"
+      ],
+      "correct": 0,
+      "why": "Information can be shared for treatment, payment and healthcare operations, and the handoff to receiving hospital staff is treatment. Telling friends \"without the name\" is the tempting one, but details can still identify a patient, and it is not for the patient's care."
+    }
+  ],
+  "summary": "<p>A tort is a civil wrong, and negligence is the one EMTs most often face. It needs four elements together: duty to act, breach of duty, damages and causation. Abandonment is ending care without an equal or higher level of care taking over; assault is putting a patient in fear of unwanted contact, and battery is the contact itself or care without consent. Good Samaritan laws protect good-faith volunteers from ordinary negligence, not gross negligence. Patient information is shared only for treatment, payment and healthcare operations. At a crime scene, wait until police say it is safe, put patient care before evidence, disturb as little as possible, cut around holes in clothing, and document what you see and hear.</p>"
+}

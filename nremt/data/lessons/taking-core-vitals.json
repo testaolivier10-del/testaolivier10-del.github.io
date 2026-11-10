@@ -1,0 +1,104 @@
+{
+  "id": "taking-core-vitals",
+  "title": "Taking the core vitals",
+  "chapter": 13,
+  "section": "ch13-taking-vitals",
+  "hook": "<p>A man who was in a low-speed crash says he feels fine. His first blood pressure is 130 over 80. Ten minutes later it is 100 over 70, his pulse is faster, and his skin is cool and damp. He still says he feels fine.</p><p>Neither set of vital signs alone would alarm you. Together they tell you he is getting worse. This lesson covers the core vitals, what is normal for an adult, and how to take each one so the number can be trusted.</p>",
+  "steps": [
+    {
+      "find": "You need a pulse on a responsive adult or child.",
+      "act": "Use the radial artery. Use the carotid in an unresponsive adult or child and the brachial in an infant. Count for 30 seconds and double it, or count a full 60 seconds if the rhythm is irregular."
+    },
+    {
+      "find": "You have the pulse rate.",
+      "act": "Report three things: rate, rhythm (regular or irregular) and strength (strong, weak or thready)."
+    },
+    {
+      "find": "You need to count respirations.",
+      "act": "Keep your fingers on the wrist after the pulse and count the breaths without telling the patient. Note depth, effort and any sounds along with the rate."
+    },
+    {
+      "find": "You are assessing the skin.",
+      "act": "Check color, temperature and condition. In a patient with darker skin, look at the nail beds, the inside of the lips and the conjunctiva. Press a nail bed for capillary refill: color should return within 2 seconds."
+    },
+    {
+      "find": "You are checking the pupils.",
+      "act": "Use PEARRL: Pupils Equal And Round, Regular in size, react to Light. Note anything unequal, pinpoint, widely dilated or fixed."
+    },
+    {
+      "find": "You have one full set of vital signs.",
+      "act": "Take another. Reassess every 5 minutes for an unstable patient and every 15 minutes for a stable one, and record the time with each set."
+    }
+  ],
+  "ideas": [
+    "<b>Normal adult values:</b> pulse 60 to 100 per minute, respirations 12 to 20 per minute, blood pressure about 120/80, SpO<sub>2</sub> 94 to 99%, temperature about 98.6 °F (37 °C).",
+    "<b>Hypotension</b> in an adult is commonly marked by a systolic pressure below 90.",
+    "<b>Skin color:</b> pale suggests poor perfusion or blood loss, cyanotic means poor oxygenation, flushed suggests heat exposure or certain poisonings, jaundiced points to the liver, and mottled is poor perfusion, seen especially in children.",
+    "<b>Skin temperature and condition:</b> cool and clammy is the classic picture of shock; hot and dry suggests heat stroke.",
+    "<b>Capillary refill</b> is a reliable sign of perfusion in children and less reliable in adults, where cold surroundings affect it.",
+    "<b>Pupils:</b> unequal suggests a head injury or stroke, pinpoint suggests opioids, widely dilated suggests stimulants, hypoxia or reduced blood flow to the brain, and fixed pupils are a serious neurological finding.",
+    "<b>In a child, a slow heart rate is usually a late sign of hypoxia,</b> not a heart problem. Children compensate well and then fail suddenly."
+  ],
+  "misconception": {
+    "wrong": "One good set of vital signs shows the patient is stable.",
+    "right": "One set is a snapshot. Two or more sets show the direction the patient is heading, and the trend is what changes decisions. A pressure that fell from 130 to 100 in ten minutes is a different patient from one who has been at 100 all along."
+  },
+  "check": [
+    {
+      "q": "You feel an irregular pulse at a patient's wrist. How long do you count?",
+      "options": [
+        "15 seconds, then multiply by four",
+        "30 seconds, then double it",
+        "A full 60 seconds",
+        "10 seconds, then multiply by six"
+      ],
+      "correct": 2,
+      "why": "An irregular rhythm is counted for a full 60 seconds. Counting 30 seconds and doubling is the usual method, but with an irregular rhythm doubling also doubles the error."
+    },
+    {
+      "q": "Where do you check the pulse of an unresponsive 8-month-old?",
+      "options": [
+        "The brachial artery, inside the upper arm",
+        "The radial artery, at the wrist",
+        "The carotid artery, in the neck",
+        "The pedal artery, on top of the foot"
+      ],
+      "correct": 0,
+      "why": "The brachial pulse is used in an infant, whose short neck makes the carotid hard to find reliably. The carotid is the site for an unresponsive adult or child."
+    },
+    {
+      "q": "What is the best way to count a patient's respirations?",
+      "options": [
+        "Ask the patient to breathe normally while you watch",
+        "Tell the patient you are timing their breaths",
+        "Ask the patient to count their own breaths aloud",
+        "Count while appearing to still take the pulse"
+      ],
+      "correct": 3,
+      "why": "Breathing is under voluntary control, and a patient who knows it is being counted will change it. Keeping your fingers on the wrist lets you count without the patient knowing."
+    },
+    {
+      "q": "A patient is unresponsive, breathing slowly, and has pinpoint pupils. What do the pupils suggest?",
+      "options": [
+        "Stimulant use",
+        "Opioid use",
+        "Heat stroke",
+        "Liver disease"
+      ],
+      "correct": 1,
+      "why": "Pinpoint pupils suggest opioids. Stimulants are linked with widely dilated pupils, which is the opposite finding."
+    },
+    {
+      "q": "How often do you reassess the vital signs of an unstable patient?",
+      "options": [
+        "Every 15 minutes",
+        "Every 30 minutes",
+        "Every 5 minutes",
+        "Once, on arrival at the hospital"
+      ],
+      "correct": 2,
+      "why": "An unstable patient is reassessed every 5 minutes. Every 15 minutes is the interval for a stable patient."
+    }
+  ],
+  "summary": "<p>The core vital signs are pulse, respirations, skin, pupils and blood pressure, read against adult normals of pulse 60 to 100, respirations 12 to 20 and blood pressure about 120/80. Take the pulse at the radial artery in a responsive adult or child, the carotid in an unresponsive one and the brachial in an infant, and report rate, rhythm and strength. Count respirations without the patient knowing. Assess skin color, temperature and condition, capillary refill (within 2 seconds) and pupils (PEARRL). Reassess every 5 minutes if unstable and every 15 if stable, with a time on every set, because the trend is the information.</p>"
+}

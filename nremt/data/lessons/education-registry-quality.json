@@ -1,0 +1,99 @@
+{
+  "id": "education-registry-quality",
+  "title": "Education, the Registry, quality improvement and medical direction",
+  "chapter": 1,
+  "section": "ch1-education-qi",
+  "hook": "<p>Your patient has severe pain, and her husband holds out her own prescription pain pills. \"Just give her two of these,\" he says. It sounds reasonable. But your protocols say nothing about it.</p><p>Whether you can act on your own, or must pick up the radio first, depends on something that sits behind every call: a physician's authority. This lesson covers how you stay certified, what the National Registry does, how quality improvement works, and the two kinds of medical direction.</p>",
+  "steps": [
+    {
+      "find": "You have passed your course and want national certification.",
+      "act": "The NREMT sets and maintains national standards and registers EMRs, EMTs, AEMTs and paramedics. For an EMT, that means passing the NREMT computer-based knowledge (cognitive) exam and showing skills competence in a practical exam, which today is approved or verified by your state or your program."
+    },
+    {
+      "find": "Time passes, and EMS knowledge and procedures keep changing.",
+      "act": "Certification is not permanent. Complete refresher training to recertify (NREMT certification renews every 2 years; state periods vary, roughly 2 to 4 years), and add continuing education such as conferences, classes and videos."
+    },
+    {
+      "find": "A patient's condition is covered by your protocols and standing orders.",
+      "act": "Act without contacting a physician. This is off-line medical direction. Giving naloxone for an opioid overdose is an example where standing orders allow it."
+    },
+    {
+      "find": "You want to give a medication or treatment that your standing orders do not cover.",
+      "act": "Contact an on-duty physician by phone or radio and get a real-time order first. This is on-line medical direction."
+    },
+    {
+      "find": "The call is over.",
+      "act": "Support quality improvement: write an accurate and complete report, critique your own performance, gather feedback, maintain your equipment and keep learning."
+    }
+  ],
+  "ideas": [
+    "<b>Refresher training</b> is required periodically to recertify. <b>Continuing education</b> supplements your original training; it does not replace it.",
+    "<b>The NREMT</b> sets and maintains national standards and registers all four levels. National registration helps with <b>reciprocity</b>, the transfer of certification from one state to another, and employers look on it favorably. Most states use the NREMT exam as their own certification exam.",
+    "<b>Quality improvement (QI)</b> is the continuous self-review of an EMS system to find and fix problems, so that prehospital care is of the highest quality.",
+    "<b>EMTs support QI</b> by writing accurate, complete reports, serving on QI committees, critiquing their own performance after each call, gathering feedback from patients and hospitals, maintaining equipment and continuing their education.",
+    "<b>The Medical Director</b> is the physician with ultimate responsibility for the patient-care side of the system: the protocols, oversight of training and a central role in QI.",
+    "<b>Off-line medical direction</b> is standing orders: you act without contacting a physician. <b>On-line medical direction</b> is a real-time order from an on-duty physician by phone or radio."
+  ],
+  "misconception": {
+    "wrong": "Quality improvement is how the service finds out who made a mistake and punishes them.",
+    "right": "QI is continuous self-review of the whole system to find and fix problems. EMTs are part of it, not targets of it: your accurate reports, honest self-critique after calls and equipment checks are what make it work."
+  },
+  "check": [
+    {
+      "q": "Your protocols allow you to give a certain treatment under standing orders, without calling anyone. What is this called?",
+      "options": [
+        "On-line medical direction",
+        "Off-line medical direction",
+        "Quality improvement",
+        "Reciprocity"
+      ],
+      "correct": 1,
+      "why": "Standing orders are off-line medical direction: the physician's authority is written down in advance. On-line is the tempting mix-up, but it means a real-time order by phone or radio."
+    },
+    {
+      "q": "A family member asks you to give the patient a medication that your standing orders do not cover. What should you do before giving anything?",
+      "options": [
+        "Give it, because the family knows the patient best",
+        "Give half the dose to stay on the safe side",
+        "Ask your partner whether they have done it before",
+        "Contact on-line medical direction for an order"
+      ],
+      "correct": 3,
+      "why": "A medication outside your standing orders needs a real-time order from an on-duty physician, which is on-line medical direction. A family request or a partner's experience does not give you the authority to act."
+    },
+    {
+      "q": "Who has ultimate responsibility for the patient-care side of an EMS system, including its protocols?",
+      "options": [
+        "The Medical Director",
+        "The senior paramedic on shift",
+        "The state EMS office",
+        "The National Registry"
+      ],
+      "correct": 0,
+      "why": "The Medical Director is the physician with ultimate responsibility for patient care in the system: protocols, oversight of training and a central role in QI. The NREMT sets national certification standards but does not direct care in your system."
+    },
+    {
+      "q": "An EMT moves to a new state and is able to transfer her certification there. What is this transfer called?",
+      "options": [
+        "Recertification",
+        "Registration",
+        "Reciprocity",
+        "Refresher training"
+      ],
+      "correct": 2,
+      "why": "Reciprocity is the transfer of certification from one state to another, and holding national registration helps with it. Recertification is renewing the certification you already hold."
+    },
+    {
+      "q": "Which of these is a way an EMT supports quality improvement?",
+      "options": [
+        "Leaving out of the report anything that went wrong",
+        "Writing an accurate and complete report of each call",
+        "Skipping continuing education once certified",
+        "Letting the hospital check the ambulance equipment"
+      ],
+      "correct": 1,
+      "why": "Accurate, complete reports are the raw material of QI, along with self-critique, feedback, equipment maintenance and continuing education. Leaving problems out of a report hides exactly what QI exists to find."
+    }
+  ],
+  "summary": "<p>Certification has to be kept up: refresher training is required to recertify, and continuing education supplements the original course because EMS practice keeps changing. The NREMT sets national standards and registers EMRs, EMTs, AEMTs and paramedics; registration helps with reciprocity between states. Quality improvement is the continuous self-review of the system, and EMTs support it with accurate reports, self-critique, feedback, equipment maintenance and continued learning. Every system works under a physician Medical Director. Off-line medical direction is standing orders you follow without a call; on-line medical direction is a real-time order from an on-duty physician by phone or radio.</p>"
+}

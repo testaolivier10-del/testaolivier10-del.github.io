@@ -1,0 +1,84 @@
+{
+  "id": "ems-system-today",
+  "title": "The EMS system today",
+  "chapter": 1,
+  "section": "ch1-ems-today",
+  "hook": "<p>A 58-year-old woman's face droops on one side while she is cooking dinner. Her husband calls 911. A dispatcher answers, an ambulance arrives, and the crew now has to choose: the small hospital 8 minutes away, or the stroke center 20 minutes away.</p><p>That chain of handoffs did not happen by accident. It was built by a few federal actions and is described by a set of national standards. This lesson covers the dates you need, the 10 parts of a complete EMS system, and the path a patient takes through it.</p>",
+  "steps": [
+    {
+      "find": "A patient or bystander recognizes an emergency and calls for help.",
+      "act": "The call is answered by an emergency medical dispatcher (EMD), who sends responders. This is the first handoff in the system."
+    },
+    {
+      "find": "Responders are sent. Depending on the system and the call, they may be EMRs, EMTs, AEMTs or paramedics.",
+      "act": "They assess and care for the patient at the scene, and an ambulance carries the patient to the emergency department (ED)."
+    },
+    {
+      "find": "The patient's condition may need a specialty center: trauma (surgical teams available 24/7), burn, pediatric, cardiac or stroke.",
+      "act": "Choose the facility by weighing the patient's condition against the transport time. On-line medical direction can help you make this decision."
+    },
+    {
+      "find": "The patient arrives at the ED.",
+      "act": "The ED is the gateway to the rest of the hospital's services, including the operating room and its specialists. From the ED the patient moves on to the rest of the hospital."
+    }
+  ],
+  "ideas": [
+    "<b>1966:</b> the Highway Safety Act (many EMT texts call it the National Highway Safety Act) directed the Department of Transportation (DOT) to set standards for EMS.",
+    "<b>1970:</b> the National Registry of Emergency Medical Technicians (NREMT) was founded. <b>1973:</b> the National EMS Systems Act became the cornerstone federal law for EMS systems.",
+    "<b>Today the states run most of their own systems,</b> and the National Highway Traffic Safety Administration (NHTSA) still provides guidance.",
+    "<b>NHTSA's 10 EMS system standards:</b> regulation and policy; resource management; human resources and training; transportation; facilities; communications; public information and education; medical direction; trauma systems; evaluation (quality improvement).",
+    "<b>The system is a chain of handoffs:</b> dispatcher, responders, ambulance, ED, then the rest of the hospital.",
+    "<b>The right hospital is a critical decision.</b> The closest one is not always the right one when a specialty center is available."
+  ],
+  "misconception": {
+    "wrong": "The federal government runs EMS, so the system works the same way in every state.",
+    "right": "Federal actions in 1966 and 1973 set the standards and the framework, but control has largely passed to the states, which now run most of their own systems. NHTSA gives guidance. That is why protocols and scope differ from place to place."
+  },
+  "check": [
+    {
+      "q": "Which federal agency was directed in 1966 to set standards for EMS?",
+      "options": [
+        "The Department of Health and Human Services",
+        "The Federal Communications Commission",
+        "The Department of Transportation",
+        "The National Registry of EMTs"
+      ],
+      "correct": 2,
+      "why": "The 1966 Highway Safety Act gave the job to the Department of Transportation, and its agency NHTSA still guides EMS. The NREMT is tempting, but it is a certifying organization founded in 1970, not a federal agency."
+    },
+    {
+      "q": "Which of these is one of NHTSA's 10 EMS system standards?",
+      "options": [
+        "Medical direction",
+        "Hospital ownership",
+        "Insurance billing",
+        "Fire suppression"
+      ],
+      "correct": 0,
+      "why": "Medical direction is one of the 10 standards, along with regulation and policy, resource management, human resources and training, transportation, facilities, communications, public information and education, trauma systems, and evaluation. Billing, hospital ownership and fire suppression are not on the list."
+    },
+    {
+      "q": "From the patient's point of view, what is the correct order of the EMS system?",
+      "options": [
+        "Responders, dispatcher, emergency department, ambulance",
+        "Dispatcher, ambulance, responders, emergency department",
+        "Emergency department, dispatcher, responders, ambulance",
+        "Dispatcher, responders, ambulance, emergency department"
+      ],
+      "correct": 3,
+      "why": "The call is answered by the dispatcher, who sends responders; the ambulance then carries the patient to the emergency department, and from there the patient moves into the hospital. The tempting option puts the ambulance before the responders, but care starts when responders reach the patient."
+    },
+    {
+      "q": "You are deciding between the closest hospital and a specialty center that is farther away. What should guide the choice?",
+      "options": [
+        "Always the closest hospital, whatever the patient's condition",
+        "The patient's condition weighed against the transport time",
+        "Always the specialty center, whatever the distance",
+        "Whichever hospital the crew is more familiar with"
+      ],
+      "correct": 1,
+      "why": "Choosing the facility weighs the patient's condition against the transport time, and on-line medical direction can help. \"Always closest\" and \"always specialty\" both skip that judgment."
+    }
+  ],
+  "summary": "<p>Modern EMS took shape through federal action: in 1966 the Department of Transportation was directed to set EMS standards, the NREMT was founded in 1970, and the 1973 National EMS Systems Act became the cornerstone law. The states now run most systems with guidance from NHTSA, which describes a complete system in 10 standards, from regulation and policy to evaluation. For the patient, the system is a chain of handoffs: dispatcher, responders, ambulance, emergency department, hospital. Picking the right facility means weighing the patient's condition against transport time, with on-line medical direction to help.</p>"
+}

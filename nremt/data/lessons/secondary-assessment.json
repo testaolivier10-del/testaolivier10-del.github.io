@@ -1,0 +1,103 @@
+{
+  "id": "secondary-assessment",
+  "title": "The secondary assessment",
+  "chapter": 15,
+  "section": "ch15-secondary-assessment",
+  "hook": "<p>Two calls in one shift. The first is a woman with chest pain who can tell you exactly when it started and what it feels like. The second is a man found unresponsive in a park, with no one who knows him nearby.</p><p>Both get a secondary assessment after the primary, and it has the same three parts for each: history, physical exam and vital signs. What changes is the order. This lesson covers which part leads for which patient, the head-to-toe exam, and how a cervical collar fits in.</p>",
+  "steps": [
+    {
+      "find": "A medical patient is responsive.",
+      "act": "Start with the history (OPQRST and SAMPLE), then do a focused exam, then take vital signs. For a medical patient the history carries most of the weight."
+    },
+    {
+      "find": "A medical patient is unresponsive.",
+      "act": "Do a rapid head-to-toe exam, then vital signs, then get the history from bystanders: the patient's name, what happened, earlier complaints, known illnesses and medications. Check the pupils and look for medical ID jewelry or a medical tattoo. This patient is automatically a high priority."
+    },
+    {
+      "find": "A trauma patient has a minor injury and is a low priority.",
+      "act": "Take the history, do a focused physical exam of the injured area, get vital signs, then the past medical history. Look for DCAP-BTLS: Deformities, Contusions, Abrasions, Punctures or penetrations, Burns, Tenderness, Lacerations, Swelling."
+    },
+    {
+      "find": "A trauma patient has serious or multisystem injuries, or a significant mechanism of injury.",
+      "act": "Continue manual stabilization of the spine when a spinal injury is suspected, consider calling for advanced life support, do a rapid trauma assessment of the whole body from head to toe, and get vital signs. If the patient is unresponsive, take a brief history from bystanders."
+    },
+    {
+      "find": "You are doing the rapid trauma assessment.",
+      "act": "At each area look and feel for wounds, tenderness and deformities, plus that area's own findings: pupils and ear drainage at the head, jugular vein distention at the neck, paradoxical motion and equal breath sounds at the chest, firmness or distention at the abdomen, and circulation, sensation and movement in each extremity. Log-roll to check the back."
+    },
+    {
+      "find": "The patient needs a cervical collar.",
+      "act": "Assess the neck first, because once the collar is on you cannot inspect or feel the back of the neck. Use a rigid collar, applied per local protocol and sized to the length of the neck, not its width, and never let a collar compromise the airway."
+    }
+  ],
+  "ideas": [
+    "<b>Three components:</b> history, physical exam, baseline vital signs. With a critical patient the secondary assessment is often done on the way to the hospital.",
+    "<b>Sign or symptom:</b> a sign is something you observe, such as a deformity. A symptom is something the patient reports, such as pain.",
+    "<b>A significant mechanism makes the patient serious.</b> Under the 2021 national field triage guideline: a fall of more than 10 feet at any age; intrusion of more than 12 inches at the occupant's site or 18 inches at any site; ejection; a death in the same passenger compartment; a pedestrian or cyclist thrown, run over or struck with significant impact; a rider separated from a motorcycle with significant impact.",
+    "<b>Exam cautions:</b> do not press further on a pulsating abdominal mass, stop palpating the pelvis once pain is reported, and leave colostomy bags in place.",
+    "<b>The detailed (full-body) exam</b> is the lowest priority step. It comes after critical interventions and the rapid trauma assessment, usually en route.",
+    "<b>Infants and children:</b> never press on the fontanelles. A fontanelle that bulges when the infant is not crying suggests meningitis or raised pressure in the skull; a sunken one suggests dehydration. A child's soft ribs and pliable bones may not break even with serious injury underneath."
+  ],
+  "misconception": {
+    "wrong": "The secondary assessment is done in the same order on every patient: history first, then the exam.",
+    "right": "The three parts are the same but the order depends on the patient. A responsive medical patient starts with the history. An unresponsive patient or a serious trauma patient starts with a rapid head-to-toe exam, because the body has to tell you what the patient cannot."
+  },
+  "check": [
+    {
+      "q": "A 60-year-old woman is alert and complains of abdominal pain that began this morning. No injury is involved. What comes first in her secondary assessment?",
+      "options": [
+        "A rapid head-to-toe exam",
+        "A history using OPQRST and SAMPLE",
+        "A detailed full-body exam",
+        "A log-roll to check her back"
+      ],
+      "correct": 1,
+      "why": "A responsive medical patient starts with the history, followed by a focused exam and vital signs. The rapid head-to-toe exam leads for an unresponsive patient, who cannot give a history."
+    },
+    {
+      "q": "A man is found unresponsive in a park with no sign of injury. In what order do you do the secondary assessment?",
+      "options": [
+        "History from bystanders, focused exam, vital signs",
+        "Vital signs, detailed exam, history from bystanders",
+        "Focused exam of the head, vital signs, transport",
+        "Rapid head-to-toe exam, vital signs, history from bystanders"
+      ],
+      "correct": 3,
+      "why": "An unresponsive medical patient gets a rapid head-to-toe exam first, then vital signs, then whatever history bystanders can give. History first is the order for a responsive patient."
+    },
+    {
+      "q": "Which finding is a symptom and not a sign?",
+      "options": [
+        "The patient says he feels nauseated",
+        "The ankle is swollen and deformed",
+        "The skin is pale and sweaty",
+        "The pupils are unequal in size"
+      ],
+      "correct": 0,
+      "why": "A symptom is something the patient reports, such as nausea or pain. Swelling, skin color and pupil size are things you observe, which makes them signs."
+    },
+    {
+      "q": "Under the 2021 national field triage guideline, which fall is a significant mechanism of injury by height alone?",
+      "options": [
+        "An adult who falls 4 feet from a stepladder",
+        "A child who falls 3 feet from a bed",
+        "An adult who falls 12 feet from a roof",
+        "A teenager who falls 5 feet from a fence"
+      ],
+      "correct": 2,
+      "why": "The threshold is a fall of more than 10 feet (3 m) at any age. Twenty feet was the older adult figure. Lower falls can still matter in the very young and the old when there is a significant head strike, but they do not meet the height criterion."
+    },
+    {
+      "q": "You are about to apply a cervical collar. What do you do first?",
+      "options": [
+        "Choose a size by the width of the neck",
+        "Assess the neck, front and back",
+        "Tilt the head back to fit the collar under the chin",
+        "Take a full set of vital signs"
+      ],
+      "correct": 1,
+      "why": "Assess the neck before the collar goes on, because afterward you cannot inspect or palpate the back of the neck. The collar is sized by the length of the neck, not its width."
+    }
+  ],
+  "summary": "<p>The secondary assessment has three parts: history, physical exam and baseline vital signs. A responsive medical patient gets the history first; an unresponsive medical patient gets a rapid head-to-toe exam, then vitals, then a history from bystanders. A minor trauma patient gets a history and a focused exam; a serious trauma patient or one with a significant mechanism gets continued spinal stabilization and a rapid trauma assessment, looking for DCAP-BTLS. Assess the neck before applying a rigid collar sized to the neck's length, and never let a collar compromise the airway. The detailed exam comes last, usually en route.</p>"
+}

@@ -1,0 +1,105 @@
+{
+  "id": "multisystem-trauma-and-field-triage",
+  "title": "Multisystem trauma: treat or transport, and field triage",
+  "chapter": 34,
+  "section": "ch34-multisystem",
+  "hook": "<p>A 70-year-old driver was pulled from a car with the door pushed in more than a foot. She has a deformed forearm, a sore belly, a blood pressure of 104 over 70 and a pulse of 112. A new partner starts building a careful splint for the arm.</p><p>The arm will not kill her in the next ten minutes. What is going on in her abdomen might, and the only real treatment for that is a surgeon. The two decisions that matter here are how fast you leave and where you go.</p>",
+  "steps": [
+    {
+      "find": "A patient has injuries to more than one body system.",
+      "act": "Treat this as multisystem trauma, which is more dangerous than several injuries in one system. Several organ systems are losing their reserve at once, field stabilization may be impossible, and surgery is the real treatment. Plan for a short scene time."
+    },
+    {
+      "find": "There are life threats and there are injuries that only hurt.",
+      "act": "Fix the airway, breathing and bleeding threats first. An isolated musculoskeletal injury that cannot kill the patient in the next 10 minutes never comes before them. Do not spend scene time perfecting a splint for a critical patient: that is how you deliver a well-packaged corpse."
+    },
+    {
+      "find": "You are choosing a destination. The patient has a serious injury pattern, cannot follow commands, or has abnormal breathing or blood pressure.",
+      "act": "Check the red criteria of the 2021 National Guideline for the Field Triage of Injured Patients. Any red criterion means a high risk of serious injury: go to the highest-level trauma center available in your regional trauma system."
+    },
+    {
+      "find": "No red criterion is met, but the mechanism was high risk or the patient has a risk factor.",
+      "act": "Check the yellow criteria: a high-risk crash, a rider thrown from a motorcycle or horse, a pedestrian or cyclist struck with significant impact, a fall from more than 10 feet, or EMS judgment factors such as anticoagulant use or pregnancy beyond 20 weeks. Yellow means a moderate risk: go to a trauma center, which need not be the highest level."
+    },
+    {
+      "find": "The patient is 65 or older, or is a child.",
+      "act": "Adjust your thresholds. At 65 and over, a systolic pressure under 110 is a red criterion, because 100 can be real hypotension in an older adult. Children compensate well and then crash suddenly, so a child who looks stable can deteriorate with little warning. Injured children go preferentially to pediatric-capable trauma centers."
+    },
+    {
+      "find": "A chest-injured patient has distended neck veins and low blood pressure.",
+      "act": "Listen to the lungs. Breath sounds missing on one side point to a tension pneumothorax. Breath sounds present on both sides, with a narrowing pulse pressure, point to cardiac tamponade. Both need rapid transport."
+    }
+  ],
+  "ideas": [
+    "<b>Multiple trauma</b> is more than one serious injury, in any system. <b>Multisystem trauma</b> is injury across more than one body system, and it is the more dangerous of the two.",
+    "<b>Life threats before comfort.</b> For the critical patient, definitive care beats field perfection.",
+    "<b>Red criteria, injury patterns:</b> penetrating injury to the head, neck, torso or a limb above the elbow or knee; skull deformity or suspected skull fracture; suspected spinal injury with new motor or sensory loss; chest wall instability, deformity or suspected flail chest; suspected pelvic fracture; suspected fractures of two or more proximal long bones; a crushed, degloved, mangled or pulseless extremity; amputation above the wrist or ankle; bleeding that needs a tourniquet or wound packing with continuous pressure.",
+    "<b>Red criteria, mental status and vital signs:</b> unable to follow commands (motor GCS under 6); respiratory rate under 10 or over 29, respiratory distress or a need for respiratory support; room-air SpO2 under 90%; systolic pressure under 70 plus twice the age in years (age 0 to 9), under 90 (age 10 to 64) or under 110 (age 65 and over); heart rate greater than systolic pressure (age 10 and over).",
+    "<b>Yellow criteria, mechanism:</b> partial or complete ejection from a vehicle; intrusion, including the roof, of more than 12 inches at the occupant site or more than 18 inches at any site; a need for extrication of an entrapped patient; a death in the same passenger compartment; a child aged 0 to 9 unrestrained or in an unsecured child seat; vehicle telemetry consistent with severe injury; a rider separated from a motorcycle, ATV or horse with significant impact; a pedestrian or cyclist thrown, run over or struck with significant impact; a fall from more than 10 feet at any age.",
+    "<b>Yellow criteria, EMS judgment:</b> a low-level fall with significant head impact at age 5 or under or 65 or over; anticoagulant use; suspected child abuse; special, high-resource health care needs; pregnancy beyond 20 weeks; burns together with trauma.",
+    "<b>Your regional protocol decides the actual destination.</b> On the exam, red means the highest-level trauma center and yellow means a trauma center.",
+    "<b>Hidden injuries:</b> a solid organ injury can be masked by the organ's capsule, and a hollow organ injury causes diffuse pain as its contents irritate the peritoneum."
+  ],
+  "misconception": {
+    "wrong": "A good EMT finishes every splint and every bandage before leaving the scene, so the patient arrives fully packaged.",
+    "right": "For a critical multisystem trauma patient, the treatment is surgery, and time on scene is time taken from it. Treat the immediate life threats, then go. Comfort care and careful splinting can wait or happen on the way."
+  },
+  "check": [
+    {
+      "q": "A 72-year-old fell down a flight of stairs. She follows commands, breathes 18 times a minute, and has a blood pressure of 104/66 with a pulse of 88. Under the 2021 field triage guideline, what does her blood pressure mean?",
+      "options": [
+        "It is normal, so no vital sign criterion is met",
+        "It meets a yellow criterion because of her age alone",
+        "It meets a red criterion only if the pulse is over 110",
+        "It meets a red criterion: systolic under 110 at age 65 or over"
+      ],
+      "correct": 3,
+      "why": "For patients 65 and older the red threshold is a systolic pressure under 110, because a reading near 100 can be significant hypotension in an older adult. Calling it normal is tempting because 104 clears the adult threshold of 90, but that threshold applies to ages 10 to 64."
+    },
+    {
+      "q": "A 30-year-old was ejected from a car in a rollover. He follows commands, has no penetrating injury or obvious fracture, and his vital signs are normal for his age. Which destination fits the guideline?",
+      "options": [
+        "A trauma center, which need not be the highest level",
+        "The highest-level trauma center, with no exceptions",
+        "The closest emergency department of any kind",
+        "No particular destination, since he has no injuries"
+      ],
+      "correct": 0,
+      "why": "Ejection is a yellow, mechanism-of-injury criterion. With no red criterion met, yellow means transport to a trauma center, which need not be the highest level. The highest-level center is tempting because ejection sounds severe, but that destination is tied to red criteria: injury patterns, mental status and vital signs."
+    },
+    {
+      "q": "A patient struck by a car has a blocked airway from blood, an open tibia fracture and a deformed wrist. What comes first?",
+      "options": [
+        "Splint the tibia, because open fractures are urgent",
+        "Splint both fractures, then manage the airway",
+        "Clear and manage the airway, then deal with the rest",
+        "Cover the open fracture, then splint the wrist"
+      ],
+      "correct": 2,
+      "why": "An isolated musculoskeletal injury that cannot kill the patient in the next 10 minutes never takes precedence over a threat to the airway or breathing. The open fracture is the tempting choice because it is the most dramatic injury, but the airway is what will kill the patient first."
+    },
+    {
+      "q": "A 25-year-old man stabbed in the abdomen has a blood pressure of 96/60 and a heart rate of 124. Which red criterion does he meet on vital signs alone?",
+      "options": [
+        "Systolic pressure under 110",
+        "Heart rate greater than systolic pressure",
+        "Systolic pressure under 90",
+        "Heart rate greater than 120"
+      ],
+      "correct": 1,
+      "why": "From age 10 up, a heart rate greater than the systolic blood pressure is a red criterion, and 124 is greater than 96. Systolic under 110 is tempting, but that threshold is for age 65 and over; at his age the pressure threshold is under 90, which he has not reached. His torso stab wound would also be a red criterion on its own."
+    },
+    {
+      "q": "A patient with blunt chest trauma has distended neck veins, a blood pressure of 86/70 and equal breath sounds on both sides. Which injury fits best?",
+      "options": [
+        "Tension pneumothorax, because the neck veins are full",
+        "Simple rib fractures, because breath sounds are equal",
+        "A ruptured spleen, because the pressure is low",
+        "Cardiac tamponade, because breath sounds are equal"
+      ],
+      "correct": 3,
+      "why": "Jugular venous distention, low blood pressure and a narrowing pulse pressure with breath sounds present on both sides point to cardiac tamponade, where the heart is squeezed from outside. Tension pneumothorax is tempting because it also causes distended neck veins and low pressure, but it takes away breath sounds on one side."
+    }
+  ],
+  "summary": "<p>Multisystem trauma, injury across more than one body system, leaves the patient with little reserve, and surgery is the real treatment. Treat immediate threats to the airway, breathing and circulation, do not trade transport time for a perfect splint, and choose the destination with the 2021 national field triage guideline. Any red criterion (a serious injury pattern, inability to follow commands, a respiratory rate under 10 or over 29, room-air SpO2 under 90%, a low systolic pressure for age, or a heart rate above the systolic pressure from age 10 up) means the highest-level trauma center available. A yellow criterion without a red one (a high-risk mechanism or an EMS judgment factor) means a trauma center. Older adults have a higher pressure threshold, 110, and children compensate and then crash suddenly. Your regional protocol decides the actual destination.</p>"
+}

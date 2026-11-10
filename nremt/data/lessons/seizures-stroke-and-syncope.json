@@ -1,0 +1,116 @@
+{
+  "id": "seizures-stroke-and-syncope",
+  "title": "Seizures, stroke and syncope",
+  "chapter": 22,
+  "section": "ch22-seizure-stroke-syncope",
+  "hook": "<p>A 66-year-old man was fine at breakfast. At 9:40 his wife noticed the right side of his face drooping and his words coming out wrong. When she calls 911 she is not sure the time matters.</p><p>It matters more than almost anything else you will write down today. The treatments that can reverse a stroke are given by the clock, and the clock starts at the last moment he was known to be well.</p>",
+  "steps": [
+    {
+      "find": "A patient is in the middle of a tonic-clonic seizure.",
+      "act": "Prevent injury; you are not trying to stop the seizure. Get the patient onto the floor, move objects away, loosen tight clothing, and turn the patient on the side if no spinal injury is suspected. Do not hold the patient still and never put anything in the mouth."
+    },
+    {
+      "find": "The convulsions stop. The patient is drowsy, confused and drooling.",
+      "act": "This is the postictal phase. Protect the airway, suction if needed, use the recovery position if there is no spinal injury, give oxygen guided by pulse oximetry, and check for injuries from the seizure."
+    },
+    {
+      "find": "The seizure has lasted longer than 5 minutes, or a second seizure begins before the patient has fully woken up.",
+      "act": "This is status epilepticus, a life-threatening emergency. Transport immediately and request an ALS intercept."
+    },
+    {
+      "find": "A patient has sudden weakness on one side, a drooping face or trouble speaking.",
+      "act": "Do the Cincinnati Prehospital Stroke Scale: facial smile, arm drift (eyes closed, arms out for 10 seconds) and speech. An abnormal result on any one of the three means a likely stroke."
+    },
+    {
+      "find": "The stroke scale is abnormal.",
+      "act": "Find out and record the exact time of onset, or when the patient was last known well. Check the blood glucose if you are allowed, because hypoglycemia mimics stroke. Reassure the patient, give oxygen only if the SpO<sub>2</sub> is below 94% or there is distress, and transport to a stroke-capable hospital."
+    },
+    {
+      "find": "A patient fainted and woke up quickly once lying down.",
+      "act": "This is syncope. Lay the patient flat, loosen tight clothing, give oxygen according to saturation and distress, treat injuries from the fall, and request ALS evaluation, because a cardiac cause must always be considered."
+    }
+  ],
+  "ideas": [
+    "<b>A seizure is a sign, not a disease.</b> It is a sudden change in sensation, behavior or movement from irregular electrical activity in the brain.",
+    "<b>Three phases:</b> tonic (rigid, up to about 30 seconds, breathing may stop), clonic (violent jerking for 1 to 2 minutes, possible cyanosis) and postictal (drowsy and confused, gradually clearing, sometimes with brief one-sided weakness).",
+    "<b>Causes:</b> in an adult with a known seizure disorder, a missed dose of medication is the most common. Others include fever in young children, hypoxia, stroke, head injury, toxins, hypoglycemia, tumor and infection.",
+    "<b>Ischemic stroke</b> (a clot or embolus blocks a brain artery) is the most common type. <b>Hemorrhagic stroke</b> is a ruptured vessel, often from long-standing high blood pressure or an aneurysm. Damage on one side of the brain causes weakness on the opposite side of the body.",
+    "<b>A TIA</b> causes the same signs but they clear completely within 24 hours. You cannot tell a TIA from a stroke in the field, so treat it as a stroke.",
+    "<b>Stroke mimics:</b> hypoglycemia, postictal weakness after a seizure, and infection or sepsis in older patients.",
+    "<b>Time decides treatment.</b> Clot-dissolving medication is typically limited to about 3 to 4.5 hours from onset, so the onset or last-known-well time is among the most valuable things you report.",
+    "<b>Syncope</b> has four groups of causes: cardiovascular (dysrhythmia, vasovagal), hypovolemic (dehydration, internal bleeding), structural or metabolic (stroke, seizure, hypoglycemia) and environmental or toxic (alcohol, carbon monoxide). If the patient does not recover quickly, it is unresponsiveness, not syncope."
+  ],
+  "misconception": {
+    "wrong": "During a seizure you should hold the patient down and put something between the teeth so the tongue is not bitten or swallowed.",
+    "right": "Never restrain a seizing patient and never put anything in the mouth. Both cause injuries and can block the airway. Protect the patient from the surroundings, turn the patient on the side, and manage the airway once the convulsions stop."
+  },
+  "check": [
+    {
+      "q": "A patient has been convulsing continuously for 7 minutes. What is this, and what does it call for?",
+      "options": [
+        "A normal tonic-clonic seizure; wait for it to end",
+        "The postictal phase; place in the recovery position",
+        "A febrile seizure; cool the patient with wet towels",
+        "Status epilepticus; immediate transport and ALS"
+      ],
+      "correct": 3,
+      "why": "A single seizure lasting longer than 5 minutes, or two or more without full recovery between them, is status epilepticus. It is life-threatening and needs immediate transport and an ALS intercept. A typical seizure ends within a couple of minutes."
+    },
+    {
+      "q": "On the Cincinnati Prehospital Stroke Scale, a patient smiles evenly and speaks clearly, but her left arm drifts down when she holds both arms out with her eyes closed. How do you read this?",
+      "options": [
+        "Positive: one abnormal finding is enough",
+        "Negative: two of three findings are normal",
+        "Uncertain: repeat the test in 15 minutes",
+        "Negative: arm drift only counts with facial droop"
+      ],
+      "correct": 0,
+      "why": "An abnormal result on any one of the three tests indicates a high chance of acute stroke. Waiting for a second finding is tempting but costs time the patient does not have."
+    },
+    {
+      "q": "Which piece of information is most valuable to the hospital for a patient with a suspected stroke?",
+      "options": [
+        "The patient's last meal",
+        "The time the patient was last known well",
+        "The patient's vaccination history",
+        "The name of the patient's pharmacy"
+      ],
+      "correct": 1,
+      "why": "Clot-dissolving treatment depends on how long ago the symptoms began, so the onset time or the last-known-well time drives the hospital's decisions. The last meal is part of SAMPLE but does not decide stroke treatment."
+    },
+    {
+      "q": "A woman's facial droop and slurred speech cleared completely before you arrived, and she now feels normal and wants to stay home. What is the right approach?",
+      "options": [
+        "Agree, since a TIA needs no treatment",
+        "Have her take an aspirin and see her doctor next week",
+        "Treat her as a stroke patient and urge transport",
+        "Recheck her in an hour before deciding"
+      ],
+      "correct": 2,
+      "why": "A TIA produces stroke signs that resolve, but you cannot tell a TIA from a stroke in the field, so the patient is always treated as a stroke. Resolved symptoms are tempting to dismiss."
+    },
+    {
+      "q": "A man who has just had a seizure is sleepy and confused, with gurgling respirations and saliva pooling in his mouth. What do you do first?",
+      "options": [
+        "Give oral glucose in case his sugar is low",
+        "Hold his arms so he cannot injure himself",
+        "Place a bite block between his teeth",
+        "Suction his airway and turn him on his side"
+      ],
+      "correct": 3,
+      "why": "After the convulsions end, the priority is the airway: suction secretions and use the recovery position if there is no spinal injury. Oral glucose is unsafe in a patient who cannot swallow reliably, and nothing is placed between the teeth."
+    },
+    {
+      "q": "A 70-year-old faints while standing in church and wakes within a minute of being laid down. She feels fine and is embarrassed. Why should she still be evaluated by ALS?",
+      "options": [
+        "Syncope always means a stroke has occurred",
+        "A cardiac cause such as a dysrhythmia must be considered",
+        "Every fainting patient needs oral glucose",
+        "She cannot legally refuse after losing consciousness"
+      ],
+      "correct": 1,
+      "why": "Syncope recovers quickly, but one of its cause groups is cardiovascular, including dysrhythmias, so a cardiac cause always warrants consideration. It does not always mean stroke, and glucose is given only when indicated."
+    }
+  ],
+  "summary": "<p>A seizing patient is protected, not restrained, with nothing in the mouth; afterward the airway comes first. A seizure longer than 5 minutes, or repeated seizures without recovery, is status epilepticus and needs immediate transport and ALS. For a suspected stroke, one abnormal finding on the Cincinnati scale (face, arm drift, speech) is enough: record the onset or last-known-well time, check the glucose if allowed, give oxygen only below 94% or in distress, and go to a stroke-capable hospital. A TIA is treated as a stroke. Syncope recovers quickly once the patient is flat but still deserves ALS evaluation for a cardiac cause.</p>"
+}

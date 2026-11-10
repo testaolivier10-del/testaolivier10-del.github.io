@@ -101,10 +101,10 @@ mention lessons yet, because no chapter 1 to 8 lesson exists; add it with batch 
 | Batch | Lessons | Status |
 |---|---|---|
 | Pilot | Ch 12 Primary Assessment (1 section); Ch 29 Bleeding Control (3 sections) = 4 lessons | built, waiting for review |
-| 1 | The most tested: Ch 9 Airway Management (5), Ch 10 Ventilation and Oxygen (3), Ch 11 Scene Size-Up (1), Ch 15 Secondary Assessment (1), Ch 19 Respiratory Emergencies (2), Ch 20 Cardiac Emergencies (2), Ch 21 Resuscitation (3) = 17 lessons | planned |
-| 2 | The rest of assessment and medical: chapters 13, 14, 16 to 18, 22 to 28 = 20 lessons | planned |
-| 3 | Trauma, environmental and OB: chapters 30 to 36 = 14 lessons | planned |
-| 4 | Everything else in textbook order: chapters 1 to 8 and 37 to 40 = 25 lessons | planned |
+| 1 | The most tested: Ch 9 Airway Management (5), Ch 10 Ventilation and Oxygen (3), Ch 11 Scene Size-Up (1), Ch 15 Secondary Assessment (1), Ch 19 Respiratory Emergencies (2), Ch 20 Cardiac Emergencies (2), Ch 21 Resuscitation (3) = 17 lessons | built and reviewed 2026-11-10 |
+| 2 | The rest of assessment and medical: chapters 13, 14, 16 to 18, 22 to 28 = 20 lessons | built and reviewed 2026-11-10 |
+| 3 | Trauma, environmental and OB: chapters 30 to 36 = 14 lessons | built and reviewed 2026-11-10 |
+| 4 | Everything else in textbook order: chapters 1 to 8 and 37 to 40 = 25 lessons | built and reviewed 2026-11-10 |
 
 Section counts in brackets; 80 lessons in all (one per section), 4 of them in the pilot.
 
@@ -175,3 +175,19 @@ Each batch is one PR with its accuracy review, built in textbook order inside th
   needed; packing pressure at least 3 minutes for hemostatic gauze, and with plain gauze until bleeding is
   controlled or care is handed over; improvised tourniquets are for a lay rescuer with nothing else (not recommended
   prehospital), too loose occludes only the veins, too narrow damages tissue.
+
+### All remaining lessons (2026-11-10)
+
+Owner asked for NREMT to catch up with the other courses ("do it all"). The 76 remaining lessons were written in one
+pass by seven authors (by chapter group) from the section notes, then every lesson was checked by an independent
+reviewer (six reviewers, not shown the authors' reasoning) against current sources: 2025 AHA CPR/ECC (cpr.heart.org),
+2024 AHA/Red Cross first aid, the ACS 2021 field triage guideline, the 2018 spinal motion restriction statement, CDC,
+Stop the Bleed and the standard EMT texts. Logs: `docs/nremt-reviews/lessons-r1.md` to `lessons-r6.md`.
+
+- Reviewers made 168 text fixes in the lessons. No wrong answer key; about ten check questions had a second
+  defensible option and were rewritten.
+- 137 notes fixes were applied to `nremt/assets/study-notes.json` so the textbook says the same as the lessons
+  (same rule as the pilot); flashcards, chapter pages, glossary links and the course home were rebuilt from it.
+- 62 contested points and the chapter 27 suicide gap are in `docs/nremt-needs-author.md` and
+  `docs/nremt-reviews/needs-decision-2026-11.md`. No check question is keyed on a contested point.
+- Not done: no clinician has read any of it. That is still the open item for the whole course.

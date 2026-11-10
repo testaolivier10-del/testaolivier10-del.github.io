@@ -1,0 +1,107 @@
+{
+  "id": "acute-coronary-syndrome",
+  "title": "Acute coronary syndrome",
+  "chapter": 20,
+  "section": "ch20-acs",
+  "hook": "<p>A 62-year-old woman with diabetes called because she feels exhausted, sick to her stomach and suddenly sweaty. She has no chest pain at all and thinks she is coming down with the flu.</p><p>She may be having a heart attack. Heart muscle has almost no oxygen reserve, so a blocked coronary artery starts doing damage within minutes, and the patient does not always read the textbook.</p>",
+  "steps": [
+    {
+      "find": "A patient has chest discomfort (pain, pressure, squeezing or aching), or no chest discomfort but shortness of breath, nausea, sudden sweating, fainting or unexplained fatigue.",
+      "act": "Treat the picture as cardiac. Acute coronary syndrome (ACS) can present without chest pain, especially in older adults, women and patients with diabetes. Do not talk yourself out of it."
+    },
+    {
+      "find": "You start your assessment.",
+      "act": "Do the primary assessment, then OPQRST and SAMPLE, then baseline vital signs. A fist clutched to the chest (Levine's sign), sweating, pale or gray skin and a sense of impending doom all point toward ACS."
+    },
+    {
+      "find": "You are deciding on position and oxygen.",
+      "act": "Let the patient take a position of comfort: usually sitting up if short of breath, lying down if hypotensive. Give oxygen to reach an SpO<sub>2</sub> of 94% or higher and no higher than needed, per protocol. An alert patient in no distress with a normal saturation gets no oxygen."
+    },
+    {
+      "find": "You are trained, equipped and authorized to acquire a 12-lead ECG.",
+      "act": "Acquire it and transmit it. Interpreting it is outside EMT scope, but an early tracing speeds the hospital's diagnosis."
+    },
+    {
+      "find": "The patient can swallow safely and has no aspirin allergy and no recent GI bleeding.",
+      "act": "Give aspirin, 162 to 325 mg, chewed, per protocol. Follow your protocol for a patient who already took aspirin today or who takes a prescribed blood thinner."
+    },
+    {
+      "find": "The patient has chest discomfort, a cardiac history and his own prescribed nitroglycerin. The systolic pressure is above your protocol's threshold, he has not recently taken an erectile dysfunction medication, and medical direction authorizes it.",
+      "act": "Assist with one dose of nitroglycerin. It may be repeated after 5 minutes if the blood pressure remains adequate, to a maximum of 3 doses. Recheck the blood pressure before each dose."
+    },
+    {
+      "find": "You are ready to move.",
+      "act": "Transport promptly and drive smoothly. Sudden starts, stops and needless sirens add stress to a heart that is already struggling."
+    }
+  ],
+  "ideas": [
+    "<b>ACS</b> (cardiac compromise) is any situation where the blood supply to heart muscle is blocked or reduced. The oxygen-starved state is <b>ischemia</b>, and much of its damage can be reversed if blood flow is restored in time.",
+    "<b>Chest discomfort is the most common finding</b>, and it may spread to the jaw, the neck, either arm or the upper abdomen. It can also be absent.",
+    "<b>Oxygen is not automatic.</b> It is titrated to an SpO<sub>2</sub> of 94% or higher. High-concentration oxygen is for respiratory failure, a low saturation or a critical appearance.",
+    "<b>Aspirin</b> is chewed, 162 to 325 mg. Not for a patient with an aspirin allergy, recent GI bleeding or a risk of aspiration.",
+    "<b>Nitroglycerin</b> is the patient's own prescription, and every condition must be met. Erectile dysfunction medications taken within the window in your protocol (often 24 to 48 hours, up to 72 in some protocols) rule it out, because the combination can cause a severe drop in blood pressure.",
+    "<b>Transport without waiting on scene</b> when there is no nitroglycerin to assist with or the blood pressure is below the protocol threshold."
+  ],
+  "misconception": {
+    "wrong": "No chest pain means it is not the heart.",
+    "right": "Chest discomfort can be completely absent in ACS, especially in older adults, women and patients with diabetes. Shortness of breath, nausea, sudden sweating, fainting or vague fatigue may be the only signs."
+  },
+  "check": [
+    {
+      "q": "A 55-year-old man has crushing chest pain and his own nitroglycerin. His blood pressure is 138/84. He tells you he took sildenafil (Viagra) last night. What do you do about the nitroglycerin?",
+      "options": [
+        "Assist with one dose and recheck the pressure",
+        "Give half a tablet to be safe",
+        "Withhold it and continue the rest of ACS care",
+        "Give it only if the pain is worse than 7 out of 10"
+      ],
+      "correct": 2,
+      "why": "Nitroglycerin on top of a recent erectile dysfunction medication can cause a severe drop in blood pressure, so it is withheld. A good blood pressure right now is tempting but does not make the combination safe. Aspirin, oxygen if indicated and transport continue."
+    },
+    {
+      "q": "A patient with chest pressure is alert, in no respiratory distress, with an SpO2 of 98% on room air. What is the right oxygen decision?",
+      "options": [
+        "No oxygen for now; keep monitoring the saturation",
+        "A non-rebreather mask at 15 liters per minute",
+        "A nasal cannula at 6 liters per minute",
+        "Bag-valve mask ventilations with oxygen"
+      ],
+      "correct": 0,
+      "why": "The target is an SpO2 of 94% or higher and no higher than necessary. An alert patient without distress and with a normal saturation does not need oxygen. High-concentration oxygen for every chest pain is the older teaching."
+    },
+    {
+      "q": "Which patient should not be given aspirin for chest pain?",
+      "options": [
+        "One who has a history of high blood pressure",
+        "One who took nitroglycerin 10 minutes ago",
+        "One whose pain spreads to the left arm",
+        "One who vomited blood two days ago"
+      ],
+      "correct": 3,
+      "why": "Recent GI bleeding is a reason to withhold aspirin, along with an allergy and a risk of aspiration. Hypertension, arm pain and recent nitroglycerin do not rule aspirin out."
+    },
+    {
+      "q": "How is aspirin given to a patient with suspected ACS?",
+      "options": [
+        "Swallowed whole with a full glass of water",
+        "162 to 325 mg, chewed",
+        "Placed under the tongue to dissolve",
+        "One 81 mg tablet, swallowed whole"
+      ],
+      "correct": 1,
+      "why": "Aspirin for ACS is chewed, 162 to 325 mg, so it is absorbed quickly. Under the tongue is how nitroglycerin is given, not aspirin, and a single 81 mg tablet swallowed whole is the daily prevention dose, too small and too slow here."
+    },
+    {
+      "q": "A 78-year-old woman with diabetes suddenly feels weak, nauseated and sweaty, and is mildly short of breath. She denies chest pain. How should you treat this?",
+      "options": [
+        "As a likely stomach virus; transport routinely",
+        "As anxiety; coach her breathing",
+        "As a possible ACS, with full cardiac care",
+        "As low blood sugar only; give oral glucose and recheck"
+      ],
+      "correct": 2,
+      "why": "Older adults, women and patients with diabetes often have ACS without chest pain. Sudden sweating, nausea, weakness and shortness of breath match the pattern, so she is treated as cardiac. Checking the glucose is reasonable, but stopping there would miss the heart."
+    }
+  ],
+  "summary": "<p>ACS is any reduction in blood flow to heart muscle. Chest discomfort is its most common sign but can be absent, above all in older adults, women and patients with diabetes, so a matching picture is treated as cardiac. Care is a primary assessment, a position of comfort, oxygen only as needed to reach 94%, a 12-lead if authorized, chewed aspirin, 162 to 325 mg, unless ruled out, and assisted nitroglycerin only when every condition is met, including no recent erectile dysfunction medication and an adequate blood pressure. Then prompt, smooth transport.</p>"
+}

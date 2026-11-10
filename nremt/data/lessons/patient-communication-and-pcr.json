@@ -1,0 +1,109 @@
+{
+  "id": "patient-communication-and-pcr",
+  "title": "Talking with patients and writing the PCR",
+  "chapter": 17,
+  "section": "ch17-pcr",
+  "hook": "<p>A driver with a cracked windshield and a sore neck insists he is fine and wants to go home. You spend ten minutes trying to change his mind, check him over, explain what could go wrong and get his signature. Two years later a lawyer asks what you did on that call.</p><p>You will not remember. The report will. The prehospital care report (PCR) is the patient's record, a legal document, and the only proof of the care you gave. This lesson covers how you talk with patients and how you write down what happened.</p>",
+  "steps": [
+    {
+      "find": "You meet your patient.",
+      "act": "Get to eye level or below, make eye contact where the patient's culture welcomes it, and use their proper name and title until told otherwise. Use plain language, explain each procedure before you do it, and be honest, even about pain."
+    },
+    {
+      "find": "The patient is hard of hearing, blind, speaks another language, or is a child.",
+      "act": "Adjust. Hard of hearing: speak slowly and let them see your mouth. Blind: normal volume, and describe what you are doing. Language barrier: an interpreter or translation service. Child: come down to their level, tell the truth and involve the parents."
+    },
+    {
+      "find": "You are writing the narrative.",
+      "act": "Keep what you measured and saw (objective, such as \"BP 110/80\") apart from what you were told. Put the chief complaint in the patient's own words in quotation marks, and put anything you did not see yourself in quotation marks with its source."
+    },
+    {
+      "find": "You asked about or checked for something important and it was not there.",
+      "act": "Write it down as a pertinent negative, such as \"denies pain in right arm\". It shows that you checked."
+    },
+    {
+      "find": "A patient refuses care or transport.",
+      "act": "Try to persuade them, assess their capacity to refuse, and tell them the consequences. If they allow it, assess them and take vital signs anyway. Get a signed refusal form; if they will not sign, document that and have witnesses. Suggest other care, make sure a responsible person stays with them, and document all of it."
+    },
+    {
+      "find": "You find a mistake on your paper report.",
+      "act": "Draw a single line through it, initial it and write the correction beside it. Never scribble it out. If the report was already submitted, add your initials and the date and make the correction as a separate note."
+    },
+    {
+      "find": "The next call comes in before the full report is done.",
+      "act": "Leave an abbreviated report, called a drop report or transfer report, at the hospital, and finish the full PCR as soon as you can while your memory is fresh."
+    }
+  ],
+  "ideas": [
+    "<b>Communication is part of care.</b> Listen, do not re-ask what the patient already told you, and write the answers down.",
+    "<b>The PCR has five functions:</b> patient care record (part of the permanent hospital record), legal document, administrative data for billing, education and research, and quality improvement.",
+    "<b>\"If it's not written down, you didn't do it.\"</b> That is the rule behind all documentation.",
+    "<b>Never document care you did not give or findings you did not observe.</b> If a step was left out, document only what was done. If something was done wrong, document what happened, how you corrected it and that you told medical direction and the hospital.",
+    "<b>Write for the reader:</b> no radio codes, no nonstandard abbreviations, correct spelling and correct medical terms.",
+    "<b>Treat and document by the mechanism of injury</b> or the patient's condition, even when the patient has no pain and no complaint.",
+    "<b>The PCR is confidential.</b> It is protected by HIPAA: keep it secured and share it only as HIPAA and state and local rules allow.",
+    "<b>At a multiple-casualty incident</b> triage tags carry the information and are used later to complete the PCRs. Less detail than usual is acceptable there."
+  ],
+  "misconception": {
+    "wrong": "If I make a mistake on a report, the professional thing is to blot it out completely so nobody is confused by it.",
+    "right": "An error is never obliterated. On paper, a single line goes through it so it can still be read, with your initials and the correction beside it. A hidden error looks like something is being concealed; a visible, initialed correction shows an honest record."
+  },
+  "check": [
+    {
+      "q": "Which entry in a PCR narrative is objective information?",
+      "options": [
+        "Patient states \"my chest feels tight\"",
+        "Patient seemed to be exaggerating",
+        "Skin pale and cool, pulse 118",
+        "Wife says he \"looked gray earlier\""
+      ],
+      "correct": 2,
+      "why": "Objective findings are things you observe or measure, such as skin signs and a pulse rate. What the patient or a bystander tells you is recorded in quotation marks, and an opinion such as \"exaggerating\" does not belong at all."
+    },
+    {
+      "q": "You wrote the wrong pulse rate on a paper PCR that has not yet been turned in. How do you fix it?",
+      "options": [
+        "Black it out fully and write the right number above",
+        "Tear up the report and write a new one from memory",
+        "Leave it and tell the nurse the correct number",
+        "Draw one line through it, initial it and write the correction"
+      ],
+      "correct": 3,
+      "why": "A single line, your initials and the correction beside it keeps the original readable and the fix honest. Blacking it out is the tempting choice, but obliterating an entry looks like hiding something."
+    },
+    {
+      "q": "A patient with chest pain tells you he has no trouble breathing. How should that appear in your report?",
+      "options": [
+        "As a pertinent negative: \"denies difficulty breathing\"",
+        "It should be left out, since nothing was found",
+        "As a field diagnosis: \"not a respiratory problem\"",
+        "As an objective finding: \"breathing is normal\""
+      ],
+      "correct": 0,
+      "why": "A finding you looked for and found absent is a pertinent negative, and writing it shows you checked. Leaving it out is tempting, but then the report cannot show that you ever asked."
+    },
+    {
+      "q": "An alert adult with a possible neck injury refuses transport and will not sign the refusal form. What do you do?",
+      "options": [
+        "Sign the form for the patient and leave the scene",
+        "Document the refusal to sign and have it witnessed",
+        "Leave at once, since no form means no report",
+        "Record that the patient was transported anyway"
+      ],
+      "correct": 1,
+      "why": "When a patient will not sign, you document the refusal to sign and have witnesses, along with your attempts to persuade, the capacity assessment and the consequences you explained. Signing for the patient or writing anything untrue falsifies the record."
+    },
+    {
+      "q": "You realize after a call that you forgot to give oxygen that was indicated. What goes in the report?",
+      "options": [
+        "That oxygen was given, since it should have been",
+        "Nothing about oxygen, to avoid drawing attention",
+        "Only the care that was actually given",
+        "That the patient refused the oxygen"
+      ],
+      "correct": 2,
+      "why": "You document only what was actually done and never write down care you did not give. Recording the oxygen as given is the dangerous temptation: it is falsification, and it also misleads the people who treat the patient next."
+    }
+  ],
+  "summary": "<p>Therapeutic communication is part of care: eye level, plain words, honesty, explaining before you act, listening, and adjusting for hearing, vision, language and age. The PCR is the patient care record, a legal document, and a source for billing, research and quality improvement, and it is confidential under HIPAA. Write objective findings, quote the patient and anything you did not see yourself, and record pertinent negatives. A refusal needs the fullest documentation: persuasion, capacity, consequences, assessment offered, signature or witnessed refusal to sign. Never record care you did not give, correct errors with a single initialed line, and remember the rule: if it is not written down, you did not do it.</p>"
+}

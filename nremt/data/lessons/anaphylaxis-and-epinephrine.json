@@ -1,0 +1,116 @@
+{
+  "id": "anaphylaxis-and-epinephrine",
+  "title": "Anaphylaxis and epinephrine",
+  "chapter": 23,
+  "section": "ch23-allergic",
+  "hook": "<p>A 9-year-old was stung by a wasp at a picnic ten minutes ago. Her face is covered in hives, her lips are swelling and you can hear her wheeze from across the table. Her mother is holding an auto-injector she has never used and asks, \"Should we wait and see if it gets worse?\"</p><p>No. Anaphylaxis can close an airway and drop a blood pressure within minutes, and one drug decides the outcome. Your job is to recognize the reaction and get epinephrine in fast.</p>",
+  "steps": [
+    {
+      "find": "A patient has been exposed to an allergen and has local hives, itching, redness or sneezing. Breathing, vital signs and mental status are normal.",
+      "act": "This is a mild allergic reaction. Monitor closely and reassess, because a mild reaction can escalate into anaphylaxis within minutes."
+    },
+    {
+      "find": "The patient has respiratory distress (shortness of breath, chest tightness, wheezing, stridor, swelling of the face, lips or tongue) or signs of shock (fast pulse, low blood pressure, pallor, fainting, altered mental status).",
+      "act": "This is anaphylaxis. Either finding alone is enough; do not wait for both. Give high-concentration oxygen and prepare epinephrine."
+    },
+    {
+      "find": "The patient has a prescribed auto-injector, or your protocol lets EMTs carry epinephrine.",
+      "act": "Give epinephrine in accordance with medical direction. Check the expiration date, remove the cap, press the injector firmly against the outer thigh midway between the waist and the knee, and hold it there until the dose is delivered (about 3 seconds for most current injectors; follow the instructions on the device). It can be given through clothing."
+    },
+    {
+      "find": "The patient is a small child.",
+      "act": "Use the pediatric auto-injector, 0.15 mg, for a child of about 33 to 66 lb (15 to 30 kg). The 0.3 mg injector is for 66 lb (30 kg) and over. Age is never a reason to withhold epinephrine; for a smaller infant, follow medical direction."
+    },
+    {
+      "find": "Two minutes have passed since the injection.",
+      "act": "Reassess. Some relief of symptoms and a faster pulse are expected effects. If signs persist or return, a second dose, which the device labeling allows from 5 minutes after the first, needs another auto-injector and authorization from medical direction."
+    },
+    {
+      "find": "No epinephrine is available and protocol does not let you carry it.",
+      "act": "Treat for shock, transport immediately and request an ALS intercept."
+    }
+  ],
+  "ideas": [
+    "<b>It takes a prior exposure.</b> The first exposure causes no reaction but makes the immune system build antibodies. On later exposures those antibodies bind the allergen and release histamine and other chemicals.",
+    "<b>What the chemicals do:</b> blood vessels dilate (risk of shock), capillaries leak (swelling of the face, lips, tongue and airway), bronchioles narrow and fill with mucus (wheezing), and the skin breaks out in hives and itching.",
+    "<b>Common allergens:</b> insect stings (bees, wasps), foods (peanuts especially), plants, medications such as penicillin, and latex.",
+    "<b>Timing:</b> severe reactions usually begin right away, but can be delayed 30 minutes or more.",
+    "<b>Anaphylaxis = respiratory distress OR signs of shock.</b> It is judged by which body systems are involved, not by how upset the patient looks.",
+    "<b>Epinephrine is the single most important treatment.</b> It constricts blood vessels, which raises blood pressure, and it opens the bronchioles, which eases breathing.",
+    "<b>A first-ever reaction is treated the same way</b> as one in a patient with a known allergy.",
+    "<b>Infants get anaphylaxis too,</b> and it is often missed: hives, swelling, persistent vomiting, coughing or wheezing, mottled skin and crying that cannot be soothed."
+  ],
+  "misconception": {
+    "wrong": "Epinephrine is a dangerous drug, so it should be held back until the patient has both severe breathing trouble and low blood pressure.",
+    "right": "Either respiratory distress or signs of shock after an exposure is anaphylaxis, and epinephrine should be given promptly. Delay is the real danger: it is the one treatment that reverses both the airway swelling and the shock."
+  },
+  "check": [
+    {
+      "q": "A man stung by a bee has hives over his whole body, wheezing and a swollen tongue. His blood pressure is 124/78. Is this anaphylaxis?",
+      "options": [
+        "No, because his blood pressure is normal",
+        "No, hives and wheezing make it a mild reaction",
+        "Yes, respiratory distress alone is enough",
+        "Only if his blood pressure falls on the next check"
+      ],
+      "correct": 2,
+      "why": "Anaphylaxis is respiratory distress or signs of shock; both are not required. Waiting for the blood pressure to fall is the tempting mistake, and it delays the one treatment that matters."
+    },
+    {
+      "q": "Which treatment matters most for a patient in anaphylaxis?",
+      "options": [
+        "Prompt epinephrine",
+        "High-concentration oxygen",
+        "Raising the legs",
+        "A cold pack on the sting site"
+      ],
+      "correct": 0,
+      "why": "Prompt epinephrine is the single most important lifesaving measure, because it reverses both the vessel dilation and the airway narrowing. Oxygen is given too, but it does not stop the reaction."
+    },
+    {
+      "q": "Where and how is an epinephrine auto-injector given?",
+      "options": [
+        "Into the upper arm, removed at once",
+        "Into the abdomen, two inches from the navel",
+        "Into the buttock, held for one second",
+        "Into the outer thigh, held firmly until the dose is delivered"
+      ],
+      "correct": 3,
+      "why": "The injector is pressed firmly against the outer thigh, midway between the waist and the knee, and held in place until the full dose is injected. Pulling it away at once can leave part of the dose undelivered."
+    },
+    {
+      "q": "A 4-year-old weighing 40 lb (18 kg) is in anaphylaxis. Which auto-injector is correct?",
+      "options": [
+        "The adult 0.3 mg injector",
+        "The pediatric 0.15 mg injector",
+        "Half of an adult injector",
+        "None; she is too young for epinephrine"
+      ],
+      "correct": 1,
+      "why": "The pediatric auto-injector delivers 0.15 mg and is used for a child of about 33 to 66 lb (15 to 30 kg). The 0.3 mg injector is for 66 lb (30 kg) and over. Age is never a reason to withhold epinephrine."
+    },
+    {
+      "q": "Two minutes after epinephrine, a patient is breathing more easily, and her pulse has gone from 110 to 128. She says she feels shaky. What does this mean?",
+      "options": [
+        "She is having an allergic reaction to the epinephrine",
+        "The reaction is getting worse and she needs CPR",
+        "These are expected effects of the drug; keep monitoring",
+        "She needs a second dose immediately without calling"
+      ],
+      "correct": 2,
+      "why": "Some relief of symptoms and an increased pulse are expected, normal effects of epinephrine. You keep reassessing and transport. A second dose is for signs that persist or return, and it requires authorization from medical direction."
+    },
+    {
+      "q": "A patient ate shellfish 20 minutes ago. He has a few hives on one forearm and no other complaints, with normal breathing and vital signs. What do you do?",
+      "options": [
+        "Give epinephrine immediately",
+        "Tell him he is safe, since 20 minutes have passed",
+        "Begin bag-valve mask ventilation",
+        "Monitor and reassess often; it can escalate"
+      ],
+      "correct": 3,
+      "why": "Local hives with normal breathing, vital signs and mental status is a mild reaction, which does not call for epinephrine yet. But a reaction can be delayed 30 minutes or more and a mild one can become anaphylaxis within minutes, so he is watched closely, not cleared."
+    }
+  ],
+  "summary": "<p>An allergic reaction needs a prior exposure, after which the immune system releases histamine and other chemicals that dilate vessels, leak fluid into tissues, narrow the airways and raise hives. A reaction is anaphylaxis when it causes respiratory distress or signs of shock, and either one is enough. Give high-concentration oxygen and prompt epinephrine per medical direction: 0.3 mg at 66 lb (30 kg) and over, 0.15 mg for children of about 33 to 66 lb, into the outer thigh and held in place. Reassess in 2 minutes, get authorization for a second dose if needed, and with no epinephrine available treat for shock, transport and call ALS.</p>"
+}

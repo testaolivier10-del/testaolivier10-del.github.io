@@ -1,0 +1,107 @@
+{
+  "id": "aggressive-patients-and-restraint",
+  "title": "Aggressive patients, restraint and severe agitation",
+  "chapter": 27,
+  "section": "ch27-restraint",
+  "hook": "<p>Police are holding a man face-down on the pavement after a long struggle. He was shouting, incredibly strong and seemed to feel no pain. Now he has gone quiet. An officer says, \"Good, he's finally calming down.\"</p><p>That quiet may be the most dangerous moment of the call. Patients in this state can stop struggling and go into respiratory and cardiac arrest within minutes, and a face-down position makes it more likely. This lesson is about keeping yourself safe around an aggressive patient, and keeping a restrained patient alive.</p>",
+  "steps": [
+    {
+      "find": "A patient is hostile or threatening.",
+      "act": "Protect yourself first. Stay with your partner, keep an escape route, and never let the patient get between you and the door. Watch for weapons and stay out of the kitchen, a common source of them."
+    },
+    {
+      "find": "The patient seems calm now, or an agitated patient suddenly goes silent.",
+      "act": "Do not relax. A calm patient can become aggressive without warning, and sudden silence after agitation can mean a serious medical emergency is developing. Reassess airway, breathing and pulse at once."
+    },
+    {
+      "find": "The family asks you to hold down and transport a behavioral-emergency patient who is refusing.",
+      "act": "As a general rule an EMT cannot restrain or force care on this patient. That authority belongs to law enforcement, and in some systems to a physician through medical direction. Call for them. Any force used must be reasonable force: only what is needed to keep the patient from harming himself or herself or others."
+    },
+    {
+      "find": "Restraint has been authorized and is necessary.",
+      "act": "Restraint is a last resort, used only when calm talk has not made the scene safe. Plan it. Assemble enough help: at least 4 rescuers, one per limb, with one EMT assigned to talk to and reassure the patient throughout (the exact number is set by local protocol). Stay out of reach until ready, then act quickly. Use restraints approved by medical direction on all 4 limbs; soft restraints are preferred."
+    },
+    {
+      "find": "The patient is restrained.",
+      "act": "Position the patient face-up. Never prone, never hog-tied, never in any position that restricts the chest wall. Monitor the airway and breathing constantly, check circulation beyond each restraint often, and contact ALS, because sedation may be needed."
+    },
+    {
+      "find": "The patient shows extreme agitation, unexpected strength, no response to pain and a very high body temperature, then suddenly stops struggling.",
+      "act": "Treat this as hyperactive delirium with severe agitation (older texts call it \"excited delirium\", a term medical groups no longer use). The sudden calm can come just before respiratory or cardiac arrest. Keep monitoring continuously and be ready to ventilate and start CPR."
+    },
+    {
+      "find": "The patient arrives in police handcuffs.",
+      "act": "Do not remove police restraints until you are certain your soft restraints will hold. For an aggressive or violent patient, have law enforcement ride along."
+    }
+  ],
+  "ideas": [
+    "<b>Safety rules:</b> never alone, always an exit, never the patient between you and the door, watch for weapons.",
+    "<b>Who may restrain:</b> generally law enforcement, or a physician through medical direction in some systems, not the EMT acting alone. Follow local protocol.",
+    "<b>A medical cause is different.</b> A combative patient with low blood sugar, for example, may be restrained so treatment can be given. That is a medical necessity.",
+    "<b>Face-up, always.</b> Positional asphyxia from prone or hog-tied restraint has killed patients. This is the single most important safety rule in the chapter.",
+    "<b>Never restrain without enough people.</b> Avoid handcuffs and plastic ties as your own restraints, since they damage soft tissue.",
+    "<b>Refusal:</b> most states allow transport against a patient's will only when the patient is a danger to self or others. When possible, have an EMT of the same sex attend the patient."
+  ],
+  "misconception": {
+    "wrong": "When a violently agitated patient finally stops fighting the restraints, the crisis is over and you can ease off the monitoring.",
+    "right": "Sudden calm after a prolonged struggle can mean the patient is about to stop breathing or go into cardiac arrest. Monitoring gets closer at that moment, not looser, and the patient stays face-up."
+  },
+  "check": [
+    {
+      "q": "A patient has been restrained for transport. Which position is correct?",
+      "options": [
+        "Prone, with the head turned to one side",
+        "Face-up, with all four limbs secured",
+        "Prone, with wrists and ankles tied together",
+        "On the side, with a strap tight across the chest"
+      ],
+      "correct": 1,
+      "why": "A restrained patient is placed face-up. Prone or hog-tied positions, and anything that restricts the chest wall, can cause positional asphyxia. Prone with the head turned sounds safe for the airway, but the weight on the chest is what limits breathing."
+    },
+    {
+      "q": "A man in a mental health crisis is refusing care. He is not threatening anyone. His brother tells you, \"Just strap him down and take him.\" What is the right response?",
+      "options": [
+        "Restrain him, since a family member has consented",
+        "Restrain him only if your partner agrees to help",
+        "Leave the scene, since he has refused care",
+        "Do not restrain him; involve police or medical direction"
+      ],
+      "correct": 3,
+      "why": "An EMT generally cannot legally restrain or force care on a behavioral-emergency patient, even at the family's request. That authority belongs to law enforcement, or in some systems to a physician through medical direction. The family's request does not supply legal authority."
+    },
+    {
+      "q": "After several minutes of fighting restraint with unusual strength, a hot, sweaty patient abruptly goes limp and silent. What do you do?",
+      "options": [
+        "Check breathing and pulse right away",
+        "Loosen the restraints to reward the calm",
+        "Let the patient rest and finish paperwork",
+        "Turn the patient prone in case of vomiting"
+      ],
+      "correct": 0,
+      "why": "In hyperactive delirium with severe agitation, sudden calm can come just before inadequate or absent breathing and cardiac arrest. Assuming the patient has simply tired out is the dangerous mistake; assess immediately and be ready to ventilate and start CPR."
+    },
+    {
+      "q": "You are in a living room with a patient who is growing more hostile. Where should you and your partner be?",
+      "options": [
+        "Apart, so the patient is watched from two rooms",
+        "In the kitchen, where there is more room to move",
+        "Together, with a clear path to the door behind you",
+        "Together, with the patient between you and the door"
+      ],
+      "correct": 2,
+      "why": "Stay with your partner, keep an escape route and never let the patient get between you and the door. Splitting up isolates you from help, and the kitchen is a common source of weapons."
+    },
+    {
+      "q": "A confused, combative patient with diabetes has a very low blood sugar and keeps pulling away from treatment. How does restraint apply here?",
+      "options": [
+        "It is never allowed without a police officer present",
+        "It is allowed only if the family signs a consent form",
+        "It may be used as a medical necessity so care can be given",
+        "It is allowed only after the patient is sedated"
+      ],
+      "correct": 2,
+      "why": "When the cause is medical or traumatic, such as a combative hypoglycemic patient, restraint so treatment can be given is a medical necessity, not a behavioral-emergency restraint. You still need enough people and local protocol still applies."
+    }
+  ],
+  "summary": "<p>Around an aggressive patient, stay with your partner, keep an exit, watch for weapons and never trust a sudden calm. EMTs generally cannot restrain a behavioral-emergency patient on their own authority; law enforcement or medical direction decides, and only reasonable force is used. A medical cause such as low blood sugar is different. Restraint is a last resort. When it is needed, plan it with enough help (at least 4 rescuers, with one person talking to the patient), use approved soft restraints on all 4 limbs, keep the patient face-up, never prone or hog-tied, monitor airway, breathing and distal circulation constantly, and call ALS. In hyperactive delirium with severe agitation, sudden quiet after a struggle can come just before arrest. Keep police restraints on until yours will hold, and have law enforcement accompany a violent patient.</p>"
+}

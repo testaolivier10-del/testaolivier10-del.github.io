@@ -1,0 +1,100 @@
+{
+  "id": "dnr-polst-ethics",
+  "title": "DNR orders, POLST and ethical dilemmas",
+  "chapter": 4,
+  "section": "ch4-dnr-ethics",
+  "hook": "<p>An 82-year-old woman is on her living room floor, not breathing and without a pulse. Her daughter is standing over her in tears. \"Please do not do anything,\" she says. \"She has a DNR. She never wanted this. The paper is at the lawyer's office.\"</p><p>You have seconds to decide, and no document in front of you. This lesson covers what a DNR and a POLST are, the rule for when you have no paper, what to do when the family wants a valid DNR ignored, and how to think through ethical problems that no protocol answers.</p>",
+  "steps": [
+    {
+      "find": "A patient is in cardiac arrest and a valid DNR order is presented to you.",
+      "act": "Follow it. A do not resuscitate order is a legal document, typically signed by the patient and a physician, saying the patient does not want resuscitative efforts. Read it, because some DNR orders set conditions."
+    },
+    {
+      "find": "A patient is in cardiac arrest. The family says there is a DNR, or asks you not to resuscitate, but there is no legal document present.",
+      "act": "Provide care and begin resuscitation. A family member's oral request alone is not enough to withhold resuscitation."
+    },
+    {
+      "find": "There is a valid DNR, but the family is distressed and demands that you resuscitate anyway.",
+      "act": "Contact medical direction. The physician may need to speak with the family directly."
+    },
+    {
+      "find": "The patient has a POLST form.",
+      "act": "Treat it as medical orders that go beyond resuscitation: it also covers other end-of-life preferences, such as artificial feeding and antibiotics, for when the patient cannot speak for themselves."
+    },
+    {
+      "find": "You face a problem with no protocol: for example, you see a colleague hide a serious medication error.",
+      "act": "Identify your options, weigh patient welfare, safety and legal duty against the competing pressures, and choose the course that best protects the patient, even when it is uncomfortable. Here, that means reporting it."
+    }
+  ],
+  "ideas": [
+    "<b>An advance directive</b> is written and signed in advance of the event it governs. A DNR order is one form of it.",
+    "<b>DNR orders vary.</b> One might direct resuscitation only if the arrest is witnessed, and not if the patient is found already in arrest.",
+    "<b>POLST</b> (Physician's Orders for Life-Sustaining Treatment; the national program now calls it \"portable medical orders,\" and the name differs by state) is broader than a DNR. In some states physician assistants and advanced practice nurses can sign it, so learn the rules where you work.",
+    "<b>A living will</b> is a signed statement of preferences about long-term life support and comfort measures. It typically applies in the hospital, not to prehospital care.",
+    "<b>A health care proxy</b> is a person the patient has named to make decisions if the patient becomes unable to.",
+    "<b>The decision rule:</b> without an actual legal document in hand, provide care. It is better to be criticized for trying to save a life than for letting a patient die.",
+    "<b>Ethics:</b> patient safety, and honesty about the care actually given, come before loyalty to a colleague."
+  ],
+  "misconception": {
+    "wrong": "If the family tells me the patient had a DNR and did not want CPR, I should respect their wishes and stop.",
+    "right": "A family member's word alone, without the legal document present, is not enough to withhold resuscitation. Start care. If a valid document is produced, it can be honored then; if you withhold care and no valid order exists, the patient has lost the only chance they had."
+  },
+  "check": [
+    {
+      "q": "A man is in cardiac arrest. His son says, \"Dad has a DNR, but it is in a safe at the bank.\" No document is at the scene. What should you do?",
+      "options": [
+        "Withhold CPR, because the son knows his father's wishes",
+        "Wait for the son to go and fetch the document",
+        "Begin resuscitation, because no legal document is present",
+        "Ask the neighbors whether they know about a DNR"
+      ],
+      "correct": 2,
+      "why": "An oral request alone, without the legal DNR document present, is not enough to withhold resuscitation, so you provide care. Taking the son's word is tempting because he is sincere, but only the document itself counts, and waiting costs the patient his chance."
+    },
+    {
+      "q": "You are shown a valid DNR order for a patient in cardiac arrest, but her husband shouts at you to \"do something\" and start CPR. What is the best step?",
+      "options": [
+        "Contact medical direction",
+        "Tear up the DNR and begin CPR",
+        "Ignore the husband and leave the scene",
+        "Call the police to remove the husband"
+      ],
+      "correct": 0,
+      "why": "When the family wants a valid DNR ignored, contact medical direction; the physician may need to talk with the family directly. Starting CPR to calm the husband is tempting, but it overrides the patient's own legal wishes."
+    },
+    {
+      "q": "How does a POLST form differ from a DNR order?",
+      "options": [
+        "It applies only while the patient is in the hospital",
+        "It is a spoken agreement that needs no signature",
+        "It names a person to make decisions for the patient",
+        "It covers resuscitation and other end-of-life treatment choices"
+      ],
+      "correct": 3,
+      "why": "A POLST is broader than a DNR: it covers resuscitation together with other preferences such as artificial feeding and antibiotics. Naming a decision maker is the tempting mix-up, but that is a health care proxy."
+    },
+    {
+      "q": "Which document typically applies to in-hospital situations and not to prehospital care?",
+      "options": [
+        "A DNR order",
+        "A living will",
+        "A POLST form",
+        "A refusal form"
+      ],
+      "correct": 1,
+      "why": "A living will states preferences about long-term life support and comfort measures and typically applies in the hospital. A DNR order and a POLST are the documents an EMT acts on in the field."
+    },
+    {
+      "q": "After a call, you realize your partner gave a patient the wrong medication and has left it out of the report. What does the ethical framework point to?",
+      "options": [
+        "Keep quiet, because loyalty to your partner comes first",
+        "Fix the report yourself so that nobody finds out",
+        "Report the error, because patient safety comes first",
+        "Wait and see whether the hospital notices anything"
+      ],
+      "correct": 2,
+      "why": "Patient safety and honesty about the care actually given come before loyalty to a colleague, so a serious medication error is reported. Staying quiet out of loyalty is the pressure the framework tells you to weigh and set aside."
+    }
+  ],
+  "summary": "<p>A DNR order is a legal document, a form of advance directive, saying the patient does not want resuscitative efforts; some DNR orders set conditions. A POLST is broader and covers other end-of-life treatment choices as well. A living will usually applies in the hospital, and a health care proxy is a person named to decide for the patient. The rule in the field: a family's oral request without the legal document present is not enough, so provide care. If the family wants a valid DNR ignored, contact medical direction. For ethical dilemmas with no protocol, identify the options, weigh patient welfare, safety and legal duty, and choose what best protects the patient, as when you report a colleague's serious medication error.</p>"
+}

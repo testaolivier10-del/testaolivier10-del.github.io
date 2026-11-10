@@ -1,0 +1,90 @@
+{
+  "id": "ambulance-readiness-and-response",
+  "title": "Ambulance readiness and receiving the call",
+  "chapter": 38,
+  "section": "ch38-ambulance-readiness",
+  "hook": "<p>Ten minutes into your shift you are halfway through the truck check, and you have not yet opened the airway bag. The tones drop for a cardiac arrest. Do you finish the check first? And what if, when you get there, the AED is not on the truck?</p><p>A call goes well or badly long before you reach the patient. It starts with a rig that is ready and a dispatcher who has already begun the care by phone.</p>",
+  "steps": [
+    {
+      "find": "Your shift is starting.",
+      "act": "Take a shift report from the crew going off duty, then inspect the ambulance with a checklist, not from memory. This is done every shift."
+    },
+    {
+      "find": "The engine is off.",
+      "act": "Check the vehicle body, tires, fluid levels and battery, and look at how clean the interior is."
+    },
+    {
+      "find": "The engine is running.",
+      "act": "Check the dash indicators, brakes, lights and communications equipment. Then go to the patient compartment for an item-by-item inventory, check the oxygen pressure and test the AED."
+    },
+    {
+      "find": "A call comes in while the check is half done.",
+      "act": "Respond to the call and finish the check afterward."
+    },
+    {
+      "find": "You find that essential equipment is missing.",
+      "act": "The unit is out of service until it is replaced. Say so; do not run calls and hope the item is not needed."
+    },
+    {
+      "find": "A caller reports someone who is unconscious and not breathing.",
+      "act": "This is the emergency medical dispatcher's (EMD's) part: the EMD sends the largest response the system has and talks the caller through CPR by phone before you arrive."
+    }
+  ],
+  "ideas": [
+    "<b>Five phases of a call:</b> preparation, receiving and responding, transferring the patient to the ambulance, transporting to the hospital, terminating the call. Only preparation happens before a call comes in.",
+    "<b>Checklist, every shift.</b> Memory misses things; a checklist does not.",
+    "<b>The EMD</b> is certified through a medical priority dispatch system. The job: question the caller, set the call's priority, give prearrival instructions, and dispatch and coordinate resources.",
+    "<b>What the EMD asks:</b> exact location, callback number, chief complaint, age and sex, then whether the patient is conscious and whether the patient is breathing."
+  ],
+  "misconception": {
+    "wrong": "The dispatcher only takes the address and sends the ambulance; patient care begins when the crew arrives.",
+    "right": "A trained EMD starts care over the phone. Prearrival instructions, including coaching a caller through CPR, begin before any unit is on scene."
+  },
+  "check": [
+    {
+      "q": "Which phase of an ambulance call takes place before any call is received?",
+      "options": [
+        "Receiving and responding to the call",
+        "Transferring the patient to the ambulance",
+        "Preparation for the call",
+        "Terminating the call"
+      ],
+      "correct": 2,
+      "why": "Preparation, which includes the shift report and the vehicle and equipment check, is the only phase that happens before a call. The other four follow in order once a call comes in."
+    },
+    {
+      "q": "You are partway through the start-of-shift check when you are dispatched to a fall. Nothing essential is missing so far. What do you do?",
+      "options": [
+        "Respond now and complete the check after the call",
+        "Finish the whole checklist, then respond",
+        "Ask dispatch to hold the call for five minutes",
+        "Go out of service until the check is complete"
+      ],
+      "correct": 0,
+      "why": "A call that arrives mid-check is answered, and the check is finished afterward. Going out of service is for the case where essential equipment is known to be missing, which is not the situation here."
+    },
+    {
+      "q": "During the check you find there is no AED on the ambulance and no spare at the station. What is the right action?",
+      "options": [
+        "Stay in service and request a second unit if needed",
+        "Stay in service but take only minor calls",
+        "Note it on the checklist for the next crew",
+        "Place the unit out of service until it is replaced"
+      ],
+      "correct": 3,
+      "why": "Missing essential equipment takes the unit out of service until the item is replaced. Staying in service means you could be sent to a cardiac arrest without a defibrillator, and a note on the checklist does not fix that."
+    },
+    {
+      "q": "After getting the location, callback number and chief complaint, an EMD learns the patient is not breathing. What does the EMD do?",
+      "options": [
+        "Sends a single unit and ends the call to free the line",
+        "Tells the caller to wait outside for the ambulance",
+        "Sends the maximum response and coaches CPR by phone",
+        "Transfers the caller to the hospital emergency department"
+      ],
+      "correct": 2,
+      "why": "A patient who is not breathing gets the system's maximum response, and the EMD stays on the line to talk the caller through CPR. Ending the call or sending the caller outside wastes the minutes before the crew arrives."
+    }
+  ],
+  "summary": "<p>A call has five phases: preparation, receiving and responding, transfer to the ambulance, transport, and termination. Preparation means a shift report and a checklist inspection every shift: engine off for body, tires, fluids and battery; engine running for dash, brakes, lights and radio; then the patient compartment, oxygen pressure and AED. If a call comes mid-check, respond and finish later, but a unit missing essential equipment is out of service. The emergency medical dispatcher questions the caller, sets the priority, gives prearrival instructions and coordinates the response, and for a patient who is not breathing sends the maximum response and coaches CPR by phone.</p>"
+}

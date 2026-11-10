@@ -1,0 +1,107 @@
+{
+  "id": "abdominal-pain-and-its-causes",
+  "title": "Abdominal pain and its causes",
+  "chapter": 26,
+  "section": "ch26-abdominal",
+  "hook": "<p>Two patients have belly pain. One is rolling around on the bathroom floor and cannot hold still. The other is lying rigid on the couch with his knees drawn up and asks you not to bump the furniture. Before you ask a single question, how they hold their bodies has already told you something.</p><p>You will not diagnose abdominal pain in the field, and the exam does not ask you to. It asks you to recognize the patterns that point to a dangerous cause, so that the patient who needs a surgeon or a cardiologist is not treated like a stomach bug.</p>",
+  "steps": [
+    {
+      "find": "The pain is dull, achy, comes and goes, and the patient waves a hand over the whole belly when asked where it hurts.",
+      "act": "Think visceral pain: it starts in an organ, and organs have few nerve endings, so the pain is hard to pin down. Vague does not mean minor. Keep assessing."
+    },
+    {
+      "find": "The pain is sharp, constant, in one spot the patient can point to, and worse with any movement. The abdomen is rigid and the patient lies very still.",
+      "act": "Think parietal pain and peritonitis: the lining of the abdominal cavity is inflamed. This is life-threatening and often needs surgery. Move the patient gently and transport promptly."
+    },
+    {
+      "find": "The patient describes a tearing pain that goes through to the back, or has sudden severe abdominal and back pain with signs of shock.",
+      "act": "Suspect an abdominal aortic aneurysm that is leaking or has ruptured. Pulses in the legs may be weak or unequal. Handle the patient gently, treat for shock and transport without delay."
+    },
+    {
+      "find": "The pain is felt somewhere other than the belly: the right shoulder, or the left shoulder.",
+      "act": "Think referred pain. Gallbladder pain is classically felt in the right shoulder, and pain from the spleen in the left shoulder. Take the shoulder complaint as an abdominal clue."
+    },
+    {
+      "find": "The patient has upper-middle (epigastric) pain and calls it indigestion.",
+      "act": "Treat all epigastric pain as possibly cardiac until proven otherwise. A heart attack can present exactly this way, and gallbladder pain is often confused with it."
+    },
+    {
+      "find": "A woman of childbearing age has lower abdominal pain.",
+      "act": "Assume an ectopic pregnancy until proven otherwise. She will not look pregnant. Watch for shock and transport."
+    },
+    {
+      "find": "There is no pain at all, but the patient has dark, tarry stools, bright blood from the rectum, or vomit that looks like coffee grounds.",
+      "act": "Suspect gastrointestinal bleeding, which is often painless. Bleeding esophageal varices can be massive and can threaten the airway, so have suction ready and treat for shock."
+    }
+  ],
+  "ideas": [
+    "<b>Visceral pain</b> comes from the organ itself: dull, achy, intermittent, hard to localize. <b>Parietal pain</b> comes from the peritoneum: sharp, constant, easy to point to, worse with movement.",
+    "<b>Tearing pain</b> points first to the aorta, classically as tearing pain felt through to the back.",
+    "<b>Appendicitis:</b> nausea and pain around the umbilicus that moves to become steady pain in the right lower quadrant. A sudden severe spike in pain suggests rupture and peritonitis.",
+    "<b>Cholecystitis:</b> severe right upper quadrant or epigastric pain, often referred to the right shoulder. <b>Pancreatitis:</b> epigastric pain that goes through to the back or shoulders, common with chronic alcohol use.",
+    "<b>Renal colic</b> (kidney stone): severe flank pain going to the groin. These patients writhe and cannot get comfortable. <b>Peritonitis</b> patients lie perfectly still.",
+    "<b>Hernia:</b> dangerous only when the tissue is obstructed or strangulated, and you cannot tell from outside, so every painful hernia is transported."
+  ],
+  "misconception": {
+    "wrong": "If the patient cannot point to where it hurts, or has no pain at all, the abdominal problem is probably not serious.",
+    "right": "Pain from an organ is naturally vague, and gastrointestinal bleeding is often painless. A heart attack can feel like indigestion, and an ectopic pregnancy can look like ordinary lower abdominal pain. The pattern and the patient's overall condition matter more than how well the pain is localized."
+  },
+  "check": [
+    {
+      "q": "A patient has severe pain in the right flank that travels to the groin. He paces, kneels and rolls, unable to find a comfortable position. Which condition fits best?",
+      "options": [
+        "Peritonitis from a ruptured appendix",
+        "Renal colic from a kidney stone",
+        "Cholecystitis from gallstones",
+        "Pancreatitis from alcohol use"
+      ],
+      "correct": 1,
+      "why": "Severe flank pain that radiates to the groin in a patient who writhes is the classic picture of renal colic. A patient with peritonitis does the opposite: he lies perfectly still, because movement makes parietal pain worse."
+    },
+    {
+      "q": "A 28-year-old woman has sudden lower abdominal pain. She says she is not pregnant and she does not look pregnant. What must you assume?",
+      "options": [
+        "A hernia until proven otherwise",
+        "A kidney stone until proven otherwise",
+        "Appendicitis until proven otherwise",
+        "An ectopic pregnancy until proven otherwise"
+      ],
+      "correct": 3,
+      "why": "Any woman of childbearing age with lower abdominal pain is assumed to have an ectopic pregnancy until proven otherwise; she will not look pregnant and may not know. Appendicitis is possible, but an ectopic pregnancy can bleed fatally and is the easiest to miss, so it is the one you assume."
+    },
+    {
+      "q": "A 62-year-old man is pale and sweaty and complains of \"bad indigestion\" in the upper middle of his abdomen. How should you treat this complaint?",
+      "options": [
+        "As possibly cardiac until proven otherwise",
+        "As a stomach ulcer unless he vomits blood",
+        "As gallbladder pain unless his shoulder hurts",
+        "As minor unless his abdomen becomes rigid"
+      ],
+      "correct": 0,
+      "why": "A heart attack can present as epigastric pain the patient calls indigestion, so all epigastric pain is treated as possibly cardiac. Gallbladder pain sits in the same area and is often confused with cardiac pain, which is exactly why you do not assume the less dangerous cause."
+    },
+    {
+      "q": "A patient with pain under the right ribs after a fatty meal also says her right shoulder aches, though she has not injured it. What explains the shoulder pain?",
+      "options": [
+        "Parietal pain from an inflamed peritoneum",
+        "Visceral pain from a stretched stomach",
+        "Referred pain from the gallbladder",
+        "Tearing pain from the abdominal aorta"
+      ],
+      "correct": 2,
+      "why": "Referred pain is felt away from its source because of shared nerve pathways, and gallbladder pain is classically referred to the right shoulder. Parietal pain is sharp and felt at the site of the inflamed lining, not in a distant shoulder."
+    },
+    {
+      "q": "A 70-year-old man reports a gradual onset of tearing pain in his abdomen that goes straight through to his back. Which condition should you suspect first?",
+      "options": [
+        "Gastrointestinal bleeding",
+        "Strangulated hernia",
+        "Appendicitis",
+        "Abdominal aortic aneurysm"
+      ],
+      "correct": 3,
+      "why": "Tearing pain that radiates to the back is the classic description of a leaking abdominal aortic aneurysm; a sudden rupture adds excruciating pain and shock. Gastrointestinal bleeding is often painless, so it does not fit a tearing pain."
+    }
+  ],
+  "summary": "<p>The character of abdominal pain is a clue to its source. Visceral pain from an organ is dull and hard to place; parietal pain from the peritoneum is sharp, localized and worse with movement; tearing pain points to the aorta; referred pain shows up in the right shoulder (gallbladder) or left shoulder (spleen). Know the patterns: appendicitis moving to the right lower quadrant, the rigid still patient with peritonitis, the writhing patient with a kidney stone, painless gastrointestinal bleeding, and the tearing back pain of an aortic aneurysm. Treat epigastric pain as possibly cardiac, assume ectopic pregnancy in any woman of childbearing age with lower abdominal pain, and transport every painful hernia.</p>"
+}

@@ -1,0 +1,88 @@
+{
+  "id": "spinal-cord-injury-and-neurogenic-shock",
+  "title": "Spinal cord injury and neurogenic shock",
+  "chapter": 33,
+  "section": "ch33-cord-injury",
+  "hook": "<p>A man dove into the shallow end of a pool and was pulled out by friends. He cannot move his arms or legs. His belly rises and falls with each breath but his chest stays still. His blood pressure is 84 over 50, his pulse is 58 and his skin is warm and dry.</p><p>Low pressure usually comes with a fast pulse and cool, clammy skin. This patient has neither, and that difference tells you what kind of shock you are looking at.</p>",
+  "steps": [
+    {
+      "find": "A trauma patient is breathing with the belly while the chest barely moves.",
+      "act": "Treat it as a spinal cord injury until proven otherwise. The nerves that drive the diaphragm leave the cord at about C3 through C5. An injury just below that level spares the diaphragm but paralyzes the muscles between the ribs. Watch the breathing closely and be ready to assist ventilation."
+    },
+    {
+      "find": "The injury is high in the neck and the patient is not breathing.",
+      "act": "Ventilate. An injury above C3 to C5 takes the diaphragm with it, so the patient stops breathing. Keep spinal motion restricted while you manage the airway."
+    },
+    {
+      "find": "The patient has lost feeling or movement below a certain level.",
+      "act": "Look for the other signs of a cord injury: numbness or tingling in the arms or legs, loss of bowel or bladder control, and priapism in a male patient. Note the level where function changes and report it."
+    },
+    {
+      "find": "The blood pressure is low, the pulse is normal or slow, and the skin is warm, dry and flushed below the injury.",
+      "act": "Recognize neurogenic shock. The injury has cut the sympathetic signal, so the vessels below it widen and the heart cannot speed up to compensate. Still look for bleeding: a trauma patient can have both kinds of shock at once."
+    },
+    {
+      "find": "The patient with a cord injury is exposed during your assessment.",
+      "act": "Cover the patient and keep them warm. With the vessels unable to tighten, heat is lost continuously and hypothermia sets in quickly, even in mild weather."
+    }
+  ],
+  "ideas": [
+    "<b>C3, 4, 5 keep the diaphragm alive.</b> An injury above that level stops breathing. One just below leaves belly breathing only.",
+    "<b>Function is lost below the injury,</b> so the height of the injury predicts what the patient has lost.",
+    "<b>Priapism</b> in a male trauma patient is a specific sign of a cord injury.",
+    "<b>Neurogenic shock:</b> low blood pressure, a normal or slow heart rate, and warm, dry, flushed skin below the injury.",
+    "<b>Hemorrhagic shock:</b> low blood pressure, a fast heart rate, and pale, cool, clammy skin. The heart rate is what separates the two.",
+    "<b>Spinal shock is a different thing.</b> It is the temporary loss of cord function (limp paralysis, lost reflexes) right after an injury, and it may partly resolve. Neurogenic shock is the circulation problem."
+  ],
+  "misconception": {
+    "wrong": "A trauma patient with low blood pressure, a slow pulse and warm skin has neurogenic shock, so there is no need to look for bleeding.",
+    "right": "Neurogenic shock explains that pattern, but it never rules out hemorrhage. A trauma patient can have a cord injury and be bleeding at the same time, and the cord injury can hide the fast pulse you would expect. Keep looking."
+  },
+  "check": [
+    {
+      "q": "After a diving accident, a patient cannot move his legs. Blood pressure is 80/48, pulse is 56, and his skin is warm, dry and flushed. Which kind of shock fits best?",
+      "options": [
+        "Hemorrhagic shock from internal bleeding",
+        "Neurogenic shock from a spinal cord injury",
+        "Cardiogenic shock from a bruised heart",
+        "Septic shock from an early infection"
+      ],
+      "correct": 1,
+      "why": "Low blood pressure with a normal or slow pulse and warm, dry, flushed skin is neurogenic shock: the sympathetic signal has been cut, so the vessels widen and the heart cannot speed up. Hemorrhagic shock is the tempting answer in trauma, but it brings a fast pulse and pale, cool, clammy skin."
+    },
+    {
+      "q": "A patient thrown from a motorcycle is breathing with his abdomen only, and his chest wall is not moving. What does this suggest?",
+      "options": [
+        "A flail chest with several broken ribs",
+        "A tension pneumothorax on one side",
+        "Anxiety with fast, shallow breathing",
+        "A cord injury just below C3 to C5"
+      ],
+      "correct": 3,
+      "why": "Diaphragmatic breathing in a trauma patient means a cord injury until proven otherwise. An injury just below C3 to C5 spares the diaphragm but paralyzes the muscles between the ribs. A flail chest is tempting because it is also a chest wall problem, but there a segment moves the wrong way while the rest of the chest still moves."
+    },
+    {
+      "q": "Why does a patient in neurogenic shock fail to develop a fast heart rate as the blood pressure falls?",
+      "options": [
+        "The sympathetic signal that speeds the heart has been cut",
+        "The heart muscle was bruised in the same injury",
+        "Blood loss has left too little volume to pump",
+        "The brain no longer senses the drop in pressure"
+      ],
+      "correct": 0,
+      "why": "The sympathetic signal that would normally speed the heart in response to falling pressure is the same signal the cord injury interrupted, so the patient cannot mount a tachycardia. Blood loss is the tempting choice, but blood loss with intact nerves produces a fast pulse, not a slow one."
+    },
+    {
+      "q": "You are caring for a patient with a suspected cord injury and neurogenic shock on a mild spring day. Besides airway, breathing and spinal motion restriction, what is important?",
+      "options": [
+        "Cool the patient, because the skin is warm and flushed",
+        "Sit the patient upright to make breathing easier",
+        "Cover the patient, because heat is lost quickly",
+        "Stop looking for bleeding, because the pulse is slow"
+      ],
+      "correct": 2,
+      "why": "A patient who cannot constrict the vessels in the skin loses heat continuously and becomes hypothermic quickly, even in mild weather, so the patient is covered. Cooling is the tempting error because the skin feels warm, but that warmth is heat leaving the body."
+    }
+  ],
+  "summary": "<p>A spinal cord injury removes function below the level of the injury. The nerves to the diaphragm leave the cord at about C3 through C5: an injury above that stops breathing, and one just below it leaves belly breathing with a still chest, which in a trauma patient means a cord injury until proven otherwise. Other signs are loss of sensation or movement below a level, numbness or tingling, loss of bowel or bladder control and priapism. Neurogenic shock is low blood pressure with a normal or slow pulse and warm, dry, flushed skin, because the sympathetic signal has been cut; hemorrhagic shock is low pressure with a fast pulse and pale, cool, clammy skin. Keep the patient warm, and never let neurogenic shock stop the search for bleeding. Spinal shock, the temporary loss of cord function, is a separate term.</p>"
+}

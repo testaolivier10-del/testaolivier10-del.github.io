@@ -1,0 +1,104 @@
+{
+  "id": "radio-communication",
+  "title": "Radio communication and the radio report",
+  "chapter": 17,
+  "section": "ch17-radio",
+  "hook": "<p>You are ten minutes out with a 71-year-old who is short of breath and getting worse. You grab the microphone and start talking the instant you press the button, fast, in whatever order the facts come to mind. At the hospital, the first word was clipped off, the nurse cannot tell how old the patient is, and nobody knows when you will arrive.</p><p>The radio report decides what is waiting for your patient at the door. A report in a fixed order, in a steady voice, gets the right room and the right people ready. This lesson is how to give one.</p>",
+  "steps": [
+    {
+      "find": "You are about to transmit.",
+      "act": "Check that the radio is on and the volume is set, cut the background noise, and listen first to be sure the frequency is clear."
+    },
+    {
+      "find": "The frequency is clear.",
+      "act": "Press the push-to-talk button and wait 1 second before speaking so the first word is not cut off. Hold the microphone 2 to 3 inches from your lips."
+    },
+    {
+      "find": "You are calling the hospital or another unit.",
+      "act": "Name the unit you are calling first, then yourself, and wait to be told to go ahead before you continue. Speak slowly and clearly, in plain English, and keep each transmission to 30 seconds or less."
+    },
+    {
+      "find": "The hospital is ready for your report.",
+      "act": "Give the 12 parts in order: unit and provider level, ETA, age and sex, chief complaint, brief history of the present illness, major past illnesses, mental status, baseline vital signs, pertinent exam findings, care given, response to care, and contact with medical direction if you need it."
+    },
+    {
+      "find": "The physician gives you an order, or denies your request.",
+      "act": "Repeat it back word for word. If the order is unclear, ask for it to be repeated, then repeat it back once you understand it."
+    },
+    {
+      "find": "An order seems inappropriate for your patient.",
+      "act": "Question it. The physician may have misunderstood something you reported, or may give you an explanation that makes the order clear."
+    }
+  ],
+  "ideas": [
+    "<b>The hardware.</b> A base station is a fixed radio at a hospital or dispatch center. A mobile radio is mounted in the vehicle; a portable radio is handheld and lower powered. A repeater picks up a weak signal and retransmits it at higher power on another frequency. Telemetry sends data such as an ECG or vital signs.",
+    "<b>Never say the patient's name on the air.</b> Radio traffic can be overheard. No profanity and nothing slanderous either; keep the language objective and impartial.",
+    "<b>Report findings, not a field diagnosis.</b> The patient \"complains of abdominal pain\", not \"probably has appendicitis\".",
+    "<b>Numbers that could be misheard</b> are said twice: the number, then its digits. \"Fifteen, one-five.\"",
+    "<b>Radio habits:</b> \"we\" instead of \"I\", and \"affirmative\" and \"negative\" instead of \"yes\" and \"no\".",
+    "<b>A steady tone, even for a critical patient.</b> A calm, ordered report is easier to act on than an urgent one.",
+    "<b>The physician only knows what you say.</b> Orders from medical direction are based entirely on your report."
+  ],
+  "misconception": {
+    "wrong": "An EMT should carry out a physician's order exactly as given and never question it.",
+    "right": "An order that seems inappropriate should be questioned. The physician is working only from what you reported and may have misheard it, or may explain the order so that it makes sense. Every order is also repeated back word for word before you act on it."
+  },
+  "check": [
+    {
+      "q": "What is the first part of the radio medical report to the receiving hospital?",
+      "options": [
+        "The patient's chief complaint",
+        "The patient's age and sex",
+        "Your unit identification and provider level",
+        "The patient's baseline vital signs"
+      ],
+      "correct": 2,
+      "why": "The report opens with who is calling and at what level of care, followed by the ETA. The chief complaint is what most people want to lead with, but it comes fourth, after the age and sex."
+    },
+    {
+      "q": "Medical direction orders a medication that you believe is wrong for this patient. What should you do?",
+      "options": [
+        "Question the order with the physician",
+        "Give it, because a physician ordered it",
+        "Ignore the order and say nothing more",
+        "Give half the dose as a compromise"
+      ],
+      "correct": 0,
+      "why": "Questioning the order may show that the physician misunderstood your report, or it may bring an explanation. Giving it without question is the tempting answer, but the order is only as good as what the physician heard."
+    },
+    {
+      "q": "Which statement belongs in a radio report?",
+      "options": [
+        "\"She is clearly having a gallbladder attack.\"",
+        "\"I think he is faking the back pain.\"",
+        "\"Patient is Mary Jones of 14 Oak Street.\"",
+        "\"Patient complains of pain in the right upper abdomen.\""
+      ],
+      "correct": 3,
+      "why": "You report assessment findings in objective language. A field diagnosis and a personal opinion do not belong, and a patient's name is never given over the air because radio traffic can be overheard."
+    },
+    {
+      "q": "Why do you wait about 1 second after pressing the push-to-talk button before you speak?",
+      "options": [
+        "To give the hospital time to answer the call",
+        "To keep the first word from being cut off",
+        "To let the repeater change its frequency",
+        "To keep the transmission under 30 seconds"
+      ],
+      "correct": 1,
+      "why": "Speaking the instant you press the button clips the first word of the transmission. The short pause lets the system open so the whole message goes out."
+    },
+    {
+      "q": "What does a repeater do in an EMS radio system?",
+      "options": [
+        "Records all radio traffic for later review",
+        "Sends ECG and vital sign data to the hospital",
+        "Scrambles the signal so it cannot be overheard",
+        "Receives a weak signal and retransmits it at higher power"
+      ],
+      "correct": 3,
+      "why": "A repeater picks up low-power signals, such as from a portable radio, and retransmits them at higher power on a different frequency. Sending ECG and vital sign data is telemetry."
+    }
+  ],
+  "summary": "<p>Good radio work starts before you speak: listen for a clear frequency, press the button, wait a second, hold the microphone 2 to 3 inches away, name the unit you are calling and then yourself, and wait for the go-ahead. Keep transmissions short, in plain English, objective, and free of the patient's name. The radio medical report has 12 parts in a fixed order, starting with your unit and level and the ETA and ending with care given, the response to it and any need for medical direction. Orders are repeated back word for word, unclear orders are clarified, and an order that seems inappropriate is questioned.</p>"
+}

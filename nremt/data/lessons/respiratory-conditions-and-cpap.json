@@ -1,0 +1,105 @@
+{
+  "id": "respiratory-conditions-and-cpap",
+  "title": "Respiratory assessment, CPAP and specific conditions",
+  "chapter": 19,
+  "section": "ch19-conditions",
+  "hook": "<p>It is 3 a.m. A 68-year-old woman is sitting bolt upright on the edge of her bed, gasping. She woke up unable to breathe. Her ankles are swollen, you hear crackles in both lungs, and she is coughing up pink, frothy sputum. Your partner wants to lay her flat and raise her legs.</p><p>That would make her worse. Breathing emergencies look alike from across the room, but each one has a mechanism, a few key signs and one or two things you must do or must not do.</p>",
+  "steps": [
+    {
+      "find": "A patient complains of difficulty breathing.",
+      "act": "Assess the patient instead of relying on the complaint alone. Do the primary assessment first, then take the history with OPQRST and SAMPLE. Place the pulse oximeter before oxygen if it is ready, for a room air baseline, but never delay oxygen to get a reading."
+    },
+    {
+      "find": "On exam you look for the tripod position, retractions, accessory muscle use, flared nostrils, pursed lips, a barrel chest, swelling of the feet or low back, and how many words the patient can say per breath.",
+      "act": "Use these to judge severity. Altered mental status, one-word speech and an SpO<sub>2</sub> below 95% are the findings to worry about."
+    },
+    {
+      "find": "You listen to the lungs.",
+      "act": "Wheezes (mainly on expiration) mean narrowed lower airways, as in asthma and sometimes COPD. Crackles (rales, on inspiration) mean fluid in the alveoli, as in pulmonary edema. Rhonchi mean secretions in the larger airways, as in pneumonia, bronchitis or aspiration. Stridor (on inspiration, usually heard without a stethoscope) means partial upper airway obstruction."
+    },
+    {
+      "find": "The patient has crackles, pink frothy sputum, swollen ankles and distended neck veins: pulmonary edema from heart failure.",
+      "act": "Sit the patient up with the legs down, not elevated. Give oxygen and use CPAP if protocol allows and nothing rules it out."
+    },
+    {
+      "find": "You are considering CPAP. The patient is alert, breathing on his own, able to sit up and hold a mask seal, with a systolic pressure of 90 or higher.",
+      "act": "Apply CPAP per protocol and reassess constantly. If mental status or breathing worsens, take it off and ventilate with a BVM."
+    },
+    {
+      "find": "The patient has wheezing, a prescribed rescue inhaler and breathing that is still adequate.",
+      "act": "With medical direction, assist with the metered-dose inhaler: the patient exhales, seals the lips around the mouthpiece, presses the canister while breathing in slowly and holds the breath for 5 to 10 seconds. A spacer makes the timing easier."
+    }
+  ],
+  "ideas": [
+    "<b>CPAP</b> delivers continuous positive pressure and oxygen through a sealed mask. It keeps the small airways and alveoli from collapsing at the end of each breath. It does not breathe for the patient, so the patient must be breathing on his own.",
+    "<b>No CPAP</b> for a patient with depressed mental status, no spontaneous breathing, inability to sit up or keep a mask seal, a systolic pressure under 90 or shock, nausea or vomiting, chest trauma or suspected pneumothorax, or an upper GI bleed or recent stomach surgery.",
+    "<b>COPD:</b> long smoking history, often worse with an infection. Titrate oxygen to the target in your protocol (commonly an SpO<sub>2</sub> of 88 to 92%), but never withhold it from a hypoxic patient.",
+    "<b>Asthma:</b> episodic airway narrowing with a trigger. <b>Pneumonia:</b> cough, fever, pain on breathing, crackles on one side. <b>Pulmonary embolism:</b> sudden sharp chest pain and shortness of breath with a fast pulse, often after immobility or with a swollen, painful leg. <b>Spontaneous pneumothorax:</b> sudden sharp pain with decreased or absent breath sounds on one side; no CPAP.",
+    "<b>Epiglottitis</b> (tripod position, muffled voice, drooling, stridor) and <b>croup</b> (ages 6 months to 4 years, barking cough, often at night): do not look in the throat or put anything in the mouth. Transport calmly and promptly.",
+    "<b>Bronchiolitis (RSV)</b> in infants and children under 2: suctioning the nose with a bulb syringe can make a real difference.",
+    "<b>Rescue inhalers</b> (albuterol, levalbuterol) treat an acute attack. <b>Maintenance inhalers</b> (such as beclomethasone, Flovent and Advair) are for daily control and are not used for an acute attack.",
+    "<b>Inhaled bronchodilators</b> speed the pulse and cause tremors and jitteriness. A patient whose breathing is inadequate cannot pull the medication in and needs ventilation instead."
+  ],
+  "misconception": {
+    "wrong": "The wheezing has stopped, so the asthma attack is over and the patient is getting better.",
+    "right": "A worsening patient can lose the wheezes entirely because too little air is moving to make any sound. Quiet lungs in a patient who still looks sick and exhausted are an emergency, not an improvement."
+  },
+  "check": [
+    {
+      "q": "A patient in pulmonary edema is alert and breathing 30 times a minute with crackles in both lungs. Which finding would rule out CPAP?",
+      "options": [
+        "An SpO2 of 86% on room air",
+        "A history of heart failure",
+        "A blood pressure of 82/50",
+        "Pink, frothy sputum"
+      ],
+      "correct": 2,
+      "why": "CPAP reduces the blood returning to the heart and can lower blood pressure, so it is not used with a systolic pressure under 90 or in shock. A low saturation, heart failure and frothy sputum are the reasons to use CPAP, not reasons to avoid it."
+    },
+    {
+      "q": "A 3-year-old is sitting forward, drooling, with a muffled voice, stridor and a fever. What do you do?",
+      "options": [
+        "Keep him calm and upright, do not look in the throat, and transport",
+        "Look in the mouth with a tongue depressor to find the cause",
+        "Lay him flat and suction the back of the throat",
+        "Insert an oropharyngeal airway to keep the airway open"
+      ],
+      "correct": 0,
+      "why": "This is the picture of epiglottitis. Inspecting the throat or putting anything in the mouth can trigger spasm and complete obstruction. Looking for the cause is tempting, but the safe care is a calm child, a position of comfort and rapid transport."
+    },
+    {
+      "q": "You hear a high-pitched sound when a patient breathes in, loud enough to hear without a stethoscope. What does it point to?",
+      "options": [
+        "Fluid in the alveoli",
+        "Partial obstruction of the upper airway",
+        "Narrowing of the small lower airways",
+        "Secretions in the larger airways"
+      ],
+      "correct": 1,
+      "why": "Stridor is an inspiratory sound from a partly blocked upper airway. Wheezes come from narrowed lower airways and are heard mainly on expiration, crackles mean fluid in the alveoli, and rhonchi mean secretions in larger airways."
+    },
+    {
+      "q": "A patient with asthma is wheezing and hands you two inhalers: albuterol and Advair. With medical direction, which do you assist with?",
+      "options": [
+        "Advair, because it is the stronger medication",
+        "Both, one right after the other",
+        "Neither, because inhalers are outside EMT scope",
+        "Albuterol, because it is the rescue inhaler"
+      ],
+      "correct": 3,
+      "why": "Albuterol is a fast-acting rescue bronchodilator for acute attacks. Advair is a maintenance inhaler for daily control and does not treat an acute attack."
+    },
+    {
+      "q": "A patient with COPD is confused, cyanotic and has an SpO2 of 80%. A family member says, \"Don't give him oxygen, it will stop his breathing.\" What do you do?",
+      "options": [
+        "Withhold oxygen and transport quickly",
+        "Give oxygen, because he is hypoxic, and monitor his breathing",
+        "Give oxygen only if he stops breathing",
+        "Have him breathe into a paper bag"
+      ],
+      "correct": 1,
+      "why": "Oxygen is never withheld from a hypoxic patient. Only a small subset of COPD patients depend on low oxygen to trigger breathing, so you titrate the oxygen and watch the breathing, ready to assist ventilations. Withholding it leaves a certain danger, hypoxia, untreated to avoid an uncommon one."
+    }
+  ],
+  "summary": "<p>Breathing difficulty is assessed, not taken on report: primary assessment, OPQRST and SAMPLE, work of breathing, speech, skin, edema, SpO<sub>2</sub> and lung sounds. Wheezes, crackles, rhonchi and stridor each point to a different part of the airway, and vanishing wheezes in a sick patient mean failing air movement. CPAP helps a patient who is awake, breathing and has an adequate blood pressure, most of all in pulmonary edema, where the legs stay down. Epiglottitis and croup mean nothing in the mouth. Rescue inhalers treat attacks, maintenance inhalers do not, and a patient who cannot breathe adequately needs ventilation.</p>"
+}

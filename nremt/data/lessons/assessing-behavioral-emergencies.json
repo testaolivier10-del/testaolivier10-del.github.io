@@ -1,0 +1,103 @@
+{
+  "id": "assessing-behavioral-emergencies",
+  "title": "Assessing behavioral emergencies",
+  "chapter": 27,
+  "section": "ch27-behavioral-assessment",
+  "hook": "<p>A man is pacing a grocery store aisle, shouting at shoppers and knocking items off the shelves. The manager says, \"He's having some kind of breakdown.\" He is also drenched in sweat, and there is a medical alert bracelet on his wrist.</p><p>A person in a behavioral crisis is a patient, and the behavior is a sign to be assessed like any other. The first job is to look for a medical cause that can be treated, such as low blood sugar. The second is to approach in a way that keeps everyone safe and lets the patient feel heard.</p>",
+  "steps": [
+    {
+      "find": "You are sent to a person whose behavior the caller describes as strange, threatening or out of control.",
+      "act": "Start with the scene size-up. If the scene may be unsafe, law enforcement goes in before you do."
+    },
+    {
+      "find": "The scene is safe and you can approach.",
+      "act": "Identify yourself and your role. Speak slowly and calmly, keep eye contact, listen actively and acknowledge what the patient is feeling without judging it. Stay at least 3 feet away and keep watching for signs that aggression is building."
+    },
+    {
+      "find": "The behavior came on fast: the patient is erratic or hostile, sweaty, with a rapid pulse and a normal blood pressure.",
+      "act": "Suspect low blood sugar and assess for it. Sudden behavior change with these signs is a medical problem until shown otherwise."
+    },
+    {
+      "find": "The patient is restless and confused with bluish skin; or has confusion, slurred speech and one-sided weakness; or has a personality change after a blow to the head.",
+      "act": "Think hypoxia, stroke or head trauma. Screen for medical and traumatic causes during the primary assessment before you settle on a psychiatric one. A recent seizure and exposure to extreme heat or cold can also change behavior."
+    },
+    {
+      "find": "The patient hears voices no one else hears, holds fixed beliefs that are clearly false, barely interacts or moves in very unusual ways, or speaks in a way that does not hang together.",
+      "act": "Recognize acute psychosis. What the patient hears or believes is real to the patient, so stay calm, respectful and non-judgmental, acknowledge how the patient feels, and keep assessing: visual hallucinations in particular can come from a medical cause such as drug intoxication or alcohol withdrawal."
+    },
+    {
+      "find": "The patient allows you to continue.",
+      "act": "Do as detailed an exam as the patient will permit and take a thorough history: past psychiatric history, current medications and any missed doses, diabetes, and substance use."
+    }
+  ],
+  "ideas": [
+    "A <b>behavioral emergency</b> is behavior that, in its situation, is unacceptable or intolerable to the patient, the family or the community, and it is often potentially harmful to the patient or others.",
+    "<b>Context and culture matter.</b> What looks unusual to you may be entirely normal in the patient's culture or situation.",
+    "<b>Medical mimics to rule out first:</b> low blood sugar, hypoxia, stroke, head trauma, the period after a seizure, and extremes of heat or cold.",
+    "<b>It is not either-or.</b> Medical and psychiatric conditions can exist together, and a medical problem can make a long-standing psychiatric illness worse.",
+    "<b>Acute psychosis</b> is a severe break in the ability to process reality, marked by at least one of: hallucinations, delusions (false, fixed beliefs), catatonia, or thought disorder.",
+    "<b>De-escalation is care.</b> A calm voice, active listening and respect for the patient's feelings do much of the work of the assessment."
+  ],
+  "misconception": {
+    "wrong": "A patient with a known mental illness who is acting strangely is having a psychiatric episode, so a medical workup is not needed.",
+    "right": "People living with a mental illness get low blood sugar, hypoxia, strokes and head injuries like anyone else. Every patient with a behavior change is screened for medical and traumatic causes, and both kinds of problem can be present at once."
+  },
+  "check": [
+    {
+      "q": "A man became hostile and confused over about 20 minutes. He is sweating heavily, his pulse is 118 and his blood pressure is normal. Which cause should you check for first?",
+      "options": [
+        "Low blood sugar",
+        "Schizophrenia",
+        "Heat exposure",
+        "Alcohol withdrawal"
+      ],
+      "correct": 0,
+      "why": "Rapid-onset erratic or hostile behavior with sweating, a rapid pulse and a normal blood pressure is the picture of low blood sugar, which is treatable. Assuming a psychiatric illness first risks missing it."
+    },
+    {
+      "q": "A patient calmly tells you that his neighbors have replaced his heart with a radio. No amount of evidence changes his mind. What is this called?",
+      "options": [
+        "A hallucination",
+        "Catatonia",
+        "A delusion",
+        "Amnesia"
+      ],
+      "correct": 2,
+      "why": "A delusion is a false, fixed belief. A hallucination is something sensed that is not there, such as hearing voices; this patient is describing a belief, not something he is hearing or seeing right now."
+    },
+    {
+      "q": "You are approaching a patient who is agitated but not violent. Which approach fits de-escalation?",
+      "options": [
+        "Stand over the patient and give firm orders loudly",
+        "Stay very close and hold the patient's arm to reassure",
+        "Avoid eye contact and talk only to the family",
+        "Identify yourself, speak slowly and calmly, and listen"
+      ],
+      "correct": 3,
+      "why": "De-escalation means identifying yourself, speaking slowly and calmly, keeping eye contact, listening actively and acknowledging the patient's feelings, from at least 3 feet away. Touching or crowding an agitated patient can feel threatening and escalate things, even when it is meant kindly."
+    },
+    {
+      "q": "A patient with a long history of schizophrenia is far more confused than usual today, and his family says he has been short of breath with a cough for three days. What is the best way to think about this?",
+      "options": [
+        "It is his psychiatric illness, so medical checks can wait",
+        "A medical problem may be present and worsening his symptoms",
+        "It cannot be medical because he has a psychiatric diagnosis",
+        "It must be purely medical because he was stable before"
+      ],
+      "correct": 1,
+      "why": "Medical and psychiatric conditions can coexist, and a real medical problem such as hypoxia can worsen the symptoms of a chronic psychiatric illness. Choosing only one explanation is the error, in either direction."
+    },
+    {
+      "q": "Dispatch reports a man threatening neighbors with a bat. You arrive before the police. What do you do first?",
+      "options": [
+        "Approach slowly and begin talking to him",
+        "Send your partner around to the back door",
+        "Wait in a safe place until police secure the scene",
+        "Enter quickly to complete a primary assessment"
+      ],
+      "correct": 2,
+      "why": "The scene size-up comes first, and when the scene calls for it the police go in before you do. De-escalation is the right tool once the scene is safe; it does not make an armed scene safe."
+    }
+  ],
+  "summary": "<p>A behavioral emergency is behavior that, in its context, is intolerable to the patient or others and may be harmful. Read behavior in light of the situation and the patient's culture. Before settling on a psychiatric cause, screen for the medical mimics: low blood sugar, hypoxia, stroke, head trauma, a recent seizure, and heat or cold. Medical and psychiatric problems can exist together. Acute psychosis shows at least one of hallucinations, delusions, catatonia or thought disorder. Make the scene safe first, then identify yourself, stay calm and respectful at 3 feet or more, listen, and gather as full an exam and history as the patient allows, including medications, missed doses, diabetes and substance use.</p>"
+}

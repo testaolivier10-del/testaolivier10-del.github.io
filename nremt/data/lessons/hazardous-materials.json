@@ -1,0 +1,102 @@
+{
+  "id": "hazardous-materials",
+  "title": "Hazardous materials",
+  "chapter": 39,
+  "section": "ch39-hazmat",
+  "hook": "<p>A tanker truck is on its side on a county road. Something is leaking from it, the driver is slumped in the cab, and a man who was first on scene is walking toward your ambulance, coughing and rubbing his eyes. Every instinct says run to the driver.</p><p>At a hazardous materials call the EMT who rushes in becomes the next patient. Your job is narrower and it comes first: recognize, call, control the scene, and identify the substance from a safe distance.</p>",
+  "steps": [
+    {
+      "find": "Clues suggest a hazardous material: a placard, a leak, a cloud, several people sick in the same place.",
+      "act": "Recognize it as a hazmat incident and stay back, uphill and upwind. Call for the resources it will take, and control the scene so no one else walks in."
+    },
+    {
+      "find": "You need to know what the substance is.",
+      "act": "Identify it from a distance. Read placards through binoculars, and use the NFPA 704 diamond, DOT placards, shipping papers and Safety Data Sheets. Placards can be wrong, missing or out of date, so confirm with more than one source."
+    },
+    {
+      "find": "You need guidance on the substance.",
+      "act": "Start with the Emergency Response Guidebook (ERG). CHEMTREC is at 800-424-9300. Poison control is often forgotten and can advise on decontamination and treatment."
+    },
+    {
+      "find": "The scene is being organized into zones.",
+      "act": "Work in the cold zone, where the command post, staging and the EMS treatment area are. The warm zone holds the decontamination corridor. The hot zone is the danger area, for Technician-level responders in protective equipment only."
+    },
+    {
+      "find": "A patient walks or is carried out of the incident.",
+      "act": "Treat that patient as contaminated until it is proven otherwise. Contaminated patients are decontaminated before you treat and transport them."
+    },
+    {
+      "find": "Decontamination is under way.",
+      "act": "Gross decontamination takes off most of the material, secondary takes off most of what is left, and tertiary happens at the hospital. Check the places that hold residue: scalp and hair, armpits, groin, buttocks, between fingers and toes, ear canals and the navel."
+    }
+  ],
+  "ideas": [
+    "<b>EMT training level:</b> usually Awareness, sometimes Operations, not Technician. Technicians are the ones who plug and patch a leak.",
+    "<b>Your four jobs:</b> recognize, call for resources, control the scene, identify the substance safely.",
+    "<b>Three zones:</b> hot (danger), warm (decontamination), cold (command, staging, treatment).",
+    "<b>Four kinds of patient:</b> uninjured and clean, injured and clean, uninjured and contaminated, injured and contaminated.",
+    "<b>Water dilutes.</b> It does not neutralize most substances."
+  ],
+  "misconception": {
+    "wrong": "The driver is unconscious in the cab, so the right thing is to go in quickly, pull him out, and deal with the chemical afterward.",
+    "right": "An EMT without the training and protective equipment for the hot zone does not enter it. Going in adds a patient and removes a rescuer. Recognize the incident, call for a hazmat team, and treat patients in the cold zone after decontamination."
+  },
+  "check": [
+    {
+      "q": "At a hazmat incident, where is the EMS treatment area set up?",
+      "options": [
+        "In the hot zone, next to the patients",
+        "In the warm zone, inside the decon corridor",
+        "At the edge between the hot and warm zones",
+        "In the cold zone, with command and staging"
+      ],
+      "correct": 3,
+      "why": "The cold zone is the safe area that holds the command post, staging and EMS treatment. The warm zone is for decontamination and the hot zone is the contaminated danger area, so patients reach the treatment area only after decontamination."
+    },
+    {
+      "q": "You can see a diamond-shaped placard on an overturned tanker about 100 yards away. How do you read it?",
+      "options": [
+        "Through binoculars, from where you are",
+        "By walking up from the uphill side",
+        "By driving the ambulance closer to it",
+        "By sending a bystander to look at it"
+      ],
+      "correct": 0,
+      "why": "The substance is identified only by methods that keep you away from it, and binoculars do that. Any approach on foot or by vehicle puts someone in the danger area before anyone knows what the material is."
+    },
+    {
+      "q": "A placard gives you a likely substance. What should you do before relying on it?",
+      "options": [
+        "Nothing more; placards are regulated and reliable",
+        "Confirm it against other sources, such as shipping papers",
+        "Smell the air to see whether it matches",
+        "Wait for the driver to wake up and ask him"
+      ],
+      "correct": 1,
+      "why": "A placard can be wrong, so no single source is trusted alone. You cross-check it against the shipping papers, Safety Data Sheets, the ERG, CHEMTREC or poison control."
+    },
+    {
+      "q": "A man who was near the leak walks up to your ambulance in the cold zone, coughing. He says he feels fine and was never touched by the liquid. How do you regard him?",
+      "options": [
+        "As clean, because he walked out without help",
+        "As clean, because he reports no contact",
+        "As contaminated until it is proven otherwise",
+        "As a bystander who can be sent home"
+      ],
+      "correct": 2,
+      "why": "Every patient leaving a hazmat site is treated as contaminated until proven otherwise. His own report and the fact that he can walk do not show that he is clean, and loading him into the ambulance could contaminate you and the vehicle."
+    },
+    {
+      "q": "Which statement about decontaminating with water is correct?",
+      "options": [
+        "Water neutralizes most hazardous chemicals",
+        "Water dilutes most chemicals; it does not neutralize them",
+        "Water finishes decontamination in the field",
+        "Water should never be used on a contaminated patient"
+      ],
+      "correct": 1,
+      "why": "Water dilutes; it does not neutralize most substances. That is why decontamination runs in phases, with tertiary decontamination still done at the hospital, and why hidden areas such as the hair, armpits and groin need attention."
+    }
+  ],
+  "summary": "<p>At a hazardous materials incident the EMT recognizes the problem, calls for resources, controls the scene and identifies the substance from a distance, using binoculars, placards, the NFPA 704 diamond, shipping papers and Safety Data Sheets, and confirming with more than one source. The ERG, CHEMTREC (800-424-9300) and poison control give guidance. EMTs are trained to the Awareness or Operations level and stay out of the hot zone; decontamination happens in the warm zone and treatment in the cold zone. Every patient leaving the site is contaminated until proven otherwise. Decontamination is gross, then secondary, then tertiary at the hospital, and water dilutes without neutralizing.</p>"
+}

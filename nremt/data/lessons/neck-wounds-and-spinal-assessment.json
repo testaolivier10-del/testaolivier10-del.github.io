@@ -1,0 +1,103 @@
+{
+  "id": "neck-wounds-and-spinal-assessment",
+  "title": "Neck wounds and spinal assessment",
+  "chapter": 33,
+  "section": "ch33-head-neck-spine",
+  "hook": "<p>A football player went down after a head-first tackle. He is awake, wearing a helmet and shoulder pads, and says his neck hurts when you press on the middle of it. On the next field over, a man has a deep cut on the side of his neck that is bleeding heavily.</p><p>Both calls are about the same few inches of the body. One needs you to keep the spine still without making things worse. The other needs you to stop bleeding and keep air out of a vein, without squeezing the airway.</p>",
+  "steps": [
+    {
+      "find": "An open wound on the neck is bleeding.",
+      "act": "Open the airway, then put a gloved hand over the wound right away. Replace the hand with an occlusive dressing that reaches 2 inches past the wound edges and is sealed on all four sides, and hold pressure to stop the bleeding. The neck veins can suck air in, and that air can travel to the lungs and stop the heart."
+    },
+    {
+      "find": "You are holding pressure on a neck wound.",
+      "act": "Press on the bleeding side only. Never compress both carotid arteries at the same time, and do not let your pressure or your bandage restrict breathing. Once the bleeding stops, bandage the dressing in place without squeezing the airway or the vessels."
+    },
+    {
+      "find": "A trauma patient may have a spinal injury.",
+      "act": "Check the five NEXUS-based criteria. The cervical spine is low risk only if all five are absent: midline neck tenderness, intoxication, a reduced level of alertness, a focal neurologic deficit, and a painful distracting injury. If any one is present, restrict spinal motion per local protocol."
+    },
+    {
+      "find": "The patient is a young child.",
+      "act": "Give the mechanism of injury more weight. A young child cannot reliably report pain, and the softer, more cartilaginous vertebrae can let the cord be injured with no tenderness or deformity to find."
+    },
+    {
+      "find": "The patient is going onto a long backboard.",
+      "act": "A long backboard is one tool for spinal motion restriction; a scoop stretcher, a vacuum mattress or the ambulance stretcher with a collar can also be used, per local protocol. If a board is used, log-roll the patient, with the EMT at the head calling the move. Pad the gaps between the patient and the board. Strap the body first (upper chest, pelvis, thighs) and secure the head last. For a young child (about 6 or younger; the age varies by text), pad under the shoulders to make up for the larger head. Tilt the board to the left for a patient in late pregnancy."
+    },
+    {
+      "find": "The patient is wearing a helmet.",
+      "act": "Leave it on if it fits snugly, the airway and breathing are fine, and you can restrict spinal motion with it in place. Take it off if it blocks airway or breathing care, fits loosely, gets in the way of spinal motion restriction, or the patient is in cardiac arrest. With a football-style helmet and shoulder pads, remove both together or leave both on."
+    }
+  ],
+  "ideas": [
+    "<b>A neck wound has two dangers:</b> heavy bleeding and air embolism. The occlusive dressing, sealed on all four sides, is what keeps air out of the vein.",
+    "<b>Pressure still saves lives on the neck.</b> The cautions are: do not block breathing, and never press on both carotid arteries at once.",
+    "<b>NEXUS has five criteria,</b> and all five must be absent for a low-risk neck: no midline tenderness, no intoxication, normal alertness, no focal neurologic deficit, no painful distracting injury.",
+    "<b>Intoxication and alertness are separate.</b> A patient can be sober and too drowsy to assess, or wide awake and drunk.",
+    "<b>On a backboard, the head goes last.</b> Strap the torso first. If the head is fixed first and the body shifts, the neck takes the movement.",
+    "<b>Helmet and shoulder pads go together.</b> Removing only one bends the neck forward or back."
+  ],
+  "misconception": {
+    "wrong": "If the patient says the neck does not hurt, the spine is fine and nothing more is needed.",
+    "right": "No pain only counts when the patient can be trusted to feel and report it. Intoxication, a reduced level of alertness, or a painful distracting injury such as a femur fracture can hide a broken neck, and a young child may have a cord injury with no tenderness at all. All five criteria must be absent."
+  },
+  "check": [
+    {
+      "q": "A man has a deep laceration on the left side of his neck with steady, dark bleeding. After you open the airway and cover the wound with a gloved hand, what dressing do you apply?",
+      "options": [
+        "A loose gauze pad taped along the top edge only",
+        "A circumferential pressure bandage wrapped around the neck",
+        "An occlusive dressing sealed on all four sides, with pressure",
+        "A dry sterile dressing left open on one side to vent"
+      ],
+      "correct": 2,
+      "why": "A neck wound can pull air into an open vein, so it gets an occlusive dressing that extends 2 inches past the edges and is sealed on all four sides, with pressure to stop the bleeding. A bandage wrapped tightly around the neck is tempting for bleeding control, but it can restrict the airway and compress the vessels on both sides."
+    },
+    {
+      "q": "A driver in a rollover crash is awake and oriented, denies neck pain, has no midline tenderness, and has normal strength and sensation. He smells of alcohol and admits to several drinks. How do you treat his spine?",
+      "options": [
+        "Restrict spinal motion, because intoxication is present",
+        "Clear his spine, because he is alert and oriented",
+        "Clear his spine, because he has no neck tenderness",
+        "Let him decide, because he can answer your questions"
+      ],
+      "correct": 0,
+      "why": "All five criteria must be absent, and intoxication is one of them. Alcohol blunts the pain the other criteria depend on. Being alert and oriented is tempting, but alertness and intoxication are two separate criteria, and passing one does not cancel the other."
+    },
+    {
+      "q": "You are securing a patient to a long backboard. In what order are the straps applied?",
+      "options": [
+        "Head first, then upper chest, pelvis and thighs",
+        "Thighs first, then the head, then the chest",
+        "Head and chest together, then pelvis and thighs",
+        "Upper chest, pelvis and thighs, then the head last"
+      ],
+      "correct": 3,
+      "why": "The body is strapped first and the head is secured last. If the head is fixed while the torso can still slide, any shift of the body bends the neck. Securing the head first feels safer because the neck is the worry, but it does the opposite."
+    },
+    {
+      "q": "A hockey player with a possible neck injury is breathing normally and talking. His helmet fits snugly and he is wearing shoulder pads. What do you do with the equipment?",
+      "options": [
+        "Remove the helmet and leave the shoulder pads on",
+        "Leave both the helmet and the shoulder pads in place",
+        "Remove the shoulder pads and leave the helmet on",
+        "Loosen the helmet so the head can settle on the board"
+      ],
+      "correct": 1,
+      "why": "A snug helmet stays on when there is no airway or breathing problem and spinal motion can be restricted with it in place. With shoulder pads, it is both or neither: taking off only the helmet drops the head back, and taking off only the pads pushes it forward."
+    },
+    {
+      "q": "A 3-year-old was an unrestrained passenger in a high-speed crash. She is crying, has no visible deformity, and does not react when you press along her neck. What is the best reading of this?",
+      "options": [
+        "The lack of tenderness makes a spinal injury unlikely",
+        "A crying child is alert, so the criteria are all met",
+        "The mechanism still makes a spinal injury a real concern",
+        "Deformity would be visible if the spine were injured"
+      ],
+      "correct": 2,
+      "why": "In young children the mechanism of injury carries more weight. They cannot reliably report pain, and their cartilaginous vertebrae allow a cord injury without tenderness or deformity. Relying on the missing tenderness is the tempting mistake, because that finding is reassuring in an adult who can report it."
+    }
+  ],
+  "summary": "<p>A neck wound threatens heavy bleeding and air embolism: open the airway, cover the wound with a gloved hand, then an occlusive dressing sealed on all four sides and 2 inches past the edges, with pressure that does not restrict breathing and never compresses both carotids. For the spine, the five NEXUS-based criteria (midline tenderness, intoxication, reduced alertness, focal neurologic deficit, painful distracting injury) must all be absent before the neck is low risk, and mechanism counts for more in young children. On a long backboard, pad the gaps, strap the body first and the head last, pad under a young child's shoulders, and tilt the board left in late pregnancy. A snug helmet stays on unless it blocks airway care, fits loosely, prevents spinal motion restriction or the patient is in cardiac arrest, and a helmet and shoulder pads come off together or not at all.</p>"
+}

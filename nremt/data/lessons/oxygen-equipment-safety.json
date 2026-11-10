@@ -1,0 +1,99 @@
+{
+  "id": "oxygen-equipment-safety",
+  "title": "Oxygen delivery and equipment safety",
+  "chapter": 10,
+  "section": "ch10-oxygen-equipment",
+  "hook": "<p>You are loading a patient for a 40 minute transport. As you lift the portable oxygen cylinder onto the stretcher, you glance at the gauge. It reads 300 psi.</p><p>That is a problem to solve now, at the scene, not halfway down the highway. Oxygen equipment holds very high pressure and feeds fire, so the details of the hardware matter. This lesson covers the Venturi mask, the parts of an oxygen system, and the rules that keep it safe.</p>",
+  "steps": [
+    {
+      "find": "A patient with COPD is hypoxic.",
+      "act": "Give oxygen and titrate it toward the patient's own baseline, commonly the low 90s, not 100%. Watch mental status and breathing effort as you go. Leaving a hypoxic patient hypoxic is the larger and more immediate danger."
+    },
+    {
+      "find": "You want a controlled, precise oxygen percentage, as for a COPD patient.",
+      "act": "A Venturi mask is the tool for this. It delivers a set percentage, unlike the more variable concentration of a standard mask."
+    },
+    {
+      "find": "The gauge on a portable cylinder reads about 200 psi or less.",
+      "act": "Treat the cylinder as empty and change it. About 200 psi is the safe residual pressure. Check the gauge before a long transport so you do not run out on the way."
+    },
+    {
+      "find": "You are moving or storing a cylinder.",
+      "act": "Secure it so it cannot fall. If the valve stem snaps off, about 2,000 psi turns the cylinder into a projectile. Keep it away from heat."
+    },
+    {
+      "find": "There is oil, grease, a petroleum-based product or adhesive tape near the fittings.",
+      "act": "Keep them away from the equipment. Oxygen makes things burn much faster, so these are a fire risk."
+    }
+  ],
+  "ideas": [
+    "<b>Why titrate in COPD:</b> a small number of COPD patients retain carbon dioxide and depend more on low oxygen as a trigger to breathe. A large excess of oxygen can worsen their ventilation. That is a reason to titrate, not to withhold.",
+    "<b>The old rule is gone.</b> Denying oxygen to COPD patients to protect the drive to breathe is no longer taught.",
+    "<b>Pin-index safety system:</b> stops the wrong regulator from being connected to the wrong gas cylinder.",
+    "<b>Regulator:</b> steps the cylinder's very high pressure down to a usable level.",
+    "<b>Flowmeter:</b> controls and displays the liters per minute going to the patient.",
+    "<b>Pressures:</b> a full portable cylinder reads roughly 2,000 psi. At about 200 psi it is treated as empty, because the last of the pressure does not give a reliable flow and a fully emptied cylinder can draw in contaminants."
+  ],
+  "misconception": {
+    "wrong": "Giving oxygen to a COPD patient will stop their breathing, so it is safer to hold it back.",
+    "right": "A hypoxic COPD patient gets oxygen. You titrate toward the patient's baseline, often the low 90s, and watch mental status and effort. Hypoxia is the bigger and more immediate danger."
+  },
+  "check": [
+    {
+      "q": "Which part of an oxygen system controls and shows how many liters per minute the patient is getting?",
+      "options": [
+        "The regulator",
+        "The flowmeter",
+        "The pin-index system",
+        "The pressure gauge"
+      ],
+      "correct": 1,
+      "why": "The flowmeter controls and displays liters per minute. The regulator is the easy one to confuse it with: it steps the cylinder's high pressure down to a usable level."
+    },
+    {
+      "q": "What is the purpose of the pin-index safety system?",
+      "options": [
+        "It shuts the cylinder off if it falls over",
+        "It limits the flow to a safe number of liters",
+        "It prevents the wrong regulator from fitting the wrong gas cylinder",
+        "It shows how much pressure is left in the cylinder"
+      ],
+      "correct": 2,
+      "why": "The pins make a regulator fit only the gas it is meant for, so another medical gas cannot be connected by mistake. It does not measure pressure or limit flow."
+    },
+    {
+      "q": "At about what gauge reading is a portable oxygen cylinder treated as empty and changed?",
+      "options": [
+        "About 200 psi",
+        "About 20 psi",
+        "About 1,000 psi",
+        "About 2,000 psi"
+      ],
+      "correct": 0,
+      "why": "The safe residual pressure is about 200 psi. Below that the flow is not reliable, and a cylinder run completely empty can draw in contaminants. About 2,000 psi is a full cylinder."
+    },
+    {
+      "q": "Why must an oxygen cylinder be secured so it cannot fall?",
+      "options": [
+        "A fall can change the oxygen percentage inside",
+        "A fall can reset the flowmeter to zero",
+        "A fall can make the gauge read too high",
+        "A broken valve stem can turn it into a projectile"
+      ],
+      "correct": 3,
+      "why": "A full cylinder holds about 2,000 psi. If the valve stem snaps off, that pressure drives the cylinder like a projectile."
+    },
+    {
+      "q": "What does a Venturi mask do that a standard mask does not?",
+      "options": [
+        "It ventilates a patient who is not breathing",
+        "It delivers a precisely controlled oxygen percentage",
+        "It delivers 100% oxygen at any flow rate",
+        "It works without being connected to a cylinder"
+      ],
+      "correct": 1,
+      "why": "A Venturi mask delivers a set, controlled percentage of oxygen, which is useful in COPD where the goal is enough oxygen and not more. It does not ventilate; that takes a bag-valve mask."
+    }
+  ],
+  "summary": "<p>A Venturi mask delivers a controlled oxygen percentage, which suits COPD patients, who get oxygen titrated toward their own baseline and are never left hypoxic. On the equipment side, the pin-index system prevents a wrong gas connection, the regulator reduces cylinder pressure, and the flowmeter sets liters per minute. A full portable cylinder reads about 2,000 psi and is changed at about 200 psi. Secure cylinders against falling, keep them from heat, and keep oil, grease, petroleum products and adhesive tape away from oxygen equipment.</p>"
+}

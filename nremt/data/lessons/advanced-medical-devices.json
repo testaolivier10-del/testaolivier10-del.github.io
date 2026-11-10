@@ -1,0 +1,108 @@
+{
+  "id": "advanced-medical-devices",
+  "title": "Advanced medical devices in the home",
+  "chapter": 37,
+  "section": "ch37-devices",
+  "hook": "<p>A mother meets you at the door. Her 30-year-old son has a spinal cord injury and lives on a home ventilator. The machine is alarming, his lips are turning blue, and she does not know what the alarm means. Neither do you, and you do not need to.</p><p>More patients now live at home with ventilators, heart pumps, feeding tubes and dialysis access. You are not expected to repair the device. You are expected to know the one or two things each device changes about your care.</p>",
+  "steps": [
+    {
+      "find": "A patient on a home ventilator is getting worse and the machine is alarming.",
+      "act": "Disconnect the ventilator circuit and ventilate with a bag-valve mask attached to the tracheostomy tube. That takes equipment failure out of the picture and lets you feel for a displaced or blocked tube. The causes are DOPE: Displacement, Obstruction, Pneumothorax, Equipment failure."
+    },
+    {
+      "find": "A patient with a tracheostomy tube is struggling to breathe.",
+      "act": "Think obstruction before displacement. A tube blocked by mucus is the most common problem; a tube that has come out of place is rare. A blocked tube is cleared by suctioning it, as your protocol allows; the caregiver usually has the supplies and knows the routine."
+    },
+    {
+      "find": "A cardiac arrest patient has a lump under the skin below the collarbone, the sign of an implanted pacemaker or defibrillator.",
+      "act": "Use the AED, with the pad placed off to the side of the device (about an inch away), not on top of it. If an implanted defibrillator fires while you are touching the patient, it is not dangerous to you: its energy is far lower than an AED's."
+    },
+    {
+      "find": "A patient with a ventricular assist device (VAD) is alert, warm and pink, and you cannot feel a pulse.",
+      "act": "That can be normal with a working pump. Judge perfusion by the hum of the pump (listen over the left chest and upper abdomen), mental status, and skin color and temperature, not by the pulse. A VAD patient who is unresponsive with poor perfusion (pale or gray, cool skin) gets chest compressions, as your protocol directs."
+    },
+    {
+      "find": "A feeding tube has come out, or a patient with a urinary catheter needs to be moved.",
+      "act": "Do not try to put a feeding tube back. Cover the opening with a dressing and transport. Keep a catheter's drainage bag below the level of the patient the whole time, including during the move to the stretcher."
+    },
+    {
+      "find": "A dialysis fistula is bleeding, or peritoneal dialysis fluid is draining cloudy.",
+      "act": "A fistula can bleed massively: apply direct pressure and keep it on. Cloudy peritoneal fluid suggests infection (peritonitis), so bring the bag to the hospital for testing."
+    },
+    {
+      "find": "A patient with a central line has a fever, or a patient with a VP shunt has altered mental status or a seizure.",
+      "act": "Do not access a central line; handle it gently, keep the site clean and suspect sepsis. A failed shunt lets fluid build up and pressure rise in the skull: manage the airway, prevent hypoxia, transport and consult medical control."
+    }
+  ],
+  "ideas": [
+    "<b>CPAP and BiPAP</b> rarely cause the emergency. Bring the device to the hospital even if it is not used during transport.",
+    "<b>DOPE</b> for a ventilator problem: Displacement, Obstruction, Pneumothorax, Equipment. First move: off the ventilator, onto the bag-valve mask.",
+    "<b>Pacemaker:</b> keeps the heart rate from going too slow. The pulse should still be palpable.",
+    "<b>Wearable defibrillator (vest):</b> it warns before it shocks. CPR is fine unless its voice prompt tells you to stand clear.",
+    "<b>VAD:</b> an implanted pump for a failing ventricle. The pulse may be absent or odd even when the device is working.",
+    "<b>Hemodialysis fistula:</b> no blood pressure on that arm.",
+    "<b>Central lines</b> (PICC, Groshong, implanted port) are a direct route for infection into the blood. EMTs generally do not use them."
+  ],
+  "misconception": {
+    "wrong": "When a home ventilator alarms, the first job is to work out what the alarm means and fix the machine.",
+    "right": "The first job is the patient. Take the patient off the ventilator and ventilate by bag-valve mask. If the patient improves, the machine was the problem; if bagging is hard or does not help, think of a displaced or blocked tube."
+  },
+  "check": [
+    {
+      "q": "A ventilator-dependent patient is cyanotic and the home ventilator is alarming. What do you do first?",
+      "options": [
+        "Silence the alarm and check the settings",
+        "Suction the mouth and give oxygen by mask",
+        "Call the equipment company for instructions",
+        "Disconnect the circuit and ventilate with a BVM"
+      ],
+      "correct": 3,
+      "why": "Removing the ventilator and bagging the patient rules out equipment failure and checks for displacement and obstruction at the same moment. Troubleshooting the machine or calling the company leaves a blue patient without ventilation."
+    },
+    {
+      "q": "A man with a ventricular assist device called because of nausea. He is alert, pink and warm, but you feel no radial or carotid pulse. What does that mean?",
+      "options": [
+        "He is in cardiac arrest and needs compressions now",
+        "The pump has failed and must be restarted by you",
+        "It can be normal; check pump sound, mental status and skin",
+        "The blood pressure cuff will give the answer instead"
+      ],
+      "correct": 2,
+      "why": "A VAD can move blood with little or no pulse you can feel. An alert patient with good skin color is perfusing. The pulse is the wrong tool here, so you rely on the pump sound, mental status and skin."
+    },
+    {
+      "q": "You are applying AED pads to a pulseless patient and see a hard lump under the skin below the left collarbone. Where does that pad go?",
+      "options": [
+        "About an inch away from the lump, not over it",
+        "Directly over the lump for the best contact",
+        "Nowhere; an AED cannot be used on this patient",
+        "On the abdomen, well below the rib cage"
+      ],
+      "correct": 0,
+      "why": "The lump is an implanted pacemaker or defibrillator. The AED is still used, with the pad offset from the device. A pad on top of it can block the shock, and withholding the AED denies the patient defibrillation."
+    },
+    {
+      "q": "A peritoneal dialysis patient has abdominal pain, and the fluid draining into the bag looks cloudy. What should you do with the bag?",
+      "options": [
+        "Empty it so the catheter keeps draining",
+        "Bring it to the hospital for testing",
+        "Leave it at home for the dialysis nurse",
+        "Raise it above the patient's abdomen"
+      ],
+      "correct": 1,
+      "why": "Cloudy fluid suggests peritonitis, and the hospital can test the fluid, so the bag goes with the patient. Emptying it or leaving it behind throws away the evidence."
+    },
+    {
+      "q": "A feeding tube has come completely out of the opening in a patient's abdomen. What is your care?",
+      "options": [
+        "Push the same tube gently back into the opening",
+        "Insert a suction catheter to hold the opening",
+        "Cover the opening with a dressing and transport",
+        "Leave the opening uncovered and advise a clinic visit"
+      ],
+      "correct": 2,
+      "why": "EMTs do not replace a feeding tube. The opening is covered and the patient is taken to the hospital, where the tube can be replaced properly. Pushing a tube back in can put it in the wrong place."
+    }
+  ],
+  "summary": "<p>Each home device changes one or two things. Ventilator trouble: take the patient off the machine, ventilate by bag-valve mask and think DOPE; in a tracheostomy, a mucus blockage is the usual cause. Implanted pacemakers and defibrillators: offset the AED pad, and a shock from the implanted device will not harm you. A VAD patient may have no pulse, so judge by pump sound, mental status and skin. Do not replace a feeding tube, keep a catheter bag below the patient, never take a blood pressure on a fistula arm, hold direct pressure on a bleeding fistula, and bring cloudy peritoneal fluid with you. Leave central lines alone and suspect sepsis; a failed VP shunt needs airway care, oxygenation and transport.</p>"
+}

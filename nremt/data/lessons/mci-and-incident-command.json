@@ -1,0 +1,112 @@
+{
+  "id": "mci-and-incident-command",
+  "title": "Multiple-casualty incidents and incident command",
+  "chapter": 39,
+  "section": "ch39-mci-ics",
+  "hook": "<p>A church van has rolled over on a rural highway. You and your partner are the first ambulance, the next one is 20 minutes away, and there are eleven people on the ground. One is in cardiac arrest. Several are screaming. One sits quietly against the guardrail, breathing very fast.</p><p>On a normal call you give one patient everything. Here that instinct kills people. For the next few minutes your job is to sort, not to treat.</p>",
+  "steps": [
+    {
+      "find": "There are more patients than your system can handle in the usual way.",
+      "act": "It is a multiple-casualty incident (MCI). No set number defines it; the test is whether the patients overwhelm the EMS response. Organize early under the Incident Command System."
+    },
+    {
+      "find": "You have been given a role at the incident.",
+      "act": "Report to your own supervisor and stay in your assignment. Only Command talks to dispatch and asks for resources. Acting on your own is freelancing, a leading cause of injury and death on scene."
+    },
+    {
+      "find": "You begin triage.",
+      "act": "Use START, about 30 seconds per patient, checking RPM: Respiration, Pulse, Mental status. The only treatments allowed during triage are quick and lifesaving: open the airway (an oral airway can be inserted) and control bleeding with direct pressure or a tourniquet."
+    },
+    {
+      "find": "Some patients can get up and walk.",
+      "act": "Tag them green (Priority 3) and send them to one area. They are triaged again later, because they can get worse."
+    },
+    {
+      "find": "A patient is breathing more than 30 times a minute, or has no radial pulse (or a capillary refill over 2 seconds), or cannot follow simple commands.",
+      "act": "Tag red (Priority 1). Any one of the three is enough."
+    },
+    {
+      "find": "A patient cannot walk but is alert, has a radial pulse and is breathing 30 times a minute or fewer.",
+      "act": "Tag yellow (Priority 2): serious, but can wait."
+    },
+    {
+      "find": "A patient is not breathing.",
+      "act": "Open the airway. If breathing starts, tag red (Priority 1). If the patient still does not breathe, or has no pulse and is not breathing, tag black (Priority 4) while resources are limited and move on. If resources arrive later, that patient can become Priority 1."
+    },
+    {
+      "find": "Patients are ready to leave the scene.",
+      "act": "No ambulance leaves until the transportation supervisor approves it. That officer, not each crew, talks to the hospitals, which keeps the radio clear and stops any one hospital from being overloaded."
+    }
+  ],
+  "ideas": [
+    "<b>ICS</b> is part of the National Incident Management System (NIMS). Its sections are Command, Operations, Planning, Logistics and Finance.",
+    "<b>Span of control:</b> each supervisor has 3 to 7 people reporting to them.",
+    "<b>Single command:</b> one agency runs everything. <b>Unified command:</b> several agencies work together and each keeps control of its own resources; best for a large or complex incident.",
+    "<b>A good disaster plan</b> is written for events that could happen locally, well publicized, realistic and rehearsed.",
+    "<b>Tag colors:</b> red is life-threatening but treatable, yellow is serious, green is walking wounded, black is dead or fatal.",
+    "<b>Triage depends on resources.</b> The same patient can be tagged differently as help arrives.",
+    "<b>Children</b> of about 1 to 8 years are triaged with JumpSTART. A child who is not breathing after the airway is opened but has a pulse gets 5 rescue breaths before a tag is chosen, and a breathing rate under 15 or over 45 a minute is red."
+  ],
+  "misconception": {
+    "wrong": "The patient in cardiac arrest is the sickest person here, so CPR on that patient comes first.",
+    "right": "With limited resources, a patient in cardiac arrest is tagged black. Two EMTs doing CPR on one patient means no one is opening airways or stopping bleeding for patients who can be saved. If more resources arrive, that patient can be made Priority 1."
+  },
+  "check": [
+    {
+      "q": "During START triage, a woman lying on the ground is alert, has a radial pulse and is breathing 36 times a minute. What is her tag?",
+      "options": [
+        "Red",
+        "Yellow",
+        "Green",
+        "Black"
+      ],
+      "correct": 0,
+      "why": "A respiratory rate over 30 makes her red on its own. Being alert with a radial pulse would make her yellow only if her breathing were 30 or fewer; one red finding is enough."
+    },
+    {
+      "q": "A man with an obvious broken leg cannot walk. He is alert, has a radial pulse and is breathing 22 times a minute. What is his tag?",
+      "options": [
+        "Red",
+        "Green",
+        "Yellow",
+        "Black"
+      ],
+      "correct": 2,
+      "why": "Alert, radial pulse present and breathing at 30 or fewer means yellow: serious but not immediately life-threatening. He is not green because he cannot walk, and not red because none of the three RPM checks is abnormal."
+    },
+    {
+      "q": "You and your partner are the only crew at a crash with nine patients. One patient has no pulse and is not breathing. What do you do?",
+      "options": [
+        "Begin CPR, since arrest is the top priority",
+        "Tag the patient black and continue triage",
+        "Tag the patient red and attach the AED",
+        "Tag the patient yellow and reassess later"
+      ],
+      "correct": 1,
+      "why": "With limited resources, a patient in cardiac arrest is Priority 4, black. CPR would tie up both EMTs while treatable patients go unsorted. The tag can change to Priority 1 if enough help arrives."
+    },
+    {
+      "q": "Your ambulance is loaded with two red-tag patients. Who decides when you leave and tells the hospital they are coming?",
+      "options": [
+        "You do, by calling the nearest hospital",
+        "The dispatcher who sent your unit",
+        "The triage officer who tagged them",
+        "The transportation supervisor"
+      ],
+      "correct": 3,
+      "why": "No ambulance transports until the transportation supervisor approves, and that officer handles communication with the hospitals. If each crew called a hospital, radio traffic would jam and the closest hospital could be flooded."
+    },
+    {
+      "q": "What makes an incident a multiple-casualty incident?",
+      "options": [
+        "Five or more patients at one scene",
+        "More patients than the EMS system can readily handle",
+        "Any crash involving three or more vehicles",
+        "Any scene that needs a second ambulance"
+      ],
+      "correct": 1,
+      "why": "An MCI has no fixed number. It is defined by patients challenging or hampering the system's ability to respond, so the same count can be an MCI in a small rural system and routine in a large one."
+    }
+  ],
+  "summary": "<p>A multiple-casualty incident is any incident whose patients overwhelm the EMS system's ability to respond. It is run under the Incident Command System, with a span of control of 3 to 7, single or unified command, and everyone reporting to their own supervisor; freelancing gets people hurt. START triage takes about 30 seconds per patient using RPM. Walking patients are green and are triaged again. Breathing over 30, no radial pulse, not following simple commands, or breathing that starts only when the airway is opened is red. Alert with a radial pulse and breathing at 30 or fewer is yellow. Still not breathing after the airway is opened is black, and so is cardiac arrest while resources are short. Only airway opening and bleeding control are done during triage, and the transportation supervisor controls every departure and all hospital contact.</p>"
+}

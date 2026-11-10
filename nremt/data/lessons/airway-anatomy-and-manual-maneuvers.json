@@ -1,0 +1,99 @@
+{
+  "id": "airway-anatomy-and-manual-maneuvers",
+  "title": "Airway anatomy and the manual maneuvers",
+  "chapter": 9,
+  "section": "ch9-airway",
+  "hook": "<p>A woman is found unresponsive on her kitchen floor. She is breathing, but every breath comes with a loud snore. Nothing is stuck in her throat and nothing is swollen. Her jaw has relaxed, her tongue has fallen against the back of her throat, and her airway has folded shut.</p><p>This is the most common airway obstruction in an unresponsive patient, and you can fix it with your hands in two seconds. This lesson covers the path a breath takes, why the tongue blocks it, and the two manual maneuvers that open it again.</p>",
+  "steps": [
+    {
+      "find": "An unresponsive patient is breathing with a snoring sound. There is no reason to suspect a spinal injury.",
+      "act": "Use the head-tilt/chin-lift. One hand on the forehead tilts the head back, and the fingertips of the other hand lift the bony part of the chin. The jaw comes forward and brings the tongue with it."
+    },
+    {
+      "find": "Your fingers are under the chin as you lift.",
+      "act": "Keep them on bone. Pressing into the soft tissue under the chin pushes the base of the tongue up into the airway, which is the opposite of what you want."
+    },
+    {
+      "find": "An unresponsive patient was pulled from a car crash and you suspect a spinal injury.",
+      "act": "Use the jaw-thrust. From the patient's head, place your fingers behind the angles of the jaw on both sides and move the jaw forward while the head stays neutral and in line. It opens the airway without moving the neck."
+    },
+    {
+      "find": "The jaw-thrust is not opening the airway in a patient with a suspected spinal injury.",
+      "act": "Use the maneuver that does open it, the head-tilt/chin-lift. An open airway outranks spinal precautions, because a protected spine in a patient who is not breathing is not a good outcome."
+    },
+    {
+      "find": "An infant is lying flat on a hard surface. The large back of the head pushes the neck into flexion.",
+      "act": "Put a folded towel under the shoulders to bring the airway into a neutral line. Do not tilt the head back as far as it will go: over-extending a soft trachea kinks it shut."
+    }
+  ],
+  "ideas": [
+    "<b>The path of a breath:</b> nose or mouth, throat, windpipe, lungs, where gas exchange happens. The nose warms and humidifies the air; the mouth does not.",
+    "<b>Upper and lower airway:</b> the upper airway runs from the nose and mouth down to the vocal cords. The lower airway is everything below them. The glottic opening, at the vocal cords, is the boundary.",
+    "<b>The epiglottis</b> is a flap that closes over the airway when you swallow, so food and liquid go to the esophagus. A patient with a depressed level of consciousness can lose this protection, which is why the airway comes first.",
+    "<b>The tongue is attached to the lower jaw.</b> Both manual maneuvers work the same way: move the jaw forward and the tongue comes off the back of the throat.",
+    "<b>Head-tilt/chin-lift is the default.</b> The jaw-thrust is for a suspected spinal injury. It is harder to hold and uses both hands.",
+    "<b>A child's airway is different:</b> a proportionally larger tongue, smaller and softer structures that swelling narrows quickly, and a large back of the head."
+  ],
+  "misconception": {
+    "wrong": "With a suspected spinal injury you may only ever use the jaw-thrust, even if the airway stays closed.",
+    "right": "The jaw-thrust is tried first because it does not move the neck. If it does not open the airway, you use the head-tilt/chin-lift. An open airway is the higher priority."
+  },
+  "check": [
+    {
+      "q": "An unresponsive man with no sign of trauma is breathing with a snoring sound. What is the most likely cause of the noise?",
+      "options": [
+        "Fluid pooling in the back of the throat",
+        "Swelling of the tissue around the larynx",
+        "The tongue resting against the back of the throat",
+        "Narrowing of the small airways in the lungs"
+      ],
+      "correct": 2,
+      "why": "When consciousness is lost, the jaw relaxes and the tongue falls back against the throat. That is the most common obstruction in an unresponsive patient. Fluid would gurgle, not snore, and it is cleared with suction, not positioning."
+    },
+    {
+      "q": "A diver struck his head on the pool floor and is unresponsive with noisy breathing. Which maneuver do you try first?",
+      "options": [
+        "Jaw-thrust with the head held neutral",
+        "Head-tilt/chin-lift with full extension",
+        "Head-tilt alone with one hand on the forehead",
+        "Chin-lift with the neck slightly flexed"
+      ],
+      "correct": 0,
+      "why": "A suspected spinal injury calls for the jaw-thrust, which moves the jaw forward without moving the neck. The head-tilt/chin-lift is the default only when no spinal injury is suspected."
+    },
+    {
+      "q": "You are holding a jaw-thrust on a trauma patient, but the airway is still not open. What do you do?",
+      "options": [
+        "Keep holding the jaw-thrust until the collar is on",
+        "Stop airway care and begin spinal immobilization",
+        "Wait for a second crew to bring advanced equipment",
+        "Switch to the head-tilt/chin-lift to open the airway"
+      ],
+      "correct": 3,
+      "why": "If the jaw-thrust does not open the airway, you use the maneuver that does. An open airway outranks spinal precautions. Holding a maneuver that is not working leaves the patient without air."
+    },
+    {
+      "q": "During a head-tilt/chin-lift, where should the fingers of your lower hand be?",
+      "options": [
+        "On the soft tissue under the chin",
+        "On the bony part of the chin",
+        "Behind the angles of the jaw",
+        "Across the front of the throat"
+      ],
+      "correct": 1,
+      "why": "The fingertips lift the bony chin. Pressing into the soft tissue under the chin pushes the base of the tongue up into the airway. Fingers behind the angles of the jaw describe the jaw-thrust."
+    },
+    {
+      "q": "You are positioning the airway of a 3-month-old lying flat on a table. What helps most?",
+      "options": [
+        "Tilting the head back as far as it will go",
+        "Placing a thick pillow under the head",
+        "Placing a folded towel under the shoulders",
+        "Bringing the chin down toward the chest"
+      ],
+      "correct": 2,
+      "why": "An infant's large back of the head flexes the neck when the infant lies flat, so padding under the shoulders brings the airway into line. Full extension is tempting because it works in adults, but it kinks an infant's soft trachea."
+    }
+  ],
+  "summary": "<p>Air travels from the nose or mouth through the throat and windpipe to the lungs. The upper airway ends at the vocal cords, and the epiglottis guards the entrance when you swallow. In an unresponsive patient the tongue, which is attached to the jaw, is the most common obstruction, and both manual maneuvers fix it by moving the jaw forward. Use the head-tilt/chin-lift by default and the jaw-thrust when a spinal injury is suspected; if the jaw-thrust fails, open the airway anyway. Infants and small children need a neutral position, often with padding under the shoulders, and never over-extension.</p>"
+}

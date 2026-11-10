@@ -1,0 +1,122 @@
+{
+  "id": "body-systems-anatomy",
+  "title": "The body systems an EMT works with",
+  "chapter": 6,
+  "section": "ch6-anatomy",
+  "hook": "<p>A woman in her seventies says she just feels \"wrong\". No chest pain, no trouble breathing. But she is pale and sweaty, her pulse is 112 and she is breathing 24 times a minute.</p><p>Nothing she said points to an emergency. Her body does. Pale, sweaty skin with a fast pulse and fast breathing is the sympathetic nervous system reacting to a serious problem, and you can only read that sign if you know what the systems under the skin are doing. This lesson is the anatomy you will use on every call.</p>",
+  "steps": [
+    {
+      "find": "A patient is pale and sweaty with a fast heart rate and fast breathing, but has none of the classic complaints.",
+      "act": "Recognize sympathetic discharge, the fight-or-flight response. It flags serious illness even when the usual symptoms are missing, as in the \"silent\" heart attack some older women have. Treat the patient as seriously ill."
+    },
+    {
+      "find": "You need a pulse.",
+      "act": "Pick the right artery. The radial pulse is at the wrist on the thumb side. The carotid, in the neck, is the CPR pulse check for an adult or child, and you never press both sides at once. The brachial, in the upper arm, is the pulse for an infant in CPR and the artery used for blood pressure. The carotid and femoral are central pulses and can still be felt when the peripheral pulses have weakened."
+    },
+    {
+      "find": "The mechanism points to a neck injury.",
+      "act": "Take it seriously. The cervical spine is easily injured because a heavy head sits on a slender neck, and the injury can be fatal because this part of the spinal cord controls the muscles of breathing."
+    },
+    {
+      "find": "An older patient has fallen and has pain where the leg meets the pelvis.",
+      "act": "Think \"broken hip\", which is really a fracture of the femur near the pelvis. The hip is a ball-and-socket joint: the head of the femur sits in the acetabulum of the pelvis."
+    },
+    {
+      "find": "A patient took a hard blow to the left upper quadrant of the abdomen.",
+      "act": "Think of the spleen. It sits in the left upper quadrant, filters old blood cells, holds a reservoir of blood and is at risk in trauma."
+    },
+    {
+      "find": "A patient who has had a mastectomy needs a blood pressure.",
+      "act": "Do not use the arm on the affected side. Lymphatic tissue has been removed from that armpit, and the pressure of the cuff is a risk. Use the other arm."
+    },
+    {
+      "find": "A small child is in respiratory distress.",
+      "act": "Remember how a child's airway differs: the tongue is larger for the mouth, and the trachea and cricoid cartilage are narrower and softer, so the airway blocks and is injured more easily. A child in distress may show \"seesaw\" breathing."
+    }
+  ],
+  "ideas": [
+    "<b>The spine has 33 vertebrae:</b> 7 cervical, 12 thoracic, 5 lumbar, 5 sacral and 4 in the coccyx. The lumbar spine is also vulnerable because no other part of the skeleton supports it.",
+    "<b>Limb bones.</b> Arm: humerus, then radius (lateral, thumb side) and ulna (medial). Leg: femur (the largest bone in the body), patella, then tibia (the larger, medial shin bone) and fibula (lateral).",
+    "<b>Three muscle types.</b> Skeletal muscle is voluntary. Smooth muscle is involuntary and lines the gut, airways and blood vessels. Cardiac muscle is found only in the heart, can generate its own impulses (automaticity) and is very sensitive to a lack of oxygen.",
+    "<b>The path of air:</b> nose or mouth, pharynx, past the epiglottis, larynx, trachea, bronchi, bronchioles, alveoli, where gas exchange happens.",
+    "<b>Breathing in is active</b> (the diaphragm and intercostal muscles contract and negative pressure pulls air in); <b>breathing out is passive</b>. Ventilation is moving air in and out; respiration is the exchange of gases, at the alveoli and at the cells.",
+    "<b>The path of blood:</b> venae cavae, right atrium, right ventricle, pulmonary artery, lungs, pulmonary veins, left atrium, left ventricle, aorta. The pulmonary artery is the one artery that carries oxygen-poor blood, and the pulmonary veins are the only veins that carry oxygen-rich blood.",
+    "<b>Blood has four parts:</b> plasma (the fluid), red cells (carry oxygen on hemoglobin), white cells (fight infection) and platelets (clotting).",
+    "<b>Perfusion</b> is the adequate delivery of oxygen and nutrients to the cells and the removal of their waste. <b>Hypoperfusion is shock.</b> Without oxygen, cells switch from aerobic to anaerobic metabolism, which makes little energy and produces lactic acid.",
+    "<b>The nervous system.</b> Central: brain and spinal cord. Peripheral: sensory and motor nerves. The autonomic part runs involuntary functions: sympathetic (fight or flight: faster heart, constricted vessels) and parasympathetic (slower heart, digestion).",
+    "<b>The skin has three layers:</b> epidermis (no vessels or nerves), dermis (vessels, nerves, glands) and subcutaneous tissue (fat that insulates and absorbs shock)."
+  ],
+  "misconception": {
+    "wrong": "Arteries always carry oxygen-rich blood and veins always carry oxygen-poor blood.",
+    "right": "Arteries carry blood away from the heart and veins carry it back. That is the definition. The pulmonary artery carries oxygen-poor blood from the right ventricle to the lungs, and the pulmonary veins carry oxygen-rich blood back to the left atrium."
+  },
+  "check": [
+    {
+      "q": "Which chamber of the heart pumps oxygen-rich blood out through the aorta to the body?",
+      "options": [
+        "The right atrium",
+        "The right ventricle",
+        "The left ventricle",
+        "The left atrium"
+      ],
+      "correct": 2,
+      "why": "The left ventricle, the strongest chamber, pumps blood into the aorta. The left atrium is the tempting choice, but it only receives oxygen-rich blood from the lungs and passes it down to the left ventricle."
+    },
+    {
+      "q": "During normal breathing, what happens when the diaphragm and intercostal muscles contract?",
+      "options": [
+        "The chest expands and air is pulled in",
+        "The chest shrinks and air is pushed out",
+        "The epiglottis closes over the trachea",
+        "The alveoli stop exchanging gases"
+      ],
+      "correct": 0,
+      "why": "Inhalation is the active part of breathing: the muscles contract, the chest expands and negative pressure pulls air in. Exhalation is passive and happens when those muscles relax and the chest gets smaller."
+    },
+    {
+      "q": "You are checking for a pulse on an unresponsive 6-month-old who is not breathing. Which artery do you use?",
+      "options": [
+        "The radial artery",
+        "The carotid artery",
+        "The dorsalis pedis artery",
+        "The brachial artery"
+      ],
+      "correct": 3,
+      "why": "The brachial artery in the upper arm is the pulse check for an infant in CPR. The carotid is used for adults and children; an infant's short neck makes it hard to find."
+    },
+    {
+      "q": "A patient is weak and \"not right\", with pale, sweaty skin, a pulse of 116 and 26 breaths a minute, but no pain. What do these signs most likely show?",
+      "options": [
+        "A parasympathetic response to rest",
+        "A sympathetic response to a serious problem",
+        "A normal finding in an anxious patient",
+        "A problem limited to the skin"
+      ],
+      "correct": 1,
+      "why": "Pale, sweaty skin with a fast heart rate and fast breathing is sympathetic (fight-or-flight) discharge, the body reacting to a serious problem even when classic symptoms are absent. The parasympathetic system does the opposite: it slows the heart."
+    },
+    {
+      "q": "Which statement about the cervical spine is correct?",
+      "options": [
+        "It has 12 vertebrae, and the ribs attach to them",
+        "It has 5 vertebrae and is supported by the pelvis",
+        "It has 7 vertebrae, and its cord controls breathing",
+        "It has 4 fused vertebrae that form the tailbone"
+      ],
+      "correct": 2,
+      "why": "There are 7 cervical vertebrae, and an injury here can be fatal because this part of the cord controls the muscles of breathing. Twelve vertebrae with ribs describes the thoracic spine, 5 describes the lumbar or sacral, and 4 is the coccyx."
+    },
+    {
+      "q": "What is the difference between ventilation and respiration?",
+      "options": [
+        "Ventilation is breathing in; respiration is breathing out",
+        "Ventilation is moving air; respiration is exchanging gases",
+        "Ventilation happens in the cells; respiration happens in the nose",
+        "Ventilation is passive; respiration always takes muscle effort"
+      ],
+      "correct": 1,
+      "why": "Ventilation is the movement of air into and out of the lungs. Respiration is the exchange of oxygen and carbon dioxide. A patient can be moving air and still not exchanging gases well, so the two words are not interchangeable."
+    }
+  ],
+  "summary": "<p>The musculoskeletal system gives shape, protection and movement; the spine's 33 vertebrae guard the cord, and a cervical injury can stop breathing. Air travels from the nose and mouth through the pharynx, larynx, trachea and bronchi to the alveoli; inhalation is active, exhalation passive. Blood runs from the right heart to the lungs and from the left heart to the body, with the pulmonary artery and veins as the exceptions to the oxygen rule. Know the pulse points (radial, carotid, brachial, femoral) and that central pulses outlast peripheral ones. Perfusion is delivery of oxygen to the cells, and its failure is shock. Pale, sweaty skin with a fast pulse and fast breathing is sympathetic discharge and means a serious problem until proven otherwise.</p>"
+}

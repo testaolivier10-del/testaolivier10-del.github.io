@@ -1,0 +1,125 @@
+{
+  "id": "emt-medications",
+  "title": "The medications an EMT gives or assists with",
+  "chapter": 18,
+  "section": "ch18-pharmacology",
+  "hook": "<p>A 58-year-old man has crushing chest pain. His wife presses a small bottle into your hand: \"Give him one of my nitro pills, they always work for me.\" He also mentions he took a pill for erectile dysfunction last night.</p><p>There are two reasons in that sentence not to give that tablet. It is not his prescription, and with the other drug on board, nitroglycerin could drop his blood pressure dangerously. An EMT works with a short list of medications, and every one has a right patient, a right reason and a way of going wrong.</p>",
+  "steps": [
+    {
+      "find": "You are about to give or assist with any medication.",
+      "act": "Get authorization: standing orders (off-line medical direction) or a live order (on-line), which you repeat back. Check the Five Rights: right patient, right time, right medication, right dose, right route. Check the expiration date."
+    },
+    {
+      "find": "A patient has chest pain that you suspect is cardiac.",
+      "act": "Aspirin, chewed. It reduces the blood's ability to clot and lowers the death rate in a heart attack. Do not give it to a patient with an aspirin allergy or gastrointestinal bleeding."
+    },
+    {
+      "find": "The same patient has nitroglycerin prescribed for chest pain.",
+      "act": "Confirm it is the patient's own, not a family member's. Ask about erectile dysfunction drugs such as Viagra or Cialis: recent use is a contraindication. It goes under the tongue as a tablet or spray and is never swallowed. Nitroglycerin lowers blood pressure, so check the pressure as your protocol requires, and if it drops, lay the patient flat."
+    },
+    {
+      "find": "A patient with asthma, emphysema or bronchitis is struggling to breathe and has a prescribed rescue inhaler.",
+      "act": "Assist with the bronchodilator (albuterol, levalbuterol) with medical direction. Expect a faster heart rate and jitteriness. A daily maintenance inhaler is never used to reverse an acute attack."
+    },
+    {
+      "find": "A patient is in anaphylaxis.",
+      "act": "Epinephrine auto-injector, intramuscularly into the thigh. Epinephrine works on alpha receptors (constricting vessels, reducing swelling) and beta receptors (opening the airways), so it treats the shock and the airway at once. Expect a faster heart rate and a higher blood pressure."
+    },
+    {
+      "find": "A patient with diabetes has an altered mental status but is conscious and able to swallow.",
+      "act": "Oral glucose, as a gel between the cheek and the gum. A patient who cannot swallow does not get it."
+    },
+    {
+      "find": "A suspected opioid overdose with depressed breathing.",
+      "act": "Naloxone, as a mist into the nose or by injection. It reverses the opioid; it does nothing if no opioid was taken, and the nasal form may not work if the lining of the nose is damaged or blocked."
+    },
+    {
+      "find": "The medication has been given.",
+      "act": "Reassess right away and keep reassessing. Document the name, dose, exact route, time and the effects you saw."
+    }
+  ],
+  "ideas": [
+    "<b>The core list:</b> aspirin, oral glucose, oxygen, a prescribed bronchodilator inhaler, nitroglycerin, an epinephrine auto-injector and naloxone. Some systems add activated charcoal, and local protocol may allow over-the-counter pain and fever relievers.",
+    "<b>Oxygen is a medication.</b> Give it when there is a good reason (hypoxia or the risk of it) and withhold it when there is not.",
+    "<b>Four terms.</b> Indication: a reason to give the drug. Contraindication: a situation where it is not appropriate or could harm. Side effect: any action other than the intended one. Untoward effect: a harmful side effect.",
+    "<b>Drug names.</b> The generic name is lowercase (albuterol); the trade name is capitalized (Ventolin).",
+    "<b>Albuterol versus epinephrine.</b> Albuterol acts almost only on beta<sub>2</sub> receptors, so it opens the airways with limited effect on the heart. Epinephrine acts on alpha and beta receptors together, which is why it is the drug of choice in anaphylaxis.",
+    "<b>Routes and speed.</b> Swallowed is the safest and slowest. Sublingual is faster but depends on circulation. Inhaled drugs are absorbed in the alveoli. Intranasal can be nearly as fast as an injection. Intramuscular is fast but slowed by poor circulation. Starting an IV is beyond EMT scope, though an EMT may assist.",
+    "<b>Age changes dosing.</b> Children need less medication for the same effect; older patients often clear drugs slowly.",
+    "<b>Ask about herbal products by name.</b> Patients often forget to mention them, and several interact with prescribed drugs.",
+    "<b>Assisting with an IV.</b> A micro drip set gives 60 drops per mL; a macro drip set gives 10 to 15. If an IV has infiltrated (the needle is out of the vein), stop the flow and follow protocol."
+  ],
+  "misconception": {
+    "wrong": "Nitroglycerin is nitroglycerin, so if a family member has a bottle, I can use it for my patient's chest pain.",
+    "right": "An EMT assists only with the patient's own prescription. Before assisting, confirm the medication belongs to this patient, and that there is no contraindication such as a recent erectile dysfunction drug."
+  },
+  "check": [
+    {
+      "q": "A 60-year-old with chest pain has his own nitroglycerin. He says he took Cialis this morning. What should you do?",
+      "options": [
+        "Assist with one nitroglycerin tablet",
+        "Assist with half of one tablet",
+        "Withhold the nitroglycerin",
+        "Have him swallow the tablet instead"
+      ],
+      "correct": 2,
+      "why": "Recent use of an erectile dysfunction drug is a contraindication to nitroglycerin, because the combination can cause a dangerous drop in blood pressure. A smaller dose or a different route does not remove that risk."
+    },
+    {
+      "q": "Why is epinephrine, not albuterol, the drug of choice for anaphylaxis?",
+      "options": [
+        "Epinephrine acts on both alpha and beta receptors",
+        "Epinephrine acts only on beta-2 receptors",
+        "Albuterol cannot be given to adult patients",
+        "Albuterol raises the blood pressure too far"
+      ],
+      "correct": 0,
+      "why": "Anaphylaxis is two problems: dilated, leaky vessels and narrowed airways. Epinephrine constricts vessels through alpha receptors and opens airways through beta receptors. Albuterol acts almost only on beta-2 receptors, so it would help the airway and leave the shock untreated."
+    },
+    {
+      "q": "Which patient can receive oral glucose?",
+      "options": [
+        "An unresponsive patient with diabetes and snoring breaths",
+        "A patient with diabetes who is seizing",
+        "A patient with diabetes who cannot swallow",
+        "A confused patient with diabetes who is awake and can swallow"
+      ],
+      "correct": 3,
+      "why": "Oral glucose is for a diabetic patient with an altered mental status who is conscious and able to swallow. Giving it to someone who cannot protect their airway risks aspiration, however low the blood sugar may be."
+    },
+    {
+      "q": "Which list gives the Five Rights of medication administration?",
+      "options": [
+        "Patient, time, medication, dose, route",
+        "Patient, time, medication, dose, reason",
+        "Patient, place, medication, dose, route",
+        "Patient, time, medication, price, route"
+      ],
+      "correct": 0,
+      "why": "The Five Rights are right patient, right time, right medication, right dose and right route. The others swap in something that sounds reasonable but is not one of the five."
+    },
+    {
+      "q": "You give intranasal naloxone to an unresponsive patient who turns out to have taken no opioids. What effect will the naloxone have?",
+      "options": [
+        "It will slow the patient's breathing",
+        "It will have no effect",
+        "It will raise the blood sugar",
+        "It will cause a severe allergic reaction"
+      ],
+      "correct": 1,
+      "why": "Naloxone reverses opioids and does nothing if no opioid was taken. That is why a lack of response points you toward another cause of the patient's condition."
+    },
+    {
+      "q": "A physician on the radio orders you to assist a patient with her inhaler. What do you do before carrying out the order?",
+      "options": [
+        "Carry it out at once to save time",
+        "Ask your partner what they heard",
+        "Repeat the order back to the physician",
+        "Write the order down after the call"
+      ],
+      "correct": 2,
+      "why": "Repeating an on-line order back, the echo technique, catches a misheard order before it reaches the patient. Acting at once feels efficient, but it skips the one step that confirms you and the physician mean the same thing."
+    }
+  ],
+  "summary": "<p>An EMT carries or assists with a short list: aspirin for suspected cardiac chest pain, oral glucose for a diabetic with altered mental status who is awake and can swallow, oxygen for hypoxia, a prescribed bronchodilator inhaler for breathing difficulty, nitroglycerin for cardiac chest pain, an epinephrine auto-injector for anaphylaxis and naloxone for opioid overdose with depressed breathing. Assisted medications must be the patient's own. Every dose needs authorization (standing orders or a live order repeated back), the Five Rights (patient, time, medication, dose, route) and an expiration check, and afterward reassessment and documentation of the name, dose, route, time and effect.</p>"
+}

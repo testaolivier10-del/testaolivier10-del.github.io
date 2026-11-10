@@ -1,0 +1,118 @@
+{
+  "id": "pathophysiology-and-shock",
+  "title": "Cells, compensation and shock",
+  "chapter": 7,
+  "section": "ch7-pathophysiology",
+  "hook": "<p>A 68-year-old has had vomiting and diarrhea for three days. She is anxious, her skin is pale, cool and sweaty, her pulse is 118 and she is breathing 24 times a minute. Her blood pressure is 122/84.</p><p>That blood pressure is not good news. It is her body spending everything it has to keep the number up. Pathophysiology is the study of what happens when that effort, called compensation, stops being enough. If you understand what the body is compensating for, you can see shock before the blood pressure gives it away.</p>",
+  "steps": [
+    {
+      "find": "The heart rate and breathing rate are up, the skin is pale, cool and sweaty, the patient is mildly anxious and capillary refill is delayed. The blood pressure is still normal.",
+      "act": "Call it compensated shock. The body is still managing by speeding the heart and squeezing the vessels. This is the stage to recognize."
+    },
+    {
+      "find": "The blood pressure falls and the mental status changes.",
+      "act": "That is decompensated shock: compensation has failed. If it is not reversed it becomes irreversible shock, and the patient dies."
+    },
+    {
+      "find": "You ask yourself why this patient is in shock.",
+      "act": "Sort it by mechanism. Hypovolemic: too little volume (bleeding, dehydration). Distributive: the vessels dilate (anaphylaxis, sepsis). Cardiogenic: the pump fails (heart attack, dysrhythmia). Obstructive: blood flow is physically blocked (tension pneumothorax, pericardial tamponade, pulmonary embolism)."
+    },
+    {
+      "find": "A patient is breathing, but either very slowly or with very shallow breaths.",
+      "act": "Think minute volume: tidal volume times breathing rate. It falls if either one falls. About 150 mL of every breath is dead air space that never reaches the alveoli, so shallow breaths move very little useful air."
+    },
+    {
+      "find": "An injured or sick child has a normal blood pressure.",
+      "act": "Do not be reassured. Children constrict their vessels so strongly that the blood pressure can stay normal after a massive volume loss. Capillary refill (normal is under 2 seconds) and the heart rate tell you more, and a fast heart rate in a child is a serious red flag."
+    },
+    {
+      "find": "A patient who should look like they are compensating does not.",
+      "act": "Remember what blunts the response. Beta blockers reduce the effect of epinephrine, so the heart rate may not rise. A patient in cardiogenic shock may be unable to raise the heart rate, and a patient in septic shock may be unable to constrict the vessels."
+    }
+  ],
+  "ideas": [
+    "<b>Homeostasis</b> is the body's stable internal state; <b>compensation</b> is the constant adjustment that keeps it there.",
+    "<b>A cell needs water, glucose and oxygen.</b> Glucose is turned into ATP, the cell's fuel, and most cells need insulin to bring glucose in from the blood.",
+    "<b>Aerobic metabolism</b> (with oxygen) makes far more energy and leaves carbon dioxide and water. <b>Anaerobic metabolism</b> (without enough oxygen) makes little energy and leaves lactic acid, which causes acidosis and damages cells.",
+    "<b>Room air</b> is about 21% oxygen. That share is the fraction of inspired oxygen (FiO<sub>2</sub>). A <b>patent</b> airway is one that is open and clear.",
+    "<b>Breathing fails in three ways:</b> the control fails (stroke, narcotics, brain or cord injury), the pressure fails (a hole in the chest wall or pleural space collapses the lung), or the lung tissue fails (trauma, heart failure, sepsis).",
+    "<b>Cardiac output</b> is stroke volume times heart rate. It falls with a slow heart, a low stroke volume (as in blood loss) or a rate so fast the ventricles cannot fill.",
+    "<b>In infants, a slow heart rate</b> is often a sign of hypoxia, a breathing problem, rather than a heart problem.",
+    "<b>Two pressures move water</b> across vessel walls: plasma oncotic pressure (proteins pull water in) and hydrostatic pressure (the heart pushes water out). Upset either and you get edema or dehydration.",
+    "<b>In anaphylaxis</b> histamine makes capillaries leak and vessels dilate: swelling, a narrowed airway and a falling blood pressure. That is distributive shock.",
+    "<b>The skull is a closed box.</b> Bleeding or swelling inside it has nowhere to go, so the pressure inside rises."
+  ],
+  "misconception": {
+    "wrong": "Shock means low blood pressure, so a patient with a normal blood pressure is not in shock.",
+    "right": "Shock is inadequate perfusion: the cells are not getting enough oxygen. In compensated shock the blood pressure may still be normal while the heart rate and breathing rate climb and the skin turns pale, cool and sweaty. A falling blood pressure means compensation has already failed."
+  },
+  "check": [
+    {
+      "q": "A patient with a tension pneumothorax goes into shock. Which type of shock is this?",
+      "options": [
+        "Obstructive",
+        "Hypovolemic",
+        "Distributive",
+        "Cardiogenic"
+      ],
+      "correct": 0,
+      "why": "In a tension pneumothorax the flow of blood is physically blocked, which is obstructive shock. Cardiogenic is the tempting answer, but in cardiogenic shock the pump itself has failed, as in a heart attack."
+    },
+    {
+      "q": "Which pair of findings marks the change from compensated to decompensated shock?",
+      "options": [
+        "A faster pulse and faster breathing",
+        "Pale skin and delayed capillary refill",
+        "Mild anxiety and cool, sweaty skin",
+        "Low blood pressure and altered mental status"
+      ],
+      "correct": 3,
+      "why": "Decompensated shock is when compensation fails: the blood pressure drops and the mental status changes. The other choices are all signs of compensated shock, when the body is still holding the pressure up."
+    },
+    {
+      "q": "An adult is taking 6 very shallow breaths a minute after an overdose. Why is this patient's minute volume low?",
+      "options": [
+        "Only the rate is low; depth does not affect minute volume",
+        "Both the rate and the tidal volume are low",
+        "Only the depth is low; rate does not affect minute volume",
+        "Dead air space has grown to fill the whole breath"
+      ],
+      "correct": 1,
+      "why": "Minute volume is tidal volume times rate, so a slow rate and shallow breaths both pull it down. Neither one alone tells the story, which is why you judge both the rate and the depth of breathing."
+    },
+    {
+      "q": "A 4-year-old with a day of vomiting and diarrhea has a heart rate of 160 and a capillary refill of 4 seconds. The blood pressure is normal for age. What does this mean?",
+      "options": [
+        "The normal blood pressure rules out shock",
+        "The fast heart rate is expected with crying",
+        "The child is likely in compensated shock",
+        "The capillary refill is normal for a child"
+      ],
+      "correct": 2,
+      "why": "Children constrict their vessels powerfully and can hold a normal blood pressure after a large volume loss. A fast heart rate and a capillary refill over 2 seconds are the better indicators, so a normal pressure here is not reassurance."
+    },
+    {
+      "q": "Why can a patient taking a beta blocker be harder to assess for shock?",
+      "options": [
+        "The drug raises the blood pressure above normal",
+        "The drug blunts the rise in heart rate you expect",
+        "The drug makes the skin flushed, warm and dry",
+        "The drug speeds up breathing in every patient"
+      ],
+      "correct": 1,
+      "why": "Beta blockers reduce the effects of epinephrine and norepinephrine, so the heart may not speed up to compensate. The patient can be in trouble with a heart rate that looks normal."
+    },
+    {
+      "q": "What is the main waste product of anaerobic metabolism that leads to acidosis?",
+      "options": [
+        "Water",
+        "Glucose",
+        "Insulin",
+        "Lactic acid"
+      ],
+      "correct": 3,
+      "why": "When cells lack oxygen they fall back on anaerobic metabolism, which produces lactic acid and causes acidosis. Water is a waste product of normal aerobic metabolism and is easily handled."
+    }
+  ],
+  "summary": "<p>The body holds a stable state by compensating, and pathophysiology is what happens when compensation runs out. Cells need water, glucose and oxygen; without oxygen they turn to anaerobic metabolism, lactic acid and acidosis. Breathing depends on minute volume (tidal volume times rate) and circulation on cardiac output (stroke volume times heart rate). Shock is inadequate perfusion with four mechanisms: hypovolemic, distributive, cardiogenic and obstructive. Compensated shock shows a fast pulse, fast breathing and pale, cool, sweaty skin with a blood pressure that may still be normal; a falling pressure and altered mental status mean decompensation. Children hold their pressure until late, and beta blockers, cardiogenic shock and septic shock can hide the usual signs.</p>"
+}

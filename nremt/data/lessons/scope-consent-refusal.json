@@ -1,0 +1,104 @@
+{
+  "id": "scope-consent-refusal",
+  "title": "Scope of practice, consent and refusal",
+  "chapter": 4,
+  "section": "ch4-scope-consent",
+  "hook": "<p>A 54-year-old man has had crushing chest pain for an hour. He is pale and sweating. He is also awake, sober and perfectly clear, and he tells you: \"I am not going to any hospital. I just need to lie down.\" His wife begs you to take him anyway.</p><p>You are sure he needs to go. You also cannot touch him without his permission. This lesson covers what you are legally allowed to do, the kinds of consent, and how to handle a refusal so that the patient is protected and so are you.</p>",
+  "steps": [
+    {
+      "find": "A competent adult is awake and able to make decisions.",
+      "act": "Get expressed consent before you treat. Explain what you want to do in terms the patient understands, including the risks, benefits and alternatives. The patient agrees in words or by a gesture."
+    },
+    {
+      "find": "The patient is unresponsive or otherwise unable to make a decision, and needs lifesaving care.",
+      "act": "Treat under implied consent. The law assumes a reasonable person would consent to lifesaving care."
+    },
+    {
+      "find": "The patient is a child.",
+      "act": "A parent or guardian normally consents. If the parent is unavailable in an emergency, a responsible adult standing in for the parent (in loco parentis), such as a teacher or camp counselor, can consent. In a true emergency with nobody available, care is not delayed."
+    },
+    {
+      "find": "An adult patient refuses care or transport.",
+      "act": "Check the refusal is valid: a legal adult (or otherwise legally able to refuse), mentally competent and oriented, fully informed of the risks in terms they understand, and not coerced. A patient whose judgment is impaired by alcohol, drugs, illness or injury cannot give a valid informed refusal."
+    },
+    {
+      "find": "The refusal appears valid, but you believe the patient needs care.",
+      "act": "Do not simply leave. Try again to persuade them, explain the risks clearly, and consult medical direction. Make sure the patient truly understands the consequences."
+    },
+    {
+      "find": "The patient still refuses.",
+      "act": "Document thoroughly: your assessment findings, the exact risks you explained, and the patient's own words. Have the patient sign a refusal form, get a witness signature if you can, and tell them to call back if they change their mind or get worse."
+    }
+  ],
+  "ideas": [
+    "<b>Scope of practice</b> is the legal boundary of what an EMT may do. It is set by state and regional law and varies from place to place.",
+    "<b>Standard of care</b> is what a reasonably trained EMT would do in a similar situation. It is the benchmark used in negligence claims.",
+    "<b>The short version:</b> scope is what you are <i>allowed</i> to do; standard of care is what you <i>should</i> do, and how well.",
+    "<b>Three kinds of consent:</b> expressed (a competent adult agrees after being informed), implied (unresponsive or incapacitated patient needing lifesaving care), and consent for minors (parent, guardian or an adult in loco parentis).",
+    "<b>Capacity</b> to consent or refuse needs an adult or emancipated minor who is mentally competent, not impaired by injury, illness or substances, and fully informed of the risks of refusing.",
+    "<b>A competent adult has the right to refuse,</b> even care you are certain they need.",
+    "<b>Keep both up after certification:</b> practice skills to mastery, keep knowledge current, critique your own calls, and hold yourself to the standard you would want for your own family."
+  ],
+  "misconception": {
+    "wrong": "If a patient refuses, get the signature on the refusal form and you are covered. Then you can leave.",
+    "right": "The signature is the last step, not the whole job. First make sure the patient has capacity and understands the risks, try again to persuade them, consult medical direction, and document your findings, what you explained and what the patient said. A signature from a patient who lacked capacity or was never informed does not make the refusal valid."
+  },
+  "check": [
+    {
+      "q": "Which statement correctly separates scope of practice from standard of care?",
+      "options": [
+        "Scope is set by your partner; standard of care is set by the patient",
+        "Scope is what you may legally do; standard of care is how a reasonable EMT would do it",
+        "Scope is the same in every state; standard of care varies by state",
+        "Scope applies only to medications; standard of care applies to everything else"
+      ],
+      "correct": 1,
+      "why": "Scope of practice is the legal boundary of what you are allowed to do, and it varies by state. Standard of care is what a reasonably trained EMT would do in a similar situation. The tempting option reverses which one varies by state."
+    },
+    {
+      "q": "You find an adult unresponsive on a sidewalk with no family or friends nearby. Under which type of consent do you treat him?",
+      "options": [
+        "Expressed consent",
+        "In loco parentis",
+        "Informed refusal",
+        "Implied consent"
+      ],
+      "correct": 3,
+      "why": "An unresponsive patient cannot agree, so the law assumes a reasonable person would consent to lifesaving care: implied consent. Expressed consent needs a patient who can understand and agree."
+    },
+    {
+      "q": "A man who crashed his car smells strongly of alcohol, slurs his words and cannot tell you what day it is. He has a deep cut on his head and says he wants to go home. What is the best course?",
+      "options": [
+        "Treat his refusal as not valid, keep caring for him, and involve medical direction",
+        "Have him sign the refusal form and leave, because adults may refuse",
+        "Leave him at the scene and ask a bystander to keep an eye on him",
+        "Explain the risks once more, then drive him home in the ambulance"
+      ],
+      "correct": 0,
+      "why": "A valid refusal needs a competent, oriented patient. He is disoriented and impaired by alcohol, with a head injury, so he cannot give an informed refusal. \"Adults may refuse\" is the tempting answer, but that right depends on capacity, which he does not have right now."
+    },
+    {
+      "q": "An 8-year-old at summer camp has a severe allergic reaction. Her parents cannot be reached. Who can give consent for her care?",
+      "options": [
+        "Nobody; you must wait until a parent is reached",
+        "The child herself, because it is her body",
+        "The camp counselor responsible for her",
+        "Another camper who is her close friend"
+      ],
+      "correct": 2,
+      "why": "A responsible adult temporarily standing in for the parent, such as a camp counselor or teacher, can consent in an emergency when the parent is unavailable. This is in loco parentis. Waiting for a parent would delay care the child needs now."
+    },
+    {
+      "q": "A competent adult with chest pain still refuses transport after you have explained the risks. Which step should you take before leaving?",
+      "options": [
+        "Tell him he may not call 911 again today",
+        "Restrain him gently and transport for his own good",
+        "Leave quickly, before he changes his story",
+        "Consult medical direction and document the refusal fully"
+      ],
+      "correct": 3,
+      "why": "Try again to persuade him, consult medical direction, document your findings and the risks explained, get the refusal signed and witnessed, and tell him to call back if anything changes. Forcing a competent adult to go is tempting when you are worried, but it is care without consent."
+    }
+  ],
+  "summary": "<p>Scope of practice is what the law in your state allows an EMT to do; standard of care is what a reasonably trained EMT would do in the same situation, and how well. Care needs consent: expressed from a competent, informed adult, implied for a patient who cannot decide and needs lifesaving care, and from a parent, guardian or adult in loco parentis for a child. A competent adult may refuse even care they need, but the refusal is valid only from a legal adult who is competent and oriented, fully informed and not coerced; a patient impaired by alcohol or drugs cannot give one. Faced with a refusal, persuade, consult medical direction, document thoroughly, get it signed and witnessed, and invite the patient to call back.</p>"
+}
