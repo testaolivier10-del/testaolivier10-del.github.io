@@ -92,7 +92,7 @@ One branch, `claude/apmicro`, one PR at the end.
 | Phase | What | Status |
 |---|---|---|
 | R | Research: `docs/apmicro-research/framework.md`, `market.md`; this spec | **done 2026-11-09** |
-| 0 | Fork AP® Macroeconomics: runtime `microeconomics/assets/` (`mic-*`), `ApMicroCalc`, graph engine extensions (5b), generator, checks, tests, fixture, registration hidden, SQL migration; CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author | |
+| 0 | Fork AP® Macroeconomics: runtime `microeconomics/assets/` (`mic-*`), `ApMicroCalc`, graph engine extensions (5b), generator, checks, tests, fixture, registration hidden, SQL migration; CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-11-09** (5b-as-built below; `docs/apmicro-architecture.md`) |
 | 1 | Content: lessons, notes, banks (with stimulus sets and `graph` items), FRQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | |
@@ -125,6 +125,28 @@ One branch, `claude/apmicro`, one PR at the end.
    `monopoly`, `monocomp`, `labor` (competitive, with firm panel), `monopsony`, `externality`, `lorenz`.
 6. **Payoff matrix** is not a graph: a separate item format `matrix` (`mic-matrix.js`): pick dominant strategies
    and every Nash cell; graded exactly.
+
+### 5b-as-built (Phase 0, 2026-11-09)
+
+- **Areas**: `areas(spec)` cuts each graph into cells; a region (`cs`, `ps`, `ts`, `dwl`, `tax-revenue`,
+  `subsidy-cost`, `tariff-revenue`, `buyer-burden`, `seller-burden`, `profit`, `loss`, `tr`, `tc`, `wage-bill`,
+  `ext-cost`, `ext-benefit`, `gini` and the `-before` regions) is a set of cells. Task `shade`, key `shade`: a name or
+  a list. Graded on the exact cell set; an extra or missing cell is named. Tap a cell or use the "Area a" buttons.
+- **Curves**: cost curves from one cubic total-cost model, so MC passes exactly through the minimum of AVC and ATC;
+  followers move with their leader (MR with D, MFC with S_L, AVC with MC, AFC with ATC). A lump-sum fixed cost
+  moves ATC alone; a per-unit cost moves MC and ATC.
+- **Lines**: task `line` (key `{ to }`, `{ at }` or `{ side, of }`) for d = MR = AR = P, the wage line, price
+  controls, world price, tariff, minimum wage, the regulated price. Policy lines are labeled on the price axis.
+- **Panels**: `pc` and `labor` draw market and firm side by side, the price or wage carried across dashed; the
+  panels wrap one above the other on a phone.
+- **Kinds**: `ppc` (with `bow: 'in'`), `sd`, `sd-micro` (`policy`: ceiling, floor, tax, subsidy, world, tariff),
+  `costs` (`set: short|long`, `afc`), `pc`, `monopoly` (`natural`), `monocomp` (`run`), `labor`, `monopsony`,
+  `externality` (`ext.type`: neg-prod, pos-prod, pos-cons, neg-cons), `lorenz`. Named points for the `point` task
+  (`profit-max`, `firm`, `min-atc`, `hire`, `efficient`, `fair-return` and others per kind).
+- **Matrix**: `mic-matrix.js`, tasks `dominant`, `nash`, `best`, `joint`, optional payoff `change`; ties refused;
+  slips named (largest single payoff, joint cell as Nash, one Nash only). Used as a bank item, lesson check, FRQ
+  part (`type: 'matrix'`) and drill step (`kind: 'matrix'`).
+- Course shell budget raised to 113 KB (`mic-graph.js` is about 27 KB gzipped); the formulas page to 24 KB.
 
 ## 6. Trainers
 

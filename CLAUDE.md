@@ -106,6 +106,19 @@ reserves, causal chains with every link, divide the gap, the currency axis ratio
 briefs (authors A-F, builders T1-T4): `docs/apmacro-briefs/`; launch log: `docs/apmacro-reviews/launch.md`. Published
 and live; Premium on sale since 2026-11-04 (owner checklist in spec section 9 done).
 
+## AP® Microeconomics course
+
+`docs/apmicro-spec.md` is the source of truth (owner brief, research summary, build plan with the author and
+builder split, decisions); read it before AP® Microeconomics work and update it in the same commit. Research:
+`docs/apmicro-research/`. Forked from AP® Macroeconomics (`microeconomics/`, `mic-*`, `ApMicro*`, storage
+`apmicro_`). Formats, `ApMicroCalc`, the graph engine with areas, curved curves, lines and two panels
+(`mic-graph.js`), the `matrix` item (`mic-matrix.js`) and tool layout: `docs/apmicro-architecture.md`; writing rules
+(label every axis and curve, MC through the minimums, price from demand, shade the right region, both comparisons,
+MRP = MRC, market vs efficient quantity): `docs/apmicro-authoring-guide.md`; map: `docs/apmicro-phase0.md`; open
+points: `docs/apmicro-needs-author.md`; briefs (authors A-E, builders T1-T4): `docs/apmicro-briefs/`. Phase 0
+done; registered hidden, Premium not on sale, migration `2026-11i-apmicro.sql` written, not applied. Macro's build
+must stay byte-identical: run `node scripts/build-apmacro.mjs --check` after any shared change.
+
 ## AI FRQ grader (AP® courses)
 
 `docs/frq-grader.md` is the status file (owner decisions, design, setup, eval and launch rule). Worker:
