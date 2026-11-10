@@ -31,7 +31,7 @@ export function recheck(p, ctx, w) {
   const { Graph, Grade } = runtime('cost-lab');
   const step = k => p.steps.find(s => s.key === k);
   const val = k => step(k).cell.answer;
-  if (!ctx.types.includes(p.type)) errs.push(`${w}: type ${p.type} is not one of the context's types`);
+  if (ctx.types && !ctx.types.includes(p.type)) errs.push(`${w}: type ${p.type} is not one of the context's types`);
   if (p.topic !== ctx.topic) errs.push(`${w}: topic ${p.topic} is not the context's ${ctx.topic}`);
   const pt = name => Graph.named({ kind: 'costs' }, {}, name);
   const a = p.answer;

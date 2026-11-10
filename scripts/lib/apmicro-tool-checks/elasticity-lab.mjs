@@ -28,7 +28,7 @@ export function recheck(p, ctx, w) {
     const q1 = qOf(a.s, a.p1), q2 = qOf(a.s, a.p2), f = a.method === 'midpoint' ? mpct : pct;
     const pq = f(q1, q2), pp = f(a.p1, a.p2), e = Math.abs(pq / pp);
     want('pq', pq); want('pp', pp); want('e', e);
-    if (!pick('class').startsWith(e > 1 ? 'Elastic' : 'Inelastic')) errs.push(`${w}: class keyed "${pick('class')}" for |Ed| ${e}`);
+    if (pick('class') !== (e > 1 ? 'Elastic: |Ed| is greater than 1' : 'Inelastic: |Ed| is less than 1')) errs.push(`${w}: class keyed "${pick('class')}" for |Ed| ${e}`);
     const e2 = Math.abs((a.method === 'midpoint' ? pct : mpct)(q1, q2) / (a.method === 'midpoint' ? pct : mpct)(a.p1, a.p2));
     if ((e > 1) !== (e2 > 1)) errs.push(`${w}: the two methods disagree on the class`);
     // Above the midpoint price both points: elastic (a straight line).
@@ -40,12 +40,12 @@ export function recheck(p, ctx, w) {
     want('tr1', tr1); want('tr2', tr2);
     if (!pick('dir').includes(tr2 > tr1 ? 'rises' : 'falls')) errs.push(`${w}: direction keyed "${pick('dir')}"`);
     const opposite = (a.pb - a.pa) * (tr2 - tr1) < 0;
-    if (!pick('class').startsWith(opposite ? 'Elastic' : 'Inelastic')) errs.push(`${w}: class keyed "${pick('class')}"`);
+    if (pick('class') !== (opposite ? 'Elastic: price and total revenue move in opposite directions' : 'Inelastic: price and total revenue move in the same direction')) errs.push(`${w}: class keyed "${pick('class')}"`);
   }
   if (p.type === 'range') {
     want('mid', 5 * a.s.kP); want('qmax', 5 * a.s.kQ);
     const P = a.ask === 'A' ? a.pA : a.pB, el = P > 5 * a.s.kP;
-    if (!pick('class').startsWith(el ? 'Elastic' : 'Inelastic')) errs.push(`${w}: class keyed "${pick('class')}"`);
+    if (pick('class') !== (el ? 'Elastic: |Ed| is greater than 1' : 'Inelastic: |Ed| is less than 1')) errs.push(`${w}: class keyed "${pick('class')}"`);
     if (!pick('advice').startsWith(el ? 'Cut' : 'Raise')) errs.push(`${w}: advice keyed "${pick('advice')}"`);
   }
   if (p.type === 'income' || p.type === 'cross') {

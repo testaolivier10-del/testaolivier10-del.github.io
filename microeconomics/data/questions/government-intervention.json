@@ -472,10 +472,6 @@
    },
    "graph": {
     "kind": "sd-micro",
-    "policy": {
-     "type": "tax",
-     "amount": 2
-    },
     "do": [
      "shift",
      "equilibrium"

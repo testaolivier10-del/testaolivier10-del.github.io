@@ -66,7 +66,7 @@ export function recheck(p, ctx, w) {
     if (!close(s.cell.answer, x, 1e-6, 1e-6)) errs.push(`${w}: step ${k} keyed ${s.cell.answer}, by hand ${x}`);
   }
   const pick = k => { const s = step(k); return s ? s.options[s.correct] : ''; };
-  if (E._kind && !pick('kind').toLowerCase().startsWith('a ' + E._kind)) errs.push(`${w}: kind keyed "${pick('kind')}", expected a ${E._kind}`);
+  if (E._kind && pick('kind') !== (E._kind === 'shortage' ? 'A shortage: quantity demanded is greater than quantity supplied' : 'A surplus: quantity supplied is greater than quantity demanded')) errs.push(`${w}: kind keyed "${pick('kind')}", expected a ${E._kind}`);
   if (E._who && !pick('who').includes(E._who)) errs.push(`${w}: incidence keyed "${pick('who')}", expected ${E._who}`);
   for (const s of p.steps.filter(x => x.kind === 'graph')) {
     const sp = s.spec;

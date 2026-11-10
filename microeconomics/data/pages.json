@@ -147,11 +147,11 @@
   },
   {
    "slug": "elasticity-lab",
-   "kind": "skill",
+   "kind": "simulator",
    "topic": "price-elasticity-demand",
    "name": "Elasticity lab",
    "title": "Elasticity Lab",
-   "desc": "Price, income and cross-price elasticity from tables and graphs, the total revenue test, and the elastic and inelastic ranges of a demand curve.",
+   "desc": "Slide a price along a demand curve and watch elasticity and total revenue change; income and cross-price elasticity with their signs; the total revenue test.",
    "blurb": "Price, income and cross elasticity and the total revenue test.",
    "lede": "Percent change over percent change, and what it says about revenue.",
    "studio": true

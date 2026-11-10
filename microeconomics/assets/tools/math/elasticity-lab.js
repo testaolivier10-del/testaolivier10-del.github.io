@@ -173,7 +173,6 @@
     ];
     return {
       type: 'trtest', ctx: ctx.id, topic: ctx.topic, text: text, table: table,
-      figure: { demand: s, points: [{ p: pa, label: 'A' }, { p: pb, label: 'B' }], tr: true },
       steps: steps,
       solution: [
         'TR at ' + money(pa) + ' = ' + money(pa) + ' × ' + n(A.q) + ' = ' + money(A.tr) + '. TR at ' + money(pb) + ' = ' + money(pb) + ' × ' + n(B.q) + ' = ' + money(B.tr) + '.',

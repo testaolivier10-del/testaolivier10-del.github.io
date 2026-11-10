@@ -74,3 +74,4 @@
 .el-qfig{margin:0;}
 .el-qtbl,.el-qfig>.table-wrap{max-width:480px;width:100%;margin:auto;align-self:center;}
 .el-tbl tr.is-pick th,.el-tbl tr.is-pick td{background:var(--ctint);}
+.ls-root.ls-phone .el-qfig .mic-gr-controls{padding-right:48px;box-sizing:border-box;}

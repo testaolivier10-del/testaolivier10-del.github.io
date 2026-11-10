@@ -34,7 +34,7 @@ export function recheck(p, ctx, w) {
   const step = k => p.steps.find(s => s.key === k);
   const val = k => step(k).cell.answer;
   const a = p.answer;
-  if (!ctx.types.includes(p.type)) errs.push(`${w}: type ${p.type} is not one of the context's types`);
+  if (ctx.types && !ctx.types.includes(p.type)) errs.push(`${w}: type ${p.type} is not one of the context's types`);
   if (p.topic !== ctx.topic) errs.push(`${w}: topic ${p.topic} is not the context's ${ctx.topic}`);
   if (p.type === 'quantity') {
     const mc = a.tc.map((c, i) => i ? c - a.tc[i - 1] : null);
@@ -66,11 +66,12 @@ export function recheck(p, ctx, w) {
     const want = { price: up ? 0 : 1, profit: up ? 0 : 1, entry: up ? 0 : 1, lrprice: 0, lrq: up ? 0 : 1 };
     for (const [k, v] of Object.entries(want)) if (step(k).correct !== v) errs.push(`${w}: ${k} keyed ${step(k).correct}, expected ${v}`);
     if (!/profit/.test(step('entry').options[0]) || /demand rose/.test(step('entry').options[0])) errs.push(`${w}: entry is not tied to profit`);
-    const spec = step('graph').spec, k0 = spec.key.shifts[0];
+    const spec = step('graph').spec, k0 = spec.key.shifts[0], d = up ? 1 : -1;
     if (spec.key.shifts.length !== 1 || k0.curve !== 'S' || k0.dir !== (up ? 'right' : 'left')) errs.push(`${w}: long-run shift keyed ${JSON.stringify(spec.key.shifts)}`);
-    const d = up ? 1 : -1;
     // after the key the price is back where it started (the minimum of ATC)
-    const e = Graph.eq(spec, Graph.keyOffsets(spec)), e0 = Graph.eq({ kind: 'pc' }, {});
+    const all = { ...Graph.keyOffsets(spec) }; for (const [c, v] of Object.entries(spec.show || {})) all[c] = (all[c] || 0) + v;
+    if ((spec.show || {}).D !== d) errs.push(`${w}: the graph does not show the change in demand`);
+    const e = Graph.eq(spec, all), e0 = Graph.eq({ kind: 'pc' }, {});
     if (Math.abs(e[1] - e0[1]) > 1e-6) errs.push(`${w}: the key does not bring the price back to its start`);
     graded(Graph, Grade, spec, w, errs, { 'demand shifted again': { shifts: { D: -d } }, 'supply the wrong way': { shifts: { S: -d } } });
   } else if (p.type === 'monopoly') {

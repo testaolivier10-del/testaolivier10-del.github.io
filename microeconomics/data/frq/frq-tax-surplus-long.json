@@ -28,10 +28,6 @@
    "prompt": "<b>Draw</b> a correctly labeled graph of the market for ferry rides and <b>show</b> the effect of the tax on the market price paid by riders and the quantity of rides.",
    "graph": {
     "kind": "sd-micro",
-    "policy": {
-     "type": "tax",
-     "amount": 2
-    },
     "do": [
      "label",
      "shift",

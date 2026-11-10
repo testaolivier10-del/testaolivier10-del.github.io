@@ -110,7 +110,7 @@
     var g = r.pick(GOODS), T = pcTable(r), t = T.t, qs = T.qs, P = T.P;
     var tr = ev('totalRevenue', P, qs), prof = ev('profit', tr, T.tc[qs]);
     var rows = T.q.map(function(x, i){ return [String(x), m0(T.tc[i])]; });
-    var spec = { kind: 'pc', start: { D: 1 }, do: ['point'], key: { point: { at: 'firm' } }, pointLabel: 'q*' };
+    var spec = { kind: 'pc', show: { D: 1 }, do: ['point'], key: { point: { at: 'firm' } }, pointLabel: 'q*' };
     return {
       type: 'quantity', ctx: ctx.id, topic: ctx.topic,
       text: '<p>A firm in a perfectly competitive market for ' + g.what + ' can sell as many as it likes at the market price of <b>' + m0(P) + '</b> a ' + g.one + '. Its total cost each day is in the table.</p>',
@@ -195,7 +195,7 @@
   function genLongRun(r, ctx){
     var g = r.pick(GOODS), up = r() < 0.5, text = r.pick(up ? LR_UP : LR_DOWN).replace('%g%', g.what);
     var dir = up ? 1 : -1;
-    var spec = { kind: 'pc', start: { D: dir }, do: ['shift'], movable: ['D', 'S'],
+    var spec = { kind: 'pc', show: { D: dir }, do: ['shift'], movable: ['D', 'S'],
       key: { shifts: [{ curve: 'S', dir: up ? 'right' : 'left' }], because: up ? 'firms entering the market' : 'firms leaving the market', outcome: { price: up ? 'down' : 'up' } },
       slips: { D: 'Entry and exit change the number of sellers, so market supply shifts. Demand already changed; it does not shift again.' } };
     var c1 = ['Rises', 'Falls', 'Stays the same'], i1 = up ? 0 : 1;
