@@ -1,0 +1,505 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 1 (docs/apmicro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmicro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-opportunity-cost-sunk",
+   "topic": "scarcity",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "The opportunity cost, not money already spent",
+   "prompt": "<b>Identify</b> the opportunity cost of a student's Saturday spent at a paid internship, when she has already paid a \\$40 nonrefundable concert ticket for that day and her next-best choice is a \\$90 shift at a cafe.",
+   "checklist": [
+    "Names the next-best alternative given up: the \\$90 cafe shift",
+    "Says the \\$40 ticket is a sunk cost, paid whatever she does",
+    "Does not add the ticket to the opportunity cost"
+   ],
+   "earns": {
+    "answer": "The opportunity cost of the internship day is the \\$90 cafe shift, her next-best alternative. The \\$40 concert ticket is a sunk cost: it is paid and cannot be refunded whatever she chooses, so it is not part of the opportunity cost.",
+    "why": "It names the single next-best alternative and keeps the sunk cost out."
+   },
+   "misses": {
+    "answer": "Her opportunity cost is \\$130: the ticket plus the cafe shift.",
+    "why": "The ticket is spent either way; adding it counts a sunk cost as part of the choice."
+   },
+   "specific": {
+    "slots": {
+     "oc": {
+      "label": "The opportunity cost is",
+      "options": [
+       "the \\$90 cafe shift",
+       "\\$130, the shift plus the ticket",
+       "the \\$40 ticket"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The ticket is paid whatever she does, so it is not given up by this choice.",
+       "2": "The ticket is a sunk cost; the cost of the choice is the next-best alternative."
+      }
+     },
+     "ticket": {
+      "label": "The \\$40 ticket is",
+      "options": [
+       "a sunk cost",
+       "an opportunity cost"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "It cannot be recovered whichever choice she makes, so it is sunk."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-economic-systems",
+   "topic": "economic-systems",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Who decides what gets made",
+   "prompt": "<b>Explain</b> how a market economy and a command economy each decide how many bicycles to make.",
+   "checklist": [
+    "Says that in a market economy prices lead firms to make what buyers will pay for",
+    "Says that in a command economy a central plan sets the quantity",
+    "Names the decision maker in each"
+   ],
+   "earns": {
+    "answer": "In a market economy, firms make more bicycles when buyers will pay a price that covers their costs and more, so prices steer how many are made. In a command economy, a central planning authority sets the number of bicycles in its plan, whatever buyers would pay.",
+    "why": "It names the decision maker and the signal in each system."
+   },
+   "misses": {
+    "answer": "In a market economy people decide, and in a command economy the government decides.",
+    "why": "It does not say how the decision is made: the price signal and the plan are both missing."
+   },
+   "specific": {
+    "slots": {
+     "market": {
+      "label": "In a market economy the quantity follows",
+      "options": [
+       "prices buyers will pay",
+       "a central plan"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A plan is the command method; markets use prices."
+      }
+     },
+     "command": {
+      "label": "In a command economy the quantity is set by",
+      "options": [
+       "a central planning authority",
+       "buyers' willingness to pay"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Willingness to pay steers a market economy, not a planned one."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-ppc-opportunity-cost",
+   "topic": "production-possibilities",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Opportunity cost per unit from a PPC",
+   "prompt": "<b>Calculate</b> the opportunity cost of one more chair when a workshop moves along its PPC from 20 chairs and 60 tables to 30 chairs and 40 tables.",
+   "checklist": [
+    "Finds the tables given up: 60 - 40",
+    "Divides by the chairs gained: 30 - 20",
+    "States the answer in tables per chair"
+   ],
+   "earns": {
+    "answer": "Moving along the PPC, the workshop gives up 60 - 40 = 20 tables to gain 30 - 20 = 10 chairs. The opportunity cost of one more chair is 20 / 10 = 2 tables per chair.",
+    "why": "It shows what is given up and what is gained, divides, and gives the unit."
+   },
+   "misses": {
+    "answer": "The opportunity cost of one more chair is 20 tables, the tables given up.",
+    "why": "That is the cost of all 10 chairs together, not of one chair, and the unit per chair is missing."
+   },
+   "specific": {
+    "slots": {
+     "given": {
+      "label": "Tables given up",
+      "options": [
+       "20",
+       "40",
+       "10"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "40 is how many tables are left, not how many are given up.",
+       "2": "10 is the number of chairs gained."
+      }
+     },
+     "per": {
+      "label": "Per chair, the cost is",
+      "options": [
+       "2 tables",
+       "20 tables",
+       "0.5 table"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is for 10 chairs; divide by 10.",
+       "2": "That is chairs per table: the ratio is upside down."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-ppc-bowed",
+   "topic": "production-possibilities",
+   "practice": "4.A",
+   "skill": "graph",
+   "title": "Why a PPC bows out",
+   "prompt": "<b>Explain</b> why a farm's PPC for corn and beans is bowed out from the origin.",
+   "checklist": [
+    "Says resources are not equally suited to both goods",
+    "Says each extra unit of corn costs more beans than the last: increasing opportunity cost",
+    "Links the rising opportunity cost to the bowed-out shape"
+   ],
+   "earns": {
+    "answer": "Some fields suit corn and others suit beans. As the farm grows more corn, it has to switch fields that are better for beans, so each extra unit of corn costs more beans than the one before. That increasing opportunity cost makes the PPC bowed out from the origin.",
+    "why": "It gives the reason (resources suited to one good) and links increasing opportunity cost to the shape."
+   },
+   "misses": {
+    "answer": "The PPC is bowed out because the farm cannot make more of both goods.",
+    "why": "That explains why the PPC slopes down, a tradeoff, not why it bows out."
+   },
+   "specific": {
+    "slots": {
+     "cost": {
+      "label": "As corn rises, each extra unit costs",
+      "options": [
+       "more beans than the last",
+       "the same number of beans",
+       "fewer beans than the last"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A constant cost gives a straight-line PPC.",
+       "2": "Falling cost gives a PPC bowed in."
+      }
+     },
+     "why": {
+      "label": "The reason is that resources are",
+      "options": [
+       "not equally suited to both goods",
+       "used up as output grows"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Resources are moved between goods, not used up; their fit differs."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-ppc-growth",
+   "topic": "production-possibilities",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "Investing in capital moves the PPC",
+   "prompt": "<b>Draw</b> and explain what happens to a country's PPC for consumer goods and capital goods in later years if it makes more capital goods now.",
+   "checklist": [
+    "Shows the PPC shifting outward in later years",
+    "Says the reason: more capital raises what the country can produce",
+    "Labels the new curve PPC2 outside PPC1"
+   ],
+   "earns": {
+    "answer": "Making more capital goods now gives the country more machines and tools later, which raises how much it can produce. So in later years its PPC shifts outward from PPC1 to PPC2, and it can make more of both goods.",
+    "why": "It gives the shift, its direction and the reason, with the new curve labeled."
+   },
+   "misses": {
+    "answer": "The country moves along its PPC toward capital goods.",
+    "why": "That is the choice this year; the question asks about later years, when the curve itself shifts out."
+   },
+   "specific": {
+    "slots": {
+     "shift": {
+      "label": "In later years the PPC",
+      "options": [
+       "shifts outward",
+       "shifts inward",
+       "stays put"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More capital adds to what the country can make; it does not shrink.",
+       "2": "The added capital changes what can be produced, so the curve moves."
+      }
+     },
+     "why": {
+      "label": "Because",
+      "options": [
+       "more capital raises productive capacity",
+       "consumer goods are less wanted"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wants do not move the PPC; a change in resources does."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-comparative-advantage",
+   "topic": "comparative-advantage",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Comparative advantage from opportunity costs",
+   "prompt": "<b>Determine</b> which workshop has the comparative advantage in tables. In a day, Ardent can make 10 chairs or 5 tables, and Birch can make 9 chairs or 3 tables. Show your work.",
+   "checklist": [
+    "Finds each workshop's opportunity cost of a table in chairs",
+    "Compares the two opportunity costs of a table",
+    "Gives the comparative advantage to the lower opportunity cost"
+   ],
+   "earns": {
+    "answer": "A table costs Ardent 10 / 5 = 2 chairs and costs Birch 9 / 3 = 3 chairs. Ardent gives up fewer chairs per table, so Ardent has the comparative advantage in tables.",
+    "why": "Both opportunity costs are calculated and compared, and the lower one wins."
+   },
+   "misses": {
+    "answer": "Ardent has the comparative advantage in tables because it makes more tables, 5 against 3.",
+    "why": "Making more is absolute advantage; comparative advantage needs the opportunity costs."
+   },
+   "specific": {
+    "slots": {
+     "ardent": {
+      "label": "Ardent's cost of a table",
+      "options": [
+       "2 chairs",
+       "0.5 chair",
+       "5 tables"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is tables per chair; the ratio is upside down.",
+       "2": "That is its output, not what a table costs it."
+      }
+     },
+     "who": {
+      "label": "Comparative advantage in tables goes to",
+      "options": [
+       "Ardent, the lower opportunity cost",
+       "Birch",
+       "neither"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Birch gives up 3 chairs per table, more than Ardent's 2.",
+       "2": "The costs differ, so one workshop has the advantage."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-terms-of-trade",
+   "topic": "comparative-advantage",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "A price for trade that helps both",
+   "prompt": "<b>Identify</b> a price of one table, in chairs, at which both Ardent (a table costs it 2 chairs) and Birch (a table costs it 3 chairs) gain from trade, and explain why.",
+   "checklist": [
+    "Gives a price strictly between the two opportunity costs",
+    "Says Ardent sells tables for more than they cost it",
+    "Says Birch buys tables for less than making them"
+   ],
+   "earns": {
+    "answer": "A price of 2.5 chairs per table helps both. Ardent sells each table for 2.5 chairs though it costs Ardent 2, and Birch gets a table for 2.5 chairs though making one costs Birch 3. Any price between 2 and 3 chairs works.",
+    "why": "It gives a price between the two costs and shows each side gains."
+   },
+   "misses": {
+    "answer": "They should trade one table for one chair, so the trade is fair.",
+    "why": "At 1 chair Ardent gets less than its own cost of 2 chairs, so it loses."
+   },
+   "specific": {
+    "slots": {
+     "price": {
+      "label": "A price that helps both",
+      "options": [
+       "2.5 chairs per table",
+       "1 chair per table",
+       "4 chairs per table"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Below Ardent's cost of 2 chairs, Ardent loses.",
+       "2": "Above Birch's cost of 3 chairs, Birch would make its own."
+      }
+     },
+     "rule": {
+      "label": "The price must lie",
+      "options": [
+       "between the two opportunity costs",
+       "above both opportunity costs"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Above both, the buyer gains nothing from trading."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-implicit-cost",
+   "topic": "cost-benefit",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Net benefit with an implicit cost",
+   "prompt": "<b>Calculate</b> the net benefit of Maya's summer bike-repair stand. It takes in \\$7,000, she pays \\$2,500 for parts and space, and she gives up a summer job paying \\$3,000. Show your work.",
+   "checklist": [
+    "Subtracts the money paid out (explicit cost)",
+    "Subtracts the job she gives up (implicit cost)",
+    "States whether the stand is the better choice"
+   ],
+   "earns": {
+    "answer": "Net benefit counts both kinds of cost: 7,000 - 2,500 - 3,000 = \\$1,500. The stand earns \\$1,500 more than the job she gives up, so it is the better choice.",
+    "why": "Both costs come off, with the numbers shown and the decision stated."
+   },
+   "misses": {
+    "answer": "Her net benefit is 7,000 - 2,500 = \\$4,500, so the stand is a good idea.",
+    "why": "It leaves out the \\$3,000 job she gives up, an implicit cost."
+   },
+   "specific": {
+    "slots": {
+     "costs": {
+      "label": "Subtract",
+      "options": [
+       "both the \\$2,500 and the \\$3,000",
+       "the \\$2,500 only"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The job she gives up is a cost of the choice too."
+      }
+     },
+     "result": {
+      "label": "Net benefit is",
+      "options": [
+       "\\$1,500",
+       "\\$4,500",
+       "\\$10,000"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That leaves out the implicit cost.",
+       "2": "Costs are subtracted, not added."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-mb-mc",
+   "topic": "marginal-analysis",
+   "practice": "2.A",
+   "skill": "marginal",
+   "title": "When to stop: marginal benefit and marginal cost",
+   "prompt": "<b>Explain</b> how many hours a student should tutor if the third hour brings a marginal benefit of \\$15 at a marginal cost of \\$12, and the fourth brings \\$10 at \\$14.",
+   "checklist": [
+    "Compares marginal benefit with marginal cost hour by hour",
+    "Keeps going while MB is at least MC and stops before MB falls below MC",
+    "Gives the number of hours: 3"
+   ],
+   "earns": {
+    "answer": "Do each hour while its marginal benefit is at least its marginal cost, stopping near MB = MC. The third hour adds \\$15 of benefit for \\$12 of cost, so it is worth doing. The fourth adds \\$10 for \\$14, so it is not. The student should tutor 3 hours.",
+    "why": "It states the marginal rule and applies it to both hours with the numbers."
+   },
+   "misses": {
+    "answer": "She should tutor 4 hours, because the total benefit is still positive.",
+    "why": "Total benefit is not the test: the fourth hour costs more than it adds."
+   },
+   "specific": {
+    "slots": {
+     "rule": {
+      "label": "Do another hour while",
+      "options": [
+       "its MB is at least its MC",
+       "total benefit is positive"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Total benefit can be positive while the last hour loses value."
+      }
+     },
+     "hours": {
+      "label": "She should tutor",
+      "options": [
+       "3 hours",
+       "4 hours",
+       "2 hours"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The fourth hour's MB (\\$10) is below its MC (\\$14).",
+       "2": "The third hour adds more than it costs, so stopping at 2 leaves value."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-mu-per-dollar",
+   "topic": "marginal-analysis",
+   "practice": "2.A",
+   "skill": "marginal",
+   "title": "Marginal utility per dollar",
+   "prompt": "<b>Explain</b> whether Jonah should spend his next \\$20 on two books (\\$10 each, the next book gives 40 utils) or one concert ticket (\\$20, giving 60 utils), using marginal utility per dollar.",
+   "checklist": [
+    "Divides each marginal utility by its price",
+    "Compares the two utils-per-dollar ratios",
+    "Chooses the good with the higher MU per dollar"
+   ],
+   "earns": {
+    "answer": "Compare marginal utility per dollar, MU / P. The next book gives 40 / 10 = 4 utils per dollar and the ticket 60 / 20 = 3 utils per dollar. A book gives more per dollar, so Jonah should spend on books first.",
+    "why": "It divides by price, compares the ratios and decides."
+   },
+   "misses": {
+    "answer": "Jonah should buy the concert ticket because 60 utils is more than 40.",
+    "why": "It compares marginal utility without dividing by price, which is the slip readers report."
+   },
+   "specific": {
+    "slots": {
+     "ratio": {
+      "label": "Compare",
+      "options": [
+       "MU divided by price",
+       "MU alone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A more expensive good must give more utility to be worth it; divide by price."
+      }
+     },
+     "choice": {
+      "label": "He should spend first on",
+      "options": [
+       "books: 4 utils per dollar against 3",
+       "the ticket: 60 utils against 40"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That compares totals, not utility per dollar."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

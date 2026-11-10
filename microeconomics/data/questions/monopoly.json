@@ -1,0 +1,871 @@
+{
+ "stimuli": {
+  "monopoly-s1": {
+   "kind": "graph",
+   "title": "A profit-maximizing monopoly, areas lettered",
+   "graph": {
+    "kind": "monopoly",
+    "letters": true
+   }
+  },
+  "monopoly-s2": {
+   "kind": "data",
+   "title": "Quillon Labs: demand and total cost",
+   "invented": true,
+   "table": {
+    "caption": "Quillon Labs holds the patent on a water-testing kit: price, quantity and total cost per day (invented data for practice)",
+    "cols": [
+     "Quantity (kits)",
+     "Price (dollars)",
+     "Total revenue (dollars)",
+     "Total cost (dollars)"
+    ],
+    "rows": [
+     [
+      "0",
+      "13",
+      "0",
+      "10"
+     ],
+     [
+      "1",
+      "12",
+      "12",
+      "13"
+     ],
+     [
+      "2",
+      "11",
+      "22",
+      "17"
+     ],
+     [
+      "3",
+      "10",
+      "30",
+      "22"
+     ],
+     [
+      "4",
+      "9",
+      "36",
+      "28"
+     ],
+     [
+      "5",
+      "8",
+      "40",
+      "36"
+     ],
+     [
+      "6",
+      "7",
+      "42",
+      "46"
+     ]
+    ]
+   }
+  },
+  "monopoly-s3": {
+   "kind": "text",
+   "title": "The Lark Island ferry",
+   "text": "<p>Lark Island Ferry (invented) is the only ferry to Lark Island. Building the docks and boats cost millions of dollars, but carrying one more rider costs almost nothing, so its average total cost keeps falling over the whole range of rides people want. A second ferry line would have to build its own docks and boats.</p><p>Its marginal cost is a flat \\$2 a ride. Unregulated, it would carry 4,000 rides a week at \\$6 a ride. At \\$4 a ride it would carry 6,000 rides and its average total cost would be exactly \\$4. At \\$2 a ride it would carry 8,000 rides, with an average total cost of \\$3.50.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-monopoly-1",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "monopoly-s1",
+   "q": "The graph shows a monopolist that maximizes profit. Which area is consumer surplus?",
+   "options": [
+    "Area a",
+    "Area b",
+    "Area c",
+    "Area d"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Consumer surplus lies under the demand curve and above the price the monopolist charges (read up on demand at the quantity where MR = MC), from zero to that quantity: area a.",
+    "options": [
+     "Right: under D, above the monopoly price, out to the monopoly quantity.",
+     "Area b lies between the price and ATC: that is the economic profit.",
+     "Area c lies under ATC out to the quantity sold: that is total cost.",
+     "Area d lies between D and MC beyond the monopoly quantity: that is the deadweight loss."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-2",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "monopoly-s1",
+   "q": "Which area is the monopolist's economic profit?",
+   "options": [
+    "Area a",
+    "Area b",
+    "Areas b and c",
+    "Area d"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Profit is (P minus ATC) times Q: the rectangle between the price and ATC at the profit-maximizing quantity, from zero to that quantity. That is area b.",
+    "options": [
+     "Area a lies above the price, under demand: it is consumer surplus.",
+     "Right: the rectangle between the price and ATC out to the quantity sold.",
+     "Together b and c are price times quantity: total revenue, not profit.",
+     "Area d is the deadweight loss, the surplus no one gets."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-3",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "monopoly-s1",
+   "q": "Which area is the deadweight loss caused by the monopoly?",
+   "options": [
+    "Area a",
+    "Area b",
+    "Area d",
+    "Areas b and d"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Deadweight loss lies between the demand curve and MC, from the monopoly quantity (where MR = MC) to the quantity where D meets MC: area d. It is the value of units buyers would pay more for than they cost to make, which the monopolist does not produce.",
+    "options": [
+     "Area a is surplus buyers still get; it is not lost.",
+     "Area b goes to the monopolist as profit; it is not lost.",
+     "Right: between D and MC, from the monopoly quantity to the efficient quantity.",
+     "Area b is profit the firm keeps; only area d is lost to everyone."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-4",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "monopoly-s1",
+   "q": "Which area is the monopolist's total revenue?",
+   "options": [
+    "Area c",
+    "Areas a and b",
+    "Areas a, b and c",
+    "Areas b and c"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Total revenue is price times quantity: the rectangle from the price down to the horizontal axis, out to the quantity sold. That is areas b and c (profit plus total cost).",
+    "options": [
+     "Area c alone is total cost: ATC times quantity.",
+     "Area a is above the price; it belongs to buyers.",
+     "That adds consumer surplus, which the firm does not collect.",
+     "Right: price times quantity, which is profit plus total cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-5",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "monopoly-s2",
+   "q": "Use the table. What is the marginal cost of the fourth kit, in dollars?",
+   "why": {
+    "correct": "$\\text{MC} = \\frac{\\Delta \\text{TC}}{\\Delta Q} = \\frac{28 - 22}{4 - 3} = 6$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalCost",
+     "args": [
+      22,
+      28,
+      3,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 28,
+      "why": "\\$28 is the total cost of four kits. Marginal cost is the change in total cost divided by the change in output, from three kits to four."
+     },
+     {
+      "value": 7,
+      "why": "\\$7 is the average total cost of four kits ($28 \\div 4$). Divide the change in total cost by the change in output."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-6",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "monopoly-s2",
+   "q": "Use the table. How many kits a day maximize Quillon's profit?",
+   "why": {
+    "correct": "Marginal revenue is 12, 10, 8, 6, 4, 2 and marginal cost is 3, 4, 5, 6, 8, 10. MR is at least MC up to the fourth kit (MR \\$6 = MC \\$6); the fifth kit adds \\$4 to revenue and \\$8 to cost. So Quillon makes 4 kits. The fourth kit adds \\$6 to revenue and \\$6 to cost, so profit is \\$8 at both 3 and 4 kits; the rule MR = MC picks 4."
+   },
+   "numeric": {
+    "from": {
+     "fn": "profitMaxQ",
+     "args": [
+      [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      [
+       12,
+       10,
+       8,
+       6,
+       4,
+       2
+      ],
+      [
+       3,
+       4,
+       5,
+       6,
+       8,
+       10
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "Profit is \\$8 at 3 kits and at 4 kits, because the fourth kit adds \\$6 to revenue and \\$6 to cost. The rule is to produce where MR = MC, and here MR = MC = \\$6 at the fourth kit."
+     },
+     {
+      "value": 5,
+      "why": "At 5 kits the price (\\$8) equals marginal cost: that is the efficient quantity, not the monopolist's. The fifth kit adds only \\$4 to revenue but \\$8 to cost."
+     },
+     {
+      "value": 6,
+      "why": "Total revenue is largest at 6 kits, but the sixth kit adds \\$2 to revenue and \\$10 to cost. Compare MR with MC, not total revenue alone."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-7",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "monopoly-s2",
+   "q": "Use the table. At its profit-maximizing output, what price does Quillon charge?",
+   "options": [
+    "\\$9, the price buyers will pay for 4 kits",
+    "\\$6, where marginal revenue equals marginal cost",
+    "\\$8, where the price equals marginal cost at 5 kits",
+    "\\$7, the average total cost of 4 kits"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At 4 kits, MR = MC = \\$6, but the price is read from demand: buyers will pay \\$9 for 4 kits a day.",
+    "options": [
+     "Right: go up to demand at the quantity where MR = MC.",
+     "\\$6 is the height of MR and MC at 4 kits; the price comes from the demand curve above it.",
+     "P = MC is the efficient point; the monopolist stops at 4 kits.",
+     "\\$7 is ATC. Charging ATC would leave zero economic profit."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-8",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "monopoly-s2",
+   "q": "Use the table. What is Quillon's daily economic profit at its profit-maximizing output, in dollars?",
+   "why": {
+    "correct": "Profit = TR minus TC = \\$36 minus \\$28 = \\$8. The same as $(P - \\text{ATC}) \\times Q = (9 - 7) \\times 4 = 8$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "profit",
+     "args": [
+      {
+       "fn": "totalRevenue",
+       "args": [
+        9,
+        4
+       ]
+      },
+      28
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          9,
+          6
+         ]
+        },
+        4
+       ]
+      },
+      "why": "That uses MC (\\$6) in place of ATC. Profit per unit is the price minus average total cost: (9 minus 7) times 4."
+     },
+     {
+      "value": 36,
+      "why": "\\$36 is total revenue. Subtract total cost (\\$28) to get profit."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-9",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "monopoly-s3",
+   "q": "Why is the ferry a natural monopoly?",
+   "options": [
+    "The island government has passed a law against a second ferry line",
+    "One firm can serve the whole market at a lower ATC than two or more firms could",
+    "Its marginal cost rises quickly as it carries more riders",
+    "Riders see the ferry as different from any other way to travel"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Average total cost falls over the whole range of demand (economies of scale), so one firm can carry every rider more cheaply than two firms that each built docks and boats.",
+    "options": [
+     "The description gives no law; the barrier is the cost structure itself.",
+     "Right: falling ATC over the range of demand makes one firm the low-cost producer.",
+     "Its marginal cost is flat at \\$2; rising MC would favor several smaller firms.",
+     "That is product differentiation, which is not what makes a market a natural monopoly."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-10",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "monopoly-s3",
+   "q": "A regulator sets the fair-return price. What price is that, and what economic profit does the ferry earn?",
+   "options": [
+    "\\$2, with an economic loss",
+    "\\$6, with positive economic profit",
+    "\\$4, with zero economic profit",
+    "\\$4, with positive economic profit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The fair-return price is where demand meets ATC (P = ATC): \\$4 a ride, with 6,000 rides. Price equals average total cost, so economic profit is zero.",
+    "options": [
+     "\\$2 is where P = MC: the socially optimal price, which leaves a loss.",
+     "\\$6 is the unregulated price where MR = MC.",
+     "Right: P = ATC, so the ferry just covers all its costs, including a normal profit.",
+     "At \\$4, price equals ATC, so economic profit is zero, not positive."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-11",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "monopoly-s3",
+   "q": "A regulator instead sets the socially optimal price of \\$2 a ride. How large a subsidy, in dollars per week, would the ferry need to break even?",
+   "why": {
+    "correct": "At \\$2 the ferry carries 8,000 rides with ATC \\$3.50, so it loses \\$1.50 a ride: $(3.50 - 2) \\times 8{,}000 = 12{,}000$ dollars a week."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        3.5,
+        2
+       ]
+      },
+      8000
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        3.5,
+        8000
+       ]
+      },
+      "why": "That is the total cost. The subsidy only needs to cover the loss: ATC minus the price, times the rides."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        2,
+        8000
+       ]
+      },
+      "why": "That is total revenue at \\$2. The subsidy is the gap between total cost and total revenue."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-12",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "monopoly-s3",
+   "q": "Compared with the unregulated outcome, what does the socially optimal price of \\$2 do?",
+   "options": [
+    "Raises rides and leaves the ferry with zero economic profit",
+    "Lowers rides, because the price is below the ferry's cost",
+    "Leaves rides unchanged and moves profit to riders",
+    "Raises rides to the efficient quantity, but leaves the ferry with a loss"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At P = MC the ferry carries 8,000 rides instead of 4,000, the allocatively efficient quantity, so the deadweight loss is gone. But price is below ATC, so the ferry makes a loss unless it is subsidized.",
+    "options": [
+     "Zero economic profit happens at the fair-return price (\\$4), where P = ATC.",
+     "A lower price ceiling on a monopolist raises quantity, up to where demand meets MC.",
+     "Quantity rises from 4,000 to 8,000 rides when the price falls to MC.",
+     "Right: P = MC is allocatively efficient, but below ATC."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-13",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the deadweight loss caused by this profit-maximizing monopolist.",
+   "why": {
+    "correct": "Deadweight loss is the triangle between the demand curve and MC, from the monopoly quantity (where MR = MC) to the quantity where demand meets MC."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "profit": "That rectangle is the profit, which the firm keeps; deadweight loss is the triangle between D and MC beyond the monopoly quantity.",
+     "tc": "That area is total cost; the deadweight loss is between D and MC to the right of the monopoly quantity."
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-14",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade consumer surplus for this profit-maximizing monopolist.",
+   "why": {
+    "correct": "Consumer surplus is under the demand curve and above the price, which is read up on demand at the quantity where MR = MC; it stops at that quantity."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    },
+    "slips": {
+     "profit": "That rectangle lies below the price: it is the monopolist's profit. Consumer surplus is above the price, under demand.",
+     "dwl": "That triangle is beyond the quantity sold: it is the deadweight loss, which no one gets."
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-15",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Demand for this monopolist's product has fallen. It still produces where MR = MC. Shade its economic loss.",
+   "why": {
+    "correct": "At the quantity where MR = MC the price read from demand is below ATC, so the loss is the rectangle between ATC and the price, from zero to that quantity. The firm keeps producing in the short run if the price covers average variable cost."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "start": {
+     "D": -2,
+     "ATC": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "loss"
+    },
+    "slips": {
+     "tc": "That area runs all the way to the horizontal axis: it is total cost. The loss is only the part between ATC and the price."
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-16",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "This natural monopoly is regulated at the socially optimal price. Mark the price and quantity.",
+   "why": {
+    "correct": "The socially optimal (allocatively efficient) point is where demand meets marginal cost: P = MC. For a natural monopoly that price is below ATC, so the firm makes a loss there."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "natural": true,
+    "do": [
+     "point"
+    ],
+    "pointLabel": "S",
+    "key": {
+     "point": {
+      "at": "allocative"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-17",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "This natural monopoly is regulated at the fair-return price. Mark the price and quantity.",
+   "why": {
+    "correct": "The fair-return price is where demand meets ATC: P = ATC, so the firm earns zero economic profit (a normal profit)."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "natural": true,
+    "do": [
+     "point"
+    ],
+    "pointLabel": "F",
+    "key": {
+     "point": {
+      "at": "fair-return"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-18",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The city charges this monopolist a lump-sum license fee: a fixed amount each year, the same whatever it produces. Shift the curve or curves that change.",
+   "why": {
+    "correct": "A lump-sum tax is a fixed cost: it raises ATC but not MC, so MR = MC happens at the same quantity, the price on demand is the same, and profit falls by the amount of the fee."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "MC",
+     "ATC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "ATC",
+       "dir": "up"
+      }
+     ],
+     "because": "a lump-sum license fee (a fixed cost)"
+    },
+    "slips": {
+     "MC": "A fixed fee does not change the cost of one more unit, so MC stays put; only ATC rises."
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-19",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the price and quantity at which this monopolist's total revenue is as large as it can be.",
+   "why": {
+    "correct": "Total revenue is largest where marginal revenue is zero; that point on the demand curve is unit elastic. A profit-maximizing monopolist produces less than this, on the elastic part of demand."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "R",
+    "key": {
+     "point": {
+      "at": "revenue-max"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-20",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The city replaces the lump-sum license fee with a per-unit tax of \\$1 on every unit the monopolist sells. What happens?",
+   "options": [
+    "Quantity falls and the price rises",
+    "Quantity and price stay the same and profit falls",
+    "Quantity rises and the price falls",
+    "Price rises by the full \\$1 and quantity stays the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A per-unit tax raises marginal cost, so MC crosses MR at a smaller quantity, and the price read from demand rises. (A lump-sum tax would leave MC, price and quantity unchanged.)",
+    "options": [
+     "Right: MC shifts up, so MR = MC at a smaller quantity, higher on demand.",
+     "That is the effect of a lump-sum tax, which does not change MC.",
+     "A tax on each unit makes each unit more costly; the firm makes fewer.",
+     "Quantity changes because MC changes; the price rise depends on demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-21",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A profit-maximizing monopolist with positive marginal cost produces on which part of its demand curve?",
+   "options": [
+    "The inelastic part, where it can raise its price freely",
+    "The elastic part, where marginal revenue is positive",
+    "The unit-elastic point, where total revenue is largest",
+    "The point where demand meets marginal cost"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At the profit-maximizing output MR = MC, and MC is positive, so MR is positive. Marginal revenue is positive only on the elastic part of a straight-line demand curve, above the unit-elastic midpoint.",
+    "options": [
+     "On the inelastic part MR is negative; cutting output and raising the price would add revenue and cut costs.",
+     "Right: MR = MC > 0, so the firm is above the unit-elastic point.",
+     "MR is zero there, which is below any positive MC.",
+     "That is the efficient quantity, larger than the monopoly quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-22",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Compared with a perfectly competitive industry with the same costs, a monopoly",
+   "options": [
+    "produces more and charges a higher price",
+    "produces less and charges a lower price",
+    "produces less and charges a higher price",
+    "produces the same amount at a higher price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The monopolist restricts output to where MR = MC and charges a price above MC, so it produces less, charges more, and creates a deadweight loss.",
+    "options": [
+     "A monopolist cuts output below the competitive quantity to raise its price.",
+     "Along a demand curve, less output goes with a higher price.",
+     "Right: MR = MC at a smaller quantity, with the price read from demand.",
+     "Output falls: the monopolist stops where MR = MC, short of P = MC."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-23",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A monopolist is producing where marginal revenue is \\$12 and marginal cost is \\$8. To raise profit it should",
+   "options": [
+    "produce less and raise its price",
+    "keep its output and raise its price",
+    "shut down, since price is above marginal cost",
+    "produce more and lower its price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The next unit adds \\$12 to revenue and only \\$8 to cost, so producing more adds \\$4 to profit. Expanding output means lowering the price along demand until MR falls to MC.",
+    "options": [
+     "Cutting output would give up units that add more to revenue than to cost.",
+     "With the same demand curve, a higher price means fewer sales.",
+     "Price above MC is normal for a monopolist; it is no reason to shut down.",
+     "Right: MR > MC, so each extra unit adds to profit."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopoly-24",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the answer: how does a monopolist choose its price?",
+   "why": {
+    "correct": "It produces the quantity where MR = MC, then charges the highest price buyers will pay for that quantity, read from the demand curve."
+   },
+   "specific": {
+    "frame": "It produces where ___ equals marginal cost, then reads its price from the ___ curve at that quantity.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "It produces the quantity where marginal revenue equals marginal cost, because one more unit would add more to cost than to revenue. It then charges the price on the demand curve at that quantity, which is higher than marginal cost.",
+    "slots": {
+     "rule": {
+      "label": "The rule",
+      "options": [
+       "marginal revenue",
+       "price"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "P = MC is the efficient rule; a monopolist stops where MR = MC."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "demand",
+       "marginal revenue"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "MR gives the quantity, not the price; the price comes from demand."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopoly-25",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "A monopolist sells 400 units at \\$30 each. At that quantity its average total cost is \\$22. What is its economic profit, in dollars?",
+   "why": {
+    "correct": "$\\text{Profit} = (P - \\text{ATC}) \\times Q = (30 - 22) \\times 400 = 3{,}200$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "unitProfit",
+     "args": [
+      30,
+      22,
+      400
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        30,
+        400
+       ]
+      },
+      "why": "That is total revenue. Subtract total cost (ATC times Q) to get profit."
+     },
+     {
+      "value": 8,
+      "why": "\\$8 is the profit on each unit. Multiply by the 400 units sold."
+     }
+    ]
+   }
+  }
+ ]
+}

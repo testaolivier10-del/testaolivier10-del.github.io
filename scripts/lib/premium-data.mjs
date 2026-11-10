@@ -197,6 +197,16 @@ export function counts() {
     }
   }
   const macNotes = join(ROOT, 'macroeconomics', 'assets', 'notes-index.json');
+  const micBank = join(ROOT, 'microeconomics', 'assets', 'bank');
+  let apmicro = 0;
+  if (existsSync(micBank)) {
+    for (const f of readdirSync(micBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('microeconomics', 'assets', 'bank', f));
+      apmicro += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const micNotes = join(ROOT, 'microeconomics', 'assets', 'notes-index.json');
   // AP® Calculus BC: its own bank (AB's topics and its own, built by build-apcalcbc.mjs).
   const cbcBank = join(ROOT, 'calculus-bc', 'assets', 'bank');
   let apcalcbc = 0, apcalcbcOwn = 0;
@@ -223,6 +233,7 @@ export function counts() {
     appsych, appsychTopics: existsSync(psyNotes) ? read('psychology/assets/notes-index.json').length : 0,
     apprecalc, apprecalcTopics: existsSync(pcalcNotes) ? read('precalculus/assets/notes-index.json').length : 0,
     apmacro, apmacroTopics: existsSync(macNotes) ? read('macroeconomics/assets/notes-index.json').length : 0,
+    apmicro, apmicroTopics: existsSync(micNotes) ? read('microeconomics/assets/notes-index.json').length : 0,
     apcalcbc, apcalcbcOwn, apcalcbcTopics: existsSync(cbcNotes) ? read('calculus-bc/assets/notes-index.json').length : 0,
   };
   return countsCache;

@@ -1,0 +1,12 @@
+{
+ "imperfect-competition-price-maker": {
+  "file": "figures/imperfect-competition-price-maker.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs with Price on the vertical axis and Quantity on the horizontal axis. Left: a horizontal line labeled d = MR = AR = P. Right: a downward-sloping demand curve D with a steeper MR curve below it; at Q1 the price P1 on D is above marginal revenue."
+ }
+}

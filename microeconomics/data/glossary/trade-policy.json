@@ -1,0 +1,14 @@
+{
+ "world-price": {
+  "def": "World price: the price of a good on the world market. A small country that opens to free trade takes it as given, so its domestic price moves to the world price."
+ },
+ "imports": {
+  "def": "Imports: goods bought from other countries. At a world price below the domestic price, imports equal domestic quantity demanded minus domestic quantity supplied. Exports are the reverse: at a world price above the domestic price, quantity supplied minus quantity demanded."
+ },
+ "tariff": {
+  "def": "Tariff: a tax on imports, per unit. It raises the domestic price by the tariff, raises domestic output, cuts imports and creates deadweight loss. Tariff revenue is the tariff times the imports after the tariff."
+ },
+ "import-quota": {
+  "def": "Import quota: a legal limit on the quantity of a good that can be imported. It raises the domestic price and lowers imports as a tariff does, but raises no tariff revenue."
+ }
+}

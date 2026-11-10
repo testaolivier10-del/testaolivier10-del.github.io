@@ -1,0 +1,362 @@
+{
+ "stimuli": {
+  "axes-points-s1": {
+   "kind": "data",
+   "title": "Calle Verde Taco Truck: price and tacos sold",
+   "invented": true,
+   "table": {
+    "caption": "Tacos sold per day at each price (invented data for practice)",
+    "cols": [
+     "Price per taco (\\$)",
+     "Tacos sold per day"
+    ],
+    "rows": [
+     [
+      "1",
+      "120"
+     ],
+     [
+      "2",
+      "100"
+     ],
+     [
+      "3",
+      "80"
+     ],
+     [
+      "4",
+      "60"
+     ],
+     [
+      "5",
+      "40"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-axes-points-1",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a market graph in this course, which variable goes on the horizontal axis?",
+   "options": [
+    "The price of the good",
+    "The number of sellers",
+    "The quantity of the good",
+    "The time of year"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Market graphs put quantity across the bottom and price up the side. Mixing them up flips every curve.",
+    "options": [
+     "Price goes on the vertical axis of a market graph.",
+     "The number of sellers is not an axis of a market graph.",
+     "Right: quantity runs along the horizontal axis.",
+     "Time is not one of the two axes on a market graph."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-2",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A graph has tacos sold per day on the horizontal axis and price per taco on the vertical axis. What does the ordered pair (60, 4) describe?",
+   "options": [
+    "60 tacos sold at a price of \\$4",
+    "4 tacos sold at a price of \\$60",
+    "A price of \\$60 for 4 days",
+    "64 tacos sold in total"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The first number is the horizontal value (tacos sold) and the second is the vertical value (price).",
+    "options": [
+     "Right: horizontal value first, then vertical.",
+     "This reverses the order: the first number is the horizontal value.",
+     "Neither axis measures days.",
+     "An ordered pair is two separate values, never a sum."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-3",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "axes-points-s1",
+   "q": "With tacos sold on the horizontal axis and price on the vertical axis, which ordered pair plots the row for a price of \\$2?",
+   "options": [
+    "(2, 100)",
+    "(100, 200)",
+    "(2, 2)",
+    "(100, 2)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At \\$2 the truck sells 100 tacos. Tacos sold is the horizontal value, so it comes first: (100, 2).",
+    "options": [
+     "This puts the price first, but price is on the vertical axis.",
+     "The price is \\$2, not \\$200.",
+     "At \\$2 the truck sells 100 tacos, not 2.",
+     "Right: (tacos sold, price) = (100, 2)."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-4",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "axes-points-s1",
+   "q": "What relationship between price and tacos sold does the table show?",
+   "options": [
+    "A direct relationship: as the price rises, more tacos are sold",
+    "An inverse relationship: as the price rises, fewer tacos are sold",
+    "No relationship: tacos sold stay the same",
+    "A direct relationship, because both columns hold numbers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As the price goes from \\$1 to \\$5, tacos sold fall from 120 to 40. One rises while the other falls: inverse.",
+    "options": [
+     "Tacos sold fall as the price rises, so the relationship is not direct.",
+     "Right: price up, tacos sold down.",
+     "Tacos sold change in every row.",
+     "A relationship is about how the values move together, not about both being numbers."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-5",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "axes-points-s1",
+   "q": "How many more tacos a day does the truck sell at a price of \\$2 than at a price of \\$4?",
+   "why": {
+    "correct": "Read both rows: 100 tacos at \\$2 and 60 at \\$4. The difference is $100 - 60 = 40$ tacos."
+   },
+   "numeric": {
+    "unit": "tacos",
+    "from": {
+     "fn": "sub",
+     "args": [
+      100,
+      60
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        100,
+        60
+       ]
+      },
+      "why": "That adds the two rows. The question asks how many MORE, so subtract the smaller from the larger."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-6",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.C",
+   "stimulus": "axes-points-s1",
+   "q": "Which of these points lie on the graph of the table, with tacos sold across and price up? Select all that apply.",
+   "options": [
+    "(120, 1)",
+    "(80, 3)",
+    "(3, 80)",
+    "(40, 1)"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Each row gives (tacos sold, price): (120, 1), (100, 2), (80, 3), (60, 4) and (40, 5).",
+    "options": [
+     "Right: 120 tacos at \\$1.",
+     "Right: 80 tacos at \\$3.",
+     "This reverses the order; the horizontal value (tacos) comes first.",
+     "At \\$1 the truck sells 120 tacos, not 40; 40 tacos go with \\$5."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-7",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label both axes and both curves of this market graph.",
+   "why": {
+    "correct": "On a market graph, price goes on the vertical axis and quantity on the horizontal axis. The downward curve is D and the upward curve is S."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-axes-points-8",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point X at a larger quantity and a higher price than the point where the two curves meet.",
+   "why": {
+    "correct": "A larger quantity is farther right on the horizontal axis; a higher price is farther up the vertical axis. So X goes up and to the right of the meeting point."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "x": "up",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-axes-points-9",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A part-time worker earns more the more hours she works. If hours go on the horizontal axis and weekly pay on the vertical axis, how do the points look?",
+   "options": [
+    "They fall to the right: an inverse relationship",
+    "They rise to the right: a direct relationship",
+    "They form a flat line: no relationship",
+    "They rise to the left: an inverse relationship"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "More hours bring more pay, so both values grow together and the points rise to the right.",
+    "options": [
+     "Falling points would mean more hours bring less pay.",
+     "Right: both rise together.",
+     "A flat line would mean pay stays the same whatever the hours.",
+     "Points that rise to the left fall to the right, which is inverse; here both rise together."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-10",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student graphs the taco table with price on the horizontal axis and tacos sold on the vertical axis. What is the problem?",
+   "options": [
+    "Nothing: either axis may hold either variable on a market graph",
+    "The relationship will change from inverse to direct",
+    "The five rows will no longer plot as points",
+    "The axes are reversed from the market-graph convention, so the curve will not match the graphs in the course"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The numbers still plot, and the relationship is still inverse, but market graphs always put quantity across and price up. Reversed axes give a graph a reader cannot score.",
+    "options": [
+     "Market graphs follow one convention so readers can check them.",
+     "Swapping axes does not turn an inverse relationship into a direct one: the points still fall as you move right.",
+     "All five rows still plot as points; they are just on the wrong axes.",
+     "Right: the convention is quantity across, price up."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-11",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A point sits at (0, 7) on a graph with quantity across and price up. Where is it?",
+   "options": [
+    "On the vertical axis, at a price of 7",
+    "On the horizontal axis, at a quantity of 7",
+    "At the origin, where the axes meet",
+    "Off the graph, because 0 is not a value"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A horizontal value of 0 means no distance to the right, so the point sits on the vertical axis, 7 units up.",
+    "options": [
+     "Right: zero across, 7 up.",
+     "A point on the horizontal axis has a vertical value of 0, like (7, 0).",
+     "The origin is (0, 0).",
+     "Zero is a value; it places the point on an axis."
+    ]
+   }
+  },
+  {
+   "id": "mic-axes-points-12",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Point M is (30, 8) and point N is (50, 6) on a graph with quantity across and price up. Which statement is correct?",
+   "options": [
+    "N shows a smaller quantity and a higher price than M",
+    "M and N show the same quantity",
+    "N shows a larger quantity and a lower price than M",
+    "M shows a larger quantity because its second number is bigger"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare first numbers for quantity (50 is more than 30) and second numbers for price (6 is less than 8).",
+    "options": [
+     "This reads the pairs backward.",
+     "The first numbers, 30 and 50, differ.",
+     "Right: 50 > 30 and 6 < 8.",
+     "The second number is the price, not the quantity."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,203 @@
+/* AP® Microeconomics free-response practice (docs/apbio-spec.md section 1, "FRQ
+   practice, all 6 types"). Two jobs, by where it runs:
+
+   frq.html             the list, filtered by type and unit, each with your
+                        best self-score; every question links to its page.
+   frq/<id>.html        one question (the page, its prompt and data are
+                        static HTML from scripts/build-apmicro.mjs, printable
+                        with lined space). This script adds the workspace:
+                        write (a textarea per part, saved on this device
+                        only), reveal the rubric, check each point you
+                        earned, read the full-credit sample, save the score.
+                        A checkbox prints the rubric on a separate page.
+
+   Premium: an FRQ in a locked unit (ApMicroCore.locked) keeps its prompt and
+   printable sheet; the workspace shows the Premium card instead. The
+   optional AI grader ("Grade my answer", ../../assets/course/frq-grader.js,
+   docs/frq-grader.md) sits beside the self-score and never replaces it. Shared code: pages/frq-kit.js (window.ApMicroFrq). */
+(function(){
+  var BASE = window.ApMicroBase || '';
+  var app = document.getElementById('app');
+  if(!app) return;
+  var Core = window.ApMicroCore;
+  var CUR = window.ApMicroCurriculum || { units: [], topics: [] };
+  var UNIT = {}; CUR.units.forEach(function(u){ UNIT[u.id] = u; });
+  var TOPIC = {}; CUR.topics.forEach(function(t){ TOPIC[t.id] = t; });
+  function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
+  function unitName(u){ var c = UNIT[u]; return c ? (c.part === 'course' ? 'Unit ' + c.n : c.title) : u; }
+
+  function kit(){
+    if(window.ApMicroFrq) return Promise.resolve(window.ApMicroFrq);
+    return new Promise(function(res, rej){
+      var s = document.createElement('script');
+      s.src = BASE + 'assets/pages/frq-kit.js';
+      s.onload = function(){ window.ApMicroFrq ? res(window.ApMicroFrq) : rej(); };
+      s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+
+  /* The shared grader component (one small file for all six courses). Its
+     own ENABLED switch decides whether anything shows: off until launch. */
+  function grader(done){
+    var G = window.LevlFrqGrader;
+    if(G){ if(G.enabled()) done(G); return; }
+    var s = document.createElement('script');
+    s.src = BASE + '../assets/course/frq-grader.js';
+    s.onload = function(){ if(window.LevlFrqGrader && window.LevlFrqGrader.enabled()) done(window.LevlFrqGrader); };
+    document.head.appendChild(s);
+  }
+
+  /* The score card under the rubric once the score is saved (docs/score-card.md; the shared loader
+     ../assets/course/card-loader.js brings study.js and study.css). Next goes to the first question after this
+     one not yet scored, else the list. */
+  function scoreCard(K, f, box, after, topic){
+    var host = box.querySelector('.fq-card');
+    if(!host){ host = document.createElement('div'); host.className = 'fq-card'; after.insertAdjacentElement('afterend', host); }
+    var all = { href: BASE + 'frq.html', label: 'All free response questions' };
+    function draw(next){
+      window.LevlCard.frq({ host: host, f: f, box: box, course: 'apmicro', href: topic ? BASE + 'notes/' + topic + '.html' : '',
+        step: next ? { href: BASE + 'frq/' + next.id + '.html', label: 'Next question' } : all, also: next ? [all] : [] });
+    }
+    function go(){
+      K.index(BASE).then(function(list){
+        var sc = K.scores(), i = list.findIndex(function(x){ return x.id === f.id; });
+        var rest = list.slice(i + 1).concat(list.slice(0, Math.max(0, i)));
+        draw(rest.filter(function(x){ return !sc[x.id]; })[0] || null);
+      }).catch(function(){ draw(null); });
+    }
+    if(window.LevlCard){ go(); return; }
+    var s = document.createElement('script');
+    s.src = BASE + '../assets/course/card-loader.js';
+    s.onload = function(){ if(window.LevlCard) go(); };
+    document.head.appendChild(s);
+  }
+
+  /* -------------------------------------------------------------- list */
+  var filter = { type: '', unit: '' };
+  function list(K){
+    var esc = K.esc;
+    app.innerHTML = '<p class="mic-small">Loading the questions…</p>';
+    K.index(BASE).then(function(all){
+      if(!all.length){ app.innerHTML = '<p>No free-response questions are published yet. Meanwhile, read the <a href="' + BASE + 'learn.html">free notes</a>.</p>'; return; }
+      var p = new URLSearchParams(location.search);
+      if(K.TYPES[p.get('type')]) filter.type = p.get('type');
+      if(UNIT[p.get('unit')]) filter.unit = p.get('unit');
+      /* ?go=1 from the Practice panel (docs/course-redesign-r4.md decision 5): straight to the first matching question not yet scored. */
+      if(p.get('go') === '1'){
+        var sc0 = K.scores(), pool = all.filter(function(f){ return (!filter.type || f.type === filter.type) && (!filter.unit || f.units.indexOf(filter.unit) > -1); });
+        var first = pool.filter(function(f){ return !sc0[f.id]; })[0] || pool[0];
+        if(first){ location.replace(BASE + 'frq/' + first.id + '.html'); return; }
+      }
+      var units = []; all.forEach(function(f){ f.units.forEach(function(u){ if(units.indexOf(u) < 0) units.push(u); }); });
+      units.sort(function(a, b){ return CUR.units.findIndex(function(x){ return x.id === a; }) - CUR.units.findIndex(function(x){ return x.id === b; }); });
+      var have = {}; all.forEach(function(f){ have[f.type] = (have[f.type] || 0) + 1; });
+      function opt(v, label, cur){ return '<option value="' + esc(v) + '"' + (v === cur ? ' selected' : '') + '>' + esc(label) + '</option>'; }
+      app.innerHTML = '<form class="mic-fq-filters" aria-label="Filter free-response questions">' +
+        '<label class="mic-pr-field"><span>Question type</span><select id="mic-fq-type">' + opt('', 'All types', filter.type) + K.ORDER.map(function(t){ return opt(t, K.TYPES[t] + ' (' + (have[t] || 0) + ')', filter.type); }).join('') + '</select></label>' +
+        '<label class="mic-pr-field"><span>Unit</span><select id="mic-fq-unit">' + opt('', 'Every unit', filter.unit) + units.map(function(u){ return opt(u, unitName(u) + (UNIT[u] ? ': ' + UNIT[u].title : ''), filter.unit); }).join('') + '</select></label>' +
+        '</form><p class="mic-small" id="mic-fq-count" role="status" aria-live="polite"></p><ul class="mic-fq-list fq-groups"></ul>';
+      function paint(){
+        var sc = K.scores();
+        var shown = all.filter(function(f){ return (!filter.type || f.type === filter.type) && (!filter.unit || f.units.indexOf(filter.unit) > -1); });
+        app.querySelector('#mic-fq-count').textContent = plural(shown.length, 'question') + (filter.type || filter.unit ? ' match.' : '.');
+        var missing = K.ORDER.filter(function(t){ return !have[t]; });
+        /* Owner 2026-11-03 ("too much, make it neater"): grouped by question type, one plain row per question. */
+        void missing;
+        app.querySelector('.mic-fq-list').innerHTML = K.ORDER.map(function(t){
+          var qs = shown.filter(function(f){ return f.type === t; });
+          if(!qs.length) return '';
+          return '<li class="fq-group"><h2 class="fq-gh">' + esc(K.TYPES[t]) + ' <small>' + plural(qs[0].points, 'point') + ' each</small></h2><ul>' + qs.map(function(f){
+            var s = sc[f.id];
+            return '<li><a class="fq-row" href="' + BASE + 'frq/' + f.id + '.html"><b>' + esc(f.title) + '</b><span>' + esc(unitName(f.units[0])) + (f.placeholder ? ' &middot; not yet checked' : '') +
+              (s ? ' &middot; your best ' + s.best + '/' + s.of : '') + '</span></a></li>';
+          }).join('') + '</ul></li>';
+        }).join('');
+        try{ var q = new URLSearchParams(); if(filter.type) q.set('type', filter.type); if(filter.unit) q.set('unit', filter.unit); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '')); }catch(e){}
+      }
+      app.querySelector('form').addEventListener('change', function(e){ if(e.target.id === 'mic-fq-type') filter.type = e.target.value; else filter.unit = e.target.value; paint(); });
+      paint();
+    }).catch(function(){ app.innerHTML = '<p>The questions did not load. Check your connection and reload.</p>'; });
+  }
+
+  /* --------------------------------------------------------- one FRQ */
+  function one(K, id){
+    var unit = app.getAttribute('data-unit'), topic = app.getAttribute('data-topic');
+    var locked = Core && Core.locked && Core.locked(unit, topic);
+    if(locked){ app.innerHTML = Core.gate('exams', 'frq', topic) || ''; return; }
+    app.innerHTML = '<p class="mic-small">Loading…</p>';
+    K.load(BASE, id).then(function(f){
+      var saved = K.scores()[id];
+      app.innerHTML = '<section class="mic-fq-work" aria-labelledby="mic-fq-w-h">' +
+        '<h2 id="mic-fq-w-h">Write your answer</h2>' +
+        '<p class="mic-small">Your answers save on this device as you type. They are never sent anywhere.</p>' +
+        '<div class="mic-fq-write">' + f.parts.map(function(p, i){
+          var tid = 'fqw-' + p.label;
+          // A graph part is drawn here too (ApMicroGraph, saved with the draft; "Check my graph" under the rubric).
+          var gbox = p.type === 'graph' && p.graph && K.track ? '<p class="mic-small">Draw the graph for part (' + K.esc(p.label) + '):</p><div class="mic-fq-graph" data-gk="' + K.esc(K.graphKey(f, i)) + '"></div>' : '';
+          return '<div class="mic-fq-part">' + gbox + '<label class="mic-fq-alabel" for="' + tid + '">Part (' + K.esc(p.label) + '), ' + plural(p.points, 'point') + '</label>' +
+            '<textarea id="' + tid + '" class="mic-fq-answer" rows="' + Math.min(10, 3 + p.points * 2) + '" data-part="' + K.esc(p.label) + '">' + K.esc(K.draft(id)[p.label] || '') + '</textarea></div>';
+        }).join('') + '</div>' +
+        '<div class="mic-pr-actions"><button type="button" class="btn-press" data-act="reveal">Show the rubric and score yourself</button></div>' +
+        '<div class="mic-fq-ai"></div>' +
+        '<div class="mic-fq-scorebox" hidden></div>' +
+        '<label class="mic-ex-check mic-fq-printopt"><input type="checkbox" id="mic-fq-printrub"> <span>When I print, add the rubric and sample answers on a separate page</span></label>' +
+        (saved ? '<p class="mic-small">Last saved self-score: ' + saved.got + ' of ' + saved.of + ' (best ' + saved.best + ').</p>' : '') +
+      '</section>';
+      if(K.track) K.track(f);
+      app.querySelectorAll('.mic-fq-answer').forEach(function(t){
+        var timer = 0;
+        t.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ K.saveDraft(id, t.getAttribute('data-part'), t.value); }, 300); });
+      });
+      var box = app.querySelector('.mic-fq-scorebox');
+      var revealBtn = app.querySelector('[data-act="reveal"]');
+      revealBtn.addEventListener('click', function(){
+        this.hidden = true;
+        box.hidden = false;
+        box.innerHTML = '<h2 id="mic-fq-r-h" tabindex="-1">Score yourself, point by point</h2>' +
+          '<p class="mic-small">Check a point only if your answer says it, in your own words. The sample under each part is one full-credit answer, not the only one.</p>' +
+          K.rubricHtml(f) +
+          '<p class="mic-fq-total" role="status" aria-live="polite"></p>' +
+          '<div class="mic-pr-actions"><button type="button" class="btn-press" data-act="save">Save my score</button><a class="btn-outline" href="' + BASE + 'frq.html">More free-response questions</a></div>';
+        function total(){ var s = K.score(box); box.querySelector('.mic-fq-total').textContent = 'Your score: ' + s.got + ' of ' + s.of + ' points.'; return s; }
+        box.addEventListener('change', total);
+        total();
+        box.querySelector('[data-act="save"]').addEventListener('click', function(){
+          var s = total();
+          K.saveScore(id, { got: s.got, of: s.of, parts: s.parts, title: f.title, type: f.type, units: f.units });
+          if(Core) Core.event('apmicro-frq-score', { frq: id, got: s.got, of: s.of });
+          this.textContent = 'Saved';
+          this.disabled = true;
+          var more = this.parentNode.querySelector('a.btn-outline'); if(more) more.hidden = true;
+          scoreCard(K, f, box, this.parentNode, topic);
+        });
+        box.querySelector('#mic-fq-r-h').focus();
+      });
+      /* The AI grader beside the self-score (off until launch; the Worker
+         checks Premium, the sign-in and the daily cap). reveal() opens the
+         self-score box, so the rubric is always one tap away. */
+      grader(function(G){
+        G.mount(app.querySelector('.mic-fq-ai'), {
+          course: 'apmicro', f: f,
+          answers: function(){ var a = {}; app.querySelectorAll('.mic-fq-answer').forEach(function(t){ a[t.getAttribute('data-part')] = t.value; }); return a; },
+          reveal: function(){ if(box.hidden) revealBtn.click(); return box; }
+        });
+      });
+      // Print the rubric on its own page only when asked.
+      window.addEventListener('beforeprint', function(){
+        var old = document.querySelector('.mic-frq-rubric-print'); if(old) old.remove();
+        if(!(document.getElementById('mic-fq-printrub') || {}).checked) return;
+        var sec = document.createElement('section');
+        sec.className = 'mic-frq-rubric-print';
+        sec.innerHTML = '<h2>Rubric and sample answers: ' + K.esc(f.title) + '</h2>' + K.rubricHtml(f, { readonly: true }).replace(/<input [^>]*>/g, '<span class="mic-bk-box" aria-hidden="true"></span>');
+        document.querySelector('.mic-frq').appendChild(sec);
+      });
+      window.addEventListener('afterprint', function(){ var old = document.querySelector('.mic-frq-rubric-print'); if(old) old.remove(); });
+    }).catch(function(){ app.innerHTML = '<p>The rubric did not load. Check your connection and reload; the question above still prints.</p>'; });
+  }
+
+  kit().then(function(K){
+    var id = app.getAttribute('data-frq');
+    if(id) one(K, id); else list(K);
+  }, function(){ app.innerHTML = '<p>This page did not load fully. Reload to try again.</p>'; });
+})();

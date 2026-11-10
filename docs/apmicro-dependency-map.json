@@ -1,0 +1,3483 @@
+{
+ "about": "AP Microeconomics concept dependency map (docs/apmicro-spec.md, docs/apmicro-phase0.md): the 36 topics of the CED in order, the \"Graph skills you need\" topics (placed before Unit 1), and every concept with the topic that teaches it and the concepts it depends on. Built by Phase 0 from docs/apmicro-ced-map.json; edited by hand from now on. Authors add every term a topic teaches that the map lacks.",
+ "version": 1,
+ "ced": {
+  "edition": "Course and Exam Description, effective fall 2026, unchanged in content for 2026-27 (6 units, 36 topics)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/apmicro-ced-map.json, itself from docs/apmicro-research/framework.md. Essential knowledge for 3.4 to 6.5 from scoring guidelines, Chief Reader Reports and standard economics (docs/apmicro-needs-author.md, ced-text)."
+ },
+ "practicesConfirmed": false,
+ "bigIdeas": [
+  {
+   "id": "MKT",
+   "name": "Scarcity and Markets",
+   "summary": "How scarcity forces choices and how markets set prices and quantities."
+  },
+  {
+   "id": "CBA",
+   "name": "Costs, Benefits, and Marginal Analysis",
+   "summary": "How consumers and firms compare costs and benefits at the margin."
+  },
+  {
+   "id": "PRD",
+   "name": "Production Choices and Behavior",
+   "summary": "How firms produce, set prices and hire in different market structures."
+  },
+  {
+   "id": "POL",
+   "name": "Market Inefficiency and Public Policy",
+   "summary": "When markets fail and how policy changes outcomes."
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Principles and Models",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Interpretation",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Manipulation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Graphing and Visuals",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Graph skills you need"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Basic Economic Concepts",
+   "weight": [
+    12,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "justify",
+      "title": "Make it specific: the marginal rule with the numbers, price from demand, the right area, both comparisons in game theory, every link of the long-run and derived-demand chains",
+      "topic": "marginal-analysis"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-ppc-trade-short",
+      "title": "Two producers' PPCs: opportunity cost, comparative advantage and terms of trade that help both",
+      "topic": "comparative-advantage",
+      "type": "short",
+      "author": "A",
+      "graph": "ppc"
+     },
+     {
+      "id": "frq-consumer-choice-short",
+      "title": "A consumer with a budget: marginal utility per dollar, the utility-maximizing bundle, a larger budget and a sunk cost that changes nothing",
+      "topic": "marginal-analysis",
+      "type": "short",
+      "author": "A"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Output tables for two workshops: opportunity costs and terms of trade",
+      "topic": "comparative-advantage",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A bowed-out PPC with points inside, on and outside",
+      "topic": "production-possibilities",
+      "stimulus": "graph",
+      "author": "A"
+     },
+     {
+      "title": "A student choosing between two goods with a budget: marginal utility per dollar",
+      "topic": "marginal-analysis",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A print shop's one press and three jobs: the next-best choice",
+      "topic": "scarcity",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A bike repair start-up: the four factors of production",
+      "topic": "scarcity",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "How three invented countries decide: who owns, what sets prices",
+      "topic": "economic-systems",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A planning office and its winter coats",
+      "topic": "economic-systems",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "A farm's table of corn and beans: opportunity cost along the PPC",
+      "topic": "production-possibilities",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Hours of labor for rice and cloth: the input method",
+      "topic": "comparative-advantage",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A summer business: explicit and implicit costs",
+      "topic": "cost-benefit",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Guitar lessons: total benefit, cost and net benefit",
+      "topic": "cost-benefit",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Pizza slices: marginal benefit against the price",
+      "topic": "marginal-analysis",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A game studio's unfinished game: a sunk cost",
+      "topic": "marginal-analysis",
+      "stimulus": "text",
+      "author": "A"
+     }
+    ],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Supply and Demand",
+   "weight": [
+    20,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "elasticity-lab",
+      "title": "Elasticity lab: price, income and cross-price elasticity, the total revenue test, elastic and inelastic ranges on a demand curve",
+      "topic": "price-elasticity-demand"
+     },
+     {
+      "id": "surplus-lab",
+      "title": "Surplus lab: controls, taxes, subsidies and tariffs; shade consumer and producer surplus, revenue, subsidy cost and deadweight loss and compute each area",
+      "topic": "government-intervention"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-tax-surplus-long",
+      "title": "A market with a per-unit tax: the new prices, tax revenue, incidence by elasticity and deadweight loss, then a subsidy and its cost",
+      "topic": "government-intervention",
+      "type": "long",
+      "author": "B",
+      "graph": "sd-micro"
+     },
+     {
+      "id": "frq-trade-tariff-long",
+      "title": "A domestic market opened to trade: opportunity costs, the world price, the gain from trade, imports, a tariff, its revenue and deadweight loss",
+      "topic": "trade-policy",
+      "type": "long",
+      "author": "B",
+      "graph": "sd-micro"
+     },
+     {
+      "id": "frq-elasticity-short",
+      "title": "Elasticity from a table: price elasticity, total revenue consistent with it, the total revenue test, and a new substitute",
+      "topic": "price-elasticity-demand",
+      "type": "short",
+      "author": "B"
+     },
+     {
+      "id": "frq-price-control-short",
+      "title": "A binding price ceiling or floor: the shortage or surplus, the quantity traded and deadweight loss",
+      "topic": "government-intervention",
+      "type": "short",
+      "author": "B",
+      "graph": "sd-micro"
+     },
+     {
+      "id": "frq-surplus-short",
+      "title": "A competitive market graph: consumer and producer surplus, then the effect of a shift on each",
+      "topic": "equilibrium-surplus",
+      "type": "short",
+      "author": "B",
+      "graph": "sd-micro"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A price and quantity schedule: elasticity and total revenue",
+      "topic": "price-elasticity-demand",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A market with a per-unit tax: the areas labeled with letters",
+      "topic": "government-intervention",
+      "stimulus": "graph",
+      "author": "B"
+     },
+     {
+      "title": "A town that caps rents: shortages and who gains",
+      "topic": "government-intervention",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "A small country at the world price with a tariff",
+      "topic": "trade-policy",
+      "stimulus": "graph",
+      "author": "B"
+     },
+     {
+      "title": "Three buyers' smoothie schedules added into market demand",
+      "topic": "demand",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Four news items about e-scooter rentals: shift or movement",
+      "topic": "demand",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Two farms' strawberry schedules added into market supply",
+      "topic": "supply",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Four events for furniture workshops: what shifts supply",
+      "topic": "supply",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Three goods at an island store: what makes demand elastic",
+      "topic": "price-elasticity-demand",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Two sellers respond to the same price rise: supply elasticity",
+      "topic": "price-elasticity-supply",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A venue with fixed seats: perfectly inelastic supply",
+      "topic": "price-elasticity-supply",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Household purchases when incomes rise: income elasticity",
+      "topic": "other-elasticities",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A cafe raises the price of coffee: cross-price elasticity",
+      "topic": "other-elasticities",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A market schedule with straight-line demand and supply: equilibrium and surplus",
+      "topic": "equilibrium-surplus",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A competitive market with consumer and producer surplus lettered",
+      "topic": "equilibrium-surplus",
+      "stimulus": "graph",
+      "author": "B"
+     },
+     {
+      "title": "A demand and supply schedule: shortage, surplus and a demand shift",
+      "topic": "disequilibrium-changes",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A drought and a health study at once: simultaneous shifts",
+      "topic": "disequilibrium-changes",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "A per-unit tax in a table: revenue, incidence and deadweight loss",
+      "topic": "government-intervention",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A small country's schedule at the world price: imports, a tariff and its revenue",
+      "topic": "trade-policy",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A country opens to trade at a world price above its own: exports",
+      "topic": "trade-policy",
+      "stimulus": "text",
+      "author": "B"
+     }
+    ],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Production, Cost, and the Perfect Competition Model",
+   "weight": [
+    22,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "cost-lab",
+      "title": "Cost lab: fill a cost table (MP, MC, AFC, AVC, ATC), watch the curves draw, MC through the minimums",
+      "topic": "short-run-costs"
+     },
+     {
+      "id": "firm-market",
+      "title": "Firm and market: perfect competition short run to long run, monopoly, monopolistic competition; quantity, price and the profit box",
+      "topic": "perfect-competition"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-perfect-competition-long",
+      "title": "A perfectly competitive market and firm side by side: a fixed fee shifts ATC, the loss, exit, a higher long-run price and supply elasticity over time",
+      "topic": "perfect-competition",
+      "type": "long",
+      "author": "C",
+      "graph": "pc"
+     },
+     {
+      "id": "frq-cost-table-short",
+      "title": "A firm's cost table: marginal cost, fixed cost, the profit-maximizing output and the shut-down rule",
+      "topic": "short-run-costs",
+      "type": "short",
+      "author": "C"
+     },
+     {
+      "id": "frq-long-run-short",
+      "title": "A competitive firm making losses: the shutdown decision, exit and the long-run price",
+      "topic": "firm-decisions",
+      "type": "short",
+      "author": "C",
+      "graph": "pc"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A firm's output and cost table",
+      "topic": "short-run-costs",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A firm's cost curves with a price line",
+      "topic": "firm-decisions",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A bakery owner's explicit and implicit costs",
+      "topic": "types-of-profit",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A farm's pickers and total product",
+      "topic": "production-function",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Total, marginal and average product in a bakery",
+      "topic": "production-function",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A print shop adds workers to fixed presses",
+      "topic": "production-function",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A firm's short-run cost curves",
+      "topic": "short-run-costs",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A bakery's fixed and variable costs",
+      "topic": "short-run-costs",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Plant size and long-run total cost",
+      "topic": "long-run-costs",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A long-run average total cost curve",
+      "topic": "long-run-costs",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A firm doubles every input",
+      "topic": "long-run-costs",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Three firms' revenue, explicit and implicit costs",
+      "topic": "types-of-profit",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A firm's output and total cost at a given price",
+      "topic": "profit-maximization",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Cost curves and the price a firm sells at",
+      "topic": "profit-maximization",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A firm's costs at its best output: produce or shut down",
+      "topic": "firm-decisions",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A market after a fall in demand: exit",
+      "topic": "firm-decisions",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A competitive market and firm earning short-run profit",
+      "topic": "perfect-competition",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A farm after a rise in market demand",
+      "topic": "perfect-competition",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Many sellers of an identical product",
+      "topic": "perfect-competition",
+      "stimulus": "text",
+      "author": "C"
+     }
+    ],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Imperfect Competition",
+   "weight": [
+    15,
+    22
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "game-lab",
+      "title": "Game lab: payoff matrices, dominant strategies, every Nash equilibrium, the two-comparison argument",
+      "topic": "oligopoly-game-theory"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-monopoly-long",
+      "title": "A monopoly: profit-maximizing quantity and price, profit, deadweight loss, elasticity at QM and a per-unit tax",
+      "topic": "monopoly",
+      "type": "long",
+      "author": "D",
+      "graph": "monopoly"
+     },
+     {
+      "id": "frq-game-monopoly-long",
+      "title": "A payoff matrix for two firms and the largest combined profit, then one firm's short-run cost curves and a rise in variable cost",
+      "topic": "oligopoly-game-theory",
+      "type": "long",
+      "author": "D",
+      "graph": "monopoly"
+     },
+     {
+      "id": "frq-game-theory-short",
+      "title": "A payoff matrix: dominant strategies, every Nash equilibrium, using a rival's dominant strategy, and a rule that forces one cell",
+      "topic": "oligopoly-game-theory",
+      "type": "short",
+      "author": "D",
+      "graph": "matrix"
+     },
+     {
+      "id": "frq-monocomp-short",
+      "title": "A monopolistically competitive firm in the short run and the long run: entry and the tangency",
+      "topic": "monopolistic-competition",
+      "type": "short",
+      "author": "D",
+      "graph": "monocomp"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A monopoly graph with the areas lettered",
+      "topic": "monopoly",
+      "stimulus": "graph",
+      "author": "D"
+     },
+     {
+      "title": "A cost and demand table for a patent monopoly",
+      "topic": "monopoly",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "A ferry with no rivals and high fixed costs (natural monopoly)",
+      "topic": "monopoly",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A price maker's demand schedule",
+      "topic": "imperfect-competition",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Four markets to classify",
+      "topic": "imperfect-competition",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "Two groups of buyers with different elasticities",
+      "topic": "price-discrimination",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "One price or perfect price discrimination",
+      "topic": "price-discrimination",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Airline fares booked early and late",
+      "topic": "price-discrimination",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A monopolistically competitive firm in the short run, areas lettered",
+      "topic": "monopolistic-competition",
+      "stimulus": "graph",
+      "author": "D"
+     },
+     {
+      "title": "A sandwich shop in long-run equilibrium",
+      "topic": "monopolistic-competition",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Food trucks: profit, entry and differentiation",
+      "topic": "monopolistic-competition",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A payoff matrix for two cafes choosing prices",
+      "topic": "oligopoly-game-theory",
+      "stimulus": "graph",
+      "author": "D"
+     },
+     {
+      "title": "Two cement firms, a quota and cheating",
+      "topic": "oligopoly-game-theory",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Two streaming services choose a release day (two equilibria and a payoff change)",
+      "topic": "oligopoly-game-theory",
+      "stimulus": "text",
+      "author": "D"
+     }
+    ],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Factor Markets",
+   "weight": [
+    10,
+    13
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "factor-lab",
+      "title": "Factor lab: MRP = MRC hiring from a table, derived demand, the least-cost rule, monopsony",
+      "topic": "competitive-factor-markets"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-labor-market-long",
+      "title": "A competitive labor market and firm side by side: the wage, hiring where MRP = MRC, and a change in product demand",
+      "topic": "competitive-factor-markets",
+      "type": "long",
+      "author": "E",
+      "graph": "labor"
+     },
+     {
+      "id": "frq-hiring-table-short",
+      "title": "A hiring table: MRP, the number of workers hired after a wage change and a price change, and derived demand",
+      "topic": "competitive-factor-markets",
+      "type": "short",
+      "author": "E"
+     },
+     {
+      "id": "frq-monopsony-short",
+      "title": "A monopsony: hiring where MRP = MFC, the wage from labor supply, the competitive outcome, the deadweight loss and why MFC is above the wage",
+      "topic": "monopsony",
+      "type": "short",
+      "author": "E",
+      "graph": "monopsony"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A hiring table for a workshop: MP, MRP and the wage",
+      "topic": "competitive-factor-markets",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A town with one large employer: the monopsony graph",
+      "topic": "monopsony",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Tallow Candle Works: workers, output and MRP",
+      "topic": "factor-markets",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Welders at the Brackwater boatyards: derived demand",
+      "topic": "factor-markets",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Two firms add workers: a price taker and a single seller",
+      "topic": "factor-markets",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "The market for app developers after a change in labor demand",
+      "topic": "factor-demand-supply",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Warehouse workers in Kettle Valley: a labor market table",
+      "topic": "factor-demand-supply",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A year in Fenmore: shifts in the market for nurses",
+      "topic": "factor-demand-supply",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Workers or kiln time at Ortolan Ceramics: the least-cost rule",
+      "topic": "competitive-factor-markets",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Hiring nurses at the only hospital in Caddock County: MFC and the wage",
+      "topic": "monopsony",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A minimum wage for Caddock County nurses",
+      "topic": "monopsony",
+      "stimulus": "text",
+      "author": "E"
+     }
+    ],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "unit-6",
+   "n": 6,
+   "part": "course",
+   "title": "Market Failure and the Role of Government",
+   "weight": [
+    8,
+    13
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "externality-lab",
+      "title": "Externality lab: MSB and MSC, market vs efficient quantity, deadweight loss, the corrective tax or subsidy, public goods",
+      "topic": "externalities"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-externality-short",
+      "title": "A negative production externality: market vs efficient quantity, the total external cost, why efficient output is not zero, a larger external cost",
+      "topic": "externalities",
+      "type": "short",
+      "author": "E",
+      "graph": "externality"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A factory upriver: a negative production externality graph",
+      "topic": "externalities",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Goods sorted by rivalry and excludability",
+      "topic": "public-goods",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Income shares by fifth of households: the Lorenz curve",
+      "topic": "inequality",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A per-unit subsidy in a market for bus rides: deadweight loss beyond the efficient quantity",
+      "topic": "market-efficiency",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Evening hours at the Pellmore community pool: MSB and MSC",
+      "topic": "market-efficiency",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Four invented markets: efficient or not",
+      "topic": "market-efficiency",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "The Brasswick paper mill market: market and efficient quantity, tax and deadweight loss",
+      "topic": "externalities",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Four situations in an invented city: kinds of externality",
+      "topic": "externalities",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "A streetlight on Wren Lane: summing benefits of a public good",
+      "topic": "public-goods",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Fishing on Sablewood Lake: a common resource",
+      "topic": "public-goods",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Brightwater Power: regulating a natural monopoly",
+      "topic": "intervention-structures",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Taxing a monopoly ferry: lump-sum or per unit",
+      "topic": "intervention-structures",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "One minimum wage, two towns: competitive and monopsony labor markets",
+      "topic": "intervention-structures",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Two tax systems in Halbeck: proportional and regressive",
+      "topic": "inequality",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Changes on the island of Corrin: sources of inequality and transfers",
+      "topic": "inequality",
+      "stimulus": "text",
+      "author": "E"
+     }
+    ],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  },
+  {
+   "id": "graph-skills",
+   "part": "skills",
+   "title": "Graph skills you need",
+   "tools": {
+    "simulators": [
+     {
+      "id": "graph-studio",
+      "title": "Graph studio (flagship): draw, label, shift and shade every graph the exam asks for (PPC, supply and demand with controls, taxes, subsidies and tariffs, cost curves, perfect competition side by side, monopoly, monopolistic competition, labor markets, monopsony, externalities, the Lorenz curve), graded per rubric point with the slip named",
+      "topic": "shifts-movements"
+     }
+    ],
+    "frqThemes": [],
+    "stimulusThemes": [
+     {
+      "title": "A table of prices and quantities read as ordered pairs",
+      "topic": "axes-points",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A delivery van's fuel use at each speed: a U-shaped curve",
+      "topic": "slopes-curves",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A bakery's week: a shift or a movement along the curve",
+      "topic": "shifts-movements",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "A market graph with a shaded triangle: its area",
+      "topic": "curves-crossing",
+      "stimulus": "graph",
+      "author": "A"
+     }
+    ],
+    "comparisonTables": [],
+    "pathways": []
+   }
+  }
+ ],
+ "topics": [
+  {
+   "id": "scarcity",
+   "ced": "1.1",
+   "title": "Scarcity",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "scarcity microeconomics explained"
+  },
+  {
+   "id": "economic-systems",
+   "ced": "1.2",
+   "title": "Resource Allocation and Economic Systems",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "resource allocation and economic systems microeconomics explained"
+  },
+  {
+   "id": "production-possibilities",
+   "ced": "1.3",
+   "title": "Production Possibilities Curve",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "production possibilities curve microeconomics explained"
+  },
+  {
+   "id": "comparative-advantage",
+   "ced": "1.4",
+   "title": "Comparative Advantage and Trade",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "comparative advantage and trade microeconomics explained"
+  },
+  {
+   "id": "cost-benefit",
+   "ced": "1.5",
+   "title": "Cost-Benefit Analysis",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "CBA"
+   ],
+   "searchPhrase": "cost-benefit analysis microeconomics explained"
+  },
+  {
+   "id": "marginal-analysis",
+   "ced": "1.6",
+   "title": "Marginal Analysis and Consumer Choice",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "CBA"
+   ],
+   "searchPhrase": "marginal analysis and consumer choice microeconomics explained"
+  },
+  {
+   "id": "demand",
+   "ced": "2.1",
+   "title": "Demand",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "demand microeconomics explained"
+  },
+  {
+   "id": "supply",
+   "ced": "2.2",
+   "title": "Supply",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "supply microeconomics explained"
+  },
+  {
+   "id": "price-elasticity-demand",
+   "ced": "2.3",
+   "title": "Price Elasticity of Demand",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "price elasticity of demand microeconomics explained"
+  },
+  {
+   "id": "price-elasticity-supply",
+   "ced": "2.4",
+   "title": "Price Elasticity of Supply",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "price elasticity of supply microeconomics explained"
+  },
+  {
+   "id": "other-elasticities",
+   "ced": "2.5",
+   "title": "Other Elasticities",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "other elasticities microeconomics explained"
+  },
+  {
+   "id": "equilibrium-surplus",
+   "ced": "2.6",
+   "title": "Market Equilibrium and Consumer and Producer Surplus",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "market equilibrium and consumer and producer surplus microeconomics explained"
+  },
+  {
+   "id": "disequilibrium-changes",
+   "ced": "2.7",
+   "title": "Market Disequilibrium and Changes in Equilibrium",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "MKT"
+   ],
+   "searchPhrase": "market disequilibrium and changes in equilibrium microeconomics explained"
+  },
+  {
+   "id": "government-intervention",
+   "ced": "2.8",
+   "title": "The Effects of Government Intervention in Markets",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "the effects of government intervention in markets microeconomics explained"
+  },
+  {
+   "id": "trade-policy",
+   "ced": "2.9",
+   "title": "International Trade and Public Policy",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "international trade and public policy microeconomics explained"
+  },
+  {
+   "id": "production-function",
+   "ced": "3.1",
+   "title": "The Production Function",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "the production function microeconomics explained"
+  },
+  {
+   "id": "short-run-costs",
+   "ced": "3.2",
+   "title": "Short-Run Production Costs",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "1.A"
+   ],
+   "practices": [
+    1,
+    4
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "short-run production costs microeconomics explained"
+  },
+  {
+   "id": "long-run-costs",
+   "ced": "3.3",
+   "title": "Long-Run Production Costs",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "long-run production costs microeconomics explained"
+  },
+  {
+   "id": "types-of-profit",
+   "ced": "3.4",
+   "title": "Types of Profit",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "CBA"
+   ],
+   "searchPhrase": "types of profit microeconomics explained"
+  },
+  {
+   "id": "profit-maximization",
+   "ced": "3.5",
+   "title": "Profit Maximization",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "3.A"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "CBA"
+   ],
+   "searchPhrase": "profit maximization microeconomics explained"
+  },
+  {
+   "id": "firm-decisions",
+   "ced": "3.6",
+   "title": "Firms' Short-Run Decisions to Produce and Long-Run Decisions to Enter or Exit a Market",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "3.A"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "firms' short-run decisions to produce and long-run decisions to enter or exit a market microeconomics explained"
+  },
+  {
+   "id": "perfect-competition",
+   "ced": "3.7",
+   "title": "Perfect Competition",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "perfect competition microeconomics explained"
+  },
+  {
+   "id": "imperfect-competition",
+   "ced": "4.1",
+   "title": "Introduction to Imperfectly Competitive Markets",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "introduction to imperfectly competitive markets microeconomics explained"
+  },
+  {
+   "id": "monopoly",
+   "ced": "4.2",
+   "title": "Monopoly",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "monopoly microeconomics explained"
+  },
+  {
+   "id": "price-discrimination",
+   "ced": "4.3",
+   "title": "Price Discrimination",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "price discrimination microeconomics explained"
+  },
+  {
+   "id": "monopolistic-competition",
+   "ced": "4.4",
+   "title": "Monopolistic Competition",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "monopolistic competition microeconomics explained"
+  },
+  {
+   "id": "oligopoly-game-theory",
+   "ced": "4.5",
+   "title": "Oligopoly and Game Theory",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "oligopoly and game theory microeconomics explained"
+  },
+  {
+   "id": "factor-markets",
+   "ced": "5.1",
+   "title": "Introduction to Factor Markets",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "introduction to factor markets microeconomics explained"
+  },
+  {
+   "id": "factor-demand-supply",
+   "ced": "5.2",
+   "title": "Changes in Factor Demand and Factor Supply",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "changes in factor demand and factor supply microeconomics explained"
+  },
+  {
+   "id": "competitive-factor-markets",
+   "ced": "5.3",
+   "title": "Profit-Maximizing Behavior in Perfectly Competitive Factor Markets",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "profit-maximizing behavior in perfectly competitive factor markets microeconomics explained"
+  },
+  {
+   "id": "monopsony",
+   "ced": "5.4",
+   "title": "Monopsonistic Markets",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "PRD"
+   ],
+   "searchPhrase": "monopsonistic markets microeconomics explained"
+  },
+  {
+   "id": "market-efficiency",
+   "ced": "6.1",
+   "title": "Socially Efficient and Inefficient Market Outcomes",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "socially efficient and inefficient market outcomes microeconomics explained"
+  },
+  {
+   "id": "externalities",
+   "ced": "6.2",
+   "title": "Externalities",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "externalities microeconomics explained"
+  },
+  {
+   "id": "public-goods",
+   "ced": "6.3",
+   "title": "Public and Private Goods",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "public and private goods microeconomics explained"
+  },
+  {
+   "id": "intervention-structures",
+   "ced": "6.4",
+   "title": "The Effects of Government Intervention in Different Market Structures",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "3.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "the effects of government intervention in different market structures microeconomics explained"
+  },
+  {
+   "id": "inequality",
+   "ced": "6.5",
+   "title": "Inequality",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "POL"
+   ],
+   "searchPhrase": "inequality microeconomics explained"
+  },
+  {
+   "id": "axes-points",
+   "ced": null,
+   "title": "Axes, Variables and Points",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "axes, variables and points economics graphs"
+  },
+  {
+   "id": "slopes-curves",
+   "ced": null,
+   "title": "Slopes and Curve Shapes",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "slopes and curve shapes economics graphs"
+  },
+  {
+   "id": "shifts-movements",
+   "ced": null,
+   "title": "Shifts and Movements Along a Curve",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "shifts and movements along a curve economics graphs"
+  },
+  {
+   "id": "curves-crossing",
+   "ced": null,
+   "title": "Curves That Cross and Areas",
+   "chapter": "graph-skills",
+   "kind": "skill",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "before": "scarcity",
+   "searchPhrase": "curves that cross and areas economics graphs"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"marginal revenue product\", \"deadweight loss\", \"price elasticity\" are not used early).",
+  "words": [
+   "trade",
+   "demand",
+   "supply",
+   "equilibrium",
+   "axes",
+   "resources",
+   "tax",
+   "taxes",
+   "subsidy",
+   "budget",
+   "wage",
+   "wages",
+   "profit",
+   "scarce",
+   "technology"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "axis",
+   "term": "horizontal axis",
+   "aliases": [
+    "vertical axis",
+    "x-axis",
+    "y-axis",
+    "axes"
+   ],
+   "taughtIn": "axes-points",
+   "dependsOn": []
+  },
+  {
+   "id": "ordered-pair",
+   "term": "ordered pair",
+   "aliases": [
+    "coordinates"
+   ],
+   "taughtIn": "axes-points",
+   "dependsOn": [
+    "axis"
+   ]
+  },
+  {
+   "id": "direct-relationship",
+   "term": "direct relationship",
+   "aliases": [
+    "positive relationship",
+    "inverse relationship",
+    "negative relationship"
+   ],
+   "taughtIn": "axes-points",
+   "dependsOn": [
+    "axis"
+   ]
+  },
+  {
+   "id": "slope",
+   "term": "slope",
+   "aliases": [
+    "rise over run"
+   ],
+   "taughtIn": "slopes-curves",
+   "dependsOn": [
+    "ordered-pair"
+   ]
+  },
+  {
+   "id": "u-shaped",
+   "term": "U-shaped curve",
+   "aliases": [
+    "minimum point"
+   ],
+   "taughtIn": "slopes-curves",
+   "dependsOn": [
+    "slope"
+   ]
+  },
+  {
+   "id": "movement-along",
+   "term": "movement along a curve",
+   "aliases": [
+    "move along the curve"
+   ],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "axis"
+   ]
+  },
+  {
+   "id": "shift-curve",
+   "term": "shift of a curve",
+   "aliases": [
+    "curve shifts",
+    "shifts right",
+    "shifts left"
+   ],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "movement-along"
+   ]
+  },
+  {
+   "id": "ceteris-paribus",
+   "term": "ceteris paribus",
+   "aliases": [
+    "other things equal",
+    "all else equal"
+   ],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "shift-curve"
+   ]
+  },
+  {
+   "id": "intersection",
+   "term": "intersection",
+   "aliases": [
+    "where the curves cross",
+    "crossing point"
+   ],
+   "taughtIn": "curves-crossing",
+   "dependsOn": [
+    "ordered-pair"
+   ]
+  },
+  {
+   "id": "area-graph",
+   "term": "area of a triangle",
+   "aliases": [
+    "area of a rectangle"
+   ],
+   "taughtIn": "curves-crossing",
+   "dependsOn": [
+    "axis"
+   ]
+  },
+  {
+   "id": "scarcity",
+   "term": "scarcity",
+   "aliases": [
+    "scarce"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": []
+  },
+  {
+   "id": "factors-of-production",
+   "term": "factors of production",
+   "aliases": [
+    "land",
+    "labor",
+    "capital",
+    "entrepreneurship",
+    "resources"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": [
+    "scarcity"
+   ]
+  },
+  {
+   "id": "trade-off",
+   "term": "trade-off",
+   "aliases": [
+    "trade-offs"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": [
+    "scarcity"
+   ]
+  },
+  {
+   "id": "opportunity-cost",
+   "term": "opportunity cost",
+   "aliases": [
+    "opportunity costs"
+   ],
+   "taughtIn": "scarcity",
+   "dependsOn": [
+    "trade-off"
+   ]
+  },
+  {
+   "id": "economic-system",
+   "term": "economic system",
+   "aliases": [
+    "what, how and for whom"
+   ],
+   "taughtIn": "economic-systems",
+   "dependsOn": [
+    "scarcity"
+   ]
+  },
+  {
+   "id": "market-economy",
+   "term": "market economy",
+   "aliases": [
+    "command economy",
+    "mixed economy"
+   ],
+   "taughtIn": "economic-systems",
+   "dependsOn": [
+    "economic-system"
+   ]
+  },
+  {
+   "id": "property-rights",
+   "term": "property rights",
+   "aliases": [
+    "private property"
+   ],
+   "taughtIn": "economic-systems",
+   "dependsOn": [
+    "market-economy"
+   ]
+  },
+  {
+   "id": "incentive",
+   "term": "incentive",
+   "aliases": [
+    "incentives"
+   ],
+   "taughtIn": "economic-systems",
+   "dependsOn": [
+    "market-economy"
+   ]
+  },
+  {
+   "id": "ppc",
+   "term": "production possibilities curve",
+   "aliases": [
+    "PPC",
+    "production possibilities frontier",
+    "PPF"
+   ],
+   "taughtIn": "production-possibilities",
+   "dependsOn": [
+    "opportunity-cost",
+    "factors-of-production"
+   ]
+  },
+  {
+   "id": "productive-efficiency",
+   "term": "productive efficiency",
+   "aliases": [
+    "efficient point",
+    "inefficient point"
+   ],
+   "taughtIn": "production-possibilities",
+   "dependsOn": [
+    "ppc"
+   ],
+   "fullIn": [
+    "perfect-competition"
+   ]
+  },
+  {
+   "id": "increasing-cost",
+   "term": "increasing opportunity cost",
+   "aliases": [
+    "constant opportunity cost",
+    "decreasing opportunity cost"
+   ],
+   "taughtIn": "production-possibilities",
+   "dependsOn": [
+    "ppc"
+   ]
+  },
+  {
+   "id": "economic-growth",
+   "term": "economic growth",
+   "aliases": [
+    "outward shift of the PPC"
+   ],
+   "taughtIn": "production-possibilities",
+   "dependsOn": [
+    "ppc"
+   ]
+  },
+  {
+   "id": "absolute-advantage",
+   "term": "absolute advantage",
+   "aliases": [],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "ppc"
+   ]
+  },
+  {
+   "id": "comparative-advantage",
+   "term": "comparative advantage",
+   "aliases": [],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "opportunity-cost",
+    "absolute-advantage"
+   ]
+  },
+  {
+   "id": "specialization",
+   "term": "specialization",
+   "aliases": [
+    "specialize"
+   ],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "comparative-advantage"
+   ]
+  },
+  {
+   "id": "terms-of-trade",
+   "term": "terms of trade",
+   "aliases": [
+    "gains from trade",
+    "trade"
+   ],
+   "taughtIn": "comparative-advantage",
+   "dependsOn": [
+    "specialization"
+   ]
+  },
+  {
+   "id": "explicit-cost",
+   "term": "explicit cost",
+   "aliases": [
+    "explicit costs",
+    "implicit cost",
+    "implicit costs"
+   ],
+   "taughtIn": "cost-benefit",
+   "dependsOn": [
+    "opportunity-cost"
+   ]
+  },
+  {
+   "id": "total-benefit",
+   "term": "total benefit",
+   "aliases": [
+    "net benefit"
+   ],
+   "taughtIn": "cost-benefit",
+   "dependsOn": [
+    "explicit-cost"
+   ]
+  },
+  {
+   "id": "marginal",
+   "term": "marginal analysis",
+   "aliases": [
+    "at the margin",
+    "marginal benefit",
+    "marginal cost (of a choice)"
+   ],
+   "taughtIn": "marginal-analysis",
+   "dependsOn": [
+    "total-benefit"
+   ]
+  },
+  {
+   "id": "utility",
+   "term": "utility",
+   "aliases": [
+    "total utility"
+   ],
+   "taughtIn": "marginal-analysis",
+   "dependsOn": [
+    "total-benefit"
+   ]
+  },
+  {
+   "id": "marginal-utility",
+   "term": "marginal utility",
+   "aliases": [
+    "MU",
+    "diminishing marginal utility"
+   ],
+   "taughtIn": "marginal-analysis",
+   "dependsOn": [
+    "utility",
+    "marginal"
+   ]
+  },
+  {
+   "id": "mu-per-dollar",
+   "term": "marginal utility per dollar",
+   "aliases": [
+    "MU/P",
+    "utility-maximizing rule"
+   ],
+   "taughtIn": "marginal-analysis",
+   "dependsOn": [
+    "marginal-utility"
+   ]
+  },
+  {
+   "id": "sunk-cost",
+   "term": "sunk cost",
+   "aliases": [
+    "sunk costs"
+   ],
+   "taughtIn": "marginal-analysis",
+   "dependsOn": [
+    "marginal"
+   ]
+  },
+  {
+   "id": "budget-constraint",
+   "term": "budget constraint",
+   "aliases": [
+    "budget"
+   ],
+   "taughtIn": "marginal-analysis",
+   "dependsOn": [
+    "utility"
+   ]
+  },
+  {
+   "id": "demand",
+   "term": "demand",
+   "aliases": [
+    "demand curve",
+    "quantity demanded"
+   ],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "marginal-utility"
+   ]
+  },
+  {
+   "id": "law-of-demand",
+   "term": "law of demand",
+   "aliases": [],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "demand"
+   ]
+  },
+  {
+   "id": "income-effect",
+   "term": "income effect",
+   "aliases": [
+    "substitution effect"
+   ],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "law-of-demand"
+   ]
+  },
+  {
+   "id": "market-demand",
+   "term": "market demand",
+   "aliases": [
+    "individual demand"
+   ],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "demand"
+   ]
+  },
+  {
+   "id": "demand-shifter",
+   "term": "determinants of demand",
+   "aliases": [
+    "normal good",
+    "inferior good",
+    "substitutes",
+    "complements"
+   ],
+   "taughtIn": "demand",
+   "dependsOn": [
+    "demand",
+    "shift-curve"
+   ]
+  },
+  {
+   "id": "supply",
+   "term": "supply",
+   "aliases": [
+    "supply curve",
+    "quantity supplied"
+   ],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "factors-of-production"
+   ]
+  },
+  {
+   "id": "law-of-supply",
+   "term": "law of supply",
+   "aliases": [],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "supply"
+   ]
+  },
+  {
+   "id": "market-supply",
+   "term": "market supply",
+   "aliases": [
+    "individual supply"
+   ],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "supply"
+   ]
+  },
+  {
+   "id": "supply-shifter",
+   "term": "determinants of supply",
+   "aliases": [
+    "input prices",
+    "technology"
+   ],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "supply",
+    "shift-curve"
+   ]
+  },
+  {
+   "id": "price-elasticity",
+   "term": "price elasticity of demand",
+   "aliases": [
+    "elastic",
+    "inelastic",
+    "unit elastic",
+    "perfectly inelastic",
+    "perfectly elastic"
+   ],
+   "taughtIn": "price-elasticity-demand",
+   "dependsOn": [
+    "law-of-demand"
+   ]
+  },
+  {
+   "id": "total-revenue",
+   "term": "total revenue",
+   "aliases": [
+    "TR",
+    "total revenue test"
+   ],
+   "taughtIn": "price-elasticity-demand",
+   "dependsOn": [
+    "price-elasticity"
+   ]
+  },
+  {
+   "id": "midpoint-method",
+   "term": "midpoint method",
+   "aliases": [
+    "midpoint formula"
+   ],
+   "taughtIn": "price-elasticity-demand",
+   "dependsOn": [
+    "price-elasticity"
+   ]
+  },
+  {
+   "id": "elasticity-determinants",
+   "term": "determinants of elasticity",
+   "aliases": [
+    "availability of substitutes"
+   ],
+   "taughtIn": "price-elasticity-demand",
+   "dependsOn": [
+    "price-elasticity"
+   ]
+  },
+  {
+   "id": "supply-elasticity",
+   "term": "price elasticity of supply",
+   "aliases": [
+    "elastic supply",
+    "inelastic supply"
+   ],
+   "taughtIn": "price-elasticity-supply",
+   "dependsOn": [
+    "law-of-supply",
+    "price-elasticity"
+   ]
+  },
+  {
+   "id": "income-elasticity",
+   "term": "income elasticity of demand",
+   "aliases": [
+    "income elasticity"
+   ],
+   "taughtIn": "other-elasticities",
+   "dependsOn": [
+    "price-elasticity",
+    "demand-shifter"
+   ]
+  },
+  {
+   "id": "cross-elasticity",
+   "term": "cross-price elasticity of demand",
+   "aliases": [
+    "cross-price elasticity",
+    "cross elasticity"
+   ],
+   "taughtIn": "other-elasticities",
+   "dependsOn": [
+    "price-elasticity",
+    "demand-shifter"
+   ]
+  },
+  {
+   "id": "equilibrium",
+   "term": "market equilibrium",
+   "aliases": [
+    "equilibrium price",
+    "equilibrium quantity",
+    "equilibrium"
+   ],
+   "taughtIn": "equilibrium-surplus",
+   "dependsOn": [
+    "demand",
+    "supply",
+    "intersection"
+   ]
+  },
+  {
+   "id": "consumer-surplus",
+   "term": "consumer surplus",
+   "aliases": [
+    "CS"
+   ],
+   "taughtIn": "equilibrium-surplus",
+   "dependsOn": [
+    "equilibrium",
+    "area-graph"
+   ]
+  },
+  {
+   "id": "producer-surplus",
+   "term": "producer surplus",
+   "aliases": [
+    "PS"
+   ],
+   "taughtIn": "equilibrium-surplus",
+   "dependsOn": [
+    "equilibrium",
+    "area-graph"
+   ]
+  },
+  {
+   "id": "total-surplus",
+   "term": "total surplus",
+   "aliases": [],
+   "taughtIn": "equilibrium-surplus",
+   "dependsOn": [
+    "consumer-surplus",
+    "producer-surplus"
+   ]
+  },
+  {
+   "id": "shortage",
+   "term": "shortage",
+   "aliases": [
+    "excess demand"
+   ],
+   "taughtIn": "disequilibrium-changes",
+   "dependsOn": [
+    "equilibrium"
+   ]
+  },
+  {
+   "id": "surplus-goods",
+   "term": "surplus (of a good)",
+   "aliases": [
+    "excess supply"
+   ],
+   "taughtIn": "disequilibrium-changes",
+   "dependsOn": [
+    "equilibrium"
+   ]
+  },
+  {
+   "id": "double-shift",
+   "term": "simultaneous shifts",
+   "aliases": [
+    "indeterminate"
+   ],
+   "taughtIn": "disequilibrium-changes",
+   "dependsOn": [
+    "equilibrium",
+    "shift-curve"
+   ]
+  },
+  {
+   "id": "price-ceiling",
+   "term": "price ceiling",
+   "aliases": [
+    "binding price ceiling",
+    "rent control"
+   ],
+   "taughtIn": "government-intervention",
+   "dependsOn": [
+    "shortage"
+   ]
+  },
+  {
+   "id": "price-floor",
+   "term": "price floor",
+   "aliases": [
+    "binding price floor",
+    "minimum price"
+   ],
+   "taughtIn": "government-intervention",
+   "dependsOn": [
+    "surplus-goods"
+   ]
+  },
+  {
+   "id": "deadweight-loss",
+   "term": "deadweight loss",
+   "aliases": [
+    "DWL"
+   ],
+   "taughtIn": "government-intervention",
+   "dependsOn": [
+    "total-surplus"
+   ]
+  },
+  {
+   "id": "per-unit-tax",
+   "term": "per-unit tax",
+   "aliases": [
+    "excise tax",
+    "tax revenue",
+    "tax",
+    "taxes"
+   ],
+   "taughtIn": "government-intervention",
+   "dependsOn": [
+    "supply-shifter",
+    "deadweight-loss"
+   ]
+  },
+  {
+   "id": "tax-incidence",
+   "term": "tax incidence",
+   "aliases": [
+    "burden of a tax"
+   ],
+   "taughtIn": "government-intervention",
+   "dependsOn": [
+    "per-unit-tax",
+    "price-elasticity",
+    "supply-elasticity"
+   ]
+  },
+  {
+   "id": "subsidy",
+   "term": "per-unit subsidy",
+   "aliases": [
+    "subsidy",
+    "cost of the subsidy"
+   ],
+   "taughtIn": "government-intervention",
+   "dependsOn": [
+    "supply-shifter",
+    "deadweight-loss"
+   ]
+  },
+  {
+   "id": "quantity-control",
+   "term": "quantity control",
+   "aliases": [
+    "quota"
+   ],
+   "taughtIn": "government-intervention",
+   "dependsOn": [
+    "equilibrium"
+   ]
+  },
+  {
+   "id": "world-price",
+   "term": "world price",
+   "aliases": [
+    "free trade"
+   ],
+   "taughtIn": "trade-policy",
+   "dependsOn": [
+    "equilibrium",
+    "comparative-advantage"
+   ]
+  },
+  {
+   "id": "imports",
+   "term": "imports",
+   "aliases": [
+    "exports (of a good)"
+   ],
+   "taughtIn": "trade-policy",
+   "dependsOn": [
+    "world-price"
+   ]
+  },
+  {
+   "id": "tariff",
+   "term": "tariff",
+   "aliases": [
+    "tariff revenue"
+   ],
+   "taughtIn": "trade-policy",
+   "dependsOn": [
+    "world-price",
+    "per-unit-tax"
+   ]
+  },
+  {
+   "id": "import-quota",
+   "term": "import quota",
+   "aliases": [],
+   "taughtIn": "trade-policy",
+   "dependsOn": [
+    "tariff",
+    "quantity-control"
+   ]
+  },
+  {
+   "id": "production-function",
+   "term": "production function",
+   "aliases": [
+    "short run",
+    "long run"
+   ],
+   "taughtIn": "production-function",
+   "dependsOn": [
+    "factors-of-production"
+   ]
+  },
+  {
+   "id": "total-product",
+   "term": "total product",
+   "aliases": [
+    "TP"
+   ],
+   "taughtIn": "production-function",
+   "dependsOn": [
+    "production-function"
+   ]
+  },
+  {
+   "id": "marginal-product",
+   "term": "marginal product",
+   "aliases": [
+    "MP"
+   ],
+   "taughtIn": "production-function",
+   "dependsOn": [
+    "total-product",
+    "marginal"
+   ]
+  },
+  {
+   "id": "average-product",
+   "term": "average product",
+   "aliases": [
+    "AP"
+   ],
+   "taughtIn": "production-function",
+   "dependsOn": [
+    "total-product"
+   ]
+  },
+  {
+   "id": "diminishing-returns",
+   "term": "diminishing marginal returns",
+   "aliases": [
+    "law of diminishing returns"
+   ],
+   "taughtIn": "production-function",
+   "dependsOn": [
+    "marginal-product"
+   ]
+  },
+  {
+   "id": "fixed-cost",
+   "term": "total fixed cost",
+   "aliases": [
+    "TFC",
+    "fixed cost",
+    "fixed costs"
+   ],
+   "taughtIn": "short-run-costs",
+   "dependsOn": [
+    "explicit-cost",
+    "production-function"
+   ]
+  },
+  {
+   "id": "variable-cost",
+   "term": "total variable cost",
+   "aliases": [
+    "TVC",
+    "variable cost",
+    "variable costs"
+   ],
+   "taughtIn": "short-run-costs",
+   "dependsOn": [
+    "fixed-cost"
+   ]
+  },
+  {
+   "id": "total-cost",
+   "term": "total cost",
+   "aliases": [
+    "TC"
+   ],
+   "taughtIn": "cost-benefit",
+   "dependsOn": [
+    "explicit-cost"
+   ],
+   "fullIn": [
+    "short-run-costs"
+   ]
+  },
+  {
+   "id": "marginal-cost",
+   "term": "marginal cost",
+   "aliases": [
+    "MC"
+   ],
+   "taughtIn": "marginal-analysis",
+   "dependsOn": [
+    "marginal",
+    "total-cost"
+   ],
+   "fullIn": [
+    "short-run-costs"
+   ]
+  },
+  {
+   "id": "average-costs",
+   "term": "average total cost",
+   "aliases": [
+    "ATC",
+    "average variable cost",
+    "AVC",
+    "average fixed cost",
+    "AFC"
+   ],
+   "taughtIn": "short-run-costs",
+   "dependsOn": [
+    "total-cost",
+    "diminishing-returns"
+   ]
+  },
+  {
+   "id": "long-run-atc",
+   "term": "long-run average total cost",
+   "aliases": [
+    "LRATC"
+   ],
+   "taughtIn": "long-run-costs",
+   "dependsOn": [
+    "average-costs"
+   ]
+  },
+  {
+   "id": "economies-of-scale",
+   "term": "economies of scale",
+   "aliases": [
+    "diseconomies of scale",
+    "constant returns to scale"
+   ],
+   "taughtIn": "long-run-costs",
+   "dependsOn": [
+    "long-run-atc"
+   ]
+  },
+  {
+   "id": "returns-to-scale",
+   "term": "returns to scale",
+   "aliases": [
+    "increasing returns to scale",
+    "decreasing returns to scale"
+   ],
+   "taughtIn": "long-run-costs",
+   "dependsOn": [
+    "production-function"
+   ]
+  },
+  {
+   "id": "mes",
+   "term": "minimum efficient scale",
+   "aliases": [],
+   "taughtIn": "long-run-costs",
+   "dependsOn": [
+    "economies-of-scale"
+   ]
+  },
+  {
+   "id": "accounting-profit",
+   "term": "accounting profit",
+   "aliases": [],
+   "taughtIn": "types-of-profit",
+   "dependsOn": [
+    "explicit-cost",
+    "total-revenue"
+   ]
+  },
+  {
+   "id": "economic-profit",
+   "term": "economic profit",
+   "aliases": [
+    "economic loss",
+    "profit"
+   ],
+   "taughtIn": "types-of-profit",
+   "dependsOn": [
+    "accounting-profit"
+   ]
+  },
+  {
+   "id": "normal-profit",
+   "term": "normal profit",
+   "aliases": [
+    "zero economic profit"
+   ],
+   "taughtIn": "types-of-profit",
+   "dependsOn": [
+    "economic-profit"
+   ]
+  },
+  {
+   "id": "marginal-revenue",
+   "term": "marginal revenue",
+   "aliases": [
+    "MR"
+   ],
+   "taughtIn": "profit-maximization",
+   "dependsOn": [
+    "total-revenue",
+    "marginal"
+   ]
+  },
+  {
+   "id": "profit-max-rule",
+   "term": "profit-maximizing rule",
+   "aliases": [
+    "MR = MC"
+   ],
+   "taughtIn": "profit-maximization",
+   "dependsOn": [
+    "marginal-revenue",
+    "marginal-cost"
+   ]
+  },
+  {
+   "id": "shutdown",
+   "term": "shutdown rule",
+   "aliases": [
+    "shut down",
+    "shutdown point"
+   ],
+   "taughtIn": "firm-decisions",
+   "dependsOn": [
+    "average-costs",
+    "profit-max-rule"
+   ]
+  },
+  {
+   "id": "entry-exit",
+   "term": "entry and exit",
+   "aliases": [
+    "enter",
+    "exit",
+    "barrier-free entry"
+   ],
+   "taughtIn": "firm-decisions",
+   "dependsOn": [
+    "economic-profit"
+   ]
+  },
+  {
+   "id": "perfect-competition",
+   "term": "perfect competition",
+   "aliases": [
+    "perfectly competitive",
+    "price taker"
+   ],
+   "taughtIn": "perfect-competition",
+   "dependsOn": [
+    "profit-max-rule",
+    "entry-exit"
+   ]
+  },
+  {
+   "id": "firm-demand",
+   "term": "firm demand curve",
+   "aliases": [
+    "d = MR = AR = P",
+    "MR = D = AR = P"
+   ],
+   "taughtIn": "profit-maximization",
+   "dependsOn": [
+    "marginal-revenue"
+   ]
+  },
+  {
+   "id": "long-run-eq",
+   "term": "long-run equilibrium",
+   "aliases": [
+    "minimum ATC"
+   ],
+   "taughtIn": "perfect-competition",
+   "dependsOn": [
+    "perfect-competition",
+    "normal-profit"
+   ]
+  },
+  {
+   "id": "constant-cost",
+   "term": "constant-cost industry",
+   "aliases": [
+    "increasing-cost industry",
+    "decreasing-cost industry"
+   ],
+   "taughtIn": "perfect-competition",
+   "dependsOn": [
+    "long-run-eq"
+   ]
+  },
+  {
+   "id": "allocative-efficiency",
+   "term": "allocative efficiency",
+   "aliases": [
+    "P = MC"
+   ],
+   "taughtIn": "perfect-competition",
+   "dependsOn": [
+    "perfect-competition",
+    "total-surplus"
+   ]
+  },
+  {
+   "id": "market-power",
+   "term": "market power",
+   "aliases": [
+    "price maker",
+    "imperfect competition"
+   ],
+   "taughtIn": "imperfect-competition",
+   "dependsOn": [
+    "perfect-competition"
+   ]
+  },
+  {
+   "id": "barriers",
+   "term": "barriers to entry",
+   "aliases": [
+    "barrier to entry"
+   ],
+   "taughtIn": "imperfect-competition",
+   "dependsOn": [
+    "market-power"
+   ]
+  },
+  {
+   "id": "monopoly",
+   "term": "monopoly",
+   "aliases": [
+    "monopolist"
+   ],
+   "taughtIn": "imperfect-competition",
+   "dependsOn": [
+    "barriers"
+   ]
+  },
+  {
+   "id": "mr-below-demand",
+   "term": "marginal revenue curve",
+   "aliases": [
+    "MR below demand"
+   ],
+   "taughtIn": "imperfect-competition",
+   "dependsOn": [
+    "market-power",
+    "marginal-revenue"
+   ]
+  },
+  {
+   "id": "monopoly-dwl",
+   "term": "monopoly deadweight loss",
+   "aliases": [],
+   "taughtIn": "monopoly",
+   "dependsOn": [
+    "monopoly",
+    "deadweight-loss"
+   ]
+  },
+  {
+   "id": "natural-monopoly",
+   "term": "natural monopoly",
+   "aliases": [
+    "fair-return price",
+    "socially optimal price",
+    "regulated price"
+   ],
+   "taughtIn": "monopoly",
+   "dependsOn": [
+    "monopoly",
+    "economies-of-scale"
+   ]
+  },
+  {
+   "id": "price-discrimination",
+   "term": "price discrimination",
+   "aliases": [
+    "perfect price discrimination"
+   ],
+   "taughtIn": "price-discrimination",
+   "dependsOn": [
+    "monopoly"
+   ]
+  },
+  {
+   "id": "monopolistic-competition",
+   "term": "monopolistic competition",
+   "aliases": [
+    "product differentiation"
+   ],
+   "taughtIn": "imperfect-competition",
+   "dependsOn": [
+    "market-power"
+   ]
+  },
+  {
+   "id": "excess-capacity",
+   "term": "excess capacity",
+   "aliases": [],
+   "taughtIn": "monopolistic-competition",
+   "dependsOn": [
+    "monopolistic-competition",
+    "long-run-eq",
+    "productive-efficiency"
+   ]
+  },
+  {
+   "id": "oligopoly",
+   "term": "oligopoly",
+   "aliases": [
+    "interdependence"
+   ],
+   "taughtIn": "imperfect-competition",
+   "dependsOn": [
+    "market-power"
+   ]
+  },
+  {
+   "id": "payoff-matrix",
+   "term": "payoff matrix",
+   "aliases": [
+    "payoff",
+    "payoffs"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "oligopoly"
+   ]
+  },
+  {
+   "id": "best-response",
+   "term": "best response",
+   "aliases": [],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "payoff-matrix"
+   ]
+  },
+  {
+   "id": "dominant-strategy",
+   "term": "dominant strategy",
+   "aliases": [
+    "dominated strategy"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "best-response"
+   ]
+  },
+  {
+   "id": "nash-equilibrium",
+   "term": "Nash equilibrium",
+   "aliases": [
+    "Nash equilibria"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "best-response"
+   ]
+  },
+  {
+   "id": "collusion",
+   "term": "collusion",
+   "aliases": [
+    "cartel",
+    "joint profit"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "payoff-matrix"
+   ]
+  },
+  {
+   "id": "game-theory",
+   "term": "game theory",
+   "aliases": [
+    "strategic interaction"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "oligopoly"
+   ]
+  },
+  {
+   "id": "prisoners-dilemma",
+   "term": "prisoner's dilemma",
+   "aliases": [
+    "prisoners' dilemma"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "dominant-strategy",
+    "nash-equilibrium"
+   ]
+  },
+  {
+   "id": "factor-market",
+   "term": "factor market",
+   "aliases": [
+    "resource market"
+   ],
+   "taughtIn": "factor-markets",
+   "dependsOn": [
+    "factors-of-production",
+    "demand"
+   ]
+  },
+  {
+   "id": "derived-demand",
+   "term": "derived demand",
+   "aliases": [],
+   "taughtIn": "factor-markets",
+   "dependsOn": [
+    "factor-market"
+   ]
+  },
+  {
+   "id": "mrp",
+   "term": "marginal revenue product",
+   "aliases": [
+    "MRP"
+   ],
+   "taughtIn": "factor-markets",
+   "dependsOn": [
+    "marginal-product",
+    "marginal-revenue"
+   ]
+  },
+  {
+   "id": "labor-demand-shifter",
+   "term": "determinants of labor demand",
+   "aliases": [
+    "labor demand"
+   ],
+   "taughtIn": "factor-demand-supply",
+   "dependsOn": [
+    "mrp",
+    "derived-demand"
+   ]
+  },
+  {
+   "id": "labor-supply",
+   "term": "labor supply",
+   "aliases": [
+    "supply of labor",
+    "wage",
+    "wages"
+   ],
+   "taughtIn": "factor-demand-supply",
+   "dependsOn": [
+    "factor-market"
+   ]
+  },
+  {
+   "id": "mrc",
+   "term": "marginal resource cost",
+   "aliases": [
+    "MRC",
+    "marginal factor cost",
+    "MFC"
+   ],
+   "taughtIn": "competitive-factor-markets",
+   "dependsOn": [
+    "mrp",
+    "total-cost"
+   ]
+  },
+  {
+   "id": "hiring-rule",
+   "term": "profit-maximizing hiring rule",
+   "aliases": [
+    "MRP = MRC",
+    "MRP = MFC"
+   ],
+   "taughtIn": "competitive-factor-markets",
+   "dependsOn": [
+    "mrc"
+   ]
+  },
+  {
+   "id": "wage-taker",
+   "term": "wage taker",
+   "aliases": [
+    "market wage"
+   ],
+   "taughtIn": "competitive-factor-markets",
+   "dependsOn": [
+    "hiring-rule",
+    "perfect-competition"
+   ]
+  },
+  {
+   "id": "least-cost",
+   "term": "least-cost rule",
+   "aliases": [
+    "MP per dollar",
+    "least-cost combination"
+   ],
+   "taughtIn": "competitive-factor-markets",
+   "dependsOn": [
+    "marginal-product",
+    "mu-per-dollar"
+   ]
+  },
+  {
+   "id": "monopsony",
+   "term": "monopsony",
+   "aliases": [
+    "monopsonist"
+   ],
+   "taughtIn": "monopsony",
+   "dependsOn": [
+    "mrc",
+    "labor-supply"
+   ]
+  },
+  {
+   "id": "monopsony-wage",
+   "term": "monopsony wage",
+   "aliases": [
+    "wage bill"
+   ],
+   "taughtIn": "monopsony",
+   "dependsOn": [
+    "monopsony",
+    "hiring-rule"
+   ]
+  },
+  {
+   "id": "minimum-wage",
+   "term": "minimum wage",
+   "aliases": [],
+   "taughtIn": "monopsony",
+   "dependsOn": [
+    "monopsony",
+    "price-floor"
+   ]
+  },
+  {
+   "id": "marginal-social",
+   "term": "marginal social benefit",
+   "aliases": [
+    "MSB",
+    "marginal social cost",
+    "MSC"
+   ],
+   "taughtIn": "market-efficiency",
+   "dependsOn": [
+    "allocative-efficiency"
+   ]
+  },
+  {
+   "id": "market-failure",
+   "term": "market failure",
+   "aliases": [
+    "inefficient outcome"
+   ],
+   "taughtIn": "market-efficiency",
+   "dependsOn": [
+    "marginal-social",
+    "deadweight-loss"
+   ]
+  },
+  {
+   "id": "externality",
+   "term": "externality",
+   "aliases": [
+    "externalities",
+    "spillover"
+   ],
+   "taughtIn": "externalities",
+   "dependsOn": [
+    "market-failure"
+   ]
+  },
+  {
+   "id": "negative-externality",
+   "term": "negative externality",
+   "aliases": [
+    "external cost",
+    "marginal private cost",
+    "MPC"
+   ],
+   "taughtIn": "externalities",
+   "dependsOn": [
+    "externality"
+   ]
+  },
+  {
+   "id": "positive-externality",
+   "term": "positive externality",
+   "aliases": [
+    "external benefit",
+    "marginal private benefit",
+    "MPB"
+   ],
+   "taughtIn": "externalities",
+   "dependsOn": [
+    "externality"
+   ]
+  },
+  {
+   "id": "pigouvian",
+   "term": "corrective tax",
+   "aliases": [
+    "Pigouvian tax",
+    "corrective subsidy",
+    "Pigouvian subsidy"
+   ],
+   "taughtIn": "externalities",
+   "dependsOn": [
+    "negative-externality",
+    "positive-externality",
+    "per-unit-tax",
+    "subsidy"
+   ]
+  },
+  {
+   "id": "lump-sum-tax",
+   "term": "lump-sum tax",
+   "aliases": [
+    "lump-sum subsidy"
+   ],
+   "taughtIn": "short-run-costs",
+   "dependsOn": [
+    "fixed-cost"
+   ]
+  },
+  {
+   "id": "rival",
+   "term": "rival good",
+   "aliases": [
+    "rivalry",
+    "nonrival"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "market-failure"
+   ]
+  },
+  {
+   "id": "excludable",
+   "term": "excludable good",
+   "aliases": [
+    "nonexcludable"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "rival"
+   ]
+  },
+  {
+   "id": "public-good",
+   "term": "public good",
+   "aliases": [
+    "public goods",
+    "private good"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "rival",
+    "excludable"
+   ]
+  },
+  {
+   "id": "free-rider",
+   "term": "free-rider problem",
+   "aliases": [
+    "free rider"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "public-good"
+   ]
+  },
+  {
+   "id": "common-resource",
+   "term": "common resource",
+   "aliases": [
+    "tragedy of the commons"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "rival",
+    "excludable"
+   ]
+  },
+  {
+   "id": "club-good",
+   "term": "club good",
+   "aliases": [
+    "club goods"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "rival",
+    "excludable"
+   ]
+  },
+  {
+   "id": "intervention-structures",
+   "term": "regulation of market power",
+   "aliases": [
+    "price regulation"
+   ],
+   "taughtIn": "intervention-structures",
+   "dependsOn": [
+    "natural-monopoly",
+    "minimum-wage",
+    "price-ceiling"
+   ]
+  },
+  {
+   "id": "lorenz",
+   "term": "Lorenz curve",
+   "aliases": [
+    "line of equality",
+    "line of perfect equality"
+   ],
+   "taughtIn": "inequality",
+   "dependsOn": [
+    "ordered-pair"
+   ]
+  },
+  {
+   "id": "gini",
+   "term": "Gini coefficient",
+   "aliases": [],
+   "taughtIn": "inequality",
+   "dependsOn": [
+    "lorenz",
+    "area-graph"
+   ]
+  },
+  {
+   "id": "progressive-tax",
+   "term": "progressive tax",
+   "aliases": [
+    "proportional tax",
+    "regressive tax"
+   ],
+   "taughtIn": "inequality",
+   "dependsOn": [
+    "per-unit-tax"
+   ]
+  },
+  {
+   "id": "transfer-payment",
+   "term": "transfer payment",
+   "aliases": [
+    "transfer payments"
+   ],
+   "taughtIn": "inequality",
+   "dependsOn": [
+    "progressive-tax"
+   ]
+  },
+  {
+   "id": "income-wealth",
+   "term": "income inequality",
+   "aliases": [
+    "wealth inequality"
+   ],
+   "taughtIn": "inequality",
+   "dependsOn": [
+    "lorenz"
+   ]
+  }
+ ],
+ "circularDependencies": [
+  {
+   "id": "general-cost-words",
+   "problem": "CED 1.5 and 1.6 weigh total benefit against total cost and marginal benefit against marginal cost, but the cost concepts are Topic 3.2.",
+   "detail": "Total cost (all the costs of a choice) is taught in 1.5 and marginal cost (the cost of one more unit) with the MB = MC rule in 1.6; 3.2 stays their main topic, adding TC = TFC + TVC, MC from a cost table and the MC curve shaped by diminishing returns. Integration 2026-11-09 (authors A and C).",
+   "resolution": "pull-forward",
+   "into": [
+    "cost-benefit",
+    "marginal-analysis"
+   ],
+   "fullIn": [
+    "short-run-costs"
+   ],
+   "concepts": [
+    "total-cost",
+    "marginal-cost"
+   ]
+  },
+  {
+   "id": "productive-efficiency-two-senses",
+   "problem": "Productive efficiency appears with the PPC (CED 1.3) and again as production at minimum ATC (CED 3.7, 4.4).",
+   "detail": "Taught in 1.3 as producing on the PPC (no resources wasted); 3.7 gives the firm-level sense, producing at the lowest ATC, which a competitive firm reaches in the long run and a monopolistically competitive firm does not (excess capacity, 4.4). Integration 2026-11-09 (author D).",
+   "resolution": "pull-forward",
+   "into": [
+    "production-possibilities"
+   ],
+   "fullIn": [
+    "perfect-competition"
+   ],
+   "concepts": [
+    "productive-efficiency"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "short-run-costs",
+ "hook": "A candle maker pays the same rent whether she pours ten candles or a thousand, but every extra candle needs more wax and more of her assistant's paid hours. Split her costs that way, divide by output, and you get the four cost curves every firm graph in this course is built on.",
+ "prereq": [
+  {
+   "q": "Wages a firm pays its workers are",
+   "options": [
+    "an explicit cost",
+    "an implicit cost",
+    "a sunk cost",
+    "a benefit"
+   ],
+   "correct": 0,
+   "why": "They are money actually paid out.",
+   "review": "cost-benefit"
+  },
+  {
+   "q": "In the short run, as a firm adds workers to a fixed plant, the marginal product of labor eventually",
+   "options": [
+    "falls",
+    "rises",
+    "stays the same",
+    "becomes the average product"
+   ],
+   "correct": 0,
+   "why": "That is diminishing marginal returns.",
+   "review": "production-function"
+  }
+ ],
+ "figure": {
+  "figure": "short-run-costs-curves",
+  "caption": "MC dips and then rises; it crosses AVC at the lowest point of AVC (q1) and ATC at the lowest point of ATC (q2). AFC falls as output grows and is the gap between ATC and AVC."
+ },
+ "chain": [
+  {
+   "cause": "The firm adds workers to a fixed plant",
+   "effect": "the marginal product of labor eventually falls (diminishing marginal returns)"
+  },
+  {
+   "cause": "Each worker adds less output",
+   "effect": "each extra unit takes more paid hours to make, so marginal cost rises"
+  },
+  {
+   "cause": "Marginal cost rises above average variable cost and then above average total cost",
+   "effect": "it pulls each average up, so AVC and ATC turn upward"
+  },
+  {
+   "cause": "MC pulls each average down while below it and up while above it",
+   "effect": "MC crosses AVC and ATC at their lowest points"
+  }
+ ],
+ "ideas": [
+  "<b>Total fixed cost</b> (TFC) is the same at every output, even zero. <b>Total variable cost</b> (TVC) rises with output. TC = TFC + TVC.",
+  "Averages divide by output: AFC = TFC / Q, AVC = TVC / Q, ATC = TC / Q = AFC + AVC.",
+  "<b>Marginal cost</b>: $\\text{MC} = \\frac{\\Delta \\text{TC}}{\\Delta Q}$. Divide by the change in output.",
+  "MC crosses AVC and ATC at their lowest points. A fixed cost moves ATC (and AFC) only; a variable cost moves MC, AVC and ATC."
+ ],
+ "misconception": {
+  "wrong": "Marginal cost is just the jump in total cost from one row of a table to the next.",
+  "right": "Marginal cost is per unit: divide the change in total cost by the change in output. If cost rises by \\$70 when output rises by 10, MC is \\$7, not \\$70."
+ },
+ "check": [
+  "mic-short-run-costs-1",
+  "mic-short-run-costs-2",
+  "mic-short-run-costs-3",
+  "mic-short-run-costs-4",
+  "mic-short-run-costs-12",
+  "mic-short-run-costs-14",
+  "mic-short-run-costs-18"
+ ],
+ "summary": "Short-run costs are fixed (the same at every output, even zero) or variable (rising with output); total cost is their sum. Dividing by output gives AFC, AVC and ATC. Marginal cost is the change in total cost divided by the change in output; diminishing marginal returns make it rise. Because MC pulls an average down when below it and up when above it, MC crosses AVC and ATC at their lowest points. A change in a fixed cost shifts only ATC; a change in a variable cost shifts MC, AVC and ATC."
+}

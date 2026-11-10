@@ -1,0 +1,12 @@
+{
+ "scarcity-choice": {
+  "file": "figures/scarcity-choice.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A diagram: unlimited wants and limited resources (land, labor, capital, entrepreneurship) create scarcity, so every choice has a trade-off. Maya picks a $96 lifeguard shift over $60 of tutoring and $40 of soccer; the opportunity cost is the next-best choice, $60."
+ }
+}

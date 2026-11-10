@@ -1,0 +1,14 @@
+{
+ "absolute-advantage": {
+  "def": "The ability to produce more of a good than another producer with the same resources, or the same amount with fewer resources."
+ },
+ "comparative-advantage": {
+  "def": "The ability to produce a good at a lower opportunity cost than another producer."
+ },
+ "specialization": {
+  "def": "Concentrating production on the goods a producer makes at the lowest opportunity cost, and trading for the rest."
+ },
+ "terms-of-trade": {
+  "def": "The rate at which one good is exchanged for another; trade benefits both sides when the terms lie between their opportunity costs, and those benefits are the gains from trade."
+ }
+}

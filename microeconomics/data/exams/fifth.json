@@ -1,0 +1,405 @@
+{
+ "about": "A fifth answer choice for each bank question the two practice exams use (five choices on the exam, four in the practice bank; needs-author mcq-options). examVersion (scripts/lib/apmicro-exams.mjs) puts each one in at a fixed position from the question id, with its explanation, which names the slip. The bank questions keep their four options.",
+ "options": {
+  "mic-scarcity-4": {
+   "option": "Flour is a free good, so it has no price",
+   "why": "Flour has a price because it is scarce; the recipe is the one that many can use at once without using it up."
+  },
+  "mic-scarcity-2": {
+   "option": "No: scarcity ends once wants are met by income",
+   "why": "Her wants and her time still outrun what she has; scarcity applies to every person, firm and society, whatever its income."
+  },
+  "mic-economic-systems-15": {
+   "option": "Command economies coordinate by prices; markets by plans",
+   "why": "That is reversed: markets coordinate through prices, and command economies through a central plan."
+  },
+  "mic-production-possibilities-17": {
+   "option": "Bowed out, because apps are easier to build than games",
+   "why": "Getting faster at apps lowers the games given up per app, which is decreasing opportunity cost: a PPC bowed in, not out."
+  },
+  "mic-production-possibilities-16": {
+   "option": "Resources are equally useless for both goods",
+   "why": "A straight PPC means resources are equally suited to both goods, so each extra unit has the same opportunity cost."
+  },
+  "mic-comparative-advantage-15": {
+   "option": "She has the absolute advantage in legal work too, so she types",
+   "why": "Absolute advantage does not decide who should type; her time typing costs her legal work, so the assistant has the comparative advantage."
+  },
+  "mic-cost-benefit-11": {
+   "option": "As a sunk cost she can ignore",
+   "why": "The rent she gives up is a cost she pays every month she keeps the shop, so it is an implicit cost, not a sunk one."
+  },
+  "mic-marginal-analysis-15": {
+   "option": "Each extra unit costs more than the last",
+   "why": "That describes rising marginal cost; diminishing marginal utility is about satisfaction: each extra unit adds less."
+  },
+  "mic-demand-15": {
+   "option": "Her rising cost of making pizza at home",
+   "why": "The idea is about Lena’s extra satisfaction from each slice, not a cost; falling marginal utility explains why she pays less for the third."
+  },
+  "mic-demand-14": {
+   "option": "Other things equal, a higher income lowers the quantity demanded",
+   "why": "The law of demand links a good’s own price to its quantity demanded; income shifts demand instead."
+  },
+  "mic-supply-16": {
+   "option": "It shifts right as the farmer earns more from soybeans",
+   "why": "A higher soybean price makes corn the costlier use of the land, so the farmer supplies less corn at each price."
+  },
+  "mic-price-elasticity-demand-11": {
+   "option": "It falls at first and then rises again near the bottom",
+   "why": "Along a straight downward demand line the elasticity falls steadily as the price falls; it does not turn back up."
+  },
+  "mic-price-elasticity-demand-9": {
+   "option": "Percent change in total revenue divided by percent change in price",
+   "why": "The total revenue test uses elasticity, but the elasticity itself is the percent change in quantity demanded over the percent change in price."
+  },
+  "mic-price-elasticity-supply-13": {
+   "option": "Sellers face less competition as time passes",
+   "why": "Competition is not the reason; over time firms can add workers, machines and plants, so output responds more."
+  },
+  "mic-other-elasticities-13": {
+   "option": "Income and cross-price elasticities are smaller than 1",
+   "why": "The size does not decide it: the sign of income and cross-price elasticity names the kind of good or relationship, so it is kept."
+  },
+  "mic-other-elasticities-11": {
+   "option": "$\\%\\Delta Q_d \\div \\%\\Delta P_{\\text{other good}}$",
+   "why": "That is the cross-price elasticity; a response to pay is the income elasticity, the percent change in quantity over the percent change in income."
+  },
+  "mic-equilibrium-surplus-16": {
+   "option": "A rule the government uses to ration the coffee",
+   "why": "No one set this price; it rose in the market and signals growers to plant more and buyers to use less."
+  },
+  "mic-disequilibrium-changes-15": {
+   "option": "The quantities of X and Y rise by the same amount",
+   "why": "Elastic supply lets Y's output rise a lot, while X's inelastic supply sends most of its demand increase into price, so the quantity of Y rises more."
+  },
+  "mic-government-intervention-23": {
+   "option": "The price falls to the level of 600 tons on supply",
+   "why": "Cutting the quantity to 600 tons moves the market up the demand curve, so buyers pay a higher price, not a lower one."
+  },
+  "mic-trade-policy-20": {
+   "option": "A tariff raises imports; a quota lowers them",
+   "why": "A tariff raises the domestic price, so quantity supplied rises and quantity demanded falls: imports fall under a tariff too."
+  },
+  "mic-production-function-10": {
+   "option": "It falls, because the shop now has more capital to pay for",
+   "why": "The cost of presses does not set marginal product; with more presses per worker, each worker adds more output."
+  },
+  "mic-production-function-13": {
+   "option": "The firm’s profit at each level of output",
+   "why": "Profit needs prices and costs; a production function links inputs to output only."
+  },
+  "mic-short-run-costs-7": {
+   "option": "Average fixed cost rises as output grows",
+   "why": "AFC falls as output grows, and fixed cost does not affect MC; MC rises because each added worker adds less output."
+  },
+  "mic-long-run-costs-4": {
+   "option": "About 30 firms, each making 1,000 kayaks",
+   "why": "Lowest LRATC is at about 300 to 400 kayaks a year per firm, so 30,000 kayaks take about 75 to 100 such firms."
+  },
+  "mic-long-run-costs-17": {
+   "option": "A market with thousands of firms of many sizes",
+   "why": "If the lowest-cost size is half the market, two or so firms can produce at minimum cost: a few large firms, not thousands."
+  },
+  "mic-types-of-profit-12": {
+   "option": "It adds the value of the owner’s time to revenue",
+   "why": "Economic profit subtracts the owner’s forgone earnings as an implicit cost; it does not add them to revenue."
+  },
+  "mic-types-of-profit-15": {
+   "option": "The price rises as buyers compete for scooters",
+   "why": "Economic profit draws new firms in, which adds supply and pushes the price down, not up."
+  },
+  "mic-types-of-profit-18": {
+   "option": "The profit left after implicit costs are added to revenue",
+   "why": "Implicit costs are subtracted, not added; normal profit is zero economic profit, which covers every cost including the owner’s best alternative."
+  },
+  "mic-profit-maximization-8": {
+   "option": "a loss equal to its fixed cost",
+   "why": "With price at the lowest point of ATC, revenue covers every cost including fixed cost: zero economic profit, not a loss."
+  },
+  "mic-profit-maximization-5": {
+   "option": "\\$1.60, the price minus the average cost",
+   "why": "\\$20 - \\$18.40 = \\$1.60 is the profit per mug; average revenue is total revenue divided by quantity, \\$100 ÷ 5 = \\$20, the price."
+  },
+  "mic-firm-decisions-16": {
+   "option": "It raises its price by the rent divided by output",
+   "why": "A competitive firm takes the price, and a fixed cost does not change MC, so neither price nor output changes in the short run."
+  },
+  "mic-imperfect-competition-12": {
+   "option": "It lies below demand, and so does a competitive firm’s MR",
+   "why": "A competitive firm sells any amount at the market price, so its MR is the horizontal price line, not below its demand."
+  },
+  "mic-imperfect-competition-15": {
+   "option": "Rail cars are a public good, so no buyer pays for them",
+   "why": "Rail cars are rival and excludable; the barrier here is economies of scale, which give a small entrant a higher ATC."
+  },
+  "mic-imperfect-competition-11": {
+   "option": "raise its output while keeping its price",
+   "why": "Its demand curve slopes down, so it can sell more only by lowering its price."
+  },
+  "mic-monopoly-4": {
+   "option": "Areas a and c",
+   "why": "Area a is consumer surplus, above the price; total revenue is price times quantity, areas b and c."
+  },
+  "mic-monopoly-12": {
+   "option": "Lowers the price and leaves the ferry with a profit",
+   "why": "At the socially optimal price, P = MC, which is below ATC for a natural monopoly, so the ferry runs at a loss."
+  },
+  "mic-monopoly-23": {
+   "option": "produce more and raise its price",
+   "why": "Moving down its demand curve to sell more means a lower price, not a higher one."
+  },
+  "mic-monopolistic-competition-20": {
+   "option": "Zero economic profit in the short run",
+   "why": "Short-run profit can be positive for both; what they share is a downward-sloping demand curve."
+  },
+  "mic-oligopoly-game-theory-17": {
+   "option": "the rival is most likely to choose",
+   "why": "A dominant strategy is about the player’s own payoffs: it does better than its other strategies whatever the rival does."
+  },
+  "mic-factor-markets-7": {
+   "option": "A new road brings more buyers from other towns",
+   "why": "More buyers raise the demand for boats and so for welders; the plant closing lowers boat demand and, through MRP, welder demand."
+  },
+  "mic-factor-markets-19": {
+   "option": "A bakery sells a cake to a café",
+   "why": "That is a product market sale; a factor market trades inputs such as labor, as when the café hires a barista."
+  },
+  "mic-factor-demand-supply-7": {
+   "option": "It has shifted right, because developers are easier to hire",
+   "why": "MRP depends on marginal product and the product’s price; labor demand fell, so each developer’s MRP fell and the curve shifted left."
+  },
+  "mic-factor-demand-supply-20": {
+   "option": "The wage falls and employment stays the same",
+   "why": "Cheaper substitute machines lower the demand for operators, so along an upward labor supply both the wage and employment fall."
+  },
+  "mic-competitive-factor-markets-17": {
+   "option": "Hire her if her MRP is above the average MRP",
+   "why": "The rule is marginal: hire while MRP is at least MRC (the wage), and \\$95 is above \\$80."
+  },
+  "mic-monopsony-20": {
+   "option": "It raises employment in both markets",
+   "why": "In a competitive market a wage floor above equilibrium cuts the quantity of labor demanded, so employment falls there."
+  },
+  "mic-market-efficiency-18": {
+   "option": "Its MSB is below its MSC, so the quantity is right",
+   "why": "If MSB were below MSC the unit should not be made; below the efficient quantity, MSB is above MSC."
+  },
+  "mic-externalities-9": {
+   "option": "Areas b and c",
+   "why": "Those are external costs on units the efficient quantity keeps or that private surplus offsets; the deadweight loss is the triangle a."
+  },
+  "mic-public-goods-16": {
+   "option": "It becomes excludable, because tolls are charged",
+   "why": "A toll road was already excludable; congestion changes rivalry, since each extra car slows the others."
+  },
+  "mic-intervention-structures-20": {
+   "option": "Keep firms from earning any accounting profit",
+   "why": "Regulation aims at competitive price and output; firms can still earn an accounting profit and a normal profit."
+  },
+  "mic-inequality-19": {
+   "option": "It moves below the line of equality for the first time",
+   "why": "A Lorenz curve already lies below the line of equality; more progressive taxes and transfers move it closer to the line."
+  },
+  "mic-scarcity-16": {
+   "option": "The cost is the textbook money plus her time tonight",
+   "why": "Money already spent is a sunk cost: it is gone whatever she does tonight, so it is not part of the opportunity cost."
+  },
+  "mic-economic-systems-12": {
+   "option": "They make each good free for the people who need it",
+   "why": "Property rights do not make goods free; they let owners keep what they earn, which gives them a reason to produce and trade."
+  },
+  "mic-economic-systems-2": {
+   "option": "Laws that fix the output of each firm",
+   "why": "Fixing output by law is a command method; in a market economy prices coordinate buyers and sellers."
+  },
+  "mic-production-possibilities-18": {
+   "option": "It moves the firm to a point inside the curve for good",
+   "why": "Building machines this year adds capital, so later the whole curve shifts out; producing inside the curve today is a choice, not a lasting effect."
+  },
+  "mic-comparative-advantage-14": {
+   "option": "Both gain if the faster baker makes the pies",
+   "why": "With the same opportunity cost there is no comparative advantage, so specializing and trading creates no gain."
+  },
+  "mic-comparative-advantage-13": {
+   "option": "To make a little of many goods yourself",
+   "why": "That is the opposite of specializing, which is focusing production on a few goods and trading for the rest."
+  },
+  "mic-cost-benefit-12": {
+   "option": "The profit it earns after paying its costs",
+   "why": "Profit is benefit minus cost; the total benefit of selling is the revenue itself."
+  },
+  "mic-marginal-analysis-17": {
+   "option": "Buy one more of each with money she saves",
+   "why": "Her whole budget is spent, so she has no money left over; she raises utility by moving dollars from concerts (18) to books (30)."
+  },
+  "mic-demand-18": {
+   "option": "It raises the cost of building new apartments",
+   "why": "Property rights do not add a building cost; they let owners keep the gains from buying, improving and selling, which is the incentive."
+  },
+  "mic-supply-15": {
+   "option": "The bakery’s fixed cost rises with each extra loaf",
+   "why": "Fixed cost does not change with output; the extra loaves cost more because overtime and a rented oven raise marginal cost."
+  },
+  "mic-supply-14": {
+   "option": "Other things equal, a higher price raises the quantity demanded",
+   "why": "That swaps the sides of the market; the law of supply is about the quantity sellers offer."
+  },
+  "mic-price-elasticity-demand-14": {
+   "option": "It falls, because buyers now spend less on snacks",
+   "why": "A new substitute nearby makes buyers more willing to switch away when the theater’s price rises, so demand becomes more elastic."
+  },
+  "mic-price-elasticity-supply-11": {
+   "option": "Paper napkins made in a plant with spare capacity",
+   "why": "Spare capacity lets output rise quickly, so supply is elastic; a small fishing fleet cannot catch much more within a week."
+  },
+  "mic-price-elasticity-supply-8": {
+   "option": "Price divided by quantity supplied, at one point",
+   "why": "Elasticity compares two percent changes: the percent change in quantity supplied over the percent change in price."
+  },
+  "mic-other-elasticities-16": {
+   "option": "It is positive, so the goods are complements",
+   "why": "Gasoline up and trucks bought down gives a negative cross-price elasticity; a negative value means complements."
+  },
+  "mic-equilibrium-surplus-15": {
+   "option": "\\$16, halfway between the two prices",
+   "why": "Producer surplus is the price received minus the least the seller would accept: \\$20 - \\$12 = \\$8."
+  },
+  "mic-equilibrium-surplus-13": {
+   "option": "The quantity where buyers spend the most",
+   "why": "Equilibrium is where quantity demanded equals quantity supplied, not where spending is largest."
+  },
+  "mic-disequilibrium-changes-12": {
+   "option": "Supply shifts right to meet demand",
+   "why": "A price below equilibrium causes a movement along the curves, not a shift; quantity demanded exceeds quantity supplied."
+  },
+  "mic-government-intervention-22": {
+   "option": "A surplus of bus tickets, because buyers pay less",
+   "why": "A ceiling above the market price does not bind, so the price stays at \\$2.00 with no shortage and no surplus."
+  },
+  "mic-trade-policy-18": {
+   "option": "Its own producers have the absolute advantage",
+   "why": "If domestic producers made it at lower cost the domestic price would be lower; it imports because others have the lower opportunity cost."
+  },
+  "mic-production-function-4": {
+   "option": "It is a short-run decision, because one field is still fixed",
+   "why": "With the lease the owner can change fields as well as pickers and crates; when every input can change, it is the long run."
+  },
+  "mic-production-function-14": {
+   "option": "rise, because the new mechanic adds to total output",
+   "why": "Total product rises, but when the added output is below the average, the average is pulled down."
+  },
+  "mic-short-run-costs-10": {
+   "option": "AFC and ATC shift up, but MC does not change",
+   "why": "Flour is a variable cost: it raises MC, AVC and ATC, and leaves fixed cost and AFC as they were."
+  },
+  "mic-long-run-costs-7": {
+   "option": "fall, because diseconomies of scale set in",
+   "why": "Diseconomies of scale raise LRATC; on the falling part of the curve the firm has economies of scale."
+  },
+  "mic-long-run-costs-14": {
+   "option": "Diminishing returns lower costs; diseconomies raise them",
+   "why": "Both raise cost; the difference is that diminishing returns need a fixed input (short run) and diseconomies come from growing every input."
+  },
+  "mic-types-of-profit-6": {
+   "option": "Firms Y and Z",
+   "why": "Firm Y earns 400 - 250 - 100 = 50 above all costs, an economic profit, so only Firm Z fits; Firm Z’s implicit costs turn its accounting profit into an economic loss."
+  },
+  "mic-types-of-profit-10": {
+   "option": "The interest she pays on a loan for her chair",
+   "why": "Interest she pays is money paid out, an explicit cost; the salary she gives up is the implicit one."
+  },
+  "mic-profit-maximization-13": {
+   "option": "the extra cost of making one more unit",
+   "why": "That is marginal cost; marginal revenue is the extra revenue from selling one more unit."
+  },
+  "mic-firm-decisions-6": {
+   "option": "Produce: its price covers ATC at 100 jobs",
+   "why": "ATC is \\$12 and the price \\$10, so it does not cover ATC; it produces because the price is above AVC, losing \\$200 rather than \\$400."
+  },
+  "mic-firm-decisions-18": {
+   "option": "The part below the lowest point of AVC",
+   "why": "Below minimum AVC the firm shuts down and supplies nothing; the supply curve is MC above minimum AVC."
+  },
+  "mic-perfect-competition-16": {
+   "option": "Downward sloping, as larger firms get cheaper",
+   "why": "In a constant-cost industry, entry does not change input costs, so long-run supply is horizontal at minimum ATC."
+  },
+  "mic-imperfect-competition-8": {
+   "option": "Economies of scale that let one salon serve the whole county",
+   "why": "Salons are small and easy to open; their market power comes from differentiated styles and locations."
+  },
+  "mic-imperfect-competition-16": {
+   "option": "Its demand is perfectly elastic at the market price",
+   "why": "Perfectly elastic demand describes a price taker; profit lasts here because barriers to entry keep rivals out."
+  },
+  "mic-imperfect-competition-10": {
+   "option": "A product that buyers can compare easily across sellers",
+   "why": "Easy comparison helps buyers switch, which does not keep rivals out; a patent gives one firm the legal right to sell."
+  },
+  "mic-imperfect-competition-19": {
+   "option": "Economies of scale from its many small mines",
+   "why": "Owning the key resource is what keeps rivals out here, not the size or number of its mines."
+  },
+  "mic-monopoly-21": {
+   "option": "The part where marginal revenue is negative",
+   "why": "Where MR is negative, cutting output would raise revenue and lower cost, so a monopolist with positive MC never stays there."
+  },
+  "mic-monopoly-22": {
+   "option": "produces more and charges the same price",
+   "why": "A monopoly restricts output to where MR = MC, below the competitive quantity, and so charges a higher price."
+  },
+  "mic-price-discrimination-4": {
+   "option": "Student sales would rise and profit would stay the same",
+   "why": "Students’ demand is more elastic, so a higher price cuts their purchases sharply and the cinema loses that profit."
+  },
+  "mic-oligopoly-game-theory-13": {
+   "option": "Each firm sells a product with no close substitutes",
+   "why": "That describes a monopoly; oligopolists watch rivals because each firm’s choice changes the others’ profits."
+  },
+  "mic-factor-markets-14": {
+   "option": "It shows the wage the firm pays each worker",
+   "why": "The wage is set in the labor market; the MRP curve shows each added worker’s value to the firm, which is why it is labor demand."
+  },
+  "mic-factor-markets-15": {
+   "option": "It falls, because the firm needs fewer hours of work",
+   "why": "MRP is marginal product times marginal revenue; the machine raises each worker’s marginal product, so MRP rises."
+  },
+  "mic-factor-markets-20": {
+   "option": "It falls for the last worker and stays the same for the rest",
+   "why": "MRP is marginal product times marginal revenue; a lower price lowers marginal revenue, so MRP falls for every worker."
+  },
+  "mic-factor-demand-supply-18": {
+   "option": "It increases at first and then falls below where it began",
+   "why": "Cheaper drones mean more drones, each needing a driver, so demand for the complement, drivers, rises; nothing here turns it back down."
+  },
+  "mic-competitive-factor-markets-20": {
+   "option": "The firm sets the wage for its own workers",
+   "why": "A firm in a competitive labor market is a wage taker; it pays the market wage for each added worker, so MFC equals the wage."
+  },
+  "mic-monopsony-9": {
+   "option": "hires more workers and pays a higher wage",
+   "why": "The monopsonist hires where MRP = MFC, to the left of the competitive quantity, and pays the lower wage read from labor supply."
+  },
+  "mic-market-efficiency-6": {
+   "option": "Areas b and c",
+   "why": "Areas b and c are part of the subsidy’s cost that goes to buyers and sellers; the deadweight loss is the triangle g past the efficient quantity."
+  },
+  "mic-market-efficiency-20": {
+   "option": "Efficiency rises, because the floor ends the shortage",
+   "why": "A binding floor sits above equilibrium and creates a surplus, not a shortage; trade falls below the efficient quantity."
+  },
+  "mic-externalities-22": {
+   "option": "MPC lies above MSC, so the quantity is too low",
+   "why": "With a negative production externality MSC is above MPC, and the market overproduces at too low a price."
+  },
+  "mic-public-goods-15": {
+   "option": "A rival good, because each car uses up road space",
+   "why": "One more car slows no one, so the uncrowded road is nonrival; the toll gate makes it excludable: a club good."
+  },
+  "mic-intervention-structures-18": {
+   "option": "It falls, because the subsidy raises its fixed cost",
+   "why": "A per-unit subsidy lowers marginal cost, so MR meets MC at a larger quantity: output rises."
+  }
+ }
+}

@@ -1,0 +1,586 @@
+{
+ "stimuli": {
+  "firm-decisions-s1": {
+   "kind": "graph",
+   "title": "A firm's cost curves with a price line",
+   "graph": {
+    "kind": "costs",
+    "line": {
+     "id": "P",
+     "at": 4.3
+    }
+   }
+  },
+  "firm-decisions-s2": {
+   "kind": "data",
+   "title": "Corvid Copy Center at a price of \\$10 a job",
+   "invented": true,
+   "table": {
+    "caption": "A print shop's costs at its best output when the market price is \\$10 a job (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Output where MR = MC",
+      "100 jobs a day"
+     ],
+     [
+      "Average total cost at that output",
+      "\\$12"
+     ],
+     [
+      "Average variable cost at that output",
+      "\\$8"
+     ],
+     [
+      "Lowest point of average variable cost",
+      "\\$7.50"
+     ]
+    ]
+   }
+  },
+  "firm-decisions-s3": {
+   "kind": "text",
+   "title": "Yoga studios after a fall in demand",
+   "text": "<p>A city has dozens of small yoga studios, each charging the going price for a class. After a large gym chain opens nearby with free classes for members, demand for studio classes falls and the market price drops. At the new price, a typical studio covers its variable costs (instructors, heating) but not its rent, so it makes an economic loss. (An invented situation, for practice.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-firm-decisions-1",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the graph, the firm sells at the price shown. What should it do in the short run?",
+   "options": [
+    "Close, because the price is under ATC",
+    "Keep producing, because it earns an economic profit",
+    "Keep producing, as the price is above AVC",
+    "Shut down, because MC is rising"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The price is below the lowest point of ATC (a loss) but above the lowest point of AVC. Producing covers all variable costs and part of the fixed cost, so the loss is smaller than the fixed cost it would lose by closing.",
+    "options": [
+     "A price under ATC means a loss, but closing would make the loss larger: the whole fixed cost.",
+     "The price is below ATC at every output, so the firm makes a loss.",
+     "Right: the price sits between the lowest points of AVC and ATC.",
+     "Rising MC is normal; the shutdown test compares price with AVC."
+    ]
+   },
+   "stimulus": "firm-decisions-s1"
+  },
+  {
+   "id": "mic-firm-decisions-2",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In the graph, if the firm shut down in the short run, its loss would equal",
+   "options": [
+    "its total fixed cost",
+    "zero, because it produces nothing",
+    "its total variable cost",
+    "its total cost at the best output"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A firm that shuts down in the short run loses its total fixed cost: no revenue, no variable cost, but the rent and other fixed costs remain.",
+    "options": [
+     "Right: with no output it has no revenue and no variable cost, but still pays fixed cost.",
+     "Fixed costs are still due when output is zero.",
+     "Variable cost falls to zero when the firm stops producing.",
+     "That includes variable costs the firm avoids by closing."
+    ]
+   },
+   "stimulus": "firm-decisions-s1"
+  },
+  {
+   "id": "mic-firm-decisions-3",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the graph, as the price falls, what is the lowest price at which the firm still produces in the short run?",
+   "options": [
+    "The price at the lowest point of ATC",
+    "The price at the lowest point of MC",
+    "A price of zero, because fixed cost is sunk",
+    "The price at the lowest point of AVC"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The shutdown point is the lowest point of AVC. Above it, the MC curve is the firm's short-run supply curve; below it, the firm produces nothing.",
+    "options": [
+     "That is the break-even price; between it and the AVC minimum the firm still produces at a loss.",
+     "The MC minimum is below the AVC minimum; there the firm cannot cover variable cost.",
+     "At very low prices revenue would not cover variable cost, so producing adds to the loss.",
+     "Right: below that, revenue does not cover variable cost."
+    ]
+   },
+   "stimulus": "firm-decisions-s1"
+  },
+  {
+   "id": "mic-firm-decisions-4",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. If the shop produces 100 jobs a day, what is its daily profit, in dollars? (Write a loss as a negative number.)",
+   "why": {
+    "correct": "Profit = (P - ATC) x Q = $(10 - 12) \\times 100 = -200$ dollars: a loss of \\$200 a day."
+   },
+   "numeric": {
+    "from": {
+     "fn": "unitProfit",
+     "args": [
+      10,
+      12,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 200,
+      "why": "Check the sign: the price is below ATC, so the shop makes a loss of \\$200. (Using AVC instead, (10 - 8) x 100, also gives 200: profit uses ATC, which includes fixed cost.)"
+     },
+     {
+      "value": -2,
+      "why": "That is the loss on each job (10 - 12). Multiply by the 100 jobs."
+     }
+    ]
+   },
+   "stimulus": "firm-decisions-s2"
+  },
+  {
+   "id": "mic-firm-decisions-5",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. If the shop shuts down for the day, what is its profit, in dollars? (Write a loss as a negative number.)",
+   "why": {
+    "correct": "AFC = ATC - AVC = $12 - 8 = 4$ dollars, so total fixed cost is $4 \\times 100 = 400$ dollars. Shut down, the shop loses its fixed cost: -400 dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "neg",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          12,
+          8
+         ]
+        },
+        100
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "With no output the shop still pays its fixed cost, so the loss is not zero."
+     },
+     {
+      "value": -1200,
+      "why": "That is total cost at 100 jobs. Closing avoids the variable cost; only the fixed cost remains: (12 - 8) x 100."
+     }
+    ]
+   },
+   "stimulus": "firm-decisions-s2"
+  },
+  {
+   "id": "mic-firm-decisions-6",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. Should the shop produce or shut down in the short run?",
+   "options": [
+    "Close: it loses money on each job",
+    "Produce: it loses \\$200, not \\$400",
+    "Close: the price is under the \\$12 ATC",
+    "Produce: it earns an economic profit of \\$200"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare the two losses: producing loses \\$200, shutting down loses the \\$400 fixed cost. Equivalently, P (\\$10) is above AVC, so produce.",
+    "options": [
+     "It loses \\$2 a job on average, but each job covers its variable cost and \\$2 of fixed cost.",
+     "Right: the price (\\$10) is above AVC (\\$8), so producing cuts the loss.",
+     "A price under ATC is a loss; closing would double it here.",
+     "It makes a loss of \\$200, not a profit."
+    ]
+   },
+   "stimulus": "firm-decisions-s2"
+  },
+  {
+   "id": "mic-firm-decisions-7",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Use the table. The market price falls to \\$7. What should the shop do in the short run?",
+   "options": [
+    "Keep producing, because \\$7 is close to AVC",
+    "Shut down: \\$7 is under the lowest AVC",
+    "Keep producing, as fixed cost is due anyway",
+    "Raise its price to \\$12 to cover ATC"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The shutdown rule: produce in the short run only if P is at least the lowest point of AVC. At \\$7 < \\$7.50, shutting down limits the loss to fixed cost.",
+    "options": [
+     "Close is not enough: below the lowest AVC, each job loses more than closing.",
+     "Right: no output covers variable cost at \\$7.",
+     "Fixed cost is paid either way; producing at \\$7 adds a loss on variable cost.",
+     "The shop sells at the market price and cannot charge more."
+    ]
+   },
+   "stimulus": "firm-decisions-s2"
+  },
+  {
+   "id": "mic-firm-decisions-8",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, what happens to the number of yoga studios in the long run if the price stays low?",
+   "options": [
+    "It rises, as studios cut prices to compete",
+    "It stays the same, as studios cover variable costs",
+    "It falls to zero, as each studio has a loss",
+    "It falls, as studios with losses exit"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In the long run a firm can get out of its lease, so it stays only if it covers all costs. Studios making economic losses exit.",
+    "options": [
+     "Losses push firms out, not in.",
+     "Covering variable cost keeps a studio open in the short run only; in the long run every cost must be covered.",
+     "Exit stops once the remaining studios are back to zero economic profit.",
+     "Right: in the long run, firms with economic losses leave."
+    ]
+   },
+   "stimulus": "firm-decisions-s3"
+  },
+  {
+   "id": "mic-firm-decisions-9",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In the scenario, as studios exit, what happens in the market for studio classes?",
+   "options": [
+    "Market supply shifts left and the price rises",
+    "Market demand shifts right and the price rises",
+    "Market supply shifts right and the price falls",
+    "The price stays the same, as each studio's costs are unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Exit reduces the number of sellers, so market supply shifts left and the equilibrium price rises.",
+    "options": [
+     "Right: fewer studios offer fewer classes at every price.",
+     "Exit changes the number of sellers, so it shifts supply.",
+     "Fewer studios means less supply, not more.",
+     "The market price rises as supply falls."
+    ]
+   },
+   "stimulus": "firm-decisions-s3"
+  },
+  {
+   "id": "mic-firm-decisions-10",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the scenario, when does exit from the market stop?",
+   "options": [
+    "When the price is back above AVC",
+    "When half of the studios have left",
+    "When the studios left earn zero economic profit",
+    "When demand rises back to its old level"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Exit continues until the price rises to the lowest point of ATC, where the remaining firms earn normal profit (zero economic profit).",
+    "options": [
+     "Price was already above AVC; firms leave because it is below ATC.",
+     "No set share leaves; exit stops when losses are gone.",
+     "Right: with normal profit, there is no reason to leave.",
+     "Demand need not recover: exit itself raises the price."
+    ]
+   },
+   "stimulus": "firm-decisions-s3"
+  },
+  {
+   "id": "mic-firm-decisions-11",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "In the side-by-side graphs, the market price has fallen below the lowest point of the firm's AVC. Mark the firm's shutdown point.",
+   "why": {
+    "correct": "The shutdown point is the lowest point of AVC, where MC crosses it. At any price below it the firm produces nothing in the short run."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": -2,
+     "S": 2
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "S",
+    "key": {
+     "point": {
+      "at": "min-avc"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-firm-decisions-12",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The market price is below the lowest point of the firm's ATC but above its AVC. Shade the firm's economic loss.",
+   "why": {
+    "correct": "The loss is the rectangle between ATC at the quantity where MR = MC (top edge) and the price (bottom edge), from zero to that quantity."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": -1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "loss"
+    },
+    "slips": {
+     "tc": "That is total cost, from ATC down to zero. The loss is only the part between ATC and the price."
+    }
+   }
+  },
+  {
+   "id": "mic-firm-decisions-13",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Firms in this market are making economic losses. Show the long-run adjustment in the market panel and mark the new market equilibrium.",
+   "why": {
+    "correct": "Losses lead firms to exit, so market supply shifts left. The price rises until the remaining firms earn zero economic profit."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": -1
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "firms exiting after economic losses",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "Exit changes the number of sellers, so it shifts market supply left; buyers' demand has not changed."
+    }
+   }
+  },
+  {
+   "id": "mic-firm-decisions-14",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Firms in this market are earning economic profits. Show the long-run adjustment in the market panel and mark the new market equilibrium.",
+   "why": {
+    "correct": "Economic profit draws new firms in, market supply shifts right, and the price falls until economic profit is zero."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "new firms entering to share the economic profit",
+     "outcome": {
+      "price": "down",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "D": "Entry adds sellers, so it shifts market supply right; it is economic profit, not a change in demand, that draws firms in."
+    }
+   }
+  },
+  {
+   "id": "mic-firm-decisions-15",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A firm should shut down in the short run when the price is",
+   "options": [
+    "below the lowest point of average total cost",
+    "below marginal cost at its current output",
+    "below the lowest point of AVC",
+    "equal to average total cost"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The shutdown rule: shut down in the short run if P is below the lowest point of AVC; then the loss is just the fixed cost.",
+    "options": [
+     "Between the two minimums the firm makes a loss but still covers variable cost, so it keeps producing.",
+     "That says to produce less, not to stop.",
+     "Right: it cannot cover variable cost at any output.",
+     "At P = ATC the firm earns normal profit."
+    ]
+   }
+  },
+  {
+   "id": "mic-firm-decisions-16",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A firm's rent goes up by \\$500 a month on a lease it cannot break. In the short run, how does this change its output decision?",
+   "options": [
+    "It does not: rent is a fixed cost",
+    "It produces less, because its costs rose",
+    "It shuts down, because its loss is larger",
+    "It produces more to spread the rent over more units"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A fixed cost moves ATC, not MC or AVC. The firm still produces where MR = MC and still compares price with AVC; only its profit falls. In the long run, though, the higher rent counts.",
+    "options": [
+     "Right: the output where MR = MC and the shutdown test stay the same.",
+     "The rent does not change the cost of an extra unit, so the best output is the same.",
+     "Shutting down still leaves the rent to pay; the AVC test is unchanged.",
+     "Spreading the rent lowers AFC but does not change MC, so the best output stays put."
+    ]
+   }
+  },
+  {
+   "id": "mic-firm-decisions-17",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Firms in a market with free entry are making economic losses. Put the long-run steps in order.",
+   "options": [
+    "Some firms exit the market",
+    "Market supply shifts left",
+    "The market price rises",
+    "The remaining firms earn zero economic profit"
+   ],
+   "why": {
+    "correct": "Losses lead to exit; exit shifts market supply left; the price rises; exit stops when the remaining firms are back to normal profit."
+   }
+  },
+  {
+   "id": "mic-firm-decisions-18",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which part of a firm's MC curve is its short-run supply curve?",
+   "options": [
+    "The part above the lowest point of ATC",
+    "The whole MC curve, from zero output",
+    "The part where MC is falling",
+    "The part above the lowest point of AVC"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For any price above the lowest point of AVC, the firm produces where its MR line (the price) meets MC. Below that point it shuts down, so its supply is zero.",
+    "options": [
+     "Between the AVC and ATC minimums the firm still supplies output, at a loss.",
+     "Below the AVC minimum the firm supplies nothing.",
+     "The firm produces on the rising part of MC.",
+     "Right: at each price above the shutdown point, the firm supplies where P = MR = MC."
+    ]
+   }
+  }
+ ]
+}

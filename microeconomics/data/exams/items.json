@@ -1,0 +1,1098 @@
+{
+ "about": "Exam-only questions for the two practice exams (docs/apmicro-architecture.md, \"Practice exams\"): five-option single-answer questions, mic-exam-<form>-<nn>, each in its own form, where a unit runs short in the bank and to put graph-reading and payoff-matrix questions in each form. Every numeric key is recomputed in EXAM_NUMBERS, every graph read in EXAM_GRAPHS and every matrix read in EXAM_MATRICES (scripts/lib/apmicro-exams.mjs). Invented firms, places and data.",
+ "stimuli": {
+  "exam-1-s1": {
+   "kind": "data",
+   "title": "Pellwick Books raises the price of a planner",
+   "invented": true,
+   "table": {
+    "caption": "Pellwick Books, weekly sales of one planner (invented data for practice)",
+    "cols": [
+     "",
+     "Before",
+     "After"
+    ],
+    "rows": [
+     [
+      "Price of a planner",
+      "\\$10",
+      "\\$11"
+     ],
+     [
+      "Planners sold per week",
+      "100",
+      "80"
+     ]
+    ]
+   }
+  },
+  "exam-1-s2": {
+   "kind": "graph",
+   "title": "A price ceiling in a market for apartments, areas lettered",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "ceiling",
+     "at": 3
+    },
+    "letters": true
+   }
+  },
+  "exam-1-s3": {
+   "kind": "data",
+   "title": "Tellbrook Furniture's short-run costs",
+   "invented": true,
+   "table": {
+    "caption": "Tellbrook Furniture, output and total cost per week (invented data for practice)",
+    "cols": [
+     "Chairs per week",
+     "Total cost (dollars)"
+    ],
+    "rows": [
+     [
+      "0",
+      "100"
+     ],
+     [
+      "10",
+      "180"
+     ],
+     [
+      "20",
+      "240"
+     ],
+     [
+      "30",
+      "300"
+     ],
+     [
+      "40",
+      "380"
+     ]
+    ]
+   }
+  },
+  "exam-1-s4": {
+   "kind": "data",
+   "title": "Wexford Laundry at today's market price",
+   "invented": true,
+   "table": {
+    "caption": "Wexford Laundry, a perfectly competitive firm (invented data for practice)",
+    "cols": [
+     "Item",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Market price per load",
+      "\\$8"
+     ],
+     [
+      "Output where MR = MC",
+      "50 loads a day"
+     ],
+     [
+      "Average total cost at 50 loads",
+      "\\$9"
+     ],
+     [
+      "Average variable cost at 50 loads",
+      "\\$7"
+     ]
+    ]
+   }
+  },
+  "exam-1-s5": {
+   "kind": "graph",
+   "title": "A perfectly competitive market and one firm in it",
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "letters": true
+   }
+  },
+  "exam-1-s6": {
+   "kind": "data",
+   "title": "Kestrel Water Park, the only water park in a region",
+   "invented": true,
+   "table": {
+    "caption": "Kestrel Water Park: demand for visits (invented data for practice). Marginal cost is a constant \\$4 a visit.",
+    "cols": [
+     "Visits (thousands a season)",
+     "Price per visit"
+    ],
+    "rows": [
+     [
+      "1",
+      "\\$10"
+     ],
+     [
+      "2",
+      "\\$9"
+     ],
+     [
+      "3",
+      "\\$8"
+     ],
+     [
+      "4",
+      "\\$7"
+     ],
+     [
+      "5",
+      "\\$6"
+     ]
+    ]
+   }
+  },
+  "exam-1-s7": {
+   "kind": "graph",
+   "title": "A natural monopoly",
+   "graph": {
+    "kind": "monopoly",
+    "natural": true
+   }
+  },
+  "exam-1-s8": {
+   "kind": "text",
+   "title": "Two gyms decide whether to advertise",
+   "text": "<p>Altura Fitness and Bexley Gym (invented) are the only two gyms in a town. Each decides at the same time whether to advertise this season (Ads) or not (No ads). The payoffs are each gym's profit in thousands of dollars, with Altura's payoff listed first.</p>",
+   "matrix": {
+    "players": [
+     {
+      "name": "Altura",
+      "strategies": [
+       "Ads",
+       "No ads"
+      ]
+     },
+     {
+      "name": "Bexley",
+      "strategies": [
+       "Ads",
+       "No ads"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       30,
+       25
+      ],
+      [
+       50,
+       15
+      ]
+     ],
+     [
+      [
+       20,
+       40
+      ],
+      [
+       45,
+       45
+      ]
+     ]
+    ],
+    "unitLabel": "thousands of dollars"
+   }
+  },
+  "exam-1-s9": {
+   "kind": "data",
+   "title": "Brindle Bakery hires bakers",
+   "invented": true,
+   "table": {
+    "caption": "Brindle Bakery sells bread at \\$5 a loaf in a competitive market and hires bakers at \\$30 a day (invented data for practice)",
+    "cols": [
+     "Bakers",
+     "Loaves per day"
+    ],
+    "rows": [
+     [
+      "0",
+      "0"
+     ],
+     [
+      "1",
+      "10"
+     ],
+     [
+      "2",
+      "18"
+     ],
+     [
+      "3",
+      "24"
+     ],
+     [
+      "4",
+      "28"
+     ],
+     [
+      "5",
+      "30"
+     ]
+    ]
+   }
+  },
+  "exam-1-s10": {
+   "kind": "graph",
+   "title": "Flu shots: a positive consumption externality, areas lettered",
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "pos-cons"
+    },
+    "letters": true
+   }
+  },
+  "exam-2-s1": {
+   "kind": "data",
+   "title": "Bus rides in Corran as incomes rise",
+   "invented": true,
+   "table": {
+    "caption": "Corran, an invented town: one year to the next (invented data for practice)",
+    "cols": [
+     "",
+     "Last year",
+     "This year"
+    ],
+    "rows": [
+     [
+      "Average weekly income",
+      "\\$1,000",
+      "\\$1,100"
+     ],
+     [
+      "Bus rides per person per month",
+      "50",
+      "45"
+     ]
+    ]
+   }
+  },
+  "exam-2-s2": {
+   "kind": "graph",
+   "title": "A price floor in a market for milk, areas lettered",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "floor",
+     "at": 7
+    },
+    "letters": true
+   }
+  },
+  "exam-2-s3": {
+   "kind": "data",
+   "title": "Alder Pottery adds workers",
+   "invented": true,
+   "table": {
+    "caption": "Alder Pottery: one kiln, bowls per day (invented data for practice)",
+    "cols": [
+     "Workers",
+     "Bowls per day"
+    ],
+    "rows": [
+     [
+      "1",
+      "8"
+     ],
+     [
+      "2",
+      "18"
+     ],
+     [
+      "3",
+      "26"
+     ],
+     [
+      "4",
+      "32"
+     ],
+     [
+      "5",
+      "36"
+     ]
+    ]
+   }
+  },
+  "exam-2-s4": {
+   "kind": "data",
+   "title": "Juniper Bike Repair's year",
+   "invented": true,
+   "table": {
+    "caption": "Juniper Bike Repair, run by its owner (invented data for practice)",
+    "cols": [
+     "Item",
+     "Dollars a year"
+    ],
+    "rows": [
+     [
+      "Revenue from repairs",
+      "90,000"
+     ],
+     [
+      "Rent, parts and wages paid (explicit costs)",
+      "60,000"
+     ],
+     [
+      "Salary the owner gives up at a bike shop chain",
+      "40,000"
+     ]
+    ]
+   }
+  },
+  "exam-2-s5": {
+   "kind": "graph",
+   "title": "A perfectly competitive market and one firm making a loss",
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": -1
+    },
+    "letters": true
+   }
+  },
+  "exam-2-s6": {
+   "kind": "data",
+   "title": "Fallow Rail, the only rail line between two cities",
+   "invented": true,
+   "table": {
+    "caption": "Fallow Rail at its profit-maximizing output (invented data for practice)",
+    "cols": [
+     "Item",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Rides where MR = MC",
+      "200 thousand a year"
+     ],
+     [
+      "Price on the demand curve at 200 thousand rides",
+      "\\$5.00"
+     ],
+     [
+      "Marginal revenue and marginal cost there",
+      "\\$4.50"
+     ],
+     [
+      "Average total cost at 200 thousand rides",
+      "\\$3.50"
+     ]
+    ]
+   }
+  },
+  "exam-2-s7": {
+   "kind": "graph",
+   "title": "A monopolistically competitive firm in the short run, areas lettered",
+   "graph": {
+    "kind": "monocomp",
+    "run": "short",
+    "letters": true
+   }
+  },
+  "exam-2-s8": {
+   "kind": "text",
+   "title": "Two cafes choose their opening hours",
+   "text": "<p>Marlo's and Nessa's (invented) are the only two cafes near a train station. Each chooses at the same time whether to open early (Early) or late (Late). The payoffs are each cafe's daily profit in hundreds of dollars, with Marlo's payoff listed first.</p>",
+   "matrix": {
+    "players": [
+     {
+      "name": "Marlo's",
+      "strategies": [
+       "Early",
+       "Late"
+      ]
+     },
+     {
+      "name": "Nessa's",
+      "strategies": [
+       "Early",
+       "Late"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       8,
+       6
+      ],
+      [
+       12,
+       9
+      ]
+     ],
+     [
+      [
+       10,
+       12
+      ],
+      [
+       7,
+       5
+      ]
+     ]
+    ],
+    "unitLabel": "hundreds of dollars"
+   }
+  },
+  "exam-2-s9": {
+   "kind": "data",
+   "title": "Rook Valley Hospital, the only employer of lab technicians",
+   "invented": true,
+   "table": {
+    "caption": "Rook Valley: labor supply and MRP of lab technicians (invented data for practice)",
+    "cols": [
+     "Technicians",
+     "Wage needed to hire this many (per hour)",
+     "MRP of the last technician (per hour)"
+    ],
+    "rows": [
+     [
+      "1",
+      "\\$8",
+      "\\$26"
+     ],
+     [
+      "2",
+      "\\$10",
+      "\\$22"
+     ],
+     [
+      "3",
+      "\\$12",
+      "\\$18"
+     ],
+     [
+      "4",
+      "\\$14",
+      "\\$14"
+     ]
+    ]
+   }
+  },
+  "exam-2-s10": {
+   "kind": "data",
+   "title": "Income shares in Talmora",
+   "invented": true,
+   "table": {
+    "caption": "Talmora, an invented country: share of income by fifth of households (invented data for practice)",
+    "cols": [
+     "Households",
+     "Share of income (%)"
+    ],
+    "rows": [
+     [
+      "Lowest fifth",
+      "4"
+     ],
+     [
+      "Second fifth",
+      "9"
+     ],
+     [
+      "Middle fifth",
+      "15"
+     ],
+     [
+      "Fourth fifth",
+      "22"
+     ],
+     [
+      "Highest fifth",
+      "50"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-exam-1-01",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-1-s1",
+   "q": "Using percent changes from the original price and quantity, what is the price elasticity of demand for the planner, and what happens to Pellwick's total revenue?",
+   "options": [
+    "0.5; demand is inelastic, so total revenue rises",
+    "2; demand is elastic, so total revenue rises",
+    "2; demand is elastic, so total revenue falls",
+    "20; demand is elastic, so total revenue falls",
+    "1; demand is unit elastic, so total revenue is unchanged"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The price rises $\\frac{11 - 10}{10} \\times 100 = 10\\%$ and the quantity falls $\\frac{80 - 100}{100} \\times 100 = -20\\%$, so $E_d = \\left| \\frac{-20\\%}{10\\%} \\right| = 2$. Demand is elastic, so the price rise lowers total revenue, from $\\$10 \\times 100 = \\$1{,}000$ to $\\$11 \\times 80 = \\$880$.",
+    "options": [
+     "That divides the percent change in price by the percent change in quantity; quantity goes on top.",
+     "The elasticity is right, but with elastic demand a price rise lowers total revenue: \\$880 is less than \\$1,000.",
+     "Right: $\\frac{20\\%}{10\\%} = 2$, above 1, and revenue falls from \\$1,000 to \\$880.",
+     "That is the change in planners (20) per dollar of price, a slope, not an elasticity, which compares percent changes.",
+     "Quantity fell by 20% while the price rose by 10%, so the ratio is 2, not 1, and revenue changes."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-02",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "exam-1-s2",
+   "q": "The graph shows a binding price ceiling on apartment rents. Which areas are the deadweight loss of the ceiling?",
+   "options": [
+    "Area d",
+    "Areas c and e",
+    "Areas a, b and d",
+    "Area f",
+    "Areas d and e"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At the ceiling, landlords supply less than the equilibrium quantity, so fewer apartments are rented. The surplus on the units no longer traded, between demand and supply from the quantity supplied out to the old equilibrium quantity, is lost: areas c and e.",
+    "options": [
+     "Area d moves from landlords to renters at the lower price; it is a transfer, not a loss.",
+     "Right: the triangle between demand and supply on the units the ceiling stops from being rented.",
+     "That is consumer surplus with the ceiling: renters keep a and b and gain d.",
+     "That is producer surplus with the ceiling.",
+     "That is what landlords lose; d goes to renters, so only e of it is deadweight loss, and c is lost from renters’ side."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-03",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-1-s3",
+   "q": "Based on the table, what is Tellbrook's marginal cost of a chair when output rises from 20 to 30 chairs a week?",
+   "options": [
+    "\\$6",
+    "\\$60",
+    "\\$10",
+    "\\$12",
+    "\\$6.67"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Marginal cost is the change in total cost divided by the change in output: $\\frac{\\$300 - \\$240}{30 - 20} = \\$6$ a chair.",
+    "options": [
+     "Right: \\$60 more cost spread over 10 more chairs.",
+     "That is the change in total cost; output rose by 10 chairs, so divide by 10.",
+     "That is average total cost at 30 chairs, $\\frac{\\$300}{30}$, not marginal cost.",
+     "That is average total cost at 20 chairs, $\\frac{\\$240}{20}$.",
+     "That is average variable cost at 30 chairs, $\\frac{\\$300 - \\$100}{30}$."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-04",
+   "unit": "unit-3",
+   "topic": "firm-decisions",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-1-s4",
+   "q": "Based on the table, what should Wexford do in the short run?",
+   "options": [
+    "Shut down; the \\$8 price does not cover its \\$9 ATC",
+    "Produce; it earns an economic profit of \\$50",
+    "Shut down; it loses \\$100 if it produces",
+    "Produce; it loses \\$50 instead of its \\$100 fixed cost",
+    "Produce more than 50 loads to spread its fixed cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At 50 loads Wexford loses $(\\$8 - \\$9) \\times 50 = -\\$50$. If it shut down it would still pay its fixed cost, $(\\$9 - \\$7) \\times 50 = \\$100$. The price is above AVC, so producing covers all variable cost and part of fixed cost: it loses \\$50 instead of \\$100.",
+    "options": [
+     "With the price under ATC the firm makes a loss, but shutting down loses the whole \\$100 fixed cost; the test is price against AVC.",
+     "The price, \\$8, is below ATC, \\$9, so producing gives a loss of \\$50, not a profit.",
+     "Producing loses $(\\$8 - \\$9) \\times 50 = \\$50$; the \\$100 is what it loses if it shuts down.",
+     "Right: the price covers AVC, so producing loses less than shutting down.",
+     "Past 50 loads MC is above the price, so each extra load adds more to cost than to revenue."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-05",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-1-s5",
+   "q": "The graph shows a perfectly competitive market (left) and one firm in it (right). Which describes the firm now and what happens in the long run?",
+   "options": [
+    "It earns a profit, area a; firms exit until the price rises further",
+    "It earns a profit, areas a and b; firms enter until the price falls to minimum AVC",
+    "It breaks even; the market stays where it is in the long run",
+    "It makes a loss, area b; firms exit until the price rises to minimum ATC",
+    "It earns a profit, area a; firms enter until the price falls to minimum ATC"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "The price is above the firm's ATC at the quantity where MR = MC, so the firm earns an economic profit, area a. Profit draws new firms in, market supply shifts right, and the price falls until it reaches the lowest point of ATC, where economic profit is zero.",
+    "options": [
+     "Profit attracts firms; exit follows losses.",
+     "Areas a and b are total revenue, and entry stops at minimum ATC, where profit is zero, not at minimum AVC.",
+     "The price is above ATC at the firm's output, so there is a profit, area a, and that draws entry.",
+     "Area b is total cost; the price is above ATC, so the firm earns a profit, not a loss.",
+     "Right: entry shifts market supply right until profit is gone."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-06",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "exam-1-s6",
+   "q": "Kestrel is a profit-maximizing monopoly. Based on the table, how many visits does it sell, and at what price?",
+   "options": [
+    "4 thousand visits at \\$4",
+    "4 thousand visits at \\$7",
+    "5 thousand visits at \\$6",
+    "3 thousand visits at \\$8",
+    "2 thousand visits at \\$9"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Total revenue is \\$10, \\$18, \\$24, \\$28 and \\$30 thousand, so marginal revenue is \\$10, \\$8, \\$6, \\$4 and \\$2 a visit. MR = MC = \\$4 at 4 thousand visits, and the price is read from demand at that quantity: \\$7.",
+    "options": [
+     "The quantity is right, but \\$4 is marginal cost; the monopoly charges what buyers will pay, read from demand.",
+     "Right: MR = MC at 4 thousand visits, and demand gives the price there.",
+     "Total revenue is largest there, but the fifth thousand adds \\$2 of revenue and \\$4 of cost.",
+     "The fourth thousand visits add \\$4 of revenue and \\$4 of cost, so the park goes on to 4 thousand.",
+     "The third and fourth thousand visits each add at least as much revenue as cost, so stopping at 2 gives up profit."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-07",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-1-s7",
+   "q": "The graph shows a natural monopoly. A regulator wants more output than the unregulated monopoly makes, without the firm needing a subsidy to stay in business. Which price should it set?",
+   "options": [
+    "The price where demand crosses MC, the socially optimal price",
+    "The price on demand above the quantity where MR = MC",
+    "The price where ATC reaches its lowest point",
+    "The price where demand crosses ATC, the fair-return price",
+    "The price where marginal revenue equals zero"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Where demand crosses ATC (the fair-return price), price equals average total cost, so the firm earns zero economic profit and needs no subsidy, and output is larger than where MR = MC. Where demand crosses MC, output is larger still, but ATC falls over the whole range of demand and lies above MC there, so the firm would make a loss.",
+    "options": [
+     "That gives the efficient quantity, but ATC is above MC there, so the firm makes a loss and needs a subsidy.",
+     "That is the unregulated monopoly price; the regulator wants more output than that.",
+     "ATC keeps falling over the whole range of demand, so it has no lowest point there.",
+     "Right: P = ATC gives zero economic profit and more output than at MR = MC.",
+     "That maximizes total revenue; it still leaves a profit and gives less output than the fair-return price."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-08",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "type": "single",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-1-s8",
+   "q": "Based on the payoff matrix, which statement about dominant strategies is correct?",
+   "options": [
+    "Altura's dominant strategy is to advertise; Bexley has no dominant strategy",
+    "Both gyms have a dominant strategy to advertise",
+    "Neither gym has a dominant strategy",
+    "Both gyms have a dominant strategy not to advertise, where joint profit is 90",
+    "Bexley's dominant strategy is to advertise; Altura has no dominant strategy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Altura: if Bexley advertises, 30 > 20; if Bexley does not, 50 > 45. Advertising is better either way, so it is Altura's dominant strategy. Bexley: if Altura advertises, advertising is better (25 > 15); if Altura does not, not advertising is better (45 > 40). Bexley's best choice depends on Altura, so Bexley has no dominant strategy.",
+    "options": [
+     "Right: Altura compares 30 > 20 and 50 > 45; Bexley's best choice changes with Altura's.",
+     "Bexley does better not advertising (45 > 40) when Altura does not advertise, so advertising is not dominant for Bexley.",
+     "Altura is better off advertising whatever Bexley does: 30 > 20 and 50 > 45.",
+     "The cell with the largest combined payoff is not a dominant strategy; each gym compares its own payoffs.",
+     "That reverses the two: Altura's best choice is the same either way, Bexley's is not."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-09",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "exam-1-s9",
+   "q": "Based on the table, how many bakers does Brindle hire to maximize profit?",
+   "options": [
+    "5 bakers",
+    "2 bakers",
+    "3 bakers",
+    "1 baker",
+    "4 bakers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Marginal product is 10, 8, 6, 4 and 2 loaves, so MRP $= MP \\times \\$5$ is \\$50, \\$40, \\$30, \\$20 and \\$10. Brindle hires while MRP is at least the \\$30 wage (its MRC): 3 bakers. The fourth adds \\$20 of revenue for \\$30 of cost.",
+    "options": [
+     "That is where output is largest; the fourth and fifth bakers cost more than they add to revenue.",
+     "The third baker adds \\$30 of revenue for \\$30 of cost, so hiring her does not lower profit; MRP = MRC at 3.",
+     "Right: the third baker's MRP equals the \\$30 wage; the fourth's is \\$20.",
+     "That is the baker with the largest MRP, but the second and third also add at least their wage.",
+     "The fourth baker's MRP is $4 \\times \\$5 = \\$20$, less than the \\$30 wage."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-1-10",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-1-s10",
+   "q": "Getting a flu shot also protects people who do not get one. In the graph, which describes the market outcome and a policy that moves it to the efficient quantity?",
+   "options": [
+    "Too many shots, with deadweight loss a; a per-unit tax equal to the external benefit",
+    "Too few shots, with deadweight loss a, b and c; a per-unit subsidy",
+    "The efficient quantity, so no policy is needed",
+    "Too few shots, with deadweight loss a; a price ceiling on flu shots",
+    "Too few shots, with deadweight loss a; a per-unit subsidy equal to the external benefit"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "Buyers weigh only their own benefit (MPB), so the market makes the quantity where MPB meets supply, less than the efficient quantity where MSB = MSC. The shots not made would be worth more to society than they cost, so area a, between MSB and supply over those shots, is the deadweight loss. A per-unit subsidy equal to the external benefit per shot raises the quantity to the efficient one.",
+    "options": [
+     "The market ignores the benefit to others, so it makes too few, not too many, and a tax would cut the quantity further.",
+     "Areas a, b and c are the external benefit; the deadweight loss is the triangle a, on the shots the market does not provide.",
+     "Buyers weigh only their own benefit, so the market quantity falls short of where MSB = MSC.",
+     "A ceiling lowers the quantity supplied, which moves output further from the efficient quantity; a subsidy raises it.",
+     "Right: the market leaves out the benefit to others, and a subsidy of that size corrects it."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-01",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s1",
+   "q": "Based on the table, and assuming nothing else changed, what is the income elasticity of demand for bus rides in Corran, and what kind of good are they?",
+   "options": [
+    "-1; bus rides are an inferior good",
+    "1; bus rides are a normal good",
+    "-1; bus rides are a normal good",
+    "-10; bus rides are an inferior good",
+    "-5; bus rides are an inferior good"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Income rises $\\frac{1{,}100 - 1{,}000}{1{,}000} \\times 100 = 10\\%$ and rides fall $\\frac{45 - 50}{50} \\times 100 = -10\\%$, so $E_I = \\frac{-10\\%}{10\\%} = -1$. A negative income elasticity means an inferior good.",
+    "options": [
+     "Right: rides fall as income rises, so the elasticity is negative.",
+     "That drops the sign; for income elasticity the sign is the answer, and it is negative here.",
+     "The number is right, but a negative income elasticity marks an inferior good.",
+     "That is the percent change in rides alone; divide it by the 10% change in income.",
+     "That is the change in rides, 5, not a percent change; elasticity compares percent changes."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-02",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-2-s2",
+   "q": "The graph shows a binding price floor on milk. Which areas are producer surplus with the floor?",
+   "options": [
+    "Areas d, e and f",
+    "Areas b, d and f",
+    "Area f",
+    "Areas c and e",
+    "Area b"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With the floor, buyers pay the higher price and buy the smaller quantity, which is all sellers can sell. Producer surplus is above supply and below the floor price on those units: areas b, d and f. Area b is taken from buyers by the higher price.",
+    "options": [
+     "That was producer surplus before the floor; area e is lost and area b is gained.",
+     "Right: above supply, below the floor, out to the quantity bought.",
+     "Area f is part of it, but sellers also keep d and gain b at the higher price.",
+     "That is the deadweight loss of the floor.",
+     "Area b is the part moved from buyers to sellers; producer surplus also includes d and f."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-03",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s3",
+   "q": "Based on the table, what is the marginal product of the third worker, and have diminishing marginal returns begun?",
+   "options": [
+    "26 bowls; diminishing marginal returns have begun",
+    "8 bowls; marginal returns are still increasing",
+    "10 bowls; marginal returns are still increasing",
+    "8 bowls; diminishing marginal returns have begun",
+    "8.7 bowls; diminishing marginal returns have begun"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Marginal product is the change in output from one more worker: 8, 10, 8, 6 and 4 bowls. The third worker adds $26 - 18 = 8$ bowls, fewer than the second worker's 10, so diminishing marginal returns have begun.",
+    "options": [
+     "That is total product with three workers, not the third worker's addition.",
+     "The number is right, but 8 is below the second worker's 10, so returns are now diminishing.",
+     "That is the second worker's marginal product.",
+     "Right: 8 is less than the second worker's 10.",
+     "That is average product, $\\frac{26}{3}$, not marginal product."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-04",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s4",
+   "q": "Based on the table, what are Juniper's accounting profit and economic profit for the year?",
+   "options": [
+    "Accounting profit \\$30,000; economic profit \\$10,000",
+    "Accounting loss \\$10,000; economic profit \\$30,000",
+    "Accounting profit \\$50,000; economic loss \\$10,000",
+    "Accounting profit \\$30,000; economic profit \\$70,000",
+    "Accounting profit \\$30,000; economic loss \\$10,000"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "Accounting profit subtracts explicit costs only: $90{,}000 - 60{,}000 = \\$30{,}000$. Economic profit also subtracts the implicit cost, the salary the owner gives up: $90{,}000 - 60{,}000 - 40{,}000 = -\\$10{,}000$, an economic loss.",
+    "options": [
+     "Subtracting \\$40,000 from \\$30,000 leaves -\\$10,000: a loss, not a profit.",
+     "That swaps the two: accounting profit leaves out implicit costs, so it is the larger one.",
+     "Accounting profit subtracts the \\$60,000 of explicit costs, not the \\$40,000 implicit cost.",
+     "The forgone salary is a cost, so it is subtracted, not added.",
+     "Right: the owner's forgone salary turns an accounting profit into an economic loss."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-05",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-2-s5",
+   "q": "The graph shows a perfectly competitive market (left) and one firm in it (right), earning a loss, area a, and still producing. What happens in the long run?",
+   "options": [
+    "Firms enter, market supply shifts right, and the price falls further",
+    "Market demand shifts right, because buyers see the low price",
+    "Firms exit, market supply shifts left, and the price rises to minimum ATC",
+    "Firms exit until the price rises to minimum AVC",
+    "The firm stays as it is, since it covers its variable cost"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With losses, some firms leave the industry. Market supply shifts left, the price rises, and exit goes on until the price reaches the lowest point of ATC, where the remaining firms earn zero economic profit.",
+    "options": [
+     "Entry follows profits; a loss makes firms leave.",
+     "The low price is a movement along demand; the long-run change comes from exit shifting supply.",
+     "Right: exit ends when the loss is gone, at the lowest point of ATC.",
+     "At minimum AVC firms still make a loss; exit goes on until the price reaches minimum ATC.",
+     "Covering AVC is the short-run rule; in the long run every cost is variable, so firms leave if they make a loss."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-06",
+   "unit": "unit-4",
+   "topic": "monopoly",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "exam-2-s6",
+   "q": "Based on the table, what is Fallow Rail's economic profit for the year?",
+   "options": [
+    "\\$300 thousand",
+    "\\$200 thousand",
+    "\\$1,000 thousand",
+    "\\$700 thousand",
+    "\\$100 thousand"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Profit is (price minus ATC) times quantity: $(\\$5.00 - \\$3.50) \\times 200 = \\$300$ thousand. The price comes from the demand curve at the quantity where MR = MC.",
+    "options": [
+     "Right: \\$1.50 a ride over ATC, on 200 thousand rides.",
+     "That uses MR (\\$4.50) as the price; the monopoly charges the price on the demand curve, \\$5.00.",
+     "That is total revenue, \\$5.00 times 200 thousand; profit subtracts total cost.",
+     "That is total cost, \\$3.50 times 200 thousand.",
+     "That uses MC instead of ATC; profit is price minus average total cost, times quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-07",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-2-s7",
+   "q": "The graph shows a monopolistically competitive firm earning an economic profit, area b. What happens in the long run?",
+   "options": [
+    "Firms exit, its demand shifts right, and profit grows",
+    "The price falls until it equals MC at the lowest point of ATC",
+    "Its product differentiation keeps area b as profit in the long run",
+    "Firms enter, its demand shifts left until it is tangent to ATC, and profit falls to zero",
+    "Its costs rise until ATC meets demand, with demand unchanged"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Profit draws new firms with similar products. Each takes some of this firm's customers, so its demand (and MR) shifts left and becomes more elastic, until demand is tangent to ATC and economic profit is zero. Price stays above MC, and the firm produces less than at minimum ATC.",
+    "options": [
+     "Profit draws firms in, not out.",
+     "That is the perfectly competitive long run; here price stays above MC and output is short of minimum ATC.",
+     "Entry is easy, so rivals with close substitutes compete the profit away.",
+     "Right: entry removes the profit; the firm ends with price equal to ATC, above MC.",
+     "The adjustment comes through demand: new rivals take customers and shift it left."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-08",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "type": "single",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-2-s8",
+   "q": "Based on the payoff matrix, which cells are Nash equilibria?",
+   "options": [
+    "Marlo's late with Nessa's early, which has the largest joint profit, and no other cell",
+    "Marlo's early with Nessa's late, and Marlo's late with Nessa's early",
+    "There is no Nash equilibrium, because neither cafe has a dominant strategy",
+    "Both open early",
+    "Both open late"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In (Marlo's Early, Nessa's Late), Marlo's gets 12 rather than the 7 it would get by switching to Late, and Nessa's 9 rather than the 6 it would get by switching to Early, so neither gains by switching alone. In (Marlo's Late, Nessa's Early) the same holds: 10 > 8 for Marlo's and 12 > 5 for Nessa's. Neither cafe has a dominant strategy, but there are two Nash equilibria.",
+    "options": [
+     "That cell is a Nash equilibrium, but so is (early, late); the largest joint profit does not make a cell the only one.",
+     "Right: in each, both cafes are playing a best response to the other.",
+     "A Nash equilibrium does not need a dominant strategy; check each cell for a profitable switch.",
+     "In that cell Marlo's would switch to late (10 > 8), so it is not a Nash equilibrium.",
+     "In that cell each cafe would switch to early (12 > 7 for Marlo's, 12 > 5 for Nessa's)."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-09",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "exam-2-s9",
+   "q": "The hospital pays every technician the same wage. Based on the table, how many technicians does it hire to maximize profit, and at what wage?",
+   "options": [
+    "3 technicians at \\$18 an hour",
+    "4 technicians at \\$14 an hour",
+    "3 technicians at \\$16 an hour",
+    "2 technicians at \\$10 an hour",
+    "3 technicians at \\$12 an hour"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "Total labor cost is \\$8, \\$20, \\$36 and \\$56, so MFC is \\$8, \\$12, \\$16 and \\$20. The hospital hires while MRP is at least MFC: the third technician adds \\$18 of revenue for \\$16 of cost, the fourth \\$14 for \\$20. It hires 3 and pays the wage labor supply needs for 3: \\$12.",
+    "options": [
+     "The number is right, but a monopsonist pays the wage on labor supply, not the MRP.",
+     "That is the competitive outcome, where MRP meets the wage; the monopsonist compares MRP with MFC, which is higher than the wage.",
+     "That is the MFC of the third technician; the wage paid is read from labor supply.",
+     "The third technician adds \\$18 of revenue for \\$16 of cost, so hiring stops at 3, not 2.",
+     "Right: MRP $\\geq$ MFC up to 3, and the wage comes from labor supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-exam-2-10",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "exam-2-s10",
+   "q": "On Talmora's Lorenz curve, what percent of income do the lowest 40 percent of households receive?",
+   "options": [
+    "9%",
+    "40%",
+    "13%",
+    "28%",
+    "50%"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A Lorenz curve is cumulative: the lowest 40 percent are the lowest two fifths, with $4\\% + 9\\% = 13\\%$ of income. With perfect equality they would have 40 percent.",
+    "options": [
+     "That is the second fifth alone; the curve adds up the shares from the bottom.",
+     "That is where the line of equality would be.",
+     "Right: the lowest fifth plus the second fifth.",
+     "That adds the lowest three fifths: the lowest 60 percent.",
+     "That is the share of the highest fifth."
+    ]
+   }
+  }
+ ]
+}

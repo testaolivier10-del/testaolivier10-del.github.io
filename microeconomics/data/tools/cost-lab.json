@@ -1,0 +1,15 @@
+{
+ "slug": "cost-lab",
+ "kind": "simulator",
+ "topic": "short-run-costs",
+ "intro": "<p>Hire one worker at a time and watch a firm’s cost table fill in: total product, marginal product, fixed, variable and total cost, then marginal cost and the three averages. Each row lands on the cost curves beside it, so you see marginal cost (MC) cross average variable cost (AVC) and average total cost (ATC) at their lowest points. Then change the fixed cost or the cost of materials per unit and watch which curves move.</p>",
+ "howItWorksTitle": "What the model is",
+ "howItWorks": "<p>One firm, drawn the way the exam scores cost graphs. The curves come from one total cost model, so MC passes exactly through the minimum of AVC and of ATC. The table is the same firm in dollars: each worker earns $60 a day, and output is how many units the workers make.</p><ul><li><b>Marginal product</b> (MP) is the extra output from one more worker. It rises at first, then falls: diminishing marginal returns.</li><li><b>Marginal cost</b> is the change in total cost divided by the change in output, MC = ΔTC ÷ ΔQ. With labor the only variable input, MC = wage ÷ MP, so MC is lowest where MP is highest.</li><li><b>Averages</b>: AFC = TFC ÷ Q, AVC = TVC ÷ Q, ATC = TC ÷ Q = AVC + AFC. While MC is below an average it pulls the average down; once it is above, it pulls it up.</li><li><b>Fixed versus per-unit costs</b>: a fixed cost (rent, a license fee, a lump-sum tax) moves ATC and AFC only. A cost on every unit (materials, a per-unit tax) moves MC, AVC and ATC.</li></ul><p>Test yourself gives labor tables, output tables, the minimums, the shutdown and break-even prices and cost changes, each step checked on its own.</p>",
+ "partTopics": { "mp": "production-function" },
+ "contexts": [
+  { "id": "labor", "topic": "short-run-costs", "types": ["table"] },
+  { "id": "output", "topic": "short-run-costs", "types": ["mc", "min"] },
+  { "id": "changes", "topic": "short-run-costs", "types": ["fixed"] },
+  { "id": "shutdown", "topic": "firm-decisions", "types": ["shutdown"] }
+ ]
+}

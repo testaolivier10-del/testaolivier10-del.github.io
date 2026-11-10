@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "cost-benefit-s1": {
+   "kind": "data",
+   "title": "Rosa's summer lawn-care business",
+   "invented": true,
+   "table": {
+    "caption": "Rosa's numbers for one summer of running her own business (invented data for practice)",
+    "cols": [
+     "Item",
+     "Amount (\\$)"
+    ],
+    "rows": [
+     [
+      "Money from customers",
+      "6,500"
+     ],
+     [
+      "Mower rental",
+      "1,200"
+     ],
+     [
+      "Gas",
+      "300"
+     ],
+     [
+      "Flyers",
+      "100"
+     ],
+     [
+      "Pay she gives up at her garden-center job",
+      "4,000"
+     ],
+     [
+      "Rent she gives up by using the family truck instead of renting it to a neighbor",
+      "500"
+     ]
+    ]
+   }
+  },
+  "cost-benefit-s2": {
+   "kind": "data",
+   "title": "Guitar lessons: total benefit and total cost",
+   "invented": true,
+   "table": {
+    "caption": "Total benefit to Jamal (in dollars he would pay) and total cost of guitar lessons at \\$25 each (invented data for practice)",
+    "cols": [
+     "Lessons per month",
+     "Total benefit (\\$)",
+     "Cost of lessons (\\$)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "1",
+      "50",
+      "25"
+     ],
+     [
+      "2",
+      "90",
+      "50"
+     ],
+     [
+      "3",
+      "120",
+      "75"
+     ],
+     [
+      "4",
+      "140",
+      "100"
+     ],
+     [
+      "5",
+      "150",
+      "125"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-cost-benefit-1",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is an implicit cost of running a business?",
+   "options": [
+    "The rent paid for the shop",
+    "Wages paid to employees",
+    "The salary the owner gives up",
+    "The bill for electricity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An implicit cost involves no payment: it is the value of something the owner gives up, such as a salary from another job.",
+    "options": [
+     "Rent paid is a money payment: explicit.",
+     "Wages paid are explicit.",
+     "Right: no money changes hands, but something is given up.",
+     "A bill paid is explicit."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-2",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "cost-benefit-s1",
+   "q": "What are Rosa's explicit costs for the summer, in dollars?",
+   "why": {
+    "correct": "Explicit costs are the money she pays: mower $1{,}200 +$ gas $300 +$ flyers $100 = 1{,}600$ dollars."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "add",
+     "args": [
+      1200,
+      300,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        1200,
+        300,
+        100,
+        4000,
+        500
+       ]
+      },
+      "why": "That adds the pay and the truck rent she gives up, which she never pays out. Those are implicit costs; explicit costs are only the money she spends."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-3",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "cost-benefit-s1",
+   "q": "What are Rosa's implicit costs for the summer, in dollars?",
+   "why": {
+    "correct": "Implicit costs are what she gives up without paying: the job's pay, $4{,}000$, plus the truck rent, $500$: $4{,}500$ dollars."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "add",
+     "args": [
+      4000,
+      500
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 4000,
+      "why": "The truck rent she gives up counts too: using her family's truck means not renting it out for \\$500."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-4",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "cost-benefit-s1",
+   "q": "What is Rosa's net benefit from running the business, counting every cost, in dollars?",
+   "why": {
+    "correct": "Net benefit = total benefit - (explicit + implicit costs) $= 6{,}500 - (1{,}600 + 4{,}500) = 400$ dollars."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "sub",
+     "args": [
+      6500,
+      {
+       "fn": "add",
+       "args": [
+        1600,
+        4500
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        6500,
+        1600
+       ]
+      },
+      "why": "That subtracts only the explicit costs. The pay and the truck rent she gives up are costs too."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-5",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "cost-benefit-s1",
+   "q": "The garden center offers Rosa a raise, so the job would pay \\$5,000 for the summer. What should she now conclude about the business?",
+   "options": [
+    "Net benefit falls to -\\$600: take the job",
+    "Nothing changes, because the job's pay is not a money cost",
+    "Its net benefit rises, because she earns more",
+    "It is still \\$4,900 better than the job"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Her implicit cost rises to \\$5,500, so the economic cost is \\$7,100 and the net benefit is $6{,}500 - 7{,}100 = -600$ dollars.",
+    "options": [
+     "Right: a bigger implicit cost flips the decision.",
+     "Pay she gives up is an implicit cost, and it just went up.",
+     "A better outside offer RAISES the cost of running the business.",
+     "\\$4,900 ignores every implicit cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-6",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "cost-benefit-s2",
+   "q": "What is Jamal's net benefit from taking 4 lessons a month, in dollars?",
+   "why": {
+    "correct": "Net benefit at 4 lessons $= 140 - 100 = 40$ dollars."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "sub",
+     "args": [
+      140,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 140,
+      "why": "That is the total benefit alone. Net benefit subtracts the total cost of \\$100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-7",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "cost-benefit-s2",
+   "q": "How many lessons a month give Jamal the largest net benefit?",
+   "options": [
+    "5",
+    "4",
+    "1",
+    "3"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Net benefits are 0, 25, 40, 45, 40 and 25 dollars. The largest, \\$45, is at 3 lessons.",
+    "options": [
+     "Five lessons give the most total benefit but a net benefit of only \\$25.",
+     "Four lessons give \\$40, less than \\$45.",
+     "One lesson gives \\$25.",
+     "Right: \\$120 - \\$75 = \\$45."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-8",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "cost-benefit-s2",
+   "q": "Why is taking 5 lessons worse for Jamal than taking 3, even though 5 lessons give more total benefit?",
+   "options": [
+    "Lessons 4 and 5 add nothing to his benefit",
+    "They add \\$30 of benefit, \\$50 of cost",
+    "The cost of each lesson falls after the third lesson",
+    "He has money for just 3 lessons a month"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Going from 3 to 5 lessons raises total benefit by $150 - 120 = 30$ dollars but total cost by $125 - 75 = 50$ dollars, so net benefit falls.",
+    "options": [
+     "They add \\$20 and \\$10 of benefit, just less than they cost.",
+     "Right: more added cost than added benefit.",
+     "Each lesson still costs \\$25, so the total cost keeps rising by \\$25 a lesson.",
+     "Nothing in the table limits his money."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-9",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "cost-benefit-s2",
+   "q": "The price of a lesson falls to \\$15. What happens to the number of lessons with the largest net benefit?",
+   "options": [
+    "It stays at 3",
+    "It rises to 4",
+    "It falls to 2",
+    "It rises to 5"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At \\$15 a lesson the total costs are 0, 15, 30, 45, 60 and 75, so net benefits are 0, 35, 60, 75, 80 and 75 dollars: largest at 4 lessons.",
+    "options": [
+     "At 3 lessons the net benefit is \\$75, less than \\$80 at 4.",
+     "Right: \\$140 - \\$60 = \\$80 at 4 lessons.",
+     "A lower price makes more lessons worth taking, not fewer.",
+     "At 5 lessons the net benefit is \\$75, less than \\$80."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-10",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Lena takes a summer course that charges \\$600 in tuition. Taking it means giving up a summer job that pays \\$2,000. What is the full economic cost of the course, in dollars?",
+   "why": {
+    "correct": "Economic cost = explicit + implicit $= 600 + 2{,}000 = 2{,}600$ dollars."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "add",
+     "args": [
+      600,
+      2000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 600,
+      "why": "That counts only the tuition. The pay she gives up is an implicit cost and part of the total cost."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-11",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A baker owns her shop building outright. She could rent it to another business for \\$1,500 a month. How does using it for her bakery count?",
+   "options": [
+    "As no cost, because she owns it",
+    "As an explicit cost of \\$1,500 a month",
+    "As a benefit of \\$1,500 a month",
+    "As an implicit cost of \\$1,500 a month"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "She pays no rent, but she gives up \\$1,500 a month she could earn renting it out: an implicit cost.",
+    "options": [
+     "Owning it does not make its use free; the forgone rent is a cost.",
+     "She writes no rent check, so it is not explicit.",
+     "Rent she does not collect is a cost, not a benefit.",
+     "Right: a payment given up, not paid."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-12",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "For a firm, what is the total benefit of producing and selling its goods?",
+   "options": [
+    "The money it takes in from sales",
+    "The satisfaction its owner feels",
+    "Its explicit costs",
+    "The number of workers it hires"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A firm's total benefit is its revenue: the money it receives from selling its output.",
+    "options": [
+     "Right: revenue.",
+     "Satisfaction is how a consumer measures benefit.",
+     "Costs are subtracted from benefit, not the benefit itself.",
+     "Hiring is part of cost, not benefit."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-13",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Two friends compare a business idea. One subtracts only the money they will spend; the other also subtracts the pay they give up. Who measures the choice correctly?",
+   "options": [
+    "The first friend, because money spent is what counts",
+    "Both, because the two results come out the same",
+    "The second friend, because implicit costs are real costs",
+    "Neither, because benefits should not be compared with costs"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The total cost of a choice includes what you give up. Leaving out implicit costs overstates the net benefit.",
+    "options": [
+     "Pay given up is a cost even though no money is spent.",
+     "Adding implicit costs changes the result.",
+     "Right: count explicit and implicit costs.",
+     "Comparing benefits with costs is exactly how choices are judged."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-14",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A town can build one new playground for \\$90,000 that residents value at \\$150,000, or a skate park for \\$60,000 that they value at \\$100,000. Which choice has the larger net benefit, and why?",
+   "options": [
+    "The skate park, because it costs less",
+    "The playground, because residents value it more",
+    "They have the same net benefit",
+    "The playground: \\$60,000 against \\$40,000"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Net benefit: playground $150{,}000 - 90{,}000 = 60{,}000$; skate park $100{,}000 - 60{,}000 = 40{,}000$.",
+    "options": [
+     "The lowest cost is not the test; net benefit is.",
+     "Comparing only values ignores the costs; the right answer happens to agree, but for the wrong reason.",
+     "The net benefits differ by \\$20,000.",
+     "Right: compare net benefits."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-15",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "A teacher quits her job to open a bookstore in a room of her own house. Which are implicit costs of the bookstore? Select all that apply.",
+   "options": [
+    "The teaching salary she gives up",
+    "The rent she pays for a storage unit",
+    "The books she buys from publishers",
+    "The wage she pays her part-time clerk"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Implicit costs are what she gives up without paying, such as her old salary. Every other item here is a money payment.",
+    "options": [
+     "Right: forgone salary.",
+     "Rent she pays is a money payment: explicit.",
+     "Buying books is a money payment: explicit.",
+     "Paying a clerk is explicit."
+    ]
+   }
+  },
+  {
+   "id": "mic-cost-benefit-16",
+   "unit": "unit-1",
+   "topic": "cost-benefit",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the steps for judging whether a choice is worth it in order.",
+   "options": [
+    "Add up the explicit costs",
+    "Add the implicit costs to get the economic cost",
+    "Subtract the economic cost from the total benefit",
+    "Choose the option with the largest net benefit"
+   ],
+   "why": {
+    "correct": "Money costs, then forgone values, then subtract from the benefit, then compare net benefits."
+   }
+  }
+ ]
+}

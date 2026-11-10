@@ -1,0 +1,47 @@
+<p>Two gas stations face each other across an intersection. If one cuts its price by ten cents, it takes the other's customers, unless the other cuts too, and then both earn less than before. Each owner must guess what the other will do before choosing. A market with a few large firms like this is an <b>oligopoly</b>, and <b>game theory</b> is the tool for studying it.</p>
+
+<h2>Oligopoly: a few interdependent firms</h2>
+<p>An oligopoly has a few large firms, usually protected by barriers to entry (economies of scale, licenses, high start-up costs): airlines on a route, phone networks, cement makers in a region. The firms are <b>interdependent</b>: one firm's price, output or advertising changes its rivals' profits, so each firm's best choice depends on what the others do. A demand curve alone cannot capture that, so we use a <b>payoff matrix</b>.</p>
+
+<h2>Reading a payoff matrix</h2>
+<figure id="fig-matrix" data-fig="oligopoly-game-theory-matrix"><figcaption>A payoff matrix (Firm A's payoff first, thousands of dollars). Each firm's best response is underlined. Advertise wins both comparisons for each firm, so (Advertise, Advertise) is the Nash equilibrium, though both would earn more if neither advertised.</figcaption></figure>
+<p>One player chooses a row, the other a column, at the same time. Each cell lists two payoffs: by convention the <b>row player's payoff comes first</b>. When you look for one player's choice, read only that player's payoffs.</p>
+<p>A <b>best response</b> is the strategy that pays a player most when the rival's choice is held fixed. To find it, pick one of the rival's choices, look along that column (or row), and compare only your own payoffs. Then do the same for the rival's other choice.</p>
+
+<h2>Dominant strategies: both comparisons</h2>
+<p>A <b>dominant strategy</b> is a player's best response to <i>every</i> choice of the rival: it wins whatever the rival does. Prove it with one comparison for each of the rival's choices, with the numbers. To show a player has <b>no</b> dominant strategy, also give both comparisons, showing the best choice changes.</p>
+<div class="worked">
+<p><b>Worked example: the advertising game.</b> In the figure, payoffs are in thousands of dollars, Firm A first.</p>
+<ol>
+<li><b>Firm A, if B advertises:</b> Advertise gives 50, Do not gives 20. 50 > 20, so Advertise.</li>
+<li><b>Firm A, if B does not:</b> Advertise gives 90, Do not gives 70. 90 > 70, so Advertise.</li>
+<li><b>Conclusion.</b> Advertise wins both comparisons: it is Firm A's dominant strategy. Firm B's payoffs mirror A's, so Advertise is dominant for B too.</li>
+<li><b>Nash equilibrium.</b> Both advertise (50, 50). From there, neither gains by switching alone (20 &lt; 50 for each).</li>
+<li><b>Joint payoff.</b> Add the two payoffs in each cell: 100, 110, 110, 140. Neither advertising (70, 70) gives the most, but it is not stable: each firm would switch to Advertise and earn 90.</li>
+</ol>
+</div>
+<p class="mic-slip">Slip to avoid: "a dominant strategy is the strategy with the highest payoff." The strategy holding the largest single number can lose the other comparison. A dominant strategy wins against each of the rival's choices.</p>
+
+<h2>Nash equilibrium: check every cell</h2>
+<p>A cell is a <b>Nash equilibrium</b> when each player's choice is a best response to the other's, so <b>neither gains by changing its strategy alone</b>. A quick method: underline each player's best response to each choice of the rival; any cell with both payoffs underlined is a Nash equilibrium. A game can have one, two or none in the strategies we study, so check every cell and list them all.</p>
+<div class="worked">
+<p><b>Worked example: two equilibria.</b> Two streaming services (invented) pick a release day. Payoffs (thousands of new subscribers, Orrin first): both Friday 20, 20; Orrin Friday and Velo Tuesday 50, 40; Orrin Tuesday and Velo Friday 40, 50; both Tuesday 10, 10.</p>
+<ol>
+<li><b>Orrin:</b> if Velo picks Friday, Tuesday is better (40 > 20); if Velo picks Tuesday, Friday is better (50 > 10). The best choice changes: no dominant strategy. Velo's payoffs mirror Orrin's.</li>
+<li><b>Nash equilibria:</b> (Friday, Tuesday) and (Tuesday, Friday). In each, neither service gains by moving its day alone.</li>
+</ol>
+</div>
+<p>A game with no dominant strategies can still have a Nash equilibrium, and a game with two equilibria cannot tell you which one will happen.</p>
+
+<h2>The prisoner's dilemma and collusion</h2>
+<p>The advertising game is a <b>prisoner's dilemma</b>: each player's dominant strategy leads to a Nash equilibrium that is worse for both than another cell. Oligopolists face it all the time. Firms could agree to limit output or keep prices high (<b>collusion</b>; a formal group doing so is a <b>cartel</b>) and earn the largest <b>joint profit</b>. But each member gains by cheating, producing more or pricing lower, whatever the others do. Agreements to fix prices are illegal in many countries and cannot be enforced in court, so cartels tend to break down.</p>
+
+<h2>When payoffs change</h2>
+<p>A tax, a subsidy or a cost change shifts the numbers in some cells. Redraw the matrix: add or subtract the amount in every cell where the change applies, for the player it applies to, then redo both comparisons and recheck every cell. In the release-day game, a sponsor's bonus of 45 thousand to Velo for a Tuesday release raises Velo's Tuesday payoffs to 85 and 55. Tuesday now beats Friday for Velo whatever Orrin does (85 > 20 and 55 > 50), so it is dominant; Orrin's best response is Friday (50 > 10), and the only Nash equilibrium is (Friday, Tuesday).</p>
+
+<h2>For the exam</h2>
+<ul>
+<li>Say whose payoff is first, then give two numeric comparisons for every dominant-strategy claim, or for "no dominant strategy".</li>
+<li>List every Nash equilibrium. The largest combined payoff is not, by itself, a Nash equilibrium.</li>
+<li>Joint profit adds the two payoffs in one cell; never add across cells.</li>
+</ul>

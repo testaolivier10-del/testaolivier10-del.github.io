@@ -1,0 +1,84 @@
+{
+ "topic": "intervention-structures",
+ "hook": "A rule that sets a highest legal price causes shortages in a market with many sellers. Put the same kind of rule on a single power company and it can do the opposite: more electricity sold, at a lower price. The effect of a policy depends on the market it lands in.",
+ "prereq": [
+  {
+   "q": "A natural monopoly has",
+   "options": [
+    "ATC that falls over the whole range of demand",
+    "ATC that rises over the range of demand",
+    "MC above ATC",
+    "many small rival firms"
+   ],
+   "correct": 0,
+   "why": "Economies of scale throughout make one firm the cheapest producer.",
+   "review": "monopoly"
+  },
+  {
+   "q": "In a monopsony, a minimum wage between the monopsony wage and the competitive wage",
+   "options": [
+    "raises the wage and employment",
+    "lowers employment",
+    "lowers the wage",
+    "has no effect"
+   ],
+   "correct": 0,
+   "why": "It makes MFC flat at the minimum wage up to labor supply.",
+   "review": "monopsony"
+  },
+  {
+   "q": "A lump-sum tax on a firm changes",
+   "options": [
+    "its ATC but not its MC",
+    "its MC but not its ATC",
+    "both MC and ATC",
+    "its demand"
+   ],
+   "correct": 0,
+   "why": "It is fixed whatever the output.",
+   "review": "externalities"
+  }
+ ],
+ "figure": {
+  "figure": "intervention-structures-natural",
+  "caption": "Unregulated, a natural monopoly makes QM and charges PM. The fair-return price PF = ATC gives a normal profit; the socially optimal price PS = MC gives the efficient quantity but a loss."
+ },
+ "chain": [
+  {
+   "cause": "A monopoly sells more only by cutting its price on every unit",
+   "effect": "MR is below price, so it restricts output and P > MC"
+  },
+  {
+   "cause": "A price ceiling is set where demand meets MC",
+   "effect": "each unit up to demand earns the ceiling price, so MR equals the ceiling"
+  },
+  {
+   "cause": "The firm produces where MC meets that flat MR",
+   "effect": "output rises toward the efficient quantity and price falls"
+  },
+  {
+   "cause": "For a natural monopoly, ATC is above MC at that point",
+   "effect": "the firm makes a loss, so the regulator subsidizes it or uses the fair-return price P = ATC"
+  }
+ ],
+ "ideas": [
+  "A <b>price ceiling</b> lowers quantity in a competitive market but can <b>raise</b> it for a monopoly, set between the monopoly price and the price where demand meets MC.",
+  "<b>Natural monopoly</b> regulation: the socially optimal price (P = MC) is efficient but leaves a loss; the fair-return price (P = ATC) gives a normal profit and less deadweight loss than no regulation.",
+  "<b>Lump-sum</b> taxes and subsidies change profit only. <b>Per-unit</b> ones change MC: a tax cuts a monopoly's output and raises its price; a subsidy does the opposite.",
+  "A <b>minimum wage</b> lowers employment in a competitive labor market but can raise it in a monopsony."
+ ],
+ "misconception": {
+  "wrong": "A price ceiling always causes a shortage and lowers the quantity sold.",
+  "right": "That is true in a competitive market. For a monopoly, a ceiling below the monopoly price but at or above the price where demand meets MC removes the reason to restrict output, so the firm sells more at the lower price."
+ },
+ "check": [
+  "mic-intervention-structures-16",
+  "mic-intervention-structures-17",
+  "mic-intervention-structures-2",
+  "mic-intervention-structures-3",
+  "mic-intervention-structures-6",
+  "mic-intervention-structures-7",
+  "mic-intervention-structures-11"
+ ],
+ "summary": "The same policy can have different effects in different market structures. A price ceiling cuts output in a competitive market but can raise a monopoly's output by making its marginal revenue flat. Regulators of a natural monopoly choose between the socially optimal price (P = MC, efficient but with a loss that needs a subsidy) and the fair-return price (P = ATC, a normal profit). Lump-sum taxes and subsidies change only profit; per-unit ones change marginal cost and so output and price. A minimum wage lowers employment in a competitive labor market but can raise it in a monopsony."
+}

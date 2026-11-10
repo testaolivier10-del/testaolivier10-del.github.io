@@ -1,0 +1,12 @@
+{
+ "factor-demand-supply-shifts": {
+  "file": "figures/factor-demand-supply-shifts.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two labor market graphs with Wage on the vertical axis and Quantity of labor on the horizontal axis. Left: labor demand shifts right from DL1 to DL2, so the wage rises from W1 to W2 and employment rises from Q1 to Q2. Right: labor supply shifts left from SL1 to SL2, so the wage rises from W1 to W2 and employment falls from Q1 to Q2."
+ }
+}

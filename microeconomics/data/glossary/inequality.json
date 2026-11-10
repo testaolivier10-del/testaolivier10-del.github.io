@@ -1,0 +1,17 @@
+{
+ "lorenz": {
+  "def": "A curve that shows the cumulative percentage of income (or wealth) held by the cumulative percentage of households, ranked from lowest to highest. The diagonal line of equality shows perfectly equal shares."
+ },
+ "gini": {
+  "def": "A measure of inequality: the area between the line of equality and the Lorenz curve as a share of the whole triangle under the line. It runs from 0 (perfect equality) to 1."
+ },
+ "progressive-tax": {
+  "def": "A tax that takes a larger share of income as income rises. A proportional tax takes the same share from all incomes; a regressive tax takes a larger share of lower incomes."
+ },
+ "transfer-payment": {
+  "def": "A payment from the government, such as cash aid to low-income households, for which no good or service is given in return."
+ },
+ "income-wealth": {
+  "def": "Income inequality is an unequal spread of yearly income across households; wealth inequality is an unequal spread of assets (savings, homes, businesses). Wealth earns income, so the two are linked."
+ }
+}

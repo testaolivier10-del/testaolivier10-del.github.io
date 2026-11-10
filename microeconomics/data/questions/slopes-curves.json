@@ -1,0 +1,449 @@
+{
+ "stimuli": {
+  "slopes-curves-s1": {
+   "kind": "data",
+   "title": "A delivery van's fuel use at different speeds",
+   "invented": true,
+   "table": {
+    "caption": "Gallons of fuel used per 100 miles at each steady speed (invented data for practice)",
+    "cols": [
+     "Speed (miles per hour)",
+     "Fuel used (gallons per 100 miles)"
+    ],
+    "rows": [
+     [
+      "20",
+      "6.0"
+     ],
+     [
+      "30",
+      "4.6"
+     ],
+     [
+      "40",
+      "3.8"
+     ],
+     [
+      "50",
+      "3.4"
+     ],
+     [
+      "60",
+      "3.6"
+     ],
+     [
+      "70",
+      "4.4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-slopes-curves-1",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the slope of a line?",
+   "options": [
+    "The change in the horizontal value divided by the change in the vertical value",
+    "The vertical value at the point where the line starts",
+    "The change in the vertical value divided by the change in the horizontal value",
+    "The sum of the two values at any point on the line"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Slope is rise over run: vertical change on top, horizontal change on the bottom.",
+    "options": [
+     "That is run over rise, the slope turned upside down.",
+     "The starting height says where the line is, not how steep it is.",
+     "Right: rise over run.",
+     "Adding the coordinates of a point does not measure steepness."
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-2",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A straight line passes through (20, 8) and (60, 4). What is its slope?",
+   "why": {
+    "correct": "Rise: $4 - 8 = -4$. Run: $60 - 20 = 40$. Slope $= \\frac{-4}{40} = -0.1$, negative because the line falls to the right."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        4,
+        8
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        60,
+        20
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          60,
+          20
+         ]
+        },
+        {
+         "fn": "sub",
+         "args": [
+          4,
+          8
+         ]
+        }
+       ]
+      },
+      "why": "That is run over rise. Put the vertical change (4 - 8) on top and the horizontal change (60 - 20) on the bottom."
+     },
+     {
+      "value": 0.1,
+      "why": "The size is right but the sign is not: the vertical value falls from 8 to 4 as the horizontal value rises, so the slope is negative."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-3",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A phone bill is \\$30 for 2 gigabytes of data and \\$50 for 6 gigabytes, on a straight line with gigabytes across and the bill up. By how many dollars does the bill rise for each extra gigabyte?",
+   "why": {
+    "correct": "Slope = rise over run $= \\frac{50 - 30}{6 - 2} = \\frac{20}{4} = 5$ dollars for each gigabyte."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        50,
+        30
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        6,
+        2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        50,
+        6
+       ]
+      },
+      "why": "That divides one point's values. Slope uses the CHANGES between two points: (50 - 30) over (6 - 2)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-4",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the slope of a horizontal line?",
+   "options": [
+    "0",
+    "1",
+    "A negative number",
+    "The height of the line"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Along a horizontal line the vertical value never changes, so the rise is 0 and 0 divided by any run is 0.",
+    "options": [
+     "Right: no rise, so the slope is 0.",
+     "A slope of 1 rises one unit for each unit across.",
+     "A negative slope falls to the right; a horizontal line does not fall.",
+     "The height says where the line sits, not how steep it is."
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-5",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Line P falls 3 units for every 1 unit across. Line Q falls 1 unit for every 3 units across. Which statement is correct?",
+   "options": [
+    "Both slopes are negative, and Q is steeper",
+    "P has a positive slope and Q a negative one",
+    "They have the same slope because both fall",
+    "Both slopes are negative, and P is steeper"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "P has a slope of -3 and Q a slope of about -0.33. Both fall, and the one with the larger size (3) is steeper.",
+    "options": [
+     "Q falls only one unit for three across, so it is flatter.",
+     "Both lines fall to the right, so both slopes are negative.",
+     "Falling tells you the sign, not the size; -3 and -1/3 differ.",
+     "Right: -3 is steeper than -1/3."
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-6",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Along a straight line that falls to the right, how does the slope change as you move from left to right?",
+   "options": [
+    "It becomes more negative",
+    "It stays the same",
+    "It becomes positive halfway along",
+    "It moves closer to 0"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A straight line has one slope everywhere. Only a curve changes slope as you move along it.",
+    "options": [
+     "A curve that gets steeper does that; a straight line does not.",
+     "Right: a straight line keeps one slope.",
+     "A straight line does not turn around, so its sign does not flip.",
+     "A curve that flattens out does that; a straight line does not."
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-7",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s1",
+   "q": "At what speed does the van reach the minimum point of its fuel curve?",
+   "options": [
+    "20 miles per hour",
+    "50 miles per hour",
+    "70 miles per hour",
+    "40 miles per hour"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Fuel use falls to 3.4 gallons at 50 miles per hour, then rises again. The lowest value marks the minimum point.",
+    "options": [
+     "At 20 miles per hour the van uses the most fuel in the table.",
+     "Right: 3.4 gallons is the lowest value.",
+     "At 70 miles per hour fuel use is rising again.",
+     "At 40 miles per hour fuel use is still falling."
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-8",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s1",
+   "q": "With speed across and fuel used up, what is the sign of the curve's slope between 20 and 40 miles per hour?",
+   "options": [
+    "Positive, because both numbers in each row are positive",
+    "Zero, because the van keeps a steady speed",
+    "Positive, because the speed rises",
+    "Negative, because fuel used falls as speed rises"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "From 20 to 40 miles per hour, fuel used falls from 6.0 to 3.8 gallons. A fall as you move right is a negative slope.",
+    "options": [
+     "The sign of a slope comes from the CHANGES, not from the values being positive.",
+     "Steady speed describes each row, not how fuel changes across rows.",
+     "The run is positive, but the rise is negative, so the slope is negative.",
+     "Right: the curve falls over that range."
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-9",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s1",
+   "q": "What is the slope of the fuel curve from 50 to 70 miles per hour, in gallons for each extra mile per hour of speed?",
+   "why": {
+    "correct": "Rise $= 4.4 - 3.4 = 1.0$ gallons; run $= 70 - 50 = 20$ miles per hour. Slope $= \\frac{1.0}{20} = 0.05$, positive because the curve is rising."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        4.4,
+        3.4
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        70,
+        50
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          70,
+          50
+         ]
+        },
+        {
+         "fn": "sub",
+         "args": [
+          4.4,
+          3.4
+         ]
+        }
+       ]
+      },
+      "why": "That is run over rise. Divide the change in fuel (1.0) by the change in speed (20)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-10",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "slopes-curves-s1",
+   "q": "What does the table show about the slope of the fuel curve as speed rises from 20 to 70 miles per hour?",
+   "options": [
+    "It is negative, reaches 0 near the minimum point, then turns positive",
+    "It is positive the whole way",
+    "It does not change from one speed to the next, as on a straight line",
+    "It is negative the whole way"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fuel use falls until 50 miles per hour and rises after it: a U shape, whose slope goes from negative through 0 to positive.",
+    "options": [
+     "Right: the U-shaped pattern.",
+     "Fuel use falls at first, so the slope starts out negative.",
+     "The changes between rows differ, so this is a curve, not a straight line.",
+     "Fuel use rises after 50 miles per hour, so the slope turns positive."
+    ]
+   }
+  },
+  {
+   "id": "mic-slopes-curves-11",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point X on the downward-sloping curve D at a larger quantity than the point where D meets the upward-sloping curve S.",
+   "why": {
+    "correct": "D slopes down, so moving right along it to a larger quantity takes you to a lower price: X goes down and to the right along D."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "D",
+      "x": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-slopes-curves-12",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point Y on the upward-sloping curve S at a smaller quantity than the point where S meets D.",
+   "why": {
+    "correct": "S slopes up, so moving left along it to a smaller quantity takes you to a lower price: Y goes down and to the left along S."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "Y",
+    "key": {
+     "point": {
+      "on": "S",
+      "x": "down"
+     }
+    }
+   }
+  }
+ ]
+}

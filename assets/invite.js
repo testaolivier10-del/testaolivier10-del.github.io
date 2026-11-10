@@ -37,6 +37,7 @@
     { key: 'apprecalc', path: '/precalculus/', productName: 'AP® Precalculus' },
     { key: 'apcalcbc', path: '/calculus-bc/', productName: 'AP® Calculus BC' },
     { key: 'apmacro', path: '/macroeconomics/', productName: 'AP® Macroeconomics' },
+    { key: 'apmicro', path: '/microeconomics/', productName: 'AP® Microeconomics' },
   ];
   // courses:end
 

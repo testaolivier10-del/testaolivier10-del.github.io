@@ -1,0 +1,12 @@
+{
+ "trade-policy-tariff": {
+  "file": "figures/trade-policy-tariff.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 490,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Rice in the invented country Dornia: at the $3 world price 40 tons are imported; a $1 tariff raises the price to $4, cuts imports to 20 tons, raises $20 of revenue and creates two deadweight loss triangles worth $10 in all."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "profit-maximization-rule": {
+  "file": "figures/profit-maximization-rule.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A firm graph with a horizontal line d = MR = P crossing a rising MC curve at q*; the profit rectangle between the price and ATC from zero to q* is shaded."
+ }
+}

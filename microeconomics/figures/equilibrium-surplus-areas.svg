@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-labelledby="equilibrium-surplus-areas-t equilibrium-surplus-areas-d" font-family="Arial, Helvetica, sans-serif">
+<title id="equilibrium-surplus-areas-t">Consumer and producer surplus at equilibrium</title>
+<desc id="equilibrium-surplus-areas-d">Demand for kelp bars runs from $10 at zero bars down to the right; supply starts at $1 and rises. They cross at E: a price of $4 and a quantity of 60 bars a day. Consumer surplus is the triangle below demand and above $4, out to 60 bars: one half times 60 times $6, or $180. Producer surplus is the triangle above supply and below $4, out to 60 bars: one half times 60 times $3, or $90. Total surplus is $270. Invented data for practice.</desc>
+<defs><marker id="equilibrium-surplus-areas-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="equilibrium-surplus-areas-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="equilibrium-surplus-areas-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="equilibrium-surplus-areas-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="640" height="420" fill="#FFFFFF"/>
+<path d="M80 44V350H446" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="440" y="386" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="440" dy="0">Kelp bars per day</tspan></text>
+<text transform="translate(40 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M152 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="152" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="152" dy="0">20</tspan></text>
+<path d="M224 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="224" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="224" dy="0">40</tspan></text>
+<path d="M368 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="368" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="368" dy="0">80</tspan></text>
+<path d="M440 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="440" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="440" dy="0">100</tspan></text>
+<path d="M80 322.7h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="326.7" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$1</tspan></text>
+<path d="M80 240.9h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="244.9" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$4</tspan></text>
+<path d="M80 159.1h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="163.1" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$7</tspan></text>
+<path d="M80 77.3h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="81.3" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$10</tspan></text>
+<path d="M80 77.3L296 240.9L80 240.9Z" fill="#DCEAF5"/>
+<text x="144.8" y="193.1" font-size="13" text-anchor="middle" fill="#084F78" font-weight="bold"><tspan x="144.8" dy="0">CS = $180</tspan></text>
+<path d="M80 240.9L296 240.9L80 322.7Z" fill="#F6E1EE"/>
+<text x="144.8" y="272.2" font-size="13" text-anchor="middle" fill="#7E1A5E" font-weight="bold"><tspan x="144.8" dy="0">PS = $90</tspan></text>
+<path d="M80 77.3L404 322.7" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="409" y="326.7" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="409" dy="0">D</tspan></text>
+<path d="M80 322.7L88.6 319.5L97.1 316.3L105.7 313L114.2 309.8L122.8 306.5L131.3 303.3L139.9 300.1L148.4 296.8L157 293.6L165.5 290.3L174.1 287.1L182.6 283.9L191.2 280.6L199.7 277.4L208.3 274.1L216.8 270.9L225.4 267.7L233.9 264.4L242.5 261.2L251 258L259.6 254.7L268.1 251.5L276.7 248.2L285.2 245L293.8 241.8L302.3 238.5L310.9 235.3L319.4 232L328 228.8L336.5 225.6L345.1 222.3L353.6 219.1L362.2 215.9L370.7 212.6L379.3 209.4L387.8 206.1L396.4 202.9L404.9 199.7L413.5 196.4L422 193.2" fill="none" stroke="#7E1A5E" stroke-width="2.8"/>
+<text x="426" y="197.2" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="426" dy="0">S</tspan></text>
+<path d="M80 240.9H296" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M296 240.9V350" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="296" y="367" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="296" dy="0">60</tspan></text>
+<circle cx="296" cy="240.9" r="4.5" fill="#1F2A28"/>
+<text x="304" y="232.9" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="304" dy="0">E</tspan></text>
+<text x="470" y="110" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="470" dy="0">CS = ½ × 60 × ($10 − $4)</tspan><tspan x="470" dy="16.25">     = $180</tspan></text>
+<text x="470" y="170" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="470" dy="0">PS = ½ × 60 × ($4 − $1)</tspan><tspan x="470" dy="16.25">     = $90</tspan></text>
+<text x="470" y="230" font-size="13" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="470" dy="0">Total surplus</tspan><tspan x="470" dy="16.25">= $180 + $90 = $270</tspan></text>
+<text x="320" y="410" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="320" dy="0">Invented data for practice.</tspan></text>
+</svg>

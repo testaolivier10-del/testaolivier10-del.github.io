@@ -152,6 +152,7 @@
     return 'The misses are where it sticks.';
   }
   function end(o){
+    lastTotal = +(o && o.total) || 0;
     var also = (o.also || []).filter(Boolean).slice(0, 2);
     var right = o.right || 0, total = o.total || 0, skip = o.skipped || 0, miss_ = Math.max(0, total - right - skip);
     var pct = total ? Math.round(100 * right / total) : 0, ck = courseKey(), kind = o.kind || 'Practice set', short = total < 5;
@@ -247,6 +248,17 @@
     }
     var h = root.querySelector('.cx-endp-score');
     if(h){ try{ h.focus({ preventScroll: true }); }catch(e){ h.focus(); } }
+    remind(root);
+  }
+  /* Every score card offers study reminders (assets/reminders.js decides; docs/reminders.md). 8+ is a real session. */
+  var lastTotal = 0;
+  function remind(root){
+    if(!root.querySelector('.cx-endp3')) return;
+    var earned = lastTotal >= 8;
+    setTimeout(function(){
+      var R = window.LevlReminders;
+      if(R && R.offer && root.isConnected !== false) R.offer('score-card', { earned: earned });
+    }, 3400);
   }
 
   /* One keyboard set on every question card (consistency audit 2026-11, B8).
@@ -298,7 +310,7 @@
      to watching the page. The lede moves to the top of the first panel, where
      the board puts it. */
   var COVER = { nremt: 'nremt', ochem: 'ochem', 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem',
-    physics: 'apphys', calculus: 'apcalc', 'calculus-bc': 'apcalcbc', statistics: 'apstat', 'environmental-science': 'apenv', psychology: 'appsych', precalculus: 'apprecalc', macroeconomics: 'apmacro' };
+    physics: 'apphys', calculus: 'apcalc', 'calculus-bc': 'apcalcbc', statistics: 'apstat', 'environmental-science': 'apenv', psychology: 'appsych', precalculus: 'apprecalc', macroeconomics: 'apmacro', microeconomics: 'apmicro' };
   var PAGE = { practice: 'Practice', review: 'Review', exams: 'Exams', flashcards: 'Flashcards' };
   var HAND = { practice: 'every answer comes with the why', review: 'a miss today, a solid answer days later',
     exams: 'on the clock, like test day', flashcards: 'grade yourself honestly' };

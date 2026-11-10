@@ -1,0 +1,122 @@
+{
+ "id": "frq-placeholder-short",
+ "type": "short",
+ "points": 5,
+ "placeholder": true,
+ "title": "Placeholder: a payoff matrix, short question",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "oligopoly-game-theory"
+ ],
+ "practices": [
+  "2.A",
+  "3.A"
+ ],
+ "scenario": "Two placeholder firms each choose a low or a high price at the same time.",
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Identify</b> each firm's dominant strategy, if it has one, and every Nash equilibrium.",
+   "points": 2,
+   "type": "matrix",
+   "matrix": {
+    "players": [
+     {
+      "name": "Firm A",
+      "strategies": [
+       "Low",
+       "High"
+      ]
+     },
+     {
+      "name": "Firm B",
+      "strategies": [
+       "Low",
+       "High"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       40,
+       30
+      ],
+      [
+       70,
+       20
+      ]
+     ],
+     [
+      [
+       20,
+       60
+      ],
+      [
+       50,
+       50
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   },
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "dominant"
+    },
+    {
+     "point": "Placeholder rubric point 2 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "nash"
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part A, long enough to read."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>Explain</b> your answer for Firm A using the numbers in the matrix.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part B, long enough to read."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Identify</b> the cell with the largest combined payoff.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part C, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part C, long enough to read."
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "factor-markets-flow": {
+  "file": "figures/factor-markets-flow.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Households buy goods and services from firms in the product market and sell labor, land and capital to firms in the factor market. Money flows the other way: spending becomes firms' revenue, and wages, rent and interest become households' income."
+ },
+ "factor-markets-mrp": {
+  "file": "figures/factor-markets-mrp.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A table for an invented bakery: 1 to 5 workers make 20, 36, 48, 56 and 60 loaves, so the marginal product falls from 20 to 16, 12, 8 and 4 loaves. At $3 a loaf the marginal revenue product is $60, $48, $36, $24 and $12. A bar graph beside it shows MRP falling with each worker; the MRP curve is the firm's demand curve for labor."
+ }
+}

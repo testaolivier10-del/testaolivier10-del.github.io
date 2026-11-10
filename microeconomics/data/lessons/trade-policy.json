@@ -1,0 +1,84 @@
+{
+ "topic": "trade-policy",
+ "hook": "Rice in Dornia, an invented country, sells for \\$5 a ton until the country opens its ports, and then for \\$3, the price on the world market. Dornian families save money, Dornian farms shrink, and ships unload 40 tons a day. Then the government adds a \\$1 tariff. Who wins, who loses, and by how much can all be read off one graph.",
+ "prereq": [
+  {
+   "q": "A country should produce the goods for which it has",
+   "options": [
+    "a comparative advantage, the lower opportunity cost",
+    "an absolute advantage in every good",
+    "the highest price",
+    "the most buyers"
+   ],
+   "correct": 0,
+   "why": "Specializing by comparative advantage creates gains from trade.",
+   "review": "comparative-advantage"
+  },
+  {
+   "q": "Producer surplus is the area",
+   "options": [
+    "above supply and below the price, out to the quantity supplied",
+    "under demand and above the price",
+    "price times quantity",
+    "between two prices"
+   ],
+   "correct": 0,
+   "why": "It is the price sellers receive minus the least they would accept.",
+   "review": "equilibrium-surplus"
+  },
+  {
+   "q": "A per-unit tax collected from sellers",
+   "options": [
+    "raises the price buyers pay and lowers the quantity traded",
+    "lowers the price buyers pay",
+    "raises the quantity traded",
+    "shifts demand right"
+   ],
+   "correct": 0,
+   "why": "Supply shifts up by the tax.",
+   "review": "government-intervention"
+  }
+ ],
+ "figure": {
+  "figure": "trade-policy-tariff",
+  "caption": "At the \\$3 world price Dornia imports 40 tons; a \\$1 tariff cuts imports to 20, raises \\$20 and costs \\$10 in deadweight loss. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A small country opens to trade at a world price below its own price",
+   "effect": "the domestic price falls to the world price"
+  },
+  {
+   "cause": "The price falls",
+   "effect": "domestic buyers want more and domestic firms supply less; imports fill the gap"
+  },
+  {
+   "cause": "A tariff raises the domestic price above the world price",
+   "effect": "domestic firms supply more, buyers want less, so imports fall"
+  },
+  {
+   "cause": "Fewer units come in and domestic firms make units that cost more than imports",
+   "effect": "the government collects revenue on the remaining imports and two triangles of surplus are lost"
+  }
+ ],
+ "ideas": [
+  "A small country takes the <b>world price</b> as given. Below its own price: it <b>imports</b> (Qd minus Qs at the world price). Above: it <b>exports</b> (Qs minus Qd).",
+  "Importing: consumers gain, domestic producers lose, total surplus rises. Exporting: producers gain, consumers lose, total surplus rises.",
+  "A <b>tariff</b> raises the domestic price by the tariff: domestic output rises, imports fall, consumers lose. <b>Tariff revenue</b> = tariff × imports after the tariff.",
+  "A tariff's deadweight loss is two triangles: costly domestic production and buying given up.",
+  "An <b>import quota</b> limits imports directly: the price rises as with a tariff, but the government collects no tariff revenue. (Quotas are not graphed in this course.)"
+ ],
+ "misconception": {
+  "wrong": "Tariff revenue is the tariff times all the units sold in the country, or times the imports before the tariff.",
+  "right": "Only imports pay the tariff, and only the imports that remain after it: tariff revenue is the tariff times (quantity demanded minus domestic quantity supplied) at the higher price."
+ },
+ "check": [
+  "mic-trade-policy-1",
+  "mic-trade-policy-2",
+  "mic-trade-policy-5",
+  "mic-trade-policy-7",
+  "mic-trade-policy-9",
+  "mic-trade-policy-12"
+ ],
+ "summary": "When a small country opens to trade, its price moves to the world price. If the world price is lower, it imports the gap between quantity demanded and domestic quantity supplied; consumers gain more than producers lose. If it is higher, the country exports and producers gain more than consumers lose. Either way total surplus rises. A tariff raises the domestic price, increases domestic output, cuts imports, raises revenue equal to the tariff times the remaining imports, and creates two deadweight loss triangles. An import quota has the same effect on quantities and price without the tariff revenue."
+}

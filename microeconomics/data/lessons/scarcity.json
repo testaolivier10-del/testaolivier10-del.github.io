@@ -1,0 +1,70 @@
+{
+ "topic": "scarcity",
+ "hook": "A print shop owner has one big press and one Saturday. A wedding couple wants invitations, a store wants banners, a cafe wants menus. She can print only one job, so taking one means turning down the others. Every person, business and government faces the same squeeze: there is never enough to do everything, so every choice gives something up.",
+ "prereq": [
+  {
+   "q": "A table lists three jobs worth \\$900, \\$650 and \\$400. Which is worth the most?",
+   "options": [
+    "The \\$900 job",
+    "The \\$650 job",
+    "The \\$400 job",
+    "They are worth the same"
+   ],
+   "correct": 0,
+   "why": "Compare the values directly: 900 is the largest.",
+   "review": "axes-points"
+  },
+  {
+   "q": "On a graph, the horizontal axis",
+   "options": [
+    "runs left to right",
+    "runs up the side",
+    "is always labeled Price",
+    "shows the slope"
+   ],
+   "correct": 0,
+   "why": "The horizontal axis runs along the bottom.",
+   "review": "axes-points"
+  }
+ ],
+ "figure": {
+  "figure": "scarcity-choice",
+  "caption": "Unlimited wants and limited resources make scarcity, so every choice has a trade-off. Maya picks a \\$96 lifeguard shift; its opportunity cost is the next-best choice, \\$60 of tutoring, not \\$100. Invented example."
+ },
+ "chain": [
+  {
+   "cause": "Wants are unlimited and resources are limited",
+   "effect": "there is scarcity: not every want can be met"
+  },
+  {
+   "cause": "Scarcity means you cannot have everything",
+   "effect": "every choice is a trade-off: getting one thing means giving up another"
+  },
+  {
+   "cause": "You pick the best option and give up the rest",
+   "effect": "the value of the next-best option you gave up is the opportunity cost"
+  },
+  {
+   "cause": "You compare each option with its opportunity cost",
+   "effect": "you can tell whether a choice is worth what it gives up"
+  }
+ ],
+ "ideas": [
+  "<b>Scarcity</b>: limited resources and unlimited wants. It affects rich and poor people, firms and governments alike.",
+  "The <b>factors of production</b> (resources) are land (natural resources), labor (human effort), capital (tools, machines, buildings) and entrepreneurship (organizing and risk taking). Money is not capital in this sense.",
+  "Most resources are scarce, but some are not used up when used: an idea or a piece of knowledge can be shared by everyone at once.",
+  "Every choice is a <b>trade-off</b>. Its <b>opportunity cost</b> is the value of the next-best alternative given up: one option, not all of them added together."
+ ],
+ "misconception": {
+  "wrong": "The opportunity cost of Maya's lifeguard shift is \\$100: the \\$60 of tutoring plus the \\$40 of soccer she gave up.",
+  "right": "She could have done only one of the other two, so the opportunity cost is the single next-best choice: tutoring, worth \\$60."
+ },
+ "check": [
+  "mic-scarcity-1",
+  "mic-scarcity-3",
+  "mic-scarcity-5",
+  "mic-scarcity-6",
+  "mic-scarcity-10"
+ ],
+ "summary": "Scarcity means resources are limited while wants are not, so every choice involves a trade-off. The resources used to make goods and services are the factors of production: land, labor, capital and entrepreneurship. The opportunity cost of a choice is the value of the next-best alternative you give up, only the next best, and it includes time and other things that are not paid for in money."
+}

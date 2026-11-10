@@ -1,0 +1,22 @@
+{
+ "externalities-negative": {
+  "file": "figures/externalities-negative.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An externality graph with Price on the vertical axis and Quantity on the horizontal axis. D = MPB = MSB slopes down. S = MPC slopes up, and MSC lies above it by the external cost per unit. The market produces QM at price PM, where MPB = MPC. The efficient quantity QE, where MSB = MSC, is smaller and its price PE higher. The deadweight loss is the shaded triangle between MSC and MSB from QE to QM, pointing toward QE."
+ },
+ "externalities-positive": {
+  "file": "figures/externalities-positive.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An externality graph with Price on the vertical axis and Quantity on the horizontal axis. D = MPB slopes down, and MSB lies above it by the external benefit per unit. S = MPC = MSC slopes up. The market produces QM at PM, where MPB = MPC; the efficient quantity QE, where MSB = MSC, is larger. The deadweight loss is the shaded triangle between MSB and MSC from QM to QE."
+ }
+}

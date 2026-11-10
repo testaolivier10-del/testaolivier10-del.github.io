@@ -1,0 +1,669 @@
+{
+ "stimuli": {
+  "types-of-profit-s1": {
+   "kind": "text",
+   "title": "Rosa Quill's bakery: explicit and implicit costs",
+   "text": "<p>Rosa Quill quit a job that paid \\$45,000 a year to run her own bakery, Quill and Crumb. She also put \\$50,000 of her savings into the business; in a savings account that money would have earned \\$2,000 a year in interest. Last year the bakery took in \\$180,000 in revenue and paid \\$30,000 in rent, \\$50,000 for ingredients and \\$40,000 in wages to two employees. (An invented business, for practice.)</p>"
+  },
+  "types-of-profit-s2": {
+   "kind": "data",
+   "title": "Three firms' revenue and costs",
+   "invented": true,
+   "table": {
+    "caption": "Revenue and costs of three small firms last year, in thousands of dollars (invented data for practice)",
+    "cols": [
+     "Firm",
+     "Total revenue",
+     "Explicit costs",
+     "Implicit costs"
+    ],
+    "rows": [
+     [
+      "Firm X",
+      "500",
+      "300",
+      "200"
+     ],
+     [
+      "Firm Y",
+      "400",
+      "250",
+      "100"
+     ],
+     [
+      "Firm Z",
+      "300",
+      "200",
+      "150"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-types-of-profit-1",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "In the scenario, what was the bakery's accounting profit last year, in dollars?",
+   "why": {
+    "correct": "Accounting profit = total revenue - explicit costs = $180{,}000 - (30{,}000 + 50{,}000 + 40{,}000) = 60{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "accountingProfit",
+     "args": [
+      180000,
+      {
+       "fn": "add",
+       "args": [
+        30000,
+        50000,
+        40000
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "economicProfit",
+       "args": [
+        180000,
+        {
+         "fn": "add",
+         "args": [
+          30000,
+          50000,
+          40000
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          45000,
+          2000
+         ]
+        }
+       ]
+      },
+      "why": "That also subtracts implicit costs; that is economic profit. An accountant subtracts only the explicit costs."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        180000,
+        30000
+       ]
+      },
+      "why": "That subtracts only the rent. Explicit costs also include ingredients and wages: 30,000 + 50,000 + 40,000."
+     }
+    ]
+   },
+   "stimulus": "types-of-profit-s1"
+  },
+  {
+   "id": "mic-types-of-profit-2",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "In the scenario, what were Rosa's implicit costs last year, in dollars?",
+   "why": {
+    "correct": "Implicit costs are the income Rosa gave up: the \\$45,000 salary plus the \\$2,000 of interest, $45{,}000 + 2{,}000 = 47{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      45000,
+      2000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 45000,
+      "why": "That counts the forgone salary but not the \\$2,000 of interest her savings could have earned."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        45000,
+        50000
+       ]
+      },
+      "why": "The forgone income is the \\$2,000 of interest, not the \\$50,000 she put in."
+     }
+    ]
+   },
+   "stimulus": "types-of-profit-s1"
+  },
+  {
+   "id": "mic-types-of-profit-3",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "In the scenario, what was the bakery's economic profit last year, in dollars?",
+   "why": {
+    "correct": "Economic profit = revenue - explicit costs - implicit costs = $180{,}000 - 120{,}000 - 47{,}000 = 13{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "economicProfit",
+     "args": [
+      180000,
+      {
+       "fn": "add",
+       "args": [
+        30000,
+        50000,
+        40000
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        45000,
+        2000
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 60000,
+      "why": "That is accounting profit. Economic profit also subtracts the implicit costs of \\$47,000."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        60000,
+        45000
+       ]
+      },
+      "why": "That leaves out the \\$2,000 of interest Rosa gave up."
+     }
+    ]
+   },
+   "stimulus": "types-of-profit-s1"
+  },
+  {
+   "id": "mic-types-of-profit-4",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, what does the bakery's economic profit tell Rosa?",
+   "options": [
+    "She would earn more by going back to her old job",
+    "The bakery just covers its explicit costs",
+    "The bakery beats her next-best choices",
+    "Her accountant has overstated the bakery's costs"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Economic profit counts every opportunity cost. A positive economic profit of \\$13,000 means the bakery pays Rosa more than her best alternatives combined.",
+    "options": [
+     "Her economic profit is positive, so the bakery beats the \\$47,000 she gave up.",
+     "It covers its explicit costs by \\$60,000, and its implicit costs too.",
+     "Right: positive economic profit means she beats the job and the savings account.",
+     "The accountant leaves out implicit costs; economic profit adds them."
+    ]
+   },
+   "stimulus": "types-of-profit-s1"
+  },
+  {
+   "id": "mic-types-of-profit-5",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Use the table. Which firm earns a normal profit?",
+   "options": [
+    "Firm X",
+    "Firm Y",
+    "Firm Z",
+    "Firm Y, because its implicit costs are lowest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Normal profit is zero economic profit: revenue just covers explicit and implicit costs. Firm X: $500 - 300 - 200 = 0$.",
+    "options": [
+     "Right: 500 - 300 - 200 = 0 economic profit.",
+     "Firm Y's economic profit is 400 - 250 - 100 = 50 thousand, above normal profit.",
+     "Firm Z's economic profit is 300 - 200 - 150 = -50 thousand, below normal profit.",
+     "Low implicit costs give Firm Y a positive economic profit of 50, above normal profit."
+    ]
+   },
+   "stimulus": "types-of-profit-s2"
+  },
+  {
+   "id": "mic-types-of-profit-6",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. Which firm shows an accounting profit but has an economic loss?",
+   "options": [
+    "Firm X",
+    "Firm Y",
+    "Firms X and Z",
+    "Firm Z"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Firm Z: accounting profit $300 - 200 = 100$ thousand, but its implicit costs of 150 are larger, so economic profit is $100 - 150 = -50$ thousand: an economic loss.",
+    "options": [
+     "Firm X has zero economic profit, not a loss.",
+     "Firm Y earns a positive economic profit of 50 thousand.",
+     "Firm X has zero economic profit, which is not a loss.",
+     "Right: accounting profit 100, economic profit -50 thousand."
+    ]
+   },
+   "stimulus": "types-of-profit-s2"
+  },
+  {
+   "id": "mic-types-of-profit-7",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is Firm Y's economic profit, in thousands of dollars?",
+   "why": {
+    "correct": "Economic profit = $400 - 250 - 100 = 50$ thousand dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "economicProfit",
+     "args": [
+      400,
+      250,
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "accountingProfit",
+       "args": [
+        400,
+        250
+       ]
+      },
+      "why": "That is accounting profit. Subtract the implicit costs of 100 too."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        400,
+        100
+       ]
+      },
+      "why": "That subtracts only the implicit costs. Subtract the explicit costs of 250 as well."
+     }
+    ]
+   },
+   "stimulus": "types-of-profit-s2"
+  },
+  {
+   "id": "mic-types-of-profit-8",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. Firm Y's owner is offered a job that would raise her implicit costs from 100 to 160 thousand dollars. What would Firm Y's economic profit then be, in thousands of dollars?",
+   "why": {
+    "correct": "Economic profit = $400 - 250 - 160 = -10$ thousand dollars: a better outside offer raises the opportunity cost of staying, turning a profit into a loss."
+   },
+   "numeric": {
+    "from": {
+     "fn": "economicProfit",
+     "args": [
+      400,
+      250,
+      160
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 150,
+      "why": "That is accounting profit, which does not change. Economic profit uses the new implicit costs."
+     },
+     {
+      "value": 10,
+      "why": "Check the sign: 400 - 250 - 160 is negative. The firm would have an economic loss."
+     }
+    ]
+   },
+   "stimulus": "types-of-profit-s2"
+  },
+  {
+   "id": "mic-types-of-profit-9",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Accounting profit is",
+   "options": [
+    "total revenue minus explicit and implicit costs",
+    "total revenue minus explicit costs",
+    "total revenue minus implicit costs",
+    "explicit costs minus implicit costs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Accounting profit = total revenue - explicit costs. Economic profit also subtracts implicit costs.",
+    "options": [
+     "That is economic profit.",
+     "Right: an accountant subtracts the money actually paid out.",
+     "Accounting profit subtracts explicit costs, the money paid out.",
+     "Profit starts from revenue."
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-10",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which of these is an implicit cost for a dentist who owns her own practice?",
+   "options": [
+    "The rent she pays for her office",
+    "The salary she gave up at a hospital",
+    "The wages she pays her assistant",
+    "The bill for dental supplies"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An implicit cost is the value of something the owner already has (her time, her savings, her building) in its best other use; no money changes hands.",
+    "options": [
+     "Rent is a payment: an explicit cost.",
+     "Right: forgone income is an opportunity cost with no payment.",
+     "Wages are paid out: an explicit cost.",
+     "A bill paid is an explicit cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-11",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A restaurant earns zero economic profit. Which statement is correct?",
+   "options": [
+    "It has no revenue left after paying its bills",
+    "Its owner should close it at once",
+    "Its accounting profit is zero too",
+    "Its owner earns what she would elsewhere"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Zero economic profit means revenue covers every cost, including the owner's opportunity costs. The owner earns a normal profit, and no other use of her time and money pays more.",
+    "options": [
+     "It has accounting profit equal to its implicit costs.",
+     "With normal profit, she does as well here as anywhere.",
+     "Accounting profit equals the implicit costs, which are above zero.",
+     "Right: zero economic profit is a normal profit."
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-12",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why is a firm's economic profit never greater than its accounting profit?",
+   "options": [
+    "It subtracts implicit costs too",
+    "Economic profit uses a lower revenue figure",
+    "Accounting profit adds the owner's forgone salary",
+    "Economic profit counts fewer explicit costs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Economic profit = accounting profit - implicit costs. Since implicit costs cannot be negative, economic profit is at most equal to accounting profit.",
+    "options": [
+     "Right: subtracting more can only leave the same or less.",
+     "Both use the same total revenue.",
+     "Accounting profit leaves forgone salary out; it does not add it.",
+     "Both subtract the same explicit costs."
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-13",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A landscaping firm has total revenue of \\$90,000, explicit costs of \\$70,000 and implicit costs of \\$25,000. What is its economic profit, in dollars?",
+   "why": {
+    "correct": "Economic profit = $90{,}000 - 70{,}000 - 25{,}000 = -5{,}000$ dollars, an economic loss even with a \\$20,000 accounting profit."
+   },
+   "numeric": {
+    "from": {
+     "fn": "economicProfit",
+     "args": [
+      90000,
+      70000,
+      25000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20000,
+      "why": "That is accounting profit. Subtract the implicit costs too: 20,000 - 25,000."
+     },
+     {
+      "value": 5000,
+      "why": "Check the sign: the costs (95,000) are larger than the revenue, so the result is a loss."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-14",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Marco owns his bike shop and its building. Which of these are implicit costs of running the shop? Select all that apply.",
+   "options": [
+    "The property tax he pays on the building",
+    "The salary he could earn as a mechanic at another shop",
+    "The electricity bill for the shop",
+    "The cost of bike parts he buys from a supplier"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "Implicit costs are the owner's forgone income from his own resources, here the salary his time could earn elsewhere; bills and taxes he pays are explicit costs.",
+    "options": [
+     "No: a tax bill is paid in money, an explicit cost.",
+     "Yes: forgone income is an implicit cost.",
+     "No: it is paid in money, an explicit cost.",
+     "No: parts are paid for, an explicit cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-15",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Firms in the scooter-rental business are earning large economic profits. What is likely to happen next?",
+   "options": [
+    "Current owners leave to find better uses of their time",
+    "Accountants raise the firms' explicit costs",
+    "New scooter-rental firms are started",
+    "The firms' implicit costs fall to zero"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Positive economic profit means resources in this industry earn more than in their next-best use, which draws in new firms. Topic 3.6 follows what that does to price and profit.",
+    "options": [
+     "They earn more here than elsewhere, so they have no reason to leave.",
+     "Explicit costs depend on payments, not on profit.",
+     "Right: economic profit signals that resources earn more here than elsewhere.",
+     "Implicit costs depend on the owners' other choices, which have not changed."
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-16",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the explanation specific: a firm shows an accounting profit of \\$30,000, and its owner gave up a \\$40,000 job to run it. Fill in each blank.",
+   "why": {
+    "correct": "Economic profit = accounting profit - implicit costs = $30{,}000 - 40{,}000 = -10{,}000$ dollars."
+   },
+   "specific": {
+    "frame": "Economic profit also subtracts ___ costs, so because the owner's ___ is larger than the accounting profit, economic profit is ___ zero.",
+    "slots": {
+     "kind": {
+      "label": "Which costs",
+      "options": [
+       "implicit",
+       "explicit"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Accounting profit already subtracts explicit costs; economic profit adds the implicit ones."
+      }
+     },
+     "what": {
+      "label": "What is larger",
+      "options": [
+       "forgone salary",
+       "rent payment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rent is an explicit cost, already in accounting profit; the forgone salary is the implicit cost."
+      }
+     },
+     "sign": {
+      "label": "Economic profit",
+      "options": [
+       "less than",
+       "greater than"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "30,000 - 40,000 = -10,000, which is less than zero: an economic loss."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Economic profit also subtracts implicit costs, so because the owner's forgone salary of \\$40,000 is larger than the \\$30,000 accounting profit, economic profit is less than zero: an economic loss of \\$10,000."
+   }
+  },
+  {
+   "id": "mic-types-of-profit-17",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "A firm's accounting profit is \\$40,000 and its economic profit is \\$10,000. What are its implicit costs, in dollars?",
+   "why": {
+    "correct": "Economic profit = accounting profit - implicit costs, so implicit costs = $40{,}000 - 10{,}000 = 30{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      40000,
+      10000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 50000,
+      "why": "That adds the two profits. Implicit costs are the gap between them: 40,000 - 10,000."
+     },
+     {
+      "value": 10000,
+      "why": "That is the economic profit, not the implicit costs."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-types-of-profit-18",
+   "unit": "unit-3",
+   "topic": "types-of-profit",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is normal profit?",
+   "options": [
+    "The average accounting profit of firms in the industry",
+    "Any profit above the owner's explicit costs",
+    "Zero economic profit",
+    "A loss small enough that the firm keeps going"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Normal profit is the return that just keeps the owner's resources in this business: zero economic profit.",
+    "options": [
+     "Normal profit is defined by opportunity cost, not by an industry average.",
+     "That is accounting profit.",
+     "Right: the owner earns what the next-best use would pay.",
+     "Normal profit is not a loss; economic profit is exactly zero."
+    ]
+   }
+  }
+ ]
+}

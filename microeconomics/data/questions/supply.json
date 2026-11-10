@@ -1,0 +1,548 @@
+{
+ "stimuli": {
+  "supply-s1": {
+   "kind": "data",
+   "title": "Two farms selling strawberries at a weekend market",
+   "invented": true,
+   "table": {
+    "caption": "Boxes of strawberries each farm would sell per weekend at each price (invented data for practice)",
+    "cols": [
+     "Price per box",
+     "Fennel Farm",
+     "Ridge Farm"
+    ],
+    "rows": [
+     [
+      "\\$2",
+      "12",
+      "8"
+     ],
+     [
+      "\\$3",
+      "16",
+      "14"
+     ],
+     [
+      "\\$4",
+      "20",
+      "20"
+     ],
+     [
+      "\\$5",
+      "24",
+      "26"
+     ]
+    ]
+   }
+  },
+  "supply-s2": {
+   "kind": "text",
+   "title": "Four events for the furniture workshops of Larkfield",
+   "text": "<p>Larkfield is an invented town where small workshops make wooden chairs. Four things happen over one year:</p><ol><li>A storm closes forests in the region and the price of lumber jumps.</li><li>Workshops start using a new laser cutter that halves the time it takes to shape each chair.</li><li>The town starts paying each workshop \\$20 for every chair it produces.</li><li>Workshop owners hear that chair prices will rise sharply next month.</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-supply-1",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the curve of a market supply graph for bicycles.",
+   "why": {
+    "correct": "Price goes on the vertical axis and quantity on the horizontal axis. The upward-sloping curve is supply, S: sellers offer more bicycles at higher prices."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-supply-2",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of flour, the main input for bread, rises. Shift the right curve in the market for bread.",
+   "why": {
+    "correct": "A higher input price raises the cost of making each loaf, so bakers offer fewer loaves at each price: supply shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the price of an input (flour)"
+    },
+    "slips": {
+     "D": "Flour is an input for sellers; its price changes the cost of making bread, which shifts supply, not demand."
+    }
+   }
+  },
+  {
+   "id": "mic-supply-3",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new robot lets solar panel makers assemble each panel in half the time. Shift the right curve in the market for solar panels.",
+   "why": {
+    "correct": "Better technology lowers the cost of producing each panel, so makers offer more at each price: supply shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "better technology in production"
+    },
+    "slips": {
+     "D": "The robot changes how panels are made, not how many buyers want, so supply shifts."
+    }
+   }
+  },
+  {
+   "id": "mic-supply-4",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Half of the ferry companies on a lake go out of business and sell their boats abroad. Shift the right curve in the market for ferry rides on the lake.",
+   "why": {
+    "correct": "Fewer sellers means fewer rides offered at each price, so market supply shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "fewer sellers in the market"
+    }
+   }
+  },
+  {
+   "id": "mic-supply-5",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The price of laptops falls and nothing else changes. Mark the point on the supply curve that shows the new price and quantity supplied.",
+   "why": {
+    "correct": "A change in the good's own price moves sellers along the same supply curve. A lower price means a smaller quantity supplied: the point moves down and to the left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "on": "S",
+      "x": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-supply-6",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "supply-s1",
+   "q": "If Fennel Farm and Ridge Farm are the only sellers, what is the market quantity supplied at \\$4 a box?",
+   "why": {
+    "correct": "Market supply adds every seller's quantity at the same price: $20 + 20 = 40$ boxes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      20,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "That is one farm's quantity. Market supply adds both farms at \\$4."
+     },
+     {
+      "value": 30,
+      "why": "That is the market quantity at \\$3. Read the \\$4 row."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-7",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "supply-s1",
+   "q": "The market price of strawberries rises from \\$3 to \\$5 a box. What happens in the market?",
+   "options": [
+    "Supply shifts right from 30 to 50 boxes",
+    "Quantity supplied falls from 50 to 30 along the curve",
+    "Quantity supplied rises from 30 to 50 along the supply curve",
+    "Supply shifts left because buyers pay more"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A change in the good's own price moves sellers along supply. The market quantity supplied rises from 30 to 50 boxes; supply itself does not shift.",
+    "options": [
+     "A change in the own price does not shift supply.",
+     "That is the change for a price fall from \\$5 to \\$3.",
+     "Right: the own price changed, so sellers move along the curve.",
+     "What buyers pay does not move the sellers' curve."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-8",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "supply-s1",
+   "q": "When the price rises from \\$4 to \\$5, which farm adds more boxes, and how many?",
+   "options": [
+    "Ridge Farm, 6 more boxes",
+    "Fennel Farm, 4 more boxes",
+    "Both add 5 more boxes",
+    "Ridge Farm, 26 more boxes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fennel Farm goes from 20 to 24 (4 more) and Ridge Farm from 20 to 26 (6 more), so Ridge Farm adds more.",
+    "options": [
+     "Right: from 20 to 26.",
+     "Fennel adds 4, fewer than Ridge's 6.",
+     "They add different amounts: 4 and 6.",
+     "26 is Ridge's quantity at \\$5, not the change."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-9",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "supply-s1",
+   "q": "A third farm starts selling at the market and offers 10 boxes at each price from \\$2 to \\$5. What happens to market supply?",
+   "options": [
+    "Quantity supplied rises along the same curve",
+    "It shifts left as the farms split the buyers",
+    "It does not change unless the price changes",
+    "It shifts right by 10 boxes at each price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Market supply sums the sellers' quantities at each price. The new farm adds 10 boxes at each price, so the market supply curve shifts right.",
+    "options": [
+     "A movement along supply needs a change in the own price.",
+     "More sellers raise supply; buyers are on the demand side.",
+     "The number of sellers is a supply shifter.",
+     "Right: one more seller adds to the sum at each price."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-10",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "supply-s2",
+   "q": "Event 1: the price of lumber jumps. What happens to the supply of chairs?",
+   "options": [
+    "Supply shifts right",
+    "Supply shifts left",
+    "Quantity supplied rises along the curve",
+    "Demand for chairs shifts left"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Lumber is an input. A higher input price raises the cost of each chair, so workshops offer fewer chairs at each price: supply shifts left.",
+    "options": [
+     "Costlier inputs make each chair more expensive to produce.",
+     "Right: a higher input price lowers supply.",
+     "The chair price did not change; an input price did.",
+     "Lumber is an input for sellers, so supply changes."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-11",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "supply-s2",
+   "q": "Event 2: workshops start using a laser cutter. What happens to the supply of chairs?",
+   "options": [
+    "Supply shifts left",
+    "Supply shifts right",
+    "Quantity supplied falls along the curve",
+    "Demand for chairs shifts right"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Better technology lowers the cost of producing each chair, so workshops offer more chairs at each price: supply shifts right.",
+    "options": [
+     "A faster way to make chairs makes producing them cheaper.",
+     "Right: better technology raises supply.",
+     "The price of chairs did not change.",
+     "The cutter changes how chairs are made, not how many buyers want."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-12",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "supply-s2",
+   "q": "Event 3: the town pays workshops \\$20 for every chair they produce. What happens to the supply of chairs?",
+   "options": [
+    "Supply shifts left",
+    "Demand for chairs shifts right by \\$20",
+    "Nothing changes until buyers react",
+    "Supply shifts right"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A payment for each unit produced works like a lower cost per chair, so workshops offer more at each price: supply shifts right.",
+    "options": [
+     "A payment per chair makes producing more attractive, not less.",
+     "The payment goes to sellers, not buyers.",
+     "Sellers respond to the payment directly.",
+     "Right: a payment per chair acts like a lower cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-13",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "supply-s2",
+   "q": "Event 4: owners expect chair prices to rise next month. What happens to the supply of chairs this month?",
+   "options": [
+    "Supply this month shifts left",
+    "Supply this month shifts right",
+    "Quantity supplied this month rises along the curve",
+    "Demand this month shifts left"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sellers who expect a higher price later hold some chairs back to sell then, so they offer fewer this month: supply this month shifts left.",
+    "options": [
+     "Right: sellers hold stock back for the higher price.",
+     "A higher expected price makes waiting to sell more attractive.",
+     "This month's price did not change; expectations did.",
+     "The event is about sellers' expectations."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-14",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement is the law of supply?",
+   "options": [
+    "A higher price lowers the quantity sellers offer",
+    "Supply rises when buyers' incomes rise",
+    "Other things equal, a higher price raises the quantity supplied",
+    "Sellers offer more when input prices rise"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The law of supply: other things equal, when a good's price rises, the quantity supplied rises, and when it falls, the quantity supplied falls.",
+    "options": [
+     "That is backward: sellers offer more at a higher price.",
+     "Income is a demand shifter.",
+     "Right: price and quantity supplied move together.",
+     "Higher input prices lower supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-15",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A bakery already uses its ovens all day. To bake more bread it must pay workers overtime and rent a second oven. Why does this make the supply curve slope up?",
+   "options": [
+    "Buyers want fewer loaves when the price rises",
+    "Overtime shifts the supply curve to the right",
+    "A higher price lowers the bakery's costs",
+    "Each extra loaf costs more, so a higher price is needed to offer more"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Producing more costs more for each extra loaf (overtime, a rented oven), so the bakery offers more loaves only at a higher price that covers that rising cost.",
+    "options": [
+     "That is the law of demand, a buyer's choice.",
+     "Overtime makes extra output costlier; it does not raise supply.",
+     "The price does not change the cost of baking.",
+     "Right: the price must cover the rising cost of extra output."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-16",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A farmer can plant corn or soybeans on the same land. The price of soybeans rises sharply. What happens to the farmer's supply of corn?",
+   "options": [
+    "It shifts right because farming pays more",
+    "Quantity of corn supplied rises along the curve",
+    "It shifts left as land moves to soybeans",
+    "It does not change because corn's price is the same"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Soybeans are another good the same land can produce. When soybeans pay more, the farmer switches land to them, so she offers less corn at each price: the supply of corn shifts left.",
+    "options": [
+     "Only soybeans pay more; corn now uses land that could earn more elsewhere.",
+     "The price of corn did not change.",
+     "Right: the price of another good the seller can make rose.",
+     "The price of a related good the seller can produce shifts supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-17",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Which changes would shift the supply of phone cases to the right? Select all that apply.",
+   "options": [
+    "The price of the plastic used in cases falls",
+    "The price of phone cases rises",
+    "Ten new case makers start selling online",
+    "Wages for the workers who make cases rise"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Supply shifts right when sellers offer more at each price: cheaper inputs, better technology and more sellers all do it. A higher price of phone cases is a movement along supply.",
+    "options": [
+     "Right: a cheaper input raises supply.",
+     "A change in the own price is a movement along supply.",
+     "Right: more sellers raise market supply.",
+     "Higher input costs lower supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-supply-18",
+   "unit": "unit-2",
+   "topic": "supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Over one year, the number of bubble wrap sellers stays the same, but each one offers 500 fewer rolls at every price. What has happened?",
+   "options": [
+    "Quantity supplied has fallen along the curve",
+    "Supply has decreased: the curve shifted left",
+    "Supply has increased: the curve shifted right",
+    "Demand has decreased: the demand curve shifted"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Less offered at every price is a decrease in supply: the supply curve shifts left. A movement along the curve needs a change in the price of bubble wrap.",
+    "options": [
+     "A movement along supply happens at a new price, not at every price.",
+     "Right: less is offered at each price.",
+     "Fewer rolls at each price is a decrease.",
+     "The change is in what sellers offer."
+    ]
+   }
+  }
+ ]
+}

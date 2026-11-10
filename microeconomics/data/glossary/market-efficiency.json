@@ -1,0 +1,8 @@
+{
+ "marginal-social": {
+  "def": "Marginal social benefit (MSB) is the benefit of one more unit to everyone in society; marginal social cost (MSC) is its cost to everyone. The efficient quantity is where MSB = MSC."
+ },
+ "market-failure": {
+  "def": "A market outcome that is not socially efficient: the market produces more or less than the quantity where MSB = MSC, leaving deadweight loss."
+ }
+}

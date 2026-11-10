@@ -1,0 +1,23 @@
+{
+ "price-ceiling": {
+  "def": "Price ceiling: a legal maximum price. It binds only below the equilibrium price, where it causes a shortage and only the quantity supplied at the ceiling is traded. Rent control is an example."
+ },
+ "price-floor": {
+  "def": "Price floor: a legal minimum price. It binds only above the equilibrium price, where it causes a surplus and only the quantity demanded at the floor is traded."
+ },
+ "deadweight-loss": {
+  "def": "Deadweight loss (DWL): the total surplus lost when the quantity traded differs from the efficient equilibrium quantity. On a graph, the triangle between demand and supply from the quantity traded to the equilibrium quantity."
+ },
+ "per-unit-tax": {
+  "def": "Per-unit (excise) tax: a fixed amount per unit sold. Collected from sellers, it shifts supply up by the tax; tax revenue is the tax times the quantity sold after the tax."
+ },
+ "tax-incidence": {
+  "def": "Tax incidence: how the burden of a tax is shared between buyers (the rise in the price they pay) and sellers (the fall in the price they keep). The less elastic side bears more, whoever hands the tax to the government."
+ },
+ "subsidy": {
+  "def": "Per-unit subsidy: a payment from the government for each unit sold. It shifts supply down by the subsidy; buyers pay less, sellers receive more, and the cost to the government is the subsidy times the new, larger quantity."
+ },
+ "quantity-control": {
+  "def": "Quantity control (quota): a legal limit on the quantity of a good that can be sold. A binding quota holds the quantity below equilibrium, which raises the price and creates a deadweight loss."
+ }
+}

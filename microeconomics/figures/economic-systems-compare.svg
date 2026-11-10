@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" width="800" height="390" role="img" aria-labelledby="economic-systems-compare-t economic-systems-compare-d" font-family="Arial, Helvetica, sans-serif">
+<title id="economic-systems-compare-t">Market, command and mixed economies</title>
+<desc id="economic-systems-compare-d">Three columns. Market economy: households and firms decide, prices coordinate choices, private property and contracts, firms seek profit and buyers choose. Command economy: a central authority decides, plans and orders coordinate, the state owns most factories and land, output targets are set from above. Mixed economy: markets decide most things while government sets rules and taxes and provides some goods; every real economy is mixed. Below, a two-way arrow from more decided by markets to more decided by a central plan.</desc>
+<defs><marker id="economic-systems-compare-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="economic-systems-compare-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="economic-systems-compare-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="economic-systems-compare-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="economic-systems-compare-arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="800" height="390" fill="#FFFFFF"/>
+<text x="400" y="32" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Every system answers the same three questions: what, how and for whom</text>
+<rect x="30" y="54" width="235" height="250" rx="8" fill="#FFFFFF" stroke="#084F78" stroke-width="2"/>
+<rect x="30" y="54" width="235" height="42" rx="8" fill="#084F78" stroke="#084F78" stroke-width="1.6"/>
+<text x="147" y="82" font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700">Market economy</text>
+<text x="44" y="126" font-size="13" fill="#1F2A28">Households and firms decide</text>
+<text x="44" y="156" font-size="13" fill="#1F2A28">Prices coordinate choices</text>
+<text x="44" y="186" font-size="13" fill="#1F2A28">Private property, contracts</text>
+<text x="44" y="216" font-size="13" fill="#1F2A28">Firms seek profit</text>
+<text x="44" y="246" font-size="13" fill="#1F2A28">Buyers choose what to buy</text>
+<rect x="285" y="54" width="235" height="250" rx="8" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<rect x="285" y="54" width="235" height="42" rx="8" fill="#D55E00" stroke="#D55E00" stroke-width="1.6"/>
+<text x="402" y="82" font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700">Command economy</text>
+<text x="299" y="126" font-size="13" fill="#1F2A28">A central authority decides</text>
+<text x="299" y="156" font-size="13" fill="#1F2A28">Plans and orders coordinate</text>
+<text x="299" y="186" font-size="13" fill="#1F2A28">The state owns most factories</text>
+<text x="299" y="216" font-size="13" fill="#1F2A28">Output targets set from above</text>
+<rect x="540" y="54" width="235" height="250" rx="8" fill="#FFFFFF" stroke="#7E1A5E" stroke-width="2"/>
+<rect x="540" y="54" width="235" height="42" rx="8" fill="#7E1A5E" stroke="#7E1A5E" stroke-width="1.6"/>
+<text x="657" y="82" font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="700">Mixed economy</text>
+<text x="554" y="126" font-size="13" fill="#1F2A28">Markets decide most things</text>
+<text x="554" y="156" font-size="13" fill="#1F2A28">Government sets rules, taxes</text>
+<text x="554" y="186" font-size="13" fill="#1F2A28">Government provides some goods</text>
+<text x="554" y="216" font-size="13" fill="#1F2A28">Prices plus laws coordinate</text>
+<text x="554" y="246" font-size="13" fill="#1F2A28">Every real economy is mixed</text>
+<text x="400" y="330" font-size="13" fill="#6B7370" text-anchor="middle">A spectrum, not three boxes: real economies sit between the two ends.</text>
+<line x1="60" y1="350" x2="740" y2="350" stroke="#6B7370" stroke-width="2" marker-end="url(#economic-systems-compare-arG)"/>
+<line x1="740" y1="350" x2="60" y2="350" stroke="#6B7370" stroke-width="2" marker-end="url(#economic-systems-compare-arG)"/>
+<text x="60" y="372" font-size="12" fill="#084F78">more decided by markets</text>
+<text x="740" y="372" font-size="12" fill="#D55E00" text-anchor="end">more decided by a central plan</text>
+</svg>

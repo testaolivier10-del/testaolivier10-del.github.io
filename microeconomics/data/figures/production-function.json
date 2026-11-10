@@ -1,0 +1,12 @@
+{
+ "production-function-tp-mp": {
+  "file": "figures/production-function-tp-mp.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs for a bakery with one oven. Total product rises from 10 to 48 loaves as workers go from 1 to 5 and stays at 48 for 6 workers. Marginal product is 10, 14, 12, 8, 4, 0 loaves: it rises for the first two workers, then falls, which is diminishing marginal returns; average product is drawn dashed."
+ }
+}

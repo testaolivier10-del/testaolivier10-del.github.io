@@ -1,0 +1,12 @@
+{
+ "price-discrimination-perfect": {
+  "file": "figures/price-discrimination-perfect.svg",
+  "ext": "svg",
+  "w": 840,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two monopoly graphs with Price and cost on the vertical axis and Quantity on the horizontal axis. Left: one price PM at QM with consumer surplus, profit and deadweight loss shaded. Right: D = MR, output QE where D meets MC, and the whole area between D and MC shaded as profit."
+ }
+}
