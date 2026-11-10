@@ -3,11 +3,11 @@
   "public-goods-s1": {
    "kind": "text",
    "title": "Goods sorted by rivalry and excludability",
-   "text": "<p>An invented town, Wexmoor, has: (1) slices of pizza sold at a stand; (2) a fireworks show over the harbor that anyone in town can see; (3) fish in a lake that anyone may fish; (4) a members-only online film library with a monthly fee and plenty of capacity.</p>"
+   "text": "<p>An invented town, Thistlebrook, has: (1) slices of pizza sold at a stand; (2) a fireworks show over the harbor that anyone in town can see; (3) fish in a lake that anyone may fish; (4) a members-only online film library with a monthly fee and plenty of capacity.</p>"
   },
   "public-goods-s2": {
    "kind": "data",
-   "title": "A streetlight on Juniper Lane in Harrowmere",
+   "title": "A streetlight on Wren Lane in Harrowmere",
    "invented": true,
    "table": {
     "caption": "The yearly benefit each of the three households on an invented street would get from one streetlight that costs \\$70 a year to run (invented data for practice)",
@@ -412,23 +412,22 @@
    "diff": 2,
    "type": "multi",
    "practice": "1.B",
-   "q": "Which of these are public goods? Select all that apply.",
+   "q": "Which of these is a public good? Select all that apply.",
    "options": [
     "National defense",
-    "A flood wall that protects a whole town",
+    "A city bus ride paid by fare on a half-empty bus",
     "A seat on a crowded commuter train",
     "A ticketed concert in a stadium",
     "Groundwater pumped freely from a shared aquifer"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
     "correct": "A public good must be both nonrival and nonexcludable.",
     "options": [
      "Right: nonrival and nonexcludable.",
-     "Right: everyone behind it is protected at once, and no one can be left out.",
+     "The fare box excludes nonpayers: at most a club good while the bus has room.",
      "Rival: one rider's seat is not available to another.",
      "Excludable: there is a ticket gate.",
      "Rival and nonexcludable: a common resource."

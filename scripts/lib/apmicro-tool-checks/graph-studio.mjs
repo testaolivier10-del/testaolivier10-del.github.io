@@ -230,7 +230,7 @@ export function recheck(p, ctx, w, data, errs = []) {
     if (s.kind === 'graph') {
       const sp = s.spec, bad = G.check(sp);
       if (bad.length) { push(`step ${s.key}: ${bad.join('; ')}`); continue; }
-      const key = G.keyResponse(sp), g = GR.graph(sp, key), pt = g.points.find(x => x.id === s.task);
+      const key = GS.keyResponse(sp), g = GR.graph(sp, key), pt = g.points.find(x => x.id === s.task);
       if (!pt || !pt.ok) { push(`step ${s.key}: its key does not earn the ${s.task} point`); continue; }
       const blank = { shifts: {}, eq: G.eq(sp, {}), point: null, labels: {}, line: G.lineStart(sp), shade: [] };
       // A later step starts from the earlier steps' (right) answers: the line from the old price after the key's shift.

@@ -80,24 +80,30 @@
    "id": "mic-intervention-structures-2",
    "unit": "unit-6",
    "topic": "intervention-structures",
-   "level": "apply",
+   "level": "analyze",
    "diff": 2,
    "type": "graph",
-   "practice": "4.B",
-   "q": "Mark the fair-return price and quantity for this natural monopoly.",
+   "practice": "4.C",
+   "q": "A utility board wants this power company to supply the allocatively efficient output. Draw the price line the board should set.",
    "why": {
-    "correct": "A fair-return price sets price equal to average total cost: the point where demand meets ATC. The firm earns zero economic profit (a normal profit) and produces more than it would unregulated."
+    "correct": "Allocative efficiency needs P = MC, so the board sets the price where the demand curve crosses MC (the socially optimal price). Because ATC is above MC there, the company would make a loss without a subsidy."
    },
    "graph": {
     "kind": "monopoly",
     "natural": true,
+    "line": {
+     "id": "Pr"
+    },
     "do": [
-     "point"
+     "line"
     ],
     "key": {
-     "point": {
-      "at": "fair-return"
+     "line": {
+      "to": "allocative"
      }
+    },
+    "slips": {
+     "ATC": "Where demand crosses ATC is the fair-return price; the efficient price is where demand crosses MC."
     }
    }
   },
@@ -105,17 +111,16 @@
    "id": "mic-intervention-structures-3",
    "unit": "unit-6",
    "topic": "intervention-structures",
-   "level": "apply",
+   "level": "analyze",
    "diff": 2,
    "type": "graph",
    "practice": "4.B",
-   "q": "Mark the socially optimal price and quantity for this natural monopoly.",
+   "q": "A ceiling holds this monopoly's price at the level where demand crosses marginal cost. Mark the output the firm now chooses and the price it charges.",
    "why": {
-    "correct": "The socially optimal (allocatively efficient) price is where demand meets MC. Because ATC is above MC over the whole range, the price there is below ATC and the firm makes a loss."
+    "correct": "Up to demand, each unit sells at the ceiling, so MR equals the ceiling and the firm produces where MC meets it: the point where demand crosses MC, more output at a lower price than unregulated."
    },
    "graph": {
     "kind": "monopoly",
-    "natural": true,
     "do": [
      "point"
     ],
@@ -125,7 +130,7 @@
      }
     },
     "slips": {
-     "ATC": "Where demand meets ATC is the fair-return point; the socially optimal point is where demand meets MC."
+     "MR": "Without the ceiling the firm would stop where MR = MC; the ceiling makes its MR flat out to demand."
     }
    }
   },

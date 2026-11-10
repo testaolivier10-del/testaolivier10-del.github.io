@@ -3,7 +3,7 @@
 <desc id="factor-markets-mrp-d">A table for an invented bakery: 1 to 5 workers make 20, 36, 48, 56 and 60 loaves, so the marginal product falls from 20 to 16, 12, 8 and 4 loaves. At $3 a loaf the marginal revenue product is $60, $48, $36, $24 and $12. A bar graph beside it shows MRP falling with each worker; the MRP curve is the firm's demand curve for labor.</desc>
 <defs><marker id="factor-markets-mrp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="factor-markets-mrp-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="factor-markets-mrp-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="factor-markets-mrp-arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker></defs>
 <rect width="800" height="400" fill="#FFFFFF"/>
-<text x="190" y="34" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Juniper Bakery (invented data)</text>
+<text x="190" y="34" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Hollin Bakery (invented data)</text>
 <rect x="22" y="52" width="340" height="34" fill="#F8E6F1"/>
 <text x="70" y="74" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="middle">Workers</text>
 <text x="160" y="74" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="middle">Loaves (TP)</text>

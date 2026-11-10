@@ -1,0 +1,113 @@
+{
+ "id": "frq-elasticity-short",
+ "type": "short",
+ "points": 5,
+ "title": "Elasticity from a demand schedule: price elasticity and the total revenue test",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "price-elasticity-demand"
+ ],
+ "practices": [
+  "3.C",
+  "3.A",
+  "2.C"
+ ],
+ "scenario": "Ridgeway Pottery, an invented studio, sells handmade mugs. The table shows the number of mugs buyers demand per month at four prices.",
+ "stimulus": {
+  "title": "Demand for Ridgeway mugs",
+  "invented": true,
+  "table": {
+   "caption": "Mugs demanded per month at each price (invented data for practice)",
+   "cols": [
+    "Price",
+    "Quantity demanded"
+   ],
+   "rows": [
+    [
+     "\\$10",
+     "100"
+    ],
+    [
+     "\\$8",
+     "150"
+    ],
+    [
+     "\\$6",
+     "180"
+    ],
+    [
+     "\\$4",
+     "200"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the price elasticity of demand when the price falls from \\$10 to \\$8, using the starting values. Show your work.",
+   "rubric": [
+    {
+     "point": "Correct percent changes: quantity +50% ((150 − 100) ÷ 100) and price −20% ((8 − 10) ÷ 10)",
+     "accept": [
+      "%ΔQ = 50%, %ΔP = −20%"
+     ]
+    },
+    {
+     "point": "Elasticity of 2.5 in absolute value (50 ÷ 20)",
+     "accept": [
+      "2.5",
+      "−2.5 read as 2.5"
+     ]
+    }
+   ],
+   "sample": "Percent change in quantity: $\\frac{150 - 100}{100} \\times 100 = 50\\%$. Percent change in price: $\\frac{8 - 10}{10} \\times 100 = -20\\%$. Elasticity: $|50 \\div (-20)| = 2.5$."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "Based on your answer to part A, <b>identify</b> whether demand is elastic or inelastic in this price range.",
+   "rubric": [
+    {
+     "point": "Elastic, because 2.5 is greater than 1 (accept a consistent answer from an incorrect part A)",
+     "accept": [
+      "elastic"
+     ]
+    }
+   ],
+   "sample": "Demand is elastic in this range, because the absolute value of the elasticity, 2.5, is greater than 1."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Identify</b> what happens to Ridgeway's total revenue when the price falls from \\$10 to \\$8.",
+   "rubric": [
+    {
+     "point": "Total revenue increases, from \\$1,000 to \\$1,200",
+     "accept": [
+      "rises",
+      "increases by \\$200"
+     ]
+    }
+   ],
+   "sample": "Total revenue increases from $10 \\times 100 = \\$1{,}000$ to $8 \\times 150 = \\$1{,}200$. With elastic demand, price and total revenue move in opposite directions."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "Ridgeway considers cutting the price from \\$6 to \\$4. Using the total revenue test, <b>explain</b> whether demand is elastic or inelastic in this range.",
+   "rubric": [
+    {
+     "point": "Inelastic, because total revenue falls (\\$1,080 to \\$800) when the price falls: price and total revenue move in the same direction",
+     "accept": [
+      "inelastic since TR falls with the price cut"
+     ]
+    }
+   ],
+   "sample": "Total revenue falls from $6 \\times 180 = \\$1{,}080$ to $4 \\times 200 = \\$800$. Price and total revenue move in the same direction, so demand is inelastic in this range."
+  }
+ ]
+}

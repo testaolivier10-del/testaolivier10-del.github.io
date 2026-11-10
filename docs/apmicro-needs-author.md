@@ -76,3 +76,12 @@ grader's `FRQ_COURSES` only after a calibration and an eval (`docs/frq-grader.md
 
 The hook is in `pages/frq.js` as in every course; `FRQ_COURSES` does not list `apmicro`. Graph and matrix parts are
 checked by code; written parts need their own calibration before the grader is turned on.
+
+## unit-5-6-scope: three teaching choices in Units 5 and 6 (author E, open, 2026-11-09)
+
+Taught as standard economics, labeled, and never the only route to a keyed answer until the CED is checked:
+(1) the profit-maximizing input rule MRP/price = 1 for each input, beside the least-cost rule MP/price equal across
+inputs (`competitive-factor-markets`, one analyze item); (2) the term "club good" for excludable, nonrival goods
+(`public-goods`, added to the map as `club-good`); (3) one Lorenz item asks students to shade the area the Gini
+coefficient compares (identification only, no Gini value computed, as `gini` above says).
+

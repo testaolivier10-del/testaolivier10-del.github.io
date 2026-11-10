@@ -920,7 +920,7 @@
    "spec": {
     "policy": {
      "type": "tax",
-     "amount": 2
+     "amount": 3
     }
    },
    "cause": "The government puts a per-unit tax on sellers of {good}.",
@@ -930,7 +930,7 @@
     {
      "curve": "S",
      "dir": "left",
-     "steps": 2
+     "steps": 3
     }
    ],
    "slips": {
@@ -952,7 +952,7 @@
    "spec": {
     "policy": {
      "type": "tax",
-     "amount": 2
+     "amount": 3
     }
    },
    "cause": "A per-unit tax on sellers of {good} is in place.",
@@ -969,7 +969,7 @@
    "spec": {
     "policy": {
      "type": "tax",
-     "amount": 2
+     "amount": 3
     }
    },
    "cause": "A per-unit tax on sellers of {good} is in place.",
@@ -1263,7 +1263,7 @@
     {
      "curve": "D",
      "dir": "right",
-     "steps": 2
+     "steps": 1
     }
    ],
    "slips": {
@@ -1369,7 +1369,7 @@
    "title": "Firms enter",
    "spec": {
     "start": {
-     "D": 2
+     "D": 1
     }
    },
    "cause": "Firms are earning economic profits, so in the long run new firms enter the market.",
@@ -1378,7 +1378,7 @@
     {
      "curve": "S",
      "dir": "right",
-     "steps": 2
+     "steps": 1
     }
    ],
    "slips": {
@@ -1407,7 +1407,7 @@
    "title": "A profitable price",
    "spec": {
     "start": {
-     "D": 2
+     "D": 1
     }
    },
    "cause": "The market price is above the firm's minimum ATC.",

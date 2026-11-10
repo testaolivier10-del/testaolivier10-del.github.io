@@ -95,7 +95,7 @@
     cross: [{ id: 'sub', label: 'A substitute', e: 0.8, good: 'tea', other: 'coffee' }, { id: 'comp', label: 'A complement', e: -1.2, good: 'printer ink', other: 'printers' }, { id: 'none', label: 'Unrelated', e: 0, good: 'socks', other: 'garden hoses' }]
   };
   function explore(host){
-    var st = { view: 'price', pA: 14, mid: false, kind: { income: 'necessity', cross: 'sub' }, pct: { income: 10, cross: 10 }, panel: 'd' };
+    var st = { view: 'price', pA: 14, mid: false, kind: { income: 'necessity', cross: 'sub' }, pct: { income: 20, cross: 20 }, panel: 'd' };
     var LS = null, sp = null;
     host.innerHTML =
       '<figure class="el-fig"><div class="el-tabs" role="group" aria-label="Which graph"><button type="button" class="tchip el-tab on" data-p="d" aria-pressed="true">Demand</button><button type="button" class="tchip el-tab" data-p="tr" aria-pressed="false">Total revenue</button></div>' +
@@ -128,7 +128,7 @@
       row.className = 'el-kinds'; row.setAttribute('role', 'group'); row.setAttribute('aria-label', v === 'income' ? 'Kind of good' : 'The other good is');
       row.innerHTML = ks.map(function(k){ return '<button type="button" class="tchip el-kind' + (k.id === st.kind[v] ? ' on' : '') + '" data-k="' + k.id + '" aria-pressed="' + (k.id === st.kind[v]) + '">' + esc(k.label) + '</button>'; }).join('');
       slot.appendChild(row);
-      slider = T.slider({ id: 'el-pct', label: v === 'income' ? 'Change in income' : 'Change in the other good’s price', min: -20, max: 20, step: 5, value: st.pct[v], decimals: 0, onInput: function(x){ cue.done(); st.pct[v] = x; draw(); } });
+      slider = T.slider({ id: 'el-pct', label: v === 'income' ? 'Change in income' : 'Change in the other good’s price', min: -30, max: 30, step: 5, value: st.pct[v], decimals: 0, onInput: function(x){ cue.done(); st.pct[v] = x; draw(); } });
       var o2 = slider.el.querySelector('output'), i2 = slider.input, f2 = function(){ var x = +i2.value; o2.textContent = (x > 0 ? '+' : '') + M.minus(String(x)) + '%'; i2.setAttribute('aria-valuetext', o2.textContent); };
       i2.addEventListener('input', f2); slider.el.querySelectorAll('.bt-step').forEach(function(b){ b.addEventListener('click', f2); }); f2();
       slot.appendChild(slider.el);
@@ -170,7 +170,15 @@
         '<path class="mic-gr-guide el-g1" d="M' + f1(px(x1)) + ' ' + f1(py(5)) + 'V' + f1(py(0)) + '"/>' + ymark(5, '$10', 'el-m1') +
         '<circle class="el-pt is-b" cx="' + f1(px(x1)) + '" cy="' + f1(py(5)) + '" r="5"/>' + xmark(x1, Math.abs(dx) > 1e-9 ? sub('Q', '1') : 'Q', 'el-m2');
       if(Math.abs(dx) > 1e-9) extra += '<path class="mic-gr-guide el-g1" d="M' + f1(px(x2)) + ' ' + f1(py(5)) + 'V' + f1(py(0)) + '"/><circle class="el-pt" cx="' + f1(px(x2)) + '" cy="' + f1(py(5)) + '" r="6"/>' + xmark(x2, sub('Q', '2'), 'el-m1');
-      dEl.innerHTML = inject(demandSvg(shifts, label), extra);
+      // The curve labels and the shift arrow, placed here: the engine puts the
+      // old curve's label and its arrow in one spot for a shift under a step.
+      var right = dx >= 0, lab = function(at, t, s2, cls, side){ var yl = side > 0 ? 1.6 : 6.2, x = at - yl; return '<text class="mic-gr-clabel ' + cls + '" x="' + f1(px(x) + (side > 0 ? 7 : -7)) + '" y="' + f1(py(yl) + (side > 0 ? 3 : 12)) + '" text-anchor="' + (side > 0 ? 'start' : 'end') + '">' + esc(t) + (s2 ? '<tspan class="mic-gr-sub" dy="3">' + s2 + '</tspan>' : '') + '</text>'; };
+      var moved = Math.abs(dx) > 1e-9;
+      extra += moved ? lab(10, 'D', '1', 'is-old', right ? -1 : 1) + lab(10 + dx, 'D', '2', '', right ? 1 : -1) : lab(10, 'D', '', '', 1);
+      if(Math.abs(dx) >= 0.6){ var ay = py(5) - 12, xa = px(x1) + (right ? 4 : -4), xb = px(x2) + (right ? -4 : 4), hd = right ? -5 : 5;
+        extra += '<path class="mic-gr-arrow" d="M' + f1(xa) + ' ' + f1(ay) + 'H' + f1(xb) + 'M' + f1(xb + hd) + ' ' + f1(ay - 4) + 'L' + f1(xb) + ' ' + f1(ay) + 'L' + f1(xb + hd) + ' ' + f1(ay + 4) + '"/>'; }
+      var base = demandSvg(shifts, label).replace(/<text class="mic-gr-clabel[^"]*"[^>]*>[\s\S]*?<\/text>/g, '').replace(/<path class="mic-gr-arrow"[^>]*\/>/g, '');
+      dEl.innerHTML = inject(base, extra);
       spreadMarks(dEl);
       var what = v === 'income' ? (k.e < 0 ? 'an inferior good' : k.e > 1 ? 'a normal good and a luxury' : 'a normal good and a necessity') : (k.e > 0 ? 'substitutes' : k.e < 0 ? 'complements' : 'unrelated goods');
       var cause = v === 'income' ? 'Income ' + (pct > 0 ? 'rises' : pct < 0 ? 'falls' : 'does not change') + (pct ? ' ' + Math.abs(pct) + '%' : '') : 'The price of ' + k.other + ' ' + (pct > 0 ? 'rises' : pct < 0 ? 'falls' : 'does not change') + (pct ? ' ' + Math.abs(pct) + '%' : '');

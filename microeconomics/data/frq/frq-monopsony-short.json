@@ -16,13 +16,13 @@
   "4.C",
   "2.A"
  ],
- "scenario": "Garnet Stone Works (invented) is the only employer of stone cutters in a remote town, so it is a monopsony in that labor market. It sells its stone in a perfectly competitive market and maximizes profit.",
+ "scenario": "Corbie Stone Works (invented) is the only employer of stone cutters in a remote town, so it is a monopsony in that labor market. It sells its stone in a perfectly competitive market and maximizes profit.",
  "parts": [
   {
    "label": "A",
    "points": 2,
    "type": "graph",
-   "prompt": "<b>Draw</b> a correctly labeled graph of the labor market for stone cutters, showing the labor supply curve, the marginal factor cost curve and the marginal revenue product curve. <b>Show</b> the number of cutters Garnet hires and the wage it pays.",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the labor market for stone cutters, showing the labor supply curve, the marginal factor cost curve and the marginal revenue product curve. <b>Show</b> the number of cutters Corbie hires and the wage it pays.",
    "graph": {
     "kind": "monopsony",
     "do": [
@@ -55,13 +55,13 @@
      "auto": "point"
     }
    ],
-   "sample": "Wage is on the vertical axis and Quantity of labor on the horizontal axis. SL slopes up; MFC starts at the same point and rises more steeply, above SL; MRP slopes down. Garnet hires QM, where MRP crosses MFC, and pays WM, found by going straight down from that crossing to SL. QM and WM are marked with dashed lines to the axes."
+   "sample": "Wage is on the vertical axis and Quantity of labor on the horizontal axis. SL slopes up; MFC starts at the same point and rises more steeply, above SL; MRP slopes down. Corbie hires QM, where MRP crosses MFC, and pays WM, found by going straight down from that crossing to SL. QM and WM are marked with dashed lines to the axes."
   },
   {
    "label": "B",
    "points": 1,
    "type": "graph",
-   "prompt": "<b>Shade</b> the area that shows Garnet's total wage bill.",
+   "prompt": "<b>Shade</b> the area that shows Corbie's total wage bill.",
    "graph": {
     "kind": "monopsony",
     "do": [
@@ -86,7 +86,7 @@
    "label": "C",
    "points": 1,
    "type": "graph",
-   "prompt": "The town sets a minimum wage, Wmin, above WM and below the wage a competitive labor market would reach, as drawn. <b>Show</b> the number of cutters Garnet now hires.",
+   "prompt": "The town sets a minimum wage, Wmin, above WM and below the wage a competitive labor market would reach, as drawn. <b>Show</b> the number of cutters Corbie now hires.",
    "graph": {
     "kind": "monopsony",
     "line": {
@@ -111,21 +111,21 @@
      "auto": "point"
     }
    ],
-   "sample": "With the minimum wage, each cutter up to the labor supply curve costs exactly Wmin, so MFC is flat at Wmin there. Because MRP is still above Wmin where Wmin meets SL, Garnet hires out to that point, a quantity larger than QM."
+   "sample": "With the minimum wage, each cutter up to the labor supply curve costs exactly Wmin, so MFC is flat at Wmin there. Because MRP is still above Wmin where Wmin meets SL, Corbie hires out to that point, a quantity larger than QM."
   },
   {
    "label": "D",
    "points": 1,
-   "prompt": "<b>Explain</b> why Garnet's marginal factor cost of labor is greater than the wage, without a minimum wage.",
+   "prompt": "<b>Explain</b> why Corbie's marginal factor cost of labor is greater than the wage, without a minimum wage.",
    "rubric": [
     {
-     "point": "To hire one more cutter, Garnet must raise the wage it pays to all its cutters, so the added cost is the new cutter's wage plus the raise for every cutter already hired",
+     "point": "To hire one more cutter, Corbie must raise the wage it pays to all its cutters, so the added cost is the new cutter's wage plus the raise for every cutter already hired",
      "accept": [
       "it must pay a higher wage to everyone to attract one more worker"
      ]
     }
    ],
-   "sample": "As the only employer, Garnet faces the upward-sloping labor supply curve. To hire one more cutter it has to offer a higher wage, and it must pay that higher wage to every cutter, not just the new one. So the added cost of the extra cutter, its MFC, is the new wage plus the raise for all the others, which is more than the wage itself."
+   "sample": "As the only employer, Corbie faces the upward-sloping labor supply curve. To hire one more cutter it has to offer a higher wage, and it must pay that higher wage to every cutter, not just the new one. So the added cost of the extra cutter, its MFC, is the new wage plus the raise for all the others, which is more than the wage itself."
   }
  ]
 }

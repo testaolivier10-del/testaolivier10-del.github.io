@@ -476,7 +476,7 @@
    "diff": 2,
    "type": "multi",
    "practice": "2.B",
-   "q": "In the scenario, which markets produce less than the socially efficient quantity? Select all that apply.",
+   "q": "In the scenario, which markets produce more than the socially efficient quantity? Select all that apply.",
    "stimulus": "market-efficiency-s3",
    "options": [
     "Market W",
@@ -485,16 +485,15 @@
     "Market Z"
    ],
    "correct": [
-    1,
-    2
+    3
    ],
    "why": {
-    "correct": "Monopoly and binding ceilings lead to underproduction; subsidies in an otherwise efficient market lead to overproduction.",
+    "correct": "Subsidies in an otherwise efficient market lead to overproduction; monopoly and binding ceilings lead to underproduction.",
     "options": [
      "Its equilibrium is efficient.",
-     "Right: the monopoly restricts output to raise its price.",
-     "Right: at the low fare, fewer rides are supplied.",
-     "The subsidy makes too much bread, not too little."
+     "The monopoly restricts output, so it makes too little.",
+     "At the low fare, fewer rides are supplied: too little.",
+     "Right: the subsidy pushes bread output past the efficient quantity."
     ]
    }
   },

@@ -120,7 +120,7 @@ mkdirSync(REG, { recursive: true });
   const id = 'factor-markets-mrp', W = 800, H = 400;
   const rows = [[1, 20, 20, 60], [2, 36, 16, 48], [3, 48, 12, 36], [4, 56, 8, 24], [5, 60, 4, 12]];
   const b = [];
-  b.push(text(190, 34, 'Juniper Bakery (invented data)', { size: 15, weight: 'bold' }));
+  b.push(text(190, 34, 'Hollin Bakery (invented data)', { size: 15, weight: 'bold' }));
   const cols = ['Workers', 'Loaves (TP)', 'MP', 'MRP at $3'], cx = [50, 140, 220, 300];
   b.push(`<rect x="22" y="52" width="340" height="34" fill="${TINT}"/>`);
   cols.forEach((c, i) => b.push(text(cx[i] + 20, 74, esc(c), { size: 13, weight: 'bold' })));

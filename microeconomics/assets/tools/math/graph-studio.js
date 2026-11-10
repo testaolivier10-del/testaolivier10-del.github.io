@@ -158,7 +158,17 @@
     if(spec.do.indexOf('shade') > -1) spec.letters = true;
     return spec;
   }
-  function keyResponse(spec){ return GR().keyResponse(spec); }
+  /* The key's response, with a point "on" a PPC drawn away from the curve's
+     own label (the engine's key point sits on the 45-degree line, where the
+     label PPC is). Still graded "on" (the validator checks). */
+  function keyResponse(spec){
+    var G = GR(), r = G.keyResponse(spec), P = (spec.key || {}).point;
+    if(r.point && P && P.region === 'on' && spec.kind === 'ppc'){
+      var c = G.find(G.curves(spec, {}), 'PPC');
+      if(c.shape === 'ppc') r.point = [M.round(c.at * 0.8, 3), M.round(c.at * 0.6, 3)];
+    }
+    return r;
+  }
 
   /* ----------------------------------------------------- outcome words */
   var NOUN = { quantity: 'the quantity', price: 'the price', wage: 'the wage', 'quantity of labor': 'the number of workers hired' };

@@ -1,0 +1,229 @@
+{
+ "id": "frq-trade-tariff-long",
+ "type": "long",
+ "points": 10,
+ "title": "A small country opens its rice market: comparative advantage, the world price, imports and a tariff",
+ "units": [
+  "unit-1",
+  "unit-2"
+ ],
+ "topics": [
+  "comparative-advantage",
+  "trade-policy"
+ ],
+ "practices": [
+  "1.C",
+  "4.A",
+  "4.B",
+  "3.C",
+  "2.B"
+ ],
+ "scenario": "Castrel and Ostavia are invented countries. In one day, a worker in Castrel can produce either 4 tons of rice or 8 bolts of cloth, and a worker in Ostavia can produce either 6 tons of rice or 6 bolts of cloth. Castrel is a small country: its trade does not change the world price of rice. In Castrel, the domestic market for rice is competitive, with straight-line demand and supply curves, and without trade the price is \\$6 a ton.",
+ "stimulus": {
+  "title": "Rice in Castrel",
+  "invented": true,
+  "table": {
+   "caption": "Tons of rice demanded and supplied per day in Castrel at each price (invented data for practice)",
+   "cols": [
+    "Price per ton",
+    "Quantity demanded",
+    "Quantity supplied"
+   ],
+   "rows": [
+    [
+     "\\$4",
+     "80",
+     "20"
+    ],
+    [
+     "\\$5",
+     "70",
+     "30"
+    ],
+    [
+     "\\$6",
+     "60",
+     "40"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the opportunity cost of 1 ton of rice in each country, and <b>identify</b> which country has the comparative advantage in rice.",
+   "rubric": [
+    {
+     "point": "Opportunity cost of 1 ton of rice: 2 bolts of cloth in Castrel (8 ÷ 4) and 1 bolt of cloth in Ostavia (6 ÷ 6)",
+     "accept": [
+      "Castrel 2 cloth, Ostavia 1 cloth"
+     ]
+    },
+    {
+     "point": "Ostavia has the comparative advantage in rice, because its opportunity cost is lower",
+     "accept": [
+      "Ostavia, lower opportunity cost"
+     ]
+    }
+   ],
+   "sample": "In Castrel, 1 ton of rice costs $8 \\div 4 = 2$ bolts of cloth; in Ostavia it costs $6 \\div 6 = 1$ bolt. Ostavia gives up less cloth for each ton, so Ostavia has the comparative advantage in rice, and Castrel will tend to import rice."
+  },
+  {
+   "label": "B",
+   "points": 2,
+   "type": "graph",
+   "prompt": "Castrel opens to trade, and the world price of rice is \\$4 a ton. <b>Draw</b> a correctly labeled graph of Castrel's rice market and <b>show</b> the world price.",
+   "graph": {
+    "kind": "sd-micro",
+    "line": {
+     "id": "PW"
+    },
+    "do": [
+     "label",
+     "line"
+    ],
+    "key": {
+     "line": {
+      "side": "below"
+     }
+    },
+    "slips": {
+     "PW": "Castrel's own price is \\$6; a world price of \\$4 sits below the domestic equilibrium."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: price and quantity axes, downward-sloping domestic demand and upward-sloping domestic supply",
+     "accept": [
+      "P and Q axes with D and S labeled"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "A horizontal world price line (PW) below the domestic equilibrium price",
+     "accept": [
+      "PW drawn below PE"
+     ],
+     "auto": "line"
+    }
+   ],
+   "sample": "Vertical axis: Price; horizontal axis: Quantity of rice. Domestic demand D slopes down and domestic supply S slopes up, crossing at \\$6. A horizontal line labeled PW is drawn at \\$4, below that crossing."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the area that represents consumer surplus in Castrel at the world price.",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "world",
+     "at": 3
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    },
+    "slips": {
+     "cs-before": "That is consumer surplus without trade. At the lower world price, buyers gain the area under demand above PW."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades the area under demand and above the world price, out to the quantity demanded at the world price",
+     "accept": [
+      "the triangle under D above PW"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "Consumer surplus is the triangle under the demand curve and above the world price line, from zero out to the quantity demanded at the world price."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "Using the table, <b>calculate</b> Castrel's rice imports per day at the world price. Show your work.",
+   "rubric": [
+    {
+     "point": "60 tons, with work: 80 demanded minus 20 supplied at \\$4",
+     "accept": [
+      "$80 - 20 = 60$"
+     ]
+    }
+   ],
+   "sample": "At \\$4, Castrel demands 80 tons and its farms supply 20, so imports are $80 - 20 = 60$ tons a day."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "Castrel then places a tariff of \\$1 a ton on imported rice, so rice sells in Castrel for \\$5. <b>Calculate</b> the tariff revenue per day. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$40, with work: \\$1 times the imports after the tariff, 70 − 30 = 40 tons",
+     "accept": [
+      "$1 \\times (70 - 30) = 40$"
+     ]
+    }
+   ],
+   "sample": "At \\$5, imports are $70 - 30 = 40$ tons. Tariff revenue = $\\$1 \\times 40 = \\$40$ a day."
+  },
+  {
+   "label": "F",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the deadweight loss caused by the tariff.",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tariff",
+     "at": 3,
+     "amount": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "tariff-revenue": "That rectangle is the tariff revenue, collected by the government; the deadweight loss is the two triangles beside it."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades both triangles: between supply and the world price from the old to the new domestic output, and between demand and the world price from the new to the old quantity demanded",
+     "accept": [
+      "both deadweight loss triangles"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "Two triangles: one bounded by the supply curve and the world price line between the domestic output at PW and at PW + t, and one bounded by the demand curve and the world price line between the quantity demanded at PW + t and at PW."
+  },
+  {
+   "label": "G",
+   "points": 2,
+   "prompt": "<b>Identify</b> the effect of the tariff on each of the following in Castrel, compared with free trade at \\$4: (i) producer surplus of Castrel's rice farms; (ii) consumer surplus.",
+   "rubric": [
+    {
+     "point": "Producer surplus increases (domestic farms sell more at a higher price)",
+     "accept": [
+      "rises",
+      "increases"
+     ]
+    },
+    {
+     "point": "Consumer surplus decreases (buyers pay more and buy less)",
+     "accept": [
+      "falls",
+      "decreases"
+     ]
+    }
+   ],
+   "sample": "(i) Producer surplus increases: Castrel's farms sell 30 tons instead of 20 at \\$5 instead of \\$4. (ii) Consumer surplus decreases: buyers pay \\$5 instead of \\$4 and buy 70 tons instead of 80."
+  }
+ ]
+}

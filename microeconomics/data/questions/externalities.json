@@ -13,7 +13,7 @@
   },
   "externalities-s2": {
    "kind": "data",
-   "title": "The Dunmore paper mill market",
+   "title": "The Brasswick paper mill market",
    "invented": true,
    "table": {
     "caption": "An invented market for paper in which each ton made releases fumes that cost nearby residents \\$4 per ton (invented data for practice)",
