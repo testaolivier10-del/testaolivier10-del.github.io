@@ -507,19 +507,18 @@
    "practice": "1.B",
    "q": "Marco owns his bike shop and its building. Which of these are implicit costs of running the shop? Select all that apply.",
    "options": [
-    "The rent he could earn by leasing the building to someone else",
+    "The property tax he pays on the building",
     "The salary he could earn as a mechanic at another shop",
     "The electricity bill for the shop",
     "The cost of bike parts he buys from a supplier"
    ],
    "correct": [
-    0,
     1
    ],
    "why": {
-    "correct": "Implicit costs are the owner's forgone income from his own resources: the rent his building could earn and the salary his time could earn.",
+    "correct": "Implicit costs are the owner's forgone income from his own resources, here the salary his time could earn elsewhere; bills and taxes he pays are explicit costs.",
     "options": [
-     "Yes: he gives up that rent by using the building himself.",
+     "No: a tax bill is paid in money, an explicit cost.",
      "Yes: forgone income is an implicit cost.",
      "No: it is paid in money, an explicit cost.",
      "No: parts are paid for, an explicit cost."

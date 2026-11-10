@@ -147,6 +147,66 @@
       "topic": "marginal-analysis",
       "stimulus": "data",
       "author": "A"
+     },
+     {
+      "title": "A print shop's one press and three jobs: the next-best choice",
+      "topic": "scarcity",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A bike repair start-up: the four factors of production",
+      "topic": "scarcity",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "How three invented countries decide: who owns, what sets prices",
+      "topic": "economic-systems",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A planning office and its winter coats",
+      "topic": "economic-systems",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "A farm's table of corn and beans: opportunity cost along the PPC",
+      "topic": "production-possibilities",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Hours of labor for rice and cloth: the input method",
+      "topic": "comparative-advantage",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A summer business: explicit and implicit costs",
+      "topic": "cost-benefit",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Guitar lessons: total benefit, cost and net benefit",
+      "topic": "cost-benefit",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Pizza slices: marginal benefit against the price",
+      "topic": "marginal-analysis",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A game studio's unfinished game: a sunk cost",
+      "topic": "marginal-analysis",
+      "stimulus": "text",
+      "author": "A"
      }
     ],
     "comparisonTables": [],
@@ -309,6 +369,102 @@
      {
       "title": "A bakery owner's explicit and implicit costs",
       "topic": "types-of-profit",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A farm's pickers and total product",
+      "topic": "production-function",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Total, marginal and average product in a bakery",
+      "topic": "production-function",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A print shop adds workers to fixed presses",
+      "topic": "production-function",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A firm's short-run cost curves",
+      "topic": "short-run-costs",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A bakery's fixed and variable costs",
+      "topic": "short-run-costs",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Plant size and long-run total cost",
+      "topic": "long-run-costs",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A long-run average total cost curve",
+      "topic": "long-run-costs",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A firm doubles every input",
+      "topic": "long-run-costs",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Three firms' revenue, explicit and implicit costs",
+      "topic": "types-of-profit",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A firm's output and total cost at a given price",
+      "topic": "profit-maximization",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Cost curves and the price a firm sells at",
+      "topic": "profit-maximization",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A firm's costs at its best output: produce or shut down",
+      "topic": "firm-decisions",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A market after a fall in demand: exit",
+      "topic": "firm-decisions",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A competitive market and firm earning short-run profit",
+      "topic": "perfect-competition",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A farm after a rise in market demand",
+      "topic": "perfect-competition",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Many sellers of an identical product",
+      "topic": "perfect-competition",
       "stimulus": "text",
       "author": "C"
      }
@@ -586,6 +742,12 @@
      {
       "title": "A table of prices and quantities read as ordered pairs",
       "topic": "axes-points",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A delivery van's fuel use at each speed: a U-shaped curve",
+      "topic": "slopes-curves",
       "stimulus": "data",
       "author": "A"
      },

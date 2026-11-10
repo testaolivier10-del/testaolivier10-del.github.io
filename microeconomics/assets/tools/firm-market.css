@@ -1,0 +1,80 @@
+/* Firm and Market Lab (microeconomics/assets/tools/firm-market.js). OWNED BY THIS
+   TOOL ONLY (builder T2). The graphs are ApMicroGraph's (mic.css, "Graphs");
+   this file colors the curves so the market's supply and the firm's MC read
+   as one family (blue), demand and MR in the course ink, ATC and AVC green;
+   shades profit (green), loss (red), consumer surplus and deadweight loss;
+   and shows the market and the firm as two tabs on a narrow stage. */
+.fm-fig,.fm-qfig{--fm-d:var(--cink);--fm-s:#0B5F9E;--fm-atc:#2B6A1E;--fm-profit:#2E8B3E;--fm-loss:#C0392B;--fm-cs:#0B5F9E;--fm-dwl:#8A6D0B;}
+:root[data-theme="dark"] .fm-fig,:root[data-theme="dark"] .fm-qfig{--fm-s:#86C5F2;--fm-atc:#A6DB8E;--fm-profit:#7FD08B;--fm-loss:#F28B7D;--fm-cs:#86C5F2;--fm-dwl:#E2C27A;}
+.fm-fig{margin:0;display:flex;flex-direction:column;gap:6px;width:100%;min-width:0;}
+.mic-ls-stage>.fm-fig{flex:1 1 auto;min-height:0;justify-content:center;}
+.fm-svg{width:100%;margin:0 auto;}
+.fm-fig[data-kind="pc"] .fm-svg{max-width:980px;}
+.fm-fig:not([data-kind="pc"]) .fm-svg{max-width:540px;}
+.fm-svg .mic-gr-panels{flex-wrap:nowrap;gap:12px;}
+.fm-svg .mic-gr-panels>svg{flex:1 1 0;max-width:480px;}
+.fm-svg>svg{display:block;width:100%;height:auto;}
+.fm-tabs{display:none;gap:8px;}
+.fm-fig.is-narrow[data-kind="pc"] .fm-tabs{display:flex;}
+.fm-tab{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.fm-tab.on{background:var(--cink);border-color:var(--cink);color:var(--white,#fff);}
+:root[data-theme="dark"] .fm-tab.on{color:#1b1020;}
+.fm-fig.is-narrow[data-panel="market"] svg[data-panel="firm"],.fm-fig.is-narrow[data-panel="firm"] svg[data-panel="market"]{display:none;}
+.fm-fig.is-narrow .mic-gr-panels>svg{max-width:460px;}
+.mic-ls-stage>.fm-fig.is-narrow{justify-content:flex-start;}
+.mic-ls-stage>.fm-fig.is-narrow .fm-svg svg{max-height:max(220px,calc(62svh - 84px));}
+
+/* curve colors (explore and drill alike: the same families) */
+.fm-fig [data-curve="D"] .mic-gr-curve,.fm-fig [data-curve="MR"] .mic-gr-curve{stroke:var(--fm-d);}
+.fm-fig [data-curve="MR"] .mic-gr-curve{stroke-dasharray:7 4;}
+.fm-fig [data-curve="S"] .mic-gr-curve,.fm-fig [data-curve="MC"] .mic-gr-curve{stroke:var(--fm-s);}
+.fm-fig [data-curve="ATC"] .mic-gr-curve,.fm-fig [data-curve="AVC"] .mic-gr-curve{stroke:var(--fm-atc);}
+.fm-fig [data-curve="AVC"] .mic-gr-curve{stroke-opacity:.6;}
+
+/* areas and marks */
+.fm-area{stroke:none;}
+.fm-a-profit{fill:var(--fm-profit);fill-opacity:.28;}
+.fm-a-loss{fill:var(--fm-loss);fill-opacity:.26;}
+.fm-a-cs{fill:var(--fm-cs);fill-opacity:.18;}
+.fm-a-dwl{fill:var(--fm-dwl);fill-opacity:.38;}
+.fm-aword{font:900 11.5px var(--font-ui);stroke:none;fill-opacity:1;}
+.fm-up{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;opacity:.7;}
+.fm-mrmc{fill:var(--white,#fff);stroke:var(--fm-s);stroke-width:2;}
+.fm-alloc{fill:var(--white,#fff);stroke:var(--fm-dwl);stroke-width:2;}
+.fm-ring{fill:none;stroke:var(--fm-profit);stroke-width:2;stroke-dasharray:3 2;}
+.fm-cap{fill:none;stroke:var(--ink);stroke-width:1.4;}
+.fm-tag{font:800 10.5px var(--font-ui);fill:var(--ink);}
+.fm-atcmark{fill:var(--fm-atc);}
+
+/* the dock */
+.fm-kinds{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+.fm-kind,.fm-show{min-height:44px;}
+.fm-kind.on,.fm-show.on{background:var(--ctint);border-color:var(--cink);color:var(--cink);}
+.fm-row{display:flex;flex-direction:column;gap:6px;}
+.fm-row[hidden]{display:none;}
+.fm-btns,.fm-shows,.fm-hrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.fm-hrow .bt-btn{min-height:44px;}
+
+/* Test yourself */
+.fm-qfig{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:center;align-items:center;align-content:center;margin:0;width:100%;}
+.fm-qgraph{flex:1 1 380px;min-width:0;max-width:880px;}
+.fm-qgraph[hidden]{display:none;}
+.fm-qgraph>svg{display:block;width:100%;max-width:520px;height:auto;margin:0 auto;}
+.fm-qgraph .mic-gr-panels>svg{flex:1 1 300px;}
+.fm-qtw{flex:0 1 auto;max-width:100%;overflow-x:auto;width:auto;margin:0 auto;}
+.fm-qtable{border-collapse:collapse;font:700 14px/1.3 var(--font-ui);font-variant-numeric:tabular-nums;}
+.fm-qtable caption{text-align:left;font:800 12.5px var(--font-ui);color:var(--muted);padding:0 0 6px;}
+.fm-qtable th,.fm-qtable td{padding:6px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;}
+.fm-qtable thead th{border-bottom:2px solid var(--line);font-weight:900;}
+.fm-qtable tbody th{text-align:center;}
+.fm-qtable tr.is-ask{background:var(--ctint);}
+
+.fm-fig .fm-t-D,.fm-fig .fm-t-MR{fill:var(--fm-d);}
+.fm-fig .fm-t-S,.fm-fig .fm-t-MC{fill:var(--fm-s);}
+.fm-fig .fm-t-ATC,.fm-fig .fm-t-AVC{fill:var(--fm-atc);}
+.fm-aword{fill:#14361A;}
+.fm-aword.fm-a-loss{fill:#6B1A12;}
+.fm-aword.fm-a-cs{fill:#0B3F6B;}
+:root[data-theme="dark"] .fm-aword{fill:#E8F5EA;}
+:root[data-theme="dark"] .fm-aword.fm-a-loss{fill:#FBE3DF;}
+:root[data-theme="dark"] .fm-aword.fm-a-cs{fill:#E3F1FC;}

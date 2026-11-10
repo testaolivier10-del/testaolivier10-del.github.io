@@ -1,0 +1,664 @@
+{
+ "stimuli": {
+  "marginal-analysis-s1": {
+   "kind": "data",
+   "title": "A student choosing between two goods with a budget: marginal utility per dollar",
+   "invented": true,
+   "table": {
+    "caption": "Leo's marginal utility (utils) from each taco (\\$2 each) and each smoothie (\\$4 each); he has \\$12 (invented data for practice)",
+    "cols": [
+     "Unit",
+     "MU of tacos",
+     "MU of smoothies"
+    ],
+    "rows": [
+     [
+      "1st",
+      "20",
+      "48"
+     ],
+     [
+      "2nd",
+      "16",
+      "32"
+     ],
+     [
+      "3rd",
+      "12",
+      "24"
+     ],
+     [
+      "4th",
+      "8",
+      "16"
+     ],
+     [
+      "5th",
+      "4",
+      ""
+     ]
+    ]
+   }
+  },
+  "marginal-analysis-s2": {
+   "kind": "data",
+   "title": "How many pizza slices?",
+   "invented": true,
+   "table": {
+    "caption": "The most Nadia would pay for each slice of pizza, in order (invented data for practice); a slice costs \\$2.50",
+    "cols": [
+     "Slice",
+     "Marginal benefit (\\$)"
+    ],
+    "rows": [
+     [
+      "1st",
+      "5.00"
+     ],
+     [
+      "2nd",
+      "4.00"
+     ],
+     [
+      "3rd",
+      "3.00"
+     ],
+     [
+      "4th",
+      "2.00"
+     ],
+     [
+      "5th",
+      "1.00"
+     ]
+    ]
+   }
+  },
+  "marginal-analysis-s3": {
+   "kind": "text",
+   "title": "Pellham Games and its unfinished game",
+   "text": "<p>Pellham Games, an invented studio, has already spent \\$200,000 building a new game, money it cannot get back. Finishing the game would cost another \\$50,000. The studio expects to take in \\$80,000 from sales once the game is finished. A manager says, \"We have spent so much that we cannot quit now,\" and another says, \"We will never earn back the \\$200,000, so we should stop.\"</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-marginal-analysis-1",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is marginal utility?",
+   "options": [
+    "The total satisfaction from the units consumed so far",
+    "The price of one more unit",
+    "The extra satisfaction from one more unit",
+    "The satisfaction per dollar of income"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Marginal means one more. Marginal utility is the change in total utility from one more unit.",
+    "options": [
+     "That is total utility.",
+     "Price is a cost, not a utility.",
+     "Right: the extra utility of one more unit.",
+     "Utility per dollar is MU divided by the price of the good."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-2",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "marginal-analysis-s1",
+   "q": "What is Leo's marginal utility per dollar from his second smoothie?",
+   "why": {
+    "correct": "$\\frac{\\text{MU}}{P} = \\frac{32}{4} = 8$ utils per dollar."
+   },
+   "numeric": {
+    "from": {
+     "fn": "muPerDollar",
+     "args": [
+      32,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "muPerDollar",
+       "args": [
+        32,
+        2
+       ]
+      },
+      "why": "That divides by the TACO price. A smoothie costs \\$4, so divide its MU by 4."
+     },
+     {
+      "value": 32,
+      "why": "That is the marginal utility alone. Divide by the smoothie's \\$4 price to compare it with tacos."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-3",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "marginal-analysis-s1",
+   "q": "Which should Leo buy with his first \\$4, to get the most utility from that money?",
+   "options": [
+    "One smoothie: 12 per dollar",
+    "Two tacos: 10 utils per dollar",
+    "One taco: 20 utils",
+    "Nothing yet: he should hold on to the money"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The first smoothie gives $\\frac{48}{4} = 12$ utils per dollar; the first taco gives $\\frac{20}{2} = 10$. Spend where MU per dollar is highest.",
+    "options": [
+     "Right: 12 per dollar beats 10.",
+     "Two tacos give 36 utils for \\$4 (10 and 8 per dollar), less than the smoothie's 48.",
+     "One taco uses only \\$2 and gives less per dollar.",
+     "Saving gives Leo no utility at the festival here."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-4",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "marginal-analysis-s1",
+   "q": "Leo spends his whole \\$12. Which bundle maximizes his total utility?",
+   "options": [
+    "3 smoothies",
+    "6 tacos",
+    "4 tacos and 1 smoothie",
+    "2 tacos, 2 smoothies"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At 2 tacos and 2 smoothies he spends $2 \\times 2 + 2 \\times 4 = 12$ dollars and the last of each gives 8 per dollar. Total utility is $20 + 16 + 48 + 32 = 116$.",
+    "options": [
+     "3 smoothies give 104 utils; the third gives only 6 per dollar while a taco gives 10.",
+     "The table stops at 5 tacos, and tacos alone give at most 60 utils.",
+     "This gives 104 utils; the 4th taco gives 4 per dollar while the 2nd smoothie gives 8.",
+     "Right: equal MU per dollar, budget spent, 116 utils."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-5",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "marginal-analysis-s1",
+   "q": "What is Leo's total utility from the bundle that maximizes his utility with \\$12?",
+   "why": {
+    "correct": "The best bundle is 2 tacos and 2 smoothies. Total utility $= 20 + 16 + 48 + 32 = 116$ utils."
+   },
+   "numeric": {
+    "from": {
+     "fn": "utilityMax",
+     "args": [
+      [
+       20,
+       16,
+       12,
+       8,
+       4
+      ],
+      2,
+      [
+       48,
+       32,
+       24,
+       16
+      ],
+      4,
+      12
+     ],
+     "pick": "tu"
+    },
+    "mistakes": [
+     {
+      "value": 104,
+      "why": "That is 3 smoothies, or 4 tacos and 1 smoothie. Buy by MU per dollar: the best \\$12 is 2 tacos and 2 smoothies."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-6",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "marginal-analysis-s1",
+   "q": "Leo is at 2 tacos and 2 smoothies. Why would trading his second smoothie for two more tacos lower his total utility?",
+   "options": [
+    "Tacos cost more than smoothies",
+    "He would lose 32 utils and gain only 12 + 8 = 20",
+    "He would go over his budget",
+    "Total utility stays the same whenever the budget is spent"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Giving up the second smoothie loses 32 utils; the third and fourth tacos add $12 + 8 = 20$. Total utility falls from 116 to 104.",
+    "options": [
+     "Tacos cost \\$2, half a smoothie's price.",
+     "Right: a loss of 32 against a gain of 20.",
+     "Two tacos cost \\$4, the same as the smoothie he gives up.",
+     "Different bundles that use the whole budget give different totals."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-7",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "marginal-analysis-s2",
+   "q": "A slice costs \\$2.50. How many slices should Nadia buy?",
+   "options": [
+    "5",
+    "3",
+    "4",
+    "2"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Buy a slice while its marginal benefit is at least its \\$2.50 cost. The 3rd slice is worth \\$3.00; the 4th only \\$2.00.",
+    "options": [
+     "The 4th and 5th slices are worth less than \\$2.50.",
+     "Right: the 4th slice is worth less than it costs.",
+     "The 4th slice is worth \\$2.00, less than its \\$2.50 cost.",
+     "The 3rd slice is still worth \\$3.00, more than it costs."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-8",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "stimulus": "marginal-analysis-s2",
+   "q": "By how much would Nadia's net benefit change if she bought a 4th slice at \\$2.50, in dollars?",
+   "why": {
+    "correct": "The 4th slice adds \\$2.00 of benefit and \\$2.50 of cost: $2.00 - 2.50 = -0.50$ dollars. Her net benefit would fall by 50 cents."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "sub",
+     "args": [
+      2,
+      2.5
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is the slice's marginal benefit alone. Subtract its \\$2.50 cost to see the change in net benefit."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-9",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "marginal-analysis-s2",
+   "q": "The pizzeria cuts the price of a slice to \\$1.50. What happens to the number of slices Nadia buys?",
+   "options": [
+    "It stays at 3",
+    "It rises to 5",
+    "It falls to 2",
+    "It rises to 4"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At \\$1.50, the 4th slice (worth \\$2.00) is now worth more than it costs, but the 5th (worth \\$1.00) is not.",
+    "options": [
+     "The 4th slice is now worth more than its price.",
+     "The 5th slice is worth \\$1.00, less than \\$1.50.",
+     "A lower price makes more slices worth buying, not fewer.",
+     "Right: buy while marginal benefit is at least \\$1.50."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-10",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "marginal-analysis-s2",
+   "q": "What pattern does Nadia's table show?",
+   "options": [
+    "Each slice is worth less than the last",
+    "Rising marginal benefit: each slice worth more than the one before",
+    "Constant marginal benefit",
+    "Her total benefit falls with each slice"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Her marginal benefit falls from \\$5 to \\$1. Total benefit still rises, just by less each time.",
+    "options": [
+     "Right: each extra slice adds less.",
+     "The values fall, not rise.",
+     "The values change from slice to slice.",
+     "Each slice still adds a positive amount, so total benefit rises."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-11",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "marginal-analysis-s3",
+   "q": "Should Pellham Games finish the game?",
+   "options": [
+    "No: it will not earn back the \\$200,000",
+    "Yes: it has spent \\$200,000 and has to finish",
+    "Yes: \\$80,000 more sales for \\$50,000 more cost",
+    "No: \\$80,000 is less than \\$250,000"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Only the costs and benefits still ahead matter. Finishing brings \\$80,000 and costs \\$50,000, so it adds \\$30,000. The \\$200,000 is sunk either way.",
+    "options": [
+     "The \\$200,000 is gone whether or not the game is finished, so it does not count.",
+     "The right answer, but for the wrong reason: past spending is not a reason to continue.",
+     "Right: \\$80,000 more benefit against \\$50,000 more cost.",
+     "\\$250,000 adds the sunk \\$200,000 to the cost still ahead."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-12",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.B",
+   "stimulus": "marginal-analysis-s3",
+   "q": "What is the sunk cost in the scenario, in dollars?",
+   "why": {
+    "correct": "The \\$200,000 already spent cannot be recovered whatever the studio decides: it is sunk."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "add",
+     "args": [
+      200000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 250000,
+      "why": "The \\$50,000 to finish has not been spent yet and can still be avoided, so it is not sunk."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-13",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "marginal-analysis-s3",
+   "q": "Suppose expected sales fall to \\$40,000. What should the studio do, and why?",
+   "options": [
+    "Finish: it has already spent \\$200,000",
+    "Finish: sales are still positive",
+    "Stop: the \\$200,000 makes any further spending a loss",
+    "Stop: \\$40,000 more sales for \\$50,000 more cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Now finishing adds \\$40,000 of benefit for \\$50,000 of additional cost, so it lowers net benefit by \\$10,000. The sunk \\$200,000 is still irrelevant.",
+    "options": [
+     "The \\$200,000 is gone either way and cannot justify more spending.",
+     "Positive sales are not enough; they must be larger than the cost still ahead.",
+     "The right answer, but the reason is the \\$50,000 still ahead, not the sunk \\$200,000.",
+     "Right: the additional cost is larger than the additional benefit."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-14",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make it specific: explain how many slices Nadia should buy at \\$2.50 each. Fill in each blank.",
+   "why": {
+    "correct": "State the marginal rule, apply it with the numbers, and stop at the unit where it fails."
+   },
+   "specific": {
+    "frame": "She buys a slice while its ___ is at least its ___. The 3rd slice is worth \\$3.00 and the 4th only ___, so she buys ___ slices.",
+    "slots": {
+     "rule": {
+      "label": "What she compares",
+      "options": [
+       "marginal benefit",
+       "total benefit"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Total benefit rises with every slice; the choice depends on what ONE MORE slice adds."
+      }
+     },
+     "cost": {
+      "label": "Against what",
+      "options": [
+       "price of \\$2.50",
+       "sunk cost"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nothing has been spent yet; each slice costs its \\$2.50 price."
+      }
+     },
+     "fourth": {
+      "label": "The 4th slice",
+      "options": [
+       "\\$2.00",
+       "\\$14.00"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\\$14.00 is the total for four slices; the 4th slice alone is worth \\$2.00."
+      }
+     },
+     "count": {
+      "label": "How many",
+      "options": [
+       "3",
+       "5"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The 4th and 5th slices are worth less than \\$2.50 each."
+      }
+     }
+    },
+    "model": "She buys a slice while its marginal benefit is at least its price of \\$2.50. The 3rd slice is worth \\$3.00, more than \\$2.50, and the 4th only \\$2.00, less than \\$2.50, so she buys 3 slices."
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-15",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does diminishing marginal utility mean?",
+   "options": [
+    "Total utility falls as you consume more",
+    "The price of a good falls as you buy more",
+    "Each extra unit adds less utility",
+    "Utility is the same for each unit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Marginal utility falls with each unit, but as long as it is positive, total utility still rises.",
+    "options": [
+     "Total utility keeps rising while marginal utility is positive.",
+     "This is about satisfaction, not prices.",
+     "Right: the extra satisfaction shrinks.",
+     "That would be constant marginal utility."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-16",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "Total utility from 1, 2 and 3 movie tickets is 40, 70 and 90 utils. What is the marginal utility of the third ticket?",
+   "why": {
+    "correct": "MU of the 3rd ticket = change in total utility $= 90 - 70 = 20$ utils."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      90,
+      70
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 90,
+      "why": "That is the total utility of 3 tickets. The marginal utility of the 3rd is the change: 90 - 70."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-17",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "For Priya, the last book she buys gives 30 utils per dollar and the last concert ticket 18 utils per dollar, and she has spent her whole budget. How can she raise her total utility?",
+   "options": [
+    "Spend more on concerts and less on books",
+    "Shift some money from concerts to books",
+    "Keep the same bundle",
+    "Stop buying books"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A dollar moved from concerts to books loses about 18 utils and gains about 30. She should shift until the ratios are equal.",
+    "options": [
+     "That moves money toward the LOWER MU per dollar.",
+     "Right: move money toward the higher MU per dollar.",
+     "Unequal ratios mean a better bundle exists.",
+     "Books give the most utility per dollar right now."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-18",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which statement describes Leo's budget constraint at the festival?",
+   "options": [
+    "He can buy any mix costing \\$12 or less",
+    "He has to buy equal numbers of tacos and smoothies",
+    "He should buy the bundle with the most utility per dollar",
+    "He can buy as many units as he wants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A budget constraint is the limit on what a consumer can afford: total spending cannot be more than income.",
+    "options": [
+     "Right: spending is limited to \\$12.",
+     "The budget limits spending, not the mix.",
+     "That is a rule for choosing within the budget, not the budget itself.",
+     "With \\$12 his choices are limited."
+    ]
+   }
+  },
+  {
+   "id": "mic-marginal-analysis-19",
+   "unit": "unit-1",
+   "topic": "marginal-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Ana paid \\$40 for a concert ticket she cannot resell. On the night, she feels sick and would enjoy staying home more. A friend says, \"Go, or you waste \\$40.\" What is the best reasoning?",
+   "options": [
+    "She has to go, or the \\$40 is lost",
+    "She should go, because the ticket's benefit includes the \\$40",
+    "The \\$40 is sunk; compare tonight's options",
+    "She should sell the ticket for \\$40"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The \\$40 is spent whatever she does, so it should not change her choice. If staying home is worth more to her tonight, she should stay.",
+    "options": [
+     "The \\$40 is gone either way; going does not get it back.",
+     "Past spending is not a benefit of going.",
+     "Right: a sunk cost does not change the best choice.",
+     "The ticket cannot be resold."
+    ]
+   }
+  }
+ ]
+}

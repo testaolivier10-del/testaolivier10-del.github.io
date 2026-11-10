@@ -1,0 +1,131 @@
+{
+ "id": "frq-monopsony-short",
+ "type": "short",
+ "points": 5,
+ "title": "The only employer of stone cutters: monopsony hiring, the wage bill and a minimum wage",
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "competitive-factor-markets",
+  "monopsony"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "4.C",
+  "2.A"
+ ],
+ "scenario": "Garnet Stone Works (invented) is the only employer of stone cutters in a remote town, so it is a monopsony in that labor market. It sells its stone in a perfectly competitive market and maximizes profit.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the labor market for stone cutters, showing the labor supply curve, the marginal factor cost curve and the marginal revenue product curve. <b>Show</b> the number of cutters Garnet hires and the wage it pays.",
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "label",
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "hire"
+     }
+    },
+    "slips": {
+     "MFC": "MRP = MFC gives the number hired; the wage is read down on the labor supply curve."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: Wage and Quantity of labor on the axes; an upward-sloping SL; MFC above SL and steeper; a downward-sloping MRP",
+     "accept": [
+      "W and L on the axes",
+      "S or SL, MFC (or MRC) and MRP (or D = MRP) labeled"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "The quantity hired, QM, where MRP = MFC, and the wage WM read on the SL curve at QM (below the MRP and MFC crossing)",
+     "accept": [
+      "QM from MRP = MFC and WM from labor supply, marked on the axes"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "Wage is on the vertical axis and Quantity of labor on the horizontal axis. SL slopes up; MFC starts at the same point and rises more steeply, above SL; MRP slopes down. Garnet hires QM, where MRP crosses MFC, and pays WM, found by going straight down from that crossing to SL. QM and WM are marked with dashed lines to the axes."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the area that shows Garnet's total wage bill.",
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "wage-bill"
+    }
+   },
+   "rubric": [
+    {
+     "point": "The rectangle from the origin to QM wide and up to WM (on SL) tall, fully shaded",
+     "accept": [
+      "the area WM × QM"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "The wage bill is WM × QM: the rectangle with corners at the origin, QM on the quantity axis, the point (QM, WM) on SL, and WM on the wage axis, fully shaded."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "type": "graph",
+   "prompt": "The town sets a minimum wage, Wmin, above WM and below the wage a competitive labor market would reach, as drawn. <b>Show</b> the number of cutters Garnet now hires.",
+   "graph": {
+    "kind": "monopsony",
+    "line": {
+     "id": "MW",
+     "at": 5
+    },
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "min-wage"
+     }
+    }
+   },
+   "rubric": [
+    {
+     "point": "The quantity where the Wmin line meets SL, which is greater than QM",
+     "accept": [
+      "a larger quantity of labor, at the minimum wage, read where Wmin meets labor supply"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "With the minimum wage, each cutter up to the labor supply curve costs exactly Wmin, so MFC is flat at Wmin there. Because MRP is still above Wmin where Wmin meets SL, Garnet hires out to that point, a quantity larger than QM."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "<b>Explain</b> why Garnet's marginal factor cost of labor is greater than the wage, without a minimum wage.",
+   "rubric": [
+    {
+     "point": "To hire one more cutter, Garnet must raise the wage it pays to all its cutters, so the added cost is the new cutter's wage plus the raise for every cutter already hired",
+     "accept": [
+      "it must pay a higher wage to everyone to attract one more worker"
+     ]
+    }
+   ],
+   "sample": "As the only employer, Garnet faces the upward-sloping labor supply curve. To hire one more cutter it has to offer a higher wage, and it must pay that higher wage to every cutter, not just the new one. So the added cost of the extra cutter, its MFC, is the new wage plus the raise for all the others, which is more than the wage itself."
+  }
+ ]
+}

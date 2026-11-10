@@ -1,0 +1,132 @@
+{
+ "id": "frq-cost-table-short",
+ "type": "short",
+ "points": 5,
+ "title": "A small bakery's cost table and its profit-maximizing output",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "short-run-costs",
+  "profit-maximization"
+ ],
+ "practices": [
+  "1.C",
+  "3.C",
+  "2.A"
+ ],
+ "scenario": "Linden Street Bakery sells every bagel at the market price of \\$3.20, a price it cannot change. The table shows its total cost of baking bagels each morning. The bakery and its numbers are invented, for practice.",
+ "stimulus": {
+  "title": "Linden Street Bakery: output and total cost",
+  "invented": true,
+  "table": {
+   "caption": "Total cost of baking bagels each morning (invented data for practice)",
+   "cols": [
+    "Bagels",
+    "Total cost (\\$)"
+   ],
+   "rows": [
+    [
+     "0",
+     "40"
+    ],
+    [
+     "10",
+     "60"
+    ],
+    [
+     "20",
+     "75"
+    ],
+    [
+     "30",
+     "95"
+    ],
+    [
+     "40",
+     "120"
+    ],
+    [
+     "50",
+     "150"
+    ],
+    [
+     "60",
+     "190"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the marginal cost of a bagel when output rises from 20 to 30 bagels. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$2 a bagel, with work shown: (95 - 75) / (30 - 20)",
+     "accept": [
+      "20 / 10 = 2"
+     ]
+    }
+   ],
+   "sample": "MC = change in total cost / change in output = $\\frac{95 - 75}{30 - 20} = \\frac{20}{10} = 2$ dollars a bagel."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the average variable cost of 40 bagels. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$2, with work shown: total variable cost (120 - 40 = 80) divided by 40",
+     "accept": [
+      "TVC = TC - TFC = 80; 80 / 40 = 2"
+     ]
+    }
+   ],
+   "sample": "Total fixed cost is the cost at zero output, \\$40, so TVC at 40 bagels is $120 - 40 = 80$ dollars and AVC = $80 \\div 40 = 2$ dollars."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Identify</b> the profit-maximizing number of bagels.",
+   "rubric": [
+    {
+     "point": "50 bagels",
+     "accept": [
+      "50"
+     ]
+    }
+   ],
+   "sample": "The profit-maximizing output is 50 bagels a morning."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "<b>Explain</b> your answer to part C using marginal analysis.",
+   "rubric": [
+    {
+     "point": "Up to 50 bagels each added bagel costs no more than the \\$3.20 it adds to revenue (MC of \\$3 between 40 and 50 is below MR = \\$3.20), while bagels 51 to 60 cost \\$4 each, more than MR, so producing them lowers profit",
+     "accept": [
+      "the bakery produces where MR = MC, the last output where MR is at least MC"
+     ]
+    }
+   ],
+   "sample": "Each bagel adds \\$3.20 to revenue (MR = P). From 40 to 50 bagels, MC is (150 - 120) / 10 = \\$3, below MR, so those bagels raise profit. From 50 to 60, MC is (190 - 150) / 10 = \\$4, above MR, so they would lower profit. The bakery stops at 50, the last output where MR is at least MC."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the bakery's profit at the profit-maximizing output. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$10, with work shown: total revenue (3.20 x 50 = 160) minus total cost (150)",
+     "accept": [
+      "TR - TC = 160 - 150 = 10"
+     ]
+    }
+   ],
+   "sample": "TR = $3.20 \\times 50 = 160$ dollars and TC = 150 dollars, so profit = $160 - 150 = 10$ dollars."
+  }
+ ]
+}

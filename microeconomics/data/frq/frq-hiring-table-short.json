@@ -1,0 +1,133 @@
+{
+ "id": "frq-hiring-table-short",
+ "type": "short",
+ "points": 5,
+ "title": "A hiring table at a bicycle repair shop",
+ "units": [
+  "unit-3",
+  "unit-5"
+ ],
+ "topics": [
+  "production-function",
+  "factor-markets",
+  "competitive-factor-markets"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "2.C"
+ ],
+ "scenario": "Spokewell Cycles (invented) repairs bicycles and sells each repair for \\$4 in a perfectly competitive market. It hires mechanics in a perfectly competitive labor market at a wage of \\$30 a day. The table shows the number of repairs it completes each day with different numbers of mechanics.",
+ "stimulus": {
+  "title": "Mechanics and repairs at Spokewell Cycles",
+  "invented": true,
+  "table": {
+   "caption": "Repairs completed per day at the invented Spokewell Cycles (invented data for practice)",
+   "cols": [
+    "Number of mechanics",
+    "Total repairs per day"
+   ],
+   "rows": [
+    [
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     "10"
+    ],
+    [
+     "2",
+     "24"
+    ],
+    [
+     "3",
+     "34"
+    ],
+    [
+     "4",
+     "40"
+    ],
+    [
+     "5",
+     "43"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the marginal revenue product of the third mechanic. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$40 a day, with work shown: MP = 34 - 24 = 10 repairs, and MRP = 10 × \\$4",
+     "accept": [
+      "(34 - 24) × 4 = 40",
+      "MRP = MP × P = 10 × \\$4 = \\$40"
+     ]
+    }
+   ],
+   "sample": "The third mechanic's marginal product is 34 - 24 = 10 repairs. MRP = MP × P = 10 × \\$4 = \\$40 a day."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Identify</b> the mechanic with whom diminishing marginal returns begin.",
+   "rubric": [
+    {
+     "point": "The third mechanic: marginal product falls from 14 (second) to 10 (third)",
+     "accept": [
+      "the third mechanic",
+      "marginal product begins to fall with the third"
+     ]
+    }
+   ],
+   "sample": "Diminishing marginal returns begin with the third mechanic. Marginal product rises from 10 to 14 with the second mechanic, then falls to 10 with the third."
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "prompt": "<b>Identify</b> the number of mechanics Spokewell hires to maximize profit.",
+   "rubric": [
+    {
+     "point": "3 mechanics",
+     "accept": [
+      "three"
+     ]
+    }
+   ],
+   "sample": "Spokewell hires 3 mechanics."
+  },
+  {
+   "label": "C(ii)",
+   "points": 1,
+   "prompt": "<b>Explain</b> your answer to C(i) using marginal revenue product and marginal resource cost.",
+   "rubric": [
+    {
+     "point": "The third mechanic's MRP (\\$40) is at least the MRC of \\$30 (the wage), while the fourth mechanic's MRP (6 × \\$4 = \\$24) is less than \\$30, so hiring stops at 3",
+     "accept": [
+      "MRP of the 3rd = \\$40 > \\$30 and MRP of the 4th = \\$24 < \\$30",
+      "hire while MRP ≥ MRC = wage"
+     ]
+    }
+   ],
+   "sample": "A profit-maximizing firm hires while MRP is at least MRC, and in a competitive labor market MRC equals the wage, \\$30. The MRPs are \\$40, \\$56, \\$40, \\$24 and \\$12. The third mechanic adds \\$40, more than \\$30, but the fourth adds only 6 × \\$4 = \\$24, less than \\$30, so Spokewell hires 3."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "The rent on Spokewell's shop rises by \\$100 a week. <b>Identify</b> the effect on the number of mechanics it hires, and <b>explain</b>.",
+   "rubric": [
+    {
+     "point": "No change (still 3 mechanics), because rent is a fixed cost that changes neither any mechanic's MRP nor the MRC (the wage)",
+     "accept": [
+      "the number hired stays the same because a fixed cost does not change MRP or MRC"
+     ]
+    }
+   ],
+   "sample": "Spokewell still hires 3 mechanics. Rent is a fixed cost: it is paid whatever the number of mechanics, so it changes neither the MRP of any mechanic nor the \\$30 cost of hiring one more. The comparison of MRP with MRC, and so the hiring choice, is unchanged; only profit falls."
+  }
+ ]
+}

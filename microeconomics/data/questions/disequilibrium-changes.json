@@ -561,19 +561,18 @@
    "options": [
     "The equilibrium price rises",
     "The equilibrium quantity rises",
-    "Consumer surplus falls",
+    "Consumer surplus rises",
     "The change in price is indeterminate"
    ],
    "correct": [
-    0,
-    2
+    0
    ],
    "why": {
-    "correct": "A supply decrease with demand unchanged moves the equilibrium up and to the left along demand: the price rises and the quantity falls. Consumer surplus shrinks because buyers pay more for fewer units.",
+    "correct": "A supply decrease with demand unchanged moves the equilibrium up and to the left along demand: the price rises and the quantity falls, and consumer surplus shrinks.",
     "options": [
      "Right: less supply raises the price.",
      "A supply decrease lowers the quantity.",
-     "Right: a higher price and a smaller quantity shrink the area under demand above the price.",
+     "Buyers pay more for fewer units, so consumer surplus falls.",
      "Only one curve shifts, so both changes are known."
     ]
    }

@@ -184,7 +184,7 @@
   }
   // The values the graph marks, as a legend under the figure.
   function baseLegend(m, k){
-    return [['D', 'meets the price axis at ' + money(k.choke)], ['S', 'meets the price axis at ' + money(k.floor)], [sub('P', 'E') + ', ' + sub('Q', 'E'), money(k.pe) + ', ' + units(k.qe) + ' units']];
+    return [['D', 'starts at ' + money(k.choke)], ['S', 'starts at ' + money(k.floor)], [sub('P', 'E') + ', ' + sub('Q', 'E'), money(k.pe) + ', ' + units(k.qe)]];
   }
   function fig(m, sp, rows, alt){ return { spec: sp, legend: rows, alt: alt }; }
 
@@ -227,7 +227,7 @@
   function genControl(r, ctx){
     var m, k, kind, gap, sp, at, tries = 0;
     do {
-      m = drawMarket(r); k = market(m); kind = r.pick(['ceiling', 'floor']); gap = r.pick([1, 1.5, 2]);
+      m = drawMarket(r); k = market(m); kind = r.pick(['ceiling', 'floor']); gap = r.pick([1.5, 2]);
       at = kind === 'ceiling' ? k.eqG[1] - gap : k.eqG[1] + gap;
       sp = spec(m, { type: kind, at: at * m.kP });
     } while((bad(sp) || !(at - (-m.sS) >= 1) || !(10 + m.sD - at >= 1)) && ++tries < 60);
@@ -261,7 +261,7 @@
     var wedge = ceil ? v.pdem - v.at : v.at - v.psup;
     return {
       type: 'control', ctx: ctx.id, topic: ctx.topic, text: text,
-      figure: fig(m, sp, baseLegend(m, k).concat([[ceil ? sub('P', 'C') : sub('P', 'F'), money(v.at)], [sub('Q', 'S') + ', ' + sub('Q', 'D'), units(v.qs) + ' and ' + units(v.qd) + ' units']]), 'A price ' + word + ' at ' + money(v.at) + ' on the market for ' + g.many + '.'),
+      figure: fig(m, sp, baseLegend(m, k).concat([[ceil ? sub('P', 'C') : sub('P', 'F'), money(v.at)], [sub('Q', 'S') + ', ' + sub('Q', 'D'), units(v.qs) + ', ' + units(v.qd)]]), 'A price ' + word + ' at ' + money(v.at) + ' on the market for ' + g.many + '.'),
       steps: steps,
       solution: [
         'At ' + money(v.at) + ' buyers want ' + units(v.qd) + ' and sellers offer ' + units(v.qs) + ': a ' + (ceil ? 'shortage' : 'surplus') + ' of ' + units(gapQ) + ' units.',
@@ -275,7 +275,7 @@
   /* ------------------------------------------------- type: tax */
   function genTax(r, ctx){
     var m, k, a, sp, tries = 0;
-    do { m = drawMarket(r); k = market(m); a = r.pick([1, 2, 3]); sp = spec(m, { type: 'tax', amount: a * m.kP }); } while((bad(sp) || k.eqG[0] - a / 2 < 1) && ++tries < 60);
+    do { m = drawMarket(r); k = market(m); a = r.pick([2, 3]); sp = spec(m, { type: 'tax', amount: a * m.kP }); } while((bad(sp) || k.eqG[0] - a / 2 < 1) && ++tries < 60);
     var v = values(m, { type: 'tax', amount: a * m.kP }), g = m.good;
     var text = '<p>The government puts a tax of <b>' + money(v.amount) + ' per unit</b> on sellers of ' + g.many + '. Before the tax, ' + units(k.qe) + ' sold at ' + money(k.pe) + '.</p>';
     var steps = [
@@ -300,7 +300,7 @@
     ];
     return {
       type: 'tax', ctx: ctx.id, topic: ctx.topic, text: text,
-      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'B') + ', ' + sub('P', 'S'), money(v.pb) + ' paid by buyers, ' + money(v.psell) + ' kept by sellers'], [sub('Q', 'T'), units(v.q) + ' units after the tax']]), 'A per-unit tax shifts supply up by ' + money(v.amount) + '.'),
+      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'B') + ', ' + sub('P', 'S'), money(v.pb) + ' buyers, ' + money(v.psell) + ' sellers'], [sub('Q', 'T'), units(v.q)]]), 'A per-unit tax shifts supply up by ' + money(v.amount) + '.'),
       steps: steps,
       solution: [
         'The tax shifts supply up by ' + money(v.amount) + '. The new quantity is ' + units(v.q) + '; buyers pay ' + money(v.pb) + ' and sellers keep ' + money(v.psell) + '.',
@@ -360,7 +360,7 @@
   /* ------------------------------------------------- type: subsidy */
   function genSubsidy(r, ctx){
     var m, k, a, sp, tries = 0;
-    do { m = drawMarket(r); k = market(m); a = r.pick([1, 2, 3]); sp = spec(m, { type: 'subsidy', amount: a * m.kP }); } while((bad(sp) || k.eqG[0] + a / 2 > 9 || k.eqG[1] - a / 2 < 0.6) && ++tries < 60);
+    do { m = drawMarket(r); k = market(m); a = r.pick([2, 3]); sp = spec(m, { type: 'subsidy', amount: a * m.kP }); } while((bad(sp) || k.eqG[0] + a / 2 > 9 || k.eqG[1] - a / 2 < 0.6) && ++tries < 60);
     var v = values(m, { type: 'subsidy', amount: a * m.kP }), g = m.good;
     var text = '<p>The government pays sellers of ' + g.many + ' a subsidy of <b>' + money(v.amount) + ' per unit</b>. Before the subsidy, ' + units(k.qe) + ' sold at ' + money(k.pe) + '.</p>';
     var whyC = deal(r, [
@@ -387,7 +387,7 @@
     ];
     return {
       type: 'subsidy', ctx: ctx.id, topic: ctx.topic, text: text,
-      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'S') + ', ' + sub('P', 'B'), money(v.psell) + ' received by sellers, ' + money(v.pb) + ' paid by buyers'], [sub('Q', 'SUB'), units(v.q) + ' units with the subsidy']]), 'A per-unit subsidy shifts supply down by ' + money(v.amount) + '.'),
+      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'S') + ', ' + sub('P', 'B'), money(v.psell) + ' sellers, ' + money(v.pb) + ' buyers'], [sub('Q', 'SUB'), units(v.q)]]), 'A per-unit subsidy shifts supply down by ' + money(v.amount) + '.'),
       steps: steps,
       solution: [
         'The subsidy shifts supply down by ' + money(v.amount) + '. The quantity rises to ' + units(v.q) + '; buyers pay ' + money(v.pb) + ' and sellers receive ' + money(v.psell) + '.',
@@ -402,7 +402,7 @@
   var COUNTRIES = ['Kestavia', 'Orlund', 'Pellaro'];
   function genTrade(r, ctx){
     var m, k, gap, sp, at, tries = 0;
-    do { m = drawMarket(r); k = market(m); gap = r.pick([1, 1.5, 2]); at = k.eqG[1] - gap; sp = spec(m, { type: 'world', at: at * m.kP }); } while((bad(sp) || at - (-m.sS) < 1) && ++tries < 60);
+    do { m = drawMarket(r); k = market(m); gap = r.pick([1.5, 2]); at = k.eqG[1] - gap; sp = spec(m, { type: 'world', at: at * m.kP }); } while((bad(sp) || at - (-m.sS) < 1) && ++tries < 60);
     var v = values(m, { type: 'world', at: at * m.kP }), g = m.good, land = r.pick(COUNTRIES);
     var text = '<p>' + land + ' opens its market for ' + g.many + ' to free trade at a world price of <b>' + money(v.at) + '</b>. With no trade, ' + units(k.qe) + ' sold at ' + money(k.pe) + '.</p>';
     var psC = deal(r, [
@@ -426,7 +426,7 @@
     ];
     return {
       type: 'trade', ctx: ctx.id, topic: ctx.topic, text: text,
-      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'W'), money(v.at) + ', the world price'], [sub('Q', 'S') + ', ' + sub('Q', 'D'), units(v.qs) + ' and ' + units(v.qd) + ' units']]), 'A world price of ' + money(v.at) + ' below the domestic equilibrium price.'),
+      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'W'), money(v.at)], [sub('Q', 'S') + ', ' + sub('Q', 'D'), units(v.qs) + ', ' + units(v.qd)]]), 'A world price of ' + money(v.at) + ' below the domestic equilibrium price.'),
       steps: steps,
       solution: [
         'At ' + money(v.at) + ' buyers want ' + units(v.qd) + ' and domestic sellers offer ' + units(v.qs) + ', so imports are ' + units(v.imports) + '.',
@@ -440,7 +440,7 @@
   /* ------------------------------------------------- type: tariff */
   function genTariff(r, ctx){
     var m, k, gap, a, sp, at, tries = 0;
-    do { m = drawMarket(r); k = market(m); a = r.pick([1, 2]); gap = r.pick([2.5, 3]); at = k.eqG[1] - gap; sp = spec(m, { type: 'tariff', at: at * m.kP, amount: a * m.kP }); } while((bad(sp) || at - (-m.sS) < 0.75) && ++tries < 80);
+    do { m = drawMarket(r); k = market(m); a = r.pick([1, 2]); gap = a + r.pick([1, 1.5]); at = k.eqG[1] - gap; sp = spec(m, { type: 'tariff', at: at * m.kP, amount: a * m.kP }); } while((bad(sp) || at - (-m.sS) < 0.75) && ++tries < 80);
     var v = values(m, { type: 'tariff', at: at * m.kP, amount: a * m.kP }), g = m.good, land = r.pick(COUNTRIES);
     var text = '<p>' + land + ' imports ' + g.many + ' at a world price of ' + money(v.at) + '. It now puts a tariff of <b>' + money(v.amount) + ' per unit</b> on imports, so the domestic price rises to ' + money(v.pt) + '.</p>';
     var steps = [
@@ -464,7 +464,7 @@
     ];
     return {
       type: 'tariff', ctx: ctx.id, topic: ctx.topic, text: text,
-      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'W') + ', ' + sub('P', 'W + t'), money(v.at) + ' and ' + money(v.pt)], [sub('Q', 'S1') + ', ' + sub('Q', 'S2') + ', ' + sub('Q', 'D2') + ', ' + sub('Q', 'D1'), [v.qs1, v.qs2, v.qd2, v.qd1].map(units).join(', ') + ' units']]), 'A tariff of ' + money(v.amount) + ' on a world price of ' + money(v.at) + '.'),
+      figure: fig(m, sp, baseLegend(m, k).concat([[sub('P', 'W') + ', ' + sub('P', 'W + t'), money(v.at) + ' and ' + money(v.pt)], [sub('Q', 'S1') + ', ' + sub('Q', 'S2'), units(v.qs1) + ', ' + units(v.qs2)], [sub('Q', 'D2') + ', ' + sub('Q', 'D1'), units(v.qd2) + ', ' + units(v.qd1)]]), 'A tariff of ' + money(v.amount) + ' on a world price of ' + money(v.at) + '.'),
       steps: steps,
       solution: [
         'At ' + money(v.pt) + ' buyers want ' + units(v.qd2) + ' and domestic sellers offer ' + units(v.qs2) + ': imports fall from ' + units(v.imports1) + ' to ' + units(v.imports) + '.',

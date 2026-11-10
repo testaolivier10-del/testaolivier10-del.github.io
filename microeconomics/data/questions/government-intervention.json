@@ -1,0 +1,790 @@
+{
+ "stimuli": {
+  "government-intervention-s1": {
+   "kind": "graph",
+   "title": "A market with a per-unit tax, areas lettered",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tax",
+     "amount": 2
+    },
+    "letters": true
+   }
+  },
+  "government-intervention-s2": {
+   "kind": "text",
+   "title": "Halden caps its rents",
+   "text": "<p>Halden is an invented city. Its apartment market clears at a monthly rent of \\$1,200, with 3,200 apartments rented. The city council passes a rent ceiling of \\$900 a month. At \\$900, renters want 4,000 apartments, but landlords offer only 2,500.</p>"
+  },
+  "government-intervention-s3": {
+   "kind": "data",
+   "title": "A per-unit tax on cans of kombucha",
+   "invented": true,
+   "table": {
+    "caption": "The market for cans of kombucha in Ostley, an invented town, before and after a \\$1 tax on each can, collected from sellers (invented data for practice)",
+    "cols": [
+     "",
+     "Price buyers pay",
+     "Price sellers keep",
+     "Cans sold per day"
+    ],
+    "rows": [
+     [
+      "Before the tax",
+      "\\$3.00",
+      "\\$3.00",
+      "1,000"
+     ],
+     [
+      "After the tax",
+      "\\$3.80",
+      "\\$2.80",
+      "800"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-government-intervention-1",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "government-intervention-s1",
+   "q": "In the graph, a per-unit tax is collected from sellers. Which areas together are the government's tax revenue?",
+   "options": [
+    "Areas c and e",
+    "Areas b, c, d and e",
+    "Areas b and d",
+    "Area a"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Tax revenue is the tax per unit (the gap between the price buyers pay and the price sellers keep) times the quantity after the tax: the rectangle made of areas b and d.",
+    "options": [
+     "Those two triangles are the deadweight loss.",
+     "That runs the rectangle out to the old quantity; only units still sold are taxed.",
+     "Right: the rectangle between the two prices, out to the new quantity.",
+     "Area a is consumer surplus after the tax."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-2",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "government-intervention-s1",
+   "q": "In the graph, which areas are the deadweight loss of the tax?",
+   "options": [
+    "Areas c and e",
+    "Areas b and d",
+    "Area f",
+    "Areas a and f"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The deadweight loss is the surplus on units no longer traded: the triangle between demand and supply from the quantity after the tax out to the original quantity, areas c and e.",
+    "options": [
+     "Right: the triangle between the curves past the new quantity.",
+     "That rectangle goes to the government as revenue; it is not lost.",
+     "Area f is producer surplus after the tax.",
+     "Those are the surpluses buyers and sellers keep."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-3",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "government-intervention-s1",
+   "q": "In the graph, which area is consumer surplus after the tax?",
+   "options": [
+    "Areas a, b and c",
+    "Areas a and b",
+    "Areas a and c",
+    "Area a"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "After the tax, buyers pay the higher price and buy the smaller quantity. Consumer surplus is the triangle under demand above that price, out to that quantity: area a. Before the tax it was areas a, b and c.",
+    "options": [
+     "That was consumer surplus before the tax.",
+     "Area b now goes to the government as tax.",
+     "Area c is part of the deadweight loss.",
+     "Right: under demand, above the price buyers now pay."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-4",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "government-intervention-s1",
+   "q": "In the graph, demand and supply are equally steep. How is the burden of the tax shared?",
+   "options": [
+    "Sellers bear the whole tax, because they hand it over",
+    "Equally: area b for buyers and area d for sellers",
+    "Buyers bear the whole tax, because the price rises",
+    "Buyers pay area c and sellers pay area e"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Area b is the buyers' share (the rise in the price they pay times the quantity) and area d the sellers' share (the fall in the price they keep). With equally steep curves the two are the same size: the burden is split evenly.",
+    "options": [
+     "Who sends the money to the government does not decide who bears it.",
+     "Right: equal slopes share the tax evenly.",
+     "The price buyers pay rises by only part of the tax.",
+     "Those are deadweight loss, not tax paid."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-5",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "government-intervention-s2",
+   "q": "At the Halden rent ceiling of \\$900, how large is the shortage of apartments?",
+   "why": {
+    "correct": "At \\$900, renters want 4,000 apartments but landlords offer 2,500. The shortage is $4000 - 2500 = 1500$ apartments."
+   },
+   "numeric": {
+    "from": {
+     "fn": "shortage",
+     "args": [
+      4000,
+      2500
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 800,
+      "why": "That compares quantity demanded with the old equilibrium quantity. The shortage compares quantity demanded with quantity supplied at \\$900."
+     },
+     {
+      "value": 700,
+      "why": "That is how far the quantity rented falls (3,200 to 2,500). The shortage is 4,000 minus 2,500."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-6",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "government-intervention-s2",
+   "q": "How many apartments are rented in Halden under the ceiling?",
+   "options": [
+    "4,000",
+    "2,500",
+    "3,200",
+    "1,500"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A trade needs both a renter and a landlord. Only 2,500 are offered at \\$900, so 2,500 are rented: the smaller of quantity demanded and quantity supplied.",
+    "options": [
+     "Renters want 4,000, but landlords offer only 2,500.",
+     "Right: the quantity supplied at \\$900.",
+     "That was the quantity before the ceiling.",
+     "That is the shortage, not the number rented."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-7",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "government-intervention-s2",
+   "q": "Who gains and who loses from Halden's rent ceiling?",
+   "options": [
+    "Renters as a group gain and landlords lose",
+    "Landlords gain because apartments are scarce",
+    "No one loses, because rents are lower",
+    "Renters who find a unit gain; landlords and renters left out lose"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Renters who still find an apartment pay \\$300 less, a transfer from landlords. Landlords lose that and the rents on units they no longer offer. Renters who cannot find an apartment lose too. The units no longer rented are deadweight loss.",
+    "options": [
+     "Renters who cannot find an apartment lose.",
+     "Landlords receive less per apartment and rent fewer.",
+     "Fewer apartments are rented, so some gains from trade disappear.",
+     "Right: a transfer to lucky renters plus a deadweight loss."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-8",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "government-intervention-s2",
+   "q": "Over several years, landlords in Halden convert some apartments to condos for sale and build few new rentals. What happens to the shortage at the \\$900 ceiling?",
+   "options": [
+    "It grows, as fewer rentals are offered at \\$900",
+    "It shrinks, as rents rise to \\$1,200",
+    "It disappears, as renters move away",
+    "It stays at 1,500, as the ceiling is unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Given time, supply responds more: fewer rentals are offered at \\$900. Quantity supplied falls further while quantity demanded does not, so the shortage grows.",
+    "options": [
+     "Right: supply is more elastic with time.",
+     "The ceiling holds the rent at \\$900.",
+     "The stem says supply falls, which widens the gap.",
+     "The ceiling is the same, but quantity supplied at it falls."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-9",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "government-intervention-s3",
+   "q": "Calculate the government's daily revenue from the kombucha tax, in dollars.",
+   "why": {
+    "correct": "Tax revenue is the tax per unit times the quantity sold after the tax: $\\$1 \\times 800 = \\$800$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "taxRevenue",
+     "args": [
+      1,
+      800
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1000,
+      "why": "That uses the quantity before the tax. Only the 800 cans still sold are taxed."
+     },
+     {
+      "value": 3040,
+      "why": "That is what buyers spend after the tax. Revenue is the tax per can times the cans sold."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-10",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "government-intervention-s3",
+   "q": "What percent of the tax do buyers bear?",
+   "why": {
+    "correct": "Buyers pay \\$3.80 instead of \\$3.00: \\$0.80 of the \\$1 tax. Sellers keep \\$2.80 instead of \\$3.00: \\$0.20. The buyers' share is $\\frac{0.80}{1.00} \\times 100 = 80\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "incidence",
+     "args": [
+      3,
+      3.8,
+      2.8
+     ],
+     "pick": "buyerShare"
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "That is the sellers' share: the fall in the price they keep, \\$0.20 of the \\$1 tax."
+     },
+     {
+      "value": 100,
+      "why": "Sellers hand the tax to the government, but buyers pay only \\$0.80 more. The rest comes out of the price sellers keep."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-11",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "government-intervention-s3",
+   "q": "What do the kombucha results say about the elasticities in this market?",
+   "options": [
+    "Supply is less elastic than demand",
+    "Demand and supply are equally elastic",
+    "Demand is less elastic than supply",
+    "Demand is perfectly elastic"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The side of the market that is less elastic bears more of a tax. Buyers bear 80%, so demand is less elastic (more inelastic) than supply here.",
+    "options": [
+     "Then sellers would bear the larger share.",
+     "Then the burden would be split evenly.",
+     "Right: the less elastic side bears more of the tax.",
+     "Then buyers would bear none of the tax."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-12",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "government-intervention-s3",
+   "q": "Calculate the deadweight loss of the kombucha tax, in dollars per day.",
+   "why": {
+    "correct": "The deadweight loss is a triangle: base equal to the fall in quantity, $1000 - 800 = 200$ cans, and height equal to the tax wedge, \\$1. $\\tfrac{1}{2} \\times 200 \\times \\$1 = \\$100$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "dwl",
+     "args": [
+      200,
+      1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 200,
+      "why": "That is a rectangle. The deadweight loss is a triangle, so take one half."
+     },
+     {
+      "value": 800,
+      "why": "That is the tax revenue, which goes to the government and is not lost."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-13",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Draw a binding price ceiling on the graph.",
+   "why": {
+    "correct": "A price ceiling is a legal maximum price. It binds only if it sits below the equilibrium price; there, quantity demanded exceeds quantity supplied."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "line": {
+     "id": "Pc"
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "side": "below"
+     }
+    },
+    "slips": {
+     "Pc": "A ceiling above the equilibrium price does not bind: the market price is already lower, so nothing changes."
+    }
+   }
+  },
+  {
+   "id": "mic-government-intervention-14",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Draw a binding price floor on the graph.",
+   "why": {
+    "correct": "A price floor is a legal minimum price. It binds only if it sits above the equilibrium price; there, quantity supplied exceeds quantity demanded."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "line": {
+     "id": "Pf"
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "side": "above"
+     }
+    },
+    "slips": {
+     "Pf": "A floor below the equilibrium price does not bind: the market price is already higher."
+    }
+   }
+  },
+  {
+   "id": "mic-government-intervention-15",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The government places a per-unit tax on sellers of the good. Shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "A tax on each unit sold raises sellers' cost of selling it, so supply shifts left (up by the tax). The new equilibrium has a higher price for buyers and a smaller quantity."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tax",
+     "amount": 2
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left",
+       "steps": 2
+      }
+     ],
+     "because": "a per-unit tax collected from sellers",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "The tax is collected from sellers, so it shifts supply. (A tax collected from buyers would shift demand left, with the same result.)"
+    }
+   }
+  },
+  {
+   "id": "mic-government-intervention-16",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The government pays sellers a per-unit subsidy. Shade the cost of the subsidy to the government.",
+   "why": {
+    "correct": "The cost is the subsidy per unit times the new, larger quantity: the whole rectangle between the price sellers receive (top) and the price buyers pay (bottom), from zero out to the quantity after the subsidy, including the part beyond the old quantity."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "subsidy",
+     "amount": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "subsidy-cost"
+    },
+    "slips": {
+     "dwl": "That triangle is only the deadweight loss. The cost is the whole rectangle between the two prices out to the new quantity."
+    }
+   }
+  },
+  {
+   "id": "mic-government-intervention-17",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A per-unit subsidy is paid to sellers. Shade the deadweight loss it creates.",
+   "why": {
+    "correct": "The subsidy pushes output past the original equilibrium quantity. Units beyond it cost sellers more (the height of supply) than they are worth to buyers (the height of demand): the triangle between supply and demand from the old quantity out to the new one."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "subsidy",
+     "amount": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    }
+   }
+  },
+  {
+   "id": "mic-government-intervention-18",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A binding price ceiling is in place. Shade the deadweight loss.",
+   "why": {
+    "correct": "Under the ceiling only the quantity supplied at the ceiling is traded. The deadweight loss is the triangle between demand (above) and supply (below) from that quantity out to the equilibrium quantity."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "ceiling",
+     "at": 3
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    }
+   }
+  },
+  {
+   "id": "mic-government-intervention-19",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A binding price floor is in place. Shade consumer surplus.",
+   "why": {
+    "correct": "Under the floor buyers pay the floor price and buy only the quantity demanded at it. Consumer surplus is the triangle under demand and above the floor, out to that quantity."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "floor",
+     "at": 7
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    }
+   }
+  },
+  {
+   "id": "mic-government-intervention-20",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Before a subsidy, 50 units are sold. The government pays sellers \\$2 for each unit, and the quantity sold rises to 60. What is the cost of the subsidy to the government, in dollars?",
+   "why": {
+    "correct": "The government pays \\$2 on every unit sold after the subsidy: $\\$2 \\times 60 = \\$120$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "subsidyCost",
+     "args": [
+      2,
+      60
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "subsidyCost",
+       "args": [
+        2,
+        50
+       ]
+      },
+      "why": "That uses the quantity before the subsidy. The government pays on all 60 units sold after it."
+     },
+     {
+      "value": 20,
+      "why": "That counts only the 10 extra units. The subsidy is paid on every unit sold."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-21",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In a market with equilibrium \\$5 and 50 units, a price ceiling of \\$3 is set. At \\$3, 30 units are supplied, and buyers would pay up to \\$7 for the 30th unit. Calculate the deadweight loss, in dollars.",
+   "why": {
+    "correct": "Units 30 to 50 are no longer traded. The lost surplus is a triangle with base $50 - 30 = 20$ and height from supply (\\$3) up to demand (\\$7) at 30 units: $\\tfrac{1}{2} \\times 20 \\times 4 = \\$40$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "dwl",
+     "args": [
+      20,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 80,
+      "why": "That is a rectangle; take one half."
+     },
+     {
+      "value": 20,
+      "why": "That uses the gap from the ceiling to the equilibrium price, \\$2. The height is the gap between demand and supply at 30 units: \\$7 minus \\$3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-22",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A city sets a ceiling of \\$2.50 on a bus ticket when the market price is \\$2.00. What happens?",
+   "options": [
+    "A shortage, because a ceiling holds the price down",
+    "The price rises to \\$2.50",
+    "A surplus, because sellers want to charge \\$2.50",
+    "Nothing: the ceiling is above the equilibrium price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A ceiling above the equilibrium price does not bind: the market already settles below it, so the price, quantity and surpluses are unchanged.",
+    "options": [
+     "A ceiling holds the price down only when it sits below equilibrium.",
+     "A ceiling is a maximum, not a target.",
+     "At \\$2.00 the market already clears.",
+     "Right: a nonbinding ceiling has no effect."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-23",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A government limits the number of fishing licenses, so the catch of a fish falls from 900 to 600 tons a year below the market quantity. Other things equal, what happens in the fish market?",
+   "options": [
+    "The quantity falls to 600 tons and the price falls",
+    "The price stays the same because demand is unchanged",
+    "The quantity falls to 600 tons and the price rises",
+    "The quantity rises because each boat fishes more"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A binding limit on quantity (a quota) holds the quantity below equilibrium. With fewer fish sold, buyers bid the price up along demand: the price rises and the quantity falls to 600 tons, and the units no longer traded are deadweight loss.",
+    "options": [
+     "Less fish for the same buyers pushes the price up.",
+     "A lower quantity moves buyers up along demand to a higher price.",
+     "Right: a binding quota cuts quantity and raises the price.",
+     "The licenses limit the total catch."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-24",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "The government gives sellers a \\$1 subsidy for each unit. Compared with before, what happens to the prices buyers pay and sellers receive?",
+   "options": [
+    "Buyers pay more and sellers receive less",
+    "Buyers pay less and sellers receive more",
+    "Buyers pay \\$1 less and sellers receive the same",
+    "Both prices stay the same and quantity rises"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Supply shifts right by the subsidy. Buyers pay a lower price than before and sellers receive a higher one (the price buyers pay plus the subsidy), so both sides share the benefit.",
+    "options": [
+     "That is the effect of a tax.",
+     "Right: the subsidy opens a wedge with sellers on top.",
+     "Unless supply is perfectly elastic, sellers also gain part of it.",
+     "More quantity is sold only at a lower price to buyers."
+    ]
+   }
+  },
+  {
+   "id": "mic-government-intervention-25",
+   "unit": "unit-2",
+   "topic": "government-intervention",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "A binding price floor is set for milk. Which results follow? Select all that apply.",
+   "options": [
+    "A surplus of milk",
+    "More milk is bought than before",
+    "The price buyers pay falls",
+    "Consumer surplus rises"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Above equilibrium, quantity supplied exceeds quantity demanded: a surplus of milk. Buyers pay more and buy less, so consumer surplus falls; the units no longer traded are deadweight loss.",
+    "options": [
+     "Right: quantity supplied exceeds quantity demanded.",
+     "Buyers buy less at the higher price.",
+     "The floor holds the price above equilibrium, so buyers pay more.",
+     "Buyers pay more and buy less, so consumer surplus falls."
+    ]
+   }
+  }
+ ]
+}

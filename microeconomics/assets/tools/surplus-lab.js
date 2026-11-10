@@ -278,7 +278,7 @@
 
   /* ------------------------------------------------------ test yourself */
   function legendHtml(rows){
-    return '<dl class="sl-leg">' + rows.map(function(r){ return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>';
+    return '<dl class="sl-leg" aria-label="Values on the graph (prices in dollars, quantities in units)">' + rows.map(function(r){ return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>';
   }
   function quiz(host, data){
     T.drill(host, data, { slug: 'surplus-lab', noun: 'drill',
@@ -294,21 +294,24 @@
         el.appendChild(f);
         if(p.table){ f.innerHTML = T.wrapTables(p.table); return; }
         if(!p.figure) return;
+        // The graph sits straight in the figure (the shared stage styles size
+        // a .cd-fig > .mic-graph), the legend under it.
         var g = document.createElement('div');
-        g.className = 'sl-qgraph';
-        g.innerHTML = G.svg(Object.assign({}, p.figure.spec, { do: ['shade'] }), { letters: true }, { label: p.figure.alt });
+        // the same structure a mounted graph has, so the stage sizes it the same way
+        g.className = 'mic-graph sl-qgraph';
+        g.innerHTML = '<div class="mic-gr-stage">' + G.svg(Object.assign({}, p.figure.spec, { do: ['shade'] }), { letters: true }, { label: p.figure.alt }) + '</div>';
         f.appendChild(g);
         f.insertAdjacentHTML('beforeend', legendHtml(p.figure.legend));
-        api.gbox = g;
-        watchMarks(g);
+        api.gbox = g; api.fig = f;
+        watchMarks(f);
       },
       // Each shade step gets a fresh graph in the figure, so the shading of
       // one step never carries into the next.
       graphHost: function(s, api){
         if(!api.gbox) return null;
-        api.gbox.innerHTML = '';
         var d = document.createElement('div');
-        api.gbox.appendChild(d);
+        api.fig.replaceChild(d, api.gbox);
+        api.gbox = d;
         return d;
       }
     });

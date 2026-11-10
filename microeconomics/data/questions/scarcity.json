@@ -438,19 +438,18 @@
    "q": "A pizzeria uses each of these. Which are labor? Select all that apply.",
    "options": [
     "The cooks who make the pizzas",
-    "The drivers who deliver them",
+    "The delivery van",
     "The pizza ovens",
     "The tomatoes from a nearby farm"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Labor is human effort used in production: cooking and delivering both count.",
+    "correct": "Labor is human effort used in production: the cooks' work. The van and ovens are capital, and the tomatoes come from land.",
     "options": [
      "Right: the cooks' effort is labor.",
-     "Right: the drivers' effort is labor.",
+     "A van is a machine made to produce a service: capital.",
      "Ovens are capital.",
      "Farm produce comes from land, a natural resource."
     ]

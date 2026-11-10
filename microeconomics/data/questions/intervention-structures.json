@@ -1,0 +1,657 @@
+{
+ "stimuli": {
+  "intervention-structures-s1": {
+   "kind": "data",
+   "title": "Brightwater Power, a natural monopoly",
+   "invented": true,
+   "table": {
+    "caption": "The invented Brightwater Power company is the only supplier of electricity in its region. Quantity is in thousands of units a month; prices and costs are in dollars per unit. Marginal cost is \\$2 at every quantity. (Invented data for practice.)",
+    "cols": [
+     "Quantity",
+     "Price on the demand curve",
+     "Marginal revenue",
+     "Average total cost"
+    ],
+    "rows": [
+     [
+      "4",
+      "\\$6",
+      "\\$2",
+      "\\$5"
+     ],
+     [
+      "6",
+      "\\$4",
+      "-\\$2",
+      "\\$4"
+     ],
+     [
+      "8",
+      "\\$2",
+      "-\\$6",
+      "\\$3.50"
+     ]
+    ]
+   }
+  },
+  "intervention-structures-s2": {
+   "kind": "text",
+   "title": "Taxing a monopoly ferry",
+   "text": "<p>The Corvel Ferry Company (invented) is the only ferry to an island. It maximizes profit by carrying 50 riders a day at \\$12 each, for total revenue of \\$600 and total cost of \\$400. The island council considers two taxes: a lump-sum tax of \\$150 a day, or a tax of \\$2 for every rider carried.</p>"
+  },
+  "intervention-structures-s3": {
+   "kind": "text",
+   "title": "One minimum wage, two towns",
+   "text": "<p>A region sets a minimum wage. In Ardley (invented), dozens of restaurants compete to hire cooks, and the minimum wage is above the wage the market had settled at. In Pelham (invented), one large plant is the only employer of machine operators, and the minimum wage is above the wage the plant had paid but below the wage a competitive market would reach.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-intervention-structures-1",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A regulator sets a price ceiling on this monopoly at the allocatively efficient price. Draw the ceiling at that height.",
+   "why": {
+    "correct": "The allocatively efficient price is where demand meets MC. With the ceiling there, the ceiling becomes the firm's marginal revenue out to demand, so the firm produces where MC equals the ceiling: more output at a lower price than without regulation."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "line": {
+     "id": "Pr"
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "to": "allocative"
+     }
+    },
+    "slips": {
+     "MR": "The efficient price is where demand meets MC, not where MR meets MC."
+    }
+   }
+  },
+  {
+   "id": "mic-intervention-structures-2",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the fair-return price and quantity for this natural monopoly.",
+   "why": {
+    "correct": "A fair-return price sets price equal to average total cost: the point where demand meets ATC. The firm earns zero economic profit (a normal profit) and produces more than it would unregulated."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "natural": true,
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "fair-return"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-intervention-structures-3",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the socially optimal price and quantity for this natural monopoly.",
+   "why": {
+    "correct": "The socially optimal (allocatively efficient) price is where demand meets MC. Because ATC is above MC over the whole range, the price there is below ATC and the firm makes a loss."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "natural": true,
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "allocative"
+     }
+    },
+    "slips": {
+     "ATC": "Where demand meets ATC is the fair-return point; the socially optimal point is where demand meets MC."
+    }
+   }
+  },
+  {
+   "id": "mic-intervention-structures-4",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A regulator sets this natural monopoly's price so that it earns a normal profit. Draw the regulated price line.",
+   "why": {
+    "correct": "A normal profit (zero economic profit) means price equals ATC, so the regulated price is at the height where demand crosses ATC: the fair-return price."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "natural": true,
+    "line": {
+     "id": "Pr"
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "to": "fair-return"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-intervention-structures-5",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the economic profit this natural monopoly earns with no regulation.",
+   "why": {
+    "correct": "Unregulated, it produces where MR = MC and reads the price from demand. Profit is the rectangle between that price and ATC at that quantity, from zero out to the quantity (region profit)."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "natural": true,
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "profit"
+    }
+   }
+  },
+  {
+   "id": "mic-intervention-structures-6",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. Unregulated, Brightwater produces where MR = MC. What is its economic profit, in thousands of dollars a month?",
+   "stimulus": "intervention-structures-s1",
+   "why": {
+    "correct": "MR = MC = \\$2 at 4 thousand units. The price from demand is \\$6 and ATC is \\$5, so profit = (P - ATC) × Q = (\\$6 - \\$5) × 4 = 4 thousand dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "unitProfit",
+     "args": [
+      6,
+      5,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "unitProfit",
+       "args": [
+        6,
+        2,
+        4
+       ]
+      },
+      "why": "16 uses MC as the cost per unit. Profit uses average total cost: (\\$6 - \\$5) × 4."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        6,
+        4
+       ]
+      },
+      "why": "24 is total revenue. Subtract total cost: profit = (P - ATC) × Q."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-7",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Use the table. What is the fair-return price?",
+   "stimulus": "intervention-structures-s1",
+   "options": [
+    "\\$2, where price equals MC",
+    "\\$6, where MR equals MC",
+    "\\$4, where price equals ATC",
+    "\\$5, the ATC of the monopoly output"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The fair-return price is where the demand curve meets ATC, so the firm earns zero economic profit.",
+    "options": [
+     "That is the socially optimal price.",
+     "That is the unregulated monopoly price.",
+     "Right: at 6 thousand units the demand price and ATC are both \\$4.",
+     "At \\$5 buyers want less than 6 thousand units, and the price does not match ATC on demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-8",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. A regulator sets the socially optimal price, P = MC = \\$2. How large a subsidy, in thousands of dollars a month, keeps Brightwater from losing money?",
+   "stimulus": "intervention-structures-s1",
+   "why": {
+    "correct": "At \\$2, buyers want 8 thousand units, where ATC is \\$3.50. The loss is (ATC - P) × Q = (\\$3.50 - \\$2) × 8 = 12 thousand dollars, so a subsidy of 12 covers it."
+   },
+   "numeric": {
+    "from": {
+     "fn": "rectangle",
+     "args": [
+      8,
+      {
+       "fn": "sub",
+       "args": [
+        3.5,
+        2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "rectangle",
+       "args": [
+        8,
+        3.5
+       ]
+      },
+      "why": "28 is total cost. The subsidy covers only the loss: (ATC - P) × Q."
+     },
+     {
+      "from": {
+       "fn": "rectangle",
+       "args": [
+        4,
+        {
+         "fn": "sub",
+         "args": [
+          3.5,
+          2
+         ]
+        }
+       ]
+      },
+      "why": "6 uses the unregulated quantity. At \\$2, buyers want 8 thousand units."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-9",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Use the table. Why does the socially optimal price leave a natural monopoly with a loss?",
+   "stimulus": "intervention-structures-s1",
+   "options": [
+    "ATC is above MC wherever demand meets MC",
+    "The regulator sets the price below marginal cost",
+    "Demand is inelastic at that price",
+    "The firm produces less than at the fair-return price"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A natural monopoly has falling ATC, so MC is below ATC. Pricing at MC cannot cover average cost without a subsidy.",
+    "options": [
+     "Right: with economies of scale throughout, P = MC means P < ATC.",
+     "The price equals MC; the loss comes from ATC being above MC.",
+     "Elasticity does not create the gap between ATC and MC.",
+     "It produces more: 8 thousand units against 6."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-10",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "In the scenario, the council chooses the lump-sum tax. Corvel's price and number of riders do not change. What is its daily economic profit after the tax, in dollars?",
+   "stimulus": "intervention-structures-s2",
+   "why": {
+    "correct": "Profit before the tax is \\$600 - \\$400 = \\$200. A lump-sum tax adds \\$150 to total cost: profit = \\$600 - \\$550 = \\$50."
+   },
+   "numeric": {
+    "from": {
+     "fn": "profit",
+     "args": [
+      600,
+      550
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "profit",
+       "args": [
+        600,
+        400
+       ]
+      },
+      "why": "\\$200 is the profit before the tax. Add the \\$150 to total cost."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        150,
+        50
+       ]
+      },
+      "why": "\\$100 subtracts the wrong numbers. Profit = total revenue - (total cost + tax) = \\$600 - \\$550."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-11",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, why does the lump-sum tax leave Corvel's price and number of riders unchanged?",
+   "stimulus": "intervention-structures-s2",
+   "options": [
+    "It is too small to matter to the firm",
+    "Riders pay the tax, not the firm",
+    "A monopoly sets any price it wants regardless of costs",
+    "It leaves MC unchanged, so MR = MC holds at 50 riders"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Lump-sum taxes change profit, not the profit-maximizing quantity or price.",
+    "options": [
+     "Size is not the reason; even a large lump-sum tax leaves MC unchanged.",
+     "The tax is a fixed charge on the firm.",
+     "A monopoly picks its quantity where MR = MC; a change in MC would change it.",
+     "Right: a fixed amount owed whatever the output raises ATC but not MC."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-12",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, the council chooses the \\$2-per-rider tax instead. What happens to Corvel's output and price?",
+   "stimulus": "intervention-structures-s2",
+   "options": [
+    "Output and price stay the same",
+    "Output falls and price rises",
+    "Output rises and price falls",
+    "Output falls and price falls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A per-unit tax shifts MC up. The monopoly cuts output and raises its price, moving further from the efficient quantity.",
+    "options": [
+     "That is the lump-sum tax. A per-unit tax raises MC.",
+     "Right: MC rises by \\$2, so MR = MC at a smaller quantity, and the price read from demand is higher.",
+     "A higher MC leads to less output, not more.",
+     "With less output, the price read from demand is higher."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-13",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, what happens to the number of cooks employed in Ardley?",
+   "stimulus": "intervention-structures-s3",
+   "options": [
+    "It rises, because the higher wage draws more cooks",
+    "It falls, as restaurants move up labor demand",
+    "It stays the same, because the restaurants compete",
+    "It rises, because MFC becomes flat"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a competitive labor market, a binding minimum wage works like a price floor: a surplus of labor and less employment.",
+    "options": [
+     "More cooks offer to work, but restaurants hire fewer; the quantity hired is set by demand.",
+     "Right: at a wage above equilibrium, fewer cooks are demanded than are offered.",
+     "A binding wage floor changes the quantity demanded.",
+     "That happens in a monopsony; each restaurant here already took the wage as given."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-14",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, what happens to the number of machine operators employed in Pelham?",
+   "stimulus": "intervention-structures-s3",
+   "options": [
+    "It falls, as it does in the town of Ardley",
+    "It stays the same, because the plant still sets its own wage",
+    "It falls to zero, since the plant will not pay more",
+    "It rises: each extra operator costs just the minimum wage"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A minimum wage between the monopsony wage and the competitive wage raises both the wage and employment.",
+    "options": [
+     "In a monopsony, a minimum wage below the competitive wage raises employment.",
+     "The plant can no longer pay less than the minimum wage, which changes its MFC.",
+     "The plant still gains from hiring workers whose MRP is above the minimum wage.",
+     "Right: MFC becomes flat at the minimum wage up to labor supply, so the plant hires more."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-15",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the scenario, what explains the different effects on employment?",
+   "stimulus": "intervention-structures-s3",
+   "options": [
+    "Market structure: many employers versus one",
+    "Cooks and machine operators have different skills",
+    "Ardley's minimum wage is higher than Pelham's",
+    "Restaurants earn less profit than factories"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The effect of an intervention depends on the market structure it lands in.",
+    "options": [
+     "Right: the same policy changes MFC differently for a wage taker and a monopsony.",
+     "Skills affect wages, but the opposite effects come from the structure of each market.",
+     "The scenario sets one minimum wage for the region.",
+     "Profit does not decide the direction of the effect."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-16",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A binding price ceiling lowers the quantity traded in a perfectly competitive market. Why can a price ceiling raise the quantity a monopoly sells?",
+   "options": [
+    "The ceiling raises the demand for the monopoly's good",
+    "The ceiling lowers the monopoly's marginal cost",
+    "A ceiling makes MR flat, so cutting output no longer raises price",
+    "Monopolies can ignore price ceilings set below their own price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A monopoly restricts output because selling more means cutting the price on every unit. A ceiling removes that reason up to the demand curve.",
+    "options": [
+     "A ceiling does not shift demand.",
+     "Costs do not change; the firm's marginal revenue does.",
+     "Right: up to demand, each unit sold earns the ceiling price, so MR = ceiling, and the firm produces where MC meets it.",
+     "The firm must obey the ceiling; it changes the firm's best output."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-17",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement describes the fair-return price for a regulated natural monopoly?",
+   "options": [
+    "Price equals MC, so output is allocatively efficient",
+    "Price is where MR equals MC",
+    "Price equals the minimum of ATC",
+    "P = ATC, so the firm earns zero economic profit"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fair return: P = ATC. Socially optimal: P = MC. Unregulated: Q at MR = MC, P from demand.",
+    "options": [
+     "That is the socially optimal price, which leaves a loss.",
+     "That is the unregulated monopoly's choice.",
+     "A natural monopoly's ATC is still falling where it meets demand.",
+     "Right: the firm covers all costs, including a normal profit."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-18",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A government pays a monopoly a per-unit subsidy. Compared with no subsidy, what happens to the monopoly's output?",
+   "options": [
+    "It stays the same, because a monopoly sets its own output",
+    "It rises, because the subsidy lowers marginal cost",
+    "It falls, because the monopoly earns more profit",
+    "It stays the same, because the subsidy is a lump sum"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Per-unit taxes and subsidies change MC and so output; lump-sum ones change only profit.",
+    "options": [
+     "A change in MC changes the profit-maximizing output.",
+     "Right: MC shifts down, so MR = MC at a larger quantity.",
+     "More profit per unit gives a reason to produce more, not less.",
+     "A per-unit subsidy depends on output, so it changes marginal cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-19",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.A",
+   "q": "Which policies would move a profit-maximizing monopoly toward the allocatively efficient quantity? Select all that apply.",
+   "options": [
+    "A price ceiling set where demand meets MC",
+    "A per-unit subsidy to the monopoly",
+    "A lump-sum tax on the monopoly",
+    "A per-unit tax on the monopoly",
+    "A lump-sum subsidy to the monopoly"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Only policies that change the firm's marginal decision (its MR or its MC) change output.",
+    "options": [
+     "Right: the firm then produces where MC meets the ceiling.",
+     "Right: it lowers MC, raising output.",
+     "It changes profit but not MC, price or quantity.",
+     "It raises MC, lowering output further.",
+     "It changes profit but not output."
+    ]
+   }
+  },
+  {
+   "id": "mic-intervention-structures-20",
+   "unit": "unit-6",
+   "topic": "intervention-structures",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does regulation of market power try to do?",
+   "options": [
+    "Raise the profits of firms with market power",
+    "Set each price at the highest willingness to pay of any buyer",
+    "Move the firm toward competitive output and price",
+    "Keep firms from earning a normal profit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Price regulation, antitrust and similar policies aim at the inefficiency of market power: P > MC and too little output.",
+    "options": [
+     "Regulation usually lowers monopoly profit.",
+     "That describes perfect price discrimination, not regulation.",
+     "Right: lower price, more output, less deadweight loss.",
+     "Fair-return regulation is designed to allow a normal profit."
+    ]
+   }
+  }
+ ]
+}

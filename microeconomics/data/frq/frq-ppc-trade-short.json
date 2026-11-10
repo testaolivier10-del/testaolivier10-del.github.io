@@ -1,0 +1,111 @@
+{
+ "id": "frq-ppc-trade-short",
+ "type": "short",
+ "points": 5,
+ "title": "Two studios, mugs and vases: opportunity cost, comparative advantage and terms of trade",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "production-possibilities",
+  "comparative-advantage"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "1.C",
+  "2.A"
+ ],
+ "scenario": "Two invented pottery studios each have the same number of potters and kilns. In one day, Pinecrest Studio can make 60 mugs or 20 vases, and Quarry Lane Studio can make 24 mugs or 12 vases. Each studio can make any combination on a straight line between those amounts (constant opportunity cost).",
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Draw</b> a correctly labeled production possibilities curve for Pinecrest Studio, with mugs on the horizontal axis. On your graph, <b>plot</b> point X, a combination of mugs and vases Pinecrest could consume after specializing and trading with Quarry Lane but could not produce on its own.",
+   "points": 2,
+   "type": "graph",
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Mugs",
+     "y": "Vases"
+    },
+    "linear": true,
+    "ends": {
+     "x": 60,
+     "y": 20
+    },
+    "do": [
+     "label",
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "region": "outside"
+     }
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: Mugs on the horizontal axis, Vases on the vertical axis, and a straight-line PPC labeled (intercepts 60 mugs and 20 vases).",
+     "accept": [
+      "axes labeled \"Mugs\" and \"Vases\" or \"Quantity of mugs\" and \"Quantity of vases\"",
+      "the line labeled PPC or Pinecrest"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "Point X plotted outside (beyond) Pinecrest's PPC.",
+     "accept": [
+      "any point above and to the right of the line, for example 30 mugs and 12 vases"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "The graph has Mugs on the horizontal axis and Vases on the vertical axis. A straight line labeled PPC runs from 20 vases on the vertical axis to 60 mugs on the horizontal axis. Point X sits outside the line, at 30 mugs and 12 vases: on its own, 30 mugs would leave room for only 10 vases, but trade lets Pinecrest consume beyond its own PPC."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>Calculate</b> Pinecrest's opportunity cost of making one vase, in mugs. Show your work.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States 3 mugs per vase, with work shown (60 mugs ÷ 20 vases).",
+     "accept": [
+      "3 mugs",
+      "60/20 = 3"
+     ]
+    }
+   ],
+   "sample": "To make 20 vases Pinecrest gives up 60 mugs, so one vase costs $\\frac{60}{20} = 3$ mugs."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Identify</b> which studio has the comparative advantage in vases, and <b>explain</b> using the opportunity costs.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Quarry Lane, because a vase costs it 2 mugs (24 ÷ 12), less than Pinecrest's 3 mugs.",
+     "accept": [
+      "Quarry Lane has the lower opportunity cost of vases: 2 mugs against 3"
+     ]
+    }
+   ],
+   "sample": "Quarry Lane has the comparative advantage in vases. One vase costs Quarry Lane $\\frac{24}{12} = 2$ mugs but costs Pinecrest 3 mugs, so Quarry Lane gives up less to make a vase, even though Pinecrest can make more vases in a day."
+  },
+  {
+   "label": "D",
+   "prompt": "The studios specialize according to comparative advantage and agree to trade 1 vase for 2.5 mugs. <b>Explain</b> whether these terms of trade benefit both studios.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Yes, because 2.5 mugs per vase lies between the two opportunity costs of a vase (2 mugs for Quarry Lane, 3 for Pinecrest), so each studio gets the other good for less than it would cost to make itself.",
+     "accept": [
+      "yes: Quarry Lane receives 2.5 mugs for a vase that cost it 2, and Pinecrest pays 2.5 mugs for a vase that would cost it 3"
+     ]
+    }
+   ],
+   "sample": "Yes. Quarry Lane makes vases and receives 2.5 mugs for each, more than the 2 mugs a vase costs it to make. Pinecrest makes mugs and pays 2.5 mugs for each vase, less than the 3 mugs it would give up to make a vase itself. Because 2.5 lies between 2 and 3, both studios gain."
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "marginal-analysis",
+ "hook": "Leo has \\$12 for lunch at a food festival. Tacos are \\$2 and smoothies are \\$4. The first smoothie is great; the third is fine; a fifth taco would barely register. He does not need a formula to feel this, but the exam asks for one: spend each dollar where it adds the most satisfaction, and stop when one more unit adds less than it costs.",
+ "prereq": [
+  {
+   "q": "Net benefit is",
+   "options": [
+    "total benefit minus the full cost",
+    "total benefit plus the full cost",
+    "the largest total benefit",
+    "explicit costs plus implicit costs"
+   ],
+   "correct": 0,
+   "why": "Subtract every cost from the benefit.",
+   "review": "cost-benefit"
+  },
+  {
+   "q": "Jamal's net benefit is \\$45 at 3 lessons and \\$40 at 4. Taking the fourth lesson",
+   "options": [
+    "adds more to cost than to benefit",
+    "adds more to benefit than to cost",
+    "leaves net benefit unchanged",
+    "has no cost"
+   ],
+   "correct": 0,
+   "why": "Net benefit falls, so the extra cost is larger.",
+   "review": "cost-benefit"
+  }
+ ],
+ "figure": {
+  "figure": "marginal-analysis-per-dollar",
+  "caption": "Leo's marginal utility for tacos (\\$2) and smoothies (\\$4), and per dollar. With \\$12, the best bundle is 2 tacos and 2 smoothies: the last of each gives 8 per dollar, and total utility is 116. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A consumer eats more units of a good",
+   "effect": "each extra unit adds less satisfaction than the one before (diminishing marginal utility)"
+  },
+  {
+   "cause": "Goods have different prices",
+   "effect": "the consumer compares marginal utility per dollar, MU ÷ P, not marginal utility alone"
+  },
+  {
+   "cause": "One good gives more utility per dollar than another",
+   "effect": "moving a dollar toward it raises total utility"
+  },
+  {
+   "cause": "The budget is spent and MU per dollar is equal across goods",
+   "effect": "no move can raise total utility: the consumer has the utility-maximizing bundle"
+  }
+ ],
+ "ideas": [
+  "<b>Marginal analysis</b>: decide one more unit at a time. Do one more unit when its <b>marginal benefit</b> is at least its additional cost; stop when it is less.",
+  "<b>Utility</b> is satisfaction. <b>Marginal utility (MU)</b> is the extra utility from one more unit, and it usually falls as you consume more: <b>diminishing marginal utility</b>.",
+  "Utility-maximizing rule: spend the whole budget so that $\\frac{\\text{MU}_X}{P_X} = \\frac{\\text{MU}_Y}{P_Y}$. Buy each next unit where MU per dollar is highest.",
+  "The <b>budget constraint</b> limits the bundles a consumer can afford: spending on all goods cannot exceed income.",
+  "A <b>sunk cost</b> is already spent and cannot be recovered. It is the same whatever you choose next, so it never changes the best choice."
+ ],
+ "misconception": {
+  "wrong": "Leo should buy smoothies first and keep buying them, because each smoothie gives more utility than any taco.",
+  "right": "Smoothies cost twice as much. Compare MU per dollar: the first smoothie gives 12 per dollar, but the second gives 8, the same as the second taco. With \\$12 the best bundle is 2 tacos and 2 smoothies (total utility 116), not 3 smoothies (104)."
+ },
+ "check": [
+  "mic-marginal-analysis-1",
+  "mic-marginal-analysis-2",
+  "mic-marginal-analysis-4",
+  "mic-marginal-analysis-7",
+  "mic-marginal-analysis-11"
+ ],
+ "summary": "Marginal analysis compares the extra benefit of one more unit with its extra cost: keep going while the marginal benefit is at least the additional cost. Consumers get utility from goods, and marginal utility usually diminishes as they consume more. With a budget, a consumer maximizes total utility by buying the next unit with the highest marginal utility per dollar until the budget is spent and MU ÷ P is equal across goods. Sunk costs are already paid whatever you choose, so they never change the best decision."
+}

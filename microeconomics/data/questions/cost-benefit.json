@@ -505,19 +505,18 @@
    "q": "A teacher quits her job to open a bookstore in a room of her own house. Which are implicit costs of the bookstore? Select all that apply.",
    "options": [
     "The teaching salary she gives up",
-    "The rent she could have charged for the room",
+    "The rent she pays for a storage unit",
     "The books she buys from publishers",
     "The wage she pays her part-time clerk"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Implicit costs are what she gives up without paying: her old salary and the room's possible rent.",
+    "correct": "Implicit costs are what she gives up without paying, such as her old salary. Every other item here is a money payment.",
     "options": [
      "Right: forgone salary.",
-     "Right: forgone rent.",
+     "Rent she pays is a money payment: explicit.",
      "Buying books is a money payment: explicit.",
      "Paying a clerk is explicit."
     ]

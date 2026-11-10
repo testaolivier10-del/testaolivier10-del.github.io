@@ -1,0 +1,622 @@
+{
+ "stimuli": {
+  "inequality-s1": {
+   "kind": "data",
+   "title": "Income shares by fifth of households: the Lorenz curve",
+   "invented": true,
+   "table": {
+    "caption": "Share of total income received by each fifth of households in the invented country of Velmora, ranked from lowest to highest income (invented data for practice)",
+    "cols": [
+     "Fifth of households",
+     "Share of income (%)"
+    ],
+    "rows": [
+     [
+      "Lowest fifth",
+      "3"
+     ],
+     [
+      "Second fifth",
+      "8"
+     ],
+     [
+      "Middle fifth",
+      "15"
+     ],
+     [
+      "Fourth fifth",
+      "24"
+     ],
+     [
+      "Highest fifth",
+      "50"
+     ]
+    ]
+   }
+  },
+  "inequality-s2": {
+   "kind": "data",
+   "title": "Two tax systems in the invented town of Orrin",
+   "invented": true,
+   "table": {
+    "caption": "Yearly tax paid under two tax plans by households with three incomes (invented data for practice)",
+    "cols": [
+     "Yearly income",
+     "Tax under Plan A",
+     "Tax under Plan B"
+    ],
+    "rows": [
+     [
+      "\\$20,000",
+      "\\$1,000",
+      "\\$2,000"
+     ],
+     [
+      "\\$50,000",
+      "\\$2,500",
+      "\\$3,000"
+     ],
+     [
+      "\\$100,000",
+      "\\$5,000",
+      "\\$4,000"
+     ]
+    ]
+   }
+  },
+  "inequality-s3": {
+   "kind": "text",
+   "title": "Changes on the island of Corrin",
+   "text": "<p>On the invented island of Corrin: (1) workers with technical training see their wages rise much faster than other workers' wages; (2) the island starts sending monthly payments to households with very low incomes; (3) a few families pass large fortunes to their children, who earn income from the land and businesses they inherit.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-inequality-1",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and both curves of a graph used to show how income is shared among households.",
+   "why": {
+    "correct": "The horizontal axis is the cumulative percentage of households, from the poorest; the vertical axis is the cumulative percentage of income they hold. The straight diagonal is the line of equality, and the curve bowed below it is the Lorenz curve."
+   },
+   "graph": {
+    "kind": "lorenz",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-inequality-2",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new program gives cash payments to the lowest-income households, paid for by taxes on higher incomes. Shift the Lorenz curve to show the change in the distribution of income after taxes and payments.",
+   "why": {
+    "correct": "The poorest households now hold a larger share of income, so the Lorenz curve moves toward the line of equality (up, closer to the diagonal)."
+   },
+   "graph": {
+    "kind": "lorenz",
+    "do": [
+     "shift"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "LC",
+       "dir": "up"
+      }
+     ],
+     "because": "cash payments to low-income households paid for by taxes on higher incomes"
+    },
+    "slips": {
+     "LC": "Moving the curve further from the diagonal would show more inequality; payments to the lowest-income households make the shares more equal."
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-3",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Over a decade, the richest fifth of households in an invented country gains a much larger share of income while the other fifths' shares shrink. Shift the Lorenz curve to show the change.",
+   "why": {
+    "correct": "Income becomes less equally shared, so the Lorenz curve bows further away from the line of equality (down)."
+   },
+   "graph": {
+    "kind": "lorenz",
+    "do": [
+     "shift"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "LC",
+       "dir": "down"
+      }
+     ],
+     "because": "a larger income share for the richest fifth"
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-4",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The Gini coefficient compares one area of this graph with the whole triangle under the line of equality. Shade that area.",
+   "why": {
+    "correct": "The Gini coefficient is the area between the line of equality and the Lorenz curve (region gini), taken as a share of the whole triangle under the line. The bigger that area, the more unequal the distribution."
+   },
+   "graph": {
+    "kind": "lorenz",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "gini"
+    },
+    "slips": {
+     "below": "That is the area under the Lorenz curve. The Gini coefficient uses the gap between the line of equality and the curve."
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-5",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What cumulative percentage of income do the lowest 60 percent of households hold? This is the height of Velmora's Lorenz curve at 60 percent of households.",
+   "stimulus": "inequality-s1",
+   "why": {
+    "correct": "Add the three lowest fifths: 3 + 8 + 15 = 26 percent."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "lorenz",
+     "args": [
+      [
+       3,
+       8,
+       15,
+       24,
+       50
+      ]
+     ],
+     "pick": "2"
+    },
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "15 percent is the middle fifth alone. A Lorenz curve is cumulative: add the lowest three fifths."
+     },
+     {
+      "value": 60,
+      "why": "60 percent is where the line of equality would be. Velmora's households hold less: 3 + 8 + 15."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-6",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. At 40 percent of households, how far below the line of equality is Velmora's Lorenz curve?",
+   "stimulus": "inequality-s1",
+   "options": [
+    "32 percentage points: 40 against 8",
+    "0 points: the curve meets the line there",
+    "29 points: 40 on the line, 11 on the curve",
+    "15 percentage points: 40 against 25"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "On the line of equality each 20 percent of households holds 20 percent of income. The gap shows how much less the lower groups hold.",
+    "options": [
+     "8 is the second fifth alone; the curve is cumulative, 3 + 8 = 11.",
+     "The curve meets the line only at 0 and 100 percent here.",
+     "Right: the lowest two fifths hold 3 + 8 = 11 percent, against 40 percent with equal shares.",
+     "The lowest two fifths hold 11 percent, not 25."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-7",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.C",
+   "q": "Use the table. Which fifths of households receive more than an equal share of income? Select all that apply.",
+   "stimulus": "inequality-s1",
+   "options": [
+    "Lowest fifth",
+    "Second fifth",
+    "Middle fifth",
+    "Fourth fifth",
+    "Highest fifth"
+   ],
+   "correct": [
+    3,
+    4
+   ],
+   "why": {
+    "correct": "With equal shares, each fifth would get 20 percent.",
+    "options": [
+     "3 percent is below 20.",
+     "8 percent is below 20.",
+     "15 percent is below 20.",
+     "Right: 24 percent is above 20.",
+     "Right: 50 percent is above 20."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-8",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Use the table. A neighboring country's lowest 60 percent of households hold 35 percent of income. Compared with Velmora, its Lorenz curve at 60 percent of households is",
+   "stimulus": "inequality-s1",
+   "options": [
+    "closer to the line of equality, so income there is more equally shared",
+    "further from the line of equality, so income there is less equally shared",
+    "on the line of equality",
+    "the same distance from the line, since both countries have five fifths"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The closer the Lorenz curve is to the diagonal, the more equal the distribution.",
+    "options": [
+     "Right: 35 percent is nearer the 60 percent equal-share point than Velmora's 26.",
+     "A higher cumulative share at the same point means the curve is higher, nearer the diagonal.",
+     "Equal shares would give 60 percent.",
+     "The groups are the same size; their shares differ."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-9",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. Under Plan B, what percentage of its income does the \\$100,000 household pay in tax?",
+   "stimulus": "inequality-s2",
+   "why": {
+    "correct": "Average tax rate = tax ÷ income × 100 = \\$4,000 ÷ \\$100,000 × 100 = 4 percent."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "pct",
+     "args": [
+      4000,
+      100000
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "pct",
+       "args": [
+        2000,
+        20000
+       ]
+      },
+      "why": "10 percent is the \\$20,000 household's rate. Use the \\$100,000 row."
+     },
+     {
+      "from": {
+       "fn": "pct",
+       "args": [
+        5000,
+        100000
+       ]
+      },
+      "why": "5 percent is Plan A's rate for that household. Use the Plan B column."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-10",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Use the table. What kind of tax is Plan A?",
+   "stimulus": "inequality-s2",
+   "options": [
+    "Progressive: higher incomes pay more dollars of tax",
+    "Regressive: lower incomes pay a larger share",
+    "Lump-sum: each household pays a fixed amount",
+    "Proportional: every household pays 5 percent of its income"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Classify a tax by the share of income it takes (the average tax rate), not by the dollar amount.",
+    "options": [
+     "Paying more dollars is not enough; the share of income must rise with income.",
+     "Each household pays the same 5 percent.",
+     "The amounts differ by income.",
+     "Right: \\$1,000 of \\$20,000, \\$2,500 of \\$50,000 and \\$5,000 of \\$100,000 are each 5 percent."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-11",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Use the table. What kind of tax is Plan B?",
+   "stimulus": "inequality-s2",
+   "options": [
+    "Progressive: the \\$100,000 household pays the most dollars",
+    "Regressive: its share of income falls as income rises",
+    "Proportional: each household pays some tax",
+    "Progressive: the share of income rises with income"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Regressive taxes take a larger share of lower incomes.",
+    "options": [
+     "It pays more dollars but a smaller share of its income.",
+     "Right: 10 percent, then 6, then 4.",
+     "Proportional means the same share of income for all.",
+     "The share falls from 10 percent to 4 percent."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-12",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, which change is a transfer payment?",
+   "stimulus": "inequality-s3",
+   "options": [
+    "(1) faster wage growth for trained workers",
+    "(2) monthly payments to low-income households",
+    "(3) inherited land and businesses",
+    "(1) and (3) together, since both change income"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Transfer payments, such as cash aid to low-income households, change the distribution of income after taxes and transfers.",
+    "options": [
+     "Wages are payments for labor, earned in a factor market.",
+     "Right: money paid by the government with no good or service given in return.",
+     "An inheritance passes wealth within a family; it is not a government payment.",
+     "The monthly payments are not earned."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-13",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, how does change (1) affect Corrin's Lorenz curve, if nothing else changes?",
+   "stimulus": "inequality-s3",
+   "options": [
+    "It moves toward the line of equality",
+    "It does not change, because wages are not income",
+    "It becomes the line of equality",
+    "It bows further from the line of equality"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Differences in skills and training (human capital) are a major source of income inequality.",
+    "options": [
+     "The gap between trained and other workers grows.",
+     "Wages are most households' main income.",
+     "That would need every household to have the same income.",
+     "Right: trained workers, already earning more, pull further ahead, so income is less equally shared."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-14",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the scenario, change (3) is mainly an example of which difference?",
+   "stimulus": "inequality-s3",
+   "options": [
+    "Wealth inequality, which also earns income",
+    "A transfer payment from the government",
+    "A regressive tax on the families' inheritance",
+    "A rise in the wages of trained workers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Income is a flow earned over a period; wealth is a stock of assets. Wealth earns income, so the two inequalities are linked.",
+    "options": [
+     "Right: inherited assets are wealth, and the rent and profit they earn is income.",
+     "The fortunes pass within families.",
+     "Nothing in (3) is a tax, and inheriting is not taxed in the scenario.",
+     "That is change (1)."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-15",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does a Lorenz curve show?",
+   "options": [
+    "How one household's income changes over the course of its lifetime",
+    "The tax rate paid at each level of income",
+    "Cumulative income shares held by cumulative shares of households",
+    "The number of households at each level of income"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "If every household had the same income, the Lorenz curve would be the diagonal line of equality.",
+    "options": [
+     "It is a snapshot across households, not over time for one household.",
+     "Tax rates are shown in a tax table; the curve shows shares of income.",
+     "Right: each point says what percent of income the lowest x percent of households hold.",
+     "That would be a bar chart of incomes, not cumulative shares."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-16",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement describes a progressive tax?",
+   "options": [
+    "It takes the same share of income from everyone",
+    "It takes a larger share from lower incomes",
+    "It charges each household the same dollar amount",
+    "It takes a larger share of income as income rises"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Progressive, proportional and regressive describe how the share of income taken changes as income rises.",
+    "options": [
+     "That is a proportional tax.",
+     "That is a regressive tax.",
+     "That is a lump-sum tax, which is regressive as a share of income.",
+     "Right: the average tax rate rises with income."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-17",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "The Gini coefficient of one invented country rises from 0.30 to 0.40. What does that mean?",
+   "options": [
+    "Income became more equally distributed",
+    "Income became less equally distributed",
+    "Total income rose by 10 percent",
+    "The tax system became more progressive"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The Gini coefficient runs from 0 (perfect equality) to 1 (one household has all the income).",
+    "options": [
+     "A lower Gini coefficient would mean more equality.",
+     "Right: a higher Gini coefficient means a larger area between the line of equality and the Lorenz curve.",
+     "The Gini coefficient measures how income is shared, not how much there is.",
+     "That would usually lower after-tax inequality, not raise it."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-18",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are sources of income inequality? Select all that apply.",
+   "options": [
+    "Differences in education and job training",
+    "Inherited wealth that earns rent, interest or profit",
+    "Each household receiving the same transfer payment",
+    "A proportional tax that takes the same share from each household",
+    "Discrimination in hiring or pay"
+   ],
+   "correct": [
+    0,
+    1,
+    4
+   ],
+   "why": {
+    "correct": "Income differs with skills, wealth, discrimination, market power, effort and luck.",
+    "options": [
+     "Right: more human capital tends to raise wages.",
+     "Right: income from assets adds to the gap.",
+     "Equal payments lower inequality as a share of income.",
+     "It leaves income shares where they were.",
+     "Right: it lowers the earnings of the people discriminated against."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-19",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A country makes its income tax more progressive and spends the revenue on transfer payments to low-income households. What happens to the Lorenz curve for income after taxes and transfers?",
+   "options": [
+    "It moves away from the line of equality",
+    "It does not move, because total income is the same",
+    "It moves toward the line of equality",
+    "It becomes the line of equality"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Progressive taxes and transfers are the main policies that move the after-tax Lorenz curve toward equality.",
+    "options": [
+     "Both changes narrow the gap between high and low incomes.",
+     "The curve shows shares, and the shares change.",
+     "Right: higher incomes keep a smaller share and lower incomes gain, so shares are more equal.",
+     "Shares become more equal, not exactly equal."
+    ]
+   }
+  }
+ ]
+}

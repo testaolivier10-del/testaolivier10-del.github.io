@@ -48,8 +48,8 @@
   },
   "long-run-costs-s3": {
    "kind": "text",
-   "title": "Brightwater Solar grows its factory",
-   "text": "<p>Brightwater Solar doubles every input it uses: workers, assembly lines, floor space and machines. Its weekly output of solar panels rises from 1,000 to 2,500. Years later, at a much larger size, it doubles every input again, and weekly output rises from 4,000 to 7,000. Input prices stay the same throughout. (An invented business, for practice.)</p>"
+   "title": "Sunmere Solar grows its factory",
+   "text": "<p>Sunmere Solar doubles every input it uses: workers, assembly lines, floor space and machines. Its weekly output of solar panels rises from 1,000 to 2,500. Years later, at a much larger size, it doubles every input again, and weekly output rises from 4,000 to 7,000. Input prices stay the same throughout. (An invented business, for practice.)</p>"
   }
  },
  "items": [
@@ -489,19 +489,18 @@
    "q": "Which of these are likely causes of diseconomies of scale? Select all that apply.",
    "options": [
     "Messages pass through many layers of managers and get delayed",
-    "Workers in a huge firm feel less connected to its goals and work less hard",
+    "The firm spreads its design costs over more units",
     "The firm gets a discount for buying steel in large amounts",
     "The firm can afford a specialized machine that speeds up production"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Diseconomies of scale come from the problems of managing and motivating a very large organization; bulk discounts and specialized equipment are economies of scale.",
+    "correct": "Diseconomies of scale come from the problems of coordinating a very large organization; bulk discounts, specialized equipment and spreading costs over more units are economies of scale.",
     "options": [
      "Yes: coordination gets harder as a firm grows.",
-     "Yes: weaker motivation in a very large firm raises cost per unit.",
+     "No: spreading fixed costs over more output lowers cost per unit, an economy of scale.",
      "No: bulk discounts lower cost per unit, an economy of scale.",
      "No: specialized capital is an economy of scale."
     ]

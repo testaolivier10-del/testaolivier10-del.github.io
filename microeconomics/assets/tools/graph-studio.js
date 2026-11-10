@@ -72,7 +72,7 @@
     var s = copy(spec), t = task === 'labels' ? ['label'] : task === 'equilibrium' ? ['shift', 'equilibrium'] : task ? [task] : [];
     s.do = t;
     if(task === 'equilibrium') s.movable = [];
-    if((task === 'shift' || task === 'equilibrium' || task === 'labels') && s.policy && (s.policy.type === 'tax' || s.policy.type === 'subsidy') && (spec.do || []).indexOf('shift') > -1) delete s.policy;
+    if(s.policy && (s.policy.type === 'tax' || s.policy.type === 'subsidy') && (spec.do || []).indexOf('shift') > -1) delete s.policy;
     var K = spec.key || {};
     s.key = {};
     if(task === 'point' && K.point) s.key.point = K.point;
@@ -226,7 +226,7 @@
         cap = moved(sh) ? esc(capFirst(G.describe(spec, { shifts: sh }))) : esc(g.shows) + ' Drag a curve to shift it.';
       }
       if(g.id === 'ppc' && last.point){ var rg = G.region(spec, sh, last.point); if(rg) pills.push({ html: 'X ' + rg + ' the curve', tone: 'readout' }); }
-      if(task !== 'move') pills = pills.concat(outcomePills(spec.kind, o), GS.readout(g.id, spec, { shifts: sh }).map(function(x){ return { html: esc(x.text), tone: x.tone }; }));
+      if(task !== 'move') pills = pills.concat(GS.readout(g.id, spec, { shifts: sh }).map(function(x){ return { html: esc(x.text), tone: x.tone }; }), outcomePills(spec.kind, o));
       if(LS){ LS.caption(cap, 'explore'); LS.pills(pills.slice(0, 3), 'left', 'explore'); }
       R.cap.innerHTML = cap;
       whyBox(o, v);

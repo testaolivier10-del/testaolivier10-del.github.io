@@ -1,0 +1,211 @@
+{
+ "id": "frq-perfect-competition-long",
+ "type": "long",
+ "points": 10,
+ "title": "Rolled oats: a competitive market and a typical mill from short run to long run",
+ "units": [
+  "unit-2",
+  "unit-3"
+ ],
+ "topics": [
+  "other-elasticities",
+  "perfect-competition"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "4.C",
+  "1.C",
+  "2.A",
+  "3.B",
+  "1.B"
+ ],
+ "scenario": "The market for rolled oats is perfectly competitive and is a constant-cost industry. It is in long-run equilibrium. Many buyers treat rolled oats and corn grits as substitutes for breakfast. The mills and the numbers are invented, for practice.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "<b>Draw</b> correctly labeled side-by-side graphs for the rolled oats market and a typical mill in long-run equilibrium. On the market graph, label the market price PM. On the mill's graph, <b>show</b> the mill's demand curve and <b>label</b> its profit-maximizing quantity qF.",
+   "graph": {
+    "kind": "pc",
+    "do": [
+     "label",
+     "line",
+     "point"
+    ],
+    "pointLabel": "qF",
+    "key": {
+     "line": {
+      "to": "eq"
+     },
+     "point": {
+      "at": "firm"
+     }
+    }
+   },
+   "rubric": [
+    {
+     "point": "Correctly labeled graphs: market with Price and Quantity, D and S; mill with Price (and cost) and Quantity, MC and ATC",
+     "accept": [
+      "P and Q on both graphs",
+      "MC rising through the lowest point of ATC"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "A horizontal mill demand curve at the market price PM, labeled d = MR = AR = P (or MR = P)",
+     "accept": [
+      "the market price carried across to the mill with a horizontal line"
+     ],
+     "auto": "line"
+    },
+    {
+     "point": "qF where MR = MC, at the lowest point of ATC",
+     "accept": [
+      "the quantity where the price line meets MC, which is the minimum of ATC in long-run equilibrium"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "Market (left): Price on the vertical axis, Quantity on the horizontal, a downward D and an upward S crossing at PM and QM. Mill (right): Price and cost on the vertical axis, quantity on the horizontal; MC rises through the lowest point of ATC. A dashed line carries PM across to a horizontal line labeled d = MR = AR = P, which touches ATC at its lowest point. qF is where MR = MC, directly below that point, so P = ATC and the mill earns zero economic profit."
+  },
+  {
+   "label": "B",
+   "points": 2,
+   "type": "graph",
+   "prompt": "The price of corn grits rises. On your graphs in part A, <b>show</b> the effect on the rolled oats market and <b>show</b> the mill's new demand curve.",
+   "graph": {
+    "kind": "pc",
+    "do": [
+     "shift",
+     "line"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in the price of corn grits, a substitute",
+     "line": {
+      "to": "eq"
+     }
+    },
+    "slips": {
+     "S": "Corn grits are a substitute for buyers, so their price shifts the demand for rolled oats; mills' costs have not changed."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Market demand shifts right (D1 to D2), raising the market price",
+     "accept": [
+      "an arrow from D1 to D2 and a higher P2"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "The mill's demand (d = MR = AR = P) moves up to the new, higher market price",
+     "accept": [
+      "a new horizontal line at P2 on the mill graph"
+     ],
+     "auto": "line"
+    }
+   ],
+   "sample": "The higher price of corn grits makes buyers switch toward rolled oats, so market demand shifts right from D1 to D2 and the market price rises from PM to P2. The mill takes the new price, so its demand line d2 = MR2 = AR2 = P2 is a horizontal line at P2, above the old one."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the mill's economic profit at the new market price.",
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "profit"
+    },
+    "slips": {
+     "tr": "That is total revenue. Profit is only the part between the price and ATC."
+    }
+   },
+   "rubric": [
+    {
+     "point": "The rectangle between P2 and ATC at the new profit-maximizing quantity, from zero to that quantity, fully shaded",
+     "accept": [
+      "(P2 - ATC) x q2 shown as a rectangle"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "The mill now produces q2, where P2 = MR = MC. The shaded profit rectangle runs from P2 down to ATC at q2, and from zero out to q2."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "At the new market price of \\$9 a bag, the mill sells 500 bags a day, and its average total cost at that output is \\$8. <b>Calculate</b> the mill's daily economic profit. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$500, with work shown: (9 - 8) x 500",
+     "accept": [
+      "TR - TC = 4,500 - 4,000 = 500"
+     ]
+    }
+   ],
+   "sample": "Profit = (P - ATC) x q = $(9 - 8) \\times 500 = 500$ dollars a day."
+  },
+  {
+   "label": "E(i)",
+   "points": 1,
+   "prompt": "<b>Identify</b> what happens to the number of mills in the rolled oats market in the long run, and <b>explain</b> why.",
+   "rubric": [
+    {
+     "point": "The number of mills increases because mills earn positive economic profit",
+     "accept": [
+      "new firms enter, drawn by economic profit"
+     ]
+    }
+   ],
+   "sample": "The number of mills increases. Mills are earning positive economic profit, so resources earn more here than elsewhere, and with free entry new mills enter the market."
+  },
+  {
+   "label": "E(ii)",
+   "points": 1,
+   "prompt": "<b>Explain</b> what happens to the market price of rolled oats in the long run compared with its level before the price of corn grits rose.",
+   "rubric": [
+    {
+     "point": "Entry shifts market supply right, so the price falls back to the original price PM (minimum ATC), because the industry is constant-cost",
+     "accept": [
+      "the long-run price equals the original price",
+      "supply increases until economic profit is zero"
+     ]
+    }
+   ],
+   "sample": "As mills enter, market supply shifts right and the price falls. It keeps falling until mills earn zero economic profit, at the lowest point of ATC. Because the industry is constant-cost, the cost curves do not move, so the long-run price is the same as the original PM, with a larger market quantity."
+  },
+  {
+   "label": "F",
+   "points": 1,
+   "prompt": "<b>Identify</b> whether the cross-price elasticity of demand for rolled oats with respect to the price of corn grits is positive, negative or zero.",
+   "rubric": [
+    {
+     "point": "Positive, because the goods are substitutes: a higher price of corn grits raises the quantity of rolled oats demanded",
+     "accept": [
+      "positive"
+     ]
+    }
+   ],
+   "sample": "Positive. Rolled oats and corn grits are substitutes, so a rise in the price of corn grits raises the quantity of rolled oats demanded: both changes have the same sign."
+  }
+ ]
+}

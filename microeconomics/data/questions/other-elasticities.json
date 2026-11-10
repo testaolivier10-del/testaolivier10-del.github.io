@@ -372,19 +372,19 @@
    "diff": 1,
    "type": "single",
    "practice": "1.A",
-   "q": "How is the income elasticity of demand calculated?",
+   "q": "A researcher wants to know how strongly household purchases of a good respond to a rise in pay. Which ratio should she compute?",
    "options": [
-    "Percent change in income divided by percent change in quantity demanded",
-    "Percent change in quantity demanded divided by percent change in income",
-    "Percent change in quantity demanded divided by percent change in price",
-    "Change in spending divided by change in income"
+    "$\\%\\Delta \\text{income} \\div \\%\\Delta Q_d$",
+    "$\\%\\Delta Q_d \\div \\%\\Delta \\text{income}$",
+    "$\\%\\Delta Q_d \\div \\%\\Delta P$",
+    "$\\Delta \\text{spending} \\div \\Delta \\text{income}$"
    ],
    "correct": 1,
    "why": {
     "correct": "Income elasticity of demand is the percent change in quantity demanded divided by the percent change in income. Its sign tells normal (positive) from inferior (negative).",
     "options": [
      "That is upside down.",
-     "Right: quantity on top, income below.",
+     "Right: the income elasticity of demand, quantity on top.",
      "That is the price elasticity of demand.",
      "Elasticity uses percent changes in quantity."
     ]
