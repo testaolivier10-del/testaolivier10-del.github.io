@@ -116,8 +116,8 @@ builder split, decisions); read it before AP® Microeconomics work and update it
 (label every axis and curve, MC through the minimums, price from demand, shade the right region, both comparisons,
 MRP = MRC, market vs efficient quantity): `docs/apmicro-authoring-guide.md`; map: `docs/apmicro-phase0.md`; open
 points: `docs/apmicro-needs-author.md`; briefs (authors A-E, builders T1-T4): `docs/apmicro-briefs/`; launch log:
-`docs/apmicro-reviews/launch.md`. Published and live; Premium not on sale (`onSale: false`) until the owner checklist
-in spec section 9 (migration `2026-11i-apmicro.sql`, Polar product, Worker `micro-2027`). Macro's build must stay
+`docs/apmicro-reviews/launch.md`. Published and live; Premium on sale since 2026-11-10 (owner checklist in spec
+section 9; the migration `2026-11i-apmicro.sql` is applied by the lead). Macro's build must stay
 byte-identical: run `node scripts/build-apmacro.mjs --check` after any shared change.
 
 ## AI FRQ grader (AP® courses)

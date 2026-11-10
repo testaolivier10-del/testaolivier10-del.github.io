@@ -58,7 +58,7 @@ checklist.
   question bank, worker, site config, paths and path pages, practice panel, pricing). Generated: hub and 404 cards,
   premium.html block (not on sale), terms list, manifest, search scope, sitemap, home pill "14 courses · 20,697
   questions". `scripts/lib/course-homes.json` said "Being written" in the home's exam strip: now 726 questions.
-- Premium stays `onSale: false`. The "not yet reviewed by an AP® Microeconomics teacher" note stays; no score
+- Premium stayed `onSale: false` at publish (on sale later the same day, section 9 below). The "not yet reviewed by an AP® Microeconomics teacher" note stays; no score
   calculator, band or Beta label. The home says "May 2027 exam".
 - Site-wide: "Fourteen courses" (home meta description, short forms to stay under 160 characters; search meta, og
   and noscript links with a micro tint; certificate og; `cross-course.js`, `r3-reading.mjs`, `check-weight.mjs`
@@ -88,3 +88,25 @@ checklist.
 
 - main gained no migration since the fork: `2026-11i-apmicro.sql` keeps its name and still sorts after
   `2026-11h-free-usage.sql`; `sql-migration.test.mjs` passes (schema.sql matches). Not applied.
+
+## 7. CI and the look at 360 and 1280
+
+- First full `BROWSER=1 scripts/ci-local.sh` (killed by a session restart), second run complete (`/tmp/micl/ci2.log`):
+  check-site (a "Grey Ridge" firm name, now Gray Ridge; firm-market's meta description 161 characters, shortened),
+  the course shell budget (117.5 KB against 113 once 40 topics are built: 119, reason in `check-weight.mjs`), and
+  check-legibility (12 lines through "D = MPB = MSB" and "Line of equality" on the formula page, an FRQ and the
+  externality lab: the label width estimate is now per character, capitals 11, small letters 7.5, spaces 4). Every
+  other job passed, check-a11y and check-console included.
+- Looked at, 360 and 1280, light and dark (`/tmp/micl/pages.mjs`): course home, path, a notes page, practice with a
+  graph stimulus, practice exam 1 question 21 (graph, areas lettered) and 47 (payoff matrix), an FRQ with a graph part,
+  the formula page and the tools page; the eight tools walked at 360 light and 1280 dark (every drill kind to the
+  end). No horizontal scroll, no page error; graph words at 9.7 px or more on a phone. Found: at 1024 and 1280 the
+  long title ran into the band art's profit box and price line: the art's viewBox is wider so the picture sits to
+  the right (Macro's band has its LRAS axis behind "cs" the same way; not changed). Left (needs-author `launch`): two
+  small lettered cells (c and e under a tax) whose letters sit close, tool overlap boxes that do not touch in ink.
+
+## 8. Premium on sale (2026-11-10)
+
+- Owner asked for the course to go live with Premium on sale. The lead made the Polar product (id
+  `71628aac-b0a8-415c-bb35-f1f1d35ea6bf`, $25 one-time) and set `micro-2027` in the Worker's `POLAR_PRODUCTS`; the
+  lead applies the migration and grants owner access. `onSale: false` removed, `sw.js` v120, spec section 9, CLAUDE.md.

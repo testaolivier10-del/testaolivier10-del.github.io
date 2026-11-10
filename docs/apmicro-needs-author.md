@@ -78,8 +78,8 @@ grader's `FRQ_COURSES` only after a calibration and an eval (`docs/frq-grader.md
 `assets/premium.js`; fill the hub and 404 card slots (`hub-mic`, `nf-mic`); update the "fifteen courses" wording.
 
 Done at launch: live, `ORDER`, `FRQ_COURSES` (with a calibration and eval cases, the eval not rerun), sources, the
-cards, "fourteen courses" (fourteen live courses in `assets/courses.js`). Left for the owner checklist (spec section
-9): the migration, the Polar product, the Worker entry and removing `onSale: false`.
+cards, "fourteen courses" (fourteen live courses in `assets/courses.js`). On sale 2026-11-10 (spec section 9): Polar
+product, Worker entry and `onSale` done; the lead applies the migration.
 
 ## frq-grader: wired at launch, grader still off (2026-11-10)
 

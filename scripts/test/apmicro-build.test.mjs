@@ -89,13 +89,13 @@ test('a published unit builds every page kind, math rendered and graphs drawn, a
   for (const id of ['demand', 'supply', 'price-elasticity-demand', 'price-elasticity-supply']) assert.ok(CU.topics.find(t => t.id === id).free, `${id} is free`);
   assert.ok(!CU.topics.find(t => t.id === 'other-elasticities').free, 'the rest of Unit 2 is Premium');
   assert.ok(!CU.topics.find(t => t.id === T).free, 'Unit 6 is Premium');
-  // One free tier: the build's FREE_UNITS and premium.js agree; not on sale until the launch steps.
+  // One free tier: the build's FREE_UNITS and premium.js agree; on sale since 2026-11-10.
   const prem = readFileSync('assets/premium.js', 'utf8');
   const block = prem.slice(prem.indexOf('    apmicro: {'), prem.indexOf('\n    },', prem.indexOf('    apmicro: {')));
   assert.deepEqual(FREE_UNITS, ['unit-1']);
   assert.deepEqual(FREE_TOPICS, ['demand', 'supply', 'price-elasticity-demand', 'price-elasticity-supply']);
   assert.match(block, /freeChapters: \['unit-1'\]/);
-  assert.match(block, /onSale: false/);
+  assert.doesNotMatch(block, /onSale: false/); // on sale since 2026-11-10 (spec section 9)
   assert.match(block, /id: 'micro-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);
 });
 
@@ -106,7 +106,7 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('published and live everywhere Macro is registered (spec decision 12), Premium not on sale yet', () => {
+test('published and live everywhere Macro is registered (spec decision 12), Premium on sale', () => {
   assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, ['graph-skills', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6']);
   assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmicro'[\s\S]*?aliases: \['microeconomics', 'micro', 'mic'\], paid: true, status: 'live', order: 14/);
   assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmicro'[^\n]*status: 'live'/);
@@ -114,7 +114,7 @@ test('published and live everywhere Macro is registered (spec decision 12), Prem
   assert.match(readFileSync('sitemap.xml', 'utf8'), /microeconomics\/lessons\//, 'in the sitemap');
   assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mic:start -->\s*<a class="ccard" href="microeconomics\/"/, 'a hub card');
   assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mic:start -->\s*\S/, 'a 404 card');
-  assert.match(readFileSync('assets/premium.js', 'utf8'), /apmicro: \{[\s\S]*?onSale: false,/, 'not on sale until the owner checklist');
+  assert.doesNotMatch(readFileSync('assets/premium.js', 'utf8').split('apmicro: {')[1].split('passes:')[0], /onSale: false/, 'on sale since 2026-11-10');
   assert.match(readFileSync('worker/src/premium.js', 'utf8'), /'micro-2027': +\{ course: 'apmicro', until: '2027-06-30T23:59:59-10:00' \}/);
   assert.match(readFileSync('worker/src/index.js', 'utf8'), /apmicro:/);
   assert.match(readFileSync('sw.js', 'utf8'), /COURSE_URLS\['microeconomics'\]/);

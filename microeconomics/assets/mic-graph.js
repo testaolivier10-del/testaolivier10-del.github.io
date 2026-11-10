@@ -952,8 +952,10 @@
     var base = all.filter(inP), now = allNow.filter(inP);
     var e0 = k.eq && find(base, k.eq[0]) ? eq(spec, {}) : null;
     var placed = [], cn = state.curveN != null ? String(state.curveN) : '2';
-    // Measured in the site font: a 13 px bold label is about 10.5 px a character (MC 23, ATC 29, AVC 31), a subscript about 7.
-    function box(t, n, at){ var w = String(t[0]).length * 10.5 + String(t[1] + (n || '')).length * 7, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
+    // Measured in the site font at 13 px bold: about 11 px a capital (MC 23, ATC 29, AVC 31), 7.5 a small letter
+    // or digit, 4 a space, 8 an equals sign; a subscript about 7.
+    function cw(s){ var w = 0; String(s).replace(/./g, function(ch){ w += /[A-Z]/.test(ch) ? 11 : ch === ' ' ? 4 : ch === '=' ? 8 : 7.5; return ch; }); return w; }
+    function box(t, n, at){ var w = cw(t[0]) + String(t[1] + (n || '')).length * 7, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
     // Labels keep 4 px apart across and 2 px up and down (MC and ATC side by side no longer touch: launch review).
     function hit(a, b){ return a[0] < b[2] + 4 && b[0] < a[2] + 4 && a[1] < b[3] + 2 && b[1] < a[3] + 2; }
     function ptsOf(c){ var pts = []; if(c.shape === 'vertical'){ for(var v = 0; v <= 10; v += 0.25) pts.push([px(c.at), py(v)]); } else for(var x = 0; x <= 10 + 1e-9; x += 0.1){ var h = y(c, x); if(h != null && h >= 0 && h <= 10) pts.push([px(x), py(h)]); } return pts; }
