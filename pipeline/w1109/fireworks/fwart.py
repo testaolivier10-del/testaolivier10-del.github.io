@@ -17,8 +17,8 @@ FLIES = [(_R.uniform(0, 1080), _R.uniform(1250, 1800), _R.uniform(0, 6.28), _R.u
 
 
 def sky(c, t, tint=None, ta=0.0):
-    lgrad(c, skia.Rect(-400, -900, 1480, HZ), -300, HZ, [(6, 8, 30), (14, 20, 62), (34, 40, 100), (70, 60, 120)], [0, 0.45, 0.82, 1])
-    if tint is not None and ta > 0: c.drawRect(skia.Rect(-400, -900, 1480, HZ), skia.Paint(Color=C(tint, 70 * ta), BlendMode=SCREEN))
+    lgrad(c, skia.Rect(-400, -900, 1480, HZ), -300, HZ, [(3, 4, 18), (8, 12, 44), (22, 28, 80), (54, 48, 104)], [0, 0.45, 0.82, 1])
+    if tint is not None and ta > 0: c.drawRect(skia.Rect(-400, -900, 1480, HZ), skia.Paint(Color=C(tint, min(78, 50 * ta)), BlendMode=SCREEN))
     for x, y, r, ph in STARS:
         a = 110 + 120 * (0.5 + 0.5 * math.sin(t * 1.3 + ph))
         c.drawCircle(x, y, r, P((230, 236, 255), a * (1 - 0.6 * ta)))
@@ -34,7 +34,7 @@ def sky(c, t, tint=None, ta=0.0):
 def water(c, t, tint=None, ta=0.0):
     lgrad(c, skia.Rect(-400, HZ, 1480, 2400), HZ, 1920, [(44, 44, 104), (16, 20, 60), (6, 8, 28)], [0, 0.3, 1])
     if tint is not None and ta > 0:
-        sh = skia.GradientShader.MakeLinear([skia.Point(0, HZ), skia.Point(0, 1700)], [C(tint, 120 * ta), C(tint, 0)])
+        sh = skia.GradientShader.MakeLinear([skia.Point(0, HZ), skia.Point(0, 1700)], [C(tint, min(150, 100 * ta)), C(tint, 0)])
         c.drawRect(skia.Rect(-400, HZ, 1480, 1700), skia.Paint(Shader=sh, BlendMode=SCREEN))
     for x, ph, k in TOWN:
         a = 60 + 40 * math.sin(t * 2.0 + ph)
@@ -42,7 +42,7 @@ def water(c, t, tint=None, ta=0.0):
     for k in range(46):                                     # ripples catching the light
         y = HZ + 14 + k * k * 0.42 + 6; x0 = (k * 173.3 + 40 * math.sin(t * 0.5 + k)) % 1500 - 200; w = 60 + k * 5
         a = 26 + 22 * math.sin(t * 1.4 + k * 1.7)
-        col = mix((150, 160, 230), tint, 0.7 * ta) if tint is not None else (150, 160, 230)
+        col = mix((150, 160, 230), tint, min(1.0, 0.7 * ta)) if tint is not None else (150, 160, 230)
         c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0, y, x0 + w, y + 2.4 + k * 0.05), 2, 2), P(col, max(0, a)))
 
 
@@ -59,11 +59,11 @@ def dock(c, t, glowcol=None, ga=0.0):
         c.drawRect(skia.Rect(px - 14, 1500, px + 14, 1700), P((54, 40, 52))); c.drawRect(skia.Rect(px - 14, 1500, px - 6, 1700), P((110, 90, 100)))
     for i, x in enumerate((700, 760, 820)):                 # mortar tubes
         tb = skia.Path(); tb.addRRect(skia.RRect.MakeRectXY(skia.Rect(x - 24, 1420, x + 24, 1580), 8, 8))
-        shaded(c, tb, (64, 70, 96), (38, 42, 66), sh=(-10, 0), rimL=mix((150, 160, 210), glowcol or (150, 160, 210), ga), rl=(4, 0))
+        shaded(c, tb, (64, 70, 96), (38, 42, 66), sh=(-10, 0), rimL=mix((150, 160, 210), glowcol or (150, 160, 210), min(1.0, ga)), rl=(4, 0))
         c.drawOval(skia.Rect(x - 24, 1410, x + 24, 1432), P((20, 20, 34)))
     c.drawRect(skia.Rect(670, 1540, 850, 1558), P((90, 70, 60)))
     if glowcol is not None and ga > 0:
-        c.drawPath(poly([top[0], top[1], bot[1], bot[0]]), skia.Paint(Color=C(glowcol, 60 * ga), BlendMode=SCREEN))
+        c.drawPath(poly([top[0], top[1], bot[1], bot[0]]), skia.Paint(Color=C(glowcol, min(110, 60 * ga)), BlendMode=SCREEN))
 
 
 def reeds(c, t):
@@ -83,43 +83,87 @@ def fireflies(c, t):
 
 # ------------------------------------------------------------------------------------------------ fireworks
 class Burst:
+    """a shell burst with depth: an outer sphere of stars with long willow tails, a brighter inner ring, a hard white flash,
+    lit smoke that lingers, and glitter that crackles as the stars die"""
     def __init__(self, t0, x, y, col, R=300, n=110, seed=0, life=2.4, col2=None, wash=None):
-        self.t0, self.x, self.y, self.col, self.R, self.life, self.col2, self.wash = t0, x, y, col, R, life, col2, wash
+        self.t0, self.x, self.y, self.col, self.R, self.life, self.wash = t0, x, y, col, R, life, wash
+        self.col2 = col2 or mix(col, (255, 255, 255), 0.55)
         r = np.random.default_rng(seed)
         v = r.normal(size=(n, 3)); v /= np.linalg.norm(v, axis=1, keepdims=True)
         self.d = v[:, :2] * (0.86 + 0.14 * r.random((n, 1)))
         self.ph = r.uniform(0, 6.28, n); self.z = v[:, 2]
+        m = max(14, n // 4); an = np.linspace(0, 2 * np.pi, m, endpoint=False) + r.uniform(0, 1)
+        self.d2 = np.c_[np.cos(an), np.sin(an)] * 0.46
+        self.gl = r.uniform(-1, 1, (n, 2)); self.gt = r.uniform(0.45, 1.0, n)
+
+    def _pos(self, d, u, grav=70.0):
+        k = 1 - math.exp(-3.4 * u)
+        return self.x + d[:, 0] * self.R * k, self.y + d[:, 1] * self.R * k + grav * u * u
 
     def pos(self, u):
-        k = 1 - math.exp(-3.4 * u)
-        return self.x + self.d[:, 0] * self.R * k, self.y + self.d[:, 1] * self.R * k + 70 * u * u
+        return self._pos(self.d, u)
+
+    def _col(self, t):
+        col = self.col
+        if self.wash is not None:
+            w0, w1 = self.wash; col = mix(col, (236, 240, 255), smooth((t - w0) / (w1 - w0)) * 0.92)
+        return col
 
     def draw(self, c, t, flip=None):
         u = (t - self.t0)
         if u < 0 or u > self.life: return
-        a = (1 - u / self.life) ** 1.4
-        col = self.col
-        if self.wash is not None:                           # too hot: the colour washes out toward white
-            w0, w1 = self.wash; col = mix(col, (232, 236, 255), smooth((t - w0) / (w1 - w0)) * 0.9)
-        x1, y1 = self.pos(u); x0, y0 = self.pos(max(0.0, u - 0.16)); xm, ym = self.pos(max(0.0, u - 0.42))
-        tw = 0.6 + 0.4 * np.sin(t * 22 + self.ph)
-        pg = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeCap=skia.Paint.kRound_Cap, BlendMode=SCREEN, MaskFilter=blur(7))
+        a = (1 - u / self.life) ** 1.25
+        col = self._col(t)
+        tw = 0.55 + 0.45 * np.sin(t * 24 + self.ph)
+        pg = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeCap=skia.Paint.kRound_Cap, BlendMode=SCREEN, MaskFilter=blur(8))
         pl = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeCap=skia.Paint.kRound_Cap, BlendMode=PLUS)
-        for i in range(len(x1)):
-            dep = 0.7 + 0.3 * (self.z[i] * 0.5 + 0.5)
-            pl.setColor(C(col, 70 * a * dep)); pl.setStrokeWidth(3)
-            c.drawLine(xm[i], ym[i], x0[i], y0[i], pl)                                   # the fading tail
-            pg.setColor(C(col, 190 * a * dep)); pg.setStrokeWidth(15)
-            c.drawLine(x0[i], y0[i], x1[i], y1[i], pg)
-            pl.setColor(C(mix(col, (255, 255, 255), 0.32), 255 * a * dep * tw[i])); pl.setStrokeWidth(4.6)
-            c.drawLine(x0[i], y0[i], x1[i], y1[i], pl)
-        if u < 0.5:
-            f = 1 - u / 0.5; glow(c, self.x, self.y, self.R * (0.5 + 0.9 * u), mix(col, (255, 255, 255), 0.6), 230 * f * f, PLUS)
-        glow(c, self.x, self.y, self.R * 1.9, col, 60 * a)
+        ph_ = skia.Paint(AntiAlias=True, BlendMode=PLUS, MaskFilter=blur(2.2))
+        sc = self.R / 300.0
+        # lit smoke where the shell broke
+        if u > 0.15:
+            sa = min(1.0, (u - 0.15) / 0.5) * a
+            glow(c, self.x + 14 * u, self.y - 10 * u, self.R * (0.55 + 0.12 * u), mix(col, (200, 200, 220), 0.5), 46 * sa)
+        # the outer sphere: long tails that droop
+        segs = (0.0, 0.10, 0.24, 0.42, 0.66)
+        P_ = [self.pos(max(0.0, u - s)) for s in segs]
+        for i in range(len(self.ph)):
+            dep = 0.62 + 0.38 * (self.z[i] * 0.5 + 0.5)
+            for k in range(len(segs) - 1, 0, -1):
+                fa = (1 - k / len(segs)) ** 1.6
+                pl.setColor(C(col, 150 * a * dep * fa)); pl.setStrokeWidth((4.6 - k * 0.7) * sc ** 0.4)
+                c.drawLine(P_[k][0][i], P_[k][1][i], P_[k - 1][0][i], P_[k - 1][1][i], pl)
+            pg.setColor(C(col, 170 * a * dep)); pg.setStrokeWidth(15 * sc ** 0.4)
+            c.drawLine(P_[1][0][i], P_[1][1][i], P_[0][0][i], P_[0][1][i], pg)
+            ph_.setColor(C(mix(col, (255, 255, 255), 0.45), 255 * a * dep * tw[i]))
+            c.drawCircle(P_[0][0][i], P_[0][1][i], (5.4 + 1.6 * tw[i]) * sc ** 0.4, ph_)          # the burning star itself
+        # the inner ring, brighter and quicker
+        if u < self.life * 0.7:
+            a2 = (1 - u / (self.life * 0.7)) ** 1.1
+            x1, y1 = self._pos(self.d2, u, 50); x0, y0 = self._pos(self.d2, max(0.0, u - 0.12), 50)
+            for i in range(len(x1)):
+                pg.setColor(C(self.col2, 200 * a2)); pg.setStrokeWidth(14 * sc ** 0.4); c.drawLine(x0[i], y0[i], x1[i], y1[i], pg)
+                ph_.setColor(C(self.col2, 255 * a2)); c.drawCircle(x1[i], y1[i], 5.2 * sc ** 0.4, ph_)
+        # glitter crackling as the stars die
+        if u > self.life * 0.4:
+            x1, y1 = P_[0]
+            gp = skia.Paint(AntiAlias=True, BlendMode=PLUS)
+            for i in range(len(self.ph)):
+                on = math.sin(t * 31 + self.ph[i] * 7) > 0.72 and (u / self.life) > self.gt[i] * 0.55
+                if on:
+                    gx = x1[i] + self.gl[i, 0] * 26 * sc; gy = y1[i] + self.gl[i, 1] * 26 * sc
+                    gp.setColor(C(mix(col, (255, 255, 255), 0.7), 235 * min(1.0, a * 2.2)))
+                    c.drawCircle(gx, gy, 2.6, gp); c.drawLine(gx - 7, gy, gx + 7, gy, SP(mix(col, (255, 255, 255), 0.7), 1.6, 200 * min(1.0, a * 2.2)))
+                    c.drawLine(gx, gy - 7, gx, gy + 7, SP(mix(col, (255, 255, 255), 0.7), 1.6, 200 * min(1.0, a * 2.2)))
+        if u < 0.45:                                           # the flash
+            f = 1 - u / 0.45
+            glow(c, self.x, self.y, self.R * (0.5 + 1.0 * u), mix(col, (255, 255, 255), 0.5), 170 * f * f, PLUS)
+            glow(c, self.x, self.y, self.R * 0.2, (255, 255, 255), 230 * f ** 3, PLUS)
+        glow(c, self.x, self.y, self.R * 2.0, col, 60 * a)
 
     def light(self, t):
         u = t - self.t0
-        return max(0.0, (1 - u / self.life)) ** 1.2 if 0 <= u <= self.life else 0.0
+        if not (0 <= u <= self.life): return 0.0
+        return max(0.0, (1 - u / self.life)) ** 1.1 * (1.0 + 0.9 * max(0.0, 1 - u / 0.4))
 
 
 def trail(c, t, t0, t1, x0, y0, x1, y1, col=(255, 220, 160)):
@@ -135,7 +179,7 @@ def trail(c, t, t0, t1, x0, y0, x1, y1, col=(255, 220, 160)):
 def with_reflection(c, draw_fn):
     draw_fn(c)
     c.save(); c.clipRect(skia.Rect(-400, HZ, 1480, 2400))
-    c.saveLayer(None, skia.Paint(Alphaf=0.42, ImageFilter=skia.ImageFilters.Blur(10, 22)))
+    c.saveLayer(None, skia.Paint(Alphaf=0.62, ImageFilter=skia.ImageFilters.Blur(7, 46)))
     c.translate(0, 2 * HZ); c.scale(1, -1); draw_fn(c)
     c.restore(); c.restore()
 

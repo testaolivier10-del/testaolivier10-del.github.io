@@ -28,11 +28,15 @@ T_SKY, T_WHY, T_ATOM, T_LAD, T_BENCH, T_HOT, T_FIN = 5.84, 13.52, 16.32, 24.16, 
 CUS = ((2.64, 5.84), (13.52, 16.32), (41.25, 42.05))
 T_BLUE = 40.32
 
-BURSTS = [Burst(0.15, 770, 640, GOLDW, 170, 70, 1, 2.0), Burst(1.3, 900, 800, GOLDW, 130, 60, 2, 1.8), Burst(1.9, 640, 560, (255, 180, 200), 120, 60, 3, 1.8),
-          Burst(6.0, 300, 720, RED, 170, 70, 4, 2.0), Burst(6.45, 790, 640, GREEN, 170, 70, 5, 2.0), Burst(6.95, 540, 860, YELLOW, 150, 70, 6, 2.0),
-          Burst(9.05, 330, 660, RED, 300, 130, 7, 2.9), Burst(10.65, 770, 640, GREEN, 300, 130, 8, 2.9), Burst(12.42, 540, 760, YELLOW, 290, 130, 9, 2.6),
-          Burst(31.5, 600, 700, BLUE, 310, 130, 10, 5.0, wash=(33.0, 35.4)),
-          Burst(T_BLUE, 570, 640, BLUE, 560, 230, 11, 3.4), Burst(41.5, 250, 830, (130, 190, 255), 240, 90, 12, 2.4), Burst(42.1, 870, 760, BLUE, 230, 90, 13, 2.4)]
+BURSTS = [Burst(0.15, 770, 640, GOLDW, 210, 80, 1, 2.2), Burst(1.3, 900, 800, (255, 190, 210), 150, 60, 2, 1.9), Burst(1.9, 640, 560, GOLDW, 140, 60, 3, 1.9),
+          Burst(6.0, 300, 720, RED, 200, 80, 4, 2.1), Burst(6.45, 790, 640, GREEN, 200, 80, 5, 2.1), Burst(6.95, 540, 880, YELLOW, 180, 80, 6, 2.1),
+          Burst(9.05, 330, 660, RED, 380, 170, 7, 3.0), Burst(9.4, 150, 900, RED, 130, 50, 17, 1.7), Burst(9.6, 560, 520, (255, 120, 120), 120, 50, 18, 1.7),
+          Burst(10.65, 770, 640, GREEN, 380, 170, 8, 3.0), Burst(11.0, 960, 900, GREEN, 130, 50, 19, 1.7), Burst(11.2, 560, 480, (150, 255, 170), 120, 50, 20, 1.6),
+          Burst(12.42, 540, 760, YELLOW, 370, 170, 9, 2.7), Burst(12.75, 240, 620, YELLOW, 130, 50, 21, 1.5), Burst(12.9, 850, 600, (255, 236, 150), 130, 50, 22, 1.5),
+          Burst(31.5, 600, 700, BLUE, 360, 160, 10, 5.0, wash=(33.0, 35.4)),
+          Burst(T_BLUE, 560, 640, BLUE, 640, 300, 11, 3.6, col2=(190, 225, 255)), Burst(T_BLUE + 0.12, 560, 640, (140, 200, 255), 330, 120, 14, 2.6),
+          Burst(40.95, 220, 860, (130, 190, 255), 260, 100, 12, 2.4), Burst(41.25, 900, 800, BLUE, 250, 100, 13, 2.4),
+          Burst(42.1, 380, 560, BLUE, 300, 120, 15, 2.4), Burst(42.45, 800, 620, (150, 205, 255), 280, 110, 16, 2.4)]
 TRAILS = [(8.3, 9.05, 420, HZ, 330, 660), (9.9, 10.65, 700, HZ, 770, 640), (11.67, 12.42, 560, HZ, 540, 760), (31.0, 31.5, 760, 1410, 600, 700), (38.5, T_BLUE, 760, 1410, 570, 640)]
 
 
@@ -62,12 +66,12 @@ def pop(t, t0, d=0.28):
 def sky_light(t):
     tot = 0.0; col = [0.0, 0.0, 0.0]
     for b in BURSTS:
-        l = b.light(t) * min(1.0, b.R / 300.0)
+        l = b.light(t) * min(1.4, b.R / 300.0)
         if l > 0:
             tot += l
             for i in range(3): col[i] += b.col[i] * l
     if tot <= 0: return (255, 220, 170), 0.0
-    return tuple(min(255, v / tot) for v in col), min(1.0, tot)
+    return tuple(min(255, v / tot) for v in col), min(1.7, tot)
 
 
 def lake(c, t, z=1.0, shift=0.0, her=None, sh=None):
@@ -83,6 +87,7 @@ def lake(c, t, z=1.0, shift=0.0, her=None, sh=None):
     F.dock(c, t, tint, ta)
     if sh is not None: F.shell(c, *sh)
     if her is not None: CH.back(c, t, rim_boost=min(1.0, 0.25 + ta), rimcol=mix((255, 232, 170), tint, min(1.0, ta * 1.2)), **her)
+    if ta > 0.05: c.drawRect(skia.Rect(-400, 900, 1480, 2400), skia.Paint(Color=C(tint, min(26, 16 * ta)), BlendMode=skia.BlendMode.kScreen))
     F.fireflies(c, t); F.reeds(c, t)
     c.restore()
 
@@ -175,7 +180,7 @@ def scene(c, t):
         yaw = track([(T_FIN, -0.05), (38.3, 0.5), (38.6, 0.5), (39.6, 0.15), (43.2, 0.1)], t)
         lake(c, t, lerp(1.0, 1.08, ease_io(u)), her=dict(yaw=yaw, pony=0, hl=hl, hr=hr, dy=dy, sq=sq, sway=3 * math.sin(t * 0.8)))
         fl = pulse(t, T_BLUE, 0.1, 0.1, 0.9)
-        if fl > 0: c.drawRect(skia.Rect(0, 0, 1080, 1920), skia.Paint(Color=C((150, 200, 255), 90 * fl), BlendMode=skia.BlendMode.kScreen))
+        if fl > 0: c.drawRect(skia.Rect(0, 0, 1080, 1920), skia.Paint(Color=C((170, 210, 255), 60 * fl), BlendMode=skia.BlendMode.kScreen))
 
 
 TITLES = [
@@ -195,7 +200,7 @@ TITLES = [
     (T_BLUE, [[('THE WHOLE SKY', Wt)], [('TURNS ', Wt), ('BLUE', BL)]]),
 ]
 
-SHORT = Short(WD, 'AP CHEMISTRY', TITLES, scene, DUR, T_END, lift=lambda t: 1.1, fix={'BLUE': 'blue'}, cuts=(T_ATOM,))
+SHORT = Short(WD, 'AP CHEMISTRY', TITLES, scene, DUR, T_END, lift=lambda t: 1.04, fix={'BLUE': 'blue'}, cuts=(T_ATOM,))
 
 if __name__ == '__main__':
     out, st = kit.args()
