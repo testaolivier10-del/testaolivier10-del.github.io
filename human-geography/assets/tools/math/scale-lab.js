@@ -175,7 +175,12 @@
   }
   function ratio(d){ return '1:' + grp(d); }
   function grp(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-  function km(x){ return x >= 1 ? grp(M.round(x, 2)).replace(/(\.\d*?)0+$/, '$1') : M.fmt(x, 3); }
+  // Kilometers as text: thousands grouped, at most two decimals, no trailing zeros.
+  function km(x){
+    if(x < 1) return M.fmt(x, 3);
+    var s = M.fixed(x, 2).replace(/\.?0+$/, ''), parts = s.split('.');
+    return grp(+parts[0]) + (parts[1] ? '.' + parts[1] : '');
+  }
 
   /* ------------------------------------------------------------ drills */
   function choiceStep(key, label, options, correct, why, practice, o){
@@ -207,10 +212,10 @@
     var cs = r.pick(ctx.cases ? CASES.filter(function(c){ return ctx.cases.indexOf(c.id) > -1; }) : CASES);
     var ds = dataset(r), v = varOf(ds.variable), baseId = cs.base === 'region' ? r.pick(REGION_BASES) : cs.base, base = bases && bases[baseId];
     var spec, extentText = EXTENT[cs.base], regionName = cs.base === 'region' ? REGIONS.filter(function(g){ return g.id === baseId; })[0].name : '';
-    if(cs.base === 'region') extentText = 'one world region (' + regionName + ')';
+    if(cs.base === 'region') extentText = 'one world region, ' + regionName;
     if(cs.id === 'world-country'){
       var rc = {}; ds.regions.forEach(function(g){ rc[g.id] = classOf(g.value); });
-      spec = { base: 'world', render: 'choropleth', invented: true, label: 'World map with every country shaded by its own value of the ' + v.short + ' share (invented data)', legendTitle: v.name + ' (percent)', classes: CLASSES, values: base ? byCountry(base, r, function(f){ return rc[f.r] != null ? rc[f.r] : 1; }, 1) : {} };
+      spec = { base: 'world', render: 'choropleth', invented: true, label: 'World map with every country shaded by its own value: the share of people who ' + v.short + ' (invented data)', legendTitle: v.name + ' (percent)', classes: CLASSES, values: base ? byCountry(base, r, function(f){ return rc[f.r] != null ? rc[f.r] : 1; }, 1) : {} };
     } else if(cs.id === 'world-region'){
       spec = base ? regionalSpec(base, ds) : null;
       if(spec) spec.legendTitle = v.name + ' (percent)';
@@ -238,7 +243,7 @@
       choiceStep('unit', 'What does each value on this map describe?', unitOpts, SCALES.indexOf(data), unitWhy, '5.A', { fixed: true }),
       scaleStep('scale', 'So what is the scale of analysis of these data?', data, slip, { right: 'Right: data for ' + UNIT_SHORT[data] + ' are at the ' + SCALE_WORD[data] + ' scale' + (slip ? ', even though the map shows ' + extentText + '.' : '.') })
     ];
-    var what = data === 'global' ? 'The map gives one value for the whole world: ' + pct(ds.world) + '.' : 'The map shows the ' + v.short + ' share.';
+    var what = data === 'global' ? 'The map gives one value for the whole world: ' + pct(ds.world) + '.' : 'The map shows the ' + v.name.charAt(0).toLowerCase() + v.name.slice(1) + '.';
     return {
       type: 'identify', ctx: ctx.id, topic: ctx.topic, case: cs.id, data: data, baseId: baseId, extent: cs.base, map: spec,
       text: '<p><b>Invented data for practice.</b> ' + what + ' Read the legend first: what is one shaded area?</p>',

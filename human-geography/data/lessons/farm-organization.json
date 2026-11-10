@@ -1,0 +1,67 @@
+{
+ "topic": "farm-organization",
+ "hook": "A chicken nugget in a US school lunch probably began as a chick owned by a large company, raised in a barn owned by a contract farmer, fed with company feed, and processed in a company plant. Most of the steps from farm to plate are controlled by one business.",
+ "prereq": [
+  {
+   "q": "What is commercial agriculture?",
+   "options": [
+    "Farming mainly to sell crops and animals for profit",
+    "Farming mainly to feed the farmer's family",
+    "Moving herds to fresh grass",
+    "Clearing forest plots in turn"
+   ],
+   "correct": 0,
+   "why": "Commercial agriculture grows for sale.",
+   "review": "production-regions"
+  },
+  {
+   "q": "What does carrying capacity describe?",
+   "options": [
+    "How many people an area can support sustainably",
+    "How many people live in each square kilometer",
+    "How fast a population grows",
+    "How much land a farm covers"
+   ],
+   "correct": 0,
+   "why": "Carrying capacity is how many people an environment can support.",
+   "review": "distribution-consequences"
+  }
+ ],
+ "figure": {
+  "figure": "farm-organization-chain",
+  "caption": "Each step of a commodity chain adds value and cost; agribusinesses often control several steps."
+ },
+ "chain": [
+  {
+   "cause": "Machines and inputs cost the same whatever the farm's size",
+   "effect": "large farms produce each bushel more cheaply"
+  },
+  {
+   "cause": "Large farms produce more cheaply",
+   "effect": "they outcompete and buy out smaller family farms"
+  },
+  {
+   "cause": "Fewer, larger farms need fewer workers",
+   "effect": "farm families leave and rural towns shrink"
+  }
+ ],
+ "ideas": [
+  "<b>Economies of scale</b>: bigger operations lower the cost of each unit, so large farms have been replacing family farms in the United States and other more developed countries.",
+  "<b>Agribusiness</b> links farms to the companies that supply, process, ship and sell food.",
+  "A <b>commodity chain</b> runs from inputs to farm to processor to distributor to store to consumer. Vertical integration means one company controls several steps.",
+  "Technology raises yields and so raises carrying capacity, but consolidation also shrinks rural communities."
+ ],
+ "misconception": {
+  "wrong": "A commodity chain is the trucks and ships that carry food.",
+  "right": "Transport is only one step. A commodity chain includes every step: inputs, growing, processing, distribution and sale."
+ },
+ "check": [
+  "hug-farm-organization-1",
+  "hug-farm-organization-3",
+  "hug-farm-organization-5",
+  "hug-farm-organization-6",
+  "hug-farm-organization-7",
+  "hug-farm-organization-9"
+ ],
+ "summary": "Large commercial operations have been replacing family farms because economies of scale lower their costs. Agribusiness links farms to the firms that supply and buy from them along commodity chains, and technology has raised yields and carrying capacity while shrinking rural communities."
+}

@@ -70,7 +70,7 @@
       [[132, 40], [132, 180], [300, 96], [60, 96], [245, 182]].map(function(p){ return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="9" fill="#6FA86F" stroke="#3E7A45"/>'; }).join(''),
     // a neighborhood: a street grid, a park, a school yard
     '<rect width="320" height="200" fill="#F3EEE2"/>' + (function(){ var o = ''; for(var x = 0; x < 6; x++) for(var y = 0; y < 4; y++){ var px = 8 + x * 52, py = 8 + y * 48; o += (x === 2 && y < 2) ? '' : '<rect x="' + px + '" y="' + py + '" width="42" height="38" rx="2" fill="' + ((x + y) % 4 ? '#E3D3BD' : '#D7C2A5') + '"/>'; } return o; })() +
-      '<rect x="112" y="8" width="42" height="86" rx="4" fill="#9CCB95"/><circle cx="126" cy="30" r="6" fill="#5E9A5E"/><circle cx="140" cy="62" r="7" fill="#5E9A5E"/><rect x="216" y="104" width="42" height="38" fill="#C8A27A"/>',
+      '<path d="M0 196 L320 100" stroke="#C9B79F" stroke-width="9"/><path d="M262 0 C 270 60, 300 80, 320 84 V0z" fill="#9CC6E3"/><rect x="112" y="8" width="42" height="86" rx="4" fill="#9CCB95"/><circle cx="126" cy="30" r="6" fill="#5E9A5E"/><circle cx="140" cy="62" r="7" fill="#5E9A5E"/><rect x="216" y="104" width="42" height="38" fill="#C8A27A"/>',
     // a city: a river, a dense core, main roads to the edge, green belt
     '<rect width="320" height="200" fill="#E7EFE0"/><path d="M0 150 C 80 120, 140 170, 200 120 S 290 60, 320 70" fill="none" stroke="#8FBBD9" stroke-width="14"/>' +
       '<path d="M160 100 L10 20 M160 100 L310 30 M160 100 L20 190 M160 100 L300 190 M160 100 V0" stroke="#C9B79F" stroke-width="4"/>' +
@@ -126,7 +126,7 @@
       if(view === 'map'){
         var l = lad[step];
         fig.innerHTML = '<div class="hug-sl-ms"><div class="hug-sl-frame">' + sceneHtml(step) + '</div>' +
-          '<div class="hug-sl-bar" aria-hidden="true"><span class="hug-sl-bar-l"></span><span class="hug-sl-bar-t">10 cm on this map = ' + S.km(l.across) + ' km on the ground</span></div>' +
+          '<div class="hug-sl-bar" aria-hidden="true"><span class="hug-sl-bar-l"></span><span class="hug-sl-bar-t">Imagine this map 10 cm wide: its width is ' + S.km(l.across) + ' km on the ground</span></div>' +
           '<div class="hug-sl-read"><p class="hug-sl-ratio">' + S.ratio(l.denom) + '</p><p class="hug-sl-rk"><span class="hug-sl-tag ' + (step < 3 ? 'is-large' : 'is-small') + '">' + (step < 3 ? 'Large scale' : 'Small scale') + '</span> 1 cm = ' + S.km(l.kmPerCm) + ' km</p>' +
           '<p class="hug-sl-shows">A map 10 cm across shows <b>' + esc(l.shows) + '</b>: ' + esc(l.what) + '.</p></div></div>';
       } else {

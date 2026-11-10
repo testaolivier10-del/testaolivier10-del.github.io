@@ -1,0 +1,218 @@
+{
+ "id": "frq-devolution-two",
+ "type": "two",
+ "points": 7,
+ "title": "A map of a language region and a table of voting results: devolution and its causes",
+ "units": [
+  "unit-3",
+  "unit-4"
+ ],
+ "topics": [
+  "cultural-patterns",
+  "devolution-factors"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "3.B",
+  "5.A"
+ ],
+ "stimuli": [
+  {
+   "kind": "map",
+   "title": "Speakers of the Dorvan language in Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth map of invented Country A by province: the share of people whose first language is Dorvan is 70% or more in the Southern Forest and South Coast, lower in the Western Uplands and Central Valley, and under 10% in the Capital Region and the north and east",
+    "legendTitle": "People whose first language is Dorvan (percent, invented)",
+    "classes": [
+     "Under 10%",
+     "10% to 39%",
+     "40% to 69%",
+     "70% or more"
+    ],
+    "values": {
+     "south": 3,
+     "coast": 3,
+     "west": 2,
+     "central": 1,
+     "capital": 0,
+     "north": 0,
+     "northeast": 0,
+     "east": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "data",
+   "title": "A vote on more self-rule for the south",
+   "invented": true,
+   "table": {
+    "caption": "Results by province of a vote on giving the south its own elected assembly (invented data for practice)",
+    "cols": [
+     "Province",
+     "Yes",
+     "No",
+     "Turnout"
+    ],
+    "rows": [
+     [
+      "South Coast",
+      "71%",
+      "29%",
+      "52%"
+     ],
+     [
+      "Southern Forest",
+      "64%",
+      "36%",
+      "58%"
+     ],
+     [
+      "Western Uplands",
+      "41%",
+      "59%",
+      "60%"
+     ],
+     [
+      "Central Valley",
+      "22%",
+      "78%",
+      "63%"
+     ],
+     [
+      "Capital Region",
+      "15%",
+      "85%",
+      "70%"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the scale of analysis of the data shown in Source 1.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names the local (subnational or provincial) scale.",
+     "accept": [
+      "local",
+      "subnational",
+      "provincial"
+     ]
+    }
+   ],
+   "sample": "The scale of analysis is local (subnational), because the data are given for each province of Country A."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe the pattern of Dorvan speakers shown in Source 1.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Says where Dorvan speakers are concentrated and where they are few, naming provinces or directions.",
+     "accept": [
+      "concentrated in the south (Southern Forest, South Coast)",
+      "few in the Capital Region, north and east"
+     ]
+    }
+   ],
+   "sample": "Dorvan speakers are concentrated in the south: they are 70% or more of the people in the Southern Forest and South Coast, and their share falls to under 10% in the Capital Region and the north and east."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain how language can act as a centrifugal force in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links the language difference to division (feeling left out, separate identity) that pulls the south away.",
+     "accept": [
+      "a separate language builds a separate identity, so the south pulls away",
+      "schools or government in another language make southerners feel left out"
+     ]
+    }
+   ],
+   "sample": "Because most people in the south speak Dorvan while the capital and the north speak another language, southerners may feel that national schools and government do not serve them, so the language difference pulls the south away from the rest of the state."
+  },
+  {
+   "label": "D",
+   "verb": "describe",
+   "prompt": "Using both sources, describe the relationship between the share of Dorvan speakers and the Yes vote.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes a positive relationship with values from both sources.",
+     "accept": [
+      "more Dorvan speakers, higher Yes vote",
+      "South Coast 70% or more Dorvan and 71% Yes; Capital Region under 10% and 15% Yes"
+     ]
+    }
+   ],
+   "sample": "Provinces with more Dorvan speakers voted Yes more strongly: the South Coast and Southern Forest, where 70% or more speak Dorvan, voted 71% and 64% Yes, while the Capital Region, under 10% Dorvan, voted only 15% Yes."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain one factor other than language that could push the south toward devolution.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a non-language factor (economic, physical division, unequal services) and links it to demands for self-rule.",
+     "accept": [
+      "economic: the south feels it pays more taxes than it gets back, so it wants control of its money",
+      "physical division: distance from the capital makes the south feel ignored",
+      "uneven services or jobs, so resentment grows"
+     ]
+    }
+   ],
+   "sample": "An economic factor: if people in the south feel that roads, jobs and spending go to the Capital Region first, resentment grows, so southerners demand more control over their own money and decisions."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain how Country A's government could reduce the pressure for devolution.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a policy and links it to less pressure (for example, regional powers or fairer spending leads to less reason to leave).",
+     "accept": [
+      "give the south an assembly or autonomy, so it governs what matters most",
+      "protect Dorvan in schools, so speakers feel included",
+      "spend more fairly in the south, so resentment falls"
+     ]
+    }
+   ],
+   "sample": "The government could give the south an elected assembly with control over its schools and language, as Spain did for its autonomous communities, so Dorvan speakers would govern the matters they care about most and have less reason to seek independence."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the results in Source 2 show that the south wants to become an independent state.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree, then explains a limit of the data (the vote was about self-rule, not independence; turnout; provinces vary).",
+     "accept": [
+      "to a limited degree: the vote was for more self-rule, not independence",
+      "turnout in the South Coast was only 52%, so many views are unknown"
+     ]
+    }
+   ],
+   "sample": "To a limited degree: the south voted Yes, but the vote was about an assembly for more self-rule, not independence, and turnout in the South Coast was only 52%, so the results cannot show what most southerners want about leaving."
+  }
+ ]
+}

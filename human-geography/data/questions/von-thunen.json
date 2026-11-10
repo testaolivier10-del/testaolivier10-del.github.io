@@ -1,0 +1,578 @@
+{
+ "stimuli": {
+  "von-thunen-s1": {
+   "kind": "image",
+   "title": "Land use around an invented market town with a river",
+   "image": {
+    "figure": "von-thunen-river",
+    "alt": "A drawn map of an invented region. Zones of land use surround a market town in stretched ovals that are much longer east to west, along a river, than north to south. Zones are lettered from the town outward: W nearest the town, then X, Y and Z. Area V, in the far corner, lies outside all the zones. A small town in the southeast has its own small zone the same color as zone W around it.",
+    "caption": "A LevlPrep drawing of an invented region. Colors match the von Thünen rings in this lesson."
+   }
+  },
+  "von-thunen-s2": {
+   "kind": "data",
+   "title": "Where farms of each type are found, Country A",
+   "invented": true,
+   "table": {
+    "caption": "Average distance from the capital, Country A's main market, to farms of each type (invented data for practice)",
+    "cols": [
+     "Farm type",
+     "Average distance from the capital (km)",
+     "How the product reaches market"
+    ],
+    "rows": [
+     [
+      "Dairy",
+      "6",
+      "Truck"
+     ],
+     [
+      "Wood lots",
+      "18",
+      "Truck"
+     ],
+     [
+      "Wheat",
+      "40",
+      "Truck and rail"
+     ],
+     [
+      "Cattle ranching",
+      "85",
+      "Truck and rail"
+     ],
+     [
+      "Cut flowers",
+      "160",
+      "Refrigerated truck to the airport, then air"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-von-thunen-1",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "According to the von Thünen model, which land use belongs in zone W?",
+   "options": [
+    "Market gardening and dairy",
+    "Forest for fuel and building",
+    "Grain and field crops",
+    "Livestock ranching"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Zone W touches the market town, so it holds the ring that loses value fastest with distance: market gardening and dairy.",
+    "options": [
+     "Right: perishable, heavy products such as milk and vegetables go closest to the market town.",
+     "Forest is the second ring, zone X.",
+     "Grain is the third ring, zone Y.",
+     "Ranching is the outermost farming ring, zone Z."
+    ]
+   },
+   "stimulus": "von-thunen-s1"
+  },
+  {
+   "id": "hug-von-thunen-2",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Why are the zones stretched far along the river instead of forming circles?",
+   "options": [
+    "The soil far from the river is richer, so the farms crowd in there instead",
+    "Farmers by the river grow food to eat, not to sell",
+    "River shipping cost less, so riverside farms reached market cheaply",
+    "The river floods, so no farms can be built near it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Von Thünen himself showed this case: a navigable river lowers transport cost along its banks, so each ring stretches out along it.",
+    "options": [
+     "The model holds soil the same everywhere; the river changes transport cost.",
+     "The model is about farms selling to the market town.",
+     "Right: cheaper transport along the river makes distant riverside land as good as closer land elsewhere.",
+     "The zones stretch along the river, so farming there is heavy, not absent."
+    ]
+   },
+   "stimulus": "von-thunen-s1"
+  },
+  {
+   "id": "hug-von-thunen-3",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "In the model, what is the most likely use of area V?",
+   "options": [
+    "Market gardening, because it is the most profitable use",
+    "Forest, because wood is light and cheap to haul over long distances",
+    "Dairy, because milk keeps for weeks without cooling",
+    "Wilderness, too far for farm goods to pay their way to market"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The outer edge of the model is wilderness: land so far away that no product can pay its transport to market.",
+    "options": [
+     "Market gardening goes closest to the market; at V its produce would spoil and cost too much to ship.",
+     "In the model wood is heavy and costly to haul, which is why forest is ring 2.",
+     "In the 1820s milk spoiled within days, so dairying stayed next to the market.",
+     "Right: beyond the last ring, transport costs eat up all profit, so the land is left unfarmed."
+    ]
+   },
+   "stimulus": "von-thunen-s1"
+  },
+  {
+   "id": "hug-von-thunen-4",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.D",
+   "q": "What does the small town in the southeast show about a limit of the von Thünen model?",
+   "options": [
+    "Rings form around rivers and roads, not around the towns themselves",
+    "Real regions have more than one market, each with its own rings",
+    "Market gardening does not happen away from the main town",
+    "Small towns are too small to have any farms near them"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The model assumes an isolated state with one market. Where several towns exist, rings overlap and form around each one.",
+    "options": [
+     "The small town has its own ring even though it is not on the river.",
+     "Right: the model assumes one market; a second town creates its own zone of intensive farming.",
+     "The small town shows market gardening around a second market.",
+     "The drawing shows an intensive zone around the small town."
+    ]
+   },
+   "stimulus": "von-thunen-s1"
+  },
+  {
+   "id": "hug-von-thunen-5",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which farm types in the table are arranged as the von Thünen model predicts?",
+   "options": [
+    "Cut flowers, dairy and wheat, from nearest to farthest",
+    "Ranching, wheat and dairy, from nearest to farthest",
+    "Dairy, wood lots, wheat and ranching, from nearest to farthest",
+    "Wood lots, then dairy, then ranching, going from nearest to farthest"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Dairy (6 km), wood lots (18 km), wheat (40 km) and ranching (85 km) follow rings 1 to 4 of the model.",
+    "options": [
+     "Cut flowers are the farthest of all, not the nearest.",
+     "That is the reverse of the table and of the model.",
+     "Right: their distances rise in the model's ring order.",
+     "Dairy is nearer the capital than wood lots, as the model predicts."
+    ]
+   },
+   "stimulus": "von-thunen-s2"
+  },
+  {
+   "id": "hug-von-thunen-6",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Cut flowers are perishable and earn a lot per hectare, yet they are grown farthest from the capital. What best explains this exception?",
+   "options": [
+    "Cold storage and air freight let them reach distant markets fresh",
+    "Cut flowers are heavy and cheap, like the products of the outer rings",
+    "Land far from the capital is the most expensive in the country",
+    "Flowers need no transport because they are sold at the farm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Modern transport changes the model. Kenya, for example, flies cut flowers to Europe; the \"market\" for a specialty crop can be a continent away.",
+    "options": [
+     "Right: refrigeration and fast transport break the link between perishability and distance.",
+     "Flowers are light and valuable, the opposite of outer-ring products.",
+     "Land usually gets cheaper with distance from the main market.",
+     "The table says they travel by truck and air."
+    ]
+   },
+   "stimulus": "von-thunen-s2"
+  },
+  {
+   "id": "hug-von-thunen-7",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which information would a researcher most need to judge how well the model fits Country A?",
+   "options": [
+    "The capital's population in the year 1500",
+    "Maps of soil, slope and rivers in each area",
+    "The color of the flowers grown on each farm",
+    "The names of the families who own the dairies"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Testing a model means checking its assumptions. Distances alone cannot tell you whether land is flat and even, as von Thünen assumed.",
+    "options": [
+     "A population five centuries ago says little about land use now.",
+     "Right: the model assumes a flat, uniform plain; knowing where soils, slopes and rivers differ shows whether those assumptions hold.",
+     "Flower color does not test the model.",
+     "Ownership names do not affect the model's test."
+    ]
+   },
+   "stimulus": "von-thunen-s2"
+  },
+  {
+   "id": "hug-von-thunen-8",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the von Thünen model: place each land use in its ring, from the market outward.",
+   "model": {
+    "layout": "rings",
+    "title": "Von Thünen rings around one market",
+    "center": "Market",
+    "slots": [
+     {
+      "id": "r1"
+     },
+     {
+      "id": "r2"
+     },
+     {
+      "id": "r3"
+     },
+     {
+      "id": "r4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "garden",
+      "text": "Market gardening and dairy"
+     },
+     {
+      "id": "forest",
+      "text": "Forest (fuel and lumber)"
+     },
+     {
+      "id": "grain",
+      "text": "Grain and field crops"
+     },
+     {
+      "id": "ranch",
+      "text": "Livestock ranching"
+     },
+     {
+      "id": "plant",
+      "text": "Plantation agriculture"
+     }
+    ],
+    "key": {
+     "r1": "garden",
+     "r2": "forest",
+     "r3": "grain",
+     "r4": "ranch"
+    },
+    "slips": [
+     {
+      "piece": "forest",
+      "slot": "r4",
+      "why": "Students often push forest to the edge. In the model wood is heavy and needed daily for fuel and building, so it sits in ring 2."
+     },
+     {
+      "piece": "plant",
+      "slot": "r3",
+      "why": "Plantations are tropical estates for export; they are not one of von Thünen's rings."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the center: market gardening and dairy, forest, grain and field crops, livestock ranching. Beyond ring 4 is wilderness."
+   }
+  },
+  {
+   "id": "hug-von-thunen-9",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 3,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Order the factors that, in von Thünen's reasoning, set a farm's land use, from the cause at the top to the result at the bottom.",
+   "model": {
+    "layout": "tiers",
+    "title": "From distance to land use",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "Step 1 (cause)"
+     },
+     {
+      "id": "t2",
+      "name": "Step 2"
+     },
+     {
+      "id": "t3",
+      "name": "Step 3"
+     },
+     {
+      "id": "t4",
+      "name": "Step 4 (result)"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "dist",
+      "text": "Distance from the market"
+     },
+     {
+      "id": "cost",
+      "text": "Cost of transport to market"
+     },
+     {
+      "id": "rent",
+      "text": "Rent each use can pay"
+     },
+     {
+      "id": "use",
+      "text": "Land use chosen"
+     },
+     {
+      "id": "soil",
+      "text": "Rain on each farm"
+     }
+    ],
+    "key": {
+     "t1": "dist",
+     "t2": "cost",
+     "t3": "rent",
+     "t4": "use"
+    },
+    "slips": [
+     {
+      "piece": "rent",
+      "slot": "t2",
+      "why": "Rent comes after transport cost: what a use can pay depends on what is left after shipping."
+     },
+     {
+      "piece": "soil",
+      "slot": "t1",
+      "why": "The model holds soil and climate the same everywhere; distance is the cause it studies."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Distance sets transport cost; transport cost sets the rent each use can pay; the highest bidder decides the land use."
+   }
+  },
+  {
+   "id": "hug-von-thunen-10",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which is an assumption of the von Thünen model?",
+   "options": [
+    "Many market towns of different sizes",
+    "Fast refrigerated trucks and air freight for perishable goods",
+    "Farmers who grow food mainly for their families",
+    "A flat plain with the same soil and climate everywhere"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Von Thünen's isolated state (1826): one market, a flat and uniform plain, transport by cart in every direction, and farmers seeking profit.",
+    "options": [
+     "The model assumes one market, an isolated state.",
+     "Von Thünen wrote in 1826, when goods moved by horse and cart.",
+     "The model assumes farmers sell to the market to make a profit.",
+     "Right: the model holds land the same so that distance alone explains land use."
+    ]
+   }
+  },
+  {
+   "id": "hug-von-thunen-11",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the von Thünen model, why is forest in the second ring, close to the market?",
+   "options": [
+    "Wood for fuel and building was heavy and costly to haul",
+    "Trees grow faster near markets than far away",
+    "Wood spoils within days if not used",
+    "Forests are protected by law near towns"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Heavy, bulky goods with high transport cost need to be near the market, which is why forest comes right after market gardening.",
+    "options": [
+     "Right: in the 1820s, towns burned wood daily and moving it far by cart was costly.",
+     "The model holds soil and climate the same everywhere.",
+     "Wood keeps well; its problem was weight.",
+     "The model explains land use by transport cost, not law."
+    ]
+   }
+  },
+  {
+   "id": "hug-von-thunen-12",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.E",
+   "q": "Lambs raised in New Zealand are sold in the United Kingdom, more than 18,000 km away. How does this fit the von Thünen model?",
+   "options": [
+    "It fits the model, because ranching goes closest to the market",
+    "It fits the model, because lamb spoils quickly without cooling",
+    "It breaks the model, because refrigerated shipping cut distance costs",
+    "It breaks the model, because New Zealand has no flat land"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Refrigeration and fast transport are among the main reasons modern land use departs from von Thünen's rings.",
+    "options": [
+     "Ranching is in the outer ring, and a whole world away is far beyond any ring.",
+     "Spoilage is why the trip needed refrigeration, which the model does not include.",
+     "Right: chilled and frozen shipping let meat travel across the world, which a model built on horse carts could not foresee.",
+     "The point is transport technology, not New Zealand's terrain."
+    ]
+   }
+  },
+  {
+   "id": "hug-von-thunen-13",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.E",
+   "q": "Which modern example breaks the von Thünen rings? Select all that apply.",
+   "options": [
+    "Kenyan cut flowers flown overnight to markets in Europe",
+    "Dairy farms clustered close to a large city",
+    "Cattle ranches on cheap land far from cities",
+    "Wheat grown at a middle distance from the market"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Specialty farming with refrigeration or air freight, such as Kenya's flowers, breaks the rings. The other three fit the model.",
+    "options": [
+     "Right: a perishable, high-value crop is grown thousands of kilometers from its market.",
+     "Dairy near the market is what ring 1 predicts.",
+     "Ranching far out is what ring 4 predicts.",
+     "Grain in the middle is ring 3 of the model."
+    ]
+   }
+  },
+  {
+   "id": "hug-von-thunen-14",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.C",
+   "q": "Some geographers apply von Thünen's rings at the global scale, with Western Europe as the market. Which pattern would support this idea?",
+   "options": [
+    "Ranching on the farms nearest Europe, with market gardens on far continents",
+    "The same kind of farming at each distance from Europe",
+    "Farming in Europe and almost nowhere else in the world",
+    "Intensive farming nearest Europe, extensive farming on far continents"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Models can be tested at several scales. At the global scale, intensive uses near big markets and extensive uses far away would fit the logic of the rings, though many other factors also matter.",
+    "options": [
+     "That is the reverse of the rings.",
+     "That would show no rings at any scale.",
+     "The idea needs farming at many distances to compare.",
+     "Right: dairy and vegetables nearby, ranching in distant places such as Argentina, would echo the rings at a larger scale."
+    ]
+   }
+  },
+  {
+   "id": "hug-von-thunen-15",
+   "unit": "unit-5",
+   "topic": "von-thunen",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.E",
+   "q": "Build a statement of a limit of the von Thünen model, applied to a real place.",
+   "why": {
+    "correct": "A limit names the assumption and a real case where it does not hold."
+   },
+   "specific": {
+    "frame": "The von Thünen model assumes ___, but in ___, ___.",
+    "write": {
+     "mechanism": false
+    },
+    "model": "The von Thünen model assumes goods move by slow cart, but in Kenya, refrigerated trucks and air freight carry cut flowers to markets in Europe overnight.",
+    "slots": {
+     "limit": {
+      "label": "Assumption",
+      "options": [
+       "goods move by slow cart",
+       "farmers grow food mainly for their families"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The model assumes farmers sell for profit, so this is not one of its assumptions."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "Kenya",
+       "the market town itself"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place where the assumption fails."
+      }
+     },
+     "effect": {
+      "label": "What happens there",
+      "options": [
+       "refrigerated trucks and air freight carry cut flowers to markets in Europe overnight",
+       "dairy farms sit next to the town"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dairy next to town fits the model; it is not a limit."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,145 @@
+{
+ "id": "frq-supranational-none",
+ "type": "none",
+ "points": 7,
+ "title": "Supranational organizations and sovereignty: what members gain and give up",
+ "units": [
+  "unit-2",
+  "unit-4"
+ ],
+ "topics": [
+  "migration-causes",
+  "sovereignty-challenges"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "2.B",
+  "5.B"
+ ],
+ "stimuli": [],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify one supranational organization and one function it carries out.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a real supranational organization and a correct function of it.",
+     "accept": [
+      "NATO: shared defense",
+      "EU: single market, shared laws or free movement of people",
+      "UN: peace and security",
+      "African Union: peace and security in Africa",
+      "ASEAN: cooperation in Southeast Asia",
+      "Arctic Council: protecting the Arctic environment"
+     ]
+    }
+   ],
+   "sample": "NATO: its members defend each other, treating an armed attack on one member as an attack on all."
+  },
+  {
+   "label": "B",
+   "verb": "define",
+   "prompt": "Define supranationalism.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Says that three or more states cooperate through an organization for shared goals, giving up some sovereignty.",
+     "accept": [
+      "states joining an organization for shared goals",
+      "states sharing some decisions or sovereignty with a body above them"
+     ]
+    }
+   ],
+   "sample": "Supranationalism is cooperation among three or more states through an organization for shared goals, in which each member gives up some of its sovereignty."
+  },
+  {
+   "label": "C",
+   "verb": "describe",
+   "prompt": "Describe one way membership in a supranational organization limits a member state's sovereignty.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes a real limit: shared laws, court rulings, open borders, binding decisions, suspension or intervention.",
+     "accept": [
+      "EU members follow EU laws and court rulings",
+      "EU members must allow free movement of people",
+      "UN members must carry out Security Council decisions",
+      "NATO members commit to defend others",
+      "the African Union can suspend a member after a coup"
+     ]
+    }
+   ],
+   "sample": "Members of the European Union must follow EU laws and the rulings of the EU court in shared areas such as rules for goods sold in the single market, so their own parliaments cannot pass laws that conflict with them."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain one economic reason a state joins a supranational organization.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives an economic gain and links it to the state's benefit (for example, a larger market leads to more sales and jobs).",
+     "accept": [
+      "a larger market with no customs checks, so more sales and jobs",
+      "easier movement of goods, so lower costs",
+      "shared funds for poorer regions, so new roads and services"
+     ]
+    }
+   ],
+   "sample": "A state joins the European Union because its firms can then sell to customers in every member state without customs checks, so they reach a much larger market, which can raise their sales and create jobs at home."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain how free movement of people within the European Union can affect migration between member states.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links free movement to more migration, through a removed obstacle or a pull factor such as wages or jobs.",
+     "accept": [
+      "removing visas and border checks lowers an intervening obstacle, so more people move",
+      "workers move toward higher wages or more jobs in richer members",
+      "example: many Poles moved to the United Kingdom after Poland joined in 2004"
+     ]
+    }
+   ],
+   "sample": "Because EU citizens can live and work in any member state without a visa, an intervening obstacle to migration is removed, so workers move toward pull factors such as higher wages. For example, many people from Poland moved to the United Kingdom after Poland joined the EU in 2004."
+  },
+  {
+   "label": "F",
+   "verb": "compare",
+   "prompt": "Compare how supranationalism affects sovereignty at the national scale with how devolution affects sovereignty at the subnational scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both: supranationalism moves power up from the state; devolution moves power down to regions (both reduce what the national government decides alone).",
+     "accept": [
+      "supranationalism shares power upward, whereas devolution shares it downward",
+      "both reduce what the national government decides alone"
+     ]
+    }
+   ],
+   "sample": "Both reduce what a national government decides alone, but supranationalism moves power up from the national scale to a group of states, such as the EU, whereas devolution moves power down to regions at the subnational scale, such as the Scottish Parliament in the United Kingdom."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which supranational organizations weaken the sovereignty of their member states.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree, then supports it with a reason (for example, decisions are shared but members keep most powers and can leave).",
+     "accept": [
+      "to a moderate degree: members share some decisions but keep most powers and can leave",
+      "to a high degree: EU law overrides national law in shared areas",
+      "to a low degree: bodies such as the Arctic Council act only with every member's agreement"
+     ]
+    }
+   ],
+   "sample": "To a moderate degree: members share some decisions, such as EU laws in shared areas, but they keep control of most matters, such as their armies and taxes, and they can leave, as the United Kingdom did in 2020, so sovereignty is pooled rather than lost."
+  }
+ ]
+}

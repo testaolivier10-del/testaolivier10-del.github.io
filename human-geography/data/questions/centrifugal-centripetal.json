@@ -475,22 +475,21 @@
    "diff": 2,
    "type": "multi",
    "practice": "2.B",
-   "q": "Which are centrifugal forces? Select all that apply.",
+   "q": "Which of these is a centrifugal force? Select all that apply.",
    "options": [
     "One region is much poorer than the rest and feels neglected",
-    "A minority group with its own language seeks self-rule",
+    "Extra money sent to poorer provinces so services are similar",
     "A national holiday celebrated across the country",
     "A national road network that links each region to the capital"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
     "correct": "Centrifugal forces divide a state: uneven development, rival identities and ethnic nationalist movements. Shared symbols and transport links are centripetal.",
     "options": [
      "Right: Uneven development pulls a region away.",
-     "Right: An ethnonationalist movement pulls toward separation.",
+     "Fairer sharing of money pulls regions together.",
      "Shared celebrations pull people together.",
      "Transport links pull regions together."
     ]

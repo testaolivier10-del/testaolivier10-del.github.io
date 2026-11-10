@@ -1,0 +1,266 @@
+{
+ "id": "frq-world-cities-two",
+ "type": "two",
+ "points": 7,
+ "title": "Very large cities, world cities and the urban hierarchy",
+ "units": [
+  "unit-3",
+  "unit-6"
+ ],
+ "topics": [
+  "diffusion-today",
+  "cities-worldwide",
+  "cities-globalization",
+  "city-size-distribution"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "3.B",
+  "3.F",
+  "5.B"
+ ],
+ "stimuli": [
+  {
+   "kind": "map",
+   "title": "Population of selected very large cities, 2025, and two world cities",
+   "map": {
+    "base": "world",
+    "render": "symbol",
+    "label": "Graduated symbol map of seven very large cities in 2025, five of them in Asia (Jakarta, Tokyo, New Delhi, Shanghai, Manila), one in Africa (Cairo) and one in South America (Sao Paulo); letters A and B mark London and New York, two world cities",
+    "source": "UN DESA, World Urbanization Prospects 2025 (2025 estimates, Degree of Urbanisation method); world cities from GaWC, 2024",
+    "legendTitle": "Urban area population, 2025 (letters: world cities named in the questions)",
+    "symbols": {
+     "unit": "million people",
+     "items": [
+      {
+       "at": [
+        106.8,
+        -6.2
+       ],
+       "value": 41.9
+      },
+      {
+       "at": [
+        139.7,
+        35.7
+       ],
+       "value": 33.4
+      },
+      {
+       "at": [
+        31.2,
+        30
+       ],
+       "value": 32
+      },
+      {
+       "at": [
+        77.2,
+        28.6
+       ],
+       "value": 30.2
+      },
+      {
+       "at": [
+        121.5,
+        31.2
+       ],
+       "value": 29.6
+      },
+      {
+       "at": [
+        121,
+        14.6
+       ],
+       "value": 24.7
+      },
+      {
+       "at": [
+        -46.6,
+        -23.5
+       ],
+       "value": 18.9
+      }
+     ],
+     "legend": [
+      10,
+      20,
+      40
+     ]
+    },
+    "marks": [
+     {
+      "at": [
+       -0.1,
+       51.5
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       -74,
+       40.7
+      ],
+      "text": "B"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "data",
+   "title": "The five largest cities of Country Z",
+   "invented": true,
+   "table": {
+    "caption": "Country Z, an invented country (invented data for practice). Offices of global firms: offices of the world's 100 largest finance, law and advertising firms.",
+    "cols": [
+     "City",
+     "Population (millions)",
+     "Offices of global firms"
+    ],
+    "rows": [
+     [
+      "Z1 (capital and main port)",
+      "10.0",
+      "85"
+     ],
+     [
+      "Z2",
+      "2.0",
+      "9"
+     ],
+     [
+      "Z3",
+      "1.6",
+      "4"
+     ],
+     [
+      "Z4",
+      "1.2",
+      "2"
+     ],
+     [
+      "Z5",
+      "1.0",
+      "1"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "points": 1,
+   "prompt": "Using Source 1, identify the world region where most of the very large cities shown are located.",
+   "rubric": [
+    {
+     "point": "Identifies Asia (or South, Southeast and East Asia).",
+     "accept": [
+      "Asia",
+      "South, Southeast and East Asia",
+      "East and South Asia"
+     ]
+    }
+   ],
+   "sample": "Asia: five of the seven very large cities shown are in South, Southeast or East Asia."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "points": 1,
+   "prompt": "Using Source 1, describe the difference between a megacity and a metacity, using one city shown as an example.",
+   "rubric": [
+    {
+     "point": "Describes a megacity as 10 million or more and a metacity as 20 million or more, with a correct example from the map.",
+     "accept": [
+      "Sao Paulo, about 18.9 million, is a megacity but not a metacity",
+      "Jakarta, about 41.9 million, is a metacity because it has more than 20 million"
+     ]
+    }
+   ],
+   "sample": "A megacity has 10 million people or more, while a metacity has 20 million or more; Sao Paulo, with about 18.9 million in 2025, is a megacity but not a metacity, whereas Jakarta, with about 41.9 million, is a metacity."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "points": 1,
+   "prompt": "Explain why most of the very large cities shown in Source 1 are in lower- and middle-income countries.",
+   "rubric": [
+    {
+     "point": "Explains rapid growth from rural-to-urban migration and/or natural increase, with the link to city size.",
+     "accept": [
+      "young people move from villages to cities for jobs, and births exceed deaths, so these cities grow very large",
+      "high rural-to-urban migration adds millions of residents each decade, so the cities pass 10 or 20 million"
+     ]
+    }
+   ],
+   "sample": "In these countries many young people move from villages to cities in search of work, and births in the cities still far outnumber deaths, so their largest cities add millions of people each decade and grow into megacities and metacities."
+  },
+  {
+   "label": "D",
+   "verb": "compare",
+   "points": 1,
+   "prompt": "Using Source 1, compare how cities A and B and the city of Jakarta are important in the world.",
+   "rubric": [
+    {
+     "point": "Speaks of both: A and B (London and New York) are world cities ranked by global functions such as finance and headquarters, whereas Jakarta is important mainly for its very large population.",
+     "accept": [
+      "London and New York lead in global finance and business, whereas Jakarta is the largest city by population but less central to global business",
+      "both are major cities, but A and B matter for global functions while Jakarta matters for size"
+     ]
+    }
+   ],
+   "sample": "Cities A and B, London and New York, are important because they host global banks, headquarters and business services that steer the world economy, whereas Jakarta is important mainly because of its huge population, about 41.9 million, and is less central to global finance."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "points": 1,
+   "prompt": "Using Source 2, explain whether Country Z's cities fit the rank-size rule or show a primate city.",
+   "rubric": [
+    {
+     "point": "Explains with values that Z1 is far larger than the rule predicts relative to Z2 (or Z2 far smaller), so Country Z has a primate city.",
+     "accept": [
+      "the rule expects Z2 to have 5 million, but it has 2, so Z1 is a primate city",
+      "Z1 has 10 million, five times Z2, so it is a primate city rather than a rank-size pattern"
+     ]
+    }
+   ],
+   "sample": "Country Z shows a primate city, because the rank-size rule would expect Z2 to have about 5 million people (10 / 2), but it has only 2 million, so Z1 is five times larger than the next city and dominates the country."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "points": 1,
+   "prompt": "Using Source 2, explain how Z1's position in the urban hierarchy can affect smaller cities in Country Z, linking the global and national scales.",
+   "rubric": [
+    {
+     "point": "Explains that Z1, with most global firm offices, links Country Z to the world economy, so decisions, investment or new ideas reach the smaller cities through it (for example by hierarchical diffusion).",
+     "accept": [
+      "global firms make decisions in Z1, so investment and jobs in Z2 to Z5 depend on choices made there",
+      "new products and ideas arrive from world cities in Z1 first and then spread down to Z2 to Z5, so the smaller cities adopt them later"
+     ]
+    }
+   ],
+   "sample": "Z1 holds 85 of the global firm offices, so it links Country Z to world cities at the global scale; new products, investment and decisions arrive in Z1 first and then spread down the hierarchy to Z2 through Z5 at the national scale, which leaves the smaller cities dependent on choices made in Z1."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "points": 1,
+   "prompt": "Using both sources, explain the degree to which a city's population predicts its rank as a world city.",
+   "rubric": [
+    {
+     "point": "States a degree first (usually low or limited), then explains with evidence from both sources that global functions, not size, set world city rank.",
+     "accept": [
+      "to a low degree: Jakarta is the largest city on the map but London and New York are the top world cities, and in Source 2 Z1 has both size and offices",
+      "to a limited degree: size helps (Z1 is largest and has most offices) but the most connected world cities in Source 1 are not the largest"
+     ]
+    }
+   ],
+   "sample": "To a low degree. In Source 1, the largest city is Jakarta, yet the two most connected world cities, A and B, are London and New York, which are not among the largest cities shown. In Source 2, Z1 is both the largest city and the one with the most global offices, so size can go with world city functions, but it is the functions, not the population, that set the rank."
+  }
+ ]
+}

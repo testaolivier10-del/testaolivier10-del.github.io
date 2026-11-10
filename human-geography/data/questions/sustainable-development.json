@@ -1,0 +1,584 @@
+{
+ "stimuli": {
+  "sustainable-development-s1": {
+   "kind": "text",
+   "title": "A reserve office writes about visitors (invented passage for practice)",
+   "text": "<p><i>From the 2026 visitor report of the Southern Forest Reserve, an invented protected forest in Country A.</i></p><p>Before the reserve opened in 2012, loggers cleared part of the forest each year. Since then, villagers who once cut trees work as guides, cooks and lodge staff, and every visitor pays a park fee that funds rangers. We allow 400 visitors a day and keep them on marked trails. Last year, however, three lodges owned by firms from the capital took most of the bookings, and some villagers say little of the money reaches them. Most visitors fly in from abroad.</p>"
+  },
+  "sustainable-development-s2": {
+   "kind": "data",
+   "title": "Forest cover and visitors in the Southern Forest, 2000 to 2025",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of the Southern Forest in Country A, 2000 to 2025: forest cover falls from 80% to 68% by 2010, then rises slowly to 72% by 2025, while visitors rise from 5 thousand to 60 thousand a year after 2010",
+    "xLabel": "Year",
+    "yLabel": "Percent, or thousands of visitors",
+    "series": [
+     {
+      "name": "Forest cover (%)",
+      "points": [
+       [
+        2000,
+        80
+       ],
+       [
+        2005,
+        74
+       ],
+       [
+        2010,
+        68
+       ],
+       [
+        2015,
+        69
+       ],
+       [
+        2020,
+        71
+       ],
+       [
+        2025,
+        72
+       ]
+      ]
+     },
+     {
+      "name": "Visitors a year (thousands)",
+      "points": [
+       [
+        2000,
+        5
+       ],
+       [
+        2005,
+        5
+       ],
+       [
+        2010,
+        8
+       ],
+       [
+        2015,
+        25
+       ],
+       [
+        2020,
+        45
+       ],
+       [
+        2025,
+        60
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-sustainable-development-1",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "What kind of tourism does the passage describe?",
+   "options": [
+    "Mass tourism at a beach resort",
+    "Ecotourism in a protected natural area",
+    "Tourism to a special economic zone",
+    "Heritage tourism to an old city"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Tourism to a protected forest, with visitor limits, guides and fees that fund protection, is ecotourism.",
+    "options": [
+     "The passage limits visitors to 400 a day in a forest, the opposite of mass tourism.",
+     "Right: tourism to a natural area that aims to protect it and employ local people.",
+     "A special economic zone draws factories, not forest visitors.",
+     "The passage is about a forest reserve, not a historic city."
+    ]
+   },
+   "stimulus": "sustainable-development-s1"
+  },
+  {
+   "id": "hug-sustainable-development-2",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "According to the passage, how does the reserve help keep the forest standing?",
+   "options": [
+    "It pays villagers to cut trees more slowly",
+    "It bans visitors from the forest",
+    "Jobs and fees make the forest pay",
+    "It moves the villagers to the capital"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Ecotourism turns a standing forest into income: jobs for villagers and park fees for rangers make protection pay more than logging.",
+    "options": [
+     "The passage says villagers now work in tourism, not logging.",
+     "It allows 400 visitors a day.",
+     "Right: guiding, lodge jobs and park fees give people a reason to protect the trees.",
+     "Nothing says villagers moved; they work in the reserve."
+    ]
+   },
+   "stimulus": "sustainable-development-s1"
+  },
+  {
+   "id": "hug-sustainable-development-3",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which detail in the passage shows a limit of ecotourism as sustainable development?",
+   "options": [
+    "Visitors keep to marked trails",
+    "Park fees fund rangers",
+    "Outside lodges take most of the money",
+    "Villagers work as guides and cooks"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sustainable development needs economic, social and environmental gains; outside firms keeping the income weakens the social side.",
+    "options": [
+     "Trails protect the forest: that is a strength.",
+     "Fees that pay for protection are a strength.",
+     "Right: if outside firms keep the income, local people gain little, which weakens the social side.",
+     "Local jobs are a strength."
+    ]
+   },
+   "stimulus": "sustainable-development-s1"
+  },
+  {
+   "id": "hug-sustainable-development-4",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "The passage says most visitors fly in from abroad. Why does this matter for judging the reserve's sustainability?",
+   "options": [
+    "Flights add to climate change",
+    "Foreign visitors pay lower park fees than locals",
+    "Flights bring loggers into the forest",
+    "Foreign visitors are barred from the trails"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ecotourism can protect a place at the local scale while flights add greenhouse gases at the global scale.",
+    "options": [
+     "Right: a local gain for the forest comes with a global cost from flights.",
+     "The passage gives no fee difference.",
+     "Nothing links flights to logging.",
+     "Visitors walk the marked trails."
+    ]
+   },
+   "stimulus": "sustainable-development-s1"
+  },
+  {
+   "id": "hug-sustainable-development-5",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the forest cover line?",
+   "options": [
+    "It rises from 2000 to 2025 without a break",
+    "It falls to 68%, then recovers",
+    "It falls steadily from 80% to 60%",
+    "It stays flat at about 75%"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The line falls from 80% to 68% between 2000 and 2010, then rises slowly to 72% by 2025.",
+    "options": [
+     "It falls from 80% to 68% before rising again.",
+     "Right: cover drops by 12 points by 2010, then rises to 72% by 2025.",
+     "It never drops below 68%, and it turns up after 2010.",
+     "It moves from 80% down to 68% and back up to 72%."
+    ]
+   },
+   "stimulus": "sustainable-development-s2"
+  },
+  {
+   "id": "hug-sustainable-development-6",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "By how many percentage points did forest cover change from 2010 to 2025? (Give a rise as a positive number.)",
+   "why": {
+    "correct": "Forest cover went from 68% in 2010 to 72% in 2025: $72 - 68 = 4$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      72,
+      68
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        80,
+        72
+       ]
+      },
+      "why": "That compares 2000 with 2025. The question starts in 2010, at 68%."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        68,
+        72
+       ]
+      },
+      "why": "The sign is reversed: forest cover rose, so the change is positive."
+     }
+    ]
+   },
+   "stimulus": "sustainable-development-s2"
+  },
+  {
+   "id": "hug-sustainable-development-7",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "A student says the chart proves ecotourism made the forest grow back. What is the main weakness of this claim?",
+   "options": [
+    "The chart shows visitors fell after 2010",
+    "The chart shows one place, so no pattern can be read",
+    "Timing does not prove cause",
+    "Forest cover fell after 2010, so there was no recovery"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The chart shows timing, not cause: other changes, such as the end of logging when the reserve opened, could explain the recovery.",
+    "options": [
+     "Visitors rose after 2010, from 8 to 60 thousand.",
+     "One place can still show a trend over time.",
+     "Right: the logging ban or replanting could explain the recovery; the chart alone cannot show the cause.",
+     "Forest cover rose after 2010, from 68% to 72%."
+    ]
+   },
+   "stimulus": "sustainable-development-s2"
+  },
+  {
+   "id": "hug-sustainable-development-8",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "If visitors keep rising at the same pace after 2025, which outcome is a likely risk?",
+   "options": [
+    "Crowding may damage trails and disturb wildlife",
+    "Forest cover will jump back to 80% within a year",
+    "The reserve will turn into a special economic zone",
+    "Park fees will stop funding rangers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Unlimited growth in visitors can harm the forest, which is why reserves cap numbers and keep people on trails.",
+    "options": [
+     "Right: too many visitors can harm the place ecotourism is meant to protect.",
+     "Nothing in the chart suggests a sudden jump.",
+     "Rising visitors do not make a forest an SEZ.",
+     "More visitors bring more fees, not fewer."
+    ]
+   },
+   "stimulus": "sustainable-development-s2"
+  },
+  {
+   "id": "hug-sustainable-development-9",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which choice best describes sustainable development?",
+   "options": [
+    "Growing the economy as fast as possible",
+    "Better lives now, without harm to the future",
+    "Stopping development to protect nature",
+    "Moving factories from core countries to the periphery"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sustainable development improves people's lives now while protecting the environment and resources for the future.",
+    "options": [
+     "Speed by itself ignores the environment and future generations.",
+     "Right: development that meets needs now without harming the ability of future generations to meet theirs.",
+     "Sustainable development still improves lives; it does not stop development.",
+     "That is outsourcing, not sustainable development."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainable-development-10",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Large factory trawlers off Newfoundland caught more cod each year than the stock could replace. What outcome followed?",
+   "options": [
+    "The cod stock grew as more boats fished",
+    "The fishery collapsed and Canada closed it in 1992",
+    "Newfoundland became a growth pole for fishing",
+    "Fish prices fell to zero worldwide"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Using a resource faster than it renews is resource depletion; the Newfoundland cod fishery collapsed and closed in 1992.",
+    "options": [
+     "Catching more than the stock can replace shrinks it.",
+     "Right: overfishing depleted the stock, and about 30,000 people lost fishing and processing work.",
+     "The fishery shrank; it did not drive regional growth.",
+     "Prices did not fall to zero; the local stock collapsed."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainable-development-11",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "In 2015, all UN member states adopted 17 goals, such as no poverty, gender equality and climate action, to be reached by 2030. What are these called?",
+   "options": [
+    "The Sustainable Development Goals (SDGs)",
+    "The Human Development Index",
+    "Structural adjustment programs",
+    "The Gender Inequality Index"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The 17 Sustainable Development Goals were adopted by UN member states in 2015, with 2030 as the target year.",
+    "options": [
+     "Right: the SDGs, adopted in 2015 for 2030.",
+     "The HDI is a measure, not a set of goals.",
+     "Those are IMF loan conditions, not UN goals.",
+     "The GII measures gaps between women and men; it is not a set of goals."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainable-development-12",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "The SDGs are set at the global scale. How do they usually lead to change on the ground?",
+   "options": [
+    "The UN runs each country's schools and power plants",
+    "Countries and towns act on them",
+    "They take effect at the global scale and nowhere else",
+    "Each city signs a treaty with the UN"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Global goals work across scales: countries set national plans, and local governments and groups carry out projects.",
+    "options": [
+     "The UN does not run national services.",
+     "Right: global goals become national policies and local projects, such as a village water system.",
+     "Goals change nothing unless countries and places act on them.",
+     "Cities do not sign treaties with the UN to take part."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainable-development-13",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Some less developed countries argue that they should be able to use coal to grow, as core countries did. Which statement fairly explains the two sides of this debate?",
+   "options": [
+    "Coal powers growth but warms the climate",
+    "Coal has no link to climate change, so there is no debate",
+    "Core countries grew without coal, so the argument fails",
+    "Renewable power is banned in less developed countries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The debate weighs the right to grow with cheap energy against the global harm of greenhouse gases; an answer can explain both without taking a side.",
+    "options": [
+     "Right: cheap coal power can raise incomes, but burning it adds greenhouse gases that harm everyone, including poorer places.",
+     "Burning coal adds greenhouse gases; that is the heart of the debate.",
+     "Core countries such as Britain industrialized on coal.",
+     "No such ban exists; many build wind, solar and geothermal power."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainable-development-14",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "The Galápagos Islands of Ecuador require visitors to go with licensed guides and limit where boats may go. Why?",
+   "options": [
+    "To raise visitor numbers as fast as possible",
+    "To protect rare species from too many visitors",
+    "To keep tourism income away from local guides",
+    "To turn the islands into a special economic zone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Ecotourism limits visitors and requires guides so that tourism does not damage the environment it depends on.",
+    "options": [
+     "Guides and limits keep numbers and impacts down.",
+     "Right: limits keep tourism from harming species found nowhere else.",
+     "Licensed guides are a source of local income.",
+     "An SEZ is for export factories, not wildlife protection."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainable-development-15",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.D",
+   "q": "Which of these are among the UN Sustainable Development Goals? Select all that apply.",
+   "options": [
+    "No poverty",
+    "Climate action",
+    "Higher tariffs on imports",
+    "Double oil output by 2030",
+    "More mass consumption"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The SDGs include no poverty (Goal 1) and climate action (Goal 13), along with goals on hunger, health, education, gender, water and energy.",
+    "options": [
+     "Right: Goal 1.",
+     "Right: Goal 13.",
+     "Tariffs are trade policy, not an SDG.",
+     "More oil output is not a goal; the SDGs include clean energy.",
+     "The SDGs call for responsible consumption, not more of it."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainable-development-16",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how ecotourism can support sustainable development in a named place.",
+   "why": {
+    "correct": "A full explanation names the place, the local benefit and how it protects the environment."
+   },
+   "specific": {
+    "frame": "In ___, ecotourism gives local people ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Costa Rica, ecotourism gives local people jobs as guides and in lodges, so keeping the rainforest standing earns more than cutting it down.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Costa Rica",
+       "a tropical country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place."
+      }
+     },
+     "cause": {
+      "label": "What it gives",
+      "options": [
+       "jobs as guides and in lodges",
+       "cheaper flights abroad"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cheap flights are not a local benefit; jobs are."
+      }
+     },
+     "effect": {
+      "label": "So",
+      "options": [
+       "keeping the rainforest standing earns more than cutting it down",
+       "the forest is logged faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ecotourism aims to protect the forest, not speed up logging."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-sustainable-development-17",
+   "unit": "unit-7",
+   "topic": "sustainable-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why does mass consumption make development harder to sustain?",
+   "options": [
+    "It lowers the demand for energy and materials",
+    "It moves most people back into farming",
+    "It closes factories that make consumer goods",
+    "Buying more uses more resources"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "As people buy more, demand for energy and materials rises, which depletes resources and adds pollution and greenhouse gases.",
+    "options": [
+     "Mass consumption raises demand for energy and materials.",
+     "Mass consumption comes with service jobs, not a return to farming.",
+     "Buying more goods keeps factories busy.",
+     "Right: more goods, travel and meat mean more energy and materials used, and more waste and pollution."
+    ]
+   }
+  }
+ ]
+}

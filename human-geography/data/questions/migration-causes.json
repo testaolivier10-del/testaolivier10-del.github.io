@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "migration-causes-s1": {
+   "kind": "text",
+   "title": "A migrant describes her move (an invented interview)",
+   "text": "<p><i>Invented for practice.</i> Interview with Ana, 24, who moved from the Northern Hills of Country A to the Capital Region in 2025:</p><p>\"Two dry summers in a row ruined our maize, and the only work left in my village paid very little. My cousin said the factories in the capital were hiring and paid twice as much. The bus ticket cost a month’s pay, so I saved for almost a year. On the way, a hotel in Valley Town offered me a job, but I kept going, because my cousin had a room for me in the capital.\"</p>"
+  },
+  "migration-causes-s2": {
+   "kind": "map",
+   "title": "Four countries on a world map",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four countries marked: A in Southwest Asia on the Mediterranean, B on the north coast of South America, C, a group of islands in Southeast Asia, and D in central Europe",
+    "legendTitle": "Countries in the questions",
+    "focus": [
+     "syria",
+     "venezuela",
+     "philippines",
+     "germany"
+    ],
+    "marks": [
+     {
+      "at": "syria",
+      "text": "A"
+     },
+     {
+      "at": "venezuela",
+      "text": "B"
+     },
+     {
+      "at": "philippines",
+      "text": "C"
+     },
+     {
+      "at": "germany",
+      "text": "D"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-migration-causes-1",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which part of Ana’s story is a push factor?",
+   "stimulus": "migration-causes-s1",
+   "options": [
+    "Dry summers ruined the maize at home",
+    "Factories in the capital were hiring",
+    "Her cousin had a room for her in the capital",
+    "A hotel in Valley Town offered her a job"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Push factors are at the place a migrant leaves: here, crops ruined by drought and poorly paid work in the village.",
+    "options": [
+     "Right: a push factor is a problem at the origin that pushes people out.",
+     "that is a pull factor: an attraction at the destination.",
+     "that is a pull factor at the destination.",
+     "that is an intervening opportunity, found on the way."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-2",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which part of the story is an intervening obstacle?",
+   "stimulus": "migration-causes-s1",
+   "options": [
+    "The hotel in Valley Town offered her a job",
+    "The bus ticket cost a month’s pay",
+    "The village work paid very little",
+    "Factory pay in the capital was twice as high"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An intervening obstacle is something between the origin and the destination that makes the move harder: cost, distance, a border, a mountain or a sea.",
+    "options": [
+     "that is an intervening opportunity, not an obstacle.",
+     "Right: the cost of the trip made the move harder and slowed it.",
+     "that is a push factor at the origin.",
+     "that is a pull factor."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-3",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the job offer in Valley Town an example of?",
+   "stimulus": "migration-causes-s1",
+   "options": [
+    "An intervening obstacle",
+    "A push factor at her origin",
+    "An intervening opportunity",
+    "A pull factor at her destination"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An intervening opportunity is an attraction along the way that may lead a migrant to stop short of the planned destination. Ana chose to keep going.",
+    "options": [
+     "an obstacle makes a move harder; a job offer is an opportunity.",
+     "Valley Town is on the way, not at her origin.",
+     "Right: it is a chance to stop and settle before reaching the planned destination.",
+     "her destination is the capital, not Valley Town."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-4",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which statement best classifies the causes of Ana’s move?",
+   "stimulus": "migration-causes-s1",
+   "options": [
+    "Mostly political push factors, such as conflict at home",
+    "Mostly cultural pull factors, such as freedom of religion",
+    "Mostly demographic push factors, such as crowded schools in her village",
+    "Mostly environmental and economic push, with economic pull"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Classify causes by kind: drought is environmental, low pay and factory jobs are economic. Most moves have more than one cause.",
+    "options": [
+     "the story mentions no conflict or government action.",
+     "the story mentions no religion or culture.",
+     "the story mentions no crowding.",
+     "Right: drought and low pay pushed her; higher factory pay pulled her."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-5",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Millions of people left the country marked A after a civil war began there in 2011. What kind of push factor was most important?",
+   "stimulus": "migration-causes-s2",
+   "options": [
+    "Political: war and violence",
+    "Environmental: rising sea level along the coast",
+    "Cultural: a wish to learn another language abroad",
+    "Demographic: too few young people at home"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The country marked A is Syria. The war that began in 2011 drove millions from their homes, many into Türkiye, Lebanon, Jordan and Europe. That is a political push factor.",
+    "options": [
+     "Right: conflict is a political cause of migration.",
+     "the main cause of the moves from Syria after 2011 was the war.",
+     "the case is about war, not study or language.",
+     "a shortage of young people does not push people out."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-6",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "From about 2015, millions of people left the country marked B as prices soared and jobs disappeared. What kind of push factor was most important?",
+   "stimulus": "migration-causes-s2",
+   "options": [
+    "Environmental: a long drought in the desert",
+    "Economic: high prices and too few jobs",
+    "Cultural: a change of the national language",
+    "Demographic: an older population with few children"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The country marked B is Venezuela. Economic collapse, with very high prices and lost jobs, was the main push; political crisis added to it. Many moved to Colombia, Peru and Brazil.",
+    "options": [
+     "the case is about prices and jobs.",
+     "Right: the collapse of incomes and jobs pushed people out.",
+     "there was no such change.",
+     "that is not what drove the moves."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-7",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Many workers from the country marked C take jobs abroad, and the country marked D drew many workers from abroad in the 2010s. Which statement compares the two?",
+   "stimulus": "migration-causes-s2",
+   "options": [
+    "Both countries mainly send their own workers abroad to find better-paid work",
+    "C mainly receives migrants and D mainly sends them",
+    "C mainly sends migrants and D mainly receives them, drawn by jobs",
+    "Neither country has much migration in or out"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A compare speaks of both. The Philippines, at Place C, is a major origin of workers who go abroad; Germany, at Place D, is a major destination, with pull factors such as jobs, wages and a stable government.",
+    "options": [
+     "Germany mainly received migrants in the 2010s.",
+     "this reverses the two.",
+     "Right: the Philippines sends workers; Germany pulls them with jobs.",
+     "both have large flows."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-8",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is migration?",
+   "options": [
+    "A short trip to visit family or go on vacation",
+    "The daily trip from home to work and back",
+    "The spread of an idea or a custom from one place to another",
+    "A long-term move from one place to another to live"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Migration is a lasting move to a new place to live, within a country or across a border.",
+    "options": [
+     "a short trip is travel, not a change of home.",
+     "that is commuting.",
+     "migration is about people changing where they live.",
+     "Right: migration means changing where you live, for a long time."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-9",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which pair correctly matches a pull factor with a push factor?",
+   "options": [
+    "Pull: safe streets abroad; push: high crime at home",
+    "Pull: drought at home; push: jobs in the city",
+    "Pull: war at home; push: low rents abroad",
+    "Pull: low wages at home; push: good schools abroad"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Push factors are at the origin and drive people out. Pull factors are at the destination and draw people in. Many factors are the same idea seen from the two ends.",
+    "options": [
+     "Right: pull attracts to the destination; push drives from the origin.",
+     "this reverses them.",
+     "war at home is a push factor.",
+     "low wages at home push; good schools abroad pull."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-10",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Between Colombia and Panama lies the Darién Gap, a roadless rainforest that many migrants heading north have crossed on foot. What is it an example of?",
+   "options": [
+    "An intervening opportunity",
+    "An intervening obstacle",
+    "A pull factor at the destination",
+    "A push factor at the origin"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Physical features such as rainforest, deserts and seas can be intervening obstacles. So can borders, visas, the cost of travel and distance itself.",
+    "options": [
+     "an opportunity is an attraction along the way; the forest is a barrier.",
+     "Right: it makes the journey longer, harder and more dangerous.",
+     "the forest is on the route, not at the destination.",
+     "it lies between origin and destination."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-11",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the Sahel of West Africa, several years of drought ruin crops, and many young men leave for coastal cities. What kind of push factor is this?",
+   "options": [
+    "Political",
+    "Cultural",
+    "Environmental",
+    "Demographic: about population"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Causes of migration are cultural, demographic, economic, environmental and political. Drought and floods are environmental push factors, often combined with economic ones.",
+    "options": [
+     "there is no government action or conflict in the case.",
+     "the move is not about religion, language or customs.",
+     "Right: drought is a cause that comes from the natural environment.",
+     "demographic causes are about population, such as too many young people for the jobs."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-12",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In many countries, a large group of young adults finishes school each year, but there are not enough jobs for them, so many move abroad. What kind of cause is the large group of young adults?",
+   "options": [
+    "A cultural cause",
+    "An environmental cause",
+    "A political cause",
+    "A demographic cause"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Demographic causes come from population structure. A wide pyramid base means many young people later need jobs; if the economy cannot absorb them, migration rises.",
+    "options": [
+     "culture is about language, religion and customs.",
+     "the case is not about land, water or climate.",
+     "the case is not about government action or conflict.",
+     "Right: the size and age of the population is a demographic factor."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-13",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "A family moves from rural Guatemala to Los Angeles. Sort the factors into the push-pull model.",
+   "model": {
+    "layout": "tiers",
+    "title": "Push and pull: rural Guatemala to Los Angeles",
+    "slots": [
+     {
+      "id": "pe",
+      "name": "Push: economic"
+     },
+     {
+      "id": "pv",
+      "name": "Push: environmental"
+     },
+     {
+      "id": "le",
+      "name": "Pull: economic"
+     },
+     {
+      "id": "lc",
+      "name": "Pull: cultural and family"
+     },
+     {
+      "id": "ob",
+      "name": "Intervening obstacle"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "wage",
+      "text": "Low farm wages at home"
+     },
+     {
+      "id": "dry",
+      "text": "Drought ruins the coffee crop"
+     },
+     {
+      "id": "jobs",
+      "text": "Building jobs in the city"
+     },
+     {
+      "id": "kin",
+      "text": "Relatives already there"
+     },
+     {
+      "id": "border",
+      "text": "A border with strict entry rules"
+     },
+     {
+      "id": "stop",
+      "text": "A job offer in Mexico on the way"
+     }
+    ],
+    "key": {
+     "pe": "wage",
+     "pv": "dry",
+     "le": "jobs",
+     "lc": "kin",
+     "ob": "border"
+    },
+    "slips": [
+     {
+      "piece": "stop",
+      "slot": "ob",
+      "why": "A job offer on the way is an intervening opportunity, not an obstacle: it might make the family stop, but it does not block them."
+     },
+     {
+      "piece": "jobs",
+      "slot": "pe",
+      "why": "Jobs in Los Angeles are at the destination, so they pull. Push factors are problems at home."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Push factors are at home (low wages, drought); pull factors at the destination (jobs, relatives); obstacles lie between (the border)."
+   }
+  },
+  {
+   "id": "hug-migration-causes-14",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "A student plans to move from a small town to a large city. Which are pull factors? Select all that apply.",
+   "options": [
+    "Better-paid jobs in the city",
+    "A university she wants to attend",
+    "The closing of the last factory in her town",
+    "The high cost of rent in the city",
+    "A long, costly trip to reach the city"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Pull factors draw people to a destination: jobs, schools, safety, family. Problems at home push; costs and barriers between are obstacles.",
+    "options": [
+     "Right: an attraction at the destination.",
+     "Right: an attraction at the destination.",
+     "That is a push factor at the origin.",
+     "That is an obstacle or a drawback, not a pull.",
+     "That is an intervening obstacle."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-causes-15",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of one cause of a real migration flow.",
+   "specific": {
+    "frame": "People moved from ___ to ___ because ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "People moved from Venezuela to Colombia after about 2015 because prices soared and jobs disappeared at home, so many families could not afford food and left to find work across the border.",
+    "slots": {
+     "place": {
+      "label": "Origin",
+      "options": [
+       "Venezuela",
+       "South America"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name the country people left."
+      }
+     },
+     "sideB": {
+      "label": "Destination",
+      "options": [
+       "Colombia",
+       "another place"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name the destination."
+      }
+     },
+     "cause": {
+      "label": "Push factor",
+      "options": [
+       "prices soared and jobs disappeared at home",
+       "things were bad"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "say which problem pushed people out."
+      }
+     },
+     "effect": {
+      "label": "Link",
+      "options": [
+       "many families could not afford food and left to find work across the border",
+       "they moved"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "link the push factor to the decision to move."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Name the origin and destination, the push factor and the link from it to the move."
+   }
+  }
+ ]
+}

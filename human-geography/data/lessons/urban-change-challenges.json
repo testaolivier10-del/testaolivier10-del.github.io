@@ -1,0 +1,83 @@
+{
+ "topic": "urban-change-challenges",
+ "hook": "In the 1930s, a federal agency colored some neighborhoods of US cities red on its maps and called them \"hazardous\" for lending. In the 1950s, bulldozers cleared whole districts for highways and new towers. In the 2010s, coffee shops and new condos arrived in some of the same places, and rents doubled. Each wave changed who could live there. This topic follows those waves and the policies cities use in response.",
+ "prereq": [
+  {
+   "q": "What is a squatter settlement?",
+   "options": [
+    "Housing built by residents on land they do not legally own",
+    "Housing built by the government for workers",
+    "A suburb of large houses",
+    "Apartments above shops near a station"
+   ],
+   "correct": 0,
+   "why": "Squatter settlements are self-built without legal title to the land.",
+   "review": "city-structure"
+  },
+  {
+   "q": "What is zoning?",
+   "options": [
+    "Local laws that set what may be built on each piece of land",
+    "A tax on rent",
+    "A count of the population",
+    "A highway around a city"
+   ],
+   "correct": 0,
+   "why": "Zoning sets land uses and density by area.",
+   "review": "density-land-use"
+  },
+  {
+   "q": "What does qualitative data about a neighborhood include?",
+   "options": [
+    "Interviews and residents' stories",
+    "Median rent by tract",
+    "Population counts",
+    "Survey estimates of income"
+   ],
+   "correct": 0,
+   "why": "Qualitative data are words, stories and observations.",
+   "review": "urban-data"
+  }
+ ],
+ "figure": {
+  "figure": "urban-change-challenges-cycle",
+  "caption": "How a neighborhood can change over decades, and the responses cities and residents use."
+ },
+ "chain": [
+  {
+   "cause": "Lenders refuse loans or set worse terms in certain neighborhoods (redlining)",
+   "effect": "owners cannot buy, repair or sell, so buildings decline"
+  },
+  {
+   "cause": "Buildings decline and some are abandoned",
+   "effect": "land becomes cheap, and the city clears it (urban renewal) or investors buy it"
+  },
+  {
+   "cause": "Higher-income newcomers and investors arrive (gentrification)",
+   "effect": "buildings are repaired and new shops open, but rents and taxes rise"
+  },
+  {
+   "cause": "Rents rise faster than long-time residents' incomes",
+   "effect": "many renters are displaced, so cities respond with inclusionary zoning, rent help and land trusts"
+  }
+ ],
+ "ideas": [
+  "<b>Redlining</b> is refusing loans, insurance or other services, or offering worse terms, because of a neighborhood's location. In US history it targeted mostly Black and immigrant neighborhoods. <b>Blockbusting</b> was agents scaring white owners into selling cheaply by claiming Black families were moving in, then reselling at high prices.",
+  "<b>Urban renewal</b> is government clearing and rebuilding of areas it judges run-down. <b>Gentrification</b> is higher-income people moving into a lower-income area and raising its property values. Both bring investment and both can displace residents.",
+  "Other challenges: housing costs, unequal access to services, crime, <b>disamenity zones</b> (the poorest, least-served areas), squatter settlements without secure land rights, and <b>environmental injustice</b> (pollution falling hardest on poor and minority communities).",
+  "Responses include <b>inclusionary zoning</b> (new buildings must include affordable homes), fair-lending laws, land titles for squatters, local food projects and regional cooperation across fragmented local governments."
+ ],
+ "misconception": {
+  "wrong": "Redlining means any kind of racism in housing, or simply being poor.",
+  "right": "Redlining is a specific practice: refusing services such as loans or insurance, or setting worse terms, based on where a property is. Its US history is tied to race, because the redlined areas were mostly Black and immigrant neighborhoods, but the mechanism is about location."
+ },
+ "check": [
+  "hug-urban-change-challenges-1",
+  "hug-urban-change-challenges-2",
+  "hug-urban-change-challenges-3",
+  "hug-urban-change-challenges-5",
+  "hug-urban-change-challenges-6",
+  "hug-urban-change-challenges-8"
+ ],
+ "summary": "US cities were shaped by redlining and blockbusting, which drained investment from some neighborhoods; by urban renewal, which cleared many of them; and by gentrification, which brings investment and displacement. Around the world, squatter settlements face insecure land rights and poor services, and pollution often falls hardest on poorer communities. Cities respond with inclusionary zoning, fair-lending laws, land titles, local food projects and regional planning."
+}

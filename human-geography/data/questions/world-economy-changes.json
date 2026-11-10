@@ -6,8 +6,8 @@
    "map": {
     "base": "east-asia",
     "render": "reference",
-    "label": "Reference map of East Asia marking five zones China opened to foreign firms in the 1980s, all on its east and southeast coast: Shenzhen, Xiamen and Hainan (special economic zones) and Shanghai and Tianjin (open coastal cities)",
-    "legendTitle": "Zones opened to foreign firms: A Shenzhen (SEZ, 1980), B Xiamen (SEZ, 1980), C Hainan (SEZ, 1988), D Shanghai and E Tianjin (open coastal cities, 1984)",
+    "label": "Reference map of East Asia marking three places China opened to foreign firms in the 1980s, all on its east and southeast coast: Shenzhen, a special economic zone from 1980, and Shanghai and Tianjin, open coastal cities from 1984",
+    "legendTitle": "Opened to foreign firms: A Shenzhen (special economic zone, 1980), B Shanghai and C Tianjin (open coastal cities, 1984)",
     "marks": [
      {
       "at": [
@@ -18,31 +18,17 @@
      },
      {
       "at": [
-       118.1,
-       24.5
-      ],
-      "text": "B"
-     },
-     {
-      "at": [
-       109.8,
-       19.2
-      ],
-      "text": "C"
-     },
-     {
-      "at": [
        121.5,
        31.2
       ],
-      "text": "D"
+      "text": "B"
      },
      {
       "at": [
        117.2,
        39.1
       ],
-      "text": "E"
+      "text": "C"
      }
     ]
    }
@@ -130,18 +116,18 @@
    "practice": "4.B",
    "q": "Which statement describes the pattern of the zones on the map?",
    "options": [
-    "They are spread evenly across China",
-    "They cluster in western China",
+    "They are spread evenly",
+    "They cluster in the deserts and mountains of western China",
     "They line China's east and southeast coast",
-    "They follow China's border with India"
+    "They follow China's long land border with India"
    ],
    "correct": 2,
    "why": {
-    "correct": "A strong description says where: all five zones lie along the east and southeast coast, none in the interior.",
+    "correct": "A strong description says where: all three places lie along the east and southeast coast, none in the interior.",
     "options": [
      "The marks sit on the coast; the interior and west have none.",
      "Western China has no marks at all.",
-     "Right: all five marks, from Tianjin in the north to Hainan in the south, are on the coast.",
+     "Right: all three marks, from Tianjin in the north to Shenzhen in the south, are on the coast.",
      "The border with India is in the far southwest, far from every mark."
     ]
    },
@@ -157,16 +143,16 @@
    "practice": "2.B",
    "q": "Why did China place these zones on the coast?",
    "options": [
-    "Ports made it cheap to bring in parts and ship out exports",
-    "The coast had the most farmland to protect",
-    "Coastal land was too steep for farming",
-    "Interior provinces were closed to people"
+    "Ports made shipping parts and exports cheap",
+    "The coast had the most farmland that needed protecting",
+    "Coastal land was far too steep for any farming",
+    "Interior provinces were closed to people from elsewhere"
    ],
    "correct": 0,
    "why": {
     "correct": "Export industry needs ports, and the coast was close to foreign investors and markets, so the zones had the best situation there.",
     "options": [
-     "Right: export factories need ports, and the southern zones sat near investors in Hong Kong.",
+     "Right: export factories need ports, and Shenzhen sat next to investors in Hong Kong.",
      "The zones were for factories, not farm protection.",
      "Most of these coasts are low-lying; the pull was ports and trade.",
      "People could move within China; the coast was chosen for its situation."
@@ -184,10 +170,10 @@
    "practice": "1.D",
    "q": "What did a special economic zone such as Shenzhen offer foreign firms?",
    "options": [
-    "Lower taxes and fewer rules for export industry",
+    "Lower taxes and fewer rules",
     "Higher tariffs on parts brought in from abroad",
     "A ban on selling goods to other countries",
-    "Free microloans to farmers in the zone"
+    "Free microloans to farmers"
    ],
    "correct": 0,
    "why": {
@@ -211,8 +197,8 @@
    "practice": "2.C",
    "q": "Which outcome is most likely as factories grew in the marked zones from the 1980s?",
    "options": [
-    "Workers left the zones for farms inland",
-    "Migrants came from inland, and the zones grew into big cities",
+    "Workers left for farms",
+    "Inland migrants came; the zones grew",
     "Coastal cities shrank as firms left for the interior",
     "Interior provinces drew most of the new factories"
    ],
@@ -238,7 +224,7 @@
    "practice": "3.B",
    "q": "Which statement describes the change in Lake City's jobs?",
    "options": [
-    "Factory jobs fell by 90 thousand as service jobs grew",
+    "Factory jobs fell; service jobs grew",
     "Factory and service jobs both fell",
     "Factory jobs rose as the city grew",
     "Services peaked in 1990 and fell after"
@@ -292,8 +278,8 @@
    "practice": "2.B",
    "q": "When a large factory in Lake City closed, nearby diners, stores and parts suppliers also lost business and cut jobs. Which concept explains this?",
    "options": [
-    "Just-in-time delivery",
-    "The multiplier effect, working in reverse",
+    "Just-in-time delivery of factory parts",
+    "The multiplier effect, in reverse",
     "The international division of labor",
     "Complementarity between two places"
    ],
@@ -319,16 +305,16 @@
    "practice": "3.F",
    "q": "Which question can the chart NOT answer?",
    "options": [
-    "Did service jobs grow between 1970 and 2020?",
+    "Did service jobs grow?",
     "In which decade did factory jobs fall the most?",
-    "Did the city's factory jobs move abroad or go to machines?",
+    "Were jobs outsourced or automated?",
     "Were there more service jobs than factory jobs in 1990?"
    ],
    "correct": 2,
    "why": {
     "correct": "Job counts show how much changed, not why: outsourcing and automation both cut factory jobs, and the chart cannot tell them apart.",
     "options": [
-     "The chart answers this: they rose from 80 to 170 thousand.",
+     "The chart answers this: from 1970 to 2020 they rose from 80 to 170 thousand.",
      "The chart answers this: 1980 to 1990, by 30 thousand.",
      "Right: the chart counts jobs; it does not say whether they were outsourced or replaced by machines.",
      "The chart answers this: 115 thousand against 75 thousand."
@@ -515,7 +501,7 @@
    "options": [
     "Fordism",
     "Break-of-bulk",
-    "Just-in-time delivery",
+    "Just-in-time delivery of factory parts",
     "Agglomeration"
    ],
    "correct": 2,
@@ -539,7 +525,7 @@
    "practice": "1.C",
    "q": "How does post-Fordism differ from Fordism?",
    "options": [
-    "Post-Fordism makes many products in small, flexible batches",
+    "Post-Fordism makes small, flexible batches",
     "Post-Fordism uses one huge plant for one product",
     "Fordism splits work among many firms abroad",
     "The two are the same idea under two names"
@@ -568,7 +554,7 @@
     "Deindustrialization in each of the three places",
     "The international division of labor",
     "Complementarity between two climates",
-    "A trade bloc formed by the three places"
+    "A trade bloc"
    ],
    "correct": 1,
    "why": {
@@ -577,7 +563,7 @@
      "Each place does a stage of the work; none is shown losing industry.",
      "Right: different stages of making one product happen in different countries.",
      "The split follows skills and costs, not climate.",
-     "No agreement among countries is described."
+     "No trade agreement among the three countries is described."
     ]
    }
   },
@@ -591,7 +577,7 @@
    "practice": "2.B",
    "q": "Why did many US firms outsource customer service calls to Manila, the Philippines?",
    "options": [
-    "Lower wages and many English speakers, linked by fast phone lines",
+    "Lower wages and English speakers",
     "US law requires calls to be answered abroad",
     "The Philippines has a trade bloc with each US state",
     "Call centers are weight-losing industries"

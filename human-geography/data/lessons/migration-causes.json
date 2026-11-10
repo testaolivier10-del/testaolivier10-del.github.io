@@ -1,0 +1,71 @@
+{
+ "topic": "migration-causes",
+ "hook": "Every year, millions of people pack up their lives and move. A farmer in the Sahel leaves after a third failed harvest. A nurse in Manila takes a job in London. A family in Syria flees a war. Each move has its own reasons, but geographers sort them in the same way: what pushes people away, what pulls them, and what stands in between.",
+ "prereq": [
+  {
+   "q": "Ravenstein found that most migrants move how far?",
+   "options": [
+    "A short distance",
+    "To another continent",
+    "Across an ocean",
+    "Over a mountain range"
+   ],
+   "correct": 0,
+   "why": "Most migrants in his data moved only a short distance.",
+   "review": "women-population-change"
+  },
+  {
+   "q": "Which kind of policy sets who may move into a country?",
+   "options": [
+    "Immigration policy",
+    "Pronatalist policy",
+    "Antinatalist policy",
+    "Family planning"
+   ],
+   "correct": 0,
+   "why": "An immigration policy sets who may enter, how many and for how long.",
+   "review": "population-policies"
+  }
+ ],
+ "figure": {
+  "figure": "migration-causes-pushpull",
+  "caption": "Push factors at the origin, pull factors at the destination, and intervening obstacles and opportunities along the way."
+ },
+ "chain": [
+  {
+   "cause": "Problems at home, such as drought, low pay or war",
+   "effect": "push factors make people want to leave"
+  },
+  {
+   "cause": "Attractions elsewhere, such as jobs, safety or family",
+   "effect": "pull factors draw people to a destination"
+  },
+  {
+   "cause": "Costs, borders or rough land lie between",
+   "effect": "intervening obstacles slow or stop the move"
+  },
+  {
+   "cause": "A chance to work or settle appears on the way",
+   "effect": "an intervening opportunity may make a migrant stop short"
+  }
+ ],
+ "ideas": [
+  "<b>Migration</b> is a long-term move to a new place to live. <b>Push factors</b> drive people from the origin; <b>pull factors</b> draw them to the destination.",
+  "<b>Intervening obstacles</b> (cost, distance, borders, seas, rainforest) make a move harder; <b>intervening opportunities</b> (a job on the way) may stop it short.",
+  "Causes are <b>cultural</b>, <b>demographic</b>, <b>economic</b>, <b>environmental</b> and <b>political</b>, and most moves have more than one.",
+  "Name the kind of cause and the place: \"Drought in the Sahel (environmental push)\" earns credit; \"bad conditions\" does not."
+ ],
+ "misconception": {
+  "wrong": "Jobs in the city are a push factor because they push people to move.",
+  "right": "Factors are named by where they are. Jobs at the destination pull people in. Push factors are problems at the origin, such as low pay or drought at home."
+ },
+ "check": [
+  "hug-migration-causes-1",
+  "hug-migration-causes-2",
+  "hug-migration-causes-3",
+  "hug-migration-causes-5",
+  "hug-migration-causes-9",
+  "hug-migration-causes-14"
+ ],
+ "summary": "People migrate because of push factors at the place they leave and pull factors at the place they go, while intervening obstacles and opportunities along the way can block or redirect them. Causes can be cultural, demographic, economic, environmental or political, and most moves have more than one."
+}

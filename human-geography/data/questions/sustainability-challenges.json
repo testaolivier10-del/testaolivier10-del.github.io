@@ -1,0 +1,471 @@
+{
+ "stimuli": {
+  "sustainability-challenges-s1": {
+   "kind": "image",
+   "title": "An invented metro area with an urban growth boundary",
+   "image": {
+    "figure": "sustainability-challenges-growth-boundary",
+    "alt": "An invented metro area. A river runs through the old downtown. The built-up area spreads around it, and a dashed line, the urban growth boundary, circles it with some empty land left inside. Outside the line are farms and forest. Letter W marks a rail station in a suburb. Letter X marks an empty lot inside the boundary. Letter Y marks farmland just outside the boundary. Letter Z marks an old factory site on the river near downtown.",
+    "caption": "A LevlPrep drawing of an invented metro area for practice."
+   }
+  },
+  "sustainability-challenges-s2": {
+   "kind": "map",
+   "title": "Farmland lost to building in Country A, 2000 to 2020",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth map of Country A by province: the share of farmland lost to building from 2000 to 2020 is highest in the Capital Region and on the South Coast, moderate in the Central Valley, and lowest in the Northern Hills and Southern Forest",
+    "legendTitle": "Farmland lost to building, 2000 to 2020 (percent, invented)",
+    "classes": [
+     "Under 2%",
+     "2% to 5%",
+     "6% to 10%",
+     "Over 10%"
+    ],
+    "values": {
+     "capital": 3,
+     "coast": 3,
+     "central": 2,
+     "east": 1,
+     "west": 1,
+     "northeast": 1,
+     "north": 0,
+     "south": 0
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-sustainability-challenges-1",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which letter marks a likely brownfield?",
+   "stimulus": "sustainability-challenges-s1",
+   "options": [
+    "W",
+    "Z",
+    "X",
+    "Y"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Z is an old factory site on the river: abandoned industrial land that may be polluted, the definition of a brownfield.",
+    "options": [
+     "W is a rail station in use.",
+     "Right: an old factory site is a brownfield.",
+     "X is an empty lot, with no sign of past industry.",
+     "Y is farmland outside the boundary."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-2",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "The city wants 2,000 new homes without paving more farmland. Which pair of sites on the drawing should it build on?",
+   "stimulus": "sustainability-challenges-s1",
+   "options": [
+    "X and Z",
+    "Y and Z",
+    "X and Y",
+    "W and Y"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "X (an empty lot) and Z (a brownfield) are both inside the boundary on land already in the built-up area. Y is farmland outside it.",
+    "options": [
+     "Right: infill and brownfield reuse protect farmland.",
+     "Y is farmland outside the boundary.",
+     "Y is farmland outside the boundary.",
+     "Y is farmland outside the boundary."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-3",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Why might building new apartments near W reduce car trips?",
+   "stimulus": "sustainability-challenges-s1",
+   "options": [
+    "W is outside the boundary, among the farms",
+    "Land near W is a polluted old factory site",
+    "Rail stations add a great deal of parking space",
+    "Residents could ride the train"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "W is a rail station. Homes within walking distance of it let people ride to downtown instead of driving: transit-oriented development.",
+    "options": [
+     "W is inside the boundary, in the built-up area.",
+     "The factory site is Z, not W.",
+     "Stations do not add parking; they offer an alternative to driving.",
+     "Right: transit nearby replaces some car trips."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-4",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which is a likely cost of the boundary shown in the drawing?",
+   "stimulus": "sustainability-challenges-s1",
+   "options": [
+    "Farmland outside it is paved faster",
+    "Car trips get longer for most residents",
+    "Land prices may rise inside the line",
+    "Brownfields inside it are harder to reuse"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Limiting where building can happen makes land inside the line scarcer, which can push up land and home prices.",
+    "options": [
+     "The boundary is meant to slow paving outside it.",
+     "Compact growth usually shortens trips.",
+     "Right: scarcer land can cost more.",
+     "Brownfields inside the boundary are prime sites for reuse."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-5",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes the pattern on the map?",
+   "stimulus": "sustainability-challenges-s2",
+   "options": [
+    "Loss was highest in the Northern Hills",
+    "Loss was highest in the capital and on the coast",
+    "Each province lost about the same share",
+    "Loss was highest along the eastern border"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The darkest class (over 10%) covers the Capital Region and the South Coast; the Northern Hills and Southern Forest are in the lightest class.",
+    "options": [
+     "The Northern Hills is in the lowest class.",
+     "Right: the most farmland was lost around the largest cities.",
+     "The provinces fall into four classes.",
+     "The Eastern Plains is in a middle class."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-6",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which process best explains the pattern on the map?",
+   "stimulus": "sustainability-challenges-s2",
+   "options": [
+    "Sprawl around the largest cities",
+    "Desertification in the northern provinces",
+    "Rising farm prices in remote areas",
+    "Migration from cities to farms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Farmland disappeared most where the biggest cities spread outward, a sign of sprawl. The pattern follows city growth, not physical change.",
+    "options": [
+     "Right: city growth eats the nearest farmland.",
+     "The north lost the least land; the map is about building.",
+     "The map shows land converted to building, not prices.",
+     "People moving to farms would not cause building on farmland near cities."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-7",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Country A's government wants to slow the loss of farmland around its capital. Which response fits the scale of the problem?",
+   "stimulus": "sustainability-challenges-s2",
+   "options": [
+    "A national ban on building new homes anywhere",
+    "A single new park downtown",
+    "A global treaty on farm trade",
+    "A regional plan with a growth boundary"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The loss is concentrated around one metro area, a regional problem across several local governments. A regional plan with a growth boundary targets it.",
+    "options": [
+     "A national ban would stop needed housing everywhere.",
+     "One park does not limit building at the edge.",
+     "Farm trade does not control where cities build.",
+     "Right: a regional response for a regional problem."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-8",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which is a brownfield?",
+   "options": [
+    "A field of wheat just outside the city limits",
+    "A new park on a green hillside above the river",
+    "A closed, leaking gas station",
+    "A quiet neighborhood of single-family homes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A brownfield is an abandoned or underused industrial or commercial site that may be polluted, such as an old gas station.",
+    "options": [
+     "A wheat field is farmland, not a brownfield.",
+     "A new park is in active use.",
+     "Right: abandoned and possibly polluted.",
+     "A neighborhood of homes is not an abandoned commercial site."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-9",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A city of 1 million people needs farmland, forests and oceans many times its own area to supply its food, energy and materials and absorb its waste. What does this describe?",
+   "options": [
+    "Its carrying capacity",
+    "Its ecological footprint",
+    "Its residential density",
+    "Its range"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The ecological footprint is the land and water area needed to supply a population and absorb its waste.",
+    "options": [
+     "Carrying capacity is the most people an area can support, not what one city draws on.",
+     "Right: the area a population draws on.",
+     "Residential density is homes per unit of land.",
+     "Range is how far people travel for a good."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-10",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Pavement and buildings in a city soak up the sun's heat and release it at night. What is the result?",
+   "options": [
+    "An urban heat island",
+    "More rain soaking into the soil",
+    "Cleaner air downtown",
+    "A smaller ecological footprint"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dark, hard surfaces store heat, so the city stays warmer than the countryside, especially at night: an urban heat island.",
+    "options": [
+     "Right: a city warmer than its surroundings.",
+     "Pavement stops rain from soaking in.",
+     "Heat can worsen smog, not clean the air.",
+     "Heat islands raise energy use for cooling."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-11",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Parts of Jakarta, Indonesia, sink each year as wells pump water from under the city, while sea levels rise. Which challenge does this show most clearly?",
+   "options": [
+    "Air pollution from crop burning in nearby farm regions",
+    "Too little paved land for the number of people",
+    "A falling population as people leave the city",
+    "Worse flooding"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Pumping groundwater makes soft land sink, and rising seas meet it from the other side, so coastal flooding grows.",
+    "options": [
+     "Crop burning is not the issue in this case.",
+     "Jakarta is heavily paved.",
+     "Jakarta's population has grown.",
+     "Right: subsidence plus sea level rise."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-12",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Former steel mill sites along Pittsburgh's rivers were cleaned up and turned into offices, shops and homes. Which benefit does this bring?",
+   "options": [
+    "More farmland paved at the edge",
+    "Longer commutes for residents",
+    "Growth on land already in the city",
+    "More polluted soil near the rivers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reusing brownfields puts new homes and jobs near existing roads and pipes, sparing land at the edge and removing pollution.",
+    "options": [
+     "Brownfield reuse reduces the need to pave farmland.",
+     "Riverfront sites near downtown shorten trips.",
+     "Right: inward growth instead of outward.",
+     "Cleanup removes pollution."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-13",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Minnesota created the Metropolitan Council in 1967 to plan sewers, transit and growth for the whole seven-county Minneapolis-St. Paul area. Why plan at this scale?",
+   "options": [
+    "Each city can solve these alone",
+    "Rivers, traffic and growth cross city limits",
+    "National law forbids local planning",
+    "The council governs the whole state"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sewage, traffic and sprawl cross the borders of many separate cities and counties, so a regional body can plan what no single one can.",
+    "options": [
+     "Fragmented local governments struggle to plan shared systems.",
+     "Right: regional problems need regional planning.",
+     "Cities still plan locally; the council adds a regional layer.",
+     "It covers seven counties, not the whole state."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-14",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which responses aim to protect land at the edge of a metro area? Select all that apply.",
+   "options": [
+    "Buying development rights from farmers",
+    "Drawing an urban growth boundary",
+    "Building a highway to a distant exurb",
+    "Zoning edge land for large house lots"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Buying development rights keeps farms in farming; a growth boundary limits building beyond a line. Highways and large lots spread the city.",
+    "options": [
+     "Right: farms stay farms.",
+     "Right: building stays inside the line.",
+     "A highway to an exurb encourages sprawl.",
+     "Large lots at the edge are low-density sprawl."
+    ]
+   }
+  },
+  {
+   "id": "hug-sustainability-challenges-15",
+   "unit": "unit-6",
+   "topic": "sustainability-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.C",
+   "q": "Build an explanation of how one response reduces an environmental problem in a named city.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In London, polluted industrial land in the Lea Valley was cleaned up for the 2012 Olympic Park, so the city gained parks and homes on land it already had instead of paving fields at its edge.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "London",
+       "many cities"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place: \"many cities\" earns no credit."
+      }
+     },
+     "cause": {
+      "label": "Response",
+      "options": [
+       "polluted industrial land in the Lea Valley was cleaned up for the 2012 Olympic Park",
+       "farmland at the edge was paved for new suburbs"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Paving farmland is sprawl, the problem, not a response."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "the city gained parks and homes on land it already had instead of paving fields at its edge",
+       "the city's ecological footprint grew much faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Reusing land slows the spread onto new land; it does not speed it."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A full explanation names the city, the response and every link to the effect."
+   }
+  }
+ ]
+}

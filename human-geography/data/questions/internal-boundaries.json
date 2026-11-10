@@ -426,20 +426,19 @@
    "q": "Which rules make gerrymandering harder? Select all that apply.",
    "options": [
     "An independent commission, not lawmakers, draws the lines",
-    "Districts must be compact and keep towns and counties whole",
+    "Districts are drawn so each seat is won by a wide margin",
     "The party in power draws the lines in secret",
     "Districts are redrawn after each election",
     "Lines are drawn before anyone counts the population"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "States such as California and Arizona use independent commissions, and many states require compact districts that keep places whole.",
+    "correct": "States such as California and Arizona use independent commissions, so the people drawing the lines have no seats of their own to win.",
     "options": [
      "Right: The people drawing the lines have no seats to win.",
-     "Right: Odd, stretched shapes become harder to draw.",
+     "Safe seats for one side can come from packing, a gerrymandering method.",
      "This makes gerrymandering easier.",
      "Redrawing more often gives the party in power more chances.",
      "Districts need population counts to be equal."

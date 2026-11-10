@@ -1,0 +1,70 @@
+{
+ "topic": "von-thunen",
+ "hook": "Fresh milk on a supermarket shelf near Chicago probably came from a dairy within a few hours' drive, while the beef beside it may have come from a ranch hundreds of kilometers away. A German landowner explained this pattern in 1826 with nothing but distance and the cost of hauling goods to market.",
+ "prereq": [
+  {
+   "q": "According to bid-rent theory, which land use usually takes land closest to a market?",
+   "options": [
+    "The use that can pay the most rent there",
+    "The use that needs the most land",
+    "The use with the cheapest transport",
+    "The use that earns least per hectare"
+   ],
+   "correct": 0,
+   "why": "Land goes to the highest bidder; near the market that is an intensive, high-earning use.",
+   "review": "production-regions"
+  },
+  {
+   "q": "Which is an extensive kind of agriculture?",
+   "options": [
+    "Ranching",
+    "Market gardening",
+    "Dairy farming near a city",
+    "Greenhouse vegetables"
+   ],
+   "correct": 0,
+   "why": "Ranching spreads few inputs over large areas.",
+   "review": "agriculture-intro"
+  }
+ ],
+ "figure": {
+  "figure": "von-thunen-rings",
+  "caption": "Market gardening and dairy, forest, grain and ranching in rings around one market, with wilderness beyond."
+ },
+ "chain": [
+  {
+   "cause": "Every product must be hauled to one market by cart",
+   "effect": "transport cost rises with distance"
+  },
+  {
+   "cause": "Transport cost rises with distance",
+   "effect": "the rent each use can pay falls with distance, fastest for heavy or perishable goods"
+  },
+  {
+   "cause": "Each farmer picks the use that pays most at that distance",
+   "effect": "land use forms rings: dairy and gardens, forest, grain, then ranching"
+  },
+  {
+   "cause": "Refrigeration, fast transport and many markets change transport costs",
+   "effect": "real land use breaks the neat rings"
+  }
+ ],
+ "ideas": [
+  "The <b>von Thünen model</b> (1826) explains rural land use by transport cost to one market. Rings from the center: market gardening and dairy, forest, grain and field crops, livestock ranching; wilderness beyond.",
+  "Assumptions: one isolated market, a flat and uniform plain, transport by cart in every direction, profit-seeking farmers. A river stretches the rings along it.",
+  "Limits: refrigeration and air freight, specialty farming regions (Kenyan flowers, Chilean fruit), many markets, uneven land."
+ ],
+ "misconception": {
+  "wrong": "Forest is the outer ring of the von Thünen model, because trees grow on unused land.",
+  "right": "Forest is ring 2. In 1826 towns needed heavy wood every day for fuel and building, and hauling it was costly, so it was grown close to the market."
+ },
+ "check": [
+  "hug-von-thunen-1",
+  "hug-von-thunen-2",
+  "hug-von-thunen-3",
+  "hug-von-thunen-4",
+  "hug-von-thunen-8",
+  "hug-von-thunen-11"
+ ],
+ "summary": "The von Thünen model explains farm land use by the cost of transport to one market, producing rings of market gardening and dairy, forest, grain and ranching. It assumes an isolated, uniform plain and transport by cart; refrigeration, air freight, specialty farming and many markets break the rings in real regions."
+}

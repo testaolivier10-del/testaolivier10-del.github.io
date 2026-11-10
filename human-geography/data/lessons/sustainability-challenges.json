@@ -1,0 +1,83 @@
+{
+ "topic": "sustainability-challenges",
+ "hook": "The park built for London's 2012 Olympic Games sits on land that was once rail yards, factories and dumps along the River Lea, with soil so polluted it had to be washed before anything could be built. Meanwhile, in Jakarta, parts of the city sink every year as wells pump water from under it. Cities are where most people will live, and where many of the world's environmental problems are made and must be solved.",
+ "prereq": [
+  {
+   "q": "What is sustainability?",
+   "options": [
+    "Meeting people's needs without using up what future generations will need",
+    "Growing a city as fast as possible",
+    "Keeping a city's population the same forever",
+    "Building only on farmland"
+   ],
+   "correct": 0,
+   "why": "Sustainability balances present needs with the needs of the future.",
+   "review": "human-environment"
+  },
+  {
+   "q": "What is an urban growth boundary?",
+   "options": [
+    "A line beyond which building is limited",
+    "A city's tax border",
+    "A ring highway",
+    "The edge of a floodplain"
+   ],
+   "correct": 0,
+   "why": "It steers building inside the line and protects rural land outside it.",
+   "review": "urban-sustainability"
+  },
+  {
+   "q": "What is infilling?",
+   "options": [
+    "Building on vacant or underused lots inside the built-up area",
+    "Building new suburbs on farmland",
+    "Draining a lake for farmland",
+    "Clearing a neighborhood for a highway"
+   ],
+   "correct": 0,
+   "why": "Infill reuses land already inside the city.",
+   "review": "density-land-use"
+  }
+ ],
+ "figure": {
+  "figure": "sustainability-challenges-growth-boundary",
+  "caption": "An invented metro area with an urban growth boundary: an empty lot inside (X), farmland outside (Y), an old factory site (Z) and a rail station (W)."
+ },
+ "chain": [
+  {
+   "cause": "A city spreads over farmland at low density",
+   "effect": "people drive farther, so fuel use, air pollution and greenhouse gases rise"
+  },
+  {
+   "cause": "Paved surfaces replace fields and forest",
+   "effect": "rain runs off fast, carrying oil and trash into rivers and raising flood risk"
+  },
+  {
+   "cause": "Growth outpaces sewers and water pipes",
+   "effect": "untreated waste reaches water supplies, harming health"
+  },
+  {
+   "cause": "Cities clean up brownfields, protect farmland and plan across the whole region",
+   "effect": "growth goes onto land already in use, and the city's footprint on the land grows more slowly"
+  }
+ ],
+ "ideas": [
+  "Urban sustainability challenges include sprawl, sanitation, climate change, air and water quality, and energy use.",
+  "A city's <b>ecological footprint</b> is the area of land and water needed to supply what its people use and to absorb their waste. Cities' footprints are far larger than their own area.",
+  "A <b>brownfield</b> is an abandoned or underused industrial or commercial site that may be polluted. Cleaning it up lets the city grow inward instead of outward.",
+  "Responses include regional planning across many local governments, brownfield cleanup, urban growth boundaries and farmland protection. Each has costs as well as benefits."
+ ],
+ "misconception": {
+  "wrong": "A city's environmental impact stops at its city limits.",
+  "right": "A city draws food, water, energy and materials from far away and sends its waste and emissions far away too. That is why its ecological footprint covers an area many times larger than the city itself."
+ },
+ "check": [
+  "hug-sustainability-challenges-1",
+  "hug-sustainability-challenges-2",
+  "hug-sustainability-challenges-3",
+  "hug-sustainability-challenges-4",
+  "hug-sustainability-challenges-8",
+  "hug-sustainability-challenges-9"
+ ],
+ "summary": "Growing cities face sprawl, poor sanitation, air and water pollution, high energy use and climate risks such as heat and flooding. Their ecological footprints reach far beyond their limits. Cities respond by cleaning up and reusing brownfields, drawing growth boundaries, protecting farmland and planning at the regional scale, and each response has trade-offs."
+}

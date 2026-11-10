@@ -85,3 +85,33 @@ From `docs/aphug-research/accuracy-risks.md`; check each against its source befo
 - Religion: universalizing and ethnic as the AP classification; adherents may not use these labels.
 - Language families: avoid contested families (Altaic).
 - Map projections: the trade-off examples (Mercator, Robinson, Peters, and others) in framework.md section 7.
+
+## unit-4-facts: Unit 4 facts written from memory (open, author D, 2026-11-09)
+
+Written without a source read this session; check each before Unit 4 is published.
+
+- Referendum results used in `devolution-factors-s1` and notes: Quebec 1980 Yes 40.4%, No 59.6%, turnout 85.6%;
+  Quebec 1995 Yes 49.4%, No 50.6%, turnout 93.5% (Elections Québec); Scotland 2014 Yes 44.7%, No 55.3%, turnout
+  84.6% (Electoral Commission). Brexit 2016: Leave 51.9%, Remain 48.1%.
+- `political-processes-s1` (independence classes for Sub-Saharan Africa): choices made: Liberia, Ethiopia and South
+  Africa "before 1950" (South Africa self-governing from 1910/1931, majority rule only 1994); Guinea-Bissau in
+  1965-1979 (declared 1973, recognized 1974); Zimbabwe 1980 (not the 1965 unilateral declaration); Eritrea 1993 and
+  South Sudan 2011 counted as independence from another African state; Somaliland left unvalued (disputed). The
+  source line is "compiled by LevlPrep, 2026": a reviewer may prefer a named source.
+- CFA franc (`power-territoriality`): "many states in West and Central Africa", backed by France's treasury,
+  reforms announced 2019. Whether Mali, Burkina Faso and Niger still use it as of 2026 was not checked, which is why
+  no count is given.
+- Supranational functions table (`sovereignty-challenges-s1`): summarized from the founding documents, not re-read;
+  African Union intervention right (Constitutive Act art. 4(h)) and suspension after coups; Arctic Council works by
+  consensus of eight states with six Indigenous Permanent Participants; NATO Article 5 invoked once (2001).
+- Smaller facts: Korean DMZ about 4 km by 250 km (1953); Nigeria 12 states (1967) to 36 (1996); Nunavut 1999;
+  Spain's autonomous communities after 1978; Belgium federal 1993; Canada equalization since 1957; Tanzania's
+  Swahili policy and "more than 100 ethnic groups"; ETA ceasefire 2011 and dissolution 2018; Partition about 15
+  million people moved (estimates range from 10 to 20 million); Chile and Argentina boundary treaty 1881; US and
+  Canada 49th parallel agreed 1818 and 1846; Kenya and Tanzania lines 1886 and 1890; the Chamizal dispute settled 1963;
+  Ever Given blocked the Suez Canal 23 to 29 March 2021; Russian flag on the North Pole seabed 2007; 1960 UN Resolution
+  1514 wording; 17 African states independent in 1960; OAU border resolution 1964; 2020 census reapportionment (Texas
+  +2, Ohio and New York -1); Rucho v. Common Cause (2019); Finland NATO 2023, Sweden 2024.
+- Classification calls a reviewer may contest: Iceland as "close to a nation-state"; the China and Viet Nam boundary
+  as subsequent; Chile and Argentina as antecedent (Indigenous peoples lived there; the notes say so); Eastern Europe
+  in the Cold War as the shatterbelt example; Somalia after 1991 as the failed-state example.

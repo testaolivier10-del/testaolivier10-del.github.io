@@ -77,7 +77,7 @@
       o.push(circle(cx, cy, 36, COL.core));
       return { svg: frame(o.join(''), 'Hoyt sector model: wedges of land use around the CBD, a rail line to the east and a boulevard to the lakeshore in the west'),
         spots: [[pct(420, 200)], [pct(375, 125), pct(375, 275)], [pct(285, 95), pct(285, 305)], [pct(165, 135)]],
-        labels: [{ x: 50, y: 50, text: 'CBD' }, { x: 6, y: 8, text: 'Lake' }], legend: [LEG.rail, { sw: 'road', text: 'Boulevard to the lakeshore' }, LEG.water] };
+        labels: [{ x: 50, y: 50, text: 'CBD' }, { x: 8, y: 8, text: 'Lake' }], legend: [LEG.rail, { sw: 'road', text: 'Boulevard to the lakeshore' }, LEG.water] };
     },
     nuclei: function(){
       var o = [];
@@ -93,7 +93,7 @@
       o.push(blob(512, 300, 56, 38, COL.z[5]));
       return { svg: frame(o.join(''), 'A drawn city with six separate centers of activity, a river port at the lower left, a rail line and highways'),
         spots: [[pct(300, 195)], [pct(400, 222)], [pct(118, 318)], [pct(478, 98)], [pct(130, 105)], [pct(512, 300)]],
-        labels: [{ x: 6, y: 93, text: 'River port' }], legend: [LEG.rail, LEG.road, { sw: 'water', text: 'River' }] };
+        labels: [], legend: [LEG.rail, LEG.road, { sw: 'water', text: 'River, with a port' }] };
     },
     galactic: function(){
       var cx = 300, cy = 200, o = [];
@@ -117,7 +117,7 @@
       o.push('<path d="M' + pt(cx, cy, 40, 93).join(' ') + 'C' + pt(cx, cy, 90, 99).join(' ') + ' ' + pt(cx, cy, 140, 88).join(' ') + ' ' + pt(cx, cy, 200, 94).join(' ') + '" fill="none" stroke="' + COL.waterLine + '" stroke-width="5"/>');
       o.push(circle(cx, cy, 30, COL.core));
       return { svg: frame(o.join(''), 'Latin American city model: a CBD, a spine running out along a main avenue, rings of housing and a wedge along a river'),
-        spots: [[pct(cx, cy)], [pct.apply(null, pt(cx, cy, 128, -60))], [pct.apply(null, pt(cx, cy, 60, 190))], [pct.apply(null, pt(cx, cy, 114, 160))], [pct.apply(null, pt(cx, cy, 165, 205))], [pct.apply(null, pt(cx, cy, 150, 94))]],
+        spots: [[pct(cx, cy)], [pct.apply(null, pt(cx, cy, 128, -60))], [pct.apply(null, pt(cx, cy, 64, 180))], [pct.apply(null, pt(cx, cy, 114, 135))], [pct.apply(null, pt(cx, cy, 166, 200))], [pct.apply(null, pt(cx, cy, 150, 94))]],
         labels: [], legend: [{ sw: 'road', text: 'Main avenue' }, { sw: 'water', text: 'River' }] };
     },
     seasia: function(){
@@ -130,7 +130,7 @@
       o.push('<rect x="0" y="335" width="600" height="65" fill="' + COL.water + '"/><path d="M0 335H600" stroke="' + COL.waterLine + '" stroke-width="2"/>');
       o.push(blob(70, 170, 34, 22, COL.z[4])); o.push(blob(540, 160, 34, 22, COL.z[4])); o.push(blob(300, 140, 30, 20, COL.z[4]));
       return { svg: frame(o.join(''), 'Southeast Asian city model: a port on the sea, commercial zones beside it, housing around them and a band of farmland at the edge'),
-        spots: [[pct(300, 320)], [pct(300, 282)], [pct(70, 170), pct(540, 160)], [pct(300, 38)]],
+        spots: [[pct(300, 320)], [pct(185, 318)], [pct(70, 170), pct(540, 160)], [pct(300, 38)]],
         labels: [{ x: 9, y: 93, text: 'Sea' }], legend: [LEG.water] };
     },
     africa: function(){
@@ -170,23 +170,24 @@
       seg.forEach(function(s, i){ o.push('<path d="M' + s[0] + ' ' + Y0 + 'V' + s[1] + 'L' + s[2] + ' ' + s[3] + 'V' + Y0 + 'Z" fill="' + COL.z[i] + '"/>'); if(i) o.push('<path d="M' + s[0] + ' ' + s[1] + 'V' + Y0 + '" stroke="#8C877E" stroke-width="1.5" stroke-dasharray="5 5"/>'); });
       o.push('<path d="M70 60L170 190L300 262L440 316L580 340" fill="none" stroke="' + COL.accent + '" stroke-width="4" stroke-linejoin="round"/>');
       return { svg: frame(o.join(''), 'Bid-rent graph: rent falls with distance from the CBD, in four parts, steepest near the center'),
-        spots: [[pct(130, 250)], [pct(235, 300)], [pct(370, 330)], [pct(510, 300)]],
-        labels: [{ x: 6, y: 5, text: 'Rent' }, { x: 80, y: 96, text: 'Distance from the CBD' }, { x: 11.7, y: 96, text: 'CBD' }], legend: [] };
+        spots: [[pct(130, 250)], [pct(235, 300)], [pct(370, 252)], [pct(510, 290)]],
+        labels: [{ x: 8, y: 5, text: 'Rent' }, { x: 72, y: 94, text: 'Distance from the CBD' }, { x: 11.7, y: 94, text: 'CBD' }], legend: [] };
     },
     malthus: function(){
-      var o = [], X0 = 70, Y0 = 350;
+      var o = [], X0 = 70, Y0 = 350, P = function(t){ return Y0 - 30 * Math.pow(2, t / 125); }, Fd = function(t){ return Y0 - 30 - 0.52 * t; };
       o.push('<path d="M' + X0 + ' 30V' + Y0 + 'H580" fill="none" stroke="' + COL.ink + '" stroke-width="2.5"/>');
-      var pop = [], food = [];
-      for(var x = 0; x <= 500; x += 10){ pop.push((X0 + x) + ' ' + r1(Y0 - 30 * Math.pow(2, x / 100))); food.push((X0 + x) + ' ' + r1(Y0 - 30 - 0.52 * x)); }
-      var cross = 0; for(var t = 0; t <= 500; t += 1){ if(30 * Math.pow(2, t / 100) >= 30 + 0.52 * t){ cross = t; if(t > 50) break; } }
-      o.push('<path d="M' + pop.slice(0, 41).join('L') + '" fill="none" stroke="#B5481F" stroke-width="4"/>');
-      o.push('<path d="M' + food.join('L') + '" fill="none" stroke="' + COL.accent + '" stroke-width="4"/>');
-      var cy = Y0 - 30 * Math.pow(2, cross / 100);
-      o.push('<circle cx="' + (X0 + cross) + '" cy="' + r1(cy) + '" r="9" fill="' + COL.ink + '"/>');
-      o.push('<path d="M' + (X0 + cross + 8) + ' ' + r1(cy) + 'L' + (X0 + 400) + ' ' + r1(Y0 - 30 * Math.pow(2, 4)) + 'L' + (X0 + 400) + ' ' + r1(Y0 - 30 - 208) + 'Z" fill="#F5D9CF" opacity=".75"/>');
+      var cross = 0; for(var t = 60; t <= 500; t++){ if(P(t) <= Fd(t)){ cross = t; break; } }
+      var pop = [], food = [], gapA = [], gapB = [];
+      for(var x = 0; x <= 420; x += 10) pop.push((X0 + x) + ' ' + r1(P(x)));
+      for(var y = 0; y <= 500; y += 10) food.push((X0 + y) + ' ' + r1(Fd(y)));
+      for(var g = cross; g <= 420; g += 5){ gapA.push((X0 + g) + ' ' + r1(P(g))); gapB.unshift((X0 + g) + ' ' + r1(Fd(g))); }
+      o.push('<path d="M' + gapA.concat(gapB).join('L') + 'Z" fill="#F5D9CF"/>');
+      o.push('<path d="M' + pop.join('L') + '" fill="none" stroke="#B5481F" stroke-width="4"/>');
+      o.push('<path d="M' + food.join('L') + '" fill="none" stroke="' + COL.accent + '" stroke-width="4" stroke-dasharray="12 6"/>');
+      o.push('<circle cx="' + (X0 + cross) + '" cy="' + r1(P(cross)) + '" r="9" fill="' + COL.ink + '"/>');
       return { svg: frame(o.join(''), 'Malthus: a curved line that grows faster and faster, a straight line that grows steadily, and the point where they cross'),
-        spots: [[pct(X0 + 345, Y0 - 30 * Math.pow(2, 3.45) - 22)], [pct(X0 + 470, Y0 - 30 - 0.52 * 470 + 30)], [pct(X0 + cross - 30, cy + 12)], [pct(X0 + 392, Y0 - 200)]],
-        labels: [{ x: 6, y: 5, text: 'Amount' }, { x: 89, y: 96, text: 'Time' }], legend: [], cross: cross };
+        spots: [[pct(X0 + 222, P(250) - 18)], [pct(570, Fd(500) + 32)], [pct(X0 + cross + 14, P(cross) + 30)], [pct(X0 + 410, (P(410) + Fd(410)) / 2 - 4)]],
+        labels: [{ x: 10, y: 5, text: 'Amount' }, { x: 92, y: 94, text: 'Time' }], legend: [{ sw: 'pop', text: 'Solid line' }, { sw: 'food', text: 'Dashed line' }], cross: cross };
     },
     ravenstein: function(){
       var o = [];
@@ -254,7 +255,7 @@
       o.push('<path d="' + pop + '" fill="none" stroke="#7A4F9E" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>');
       o.push('<path d="' + birth + '" fill="none" stroke="' + COL.accent + '" stroke-width="4"/>');
       o.push('<path d="' + death + '" fill="none" stroke="#B5481F" stroke-width="4" stroke-dasharray="12 6"/>');
-      var spots = []; for(var k = 0; k < 5; k++) spots.push([pct(X0 + w * (k + 0.5), 22)]);
+      var spots = []; for(var k = 0; k < 5; k++) spots.push([pct(X0 + w * (k + 0.5), 38)]);
       return { svg: frame(o.join(''), 'Demographic transition model: birth rate and death rate across five stages, with total population rising'),
         spots: spots, labels: [], legend: [{ sw: 'birth', text: 'Birth rate' }, { sw: 'death', text: 'Death rate' }, { sw: 'pop', text: 'Total population' }] };
     }
@@ -287,6 +288,9 @@
     var g = GEN[ctx.build] ? GEN[ctx.build](r, ctx) : null;
     var base = g || ctx.model;
     var m = JSON.parse(JSON.stringify(base));
+    // A free slot's box sits on its first numbered spot in the figure.
+    var fg = m.layout === 'free' && figure(ctx.figure);
+    if(fg) m.slots.forEach(function(s, i){ var p = (fg.spots[i] || [[50, 50]])[0]; s.box = [r1(p[0] - 6), r1(p[1] - 6), 12, 12]; });
     var room = Math.max(0, Math.min(2, m.slots.length + 3 - m.pieces.length));
     var decoys = M.shuffle(r, (g && g.decoys) || ctx.decoys || []).slice(0, room);
     m.slips = (m.slips || []).slice();
@@ -375,7 +379,7 @@
         label: '<b>Apply it.</b> ' + name + ' (invented) has a crude birth rate of ' + b + ' and a crude death rate of ' + d + ' per 1,000 people. Which stage of the model are these data consistent with?' };
       var st2 = numStep('rate', '<b>Now the growth.</b> What is ' + name + '’s rate of natural increase (RNI), as a percent?', rni,
         [{ value: b - d, why: 'That is the gap per 1,000 people. RNI is a percent: divide it by 10.' }, { value: (b + d) / 10, why: 'RNI is births minus deaths, not births plus deaths.' }], 1, '%');
-      return { fig: { kind: 'plot', spec: spec }, steps: [st1, st2], say: 'stage ' + stage + ', RNI ' + M.fixed(rni, 1) + '%' };
+      return { fig: { kind: 'plot', spec: spec }, steps: [st1, st2], b: b, d: d, say: 'stage ' + stage + ', RNI ' + M.fixed(rni, 1) + '%' };
     },
     /* Epidemiological transition: invented causes of death and life expectancy. */
     epi: function(r, ctx){
@@ -390,7 +394,7 @@
         steps: [{ kind: 'choice', key: 'apply', fig: 'apply', practice: '3.B', level: 'apply', fixed: true, options: names, correct: stage - 1,
           why: names.map(function(n, i){ return i === stage - 1 ? 'Yes. Here ' + why[i] + '.' : 'Not this one. In ' + n.split(':')[0].toLowerCase() + ', ' + why[i] + '; these data do not show that.'; }),
           label: '<b>Apply it.</b> Read the table for ' + name + ' (invented). Which stage of the epidemiological transition do these data fit best?' }],
-        say: names[stage - 1] };
+        inf: inf, le: le, say: names[stage - 1] };
     },
     /* Malthus: invented indexes of population and food output, 1960 = 100. */
     malthus: function(r, ctx){

@@ -604,14 +604,110 @@
       "author": "D"
      },
      {
-      "title": "A districting map of one county, two plans",
+      "title": "A drawing of one county, two districting plans",
       "topic": "internal-boundaries",
-      "stimulus": "map",
+      "stimulus": "image",
       "author": "D"
      },
      {
       "title": "A table of supranational organization functions",
       "topic": "sovereignty-challenges",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "A world map of nations and states (four marks)",
+      "topic": "political-intro",
+      "stimulus": "map",
+      "author": "D"
+     },
+     {
+      "title": "A table of nations in four invented countries",
+      "topic": "political-intro",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "A map of Sub-Saharan Africa by year of independence",
+      "topic": "political-processes",
+      "stimulus": "map",
+      "author": "D"
+     },
+     {
+      "title": "A UN declaration on self-determination (1960)",
+      "topic": "political-processes",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A map of choke points in North Africa and Southwest Asia",
+      "topic": "power-territoriality",
+      "stimulus": "map",
+      "author": "D"
+     },
+     {
+      "title": "A ship blocks the Suez Canal (2021)",
+      "topic": "power-territoriality",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A table of four invented boundaries",
+      "topic": "defining-boundaries",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "The life of one invented boundary",
+      "topic": "boundary-functions",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "An invented election in five districts",
+      "topic": "internal-boundaries",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Who decides? Two invented countries",
+      "topic": "forms-of-governance",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "The Tenth Amendment to the US Constitution (1791)",
+      "topic": "forms-of-governance",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "Three referendums on independence (1980, 1995, 2014)",
+      "topic": "devolution-factors",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Minority-language speakers by province of Country A",
+      "topic": "devolution-factors",
+      "stimulus": "map",
+      "author": "D"
+     },
+     {
+      "title": "A world map of four states that shared or lost power",
+      "topic": "sovereignty-challenges",
+      "stimulus": "map",
+      "author": "D"
+     },
+     {
+      "title": "A report on invented Country R",
+      "topic": "centrifugal-centripetal",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "Income and services in four invented regions",
+      "topic": "centrifugal-centripetal",
       "stimulus": "data",
       "author": "D"
      }
