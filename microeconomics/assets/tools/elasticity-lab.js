@@ -52,8 +52,8 @@
   function rangesLayer(){
     return '<path class="el-half el-elastic" d="M' + f1(px(0.15)) + ' ' + f1(py(9.85)) + 'L' + f1(px(5)) + ' ' + f1(py(5)) + '"/>' +
       '<path class="el-half el-inelastic" d="M' + f1(px(5)) + ' ' + f1(py(5)) + 'L' + f1(px(9.85)) + ' ' + f1(py(0.15)) + '"/>' +
-      '<text class="el-rlab el-elastic-t" x="' + f1(px(2.9)) + '" y="' + f1(py(8.7)) + '">Elastic</text><text class="el-rsub" x="' + f1(px(2.9)) + '" y="' + f1(py(8.7) + 14) + '">|Ed| &gt; 1</text>' +
-      '<text class="el-rlab el-inelastic-t" x="' + f1(px(7.4)) + '" y="' + f1(py(4.2)) + '">Inelastic</text><text class="el-rsub" x="' + f1(px(7.4)) + '" y="' + f1(py(4.2) + 14) + '">|Ed| &lt; 1</text>' +
+      '<text class="el-rlab el-elastic-t" x="' + f1(px(2.9)) + '" y="' + f1(py(8.7)) + '">Elastic</text><text class="el-rsub" x="' + f1(px(2.9)) + '" y="' + f1(py(8.7) + 16) + '">|Ed| &gt; 1</text>' +
+      '<text class="el-rlab el-inelastic-t" x="' + f1(px(7.4)) + '" y="' + f1(py(4.2)) + '">Inelastic</text><text class="el-rsub" x="' + f1(px(7.4)) + '" y="' + f1(py(4.2) + 16) + '">|Ed| &lt; 1</text>' +
       '<circle class="el-mid" cx="' + f1(px(5)) + '" cy="' + f1(py(5)) + '" r="5"/><text class="el-rlab el-mid-t" x="' + f1(px(5) + 10) + '" y="' + f1(py(5) - 8) + '">Unit elastic</text>';
   }
   /* Points on D, the TR rectangle at the first one. s: a scale { kP, kQ }; pts: [{ p, label }] */
@@ -184,7 +184,7 @@
     }
     function draw(){
       fig.setAttribute('data-view', st.view);
-      host.querySelectorAll('.el-view').forEach(function(b){ var on = b.getAttribute('data-v') === st.view; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
+      [].slice.call(host.querySelectorAll('.el-view')).concat(LS ? [].slice.call(LS.root.querySelectorAll('.el-view')) : []).forEach(function(b){ var on = b.getAttribute('data-v') === st.view; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       var r = st.view === 'price' ? drawPrice() : drawShift();
       T.explain($('.el-say'), esc(r.head), '<ol class="ls-steps">' + r.body.map(function(b){ return '<li><span>' + esc(b) + '</span></li>'; }).join('') + '</ol>');
       nums();

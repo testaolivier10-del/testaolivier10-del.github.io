@@ -64,7 +64,7 @@
     function polName(){ var k = K(); return (k.cost ? 'Tax on ' : 'Subsidy to ') + (k.curve === 'S' ? 'sellers' : 'buyers'); }
 
     function line(){
-      if(view === 'pub'){ var t = XL.publicTable(XL.PEOPLE, mc); return alone ? 'Each alone: Ana buys ' + t.alone[0] + ', Ben ' + t.alone[1] + ', Cy ' + t.alone[2] + ' streetlights. Together they would want ' + t.efficient + '.' : 'Efficient: ' + t.efficient + ' streetlights, the last one whose summed benefit covers its ' + money(mc) + ' cost.'; }
+      if(view === 'pub'){ var t = XL.publicTable(XL.PEOPLE, mc); return alone ? 'Each alone: Ana buys ' + t.alone[0] + ', Ben ' + t.alone[1] + ', Cy ' + t.alone[2] + ' streetlights. Together they would want ' + t.efficient + '.' : (t.efficient ? 'Efficient: ' + t.efficient + ' streetlight' + (t.efficient === 1 ? '' : 's') + ', the last one whose summed benefit covers its ' + money(mc) + ' cost.' : 'Efficient: none. Even the first streetlight’s summed benefit is below its ' + money(mc) + ' cost.'); }
       var s = XL.state(type, gap, pol), k = K();
       var q = function(x){ return M.fmt(x * QK, 3); };
       if(Math.abs(s.market - s.efficient) < 1e-9) return polName() + ' of ' + money(pol * PK) + ' equals the external ' + (k.cost ? 'cost' : 'benefit') + ': the market makes the efficient ' + q(s.efficient) + ' ' + EX[type].unit + '. No deadweight loss.';

@@ -141,7 +141,7 @@
         var name = c[0] === 'rev' ? revName(st.t) : AREA[c[0]], on = st.focus === c[0];
         return '<button type="button" class="sl-val sl-v-' + c[0] + (on ? ' is-on' : '') + (st.focus && !on ? ' is-dim' : '') + '" data-a="' + c[0] + '" aria-pressed="' + on + '"><span class="sl-sw" aria-hidden="true"></span><span class="sl-vn">' + esc(name) + '</span><b class="sl-vv">' + money(c[1]) + '</b></button>';
       }).join('') + '<p class="sl-ts"><span>Total surplus</span> <b>' + money(v.ts) + '</b>' + (st.t !== 'none' ? ' <span class="sl-was">(' + money(v.ts0) + ' with no policy)</span>' : '') + '</p>';
-      host.querySelectorAll('.sl-pol').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-p') === st.t)); b.classList.toggle('on', b.getAttribute('data-p') === st.t); });
+      [].slice.call(host.querySelectorAll('.sl-pol')).concat(LS ? [].slice.call(LS.root.querySelectorAll('.sl-pol')) : []).forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-p') === st.t)); b.classList.toggle('on', b.getAttribute('data-p') === st.t); });
       return v;
     }
     function caption(v){
@@ -243,7 +243,9 @@
       sp = T.studioPane(pane, s, { stage: [fig], dock: [host.querySelector('.sl-ctl')], setup: 'Options', moreLabel: 'Letters and the market', why: [host.querySelector('.sl-say')], details: [host.querySelector('.sl-nums'), host.querySelector('.sl-inc')] });
       sp.setup('Areas unlettered');
       draw(); words(); incDraw();
-      if(s.mode() === 'explore') T.hintSlot(s, host.querySelector('.sl-pols') || pane.querySelector('.sl-pols'), 'Start here: pick a policy', {});
+      // The policy row has moved into the studio's dock by now: find it there.
+      var pols = (s.root && s.root.querySelector('.sl-pols')) || host.querySelector('.sl-pols') || pane.querySelector('.sl-pols');
+      if(s.mode() === 'explore' && pols) T.hintSlot(s, pols, 'Start here: pick a policy', { before: pols });
     }
     buildSlider(); draw(); words(); incDraw();
     return { studio: studio, stop: stop };

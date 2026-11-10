@@ -94,7 +94,8 @@
       v.ps = ev('producerSurplus', [qt, ps, k.floor]);
       v.rev = ev('taxRevenue', [tx, qt]);
       v.dwl = ev('dwl', [ev('sub', [k.qe, qt]), tx]);
-      var inc = C().incidence(k.pe, pb, ps); v.buyers = R6(inc.buyers); v.sellers = R6(inc.sellers);
+      // The Explore animation grows the tax from 0: no split to report until there is a tax.
+      if(tx > 1e-9){ var inc = C().incidence(k.pe, pb, ps); v.buyers = R6(inc.buyers); v.sellers = R6(inc.sellers); } else { v.buyers = 0; v.sellers = 0; }
     } else if(t === 'subsidy'){
       var sb = pol.amount, q2 = R6((G().eq(spec(m), { S: sb / m.kP }) || [0])[0] * m.kQ), pbu = pD(m, q2), pse = R6(pbu + sb);
       v.amount = sb; v.q = q2; v.pb = pbu; v.psell = pse;

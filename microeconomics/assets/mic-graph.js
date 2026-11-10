@@ -869,7 +869,7 @@
     for(var i = 1; i < xs.length; i++){ var need = left(xs[i - 1]) + xs[i - 1].w + 3 - left(xs[i]); if(need > 0){ xs[i].x += need; moved.push(xs[i]); } }
     if(xs.length){ var last = xs[xs.length - 1], over = left(last) + last.w - (W - 2); if(over > 0) xs.forEach(function(o){ o.x -= over; if(moved.indexOf(o) < 0) moved.push(o); }); }
     ys.sort(function(a, b){ return b.y - a.y; });
-    for(var j = 1; j < ys.length; j++){ var gap = ys[j - 1].y - 13 - ys[j].y; if(gap < 0){ ys[j].y += gap; moved.push(ys[j]); } }
+    for(var j = 1; j < ys.length; j++){ var gap = ys[j - 1].y - 15 - ys[j].y; if(gap < 0){ ys[j].y += gap; moved.push(ys[j]); } }
     moved.forEach(function(o){ html = html.replace(o.s, '<text class="mic-gr-mark' + o.cls + '" x="' + f1(o.x) + '" y="' + f1(o.y) + '" text-anchor="' + o.a + '">' + o.inner + '</text>'); });
     return html;
   }
@@ -934,8 +934,10 @@
     // Shading cells first, under the curves.
     var shadeTask = does.indexOf('shade') > -1, ar = (shadeTask || state.letters || (state.shade && state.shade.length)) ? areas(spec) : null, on = state.shade || [], keyCells = state.key && does.indexOf('shade') > -1 ? regionCells(spec, (spec.key || {}).shade) : [];
     // Drawn once the shift arrows are known (a letter keeps clear of an arrow, integration u2), under the curves.
-    var drawCells = function(avoid){ var out = []; if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
-      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly, avoid), g = out;
+    // Each letter placed is an obstacle for the next, so two letters in thin neighboring cells do not touch.
+    var drawCells = function(avoid){ var out = [], lets = []; if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
+      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly, avoid.concat(lets)), g = out;
+      lets.push(ct, [ct[0] - 4, ct[1]], [ct[0] + 4, ct[1]], [ct[0], ct[1] - 5], [ct[0], ct[1] + 5]);
       if(!shadeTask && !state.letters && on.indexOf(c.id) < 0) return;   // a picture shading a region (state.shade) shows only it
       g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/>' + (shadeTask || state.letters ? '<text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>' : ''));
     }); return out.join(''); };
@@ -947,7 +949,8 @@
     var base = all.filter(inP), now = allNow.filter(inP);
     var e0 = k.eq && find(base, k.eq[0]) ? eq(spec, {}) : null;
     var placed = [], cn = state.curveN != null ? String(state.curveN) : '2';
-    function box(t, n, at){ var w = String(t[0]).length * 7.4 + String(t[1] + (n || '')).length * 5.4, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
+    // Measured: a 13 px bold label is about 9 px a character (MC 20, AVC 27), a subscript about 6.
+    function box(t, n, at){ var w = String(t[0]).length * 9 + String(t[1] + (n || '')).length * 6, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
     // Labels keep 2 px apart (ATC and AVC ends no longer touch, integration T1-2).
     function hit(a, b){ return a[0] < b[2] + 2 && b[0] < a[2] + 2 && a[1] < b[3] + 2 && b[1] < a[3] + 2; }
     var lines = now.map(function(c){ var pts = []; if(c.shape === 'vertical'){ for(var v = 0; v <= 10; v += 0.25) pts.push([px(c.at), py(v)]); } else for(var x = 0; x <= 10 + 1e-9; x += 0.1){ var h = y(c, x); if(h != null && h >= 0 && h <= 10) pts.push([px(x), py(h)]); } return pts; });
@@ -991,7 +994,10 @@
     arrows.forEach(function(a){ var m = /^<path class="mic-gr-arrow" d="M([-\d.]+) ([-\d.]+)L([-\d.]+) ([-\d.]+)/.exec(a); if(m) soft.push(seg([+m[1], +m[2]], [+m[3], +m[4]])); });
     if(k.eq && find(base, k.eq[0])){ guideAt(eq(spec, {})); if(state.eq) guideAt(state.eq); }
     var arrowPts = []; soft.forEach(function(pts){ arrowPts = arrowPts.concat(pts); });
-    g.splice(1, 0, drawCells(arrowPts.filter(function(q, i){ return i % 2 === 0; })));
+    // A letter also keeps clear of a curve drawn across its cell (the S + tax line through the
+    // tax revenue rectangle: the cells are cut by the curves as they started).
+    var curvePts = []; now.forEach(function(c, i){ if(c.steps) lines[i].forEach(function(q, j){ if(j % 2 === 0) curvePts.push(q); }); });
+    g.splice(1, 0, drawCells(arrowPts.filter(function(q, i){ return i % 2 === 0; }).concat(curvePts)));
     var whole = function(c, i){ return c.steps && Math.abs(c.at - base[i].at) >= 1 - 1e-9 && (c.shape === 'up' || c.shape === 'down' || c.shape === 'vertical'); };
     var txt = function(id){ return askLabels && !labels[id] ? null : curveText(spec, labels[id] || id); };
     // spec.showLabel { S: 'S + tax' }: the curve drawn shifted by spec.show reads so, with no number (integration 11).

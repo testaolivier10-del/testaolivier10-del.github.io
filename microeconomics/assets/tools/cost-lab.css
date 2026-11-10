@@ -95,3 +95,5 @@
 .cl-qfig{align-items:center;align-content:center;min-height:100%;}
 .ls-root:not(.ls-phone) .cl-qtable{font-size:15px;}
 .ls-root:not(.ls-phone) .cl-qtable th,.ls-root:not(.ls-phone) .cl-qtable td{padding:7px 14px;}
+/* On a phone the graph and the table stack (see firm-market.css; tools review 2026-11-10). */
+@media (max-width:640px){.cl-qfig{flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;}.cl-qgraph{flex:0 0 auto;width:100%;max-width:100%;}.cl-qfig .cl-qtw{align-self:center;}}

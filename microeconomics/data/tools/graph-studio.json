@@ -588,7 +588,7 @@
    "topic": "disequilibrium-changes",
    "shifter": "income-normal-up",
    "title": "Incomes rise",
-   "cause": "Incomes rise, and {good} is a normal good.",
+   "cause": "Incomes rise, and buyers treat {good} as a normal good.",
    "because": "higher income for a normal good",
    "shifts": [
     {
@@ -637,7 +637,7 @@
     }
    ],
    "why": [
-    "Goods used together are bought together: when {comp} costs more, people want less {good} at every price, so demand shifts left."
+    "Goods used together are bought together: when the price of {comp} rises, buyers want a smaller quantity of {good} at every price, so demand shifts left."
    ]
   },
   {
@@ -758,7 +758,7 @@
    "topic": "disequilibrium-changes",
    "shifter": "own-price-down",
    "title": "Its own price falls",
-   "cause": "The price of {good} falls, and buyers buy more of it.",
+   "cause": "The price of {good} falls, and buyers buy a larger quantity.",
    "along": "D",
    "why": [
     "The price is on the vertical axis, so a change in it moves the market along demand: the quantity demanded changes, demand does not."
@@ -770,7 +770,7 @@
    "topic": "disequilibrium-changes",
    "shifter": "own-price-up",
    "title": "Its own price rises",
-   "cause": "The price of {good} rises, and sellers offer more of it for sale.",
+   "cause": "The price of {good} rises, and sellers offer a larger quantity for sale.",
    "along": "S",
    "why": [
     "A higher price moves sellers along their supply curve: the quantity supplied rises, supply does not shift."

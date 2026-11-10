@@ -110,7 +110,8 @@
         options: ['Its tip is at the efficient quantity, ' + v.Qe + '; its base is at the market quantity, ' + v.Qm + '.', 'Its tip is at the market quantity, ' + v.Qm + '; its base is at the efficient quantity, ' + v.Qe + '.', 'It is a rectangle from zero to the market quantity.', 'It lies between demand and supply to the left of the market quantity.'],
         why: ['Right: the social and private curves meet at the efficient quantity, and the gap between them widens out to the market quantity, where the externality is ' + money(v.ext) + ' a unit.', 'The curves that bound it cross at the efficient quantity: that is where the tip is.', 'A rectangle would be the whole external ' + (K.cost ? 'cost' : 'benefit') + '; the loss is only the triangle between the two quantities.', 'Left of the market quantity buyers and sellers both gain; the loss is between the market and efficient quantities.'] }
     ];
-    return { type: 'dwl', ctx: ctx.id, topic: ctx.topic, given: n, nums: v, text: story(ctx, n, v), steps: steps,
+    // The graph has no tick numbers, so the efficient quantity is stated (the market one is in the story).
+    return { type: 'dwl', ctx: ctx.id, topic: ctx.topic, given: n, nums: v, text: story(ctx, n, v).replace(/<\/p>$/, ' The efficient quantity is ' + v.Qe + ' ' + ctx.unit + '.</p>'), steps: steps,
       solution: ['Efficient quantity: ' + v.Qe + '; market quantity: ' + v.Qm + '.', 'DWL = ½ × ' + dq + ' × ' + money(v.ext) + ' = ' + money(v.dwl) + '.', 'The triangle points toward the efficient quantity, where ' + (K.social === 'MSC' ? 'MSC meets D' : 'MSB meets S') + '.'] };
   }
   function genFix(r, ctx){

@@ -78,3 +78,6 @@
 :root[data-theme="dark"] .fm-aword{fill:#E8F5EA;}
 :root[data-theme="dark"] .fm-aword.fm-a-loss{fill:#FBE3DF;}
 :root[data-theme="dark"] .fm-aword.fm-a-cs{fill:#E3F1FC;}
+/* On a phone the graph and the data table stack, each the stage's width (a 380 px graph basis beside the table
+ overflowed a 360 px stage and centering pushed it off the left edge; tools review 2026-11-10). */
+@media (max-width:640px){.fm-qfig{flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;}.fm-qgraph{flex:0 0 auto;width:100%;max-width:100%;}.fm-qtw{align-self:center;}}
