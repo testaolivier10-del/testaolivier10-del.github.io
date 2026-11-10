@@ -164,6 +164,16 @@ const PAGES = [
   ['/macroeconomics/justify.html', 'the AP® Macroeconomics "Make it specific" trainer'],
   ['/macroeconomics/tools/graph-studio.html', 'the AP® Macroeconomics Graph Studio'],
   ...bioPages('macroeconomics', 'AP® Macroeconomics'),
+  // AP® Microeconomics (hidden until its first unit is published, docs/apmicro-spec.md):
+  // the generated shells every page type shares, then its first published pages.
+  ['/microeconomics/', 'the AP® Microeconomics course home'],
+  ['/microeconomics/glossary.html', 'the AP® Microeconomics glossary'],
+  ['/microeconomics/practice.html', 'the AP® Microeconomics practice builder'],
+  ['/microeconomics/exams.html', 'the AP® Microeconomics exams app'],
+  ['/microeconomics/frq.html', 'the AP® Microeconomics free-response list'],
+  ['/microeconomics/formula-sheet.html', 'the AP® Microeconomics graphs and formulas page'],
+  ['/microeconomics/justify.html', 'the AP® Microeconomics "Make it specific" trainer'],
+  ...bioPages('microeconomics', 'AP® Microeconomics'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first

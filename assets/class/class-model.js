@@ -49,6 +49,9 @@
     appsych:   { dir: 'psychology', name: 'AP® Psychology', cur: 'psychology/assets/psy-curriculum.js', g: 'ApPsychCurriculum' },
     apprecalc: { dir: 'precalculus', name: 'AP® Precalculus', cur: 'precalculus/assets/pcalc-curriculum.js', g: 'ApPrecalcCurriculum' },
     apmacro:   { dir: 'macroeconomics', name: 'AP® Macroeconomics', cur: 'macroeconomics/assets/mac-curriculum.js', g: 'ApMacroCurriculum' },
+    // Registered hidden (docs/apmicro-spec.md): known to the model and the
+    // database; added to ORDER, the teacher's course list, at launch.
+    apmicro:   { dir: 'microeconomics', name: 'AP® Microeconomics', cur: 'microeconomics/assets/mic-curriculum.js', g: 'ApMicroCurriculum' },
     nremt:     { dir: 'nremt', name: 'EMT (NREMT)', cur: 'assets/class/nremt-map.js', g: 'LevlClassNremt', ap: false, frq: false, unitExams: false,
                  unitWord: 'Area', need: 'assets/class/nremt-map.js', topicFilter: false, bank: 'nremt/assets/questions-core.json' },
     ochem:     { dir: 'ochem', name: 'Organic Chemistry', cur: 'ochem/assets/curriculum.js', g: 'OchemCurriculum', ap: false, frq: false,

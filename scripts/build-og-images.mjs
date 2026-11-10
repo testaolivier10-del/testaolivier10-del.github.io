@@ -186,6 +186,16 @@ const CARDS = [
     title: 'Macroeconomics for May 2027, every graph, every shift',
     sub: 'Free notes for every topic, every graph shifted and labeled by hand and checked point by point, and causal chains built link by link.',
   },
+  /* AP® Microeconomics (folder microeconomics/), the same rules: no mark, no
+     counts (docs/apmicro-spec.md section 4). Render with
+     ONLY=microeconomics/assets/og-image.png. */
+  {
+    out: 'microeconomics/assets/og-image.png',
+    badge: 'Free notes',
+    brand: 'LevlPrep',
+    title: 'Microeconomics for May 2027, every curve, every area',
+    sub: 'Free notes for every topic, every graph drawn, shifted and shaded by hand and checked point by point, and payoff matrices argued with both comparisons.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

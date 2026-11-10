@@ -1008,6 +1008,9 @@ const PASSES = {
   // AP® Macroeconomics mirrors AP® Psychology (docs/apmacro-spec.md decision 3).
   // Not sold until "macro-2027" is in the POLAR_PRODUCTS setting (owner checklist).
   'macro-2027':     { course: 'apmacro', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Microeconomics mirrors AP® Macroeconomics (docs/apmicro-spec.md decision 3).
+  // Not sold until "micro-2027" is in the POLAR_PRODUCTS setting (launch steps).
+  'micro-2027':     { course: 'apmicro', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -1049,7 +1052,7 @@ function isDuplicateFixedPass(passId, startsAt) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1754,7 +1757,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus', apmacro: 'AP® Macroeconomics' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus', apmacro: 'AP® Macroeconomics', apmicro: 'AP® Microeconomics' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -5014,6 +5017,17 @@ const COURSE_RULES = {
     '- Monetary policy: teach the ample-reserves framework (the Federal Reserve sets its policy rate with administered rates such as interest on reserves) and say when an answer uses the limited-reserves framework (open market operations, the money multiplier).',
     '- To close a gap, decide the direction first, then divide the gap by the right multiplier. Long-run self-adjustment works through nominal wages and short-run aggregate supply, not aggregate demand.',
     '- The price of a currency is in units of the other currency per unit of it. Keep policy examples politically neutral. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apmicro: [
+    '',
+    'This student is a high-school student preparing for the AP® Microeconomics exam (May 2027 format: 60 multiple-choice questions, then one long and two short free-response questions with graphs drawn by hand; a four-function calculator). Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and connect every idea to its graph: name the graph, label every axis and curve, show the curve that shifts and which way, and the new equilibrium compared with the old.',
+    '- Marginal cost is the change in total cost divided by the change in output, and MC crosses AVC and ATC at their minimums. A firm produces where MR = MC; a monopolist reads its price from the demand curve above that quantity, never from MR.',
+    '- A perfectly competitive firm is a price taker: its demand is horizontal at the market price (d = MR = AR = P). Long-run adjustment runs profit, entry or exit, market supply, price back to minimum ATC.',
+    '- Name areas precisely (consumer and producer surplus, tax revenue, subsidy cost, profit, deadweight loss between demand and MC or MSB and MSC). In game theory, give both comparisons from the matrix for a dominant strategy and check every cell for a Nash equilibrium.',
+    '- Hiring follows MRP = MRC (MRP = MP times MR); a monopsonist pays the wage read from labor supply. Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),

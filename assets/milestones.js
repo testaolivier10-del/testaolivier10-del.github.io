@@ -88,7 +88,8 @@
     ['apenv', 'AP® Environmental Science', 'environmental-science', 'Environmental science exam prep in framework order: lessons from scratch, free notes, simulators, and calculations graded with units.'],
     ['appsych', 'AP® Psychology', 'psychology', 'Psychology exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.'],
     ['apprecalc', 'AP® Precalculus', 'precalculus', 'Precalculus exam prep: lessons from scratch, free notes, a function lab, typed answers graded by value, and every free-response type.'],
-    ['apmacro', 'AP® Macroeconomics', 'macroeconomics', 'Macroeconomics exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.']
+    ['apmacro', 'AP® Macroeconomics', 'macroeconomics', 'Macroeconomics exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.'],
+    ['apmicro', 'AP® Microeconomics', 'microeconomics', 'Microeconomics exam prep: lessons from scratch, free notes, graphs drawn and shaded by hand, and every free-response question drilled part by part.']
   ];
   AP.forEach(function(a){
     COURSES[a[0]] = { name: a[1], home: '/' + a[2] + '/', dash: '/' + a[2] + '/dashboard.html', path: '/assets/path/' + a[0] + '.json', ap: true, blurb: a[3] };
