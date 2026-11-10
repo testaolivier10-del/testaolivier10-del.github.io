@@ -97,7 +97,7 @@ One branch, `claude/apmicro`, one PR at the end.
 | 2 | Trainers (section 6) | |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | **built 2026-11-09** (section 5c, decision 11): two forms in the May 2027 format (60 standalone five-option MCQs in course order, U1 8, U2 14, U3 14, U4 11, U5 7, U6 6; 50 bank questions each with a fifth option in `data/exams/fifth.json` plus 10 exam-only; FRQs long, short, short on different units); 20 exam-only items (numbers in `EXAM_NUMBERS`, graphs in `EXAM_GRAPHS`, payoff matrices in `EXAM_MATRICES`); 64 "Make it specific" prompts (10 per unit, 4 in graph skills, every skill, a builder on each, numbers in `JUSTIFY_NUMBERS`); formula page 29 rows, 11 flagged, 17 graphs (7 flagged) and the payoff matrix; unit tests and cram kit tested on the real forms; review `docs/apmicro-reviews/phase3.md`; open points under `phase3` in needs-author |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
-| Launch | Publish, generators (paths included), continuity pass, "fifteen courses" wording (count `assets/courses.js` at merge), full CI with browser checks, PR, launch steps | |
+| Launch | Publish, generators (paths included), continuity pass, "fourteen courses" wording (the live count in `assets/courses.js`), full CI with browser checks, PR, launch steps | **published and live 2026-11-10** (decision 12; log `docs/apmicro-reviews/launch.md`); Premium not on sale until the owner checklist (section 9) |
 
 ### 5a. Authors and builders (Phase 1 and 2)
 
@@ -245,7 +245,32 @@ page (the AI grader hook only when its eval passes).
    add a fifth per question; exam-only items where Units 3 to 6 run short of standalone questions and to put graph
    reads and a payoff matrix in each form; payoff-matrix reads checked by `ApMicroMatrix` (`EXAM_MATRICES`) as graph
    reads are by the engine.
+12. (2026-11-10, launch) **Published and live, Premium not on sale.** main had not moved since the fork (nothing to
+   merge). All seven chapters in `microeconomics/data/published.json` (40 topics, 726 bank questions), `status:
+   'live'`, every generator rerun, "fourteen courses" and "eleven AP® Exams" wording, `sources.html` section,
+   changelog entry, `robots.txt`, `sw.js` v119, the social card rendered, eight trainer covers kept. Review points
+   closed first: graph words sized up under 320 px (`data-fit`), measured label and mark widths in `mic-graph.js`,
+   faded curves unlabeled on the cost lab's phone stage (`oldLabels: false`), payoff matrix `unitLabel` with a content
+   rule, tool names as the covers, natural wording restored, 5.1 labor graphs read S = W (`mfc: false`), ten author
+   figures relabeled. Identity kept; the cover's profit box filled solid so it reads apart from Calculus AB's.
+   `apmicro` in the teacher class `ORDER` and the FRQ grader's `FRQ_COURSES` (still shipped off). Course shell budget
+   119 KB. `onSale: false` stays until the owner checklist below.
 
 ## 9. Open items for the owner
 
-Filled in at launch.
+- Confirm the identity (decision 12: raspberry accent `#7E1A5E`, the cost-curve cover with the filled profit box and
+  its icon, headline "every curve, every area.", ranks from Margin Thinker; needs-author `identity`), the free tier
+  (decision 6) and the three free trainers (section 6), now live.
+- The rest is in `docs/apmicro-needs-author.md` (teacher questions, `ced-text`, `mcq-options`, `launch`).
+
+**Launch checklist (owner), to put AP® Microeconomics Premium on sale (as Macro's):**
+- [ ] Apply `scripts/sql/migrations/2026-11i-apmicro.sql` in Supabase (adds `apmicro` to the three course checks, the
+      Premium functions, the teacher class checks and `free_usage_course_ok`; check first that the live function
+      bodies match the migrations before it), then grant owner access.
+- [ ] Create the Polar product "AP® Microeconomics Premium (through June 30, 2027)", one-time, $25 (the AP® price),
+      with the Founding member discount (it has no product list, so it covers every product).
+- [ ] Add `"micro-2027": "<product id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker levlprep-ask settings
+      (`keep_vars = true` keeps it on the merge deploy).
+- [ ] Remove `onSale: false` from `COURSES.apmicro` in `assets/premium.js` and bump `sw.js`.
+- [ ] Merge the PR (the lead opens it).
+- [ ] Optional: an AP® Microeconomics teacher reviews the course (the "not yet reviewed" note stays until then).

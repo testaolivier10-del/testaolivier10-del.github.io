@@ -87,6 +87,13 @@ externality's social curve sits `gap` steps from where its private curve starts 
 (MC shifted) lifts AVC and ATC with it and draws ATC as shifted; a lump-sum cost (ATC shifted) moves ATC and AFC. On
 `pc`, a price below minimum AVC puts the firm at q = 0 (shutdown). `start` allows -3 to 3 steps.
 
+Launch additions: `labor` takes `mfc: false` before MFC is taught (5.1: the firm's wage line reads S = W); state
+`oldLabels: false` leaves faded curves unlabeled (the cost lab on a phone) and `curveN: ''` drops the live number; a
+faded curve keeps only the first name of a long label (S1 beside S = MPC = MSC2) unless `showLabel` names it. Label
+boxes use measured widths (10.5 px a character at 13 px, 7 a subscript; marks 8.2 and 8.8 or 5.8 a subscript letter).
+On a page, a graph drawn under 320 px wide gets `data-fit` xs or xxs from `mic-core.js` and larger words from
+`mic.css`; a trainer's stage is left alone.
+
 ### Item format (additions to Macro's)
 
 ```
@@ -147,6 +154,9 @@ are in the file header. Player 0 picks the row and is paid first in each cell, a
   Nash, "no Nash equilibrium" when there is one, the payoffs summed for a best response.
 - `html(spec)` writes a captioned table with scoped headers; buttons per cell when the student taps Nash cells,
   two selects for the dominant strategies, a "No cell is a Nash equilibrium" box.
+- `unitLabel` (launch): the caption's unit in words when the payoffs are counted in larger units ("thousands of
+  dollars", "thousands of new subscribers"). The content check fails a matrix whose text names hundreds, thousands
+  or millions of something without a matching `unitLabel` (`matrixUnitProblems`).
 
 ## Content formats
 

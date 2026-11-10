@@ -519,7 +519,7 @@ table.mic-data td{font-variant-numeric:tabular-nums;}
 .mic-gr-plabel.is-old{fill:var(--muted,#777);font-weight:700;}
 .mic-gr-arrow{fill:none;stroke:var(--cink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .mic-gr-mark{fill:var(--cink);font-weight:800;font-size:11px;}
-/* Narrow graphs (data-fit, set by mic-core.js from the drawn width, under 306 px): bigger words, so none is under about 10 px. */
+/* Narrow graphs (data-fit, set by mic-core.js from the drawn width, under 320 px): bigger words, so none is under about 10 px. */
 .mic-graph-svg[data-fit=xs]{font-size:13.5px;}
 .mic-graph-svg[data-fit=xs] .mic-gr-clabel{font-size:14px;}
 .mic-graph-svg[data-fit=xs] .mic-gr-mark,.mic-graph-svg[data-fit=xs] .mic-gr-cletter,.mic-graph-svg[data-fit=xs] .mic-gr-ptitle,.mic-graph-svg[data-fit=xs] .mic-gr-clabel.is-small{font-size:13px;}

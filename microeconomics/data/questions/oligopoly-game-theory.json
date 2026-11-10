@@ -50,12 +50,12 @@
    "title": "Two cement firms and a quota",
    "invented": true,
    "table": {
-    "caption": "Kiln Rock and Grey Ridge (invented) are the only cement makers in a region. Weekly profit, in thousands of dollars, if each keeps to a shared output quota or produces more (invented data for practice)",
+    "caption": "Kiln Rock and Gray Ridge (invented) are the only cement makers in a region. Weekly profit, in thousands of dollars, if each keeps to a shared output quota or produces more (invented data for practice)",
     "cols": [
      "Kiln Rock's choice",
-     "Grey Ridge's choice",
+     "Gray Ridge's choice",
      "Kiln Rock's profit",
-     "Grey Ridge's profit"
+     "Gray Ridge's profit"
     ],
     "rows": [
      [
@@ -354,9 +354,9 @@
    "type": "numeric",
    "practice": "1.C",
    "stimulus": "oligopoly-game-theory-s2",
-   "q": "Use the table. If Grey Ridge keeps the quota, how much more profit does Kiln Rock earn by producing more, in thousands of dollars?",
+   "q": "Use the table. If Gray Ridge keeps the quota, how much more profit does Kiln Rock earn by producing more, in thousands of dollars?",
    "why": {
-    "correct": "Holding Grey Ridge at \"keep quota\", Kiln Rock earns 70 by producing more and 50 by keeping the quota: $70 - 50 = 20$ thousand dollars more."
+    "correct": "Holding Gray Ridge at \"keep quota\", Kiln Rock earns 70 by producing more and 50 by keeping the quota: $70 - 50 = 20$ thousand dollars more."
    },
    "numeric": {
     "from": {
@@ -375,7 +375,7 @@
         30
        ]
       },
-      "why": "That compares Kiln Rock's 70 with Grey Ridge's 30. Compare Kiln Rock's own two payoffs with Grey Ridge's choice held fixed."
+      "why": "That compares Kiln Rock's 70 with Gray Ridge's 30. Compare Kiln Rock's own two payoffs with Gray Ridge's choice held fixed."
      },
      {
       "value": 70,
@@ -396,16 +396,16 @@
    "q": "Use the table. What is the Nash equilibrium?",
    "options": [
     "Both keep the quota",
-    "Kiln Rock produces more and Grey Ridge keeps the quota",
+    "Kiln Rock produces more and Gray Ridge keeps the quota",
     "Both produce more",
     "There is no Nash equilibrium in this table"
    ],
    "correct": 2,
    "why": {
-    "correct": "Producing more is dominant for Kiln Rock (70 > 50 if Grey Ridge keeps the quota, 40 > 30 if it produces more) and, by the same numbers, for Grey Ridge. So both produce more and earn 40 each, and neither gains by switching alone.",
+    "correct": "Producing more is dominant for Kiln Rock (70 > 50 if Gray Ridge keeps the quota, 40 > 30 if it produces more) and, by the same numbers, for Gray Ridge. So both produce more and earn 40 each, and neither gains by switching alone.",
     "options": [
      "That gives the most joint profit, but each firm gains by switching alone.",
-     "Grey Ridge would switch: 40 from producing more beats 30.",
+     "Gray Ridge would switch: 40 from producing more beats 30.",
      "Right: producing more is each firm's dominant strategy.",
      "Both producing more is stable: neither firm gains by switching alone."
     ]

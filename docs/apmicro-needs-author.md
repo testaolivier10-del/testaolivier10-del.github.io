@@ -51,7 +51,7 @@ No topic's skill tags were copied: every topic's `skills` in the map is our read
 
 The 2026 student count, mean, Chief Reader Report and scoring statistics were not posted.
 
-## identity: accent, cover, icon, headline and ranks (provisional, owner to confirm at launch, 2026-11-09)
+## identity: accent, cover, icon, headline and ranks (kept at launch, owner to confirm, 2026-11-10)
 
 Provisional: raspberry accent hue 319° (`#7E1A5E` on `#F8E6F1`, dark `#F3B9DD`; between AP® Statistics at 298° and
 AP® Calculus AB at 342°, at least 15° from every course, AA contrast for text on white and on its tint), cover
@@ -61,11 +61,14 @@ area.", ranks from "Margin Thinker". One place: `IDENTITY` in `scripts/lib/apmic
 the course CSS twins. AP® Human Geography was being built at the same time; if it takes a hue in the same gap,
 one of the two moves before merge (the identity test in `scripts/test/apmicro-build.test.mjs` checks the gap).
 
+Launch (2026-11-10, `docs/apmicro-reviews/launch.md` section 4): kept, except the cover's profit box is now filled
+solid, because the pale box, pink dashed line and dot read close to Calculus AB's curve and tangent on the hub.
+
 ## free-tier: graph skills, Unit 1 and Topics 2.1 to 2.4 (open, 2026-11-09)
 
 Spec decision 6. Free trainers `graph-studio`, `elasticity-lab`, `game-lab` (spec section 6). Owner to confirm.
 
-## launch-registration: what is deferred to launch (open, 2026-11-09)
+## launch-registration: what is deferred to launch (done 2026-11-10 except the owner checklist)
 
 Registered hidden in Phase 0. At launch: apply `scripts/sql/migrations/2026-11i-apmicro.sql` (written, not
 applied); set `status: 'live'` in `assets/courses.js` and run `node scripts/build-courses.mjs`; add `apmicro` to
@@ -74,9 +77,14 @@ grader's `FRQ_COURSES` only after a calibration and an eval (`docs/frq-grader.md
 `sources.html`; create the Polar product `micro-2027` and the Worker `POLAR_PRODUCTS` entry, then `onSale: true` in
 `assets/premium.js`; fill the hub and 404 card slots (`hub-mic`, `nf-mic`); update the "fifteen courses" wording.
 
-## frq-grader: the AI FRQ grader is not wired for this course (launch, 2026-11-09)
+Done at launch: live, `ORDER`, `FRQ_COURSES` (with a calibration and eval cases, the eval not rerun), sources, the
+cards, "fourteen courses" (fourteen live courses in `assets/courses.js`). Left for the owner checklist (spec section
+9): the migration, the Polar product, the Worker entry and removing `onSale: false`.
 
-The hook is in `pages/frq.js` as in every course; `FRQ_COURSES` does not list `apmicro`. Graph and matrix parts are
+## frq-grader: wired at launch, grader still off (2026-11-10)
+
+`apmicro` is in `FRQ_COURSES` with conventions, a calibration example and eval cases 41-44 (`docs/frq-grader.md`);
+the eval has not been rerun and the grader is shipped off for every course. Graph and matrix parts are
 checked by code; written parts need their own calibration before the grader is turned on.
 
 ## unit-5-6-scope: three teaching choices in Units 5 and 6 (author E, open, 2026-11-09)
@@ -119,11 +127,8 @@ reviewer.)
 ## phase3: points left by the Phase 3 build (open, 2026-11-09)
 
 From `docs/apmicro-reviews/phase3.md`.
-1. **Engine (integrator)**: at 360 px a graph stimulus scales its SVG text down to about 8 px (area letters, P and
-   Q marks), for bank and exam graphs alike; the payoff matrix's row-header column is narrow enough to break a
-   9-letter strategy name inside the word. The exam items use short strategy names (Ads, No ads; Early, Late) to
-   avoid the second. A minimum rendered text size on phones, or a scrollable wider graph, needs a `mic-graph.js` or
-   `mic.css` change.
+1. **Engine (integrator)**: done at launch: a graph drawn under 320 px wide gets larger words (`data-fit`, `mic-core.js`
+   and `mic.css`), and matrix row headers no longer break inside a word (`docs/apmicro-reviews/launch.md` 2c).
 2. **Shared toast**: the "Save my progress" toast on the results screen reads "30/60 &mdash; and 26 missed ..." with
    an em dash (shared site file, not the course).
 3. **Stimulus cap**: `EXAM_STIMULI` 8-22 a form is our estimate, copied from Macro. With it, Units 1 and 2 use
@@ -136,3 +141,13 @@ From `docs/apmicro-reviews/phase3.md`.
    unescaped, so they rendered as one math span and overflowed the Unit 4 test page at 360 px; now `\$`. The
    content check does not catch an unescaped dollar pair that parses as TeX; a rule for "letters run together in a
    math span" would.
+
+## launch: points left by the launch (open, 2026-11-10)
+
+From `docs/apmicro-reviews/launch.md`.
+1. **Tool overlap scan at 360** (a box test, not ink): E1 and E2 when the long run returns to the same point, P1 and
+   P2, W1 and W2 axis marks 20 units apart whose font boxes still touch, D1 and MSB in the externality fix drill, ATC
+   and AVC end labels in the cost lab's Explore with a large fixed cost; looked at, readable. The factor lab's
+   monopsony drill graph sits under the stage's top edge on a phone, so SL reads as clipped there.
+2. **Shared, for the lead**: Macro's `mac-graph.js` has the same label width estimate (9 px a character) and no
+   phone sizing; not changed (Macro stays byte-identical).

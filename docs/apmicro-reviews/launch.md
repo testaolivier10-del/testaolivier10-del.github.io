@@ -26,7 +26,7 @@ checklist.
 - (b) Graph Studio at 360: axis marks are spread with measured widths (8.2 px a character, 8.8 an uppercase subscript
   letter, 5.8 another, 4 px apart across, 20 down the axis), so QSUB and QE, QD1 and QD2 no longer touch; the horizontal axis title sits 4 px lower so subscripted
   marks under it (qF, Q2 on the labor graphs) clear it.
-- (c) Graph stimuli on a phone: a graph drawn under 306 px wide gets `data-fit` xs or xxs (`mic-core.js`, a
+- (c) Graph stimuli on a phone: a graph drawn under 320 px wide gets `data-fit` xs or xxs (`mic-core.js`, a
   ResizeObserver; trainer stages are left alone) and `mic.css` sets larger words, so cell letters and marks render at
   about 10 px or more (were 8.7 at 286 px). Payoff matrix row headers no longer break inside a word
   (`overflow-wrap: normal`; the wrapper scrolls if a long name needs it).
