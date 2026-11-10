@@ -628,6 +628,32 @@
     },
     "model": "The country could pass a law capping SO2 and NOx from power plants and vehicles, which reduces acid deposition by cutting the gases that form sulfuric and nitric acid in the air, so less acid falls in rain."
    }
+  },
+  {
+   "id": "env-acid-rain-16",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which human activity is a major source of the nitrogen oxides that form acid deposition?",
+   "options": [
+    "Spreading limestone on farm fields",
+    "Paving roads and parking lots",
+    "Burning fuel in vehicle engines",
+    "Burying food waste in landfills"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Nitrogen oxides (NOx) form when fuel burns at high temperature, as in vehicle engines and power plants. In the air they form nitric acid.",
+    "options": [
+     "Limestone neutralizes acid. It is a treatment, not a source of NOx.",
+     "Pavement changes how rain runs off. It does not release nitrogen oxides.",
+     "Right: vehicles and power plants are the main sources of NOx.",
+     "Landfills release methane, which is not one of the gases that form acid rain."
+    ]
+   }
   }
  ]
 }

@@ -584,6 +584,32 @@
      }
     }
    }
+  },
+  {
+   "id": "mac-deficits-debt-16",
+   "unit": "unit-5",
+   "topic": "deficits-debt",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Country X and Country Y each have a national debt of 500 billion dollars. Country X's GDP is 2,000 billion dollars a year and Country Y's is 500 billion dollars. Which statement compares the two debts best?",
+   "options": [
+    "The two debts are equally heavy, since the dollar amounts match",
+    "Country Y's debt is easier to carry, since its economy is smaller",
+    "Country X's debt is lighter: 25% of its GDP against 100%",
+    "Neither country has a debt, since neither one reports a deficit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Economists compare a debt with the size of the economy, debt divided by GDP, because a larger economy can carry a larger debt: $\\frac{500}{2{,}000} = 25\\%$ for Country X and $\\frac{500}{500} = 100\\%$ for Country Y.",
+    "options": [
+     "The dollar amounts match, but Country X has four times the output and income to carry its debt.",
+     "A smaller economy has less income to tax, so the same debt is harder to carry.",
+     "Right: the same debt is a quarter of Country X's yearly output and all of Country Y's.",
+     "A debt is what is owed from past deficits. It exists whether or not there is a deficit this year."
+    ]
+   }
   }
  ]
 }

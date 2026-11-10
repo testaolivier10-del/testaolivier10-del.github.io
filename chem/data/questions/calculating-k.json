@@ -473,6 +473,37 @@
      "A cannot stay at its starting value while B forms; B is made from A."
     ]
    }
+  },
+  {
+   "id": "chem-calculating-k-16",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "A flask is filled with 1.00 M HI and sealed: 2 HI(g) ⇌ H<sub>2</sub>(g) + I<sub>2</sub>(g). At equilibrium, 20.0% of the HI has decomposed. Calculate K<sub>c</sub>.",
+   "numeric": {
+    "answer": 0.0156,
+    "tol": 0.0002,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0625,
+      "rel": 0.02,
+      "why": "Value: 0.200 M of HI reacts, but 2 HI make only 1 H₂ and 1 I₂, so each product is 0.100 M, not 0.200 M."
+     },
+     {
+      "value": 0.01,
+      "rel": 0.02,
+      "why": "Value: the bottom of K needs the equilibrium [HI], 0.80 M, not the initial 1.00 M."
+     }
+    ]
+   },
+   "why": {
+    "correct": "HI that reacts: 0.200 × 1.00 M = 0.200 M, so [HI] = 0.800 M. Two HI give one H<sub>2</sub> and one I<sub>2</sub>: [H<sub>2</sub>] = [I<sub>2</sub>] = 0.100 M. K<sub>c</sub> = (0.100)(0.100) / (0.800)² = 0.0100 / 0.640 = 0.0156."
+   }
   }
  ]
 }

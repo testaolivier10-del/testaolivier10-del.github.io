@@ -269,6 +269,199 @@
      "$(x + 1)^2 = x^2 + 2x + 1$, so the leftover is $2$, not $3$."
     ]
    }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-10",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\frac{x^2 - 4}{x} \\cdot \\frac{3x}{x + 2}$ for $x \\ne 0$ and $x \\ne -2$.",
+   "type": "single",
+   "options": [
+    "$3(x - 2)$",
+    "$3(x + 2)$",
+    "$\\frac{3(x - 2)}{x}$",
+    "$3x - 2$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Factor: $\\frac{(x - 2)(x + 2)}{x} \\cdot \\frac{3x}{x + 2}$. Cancel the common factors $x + 2$ and $x$: what is left is $3(x - 2)$.",
+    "options": [
+     "$x + 2$ and $x$ cancel, leaving $3$ and $x - 2$.",
+     "The factor $x + 2$ is the one that cancels with the denominator. $x - 2$ stays.",
+     "The $x$ in the first denominator cancels with the $x$ in $3x$.",
+     "The $3$ multiplies the whole factor $(x - 2)$: $3x - 6$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-11",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write $\\frac{3}{x} - \\frac{2}{x + 1}$ as a single fraction.",
+   "type": "expr",
+   "expr": {
+    "answer": "(x + 3)/(x(x + 1))",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     4
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "fraction"
+    },
+    "mistakes": [
+     {
+      "expr": "1/(x(x + 1))",
+      "why": "Multiply each numerator by the factor its denominator lacks before subtracting: $3(x + 1) - 2x$, not $3 - 2$."
+     },
+     {
+      "expr": "(5x + 3)/(x(x + 1))",
+      "why": "The second fraction is subtracted: $3(x + 1) - 2x = x + 3$, not $3x + 3 + 2x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Common denominator $x(x + 1)$: $\\frac{3(x + 1) - 2x}{x(x + 1)} = \\frac{3x + 3 - 2x}{x(x + 1)} = \\frac{x + 3}{x(x + 1)}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-12",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "For which input $x$ does $\\frac{x - 5}{2x + 6}$ equal $0$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": -3,
+      "why": "At $x = -3$ the denominator is $0$, so the expression is undefined there. It equals $0$ where the numerator is $0$."
+     },
+     {
+      "value": -5,
+      "why": "$x - 5 = 0$ gives $x = 5$. At $x = -5$ the numerator is $-10$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A fraction is $0$ when its numerator is $0$ and its denominator is not. $x - 5 = 0$ gives $x = 5$, and the denominator there is $16$."
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-13",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Simplify $\\frac{2x^2 - 6x}{4x}$ for $x \\ne 0$.",
+   "type": "single",
+   "options": [
+    "$\\frac{x - 6}{2}$",
+    "$\\frac{x^2 - 3}{2}$",
+    "$\\frac{x - 3}{2}$",
+    "$2x - 6$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Factor the numerator: $2x(x - 3)$. Then $\\frac{2x(x - 3)}{4x}$: cancel the common factor $2x$ to get $\\frac{x - 3}{2}$.",
+    "options": [
+     "The factor $2x$ comes out of both terms: $-6x = 2x \\cdot (-3)$, so the second term becomes $-3$.",
+     "Dividing by $x$ lowers the power in both terms: $2x^2 - 6x = 2x(x - 3)$.",
+     "$\\frac{2x(x - 3)}{4x} = \\frac{x - 3}{2}$.",
+     "The $4$ in the denominator does not vanish: $\\frac{2x}{4x} = \\frac{1}{2}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-14",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Simplify $\\frac{3 - x}{x^2 - 9}$ for $x \\ne 3$ and $x \\ne -3$.",
+   "type": "single",
+   "options": [
+    "$\\frac{1}{x + 3}$",
+    "$-\\frac{1}{x + 3}$",
+    "$\\frac{1}{x - 3}$",
+    "$-\\frac{1}{x - 3}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$3 - x$ is the opposite of $x - 3$: $3 - x = -(x - 3)$. So $\\frac{-(x - 3)}{(x - 3)(x + 3)} = -\\frac{1}{x + 3}$.",
+    "options": [
+     "$3 - x$ and $x - 3$ are opposites, so canceling them leaves $-1$, not $1$.",
+     "$\\frac{-(x - 3)}{(x - 3)(x + 3)}$: cancel $x - 3$.",
+     "The factor $x - 3$ is the one that cancels; $x + 3$ remains, with a negative sign.",
+     "The negative sign is right, but the factor left in the denominator is $x + 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-15",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which is the simplest common denominator for $\\frac{1}{x^2 - 1}$ and $\\frac{1}{x^2 + x}$?",
+   "type": "single",
+   "options": [
+    "$(x^2 - 1)(x^2 + x)$",
+    "$x(x + 1)$",
+    "$x^2 - 1$",
+    "$x(x - 1)(x + 1)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Factor both: $x^2 - 1 = (x - 1)(x + 1)$ and $x^2 + x = x(x + 1)$. The common denominator is the product of the different factors, each used once: $x(x - 1)(x + 1)$.",
+    "options": [
+     "This works but repeats the shared factor $x + 1$. Use each different factor once.",
+     "$x(x + 1)$ lacks the factor $x - 1$ from the first denominator.",
+     "$x^2 - 1$ lacks the factor $x$ from the second denominator.",
+     "The different factors are $x$, $x - 1$ and $x + 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-rational-expressions-16",
+   "unit": "skills-algebra",
+   "topic": "alg-rational-expressions",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which inputs must be left out of $\\frac{x^2 - 1}{x + 3} \\div \\frac{x - 1}{x^2 - 9}$?",
+   "type": "single",
+   "options": [
+    "$x = -3$",
+    "$x = -3$ and $x = 3$",
+    "$x = -3$, $x = 3$ and $x = 1$",
+    "$x = 1$ and $x = -1$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both denominators must be nonzero: $x + 3 \\ne 0$ and $x^2 - 9 \\ne 0$ leave out $-3$ and $3$. The second fraction is also divided by, so it cannot be $0$: $x - 1 \\ne 0$ leaves out $1$.",
+    "options": [
+     "$x^2 - 9$ is also $0$ at $x = 3$, and dividing by a fraction that is $0$ at $x = 1$ is not allowed.",
+     "The fraction you divide by is $0$ at $x = 1$, and dividing by $0$ is undefined.",
+     "Zeros of both denominators, and the zero of the numerator of the fraction you divide by.",
+     "$x = -1$ is fine: it makes the first numerator $0$, so the whole expression is $0$ there."
+    ]
+   }
   }
  ]
 }

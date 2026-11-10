@@ -464,6 +464,32 @@
      "μ_s is a property of the surfaces; it does not vanish, it just stops applying while they slide."
     ]
    }
+  },
+  {
+   "id": "phys-friction-16",
+   "unit": "unit-2",
+   "topic": "friction",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A light sled and a heavy sled slide onto the same level patch of rough snow at the same speed. The coefficient of kinetic friction is the same for both. Which sled slides farther before stopping?",
+   "options": [
+    "The heavy sled, because it has more inertia to keep it going",
+    "The light sled, because the friction force on it is smaller",
+    "The heavy sled, because friction matters less for a heavy object",
+    "They slide the same distance, because a = μ_k g for both"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "On level ground F_N = mg, so kinetic friction is μ_k mg and the acceleration is a = μ_k mg / m = μ_k g. The mass cancels. With the same starting speed and the same acceleration, the sleds stop in the same distance.",
+    "options": [
+     "The heavy sled has more inertia, but the friction force on it is larger by the same factor.",
+     "The friction force on the light sled is smaller, but so is its mass, and the acceleration comes out the same.",
+     "Friction on the heavy sled is larger in proportion to its mass, so its effect on the motion is the same.",
+     "Right: the acceleration does not depend on the mass, so neither does the stopping distance."
+    ]
+   }
   }
  ]
 }

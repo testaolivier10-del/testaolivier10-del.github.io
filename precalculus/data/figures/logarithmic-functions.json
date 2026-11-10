@@ -7,5 +7,25 @@
   "ext": "svg",
   "w": 380,
   "h": 300
+ },
+ "logarithmic-functions-shape": {
+  "file": "figures/logarithmic-functions-shape.svg",
+  "ext": "svg",
+  "w": 390,
+  "h": 290,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of y = log base 2 of x. It exists only to the right of the y-axis, drops without bound near the vertical asymptote x = 0, crosses the x-axis at (1, 0) and rises more and more slowly through (2, 1), (4, 2) and (8, 3), bending downward the whole way."
+ },
+ "logarithmic-functions-moved": {
+  "file": "figures/logarithmic-functions-moved.svg",
+  "ext": "svg",
+  "w": 390,
+  "h": 290,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graphs of y = log base 2 of x, in blue with its dashed asymptote x = 0, and h(x) = log base 2 of (x + 4) minus 1, in green with its dashed asymptote x = -4. The graph of h is the blue graph moved 4 units left and 1 unit down; it crosses the x-axis at (-2, 0)."
  }
 }

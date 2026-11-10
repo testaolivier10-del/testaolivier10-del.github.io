@@ -427,6 +427,32 @@
      "Forgets the coefficient 2 on water: each CH₄ gives two H₂O, so hydrogen atoms go missing."
     ]
    }
+  },
+  {
+   "id": "chem-reaction-representations-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Solutions react by AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq). Which particle diagram of the mixture after the reaction is correct?",
+   "options": [
+    "Ag⁺ and Cl⁻ packed together in a solid cluster; Na⁺ and NO₃⁻ ions spread apart in the water",
+    "AgCl units and NaNO₃ units each drifting through the water as bonded pairs",
+    "Ag⁺, Cl⁻, Na⁺ and NO₃⁻ ions all spread apart in the water",
+    "Na⁺ and NO₃⁻ packed together in a solid cluster; Ag⁺ and Cl⁻ ions spread apart in the water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The symbol (s) means AgCl is a solid: its ions are packed together in a cluster. The symbol (aq) means NaNO₃ is dissolved, and a dissolved ionic compound is drawn as separate ions surrounded by water.",
+    "options": [
+     "Right: the state symbols tell you which ions to draw together and which apart.",
+     "An (aq) ionic compound is separated into ions, not drawn as bonded pairs, and (s) means a packed solid.",
+     "That shows no reaction. The (s) on AgCl means its ions have come together as a solid.",
+     "The state symbols are swapped: AgCl is the solid and NaNO₃ stays dissolved."
+    ]
+   }
   }
  ]
 }

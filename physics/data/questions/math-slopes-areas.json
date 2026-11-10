@@ -349,6 +349,170 @@
    "why": {
     "correct": "The slope of d against t² is ½a. So a = 2 × slope = 2 × 0.36 m/s² = 0.72 m/s²."
    }
+  },
+  {
+   "id": "phys-math-slopes-areas-11",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A straight line on a graph of height (m) against time (s) passes through (2.0 s, 14 m) and (6.0 s, 4.0 m). What is its slope, in m/s? Include the sign.",
+   "numeric": {
+    "answer": -2.5,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "Sign: the line falls to the right, so the rise is 4.0 m − 14 m = −10 m and the slope is negative."
+     },
+     {
+      "value": -0.4,
+      "tol": 0.01,
+      "why": "Value: you divided run by rise. Slope is rise ÷ run: Δy ÷ Δx."
+     }
+    ]
+   },
+   "why": {
+    "correct": "rise = 4.0 m − 14 m = −10 m; run = 6.0 s − 2.0 s = 4.0 s. slope = −10 m ÷ 4.0 s = −2.5 m/s. The height drops 2.5 m every second."
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "On a graph of distance (m) against time (s), the line is horizontal from t = 3 s to t = 8 s. What does this part of the graph tell you?",
+   "options": [
+    "The object is not moving: its distance does not change",
+    "The object moves at a steady speed of 5 m/s",
+    "The object covers a distance equal to the area under the line",
+    "The object is speeding up at a steady rate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A horizontal line has zero slope. On a distance against time graph the slope is in m/s, a speed, so a slope of zero means a speed of zero.",
+    "options": [
+     "Right: the rise is zero over the whole 5 s, so the rate of change of distance is zero.",
+     "5 is the width of the interval in seconds, not a slope. A steady nonzero speed would give a tilted straight line.",
+     "Area gives a distance on a speed against time graph. Here the vertical axis is already distance.",
+     "Speeding up would make the line curve upward, getting steeper."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-13",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "On a graph of speed against time, the speed rises steadily from 2.0 m/s at t = 0 to 8.0 m/s at t = 3.0 s. What is the area under the graph over these 3.0 s, in meters?",
+   "numeric": {
+    "answer": 15,
+    "tol": 1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "Value: that is a rectangle 8.0 m/s tall. The speed starts at 2.0 m/s, so the top of the region is slanted."
+     },
+     {
+      "value": 9,
+      "tol": 0.5,
+      "why": "Value: that is only the triangle. Add the rectangle beneath it, 2.0 m/s × 3.0 s = 6.0 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Split the region into a rectangle and a triangle. Rectangle: 2.0 m/s × 3.0 s = 6.0 m. Triangle: ½ × 3.0 s × (8.0 − 2.0) m/s = 9.0 m. Total: 15 m."
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A graph of distance against time is a curve that gets steeper. How do you find its slope at t = 3 s?",
+   "options": [
+    "Divide the distance at t = 3 s by 3 s",
+    "Use the first and the last points of the curve",
+    "Draw the tangent line at t = 3 s and find its slope",
+    "A curve has no slope, so the question cannot be answered"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A curve has a different steepness at each point. Its slope at one point is the slope of the tangent line, the straight line that just touches the curve there. Pick two points far apart on that line and divide rise by run.",
+    "options": [
+     "That is the slope of a line from the origin to the point, which matches the curve's steepness only if the graph is a straight line through the origin.",
+     "Those two points give an average over the whole graph, not the steepness at t = 3 s.",
+     "Right: the tangent line has the same steepness as the curve at that one point.",
+     "A curve has a slope at every point. It simply changes from point to point."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which axis label would earn the point on the exam?",
+   "options": [
+    "Time",
+    "seconds",
+    "t (time)",
+    "Time (s)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An axis label names the quantity and its unit. \"Time (s)\" has both.",
+    "options": [
+     "The quantity is named, but the unit is missing.",
+     "The unit is given, but not the quantity it measures.",
+     "The symbol and the quantity are there, but the unit is missing.",
+     "Right: the quantity and its unit are both there."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-slopes-areas-16",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-slopes-areas",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A graph shows the rate at which water flows into a tank (L/s) against time (s). The rate is +2.0 L/s for the first 5.0 s, then −1.0 L/s (water flowing out) for the next 4.0 s. What is the net change in the volume of water in the tank?",
+   "options": [
+    "+14 L",
+    "+6.0 L",
+    "+10. L",
+    "−4.0 L"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Area has the unit (L/s)(s) = L, a volume. First region: 2.0 L/s × 5.0 s = +10. L. Second region lies below the axis, so it counts as negative: −1.0 L/s × 4.0 s = −4.0 L. Net: +6.0 L.",
+    "options": [
+     "The area below the horizontal axis counts as negative, so it is subtracted, not added.",
+     "Right: 10. L in and 4.0 L out leaves 6.0 L more than at the start.",
+     "That is only the first region. The second region removes 4.0 L.",
+     "That is only the second region. The first 5.0 s added 10. L."
+    ]
+   }
   }
  ]
 }

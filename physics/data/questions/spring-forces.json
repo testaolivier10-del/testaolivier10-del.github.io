@@ -467,6 +467,37 @@
    "why": {
     "correct": "At rest, kΔx = mg, so Δx = mg/k depends on the weight and the spring constant only."
    }
+  },
+  {
+   "id": "phys-spring-forces-16",
+   "unit": "unit-2",
+   "topic": "spring-forces",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An ideal spring has a relaxed length of 0.20 m and a spring constant of 50. N/m. It is stretched until its total length is 0.26 m. What is the size of the spring force, in newtons?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 13,
+      "tol": 0.5,
+      "why": "Value: you used the total length. Δx is the stretch from the relaxed length: 0.26 m − 0.20 m = 0.06 m."
+     },
+     {
+      "value": 10,
+      "tol": 0.5,
+      "why": "Value: you used the relaxed length. Δx is how far the spring is stretched: 0.06 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δx is the stretch, not the length: Δx = 0.26 m − 0.20 m = 0.06 m. F = kΔx = (50. N/m)(0.06 m) = 3.0 N."
+   }
   }
  ]
 }

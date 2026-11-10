@@ -586,6 +586,32 @@
    "why": {
     "correct": "Yearly growth rises from a small start, peaks at K/2, then falls to zero at K."
    }
+  },
+  {
+   "id": "env-sustainability-16",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which use of a resource cannot be kept up over the long term, however carefully it is managed?",
+   "options": [
+    "Cutting timber more slowly than the forest regrows",
+    "Catching fewer fish than the stock adds each year",
+    "Burning coal from a mine to make electricity",
+    "Pumping well water more slowly than rain refills it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Coal forms over millions of years, so on a human time scale it is not replaced at all. Every ton burned leaves less. The other three take from a resource more slowly than nature replaces it.",
+    "options": [
+     "A forest cut more slowly than it grows can supply timber without end.",
+     "A catch below the yearly growth leaves the stock able to replace it.",
+     "Right: coal is used up, not replaced.",
+     "Groundwater pumped more slowly than it is recharged is a sustainable use."
+    ]
+   }
   }
  ]
 }

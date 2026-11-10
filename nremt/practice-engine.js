@@ -243,6 +243,35 @@ function loadExplanations(){
   return explanationsPromise;
 }
 
+// One short line per option ("why this one is right", "why this one is not"), the same thing the AP courses and
+// A&P show under each choice once an answer is checked. assets/option-whys.json is { id: [line, ...] } in the
+// bank's STORED option order for every single and select-all item; order, drag-and-drop and table items have
+// none. Loaded like the explanations: started with the session, never awaited before a question is shown, and
+// if it never lands (or an id has no lines) every screen shows what it showed before the file existed.
+let OPTION_WHYS = null;
+let optionWhysPromise = null;
+function loadOptionWhys(){
+  if(optionWhysPromise) return optionWhysPromise;
+  optionWhysPromise = (async function(){
+    if(!QUESTIONS.length) return;
+    try{
+      const res = await fetch('assets/option-whys.json');
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      const map = await res.json();
+      if(map && typeof map === 'object' && !Array.isArray(map)) OPTION_WHYS = map;
+    }catch(e){ /* stays null: no per-option lines, everything else as before */ }
+  })();
+  return optionWhysPromise;
+}
+// The lines for one question in the order its options are SHOWN (the file is in stored order; OPTION_ORDERS maps
+// shown position -> stored index), as escaped HTML with the "Correct: " / "Not this: " label taken off, since
+// the option's own colour and mark already say which it is. null when there is nothing safe to show: not loaded,
+// not a choice item, no lines, a length that does not match, or a "Correct" label that is not on a keyed option.
+function optionWhys(q, qIdx){
+  return window.NremtQuestionIds.shownWhys(OPTION_WHYS, q, QID.idOf(qIdx), OPTION_ORDERS);
+}
+function optWhySpan(line){ return line ? '<span class="nr-opt-why">' + line + '</span>' : ''; }
+
 // The one place the pool size is shown as a live figure rather than prose, so
 // it can't drift from the file the way the marketing copy twice has.
 if(QUESTIONS.length){
@@ -1970,6 +1999,7 @@ function beginQuiz(withTimer, resumeState){
     served = new Set(resumeState.served || []);
   }
   loadExplanations();
+  loadOptionWhys();
   if(resumeState){
     mode = resumeState.mode;
     selectedDomain = resumeState.selectedDomain;
@@ -2294,6 +2324,14 @@ function showCheckedState(q, optsEl){
       frozen.style.cursor = 'default';
       el.replaceWith(frozen);
     });
+    paintOptionWhys(q, activeIndices[current], optsEl);
+    // The lines may still be on their way on a slow connection.
+    if(!OPTION_WHYS){
+      const at = current;
+      loadOptionWhys().then(() => {
+        if(current === at && checked[at] && QUESTIONS[activeIndices[at]] === q) paintOptionWhys(q, activeIndices[at], optsEl);
+      });
+    }
   }
   const fb = $id('qFeedback');
   fb.hidden = false;
@@ -2311,6 +2349,16 @@ function showCheckedState(q, optsEl){
       if(ex && q.explain && checked[current] && QUESTIONS[activeIndices[current]] === q) ex.innerHTML = q.explain;
     });
   }
+}
+
+// Under each frozen option, its line (same markup as the AP courses: a span inside the option).
+function paintOptionWhys(q, qIdx, optsEl){
+  const lines = optionWhys(q, qIdx);
+  if(!lines) return;
+  optsEl.querySelectorAll('[data-opt]').forEach(el => {
+    const line = lines[+el.getAttribute('data-opt')];
+    if(line && !el.querySelector('.nr-opt-why')) el.insertAdjacentHTML('beforeend', optWhySpan(line));
+  });
 }
 
 // Out of free questions mid-session (another tab used them, or a resumed
@@ -2726,8 +2774,13 @@ function endAnswerText(q, ans, key){
   if(q.type === 'multi') return Array.isArray(v) ? v.slice().sort((a, b) => a - b).map(i => q.options[i]).join(', ') : '';
   return (key ? formatCorrectAnswerText(q, LETTERS) : formatUserAnswerText(q, ans, LETTERS)) || '';
 }
-function endMiss(q, ans){
-  return { stem: q.q, you: endAnswerText(q, ans, false), ans: endAnswerText(q, ans, true), why: q.explain || '', youWhy: '', href: '' };
+// youWhy is the picked option's own line (LevlStudy.miss does the same from q.why.options[pick] in the AP courses).
+function endYouWhy(q, qIdx, ans){
+  const lines = typeof ans === 'number' && (!q.type || q.type === 'single') ? optionWhys(q, qIdx) : null;
+  return (lines && lines[ans]) || '';
+}
+function endMiss(q, ans, qIdx){
+  return { stem: q.q, you: endAnswerText(q, ans, false), ans: endAnswerText(q, ans, true), why: q.explain || '', youWhy: endYouWhy(q, qIdx, ans), href: '' };
 }
 function shareResult(r){
   if(!window.LevlLazy) return;
@@ -2747,7 +2800,7 @@ function renderEnd(o){
   const missed = [];
   activeIndices.forEach((qIdx, i) => {
     const q = QUESTIONS[qIdx];
-    if(isAnswered(q, answers[i]) && !isAnswerCorrect(q, answers[i])) missed.push({ q, qIdx, m: endMiss(q, answers[i]) });
+    if(isAnswered(q, answers[i]) && !isAnswerCorrect(q, answers[i])) missed.push({ q, qIdx, ans: answers[i], m: endMiss(q, answers[i], qIdx) });
   });
   const timed = mode === 'full' || mode === 'cat';
   let agg = {};
@@ -2795,11 +2848,17 @@ function renderEnd(o){
   const slot = host.querySelector('.nr-kept');
   if(slot && list) slot.appendChild(list);
   LevlStudy.wire(host, { retry: retryMisses, start: backToStart, print: printResult, share: () => shareResult(shareR) });
-  // The explanations file may land after the card is drawn; fill the misses' explanations when it does.
-  if(missed.some(x => !x.m.why)){
-    loadExplanations().then(() => {
+  // The explanations and the per-option lines may land after the card is drawn; fill the misses when they do.
+  if(missed.some(x => !x.m.why) || (missed.length && !OPTION_WHYS)){
+    Promise.all([loadExplanations(), loadOptionWhys()]).then(() => {
       const rows = host.querySelectorAll('.cx-mq .cx-mq-body');
-      missed.forEach((x, i) => { const q = QUESTIONS[x.qIdx]; if(!x.m.why && q.explain && rows[i]) rows[i].innerHTML = '<p>' + q.explain + '</p>'; });
+      missed.forEach((x, i) => {
+        const q = QUESTIONS[x.qIdx];
+        const yw = x.m.youWhy ? '' : endYouWhy(q, x.qIdx, x.ans);
+        if(!rows[i] || !q.explain || (x.m.why && !yw)) return;
+        const mine = x.m.youWhy || yw;
+        rows[i].innerHTML = (mine ? '<p><b>Your answer:</b> ' + mine + '</p>' : '') + '<p>' + q.explain + '</p>';
+      });
     });
   }
 }
@@ -2807,7 +2866,7 @@ function renderEnd(o){
 async function renderReview(filter){
   // The other one: every row in the results list carries the explanation for
   // the question above it.
-  await loadExplanations();
+  await Promise.all([loadExplanations(), loadOptionWhys()]);
   const reviewEl = $id('reviewList');
   let items = allReviewData;
   if(filter === 'incorrect') items = allReviewData.filter(d => !d.isCorrect && isAnswered(d.q, d.userAns));
@@ -2821,7 +2880,7 @@ async function renderReview(filter){
           <button type="button" class="r-flag-btn${flagged.has(qIdx) ? ' active' : ''}" data-qidx="${qIdx}">${flagIcon}${flagged.has(qIdx) ? 'Flagged' : 'Flag'}</button>
         </div>
         <div class="r-q">${q.q}</div>
-        ${(TEI.isTei(q) || q.type === 'order') ? reviewRows(q, userAns, isCorrect) : `
+        ${(TEI.isTei(q) || q.type === 'order') ? reviewRows(q, userAns, isCorrect) : optionWhys(q, qIdx) ? reviewOptions(q, userAns, letters, optionWhys(q, qIdx)) : `
         <div class="r-answer ${isCorrect ? 'correct' : 'incorrect'}">
           Your answer: ${formatUserAnswerText(q, userAns, letters) ?? 'Not answered'} ${isCorrect ? '✓' : '✗'}
         </div>
@@ -2842,6 +2901,20 @@ async function renderReview(filter){
   });
 }
 let currentReviewFilter = 'all';
+// A choice item in the answer list once its per-option lines are in: every option with its letter, a tag on the
+// one picked and on the key, and its line, laid out as the AP courses' exam results are (their -ex-opts list).
+function reviewOptions(q, userAns, letters, lines){
+  const key = [].concat(q.correct);
+  const picks = userAns === null || userAns === undefined ? [] : [].concat(userAns);
+  const tag = (text, kind) => `<span class="r-tag ${kind}">${text}</span>`;
+  return (picks.length ? '' : '<div class="r-answer incorrect">Your answer: Not answered ✗</div>') +
+    '<ul class="r-opts">' + q.options.map((o, i) => {
+      const isKey = key.includes(i), isPick = picks.includes(i);
+      return `<li class="${isKey ? 'is-right' : isPick ? 'is-wrong' : ''}"><span class="r-otext">${letters[i]}) ${o}</span>` +
+        (isPick ? tag('Your answer', isKey ? 'ok' : 'no') : '') + (isKey ? tag(q.type === 'multi' ? 'Correct' : 'Correct answer', 'key') : '') +
+        optWhySpan(lines[i]) + '</li>';
+    }).join('') + '</ul>';
+}
 
 /* ---- Adaptive exam results ----
    The decision in words, a picture of the estimate against the line, and

@@ -483,6 +483,32 @@
      "State-dependent memory depends on an internal state at learning and test. The change was in the review method."
     ]
    }
+  },
+  {
+   "id": "psy-retrieving-memories-16",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ana studies calmly at her desk the night before a quiz. She takes the quiz at the same desk in the same room, but she is very anxious, and she recalls less than she expected. Which concept best explains this?",
+   "options": [
+    "Context-dependent memory, since her surroundings changed between study and quiz",
+    "Mood-congruent memory, since the quiz material was about sad events",
+    "The testing effect, since she took a quiz when she could have reread",
+    "State-dependent memory, since her internal state changed but the room did not"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "State-dependent memory: recall is better when your internal state at retrieval matches your state when you learned. Ana learned while calm and was tested while anxious, in the same place.",
+    "options": [
+     "The desk and the room were the same, so the external context matched.",
+     "Mood-congruent memory is recalling memories whose content matches your mood. Nothing says the material was sad.",
+     "The testing effect is the benefit of retrieving over restudying. It does not explain recalling less while anxious.",
+     "Right: calm at study and anxious at the quiz is a mismatch of internal states."
+    ]
+   }
   }
  ]
 }

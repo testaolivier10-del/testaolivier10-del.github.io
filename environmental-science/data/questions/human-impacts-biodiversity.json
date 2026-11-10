@@ -482,6 +482,32 @@
      "Subsidies lower costs and can increase fishing."
     ]
    }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-16",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cargo ship empties its ballast water in a harbor and releases a foreign mussel that soon crowds out the native mussels. Which HIPPCO factor is this?",
+   "options": [
+    "Habitat loss",
+    "Overexploitation",
+    "Pollution",
+    "Invasive species"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The I in HIPPCO is invasive species: a nonnative species that spreads and harms native ones, here by outcompeting them.",
+    "options": [
+     "The harbor habitat is still there. The harm comes from a new competitor.",
+     "Overexploitation means harvesting a species faster than it can replace itself.",
+     "The harm comes from a living species, not from a chemical or waste.",
+     "Right: a nonnative species spread and displaced the natives."
+    ]
+   }
   }
  ]
 }

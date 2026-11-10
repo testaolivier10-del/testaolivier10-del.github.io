@@ -7,5 +7,15 @@
   "ext": "svg",
   "w": 400,
   "h": 290
+ },
+ "logarithmic-modeling-typing": {
+  "file": "figures/logarithmic-modeling-typing.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 290,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Scatter plot of typing speed against hours of practice with the curve y = 20 + 6 log base 3 of x through the five points (1, 20), (3, 26), (9, 32), (27, 38) and (81, 44). The points get farther and farther apart horizontally while each one is 6 higher than the one before."
  }
 }

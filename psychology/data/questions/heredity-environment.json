@@ -477,6 +477,32 @@
      }
     }
    }
+  },
+  {
+   "id": "psy-heredity-environment-16",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Researchers record how often a strong fear of heights appears among people’s siblings, cousins and unrelated neighbors. They find it most often in the closest relatives. Which method is this, and what limits its conclusion?",
+   "options": [
+    "A twin study; twins are too rare to study",
+    "An adoption study; adoptees share no genes",
+    "A case study; it follows a single person",
+    "A family study; relatives share homes too"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A family study looks at how often a trait appears in relatives of different closeness. A trait that is more common in closer relatives runs in families, but families share homes as well as genes.",
+    "options": [
+     "A twin study compares identical with fraternal twins. This study compares siblings, cousins and neighbors.",
+     "An adoption study compares adopted children with biological and adoptive parents. No one here was adopted.",
+     "A case study examines one person or small group in depth. This study counts a trait across many relatives.",
+     "Right: closer relatives share more genes but also more of their environment, so the method cannot separate the two."
+    ]
+   }
   }
  ]
 }

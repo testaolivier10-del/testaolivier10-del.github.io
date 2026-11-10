@@ -501,6 +501,32 @@
    "why": {
     "correct": "The work done by the torque, τΔθ, grows with the angle and all of it becomes rotational kinetic energy. Equal angles get equal work, but the wheel is turning faster each time, so each turn takes less time."
    }
+  },
+  {
+   "id": "phys-torque-work-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "torque-work",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "A mechanic pushes on a wrench and exerts a torque of 40 N·m on a rusted bolt for 5 s. The bolt does not turn. How much work does the torque do on the bolt?",
+   "options": [
+    "40 J, because a newton-meter is the same as a joule",
+    "200 J, because the torque acts for 5 s",
+    "Zero, because the bolt turns through no angle",
+    "A negative amount, because friction holds the bolt"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "W = τΔθ. The bolt does not turn, so Δθ = 0 and the work is zero, however large the torque and however long it acts.",
+    "options": [
+     "A torque in N·m becomes work in joules only when it is multiplied by an angle in radians.",
+     "Work depends on the angle turned through, not on the time the torque acts.",
+     "Right: no rotation means no work by the torque.",
+     "Work by a torque is negative when the object turns against the torque. Here nothing turns at all."
+    ]
+   }
   }
  ]
 }

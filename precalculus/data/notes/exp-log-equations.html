@@ -23,6 +23,7 @@
 <p>Check in the original. $x = 9$: $\log_3 9 + \log_3 1 = 2 + 0 = 2$. It works. $x = -1$: $\log_3(-1)$ is undefined. It is an <b>extraneous solution</b>.</p>
 <p>Answer: $x = 9$.</p>
 </div>
+<figure id="fig-extraneous" data-fig="exp-log-equations-extraneous"><figcaption>The left side of worked example 3, $y = \log_3 x + \log_3(x - 8)$, has a graph only for $x > 8$. It meets $y = 2$ once, at $x = 9$. There is no graph at $x = -1$, so that root is extraneous.</figcaption></figure>
 <p>Why do extra roots appear? The original equation needs $x > 0$ and $x - 8 > 0$. The combined form $\log_3(x(x - 8))$ only needs the product to be positive, which also happens when both factors are negative. Combining logarithms quietly widened the domain.</p>
 
 <h2>Equations quadratic in $e^x$</h2>
@@ -45,5 +46,6 @@
 </tbody>
 </table>
 
+<figure id="fig-intersect" data-fig="exp-log-equations-intersect"><figcaption>$2^x = 10$ where the graph of $y = 2^x$ meets the line $y = 10$, at $x = \log_2 10 \approx 3.322$. To the right of that point the graph is above the line, which is the solution of $2^x > 10$.</figcaption></figure>
 <h2>Inverses of transformed functions</h2>
 <p>The same moves find inverses. For $f(x) = 5e^{2x} - 1$: swap to $x = 5e^{2y} - 1$, undo the outer steps in reverse order ($e^{2y} = \frac{x + 1}{5}$), then take $\ln$: $f^{-1}(x) = \frac{1}{2}\ln \frac{x + 1}{5}$. For $f(x) = \log_2(x + 1)$: $x = \log_2(y + 1)$ gives $y + 1 = 2^x$, so $f^{-1}(x) = 2^x - 1$.</p>

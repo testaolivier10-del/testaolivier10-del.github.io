@@ -581,6 +581,32 @@
      "The stem says the activation energies are equal."
     ]
    }
+  },
+  {
+   "id": "chem-collision-model-16",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A sealed gas sample is heated. Its energy distribution curve spreads out toward higher energies, and its peak becomes lower. Why does the peak get lower?",
+   "options": [
+    "Some molecules are used up by reaction as soon as the gas is heated",
+    "The activation energy rises, which pushes the peak down",
+    "The same number of molecules is now spread over a wider range of energies",
+    "Hot molecules collide less often, so fewer of them are counted"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sample holds the same molecules before and after heating. When they are spread over a wider range of energies, fewer of them sit at any one energy, so the curve is lower and wider.",
+    "options": [
+     "The curve describes the energies of the molecules in the sample, whether or not any reaction happens.",
+     "The activation energy is a property of the reaction and stays the same when the temperature changes.",
+     "Right: the curve shifts and spreads, and more of the molecules end up beyond the activation energy.",
+     "Heating makes molecules move faster and collide a little more often, not less."
+    ]
+   }
   }
  ]
 }

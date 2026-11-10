@@ -407,6 +407,18 @@ select:focus{outline:none;border-color:var(--accent);}
 .r-answer.correct{background:var(--tint-good);color:var(--good-text);}
 .r-answer.incorrect{background:var(--tint-bad);color:var(--bad-text);}
 .r-explain{font-size:14px;font-weight:600;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft);}
+/* The answer list once the per-option lines are in: the AP courses' exam results list (their -ex-opts rules,
+   value for value), so a checked choice question reads the same in every course. */
+.r-opts{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.r-opts li{padding:10px 13px;border-radius:12px;border:2px solid var(--line);background:var(--paper);font:700 15px/1.45 var(--font-ui);overflow-wrap:anywhere;}
+.r-opts li.is-right{border-color:var(--good);background:var(--tint-good);}
+.r-opts li.is-wrong{border-color:var(--bad);background:var(--tint-coral);}
+.r-opts .nr-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.r-opts li.is-right .nr-opt-why,.r-opts li.is-wrong .nr-opt-why{color:var(--ink);}
+.r-tag{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:var(--radius-pill);font:900 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;vertical-align:1px;}
+.r-tag.key{background:var(--good-text);color:var(--white);}
+.r-tag.ok{background:var(--white);color:var(--good-text);box-shadow:inset 0 0 0 1.5px var(--good-text);}
+.r-tag.no{background:var(--bad-text);color:var(--white);}
 /* Right-aligned and quiet: it belongs to the explanation above it, not to
    the next question, and should be findable without competing with either. */
 .r-report{margin-top:6px;text-align:right;}

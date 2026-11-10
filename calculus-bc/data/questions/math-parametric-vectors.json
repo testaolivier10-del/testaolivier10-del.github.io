@@ -265,6 +265,162 @@
      "Dividing gives $\\frac{y}{x} = \\tan t$, and $t$ is the parameter, not $x$: the path is not $y = 3\\tan x$. Squaring and adding removes $t$."
     ]
    }
+  },
+  {
+   "id": "cbc-math-parametric-vectors-11",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-parametric-vectors",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A path is given by $x = t^2 - 4$, $y = 2t + 1$. Find the $y$-coordinate of the point where the path crosses the $y$-axis with $t > 0$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": -3,
+      "why": "That uses $t = -2$. The question asks for the crossing with $t > 0$, so use $t = 2$."
+     },
+     {
+      "value": 1,
+      "why": "$t = 0$ gives the point $(-4, 1)$, which is not on the $y$-axis. On the $y$-axis $x = 0$, so solve $t^2 - 4 = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A point is on the $y$-axis when $x = 0$: $t^2 - 4 = 0$ gives $t = 2$ or $t = -2$. With $t > 0$, $t = 2$ and $y = 2(2) + 1 = 5$. The point is $(0, 5)$."
+   }
+  },
+  {
+   "id": "cbc-math-parametric-vectors-12",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-parametric-vectors",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the magnitude of $\\left\\langle 2, 1 \\right\\rangle - \\left\\langle -1, 5 \\right\\rangle$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": "sqrt(37)",
+      "why": "That adds the vectors. Subtract one component at a time: $\\left\\langle 2 - (-1), 1 - 5 \\right\\rangle = \\left\\langle 3, -4 \\right\\rangle$."
+     },
+     {
+      "value": 7,
+      "why": "The magnitude is the hypotenuse, $\\sqrt{3^2 + (-4)^2}$, not the sum of the legs $3 + 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Subtract by components: $\\left\\langle 2 - (-1), 1 - 5 \\right\\rangle = \\left\\langle 3, -4 \\right\\rangle$. Its magnitude is $\\sqrt{3^2 + (-4)^2} = \\sqrt{25} = 5$."
+   }
+  },
+  {
+   "id": "cbc-math-parametric-vectors-13",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-parametric-vectors",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A point moves along $x = 5\\cos t$, $y = 5\\sin t$ for $0 \\le t \\le 6\\pi$. How does it move?",
+   "options": [
+    "Once around a circle of radius 5, counterclockwise",
+    "Three times around a circle of radius 5, counterclockwise",
+    "Three times around a circle of radius 5, clockwise",
+    "Once around a circle of radius 15, counterclockwise"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x^2 + y^2 = 25$, a circle of radius 5. $t = 0$ gives $(5, 0)$ and $t = \\frac{\\pi}{2}$ gives $(0, 5)$: from the right side to the top is counterclockwise. One turn takes $2\\pi$, so $0 \\le t \\le 6\\pi$ is three turns.",
+    "options": [
+     "One turn uses a $t$-interval of length $2\\pi$. Here the interval has length $6\\pi$, which is three turns.",
+     "Radius 5, from $(5, 0)$ up to $(0, 5)$ first, and $\\frac{6\\pi}{2\\pi} = 3$ turns.",
+     "From $(5, 0)$ at $t = 0$ the point goes to $(0, 5)$ at $t = \\frac{\\pi}{2}$, which is counterclockwise.",
+     "A longer $t$-interval repeats the same circle; it does not change the radius, which is 5."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-parametric-vectors-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-parametric-vectors",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Path A is $x = t$, $y = t^2$ and path B is $x = -t$, $y = t^2$, both for $-1 \\le t \\le 1$. How do the two paths compare?",
+   "options": [
+    "Different curves: path B lies on the parabola $y = -x^2$",
+    "Different curves: path B is path A flipped over the $x$-axis",
+    "The same piece of $y = x^2$, traced in the same direction",
+    "The same piece of $y = x^2$, traced in opposite directions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "On both paths $y = x^2$, since $(-t)^2 = t^2$, and $x$ runs between $-1$ and $1$. Path A starts at $(-1, 1)$ and moves right; path B starts at $(1, 1)$ and moves left. Same curve, opposite directions.",
+    "options": [
+     "On path B, $y = t^2 = (-t)^2 = x^2$, so the points are on $y = x^2$.",
+     "Replacing $x$ by $-x$ flips left and right, and this parabola is its own mirror image. $y$ is unchanged.",
+     "Compare the starts: at $t = -1$ path A is at $(-1, 1)$ and path B is at $(1, 1)$. They run opposite ways.",
+     "Both satisfy $y = x^2$ for $-1 \\le x \\le 1$; path A runs left to right and path B right to left."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-parametric-vectors-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-parametric-vectors",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A drone starts at $P(2, -1)$ and moves by the vector $\\left\\langle -5, 4 \\right\\rangle$. Where does it end?",
+   "options": [
+    "$(-3, 3)$",
+    "$(7, -5)$",
+    "$(-7, 5)$",
+    "$(-10, -4)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A vector is a change in position: add its components to the starting point. $(2 + (-5), -1 + 4) = (-3, 3)$.",
+    "options": [
+     "Start plus change: $(2 - 5, -1 + 4)$.",
+     "That subtracts the vector. Moving by the vector adds it to the start.",
+     "That is the vector minus the starting point. Add the vector to the start instead.",
+     "Components are added, not multiplied: $2 + (-5)$ and $-1 + 4$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-parametric-vectors-16",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-parametric-vectors",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which vector has the same direction as $\\left\\langle 3, 4 \\right\\rangle$ and magnitude 10?",
+   "options": [
+    "$\\left\\langle 13, 14 \\right\\rangle$",
+    "$\\left\\langle 30, 40 \\right\\rangle$",
+    "$\\left\\langle 6, 8 \\right\\rangle$",
+    "$\\left\\langle 8, 6 \\right\\rangle$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$\\left\\langle 3, 4 \\right\\rangle$ has magnitude $\\sqrt{9 + 16} = 5$. Multiplying a vector by a positive number keeps its direction and scales its length, so multiply by $\\frac{10}{5} = 2$: $\\left\\langle 6, 8 \\right\\rangle$.",
+    "options": [
+     "Adding 10 to each component changes the direction. Scale the vector by a number instead.",
+     "Multiplying by 10 gives magnitude $10 \\cdot 5 = 50$. The magnitude of $\\left\\langle 3, 4 \\right\\rangle$ is 5, so multiply by 2.",
+     "$2\\left\\langle 3, 4 \\right\\rangle = \\left\\langle 6, 8 \\right\\rangle$, with magnitude $\\sqrt{36 + 64} = 10$.",
+     "This has magnitude 10, but the components are swapped, so it points in a different direction."
+    ]
+   }
   }
  ]
 }

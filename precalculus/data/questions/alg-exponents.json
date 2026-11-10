@@ -266,6 +266,204 @@
      "$2^7 = 128$ but $4^7 = 16{,}384$."
     ]
    }
+  },
+  {
+   "id": "pcalc-alg-exponents-10",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Evaluate $\\frac{5^6}{5^4} + 7^0$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 26,
+    "mistakes": [
+     {
+      "value": 25,
+      "why": "$7^0 = 1$, not $0$. Any positive base to the power $0$ is $1$."
+     },
+     {
+      "value": 32,
+      "why": "$7^0 = 1$, not $7$. The zero exponent gives $1$ for any positive base."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide, same base, subtract exponents: $\\frac{5^6}{5^4} = 5^2 = 25$. Zero exponent: $7^0 = 1$. Sum: $26$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-11",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write $\\frac{x^2}{\\sqrt[3]{x}}$ as a single power of $x$, for $x > 0$.",
+   "type": "expr",
+   "expr": {
+    "answer": "x^(5/3)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.2,
+     4
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": "x"
+    },
+    "mistakes": [
+     {
+      "expr": "x^(7/3)",
+      "why": "Dividing subtracts exponents: $2 - \\frac{1}{3} = \\frac{5}{3}$. Adding gives the product $x^2 \\cdot x^{1/3}$."
+     },
+     {
+      "expr": "x^6",
+      "why": "The cube root is the exponent $\\frac{1}{3}$, and dividing subtracts it: $x^{2 - 1/3}$. Nothing is multiplied by $3$."
+     },
+     {
+      "expr": "x^(2/3)",
+      "why": "$x^{2/3}$ is $\\sqrt[3]{x^2}$. Here the root is in the denominator: $\\frac{x^2}{x^{1/3}} = x^{2 - 1/3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The root as a power: $\\sqrt[3]{x} = x^{1/3}$. Divide, same base, subtract exponents: $\\frac{x^2}{x^{1/3}} = x^{2 - 1/3} = x^{5/3}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-12",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which expression is equivalent to $9^t$?",
+   "type": "single",
+   "options": [
+    "$3^{2t}$",
+    "$3^{t + 2}$",
+    "$3^{t^2}$",
+    "$2 \\cdot 3^{t}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$9 = 3^2$, so $9^t = (3^2)^t$. A power of a power multiplies the exponents: $3^{2t}$.",
+    "options": [
+     "$(3^2)^t = 3^{2 \\cdot t}$.",
+     "$3^{t + 2} = 9 \\cdot 3^t$. Adding exponents comes from multiplying powers, not from a power of a power.",
+     "The exponents multiply, $2 \\cdot t$; $t$ is not squared.",
+     "The $2$ is an exponent on $3$, not a factor in front. At $t = 2$: $9^2 = 81$, but $2 \\cdot 3^2 = 18$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-13",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $2^{x + 1} = \\frac{1}{8}$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -4,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$\\frac{1}{8} = 2^{-3}$, with a negative exponent, so $x + 1 = -3$, not $3$."
+     },
+     {
+      "value": -3,
+      "why": "$-3$ is the whole exponent: $x + 1 = -3$. Subtract $1$ to get $x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Write both sides as powers of $2$: $\\frac{1}{8} = \\frac{1}{2^3} = 2^{-3}$. Equal powers of $2$ have equal exponents: $x + 1 = -3$, so $x = -4$. Check: $2^{-3} = \\frac{1}{8}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-14",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expression is equivalent to $5^{x - 2}$?",
+   "type": "single",
+   "options": [
+    "$5^x - 25$",
+    "$\\frac{5^x}{10}$",
+    "$\\frac{5^x}{25}$",
+    "$25 \\cdot 5^x$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Subtracting exponents comes from dividing powers of the same base: $5^{x - 2} = \\frac{5^x}{5^2} = \\frac{5^x}{25}$.",
+    "options": [
+     "A difference in the exponent is a quotient of powers, not a difference of powers. At $x = 2$: $5^0 = 1$, but $25 - 25 = 0$.",
+     "$5^2 = 25$, not $10$.",
+     "$5^{x - 2} = 5^x \\cdot 5^{-2} = \\frac{5^x}{25}$.",
+     "$25 \\cdot 5^x = 5^{x + 2}$. The exponent $-2$ divides by $25$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-15",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\left(\\frac{x^4}{x}\\right)^{-2}$ for $x > 0$.",
+   "type": "single",
+   "options": [
+    "$x^6$",
+    "$-x^6$",
+    "$\\frac{1}{x^8}$",
+    "$\\frac{1}{x^6}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Inside first: $\\frac{x^4}{x} = x^{4 - 1} = x^3$. Power of a power: $(x^3)^{-2} = x^{-6}$. Negative exponent: $x^{-6} = \\frac{1}{x^6}$.",
+    "options": [
+     "The exponent is $-2$, so the result is $x^{-6}$, the reciprocal of $x^6$.",
+     "A negative exponent makes a reciprocal, not a negative number.",
+     "$\\frac{x^4}{x} = x^3$, not $x^4$: the $x$ in the denominator has exponent $1$.",
+     "$(x^3)^{-2} = x^{-6} = \\frac{1}{x^6}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-exponents-16",
+   "unit": "skills-algebra",
+   "topic": "alg-exponents",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate $\\left(\\frac{4}{9}\\right)^{-1/2}$ exactly.",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3/2",
+    "mistakes": [
+     {
+      "value": "2/3",
+      "why": "$\\frac{2}{3}$ is $\\left(\\frac{4}{9}\\right)^{1/2}$. The negative exponent takes the reciprocal: $\\frac{3}{2}$."
+     },
+     {
+      "value": "-2/3",
+      "why": "A negative exponent makes a reciprocal, not a negative number: $\\left(\\frac{4}{9}\\right)^{-1/2} = \\frac{1}{2/3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Negative exponent first: $\\left(\\frac{4}{9}\\right)^{-1/2} = \\left(\\frac{9}{4}\\right)^{1/2}$. The exponent $\\frac{1}{2}$ is a square root: $\\sqrt{\\frac{9}{4}} = \\frac{3}{2}$."
+   }
   }
  ]
 }

@@ -442,6 +442,32 @@
      "A reaction with ΔG° > 0 under standard conditions does not go to completion on its own."
     ]
    }
+  },
+  {
+   "id": "chem-kinetic-control-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "kinetic-control",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A reaction has ΔG° = +50 kJ/mol at 298 K. A mixture of its reactants shows no product after an hour. A student says the reaction is under kinetic control. Is the student correct?",
+   "options": [
+    "No: the reaction is not thermodynamically favored, so no barrier is needed to explain it",
+    "Yes: any reaction that shows no product must have a large activation energy",
+    "Yes: a positive ΔG° is another way of saying the reaction is slow",
+    "No: kinetic control applies only to reactions that take place in the gas phase"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Kinetic control describes a reaction that is thermodynamically favored (ΔG° < 0) but too slow to observe. With ΔG° = +50 kJ/mol the reaction is not favored at all, so the lack of product is explained by thermodynamics.",
+    "options": [
+     "Right: \"under kinetic control\" is reserved for favored reactions held back by a large activation energy.",
+     "A lack of product can also mean the reaction is not favored. The sign of ΔG° must be checked first.",
+     "ΔG° says whether a reaction is favored. It says nothing about how fast the reaction is.",
+     "Kinetic control can occur in any phase. Diamond turning to graphite is a solid-state example."
+    ]
+   }
   }
  ]
 }

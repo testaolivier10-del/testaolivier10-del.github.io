@@ -44,6 +44,11 @@
      ]
     ]
    }
+  },
+  "curves-crossing-s3": {
+   "kind": "text",
+   "title": "Two changes in a town's bicycle market",
+   "text": "<p>A town graphs its market for bicycles with one downward curve D for buyers and one upward curve S for sellers. In April the town opens a network of bike lanes, and residents want more bicycles at every price. In July, long after the lanes opened, a fire at a parts factory means shops can offer fewer bicycles at every price.</p>"
   }
  },
  "items": [
@@ -344,6 +349,193 @@
      "Readers score marked and labeled points, not what seems obvious.",
      "Unlabeled curves lose the labeling point.",
      "Right: both points, both axes, labeled."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-11",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A frost ruins part of the coffee harvest, so at every price growers offer fewer beans. Shift the right curve and mark the new crossing.",
+   "why": {
+    "correct": "S shifts left up along D, so E2 is higher and to the left: a higher price and a smaller quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a frost that cuts what growers can offer",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "The frost changes what growers can offer, so it moves S; what buyers want at each price has not changed."
+    }
+   }
+  },
+  {
+   "id": "mac-curves-crossing-12",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A health report makes buyers want less soda at every price. Shift the right curve and mark the new crossing.",
+   "why": {
+    "correct": "D shifts left down along S, so E2 is lower and to the left: a lower price and a smaller quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      }
+     ],
+     "because": "a health report that makes buyers want less soda",
+     "outcome": {
+      "price": "down",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "S": "The report changes what buyers want, so it moves D; sellers' costs have not changed."
+    }
+   }
+  },
+  {
+   "id": "mac-curves-crossing-13",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "On a market graph, one curve shifts. The new crossing shows a lower price and a larger quantity than the old one. Which curve shifted, and which way?",
+   "options": [
+    "D shifted right",
+    "D shifted left",
+    "S shifted right",
+    "S shifted left"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Price and quantity moved in opposite directions, so the crossing slid along D: S is the curve that moved. A lower price and a larger quantity mean it slid down D, so S shifted right.",
+    "options": [
+     "A shift of D slides the crossing along S, so price and quantity would both rise.",
+     "A shift of D slides the crossing along S, so price and quantity would both fall.",
+     "Right: the crossing slid down along D to a lower price and a larger quantity.",
+     "S shifting left slides the crossing up along D: a higher price and a smaller quantity."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-14",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "curves-crossing-s3",
+   "q": "How does the crossing move in April?",
+   "options": [
+    "Down and to the right along D: a lower price, a larger quantity",
+    "Up and to the right along S: a higher price, a larger quantity",
+    "Up and to the left along D: a higher price, a smaller quantity",
+    "Down and to the left along S: a lower price, a smaller quantity"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Residents want more bicycles at every price, so D shifts right. The crossing slides up along S: the price rises and the quantity rises.",
+    "options": [
+     "That follows a shift of S to the right. The bike lanes change what buyers want, so D moves.",
+     "Right: D shifts right and the crossing slides up the upward curve S.",
+     "That follows a shift of S to the left, which is July's change.",
+     "That follows a shift of D to the left. Residents want more bicycles, not fewer."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-15",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "curves-crossing-s3",
+   "q": "Compared with just before the factory fire, how does the crossing move in July?",
+   "options": [
+    "Up and to the left along D: a higher price, a smaller quantity",
+    "Up and to the right along S: a higher price, a larger quantity",
+    "Down and to the right along D: a lower price, a larger quantity",
+    "Down and to the left along S: a lower price, a smaller quantity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Shops offer fewer bicycles at every price, so S shifts left. The crossing slides up along D: the price rises and the quantity falls.",
+    "options": [
+     "Right: S shifts left and the crossing slides up the downward curve D.",
+     "That follows a shift of D to the right, which was April's change.",
+     "That follows a shift of S to the right. The fire means shops offer fewer bicycles.",
+     "That follows a shift of D to the left. The fire changes what sellers offer, so S moves."
+    ]
+   }
+  },
+  {
+   "id": "mac-curves-crossing-16",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "curves-crossing-s3",
+   "q": "In April the price and the quantity move the same way, but in July they move in opposite directions. Why?",
+   "options": [
+    "April's change was larger than July's change",
+    "Buyers react to prices faster than sellers do",
+    "A second shift always reverses the first one",
+    "The crossing slides along the curve that stayed put"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A shift of D moves the crossing along the upward curve S, so price and quantity move together. A shift of S moves it along the downward curve D, so they move in opposite directions.",
+    "options": [
+     "The size of a shift does not decide the directions. Which curve stayed put does.",
+     "Nothing in the scenario is about speed. The difference is which curve moved.",
+     "July's shift does not undo April's: the price rises both times.",
+     "Right: along S in April (both rise), along D in July (price up, quantity down)."
     ]
    }
   }

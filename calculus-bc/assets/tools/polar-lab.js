@@ -223,6 +223,7 @@
       var w = Math.max(260, Math.round(rwrap.clientWidth || 600)), h = Math.max(70, Math.round(rwrap.clientHeight || 112)), tb = info().tb, L = lims();
       var all = tb.r.concat(tb.R), lo = Math.min(0, Math.min.apply(null, all)), hi = Math.max(0, Math.max.apply(null, all)), pad = (hi - lo) * 0.12 || 1;
       lo -= pad; hi += pad;
+      if(h < 96) hi += (hi - lo) * 0.28;   // on a phone's short panel the curves stay under the panel's name
       var Lm = w < 420 ? 34 : 40, R = 10, top = 6, bot = 20;
       return { w: w, h: h, L: Lm, R: R, top: top, bot: bot, pw: w - Lm - R, ph: h - top - bot, lo: lo, hi: hi,
         gx: function(t){ return Lm + (t - L[0]) / (L[1] - L[0]) * (w - Lm - R); }, gy: function(v){ return top + (hi - v) / (hi - lo) * (h - top - bot); } };
@@ -271,7 +272,9 @@
       var sKey = key() + ':' + M.fixed(th, 2);
       if(sKey !== lastSetup){
         lastSetup = sKey;
-        setupEl.innerHTML = '<span class="pl-su-k">Area swept</span> ' + tex('\\frac{1}{2}\\int_{' + S.lo + '}^{' + thTex(th) + '} ' + S.body + '\\,d\\theta \\approx ' + M.fixed(A, 3));
+        // the integral and its value are two pieces, so on a phone the value drops to the next line instead of off the edge
+        setupEl.innerHTML = '<span class="pl-su-k">Area swept</span> <span class="pl-su-p">' + tex('\\frac{1}{2}\\int_{' + S.lo + '}^{' + thTex(th) + '} ' + S.body + '\\,d\\theta') + '</span> <span class="pl-su-p">' + tex('\\approx ' + M.fixed(A, 3)) + '</span>';
+        setupEl.classList.toggle('is-long', st.mode === 'two');
       }
       var Lm = lims(), whole = M.fixed(I.total, 3);
       var body = '<ul class="pl-why">' +

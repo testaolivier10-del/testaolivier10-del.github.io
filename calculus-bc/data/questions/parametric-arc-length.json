@@ -366,6 +366,32 @@
      "Lengths combine by the Pythagorean theorem: square, add, take the root."
     ]
    }
+  },
+  {
+   "id": "cbc-parametric-arc-length-16",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "parametric-arc-length",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Find the length of the curve $x = \\frac{1}{3}t^3 - t$, $y = t^2$ for $0 \\le t \\le 3$.",
+   "numeric": {
+    "answer": 12,
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "$(t^2 - 1)^2 + (2t)^2 = t^4 + 2t^2 + 1 = (t^2 + 1)^2$, so the integrand is $t^2 + 1$, not $t^2 - 1$."
+     },
+     {
+      "value": 15,
+      "why": "The integrand is $\\sqrt{(x'(t))^2 + (y'(t))^2}$, not $x'(t) + y'(t)$. Square each derivative, add, then take the root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x'(t) = t^2 - 1$ and $y'(t) = 2t$, so $(x'(t))^2 + (y'(t))^2 = t^4 - 2t^2 + 1 + 4t^2 = (t^2 + 1)^2$. The length is $\\int_0^3 (t^2 + 1)\\,dt = \\left(\\frac{t^3}{3} + t\\right)\\Big|_0^3 = 9 + 3 = 12$."
+   }
   }
  ]
 }

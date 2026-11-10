@@ -227,6 +227,162 @@
      "$\\left(\\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{2}}{2}\\right)^2 = \\frac{3}{4}$, so this point is not even on the circle."
     ]
    }
+  },
+  {
+   "id": "pcalc-alg-circles-11",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 45-45-90 triangle has hypotenuse $10$. What is the exact length of each leg?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "5sqrt(2)",
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "Halving works for the short leg of a 30-60-90 triangle. Here the legs are $a$ and the hypotenuse is $a\\sqrt{2}$, so $a = \\frac{10}{\\sqrt{2}}$."
+     },
+     {
+      "value": "10sqrt(2)",
+      "why": "That multiplies by $\\sqrt{2}$, which goes from a leg to the hypotenuse. Going from the hypotenuse to a leg divides by $\\sqrt{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Legs $a$, hypotenuse $a\\sqrt{2}$: $a\\sqrt{2} = 10$, so $a = \\frac{10}{\\sqrt{2}} = \\frac{10\\sqrt{2}}{2} = 5\\sqrt{2}$. Check: $(5\\sqrt{2})^2 + (5\\sqrt{2})^2 = 50 + 50 = 100$."
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-12",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A right triangle has a $30^\\circ$ angle, and the leg adjacent to that angle has length $6$. What is the exact length of the leg opposite the $30^\\circ$ angle?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "2sqrt(3)",
+    "mistakes": [
+     {
+      "value": "6sqrt(3)",
+      "why": "Multiplying by $\\sqrt{3}$ goes from the short leg to the long leg. Here $6$ is the long leg, so divide: $\\frac{6}{\\sqrt{3}}$."
+     },
+     {
+      "value": 3,
+      "why": "Halving goes from the hypotenuse to the short leg. $6$ is the long leg, so the short leg is $\\frac{6}{\\sqrt{3}}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "In a 30-60-90 triangle the sides are in the ratio $1 : \\sqrt{3} : 2$, and the leg adjacent to $30^\\circ$ is the long leg. So the short leg, opposite $30^\\circ$, is $\\frac{6}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$. Check: the hypotenuse is then $4\\sqrt{3}$, and $(2\\sqrt{3})^2 + 6^2 = 12 + 36 = 48 = (4\\sqrt{3})^2$."
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-13",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A circle has radius $6$. A central angle cuts off an arc of length $2\\pi$. What is the angle, in degrees?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 60,
+    "mistakes": [
+     {
+      "value": 120,
+      "why": "The circumference is $2\\pi r = 12\\pi$, not $6\\pi$. The arc is $\\frac{2\\pi}{12\\pi} = \\frac{1}{6}$ of the circle."
+     },
+     {
+      "value": 30,
+      "why": "That is $\\frac{1}{6}$ of $180^\\circ$, a half turn. The arc is $\\frac{2\\pi}{12\\pi} = \\frac{1}{6}$ of the whole circle, and the whole circle is $360^\\circ$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$s = \\frac{\\theta}{360} \\cdot 2\\pi r$: $2\\pi = \\frac{\\theta}{360} \\cdot 12\\pi$, so $\\frac{\\theta}{360} = \\frac{1}{6}$ and $\\theta = 60^\\circ$."
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-14",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A circle is centered at the origin and passes through $(3, -4)$. Which is its equation?",
+   "type": "single",
+   "options": [
+    "$x^2 + y^2 = 5$",
+    "$x^2 + y^2 = 7$",
+    "$x^2 + y^2 = 25$",
+    "$(x - 3)^2 + (y + 4)^2 = 25$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The radius is the distance from the center $(0, 0)$ to $(3, -4)$: $r^2 = 3^2 + (-4)^2 = 25$. With center $(0, 0)$ the equation is $x^2 + y^2 = r^2 = 25$.",
+    "options": [
+     "The radius is $5$, and the right side is the radius squared, $25$.",
+     "$3 + 4 = 7$ adds the legs. Use the Pythagorean theorem: $r^2 = 9 + 16$.",
+     "$r^2 = 3^2 + (-4)^2 = 25$, with center $(0, 0)$.",
+     "That circle is centered at $(3, -4)$. The given point is on the circle; the center is the origin."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-15",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Where is the point $(2, 3)$ relative to the circle $(x - 1)^2 + (y - 1)^2 = 9$?",
+   "type": "single",
+   "options": [
+    "On the circle, because its distance from the center is $3$",
+    "Inside the circle, because $(2 - 1)^2 + (3 - 1)^2 = 5 < 9$",
+    "Outside the circle, because $2^2 + 3^2 = 13 > 9$",
+    "Outside the circle, because $(2 - 1)^2 + (3 - 1)^2 = 5 > 3$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The left side is the squared distance from the center $(1, 1)$: $(2 - 1)^2 + (3 - 1)^2 = 1 + 4 = 5$. The radius squared is $9$. Since $5 < 9$, the point is closer to the center than the circle is: inside.",
+    "options": [
+     "Its distance from the center is $\\sqrt{5} \\approx 2.24$, less than the radius $3$.",
+     "Squared distance $5$ is less than the radius squared, $9$.",
+     "$2^2 + 3^2$ measures from the origin. Measure from the center $(1, 1)$.",
+     "Compare like with like: squared distance $5$ with radius squared $9$, or distance $\\sqrt{5}$ with radius $3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-circles-16",
+   "unit": "skills-algebra",
+   "topic": "alg-circles",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "An equilateral triangle has sides of length $6$. What is its exact height?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "3sqrt(3)",
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$3$ is half the base, the short leg of the 30-60-90 triangle. The height is the long leg, $3\\sqrt{3}$."
+     },
+     {
+      "value": "6sqrt(3)",
+      "why": "The short leg is half the side, $3$, so the long leg is $3\\sqrt{3}$, not $6\\sqrt{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The height cuts the triangle into two 30-60-90 triangles with hypotenuse $6$ and short leg $3$. The long leg is the short leg times $\\sqrt{3}$: $3\\sqrt{3}$. Check: $3^2 + (3\\sqrt{3})^2 = 9 + 27 = 36$."
+   }
   }
  ]
 }

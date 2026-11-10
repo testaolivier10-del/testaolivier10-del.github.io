@@ -608,6 +608,32 @@
     },
     "model": "The nation could ban making and using the chemical and require safe destruction of old stocks, which reduces the POP because no new chemical enters, so levels fall slowly as the old amount breaks down."
    }
+  },
+  {
+   "id": "env-persistent-organic-pollutants-16",
+   "unit": "unit-8",
+   "topic": "persistent-organic-pollutants",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "People living beside a lake polluted with a POP eat food from the lake. Which food most likely carries the highest dose?",
+   "options": [
+    "Leafy water plants",
+    "Small plant-eating snails",
+    "Lean, young minnows",
+    "Fatty, old predatory fish"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "POPs dissolve in fat and are not excreted, so they build up over an animal’s life and rise at each step of a food chain. An old, fatty fish at the top of the chain holds the most.",
+    "options": [
+     "Plants are at the bottom of the chain and hold very little fat.",
+     "Snails feed low on the chain and are small and short-lived.",
+     "Young, lean fish have had little time and little fat in which to store the pollutant.",
+     "Right: a long life, a lot of fat and a high trophic level all raise the dose."
+    ]
+   }
   }
  ]
 }

@@ -527,6 +527,32 @@
     "unit": "m3",
     "requireUnits": true
    }
+  },
+  {
+   "id": "env-wetlands-mangroves-16",
+   "unit": "unit-8",
+   "topic": "wetlands-mangroves",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "After mangroves along a coast are cleared, the catch of fish offshore falls within a few years. Which explanation fits best?",
+   "options": [
+    "Mangroves released the salt that ocean fish need to live",
+    "Mangrove leaves were the main food of adult fish",
+    "Young fish lost their nursery among the mangrove roots",
+    "Fishing boats could no longer reach the open sea"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Wetlands and mangroves are nurseries for young fish and shellfish, which shelter and feed among the roots. With the nursery gone, fewer young survive to join the adult stock offshore.",
+    "options": [
+     "Seawater already holds salt. Mangroves do not supply it.",
+     "Adult ocean fish do not live on mangrove leaves.",
+     "Right: losing nursery habitat lowers the number of fish that grow up.",
+     "Clearing mangroves does not block boats."
+    ]
+   }
   }
  ]
 }

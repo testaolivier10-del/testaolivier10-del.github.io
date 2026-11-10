@@ -530,6 +530,32 @@
     },
     "model": "A catalytic converter changes nitrogen oxides into nitrogen gas and oxygen, which reduces smog because less NOx is left to react with VOCs in sunlight to form ozone."
    }
+  },
+  {
+   "id": "env-reducing-air-pollutants-16",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A driver says, \"My car has a catalytic converter, so it adds nothing to climate change.\" What is wrong with this claim?",
+   "options": [
+    "The converter traps only particulates",
+    "The converter still releases CO2 from the fuel",
+    "The converter removes ozone from the air",
+    "The converter works only on diesel engines"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A catalytic converter changes CO to CO2, NOx to N2 and hydrocarbons to CO2 and water. It cuts smog-forming pollutants, but the CO2 from burning fuel still leaves the tailpipe.",
+    "options": [
+     "It treats gases (CO, NOx and hydrocarbons), not particles.",
+     "Right: no exhaust device removes CO2. Cutting CO2 means burning less fuel.",
+     "It lowers the gases that form ground-level ozone. It does not remove ozone.",
+     "Catalytic converters are standard on gasoline cars."
+    ]
+   }
   }
  ]
 }

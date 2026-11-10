@@ -93,9 +93,19 @@ function lessonPage(L, i) {
   const url = `${ORIGIN}/nremt/lessons/${L.id}.html`;
   // "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs), at most 60 characters.
   const title = courseTitle(L.title, ['NREMT-EMT Lesson']);
-  // The summary's first sentence when it fits a search result; otherwise a plain description of the lesson.
-  const first = (text(L.summary).match(/^.*?[.!?](?=\s|$)/) || [''])[0];
-  const desc = first && first.length <= 158 ? first : `${L.title}: an NREMT-EMT interactive lesson, step by step, with a common mistake and practice questions.`;
+  // The opening of the summary, cut at a sentence end: the first sentence, plus the ones after it while the text is
+  // still short for a search result (under 70 characters; check-site fails under 50) and the next one fits in 158.
+  // A lesson whose opening cannot make a good snippet (under 50 characters and the next sentence does not fit)
+  // carries its own `description`; the last resort is a plain line.
+  const sentences = text(L.summary).match(/.*?[.!?](?=\s|$)/g) || [];
+  let first = (sentences[0] || '').trim();
+  for (let k = 1; first && first.length < 70 && k < sentences.length; k++) {
+    const longer = `${first} ${sentences[k].trim()}`;
+    if (longer.length > 158) break;
+    first = longer;
+  }
+  if (L.description && (L.description.length < 70 || L.description.length > 158)) throw new Error(`${L.id}: description must be 70 to 158 characters (${L.description.length})`);
+  const desc = L.description || (first.length >= 50 && first.length <= 158 ? first : `${L.title}: an NREMT-EMT interactive lesson, step by step, with a common mistake and practice questions.`);
   const next = lessons[i + 1];
   const parts = [
     { id: 'why', nav: 'Why this matters', h: 'Why this matters', html: L.hook },
@@ -217,7 +227,9 @@ if (existsSync(OUT)) {
 /* The reader links each section that has a lesson (study-notes.html, sectionHtml). */
 {
   const reader = readFileSync(READER, 'utf8');
-  const map = Object.fromEntries(lessons.map((L) => [L.section, { href: `lessons/${L.id}.html`, title: L.title, premium: !isFree(L) }]));
+  // Section id -> lesson id, with a leading "*" on a Premium lesson. The reader only needs the link and the lock, and
+  // with 80 lessons the fuller { href, title, premium } objects cost the page 1.3 KB gzipped (check-weight.mjs).
+  const map = Object.fromEntries(lessons.map((L) => [L.section, `${isFree(L) ? '' : '*'}${L.id}`]));
   const block = `<!-- nremt-lessons:start (scripts/build-nremt-lessons.mjs) -->\n<script>window.NREMT_LESSONS = ${JSON.stringify(map)};</script>\n<!-- nremt-lessons:end -->`;
   const re = /<!-- nremt-lessons:start[\s\S]*?<!-- nremt-lessons:end -->/;
   if (!re.test(reader)) { console.error('FAIL: nremt/study-notes.html has no nremt-lessons markers.'); process.exit(1); }

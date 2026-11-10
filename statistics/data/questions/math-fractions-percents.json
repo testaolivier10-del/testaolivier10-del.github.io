@@ -305,6 +305,146 @@
     "150%"
    ],
    "correct": 2
+  },
+  {
+   "id": "stat-math-fractions-percents-12",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which decimal equals 7%?",
+   "why": {
+    "correct": "Divide a percent by 100 to get its decimal: $7 \\div 100 = 0.07$.",
+    "options": [
+     "0.7 is 70%. Dividing by 100 moves the decimal point two places, not one.",
+     "7.0 is 700%. A percent below 100 is a decimal below 1.",
+     "0.007 is 0.7%. Move the decimal point two places, not three.",
+     "Right: $7 \\div 100 = 0.07$."
+    ]
+   },
+   "options": [
+    "0.7",
+    "7.0",
+    "0.007",
+    "0.07"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-fractions-percents-13",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student divides to find the part of a class that owns a pet and gets 1.6. What does that result show?",
+   "why": {
+    "correct": "A part of a whole is always between 0 and 1. A result above 1 shows that the whole was divided by the part.",
+    "options": [
+     "A part of a whole cannot be more than 1, so 1.6 is not a part of the class at all.",
+     "Right: for example $\\frac{40}{25} = 1.6$ should be $\\frac{25}{40} = 0.625$.",
+     "The question is about the part of the students who own a pet, not a number of pets.",
+     "1.6 as a percent would be 160%, and a part of a class cannot go above 100%."
+    ]
+   },
+   "options": [
+    "More than half of the class owns a pet",
+    "The fraction is upside down, the whole over the part",
+    "Each student owns 1.6 pets on average",
+    "The part is 16% once it is written as a percent"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-fractions-percents-14",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A club has 40 members, and 35% of them are seniors. How many members are not seniors?",
+   "why": {
+    "correct": "Seniors: $0.35 \\times 40 = 14$. The rest: $40 - 14 = 26$ (or 65% of 40).",
+    "options": [
+     "Right: $0.35 \\times 40 = 14$ seniors, so $40 - 14 = 26$ are not seniors.",
+     "That is the number of seniors. The question asks for the members who are not.",
+     "That subtracts the percent from the count, $40 - 35$. Find 35% of 40 first.",
+     "That is the percent who are not seniors, not the number of members."
+    ]
+   },
+   "options": [
+    "26",
+    "14",
+    "5",
+    "65"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-fractions-percents-15",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is 0.045 written as a percent?",
+   "why": {
+    "correct": "Multiply a decimal by 100 to get its percent: $0.045 \\times 100 = 4.5\\%$.",
+    "options": [
+     "45% is 0.45. Move the decimal point two places, not three.",
+     "That moves the decimal point only one place. Multiply by 100.",
+     "Right: $0.045 \\times 100 = 4.5$, so 4.5%.",
+     "That divides by 100. To go from a decimal to a percent, multiply by 100."
+    ]
+   },
+   "options": [
+    "45%",
+    "0.45%",
+    "4.5%",
+    "0.00045%"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-fractions-percents-16",
+   "unit": "skills-math",
+   "topic": "math-fractions-percents",
+   "type": "numeric",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A bag holds 12 red marbles and 28 blue marbles. What decimal of the marbles in the bag is red?",
+   "why": {
+    "correct": "The whole is every marble in the bag: $12 + 28 = 40$. Part over whole: $\\frac{12}{40} = 0.3$, which is 30%."
+   },
+   "numeric": {
+    "kind": "prob",
+    "from": {
+     "fn": "mean",
+     "args": [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.42857142857142855,
+      "why": "That is 12/28, red over blue. The whole is all 40 marbles: 12/40."
+     },
+     {
+      "value": 0.12,
+      "why": "The count 12 is not out of 100. Divide by the whole, 12 + 28 = 40."
+     },
+     {
+      "value": 0.7,
+      "why": "That is the part that is blue, 28/40. The question asks about red: 12/40."
+     }
+    ]
+   }
   }
  ]
 }

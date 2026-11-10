@@ -419,6 +419,32 @@
    "why": {
     "correct": "Internal forces move momentum between the carts but cannot change the total or the center of mass's velocity."
    }
+  },
+  {
+   "id": "phys-momentum-conservation-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two balls of clay are thrown toward each other and collide in midair. Gravity acts on both during the collision. Why can you still treat the momentum of the two-ball system as constant from just before to just after the collision?",
+   "options": [
+    "Gravity is an internal force of the two-ball system",
+    "The collision is so brief that gravity's impulse is negligible",
+    "Gravity acts only vertically, so it cannot change any momentum",
+    "The two balls have equal and opposite weights, which cancel"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An external force changes a system's momentum by its impulse, FΔt. The collision lasts a few milliseconds and the collision forces are huge, so in that time gravity delivers almost no impulse. To a good approximation the momentum just before equals the momentum just after.",
+    "options": [
+     "Gravity is exerted by Earth, which is outside the two-ball system, so it is an external force.",
+     "Right: the external impulse is negligible over the short collision time.",
+     "Gravity does change vertical momentum. It is ignored here only because it acts for such a short time.",
+     "Both weights point down, so they add. They do not cancel."
+    ]
+   }
   }
  ]
 }

@@ -644,6 +644,32 @@
      "Species counts measure biodiversity, not a footprint."
     ]
    }
+  },
+  {
+   "id": "env-ecological-footprints-16",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is biocapacity?",
+   "options": [
+    "The productive land and water area that is available",
+    "The number of people that a country is able to feed",
+    "The total mass of the living things found in a region",
+    "The area of land that a country sets aside in parks"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Biocapacity is the supply side: the productive area available to provide resources and absorb wastes. An ecological footprint is the demand side, the area a person or country uses.",
+    "options": [
+     "Right: a footprint larger than biocapacity means using more than nature renews.",
+     "Food is only one of the demands that are counted. Biocapacity is an area, in global hectares.",
+     "That describes biomass.",
+     "Protected land is only a small part of the productive area."
+    ]
+   }
   }
  ]
 }

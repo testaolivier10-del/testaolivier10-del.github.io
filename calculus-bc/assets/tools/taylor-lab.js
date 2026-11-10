@@ -146,7 +146,7 @@
         dyn.push('<circle class="tl-fe" cx="' + r2(Fr.sx(xe)) + '" cy="' + r2(Fr.sy(cl(fe))) + '" r="4"/><circle class="tl-pe" cx="' + r2(Fr.sx(xe)) + '" cy="' + r2(Fr.sy(cl(pe))) + '" r="4"/>');
       }
       var fc = F.f(c);
-      if(isFinite(fc)) dyn.push('<line class="tl-cline" x1="' + r2(Fr.sx(c)) + '" x2="' + r2(Fr.sx(c)) + '" y1="' + r2(Fr.sy(cl(fc))) + '" y2="' + r2(Fr.sy(cl(0))) + '"/><text class="tl-clab" x="' + r2(Fr.sx(c)) + '" y="' + r2(Math.min(Fr.h - Fr.pad.b - 6, Fr.sy(cl(0)) + 16)) + '" text-anchor="middle">c</text>');
+      if(isFinite(fc)) dyn.push('<line class="tl-cline" x1="' + r2(Fr.sx(c)) + '" x2="' + r2(Fr.sx(c)) + '" y1="' + r2(Fr.sy(cl(fc))) + '" y2="' + r2(Fr.sy(cl(0))) + '"/><text class="tl-clab" x="' + r2(Fr.sx(c) - 13) + '" y="' + r2(Math.min(Fr.h - Fr.pad.b - 6, Fr.sy(cl(0)) + 16)) + '" text-anchor="end">c</text>');
       svg.querySelector('.tl-dyn').innerHTML = dyn.join('');
       if(Hc){ svg.appendChild(Hc.el); Hc.set(c); } if(He){ svg.appendChild(He.el); He.set(xe); }
       words(fe, pe, be);

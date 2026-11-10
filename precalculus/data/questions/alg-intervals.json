@@ -230,6 +230,188 @@
    "why": {
     "correct": "Undo the addition, then the multiplication (flipping because $-2$ is negative), check a value, and write the interval with a bracket because $-4$ is included."
    }
+  },
+  {
+   "id": "pcalc-alg-intervals-10",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which inequality describes the interval $(-\\infty, 2]$?",
+   "type": "single",
+   "options": [
+    "$x < 2$",
+    "$x \\le 2$",
+    "$x \\ge 2$",
+    "$x > 2$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$(-\\infty, 2]$ has no left end, and the bracket includes $2$: every number less than or equal to $2$, so $x \\le 2$.",
+    "options": [
+     "The bracket at $2$ means $2$ is included, so the inequality needs $\\le$.",
+     "No left end, and $2$ included.",
+     "$x \\ge 2$ is $[2, \\infty)$, the numbers to the right of $2$.",
+     "$x > 2$ is $(2, \\infty)$, the numbers to the right of $2$ without $2$ itself."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-11",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which interval is written correctly?",
+   "type": "single",
+   "options": [
+    "$[2, \\infty]$",
+    "$(5, 1)$",
+    "$(-\\infty, 4]$",
+    "$[-\\infty, 0)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$(-\\infty, 4]$ has its smaller end on the left, a parenthesis at $-\\infty$ and a bracket at the included number $4$: it is $x \\le 4$.",
+    "options": [
+     "$\\infty$ is not a number you can land on, so it takes a parenthesis: $[2, \\infty)$.",
+     "The left end goes first and it is the smaller one: the interval from $1$ to $5$ is $(1, 5)$.",
+     "Smaller end on the left, parenthesis at $-\\infty$, bracket at the included end.",
+     "$-\\infty$ takes a parenthesis, like $\\infty$: $(-\\infty, 0)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-12",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $4 - 3x \\le 19$. What is the smallest solution?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -5,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "$-3x \\le 15$, and dividing by $-3$ gives $x \\ge -5$: the sign of the number is negative, and the inequality flips."
+     },
+     {
+      "value": "-23/3",
+      "why": "Subtract $4$ from both sides, do not add it: $-3x \\le 19 - 4 = 15$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Subtract $4$: $-3x \\le 15$. Divide by $-3$ and flip: $x \\ge -5$. The solutions are $[-5, \\infty)$, so the smallest is $-5$. Check: $4 - 3(-5) = 19$, and $19 \\le 19$ is true."
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-13",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Solve $-3 \\le 1 - 2x < 7$. Write the solution in interval notation.",
+   "type": "single",
+   "options": [
+    "$(-3, 2]$",
+    "$[-3, 2)$",
+    "$[-2, 3)$",
+    "$(-2, 3]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Subtract $1$ from all parts: $-4 \\le -2x < 6$. Divide by $-2$ and flip both signs: $2 \\ge x > -3$. Read from the small end: $-3 < x \\le 2$, which is $(-3, 2]$.",
+    "options": [
+     "Dividing by $-2$ flips both signs: $-3 < x \\le 2$, so $2$ is included and $-3$ is not.",
+     "The numbers are right, but the flip moves the \"or equal\" to the $2$ end: $x = 2$ gives $1 - 4 = -3$, which is allowed.",
+     "That divides $-4 \\le -2x < 6$ by $2$ and drops the negative sign on $x$. Divide by $-2$: the ends are $2$ and $-3$, and both signs flip.",
+     "The ends $-2$ and $3$ come from dividing by $2$ instead of $-2$. Dividing $-4 \\le -2x < 6$ by $-2$ gives the ends $2$ and $-3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-14",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $g(x) = 10 - 2x$, which inputs give outputs less than $4$?",
+   "type": "single",
+   "options": [
+    "$(-\\infty, 4)$",
+    "$(-\\infty, 3)$",
+    "$[3, \\infty)$",
+    "$(3, \\infty)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Solve $10 - 2x < 4$: $-2x < -6$, and dividing by $-2$ flips the sign: $x > 3$. The inputs are $(3, \\infty)$. Check $x = 4$: $g(4) = 2$, and $2 < 4$.",
+    "options": [
+     "$(-\\infty, 4)$ describes the outputs. The question asks for the inputs $x$.",
+     "Dividing by $-2$ flips the inequality: $x > 3$, not $x < 3$. Check $x = 0$: $g(0) = 10$, which is not less than $4$.",
+     "$g(3) = 4$, and $4$ is not less than $4$, so $3$ is left out.",
+     "$10 - 2x < 4$ gives $x > 3$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-15",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A number line has a closed dot at $-1$, an open dot at $6$, and shading between them. Which interval does it show?",
+   "type": "single",
+   "options": [
+    "$(-1, 6]$",
+    "$[-1, 6)$",
+    "$(-1, 6)$",
+    "$[-1, 6]$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A closed dot means the end is included (a bracket) and an open dot means it is not (a parenthesis): $[-1, 6)$, which is $-1 \\le x < 6$.",
+    "options": [
+     "The brackets are swapped: the closed dot is at $-1$, so $-1$ gets the bracket.",
+     "Closed dot at $-1$: bracket. Open dot at $6$: parenthesis.",
+     "The closed dot at $-1$ means $-1$ is included, so it needs a bracket.",
+     "The open dot at $6$ means $6$ is not included, so it needs a parenthesis."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-intervals-16",
+   "unit": "skills-algebra",
+   "topic": "alg-intervals",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What is the domain of $k(x) = \\frac{\\sqrt{x + 2}}{x - 3}$ in interval notation?",
+   "type": "single",
+   "options": [
+    "$[-2, \\infty)$",
+    "$(-2, 3) \\cup (3, \\infty)$",
+    "$[-2, 3) \\cup (3, \\infty)$",
+    "$(3, \\infty)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The root needs $x + 2 \\ge 0$, so $x \\ge -2$. The denominator needs $x \\ne 3$. Start from $[-2, \\infty)$ and skip $3$: $[-2, 3) \\cup (3, \\infty)$.",
+    "options": [
+     "This still contains $3$, where the denominator is $0$.",
+     "$x = -2$ is allowed: $\\sqrt{0} = 0$ on top is fine, so $-2$ gets a bracket.",
+     "$x \\ge -2$ with $3$ removed.",
+     "Inputs between $-2$ and $3$ work too: $k(0) = \\frac{\\sqrt{2}}{-3}$ is a real number."
+    ]
+   }
   }
  ]
 }

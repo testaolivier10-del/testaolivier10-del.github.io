@@ -583,6 +583,32 @@
     "The data have no relationship"
    ],
    "correct": 1
+  },
+  {
+   "id": "stat-residuals-16",
+   "unit": "unit-5",
+   "topic": "residuals",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"The residual plot has points above and below 0, so a line is a good model.\" Why is that not enough?",
+   "why": {
+    "correct": "A line through the middle of the points always has some above and some below. Check whether the residuals form a pattern, such as a curve or a fan.",
+    "options": [
+     "Right: both signs appear for any regression line, even one fit to curved data. Look for random scatter with no pattern.",
+     "Positive residuals everywhere would mean the line sits below every point, which a fitted line never does.",
+     "Real data scatter around a line; residuals of exactly 0 for every point are not expected.",
+     "Both signs appear for good and bad models alike. A curve shows up as a U shape, not as mixed signs."
+    ]
+   },
+   "options": [
+    "Any fitted line leaves points above and below; a pattern is what matters",
+    "A good model needs every one of its residuals to be positive",
+    "A good model needs every residual to be exactly equal to 0",
+    "Residuals above and below 0 show that the data follow a curve"
+   ],
+   "correct": 0
   }
  ]
 }

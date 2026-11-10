@@ -322,6 +322,156 @@
      "Cosine is adjacent over hypotenuse."
     ]
    }
+  },
+  {
+   "id": "calc-math-geometry-12",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A kite flies at a constant height of 60 feet. The person holding the string, with the hand at ground level, is a horizontal distance of $x$ feet from the point directly below the kite. Write the length $L$ of the straight string in terms of $x$.",
+   "expr": {
+    "answer": "sqrt(x^2+3600)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     1,
+     100
+    ],
+    "mode": "exact",
+    "lhs": "L =",
+    "answerTex": "\\sqrt{x^2 + 3600}",
+    "mistakes": [
+     {
+      "expr": "x+60",
+      "why": "The string is the hypotenuse, not the two legs added. Use $L^2 = x^2 + 60^2$."
+     },
+     {
+      "expr": "sqrt(x^2+60)",
+      "why": "Square the 60 as well: $L^2 = x^2 + 60^2 = x^2 + 3600$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The ground, the vertical height and the string form a right triangle with legs $x$ and 60 and hypotenuse $L$: $L^2 = x^2 + 60^2$, so $L = \\sqrt{x^2 + 3600}$."
+   }
+  },
+  {
+   "id": "calc-math-geometry-13",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find the surface area of a sphere with radius 2. Give the exact value.",
+   "numeric": {
+    "answer": "16pi",
+    "mistakes": [
+     {
+      "value": "32pi/3",
+      "why": "That is the volume, $\\frac{4}{3}\\pi r^3$. Surface area is $4\\pi r^2$, with squared units."
+     },
+     {
+      "value": "8pi",
+      "why": "Square the radius: $4\\pi(2)^2 = 16\\pi$, not $4\\pi \\cdot 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$S = 4\\pi r^2 = 4\\pi(2)^2 = 16\\pi$. An area has squared units, which is why the formula has $r^2$."
+   }
+  },
+  {
+   "id": "calc-math-geometry-14",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A circle has circumference $10\\pi$. Find its area. Give the exact value.",
+   "numeric": {
+    "answer": "25pi",
+    "mistakes": [
+     {
+      "value": "100pi",
+      "why": "$2\\pi r = 10\\pi$ gives $r = 5$, not 10. The 10 is the diameter."
+     },
+     {
+      "value": "5pi",
+      "why": "Square the radius: $\\pi(5)^2 = 25\\pi$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2\\pi r = 10\\pi$, so $r = 5$. Then $A = \\pi r^2 = 25\\pi$."
+   }
+  },
+  {
+   "id": "calc-math-geometry-15",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "single",
+   "practice": "1.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 20-foot ladder leans against a vertical wall and makes an angle $\\theta$ with the level ground. Which expression gives the height $y$, in feet, of the top of the ladder?",
+   "options": [
+    "$20\\cos\\theta$",
+    "$20\\tan\\theta$",
+    "$20\\sin\\theta$",
+    "$\\frac{20}{\\sin\\theta}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The height $y$ is opposite $\\theta$ and the ladder, 20 feet, is the hypotenuse: $\\sin\\theta = \\frac{y}{20}$, so $y = 20\\sin\\theta$.",
+    "options": [
+     "Cosine is adjacent over hypotenuse, so $20\\cos\\theta$ is the distance from the wall to the ladder's foot.",
+     "Tangent compares the two legs. The known side, 20, is the hypotenuse.",
+     "The height is opposite $\\theta$ and the ladder is the hypotenuse: $\\sin\\theta = \\frac{y}{20}$.",
+     "From $\\sin\\theta = \\frac{y}{20}$, multiply by 20. Dividing gives a length longer than the ladder."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-geometry-16",
+   "unit": "skills-math",
+   "topic": "math-geometry",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A rectangle has perimeter 20 and width $x$. Write its area $A$ as a function of $x$ alone.",
+   "expr": {
+    "answer": "x(10-x)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     0.5,
+     9.5
+    ],
+    "mode": "exact",
+    "lhs": "A =",
+    "answerTex": "x(10 - x)",
+    "mistakes": [
+     {
+      "expr": "x(20-x)",
+      "why": "The perimeter counts each side twice: $2x + 2y = 20$, so the length is $y = 10 - x$, not $20 - x$."
+     },
+     {
+      "expr": "x(20-2x)",
+      "why": "$20 - 2x$ is the two lengths together. Divide by 2: one length is $10 - x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Let the length be $y$. The perimeter gives $2x + 2y = 20$, so $y = 10 - x$. Then $A = xy = x(10 - x)$, a formula in one variable."
+   }
   }
  ]
 }

@@ -330,6 +330,115 @@
      "Cubing means multiplying by itself three times, not multiplying by 3."
     ]
    }
+  },
+  {
+   "id": "chem-math-exponents-13",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student tries to simplify 10² × 2³ by adding the exponents and writes 20⁵. Why does this not work?",
+   "options": [
+    "The exponents should be multiplied here, which gives 20⁶",
+    "The add-the-exponents rule only works when both powers have the same base",
+    "Exponents can only be added when both of them are even numbers",
+    "The exponents should be subtracted because the bases are different"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "10² × 2³ = 100 × 8 = 800. The multiplying rule counts how many times one base is multiplied by itself, so it needs the same base in both powers.",
+    "options": [
+     "Multiplying exponents is the rule for a power of a power, such as (10²)³. It does not combine two different bases either.",
+     "Right: 10² × 2³ is two tens times three twos. There is no single base to count, so work each power out: 100 × 8 = 800.",
+     "Whether an exponent is even or odd does not matter. 10³ × 10⁴ = 10⁷ works because the base is the same.",
+     "Subtracting exponents is the rule for dividing powers of the same base. With different bases and different exponents, no exponent rule combines the two powers."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is 1 ÷ 10⁻⁵?",
+   "options": [
+    "10⁻⁵",
+    "−10⁵",
+    "10⁵",
+    "0.00001"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "1 = 10⁰, and dividing subtracts the exponents: 10⁰ ÷ 10⁻⁵ = 10⁰⁻⁽⁻⁵⁾ = 10⁵. Dividing by a very small number gives a very large one.",
+    "options": [
+     "Dividing 1 by a number does not leave the number unchanged. 10⁻⁵ is 0.00001, and 1 ÷ 0.00001 is 100,000.",
+     "A negative exponent makes a number small, not negative, and dividing by it does not make the answer negative either.",
+     "Right: 0 − (−5) = +5, so the answer is 10⁵ = 100,000.",
+     "0.00001 is 10⁻⁵ itself. Dividing 1 by it flips the sign of the exponent."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "How many times as large as 10² is 10⁵?",
+   "options": [
+    "3 times as large",
+    "2.5 times as large",
+    "10⁷ times as large",
+    "1000 times as large"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "10⁵ ÷ 10² = 10⁵⁻² = 10³ = 1000. Each step of 1 in the exponent is another factor of 10.",
+    "options": [
+     "3 is the difference between the exponents. That difference is itself an exponent: the ratio is 10³.",
+     "Dividing the exponents (5 ÷ 2) is not a rule. To compare by a ratio, divide the numbers, which subtracts the exponents.",
+     "Adding the exponents is the rule for multiplying. \"How many times as large\" is a division.",
+     "Right: 100,000 ÷ 100 = 1000."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-16",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate (10²)³ ÷ 10⁴. Give the answer as an ordinary number.",
+   "numeric": {
+    "answer": 100,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 10,
+      "rel": 0.01,
+      "why": "Value: for a power of a power you multiply the exponents. (10²)³ = 10⁶, not 10⁵."
+     },
+     {
+      "value": 10000000000,
+      "rel": 0.01,
+      "why": "Value: you added the bottom exponent. Dividing by 10⁴ subtracts 4."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Power of a power multiplies the exponents: (10²)³ = 10⁶. Dividing subtracts: 10⁶ ÷ 10⁴ = 10² = 100."
+   }
   }
  ]
 }

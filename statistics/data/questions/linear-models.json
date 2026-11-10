@@ -581,6 +581,32 @@
     "$\\hat{y} = 50 + 3x$"
    ],
    "correct": 2
+  },
+  {
+   "id": "stat-linear-models-16",
+   "unit": "unit-5",
+   "topic": "linear-models",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A calculator's regression output for predicting exam score (points) from study time (hours) reads $\\hat{y} = a + bx$ with $a = 48.2$ and $b = 1.9$. What score does the line predict for a student who studies 10 hours?",
+   "why": {
+    "correct": "In $\\hat{y} = a + bx$, $a$ is the intercept and $b$ is the slope: $\\hat{y} = 48.2 + 1.9(10) = 48.2 + 19 = 67.2$ points.",
+    "options": [
+     "That uses $a$ as the slope, as in algebra's $y = mx + b$. In statistics $b$ multiplies $x$: $48.2 + 1.9(10)$.",
+     "Right: $48.2 + 1.9(10) = 67.2$, so the predicted score is about 67 points.",
+     "That adds $a + b$, the prediction for 1 hour. Multiply the slope by 10 hours first.",
+     "That is the slope times 10 alone. Add the intercept, 48.2."
+    ]
+   },
+   "options": [
+    "483.9 points",
+    "67.2 points",
+    "50.1 points",
+    "19 points"
+   ],
+   "correct": 1
   }
  ]
 }

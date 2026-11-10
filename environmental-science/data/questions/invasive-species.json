@@ -560,6 +560,32 @@
     },
     "model": "Require boats to be cleaned, drained and dried at the boat ramp so that mussels and larvae are removed before boats enter the lake, which prevents the invader from reaching the new lake because boats are how it moves between lakes."
    }
+  },
+  {
+   "id": "env-invasive-species-16",
+   "unit": "unit-9",
+   "topic": "invasive-species",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Wheat was brought to North America from another continent and now grows on millions of hectares of farmland there. Why is wheat called nonnative but not invasive?",
+   "options": [
+    "It was brought on purpose, and invaders arrive by accident",
+    "It is a plant, and only animals can be invasive",
+    "It does not spread on its own and harm ecosystems",
+    "It has grown there too long to count as nonnative"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A nonnative species lives outside the range where it evolved because people moved it. It is invasive only if it also spreads rapidly and causes harm. Wheat stays where farmers plant it, so it is nonnative but not invasive.",
+    "options": [
+     "How a species arrived does not decide this. Kudzu and cane toads were brought on purpose and became invasive.",
+     "Plants can be invasive. Kudzu is a vine that smothers trees and native plants.",
+     "Right: invasive means nonnative, spreading fast and causing harm. Wheat meets only the first part.",
+     "A species stays nonnative however long it has been there. The label depends on where it evolved."
+    ]
+   }
   }
  ]
 }

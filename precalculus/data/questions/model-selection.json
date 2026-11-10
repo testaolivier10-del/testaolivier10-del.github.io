@@ -487,6 +487,32 @@
      "Equal steps, equal changes."
     ]
    }
+  },
+  {
+   "id": "pcalc-model-selection-16",
+   "unit": "unit-1",
+   "topic": "model-selection",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Over equal input steps, a data set has outputs $1, 8, 27, 64, 125$. The first differences are $7, 19, 37, 61$, the second differences are $12, 18, 24$, and the third differences are $6, 6$. Which model type fits?",
+   "type": "single",
+   "options": [
+    "Linear, because the outputs rise at each step",
+    "Quadratic, because the second differences are constant",
+    "Cubic, because the third differences are constant",
+    "Quartic, because there are five data points"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Over equal input steps, a polynomial of degree $n$ has constant $n$th differences. Here the first and second differences change and the third differences are constant, $6$, so a cubic model fits.",
+    "options": [
+     "A linear model needs constant first differences. These are $7, 19, 37, 61$.",
+     "The second differences are $12, 18, 24$, which are not constant.",
+     "The third differences, $6$ and $6$, are the first ones that are constant.",
+     "Five points can be matched by a quartic, but the constant third differences show that a simpler cubic already fits."
+    ]
+   }
   }
  ]
 }

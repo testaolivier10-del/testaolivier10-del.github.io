@@ -505,6 +505,32 @@
      "The disease kills ants; nothing says it affects lizards."
     ]
    }
+  },
+  {
+   "id": "env-generalists-specialists-16",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which species is the best example of a specialist?",
+   "options": [
+    "A raccoon eating fruit, eggs and trash",
+    "A crow living in farms, towns and forests",
+    "A rat eating grain, insects and scraps",
+    "A koala eating only eucalyptus leaves"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A specialist uses a narrow range of food or habitat. A koala eats almost nothing but eucalyptus leaves, so it can live only where those trees grow.",
+    "options": [
+     "A raccoon has a broad diet, which makes it a generalist.",
+     "A crow uses many habitats, which makes it a generalist.",
+     "A rat eats almost anything, which makes it a generalist.",
+     "Right: one food source means a narrow niche."
+    ]
+   }
   }
  ]
 }

@@ -2,6 +2,7 @@
 
 <h2>What a composite function does</h2>
 <p>The <b>composite function</b> $f(g(x))$ takes an input $x$, applies $g$, and then uses that output as the input of $f$. It is also written $(f \circ g)(x)$, read "f of g of x". The function written closest to $x$ acts first. Think of an assembly line: $g$ is the first machine and $f$ is the second.</p>
+<figure id="fig-machine" data-fig="composition-machine"><figcaption>Two machines in a row. The input goes through $g$ first, and what comes out of $g$ goes into $f$. With the numbers of worked example 1, $2$ becomes $0$ and then $4$.</figcaption></figure>
 <p>Because the output of $g$ becomes an input of $f$, the work always goes from the inside out. On the exam, show the inner value: graders look for it.</p>
 <div class="worked">
 <p><b>Worked example 1 (from a table).</b> A table gives $g(2) = 0$ and $f(0) = 4$. Find $f(g(2))$.</p>
@@ -22,6 +23,7 @@
 </div>
 <p>Composition also explains transformations. With $g(x) = x - 2$, $f(g(x)) = f(x - 2)$ is the graph of $f$ moved $2$ units right. With $f(x) = 5 \cdot 2^x$ and $g(x) = x + 3$, $f(g(x)) = 5 \cdot 2^{x + 3} = 40 \cdot 2^x$: for an exponential function, a horizontal shift is the same as a vertical dilation.</p>
 
+<figure id="fig-shift" data-fig="composition-shift"><figcaption>With $f(x) = \sqrt{x}$ and $g(x) = x - 2$, the composite $f(g(x)) = \sqrt{x - 2}$ is the graph of $f$ moved $2$ units right: $(4, 2)$ goes to $(6, 2)$.</figcaption></figure>
 <h2>Composites from graphs</h2>
 <p>A graph works like a table: read the inner function at $x$, then read the outer function at that output. To solve an equation such as $g(f(x)) = 2$, work from the outside in: first find every input of $g$ that gives $2$, then every $x$ with $f(x)$ equal to one of those inputs. Several inputs can share an output, so check for more than one.</p>
 <div class="worked">
@@ -30,6 +32,7 @@
 <p>Inner step: $f(x) = -1$ gives $x = 0$; $f(x) = 3$ gives $x = 2$.</p>
 <p>So $x = 0$ and $x = 2$. Stopping at $-1$ and $3$ gives the values of $f(x)$, not of $x$.</p>
 </div>
+<figure id="fig-solve" data-fig="composition-solve"><figcaption>One pair of graphs that fits worked example 3, $g(x) = x^2 - 2x - 1$ and $f(x) = 2x - 1$. The parabola $g$ is at height $2$ for the inputs $-1$ and $3$; the line $f$ gives those two values at $x = 0$ and $x = 2$.</figcaption></figure>
 
 <h2>The domain of a composite</h2>
 <p>An input $x$ belongs to the domain of $f(g(x))$ when two things hold: $x$ is in the domain of $g$, and the output $g(x)$ is in the domain of $f$.</p>

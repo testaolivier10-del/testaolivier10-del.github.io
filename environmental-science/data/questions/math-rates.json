@@ -410,6 +410,182 @@
      "Per-person values make a fair comparison across sizes."
     ]
    }
+  },
+  {
+   "id": "env-math-rates-12",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "People in a city of 50,000 each use an average of 180 liters of water per day. How many liters does the whole city use in a day?",
+   "numeric": {
+    "unit": "L/day",
+    "units": [
+     "L",
+     "liters",
+     "liters per day",
+     "L per day"
+    ],
+    "from": {
+     "fn": "mul",
+     "args": [
+      180,
+      50000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 277.777777778,
+      "why": "You divided the population by the rate. A total is the rate times the number of people: 180 L/person × 50,000 people."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{180\\,\\text{L}}{1\\,\\text{person}} \\times 50{,}000\\,\\text{people} = 9{,}000{,}000$ L per day. People cancel, leaving liters."
+   }
+  },
+  {
+   "id": "env-math-rates-13",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car drove 600 km on 40 liters of gasoline. What is its fuel use in kilometers per liter?",
+   "options": [
+    "0.067 km/L",
+    "15 km/L",
+    "24,000 km/L",
+    "560 km/L"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "\"Kilometers per liter\" puts kilometers on top: 600 km / 40 L = 15 km/L.",
+    "options": [
+     "That is 40 / 600, which is liters per kilometer. The question asks for kilometers per liter.",
+     "Right: the quantity after \"per\" goes on the bottom.",
+     "That is 600 × 40. \"Per\" means divide.",
+     "That is 600 - 40. A rate is a division, not a difference."
+    ]
+   }
+  },
+  {
+   "id": "env-math-rates-14",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A forest covered 5,200 hectares in 2010 and 4,600 hectares in 2022. What was the average rate of forest loss, in hectares per year?",
+   "numeric": {
+    "unit": "ha/yr",
+    "units": [
+     "hectares per year",
+     "ha per year",
+     "ha/year"
+    ],
+    "tol": 0.5,
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        5200,
+        4600
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        2022,
+        2010
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 600,
+      "why": "600 ha is the total loss. Divide by the 12 years to get the loss per year."
+     },
+     {
+      "value": 383.333333333,
+      "why": "You divided the 2022 area by 12. A rate of change is the change (5,200 - 4,600) divided by the time."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Change: 5,200 ha - 4,600 ha = 600 ha lost. Time: 2022 - 2010 = 12 years. Rate: 600 ha / 12 yr = 50 ha per year."
+   }
+  },
+  {
+   "id": "env-math-rates-15",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A landfill has 600,000 cubic meters of space left. It fills at a rate of 40,000 cubic meters per year. How many years until it is full?",
+   "numeric": {
+    "unit": "yr",
+    "units": [
+     "years",
+     "year"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "div",
+     "args": [
+      600000,
+      40000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 24000000000,
+      "why": "You multiplied. Divide the space by the rate so that cubic meters cancel and years are left."
+     },
+     {
+      "value": 0.0666666666667,
+      "why": "You divided the rate by the space. Space ÷ rate gives years."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$600{,}000\\,\\text{m}^{3} \\div \\frac{40{,}000\\,\\text{m}^{3}}{1\\,\\text{yr}} = 15$ years. Cubic meters cancel, leaving years."
+   }
+  },
+  {
+   "id": "env-math-rates-16",
+   "unit": "skills-math",
+   "topic": "math-rates",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Over ten years a city’s total water use rose 10% while its population rose 25%. What happened to water use per person?",
+   "options": [
+    "It rose 35%",
+    "It rose 15%",
+    "It fell by about 12%",
+    "It stayed the same"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Per person means total ÷ people. The total became 1.10 times as large and the population 1.25 times as large, so the per-person use became 1.10 / 1.25 = 0.88 times as large: about 12% lower.",
+    "options": [
+     "Adding the two percents treats both as increases in use. More people sharing the water lowers the per-person value.",
+     "The population grew faster than the total, so each person’s share shrank.",
+     "Right: the bottom of the fraction grew faster than the top.",
+     "It would stay the same only if the total and the population rose by the same percent."
+    ]
+   }
   }
  ]
 }

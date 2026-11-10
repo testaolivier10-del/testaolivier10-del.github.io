@@ -6,7 +6,7 @@
   "hook": "<p>A 54-year-old woman is on her bedroom floor, wedged between the bed and the wall. She is unresponsive, she is not breathing and you feel no carotid pulse. Her husband asks whether you should carry her to the living room, where there is more space.</p><p>Every second without compressions is a second without blood flow to her brain. A resuscitation is four steps, and the first one starts right where she is.</p>",
   "steps": [
     {
-      "find": "The patient is unresponsive and not breathing, or only gasping. You check a pulse for no more than 10 seconds (carotid in an adult, carotid or femoral in a child, brachial in an infant) and find none.",
+      "find": "The patient is unresponsive and not breathing, or only gasping. You take up to 10 seconds, and no longer, to check a pulse (carotid in an adult, carotid or femoral in a child, brachial in an infant) and find none.",
       "act": "Step 1: start compressions immediately, where the patient is found, clearing just enough space to work. In an infant or child, a heart rate under 60 with poor perfusion despite good oxygenation and ventilation also gets compressions."
     },
     {
@@ -38,7 +38,7 @@
     "<b>Three findings confirm arrest:</b> unresponsive, not breathing (gasping does not count) and no pulse within 10 seconds.",
     "<b>Compression fraction</b> is the share of the resuscitation during which compressions are actually being given. Keep it high: compress where the patient lies and do not pause to place pads.",
     "<b>Full recoil.</b> The heart refills when the chest comes back up. Leaning on the chest reduces the blood flow of every compression that follows.",
-    "<b>Infant technique changed in 2025:</b> the two-finger technique is gone. Use two thumbs encircling the chest or the heel of one hand.",
+    "<b>Infant technique changed in 2025:</b> the two-finger technique was eliminated because it did not reach adequate depth. Use two thumbs encircling the chest or the heel of one hand.",
     "<b>The AED goes on as soon as it is at hand, at any age.</b> Only a lone rescuer at an unwitnessed infant or child arrest gives about 2 minutes of CPR before leaving to get one.",
     "<b>With an advanced airway in place</b> compressions run continuously, with a breath about every 6 seconds for an adult and every 2 to 3 seconds for an infant or child.",
     "<b>Roles are set in advance:</b> one provider on compressions, one on the AED, one at the head for airway and ventilations.",

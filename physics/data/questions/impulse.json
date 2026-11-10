@@ -472,6 +472,32 @@
    "why": {
     "correct": "J = Δp is the same; F_avg = J/Δt is smaller on the pillow because the stop takes longer."
    }
+  },
+  {
+   "id": "phys-impulse-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "impulse",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A light cart and a heavy cart start at rest on a frictionless track. The same net force acts on each for the same time. How do the carts compare afterward?",
+   "options": [
+    "The light cart has more momentum and more speed",
+    "They have the same speed, and the heavy cart has more momentum",
+    "The heavy cart has more momentum, and the light cart has more speed",
+    "They have the same momentum, and the light cart has more speed"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Impulse = FΔt is the same for both, so the change in momentum is the same. Both start at rest, so they end with equal momentum. Since p = mv, the cart with the smaller mass has the larger speed.",
+    "options": [
+     "The speed is larger for the light cart, but the momentum depends only on the impulse, which is the same.",
+     "The same force gives the lighter cart a larger acceleration, so the speeds differ.",
+     "Momentum change equals impulse, whatever the mass. Equal impulses give equal momenta.",
+     "Right: equal FΔt means equal Δp, and v = p/m is larger for the smaller mass."
+    ]
+   }
   }
  ]
 }

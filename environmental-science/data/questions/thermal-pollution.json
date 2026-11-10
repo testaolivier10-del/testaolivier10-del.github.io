@@ -586,6 +586,32 @@
     "unit": "L",
     "requireUnits": true
    }
+  },
+  {
+   "id": "env-thermal-pollution-16",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student lists \"toxic metals in a power plant’s cooling water\" as an example of thermal pollution. Is the student correct?",
+   "options": [
+    "Yes: anything in cooling water is thermal pollution",
+    "Yes: metals make the water hotter",
+    "No: thermal pollution is radioactive waste",
+    "No: thermal pollution is the added heat itself"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Thermal pollution is heat added to water by human activity. The warmer water holds less dissolved oxygen and can shock aquatic life. Metals in the water would be chemical pollution.",
+    "options": [
+     "The term refers to the heat, not to substances carried in the water.",
+     "Dissolved metals do not heat water.",
+     "Radioactivity is a different kind of pollution. Thermal means heat.",
+     "Right: the pollutant is the heat."
+    ]
+   }
   }
  ]
 }

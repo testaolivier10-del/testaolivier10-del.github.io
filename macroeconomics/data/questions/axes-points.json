@@ -29,6 +29,36 @@
      ]
     ]
    }
+  },
+  "axes-points-s2": {
+   "kind": "data",
+   "title": "Hours worked and weekly pay",
+   "invented": true,
+   "table": {
+    "caption": "Hours worked in a week and pay for that week at one part-time job (invented data for practice)",
+    "cols": [
+     "Hours worked",
+     "Weekly pay (\\$)"
+    ],
+    "rows": [
+     [
+      "5",
+      "60"
+     ],
+     [
+      "10",
+      "120"
+     ],
+     [
+      "15",
+      "180"
+     ],
+     [
+      "20",
+      "240"
+     ]
+    ]
+   }
   }
  },
  "items": [
@@ -323,6 +353,139 @@
      "Neat curves do not fix swapped axes.",
      "The axes alone are enough to lose the point.",
      "Right: the standard axes are part of the point."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-12",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "axes-points-s2",
+   "q": "On a graph with hours worked on the horizontal axis and weekly pay on the vertical axis, a student plots the first row as (60, 5). What is wrong?",
+   "options": [
+    "Nothing: the two values can be written in either order",
+    "The point needs a third value for the hourly wage",
+    "The order is swapped: the row is the point (5, 60)",
+    "The row belongs at the origin, since it is the first one"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An ordered pair is (horizontal value, vertical value). Hours are horizontal here, so the row is (5, 60). The pair (60, 5) would mean 60 hours of work for 5 dollars.",
+    "options": [
+     "The order matters: (60, 5) and (5, 60) are different points.",
+     "A point on a graph is one pair of values, one for each axis.",
+     "Right: horizontal value first, so 5 hours, then 60 dollars.",
+     "The origin is where both values are zero, and this row is 5 hours and 60 dollars."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-13",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "axes-points-s2",
+   "q": "A point is plotted for the 15-hour row. Dashed lines run from it straight down and straight across. Where do they meet the axes?",
+   "options": [
+    "At 15 on the horizontal axis and 180 on the vertical axis",
+    "At 180 on the horizontal axis and 15 on the vertical axis",
+    "At 15 on both axes, since the row is for 15 hours",
+    "At the origin, where the two axes meet each other"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "To read a point, drop a dashed line straight down to the horizontal axis (15 hours) and another straight across to the vertical axis (180 dollars).",
+    "options": [
+     "Right: hours are on the horizontal axis and pay is on the vertical axis.",
+     "That swaps the axes: hours are horizontal and pay is vertical.",
+     "The line across reaches the vertical axis at the pay for that row, 180 dollars.",
+     "Dashed lines from a point go to each axis at the point's own values, not to the origin."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-14",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "axes-points-s2",
+   "q": "Which statement describes the relationship in the table and how its points run across the graph?",
+   "options": [
+    "Inverse: the points fall as they move to the right",
+    "Direct: the points climb as they move to the right",
+    "Inverse: the points climb as they move to the right",
+    "Direct: the points fall as they move to the right"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Hours and pay rise together, which is a direct (positive) relationship. Its points climb to the right.",
+    "options": [
+     "In an inverse relationship one variable falls as the other rises. Here pay rises with hours.",
+     "Right: more hours come with more pay, so each point is higher than the one to its left.",
+     "Points that climb to the right show a direct relationship, not an inverse one.",
+     "Pay rises with hours, so the points climb. Falling points would mean an inverse relationship."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-15",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Where is the origin of a graph, and what does it show?",
+   "options": [
+    "The highest point plotted, where both values are largest",
+    "The middle of the graph, where the curves usually cross",
+    "The end of the horizontal axis, where its label is written",
+    "The corner where the axes meet, where both values are zero"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The two axes meet at the origin, the corner where both values are zero (or the lowest value shown).",
+    "options": [
+     "The origin is where the axes start, not the highest point.",
+     "Where curves cross depends on the curves. The origin is the corner where the axes meet.",
+     "The label names the axis's variable. The origin is at the start of both axes.",
+     "Right: both number lines start at the origin."
+    ]
+   }
+  },
+  {
+   "id": "mac-axes-points-16",
+   "unit": "graph-skills",
+   "topic": "axes-points",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which steps correctly plot the point (4, 9)?",
+   "options": [
+    "Start at the origin, move right 9, then move up 4",
+    "Start at 4 on the vertical axis, then move right 9",
+    "Start at the origin, move right 4, then move up 9",
+    "Start at 9 on the horizontal axis, then move up 4"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The first value is horizontal and the second is vertical: from the origin, move right to 4, then up to 9.",
+    "options": [
+     "That plots (9, 4). The first value in the pair is the horizontal one.",
+     "That also plots (9, 4): a vertical value of 4 and a horizontal value of 9.",
+     "Right: right to the horizontal value, then up to the vertical value.",
+     "That plots (9, 4). The horizontal value is 4, not 9."
     ]
    }
   }

@@ -453,6 +453,32 @@
      "Group membership is not the reason; the similar atomic radii are."
     ]
    }
+  },
+  {
+   "id": "chem-metals-alloys-16",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "metals-alloys",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which particle-level description fits a piece of solid copper?",
+   "options": [
+    "Copper atoms joined in pairs, with each pair held to the next by weak attractions",
+    "Copper cations in a regular array, surrounded by valence electrons that are free to move",
+    "Copper cations and copper anions alternating in a regular array",
+    "Copper atoms that each share electron pairs with a few fixed neighbors only"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a metallic solid the atoms release their valence electrons into a sea of delocalized electrons. The cations sit in a regular array, held together by their attraction to that sea.",
+    "options": [
+     "That describes a substance made of separate molecules. A metal has none.",
+     "Right: this electron-sea picture explains why copper conducts and can be bent.",
+     "That describes an ionic solid. A pure metal has only one kind of atom, and all of them form cations.",
+     "That describes covalent bonds with localized electrons. In a metal the valence electrons are not tied to any pair of atoms."
+    ]
+   }
   }
  ]
 }

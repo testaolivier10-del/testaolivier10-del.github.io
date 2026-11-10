@@ -569,6 +569,32 @@
     },
     "model": "Bioaccumulation is the build-up of a substance in one organism over its lifetime; biomagnification is the rise in concentration at each higher trophic level of a food chain."
    }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-16",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fat-soluble pollutant enters a lake. In which organism would you expect the highest concentration?",
+   "options": [
+    "Algae that take it in from the water",
+    "Zooplankton that graze on the algae",
+    "A fish-eating eagle",
+    "Minnows that eat zooplankton"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A pollutant that is stored in fat and breaks down slowly biomagnifies: its concentration rises at each higher trophic level. The eagle feeds at the top of the chain.",
+    "options": [
+     "Algae are at the bottom of the chain, where the concentration is lowest among living things.",
+     "Zooplankton are one step up from the algae, still near the bottom.",
+     "Right: the top predator eats many contaminated fish and keeps the pollutant from each one.",
+     "Minnows are in the middle of the chain, so they hold less than the animals that eat fish."
+    ]
+   }
   }
  ]
 }

@@ -599,6 +599,32 @@
     },
     "model": "Tertiary treatment removes phosphorus and nitrogen, which reduces algal blooms because algae no longer get the limiting nutrients they need to bloom, so the lake avoids the oxygen drop when blooms die."
    }
+  },
+  {
+   "id": "env-sewage-treatment-16",
+   "unit": "unit-8",
+   "topic": "sewage-treatment",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is treated wastewater exposed to chlorine, ozone or ultraviolet light before it is released into a river?",
+   "options": [
+    "To settle out sand and grit",
+    "To remove nitrogen and phosphorus",
+    "To kill disease-causing bacteria and viruses",
+    "To lower the temperature of the water"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Disinfection is the last step. Chlorine, ozone or UV light kills the disease-causing microbes that remain after the solids and the organic matter have been removed.",
+    "options": [
+     "Solids settle out in primary treatment.",
+     "Nutrients are removed in tertiary treatment.",
+     "Right: this protects people who use the water downstream.",
+     "Disinfection does not cool the water."
+    ]
+   }
   }
  ]
 }

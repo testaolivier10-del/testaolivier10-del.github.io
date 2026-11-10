@@ -286,6 +286,136 @@
    "why": {
     "correct": "Difference of cubes: $x^3 - 1 = (x - 1)(x^2 + x + 1)$. Cancel $x - 1$ and evaluate: $1 + 1 + 1 = 3$."
    }
+  },
+  {
+   "id": "calc-math-limit-algebra-12",
+   "unit": "skills-math",
+   "topic": "math-limit-algebra",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Substituting $x = -3$ into $x^3 + 2x^2 - 5x - 6$ gives 0. Which expression is a factor of the polynomial?",
+   "options": [
+    "$x - 3$",
+    "$x + 3$",
+    "$x - 6$",
+    "$x + 6$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "If a polynomial is 0 at $x = a$, then $x - a$ is a factor. Here $a = -3$, so the factor is $x - (-3) = x + 3$: $x^3 + 2x^2 - 5x - 6 = (x + 3)(x^2 - x - 2)$.",
+    "options": [
+     "$x - 3$ is zero at $x = 3$, and the polynomial there is $27 + 18 - 15 - 6 = 24$, not 0.",
+     "The polynomial is 0 at $x = -3$, so $x - (-3) = x + 3$ is a factor.",
+     "The constant term's size, 6, is not a zero: at $x = 6$ the polynomial is 252.",
+     "At $x = -6$ the polynomial is $-216 + 72 + 30 - 6 = -120$, not 0."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-limit-algebra-13",
+   "unit": "skills-math",
+   "topic": "math-limit-algebra",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\frac{(2 + h)^3 - 8}{h}$ for $h \\ne 0$.",
+   "options": [
+    "$h^2$",
+    "$12 + h^2$",
+    "$12 + 6h + h^2$",
+    "$4 + 2h + h^2$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Expand with $(a + h)^3 = a^3 + 3a^2h + 3ah^2 + h^3$: $(2 + h)^3 = 8 + 12h + 6h^2 + h^3$. Subtract 8 and factor: $h(12 + 6h + h^2)$. Cancel $h$: $12 + 6h + h^2$.",
+    "options": [
+     "$(2 + h)^3$ is not $8 + h^3$; the cube has two middle terms, $12h$ and $6h^2$.",
+     "One middle term is missing: $(2 + h)^3 = 8 + 12h + 6h^2 + h^3$, and the $6h^2$ leaves $6h$ after dividing.",
+     "$(2 + h)^3 - 8 = 12h + 6h^2 + h^3 = h(12 + 6h + h^2)$, and the $h$ cancels.",
+     "The middle terms of a cube carry a factor 3: $3(2)^2h = 12h$ and $3(2)h^2 = 6h^2$."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-limit-algebra-14",
+   "unit": "skills-math",
+   "topic": "math-limit-algebra",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Simplify $\\frac{x - 9}{\\sqrt{x} - 3}$ for $x \\ge 0$ and $x \\ne 9$.",
+   "options": [
+    "$\\sqrt{x} + 3$",
+    "$\\sqrt{x} - 3$",
+    "$\\frac{1}{\\sqrt{x} + 3}$",
+    "$x - 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$x - 9$ is a difference of squares in $\\sqrt{x}$: $x - 9 = (\\sqrt{x} - 3)(\\sqrt{x} + 3)$. Cancel the factor $\\sqrt{x} - 3$ to get $\\sqrt{x} + 3$. Multiplying top and bottom by the conjugate gives the same result.",
+    "options": [
+     "Multiply top and bottom by the conjugate $\\sqrt{x} + 3$: the bottom becomes $x - 9$, which cancels.",
+     "$(\\sqrt{x} - 3)^2$ is $x - 6\\sqrt{x} + 9$, not $x - 9$. The factor that pairs with $\\sqrt{x} - 3$ is its conjugate.",
+     "That is the reciprocal: it is the simplified form of $\\frac{\\sqrt{x} - 3}{x - 9}$.",
+     "A root and a number are terms here, not factors, so they do not cancel against $x$ and 9."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-limit-algebra-15",
+   "unit": "skills-math",
+   "topic": "math-limit-algebra",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For $x \\ne 3$, the fraction $\\frac{2x^2 - 7x + 3}{x - 3}$ simplifies to a linear expression. Evaluate the simplified form at $x = 3$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "Check the factoring by expanding: $(2x + 1)(x - 3) = 2x^2 - 5x - 3$. The correct factoring is $(2x - 1)(x - 3)$."
+     },
+     {
+      "value": 0,
+      "why": "Substituting into the original fraction makes the top 0 and the bottom 0 as well, which gives no value. Factor and cancel $x - 3$ first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Factor with $a \\cdot c = 6$: the numbers $-6$ and $-1$ multiply to 6 and add to $-7$, so $2x^2 - 7x + 3 = (2x - 1)(x - 3)$. Cancel $x - 3$: the simplified form is $2x - 1$, which is $5$ at $x = 3$."
+   }
+  },
+  {
+   "id": "calc-math-limit-algebra-16",
+   "unit": "skills-math",
+   "topic": "math-limit-algebra",
+   "type": "single",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Simplify $\\frac{\\frac{1}{x} - \\frac{1}{5}}{x - 5}$ for $x \\ne 0$ and $x \\ne 5$.",
+   "options": [
+    "$\\frac{1}{5x}$",
+    "$\\frac{1}{x - 5}$",
+    "$-\\frac{1}{25}$",
+    "$-\\frac{1}{5x}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Combine the top over $5x$: $\\frac{5 - x}{5x}$. Dividing by $x - 5$ gives $\\frac{5 - x}{5x(x - 5)}$. Since $5 - x = -(x - 5)$, the factor cancels and leaves $-\\frac{1}{5x}$.",
+    "options": [
+     "The sign is lost: $5 - x = -(x - 5)$, so canceling leaves $-1$ on top.",
+     "Combine the small fractions over $5x$ first; they do not cancel to 1.",
+     "$-\\frac{1}{25}$ is the value the expression approaches near $x = 5$, not the simplified expression.",
+     "$\\frac{1}{x} - \\frac{1}{5} = \\frac{5 - x}{5x}$, and $\\frac{5 - x}{x - 5} = -1$."
+    ]
+   }
   }
  ]
 }

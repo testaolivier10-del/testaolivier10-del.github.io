@@ -543,6 +543,32 @@
      "Less food cannot support a larger population."
     ]
    }
+  },
+  {
+   "id": "env-population-growth-16",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A population grows by a steady 4% each year with unlimited resources. How does the number of individuals added each year change over time?",
+   "options": [
+    "It stays the same, since the percent does not change",
+    "It gets larger, since 4% is taken of a bigger number",
+    "It gets smaller, since resources start to run short",
+    "It drops to zero once the population has doubled"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The percent stays at 4%, but each year it is taken of a larger population: 4% of 5,000 is 200, and 4% of 10,000 is 400. The number added keeps climbing, which is why the J-curve gets steeper.",
+    "options": [
+     "The percent is constant, but the number it produces is not. A fixed number added each year would give a straight line, not a J-curve.",
+     "Right: a constant percent of a growing population is a growing number.",
+     "The question says resources are unlimited. Slowing as resources run short describes logistic growth.",
+     "Doubling does not stop exponential growth. The population keeps growing at 4% a year."
+    ]
+   }
   }
  ]
 }

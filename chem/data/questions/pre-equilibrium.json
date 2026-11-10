@@ -458,6 +458,32 @@
     ]
    },
    "fixed": true
+  },
+  {
+   "id": "chem-pre-equilibrium-16",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Mechanism: (1) O₃ ⇌ O₂ + O (fast, reversible); (2) O + O₃ → 2 O₂ (slow). What rate law does this mechanism predict?",
+   "options": [
+    "rate = k[O₃]²/[O₂]",
+    "rate = k[O][O₃]",
+    "rate = k[O₃]²",
+    "rate = k[O₃][O₂]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slow step: rate = k₂[O][O₃]. From the fast step, k₁[O₃] = k₋₁[O₂][O], so [O] = (k₁/k₋₁)[O₃]/[O₂]. Substituting gives rate = k[O₃]²/[O₂]. A product of the fast step ends up on the bottom.",
+    "options": [
+     "Right: a higher [O₂] pushes step 1 backward, lowers [O] and slows the reaction.",
+     "O is an intermediate, so it must be replaced using the fast reversible step.",
+     "The O₂ made in step 1 also sets [O]. Solving the fast step for [O] leaves [O₂] on the bottom.",
+     "O₂ is a product of the fast step, so it divides: solving k₁[O₃] = k₋₁[O₂][O] for [O] puts [O₂] on the bottom."
+    ]
+   }
   }
  ]
 }

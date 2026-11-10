@@ -412,6 +412,172 @@
      }
     ]
    }
+  },
+  {
+   "id": "env-math-doubling-12",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A country’s electricity demand grows 7% a year. By the rule of 70, how many years will it take for demand to become 4 times as large?",
+   "numeric": {
+    "unit": "yr",
+    "units": [
+     "years",
+     "year"
+    ],
+    "tol": 0.5,
+    "from": {
+     "fn": "mul",
+     "args": [
+      2,
+      {
+       "fn": "ruleOf70",
+       "args": [
+        7
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "10 years is one doubling. Four times as large takes two doublings: 2 × 10 years."
+     },
+     {
+      "value": 40,
+      "why": "Four times as large is two doublings (× 2 × 2), not four. 2 × 10 = 20 years."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Doubling time: 70 / 7 = 10 years. Four times as large is two doublings (× 2, then × 2 again), so 2 × 10 = 20 years."
+   }
+  },
+  {
+   "id": "env-math-doubling-13",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which of these can you use the rule of 70 to find a doubling time?",
+   "options": [
+    "A landfill that receives 500 metric tons of trash every year",
+    "A glacier that loses 3 meters of thickness every year",
+    "A deer herd that grows 4% every year",
+    "A well whose water level drops 20 cm every month"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The rule of 70 works for growth at a steady percent rate, where each year’s increase is taken of a bigger number. The herd grows 4% a year, so it doubles in about 70 / 4 = 17.5 years.",
+    "options": [
+     "The landfill grows by the same amount each year, not by the same percent.",
+     "A steady loss of 3 meters a year is a constant amount, and it is a decrease.",
+     "Right: a steady percent rate is what the rule needs.",
+     "A drop of 20 cm a month is a constant amount per month, not a percent rate."
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-14",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A colony of bacteria in a water sample doubles every 20 minutes. By what factor does the colony grow in 2 hours?",
+   "numeric": {
+    "unit": "times",
+    "askUnit": false,
+    "tol": 0.5,
+    "from": {
+     "fn": "pow",
+     "args": [
+      2,
+      {
+       "fn": "div",
+       "args": [
+        120,
+        20
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "6 is the number of doublings (120 min / 20 min). Each one multiplies by 2: 2 × 2 × 2 × 2 × 2 × 2 = 64."
+     },
+     {
+      "value": 12,
+      "why": "That is 2 × 6. Six doublings multiply by 2 six times, which is 64."
+     },
+     {
+      "value": 1.07177346254,
+      "why": "Change 2 hours to 120 minutes first, so the units match the 20-minute doubling time."
+     }
+    ]
+   },
+   "why": {
+    "correct": "2 hours = 120 minutes, so there are 120 / 20 = 6 doublings. Each doubling multiplies by 2: 2 × 2 × 2 × 2 × 2 × 2 = 64 times as large."
+   }
+  },
+  {
+   "id": "env-math-doubling-15",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "single",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two towns have the same population today. Town A grows 1% a year and Town B grows 2% a year. If the rates hold, how will the towns compare in 70 years?",
+   "options": [
+    "Town B will be about twice as large as Town A",
+    "Town B will be about four times as large as Town A",
+    "Town B will be about 1% larger than Town A",
+    "Town B will be about 70% larger than Town A"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Town A doubles in 70 / 1 = 70 years, so it is 2 times its starting size. Town B doubles in 70 / 2 = 35 years, so in 70 years it doubles twice and is 4 times its starting size. 4 is twice 2.",
+    "options": [
+     "Right: one doubling for Town A, two doublings for Town B.",
+     "Town B is four times its own starting size, but Town A has doubled too, so the ratio between them is 2.",
+     "A 1% difference in the yearly rate builds up to far more than 1% over 70 years.",
+     "The towns differ by a whole extra doubling, which is 100% larger, not 70%."
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-16",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "single",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student finds the doubling time of a population growing 4% a year by typing 70 / 0.04 and gets 1,750 years. What went wrong?",
+   "options": [
+    "The student should have multiplied 70 by 4",
+    "The rule of 70 only works for rates above 10%",
+    "The student should have divided 4 by 70",
+    "The rate goes in as a percent: 70 / 4 = 17.5 years"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The rule of 70 uses the growth rate written as a percent. For 4% a year, divide by 4, not by 0.04: 70 / 4 = 17.5 years.",
+    "options": [
+     "Multiplying gives 280, and it would make faster growth take longer to double.",
+     "The rule is most accurate for small rates, like the ones in population questions.",
+     "4 / 70 is about 0.06. The 70 goes on top.",
+     "Right: 1,750 years should also look wrong, since 4% a year is fast growth."
+    ]
+   }
   }
  ]
 }

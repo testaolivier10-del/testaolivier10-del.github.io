@@ -263,8 +263,8 @@
       var F2 = P.frame(spec), Pt = m.P(lg.t), parts = [];
       parts.push('<path class="el-par" d="' + pathOf(sampleFn(m.rate, 0, Pmax, spec, 200), F2) + '"/>');
       parts.push('<line class="el-halfl" x1="' + r2(F2.sx(lg.L / 2)) + '" x2="' + r2(F2.sx(lg.L / 2)) + '" y1="' + F2.pad.t + '" y2="' + (F2.h - F2.pad.b) + '"/>');
-      parts.push('<circle class="el-vtx" cx="' + r2(F2.sx(lg.L / 2)) + '" cy="' + r2(F2.sy(m.maxRate)) + '" r="5"/><text class="el-halflab" x="' + r2(F2.sx(lg.L / 2) + 8) + '" y="' + r2(F2.sy(m.maxRate) - 6) + '">max ' + clean(m.maxRate, 1) + '</text>');
-      parts.push('<circle class="el-cappt" cx="' + r2(F2.sx(lg.L)) + '" cy="' + r2(F2.sy(0)) + '" r="5"/><text class="el-caplab" x="' + r2(F2.sx(lg.L)) + '" y="' + r2(F2.sy(0) + 32) + '" text-anchor="middle">L</text>');
+      parts.push('<circle class="el-vtx" cx="' + r2(F2.sx(lg.L / 2)) + '" cy="' + r2(F2.sy(m.maxRate)) + '" r="5"/><text class="el-halflab" x="' + r2(F2.sx(lg.L / 2) + 8) + '" y="' + r2(Math.max(12, F2.sy(m.maxRate) - 6)) + '">max ' + clean(m.maxRate, 1) + '</text>');
+      parts.push('<circle class="el-cappt" cx="' + r2(F2.sx(lg.L)) + '" cy="' + r2(F2.sy(0)) + '" r="5"/><text class="el-caplab" x="' + r2(F2.sx(lg.L) + 7) + '" y="' + r2(F2.sy(0) - (F2.sx(Pmax) - F2.sx(lg.L) < 44 ? 24 : 9)) + '" text-anchor="start">L</text>');
       parts.push('<circle class="el-now" cx="' + r2(F2.sx(Pt)) + '" cy="' + r2(F2.sy(m.rate(Pt))) + '" r="7"/>');
       b2.innerHTML = P.svg(spec).replace('</svg>', parts.join('') + '</svg>');
       if(Ht) Ht.set(lg.t, Pt);

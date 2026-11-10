@@ -338,6 +338,103 @@
    "why": {
     "correct": "Track how many significant figures each step allows, but keep extra digits until the end, and round only once."
    }
+  },
+  {
+   "id": "chem-math-sig-figs-13",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Round 0.045678 g to three significant figures.",
+   "options": [
+    "0.046 g",
+    "0.0457 g",
+    "0.04568 g",
+    "0.05 g"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The leading zeros only place the decimal point. The first three significant digits are 4, 5 and 6, and the next digit (7) rounds the 6 up: 0.0457 g.",
+    "options": [
+     "That keeps three decimal places, which is only two significant figures (4 and 6).",
+     "Right: 4, 5 and 7 are the three significant figures.",
+     "That has four significant figures: 4, 5, 6 and 8.",
+     "That keeps one significant figure. Leading zeros are not counted."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-14",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A crucible with a sample has a mass of 25.47 g. The empty crucible has a mass of 25.31 g. Calculate the mass of the sample with the correct precision.",
+   "numeric": {
+    "answer": 0.16,
+    "tol": 0.01,
+    "unit": "g",
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "25.47 g − 25.31 g = 0.16 g. Both masses are known to the hundredths place, so the difference is too. Subtracting two close values leaves only two significant figures, even though each mass had four."
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A volume of 0.0250 L is converted to 25.0 mL. What happens to the number of significant figures?",
+   "options": [
+    "It drops from four to three, because the zeros in front are removed",
+    "It rises, because milliliters are a more precise unit than liters",
+    "It drops to two, because the zero after the 5 no longer counts",
+    "It stays at three, because the same measured digits are kept"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Leading zeros only place the decimal point, so 0.0250 L has three significant figures (2, 5, 0), the same three as 25.0 mL. The factor 1000 mL = 1 L is exact, so it limits nothing.",
+    "options": [
+     "The zeros in front of the 2 were never significant, so removing them loses nothing.",
+     "Changing the unit does not change how finely the measurement was made. The estimated digit is the same.",
+     "A trailing zero after a decimal point was measured and counts in both forms.",
+     "Right: a unit conversion with an exact factor keeps the significant figures of the measurement."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-16",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A balance shows 12.30 g. A student records the mass as 12.3 g, saying that \"the zero changes nothing.\" What is wrong with this?",
+   "options": [
+    "12.3 g claims the mass was measured only to the tenths place",
+    "Nothing is wrong, because 12.30 and 12.3 are equal numbers",
+    "The student should have rounded up to 12.4 g to be safe",
+    "The zero must be kept because every balance reading needs exactly four digits"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A trailing zero after a decimal point is a measured digit. 12.30 g says the mass is known to the hundredths place (four significant figures); 12.3 g says only to the tenths place (three).",
+    "options": [
+     "Right: dropping the zero throws away a digit the balance actually measured.",
+     "They are equal as numbers, but a measurement also reports its precision through its last digit.",
+     "Nothing in the reading suggests 12.4. Rounding never moves a value up \"to be safe\".",
+     "There is no four-digit rule. You record every digit the instrument shows, however many that is."
+    ]
+   }
   }
  ]
 }

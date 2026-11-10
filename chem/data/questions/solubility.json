@@ -489,6 +489,32 @@
      "Many molecular compounds, such as sugar, dissolve well in water."
     ]
    }
+  },
+  {
+   "id": "chem-solubility-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Sodium chloride dissolves well in water but hardly at all in hexane, C₆H₁₄. Which explanation is best?",
+   "options": [
+    "Hexane molecules are too large to fit between the ions of the solid",
+    "Polar water attracts the ions strongly; hexane has only weak dispersion forces",
+    "Hexane repels the ions, pushing them back into the solid",
+    "Water reacts with the ions to form new covalent molecules; hexane cannot react"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Pulling ions out of the solid takes a lot of energy. Water pays it back with strong ion-dipole attractions. Nonpolar hexane can offer only weak dispersion forces, which are far too weak to replace the attractions between the ions.",
+    "options": [
+     "Size is not the issue. Hexane lacks the partial charges needed to attract ions strongly.",
+     "Right: the new solute-solvent attractions must be comparable with the ones they replace.",
+     "Hexane does not repel ions. It attracts them only weakly, much less than the ions attract each other.",
+     "Dissolving NaCl separates the ions and surrounds them with water. No new covalent molecules form."
+    ]
+   }
   }
  ]
 }

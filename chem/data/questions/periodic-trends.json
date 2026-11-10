@@ -516,6 +516,32 @@
      "The staircase holds the metalloids, which are in between; metals fill most of the table to its left."
     ]
    }
+  },
+  {
+   "id": "chem-periodic-trends-16",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which list puts the atoms in order of increasing atomic radius?",
+   "options": [
+    "K, Na, Mg",
+    "Na, Mg, K",
+    "Mg, K, Na",
+    "Mg, Na, K"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Mg and Na are in period 3: Mg has one more proton pulling on the same shell, so Mg is smaller than Na. K is below Na with one more occupied shell, so K is the largest. The order is Mg < Na < K.",
+    "options": [
+     "That is the order of decreasing radius.",
+     "Across a period the radius decreases, so Mg (12 protons) is smaller than Na (11 protons).",
+     "K has an extra occupied shell compared with Na, so K is larger than Na, not smaller.",
+     "Right: more protons on the same shell shrink the atom; another shell enlarges it."
+    ]
+   }
   }
  ]
 }

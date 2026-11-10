@@ -460,6 +460,32 @@
      "Right: The patient lost the ability to form new explicit memories (events) but still learned a skill (implicit, procedural memory). The two kinds of memory can come apart."
     ]
    }
+  },
+  {
+   "id": "psy-memory-intro-16",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Absorbed in a game, Sam does not notice his mother's question and says \"What?\" Before she can repeat it, he answers, because he can still \"hear\" her last few words. Which kind of memory held the words?",
+   "options": [
+    "Iconic memory",
+    "Echoic memory",
+    "Procedural memory",
+    "Prospective memory"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sensory memory holds a very brief record of what the senses take in. For sounds it is called echoic memory and lasts a few seconds, long enough for Sam to replay the question.",
+    "options": [
+     "Iconic memory is the sensory record of sights, lasting under a second.",
+     "Right: echoic memory keeps sounds for a few seconds after they end.",
+     "Procedural memory is implicit memory for skills such as typing.",
+     "Prospective memory is remembering to do something in the future."
+    ]
+   }
   }
  ]
 }

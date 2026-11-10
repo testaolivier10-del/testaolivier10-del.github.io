@@ -3,6 +3,7 @@
 <h2>One logarithmic axis</h2>
 <p>On a semi-log plot the horizontal axis is ordinary and the vertical axis is a logarithmic scale with some base $n > 1$, usually $10$. The labels $1$, $10$, $100$, $1{,}000$ are equally spaced, so equal vertical distances mean equal <b>factors</b>, not equal differences. Plotting $y$ on that axis is the same as plotting $\log y$ on an ordinary one.</p>
 
+<figure id="fig-compare" data-fig="semi-log-plots-compare"><figcaption>The same data, $y = 3 \cdot 2^t$, plotted twice. On the ordinary axis the early points are squashed near the bottom; on the logarithmic axis the points lie on one straight line.</figcaption></figure>
 <h2>Why exponential data make a line</h2>
 <p>Take $y = a \cdot b^x$ and apply the properties of logarithms:</p>
 <p>$$\log y = \log a + \log(b^x) = \log a + x\log b.$$</p>
@@ -23,6 +24,7 @@
 <p>So $\log b = 0.25$ and $b = 10^{0.25} \approx 1.778$: about $77.8\%$ growth per year.</p>
 <p>The intercept is $\log a = \log 20$, so $a = 20$. The model is $y = 20 \cdot 10^{t/4}$.</p>
 </div>
+<figure id="fig-users" data-fig="semi-log-plots-set1"><figcaption>The line of worked example 1: $A$ is $(0, 20)$, $B$ is $(4, 200)$ and $C$ is $(8, 2{,}000)$. Each $4$ years the line climbs one full power of $10$.</figcaption></figure>
 <div class="worked">
 <p><b>Worked example 2.</b> A table gives $\log y = 0.5, 0.8, 1.1, 1.4, 1.7$ at $t = 0, 1, 2, 3, 4$. Find $y$.</p>
 <p>$\log y$ rises $0.3$ per step, so $\log y = 0.5 + 0.3t$.</p>

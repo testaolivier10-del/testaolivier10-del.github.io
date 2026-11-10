@@ -444,6 +444,32 @@
      "The passage says urchins graze on kelp."
     ]
    }
+  },
+  {
+   "id": "env-food-webs-16",
+   "unit": "unit-1",
+   "topic": "food-webs",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Fungi and bacteria in forest soil break dead leaves down chemically and release the nutrients. What are they?",
+   "options": [
+    "Producers",
+    "Primary consumers",
+    "Decomposers",
+    "Apex predators"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Decomposers, mainly fungi and bacteria, break dead matter down chemically and return its nutrients to the soil, where producers can take them up again.",
+    "options": [
+     "Producers make their own food from sunlight.",
+     "Primary consumers eat living producers.",
+     "Right: they finish the job that detritivores start.",
+     "Apex predators hunt other animals at the top of a food web."
+    ]
+   }
   }
  ]
 }

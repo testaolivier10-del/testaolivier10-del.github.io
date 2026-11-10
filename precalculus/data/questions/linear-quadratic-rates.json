@@ -535,6 +535,32 @@
      "This is run over rise, upside down."
     ]
    }
+  },
+  {
+   "id": "pcalc-linear-quadratic-rates-16",
+   "unit": "unit-1",
+   "topic": "linear-quadratic-rates",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A linear function $f$ has average rate of change $-2.5$ on $[1, 4]$, and $f(1) = 9$. What is $f(7)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -6,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "That is $f(4)$: it uses a change in $x$ of $3$. From $x = 1$ to $x = 7$ the change in $x$ is $6$."
+     },
+     {
+      "value": 24,
+      "why": "The rate is negative, so the outputs fall: $9 + (-2.5)(6)$, not $9 + 2.5(6)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A linear function has the same average rate of change on every interval, so it is $-2.5$ on $[1, 7]$ too. $f(7) = f(1) + (-2.5)(7 - 1) = 9 - 15 = -6$."
+   }
   }
  ]
 }

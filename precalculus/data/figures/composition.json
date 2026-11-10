@@ -7,5 +7,25 @@
   "ext": "svg",
   "w": 420,
   "h": 280
+ },
+ "composition-machine": {
+  "file": "figures/composition-machine.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 232,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two rows of machines. Top row: x goes into machine g, g(x) comes out and goes into machine f, and f(g(x)) comes out. Bottom row with numbers: 2 goes into g, 0 comes out and goes into f, and 4 comes out."
+ },
+ "composition-solve": {
+  "file": "figures/composition-solve.svg",
+  "ext": "svg",
+  "w": 380,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A parabola g and a line f on the same axes. The dashed line y = 2 meets the parabola at (-1, 2) and (3, 2). The line f passes through (0, -1) and (2, 3), so its outputs are -1 and 3 at x = 0 and x = 2."
  }
 }

@@ -514,6 +514,32 @@
      "Right: an even power of $-1$ is 1, so there is no alternation."
     ]
    }
+  },
+  {
+   "id": "cbc-alternating-series-test-16",
+   "type": "single",
+   "unit": "unit-10",
+   "topic": "alternating-series-test",
+   "practice": "3.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which series does the alternating series test show convergence?",
+   "options": [
+    "$\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{2n + 1}$",
+    "$\\sum_{n=1}^{\\infty} (-1)^n \\frac{n^2}{n^2 + 1}$",
+    "$\\sum_{n=1}^{\\infty} (-1)^n \\cos\\left(\\frac{1}{n}\\right)$",
+    "$\\sum_{n=1}^{\\infty} (-1)^n \\frac{e^n}{n}$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The test needs sizes $a_n > 0$ that decrease and approach 0. For $a_n = \\frac{1}{2n + 1}$ both hold: the denominator grows, so the sizes fall, and $\\lim_{n \\to \\infty} \\frac{1}{2n + 1} = 0$. In each of the other series the sizes do not approach 0, so the series diverges by the $n$th term test.",
+    "options": [
+     "$a_n = \\frac{1}{2n + 1}$ is positive, decreasing, and $\\lim_{n \\to \\infty} a_n = 0$, so the series converges.",
+     "$\\lim_{n \\to \\infty} \\frac{n^2}{n^2 + 1} = 1$, not 0, so the terms do not approach 0 and the series diverges.",
+     "$\\cos\\left(\\frac{1}{n}\\right) \\to \\cos 0 = 1$, so the terms do not approach 0 and the series diverges.",
+     "$\\frac{e^n}{n}$ grows without bound, so the terms do not approach 0 and the series diverges."
+    ]
+   }
   }
  ]
 }

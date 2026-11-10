@@ -501,6 +501,32 @@
     "$r = 0.45$ means TV explains 45% of weight"
    ],
    "correct": 0
+  },
+  {
+   "id": "stat-correlation-16",
+   "unit": "unit-5",
+   "topic": "correlation",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Every point of a scatterplot lies exactly on the line $y = 20 - 3x$. What is the correlation $r$?",
+   "why": {
+    "correct": "$r$ is 1 or $-1$ only when every point lies exactly on a line; the sign matches the direction, and this line falls.",
+    "options": [
+     "Right: a perfect linear pattern with a negative direction gives $r = -1$.",
+     "That is the slope. $r$ is always between $-1$ and 1 and does not measure steepness.",
+     "The points do lie on a line, but the line falls, so $r$ is negative.",
+     "$r$ near 0 means no linear pattern. Here the linear pattern is perfect."
+    ]
+   },
+   "options": [
+    "$-1$",
+    "$-3$",
+    "1",
+    "0"
+   ],
+   "correct": 0
   }
  ]
 }

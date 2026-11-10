@@ -150,7 +150,7 @@
     function syScene(v){
       var y = sc().y;
       if(shared()) return gy(v);
-      var top = L.wide ? L.top : L.sTop, bot = L.wide ? L.bot : L.sBot - 8, h = bot - top - (L.wide ? 0 : 8);
+      var top = L.wide ? L.top : L.sTop, bot = L.wide ? L.bot : L.sBot - (sc().id === 'temp' ? 34 : 8), /* a phone's thermometer keeps its bulb above the graph */ h = bot - top - (L.wide ? 0 : 8);
       if(sc().id === 'ferris') h = Math.min(h, (L.sx1 - L.sx0 - 16) * (y[1] - y[0]) / (2 * tr().A));
       return bot - (v - y[0]) / (y[1] - y[0]) * h;
     }
@@ -193,25 +193,27 @@
       // the student's midline, amplitude and period
       var pk = peak1(), pk2 = pk + p.T, mid = gy(p.d);
       o.push('<line class="sb-midline" x1="' + L.gx0 + '" y1="' + r1(mid) + '" x2="' + L.gx1 + '" y2="' + r1(mid) + '"/>');
-      o.push(txt(L.gx1 - 4, mid + 20, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));
+      o.push(txt(L.gx1 - 4, mid + 20 > L.bot - 2 ? Math.min(mid, L.bot) - 8 : mid + 20, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));   // above the line when the line is on the t-axis
       // the curve, clipped to the plot
       var d = '', on = false;
       for(var i = 0; i <= 320; i++){ var tt = win() * i / 320, vv = f(tt); var py = gy(vv); if(py < L.top - 30 || py > L.bot + 30){ on = false; continue; } d += (on ? 'L' : 'M') + r1(gx(tt)) + ' ' + r1(py); on = true; }
       o.push('<path class="sb-curve" d="' + d + '"/>');
-      if(pk <= win()){
+      // a model slid below the graph's window (a temperature midline of 0 on a 6 to 30 scale) keeps its marks off the axis numbers
+      var inWin = mid <= L.bot + 1;
+      if(pk <= win() && inWin){
         o.push('<line class="sb-amp" x1="' + r1(gx(pk)) + '" y1="' + r1(mid) + '" x2="' + r1(gx(pk)) + '" y2="' + r1(gy(p.d + p.a)) + '"/>');
         var left = gx(pk) - L.gx0 > 70; o.push(txt(gx(pk) + (left ? -10 : 26), (mid + gy(p.d + p.a)) / 2 + 5, 'a = ' + nt(p.a), 'sb-lab sb-c-a', left ? 'end' : 'start'));
       }
       var by = Math.max(L.top - 2, gy(p.d + p.a) - 16), px0 = gx(pk), px1 = gx(Math.min(pk2, win()));
-      if(pk2 <= win() + 1e-9){
+      if(pk2 <= win() + 1e-9 && gy(p.d + p.a) <= L.bot){
         o.push('<path class="sb-per" d="M' + r1(px0) + ' ' + r1(by + 6) + ' V' + r1(by) + ' H' + r1(px1) + ' V' + r1(by + 6) + '"/>');
         o.push(txt((px0 + px1) / 2, by - 6, 'period ' + nt(p.T), 'sb-lab sb-c-T'));
       }
       // where a cycle starts: t = −c (rising midline crossing for sin, peak for cos)
       var s0 = -p.c; s0 = s0 - Math.floor(s0 / p.T) * p.T;
-      if(s0 <= win()){
+      if(s0 <= win() && inWin){
         var sY = p.form === 'cos' ? gy(p.d + p.a) : mid;
-        o.push('<path class="sb-shift" d="M' + r1(gx(s0)) + ' ' + r1(sY + 4) + ' l-7 12 h14 z"/>', txt(gx(s0), sY + 32, 't = ' + nt(s0), 'sb-lab sb-c-c'));
+        o.push('<path class="sb-shift" d="M' + r1(gx(s0)) + ' ' + r1(sY + 4) + ' l-7 12 h14 z"/>', txt(gx(s0) + (gx(s0) - L.gx0 < 30 ? 3 : 0), sY + 32, 't = ' + nt(s0), 'sb-lab sb-c-c', gx(s0) - L.gx0 < 30 ? 'start' : L.gx1 - gx(s0) < 30 ? 'end' : 'middle'));   // beside the axis, clear of its tick numbers
       }
       // data points: green once the curve passes through
       dpts.forEach(function(q, k){

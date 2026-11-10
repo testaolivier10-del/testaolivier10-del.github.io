@@ -531,6 +531,32 @@
      "The reverse still has to climb the hump; its Ea is the larger of the two."
     ]
    }
+  },
+  {
+   "id": "chem-energy-diagrams-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student reads the horizontal axis of an energy diagram as time and says, \"The hump is wide, so this reaction must be slow.\" What is wrong with this reasoning?",
+   "options": [
+    "A wide hump means a fast reaction, because the reactants then spend less time at the top of it",
+    "The axis shows temperature, so a wide hump means a wide temperature range",
+    "Nothing is wrong: a wider hump always means a slower reaction",
+    "The axis is reaction progress, not time, so width says nothing about speed"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The horizontal axis is the progress of the reaction, from reactants on the left to products on the right. It is not a clock. The speed of a reaction is related to the height of the hump (the activation energy), not to how wide it is drawn.",
+    "options": [
+     "The width of the hump carries no information about speed in either direction.",
+     "The horizontal axis is reaction progress. Temperature does not appear on either axis.",
+     "The width is only how the curve happens to be drawn. The height of the climb is what matters for speed.",
+     "Right: only the vertical distances on the diagram can be read as data."
+    ]
+   }
   }
  ]
 }

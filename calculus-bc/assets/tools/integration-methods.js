@@ -155,14 +155,16 @@
       for(var i = 0; i <= 100; i++){ var x = g.a + (bmax - g.a) * i / 100, y = g.f(x); ymax = Math.max(ymax, y); ymin = Math.min(ymin, y); }
       var xlo = Math.min(0, g.a - 0.15), view = { x: [xlo, bmax + 0.15], y: [Math.min(ymin * 1.15, -0.1 * ymax), ymax * 1.15] };
       var wh = size(b1, wd ? 0.8 : 0.62), spec = { label: 'Graph of ' + plain(g.tex) + ' with the area from ' + clean(g.a) + ' to b shaded', width: wh[0], height: wh[1], x: view.x, y: view.y, xLabel: 'x', yLabel: 'y' };
+      var span1 = view.y[1] - view.y[0]; if(span1 > 0.9 && span1 <= 2.5) spec.yStep = 0.5;   // no quarter steps: "0.75" does not fit left of the axis
       var F = P.frame(spec), C = clip(F), val = Pp.udv;
       b1.innerHTML = P.svg(spec).replace('</svg>', C.def + '<g clip-path="url(#' + C.id + ')"><path class="im-area" d="' + areaPath(g.f, g.a, b, F, view) + '"/><path class="im-f" d="' + pathOf(sample(g.f, Math.max(view.x[0], g.a === 1 ? 0.05 : view.x[0]), view.x[1], view), F) + '"/></g>' +
-        '<text class="im-lab im-lab-a" x="' + r2(F.sx((g.a + b) / 2)) + '" y="' + r2(F.sy(view.y[1]) + 16) + '" text-anchor="middle">area = ' + n3(val) + '</text></svg>');
+        '<text class="im-lab im-lab-a" x="' + r2(Math.abs(F.sx((g.a + b) / 2) - F.sx(0)) < 62 ? F.sx(0) + 62 : F.sx((g.a + b) / 2)) + '" y="' + r2(F.sy(view.y[1]) + 16) + '" text-anchor="middle">area = ' + n3(val) + '</text></svg>');
       var s1 = b1.querySelector('svg'); s1.setAttribute('role', 'group');
       handle(s1, { x: b, F: F, min: g.b[0], max: bmax, label: function(v){ return 'Upper bound b = ' + clean(v); }, onMove: function(v){ act(); pb = v; if(slider) slider.set(v); drawParts(); }, onEnd: function(v){ say('b = ' + clean(v) + ': the integral is ' + n3(IM.partsPicture(g, v).udv) + '.'); } });
       // the uv picture: v across, u up
       var vmax = Math.max(Pp.vb, IM.partsPicture(g, bmax).vb) * 1.08, umax = Math.max(Pp.ub, IM.partsPicture(g, bmax).ub) * 1.1;
       var wh2 = size(b2, wd ? 0.8 : 0.62), spec2 = { label: 'The parts picture: u against v, with the areas for the integral of u dv and of v du', width: wh2[0], height: wh2[1], x: [0, vmax], y: [0, umax], xLabel: 'v', yLabel: 'u' };
+      if(umax > 0.9 && umax <= 2.5) spec2.yStep = 0.5;
       var F2 = P.frame(spec2), pts = Pp.pts, sx = F2.sx, sy = F2.sy;
       var under = 'M' + r2(sx(Pp.va)) + ' ' + r2(sy(0)) + pts.map(function(p){ return 'L' + r2(sx(p[0])) + ' ' + r2(sy(p[1])); }).join('') + 'L' + r2(sx(Pp.vb)) + ' ' + r2(sy(0)) + 'Z';
       var beside = 'M' + r2(sx(0)) + ' ' + r2(sy(Pp.ua)) + pts.map(function(p){ return 'L' + r2(sx(p[0])) + ' ' + r2(sy(p[1])); }).join('') + 'L' + r2(sx(0)) + ' ' + r2(sy(Pp.ub)) + 'Z';
@@ -171,9 +173,14 @@
       b2.innerHTML = P.svg(spec2).replace('</svg>', '<path class="im-udv" d="' + under + '"/><path class="im-vdu" d="' + beside + '"/>' + small +
         '<rect class="im-rect" x="' + r2(sx(0)) + '" y="' + r2(sy(Pp.ub)) + '" width="' + r2(sx(Pp.vb) - sx(0)) + '" height="' + r2(sy(0) - sy(Pp.ub)) + '"/>' +
         '<path class="im-uv" d="' + pathOf(pts, F2) + '"/>' +
+        // a rectangle too small to hold its three labels lists them beside it instead, one per line
+        (sx(Pp.vb) - sx(0) < 170 || sy(0) - sy(Pp.ub) < 52 ?
+          '<text class="im-lab" x="' + r2(sx(Pp.vb) + 10) + '" y="' + r2(sy(0) - 42) + '" text-anchor="start">uv = ' + n3(Pp.uvb) + '</text>' +
+          '<text class="im-lab im-lab-v" x="' + r2(sx(Pp.vb) + 10) + '" y="' + r2(sy(0) - 25) + '" text-anchor="start">∫v du = ' + n3(Pp.vdu) + '</text>' +
+          '<text class="im-lab im-lab-u" x="' + r2(sx(Pp.vb) + 10) + '" y="' + r2(sy(0) - 8) + '" text-anchor="start">∫u dv = ' + n3(Pp.udv) + '</text>' :
         '<text class="im-lab im-lab-u" x="' + r2((sx(Pp.va) + sx(Pp.vb)) / 2 + 6) + '" y="' + r2(sy(0) - 8) + '" text-anchor="middle">∫u dv = ' + n3(Pp.udv) + '</text>' +
         '<text class="im-lab im-lab-v" x="' + r2(sx(0) + 8) + '" y="' + r2(sy(Pp.ub) + 18) + '" text-anchor="start">∫v du = ' + n3(Pp.vdu) + '</text>' +
-        '<text class="im-lab" x="' + r2(sx(Pp.vb) - 4) + '" y="' + r2(sy(Pp.ub) - 6) + '" text-anchor="end">uv = ' + n3(Pp.uvb) + '</text></svg>');
+        '<text class="im-lab" x="' + r2(sx(Pp.vb) - 4) + '" y="' + r2(sy(Pp.ub) - 6) + '" text-anchor="end">uv = ' + n3(Pp.uvb) + '</text>') + '</svg>');
       b2.querySelector('svg').setAttribute('aria-label', 'u against v from x = ' + clean(g.a) + ' to ' + clean(b) + ': the integral of u dv is ' + n3(Pp.udv) + ', the integral of v du is ' + n3(Pp.vdu) + ', together uv = ' + n3(Pp.uvb) + (Pp.uva ? ' minus ' + n3(Pp.uva) : '') + '.');
       var u = swap ? null : g;
       $('.im-head').innerHTML = '<div class="im-uv-card">' + [['u', g.uTex], ['dv', g.dvTex], ['du', g.duTex], ['v', g.vTex]].map(function(c){ return '<div class="im-cell"><span class="im-k">' + c[0] + '</span>' + tex(c[1]) + '</div>'; }).join('') + '</div>' +
@@ -241,6 +248,7 @@
       b2.hidden = false;
       var view = g.kind === 'inf' ? { x: [0, g.a + 8], y: [0, Math.max(1.2, g.f(g.a) * 1.25)] } : { x: [0, g.a * 1.4], y: [0, 8] };
       var wh = size(b1, wd ? 0.8 : 0.58), spec = { label: 'Graph of ' + plain(g.tex) + ' with the area shaded ' + (g.kind === 'inf' ? 'from ' + g.a + ' to b' : 'from b to ' + g.a), width: wh[0], height: wh[1], x: view.x, y: view.y, xLabel: 'x', yLabel: 'y' };
+      if(view.y[1] <= 2.5) spec.yStep = 0.5;   // quarter steps ("0.75") do not fit left of the axis and were set to its right
       var F = P.frame(spec), C = clip(F), lo = g.kind === 'inf' ? g.a : Math.max(b, 1e-4), hi = g.kind === 'inf' ? Math.min(b, view.x[1]) : g.a;
       b1.innerHTML = P.svg(spec).replace('</svg>', C.def + '<g clip-path="url(#' + C.id + ')"><path class="im-area" d="' + areaPath(g.f, lo, hi, F, view) + '"/><path class="im-f" d="' + pathOf(sample(g.f, 0.002, view.x[1], view, 400), F) + '"/></g>' +
         (g.kind === 'inf' && b > view.x[1] ? '<text class="im-lab" x="' + (F.w - F.pad.r - 4) + '" y="' + r2(F.sy(view.y[1] * 0.55)) + '" text-anchor="end">b = ' + clean(b, 0) + ' →</text>' : '') + '</svg>');

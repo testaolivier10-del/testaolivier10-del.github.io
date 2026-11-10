@@ -380,6 +380,146 @@
      "Pine Hill (80,000 L) differs from the other two (60,000 L)."
     ]
    }
+  },
+  {
+   "id": "env-math-sci-notation-12",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A river sample contains 0.00042 g of mercury per liter. How is 0.00042 written in scientific notation?",
+   "options": [
+    "$4.2 \\times 10^{4}$",
+    "$42 \\times 10^{-5}$",
+    "$4.2 \\times 10^{-3}$",
+    "$4.2 \\times 10^{-4}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Move the decimal point 4 places to the right to get 4.2. Moving right gives a negative exponent: $4.2 \\times 10^{-4}$.",
+    "options": [
+     "A positive exponent is a big number: this is 42,000.",
+     "The value is right, but the front number must be from 1 up to 10.",
+     "That is 0.0042. The point moves four places, not three.",
+     "Right: a small number has a negative exponent."
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-13",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country has 350 million people. How is that written in scientific notation?",
+   "options": [
+    "$3.5 \\times 10^{6}$",
+    "$3.5 \\times 10^{8}$",
+    "$350 \\times 10^{6}$",
+    "$3.5 \\times 10^{9}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Million is $10^{6}$, so 350 million = $350 \\times 10^{6}$. Fix the front number: 350 = $3.5 \\times 10^{2}$, giving $3.5 \\times 10^{8}$ = 350,000,000.",
+    "options": [
+     "That is 3.5 million. The 350 adds two more powers of ten.",
+     "Right: 350,000,000 has the decimal point moved 8 places.",
+     "The value is right, but the front number must be from 1 up to 10.",
+     "That is 3.5 billion, ten times too large."
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-14",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A calculation of a city’s yearly water use gives $24 \\times 10^{8}$ L. What is this in scientific notation?",
+   "options": [
+    "$2.4 \\times 10^{7}$ L",
+    "$0.24 \\times 10^{10}$ L",
+    "$2.4 \\times 10^{9}$ L",
+    "$2.4 \\times 10^{8}$ L"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The front number must be from 1 up to 10. Moving the point one place left (24 to 2.4) adds 1 to the exponent: $2.4 \\times 10^{9}$ L.",
+    "options": [
+     "The exponent went the wrong way. Making the front number smaller means the power of ten must get bigger.",
+     "The value is right, but 0.24 is not from 1 up to 10.",
+     "Right: 2,400,000,000 L either way.",
+     "Changing 24 to 2.4 without changing the exponent makes the number ten times too small."
+    ]
+   }
+  },
+  {
+   "id": "env-math-sci-notation-15",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city recycles 0.8 million kg of glass a year. Write that amount out as an ordinary number of kilograms.",
+   "numeric": {
+    "unit": "kg",
+    "units": [
+     "kilograms"
+    ],
+    "from": {
+     "fn": "mul",
+     "args": [
+      0.8,
+      1000000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 8000000,
+      "why": "That is 8 million. 0.8 million is less than one million: 0.8 × 1,000,000."
+     },
+     {
+      "value": 80000,
+      "why": "That is 0.08 million. Million means six zeros: 0.8 × 1,000,000 = 800,000."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Million means $10^{6}$: $0.8 \\times 1{,}000{,}000 = 800{,}000$ kg, which is $8 \\times 10^{5}$ kg."
+   }
+  },
+  {
+   "id": "env-math-sci-notation-16",
+   "unit": "skills-math",
+   "topic": "math-sci-notation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pesticide is found in a stream at $7.5 \\times 10^{-3}$ mg per liter. Which number is this, written out?",
+   "options": [
+    "0.0075",
+    "0.00075",
+    "7,500",
+    "0.075"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An exponent of -3 moves the decimal point 3 places to the left: 7.5 becomes 0.0075.",
+    "options": [
+     "Right: the 7 lands in the third place after the decimal point.",
+     "That is $7.5 \\times 10^{-4}$: one place too many.",
+     "That is $7.5 \\times 10^{3}$. A negative exponent is a small number.",
+     "That is $7.5 \\times 10^{-2}$: one place too few."
+    ]
+   }
   }
  ]
 }
