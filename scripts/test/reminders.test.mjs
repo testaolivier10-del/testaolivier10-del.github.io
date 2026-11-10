@@ -212,3 +212,153 @@ test('an hour a few minutes away is pushed to tomorrow', () => {
   // session they are still in.
   assert.ok(at.getTime() > b.now() + 10 * 60 * 1000, 'scheduled too soon');
 });
+
+// ---- every course, and the two questions added 2026-11 ---------------------
+
+/* The AP® courses and A&P never told the reminder anything, so a student who
+   only studied AP® Biology was never offered one and would have been sent
+   nothing. One reader now covers every course that keeps the shared record. */
+function progress(b, prefix, dues) {
+  const q = {};
+  dues.forEach((d, i) => { q['q' + i] = { due: d }; });
+  b.localStorage.setItem(prefix + 'progress_v1', JSON.stringify({ v: 1, q }));
+}
+
+test('a course with the shared progress record is counted without reporting itself', () => {
+  const { b, R } = fresh();
+  const HOUR = 3600000;
+  // Two already due, one that comes due well before the next send, one next week, one retired (0).
+  progress(b, 'apbio_', [b.now() - HOUR, b.now() - 5 * HOUR, b.now() + 60000, b.now() + 7 * 86400000, 0]);
+  R.scanCourses();
+  const text = R.compose();
+  assert.match(text.title, /^3 questions due/);
+  assert.match(text.body, /AP® Biology/);
+  assert.equal(text.url, '/bio/review.html');
+});
+
+test('a course never opened leaves no record, and a cleared queue stops being quoted', () => {
+  const { b, R } = fresh();
+  R.scanCourses();
+  assert.equal(R.compose(), null);
+  progress(b, 'apchem_', [b.now() - 1000]);
+  R.scanCourses();
+  assert.match(R.compose().title, /1 question due/);
+  progress(b, 'apchem_', [0]);
+  R.scanCourses();
+  assert.equal(R.compose(), null);
+});
+
+test('NREMT and ochem keep their own numbers', () => {
+  const { b, R } = fresh();
+  due(R, 'nremt', 12, 'NREMT-EMT Prep');
+  progress(b, 'nremt_', [b.now() - 1000]);   // not the shape NREMT uses; must not overwrite its report
+  R.scanCourses();
+  assert.match(R.compose().title, /^12 questions due/);
+});
+
+test('every live course has a review page for its reminder to open', async () => {
+  const fs = await import('node:fs');
+  const { COURSES } = await import('../lib/courses.mjs');
+  for (const c of COURSES) {
+    assert.ok(fs.existsSync(new URL('../..' + c.path + 'review.html', import.meta.url)), c.key + ' has no review.html');
+  }
+});
+
+test('a first visit is asked only after a real session', () => {
+  const { R } = fresh({ days: 1 });
+  due(R, 'nremt', 12, 'NREMT');
+  assert.equal(R._mayAsk(), false);
+  assert.equal(R._mayAsk({ earned: true }), true);
+});
+
+test('a finished session with nothing coming due is still not asked', () => {
+  const { R } = fresh({ days: 1 });
+  assert.equal(R._mayAsk({ earned: true }), false);
+});
+
+function signedIn(b, user) {
+  const calls = [];
+  b.window.StudyHubAccount = {
+    user: () => user,
+    rpc: (name, args) => { calls.push([name, args]); return Promise.resolve(true); },
+    onAuthChange: () => {},
+  };
+  return calls;
+}
+
+test('a signed-in student whose browser cannot do push is offered email instead', () => {
+  const b = createBrowser();
+  b.window.Notification = { permission: 'default' };   // no PushManager: iPhone Safari
+  b.localStorage.setItem('levlprep_visits', JSON.stringify({ days: 9 }));
+  signedIn(b, { id: 'u1' });
+  b.load('assets/reminders.js');
+  const R = b.window.LevlReminders;
+  R._setKeys('BTestKeyNotReal', 'https://example.workers.dev');
+  R.report('nremt', { due: 12, label: 'NREMT' });
+  assert.equal(R._channel(), 'email');
+  assert.equal(R._mayAsk(), true);
+});
+
+test('blocked notifications fall back to email only when signed in', () => {
+  const out = fresh({ permission: 'denied' });
+  due(out.R, 'nremt', 12, 'NREMT');
+  assert.equal(out.R._channel(), null);
+  signedIn(out.b, { id: 'u1' });
+  assert.equal(out.R._channel(), 'email');
+});
+
+test('nobody with email reminders on is offered anything else', async () => {
+  const { b, R } = fresh();
+  signedIn(b, { id: 'u1' });
+  due(R, 'nremt', 12, 'NREMT');
+  await R.enableEmail();
+  assert.equal(R.emailSettings().on, true);
+  assert.equal(R._channel(), null);
+  assert.equal(R._mayAsk({ earned: true }), false);
+});
+
+test('only an account made in the last few minutes is noted, and only once', () => {
+  const { b, R } = fresh();
+  const iso = (ms) => new Date(ms).toISOString();
+  R._noteAccount({ id: 'old', created_at: iso(b.now() - 3 * 86400000) });
+  assert.equal(b.localStorage.getItem('levlprep_reminder_signup'), null);
+  R._noteAccount({ id: 'new', created_at: iso(b.now() - 60000) });
+  const noted = JSON.parse(b.localStorage.getItem('levlprep_reminder_signup'));
+  assert.equal(noted.id, 'new');
+  assert.equal(noted.asked, false);
+  // Signing in again on the same browser does not reset it.
+  b.localStorage.setItem('levlprep_reminder_signup', JSON.stringify({ id: 'new', at: noted.at, asked: true }));
+  R._noteAccount({ id: 'new', created_at: iso(b.now() - 60000) });
+  assert.equal(JSON.parse(b.localStorage.getItem('levlprep_reminder_signup')).asked, true);
+});
+
+test('the question after a new account is asked once and does not spend the three asks', () => {
+  const { b, R } = fresh();
+  const user = { id: 'new', created_at: new Date(b.now() - 60000).toISOString() };
+  signedIn(b, user);
+  R._noteAccount(user);
+  // The harness has no page to draw on; a body and buttons that accept a listener are all the prompt needs.
+  const made = [];
+  b.document.body = { appendChild(el){ made.push(el); } };
+  b.document.createElement = () => ({ style: {}, classList: { add(){}, remove(){} }, setAttribute(){},
+    querySelector: () => ({ addEventListener(){} }) });
+  assert.equal(R._askAfterSignup(0), true);
+  assert.equal(made.length, 1);
+  assert.match(made[0].innerHTML, /An email when something is due\?/);
+  assert.doesNotMatch(made[0].innerHTML, /—/);
+  const ask = JSON.parse(b.localStorage.getItem('levlprep_reminder_ask'));
+  assert.equal(ask.shown || 0, 0);
+  assert.ok(ask.last > 0);                      // but the session-end offer waits its week
+  assert.equal(R._askAfterSignup(0), false);    // never twice
+});
+
+test('the question after a new account is not asked of somebody else, or with reminders already on', async () => {
+  const { b, R } = fresh();
+  const user = { id: 'new', created_at: new Date(b.now() - 60000).toISOString() };
+  R._noteAccount(user);
+  signedIn(b, { id: 'someone-else' });
+  assert.equal(R._askAfterSignup(0), false);
+  signedIn(b, user);
+  await R.enableEmail();
+  assert.equal(R._askAfterSignup(0), false);
+});

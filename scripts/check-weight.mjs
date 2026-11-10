@@ -204,7 +204,10 @@ const SHELL_BUDGETS = [
      date, the theme tint and the shared selector twins (measured 348.7 KB with it).
      349 -> 349.8 for registering AP® Human Geography (docs/aphug-spec.md, Phase 0), the fifteenth course, the
      same lists again (measured 349.3 KB with both). */
-  ['site', 349.8],
+  /* 349.8 -> 352 (reminders offered in every course, owner 2026-11-10, docs/reminders.md): reminders.js reads what
+     is due in every course, offers email where push cannot work and asks once after a new account. Measured 350.8 KB
+     with fourteen courses; with AP® Human Geography in its course list as well, see the launch log. */
+  ['site', 352],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -248,7 +251,8 @@ const SHELL_BUDGETS = [
   /* 52.1 -> 56.4 (score card v3, owner 2026-11-07): LevlStudy.end v3 and .cx-endp3 styles, measured on claude/score-card. */
   /* -> 57.0 (score card v3 on every mode, owner 2026-11-07): study.js and study.css plus card-loader.js. */
   /* -> 57.2 (overlap sweep 2026-11): the answer chip rules name Env Sci's, Macro's and Psychology's marks; measured 57.1 KB. */
-  ['assets/course', 57.2],
+  /* 57.2 -> 57.4 (same change): study.js wire() offers reminders after every score card; measured 57.3 KB. */
+  ['assets/course', 57.4],
   /* 52.1 -> 56.6 (score card v3, 2026-11-07): study.js end() and the .cx-endp3 styles (56.4 measured before this
      branch), plus card-loader.js and the card's Tool Studio fixes for FRQ, justify and NREMT scenarios; measured 56.6. */
   /* 52.1 -> 56.5 (score card v3, owner 2026-11-07, docs/score-card.md): LevlStudy.end, miss and the .cx-endp3 styles; measured 56.4 KB. */
