@@ -1113,7 +1113,7 @@
   },
   {
    "id": "w1109-01-monty-hall",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-09",
    "date": null,
    "tiktok_caption": "The Monty Hall problem: three doors, one car, and the host just showed you a goat.\nWould you stay with your door or switch?\nIn AP Statistics this is conditional probability: your first pick is right 1 time in 3, so switching wins 2 times in 3.\nlevlprep.com\n#montyhall #apstats #statistics #probability",
@@ -1130,7 +1130,10 @@
    "thumb_v2": true,
    "cta": "none",
    "related_video": null,
-   "related_set": false
+   "related_set": false,
+   "review_blob": "71848bd5b4e2df1ccfbd63f28ae5e8696f60516b",
+   "approved_on": "2026-11-09",
+   "approved_blob": "71848bd5b4e2df1ccfbd63f28ae5e8696f60516b"
   }
  ]
 }
