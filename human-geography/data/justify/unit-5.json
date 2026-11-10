@@ -1,0 +1,535 @@
+{
+ "about": "\"Make it specific\" prompts for unit-5 (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "unit-5",
+   "id": "u5-describe-transhumance",
+   "topic": "agriculture-intro",
+   "practice": "2.A",
+   "skill": "describe",
+   "title": "Describing transhumance",
+   "context": "",
+   "prompt": "<b>Describe</b> transhumance as it is practiced in the Swiss Alps.",
+   "checklist": [
+    "Says what moves and where",
+    "Says when it moves, by season",
+    "Explains it is a yearly pattern, more than a definition"
+   ],
+   "earns": {
+    "answer": "In the Swiss Alps, farmers move cattle up to high mountain pastures in early summer, when the grass grows after the snow melts, and bring them back down to the valley farms in autumn, a seasonal pattern repeated every year.",
+    "why": "It says what moves, where and when, in a named place."
+   },
+   "misses": {
+    "answer": "Transhumance is moving animals to different pastures.",
+    "why": "A definition with no place and no seasons: describe the pattern itself."
+   },
+   "specific": {
+    "slots": {
+     "pattern": {
+      "label": "Summer",
+      "options": [
+       "cattle move up to high pastures",
+       "cattle move to the coast",
+       "cattle stay in barns"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The Alps move up and down, not to the coast.",
+       "2": "Summer is when the high pastures are used."
+      }
+     },
+     "trend": {
+      "label": "Autumn",
+      "options": [
+       "cattle come back down to the valleys",
+       "cattle move higher",
+       "cattle are sold abroad"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Snow comes to the high pastures in autumn.",
+       "2": "They return to the valley farms."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-explain-tomatoes",
+   "topic": "agricultural-origins",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "The Columbian Exchange on an Italian plate",
+   "context": "",
+   "prompt": "<b>Explain</b> how the Columbian Exchange changed food in Italy.",
+   "checklist": [
+    "Names a crop and where it came from",
+    "Names the process and when it began",
+    "Links it to a change in Italian food"
+   ],
+   "earns": {
+    "answer": "Tomatoes came from the Americas to Europe after 1492 through the Columbian Exchange, so by the 1800s they had become central to Italian dishes such as pasta sauces and pizza.",
+    "why": "It names the crop, its origin, the process and the result."
+   },
+   "misses": {
+    "answer": "Italians eat tomatoes because of the Columbian Exchange.",
+    "why": "It names the process but not where tomatoes came from or how food changed."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Crop and origin",
+      "options": [
+       "tomatoes, from the Americas",
+       "wheat, from the Americas",
+       "rice, from Australia"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wheat came from Southwest Asia.",
+       "2": "Rice did not come from Australia."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "central to sauces and pizza",
+       "Italy stopped eating bread",
+       "tomatoes left Europe"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bread stayed central too.",
+       "2": "Tomatoes stayed and spread."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-compare-revolutions",
+   "topic": "green-revolution",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "Two agricultural revolutions",
+   "context": "",
+   "prompt": "<b>Compare</b> the Second Agricultural Revolution and the Green Revolution.",
+   "checklist": [
+    "Gives one similarity between the two revolutions",
+    "Gives where, when and how for both",
+    "Speaks of both revolutions, not one alone"
+   ],
+   "earns": {
+    "answer": "Both raised farm output with new methods, but the Second Agricultural Revolution, in Britain from the 1700s, relied on crop rotation, enclosure and new machines, whereas the Green Revolution, from the 1960s in places such as India and Mexico, relied on high-yield seeds, fertilizers and irrigation.",
+    "why": "It gives a similarity and a difference, with time, place and method for both."
+   },
+   "misses": {
+    "answer": "The Green Revolution used high-yield seeds and fertilizers.",
+    "why": "One side only: say what the Second Agricultural Revolution did too."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "Second Agricultural Revolution",
+      "options": [
+       "Britain, 1700s: rotation and enclosure",
+       "India, 1960s: new seeds",
+       "the Americas, 1490s: new crops"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the Green Revolution.",
+       "2": "That is the Columbian Exchange."
+      }
+     },
+     "sideB": {
+      "label": "Green Revolution",
+      "options": [
+       "1960s: high-yield seeds and irrigation",
+       "1990s: crops given genes in labs",
+       "1700s: four-field rotation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Genetically modified crops came later and are separate.",
+       "2": "That is the earlier revolution."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-degree-punjab",
+   "topic": "green-revolution",
+   "practice": "1.D",
+   "skill": "degree",
+   "title": "The Green Revolution in India",
+   "context": "",
+   "prompt": "<b>Explain</b> the degree to which the Green Revolution reduced hunger in India.",
+   "checklist": [
+    "States the degree first: to a large degree, for example",
+    "Names the technology and a region, with dates",
+    "Names a cost or who gained less"
+   ],
+   "earns": {
+    "answer": "To a large degree: from the late 1960s, high-yield wheat and rice, with irrigation and fertilizer, raised harvests in states such as Punjab, so India no longer faced the famines it had feared; but the gains went most to farmers with water and money, and groundwater fell.",
+    "why": "It states the degree and backs it with both the gains and the costs."
+   },
+   "misses": {
+    "answer": "The Green Revolution fixed hunger in India with new seeds.",
+    "why": "No degree and an overstatement: the gains were uneven and had costs."
+   },
+   "specific": {
+    "slots": {
+     "degree": {
+      "label": "Degree",
+      "options": [
+       "to a large degree",
+       "not at all",
+       "completely"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Harvests rose sharply.",
+       "2": "Gains were uneven, so not complete."
+      }
+     },
+     "evidence": {
+      "label": "A cost",
+      "options": [
+       "falling groundwater in Punjab",
+       "no new seeds were used",
+       "rainfall rose"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "High-yield seeds were the heart of it.",
+       "2": "Irrigation, not more rain, watered the crops."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-place-cocoa",
+   "topic": "global-agriculture",
+   "practice": "2.B",
+   "skill": "place",
+   "title": "Naming a place: commodity dependence",
+   "context": "<p>A student writes: \"Some countries depend on one crop for their exports.\"</p>",
+   "prompt": "<b>Rewrite</b> the claim with a real country, its crop and why it matters.",
+   "checklist": [
+    "Names a real country and crop, with a dated source",
+    "Says what depending on it means",
+    "Gives the effect of a price change"
+   ],
+   "earns": {
+    "answer": "Côte d'Ivoire, the world's largest grower of cocoa beans (FAOSTAT, 2022 data), earns a large share of its export income from cocoa, so a fall in world cocoa prices cuts farm incomes and government revenue.",
+    "why": "It names the country, crop and source, and the effect of a price fall."
+   },
+   "misses": {
+    "answer": "Some African countries depend on cocoa or coffee.",
+    "why": "\"Some African countries\" names no place, and nothing says why it matters."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "Country",
+      "options": [
+       "Côte d'Ivoire",
+       "Africa",
+       "a poor country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A continent, not a country.",
+       "2": "That names no country."
+      }
+     },
+     "effect": {
+      "label": "Effect of a price fall",
+      "options": [
+       "incomes and revenue fall",
+       "cocoa farms grow richer",
+       "nothing changes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower prices mean less money.",
+       "2": "Most export income comes from cocoa."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-scale-soy",
+   "topic": "production-regions",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "Soybeans at two scales",
+   "context": "",
+   "prompt": "<b>Explain</b> how Brazil's soybean production looks different at the global and local scales.",
+   "checklist": [
+    "Names Brazil's place at the global scale",
+    "Names where in Brazil the crop is grown",
+    "Explains what that means for the country's output"
+   ],
+   "earns": {
+    "answer": "At the global scale, Brazil is one of the largest exporters of soybeans, but at the local scale, much of the crop comes from large farms in states such as Mato Grosso, so the national total depends on a few regions and the land cleared there.",
+    "why": "It names both scales and what each shows."
+   },
+   "misses": {
+    "answer": "Brazil grows a lot of soybeans and sells them abroad.",
+    "why": "No scale is named and no place inside Brazil is given."
+   },
+   "specific": {
+    "slots": {
+     "scale": {
+      "label": "Global scale",
+      "options": [
+       "one of the largest soybean exporters",
+       "a small importer of soybeans",
+       "no soybeans at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Brazil sells soybeans abroad in large amounts.",
+       "2": "Brazil is a major grower."
+      }
+     },
+     "place": {
+      "label": "Local scale",
+      "options": [
+       "large farms in Mato Grosso",
+       "small gardens in every town",
+       "the Amazon river itself"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Soy comes mostly from large farms.",
+       "2": "Crops grow on land, not in the river."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-model-von-thunen",
+   "topic": "von-thunen",
+   "practice": "1.E",
+   "skill": "model",
+   "title": "A limit of von Thünen",
+   "context": "",
+   "prompt": "<b>Explain</b> one limit of the von Thünen model, using a named place.",
+   "checklist": [
+    "Says what the model assumes about transport",
+    "Names a real place where the pattern breaks",
+    "Explains why modern transport breaks it"
+   ],
+   "earns": {
+    "answer": "Von Thünen assumed one market and travel by horse and cart over flat land, but flowers grown in the Netherlands are flown from Schiphol airport to markets around the world, so modern transport lets perishable goods travel far, which breaks the model's rings.",
+    "why": "It states the assumption, names a place and explains the break."
+   },
+   "misses": {
+    "answer": "The von Thünen model is old, so it does not fit farming in the 2020s.",
+    "why": "No reason and no place: a limit needs the assumption that fails and a case."
+   },
+   "specific": {
+    "slots": {
+     "model": {
+      "label": "Assumption",
+      "options": [
+       "travel by horse and cart to one market",
+       "many markets linked by air",
+       "farmers grow only flowers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the modern world that breaks the model.",
+       "2": "The model has several rings of different crops."
+      }
+     },
+     "place": {
+      "label": "Where it breaks",
+      "options": [
+       "Dutch flowers flown from Schiphol",
+       "dairy farms near a market town",
+       "grain grown far from a market"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dairy near a market town fits the model.",
+       "2": "Distant grain fits the model too."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-explain-aral",
+   "topic": "agriculture-consequences",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Irrigation and the Aral Sea",
+   "context": "",
+   "prompt": "<b>Explain</b> how irrigated farming changed the Aral Sea in Central Asia.",
+   "checklist": [
+    "Names the farming and the rivers it took water from, with the date",
+    "Links the water taken to the sea shrinking",
+    "Names an effect on people or land"
+   ],
+   "earns": {
+    "answer": "From the 1960s, Soviet planners took water from the Amu Darya and Syr Darya rivers to irrigate cotton, so less water reached the Aral Sea, which shrank to a fraction of its size, leaving fishing towns far from the shore and salty dust blowing over farms.",
+    "why": "It names the cause, links it to the shrinking and gives effects."
+   },
+   "misses": {
+    "answer": "The Aral Sea dried up because of farming.",
+    "why": "It names a cause but not how farming took the water or what followed."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "rivers diverted to irrigate cotton",
+       "a rise in sea level",
+       "more rain over the sea"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sea shrank, it did not rise.",
+       "2": "More rain would fill it."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "fishing towns left far from the shore",
+       "more fish for local towns",
+       "the sea grew larger"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fishing collapsed as the sea shrank.",
+       "2": "The sea shrank to a fraction of its size."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-limit-women-farm-data",
+   "topic": "women-in-agriculture",
+   "practice": "4.F",
+   "skill": "limitation",
+   "title": "What farm labor data miss",
+   "context": "<p>A national count of workers records each person's main paid job.</p>",
+   "prompt": "<b>Explain</b> one limitation of this count for measuring women's work in farming.",
+   "checklist": [
+    "Names what the count misses: unpaid family farm work",
+    "Says why women's work is often missed",
+    "Says which way the figures are off"
+   ],
+   "earns": {
+    "answer": "Counts of main paid jobs miss much of the unpaid work women do on family farms, such as weeding, harvesting and processing food, so the data can understate women's share of farm labor.",
+    "why": "It names the gap, gives examples and says which way the figures err."
+   },
+   "misses": {
+    "answer": "The count might not include enough women in it.",
+    "why": "It guesses at sampling but misses the real gap: unpaid work is not counted."
+   },
+   "specific": {
+    "slots": {
+     "limit": {
+      "label": "What is missed",
+      "options": [
+       "unpaid work on family farms",
+       "paid jobs in towns",
+       "work done by men"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Paid jobs are what the count records.",
+       "2": "Men's main jobs are recorded."
+      }
+     },
+     "effect": {
+      "label": "Which way",
+      "options": [
+       "women's share is understated",
+       "women's share is overstated",
+       "the data are exact"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Missing work makes the share look smaller.",
+       "2": "Missing work means the data are not exact."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-legend-dot-map",
+   "topic": "farm-organization",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading a dot map legend",
+   "context": "<p>A dot map of invented Country A shows dairy cows, with a legend that reads \"1 dot = 1,000 cows\" (invented data for practice).</p>",
+   "prompt": "<b>Explain</b> what a cluster of 20 dots in one province means, and what it does not mean.",
+   "checklist": [
+    "Reads the value from the legend: about 20,000 cows",
+    "Says the dots show where cows are counted",
+    "Says a dot is not one farm"
+   ],
+   "earns": {
+    "answer": "With 1 dot standing for 1,000 cows, 20 dots mean about 20,000 cows in that area; the dots show where the cows are counted, not the exact spot of each farm, so one dot may stand for several farms nearby.",
+    "why": "It reads the legend's value and says what a dot does not show."
+   },
+   "misses": {
+    "answer": "There are a lot of cows in that province.",
+    "why": "It never reads the legend: how many cows do 20 dots stand for?"
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "Value",
+      "options": [
+       "about 20,000 cows",
+       "20 cows",
+       "20 farms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each dot is 1,000 cows, not one.",
+       "2": "Dots count cows, not farms."
+      }
+     },
+     "limit": {
+      "label": "What a dot is not",
+      "options": [
+       "the exact spot of one farm",
+       "a count of cows",
+       "a part of the map"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A dot is a count of cows.",
+       "2": "Dots are on the map."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -148,7 +148,7 @@
   var SHIPS = [
     { what: 'a foreign cargo ship sailing straight through without stopping', ask: 'What may Country A do?' },
     { what: 'a foreign fishing boat hauling in nets', ask: 'Who controls the fish there?' },
-    { what: 'a boat that Country A\'s coast guard suspects of smuggling goods past customs', ask: 'What may Country A do?' }
+    { what: 'a boat it suspects of smuggling goods past customs', ask: 'What may Country A do?' }
   ];
   function shipAnswer(z, ship){
     if(ship === 1){ return z.id === 'hs' ? 'No state: the fish of the high seas are open to every country' : 'Country A: the resources within 200 nautical miles are its own'; }
@@ -160,7 +160,7 @@
   var REAL = [
     { mark: 'A', base: 'north-america', at: [-110, 49], name: 'Canada and the United States, west of the Great Lakes', types: ['geometric', 'antecedent'], text: 'Agreed in 1818 and 1846 along the 49th parallel, a line of latitude, before most settlers arrived in the West. Often classed as geometric and antecedent.' },
     { mark: 'B', base: 'europe', at: [10.6, 51.4], name: 'The former border between East and West Germany', types: ['relict'], text: 'Drawn between occupation zones after 1945 and fortified until 1989. Germany reunified in 1990; parts of the fence and watchtowers remain as memorials. A relict boundary.' },
-    { mark: 'C', base: 'north-africa-sw-asia', at: [14, 22.5], name: 'Straight borders across the Sahara (Libya, Niger, Algeria)', types: ['geometric', 'superimposed'], text: 'Drawn by European colonial powers in the late 1800s and early 1900s (for example, an 1899 agreement between Britain and France), with little regard for the peoples who lived there. Often classed as geometric and superimposed.' },
+    { mark: 'C', base: 'north-africa-sw-asia', at: [19.5, 21.4], name: 'Straight borders across the Sahara (Libya, Chad, Niger)', types: ['geometric', 'superimposed'], text: 'Drawn by European colonial powers in the late 1800s and early 1900s (for example, a line agreed by Britain and France in 1899 became the long straight part of the Chad and Libya border), with little regard for the peoples who lived there. Often classed as geometric and superimposed.' },
     { mark: 'D', base: 'south-asia', at: [74.4, 30.6], name: 'India and Pakistan in Punjab', types: ['superimposed', 'consequent'], text: 'Drawn in 1947 by a commission of the departing British government, told to follow, with other factors, where areas with a Muslim majority met areas without one. Often classed as superimposed and consequent.' }
   ];
 
@@ -178,7 +178,8 @@
   function genBoundary(r, ctx){
     var extra = r.pick(EXTRA), first = r.pick(EXTRA_FIRST[extra]);
     var settled = r.int(17, 18) * 100 + r.pick([10, 20, 30, 40, 50, 60]);
-    var drawn = first === 'line' ? settled - r.pick([30, 40, 50, 60]) : settled + r.pick([40, 50, 60, 70, 80]);
+    // A relict line ends 50 years after it is drawn, so its towns must come before that.
+    var drawn = first === 'line' ? settled - r.pick(extra === 'relict' ? [30, 40] : [30, 40, 50, 60]) : settled + r.pick([40, 50, 60, 70, 80]);
     if(first === 'line' && drawn >= settled) settled = drawn + 40;
     if(first === 'people' && drawn <= settled) drawn = settled + 40;
     var f = { first: first, extra: extra, drawn: drawn, settled: settled };
@@ -219,7 +220,7 @@
     }), '2.A', 'apply', true);
     var others = SHAPE_IDS.filter(function(id){ return id !== k; });
     var s2 = choice('challenge', 'What challenge does a state with this shape most often face?', [k].concat(shuffled(r, others).slice(0, 3)).map(function(id){
-      return opt(SHAPES[id].challenge, id === k, id === k ? S.def : 'That fits a ' + SHAPES[id].name.toLowerCase() + ' state. ' + SHAPES[id].def);
+      return opt(SHAPES[id].challenge, id === k, id === k ? S.def : 'That fits ' + (/^[aeiou]/i.test(SHAPES[id].name) ? 'an ' : 'a ') + SHAPES[id].name.toLowerCase() + ' state. ' + SHAPES[id].def);
     }), '2.B', 'analyze');
     return {
       type: 'shape', ctx: ctx.id, topic: ctx.topic, given: { shape: k },

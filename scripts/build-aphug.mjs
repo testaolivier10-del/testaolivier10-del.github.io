@@ -1128,7 +1128,7 @@ window.ApHugCurriculum = ${JSON.stringify(data)};
    left behind is stale. */
 const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank', 'frq', 'assets/frq', 'tools', 'assets/tool-data', 'unit-tests', 'assets/exams', 'figures/maps'];
 const OWNED_FILES = ['index.html', 'learn.html', 'glossary.html', 'assets/hug-curriculum.js', 'assets/glossary.json', 'assets/notes-index.json', 'assets/summaries.json',
-  'formula-sheet.html', 'assets/justify.json', 'assets/formulas.json',
+  'formula-sheet.html', 'models.html', 'assets/justify.json', 'assets/formulas.json',
   ...(C.pages.apps || []).map(a => `${a.slug}.html`)];
 const stale = [];
 for (const d of OWNED_DIRS) {

@@ -201,7 +201,7 @@
     order.forEach(function(id, i){ out[LETTERS[i]] = id; });
     return out;
   }
-  function stepWord(sp, id){ var s = sp.steps[id]; return s ? 'Step ' + s : 'never (it has not reached there)'; }
+  function stepWord(sp, id){ var s = sp.steps[id]; return s ? 'got it at Step ' + s : 'does not have it yet'; }
 
   /* ------------------------------------------------------------ types */
   function genDiffusion(r, ctx){
@@ -213,7 +213,7 @@
     var info = KINDS[kind];
     var stepHearth = choice('hearth', 'Which place is the hearth, where ' + trait.t + ' began?', LETTERS.map(function(l){
       var id = letters[l];
-      return opt('Place ' + l, id === hearth, id === hearth ? 'Place ' + l + ' is the only place shaded for Step 1: that is where it started.' : 'Place ' + l + ' got it at ' + stepWord(sp, id) + ', so it did not start there. The hearth is the place shaded for Step 1.');
+      return opt('Place ' + l, id === hearth, id === hearth ? 'Place ' + l + ' is the only place shaded for Step 1: that is where it started.' : 'Place ' + l + ' ' + stepWord(sp, id) + ', so it did not start there. The hearth is the place shaded for Step 1.');
     }), '2.A', 'apply', true);
     var stepType = choice('type', 'Which type of diffusion does the map show?', ORDER.map(function(k){
       return opt(KINDS[k].name, k === kind, k === kind ? info.clue : SLIP[k][kind]);
@@ -250,7 +250,7 @@
     var near = PLACES.filter(function(p){ return sp.steps[p.id] === 3; }).length;
     var stepHearth = choice('hearth', 'Which place is the hearth, where ' + trait.t + ' began?', LETTERS.map(function(l){
       var id = letters[l];
-      return opt('Place ' + l, id === hearth, id === hearth ? 'It is the only place shaded for Step 1.' : 'Place ' + l + ' got it at ' + stepWord(sp, id) + '. The hearth is the place shaded for Step 1.');
+      return opt('Place ' + l, id === hearth, id === hearth ? 'It is the only place shaded for Step 1.' : 'Place ' + l + ' ' + stepWord(sp, id) + '. The hearth is the place shaded for Step 1.');
     }), '2.A', 'apply', true);
     var stepMix = choice('mix', 'Real diffusion often mixes types. Which mix does this map show?', MIX.map(function(x){ return opt(x.t, !!x.ok, x.ok ? 'At Step 2 every large city had it, wherever it was (hierarchical); then it spread to the places near each city (contagious).' : x.why); }), '2.A', 'analyze', true);
     var stepWhy = choice('why', 'Why did the places near each large city get it at Step 3?', [
@@ -397,7 +397,7 @@
     var stepK = choice('kind', 'Which kind of migration is it?', opts.map(function(k){
       var slip = k === 'refugee' && sc.k === 'asylum' ? ' Here no decision has been made yet, so the person is still an asylum seeker.' :
         k === 'asylum' && sc.k === 'refugee' ? ' Here the government already recognized the need for protection: a refugee.' :
-        k === 'refugee' && sc.k === 'idp' ? ' A refugee has crossed an international border. This person is still inside the same country.' :
+        k === 'refugee' && sc.k === 'idp' ? ' This person is still inside the same country.' :
         k === 'step' && sc.k === 'chain' ? ' Step migration is about stages of the move. Here the clue is family who went first.' :
         k === 'chain' && sc.k === 'step' ? ' Chain migration follows family who went first. Here the clue is the stages: village, town, city.' : '';
       return opt(MKINDS[k].name, k === sc.k, MKINDS[k].def + slip);

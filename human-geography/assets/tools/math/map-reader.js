@@ -43,6 +43,9 @@
   var LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   /* ------------------------------------------------------------ bases */
+  // A data title mid-sentence: lower case, but keep month and other proper words (July).
+  function lcT(t){ return t.charAt(0).toLowerCase() + t.slice(1); }
+  function art(w){ return /^[aeiou]/i.test(w) ? 'an' : 'a'; }
   var BASES = {};
   function setBases(o){ for(var k in o) if(o[k] && o[k].features) BASES[k] = o[k]; prep(); }
   function base(id){ var b = BASES[id]; if(!b) throw new Error('map-reader: base "' + id + '" is not loaded'); return b; }
@@ -308,20 +311,20 @@
     var spec = { base: bid, render: render, invented: true };
     if(render === 'choropleth'){
       var V = pick(r, RATE_VARS); spec.classes = V.classes; spec.values = trendClasses(r, bid, dir, 4); spec.legendTitle = V.title + ' (invented)'; spec.noData = NO_DATA;
-      spec.label = 'Choropleth map of ' + placeName(bid) + ': ' + V.title.toLowerCase() + ', invented values highest toward the ' + dir;
+      spec.label = 'Choropleth map of ' + placeName(bid) + ': ' + lcT(V.title) + ', invented values highest toward the ' + dir;
     } else if(render === 'dot'){
       var CV = pick(r, COUNT_VARS), cnt = countValues(r, bid, dir), tot = Object.keys(cnt).reduce(function(s, k){ return s + cnt[k]; }, 0);
       spec.dots = { each: CV.each, points: dotsFor(r, bid, cnt, tot / 220) }; spec.legendTitle = CV.title + ' (invented)';
-      spec.label = 'Dot density map of ' + placeName(bid) + ': ' + CV.title.toLowerCase() + ', dots clustered toward the ' + dir;
+      spec.label = 'Dot density map of ' + placeName(bid) + ': ' + lcT(CV.title) + ', dots clustered toward the ' + dir;
     } else if(render === 'symbol'){
       var SV = pick(r, COUNT_VARS), cs = countValues(r, bid, dir), big = markable(bid).sort(function(a, b){ return cs[b.id] - cs[a.id]; });
       var chosen = legibleMarks(bid, big.map(function(f){ return f.id; }), 6).map(function(m){ return m.at; });
       spec.symbols = { unit: SV.unit, items: chosen.map(function(id){ return { at: id, value: cs[id] * 10 }; }) }; spec.legendTitle = SV.title + ' (invented)';
-      spec.label = 'Graduated symbol map of ' + placeName(bid) + ': ' + SV.title.toLowerCase() + ', circles sized by amount';
+      spec.label = 'Graduated symbol map of ' + placeName(bid) + ': ' + lcT(SV.title) + ', circles sized by amount';
     } else if(render === 'isoline'){
       var IV = pick(r, ISO_VARS), xs = isoXs(r), vals = isoVals(r, IV);
       spec.base = 'country-a'; spec.isolines = { unit: IV.unit, lines: isoLines(r, vals, xs) }; spec.legendTitle = IV.title + ' (invented)';
-      spec.label = 'Isoline map of Country A: ' + IV.title.toLowerCase() + ', lines of equal value';
+      spec.label = 'Isoline map of Country A: ' + lcT(IV.title) + ', lines of equal value';
       placeIso(spec);
     } else {
       delete spec.invented;
@@ -355,8 +358,8 @@
       cartogram: 'A cartogram redraws places so their size shows the data; shapes and areas are distorted.'
     };
     var steps = [
-      choice('kind', 'What type of map is this?', KIND_ORDER.map(function(k){ return [KINDS[k].short, k === render ? 'Right. ' + KINDS[k].look + ': a ' + KINDS[k].name.toLowerCase() + '.' : 'Not this one. ' + slipWhy[k] + ' This map: ' + K.look.toLowerCase() + '.']; }), { fixed: true, correct: KIND_ORDER.indexOf(render) }),
-      choice('best', 'What does a ' + K.name.toLowerCase() + ' show best?', [[cap(K.best) + '.', 'Right. That is what a ' + K.name.toLowerCase() + ' is for.']].concat(KIND_ORDER.filter(function(k){ return k !== render; }).sort(function(){ return r() - 0.5; }).slice(0, 3).map(function(k){ return [cap(KINDS[k].best) + '.', 'That is what a ' + KINDS[k].name.toLowerCase() + ' shows best.']; })))
+      choice('kind', 'What type of map is this?', KIND_ORDER.map(function(k){ return [KINDS[k].short, k === render ? 'Right. ' + KINDS[k].look + ': ' + art(KINDS[k].name) + ' ' + KINDS[k].name.toLowerCase() + '.' : 'Not this one. ' + slipWhy[k] + ' This map: ' + K.look.toLowerCase() + '.']; }), { fixed: true, correct: KIND_ORDER.indexOf(render) }),
+      choice('best', 'What does ' + art(K.name) + ' ' + K.name.toLowerCase() + ' show best?', [[cap(K.best) + '.', 'Right. That is what ' + art(K.name) + ' ' + K.name.toLowerCase() + ' is for.']].concat(KIND_ORDER.filter(function(k){ return k !== render; }).sort(function(){ return r() - 0.5; }).slice(0, 3).map(function(k){ return [cap(KINDS[k].best) + '.', 'That is what a ' + KINDS[k].name.toLowerCase() + ' shows best.']; })))
     ];
     var sol = ['It is a ' + K.name.toLowerCase() + ': ' + K.look.toLowerCase() + '.', 'It shows best ' + K.best + '.', 'It cannot show ' + K.cannot + '.'];
     return { text: text, steps: steps, solution: sol, figure: m.fig, given: { render: render, base: bid } };
@@ -401,7 +404,7 @@
     if(marks.length < 3) throw again('legend drill could not place three marks on ' + bid);
     marks = marks.sort(function(){ return r() - 0.5; }).map(function(x, i){ return { at: x.at, text: LETTERS[i] }; });
     var spec = { base: bid, render: 'choropleth', invented: true, classes: V.classes, values: cls, legendTitle: V.title + ' (invented)', noData: NO_DATA, marks: marks,
-      label: 'Choropleth map of ' + placeName(bid) + ': ' + V.title.toLowerCase() + ' (invented), with places ' + marks.map(function(x){ return x.text; }).join(', ') + ' marked' };
+      label: 'Choropleth map of ' + placeName(bid) + ': ' + lcT(V.title) + ' (invented), with places ' + marks.map(function(x){ return x.text; }).join(', ') + ' marked' };
     var key = keyOf(bid, marks), ask = marks[Math.floor(r() * marks.length)], k = cls[ask.at], top = marks.slice().sort(function(a, b){ return cls[b.at] - cls[a.at]; })[0];
     var steps = [
       choice('klass', 'Which class is place ' + ask.text + ' (' + nameOf(bid, ask.at) + ') in?', V.classes.map(function(lab, i){ return [lab, i === k ? 'Right. Its shade matches that legend box.' : i === V.classes.length - 1 - k ? 'That is the class at the other end of the legend. Darker shades mean higher values here.' : 'Match the shade of ' + ask.text + ' with the legend boxes again.']; }), { fixed: true, correct: k }),
@@ -428,7 +431,7 @@
     var topMean = 0, nTop = 0; valued(bid).forEach(function(f){ if(cls[f.id] === 3){ topMean += along(f, dir); nTop++; } });
     if(!big || !(topMean / nTop > med)) throw again('the top class does not lean toward the ' + dir);
     var spec = { base: bid, render: 'choropleth', invented: true, classes: V.classes, values: cls, legendTitle: V.title + ' (invented)', noData: NO_DATA, marks: marks,
-      label: 'Choropleth map of ' + P + ': ' + V.title.toLowerCase() + ' (invented), highest toward the ' + dir };
+      label: 'Choropleth map of ' + P + ': ' + lcT(V.title) + ' (invented), highest toward the ' + dir };
     var key = keyOf(bid, marks), v = V.title.split(' (')[0].toLowerCase();
     var steps = [
       choice('pattern', 'Which statement best describes the pattern on this map?', [
@@ -581,7 +584,7 @@
     var ia = 3, ib = 0, pa = [M.round((xAt(lines[ia], ya) + xAt(lines[ia + 1], ya)) / 2, 1), ya], pb = [M.round((xAt(lines[ib], yb) + xAt(lines[ib + 1], yb)) / 2, 1), yb];
     var swap = r() < 0.5, A = swap ? pb : pa, Bp = swap ? pa : pb, iA = swap ? ib : ia, iB = swap ? ia : ib;
     var spec = { base: 'country-a', render: 'isoline', invented: true, isolines: { unit: IV.unit, lines: lines }, legendTitle: IV.title + ' (invented)', marks: [{ at: A, text: 'A' }, { at: Bp, text: 'B' }],
-      label: 'Isoline map of Country A: ' + IV.title.toLowerCase() + ' (invented), with points A and B marked' };
+      label: 'Isoline map of Country A: ' + lcT(IV.title) + ' (invented), with points A and B marked' };
     placeIso(spec);
     var rng = function(i){ var a = vals[i], b = vals[i + 1]; return [Math.min(a, b), Math.max(a, b)]; };
     var u = IV.unit === '°C' ? ' °C' : '', ra = rng(iA), opts = [0, 1, 2, 3].map(function(i){ var q = rng(i); return ['Between ' + q[0] + u + ' and ' + q[1] + u, i === iA ? 'Right. A lies between the lines labeled ' + q[0] + ' and ' + q[1] + '.' : 'Find the two lines on either side of A and read their labels.']; });
@@ -595,7 +598,7 @@
         ['Where the line labels are largest.', 'The labels give the values; the spacing of the lines gives the rate of change.']
       ])
     ];
-    return { text: '<p>The isoline map shows ' + IV.title.toLowerCase() + ' across Country A (invented data for practice). Each line joins places with the same value.</p>', steps: steps,
+    return { text: '<p>The isoline map shows ' + lcT(IV.title) + ' across Country A (invented data for practice). Each line joins places with the same value.</p>', steps: steps,
       solution: ['A is between the lines labeled ' + ra[0] + ' and ' + ra[1] + ', so its value is in that range. The map cannot give the exact value between two lines.', 'The lines bunch together in the east: the value changes fastest there. Lines far apart mean slow change.'],
       figure: mapFig(spec, []), given: { xs: xs, vals: vals, A: A, B: Bp, iA: iA, iB: iB } };
   };

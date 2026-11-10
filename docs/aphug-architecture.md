@@ -18,6 +18,7 @@ human-geography/                         the course, at levlprep.com/human-geogr
   cram.html dashboard.html search.html teachers.html videos.html   app page shells from pages.json   generated
   frq/<id>.html  tools/<slug>.html                                                                  generated
   formula-sheet.html unit-tests/<unit>.html   "Formulas you must know", free unit tests             generated
+  models.html                           "Models you must know" (data/models.json + Model Studio)    generated
   figures/maps/<stimulus id>.svg        every map a page shows, drawn at build time (hug-map.js)    generated
   figures/base/*.json                   base maps: world, ten regions, Country A (build-aphug-basemaps.mjs)
   manifest.json                         "LevlPrep Human Geography" (from build-pricing.mjs)
@@ -280,19 +281,46 @@ is refused by `_drills.mjs`; a model step is checked and its key must grade righ
 
 Checked by `checkForms` (`scripts/lib/aphug-exams.mjs`): at least two forms; Section I is 60 single-answer
 questions of five options (an exam-only item has five; a bank item gets its fifth from the form's
-`fifth: { id: { text, why } }`), whole sets in authored order, set counts within `EXAM_SETS` (map 1-4, data 1-4,
-image 0-3, text 0-3: the official counts are not published, needs-author `mcq-sets`), each unit within its weight
-range of 60 (Unit 1 4 to 6, the others 7 to 11); Section II is the three FRQs in the order none, one, two, 7 points
-each; no question or FRQ in two forms. Skill weights checked only when the map sets `practicesConfirmed`.
-`EXAM_NUMBERS` and `JUSTIFY_NUMBERS` are empty until Phase 3.
+`fifth: { id: { text, why } }`, put in at `fifthAt(id)` by `examVersion`, the key moving with it), whole sets in
+authored order, set counts within `EXAM_SETS` (map 1-4, data 1-4, image 0-3, text 0-3: the official counts are
+not published, needs-author `mcq-sets`), 30 to 40 percent of questions with a stimulus (`EXAM_STIMULI`), 6 to 16
+exam-only questions (`EXAM_ONLY`), each unit within its weight range of 60 (Unit 1 4 to 6, the others 7 to 11);
+Section II is the three FRQs in the order none, one, two, 7 points each, sharing no unit; no question or FRQ in
+two forms. Skill weights checked only when the map sets `practicesConfirmed`. Also checked: `checkFifth` (one
+fifth per bank question of the form, none elsewhere, no repeat, never on a fixed item), `checkReads` with
+`EXAM_READS` (every exam-only map, pyramid or symbol read recomputed from its data), `checkNumbers` with
+`EXAM_NUMBERS` and `JUSTIFY_NUMBERS` (ApHugCalc), and, in `check-aphug-content.mjs`, each form as served
+(`servedForm`): the length tell, the key position (`keyPositionTell`), the test-wise limits and `keyRisks` (no
+key that names a disputed place or is an undated real figure).
+
+Exam-only items live in `data/exams/items.json` (`hug-exam-<form>-<nn>`, stimuli `exam-<form>-s<n>`, any stimulus
+kind, maps drawn like bank maps). The build serves, for each published form, every question it uses in
+`assets/exams/items.json` with five options and explanations inline (a bank question in its exam version) and
+every stimulus they read; `assets/exams/forms.json` carries only ids, titles and FRQs. `pages/exams.js` treats
+only `hug-exam-*` as exam-only (kept out of Review). Results show Section I and Section II apart, each 50% of the
+exam; no composite, no band. The free unit tests (`unitSample`) never show a form question or a set one of them
+belongs to.
 
 ## "Make it specific": `data/justify/<unit>.json`
 
 As AP® Psychology; `skill` is one of `describe`, `explain`, `compare`, `degree`, `place`, `scale`, `limitation`,
-`model`. The checker refuses an explain whose model answer has no link, a compare with one side, a degree not
-stated first, a scale answer with no scale named, a builder slot without a `why`, and anything taught after the
-unit. Files: one per chapter (`geo-skills.json`, `unit-1.json` to `unit-7.json`), 6 to 9 prompts each; ids
-`u<n>-<words>`, `gs-<words>` for the skills chapter; the first 3 in course order are free.
+`model`, `legend` (read the legend: class, unit, what a shade or symbol stands for). The checker refuses an explain
+whose model answer has no link, a compare with one side, a degree not stated first, a scale answer with no scale
+named, a builder slot without a `why`, and anything taught after the unit (the ordering scan is strict: "city",
+"map", "farm", "survey" and "population" belong to the topics that teach them). Files: one per chapter
+(`geo-skills.json`, `unit-1.json` to `unit-7.json`), 8 to 12 prompts a unit and 3 to 6 in the skills chapter
+(`JUSTIFY_PER_CHAPTER`, `JUSTIFY_PER_SKILLS_CHAPTER`); ids `u<n>-<words>`, `gs-<words>` for the skills chapter;
+the first 3 in course order are free.
+
+## Models you must know: `models.html`
+
+Built by `entryPages` (`modelEntries` and `modelPicture` in `scripts/lib/aphug-entry.mjs`) from Model Studio's
+contexts (`data/tools/model-studio.json`: picture, claim, assumptions, first limit) and `data/models.json`
+(`order`, `studio.<id>`: a dated `example` and `confuse: [[modelId | null, how]]`; `extra.<id>`: a model written
+in full, with its own `model` spec). The Model Studio math (`assets/tools/math/model-studio.js`) runs at build
+time through `aphug-tool-checks/_shared.mjs` `runtime`; free layouts use its figures, the others
+`ApHugModel.artSvg`; the page loads `assets/tools/model-studio.css` for the figure styles and `pages/entry.css`
+for its own. Free, indexable once the course is.
 
 ## Registration
 

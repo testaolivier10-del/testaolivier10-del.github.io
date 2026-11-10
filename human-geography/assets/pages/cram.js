@@ -167,6 +167,12 @@
   var Core = W.ApHugCore, CUR = W.ApHugCurriculum || { units: [], topics: [] };
   var STORE = 'aphug_cram_v1', DATE_KEY = 'aphug_exam_date';
   var frqList = [];
+  // The two practice exams (assets/exams/forms.json) and the "Make it
+  // specific" prompts (assets/justify.json), once loaded: a study day never
+  // assigns an FRQ that a practice exam uses (it would spoil the exam), the
+  // exam days link only to a form that exists, and a day's prompts link only
+  // where its unit has some.
+  var FORMS = [], PROMPTS = null, FORM_FRQ = {};
   var UNIT = {}, TOPIC = {}, FRQ = {};
   CUR.units.forEach(function(u){ UNIT[u.id] = u; });
   CUR.topics.forEach(function(t){ TOPIC[t.id] = t; });
@@ -223,8 +229,18 @@
   function setLink(n){ return link('exams.html?mode=mixed&n=' + n, 'Timed mixed set: ' + n + ' questions in ' + mins(n)) + (allowed() ? '' : ' <span class="hug-small">(Premium)</span>'); }
   function frqLink(id){ var f = id && FRQ[id]; return f ? link('frq/' + id + '.html', 'One free-response question: ' + esc(f.title)) : link('frq.html', 'One free-response question of your choice'); }
 
-  // The justification trainer (justify.html), filtered to the day's first unit.
-  function justifyLink(d){ return link('justify.html' + (d.units[0] ? '?unit=' + d.units[0] : ''), 'Two "Make it specific" prompts'); }
+  // The justification trainer (justify.html), filtered to the day's first
+  // unit with prompts (all prompts when the list has not loaded yet).
+  function justifyLink(d){
+    var u = PROMPTS ? d.units.filter(function(x){ return PROMPTS[x]; })[0] : d.units[0];
+    if(PROMPTS && !u) return '';
+    return '<li>' + link('justify.html' + (u ? '?unit=' + u : ''), 'Two "Make it specific" prompts' + (u && PROMPTS ? ' for ' + esc(unitShort(u)) : '')) + ': write, then check against the rubric.</li>';
+  }
+  function formLink(n){
+    var f = FORMS.filter(function(x){ return x.id === 'form-' + n; })[0];
+    if(!f) return '<li>Practice exam ' + n + ' is not published yet: take a ' + link('exams.html?mode=full', 'full practice exam drawn from the bank') + ' instead (60 multiple-choice questions in 60 min, then three free-response questions in 75 min).</li>';
+    return '<li>' + link('exams.html?mode=full&form=' + n, esc(f.title) + ': 60 multiple-choice questions in 60 min, then three free-response questions in 75 min') + '</li>';
+  }
 
   var TITLE = { study: 'Study', weak: 'Weak spots', exam: 'Practice exam', review: 'Go through the exam', rest: 'Rest', eve: 'The day before' };
   function dayBody(d, p){
@@ -234,16 +250,17 @@
       var ts = topicLinks(d.topics, d.weak);
       if(ts) li.push('<li>Notes, then the lesson where a topic is shaky:<ul class="hug-cr-topics">' + ts + '</ul></li>');
       li.push('<li>' + setLink(d.set) + '</li>', '<li>' + frqLink(d.frq) + '</li>');
-      li.push('<li>' + justifyLink(d) + ': write, then check against the rubric.</li>');
+      li.push(justifyLink(d));
     } else if(d.kind === 'weak'){
       li.push('<li>' + d.units.map(sheet).join(' &middot; ') + '</li>');
       li.push(d.topics.length ? '<li>Your weakest topics here:<ul class="hug-cr-topics">' + topicLinks(d.topics, d.topics) + '</ul></li>'
         : '<li>' + (p.personal ? 'The topics you missed in the practice exams' : 'The units worth the most on the exam') + ': ' + link('practice.html?mode=missed', 'practice your misses') + ' or ' + link('practice.html?mode=weak', 'your weakest topics') + '</li>');
       li.push('<li>' + setLink(d.set) + '</li>', '<li>' + frqLink(d.frq) + '</li>');
-      li.push('<li>' + justifyLink(d) + ': write, then check against the rubric.</li>');
+      li.push(justifyLink(d));
+      li.push('<li>The ' + link('models.html', 'models you must know') + ' for these units: what each claims, one limit and a real example.</li>');
     } else if(d.kind === 'exam'){
       // The two fixed practice exams (assets/exams/forms.json): exam day 1 takes form 1, day 2 form 2.
-      li.push('<li>' + link('exams.html?mode=full&form=' + d.exam, 'Practice exam ' + d.exam + ': 60 multiple-choice questions in 60 min, then three free-response questions in 75 min') + '</li>');
+      li.push(formLink(d.exam));
       li.push('<li>' + (d.exam === 1 ? 'Take it as a baseline, under exam conditions, even if you have not reviewed every unit yet.' : 'Same time of day as the real exam if you can. Then score Section II with the rubrics.') + '</li>');
     } else if(d.kind === 'review'){
       li.push('<li>Go through every question you missed in practice exam ' + d.exam + ', with its explanation: ' + link('review.html', 'your review queue') + ' and ' + link('practice.html?mode=missed', 'practice your misses') + '.</li>');
@@ -253,7 +270,7 @@
       li.push('<li>No new questions today. If you want something, ten minutes of ' + link('flashcards.html', 'flashcards') + '.</li>');
     } else if(d.kind === 'eve'){
       li.push('<li>Skim two unit sheets: ' + d.units.map(sheet).join(' and ') + '.</li>');
-      li.push('<li>A few ' + link('flashcards.html', 'flashcards') + ' and ' + link('formula-sheet.html', 'the formulas to know') + '. No timed sets. Sleep.</li>');
+      li.push('<li>A few ' + link('flashcards.html', 'flashcards') + ', ' + link('formula-sheet.html', 'the formulas to know') + ' and ' + link('models.html', 'the models to know') + '. No timed sets. Sleep.</li>');
     }
     return '<ul class="hug-cr-todo">' + li.join('') + '</ul>';
   }
@@ -325,12 +342,17 @@
 
   function boot(){
     render();
-    fetch(BASE + 'assets/frq/index.json').then(function(r){ return r.ok ? r.json() : []; }).then(function(l){
-      frqList = (l || []).filter(function(f){ return !f.placeholder; });
-      frqList.forEach(function(f){ FRQ[f.id] = f; });
+    var getJ = function(u, dflt){ return fetch(BASE + u).then(function(r){ return r.ok ? r.json() : dflt; }).catch(function(){ return dflt; }); };
+    Promise.all([getJ('assets/frq/index.json', []), getJ('assets/exams/forms.json', []), getJ('assets/justify.json', null)]).then(function(r){
+      FORMS = r[1] || [];
+      FORMS.forEach(function(f){ (f.frq || []).forEach(function(id){ FORM_FRQ[id] = 1; }); });
+      (r[0] || []).forEach(function(f){ FRQ[f.id] = f; });
+      // Study days get the FRQs no practice exam uses.
+      frqList = (r[0] || []).filter(function(f){ return !f.placeholder && !FORM_FRQ[f.id]; });
+      if(r[2] && r[2].prompts){ PROMPTS = {}; r[2].prompts.forEach(function(p){ PROMPTS[p.unit] = (PROMPTS[p.unit] || 0) + 1; }); }
       render();
       if(PRINT){ PRINT = false; setTimeout(function(){ W.print(); }, 400); }
-    }).catch(function(){});
+    });
   }
   W.addEventListener('storage', function(e){ if(e.key === STORE || e.key === DATE_KEY){ state = load(); if(state.weeks !== 2 && state.weeks !== 3) state.weeks = 3; if(!state.done) state.done = {}; render(); } });
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();

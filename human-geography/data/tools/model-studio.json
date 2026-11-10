@@ -376,7 +376,7 @@
     {
      "id": "d1",
      "text": "Green Revolution yields",
-     "why": "The Green Revolution is a critique of Malthus: it raised food output faster than he expected."
+     "why": "Critics of Malthus point to the Green Revolution, which raised food output faster than he expected; it is not part of his model."
     },
     {
      "id": "d2",
@@ -1019,7 +1019,7 @@
     "kind": "choice",
     "pool": [
      {
-      "q": "The boundary at A follows the 49th parallel between Canada and the United States for much of its length. Which type is that part of it?",
+      "q": "The boundary at A follows the 49th parallel between Canada and the United States for much of its length. Which type does that straight line along a parallel make it?",
       "right": {
        "t": "Geometric",
        "why": "It is a straight line along a line of latitude."
@@ -1035,7 +1035,7 @@
        },
        {
         "t": "Superimposed",
-        "why": "It was agreed by the two countries’ governments of the time; the key feature here is the straight line."
+        "why": "Superimposed is about who drew a line (an outside power, over groups already there), not its shape; the straight line along a parallel is what makes it geometric."
        }
       ],
       "map": {

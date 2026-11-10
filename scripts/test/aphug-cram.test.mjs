@@ -146,15 +146,49 @@ test('FRQs prefer the day\'s units and do not repeat until all are used', () => 
    pace and the links each kind of day carries. */
 test('day texts: exam day n opens practice exam n in the 2027 format; study days carry justification prompts', () => {
   const src = readFileSync('human-geography/assets/pages/cram.js', 'utf8');
-  assert.match(src, /link\('exams\.html\?mode=full&form=' \+ d\.exam, 'Practice exam ' \+ d\.exam \+ ': 60 multiple-choice questions in 60 min, then three free-response questions in 75 min'\)/);
+  assert.match(src, /link\('exams\.html\?mode=full&form=' \+ n, esc\(f\.title\) \+ ': 60 multiple-choice questions in 60 min, then three free-response questions in 75 min'\)/);
+  assert.match(src, /li\.push\(formLink\(d\.exam\)\);/, 'exam day n opens form n, when it exists');
   assert.match(src, /function mins\(n\)\{ return Math\.round\(n \* 60 \/ 60\) \+ ' min'; \}/, 'timed sets at the exam pace');
   const body = src.slice(src.indexOf('function dayBody'), src.indexOf('return \'<ul class="hug-cr-todo">'));
   const study = body.slice(body.indexOf("d.kind === 'study'"), body.indexOf("d.kind === 'weak'"));
   const weak = body.slice(body.indexOf("d.kind === 'weak'"), body.indexOf("d.kind === 'exam'"));
   assert.match(study, /justifyLink\(d\)/, 'study days have justification prompts');
   assert.match(weak, /justifyLink\(d\)/, 'weak-spot days too');
-  assert.match(src, /function justifyLink\(d\)\{ return link\('justify\.html' \+ \(d\.units\[0\] \? '\?unit=' \+ d\.units\[0\] : ''\)/);
+  assert.match(src, /function justifyLink\(d\)\{/);
+  assert.match(src, /link\('justify\.html' \+ \(u \? '\?unit=' \+ u : ''\)/, 'prompts for the day\'s first unit that has some');
+  assert.match(src, /link\('models\.html', 'models you must know'\)/, 'study days point to the models page');
   assert.doesNotMatch(src, /42 multiple-choice|4 free-response|1\.5 minutes/);
   // The practice exam page opens form n from ?form=n.
   assert.match(readFileSync('human-geography/assets/pages/exams.js', 'utf8'), /formById\('form-' \+ p\.get\('form'\)\)/);
+});
+
+/* Phase 3: the plan with the real course (units, topics and FRQs from
+   docs/aphug-dependency-map.json and human-geography/data/frq/), and the page
+   keeps the practice exams' FRQs out of the study days. */
+test('with the real course: every unit is studied, study days never assign a practice-exam FRQ, and both forms are linked', async () => {
+  const { loadMap } = await import('../lib/aphug-build.mjs');
+  const { loadExams } = await import('../lib/aphug-exams.mjs');
+  const { readdirSync } = await import('node:fs');
+  const map = loadMap();
+  const units = map.chapters.map(c => ({ id: c.id, n: c.n ?? null, part: c.part, title: c.title, weight: c.weight || null }));
+  const topics = map.topics.filter(t => t.chapter !== 'geo-skills').map(t => ({ id: t.id, unit: t.chapter, title: t.title, built: true }));
+  const forms = loadExams('human-geography/data').forms;
+  const inForms = new Set(forms.flatMap(f => f.frq));
+  const all = readdirSync('human-geography/data/frq').map(f => JSON.parse(readFileSync(`human-geography/data/frq/${f}`, 'utf8')));
+  // What the page passes: the FRQs no practice exam uses.
+  const frqs = all.filter(f => !inForms.has(f.id)).map(f => ({ id: f.id, type: f.type, title: f.title, units: f.units }));
+  assert.equal(frqs.length, all.length - 6);
+  for (const weeks of [3, 2]) {
+    const p = P.build({ exam: '2027-05-03', weeks, units, topics, mastery: null, frqs });
+    const studied = new Set(p.days.flatMap(d => d.units));
+    for (const u of units.filter(u => u.part === 'course')) assert.ok(studied.has(u.id), `${weeks} weeks: ${u.id} never studied`);
+    for (const d of p.days) if (d.frq) assert.ok(!inForms.has(d.frq), `${d.frq} is in a practice exam`);
+    assert.equal(p.days.filter(d => d.kind === 'exam').map(d => d.exam).join(','), '1,2');
+    assert.equal(p.days[p.days.length - 1].kind, 'eve');
+  }
+  const src = readFileSync('human-geography/assets/pages/cram.js', 'utf8');
+  assert.match(src, /frqList = \(r\[0\] \|\| \[\]\)\.filter\(function\(f\)\{ return !f\.placeholder && !FORM_FRQ\[f\.id\]; \}\);/);
+  assert.match(src, /getJ\('assets\/exams\/forms\.json', \[\]\)/);
+  assert.match(src, /getJ\('assets\/justify\.json', null\)/);
+  assert.equal(forms.length, 2);
 });

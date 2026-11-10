@@ -1,0 +1,535 @@
+{
+ "about": "\"Make it specific\" prompts for unit-3 (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "unit-3",
+   "id": "u3-describe-chinatown",
+   "topic": "culture-on-the-land",
+   "practice": "2.A",
+   "skill": "describe",
+   "title": "Describing a cultural landscape",
+   "context": "",
+   "prompt": "<b>Describe</b> how the entrance and streets of San Francisco's Chinatown show its cultural landscape.",
+   "checklist": [
+    "Names a specific feature, with where it is",
+    "Says what it looks like and what culture it shows",
+    "Goes beyond naming the neighborhood"
+   ],
+   "earns": {
+    "answer": "The Dragon Gate on Grant Avenue, built in 1970, marks the entrance to Chinatown with a Chinese-style tiled roof and dragons, and the streets behind it have signs in Chinese and English and shops selling Chinese food and goods.",
+    "why": "It names features, says what they look like and ties them to a culture."
+   },
+   "misses": {
+    "answer": "Chinatown in San Francisco has a Chinese cultural landscape.",
+    "why": "It names the place but describes no feature of the landscape."
+   },
+   "specific": {
+    "slots": {
+     "evidence": {
+      "label": "A feature",
+      "options": [
+       "the Dragon Gate on Grant Avenue",
+       "the Golden Gate Bridge",
+       "the Pacific Ocean"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The bridge is not in Chinatown.",
+       "2": "The ocean is physical geography, not a cultural feature."
+      }
+     },
+     "concept": {
+      "label": "What it shows",
+      "options": [
+       "Chinese culture written on the landscape",
+       "the physical landscape of the bay",
+       "a climate pattern"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A gate and signs are built by people: cultural, not physical.",
+       "2": "Climate is not shown by a gate."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-explain-canada-languages",
+   "topic": "cultural-patterns",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Why Canada has two official languages",
+   "context": "<p>Canada's Official Languages Act of 1969 made English and French its official languages.</p>",
+   "prompt": "<b>Explain</b> why Canada has two official languages.",
+   "checklist": [
+    "Names where French speakers are concentrated",
+    "Links that population pattern to the 1969 law",
+    "Says what the law does for both groups"
+   ],
+   "earns": {
+    "answer": "Canada has a large French-speaking population, mostly in Quebec, as well as an English-speaking majority, so the 1969 Official Languages Act made both official, which means federal services reach each group in its own language.",
+    "why": "It names the pattern, links it to the law and says what the law does."
+   },
+   "misses": {
+    "answer": "Canada has two official languages because of a law passed in 1969.",
+    "why": "The law is the result, not the reason: it never says why the law was passed."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Pattern",
+      "options": [
+       "a large French-speaking population, mostly in Quebec",
+       "English is spoken worldwide",
+       "French is taught in schools"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is true of English but does not explain French being official.",
+       "2": "Teaching follows the law, not the other way."
+      }
+     },
+     "effect": {
+      "label": "What the law does",
+      "options": [
+       "federal services in both languages",
+       "bans English in Quebec",
+       "makes French the only language"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The 1969 act made both official.",
+       "2": "Two languages are official."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-compare-spanish-kpop",
+   "topic": "diffusion-types",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "Two ways culture spreads",
+   "context": "",
+   "prompt": "<b>Compare</b> how the Spanish language reached the Americas and how K-pop reached fans in Brazil.",
+   "checklist": [
+    "Names the type of diffusion for both",
+    "Says how each moved: with people, or without them",
+    "Speaks of both cases, Spanish and K-pop"
+   ],
+   "earns": {
+    "answer": "Spanish spread by relocation diffusion, carried by colonists who moved to the Americas after 1492, whereas K-pop spread by expansion diffusion: it reached fans in Brazil through streaming and social media while its source stayed in South Korea.",
+    "why": "It names a type for each case and says how each spread."
+   },
+   "misses": {
+    "answer": "K-pop spread to Brazil on the internet through streaming.",
+    "why": "One side only: a compare also says how Spanish reached the Americas."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "Spanish",
+      "options": [
+       "relocation diffusion, with colonists",
+       "hierarchical diffusion, by phone",
+       "stimulus diffusion, reworked"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Spanish arrived with people who moved.",
+       "2": "The language itself was carried, not reworked."
+      }
+     },
+     "sideB": {
+      "label": "K-pop",
+      "options": [
+       "expansion diffusion, through media",
+       "relocation, with Korean migrants",
+       "no diffusion at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fans in Brazil heard it through media, not from migrants.",
+       "2": "It clearly spread."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-degree-internet",
+   "topic": "diffusion-today",
+   "practice": "1.D",
+   "skill": "degree",
+   "title": "Is the internet making culture the same?",
+   "context": "",
+   "prompt": "<b>Explain</b> the degree to which the internet has made culture the same everywhere.",
+   "checklist": [
+    "States the degree first: to a moderate degree, for example",
+    "Gives evidence that culture spreads widely online",
+    "Gives evidence that local culture survives or mixes"
+   ],
+   "earns": {
+    "answer": "To a moderate degree: streaming and social media spread the same songs, shows and brands to many countries, but local languages, foods and traditions survive and mix with them, as in K-pop's blend of Korean and US styles, so the internet spreads popular culture without wiping out local culture.",
+    "why": "It states the degree and backs both sides with evidence."
+   },
+   "misses": {
+    "answer": "The internet spreads culture quickly to the whole world.",
+    "why": "No degree stated, and only one side of the evidence."
+   },
+   "specific": {
+    "slots": {
+     "degree": {
+      "label": "Degree",
+      "options": [
+       "to a moderate degree",
+       "completely",
+       "not at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Local cultures survive, so it is not complete.",
+       "2": "Popular culture clearly spreads online."
+      }
+     },
+     "evidence": {
+      "label": "Counter-evidence",
+      "options": [
+       "local foods and languages survive and mix",
+       "every country speaks one language",
+       "streaming is banned everywhere"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Thousands of languages are still spoken.",
+       "2": "Streaming is widely available."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-place-islam",
+   "topic": "religion-language-diffusion",
+   "practice": "2.B",
+   "skill": "place",
+   "title": "Naming a place: a universalizing religion",
+   "context": "<p>A student writes: \"Universalizing religions spread around the world.\"</p>",
+   "prompt": "<b>Rewrite</b> the claim so it names a real religion, its hearth, how it spread and a place it reached.",
+   "checklist": [
+    "Names the religion and its hearth",
+    "Says how it spread: along trade routes",
+    "Names a real place it reached"
+   ],
+   "earns": {
+    "answer": "Islam began in Mecca, on the Arabian Peninsula, in the 600s and spread along trade routes across the Indian Ocean to the islands of Southeast Asia, so Indonesia became home to one of the largest Muslim populations of any country (Pew 2025, 2020 data).",
+    "why": "It names the religion, hearth, route and destination, with a dated source."
+   },
+   "misses": {
+    "answer": "Religions like Islam and Christianity spread around the world over time.",
+    "why": "It names religions but no hearth, route or place."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "Hearth",
+      "options": [
+       "Mecca, on the Arabian Peninsula",
+       "somewhere in Asia",
+       "Indonesia"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Too vague to earn a place point.",
+       "2": "Indonesia is where it spread to, not its hearth."
+      }
+     },
+     "link": {
+      "label": "How it spread",
+      "options": [
+       "along trade routes",
+       "by staying in one valley",
+       "only by satellite TV"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A universalizing religion spreads beyond its hearth.",
+       "2": "Satellite TV came over a thousand years later."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-scale-welsh",
+   "topic": "cultural-patterns",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "Welsh at two scales",
+   "context": "<p>In the 2021 census of England and Wales, about 18% of people in Wales said they could speak Welsh; in Gwynedd, in the northwest of Wales, about 64% did (Office for National Statistics, 2022).</p>",
+   "prompt": "<b>Explain</b> how the use of Welsh looks different when you change the scale of analysis.",
+   "checklist": [
+    "Names both scales of analysis, one of them local",
+    "Uses both figures with the source",
+    "Explains what the larger-scale figure hides"
+   ],
+   "earns": {
+    "answer": "Across Wales as a whole, about 18% of people could speak Welsh in 2021, but at the local scale, in Gwynedd, about 64% could (ONS, 2022), so the overall figure hides strongholds where Welsh is a language of daily life.",
+    "why": "It names the scales, uses both figures and says what the larger figure hides."
+   },
+   "misses": {
+    "answer": "Most people in Gwynedd, in the northwest of Wales, speak Welsh.",
+    "why": "One scale only: the prompt asks how the picture changes between scales."
+   },
+   "specific": {
+    "slots": {
+     "scale": {
+      "label": "The finer scale",
+      "options": [
+       "the local scale: Gwynedd",
+       "the global scale",
+       "the whole of the United Kingdom"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Global data would compare countries.",
+       "2": "That is coarser still, not finer."
+      }
+     },
+     "effect": {
+      "label": "What the larger figure hides",
+      "options": [
+       "places where Welsh is used daily",
+       "the number of English speakers in London",
+       "the age of Welsh"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "London is not in these data.",
+       "2": "The census figures say nothing about the language's age."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-limit-religion-map",
+   "topic": "religion-language-diffusion",
+   "practice": "4.F",
+   "skill": "limitation",
+   "title": "What a majority-religion map hides",
+   "context": "<p>A world map shades each country by its largest religion.</p>",
+   "prompt": "<b>Explain</b> one limitation of this map, using a named country.",
+   "checklist": [
+    "Names what the map hides: minority religions",
+    "Gives a real country as the example",
+    "Explains why that matters"
+   ],
+   "earns": {
+    "answer": "Shading each country by its largest religion hides minorities: India is shaded Hindu, yet it is home to one of the world's largest Muslim populations (Pew 2025, 2020 data), so the map makes religious patterns look far simpler than they are.",
+    "why": "It names the gap, gives a country with a dated source and says why it matters."
+   },
+   "misses": {
+    "answer": "The map does not show everything about religion.",
+    "why": "Too vague: no specific gap and no example."
+   },
+   "specific": {
+    "slots": {
+     "limit": {
+      "label": "What it hides",
+      "options": [
+       "minority religions inside each country",
+       "where the largest religion is",
+       "the names of the countries"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is exactly what it shows.",
+       "2": "Country names are on the map."
+      }
+     },
+     "place": {
+      "label": "Example",
+      "options": [
+       "India",
+       "the world",
+       "a large country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An example must be one country.",
+       "2": "That names no country."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-model-slang",
+   "topic": "diffusion-types",
+   "practice": "1.E",
+   "skill": "model",
+   "title": "Which diffusion fits a slang word",
+   "context": "<p>A new slang word starts among teenagers in Seoul, South Korea, appears in Busan and Incheon a few months later, and reaches small rural towns a year after that (an invented case).</p>",
+   "prompt": "<b>Explain</b> which type of diffusion best fits this spread, and give one limit of the diffusion types as a model.",
+   "checklist": [
+    "Names the type: hierarchical diffusion",
+    "Ties it to the order of places, largest to smallest",
+    "Gives one limit of the diffusion types as a model"
+   ],
+   "earns": {
+    "answer": "Hierarchical diffusion fits best, because the word moves from Seoul, the largest and best-connected place, to the next largest, Busan and Incheon, and then down to small towns, skipping the places between them; but the model does not explain why some words catch on and others never spread.",
+    "why": "It names the type, links it to the order of places and gives a limit."
+   },
+   "misses": {
+    "answer": "It is contagious diffusion because people copy each other.",
+    "why": "Contagious diffusion spreads to nearby places first; here the word jumps between the largest places."
+   },
+   "specific": {
+    "slots": {
+     "model": {
+      "label": "Type",
+      "options": [
+       "hierarchical diffusion",
+       "contagious diffusion",
+       "relocation diffusion"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Contagious spreads to neighbors first, not the largest places first.",
+       "2": "No one moved; the word spread while its users stayed."
+      }
+     },
+     "limit": {
+      "label": "Limit",
+      "options": [
+       "it does not explain why some words catch on",
+       "it has too few types",
+       "it only works for languages"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The number of types is not a limit of its explanation.",
+       "2": "Diffusion types apply to many traits, not only language."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-legend-language-share",
+   "topic": "religion-language-diffusion",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading a language map legend",
+   "context": "<p>A map of invented Country A shades provinces by the share of people who speak Language Y at home, in four classes: under 10%, 10% to 29%, 30% to 49%, and 50% or more (invented data for practice).</p>",
+   "prompt": "<b>Explain</b> why the darkest class does not mean everyone in that province speaks Language Y.",
+   "checklist": [
+    "Reads the darkest class: 50% or more",
+    "Says how many may speak another language",
+    "Notes the legend shows a range of shares"
+   ],
+   "earns": {
+    "answer": "The darkest class means 50% or more speak Language Y at home, so up to half the people in that province may speak another language; the legend gives a range of shares, not a single value for every person.",
+    "why": "It reads the class and explains what it leaves open."
+   },
+   "misses": {
+    "answer": "The darkest provinces are where Language Y is spoken.",
+    "why": "It does not read the legend's numbers or say what share may speak something else."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "Darkest class",
+      "options": [
+       "50% or more",
+       "100%",
+       "under 10%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "No class on this legend means everyone.",
+       "2": "That is the lightest class."
+      }
+     },
+     "effect": {
+      "label": "What it leaves open",
+      "options": [
+       "up to half may speak another language",
+       "no one speaks another language",
+       "the province has no people"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "50% or more leaves room for others.",
+       "2": "A share needs people to count."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-explain-swahili",
+   "topic": "diffusion-effects",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "How a lingua franca forms",
+   "context": "",
+   "prompt": "<b>Explain</b> how Swahili became a lingua franca in East Africa.",
+   "checklist": [
+    "Names its origin on the coast and its mix of sources",
+    "Says what made it useful: trade between groups",
+    "Links that use to its spread inland"
+   ],
+   "earns": {
+    "answer": "Swahili grew as a language of trade on the East African coast, with Bantu grammar and many Arabic words, so traders from different groups could use it, and it spread inland along trade routes as a lingua franca.",
+    "why": "It names the origin, the use and the link to its spread."
+   },
+   "misses": {
+    "answer": "Swahili is a lingua franca spoken by many people in East Africa.",
+    "why": "That restates the term; it never says how Swahili became one."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Origin",
+      "options": [
+       "trade on the East African coast",
+       "a law passed in the 1990s",
+       "the internet"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Swahili was a trade language centuries earlier.",
+       "2": "Swahili spread long before the internet."
+      }
+     },
+     "link": {
+      "label": "Link",
+      "options": [
+       "so traders from different groups could use it",
+       "so it replaced every other language",
+       "so it stayed on one island"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Many other languages are still spoken there.",
+       "2": "It spread inland along trade routes."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

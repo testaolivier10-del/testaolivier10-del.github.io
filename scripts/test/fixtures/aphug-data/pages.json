@@ -140,9 +140,9 @@
    "topic": "transition-model",
    "name": "Model Studio",
    "title": "Model Studio",
-   "desc": "Every model the course framework names, built by hand: drag the rings, sectors, stages and tiers into place, apply the model to a real case, then pick out its limits. Graded piece by piece.",
-   "blurb": "Build every named model by hand, apply it, then find its limits.",
-   "lede": "Build the model piece by piece, then test it on a real place.",
+   "desc": "The models the course framework names in Units 2 to 7, built by hand: drag the rings, sectors, stages and tiers into place, apply the model to a case, then pick out its limits. Graded piece by piece.",
+   "blurb": "Build the named models by hand, apply them, then find their limits.",
+   "lede": "Build the model piece by piece, then test it on a case.",
    "studio": true
   },
   {
@@ -223,7 +223,7 @@
    "title": "City Lab",
    "desc": "Bid-rent and von Thünen rings, the city models side by side, central place theory and the rank-size rule.",
    "blurb": "Bid-rent, von Thünen and the city models.",
-   "lede": "Place the land uses, then test the model on a real city.",
+   "lede": "Place the land uses, then test the model on a case.",
    "studio": true,
    "premium": "tools"
   }

@@ -401,3 +401,45 @@ Open points from self-c.md:
     `aging-populations` now say so.
 15. Released FRQs. Compared with 2023 to 2026 on apcentral; 2021 and 2022 are no longer posted there and were not
     compared (still open). Two parts were rewritten for closeness (see u2.md).
+
+## phase3-exams: practice exam choices and facts to confirm (open, 2026-11-09, docs/aphug-reviews/phase3.md)
+
+- `mcq-sets` stays open: the forms use sets of two or three only (four map, three or four data, one image, two or
+  three text blocks a form, 23 of 60 questions with a stimulus). A teacher who knows the 2025 and 2026 forms
+  should say whether real sets run longer.
+- `hug-exam-1-01` keys "Local (subnational)" for a province map: it depends on `scale-words`. If a teacher wants
+  "regional" accepted for parts of a country, rewrite the key and the "Regional" distractor together.
+- The 104 fifth options (`fifth` maps in `forms.json`) were written in one pass by the Phase 3 builder and
+  checked by code only (no repeats, no absolutes, position balance, length tell). They need the Phase 4 human
+  read for a second defensible answer.
+- Facts in the exam-only items to confirm: Tysons, Virginia, grew from a crossroads from the 1960s and has more
+  jobs than residents; Singapore at about 1° N, 104° E; GMO crops first sold commercially in the 1990s.
+
+## phase3-facts: dated examples on the models page and in "Make it specific" (open, 2026-11-09)
+
+Written from memory by the Phase 3 builder, each with its year; the Phase 4 accuracy pass should check every one
+against a source and log it. Models page (`data/models.json`): Japan 2023 births about 727,000 and deaths about
+1.58 million (MHLW, 2024); US leading causes of death in 1900 and 2022 (CDC); Ravenstein's 1881 census base;
+Dublin to London among Europe's busiest international air routes in 2019; Christaller 1933 and southern
+Germany's high-order centers; Hoyt's 1939 study of 142 cities; the Willis Tower finished in 1973; the 2020 census
+populations of New York (8.8 million), Los Angeles (3.9 million) and Chicago (2.7 million); Paseo de la Reforma
+laid out in the 1860s; Batavia founded 1619; Nairobi founded 1899; Copperbelt smelters from the 1930s; Rostow
+1960; Wallerstein 1974; Flevoland drained in the 1950s and 1960s and a province in 1986; Belgium federal in 1993;
+Zambia's kwacha in 2015; the UN Economic Commission for Latin America in the 1950s; Ricardo 1817. Prompts
+(`data/justify/*.json`): McDowell County median household income under half the US median (2016-2020
+estimates); INPE satellite tracking since the 1980s; Texas gaining two House seats after 2020; Hungary's income
+tax exemption for mothers of four or more since 2020; Venezuela's emigration since about 2015 (UNHCR, 2024);
+Welsh speakers 18% in Wales and 64% in Gwynedd (2021 census); San Francisco's Dragon Gate (1970); the Official
+Languages Act (1969); Québec's 1995 referendum (No about 50.6%); Rucho v. Common Cause (2019); Côte d'Ivoire the
+largest cocoa grower (FAOSTAT, 2022 data); Lima about 9.5 million and Arequipa about 1 million (INEI, 2017);
+Curitiba's bus rapid transit (1974); Shenzhen special economic zone (1980); Grameen Bank (1983); the Aral Sea
+irrigation from the 1960s; World Bank FY27 thresholds (from `accuracy-risks.md`). "Make it specific" prompts
+on contested topics (gerrymandering, Québec, Kurds, microloans) were written to attribute and give both sides;
+a teacher should read them for neutrality.
+
+## generated-at-root: rebuild after the integrator's runtime changes (open, 2026-11-09)
+
+The Phase 3 builder did not run the generator into the repo (the shared runtime was changing). After the
+integrator lands, run `node scripts/build-aphug.mjs`: it adds `human-geography/models.html` and updates
+`formula-sheet.html` (shorter title, a link to the models page) and `assets/justify.json` (the "legend" skill).
+The forms, items and unit tests are served once their units are published.

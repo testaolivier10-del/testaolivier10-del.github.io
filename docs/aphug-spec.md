@@ -107,9 +107,64 @@ before registration so the course lists and the SQL migration (`2026-11j-aphug.s
 | 0 | Fork AP® Psychology: runtime `human-geography/assets/` (`hug-*`), `ApHugCalc`, map and model stimuli, the three FRQ types, generator, checks, tests, fixture, base maps, registration hidden, SQL migration; CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author || **done 2026-11-09** (decision 9; `docs/aphug-phase0.md`, `docs/aphug-architecture.md`) |
 | 1 | Content: lessons, notes, banks (with stimulus sets), FRQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
-| 3 | Two practice exams, unit tests, "Make it specific" prompts, models page, cram kit | |
+| 3 | Two practice exams, unit tests, "Make it specific" prompts, models page, cram kit | **done 2026-11-09** (section 5b, decision 10; `docs/aphug-reviews/phase3.md`) |
 | 4 | Independent accuracy checks per unit, tools and exams, plus one neutrality and currency pass over everything | |
 | Launch | Publish, generators (paths included), continuity pass, course-count wording (count `assets/courses.js`), full CI with browser checks, PR, launch steps | |
+
+### 5b. Phase 3 as built (2026-11-09)
+
+- **Forms** (`human-geography/data/exams/forms.json`, checked by `checkForms` in `scripts/lib/aphug-exams.mjs`):
+  two forms of 60 five-option questions in course order, by unit weight (Unit 1 six, Units 2 to 7 nine each),
+  23 questions with a stimulus in each (38%; the check holds 18 to 24, `EXAM_STIMULI`). Each form: 52 reviewed
+  bank questions, never a lesson check item, plus 8 exam-only questions (`items.json`, `hug-exam-<form>-<nn>`,
+  `EXAM_ONLY` 6 to 16). Sets of two or three only: form 1 has 4 map blocks (2 bank sets, an exam-only map and an
+  exam-only set of two on one map), 3 data (2 bank sets, an exam-only pyramid), 1 image set, 2 text sets; form 2
+  has 3 map, 3 data, 1 image, 3 text. Each bank question's fifth option is in the form's `fifth` map
+  (`{ text, why }`) and is put in at `fifthAt(id)` (a fixed position from the id, so the fifth is not always (E));
+  `examVersion` moves the key with it. The build serves every form question in `assets/exams/items.json` with
+  five options and its explanations inline, with every stimulus they read; `pages/exams.js` marks only
+  `hug-exam-*` as exam-only, so a missed bank question still reaches Review.
+- **Exam-only questions** (16): the stimuli the bank has no whole set for and the reader report traps. Form 1: the
+  scale of analysis of a province map (the 38% point), the share under 15 read from an invented pyramid, the
+  rank-size rule and the primate city on one symbol map (a set of two), physiological density vs carrying
+  capacity, GMOs are not the Green Revolution, the semiperiphery is Wallerstein's, HDI vs income. Form 2: site vs
+  situation (Singapore), doubling time by the rule of 70, an intervening opportunity, acculturation (an invented
+  interview text in Little Saigon), the Strait of Hormuz on a region map, an edge city (Tysons), least cost theory
+  (copper), comparative advantage. Every number recomputed by ApHugCalc in `EXAM_NUMBERS` (3 items, distractors
+  from the slips) and every map, pyramid and symbol read checked against its data in `EXAM_READS` (5 items,
+  `checkReads`; an exam-only map or data item without a read check fails).
+- **Section II**: form 1 `frq-gentrification-none`, `frq-language-map-one`, `frq-human-environment-two`; form 2
+  `frq-development-theory-none`, `frq-rail-boundary-one`, `frq-devolution-two`. Each form's three FRQs share no
+  unit (now a `checkForms` rule), no FRQ is in both forms, and the six were chosen to overlap the form's MCQ
+  topics least (one topic each). The cram kit never assigns these six on study days.
+- **Content checks on the forms** (`check-aphug-content.mjs`): exam-only items as five-option items; the fifth
+  options as text (language, dates, models, trademark, position words) and by `checkFifth` (one per bank
+  question, none for anything else, never a repeat or on a fixed item); each form as served: the length tell
+  (key longest at most 40%; 4 and 7 of 60), the key position (at most 40%, each position used; counts 20, 9, 10,
+  9, 12 and 12, 19, 11, 9, 8), the test-wise limits (absolute words in distractors), and `keyRisks` (no key names
+  a disputed place, no key is an undated real figure).
+- **Results**: the score card shows Section I and Section II apart, each "50% of the exam", in its chips and in a
+  two-part block; no composite, no band (`estimate: null`), no Beta label; the "No AP® score is estimated" line
+  stays. Leftover AP® Psychology text fixed (75 questions, 90 and 70 minutes, two FRQs).
+- **Unit tests**: `unitSample` skips every form question and every set one of them belongs to (tested on the
+  built site); the lede says four options in practice, five on the exams.
+- **"Make it specific"** (`human-geography/data/justify/*.json`): 73 prompts, 10 per unit and 3 in "Skills you
+  need", each with a two-slot builder; skills describe 7, explain 14, compare 8, degree 7, place 7, scale 8,
+  limitation 7, model 7, legend 8 (a new skill, "read the legend"); the first 3 in course order free. Every real
+  fact named and dated; numbers in `JUSTIFY_NUMBERS` (Lima's rank-size second city, Province X's change).
+  `JUSTIFY_PER_CHAPTER` 8 to 12, `JUSTIFY_PER_SKILLS_CHAPTER` 3 to 6, at least 60 in all.
+- **Models you must know** (`models.html`, `modelEntries` in `scripts/lib/aphug-entry.mjs`, data
+  `human-geography/data/models.json`): all 26 models the CED names, in course order by unit. The 21 Model Studio
+  builds bring their picture (Model Studio's figure for the free layouts, `ApHugModel.artSvg` for rings, sectors,
+  stages and tiers; rank-size and gravity built from a fixed seed), claim, assumptions and first limit; the file
+  adds a dated real example for each and the easy-to-confuse partners (22 models flagged with a partner, 2 more
+  with the slip inside the model). Five are written there
+  in full with their own model spec: determinism and possibilism, centripetal and centrifugal forces, commodity
+  dependence, dependency theory, complementarity and comparative advantage. Free, indexable once published;
+  linked from the formulas page and the cram kit. Weight budget 26 KB (measured 22.7).
+- **Cram kit**: loads the forms and the prompts with the FRQ index; study days get only FRQs no form uses; exam
+  days link the form's own title, or a bank exam if the form is not published; prompts link to the day's first
+  unit that has some; study days and the eve point to the models page. Tested with the real course.
 
 ### 5a. Authors and builders (Phase 1 and 2)
 
@@ -200,6 +255,14 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
    4.9; infrastructure into 4.10; the Industrial Revolution is a preview box in 5.4; periphery and the IMF stay in
    Unit 7. House scale words: "local (subnational)" for data on parts of a country (needs-author `scale-words`).
    Publish units in course order or together (`publish-order`).
+
+10. (2026-11-09) **Phase 3 as built** (section 5b, `docs/aphug-reviews/phase3.md`). Choices the spec left
+    open: sets of two or three in the forms (the bank's sets of three to five are used only where two or three of
+    their questions are not lesson checks); 8 exam-only questions a form; FRQs from fully different units; the
+    fifth option at a position fixed by the id; the "legend" skill added to "Make it specific"; models.html
+    built from Model Studio's data plus `data/models.json`, not a second copy of each model. Generated files at
+    the repo root (`models.html`, `formula-sheet.html`, `assets/justify.json`) are left for the integrator's
+    rebuild (`node scripts/build-aphug.mjs`), since the shared runtime was changing during this phase.
 
 ## 9. Open items for the owner
 

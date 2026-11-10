@@ -27,7 +27,7 @@
     {
       "id": "chain-factory", "topic": "scales-of-analysis", "types": ["chain"],
       "chain": {
-        "setup": "Since the 1980s, many companies have moved factory work to countries where wages are lower. Flint, Michigan, in the United States, was a car-making city that lost most of its car factory jobs over the same years.",
+        "setup": "Since the 1980s, many companies have moved factory work to countries where wages are lower. Flint, Michigan, in the United States, was a car-making city that lost most of its car factory jobs over the same years. Moving work abroad was one reason among several; automation and plants moved to other US states also cut jobs.",
         "cause": { "text": "companies move factory work to places with lower wages", "scale": "global", "unit": "the world economy" },
         "effect": { "text": "car factory jobs disappear in Flint", "scale": "local", "unit": "one city in the United States" },
         "link": "Companies can make parts and cars more cheaply where wages are lower, so they build new factories there and close some in higher-wage places such as Flint, so workers in Flint lose their jobs.",

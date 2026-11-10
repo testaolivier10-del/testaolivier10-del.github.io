@@ -98,7 +98,7 @@
       limit: 'Many Latin American cities have grown edge cities, gated suburbs and new transit, so the rings blur; it is a general pattern, not the plan of one city.',
       based: 'cities in Latin America' },
     seasian: { name: 'Southeast Asian city model', who: '', full: 'Southeast Asian city model', layout: 'free',
-      zones: ['Port zone', 'Western commercial zone', 'Merchant minority commercial zone', 'Government zone', 'Mixed land use', 'Middle-income suburbs', 'Squatter areas', 'Market gardening and industrial estates'],
+      zones: ['Port zone', 'Western commercial zone', 'Immigrant merchant commercial zone', 'Government zone', 'Mixed land use', 'Middle-income suburbs', 'Squatter areas', 'Market gardening and industrial estates'],
       clues: 'the old colonial port as the focus, with no single strong downtown but separate commercial zones near it, and mixed land uses with farms and industrial estates on the edge',
       limit: 'It rests on cities that grew as colonial ports; inland capitals and fast-growing cities since then do not all fit it.',
       based: 'colonial port cities of Southeast Asia' },
@@ -109,6 +109,8 @@
       based: 'cities across Sub-Saharan Africa' }
   };
   var CITY_IDS = Object.keys(CITY);
+  // A model name mid-sentence: lower case, except the place words (Latin American, Southeast Asian, African).
+  function lcModel(n){ return /^(Latin|Southeast|African)/.test(n) ? n : n.charAt(0).toLowerCase() + n.slice(1); }
   var CITY_SLIP = {
     concentric: 'The concentric zone model has rings around one downtown, with income rising outward.',
     sector: 'The sector model has wedges along transport routes from one downtown.',
@@ -185,15 +187,15 @@
       type: 'bidrent', ctx: ctx.id, topic: ctx.topic, given: { farm: farm, u: u.id, v: v.id, d: d0 },
       text: '<p>Invented numbers for practice. Bid rent is what each land use can pay for land, in dollars ' + unit + '. ' + u.name + ' bid $' + fmtN(u.A) + ' at ' + center + ', falling $' + fmtN(u.a) + ' for every km away. ' + v.name + ' bid $' + fmtN(v.A) + ', falling $' + fmtN(v.a) + ' a km.</p>',
       steps: [
-        { key: 'bidU', kind: 'num', label: 'What does ' + u.name.toLowerCase() + ' bid at ' + d0 + ' km?', hint: 'Bid = bid at ' + center + ' − fall per km × distance.', unit: '$', d: 0, practice: '3.B', level: 'apply', cell: cell(u) },
-        { key: 'bidV', kind: 'num', label: 'What does ' + v.name.toLowerCase() + ' bid at ' + d0 + ' km?', hint: 'Same rule with its own numbers.', unit: '$', d: 0, practice: '3.B', level: 'apply', cell: cell(v) },
+        { key: 'bidU', kind: 'num', label: 'What is the bid for ' + u.name.toLowerCase() + ' at ' + d0 + ' km?', hint: 'Bid = bid at ' + center + ' − fall per km × distance.', unit: '$', d: 0, practice: '3.B', level: 'apply', cell: cell(u) },
+        { key: 'bidV', kind: 'num', label: 'What is the bid for ' + v.name.toLowerCase() + ' at ' + d0 + ' km?', hint: 'Same rule with its own numbers.', unit: '$', d: 0, practice: '3.B', level: 'apply', cell: cell(v) },
         choice('wins', 'Who most likely uses the land at ' + d0 + ' km?', [
           opt(win.name, true, 'It bids more there ($' + fmtN(Math.max(bu, bv)) + ' against $' + fmtN(Math.min(bu, bv)) + '), and land goes to the highest bidder. ' + win.why),
           opt(lose.name, false, 'It bids less there ($' + fmtN(Math.min(bu, bv)) + ' against $' + fmtN(Math.max(bu, bv)) + '). Land goes to the highest bid, not to the use that bids most at ' + center + '.'),
           opt('Both share it equally', false, 'Two bids are equal only where the lines cross, at ' + fmtN(x) + ' km. At ' + d0 + ' km one bids more.'),
           opt('No one: the land is too far out', false, 'Both still bid more than $0 at ' + d0 + ' km.')
         ], '2.C', 'analyze', true)],
-      solution: [u.name + ': ' + fmtN(u.A) + ' − ' + fmtN(u.a) + ' × ' + d0 + ' = ' + fmtN(bu) + '.', v.name + ': ' + fmtN(v.A) + ' − ' + fmtN(v.a) + ' × ' + d0 + ' = ' + fmtN(bv) + '.', win.name + ' outbids ' + lose.name.toLowerCase() + ' at ' + d0 + ' km. The lines cross at ' + fmtN(x) + ' km: that is where one ' + (farm ? 'ring' : 'zone') + ' gives way to the next.'],
+      solution: [u.name + ': ' + fmtN(u.A) + ' − ' + fmtN(u.a) + ' × ' + d0 + ' = ' + fmtN(bu) + '.', v.name + ': ' + fmtN(v.A) + ' − ' + fmtN(v.a) + ' × ' + d0 + ' = ' + fmtN(bv) + '.', 'The bid for ' + win.name.toLowerCase() + ' is higher than the bid for ' + lose.name.toLowerCase() + ' at ' + d0 + ' km. The lines cross at ' + fmtN(x) + ' km: that is where one ' + (farm ? 'ring' : 'zone') + ' gives way to the next.'],
       figure: { kind: 'bidrent', farm: farm, u: u.id, v: v.id, d: d0 }
     };
   }
@@ -204,8 +206,8 @@
       return opt(CITY[x].full, x === k, x === k ? CITY_SLIP[x] : CITY_SLIP[x] + ' That is not what the description shows.');
     }), '1.D', 'apply')];
     var lim = shuffled(r, CITY_IDS.filter(function(x){ return x !== k; })).slice(0, 3);
-    steps.push(choice('limit', 'Which is a limit of the ' + Cm.name.toLowerCase() + '?', [k].concat(lim).map(function(x){
-      return opt(CITY[x].limit, x === k, x === k ? 'Every model simplifies; this is where this one fails.' : 'That is a limit of the ' + CITY[x].name.toLowerCase() + ', not this one.');
+    steps.push(choice('limit', 'Which is a limit of the ' + lcModel(Cm.name) + '?', [k].concat(lim).map(function(x){
+      return opt(CITY[x].limit, x === k, x === k ? 'Every model simplifies; this is where this one fails.' : 'That is a limit of the ' + lcModel(CITY[x].name) + ', not this one.');
     }), '1.E', 'analyze'));
     if(k === 'concentric') steps.splice(1, 0, { key: 'zones', kind: 'model', label: 'Place the zones of the concentric zone model, from the center outward.', practice: '1.A', level: 'apply', model: burgessModel() });
     return {
@@ -228,26 +230,27 @@
   function genCentral(r, ctx){
     var C = Calc(), g = r.pick(GOODS.slice(0, 4)), town = r.pick(TOWNS);
     // Close to the threshold, never on it: about half the cases can open.
-    var dens = r.pick([20, 50, 100]), area = g.threshold * r.pick([0.5, 0.8, 1.2, 1.5, 2]) / dens;
+    // The area is the circle the range draws (pi r squared, rounded), so the numbers fit together.
+    var area = Math.round(Math.PI * g.range * g.range), dens = Math.max(1, Math.round(g.threshold * r.pick([0.5, 0.8, 1.2, 1.5, 2]) / area));
     var people = C.evaluate({ fn: 'mul', args: [area, dens] });
     var ok = people >= g.threshold;
     var steps = [
-      { key: 'people', kind: 'num', label: 'How many people live within the range of the store around ' + town + '?', hint: 'People = area within range × people per square km.', unit: 'people', d: 0, practice: '3.B', level: 'apply',
+      { key: 'people', kind: 'num', label: 'How many people live within its range around ' + town + '?', hint: 'People = area within range × people per square km.', unit: 'people', d: 0, practice: '3.B', level: 'apply',
         cell: M.cell(people, 0.0005, [{ value: C.evaluate({ fn: 'div', args: [area, dens] }), why: 'You divided. Multiply the area by the people per square km.' }, { value: C.evaluate({ fn: 'add', args: [area, dens] }), why: 'You added. Multiply the area by the people per square km.' }], 0.5) },
       choice('open', 'Can ' + g.name.toLowerCase() + ' make a profit in ' + town + '?', [
         opt('Yes: the people within its range meet its threshold', ok, ok ? fmtN(people) + ' people within range is at least the threshold of ' + fmtN(g.threshold) + '.' : 'Only ' + fmtN(people) + ' people live within range, fewer than the threshold of ' + fmtN(g.threshold) + '.'),
-        opt('No: too few people live within its range', !ok, !ok ? fmtN(people) + ' is below the threshold of ' + fmtN(g.threshold) + ', so the store cannot get enough customers.' : fmtN(people) + ' people is at least the threshold of ' + fmtN(g.threshold) + ', so it has enough customers.')
+        opt('No: too few people live within its range', !ok, !ok ? fmtN(people) + ' is below the threshold of ' + fmtN(g.threshold) + ', so it cannot get enough customers.' : fmtN(people) + ' people is at least the threshold of ' + fmtN(g.threshold) + ', so it has enough customers.')
       ], '2.C', 'apply', true),
       choice('order', 'In central place theory, which of these has the largest range and threshold?', shuffled(r, ['bread', 'gas', 'clothes', 'heart']).map(function(id){
         var x = GOODS.filter(function(q){ return q.id === id; })[0];
-        return opt(x.name, id === 'heart', id === 'heart' ? 'A high-order service: people travel far for it, and it needs a huge market, so only the largest cities have one.' : x.name + ' is a ' + x.order + '-order good: people will not travel far for it, and it needs fewer customers.');
+        return opt(x.name, id === 'heart', id === 'heart' ? 'A high-order service: people travel far for it, and it needs a huge market, so only the largest cities have one.' : x.name + ' is a ' + x.order + '-order good: people travel less far for it, and it needs fewer customers.');
       }), '1.A', 'apply')
     ];
     return {
       type: 'central', ctx: ctx.id, topic: ctx.topic, given: { good: g.id, area: area, dens: dens, threshold: g.threshold },
-      text: '<p>Invented numbers for practice. ' + g.name + ' needs at least ' + fmtN(g.threshold) + ' people to make a profit (its threshold). Shoppers will travel up to ' + g.range + ' km for it (its range). Around the town of ' + town + ', ' + fmtN(area) + ' square km lie within that range, with ' + dens + ' people per square km.</p>',
+      text: '<p>Invented numbers for practice. ' + g.name + ' needs at least ' + fmtN(g.threshold) + ' people to make a profit (its threshold). Shoppers will travel up to ' + g.range + ' km for it (its range). Around the town of ' + town + ', about ' + fmtN(area) + ' square km lie within that range (a circle reaching ' + g.range + ' km out from the town), with ' + dens + ' people per square km.</p>',
       steps: steps,
-      solution: ['People = ' + fmtN(area) + ' × ' + dens + ' = ' + fmtN(people) + '.', ok ? 'That meets the threshold of ' + fmtN(g.threshold) + ', so the store can open.' : 'That is below the threshold of ' + fmtN(g.threshold) + ', so the store cannot make a profit there; shoppers go to a larger central place.', 'High-order goods and services, such as heart surgery, have the largest range and threshold; low-order goods, such as bread, the smallest.'],
+      solution: ['People = ' + fmtN(area) + ' × ' + dens + ' = ' + fmtN(people) + '.', ok ? 'That meets the threshold of ' + fmtN(g.threshold) + ', so it can open.' : 'That is below the threshold of ' + fmtN(g.threshold) + ', so it cannot make a profit there; shoppers go to a larger central place.', 'High-order goods and services, such as heart surgery, have the largest range and threshold; low-order goods, such as bread, the smallest.'],
       figure: { kind: 'central', range: g.range, ok: ok }
     };
   }

@@ -386,10 +386,10 @@
       var stage = r.int(1, 4), inf, le;
       if(stage === 1){ inf = r.int(58, 70); le = r.int(25, 35); }
       else if(stage === 2){ inf = r.int(36, 48); le = r.int(42, 52); }
-      else if(stage === 3){ inf = r.int(10, 20); le = r.int(62, 70); }
+      else if(stage === 3){ inf = r.int(10, 20); le = r.int(62, 69); }
       else { inf = r.int(3, 7); le = r.int(80, 84); }
       var name = r.pick(COUNTRIES), names = ['Stage 1: pestilence and famine', 'Stage 2: receding pandemics', 'Stage 3: degenerative and human-made diseases', 'Stage 4: delayed degenerative diseases'];
-      var why = ['infections and famine cause most deaths and lives are short', 'infections still cause many deaths, but fewer than before, and life expectancy is rising', 'chronic diseases such as heart disease and cancer cause most deaths, and life expectancy is in the 60s', 'chronic diseases cause most deaths, but at much older ages: life expectancy is over 80'];
+      var why = ['infections and famine cause most deaths and lives are short', 'infections still cause a large share of deaths, though less than in stage 1, and life expectancy has risen to the 40s or low 50s', 'chronic diseases such as heart disease and cancer cause most deaths, and life expectancy is in the 60s', 'chronic diseases cause most deaths, but at much older ages: life expectancy is over 80'];
       return { fig: { kind: 'table', cols: ['Measure', 'Value'], rows: [['Share of deaths from infectious diseases', inf + '%'], ['Life expectancy at birth', le + ' years']], caption: name + ' (invented data for practice)' },
         steps: [{ kind: 'choice', key: 'apply', fig: 'apply', practice: '3.B', level: 'apply', fixed: true, options: names, correct: stage - 1,
           why: names.map(function(n, i){ return i === stage - 1 ? 'Yes. Here ' + why[i] + '.' : 'Not this one. In ' + n.split(':')[0].toLowerCase() + ', ' + why[i] + '; these data do not show that.'; }),
@@ -453,13 +453,13 @@
       var spec = { kind: 'line', label: 'Bid-rent lines for four land uses in an invented city, from the CBD out to 9 km', x: [0, 9], y: [0, 120], xLabel: 'Distance from the CBD (km)', yLabel: 'Bid (rent per square meter)', series: series };
       var tbl = uses.map(function(u){ return u.n.toLowerCase() + ' ' + u.a + ' (\u2212' + u.b + ' a km)'; }).join(', ');
       var st1 = { kind: 'choice', key: 'apply', fig: 'apply', practice: '2.B', level: 'apply', fixed: true, options: uses.map(function(u){ return u.n; }), correct: best,
-        why: uses.map(function(u, i){ return (i === best ? 'Yes. ' : 'Not this one. ') + u.n + ' bids ' + u.a + ' − ' + u.b + ' × ' + d + ' = ' + M.fmt(bids[i], 4) + (i === best ? ', the highest bid there.' : ', but ' + uses[best].n.toLowerCase() + ' bids ' + M.fmt(bids[best], 4) + '.'); }),
+        why: uses.map(function(u, i){ return (i === best ? 'Yes. ' : 'Not this one. ') + 'The bid for ' + u.n.toLowerCase() + ' is ' + u.a + ' − ' + u.b + ' × ' + d + ' = ' + M.fmt(bids[i], 4) + (bids[i] <= 0 && i !== best ? ' (nothing left to bid there)' : '') + (i === best ? ', the highest bid there.' : ', but the bid for ' + uses[best].n.toLowerCase() + ' is ' + M.fmt(bids[best], 4) + '.'); }),
         label: '<b>Apply it.</b> In an invented city, each bid starts at the CBD and falls with each km: ' + tbl + '. Which land use outbids the others ' + d + ' km from the CBD?' };
       var st2 = numStep('rent', '<b>Now the number.</b> What does the winning use bid there, in rent per square meter?', bids[best],
         [{ value: uses[best].a, why: 'That is the bid at the CBD. Subtract what it loses over ' + d + ' km.' }, { value: uses[best].a + uses[best].b * d, why: 'Bids fall with distance: subtract, do not add.' }], 1, null, 0.001);
       return { fig: { kind: 'plot', spec: spec }, steps: [st1, st2], uses: uses, d: d, say: uses[best].n + ' (' + M.fmt(bids[best], 4) + ')' };
     },
-    /* Central place: the threshold a store needs, against market areas. */
+    /* Central place: the threshold a good or service needs, against market areas. */
     christaller: function(r, ctx){
       var pl = [{ n: 'Village', p: 1000 * r.int(2, 5) }, { n: 'Town', p: 1000 * r.int(15, 40) }, { n: 'City', p: 1000 * r.int(120, 300) }];
       var lvl = r.int(0, 2), lo = lvl ? pl[lvl - 1].p : 500, T = 1000 * Math.round(r.between(lo * 1.3, pl[lvl].p * 0.8, 3) / 1000);
@@ -467,7 +467,7 @@
       var good = ['a small grocery', 'a shoe store', 'a specialist hospital'][lvl];
       return { fig: { kind: 'table', cols: ['Place', 'People in its market area'], rows: pl.map(function(x){ return [x.n, thou(x.p)]; }), caption: 'An invented region (invented data for practice)' }, T: T, pl: pl,
         steps: [{ kind: 'choice', key: 'apply', fig: 'apply', practice: '2.B', level: 'apply', fixed: true, options: pl.map(function(x){ return x.n; }), correct: lvl,
-          why: pl.map(function(x, i){ return i === lvl ? 'Yes. ' + x.n + ' has ' + thou(x.p) + ' people in its market area, at least the ' + thou(T) + ' the store needs, and ' + (lvl ? 'the ' + pl[lvl - 1].n.toLowerCase() + ' has too few.' : 'it is the smallest place.') : x.p < T ? 'Not this one. ' + thou(x.p) + ' people is below the threshold of ' + thou(T) + '.' : 'Not this one. ' + x.n + ' could support it, but a smaller place can too: the question asks for the smallest.'; }),
+          why: pl.map(function(x, i){ return i === lvl ? 'Yes. ' + x.n + ' has ' + thou(x.p) + ' people in its market area, at least the ' + thou(T) + ' it needs, and ' + (lvl ? 'the ' + pl[lvl - 1].n.toLowerCase() + ' has too few.' : 'it is the smallest place.') : x.p < T ? 'Not this one. ' + thou(x.p) + ' people is below the threshold of ' + thou(T) + '.' : 'Not this one. ' + x.n + ' could support it, but a smaller place can too: the question asks for the smallest.'; }),
           label: '<b>Apply it.</b> ' + good.charAt(0).toUpperCase() + good.slice(1) + ' needs at least ' + thou(T) + ' people in its market area to stay open (its threshold). Which is the smallest place in the table that can support it?' }],
         say: pl[lvl].n };
     },

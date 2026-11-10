@@ -16,13 +16,23 @@
                                  forms whose units are all published
      assets/exams/items.json     exam-only questions, served with the forms
      assets/justify.json         the "Make it specific" trainer's prompts
+     models.html                 "Models you must know": every model the
+                                 CED names, its picture drawn by the model
+                                 engine (ApHugModel, and Model Studio's
+                                 figures for the free layouts), what it
+                                 claims, its assumptions, one limit, a real
+                                 dated example and the models it is mixed up
+                                 with (data/models.json). Free, indexable.
 
    No path carries the token "ap" (spec decision 2). The helpers come from
    the generator (ctx) so the pages share its head, crumbs, footer and tail. */
-import { loadExams, loadJustify, formUnits, FREE_JUSTIFY, JUSTIFY_SKILLS } from './aphug-exams.mjs';
+import { loadExams, loadJustify, formUnits, examVersion, FREE_JUSTIFY, JUSTIFY_SKILLS } from './aphug-exams.mjs';
 import { renderMath, prepareBank, specificSlots } from './aphug-build.mjs';
 import { Calc } from './aphug-mathlib.mjs';
 import { r3Inner } from './r3-inner.mjs';
+import { runtime } from './aphug-tool-checks/_shared.mjs';
+import { readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
 
 export const SAMPLE_SIZE = 12;
 
@@ -30,14 +40,19 @@ export const SAMPLE_SIZE = 12;
    stable for search. Whole stimulus sets of single-answer items first (at
    most two, from different topics), then standalone items spread over the
    unit's topics, skipping lesson check items (they are already on the free
-   lessons) where enough others exist. */
+   lessons) where enough others exist. A question in a practice exam
+   (ctx.exclude, every id in data/exams/forms.json) is never shown, nor any
+   set one of its questions belongs to, so the free page gives nothing of
+   the exams away. */
 export function unitSample(ch, ctx) {
   const { map, C } = ctx;
+  const exclude = ctx.exclude || new Set();
   const checks = new Set(Object.values(C.lessons).flatMap(L => L.check || []));
   const topics = map.topics.filter(t => t.chapter === ch.id && C.built.has(t.id));
   const sets = [], singles = [];
   for (const t of topics) {
-    const items = C.questions[t.id].items;
+    const usedSets = new Set(C.questions[t.id].items.filter(q => exclude.has(q.id) && q.stimulus).map(q => q.stimulus));
+    const items = C.questions[t.id].items.filter(q => !exclude.has(q.id) && !usedSets.has(q.stimulus));
     const by = new Map();
     for (const q of items) {
       if (q.stimulus) { if (!by.has(q.stimulus)) by.set(q.stimulus, []); by.get(q.stimulus).push(q); }
@@ -145,6 +160,43 @@ export const TABLES = [
   ['No formula sheet', 'Nothing on this page is printed in Bluebook: know what each measure means and how to read it from a table, a pyramid or a map.'],
 ];
 
+/* "Models you must know" (models.html): one entry per model in
+   data/models.json order. Model Studio's 21 contexts give the picture, the
+   claim, the assumptions and the first limit; data/models.json gives each a
+   dated example and its easy-to-confuse partners, and writes the other five
+   in full. Pictures: a free layout is Model Studio's figure (shapes only,
+   every number and word in HTML over it); the others ApHugModel.artSvg
+   (numbers only); in both, the numbered key is a list beside the picture. */
+export function modelEntries(dataDir, map) {
+  const p = join(dataDir, 'models.json'), sp = join(dataDir, 'tools', 'model-studio.json');
+  if (!existsSync(p) || !existsSync(sp)) return [];
+  const D = JSON.parse(readFileSync(p, 'utf8')), studio = JSON.parse(readFileSync(sp, 'utf8'));
+  const R = runtime('model-studio'), MS = R.model;
+  return D.order.map(id => {
+    const c = studio.contexts.find(x => x.id === id), x = c ? D.studio[id] || {} : D.extra[id];
+    if (!x) throw new Error(`models.json: no entry for ${id}`);
+    const topic = c ? c.topic : x.topic, t = map.topicById(topic);
+    if (!t) throw new Error(`models.json: ${id}: unknown topic ${topic}`);
+    let model = c ? (c.build ? MS.GEN[c.build](R.M.rng(7), c) : c.model) : x.model;
+    model = JSON.parse(JSON.stringify(model));
+    const probs = R.Model.check(model);
+    if (probs.length) throw new Error(`models.json: ${id}: model: ${probs.join('; ')}`);
+    const lim = c ? (c.limits.right || [])[0] : null;
+    return { id, topic, chapter: t.chapter, name: c ? c.name : x.name, origin: c ? c.origin : x.origin || '', aside: c ? c.aside || '' : '', claim: c ? c.claim : x.claim,
+      assumes: c ? c.assumes : x.assumes, limit: lim ? `${lim.t}. ${lim.why}` : x.limit, example: x.example, confuse: x.confuse || [],
+      model, figure: c && c.figure ? MS.figure(c.figure) : null, studio: !!c,
+      key: model.slots.map((sl, i) => ({ n: i + 1, slot: R.Model.slotName(model, i), piece: (model.pieces.find(q => q.id === model.key[sl.id]) || {}).text })) };
+  });
+}
+function modelPicture(e, esc, artSvg) {
+  if (!e.figure) return `<figure class="ms-fig ms-fig-art" data-layout="${esc(e.model.layout)}"><div class="ms-card"><div class="hug-model-art">${artSvg(e.model)}</div></div></figure>`;
+  const f = e.figure, over = [];
+  f.spots.forEach((list, i) => list.forEach(p => over.push(`<span class="ms-badge" style="left:${p[0]}%;top:${p[1]}%">${i + 1}</span>`)));
+  for (const l of f.labels || []) over.push(`<span class="ms-tag" style="left:${l.x}%;top:${l.y}%">${esc(l.text)}</span>`);
+  const legend = (f.legend || []).length ? `<ul class="ms-legend">${f.legend.map(l => `<li><span class="ms-sw ms-sw-${esc(l.sw)}" aria-hidden="true"></span>${esc(l.text)}</li>`).join('')}</ul>` : '';
+  return `<figure class="ms-fig"><div class="ms-card"><div class="ms-pic">${f.svg}<div class="ms-over" aria-hidden="true">${over.join('')}</div></div>${legend}</div></figure>`;
+}
+
 export function entryPages(ctx) {
   const { map, C, put, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL, courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs, liveTools } = ctx;
   const units = map.chapters.filter(c => c.part === 'course');
@@ -163,7 +215,7 @@ export function entryPages(ctx) {
   /* ------------------------------------------------------- formula sheet */
   {
     const depth = '', path = 'formula-sheet.html', url = `${SITE}${BASE}${path}`;
-    const title = courseTitle('Human Geography Formulas You Must Know', [LABEL]);
+    const title = courseTitle('Formulas You Must Know', [LABEL]);
     const desc = 'Every rate, density and ratio the human-geography exam asks you to work out by hand or read from a source: what it means, when to use it and the classic trap.';
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#sheet`, name: 'Formulas you must know', url, description: desc, learningResourceType: 'Reference', isAccessibleForFree: true, educationalLevel: 'High school', inLanguage: 'en', isPartOf: { '@id': COURSE_ID } },
@@ -193,7 +245,7 @@ ${bodyOpen(' data-app="formula-sheet"')}
     <ul class="hug-eq-not">${TABLES.map(r => `<li><b>${esc(r[0])}.</b> ${R(r[1])}</li>`).join('')}</ul>
   </section>
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Formulas flashcards</a>`, `<a href="flashcards.html?unit=geo-skills">Skills terms flashcards</a>`, `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Formulas flashcards</a>`, `<a href="flashcards.html?unit=geo-skills">Skills terms flashcards</a>`, `<a href="models.html">Models you must know</a>`, `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:formula-sheet')}
@@ -210,12 +262,68 @@ ${tail({ depth, section: 'exams', extra: ['pages/calm-ref.js'], site: ['course/t
   /* The "Statistics" flashcard deck: free, always served (the statistics page is). */
   out['assets/formulas.json'] = JSON.stringify(formulaCards());
 
+  /* ------------------------------------------------------ models page */
+  {
+    const depth = '', path = 'models.html', url = `${SITE}${BASE}${path}`;
+    const entries = modelEntries(C.data, map);
+    const artSvg = runtime('model-studio').Model.artSvg;
+    const studioLive = (liveTools || []).some(t => t.slug === 'model-studio');
+    const nameOf = id => (entries.find(e => e.id === id) || {}).name || id;
+    const title = courseTitle('Models You Must Know', [LABEL]);
+    const desc = 'Every model the human-geography exam names, drawn: what each claims, what it assumes, one limit, a real dated example, and the models students mix up.';
+    const jsonld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'LearningResource', '@id': `${url}#models`, name: 'Models you must know', url, description: desc, learningResourceType: 'Reference', isAccessibleForFree: true, educationalLevel: 'High school', inLanguage: 'en', isPartOf: { '@id': COURSE_ID } },
+      crumbs(orgCrumbs([{ name: 'Models you must know', url }])),
+    ] };
+    const R = x => renderMath([x])[0];
+    const card = e => `<section class="hug-mdl" id="m-${e.id}" aria-labelledby="m-${e.id}-h"><h3 id="m-${e.id}-h">${esc(e.name)}</h3>
+      <p class="hug-small hug-mdl-meta">${esc(e.origin)}${e.origin ? ' &middot; ' : ''}Learn it in ${topicLink(e.topic, depth)}</p>
+      <div class="hug-mdl-grid"><div class="hug-mdl-pic">${modelPicture(e, esc, artSvg)}</div>
+      <ol class="hug-mdl-key" aria-label="${esc(e.name)}: what each number shows">${e.key.map(k => `<li><span class="hug-mdl-n" aria-hidden="true">${k.n}</span><span><b>${esc(k.piece)}</b><span class="hug-small">${esc(k.slot)}</span></span></li>`).join('')}</ol></div>
+      <dl class="hug-mdl-facts"><dt>What it claims</dt><dd>${R(e.claim)}</dd><dt>It assumes</dt><dd><ul>${e.assumes.map(a => `<li>${R(a)}</li>`).join('')}</ul></dd><dt>One limit</dt><dd>${R(e.limit)}</dd><dt>A real example</dt><dd>${R(e.example)}</dd></dl>
+      ${e.confuse.map(([id, how]) => `<p class="hug-mdl-confuse"><b>Easy to confuse${id ? ` with <a href="#m-${id}">${esc(nameOf(id))}</a>` : ' inside this model'}.</b> ${R(how)}</p>`).join('')}
+      ${e.aside ? `<p class="hug-aside hug-small">${esc(e.aside)}</p>` : ''}
+      ${studioLive && e.studio ? `<p class="hug-small"><a href="tools/model-studio.html">Build it in Model Studio</a></p>` : ''}</section>`;
+    const groups = map.chapters.filter(ch => entries.some(e => e.chapter === ch.id)).map(ch => `<section class="xsection hug-mdl-unit" aria-labelledby="mu-${ch.id}"><h2 id="mu-${ch.id}">${ch.part === 'course' ? `Unit ${ch.n}: ` : ''}${esc(ch.title)}</h2>${entries.filter(e => e.chapter === ch.id).map(card).join('\n')}</section>`).join('\n  ');
+    const confusing = entries.filter(e => e.confuse.some(([id]) => id)).length;
+    const body = `
+${bodyOpen(' data-app="models"')}
+<main id="main" class="xshell hug-app hug-entry hug-models">
+  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Models you must know' }])}
+  <header class="hero hug-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>Models you must know</h1>
+  <p class="lede">The ${entries.length} models the course and exam description names, each drawn, with what it claims, what it assumes, one limit and a real, dated example. A model is a simplified idea, not a fact about a place: on the exam, apply it to a named place and say where it fits and where it fails. ${confusing} are flagged with the model students most often mix them up with.</p></header>
+  <nav class="xsection hug-mdl-jump" aria-label="Jump to a model"><h2 class="hug-small">Jump to a model</h2><ul>${entries.map(e => `<li><a href="#m-${e.id}">${esc(e.name)}</a></li>`).join('')}</ul></nav>
+  <section class="xsection hug-eq-tips" aria-labelledby="mdl-tips"><h2 id="mdl-tips">Three habits that save points</h2>
+    <ul class="hug-links">
+      <li><b>Apply it to a named place.</b> "Chicago in the 1920s fits the concentric zone model" earns more than a definition of the model.</li>
+      <li><b>Say "consistent with", not "is".</b> A country's data are consistent with stage 3 of the demographic transition; the country is not in stage 3 as a fact.</li>
+      <li><b>Give a limit with its reason.</b> "It was built on one US city before cars spread homes in every direction" is a limit; "it is old" is not.</li>
+    </ul>
+  </section>
+  ${groups}
+  <section class="xsection" aria-labelledby="mdl-next"><h2 id="mdl-next">Practice with it</h2>
+    <p>${[studioLive ? '<a href="tools/model-studio.html">Model Studio: build every model by hand</a>' : '', testLink('', 'Free unit practice tests'), '<a href="formula-sheet.html">Formulas you must know</a>', '<a href="justify.html">Make it specific</a>', '<a href="exams.html">Full practice exams</a>'].filter(Boolean).join(' &middot; ')}</p>
+  </section>
+</main>
+${footer(depth, 'page:models')}
+<link rel="stylesheet" href="assets/pages/pages.css">
+<link rel="stylesheet" href="assets/pages/entry.css">
+<link rel="stylesheet" href="assets/tools/model-studio.css">
+${tail({ depth, section: 'learn', extra: [] })}
+</body>
+</html>
+`;
+    out[path] = head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body;
+  }
+
   /* ---------------------------------------------------- unit practice tests */
+  // Every question either practice exam uses: never on a free unit test.
+  const examIds = new Set(loadExams(C.data).forms.flatMap(f => (f.mcq || []).flat()));
   const stimFor = q => { const s = ((C.questions[q.topic] || {}).stimuli || {})[q.stimulus]; return s; };
   for (const ch of units.filter(built)) {
     const depth = '../', path = `unit-tests/${ch.id}.html`, url = `${SITE}${BASE}${path}`;
-    const qs = unitSample(ch, ctx).map(questionForPage);
-    const title = courseTitle(`Unit ${ch.n} Practice Test: ${ch.title}`, [LABEL]);
+    const qs = unitSample(ch, { ...ctx, exclude: examIds }).map(questionForPage);
+    const title = courseTitle(`Unit ${ch.n} Practice Test`, [LABEL]);
     const desc = clampDesc(`A free ${qs.length}-question practice test for Unit ${ch.n}, ${ch.title.toLowerCase()}, with the answer and an explanation for every option.`);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'Quiz', '@id': `${url}#quiz`, name: `Unit ${ch.n} practice test: ${ch.title}`, url, description: desc, isAccessibleForFree: true, educationalLevel: 'High school', inLanguage: 'en', about: ch.title, isPartOf: { '@id': COURSE_ID } },
@@ -236,7 +344,7 @@ ${bodyOpen(` data-unit="${ch.id}" data-app="unit-test"`)}
 <main id="main" class="xshell hug-app hug-entry">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: `Unit ${ch.n} practice test` }])}
   <header class="hero hug-hero"><div class="eyebrow">Unit ${ch.n} &middot; ${ch.weight[0]}&ndash;${ch.weight[1]}% of the exam ${BETA_PILL}</div><h1>Unit ${ch.n} practice test: ${esc(ch.title)}</h1>
-  <p class="lede">${qs.length} exam-style questions from the unit, free, with an explanation for every option. Most have four answer choices, as on the real exam, and a few ask for a number you can work out by hand; sets share one study summary, data table, graph or figure.</p>
+  <p class="lede">${qs.length} exam-style questions from the unit, free, with an explanation for every option. Each has four answer choices (the real exam and the practice exams have five), and sets share one map, table, chart, image or passage. None of them is in the two practice exams.</p>
   <p class="hug-small hug-nav-ref">Covers: ${topics.map(t => esc(t.title)).join('; ')}.</p></header>
   <div class="hug-qs" data-set="check">${html}</div>
   <section class="xsection hug-nav-ref" aria-labelledby="ut-more"><h2 id="ut-more">Keep going</h2>
@@ -264,11 +372,23 @@ ${tail({ depth, section: 'exams', extra: ['hug-questions.js', 'pages/sample.js']
   const examItems = new Map(ex.items.map(q => [q.id, q]));
   const frqById = Object.fromEntries(frqs.map(f => [f.id, f]));
   const live = ex.forms.filter(f => formUnits(f, { bank, examItems, frqs: frqById }).every(u => C.published.has(u)) && (f.frq || []).every(id => frqById[id]));
-  const usedOwn = new Set(live.flatMap(f => f.mcq.flat()).filter(id => examItems.has(id)));
-  const ownStim = {};
-  for (const id of usedOwn) { const s = examItems.get(id).stimulus; if (s && ex.stimuli[s]) ownStim[s] = { kind: ex.stimuli[s].kind, title: ex.stimuli[s].title, html: stimulusBody(C, ex.stimuli[s], '') }; }
+  /* assets/exams/items.json serves every question a live form uses with its
+     five options and its explanations inline: the exam-only ones, and each
+     bank question with the form's fifth option (examVersion), so the page
+     never shows a bank question with four. Every stimulus they read comes
+     with them. */
+  const served = [], stimServed = {};
+  for (const f of live) for (const id of f.mcq.flat()) {
+    const q = examItems.get(id) || (bank.get(id) && examVersion(bank.get(id), renderMath(f.fifth || {})));
+    if (!q) continue;
+    served.push(q);
+    if (q.stimulus && !stimServed[q.stimulus]) {
+      const s = ex.stimuli[q.stimulus] || stimFor(q);
+      if (s) stimServed[q.stimulus] = { kind: s.kind, title: s.title, html: stimulusBody(C, s, '') };
+    }
+  }
   out['assets/exams/forms.json'] = JSON.stringify(live.map(f => ({ id: f.id, title: f.title, mcq: f.mcq, frq: f.frq })));
-  out['assets/exams/items.json'] = JSON.stringify({ stimuli: ownStim, items: [...usedOwn].map(id => questionForPage(examItems.get(id))) });
+  out['assets/exams/items.json'] = JSON.stringify({ stimuli: stimServed, items: served.map(questionForPage) });
 
   /* --------------------------------------------- "Make it specific" data */
   const prompts = loadJustify(C.data, map).filter(p => C.published.has(p.unit));

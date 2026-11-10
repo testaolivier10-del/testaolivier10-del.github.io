@@ -344,7 +344,7 @@
       steps.push(num('ratio', 'Sex ratio of the 25-29 group (males per 100 females)', sr, 0, [{ value: 100 * fN / mN, why: 'That is females per 100 males. Put males on top.' }, { value: mN / fN, why: 'Multiply by 100: the sex ratio is males per 100 females.' }], { unit: 'per 100', hint: 'males ÷ females × 100.' }));
       steps.push(choice('cause2', 'Which process best explains this pattern?', [
         ['Labor migration: many men moved to ' + name + ' for work, for example in construction.', 'Right. Migrants who come for jobs are often young adult men, which swells the male side at working ages.'],
-        ['A baby boom ' + (year - 30) + ' years ago.', 'A boom adds both boys and girls, so both sides would widen.'],
+        ['A baby boom about 30 years before ' + year + '.', 'A boom adds both boys and girls, so both sides would widen.'],
         ['A war that killed many young men.', 'That would make the male side shorter, not longer.'],
         ['A high birth rate.', 'Births add children at the base, not adults at ages 20 to 44.']
       ]));

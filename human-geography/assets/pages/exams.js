@@ -68,6 +68,8 @@
   var MCQ_TOTAL = 60;
   var MCQ_PARTS = [{ key: '', n: 60, sec: 60 * 60, calc: false }];
   var FRQ_PARTS = [{ key: '', n: 3, sec: 75 * 60, calc: false }];
+  // Each section is half of the exam score (spec section 2); results show them apart, never combined.
+  var WEIGHTS = { mcq: 50, frq: 50 };
   var FRQ_POINTS = 7;
   // A question's time at the exam's pace.
   function qSec(){ return MCQ_PARTS[0].sec / MCQ_PARTS[0].n; }
@@ -245,14 +247,14 @@
       FORMS.map(function(f){ return '<label class="cx-pill"><input type="radio" name="form" value="' + f.id + '"' + (cfg.form === f.id ? ' checked' : '') + '><span>' + esc(f.title) + '</span></label>'; }).join('') +
       '<label class="cx-pill"><input type="radio" name="form" value=""' + (cfg.form ? '' : ' checked') + '><span>New mixed exam</span></label></div></fieldset>' : '';
     var fm = formById(cfg.form);
-    var fmt = '<p>Section I: 60 multiple-choice questions in 60 min, alone and in sets that share a map, a table or chart, an image or a passage. Section II: 3 free-response questions in 75 min, each worth 7 points (one a part, A to G): the first with no stimulus, the second with one, the third with two. No calculator. Then you score your free responses with the rubrics.</p>';
+    var fmt = '<p>Section I (' + WEIGHTS.mcq + '% of the score): 60 multiple-choice questions in 60 min, five choices each, alone and in sets that share a map, a table or chart, an image or a passage. Section II (' + WEIGHTS.frq + '%): 3 free-response questions in 75 min, each worth 7 points (one a part, A to G): the first with no stimulus, the second with one, the third with two. No calculator. Then you score your free responses with the rubrics.</p>';
     if(fm){
       var fu = {}; fm.mcq.forEach(function(b){ b.forEach(function(id){ var q = byIdQ(id); if(q) fu[q.unit] = (fu[q.unit] || 0) + 1; }); });
       var secPick = '<fieldset class="cx-group"><legend>Section</legend><div class="cx-pills">' + [['', 'Whole exam'], ['1', 'Section I only (60 questions, 60 min)'], ['2', 'Section II only (3 questions, 75 min)']].map(function(o){
         return '<label class="cx-pill"><input type="radio" name="section" value="' + o[0] + '"' + (cfg.section === o[0] ? ' checked' : '') + '><span>' + o[1] + '</span></label>'; }).join('') + '</div></fieldset>';
       return formPick + secPick + '<div class="cx-note hug-ex-note"><p><b>' + esc(fm.title) + ': a complete exam in the real format.</b> The same questions in a set order for everyone, so you can compare a second try.</p>' + fmt +
         '<h2 class="hug-ex-h3">Section I, by unit</h2><ul class="hug-ex-areas">' + courseUnits().map(function(u){ return '<li class="is-on"><span>' + esc(unitName(u.id)) + (Array.isArray(u.weight) ? ' <span class="hug-small">(' + u.weight[0] + '–' + u.weight[1] + '%)</span>' : '') + '</span><b>' + (fu[u.id] || 0) + '</b></li>'; }).join('') + '</ul></div>' +
-        timingField() + '<p class="hug-small">' + (t.k ? (cfg.section !== '2' ? 'Section I: ' + minutes(90 * 60 * t.k) + '. ' : '') + (cfg.section !== '1' ? 'Section II: ' + minutes(70 * 60 * t.k) + '.' : '') + (t.k > 1 ? ' With extra time.' : '') : 'Untimed: the clock counts up instead of down.') + '</p>';
+        timingField() + '<p class="hug-small">' + (t.k ? (cfg.section !== '2' ? 'Section I: ' + minutes(MCQ_PARTS[0].sec * t.k) + '. ' : '') + (cfg.section !== '1' ? 'Section II: ' + minutes(FRQ_PARTS[0].sec * t.k) + '.' : '') + (t.k > 1 ? ' With extra time.' : '') : 'Untimed: the clock counts up instead of down.') + '</p>';
     }
     var plan = examPlan();
     var unitRows = plan.units.map(function(u){
@@ -265,7 +267,7 @@
     }).join('');
     return formPick + '<div class="cx-note hug-ex-note">' +
       (plan.full ? '<p><b>The full May 2027 format.</b> Each part is drawn from every unit by the midpoint of its exam weight, with stimulus sets kept whole.</p>' + fmt
-        : '<p><b>Not enough questions for a full practice exam yet.</b> A full exam needs 75 multiple-choice questions spread over ' + (plan.units.length === 1 ? 'the course\'s one unit' : 'all ' + plan.units.length + ' units') + ' by exam weight, and 3 free-response questions. ' +
+        : '<p><b>Not enough questions for a full practice exam yet.</b> A full exam needs 60 multiple-choice questions spread over ' + (plan.units.length === 1 ? 'the course\'s one unit' : 'all ' + plan.units.length + ' units') + ' by exam weight, and 3 free-response questions. ' +
           'Today the bank can give a <b>shorter exam</b>: ' + plural(plan.mcqN, 'multiple-choice question') + (plan.frqN ? ' and ' + plural(plan.frqN, 'free-response question') : ' and no free-response section') + ', each unit keeping the share it would have in a full exam. Units with no questions yet are left out, not filled in from other units.</p>') +
       '<h2 class="hug-ex-h3">Section I, by unit</h2><ul class="hug-ex-areas">' + unitRows + '</ul>' +
       '<h2 class="hug-ex-h3">Section II</h2><ul class="hug-ex-areas">' + partRows + '</ul></div>' +
@@ -275,7 +277,7 @@
   function summary(){
     if(cfg.kind === 'mixed'){ if(!cramOk()) return 'Mixed timed sets are part of Premium.'; var m = mixedPlan(cfg.n); return m.n ? 'Mixed timed set: about ' + plural(m.n, 'question') + (timing().k ? ', about ' + minutes(m.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published yet.'; }
     if(cfg.kind === 'unit'){ var p = unitPlan(cfg.unit, cfg.len); return p.n ? plural(p.n, 'question') + (timing().k ? ', about ' + minutes(p.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published for this unit yet.'; }
-    if(formById(cfg.form)) return formById(cfg.form).title + (cfg.section === '1' ? ', Section I: 75 multiple-choice questions in 90 minutes.' : cfg.section === '2' ? ', Section II: 2 free-response questions in 70 minutes.' : ': 75 multiple-choice questions + 2 free-response questions.');
+    if(formById(cfg.form)) return formById(cfg.form).title + (cfg.section === '1' ? ', Section I: 60 multiple-choice questions in 60 minutes.' : cfg.section === '2' ? ', Section II: 3 free-response questions in 75 minutes.' : ': 60 multiple-choice questions + 3 free-response questions.');
     var plan = examPlan();
     if(!plan.mcqN) return 'No questions are published yet.';
     return (plan.full ? 'Full practice exam: ' : 'Shorter practice exam: ') + plural(plan.mcqN, 'multiple-choice question') + (plan.frqN ? ' + ' + plural(plan.frqN, 'free-response question') : '') + '.';
@@ -373,17 +375,16 @@
     var fromBank = ids.filter(function(id){ return !own[id]; }).map(function(id){ return byIdQ(id) || id; });
     Promise.all([Core.loadQuestions(BASE, fromBank), Promise.all(f.frq.map(function(id){ return K.load(BASE, id); }))]).then(function(r){
       var by = {}; r[0].forEach(function(q){ by[q.id] = q; });
-      // Exam forms have five options (the bank four): a bank item's fifth
-      // comes from the form's fifth map ({ text, why }), placed last.
-      var fifth = function(q){
-        var x = f.fifth && f.fifth[q.id]; if(!x) return q;
-        q = JSON.parse(JSON.stringify(q)); q.options = q.options.concat([x.text]);
-        q.why = q.why || {}; q.why.options = (q.why.options || []).concat([x.why || '']); return q;
-      };
       var qs = ids.map(function(id){
-        if(by[id]) return fifth(by[id]);
+        // Every question a form uses comes in assets/exams/items.json with
+        // its five options and explanations (a bank question with the form's
+        // fifth option put in place); the bank's four-option copy is only the
+        // fallback if that file is missing.
+        if(by[id]) return by[id];
         var q = own[id]; if(!q) return null;
-        q = JSON.parse(JSON.stringify(q)); q.own = true;
+        // own: written for this exam only (hug-exam-*); a bank question
+        // served with its fifth option is still the bank's, so a miss reaches Review.
+        q = JSON.parse(JSON.stringify(q)); q.own = /^hug-exam-/.test(q.id);
         if(q.stimulus && OWN.stimuli[q.stimulus]) q.stim = OWN.stimuli[q.stimulus];
         return q;
       });
@@ -559,7 +560,7 @@
       stage.appendChild(box);
       run.els[q.id] = box;
       // A set's stimulus is shown with each of its questions.
-      Q.hydrate(box, [q], { exam: true, record: false, flag: OWN.items.some(function(x){ return x.id === q.id; }) ? 'session' : undefined, onAnswer: function(res){ lockedIn(q, box, res); } });
+      Q.hydrate(box, [q], { exam: true, record: false, flag: /^hug-exam-/.test(q.id) ? 'session' : undefined, onAnswer: function(res){ lockedIn(q, box, res); } });
       var nEl = box.querySelector('.hug-q-n'); if(nEl) nEl.textContent = (i + 1) + '.';
       var chk = box.querySelector('.hug-check'); if(chk) chk.textContent = 'Lock in answer';
     }
@@ -730,7 +731,7 @@
     rows.forEach(function(x){ if(!x.q.own && !(CLS && CLS.keep(x))) Core.record(x.q.id, !!x.r.correct, { skipped: !!x.r.skipped, topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
     if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
-      setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length }); }, 2600);
+      setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished: ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length }); }, 2600);
     }
     var fg = 0, fo = 0; (run.frqScores || []).forEach(function(s){ fg += s.got; fo += s.of; });
     // No composite and no band (spec decision 6): the two sections are shown apart.
@@ -767,7 +768,11 @@
        it the topics, the breakdowns, the band explanation and the full answer list. A Section II timed section
        has no multiple choice to score, so its card counts the rubric points instead. */
     var frqOnly = !total && fo, chips = [];
-    if(fo && !frqOnly) chips.push('Free response ' + fg + '/' + fo + ' (your self score)');
+    // The two sections apart, each with its weight; no composite (spec decision 5).
+    var pct = function(a, b){ return b ? Math.round(100 * a / b) + '%' : ''; };
+    if(k === 'full' && total) chips.push('Section I (' + WEIGHTS.mcq + '% of the exam): ' + right + '/' + total + ', ' + pct(right, total));
+    if(fo && k === 'full') chips.push('Section II (' + WEIGHTS.frq + '% of the exam): ' + fg + '/' + fo + ' points, ' + pct(fg, fo) + ' (your self score)');
+    else if(fo && !frqOnly) chips.push('Free response ' + fg + '/' + fo + ' (your self score)');
     if(run.timeUp1) chips.push('Time ran out in Section I');
     if(run.timeUp2) chips.push('Time ran out in Section II');
     var kind = k === 'unit' ? 'Unit test' : k === 'mixed' ? 'Mixed timed set' : frqOnly ? 'Free response section' : 'Practice exam';
@@ -776,7 +781,7 @@
       kind: kind, right: frqOnly ? fg : right, total: frqOnly ? fo : total, skipped: frqOnly ? 0 : skipped, unit: frqOnly ? 'points, your self score' : 'multiple choice',
       sub: run.label && run.label !== kind ? esc(run.label) : '', chips: chips,
       timed: run.usedAll ? { used: mmss(run.usedAll), limit: run.limAll ? mmss(run.limAll) : '', pace: total && run.usedMcq ? mmss(run.usedMcq / total) : '' } : null,
-      estimate: k === 'full' && b ? { label: 'Readiness band', value: b + ' of 5', range: 'rough, not calibrated' } : null,
+      estimate: null,
       missed: rows.filter(function(x){ return !x.r.correct; }).map(function(x){ return LevlStudy.miss(x.q, x.r.pick, x.q.topic ? lessonHref(x.q.topic) : ''); }),
       missedTitle: skipped && wrongN ? 'You missed ' + wrongN + ' and left ' + skipped + ' unanswered' : skipped ? 'You left ' + skipped + ' unanswered' : '',
       step: missedN ? { href: BASE + 'practice.html?mode=missed', label: 'Practice your misses' } : { act: 'again', label: 'Another exam' },
@@ -785,6 +790,7 @@
       next: byTopic.length ? LevlStudy.topics(byTopic.map(function(x){ var t = TOPIC[x.key], m = Core.topicMastery ? Core.topicMastery(x.key) : null;
         return { name: t ? t.title : x.key, href: lessonHref(x.key), c: x.c, n: x.n, mastery: m ? m.value || 0 : null, links: [{ label: 'Lesson', href: lessonHref(x.key) }, { label: 'Notes', href: BASE + 'notes/' + x.key + '.html' }] }; })) : '',
       more: (total ? (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') : '') +
+        (k === 'full' && total && fo ? '<div class="hug-ex-sections" role="group" aria-label="The two sections"><p><b>Section I, multiple choice</b> <span class="hug-small">' + WEIGHTS.mcq + '% of the exam score</span><br>' + right + ' of ' + total + ' right (' + pct(right, total) + ')</p><p><b>Section II, free response</b> <span class="hug-small">' + WEIGHTS.frq + '% of the exam score</span><br>' + fg + ' of ' + fo + ' points (' + pct(fg, fo) + '), your self score</p></div>' : '') +
         (k === 'full' ? '<p class="hug-small">No AP® score is estimated: a practice form is not the real exam, and the College Board does not publish how raw points turn into a 1-5 score. Use the section percentages and the breakdowns below.</p>' : '') +
         LevlStudy.bars('Multiple choice by unit', byUnit.map(function(x){ return { label: unitName(x.key), c: x.c, n: x.n }; })) +
         (fo ? LevlStudy.bars('Free response by unit (points)', Object.keys(frqByUnit).map(function(u){ return { label: unitName(u), c: frqByUnit[u].c, n: frqByUnit[u].n }; })) : '') +

@@ -179,8 +179,8 @@
      },
      {
       "at": [
-       32.4,
-       30.6
+       32.5,
+       29.9
       ],
       "text": "C"
      },
@@ -215,19 +215,19 @@
    "q": "A student writes that this map shows data at the national scale, because it covers all of Country A. Which scale of analysis do the data show?",
    "options": [
     "National, because the map covers the whole of one country",
-    "Local (subnational), because each value is for one province",
     "Global, because internet access is spreading around the world",
     "Regional, because the provinces are grouped into four classes",
+    "Local (subnational), because each value is for one province",
     "A large map scale, because the map shows one country in detail"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "The scale of analysis is the scale of the data, not the size of the area drawn. Each shaded value is for one province, so the data are at the local (subnational) scale.",
     "options": [
      "This is the slip the student made: a national value would be one number for all of Country A, and this map has eight.",
-     "Right: one value per province is local (subnational) data, even though the map covers the whole country.",
      "A worldwide trend is not on this map; its values are for provinces of one country.",
      "The four classes group values for the legend; they do not change what each value describes, which is one province.",
+     "Right: one value per province is local (subnational) data, even though the map covers the whole country.",
      "Map scale is how much the map is reduced; the question asks about the scale of analysis, the level of the data."
     ]
    }
@@ -273,20 +273,20 @@
    "q": "If Country A's cities followed the rank-size rule, about how many people would its third-largest city have?",
    "options": [
     "About 600,000",
-    "About 400,000",
     "About 180,000",
     "About 133,000",
-    "About 300,000"
+    "About 300,000",
+    "About 400,000"
    ],
-   "correct": 1,
+   "correct": 4,
    "why": {
     "correct": "The rank-size rule puts the city of rank n at 1/n the size of the largest. The largest city has about 1,200,000 people, so the third-largest should have about 1,200,000 / 3 = 400,000.",
     "options": [
      "About 600,000 is half the largest city: the rule's size for the second-largest city.",
-     "Right: 1,200,000 / 3 = 400,000.",
      "About 180,000 is the map's real third-largest city; the question asks what the rule predicts.",
      "About 133,000 divides by 9, the rank squared; the rule divides by the rank.",
-     "About 300,000 divides by 4: the rule's size for the fourth-largest city."
+     "About 300,000 divides by 4: the rule's size for the fourth-largest city.",
+     "Right: 1,200,000 / 3 = 400,000."
     ]
    }
   },
@@ -301,19 +301,19 @@
    "stimulus": "exam-1-s3",
    "q": "Which statement best describes Country A's urban hierarchy on the map?",
    "options": [
+    "It has a primate city: the largest is more than four times the second",
     "It follows the rank-size rule, with each city about the size the rule predicts",
     "Its cities are about the same size in each of the eight provinces",
-    "It has a primate city: the largest is more than four times the second",
     "Two cities of about equal size lead the hierarchy",
     "The smallest cities are in the Capital Region and on the South Coast"
    ],
-   "correct": 2,
+   "correct": 0,
    "why": {
     "correct": "The largest city, about 1,200,000, is more than four times the second, about 260,000 on the South Coast. A city that much larger than the rest is a primate city.",
     "options": [
+     "Right: 1,200,000 is more than four times 260,000, the mark of a primate city.",
      "The rule predicts about 600,000 for the second city; the map shows about 260,000, far smaller.",
      "The circles differ a great deal: one is far larger than the other seven.",
-     "Right: 1,200,000 is more than four times 260,000, the mark of a primate city.",
      "One city leads alone; the second is about a fifth of its size.",
      "The largest cities are in the Capital Region and on the South Coast; the smallest are in the Northern Hills and Southern Forest."
     ]
@@ -330,7 +330,7 @@
    "q": "Invented Country H has 40 million people, 400,000 square kilometers of land and 20,000 square kilometers of arable land. What is its physiological density?",
    "options": [
     "2,000 people per square kilometer of arable land",
-    "100 people per square kilometer of all its land",
+    "100 people per square kilometer of total land",
     "200 people per square kilometer of arable land",
     "A carrying capacity of 2,000 people",
     "20,000 people per square kilometer of arable land"
@@ -359,19 +359,19 @@
    "options": [
     "High-yield varieties of rice and wheat",
     "Synthetic fertilizers",
-    "Crops given genes from another species in a lab",
     "Wider irrigation from wells and canals",
-    "Chemical pesticides"
+    "Chemical pesticides",
+    "Crops given genes from another species in a lab"
    ],
-   "correct": 2,
+   "correct": 4,
    "why": {
     "correct": "Crops with genes inserted from another species are genetically modified organisms (GMOs). They were first sold commercially in the 1990s, decades after the Green Revolution began, so they were not part of it.",
     "options": [
      "High-yield varieties, bred by crossing plants, were the heart of the Green Revolution.",
      "Synthetic fertilizers were part of the package: the new seeds needed them to give large harvests.",
-     "Right: genetically modified crops came in the 1990s and are a separate technology.",
      "Irrigation spread with the new seeds, which needed steady water.",
-     "Pesticides were part of the package that came with the new seeds."
+     "Pesticides were part of the package that came with the new seeds.",
+     "Right: genetically modified crops came in the 1990s and are a separate technology."
     ]
    }
   },
@@ -415,18 +415,18 @@
    "options": [
     "Country X has a larger population than Country Y",
     "Country X earns more per person than Country Y",
-    "Country X has better health and education than Country Y",
     "Country X has more land than Country Y",
+    "Country X has better health and education than Country Y",
     "Country X has a larger primary sector than Country Y"
    ],
-   "correct": 2,
+   "correct": 3,
    "why": {
     "correct": "The HDI combines health (life expectancy), education (years of schooling) and income. With income about equal, the gap must come from health and education.",
     "options": [
      "Population size is not part of the HDI.",
      "The question says their income per person is about the same, so income cannot explain the gap.",
-     "Right: health and education are the other two parts of the HDI.",
      "Land area is not part of the HDI.",
+     "Right: health and education are the other two parts of the HDI.",
      "The HDI does not measure economic sectors; a larger primary sector usually goes with lower development."
     ]
    }
@@ -441,19 +441,19 @@
    "practice": "1.B",
    "q": "Singapore is a city-state on a small, low island at the southern tip of the Malay Peninsula. Which statement describes Singapore's situation rather than its site?",
    "options": [
+    "It lies on the Strait of Malacca, a main shipping route between oceans",
     "It is built on a low, mostly flat main island",
     "Much of its land was made by filling in the sea",
-    "It lies on the Strait of Malacca, a main shipping route between oceans",
     "Its climate is hot and wet in each month of the year",
     "Its absolute location is about 1° N, 104° E"
    ],
-   "correct": 2,
+   "correct": 0,
    "why": {
     "correct": "Situation is a place's location relative to other places. Singapore's position on a busy shipping route between the Indian Ocean and the Pacific is its situation.",
     "options": [
+     "Right: its position on a route between other places is its situation.",
      "The shape and height of the island are features of the place itself: its site.",
      "Land made by filling in the sea is part of its site, the physical ground the city stands on.",
-     "Right: its position on a route between other places is its situation.",
      "Climate is a physical feature of the place itself, part of its site.",
      "Latitude and longitude give absolute location, not situation."
     ]
@@ -499,19 +499,19 @@
    "options": [
     "An intervening obstacle",
     "Chain migration",
-    "An intervening opportunity",
     "Transhumance",
-    "Forced migration"
+    "Forced migration",
+    "An intervening opportunity"
    ],
-   "correct": 2,
+   "correct": 4,
    "why": {
     "correct": "An intervening opportunity is a chance along the way, here work and schools in Mexico City, that leads a migrant to stop short of the planned destination.",
     "options": [
      "An obstacle would block or slow the move; this family found something good and chose to stay.",
      "Chain migration is following relatives or friends who moved earlier; nothing here says the family joined anyone.",
-     "Right: work and schools on the way led them to stop: an intervening opportunity.",
      "Transhumance is the seasonal movement of herders and their animals.",
-     "The family chose to move and chose to stay, so the move is voluntary."
+     "The family chose to move and chose to stay, so the move is voluntary.",
+     "Right: work and schools on the way led them to stop: an intervening opportunity."
     ]
    }
   },
@@ -586,18 +586,18 @@
    "options": [
     "An exurb",
     "A central business district",
-    "An edge city",
     "A squatter settlement",
+    "An edge city",
     "A primate city"
    ],
-   "correct": 2,
+   "correct": 3,
    "why": {
     "correct": "An edge city is a large node of offices and shopping that grows at the edge of a metro area along highways, often with more jobs than homes.",
     "options": [
      "An exurb is a low-density area of homes beyond the suburbs, with few jobs of its own.",
      "The central business district of the metro area is downtown Washington, D.C.",
-     "Right: offices and malls at the edge of the metro area, along highways, with more jobs than residents.",
      "A squatter settlement is housing built without legal title, usually at the edge of a city in a periphery country.",
+     "Right: offices and malls at the edge of the metro area, along highways, with more jobs than residents.",
      "A primate city is a country's largest city, far larger than the next; Tysons is part of one metro area."
     ]
    }
@@ -641,18 +641,18 @@
    "q": "In invented Country K, one worker can make 20 shirts or 4 phones in a day. In invented Country L, one worker can make 30 shirts or 10 phones. Which country has the comparative advantage in shirts?",
    "options": [
     "Country L, because its workers make more shirts",
-    "Country K, because each shirt costs it fewer phones",
     "Neither, because Country L makes more of both goods",
+    "Country K, because each shirt costs it fewer phones",
     "Country L, because each shirt costs it fewer phones",
     "Both equally, because each makes two goods"
    ],
-   "correct": 1,
+   "correct": 2,
    "why": {
     "correct": "Comparative advantage goes to the country that gives up less to make a good. A shirt costs Country K 4 / 20 = 0.2 phones and Country L 10 / 30, about 0.33 phones, so K has the comparative advantage in shirts.",
     "options": [
      "Making more shirts is an absolute advantage; comparative advantage compares what each country gives up.",
-     "Right: a shirt costs K 0.2 phones and L about 0.33 phones.",
      "L has the absolute advantage in both, but each country still has a comparative advantage in one good.",
+     "Right: a shirt costs K 0.2 phones and L about 0.33 phones.",
      "The costs are the other way: each shirt costs L about 0.33 phones and K only 0.2.",
      "Making two goods does not make the costs equal: 0.2 and 0.33 phones a shirt differ."
     ]

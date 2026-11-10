@@ -1,0 +1,535 @@
+{
+ "about": "\"Make it specific\" prompts for unit-7 (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "unit-7",
+   "id": "u7-describe-manchester",
+   "topic": "industrial-revolution",
+   "practice": "2.A",
+   "skill": "describe",
+   "title": "Describing an industrial city",
+   "context": "",
+   "prompt": "<b>Describe</b> Manchester, England, as an industrial city of the early 1800s.",
+   "checklist": [
+    "Names the industry and its power source",
+    "Says how the city grew and who moved there",
+    "Describes conditions, more than a label"
+   ],
+   "earns": {
+    "answer": "In the early 1800s, Manchester, England, filled with steam-powered cotton mills; workers moved in from farms, the city grew fast, and its crowded housing and smoky air made it a symbol of the new industrial city.",
+    "why": "It names the industry, growth and conditions."
+   },
+   "misses": {
+    "answer": "Manchester was an industrial city in England.",
+    "why": "A label with nothing about what the city was like."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Industry",
+      "options": [
+       "steam-powered cotton mills",
+       "car factories",
+       "software firms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cars came about a century later.",
+       "2": "Software came much later."
+      }
+     },
+     "pattern": {
+      "label": "Growth",
+      "options": [
+       "workers moved in from farms",
+       "people moved out to farms",
+       "the city stayed small"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Workers came to the mills.",
+       "2": "Manchester grew fast."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-explain-pittsburgh",
+   "topic": "economic-sectors",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "From steel to services in Pittsburgh",
+   "context": "",
+   "prompt": "<b>Explain</b> why Pittsburgh's economy shifted from steel to health care and education after the 1980s.",
+   "checklist": [
+    "Names why the steel mills closed",
+    "Links that to the loss of secondary jobs",
+    "Says which sectors replaced them"
+   ],
+   "earns": {
+    "answer": "Many of Pittsburgh's steel mills closed in the 1980s as cheaper steel came from abroad and from newer mills, so the city lost much of its secondary sector, and hospitals and universities, such as the University of Pittsburgh's medical center, became its largest employers.",
+    "why": "It names the cause, the loss and the replacement, linked."
+   },
+   "misses": {
+    "answer": "Pittsburgh used to make steel and now has hospitals.",
+    "why": "It states the before and after but never says why it changed."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Why mills closed",
+      "options": [
+       "cheaper steel from abroad and newer mills",
+       "the city ran out of rivers",
+       "steel was banned"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Pittsburgh still has its rivers.",
+       "2": "Steel was never banned."
+      }
+     },
+     "effect": {
+      "label": "What replaced them",
+      "options": [
+       "hospitals and universities",
+       "coal mines",
+       "farms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Coal is primary, not the growth sector.",
+       "2": "Pittsburgh is urban; services grew."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-compare-gni-hdi",
+   "topic": "development-measures",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "GNI per capita and HDI",
+   "context": "",
+   "prompt": "<b>Compare</b> GNI per capita and the Human Development Index as measures of development.",
+   "checklist": [
+    "Says what each measure counts",
+    "Says how the two measures differ",
+    "Says what that difference allows: similar income, different HDI"
+   ],
+   "earns": {
+    "answer": "GNI per capita measures only income per person, whereas the HDI combines income with health (life expectancy) and education (years of schooling), so two countries with similar incomes can have quite different HDI values.",
+    "why": "It names what each measures and what the difference means."
+   },
+   "misses": {
+    "answer": "The HDI is a better measure of development than GNI.",
+    "why": "A verdict without saying what either one measures."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "GNI per capita",
+      "options": [
+       "income per person",
+       "health and education",
+       "the size of the economy alone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Those are parts of the HDI.",
+       "2": "Per capita divides by people."
+      }
+     },
+     "sideB": {
+      "label": "HDI",
+      "options": [
+       "income, health and education",
+       "income alone",
+       "population size"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The HDI adds health and education.",
+       "2": "Population is not part of the HDI."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-degree-microloans",
+   "topic": "women-development",
+   "practice": "1.D",
+   "skill": "degree",
+   "title": "Do microloans raise women's incomes?",
+   "context": "",
+   "prompt": "<b>Explain</b> the degree to which microloans raise women's incomes.",
+   "checklist": [
+    "States the degree first: to a limited degree, for example",
+    "Names a real program with its date",
+    "Uses research results on both sides"
+   ],
+   "earns": {
+    "answer": "To a limited degree: Bangladesh's Grameen Bank, founded in 1983, lent small sums mostly to women to start businesses, and many repaid and earned income, but studies of microloans in several countries found only modest average gains in income, so they help some women without lifting most out of poverty.",
+    "why": "It states the degree and backs it with a program and evidence on both sides."
+   },
+   "misses": {
+    "answer": "Microloans help women start businesses in Bangladesh.",
+    "why": "No degree stated, and only one side of the evidence."
+   },
+   "specific": {
+    "slots": {
+     "degree": {
+      "label": "Degree",
+      "options": [
+       "to a limited degree",
+       "completely",
+       "not at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Studies found modest gains, not complete change.",
+       "2": "Many borrowers did earn income."
+      }
+     },
+     "evidence": {
+      "label": "Evidence",
+      "options": [
+       "modest average gains in studies",
+       "every borrower left poverty",
+       "no borrower repaid"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Studies found modest average gains.",
+       "2": "Many borrowers repaid."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-place-shenzhen",
+   "topic": "world-economy-changes",
+   "practice": "2.B",
+   "skill": "place",
+   "title": "Naming a place: a special economic zone",
+   "context": "<p>A student writes: \"Some countries made zones to attract foreign factories.\"</p>",
+   "prompt": "<b>Rewrite</b> the claim with a real place, its year and what happened.",
+   "checklist": [
+    "Names a real zone and its year",
+    "Says what the zone offered",
+    "Gives the result for the place"
+   ],
+   "earns": {
+    "answer": "Shenzhen, China, became a special economic zone in 1980, with low taxes and fewer rules for foreign firms, and it grew from a small town into a city of millions making electronics for export.",
+    "why": "It names the place, year, terms and result."
+   },
+   "misses": {
+    "answer": "China made special zones for factories to attract companies.",
+    "why": "No named zone, no year and no result, so a reader cannot check it."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Shenzhen, China, 1980",
+       "Asia",
+       "a coastal city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A continent, not a zone.",
+       "2": "That names no place."
+      }
+     },
+     "kind": {
+      "label": "What it offered",
+      "options": [
+       "low taxes and fewer rules for foreign firms",
+       "higher taxes on exports",
+       "a ban on foreign firms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Zones lower costs to attract firms.",
+       "2": "The point was to attract foreign firms."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-scale-ecotourism",
+   "topic": "sustainable-development",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "Ecotourism at two scales",
+   "context": "",
+   "prompt": "<b>Explain</b> how ecotourism in Costa Rica connects the global and local scales.",
+   "checklist": [
+    "Names the global scale: tourists from many countries",
+    "Names the local scale: a named village or park",
+    "Explains the link: income from protecting forest"
+   ],
+   "earns": {
+    "answer": "At the global scale, tourists from many countries travel to Costa Rica to see its rainforests, and at the local scale, towns near parks such as Monteverde earn income from guiding and lodging, so protecting the forest pays locally.",
+    "why": "It names both scales with places and links them."
+   },
+   "misses": {
+    "answer": "Tourists visit Costa Rica's rainforests every year to see wildlife.",
+    "why": "It names no scale of analysis and no local place that gains."
+   },
+   "specific": {
+    "slots": {
+     "scale": {
+      "label": "Global scale",
+      "options": [
+       "tourists from many countries",
+       "one family's farm",
+       "Costa Rica's capital alone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the local scale.",
+       "2": "A city is not the global scale."
+      }
+     },
+     "place": {
+      "label": "Local scale",
+      "options": [
+       "towns near Monteverde",
+       "the whole world",
+       "every country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the global scale.",
+       "2": "Too broad to be local."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-model-rostow",
+   "topic": "development-theories",
+   "practice": "1.E",
+   "skill": "model",
+   "title": "How well Rostow fits",
+   "context": "",
+   "prompt": "<b>Explain</b> how well Rostow's stages of economic growth fit South Korea, and give one limit of the model.",
+   "checklist": [
+    "Names the stage South Korea's growth is often read as",
+    "Says why South Korea's growth fits that stage",
+    "Gives a limit of the model"
+   ],
+   "earns": {
+    "answer": "Rostow's model fits South Korea fairly well, because its fast growth in factory exports from the 1960s is often read as a take-off; but the model assumes every country can follow Britain's path on its own, so it ignores how colonial ties and the world economy shape a country's chances.",
+    "why": "It applies the model to a named case with a date, and gives a limit."
+   },
+   "misses": {
+    "answer": "Rostow's model says countries go through five stages.",
+    "why": "A description of the model, not how it fits a case or where it fails."
+   },
+   "specific": {
+    "slots": {
+     "model": {
+      "label": "Stage",
+      "options": [
+       "take-off, from the 1960s",
+       "traditional society",
+       "high mass consumption in the 1700s"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "South Korea industrialized fast from the 1960s.",
+       "2": "Mass consumption came much later."
+      }
+     },
+     "limit": {
+      "label": "Limit",
+      "options": [
+       "it assumes one path for all countries",
+       "it has too many stages",
+       "it is about birth rates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The number of stages is not the main criticism.",
+       "2": "That is the demographic transition model."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-limit-gdp",
+   "topic": "development-measures",
+   "practice": "4.F",
+   "skill": "limitation",
+   "title": "What GDP misses",
+   "context": "",
+   "prompt": "<b>Explain</b> one limitation of GDP as a measure of development, using a named city.",
+   "checklist": [
+    "Names what GDP leaves out: informal and unpaid work",
+    "Gives a real city as an example",
+    "Says which way GDP is off"
+   ],
+   "earns": {
+    "answer": "GDP counts only recorded market activity, so the informal work of street vendors in cities such as Lagos, Nigeria, and unpaid work at home are left out, and the figure can understate how much a country produces.",
+    "why": "It names the gap, a city and the direction of the error."
+   },
+   "misses": {
+    "answer": "GDP does not measure how happy people are in a country.",
+    "why": "True but not about what GDP counts; the point is the work it misses."
+   },
+   "specific": {
+    "slots": {
+     "limit": {
+      "label": "What it misses",
+      "options": [
+       "informal and unpaid work",
+       "factory output",
+       "government spending"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Factory output is counted.",
+       "2": "Government spending is counted."
+      }
+     },
+     "place": {
+      "label": "Example",
+      "options": [
+       "street vendors in Lagos",
+       "a car plant in Japan",
+       "a bank in London"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Formal factory work is counted.",
+       "2": "Formal banking is counted."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-legend-income-groups",
+   "topic": "development-measures",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading an income-group map legend",
+   "context": "<p>A world map shades countries by World Bank FY27 income group (July 2026 to June 2027), based on 2025 GNI per person (Atlas method): low (up to $1,175), lower-middle ($1,176 to $4,635), upper-middle ($4,636 to $14,375) and high (over $14,375).</p>",
+   "prompt": "<b>Explain</b> what a country's shade tells you, and what it does not.",
+   "checklist": [
+    "Reads a class with its range and year",
+    "Says what the shade measures: average income",
+    "Says what it leaves out: how income is shared, health, schooling"
+   ],
+   "earns": {
+    "answer": "A country shaded upper-middle income had a 2025 GNI per person between $4,636 and $14,375, the World Bank's FY27 thresholds, so it sits in that band of average income; the shade says nothing about how income is shared or about health and schooling.",
+    "why": "It reads a class with its range and year, and names what the shade leaves out."
+   },
+   "misses": {
+    "answer": "Dark countries are rich and light countries are poor.",
+    "why": "It reads no class or year and says nothing of what the shade leaves out."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "Upper-middle income",
+      "options": [
+       "2025 GNI per person of $4,636 to $14,375",
+       "over $14,375",
+       "under $1,175"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the high-income class.",
+       "2": "That is the low-income class."
+      }
+     },
+     "limit": {
+      "label": "What it leaves out",
+      "options": [
+       "how income is shared, health and schooling",
+       "average income",
+       "the year of the data"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Average income is what it shows.",
+       "2": "The legend gives the year."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-explain-outsourcing",
+   "topic": "world-economy-changes",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Why service work moved to Bengaluru",
+   "context": "",
+   "prompt": "<b>Explain</b> why many companies outsourced customer service and software work to Bengaluru, India, from the 1990s.",
+   "checklist": [
+    "Names at least two reasons: English speakers and lower wages",
+    "Names the technology that cut the cost of distance",
+    "Links the reasons to the companies' decision"
+   ],
+   "earns": {
+    "answer": "Many people in India speak English and wages there were lower than in the United States, and fast internet and phone links cut the cost of distance, so companies could move customer service and software work to cities such as Bengaluru and save money.",
+    "why": "It names the reasons and links them to the decision."
+   },
+   "misses": {
+    "answer": "Bengaluru has a lot of technology companies and call centers.",
+    "why": "It states a fact but never explains why the work moved there."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Reasons",
+      "options": [
+       "English speakers and lower wages",
+       "a cold climate",
+       "no internet links"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Climate was not the reason.",
+       "2": "Fast internet links made it possible."
+      }
+     },
+     "link": {
+      "label": "Link",
+      "options": [
+       "so companies could save money",
+       "so wages rose in the United States",
+       "so the work stopped"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Outsourcing was about lowering costs.",
+       "2": "The work moved; it did not stop."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

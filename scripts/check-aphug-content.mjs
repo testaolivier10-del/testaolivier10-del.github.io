@@ -37,7 +37,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, loadBases, ALLOWED_LICENSES, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/aphug-build.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER } from './lib/aphug-exams.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, checkFifth, checkReads, servedForm, keyRisks, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, MCQ_OPTIONS as EXAM_OPTIONS } from './lib/aphug-exams.mjs';
 import { scanPage, indexMap } from './lib/aphug-map.mjs';
 import { Tex, Plot, Grade, Calc, HugMap, Model } from './lib/aphug-mathlib.mjs';
 const BASES = loadBases();
@@ -215,6 +215,24 @@ export function lengthTell(items) {
   return longest / singles.length > LONGEST_MAX + 1e-9 ? `the correct option is the longest in ${longest} of ${singles.length} single-answer items (at most 40%): even out the option lengths` : null;
 }
 
+/* Per topic, for the exam-only items and for each form as served: the key's
+   position in the authored order is balanced, like its length. The page
+   shuffles options, but print, the review and a fixed item show them as
+   written, so no position holds the key in more than 40% of the
+   single-answer items, and once there are at least two items per position
+   every position holds it at least once. Fixed items are left out. */
+export const KEY_POS_MAX = 0.4;
+export function keyPositionTell(items) {
+  const singles = items.filter(q => q.type === 'single' && !q.fixed && (q.options || []).length >= 3 && Number.isInteger(q.correct));
+  if (singles.length < 5) return null;
+  const n = Math.min(...singles.map(q => q.options.length)), count = Array(Math.max(...singles.map(q => q.options.length))).fill(0);
+  for (const q of singles) count[q.correct]++;
+  const top = Math.max(...count), at = count.indexOf(top);
+  if (top / singles.length > KEY_POS_MAX + 1e-9) return `the key is option ${at + 1} in ${top} of ${singles.length} single-answer items (at most 40%): rotate options with their explanations (counts ${count.join(', ')})`;
+  if (singles.length >= 2 * n) { const never = count.slice(0, n).findIndex(c => c === 0); if (never > -1) return `the key is never option ${never + 1} in ${singles.length} single-answer items: rotate options with their explanations (counts ${count.join(', ')})`; }
+  return null;
+}
+
 export function checkStimulus(sid, s, figures, err) {
   const w = `stimulus ${sid}`;
   if (!STIM_KINDS.includes(s.kind)) err(`${w}: kind must be ${STIM_KINDS.join(', ')} (the set kinds: a map, data, an image, a text)`);
@@ -331,7 +349,7 @@ export function specificProblems(S) {
   return out;
 }
 
-export function checkItem(q, { topic, map, stimuli, err, idRe }) {
+export function checkItem(q, { topic, map, stimuli, err, idRe, nOptions }) {
   const w = `item ${q.id || '(no id)'}`;
   if (!q.id || !(idRe || new RegExp(`^hug-${topic.id}-\\d+$`)).test(q.id)) err(`${w}: id must be ${idRe ? 'hug-exam-<form>-<nn>' : `hug-${topic.id}-<n>`}`);
   if (!TYPES.includes(q.type)) err(`${w}: type must be one of ${TYPES.join(', ')}`);
@@ -358,7 +376,8 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
   } else {
     const n = (q.options || []).length;
     const min = q.type === 'order' ? 3 : 2;
-    if (q.type === 'single' && n !== MCQ_OPTIONS) err(`${w}: a single-answer item has exactly ${MCQ_OPTIONS} options, as on the exam`);
+    const nOpt = nOptions || MCQ_OPTIONS;
+    if (q.type === 'single' && n !== nOpt) err(`${w}: a single-answer item has exactly ${nOpt} options${nOptions ? ' (an exam-only question, as on the exam)' : ' (the practice bank; a practice exam adds a fifth)'}`);
     if (n < min) err(`${w}: needs at least ${min} options`);
     if (n > 6) err(`${w}: at most 6 options`);
     if (new Set((q.options || []).map(o => strip(o).trim().toLowerCase())).size !== n) err(`${w}: duplicate options`);
@@ -745,15 +764,15 @@ if (isMain) {
     for (const q of ex.items) {
       const topic = map.topicById(q.topic);
       if (!topic) { bad2(`${q.id}: unknown topic "${q.topic}"`); continue; }
-      if (q.type !== 'single') bad2(`${q.id}: exam-only items are four-option single-answer questions`);
-      checkItem(q, { topic, map, stimuli: ex.stimuli, err: bad2, idRe: /^hug-exam-\d+-\d{2}$/ });
+      if (q.type !== 'single') bad2(`${q.id}: exam-only items are ${EXAM_OPTIONS.form}-option single-answer questions`);
+      checkItem(q, { topic, map, stimuli: ex.stimuli, err: bad2, idRe: /^hug-exam-\d+-\d{2}$/, nOptions: EXAM_OPTIONS.form });
       // The ordering rule: a full practice exam is taken after the whole course,
       // so nothing outside the course's terms (scanned from its last topic).
       const last = map.topics.filter(t => t.chapter.startsWith('unit-')).pop();
       for (const p of scanPage(map, `<p>${textOfItem(q)}</p>`, last.id)) bad2(`${q.id}: ORDER: ${p}`);
       for (const p of trademarkProblems(textOfItem(q))) bad2(`${q.id}: trademark: ${p}`);
     }
-    if (ex.items.length) { const lt = lengthTell(ex.items); if (lt) bad2(`exam-only items: ${lt}`); }
+    if (ex.items.length) { const lt = lengthTell(ex.items); if (lt) bad2(`exam-only items: ${lt}`); const kp = keyPositionTell(ex.items); if (kp) bad2(`exam-only items: ${kp}`); }
     for (const e of [...testWise(ex.items), ...duplicates([...allItems, ...ex.items.map(q => ({ ...q, topic: `exam:${q.topic}` }))]).filter(e => /hug-exam-/.test(e))]) bad2(e);
     const frqs = {};
     for (const f of exists(frqDir) ? readdirSync(frqDir).filter(f => f.endsWith('.json')) : []) { const d = readJson(join(frqDir, f)); frqs[d.id] = d; }
@@ -764,18 +783,32 @@ if (isMain) {
     for (const t of map.topics) { const p = join(DATA, 'lessons', `${t.id}.json`); if (exists(p)) for (const id of readJson(p).check || []) lessonChecks.add(id); }
     for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: stimOf, lessonChecks })) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
-    // Spec section 7: 40+ prompts, 6 to 9 per unit and in the research skills
-    // chapter (JUSTIFY_PER_CHAPTER).
-    if (prompts.length < 40) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 40`);
-    for (const u of map.chapters) { const n = prompts.filter(p => p.unit === u.id).length, [lo, hi] = JUSTIFY_PER_CHAPTER; if (n < lo || n > hi) bad2(`${u.id} has ${n} "Make it specific" prompts (${lo} to ${hi})`); }
+    for (const p of prompts) for (const t of [p.title, p.context, p.prompt, ...(p.checklist || []), p.earns?.answer, p.earns?.why, p.misses?.answer, p.misses?.why]) for (const m of [...languageProblems(t), ...datedProblems(t), ...modelProblems(t, { item: true }), ...mathProblems(t)]) bad2(`justify ${p.id}: ${m}`);
+    // About ten per unit and three in the skills chapter (JUSTIFY_PER_CHAPTER,
+    // JUSTIFY_PER_SKILLS_CHAPTER), every skill practised.
+    if (prompts.length && prompts.length < 60) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 60`);
+    for (const u of prompts.length ? map.chapters : []) { const n = prompts.filter(p => p.unit === u.id).length, [lo, hi] = u.part === 'course' ? JUSTIFY_PER_CHAPTER : JUSTIFY_PER_SKILLS_CHAPTER; if (n < lo || n > hi) bad2(`${u.id} has ${n} "Make it specific" prompts (${lo} to ${hi})`); }
     for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no "Make it specific" prompt practises "${k}"`);
-    // Each form: mostly bank items that are not lesson-check items (those are on
-    // the free lessons), plus 12-14 exam-only items of its own.
-    for (const f of ex.forms) {
-      const ids = (f.mcq || []).flat(), own = ids.filter(id => examItems.has(id)).length;
-      if (own < 20 || own > 30) bad2(`${f.id}: ${own} exam-only items (20 to 30)`);
-      for (const id of ids.filter(id => lessonChecks.has(id))) bad2(`${f.id}: ${id} is a lesson check item; use one a student has not met on a free lesson`);
+    // Each form: bank items that are not lesson-check items (those are on the
+    // free lessons), plus exam-only items of its own (EXAM_ONLY, in checkForms).
+    for (const f of ex.forms) for (const id of (f.mcq || []).flat().filter(id => lessonChecks.has(id))) bad2(`${f.id}: ${id} is a lesson check item; use one a student has not met on a free lesson`);
+    // The fifth options, as authored text and as served.
+    for (const e of checkFifth(ex.forms, { bank })) bad2(e);
+    for (const f of ex.forms) for (const [id, x] of Object.entries(f.fifth || {})) for (const t of [x.text, x.why]) {
+      for (const m of [...mathProblems(t), ...excludedProblems(t), ...languageProblems(t), ...datedProblems(t), ...modelProblems(t, { item: true }), ...trademarkProblems(t)]) bad2(`${f.id}: fifth option for ${id}: ${m}`);
+      const m = strip(t).match(POS_RE); if (m) bad2(`${f.id}: fifth option for ${id}: says "${m[0]}"; options are shuffled`);
     }
+    // Each form as a student meets it: the length tell, the key's position,
+    // the test-wise limits (absolute words in distractors), and no key that
+    // hinges on a disputed place or a figure that goes stale.
+    for (const f of ex.forms) {
+      const qs = servedForm(f, { bank, examItems });
+      const lt = lengthTell(qs); if (lt) bad2(`${f.id} as served: ${lt}`);
+      const kp = keyPositionTell(qs); if (kp) bad2(`${f.id} as served: ${kp}`);
+      for (const e of testWise(qs)) bad2(`${f.id} as served: ${e}`);
+      for (const q of qs) for (const e of keyRisks(q, stimOf(q.stimulus))) bad2(`${f.id}: ${e}`);
+    }
+    for (const e of checkReads(examItems, ex.stimuli)) bad2(e);
     for (const q of ex.items) if (!ex.forms.some(f => (f.mcq || []).flat().includes(q.id))) bad2(`${q.id}: an exam-only item in no form`);
     for (const e of checkNumbers(examItems, prompts)) bad2(e);
     console.log(`AP Human Geography exams: ${ex.forms.length} practice exams, ${ex.items.length} exam-only items, ${prompts.length} "Make it specific" prompts, ${examFails} failing.`);

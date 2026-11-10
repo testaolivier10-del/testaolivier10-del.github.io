@@ -497,3 +497,6 @@ button.hug-fc-face:hover{border-color:var(--accent);}
 .hug-fq-numchk p{margin:0;}
 .hug-fq-numchk p.is-right{color:var(--good-text, var(--ink));font-weight:700;}
 .hug-fq-numchk p.is-wrong{color:var(--bad-text, var(--ink));font-weight:700;}
+/* Exam results: the two sections apart, each with its weight (spec decision 5). */
+.hug-ex-sections{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0;}
+.hug-ex-sections p{margin:0;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--white);line-height:1.5;}
