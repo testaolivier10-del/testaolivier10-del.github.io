@@ -611,9 +611,8 @@
     },
     aphug: {
       name: 'AP® Human Geography',
-      // Registered hidden in Phase 0 (docs/aphug-spec.md): nothing locked and
-      // nothing sold until the launch steps turn onSale on.
-      onSale: false,
+      // On sale since 2026-11-10 (docs/aphug-spec.md section 9): Polar product
+      // hug-2027, Worker POLAR_PRODUCTS set.
       dailyFree: 15,
       // The free tier (docs/aphug-spec.md decision 6): the "Skills you need"
       // chapter, Unit 1 and the lessons 2.1 to 2.5 (topic.free from

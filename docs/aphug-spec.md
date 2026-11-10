@@ -109,7 +109,7 @@ before registration so the course lists and the SQL migration (`2026-11j-aphug.s
 | 2 | Trainers (section 6) | |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, models page, cram kit | **done 2026-11-09** (section 5b, decision 10; `docs/aphug-reviews/phase3.md`) |
 | 4 | Independent accuracy checks per unit, tools and exams, plus one neutrality and currency pass over everything | **done 2026-11-09** (`docs/aphug-reviews/u1.md`-`u7.md`, `tools.md`, `exams.md`, `originality.md`) |
-| Launch | Publish, generators (paths included), continuity pass, course-count wording (count `assets/courses.js`), full CI with browser checks, PR, launch steps | **done 2026-11-10** (decision 11; `docs/aphug-reviews/launch.md`); PR and merge by the lead after AP® Microeconomics |
+| Launch | Publish, generators (paths included), continuity pass, course-count wording (count `assets/courses.js`), full CI with browser checks, PR, launch steps | **done 2026-11-10** (decisions 11 and 12; `docs/aphug-reviews/launch.md`); Premium on sale; PR and merge by the lead after AP® Microeconomics |
 
 ### 5b. Phase 3 as built (2026-11-09)
 
@@ -280,8 +280,16 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
     gold pin, from one source for cover, thumb and band art; the icon is the common globe sign; the hub's course
     names take their accent color (Precalculus, Calculus BC, Macro, Micro and Human Geography had none). `aphug` in
     the FRQ grader's `FRQ_COURSES` with conventions, a calibration example and four eval cases (still shipped off).
-    SQL `2026-11j-aphug.sql` lists every course, apmicro included, not applied. `onSale: false` stays until the
+    SQL `2026-11j-aphug.sql` lists every course, apmicro included, not applied. `onSale: false` stayed until the
     owner checklist below.
+
+12. (2026-11-10, launch) **Premium on sale.** The owner asked for the course to go live with Premium on sale.
+    Polar product "AP® Human Geography Premium (through June 30, 2027)", one-time $25, id
+    `b113bad7-2656-4d3f-a9c4-ae3ffa0ee25e` (the Founding member discount has no product list, so it applies);
+    `"hug-2027"` in the Worker's `POLAR_PRODUCTS` (deployed, checked after reload; both by the lead). `onSale: false`
+    removed from `COURSES.aphug` (`assets/premium.js`), `sw.js` v120. The lead applies `2026-11j-aphug.sql` (after
+    `2026-11i-apmicro.sql`) and grants owner access at merge. AP® Microeconomics' own pass is left as it is on this
+    branch (its branch handles it).
 
 ## 9. Open items for the owner
 
@@ -291,14 +299,16 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
 - The rest is in `docs/aphug-needs-author.md` (teacher questions: `ced-text`, `mcq-options`, `mcq-sets`,
   `scale-words` as settled, `tools-facts`, the fifth options, contested-topic prompts).
 
-**Launch checklist (owner), to put AP® Human Geography Premium on sale** (as AP® Macroeconomics, its spec section 9):
-- [ ] Apply migration `scripts/sql/migrations/2026-11j-aphug.sql` in Supabase (after `2026-11i-apmicro.sql`): adds
+**Launch checklist (owner), to put AP® Human Geography Premium on sale** (on sale since 2026-11-10, decision 12;
+the migration and grant are left for the lead at merge) (as AP® Macroeconomics, its spec section 9):
+- [ ] (lead, at merge) Apply migration `scripts/sql/migrations/2026-11j-aphug.sql` in Supabase (after `2026-11i-apmicro.sql`): adds
       `aphug` to the three course checks and the nine functions with a course list. Check the live function bodies
       match `2026-11i-apmicro.sql` first. Then grant owner access (`grant`, as for the other courses).
-- [ ] Create the Polar product "AP® Human Geography Premium (through June 30, 2027)", one-time, at the AP® price
-      ($25), with the Founding member discount (it has no product list, so it covers every product).
-- [ ] Add `"hug-2027": "<Polar product id>"` to `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask settings; deploy;
+- [x] Create the Polar product "AP® Human Geography Premium (through June 30, 2027)", one-time, at the AP® price
+      ($25), with the Founding member discount (it has no product list, so it covers every product). Done 2026-11-10:
+      id `b113bad7-2656-4d3f-a9c4-ae3ffa0ee25e`.
+- [x] Add `"hug-2027": "<Polar product id>"` to `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask settings; deploy;
       `keep_vars = true` keeps it on the merge deploy).
-- [ ] Remove `onSale: false` from `COURSES.aphug` in `assets/premium.js`; bump `sw.js`.
+- [x] Remove `onSale: false` from `COURSES.aphug` in `assets/premium.js`; bump `sw.js` (v120, decision 12).
 - [ ] Merge the PR (the lead opens it after AP® Microeconomics merges, merging main in first).
 - [ ] Optional: an AP® Human Geography teacher reviews the course (the "not yet reviewed" note stays until then).

@@ -324,7 +324,8 @@ for its own. Free, indexable once the course is.
 
 ## Registration
 
-Registered hidden in Phase 0 (2026-11-09), Premium `onSale: false` until the launch steps. Hidden means: no hub
+Registered hidden in Phase 0 (2026-11-09), Premium `onSale: false` until the launch steps (published and live, and
+Premium on sale, at launch 2026-11-10: spec decisions 11 and 12). Hidden means: no hub
 card, 404 card, premium.html entry, search scope or sitemap entry; the generated course lists include it. Files:
 `assets/courses.js` (key `aphug`, order 15, short "Human Geography", aliases `human-geography`, `geography`,
 `humangeo`, `hug`, status `hidden`) and the generated blocks (`node scripts/build-courses.mjs`); `assets/premium.js`
