@@ -41,14 +41,8 @@
   });
 
   /* ---------------------------------------------- the demand curve alone */
-  /* ApMicroGraph's sd graph with S, the S label and the starting
-     equilibrium's dot, guides and marks taken out. */
-  function demandSvg(shifts, label){
-    var svg = G.svg({ kind: 'sd' }, { shifts: shifts || {} }, { label: label });
-    return svg.replace(/<g class="mic-gr-c" data-curve="S">[\s\S]*?<\/g><text class="mic-gr-clabel[^"]*"[\s\S]*?<\/text>/, '')
-      .replace(/<path class="mic-gr-guide is-old"[^>]*\/>/g, '').replace(/<circle class="mic-gr-eq is-old"[^>]*\/>/g, '')
-      .replace(/<text class="mic-gr-mark is-old"[\s\S]*?<\/text>/g, '');
-  }
+  /* ApMicroGraph's demand kind: D alone (integration T3-3). */
+  function demandSvg(shifts, label){ return G.svg({ kind: 'demand' }, { shifts: shifts || {} }, { label: label }); }
   function inject(svg, extra){ return svg.replace('</svg>', extra + '</svg>'); }
   function sub(a, s){ return esc(a) + '<tspan class="mic-gr-sub" dy="3">' + esc(s) + '</tspan>'; }
   function xmark(x, t, cls){ return '<text class="mic-gr-mark ' + (cls || '') + '" x="' + f1(px(x)) + '" y="' + (G.BOX.T + G.BOX.PH + 13) + '" text-anchor="middle">' + t + '</text>'; }
@@ -77,7 +71,9 @@
     });
     return out.join('');
   }
-  /* Spread axis marks that would touch (the engine centers each on its value). */
+  /* Spread axis marks that would touch. These marks ($ and Q values for A, B
+     and the intercepts) are drawn by this tool, not the engine, so the
+     engine's own mark spreading (integration T3-1) does not reach them. */
   function spreadMarks(root){
     Array.prototype.forEach.call(root.querySelectorAll('svg.mic-graph-svg'), function(svg){
       var ms = Array.prototype.slice.call(svg.querySelectorAll('text.mic-gr-mark')).map(function(t){ var b; try{ b = t.getBBox(); }catch(e){} return { t: t, b: b, a: t.getAttribute('text-anchor') }; }).filter(function(o){ return o.b && o.b.width; });
@@ -147,8 +143,8 @@
         points: [{ at: [A.a.q, A.a.tr], label: 'A', cls: 'el-tra' }, { at: [A.b.q, A.b.tr], label: 'B', cls: 'el-trb' }, { at: [50, 500], open: true, label: 'Largest', cls: 'el-trm' }] };
       trEl.innerHTML = P ? P.svg(spec) : '';
       var trUp = A.b.tr > A.a.tr + 1e-9, trSame = Math.abs(A.b.tr - A.a.tr) < 1e-9;
-      read.innerHTML = '<span class="el-chip el-c-e">|Ed| <b>' + M.fixed(A.e, 2) + '</b> ' + w + '</span><span class="el-chip el-c-tr">TR <b>' + money(A.a.tr) + '</b> → <b>' + money(A.b.tr) + '</b></span>';
       spreadMarks(dEl);
+      read.innerHTML = '<span class="el-chip el-c-e">|Ed| <b>' + M.fixed(A.e, 2) + '</b> ' + w + '</span><span class="el-chip el-c-tr">TR <b>' + money(A.a.tr) + '</b> → <b>' + money(A.b.tr) + '</b></span>';
       var head = 'Price ' + money(A.a.p) + ' → ' + money(A.b.p) + ': quantity ' + n(A.a.q) + ' → ' + n(A.b.q) + '. |Ed| = ' + M.fixed(A.e, 2) + ', ' + w + '; total revenue ' + (trSame ? 'stays at ' + money(A.a.tr) : (trUp ? 'rises to ' : 'falls to ') + money(A.b.tr)) + '.';
       var body = [
         '%ΔQ = ' + E.signed(A.pq, 1) + '% and %ΔP = ' + E.signed(A.pp, 1) + '% (' + (st.mid ? 'midpoint method: each change over the average of the two values' : 'from the starting values at A') + '), so |Ed| = ' + M.fixed(Math.abs(A.pq), 1) + ' ÷ ' + M.fixed(Math.abs(A.pp), 1) + ' = ' + M.fixed(A.e, 2) + '.',
@@ -170,14 +166,8 @@
         '<path class="mic-gr-guide el-g1" d="M' + f1(px(x1)) + ' ' + f1(py(5)) + 'V' + f1(py(0)) + '"/>' + ymark(5, '$10', 'el-m1') +
         '<circle class="el-pt is-b" cx="' + f1(px(x1)) + '" cy="' + f1(py(5)) + '" r="5"/>' + xmark(x1, Math.abs(dx) > 1e-9 ? sub('Q', '1') : 'Q', 'el-m2');
       if(Math.abs(dx) > 1e-9) extra += '<path class="mic-gr-guide el-g1" d="M' + f1(px(x2)) + ' ' + f1(py(5)) + 'V' + f1(py(0)) + '"/><circle class="el-pt" cx="' + f1(px(x2)) + '" cy="' + f1(py(5)) + '" r="6"/>' + xmark(x2, sub('Q', '2'), 'el-m1');
-      // The curve labels and the shift arrow, placed here: the engine puts the
-      // old curve's label and its arrow in one spot for a shift under a step.
-      var right = dx >= 0, lab = function(at, t, s2, cls, side){ var yl = side > 0 ? 1.6 : 6.2, x = at - yl; return '<text class="mic-gr-clabel ' + cls + '" x="' + f1(px(x) + (side > 0 ? 7 : -7)) + '" y="' + f1(py(yl) + (side > 0 ? 3 : 12)) + '" text-anchor="' + (side > 0 ? 'start' : 'end') + '">' + esc(t) + (s2 ? '<tspan class="mic-gr-sub" dy="3">' + s2 + '</tspan>' : '') + '</text>'; };
-      var moved = Math.abs(dx) > 1e-9;
-      extra += moved ? lab(10, 'D', '1', 'is-old', right ? -1 : 1) + lab(10 + dx, 'D', '2', '', right ? 1 : -1) : lab(10, 'D', '', '', 1);
-      if(Math.abs(dx) >= 0.6){ var ay = py(5) - 12, xa = px(x1) + (right ? 4 : -4), xb = px(x2) + (right ? -4 : 4), hd = right ? -5 : 5;
-        extra += '<path class="mic-gr-arrow" d="M' + f1(xa) + ' ' + f1(ay) + 'H' + f1(xb) + 'M' + f1(xb + hd) + ' ' + f1(ay - 4) + 'L' + f1(xb) + ' ' + f1(ay) + 'L' + f1(xb + hd) + ' ' + f1(ay + 4) + '"/>'; }
-      var base = demandSvg(shifts, label).replace(/<text class="mic-gr-clabel[^"]*"[^>]*>[\s\S]*?<\/text>/g, '').replace(/<path class="mic-gr-arrow"[^>]*\/>/g, '');
+      // The curve labels (D1, D2) and the shift arrow are the engine's: an old label keeps clear of the arrow (integration T3-5).
+      var base = demandSvg(shifts, label);
       dEl.innerHTML = inject(base, extra);
       spreadMarks(dEl);
       var what = v === 'income' ? (k.e < 0 ? 'an inferior good' : k.e > 1 ? 'a normal good and a luxury' : 'a normal good and a necessity') : (k.e > 0 ? 'substitutes' : k.e < 0 ? 'complements' : 'unrelated goods');

@@ -80,7 +80,7 @@
   }
   function story(ctx, n, v){
     var K = KINDS[ctx.ext];
-    return '<p>' + ctx.story + ' Each ' + ctx.one + ' ' + (K.cost ? 'imposes an external cost' : 'gives an external benefit') + ' of ' + money(v.ext) + ' on ' + ctx.who + '. Without any policy, the market sells ' + v.Qm + ' ' + ctx.unit + '.</p>';
+    return '<p>' + ctx.story + ' Each ' + ctx.one + ' ' + (K.cost ? 'imposes an external cost' : 'gives an external benefit') + ' of ' + money(v.ext) + (K.cost ? ' on ' : ' to ') + ctx.who + '. Without any policy, the market sells ' + v.Qm + ' ' + ctx.unit + '.</p>';
   }
   var TYPE_OPTS = ['neg-prod', 'pos-prod', 'pos-cons', 'neg-cons'];
   function genQuantity(r, ctx){
@@ -117,8 +117,8 @@
     var n = pickNum(r, ctx), v = nums(ctx, ctx.ext, n), K = KINDS[ctx.ext], pol = TYPE_OPTS.map(function(t){ return KINDS[t].policy; });
     var opts = ['A per-unit tax on producers', 'A per-unit subsidy to producers', 'A per-unit subsidy to consumers', 'A per-unit tax on consumers'];
     var steps = [
-      { key: 'policy', kind: 'choice', practice: '2.B', label: 'Which policy moves the market to the efficient quantity?', options: opts, fixed: true, correct: pol.indexOf(K.policy),
-        why: opts.map(function(o, i){ var t = TYPE_OPTS[i]; return t === ctx.ext ? 'Right: it ' + (K.curve === 'S' ? 'shifts supply' : 'shifts demand') + ' ' + (K.dir < 0 ? 'left' : 'right') + ' until the private curve matches the social one.' : 'That ' + (KINDS[t].dir < 0 ? 'cuts' : 'raises') + ' the quantity' + (KINDS[t].dir === K.dir ? ', the right direction, but the externality is on the ' + (K.curve === 'S' ? 'producers’' : 'consumers’') + ' side; the usual answer taxes or subsidizes the side that causes it.' : ', the wrong way: the market already makes ' + (K.more ? 'too much' : 'too little') + '.'); }) },
+      { key: 'policy', kind: 'choice', practice: '2.B', label: 'Which policy, aimed at the side of the market that creates the externality, moves the market to the efficient quantity?', options: opts, fixed: true, correct: pol.indexOf(K.policy),
+        why: opts.map(function(o, i){ var t = TYPE_OPTS[i]; return t === ctx.ext ? 'Right: it ' + (K.curve === 'S' ? 'shifts supply' : 'shifts demand') + ' ' + (K.dir < 0 ? 'left' : 'right') + ' until the private curve matches the social one.' : 'That ' + (KINDS[t].dir < 0 ? 'cuts' : 'raises') + ' the quantity' + (KINDS[t].dir === K.dir ? ', the right direction (a per-unit ' + (K.cost ? 'tax' : 'subsidy') + ' of the same size on either side would reach the efficient quantity), but the question asks for the side that creates the externality: the ' + (K.curve === 'S' ? 'producers' : 'consumers') + '.' : ', the wrong way: the market already makes ' + (K.more ? 'too much' : 'too little') + '.'); }) },
       { key: 'amount', kind: 'num', practice: '3.A', label: 'How large should it be per unit?', unit: 'dollars', cell: cell(v.ext, [{ value: v.Pm, why: 'That is the market price. The corrective tax or subsidy equals the external ' + (K.cost ? 'cost' : 'benefit') + ' per unit.' }, { value: v.dwl, why: 'That is the deadweight loss. The corrective amount is the external ' + (K.cost ? 'cost' : 'benefit') + ' per unit, the vertical gap between the curves.' }, { value: v.ext / 2, why: 'Use the whole vertical gap between the private and social curves.' }]) },
       { key: 'shift', kind: 'graph', practice: '4.B', label: 'Show the policy on the graph.', spec: { kind: 'externality', ext: { type: ctx.ext, gap: n.gap }, do: ['shift'], key: { shifts: [{ curve: K.curve, dir: K.dir < 0 ? 'left' : 'right', steps: n.gap }], because: K.policy, outcome: { quantity: K.dir < 0 ? 'down' : 'up' } },
         slips: K.curve === 'S' ? { D: 'The policy is on producers: it moves supply (their marginal private cost), not demand.' } : { S: 'The policy is on consumers: it moves demand (their marginal private benefit), not supply.' } },

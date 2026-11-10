@@ -141,7 +141,7 @@
     for(var t = 0; t < 400; t++){
       var m = { a: r.pick([4, 6, 8, 10]), b: r.pick([1, 2, 3]), c: 10 * r.int(4, 8), d: r.pick([2, 3, 4, 5]), n: 8 };
       var res = monopsony(0, m);
-      if(res.hire < 2 || res.hire > 6 || res.comp <= res.hire || res.comp > 8 || m.c - m.d * 8 <= 0) continue;
+      if(res.hire < 2 || res.hire > 6 || res.comp <= res.hire || res.comp >= m.n || m.c - m.d * 8 <= 0) continue;
       var rows = res.rows, k = r.int(2, 6), mf = rows[k - 1].mfc, form = r() < 0.5 ? 'point' : 'shade';
       var steps = [
         { key: 'mfc', kind: 'num', practice: '3.A', label: 'What is the marginal factor cost (MFC) of worker ' + k + '?', cell: cell(mf, [{ value: rows[k - 1].w, why: 'That is the wage. A monopsonist must raise the wage for every worker to hire one more, so MFC = change in total labor cost: ' + money(rows[k - 1].tlc) + ' − ' + money(rows[k - 2].tlc) + '.' }, { value: rows[k - 1].tlc, why: 'That is the total labor cost. MFC is the change in it from one more worker.' }]), unit: 'dollars' },
@@ -161,7 +161,9 @@
     throw new Error('factor-lab: no monopsony table');
   }
   function genLeast(r, ctx){
-    var w = r.pick([10, 12, 15, 20, 25]), rr = r.pick([20, 30, 40, 50]), a = r.pick([0.5, 1, 1.5, 2, 2.5, 3, 4]), b;
+    // Whole-unit marginal products only (a worker adds 30 loaves, not 62.5): a x w is a whole number.
+    var w = r.pick([10, 12, 15, 20, 25]), rr = r.pick([20, 30, 40, 50]), a, b;
+    do { a = r.pick([0.5, 1, 1.5, 2, 2.5, 3, 4]); } while((a * w) % 1 !== 0);
     do { b = r.pick([0.5, 1, 1.5, 2, 2.5, 3, 4]); } while(r() < 0.25 ? false : b === a);
     var mpl = a * w, mpk = b * rr, lp = function(k){ return C().evaluate({ fn: 'leastCost', args: [mpl, w, mpk, rr], pick: k }); }, lc = { labor: lp('labor'), capital: lp('capital'), gap: lp('gap') }, gap = lc.gap;
     var pick = Math.abs(gap) < 1e-9 ? 2 : gap > 0 ? 0 : 1;

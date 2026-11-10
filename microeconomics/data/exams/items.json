@@ -1024,7 +1024,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "In (Open early, Open late), Marlo's gets 12 rather than 7 by switching, and Nessa's 9 rather than 6, so neither gains by switching alone. In (Open late, Open early) the same holds: 10 > 8 for Marlo's and 12 > 5 for Nessa's. Neither cafe has a dominant strategy, but there are two Nash equilibria.",
+    "correct": "In (Marlo's Early, Nessa's Late), Marlo's gets 12 rather than the 7 it would get by switching to Late, and Nessa's 9 rather than the 6 it would get by switching to Early, so neither gains by switching alone. In (Marlo's Late, Nessa's Early) the same holds: 10 > 8 for Marlo's and 12 > 5 for Nessa's. Neither cafe has a dominant strategy, but there are two Nash equilibria.",
     "options": [
      "That cell is a Nash equilibrium, but so is (early, late); the largest joint profit does not make a cell the only one.",
      "Right: in each, both cafes are playing a best response to the other.",

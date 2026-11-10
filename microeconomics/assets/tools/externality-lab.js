@@ -72,7 +72,7 @@
     }
     function graphs(){
       var A = XL.specA(type, gap, pol), B = XL.specB(type, gap, pol), st = XL.state(type, gap, pol);
-      A.pointLabel = pol ? ' ' : 'E*';
+      A.pointLabel = 'E*';   // shown beside E2 too: the engine keeps point labels clear of each other (integration 12)
       var eff = G.named(A, {}, 'efficient'), e1 = pol ? G.eq(A, G.fixedOffsets(A)) : null, k = K();
       // The shifted private curve is the private curve plus the policy: name it so (the engine would call it MPC2).
       var base = k.curve === 'S' ? 'S = MPC' : 'D = MPB', now = k.curve + (k.cost ? (k.curve === 'S' ? ' + tax' : ' \u2212 tax') : (k.curve === 'S' ? ' \u2212 subsidy' : ' + subsidy'));

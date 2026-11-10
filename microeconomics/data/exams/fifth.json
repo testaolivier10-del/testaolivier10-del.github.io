@@ -70,8 +70,8 @@
    "why": "No one set this price; it rose in the market and signals growers to plant more and buyers to use less."
   },
   "mic-disequilibrium-changes-15": {
-   "option": "The quantity of Y rises less than the quantity of X",
-   "why": "With very elastic supply, Y’s quantity rises more and its price less; inelastic supply sends X’s rise mostly into price."
+   "option": "The quantities of X and Y rise by the same amount",
+   "why": "Elastic supply lets Y's output rise a lot, while X's inelastic supply sends most of its demand increase into price, so the quantity of Y rises more."
   },
   "mic-government-intervention-23": {
    "option": "The price falls to the level of 600 tons on supply",
@@ -118,8 +118,8 @@
    "why": "With price at the lowest point of ATC, revenue covers every cost including fixed cost: zero economic profit, not a loss."
   },
   "mic-profit-maximization-5": {
-   "option": "\\$4, the price minus the average cost",
-   "why": "Average revenue is total revenue divided by quantity, which for a price taker is the price, \\$20."
+   "option": "\\$1.60, the price minus the average cost",
+   "why": "\\$20 - \\$18.40 = \\$1.60 is the profit per mug; average revenue is total revenue divided by quantity, \\$100 ÷ 5 = \\$20, the price."
   },
   "mic-firm-decisions-16": {
    "option": "It raises its price by the rent divided by output",
@@ -394,8 +394,8 @@
    "why": "With a negative production externality MSC is above MPC, and the market overproduces at too low a price."
   },
   "mic-public-goods-15": {
-   "option": "A public good once the tolls are removed",
-   "why": "With the toll gate in place the road is excludable and, uncrowded, nonrival: a club good."
+   "option": "A rival good, because each car uses up road space",
+   "why": "One more car slows no one, so the uncrowded road is nonrival; the toll gate makes it excludable: a club good."
   },
   "mic-intervention-structures-18": {
    "option": "It falls, because the subsidy raises its fixed cost",

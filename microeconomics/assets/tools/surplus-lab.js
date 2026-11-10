@@ -51,33 +51,7 @@
   }
 
 
-  /* The engine centers each axis mark on its value, so two close values
-     (QE and QSUB, QS1 and QS2) can touch. Spread the marks along each axis
-     until they clear each other by a few units (measured, after drawing).
-     Requested for mic-graph.js itself (docs/apmicro-reviews/self-t3.md). */
-  function spreadMarks(root){
-    if(!root) return;
-    Array.prototype.forEach.call(root.querySelectorAll('svg.mic-graph-svg'), function(svg){
-      var ms = Array.prototype.slice.call(svg.querySelectorAll('text.mic-gr-mark'));
-      if(ms.length < 2) return;
-      var boxes = ms.map(function(t){ var b; try{ b = t.getBBox(); }catch(e){ b = null; } return { t: t, b: b, a: t.getAttribute('text-anchor') }; }).filter(function(o){ return o.b && o.b.width; });
-      var X = boxes.filter(function(o){ return o.a === 'middle' || o.a === 'start' && o.b.y > 200; }), Y = boxes.filter(function(o){ return o.a === 'end' && o.b.y <= 240; });
-      // horizontal axis: left to right, each at least GAP from the last
-      X.sort(function(p, q){ return (p.b.x + p.b.width / 2) - (q.b.x + q.b.width / 2); });
-      var GAP = 3, end = -Infinity;
-      X.forEach(function(o){ var x0 = o.b.x; if(x0 < end + GAP){ var dx = end + GAP - x0; o.t.setAttribute('x', String(+o.t.getAttribute('x') + dx)); x0 += dx; } end = x0 + o.b.width; });
-      // vertical axis: top to bottom
-      Y.sort(function(p, q){ return p.b.y - q.b.y; });
-      var bot = -Infinity;
-      Y.forEach(function(o){ var y0 = o.b.y; if(y0 < bot + 1){ var dy = bot + 1 - y0; o.t.setAttribute('y', String(+o.t.getAttribute('y') + dy)); y0 += dy; } bot = y0 + o.b.height - 3; });
-    });
-  }
-  function watchMarks(el){
-    spreadMarks(el);
-    if(!window.MutationObserver) return;
-    var busy = false, mo = new MutationObserver(function(){ if(busy) return; busy = true; spreadMarks(el); setTimeout(function(){ busy = false; }, 0); });
-    mo.observe(el, { childList: true, subtree: true });
-  }
+  /* Axis marks close in value are spread by the engine itself (integration T3-1). */
 
   /* ------------------------------------------------------------ explore */
   var MKT = { sD: 0, sS: 0, kP: 2, kQ: 10 };
@@ -162,7 +136,6 @@
       var svg = G.svg(spec, { letters: true }, { label: label });
       gEl.innerHTML = paintCells(svg, part, focusCells, focusCls, outline);
       gEl.classList.toggle('sl-noletters', !st.letters);
-      spreadMarks(gEl);
       var chips = chipsFor(st.t, v);
       vals.innerHTML = chips.map(function(c){
         var name = c[0] === 'rev' ? revName(st.t) : AREA[c[0]], on = st.focus === c[0];
@@ -303,7 +276,6 @@
         f.appendChild(g);
         f.insertAdjacentHTML('beforeend', legendHtml(p.figure.legend));
         api.gbox = g; api.fig = f;
-        watchMarks(f);
       },
       // Each shade step gets a fresh graph in the figure, so the shading of
       // one step never carries into the next.

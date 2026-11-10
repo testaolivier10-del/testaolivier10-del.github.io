@@ -302,14 +302,14 @@
   /* --------------------------------------------- type: fixed */
   var LUMP = [
     { up: 1, text: 'The firm’s landlord raises its monthly rent by', because: 'a higher rent (a fixed cost)' },
-    { up: 1, text: 'The town adds a yearly license fee, the same whatever the firm makes, of', because: 'a lump-sum fee (a fixed cost)' },
+    { up: 1, text: 'The town starts charging the firm a yearly license fee, the same however much it makes:', because: 'a lump-sum fee (a fixed cost)' },
     { up: -1, text: 'The firm refinances a loan, cutting its fixed interest payment by', because: 'a lower fixed cost' },
-    { up: 1, text: 'The firm buys insurance it must pay whatever it makes, costing', because: 'a higher fixed cost' }
+    { up: 1, text: 'The firm takes out insurance that costs the same however much it makes:', because: 'a higher fixed cost' }
   ];
   var PER = [
-    { up: 1, text: 'The government puts a per-unit tax on each item the firm sells of', because: 'a per-unit tax (a variable cost)' },
-    { up: 1, text: 'The price of the materials in each item rises by', because: 'a higher input price per unit (a variable cost)' },
-    { up: -1, text: 'A cheaper supplier cuts the cost of the materials in each item by', because: 'cheaper materials (a lower variable cost)' }
+    { up: 1, text: 'The government puts a per-unit tax on the firm’s output:', because: 'a per-unit tax (a variable cost)' },
+    { up: 1, text: 'The cost of the materials rises by', because: 'a higher input price per unit (a variable cost)' },
+    { up: -1, text: 'A cheaper supplier cuts the cost of the materials by', because: 'cheaper materials (a lower variable cost)' }
   ];
   function genFixed(r, ctx){
     var f = r.pick(FIRMS), O = outputTable(r), t = O.t, lump = r() < 0.6, ch = lump ? r.pick(LUMP) : r.pick(PER), k = r.int(2, 5);

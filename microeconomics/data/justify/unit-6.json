@@ -457,7 +457,7 @@
     "Says the Gini coefficient falls"
    ],
    "earns": {
-    "answer": "A more progressive tax takes a larger share of high incomes, and the transfers raise low incomes. The shares of the lower groups rise, so the after-tax Lorenz curve moves toward the line of equality, and the Gini coefficient, the gap between the line and the curve, falls.",
+    "answer": "A more progressive tax takes a larger share of high incomes, and the transfers raise low incomes. The shares of the lower groups rise, so the after-tax Lorenz curve moves toward the line of equality, and the Gini coefficient, which measures the area between the line and the curve as a share, falls.",
     "why": "It explains the shift in income shares and the direction the curve moves."
    },
    "misses": {

@@ -85,7 +85,9 @@
         var e1 = sh.SL ? G.eq(spec, sh) : null;
         return G.svg(spec, { shifts: sh, eq: e1, labelsShown: true, curveN: '2', n0: '1', n1: '2' }, { label: 'Labor market and firm: ' + G.describe(spec, { shifts: round(sh) }) + ' ' + line() });
       }
-      var ms = { kind: 'monopsony', do: ['shade'], key: { shade: 'wage-bill' }, pointLabel: ' ' }, bind = MW > 16;
+      // The hiring point, labeled and marked on both axes (integration 12, T4-4).
+      var ms = { kind: 'monopsony', do: ['shade'], key: { shade: 'wage-bill' }, pointLabel: 'Hire' }, bind = MW > 16;
+      if(!bind) ms.pointMarks = { x: 'L_M', y: 'W_M' };
       if(MW) ms.line = { id: 'MW', at: MW / 4 };
       var pt = G.named(ms, {}, bind ? 'min-wage' : 'hire');
       return G.svg(ms, { shade: bind ? [] : G.regionCells(ms, ['wage-bill', 'dwl']), labelsShown: true, point: pt }, { label: 'Monopsony graph: labor supply, MFC above it, MRP. ' + line() }).replace('class="mic-graph-svg"', 'class="mic-graph-svg' + (bind ? ' fl-nobill' : '') + '"');

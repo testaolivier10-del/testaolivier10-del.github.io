@@ -324,7 +324,10 @@
     var rows = [I.p0 - 4, I.p0 - 2, I.p0, I.p0 + 2, I.p0 + 4].filter(function(p){ return p > 0; }).map(function(p){ return { p: p, qd: o.a - o.b * p, qs: o.c + o.d * p }; });
     var table = '<table class="ls-tbl sl-tbl"><caption>Market for ' + g.many + ' (invented data)</caption><thead><tr><th scope="col">Price</th><th scope="col">Quantity demanded</th><th scope="col">Quantity supplied</th></tr></thead><tbody>' +
       rows.map(function(x){ return '<tr' + (x.p === I.p0 ? ' class="is-eq"' : '') + '><th scope="row">' + money(x.p) + '</th><td>' + units(x.qd) + '</td><td>' + units(x.qs) + '</td></tr>'; }).join('') + '</tbody></table>';
-    var text = '<p>Demand for ' + g.many + ' is Q<sub>d</sub> = ' + o.a + ' − ' + (o.b === 1 ? '' : o.b) + 'P and supply is Q<sub>s</sub> = ' + (o.c < 0 ? '−' + (-o.c) + ' + ' : o.c === 0 ? '' : o.c + ' + ') + (o.d === 1 ? '' : o.d) + 'P. The government puts a tax of <b>' + money(o.t) + ' per unit</b> on sellers, so sellers keep P − ' + o.t + ' of each sale.</p>';
+    // The equations as the stem writes them (no "1P", no "0 +", a minus sign for a negative intercept).
+    var dTxt = o.a + ' − ' + (o.b === 1 ? '' : o.b) + 'P', sHead = o.c < 0 ? '−' + (-o.c) + ' + ' : o.c === 0 ? '' : o.c + ' + ';
+    var sTax = 'Qs = ' + sHead + (o.d === 1 ? '' : o.d) + '(P − ' + o.t + ')';
+    var text = '<p>Demand for ' + g.many + ' is Q<sub>d</sub> = ' + dTxt + ' and supply is Q<sub>s</sub> = ' + sHead + (o.d === 1 ? '' : o.d) + 'P. The government puts a tax of <b>' + money(o.t) + ' per unit</b> on sellers, so sellers keep P − ' + o.t + ' of each sale.</p>';
     var whoC = deal(r, [
       even ? ['They split it evenly: demand and supply are equally elastic here', 'Right. Each quantity changes by the same amount per dollar, so at the starting point the two elasticities are equal and the tax splits evenly.'] :
         buyersMore ? ['Buyers, because demand is less elastic than supply', 'Right. Quantity demanded changes by ' + o.b + ' per dollar and quantity supplied by ' + o.d + ', so demand is less elastic: buyers cannot easily cut back, and they bear more.'] :
@@ -339,17 +342,17 @@
       numStep('p0', 'Before the tax, what is the equilibrium price?', I.p0, [{ value: I.q0, why: 'That is the equilibrium quantity. Set Qₑ equal to Qₛ and solve for P.'.replace('Qₑ', 'Qd').replace('Qₛ', 'Qs') }], '3.A', { unit: 'dollars' }),
       numStep('pb', 'After the tax, what price do buyers pay?', I.pb, [
         { value: I.p0 + o.t, why: 'Buyers do not pay the whole tax: as the price rises they buy less, so sellers absorb part of it.' },
-        { value: I.p0 + o.t / 2, why: 'An even split happens only when demand and supply are equally elastic. Solve Qd = ' + o.a + ' − ' + o.b + 'P against Qs = ' + o.c + ' + ' + o.d + '(P − ' + o.t + ').' },
+        { value: I.p0 + o.t / 2, why: 'An even split happens only when demand and supply are equally elastic. Solve Qd = ' + dTxt + ' against ' + sTax + '.' },
         { value: I.ps, why: 'That is the price sellers keep (the buyers’ price minus the tax).' }
-      ].filter(function(x){ return !(even && Math.abs(x.value - I.pb) < 1e-9); }), '3.A', { unit: 'dollars', hint: 'With the tax, supply is Qs = ' + o.c + ' + ' + o.d + '(P − ' + o.t + '). Set it equal to demand.' }),
+      ].filter(function(x){ return !(even && Math.abs(x.value - I.pb) < 1e-9); }), '3.A', { unit: 'dollars', hint: 'With the tax, supply is ' + sTax + '. Set it equal to demand.' }),
       choice('who', 'Who bears more of this tax?', whoC.options, whoC.correct, whoC.why, '2.B')
     ];
     return {
       type: 'incidence', ctx: ctx.id, topic: ctx.topic, text: text, table: table,
       steps: steps,
       solution: [
-        'Before the tax: ' + o.a + ' − ' + o.b + 'P = ' + o.c + ' + ' + o.d + 'P, so P = ' + money(I.p0) + ' and Q = ' + units(I.q0) + '.',
-        'With the tax sellers keep P − ' + o.t + ': ' + o.a + ' − ' + o.b + 'P = ' + o.c + ' + ' + o.d + '(P − ' + o.t + '), so buyers pay ' + money(I.pb) + ' and sellers keep ' + money(I.ps) + '.',
+        'Before the tax: ' + dTxt + ' = ' + sHead + (o.d === 1 ? '' : o.d) + 'P, so P = ' + money(I.p0) + ' and Q = ' + units(I.q0) + '.',
+        'With the tax sellers keep P − ' + o.t + ': ' + dTxt + ' = ' + sTax.slice(5) + ', so buyers pay ' + money(I.pb) + ' and sellers keep ' + money(I.ps) + '.',
         'Buyers pay ' + money(I.buyers) + ' more per unit; sellers keep ' + money(I.sellers) + ' less: buyers bear ' + M.fmt(I.buyerShare, 3) + '% of the tax.',
         even ? 'The quantities respond equally to price, so the split is even.' : 'The less elastic side (' + (buyersMore ? 'demand' : 'supply') + ') bears more: it cannot cut back as easily when its price changes.'
       ],

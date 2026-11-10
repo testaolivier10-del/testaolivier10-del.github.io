@@ -123,7 +123,7 @@
      },
      {
       "id": "frq-consumer-choice-short",
-      "title": "A consumer with a budget: marginal utility per dollar, the utility-maximizing bundle and a sunk cost that changes nothing",
+      "title": "A consumer with a budget: marginal utility per dollar, the utility-maximizing bundle, a larger budget and a sunk cost that changes nothing",
       "topic": "marginal-analysis",
       "type": "short",
       "author": "A"
@@ -246,7 +246,7 @@
      },
      {
       "id": "frq-trade-tariff-long",
-      "title": "A domestic market opened to trade: the world price, imports, a tariff and the surplus areas it changes",
+      "title": "A domestic market opened to trade: opportunity costs, the world price, the gain from trade, imports, a tariff, its revenue and deadweight loss",
       "topic": "trade-policy",
       "type": "long",
       "author": "B",
@@ -254,7 +254,7 @@
      },
      {
       "id": "frq-elasticity-short",
-      "title": "Elasticity from a table: price elasticity, the total revenue test and the effect of a price change on revenue",
+      "title": "Elasticity from a table: price elasticity, total revenue consistent with it, the total revenue test, and a new substitute",
       "topic": "price-elasticity-demand",
       "type": "short",
       "author": "B"
@@ -427,7 +427,7 @@
     "frqThemes": [
      {
       "id": "frq-perfect-competition-long",
-      "title": "A perfectly competitive market and firm side by side: short-run profit, entry, the new long-run equilibrium",
+      "title": "A perfectly competitive market and firm side by side: a fixed fee shifts ATC, the loss, exit, a higher long-run price and supply elasticity over time",
       "topic": "perfect-competition",
       "type": "long",
       "author": "C",
@@ -435,7 +435,7 @@
      },
      {
       "id": "frq-cost-table-short",
-      "title": "A firm's cost table: marginal cost, average variable cost, the profit-maximizing output and profit at a given price",
+      "title": "A firm's cost table: marginal cost, fixed cost, the profit-maximizing output and the shut-down rule",
       "topic": "short-run-costs",
       "type": "short",
       "author": "C"
@@ -589,7 +589,7 @@
     "frqThemes": [
      {
       "id": "frq-monopoly-long",
-      "title": "A monopoly: profit-maximizing quantity and price, profit, consumer surplus, deadweight loss and a price ceiling at P = MC",
+      "title": "A monopoly: profit-maximizing quantity and price, profit, deadweight loss, elasticity at QM and a per-unit tax",
       "topic": "monopoly",
       "type": "long",
       "author": "D",
@@ -597,7 +597,7 @@
      },
      {
       "id": "frq-game-monopoly-long",
-      "title": "A payoff matrix for two firms, then one firm's monopoly graph with a lump-sum tax",
+      "title": "A payoff matrix for two firms and the largest combined profit, then one firm's short-run cost curves and a rise in variable cost",
       "topic": "oligopoly-game-theory",
       "type": "long",
       "author": "D",
@@ -605,7 +605,7 @@
      },
      {
       "id": "frq-game-theory-short",
-      "title": "A payoff matrix: dominant strategies, every Nash equilibrium and the effect of a payoff change",
+      "title": "A payoff matrix: dominant strategies, every Nash equilibrium, using a rival's dominant strategy, and a rule that forces one cell",
       "topic": "oligopoly-game-theory",
       "type": "short",
       "author": "D",
@@ -738,14 +738,14 @@
      },
      {
       "id": "frq-hiring-table-short",
-      "title": "A hiring table: MRP, diminishing returns, the number of workers hired and a fixed cost that changes nothing",
+      "title": "A hiring table: MRP, the number of workers hired after a wage change and a price change, and derived demand",
       "topic": "competitive-factor-markets",
       "type": "short",
       "author": "E"
      },
      {
       "id": "frq-monopsony-short",
-      "title": "A monopsony: hiring where MRP = MFC, the wage from labor supply, the wage bill and a minimum wage",
+      "title": "A monopsony: hiring where MRP = MFC, the wage from labor supply, the competitive outcome, the deadweight loss and why MFC is above the wage",
       "topic": "monopsony",
       "type": "short",
       "author": "E",
@@ -844,7 +844,7 @@
     "frqThemes": [
      {
       "id": "frq-externality-short",
-      "title": "A negative production externality: market vs efficient quantity, deadweight loss and the corrective tax",
+      "title": "A negative production externality: market vs efficient quantity, the total external cost, why efficient output is not zero, a larger external cost",
       "topic": "externalities",
       "type": "short",
       "author": "E",

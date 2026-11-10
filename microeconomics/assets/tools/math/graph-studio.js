@@ -158,17 +158,10 @@
     if(spec.do.indexOf('shade') > -1) spec.letters = true;
     return spec;
   }
-  /* The key's response, with a point "on" a PPC drawn away from the curve's
-     own label (the engine's key point sits on the 45-degree line, where the
-     label PPC is). Still graded "on" (the validator checks). */
-  function keyResponse(spec){
-    var G = GR(), r = G.keyResponse(spec), P = (spec.key || {}).point;
-    if(r.point && P && P.region === 'on' && spec.kind === 'ppc'){
-      var c = G.find(G.curves(spec, {}), 'PPC');
-      if(c.shape === 'ppc') r.point = [M.round(c.at * 0.8, 3), M.round(c.at * 0.6, 3)];
-    }
-    return r;
-  }
+  /* The key's response. (A PPC point "on" the curve used to be moved off the
+     45-degree line here, away from the PPC label; the engine now places the
+     point label in a clear corner, integration 12, so the engine's key is used.) */
+  function keyResponse(spec){ return GR().keyResponse(spec); }
 
   /* ----------------------------------------------------- outcome words */
   var NOUN = { quantity: 'the quantity', price: 'the price', wage: 'the wage', 'quantity of labor': 'the number of workers hired' };
@@ -391,7 +384,7 @@
     if(tasks.indexOf('labels') > -1){
       var sp = main && main.do.indexOf('label') > -1 ? main : shade, ps = G.panels(sp);
       var ax = ps.map(function(p){ return (ps.length > 1 ? p.title + ': ' : '') + 'vertical axis ' + G.labelText(p.y, sp.names) + ', horizontal axis ' + G.labelText(p.x, sp.names); }).join('; ');
-      var cvs = G.labelSlots(sp).filter(function(x){ return !/^f?[xy]$/.test(x); }).map(function(c){ return G.curveName(c, sp) + ' (' + G.curveText(sp, c)[0] + G.curveText(sp, c)[1] + ')'; });
+      var cvs = G.labelSlots(sp).filter(function(x){ return !/^f?[xy]$/.test(x); }).map(function(c){ var nm = G.curveName(c, sp), tx = G.curveText(sp, c)[0] + G.curveText(sp, c)[1]; if(nm.toLowerCase().indexOf(tx.toLowerCase()) > -1) return nm; return /\)$/.test(nm) ? nm.replace(/\)$/, ', ' + tx + ')') : nm + ' (' + tx + ')'; });
       sol.push('Labels: ' + ax + '. The curves and lines are ' + cvs.join(', ') + '.');
     }
     if(tasks.indexOf('move') > -1) sol.push(sc.along ? 'Only the price changed, so this is a movement along ' + G.curveName(sc.along) + ', not a shift.' : 'The change is not on an axis, so it shifts a whole curve: ' + G.curveName(sc.shifts[0].curve) + '.');

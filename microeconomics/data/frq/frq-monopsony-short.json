@@ -116,7 +116,7 @@
   {
    "label": "D",
    "points": 1,
-   "prompt": "<b>Explain</b> why Corbie's marginal factor cost of labor is greater than the wage, without a minimum wage.",
+   "prompt": "<b>Explain</b> why Corbie's marginal factor cost of labor is greater than the wage it pays.",
    "rubric": [
     {
      "point": "To hire one more cutter, Corbie must raise the wage it pays to all its cutters, so the added cost is the new cutter's wage plus the raise for every cutter already hired",

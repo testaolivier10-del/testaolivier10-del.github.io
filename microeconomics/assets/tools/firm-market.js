@@ -77,22 +77,6 @@
 
   /* Each live curve's label takes its curve's color (CSS fm-t-<id>). */
   function tag(svg){ return svg.replace(/(<g class="mic-gr-c" data-curve="(\w+)">[\s\S]*?<\/g>)<text class="mic-gr-clabel /g, '$1<text class="mic-gr-clabel fm-t-$2 '); }
-  /* The two-line d = MR = AR = P label sits in the right margin, where ATC and
-     AVC end too: move it to the nearest height clear of their labels
-     (requested of the engine; see docs/apmicro-reviews/self-t2.md). */
-  function declutter(svg){
-    return svg.replace(/<svg class="mic-graph-svg"[\s\S]*?<\/svg>/g, function(one){
-      var m = /<text class="mic-gr-clabel is-line is-small" x="([\d.]+)" y="([\d.]+)"/.exec(one);
-      if(!m) return one;
-      var Y = +m[2], others = [], re = /<text class="mic-gr-clabel(?! is-line)[^"]*" x="([\d.]+)" y="([\d.]+)"/g, k;
-      while((k = re.exec(one))) if(+k[1] > 300) others.push(+k[2]);
-      var free = function(y){ return others.every(function(o){ return o < y - 15 || o > y + 27; }); };
-      if(free(Y)) return one;
-      for(var d = 4; d < 120; d += 4){ var c = [Y + d, Y - d]; for(var i = 0; i < 2; i++) if(c[i] > 22 && c[i] < 222 && free(c[i])){ var ny = c[i]; return one.replace(m[0], m[0].replace('y="' + m[2] + '"', 'y="' + ny + '"')); } }
-      return one;
-    });
-  }
-
   /* ------------------------------------------------------------ explore */
   var SHOCKS = [
     { id: 'up', d: 2, label: 'Demand rises (a fad, higher incomes)', short: 'Demand rises' },
@@ -133,11 +117,11 @@
       if(Math.abs(P.s - P.s0) > 1e-6) shifts.S = P.s - P.s0;
       var S = FM.pcState(P.d, P.s), x = [];
       var label = 'Market and firm graphs. ' + G.describe(spec, { shifts: shifts }) + ' ' + pcWords(S);
-      var svg = G.svg(spec, { shifts: shifts, showEq: true, n1: P.phase === 'long' ? '3' : '2', n0: P.phase === 'long' ? '2' : '1' }, { label: label });
+      // Long run: the points go E2 to E3, supply S1 to S2 (curveN0, integration T2-3).
+      var svg = G.svg(spec, { shifts: shifts, showEq: true, n1: P.phase === 'long' ? '3' : '2', n0: P.phase === 'long' ? '2' : '1', curveN0: '1' }, { label: label });
       if(P.phase === 'long'){
-        // E2 to E3 for the points, but supply goes S1 to S2 and demand stays D2 (the engine
-        // numbers old curves like the old point: requested, see the self-review).
-        svg = svg.replace(/(<text class="mic-gr-clabel is-old"[^>]*>S<tspan class="mic-gr-sub" dy="3">)2</, '$11<');
+        // Demand already moved in the short run and is drawn unshifted here; the engine has no
+        // number for an unshifted curve, so it is labeled D2 by hand.
         if(Math.abs(P.d) > 1e-6) svg = svg.replace(/(<g class="mic-gr-c" data-curve="D">[\s\S]*?<\/g><text class="mic-gr-clabel [^"]*"[^>]*>)D<\/text>/, '$1D<tspan class="mic-gr-sub" dy="3">2</tspan></text>');
       }
       var cells = cellsOf(spec, shifts, [S.kind === 'loss' ? 'loss' : 'profit'], 'firm');
@@ -160,9 +144,8 @@
       var off = {}; if(Math.abs(d) > 1e-6) off.D = d;
       var S = FM.monoState(kind === 'monopoly' ? { kind: 'monopoly' } : { kind: 'monocomp', run: 'short' }, off);
       var label = (kind === 'monopoly' ? 'Monopoly graph. ' : 'Monopolistic competition graph. ') + G.describe(spec, { shifts: shifts }) + ' ' + monoWords(kind, S);
-      var svg = G.svg(spec, { shifts: shifts }, { label: label }), lay = [], x = [];
-      // MR moves with D: its faded old label only crowds the axis (D1 says where demand was)
-      svg = svg.replace(/<text class="mic-gr-clabel is-old"[^>]*>MR<tspan[^>]*>1<\/tspan><\/text>/, '');
+      // MR moves with D: its faded old label only crowds the axis (D1 says where demand was).
+      var svg = G.svg(spec, { shifts: shifts, followerOld: false }, { label: label }), lay = [], x = [];
       var show = kind === 'monopoly' ? st.mono.show : { profit: 1 };
       if(show.cs) lay.push(boxOf(cellsOf(spec, shifts, ['cs']), 'fm-a-cs', 'CS'));
       if(show.dwl) lay.push(boxOf(cellsOf(spec, shifts, ['dwl']), 'fm-a-dwl', ''));
@@ -193,7 +176,7 @@
 
     function draw(){
       fig.setAttribute('data-kind', st.kind);
-      svgEl.innerHTML = declutter(tag(st.kind === 'pc' ? pcSvg() : monoSvg(st.kind)));
+      svgEl.innerHTML = tag(st.kind === 'pc' ? pcSvg() : monoSvg(st.kind));
       if(!st.anim) words();
       longBtn.disabled = !!st.anim || Math.abs(FM.pcState(st.pc.d, st.pc.s).P - 5) < 0.05;
       ctl.querySelector('.fm-mlong').disabled = !!st.anim || st.mcomp.phase === 'long';
@@ -236,7 +219,7 @@
       stop();
       if(reduced() || !window.requestAnimationFrame){ set(1); draw(); if(done) done(); return; }
       var t0 = null; st.anim = { id: 0 };
-      var fr = function(ts){ if(!st.anim) return; if(t0 === null) t0 = ts; var k = Math.min(1, (ts - t0) / ms); set(ease(k)); svgEl.innerHTML = declutter(tag(st.kind === 'pc' ? pcSvg() : monoSvg(st.kind))); if(k < 1) st.anim.id = requestAnimationFrame(fr); else { st.anim = null; draw(); if(done) done(); } };
+      var fr = function(ts){ if(!st.anim) return; if(t0 === null) t0 = ts; var k = Math.min(1, (ts - t0) / ms); set(ease(k)); svgEl.innerHTML = tag(st.kind === 'pc' ? pcSvg() : monoSvg(st.kind)); if(k < 1) st.anim.id = requestAnimationFrame(fr); else { st.anim = null; draw(); if(done) done(); } };
       st.anim.id = requestAnimationFrame(fr);
     }
     function stop(){ if(st.anim){ try{ cancelAnimationFrame(st.anim.id); }catch(e){} st.anim = null; } }
