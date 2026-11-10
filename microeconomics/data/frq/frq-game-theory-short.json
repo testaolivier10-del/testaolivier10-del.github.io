@@ -55,7 +55,7 @@
        55
       ],
       [
-       40,
+       48,
        45
       ]
      ]
@@ -90,13 +90,13 @@
    "prompt": "<b>Explain</b>, using the numbers in the matrix, why Alder Market does not have a dominant strategy.",
    "rubric": [
     {
-     "point": "Gives both comparisons for Alder: if Bexley chooses Late, Regular is better (35 > 25); if Bexley chooses Regular, Late is better (60 > 40).",
+     "point": "Gives both comparisons for Alder: if Bexley chooses Late, Regular is better (35 > 25); if Bexley chooses Regular, Late is better (60 > 48).",
      "accept": [
-      "35 > 25 and 60 > 40"
+      "35 > 25 and 60 > 48"
      ]
     }
    ],
-   "sample": "If Bexley keeps late hours, Alder earns 25 from Late and 35 from Regular, so Regular is better. If Bexley keeps regular hours, Alder earns 60 from Late and 40 from Regular, so Late is better. Alder's best choice depends on Bexley's, so it has no dominant strategy."
+   "sample": "If Bexley keeps late hours, Alder earns 25 from Late and 35 from Regular, so Regular is better. If Bexley keeps regular hours, Alder earns 60 from Late and 48 from Regular, so Late is better. Alder's best choice depends on Bexley's, so it has no dominant strategy."
   },
   {
    "label": "C",
@@ -137,7 +137,7 @@
        55
       ],
       [
-       40,
+       48,
        45
       ]
      ]
@@ -161,7 +161,7 @@
      "auto": "nash"
     }
    ],
-   "sample": "Bexley's Late payoffs fall to 15 and 40, so Regular hours is now better for Bexley whatever Alder does (20 > 15 and 45 > 40). Alder's best response to Bexley's Regular hours is Late hours (60 > 40). The only Nash equilibrium is Alder Late hours, Bexley Regular hours."
+   "sample": "Bexley's Late payoffs fall to 15 and 40, so Regular hours is now better for Bexley whatever Alder does (20 > 15 and 45 > 40). Alder's best response to Bexley's Regular hours is Late hours (60 > 48). The only Nash equilibrium is Alder Late hours, Bexley Regular hours."
   },
   {
    "label": "D",
@@ -202,7 +202,7 @@
        55
       ],
       [
-       40,
+       48,
        45
       ]
      ]
@@ -214,14 +214,14 @@
    },
    "rubric": [
     {
-     "point": "Alder Regular hours, Bexley Late hours (35 + 55 = 90).",
+     "point": "Both stores keep Regular hours (48 + 45 = 93), which is not the Nash equilibrium.",
      "accept": [
-      "Alder regular, Bexley late, 90 in total"
+      "both regular, 93 in total"
      ],
      "auto": "joint"
     }
    ],
-   "sample": "Adding the two payoffs in each cell gives 55, 80, 90 and 85. The largest is Alder Regular hours, Bexley Late hours: 35 + 55 = 90 (hundred dollars)."
+   "sample": "Adding the two payoffs in each cell gives 55, 80, 90 and 93. The largest is both stores keeping Regular hours: 48 + 45 = 93 (hundred dollars). It is not the Nash equilibrium: from there Bexley would switch to Late hours (55 > 45)."
   }
  ]
 }
