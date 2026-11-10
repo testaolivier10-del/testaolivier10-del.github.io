@@ -1137,7 +1137,7 @@
   },
   {
    "id": "w1109-02-firework-blue",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-09",
    "date": null,
    "tiktok_caption": "She needs this firework to burn blue, and blue is the hardest firework color to make.\nWhich firework color do you like best?\nIn AP Chemistry this is atomic emission: heat lifts a metal's electrons to a higher energy level, and they give off light as they fall back. A bigger drop means bluer light.\nlevlprep.com\n#fireworks #apchem #chemistry #science",
@@ -1154,7 +1154,10 @@
    "thumb_v2": true,
    "cta": "none",
    "related_video": null,
-   "related_set": false
+   "related_set": false,
+   "review_blob": "4e4f5c997c16f180b45da1555e78b0738426aa3d",
+   "approved_on": "2026-11-09",
+   "approved_blob": "4e4f5c997c16f180b45da1555e78b0738426aa3d"
   }
  ]
 }
