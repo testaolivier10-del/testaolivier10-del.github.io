@@ -1,0 +1,85 @@
+{
+ "topic": "government-intervention",
+ "hook": "A city caps rents and the waiting list for apartments triples. A state sets a minimum price for milk and the dairies pour out what no one buys. A tax of \\$1 a can on kombucha raises the shelf price by 80 cents, not \\$1. Each of these is a policy that changes price signals, and each one can be traced on the supply and demand graph.",
+ "prereq": [
+  {
+   "q": "At a price below equilibrium, quantity demanded exceeds quantity supplied. This is",
+   "options": [
+    "a shortage",
+    "a surplus",
+    "an equilibrium",
+    "a shift in demand"
+   ],
+   "correct": 0,
+   "why": "Below equilibrium, buyers want more than sellers offer.",
+   "review": "disequilibrium-changes"
+  },
+  {
+   "q": "Consumer surplus is the area",
+   "options": [
+    "under demand and above the price, out to the quantity traded",
+    "above supply and below the price",
+    "under the supply curve",
+    "price times quantity"
+   ],
+   "correct": 0,
+   "why": "It is what buyers would pay minus what they pay.",
+   "review": "equilibrium-surplus"
+  },
+  {
+   "q": "The side of a market that responds less to price changes has the",
+   "options": [
+    "less elastic curve",
+    "more elastic curve",
+    "flatter curve through the same point",
+    "larger surplus by definition"
+   ],
+   "correct": 0,
+   "why": "Elasticity measures how much quantity responds to price.",
+   "review": "price-elasticity-supply"
+  }
+ ],
+ "figure": {
+  "figure": "government-intervention-tax",
+  "caption": "A \\$2 tax on ferry rides: buyers pay \\$6, sellers keep \\$4, revenue is \\$80 and deadweight loss \\$10. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A per-unit tax is collected from sellers",
+   "effect": "supply shifts up (left) by the amount of the tax"
+  },
+  {
+   "cause": "Supply shifts up",
+   "effect": "buyers pay a higher price, sellers keep a lower one, and fewer units are traded"
+  },
+  {
+   "cause": "Fewer units are traded",
+   "effect": "the surplus on the units no longer traded is lost: a deadweight loss"
+  },
+  {
+   "cause": "The units still traded are taxed",
+   "effect": "the government collects the tax times the new quantity, paid partly by each side"
+  }
+ ],
+ "ideas": [
+  "<b>Price ceiling</b> (maximum) binds below equilibrium: a <b>shortage</b>, and only Qs is traded. <b>Price floor</b> (minimum) binds above equilibrium: a <b>surplus</b>, and only Qd is traded.",
+  "A <b>per-unit tax</b> shifts supply up by the tax: buyers pay more, sellers keep less, quantity falls. Revenue = tax × the new quantity.",
+  "A <b>per-unit subsidy</b> shifts supply down: buyers pay less, sellers get more, quantity rises. Cost = subsidy × the new quantity, the whole rectangle.",
+  "<b>Deadweight loss</b>: total surplus lost on units not traded (or traded past the equilibrium), the triangle between demand and supply.",
+  "<b>Tax incidence</b>: the less elastic side of the market bears more of the tax, whoever hands it to the government. A <b>quota</b> cuts quantity and raises the price."
+ ],
+ "misconception": {
+  "wrong": "The cost of a subsidy is the small area between the curves past the old quantity, and tax revenue runs out to the original quantity.",
+  "right": "Both rectangles use the quantity after the policy. The subsidy cost is the per-unit subsidy times the new, larger quantity: the whole rectangle between the two prices. Tax revenue is the tax times the new, smaller quantity. The triangle between the curves is deadweight loss."
+ },
+ "check": [
+  "mic-government-intervention-1",
+  "mic-government-intervention-2",
+  "mic-government-intervention-5",
+  "mic-government-intervention-6",
+  "mic-government-intervention-9",
+  "mic-government-intervention-13",
+  "mic-government-intervention-16"
+ ],
+ "summary": "Price ceilings, price floors, quotas, taxes and subsidies change the price signals and the quantity traded. A binding ceiling (below equilibrium) causes a shortage; a binding floor (above it) a surplus; in both, fewer units are traded. A per-unit tax shifts supply up, raises the price buyers pay, lowers the price sellers keep and raises revenue equal to the tax times the new quantity; a subsidy does the reverse at a cost of the subsidy times the new quantity. In a market that was efficient, each of these creates a deadweight loss, and the burden of a tax falls more on the less elastic side."
+}

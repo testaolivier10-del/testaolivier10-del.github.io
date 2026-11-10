@@ -158,18 +158,29 @@ test('day texts: exam day n opens practice exam n in the 2027 format; study days
   assert.match(readFileSync('microeconomics/assets/pages/exams.js', 'utf8'), /formById\('form-' \+ p\.get\('form'\)\)/);
 });
 
-/* Phase 0: the plan with the real course map (every topic of the map; no
-   FRQs, forms or prompts are written yet): every topic it studies is a course
-   topic, each once, and the two exam days are there for the forms to come. */
-test('the plan with the real topics', () => {
+/* Phase 3: the plan with the real course (every topic of the map, the 18
+   FRQs, the two practice exams): every topic it studies is a course topic,
+   every FRQ it assigns exists, exam days 1 and 2 open forms that exist, and
+   the justification links point at units that have prompts. */
+test('the plan with the real topics, FRQs, prompts and practice exams', () => {
   const map = JSON.parse(readFileSync('docs/apmicro-dependency-map.json', 'utf8'));
   const units = map.chapters.map(c => ({ id: c.id, n: c.n || null, part: c.part, title: c.title, weight: c.weight || null }));
   const topics = map.topics.map(t => ({ id: t.id, unit: t.chapter, title: t.title, built: true })).filter(t => t.unit.startsWith('unit-'));
+  const dir = 'microeconomics/data/frq';
+  const frqs = readdirSync(dir).map(f => JSON.parse(readFileSync(`${dir}/${f}`, 'utf8'))).map(f => ({ id: f.id, type: f.type, units: f.units }));
+  assert.equal(frqs.length, 18);
+  const forms = JSON.parse(readFileSync('microeconomics/data/exams/forms.json', 'utf8')).forms;
+  const prompted = new Set(readdirSync('microeconomics/data/justify').flatMap(f => JSON.parse(readFileSync(`microeconomics/data/justify/${f}`, 'utf8')).prompts.map(p => p.unit)));
   for (const weeks of [3, 2]) {
-    const p = P.build({ exam: '2027-05-04', weeks, units, topics, mastery: null, frqs: [] });
+    const p = P.build({ exam: '2027-05-04', weeks, units, topics, mastery: null, frqs });
     const studied = p.days.flatMap(d => d.topics || []);
     assert.ok(studied.length && studied.every(id => topics.some(t => t.id === id)), 'only course topics');
     assert.equal(new Set(studied).size, topics.length, 'every course topic once');
-    assert.deepEqual(JSON.parse(JSON.stringify(p.days.filter(d => d.kind === 'exam').map(d => d.exam))), [1, 2]);
+    for (const d of p.days.filter(d => d.frq)) assert.ok(frqs.some(f => f.id === d.frq), d.frq);
+    assert.ok(p.days.some(d => d.frq), 'FRQs are assigned');
+    const ex = p.days.filter(d => d.kind === 'exam');
+    assert.deepEqual(JSON.parse(JSON.stringify(ex.map(d => d.exam))), [1, 2]);
+    for (const d of ex) assert.ok(forms.some(f => f.id === `form-${d.exam}`), `exam day ${d.exam} opens a form that exists`);
+    for (const d of p.days.filter(d => d.kind === 'study' || d.kind === 'weak')) if (d.units && d.units[0]) assert.ok(prompted.has(d.units[0]), `prompts for ${d.units[0]}`);
   }
 });

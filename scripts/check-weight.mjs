@@ -519,8 +519,10 @@ const SHELL_BUDGETS = [
   /* AP® Microeconomics (microeconomics/, a fork of the AP® Macroeconomics runtime, docs/apmicro-spec.md
      decision 1): ApMicroCalc in place of ApMacroCalc, the graph engine extended with areas, curved
      curves, lines and two panels (mic-graph.js), and the payoff matrix (mic-matrix.js). Measured 111.1 KB at Phase 0 (2026-11-09): mic-graph.js alone is
-     about 27 KB gzipped, against about 9 KB for the Macro graph it replaces. */
-  ['microeconomics', 113],
+     about 27 KB gzipped, against about 9 KB for the Macro graph it replaces. Raised to 119 at the launch
+     (2026-11-10, docs/apmicro-reviews/launch.md): the built curriculum of the 40 published topics (Macro grew
+     the same way) and the phone legibility fixes in mic-graph.js, mic-core.js and mic.css; measured 117.5. */
+  ['microeconomics', 119],
   /* AP® Human Geography (human-geography/, a fork of the AP® Psychology runtime,
      docs/aphug-spec.md decision 1): ApHugCalc (hug-calc.js) in place of
      ApPsychStats, the model item (hug-model.js) on every question page, the

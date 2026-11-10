@@ -1,0 +1,14 @@
+{
+ "externality": {
+  "def": "A cost or benefit of producing or consuming a good that falls on people outside the market. Because buyers and sellers ignore it, the market quantity is not efficient."
+ },
+ "negative-externality": {
+  "def": "An external cost. From production it puts marginal social cost above marginal private cost (MPC); from consumption it puts marginal social benefit below marginal private benefit. The market makes too much."
+ },
+ "positive-externality": {
+  "def": "An external benefit. From consumption it puts marginal social benefit above marginal private benefit (MPB); from production it puts marginal social cost below marginal private cost. The market makes too little."
+ },
+ "pigouvian": {
+  "def": "A corrective (Pigouvian) tax or subsidy: a per-unit tax equal to the external cost, or per-unit subsidy equal to the external benefit, at the efficient quantity, which moves the market to MSB = MSC."
+ }
+}

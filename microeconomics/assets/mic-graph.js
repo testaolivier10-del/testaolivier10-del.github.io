@@ -93,7 +93,7 @@
     monopoly: costModel(2, 2.5, 3.5, 4, 2),      // monopoly and monopolistic competition
     natural: { a: 2, b: 0, c: 0, F: 12, Fstep: 3 } // natural monopoly: MC flat at 2, ATC = 2 + 12/q falls over the demand range
   };
-  function fixedCost(c){ return Math.max(0.4, c.p.F + ((c.s || 0) - (c.o || 0)) * c.p.Fstep); }
+  function fixedCost(c){ return Math.max(0.4, c.p.F + (c.s || 0) * c.p.Fstep); }   // a lump-sum cost (ATC's own steps) only; a per-unit cost (MC's) leaves it
 
   /* ------------------------------------------------------------- kinds */
   // Default curves. A def may name: panel (two-panel kinds), follows (moves
@@ -113,6 +113,11 @@
       confuse: { x: ['goodY', 'quantity', 'price'], y: ['goodX', 'price', 'quantity'] }, curveConfuse: ['D', 'MC'] },
     sd: { title: 'Supply and demand', x: 'quantity', y: 'price', curves: sdCurves, eq: ['D', 'S'], out: { x: 'quantity', y: 'price' }, mark: ['Q', 'P'],
       confuse: { x: ['realGdp', 'output', 'price'], y: ['priceLevel', 'quantity', 'cost'] }, curveConfuse: ['MR', 'MC'] },
+    // Demand alone (the Elasticity Lab, total revenue): a price line spec.line { id: 'P', at } marks a point on it.
+    demand: { title: 'Demand', x: 'quantity', y: 'price', curves: function(){ return [{ id: 'D', shape: 'down', at: 5 }]; }, eq: null, out: null,
+      text: function(spec, id){ return id === 'P' ? ['P', '', 'the price'] : null; },
+      confuse: { x: ['realGdp', 'output', 'price'], y: ['priceLevel', 'quantity', 'cost'] }, curveConfuse: ['S', 'MR'], lineConfuse: ['Dd', 'MR', 'S'],
+      points: { 'unit-elastic': 'main', 'at-price': 'main' } },
     'sd-micro': { title: 'Supply and demand', x: 'quantity', y: 'price', curves: sdCurves, eq: ['D', 'S'], out: { x: 'quantity', y: 'price' }, mark: ['Q', 'P'],
       confuse: { x: ['realGdp', 'output', 'price'], y: ['priceLevel', 'quantity', 'cost'] }, curveConfuse: ['MR', 'MC'],
       points: { eq: 'main' } },
@@ -148,6 +153,8 @@
       panels: [{ id: 'market', x: 'quantityLabor', y: 'wage', title: 'Labor market' }, { id: 'firm', x: 'quantityLabor', y: 'wage', title: 'Firm' }],
       curves: function(){ return [{ id: 'DL', shape: 'down', at: 5, panel: 'market' }, { id: 'SL', shape: 'up', at: 5, panel: 'market' }, { id: 'MRP', shape: 'down', at: 5, panel: 'firm' }]; },
       line: { id: 'W', panel: 'firm', link: true },
+      // mfc: false before MFC is taught (Topic 5.1): the firm's wage line reads S = W.
+      text: function(spec, id){ return id === 'W' && spec.mfc === false ? ['S = W', '', "the firm's labor supply at the market wage (S = W)"] : null; },
       eq: ['DL', 'SL'], out: { x: 'quantity of labor', y: 'wage' }, mark: ['Q', 'W'],
       confuse: { x: ['quantity', 'output', 'wage'], y: ['price', 'priceCost', 'quantityLabor'], fx: ['quantity', 'output', 'wage'], fy: ['price', 'priceCost', 'quantityLabor'] },
       curveConfuse: ['D', 'S', 'MFC'], lineConfuse: ['SL', 'MRP', 'MW'],
@@ -158,7 +165,8 @@
       points: { hire: 'main', 'mrp=mfc': 'main', competitive: 'main', 'min-wage': 'main' } },
     externality: { title: 'Externality', x: 'quantity', y: 'price',
       curves: function(spec){ var e = extOf(spec), x = EXT[e.type] || EXT['neg-prod'];
-        var out = sdCurves(); out.push({ id: x.social, shape: x.of === 'S' ? 'up' : 'down', at: 5 + x.sign * e.gap, socialOf: x.of, fixed: true }); return out; },
+        // The social curve sits gap steps from where its private curve starts (spec.start), and never moves after.
+        var out = sdCurves(); out.push({ id: x.social, shape: x.of === 'S' ? 'up' : 'down', at: 5 + ((spec.start || {})[x.of] || 0) + x.sign * e.gap, socialOf: x.of, fixed: true }); return out; },
       text: function(spec, id){ var e = extOf(spec), x = EXT[e.type] || EXT['neg-prod'];
         if(id === 'D') return x.social === 'MSB' ? ['D = MPB', '', 'demand (marginal private benefit)'] : ['D = MPB = MSB', '', 'demand (marginal private and social benefit)'];
         if(id === 'S') return x.social === 'MSC' ? ['S = MPC', '', 'supply (marginal private cost)'] : ['S = MPC = MSC', '', 'supply (marginal private and social cost)'];
@@ -174,7 +182,7 @@
   var VERTICAL_SHIFT = { horizontal: 1, mc: 1, avc: 1, atc: 1, afc: 1, lratc: 1, lorenz: 1 };
   var MAX_STEPS = 3;
   function kindOf(spec){ var k = KINDS[spec && spec.kind]; if(!k) throw new Error('ApMicroGraph: unknown graph kind "' + (spec && spec.kind) + '" (one of ' + Object.keys(KINDS).join(', ') + ')'); return k; }
-  function panelsOf(spec){ var k = kindOf(spec); return k.panels || [{ id: 'main', x: k.x, y: k.y }]; }
+  function panelsOf(spec){ var k = kindOf(spec); return k.panels || [{ id: 'main', x: k.x, y: spec.kind === 'costs' && spec.line ? 'priceCost' : k.y }]; }   // a cost graph with a price on it (integration u3)
   function defsOf(spec){ return kindOf(spec).curves(spec || {}); }
   function axisOf(shape){ return VERTICAL_SHIFT[shape] ? 'y' : 'x'; }
   function isPpc(shape){ return shape === 'ppc' || shape === 'ppcline' || shape === 'ppcin'; }
@@ -197,9 +205,11 @@
   function fixedOffsets(spec){
     var off = {}, P = spec.policy, does = spec.do || [];
     Object.keys(spec.show || {}).forEach(function(c){ off[c] = spec.show[c]; });
-    if(P && does.indexOf('shift') < 0){ if(P.type === 'tax') off.S = (off.S || 0) - (P.amount || 1); if(P.type === 'subsidy') off.S = (off.S || 0) + (P.amount || 1); }
+    if(P && does.indexOf('shift') < 0){ if(P.type === 'tax') off.S = (off.S || 0) - taxSteps(spec); if(P.type === 'subsidy') off.S = (off.S || 0) + taxSteps(spec); }
     return off;
   }
+  // A per-unit tax or subsidy of `amount` moves S up or down by amount: amount / (the slope of S) steps sideways.
+  function taxSteps(spec){ var P = spec.policy || {}, kS = spec.slopes && (spec.kind === 'sd' || spec.kind === 'sd-micro') && spec.slopes.S ? +spec.slopes.S : 1; return (P.amount || 1) / kS; }
   function merge(a, b){ var o = {}, k; for(k in a || {}) o[k] = a[k]; for(k in b || {}) o[k] = (o[k] || 0) + b[k]; for(k in o) if(!o[k]) delete o[k]; return o; }
 
   /* ---------------------------------------------------------- geometry */
@@ -209,12 +219,13 @@
   }
   // A monocomp demand at its long-run position: tangent to ATC (the intercept 5 + at is min over q of ATC + q).
   function tangentAt(p){ var best = Infinity; for(var q = 0.3; q <= 10; q += 0.001){ var v = atcBase(p, q, 0, 0) + q; if(v < best) best = v; } return Math.round((best - 5) * 1e6) / 1e6; }
-  function atcBase(p, q, o, s){ var F = Math.max(0.4, p.F + (s - o) * p.Fstep); return p.a - p.b * q + p.c * q * q + o + F / q; }
+  function atcBase(p, q, o, s){ var F = Math.max(0.4, p.F + s * p.Fstep); return p.a - p.b * q + p.c * q * q + o + F / q; }
   function curves(spec, offsets){
     var start = spec.start || {}, off = offsets || {}, defs = defsOf(spec), line = spec.kind === 'ppc' && spec.linear, sh = line ? lineShares(spec) : null, out = [], by = {};
     defs.forEach(function(d){
       var o = { id: d.id, shape: d.shape, panel: d.panel || 'main', p: d.p, follows: d.follows, fixed: !!d.fixed, at: (d.at || 0) + (start[d.id] || 0) + (off[d.id] || 0), base: (d.at || 0) + (start[d.id] || 0), steps: off[d.id] || 0 };
       if(line && d.shape === 'ppc'){ o.shape = 'ppcline'; o.kx = sh[0]; o.ky = sh[1]; }
+      if(spec.slopes && (spec.kind === 'sd' || spec.kind === 'sd-micro') && spec.slopes[d.id] && (d.shape === 'down' || d.shape === 'up')) o.k = +spec.slopes[d.id];
       out.push(o); by[d.id] = o;
     });
     defs.forEach(function(d){
@@ -225,13 +236,15 @@
       if(d.shape === 'afc' && by[d.follows]){ o.s = by[d.follows].at; o.steps = by[d.follows].steps; o.o = by[d.costOf] ? by[d.costOf].at : 0; }
       if(d.shape === 'mc' || d.shape === 'avc') o.o = d.shape === 'mc' ? o.at : o.o;
     });
+    // A per-unit cost moves ATC with MC: drawn as a shift, its old place faded (AFC, a fixed cost, stays).
+    defs.forEach(function(d){ var o = by[d.id], M = d.costOf && by[d.costOf]; if(d.shape === 'atc' && M && M.steps && !o.steps) o.steps = M.steps; });
     return out;
   }
   function find(list, id){ for(var i = 0; i < list.length; i++) if(list[i].id === id) return list[i]; return null; }
   function y(c, x){
     var v, p = c.p;
-    if(c.shape === 'down') v = 5 - (x - c.at);
-    else if(c.shape === 'up') v = 5 + (x - c.at);
+    if(c.shape === 'down') v = 5 - K(c) * (x - c.at);
+    else if(c.shape === 'up') v = 5 + K(c) * (x - c.at);
     else if(c.shape === 'horizontal') v = c.at;
     else if(c.shape === 'mr') v = 5 + c.at - 2 * x;
     else if(c.shape === 'mfc') v = 5 - c.at + 2 * x;
@@ -248,6 +261,8 @@
     else return null;   // vertical: no height function
     return v;
   }
+  // The steepness of a straight D or S (spec.slopes on sd and sd-micro; 1 everywhere else).
+  function K(c){ return c && c.k ? c.k : 1; }
   function inBox(p){ return p[0] >= -1e-9 && p[0] <= 10 + 1e-9 && p[1] >= -1e-9 && p[1] <= 10 + 1e-9; }
   function r6(v){ return Math.round(v * 1e6) / 1e6; }
   // The x in [lo, hi] where f changes sign (bisection), or null.
@@ -279,7 +294,7 @@
     if(!a || !b) return null;
     if(a.shape === 'vertical' && b.shape === 'vertical') return null;
     if(a.shape === 'vertical' || b.shape === 'vertical'){ var v = a.shape === 'vertical' ? a : b, o = v === a ? b : a, h = y(o, v.at); return h == null ? null : [v.at, h]; }
-    if(a.shape === 'down' && b.shape === 'up') return [(a.at + b.at) / 2, 5 + (a.at - b.at) / 2];
+    if(a.shape === 'down' && b.shape === 'up'){ if(K(a) === 1 && K(b) === 1) return [(a.at + b.at) / 2, 5 + (a.at - b.at) / 2]; var xk = (K(a) * a.at + K(b) * b.at) / (K(a) + K(b)); return [xk, 5 + K(b) * (xk - b.at)]; }
     if(a.shape === 'up' && b.shape === 'down') return cross(b, a);
     var x = root0(function(t){ var p = y(a, t), q = y(b, t); return p == null || q == null ? null : p - q; }, lo == null ? 0.3 : lo, hi == null ? 10 : hi);
     return x == null ? null : [x, y(a, x)];
@@ -357,7 +372,10 @@
       case 'mes': var LR = g('LRATC'); p = LR && lowest(LR, 0, 10); return p && [r6(p[0]), r6(p[1])];
       case 'firm':
         if(spec.kind === 'labor'){ var R = g('MRP'); if(L == null || !R) return null; var xr = xAt(R, L); return xr == null ? null : [r6(xr), r6(L)]; }
-        if(!MC || L == null) return null; var xf = xAt(MC, L); return xf == null ? null : [r6(xf), r6(L)];
+        if(!MC || L == null) return null;
+        // Below the minimum of AVC the firm shuts down: it produces nothing (integration u3).
+        var AV = g('AVC'), mv = AV && lowest(AV, 0.3, 10); if(mv && L < mv[1] - 1e-9) return [0, r6(L)];
+        var xf = xAt(MC, L); return xf == null ? null : [r6(xf), r6(L)];
       case 'mr=mc': p = cross(MR, MC, MC && lowest(MC, 0, 10)[0], 10); return p && [r6(p[0]), r6(p[1])];
       case 'profit-max': p = cross(MR, MC, MC && lowest(MC, 0, 10)[0], 10); return p && [r6(p[0]), r6(y(D, p[0]))];
       case 'allocative': p = cross(D, MC, MC && lowest(MC, 0, 10)[0], 10); return p && [r6(p[0]), r6(p[1])];
@@ -370,6 +388,8 @@
       case 'mrp=mfc': var mf2 = cross(g('MFC'), g('MRP')); return mf2 && [r6(mf2[0]), r6(mf2[1])];
       case 'competitive': var cp = cross(g('MRP'), g('SL')); return cp && [r6(cp[0]), r6(cp[1])];
       case 'min-wage': if(L == null) return null; var qs = xAt(g('SL'), L), qd = xAt(g('MRP'), L); if(qs == null || qd == null) return null; return [r6(Math.min(qs, qd)), r6(L)];
+      case 'unit-elastic': if(!D) return null; var xu = (5 + D.at) / 2; return [r6(xu), r6(y(D, xu))];   // the midpoint of a straight demand
+      case 'at-price': if(!D || L == null) return null; var xp = xAt(D, L); return xp == null ? null : [r6(xp), r6(L)];
       case 'efficient': var e = extOf(spec), X = EXT[e.type] || EXT['neg-prod'], s = g(X.social), o = X.of === 'S' ? g('D') : g('S'); p = cross(X.of === 'S' ? o : s, X.of === 'S' ? s : o); return p && [r6(p[0]), r6(p[1])];
     }
     void k;
@@ -395,12 +415,14 @@
     var off = offsets || fixedOffsets(spec), cs0 = curves(spec, {}), cs = curves(spec, off), cells = [], regions = {};
     var add = function(id, poly, panel){ if(poly && polyArea(poly) > 0.02) cells.push({ id: id, poly: poly, panel: panel || 'main' }); };
     var reg = function(name, ids){ var have = cells.map(function(c){ return c.id; }), got = ids.filter(function(i){ return have.indexOf(i) > -1; }); if(got.length) regions[name] = got; };
-    var D0 = find(cs0, 'D'), S0 = find(cs0, 'S'), mn = function(a, b){ return function(x){ return Math.min(y(a, x), y(b, x)); }; }, mxf = function(a, b){ return function(x){ return Math.max(y(a, x), y(b, x)); }; };
+    // The market before the policy, as drawn: start and spec.show (a shown shift moves the areas too, integration 10).
+    var shown = spec.show || {}, csS = curves(spec, shown);
+    var D0 = find(csS, 'D'), S0 = find(csS, 'S'), mn = function(a, b){ return function(x){ return Math.min(y(a, x), y(b, x)); }; }, mxf = function(a, b){ return function(x){ return Math.max(y(a, x), y(b, x)); }; };
     if(spec.kind === 'sd-micro' || spec.kind === 'sd'){
       var E = cross(D0, S0), Qe = E[0], Pe = E[1], P = spec.policy;
       if(!P){ add('a', band(D0, Pe, 0, Qe)); add('b', band(Pe, S0, 0, Qe)); reg('cs', ['a']); reg('ps', ['b']); reg('ts', ['a', 'b']); }
       else if(P.type === 'ceiling' || P.type === 'floor' || P.type === 'tax'){
-        var Q1 = P.type === 'ceiling' ? xAt(S0, P.at) : P.type === 'floor' ? xAt(D0, P.at) : cross(D0, find(curves(spec, { S: -(P.amount || 1) }), 'S'))[0];
+        var Q1 = P.type === 'ceiling' ? xAt(S0, P.at) : P.type === 'floor' ? xAt(D0, P.at) : cross(D0, find(curves(spec, merge(shown, { S: -taxSteps(spec) })), 'S'))[0];
         if(Q1 != null && Q1 < Qe - 1e-6){
           var Pt = y(D0, Q1), Pb = y(S0, Q1);
           add('a', band(D0, Pt, 0, Q1)); add('b', band(Pt, Pe, 0, Q1)); add('c', band(D0, Pe, Q1, Qe)); add('d', band(Pe, Pb, 0, Q1)); add('e', band(Pe, S0, Q1, Qe)); add('f', band(Pb, S0, 0, Q1));
@@ -410,7 +432,7 @@
           if(P.type === 'tax'){ reg('cs', ['a']); reg('ps', ['f']); reg('tax-revenue', ['b', 'd']); reg('buyer-burden', ['b']); reg('seller-burden', ['d']); }
         }
       } else if(P.type === 'subsidy'){
-        var Q2 = cross(D0, find(curves(spec, { S: P.amount || 1 }), 'S'))[0], Pc = y(D0, Q2), Pp = y(S0, Q2);
+        var Q2 = cross(D0, find(curves(spec, merge(shown, { S: taxSteps(spec) })), 'S'))[0], Pc = y(D0, Q2), Pp = y(S0, Q2);
         add('a', band(D0, Pe, 0, Qe)); add('b', band(Pe, Pc, 0, Qe)); add('c', band(D0, Pc, Qe, Q2)); add('d', band(Pe, S0, 0, Qe)); add('e', band(Pp, Pe, 0, Qe)); add('f', band(Pp, S0, Qe, Q2)); add('g', band(S0, D0, Qe, Q2));
         reg('cs', ['a', 'b', 'c']); reg('ps', ['d', 'e', 'f']); reg('subsidy-cost', ['b', 'c', 'e', 'f', 'g']); reg('dwl', ['g']); reg('cs-before', ['a']); reg('ps-before', ['d']);
       } else if(P.type === 'world' && P.at < Pe){
@@ -427,8 +449,8 @@
         reg('cs', ['a']); reg('ps', ['b', 'c', 'g']); reg('tariff-revenue', ['e']); reg('dwl', ['d', 'f']); reg('cs-before', ['a', 'b', 'c', 'd', 'e', 'f']); reg('ps-before', ['g']);
       }
     } else if(spec.kind === 'pc'){
-      var L = lineAt(spec, { shifts: off }), MC = find(cs, 'MC'), ATC = find(cs, 'ATC'), q = L == null ? null : xAt(MC, L);
-      if(q != null){
+      var L = lineAt(spec, { shifts: off }), MC = find(cs, 'MC'), ATC = find(cs, 'ATC'), fq = L == null ? null : named(spec, off, 'firm', L), q = fq ? fq[0] : null;
+      if(q != null && q > 0){
         var A = y(ATC, q), hi = Math.max(L, A), lo = Math.min(L, A);
         if(Math.abs(L - A) > 0.05) add('a', band(hi, lo, 0, q), 'firm');
         add('b', band(lo, 0, 0, q), 'firm');
@@ -438,7 +460,24 @@
       }
     } else if(spec.kind === 'monopoly' || spec.kind === 'monocomp'){
       var D = find(cs, 'D'), MCm = find(cs, 'MC'), ATCm = find(cs, 'ATC'), pm = named(spec, off, 'profit-max'), al = named(spec, off, 'allocative');
-      if(pm){
+      var Pr = spec.kind === 'monopoly' && spec.line && spec.line.at != null ? spec.line.at : null;
+      if(pm && Pr != null && Pr < pm[1] - 0.05){
+        /* A regulated price (a ceiling Pr below the monopoly price, integration 8): MR is Pr out to demand, so the
+           firm sells Q where Pr meets demand or MC, whichever comes first. Same region names, after the regulation:
+           cs under demand above Pr, profit or loss between Pr and ATC, dwl between demand and MC out to D = MC. */
+        var qd = xAt(D, Pr), qc = xAt(MCm, Pr), Qr = qd == null ? qc : qc == null ? qd : Math.min(qd, qc);
+        if(Qr != null){
+          var Ar = y(ATCm, Qr), hr = Math.max(Pr, Ar), lr = Math.min(Pr, Ar);
+          add('a', band(D, Pr, 0, Qr));
+          if(Math.abs(Pr - Ar) > 0.05) add('b', band(hr, lr, 0, Qr));
+          add('c', band(lr, 0, 0, Qr));
+          if(al && al[0] > Qr + 0.05) add('d', band(D, MCm, Qr, al[0]));
+          reg('cs', ['a']); reg('dwl', ['d']);
+          if(Pr > Ar + 0.05){ reg('profit', ['b']); reg('tr', ['b', 'c']); reg('tc', ['c']); }
+          else if(Pr < Ar - 0.05){ reg('loss', ['b']); reg('tr', ['c']); reg('tc', ['b', 'c']); }
+          else { reg('tr', ['c']); reg('tc', ['c']); }
+        }
+      } else if(pm){
         var Qm = pm[0], Pm = pm[1], Am = y(ATCm, Qm), hm = Math.max(Pm, Am), lm = Math.min(Pm, Am);
         add('a', band(D, Pm, 0, Qm));
         if(Math.abs(Pm - Am) > 0.05) add('b', band(hm, lm, 0, Qm));
@@ -453,13 +492,23 @@
       var h = named(spec, off, 'hire'), c2 = named(spec, off, 'competitive'), SL = find(cs, 'SL'), MRP = find(cs, 'MRP');
       if(h){ add('a', band(h[1], 0, 0, h[0])); if(c2 && c2[0] > h[0]) add('b', band(MRP, SL, h[0], c2[0])); reg('wage-bill', ['a']); reg('dwl', ['b']); }
     } else if(spec.kind === 'externality'){
-      var ex = extOf(spec), X = EXT[ex.type] || EXT['neg-prod'], Dx = find(cs0, 'D'), Sx = find(cs0, 'S'), Soc = find(cs0, X.social), m = cross(Dx, Sx), ef = named(spec, {}, 'efficient');
-      var lo2 = Math.min(m[0], ef[0]), hi2 = Math.max(m[0], ef[0]);
-      if(ex.type === 'neg-prod'){ add('a', band(Soc, Dx, ef[0], m[0])); add('b', band(Soc, Sx, 0, ef[0])); add('c', band(Dx, Sx, ef[0], m[0])); reg('dwl', ['a']); reg('ext-cost', ['a', 'b', 'c']); }
-      else if(ex.type === 'pos-prod'){ add('a', band(Dx, Soc, m[0], ef[0])); add('b', band(Sx, Soc, 0, m[0])); add('c', band(Sx, Dx, m[0], ef[0])); reg('dwl', ['a']); reg('ext-benefit', ['a', 'b', 'c']); }
-      else if(ex.type === 'pos-cons'){ add('a', band(Soc, Sx, m[0], ef[0])); add('b', band(Soc, Dx, 0, m[0])); add('c', band(Sx, Dx, m[0], ef[0])); reg('dwl', ['a']); reg('ext-benefit', ['a', 'b', 'c']); }
-      else { add('a', band(Sx, Soc, ef[0], m[0])); add('b', band(Dx, Soc, 0, ef[0])); add('c', band(Dx, Sx, ef[0], m[0])); reg('dwl', ['a']); reg('ext-cost', ['a', 'b', 'c']); }
-      void lo2; void hi2;
+      /* The market quantity comes from D and S as shown (a corrective tax or subsidy drawn with spec.show), the social
+         curve stays put (integration 10). b: between the social and private curves out to the smaller quantity;
+         a (dwl) and c between the two quantities. The external cost counts the units produced (0 to the market
+         quantity), the external benefit runs to the efficient quantity, as before; over-correction leaves a dwl on
+         the other side and nothing in c. */
+      var ex = extOf(spec), X = EXT[ex.type] || EXT['neg-prod'], Dx = find(cs, 'D'), Sx = find(cs, 'S'), Soc = find(cs, X.social);
+      var Pv = find(cs0, X.of), Oc = X.of === 'S' ? Dx : Sx, m = cross(Dx, Sx), ef = cross(Soc, Oc);
+      if(m && ef){
+        var mq = m[0], eq0 = ef[0], lo2 = Math.min(mq, eq0), hi2 = Math.max(mq, eq0), neg = ex.type === 'neg-prod' || ex.type === 'neg-cons', natural = neg ? mq > eq0 : mq < eq0;
+        add('b', band(mxf(Soc, Pv), mn(Soc, Pv), 0, lo2));
+        if(hi2 - lo2 > 1e-6){ add('a', band(mxf(Soc, Oc), mn(Soc, Oc), lo2, hi2)); if(natural) add('c', band(mxf(Oc, Pv), mn(Oc, Pv), lo2, hi2)); }
+        reg('dwl', ['a']); reg(neg ? 'ext-cost' : 'ext-benefit', natural ? ['a', 'b', 'c'] : ['b']);
+      }
+    } else if(spec.kind === 'demand'){
+      // At the price line: a is total revenue (P x Q), b the consumer surplus above it.
+      var Dd = find(cs, 'D'), Pd = lineDef(spec) ? lineDef(spec).at : null, Qd = Pd == null ? null : xAt(Dd, Pd);
+      if(Qd != null){ add('a', band(Pd, 0, 0, Qd)); add('b', band(Dd, Pd, 0, Qd)); reg('tr', ['a']); reg('cs', ['b']); }
     } else if(spec.kind === 'lorenz'){
       var EQc = find(cs, 'EQ'), LC = find(cs, 'LC');
       add('a', band(EQc, LC, 0, 10)); add('b', band(LC, 0, 0, 10)); reg('gini', ['a']); reg('below', ['b']);
@@ -529,8 +578,10 @@
     var c = find(curves(spec, offsets), 'PPC');
     if(!c || !p) return null;
     if(c.shape === 'ppcline'){
-      var X = c.at * c.kx, Y = c.at * c.ky, dl = (p[0] / X + p[1] / Y - 1) * X * Y / Math.hypot(X, Y);
-      return Math.abs(dl) <= 0.4 ? 'on' : dl < 0 ? 'inside' : 'outside';
+      /* dl: the perpendicular distance to the line. The "on" band is 0.4, narrower on a flat line (8% of the shorter
+         intercept, integration u1) and never under 0.2, so a point placed on the quarter-step grid can still be on. */
+      var X = c.at * c.kx, Y = c.at * c.ky, dl = (p[0] / X + p[1] / Y - 1) * X * Y / Math.hypot(X, Y), band = Math.max(0.2, Math.min(0.4, 0.08 * Math.min(X, Y)));
+      return Math.abs(dl) <= band ? 'on' : dl < 0 ? 'inside' : 'outside';
     }
     if(c.shape === 'ppcin'){
       var dd = distTo(c, p), below = p[0] > c.at || y(c, p[0]) == null ? false : p[1] < y(c, p[0]);
@@ -551,14 +602,14 @@
     var ps = panelsOf(spec), out = ['x', 'y'];
     if(ps.length > 1) out.push('fx', 'fy');
     defsOf(spec).forEach(function(d){ out.push(d.id); });
-    var L = lineDef(spec); if(L && kindOf(spec).line) out.push(L.id);
+    var L = lineDef(spec); if(L && (kindOf(spec).line || ((spec.kind === 'costs' || spec.kind === 'demand') && spec.line))) out.push(L.id);
     return out;
   }
   function labelOptions(spec, slot){
     var k = kindOf(spec), ps = panelsOf(spec);
-    if(slot === 'x' || slot === 'y' || slot === 'fx' || slot === 'fy'){ var right = slotAnswer(spec, slot), conf = (k.confuse[slot] || k.confuse[slot.slice(-1)] || []).filter(function(c){ return c !== right; }); void ps; return [right].concat(conf); }
+    if(slot === 'x' || slot === 'y' || slot === 'fx' || slot === 'fy'){ var right = slotAnswer(spec, slot), conf = (k.confuse[slot] || k.confuse[slot.slice(-1)] || []).filter(function(c){ return c !== right; }); if(slot === 'y' && right !== k.y && conf.indexOf(k.y) < 0) conf.unshift(k.y); void ps; return [right].concat(conf.slice(0, 3)); }
     var L = lineDef(spec);
-    if(L && slot === L.id) return [L.id].concat(k.lineConfuse || []);
+    if(L && slot === L.id) return [L.id].concat(k.lineConfuse || ['Dd', 'MR', 'S']);
     var ids = defsOf(spec).map(function(d){ return d.id; });
     return ids.concat(k.curveConfuse.filter(function(c){ return ids.indexOf(c) < 0; }));
   }
@@ -584,10 +635,11 @@
     if(has('equilibrium') && !k.eq) bad('graph.do: a ' + spec.kind + ' graph has no market equilibrium (use "point" with key.point.at)');
     if(has('shade') && does.some(function(t){ return t !== 'shade' && t !== 'label'; })) bad('graph.do: "shade" goes with "label" only: draw the graph to shade with start, show or policy');
     var ids = defsOf(spec).map(function(d){ return d.id; }), mov = movableIds(spec);
-    Object.keys(spec.start || {}).forEach(function(c){ if(ids.indexOf(c) < 0) bad('graph.start: unknown curve "' + c + '" (a ' + spec.kind + ' graph has ' + ids.join(', ') + ')'); else if(!Number.isInteger(spec.start[c]) || Math.abs(spec.start[c]) > 2) bad('graph.start.' + c + ' is a whole number of steps from -2 to 2'); });
+    Object.keys(spec.start || {}).forEach(function(c){ if(ids.indexOf(c) < 0) bad('graph.start: unknown curve "' + c + '" (a ' + spec.kind + ' graph has ' + ids.join(', ') + ')'); else if(!Number.isInteger(spec.start[c]) || Math.abs(spec.start[c]) > MAX_STEPS) bad('graph.start.' + c + ' is a whole number of steps from -3 to 3'); });
     Object.keys(spec.show || {}).forEach(function(c){ if(mov.indexOf(c) < 0) bad('graph.show: "' + c + '" is not a curve that moves on a ' + spec.kind + ' graph'); else if(!Number.isInteger(spec.show[c]) || Math.abs(spec.show[c]) > MAX_STEPS) bad('graph.show.' + c + ' is a whole number of steps from -3 to 3'); });
     if(spec.kind === 'ppc' && (!spec.names || !spec.names.x || !spec.names.y)) bad('graph.names.x and .y name the two goods of a PPC');
     if(spec.bow !== undefined && (spec.kind !== 'ppc' || spec.bow !== 'in' || spec.linear)) bad('graph.bow: "in" (a bowed-in PPC, decreasing opportunity cost) is for a ppc graph that is not linear');
+    if(spec.pointMarks !== undefined && (typeof spec.pointMarks !== 'object' || !['x', 'y'].some(function(a){ return spec.pointMarks[a]; }) || Object.keys(spec.pointMarks).some(function(a){ return ['x', 'y'].indexOf(a) < 0 || !/^[A-Za-z*]{1,3}(_[A-Za-z0-9*]{1,4})?$/.test(String(spec.pointMarks[a])); }))) bad('graph.pointMarks { x: "Q_M", y: "P_M" } marks a placed point on the axes (a letter or two, then _ and its subscript)');
     if(spec.linear !== undefined && (spec.kind !== 'ppc' || typeof spec.linear !== 'boolean')) bad('graph.linear (true: a straight-line PPC, constant opportunity cost) is for a ppc graph');
     if(spec.ends !== undefined && (!spec.linear || !(+spec.ends.x > 0) || !(+spec.ends.y > 0))) bad('graph.ends { x, y } gives a straight PPC\'s intercepts (the most of each good, both positive) and needs linear: true');
     if(spec.policy !== undefined){
@@ -603,6 +655,11 @@
         if(P.type === 'tariff' && !(P.at + (P.amount || 1) < e0[1] - 0.2)) bad('graph.policy: the world price plus the tariff stays below the domestic equilibrium price (the country still imports)');
         if(has('shift') && (P.type === 'tax' || P.type === 'subsidy')) { var ks = ((spec.key || {}).shifts || [])[0]; if(!ks || ks.curve !== 'S') bad('graph.key.shifts: a per-unit ' + P.type + ' on sellers shifts S'); }
       }
+    }
+    if(spec.slopes !== undefined){
+      var SLOPES = [0.5, 1, 2];
+      if((spec.kind !== 'sd' && spec.kind !== 'sd-micro') || typeof spec.slopes !== 'object' || !Object.keys(spec.slopes).length || Object.keys(spec.slopes).some(function(c){ return ['D', 'S'].indexOf(c) < 0 || SLOPES.indexOf(spec.slopes[c]) < 0; })) bad('graph.slopes { D, S } sets how steep demand and supply are (0.5, 1 or 2; 1 is the usual 45 degrees) on an sd or sd-micro graph');
+      else if(spec.policy && (spec.policy.type === 'tax' || spec.policy.type === 'subsidy')){ var e9 = eq(spec, fixedOffsets(spec)); if(!e9 || !inBox(e9) || e9[0] < 0.5) bad('graph.slopes: with this ' + spec.policy.type + ' the market leaves the graph; use a smaller amount'); }
     }
     if(spec.ext !== undefined && (spec.kind !== 'externality' || !EXT[(spec.ext || {}).type] || (spec.ext.gap != null && !(Number.isInteger(spec.ext.gap) && spec.ext.gap >= 1 && spec.ext.gap <= 3)))) bad('graph.ext { type: ' + Object.keys(EXT).join(' | ') + ', gap: 1-3 } is for an externality graph');
     if(spec.kind === 'externality' && !spec.ext) bad('graph.ext.type names the externality (' + Object.keys(EXT).join(', ') + ')');
@@ -675,7 +732,8 @@
       if(!names.length) bad('graph.key.shade names the region to shade (' + (Object.keys(R).join(', ') || 'this graph has none') + ')');
       names.forEach(function(nm){ if(!R[nm]) bad('graph.key.shade: "' + nm + '" is not a region of this graph (' + Object.keys(R).join(', ') + ')'); });
     }
-    Object.keys(spec.slips || {}).forEach(function(c){ if(ids.indexOf(c) < 0 && !REGION[c] && !(lineDef(spec) && lineDef(spec).id === c)) bad('graph.slips: "' + c + '" is not a curve, line or region'); else if(String(spec.slips[c]).length < 15) bad('graph.slips.' + c + ' explains the slip in a sentence'); });
+    Object.keys(spec.slips || {}).forEach(function(c){ if(c !== 'point' && ids.indexOf(c) < 0 && !REGION[c] && !(lineDef(spec) && lineDef(spec).id === c)) bad('graph.slips: "' + c + '" is not a curve, line, region or point'); else if(String(spec.slips[c]).length < 15) bad('graph.slips.' + c + ' explains the slip in a sentence'); });
+    Object.keys(spec.showLabel || {}).forEach(function(c){ var v = spec.showLabel[c]; if(!(spec.show || {})[c]) bad('graph.showLabel.' + c + ': names a curve drawn shifted by graph.show'); else if(typeof v !== 'string' || !v.trim() || v.length > 16) bad('graph.showLabel.' + c + ' is the shifted curve\'s label, 1 to 16 characters ("S + tax")'); });
     (spec.movable || []).forEach(function(c){ if(mov.indexOf(c) < 0) bad('graph.movable: "' + c + '" is not a curve that moves on its own'); });
     (key.shifts || []).forEach(function(s){ if(spec.movable && spec.movable.indexOf(s.curve) < 0) bad('graph.movable leaves out ' + s.curve + ', which the key shifts'); });
     return out;
@@ -712,20 +770,21 @@
   function endOf(c){ for(var x = 10; x >= 0.3; x -= 0.02){ var h = y(c, x); if(h != null && h >= 0.2 && h <= 9.7) return [x, h]; } return [9.8, 5]; }
   var LX = 8.6;
   function labelAway(c){
-    if(c.shape === 'down'){ var x = 1.8, yv = 5 - (x - c.at); if(yv > 9.4){ yv = 9.4; x = c.at - 4.4; } return [px(Math.max(0.3, x)) + 6, py(yv) + 3, 'start']; }
-    if(c.shape === 'up'){ var x2 = 3.2, y2 = 5 + (x2 - c.at); if(y2 < 0.6){ y2 = 0.6; x2 = c.at - 4.4; } return [px(Math.max(0.3, x2)) - 7, py(y2) - 3, 'end']; }
+    // Several places along the old curve, tried in order by place() (the first is the old single place).
+    if(c.shape === 'down') return [1.8, 1.0, 2.8, 3.8].map(function(x0){ var x = x0, yv = 5 - K(c) * (x - c.at); if(yv > 9.4){ yv = 9.4; x = c.at - 4.4 / K(c) + (x0 - 1.8); } return [px(Math.max(0.3, x)) + 6, py(yv) + 3, 'start']; }).concat(labelAt(c));
+    if(c.shape === 'up') return [3.2, 2.2, 4.2, 1.2].map(function(x0){ var x2 = x0, y2 = 5 + K(c) * (x2 - c.at); if(y2 < 0.6){ y2 = 0.6; x2 = c.at - 4.4 / K(c) + (x0 - 3.2); } return [px(Math.max(0.3, x2)) - 7, py(y2) - 3, 'end']; }).concat(labelAt(c));
     if(c.shape === 'vertical') return [px(c.at) - 5, py(0.6), 'end'];
     return labelAt(c, true);
   }
   function labelAt(c, inside){
     if(c.shape === 'vertical') return [px(c.at) + 5, py(9.6) + 6 + (Math.round(c.at) % 2 ? 0 : 15), 'start'];
     // Straight lines offer several places, tried in order (place() keeps the first clear one).
-    if(c.shape === 'down'){ var x2 = LX, y2 = 5 - (x2 - c.at); if(y2 < 0.5){ y2 = 0.5; x2 = c.at + 4.5; }
+    if(c.shape === 'down'){ var x2 = LX, y2 = 5 - K(c) * (x2 - c.at); if(y2 < 0.5){ y2 = 0.5; x2 = c.at + 4.5 / K(c); }
       var xd = Math.min(9.4, c.at + 2.4), xc = Math.max(0.6, c.at - 3.2);
-      return [[px(x2) + 6, py(y2) + 3, 'start'], [px(xd) - 6, py(5 - (xd - c.at)) + 15, 'end'], [px(xc) + 7, py(Math.min(9.6, 5 - (xc - c.at))) - 2, 'start']]; }
-    if(c.shape === 'up'){ var x1 = LX, y1 = 5 + (x1 - c.at); if(y1 > 9.6){ y1 = 9.6; x1 = c.at + 4.6; }
+      return [[px(x2) + 6, py(y2) + 3, 'start'], [px(xd) - 6, py(5 - K(c) * (xd - c.at)) + 15, 'end'], [px(xc) + 7, py(Math.min(9.6, 5 - K(c) * (xc - c.at))) - 2, 'start']]; }
+    if(c.shape === 'up'){ var x1 = LX, y1 = 5 + K(c) * (x1 - c.at); if(y1 > 9.6){ y1 = 9.6; x1 = c.at + 4.6 / K(c); }
       var xu = Math.min(9.2, c.at + 3.2);
-      return [[px(x1) - 7, py(y1) - 3, 'end'], [px(xu) + 8, py(5 + (xu - c.at)) + 13, 'start'], [px(Math.min(9.6, c.at + 4.4)) + 8, py(Math.min(9.6, 5 + 4.4)) + 13, 'start']]; }
+      return [[px(x1) - 7, py(y1) - 3, 'end'], [px(xu) + 8, py(5 + K(c) * (xu - c.at)) + 13, 'start'], [px(Math.min(9.6, c.at + 4.4 / K(c))) + 8, py(Math.min(9.6, 5 + 4.4)) + 13, 'start']]; }
     if(c.shape === 'ppc'){
       if(inside === 'in'){ var ri = (c.at - 0.45) / Math.SQRT2; return [px(ri) - 2, py(ri) + 12, 'end']; }
       var r = (c.at + 0.45) / Math.SQRT2; return [px(r) + 2, py(r) - 2, 'start']; }
@@ -745,10 +804,10 @@
   function pairLabels(c, b){
     var right = c.at > b.at, nw = labelAt(c), od = labelAt(b);
     if(c.shape === 'up'){
-      var lo = function(q){ var x = Math.min(q.at + 1.6, 8.2), yv = 5 + (x - q.at); return [px(x) + 8, py(yv) + 12, 'start']; };
+      var lo = function(q){ var x = Math.min(q.at + 1.6, 8.2), yv = 5 + K(q) * (x - q.at); return [px(x) + 8, py(yv) + 12, 'start']; };
       if(right) nw = lo(c); else od = lo(b);
     } else if(c.shape === 'down'){
-      var ll = function(q){ var x = q.at + 3.4, yv = 5 - (x - q.at); return [px(x) - 6, py(yv) + 14, 'end']; };
+      var ll = function(q){ var x = q.at + 3.4, yv = 5 - K(q) * (x - q.at); return [px(x) - 6, py(yv) + 14, 'end']; };
       if(right) od = ll(b); else nw = ll(c);
     } else if(c.shape === 'vertical'){
       nw = right ? [px(c.at) + 5, py(9.6) + 1, 'start'] : [px(c.at) - 5, py(9.6) + 1, 'end'];
@@ -765,8 +824,8 @@
     if(Math.abs(d) < 0.15) return '';
     var x0, y0, x1, y1;
     if(c.shape === 'vertical'){ y0 = y1 = 7.4; x0 = b.at; x1 = c.at; }
-    else if(c.shape === 'down'){ y0 = y1 = 7.6; x0 = b.at - 2.6; x1 = c.at - 2.6; }
-    else if(c.shape === 'up'){ y0 = y1 = 2.4; x0 = b.at - 2.6; x1 = c.at - 2.6; }
+    else if(c.shape === 'down'){ y0 = y1 = 7.6; x0 = b.at - 2.6 / K(b); x1 = c.at - 2.6 / K(c); }
+    else if(c.shape === 'up'){ y0 = y1 = 2.4; x0 = b.at - 2.6 / K(b); x1 = c.at - 2.6 / K(c); }
     else if(c.shape === 'ppcline'){ var cs = Math.cos(Math.PI / 3), sn = Math.sin(Math.PI / 3), rb = 1 / (cs / (b.at * b.kx) + sn / (b.at * b.ky)), rc = 1 / (cs / (c.at * c.kx) + sn / (c.at * c.ky)); x0 = rb * cs; y0 = rb * sn; x1 = rc * cs; y1 = rc * sn; }
     else if(c.shape === 'ppc' || c.shape === 'ppcin'){ var k = Math.cos(Math.PI / 3); x0 = b.at * k; y0 = b.at * Math.sin(Math.PI / 3); x1 = c.at * k; y1 = c.at * Math.sin(Math.PI / 3); if(c.shape === 'ppcin'){ x0 = b.at * 0.3; y0 = y(b, x0); x1 = c.at * 0.3; y1 = y(c, x1); } }
     else if(VERTICAL_SHIFT[c.shape]){ x0 = x1 = c.shape === 'lorenz' ? 6 : 8.2; y0 = y(b, x0); y1 = y(c, x1); if(y0 == null || y1 == null) return ''; }
@@ -799,6 +858,24 @@
     return axis === 'x' ? '<text class="mic-gr-mark ' + (cls || '') + '" x="' + f1(px(v)) + '" y="' + (T + PH + 13) + '" text-anchor="middle">' + s + '</text>'
       : '<text class="mic-gr-mark ' + (cls || '') + '" x="' + (L - 4) + '" y="' + f1(py(v) + 4) + '" text-anchor="end">' + s + '</text>';
   }
+  /* Axis marks close in value (QE and QT for a one-step tax, PE and PW + t) are pushed apart along their axis after
+     drawing, so no two touch (integration T3-1). Marks on the horizontal axis sit at y = T + PH + 13, on the
+     vertical axis at x = L - 4; each keeps its anchor, and the run is pulled back inside the picture if it leaves.
+     Widths are taken at the bigger phone size (mic.css data-fit), so marks do not touch there either. */
+  function spreadMarks(html){
+    var re = /<text class="mic-gr-mark([^"]*)" x="([-\d.]+)" y="([-\d.]+)" text-anchor="(\w+)">([\s\S]*?)<\/text>/g, xs = [], ys = [], m;
+    var wOf = function(inner){ var sub = (/<tspan[^>]*>([^<]*)<\/tspan>/.exec(inner) || [])[1] || '', main = inner.replace(/<tspan[^>]*>[^<]*<\/tspan>/g, '').replace(/&[a-z#0-9]+;/g, 'x').replace(/<[^>]+>/g, ''); return main.length * 8.2 + sub.replace(/[^A-Z]/g, '').length * 8.8 + sub.replace(/[A-Z]/g, '').length * 5.8; };
+    while((m = re.exec(html))){ var o = { s: m[0], cls: m[1], x: +m[2], y: +m[3], a: m[4], inner: m[5], w: wOf(m[5]) }; if(Math.abs(o.y - (T + PH + 13)) < 0.01) xs.push(o); else if(Math.abs(o.x - (L - 4)) < 0.01) ys.push(o); }
+    var moved = [];
+    var left = function(o){ return o.a === 'end' ? o.x - o.w : o.a === 'middle' ? o.x - o.w / 2 : o.x; };
+    xs.sort(function(a, b){ return left(a) - left(b); });
+    for(var i = 1; i < xs.length; i++){ var need = left(xs[i - 1]) + xs[i - 1].w + 4 - left(xs[i]); if(need > 0){ xs[i].x += need; moved.push(xs[i]); } }
+    if(xs.length){ var last = xs[xs.length - 1], over = left(last) + last.w - (W - 2); if(over > 0) xs.forEach(function(o){ o.x -= over; if(moved.indexOf(o) < 0) moved.push(o); }); }
+    ys.sort(function(a, b){ return b.y - a.y; });
+    for(var j = 1; j < ys.length; j++){ var gap = ys[j - 1].y - 20 - ys[j].y; if(gap < 0){ ys[j].y += gap; moved.push(ys[j]); } }
+    moved.forEach(function(o){ html = html.replace(o.s, '<text class="mic-gr-mark' + o.cls + '" x="' + f1(o.x) + '" y="' + f1(o.y) + '" text-anchor="' + o.a + '">' + o.inner + '</text>'); });
+    return html;
+  }
   function vguide(x, top, cls){ return '<path class="mic-gr-guide ' + (cls || '') + '" d="M' + f1(px(x)) + ' ' + f1(py(top)) + 'V' + f1(py(0)) + '"/>'; }
   function eName(n){ return 'E' + (n ? '<tspan class="mic-gr-sub" dy="3">' + esc(n) + '</tspan>' : ''); }
   function guides(p, cls){
@@ -807,11 +884,11 @@
   function centroid(poly){ var a = 0, cx = 0, cy = 0; for(var i = 0; i < poly.length; i++){ var p = poly[i], q = poly[(i + 1) % poly.length], cr = p[0] * q[1] - q[0] * p[1]; a += cr; cx += (p[0] + q[0]) * cr; cy += (p[1] + q[1]) * cr; } if(Math.abs(a) < 1e-9) return poly[0]; return [cx / (3 * a), cy / (3 * a)]; }
   /* Where a cell's letter goes: the point inside the cell farthest from its
      edges (in screen units), so a thin cell's letter does not sit on a curve. */
-  function labelSpot(poly){
+  function labelSpot(poly, avoid){
     var P = poly.map(function(q){ return [px(q[0]), py(q[1])]; }), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     P.forEach(function(q){ x0 = Math.min(x0, q[0]); x1 = Math.max(x1, q[0]); y0 = Math.min(y0, q[1]); y1 = Math.max(y1, q[1]); });
     function inside(x, y){ var c = false; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[i], b = P[j]; if((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) c = !c; } return c; }
-    function edge(x, y){ var m = Infinity; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[j], b = P[i], dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L)) : 0, ex = a[0] + t * dx - x, ey = a[1] + t * dy - y; m = Math.min(m, ex * ex + ey * ey); } return m; }
+    function edge(x, y){ var m = Infinity; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[j], b = P[i], dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L)) : 0, ex = a[0] + t * dx - x, ey = a[1] + t * dy - y; m = Math.min(m, ex * ex + ey * ey); } (avoid || []).forEach(function(q){ var ax = q[0] - x, ay = q[1] - y; m = Math.min(m, ax * ax + ay * ay); }); return m; }
     var best = null, bd = -1, N = 24;
     for(var i = 1; i < N; i++) for(var j = 1; j < N; j++){ var x = x0 + (x1 - x0) * i / N, y = y0 + (y1 - y0) * j / N; if(!inside(x, y)) continue; var d = edge(x, y); if(d > bd){ bd = d; best = [x, y]; } }
     if(!best){ var ct = centroid(poly); return [px(ct[0]), py(ct[1])]; }
@@ -820,7 +897,7 @@
   function polyPath(poly){ return 'M' + poly.map(function(p){ return f1(px(p[0])) + ' ' + f1(py(p[1])); }).join('L') + 'Z'; }
 
   /* The policy lines and quantity marks of an sd-micro graph, as the exam draws them. */
-  function policyLayer(spec){
+  function policyLayer(spec, state){
     var P = spec.policy, g = [];
     if(!P) return '';
     var cs0 = curves(spec, {}), D = find(cs0, 'D'), S = find(cs0, 'S');
@@ -835,8 +912,9 @@
     } else if(P.type === 'tariff'){
       var t2 = P.at + (P.amount || 1); line(P.at, 'PW'); line(t2, 'PT');
       [[xAt(S, P.at), P.at, 'S1'], [xAt(S, t2), t2, 'S2'], [xAt(D, t2), t2, 'D2'], [xAt(D, P.at), P.at, 'D1']].forEach(function(m){ if(m[0] != null) qmark(m[0], m[1], 'Q', m[2]); });
-    } else if(P.type === 'tax' || P.type === 'subsidy'){
-      var e = cross(D, find(curves(spec, { S: (P.type === 'tax' ? -1 : 1) * (P.amount || 1) }), 'S'));
+    } else if((P.type === 'tax' || P.type === 'subsidy') && ((spec.do || []).indexOf('shift') < 0 || (state && state.key))){
+      // With a shift task the student draws the shifted S: the after-tax guides would give it away (integration 7).
+      var e = cross(D, find(curves(spec, { S: (P.type === 'tax' ? -1 : 1) * taxSteps(spec) }), 'S'));
       if(e){ var pb = y(D, e[0]), ps = y(S, e[0]);
         g.push('<path class="mic-gr-guide" d="M' + f1(px(0)) + ' ' + f1(py(pb)) + 'H' + f1(px(e[0])) + 'V' + f1(py(0)) + 'M' + f1(px(0)) + ' ' + f1(py(ps)) + 'H' + f1(px(e[0])) + '"/>');
         g.push(amark('x', e[0], 'Q', P.type === 'tax' ? 'T' : 'SUB')); g.push(amark('y', pb, 'P', 'B')); g.push(amark('y', ps, 'P', 'S')); }
@@ -845,9 +923,11 @@
   }
 
   /* One panel's SVG. state: { shifts, eq, point, labels, line, shade, key,
-     focus, n0, n1, curveN, marks0, labelsShown, letters }. */
+     focus, n0, n1, curveN, curveN0 (old curves' number, default n0),
+    followerOld (false: no label on a follower's old place), oldLabels (false: none on any old curve), marks0,
+    labelsShown, letters }. */
   function svgPanel(spec, state, panel, opts){
-    var n0 = state.n0 != null ? String(state.n0) : '1', n1 = state.n1 != null ? String(state.n1) : '2';
+    var n0 = state.n0 != null ? String(state.n0) : '1', c0 = state.curveN0 != null ? String(state.curveN0) : n0, n1 = state.n1 != null ? String(state.n1) : '2';
     var k = kindOf(spec), shifts = state.shifts || {}, labels = state.labels || {}, does = spec.do || [], pid = panel.id, two = panelsOf(spec).length > 1;
     var xs = pid === 'firm' ? 'fx' : 'x', ys = pid === 'firm' ? 'fy' : 'y';
     var askLabels = does.indexOf('label') > -1 && !state.labelsShown;
@@ -855,51 +935,102 @@
     var g = [];
     g.push('<rect class="mic-gr-hit" x="' + L + '" y="' + T + '" width="' + PW + '" height="' + PH + '"/>');
     // Shading cells first, under the curves.
-    var ar = (does.indexOf('shade') > -1 || state.letters || (state.key && does.indexOf('shade') > -1)) ? areas(spec) : null, on = state.shade || [], keyCells = state.key && does.indexOf('shade') > -1 ? regionCells(spec, (spec.key || {}).shade) : [];
-    if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
-      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly);
-      g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/><text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>');
-    });
+    var shadeTask = does.indexOf('shade') > -1, ar = (shadeTask || state.letters || (state.shade && state.shade.length)) ? areas(spec) : null, on = state.shade || [], keyCells = state.key && does.indexOf('shade') > -1 ? regionCells(spec, (spec.key || {}).shade) : [];
+    // Drawn once the shift arrows are known (a letter keeps clear of an arrow, integration u2), under the curves.
+    // Each letter placed is an obstacle for the next, so two letters in thin neighboring cells do not touch.
+    var drawCells = function(avoid){ var out = [], lets = []; if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
+      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly, avoid.concat(lets)), g = out;
+      lets.push(ct, [ct[0] - 4, ct[1]], [ct[0] + 4, ct[1]], [ct[0], ct[1] - 5], [ct[0], ct[1] + 5]);
+      if(!shadeTask && !state.letters && on.indexOf(c.id) < 0) return;   // a picture shading a region (state.shade) shows only it
+      g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/>' + (shadeTask || state.letters ? '<text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>' : ''));
+    }); return out.join(''); };
     g.push('<path class="mic-gr-axis" d="M' + L + ' ' + T + 'V' + (T + PH) + 'H' + (L + PW) + '"/>');
-    g.push('<text class="mic-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 31) + '" text-anchor="end">' + esc(nm(xs, panel.x)) + '</text>');
+    g.push('<text class="mic-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 35) + '" text-anchor="end">' + esc(nm(xs, panel.x)) + '</text>');
     g.push('<text class="mic-gr-alabel" transform="translate(' + (L - 34) + ' ' + T + ') rotate(-90)" text-anchor="end">' + esc(nm(ys, panel.y)) + '</text>');
     if(two) g.push('<text class="mic-gr-ptitle" x="' + (L + PW / 2) + '" y="' + (T + 2) + '" text-anchor="middle">' + esc(panel.title) + '</text>');
     var all = curves(spec, {}), allNow = curves(spec, shifts), inP = function(c){ return c.panel === pid; };
     var base = all.filter(inP), now = allNow.filter(inP);
     var e0 = k.eq && find(base, k.eq[0]) ? eq(spec, {}) : null;
     var placed = [], cn = state.curveN != null ? String(state.curveN) : '2';
-    function box(t, n, at){ var w = String(t[0]).length * 7.4 + String(t[1] + (n || '')).length * 5.4, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
-    function hit(a, b){ return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3]; }
-    var lines = now.map(function(c){ var pts = []; if(c.shape === 'vertical'){ for(var v = 0; v <= 10; v += 0.25) pts.push([px(c.at), py(v)]); } else for(var x = 0; x <= 10 + 1e-9; x += 0.1){ var h = y(c, x); if(h != null && h >= 0 && h <= 10) pts.push([px(x), py(h)]); } return pts; });
+    // Measured in the site font at 13 px bold: about 11 px a capital (MC 23, ATC 29, AVC 31), 7.5 a small letter
+    // or digit, 4 a space, 8 an equals sign; a subscript about 7.
+    function cw(s){ var w = 0; String(s).replace(/./g, function(ch){ w += /[A-Z]/.test(ch) ? 11 : ch === ' ' ? 4 : ch === '=' ? 8 : 7.5; return ch; }); return w; }
+    function box(t, n, at){ var w = cw(t[0]) + String(t[1] + (n || '')).length * 7, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
+    // Labels keep 4 px apart across and 2 px up and down (MC and ATC side by side no longer touch: launch review).
+    function hit(a, b){ return a[0] < b[2] + 4 && b[0] < a[2] + 4 && a[1] < b[3] + 2 && b[1] < a[3] + 2; }
+    function ptsOf(c){ var pts = []; if(c.shape === 'vertical'){ for(var v = 0; v <= 10; v += 0.25) pts.push([px(c.at), py(v)]); } else for(var x = 0; x <= 10 + 1e-9; x += 0.1){ var h = y(c, x); if(h != null && h >= 0 && h <= 10) pts.push([px(x), py(h)]); } return pts; }
+    var lines = now.map(ptsOf);
     var LV = lineAt(spec, state), LDf = lineDef(spec), lineHere = LDf && (LDf.panel || 'main') === pid && LV != null;
     if(lineHere){ var lp = []; for(var lx = 0; lx <= 10; lx += 0.1) lp.push([px(lx), py(LV)]); lines.push(lp); }
-    function crosses(bx, skip){ return lines.some(function(pts, j){ return j !== skip && pts.some(function(q){ return q[0] > bx[0] - 1 && q[0] < bx[2] + 1 && q[1] > bx[1] - 1 && q[1] < bx[3] + 1; }); }); }
-    function place(t, n, at, skip){
+    function crosses(bx, skip, set){ return (set || lines).some(function(pts, j){ return (set || j !== skip) && pts.some(function(q){ return q[0] > bx[0] - 1 && q[0] < bx[2] + 1 && q[1] > bx[1] - 1 && q[1] < bx[3] + 1; }); }); }
+    /* Soft obstacles: dashed guides and shift arrows. A label avoids them when it can, never at the cost of a curve. */
+    var soft = [], seg = function(a, b){ var pts = [], n = Math.max(2, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 3)); for(var i = 0; i <= n; i++) pts.push([a[0] + (b[0] - a[0]) * i / n, a[1] + (b[1] - a[1]) * i / n]); return pts; };
+    var guideAt = function(p){ if(p){ soft.push(seg([px(0), py(p[1])], [px(p[0]), py(p[1])])); soft.push(seg([px(p[0]), py(p[1])], [px(p[0]), py(0)])); } };
+    function place(t, n, at, skip, along){
       var tries = [0, 14, -14, 28, -28], bx, fallback = null, cands = Array.isArray(at[0]) ? at.slice() : [at];
       at = cands[0];
       // A long label that would leave the picture flips to the other side of its point.
       cands.slice().forEach(function(a){ var b0 = box(t, n, a); if(b0[2] > W - 2 && a[2] === 'start') cands.push([a[0] - 12, a[1], 'end']); if(b0[0] < 2 && a[2] === 'end') cands.push([a[0] + 12, a[1], 'start']); });
-      // Every candidate at its own height first, then nudged up or down.
+      // Every candidate at its own height first, then nudged up or down; clear of guides and arrows if it can be.
+      var hard = null;
       for(var tt = 0; tt < tries.length; tt++) for(var c = 0; c < cands.length; c++){
         var a2 = [cands[c][0], cands[c][1] + tries[tt], cands[c][2]]; bx = box(t, n, a2);
         if(a2[1] < 12 || a2[1] > T + PH - 2 || bx[2] > W || bx[0] < 0) continue;
         if(placed.some(function(q){ return hit(q, bx); })) continue;
-        if(!crosses(bx, skip)){ placed.push(bx); return a2; }
+        if(!crosses(bx, skip)){ if(!crosses(bx, -1, soft)){ placed.push(bx); return a2; } if(!hard) hard = [a2, bx]; }
         if(!fallback) fallback = [a2, bx];
       }
+      if(hard){ placed.push(hard[1]); return hard[0]; }
       if(fallback){ placed.push(fallback[1]); return fallback[0]; }
-      placed.push(box(t, n, at)); return at;
+      // Nothing near the end fits (two curves leave through the top): walk back along the curve for a clear spot.
+      var pts = along || (skip >= 0 && lines[skip]) || [];
+      // First clear of every curve, then clear of the other labels only; never outside the picture.
+      for(var pass = 0; pass < 2; pass++) for(var q = pts.length - 1; q >= 0; q -= 2) for(var sd = 0; sd < 2; sd++){
+        var a3 = [pts[q][0] + (sd ? -8 : 8), pts[q][1] + 4, sd ? 'end' : 'start'], b3 = box(t, n, a3);
+        if(a3[1] < 12 || a3[1] > T + PH - 2 || b3[2] > W || b3[0] < 0 || placed.some(function(z){ return hit(z, b3); }) || (!pass && crosses(b3, skip))) continue;
+        placed.push(b3); return a3;
+      }
+      // Still nothing: the first candidate, pulled inside the picture.
+      var b4 = box(t, n, at), dx = b4[2] > W - 2 ? W - 2 - b4[2] : b4[0] < 2 ? 2 - b4[0] : 0;
+      at = [at[0] + dx, Math.max(12, Math.min(T + PH - 2, at[1])), at[2]]; placed.push(box(t, n, at)); return at;
     }
+    // The long line label (d = MR = AR = P) in two lines in the right margin, placed before the curve labels.
+    var lineLbl = '';
+    if(lineHere){
+      var lt0 = askLabels && !labels[LDf.id] ? null : curveText(spec, labels[LDf.id] || LDf.id);
+      if(LDf.link || (lt0 && lt0[1] === '' && lt0[0].length > 4)){
+        var words = lt0 ? lt0[0].split(' = ') : ['?'], half = Math.ceil(words.length / 2), l1 = words.slice(0, half).join(' = ') + (words.length > 1 ? ' =' : ''), l2 = words.slice(half).join(' = ');
+        var ly = Math.max(T + 10, Math.min(T + PH - 16, py(LV) - 4)), lx = Math.min(px(10) + 4, W - 2 - Math.max(l1.length, l2.length) * 6.8);
+        placed.push([lx - 2, ly - 14, W, ly + (l2 ? 19 : 6)]);
+        lineLbl = '<text class="mic-gr-clabel is-line is-small" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="start">' + esc(l1) + (l2 ? '<tspan x="' + f1(lx) + '" dy="13">' + esc(l2) + '</tspan>' : '') + '</text>';
+      }
+    }
+    // Shift arrows and the dashed guides of the equilibria are soft obstacles for the labels.
+    var arrows = now.map(function(c, i){ return c.steps ? arrowOf(base[i], c) : ''; });
+    arrows.forEach(function(a){ var m = /^<path class="mic-gr-arrow" d="M([-\d.]+) ([-\d.]+)L([-\d.]+) ([-\d.]+)/.exec(a); if(m) soft.push(seg([+m[1], +m[2]], [+m[3], +m[4]])); });
+    if(k.eq && find(base, k.eq[0])){ guideAt(eq(spec, {})); if(state.eq) guideAt(state.eq); }
+    var arrowPts = []; soft.forEach(function(pts){ arrowPts = arrowPts.concat(pts); });
+    // A letter also keeps clear of a curve drawn across its cell (the S + tax line through the
+    // tax revenue rectangle: the cells are cut by the curves as they started).
+    var curvePts = []; now.forEach(function(c, i){ if(c.steps) lines[i].forEach(function(q, j){ if(j % 2 === 0) curvePts.push(q); }); });
+    g.splice(1, 0, drawCells(arrowPts.filter(function(q, i){ return i % 2 === 0; }).concat(curvePts)));
     var whole = function(c, i){ return c.steps && Math.abs(c.at - base[i].at) >= 1 - 1e-9 && (c.shape === 'up' || c.shape === 'down' || c.shape === 'vertical'); };
     var txt = function(id){ return askLabels && !labels[id] ? null : curveText(spec, labels[id] || id); };
+    // A faded curve keeps only the first name of a long label (S1 for S = MPC = MSC, beside the live S = MPC = MSC2),
+    // except a curve named by showLabel, whose old name is the point (S = MPC under S + tax).
+    var oldTxt = function(id){ var t = txt(id); return t && / = /.test(t[0]) ? [t[0].split(' = ')[0], t[1], t[2]] : t; };
+    // spec.showLabel { S: 'S + tax' }: the curve drawn shifted by spec.show reads so, with no number (integration 11).
+    var SL = spec.showLabel || {}, own = function(c){ return c.steps && SL[c.id] && (spec.show || {})[c.id] ? [String(SL[c.id]), '', curveName(c.id, spec)] : null; };
     var pos = now.map(function(c, i){
-      var t = txt(c.id) || ['?', String(i + 1)];
-      return place(t, c.steps ? cn : '', whole(c, i) ? pairLabels(c, base[i])[0] : labelAt(c), i);
+      var t = (txt(c.id) && own(c)) || txt(c.id) || ['?', String(i + 1)];
+      return place(t, c.steps && !own(c) ? cn : '', whole(c, i) ? pairLabels(c, base[i])[0] : labelAt(c), i);
     });
     var oldPos = now.map(function(c, i){
-      var b = base[i], t = txt(c.id);
+      var b = base[i], t = own(c) ? txt(c.id) : oldTxt(c.id);
       if(!c.steps || !t) return null;
-      return place(t, n0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' ? c.steps > 0 : (b.shape === 'ppc' || b.shape === 'ppcin') && c.at > b.at ? 'in' : true), -1);
+      if(state.followerOld === false && c.follows) return null;   // the faded MR1 crowds the axis (integration T2-4)
+      if(state.oldLabels === false) return null;   // a narrow stage: faded curves unlabeled (launch, cost lab on a phone)
+      return place(t, c0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' ? c.steps > 0 : (b.shape === 'ppc' || b.shape === 'ppcin') && c.at > b.at ? 'in' : true), -1, ptsOf(b));
     });
     if(state.key){
       var ko = keyOffsets(spec);
@@ -908,11 +1039,11 @@
     }
     now.forEach(function(c, i){
       var moved = !!c.steps, b = base[i], t = txt(c.id), at = pos[i];
-      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t ? curveLabel(t, n0, oldPos[i], 'is-old') : '') + arrowOf(b, c));
+      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t && oldPos[i] ? curveLabel(own(c) ? t : oldTxt(c.id), own(c) ? '' : c0, oldPos[i], 'is-old') : '') + arrows[i]);
       g.push('<g class="mic-gr-c" data-curve="' + esc(c.id) + '"><path class="mic-gr-curve' + (state.focus === c.id ? ' is-focus' : '') + (c.fixed ? ' is-fixed' : '') + '" d="' + pathOf(c) + '"/>' +
-        '<path class="mic-gr-grab" d="' + pathOf(c) + '"/></g>' + (t ? curveLabel(t, moved ? cn : '', at) : '<text class="mic-gr-clabel" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + at[2] + '">?<tspan class="mic-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
+        '<path class="mic-gr-grab" d="' + pathOf(c) + '"' + (does.indexOf('shift') < 0 ? ' pointer-events="none"' : '') + '/></g>' + (t ? (own(c) ? curveLabel(own(c), '', at) : curveLabel(t, moved ? cn : '', at)) : '<text class="mic-gr-clabel" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + at[2] + '">?<tspan class="mic-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
     });
-    if(pid === 'main' || pid === (panelsOf(spec)[0] || {}).id) g.push(policyLayer(spec));
+    if(pid === 'main' || pid === (panelsOf(spec)[0] || {}).id) g.push(policyLayer(spec, state));
     if(spec.linear && spec.ends){ var pc = find(base, 'PPC');
       if(pc && pc.shape === 'ppcline' && !(spec.start && spec.start.PPC)){
         g.push('<text class="mic-gr-mark is-end" x="' + f1(px(pc.at * pc.kx)) + '" y="' + (T + PH + 13) + '" text-anchor="middle">' + esc(spec.ends.x) + '</text>');
@@ -920,21 +1051,15 @@
       } }
     // The price or wage line (d = MR = AR = P on the firm, a regulated price, a minimum wage).
     if(lineHere){
-      var lt = txt(LDf.id), lbl = '';
-      if(LDf.link || (lt && lt[1] === '' && lt[0].length > 4)){
-        // A long line label (d = MR = AR = P) in two lines in the right margin, clear of the curves.
-        var words = lt ? lt[0].split(' = ') : ['?'], half = Math.ceil(words.length / 2), l1 = words.slice(0, half).join(' = ') + (words.length > 1 ? ' =' : ''), l2 = words.slice(half).join(' = ');
-        var ly = Math.max(T + 10, Math.min(T + PH - 16, py(LV) - 4)), lx = px(10) + 4;
-        placed.push([lx, ly - 11, W, ly + 17]);
-        lbl = '<text class="mic-gr-clabel is-line is-small" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="start">' + esc(l1) + (l2 ? '<tspan x="' + f1(lx) + '" dy="13">' + esc(l2) + '</tspan>' : '') + '</text>';
-      }
-      g.push('<g class="mic-gr-l" data-line="' + esc(LDf.id) + '"><path class="mic-gr-pline' + (state.focus === 'line' ? ' is-focus' : '') + '" d="' + hpath(LV) + '"/><path class="mic-gr-grab" d="' + hpath(LV) + '"/></g>' + lbl);
+      var lbl = lineLbl;
+      g.push('<g class="mic-gr-l" data-line="' + esc(LDf.id) + '"><path class="mic-gr-pline' + (state.focus === 'line' ? ' is-focus' : '') + '" d="' + hpath(LV) + '"/><path class="mic-gr-grab" d="' + hpath(LV) + '"' + (does.indexOf('line') < 0 ? ' pointer-events="none"' : '') + '/></g>' + lbl);
       if(!askLabels){
         var E0g = LDf.link ? eq(spec, {}) : null, moved0 = E0g && state.eq && (Math.abs(state.eq[0] - E0g[0]) > 1e-6 || Math.abs(state.eq[1] - E0g[1]) > 1e-6);
-        g.push(amark('y', LV, LDf.link ? (LDf.id === 'W' ? 'W' : 'P') : CURVE[LDf.id][0], LDf.link ? (E0g && Math.abs(LV - E0g[1]) > 1e-6 ? n1 : moved0 ? n0 : '') : CURVE[LDf.id][1]));
+        g.push(amark('y', LV, LDf.link || LDf.id === 'P' || LDf.id === 'W' ? LDf.id : CURVE[LDf.id][0], LDf.link ? (E0g && Math.abs(LV - E0g[1]) > 1e-6 ? n1 : moved0 ? n0 : '') : LDf.id === 'P' || LDf.id === 'W' ? '' : CURVE[LDf.id][1]));
       }
+      if(spec.kind === 'demand'){ var dq = named(spec, shifts, 'at-price', LV); if(dq){ g.push(vguide(dq[0], dq[1])); g.push(amark('x', dq[0], 'Q', '')); } }
       // The firm's quantity where the line meets MC (or MRP), with its guide, once known.
-      if(LDf.link){ var fp = named(spec, shifts, 'firm', LV); if(fp){ g.push(vguide(fp[0], fp[1])); g.push(amark('x', fp[0], 'q', pid === 'firm' ? 'F' : '')); } }
+      if(LDf.link){ var fp = named(spec, shifts, 'firm', LV); if(fp && fp[0] > 0){ g.push(vguide(fp[0], fp[1])); g.push(amark('x', fp[0], 'q', pid === 'firm' ? 'F' : '')); } else if(fp) g.push(amark('x', 0.9, 'q = 0', '', 'is-end')); }
     }
     // Carry the market price across to the firm (a dashed line to the panel's edge).
     if(two && LDf && LDf.link && LV != null){
@@ -955,10 +1080,14 @@
       g.push('<g class="mic-gr-pt" data-pt="eq"><circle class="mic-gr-eq" cx="' + f1(px(state.eq[0])) + '" cy="' + f1(py(state.eq[1])) + '" r="6"/><text class="mic-gr-plabel" x="' + f1(ea[0]) + '" y="' + f1(ea[1]) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + eName(n1) + '</text></g>'); }
     var ptPanel = (spec.key && spec.key.point && spec.key.point.at) ? pointPanel(spec, spec.key.point.at) : (panelsOf(spec)[0] || {}).id;
     if(state.point && ptPanel === pid){
-      var pNear = px(state.point[0]) > W - 40;
-      g.push('<g class="mic-gr-pt" data-pt="point"><circle class="mic-gr-eq is-point" cx="' + f1(px(state.point[0])) + '" cy="' + f1(py(state.point[1])) + '" r="6"/><text class="mic-gr-plabel" x="' + f1(px(state.point[0]) + (pNear ? -9 : 9)) + '" y="' + f1(py(state.point[1]) - 8) + '" text-anchor="' + (pNear ? 'end' : 'start') + '">' + esc(spec.pointLabel || 'X') + '</text></g>'); }
+      var PX = px(state.point[0]), PY = py(state.point[1]), plt = String(spec.pointLabel || 'X'), pm = spec.pointMarks;
+      // Dashed guides and axis marks for the point (P_M and Q_M, W_M and L_M), as the exam draws them (integration 12).
+      if(pm){ g.push(guides(state.point)); ['x', 'y'].forEach(function(a){ if(pm[a]){ var bits = String(pm[a]).split('_'); g.push(amark(a, state.point[a === 'x' ? 0 : 1], bits[0], bits[1] || '')); } }); }
+      // The label goes to the first clear corner around the point (no curve, no other label under it).
+      var pat = plt.trim() ? place([plt, ''], '', [[PX + 9, PY - 8, 'start'], [PX - 9, PY - 8, 'end'], [PX + 9, PY + 17, 'start'], [PX - 9, PY + 17, 'end'], [PX + 11, PY + 5, 'start'], [PX - 11, PY + 5, 'end']], -1) : [PX + 9, PY - 8, 'start'];
+      g.push('<g class="mic-gr-pt" data-pt="point"><circle class="mic-gr-eq is-point" cx="' + f1(PX) + '" cy="' + f1(PY) + '" r="6"/><text class="mic-gr-plabel" x="' + f1(pat[0]) + '" y="' + f1(pat[1]) + '" text-anchor="' + pat[2] + '">' + esc(plt) + '</text></g>'); }
     var label = opts.label || ((two ? panel.title + ' graph' : k.title + ' graph') + ': ' + describe(spec, state, pid));
-    return '<svg class="mic-graph-svg" data-panel="' + esc(pid) + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + g.join('') + '</svg>';
+    return '<svg class="mic-graph-svg" data-panel="' + esc(pid) + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + spreadMarks(g.join('')) + '</svg>';
   }
   function svg(spec, state, opts){
     state = state || {}; opts = opts || {};

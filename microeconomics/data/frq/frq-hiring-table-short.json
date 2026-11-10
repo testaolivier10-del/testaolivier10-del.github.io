@@ -1,0 +1,132 @@
+{
+ "id": "frq-hiring-table-short",
+ "type": "short",
+ "points": 5,
+ "title": "A hiring table at a bicycle repair shop: a lower wage, a higher price and derived demand",
+ "units": [
+  "unit-3",
+  "unit-5"
+ ],
+ "topics": [
+  "production-function",
+  "factor-markets",
+  "competitive-factor-markets"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "2.C"
+ ],
+ "scenario": "Spokewell Cycles (invented) repairs bicycles and sells each repair for \\$4 in a perfectly competitive market. It hires mechanics in a perfectly competitive labor market at a wage of \\$30 a day. The table shows the number of repairs it completes each day with different numbers of mechanics.",
+ "stimulus": {
+  "title": "Mechanics and repairs at Spokewell Cycles",
+  "invented": true,
+  "table": {
+   "caption": "Repairs completed per day at the invented Spokewell Cycles (invented data for practice)",
+   "cols": [
+    "Number of mechanics",
+    "Total repairs per day"
+   ],
+   "rows": [
+    [
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     "10"
+    ],
+    [
+     "2",
+     "24"
+    ],
+    [
+     "3",
+     "34"
+    ],
+    [
+     "4",
+     "40"
+    ],
+    [
+     "5",
+     "43"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the marginal revenue product of the fourth mechanic. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$24 a day, with work shown: MP = 40 - 34 = 6 repairs, and MRP = 6 × \\$4",
+     "accept": [
+      "(40 - 34) × 4 = 24",
+      "MRP = MP × P = 6 × \\$4 = \\$24"
+     ]
+    }
+   ],
+   "sample": "The fourth mechanic's marginal product is 40 - 34 = 6 repairs. MRP = MP × P = 6 × \\$4 = \\$24 a day."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "prompt": "The market wage for mechanics falls to \\$20 a day. <b>Identify</b> the number of mechanics Spokewell now hires to maximize profit.",
+   "rubric": [
+    {
+     "point": "4 mechanics",
+     "accept": [
+      "four"
+     ]
+    }
+   ],
+   "sample": "Spokewell now hires 4 mechanics."
+  },
+  {
+   "label": "B(ii)",
+   "points": 1,
+   "prompt": "<b>Explain</b> your answer to B(i) using marginal revenue product and marginal resource cost.",
+   "rubric": [
+    {
+     "point": "The fourth mechanic's MRP (\\$24) is greater than the MRC of \\$20 (the wage), while the fifth mechanic's MRP (3 × \\$4 = \\$12) is less than \\$20, so hiring stops at 4",
+     "accept": [
+      "MRP of the 4th = \\$24 > \\$20 and MRP of the 5th = \\$12 < \\$20",
+      "hire while MRP ≥ MRC = wage"
+     ]
+    }
+   ],
+   "sample": "A profit-maximizing firm hires while MRP is at least MRC, and in a competitive labor market MRC equals the wage, now \\$20. The MRPs are \\$40, \\$56, \\$40, \\$24 and \\$12. The fourth mechanic adds \\$24, more than \\$20, but the fifth adds only 3 × \\$4 = \\$12, less than \\$20, so Spokewell hires 4."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "Instead, the wage stays at \\$30 a day, and the market price of a repair rises to \\$6. <b>Identify</b> whether Spokewell now hires the fourth mechanic, and <b>explain</b> using numbers.",
+   "rubric": [
+    {
+     "point": "Yes: at \\$6 the fourth mechanic's MRP is 6 × \\$6 = \\$36, more than the \\$30 wage (the fifth's is 3 × \\$6 = \\$18, less than \\$30)",
+     "accept": [
+      "yes, MRP = 6 × 6 = \\$36 > \\$30"
+     ]
+    }
+   ],
+   "sample": "Yes. A higher price raises the MRP of every mechanic. The fourth mechanic's MRP is now 6 × \\$6 = \\$36, more than the \\$30 wage, so hiring that mechanic adds to profit. (The fifth mechanic's MRP, 3 × \\$6 = \\$18, is still below \\$30.)"
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "<b>Explain</b> why Spokewell's demand for mechanics is called a derived demand.",
+   "rubric": [
+    {
+     "point": "Spokewell hires mechanics only because customers buy repairs: its demand for mechanics comes from (is derived from) the demand for the repairs they produce",
+     "accept": [
+      "the demand for labor depends on the demand for the product the labor makes"
+     ]
+    }
+   ],
+   "sample": "Spokewell does not want mechanics for their own sake; it hires them to produce repairs that customers buy. So its demand for mechanics depends on the demand for repairs, through the price of a repair in MRP = MP × P: if the demand for repairs rises, so does the demand for mechanics."
+  }
+ ]
+}

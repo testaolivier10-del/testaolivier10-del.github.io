@@ -1,0 +1,12 @@
+{
+ "equilibrium-surplus-areas": {
+  "file": "figures/equilibrium-surplus-areas.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Kelp bar market at equilibrium E, $4 and 60 bars: consumer surplus is the triangle under demand above $4, worth $180; producer surplus is the triangle above supply below $4, worth $90; total surplus is $270."
+ }
+}

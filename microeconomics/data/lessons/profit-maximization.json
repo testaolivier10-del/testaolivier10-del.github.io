@@ -1,0 +1,84 @@
+{
+ "topic": "profit-maximization",
+ "hook": "A pottery sells every mug it makes for \\$20; one small shop cannot change the market price. It could make three mugs a day, or seven. Making more brings in more revenue, but each extra mug also costs more to make. The best output is found one mug at a time: keep going while the next mug adds more to revenue than to cost.",
+ "prereq": [
+  {
+   "q": "Marginal cost is",
+   "options": [
+    "the change in total cost divided by the change in output",
+    "total cost divided by output",
+    "total cost minus fixed cost",
+    "the cost at zero output"
+   ],
+   "correct": 0,
+   "why": "MC = ΔTC / ΔQ.",
+   "review": "short-run-costs"
+  },
+  {
+   "q": "When economic profit is zero, the firm earns",
+   "options": [
+    "a normal profit",
+    "an accounting loss",
+    "no revenue",
+    "a profit above its opportunity costs"
+   ],
+   "correct": 0,
+   "why": "Zero economic profit is normal profit.",
+   "review": "types-of-profit"
+  },
+  {
+   "q": "A rational decision maker keeps doing more of an activity while",
+   "options": [
+    "its marginal benefit is at least its marginal cost",
+    "its total benefit is positive",
+    "its average cost is falling",
+    "its total cost is falling"
+   ],
+   "correct": 0,
+   "why": "That is marginal analysis.",
+   "review": "marginal-analysis"
+  }
+ ],
+ "figure": {
+  "figure": "profit-maximization-rule",
+  "caption": "The firm sells every unit at P, so d = MR = P is a horizontal line. It produces q*, where MR = MC; profit is the rectangle from P down to ATC, out to q*."
+ },
+ "chain": [
+  {
+   "cause": "Marginal revenue is greater than marginal cost for the next unit",
+   "effect": "producing it adds MR - MC to profit, so the firm expands"
+  },
+  {
+   "cause": "Output rises and diminishing marginal returns push MC up",
+   "effect": "the gap between MR and MC shrinks"
+  },
+  {
+   "cause": "MR equals MC",
+   "effect": "one more unit would add nothing to profit, so profit is at its largest"
+  },
+  {
+   "cause": "The firm knows its profit-maximizing output q*",
+   "effect": "it measures profit as (P - ATC) x q*, the rectangle from the price down to ATC"
+  }
+ ],
+ "ideas": [
+  "<b>Marginal revenue</b>: $\\text{MR} = \\frac{\\Delta \\text{TR}}{\\Delta Q}$, the extra revenue from one more unit.",
+  "The <b>profit-maximizing rule</b>: produce where <b>MR = MC</b>. From a table: the last unit whose MR is at least its MC.",
+  "A firm that sells every unit at one market price has MR = AR = P: its demand curve is horizontal, <b>d = MR = AR = P</b>.",
+  "Profit = TR - TC = (P - ATC) x q, at the profit-maximizing q: the rectangle between the price and ATC."
+ ],
+ "misconception": {
+  "wrong": "A firm maximizes profit by producing where its average total cost is lowest, because each unit is cheapest there.",
+  "right": "Profit depends on revenue too. The firm produces where MR = MC; that output is at the lowest point of ATC only when the price happens to equal that lowest cost."
+ },
+ "check": [
+  "mic-profit-maximization-1",
+  "mic-profit-maximization-2",
+  "mic-profit-maximization-3",
+  "mic-profit-maximization-4",
+  "mic-profit-maximization-10",
+  "mic-profit-maximization-11",
+  "mic-profit-maximization-15"
+ ],
+ "summary": "Marginal revenue is the change in total revenue from one more unit. A firm maximizes profit by producing where MR = MC: from a table, the last unit whose MR is at least its MC. A firm that sells every unit at a market price it cannot change has MR = AR = P, so its demand curve is a horizontal line, d = MR = AR = P. Profit is TR - TC = (P - ATC) x q at the profit-maximizing output: on a graph, the rectangle from the price down to ATC, out to that output."
+}

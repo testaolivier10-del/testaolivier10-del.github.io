@@ -1,0 +1,84 @@
+{
+ "topic": "competitive-factor-markets",
+ "hook": "A furniture workshop owner in a city full of carpenters cannot set the pay; if she offers less than the going wage, nobody shows up. What she can decide is how many carpenters to hire. Each one adds chairs worth a certain amount and costs the going wage. Her whole decision is a comparison of those two numbers.",
+ "prereq": [
+  {
+   "q": "A carpenter adds 6 chairs that sell for \\$20 each in a competitive market. Her MRP is",
+   "options": [
+    "\\$120",
+    "\\$26",
+    "\\$20",
+    "\\$6"
+   ],
+   "correct": 0,
+   "why": "MRP = MP × P = 6 × \\$20.",
+   "review": "factor-markets"
+  },
+  {
+   "q": "A competitive firm produces the quantity where",
+   "options": [
+    "MR = MC",
+    "price is highest",
+    "ATC is lowest",
+    "TR is highest"
+   ],
+   "correct": 0,
+   "why": "Produce while the next unit adds at least as much to revenue as to cost.",
+   "review": "profit-maximization"
+  },
+  {
+   "q": "A rise in market labor demand moves the wage",
+   "options": [
+    "up",
+    "down",
+    "nowhere",
+    "in a direction that is indeterminate"
+   ],
+   "correct": 0,
+   "why": "Labor demand shifts right along labor supply.",
+   "review": "factor-demand-supply"
+  }
+ ],
+ "figure": {
+  "figure": "competitive-factor-markets-side",
+  "caption": "The market sets the wage WM. The firm takes it as a horizontal line, S = MFC = W, and hires qF workers, where its MRP meets that line."
+ },
+ "chain": [
+  {
+   "cause": "Market labor demand and supply set the wage",
+   "effect": "each small firm takes that wage as given"
+  },
+  {
+   "cause": "The firm can hire any number of workers at that wage",
+   "effect": "its MRC (MFC) is the wage: a horizontal line"
+  },
+  {
+   "cause": "Each worker adds MRP to revenue and the wage to cost",
+   "effect": "the firm hires up to where MRP = MRC"
+  },
+  {
+   "cause": "A fixed cost changes neither MRP nor MRC",
+   "effect": "the number hired stays the same"
+  }
+ ],
+ "ideas": [
+  "A firm in a perfectly competitive labor market is a <b>wage taker</b>. Draw the market and the firm side by side; carry the wage across as the line S = MFC = W.",
+  "<b>Marginal resource cost</b> (MRC, also MFC) = change in total labor cost ÷ change in workers. For a wage taker, MRC = W.",
+  "<b>Hiring rule:</b> hire where MRP = MRC; from a table, the last worker whose MRP is at least the MRC. Fixed costs do not change it.",
+  "<b>Least-cost rule:</b> MP of labor ÷ wage = MP of capital ÷ rental price. Spend more on the input with the higher MP per dollar."
+ ],
+ "misconception": {
+  "wrong": "When its rent rises, a firm should hire fewer workers to keep costs down.",
+  "right": "Rent is a fixed cost: it is paid whatever the number of workers. Each worker still adds the same MRP and costs the same wage, so the profit-maximizing number of workers does not change."
+ },
+ "check": [
+  "mic-competitive-factor-markets-14",
+  "mic-competitive-factor-markets-15",
+  "mic-competitive-factor-markets-2",
+  "mic-competitive-factor-markets-3",
+  "mic-competitive-factor-markets-6",
+  "mic-competitive-factor-markets-7",
+  "mic-competitive-factor-markets-11"
+ ],
+ "summary": "In a perfectly competitive labor market the wage is set where market labor demand meets labor supply, and each firm is a wage taker facing a horizontal line S = MFC = W. A firm maximizes profit by hiring where MRP = MRC, which from a table is the last worker whose MRP is at least the wage. A higher wage means fewer workers, a higher product price or productivity means more, and a fixed cost changes nothing. To make any output at the least cost, the MP per dollar must be equal across inputs."
+}

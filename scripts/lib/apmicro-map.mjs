@@ -16,8 +16,10 @@
    - The "Graph skills you need" chapter (graph-skills) sits before Unit 1.
 
    Pages under microeconomics/ declare <body data-topic> or
-   <meta name="mic-topic">; text inside .mic-preview (a preview box) or
-   .mic-nav-ref (navigation naming another topic) is exempt. Files under
+   <meta name="mic-topic">; text inside .mic-preview (a preview box),
+   .mic-nav-ref (navigation naming another topic) or .mic-noscan (words the
+   graph engine writes in a no-JavaScript key line) is exempt, and so is the
+   mark "AP®" (it is not the average-product alias "AP"). Files under
    microeconomics/ never carry the token "ap" (spec decision 2), hence "mic-". */
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, basename } from 'node:path';
@@ -45,7 +47,7 @@ export const MIC_TOPICS = Object.entries(UNIT_SIZES)
   .flatMap(([u, k]) => Array.from({ length: k }, (_, i) => `${u}.${i + 1}`));
 export const RESOLUTIONS = ['pull-forward', 'preview'];
 // The graph kinds an FRQ theme may name (mic-graph.js KINDS), and matrix (mic-matrix.js).
-export const GRAPH_KINDS = ['ppc', 'sd', 'sd-micro', 'costs', 'pc', 'monopoly', 'monocomp', 'labor', 'monopsony', 'externality', 'lorenz', 'matrix'];
+export const GRAPH_KINDS = ['ppc', 'sd', 'demand', 'sd-micro', 'costs', 'pc', 'monopoly', 'monocomp', 'labor', 'monopsony', 'externality', 'lorenz', 'matrix'];
 // The spec's trainers (docs/apmicro-spec.md section 6) and the "Make it
 // specific" trainer: each must be planned in some chapter, exactly once.
 export const REQUIRED_SIMULATORS = [
@@ -415,7 +417,7 @@ export function scanPage(map, html, topicId) {
   const previewed = new Set();
   const topic = map.topics.find(t => t.id === topicId);
   for (const p of (topic && topic.previews) || [])
-    if (new RegExp(`class="[^"]*\\bpsy-preview\\b[^"]*"[^>]*\\bdata-concept="${p.concept}"`).test(html)) previewed.add(p.concept);
+    if (new RegExp(`class="[^"]*\\bmic-preview\\b[^"]*"[^>]*\\bdata-concept="${p.concept}"`).test(html)) previewed.add(p.concept);
   const lower = text.toLowerCase();
   for (const { c, there, terms } of scanList(map)) {
     if (there <= here || previewed.has(c.id)) continue;
@@ -523,7 +525,12 @@ export function preStrip(html) {
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<head[\s\S]*?<\/head>/gi, ' ');
+  // The trademark "AP®" is not the average-product alias "AP" (integration 1).
+  s = s.replace(/\bAP(?:®|&reg;|&#174;|&#xae;|<sup>(?:®|&reg;|&#174;)<\/sup>)/gi, ' ');
   s = removeClassBlocks(s, 'mic-preview');
+  // Words the engine writes itself (the region names in a graph item's
+  // no-JavaScript key line): the item's own stem carries the preview.
+  s = removeClassBlocks(s, 'mic-noscan');
   return removeClassBlocks(s, 'mic-nav-ref');
 }
 

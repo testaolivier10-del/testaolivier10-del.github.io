@@ -1,0 +1,20 @@
+{
+ "rival": {
+  "def": "A good is rival when one person's use leaves less for others (a sandwich). It is nonrival when many can use it at once without reducing each other's use (a radio broadcast)."
+ },
+ "excludable": {
+  "def": "A good is excludable when people who do not pay can be kept from using it (a concert with a ticket gate). It is nonexcludable when they cannot (national defense)."
+ },
+ "public-good": {
+  "def": "A good that is both nonrival and nonexcludable, such as national defense or a flood wall. A private good is rival and excludable."
+ },
+ "free-rider": {
+  "def": "The free-rider problem: people can enjoy a nonexcludable good without paying, so few pay and a market provides too little of it."
+ },
+ "common-resource": {
+  "def": "A good that is rival but nonexcludable, such as fish in open waters. Each user ignores the cost to others, so it is overused: the tragedy of the commons."
+ },
+ "club-good": {
+  "def": "A good that is excludable but nonrival, such as a streaming service or an uncrowded toll road. Firms can sell it because nonpayers can be kept out."
+ }
+}

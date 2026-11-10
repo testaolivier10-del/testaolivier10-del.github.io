@@ -1,0 +1,12 @@
+{
+ "price-elasticity-supply-curves": {
+  "file": "figures/price-elasticity-supply-curves.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three supply curves through $4 and 40 units: a vertical one is perfectly inelastic, a steep one is inelastic, and a flat one is elastic, so the same price rise adds no units, a few units or many units."
+ }
+}

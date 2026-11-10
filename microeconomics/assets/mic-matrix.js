@@ -22,9 +22,12 @@
 
    spec: { players: [{ name, strategies: [..] }, { name, strategies: [..] }],
            payoffs: [[[rowPayoff, colPayoff], ...], ...]   (row i, column j),
-           unit?, change?: { player: 0 | 1, strategy: <index> | null, amount },
+           unit?, unitLabel?, change?: { player: 0 | 1, strategy: <index> | null, amount },
            do: ['dominant', 'nash', 'best', 'joint'],
            ask?: { best: { player, given } }, slips?: { <task>: sentence } }
+   unit '$' writes each payoff as dollars ($30); unitLabel is the caption's
+   unit when the payoffs are counted in larger units ('thousands of dollars',
+   'thousands of new subscribers'): the stem and the caption then agree.
    Player 0 chooses the row, player 1 the column; in each cell the row
    player's payoff is listed first, as the exam writes it.
    response: { dominant: { 0: <index> | 'none', 1: <index> | 'none' },
@@ -102,6 +105,7 @@
     var d = spec.do || [];
     if(!Array.isArray(d) || !d.length) bad('matrix.do lists the tasks: ' + TASKS.join(', '));
     d.forEach(function(t){ if(TASKS.indexOf(t) < 0) bad('matrix.do: unknown task "' + t + '"'); });
+    if(spec.unitLabel != null && (typeof spec.unitLabel !== 'string' || spec.unitLabel.length < 3)) bad('matrix.unitLabel is the caption\'s unit in words, e.g. "thousands of dollars"');
     if(spec.change){ var c = spec.change; if((c.player !== 0 && c.player !== 1) || typeof c.amount !== 'number' || !c.amount || (c.strategy != null && !(c.strategy >= 0 && c.strategy < count(spec, c.player)))) bad('matrix.change is { player: 0 or 1, strategy: an index or null (every strategy), amount: the change to that player\'s payoffs, not 0 }'); }
     // Ties make "better" ambiguous: every comparison a player makes is strict.
     var P = payoffs(spec);
@@ -166,7 +170,7 @@
   function html(spec, opts){
     opts = opts || {};
     var P = payoffs(spec), a = spec.players[0], b = spec.players[1], tap = opts.tap, on = opts.on || [], keyOn = opts.key || [];
-    var cap = '<caption class="mic-mx-cap">' + esc(opts.caption || ('Payoffs' + (spec.unit ? ' (' + (spec.unit === '$' ? 'dollars' : spec.unit) + ')' : '') + ': ' + a.name + ' first, ' + b.name + ' second')) + '</caption>';
+    var cap = '<caption class="mic-mx-cap">' + esc(opts.caption || ('Payoffs' + (spec.unitLabel ? ' (' + spec.unitLabel + ')' : spec.unit ? ' (' + (spec.unit === '$' ? 'dollars' : spec.unit) + ')' : '') + ': ' + a.name + ' first, ' + b.name + ' second')) + '</caption>';
     var head = '<tr><td class="mic-mx-corner" rowspan="2" colspan="2"></td><th scope="colgroup" colspan="' + b.strategies.length + '" class="mic-mx-pl is-b">' + esc(b.name) + '</th></tr><tr>' +
       b.strategies.map(function(s){ return '<th scope="col" class="mic-mx-st is-b">' + esc(s) + '</th>'; }).join('') + '</tr>';
     var body = a.strategies.map(function(s, i){

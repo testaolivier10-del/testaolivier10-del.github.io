@@ -1,0 +1,633 @@
+{
+ "stimuli": {
+  "production-possibilities-s1": {
+   "kind": "data",
+   "title": "Hollis Farm's production possibilities",
+   "invented": true,
+   "table": {
+    "caption": "Combinations of corn and beans Hollis Farm can grow in a season with all its land, workers and machines (truckloads; invented data for practice)",
+    "cols": [
+     "Combination",
+     "Corn (truckloads)",
+     "Beans (truckloads)"
+    ],
+    "rows": [
+     [
+      "A",
+      "0",
+      "20"
+     ],
+     [
+      "B",
+      "1",
+      "19"
+     ],
+     [
+      "C",
+      "2",
+      "17"
+     ],
+     [
+      "D",
+      "3",
+      "13"
+     ],
+     [
+      "E",
+      "4",
+      "6"
+     ]
+    ]
+   }
+  },
+  "production-possibilities-s2": {
+   "kind": "graph",
+   "title": "A bowed-out PPC with points inside, on and outside",
+   "figure": "production-possibilities-points"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-production-possibilities-1",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does a point on a production possibilities curve show?",
+   "options": [
+    "A combination made with some resources idle",
+    "A combination that is out of reach today",
+    "A mix made with no resources wasted",
+    "The price of each good"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The curve marks the most of one good that can be made for each amount of the other, with every resource in use and none wasted.",
+    "options": [
+     "Idle resources put a point inside the curve.",
+     "Points beyond the curve cannot be made now.",
+     "Right: on the curve means efficient.",
+     "A PPC measures quantities, not prices."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-2",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "production-possibilities-s1",
+   "q": "Hollis Farm moves from combination C to D. What is the opportunity cost of that third truckload of corn, in truckloads of beans?",
+   "why": {
+    "correct": "Beans fall from 17 to 13 while corn rises from 2 to 3. Opportunity cost $= \\frac{17 - 13}{3 - 2} = 4$ truckloads of beans."
+   },
+   "numeric": {
+    "unit": "truckloads",
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        17,
+        13
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        3,
+        2
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "That is the number of beans the farm still grows at D. The cost is the beans GIVEN UP: 17 - 13."
+     },
+     {
+      "from": {
+       "fn": "opportunityCost",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          3,
+          2
+         ]
+        },
+        {
+         "fn": "sub",
+         "args": [
+          17,
+          13
+         ]
+        }
+       ]
+      },
+      "why": "That divides the wrong way: it is corn gained per truckload of beans given up. Divide the beans given up (4) by the corn gained (1)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-3",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "production-possibilities-s1",
+   "q": "The farm moves from combination B to D. On average, how many truckloads of beans does each truckload of corn gained cost?",
+   "why": {
+    "correct": "Beans fall from 19 to 13 (6 given up) while corn rises from 1 to 3 (2 gained). Per truckload: $\\frac{6}{2} = 3$."
+   },
+   "numeric": {
+    "unit": "truckloads",
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        19,
+        13
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        3,
+        1
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "That is the total given up for two truckloads. Divide by the 2 truckloads of corn gained to get the cost of each."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-4",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "production-possibilities-s1",
+   "q": "Each extra truckload of corn costs more beans than the one before (1, 2, 4, then 7). What best explains this?",
+   "options": [
+    "Fields switched later suit corn less",
+    "Corn prices rise as more corn is grown",
+    "The farm has fewer resources at E than at A",
+    "Beans are worth more than corn"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The first fields switched to corn are the best for corn and the worst for beans. Later switches use land and workers better at beans, so each truckload of corn gives up more beans.",
+    "options": [
+     "Right: resources are not equally suited to both crops.",
+     "A PPC is about quantities that can be grown, not prices.",
+     "Every combination uses all the same resources.",
+     "The values of the crops do not shape a PPC."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-5",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "production-possibilities-s1",
+   "q": "Hollis Farm grows 2 truckloads of corn and 12 truckloads of beans one season. What does this show?",
+   "options": [
+    "The farm is on its PPC and efficient",
+    "The farm is outside its PPC",
+    "The farm has grown since last season",
+    "It is inside its PPC: resources sat idle"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With 2 truckloads of corn, the farm could grow 17 of beans (combination C). Growing only 12 means it is inside the curve.",
+    "options": [
+     "On the curve, 2 of corn goes with 17 of beans, not 12.",
+     "Outside would mean more than 17 beans with 2 of corn.",
+     "Growth would move the curve out; this point is below the old curve.",
+     "Right: 12 is less than the 17 possible."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-6",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "production-possibilities-s2",
+   "q": "In the graph, which point shows a combination the farm can grow but with some resources idle?",
+   "options": [
+    "B",
+    "U",
+    "Z",
+    "E"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "U (2, 10) lies inside PPC1. The farm could grow more of both crops with the same resources.",
+    "options": [
+     "B is on the curve: efficient.",
+     "Right: inside the curve.",
+     "Z lies outside PPC1: it cannot be grown now.",
+     "E is on the curve: efficient."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-7",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "production-possibilities-s2",
+   "q": "Why can the farm not grow combination Z (3 corn, 16 beans) this season?",
+   "options": [
+    "It lies inside the PPC, so it wastes resources",
+    "It lies outside the farm's PPC",
+    "Corn and beans are not grown together on one farm",
+    "It would have no opportunity cost"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With 3 truckloads of corn the farm can grow at most 13 of beans. Z asks for 16, beyond the curve.",
+    "options": [
+     "Z is outside the curve, not inside it.",
+     "Right: Z is unattainable now.",
+     "Every point from A to E grows both crops.",
+     "Every combination has an opportunity cost; that is not the reason."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-8",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "production-possibilities-s2",
+   "q": "Which change could let the farm reach Z, as PPC2 shows?",
+   "options": [
+    "The farm leaves half its workers idle",
+    "The price of corn rises",
+    "The farm moves from B to D",
+    "It buys more land and a faster planter"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "More land and better equipment raise how much the farm can grow, shifting the whole curve out to PPC2, where Z lies inside.",
+    "options": [
+     "Idle workers move the farm inside the curve, not outward.",
+     "A price change does not change what the farm can grow.",
+     "Moving along the curve changes the mix, not the limit.",
+     "Right: more resources and better technology shift the curve out."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-9",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "production-possibilities-s2",
+   "q": "Moving from point B to point D on PPC1 shows",
+   "options": [
+    "a trade-off: more corn, fewer beans",
+    "economic growth",
+    "a move from inefficient to efficient",
+    "a decrease in the farm's resources"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both points are on the same curve. Moving along it trades beans for corn.",
+    "options": [
+     "Right: a movement along the curve is a trade-off.",
+     "Growth is a shift of the whole curve out.",
+     "Both points sit on the curve, so both are efficient.",
+     "The resources are the same at every point on one curve."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-10",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the curve of this production possibilities graph for a farm that grows corn and beans.",
+   "why": {
+    "correct": "One good goes on each axis (Corn across, Beans up, as drawn), and the curve is the PPC."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Corn",
+     "y": "Beans"
+    },
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-production-possibilities-11",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A machine breakdown leaves some of the farm's workers with nothing to do for the season. Place point X where the farm ends up.",
+   "why": {
+    "correct": "With some workers idle, the farm grows less than it could: a point inside the curve."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Corn",
+     "y": "Beans"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "region": "inside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-production-possibilities-12",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Place point Y at a combination of corn and beans the farm cannot grow with its current resources and methods.",
+   "why": {
+    "correct": "Combinations beyond the curve are unattainable for now."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Corn",
+     "y": "Beans"
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "Y",
+    "key": {
+     "point": {
+      "region": "outside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-production-possibilities-13",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new irrigation system lets the farm grow more of both crops on the same land. Show the change on the graph.",
+   "why": {
+    "correct": "Better technology raises what the farm can grow of both crops, so the whole PPC shifts out."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Corn",
+     "y": "Beans"
+    },
+    "do": [
+     "shift"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "PPC",
+       "dir": "out"
+      }
+     ],
+     "because": "a new irrigation system"
+    }
+   }
+  },
+  {
+   "id": "mic-production-possibilities-14",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A flood washes away a third of the farm's fields for good. Show the change on the graph.",
+   "why": {
+    "correct": "Losing land lowers the most the farm can grow, so the PPC shifts in."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Corn",
+     "y": "Beans"
+    },
+    "do": [
+     "shift"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "PPC",
+       "dir": "in"
+      }
+     ],
+     "because": "a flood that destroys farmland"
+    }
+   }
+  },
+  {
+   "id": "mic-production-possibilities-15",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A tailor can make 30 shirts or 10 jackets a week, or any mix on a straight line between them. What is the opportunity cost of one jacket, in shirts?",
+   "why": {
+    "correct": "Opportunity cost of a jacket $= \\frac{30}{10} = 3$ shirts. On a straight-line PPC it is the same for every jacket."
+   },
+   "numeric": {
+    "unit": "shirts",
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      30,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "opportunityCost",
+       "args": [
+        10,
+        30
+       ]
+      },
+      "why": "That is the cost of a SHIRT in jackets. For a jacket, divide the shirts given up (30) by the jackets gained (10)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-16",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A PPC is a straight line. What does that shape mean?",
+   "options": [
+    "The opportunity cost rises with each extra unit",
+    "The opportunity cost falls with each extra unit",
+    "Each extra unit costs the same amount",
+    "There is no opportunity cost"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A straight line has one slope, so each extra unit of one good costs the same amount of the other.",
+    "options": [
+     "Rising cost bows the curve out.",
+     "Falling cost bows the curve in.",
+     "Right: constant opportunity cost.",
+     "Any downward-sloping PPC shows a cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-17",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A software studio finds that each extra app it builds costs it fewer games than the last, because its team gets faster at apps. What shape would its PPC have?",
+   "options": [
+    "Bowed out from the origin: increasing opportunity cost",
+    "A straight line: constant opportunity cost",
+    "A vertical line",
+    "Bowed in: decreasing opportunity cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When each extra unit costs less of the other good, the opportunity cost is decreasing, which bows the curve in. This is the less common case.",
+    "options": [
+     "Bowed out goes with each unit costing MORE.",
+     "A straight line goes with an unchanging cost.",
+     "A vertical line would mean no games could be traded for apps.",
+     "Right: decreasing cost bows the curve in."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-18",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A furniture maker spends this year building new machines instead of making as many chairs and tables as it could. What does this choice do to its PPC for chairs and tables in later years?",
+   "options": [
+    "It shifts the curve in, because it made fewer chairs this year",
+    "It leaves the curve unchanged",
+    "It shifts the curve out: more capital",
+    "It turns the curve into a straight line"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Giving up some output now to build capital adds to the firm's resources, so in later years it can make more of both goods: growth.",
+    "options": [
+     "Making fewer chairs this year is a move along or inside this year's curve; it does not shrink later years' resources.",
+     "The firm has more machines, so its limits change.",
+     "Right: more capital means growth.",
+     "The shape depends on how suited resources are, not on growth."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-possibilities-19",
+   "unit": "unit-1",
+   "topic": "production-possibilities",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these would shift a farm's PPC outward? Select all that apply.",
+   "options": [
+    "Buying the neighboring fields",
+    "A new seed that grows more corn and beans per acre",
+    "Leaving a tractor in the shed the whole season",
+    "Planting more corn and fewer beans"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "More resources and better technology shift the curve out. Idle resources and a change in the mix do not.",
+    "options": [
+     "Right: more land is more resources.",
+     "Right: a better seed is a better method.",
+     "An idle tractor puts the farm inside its curve.",
+     "Changing the mix is a movement along the curve."
+    ]
+   }
+  }
+ ]
+}

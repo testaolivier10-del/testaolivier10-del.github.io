@@ -1,0 +1,509 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 2 (docs/apmicro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmicro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-2",
+   "id": "u2-demand-shift-vs-move",
+   "topic": "demand",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "Own price or income: move or shift",
+   "prompt": "<b>Explain</b> the difference on a demand graph for pizza between a fall in the price of pizza and a rise in buyers' incomes, if pizza is a normal good.",
+   "checklist": [
+    "Says a fall in pizza's own price is a movement down along D to a larger quantity demanded",
+    "Says a rise in income shifts demand for a normal good to the right",
+    "Labels the new demand curve D2, to the right"
+   ],
+   "earns": {
+    "answer": "A fall in the price of pizza is a movement down along the demand curve: quantity demanded rises, but demand does not change. A rise in incomes, for a normal good, increases demand: the whole curve shifts right from D1 to D2, so more is demanded at every price.",
+    "why": "It keeps the two apart, a change in quantity demanded and a change in demand, with the direction and the new curve."
+   },
+   "misses": {
+    "answer": "Both make people buy more pizza, so both shift demand to the right.",
+    "why": "A change in the good's own price moves along the curve; only the income change shifts it."
+   },
+   "specific": {
+    "slots": {
+     "price": {
+      "label": "A fall in pizza's price",
+      "options": [
+       "moves down along D",
+       "shifts D right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Price is on the axis, so its change is a movement along the curve."
+      }
+     },
+     "income": {
+      "label": "A rise in income (normal good)",
+      "options": [
+       "shifts D right",
+       "shifts D left",
+       "moves along D"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "For a normal good, more income means more demand, not less.",
+       "2": "Income is not on an axis, so the curve shifts."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-elasticity-calc",
+   "topic": "price-elasticity-demand",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Price elasticity and the total revenue test",
+   "prompt": "<b>Calculate</b> the price elasticity of demand when a cafe raises the price of a smoothie from \\$4 to \\$5 and sales fall from 200 to 140 a day (use percent changes from the original values), and say what happens to total revenue.",
+   "checklist": [
+    "Shows the percent change in quantity and in price",
+    "Divides quantity over price and reads the absolute value",
+    "Uses the total revenue test: elastic, so revenue falls when the price rises"
+   ],
+   "earns": {
+    "answer": "Quantity changes by (140 - 200) / 200 x 100 = -30% and price by (5 - 4) / 4 x 100 = 25%. The elasticity is 30% / 25% = 1.2, above 1, so demand is elastic. Revenue falls from \\$800 to \\$700, as the total revenue test says for an elastic range.",
+    "why": "Both percent changes are shown, quantity goes on top, and the revenue test follows from the elasticity."
+   },
+   "misses": {
+    "answer": "The elasticity is 60 / 1 = 60, so demand is very elastic.",
+    "why": "That divides the changes in units, not percent changes, so it is a slope, not an elasticity."
+   },
+   "specific": {
+    "slots": {
+     "top": {
+      "label": "On top of the ratio",
+      "options": [
+       "the percent change in quantity",
+       "the percent change in price"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The ratio is quantity over price; upside down it gives 0.83."
+      }
+     },
+     "tr": {
+      "label": "Total revenue",
+      "options": [
+       "falls: demand is elastic",
+       "rises: demand is elastic",
+       "stays the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With elastic demand a price rise loses more in sales than it gains per unit.",
+       "2": "Revenue is unchanged only with unit elastic demand."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-total-revenue-test",
+   "topic": "price-elasticity-demand",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "The total revenue test in words",
+   "prompt": "<b>Explain</b> why a bus company with inelastic demand for rides raises its total revenue when it raises fares.",
+   "checklist": [
+    "Says inelastic means quantity falls by a smaller percent than the price rises",
+    "Says the gain per ride outweighs the rides lost",
+    "Concludes that total revenue (price x quantity) rises"
+   ],
+   "earns": {
+    "answer": "With inelastic demand, a fare rise lowers the number of rides by a smaller percent than the fare rises. The company gains more on each ride it still sells than it loses on the rides it no longer sells, so total revenue, fare times rides, rises.",
+    "why": "It defines inelastic in percent changes and links it to revenue."
+   },
+   "misses": {
+    "answer": "Revenue rises because the fares are higher.",
+    "why": "Higher fares alone do not decide it: the answer has to compare the price change with the fall in rides."
+   },
+   "specific": {
+    "slots": {
+     "def": {
+      "label": "Inelastic means rides fall",
+      "options": [
+       "by a smaller percent than the fare rises",
+       "by a larger percent than the fare rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is elastic demand."
+      }
+     },
+     "tr": {
+      "label": "So total revenue",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The gain per ride outweighs the rides lost when demand is inelastic."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-cross-elasticity",
+   "topic": "other-elasticities",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Cross-price elasticity and its sign",
+   "prompt": "<b>Calculate</b> the cross-price elasticity of demand for jelly when the price of peanut butter rises from \\$5 to \\$6 and jelly sales fall from 100 to 90 jars, and say how the goods are related.",
+   "checklist": [
+    "Shows the percent change in jelly sales and in the peanut butter price",
+    "Keeps the sign of the result",
+    "Says a negative value means complements"
+   ],
+   "earns": {
+    "answer": "Jelly sales change by (90 - 100) / 100 x 100 = -10% and the price of peanut butter by (6 - 5) / 5 x 100 = 20%. The cross-price elasticity is -10% / 20% = -0.5. It is negative, so jelly and peanut butter are complements.",
+    "why": "It shows both changes, keeps the sign and reads the relationship from it."
+   },
+   "misses": {
+    "answer": "The cross-price elasticity is 0.5, so the goods are substitutes.",
+    "why": "Dropping the sign loses the answer: the value is negative, so the goods are complements."
+   },
+   "specific": {
+    "slots": {
+     "sign": {
+      "label": "The cross-price elasticity is",
+      "options": [
+       "-0.5",
+       "0.5",
+       "-2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sign is the answer here; jelly sales fell, so it is negative.",
+       "2": "That divides the price change by the quantity change."
+      }
+     },
+     "rel": {
+      "label": "The goods are",
+      "options": [
+       "complements",
+       "substitutes",
+       "unrelated"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Substitutes have a positive cross-price elasticity.",
+       "2": "Jelly sales responded, so they are related."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-supply-shift-graph",
+   "topic": "disequilibrium-changes",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "A cost increase on the supply and demand graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the market for bread and show the effect of a rise in the price of flour on the equilibrium price and quantity.",
+   "checklist": [
+    "Shifts supply to the left (S1 to S2), leaving demand in place",
+    "Shows the new equilibrium at a higher price and a lower quantity",
+    "Labels the axes, both supply curves and P1, P2, Q1, Q2"
+   ],
+   "earns": {
+    "answer": "Flour is an input, so its higher price raises the cost of making bread and supply shifts left from S1 to S2. Demand does not move. At the new equilibrium the price rises from P1 to P2 and the quantity falls from Q1 to Q2, all labeled on the axes.",
+    "why": "The right curve shifts the right way and both outcomes are compared with the old equilibrium."
+   },
+   "misses": {
+    "answer": "Bread costs more, so demand shifts left and the price falls.",
+    "why": "An input price moves supply, not demand, and the price of bread rises."
+   },
+   "specific": {
+    "slots": {
+     "curve": {
+      "label": "The curve that shifts",
+      "options": [
+       "supply, to the left",
+       "demand, to the left",
+       "supply, to the right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Buyers' wants did not change; the cost of making bread did.",
+       "2": "Higher costs shift supply left, not right."
+      }
+     },
+     "out": {
+      "label": "At the new equilibrium",
+      "options": [
+       "price rises, quantity falls",
+       "price falls, quantity falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A leftward supply shift raises the price along demand."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-double-shift",
+   "topic": "disequilibrium-changes",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Two shifts at once: what can be known",
+   "prompt": "<b>Explain</b> what happens to the equilibrium price and quantity of coffee when demand increases and supply decreases at the same time.",
+   "checklist": [
+    "Says the price rises, since both shifts push it up",
+    "Says the change in quantity is indeterminate",
+    "Gives the reason: the shifts push quantity in opposite directions and their sizes are not known"
+   ],
+   "earns": {
+    "answer": "Both changes raise the price: more demand pushes it up and less supply pushes it up, so the price rises. The quantity is indeterminate, because the demand increase raises it and the supply decrease lowers it, and without the sizes of the shifts we cannot tell which wins.",
+    "why": "It states the known change, calls the other indeterminate and says why."
+   },
+   "misses": {
+    "answer": "The price rises and the quantity stays the same.",
+    "why": "Quantity is not known to stay the same; it could rise or fall, so \"indeterminate\" is the answer."
+   },
+   "specific": {
+    "slots": {
+     "price": {
+      "label": "The price",
+      "options": [
+       "rises",
+       "falls",
+       "is indeterminate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Both shifts push the price up.",
+       "2": "Both push the same way, so the price change is known."
+      }
+     },
+     "qty": {
+      "label": "The quantity",
+      "options": [
+       "is indeterminate",
+       "rises",
+       "stays the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The supply decrease could outweigh the demand increase.",
+       "2": "Nothing pins the quantity; it depends on the sizes of the shifts."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-consumer-surplus",
+   "topic": "equilibrium-surplus",
+   "practice": "4.C",
+   "skill": "area",
+   "title": "Consumer surplus as a triangle",
+   "prompt": "<b>Calculate</b> consumer surplus in a market where the equilibrium price is \\$6, 40 units are sold, and the demand curve is a straight line that reaches the price axis at \\$10, and say which area it is.",
+   "checklist": [
+    "Names the area: below demand and above the price, out to the quantity bought",
+    "Uses one half times base times height",
+    "Shows the numbers with the price gap \\$10 - \\$6"
+   ],
+   "earns": {
+    "answer": "Consumer surplus is the triangle below the demand curve and above the \\$6 price, out to 40 units: 1/2 x 40 x (\\$10 - \\$6) = \\$80.",
+    "why": "It names the region and shows the triangle formula with the right height."
+   },
+   "misses": {
+    "answer": "Consumer surplus is what buyers spend: 40 x \\$6 = \\$240.",
+    "why": "That is what buyers pay (total revenue), not the surplus above the price."
+   },
+   "specific": {
+    "slots": {
+     "area": {
+      "label": "Consumer surplus is",
+      "options": [
+       "below demand, above the price",
+       "below the price, above supply"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is producer surplus."
+      }
+     },
+     "size": {
+      "label": "Its size",
+      "options": [
+       "\\$80",
+       "\\$160",
+       "\\$240"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That leaves out the one half.",
+       "2": "That is total spending, price times quantity."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-tax-revenue-dwl",
+   "topic": "government-intervention",
+   "practice": "4.C",
+   "skill": "area",
+   "title": "Tax revenue and deadweight loss",
+   "prompt": "<b>Calculate</b> the government's revenue and the deadweight loss of a \\$2 per-unit tax that lowers the quantity sold from 50 to 40 units, and say which areas they are.",
+   "checklist": [
+    "Tax revenue: tax per unit times the quantity after the tax",
+    "Deadweight loss: the triangle between demand and supply over the units no longer sold",
+    "Shows both with numbers, including the one half"
+   ],
+   "earns": {
+    "answer": "Tax revenue is the rectangle between the price buyers pay and the price sellers keep, out to the new quantity: \\$2 x 40 = \\$80. The deadweight loss is the triangle between demand and supply over the 10 units no longer sold: 1/2 x 10 x \\$2 = \\$10.",
+    "why": "Each area is named and bounded, with the quantity after the tax and the one half."
+   },
+   "misses": {
+    "answer": "Tax revenue is \\$2 x 50 = \\$100, and there is no loss because the government gets the money.",
+    "why": "Revenue uses the quantity after the tax, and the lost trades are a deadweight loss nobody gets."
+   },
+   "specific": {
+    "slots": {
+     "rev": {
+      "label": "Tax revenue",
+      "options": [
+       "\\$2 x 40 = \\$80",
+       "\\$2 x 50 = \\$100"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The tax is collected on the 40 units still sold, not the old 50."
+      }
+     },
+     "dwl": {
+      "label": "Deadweight loss",
+      "options": [
+       "\\$10, the triangle on the 10 lost units",
+       "\\$20, without the one half",
+       "none"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A triangle needs the one half.",
+       "2": "The 10 units no longer traded are a real loss."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-ceiling-shortage",
+   "topic": "government-intervention",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "The shortage at a binding ceiling",
+   "prompt": "<b>Calculate</b> the shortage when a city caps rent at \\$800 a month, below equilibrium, and at \\$800 renters want 900 apartments while landlords offer 600.",
+   "checklist": [
+    "Says the ceiling binds because it is below equilibrium",
+    "Subtracts quantity supplied from quantity demanded at the ceiling",
+    "Says the quantity rented is the smaller one, 600"
+   ],
+   "earns": {
+    "answer": "The ceiling is below equilibrium, so it binds. At \\$800, quantity demanded is 900 and quantity supplied is 600, a shortage of 900 - 600 = 300 apartments. Only 600 are rented, the quantity landlords supply.",
+    "why": "It compares the two quantities at the ceiling and says how many are actually rented."
+   },
+   "misses": {
+    "answer": "There is a shortage because the price is too low for landlords.",
+    "why": "It names the shortage but never sizes it, and the question asks for the number."
+   },
+   "specific": {
+    "slots": {
+     "gap": {
+      "label": "The shortage",
+      "options": [
+       "900 - 600 = 300",
+       "900 + 600 = 1,500",
+       "600"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A shortage is the gap between the two quantities, not their sum.",
+       "2": "600 is the quantity supplied, the number rented."
+      }
+     },
+     "traded": {
+      "label": "Apartments rented",
+      "options": [
+       "600, quantity supplied",
+       "900, quantity demanded"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Renters cannot rent units landlords do not offer."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-tariff",
+   "topic": "trade-policy",
+   "practice": "4.C",
+   "skill": "area",
+   "title": "Imports and revenue with a tariff",
+   "prompt": "<b>Calculate</b> imports and tariff revenue when a \\$1 tariff raises the price of rice from the \\$3 world price to \\$4, and at \\$4 buyers want 50 tons while domestic farms supply 30, and name the area.",
+   "checklist": [
+    "Imports: quantity demanded minus quantity supplied at the price with the tariff",
+    "Tariff revenue: the tariff times imports after the tariff",
+    "Names the rectangle: between the two prices, over the imports"
+   ],
+   "earns": {
+    "answer": "At \\$4, imports are quantity demanded minus domestic quantity supplied: 50 - 30 = 20 tons. Tariff revenue is the rectangle between \\$3 and \\$4 over those imports: \\$1 x 20 = \\$20.",
+    "why": "It finds imports after the tariff and names and sizes the revenue rectangle."
+   },
+   "misses": {
+    "answer": "Tariff revenue is the tariff on all the rice: \\$1 x 50 = \\$50.",
+    "why": "The tariff is paid on imports only, not on rice from domestic farms."
+   },
+   "specific": {
+    "slots": {
+     "imp": {
+      "label": "Imports after the tariff",
+      "options": [
+       "20 tons",
+       "50 tons",
+       "30 tons"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is all rice bought; domestic farms supply 30 of it.",
+       "2": "That is domestic supply."
+      }
+     },
+     "rev": {
+      "label": "Tariff revenue",
+      "options": [
+       "\\$20",
+       "\\$50",
+       "\\$80"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Domestic rice pays no tariff.",
+       "2": "That multiplies by the price, not by the tariff."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

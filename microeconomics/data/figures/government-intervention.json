@@ -1,0 +1,22 @@
+{
+ "government-intervention-tax": {
+  "file": "figures/government-intervention-tax.svg",
+  "ext": "svg",
+  "w": 700,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A $2 per-unit tax on ferry rides shifts supply up by $2: 40 rides are traded instead of 50, buyers pay $6 and sellers keep $4, tax revenue is $80 and the deadweight loss triangle between 40 and 50 rides is $10."
+ },
+ "government-intervention-controls": {
+  "file": "figures/government-intervention-controls.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a $3 price ceiling below the $5 equilibrium leaves a shortage of 40 ferry rides and only 30 traded. Right: a $7 price floor above it leaves a surplus of 40 and only 30 traded. Both create a deadweight loss triangle from 30 to 50 rides."
+ }
+}

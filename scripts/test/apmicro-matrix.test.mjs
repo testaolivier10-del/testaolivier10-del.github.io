@@ -122,3 +122,16 @@ test('the question engine and the FRQ kit route matrix items to the same grader'
   assert.equal(w.right, 1);
   assert.equal(w.total, 2);
 });
+
+test('matrix unitLabel: the caption carries the unit the text names (thousands of dollars)', async () => {
+  const h = X.html({ ...prisoners, unitLabel: 'thousands of dollars' });
+  assert.match(h, /<caption[^>]*>Payoffs \(thousands of dollars\): Arlo first, Bryn second<\/caption>/);
+  assert.match(X.html(prisoners), /Payoffs \(dollars\)/);
+  assert.deepEqual(plain(X.check({ ...prisoners, unitLabel: 'thousands of dollars' })), []);
+  assert.ok(X.check({ ...prisoners, unitLabel: 7 }).some(m => /unitLabel/.test(m)));
+  const { matrixUnitProblems } = await import('../check-apmicro-content.mjs');
+  assert.equal(matrixUnitProblems(prisoners, 'Profits are in thousands of dollars.').length, 1);
+  assert.equal(matrixUnitProblems({ ...prisoners, unitLabel: 'hundreds of dollars' }, 'Profits are in thousands of dollars.').length, 1);
+  assert.deepEqual(matrixUnitProblems({ ...prisoners, unitLabel: 'thousands of dollars' }, 'Profits are in thousands of dollars.'), []);
+  assert.deepEqual(matrixUnitProblems(prisoners, 'Daily profit in dollars.'), []);
+});

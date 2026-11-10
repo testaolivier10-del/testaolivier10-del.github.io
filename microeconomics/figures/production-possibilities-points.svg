@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 400" width="820" height="400" role="img" aria-labelledby="production-possibilities-points-t production-possibilities-points-d" font-family="Arial, Helvetica, sans-serif">
+<title id="production-possibilities-points-t">A farm's production possibilities curve: on, inside, outside and growth</title>
+<desc id="production-possibilities-points-d">A bowed-out PPC1 for Corn (truckloads, horizontal) and Beans (truckloads, vertical) through the combinations A (0 corn, 20 beans), B (1, 19), C (2, 17), D (3, 13) and E (4, 6). Point U (2 corn, 10 beans) lies inside: some workers or land sit idle. Point Z (3 corn, 16 beans) lies outside: it cannot be produced now. A dashed PPC2 farther out shows growth from more resources or better methods. Each extra truckload of corn costs 1, 2, 4 and then 7 truckloads of beans, so the curve bows out. Invented data for practice.</desc>
+<defs><marker id="production-possibilities-points-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="production-possibilities-points-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="production-possibilities-points-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="production-possibilities-points-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="production-possibilities-points-arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="820" height="400" fill="#FFFFFF"/>
+<line x1="100" y1="24" x2="100" y2="350" stroke="#1F2A28" stroke-width="2"/>
+<line x1="100" y1="350" x2="526" y2="350" stroke="#1F2A28" stroke-width="2"/>
+<text x="520" y="388" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700">Corn (truckloads)</text>
+<text x="66" y="30" font-size="14" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 66 30)">Beans (truckloads)</text>
+<line x1="170" y1="350" x2="170" y2="355" stroke="#6B7370" stroke-width="1.2"/><text x="170" y="369" font-size="12" fill="#6B7370" text-anchor="middle">1</text><line x1="240" y1="350" x2="240" y2="355" stroke="#6B7370" stroke-width="1.2"/><text x="240" y="369" font-size="12" fill="#6B7370" text-anchor="middle">2</text><line x1="310" y1="350" x2="310" y2="355" stroke="#6B7370" stroke-width="1.2"/><text x="310" y="369" font-size="12" fill="#6B7370" text-anchor="middle">3</text><line x1="380" y1="350" x2="380" y2="355" stroke="#6B7370" stroke-width="1.2"/><text x="380" y="369" font-size="12" fill="#6B7370" text-anchor="middle">4</text><line x1="450" y1="350" x2="450" y2="355" stroke="#6B7370" stroke-width="1.2"/><text x="450" y="369" font-size="12" fill="#6B7370" text-anchor="middle">5</text><line x1="520" y1="350" x2="520" y2="355" stroke="#6B7370" stroke-width="1.2"/><text x="520" y="369" font-size="12" fill="#6B7370" text-anchor="middle">6</text><line x1="95" y1="286" x2="100" y2="286" stroke="#6B7370" stroke-width="1.2"/><text x="92" y="290" font-size="12" fill="#6B7370" text-anchor="end">5</text><line x1="95" y1="222" x2="100" y2="222" stroke="#6B7370" stroke-width="1.2"/><text x="92" y="226" font-size="12" fill="#6B7370" text-anchor="end">10</text><line x1="95" y1="158" x2="100" y2="158" stroke="#6B7370" stroke-width="1.2"/><text x="92" y="162" font-size="12" fill="#6B7370" text-anchor="end">15</text><line x1="95" y1="94" x2="100" y2="94" stroke="#6B7370" stroke-width="1.2"/><text x="92" y="98" font-size="12" fill="#6B7370" text-anchor="end">20</text><line x1="95" y1="30" x2="100" y2="30" stroke="#6B7370" stroke-width="1.2"/><text x="92" y="34" font-size="12" fill="#6B7370" text-anchor="end">25</text>
+<path d="M100 42.8C114 45.4 156 50.5 184 58.2C212 65.8 240 73.5 268 88.9C296 104.2 324 122.2 352 150.3C380 178.5 416.4 224.6 436 257.8C455.6 291.1 464 334.6 469.6 350" fill="none" stroke="#6B7370" stroke-width="2.4" stroke-dasharray="7 5"/>
+<text x="212" y="35.1" font-size="14" fill="#6B7370" font-weight="700">PPC<tspan font-size="10" dy="4">2</tspan></text>
+<path d="M100 94C111.7 96.1 146.7 100.4 170 106.8C193.3 113.2 216.7 119.6 240 132.4C263.3 145.2 286.7 160.1 310 183.6C333.3 207.1 363.7 245.5 380 273.2C396.3 300.9 403.3 337.2 408 350" fill="none" stroke="#7E1A5E" stroke-width="3.2"/>
+<text x="348.5" y="190" font-size="14" fill="#7E1A5E" font-weight="700">PPC<tspan font-size="10" dy="4">1</tspan></text>
+<circle cx="100" cy="94" r="4.5" fill="#7E1A5E"/>
+<text x="108" y="86" font-size="14" fill="#7E1A5E" font-weight="700">A</text>
+<circle cx="170" cy="106.8" r="4.5" fill="#7E1A5E"/>
+<text x="177" y="98.8" font-size="14" fill="#7E1A5E" font-weight="700">B</text>
+<circle cx="240" cy="132.4" r="4.5" fill="#7E1A5E"/>
+<text x="247" y="124.4" font-size="14" fill="#7E1A5E" font-weight="700">C</text>
+<circle cx="310" cy="183.6" r="4.5" fill="#7E1A5E"/>
+<text x="317" y="175.6" font-size="14" fill="#7E1A5E" font-weight="700">D</text>
+<circle cx="380" cy="273.2" r="4.5" fill="#7E1A5E"/>
+<text x="387" y="265.2" font-size="14" fill="#7E1A5E" font-weight="700">E</text>
+<circle cx="240" cy="222" r="5" fill="#084F78"/>
+<text x="249" y="227" font-size="14" fill="#084F78" font-weight="700">U (2, 10)</text>
+<circle cx="310" cy="145.2" r="5" fill="#D55E00"/>
+<text x="318" y="138.2" font-size="14" fill="#D55E00" font-weight="700">Z</text>
+<line x1="373" y1="228.4" x2="415" y2="196.4" stroke="#6B7370" stroke-width="2" marker-end="url(#production-possibilities-points-arG)"/>
+<text x="560" y="80" font-size="13" fill="#7E1A5E">A to E: on the curve, efficient</text>
+<text x="560" y="104" font-size="13" fill="#084F78">U: inside, workers or land idle</text>
+<text x="560" y="128" font-size="13" fill="#D55E00">Z (3, 16): outside, not reachable now</text>
+<text x="560" y="168" font-size="13" fill="#6B7370">PPC2: more resources or better</text>
+<text x="560" y="186" font-size="13" fill="#6B7370">methods let the farm reach Z</text>
+<text x="560" y="230" font-size="13" fill="#1F2A28">Each extra truckload of corn</text>
+<text x="560" y="248" font-size="13" fill="#1F2A28">costs more beans: 1, 2, 4, then 7.</text>
+<text x="560" y="266" font-size="13" fill="#1F2A28">The curve bows out.</text>
+</svg>

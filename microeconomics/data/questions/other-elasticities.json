@@ -1,0 +1,527 @@
+{
+ "stimuli": {
+  "other-elasticities-s1": {
+   "kind": "data",
+   "title": "Household purchases in Wexmoor when incomes rise",
+   "invented": true,
+   "table": {
+    "caption": "Average monthly purchases per household in Wexmoor, an invented town, before and after average income rises from \\$4,000 to \\$4,400 a month, prices unchanged (invented data for practice)",
+    "cols": [
+     "Good",
+     "Before",
+     "After"
+    ],
+    "rows": [
+     [
+      "Restaurant meals",
+      "4",
+      "5"
+     ],
+     [
+      "Bus passes",
+      "20",
+      "19"
+     ],
+     [
+      "Loaves of bread",
+      "50",
+      "51"
+     ]
+    ]
+   }
+  },
+  "other-elasticities-s2": {
+   "kind": "data",
+   "title": "A cafe raises the price of coffee",
+   "invented": true,
+   "table": {
+    "caption": "Daily sales at the Lantern Cafe before and after the price of a cup of coffee rises from \\$2.50 to \\$3.00, other prices unchanged (invented data for practice)",
+    "cols": [
+     "Item",
+     "Sales before",
+     "Sales after"
+    ],
+    "rows": [
+     [
+      "Cups of tea",
+      "100",
+      "110"
+     ],
+     [
+      "Small pitchers of cream",
+      "200",
+      "188"
+     ],
+     [
+      "Postcards",
+      "30",
+      "30"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-other-elasticities-1",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "other-elasticities-s1",
+   "q": "Calculate the income elasticity of demand for restaurant meals in Wexmoor.",
+   "why": {
+    "correct": "Percent change in quantity: $\\frac{5 - 4}{4} \\times 100 = 25\\%$. Percent change in income: $\\frac{4400 - 4000}{4000} \\times 100 = 10\\%$. Income elasticity: $25 \\div 10 = 2.5$. Positive, so restaurant meals are a normal good, and above 1, so demand grows faster than income."
+   },
+   "numeric": {
+    "from": {
+     "fn": "incomeElasticity",
+     "args": [
+      4,
+      5,
+      4000,
+      4400
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.4,
+      "why": "That puts the income change on top. Divide the percent change in quantity demanded by the percent change in income."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-2",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "other-elasticities-s1",
+   "q": "Calculate the income elasticity of demand for bus passes. Keep the sign.",
+   "why": {
+    "correct": "Quantity: $\\frac{19 - 20}{20} \\times 100 = -5\\%$. Income: $10\\%$. Income elasticity: $-5 \\div 10 = -0.5$. The negative sign is the answer's meaning: bus passes are an inferior good here."
+   },
+   "numeric": {
+    "from": {
+     "fn": "incomeElasticity",
+     "args": [
+      20,
+      19,
+      4000,
+      4400
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "Keep the sign for income elasticity: quantity fell while income rose, so it is negative, which marks an inferior good."
+     },
+     {
+      "value": -2,
+      "why": "That puts the income change on top. Quantity demanded goes on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-3",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "other-elasticities-s1",
+   "q": "Bread purchases rose from 50 to 51 loaves. What kind of good is bread for Wexmoor households?",
+   "options": [
+    "An inferior good, because demand grew slowly",
+    "A normal good with income elasticity 2",
+    "A normal good, with income elasticity 0.2",
+    "Unrelated to income, because the change is small"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Quantity rose 2% while income rose 10%: income elasticity $2 \\div 10 = 0.2$. Positive means normal; between 0 and 1 means demand grows more slowly than income, as for most necessities.",
+    "options": [
+     "Inferior means demand falls as income rises; bread demand rose.",
+     "That reads the 2% rise in quantity as the elasticity. Divide it by the 10% rise in income: 0.2.",
+     "Right: positive and below 1.",
+     "Any positive income elasticity marks a normal good."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-4",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.C",
+   "stimulus": "other-elasticities-s1",
+   "q": "Which of the goods in the table are inferior goods for Wexmoor households? Select all that apply.",
+   "options": [
+    "Restaurant meals",
+    "Bus passes",
+    "Loaves of bread"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "An inferior good has a negative income elasticity: buyers want less as income rises. Only bus passes fell (income elasticity $-0.5$).",
+    "options": [
+     "Purchases rose with income: income elasticity 2.5, a normal good.",
+     "Right: purchases fell as income rose.",
+     "Purchases rose a little: income elasticity 0.2, still a normal good."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-5",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "other-elasticities-s2",
+   "q": "Calculate the cross-price elasticity of demand for tea with respect to the price of coffee.",
+   "why": {
+    "correct": "Percent change in tea sold: $\\frac{110 - 100}{100} \\times 100 = 10\\%$. Percent change in the price of coffee: $\\frac{3.00 - 2.50}{2.50} \\times 100 = 20\\%$. Cross-price elasticity: $10 \\div 20 = 0.5$. Positive: tea and coffee are substitutes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "crossElasticity",
+     "args": [
+      100,
+      110,
+      2.5,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That puts the price change on top. Divide the percent change in tea sold by the percent change in the price of coffee."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-6",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "other-elasticities-s2",
+   "q": "Cream sales fell from 200 to 188 pitchers. What does the cross-price elasticity say about coffee and cream?",
+   "options": [
+    "Complements: the cross-price elasticity is $-0.3$",
+    "Substitutes: the cross-price elasticity is $-0.3$",
+    "Complements: the cross-price elasticity is $0.3$",
+    "Unrelated: the change is under 10%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cream: $\\frac{188 - 200}{200} \\times 100 = -6\\%$; coffee price: $+20\\%$. Cross-price elasticity: $-6 \\div 20 = -0.3$. Negative: the goods are complements, used together.",
+    "options": [
+     "Right: a higher coffee price lowered cream sales.",
+     "Cream sales fell as the coffee price rose; goods that move like that are complements.",
+     "Cream sales fell, so the sign is negative.",
+     "Any clear negative response marks complements."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-7",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "other-elasticities-s2",
+   "q": "Postcard sales did not change. What is the cross-price elasticity, and what does it mean?",
+   "options": [
+    "Zero: coffee and postcards are complements",
+    "Infinite: postcard buyers are very sensitive",
+    "Negative: postcards are an inferior good",
+    "Zero: coffee and postcards are unrelated"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Postcard sales changed 0%, so the cross-price elasticity is $0 \\div 20 = 0$: the goods are unrelated.",
+    "options": [
+     "Complements have a negative cross-price elasticity.",
+     "No change in quantity gives zero, not infinity.",
+     "Inferior is an income idea, and the elasticity here is zero.",
+     "Right: no response to the coffee price."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-8",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "other-elasticities-s2",
+   "q": "Suppose instead the cafe cut the price of coffee by 20%. Based on the table, what would most likely happen to tea sales?",
+   "options": [
+    "They would rise by about 10%",
+    "They would fall by about 10%",
+    "They would not change",
+    "They would fall by about 40%"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Tea is a substitute (cross-price elasticity 0.5). A 20% fall in the price of coffee would lower tea sales by about $0.5 \\times 20\\% = 10\\%$, from 100 to about 90 cups.",
+    "options": [
+     "Cheaper coffee draws buyers away from tea.",
+     "Right: substitutes move with the other good's price.",
+     "Tea responded to the coffee price before, so it would again.",
+     "Multiply 0.5 by 20%, which gives 10%."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-9",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Cross-price elasticity between ground coffee and loose tea is positive. The price of ground coffee rises. Shift the right curve in the market for loose tea.",
+   "why": {
+    "correct": "A positive cross-price elasticity means substitutes. A higher coffee price sends buyers to tea, so demand for tea shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in the price of a substitute"
+    },
+    "slips": {
+     "S": "The coffee price changes what tea buyers want, so tea demand shifts, not tea supply."
+    }
+   }
+  },
+  {
+   "id": "mic-other-elasticities-10",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Studies find the income elasticity of demand for used cars is $-0.6$. Incomes in a region fall. Shift the right curve in the region's market for used cars.",
+   "why": {
+    "correct": "A negative income elasticity marks an inferior good. With lower incomes, more buyers choose used cars over new ones, so demand for used cars shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a fall in income for an inferior good"
+    },
+    "slips": {
+     "D": "For an inferior good, lower income raises demand, so the curve moves right, not left."
+    }
+   }
+  },
+  {
+   "id": "mic-other-elasticities-11",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A researcher wants to know how strongly household purchases of a good respond to a rise in pay. Which ratio should she compute?",
+   "options": [
+    "$\\%\\Delta \\text{income} \\div \\%\\Delta Q_d$",
+    "$\\%\\Delta Q_d \\div \\%\\Delta \\text{income}$",
+    "$\\%\\Delta Q_d \\div \\%\\Delta P$",
+    "$\\Delta \\text{spending} \\div \\Delta \\text{income}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Income elasticity of demand is the percent change in quantity demanded divided by the percent change in income. Its sign tells normal (positive) from inferior (negative).",
+    "options": [
+     "That is upside down.",
+     "Right: the income elasticity of demand, quantity on top.",
+     "That is the price elasticity of demand.",
+     "Elasticity uses percent changes in quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-12",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "The cross-price elasticity of demand between printers and ink cartridges is $-1.2$. What are the two goods?",
+   "options": [
+    "Substitutes",
+    "Unrelated goods",
+    "Inferior goods",
+    "Complements"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A negative cross-price elasticity means a higher price of one lowers demand for the other: they are complements, used together.",
+    "options": [
+     "Substitutes have a positive cross-price elasticity.",
+     "Unrelated goods have a cross-price elasticity near zero.",
+     "Inferior is read from income elasticity, not cross-price elasticity.",
+     "Right: negative cross-price elasticity."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-13",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Why must you keep the sign for income and cross-price elasticity but read the absolute value for price elasticity of demand?",
+   "options": [
+    "Their sign tells the type of good or relationship; price elasticity's sign does not",
+    "Income and price changes are positive, so their elasticities are too",
+    "Price elasticity of demand is larger, so its sign is dropped",
+    "The sign shows whether demand is elastic"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For price elasticity of demand the sign is always negative by the law of demand, so only the size carries information. For income and cross-price elasticity the sign is the information: normal or inferior, substitutes or complements.",
+    "options": [
+     "Right: the sign carries the meaning for income and cross-price elasticity.",
+     "Income and cross-price elasticities can be negative.",
+     "Size is not why the sign is dropped.",
+     "Elastic or inelastic is read from the size, compared with 1."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-14",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "The income elasticity of demand for ski trips is 1.8. Incomes rise by 5%. What happens to the quantity of ski trips demanded, other things equal?",
+   "options": [
+    "It rises by about 1.8%",
+    "It falls by about 9%",
+    "It rises by about 9%",
+    "It rises by about 3.6%"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Percent change in quantity = income elasticity times percent change in income: $1.8 \\times 5\\% = 9\\%$. A rise of 9%.",
+    "options": [
+     "1.8 is the elasticity, not the percent change.",
+     "A positive income elasticity means demand rises with income.",
+     "Right: 1.8 times 5%.",
+     "Multiply 1.8 by 5%, which gives 9%."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-15",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "A researcher estimates these elasticities for a good called Brisk bars. Which statements follow? Select all that apply.<br>Income elasticity: $-0.3$. Cross-price elasticity with Crunch bars: $+0.8$. Cross-price elasticity with milk: $-0.5$.",
+   "options": [
+    "Brisk bars are an inferior good",
+    "Brisk bars and Crunch bars are complements",
+    "Brisk bars and milk are complements",
+    "Demand for Brisk bars is price inelastic"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Negative income elasticity: Brisk bars are inferior. Positive cross-price elasticity with Crunch: substitutes. Negative with milk: complements.",
+    "options": [
+     "Right: income elasticity is negative.",
+     "A positive cross-price elasticity marks substitutes.",
+     "Right: a negative cross-price elasticity.",
+     "Price elasticity is not given; none of these numbers measure it."
+    ]
+   }
+  },
+  {
+   "id": "mic-other-elasticities-16",
+   "unit": "unit-2",
+   "topic": "other-elasticities",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "q": "A rise in the price of gasoline lowers the quantity of large trucks bought. What does this say about the cross-price elasticity of demand for large trucks with respect to the price of gasoline?",
+   "options": [
+    "It is positive, so the goods are substitutes",
+    "It is negative, so the goods are substitutes",
+    "It is zero, so the goods are unrelated",
+    "It is negative, so the goods are complements"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The gasoline price went up and truck purchases went down: the changes have opposite signs, so the cross-price elasticity is negative. Gasoline and trucks are complements.",
+    "options": [
+     "The quantity of trucks fell as the gasoline price rose: a negative sign.",
+     "Negative cross-price elasticity marks complements.",
+     "Truck purchases responded, so they are related.",
+     "Right: opposite directions give a negative sign."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "supply": {
+  "def": "Supply: the quantities of a good sellers are willing and able to offer at each price, shown as an upward-sloping supply curve. The quantity supplied is the amount offered at one particular price."
+ },
+ "law-of-supply": {
+  "def": "The law of supply: other things equal, when a good's price rises the quantity supplied rises, and when it falls the quantity supplied falls."
+ },
+ "supply-shifter": {
+  "def": "Determinants of supply: the changes other than the good's own price that shift supply: input prices, technology, the prices of other goods the seller could produce, taxes and subsidies, expectations and the number of sellers."
+ },
+ "market-supply": {
+  "def": "Market supply: the sum of every individual seller's quantity supplied at each price (a horizontal sum of the individual supply curves)."
+ }
+}

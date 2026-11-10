@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://levlprep.com/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -37,12 +37,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/macroeconomics/</loc>
     <lastmod>2026-11-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/</loc>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -257,32 +262,32 @@
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/exams.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/flashcards.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/glossary.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/learn.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/practice.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/tools.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -313,6 +318,36 @@
   <url>
     <loc>https://levlprep.com/macroeconomics/tools.html</loc>
     <lastmod>2026-11-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/exams.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/flashcards.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/glossary.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/learn.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/practice.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools.html</loc>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -452,7 +487,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/premium.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -10917,12 +10952,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/formula-sheet.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/frq.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -11032,7 +11067,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/justify.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -11752,7 +11787,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/human-geography/teachers.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -12618,6 +12653,656 @@
   <url>
     <loc>https://levlprep.com/macroeconomics/units/unit-6.html</loc>
     <lastmod>2026-11-05</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/formula-sheet.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-consumer-choice-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-cost-table-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-elasticity-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-externality-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-game-monopoly-long.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-game-theory-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-hiring-table-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-labor-market-long.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-long-run-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-monocomp-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-monopoly-long.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-monopsony-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-perfect-competition-long.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-ppc-trade-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-price-control-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-surplus-short.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-tax-surplus-long.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/frq/frq-trade-tariff-long.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/justify.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/axes-points.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/comparative-advantage.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/competitive-factor-markets.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/cost-benefit.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/curves-crossing.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/demand.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/disequilibrium-changes.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/economic-systems.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/equilibrium-surplus.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/externalities.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/factor-demand-supply.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/factor-markets.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/firm-decisions.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/government-intervention.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/imperfect-competition.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/inequality.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/intervention-structures.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/long-run-costs.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/marginal-analysis.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/market-efficiency.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/monopolistic-competition.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/monopoly.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/monopsony.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/oligopoly-game-theory.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/other-elasticities.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/perfect-competition.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/price-discrimination.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/price-elasticity-demand.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/price-elasticity-supply.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/production-function.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/production-possibilities.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/profit-maximization.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/public-goods.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/scarcity.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/shifts-movements.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/short-run-costs.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/slopes-curves.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/supply.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/trade-policy.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/lessons/types-of-profit.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/axes-points.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/comparative-advantage.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/competitive-factor-markets.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/cost-benefit.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/curves-crossing.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/demand.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/disequilibrium-changes.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/economic-systems.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/equilibrium-surplus.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/externalities.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/factor-demand-supply.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/factor-markets.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/firm-decisions.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/government-intervention.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/imperfect-competition.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/inequality.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/intervention-structures.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/long-run-costs.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/marginal-analysis.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/market-efficiency.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/monopolistic-competition.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/monopoly.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/monopsony.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/oligopoly-game-theory.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/other-elasticities.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/perfect-competition.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/price-discrimination.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/price-elasticity-demand.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/price-elasticity-supply.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/production-function.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/production-possibilities.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/profit-maximization.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/public-goods.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/scarcity.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/shifts-movements.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/short-run-costs.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/slopes-curves.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/supply.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/trade-policy.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/notes/types-of-profit.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/teachers.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/cost-lab.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/elasticity-lab.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/externality-lab.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/factor-lab.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/firm-market.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/game-lab.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/graph-studio.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/tools/surplus-lab.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-sheets/graph-skills.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-sheets/unit-1.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-sheets/unit-2.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-sheets/unit-3.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-sheets/unit-4.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-sheets/unit-5.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-sheets/unit-6.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-tests/unit-1.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-tests/unit-2.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-tests/unit-3.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-tests/unit-4.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-tests/unit-5.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/unit-tests/unit-6.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/units/graph-skills.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/units/unit-1.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/units/unit-2.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/units/unit-3.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/units/unit-4.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/units/unit-5.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/microeconomics/units/unit-6.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -14512,7 +15197,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/changelog.html</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
@@ -14522,12 +15207,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/sources.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://levlprep.com/terms.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.3</priority>
   </url>
 </urlset>

@@ -123,7 +123,7 @@
      },
      {
       "id": "frq-consumer-choice-short",
-      "title": "A consumer with a budget: marginal utility per dollar, the utility-maximizing bundle and a sunk cost that changes nothing",
+      "title": "A consumer with a budget: marginal utility per dollar, the utility-maximizing bundle, a larger budget and a sunk cost that changes nothing",
       "topic": "marginal-analysis",
       "type": "short",
       "author": "A"
@@ -146,6 +146,66 @@
       "title": "A student choosing between two goods with a budget: marginal utility per dollar",
       "topic": "marginal-analysis",
       "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A print shop's one press and three jobs: the next-best choice",
+      "topic": "scarcity",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A bike repair start-up: the four factors of production",
+      "topic": "scarcity",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "How three invented countries decide: who owns, what sets prices",
+      "topic": "economic-systems",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A planning office and its winter coats",
+      "topic": "economic-systems",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "A farm's table of corn and beans: opportunity cost along the PPC",
+      "topic": "production-possibilities",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Hours of labor for rice and cloth: the input method",
+      "topic": "comparative-advantage",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A summer business: explicit and implicit costs",
+      "topic": "cost-benefit",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Guitar lessons: total benefit, cost and net benefit",
+      "topic": "cost-benefit",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "Pizza slices: marginal benefit against the price",
+      "topic": "marginal-analysis",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A game studio's unfinished game: a sunk cost",
+      "topic": "marginal-analysis",
+      "stimulus": "text",
       "author": "A"
      }
     ],
@@ -186,7 +246,7 @@
      },
      {
       "id": "frq-trade-tariff-long",
-      "title": "A domestic market opened to trade: the world price, imports, a tariff and the surplus areas it changes",
+      "title": "A domestic market opened to trade: opportunity costs, the world price, the gain from trade, imports, a tariff, its revenue and deadweight loss",
       "topic": "trade-policy",
       "type": "long",
       "author": "B",
@@ -194,7 +254,7 @@
      },
      {
       "id": "frq-elasticity-short",
-      "title": "Elasticity from a table: price elasticity, the total revenue test and the effect of a price change on revenue",
+      "title": "Elasticity from a table: price elasticity, total revenue consistent with it, the total revenue test, and a new substitute",
       "topic": "price-elasticity-demand",
       "type": "short",
       "author": "B"
@@ -240,6 +300,102 @@
       "topic": "trade-policy",
       "stimulus": "graph",
       "author": "B"
+     },
+     {
+      "title": "Three buyers' smoothie schedules added into market demand",
+      "topic": "demand",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Four news items about e-scooter rentals: shift or movement",
+      "topic": "demand",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Two farms' strawberry schedules added into market supply",
+      "topic": "supply",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Four events for furniture workshops: what shifts supply",
+      "topic": "supply",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Three goods at an island store: what makes demand elastic",
+      "topic": "price-elasticity-demand",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Two sellers respond to the same price rise: supply elasticity",
+      "topic": "price-elasticity-supply",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A venue with fixed seats: perfectly inelastic supply",
+      "topic": "price-elasticity-supply",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Household purchases when incomes rise: income elasticity",
+      "topic": "other-elasticities",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A cafe raises the price of coffee: cross-price elasticity",
+      "topic": "other-elasticities",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A market schedule with straight-line demand and supply: equilibrium and surplus",
+      "topic": "equilibrium-surplus",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A competitive market with consumer and producer surplus lettered",
+      "topic": "equilibrium-surplus",
+      "stimulus": "graph",
+      "author": "B"
+     },
+     {
+      "title": "A demand and supply schedule: shortage, surplus and a demand shift",
+      "topic": "disequilibrium-changes",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A drought and a health study at once: simultaneous shifts",
+      "topic": "disequilibrium-changes",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "A per-unit tax in a table: revenue, incidence and deadweight loss",
+      "topic": "government-intervention",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A small country's schedule at the world price: imports, a tariff and its revenue",
+      "topic": "trade-policy",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A country opens to trade at a world price above its own: exports",
+      "topic": "trade-policy",
+      "stimulus": "text",
+      "author": "B"
      }
     ],
     "comparisonTables": [],
@@ -271,7 +427,7 @@
     "frqThemes": [
      {
       "id": "frq-perfect-competition-long",
-      "title": "A perfectly competitive market and firm side by side: short-run profit, entry, the new long-run equilibrium",
+      "title": "A perfectly competitive market and firm side by side: a fixed fee shifts ATC, the loss, exit, a higher long-run price and supply elasticity over time",
       "topic": "perfect-competition",
       "type": "long",
       "author": "C",
@@ -279,7 +435,7 @@
      },
      {
       "id": "frq-cost-table-short",
-      "title": "A firm's cost table: marginal cost, average variable cost, the profit-maximizing output and profit at a given price",
+      "title": "A firm's cost table: marginal cost, fixed cost, the profit-maximizing output and the shut-down rule",
       "topic": "short-run-costs",
       "type": "short",
       "author": "C"
@@ -311,6 +467,102 @@
       "topic": "types-of-profit",
       "stimulus": "text",
       "author": "C"
+     },
+     {
+      "title": "A farm's pickers and total product",
+      "topic": "production-function",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Total, marginal and average product in a bakery",
+      "topic": "production-function",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A print shop adds workers to fixed presses",
+      "topic": "production-function",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A firm's short-run cost curves",
+      "topic": "short-run-costs",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A bakery's fixed and variable costs",
+      "topic": "short-run-costs",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Plant size and long-run total cost",
+      "topic": "long-run-costs",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A long-run average total cost curve",
+      "topic": "long-run-costs",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A firm doubles every input",
+      "topic": "long-run-costs",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Three firms' revenue, explicit and implicit costs",
+      "topic": "types-of-profit",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A firm's output and total cost at a given price",
+      "topic": "profit-maximization",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Cost curves and the price a firm sells at",
+      "topic": "profit-maximization",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A firm's costs at its best output: produce or shut down",
+      "topic": "firm-decisions",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A market after a fall in demand: exit",
+      "topic": "firm-decisions",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A competitive market and firm earning short-run profit",
+      "topic": "perfect-competition",
+      "stimulus": "graph",
+      "author": "C"
+     },
+     {
+      "title": "A farm after a rise in market demand",
+      "topic": "perfect-competition",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Many sellers of an identical product",
+      "topic": "perfect-competition",
+      "stimulus": "text",
+      "author": "C"
      }
     ],
     "comparisonTables": [],
@@ -337,7 +589,7 @@
     "frqThemes": [
      {
       "id": "frq-monopoly-long",
-      "title": "A monopoly: profit-maximizing quantity and price, profit, consumer surplus, deadweight loss and a price ceiling at P = MC",
+      "title": "A monopoly: profit-maximizing quantity and price, profit, deadweight loss, elasticity at QM and a per-unit tax",
       "topic": "monopoly",
       "type": "long",
       "author": "D",
@@ -345,7 +597,7 @@
      },
      {
       "id": "frq-game-monopoly-long",
-      "title": "A payoff matrix for two firms, then one firm's monopoly graph with a lump-sum tax",
+      "title": "A payoff matrix for two firms and the largest combined profit, then one firm's short-run cost curves and a rise in variable cost",
       "topic": "oligopoly-game-theory",
       "type": "long",
       "author": "D",
@@ -353,7 +605,7 @@
      },
      {
       "id": "frq-game-theory-short",
-      "title": "A payoff matrix: dominant strategies, every Nash equilibrium and the effect of a payoff change",
+      "title": "A payoff matrix: dominant strategies, every Nash equilibrium, using a rival's dominant strategy, and a rule that forces one cell",
       "topic": "oligopoly-game-theory",
       "type": "short",
       "author": "D",
@@ -376,14 +628,80 @@
       "author": "D"
      },
      {
+      "title": "A cost and demand table for a patent monopoly",
+      "topic": "monopoly",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "A ferry with no rivals and high fixed costs (natural monopoly)",
+      "topic": "monopoly",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A price maker's demand schedule",
+      "topic": "imperfect-competition",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Four markets to classify",
+      "topic": "imperfect-competition",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "Two groups of buyers with different elasticities",
+      "topic": "price-discrimination",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "One price or perfect price discrimination",
+      "topic": "price-discrimination",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Airline fares booked early and late",
+      "topic": "price-discrimination",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A monopolistically competitive firm in the short run, areas lettered",
+      "topic": "monopolistic-competition",
+      "stimulus": "graph",
+      "author": "D"
+     },
+     {
+      "title": "A sandwich shop in long-run equilibrium",
+      "topic": "monopolistic-competition",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Food trucks: profit, entry and differentiation",
+      "topic": "monopolistic-competition",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
       "title": "A payoff matrix for two cafes choosing prices",
+      "topic": "oligopoly-game-theory",
+      "stimulus": "graph",
+      "author": "D"
+     },
+     {
+      "title": "Two cement firms, a quota and cheating",
       "topic": "oligopoly-game-theory",
       "stimulus": "data",
       "author": "D"
      },
      {
-      "title": "A ride service with no rivals and high fixed costs",
-      "topic": "monopoly",
+      "title": "Two streaming services choose a release day (two equilibria and a payoff change)",
+      "topic": "oligopoly-game-theory",
       "stimulus": "text",
       "author": "D"
      }
@@ -420,14 +738,14 @@
      },
      {
       "id": "frq-hiring-table-short",
-      "title": "A hiring table: MRP, diminishing returns, the number of workers hired and a fixed cost that changes nothing",
+      "title": "A hiring table: MRP, the number of workers hired after a wage change and a price change, and derived demand",
       "topic": "competitive-factor-markets",
       "type": "short",
       "author": "E"
      },
      {
       "id": "frq-monopsony-short",
-      "title": "A monopsony: hiring where MRP = MFC, the wage from labor supply, the wage bill and a minimum wage",
+      "title": "A monopsony: hiring where MRP = MFC, the wage from labor supply, the competitive outcome, the deadweight loss and why MFC is above the wage",
       "topic": "monopsony",
       "type": "short",
       "author": "E",
@@ -445,6 +763,60 @@
       "title": "A town with one large employer: the monopsony graph",
       "topic": "monopsony",
       "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Tallow Candle Works: workers, output and MRP",
+      "topic": "factor-markets",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Welders at the Brackwater boatyards: derived demand",
+      "topic": "factor-markets",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Two firms add workers: a price taker and a single seller",
+      "topic": "factor-markets",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "The market for app developers after a change in labor demand",
+      "topic": "factor-demand-supply",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Warehouse workers in Kettle Valley: a labor market table",
+      "topic": "factor-demand-supply",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A year in Fenmore: shifts in the market for nurses",
+      "topic": "factor-demand-supply",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Workers or kiln time at Ortolan Ceramics: the least-cost rule",
+      "topic": "competitive-factor-markets",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Hiring nurses at the only hospital in Caddock County: MFC and the wage",
+      "topic": "monopsony",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A minimum wage for Caddock County nurses",
+      "topic": "monopsony",
+      "stimulus": "text",
       "author": "E"
      }
     ],
@@ -472,7 +844,7 @@
     "frqThemes": [
      {
       "id": "frq-externality-short",
-      "title": "A negative production externality: market vs efficient quantity, deadweight loss and the corrective tax",
+      "title": "A negative production externality: market vs efficient quantity, the total external cost, why efficient output is not zero, a larger external cost",
       "topic": "externalities",
       "type": "short",
       "author": "E",
@@ -497,6 +869,78 @@
       "topic": "inequality",
       "stimulus": "data",
       "author": "E"
+     },
+     {
+      "title": "A per-unit subsidy in a market for bus rides: deadweight loss beyond the efficient quantity",
+      "topic": "market-efficiency",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Evening hours at the Pellmore community pool: MSB and MSC",
+      "topic": "market-efficiency",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Four invented markets: efficient or not",
+      "topic": "market-efficiency",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "The Brasswick paper mill market: market and efficient quantity, tax and deadweight loss",
+      "topic": "externalities",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Four situations in an invented city: kinds of externality",
+      "topic": "externalities",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "A streetlight on Wren Lane: summing benefits of a public good",
+      "topic": "public-goods",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Fishing on Sablewood Lake: a common resource",
+      "topic": "public-goods",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Brightwater Power: regulating a natural monopoly",
+      "topic": "intervention-structures",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Taxing a monopoly ferry: lump-sum or per unit",
+      "topic": "intervention-structures",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "One minimum wage, two towns: competitive and monopsony labor markets",
+      "topic": "intervention-structures",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Two tax systems in Halbeck: proportional and regressive",
+      "topic": "inequality",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Changes on the island of Corrin: sources of inequality and transfers",
+      "topic": "inequality",
+      "stimulus": "text",
+      "author": "E"
      }
     ],
     "comparisonTables": [],
@@ -520,6 +964,12 @@
      {
       "title": "A table of prices and quantities read as ordered pairs",
       "topic": "axes-points",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A delivery van's fuel use at each speed: a U-shaped curve",
+      "topic": "slopes-curves",
       "stimulus": "data",
       "author": "A"
      },
@@ -1306,7 +1756,8 @@
    "wage",
    "wages",
    "profit",
-   "scarce"
+   "scarce",
+   "technology"
   ]
  },
  "concepts": [
@@ -1390,6 +1841,18 @@
    "taughtIn": "shifts-movements",
    "dependsOn": [
     "movement-along"
+   ]
+  },
+  {
+   "id": "ceteris-paribus",
+   "term": "ceteris paribus",
+   "aliases": [
+    "other things equal",
+    "all else equal"
+   ],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "shift-curve"
    ]
   },
   {
@@ -1496,6 +1959,17 @@
    ]
   },
   {
+   "id": "incentive",
+   "term": "incentive",
+   "aliases": [
+    "incentives"
+   ],
+   "taughtIn": "economic-systems",
+   "dependsOn": [
+    "market-economy"
+   ]
+  },
+  {
    "id": "ppc",
    "term": "production possibilities curve",
    "aliases": [
@@ -1519,6 +1993,9 @@
    "taughtIn": "production-possibilities",
    "dependsOn": [
     "ppc"
+   ],
+   "fullIn": [
+    "perfect-competition"
    ]
   },
   {
@@ -1755,6 +2232,17 @@
    "id": "law-of-supply",
    "term": "law of supply",
    "aliases": [],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "supply"
+   ]
+  },
+  {
+   "id": "market-supply",
+   "term": "market supply",
+   "aliases": [
+    "individual supply"
+   ],
    "taughtIn": "supply",
    "dependsOn": [
     "supply"
@@ -2165,10 +2653,12 @@
    "aliases": [
     "TC"
    ],
-   "taughtIn": "short-run-costs",
+   "taughtIn": "cost-benefit",
    "dependsOn": [
-    "fixed-cost",
-    "variable-cost"
+    "explicit-cost"
+   ],
+   "fullIn": [
+    "short-run-costs"
    ]
   },
   {
@@ -2177,10 +2667,13 @@
    "aliases": [
     "MC"
    ],
-   "taughtIn": "short-run-costs",
+   "taughtIn": "marginal-analysis",
    "dependsOn": [
-    "total-cost",
-    "diminishing-returns"
+    "marginal",
+    "total-cost"
+   ],
+   "fullIn": [
+    "short-run-costs"
    ]
   },
   {
@@ -2195,7 +2688,8 @@
    ],
    "taughtIn": "short-run-costs",
    "dependsOn": [
-    "total-cost"
+    "total-cost",
+    "diminishing-returns"
    ]
   },
   {
@@ -2345,9 +2839,8 @@
     "d = MR = AR = P",
     "MR = D = AR = P"
    ],
-   "taughtIn": "perfect-competition",
+   "taughtIn": "profit-maximization",
    "dependsOn": [
-    "perfect-competition",
     "marginal-revenue"
    ]
   },
@@ -2416,7 +2909,7 @@
    "aliases": [
     "monopolist"
    ],
-   "taughtIn": "monopoly",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
     "barriers"
    ]
@@ -2427,9 +2920,9 @@
    "aliases": [
     "MR below demand"
    ],
-   "taughtIn": "monopoly",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
-    "monopoly",
+    "market-power",
     "marginal-revenue"
    ]
   },
@@ -2474,7 +2967,7 @@
    "aliases": [
     "product differentiation"
    ],
-   "taughtIn": "monopolistic-competition",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
     "market-power"
    ]
@@ -2486,7 +2979,8 @@
    "taughtIn": "monopolistic-competition",
    "dependsOn": [
     "monopolistic-competition",
-    "long-run-eq"
+    "long-run-eq",
+    "productive-efficiency"
    ]
   },
   {
@@ -2495,7 +2989,7 @@
    "aliases": [
     "interdependence"
    ],
-   "taughtIn": "oligopoly-game-theory",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
     "market-power"
    ]
@@ -2553,6 +3047,29 @@
    "taughtIn": "oligopoly-game-theory",
    "dependsOn": [
     "payoff-matrix"
+   ]
+  },
+  {
+   "id": "game-theory",
+   "term": "game theory",
+   "aliases": [
+    "strategic interaction"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "oligopoly"
+   ]
+  },
+  {
+   "id": "prisoners-dilemma",
+   "term": "prisoner's dilemma",
+   "aliases": [
+    "prisoners' dilemma"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "dominant-strategy",
+    "nash-equilibrium"
    ]
   },
   {
@@ -2783,9 +3300,8 @@
    "aliases": [
     "lump-sum subsidy"
    ],
-   "taughtIn": "externalities",
+   "taughtIn": "short-run-costs",
    "dependsOn": [
-    "pigouvian",
     "fixed-cost"
    ]
   },
@@ -2841,6 +3357,18 @@
    "term": "common resource",
    "aliases": [
     "tragedy of the commons"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "rival",
+    "excludable"
+   ]
+  },
+  {
+   "id": "club-good",
+   "term": "club good",
+   "aliases": [
+    "club goods"
    ],
    "taughtIn": "public-goods",
    "dependsOn": [
@@ -2918,5 +3446,38 @@
    ]
   }
  ],
- "circularDependencies": []
+ "circularDependencies": [
+  {
+   "id": "general-cost-words",
+   "problem": "CED 1.5 and 1.6 weigh total benefit against total cost and marginal benefit against marginal cost, but the cost concepts are Topic 3.2.",
+   "detail": "Total cost (all the costs of a choice) is taught in 1.5 and marginal cost (the cost of one more unit) with the MB = MC rule in 1.6; 3.2 stays their main topic, adding TC = TFC + TVC, MC from a cost table and the MC curve shaped by diminishing returns. Integration 2026-11-09 (authors A and C).",
+   "resolution": "pull-forward",
+   "into": [
+    "cost-benefit",
+    "marginal-analysis"
+   ],
+   "fullIn": [
+    "short-run-costs"
+   ],
+   "concepts": [
+    "total-cost",
+    "marginal-cost"
+   ]
+  },
+  {
+   "id": "productive-efficiency-two-senses",
+   "problem": "Productive efficiency appears with the PPC (CED 1.3) and again as production at minimum ATC (CED 3.7, 4.4).",
+   "detail": "Taught in 1.3 as producing on the PPC (no resources wasted); 3.7 gives the firm-level sense, producing at the lowest ATC, which a competitive firm reaches in the long run and a monopolistically competitive firm does not (excess capacity, 4.4). Integration 2026-11-09 (author D).",
+   "resolution": "pull-forward",
+   "into": [
+    "production-possibilities"
+   ],
+   "fullIn": [
+    "perfect-competition"
+   ],
+   "concepts": [
+    "productive-efficiency"
+   ]
+  }
+ ]
 }

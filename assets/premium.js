@@ -564,10 +564,8 @@
     },
     apmicro: {
       name: 'AP® Microeconomics',
-      // Registered hidden in Phase 0 (docs/apmicro-spec.md decision 3): not on
-      // sale until the launch steps (migration 2026-11i applied, Polar product
-      // micro-2027, Worker POLAR_PRODUCTS).
-      onSale: false,
+      // On sale since 2026-11-10 (docs/apmicro-spec.md section 9): Polar product
+      // micro-2027, Worker POLAR_PRODUCTS set; the lead applies the migration.
       dailyFree: 15,
       // The free tier (docs/apmicro-spec.md decision 6): Unit 1, Topics 2.1 to
       // 2.4 and every "Graph skills you need" lesson. Keep in step with

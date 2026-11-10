@@ -1,0 +1,12 @@
+{
+ "axes-points-pairs": {
+  "file": "figures/axes-points-pairs.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A labeled graph with tacos sold per day across the bottom and price per taco up the side, showing three points, J (40, 5), K (80, 3) and L (120, 1), each with dashed lines to both axes; the points fall to the right, an inverse relationship."
+ }
+}

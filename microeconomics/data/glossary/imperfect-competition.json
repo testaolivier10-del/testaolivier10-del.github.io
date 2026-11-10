@@ -1,0 +1,20 @@
+{
+ "market-power": {
+  "def": "The ability of a firm to raise its price without losing all of its customers. A firm with market power is a price maker and faces a downward-sloping demand curve."
+ },
+ "barriers": {
+  "def": "Anything that keeps new firms from entering a market, such as a patent or license, control of a key resource, or economies of scale that give a large firm a lower average total cost."
+ },
+ "monopoly": {
+  "def": "A market with a single seller of a good with no close substitutes, protected by barriers to entry. The monopolist faces the whole downward-sloping market demand curve."
+ },
+ "mr-below-demand": {
+  "def": "For a firm with a downward-sloping demand curve, marginal revenue is less than the price after the first unit, because the price is cut on every unit sold; its MR curve lies below the demand curve (twice as steep when demand is a straight line)."
+ },
+ "monopolistic-competition": {
+  "def": "A market with many firms selling differentiated products (product differentiation: each version is a little different) and easy entry and exit. Each firm faces a downward-sloping demand curve."
+ },
+ "oligopoly": {
+  "def": "A market with a few large firms, often protected by barriers to entry. Each firm's best choice depends on what its rivals do (interdependence)."
+ }
+}

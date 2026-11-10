@@ -1,0 +1,413 @@
+{
+ "stimuli": {
+  "curves-crossing-s1": {
+   "kind": "graph",
+   "title": "A market graph with a shaded triangle and rectangle",
+   "figure": "curves-crossing-areas"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-curves-crossing-1",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is true at the point where two curves on a graph cross?",
+   "options": [
+    "The two curves have the same slope there",
+    "The price is at its highest value on the graph",
+    "The point lies on both curves, so both share its price and quantity",
+    "The quantity is 0"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An intersection is the one point that sits on both curves at once, so both curves give the same price and quantity there.",
+    "options": [
+     "A downward curve and an upward curve have opposite slopes, even where they cross.",
+     "The crossing point can be at any height.",
+     "Right: one point, on both curves.",
+     "The crossing point usually sits well away from the vertical axis."
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-2",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "curves-crossing-s1",
+   "q": "In the graph, at what price and quantity do D and S cross?",
+   "options": [
+    "\\$5 and 50 boxes",
+    "\\$10 and 0 boxes",
+    "\\$5 and 100 boxes",
+    "\\$50 and 5 boxes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Follow the dashed lines from E: across to \\$5 on the price axis and down to 50 boxes on the quantity axis.",
+    "options": [
+     "Right: E is at (50, \\$5).",
+     "That is where D meets the price axis, not where D meets S.",
+     "100 boxes is where D reaches the quantity axis.",
+     "This swaps the values: the quantity is 50 and the price is \\$5."
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-3",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "curves-crossing-s1",
+   "q": "What is the area of triangle A, which lies under D and above the \\$5 price, from 0 to 50 boxes?",
+   "why": {
+    "correct": "Base: 50 boxes (from 0 to 50). Height: \\$10 - \\$5 = \\$5. Area $= \\tfrac{1}{2} \\times 50 \\times 5 = 125$. <span class=\"mic-preview\">Unit 2 names this triangle consumer surplus.</span>"
+   },
+   "numeric": {
+    "from": {
+     "fn": "triangle",
+     "args": [
+      50,
+      {
+       "fn": "sub",
+       "args": [
+        10,
+        5
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "rectangle",
+       "args": [
+        50,
+        5
+       ]
+      },
+      "why": "250 is twice the triangle. Either you dropped the ½ (50 × 5 is the rectangle) or you measured the height from the axis (½ × 50 × 10). The height runs from \\$5 up to \\$10, which is 5, and a triangle is half of base × height: ½ × 50 × 5."
+     },
+     {
+      "from": {
+       "fn": "rectangle",
+       "args": [
+        50,
+        10
+       ]
+      },
+      "why": "That drops the ½ and also measures the height from the axis. The triangle's height runs from \\$5 to \\$10 (5), and its area is ½ × 50 × 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-4",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "curves-crossing-s1",
+   "q": "What is the area of rectangle B, under the \\$5 price from 0 to 50 boxes?",
+   "why": {
+    "correct": "A rectangle's area is base × height: $50 \\times 5 = 250$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "rectangle",
+     "args": [
+      50,
+      5
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "triangle",
+       "args": [
+        50,
+        5
+       ]
+      },
+      "why": "That halves the area, which is the rule for a triangle. B is a rectangle: base × height with no ½."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-5",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "curves-crossing-s1",
+   "q": "If D shifted right and the new crossing point were at \\$6 and 60 boxes, how would the new rectangle under the price, out to the quantity, compare with B?",
+   "options": [
+    "It would be smaller, because D moved",
+    "It would be the same, 250",
+    "It would be larger: 60 × 6 ÷ 2 = 180",
+    "It would be larger: 60 × 6 = 360"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A rectangle under the new price out to the new quantity has base 60 and height 6: $60 \\times 6 = 360$, larger than 250.",
+    "options": [
+     "Both the price and the quantity rose, so the rectangle grows.",
+     "The base and height both changed, so the area changed.",
+     "That halves a rectangle; the ½ belongs only to triangles.",
+     "Right: both the base and the height grew."
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-6",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "More shoppers start coming to the market, so at every price buyers want more boxes of strawberries. Shift the right curve and mark the new crossing point.",
+   "why": {
+    "correct": "More buyers shift D right. The new crossing point slides up along S: a higher price and a larger quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "more shoppers at the market",
+     "outcome": {
+      "price": "up",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "S": "Shoppers are buyers, so they move D; S would move only if the farmers' costs or numbers changed."
+    }
+   }
+  },
+  {
+   "id": "mic-curves-crossing-7",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A late frost damages the strawberry crop, so at every price farmers bring fewer boxes. Shift the right curve and mark the new crossing point.",
+   "why": {
+    "correct": "The frost shifts S left. The new crossing point slides up along D: a higher price and a smaller quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a frost that damages the crop",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "The frost changes what farmers can bring, so it moves S, not the buyers' curve D."
+    }
+   }
+  },
+  {
+   "id": "mic-curves-crossing-8",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the triangle that lies under the downward-sloping curve D and above the horizontal line through the crossing point, from 0 out to the crossing quantity.",
+   "why": {
+    "correct": "The triangle has the vertical axis on its left, D on top and the horizontal line at the crossing price below, and it ends at the crossing quantity. <span class=\"mic-preview\">Unit 2 names this triangle consumer surplus.</span>"
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    },
+    "slips": {
+     "ps": "That triangle sits BELOW the crossing price and above S. The one asked for sits above the price and under D."
+    }
+   }
+  },
+  {
+   "id": "mic-curves-crossing-9",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the triangle that lies above the upward-sloping curve S and below the horizontal line through the crossing point, from 0 out to the crossing quantity.",
+   "why": {
+    "correct": "The triangle has the vertical axis on its left, the horizontal line at the crossing price on top and S below, and it ends at the crossing quantity. <span class=\"mic-preview\">Unit 2 names this triangle producer surplus.</span>"
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "ps"
+    },
+    "slips": {
+     "cs": "That triangle sits ABOVE the crossing price and under D. The one asked for sits below the price and above S."
+    }
+   }
+  },
+  {
+   "id": "mic-curves-crossing-10",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A triangle on a graph has a base of 30 units along the quantity axis and a height of \\$8. What is its area, in dollars?",
+   "why": {
+    "correct": "Area $= \\tfrac{1}{2} \\times 30 \\times 8 = 120$ dollars."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "triangle",
+     "args": [
+      30,
+      8
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "rectangle",
+       "args": [
+        30,
+        8
+       ]
+      },
+      "why": "That is the rectangle. A triangle with the same base and height is half of it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-11",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A table shows that at \\$2 buyers want 70 bags and sellers offer 30; at \\$3, 60 and 45; at \\$4, 50 and 50; at \\$5, 40 and 55. At what price do the two curves cross?",
+   "options": [
+    "\\$2",
+    "\\$4",
+    "\\$5",
+    "\\$3"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The curves cross where both give the same quantity. At \\$4 buyers want 50 bags and sellers offer 50.",
+    "options": [
+     "At \\$2 buyers want 70 but sellers offer only 30.",
+     "Right: 50 wanted and 50 offered.",
+     "At \\$5 sellers offer 55 but buyers want only 40.",
+     "At \\$3 buyers want 60 but sellers offer 45."
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-12",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The buyers' curve D shifts right and the sellers' curve S stays put. Along which curve does the crossing point move?",
+   "options": [
+    "Along D, the curve that moved",
+    "Along S, the curve that did not move",
+    "Along neither: it stays where it was",
+    "Down the vertical axis"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The new crossing point must lie on both the new D and the old S. S did not move, so the point slides along S.",
+    "options": [
+     "The old D is gone; the new point is on the new D and on S, so it moves along S.",
+     "Right: it stays on the curve that held still.",
+     "A shift moves the crossing point to a new place.",
+     "Crossing points sit where the curves meet, not on an axis."
+    ]
+   }
+  },
+  {
+   "id": "mic-curves-crossing-13",
+   "unit": "graph-skills",
+   "topic": "curves-crossing",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the steps for finding the area of a triangle on a graph in order.",
+   "options": [
+    "Find the triangle's corners on the graph",
+    "Read its base along the horizontal axis",
+    "Read its height along the vertical axis",
+    "Multiply ½ × base × height"
+   ],
+   "why": {
+    "correct": "Locate the shape, read the base and the height from its own edges, then apply the formula."
+   }
+  }
+ ]
+}

@@ -1,0 +1,557 @@
+{
+ "stimuli": {
+  "demand-s1": {
+   "kind": "data",
+   "title": "Three buyers of smoothies at a gym cafe",
+   "invented": true,
+   "table": {
+    "caption": "Smoothies each buyer would buy per week at each price (invented data for practice)",
+    "cols": [
+     "Price",
+     "Ana",
+     "Ben",
+     "Cai"
+    ],
+    "rows": [
+     [
+      "\\$2",
+      "6",
+      "4",
+      "5"
+     ],
+     [
+      "\\$3",
+      "5",
+      "3",
+      "4"
+     ],
+     [
+      "\\$4",
+      "4",
+      "2",
+      "2"
+     ],
+     [
+      "\\$5",
+      "3",
+      "1",
+      "0"
+     ]
+    ]
+   }
+  },
+  "demand-s2": {
+   "kind": "text",
+   "title": "Four news items about e-scooter rentals in Porthaven",
+   "text": "<p>Porthaven is an invented city where riders rent e-scooters by the trip. A local paper ran four items in one month:</p><ol><li>The rental company raised its price per trip from \\$3 to \\$4.</li><li>The city raised bus fares by 50 cents.</li><li>A survey found that riders expect the rental price to jump next month.</li><li>A factory closed, and many residents earn less. Riders who can afford a car or a bike tend to stop renting scooters.</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-demand-1",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the curve of a market demand graph for concert tickets.",
+   "why": {
+    "correct": "Price goes on the vertical axis and quantity on the horizontal axis. The curve that slopes down is demand, D: as the price falls, buyers want more tickets."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-demand-2",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of printer ink rises sharply. Ink and printers are used together. Shift the right curve in the market for printers.",
+   "why": {
+    "correct": "Ink and printers are complements. A higher price of ink makes owning a printer more costly, so buyers want fewer printers at each price: demand for printers shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the price of a complement (ink)"
+    },
+    "slips": {
+     "S": "The price of ink changes what buyers of printers want, not the cost of making printers, so it shifts demand, not supply."
+    }
+   }
+  },
+  {
+   "id": "mic-demand-3",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A town of 20,000 people grows to 30,000 as new families move in. Shift the right curve in the town's market for haircuts.",
+   "why": {
+    "correct": "More buyers in the market means more haircuts wanted at each price, so market demand shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "more buyers in the market"
+    },
+    "slips": {
+     "S": "New residents are buyers of haircuts; the number of buyers is a demand shifter."
+    }
+   }
+  },
+  {
+   "id": "mic-demand-4",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Instant noodles are an inferior good for most students. Student incomes rise when a campus raises pay for student jobs. Shift the right curve in the campus market for instant noodles.",
+   "why": {
+    "correct": "For an inferior good, a rise in income lowers demand: students switch to foods they now prefer and can afford. Demand for instant noodles shifts left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in income for an inferior good"
+    },
+    "slips": {
+     "D": "More income raises demand for a normal good, but this is an inferior good, so its demand falls."
+    }
+   }
+  },
+  {
+   "id": "mic-demand-5",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The price of movie tickets rises and nothing else changes. Mark the point on the demand curve that shows the new price and quantity demanded.",
+   "why": {
+    "correct": "A change in the good's own price moves buyers along the same demand curve. The new point is up and to the left: a higher price and a smaller quantity demanded."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "on": "D",
+      "x": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-demand-6",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "demand-s1",
+   "q": "The table shows how many smoothies each of the three buyers in the cafe would buy per week. If they are the only buyers, what is the market quantity demanded at a price of \\$4?",
+   "why": {
+    "correct": "Market demand is the horizontal sum of individual demands: add the quantities at the same price. At \\$4: $4 + 2 + 2 = 8$ smoothies."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      4,
+      2,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That is Ana's quantity alone. Market demand adds every buyer's quantity at \\$4."
+     },
+     {
+      "value": 12,
+      "why": "That is the market quantity at \\$3. Read the \\$4 row and add across it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-7",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "demand-s1",
+   "q": "The cafe cuts the smoothie price from \\$4 to \\$3. What happens in the market for its smoothies?",
+   "options": [
+    "Demand shifts right because the smoothies are cheaper",
+    "A movement along demand: quantity demanded falls from 12 to 8",
+    "A movement along demand: quantity demanded rises from 8 to 12",
+    "Demand shifts left because each smoothie earns the cafe less"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A change in the good's own price is a movement along the demand curve. The market quantity demanded rises from 8 to 12; demand itself does not change.",
+    "options": [
+     "A lower own price does not shift demand; it moves buyers along it.",
+     "That is the change for a price rise from \\$3 to \\$4.",
+     "Right: the own price changed, so buyers move along the curve.",
+     "The cafe's earnings do not move the buyers' curve."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-8",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "demand-s1",
+   "q": "Which buyer's quantity demanded falls the most, in smoothies, when the price rises from \\$4 to \\$5?",
+   "options": [
+    "Cai, by 2 smoothies",
+    "Ana, by 1 smoothie",
+    "Ben, by 1 smoothie",
+    "Ana and Ben together, by 1 each"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ana falls from 4 to 3 (down 1), Ben from 2 to 1 (down 1) and Cai from 2 to 0 (down 2). Cai's quantity falls the most.",
+    "options": [
+     "Right: from 2 to 0.",
+     "Ana falls by 1, less than Cai's 2.",
+     "Ben falls by 1, less than Cai's 2.",
+     "Each falls by 1; the question asks for the single largest fall."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-9",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "demand-s1",
+   "q": "A fourth regular, Dee, starts using the gym and buys 3 smoothies a week at any price from \\$2 to \\$5. How does this change the market demand for the cafe's smoothies?",
+   "options": [
+    "It does not change, because the price has not changed",
+    "Quantity demanded rises along the same curve",
+    "It shifts left, because each buyer gets fewer smoothies",
+    "It shifts right: 3 more smoothies are demanded at each price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Market demand adds each buyer's quantity at each price. Dee adds 3 smoothies to the market quantity at every price, so the market demand curve shifts right.",
+    "options": [
+     "The price did not change, but the number of buyers did, and that shifts demand.",
+     "A movement along demand needs a change in the own price.",
+     "More buyers raise demand; they do not lower it.",
+     "Right: one more buyer adds to the sum at each price."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-10",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "demand-s2",
+   "q": "Item 1 reports a higher price per trip. How does it affect the market for scooter rentals?",
+   "options": [
+    "Demand for rentals shifts left",
+    "Quantity demanded falls along the demand curve",
+    "Demand for rentals shifts right",
+    "Quantity demanded rises along the demand curve"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The rental price is the good's own price. A rise moves riders along the demand curve: quantity demanded falls. Demand does not shift.",
+    "options": [
+     "A change in the own price is a movement along demand, not a shift.",
+     "Right: the own price changed.",
+     "A higher price does not raise demand.",
+     "By the law of demand, a higher price lowers quantity demanded."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-11",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "demand-s2",
+   "q": "Item 2 reports higher bus fares. How does it affect the demand for scooter rentals?",
+   "options": [
+    "Demand shifts left, because buses are a complement",
+    "Demand shifts right, because buses are a substitute",
+    "Quantity demanded rises along the demand curve",
+    "No change, because bus fares are a different market"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Buses and scooters are substitutes for getting around town. When the bus costs more, some riders switch to scooters, so demand for rentals shifts right.",
+    "options": [
+     "Riders use a bus or a scooter for a trip, so the two are substitutes.",
+     "Right: a higher price of a substitute raises demand.",
+     "The rental price did not change; another good's price did, which shifts demand.",
+     "Prices of related goods are a determinant of demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-12",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "demand-s2",
+   "q": "Item 3 reports a survey about next month's price. How does it affect the demand for scooter rentals this month?",
+   "options": [
+    "Demand this month shifts left",
+    "Quantity demanded falls along the demand curve",
+    "No change until the price really rises",
+    "Demand this month shifts right"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When buyers expect a higher price later, they buy more now, before the price rises. Demand this month shifts right.",
+    "options": [
+     "An expected price rise pulls buying forward into this month.",
+     "The current price did not change, so this is not a movement along demand.",
+     "Expectations shift demand as soon as buyers hold them.",
+     "Right: riders rent more now, before the expected rise."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-13",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "demand-s2",
+   "q": "Item 4 reports lower incomes. Based on how riders behave, how does it affect the demand for scooter rentals?",
+   "options": [
+    "Demand shifts right, because rentals act as an inferior good",
+    "Demand shifts left, because rentals act as a normal good",
+    "Quantity demanded falls along the demand curve",
+    "Demand shifts left, because buyers have less to spend"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Riders rent fewer scooters once they can afford a car or bike, so rentals behave like an inferior good. Lower incomes raise demand for an inferior good: demand shifts right.",
+    "options": [
+     "Right: with less income, more riders rent instead of owning a car or bike.",
+     "The item says riders with more money stop renting, which marks an inferior good.",
+     "Income is a demand shifter, not a change in the own price.",
+     "That holds for a normal good; this good behaves as an inferior one."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-14",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement is the law of demand?",
+   "options": [
+    "Other things equal, a higher price raises the quantity demanded",
+    "Demand rises when the number of sellers rises",
+    "Other things equal, a higher price lowers the quantity demanded",
+    "Buyers want more of a good at each price when their incomes rise"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The law of demand: other things equal, when the price of a good rises, the quantity demanded falls, and when the price falls, the quantity demanded rises.",
+    "options": [
+     "That is backward: buyers want less at a higher price.",
+     "Sellers affect supply, not the law of demand.",
+     "Right: price and quantity demanded move in opposite directions.",
+     "That describes a normal good, not the law of demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-15",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Lena buys her third slice of pizza only if the price falls, because the third slice satisfies her less than the second. Which idea explains why her demand curve slopes down?",
+   "options": [
+    "The income effect of a higher income",
+    "A change in the price of a substitute",
+    "More buyers in the pizza market",
+    "Diminishing marginal utility"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Diminishing marginal utility: each extra slice adds less satisfaction, so Lena will buy more only at a lower price.",
+    "options": [
+     "Her income did not change; the extra slice is simply worth less.",
+     "No other good's price changed here.",
+     "This is one buyer's choice, not the number of buyers.",
+     "Right: each extra slice is worth less to her."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-16",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The price of chicken rises, and Omar buys more beans and less chicken, even though his spending power is about the same. Which effect does this show?",
+   "options": [
+    "The income effect",
+    "A shift in demand for chicken",
+    "The substitution effect",
+    "A change in sellers' costs"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The substitution effect: a higher price makes a good more costly compared with other goods, so buyers switch toward the cheaper substitute.",
+    "options": [
+     "The income effect works through lower spending power, which the stem says stayed about the same.",
+     "Chicken's own price changed, so this is a movement along its demand.",
+     "Right: he switches to a good that is now cheaper by comparison.",
+     "This is a buyer's choice in response to a price, not a seller's cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-17",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Which changes shift the demand for electric bikes to the right? Select all that apply.",
+   "options": [
+    "The price of gasoline for cars rises sharply",
+    "The price of electric bikes falls",
+    "A city adds thousands of new residents who commute by bike",
+    "The price of charging an electric bike rises"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Demand shifts right when buyers want more at each price: more buyers, a higher price of a substitute (cars), and lower prices of complements (charging) all do it. A change in the bike's own price only moves buyers along the curve.",
+    "options": [
+     "Right: cars are a substitute, and driving now costs more.",
+     "A change in the own price is a movement along demand.",
+     "Right: more buyers raise market demand.",
+     "Charging is a complement; a higher price lowers demand for bikes."
+    ]
+   }
+  },
+  {
+   "id": "mic-demand-18",
+   "unit": "unit-2",
+   "topic": "demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In Corvia, an invented country, new laws let people own and sell the apartments they live in, and owners can keep what they earn from a sale. What does this change most directly do?",
+   "options": [
+    "It sets by law the price at which apartments are bought and sold",
+    "It gives people an incentive to buy, improve and trade apartments",
+    "It shifts demand for apartments left by adding rules",
+    "It lowers the quantity of apartments buyers want"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Well-defined property rights let owners keep the gains from trading, which gives buyers and sellers the incentive to use a market. Clear ownership is what lets a market for apartments work.",
+    "options": [
+     "Property rights decide who owns a thing, not what it sells for.",
+     "Right: owners can keep the gains from a trade.",
+     "Clear ownership makes buying more attractive, not less.",
+     "Nothing here lowers what buyers want at a given price."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 560" width="820" height="560" role="img" aria-labelledby="production-function-tp-mp-t production-function-tp-mp-d" font-family="Arial, Helvetica, sans-serif">
+<title id="production-function-tp-mp-t">Total, marginal and average product as workers are added to a fixed kitchen</title>
+<desc id="production-function-tp-mp-d">Top: total product of a bakery with one oven, rising from 0 loaves with no workers to 10, 24, 36, 44, 48, 48 loaves with 1 to 6 workers. Bottom: marginal product (10, 14, 12, 8, 4, 0 loaves) rises for the first two workers and falls from the third worker on, the shaded range of diminishing marginal returns, reaching 0 for the sixth worker; average product (dashed) rises while marginal product is above it and falls once marginal product is below it. Invented data for practice.</desc>
+<defs><marker id="production-function-tp-mp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="production-function-tp-mp-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="production-function-tp-mp-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="production-function-tp-mp-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="820" height="560" fill="#FFFFFF"/>
+<text x="370" y="24" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Total product</text>
+<line x1="110" y1="34" x2="110" y2="230" stroke="#1F2A28" stroke-width="2"/>
+<line x1="110" y1="230" x2="636" y2="230" stroke="#1F2A28" stroke-width="2"/>
+<text x="630" y="264" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">Number of workers</text>
+<text x="60" y="40" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 60 40)">Total product (loaves)</text>
+<text x="104" y="235" font-size="12" fill="#6B7370" text-anchor="end">0</text>
+<text x="104" y="197" font-size="12" fill="#6B7370" text-anchor="end">10</text>
+<text x="104" y="159" font-size="12" fill="#6B7370" text-anchor="end">20</text>
+<text x="104" y="121" font-size="12" fill="#6B7370" text-anchor="end">30</text>
+<text x="104" y="83" font-size="12" fill="#6B7370" text-anchor="end">40</text>
+<text x="104" y="45" font-size="12" fill="#6B7370" text-anchor="end">50</text>
+<text x="110" y="248" font-size="12" fill="#6B7370" text-anchor="middle">0</text>
+<text x="196.7" y="248" font-size="12" fill="#6B7370" text-anchor="middle">1</text>
+<text x="283.3" y="248" font-size="12" fill="#6B7370" text-anchor="middle">2</text>
+<text x="370" y="248" font-size="12" fill="#6B7370" text-anchor="middle">3</text>
+<text x="456.7" y="248" font-size="12" fill="#6B7370" text-anchor="middle">4</text>
+<text x="543.3" y="248" font-size="12" fill="#6B7370" text-anchor="middle">5</text>
+<text x="630" y="248" font-size="12" fill="#6B7370" text-anchor="middle">6</text>
+<path d="M110 230L196.7 192L283.3 138.8L370 93.2L456.7 62.8L543.3 47.6L630 47.6" fill="none" stroke="#7E1A5E" stroke-width="3"/>
+<circle cx="110" cy="230" r="4.5" fill="#7E1A5E"/>
+
+<circle cx="196.7" cy="192" r="4.5" fill="#7E1A5E"/>
+<text x="200.7" y="183" font-size="12" fill="#7E1A5E" text-anchor="end">10</text>
+<circle cx="283.3" cy="138.8" r="4.5" fill="#7E1A5E"/>
+<text x="287.3" y="129.8" font-size="12" fill="#7E1A5E" text-anchor="end">24</text>
+<circle cx="370" cy="93.2" r="4.5" fill="#7E1A5E"/>
+<text x="374" y="84.2" font-size="12" fill="#7E1A5E" text-anchor="end">36</text>
+<circle cx="456.7" cy="62.8" r="4.5" fill="#7E1A5E"/>
+<text x="460.7" y="53.8" font-size="12" fill="#7E1A5E" text-anchor="end">44</text>
+<circle cx="543.3" cy="47.6" r="4.5" fill="#7E1A5E"/>
+<text x="547.3" y="38.6" font-size="12" fill="#7E1A5E" text-anchor="end">48</text>
+<circle cx="630" cy="47.6" r="4.5" fill="#7E1A5E"/>
+<text x="634" y="38.6" font-size="12" fill="#7E1A5E" text-anchor="start">48</text>
+<text x="556.3" y="93.2" font-size="15" fill="#7E1A5E" font-weight="700">TP</text>
+<text x="370" y="302" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Marginal and average product</text>
+<line x1="110" y1="314" x2="110" y2="510" stroke="#1F2A28" stroke-width="2"/>
+<line x1="110" y1="510" x2="636" y2="510" stroke="#1F2A28" stroke-width="2"/>
+<text x="630" y="544" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">Number of workers</text>
+<text x="60" y="320" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 60 320)">Product (loaves per worker)</text>
+<text x="104" y="515" font-size="12" fill="#6B7370" text-anchor="end">0</text>
+<text x="104" y="467.5" font-size="12" fill="#6B7370" text-anchor="end">4</text>
+<text x="104" y="420" font-size="12" fill="#6B7370" text-anchor="end">8</text>
+<text x="104" y="372.5" font-size="12" fill="#6B7370" text-anchor="end">12</text>
+<text x="104" y="325" font-size="12" fill="#6B7370" text-anchor="end">16</text>
+<text x="110" y="528" font-size="12" fill="#6B7370" text-anchor="middle">0</text>
+<text x="196.7" y="528" font-size="12" fill="#6B7370" text-anchor="middle">1</text>
+<text x="283.3" y="528" font-size="12" fill="#6B7370" text-anchor="middle">2</text>
+<text x="370" y="528" font-size="12" fill="#6B7370" text-anchor="middle">3</text>
+<text x="456.7" y="528" font-size="12" fill="#6B7370" text-anchor="middle">4</text>
+<text x="543.3" y="528" font-size="12" fill="#6B7370" text-anchor="middle">5</text>
+<text x="630" y="528" font-size="12" fill="#6B7370" text-anchor="middle">6</text>
+<rect x="326.7" y="320" width="303.3" height="190" rx="0" fill="#FBE6D9" stroke="none" stroke-width="1.6" fill-opacity="0.7"/>
+<text x="478.3" y="329.5" font-size="12" fill="#D55E00" text-anchor="middle" font-weight="700">Diminishing marginal returns</text>
+<text x="218.3" y="329.5" font-size="12" fill="#6B7370" text-anchor="middle" font-weight="700">MP rising</text>
+<path d="M196.7 391.3L283.3 367.5L370 367.5L456.7 379.4L543.3 396L630 415" fill="none" stroke="#084F78" stroke-width="2.6" stroke-dasharray="8 5"/>
+<path d="M196.7 391.3L283.3 343.8L370 367.5L456.7 415L543.3 462.5L630 510" fill="none" stroke="#7E1A5E" stroke-width="3"/>
+<circle cx="196.7" cy="391.3" r="4.5" fill="#7E1A5E"/>
+<circle cx="283.3" cy="343.8" r="4.5" fill="#7E1A5E"/>
+<circle cx="370" cy="367.5" r="4.5" fill="#7E1A5E"/>
+<circle cx="456.7" cy="415" r="4.5" fill="#7E1A5E"/>
+<circle cx="543.3" cy="462.5" r="4.5" fill="#7E1A5E"/>
+<circle cx="630" cy="510" r="4.5" fill="#7E1A5E"/>
+<circle cx="196.7" cy="391.3" r="3.5" fill="#084F78"/>
+<circle cx="283.3" cy="367.5" r="3.5" fill="#084F78"/>
+<circle cx="370" cy="367.5" r="3.5" fill="#084F78"/>
+<circle cx="456.7" cy="379.4" r="3.5" fill="#084F78"/>
+<circle cx="543.3" cy="396" r="3.5" fill="#084F78"/>
+<circle cx="630" cy="415" r="3.5" fill="#084F78"/>
+<text x="638" y="514" font-size="15" fill="#7E1A5E" font-weight="700">MP<tspan font-size="11" dy="4">L</tspan></text>
+<text x="638" y="419" font-size="15" fill="#084F78" font-weight="700">AP<tspan font-size="11" dy="4">L</tspan></text>
+<text x="660" y="120" font-size="13" fill="#1F2A28">TP rises by less</text>
+<text x="660" y="138" font-size="13" fill="#1F2A28">and less after the</text>
+<text x="660" y="156" font-size="13" fill="#1F2A28">second worker, then</text>
+<text x="660" y="174" font-size="13" fill="#1F2A28">stops rising.</text>
+<text x="660" y="380" font-size="13" fill="#1F2A28">MP of the 3rd worker:</text>
+<text x="660" y="398" font-size="13" fill="#7E1A5E" font-weight="700">36 - 24 = 12 loaves</text>
+<text x="660" y="430" font-size="13" fill="#1F2A28">MP above AP pulls</text>
+<text x="660" y="448" font-size="13" fill="#1F2A28">AP up; MP below AP</text>
+<text x="660" y="466" font-size="13" fill="#1F2A28">pulls it down.</text>
+</svg>

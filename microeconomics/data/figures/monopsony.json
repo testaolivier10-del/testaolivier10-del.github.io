@@ -1,0 +1,22 @@
+{
+ "monopsony-graph": {
+  "file": "figures/monopsony-graph.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A monopsony graph with Wage on the vertical axis and Quantity of labor on the horizontal axis. MFC rises twice as steeply as the labor supply curve SL from the same starting wage. The firm hires QM workers, where MRP crosses MFC, and pays the wage WM read down from that quantity to SL. The wage bill, WM times QM, is the shaded rectangle. Under competition the quantity would be QC and the wage WC, where MRP meets SL; the triangle between MRP and SL from QM to QC is the deadweight loss."
+ },
+ "monopsony-min-wage": {
+  "file": "figures/monopsony-min-wage.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The same monopsony graph with a minimum wage Wmin set above the monopsony wage WM and below the competitive wage. Up to the labor supply curve, each extra worker now costs exactly Wmin, so the firm's MFC is flat at Wmin. The firm hires Qmin workers, where the flat MFC reaches labor supply, which is more than QM, and every worker earns the higher wage Wmin."
+ }
+}

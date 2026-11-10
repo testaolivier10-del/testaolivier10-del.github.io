@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-labelledby="disequilibrium-changes-gaps-t disequilibrium-changes-gaps-d" font-family="Arial, Helvetica, sans-serif">
+<title id="disequilibrium-changes-gaps-t">A shortage below equilibrium, a surplus above it</title>
+<desc id="disequilibrium-changes-gaps-d">Demand and supply for bike helmets cross at E: $40 and 60 helmets. At $30, quantity demanded is 70 and quantity supplied is 40: a shortage of 30 helmets, which pushes the price up. At $50, quantity supplied is 80 and quantity demanded is 50: a surplus of 30 helmets, which pushes the price down. Invented data for practice.</desc>
+<defs><marker id="disequilibrium-changes-gaps-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="disequilibrium-changes-gaps-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="disequilibrium-changes-gaps-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="disequilibrium-changes-gaps-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="640" height="420" fill="#FFFFFF"/>
+<path d="M80 44V350H466" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="460" y="386" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="460" dy="0">Helmets per week</tspan></text>
+<text transform="translate(40 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M156 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="156" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="156" dy="0">20</tspan></text>
+<path d="M232 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="232" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="232" dy="0">40</tspan></text>
+<path d="M384 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="384" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="384" dy="0">80</tspan></text>
+<path d="M460 350v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="460" y="367" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="460" dy="0">100</tspan></text>
+<path d="M80 221.4h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="225.4" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$30</tspan></text>
+<path d="M80 178.6h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="182.6" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$40</tspan></text>
+<path d="M80 135.7h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="139.7" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$50</tspan></text>
+<path d="M80 92.9h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="96.9" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$60</tspan></text>
+<path d="M213 71.4L441 328.6" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="446" y="332.6" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="446" dy="0">D</tspan></text>
+<path d="M156 264.3L437.2 105.7" stroke="#7E1A5E" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+<text x="443.2" y="109.7" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="443.2" dy="0">S</tspan></text>
+<path d="M80 221.4H346" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M80 135.7H384" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M232 221.4L346 221.4" fill="none" stroke="#D55E00" stroke-width="5" stroke-linecap="round"/>
+<path d="M270 135.7L384 135.7" fill="none" stroke="#355A0A" stroke-width="5" stroke-linecap="round"/>
+<text x="262.4" y="239.4" font-size="12" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="262.4" dy="0">Shortage</tspan><tspan x="262.4" dy="15">70 − 40 = 30</tspan></text>
+<text x="330.8" y="125.7" font-size="12" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="330.8" dy="0">Surplus = 80 − 50 = 30</tspan></text>
+<path d="M308 178.6V350" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="308" y="367" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="308" dy="0">60</tspan></text>
+<path d="M80 178.6H308" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<circle cx="308" cy="178.6" r="4.5" fill="#1F2A28"/>
+<text x="318" y="182.6" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="318" dy="0">E</tspan></text>
+<path d="M110.4 217.1L110.4 187.1" stroke="#D55E00" stroke-width="2.2" fill="none" marker-end="url(#disequilibrium-changes-gaps-v)"/>
+<path d="M110.4 140L110.4 170" stroke="#355A0A" stroke-width="2.2" fill="none" marker-end="url(#disequilibrium-changes-gaps-v)"/>
+<text x="320" y="410" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="320" dy="0">Invented data for practice.</tspan></text>
+</svg>

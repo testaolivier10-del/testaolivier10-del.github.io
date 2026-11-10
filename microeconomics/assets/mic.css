@@ -22,21 +22,21 @@ body.mic{--ctint:#F8E6F1;--cink:#7E1A5E;}
    formulas scroll sideways on a phone rather than overflow the page. */
 math.mic-m{font-family:"STIX Two Math","Cambria Math","Latin Modern Math","STIXGeneral",math,serif;font-size:1.08em;}
 math.mic-m[display="block"]{display:block math;margin:.6em 0;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0;}
-math.mic-m mtext{font-family:var(--font-body,inherit);}
+math.mic-m mtext{font-family:inherit;}
 .mic-q-calc{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12px var(--font-ui);letter-spacing:.02em;vertical-align:2px;}
 /* Plots (mic-plot.js): Okabe-Ito based series, lighter in dark mode;
    open points are hollow. Color is never the only cue: curves carry labels. */
 .mic-plot-wrap{overflow-x:auto;max-width:100%;}
 .mic-plot{display:block;max-width:100%;height:auto;margin:0 auto;font:600 11px var(--font-ui);}
-.mic-plot text{fill:var(--ink-2,var(--ink));}
+.mic-plot text{fill:var(--ink);}
 .mic-plot .mic-plot-axlabel,.mic-plot .mic-plot-label{font-weight:800;fill:var(--ink);}
 .mic-plot-grid line{stroke:var(--line);stroke-width:1;}
 .mic-plot-axis line{stroke:var(--ink);stroke-width:1.3;}
 .mic-plot-curve{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;}
 .mic-plot-curve.is-dashed,.mic-plot-line.is-dashed{stroke-dasharray:6 5;}
 .mic-plot-line{stroke-width:1.8;}
-.mic-plot-asym{stroke:var(--ink-3,#777);stroke-width:1.3;stroke-dasharray:4 4;}
-.mic-plot-field line{stroke:var(--ink-2,#555);stroke-width:1.3;stroke-linecap:round;}
+.mic-plot-asym{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:4 4;}
+.mic-plot-field line{stroke:var(--muted);stroke-width:1.3;stroke-linecap:round;}
 .mic-plot-shade{fill:var(--cink);fill-opacity:.16;}
 .mic-plot-pt{stroke-width:2;}
 .mic-plot-pt.is-open{fill:var(--white,#fff);}
@@ -194,7 +194,7 @@ a.mic-tag:hover{text-decoration:underline;}
 .mic-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
 .mic-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
 .going-further,.mic-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
-.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further{background:var(--surface2);}
 .going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .mic-preview{border:2px dashed var(--cink);}
 .mic-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
@@ -300,8 +300,8 @@ a.gl{cursor:pointer;}
 .mic-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
 .mic-opt[aria-disabled="true"]{cursor:default;}
 .mic-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
-.mic-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
-.mic-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.mic-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--tint-good);}
+.mic-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--tint-bad);}
 .mic-opt .mic-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
 .mic-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
 .mic-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
@@ -512,13 +512,22 @@ table.mic-data td{font-variant-numeric:tabular-nums;}
 .mic-gr-sub{font-size:9px;}
 .mic-gr-guide{fill:none;stroke:var(--cink);stroke-width:1.1;stroke-dasharray:3 4;}
 .mic-gr-guide.is-old{stroke:var(--muted,#777);}
-.mic-gr-eq{fill:var(--cink);stroke:var(--surface,#fff);stroke-width:2;cursor:grab;}
+.mic-gr-eq{fill:var(--cink);stroke:var(--white);stroke-width:2;cursor:grab;}
 .mic-gr-eq.is-old{fill:var(--muted,#777);cursor:default;}
 .mic-gr-eq.is-point{fill:var(--accent,#C24E00);}
 .mic-gr-plabel{fill:var(--ink);font-weight:800;}
 .mic-gr-plabel.is-old{fill:var(--muted,#777);font-weight:700;}
 .mic-gr-arrow{fill:none;stroke:var(--cink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .mic-gr-mark{fill:var(--cink);font-weight:800;font-size:11px;}
+/* Narrow graphs (data-fit, set by mic-core.js from the drawn width, under 320 px): bigger words, so none is under about 10 px. */
+.mic-graph-svg[data-fit=xs]{font-size:13.5px;}
+.mic-graph-svg[data-fit=xs] .mic-gr-clabel{font-size:14px;}
+.mic-graph-svg[data-fit=xs] .mic-gr-mark,.mic-graph-svg[data-fit=xs] .mic-gr-cletter,.mic-graph-svg[data-fit=xs] .mic-gr-ptitle,.mic-graph-svg[data-fit=xs] .mic-gr-clabel.is-small{font-size:13px;}
+.mic-graph-svg[data-fit=xs] .mic-gr-sub{font-size:11px;}
+.mic-graph-svg[data-fit=xxs]{font-size:14.5px;}
+.mic-graph-svg[data-fit=xxs] .mic-gr-clabel{font-size:15px;}
+.mic-graph-svg[data-fit=xxs] .mic-gr-mark,.mic-graph-svg[data-fit=xxs] .mic-gr-cletter,.mic-graph-svg[data-fit=xxs] .mic-gr-ptitle,.mic-graph-svg[data-fit=xxs] .mic-gr-clabel.is-small{font-size:14px;}
+.mic-graph-svg[data-fit=xxs] .mic-gr-sub{font-size:11.5px;}
 .mic-gr-mark.is-old{fill:var(--muted,#777);font-weight:700;}
 .mic-gr-controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:.5em 0;}
 .mic-gr-handle{min-height:44px;padding:6px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--white,#fff);color:var(--ink);font:700 13px var(--font-ui);}
@@ -538,14 +547,14 @@ table.mic-data td{font-variant-numeric:tabular-nums;}
 .mic-mx th{font-weight:800;padding:4px 6px;text-align:center;vertical-align:middle;}
 .mic-mx-pl{font-size:12px;letter-spacing:.02em;}
 .mic-mx-pl.is-a{writing-mode:vertical-rl;transform:rotate(180deg);max-width:2.2em;}
-.mic-mx-st{font-size:13px;max-width:8.5em;overflow-wrap:anywhere;}
+.mic-mx-st{font-size:13px;max-width:8.5em;overflow-wrap:normal;word-break:normal;hyphens:manual;}
 .mic-mx-pl.is-a,.mic-mx-st.is-a,.mic-mx-a{color:var(--cink);}
 .mic-mx-pl.is-b,.mic-mx-st.is-b,.mic-mx-b{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;}
-.mic-mx-cell{min-width:84px;padding:0;border:1.5px solid var(--line);border-radius:12px;background:var(--surface,#fff);text-align:center;}
+.mic-mx-cell{min-width:84px;padding:0;border:1.5px solid var(--line);border-radius:12px;background:var(--white);text-align:center;}
 .mic-mx-cell:not(:has(button)){padding:12px 10px;}
 .mic-mx-btn{display:block;width:100%;min-height:52px;padding:10px;border:0;border-radius:11px;background:transparent;font:inherit;color:inherit;cursor:pointer;}
 .mic-mx-btn:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
-.mic-mx-cell.is-on{border-color:var(--cink);background:color-mix(in srgb, var(--cink) 16%, var(--surface,#fff));box-shadow:inset 0 0 0 2px var(--cink);}
+.mic-mx-cell.is-on{border-color:var(--cink);background:color-mix(in srgb, var(--cink) 16%, var(--white));box-shadow:inset 0 0 0 2px var(--cink);}
 .mic-mx-cell.is-key{border-color:var(--good-text,#1F6E3E);border-style:dashed;border-width:2.5px;}
 .mic-mx-sep{color:var(--muted);}
 .mic-mx-help,.mic-mx-note{text-align:center;}
@@ -555,5 +564,5 @@ table.mic-data td{font-variant-numeric:tabular-nums;}
 .mic-mx-field select{min-height:44px;max-width:100%;}
 .mic-mx-actions{text-align:center;}
 .mic-gr-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
-.mic-gr-card{margin:0;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--surface,#fff);}
+.mic-gr-card{margin:0;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--white);}
 .mic-gr-card figcaption{font-size:.92em;margin-top:6px;}

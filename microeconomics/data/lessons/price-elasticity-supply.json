@@ -1,0 +1,66 @@
+{
+ "topic": "price-elasticity-supply",
+ "hook": "When a song goes viral, a print shop can turn out a thousand posters of the band by Friday, but a concert hall cannot add a single seat for Saturday. The same jump in price brings a flood of posters and no extra seats. How strongly sellers respond to a price is the price elasticity of supply.",
+ "prereq": [
+  {
+   "q": "By the law of supply, a higher price",
+   "options": [
+    "raises the quantity supplied",
+    "lowers the quantity supplied",
+    "shifts supply left",
+    "leaves the quantity supplied the same"
+   ],
+   "correct": 0,
+   "why": "Price and quantity supplied move together.",
+   "review": "supply"
+  },
+  {
+   "q": "The price elasticity of demand is",
+   "options": [
+    "the percent change in quantity demanded over the percent change in price",
+    "the change in price over the change in quantity",
+    "price times quantity",
+    "the slope of the demand curve"
+   ],
+   "correct": 0,
+   "why": "Percent changes, quantity on top.",
+   "review": "price-elasticity-demand"
+  }
+ ],
+ "figure": {
+  "figure": "price-elasticity-supply-curves",
+  "caption": "Three supply curves through \\$4 and 40 units: the same price rise adds no units, a few, or many. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Sellers have spare machines, inputs that are easy to buy, or time to expand",
+   "effect": "they can add output quickly"
+  },
+  {
+   "cause": "They can add output quickly",
+   "effect": "a price rise brings a large percent rise in quantity supplied: supply is elastic"
+  },
+  {
+   "cause": "Supply is elastic",
+   "effect": "a rise in demand raises quantity a lot and the price only a little"
+  }
+ ],
+ "ideas": [
+  "<b>Price elasticity of supply</b> = percent change in quantity supplied divided by percent change in price. It is positive.",
+  "Same benchmarks as demand: greater than 1 <b>elastic</b>, less than 1 <b>inelastic</b>, 1 unit elastic; vertical supply is perfectly inelastic, horizontal supply perfectly elastic.",
+  "Supply is more elastic with spare capacity, inputs that are easy to buy, goods that can be stored, and more time to adjust.",
+  "Perishable goods and fixed capacity (seats, land) make supply inelastic."
+ ],
+ "misconception": {
+  "wrong": "Supply elasticity depends on how many substitutes buyers have.",
+  "right": "Substitutes drive demand elasticity. Supply elasticity is about sellers: how easily they can add output when the price rises, through spare capacity, available inputs, storage and time."
+ },
+ "check": [
+  "mic-price-elasticity-supply-1",
+  "mic-price-elasticity-supply-2",
+  "mic-price-elasticity-supply-5",
+  "mic-price-elasticity-supply-10",
+  "mic-price-elasticity-supply-17"
+ ],
+ "summary": "The price elasticity of supply is the percent change in quantity supplied divided by the percent change in price. Above 1 supply is elastic, below 1 inelastic; a vertical supply curve is perfectly inelastic and a horizontal one perfectly elastic. Supply is more elastic when sellers have spare capacity, easy access to inputs, goods they can store and more time to adjust. The more elastic supply is, the more a rise in demand shows up as more output rather than a higher price."
+}

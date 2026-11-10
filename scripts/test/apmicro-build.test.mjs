@@ -89,13 +89,13 @@ test('a published unit builds every page kind, math rendered and graphs drawn, a
   for (const id of ['demand', 'supply', 'price-elasticity-demand', 'price-elasticity-supply']) assert.ok(CU.topics.find(t => t.id === id).free, `${id} is free`);
   assert.ok(!CU.topics.find(t => t.id === 'other-elasticities').free, 'the rest of Unit 2 is Premium');
   assert.ok(!CU.topics.find(t => t.id === T).free, 'Unit 6 is Premium');
-  // One free tier: the build's FREE_UNITS and premium.js agree; not on sale until the launch steps.
+  // One free tier: the build's FREE_UNITS and premium.js agree; on sale since 2026-11-10.
   const prem = readFileSync('assets/premium.js', 'utf8');
   const block = prem.slice(prem.indexOf('    apmicro: {'), prem.indexOf('\n    },', prem.indexOf('    apmicro: {')));
   assert.deepEqual(FREE_UNITS, ['unit-1']);
   assert.deepEqual(FREE_TOPICS, ['demand', 'supply', 'price-elasticity-demand', 'price-elasticity-supply']);
   assert.match(block, /freeChapters: \['unit-1'\]/);
-  assert.match(block, /onSale: false/);
+  assert.doesNotMatch(block, /onSale: false/); // on sale since 2026-11-10 (spec section 9)
   assert.match(block, /id: 'micro-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);
 });
 
@@ -106,19 +106,21 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('registered hidden everywhere Macro is registered (spec decision 3), Premium not on sale', () => {
-  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, []);
-  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmicro'[\s\S]*?aliases: \['microeconomics', 'micro', 'mic'\], paid: true, status: 'hidden', order: 14/);
-  assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmicro'[^\n]*status: 'hidden'/);
-  assert.doesNotMatch(readFileSync('sitemap.xml', 'utf8'), /microeconomics\//, 'not in the sitemap while hidden');
-  assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mic:start -->\s*<!-- hub-mic:end -->/, 'an empty hub card slot');
-  assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mic:start -->\s*<!-- nf-mic:end -->/, 'an empty 404 card slot');
+test('published and live everywhere Macro is registered (spec decision 12), Premium on sale', () => {
+  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, ['graph-skills', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6']);
+  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmicro'[\s\S]*?aliases: \['microeconomics', 'micro', 'mic'\], paid: true, status: 'live', order: 14/);
+  assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmicro'[^\n]*status: 'live'/);
+  assert.match(readFileSync('premium.html', 'utf8'), /AP® Microeconomics/, 'on the pricing page');
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /microeconomics\/lessons\//, 'in the sitemap');
+  assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mic:start -->\s*<a class="ccard" href="microeconomics\/"/, 'a hub card');
+  assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mic:start -->\s*\S/, 'a 404 card');
+  assert.doesNotMatch(readFileSync('assets/premium.js', 'utf8').split('apmicro: {')[1].split('passes:')[0], /onSale: false/, 'on sale since 2026-11-10');
   assert.match(readFileSync('worker/src/premium.js', 'utf8'), /'micro-2027': +\{ course: 'apmicro', until: '2027-06-30T23:59:59-10:00' \}/);
   assert.match(readFileSync('worker/src/index.js', 'utf8'), /apmicro:/);
   assert.match(readFileSync('sw.js', 'utf8'), /COURSE_URLS\['microeconomics'\]/);
   assert.match(readFileSync('assets/exam-date.js', 'utf8'), /apmicro: \{ date: '2027-05-04'/);
   assert.match(readFileSync('scripts/vault/rules.mjs', 'utf8'), /microeconomics: 'apmicro'/);
-  assert.ok(existsSync('scripts/sql/migrations/2026-11i-apmicro.sql'), 'the migration is written (applied at launch)');
+  assert.ok(existsSync('scripts/sql/migrations/2026-11i-apmicro.sql'), 'the migration is written (the owner checklist applies it)');
 });
 
 test('the course home has its own headline, accent and cover, not AP® Macroeconomics\'s', () => {
@@ -320,4 +322,19 @@ test('key position balance: no option holds the key in more than 40% of a topic,
   assert.match(keyPositionTell([0, 1, 2, 0, 1, 2, 0, 1, 2].map(c => q(c))), /never option 4/);
   assert.equal(keyPositionTell([0, 0, 0, 0, 0].map(c => q(c, { fixed: true }))), null, 'fixed items keep their order');
   assert.equal(keyPositionTell([0, 0, 1, 2].map(c => q(c))), null, 'too few items to judge');
+});
+
+/* Integration 2026-11-09: the no-JavaScript key line of a shade item keeps the engine's region words out of the
+   ordering scan; a concept's definition comes from the glossary file of the topic that teaches it. */
+test('a shade item\'s key line wraps the region names in mic-noscan; the early definition wins', async () => {
+  const { questionHtml, loadCourse } = await import('../lib/apmicro-build.mjs');
+  const html = questionHtml({ id: 'mic-x-1', type: 'graph', q: 'Shade it.', graph: { kind: 'sd', do: ['shade'], key: { shade: 'cs' } }, why: 'Because.' }, 1);
+  assert.match(html, /Key: <span class="mic-noscan">shade consumer surplus<\/span>/);
+  const C = loadCourse();
+  assert.equal(C.glossary['total-cost']._file, 'cost-benefit.json');
+  assert.equal(C.glossary['marginal-cost']._file, 'marginal-analysis.json');
+  const { glossaryAll } = await import('../check-apmicro-content.mjs');
+  const { loadMap } = await import('../lib/apmicro-map.mjs');
+  const map = loadMap(new URL('../../docs/apmicro-dependency-map.json', import.meta.url));
+  assert.equal(glossaryAll(map)['total-cost'].def, C.glossary['total-cost'].def, 'the check reads the same definition as the build');
 });

@@ -173,6 +173,8 @@ const PAGES = [
   ['/microeconomics/frq.html', 'the AP® Microeconomics free-response list'],
   ['/microeconomics/formula-sheet.html', 'the AP® Microeconomics graphs and formulas page'],
   ['/microeconomics/justify.html', 'the AP® Microeconomics "Make it specific" trainer'],
+  ['/microeconomics/tools/graph-studio.html', 'the AP® Microeconomics Graph Studio'],
+  ['/microeconomics/tools/game-lab.html', 'the AP® Microeconomics Game Theory Lab'],
   ...bioPages('microeconomics', 'AP® Microeconomics'),
   // AP® Human Geography (live since its launch, docs/aphug-spec.md decision 11).
   ['/human-geography/', 'the AP® Human Geography course home'],

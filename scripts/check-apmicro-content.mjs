@@ -39,7 +39,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/apmicro-build.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, checkFifth, checkGraphs, examVersion, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, MCQ_OPTIONS as EXAM_OPTIONS } from './lib/apmicro-exams.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, checkFifth, checkGraphs, checkMatrices, examVersion, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, MCQ_OPTIONS as EXAM_OPTIONS } from './lib/apmicro-exams.mjs';
 import { scanPage, indexMap } from './lib/apmicro-map.mjs';
 import { Tex, Plot, Grade, Stats, Graph, Matrix } from './lib/apmicro-mathlib.mjs';
 export { trademarkProblems };
@@ -251,7 +251,7 @@ function checkStimulus(sid, s, figures, err) {
   }
   if (s.figure && !figures[s.figure]) err(`${w}: unknown figure "${s.figure}"`);
   if (s.kind === 'data' && !s.table && !s.plot && !s.chart && !s.figure) err(`${w}: a data set shows its data: a table, a plot spec (preferred), a chart or a figure`);
-  if (s.matrix) { for (const m of Matrix.check({ ...s.matrix, do: ['nash'] })) err(`${w}: ${m}`); }
+  if (s.matrix) { for (const m of [...Matrix.check({ ...s.matrix, do: ['nash'] }), ...matrixUnitProblems(s.matrix, [s.title, s.text, s.html].join(' '))]) err(`${w}: ${m}`); }
   if (s.kind === 'graph' && !s.graph && !s.matrix && !s.figure && !/<svg/.test(s.html || '')) err(`${w}: a graph set needs a graph spec (preferred), a payoff matrix, a figure or an inline SVG`);
   if (s.kind === 'text' && !s.text && !s.html) err(`${w}: a scenario set needs its text`);
   if (/<svg/.test(s.html || '') && !(/role="img"/.test(s.html) && /aria-label="[^"]{20,}"/.test(s.html))) err(`${w}: the SVG needs role="img" and an aria-label (20+ characters) that says what it shows`);
@@ -300,6 +300,18 @@ export function matrixProblems(M) {
   if (M.key) for (const [t, v] of Object.entries(M.key)) if (JSON.stringify(v) !== JSON.stringify(k[t])) out.push(`matrix.key.${t} is ${JSON.stringify(v)}, but the payoffs give ${JSON.stringify(k[t])}`);
   if ((M.do || []).includes('nash') && Matrix.grade(M, { ...k, nash: [], nashNone: false }).correct) out.push('matrix: an empty answer is graded right');
   return out;
+}
+
+/* A payoff matrix whose text counts the payoffs in larger units ("profit in
+   thousands of dollars") says so in its caption too: matrix.unitLabel, as
+   "thousands of dollars" (docs/apmicro-architecture.md, "matrix"). */
+const SCALE_WORDS = /\b(hundreds|thousands|millions|billions) of ([a-z]+(?: [a-z]+)?)/i;
+export function matrixUnitProblems(M, text) {
+  const t = strip(text), m = SCALE_WORDS.exec(t);
+  if (!M || !m) return [];
+  if (!M.unitLabel) return [`matrix: the text counts payoffs in "${m[0]}", so matrix.unitLabel says it in the caption (it would read "${M.unit === '$' ? 'dollars' : M.unit || 'no unit'}")`];
+  if (!new RegExp('\\b' + m[1] + '\\b', 'i').test(M.unitLabel)) return [`matrix.unitLabel "${M.unitLabel}" does not match the text's "${m[0]}"`];
+  return [];
 }
 
 /* A numeric item's key (docs/apmicro-architecture.md, "numeric"): the key
@@ -380,6 +392,7 @@ export function checkItem(q, { topic, map, stimuli, err, idRe, nOptions }) {
   if (!q.why || !q.why.correct) err(`${w}: why.correct missing`);
   const typed = { numeric: [numericProblems, q.numeric || {}], specific: [specificProblems, q.specific], graph: [graphProblems, q.graph || {}], matrix: [matrixProblems, q.matrix || {}] }[q.type];
   if (q.type === 'graph' || q.type === 'matrix') for (const t of allStrings({ slips: (q.graph || q.matrix || {}).slips, because: q.graph && q.graph.key && q.graph.key.because, names: q.matrix && q.matrix.players })) for (const m of [...mythProblems(t), ...languageProblems(t)]) err(`${w}: ${m}`);
+  if (q.type === 'matrix') { const st = q.stimulus && stimuli[q.stimulus]; for (const m of matrixUnitProblems(q.matrix, [q.q, st && st.title, st && st.text, st && st.html].join(' '))) err(`${w}: ${m}`); }
   if (typed) {
     for (const p of typed[0](typed[1])) err(`${w}: ${p}`);
     if (q.options || q.correct !== undefined) err(`${w}: ${q.type} items have no options or correct`);
@@ -652,7 +665,7 @@ export function checkFrq(fid, f, map, figures = {}) {
     else if (!FRQ_LABEL.test(p.label)) err(`${w}: label is A, B, ... or A(i), A(ii) (as the exam labels parts)`);
     if (p.type !== undefined && p.type !== 'graph' && p.type !== 'matrix') err(`${w}: type is "graph", "matrix" or absent (written)`);
     if (p.type === 'matrix') {
-      for (const m of matrixProblems(p.matrix || {})) err(`${w}: ${m}`);
+      for (const m of [...matrixProblems(p.matrix || {}), ...matrixUnitProblems(p.matrix, [f.scenario, p.prompt].join(' '))]) err(`${w}: ${m}`);
       for (const r of p.rubric || []) if (r.auto !== undefined && (!MATRIX_AUTO.includes(r.auto) || !(p.matrix && (p.matrix.do || []).includes(r.auto)))) err(`${w}: rubric auto "${r.auto}" is not a check this matrix makes (${(p.matrix && p.matrix.do || []).join(', ')})`);
       if (!(p.rubric || []).some(r => r.auto)) err(`${w}: a matrix part marks the rubric points the matrix check can tick (auto)`);
     } else if (p.matrix !== undefined) err(`${w}: a "matrix" needs type "matrix"`);
@@ -673,9 +686,14 @@ export function checkFrq(fid, f, map, figures = {}) {
   return errs;
 }
 
-function glossaryAll() {
+/* Every definition, as the build reads it: the first file (in name order) that has the concept, unless the file of
+   the topic that teaches it has one (a term taught early is defined at the early level). */
+export function glossaryAll(map = null) {
   const dir = join(DATA, 'glossary'), all = {};
-  if (exists(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json'))) Object.assign(all, readJson(join(dir, f)));
+  if (!exists(dir)) return all;
+  const files = readdirSync(dir).filter(f => f.endsWith('.json')).sort(), byFile = {};
+  for (const f of files) { byFile[f.slice(0, -5)] = readJson(join(dir, f)); for (const [k, v] of Object.entries(byFile[f.slice(0, -5)])) if (!(k in all)) all[k] = v; }
+  for (const c of (map && (map.raw || map).concepts) || []) if (byFile[c.taughtIn] && byFile[c.taughtIn][c.id]) all[c.id] = byFile[c.taughtIn][c.id];
   return all;
 }
 function figuresAll() {
@@ -688,7 +706,7 @@ const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.arg
 if (isMain) {
   const map = loadMap();
   const published = new Set(exists(join(DATA, 'published.json')) ? readJson(join(DATA, 'published.json')).chapters || [] : []);
-  const glossary = glossaryAll(), figures = figuresAll();
+  const glossary = glossaryAll(map), figures = figuresAll();
   const dataTopics = new Set(['lessons', 'notes', 'questions'].flatMap(d => exists(join(DATA, d)) ? readdirSync(join(DATA, d)).filter(f => !f.startsWith('.')).map(f => f.replace(/\.(json|html)$/, '')) : []));
   let failed = 0, draft = 0, total = 0;
   const pubItems = [], allItems = [], allStimuli = {};
@@ -757,6 +775,9 @@ if (isMain) {
     if (exists(join(DATA, 'tools', `${t.slug}.json`))) {
       if (!exists(join(ROOT, 'microeconomics', 'assets', 'tools', `${t.slug}.js`))) bad(`no script microeconomics/assets/tools/${t.slug}.js`);
       if (!exists(join(ROOT, 'microeconomics', 'assets', 'tools', 'math', `${t.slug}.js`))) bad(`no model file microeconomics/assets/tools/math/${t.slug}.js`);
+      // The hub group (pages.json) and the page eyebrow (the data file) say the same kind (integration T2).
+      const tk = readJson(join(DATA, 'tools', `${t.slug}.json`)).kind;
+      if (tk && tk !== t.kind) bad(`kind "${t.kind}" here but "${tk}" in data/tools/${t.slug}.json; make them the same`);
     }
     if (t.studio !== true) bad('every tool is on the Tool Studio ("studio": true)');
     if (typeof t.topic !== 'string' || (map && !map.topicById(t.topic))) bad(`"topic" must be the tool's context topic in the map (got ${JSON.stringify(t.topic)})`);
@@ -821,6 +842,7 @@ if (isMain) {
       for (const e of testWise(served)) bad2(`${f.id}: ${e}`);
     }
     for (const e of checkGraphs(examItems, ex.stimuli)) bad2(e);
+    for (const e of checkMatrices(examItems, ex.stimuli)) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
     // About ten prompts per unit (as AP® Precalculus), a few in the graph skills chapter.
     if (prompts.length < 50) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 50`);

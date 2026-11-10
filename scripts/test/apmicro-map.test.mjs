@@ -91,7 +91,7 @@ test('the graph skills chapter sits before Unit 1, in its order', () => {
   const at = id => order.findIndex(t => t.id === id);
   const taught = id => at(real.concepts.find(c => c.id === id).taughtIn);
   for (const c of real.concepts) for (const d of c.dependsOn) assert.ok(taught(d) <= taught(c.id), `${c.id} uses ${d}`);
-  const chain = ['shift-curve', 'ppc', 'marginal-utility', 'demand', 'price-elasticity', 'equilibrium', 'consumer-surplus', 'deadweight-loss', 'tariff', 'marginal-product', 'marginal-cost', 'profit-max-rule', 'firm-demand', 'monopoly', 'nash-equilibrium', 'mrp', 'hiring-rule', 'monopsony', 'externality', 'public-good', 'lorenz'];
+  const chain = ['shift-curve', 'ppc', 'marginal-utility', 'demand', 'price-elasticity', 'equilibrium', 'consumer-surplus', 'deadweight-loss', 'tariff', 'marginal-product', 'average-costs', 'profit-max-rule', 'firm-demand', 'monopoly', 'nash-equilibrium', 'mrp', 'hiring-rule', 'monopsony', 'externality', 'public-good', 'lorenz'];
   for (let i = 1; i < chain.length; i++) assert.ok(taught(chain[i - 1]) <= taught(chain[i]), `${chain[i - 1]} before ${chain[i]}`);
 });
 
@@ -298,4 +298,37 @@ test('question banks: q, options, stimulus and why are all read; sets share thei
     writeFileSync(join(root, 'microeconomics', 'water.html'), '<html><head><meta name="mic-topic" content="water"></head><body><p>Organelles.</p></body></html>');
     assert.equal(scanPages(tiny(), root)[0].problems.length, 1);
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+/* Integration 2026-11-09 (docs/apmicro-reviews/integration.md). */
+test('the mark "AP®" is not the average-product alias "AP"; a bare "AP" still is', () => {
+  for (const mark of ['AP®', 'AP&reg;', 'AP&#174;', 'AP<sup>®</sup>'])
+    assert.deepEqual(scanPage(real, `<p>Practice for the ${mark} Microeconomics exam.</p>`, 'scarcity'), [], mark);
+  assert.equal(scanPage(real, '<p>The AP of labor falls.</p>', 'scarcity').length, 1);
+});
+test('a declared preview is honored by its mic-preview class (not psy-preview)', () => {
+  const m = tiny();
+  m.topics[0].previews = [{ concept: 'organelle', reason: 'a look ahead' }];
+  m.circularDependencies = [{ id: 'x', problem: 'p', detail: 'd', resolution: 'preview', into: ['water'], concepts: ['organelle'] }];
+  const page = c => `<p>Organelles are named here.</p><div class="${c}" data-concept="organelle">organelles</div>`;
+  assert.deepEqual(scanPage(m, page('mic-preview'), 'water'), []);
+  assert.equal(scanPage(m, page('psy-preview'), 'water').length, 1);
+});
+test('engine words in a mic-noscan span are not read', () => {
+  assert.deepEqual(scanPage(real, '<li>Key: <span class="mic-noscan">shade consumer surplus</span></li>', 'axes-points'), []);
+  assert.equal(scanPage(real, '<li>Key: shade consumer surplus</li>', 'axes-points').length, 1);
+});
+test('general cost words: total cost from 1.5, marginal cost from 1.6, technology everyday from 1.3, lump-sum tax from 3.2', () => {
+  assert.ok(scanPage(real, '<p>Compare total benefit with total cost.</p>', 'comparative-advantage').some(p => p.includes('(total-cost)')));
+  assert.deepEqual(scanPage(real, '<p>Compare total benefit with total cost.</p>', 'cost-benefit'), []);
+  assert.ok(scanPage(real, '<p>Stop where MB = MC: marginal cost.</p>', 'cost-benefit').some(p => p.includes('(marginal-cost)')));
+  assert.deepEqual(scanPage(real, '<p>Stop where MB = MC: marginal cost.</p>', 'marginal-analysis'), []);
+  assert.deepEqual(scanPage(real, '<p>Better technology shifts the PPC out.</p>', 'production-possibilities'), []);
+  assert.ok(scanPage(real, '<p>The determinants of supply.</p>', 'production-possibilities').some(p => p.includes('(supply-shifter)')));
+  assert.ok(scanPage(real, '<p>A lump-sum tax raises ATC.</p>', 'production-function').some(p => p.includes('(lump-sum-tax)')));
+  assert.deepEqual(scanPage(real, '<p>A lump-sum tax raises ATC.</p>', 'short-run-costs'), []);
+  const C = id => real.concepts.find(c => c.id === id);
+  assert.deepEqual(C('productive-efficiency').fullIn, ['perfect-competition']);
+  assert.equal(C('allocative-efficiency').taughtIn, 'perfect-competition');
+  assert.deepEqual(validateMap(real).errors, []);
 });

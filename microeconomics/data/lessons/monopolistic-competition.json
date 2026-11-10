@@ -1,0 +1,83 @@
+{
+ "topic": "monopolistic-competition",
+ "hook": "A new ramen shop opens and has a line out the door for months. Then three more ramen shops open within a few blocks, each a little different. A year later the first shop is still busy, but its owner is earning only what she could earn elsewhere. Many sellers, slightly different products and easy entry: that is monopolistic competition.",
+ "prereq": [
+  {
+   "q": "In the long run in perfect competition, positive economic profit leads to",
+   "options": [
+    "entry until profit is zero",
+    "exit until profit is zero",
+    "higher prices",
+    "no change"
+   ],
+   "correct": 0,
+   "why": "Entry shifts market supply right until P = minimum ATC.",
+   "review": "perfect-competition"
+  },
+  {
+   "q": "A firm that sells a product a little different from its rivals'",
+   "options": [
+    "faces a downward-sloping demand curve",
+    "faces a horizontal demand curve",
+    "has no market power at all",
+    "faces a vertical demand curve"
+   ],
+   "correct": 0,
+   "why": "Product differentiation gives it a little market power.",
+   "review": "imperfect-competition"
+  },
+  {
+   "q": "A monopolist reads its price from",
+   "options": [
+    "the demand curve at the quantity where MR = MC",
+    "the MR curve",
+    "the MC curve",
+    "the ATC curve"
+   ],
+   "correct": 0,
+   "why": "Quantity from MR = MC, price from demand.",
+   "review": "monopoly"
+  }
+ ],
+ "figure": {
+  "figure": "monopolistic-competition-runs",
+  "caption": "Short run: the firm earns a profit at Q1. Long run: entry shifts its demand left until it is tangent to ATC at Q2, where P = ATC (zero profit), P > MC, and Q2 is less than the output at minimum ATC (excess capacity)."
+ },
+ "chain": [
+  {
+   "cause": "Firms in the market earn economic profit",
+   "effect": "new firms with similar products enter (entry is easy)"
+  },
+  {
+   "cause": "New firms take some of each firm's buyers",
+   "effect": "each firm's demand (and MR) shifts left and becomes more elastic"
+  },
+  {
+   "cause": "Demand keeps shifting left",
+   "effect": "it becomes tangent to ATC, where P = ATC"
+  },
+  {
+   "cause": "Economic profit is zero",
+   "effect": "entry stops; the firm produces where ATC is still falling, with excess capacity and P > MC"
+  }
+ ],
+ "ideas": [
+  "<b>Monopolistic competition</b>: many firms, <b>differentiated</b> products, easy entry and exit. Each firm faces a downward-sloping demand curve with MR below it.",
+  "<b>Short run</b>: produce where MR = MC, price from demand; profit or loss is $(P - \\text{ATC}) \\times Q$, as for a monopolist.",
+  "<b>Long run</b>: entry (or exit) shifts each firm's demand until it is <b>tangent to ATC</b>: P = ATC, zero economic profit.",
+  "At the tangency P > MC (not allocatively efficient) and output is below minimum ATC: <b>excess capacity</b> (not productively efficient). The trade: more variety."
+ ],
+ "misconception": {
+  "wrong": "In the long run a monopolistically competitive firm ends up at the minimum of ATC, like a perfectly competitive firm.",
+  "right": "Zero economic profit means P = ATC, and a downward-sloping demand curve can touch the U-shaped ATC only where ATC is still falling. So the firm produces less than the output at minimum ATC: excess capacity."
+ },
+ "check": [
+  "mic-monopolistic-competition-1",
+  "mic-monopolistic-competition-2",
+  "mic-monopolistic-competition-3",
+  "mic-monopolistic-competition-13",
+  "mic-monopolistic-competition-5",
+  "mic-monopolistic-competition-6"
+ ],
+ "summary": "In monopolistic competition, many firms sell differentiated products and entry is easy. Each firm faces a downward-sloping demand curve, produces where MR = MC and reads its price from demand, so in the short run it can earn a profit or make a loss. Profit draws entry and losses cause exit, shifting each firm's demand until it is tangent to ATC: zero economic profit. At that point price is above marginal cost and output is below the minimum of ATC (excess capacity), the cost of the variety buyers enjoy."
+}

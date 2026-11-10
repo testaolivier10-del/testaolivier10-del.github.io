@@ -2486,6 +2486,30 @@ const CALIBRATION = {
                  B: [{ quote: '', reason: 'Real GDP fell from 500 to 480, so output decreased.', earned: false }] } },
     ],
   },
+  apmicro: {
+    id: 'frq-cost-table-short',
+    question: 'A bakery sells every bagel at the market price of 3.20 dollars, a price it cannot change. Its total cost is 40 dollars at 0 bagels, 60 at 10, 75 at 20, 95 at 30, 120 at 40, 150 at 50 and 190 at 60.',
+    parts: [
+      { label: 'A', prompt: 'Calculate the marginal cost of a bagel when output rises from 20 to 30 bagels. Show your work.',
+        rubric: ['2 dollars a bagel, with work shown: (95 - 75) / (30 - 20). Also accept: 20 / 10 = 2'] },
+      { label: 'B', prompt: 'Identify the bakery\'s total fixed cost, and explain how the table shows it.',
+        rubric: ['40 dollars, because total cost at zero output is the cost the bakery pays even when it bakes nothing. Also accept: 40 dollars: total cost when output is 0'] },
+    ],
+    answers: [
+      { kind: 'full credit',
+        text: { A: 'MC = (95 - 75) / (30 - 20) = 20 / 10 = 2 dollars a bagel.', B: 'Total fixed cost is 40 dollars: at zero bagels the total cost is still 40, and that cost does not change with output.' },
+        grade: { A: [{ quote: 'MC = (95 - 75) / (30 - 20) = 20 / 10 = 2 dollars a bagel', reason: 'Correct value with the work shown.', earned: true }],
+                 B: [{ quote: 'at zero bagels the total cost is still 40', reason: 'The fixed cost, read from total cost at zero output.', earned: true }] } },
+      { kind: 'partial',
+        text: { A: '2', B: 'Total fixed cost is 40 dollars because the cost at 0 bagels is 40.' },
+        grade: { A: [{ quote: '', reason: 'The value is right but the rubric asks for the work, and none is shown.', earned: false }],
+                 B: [{ quote: 'the cost at 0 bagels is 40', reason: 'The fixed cost, read from total cost at zero output.', earned: true }] } },
+      { kind: 'no credit',
+        text: { A: '95 / 30 = 3.17', B: 'Fixed cost is 190 dollars, the most the bakery spends.' },
+        grade: { A: [{ quote: '', reason: 'Divides total cost by output (an average), not the change in cost over the change in output.', earned: false }],
+                 B: [{ quote: '', reason: 'Total fixed cost is total cost at zero output, 40 dollars, not the largest total cost.', earned: false }] } },
+    ],
+  },
   aphug: {
     id: 'frq-population-policy-none',
     question: 'A question with no stimulus, on population policies and fertility. Each part is worth one point.',
@@ -2535,7 +2559,7 @@ function calibrationText(course) {
    frq-grade.js
    =========================================================================== */
 
-/* The AI free-response grader for the seven AP® courses (docs/frq-grader.md).
+/* The AI free-response grader for the eight AP® courses (docs/frq-grader.md).
 
    POST /frq/grade  { course: 'apbio', id: 'frq-agar-shape', answers: { a: '...', b: '...' } }
    with the student's Supabase session, from the site's own Origin.
@@ -2577,7 +2601,7 @@ function calibrationText(course) {
 
 
 
-const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'aphug'];
+const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro', 'aphug'];
 const DAILY_CAP = 10;
 const DEFAULT_MODEL = 'claude-haiku-5-5';
 // Bump when the instructions, the schema or the checks change in a way that
@@ -2656,6 +2680,13 @@ const COURSE_CONVENTIONS = {
 - An "explain" point needs the cause and every link of the causal chain the rubric names (for example: lower interest rate, more investment, aggregate demand increases, real output rises); skipping a link the rubric requires does not earn it.
 - Keep commonly confused ideas apart: real versus nominal, cyclical versus natural unemployment, the reserve market (ample reserves, the Fed's administered rates) versus the money market, a shift of a curve versus a movement along it, and the currency on each axis of a foreign exchange graph.
 - Graph parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
+  apmicro: `COURSE CONVENTIONS: AP® Microeconomics.
+- A calculation point needs the correct value and, when the rubric says "with work shown", the work (the numbers and the operation). A correct number with no work earns nothing on such a point.
+- Marginal values come from changes: marginal cost is the change in total cost over the change in output, marginal revenue product is marginal product times the price. Total or average values in their place are wrong.
+- An "explain" point needs the comparison the rubric names, with the numbers when it asks for them (for example MR against MC, MRP against the wage, price against minimum AVC); a rule stated with no comparison does not earn it.
+- Directions and classes matter: elastic or inelastic, increase or decrease, shut down or keep producing. A claim with no direction, or the wrong one, does not earn the point.
+- Keep commonly confused ideas apart: a shift of a curve versus a movement along it, total versus marginal versus average, accounting versus economic profit, and the market's quantity versus the efficient quantity.
+- Graph and payoff matrix parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
   aphug: `COURSE CONVENTIONS: AP® Human Geography.
 - Each part is one point, and its task verb sets what earns it. "Identify" or "define" needs the term or a correct definition only. "Describe" needs more than a name: the pattern, place or feature in some detail. "Explain" needs the cause and the effect joined by a reason (a "because" or "so"); a description with no link does not earn it. "Compare" must speak of both sides (a difference or a similarity), not one. "Explain the degree" needs a stated degree (to a large, moderate or limited degree) and a reason that supports it; a reason with no degree, or a degree with no reason, does not earn it.
 - When the rubric asks for a real place or example, a vague answer ("some countries", "a city") does not earn it; a named place does. Accept any real example the rubric's wording allows, not only the ones listed.

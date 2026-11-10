@@ -1,0 +1,14 @@
+{
+ "economic-system": {
+  "def": "The way a society answers the three questions scarcity forces: what to produce, how to produce it, and for whom."
+ },
+ "market-economy": {
+  "def": "A system in which households and firms make the main choices and prices coordinate them; in a command economy a central authority decides by plan, and a mixed economy combines markets with government rules and services."
+ },
+ "property-rights": {
+  "def": "Legal rights to own, use, sell and gain from property such as land, buildings and businesses; secure private property gives owners a reason to produce and invest."
+ },
+ "incentive": {
+  "def": "A reward or penalty that motivates a choice; in a market, a higher price is an incentive for firms to make more of a good."
+ }
+}

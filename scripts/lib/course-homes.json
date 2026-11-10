@@ -5617,7 +5617,7 @@
   "lede": "Each topic taught from scratch for the May 2027 exam, then practice that has you draw, shift and shade every graph, and payoff matrices argued with both comparisons the way the readers score them.",
   "btn1": "Start the first lesson",
   "btn2": "All units",
-  "btn3": "Graph studio",
+  "btn3": "Graph Studio",
   "trust": [
    "note",
    "Every notes page is free, and so are the lessons in the graph skills chapter, Unit 1 and the first four topics of Unit 2. 15 practice questions a day are free too."
@@ -5642,7 +5642,7 @@
    ],
    [
     "The question bank",
-    "Being written",
+    "726 questions",
     "every option explained"
    ],
    [
@@ -5810,42 +5810,42 @@
   "tools_lede": "Draw, shift and shade every graph the exam asks for, read elasticity and total revenue, size every surplus area, build cost curves from a table, follow a firm from the short run to the long run, argue a payoff matrix, hire where MRP = MRC and fix an externality. The graph studio, the elasticity lab and the game theory lab are free.",
   "tools": [
    [
-    "Graph studio",
+    "Graph Studio",
     "Draw, label, shift and shade every graph, graded per rubric point.",
     "free"
    ],
    [
-    "Elasticity lab",
+    "Elasticity Lab",
     "Price, income and cross elasticity and the total revenue test.",
     "free"
    ],
    [
-    "Game theory lab",
+    "Game Theory Lab",
     "Dominant strategies, Nash equilibria and both comparisons.",
     "free"
    ],
    [
-    "Surplus lab",
+    "Surplus and Policy Lab",
     "Shade and compute surplus, revenue, subsidy cost and deadweight loss.",
     "Premium"
    ],
    [
-    "Cost lab",
+    "Cost Curve Lab",
     "Cost tables to cost curves, with MC through the minimums.",
     "Premium"
    ],
    [
-    "Firm and market",
+    "Firm and Market Lab",
     "MR = MC, price from demand, and the profit box.",
     "Premium"
    ],
    [
-    "Factor lab",
+    "Factor Market Lab",
     "MRP = MRC hiring, derived demand and monopsony.",
     "Premium"
    ],
    [
-    "Externality lab",
+    "Externality Lab",
     "Market vs efficient quantity, deadweight loss and the fix.",
     "Premium"
    ]

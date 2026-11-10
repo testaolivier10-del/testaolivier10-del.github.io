@@ -1,0 +1,18 @@
+{
+  "slug": "game-lab",
+  "kind": "skill",
+  "topic": "oligopoly-game-theory",
+  "intro": "<p>A few large firms watch each other: what one should do depends on what the other does. A payoff matrix lays the choices out. Each player compares <b>its own</b> payoffs, holding the other's choice fixed. A strategy that wins both comparisons is <b>dominant</b>; a cell where neither player gains by switching alone is a <b>Nash equilibrium</b>, and a game can have one, two or none.</p>",
+  "howItWorks": "<p>Explore: pick a game and tap any cell to test it: the lab says whether either firm would switch, and by how much. Show a firm's best responses to see its two comparisons marked on the matrix, and the verdict: a dominant strategy, or none. Move the tax or subsidy slider to change one firm's payoffs and watch the equilibrium move.</p><p>Test yourself gives a new game each time: mark dominant strategies and pick the argument a reader scores (both comparisons, with the numbers), tap every Nash equilibrium and the joint-payoff cell, find a best response, and redo the game after a tax or subsidy. A wrong answer names the slip: the largest single payoff taken for a dominant strategy, one comparison only, a missing equilibrium, or the joint-payoff cell taken for an equilibrium.</p><p>In every matrix the row player's payoff is listed first.</p>",
+  "howItWorksTitle": "How this lab works",
+  "contexts": [
+    { "id": "fares", "topic": "oligopoly-game-theory", "story": "Two airlines on one route each choose a low or a high fare. Payoffs are weekly profits in thousands of dollars.",
+      "players": [{ "name": "Alpha Air", "strategies": ["Low fare", "High fare"] }, { "name": "Beta Jet", "strategies": ["Low fare", "High fare"] }] },
+    { "id": "ads", "topic": "oligopoly-game-theory", "story": "Two snack makers decide whether to run a national ad campaign. Payoffs are monthly profits in thousands of dollars.",
+      "players": [{ "name": "Crunchy", "strategies": ["Advertise", "Do not"] }, { "name": "Snackwell", "strategies": ["Advertise", "Do not"] }] },
+    { "id": "output", "topic": "oligopoly-game-theory", "story": "Two copper mines that sell to the same buyers each pick a production level. Payoffs are monthly profits in thousands of dollars.",
+      "players": [{ "name": "Redrock", "strategies": ["Produce more", "Produce less"] }, { "name": "Ironvale", "strategies": ["Produce more", "Produce less"] }] },
+    { "id": "launch", "topic": "oligopoly-game-theory", "story": "Two game studios each choose whether to release a new console this year or wait. Payoffs are yearly profits in thousands of dollars.",
+      "players": [{ "name": "Pixelon", "strategies": ["Release", "Wait"] }, { "name": "Gamecraft", "strategies": ["Release", "Wait"] }] }
+  ]
+}

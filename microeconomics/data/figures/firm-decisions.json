@@ -1,0 +1,12 @@
+{
+ "firm-decisions-three-prices": {
+  "file": "figures/firm-decisions-three-prices.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cost curves MC, ATC and AVC with three price lines: P1 above the lowest point of ATC (profit), P2 between the lowest points of AVC and ATC (a loss, but keep producing) and P3 below the lowest point of AVC (shut down), with the shutdown and break-even points marked."
+ }
+}

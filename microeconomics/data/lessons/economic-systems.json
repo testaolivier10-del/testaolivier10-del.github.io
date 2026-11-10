@@ -1,0 +1,70 @@
+{
+ "topic": "economic-systems",
+ "hook": "Who decided how many pairs of sneakers were made last year, and who got them? In some countries the answer is millions of shoppers and thousands of firms, each looking at prices. In others, a planning office set the number and chose who received them. Every society faces the same scarcity, but societies differ in who makes the choices and what ties those choices together.",
+ "prereq": [
+  {
+   "q": "Scarcity means",
+   "options": [
+    "resources are limited while wants are unlimited",
+    "a good is sold out for a week",
+    "only poor countries must choose",
+    "prices are too high"
+   ],
+   "correct": 0,
+   "why": "Limited resources, unlimited wants.",
+   "review": "scarcity"
+  },
+  {
+   "q": "A factory's machines are which factor of production?",
+   "options": [
+    "Capital",
+    "Land",
+    "Labor",
+    "Entrepreneurship"
+   ],
+   "correct": 0,
+   "why": "Tools and machines are capital.",
+   "review": "scarcity"
+  }
+ ],
+ "figure": {
+  "figure": "economic-systems-compare",
+  "caption": "Market, command and mixed economies answer the same three questions in different ways, through prices or through plans. Real economies sit along a spectrum between the two ends."
+ },
+ "chain": [
+  {
+   "cause": "Resources are scarce",
+   "effect": "every society must decide what to produce, how to produce it and for whom"
+  },
+  {
+   "cause": "In a market economy, buyers want more of a good",
+   "effect": "its price rises"
+  },
+  {
+   "cause": "The higher price raises what firms can earn from the good",
+   "effect": "firms have an incentive to make more of it, using resources drawn from other uses"
+  },
+  {
+   "cause": "Firms make more and buyers adjust",
+   "effect": "resources move toward the goods people value most, without a central plan"
+  }
+ ],
+ "ideas": [
+  "Every <b>economic system</b> answers three questions: what to produce, how to produce it, and for whom.",
+  "In a <b>market economy</b>, households and firms decide, and prices coordinate their choices. In a <b>command economy</b>, a central authority decides, and plans and orders coordinate.",
+  "A <b>mixed economy</b> combines markets with government rules, taxes and some government-provided goods. Every real economy is mixed, in different proportions.",
+  "Markets rely on institutions: <b>property rights</b> (owners control and gain from what they own), enforceable contracts and the rule of law. These give people <b>incentives</b> to produce, save and trade."
+ ],
+ "misconception": {
+  "wrong": "In a market economy nobody coordinates production, so it is random what gets made.",
+  "right": "Prices coordinate it. A rising price tells firms buyers want more and gives them an incentive to make more; a falling price tells them to make less. No one plans it, but it is not random."
+ },
+ "check": [
+  "mic-economic-systems-1",
+  "mic-economic-systems-3",
+  "mic-economic-systems-7",
+  "mic-economic-systems-8",
+  "mic-economic-systems-11"
+ ],
+ "summary": "Scarcity forces every society to decide what to produce, how and for whom. A market economy leaves those choices to households and firms and lets prices coordinate them; a command economy gives them to a central authority that coordinates by plans and orders; a mixed economy, the kind every real country has, combines markets with government rules, taxes and services. Markets work through institutions such as property rights, contracts and the rule of law, which give people incentives to produce and trade."
+}

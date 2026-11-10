@@ -1,0 +1,12 @@
+{
+ "types-of-profit-bars": {
+  "file": "figures/types-of-profit-bars.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three bars: total revenue of $120 thousand; the accountant's view, $80 thousand of explicit costs and $40 thousand of accounting profit; the economist's view, the same explicit costs, $30 thousand of implicit costs and $10 thousand of economic profit."
+ }
+}

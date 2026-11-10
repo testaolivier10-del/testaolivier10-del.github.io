@@ -1,0 +1,519 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 4 (docs/apmicro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmicro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-4",
+   "id": "u4-barriers",
+   "topic": "imperfect-competition",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Why a monopoly's profit lasts",
+   "prompt": "<b>Explain</b> why a monopoly can keep earning economic profit in the long run when a perfectly competitive firm cannot.",
+   "checklist": [
+    "Names a barrier to entry (a patent, control of a key resource, economies of scale)",
+    "Says the barrier keeps rivals from entering",
+    "Contrasts it with free entry competing profit away in perfect competition"
+   ],
+   "earns": {
+    "answer": "A monopoly is protected by a barrier to entry, such as a patent or control of a key resource, so new firms cannot come in and add supply. In perfect competition entry is free, so profit draws new firms until the price falls to minimum ATC; the barrier stops that from happening to the monopoly.",
+    "why": "It names a barrier and says what it blocks: entry."
+   },
+   "misses": {
+    "answer": "A monopoly can charge whatever price it wants, so its profit lasts.",
+    "why": "It is still limited by demand, and the answer leaves out the barrier to entry, which is the reason."
+   },
+   "specific": {
+    "slots": {
+     "reason": {
+      "label": "The profit lasts because of",
+      "options": [
+       "a barrier to entry",
+       "a horizontal demand curve",
+       "a low marginal cost"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A horizontal demand curve describes a price taker.",
+       "2": "Low cost alone does not keep rivals out."
+      }
+     },
+     "blocks": {
+      "label": "The barrier blocks",
+      "options": [
+       "entry of new firms",
+       "changes in demand"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Demand can change; what is blocked is entry."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-monopoly-price",
+   "topic": "monopoly",
+   "practice": "2.A",
+   "skill": "price",
+   "title": "The monopoly price comes from demand",
+   "prompt": "<b>Explain</b> how a profit-maximizing monopolist chooses its price, if MR = MC = \\$8 at 30 units and the demand curve shows a price of \\$14 at 30 units.",
+   "checklist": [
+    "Finds the quantity where MR = MC: 30 units",
+    "Reads the price up on the demand curve at that quantity: \\$14",
+    "Does not set the price at MR or MC"
+   ],
+   "earns": {
+    "answer": "The monopolist first finds the quantity where MR = MC, 30 units. It then charges the highest price buyers will pay for 30 units, read up on the demand curve: \\$14. The price is above the \\$8 marginal cost.",
+    "why": "It finds the quantity first and reads the price from demand."
+   },
+   "misses": {
+    "answer": "The monopolist charges \\$8, where MR = MC.",
+    "why": "MR = MC picks the quantity; the price is read from demand above it."
+   },
+   "specific": {
+    "slots": {
+     "q": {
+      "label": "First find the quantity where",
+      "options": [
+       "MR = MC",
+       "demand meets MC",
+       "ATC is lowest"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the efficient quantity, not the monopoly's choice.",
+       "2": "The monopoly does not produce at minimum ATC."
+      }
+     },
+     "p": {
+      "label": "Then read the price from",
+      "options": [
+       "the demand curve: \\$14",
+       "MR and MC: \\$8"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Buyers will pay \\$14 for 30 units, so the monopolist charges that."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-natural-monopoly",
+   "topic": "monopoly",
+   "practice": "2.A",
+   "skill": "price",
+   "title": "The fair-return price for a natural monopoly",
+   "prompt": "<b>Explain</b> where a regulator should set the price of a natural monopoly if it wants zero economic profit, and why setting the price at marginal cost would need a subsidy.",
+   "checklist": [
+    "Sets the fair-return price where demand meets ATC",
+    "Says P = ATC gives zero economic profit",
+    "Says ATC lies above MC over the range of demand, so P = MC leaves a loss"
+   ],
+   "earns": {
+    "answer": "The fair-return price is read from the demand curve where it crosses ATC: there price equals average total cost, so economic profit is zero. Because ATC falls over the whole range of demand, it lies above MC, so a price where demand meets MC would be below ATC and the firm would need a subsidy.",
+    "why": "It reads the price from demand at ATC and explains the loss at P = MC."
+   },
+   "misses": {
+    "answer": "The regulator should set the price where MR = MC so the firm breaks even.",
+    "why": "MR = MC is the unregulated monopoly choice; zero profit is where demand meets ATC."
+   },
+   "specific": {
+    "slots": {
+     "fair": {
+      "label": "The fair-return price is where",
+      "options": [
+       "demand meets ATC",
+       "MR meets MC",
+       "demand meets MC"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the unregulated monopoly output.",
+       "2": "That is the socially optimal price, which leaves a loss."
+      }
+     },
+     "loss": {
+      "label": "At P = MC the firm makes a loss because",
+      "options": [
+       "ATC is above MC there",
+       "MC is above ATC there"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "For a natural monopoly ATC falls over the demand range and stays above MC."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-monopoly-dwl",
+   "topic": "monopoly",
+   "practice": "4.C",
+   "skill": "area",
+   "title": "The monopoly's deadweight loss",
+   "prompt": "<b>Identify</b> the deadweight loss on a correctly labeled monopoly graph and explain why it exists.",
+   "checklist": [
+    "Bounds the area: between demand and MC, from the monopoly quantity to where demand meets MC",
+    "Says the monopoly produces less than the efficient quantity",
+    "Says those units are worth more to buyers than they cost to make"
+   ],
+   "earns": {
+    "answer": "The monopoly produces where MR = MC, which is less than the quantity where demand meets MC. For the units between, buyers value each unit (demand) more than it costs to make (MC), but they are not produced. The deadweight loss is the triangle between demand and MC over those units.",
+    "why": "It names and bounds the region and explains the units lost."
+   },
+   "misses": {
+    "answer": "The deadweight loss is the monopoly's profit, the area that buyers lose.",
+    "why": "Profit is a transfer to the monopoly, not a loss to everyone; the deadweight loss is the triangle past the monopoly quantity."
+   },
+   "specific": {
+    "slots": {
+     "bounds": {
+      "label": "The deadweight loss lies between",
+      "options": [
+       "demand and MC",
+       "demand and ATC",
+       "MR and MC"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "ATC bounds the profit rectangle, not the loss.",
+       "2": "MR is not the value to buyers; demand is."
+      }
+     },
+     "units": {
+      "label": "Over the units from",
+      "options": [
+       "the monopoly quantity to where demand meets MC",
+       "zero to the monopoly quantity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Those units are produced; the loss is on units not produced."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-price-discrimination",
+   "topic": "price-discrimination",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Perfect price discrimination",
+   "prompt": "<b>Explain</b> what happens to output, consumer surplus and deadweight loss when a monopolist can charge each buyer the most that buyer will pay.",
+   "checklist": [
+    "Says output rises to where demand meets MC",
+    "Says consumer surplus becomes producer surplus (falls to zero)",
+    "Says deadweight loss disappears"
+   ],
+   "earns": {
+    "answer": "With perfect price discrimination, each extra sale does not lower the price on earlier ones, so marginal revenue equals the demand curve. The monopolist sells to every buyer who will pay at least MC, so output rises to where demand meets MC, deadweight loss disappears, and all of the consumer surplus becomes the firm's profit.",
+    "why": "It covers all three outcomes and why MR equals demand."
+   },
+   "misses": {
+    "answer": "Prices are higher for everyone, so output falls and buyers are worse off.",
+    "why": "Some buyers pay less than the single price, and output rises to the efficient quantity."
+   },
+   "specific": {
+    "slots": {
+     "q": {
+      "label": "Output",
+      "options": [
+       "rises to where demand meets MC",
+       "falls below the single-price quantity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Selling to more buyers at their own prices raises output."
+      }
+     },
+     "cs": {
+      "label": "Consumer surplus",
+      "options": [
+       "falls to zero",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each buyer pays the most he or she will pay, so no surplus is left to buyers."
+      }
+     },
+     "dwl": {
+      "label": "Deadweight loss",
+      "options": [
+       "disappears",
+       "grows"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output reaches the efficient quantity, so no trades are lost."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-monocomp-long-run",
+   "topic": "monopolistic-competition",
+   "practice": "2.A",
+   "skill": "longrun",
+   "title": "Monopolistic competition in the long run",
+   "prompt": "<b>Explain</b> what happens in the long run to a monopolistically competitive restaurant that is earning economic profit.",
+   "checklist": [
+    "Says profit attracts entry of new restaurants with close substitutes",
+    "Says the firm's demand (and MR) shifts left and becomes more elastic",
+    "Says this goes on until demand is tangent to ATC: zero economic profit"
+   ],
+   "earns": {
+    "answer": "Economic profit attracts new restaurants, so entry adds close substitutes. Each takes some customers, so this restaurant's demand curve and MR shift left and become more elastic. Entry continues until demand is tangent to ATC, which leaves zero economic profit, with price still above MC.",
+    "why": "It gives entry, the shift in this firm's demand and the tangency end point."
+   },
+   "misses": {
+    "answer": "In the long run the restaurant earns zero profit, like a perfectly competitive firm at minimum ATC.",
+    "why": "Zero profit is right, but it skips entry and the demand shift, and the firm does not end at minimum ATC."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Profit leads to",
+      "options": [
+       "entry of rivals",
+       "exit of rivals"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Profit attracts firms rather than driving them out."
+      }
+     },
+     "demand": {
+      "label": "The firm's demand",
+      "options": [
+       "shifts left and becomes more elastic",
+       "shifts right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rivals take customers, so demand for this firm falls."
+      }
+     },
+     "end": {
+      "label": "Entry stops when demand is",
+      "options": [
+       "tangent to ATC",
+       "equal to minimum ATC and MC"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the competitive outcome; here price stays above MC."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-dominant",
+   "topic": "oligopoly-game-theory",
+   "practice": "3.A",
+   "skill": "compare",
+   "title": "Prove a dominant strategy",
+   "prompt": "<b>Explain</b> whether Altura has a dominant strategy in a game where Altura's payoffs are 30 (Advertise) or 20 (Do not) if Bexley advertises, and 50 (Advertise) or 45 (Do not) if Bexley does not.",
+   "checklist": [
+    "Makes the comparison for Bexley advertising: 30 against 20",
+    "Makes the comparison for Bexley not advertising: 50 against 45",
+    "Concludes that advertising is dominant because it wins both"
+   ],
+   "earns": {
+    "answer": "If Bexley advertises, Altura earns 30 > 20 by advertising. If Bexley does not advertise, Altura earns 50 > 45 by advertising. Advertising is better whatever Bexley does, so it is Altura's dominant strategy.",
+    "why": "Both comparisons are made with the numbers, one for each of Bexley's choices."
+   },
+   "misses": {
+    "answer": "Altura's dominant strategy is to advertise, because 50 is its largest payoff.",
+    "why": "One large payoff does not make a strategy dominant; it has to win against each of the rival's choices."
+   },
+   "specific": {
+    "slots": {
+     "first": {
+      "label": "If Bexley advertises, Altura compares",
+      "options": [
+       "30 with 20",
+       "30 with 50"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Those are Altura's payoffs for the same strategy against two different rival choices."
+      }
+     },
+     "second": {
+      "label": "If Bexley does not, Altura compares",
+      "options": [
+       "50 with 45",
+       "45 with 20"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Compare Altura's two strategies against the same choice of Bexley."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-no-dominant",
+   "topic": "oligopoly-game-theory",
+   "practice": "3.A",
+   "skill": "compare",
+   "title": "Show there is no dominant strategy",
+   "prompt": "<b>Explain</b> whether Bexley has a dominant strategy, if its payoffs are 25 (Advertise) or 15 (Do not) when Altura advertises, and 40 (Advertise) or 45 (Do not) when Altura does not.",
+   "checklist": [
+    "Makes the comparison for Altura advertising: 25 against 15",
+    "Makes the comparison for Altura not advertising: 40 against 45",
+    "Concludes that Bexley's best choice changes, so it has no dominant strategy"
+   ],
+   "earns": {
+    "answer": "If Altura advertises, Bexley does better advertising: 25 > 15. If Altura does not advertise, Bexley does better not advertising: 45 > 40. Its best choice depends on what Altura does, so Bexley has no dominant strategy.",
+    "why": "It makes both comparisons and shows that the best choice changes."
+   },
+   "misses": {
+    "answer": "Bexley has no dominant strategy because it sometimes earns less than Altura.",
+    "why": "Comparing with the rival's payoff is not the test; compare Bexley's own strategies for each of Altura's choices."
+   },
+   "specific": {
+    "slots": {
+     "first": {
+      "label": "If Altura advertises, Bexley is better off",
+      "options": [
+       "advertising: 25 > 15",
+       "not advertising: 15 > 25"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "25 is more than 15, so advertising is better there."
+      }
+     },
+     "concl": {
+      "label": "So Bexley",
+      "options": [
+       "has no dominant strategy",
+       "has a dominant strategy to advertise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "When Altura does not advertise, Bexley prefers not to (45 > 40)."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-nash",
+   "topic": "oligopoly-game-theory",
+   "practice": "3.A",
+   "skill": "compare",
+   "title": "Check a cell for Nash equilibrium",
+   "prompt": "<b>Explain</b> whether (Open early, Open late) is a Nash equilibrium for two cafes, if there Marlo's earns 12 and Nessa's 9, Marlo's would earn 7 by opening late instead, and Nessa's would earn 6 by opening early instead.",
+   "checklist": [
+    "Checks Marlo's switch: 12 against 7",
+    "Checks Nessa's switch: 9 against 6",
+    "Concludes that neither gains by switching alone, so it is a Nash equilibrium"
+   ],
+   "earns": {
+    "answer": "Given that Nessa's opens late, Marlo's earns 12 > 7 by staying early. Given that Marlo's opens early, Nessa's earns 9 > 6 by staying late. Neither can gain by switching on its own, so (Open early, Open late) is a Nash equilibrium.",
+    "why": "It checks each player's switch with the numbers, holding the other's choice fixed."
+   },
+   "misses": {
+    "answer": "It is a Nash equilibrium because together the cafes earn 21, the most in the table.",
+    "why": "The largest joint payoff is not the test; each player's switch has to be checked."
+   },
+   "specific": {
+    "slots": {
+     "m": {
+      "label": "Marlo's compares",
+      "options": [
+       "12 with 7",
+       "12 with 9"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "9 is Nessa's payoff; Marlo's compares its own two choices."
+      }
+     },
+     "test": {
+      "label": "A Nash equilibrium means",
+      "options": [
+       "neither gains by switching alone",
+       "the joint payoff is the largest"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Joint payoff is about cooperation, not the Nash test."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-payoff-change",
+   "topic": "oligopoly-game-theory",
+   "practice": "3.A",
+   "skill": "compare",
+   "title": "A tax that changes a dominant strategy",
+   "prompt": "<b>Explain</b> whether advertising is still Altura's dominant strategy after a tax of 15 on advertising, if before the tax Altura earned 30 or 20 (Advertise or Do not) when Bexley advertises, and 50 or 45 when Bexley does not.",
+   "checklist": [
+    "Subtracts the tax from Altura's advertising payoffs: 15 and 35",
+    "Makes both comparisons again with the new payoffs",
+    "Concludes that not advertising is now dominant"
+   ],
+   "earns": {
+    "answer": "The tax lowers Altura's advertising payoffs to 30 - 15 = 15 and 50 - 15 = 35. If Bexley advertises, 20 > 15, so not advertising is better; if Bexley does not, 45 > 35, so again not advertising is better. Not advertising is now Altura's dominant strategy.",
+    "why": "It changes the right payoffs and makes both comparisons again."
+   },
+   "misses": {
+    "answer": "Advertising is still dominant because 50 is still the biggest payoff before the tax.",
+    "why": "The tax changes the payoffs, so both comparisons must be made again with the new numbers."
+   },
+   "specific": {
+    "slots": {
+     "pay": {
+      "label": "After the tax, Altura's advertising payoffs are",
+      "options": [
+       "15 and 35",
+       "30 and 50",
+       "0 and 20"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Those are the payoffs before the tax.",
+       "2": "The tax is 15, not 30."
+      }
+     },
+     "concl": {
+      "label": "Altura's dominant strategy is now",
+      "options": [
+       "do not advertise",
+       "advertise",
+       "none"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With the tax, advertising loses both comparisons.",
+       "2": "Not advertising wins both comparisons, so it is dominant."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

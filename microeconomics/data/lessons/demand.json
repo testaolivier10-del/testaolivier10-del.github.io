@@ -1,0 +1,80 @@
+{
+ "topic": "demand",
+ "hook": "A coffee shop near campus drops its iced latte price from \\$5 to \\$4 for exam week, and the line runs out the door. A month later a new bubble tea shop opens next door, and the coffee shop sells fewer lattes at the same \\$4. Both stories are about demand, but only one of them moves the demand curve.",
+ "prereq": [
+  {
+   "q": "Each extra slice of pizza you eat at a party satisfies you a little less than the one before. This is",
+   "options": [
+    "diminishing marginal utility",
+    "a sunk cost",
+    "an opportunity cost of zero",
+    "a rise in total utility for each slice"
+   ],
+   "correct": 0,
+   "why": "Marginal utility, the extra satisfaction from one more unit, falls as you have more.",
+   "review": "marginal-analysis"
+  },
+  {
+   "q": "On a graph, a change that moves the whole curve to a new position is",
+   "options": [
+    "a shift of the curve",
+    "a movement along the curve",
+    "a change in the slope only",
+    "a new point on the same curve"
+   ],
+   "correct": 0,
+   "why": "A shift moves the whole curve; a movement along it changes the point on the same curve.",
+   "review": "shifts-movements"
+  },
+  {
+   "q": "A curve that slopes down from left to right shows",
+   "options": [
+    "an inverse relationship",
+    "a direct relationship",
+    "no relationship",
+    "a fixed quantity"
+   ],
+   "correct": 0,
+   "why": "As one variable rises, the other falls.",
+   "review": "axes-points"
+  }
+ ],
+ "figure": {
+  "figure": "demand-movement-shift",
+  "caption": "Left: a lower price moves buyers along D from A to B. Right: higher incomes shift the whole curve from D1 to D2. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "The price of a good falls, other things equal",
+   "effect": "the good is cheaper than its substitutes and buyers' money goes further"
+  },
+  {
+   "cause": "Buyers switch toward it and can afford more (the substitution and income effects)",
+   "effect": "the quantity demanded rises"
+  },
+  {
+   "cause": "The quantity demanded rises because of the good's own price",
+   "effect": "buyers move down along the same demand curve; the curve does not shift"
+  }
+ ],
+ "ideas": [
+  "<b>Law of demand</b>: other things equal, a higher price means a smaller quantity demanded. The curve slopes down.",
+  "It slopes down because of the <b>substitution effect</b>, the <b>income effect</b> and diminishing marginal utility.",
+  "A change in the good's <b>own price</b> is a movement along the curve: a change in <b>quantity demanded</b>.",
+  "A change in a <b>determinant</b> shifts the whole curve: tastes, income (normal or inferior), prices of substitutes and complements, expectations, the number of buyers.",
+  "<b>Market demand</b> is the horizontal sum of every buyer's quantity at each price."
+ ],
+ "misconception": {
+  "wrong": "When a good gets cheaper, its demand increases, so the demand curve shifts right.",
+  "right": "A lower own price raises the quantity demanded: a movement down along the same curve. Demand shifts only when something other than the good's own price changes, such as income or the price of a related good."
+ },
+ "check": [
+  "mic-demand-1",
+  "mic-demand-2",
+  "mic-demand-6",
+  "mic-demand-7",
+  "mic-demand-10",
+  "mic-demand-11"
+ ],
+ "summary": "Demand shows how much buyers want at each price. By the law of demand, a higher price lowers the quantity demanded, because of the substitution and income effects and diminishing marginal utility. A change in the good's own price moves buyers along the curve; a change in tastes, income, the prices of substitutes or complements, expectations or the number of buyers shifts the whole curve. Market demand adds every buyer's quantity at each price."
+}

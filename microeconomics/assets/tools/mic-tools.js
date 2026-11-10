@@ -100,7 +100,7 @@
       }
       app.innerHTML = '';
       unitMap = data.units || {};
-      if(data.status === 'placeholder') app.insertAdjacentHTML('beforeend', '<p class="bt-draft"><b>Draft content.</b> These scenarios are waiting for review by an microeconomics teacher. Spot a problem? Use Report a problem.</p>');
+      if(data.status === 'placeholder') app.insertAdjacentHTML('beforeend', '<p class="bt-draft"><b>Draft content.</b> These scenarios are waiting for review by an AP® Microeconomics teacher. Spot a problem? Use Report a problem.</p>');
       // Tool Studio (docs/tools-calm.md): pages.json `studio: true` puts
       // data-studio on #app. modes() and drill() then place their parts in
       // the frame; a trainer's explore view places its own (o.studio).

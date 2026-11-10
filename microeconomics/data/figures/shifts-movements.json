@@ -1,0 +1,12 @@
+{
+ "shifts-movements-bakery": {
+  "file": "figures/shifts-movements-bakery.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs side by side for a bakery's croissants. Left: a movement along one curve D from point J at $4 to point K at $3. Right: the whole curve shifts right from D1 to D2 after an office opens next door."
+ }
+}

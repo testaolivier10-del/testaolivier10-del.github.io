@@ -1,0 +1,84 @@
+{
+ "topic": "market-efficiency",
+ "hook": "A town pool could stay open every evening of the week. Each extra hour gives swimmers some benefit and costs the town a lifeguard, heat and light. Open too few hours and good evenings go to waste; open too many and the town pays for empty lanes. There is one best number of hours, and it is found at the margin.",
+ "prereq": [
+  {
+   "q": "Deadweight loss is",
+   "options": [
+    "total surplus lost when the quantity differs from equilibrium",
+    "tax revenue",
+    "consumer surplus after a tax",
+    "a firm's economic loss"
+   ],
+   "correct": 0,
+   "why": "It is the surplus no one gets.",
+   "review": "government-intervention"
+  },
+  {
+   "q": "A firm is allocatively efficient when",
+   "options": [
+    "P = MC",
+    "P = minimum ATC",
+    "MR = MC",
+    "TR = TC"
+   ],
+   "correct": 0,
+   "why": "Price measures buyers' benefit of the last unit, MC its cost.",
+   "review": "perfect-competition"
+  },
+  {
+   "q": "Total surplus is",
+   "options": [
+    "consumer surplus plus producer surplus",
+    "total revenue minus total cost",
+    "price times quantity",
+    "the area under the supply curve"
+   ],
+   "correct": 0,
+   "why": "It is the total net benefit to buyers and sellers.",
+   "review": "equilibrium-surplus"
+  }
+ ],
+ "figure": {
+  "figure": "market-efficiency-dwl",
+  "caption": "At Q*, MSB = MSC and total surplus is largest. Making less (Q1) or more (Q2) leaves a deadweight loss triangle that points toward Q*."
+ },
+ "chain": [
+  {
+   "cause": "A unit's MSB is greater than its MSC",
+   "effect": "making it adds to total surplus"
+  },
+  {
+   "cause": "Units are added until MSB = MSC",
+   "effect": "total surplus is as large as it can be: the efficient quantity"
+  },
+  {
+   "cause": "A policy or market power moves quantity away from that point",
+   "effect": "units are lost (or wasted) whose benefit and cost do not match"
+  },
+  {
+   "cause": "Those units' net benefit is lost",
+   "effect": "deadweight loss appears: a market failure if the market itself causes it"
+  }
+ ],
+ "ideas": [
+  "<b>Marginal social benefit</b> (MSB) is the benefit of one more unit to everyone; <b>marginal social cost</b> (MSC) is its cost to everyone.",
+  "The <b>socially efficient quantity</b> is where MSB = MSC. There total surplus is largest.",
+  "A competitive market whose demand and supply capture every benefit and cost has D = MSB and S = MSC, so its equilibrium is efficient.",
+  "Any other quantity leaves <b>deadweight loss</b>, a triangle between MSB and MSC pointing toward the efficient quantity. A <b>market failure</b> is a market outcome that is not efficient."
+ ],
+ "misconception": {
+  "wrong": "A market equilibrium is always the socially efficient outcome.",
+  "right": "It is efficient only when demand captures every benefit and supply every cost, and buyers and sellers are price takers. Market power, and benefits or costs that fall on others, make the market quantity differ from MSB = MSC."
+ },
+ "check": [
+  "mic-market-efficiency-15",
+  "mic-market-efficiency-16",
+  "mic-market-efficiency-9",
+  "mic-market-efficiency-10",
+  "mic-market-efficiency-17",
+  "mic-market-efficiency-19",
+  "mic-market-efficiency-4"
+ ],
+ "summary": "A quantity is socially efficient where marginal social benefit equals marginal social cost: every unit worth more than it costs is made, and no other. Total surplus is largest there. A competitive market in which demand and supply reflect all benefits and costs reaches that point on its own. Taxes, subsidies, price controls and monopoly move the quantity away from it, and the lost net benefit is deadweight loss, a triangle between MSB and MSC that points toward the efficient quantity. A market outcome that is not efficient is a market failure."
+}

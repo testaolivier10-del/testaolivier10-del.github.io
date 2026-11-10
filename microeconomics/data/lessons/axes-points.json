@@ -1,0 +1,46 @@
+{
+ "topic": "axes-points",
+ "hook": "The owner of a taco truck writes down how many tacos she sells at each price she tries. A list of numbers is hard to read at a glance, but put the same numbers on a graph and the pattern jumps out: the lower the price, the more tacos go out the window. Every graph in this course starts with two labeled axes and points read from them.",
+ "figure": {
+  "figure": "axes-points-pairs",
+  "caption": "Three rows of the taco table plotted as ordered pairs (tacos sold, price). Each point has dashed lines to both axes. The points fall to the right: an inverse relationship. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "You pick the two variables to compare",
+   "effect": "one goes on the horizontal axis and one on the vertical axis, each labeled with its name and units"
+  },
+  {
+   "cause": "Each row of a table gives one value of each variable",
+   "effect": "it becomes one ordered pair (horizontal value, vertical value)"
+  },
+  {
+   "cause": "You plot every ordered pair",
+   "effect": "the points show a pattern you can read at a glance"
+  },
+  {
+   "cause": "The points rise to the right or fall to the right",
+   "effect": "the variables have a direct or an inverse relationship"
+  }
+ ],
+ "ideas": [
+  "The <b>horizontal axis</b> (x-axis) runs left to right; the <b>vertical axis</b> (y-axis) runs up. On a market graph, quantity goes across and price goes up.",
+  "An <b>ordered pair</b> (x, y) names one point: first the horizontal value, then the vertical value.",
+  "To read a point, drop a line straight down to the horizontal axis and across to the vertical axis.",
+  "A <b>direct relationship</b>: both variables rise together, so the points rise to the right. An <b>inverse relationship</b>: one rises as the other falls, so the points fall to the right.",
+  "Label both axes every time. An unlabeled axis loses the graph point on the exam."
+ ],
+ "misconception": {
+  "wrong": "On a graph with tacos across and price up, the ordered pair (80, 3) means 3 tacos at a price of \\$80.",
+  "right": "The first number is always the horizontal value. With quantity across and price up, (80, 3) means 80 tacos at a price of \\$3."
+ },
+ "check": [
+  "mic-axes-points-1",
+  "mic-axes-points-2",
+  "mic-axes-points-3",
+  "mic-axes-points-4",
+  "mic-axes-points-7",
+  "mic-axes-points-11"
+ ],
+ "summary": "A graph has two labeled axes: the horizontal axis (x) and the vertical axis (y). On a market graph, quantity goes on the horizontal axis and price on the vertical. Each row of a table becomes an ordered pair (horizontal value, vertical value), and you read a point by dropping lines to both axes. Points that rise to the right show a direct relationship; points that fall to the right show an inverse one."
+}

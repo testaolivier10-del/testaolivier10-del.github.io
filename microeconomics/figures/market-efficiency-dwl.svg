@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-labelledby="market-efficiency-dwl-t market-efficiency-dwl-d" font-family="Arial, Helvetica, sans-serif">
+<title id="market-efficiency-dwl-t">Deadweight loss on either side of the efficient quantity</title>
+<desc id="market-efficiency-dwl-d">Two graphs with Price on the vertical axis and Quantity on the horizontal axis, each with D = MSB sloping down and S = MSC sloping up, crossing at the efficient quantity Q* and price P*. Left: only Q1, less than Q*, is made, and the triangle between MSB and MSC from Q1 to Q* is deadweight loss. Right: Q2, more than Q*, is made, and the triangle between MSC and MSB from Q* to Q2 is deadweight loss. Both triangles point toward Q*.</desc>
+<defs><marker id="market-efficiency-dwl-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="market-efficiency-dwl-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="market-efficiency-dwl-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="market-efficiency-dwl-arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker></defs>
+<rect width="800" height="400" fill="#FFFFFF"/>
+<text x="220" y="34" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Too little is made</text>
+<path d="M80 50V320H360" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="360" y="360" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Quantity</text>
+<text transform="translate(40 50) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Price</text>
+<path d="M164 239L164 131L220 185Z" fill="#FBE3D2" stroke="none" fill-opacity="1"/>
+<path d="M108 77L111.7 80.6L115.5 84.2L119.2 87.8L122.9 91.4L126.7 95L130.4 98.6L134.1 102.2L137.9 105.8L141.6 109.4L145.3 113L149.1 116.6L152.8 120.2L156.5 123.8L160.3 127.4L164 131L167.7 134.6L171.5 138.2L175.2 141.8L178.9 145.4L182.7 149L186.4 152.6L190.1 156.2L193.9 159.8L197.6 163.4L201.3 167L205.1 170.6L208.8 174.2L212.5 177.8L216.3 181.4L220 185L223.7 188.6L227.5 192.2L231.2 195.8L234.9 199.4L238.7 203L242.4 206.6L246.1 210.2L249.9 213.8L253.6 217.4L257.3 221L261.1 224.6L264.8 228.2L268.5 231.8L272.3 235.4L276 239L279.7 242.6L283.5 246.2L287.2 249.8L290.9 253.4L294.7 257L298.4 260.6L302.1 264.2L305.9 267.8L309.6 271.4L313.3 275L317.1 278.6L320.8 282.2L324.5 285.8L328.3 289.4L332 293" fill="none" stroke="#7E1A5E" stroke-width="2.6"/>
+<path d="M108 293L111.7 289.4L115.5 285.8L119.2 282.2L122.9 278.6L126.7 275L130.4 271.4L134.1 267.8L137.9 264.2L141.6 260.6L145.3 257L149.1 253.4L152.8 249.8L156.5 246.2L160.3 242.6L164 239L167.7 235.4L171.5 231.8L175.2 228.2L178.9 224.6L182.7 221L186.4 217.4L190.1 213.8L193.9 210.2L197.6 206.6L201.3 203L205.1 199.4L208.8 195.8L212.5 192.2L216.3 188.6L220 185L223.7 181.4L227.5 177.8L231.2 174.2L234.9 170.6L238.7 167L242.4 163.4L246.1 159.8L249.9 156.2L253.6 152.6L257.3 149L261.1 145.4L264.8 141.8L268.5 138.2L272.3 134.6L276 131L279.7 127.4L283.5 123.8L287.2 120.2L290.9 116.6L294.7 113L298.4 109.4L302.1 105.8L305.9 102.2L309.6 98.6L313.3 95L317.1 91.4L320.8 87.8L324.5 84.2L328.3 80.6L332 77" fill="none" stroke="#0072B2" stroke-width="2.6"/>
+<path d="M80 185H220V320" fill="none" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/>
+<circle cx="220" cy="185" r="4.5" fill="#1F2A28"/>
+<text x="220" y="340" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q*</text>
+<text x="72" y="190" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">P*</text>
+<path d="M164 131V320" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="164" y="340.3" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">1</tspan></text>
+<text x="334.8" y="311.9" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MSB</text>
+<text x="334.8" y="68.9" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="start">S = MSC</text>
+<text x="180.8" y="179.6" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="middle">DWL</text>
+<text x="630" y="34" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Too much is made</text>
+<path d="M490 50V320H770" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="770" y="360" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Quantity</text>
+<text transform="translate(450 50) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Price</text>
+<path d="M630 185L686 131L686 239Z" fill="#FBE3D2" stroke="none" fill-opacity="1"/>
+<path d="M518 77L521.7 80.6L525.5 84.2L529.2 87.8L532.9 91.4L536.7 95L540.4 98.6L544.1 102.2L547.9 105.8L551.6 109.4L555.3 113L559.1 116.6L562.8 120.2L566.5 123.8L570.3 127.4L574 131L577.7 134.6L581.5 138.2L585.2 141.8L588.9 145.4L592.7 149L596.4 152.6L600.1 156.2L603.9 159.8L607.6 163.4L611.3 167L615.1 170.6L618.8 174.2L622.5 177.8L626.3 181.4L630 185L633.7 188.6L637.5 192.2L641.2 195.8L644.9 199.4L648.7 203L652.4 206.6L656.1 210.2L659.9 213.8L663.6 217.4L667.3 221L671.1 224.6L674.8 228.2L678.5 231.8L682.3 235.4L686 239L689.7 242.6L693.5 246.2L697.2 249.8L700.9 253.4L704.7 257L708.4 260.6L712.1 264.2L715.9 267.8L719.6 271.4L723.3 275L727.1 278.6L730.8 282.2L734.5 285.8L738.3 289.4L742 293" fill="none" stroke="#7E1A5E" stroke-width="2.6"/>
+<path d="M518 293L521.7 289.4L525.5 285.8L529.2 282.2L532.9 278.6L536.7 275L540.4 271.4L544.1 267.8L547.9 264.2L551.6 260.6L555.3 257L559.1 253.4L562.8 249.8L566.5 246.2L570.3 242.6L574 239L577.7 235.4L581.5 231.8L585.2 228.2L588.9 224.6L592.7 221L596.4 217.4L600.1 213.8L603.9 210.2L607.6 206.6L611.3 203L615.1 199.4L618.8 195.8L622.5 192.2L626.3 188.6L630 185L633.7 181.4L637.5 177.8L641.2 174.2L644.9 170.6L648.7 167L652.4 163.4L656.1 159.8L659.9 156.2L663.6 152.6L667.3 149L671.1 145.4L674.8 141.8L678.5 138.2L682.3 134.6L686 131L689.7 127.4L693.5 123.8L697.2 120.2L700.9 116.6L704.7 113L708.4 109.4L712.1 105.8L715.9 102.2L719.6 98.6L723.3 95L727.1 91.4L730.8 87.8L734.5 84.2L738.3 80.6L742 77" fill="none" stroke="#0072B2" stroke-width="2.6"/>
+<path d="M490 185H630V320" fill="none" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/>
+<circle cx="630" cy="185" r="4.5" fill="#1F2A28"/>
+<text x="630" y="340" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q*</text>
+<text x="482" y="190" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">P*</text>
+<path d="M686 131V320" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="686" y="340.3" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">2</tspan></text>
+<text x="744.8" y="311.9" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MSB</text>
+<text x="744.8" y="68.9" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="start">S = MSC</text>
+<text x="666.4" y="189.1" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="middle">DWL</text>
+</svg>

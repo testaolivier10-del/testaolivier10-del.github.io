@@ -1,0 +1,605 @@
+{
+ "stimuli": {
+  "price-elasticity-demand-s1": {
+   "kind": "data",
+   "title": "A demand schedule for phone cases at Juno Cases",
+   "invented": true,
+   "table": {
+    "caption": "Phone cases demanded per week at Juno Cases at each price (invented data for practice)",
+    "cols": [
+     "Price",
+     "Quantity demanded"
+    ],
+    "rows": [
+     [
+      "\\$8",
+      "20"
+     ],
+     [
+      "\\$6",
+      "40"
+     ],
+     [
+      "\\$5",
+      "50"
+     ],
+     [
+      "\\$4",
+      "60"
+     ],
+     [
+      "\\$2",
+      "80"
+     ]
+    ]
+   }
+  },
+  "price-elasticity-demand-s2": {
+   "kind": "text",
+   "title": "Three goods at an island general store",
+   "text": "<p>The only store on Tallis Island, an invented place reached by a weekly ferry, sells three goods among many others:</p><ul><li><b>Insulin</b>, which some islanders need every day and which has no substitute on the island.</li><li><b>Fizzle</b>, one of six brands of sparkling water on the shelf, all of which taste much the same.</li><li><b>Table salt</b>, which costs about \\$1 a box and lasts a family a month.</li></ul><p>The store manager raises the price of Fizzle by 10% and sees the quantity of Fizzle sold fall by 30%.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-price-elasticity-demand-1",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-elasticity-demand-s1",
+   "q": "Using the starting values, calculate the price elasticity of demand for phone cases when the price falls from \\$8 to \\$6. Give the absolute value.",
+   "why": {
+    "correct": "Percent change in quantity: $\\frac{40 - 20}{20} \\times 100 = 100\\%$. Percent change in price: $\\frac{6 - 8}{8} \\times 100 = -25\\%$. Elasticity: $|100 \\div (-25)| = 4$, so demand is elastic in this range."
+   },
+   "numeric": {
+    "from": {
+     "fn": "priceElasticity",
+     "args": [
+      20,
+      40,
+      8,
+      6
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "abs",
+       "args": [
+        {
+         "fn": "elasticity",
+         "args": [
+          {
+           "fn": "pctChange",
+           "args": [
+            8,
+            6
+           ]
+          },
+          {
+           "fn": "pctChange",
+           "args": [
+            20,
+            40
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      "why": "That divides the percent change in price by the percent change in quantity. Elasticity puts the quantity change on top."
+     },
+     {
+      "value": 10,
+      "why": "That divides the change in quantity (20 cases) by the change in price (\\$2). Elasticity uses percent changes, not unit changes."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-2",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-elasticity-demand-s1",
+   "q": "By how many dollars does Juno's weekly total revenue change when it cuts the price from \\$8 to \\$6?",
+   "why": {
+    "correct": "Total revenue is price times quantity. At \\$8: $8 \\times 20 = 160$. At \\$6: $6 \\times 40 = 240$. The change is $240 - 160 = 80$ dollars, a rise, as the total revenue test predicts for elastic demand."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "totalRevenue",
+       "args": [
+        6,
+        40
+       ]
+      },
+      {
+       "fn": "totalRevenue",
+       "args": [
+        8,
+        20
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 240,
+      "why": "That is the new total revenue. The question asks for the change: subtract the old total revenue, \\$160."
+     },
+     {
+      "value": 20,
+      "why": "That is the change in quantity. Total revenue is price times quantity at each price."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-3",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "price-elasticity-demand-s1",
+   "q": "Juno cuts the price from \\$4 to \\$2. Is demand elastic or inelastic in this range, and what happens to total revenue?",
+   "options": [
+    "Elastic; total revenue rises from \\$160 to \\$240",
+    "Inelastic; total revenue rises because more cases sell",
+    "Inelastic; total revenue falls from \\$240 to \\$160",
+    "Elastic; total revenue falls because the price is lower"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Quantity rises from 60 to 80, about 33%, while the price falls 50%. The elasticity is about 0.67, less than 1: inelastic. Total revenue falls from \\$240 to \\$160.",
+    "options": [
+     "That is the cut from \\$8 to \\$6, higher on the curve.",
+     "More cases sell, but not enough to make up for the 50% lower price.",
+     "Right: the quantity change is smaller in percent than the price change.",
+     "A falling revenue after a price cut marks inelastic demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-4",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "price-elasticity-demand-s1",
+   "q": "At which price in the table is Juno's total revenue largest?",
+   "options": [
+    "\\$5, where total revenue is \\$250",
+    "\\$8, the highest price",
+    "\\$2, where the most cases sell",
+    "\\$6, where total revenue is \\$240"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total revenue is \\$160, \\$240, \\$250, \\$240 and \\$160 down the table. It peaks at \\$5, where demand is unit elastic: the middle of a straight-line demand curve.",
+    "options": [
+     "Right: the unit-elastic middle of the curve.",
+     "At \\$8 only 20 cases sell: \\$160.",
+     "At \\$2, 80 cases bring only \\$160.",
+     "\\$240 is high, but \\$5 brings \\$250."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-5",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "price-elasticity-demand-s2",
+   "q": "Which good in the store most likely has the most elastic demand?",
+   "options": [
+    "Insulin",
+    "Table salt",
+    "They are equally elastic",
+    "Fizzle sparkling water"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fizzle has close substitutes on the same shelf, so buyers switch brands when its price rises. Many close substitutes make demand elastic.",
+    "options": [
+     "Insulin is a necessity with no substitute, so demand is very inelastic.",
+     "Salt is a tiny share of a budget, so buyers barely react to its price.",
+     "Substitutes, necessity and budget share differ across the three.",
+     "Right: five other brands are close substitutes."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-6",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-elasticity-demand-s2",
+   "q": "Calculate the price elasticity of demand for Fizzle from the manager's results. Give the absolute value.",
+   "why": {
+    "correct": "Elasticity is the percent change in quantity demanded over the percent change in price: $|-30\\% \\div 10\\%| = 3$. Demand for Fizzle is elastic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "abs",
+     "args": [
+      {
+       "fn": "elasticity",
+       "args": [
+        -30,
+        10
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "abs",
+       "args": [
+        {
+         "fn": "elasticity",
+         "args": [
+          10,
+          -30
+         ]
+        }
+       ]
+      },
+      "why": "That puts the price change on top. Divide the percent change in quantity by the percent change in price."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-7",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "price-elasticity-demand-s2",
+   "q": "What happens to the store's total revenue from Fizzle after the 10% price rise?",
+   "options": [
+    "It rises, because each bottle sells for more",
+    "It falls, because demand is elastic",
+    "It does not change, because demand is unit elastic",
+    "It rises, because demand is inelastic"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Demand for Fizzle is elastic (elasticity 3). With elastic demand, price and total revenue move in opposite directions: the 30% fall in quantity outweighs the 10% rise in price, so total revenue falls.",
+    "options": [
+     "The higher price is outweighed by the much larger fall in quantity.",
+     "Right: the quantity falls by a larger percent than the price rises.",
+     "The elasticity is 3, not 1.",
+     "An elasticity of 3 is elastic."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-8",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "price-elasticity-demand-s2",
+   "q": "Why is the demand for table salt likely to be inelastic even though other brands of salt exist?",
+   "options": [
+    "It has many close substitutes on the shelf",
+    "It takes up a very small share of a family's budget",
+    "It is a luxury that families can easily skip",
+    "Its demand curve is perfectly elastic"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A box of salt is a tiny share of a family's budget, so even a large percent rise in its price barely affects spending, and buyers hardly change how much they buy.",
+    "options": [
+     "Close substitutes make demand more elastic, not less.",
+     "Right: a small budget share makes buyers less sensitive to price.",
+     "Salt is a cheap staple, not a luxury.",
+     "A perfectly elastic curve is the opposite of inelastic."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-9",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "How is the price elasticity of demand calculated?",
+   "options": [
+    "Percent change in price divided by percent change in quantity demanded",
+    "Change in quantity demanded divided by change in price",
+    "Price times quantity demanded",
+    "Percent change in quantity demanded divided by percent change in price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Price elasticity of demand is the percent change in quantity demanded divided by the percent change in price, read as an absolute value.",
+    "options": [
+     "That is upside down.",
+     "That is a slope-style ratio of units; elasticity uses percents.",
+     "That is total revenue.",
+     "Right: quantity on top, in percent."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-10",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A study finds that the price elasticity of demand for bus rides in a city is $-0.4$. How should demand be classified?",
+   "options": [
+    "Inelastic, because 0.4 is less than 1",
+    "Elastic, because the coefficient is below zero",
+    "Unit elastic, because it is close to zero",
+    "Perfectly elastic, because it is negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the absolute value: $|-0.4| = 0.4$, which is less than 1, so demand for bus rides is inelastic. The minus sign only says price and quantity move in opposite directions.",
+    "options": [
+     "Right: compare the absolute value with 1.",
+     "The sign is not the test; the size of the absolute value is.",
+     "Unit elastic is exactly 1 in absolute value.",
+     "Perfectly elastic demand is horizontal; this is a small response."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-11",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A demand curve is a straight line sloping down. How does the price elasticity of demand change as you move down the line from high prices to low prices?",
+   "options": [
+    "It stays the same, because the slope is the same",
+    "It rises, from inelastic at high prices to elastic at low prices",
+    "It falls, from elastic at high prices to inelastic at low prices",
+    "It is unit elastic at each point on the line"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The slope is the same everywhere, but elasticity falls: at high prices a small quantity makes any change a large percent, so demand is elastic; past the midpoint it is inelastic. The midpoint is unit elastic.",
+    "options": [
+     "Slope is not elasticity; percent changes differ along the line.",
+     "That is backward: the top of the line is the elastic part.",
+     "Right: same slope, changing percent changes.",
+     "Only the midpoint is unit elastic."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-12",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A city water utility raises its price, and its total revenue rises. What does the total revenue test say about demand for its water?",
+   "options": [
+    "Demand is elastic in this price range",
+    "Demand is unit elastic in this price range",
+    "Demand is perfectly elastic",
+    "Demand is inelastic in this price range"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When price and total revenue move in the same direction, demand is inelastic: the quantity falls by a smaller percent than the price rises.",
+    "options": [
+     "With elastic demand, a price rise lowers total revenue.",
+     "Then total revenue would not change.",
+     "Then any price rise would lose every sale.",
+     "Right: price up, revenue up."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-13",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "At one theme park, the number of tickets sold stays at 5,000 a day whether the price is \\$40 or \\$60. What does the demand curve look like over this range?",
+   "options": [
+    "Horizontal: perfectly elastic",
+    "A downward line that is unit elastic",
+    "Vertical: perfectly inelastic",
+    "A steep line that is elastic"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The quantity does not respond to price at all, so demand is perfectly inelastic: a vertical demand curve with elasticity 0.",
+    "options": [
+     "A horizontal curve would mean any price rise loses every buyer.",
+     "Unit elastic means quantity changes by the same percent as price.",
+     "Right: the quantity is the same at each price.",
+     "Elastic means a large response; here there is none."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-14",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A movie theater sells a large popcorn at \\$9, with no other snack seller nearby. A month later a snack cart opens outside. What most likely happens to the price elasticity of demand for the theater's popcorn?",
+   "options": [
+    "It falls, because popcorn is now easier to find",
+    "It rises, because buyers now have a substitute",
+    "It does not change, because the price is the same",
+    "It becomes perfectly inelastic"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The cart offers a close substitute, so buyers can switch when the theater's price is high. More substitutes make demand more elastic.",
+    "options": [
+     "More places to buy a similar snack make the theater's demand more elastic.",
+     "Right: substitutes make buyers more price sensitive.",
+     "Elasticity depends on substitutes, not just the current price.",
+     "A new substitute makes demand less inelastic, not more."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-15",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Some teachers use the midpoint method, which divides each change by the average of the two values. Using the midpoint method, calculate the price elasticity of demand for phone cases between \\$8 (20 cases) and \\$6 (40 cases). Round to two decimal places.",
+   "why": {
+    "correct": "Midpoint percent change in quantity: $\\frac{40 - 20}{30} \\times 100 \\approx 66.7\\%$. Midpoint percent change in price: $\\frac{6 - 8}{7} \\times 100 \\approx -28.6\\%$. Elasticity: $66.7 \\div 28.6 \\approx 2.33$. The midpoint method gives the same answer whether the price rises or falls; either method shows elastic demand here."
+   },
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "midpointElasticity",
+       "args": [
+        20,
+        40,
+        8,
+        6
+       ]
+      },
+      2
+     ]
+    },
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "That uses the starting values (20 cases, \\$8). The midpoint method divides each change by the average: 30 cases and \\$7."
+     },
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          1,
+          {
+           "fn": "midpointElasticity",
+           "args": [
+            20,
+            40,
+            8,
+            6
+           ]
+          }
+         ]
+        },
+        2
+       ]
+      },
+      "why": "That puts the price change on top. Divide the percent change in quantity by the percent change in price."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-16",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Which facts would make the demand for a good more elastic? Select all that apply.",
+   "options": [
+    "The good has many close substitutes",
+    "The good is a necessity, such as a daily medicine",
+    "The good takes a large share of buyers' budgets",
+    "The good is narrowly defined as one brand",
+    "Buyers have to decide today, with no time to look around",
+    "The good costs a few cents and is bought once a year"
+   ],
+   "correct": [
+    0,
+    2,
+    3
+   ],
+   "why": {
+    "correct": "Demand is more elastic when buyers have close substitutes, when the good takes a large share of the budget, and when buyers have more time to adjust. A necessity with no substitute has inelastic demand.",
+    "options": [
+     "Right: buyers can switch easily.",
+     "Necessities have inelastic demand.",
+     "Right: a price change matters a lot to spending.",
+     "Right: other brands are close substitutes.",
+     "Less time to adjust makes demand less elastic.",
+     "A tiny budget share makes demand inelastic."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-demand-17",
+   "unit": "unit-2",
+   "topic": "price-elasticity-demand",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Demand for a concert band's T-shirts is elastic at the current price. The band wants to raise its total revenue from shirts. What should it do to the price, according to the total revenue test?",
+   "options": [
+    "Lower the price",
+    "Raise the price",
+    "Keep the price, since revenue will not change",
+    "Raise the price until demand turns elastic"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With elastic demand, price and total revenue move in opposite directions, so a lower price raises total revenue: the quantity rises by a larger percent than the price falls.",
+    "options": [
+     "Right: with elastic demand, a price cut raises total revenue.",
+     "With elastic demand, a price rise loses more sales than it gains per shirt.",
+     "Revenue changes with price unless demand is unit elastic.",
+     "Demand is already elastic; higher prices make it more so."
+    ]
+   }
+  }
+ ]
+}

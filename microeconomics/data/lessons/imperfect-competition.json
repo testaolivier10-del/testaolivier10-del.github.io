@@ -1,0 +1,84 @@
+{
+ "topic": "imperfect-competition",
+ "hook": "The town has one water company, three airlines fly out of the airport, and forty coffee shops line the streets. None of them is a wheat farm selling at whatever price the market sets: each can raise its price and still keep some customers. That ability, and the walls that keep rivals out, is what this topic is about.",
+ "prereq": [
+  {
+   "q": "A perfectly competitive firm faces a demand curve that is",
+   "options": [
+    "horizontal at the market price",
+    "downward sloping",
+    "vertical",
+    "upward sloping"
+   ],
+   "correct": 0,
+   "why": "A price taker sells all it wants at the market price: d = MR = AR = P.",
+   "review": "perfect-competition"
+  },
+  {
+   "q": "A firm maximizes profit by producing the quantity where",
+   "options": [
+    "MR = MC",
+    "TR is largest",
+    "ATC is lowest",
+    "P = AVC"
+   ],
+   "correct": 0,
+   "why": "Produce each unit whose marginal revenue covers its marginal cost, stopping where MR = MC.",
+   "review": "profit-maximization"
+  },
+  {
+   "q": "In the long run, positive economic profit in perfect competition leads to",
+   "options": [
+    "entry, until economic profit is zero",
+    "exit, until losses appear",
+    "a rise in the market price",
+    "no change"
+   ],
+   "correct": 0,
+   "why": "Profit attracts new firms; market supply shifts right until price falls to minimum ATC.",
+   "review": "perfect-competition"
+  }
+ ],
+ "figure": {
+  "figure": "imperfect-competition-price-maker",
+  "caption": "A price taker's demand is horizontal and equal to MR. A price maker's demand slopes down, and its MR curve lies below it: at Q1, marginal revenue is less than the price P1."
+ },
+ "chain": [
+  {
+   "cause": "A firm has market power (few rivals, a differentiated product, or a barrier to entry)",
+   "effect": "it faces a downward-sloping demand curve"
+  },
+  {
+   "cause": "To sell one more unit it must lower the price on every unit",
+   "effect": "marginal revenue is less than the price, so the MR curve lies below demand"
+  },
+  {
+   "cause": "It produces where MR = MC and reads its price from the demand curve",
+   "effect": "its price is above marginal cost"
+  },
+  {
+   "cause": "Barriers to entry keep rivals out",
+   "effect": "economic profit can last into the long run"
+  }
+ ],
+ "ideas": [
+  "<b>Market power</b>: the ability to raise the price without losing every customer. A firm with it is a <b>price maker</b> and faces a downward-sloping demand curve.",
+  "<b>Barriers to entry</b> (patents and licenses, control of a key resource, economies of scale) keep rivals out, so economic profit can last.",
+  "The structures, from most sellers to fewest: perfect competition, <b>monopolistic competition</b> (many sellers, differentiated products), <b>oligopoly</b> (a few interdependent sellers), <b>monopoly</b> (one seller).",
+  "A price maker's <b>marginal revenue curve</b> lies below demand: selling one more unit means cutting the price on all units. It still produces where MR = MC, then reads its price from demand."
+ ],
+ "misconception": {
+  "wrong": "A firm with market power charges the highest price buyers would ever pay.",
+  "right": "A price maker is still limited by its demand curve: a higher price means fewer sales. It picks the quantity where MR = MC and charges the price on the demand curve at that quantity, which is above MC but not the highest possible price."
+ },
+ "check": [
+  "mic-imperfect-competition-9",
+  "mic-imperfect-competition-5",
+  "mic-imperfect-competition-6",
+  "mic-imperfect-competition-7",
+  "mic-imperfect-competition-1",
+  "mic-imperfect-competition-2",
+  "mic-imperfect-competition-14"
+ ],
+ "summary": "Firms with market power are price makers: they face a downward-sloping demand curve, so they sell more only by cutting the price on every unit, and their marginal revenue curve lies below demand. They produce where MR = MC and read the price from demand, above marginal cost. Barriers to entry (legal rights, key resources, economies of scale) protect their profit from entry. Monopoly, oligopoly and monopolistic competition differ in the number of sellers, how different their products are and how hard entry is."
+}

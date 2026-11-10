@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="demand-movement-shift-t demand-movement-shift-d" font-family="Arial, Helvetica, sans-serif">
+<title id="demand-movement-shift-t">A movement along demand and a shift of demand</title>
+<desc id="demand-movement-shift-d">Two panels for veggie wraps, price on the vertical axis and quantity per day on the horizontal axis. Left: one demand curve D; a fall in price from $5 to $3 moves buyers along the curve from point A (30 wraps) to point B (50 wraps): a change in quantity demanded. Right: a rise in buyers' incomes shifts the whole curve right from D1 to D2, so at $4 buyers want 60 wraps instead of 40: a change in demand. Invented data for practice.</desc>
+<defs><marker id="demand-movement-shift-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="demand-movement-shift-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="demand-movement-shift-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="demand-movement-shift-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="760" height="400" fill="#FFFFFF"/>
+<path d="M70 44V310H356" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="210" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="210" dy="0">Price falls: a movement along D</tspan></text>
+<text x="350" y="346" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="350" dy="0">Quantity of wraps per day</tspan></text>
+<text transform="translate(30 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M126 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="126" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="126" dy="0">20</tspan></text>
+<path d="M182 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="182" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="182" dy="0">40</tspan></text>
+<path d="M238 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="238" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="238" dy="0">60</tspan></text>
+<path d="M294 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="294" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="294" dy="0">80</tspan></text>
+<path d="M350 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="350" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="350" dy="0">100</tspan></text>
+<path d="M70 277.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="281.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$1</tspan></text>
+<path d="M70 245h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="249" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$2</tspan></text>
+<path d="M70 212.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="216.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$3</tspan></text>
+<path d="M70 180h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="184" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$4</tspan></text>
+<path d="M70 147.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="151.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$5</tspan></text>
+<path d="M70 115h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="119" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$6</tspan></text>
+<path d="M70 82.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="86.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$7</tspan></text>
+<path d="M98 82.5L266 277.5" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="271" y="281.5" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="271" dy="0">D</tspan></text>
+<path d="M70 147.5H154" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M154 147.5V310" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M70 212.5H210" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M210 212.5V310" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<circle cx="154" cy="147.5" r="4.5" fill="#1F2A28"/>
+<text x="162" y="140.5" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="162" dy="0">A</tspan></text>
+<circle cx="210" cy="212.5" r="4.5" fill="#1F2A28"/>
+<text x="218" y="205.5" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="218" dy="0">B</tspan></text>
+<path d="M159.6 154L204.4 206" stroke="#D55E00" stroke-width="2.2" fill="none" marker-end="url(#demand-movement-shift-v)"/>
+<path d="M440 44V310H726" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="580" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="580" dy="0">Income rises: D shifts right</tspan></text>
+<text x="720" y="346" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="720" dy="0">Quantity of wraps per day</tspan></text>
+<text transform="translate(400 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M496 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="496" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="496" dy="0">20</tspan></text>
+<path d="M552 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="552" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="552" dy="0">40</tspan></text>
+<path d="M608 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="608" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="608" dy="0">60</tspan></text>
+<path d="M664 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="664" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="664" dy="0">80</tspan></text>
+<path d="M720 310v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="720" y="327" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="720" dy="0">100</tspan></text>
+<path d="M440 277.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="432" y="281.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="432" dy="0">$1</tspan></text>
+<path d="M440 245h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="432" y="249" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="432" dy="0">$2</tspan></text>
+<path d="M440 212.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="432" y="216.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="432" dy="0">$3</tspan></text>
+<path d="M440 180h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="432" y="184" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="432" dy="0">$4</tspan></text>
+<path d="M440 147.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="432" y="151.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="432" dy="0">$5</tspan></text>
+<path d="M440 115h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="432" y="119" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="432" dy="0">$6</tspan></text>
+<path d="M440 82.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="432" y="86.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="432" dy="0">$7</tspan></text>
+<path d="M468 82.5L636 277.5" fill="none" stroke="#5B6664" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text x="641" y="281.5" font-size="13" text-anchor="start" fill="#5B6664" font-weight="bold"><tspan x="641" dy="0">D1</tspan></text>
+<path d="M524 82.5L692 277.5" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="697" y="281.5" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="697" dy="0">D2</tspan></text>
+<path d="M440 180H608" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M552 180V310" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M608 180V310" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<circle cx="552" cy="180" r="4.5" fill="#1F2A28"/>
+<text x="544" y="173" font-size="12" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="544" dy="0">40</tspan></text>
+<circle cx="608" cy="180" r="4.5" fill="#1F2A28"/>
+<text x="616" y="173" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="616" dy="0">60</tspan></text>
+<path d="M560.4 160.5L599.6 160.5" stroke="#D55E00" stroke-width="2.2" fill="none" marker-end="url(#demand-movement-shift-v)"/>
+<text x="380" y="390" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="380" dy="0">Invented data for practice.</tspan></text>
+</svg>

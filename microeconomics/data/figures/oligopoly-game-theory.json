@@ -1,0 +1,12 @@
+{
+ "oligopoly-game-theory-matrix": {
+  "file": "figures/oligopoly-game-theory-matrix.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A payoff matrix for two firms choosing Advertise or Do not, with Firm A's payoff first in each cell; best responses are underlined and the cell where both advertise is marked as the Nash equilibrium."
+ }
+}

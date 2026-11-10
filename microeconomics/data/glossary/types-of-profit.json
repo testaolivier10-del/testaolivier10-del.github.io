@@ -1,0 +1,11 @@
+{
+ "accounting-profit": {
+  "def": "Total revenue minus explicit costs, the money actually paid out to run the business."
+ },
+ "economic-profit": {
+  "def": "Total revenue minus explicit and implicit costs (accounting profit minus implicit costs). A negative economic profit is an economic loss."
+ },
+ "normal-profit": {
+  "def": "Zero economic profit: revenue just covers every cost, explicit and implicit, so the owner earns exactly what her resources would earn in their next-best use."
+ }
+}

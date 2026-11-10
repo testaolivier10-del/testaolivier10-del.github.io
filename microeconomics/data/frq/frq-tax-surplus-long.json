@@ -1,0 +1,214 @@
+{
+ "id": "frq-tax-surplus-long",
+ "type": "long",
+ "points": 10,
+ "title": "A per-unit tax on ferry rides: prices, revenue, incidence and deadweight loss, then a subsidy and its cost",
+ "units": [
+  "unit-1",
+  "unit-2"
+ ],
+ "topics": [
+  "marginal-analysis",
+  "government-intervention"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "4.C",
+  "3.A",
+  "3.C",
+  "2.A"
+ ],
+ "scenario": "The market for ferry rides to Kesh, an invented island, is competitive: many ferry companies and many riders, each too small to set the price. Demand and supply are straight lines, and the market is in equilibrium at a price of \\$5 a ride with 50 rides a day. The government places a per-unit tax of \\$2 on each ride, collected from the ferry companies.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 3,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the market for ferry rides and <b>show</b> the effect of the tax on the market price paid by riders and the quantity of rides.",
+   "graph": {
+    "kind": "sd-micro",
+    "do": [
+     "label",
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left",
+       "steps": 2
+      }
+     ],
+     "because": "a per-unit tax collected from sellers",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "The tax is collected from the ferry companies, so it shifts supply up by the tax; demand does not move."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: price on the vertical axis, quantity of rides on the horizontal axis, a downward-sloping demand curve and an upward-sloping supply curve",
+     "accept": [
+      "P and Q axes with D and S labeled"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "Supply shifted up (to the left) by the tax, with the new curve labeled S2 or S + tax",
+     "accept": [
+      "S1 to S2, shifted left",
+      "supply shifted up by \\$2"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "The new equilibrium shows a higher price paid by riders and a smaller quantity, marked on the axes (PB above P1, Q2 below Q1)",
+     "accept": [
+      "price rises from P1 to PB and quantity falls from Q1 to Q2"
+     ],
+     "auto": "equilibrium"
+    }
+   ],
+   "sample": "Vertical axis: Price; horizontal axis: Quantity of rides. Demand D slopes down and supply S1 slopes up; they cross at \\$5 and 50 rides. The \\$2 tax shifts supply up by \\$2 to S2 (S + tax). S2 crosses D at a higher price paid by riders, PB, and a smaller quantity, Q2, both marked with dashed lines to the axes."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the area that represents the government's tax revenue.",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tax",
+     "amount": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "tax-revenue"
+    },
+    "slips": {
+     "dwl": "That triangle is the deadweight loss. Tax revenue is the rectangle between the two prices out to the new quantity."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades the full rectangle between the price riders pay and the price companies keep, from zero to the quantity after the tax",
+     "accept": [
+      "the rectangle between PB and PS out to Q2"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "The tax revenue is the rectangle whose top edge is the price riders pay, whose bottom edge is the price the companies keep, and which runs from zero out to the quantity traded after the tax."
+  },
+  {
+   "label": "C",
+   "points": 2,
+   "prompt": "After the tax, riders pay \\$6 a ride, ferry companies keep \\$4 a ride, and 40 rides a day are taken. <b>Calculate</b> each of the following. Show your work. (i) The government's daily tax revenue. (ii) The deadweight loss of the tax.",
+   "rubric": [
+    {
+     "point": "Tax revenue of \\$80, with work: \\$2 times 40 rides",
+     "accept": [
+      "$2 \\times 40 = 80$",
+      "(\\$6 − \\$4) × 40 = \\$80"
+     ]
+    },
+    {
+     "point": "Deadweight loss of \\$10, with work: one half times (50 − 40) times \\$2",
+     "accept": [
+      "$\\tfrac{1}{2} \\times 10 \\times 2 = 10$"
+     ]
+    }
+   ],
+   "sample": "(i) Tax revenue = tax per ride × rides after the tax = $\\$2 \\times 40 = \\$80$ a day. (ii) Deadweight loss = $\\tfrac{1}{2} \\times (50 - 40) \\times \\$2 = \\$10$ a day."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "Suppose instead that riders' demand for ferry rides is more inelastic than the supply of rides. <b>Identify</b> whether riders or ferry companies would bear the larger share of the tax, and <b>explain</b>.",
+   "rubric": [
+    {
+     "point": "Riders bear more, because the less elastic side of the market cannot easily change the quantity and so absorbs more of the tax",
+     "accept": [
+      "buyers bear more because demand is less elastic",
+      "riders, since they respond less to the price"
+     ]
+    }
+   ],
+   "sample": "Riders would bear the larger share. With inelastic demand, riders keep riding even as the price rises, so the price they pay rises by most of the tax, while companies, whose supply is more elastic, would cut output rather than accept a much lower price."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "Mira splits her weekly travel budget between ferry rides and bus rides and was maximizing her utility before the tax, when a ferry ride cost \\$5. <b>Explain</b>, using marginal utility per dollar, why she takes fewer ferry rides once the price rises to \\$6.",
+   "rubric": [
+    {
+     "point": "States that the higher price lowers the marginal utility per dollar of ferry rides below that of bus rides, so she shifts spending toward bus rides (and fewer ferry rides) until MU/P is equal again",
+     "accept": [
+      "MU/P of ferry rides falls below MU/P of bus rides",
+      "the last dollar on the ferry now gives less utility than on the bus"
+     ]
+    }
+   ],
+   "sample": "Before the tax, MU/P was equal for the two kinds of rides. When the ferry price rises to \\$6, the marginal utility per dollar of a ferry ride falls below that of a bus ride, so Mira gets more utility from her last dollar on the bus. She moves spending from ferry rides to bus rides, taking fewer ferry rides, until the MU per dollar is equal again."
+  },
+  {
+   "label": "F(i)",
+   "points": 1,
+   "prompt": "Now suppose the government removes the tax and instead pays ferry companies a subsidy of \\$2 for each ride. Riders then pay \\$4, companies receive \\$6, and 60 rides a day are taken. <b>Calculate</b> the cost of the subsidy to the government. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$120, with work: \\$2 times 60 rides (the quantity after the subsidy)",
+     "accept": [
+      "$2 \\times 60 = 120$"
+     ]
+    }
+   ],
+   "sample": "Cost = subsidy per ride × rides after the subsidy = $\\$2 \\times 60 = \\$120$ a day. The 60 rides, not the original 50, are each paid \\$2."
+  },
+  {
+   "label": "F(ii)",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the area that represents the cost of the subsidy to the government.",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "subsidy",
+     "amount": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "subsidy-cost"
+    },
+    "slips": {
+     "dwl": "That triangle is only the deadweight loss. The cost is the whole rectangle between the two prices out to the new quantity."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades the whole rectangle between the price companies receive and the price riders pay, from zero out to the new, larger quantity",
+     "accept": [
+      "the rectangle between PS and PB out to Q2, including the part beyond Q1"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "The cost is the full rectangle with the price the companies receive as its top edge, the price riders pay as its bottom edge, running from zero out to the 60 rides traded with the subsidy, including the slice between 50 and 60 rides."
+  }
+ ]
+}

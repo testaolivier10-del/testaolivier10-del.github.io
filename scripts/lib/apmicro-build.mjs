@@ -183,6 +183,12 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
     if (existsSync(qp)) questions[t.id] = readJson(qp);
   }
   const glossary = mergeDir(join(data, 'glossary'));
+  // A concept's definition comes from the glossary file of the topic that teaches it, when that file has one
+  // (a term taught early and in full later is defined at the early level; integration 4).
+  for (const c of map.concepts) {
+    const own = join(data, 'glossary', `${c.taughtIn}.json`);
+    if (existsSync(own)) { const g = readJson(own)[c.id]; if (g) glossary[c.id] = { ...g, _file: `${c.taughtIn}.json` }; }
+  }
   const figures = mergeDir(join(data, 'figures'));
   const labelDir = join(data, 'labels');
   if (existsSync(labelDir)) for (const f of readdirSync(labelDir).filter(f => f.endsWith('.json'))) {
@@ -664,7 +670,10 @@ export function questionHtml(q, n) {
     // The starting graph, readable without JavaScript; mic-questions.js swaps in the live one.
     opts = `<div class="mic-plot-wrap">${Graph.svg(q.graph, {})}</div><p class="mic-small">Work on the graph (it needs JavaScript), then check.</p>`;
     const gk = q.graph.key || {};
-    key = `<li>Key: ${esc([...(gk.shifts || []).map(x => `${Graph.curveName(x.curve, q.graph)} shifts ${x.dir}`), ...[].concat(gk.shade || []).map(r => `shade ${Graph.REGION[r] || r}`)].join('; ') || 'see the explanation')}</li>`;
+    // The region names are the engine's words, not the topic's: mic-noscan keeps them out of the ordering scan
+    // (the item's stem carries its own preview where a region is named early).
+    const kparts = [...(gk.shifts || []).map(x => esc(`${Graph.curveName(x.curve, q.graph)} shifts ${x.dir}`)), ...[].concat(gk.shade || []).map(r => `<span class="mic-noscan">${esc(`shade ${Graph.REGION[r] || r}`)}</span>`)];
+    key = `<li>Key: ${kparts.join('; ') || 'see the explanation'}</li>`;
   } else if (q.type === 'matrix') {
     // The matrix, readable without JavaScript; mic-questions.js swaps in the live one.
     const k = Matrix.keyResponse(q.matrix), P = q.matrix.players;

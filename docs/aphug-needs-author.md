@@ -59,7 +59,7 @@ figures (map-reader draws its own Country A cartogram). Decide whether a cartogr
 The AI FRQ grader (`docs/frq-grader.md`) is calibrated on other courses' rubrics. HUG's three 7-point FRQs need
 their own eval set before the course joins `FRQ_COURSES`.
 - **Launch, 2026-11-10**: `aphug` joined `FRQ_COURSES` with its conventions (the task verb sets what earns each
-  part), a calibration example (`frq-population-policy-none` C and G) and four eval cases (41-44). Still open: rerun
+  part), a calibration example (`frq-population-policy-none` C and G) and four eval cases (45-48; Micro took 41-44 at the merge). Still open: rerun
   the eval with them before the grader is switched on for this course; a teacher may check the four cases' marks.
 
 ## identity: provisional accent, cover and ranks (open, 2026-11-09; final proposal at launch)

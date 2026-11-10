@@ -109,9 +109,15 @@ weak, injection; 20 rubric points) on its text-only FRQs. Graph parts are graded
 (instruction 9). The eval has not been rerun with these cases; the grader stays off. AP® Psychology, Precalculus
 and Calculus BC are not in `FRQ_COURSES`.
 
+AP® Microeconomics joined at its launch (2026-11-10, `docs/apmicro-spec.md` decision 12) the same way: `apmicro` in
+`FRQ_COURSES`, its conventions (marginal values from changes, the comparison an explain point names), a calibration
+example (`frq-cost-table-short`, parts A and B), and four eval cases (41-44: strong, partial, weak, injection; 11
+rubric points) on `frq-elasticity-short` and `frq-hiring-table-short`. Graph and payoff matrix parts are graded only on
+the words typed for them. The eval has not been rerun; the grader stays off.
+
 AP® Human Geography joined at its launch (2026-11-10, `docs/aphug-spec.md` decision 11): `aphug` in `FRQ_COURSES`,
 its conventions (the task verb sets what earns each one-point part, named places, scale words, the course's usual
-confusions), a calibration example (`frq-population-policy-none` C and G) and four eval cases (41-44: strong,
+confusions), a calibration example (`frq-population-policy-none` C and G) and four eval cases (45-48: strong,
 partial, weak, injection; 28 rubric points) on two no-stimulus FRQs. Its seven one-point parts per question are a
 new shape for the grader (needs-author `frq-grader`): the eval must be rerun with these cases before the grader is
 switched on for it. The grader stays off.

@@ -1,0 +1,577 @@
+{
+ "stimuli": {
+  "imperfect-competition-s1": {
+   "kind": "data",
+   "title": "Brisa Water Taxi: price and rides per hour",
+   "invented": true,
+   "table": {
+    "caption": "Brisa Water Taxi, the only water taxi on a small lake: the most rides it can sell per hour at each price (invented data for practice)",
+    "cols": [
+     "Price per ride (dollars)",
+     "Rides per hour",
+     "Total revenue (dollars)"
+    ],
+    "rows": [
+     [
+      "10",
+      "1",
+      "10"
+     ],
+     [
+      "9",
+      "2",
+      "18"
+     ],
+     [
+      "8",
+      "3",
+      "24"
+     ],
+     [
+      "7",
+      "4",
+      "28"
+     ],
+     [
+      "6",
+      "5",
+      "30"
+     ]
+    ]
+   }
+  },
+  "imperfect-competition-s2": {
+   "kind": "text",
+   "title": "Four markets in one county",
+   "text": "<p>Read the descriptions of four invented markets.</p><ul><li><b>Market W:</b> thousands of farms grow the same variety of wheat, and any farm can sell all it wants at the market price.</li><li><b>Market X:</b> one company holds the only license to pipe water to homes in the county, and no other firm may lay pipes.</li><li><b>Market Y:</b> three bus lines carry nearly all riders between two cities; each watches the others before it sets its fares.</li><li><b>Market Z:</b> forty hair salons compete, each with its own style, location and loyal customers, and a new salon can open in a few weeks.</li></ul>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-imperfect-competition-1",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "imperfect-competition-s1",
+   "q": "Use the table. What is the marginal revenue of the third ride, in dollars?",
+   "why": {
+    "correct": "Marginal revenue is the change in total revenue divided by the change in quantity: $\\text{MR} = \\frac{24 - 18}{3 - 2} = 6$ dollars, which is less than the \\$8 price of the third ride."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalRevenue",
+     "args": [
+      18,
+      24,
+      2,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "\\$8 is the price of the third ride. To sell it, Brisa also cuts the price of the first two rides by \\$1 each, so the third ride adds only \\$6 to revenue."
+     },
+     {
+      "value": 24,
+      "why": "\\$24 is the total revenue from three rides. Marginal revenue is the change in total revenue from the second to the third ride."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-2",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "imperfect-competition-s1",
+   "q": "Use the table. Why is the marginal revenue of the third ride less than its \\$8 price?",
+   "options": [
+    "To sell it, Brisa must charge all riders \\$8, giving up \\$1 on each of the first two",
+    "The cost of the third ride is higher than the cost of the second ride",
+    "The demand for water taxi rides has decreased as the price fell",
+    "Each extra rider pays less than the rider before, but the earlier riders still pay the old \\$9 price"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "To sell a third ride Brisa lowers the price from \\$9 to \\$8 for every rider, so it gains \\$8 from the new rider but loses \\$1 on each of the two rides it could have sold at \\$9: \\$8 minus \\$2 is \\$6.",
+    "options": [
+     "Right: the gain from the new ride is reduced by the price cut on the rides it already sold.",
+     "Cost does not enter marginal revenue; the table holds only revenue.",
+     "A lower price moves Brisa along its demand curve; demand itself has not changed.",
+     "With one price for everyone, the earlier riders also pay the new, lower price."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-3",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "imperfect-competition-s1",
+   "q": "Use the table. What is the marginal revenue of the fifth ride, in dollars?",
+   "why": {
+    "correct": "$\\text{MR} = \\frac{30 - 28}{5 - 4} = 2$ dollars. Marginal revenue keeps falling, and it falls faster than the price."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalRevenue",
+     "args": [
+      28,
+      30,
+      4,
+      5
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "\\$6 is the price of the fifth ride, not the revenue it adds. Subtract total revenue at four rides from total revenue at five."
+     },
+     {
+      "value": 30,
+      "why": "\\$30 is total revenue. Marginal revenue is the change in total revenue when one more ride is sold."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-4",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.C",
+   "stimulus": "imperfect-competition-s1",
+   "q": "Use the table. Which statements are supported by the data? Select all that apply.",
+   "options": [
+    "Brisa must lower its price to sell more rides, so it faces a downward-sloping demand curve.",
+    "After the first ride, marginal revenue is less than the price.",
+    "Marginal revenue equals the price for each ride, as for a price taker.",
+    "Total revenue falls each time Brisa lowers its price."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Brisa faces a downward-sloping demand curve, so it is a price maker: marginal revenue (10, 8, 6, 4, 2) falls as rides rise and is below the price after the first ride.",
+    "options": [
+     "Right: the price falls from \\$10 to \\$6 as rides rise from 1 to 5.",
+     "Right: for example, the second ride sells for \\$9 but adds only \\$8.",
+     "That holds only for a firm with a horizontal demand curve; Brisa's price falls as it sells more.",
+     "Total revenue rises from \\$10 to \\$30 in the table; marginal revenue is positive throughout."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-5",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "imperfect-competition-s2",
+   "q": "Which market is an oligopoly?",
+   "options": [
+    "Market W",
+    "Market Y",
+    "Market X",
+    "Market Z"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An oligopoly has a few large firms whose choices depend on one another: three bus lines that watch each other's fares.",
+    "options": [
+     "Thousands of farms selling an identical product is perfect competition.",
+     "Right: a few firms, each watching the others before setting its fares.",
+     "A single seller with a legal barrier is a monopoly.",
+     "Many firms with differentiated products and easy entry is monopolistic competition."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-6",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "imperfect-competition-s2",
+   "q": "In which market does a single firm have the most market power, and why?",
+   "options": [
+    "Market Y, because its fares are higher than the other markets' prices",
+    "Market Z, because each salon has loyal customers",
+    "Market X, because it is the only seller and the license keeps rivals out",
+    "Market W, because the farms together sell far more output than any other market"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Market X has one seller and a legal barrier to entry, so buyers have no close substitute and no rival can enter: the firm can raise its price without losing every customer.",
+    "options": [
+     "The size of a price says nothing about market power; three rivals limit each bus line.",
+     "Loyalty gives a salon a little market power, but forty rivals and easy entry limit it.",
+     "Right: one seller plus a barrier to entry gives the most market power.",
+     "Each farm is a price taker with no market power at all."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-7",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "imperfect-competition-s2",
+   "q": "In which market does each firm face a horizontal demand curve?",
+   "options": [
+    "Market X",
+    "Market Y",
+    "Market Z",
+    "Market W"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A wheat farm is a price taker: it sells all it wants at the market price, so its demand curve is horizontal at that price (d = MR = AR = P). The firms in the other three markets are price makers.",
+    "options": [
+     "The only seller faces the whole downward-sloping market demand curve.",
+     "Each bus line can raise its fare and keep some riders, so its demand slopes down.",
+     "A salon with its own style can raise its price and keep some customers, so its demand slopes down.",
+     "Right: a price taker's demand is horizontal at the market price."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-8",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "imperfect-competition-s2",
+   "q": "What gives each salon in Market Z some market power?",
+   "options": [
+    "Product differentiation: no rival offers quite the same style and location",
+    "A high barrier to entry that keeps new salons from opening nearby",
+    "A county license that lets it, and no other salon, cut hair",
+    "Agreement with the other salons on what each one will charge for a cut"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Product differentiation: each salon's style and location make it a little different, so some customers stay when it raises its price. That is why its demand curve slopes down even with forty rivals.",
+    "options": [
+     "Right: differentiation lets a salon raise its price without losing every customer.",
+     "The description says a new salon can open in a few weeks, so entry is easy.",
+     "That describes Market X, not the salons.",
+     "Nothing in the description says the salons coordinate their prices."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-9",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A firm has market power when it",
+   "options": [
+    "sells more output than any other firm in the market",
+    "can raise its price without losing all of its customers",
+    "earns positive accounting profit",
+    "can sell as much as it likes at the market price set by others"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Market power is the ability to raise the price above marginal cost without losing all of its customers; such a firm is a price maker and faces a downward-sloping demand curve.",
+    "options": [
+     "A large firm can still be a price taker if its product is identical to many rivals'.",
+     "Right: that is what makes it a price maker.",
+     "Accounting profit says nothing about whether the firm can set its own price.",
+     "That describes a price taker, which has no market power."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-10",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which of the following is a barrier to entry?",
+   "options": [
+    "Many buyers who are willing to pay a high price for the product",
+    "Low start-up costs, so a new firm needs little money to begin",
+    "A patent that makes one drug maker the sole seller of a medicine",
+    "A product that many firms can make with the same simple equipment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A patent gives one firm the legal right to be the only seller of an invention for a period of years, so rivals cannot enter by copying it.",
+    "options": [
+     "The number of buyers does not stop new sellers from entering.",
+     "Low start-up costs make entry easier, not harder.",
+     "Right: the law keeps other sellers out.",
+     "An identical product that anyone can make invites entry."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-11",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Keeling Glassworks is the only maker of a special glass for telescopes. If it wants to sell more glass each month, it must",
+   "options": [
+    "raise the price it charges",
+    "keep its price where it is, since demand does not depend on price",
+    "match the price of rivals in its market",
+    "lower the price it charges"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A price maker faces a downward-sloping demand curve, so it sells more only by lowering its price: it chooses a price and quantity pair on its demand curve, not both freely.",
+    "options": [
+     "A higher price moves it up its demand curve to a smaller quantity.",
+     "Buyers of the glass still buy less at a higher price.",
+     "It is the only maker; it has no rivals to match.",
+     "Right: on a downward-sloping demand curve, more is bought only at a lower price."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-12",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How does the marginal revenue curve of a firm with market power compare with that of a perfectly competitive firm?",
+   "options": [
+    "It lies below demand, while a competitive firm's MR equals its price",
+    "It lies on the demand curve, as it does for a competitive firm",
+    "It lies above the demand curve, while a competitive firm's MR is below it",
+    "It is horizontal, while a competitive firm's MR slopes down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a price taker, d = MR = AR = P: every unit adds its price to revenue. A price maker must cut the price on all units to sell one more, so its marginal revenue curve lies below its downward-sloping demand curve.",
+    "options": [
+     "Right: the price cut on earlier units pulls MR below the price.",
+     "That holds only for a price taker, whose price does not fall as it sells more.",
+     "MR can never exceed the price for a firm that must cut its price to sell more.",
+     "That has the two firms the wrong way round."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-13",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and every curve on this graph of a firm with market power.",
+   "why": {
+    "correct": "Price and cost go on the vertical axis and quantity on the horizontal axis. The downward-sloping demand curve is D; the steeper line below it is MR; the U-shaped curves are MC and ATC, with MC crossing ATC at its minimum."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-14",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A firm with market power maximizes profit. Mark the point that shows the price it charges and the quantity it sells.",
+   "why": {
+    "correct": "Find the quantity where MR = MC, then go straight up to the demand curve: the price is read from demand, which lies above MR at that quantity."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "M",
+    "key": {
+     "point": {
+      "at": "profit-max"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-15",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Two new firms could make high-speed rail cars, but to reach a low average total cost a maker needs to produce for the whole national market. Why does this keep new firms out?",
+   "options": [
+    "Diminishing marginal returns: each new firm adds less output",
+    "Economies of scale: a small entrant's ATC would be higher",
+    "The demand for rail cars is perfectly elastic",
+    "The firms already in the market earn zero economic profit"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Economies of scale: average total cost keeps falling as output grows, so one large firm can produce at a lower cost than a small entrant could. A newcomer would start with a higher ATC and could not match the price.",
+    "options": [
+     "Diminishing returns describe one firm adding workers in the short run, not entry.",
+     "Right: falling long-run average total cost is a barrier to entry.",
+     "Perfectly elastic demand describes a price taker, not a market with one large producer.",
+     "Zero economic profit gives no reason to enter, but it is not a barrier that blocks entry."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-16",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A firm with market power earns positive economic profit year after year, while a perfectly competitive firm's economic profit returns to zero. What explains the difference?",
+   "options": [
+    "The firm with market power has a lower marginal cost than rivals",
+    "Demand for its product keeps rising faster than costs over time",
+    "Barriers to entry keep rivals from competing the profit away",
+    "It produces where price equals marginal cost"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In perfect competition, profit draws in new firms until it is gone. Barriers to entry stop new firms from entering, so a firm with market power can keep its economic profit in the long run.",
+    "options": [
+     "Lower costs could raise profit for a while, but without barriers, entry would still compete it away.",
+     "Rising demand is not a reason profit lasts; entry would follow it.",
+     "Right: entry is what drives a competitive firm's profit to zero.",
+     "A firm with market power produces where MR = MC, and its price is above MC."
+    ]
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-17",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "recall",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the market structures in order from the most sellers to the fewest.",
+   "options": [
+    "Perfect competition",
+    "Monopolistic competition",
+    "Oligopoly",
+    "Monopoly"
+   ],
+   "why": {
+    "correct": "Perfect competition has very many sellers of an identical product; monopolistic competition many sellers of differentiated products; oligopoly a few large sellers; monopoly a single seller."
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-18",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the answer: why does a firm with market power earn less from one more unit than the price of that unit?",
+   "why": {
+    "correct": "Because it faces a downward-sloping demand curve, it must cut its price on every unit to sell one more, so marginal revenue is less than the price."
+   },
+   "specific": {
+    "frame": "It faces a ___ demand curve, so to sell one more unit it must lower the price on ___ units.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Because the firm faces a downward-sloping demand curve, it must lower the price on all of its units to sell one more, so the extra unit adds less to total revenue than its price: marginal revenue is lower than price.",
+    "slots": {
+     "curve": {
+      "label": "Its demand curve",
+      "options": [
+       "downward-sloping",
+       "horizontal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A horizontal demand curve belongs to a price taker, whose MR equals the price."
+      }
+     },
+     "units": {
+      "label": "Which units",
+      "options": [
+       "all of its",
+       "only the extra"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With one price for every buyer, the earlier units are sold at the lower price too."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-imperfect-competition-19",
+   "unit": "unit-4",
+   "topic": "imperfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A mining company owns every known deposit of a rare mineral used in batteries. What is the source of its market power?",
+   "options": [
+    "Product differentiation from heavy advertising of its brand",
+    "A large number of small rivals",
+    "A horizontal demand curve for its product",
+    "Control of a key resource that rivals cannot get"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Control of a key resource: no rival can produce the mineral without access to a deposit, so entry is blocked.",
+    "options": [
+     "The mineral is the same whoever mines it; advertising is not what keeps rivals out.",
+     "Many rivals would reduce its market power.",
+     "A horizontal demand curve would mean no market power at all.",
+     "Right: owning every deposit keeps rivals out."
+    ]
+   }
+  }
+ ]
+}

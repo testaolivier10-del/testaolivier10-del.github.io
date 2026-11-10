@@ -14,10 +14,14 @@
      checkJustify(prompts, ctx)    problems with the trainer's prompts
      checkNumbers(items, prompts)  every number in an exam-only item or a
                                    prompt, recomputed here with ApMicroCalc
-                                   (EXAM_NUMBERS and JUSTIFY_NUMBERS) */
+                                   (EXAM_NUMBERS and JUSTIFY_NUMBERS)
+     checkGraphs(items, stimuli)   every graph an exam-only key reads, drawn
+                                   by ApMicroGraph (EXAM_GRAPHS)
+     checkMatrices(items, stimuli) every payoff matrix an exam-only key reads,
+                                   solved by ApMicroMatrix (EXAM_MATRICES) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { Stats, Graph } from './apmicro-mathlib.mjs';
+import { Stats, Graph, Matrix } from './apmicro-mathlib.mjs';
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const strip = s => String(s ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -321,13 +325,92 @@ const C = (fn, ...args) => Stats.evaluate({ fn, args });
 const fmt = (v, d = 0) => Number(v.toFixed(d)).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
 const pc = (v, d = 0) => `${fmt(v, d)}%`;
 const usd = (v, d = 0) => `\\$${fmt(v, d)}`;
-// Phase 0: no exam-only items or prompts yet. Phase 3 lists every recomputed
-// number here, as AP® Macroeconomics does (scripts/lib/apmacro-exams.mjs).
-export const EXAM_NUMBERS = [];
+// Kestrel Water Park (exam-1-s6): price by thousands of visits, MC a constant 4.
+const KQ = [1, 2, 3, 4, 5], KP = [10, 9, 8, 7, 6], KTR = KQ.map((q, i) => C('totalRevenue', KP[i], q));
+const KMR = KTR.map((r, i) => C('marginalRevenue', i ? KTR[i - 1] : 0, r, i, i + 1));
+const KQS = C('profitMaxQ', KQ, KMR, KQ.map(() => 4));
+// Brindle Bakery (exam-1-s9): loaves by bakers, bread at 5, wage 30.
+const BTP = [0, 10, 18, 24, 28, 30], BMRP = BTP.slice(1).map((t, i) => C('mrp', C('marginalProduct', BTP[i], t, i, i + 1), 5));
+// Rook Valley Hospital (exam-2-s9): the wage labor supply needs, and the MRP of the last technician.
+const RW = [8, 10, 12, 14], RMRP = [26, 22, 18, 14], RTLC = RW.map((w, i) => C('wageBill', w, i + 1));
+const RMFC = RTLC.map((t, i) => C('mrc', i ? RTLC[i - 1] : 0, t, i, i + 1)), RN = C('hireCount', RMRP, RMFC), RNC = C('hireCount', RMRP, RW);
+export const EXAM_NUMBERS = [
+  // Pellwick's planner (exam-1-s1): 10 to 11 dollars, 100 to 80 a week; quantity over price, absolute value.
+  { id: 'mic-exam-1-01', key: `${fmt(C('priceElasticity', 100, 80, 10, 11))}; demand is elastic, so total revenue falls`,
+    also: [`${fmt(C('div', C('pctChange', 10, 11), C('abs', C('pctChange', 100, 80))), 1)}; demand is inelastic, so total revenue rises`, `${fmt(C('priceElasticity', 100, 80, 10, 11))}; demand is elastic, so total revenue rises`, `${fmt(C('abs', C('div', C('sub', 80, 100), C('sub', 11, 10))))}; demand is elastic, so total revenue falls`],
+    check: () => C('priceElasticity', 100, 80, 10, 11) > 1 && C('totalRevenue', 11, 80) < C('totalRevenue', 10, 100) },
+  // Tellbrook (exam-1-s3): TC 240 at 20 chairs, 300 at 30, fixed cost 100.
+  { id: 'mic-exam-1-03', key: usd(C('marginalCost', 240, 300, 20, 30)),
+    also: [usd(C('sub', 300, 240)), usd(C('atc', 300, 30)), usd(C('atc', 240, 20)), usd(C('avc', C('variableCost', 300, 100), 30), 2)] },
+  // Wexford Laundry (exam-1-s4): P 8, Q 50, ATC 9, AVC 7.
+  { id: 'mic-exam-1-04', key: `Produce; it loses ${usd(C('abs', C('unitProfit', 8, 9, 50)))} instead of its ${usd(C('mul', C('sub', 9, 7), 50))} fixed cost`,
+    also: [`Shut down; it loses ${usd(C('mul', C('sub', 9, 7), 50))} if it produces`, `Produce; it earns an economic profit of ${usd(C('abs', C('unitProfit', 8, 9, 50)))}`],
+    check: () => C('unitProfit', 8, 9, 50) < 0 && 8 > 7 && C('abs', C('unitProfit', 8, 9, 50)) < C('mul', C('sub', 9, 7), 50) },
+  // Kestrel: MR = MC at 4 thousand visits, price from demand there.
+  { id: 'mic-exam-1-06', key: `${fmt(KQS)} thousand visits at ${usd(KP[KQ.indexOf(KQS)])}`,
+    also: [`${fmt(KQS)} thousand visits at ${usd(4)}`, `${fmt(KQ[KTR.indexOf(Math.max(...KTR))])} thousand visits at ${usd(KP[KTR.indexOf(Math.max(...KTR))])}`],
+    check: () => JSON.stringify(KMR) === JSON.stringify([10, 8, 6, 4, 2]) },
+  // Brindle: hire while MRP >= the wage.
+  { id: 'mic-exam-1-09', key: `${fmt(C('hireCount', BMRP, 30))} bakers`, also: [`${fmt(BTP.length - 1)} bakers`],
+    check: () => JSON.stringify(BMRP) === JSON.stringify([50, 40, 30, 20, 10]) },
+  // Corran (exam-2-s1): income 1,000 to 1,100, rides 50 to 45; the sign is the answer.
+  { id: 'mic-exam-2-01', key: `${fmt(C('incomeElasticity', 50, 45, 1000, 1100))}; bus rides are an inferior good`,
+    also: [`${fmt(C('abs', C('incomeElasticity', 50, 45, 1000, 1100)))}; bus rides are a normal good`, `${fmt(C('pctChange', 50, 45))}; bus rides are an inferior good`, `${fmt(C('sub', 45, 50))}; bus rides are an inferior good`],
+    check: () => C('incomeElasticity', 50, 45, 1000, 1100) < 0 },
+  // Alder Pottery (exam-2-s3): 8, 18, 26 bowls with 1, 2, 3 workers.
+  { id: 'mic-exam-2-03', key: `${fmt(C('marginalProduct', 18, 26, 2, 3))} bowls; diminishing marginal returns have begun`,
+    also: [`${fmt(C('averageProduct', 26, 3), 1)} bowls; diminishing marginal returns have begun`, `${fmt(C('marginalProduct', 8, 18, 1, 2))} bowls; marginal returns are still increasing`, `${fmt(26)} bowls; diminishing marginal returns have begun`],
+    check: () => C('marginalProduct', 18, 26, 2, 3) < C('marginalProduct', 8, 18, 1, 2) },
+  // Juniper Bike Repair (exam-2-s4): revenue 90,000, explicit 60,000, implicit 40,000.
+  { id: 'mic-exam-2-04', key: `Accounting profit ${usd(C('accountingProfit', 90000, 60000))}; economic loss ${usd(C('abs', C('economicProfit', 90000, 60000, 40000)))}`,
+    also: [`Accounting profit ${usd(C('sub', 90000, 40000))}; economic loss ${usd(C('abs', C('economicProfit', 90000, 60000, 40000)))}`, `Accounting profit ${usd(C('accountingProfit', 90000, 60000))}; economic profit ${usd(C('add', C('accountingProfit', 90000, 60000), 40000))}`],
+    check: () => C('economicProfit', 90000, 60000, 40000) < 0 },
+  // Fallow Rail (exam-2-s6): P 5 from demand, MR = MC 4.50, ATC 3.50, 200 thousand rides.
+  { id: 'mic-exam-2-06', key: `${usd(C('unitProfit', 5, 3.5, 200))} thousand`,
+    also: [`${usd(C('unitProfit', 4.5, 3.5, 200))} thousand`, `${usd(C('totalRevenue', 5, 200))} thousand`, `${usd(C('mul', 3.5, 200))} thousand`, `${usd(C('unitProfit', 5, 4.5, 200))} thousand`] },
+  // Rook Valley: hire while MRP >= MFC, wage from labor supply; the competitive slip hires to MRP = wage.
+  { id: 'mic-exam-2-09', key: `${fmt(RN)} technicians at ${usd(RW[RN - 1])} an hour`,
+    also: [`${fmt(RN)} technicians at ${usd(RMRP[RN - 1])} an hour`, `${fmt(RN)} technicians at ${usd(RMFC[RN - 1])} an hour`, `${fmt(RNC)} technicians at ${usd(RW[RNC - 1])} an hour`],
+    check: () => JSON.stringify(RMFC) === JSON.stringify([8, 12, 16, 20]) && RN < RNC },
+  // Talmora (exam-2-s10): the lowest two fifths, cumulative.
+  { id: 'mic-exam-2-10', key: pc(C('add', 4, 9)), also: [pc(C('add', 4, 9, 15)), pc(9), pc(50)], check: () => C('add', 4, 9, 15, 22, 50) === 100 },
+];
 /* Every exam-only question that reads a graph: the stimulus as drawn
    (ApMicroGraph, the student's own renderer) must show what the key says:
-   the curves that moved and which way, and the outcome on each axis. */
-export const EXAM_GRAPHS = [];
+   the curves that moved and which way, the outcome on each axis, and the
+   lettered cells of each region the options name (regions: { name: cells }). */
+export const EXAM_GRAPHS = [
+  { id: 'mic-exam-1-02', regions: { dwl: ['c', 'e'], transfer: ['d'], cs: ['a', 'b', 'd'], ps: ['f'] } },
+  { id: 'mic-exam-1-05', regions: { profit: ['a'], tr: ['a', 'b'], tc: ['b'] } },
+  // The natural monopoly: more output at the fair-return price than at MR = MC, less than at P = MC, where ATC is above the price.
+  { id: 'mic-exam-1-07', points: [['profit-max', '<', 'fair-return', 'x'], ['fair-return', '<', 'allocative', 'x'], ['revenue-max', '<', 'fair-return', 'x'], ['allocative', '<', 'fair-return', 'y']] },
+  { id: 'mic-exam-1-10', regions: { dwl: ['a'], 'ext-benefit': ['a', 'b', 'c'] }, points: [['market', '<', 'efficient', 'x']] },
+  { id: 'mic-exam-2-02', regions: { ps: ['b', 'd', 'f'], 'ps-before': ['d', 'e', 'f'], dwl: ['c', 'e'], transfer: ['b'] } },
+  { id: 'mic-exam-2-05', regions: { loss: ['a'] } },
+  { id: 'mic-exam-2-07', regions: { profit: ['b'] } },
+];
+/* Every exam-only question that reads a payoff matrix: ApMicroMatrix (the
+   student's own grader) must find what the key says: each player's dominant
+   strategy (an index, or null for none), every Nash cell and the cell with
+   the largest combined payoff. */
+export const EXAM_MATRICES = [
+  { id: 'mic-exam-1-08', dominant: [0, null], nash: [[0, 0]], joint: [[1, 1]] },
+  { id: 'mic-exam-2-08', dominant: [null, null], nash: [[0, 1], [1, 0]], joint: [[1, 0]] },
+];
+export function checkMatrices(items, stimuli) {
+  const errs = [];
+  for (const g of EXAM_MATRICES) {
+    const q = items.get(g.id), st = q && stimuli[q.stimulus];
+    if (!st || !st.matrix) { errs.push(`matrices: ${g.id} has no payoff matrix stimulus`); continue; }
+    const m = { ...st.matrix, do: ['nash'] };
+    for (const e of Matrix.check(m)) errs.push(`matrices: ${g.id}: ${e}`);
+    if (g.dominant) g.dominant.forEach((d, p) => { const got = Matrix.dominant(m, p); if (got !== d) errs.push(`matrices: ${g.id}: player ${p}'s dominant strategy is ${got}, the key reads ${d}`); });
+    if (g.nash && JSON.stringify(Matrix.nash(m)) !== JSON.stringify(g.nash)) errs.push(`matrices: ${g.id}: the Nash cells are ${JSON.stringify(Matrix.nash(m))}, the key reads ${JSON.stringify(g.nash)}`);
+    if (g.joint && JSON.stringify(Matrix.joint(m)) !== JSON.stringify(g.joint)) errs.push(`matrices: ${g.id}: the joint-payoff cell is ${JSON.stringify(Matrix.joint(m))}, the key reads ${JSON.stringify(g.joint)}`);
+  }
+  for (const q of items.values()) if (q.stimulus && stimuli[q.stimulus] && stimuli[q.stimulus].matrix && !EXAM_MATRICES.some(g => g.id === q.id)) errs.push(`matrices: ${q.id} reads a payoff matrix that EXAM_MATRICES does not check`);
+  return errs;
+}
 /* stimuli: { id: stimulus }. Problems with the graphs exam-only keys read. */
 export function checkGraphs(items, stimuli) {
   const errs = [];
@@ -339,15 +422,61 @@ export function checkGraphs(items, stimuli) {
     const moved = Object.fromEntries(Object.entries(show).filter(([, v]) => v).map(([c, v]) => [c, Graph.dirWord(Graph.find(curves, c).shape, v)]));
     if (g.shifts && JSON.stringify(moved) !== JSON.stringify(g.shifts)) errs.push(`graphs: ${g.id}'s graph shows ${JSON.stringify(moved)}, the key reads ${JSON.stringify(g.shifts)}`);
     if (g.outcome) { const o = Graph.outcome(spec, show) || {}; for (const [k, v] of Object.entries(g.outcome)) if (o[k] !== v) errs.push(`graphs: ${g.id}: ${k} is ${o[k]} in the graph, the key reads ${v}`); }
-    if (g.region) { const R = Graph.areas(spec).regions; if (!R[g.region]) errs.push(`graphs: ${g.id}'s graph has no region ${g.region}`); }
+    if (g.regions) {
+      const R = (Object.keys(show).length ? Graph.areas(spec, { ...Graph.fixedOffsets(spec), ...show }) : Graph.areas(spec)).regions;
+      for (const [r, cells] of Object.entries(g.regions)) {
+        if (!R[r]) errs.push(`graphs: ${g.id}'s graph has no region ${r}`);
+        else if (JSON.stringify([...R[r]].sort()) !== JSON.stringify([...cells].sort())) errs.push(`graphs: ${g.id}: region ${r} is area ${R[r].join(', ')} in the graph, the key reads ${cells.join(', ')}`);
+      }
+    }
+    for (const [a, op, b, ax] of g.points || []) {
+      const off = { ...(Graph.fixedOffsets ? Graph.fixedOffsets(spec) : {}), ...show }, pa = Graph.named(spec, off, a), pb = Graph.named(spec, off, b), k = ax === 'y' ? 1 : 0;
+      if (!pa || !pb) errs.push(`graphs: ${g.id}'s graph has no point ${!pa ? a : b}`);
+      else if (!(op === '<' ? pa[k] < pb[k] - 1e-9 : pa[k] > pb[k] + 1e-9)) errs.push(`graphs: ${g.id}: ${a} is not ${op} ${b} on ${ax} in the graph (${pa[k]} vs ${pb[k]})`);
+    }
   }
   for (const q of items.values()) if (q.stimulus && stimuli[q.stimulus] && stimuli[q.stimulus].kind === 'graph' && !EXAM_GRAPHS.some(g => g.id === q.id)) errs.push(`graphs: ${q.id} reads a graph that EXAM_GRAPHS does not check`);
   return errs;
 }
 /* Every number a "Make it specific" prompt derives, recomputed: each `has`
    string must appear in the prompt's context, task, checklist or model
-   answer, with the number from ApMicroCalc. Phase 0: none yet. */
-export const JUSTIFY_NUMBERS = [];
+   answer, with the number from ApMicroCalc (and every game theory claim
+   with ApMicroMatrix). */
+const GYM = { players: [{ name: 'Altura', strategies: ['Advertise', 'Do not advertise'] }, { name: 'Bexley', strategies: ['Advertise', 'Do not advertise'] }], payoffs: [[[30, 25], [50, 15]], [[20, 40], [45, 45]]] };
+const CAFE = { players: [{ name: 'Marlo\'s', strategies: ['Open early', 'Open late'] }, { name: 'Nessa\'s', strategies: ['Open early', 'Open late'] }], payoffs: [[[8, 6], [12, 9]], [[10, 12], [7, 5]]] };
+export const JUSTIFY_NUMBERS = [
+  { id: 'gs-slope', has: [`(50 - 30) / (6 - 2) = ${fmt(C('div', C('sub', 50, 30), C('sub', 6, 2)))}`] },
+  { id: 'gs-shade-area', has: [`1/2 x 4 x 6 = ${fmt(C('triangle', 4, 6))} square units`] },
+  { id: 'u1-ppc-opportunity-cost', has: [`60 - 40 = ${fmt(C('sub', 60, 40))} tables`, `30 - 20 = ${fmt(C('sub', 30, 20))} chairs`, `20 / 10 = ${fmt(C('opportunityCost', C('sub', 60, 40), C('sub', 30, 20)))} tables per chair`] },
+  { id: 'u1-comparative-advantage', has: [`10 / 5 = ${fmt(C('opportunityCost', 10, 5))} chairs`, `9 / 3 = ${fmt(C('opportunityCost', 9, 3))} chairs`], check: () => C('opportunityCost', 10, 5) < C('opportunityCost', 9, 3) },
+  { id: 'u1-terms-of-trade', has: ['2.5 chairs per table'], check: () => C('opportunityCost', 10, 5) < 2.5 && 2.5 < C('opportunityCost', 9, 3) },
+  { id: 'u1-implicit-cost', has: [`7,000 - 2,500 - 3,000 = \\$${fmt(C('economicProfit', 7000, 2500, 3000))}`] },
+  { id: 'u1-mb-mc', has: ['tutor 3 hours'], check: () => 15 >= 12 && 10 < 14 },
+  { id: 'u1-mu-per-dollar', has: [`40 / 10 = ${fmt(C('muPerDollar', 40, 10))} utils per dollar`, `60 / 20 = ${fmt(C('muPerDollar', 60, 20))} utils per dollar`], check: () => C('muPerDollar', 40, 10) > C('muPerDollar', 60, 20) },
+  { id: 'u2-elasticity-calc', has: [`(140 - 200) / 200 x 100 = ${pc(C('pctChange', 200, 140))}`, `(5 - 4) / 4 x 100 = ${pc(C('pctChange', 4, 5))}`, `30% / 25% = ${fmt(C('priceElasticity', 200, 140, 4, 5), 1)}`, `\\$${fmt(C('totalRevenue', 4, 200))} to \\$${fmt(C('totalRevenue', 5, 140))}`] },
+  { id: 'u2-cross-elasticity', has: [`(90 - 100) / 100 x 100 = ${pc(C('pctChange', 100, 90))}`, `(6 - 5) / 5 x 100 = ${pc(C('pctChange', 5, 6))}`, `-10% / 20% = ${fmt(C('crossElasticity', 100, 90, 5, 6), 1)}`] },
+  { id: 'u2-consumer-surplus', has: [`1/2 x 40 x (\\$10 - \\$6) = \\$${fmt(C('consumerSurplus', 40, 10, 6))}`] },
+  { id: 'u2-tax-revenue-dwl', has: [`\\$2 x 40 = \\$${fmt(C('taxRevenue', 2, 40))}`, `1/2 x 10 x \\$2 = \\$${fmt(C('dwl', C('sub', 50, 40), 2))}`] },
+  { id: 'u2-ceiling-shortage', has: [`900 - 600 = ${fmt(C('shortage', 900, 600))} apartments`] },
+  { id: 'u2-tariff', has: [`50 - 30 = ${fmt(C('imports', 50, 30))} tons`, `\\$1 x 20 = \\$${fmt(C('tariffRevenue', 1, C('imports', 50, 30)))}`] },
+  { id: 'u3-diminishing-returns', has: [`24 - 10 = ${fmt(C('marginalProduct', 10, 24, 1, 2))}`, `34 - 24 = ${fmt(C('marginalProduct', 24, 34, 2, 3))}`], check: () => C('marginalProduct', 24, 34, 2, 3) < C('marginalProduct', 10, 24, 1, 2) && C('marginalProduct', 10, 24, 1, 2) > 10 },
+  { id: 'u3-marginal-cost-table', has: [`(\\$520 - \\$400) / (70 - 50) = \\$${fmt(C('marginalCost', 400, 520, 50, 70))} per unit`] },
+  { id: 'u3-economic-profit', has: [`200,000 - 150,000 = \\$${fmt(C('accountingProfit', 200000, 150000))}`, `50,000 - 60,000 = -\\$${fmt(C('abs', C('economicProfit', 200000, 150000, 60000)))}`] },
+  { id: 'u3-mr-mc-rule', has: [`It makes ${fmt(C('profitMaxQ', [5, 6, 7], 12, [10, 11, 13]))} units`] },
+  { id: 'u3-shutdown', has: [`(\\$5 - \\$8) x 100 = -\\$${fmt(C('abs', C('unitProfit', 5, 8, 100)))}`, `(\\$8 - \\$6) x 100 = \\$${fmt(C('mul', C('sub', 8, 6), 100))}`], check: () => 5 < 6 },
+  { id: 'u4-dominant', has: ['30 > 20', '50 > 45'], check: () => Matrix.dominant(GYM, 0) === 0 },
+  { id: 'u4-no-dominant', has: ['25 > 15', '45 > 40'], check: () => Matrix.dominant(GYM, 1) === null },
+  { id: 'u4-nash', has: ['12 > 7', '9 > 6'], check: () => Matrix.nash(CAFE).some(c => c[0] === 0 && c[1] === 1) },
+  { id: 'u4-payoff-change', has: [`30 - 15 = ${fmt(C('sub', 30, 15))}`, `50 - 15 = ${fmt(C('sub', 50, 15))}`], check: () => Matrix.dominant({ ...GYM, change: { player: 0, strategy: 0, amount: -15 } }, 0) === 1 },
+  { id: 'u5-mrp-calc', has: [`12 x \\$4 = \\$${fmt(C('mrp', 12, 4))}`], check: () => C('mrp', 12, 4) > 40 },
+  // The 3rd, 4th and 5th workers' MRP against the wage: two more after the first two.
+  { id: 'u5-hire-rule', has: [`The firm hires ${fmt(2 + C('hireCount', [45, 30, 20], 30))} workers`] },
+  { id: 'u5-least-cost', has: [`30 / \\$15 = ${fmt(C('perDollar', 30, 15))} units per dollar`, `50 / \\$20 = ${fmt(C('perDollar', 50, 20), 1)} units per dollar`] },
+  // The 4th and 5th workers' MRP against MFC: one more after the first three.
+  { id: 'u5-monopsony-hire', has: [`The firm hires ${fmt(3 + C('hireCount', [20, 16], [18, 22]))} workers`] },
+  { id: 'u6-dwl-tax', has: [`120 - 100 = ${fmt(C('sub', 120, 100))} units`, `1/2 x 20 x \\$3 = \\$${fmt(C('dwl', 20, 3))}`] },
+  { id: 'u6-lorenz', has: [`5% + 10% = ${pc(C('add', 5, 10))}`] },
+];
 export { C as calc, fmt, pc, usd };
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {

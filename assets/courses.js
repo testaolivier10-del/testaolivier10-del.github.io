@@ -142,10 +142,11 @@
     {
       // As AP® Macroeconomics (docs/apmicro-spec.md decision 2): the mark only
       // in the full names, never in a URL; the key travels as its folder,
-      // "microeconomics". 'hidden' until its first unit is published.
+      // "microeconomics". Was 'hidden' until published; 'live' since the launch
+      // (docs/apmicro-spec.md decision 12).
       key: 'apmicro', short: 'Microeconomics', name: 'AP® Microeconomics', productName: 'AP® Microeconomics',
       path: '/microeconomics/', dir: 'microeconomics', storagePrefix: 'apmicro_', rankLabel: 'Microeconomics rank',
-      searchLabel: 'Microeconomics', aliases: ['microeconomics', 'micro', 'mic'], paid: true, status: 'hidden', order: 14,
+      searchLabel: 'Microeconomics', aliases: ['microeconomics', 'micro', 'mic'], paid: true, status: 'live', order: 14,
     },
     {
       // As AP® Psychology (docs/aphug-spec.md decision 2): the mark only in
