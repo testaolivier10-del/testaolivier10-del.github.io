@@ -104,7 +104,7 @@
     var pts = function(a){ return a.map(function(p){ return r1(p[0]) + ',' + r1(p[1]); }); };
     out.push('<polygon class="hug-pl-gap" points="' + pts(b).concat(pts(d.slice().reverse())).join(' ') + '"/>');
     out.push('<polyline class="hug-pl-cbr" points="' + pts(b).join(' ') + '"/><polyline class="hug-pl-cdr" points="' + pts(d).join(' ') + '"/>');
-    out.push(tx(x(ph ? 3.25 : 3.1), y(rateAt(ph ? 3.25 : 3.1).cbr) - 10, 'birth rate', 'hug-pl-cbrl', 'start'), tx(x(0.62), y(rateAt(0.62).cdr) + 26, 'death rate', 'hug-pl-cdrl', 'start'));
+    out.push(tx(x(ph ? 3.25 : 3.1), y(rateAt(ph ? 3.25 : 3.1).cbr) - 10, 'birth rate', 'hug-pl-cbrl', 'start'), tx(x(2.7), Math.min(B - 4, y(rateAt(3.1).cdr) + 22), 'death rate', 'hug-pl-cdrl', 'start'));
     out.push(tx(L, top - 10, 'per 1,000 people a year', 'hug-pl-axl', 'start'));
     if(o.cbr != null && !o.hide){
       var xm = x(o.pos);

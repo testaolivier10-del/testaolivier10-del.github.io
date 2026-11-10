@@ -135,7 +135,7 @@ function add(topic, id, w, h, title, alt, body) { figs.push({ topic, id, w, h, a
   const outline = o => Object.values(D).map(d => path(d, { fill: o.fill || '#FFFFFF', stroke: o.stroke || GREY, w: 1.4 })).join('');
   const panels = [
     ['Reference map', 'Where things are', () => outline({ fill: SAND }) + path('M20,80 C60,70 90,96 130,84 S180,60 190,50', { stroke: '#3B7DB8', w: 3 }) +
-      path('M40,40 L150,96', { stroke: VERM, w: 2.2, dash: '6 4' }) + circle(40, 40, 5) + circle(150, 96, 5) + text(48, 34, 'Port', { size: 13 }) + text(140, 114, 'Mill', { size: 13 })],
+      path('M40,40 L150,96', { stroke: VERM, w: 2.2, dash: '6 4' }) + circle(40, 40, 5) + circle(150, 96, 5) + text(48, 34, 'Port', { size: 13 }) + rect(137, 102, 31, 16, { fill: '#FFFFFF', rx: 3 }) + text(140, 114, 'Mill', { size: 13 })],
     ['Choropleth map', 'A rate, by shading areas', () => path(D.a, { fill: '#BFE3EA', stroke: '#FFFFFF', w: 1.6 }) + path(D.b, { fill: '#2C8C9C', stroke: '#FFFFFF', w: 1.6 }) + path(D.c, { fill: '#6CB8C6', stroke: '#FFFFFF', w: 1.6 }) + path(D.d, { fill: TEAL, stroke: '#FFFFFF', w: 1.6 })],
     ['Dot density map', 'Counts, one dot each', () => outline({}) + [[30, 40], [40, 50], [36, 30], [52, 44], [130, 30], [140, 42], [150, 36], [160, 48], [146, 26], [170, 40], [120, 80], [134, 90], [150, 84], [60, 90], [140, 100]].map(([x, y]) => circle(x, y, 3.2)).join('')],
     ['Graduated symbol map', 'Amounts, by circle size', () => outline({}) + circle(56, 40, 8, { fill: VERM, op: 0.75 }) + circle(146, 36, 18, { fill: VERM, op: 0.75 }) + circle(56, 90, 5, { fill: VERM, op: 0.75 }) + circle(140, 88, 12, { fill: VERM, op: 0.75 })],

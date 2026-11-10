@@ -78,7 +78,7 @@ fig({
     ...[[455, 148], [465, 160], [478, 150]].map(([x, y]) => r(x, y, 14, 30, VER)),
     t(468, 200, 'Edge city:\noffices, malls, jobs', { size: 14, anchor: 'middle', weight: 'bold', fill: VER }),
     c(200, 380, 42, T.rp, `stroke="${RP}" stroke-width="2"`), t(200, 385, 'Boomburb', { size: 14, anchor: 'middle', weight: 'bold', fill: RP }),
-    t(225, 135, 'Suburbs: mostly homes', { size: 14, anchor: 'middle' }),
+    r(144, 120, 162, 21, '#FFFFFF', 'rx="4"'), t(225, 135, 'Suburbs: mostly homes', { size: 14, anchor: 'middle' }),
     ...[[90, 120], [110, 410], [560, 95], [585, 380], [70, 300]].map(([x, y]) => r(x, y, 10, 8, GREEN)),
     t(560, 70, 'Exurbs: homes on big lots among farms', { size: 14, anchor: 'middle', fill: GREEN, weight: 'bold' }),
     r(600, 140, 210, 190, '#FBFBFA', `stroke="#C9CCC8" rx="8"`),
