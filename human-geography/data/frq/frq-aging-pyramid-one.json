@@ -1,0 +1,173 @@
+{
+ "id": "frq-aging-pyramid-one",
+ "type": "one",
+ "title": "An aging country: its pyramid, its dependency ratio and its choices",
+ "points": 7,
+ "units": [
+  "unit-1",
+  "unit-2"
+ ],
+ "topics": [
+  "data-in-decisions",
+  "population-composition",
+  "aging-populations"
+ ],
+ "practices": [
+  "1.D",
+  "2.C",
+  "3.A",
+  "3.B",
+  "3.E",
+  "3.F"
+ ],
+ "stimuli": [
+  {
+   "kind": "data",
+   "title": "Population pyramid of Country Z",
+   "invented": true,
+   "plot": {
+    "kind": "pyramid",
+    "label": "Population pyramid of Country Z: the bars are shortest at ages 0 to 4, widest at ages 50 to 59, and the groups 65 and over are large, with more women than men at ages 80 and over",
+    "groups": [
+     "0-4",
+     "5-9",
+     "10-14",
+     "15-19",
+     "20-24",
+     "25-29",
+     "30-34",
+     "35-39",
+     "40-44",
+     "45-49",
+     "50-54",
+     "55-59",
+     "60-64",
+     "65-69",
+     "70-74",
+     "75-79",
+     "80+"
+    ],
+    "left": [1.9, 2.1, 2.3, 2.4, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.9, 3.9, 3.6, 3.3, 2.8, 2.0, 1.6],
+    "right": [1.8, 2.0, 2.2, 2.3, 2.6, 2.8, 3.0, 3.2, 3.4, 3.7, 3.9, 4.0, 3.8, 3.6, 3.2, 2.6, 2.9],
+    "xLabel": "Percent of the population",
+    "leftLabel": "Male",
+    "rightLabel": "Female"
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the shape of the population pyramid of Country Z.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies the pyramid as constrictive (a base narrower than its middle).",
+     "accept": [
+      "Constrictive",
+      "A narrow base and wide middle (constrictive)"
+     ]
+    }
+   ],
+   "sample": "Constrictive: its base is narrower than its middle."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe the age structure of Country Z shown in the pyramid.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes the structure using the data: few children, the largest cohorts in middle age, and a large share 65 and over.",
+     "accept": [
+      "Shortest bars at 0 to 4; widest at 50 to 59; large groups over 65",
+      "Few children, many middle-aged and older people"
+     ]
+    }
+   ],
+   "sample": "The bars are shortest at ages 0 to 4 and widest at ages 50 to 59, and the groups aged 65 and over are large, so most of the people are middle-aged or older and few are children."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain one demographic reason for the narrow base of the pyramid.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains that fewer births (a TFR below replacement) make each new cohort smaller.",
+     "accept": [
+      "Low fertility or a falling birth rate makes recent cohorts smaller",
+      "A TFR below replacement means each generation of children is smaller than its parents’"
+     ]
+    }
+   ],
+   "sample": "Because women in Country Z have fewer children than earlier generations did, with a TFR below replacement, each new cohort is smaller than the one before, so the youngest bars are the shortest."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain how Country Z’s elderly dependency ratio is likely to change over the next 20 years.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States that it will rise and explains why: large cohorts move past 65 while small cohorts enter working age.",
+     "accept": [
+      "It will rise because the large cohorts aged 45 to 64 will pass 65 while small cohorts enter working age"
+     ]
+    }
+   ],
+   "sample": "It will rise, because the large cohorts now aged 45 to 64 will pass 65 while the small cohorts now under 15 reach working age, so there will be more people 65 and over for every 100 people aged 15 to 64."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain one economic effect of this age structure on Country Z.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains an economic effect with its link: worker shortages, higher pension and health costs, or higher taxes on fewer workers.",
+     "accept": [
+      "Fewer workers, so jobs go unfilled and firms use machines or hire workers from abroad",
+      "More retirees, so pensions and health care cost more and taxes rise",
+      "Slower growth because the workforce shrinks"
+     ]
+    }
+   ],
+   "sample": "With fewer young people entering the workforce, firms will struggle to fill jobs, so they may raise wages, use robots or hire workers from abroad, as firms in Japan have done."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain how one government policy could reduce the economic effect you described in part E.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a policy and how it works: immigration of working-age people, a later retirement age, or pronatalist incentives, with the link.",
+     "accept": [
+      "An immigration policy admitting working-age people, so the workforce grows now",
+      "Raising the retirement age, so people work and pay taxes longer",
+      "Pronatalist policy, so more children become workers later"
+     ]
+    }
+   ],
+   "sample": "An immigration policy that admits working-age people, such as nurses and builders, would add workers at once, so more jobs are filled and more people pay taxes that fund pensions."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which Country Z’s age structure is typical of the world’s population at the global scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree and explains with a contrast at the global scale: some countries share this aging structure, but the world as a whole is younger because many countries still have wide-based pyramids.",
+     "accept": [
+      "To a limited degree: countries in Europe and East Asia are aging like Country Z, but Sub-Saharan Africa has young, wide-based pyramids",
+      "To a small degree: at the global scale far more people are children than in Country Z"
+     ]
+    }
+   ],
+   "sample": "To a limited degree. Countries such as Japan and Italy have aging pyramids like Country Z’s, but at the global scale the population is much younger, because countries such as Niger, where nearly half the people were under 15 (UN WPP 2024), still have wide-based pyramids."
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "development-measures-hdi": {
+  "file": "figures/development-measures-hdi.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three boxes feed one. Health is measured by life expectancy, education by years of schooling, and income by income per person (GNI). Together they make the Human Development Index, one number from 0 to 1. Higher means longer, healthier, better-schooled lives and more income; it hides who gets the income."
+ }
+}

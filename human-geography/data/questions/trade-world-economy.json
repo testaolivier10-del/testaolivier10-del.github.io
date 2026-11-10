@@ -1,0 +1,616 @@
+{
+ "stimuli": {
+  "trade-world-economy-s1": {
+   "kind": "data",
+   "title": "What one day of work can make in two countries",
+   "invented": true,
+   "table": {
+    "caption": "Output of one day of work (invented data for practice). Each country can make one good or the other.",
+    "cols": [
+     "Country",
+     "Coffee (bags)",
+     "Tablets"
+    ],
+    "rows": [
+     [
+      "Country E",
+      "12",
+      "6"
+     ],
+     [
+      "Country F",
+      "4",
+      "4"
+     ]
+    ]
+   }
+  },
+  "trade-world-economy-s2": {
+   "kind": "map",
+   "title": "The founding members of Mercosur",
+   "map": {
+    "base": "latin-america",
+    "render": "reference",
+    "label": "Reference map of Latin America with the four founding members of Mercosur shaded: Argentina, Brazil, Paraguay and Uruguay, in the south and east of South America",
+    "legendTitle": "Founding members of Mercosur (Treaty of Asunción, 1991)",
+    "focus": [
+     "argentina",
+     "brazil",
+     "paraguay",
+     "uruguay"
+    ],
+    "marks": [
+     {
+      "at": "brazil",
+      "text": "Brazil"
+     },
+     {
+      "at": "argentina",
+      "text": "Argentina"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-trade-world-economy-1",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "According to the table, which country has the absolute advantage in making tablets?",
+   "options": [
+    "Country F, because tablets cost it less coffee",
+    "Country E, because it makes 6 tablets to F's 4",
+    "Neither, because the two make the same number",
+    "Both, because each can make tablets"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Absolute advantage compares output: in one day E makes 6 tablets and F makes 4.",
+    "options": [
+     "That is the test for comparative advantage, not absolute advantage.",
+     "Right: absolute advantage means making more with the same work: 6 against 4.",
+     "E makes 6 tablets a day and F makes 4, so they differ.",
+     "Absolute advantage goes to the country that makes more, here E."
+    ]
+   },
+   "stimulus": "trade-world-economy-s1"
+  },
+  {
+   "id": "hug-trade-world-economy-2",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In Country E, what is the opportunity cost of making one tablet, in bags of coffee?",
+   "why": {
+    "correct": "In one day E can make 12 bags of coffee or 6 tablets, so one tablet costs $\\frac{12}{6} = 2$ bags of coffee."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      12,
+      6
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        6,
+        12
+       ]
+      },
+      "why": "That is the cost of one bag of coffee in tablets (0.5). For one tablet, divide the coffee given up (12) by the tablets made (6)."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        4,
+        4
+       ]
+      },
+      "why": "That is Country F's cost (1 bag). Use Country E's row: 12 bags or 6 tablets."
+     }
+    ]
+   },
+   "stimulus": "trade-world-economy-s1"
+  },
+  {
+   "id": "hug-trade-world-economy-3",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Which country has the comparative advantage in making tablets?",
+   "options": [
+    "Country E, because it makes more tablets",
+    "Neither, because E is better at both goods",
+    "Country F: a tablet costs it 1 bag, not 2",
+    "Both, because each country makes some tablets"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A tablet costs E 2 bags of coffee ($\\frac{12}{6}$) and F 1 bag ($\\frac{4}{4}$). The lower opportunity cost is F's, so F has the comparative advantage in tablets and E in coffee.",
+    "options": [
+     "That is absolute advantage. Compare opportunity costs: a tablet costs E 2 bags of coffee but costs F 1 bag.",
+     "Being better at both gives E absolute advantage in both, but each country still has a comparative advantage in one good.",
+     "Right: F gives up less coffee for each tablet, so F has the comparative advantage in tablets.",
+     "Only one country can have the lower opportunity cost of a good."
+    ]
+   },
+   "stimulus": "trade-world-economy-s1"
+  },
+  {
+   "id": "hug-trade-world-economy-4",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "If each country specializes by comparative advantage and they trade, what is the likely outcome?",
+   "options": [
+    "E makes coffee, F tablets; both gain",
+    "E makes both goods, and F stops producing",
+    "F makes coffee, E makes tablets, and both gain",
+    "Neither gains"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "E has the comparative advantage in coffee (a bag costs it half a tablet) and F in tablets (a tablet costs it 1 bag), so specializing and trading leaves both better off.",
+    "options": [
+     "Right: specializing in the good with the lower opportunity cost and trading lets both consume more.",
+     "That follows absolute advantage, and it ignores the gain from F's lower cost for tablets.",
+     "This swaps the advantages: E gives up less to make coffee, F gives up less to make tablets.",
+     "Gains come from differences in opportunity cost, which exist here."
+    ]
+   },
+   "stimulus": "trade-world-economy-s1"
+  },
+  {
+   "id": "hug-trade-world-economy-5",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "The shaded countries agreed in 1991 to lower tariffs on trade among themselves. What kind of organization did they form?",
+   "options": [
+    "A trade bloc",
+    "A cartel of oil exporters, like OPEC",
+    "A lender to governments, like the IMF",
+    "A microlending network for small firms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Lowering tariffs among a group of member countries makes a trade bloc.",
+    "options": [
+     "Right: a group of countries that lowers or removes tariffs among its members is a trade bloc.",
+     "OPEC sets oil output; Mercosur lowers tariffs among its members.",
+     "The IMF lends to governments; it does not cut tariffs among a few members.",
+     "Microlending gives small loans to people, not tariff cuts among countries."
+    ]
+   },
+   "stimulus": "trade-world-economy-s2"
+  },
+  {
+   "id": "hug-trade-world-economy-6",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis does this map show Mercosur?",
+   "options": [
+    "Local: one city and its suburbs",
+    "National: a single country's provinces",
+    "Regional: several countries",
+    "Global: the whole world"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The data are four countries in one world region, so the scale is regional.",
+    "options": [
+     "Four whole countries are shaded, far more than one city.",
+     "Four countries are shown, not the inside of one.",
+     "Right: four countries in South America make a regional scale.",
+     "Only Latin America is shown."
+    ]
+   },
+   "stimulus": "trade-world-economy-s2"
+  },
+  {
+   "id": "hug-trade-world-economy-7",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "What is the most likely effect of Mercosur on trade between Brazil and Argentina?",
+   "options": [
+    "It falls",
+    "It grows, as tariffs between them fall",
+    "It stops, as each buys from outside the bloc instead",
+    "It does not change, because tariffs do not affect prices"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Cutting tariffs among members lowers the price of their goods to each other, so trade inside the bloc tends to grow.",
+    "options": [
+     "Members lower tariffs on each other, which encourages trade.",
+     "Right: lower tariffs make each other's goods cheaper, so trade between members grows.",
+     "The bloc favors trade inside it, not outside.",
+     "A tariff raises the price of imports, so cutting it changes trade."
+    ]
+   },
+   "stimulus": "trade-world-economy-s2"
+  },
+  {
+   "id": "hug-trade-world-economy-8",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Why might a member country give up some control of its own trade policy by joining a bloc like the one on the map?",
+   "options": [
+    "The bloc forbids members from trading with outsiders",
+    "Members agree on shared tariff rules",
+    "The IMF takes over its budget when it joins",
+    "Members swap their national currencies with Japan"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A trade bloc is supranational: members agree on shared rules, trading some sovereignty over trade policy for access to a larger market.",
+    "options": [
+     "The point of a bloc is more trade, not less.",
+     "Right: the bloc sets common rules, so a member gives up some freedom to set its own tariffs in return for wider access to markets.",
+     "Joining a trade bloc does not hand a budget to the IMF.",
+     "Nothing about Mercosur involves Japan's currency."
+    ]
+   },
+   "stimulus": "trade-world-economy-s2"
+  },
+  {
+   "id": "hug-trade-world-economy-9",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Costa Rica grows bananas in its warm lowlands, and Canada grows wheat and makes machines. Trade between them shows which idea most directly?",
+   "options": [
+    "Complementarity: each supplies a need",
+    "Absolute advantage in each good for Canada",
+    "A tariff on bananas entering Canada",
+    "Structural adjustment by the IMF in Costa Rica"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Complementarity exists when one place supplies what another needs, here because the two climates differ.",
+    "options": [
+     "Right: one place's supply meets another's need, largely because of climate.",
+     "Canada cannot grow bananas well, so it lacks an advantage in them.",
+     "Nothing in the example is about a tax on imports.",
+     "Nothing in the example involves an IMF loan."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-10",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A country puts a 25% tariff on imported steel. Which outcome is most likely?",
+   "options": [
+    "Imports cost more, so home steelmakers sell more",
+    "Imported steel gets cheaper, so imports rise",
+    "Steel-selling countries remove their own tariffs",
+    "Home steel prices fall as competition grows"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A tariff is a tax on imports: imported steel costs more, which helps home steelmakers but raises costs for buyers and may bring tariffs in return.",
+    "options": [
+     "Right: the tariff raises import prices, which protects home producers, though buyers pay more.",
+     "A tariff is a tax on imports, so it makes them cost more.",
+     "Other countries are more likely to answer with tariffs of their own.",
+     "A tariff reduces foreign competition, so home prices tend to rise."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-11",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the 1980s, many Latin American governments sold state-owned companies, cut spending and lowered tariffs. Which idea do these policies reflect?",
+   "options": [
+    "Dependency theory",
+    "Complementarity",
+    "Neoliberalism",
+    "Commodity dependence"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Selling state firms, cutting spending and opening trade are neoliberal policies, which spread after the 1982 debt crisis.",
+    "options": [
+     "Dependency theory would favor less reliance on trade with the core, not lower tariffs.",
+     "Complementarity explains why two places trade; it is not a set of government policies.",
+     "Right: shrinking the government's role, selling state firms and freeing trade are neoliberal policies.",
+     "That describes relying on one export, not a set of policies."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-12",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "After Mexico said in 1982 that it could not pay its foreign debts, the IMF lent money on the condition of structural adjustment. Which gives both sides of the effects?",
+   "options": [
+    "It ended the debt, and each group gained",
+    "It cut tariffs to zero, and nobody lost work",
+    "It closed Mexico's economy to trade, raising prices",
+    "It restored trust, but cuts hurt clinics"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Structural adjustment loans came with spending cuts, sales of state firms and open markets: supporters say they restored stability, critics say they hurt public services.",
+    "options": [
+     "Debt did not vanish, and critics point to real losers from spending cuts.",
+     "Opening markets cost some protected firms and workers their jobs.",
+     "Structural adjustment opened economies to trade; it did not close them.",
+     "Right: supporters credit it with restoring trust and growth; critics say spending cuts fell on the poorest."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-13",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "What does the World Trade Organization (WTO) do?",
+   "options": [
+    "Lends to governments in a debt crisis",
+    "Sets trade rules and settles disputes",
+    "Sets how much oil its members pump",
+    "Measures the Human Development Index"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The WTO writes the rules of trade among its members, pushes for lower tariffs and settles trade disputes.",
+    "options": [
+     "That is the IMF.",
+     "Right: since 1995 the WTO has set rules for trade among its members and settled their disputes.",
+     "That is OPEC.",
+     "The UNDP publishes the HDI."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-14",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.C",
+   "q": "A US state offers a carmaker free land and ten years of lower taxes to build a plant there. How does this compare with a national tariff on imported cars?",
+   "options": [
+    "Both are government steps to win jobs, at different scales",
+    "Both are trade blocs among several countries",
+    "The state offer is neoliberal and the tariff is not a policy",
+    "Both are loans from the IMF to the carmaker"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Governments at every scale shape where industry goes: a state uses incentives to win a plant, while a national tariff protects a whole industry.",
+    "options": [
+     "Right: the state acts at the local (subnational) scale to attract one plant; a tariff acts at the national scale for a whole industry.",
+     "Neither involves an agreement among countries.",
+     "A tariff is a policy; the difference is scale and method.",
+     "Neither is an IMF loan; the IMF lends to governments."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-15",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In 2008, a crisis that began with risky home loans in the United States spread to banks, trade and jobs around the world. What does this show?",
+   "options": [
+    "The world economy is interdependent",
+    "Tariffs block crises at borders",
+    "The crisis stayed at the local scale",
+    "Periphery countries caused the crisis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Financial and trade links make economies interdependent, so a crisis in one large economy spreads worldwide.",
+    "options": [
+     "Right: banks, trade and investment link places, so trouble in one country spreads.",
+     "The crisis crossed borders through banks and trade.",
+     "It spread from one country to the global scale.",
+     "It began with home loans in the United States."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-16",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.D",
+   "q": "Which of these are trade blocs? Select all that apply.",
+   "options": [
+    "The European Union",
+    "Mercosur",
+    "The International Monetary Fund",
+    "The Grameen Bank",
+    "The UN Development Programme"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The EU and Mercosur cut trade barriers among their members; the IMF, Grameen Bank and UNDP are not trade blocs.",
+    "options": [
+     "Right: its members trade freely with each other.",
+     "Right: its members cut tariffs among themselves.",
+     "The IMF lends to governments; it does not cut tariffs among members.",
+     "It is a microlending bank in Bangladesh.",
+     "The UNDP publishes the HDI and works on development; it is not a trade bloc."
+    ]
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-17",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of which good Country F (in the coffee and tablets table) should make, using the right kind of advantage.",
+   "why": {
+    "correct": "Comparative advantage goes to the lower opportunity cost: F gives up 1 bag of coffee per tablet, E gives up 2."
+   },
+   "specific": {
+    "frame": "Country F has the ___ in ___ because ___, so it should make them and trade.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Country F has the comparative advantage in tablets because a tablet costs it only 1 bag of coffee while it costs Country E 2 bags, so it should make them and trade.",
+    "slots": {
+     "concept": {
+      "label": "Kind of advantage",
+      "options": [
+       "comparative advantage",
+       "absolute advantage"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "F makes fewer tablets than E, so it has no absolute advantage; its advantage is the lower opportunity cost."
+      }
+     },
+     "outcome": {
+      "label": "Good",
+      "options": [
+       "tablets",
+       "coffee"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A bag of coffee costs F 1 tablet but E only half a tablet, so E has the advantage in coffee."
+      }
+     },
+     "cause": {
+      "label": "Because",
+      "options": [
+       "a tablet costs it only 1 bag of coffee while it costs Country E 2 bags",
+       "it makes more tablets than Country E"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "F makes 4 tablets to E's 6; the reason is the lower opportunity cost."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-trade-world-economy-18",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Using the coffee and tablets table (Country E: 12 bags or 6 tablets a day; Country F: 4 bags or 4 tablets), place the good each country should specialize in.",
+   "model": {
+    "layout": "tiers",
+    "title": "Specialize by comparative advantage",
+    "slots": [
+     {
+      "id": "e",
+      "name": "Country E makes"
+     },
+     {
+      "id": "f",
+      "name": "Country F makes"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "cof",
+      "text": "Coffee"
+     },
+     {
+      "id": "tab",
+      "text": "Tablets"
+     },
+     {
+      "id": "both",
+      "text": "Both goods"
+     }
+    ],
+    "key": {
+     "e": "cof",
+     "f": "tab"
+    },
+    "slips": [
+     {
+      "piece": "both",
+      "slot": "e",
+      "why": "E has the absolute advantage in both, but trade follows comparative advantage: E gives up less to make coffee."
+     },
+     {
+      "piece": "tab",
+      "slot": "e",
+      "why": "A tablet costs E 2 bags of coffee but F only 1, so F has the comparative advantage in tablets."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A bag of coffee costs E half a tablet and F one tablet, so E makes coffee; a tablet costs F one bag and E two, so F makes tablets."
+   }
+  }
+ ]
+}

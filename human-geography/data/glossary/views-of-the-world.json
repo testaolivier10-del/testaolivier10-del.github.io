@@ -1,0 +1,53 @@
+{
+ "map": {
+  "def": "A drawing of part or all of the Earth's surface that shows where things are or how something varies from place to place. Every map selects what to show and leaves the rest out."
+ },
+ "reference-map": {
+  "def": "A map that shows where things are, such as borders, cities, roads and rivers, with no single theme."
+ },
+ "thematic-map": {
+  "def": "A map that shows one topic or measure across places, such as income, rainfall or the number of people, with a legend that explains it."
+ },
+ "map-projection": {
+  "def": "A method for flattening the round Earth onto a flat map. Every projection distorts shape, area, distance or direction in some way."
+ },
+ "distortion": {
+  "def": "A change in shape, area, distance or direction that happens when the round Earth is drawn on a flat map."
+ },
+ "absolute-distance": {
+  "def": "Distance measured in a fixed unit such as kilometers or miles."
+ },
+ "relative-distance": {
+  "def": "How far a place feels, measured in time, cost or ease of travel instead of kilometers."
+ },
+ "absolute-direction": {
+  "def": "Direction given by the compass (north, south, east, west), which does not depend on where you stand."
+ },
+ "relative-direction": {
+  "def": "Direction that depends on the speaker's point of view, such as \"up north\" or \"the Far East\"."
+ },
+ "clustering": {
+  "def": "A pattern in which things are grouped close together in one or a few places."
+ },
+ "dispersal": {
+  "def": "A pattern in which things are spread out over an area rather than grouped together."
+ },
+ "elevation": {
+  "def": "The height of the land above sea level, often shown on maps with lines of equal height or with colors."
+ },
+ "choropleth-map": {
+  "def": "A thematic map that shades whole areas, such as countries or provinces, by classes of a measure. It works best for rates and percents."
+ },
+ "dot-map": {
+  "def": "A thematic map that shows counts as dots, each standing for a set number, such as 10,000 people."
+ },
+ "graduated-symbol-map": {
+  "def": "A thematic map that uses symbols, usually circles, sized by the amount at each place."
+ },
+ "isoline-map": {
+  "def": "A thematic map with lines that join points of equal value, such as the same height or the same temperature."
+ },
+ "cartogram": {
+  "def": "A thematic map that resizes each area by a value, such as its number of people, so shapes and true sizes are given up."
+ }
+}

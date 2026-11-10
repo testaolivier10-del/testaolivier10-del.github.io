@@ -1,0 +1,176 @@
+{
+ "id": "frq-farm-trade-one",
+ "type": "one",
+ "points": 7,
+ "title": "An export table for one crop: commodity dependence, price swings and supply chains",
+ "units": [
+  "unit-2",
+  "unit-5"
+ ],
+ "topics": [
+  "migration-causes",
+  "global-agriculture"
+ ],
+ "practices": [
+  "2.B",
+  "3.A",
+  "3.C",
+  "3.F",
+  "5.B"
+ ],
+ "stimuli": [
+  {
+   "kind": "data",
+   "title": "Coffee exports of Country K, 2015 to 2024",
+   "invented": true,
+   "table": {
+    "caption": "Coffee exports of Country K (invented data for practice)",
+    "cols": [
+     "Year",
+     "Coffee exported (thousand tonnes)",
+     "Coffee export earnings (million US dollars)",
+     "Coffee share of all export earnings"
+    ],
+    "rows": [
+     [
+      "2015",
+      "400",
+      "1,200",
+      "58%"
+     ],
+     [
+      "2018",
+      "420",
+      "1,000",
+      "55%"
+     ],
+     [
+      "2021",
+      "430",
+      "1,500",
+      "63%"
+     ],
+     [
+      "2024",
+      "440",
+      "1,320",
+      "60%"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the year in the table when Country K earned the most from coffee exports.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names 2021.",
+     "accept": [
+      "2021"
+     ]
+    }
+   ],
+   "sample": "Country K earned the most from coffee exports in 2021, 1,500 million US dollars."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe how the amount of coffee exported and the earnings from coffee changed from 2015 to 2024.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes both: tonnes rose steadily while earnings rose and fell.",
+     "accept": [
+      "tonnes rose each year (400 to 440) while earnings fell, rose and fell again",
+      "earnings did not follow the amount exported"
+     ]
+    }
+   ],
+   "sample": "The amount exported rose a little in every year shown, from 400 to 440 thousand tonnes, but earnings went down to 1,000 million dollars in 2018, up to 1,500 million in 2021 and down to 1,320 million in 2024."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Using the table, explain why Country K earned less from coffee in 2018 than in 2015, even though it exported more coffee.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Uses the table to explain that the price received for each tonne fell.",
+     "accept": [
+      "earnings per tonne fell (about 3,000 dollars in 2015 to about 2,400 dollars in 2018), so the world price of coffee must have fallen",
+      "tonnes rose from 400 to 420 thousand but earnings fell from 1,200 to 1,000 million dollars, so each tonne sold for less"
+     ]
+    }
+   ],
+   "sample": "Country K exported more coffee in 2018 (420 thousand tonnes) than in 2015 (400 thousand), but earned less (1,000 million dollars compared with 1,200 million), so each tonne sold for less: about 2,400 dollars instead of 3,000. The world price of coffee fell, and Country K cannot control that price."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain how a fall in coffee prices could act as a push factor for rural-to-urban migration in Country K.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains the link from lower farm income to people leaving rural areas.",
+     "accept": [
+      "lower coffee prices cut the income of farm families, so some members leave for city jobs",
+      "farm workers lose jobs or wages when coffee earns less, pushing them to move to cities"
+     ]
+    }
+   ],
+   "sample": "When coffee prices fall, families who grow coffee earn less for the same harvest and farms hire fewer workers, so young people in coffee-growing areas have fewer ways to earn a living and some move to cities to look for work."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain how the global supply chain for coffee affects how much of the final price paid by shoppers stays in Country K.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains that later steps abroad capture most of the value.",
+     "accept": [
+      "beans are exported raw and roasted, branded and sold abroad, so most of the value is added in importing countries",
+      "shipping, roasting and retail take shares of the price"
+     ]
+    }
+   ],
+   "sample": "Country K exports raw green beans, and roasting, packaging, branding and selling happen in importing countries, so most of the price a shopper pays for a bag of coffee is earned by companies abroad rather than in Country K."
+  },
+  {
+   "label": "F",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the table can show how changes in coffee prices affect farm families at the local scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree and explains it with the scale of the data.",
+     "accept": [
+      "to a limited degree: the table gives national totals, so it cannot show incomes of farm families or differences between regions"
+     ]
+    }
+   ],
+   "sample": "To a limited degree, because the table shows national totals of exports and earnings, so it suggests that farm incomes fell in 2018, but it cannot show how much individual farm families earned or how different regions of Country K were affected."
+  },
+  {
+   "label": "G",
+   "verb": "explain",
+   "prompt": "Explain one strategy Country K could use to reduce its commodity dependence.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a strategy and how it reduces dependence.",
+     "accept": [
+      "roast and brand coffee at home to add value",
+      "diversify into other exports such as manufacturing or tourism",
+      "grow other export crops"
+     ]
+    }
+   ],
+   "sample": "Country K could roast and package its own coffee before exporting it, so more of the final value stays in the country and new jobs grow outside raw farming, which lowers its reliance on the price of raw beans."
+  }
+ ]
+}

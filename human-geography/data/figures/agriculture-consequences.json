@@ -1,0 +1,22 @@
+{
+ "agriculture-consequences-scenes": {
+  "file": "figures/agriculture-consequences-scenes.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 316,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three numbered drawn scenes. Scene 1, seen from the side: a steep hillside cut into seven flat steps, each with a strip of green crops held up by a stone wall. Scene 2, seen from above: four large green circles of crops on dry tan land, each with a long pipe arm turning around its center. Scene 3, seen from above: thick forest with one patch cleared and burned brown, smoke rising and a few charred logs on the ground."
+ },
+ "agriculture-consequences-salinization": {
+  "file": "figures/agriculture-consequences-salinization.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 530,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four boxes from top to bottom, joined by arrows: farmers irrigate dry land for years; the water evaporates in the hot sun; salts in the water stay in the soil; crops grow poorly and some fields are abandoned. Below: fixes include draining fields, flushing salts with extra water and drip irrigation that wets only the roots."
+ }
+}

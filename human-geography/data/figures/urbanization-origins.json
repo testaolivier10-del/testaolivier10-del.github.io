@@ -1,0 +1,12 @@
+{
+ "urbanization-origins-site-situation": {
+  "file": "figures/urbanization-origins-site-situation.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Left, site: a town built on an island in a river bend, with a hill, fresh water and flat farmland beside it. Right, situation: the same town as a dot where a river route, a coast road and a mountain pass road meet, linked to a port, a mining town and farm villages."
+ }
+}

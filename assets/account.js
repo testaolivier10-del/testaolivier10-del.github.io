@@ -1065,6 +1065,7 @@
     { storagePrefix: 'apcalcbc_' },
     { storagePrefix: 'apmacro_' },
     { storagePrefix: 'apmicro_' },
+    { storagePrefix: 'aphug_' },
   ];
   // courses:end
   var CLEAR_PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }), ['levlprep_']);
@@ -1976,6 +1977,7 @@
     { key: 'apcalcbc', path: '/calculus-bc/' },
     { key: 'apmacro', path: '/macroeconomics/' },
     { key: 'apmicro', path: '/microeconomics/' },
+    { key: 'aphug', path: '/human-geography/' },
   ];
   // courses:end
   function inviteJson(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch(e){ return null; } }

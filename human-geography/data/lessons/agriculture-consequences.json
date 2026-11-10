@@ -1,0 +1,67 @@
+{
+ "topic": "agriculture-consequences",
+ "hook": "In the 1960s, fishing boats worked the Aral Sea, one of the largest lakes on Earth. Today rusting hulls sit on a dry, salty plain. The water went to cotton fields in the desert. Farming can feed a region and, at the same time, remake its land and water.",
+ "prereq": [
+  {
+   "q": "What is irrigation?",
+   "options": [
+    "Supplying water to crops by canals, pipes or sprinklers",
+    "Cutting a slope into flat steps",
+    "Letting a field rest for many years",
+    "Moving herds to fresh grass"
+   ],
+   "correct": 0,
+   "why": "Irrigation brings water where rain alone is not enough.",
+   "review": "agriculture-intro"
+  },
+  {
+   "q": "What does sustainability mean?",
+   "options": [
+    "Using resources so that future generations can still meet their needs",
+    "Using as many resources as possible now",
+    "Growing just one crop",
+    "Moving people from farms to cities"
+   ],
+   "correct": 0,
+   "why": "Sustainability balances use today against needs in the future.",
+   "review": "human-environment"
+  }
+ ],
+ "figure": {
+  "figure": "agriculture-consequences-salinization",
+  "caption": "Years of irrigation in a hot, dry place can leave salt in the soil."
+ },
+ "chain": [
+  {
+   "cause": "Planners diverted the rivers feeding the Aral Sea to irrigate cotton",
+   "effect": "the sea shrank and split"
+  },
+  {
+   "cause": "Irrigation water evaporated from desert fields",
+   "effect": "salt built up in the soil"
+  },
+  {
+   "cause": "The dry seabed was exposed to wind",
+   "effect": "salty dust blew onto farmland and towns"
+  }
+ ],
+ "ideas": [
+  "Practices that change landscapes: slash and burn, <b>deforestation</b>, <b>terracing</b>, irrigation, draining wetlands, pastoral nomadism.",
+  "Environmental effects: pollution and dead zones from fertilizer runoff, <b>salinization</b> from irrigating dry land, <b>desertification</b> of dry lands, loss of habitat.",
+  "Conservation: terraces, contour plowing, no-till farming, cover crops, drip irrigation.",
+  "Societal effects: changing diets (more meat, more feed crops), economic purpose (subsistence or commercial) and who does farm work."
+ ],
+ "misconception": {
+  "wrong": "Changing a landscape for farming always harms the environment.",
+  "right": "Effects can be positive or negative. Terracing changes a slope and also conserves soil; irrigation feeds millions but can cause salinization."
+ },
+ "check": [
+  "hug-agriculture-consequences-1",
+  "hug-agriculture-consequences-2",
+  "hug-agriculture-consequences-3",
+  "hug-agriculture-consequences-4",
+  "hug-agriculture-consequences-9",
+  "hug-agriculture-consequences-14"
+ ],
+ "summary": "Farming changes landscapes through slash and burn, deforestation, terracing, irrigation and wetland draining. Its environmental effects include pollution, salinization, desertification and habitat loss, offset in part by conservation practices. Its societal effects include changing diets, the purpose of farming and who does the work."
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "population-dynamics",
+ "hook": "In 2023, South Korea recorded about 0.72 births per woman (Statistics Korea, 2024), one of the lowest totals ever measured. Niger, in West Africa, had a rate more than eight times higher (UN WPP 2024). Two numbers, two very different futures. This topic gives you the tools to measure how a population changes.",
+ "prereq": [
+  {
+   "q": "A pyramid has a base narrower than its middle bars. What does that suggest?",
+   "options": [
+    "Births have fallen",
+    "Many babies are born each year",
+    "Many young adults have moved in",
+    "The population is very large"
+   ],
+   "correct": 0,
+   "why": "A constrictive base means recent cohorts are smaller: births have fallen.",
+   "review": "population-composition"
+  },
+  {
+   "q": "What is a cohort?",
+   "options": [
+    "A group born in the same years",
+    "A ratio of males to females",
+    "People per square kilometer",
+    "The part of Earth where people live"
+   ],
+   "correct": 0,
+   "why": "Each bar of a pyramid is a cohort.",
+   "review": "population-composition"
+  }
+ ],
+ "figure": {
+  "figure": "population-dynamics-flows",
+  "caption": "A population grows with births and people moving in, and shrinks with deaths and people moving out. The rate of natural increase uses births and deaths only."
+ },
+ "chain": [
+  {
+   "cause": "Births are more than deaths",
+   "effect": "the rate of natural increase is positive and the population grows"
+  },
+  {
+   "cause": "Clean water and vaccines spread",
+   "effect": "infant mortality falls and life expectancy rises"
+  },
+  {
+   "cause": "Fewer children die and raising children costs more",
+   "effect": "families have fewer children, so the total fertility rate falls"
+  },
+  {
+   "cause": "The total fertility rate stays below about 2.1",
+   "effect": "each generation is smaller, and the population will shrink unless people move in"
+  }
+ ],
+ "ideas": [
+  "<b>Crude birth rate</b> (CBR) and <b>crude death rate</b> (CDR) are births and deaths per 1,000 people a year.",
+  "<b>Rate of natural increase</b> (RNI) = (CBR − CDR) ÷ 10, in percent. Migration is not part of it. <b>Doubling time</b> ≈ 70 ÷ RNI.",
+  "<b>Total fertility rate</b> (TFR) is the average number of children per woman. <b>Replacement-level fertility</b> is about 2.1.",
+  "<b>Infant mortality rate</b> (deaths under age 1 per 1,000 births) and <b>life expectancy</b> measure health. Social, cultural, political and economic forces shape all these rates."
+ ],
+ "misconception": {
+  "wrong": "The rate of natural increase includes people who move in and out, and CBR 30 minus CDR 10 gives an RNI of 20 percent.",
+  "right": "RNI uses births and deaths only. CBR 30 and CDR 10 give 20 per 1,000, which is 2 percent. Add migration only when you want total growth."
+ },
+ "check": [
+  "hug-population-dynamics-1",
+  "hug-population-dynamics-3",
+  "hug-population-dynamics-5",
+  "hug-population-dynamics-6",
+  "hug-population-dynamics-8",
+  "hug-population-dynamics-13"
+ ],
+ "summary": "A population changes through births, deaths and migration. The crude birth and death rates give the rate of natural increase in percent, and the rule of 70 gives doubling time. The total fertility rate compared with replacement level (about 2.1) shows long-run growth or decline. Infant mortality and life expectancy measure health, and social, cultural, political and economic forces shape every rate."
+}

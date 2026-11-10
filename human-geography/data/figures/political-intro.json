@@ -1,0 +1,12 @@
+{
+ "political-intro-nations": {
+  "file": "figures/political-intro-nations.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four small diagrams. A nation-state: one box (a state) filled with one kind of shape (one nation), close to it is Iceland. A multinational state: one box with three kinds of shapes, for example Nigeria. A multistate nation: one kind of shape spread over two boxes, for example Koreans in two states. A stateless nation: one kind of shape spread across three boxes with no box of its own, for example the Kurds."
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "topic": "views-of-the-world",
+ "hook": "Open a map app to find a pizza place and you see streets and names: where things are. Open a weather page and you see colored bands of temperature: what conditions are like. Both are maps of the same ground, made for different jobs. Every map is a choice about what to show, what to leave out, and how to flatten a round Earth onto a flat screen.",
+ "prereq": [
+  {
+   "q": "A legend's classes run from \"Under 40%\" to \"80% or more\". What does the legend tell you?",
+   "options": [
+    "What each shade on the map stands for",
+    "Who made the data and when",
+    "How far apart places are on the ground",
+    "The scale of analysis of the map"
+   ],
+   "correct": 0,
+   "why": "A legend says what each shade, symbol or line means. The source line gives who and when.",
+   "review": "skills-reading"
+  },
+  {
+   "q": "Which map is the large-scale map?",
+   "options": [
+    "A town at 1:5,000",
+    "The world at 1:100,000,000",
+    "A continent at 1:20,000,000",
+    "A country at 1:10,000,000"
+   ],
+   "correct": 0,
+   "why": "Large scale means a large fraction: things look big and the area shown is small.",
+   "review": "skills-scale"
+  }
+ ],
+ "figure": {
+  "figure": "views-of-the-world-types",
+  "caption": "The same invented island drawn as a reference map and as five kinds of thematic map."
+ },
+ "chain": [
+  {
+   "cause": "The Earth is round and a map is flat",
+   "effect": "every map projection distorts shape, area, distance or direction"
+  },
+  {
+   "cause": "A map maker chooses one property to keep true",
+   "effect": "other properties are stretched, so each projection suits some jobs and not others"
+  },
+  {
+   "cause": "A thematic map shows one measure across places",
+   "effect": "the map type (shades, dots, symbols, lines) decides which pattern you can see"
+  }
+ ],
+ "ideas": [
+  "A <b>reference map</b> shows where things are (borders, cities, roads). A <b>thematic map</b> shows one topic or measure across places.",
+  "Thematic types: a <b>choropleth map</b> shades areas by a rate or class; a <b>dot density map</b> shows counts as dots; a <b>graduated symbol map</b> sizes symbols by amount; an <b>isoline map</b> joins points of equal value; a <b>cartogram</b> resizes areas by a value.",
+  "A <b>map projection</b> flattens the globe and always causes <b>distortion</b> of shape, area, distance or direction. Choosing one is a trade-off.",
+  "<b>Absolute</b> distance and direction use kilometers and the compass; <b>relative</b> distance and direction depend on time, cost or the viewer. Maps also show <b>clustering</b>, <b>dispersal</b> and <b>elevation</b>."
+ ],
+ "misconception": {
+  "wrong": "There is one correct world map that shows the Earth as it really is.",
+  "right": "Every flat map distorts something. A map that keeps areas true stretches shapes, and one that keeps shapes true inflates areas toward the poles. The right projection depends on the job."
+ },
+ "check": [
+  "hug-views-of-the-world-1",
+  "hug-views-of-the-world-2",
+  "hug-views-of-the-world-3",
+  "hug-views-of-the-world-10",
+  "hug-views-of-the-world-11",
+  "hug-views-of-the-world-12",
+  "hug-views-of-the-world-15"
+ ],
+ "summary": "Maps are tools with jobs. Reference maps show where things are; thematic maps show a measure, using shades, dots, sized symbols, lines of equal value or resized areas. Every projection distorts shape, area, distance or direction, so choosing one is a trade-off. Maps show absolute and relative distance and direction, clustering and dispersal, and elevation."
+}

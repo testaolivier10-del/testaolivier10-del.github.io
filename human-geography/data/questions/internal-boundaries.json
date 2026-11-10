@@ -1,0 +1,556 @@
+{
+ "stimuli": {
+  "internal-boundaries-s1": {
+   "kind": "image",
+   "title": "Two districting plans for one county",
+   "image": {
+    "figure": "internal-boundaries-plans",
+    "alt": "Two copies of the same invented county, each a 5 by 5 grid of 25 blocks of 100 voters. In both, the three left columns (15 blocks) vote mostly for Party X and the two right columns (10 blocks) vote mostly for Party Y. Plan 1 draws five districts as the five columns, so X wins 3 seats and Y wins 2. Plan 2 makes the two left columns into two all-X districts and draws the other three districts as bent shapes that each hold 3 or 4 Y blocks and 1 or 2 X blocks, so X wins 2 seats and Y wins 3.",
+    "caption": "An invented county for practice. Each district elects one representative."
+   }
+  },
+  "internal-boundaries-s2": {
+   "kind": "data",
+   "title": "An invented election in five districts",
+   "invented": true,
+   "table": {
+    "caption": "Votes for two parties in five districts of an invented state (invented data for practice)",
+    "cols": [
+     "District",
+     "Party X votes",
+     "Party Y votes",
+     "Winner"
+    ],
+    "rows": [
+     [
+      "1",
+      "90,000",
+      "10,000",
+      "X"
+     ],
+     [
+      "2",
+      "88,000",
+      "12,000",
+      "X"
+     ],
+     [
+      "3",
+      "45,000",
+      "55,000",
+      "Y"
+     ],
+     [
+      "4",
+      "46,000",
+      "54,000",
+      "Y"
+     ],
+     [
+      "5",
+      "44,000",
+      "56,000",
+      "Y"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-internal-boundaries-1",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Party X wins most votes in 15 of the 25 blocks. Under which plan does Party X win fewer seats than Party Y?",
+   "options": [
+    "Plan 2",
+    "Plan 1",
+    "Both plans",
+    "Neither plan"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the result under each grid: Plan 1 gives X 3 seats, Plan 2 gives X only 2, although the voters are the same.",
+    "options": [
+     "Right: Under Plan 2, Party X wins 2 seats and Party Y wins 3.",
+     "Under Plan 1, Party X wins 3 seats and Party Y wins 2.",
+     "Party X wins more seats under Plan 1.",
+     "Under Plan 2, Party Y wins more seats."
+    ]
+   },
+   "stimulus": "internal-boundaries-s1"
+  },
+  {
+   "id": "hug-internal-boundaries-2",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Party Y wins most votes in 10 of the 25 blocks, about 40% of the voters. Under Plan 2, what percent of the 5 seats does Party Y win?",
+   "why": {
+    "correct": "Party Y wins 3 of 5 seats: $\\frac{3}{5} \\times 100 = 60\\%$, well above its 40% share of the voters."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "share",
+     "args": [
+      3,
+      5
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "share",
+       "args": [
+        10,
+        25
+       ]
+      },
+      "why": "40% is Party Y's share of the voters. The question asks for its share of the seats: 3 of 5."
+     },
+     {
+      "from": {
+       "fn": "share",
+       "args": [
+        2,
+        5
+       ]
+      },
+      "why": "40% of the seats is Party X's result under Plan 2. Party Y wins 3 of the 5 seats."
+     }
+    ]
+   },
+   "stimulus": "internal-boundaries-s1"
+  },
+  {
+   "id": "hug-internal-boundaries-3",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "In Plan 2, the two left columns are each a district made only of Party X blocks. Which gerrymandering method does this show?",
+   "options": [
+    "Cracking",
+    "Reapportionment",
+    "Packing",
+    "Demarcation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In Plan 2, Party X wins its two packed districts by huge margins. Every X vote beyond what it needed to win there is wasted.",
+    "options": [
+     "Cracking splits a party's voters across many districts.",
+     "Reapportionment shares out seats among states after a census.",
+     "Right: Packing puts as many of a party's voters as possible into a few districts.",
+     "Demarcation is marking a boundary on the ground."
+    ]
+   },
+   "stimulus": "internal-boundaries-s1"
+  },
+  {
+   "id": "hug-internal-boundaries-4",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.C",
+   "q": "In Plan 2, the five Party X blocks in the middle column are spread over three districts that Party Y wins. What effect does this have on Party X votes?",
+   "options": [
+    "Those X votes are packed together, so they win one more seat",
+    "Those X votes are split up, so they lose in every district",
+    "Those X votes count twice, because they sit in bent districts",
+    "Those X votes decide which party wins the two left districts"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Cracking spreads a party's voters across many districts so they are outvoted in each. Naming cracking is not enough on the exam: say what it does to the votes.",
+    "options": [
+     "They are split among three districts, not packed.",
+     "Right: This is cracking: the votes are spread so thin that they elect no one.",
+     "Each voter votes once, in one district.",
+     "Those districts are made of other X blocks."
+    ]
+   },
+   "stimulus": "internal-boundaries-s1"
+  },
+  {
+   "id": "hug-internal-boundaries-5",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Across all five districts, Party X got 313,000 of the 500,000 votes. What percent of the votes did Party X get? Give one decimal place.",
+   "why": {
+    "correct": "$\\frac{313{,}000}{500{,}000} \\times 100 = 62.6\\%$, yet Party X won only 2 of the 5 seats (40%)."
+   },
+   "numeric": {
+    "unit": "%",
+    "places": 1,
+    "from": {
+     "fn": "share",
+     "args": [
+      313000,
+      500000
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "share",
+       "args": [
+        2,
+        5
+       ]
+      },
+      "why": "40% is Party X's share of the seats. The question asks for its share of the votes: 313,000 of 500,000."
+     },
+     {
+      "from": {
+       "fn": "share",
+       "args": [
+        187000,
+        500000
+       ]
+      },
+      "why": "37.4% is Party Y's share. Use Party X's 313,000 votes."
+     }
+    ]
+   },
+   "stimulus": "internal-boundaries-s2"
+  },
+  {
+   "id": "hug-internal-boundaries-6",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which districts show Party X voters packed together?",
+   "options": [
+    "Districts 3 and 4",
+    "Districts 4 and 5",
+    "Districts 1 and 5",
+    "Districts 1 and 2"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Packed districts are won by huge margins. In districts 1 and 2, Party X has about 90% of the votes, so many of its votes are wasted.",
+    "options": [
+     "Party X loses those narrowly, which is a sign of cracking.",
+     "Party X loses those narrowly.",
+     "District 5 is a narrow Party Y win.",
+     "Right: Party X wins them with about 90% of the votes, far more than it needs."
+    ]
+   },
+   "stimulus": "internal-boundaries-s2"
+  },
+  {
+   "id": "hug-internal-boundaries-7",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which conclusion do the data support?",
+   "options": [
+    "Party Y won because more people voted for it across the state",
+    "The districts have very different numbers of voters",
+    "The lines help Party Y win more seats than its vote share",
+    "Party X won most of the seats it ran for"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The pattern of a few lopsided wins for X and several narrow wins for Y is the mark of a gerrymander that favors Party Y.",
+    "options": [
+     "Party X got more votes overall: 313,000 to 187,000.",
+     "Each district has 100,000 voters.",
+     "Right: Party Y has 37.4% of the votes but 60% of the seats.",
+     "Party X won 2 of 5 seats."
+    ]
+   },
+   "stimulus": "internal-boundaries-s2"
+  },
+  {
+   "id": "hug-internal-boundaries-8",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is redistricting?",
+   "options": [
+    "Moving a state's capital to another city",
+    "Redrawing the boundaries of voting districts",
+    "Counting the people in a country",
+    "Marking a border with posts on the ground"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Redistricting is redrawing the boundaries of voting districts. In the United States it follows each census, every 10 years.",
+    "options": [
+     "That changes no voting boundaries.",
+     "Right: Districts are redrawn, often after a census, to match population changes.",
+     "That is a census.",
+     "That is demarcation."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-9",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is gerrymandering?",
+   "options": [
+    "Drawing district lines to favor one party or group",
+    "Counting votes in the order they arrive",
+    "Giving each district about the same number of people",
+    "Letting each region elect its own leader"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gerrymandering is drawing voting district boundaries to give one party or group an advantage. The name comes from a Massachusetts district of 1812, signed into law by Governor Elbridge Gerry, whose shape looked like a salamander.",
+    "options": [
+     "Right: Gerrymandering shapes districts to help one side win seats.",
+     "That is not about district lines.",
+     "That is a basic rule of fair districting.",
+     "That describes regional government, not district lines."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-10",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "After the 2020 US census, Texas gained two seats in the House of Representatives and Ohio lost one. Then Texas and Ohio drew new district lines. Which pair names these two steps in order?",
+   "options": [
+    "Redistricting, then reapportionment",
+    "Gerrymandering, then demarcation",
+    "Packing, then cracking",
+    "Reapportionment, then redistricting"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Reapportionment shares the 435 House seats among the states by population after each census. Redistricting draws the district lines inside each state.",
+    "options": [
+     "This reverses the order.",
+     "Gerrymandering is unfair line drawing, and demarcation marks a border on the ground.",
+     "These are two methods of gerrymandering, not two stages.",
+     "Right: Seats are shared out among states first; then each state draws its districts."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-11",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why do US states redraw their voting districts every 10 years?",
+   "options": [
+    "The parties take turns drawing the lines each decade",
+    "District lines wear out on the ground over time",
+    "People move, so districts must be evened out after each census",
+    "The number of states changes each decade, so maps change"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Population shifts over a decade make some districts much larger than others. Redrawing after each census keeps districts close to equal in population.",
+    "options": [
+     "No such rule exists.",
+     "District lines are drawn on maps, not marked on the ground.",
+     "Right: Each district should hold about the same number of people.",
+     "The number of states has been 50 since 1959."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-12",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "A city council is elected from eight districts, and the city redraws them after the census. At which scale is this redistricting?",
+   "options": [
+    "Global scale",
+    "Local scale",
+    "National scale",
+    "Regional scale"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Redistricting happens at several scales: US House districts inside a state, state legislative districts, and city council and school board districts at the local scale.",
+    "options": [
+     "The districts lie inside one city.",
+     "Right: City council districts divide one city.",
+     "The districts cover one city, not a country.",
+     "One city is smaller than a region."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-13",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Which rules make gerrymandering harder? Select all that apply.",
+   "options": [
+    "An independent commission, not lawmakers, draws the lines",
+    "Districts are drawn so each seat is won by a wide margin",
+    "The party in power draws the lines in secret",
+    "Districts are redrawn after each election",
+    "Lines are drawn before anyone counts the population"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "States such as Arizona and Michigan use independent commissions, so the people drawing the lines have no seats of their own to win.",
+    "options": [
+     "Right: The people drawing the lines have no seats to win.",
+     "Safe seats for one side can come from packing, a gerrymandering method.",
+     "This makes gerrymandering easier.",
+     "Redrawing more often gives the party in power more chances.",
+     "Districts need population counts to be equal."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-14",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Under the Voting Rights Act of 1965, some US districts are drawn so that a minority group forms most of the voters. What is the aim of such a district?",
+   "options": [
+    "To pack the minority group so it wins fewer seats",
+    "To make districts equal in land area",
+    "To keep the minority group from voting",
+    "To give a minority group a fair chance to elect a candidate it chooses"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Majority-minority districts aim to keep a minority group's votes from being cracked so thinly that it can never elect a candidate it prefers. In 2026, the US Supreme Court narrowed when the act requires such districts (Louisiana v. Callais).",
+    "options": [
+     "The law's aim is to protect the group's voting power.",
+     "Districts must be equal in population, not area.",
+     "The law protects voting rights.",
+     "Right: Without it, the group's votes could be cracked across districts."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-15",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "On a district map, which feature is the strongest clue that a district may be gerrymandered?",
+   "options": [
+    "A square shape that follows county lines",
+    "A district that holds about the same number of people as its neighbors",
+    "A long, twisting shape linking distant voters",
+    "A district that contains a river and some hills"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Shape is a clue, not proof: a gerrymander picks voters by party, and that often leaves stretched, twisting districts.",
+    "options": [
+     "Compact shapes that keep counties whole are signs of fair lines.",
+     "Equal population is required in every district.",
+     "Right: Odd shapes often mean lines were bent to pick certain voters.",
+     "Physical features say nothing about how voters were grouped."
+    ]
+   }
+  },
+  {
+   "id": "hug-internal-boundaries-16",
+   "unit": "unit-4",
+   "topic": "internal-boundaries",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how packing affects the votes of one party.",
+   "why": {
+    "correct": "The reader-report miss: naming packing is not enough. Explain what it does to the votes."
+   },
+   "specific": {
+    "frame": "When a party's voters are ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "When a party's voters are packed into a few districts, it wins those districts by huge margins, so many of its votes are wasted and it wins fewer seats than its share of the votes.",
+    "slots": {
+     "concept": {
+      "label": "Method",
+      "options": [
+       "packed into a few districts",
+       "spread evenly across all districts"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Spreading voters thin is cracking, not packing."
+      }
+     },
+     "cause": {
+      "label": "What happens",
+      "options": [
+       "it wins those districts by huge margins",
+       "it loses every district narrowly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Narrow losses everywhere come from cracking."
+      }
+     },
+     "effect": {
+      "label": "Effect on votes",
+      "options": [
+       "many of its votes are wasted and it wins fewer seats than its share of the votes",
+       "it wins more seats than its share of the votes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Packing hurts the packed party: the extra votes in its safe districts elect no one else."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

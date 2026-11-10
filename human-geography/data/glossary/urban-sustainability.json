@@ -1,0 +1,20 @@
+{
+ "smart-growth": {
+  "def": "Planning policies that steer new building into compact, walkable, connected areas near existing services and transit instead of spreading onto farmland."
+ },
+ "new-urbanism": {
+  "def": "A design movement that builds neighborhoods like older towns, with walkable street grids, homes near the sidewalk, a town center and a mix of housing."
+ },
+ "mixed-use": {
+  "def": "Development that puts homes, shops and offices in the same building or block, such as apartments above stores."
+ },
+ "transit-oriented-development": {
+  "def": "Dense, mixed-use building within a short walk of a rail or rapid bus station, so people can live and work without a car."
+ },
+ "greenbelt": {
+  "def": "A ring of protected farmland, parks and forest around a city where building is restricted; an urban growth boundary is a line beyond which building is limited."
+ },
+ "walkability": {
+  "def": "How easy and safe it is to reach daily needs, such as shops, school and work, on foot."
+ }
+}

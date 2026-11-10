@@ -115,6 +115,13 @@ example (`frq-cost-table-short`, parts A and B), and four eval cases (41-44: str
 rubric points) on `frq-elasticity-short` and `frq-hiring-table-short`. Graph and payoff matrix parts are graded only on
 the words typed for them. The eval has not been rerun; the grader stays off.
 
+AP® Human Geography joined at its launch (2026-11-10, `docs/aphug-spec.md` decision 11): `aphug` in `FRQ_COURSES`,
+its conventions (the task verb sets what earns each one-point part, named places, scale words, the course's usual
+confusions), a calibration example (`frq-population-policy-none` C and G) and four eval cases (45-48: strong,
+partial, weak, injection; 28 rubric points) on two no-stimulus FRQs. Its seven one-point parts per question are a
+new shape for the grader (needs-author `frq-grader`): the eval must be rerun with these cases before the grader is
+switched on for it. The grader stays off.
+
 ```
 node scripts/frq-eval/run.mjs --dry-run                                   # sizes and a cost ceiling, no call
 node scripts/frq-eval/run.mjs --mock expected                             # the scorer itself, no call

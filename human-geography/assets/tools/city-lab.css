@@ -1,0 +1,63 @@
+/* City lab (human-geography/assets/tools/city-lab.js). OWNED BY THIS TOOL ONLY (builder T4).
+   Ring colors are the plot's series colors (--hug-s1 to s4), so a ring and its
+   bid-rent line always match; every ring also carries its number, and the key
+   names it. City model zones use a light qualitative set with dark numbers. */
+.cl-svg,.cl-qfig,.cl-leg,.cl-pic{--cl-land:#F3EEE2;--cl-edge:#6E6A63;--cl-ink:#1B1B1B;--cl-tag:#FFFFFF;--cl-river:#6FA8C7;--cl-road:#5B6670;
+  --cl-z1:#0B4F5A;--cl-z2:#F2B48A;--cl-z3:#F7DDB0;--cl-z4:#CFE3D6;--cl-z5:#A7D9E0;--cl-z6:#E2C7E0;--cl-z7:#F5C6B8;--cl-z8:#E8E4D8;--cl-z9:#C9C2B4;--cl-on:#0B4F5A;--cl-hex:rgba(11,79,90,.10);}
+:root[data-theme="dark"] .cl-svg,:root[data-theme="dark"] .cl-qfig,:root[data-theme="dark"] .cl-leg,:root[data-theme="dark"] .cl-pic{--cl-land:#2A2F2E;--cl-edge:#8D958F;--cl-ink:#F1F1EE;--cl-tag:#1B2021;--cl-river:#4D86A6;--cl-road:#A9B4BE;
+  --cl-z1:#8CCFD9;--cl-z2:#7A4A2C;--cl-z3:#6B5A35;--cl-z4:#2F5240;--cl-z5:#1E5C66;--cl-z6:#553B54;--cl-z7:#6A3F33;--cl-z8:#3A3A33;--cl-z9:#4B4840;--cl-on:#8CCFD9;--cl-hex:rgba(140,207,217,.14);}
+.cl-card{display:grid;gap:14px;}
+.cl-fig{display:flex;flex-direction:column;gap:8px;}
+.cl-pic{position:relative;min-height:320px;height:min(62vh,560px);overflow:hidden;}
+.cl-pic.is-scroll{overflow-y:auto;}
+.ls-root .cl-fig{flex:1 1 auto;min-height:0;height:100%;}
+.ls-root .cl-pic{flex:1 1 auto;height:auto;min-height:280px;}
+.cl-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.cl-split{display:flex;gap:12px;height:100%;align-items:center;}
+.cl-split.is-stack{flex-direction:column;gap:8px;align-items:stretch;}
+.cl-ringsvg{flex:0 0 44%;width:44%;}
+.cl-split.is-stack .cl-ringsvg{width:100%;flex:none;}
+.cl-plotbox{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;}
+.cl-plotbox .hug-plot{width:100%;height:100%;max-height:100%;}
+.cl-qfig{margin:0;} .cl-qfig .hug-plot{width:100%;height:auto;}
+.cl-grp[hidden],.cl-row[hidden],.bt-ctl[hidden]{display:none;}
+.cl-grp{display:flex;flex-direction:column;gap:10px;}
+.cl-ctl{display:flex;flex-direction:column;gap:12px;}
+.cl-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.cl-lbl{margin:0 0 6px;font:700 var(--ls-s,14px)/1.3 var(--font-ui);color:var(--muted);}
+.ls-root .cl-chips .tchip[aria-pressed=true],.cl-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--paper);}
+.cl-chips .tchip[hidden]{display:none;}
+.cl-tipslot{height:52px;}
+.cl-band{stroke:var(--cl-edge);stroke-width:1;}
+.cl-band.s1{fill:var(--hug-s1,#094953);fill-opacity:.55;} .cl-band.s2{fill:var(--hug-s2,#C24E00);fill-opacity:.45;} .cl-band.s3{fill:var(--hug-s3,#009E73);fill-opacity:.4;} .cl-band.s4{fill:var(--hug-s4,#A8508A);fill-opacity:.35;}
+.cl-market{fill:var(--cl-ink);stroke:var(--cl-tag);stroke-width:2;}
+.cl-river{stroke:var(--cl-river);stroke-width:7;stroke-linecap:round;opacity:.5;} .cl-river.is-top{opacity:.9;stroke-width:3;}
+.cl-num circle{fill:var(--cl-tag);stroke:var(--cl-ink);stroke-width:1.4;} .cl-num text{font:800 13px var(--font-ui);fill:var(--cl-ink);}
+.cl-tag rect{fill:var(--cl-tag);stroke:var(--cl-ink);stroke-width:1.4;} .cl-tag text{font:800 12.5px var(--font-ui);fill:var(--cl-ink);}
+.cl-z{stroke:var(--cl-edge);stroke-width:1.2;}
+.cl-z.z1{fill:var(--cl-z1);} .cl-z.z2{fill:var(--cl-z2);} .cl-z.z3{fill:var(--cl-z3);} .cl-z.z4{fill:var(--cl-z4);} .cl-z.z5{fill:var(--cl-z5);} .cl-z.z6{fill:var(--cl-z6);} .cl-z.z7{fill:var(--cl-z7);} .cl-z.z8{fill:var(--cl-z8);} .cl-z.z9{fill:var(--cl-z9);}
+.cl-road{fill:none;stroke:var(--cl-road);stroke-linecap:round;}
+.cl-ringroad{fill:none;stroke:var(--cl-road);stroke-width:5;}
+.cl-sea{fill:var(--cl-river);opacity:.7;}
+.cl-hex{fill:var(--cl-hex);stroke:var(--cl-on);stroke-width:1.3;}
+.cl-cp{fill:var(--cl-tag);stroke:var(--cl-edge);stroke-width:1.3;} .cl-cp.is-on{fill:var(--cl-on);stroke:var(--cl-on);}
+.cl-legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;font:600 13px/1.3 var(--font-ui);color:var(--ink);}
+.cl-legend li{display:flex;align-items:center;gap:6px;}
+.cl-sw{flex:none;display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid var(--cl-edge);}
+.cl-sw.s1{background:var(--hug-s1,#094953);} .cl-sw.s2{background:var(--hug-s2,#C24E00);} .cl-sw.s3{background:var(--hug-s3,#009E73);} .cl-sw.s4{background:var(--hug-s4,#A8508A);}
+.cl-sw.is-cp{border-radius:50%;background:var(--cl-on);} .cl-sw.is-cpoff{border-radius:50%;background:var(--cl-tag);} .cl-sw.is-hex{background:var(--cl-hex);border-color:var(--cl-on);}
+.cl-sw.is-dash{width:0;height:14px;border:0;border-left:2px dashed var(--ink);border-radius:0;}
+.cl-note{margin:4px 0 0;}
+.cl-keys{display:grid;gap:10px;} .cl-keys.is-two{grid-template-columns:1fr 1fr;}
+@media (max-width:640px){ .cl-keys.is-two{grid-template-columns:1fr;} }
+.cl-key-h{margin:0 0 4px;font:800 13.5px var(--font-ui);}
+.cl-key ol{margin:0;padding-left:1.6em;font:600 13px/1.4 var(--font-ui);}
+.ls-root .cl-legend,.ls-root .cl-note,.ls-root .cl-keys{padding-right:46px;}
+.cl-grid{stroke:var(--line,#ddd);stroke-width:1;}
+.cl-axis{fill:none;stroke:var(--cl-ink);stroke-width:1.4;}
+.cl-tick{font:600 12px var(--font-ui);fill:var(--cl-ink);}
+.cl-bar{fill:var(--cl-z5);stroke:var(--cl-on);stroke-width:1.2;}
+.cl-rule{fill:none;stroke:var(--hug-s2,#D55E00);stroke-width:2.4;stroke-dasharray:6 4;}
+.cl-ruledot{fill:var(--hug-s2,#D55E00);stroke:var(--cl-tag);stroke-width:1.5;}
+.cl-sw.is-bar{background:var(--cl-z5);border-color:var(--cl-on);} .cl-sw.is-rule{border-radius:50%;background:var(--hug-s2,#D55E00);}
+.cl-lead{stroke:var(--cl-ink);stroke-width:1.2;fill:none;} .cl-leaddot{fill:var(--cl-ink);}

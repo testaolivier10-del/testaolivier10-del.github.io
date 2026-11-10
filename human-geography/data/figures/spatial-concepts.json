@@ -1,0 +1,12 @@
+{
+ "spatial-concepts-decay-site": {
+  "file": "figures/spatial-concepts-decay-site.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a graph of visits a week against distance from a store, a curve that falls steeply and then levels off: fewer visits come from far away. This is distance decay. Right: two boxes. Site is the place itself, such as high ground, a river bend, fresh water or flat land. Situation is its links to other places, such as being on a trade route, near a port or between two cities."
+ }
+}

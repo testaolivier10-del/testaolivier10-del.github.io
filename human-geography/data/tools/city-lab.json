@@ -1,0 +1,13 @@
+{
+  "slug": "city-lab",
+  "kind": "simulator",
+  "topic": "von-thunen",
+  "intro": "<p>Every land use bids for land, and the highest bid wins. Slide the cost of transport or the price of milk and watch the bid-rent lines move and von Thünen's rings grow or shrink beside them. Then compare the seven city models side by side, test a store's range and threshold in central place theory, and check a country's cities against the rank-size rule.</p>",
+  "howItWorksTitle": "How this trainer works",
+  "howItWorks": "<p>The bid-rent numbers are invented to show the idea: each land use can pay a certain rent at the market, less for every kilometer away, and each piece of land goes to whoever bids most. Models are simplified ideas with assumptions and limits; each one here says what it was built on and where it fails. The Latin American, Southeast Asian and African models are named by region, as the course framework names them.</p><p>In Test yourself, place von Thünen's rings and predict what a change does to them, work out two bids and say who gets the land, name a city model from a description and its limit, decide whether a store's range holds enough people for its threshold, and test the rank-size rule. Every wrong answer says what the slip was.</p>",
+  "contexts": [
+    { "id": "farm", "topic": "von-thunen", "types": ["rings", "bidrent"] },
+    { "id": "city", "topic": "city-structure", "types": ["bidrent", "models"] },
+    { "id": "places", "topic": "city-size-distribution", "types": ["central", "ranksize"] }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+ "topic": "defining-boundaries",
+ "hook": "Fly over the western United States and Canada and you will not see their border, yet for about 2,000 kilometers it runs along one line of latitude, 49° N. In Germany, a strip of old watchtowers marks a border that has not existed since 1990. Every boundary has a history: when it was drawn, who drew it and what it follows. Geographers sort boundaries into types by that history.",
+ "prereq": [
+  {
+   "q": "What is a state?",
+   "options": [
+    "A country with people, territory, a government and recognition",
+    "A group sharing one culture",
+    "A region inside a country",
+    "A city and its suburbs"
+   ],
+   "correct": 0,
+   "why": "States are the basic units of the political map.",
+   "review": "political-intro"
+  },
+  {
+   "q": "What is the cultural landscape?",
+   "options": [
+    "The visible marks people leave on the land",
+    "The natural land before people",
+    "A map of languages",
+    "The climate of a place"
+   ],
+   "correct": 0,
+   "why": "Buildings, roads, fields and walls are all part of the cultural landscape.",
+   "review": "culture-on-the-land"
+  }
+ ],
+ "figure": {
+  "figure": "defining-boundaries-types",
+  "caption": "Six boundary types, sorted by when a boundary was drawn, who drew it and what it follows."
+ },
+ "chain": [
+  {
+   "cause": "A boundary is drawn before many settlers arrive",
+   "effect": "it is antecedent, and settlement later grows up around it"
+  },
+  {
+   "cause": "Outside powers draw a boundary without asking the people who live there",
+   "effect": "it is superimposed and may cut a people in two"
+  },
+  {
+   "cause": "A boundary stops working but its walls or fences remain",
+   "effect": "it becomes a relict boundary, visible in the cultural landscape"
+  }
+ ],
+ "ideas": [
+  "Sort by <b>timing</b>: <b>antecedent</b> boundaries come before settlement; <b>subsequent</b> ones come after.",
+  "Sort by <b>what it follows</b>: <b>consequent</b> boundaries follow a cultural line (India and Pakistan, 1947); <b>geometric</b> ones are straight lines (49° N).",
+  "Sort by <b>who drew it</b>: <b>superimposed</b> boundaries are forced by outside powers (much of Africa). A <b>relict</b> boundary no longer works (the old East and West German line).",
+  "One boundary can fit more than one type: Kenya and Tanzania is geometric and superimposed."
+ ],
+ "misconception": {
+  "wrong": "Every boundary fits exactly one type.",
+  "right": "The types describe different things (timing, what it follows, who drew it), so one boundary can fit two or three. The US and Canada line along 49° N is both geometric and antecedent."
+ },
+ "check": [
+  "hug-defining-boundaries-1",
+  "hug-defining-boundaries-2",
+  "hug-defining-boundaries-3",
+  "hug-defining-boundaries-10",
+  "hug-defining-boundaries-12",
+  "hug-defining-boundaries-13"
+ ],
+ "summary": "Political boundaries mark where one state's territory ends. Geographers sort them by history: antecedent boundaries come before settlement and subsequent ones after; consequent boundaries follow cultural lines and geometric ones follow straight lines; superimposed boundaries are forced by outside powers, and relict boundaries no longer work but still show on the land. Many boundaries fit more than one type."
+}

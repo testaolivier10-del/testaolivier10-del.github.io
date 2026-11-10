@@ -1,0 +1,22 @@
+{
+ "boundary-functions-zones": {
+  "file": "figures/boundary-functions-zones.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A strip of sea running out from the coast in four bands. From 0 to 12 nautical miles: the territorial sea, ruled like land. From 12 to 24: the contiguous zone, where the state can enforce customs and police laws. From 12 out to 200: the exclusive economic zone, where fish, oil, gas and minerals belong to the coastal state (the contiguous zone sits inside it). Beyond 200: the high seas, open to all states. Not to scale."
+ },
+ "boundary-functions-zones-lettered": {
+  "file": "figures/boundary-functions-zones-lettered.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A strip of sea running out from a coast in four bands lettered A to D. Band A runs from the coast to 12 nautical miles, band B from 12 to 24, band C from 24 to 200 and band D lies beyond 200 nautical miles. Not to scale."
+ }
+}

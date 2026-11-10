@@ -1,0 +1,72 @@
+{
+ "topic": "data-sources",
+ "hook": "Satellites photograph the Amazon rainforest again and again. Each year, Brazil's space research agency compares the images to measure how much forest was cleared. The pictures show what changed and where. They cannot show why a family cleared a field or what they planned to grow. For that, someone has to go and ask. Geographers use both kinds of data.",
+ "prereq": [
+  {
+   "q": "What does a reference map show?",
+   "options": [
+    "Where things are, such as borders and cities",
+    "One measure, such as income, by shading",
+    "Lines that join points of equal height",
+    "Areas resized by their number of people"
+   ],
+   "correct": 0,
+   "why": "Reference maps show locations; the other three are thematic maps.",
+   "review": "views-of-the-world"
+  },
+  {
+   "q": "A source line reads \"UN World Population Prospects 2024\". What does it tell you?",
+   "options": [
+    "Who made the data and the year",
+    "What the shades mean",
+    "The pattern on the map",
+    "The map scale"
+   ],
+   "correct": 0,
+   "why": "A source line gives the maker and the year.",
+   "review": "skills-reading"
+  }
+ ],
+ "figure": {
+  "figure": "data-sources-two-kinds",
+  "caption": "Quantitative data are numbers; qualitative data are words, pictures and experiences. A GIS can layer both."
+ },
+ "chain": [
+  {
+   "cause": "A geographer asks a question about a place",
+   "effect": "the question decides which kind of data is needed"
+  },
+  {
+   "cause": "The question is how much, how many or where",
+   "effect": "quantitative data from counts, satellites or GPS fit best"
+  },
+  {
+   "cause": "The question is how people see, feel or decide",
+   "effect": "qualitative data from interviews, field notes or documents fit best"
+  },
+  {
+   "cause": "Both kinds are tied to locations and stacked in a GIS",
+   "effect": "the geographer can see where patterns overlap"
+  }
+ ],
+ "ideas": [
+  "<b>Geographic data</b> are information tied to a location. They can be <b>quantitative</b> (numbers you count or measure) or <b>qualitative</b> (words, pictures and experiences).",
+  "<b>Field observation</b> means going to a place to record, count, sketch, photograph or interview. It is rich but covers a small area and a short time.",
+  "<b>Remote sensing</b> gathers data from far away, usually by satellite. A <b>satellite navigation system</b> such as GPS finds exact locations.",
+  "A <b>geographic information system (GIS)</b> is software that stacks data as layers on a map, so you can see where they overlap."
+ ],
+ "misconception": {
+  "wrong": "Numbers from satellites are always better than people's stories.",
+  "right": "Each kind of data answers different questions. Satellites measure what changed across a large area; interviews and field notes explain why and how people experience it."
+ },
+ "check": [
+  "hug-data-sources-1",
+  "hug-data-sources-2",
+  "hug-data-sources-3",
+  "hug-data-sources-8",
+  "hug-data-sources-10",
+  "hug-data-sources-11",
+  "hug-data-sources-14"
+ ],
+ "summary": "Geographic data are tied to places. Quantitative data are counts and measurements, from sources such as satellite images and GPS; qualitative data are words and pictures, from interviews, field notes, travel accounts, news and documents. Field observation gives rich local detail, remote sensing covers large areas over time, and a GIS layers data so geographers can see how they relate."
+}

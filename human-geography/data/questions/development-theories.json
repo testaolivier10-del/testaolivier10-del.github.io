@@ -1,0 +1,726 @@
+{
+ "stimuli": {
+  "development-theories-s1": {
+   "kind": "data",
+   "title": "Copper and the economy of Country D, 2000 to 2020",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of Country D, 2000 to 2020: the world copper price index and Country D's export earnings rise and fall together, both peaking in 2010 and dropping sharply by 2015",
+    "xLabel": "Year",
+    "yLabel": "Index (2000 = 100)",
+    "series": [
+     {
+      "name": "World copper price",
+      "points": [
+       [
+        2000,
+        100
+       ],
+       [
+        2005,
+        180
+       ],
+       [
+        2010,
+        380
+       ],
+       [
+        2015,
+        210
+       ],
+       [
+        2020,
+        290
+       ]
+      ]
+     },
+     {
+      "name": "Country D's export earnings",
+      "points": [
+       [
+        2000,
+        100
+       ],
+       [
+        2005,
+        170
+       ],
+       [
+        2010,
+        350
+       ],
+       [
+        2015,
+        190
+       ],
+       [
+        2020,
+        260
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "development-theories-s2": {
+   "kind": "map",
+   "title": "Head offices of large firms in Country A, by province",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "label": "Choropleth map of Country A by province: head offices of large firms per million people are highest in the Capital Region and South Coast, middle in the Central Valley and Eastern Plains, and lowest in the northern, western and southern provinces",
+    "invented": true,
+    "legendTitle": "Head offices of large firms per million people (invented)",
+    "classes": [
+     "Under 2",
+     "2 to 9",
+     "10 or more"
+    ],
+    "values": {
+     "capital": 2,
+     "coast": 2,
+     "central": 1,
+     "east": 1,
+     "north": 0,
+     "northeast": 0,
+     "west": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital"
+     },
+     {
+      "at": "west",
+      "text": "Western Uplands"
+     },
+     {
+      "at": "coast",
+      "text": "South Coast"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-development-theories-1",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Copper makes up about 75% of Country D's exports. Which statement best describes the pattern in the chart?",
+   "options": [
+    "Earnings rise and fall with the price",
+    "Export earnings rise steadily whatever copper does",
+    "Export earnings move opposite to the copper price",
+    "Earnings stay flat"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two lines move together, which is what happens when one commodity makes up most of a country's exports.",
+    "options": [
+     "Right: both lines peak in 2010 and both drop by 2015.",
+     "Earnings fall from 350 to 190 between 2010 and 2015, along with copper.",
+     "The two lines move in the same direction in every period.",
+     "Earnings swing widely, from 100 up to 350 and down to 190."
+    ]
+   },
+   "stimulus": "development-theories-s1"
+  },
+  {
+   "id": "hug-development-theories-2",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which concept does Country D's situation illustrate most directly?",
+   "options": [
+    "Commodity dependence",
+    "High mass consumption",
+    "The informal sector",
+    "The gender wage gap"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An economy that relies on one or a few raw exports is commodity dependent, so its earnings follow world prices.",
+    "options": [
+     "Right: relying on one raw export ties the economy to that commodity's world price.",
+     "That is Rostow's last stage; nothing here shows it.",
+     "The chart is about exports and prices, not unregistered work.",
+     "The chart says nothing about pay for women and men."
+    ]
+   },
+   "stimulus": "development-theories-s1"
+  },
+  {
+   "id": "hug-development-theories-3",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "What is the most likely effect of the 2010 to 2015 change on Country D's government?",
+   "options": [
+    "Tax income falls, so it borrows",
+    "It gains a surplus as copper buyers pay more",
+    "It moves up a stage in Rostow's model",
+    "It grows more diverse"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the main export's price falls, export earnings and taxes fall, so governments often borrow or cut services.",
+    "options": [
+     "Right: lower export earnings mean lower tax income, which can lead to debt or cuts to schools and clinics.",
+     "Copper prices fell in this period, so buyers paid less.",
+     "A sharp fall in earnings does not fit a climb through the stages.",
+     "A price fall does not by itself create new industries."
+    ]
+   },
+   "stimulus": "development-theories-s1"
+  },
+  {
+   "id": "hug-development-theories-4",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How would dependency theory explain Country D's reliance on copper, compared with Rostow's model?",
+   "options": [
+    "Both blame a lack of investment in Country D alone",
+    "Rostow: early stage; dependency: colonial ties",
+    "Rostow: shaped by colonial ties; dependency: an early stage",
+    "Both say copper exports will make it core within a decade"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rostow treats a raw-export economy as an early stage; dependency theory treats it as a result of colonial history and unequal trade with the core.",
+    "options": [
+     "Dependency theory looks at links to the core, not only at a country's own investment.",
+     "Right: Rostow sees an early stage to grow out of; dependency theory sees a role imposed by colonial history and trade with the core.",
+     "This swaps the two theories.",
+     "Neither model predicts that; dependency theory expects the reverse."
+    ]
+   },
+   "stimulus": "development-theories-s1"
+  },
+  {
+   "id": "hug-development-theories-5",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis are the data on this map?",
+   "options": [
+    "Global",
+    "Local (subnational), by province",
+    "National, one value for the country",
+    "Regional, across several countries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The scale of analysis is the scale of the data: one value for each province inside Country A, so subnational.",
+    "options": [
+     "The map shows one country, not the world.",
+     "Right: the data are for provinces inside one country, a subnational scale.",
+     "Each province has its own value, so the data are below the national scale.",
+     "Only one country is shown."
+    ]
+   },
+   "stimulus": "development-theories-s2"
+  },
+  {
+   "id": "hug-development-theories-6",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which statement describes the pattern on the map?",
+   "options": [
+    "Head offices are spread evenly across Country A",
+    "Head offices are densest in the Western Uplands",
+    "They cluster in the capital and South Coast",
+    "Head offices are densest in the far north"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A strong pattern says where: the top class is the Capital Region and South Coast, and the lowest is the north, west and south.",
+    "options": [
+     "The classes range from under 2 to 10 or more, so the spread is uneven.",
+     "The Western Uplands are in the lowest class.",
+     "Right: those two provinces are in the top class; the north, west and south are in the lowest.",
+     "The northern provinces are in the lowest class."
+    ]
+   },
+   "stimulus": "development-theories-s2"
+  },
+  {
+   "id": "hug-development-theories-7",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.D",
+   "q": "How does the map show that world system theory can apply at more than one scale?",
+   "options": [
+    "One country has a core-like center and periphery-like edge",
+    "The map proves Country A is a core country",
+    "Each province is in the semiperiphery",
+    "World system theory works at the global scale alone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The core, semiperiphery and periphery idea can be applied inside a country: a core-like center with decision work and a periphery-like edge.",
+    "options": [
+     "Right: the Capital Region and South Coast hold the decision work, as a core does, while outer provinces look like a periphery.",
+     "A map of one country's provinces cannot place the whole country in the world system.",
+     "The map shows clear differences between provinces, not one shared tier.",
+     "The point of the question is that the same pattern can appear inside a country."
+    ]
+   },
+   "stimulus": "development-theories-s2"
+  },
+  {
+   "id": "hug-development-theories-8",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.F",
+   "q": "What is one limitation of this map for judging development in the Western Uplands?",
+   "options": [
+    "It counts offices, not well-being",
+    "It shows too few provinces",
+    "It uses invented data, so it shows no pattern",
+    "It is at the global scale, so provinces vanish"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Head offices per million people measure where decisions are made, not how people live, so the map alone cannot judge development.",
+    "options": [
+     "Right: one indicator of business decisions says little about people's overall well-being.",
+     "Eight provinces are enough to read a pattern.",
+     "Invented data still show a pattern; the limit is what the measure counts.",
+     "The map is subnational; each province is shown."
+    ]
+   },
+   "stimulus": "development-theories-s2"
+  },
+  {
+   "id": "hug-development-theories-9",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.A",
+   "q": "Put Rostow's stages of economic growth in order, from first to last.",
+   "model": {
+    "layout": "stages",
+    "title": "Rostow's stages of economic growth",
+    "slots": [
+     {
+      "id": "st1"
+     },
+     {
+      "id": "st2"
+     },
+     {
+      "id": "st3"
+     },
+     {
+      "id": "st4"
+     },
+     {
+      "id": "st5"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "trad",
+      "text": "Traditional society"
+     },
+     {
+      "id": "pre",
+      "text": "Preconditions for take-off"
+     },
+     {
+      "id": "take",
+      "text": "Take-off"
+     },
+     {
+      "id": "drive",
+      "text": "Drive to maturity"
+     },
+     {
+      "id": "mass",
+      "text": "High mass consumption"
+     },
+     {
+      "id": "dtm",
+      "text": "Falling death rates"
+     }
+    ],
+    "key": {
+     "st1": "trad",
+     "st2": "pre",
+     "st3": "take",
+     "st4": "drive",
+     "st5": "mass"
+    },
+    "slips": [
+     {
+      "piece": "drive",
+      "slot": "st3",
+      "why": "Take-off comes first: a few industries grow fast; the drive to maturity spreads growth to many industries after it."
+     },
+     {
+      "piece": "dtm",
+      "slot": "st2",
+      "why": "Falling death rates belong to the demographic transition model, not Rostow's economic stages."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rostow's stages run: traditional society, preconditions for take-off, take-off, drive to maturity, high mass consumption."
+   }
+  },
+  {
+   "id": "hug-development-theories-10",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.A",
+   "q": "Place each description in its tier of world system theory, from the core at the top to the periphery at the bottom.",
+   "model": {
+    "layout": "tiers",
+    "title": "World system theory",
+    "slots": [
+     {
+      "id": "core",
+      "name": "Core"
+     },
+     {
+      "id": "semi",
+      "name": "Semiperiphery"
+     },
+     {
+      "id": "peri",
+      "name": "Periphery"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "hq",
+      "text": "Head offices, research, high wages"
+     },
+     {
+      "id": "mix",
+      "text": "Factories, some research, mid wages"
+     },
+     {
+      "id": "raw",
+      "text": "Raw exports, low wages"
+     },
+     {
+      "id": "eq",
+      "text": "Equal wages in every country"
+     }
+    ],
+    "key": {
+     "core": "hq",
+     "semi": "mix",
+     "peri": "raw"
+    },
+    "slips": [
+     {
+      "piece": "mix",
+      "slot": "peri",
+      "why": "A mix of factories and some research is the semiperiphery; the periphery mostly exports raw materials."
+     },
+     {
+      "piece": "eq",
+      "slot": "semi",
+      "why": "The model is about unequal roles; equal wages everywhere is not part of it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The core does high-wage decision and research work, the semiperiphery mixes industry with lower-wage work, and the periphery supplies raw materials and cheap labor."
+   }
+  },
+  {
+   "id": "hug-development-theories-11",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.B",
+   "q": "Put the steps of commodity dependence in cause-and-effect order.",
+   "model": {
+    "layout": "stages",
+    "title": "How commodity dependence hurts an economy",
+    "slots": [
+     {
+      "id": "c1"
+     },
+     {
+      "id": "c2"
+     },
+     {
+      "id": "c3"
+     },
+     {
+      "id": "c4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "one",
+      "text": "Exports rely on one commodity"
+     },
+     {
+      "id": "fall",
+      "text": "Its world price falls"
+     },
+     {
+      "id": "earn",
+      "text": "Export earnings and taxes drop"
+     },
+     {
+      "id": "debt",
+      "text": "Government borrows or cuts services"
+     },
+     {
+      "id": "boom",
+      "text": "New industries open at once"
+     }
+    ],
+    "key": {
+     "c1": "one",
+     "c2": "fall",
+     "c3": "earn",
+     "c4": "debt"
+    },
+    "slips": [
+     {
+      "piece": "earn",
+      "slot": "c2",
+      "why": "The price falls first; earnings drop because of it."
+     },
+     {
+      "piece": "boom",
+      "slot": "c4",
+      "why": "A price fall does not create new industries; it squeezes the budget."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reliance on one export ties earnings to its price; a price fall cuts earnings and taxes, so governments borrow or cut services."
+   }
+  },
+  {
+   "id": "hug-development-theories-12",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A student writes: \"In Rostow's model, stage 2 is when death rates fall but birth rates stay high.\" What is wrong?",
+   "options": [
+    "Rostow's stage 2 is when birth rates fall",
+    "The student swapped Rostow's stages 2 and 4",
+    "It describes the demographic transition",
+    "Rostow's model has no stage 2"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both models have stages, so they are easy to confuse: Rostow's describe the economy; the demographic transition model's describe births and deaths.",
+    "options": [
+     "Rostow's stages are not about birth or death rates at all.",
+     "The mistake is mixing two models, not swapping stages.",
+     "Right: falling death rates with high birth rates is stage 2 of the demographic transition model; Rostow's stage 2 is the preconditions for take-off.",
+     "It has five stages; stage 2 is the preconditions for take-off."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-theories-13",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which is the strongest criticism of Rostow's stages of economic growth?",
+   "options": [
+    "It has too many stages",
+    "It assumes one Western path for all",
+    "It describes birth and death rates rather than the economy",
+    "It says the world economy is one connected system"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rostow assumed every country can follow the path of Britain and the United States, which ignores colonialism and global power.",
+    "options": [
+     "The number of stages is not a weakness of the idea.",
+     "Right: it assumes one path for all and leaves out how richer countries shaped poorer ones.",
+     "That describes the demographic transition model.",
+     "That is world system theory's claim, not Rostow's."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-theories-14",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.E",
+   "q": "South Korea grew from a mostly farming economy in 1960 into a major maker of ships, cars and electronics. What does this suggest about world system theory?",
+   "options": [
+    "Countries can move between tiers over time",
+    "The periphery and the core are fixed forever",
+    "The model works for Africa alone",
+    "South Korea's growth disproves the other development models"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "World system theory allows mobility: a country can move from the periphery toward the core, as South Korea is often said to have done.",
+    "options": [
+     "Right: South Korea is often described as moving from the periphery toward the core.",
+     "South Korea's rise shows countries can change tiers.",
+     "The model is meant for the whole world.",
+     "One case shows a model's range, not that every model fails."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-theories-15",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "According to dependency theory, why do many periphery countries stay poor?",
+   "options": [
+    "They have not yet saved enough to reach take-off",
+    "Colonial ties keep them exporting raw goods",
+    "Their climate makes factory work unproductive",
+    "They have too few people to run factories"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Dependency theory says the periphery's poverty comes from dependence on the core, built through colonial rule and unequal trade.",
+    "options": [
+     "That is Rostow's explanation, not dependency theory's.",
+     "Right: dependency theory blames economies built to export raw materials to, and import goods from, the core.",
+     "That is environmental determinism, which the course rejects as a full explanation.",
+     "Population size is not the theory's argument."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-theories-16",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.D",
+   "q": "Inside China, coastal cities such as Shanghai hold many head offices and research centers, while many interior provinces send migrants and raw materials to the coast. What does this show?",
+   "options": [
+    "A core-periphery pattern can exist in one country",
+    "China is a core country in each of its provinces",
+    "Rostow's model explains migration within China",
+    "Dependency theory is limited to Latin America"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A core-periphery pattern can appear at the national scale, not only between countries.",
+    "options": [
+     "Right: a core-like coast and periphery-like interior show the model at a national scale.",
+     "The interior provinces look periphery-like, not core.",
+     "Rostow's model is about economic stages, not internal migration.",
+     "Dependency ideas were built in Latin America but are applied widely."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-theories-17",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.E",
+   "q": "Build a statement of one limit of Rostow's model, naming a place.",
+   "why": {
+    "correct": "A limit names the model's assumption, a real place, and what happened there that the model leaves out."
+   },
+   "specific": {
+    "frame": "Rostow's model assumes ___, but in ___, ___, so the model fits poorly.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Rostow's model assumes every country follows one Western path, but in Zambia, colonial rule built an economy around copper exports, so the model fits poorly.",
+    "slots": {
+     "model": {
+      "label": "Assumption",
+      "options": [
+       "every country follows one Western path",
+       "death rates fall before birth rates"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is an assumption of the demographic transition model."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "Zambia",
+       "every poor country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name one real place; a sweeping claim earns no credit."
+      }
+     },
+     "cause": {
+      "label": "What happened there",
+      "options": [
+       "colonial rule built an economy around copper exports",
+       "the climate stopped all industry"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Climate as the sole cause is environmental determinism."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

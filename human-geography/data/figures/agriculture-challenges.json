@@ -1,0 +1,12 @@
+{
+ "agriculture-challenges-food-desert": {
+  "file": "figures/agriculture-challenges-food-desert.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 556,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A drawn street grid of an invented town. One supermarket, marked S, is in the northeast, with a circle showing everything within 1 mile of it. Neighborhood N, in the southwest, is outside that circle; it has two corner stores, marked C, that sell snacks and little fresh food. A bus line runs east to west between the neighborhood and the supermarket."
+ }
+}

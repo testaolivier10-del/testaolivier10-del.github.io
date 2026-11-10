@@ -1,0 +1,12 @@
+{
+ "trade-world-economy-advantage": {
+  "file": "figures/trade-world-economy-advantage.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two invented countries. In one day of work, Country A makes 6 tonnes of rice or 3 bikes; Country B makes 2 tonnes of rice or 2 bikes. So in A one bike costs 2 tonnes of rice and a tonne of rice costs half a bike; in B one bike costs 1 tonne of rice and a tonne of rice costs 1 bike. A gives up less to make rice, so A makes rice; B gives up less to make bikes, so B makes bikes."
+ }
+}

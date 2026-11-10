@@ -1,0 +1,125 @@
+/* Model Studio (builder T1). OWNED BY THIS TOOL ONLY. The figures are drawn
+   with fixed colors on a white card (like the course's maps), so they read
+   the same in light and dark; every word and slot number is HTML at the
+   page's size. */
+.ms-fig{margin:0;}
+.ms-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;color:#1B1B1B;}
+.ms-pic{position:relative;line-height:0;container-type:inline-size;}
+.ms-fig-svg{display:block;width:100%;height:auto;}
+.ms-over{position:absolute;inset:0;pointer-events:none;line-height:1.2;}
+.ms-badge{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:#1B1B1B;color:#fff;border:2px solid #fff;
+  font:800 14px/24px var(--font-ui);text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .15s,background .15s;}
+.ms-badge.is-cur{background:#094953;transform:translate(-50%,-50%) scale(1.2);box-shadow:0 0 0 4px rgba(9,73,83,.28);}
+.ms-badge.is-dim{opacity:.35;}
+.ms-tag{position:absolute;transform:translate(-50%,-50%);padding:1px 6px;border-radius:6px;background:#fff;border:1.5px solid #1B1B1B;color:#1B1B1B;font:800 13px/1.3 var(--font-ui);white-space:nowrap;}
+.ms-legend{list-style:none;margin:8px 2px 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;line-height:1.3;}
+.ms-legend li{display:flex;align-items:center;gap:6px;font:600 13px/1.3 var(--font-ui);color:#1B1B1B;}
+.ms-sw{flex:none;display:inline-block;width:24px;height:12px;border-radius:3px;}
+.ms-sw-rail{height:6px;background:repeating-linear-gradient(90deg,#3A3631 0 7px,#fff 7px 14px);border:2px solid #3A3631;}
+.ms-sw-road{height:7px;background:#C99A2E;border:1px solid #7A6A3A;}
+.ms-sw-water{background:#BFD9EA;border:1px solid #5E8FB0;}
+.ms-sw-line{height:0;border-top:3.5px solid #1B1B1B;border-radius:0;}
+.ms-sw-dash{height:0;border-top:3.5px dashed #1B1B1B;border-radius:0;}
+.ms-sw-hatch{background:repeating-linear-gradient(45deg,#E4DCF0 0 4px,#9A86C0 4px 6px);}
+.ms-sw-arrow{height:0;border-top:3px solid #1B1B1B;border-radius:0;position:relative;}
+.ms-sw-big{width:16px;height:16px;border-radius:50%;background:#F2E3C9;border:1.2px solid #5B564E;}
+.ms-sw-ring{width:12px;height:12px;border-radius:50%;background:#E1F1F4;border:1.2px solid #5B564E;}
+.ms-sw-small{width:8px;height:8px;border-radius:50%;background:#1B1B1B;}
+.ms-sw-birth{height:0;border-top:4px solid #094953;border-radius:0;}
+.ms-sw-death{height:0;border-top:4px dashed #B5481F;border-radius:0;}
+.ms-sw-pop{height:0;border-top:4px dotted #7A4F9E;border-radius:0;}
+.ms-sw-food{height:0;border-top:4px dashed #094953;border-radius:0;}
+.ms-fig-art .ms-card{display:flex;justify-content:center;}
+.ms-fig-art .hug-model-art{width:100%;max-width:300px;}
+.ms-fig-art[data-layout="stages"] .hug-model-art{max-width:420px;}
+.ms-fig-art .hug-model-band.is-dim,.ms-fig-art .hug-model-num.is-dim{opacity:.3;}
+.ms-fig-art .hug-model-band.is-cur{fill:#094953;}
+.ms-fig-art .hug-model-num.is-cur{fill:#fff;}
+.ms-fig-art .hug-model-center{font-size:13px;}
+.ms-plotfig .hug-plot{display:block;width:100%;height:auto;max-width:520px;margin:0 auto;}
+.ms-plotfig .ms-card{color:#1B1B1B;}
+.ms-src{margin:4px 2px 0;font:600 12px/1.3 var(--font-ui);color:#4A463F;}
+.ms-tblfig{margin:0;}
+.ms-map{margin:0;}
+
+.ms-ctl{display:grid;gap:10px;}
+.ms-row{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:8px;}
+.ms-l{font:800 14px var(--font-ui);}
+.ms-pick{min-height:44px;width:100%;}
+.ms-views{max-width:360px;}
+.ms-steprow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.ms-steprow button{min-height:44px;}
+.ms-key{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px;}
+.ms-key li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:start;font:600 14px/1.4 var(--font-ui);}
+.ms-key li.is-cur{color:var(--cink);}
+.ms-n{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--paper,#fff);font:800 13px/26px var(--font-ui);text-align:center;}
+.ms-key li.is-cur .ms-n{background:var(--cink);}
+.ms-why{display:block;margin-top:2px;font-weight:500;color:var(--ink);}
+.ms-cap{margin:0;font:500 14px/1.45 var(--font-ui);}
+.ms-h4{margin:.8em 0 .3em;font:800 14px var(--font-ui);}
+.ms-all{padding-left:1.3em;}
+.ms-all li{margin:.25em 0;}
+.ms-gate:empty,.ms-qgate:empty{display:none;}
+.ms-qgate{margin-top:10px;}
+
+/* The model item in this tool: the stage shows the drawing, so the step
+   lists the places by number (a free layout's places are a list, not boxes
+   laid over a figure) and the item's own small drawing is left out. */
+.ms-page .hug-model-grid{grid-template-columns:minmax(0,1fr);}
+.ms-page .hug-model .hug-model-art{display:none;}
+.ms-page .ms-fig-art .hug-model-art{display:block;}
+.ms-page .hug-model-tray{margin-top:4px;}
+@media (prefers-reduced-motion:reduce){.ms-badge{transition:none;}}
+/* On a phone the stage draws the figure small (about 150 px wide): the
+   numbered badges and tags shrink with the drawing so they never cover
+   each other (reviewer, 2026-11-10). */
+@supports (width:1cqw){
+  .ms-badge{width:clamp(16px,8.5cqw,28px);height:clamp(16px,8.5cqw,28px);font-size:clamp(10px,4.2cqw,14px);line-height:calc(clamp(16px,8.5cqw,28px) - 4px);border-width:1.5px;}
+  .ms-tag{font-size:clamp(10px,4cqw,13px);padding:0 clamp(3px,1.6cqw,6px);}
+}
+/* See it: on a wide screen the places revealed so far are listed on the
+   stage, beside the drawing; on a phone they are in the panel below. */
+.ms-skey{display:none;}
+@media (min-width:900px){
+  .ms-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;}
+  .ms-skey:not(:empty){display:grid;list-style:none;margin:0;padding:0;gap:8px;align-content:start;}
+  .ms-skey li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:center;font:700 15px/1.35 var(--font-ui);}
+  .ms-skey li.is-cur{color:var(--cink);}
+  .ms-skey li.is-cur .ms-n{background:var(--cink);}
+  .ms-fig-art .hug-model-art{max-width:400px;}
+  .ms-fig-art[data-layout="stages"] .hug-model-art{max-width:560px;}
+  .ms-key li:not(.is-cur){display:none;}
+}
+@media (min-width:1100px){
+  .ms-stage:has(.ms-skey:not(:empty)){grid-template-columns:minmax(0,1.6fr) minmax(220px,1fr);align-items:center;}
+}
+.ms-go{display:flex;flex-wrap:wrap;gap:8px;}.ms-go button{min-height:44px;}
+.ms-badge.is-ok{background:#1E7B4F;}
+.ms-badge.is-no{background:#B3261E;}
+/* A short phone stage (the dock takes the rest of the screen): the drawing
+   shrinks to fit the stage's height, so the legend is never cut off. */
+.ms-page .ls-stage-body{container-type:size;}
+@container (max-height:460px){
+  .ms-fig .ms-card{max-width:calc((100cqh - 74px) * 1.5);margin:0 auto;}
+  .ms-fig-art .ms-card{max-width:none;}
+  .ms-fig-art .hug-model-art{max-width:calc(100cqh - 30px);}
+  .ms-legend{gap:2px 10px;}
+  .ms-legend li{font-size:12px;}
+  /* A data plot keeps the stage's full width (its axis numbers and legend were
+     drawn for it; shrunk and then raised to the 12 px phone minimum they
+     collided): the stage scrolls instead. */
+  .ms-plotfig .ms-card{max-width:none;}
+  .ms-qfig:has(.ms-plotfig),.ms-plotfig{flex:none;}
+}
+/* A drawn figure never runs past the stage: its box shrinks with the drawing, so
+   the badges stay on it (the DTM figure overflowed a 1280 x 720 stage by its
+   legend's height, which made the stage a scroll region with nothing to focus). */
+.ms-page .ls-stage-body .ms-pic{max-width:calc((100cqh - 80px) * var(--ms-ar, 100));margin:0 auto;}
+/* Plots use the page's own colors (hug-plot.js themes them), not the white card. */
+.ms-plotfig .ms-card{background:transparent;border:0;padding:0;color:inherit;}
+.ms-plotfig .ms-src{color:inherit;opacity:.85;}
+.ms-sw-popline{height:0;border-top:4px solid #B5481F;border-radius:0;}
+.ms-sw-gap{background:#F5D9CF;border:1px solid #C9A595;}
+.ms-sw-dotbig{width:14px;height:14px;border-radius:50%;background:#1B1B1B;}
+.ms-sw-darrow{height:0;border-top:3px dashed #B5481F;border-radius:0;}
+

@@ -5972,5 +5972,380 @@
   "note": "May 2027 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
+ "aphug": {
+  "name": "AP® Human Geography",
+  "short": "AP® Human Geography",
+  "tabname": "AP® Human Geography",
+  "pill": "AP® Human Geography · free to start",
+  "beta": true,
+  "h1a": "AP® Human Geography,",
+  "h1b": "from local to global.",
+  "hand": "every model, every scale",
+  "lede": "Each topic taught from scratch for the May 2027 exam, then practice on real-looking maps, population pyramids and data, with every model built by hand and every free-response part answered the way its task verb asks.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Model Studio",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in the skills chapter, Unit 1 and Unit 2 topics 2.1 to 2.5. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Skills and Unit 1 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "60 questions",
+    "multiple choice · 60 minutes"
+   ],
+   [
+    "Section II",
+    "3 free response",
+    "no stimulus, one, two · 75 minutes"
+   ],
+   [
+    "The question bank",
+    "1,107 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Reading Maps and Data",
+   "Skills you need. Its lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Map Reader",
+   [
+    "Units",
+    "Skills you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with the skills chapter: reading maps and data, scale, and how free responses are scored.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a skill, with maps, pyramids, tables and models to build. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the May 2027 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "7 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "7 units and 68 topics in the order of the course framework, for the May 2027 exam, plus a skills chapter before Unit 1. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "Practice questions that ask you to read a map, a population pyramid or a table and apply a concept to a named place, as the exam does, many in sets that share one stimulus. Every option has its own explanation, and every model you build is checked piece by piece.",
+   "<b class=\"ink\">The course is being built.</b> Units appear here as each one passes its accuracy review."
+  ],
+  "map_lede": "Each unit's share of the multiple-choice section, from the course framework. Every notes page is free; the lessons in the skills chapter, Unit 1 and Unit 2 topics 2.1 to 2.5 are free too. The skills come first: reading maps and data, scale of analysis and map scale, and how free responses are scored.",
+  "units": [
+   [
+    "1",
+    "Thinking Geographically",
+    "7 topics",
+    "8 to 10%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Population and Migration Patterns and Processes",
+    "12 topics",
+    "12 to 17%",
+    true,
+    false
+   ],
+   [
+    "3",
+    "Cultural Patterns and Processes",
+    "8 topics",
+    "12 to 17%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Political Patterns and Processes",
+    "10 topics",
+    "12 to 17%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Agriculture and Rural Land-Use Patterns and Processes",
+    "12 topics",
+    "12 to 17%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Cities and Urban Land-Use Patterns and Processes",
+    "11 topics",
+    "12 to 17%",
+    false,
+    false
+   ],
+   [
+    "7",
+    "Industrial and Economic Development Patterns and Processes",
+    "8 topics",
+    "12 to 17%",
+    false,
+    false
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Make it specific",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "3",
+   "bigs": "free response questions on the exam",
+   "p": "Seven one-point parts each, A to G: one with no stimulus, one with a stimulus, one with two. Each part shows what its task verb demands, with one rubric line a point and a full-credit sample.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the May 2027 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It defines each term before it uses it, then applies it to a real place, one step at a time.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Every model built by hand, scale of analysis, map reading, population pyramids, diffusion, borders and city models, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Eight trainers ",
+  "tools_h2": null,
+  "tools_lede": "Build every model the exam names, answer free-response parts one task verb at a time, tell scale of analysis from map scale, read every kind of thematic map, and work population pyramids, diffusion, borders and city models. Model Studio (Explore and the demographic transition), the scale lab and the map reader are free.",
+  "tools": [
+   [
+    "Model Studio",
+    "Build every named model by hand, apply it, then find its limits.",
+    "free"
+   ],
+   [
+    "FRQ coach",
+    "Answer each part the way its task verb asks.",
+    "Premium"
+   ],
+   [
+    "Scale lab",
+    "Scale of analysis against map scale, at four scales.",
+    "free"
+   ],
+   [
+    "Map reader",
+    "Choropleth, dot, graduated symbol and isoline maps.",
+    "free"
+   ],
+   [
+    "Population lab",
+    "Pyramids, transition stages, rates and ratios.",
+    "Premium"
+   ],
+   [
+    "Diffusion lab",
+    "Diffusion types and migration on a map.",
+    "Premium"
+   ],
+   [
+    "Borders lab",
+    "Boundary types, forces, devolution, the sea zones.",
+    "Premium"
+   ],
+   [
+    "City lab",
+    "Bid-rent, von Thünen and the city models.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Human Geography",
+    "h": "The models you must know",
+    "p": "Every model the course framework names, what it says, the real case it fits and the limit the readers ask for."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Human Geography",
+    "h": "Make it specific",
+    "p": "A named place, the scale of analysis and an explanation with its because, built part by part and checked against a rubric."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a skill, with maps, pyramids, tables and models to build."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the May 2027 format."
+   ],
+   [
+    "Free-response practice",
+    "Three 7-point questions, part by part, with the task verb shown and a rubric line a point."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Skills you need · Scale of Analysis and Map Scale",
+    "Free sample question"
+   ],
+   "q": "A map shows the share of people over 65 in each province of one country. At what scale of analysis are its data?",
+   "opts": [
+    "Local: the data are for parts of one country",
+    "National: the map shows one country",
+    "Global: every country ages",
+    "Regional: the country is in a world region"
+   ],
+   "more": "Take a free unit practice test",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One question like the ones in the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the map and its legend"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See which scale the data are at"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The models you must know, explained, and the cram-kit study plan outline",
+    "Every lesson in the skills chapter and Unit 1, and Unit 2 topics 2.1 to 2.5",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: Model Studio (Explore and the demographic transition), the scale lab and the map reader"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: all of Model Studio, the FRQ coach, the population lab, the diffusion lab, the borders lab and the city lab",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and skill"
+   ],
+   "name": "AP® Human Geography"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Human Geography teacher. It follows the published course framework and open sources, listed on the Sources page. Spot a mistake?",
+  "trainh": "Eight trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#094953",
+  "tint": "#E1F1F4",
+  "bbg": "#7A3310",
+  "bac": "#8FE3EE",
+  "t1": "AP® Human",
+  "t2": "Geography",
+  "coverhand": "every model, every scale",
+  "try": {
+   "ok": 0,
+   "title": "The scale of analysis is the scale of the data.",
+   "why": "The values are given for provinces, parts of one country, so the data are at a local (subnational) scale. The map shows a whole country, but the size of the area drawn is not the scale of analysis."
+  },
+  "note": "May 2027 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
  "_founder": "Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep."
 }

@@ -1,0 +1,478 @@
+{
+ "stimuli": {
+  "second-agricultural-revolution-s1": {
+   "kind": "data",
+   "title": "Farming and food in Country A, 1750 to 1900",
+   "invented": true,
+   "table": {
+    "caption": "Farm work, food and towns in Country A, 1750 to 1900 (invented data for practice)",
+    "cols": [
+     "Year",
+     "Share of workers in farming",
+     "Food grown per farm worker (index, 1750 = 100)",
+     "Share of people living in towns"
+    ],
+    "rows": [
+     [
+      "1750",
+      "75%",
+      "100",
+      "15%"
+     ],
+     [
+      "1800",
+      "65%",
+      "130",
+      "22%"
+     ],
+     [
+      "1850",
+      "45%",
+      "200",
+      "40%"
+     ],
+     [
+      "1900",
+      "25%",
+      "320",
+      "60%"
+     ]
+    ]
+   }
+  },
+  "second-agricultural-revolution-s2": {
+   "kind": "text",
+   "title": "A new machine for the harvest, 1831",
+   "text": "<p>LevlPrep summary, 2026, based on US farm histories. In 1831, Cyrus McCormick showed a horse-drawn reaper in Virginia. Before it, workers cut wheat by hand with a scythe or cradle, and a crew could harvest only a few acres a day. Pulled by horses, the reaper cut grain as it moved, so a few people could harvest many times more land in a day. By the 1850s, reapers were being sold across the wheat lands of the US Midwest.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-second-agricultural-revolution-1",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Which statement describes the trend in the table from 1750 to 1900?",
+   "options": [
+    "Each farm worker grew more food while the share of farm workers fell",
+    "Each farm worker grew less food as more people took up farming",
+    "The share of people in towns fell while farm output per worker rose",
+    "The share of workers in farming stayed about the same over 150 years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read each column from top to bottom: farming's share of workers falls, food per farm worker rises and the share of people in towns rises.",
+    "options": [
+     "Right: food per farm worker rose from 100 to 320 while the share in farming fell from 75% to 25%.",
+     "Both parts are reversed: food per worker rose and the share in farming fell.",
+     "The share in towns rose, from 15% to 60%.",
+     "It fell by 50 percentage points, from 75% to 25%."
+    ]
+   },
+   "stimulus": "second-agricultural-revolution-s1"
+  },
+  {
+   "id": "hug-second-agricultural-revolution-2",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "By what percent did food grown per farm worker increase from 1750 to 1900?",
+   "why": {
+    "correct": "$\\frac{320 - 100}{100} \\times 100 = 220\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      100,
+      320
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 320,
+      "why": "That is the 1900 index value. The increase is the change (320 - 100 = 220) divided by the starting value (100), times 100."
+     }
+    ]
+   },
+   "stimulus": "second-agricultural-revolution-s1"
+  },
+  {
+   "id": "hug-second-agricultural-revolution-3",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Which explanation best links the farming columns to the rise in the share of people living in towns?",
+   "options": [
+    "Farms needed more workers, so towns shrank as people moved out",
+    "Town growth caused each farm worker to grow less food",
+    "Fewer workers were needed on farms, so many moved to town jobs",
+    "Food ran short, so people left farms to find food in towns"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "This is the Second Agricultural Revolution's key effect: more food from fewer farmers freed labor for town and factory work.",
+    "options": [
+     "The table shows towns growing, not shrinking.",
+     "Food per farm worker rose, not fell.",
+     "Right: as each worker grew more food, farms needed fewer hands, and people moved to towns to work, often in factories.",
+     "Food per farm worker rose sharply; the table shows no shortage."
+    ]
+   },
+   "stimulus": "second-agricultural-revolution-s1"
+  },
+  {
+   "id": "hug-second-agricultural-revolution-4",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.C",
+   "q": "What is one limit of using this table to study farming in Country A?",
+   "options": [
+    "It gives no data on the share of workers in farming",
+    "It shows data from a single year",
+    "It shows just the share of people who live in towns and cities",
+    "National figures hide differences between regions of the country"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A national table summarizes the whole country. Some regions may have mechanized early and others late; data at a smaller scale would be needed to see that.",
+    "options": [
+     "It does: the second column.",
+     "It shows four years, from 1750 to 1900.",
+     "It shows three different measures.",
+     "Right: the table is at the national scale, so it cannot show which regions changed fastest."
+    ]
+   },
+   "stimulus": "second-agricultural-revolution-s1"
+  },
+  {
+   "id": "hug-second-agricultural-revolution-5",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "The reaper in the passage is an example of what?",
+   "options": [
+    "Domestication",
+    "Mechanization",
+    "Shifting cultivation",
+    "The Columbian Exchange"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Mechanization means replacing human and animal labor with machines, a core part of the Second Agricultural Revolution.",
+    "options": [
+     "Domestication changes wild plants and animals into crops and livestock; the reaper is a machine.",
+     "Right: a machine took over work that people had done by hand.",
+     "Shifting cultivation is clearing forest plots in turn, not using machines.",
+     "The Columbian Exchange moved crops and animals between hemispheres."
+    ]
+   },
+   "stimulus": "second-agricultural-revolution-s2"
+  },
+  {
+   "id": "hug-second-agricultural-revolution-6",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "According to the passage, how did the reaper change the work of the harvest?",
+   "options": [
+    "Wheat could be grown in places with no rain",
+    "Farmers no longer needed horses to farm",
+    "A small crew could harvest many more acres in a day",
+    "Each acre of wheat produced twice as much grain"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The reaper raised output per worker at harvest time. It saved labor rather than growing more grain on each acre.",
+    "options": [
+     "The passage is about harvesting, not water.",
+     "The reaper was pulled by horses.",
+     "Right: the passage says a few people could harvest many times more land in a day.",
+     "The reaper made cutting faster; it did not change how much grain grew on an acre."
+    ]
+   },
+   "stimulus": "second-agricultural-revolution-s2"
+  },
+  {
+   "id": "hug-second-agricultural-revolution-7",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "As machines like the reaper spread across the Midwest, what was the most likely effect on farm families' children?",
+   "options": [
+    "Many left for town jobs because farms needed fewer workers",
+    "More of them stayed on farms because harvests needed more hands",
+    "They moved to the rainforest to practice shifting cultivation",
+    "They stopped growing wheat and started herding instead"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fewer farm jobs pushed people off the land, while factory jobs pulled them to towns: farming change and migration are linked.",
+    "options": [
+     "Right: labor-saving machines meant fewer jobs on farms, a push toward towns and factories.",
+     "Machines reduced the number of hands needed.",
+     "Nothing in the change pushed families to the tropics.",
+     "Reapers made wheat cheaper to harvest, so wheat spread."
+    ]
+   },
+   "stimulus": "second-agricultural-revolution-s2"
+  },
+  {
+   "id": "hug-second-agricultural-revolution-8",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "When and where did the Second Agricultural Revolution begin?",
+   "options": [
+    "In the Fertile Crescent, about 10,000 years ago",
+    "In Britain and western Europe, in the 1700s",
+    "In South Asia and Mexico, in the 1960s",
+    "In the Andes, soon after 1492"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The Second Agricultural Revolution began in Britain and western Europe in the 1700s, alongside the rise of factories, and spread to North America in the 1800s.",
+    "options": [
+     "That is the First Agricultural Revolution.",
+     "Right: new rotations, breeding and tools spread there from the 1700s, then to North America in the 1800s.",
+     "Later changes to grain farming in South Asia and Mexico came in the 1960s; the Second Agricultural Revolution was much earlier.",
+     "The Andes was a hearth of the potato, not of this revolution."
+    ]
+   }
+  },
+  {
+   "id": "hug-second-agricultural-revolution-9",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the four-field rotation used in Norfolk, England, in the 1700s, why was clover planted in one field each year?",
+   "options": [
+    "It could be sold abroad for the highest price",
+    "It was the one crop that grew well in England's climate",
+    "It shaded the soil so weeds could not grow",
+    "It fed animals and put nitrogen back into the soil"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Rotating wheat, turnips, barley and clover kept every field busy and fed animals through winter. Clover added nitrogen, a nutrient wheat needs.",
+    "options": [
+     "Clover was mostly grazed by farm animals, not sold abroad.",
+     "Wheat, barley and turnips grew there too.",
+     "Its main jobs were feed and restoring nitrogen to the soil.",
+     "Right: clover fed livestock and restored the soil, so no field had to lie empty."
+    ]
+   }
+  },
+  {
+   "id": "hug-second-agricultural-revolution-10",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Turnips and clover in the new rotations fed more animals through the winter. What was a likely effect on people's diets in England?",
+   "options": [
+    "More meat, milk and other animal foods",
+    "Fewer animals, because land went to crops",
+    "A diet of grain alone, with no animal foods",
+    "Less food overall, because rotation wore out the soil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Better feed meant larger herds and better diets, one reason people in Britain grew healthier and lived longer.",
+    "options": [
+     "Right: more animals kept through winter meant more meat and dairy.",
+     "Feed crops let farmers keep more animals, not fewer.",
+     "Animal foods increased.",
+     "Rotation protected the soil and raised output."
+    ]
+   }
+  },
+  {
+   "id": "hug-second-agricultural-revolution-11",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "How did the Second Agricultural Revolution help move Britain from stage 2 toward stage 3 of the demographic transition model in the 1800s?",
+   "options": [
+    "It raised death rates by spreading new diseases from the Americas",
+    "It raised birth rates by creating more farm jobs for children",
+    "Better diets lowered death rates, and fewer farm jobs led families to towns",
+    "It ended migration, so the population stayed in rural areas"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Linking units: more and better food lowers death rates; as farms need fewer hands and families move to towns, birth rates later fall. Real countries only roughly fit the model.",
+    "options": [
+     "More food lowered death rates; the diseases of the Columbian Exchange hit the Americas hardest.",
+     "It cut farm jobs, which over time lowered the value of large families.",
+     "Right: more food cut deaths (stage 2); later, town life and less need for child labor on farms helped birth rates fall (stage 3).",
+     "It pushed many people from rural areas to towns."
+    ]
+   }
+  },
+  {
+   "id": "hug-second-agricultural-revolution-12",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the 1700s and 1800s, landowners in England fenced shared village fields and commons into private farms. What was a major effect of this enclosure?",
+   "options": [
+    "Village fields were split into narrow strips running from rivers",
+    "Farmers returned to hunting and gathering on the commons",
+    "Each family received a square section of 640 acres",
+    "Larger farms adopted new methods, but many small farmers lost land"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Enclosure had positive and negative effects: more productive farms, and also landless families who moved to towns for work.",
+    "options": [
+     "Strips from rivers are long lots, a French survey method in North America.",
+     "Enclosure ended shared use of the commons; it did not bring back foraging.",
+     "Square sections are part of the US township and range survey.",
+     "Right: enclosure allowed new rotations and breeding on larger farms, and it pushed many rural families off the land."
+    ]
+   }
+  },
+  {
+   "id": "hug-second-agricultural-revolution-13",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which were part of the Second Agricultural Revolution? Select all that apply.",
+   "options": [
+    "Crop rotation with turnips and clover",
+    "Machines such as the seed drill and the reaper",
+    "The first domestication of wheat and barley",
+    "Clearing and burning rainforest plots in turn",
+    "Moving the potato from the Andes to Europe by ship"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The Second Agricultural Revolution brought new rotations, selective breeding, enclosure and machines, first in Britain and then in North America.",
+    "options": [
+     "Right: the Norfolk four-field rotation spread in the 1700s.",
+     "Right: mechanization was central to it.",
+     "That happened thousands of years earlier, in the First Agricultural Revolution.",
+     "That is shifting cultivation, an old extensive system.",
+     "That was the Columbian Exchange, after 1492."
+    ]
+   }
+  },
+  {
+   "id": "hug-second-agricultural-revolution-14",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.D",
+   "q": "Put these changes in farming in order, from earliest to most recent.",
+   "options": [
+    "First domestication of wheat in the Fertile Crescent",
+    "The potato reaches Europe from the Andes",
+    "Norfolk four-field rotation spreads in England",
+    "Horse-drawn reapers sell across the US Midwest"
+   ],
+   "why": {
+    "correct": "About 10,000 years ago; the late 1500s; the 1700s; the 1850s."
+   }
+  },
+  {
+   "id": "hug-second-agricultural-revolution-15",
+   "unit": "unit-5",
+   "topic": "second-agricultural-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how mechanization changed a named region.",
+   "why": {
+    "correct": "Place, cause and effect joined by \"so\": the link between mechanization and migration to towns."
+   },
+   "specific": {
+    "frame": "In ___ in the 1800s, ___ meant farms needed fewer workers, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In the US Midwest in the 1800s, machines such as the reaper meant farms needed fewer workers, so many young people moved to towns and cities for factory jobs.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "the US Midwest",
+       "the Amazon basin"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The Amazon basin was not mechanized in the 1800s."
+      }
+     },
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "machines such as the reaper",
+       "shifting cultivation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Shifting cultivation is hand farming in forests, not mechanization."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "many young people moved to towns and cities for factory jobs",
+       "more children were needed to work on farms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Machines replaced farm workers; fewer were needed."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

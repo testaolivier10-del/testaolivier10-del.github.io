@@ -1,0 +1,478 @@
+{
+ "stimuli": {
+  "agriculture-consequences-s1": {
+   "kind": "image",
+   "title": "Three farm landscapes",
+   "image": {
+    "figure": "agriculture-consequences-scenes",
+    "alt": "Three numbered drawn scenes. Scene 1, seen from the side: a steep hillside cut into seven flat steps, each with a strip of green crops held up by a stone wall. Scene 2, seen from above: four large green circles of crops on dry tan land, each with a long pipe arm turning around its center. Scene 3, seen from above: thick forest with one patch cleared and burned brown, smoke rising and a few charred logs on the ground.",
+    "caption": "LevlPrep drawings of three farm landscapes."
+   }
+  },
+  "agriculture-consequences-s2": {
+   "kind": "text",
+   "title": "The Aral Sea",
+   "text": "<p>LevlPrep summary, 2026, of reports by the UN Environment Programme and NASA. The Aral Sea, between Kazakhstan and Uzbekistan, was once one of the four largest lakes in the world. From the 1960s, Soviet planners diverted the two rivers that fed it to irrigate cotton fields in the desert. The sea shrank to a small fraction of its size and split into parts. Fishing towns were left far from the water. Winds now lift salty dust from the dry seabed onto farmland, and many irrigated fields became salty. In 2005, Kazakhstan finished a dam that helped the small northern part of the sea rise again.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-agriculture-consequences-1",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which scene shows terracing?",
+   "options": [
+    "Scene 1",
+    "Scene 2",
+    "Scene 3",
+    "Scenes 2 and 3"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Terracing cuts a slope into flat steps. Each step holds soil and water, as on the rice terraces of the Ifugao people in the Philippines.",
+    "options": [
+     "Right: scene 1 shows a slope cut into flat steps held up by walls.",
+     "Scene 2 shows circles of crops watered by pivoting pipes: irrigation.",
+     "Scene 3 shows forest cleared and burned: slash and burn.",
+     "Neither shows steps cut into a slope."
+    ]
+   },
+   "stimulus": "agriculture-consequences-s1"
+  },
+  {
+   "id": "hug-agriculture-consequences-2",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Scene 2 shows circles watered by pumping groundwater in a dry region, like those over the Ogallala Aquifer in the US Great Plains. What long-term risk does this practice carry?",
+   "options": [
+    "The forest regrows over the fields within a few years",
+    "Steep slopes wash away when the walls collapse",
+    "Water is pumped faster than rain refills the aquifer",
+    "Fields lie empty for years so the soil can rest"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Irrigation turns dry land into intensive farmland, but pumping more than nature replaces depletes aquifers, and in hot places it can also leave salts in the soil.",
+    "options": [
+     "The land is dry grassland, not forest, and the fields stay in use.",
+     "The scene shows flat land, not terraced slopes.",
+     "Right: heavy pumping has lowered water levels in parts of the Ogallala Aquifer.",
+     "These fields are farmed every year."
+    ]
+   },
+   "stimulus": "agriculture-consequences-s1"
+  },
+  {
+   "id": "hug-agriculture-consequences-3",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "If the practice in scene 3 is repeated across large areas with short rest periods, what is the most likely environmental effect?",
+   "options": [
+    "Salt builds up from years of irrigation",
+    "More forest grows than before",
+    "Groundwater levels fall from heavy pumping",
+    "Deforestation and loss of soil nutrients"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Slash and burn can last for generations with long rests. With more people and short rests, it adds to deforestation and soil loss.",
+    "options": [
+     "Salt buildup comes from irrigation in dry places, not from clearing forest.",
+     "Clearing more often leaves less time for forest to regrow.",
+     "Scene 3 shows no pumps or wells.",
+     "Right: clearing more forest more often removes tree cover and wears out thin soils."
+    ]
+   },
+   "stimulus": "agriculture-consequences-s1"
+  },
+  {
+   "id": "hug-agriculture-consequences-4",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which scene shows a practice that reduces soil erosion on steep land?",
+   "options": [
+    "Scene 2",
+    "Scene 1",
+    "Scene 3",
+    "Scenes 2 and 3 together"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Terracing changes the landscape and conserves soil and water on steep slopes, a positive effect of human change to land.",
+    "options": [
+     "Scene 2 is on flat land and is about water supply, not erosion on slopes.",
+     "Right: terraces slow running water so it soaks in instead of carrying soil downhill.",
+     "Burning and clearing forest leaves soil bare, which raises erosion.",
+     "Neither scene shows a conservation practice on a slope."
+    ]
+   },
+   "stimulus": "agriculture-consequences-s1"
+  },
+  {
+   "id": "hug-agriculture-consequences-5",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "According to the passage, which farming practice caused the Aral Sea to shrink?",
+   "options": [
+    "Clearing forest by slash and burn",
+    "Building terraces on steep hillsides",
+    "Diverting river water to irrigate cotton",
+    "Herding animals back and forth across the dry seabed"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Irrigation took the water that once reached the sea. This is one of the clearest cases of agriculture changing a landscape at the regional scale.",
+    "options": [
+     "The region is desert; no forest is mentioned.",
+     "Terraces are not mentioned; the land is a flat desert.",
+     "Right: the rivers that fed the sea were used for irrigation.",
+     "Herding is not given as the cause."
+    ]
+   },
+   "stimulus": "agriculture-consequences-s2"
+  },
+  {
+   "id": "hug-agriculture-consequences-6",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "The passage says many irrigated fields became salty. What is this process called?",
+   "options": [
+    "Salinization",
+    "Terracing",
+    "Domestication",
+    "Mechanization"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Salinization is the buildup of salt in soil, common where hot, dry places are irrigated for many years.",
+    "options": [
+     "Right: salts left behind as irrigation water evaporates build up in the soil.",
+     "Terracing is cutting slopes into steps.",
+     "Domestication is changing wild species into crops and livestock.",
+     "Mechanization is replacing labor with machines."
+    ]
+   },
+   "stimulus": "agriculture-consequences-s2"
+  },
+  {
+   "id": "hug-agriculture-consequences-7",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "At what scale did the effects described in the passage reach, and why?",
+   "options": [
+    "Local: just one farm lost its water",
+    "Regional: land, towns and water in two countries changed",
+    "Global: the world's oceans shrank because of cotton farming",
+    "National: the changes stayed within Uzbekistan alone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The Aral Sea case is regional: diversions in one area changed a sea, its fishing towns and farmland across two countries.",
+    "options": [
+     "The passage describes a whole sea, many towns and farmland in two countries.",
+     "Right: the changes spread across a large area of Kazakhstan and Uzbekistan.",
+     "The Aral Sea is an inland lake; the oceans were not affected.",
+     "The sea lies between two countries, and the dam was built by Kazakhstan."
+    ]
+   },
+   "stimulus": "agriculture-consequences-s2"
+  },
+  {
+   "id": "hug-agriculture-consequences-8",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is desertification?",
+   "options": [
+    "Salt building up in the soil from irrigation",
+    "Cutting steps into a hillside to farm it",
+    "Clearing large areas of forest for farms or cattle pasture",
+    "Dry land losing plants and soil until it is like a desert"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Desertification is the degrading of dry land, often blamed on drought together with overgrazing and clearing; scientists debate how much each matters in places such as the Sahel.",
+    "options": [
+     "That is salinization.",
+     "That is terracing.",
+     "That is deforestation.",
+     "Right: semiarid land degrades so it can support fewer plants, animals and people."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-9",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In the Amazon basin of Brazil, large areas of rainforest have been cleared for cattle pasture and soybean fields. Which environmental effect does this practice most directly cause?",
+   "options": [
+    "Deforestation and loss of habitat for plants and animals",
+    "Salinization from many years of irrigation in a dry climate",
+    "Rising groundwater from heavy pumping",
+    "Terraced hillsides that stop soil erosion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Commercial ranching and soy farming are leading causes of deforestation in the Brazilian Amazon.",
+    "options": [
+     "Right: clearing forest for farms removes tree cover and the species that live there.",
+     "The Amazon is wet; the main effect is forest loss.",
+     "Pumping lowers groundwater; it is not the issue here.",
+     "Terraces are a conservation practice, not the result of clearing."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-10",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Fertilizer washed from farms across the Mississippi River basin flows into the Gulf of Mexico (called the Gulf of America by the US federal government since 2025). What is the effect there?",
+   "options": [
+    "The water becomes too salty because rivers dry up",
+    "The coast becomes terraced to stop erosion",
+    "Algae blooms use up oxygen, creating a dead zone each summer",
+    "More fish move in to eat the fertilizer"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Farm pollution can cause harm far downstream: a regional effect of a practice repeated on many farms.",
+    "options": [
+     "The Mississippi still flows; the issue is too many nutrients.",
+     "Terraces are a farming practice on slopes, not a coastal effect.",
+     "Right: extra nutrients feed algae; as they decay, oxygen drops so low that fish and shrimp leave or die.",
+     "Low oxygen drives fish away."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-11",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A farmer in Iowa stops plowing after harvest and leaves crop stalks on the field through winter. Why?",
+   "options": [
+    "To add salt to the soil for next year's crop",
+    "To clear the land for a new forest",
+    "To drain wetlands so more land can be farmed",
+    "To protect the soil from wind and water erosion"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Conservation practices such as no-till farming, cover crops and contour plowing reduce soil loss.",
+    "options": [
+     "Salt harms crops; conservation tries to avoid it.",
+     "The field stays in use as cropland.",
+     "Leaving stalks on a field has nothing to do with draining wetlands.",
+     "Right: this no-till practice keeps the ground covered, a form of soil conservation."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-12",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Large areas of the Everglades in Florida were drained in the 1900s to grow sugarcane. What is one consequence of draining wetlands for farming?",
+   "options": [
+    "More land for wild birds that need standing water",
+    "Loss of habitat and of the water filtering that wetlands provide",
+    "Slower runoff and cleaner water downstream",
+    "Steep terraces built across the flat land"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Draining wetlands is a landscape-changing practice with economic gains and environmental losses. Since 2000, Florida and the federal government have committed billions of dollars to restoring the Everglades.",
+    "options": [
+     "Draining removes the standing water those birds need.",
+     "Right: wetlands store and clean water and shelter many species; draining them removes both.",
+     "Drained land and farm runoff usually make water flow faster and carry more nutrients.",
+     "The Everglades are flat; terraces are not used there."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-13",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "As incomes rose in China, people ate much more pork and poultry. How did this change in diet affect farming?",
+   "options": [
+    "Demand for animal feed fell as people ate more meat",
+    "Farmers returned to shifting cultivation",
+    "Demand for feed crops such as soybeans and corn rose",
+    "Less land was needed anywhere in the world"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Changing diets are a societal effect that reshapes land use far away, such as soybean fields in Brazil.",
+    "options": [
+     "More meat means more animals, which need more feed.",
+     "China's farming became more intensive and commercial.",
+     "Right: raising more animals needs much more feed, much of it imported.",
+     "Feed crops for China are grown on large areas, including in Brazil."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-14",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.B",
+   "q": "Put the steps of salinization in order, from cause to effect.",
+   "options": [
+    "Farmers irrigate dry land for many years",
+    "Water evaporates in the hot sun",
+    "Salts in the water are left in the soil",
+    "Crop yields fall and some fields are abandoned"
+   ],
+   "why": {
+    "correct": "Irrigation brings water with dissolved salts; evaporation leaves the salts; they build up until crops suffer."
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-15",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which of these is a conservation practice that protects farm soil? Select all that apply.",
+   "options": [
+    "Terracing steep slopes",
+    "Draining a wetland for crops",
+    "Clearing forest by burning each year",
+    "Pumping groundwater faster than rain refills it"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Of these, terracing is the conservation practice. Others include contour plowing, no-till farming and cover crops.",
+    "options": [
+     "Right: terraces hold soil and water on slopes.",
+     "Draining wetlands destroys habitat; it does not protect soil.",
+     "Burning more often leaves soil bare and exposed.",
+     "This depletes water; it does not conserve soil."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-consequences-16",
+   "unit": "unit-5",
+   "topic": "agriculture-consequences",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of an environmental effect of a farming practice in a named place.",
+   "why": {
+    "correct": "Place, practice, effect and the link: evaporation leaves salt behind."
+   },
+   "specific": {
+    "frame": "In ___, ___ led to ___ because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Uzbekistan, irrigating cotton in the desert led to salinization because irrigation water evaporated in the heat and left its salts in the soil.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Uzbekistan",
+       "a dry place"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name the place."
+      }
+     },
+     "cause": {
+      "label": "Practice",
+      "options": [
+       "irrigating cotton in the desert",
+       "terracing hillsides"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Terracing conserves soil; it does not cause salinization."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "salinization",
+       "deforestation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "There was little forest in this desert; the effect was salt in the soil."
+      }
+     },
+     "link": {
+      "label": "How",
+      "options": [
+       "irrigation water evaporated in the heat and left its salts in the soil",
+       "trees were cut down for fuel"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is about forests, not irrigation."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,558 @@
+{
+ "stimuli": {
+  "diffusion-types-s1": {
+   "kind": "map",
+   "title": "How a new dance style reached the provinces of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth of invented Country A by province: the year a new dance style first became popular. It started in the Capital Region in 2022, reached the provinces of Port Bay and Lake City, the next largest cities, in 2023, the Central Valley and Eastern Plains, which also border the capital, in 2024, and the rural west, north and south in 2025 or later",
+    "legendTitle": "Year the dance style first became popular (invented)",
+    "classes": [
+     "2025 or later",
+     "2024",
+     "2023",
+     "2022 (where it began)"
+    ],
+    "values": {
+     "capital": 3,
+     "coast": 2,
+     "northeast": 2,
+     "central": 1,
+     "east": 1,
+     "north": 0,
+     "west": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital City"
+     },
+     {
+      "at": "coast",
+      "text": "Port Bay"
+     },
+     {
+      "at": "northeast",
+      "text": "Lake City"
+     }
+    ]
+   }
+  },
+  "diffusion-types-s2": {
+   "kind": "text",
+   "title": "Sequoyah and the Cherokee syllabary",
+   "text": "<p><b>Sequoyah and the Cherokee syllabary</b> (LevlPrep summary, 2026)</p><p>Sequoyah, a Cherokee silversmith born about 1770, could not read English, but he watched English speakers send messages on paper. He became convinced that the Cherokee language could be written too. By 1821 he had finished a syllabary: a set of 86 symbols, each standing for a syllable of spoken Cherokee rather than a single sound. Some symbols look like Latin letters, but they stand for completely different sounds. Within a few years many Cherokee people could read and write, and in 1828 the <i>Cherokee Phoenix</i> newspaper began printing in Cherokee and English.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-diffusion-types-1",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "diffusion-types-s1",
+   "q": "Based on the map, where is the hearth of the dance style?",
+   "options": [
+    "The Capital Region, around Capital City",
+    "The South Coast, around Port Bay",
+    "The Western Uplands, in the rural west",
+    "The Central Valley, next to the capital"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "the hearth is where a trait begins. The Capital Region is the only province in the 2022 class, the earliest year on the legend.",
+    "options": [
+     "Right: the hearth is where a trait begins. The Capital Region is the only province in the 2022 class, the earliest year on the legend.",
+     "The South Coast is in the 2023 class, a year after the style began.",
+     "The Western Uplands are in the latest class, 2025 or later.",
+     "The Central Valley is in the 2024 class, two years after the start."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-2",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "diffusion-types-s1",
+   "q": "The style reached the provinces of Port Bay and Lake City in 2023, a year before it reached the Central Valley, which borders the capital just as those two provinces do. Which kind of diffusion does this jump show?",
+   "options": [
+    "Contagious diffusion, from each place to the place next door",
+    "Hierarchical diffusion, from the largest city to the next ones",
+    "Relocation diffusion, because dancers left the Capital Region",
+    "Stimulus diffusion, because each province invented a new dance"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the style passed over the Central Valley, just as close to the capital, and went first to the next biggest cities. Moving down a ladder of city size is hierarchical diffusion.",
+    "options": [
+     "Contagious diffusion would reach every province bordering the capital at about the same time. Instead the style went first to the two provinces with the next biggest cities.",
+     "Right: the style passed over the Central Valley, just as close to the capital, and went first to the next biggest cities. Moving down a ladder of city size is hierarchical diffusion.",
+     "The capital is still the darkest province; nothing shows that the style left its hearth.",
+     "The map shows one dance style arriving in new places, not the idea being changed into a new form."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-3",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "diffusion-types-s1",
+   "q": "From 2024 on, the style spread from the big cities into the provinces next to them, and last to the rural west, north and south. Which kind of diffusion best describes this later stage?",
+   "options": [
+    "Hierarchical diffusion, skipping places in between",
+    "Relocation diffusion, carried by people who moved away",
+    "Contagious diffusion, from place to nearby place",
+    "Reverse hierarchical diffusion, from small towns up to cities"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "once in the big cities, the style spread outward to neighboring provinces and then farther ones, like a ripple. That is contagious diffusion.",
+    "options": [
+     "In this stage the style reached the provinces next door before far-off ones, with no jumps.",
+     "The map gives no evidence of people moving; the style kept its strength in the cities where it began.",
+     "Right: once in the big cities, the style spread outward to neighboring provinces and then farther ones, like a ripple. That is contagious diffusion.",
+     "The style began in the largest city, not in small towns, so it is not reverse hierarchical."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-4",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "stimulus": "diffusion-types-s1",
+   "q": "Which question can this map NOT answer?",
+   "options": [
+    "Which province adopted the dance style first",
+    "Whether the rural west adopted it before the capital",
+    "Which provinces adopted the dance style in 2023",
+    "How people in each province first learned the dance"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "the map shows when the style arrived, not how (videos, visitors, dance schools). You would need interviews or other records.",
+    "options": [
+     "The legend shows that the Capital Region is the only province in the earliest class.",
+     "The legend shows the west in the latest class and the capital in the earliest.",
+     "The South Coast and the Lake District are both in the 2023 class.",
+     "Right: the map shows when the style arrived, not how (videos, visitors, dance schools). You would need interviews or other records."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-5",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "diffusion-types-s2",
+   "q": "Which kind of diffusion does Sequoyah's syllabary show?",
+   "options": [
+    "Stimulus diffusion: the idea of writing spread and was reworked",
+    "Relocation diffusion: English speakers moved and brought writing",
+    "Hierarchical diffusion: writing went from big cities to small towns",
+    "Contagious diffusion: Cherokee readers copied English words"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sequoyah did not adopt English writing. He took the idea that speech can be written and built a new system for Cherokee.",
+    "options": [
+     "Right: Sequoyah did not adopt English writing. He took the idea that speech can be written and built a new system for Cherokee.",
+     "English speakers did not bring the syllabary; Sequoyah created it. What spread was an idea, which he changed.",
+     "The passage says nothing about city size. The key point is that the idea was changed into a new form.",
+     "The syllabary writes Cherokee, not English words, and its symbols stand for different sounds."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-6",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "diffusion-types-s2",
+   "q": "Which detail from the passage best shows that the trait changed as it spread?",
+   "options": [
+    "Sequoyah was a silversmith born in about 1770",
+    "Letter-like symbols stand for new sounds",
+    "The Cherokee Phoenix began printing in 1828",
+    "Sequoyah watched English speakers send messages"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the shapes came from contact with English writing, but their meaning was new. A trait that spreads and changes is the mark of stimulus diffusion.",
+    "options": [
+     "His job and birth year do not show anything about the trait changing.",
+     "Right: the shapes came from contact with English writing, but their meaning was new. A trait that spreads and changes is the mark of stimulus diffusion.",
+     "The newspaper shows that the syllabary was used, not that the idea of writing changed.",
+     "This shows how he met the idea, not how he changed it."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-7",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "stimulus": "diffusion-types-s2",
+   "q": "After 1821, many Cherokee people learned the syllabary from relatives and neighbors who already knew it. Which kind of diffusion describes this spread among the Cherokee?",
+   "options": [
+    "Stimulus diffusion, because each reader made a new syllabary",
+    "Relocation diffusion, because readers moved to one town",
+    "Contagious diffusion, from person to person nearby",
+    "Hierarchical diffusion, from leaders down to everyone else"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "once it existed, the syllabary spread through direct contact between people close to each other, which is contagious diffusion.",
+    "options": [
+     "Readers learned the same 86 symbols; they did not change them. Stimulus diffusion fits the first step, not this one.",
+     "The passage gives no move. People learned from those around them.",
+     "Right: once it existed, the syllabary spread through direct contact between people close to each other, which is contagious diffusion.",
+     "The question says people learned from relatives and neighbors, not from a top-down ladder."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-8",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Match each example to the kind of diffusion it shows.",
+   "model": {
+    "layout": "tiers",
+    "title": "The kinds of diffusion",
+    "slots": [
+     {
+      "id": "rel",
+      "name": "Relocation"
+     },
+     {
+      "id": "con",
+      "name": "Contagious (expansion)"
+     },
+     {
+      "id": "hie",
+      "name": "Hierarchical (expansion)"
+     },
+     {
+      "id": "sti",
+      "name": "Stimulus (expansion)"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "irish",
+      "text": "Irish migrants hold parades in Boston"
+     },
+     {
+      "id": "flu",
+      "text": "A flu passes person to person at school"
+     },
+     {
+      "id": "fashion",
+      "text": "A style goes from Paris to small cities"
+     },
+     {
+      "id": "burger",
+      "text": "Chicken burgers replace beef in India"
+     },
+     {
+      "id": "flood",
+      "text": "A river floods its valley each spring"
+     }
+    ],
+    "key": {
+     "rel": "irish",
+     "con": "flu",
+     "hie": "fashion",
+     "sti": "burger"
+    },
+    "slips": [
+     {
+      "piece": "burger",
+      "slot": "rel",
+      "why": "No one had to move: the burger idea reached India and changed to fit local food customs. That is stimulus diffusion."
+     },
+     {
+      "piece": "fashion",
+      "slot": "con",
+      "why": "A style that jumps from a big city to smaller cities skips the places between: hierarchical, not contagious."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Relocation needs people to move. The three expansion kinds spread while the trait stays strong at home: contagious to neighbors, hierarchical down a ladder of size or power, stimulus as an idea that changes."
+   }
+  },
+  {
+   "id": "hug-diffusion-types-9",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "What is the main difference between relocation diffusion and expansion diffusion?",
+   "options": [
+    "Relocation is faster than expansion because people fly on planes",
+    "Expansion happens in cities while relocation happens on farms",
+    "Relocation spreads ideas while expansion spreads objects",
+    "Relocation moves with people; expansion grows from home"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "relocation diffusion travels with migrants. In expansion diffusion the trait stays strong in its hearth while it spreads outward.",
+    "options": [
+     "Speed is not the difference; both can be fast or slow. The difference is whether people move with the trait.",
+     "Both can happen anywhere. The difference is how the trait travels.",
+     "Both can spread ideas or objects. The question is whether the trait moves with people or spreads from home.",
+     "Right: relocation diffusion travels with migrants. In expansion diffusion the trait stays strong in its hearth while it spreads outward."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-10",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Walmart opened its first store in 1962 in Rogers, Arkansas, a small town, and spread to other small towns before it opened many stores in large cities. Which kind of diffusion is this?",
+   "options": [
+    "Reverse hierarchical diffusion, from small places upward",
+    "Hierarchical diffusion, from large cities down to small towns",
+    "Relocation diffusion, because the founder moved to a city",
+    "Stimulus diffusion, because each store sold different goods"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "hierarchical diffusion moves along a ladder of size. Starting in small towns and reaching big cities later climbs the ladder in reverse.",
+    "options": [
+     "Right: hierarchical diffusion moves along a ladder of size. Starting in small towns and reaching big cities later climbs the ladder in reverse.",
+     "Walmart started in a small town and reached large cities later, the reverse of the usual order.",
+     "The stores spread from a growing company; nothing says the trait moved with migrants.",
+     "The stores spread as one kind of store, not as an idea reworked in each place."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-11",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In a farming valley in Kenya, one farmer starts growing a new kind of bean and earns more. Her neighbors copy her the next year, then their neighbors the year after. Which kind of diffusion is this?",
+   "options": [
+    "Relocation diffusion, because farmers move to new land",
+    "Contagious diffusion, spreading to nearby farms",
+    "Hierarchical diffusion, starting with the largest farms",
+    "Stimulus diffusion, because neighbors invent a new crop"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the new bean spreads from farm to neighboring farm, like a ripple, which is contagious diffusion.",
+    "options": [
+     "No one moved; neighbors copied the crop where they already lived.",
+     "Right: the new bean spreads from farm to neighboring farm, like a ripple, which is contagious diffusion.",
+     "The spread goes to the nearest farms, not from the biggest or most powerful first.",
+     "The neighbors plant the same bean, so the trait is not being changed into a new form."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-12",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "K-pop, popular music from South Korea, now draws fans in many countries, while it remains hugely popular in South Korea itself. Why is this expansion diffusion rather than relocation diffusion?",
+   "options": [
+    "K-pop fans abroad had to move to South Korea first",
+    "The music changed into a new style in each country",
+    "The trait spread outward while staying strong in its hearth",
+    "Korean singers moved abroad and stopped performing at home"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "in expansion diffusion the trait grows outward from the hearth and stays strong there. K-pop did not leave South Korea; it gained fans elsewhere.",
+    "options": [
+     "Fans abroad heard the music where they live; they did not move.",
+     "That would be stimulus diffusion, and the question is about expansion versus relocation.",
+     "Right: in expansion diffusion the trait grows outward from the hearth and stays strong there. K-pop did not leave South Korea; it gained fans elsewhere.",
+     "K-pop is still hugely popular in South Korea, so the trait did not leave its hearth."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-13",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Without internet or phones, a new craft style spreads by contagious diffusion and is common near its hearth but rare far away. Which Unit 1 idea explains why it is rare far away?",
+   "options": [
+    "Possibilism: people far away chose to reject the style",
+    "Environmental determinism: climate blocks the style far away",
+    "Sequent occupance: later groups covered the style over time",
+    "Distance decay: contact falls as distance grows"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "the farther a place is from the hearth, the less contact it has, so contagious diffusion weakens with distance.",
+    "options": [
+     "The stem gives no choice by distant people; it is about how little contact reaches them.",
+     "Nothing in the stem ties the style to climate. Distance limits contact.",
+     "Sequent occupance is about layers in one place, not about how far a trait spreads.",
+     "Right: the farther a place is from the hearth, the less contact it has, so contagious diffusion weakens with distance."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-14",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of how relocation diffusion spread a holiday to a new place.",
+   "why": {
+    "correct": "Relocation diffusion needs people who move and carry the trait with them. Name the place, the trait and the movers."
+   },
+   "specific": {
+    "frame": "In ___, ___ is celebrated because ___ brought it there when they moved.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Vancouver, Canada, the Lunar New Year is celebrated with parades because migrants from China and other parts of East Asia brought it there when they moved, so the holiday traveled with the people.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Vancouver, Canada",
+       "many places around the world"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place; a vague answer earns no credit."
+      }
+     },
+     "trait": {
+      "label": "Trait",
+      "options": [
+       "the Lunar New Year, with parades,",
+       "snow in winter"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Snow is weather, a physical event, not a culture trait."
+      }
+     },
+     "who": {
+      "label": "Who carried it",
+      "options": [
+       "migrants from China and other parts of East Asia",
+       "television shows about Asia"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Television spreads a trait without anyone moving: that is expansion, not relocation."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-diffusion-types-15",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.D",
+   "q": "Which of these are examples of expansion diffusion? Select all that apply.",
+   "options": [
+    "A song shared online by fans in more and more countries",
+    "A new phone sold first in the largest cities, then in towns",
+    "Italian migrants opening pizzerias in Buenos Aires",
+    "Refugees from Syria bringing their cooking to Berlin",
+    "Mexican families bringing Day of the Dead customs to Los Angeles"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Expansion diffusion spreads a trait while it stays strong at home: a song spreading online and a phone launched in big cities first. A trait carried by people who moved is relocation diffusion.",
+    "options": [
+     "Right: the song spreads outward while it stays popular where it began.",
+     "Right: this is hierarchical diffusion, one kind of expansion.",
+     "People moved and carried the trait, so this is relocation diffusion.",
+     "The trait traveled with people who moved: relocation diffusion.",
+     "The custom moved with migrants: relocation diffusion."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-types-16",
+   "unit": "unit-3",
+   "topic": "diffusion-types",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A new app first catches on in Seoul, Tokyo and New York, and weeks later in smaller cities on several continents. Which idea best explains why the gap between places is weeks, not years?",
+   "options": [
+    "Time-space compression: fast links shrink distance",
+    "Distance decay: far places learn of new traits very slowly",
+    "Relocation diffusion: users moved between cities with the app",
+    "Sequent occupance: older apps left marks in each city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "the internet and air travel connect distant places almost instantly, so a trait can jump between big cities quickly.",
+    "options": [
+     "Right: the internet and air travel connect distant places almost instantly, so a trait can jump between big cities quickly.",
+     "Distance decay would slow the spread. Here distant cities caught on within weeks.",
+     "Users did not have to move; the app spread online.",
+     "Sequent occupance is about layers on a landscape, not about the speed of diffusion."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Shaded map of Country A by province: the share of residents who say their province is part of &quot;the North&quot; is 80% or more in the Northern Hills and Lake District, between 40% and 79% in the Central Valley and Western Uplands, and under 40% elsewhere">
+<title>Shaded map of Country A by province: the share of residents who say their province is part of &quot;the North&quot; is 80% or more in the Northern Hills and Lake District, between 40% and 79% in the Central Valley and Western Uplands, and under 40% elsewhere</title>
+<defs><pattern id="nd" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#FFFFFF"/><line x1="0" y1="0" x2="0" y2="6" stroke="#9A958C" stroke-width="1.4"/></pattern></defs>
+<rect width="600" height="400" fill="#FFFFFF"/>
+<path d="M60 40L250 20L300 120L180 160L70 140Z" fill="#174D33" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M250 20L470 30L520 110L400 150L300 120Z" fill="#174D33" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M520 110L560 230L430 260L400 150Z" fill="#B9DCC5" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M300 120L400 150L430 260L320 270L260 200Z" fill="#B9DCC5" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M70 140L180 160L260 200L200 290L50 260Z" fill="#7FBF9A" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M180 160L300 120L260 200Z" fill="#3E8F63" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M200 290L260 200L320 270L300 370L160 360Z" fill="#EAF4EC" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M320 270L430 260L560 230L540 340L300 370Z" fill="#EAF4EC" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<circle cx="172.8" cy="89.4" r="2.7" fill="#1B1B1B"/>
+<circle cx="240" cy="175" r="2.7" fill="#1B1B1B"/>
+<circle cx="470" cy="345" r="2.7" fill="#1B1B1B"/>
+</svg>

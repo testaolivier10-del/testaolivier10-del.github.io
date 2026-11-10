@@ -1,0 +1,693 @@
+{
+ "stimuli": {
+  "world-economy-changes-s1": {
+   "kind": "map",
+   "title": "China's first coastal zones for foreign investment",
+   "map": {
+    "base": "east-asia",
+    "render": "reference",
+    "label": "Reference map of East Asia marking three places China opened to foreign firms in the 1980s, all on its east and southeast coast: Shenzhen, a special economic zone from 1980, and Shanghai and Tianjin, open coastal cities from 1984",
+    "legendTitle": "Opened to foreign firms: A Shenzhen (special economic zone, 1980), B Shanghai and C Tianjin (open coastal cities, 1984)",
+    "marks": [
+     {
+      "at": [
+       114.1,
+       22.5
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       121.5,
+       31.2
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       117.2,
+       39.1
+      ],
+      "text": "C"
+     }
+    ]
+   }
+  },
+  "world-economy-changes-s2": {
+   "kind": "data",
+   "title": "Jobs in Lake City, Country A, 1970 to 2020",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of Lake City, an invented city in Country A, 1970 to 2020: factory jobs fall from 120 thousand to 30 thousand, while service jobs rise from 80 thousand to 170 thousand",
+    "xLabel": "Year",
+    "yLabel": "Jobs (thousands)",
+    "series": [
+     {
+      "name": "Factory jobs",
+      "points": [
+       [
+        1970,
+        120
+       ],
+       [
+        1980,
+        105
+       ],
+       [
+        1990,
+        75
+       ],
+       [
+        2000,
+        55
+       ],
+       [
+        2010,
+        40
+       ],
+       [
+        2020,
+        30
+       ]
+      ]
+     },
+     {
+      "name": "Service jobs",
+      "points": [
+       [
+        1970,
+        80
+       ],
+       [
+        1980,
+        95
+       ],
+       [
+        1990,
+        115
+       ],
+       [
+        2000,
+        140
+       ],
+       [
+        2010,
+        160
+       ],
+       [
+        2020,
+        170
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-world-economy-changes-1",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which statement describes the pattern of the zones on the map?",
+   "options": [
+    "They are spread evenly",
+    "They cluster in the deserts and mountains of western China",
+    "They line China's east and southeast coast",
+    "They follow China's long land border with India"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A strong description says where: all three places lie along the east and southeast coast, none in the interior.",
+    "options": [
+     "The marks sit on the coast; the interior and west have none.",
+     "Western China has no marks at all.",
+     "Right: all three marks, from Tianjin in the north to Shenzhen in the south, are on the coast.",
+     "The border with India is in the far southwest, far from every mark."
+    ]
+   },
+   "stimulus": "world-economy-changes-s1"
+  },
+  {
+   "id": "hug-world-economy-changes-2",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Why did China place these zones on the coast?",
+   "options": [
+    "Ports made shipping parts and exports cheap",
+    "The coast had the most farmland that needed protecting",
+    "Coastal land was far too steep for any farming",
+    "Interior provinces were closed to people from elsewhere"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Export industry needs ports, and the coast was close to foreign investors and markets, so the zones had the best situation there.",
+    "options": [
+     "Right: export factories need ports, and Shenzhen sat next to investors in Hong Kong.",
+     "The zones were for factories, not farm protection.",
+     "Most of these coasts are low-lying; the pull was ports and trade.",
+     "People could move within China; the coast was chosen for its situation."
+    ]
+   },
+   "stimulus": "world-economy-changes-s1"
+  },
+  {
+   "id": "hug-world-economy-changes-3",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "What did a special economic zone such as Shenzhen offer foreign firms?",
+   "options": [
+    "Lower taxes and fewer rules",
+    "Higher tariffs on parts brought in from abroad",
+    "A ban on selling goods to other countries",
+    "Free microloans to farmers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An SEZ is an area with lower taxes, fewer rules and cheaper land for firms making goods for export.",
+    "options": [
+     "Right: SEZs draw firms with lower taxes, fewer rules and cheap land.",
+     "SEZs cut taxes on imported parts; they did not raise them.",
+     "SEZ factories mainly made goods for export.",
+     "SEZs targeted factories and foreign firms, not farm loans."
+    ]
+   },
+   "stimulus": "world-economy-changes-s1"
+  },
+  {
+   "id": "hug-world-economy-changes-4",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which outcome is most likely as factories grew in the marked zones from the 1980s?",
+   "options": [
+    "Workers left for farms",
+    "Inland migrants came; the zones grew",
+    "Coastal cities shrank as firms left for the interior",
+    "Interior provinces drew most of the new factories"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Factory jobs in the coastal zones pulled rural-to-urban migrants from inland, so the zones grew into large cities.",
+    "options": [
+     "Factory jobs pulled people toward the zones, not away from them.",
+     "Right: rural-to-urban migration from inland provinces made cities such as Shenzhen grow fast.",
+     "The firms came to the coast; the cities grew.",
+     "The new factories went to the coastal zones."
+    ]
+   },
+   "stimulus": "world-economy-changes-s1"
+  },
+  {
+   "id": "hug-world-economy-changes-5",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the change in Lake City's jobs?",
+   "options": [
+    "Factory jobs fell; service jobs grew",
+    "Factory and service jobs both fell",
+    "Factory jobs rose as the city grew",
+    "Services peaked in 1990 and fell after"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Factory jobs fell by 90 thousand (120 to 30) while service jobs rose by 90 thousand (80 to 170).",
+    "options": [
+     "Right: factory jobs fell from 120 to 30 thousand while service jobs rose from 80 to 170 thousand.",
+     "Service jobs rose in every decade.",
+     "The factory line falls in every decade.",
+     "The service line keeps rising to 2020."
+    ]
+   },
+   "stimulus": "world-economy-changes-s2"
+  },
+  {
+   "id": "hug-world-economy-changes-6",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "What process does the fall of factory jobs in Lake City show?",
+   "options": [
+    "Deindustrialization",
+    "Agglomeration",
+    "Comparative advantage",
+    "A growth pole"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When factories close or move away and factory jobs fall, a place is deindustrializing.",
+    "options": [
+     "Right: a fall in a region's factory jobs is deindustrialization.",
+     "Agglomeration is the clustering of firms, the opposite of losing them.",
+     "That decides who should make what in trade, not the loss of a city's factories.",
+     "A growth pole drives growth outward; the chart shows factory decline."
+    ]
+   },
+   "stimulus": "world-economy-changes-s2"
+  },
+  {
+   "id": "hug-world-economy-changes-7",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "When a large factory in Lake City closed, nearby diners, stores and parts suppliers also lost business and cut jobs. Which concept explains this?",
+   "options": [
+    "Just-in-time delivery of factory parts",
+    "The multiplier effect, in reverse",
+    "The international division of labor",
+    "Complementarity between two places"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The multiplier effect runs both ways: a closed plant's lost wages and orders cost jobs at shops and suppliers too.",
+    "options": [
+     "Just-in-time is about when parts arrive, not about jobs lost around a closed plant.",
+     "Right: lost wages mean less spending at local shops and fewer orders for suppliers, so more jobs are lost.",
+     "That describes stages of production in different countries, not local job losses around one plant.",
+     "Complementarity explains trade between places, not local job losses."
+    ]
+   },
+   "stimulus": "world-economy-changes-s2"
+  },
+  {
+   "id": "hug-world-economy-changes-8",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can the chart NOT answer?",
+   "options": [
+    "Did service jobs grow?",
+    "In which decade did factory jobs fall the most?",
+    "Were jobs outsourced or automated?",
+    "Were there more service jobs than factory jobs in 1990?"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Job counts show how much changed, not why: outsourcing and automation both cut factory jobs, and the chart cannot tell them apart.",
+    "options": [
+     "The chart answers this: from 1970 to 2020 they rose from 80 to 170 thousand.",
+     "The chart answers this: 1980 to 1990, by 30 thousand.",
+     "Right: the chart counts jobs; it does not say whether they were outsourced or replaced by machines.",
+     "The chart answers this: 115 thousand against 75 thousand."
+    ]
+   },
+   "stimulus": "world-economy-changes-s2"
+  },
+  {
+   "id": "hug-world-economy-changes-9",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Hundreds of tech firms cluster in Silicon Valley, California, sharing engineers, investors and ideas. Which concept fits best, and why?",
+   "options": [
+    "A growth pole, because one planned project drives the region",
+    "Agglomeration, because many firms gain from being close",
+    "Deindustrialization, because the firms make few goods",
+    "Outsourcing, because the firms are in one place"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Agglomeration is many firms clustering for shared benefits; a growth pole is one key project spreading growth outward.",
+    "options": [
+     "A growth pole is one key project whose growth spreads out; Silicon Valley is many firms clustering.",
+     "Right: shared workers, suppliers and ideas pull many related firms into one place.",
+     "Deindustrialization is a loss of factory jobs, not a cluster of growing firms.",
+     "Outsourcing hires other firms, often abroad; it does not describe a cluster."
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-10",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "When BMW opened a car plant near Spartanburg, South Carolina, in 1994, parts suppliers and services grew in the region around it. Which concept fits best?",
+   "options": [
+    "A growth pole: one key investment spread growth",
+    "Agglomeration: many equal firms clustered first",
+    "Deindustrialization: the region lost factory work",
+    "Complementarity: two places traded climates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One major investment whose growth spreads to the surrounding region through suppliers and spending is a growth pole.",
+    "options": [
+     "Right: one large plant drove growth outward through suppliers and spending.",
+     "The growth began with one large plant, then spread; that is a growth pole.",
+     "The region gained factory work.",
+     "Nothing here is about trade based on different supplies."
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-11",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "model",
+   "practice": "2.B",
+   "q": "Put the steps of a growth pole's multiplier effect in cause-and-effect order.",
+   "model": {
+    "layout": "stages",
+    "title": "How one plant spreads growth",
+    "slots": [
+     {
+      "id": "g1"
+     },
+     {
+      "id": "g2"
+     },
+     {
+      "id": "g3"
+     },
+     {
+      "id": "g4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "plant",
+      "text": "A carmaker opens a large plant"
+     },
+     {
+      "id": "sup",
+      "text": "Parts suppliers locate nearby"
+     },
+     {
+      "id": "spend",
+      "text": "Workers spend wages locally"
+     },
+     {
+      "id": "shops",
+      "text": "New shops and services open"
+     },
+     {
+      "id": "close",
+      "text": "The plant moves abroad"
+     }
+    ],
+    "key": {
+     "g1": "plant",
+     "g2": "sup",
+     "g3": "spend",
+     "g4": "shops"
+    },
+    "slips": [
+     {
+      "piece": "shops",
+      "slot": "g2",
+      "why": "Shops open because workers have wages to spend; the plant and its suppliers come first."
+     },
+     {
+      "piece": "close",
+      "slot": "g4",
+      "why": "A plant moving abroad reverses the multiplier; it is not a step in spreading growth."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A key plant draws suppliers; their workers spend wages locally, so shops and services open: the multiplier effect of a growth pole."
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-12",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "An invented study finds that every job at a new plant creates 1.5 more jobs in the region through the multiplier effect. The plant hires 2,000 workers. How many MORE jobs does the region gain beyond the plant's own? (Invented data for practice.)",
+   "why": {
+    "correct": "Each plant job adds 1.5 jobs elsewhere: $2{,}000 \\times 1.5 = 3{,}000$ more jobs (5,000 in all, counting the plant)."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      2000,
+      1.5
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        2000,
+        2.5
+       ]
+      },
+      "why": "That is the total with the plant's own 2,000 jobs. The question asks for the jobs beyond the plant: 2,000 times 1.5."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        2000,
+        1.5
+       ]
+      },
+      "why": "You divided. Each plant job creates 1.5 more, so multiply: 2,000 times 1.5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-13",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Toyota's factories in Japan have parts delivered only hours before they are used, so little stock sits in warehouses. What is this called?",
+   "options": [
+    "Fordism",
+    "Break-of-bulk",
+    "Just-in-time delivery of factory parts",
+    "Agglomeration"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Delivering parts just when needed to keep little stock is just-in-time delivery.",
+    "options": [
+     "Fordism is the mass production of identical goods on an assembly line, with large stocks.",
+     "Break-of-bulk is moving goods between kinds of transport.",
+     "Right: parts arrive just when needed, a key part of post-Fordism.",
+     "Agglomeration is firms clustering, not the timing of parts."
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-14",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How does post-Fordism differ from Fordism?",
+   "options": [
+    "Post-Fordism makes small, flexible batches",
+    "Post-Fordism uses one huge plant for one product",
+    "Fordism splits work among many firms abroad",
+    "The two are the same idea under two names"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fordism: one large plant mass-producing identical goods. Post-Fordism: flexible, smaller batches, many suppliers, just-in-time delivery.",
+    "options": [
+     "Right: Fordism mass-produced identical goods in one big plant; post-Fordism spreads flexible work across many firms and places.",
+     "That describes Fordism, Henry Ford's mass production.",
+     "That is post-Fordist outsourcing; Fordism kept work in large plants.",
+     "They are opposite ways of organizing production."
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-15",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A smartphone is designed in California, its chips made in South Korea, and it is assembled in China. What does this show?",
+   "options": [
+    "Deindustrialization in each of the three places",
+    "The international division of labor",
+    "Complementarity between two climates",
+    "A trade bloc"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Splitting design, parts and assembly among countries by their skills and costs is the international division of labor.",
+    "options": [
+     "Each place does a stage of the work; none is shown losing industry.",
+     "Right: different stages of making one product happen in different countries.",
+     "The split follows skills and costs, not climate.",
+     "No trade agreement among the three countries is described."
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-16",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Why did many US firms outsource customer service calls to Manila, the Philippines?",
+   "options": [
+    "Lower wages and English speakers",
+    "US law requires calls to be answered abroad",
+    "The Philippines has a trade bloc with each US state",
+    "Call centers are weight-losing industries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Outsourcing follows lower costs; English skills and cheap communication made the Philippines a center for call-center work.",
+    "options": [
+     "Right: cheaper labor and a shared language, made possible by cheap communication.",
+     "No such law exists.",
+     "There is no such bloc.",
+     "Weight-losing applies to goods made from heavy raw materials, not phone calls."
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-17",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.D",
+   "q": "Which are examples of newly industrialized countries often given for the 1960s to the 1990s? Select all that apply.",
+   "options": [
+    "South Korea",
+    "Iceland",
+    "The United Kingdom",
+    "Germany",
+    "South Sudan"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "South Korea is often cited as a newly industrialized country (as is Singapore); Britain and Germany industrialized long before.",
+    "options": [
+     "Right: often given as an example of fast, export-led industrialization.",
+     "Iceland's economy rests on fishing, energy and tourism, not a fast shift to export factories.",
+     "Britain industrialized first, in the late 1700s; it is not newly industrialized.",
+     "Germany industrialized in the 1800s.",
+     "South Sudan's economy relies mainly on oil exports, not factory growth."
+    ]
+   }
+  },
+  {
+   "id": "hug-world-economy-changes-18",
+   "unit": "unit-7",
+   "topic": "world-economy-changes",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how a growth pole changed a region, naming the place and the scale.",
+   "why": {
+    "correct": "A full explanation names the scale, the place, the key project and the multiplier effect that spread its growth."
+   },
+   "specific": {
+    "frame": "At the ___ scale, around ___, ___ drew suppliers, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "At the local (subnational) scale, around Spartanburg, South Carolina, BMW's car plant drew suppliers, so jobs and services grew across the region through the multiplier effect.",
+    "slots": {
+     "scale": {
+      "label": "Scale of analysis",
+      "options": [
+       "local (subnational)",
+       "global"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The growth spread around one area of one US state: a local (subnational) scale, not the whole world."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "Spartanburg, South Carolina",
+       "many towns"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place."
+      }
+     },
+     "cause": {
+      "label": "The key project",
+      "options": [
+       "BMW's car plant",
+       "a cluster of small tech firms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A cluster of many firms is agglomeration; a growth pole is one key project."
+      }
+     },
+     "effect": {
+      "label": "So",
+      "options": [
+       "jobs and services grew across the region through the multiplier effect",
+       "the region deindustrialized"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A growth pole adds jobs; it does not take them away."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

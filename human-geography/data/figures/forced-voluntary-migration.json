@@ -1,0 +1,22 @@
+{
+ "forced-voluntary-migration-types": {
+  "file": "figures/forced-voluntary-migration-types.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 412,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two columns. Forced migration (no real choice): refugee, who crossed a border and was granted protection; asylum seeker, who crossed, asked for protection and is waiting; internally displaced person, who stayed in his or her own country; enslavement. Voluntary migration (by choice): internal migration (rural-to-urban, interregional, intraregional); step and chain migration; guest worker for a set time; transnational migration and transhumance."
+ },
+ "forced-voluntary-migration-flows": {
+  "file": "figures/forced-voluntary-migration-flows.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 450,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Flow map of Mexico and the United States with two invented paths. Path 1, in three numbered steps: a village in Oaxaca to Mexico City, then to Tijuana, then to Los Angeles. Path 2: three arrows from a town in Puebla to New York, labeled first migrant 1995, brother 2001 and cousins 2008."
+ }
+}

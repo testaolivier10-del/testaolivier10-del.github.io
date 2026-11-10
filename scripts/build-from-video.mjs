@@ -22,6 +22,7 @@ const COURSES = {
   apprecalc: 'AP® Precalculus',
   apmacro: 'AP® Macroeconomics',
   apmicro: 'AP® Microeconomics',
+  aphug: 'AP® Human Geography',
   apcalcbc: 'AP® Calculus BC',
 };
 

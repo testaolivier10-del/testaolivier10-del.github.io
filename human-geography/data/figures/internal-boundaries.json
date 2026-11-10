@@ -1,0 +1,12 @@
+{
+ "internal-boundaries-plans": {
+  "file": "figures/internal-boundaries-plans.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two copies of the same invented county, each a 5 by 5 grid of 25 blocks of 100 voters. In both, the three left columns (15 blocks) vote mostly for Party X and the two right columns (10 blocks) vote mostly for Party Y. Plan 1 draws five districts as the five columns, so X wins 3 seats and Y wins 2. Plan 2 makes the two left columns into two all-X districts and draws the other three districts as bent shapes that each hold 3 or 4 Y blocks and only 1 or 2 X blocks, so X wins 2 seats and Y wins 3."
+ }
+}

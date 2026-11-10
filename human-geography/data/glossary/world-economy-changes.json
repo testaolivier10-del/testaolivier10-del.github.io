@@ -1,0 +1,32 @@
+{
+ "outsourcing": {
+  "def": "Hiring another firm to do part of a company's work, often in another country where costs are lower (offshoring)."
+ },
+ "deindustrialization": {
+  "def": "The decline of factory jobs and industry in a region, as factories close, move away or replace workers with machines."
+ },
+ "newly-industrialized-country": {
+  "def": "A country whose economy has shifted quickly from farming toward factories and exports, such as South Korea from the 1960s."
+ },
+ "special-economic-zone": {
+  "def": "An area with lower taxes, fewer rules and cheaper land for firms making goods for export, such as Shenzhen, China. Free-trade zones, export-processing zones and Mexico's maquiladoras are related forms."
+ },
+ "international-division-of-labor": {
+  "def": "The split of the stages of making a product among different countries, by their skills and costs."
+ },
+ "post-fordism": {
+  "def": "Flexible production in smaller batches, spread among many firms and places, with just-in-time delivery; it followed Fordism, the mass production of identical goods on assembly lines in one large plant."
+ },
+ "multiplier-effect": {
+  "def": "The way new jobs in one industry create more jobs in others, as workers spend wages and suppliers grow; it also works in reverse when a plant closes."
+ },
+ "agglomeration": {
+  "def": "The clustering of many firms in one place because being close lets them share workers, suppliers, services and ideas."
+ },
+ "just-in-time": {
+  "def": "Delivering parts to a factory just when they are needed, so little stock is kept."
+ },
+ "growth-pole": {
+  "def": "A key industry or major investment, often planned, whose growth spreads to the region around it through the multiplier effect."
+ }
+}

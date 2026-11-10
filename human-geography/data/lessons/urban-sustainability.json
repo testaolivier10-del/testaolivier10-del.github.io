@@ -1,0 +1,83 @@
+{
+ "topic": "urban-sustainability",
+ "hook": "In 1979, the Portland, Oregon, region drew a line on the map around its built-up area and said: houses and offices go inside, farms and forests stay outside. Decades later, farms and forests still reach close to the city, and many people ride light rail. Home prices also rose fast in the 2010s. Was the line a success? It depends on whom you ask, and that is what this topic is about.",
+ "prereq": [
+  {
+   "q": "What is urban sprawl?",
+   "options": [
+    "Low-density spread of a city over a large area",
+    "Building on empty lots inside the city",
+    "Growth of a city's tallest towers",
+    "A city losing population"
+   ],
+   "correct": 0,
+   "why": "Sprawl spreads homes and jobs thinly across the land.",
+   "review": "cities-worldwide"
+  },
+  {
+   "q": "What is infilling?",
+   "options": [
+    "Building on vacant or underused lots inside the built-up area",
+    "Building new suburbs on farmland",
+    "Tearing down old buildings and leaving the land empty",
+    "Filling in a lake to make land"
+   ],
+   "correct": 0,
+   "why": "Infill uses land already inside the city.",
+   "review": "density-land-use"
+  },
+  {
+   "q": "Which is infrastructure?",
+   "options": [
+    "A light rail line",
+    "A city's birth rate",
+    "A family's savings",
+    "A store's prices"
+   ],
+   "correct": 0,
+   "why": "Transport lines are infrastructure.",
+   "review": "infrastructure"
+  }
+ ],
+ "figure": {
+  "figure": "urban-sustainability-tod",
+  "caption": "Building around a station puts homes, shops and jobs within a short walk; car-based spread puts them far apart."
+ },
+ "chain": [
+  {
+   "cause": "A region limits building on farmland with a growth boundary or greenbelt",
+   "effect": "new homes and offices go into land already inside the city, so density rises"
+  },
+  {
+   "cause": "Homes, shops and offices are built close together near transit stations",
+   "effect": "more trips can be made on foot, by bike or by train, so car use and emissions fall"
+  },
+  {
+   "cause": "Land for building becomes scarcer inside the boundary",
+   "effect": "land and home prices can rise, so lower-income families may be priced out"
+  },
+  {
+   "cause": "New, denser buildings go up in older neighborhoods",
+   "effect": "some residents welcome shops and housing choices, while others feel the area loses its historic character"
+  }
+ ],
+ "ideas": [
+  "<b>Smart growth</b> is a set of planning policies that steer growth into compact, walkable areas instead of sprawl. Tools include <b>mixed-use development</b> (homes, shops and offices together) and <b>transit-oriented development</b> (dense building around transit stations).",
+  "<b>Walkability</b> is how easy and safe it is to reach daily needs on foot. <b>New Urbanism</b> designs neighborhoods with walkable streets, porches, nearby shops and a mix of homes.",
+  "A <b>greenbelt</b> is a ring of protected open land around a city; an <b>urban growth boundary</b> is a line beyond which building is limited. Slow-growth cities cap how many new homes may be built each year.",
+  "Praise: less sprawl, less driving, more housing choice, livelier streets. Criticism: higher housing costs, possible de facto segregation, loss of historic character."
+ ],
+ "misconception": {
+  "wrong": "Smart growth policies stop a city from growing.",
+  "right": "Smart growth redirects growth rather than stopping it: up and inward, onto infill sites and near transit, instead of outward onto farmland. Slow-growth caps, such as Boulder, Colorado's yearly limit on new homes, are a stricter tool, and they tend to push prices up."
+ },
+ "check": [
+  "hug-urban-sustainability-1",
+  "hug-urban-sustainability-2",
+  "hug-urban-sustainability-3",
+  "hug-urban-sustainability-5",
+  "hug-urban-sustainability-6",
+  "hug-urban-sustainability-10"
+ ],
+ "summary": "Urban sustainability policies try to meet a city's needs without wasting land, energy or money. Smart growth tools (mixed use, walkability, transit-oriented development, New Urbanism, greenbelts and growth boundaries, slow-growth caps) can cut sprawl and driving, but critics point to higher housing costs, possible segregation and loss of historic character."
+}

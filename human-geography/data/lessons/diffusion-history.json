@@ -1,0 +1,71 @@
+{
+ "topic": "diffusion-history",
+ "hook": "Why do people in Brazil speak Portuguese, people in Senegal use French in their government, and people in Mombasa, Kenya, speak a language full of Arabic words? None of these languages began where they are spoken now. Trade, empires and colonies moved them across oceans centuries ago, and new languages grew where cultures met.",
+ "prereq": [
+  {
+   "q": "Irish migrants bring Saint Patrick's Day parades to Boston. What kind of diffusion is this?",
+   "options": [
+    "Relocation diffusion",
+    "Contagious diffusion",
+    "Hierarchical diffusion",
+    "Stimulus diffusion"
+   ],
+   "correct": 0,
+   "why": "The trait moved with the people who moved, which is relocation diffusion.",
+   "review": "diffusion-types"
+  },
+  {
+   "q": "An idea spreads to a new place, but people change it to fit their culture. What kind of diffusion is this?",
+   "options": [
+    "Stimulus diffusion",
+    "Relocation diffusion",
+    "Contagious diffusion",
+    "Hierarchical diffusion"
+   ],
+   "correct": 0,
+   "why": "Stimulus diffusion spreads an idea that is changed on arrival.",
+   "review": "diffusion-types"
+  }
+ ],
+ "figure": {
+  "figure": "diffusion-history-creole",
+  "caption": "From contact to a creole language: a pidgin gains native speakers."
+ },
+ "chain": [
+  {
+   "cause": "Merchants sail and walk long trade routes",
+   "effect": "goods, words, foods and beliefs spread between distant ports and markets"
+  },
+  {
+   "cause": "Powerful countries take control of other lands (colonialism and imperialism)",
+   "effect": "their languages, religions and laws spread to the places they rule"
+  },
+  {
+   "cause": "People with different languages must work or trade together",
+   "effect": "they use a lingua franca or make a pidgin, a simple mixed language"
+  },
+  {
+   "cause": "Children grow up speaking that mixed language",
+   "effect": "it becomes a creole, and cultures blending into new forms is called creolization"
+  }
+ ],
+ "ideas": [
+  "<b>Trade</b> spread culture long before modern times: papermaking traveled west from China along the Silk Roads, and Indian Ocean trade gave Swahili many Arabic words.",
+  "<b>Colonialism</b> is ruling another place directly, often with settlers. <b>Imperialism</b> is extending power and influence over other places by force, money or culture. Both spread languages, religions and sports, such as Portuguese in Brazil and cricket in India.",
+  "A <b>lingua franca</b> is a shared language between groups with different home languages (Swahili in East African markets, English for international flights).",
+  "A <b>pidgin</b> is a simple mixed language no one speaks from birth. <b>Creolization</b> is cultures mixing into a new form; when children learn a pidgin as their first language, it becomes a <b>creole</b>, such as Haitian Creole."
+ ],
+ "misconception": {
+  "wrong": "A lingua franca is the language most people in a place speak at home.",
+  "right": "A lingua franca is a bridge language between people whose home languages differ. In an inland East African market, traders bargain in Swahili and then speak their own languages at home."
+ },
+ "check": [
+  "hug-diffusion-history-1",
+  "hug-diffusion-history-2",
+  "hug-diffusion-history-3",
+  "hug-diffusion-history-4",
+  "hug-diffusion-history-8",
+  "hug-diffusion-history-13"
+ ],
+ "summary": "Long before the internet, trade, colonialism and imperialism moved culture across the world. Trade routes spread goods, words and skills; colonial powers spread their languages, religions and sports to the places they ruled, which is why Portuguese is spoken in Brazil and cricket is played in India. Where cultures met, new forms appeared: a lingua franca let different groups communicate, pidgins grew for trade and work, and creolization blended cultures into new languages and foods, such as Haitian Creole and Louisiana gumbo."
+}

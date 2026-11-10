@@ -28,6 +28,7 @@ body[data-course="appsych"]{--rd-cover:url(../covers/appsych.svg);--rd-cbg:#0760
 body[data-course="apprecalc"]{--rd-cover:url(../covers/apprecalc.svg);--rd-cbg:#0B4A33;}
 body[data-course="apmacro"]{--rd-cover:url(../covers/apmacro.svg);--rd-cbg:#2E4D0C;}
 body[data-course="apmicro"]{--rd-cover:url(../covers/apmicro.svg);--rd-cbg:#3D0C35;}
+body[data-course="aphug"]{--rd-cover:url(../covers/aphug.svg);--rd-cbg:#7A3310;}
 
 /* ---- Page head: pill eyebrow, display headline, cover on the right ------ */
 .xshell>.page-head,.xshell>.hero[class*="-hero"]{display:grid;grid-template-columns:minmax(0,1fr);column-gap:32px;align-items:center;background:none;border:0;box-shadow:none;padding:10px 0 4px;margin-top:8px;border-radius:0;}

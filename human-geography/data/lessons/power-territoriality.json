@@ -1,0 +1,67 @@
+{
+ "topic": "power-territoriality",
+ "hook": "In March 2021, one stuck ship closed the Suez Canal for six days, and hundreds of ships waited at each end. A strip of water a few hundred meters wide had stopped a large share of the trade between Asia and Europe. Power in political geography is control: over people, land, resources and the routes between them.",
+ "prereq": [
+  {
+   "q": "What is sovereignty?",
+   "options": [
+    "A state's right and power to govern its territory without outside control",
+    "A people's shared culture",
+    "The right of a people to choose its status",
+    "A part of a state with its own powers"
+   ],
+   "correct": 0,
+   "why": "Sovereignty belongs to states; self-determination to peoples.",
+   "review": "political-processes"
+  },
+  {
+   "q": "What is colonialism?",
+   "options": [
+    "Direct control, and often settlement, of a territory by an outside power",
+    "A people's right to choose its status",
+    "A state with many nations",
+    "The spread of a culture by migrants"
+   ],
+   "correct": 0,
+   "why": "Colonialism is direct rule from outside.",
+   "review": "diffusion-history"
+  }
+ ],
+ "figure": {
+  "figure": "power-territoriality-choke",
+  "caption": "A choke point: a narrow passage many ships must use."
+ },
+ "chain": [
+  {
+   "cause": "People, groups and states claim and mark areas of land and sea",
+   "effect": "they control who and what can enter or use those areas (territoriality)"
+  },
+  {
+   "cause": "A state controls a narrow sea passage that many ships must use",
+   "effect": "it gains power over trade that passes through, so the passage is a choke point"
+  },
+  {
+   "cause": "A region sits between stronger outside powers and is divided inside",
+   "effect": "outside powers compete there and conflict is common, making it a shatterbelt"
+  }
+ ],
+ "ideas": [
+  "Political power is control over people, land and resources. <b>Territoriality</b> is the attempt to control people and things by claiming an area: a fence, a city sign, a guarded border.",
+  "Do not mix them up: a <b>territory</b> is the area, <b>territoriality</b> is the claiming, <b>sovereignty</b> is a state's recognized right to rule.",
+  "<b>Neocolonialism</b> is influence over former colonies through money, trade or loans, without direct rule.",
+  "A <b>choke point</b> is a narrow passage many ships must use (Suez, Hormuz, Malacca). A <b>shatterbelt</b> is a region caught between outside powers (Eastern Europe in the Cold War)."
+ ],
+ "misconception": {
+  "wrong": "Territoriality and sovereignty mean the same thing: if a state puts its flag on a place, it rules it.",
+  "right": "Territoriality is the act of claiming and marking an area. Sovereignty is a right other states recognize. A flag on the Arctic seabed (Russia, 2007) is territoriality, not sovereignty."
+ },
+ "check": [
+  "hug-power-territoriality-1",
+  "hug-power-territoriality-2",
+  "hug-power-territoriality-3",
+  "hug-power-territoriality-8",
+  "hug-power-territoriality-10",
+  "hug-power-territoriality-13"
+ ],
+ "summary": "Political power means control over people, land, resources and routes. Territoriality is how people, groups and states claim and mark areas, at every scale from a fenced yard to a guarded national border. Neocolonialism is influence over former colonies without direct rule. Choke points, such as the Suez Canal and the Strait of Hormuz, give power over trade, and shatterbelts are regions where outside powers compete."
+}

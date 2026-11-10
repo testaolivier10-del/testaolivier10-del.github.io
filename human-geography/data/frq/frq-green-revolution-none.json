@@ -1,0 +1,145 @@
+{
+ "id": "frq-green-revolution-none",
+ "type": "none",
+ "points": 7,
+ "title": "The Green Revolution: technology, uneven spread and neo-Malthusian limits",
+ "units": [
+  "unit-2",
+  "unit-5"
+ ],
+ "topics": [
+  "malthusian-theory",
+  "green-revolution"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "1.E",
+  "2.C",
+  "5.B"
+ ],
+ "stimuli": [],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify one technology that was part of the Green Revolution.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names one Green Revolution technology.",
+     "accept": [
+      "high-yield varieties (seeds) of wheat or rice",
+      "chemical fertilizer",
+      "irrigation",
+      "pesticides",
+      "machinery or mechanization"
+     ]
+    }
+   ],
+   "sample": "High-yield varieties of wheat and rice, bred by crossing plants to give more grain per hectare."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe where the Green Revolution had its largest effect on food production between the 1960s and the 1980s.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes a region or type of place with large gains, more than a name.",
+     "accept": [
+      "irrigated plains of South Asia, such as Punjab in India or Pakistan",
+      "rice-growing areas of East and Southeast Asia",
+      "wheat areas of Mexico",
+      "places with irrigation that grew wheat and rice"
+     ]
+    }
+   ],
+   "sample": "Its largest effect was on irrigated plains that grow wheat and rice in South and Southeast Asia, such as Punjab in India and Pakistan, where yields rose sharply from the mid-1960s."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain why the high-yield seeds of the Green Revolution raised yields most where farmers had irrigation and fertilizer.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains that the seeds gave large gains only as a package with water and fertilizer.",
+     "accept": [
+      "the new varieties were bred to turn extra water and fertilizer into more grain, so without them yields rose little",
+      "short, stiff stalks could carry the heavier grain that fertilizer and steady water produced, so the gain depended on those inputs"
+     ]
+    }
+   ],
+   "sample": "The new wheat and rice were bred to respond to water and fertilizer: given both, each plant grew much more grain on short, stiff stalks that did not fall over. On fields without irrigation or fertilizer the same seeds yielded little more than the old ones, so the biggest gains came where farmers could supply the whole package."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain one negative environmental consequence of the Green Revolution.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains an environmental harm with its cause.",
+     "accept": [
+      "heavy irrigation lowered water tables",
+      "fertilizer or pesticide runoff polluted water",
+      "fewer crop varieties reduced biodiversity"
+     ]
+    }
+   ],
+   "sample": "Irrigated rice and wheat in Punjab need large amounts of water, so farmers pumped groundwater faster than rain could refill it, which lowered the water table."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain one reason the Green Revolution raised food output less in much of Sub-Saharan Africa than in South Asia.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a reason for the weaker spread in Sub-Saharan Africa.",
+     "accept": [
+      "most farms there are rain-fed with little irrigation, and the package depended on steady water",
+      "the main breeding focused on wheat and rice, while many farmers there grow millet, sorghum, cassava or yams",
+      "poor roads, storage and credit made seed and fertilizer hard to buy and harvests hard to sell"
+     ]
+    }
+   ],
+   "sample": "Much of Sub-Saharan Africa farms dry land that depends on rain, and many farmers grow millet, sorghum and cassava, while the Green Revolution package centered on irrigated wheat and rice. Because few farms had irrigation or improved seed for local crops, yields there rose far less than on the irrigated plains of South Asia."
+  },
+  {
+   "label": "F",
+   "verb": "compare",
+   "prompt": "Compare the seeds of the Green Revolution with genetically modified (GMO) crops.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives a difference or similarity that speaks of both.",
+     "accept": [
+      "Green Revolution seeds were bred by crossing plants, whereas GMOs have genes changed in a lab",
+      "Green Revolution seeds spread from the 1960s, whereas GMOs came in the late 1990s",
+      "both were bred to raise yields or protect crops"
+     ]
+    }
+   ],
+   "sample": "Green Revolution seeds were bred by crossing plants and spread from the 1960s to the 1980s, whereas GMO crops have genes changed in a lab and spread widely on farms from the late 1990s."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the Green Revolution supports the neo-Malthusian argument that gains in food supply may not last.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree and explains it with evidence about whether the gains can be sustained.",
+     "accept": [
+      "to a moderate degree: yields rose, but falling water tables and fertilizer made with fossil fuels suggest limits",
+      "to a large degree: in places such as Punjab the gains rely on pumping groundwater faster than rain refills it",
+      "to a limited degree: yields have kept rising with new methods, so technology has so far kept ahead of population"
+     ]
+    }
+   ],
+   "sample": "To a moderate degree. Grain output did rise faster than population, but in Punjab the gains depend on pumping groundwater faster than rain refills it and on fertilizer made with fossil fuels, so neo-Malthusians argue the problem Malthus described was delayed rather than solved, even though yields have kept rising so far."
+  }
+ ]
+}

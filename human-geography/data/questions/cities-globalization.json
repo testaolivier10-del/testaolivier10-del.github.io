@@ -1,0 +1,516 @@
+{
+ "stimuli": {
+  "cities-globalization-s1": {
+   "kind": "data",
+   "title": "Four cities compared",
+   "invented": true,
+   "table": {
+    "caption": "Four invented cities (invented data for practice). Global firms: number of the world's 500 largest companies with headquarters in the city.",
+    "cols": [
+     "City",
+     "Population (millions)",
+     "Global firm headquarters",
+     "International flights a week",
+     "Foreign bank offices"
+    ],
+    "rows": [
+     [
+      "City P",
+      "9",
+      "40",
+      "3,100",
+      "250"
+     ],
+     [
+      "City Q",
+      "22",
+      "3",
+      "400",
+      "20"
+     ],
+     [
+      "City R",
+      "5",
+      "12",
+      "1,600",
+      "120"
+     ],
+     [
+      "City S",
+      "2",
+      "0",
+      "150",
+      "6"
+     ]
+    ]
+   }
+  },
+  "cities-globalization-s2": {
+   "kind": "text",
+   "title": "How one shipment of phones gets made",
+   "text": "<p><b>Invented passage for practice, 2026.</b> A company headquartered in a world city signs a contract with a factory in Viet Nam to build two million phones. The money is lent by a bank in London. A law firm in New York checks the contract, and both sides sign it by video call in under an hour. An advertising agency in Tokyo plans the launch. A port company in Singapore books the ships. The factory workers in Viet Nam never meet any of these people, but their hours depend on decisions made in those offices.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-cities-globalization-1",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Based on the table, which city most likely ranks highest as a world city?",
+   "stimulus": "cities-globalization-s1",
+   "options": [
+    "City P",
+    "City Q",
+    "City R",
+    "City S"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "City P leads on every measure of global function: headquarters, international flights and foreign banks. World city rank comes from these links, not from population.",
+    "options": [
+     "Right: City P has the most global functions.",
+     "City Q has the most people but few global functions.",
+     "City R is well connected but has fewer of each than City P.",
+     "City S has the fewest global links on every measure."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-2",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "City Q has the largest population but few global firms and foreign banks. What does City Q show?",
+   "stimulus": "cities-globalization-s1",
+   "options": [
+    "A city's rank in the hierarchy is set by its population",
+    "Large cities grow by attracting foreign banks",
+    "Small cities like City S are usually world cities",
+    "A very large city may have little global reach"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "City Q has 22 million people, so it is very large, yet it has few of the global functions that make a world city.",
+    "options": [
+     "City Q is the largest but not the highest-ranked, so population does not set rank.",
+     "The table does not show how cities grow; City Q is large with few foreign banks.",
+     "City S has almost no global functions.",
+     "Right: size and global function are different things."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-3",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question could the table NOT answer?",
+   "stimulus": "cities-globalization-s1",
+   "options": [
+    "Which city has the most foreign bank offices",
+    "Which city has the most people",
+    "Which cities trade most with each other",
+    "Which city has the most international flights"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The table gives totals for each city, but no flows between pairs of cities, so it cannot show which cities are most linked to each other.",
+    "options": [
+     "The table gives foreign bank offices for each city.",
+     "The table gives population for each city.",
+     "Right: the table shows no links between pairs of cities.",
+     "The table gives international flights for each city."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-4",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "City S is the capital of a small country and runs its national government. Where does City S most likely sit in the urban hierarchy?",
+   "stimulus": "cities-globalization-s1",
+   "options": [
+    "At the world city level",
+    "At the national level",
+    "At the level of a major regional hub",
+    "Below the level of a market town"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "City S leads its own country but has almost no global firms or flights, so it fits the national level.",
+    "options": [
+     "It has no global headquarters and few international flights.",
+     "Right: it leads one country but has little global reach.",
+     "It has too few foreign banks and flights to link a world region.",
+     "As a capital it ranks above market towns."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-5",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which detail in the passage shows time-space compression?",
+   "stimulus": "cities-globalization-s2",
+   "options": [
+    "Both sides sign the contract by video call in under an hour",
+    "The factory builds two million phones",
+    "The factory workers do not meet the people who decide their hours",
+    "The ships are booked by a port company"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Time-space compression is the shrinking of the time it takes to connect distant places. A deal across continents in under an hour shows it.",
+    "options": [
+     "Right: fast links make distance matter less.",
+     "The size of an order says nothing about how fast places connect.",
+     "Never meeting shows distance between workers and bosses, not faster links.",
+     "Booking ships is a task, not a change in how fast places connect."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-6",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "What does the passage suggest about the role of world cities in globalization?",
+   "stimulus": "cities-globalization-s2",
+   "options": [
+    "Factories decide where the world's money is lent",
+    "World cities make most of the goods that are traded",
+    "Globalization reduces the importance of cities",
+    "Decisions made in a few linked cities shape work in distant places"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The lending, legal work, advertising and shipping decisions are all made in world cities, and they set the hours of workers far away.",
+    "options": [
+     "In the passage, the bank in London lends the money, not the factory.",
+     "In the passage, the phones are made in Viet Nam; the world cities provide decisions and services.",
+     "The passage shows cities at the center of the process.",
+     "Right: world cities are command centers in a global network."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-7",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Which pair of scales does the passage link?",
+   "stimulus": "cities-globalization-s2",
+   "options": [
+    "National laws and the prices of farm goods in one region",
+    "Local elections and the national borders they shape",
+    "Global decisions and local effects",
+    "Regional weather patterns and global shipping costs"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Firms and banks in world cities act at the global scale; the result is felt at the local scale, in the hours of one factory.",
+    "options": [
+     "The passage mentions no national laws or farm prices.",
+     "The passage mentions no elections or borders.",
+     "Right: the passage ties global decisions to local outcomes.",
+     "The passage mentions no weather."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-8",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is the best sign that a city is a world city?",
+   "options": [
+    "More than 20 million people live in it",
+    "Many large firms run their worldwide business from it",
+    "It is the oldest city in its country",
+    "It covers more land than any other city in its region"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A world city is defined by its global functions: headquarters, finance, media and links.",
+    "options": [
+     "That defines a metacity, which is about population.",
+     "Right: global command functions make a world city.",
+     "Age does not give a city global functions.",
+     "Area does not give a city global functions."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-9",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the 2024 GaWC ranking, London and New York were the two most connected cities. Which best explains their rank?",
+   "options": [
+    "They host the most offices of global finance, law and advertising firms",
+    "They are the two largest cities in the world by population",
+    "They are the capitals of the two largest countries by area",
+    "They have the most factories of any cities"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GaWC measured offices of firms that sell finance, law, accounting, consulting and advertising to other firms. London and New York have the most of these links.",
+    "options": [
+     "Right: global business services set the ranking.",
+     "Neither is among the very largest cities by population in 2025 (UN DESA).",
+     "New York is not a capital, and neither country is the largest by area.",
+     "The ranking does not count factories."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-10",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A new kind of mobile payment appears first in Shanghai and Singapore, then in other large Asian cities, and years later in small towns. Which idea explains this path?",
+   "options": [
+    "Contagious diffusion from village to village",
+    "Relocation diffusion by migrants leaving cities",
+    "Distance decay from the equator",
+    "Hierarchical diffusion down the urban hierarchy"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The idea moves from the top of the urban hierarchy down to smaller places, skipping the space between: hierarchical diffusion.",
+    "options": [
+     "Contagious diffusion spreads to nearby places first, not to the biggest cities.",
+     "Nothing in the path shows people moving.",
+     "Distance decay is about distance between places, not from the equator.",
+     "Right: it spreads down the ladder of cities."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-11",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Many highly paid finance workers move into a world city. Which effect inside the city is most likely?",
+   "options": [
+    "Rents fall because builders put up more homes than the city needs",
+    "The city loses many of its airport links to other world cities",
+    "Housing costs rise and low-wage workers move out",
+    "Fewer jobs are created for cleaners, cooks and bus drivers in the city"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "High-paid newcomers bid up housing, so costs rise and lower-paid workers are pushed toward the edge. Every link matters: more money chasing homes, higher prices, longer commutes.",
+    "options": [
+     "More demand pushes rents up, not down.",
+     "Finance workers add to demand for flights.",
+     "Right: global money raises local housing costs.",
+     "High earners create demand for service jobs, not fewer of them."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-12",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "A bank board in London decides to stop lending to a textile company, and a factory in Dhaka cuts 2,000 jobs. Which statement describes the scales involved?",
+   "options": [
+    "A decision at the local scale has an effect at the global scale",
+    "A decision at the global scale has an effect at the local scale",
+    "Both the decision and the effect are at the national scale",
+    "The scale is unclear unless a map of the bank and factory is given"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The bank acts in the world economy, a global-scale decision; the job losses fall on one factory, a local-scale effect.",
+    "options": [
+     "This reverses the direction: the decision is global and the effect local.",
+     "Right: global decision, local effect.",
+     "The decision crosses countries, so it is not national.",
+     "The scale of a process can be named from what it reaches."
+    ]
+   }
+  },
+  {
+   "id": "hug-cities-globalization-13",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put these levels of the urban hierarchy in order, from the top to the base.",
+   "options": [
+    "World city",
+    "Major city linking a world region",
+    "National capital",
+    "Regional city",
+    "Small market town"
+   ],
+   "why": {
+    "correct": "Each level serves a larger area than the one below: world, world region, country, part of a country, nearby farms."
+   }
+  },
+  {
+   "id": "hug-cities-globalization-14",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the urban hierarchy for Kenya and the world: place each city at its level, top to bottom.",
+   "model": {
+    "layout": "tiers",
+    "title": "The urban hierarchy, top to bottom",
+    "slots": [
+     {
+      "id": "t1"
+     },
+     {
+      "id": "t2"
+     },
+     {
+      "id": "t3"
+     },
+     {
+      "id": "t4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "lon",
+      "text": "London: global finance"
+     },
+     {
+      "id": "jhb",
+      "text": "Johannesburg: regional hub"
+     },
+     {
+      "id": "nbo",
+      "text": "Nairobi: Kenya's capital"
+     },
+     {
+      "id": "ksm",
+      "text": "Kisumu: a regional center"
+     },
+     {
+      "id": "tys",
+      "text": "An edge city near Nairobi"
+     }
+    ],
+    "key": {
+     "t1": "lon",
+     "t2": "jhb",
+     "t3": "nbo",
+     "t4": "ksm"
+    },
+    "slips": [
+     {
+      "piece": "nbo",
+      "slot": "t2",
+      "why": "Nairobi leads Kenya, a national role; Johannesburg hosts offices for much of southern Africa, a wider area."
+     }
+    ]
+   },
+   "why": {
+    "correct": "London serves the world, Johannesburg a world region, Nairobi one country and Kisumu part of a country. An edge city is a part of a metro area, not a level of the hierarchy."
+   }
+  },
+  {
+   "id": "hug-cities-globalization-15",
+   "unit": "unit-6",
+   "topic": "cities-globalization",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of why a named city ranks high in the urban hierarchy.",
+   "specific": {
+    "frame": "___ ranks high because ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Singapore ranks high because many global banks and shipping firms run their Asian business from it, so its decisions reach factories and ports across Southeast Asia.",
+    "slots": {
+     "place": {
+      "label": "City",
+      "options": [
+       "Singapore",
+       "A big city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real city; a vague answer earns nothing."
+      }
+     },
+     "cause": {
+      "label": "Function",
+      "options": [
+       "many global banks and shipping firms run their Asian business from it",
+       "it has a very large population"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Population makes a megacity; global functions make a world city."
+      }
+     },
+     "effect": {
+      "label": "Reach",
+      "options": [
+       "its decisions reach factories and ports across Southeast Asia",
+       "it has more farmland than nearby cities"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Farmland is not what gives a city reach in the hierarchy."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A full explanation names the city, the global function and how that function gives it reach."
+   }
+  }
+ ]
+}

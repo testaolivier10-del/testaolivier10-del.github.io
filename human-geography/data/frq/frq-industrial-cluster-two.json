@@ -1,0 +1,191 @@
+{
+ "id": "frq-industrial-cluster-two",
+ "type": "two",
+ "points": 7,
+ "title": "A foreign carmaker's plant in a farming province: agglomeration, growth poles and the world economy",
+ "units": [
+  "unit-7",
+  "unit-2"
+ ],
+ "topics": [
+  "world-economy-changes",
+  "forced-voluntary-migration"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "1.B",
+  "3.C",
+  "3.D",
+  "2.C",
+  "5.C"
+ ],
+ "stimuli": [
+  {
+   "kind": "text",
+   "title": "Plan for the Eastern Plains, Ministry of Industry of Country A, 2013 (invented for practice)",
+   "text": "<p>The Eastern Plains are a farming province, and many young people leave for jobs in the Capital Region. To bring work to the province, the government has agreed with Kestrel Motors, a carmaker based in another country, that Kestrel will build a car assembly plant near the town of Varno, to open in 2014. For ten years Kestrel will pay no tax on its profits from the plant, and the government will build a new rail line from Varno to the port on the South Coast. Kestrel plans to buy many of its parts from firms that set up near the plant.</p>"
+  },
+  {
+   "kind": "data",
+   "title": "Jobs in the Eastern Plains, by sector",
+   "invented": true,
+   "table": {
+    "caption": "Jobs in the Eastern Plains, by sector (thousands, invented data for practice). The assembly plant opened in 2014.",
+    "cols": [
+     "Sector",
+     "2005",
+     "2015",
+     "2025"
+    ],
+    "rows": [
+     [
+      "Farming",
+      "120",
+      "110",
+      "95"
+     ],
+     [
+      "Car assembly",
+      "0",
+      "6",
+      "14"
+     ],
+     [
+      "Car parts suppliers",
+      "0",
+      "3",
+      "30"
+     ],
+     [
+      "Shops, schools and other services",
+      "60",
+      "68",
+      "88"
+     ],
+     [
+      "All jobs",
+      "180",
+      "187",
+      "227"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Using Source 2, identify the sector that added the most jobs in the Eastern Plains between 2015 and 2025.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names car parts suppliers (up 27 thousand, from 3 to 30).",
+     "accept": [
+      "car parts suppliers",
+      "parts suppliers"
+     ]
+    }
+   ],
+   "sample": "Car parts suppliers, which grew from 3 thousand jobs in 2015 to 30 thousand in 2025, a gain of 27 thousand."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Using Source 1, describe ONE incentive the government of Country A offered Kestrel Motors.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes an incentive from the source: ten years without tax on the plant's profits, or a new rail line from the plant to the port.",
+     "accept": [
+      "ten years with no tax on its profits",
+      "a new rail line from Varno to the port on the South Coast"
+     ]
+    }
+   ],
+   "sample": "The government let Kestrel pay no tax on its profits from the plant for ten years, so the plant would earn more in Country A than elsewhere."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain how the arrival of parts suppliers near the assembly plant is an example of agglomeration.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains agglomeration with its mechanism: related firms cluster near the plant because being close cuts transport costs and lets them share workers, roads and services, which draws still more firms.",
+     "accept": [
+      "suppliers locate near the plant to cut the cost of moving parts, and their cluster attracts more firms",
+      "firms cluster to share workers, transport and services"
+     ]
+    }
+   ],
+   "sample": "Agglomeration is the clustering of related firms in one place because being close saves them money. Parts makers set up near the plant so that they can deliver parts quickly and cheaply, share trained workers and use the same rail line and services, and each new firm makes the place more attractive to the next."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Using Source 2, explain whether the assembly plant is acting as a growth pole for the Eastern Plains.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Uses the table (all jobs rose from 187 thousand in 2015 to 227 thousand in 2025, with supplier and service jobs growing far more than the plant's own 14 thousand) and explains the growth pole idea: one key investment spreading growth through suppliers and the multiplier effect.",
+     "accept": [
+      "yes: the plant has 14 thousand jobs, but suppliers added 27 thousand and services 20 thousand, so it spread growth through the region",
+      "yes, total jobs rose from 187 to 227 thousand after the plant opened, through the multiplier effect"
+     ]
+    }
+   ],
+   "sample": "Yes. The plant itself employs only 14 thousand people, but after it opened, parts supplier jobs rose from 3 to 30 thousand and service jobs from 68 to 88 thousand, so all jobs grew from 187 to 227 thousand. One large investment drew suppliers, and their workers' spending created jobs in shops and services: this spreading growth is what makes the plant a growth pole."
+  },
+  {
+   "label": "E",
+   "verb": "compare",
+   "prompt": "Using Source 2, compare the change in farming jobs with the change in car parts jobs in the Eastern Plains from 2005 to 2025.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both with data: farming jobs fell (120 to 95 thousand), whereas car parts jobs rose from none to 30 thousand, so the province's economy shifted from farming toward manufacturing.",
+     "accept": [
+      "farming lost 25 thousand jobs while parts suppliers gained 30 thousand",
+      "farming fell but parts rose, so manufacturing grew as farming shrank"
+     ]
+    }
+   ],
+   "sample": "Farming jobs fell from 120 thousand to 95 thousand, a loss of 25 thousand, whereas car parts jobs rose from none to 30 thousand. So while farming shrank, manufacturing grew, and by 2025 the province depended less on farming than in 2005."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain ONE likely effect of the new jobs in the Eastern Plains on internal migration in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a migration effect with its cause: new jobs pull workers from other provinces, such as rural-to-urban or interregional migration from the Western Uplands or Southern Forest to the Eastern Plains, or fewer young people leaving the province for the Capital Region.",
+     "accept": [
+      "fewer young people leave the Eastern Plains for the Capital Region",
+      "workers move from low-wage outer provinces to the Eastern Plains for new jobs",
+      "rural-to-urban migration to Varno and towns near the plant grows"
+     ]
+    }
+   ],
+   "sample": "The new jobs are a pull factor. Fewer young people are likely to leave the Eastern Plains for the Capital Region, and workers from poorer farming areas may move to Varno and nearby towns, so rural-to-urban migration within the province grows."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the jobs shown in Source 2 are likely to last, given that Kestrel Motors is a multinational corporation that can move production to other countries.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree, then supports it with a reason (for example, the tax break ends after ten years and Kestrel could move to a lower-cost country, but the suppliers, rail line and trained workers make moving costly).",
+     "accept": [
+      "to a low degree: when the tax break ends, Kestrel could move to a country with lower wages, and the supplier and service jobs would go too",
+      "to a moderate degree: Kestrel could leave, but the cluster of suppliers and the rail line make the plant costly to move"
+     ]
+    }
+   ],
+   "sample": "To a moderate degree. A multinational corporation can shift production to wherever costs are lowest, and when the ten-year tax break ends Kestrel could move to a country with lower wages; because supplier and service jobs depend on the plant, many of them would be lost too. However, the cluster of suppliers, the rail line and trained workers built up around Varno would be costly to replace, which gives Kestrel a reason to stay."
+  }
+ ]
+}

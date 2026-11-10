@@ -1,0 +1,492 @@
+{
+ "stimuli": {
+  "settlement-survey-s1": {
+   "kind": "image",
+   "title": "Three ways of dividing farmland, seen from above",
+   "image": {
+    "figure": "settlement-survey-methods-numbered",
+    "alt": "Three numbered panels drawn from above. Panel 1: odd-shaped fields whose edges follow a winding stream, a tree and a rock. Panel 2: a grid of equal squares with straight roads at right angles and a few farmhouses. Panel 3: narrow strips of land side by side, each running back from a river, with a house at the river end of each strip.",
+    "caption": "A LevlPrep drawing of three survey methods."
+   }
+  },
+  "settlement-survey-s2": {
+   "kind": "text",
+   "title": "The Land Ordinance of 1785, in summary",
+   "text": "<p>In 1785 the US Congress (then under the Articles of Confederation) passed the Land Ordinance. In our summary: public land in the West, starting northwest of the Ohio River, was to be surveyed before it was sold. Surveyors drew east-west and north-south lines to divide it into townships, squares 6 miles on each side. Each township was split into 36 sections of 1 square mile (640 acres). One section in each township was set aside to support a public school. Land was then sold by the section or in parts of sections.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-settlement-survey-1",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which panel shows the township and range system?",
+   "options": [
+    "Panel 2",
+    "Panel 1",
+    "Panel 3",
+    "Panels 1 and 3 together"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Township and range divides land into a grid of squares, so fields and roads meet at right angles.",
+    "options": [
+     "Right: panel 2 is a grid of equal squares with straight roads, the mark of township and range.",
+     "Panel 1 has odd-shaped fields that follow a stream and markers such as a tree and a rock: metes and bounds.",
+     "Panel 3 has long, narrow strips running back from a river: long lots.",
+     "Neither panel 1 nor panel 3 is a grid: look for the equal squares."
+    ]
+   },
+   "stimulus": "settlement-survey-s1"
+  },
+  {
+   "id": "hug-settlement-survey-2",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which panel most likely shows farmland along the St. Lawrence River in Quebec, Canada, first divided by French settlers?",
+   "options": [
+    "Panel 1",
+    "Panel 2",
+    "Panel 3",
+    "Panels 1 and 2 equally"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The long lot system gave each family a narrow frontage on the river, the main road of the time, and a long strip running inland.",
+    "options": [
+     "Panel 1 shows metes and bounds, used in colonies such as Virginia, not in French Quebec.",
+     "Panel 2 shows the US township and range grid.",
+     "Right: French settlers divided land into long lots, each with a narrow river front.",
+     "Neither has the long, narrow strips running from a river that French settlement left."
+    ]
+   },
+   "stimulus": "settlement-survey-s1"
+  },
+  {
+   "id": "hug-settlement-survey-3",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Why did the method in panel 3 give each farm a narrow strip instead of a square?",
+   "options": [
+    "So that the farms would match the squares of a grid",
+    "So that fields could follow the shapes of trees and rocks",
+    "So that roads could cross the farms at right angles to each other",
+    "So each farm could reach the river for water and travel"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Long lots gave every farm a share of the most valuable thing nearby, river access, which is also why the houses line up along the river.",
+    "options": [
+     "Equal squares are the goal of township and range, panel 2.",
+     "Following natural features is metes and bounds, panel 1.",
+     "Roads at right angles mark the grid in panel 2.",
+     "Right: the river was the highway and water source, so each lot was cut to give every family a piece of riverbank."
+    ]
+   },
+   "stimulus": "settlement-survey-s1"
+  },
+  {
+   "id": "hug-settlement-survey-4",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Panel 1 shows boundaries that follow a stream and use a tree and a rock as corners. In which part of the United States is this method most common?",
+   "options": [
+    "The Midwest and West, in states such as Kansas and Iowa",
+    "The East, in states such as Virginia and Kentucky",
+    "Louisiana bayous first settled by French farmers",
+    "Alaska, where the land was first surveyed by satellite"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Metes and bounds describes land by distances and natural landmarks. It was the method of the eastern colonies, so their field patterns are irregular.",
+    "options": [
+     "Kansas and Iowa were surveyed later with the township and range grid.",
+     "Right: metes and bounds was used in the original colonies and some states formed from them.",
+     "French settlement in Louisiana left long lots, panel 3.",
+     "Satellite surveying is not one of the three methods shown."
+    ]
+   },
+   "stimulus": "settlement-survey-s1"
+  },
+  {
+   "id": "hug-settlement-survey-5",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which survey method does the passage describe?",
+   "options": [
+    "Metes and bounds",
+    "Long lot",
+    "Township and range",
+    "Linear settlement"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The Land Ordinance set up the rectangular survey known as township and range.",
+    "options": [
+     "Metes and bounds uses natural landmarks and irregular lines, not a planned grid of squares.",
+     "Long lots are narrow strips running back from a river, not squares.",
+     "Right: squares 6 miles on a side split into 36 one-square-mile sections is township and range.",
+     "Linear settlement is a pattern of houses along a line, not a survey method."
+    ]
+   },
+   "stimulus": "settlement-survey-s2"
+  },
+  {
+   "id": "hug-settlement-survey-6",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Using the passage, how many acres are in one township?",
+   "why": {
+    "correct": "$36 \\times 640 = 23{,}040$ acres in one township."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      36,
+      640
+     ]
+    },
+    "unit": "acres",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        6,
+        640
+       ]
+      },
+      "why": "A township is 6 miles on a side, so it holds 6 × 6 = 36 sections, not 6. Multiply 36 sections by 640 acres."
+     },
+     {
+      "value": 640,
+      "why": "That is one section. A township has 36 sections of 640 acres each."
+     }
+    ]
+   },
+   "stimulus": "settlement-survey-s2"
+  },
+  {
+   "id": "hug-settlement-survey-7",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Based on the passage, what settlement pattern did this way of selling land most likely produce on farmland in states such as Iowa?",
+   "options": [
+    "Dispersed farmhouses, each set on its own square of land",
+    "Clustered villages with fields spread around the village edge",
+    "Linear rows of houses along one long riverbank",
+    "No permanent settlement, because herders moved with the seasons"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The survey method shaped the settlement pattern: square parcels sold to single families produced dispersed settlement across the Midwest.",
+    "options": [
+     "Right: families bought their own section or part of one and built on it, so houses spread out across the grid.",
+     "Selling land in separate squares to separate families led people to live on their own land, not in villages.",
+     "A row of houses along a river fits long lots, not the square grid.",
+     "The land was sold to farmers who settled on it."
+    ]
+   },
+   "stimulus": "settlement-survey-s2"
+  },
+  {
+   "id": "hug-settlement-survey-8",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In many villages in England, houses, a church and shops sit close together, and farmers walk out to fields around the village. What settlement pattern is this?",
+   "options": [
+    "Dispersed",
+    "Clustered",
+    "Linear",
+    "Long lot"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Clustered settlement groups homes in a village and keeps farmland outside it.",
+    "options": [
+     "Dispersed settlement scatters homes across the land, one on each farm.",
+     "Right: homes grouped together, with farmland around them, is clustered (nucleated) settlement.",
+     "Linear settlement lines homes along a road, river or shore.",
+     "Long lot is a survey method, not a settlement pattern."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-9",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In Egypt, most villages stretch along the Nile and the canals beside it, with houses in long lines. What best explains this linear pattern?",
+   "options": [
+    "The government divided the land into a square grid of sections",
+    "Herders moved their homes with the seasons along the river",
+    "Villages were built for defense on hilltops away from the river",
+    "People settle near the water that makes farming possible in the desert"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A linear settlement follows a line on the land: here, the Nile and its canals in the desert.",
+    "options": [
+     "A square grid fits township and range, which leads to dispersed farms, not lines.",
+     "Most Egyptian farmers in the Nile valley live in fixed homes, not moving herds.",
+     "Hilltop villages for defense would be clustered and away from the water.",
+     "Right: the river and canals bring water to crops, so homes line up along them."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-10",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which is a common reason farm families choose to live in clustered villages instead of on their own scattered farms?",
+   "options": [
+    "Sharing wells, defense, a market and a place of worship",
+    "Each family wants to live right beside the fields it farms",
+    "The land was sold in separate squares to single families",
+    "Farmers want the shortest walk from their house to their crops"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Clustering trades a longer walk to the fields for shared water, safety, services and community.",
+    "options": [
+     "Right: living close together makes it easier to share services and protect one another.",
+     "Living beside your own fields leads to dispersed settlement.",
+     "Separate squares sold to families led to dispersed farms in the US Midwest.",
+     "In a clustered village farmers walk farther to their fields: that is a cost of clustering."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-11",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which statements about rural settlement and survey methods are accurate? Select all that apply.",
+   "options": [
+    "Township and range creates a grid of square fields and roads",
+    "Metes and bounds uses natural features such as streams and trees as boundaries",
+    "Long lots are found mainly in the dry grasslands of Mongolia",
+    "A dispersed pattern places homes together in one village",
+    "Linear settlement scatters farmhouses evenly across a grid"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Survey methods divide land; settlement patterns describe where homes sit. The method a place used often shaped its pattern.",
+    "options": [
+     "Right: the grid is visible from the air over much of the US Midwest.",
+     "Right: that is why its fields have irregular shapes.",
+     "Long lots were laid out by French settlers along rivers in places such as Quebec and Louisiana.",
+     "Homes grouped in a village is clustered settlement.",
+     "Linear settlement lines homes along a road, river or shore."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-12",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "From an airplane over Kansas you see roads in a grid about 1 mile apart. At what scale of analysis is this grid best described, and what made it?",
+   "options": [
+    "Local: each farmer chose where to put the roads",
+    "Global: the same grid covers farmland around the world",
+    "Regional: a national survey law applied across many states",
+    "Local: river banks set the line of each road"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The grid repeats across the Midwest and West, a regional pattern produced by a national survey system.",
+    "options": [
+     "Farmers did not choose the lines; the national survey did, the same way across many states.",
+     "Long lots in Quebec and metes and bounds in Virginia show the grid is not everywhere.",
+     "Right: the grid covers a whole region of the country, and it comes from the US township and range survey.",
+     "River banks shape long lots, not a grid of straight roads."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-13",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Why do farms in Virginia often have irregular shapes, while farms in Iowa are mostly squares?",
+   "options": [
+    "Virginia has a desert climate that makes square fields hard to irrigate",
+    "Iowa farmers practice shifting cultivation and move their fields",
+    "Virginia was divided into long lots by French settlers along its rivers",
+    "They were surveyed at different times with different methods"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Survey methods leave a lasting mark. Colonial metes and bounds left irregular parcels in Virginia; the 1785 grid left squares across Iowa.",
+    "options": [
+     "Virginia has a wet climate; the shapes come from how the land was first divided.",
+     "Iowa has mixed crop and livestock farming on fixed fields.",
+     "Long lots fit French settlement in Quebec and Louisiana, not Virginia.",
+     "Right: Virginia used metes and bounds in colonial times; Iowa was later surveyed by township and range."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-14",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A deed from 1790 in Kentucky marks a farm boundary at \"the large oak by the creek.\" Which problem is most likely to arise from this metes and bounds description?",
+   "options": [
+    "The farm is forced into a square exactly one mile on each side",
+    "The boundary becomes unclear when the tree dies or the creek moves",
+    "The farm has no access to water because it is far from the creek",
+    "Houses on the farm line up along a road in a linear pattern"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Metes and bounds relies on landmarks. When landmarks change, neighbors may disagree on where the line is: a known limit of the method.",
+    "options": [
+     "A fixed square of one mile is a section in township and range, not metes and bounds.",
+     "Right: features that change or vanish make metes and bounds lines hard to find, which leads to disputes.",
+     "The deed puts the boundary at the creek, so the farm touches it.",
+     "The deed describes a boundary, not where houses stand."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-15",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Compared with families in a clustered village in India, farm families in dispersed settlement in Kansas are most likely to face which challenge?",
+   "options": [
+    "Longer walks each morning from home to their fields",
+    "Less land for each family than in the village",
+    "Longer trips to schools, stores and neighbors",
+    "Boundaries that follow streams and trees"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Dispersed and clustered settlement trade off differently: dispersed homes are close to the fields but far from services; clustered homes are the reverse.",
+    "options": [
+     "That is a cost of clustered settlement: villagers walk out to their fields.",
+     "Kansas farms are large; dispersed homes sit on big parcels.",
+     "Right: with each home on its own farm, services are spread far apart.",
+     "Kansas was surveyed by township and range, a grid."
+    ]
+   }
+  },
+  {
+   "id": "hug-settlement-survey-16",
+   "unit": "unit-5",
+   "topic": "settlement-survey",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how a survey method shaped a settlement pattern in a named place.",
+   "why": {
+    "correct": "Name the place, the method and the effect with its link (so): long lots put every house on the river, a linear pattern."
+   },
+   "specific": {
+    "frame": "In ___, land was divided by ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Quebec along the St. Lawrence River, land was divided by long lots, so farmhouses line up along the river in a linear pattern.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Quebec along the St. Lawrence River",
+       "Kansas",
+       "a farming region"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Kansas was surveyed with the township and range grid, not long lots.",
+       "2": "Name a real place; a vague one earns no credit."
+      }
+     },
+     "cause": {
+      "label": "Survey method",
+      "options": [
+       "long lots",
+       "township and range"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "French settlers along the St. Lawrence used long lots, not the US grid."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "farmhouses line up along the river in a linear pattern",
+       "farmhouses cluster in one village on a hill"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each family built on its own river frontage, making a line, not a cluster."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

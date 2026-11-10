@@ -1,0 +1,238 @@
+{
+ "id": "frq-von-thunen-two",
+ "type": "two",
+ "points": 7,
+ "title": "A land-use map and a distance table: how well von Thünen fits a real region",
+ "units": [
+  "unit-1",
+  "unit-5"
+ ],
+ "topics": [
+  "scales-of-analysis",
+  "von-thunen"
+ ],
+ "practices": [
+  "1.D",
+  "1.E",
+  "2.E",
+  "3.B",
+  "5.A"
+ ],
+ "stimuli": [
+  {
+   "kind": "map",
+   "title": "Main farm land use by province, Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth of Country A by province showing the main farm land use: market gardening and dairy in the Capital Region and on the South Coast, grain in the Central Valley, Eastern Plains and Lake District, and ranching in the Northern Hills, Western Uplands and Southern Forest",
+    "legendTitle": "Main farm land use (invented)",
+    "classes": [
+     "Livestock ranching",
+     "Grain and field crops",
+     "Market gardening and dairy"
+    ],
+    "values": {
+     "capital": 2,
+     "coast": 2,
+     "central": 1,
+     "east": 1,
+     "northeast": 1,
+     "north": 0,
+     "west": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     },
+     {
+      "at": "coast",
+      "text": "South Coast"
+     },
+     {
+      "at": "north",
+      "text": "Northern Hills"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "data",
+   "title": "Distance and land value by province, Country A",
+   "invented": true,
+   "table": {
+    "caption": "Distance from the capital city and farmland value by province, Country A (invented data for practice)",
+    "cols": [
+     "Province",
+     "Distance from the capital city (km)",
+     "Average farmland value (US dollars per hectare)",
+     "Notes"
+    ],
+    "rows": [
+     [
+      "Capital Region",
+      "0 to 30",
+      "12,000",
+      "The country's largest market"
+     ],
+     [
+      "Central Valley",
+      "40",
+      "6,000",
+      "Flat, good soil"
+     ],
+     [
+      "Eastern Plains",
+      "60",
+      "4,500",
+      "Flat, good soil"
+     ],
+     [
+      "Lake District",
+      "70",
+      "4,000",
+      "Rail line to the capital"
+     ],
+     [
+      "Western Uplands",
+      "120",
+      "1,200",
+      "Hilly"
+     ],
+     [
+      "Southern Forest",
+      "130",
+      "1,000",
+      "Hilly, wooded"
+     ],
+     [
+      "South Coast",
+      "140",
+      "9,000",
+      "Mild winters; port with refrigerated shipping to export markets"
+     ],
+     [
+      "Northern Hills",
+      "150",
+      "800",
+      "Hilly, dry"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the scale of analysis of the data shown in Source 1.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names local or subnational (data by province).",
+     "accept": [
+      "local",
+      "subnational"
+     ]
+    }
+   ],
+   "sample": "The scale of analysis is local (subnational), because each value describes a province of Country A, not the whole country."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Using both sources, describe how the main farm land use changes with distance from the capital city.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes the change in land use with distance from the capital city, with places from the sources.",
+     "accept": [
+      "market gardening and dairy in the Capital Region, grain in nearby provinces, ranching in the farther hilly provinces, with the South Coast as an exception"
+     ]
+    }
+   ],
+   "sample": "Market gardening and dairy are in the Capital Region, grain is in the provinces around it such as the Central Valley, and ranching is in the provinces farthest away such as the Northern Hills, except that the distant South Coast also has market gardening."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain why the von Thünen model predicts market gardening and dairy in the Capital Region.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains with transport cost and perishability near the market.",
+     "accept": [
+      "vegetables and milk spoil quickly and are costly to ship, so they are produced closest to the market",
+      "these uses earn the most per hectare, so they can pay the high rent near the market"
+     ]
+    }
+   ],
+   "sample": "Vegetables and milk spoil quickly and are heavy to haul, so in the von Thünen model they are produced closest to the market, where transport costs are lowest and these intensive uses can pay the high rent."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Using Source 2, explain how farmland value changes with distance from the capital city.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains the fall in value with distance using bid-rent logic and table data.",
+     "accept": [
+      "value falls from 12,000 dollars near the capital to about 800 dollars at 150 km because land near the market has better access and users bid more for it"
+     ]
+    }
+   ],
+   "sample": "Farmland value falls from 12,000 dollars a hectare in the Capital Region to 800 dollars in the Northern Hills, 150 km away, because land near the main market saves transport cost, so farmers bid more for it, which fits bid-rent theory."
+  },
+  {
+   "label": "E",
+   "verb": "compare",
+   "prompt": "Compare the South Coast with the Northern Hills, using both sources.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives a difference (or similarity) that speaks of both provinces.",
+     "accept": [
+      "both are far from the capital, but the South Coast has market gardening and high land value whereas the Northern Hills has ranching and low land value"
+     ]
+    }
+   ],
+   "sample": "Both provinces are far from the capital city, 140 and 150 km, but the South Coast has market gardening and dairy and land worth 9,000 dollars a hectare, whereas the Northern Hills has ranching and land worth 800 dollars a hectare."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain one reason the South Coast does not fit the von Thünen model.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a factor the model leaves out and how it changes land use.",
+     "accept": [
+      "its port with refrigerated shipping gives it a second market abroad, so perishable crops can be sold far away",
+      "mild winters let it grow out-of-season produce, a specialty region the model does not include"
+     ]
+    }
+   ],
+   "sample": "The South Coast has a port with refrigerated shipping, so perishable vegetables can reach export markets fresh; this gives it access to a second market that the model, which assumes one market and transport by cart, does not include."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the von Thünen model fits land use in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree and supports it with evidence of fit and of a departure.",
+     "accept": [
+      "to a moderate or large degree: most provinces follow the rings by distance, but the South Coast breaks the pattern",
+      "the hilly provinces also break the flat-plain assumption"
+     ]
+    }
+   ],
+   "sample": "To a moderate degree, because most provinces follow the rings, with dairy and gardens at the capital, grain at 40 to 70 km and ranching beyond 100 km, but the South Coast breaks the pattern and the hilly provinces break the model's flat-plain assumption."
+  }
+ ]
+}

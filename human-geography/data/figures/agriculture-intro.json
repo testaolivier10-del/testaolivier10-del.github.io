@@ -1,0 +1,12 @@
+{
+ "agriculture-intro-two-kinds": {
+  "file": "figures/agriculture-intro-two-kinds.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 614,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two stacked panels. Extensive agriculture uses few inputs per hectare over large areas: shifting cultivation in the Amazon basin of Brazil, nomadic herding on the grasslands of Mongolia and ranching on the Pampas of Argentina. Intensive agriculture uses many inputs per hectare on small areas: market gardening near Rotterdam in the Netherlands, plantation agriculture such as oil palm in Malaysia, and mixed crop and livestock farming in the Corn Belt of Iowa."
+ }
+}

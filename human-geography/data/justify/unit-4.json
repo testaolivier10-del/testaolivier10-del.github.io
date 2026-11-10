@@ -1,0 +1,535 @@
+{
+ "about": "\"Make it specific\" prompts for unit-4 (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "unit-4",
+   "id": "u4-describe-kurds",
+   "topic": "political-intro",
+   "practice": "2.A",
+   "skill": "describe",
+   "title": "Describing a stateless nation",
+   "context": "",
+   "prompt": "<b>Describe</b> the Kurds as a stateless nation.",
+   "checklist": [
+    "Says what makes the Kurds a nation",
+    "Names the states they live in",
+    "Says they have no state of their own, with the autonomous region"
+   ],
+   "earns": {
+    "answer": "The Kurds are a nation of tens of millions of people who share a language and culture and live mainly across parts of Türkiye, Iraq, Iran and Syria, but they have no state of their own; Iraq's Kurdistan Region is autonomous.",
+    "why": "It says what makes them a nation, where they live and why they are stateless."
+   },
+   "misses": {
+    "answer": "The Kurds are a stateless nation in the Middle East.",
+    "why": "It names the term but describes nothing: no traits, no states."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "What makes them a nation",
+      "options": [
+       "a shared language and culture",
+       "a shared government",
+       "a shared currency"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Having no shared government is what makes them stateless.",
+       "2": "A currency is not what defines a nation."
+      }
+     },
+     "place": {
+      "label": "Where they live",
+      "options": [
+       "Türkiye, Iraq, Iran and Syria",
+       "one island",
+       "Western Europe only"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "They live across several states.",
+       "2": "Their homeland is in Southwest Asia."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-explain-malacca",
+   "topic": "power-territoriality",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Why a choke point matters",
+   "context": "",
+   "prompt": "<b>Explain</b> why the Strait of Malacca matters to the economies of East Asia.",
+   "checklist": [
+    "Names where the strait is and what it links",
+    "Says what passes through it",
+    "Explains the effect of a blockage"
+   ],
+   "earns": {
+    "answer": "Much of the oil and goods shipped between the Indian Ocean and East Asia passes through the narrow Strait of Malacca, between Malaysia, Singapore and Indonesia, so a blockage there would delay shipments and raise costs for countries such as China, Japan and South Korea.",
+    "why": "It locates the strait, says what passes and links a blockage to costs."
+   },
+   "misses": {
+    "answer": "The Strait of Malacca is an important choke point in Asia.",
+    "why": "A label, not an explanation: it never says why the choke point matters."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "What it links",
+      "options": [
+       "the Indian Ocean and East Asia",
+       "the Atlantic and the Pacific",
+       "the Black Sea and the Mediterranean"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the Panama Canal.",
+       "2": "That is the Bosporus."
+      }
+     },
+     "effect": {
+      "label": "Effect of a blockage",
+      "options": [
+       "delays and higher shipping costs",
+       "lower oil prices in East Asia",
+       "no effect on trade"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A blockage makes shipping harder, not cheaper.",
+       "2": "So much trade passes that a blockage matters."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-compare-boundaries",
+   "topic": "defining-boundaries",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "Antecedent and superimposed boundaries",
+   "context": "",
+   "prompt": "<b>Compare</b> the 49th parallel between Canada and the United States with many of the borders European powers drew in Africa.",
+   "checklist": [
+    "Names the boundary type for both cases",
+    "Says when each was drawn relative to settlement",
+    "Says what each did to the people who lived there"
+   ],
+   "earns": {
+    "answer": "The 49th parallel was drawn before most settlers arrived, so it is antecedent and divided few existing communities, whereas many African borders were superimposed by European powers at and after the Berlin Conference of 1884 to 1885, cutting across ethnic groups that already lived there.",
+    "why": "It names both types and compares when and how each was drawn."
+   },
+   "misses": {
+    "answer": "African borders were drawn by Europeans without asking Africans.",
+    "why": "One side only, with no type named: a compare also speaks of the 49th parallel."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "49th parallel",
+      "options": [
+       "antecedent: drawn before settlement",
+       "relict: no longer used",
+       "consequent: drawn along languages"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "It is still an active border.",
+       "2": "It follows a line of latitude, not a cultural divide."
+      }
+     },
+     "sideB": {
+      "label": "Many African borders",
+      "options": [
+       "superimposed by outside powers",
+       "antecedent, before anyone lived there",
+       "subsequent, drawn by local groups"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "People already lived there.",
+       "2": "They were drawn by European powers, not local groups."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-degree-quebec",
+   "topic": "devolution-factors",
+   "practice": "1.D",
+   "skill": "degree",
+   "title": "Language and Québec's push for self-rule",
+   "context": "<p>Québec held referendums on sovereignty in 1980 and 1995; in 1995 the No side won with about 50.6% of the vote (Elections Québec).</p>",
+   "prompt": "<b>Explain</b> the degree to which language explains the push for more self-rule in Québec.",
+   "checklist": [
+    "States the degree first: to a high degree, for example",
+    "Ties the French language to Québécois identity",
+    "Uses the referendums as evidence and names another factor"
+   ],
+   "earns": {
+    "answer": "To a high degree: Québec's French-speaking majority sees its language as central to its identity, which drove two referendums on sovereignty, and the 1995 vote was lost by about one percentage point; economic and historical grievances also played a part.",
+    "why": "It states the degree, links language to the movement and weighs another factor."
+   },
+   "misses": {
+    "answer": "Québec wants independence because people there speak French.",
+    "why": "No degree, and it overstates: the referendums failed, so not all of Québec wants independence."
+   },
+   "specific": {
+    "slots": {
+     "degree": {
+      "label": "Degree",
+      "options": [
+       "to a high degree",
+       "not at all",
+       "to a small degree"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Language is central to the movement.",
+       "2": "Language was a main driver, not a minor one."
+      }
+     },
+     "evidence": {
+      "label": "Evidence",
+      "options": [
+       "two referendums, the 1995 one very close",
+       "Québec became independent in 1995",
+       "no vote was ever held"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The No side won both votes.",
+       "2": "Votes were held in 1980 and 1995."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-place-gerrymander",
+   "topic": "internal-boundaries",
+   "practice": "2.B",
+   "skill": "place",
+   "title": "Naming a place: gerrymandering",
+   "context": "<p>A student writes: \"Politicians sometimes draw district lines to help their party.\"</p>",
+   "prompt": "<b>Rewrite</b> the claim with a real place, a year and what happened.",
+   "checklist": [
+    "Names a real state and its map",
+    "Names the court decision and its year",
+    "Reports it neutrally, attributing the claim"
+   ],
+   "earns": {
+    "answer": "In North Carolina, the congressional map drawn in 2016 was challenged in court as a partisan gerrymander; in Rucho v. Common Cause (2019), the US Supreme Court ruled that federal courts cannot decide such claims, leaving them to states and Congress.",
+    "why": "It names the place, the year and the ruling, and attributes the claim."
+   },
+   "misses": {
+    "answer": "Politicians gerrymander in many US states to win more seats.",
+    "why": "No place, no year and no case: a reader cannot check it."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "North Carolina's 2016 congressional map",
+       "many states",
+       "the whole world"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That names no state.",
+       "2": "Too broad to be a place."
+      }
+     },
+     "outcome": {
+      "label": "What the court decided",
+      "options": [
+       "federal courts cannot decide partisan gerrymandering claims",
+       "the map was declared illegal everywhere",
+       "districts were abolished"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The Court did not strike the map down.",
+       "2": "Districts still exist."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-scale-germany",
+   "topic": "forms-of-governance",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "A federal state at two scales",
+   "context": "<p>Germany is a federal state of 16 states (Länder).</p>",
+   "prompt": "<b>Explain</b> how Germany's federal system makes school rules look different at the national and state scales.",
+   "checklist": [
+    "Says what is set at the national scale",
+    "Says what each state sets",
+    "Explains the result: differences inside one country"
+   ],
+   "earns": {
+    "answer": "At the national scale, Germany has one constitution, but each of its 16 states sets its own school system and holiday dates, so the length of school and the summer break differ from one state to the next within the same country.",
+    "why": "It names the national scale and what the states set, and gives the result."
+   },
+   "misses": {
+    "answer": "Germany is a federal country, so states have power.",
+    "why": "It never says what differs or at what scale."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Kind of state",
+      "options": [
+       "federal: power shared with states",
+       "unitary: power held centrally",
+       "a loose league of small states"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "In a unitary state the center sets school rules.",
+       "2": "Germany is one federal state, not a loose league."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "school rules differ between states",
+       "all states have the same holidays",
+       "the states set national defense"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Holiday dates differ by state.",
+       "2": "Defense is set nationally."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-limit-eu-map",
+   "topic": "sovereignty-challenges",
+   "practice": "4.F",
+   "skill": "limitation",
+   "title": "What an EU membership map hides",
+   "context": "<p>A map shades the 27 member states of the European Union, as of 2026.</p>",
+   "prompt": "<b>Explain</b> one limitation of this map for showing how much power members have given to the EU.",
+   "checklist": [
+    "Says what the map shows: who belongs",
+    "Names a difference it hides, with an example",
+    "Explains why that matters for sovereignty"
+   ],
+   "earns": {
+    "answer": "The map shows which states belong, as of 2026, but not how deep their ties are: some members use the euro and some, such as Denmark and Sweden, do not, so states shaded the same may have given up different amounts of sovereignty.",
+    "why": "It names the gap, gives an example and ties it to sovereignty."
+   },
+   "misses": {
+    "answer": "The map might be out of date by the time you read it.",
+    "why": "Possible, but it names no limit in what the map can show."
+   },
+   "specific": {
+    "slots": {
+     "limit": {
+      "label": "What it hides",
+      "options": [
+       "how much power each member has pooled",
+       "which states are members",
+       "where Europe is"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is what it shows.",
+       "2": "Location is on the map."
+      }
+     },
+     "evidence": {
+      "label": "Example",
+      "options": [
+       "some members use the euro and some do not",
+       "every member uses the euro",
+       "no member has a currency"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Denmark and Sweden do not use the euro.",
+       "2": "Every state has a currency."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-model-belgium",
+   "topic": "centrifugal-centripetal",
+   "practice": "1.E",
+   "skill": "model",
+   "title": "Centripetal and centrifugal forces in Belgium",
+   "context": "",
+   "prompt": "<b>Explain</b> how well the idea of centripetal and centrifugal forces fits Belgium, and give one limit of the idea.",
+   "checklist": [
+    "Names a centrifugal force in Belgium",
+    "Says what Belgium did in response, with the year",
+    "Gives a limit of the idea"
+   ],
+   "earns": {
+    "answer": "It fits Belgium well, because the language divide between Dutch-speaking Flanders and French-speaking Wallonia pushes the regions apart, so in 1993 Belgium became a federal state to manage it; its limit is that it names the forces without measuring how strong each one is.",
+    "why": "It applies the idea to a named case, gives the response and a limit."
+   },
+   "misses": {
+    "answer": "Belgium has centrifugal forces because of language.",
+    "why": "It names a force but says nothing about fit, response or limit."
+   },
+   "specific": {
+    "slots": {
+     "model": {
+      "label": "Centrifugal force",
+      "options": [
+       "the language divide between regions",
+       "a shared monarchy",
+       "a national football team"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A shared monarchy pulls people together: centripetal.",
+       "2": "A national team is usually centripetal."
+      }
+     },
+     "limit": {
+      "label": "Limit",
+      "options": [
+       "it does not measure the forces",
+       "it only applies to Africa",
+       "it ignores language"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "It applies to states anywhere.",
+       "2": "Language is one of its main forces."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-legend-independence",
+   "topic": "political-processes",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading an independence map legend",
+   "context": "<p>A map of Africa shades each country by the decade it became independent: before 1950, the 1950s, the 1960s, the 1970s, and after 1979.</p>",
+   "prompt": "<b>Describe</b> what a country in the 1960s class tells you, and what the legend cannot tell you.",
+   "checklist": [
+    "Reads the class: independence between 1960 and 1969",
+    "Gives a real example with its year",
+    "Says what the class leaves out: the exact year"
+   ],
+   "earns": {
+    "answer": "A country in the 1960s class became independent between 1960 and 1969, the decade when many African states gained independence from European rule, as Nigeria did in 1960; the legend gives the decade, not the exact year or how independence was won.",
+    "why": "It reads the class, gives an example and says what the legend leaves out."
+   },
+   "misses": {
+    "answer": "That country became independent in the 1960s.",
+    "why": "It restates the class but never says what that means or what the legend leaves out."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "What the class means",
+      "options": [
+       "independence between 1960 and 1969",
+       "independence in 1960 exactly",
+       "independence before 1950"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A class is a whole decade.",
+       "2": "That is the first class."
+      }
+     },
+     "limit": {
+      "label": "What it cannot tell you",
+      "options": [
+       "the exact year and how independence came",
+       "the country's name",
+       "which continent it is on"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Names are on the map.",
+       "2": "The map is of Africa."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-explain-eez",
+   "topic": "boundary-functions",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Why islands add sea territory",
+   "context": "",
+   "prompt": "<b>Explain</b> why an inhabited island can add a large area of sea to a state under the UN Convention on the Law of the Sea.",
+   "checklist": [
+    "Names the zone and its width: up to 200 nautical miles",
+    "Links the zone to the island's coast",
+    "Says what rights the zone gives"
+   ],
+   "earns": {
+    "answer": "Under the UN Convention on the Law of the Sea, a state can claim an exclusive economic zone of up to 200 nautical miles from its coasts, including an inhabited island's coast, so even a small island can add a large area of fishing and seabed rights.",
+    "why": "It names the zone and its width, and links the island to the rights."
+   },
+   "misses": {
+    "answer": "Islands have their own seas around them.",
+    "why": "Too vague: no zone, no width and no rights."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Zone",
+      "options": [
+       "an exclusive economic zone, up to 200 nautical miles",
+       "a territorial sea of 500 miles",
+       "a demilitarized zone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The territorial sea is 12 nautical miles.",
+       "2": "A demilitarized zone is a buffer between armies."
+      }
+     },
+     "effect": {
+      "label": "Rights it gives",
+      "options": [
+       "fishing and seabed resources",
+       "the right to close the sea to all ships",
+       "a seat at the UN"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ships keep freedom of navigation in an EEZ.",
+       "2": "An EEZ gives no UN seat."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "population-distribution-factors": {
+  "file": "figures/population-distribution-factors.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram: four physical factors (climate, water, landforms, soil) on the left and four human factors (jobs, transport, government, history) on the right, each with an arrow pointing to a center box, population distribution: where people live. A note says which factors matter most depends on the scale of analysis."
+ }
+}

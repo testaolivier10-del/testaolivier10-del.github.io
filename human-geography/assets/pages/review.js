@@ -1,0 +1,228 @@
+/* AP® Human Geography Review: the spaced review queue (forked from
+   anatomy-physiology/assets/apps/review.js).
+
+   A miss anywhere in the course (a lesson check, practice, an exam, a tool)
+   puts that item in ApHugCore's queue, due ten minutes later; each right
+   answer pushes it further out, SM-2 style, until it graduates. This page
+   serves what is due now, oldest first, and nothing else.
+
+   A question from a stimulus set comes back alone, under its own stimulus
+   panel, so it can be answered without the rest of the set. Tool items (ids
+   "<tool>:<content>:<item>", A&P tools contract) cannot be rebuilt here, so
+   they link to their tool (window.ApHugToolList, when the tools branch adds
+   it) and stay due until answered there.
+
+   Free tier: a Unit 1 or 2 question is always served; any other takes one
+   from the daily allowance shared with practice (ApHugCore.serve). */
+(function(){
+  var BASE = window.ApHugBase || '';
+  var app = document.getElementById('app');
+  if(!app) return;
+  // A class assignment (?la=) runs on the practice page (assets/class/class-run.js).
+  if(/[?&]la=/.test(location.search)){ location.replace('practice.html' + location.search); return; }
+  var hero = document.querySelector('.page-head, .hug-hero');
+  var CUR = window.ApHugCurriculum || { topics: [], units: [] };
+  var Core = window.ApHugCore, Q = window.ApHugQuestions;
+  var MIN = 60000, DAY = 86400000, SESSION_CAP = 20;
+  /* review.html?go=1&unit=&n= comes from the Practice panel (docs/course-redesign-r4.md decision 5): only that unit's
+     (or chapter's) questions, and the session starts at once. */
+  var GO = new URLSearchParams(location.search), ONLY = GO.get('unit') || '';
+
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
+  var TOPIC = {}; CUR.topics.forEach(function(t){ TOPIC[t.id] = t; });
+  var TOOL = {}; (window.ApHugToolList || []).forEach(function(t){ if(t && t.slug) TOOL[t.slug] = t; });
+
+  var bank = null, session = null, refreshTimer = null;
+
+  function loadBank(){
+    return Core.loadIndex(BASE).then(function(all){ var out = {}; all.forEach(function(q){ out[q.id] = q; }); return out; });
+  }
+  function classify(id){
+    if(bank[id]) return { kind: 'q', id: id, q: bank[id] };
+    var parts = id.split(':');
+    if(parts.length > 1 && TOOL[parts[0]] && !(TOOL[parts[0]].premium && Core.locked && Core.locked())) return { kind: 'tool', id: id, tool: TOOL[parts[0]], content: parts[1] || '', item: parts.slice(2).join(':') };
+    return null;
+  }
+  function dueItems(){ return Core.reviewQueue().map(classify).filter(function(it){ return it && (!ONLY || (it.kind === 'q' && unitOf(it.q) === ONLY)); }); }
+
+  function when(ts){
+    var d = ts - Date.now();
+    if(d <= 0) return 'now';
+    if(d < 60 * MIN) return 'in ' + plural(Math.max(1, Math.round(d / MIN)), 'minute');
+    if(d < 20 * 60 * MIN) return 'in about ' + plural(Math.round(d / (60 * MIN)), 'hour');
+    var days = Math.round(d / DAY), label = new Date(ts).toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
+    return days <= 1 ? 'tomorrow (' + label + ')' : 'on ' + label + ' (in ' + plural(days, 'day') + ')';
+  }
+  function upcoming(){
+    var d = Core.load(), t = Date.now(), list = [];
+    Object.keys(d.q || {}).forEach(function(k){ var r = d.q[k]; if(r.due && r.due > t && classify(k)) list.push(r.due); });
+    list.sort(function(a, b){ return a - b; });
+    var today = new Date(); today.setHours(23, 59, 59, 999);
+    return { next: list[0] || 0, today: list.filter(function(x){ return x <= today.getTime(); }).length, week: list.filter(function(x){ return x <= t + 7 * DAY; }).length };
+  }
+  function view(name){ if(hero) hero.classList.toggle('hug-hero-min', name !== 'home'); app.setAttribute('data-view', name); window.scrollTo(0, 0); }
+  function toolHref(it){ return BASE + 'tools/' + it.tool.slug + '.html' + (it.content ? '#' + encodeURIComponent(it.content) : ''); }
+  function toolLine(it){
+    var t = Core.load().q[it.id] || {}, topic = TOPIC[t.t];
+    return '<li><div><b>' + esc(it.tool.name) + '</b><span class="hug-small">' + esc(it.content.replace(/-/g, ' ')) + (it.item ? ': ' + esc(it.item.replace(/-/g, ' ')) : '') + (topic ? ' · ' + esc(topic.title) : '') + '</span></div>' +
+      '<a class="btn-outline" href="' + toolHref(it) + '">Open the tool</a></li>';
+  }
+  function allowance(){
+    var a = Core.quota ? Core.quota() : null;
+    return a && a.limit !== Infinity ? LevlStudy.allowance('aphug', 'Unit 1 is unlimited.') : '';
+  }
+
+  function renderHome(){
+    view('home');
+    var items = dueItems(), qs = items.filter(function(x){ return x.kind === 'q'; }), tools = items.filter(function(x){ return x.kind === 'tool'; }), up = upcoming();
+    var main;
+    if(!items.length){
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: up.next ? 'You are all caught up' : 'Nothing to review yet',
+        p: up.next ? 'The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '')
+          : 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.',
+        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }] }) + allowance() + '</section>';
+    } else {
+      var acts = [];
+      if(qs.length) acts.push({ act: 'n', attrs: ' data-n="' + Math.min(SESSION_CAP, qs.length) + '"', label: qs.length > SESSION_CAP ? 'Review the ' + SESSION_CAP + ' oldest' : 'Start review', primary: true });
+      if(qs.length > SESSION_CAP) acts.push({ act: 'n', attrs: ' data-n="' + qs.length + '"', label: 'Review all ' + qs.length });
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: items.length, unit: items.length === 1 ? 'item due' : 'items due',
+        h: (qs.length ? plural(qs.length, 'question') + ' to answer here' : '') + (qs.length && tools.length ? ', and ' : '') + (tools.length ? plural(tools.length, 'tool item') + ' to redo in ' + (tools.length === 1 ? 'its tool' : 'their tools') : ''),
+        p: 'Oldest first. A right answer sends an item further out; a miss brings it back in ten minutes.' + (up.today ? ' ' + plural(up.today, 'more item') + ' come due later today.' : ''),
+        actions: acts }) + allowance() + '</section>' +
+        (tools.length ? '<section><h2 class="cx-h2">Due in the tools</h2><ul class="cx-list hug-rv-tools">' + tools.map(toolLine).join('') + '</ul></section>' : '');
+    }
+    var d = Core.load(), answered = 0;
+    Object.keys(d.q || {}).forEach(function(k){ if(d.q[k].n) answered++; });
+    var miss = (Core.missed ? Core.missed() : []).length;
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' + main + '</div>' +
+      LevlStudy.rail({
+        stats: [
+          ['Answered', answered, answered ? 'questions and tool items' : 'nothing yet'],
+          ['Due for review', items.length, items.length ? 'waiting in your queue' : 'nothing due now', items.length ? 'is-due' : ''],
+          ['To fix', miss, miss ? 'missed, not yet right' : 'no open misses'],
+          ['This week', up.week, up.week ? 'coming back in 7 days' : 'nothing scheduled']
+        ],
+        links: [
+          { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Glossary terms on spaced cards.' },
+          { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit tests and full practice exams.' }
+        ]
+      }) + '</div>';
+    if(!items.length){
+      clearTimeout(refreshTimer);
+      if(up.next && up.next - Date.now() < 60 * MIN) refreshTimer = setTimeout(function(){ if(app.getAttribute('data-view') === 'home') renderHome(); }, up.next - Date.now() + 1000);
+      return;
+    }
+    app.querySelectorAll('[data-n]').forEach(function(b){ b.addEventListener('click', function(){ start(+b.getAttribute('data-n')); }); });
+  }
+
+  function start(n){
+    var items = dueItems(), list = [], qn = 0;
+    for(var i = 0; i < items.length && qn < n; i++){ list.push(items[i]); if(items[i].kind === 'q') qn++; }
+    var btn = app.querySelector('[data-n="' + n + '"]');
+    if(btn){ btn.disabled = true; btn.textContent = 'Loading…'; }
+    Core.loadQuestions(BASE, list.filter(function(it){ return it.kind === 'q'; }).map(function(it){ return it.q; })).then(function(full){
+      var by = {}; full.forEach(function(q){ by[q.id] = q; });
+      list = list.filter(function(it){ if(it.kind !== 'q') return true; it.q = by[it.id]; return !!it.q; });
+      begin(list);
+    }).catch(function(){ if(btn){ btn.disabled = false; btn.textContent = 'Try again'; } });
+  }
+  function begin(list){
+    session = { list: list, i: 0, answered: 0, right: 0, missed: [], seen: [], done: false };
+    view('session');
+    app.innerHTML = '<div class="cx-session hug-rv-session"><div class="cx-sbar"><span class="cx-sbar-t">Spaced review</span><span class="cx-sbar-n hug-pr-count-l" aria-live="polite"></span>' +
+      '<button type="button" class="cx-end hug-rv-quit">End review</button></div><div class="cx-progress hug-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
+      '<h2 class="sr-only">Question</h2><div class="hug-pr-stage"></div><div class="cx-next-row hug-pr-after" hidden></div></div>';
+    app.querySelector('.hug-rv-quit').addEventListener('click', finish);
+    next();
+  }
+  function paintProgress(k){
+    var total = session.list.length;
+    app.querySelector('.hug-pr-count-l').textContent = Math.min(session.i + 1, total) + ' of ' + total;
+    app.querySelector('.hug-pr-track i').style.width = Math.round(k / total * 100) + '%';
+  }
+  function next(){
+    if(session.i >= session.list.length) return finish();
+    var it = session.list[session.i], stage = app.querySelector('.hug-pr-stage'), after = app.querySelector('.hug-pr-after');
+    stage.innerHTML = ''; after.innerHTML = ''; after.hidden = true;
+    paintProgress(session.i);
+    if(it.kind === 'tool'){
+      stage.innerHTML = '<div class="hug-q cx-q hug-rv-toolcard"><p class="hug-q-stem" tabindex="-1">This item is from <b>' + esc(it.tool.name) + '</b>.</p><ul class="cx-list hug-rv-tools">' + toolLine(it) + '</ul><p class="hug-small">It stays in your queue until you answer it again in the tool.</p></div>';
+      showNext(after, 'Skip for now');
+    } else if(!Core.serve(it.q)){
+      var j = session.i + 1;
+      while(j < session.list.length && !(session.list[j].kind === 'tool' || Core.serve(session.list[j].q))) j++;
+      if(j < session.list.length){ session.i = j; return next(); }
+      stage.innerHTML = Core.gate('daily-limit', 'review-limit', it.q.topic);
+      after.innerHTML = '<button type="button" class="btn-press cx-next hug-pr-next">' + (session.answered ? 'See how you did' : 'Back to the queue') + '</button>';
+      after.hidden = false;
+      after.querySelector('.hug-pr-next').addEventListener('click', function(){ if(session.answered) finish(); else { session.done = true; renderHome(); } });
+    } else {
+      Q.hydrate(stage, [it.q], { onAnswer: function(res){
+        session.answered++; if(res.correct) session.right++; else session.missed.push(it.q); session.seen.push({ q: it.q, correct: res.correct, pick: res.pick });
+        var t = TOPIC[it.q.topic];
+        after.insertAdjacentHTML('afterbegin', '<p class="cx-from hug-pr-from">' + (res.correct ? 'Scheduled further out. ' : 'Back in ten minutes. ') + (t && t.built ? 'From <a href="' + BASE + 'lessons/' + it.q.topic + '.html">' + esc(t.title) + '</a>.' : '') + '</p>');
+        showNext(after);
+        app.querySelector('.hug-pr-track i').style.width = Math.round((session.i + 1) / session.list.length * 100) + '%';
+      } });
+      var nEl = stage.querySelector('.hug-q-n'); if(nEl) nEl.textContent = (session.i + 1) + '.';
+    }
+    var first = stage.querySelector('.hug-stim h3') || stage.querySelector('.hug-q-stem');
+    if(first){ first.setAttribute('tabindex', '-1'); try{ first.focus({ preventScroll: true }); }catch(e){ first.focus(); } }
+  }
+  function showNext(after, label){
+    var last = session.i + 1 >= session.list.length;
+    after.insertAdjacentHTML('beforeend', '<button type="button" class="btn-press cx-next hug-pr-next">' + (label || (last ? 'Finish' : 'Next')) + '</button>');
+    after.hidden = false;
+    var b = after.querySelector('.hug-pr-next');
+    b.addEventListener('click', function(){ session.i++; next(); });
+    if(!label){ try{ b.focus({ preventScroll: true }); }catch(e){ b.focus(); } }
+  }
+  function finish(){
+    if(!session || session.done) return;
+    session.done = true;
+    if(session.answered) Core.event('aphug-session-finish', { mode: 'review', answered: session.answered, correct: session.right });
+    if(!session.answered){ renderHome(); return; }
+    var due = dueItems(), up = upcoming(), left = due.filter(function(x){ return x.kind === 'q'; }).length, leftTools = due.length - left;
+    var mt = {}; session.missed.forEach(function(q){ mt[q.topic] = (mt[q.topic] || 0) + 1; });
+    var tops = Object.keys(mt).filter(function(t){ return TOPIC[t] && TOPIC[t].built; }).sort(function(a, b){ return mt[b] - mt[a]; });
+    /* End screen v2b (owner 2026-11-07): every topic reviewed, in one table. */
+    var tc = {}, tt = [];
+    session.seen.forEach(function(x){ var t = x.q.topic; if(!t) return; if(!tc[t]){ tc[t] = { c: 0, n: 0 }; tt.push(t); } tc[t].n++; if(x.correct) tc[t].c++; });
+    view('done');
+    /* The shared end panel (LevlStudy.end, consistency audit 2026-11, B7). */
+    var missN = session.answered - session.right;
+    app.innerHTML = '<div class="hug-pr-summary">' + LevlStudy.end({
+      right: session.right, total: session.answered, course: 'aphug',
+      line: left ? plural(left, 'question') + ' still due' : leftTools ? 'Questions cleared' : 'Queue cleared',
+      sub: (leftTools ? plural(leftTools, 'tool item') + ' still ' + (leftTools === 1 ? 'waits' : 'wait') + ' in the tools. ' : '') +
+        (up.next && !due.length ? 'Next due ' + esc(when(up.next)) + '.' : ''),
+      kind: 'Review',
+      missed: session.seen.filter(function(x){ return !x.correct; }).map(function(x){ return LevlStudy.miss(x.q, x.pick, x.q.topic && TOPIC[x.q.topic] && TOPIC[x.q.topic].built ? BASE + 'lessons/' + x.q.topic + '.html' : ''); }),
+      nextTitle: 'Topics',
+      next: LevlStudy.topics(tt.map(function(t){ return { name: TOPIC[t] ? TOPIC[t].title : t, href: TOPIC[t] && TOPIC[t].built ? '' + BASE + 'lessons/' + t + '.html' : null, c: tc[t].c, n: tc[t].n, mastery: Core.topicMastery ? Core.topicMastery(t).value || 0 : null,
+        links: TOPIC[t] && TOPIC[t].built ? [{ label: 'Lesson', href: '' + BASE + 'lessons/' + t + '.html' }, { label: 'Notes', href: '' + BASE + 'notes/' + t + '.html' }] : [] }; })),
+      retry: missN ? { href: BASE + 'practice.html?mode=missed', label: missN === 1 ? 'Retry 1 miss' : 'Retry ' + missN + ' misses' } : null,
+      step: left ? { act: 'more', label: 'Keep going: ' + plural(left, 'question') + ' due', why: 'Still due today, while this session is fresh.' }
+        : { href: BASE + 'practice.html', label: 'Practice something new', why: 'Nothing else is due right now.' },
+      also: [{ act: 'home', label: 'Back to the queue' }]
+    }) + '</div>';
+    LevlStudy.wire(app, { more: function(){ start(SESSION_CAP); }, home: renderHome });
+  }
+
+  function unitOf(q){ var t = TOPIC[q.topic]; return q.unit || (t && (t.unit || t.chapter)) || ''; }
+  function goNow(){
+    if(GO.get('go') !== '1') return;
+    try{ history.replaceState(null, '', location.pathname + (ONLY ? '?unit=' + encodeURIComponent(ONLY) : '')); }catch(e){}
+    var n = dueItems().filter(function(it){ return it.kind === 'q'; }).length;
+    if(n) start(Math.min(n, +GO.get('n') || n));
+  }
+
+  function boot(){
+    if(!Q || !Core){ app.innerHTML = '<p>Review could not start. Reload the page to try again.</p>'; return; }
+    app.innerHTML = '<p class="hug-small">Loading your queue…</p>';
+    loadBank().then(function(b){ bank = b; renderHome(); goNow(); }, function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });
+    window.addEventListener('storage', function(e){ if(e.key === Core.KEY && bank && app.getAttribute('data-view') === 'home') renderHome(); });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();

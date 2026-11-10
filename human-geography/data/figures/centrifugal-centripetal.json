@@ -1,0 +1,12 @@
+{
+ "centrifugal-centripetal-forces": {
+  "file": "figures/centrifugal-centripetal-forces.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 355,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A circle labeled the state. On the left, solid arrows point inward from three centripetal forces that pull the state together: shared language, national road and rail, fair shares of money. On the right, dashed arrows point outward to three centrifugal forces that pull it apart: unequal regions, distrust after conflict, rival identities."
+ }
+}

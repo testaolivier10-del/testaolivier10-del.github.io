@@ -1,0 +1,71 @@
+{
+ "topic": "aging-populations",
+ "hook": "In parts of rural Japan, schools have closed for lack of pupils and many villages now have far more older residents than children. More than a quarter of Japan’s people were 65 or older in 2023 (Statistics Bureau of Japan, 2023). Italy, South Korea and many other countries are heading the same way. What happens to a society when it grows old?",
+ "prereq": [
+  {
+   "q": "What does life expectancy measure?",
+   "options": [
+    "How many years a newborn can expect to live",
+    "Births per 1,000 people",
+    "Deaths of babies per 1,000 births",
+    "Children per woman"
+   ],
+   "correct": 0,
+   "why": "Life expectancy is the average years a newborn can expect to live.",
+   "review": "population-dynamics"
+  },
+  {
+   "q": "A pyramid’s base is narrower than its middle. What shape is it?",
+   "options": [
+    "Constrictive",
+    "Expansive",
+    "Stationary",
+    "Upside-down"
+   ],
+   "correct": 0,
+   "why": "A base narrower than the middle is constrictive: births have fallen.",
+   "review": "population-composition"
+  }
+ ],
+ "figure": {
+  "figure": "aging-populations-pyramid",
+  "caption": "A constrictive pyramid: the dependency ratio compares the people under 15 and 65 and over with the people aged 15 to 64."
+ },
+ "chain": [
+  {
+   "cause": "Birth rates fall and people live longer",
+   "effect": "older people become a larger share of the population"
+  },
+  {
+   "cause": "Fewer young people enter the workforce",
+   "effect": "some jobs go unfilled, so firms use machines or hire workers from abroad"
+  },
+  {
+   "cause": "More people retire while fewer work",
+   "effect": "the elderly dependency ratio rises and pensions cost each worker more"
+  },
+  {
+   "cause": "Pensions and health care cost more",
+   "effect": "governments raise the retirement age, raise taxes or cut benefits, and voters argue"
+  }
+ ],
+ "ideas": [
+  "An <b>aging population</b> has a rising share of older people. It comes from low birth rates and longer life expectancy, and young people moving away can make one place older still.",
+  "The <b>dependency ratio</b> = (people under 15 + people 65 and over) ÷ people 15 to 64 × 100. Split it into youth and elderly ratios to see who the dependents are.",
+  "Effects are <b>economic</b> (worker shortages, pension and health costs), <b>political</b> (pension debates, older voters) and <b>social</b> (family care, empty schools).",
+  "Scale matters: rural provinces often age faster than the capital because young adults move to cities."
+ ],
+ "misconception": {
+  "wrong": "A high dependency ratio means a country has many older people.",
+  "right": "The ratio counts children too. A country with many children can have the same ratio as one with many older people. Split it into youth and elderly ratios."
+ },
+ "check": [
+  "hug-aging-populations-1",
+  "hug-aging-populations-2",
+  "hug-aging-populations-3",
+  "hug-aging-populations-5",
+  "hug-aging-populations-6",
+  "hug-aging-populations-7"
+ ],
+ "summary": "An aging population comes from fewer births and longer lives. The dependency ratio compares people under 15 and 65 and over with people of working age. Aging has economic, political and social effects, from worker shortages and pension debates to more care work in families, and it can be stronger in rural places that young people leave."
+}

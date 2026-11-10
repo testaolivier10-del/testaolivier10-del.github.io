@@ -1,0 +1,513 @@
+{
+ "stimuli": {
+  "power-territoriality-s1": {
+   "kind": "map",
+   "title": "Five narrow sea passages",
+   "map": {
+    "base": "north-africa-sw-asia",
+    "render": "reference",
+    "label": "Reference map of North Africa and Southwest Asia with five narrow sea passages marked A to E: A at the western mouth of the Mediterranean, B between the Black Sea and the Mediterranean, C in northeast Egypt, D at the southern end of the Red Sea, E at the mouth of a gulf between Iran and the Arabian Peninsula",
+    "legendTitle": "Sea passages in the questions",
+    "marks": [
+     {
+      "at": [
+       -5.6,
+       36
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       29,
+       41.1
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       32.4,
+       30.4
+      ],
+      "text": "C"
+     },
+     {
+      "at": [
+       43.4,
+       12.6
+      ],
+      "text": "D"
+     },
+     {
+      "at": [
+       56.4,
+       26.5
+      ],
+      "text": "E"
+     }
+    ]
+   }
+  },
+  "power-territoriality-s2": {
+   "kind": "text",
+   "title": "A ship blocks a canal (2021)",
+   "text": "<p>On 23 March 2021, a large container ship ran aground in the Suez Canal and blocked it for six days. Hundreds of ships waited at each end. Some shipping companies sent their ships the long way around the southern tip of Africa instead, adding about two weeks to the trip.</p><p>Summary of reports by the Suez Canal Authority and news agencies, March 2021.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-power-territoriality-1",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Ships from ports on the Black Sea must pass which mark to reach the Mediterranean Sea?",
+   "options": [
+    "Mark B",
+    "Mark A",
+    "Mark C",
+    "Mark D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Black Sea connects to the Mediterranean through the Bosporus and the Dardanelles in Türkiye (mark B).",
+    "options": [
+     "Right: Mark B is the Bosporus at Istanbul, Türkiye, the only sea link between the Black Sea and the Mediterranean.",
+     "Mark A is the Strait of Gibraltar, between the Mediterranean and the Atlantic.",
+     "Mark C is the Suez Canal, between the Mediterranean and the Red Sea.",
+     "Mark D is at the southern end of the Red Sea, far from the Black Sea."
+    ]
+   },
+   "stimulus": "power-territoriality-s1"
+  },
+  {
+   "id": "hug-power-territoriality-2",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Oil tankers leaving the Persian Gulf (called the Arabian Gulf in many Arab states) have to pass which choke point?",
+   "options": [
+    "Mark A",
+    "Mark C",
+    "Mark D",
+    "Mark E"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The Strait of Hormuz (mark E), between Iran and Oman, is the one sea route out of the gulf.",
+    "options": [
+     "Gibraltar is far to the west, at the mouth of the Mediterranean.",
+     "The Suez Canal links the Red Sea and the Mediterranean, not the gulf.",
+     "Tankers reach the Red Sea route only after leaving the gulf.",
+     "Right: Mark E is the Strait of Hormuz, the narrow mouth of the gulf."
+    ]
+   },
+   "stimulus": "power-territoriality-s1"
+  },
+  {
+   "id": "hug-power-territoriality-3",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Ships sailing between East Asia and ports on the Mediterranean Sea by the shortest sea route pass which two marks?",
+   "options": [
+    "Marks A and B",
+    "Marks B and E",
+    "Marks C and D",
+    "Marks D and E"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "From the Indian Ocean, ships enter the Red Sea through the Bab el-Mandeb strait at mark D, sail north and pass the Suez Canal at mark C into the Mediterranean.",
+    "options": [
+     "Those link the Mediterranean to the Atlantic and the Black Sea, off the route from Asia.",
+     "The Black Sea and the gulf are dead ends for this trip.",
+     "Right: Ships enter the Red Sea at its southern strait and leave it through the Suez Canal.",
+     "Hormuz leads into the gulf, which is a dead end for this trip."
+    ]
+   },
+   "stimulus": "power-territoriality-s1"
+  },
+  {
+   "id": "hug-power-territoriality-4",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why does controlling the place at mark C give a state power at the global scale?",
+   "options": [
+    "It holds most of the world's oil and gas under its waters and nearby land",
+    "Much trade between Asia and Europe passes through it or takes a far longer route",
+    "It is the widest sea passage in the region shown on the map",
+    "It marks the border between the Northern and Southern Hemispheres"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Mark C is the Suez Canal, run by Egypt. Ships between Asia and Europe use it or sail around southern Africa, so the state that controls it has power over world trade.",
+    "options": [
+     "The canal is a route, not a source of fuel.",
+     "Right: A choke point gives power because others depend on passing through it.",
+     "A choke point matters because it is narrow.",
+     "The Suez Canal lies well north of the equator."
+    ]
+   },
+   "stimulus": "power-territoriality-s1"
+  },
+  {
+   "id": "hug-power-territoriality-5",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which concept does the event in the passage show?",
+   "options": [
+    "A choke point",
+    "A shatterbelt",
+    "Neocolonialism",
+    "Self-determination"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A choke point is a narrow passage that many ships must use. When it closes, traffic stops or takes a long detour.",
+    "options": [
+     "Right: One blocked narrow passage stopped hundreds of ships.",
+     "A shatterbelt is a region of conflict between outside powers, not a sea passage.",
+     "Neocolonialism is outside economic or political control, not a blocked canal.",
+     "Self-determination is a people's right to choose its government."
+    ]
+   },
+   "stimulus": "power-territoriality-s2"
+  },
+  {
+   "id": "hug-power-territoriality-6",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "According to the passage, what did some companies do while the canal was blocked, and why did it cost them?",
+   "options": [
+    "They flew their goods by plane, which used more fuel",
+    "They unloaded in Egypt and used trucks, which raised costs",
+    "They waited a year for a new canal to be dug",
+    "They sailed around the tip of Africa, which added about two weeks"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Read the passage: some ships took the long route around southern Africa, adding about two weeks. Time at sea costs fuel and wages and delays goods.",
+    "options": [
+     "The passage says nothing about planes.",
+     "The passage does not mention trucks.",
+     "The canal was open again after six days.",
+     "Right: The passage says the detour added about two weeks to the trip."
+    ]
+   },
+   "stimulus": "power-territoriality-s2"
+  },
+  {
+   "id": "hug-power-territoriality-7",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "q": "What does the passage suggest about the power of the state that controls the Suez Canal?",
+   "options": [
+    "It has no influence, because the canal closed for six days",
+    "It controls the shipping companies of other states",
+    "Ships from many states depend on its route, which gives it influence",
+    "It rules the land around the southern tip of Africa"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The disruption shows how much world trade depends on one narrow route, and so how much power its controller holds.",
+    "options": [
+     "The closure showed how much others depend on the canal.",
+     "Controlling a route is not owning other states' companies.",
+     "Right: Egypt runs the canal through the Suez Canal Authority, and world trade relies on it.",
+     "That land is in South Africa, far from Egypt."
+    ]
+   },
+   "stimulus": "power-territoriality-s2"
+  },
+  {
+   "id": "hug-power-territoriality-8",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is territoriality?",
+   "options": [
+    "The right of a state to rule without outside control",
+    "Trying to control people and things by claiming an area",
+    "The area of land and sea a state rules",
+    "The spread of a culture from its hearth"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Territoriality is the attempt by a person, group or state to influence or control people and things by claiming control over an area. Territory is the area; sovereignty is a state's right to rule it.",
+    "options": [
+     "That is sovereignty, a state's right.",
+     "Right: Territoriality ties people, power and culture to a piece of land.",
+     "That is a territory, the area itself.",
+     "That is diffusion."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-9",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A farmer puts up a fence and a \"Private property: keep out\" sign. At what scale is this an example of territoriality?",
+   "options": [
+    "Local scale",
+    "Global scale",
+    "National scale",
+    "Regional scale"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Territoriality works at every scale: a fence and a sign claim control of one property, at the local scale.",
+    "options": [
+     "Right: One person claims one small piece of land.",
+     "A fence around one property is not a claim over the world.",
+     "The claim is by one person, not a state.",
+     "The claim covers one property, not a region."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-10",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A state builds border posts, flies its flag on a disputed island and renames places with its own words. Which concept do these actions show most directly?",
+   "options": [
+    "Sovereignty, because putting up a flag gives full legal rule",
+    "Self-determination, because the state chose to act alone",
+    "A territory, because any land with a flag counts as one",
+    "Territoriality"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Students often mix up territoriality, sovereignty and territory. Territoriality is the behavior: marking and claiming control. Sovereignty is the recognized right to rule.",
+    "options": [
+     "Raising a flag does not by itself make legal rule; that depends on recognition.",
+     "Self-determination is a people's right to choose its government.",
+     "A territory is the area itself, not the acts of claiming it.",
+     "Right: These are acts of claiming and marking control over an area."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-11",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "As of 2026, many states in West and Central Africa use the CFA franc, a currency created under French colonial rule and still backed by France's treasury. Critics call this arrangement neocolonialism. What does that word mean?",
+   "options": [
+    "Direct rule of a colony by soldiers and officials sent from outside",
+    "A colony winning independence through a long war or a vote",
+    "Outside control of a former colony through money and trade, not direct rule",
+    "Two states merging their armies into one force for defense"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Neocolonialism is the use of economic or political pressure by powerful states or companies to influence former colonies without ruling them directly. Whether the CFA franc is neocolonial is argued over; supporters say it keeps prices stable.",
+    "options": [
+     "That is colonialism itself.",
+     "That is an independence movement.",
+     "Right: Neocolonialism is influence without formal colonial rule.",
+     "That has nothing to do with this currency."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-12",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How is neocolonialism different from colonialism?",
+   "options": [
+    "Neocolonialism is direct rule; colonialism works through trade and money alone",
+    "Neocolonialism works through money and influence; colonialism is direct rule",
+    "Neocolonialism happened before the 1500s; colonialism happened after 1945",
+    "Neocolonialism needs settlers; colonialism uses no people from outside"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Colonialism is direct control and often settlement. Neocolonialism is indirect influence over a sovereign state, through loans, trade, currency or investment.",
+    "options": [
+     "This swaps the two.",
+     "Right: The outside power shapes decisions without governing the territory.",
+     "Colonialism came first; neocolonialism describes the period after independence.",
+     "Settlement is a feature of some colonialism."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-13",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "During the Cold War (about 1947 to 1991), Eastern Europe sat between the Soviet Union and Western Europe, and its states were pulled between the two sides. Which concept describes such a region?",
+   "options": [
+    "A shatterbelt",
+    "A choke point",
+    "A nation-state",
+    "An autonomous region"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A shatterbelt is a region, often split by culture or politics inside, that is caught between the pressures of stronger outside powers, so conflict is common. Eastern Europe in the Cold War is a common example.",
+    "options": [
+     "Right: A region caught between stronger outside powers, often divided inside, is a shatterbelt.",
+     "A choke point is a narrow passage, not a large region.",
+     "A nation-state is one nation in one state.",
+     "An autonomous region governs some of its own affairs inside one state."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-14",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In 2007, a Russian mission placed a metal flag on the seabed under the North Pole. Several states, including Canada and Denmark, also claim parts of the Arctic seabed. What does the flag show?",
+   "options": [
+    "Sovereignty: the flag gave Russia legal rule of the North Pole",
+    "Neocolonialism: Russia rules the other Arctic states",
+    "A choke point: ships have to pass the flag to cross the Arctic",
+    "Territoriality: a symbolic claim to an area and its resources"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The flag is an act of territoriality, a way to mark a claim. Who controls the Arctic seabed is decided through rules that states have agreed to, not by a flag.",
+    "options": [
+     "A flag alone gives no legal rule; the claims are still being decided.",
+     "Russia does not rule Canada or Denmark.",
+     "A flag on the seabed is not a narrow passage.",
+     "Right: Planting a flag marks a claim; it does not settle who rules the seabed."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-15",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "5.A",
+   "q": "Which are examples of territoriality? Select all that apply.",
+   "options": [
+    "A city puts up \"Welcome to\" signs at its edge",
+    "A state patrols its border with guards and fences",
+    "A group of friends shares a favorite song",
+    "A river floods its banks after heavy rain"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Territoriality is any attempt to control people or things by claiming an area. It works at the local scale (a city sign) and the national scale (a guarded border).",
+    "options": [
+     "Right: Signs mark the city's claim to its area, at the local scale.",
+     "Right: Patrols control who enters an area, at the national scale.",
+     "Sharing a song claims no area.",
+     "A flood is a physical process, not a human claim."
+    ]
+   }
+  },
+  {
+   "id": "hug-power-territoriality-16",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of why a choke point gives power to the state that controls it.",
+   "why": {
+    "correct": "Name the place, then the cause and its effect, joined by a link."
+   },
+   "specific": {
+    "frame": "Because ___ controls ___, it can ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Because Egypt controls the Suez Canal, it can charge fees to the many ships sailing between Asia and Europe, which gives it income and influence.",
+    "slots": {
+     "place": {
+      "label": "State",
+      "options": [
+       "Egypt",
+       "A big country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name the real state; \"a big country\" earns no credit."
+      }
+     },
+     "concept": {
+      "label": "Choke point",
+      "options": [
+       "the Suez Canal",
+       "the Atlantic Ocean"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An ocean is open water, not a narrow passage."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "charge fees to the many ships sailing between Asia and Europe",
+       "stop people in other states from speaking their languages"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Controlling a sea route gives power over the ships that use it, not over languages."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "sustainable-development",
+ "hook": "For centuries the cod off Newfoundland, Canada, seemed endless. Then factory trawlers caught more each year than the fish could replace. In 1992 Canada closed the northern cod fishery, and about 30,000 people lost their jobs. Growth that uses up what it depends on cannot last. How can places grow richer, healthier and better schooled without wrecking the environment for the next generation?",
+ "prereq": [
+  {
+   "q": "What is sustainability?",
+   "options": [
+    "Using resources without using them up or harming the future",
+    "Growing the economy as fast as possible",
+    "Moving people from farms to cities",
+    "Taxing imports to protect jobs"
+   ],
+   "correct": 0,
+   "why": "Sustainability means using resources in ways the future can keep using.",
+   "review": "human-environment"
+  },
+  {
+   "q": "What is an ecological footprint?",
+   "options": [
+    "The land and water needed to supply a person's or place's use of resources and absorb its waste",
+    "The area of a city's downtown",
+    "The number of trees in a park",
+    "A map of where factories cluster"
+   ],
+   "correct": 0,
+   "why": "It measures how much land and water a lifestyle uses.",
+   "review": "sustainability-challenges"
+  }
+ ],
+ "figure": {
+  "figure": "sustainable-development-circles",
+  "caption": "Sustainable development is where the economy, society and the environment overlap."
+ },
+ "chain": [
+  {
+   "cause": "Incomes rise and people buy more (mass consumption)",
+   "effect": "demand for energy, materials and food grows"
+  },
+  {
+   "cause": "Resources are used faster than they renew, as the Newfoundland cod were",
+   "effect": "they run out, and the jobs that depend on them go too"
+  },
+  {
+   "cause": "Fossil fuels are burned for growth",
+   "effect": "pollution and climate change harm places, often poorer ones most"
+  },
+  {
+   "cause": "Ecotourism and the SDGs link income to protecting nature",
+   "effect": "development can improve lives while protecting the future, if it is well managed"
+  }
+ ],
+ "ideas": [
+  "<b>Sustainable development</b> improves lives now without harming future generations' ability to meet their needs: economy, society and environment together.",
+  "Threats: <b>resource depletion</b>, <b>mass consumption</b>, <b>pollution</b> and <b>climate change</b>.",
+  "The 17 <b>Sustainable Development Goals</b> (UN, 2015, for 2030) include no poverty, gender equality, clean energy and climate action.",
+  "<b>Ecotourism</b> (Costa Rica, the Galápagos) can make protecting nature pay, but crowding, flights and outside ownership limit it.",
+  "Responses work at every scale: global goals, national energy policy, local reserves."
+ ],
+ "misconception": {
+  "wrong": "Sustainable development means stopping development to protect nature.",
+  "right": "It means improving people's lives (income, health, schooling) in ways that protect resources and the environment for the future: all three parts together."
+ },
+ "check": [
+  "hug-sustainable-development-1",
+  "hug-sustainable-development-2",
+  "hug-sustainable-development-3",
+  "hug-sustainable-development-4",
+  "hug-sustainable-development-9",
+  "hug-sustainable-development-11"
+ ],
+ "summary": "Sustainable development improves lives now without harming future generations. Resource depletion, mass consumption, pollution and climate change make it hard. The UN Sustainable Development Goals (2015, for 2030) set shared targets, and ecotourism can make protecting nature pay, though it has limits. Responses work at global, national and local scales."
+}

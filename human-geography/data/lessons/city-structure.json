@@ -1,0 +1,71 @@
+{
+ "topic": "city-structure",
+ "hook": "Walk from downtown Chicago toward the edge of the metro area and the city changes in bands: office towers, then old factories and apartments, then rows of houses, then bigger yards. In Lima, Peru, the walk looks different: wealthy homes follow one grand avenue, and the poorest families live on the dusty hills at the edge. Geographers built models to explain both patterns.",
+ "prereq": [
+  {
+   "q": "What does bid-rent theory predict about land near a market or city center?",
+   "options": [
+    "Land users pay the most for it, so land there is used most intensively",
+    "It is the cheapest land, so it is used for ranching",
+    "It is left empty to protect the center",
+    "It costs the same as land far away"
+   ],
+   "correct": 0,
+   "why": "Access is worth most at the center, so bids and land values are highest there and fall with distance.",
+   "review": "production-regions"
+  },
+  {
+   "q": "Which describes an edge city?",
+   "options": [
+    "A suburban center of offices and stores with more jobs than residents",
+    "A rural area of commuters' homes on large lots",
+    "A city of 20 million people or more",
+    "An old neighborhood next to downtown"
+   ],
+   "correct": 0,
+   "why": "Edge cities are job centers in the suburbs, often where highways meet.",
+   "review": "cities-worldwide"
+  }
+ ],
+ "figure": {
+  "figure": "city-structure-models",
+  "caption": "Four models of the North American city: concentric zone, sector, multiple nuclei and galactic city."
+ },
+ "chain": [
+  {
+   "cause": "Land at the center is the easiest place for everyone to reach",
+   "effect": "businesses outbid homes for it, so the central business district (CBD) has the tallest buildings and highest land values"
+  },
+  {
+   "cause": "Land values fall with distance from the CBD",
+   "effect": "uses sort into zones, as in the concentric zone model"
+  },
+  {
+   "cause": "Rail lines, rivers and boulevards make some directions easier to travel",
+   "effect": "zones stretch into wedges along them, as in the sector model"
+  },
+  {
+   "cause": "Cars, highways and airports let jobs locate away from downtown",
+   "effect": "several centers form, as in the multiple nuclei and galactic city models"
+  }
+ ],
+ "ideas": [
+  "The <b>central business district (CBD)</b> is the commercial heart of a city, with the highest land values. Bid-rent theory explains why: the center is the most accessible place.",
+  "North American models: <b>concentric zone</b> (rings), <b>sector</b> (wedges along transport lines), <b>multiple nuclei</b> (several centers) and <b>galactic city</b> (old downtown plus edge cities along a ring highway).",
+  "Regional models: the <b>Latin American city</b> (a wealthy spine, rings that get poorer outward, squatter settlements at the edge), the <b>Southeast Asian city</b> (focused on the old port) and the <b>African city</b> (several CBDs).",
+  "Every model is simplified from certain cities at a certain time. Judge its fit: say where it works, where it fails, and why."
+ ],
+ "misconception": {
+  "wrong": "The galactic city model is the same as the multiple nuclei model, since both have more than one center.",
+  "right": "Multiple nuclei (1945) has several centers of different kinds, such as a port, a university and an industrial park, scattered through the city. The galactic city (from the 1980s) keeps an old downtown and places edge cities at intervals along a ring highway around the whole metro area, built for the car."
+ },
+ "check": [
+  "hug-city-structure-1",
+  "hug-city-structure-2",
+  "hug-city-structure-3",
+  "hug-city-structure-4",
+  "hug-city-structure-10",
+  "hug-city-structure-16"
+ ],
+ "summary": "Urban models describe how land use is arranged inside cities. North American models move from one center (concentric zone, sector) to many (multiple nuclei, galactic city) as cars spread. Latin American, Southeast Asian and African city models show how colonial history and fast growth create other patterns, such as squatter settlements at the edge. Each fits some cities and fails in others."
+}

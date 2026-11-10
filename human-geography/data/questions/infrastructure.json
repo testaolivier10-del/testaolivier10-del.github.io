@@ -1,0 +1,505 @@
+{
+ "stimuli": {
+  "infrastructure-s1": {
+   "kind": "map",
+   "title": "Piped water by province in Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth map of Country A by province: the share of households with piped water is highest in the Capital Region and on the South Coast, and lowest in the Northern Hills and the Western Uplands",
+    "legendTitle": "Households with piped water (percent, invented)",
+    "classes": [
+     "Under 40%",
+     "40% to 69%",
+     "70% or more"
+    ],
+    "values": {
+     "capital": 2,
+     "coast": 2,
+     "central": 1,
+     "east": 1,
+     "northeast": 1,
+     "south": 1,
+     "north": 0,
+     "west": 0
+    }
+   }
+  },
+  "infrastructure-s2": {
+   "kind": "data",
+   "title": "A new rail line in an invented city",
+   "invented": true,
+   "table": {
+    "caption": "Districts along and away from a rail line that opened in 2015 (invented data for practice)",
+    "cols": [
+     "District",
+     "Rail station?",
+     "Average land value 2014 (index)",
+     "Average land value 2024 (index)",
+     "Jobs reachable within 45 minutes, 2024 (thousands)"
+    ],
+    "rows": [
+     [
+      "Riverside",
+      "Yes",
+      "100",
+      "190",
+      "420"
+     ],
+     [
+      "Hillcrest",
+      "Yes",
+      "100",
+      "170",
+      "380"
+     ],
+     [
+      "Millbrook",
+      "No",
+      "100",
+      "120",
+      "150"
+     ],
+     [
+      "Ashford",
+      "No",
+      "100",
+      "115",
+      "110"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-infrastructure-1",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes the pattern on the map?",
+   "stimulus": "infrastructure-s1",
+   "options": [
+    "Piped water is most common in the Northern Hills and Lake District",
+    "Each province has about the same share of homes with piped water",
+    "Highest in the capital and on the coast",
+    "The share with piped water rises steadily from east to west"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The darkest class (70% or more) covers the Capital Region and the South Coast; the Northern Hills and Western Uplands are in the lowest class.",
+    "options": [
+     "The Northern Hills is in the lowest class, under 40%.",
+     "The provinces fall into three different classes.",
+     "Right: the highest shares are in the capital and on the coast.",
+     "The Western Uplands is in the lowest class, so the share does not rise toward the west."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-2",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Firms deciding where to build a food-processing plant need a safe water supply. Based on the map, where are they most likely to locate?",
+   "stimulus": "infrastructure-s1",
+   "options": [
+    "The Northern Hills",
+    "The Capital Region or the South Coast",
+    "The Western Uplands",
+    "The province with the least piped water"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A plant that needs clean water will choose places where the network already reaches. Infrastructure pulls investment toward it.",
+    "options": [
+     "The Northern Hills has the lowest share of piped water.",
+     "Right: firms follow existing infrastructure.",
+     "The Western Uplands has the lowest share of piped water.",
+     "That is the opposite of what a water-using plant needs."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-3",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which effect would most likely follow in the Northern Hills if the map's pattern lasts for many years?",
+   "stimulus": "infrastructure-s1",
+   "options": [
+    "More illness and slower job growth",
+    "Faster job growth than in the Capital Region, as firms seek cheap land",
+    "A rapid rise in factories that use a lot of water",
+    "More migrants moving in from the Capital Region to find work"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Without piped water, illness is more common and firms that need water stay away, so health and jobs lag. Every link: no pipes, unsafe water, illness and fewer firms.",
+    "options": [
+     "Right: weak infrastructure holds back health and jobs.",
+     "Firms tend to avoid places without basic services.",
+     "Water-using factories need a reliable supply.",
+     "Migrants usually move toward better services and jobs, not away from them."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-4",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis are the data on this map?",
+   "stimulus": "infrastructure-s1",
+   "options": [
+    "Global, by country",
+    "Regional, by world region",
+    "Individual households",
+    "Local (subnational), by province"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The data are given for provinces inside one country: a subnational scale. The scale of analysis is the scale of the data shown.",
+    "options": [
+     "The map shows one country, divided into provinces.",
+     "No world regions are shown.",
+     "The values are shares for whole provinces, not single homes.",
+     "Right: one value per province inside Country A."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-5",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "What does the table show about districts with a rail station?",
+   "stimulus": "infrastructure-s2",
+   "options": [
+    "Their land values fell after 2015",
+    "They have fewer jobs within reach",
+    "Their land values rose more than in other districts",
+    "Their land values rose by the same amount as other districts"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Riverside and Hillcrest rose from 100 to 190 and 170; districts without stations rose only to 120 and 115.",
+    "options": [
+     "Every district rose; none fell.",
+     "Station districts have the most jobs within reach (420 and 380 thousand).",
+     "Right: station districts gained the most value.",
+     "The gains differ: 70 to 90 points with a station, 15 to 20 without."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-6",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which best explains the difference in jobs reachable within 45 minutes?",
+   "stimulus": "infrastructure-s2",
+   "options": [
+    "Districts without stations have more jobs inside their own borders",
+    "Rail makes travel faster",
+    "Higher land values set how many jobs a person is able to reach",
+    "Rail lines slow down travel within a city by blocking roads"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A fast rail link stretches how far a resident can travel in 45 minutes, so many more jobs come within reach.",
+    "options": [
+     "The table counts jobs within reach, not jobs inside the district.",
+     "Right: transport infrastructure widens access to jobs.",
+     "Land values follow access; they do not create it.",
+     "Rail is usually faster than road in a crowded city."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-7",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can the table NOT answer?",
+   "stimulus": "infrastructure-s2",
+   "options": [
+    "Whether renters were priced out",
+    "Which of the four districts have a rail station",
+    "How much the land values rose in Millbrook from 2014 to 2024",
+    "How many jobs Ashford residents can reach within 45 minutes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rising land values may raise rents, but the table has no data on who moved in or out.",
+    "options": [
+     "Right: the table shows values, not who stayed or left.",
+     "The table lists stations for each district.",
+     "Millbrook rose from 100 to 120.",
+     "Ashford residents can reach 110 thousand jobs."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-8",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is an example of infrastructure?",
+   "options": [
+    "A family's savings",
+    "A store's prices",
+    "A city's birth rate",
+    "A city's sewer pipes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Infrastructure is the basic physical systems and facilities a place needs, such as sewers.",
+    "options": [
+     "Savings are personal wealth, not a shared system.",
+     "Prices are not a physical system.",
+     "A birth rate is a measure, not a physical system.",
+     "Right: sewers are a utility network."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-9",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Curitiba, Brazil, opened buses that run in their own lanes in 1974 and later added raised stations where riders pay before boarding. What was the main effect?",
+   "options": [
+    "Fewer bus riders because fares rose sharply",
+    "A ban on cars across the whole city",
+    "Fast, cheap transit without building a subway",
+    "Slower buses because they shared lanes with cars"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Separate lanes and pay-before-boarding stations let buses move and load quickly, giving subway-like service at a much lower cost.",
+    "options": [
+     "The system drew riders and was widely copied.",
+     "Cars were not banned across the city.",
+     "Right: bus rapid transit, copied by many cities.",
+     "The buses had their own lanes, which made them faster."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-10",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In the 1960s, Interstate 94 was built through the Rondo neighborhood of St. Paul, Minnesota, destroying hundreds of homes and businesses. Which statement best describes its effects?",
+   "options": [
+    "The groups in the city gained about equally",
+    "Commuters gained speed while Rondo lost homes and was split",
+    "Rondo gained new homes and businesses",
+    "The highway had no effect on land use"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Infrastructure can spread costs and benefits unevenly: suburban commuters saved time, while the mostly Black community along the route lost homes, businesses and its connected streets.",
+    "options": [
+     "The costs fell heavily on Rondo residents.",
+     "Right: benefits and costs fell on different groups.",
+     "Homes and businesses were destroyed, not added.",
+     "Replacing homes with a highway is a major change in land use."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-11",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In 2007, Kenya's M-Pesa service let people send and store money by text message. Why did it spread so widely?",
+   "options": [
+    "Cell towers reached more people than banks",
+    "Kenya had more bank branches per person than any other country",
+    "Text messages were banned in most nearby countries at the time",
+    "Kenya had very few cell phones in use at the time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The communications network already reached most Kenyans, while banks did not, so money services rode on the network that existed.",
+    "options": [
+     "Right: the existing network made the service possible.",
+     "Bank branches were scarce, which is why phones mattered.",
+     "No such bans explain it.",
+     "It depended on wide cell phone use."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-12",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A city's power grid fails for several hours most days. Which is the most likely economic effect?",
+   "options": [
+    "Firms save money on electricity because they use less of it",
+    "More factories move into the city to use the spare power",
+    "Shops stay open for longer hours each day to make up the time",
+    "Higher costs, so some firms leave"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Unreliable power forces firms to buy fuel and generators. Higher costs make the city less attractive, so investment and jobs suffer.",
+    "options": [
+     "Generators cost far more than grid power.",
+     "Factories avoid places with unreliable power.",
+     "Power cuts make long hours harder.",
+     "Right: poor-quality infrastructure raises costs."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-13",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "London's Elizabeth line, a rail line that opened in 2022, was planned partly to draw new offices and homes to districts in the east of the city along its route. Which idea does this plan rely on?",
+   "options": [
+    "Growth avoids places near new rail stations",
+    "Rail lines lower nearby land values over time",
+    "Growth follows new transport links",
+    "Offices locate as far as possible from transit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A new line makes the land near its stations easier to reach, so investment and land values tend to rise there. The location of infrastructure steers growth.",
+    "options": [
+     "Easier access usually attracts growth to station areas.",
+     "Better access usually raises nearby land values.",
+     "Right: the location of infrastructure pulls growth toward it.",
+     "Offices value access for their workers, so they seek transit."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-14",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which of these count as infrastructure? Select all that apply.",
+   "options": [
+    "Internet cables and cell towers",
+    "A store's prices",
+    "A farmer's crop of maize",
+    "A family's car"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Infrastructure is shared physical systems and public facilities: communications networks count; prices, private crops and cars do not.",
+    "options": [
+     "Right: communications networks are infrastructure.",
+     "Prices are not a physical system or facility.",
+     "A crop is a product, not a shared system.",
+     "A private car uses roads but is not infrastructure."
+    ]
+   }
+  },
+  {
+   "id": "hug-infrastructure-15",
+   "unit": "unit-6",
+   "topic": "infrastructure",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.C",
+   "q": "Build an explanation of how infrastructure shaped development in a named place.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Kibera in Nairobi, Kenya, the city's water pipes and sewers were never extended to the settlement, so families buy water by the container and share toilets, which raises costs and spreads illness.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Kibera in Nairobi, Kenya",
+       "poor places"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place: \"poor places\" earns no credit."
+      }
+     },
+     "cause": {
+      "label": "Infrastructure",
+      "options": [
+       "the city's water pipes and sewers were never extended to the settlement",
+       "the settlement has too many water pipes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The problem is a lack of pipes, not too many."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "families buy water and share toilets, which raises costs and spreads illness",
+       "families pay less for water than anyone in the city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Buying water by the container costs more, not less."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A full explanation names the place, the infrastructure and every link to the effect."
+   }
+  }
+ ]
+}

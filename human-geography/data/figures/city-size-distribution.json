@@ -1,0 +1,12 @@
+{
+ "city-size-distribution-central-place": {
+  "file": "figures/city-size-distribution-central-place.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "One large city sits at the center of a big hexagon, its market area. Six towns sit around it, each at the center of a smaller hexagon. Villages sit at the corners of the small hexagons. A key explains that higher-order places are fewer, farther apart and offer goods with a larger range and threshold."
+ }
+}

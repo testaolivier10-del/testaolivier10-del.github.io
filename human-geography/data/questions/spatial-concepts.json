@@ -1,0 +1,481 @@
+{
+ "stimuli": {
+  "spatial-concepts-s1": {
+   "kind": "text",
+   "title": "Singapore: where the city sits (written for practice, LevlPrep 2026)",
+   "text": "<p>Singapore is a small, mostly flat island at the southern tip of the Malay Peninsula, about 140 km north of the equator. Its south shore has deep water sheltered from storms, a good natural harbor. The island lies beside the Strait of Malacca, the narrow sea lane that ships use to travel between the Indian Ocean and the South China Sea. Ships carrying goods between Europe, the Middle East and East Asia pass close by, and many stop to load, unload and refuel.</p>"
+  },
+  "spatial-concepts-s2": {
+   "kind": "data",
+   "title": "Where a stadium's fans come from",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart: fans at a city stadium per 10,000 people living nearby fall from 80 for people within 5 km to 4 for people 80 km away, dropping fast at first and then slowly",
+    "xLabel": "Distance from the stadium (km)",
+    "yLabel": "Fans per 10,000 people",
+    "series": [
+     {
+      "name": "Fans per 10,000 people",
+      "points": [
+       [
+        5,
+        80
+       ],
+       [
+        10,
+        50
+       ],
+       [
+        20,
+        28
+       ],
+       [
+        40,
+        12
+       ],
+       [
+        60,
+        6
+       ],
+       [
+        80,
+        4
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-spatial-concepts-1",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which detail in the passage describes Singapore's site?",
+   "stimulus": "spatial-concepts-s1",
+   "options": [
+    "A small, flat island with deep, sheltered water on its south shore",
+    "Beside the sea lane between the Indian Ocean and the South China Sea",
+    "Close to ships carrying goods between Europe and East Asia",
+    "Between the Middle East and East Asia on the main trade routes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Site is what the place is like on the spot; situation is where it is in relation to other places.",
+    "options": [
+     "Right: site is the physical character of the place itself: its land, water and shape.",
+     "That is about its links to other places, which is situation.",
+     "Being near trade routes is situation, not site.",
+     "Its position between other regions is situation."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-2",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which detail in the passage describes Singapore's situation?",
+   "stimulus": "spatial-concepts-s1",
+   "options": [
+    "Deep water on its south shore makes a sheltered natural harbor",
+    "Ships between Europe, the Middle East and East Asia pass close by",
+    "The island is small and mostly flat, at the tip of a peninsula",
+    "The island is about 140 km north of the equator"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Situation is about connections: what a place is near and how it links to other places.",
+    "options": [
+     "The harbor is a feature of the place itself: site.",
+     "Right: situation is a place's location relative to other places, here to world shipping routes.",
+     "Size and flatness describe the land itself: site.",
+     "Distance from the equator gives its absolute location, not its links to other places."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-3",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Explain why Singapore grew into one of the world's busiest ports. Which answer best uses the passage?",
+   "stimulus": "spatial-concepts-s1",
+   "options": [
+    "Its flat land made it easy to farm, so it grew enough food to sell to passing ships",
+    "It is close to the equator, so its warm weather drew shipping companies to it",
+    "A safe harbor for ships, right beside the Strait of Malacca, a main trade route",
+    "It is an island, so its people had to trade by sea, and island ports grow fast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A strong explain links site and situation to the outcome: a safe harbor on a main trade route attracts ships.",
+    "options": [
+     "The passage says nothing about farming; the port grew from shipping.",
+     "Warm weather is not given as a reason; trade routes are.",
+     "Right: it joins site (the sheltered harbor) with situation (beside a main sea lane) and says how each helped.",
+     "Most islands are not great ports; Singapore's situation on the strait is what sets it apart."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-4",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ships now carry far more goods than a century ago, and many pass Singapore. What concept describes these movements of goods between places?",
+   "stimulus": "spatial-concepts-s1",
+   "options": [
+    "Site",
+    "Distance decay",
+    "Absolute location",
+    "Flows"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Flows connect places: goods by ship, people by plane, money and ideas by phone and internet.",
+    "options": [
+     "Site is the physical character of one place, not movement between places.",
+     "Distance decay is how contact falls as distance grows.",
+     "Absolute location is a place's exact position, not a movement.",
+     "Right: flows are movements of goods, people, money or ideas between places."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-5",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "What relationship does the chart show?",
+   "stimulus": "spatial-concepts-s2",
+   "options": [
+    "Distance decay: fewer fans come from farther away",
+    "Time-space compression: fans travel faster each year",
+    "Clustering: the fans live in one neighborhood",
+    "Absolute location: the stadium is 80 km from the city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Distance decay: contact between places falls as distance between them grows.",
+    "options": [
+     "Right: the rate of fans falls as distance from the stadium grows, quickly at first and then slowly.",
+     "The chart shows one moment, not change over years.",
+     "The fans come from all distances, just fewer from far away.",
+     "The 80 km is the farthest distance measured, not where the stadium is."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-6",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A fast train line opens, cutting the trip from 60 km away from 90 minutes to 30 minutes. How would you expect the 60 km value to change, and why?",
+   "stimulus": "spatial-concepts-s2",
+   "options": [
+    "It would fall, because the train makes the stadium farther away in kilometers",
+    "It would rise: the trip feels shorter, an effect of time-space compression",
+    "It would stay the same, because the absolute distance of 60 km has not changed",
+    "It would fall to zero, because fans would take the train to other cities"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Time-space compression shrinks relative distance, which weakens distance decay.",
+    "options": [
+     "The distance in kilometers does not change; the travel time does.",
+     "Right: when travel time drops, places feel closer, so more people make the trip.",
+     "Contact depends on how far a place feels, not on kilometers alone.",
+     "Nothing in the question suggests fans would stop coming."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-7",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "What can this chart NOT tell you?",
+   "stimulus": "spatial-concepts-s2",
+   "options": [
+    "How many fans per 10,000 people live 10 km away",
+    "Whether the rate falls as distance grows",
+    "Why fans who live far away come less often",
+    "The farthest distance the data cover"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Charts show what happens; reasons need other evidence.",
+    "options": [
+     "The chart answers this: about 50 fans per 10,000 people.",
+     "The chart answers this: the rate falls.",
+     "Right: the chart shows the pattern, not the reasons; those need surveys or interviews.",
+     "The chart answers this: 80 km."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-8",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Cairo, Egypt, lies at about 30 degrees north and 31 degrees east. What kind of location is this?",
+   "options": [
+    "Relative location",
+    "Situation",
+    "Sense of place",
+    "Absolute location"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Latitude (north or south of the equator) and longitude (east or west of the prime meridian) give absolute location.",
+    "options": [
+     "Relative location describes a place by what it is near, such as \"on the Nile, south of the delta\".",
+     "Situation is a place's connections to other places.",
+     "Sense of place is the meaning people feel for a place.",
+     "Right: latitude and longitude give an exact position on the globe."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-9",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which description gives Kansas City's relative location?",
+   "options": [
+    "Near the middle of the United States, where two big rivers meet",
+    "About 39 degrees north and 95 degrees west",
+    "A city of rolling hills and bluffs on the banks of two rivers",
+    "A city its residents call home and are proud of, with famous barbecue"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Relative location says where a place is compared with other places and features.",
+    "options": [
+     "Right: relative location places it by what it is near.",
+     "Coordinates give absolute location.",
+     "The look of the land at the city itself is closer to site.",
+     "Feelings for a place are sense of place."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-10",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A student writes: \"Chicago's site is its location on rail lines between the East Coast and the West.\" Which correction is right?",
+   "options": [
+    "That is correct; rail links are part of a city's site",
+    "That is situation; its site is flat land on Lake Michigan where a river enters it",
+    "That describes absolute location; Chicago's site is its latitude and longitude",
+    "That describes sense of place; Chicago's site is what its own people feel about it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Readers often see site and situation mixed up. Site is the spot itself; situation is its connections.",
+    "options": [
+     "Rail links connect Chicago to other places, which makes them situation.",
+     "Right: links to other places are situation; the land and water at the spot are site.",
+     "Latitude and longitude are absolute location, not site.",
+     "Feelings for a city are sense of place, not site."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-11",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Many people in New Orleans describe their city through its music, food and festivals, such as Mardi Gras. Which concept is this?",
+   "options": [
+    "Space, the area between and around places on a map",
+    "Absolute location, the city's exact position",
+    "Place, the meaning and character people give a location",
+    "Distance decay, the fall in contact as distance grows"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Place is what makes a location unique to the people who know it: its sense of place.",
+    "options": [
+     "Space is about how things are arranged across an area, not the character of one city.",
+     "Exact position has nothing to do with music or festivals.",
+     "Right: place is a location plus the meaning, feelings and character people attach to it.",
+     "Distance decay is about contact across distance."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-12",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In 1840 a letter took about two weeks to cross the Atlantic by steamship. A video call between London and New York connects in seconds. What concept does this show?",
+   "options": [
+    "Distance decay: contact between London and New York has fallen",
+    "Absolute distance: London and New York have moved closer together in kilometers",
+    "Site: London and New York both have harbors",
+    "Time-space compression: places feel closer as travel and messages get faster"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Time-space compression: technology cuts the time needed to link places, so the world feels smaller.",
+    "options": [
+     "Contact has grown, not fallen.",
+     "The distance in kilometers has not changed.",
+     "Harbors are site features and do not explain faster messages.",
+     "Right: faster transport and communication shrink the time it takes to connect places."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-13",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "On a map of Egypt, towns form a long, narrow line along the Nile River. Which describes this spatial pattern?",
+   "options": [
+    "A linear pattern, following the river through the desert",
+    "A dispersed pattern, spread evenly over the whole country",
+    "A pattern with no order, scattered at random",
+    "A clustered pattern around a single central city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A spatial pattern is how things are arranged in space: clustered, dispersed, linear and so on. Name where.",
+    "options": [
+     "Right: towns lined up along a river, road or coast form a linear pattern.",
+     "The towns are not spread evenly; the desert has few.",
+     "The towns follow the river, which is an order.",
+     "The towns stretch along hundreds of kilometers, not around one center."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-14",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 1,
+   "type": "multi",
+   "practice": "2.A",
+   "q": "Which of these are flows? Select all that apply.",
+   "options": [
+    "The pride residents of Kerala, India, feel for their state",
+    "Trucks carrying avocados from Mexico into the United States",
+    "The deep harbor of Sydney, Australia",
+    "The latitude of Nairobi, Kenya"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "Flows are movements of people, goods, money or ideas between places.",
+    "options": [
+     "A feeling for a place is sense of place, not a movement.",
+     "Right: goods moving between places are a flow.",
+     "A harbor is a feature of the place itself: site.",
+     "Latitude is part of absolute location."
+    ]
+   }
+  },
+  {
+   "id": "hug-spatial-concepts-15",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of how time-space compression changes a pattern of distance decay.",
+   "specific": {
+    "frame": "Because ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Because a new high-speed train cuts the trip from Lyon to Paris to about two hours, Paris feels closer, so more people from Lyon make day trips to Paris than before.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "a new high-speed train cuts the trip from Lyon to Paris to about two hours",
+       "Lyon and Paris are in France"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is true but changes nothing; the cause must be what made travel faster."
+      }
+     },
+     "link": {
+      "label": "Link",
+      "options": [
+       "Paris feels closer",
+       "Paris has moved closer in kilometers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The distance in kilometers does not change; the travel time does."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "more people from Lyon make day trips to Paris than before",
+       "fewer people travel at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Faster travel weakens distance decay, so contact grows."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Time-space compression shrinks travel time, places feel closer, and contact over distance rises."
+   }
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "infrastructure",
+ "hook": "Two families live 20 kilometers apart in the same metro area. One turns on a tap for clean water, rides a train to work in 25 minutes and studies online at night. The other buys water from a truck, spends two hours on crowded minibuses and has no internet at home. Same city, very different chances. The difference is what lies under the streets and along them.",
+ "prereq": [
+  {
+   "q": "What is zoning?",
+   "options": [
+    "Local laws that set what may be built on each piece of land",
+    "A tax on new homes",
+    "A map of a city's rivers",
+    "A count of the people in a city"
+   ],
+   "correct": 0,
+   "why": "Zoning divides a city into zones with rules on land use and density.",
+   "review": "density-land-use"
+  },
+  {
+   "q": "Which are squatter settlements?",
+   "options": [
+    "Homes built by residents on land they do not legally own",
+    "Apartment towers built by the government",
+    "Suburbs of large houses",
+    "Office towers in the CBD"
+   ],
+   "correct": 0,
+   "why": "Squatter settlements are self-built on land without legal title, often without services.",
+   "review": "city-structure"
+  }
+ ],
+ "figure": {
+  "figure": "infrastructure-networks",
+  "caption": "Where the pipes, wires and rails reach, homes and jobs follow; places left out fall behind."
+ },
+ "chain": [
+  {
+   "cause": "A city lays water mains, power lines and a rail line in some districts",
+   "effect": "firms and families can locate there cheaply and safely"
+  },
+  {
+   "cause": "Firms and families gather near that infrastructure",
+   "effect": "land values, jobs and tax revenue rise in those districts"
+  },
+  {
+   "cause": "Districts left without it, such as new informal settlements, lack clean water and fast transport",
+   "effect": "residents spend more time and money on basics, and health and jobs suffer"
+  },
+  {
+   "cause": "The gap in infrastructure persists",
+   "effect": "patterns of economic and social development inside the city become more unequal"
+  }
+ ],
+ "ideas": [
+  "<b>Infrastructure</b> is the set of basic systems a place needs to work: roads, rail, ports and airports; water, sewer and power; phone and internet networks; and public buildings such as schools and clinics.",
+  "Its <b>location</b> matters: firms and homes gather where it reaches, so new rail stations and highway exits pull growth toward them.",
+  "Its <b>quality</b> matters: frequent power cuts, unsafe water or crowded roads raise costs and harm health.",
+  "Infrastructure can help some people and harm others: a highway that speeds suburban commuters may cut an old neighborhood in two."
+ ],
+ "misconception": {
+  "wrong": "Infrastructure means roads and bridges only.",
+  "right": "Infrastructure also includes water and sewer pipes, power grids, internet cables and cell towers, public transit, and schools and clinics. A question about infrastructure may be about any of these."
+ },
+ "check": [
+  "hug-infrastructure-1",
+  "hug-infrastructure-2",
+  "hug-infrastructure-3",
+  "hug-infrastructure-5",
+  "hug-infrastructure-6",
+  "hug-infrastructure-10"
+ ],
+ "summary": "Infrastructure is the network of transport, utilities, communications and public buildings that lets a place function. Where it is located and how good it is shape where firms invest, where people can live and how healthy and connected they are, so it shapes patterns of economic and social development at every scale."
+}

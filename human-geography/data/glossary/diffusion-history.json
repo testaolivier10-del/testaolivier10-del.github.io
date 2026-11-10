@@ -1,0 +1,17 @@
+{
+ "colonialism": {
+  "def": "One country taking control of another place and its people, governing them directly and often sending settlers there."
+ },
+ "imperialism": {
+  "def": "A country extending its power and influence over other places by force, money or culture, whether or not it rules them directly."
+ },
+ "creolization": {
+  "def": "The mixing of different cultures in one place into a new local form, such as a new language, food or music."
+ },
+ "lingua-franca": {
+  "def": "A language that people with different home languages use to communicate with each other, often for trade or work."
+ },
+ "pidgin": {
+  "def": "A simple mixed language that grows when groups with no shared language must trade or work together. No one speaks it as a first language; if children do, it becomes a creole."
+ }
+}

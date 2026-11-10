@@ -1,0 +1,14 @@
+{
+ "population-pyramid": {
+  "def": "A bar graph that shows a population by age and sex: males on the left, females on the right, youngest at the bottom."
+ },
+ "age-structure": {
+  "def": "How a population is divided among age groups, such as children under 15, people aged 15 to 64 and people 65 and over."
+ },
+ "sex-ratio": {
+  "def": "The number of males for every 100 females in a population or an age group."
+ },
+ "cohort": {
+  "def": "A group of people born in the same years, such as everyone aged 20 to 24. Each bar of a population pyramid is a cohort."
+ }
+}

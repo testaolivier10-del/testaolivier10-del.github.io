@@ -1,0 +1,22 @@
+{
+ "religion-language-diffusion-tree": {
+  "file": "figures/religion-language-diffusion-tree.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Tree diagram of part of the Indo-European language family. Four branches: Germanic (English, German, Dutch, Swedish), Romance (Spanish, Portuguese, French, Italian), Slavic (Russian, Polish, Ukrainian, Czech) and Indo-Iranian (Hindi, Bengali, Punjabi, Persian). A note says the order is family, then branch, then language, that dialects are versions of one language, and that only some branches are shown."
+ },
+ "religion-language-diffusion-spread": {
+  "file": "figures/religion-language-diffusion-spread.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Universalizing religions: arrows go out in every direction from the hearth; they seek new followers anywhere and spread by expansion and relocation diffusion; examples Christianity, Islam, Buddhism and Sikhism. Ethnic religions: most followers stay in a ring near the hearth, and one dashed arrow shows relocation when followers migrate; examples Hinduism and Judaism."
+ }
+}

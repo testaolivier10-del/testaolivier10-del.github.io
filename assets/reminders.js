@@ -83,6 +83,7 @@
     { key: 'apcalcbc', name: 'AP® Calculus BC', path: '/calculus-bc/', storagePrefix: 'apcalcbc_' },
     { key: 'apmacro', name: 'AP® Macroeconomics', path: '/macroeconomics/', storagePrefix: 'apmacro_' },
     { key: 'apmicro', name: 'AP® Microeconomics', path: '/microeconomics/', storagePrefix: 'apmicro_' },
+    { key: 'aphug', name: 'AP® Human Geography', path: '/human-geography/', storagePrefix: 'aphug_' },
   ];
   // courses:end
 

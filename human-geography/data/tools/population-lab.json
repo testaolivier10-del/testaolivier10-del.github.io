@@ -1,0 +1,32 @@
+{
+  "slug": "population-lab",
+  "kind": "simulator",
+  "topic": "population-composition",
+  "intro": "<p>A population pyramid shows a population by age and sex: males on the left, females on the right, the youngest at the bottom. Steer an invented country through the five stages of the demographic transition model and watch its pyramid, its birth and death rates and its needs for schools, jobs and care change together.</p><p>Every country in this trainer is invented, so no number here goes out of date. When you use a real country in an answer, give its figures with a source and a year, for example UN World Population Prospects 2024.</p>",
+  "howItWorksTitle": "How the model works",
+  "howItWorks": "<p><b>The pyramid</b> is computed, not drawn by hand: a population whose women have the total fertility rate (TFR) you set and whose people survive to each age at the life expectancy you set, settled into its long-run shape. Each bar is the percent of the whole population in that 5-year age group. It is a teaching model, not any one country.</p><p><b>The rates</b> use the course's formulas (ApHugCalc): crude birth rate = births ÷ population × 1,000; rate of natural increase (RNI) = (CBR − CDR) ÷ 10, as a percent, with migration left out; doubling time ≈ 70 ÷ RNI; dependency ratio = (under 15 + 65 and over) ÷ (15 to 64) × 100. The stage is the one the rates are <i>consistent with</i>: a model fits data, and no country is ever simply in a stage.</p><p><b>Limits of the model.</b> The demographic transition model was built from the history of Europe, leaves migration out, and countries move through it at different speeds; stage 5 is not in every version. The drill numbers are invented for practice and recomputed by a checker on 300 problems per kind.</p>",
+  "partTopics": {
+    "cbr": "population-dynamics",
+    "cdr": "population-dynamics",
+    "rni": "population-dynamics",
+    "dbl": "population-dynamics",
+    "nmr": "population-dynamics",
+    "migrate": "population-dynamics",
+    "stage": "transition-model",
+    "cause": "transition-model"
+  },
+  "contexts": [
+    { "id": "rates-counts", "topic": "population-dynamics", "types": ["rates"] },
+    { "id": "rates-young", "topic": "population-dynamics", "types": ["rates"], "gaps": [20, 25, 35], "cdr": [6, 10] },
+    { "id": "growth-migration", "topic": "population-dynamics", "types": ["growth"] },
+    { "id": "dep-young", "topic": "population-composition", "types": ["dependency"], "tfr": [3.6, 5.5], "e0": [56, 66] },
+    { "id": "dep-old", "topic": "population-composition", "types": ["dependency"], "tfr": [1.2, 1.6], "e0": [80, 84] },
+    { "id": "stage-each", "topic": "transition-model", "types": ["stage"] },
+    { "id": "shape-expansive", "topic": "population-composition", "types": ["shape"], "tfr": [3.2, 6.0], "e0": [50, 68] },
+    { "id": "shape-stationary", "topic": "population-composition", "types": ["shape"], "tfr": [2.0, 2.4], "e0": [72, 80] },
+    { "id": "shape-constrictive", "topic": "population-composition", "types": ["shape"], "tfr": [1.1, 1.7], "e0": [78, 84] },
+    { "id": "cohort-boom", "topic": "population-composition", "types": ["cohort"], "kinds": ["boom"] },
+    { "id": "cohort-notch", "topic": "population-composition", "types": ["cohort"], "kinds": ["notch"] },
+    { "id": "cohort-men", "topic": "population-composition", "types": ["cohort"], "kinds": ["men"] }
+  ]
+}

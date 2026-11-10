@@ -1,0 +1,170 @@
+{
+ "id": "frq-placeholder-one",
+ "type": "one",
+ "points": 7,
+ "placeholder": true,
+ "title": "Placeholder: one stimulus question",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "population-composition"
+ ],
+ "practices": [
+  "1.A",
+  "2.B",
+  "3.B",
+  "5.A"
+ ],
+ "stimuli": [
+  {
+   "kind": "data",
+   "title": "Placeholder: a population pyramid",
+   "invented": true,
+   "plot": {
+    "kind": "pyramid",
+    "label": "Placeholder population pyramid of Country A with a wide base",
+    "groups": [
+     "0-9",
+     "10-19",
+     "20-29",
+     "30-39",
+     "40-49",
+     "50-59",
+     "60-69",
+     "70+"
+    ],
+    "left": [
+     14,
+     12,
+     9,
+     6,
+     4,
+     3,
+     1.5,
+     0.5
+    ],
+    "right": [
+     13.5,
+     11.5,
+     9,
+     6,
+     4.5,
+     3,
+     2,
+     1
+    ],
+    "xLabel": "Percent of the population",
+    "leftLabel": "Male",
+    "rightLabel": "Female"
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Placeholder: identify part A of the one question, about population composition in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder: rubric point for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder: full-credit sample answer for part A, long enough to read, because it names Country A and links a cause to its effect."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Placeholder: describe part B of the one question, about population composition in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder: rubric point for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder: full-credit sample answer for part B, long enough to read, because it names Country A and links a cause to its effect."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Placeholder: explain part C of the one question, about population composition in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder: rubric point for part C, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder: full-credit sample answer for part C, long enough to read, because it names Country A and links a cause to its effect."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Placeholder: explain part D of the one question, about population composition in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder: rubric point for part D, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder: full-credit sample answer for part D, long enough to read, because it names Country A and links a cause to its effect."
+  },
+  {
+   "label": "E",
+   "verb": "compare",
+   "prompt": "Placeholder: compare part E of the one question, about population composition in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder: rubric point for part E, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder: Country A has a wide base, whereas Country B has a narrow one, because fewer children are born there."
+  },
+  {
+   "label": "F",
+   "verb": "explain-degree",
+   "prompt": "Placeholder: explain the degree to which part F of the one question, about population composition in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder: rubric point for part F, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder: To a high degree: the wide base shows many children, so Country A will need more schools."
+  },
+  {
+   "label": "G",
+   "verb": "define",
+   "prompt": "Placeholder: define part G of the one question, about population composition in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder: rubric point for part G, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder: full-credit sample answer for part G, long enough to read, because it names Country A and links a cause to its effect."
+  }
+ ]
+}

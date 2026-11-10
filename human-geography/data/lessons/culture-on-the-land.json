@@ -1,0 +1,71 @@
+{
+ "topic": "culture-on-the-land",
+ "hook": "Walk down Bolsa Avenue in Westminster, California, and the signs switch to Vietnamese: noodle houses, markets, a Buddhist temple with a curved tile roof. Nothing about the land itself is Vietnamese. People put those marks there. Reading a street like a page of history is what this topic teaches.",
+ "prereq": [
+  {
+   "q": "Which of these is a culture trait?",
+   "options": [
+    "The style of a group's houses",
+    "The height of a nearby hill",
+    "The yearly rainfall",
+    "The type of rock underground"
+   ],
+   "correct": 0,
+   "why": "A culture trait is something people learn and share, such as a building style. Hills, rain and rocks are physical.",
+   "review": "culture-intro"
+  },
+  {
+   "q": "Many families from one town in Mexico settle in the same neighborhood of Chicago because relatives already live there. What kind of migration is this?",
+   "options": [
+    "Chain migration",
+    "Step migration",
+    "Forced migration",
+    "Transhumance"
+   ],
+   "correct": 0,
+   "why": "Chain migration is moving to a place because family or friends from home already live there.",
+   "review": "forced-voluntary-migration"
+  }
+ ],
+ "figure": {
+  "figure": "culture-on-the-land-sequent",
+  "caption": "Sequent occupance: each period leaves marks that the next period reuses or builds on (an invented place)."
+ },
+ "chain": [
+  {
+   "cause": "A group settles in a place and uses the land",
+   "effect": "it adds buildings, farms, signs and places of worship: its cultural landscape"
+  },
+  {
+   "cause": "Later groups arrive or the economy changes",
+   "effect": "they reuse, change or replace those marks, so the landscape builds up in layers (sequent occupance)"
+  },
+  {
+   "cause": "Migrants of one ethnicity settle near relatives and shared services",
+   "effect": "an ethnic neighborhood forms, with signs, shops and temples that serve the group"
+  },
+  {
+   "cause": "Ideas about gender and ethnicity change in a society",
+   "effect": "who uses which spaces changes, and the built landscape follows"
+  }
+ ],
+ "ideas": [
+  "The <b>cultural landscape</b> is the land as people have changed it: fields, buildings, signs, roads and places of worship laid over the physical landscape.",
+  "<b>Sequent occupance</b> is the idea that each group that occupies a place leaves marks that later groups keep, change or reuse, so a landscape has layers, as at St. Anthony Falls in Minneapolis.",
+  "<b>Traditional architecture</b> follows a long-standing local style and local materials (an adobe home, a Navajo hogan). <b>Postmodern architecture</b>, from about the 1970s on, mixes styles on purpose and looks similar in many cities.",
+  "<b>Ethnicity</b> is identity with a group that shares ancestry and traditions. An <b>ethnic neighborhood</b> is an area where one ethnic group is concentrated, visible in its signs, shops and places of worship."
+ ],
+ "misconception": {
+  "wrong": "The cultural landscape is the natural scenery of a place: its mountains, rivers and forests.",
+  "right": "Those are the physical landscape. The cultural landscape is what people have added or changed: in the Douro Valley of Portugal, the river is physical, but the vineyards planted on the slopes are cultural."
+ },
+ "check": [
+  "hug-culture-on-the-land-1",
+  "hug-culture-on-the-land-2",
+  "hug-culture-on-the-land-3",
+  "hug-culture-on-the-land-8",
+  "hug-culture-on-the-land-10",
+  "hug-culture-on-the-land-9"
+ ],
+ "summary": "The cultural landscape is the human imprint on the land: buildings, fields, signs and places of worship. Landscapes build up in layers as each group leaves marks the next one reuses, which is sequent occupance. Architecture can be traditional (local styles and materials) or postmodern (mixed styles from about the 1970s on). Ethnicity, gender and Indigenous ways of life all shape space, from ethnic neighborhoods such as Little Saigon to the hogans of the Navajo Nation."
+}

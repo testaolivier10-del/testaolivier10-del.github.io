@@ -1,0 +1,12 @@
+{
+ "second-agricultural-revolution-rotation": {
+  "file": "figures/second-agricultural-revolution-rotation.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 516,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four fields in a square, linked by arrows that go around in a circle: wheat (grain to sell), then turnips (winter feed for animals), then barley (grain), then clover (grazing that adds nitrogen to the soil), then wheat again. Each year every field moves to the next crop, so no field is left empty and the farm can feed more animals. This rotation spread from Norfolk, England, in the 1700s."
+ }
+}

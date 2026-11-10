@@ -1,0 +1,12 @@
+{
+ "scales-of-analysis-nested": {
+  "file": "figures/scales-of-analysis-nested.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four nested boxes, each inside the next: the global scale, the whole world; the regional scale, South Asia; the national scale, India; the local scale, the city of Mumbai. A note says a pattern can look different at each scale, so ask which scale a source shows."
+ }
+}

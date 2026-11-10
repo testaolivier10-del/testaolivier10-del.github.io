@@ -1,0 +1,12 @@
+{
+ "distribution-consequences-densities": {
+  "file": "figures/distribution-consequences-densities.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels for one invented country of 40 million people and 400,000 square kilometers. Arithmetic density divides all people by all land: 100 per square kilometer. Physiological density divides all people by the 40,000 square kilometers of arable land: 1,000 per square kilometer. Agricultural density divides the 20 million farmers by arable land: 500 per square kilometer."
+ }
+}

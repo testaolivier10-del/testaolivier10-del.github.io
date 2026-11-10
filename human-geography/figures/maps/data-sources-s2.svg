@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Dot map of Country A: dots for bright lights at night seen by satellite are packed in the Capital Region and along the South Coast, with few in the Western Uplands and Southern Forest">
+<title>Dot map of Country A: dots for bright lights at night seen by satellite are packed in the Capital Region and along the South Coast, with few in the Western Uplands and Southern Forest</title>
+<defs><pattern id="nd" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#FFFFFF"/><line x1="0" y1="0" x2="0" y2="6" stroke="#9A958C" stroke-width="1.4"/></pattern></defs>
+<rect width="600" height="400" fill="#FFFFFF"/>
+<path d="M60 40L250 20L300 120L180 160L70 140Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M250 20L470 30L520 110L400 150L300 120Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M520 110L560 230L430 260L400 150Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M300 120L400 150L430 260L320 270L260 200Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M70 140L180 160L260 200L200 290L50 260Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M180 160L300 120L260 200Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M200 290L260 200L320 270L300 370L160 360Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M320 270L430 260L560 230L540 340L300 370Z" fill="#F3EEE2" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<circle cx="320" cy="170" r="2.3" fill="#7A2E0E"/>
+<circle cx="340" cy="180" r="2.3" fill="#7A2E0E"/>
+<circle cx="360" cy="190" r="2.3" fill="#7A2E0E"/>
+<circle cx="330" cy="200" r="2.3" fill="#7A2E0E"/>
+<circle cx="350" cy="210" r="2.3" fill="#7A2E0E"/>
+<circle cx="370" cy="215" r="2.3" fill="#7A2E0E"/>
+<circle cx="345" cy="230" r="2.3" fill="#7A2E0E"/>
+<circle cx="380" cy="240" r="2.3" fill="#7A2E0E"/>
+<circle cx="320" cy="230" r="2.3" fill="#7A2E0E"/>
+<circle cx="360" cy="250" r="2.3" fill="#7A2E0E"/>
+<circle cx="400" cy="300" r="2.3" fill="#7A2E0E"/>
+<circle cx="430" cy="310" r="2.3" fill="#7A2E0E"/>
+<circle cx="460" cy="305" r="2.3" fill="#7A2E0E"/>
+<circle cx="490" cy="300" r="2.3" fill="#7A2E0E"/>
+<circle cx="520" cy="290" r="2.3" fill="#7A2E0E"/>
+<circle cx="450" cy="330" r="2.3" fill="#7A2E0E"/>
+<circle cx="480" cy="320" r="2.3" fill="#7A2E0E"/>
+<circle cx="420" cy="330" r="2.3" fill="#7A2E0E"/>
+<circle cx="480" cy="180" r="2.3" fill="#7A2E0E"/>
+<circle cx="500" cy="220" r="2.3" fill="#7A2E0E"/>
+<circle cx="400" cy="80" r="2.3" fill="#7A2E0E"/>
+<circle cx="430" cy="100" r="2.3" fill="#7A2E0E"/>
+<circle cx="240" cy="160" r="2.3" fill="#7A2E0E"/>
+<circle cx="200" cy="90" r="2.3" fill="#7A2E0E"/>
+<circle cx="150" cy="230" r="2.3" fill="#7A2E0E"/>
+<circle cx="250" cy="300" r="2.3" fill="#7A2E0E"/>
+<circle cx="145.3" cy="216" r="2.7" fill="#1B1B1B"/>
+<circle cx="470" cy="360" r="2.7" fill="#1B1B1B"/>
+</svg>

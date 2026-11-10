@@ -1,0 +1,20 @@
+{
+ "rank-size-rule": {
+  "def": "A model in which the city of rank n in a country has about 1/n the population of the largest city, giving a smooth ladder of city sizes."
+ },
+ "primate-city": {
+  "def": "A country's largest city when it is far larger than the second city (often more than twice as large) and dominates the country's economy, government and culture."
+ },
+ "gravity-model": {
+  "def": "A model that predicts interaction between two places grows with their populations and falls with the square of the distance between them."
+ },
+ "central-place-theory": {
+  "def": "Christaller's model of settlements as market centers serving the areas around them, with a few large, widely spaced places and many small, close ones."
+ },
+ "range-of-good": {
+  "def": "In central place theory, the greatest distance people will travel to buy a good or service."
+ },
+ "threshold": {
+  "def": "In central place theory, the fewest customers a seller needs to stay in business."
+ }
+}

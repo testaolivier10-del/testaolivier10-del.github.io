@@ -1,0 +1,71 @@
+{
+ "topic": "transition-model",
+ "hook": "In England in the early 1700s, birth and death rates were both high, and the population grew slowly. Through the 1800s, deaths fell while families stayed large, and the population of England and Wales more than tripled between 1801 and 1901 (census of England and Wales). In the 1900s, births fell too. Many countries have followed a similar path, at different speeds. Geographers sum it up in one model.",
+ "prereq": [
+  {
+   "q": "A country has a CBR of 30 and a CDR of 10. What is its rate of natural increase?",
+   "options": [
+    "2 percent",
+    "20 percent",
+    "3 percent",
+    "0.2 percent"
+   ],
+   "correct": 0,
+   "why": "(30 − 10) ÷ 10 = 2 percent.",
+   "review": "population-dynamics"
+  },
+  {
+   "q": "Which measure counts deaths of babies under age 1 per 1,000 live births?",
+   "options": [
+    "Infant mortality rate",
+    "Crude death rate",
+    "Total fertility rate",
+    "Life expectancy"
+   ],
+   "correct": 0,
+   "why": "The infant mortality rate measures deaths in the first year of life.",
+   "review": "population-dynamics"
+  }
+ ],
+ "figure": {
+  "figure": "transition-model-stages",
+  "caption": "The demographic transition model: the death rate falls first (stage 2), then the birth rate (stage 3); the population grows fastest when the gap is widest."
+ },
+ "chain": [
+  {
+   "cause": "Food, clean water and vaccines improve",
+   "effect": "the death rate falls while births stay high (stage 2)"
+  },
+  {
+   "cause": "Births stay high while deaths fall",
+   "effect": "the population grows very fast"
+  },
+  {
+   "cause": "More children survive and children cost more in cities",
+   "effect": "families have fewer children and the birth rate falls (stage 3)"
+  },
+  {
+   "cause": "Both rates end up low",
+   "effect": "growth slows or stops (stage 4), and births may fall below deaths (stage 5)"
+  }
+ ],
+ "ideas": [
+  "The <b>demographic transition model</b> (DTM) traces birth and death rates in five stages: 1 both high; 2 deaths fall; 3 births fall; 4 both low; 5 births below deaths.",
+  "A country is never \"in\" a stage as a fact. Its data are <b>consistent with</b> a stage. Low growth can mean stage 1 (high rates) or stages 4 and 5 (low rates).",
+  "The <b>epidemiological transition</b> traces the main causes of death: from infections and famine to chronic diseases such as heart disease and cancer, with new infections possible.",
+  "Limits: built on European history; leaves out migration; timing differs; stage 5 is not universal; it describes, it does not predict."
+ ],
+ "misconception": {
+  "wrong": "A country whose population is hardly growing must be in stage 1 or 2.",
+  "right": "Low growth can come from high rates (stage 1) or low rates (stages 4 and 5). Read the rates: low births and deaths, or deaths above births, are consistent with stage 4 or 5."
+ },
+ "check": [
+  "hug-transition-model-1",
+  "hug-transition-model-2",
+  "hug-transition-model-3",
+  "hug-transition-model-9",
+  "hug-transition-model-10",
+  "hug-transition-model-13"
+ ],
+ "summary": "The demographic transition model describes death rates falling first and birth rates later, in five stages, so population growth speeds up and then slows or turns negative. The epidemiological transition describes the main causes of death shifting from infections to chronic disease. Both are models built from history, with limits: place a country’s data in a stage, and say how well the model fits."
+}

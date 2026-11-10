@@ -18,6 +18,7 @@ export const COVERS = {
   apprecalc: { t1: 'AP®', t2: 'Precalculus', hand: 'see every function move' },
   apmacro: { t1: 'AP®', t2: 'Macroeconomics', hand: 'every graph, every shift' },
   apmicro: { t1: 'AP®', t2: 'Microeconomics', hand: 'every curve, every area' },
+  aphug: { t1: 'AP® Human', t2: 'Geography', hand: 'every model, every scale' },
 };
 
 /* The banner over a course home's hero. Decorative: the course is named by the

@@ -1,0 +1,72 @@
+{
+ "topic": "women-development",
+ "hook": "In 1976 an economics professor in Bangladesh, Muhammad Yunus, lent a small sum to village women who made bamboo stools, so they could stop paying a moneylender's high interest. They repaid him. That small loan grew into the Grameen Bank, which lends mostly to poor women, and in 2006 Yunus and the bank shared the Nobel Peace Prize. Can a small loan change a woman's life, and what else has to change too?",
+ "prereq": [
+  {
+   "q": "What does the Gender Inequality Index measure?",
+   "options": [
+    "Gaps between women and men in health, empowerment and paid work",
+    "Average income per person",
+    "Years of schooling for all children",
+    "The share of workers in services"
+   ],
+   "correct": 0,
+   "why": "The GII measures gaps between women and men; lower is better.",
+   "review": "development-measures"
+  },
+  {
+   "q": "In Unit 2, how does more schooling for girls usually affect fertility?",
+   "options": [
+    "It usually lowers fertility",
+    "It usually raises fertility",
+    "It has no link to fertility",
+    "It stops all births"
+   ],
+   "correct": 0,
+   "why": "Female education tends to delay marriage and lower fertility.",
+   "review": "women-population-change"
+  }
+ ],
+ "figure": {
+  "figure": "women-development-cycle",
+  "caption": "The microlending cycle: a small loan, a small business, income, repayment, and a larger loan."
+ },
+ "chain": [
+  {
+   "cause": "More girls finish school and fertility falls",
+   "effect": "more women can take paid work outside the home"
+  },
+  {
+   "cause": "Factory and service jobs grow, as in Bangladesh's garment industry",
+   "effect": "women gain income, but often at low pay and with risks"
+  },
+  {
+   "cause": "Women are fewer among managers and do more unpaid care work",
+   "effect": "a gender wage gap remains, even in rich countries"
+  },
+  {
+   "cause": "Banks refuse loans to people without land or savings",
+   "effect": "microlending offers small loans, often to women in groups, for small businesses"
+  }
+ ],
+ "ideas": [
+  "With development, more women go to school, have fewer children and take <b>paid work</b>, often in factories and services.",
+  "More work is not equal work: the <b>gender wage gap</b> (women's pay compared with men's) appears in most countries with data.",
+  "Women do most <b>unpaid care work</b>, which GDP leaves out.",
+  "<b>Microlending</b> makes very small loans, often to women in groups, to start small businesses: it can raise income and schooling, but it can also bring debt.",
+  "Policy matters: Iceland's equal-pay law (2017) and Rwanda's majority of women in parliament (since 2008)."
+ ],
+ "misconception": {
+  "wrong": "Once women take paid jobs, women and men are economically equal.",
+  "right": "More paid work often comes with a gender wage gap, fewer women in senior roles and a double load of unpaid care work. Equal opportunity takes more than jobs."
+ },
+ "check": [
+  "hug-women-development-5",
+  "hug-women-development-6",
+  "hug-women-development-7",
+  "hug-women-development-8",
+  "hug-women-development-9",
+  "hug-women-development-15"
+ ],
+ "summary": "As places develop, more women go to school and take paid work, as in Bangladesh's garment industry, but a gender wage gap and unequal opportunity remain. Microlending, pioneered by the Grameen Bank, gives small loans for small businesses, mostly to women: it can raise income and schooling, but it is no cure for poverty on its own."
+}

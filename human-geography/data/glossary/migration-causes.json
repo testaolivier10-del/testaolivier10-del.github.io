@@ -1,0 +1,17 @@
+{
+ "migration": {
+  "def": "A long-term move from one place to another to live, within a country or across a border."
+ },
+ "push-factor": {
+  "def": "A problem at the place a migrant leaves that drives people away, such as low pay, drought or war."
+ },
+ "pull-factor": {
+  "def": "An attraction at the place a migrant goes that draws people in, such as jobs, safety or relatives already there."
+ },
+ "intervening-opportunity": {
+  "def": "An attraction along the way, such as a job offer, that may lead a migrant to stop before reaching the planned destination."
+ },
+ "intervening-obstacle": {
+  "def": "Something between the origin and the destination that makes a move harder, such as distance, cost, a border, a sea or rough land."
+ }
+}

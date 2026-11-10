@@ -1,0 +1,67 @@
+{
+ "topic": "forms-of-governance",
+ "hook": "Move from Texas to California and the minimum wage, the sales tax and many school rules change, though you never leave the country. Move from one region of France to another and they mostly stay the same. The difference is how each state shares power across space: the United States is federal, France is unitary.",
+ "prereq": [
+  {
+   "q": "What is sovereignty?",
+   "options": [
+    "A state's right and power to govern its territory without outside control",
+    "A region's power over its schools",
+    "A people's shared culture",
+    "A narrow sea passage"
+   ],
+   "correct": 0,
+   "why": "Sovereignty belongs to states.",
+   "review": "political-processes"
+  },
+  {
+   "q": "What is an autonomous region?",
+   "options": [
+    "A part of a state that governs many of its own affairs",
+    "An independent state",
+    "A nation with no state",
+    "A voting district"
+   ],
+   "correct": 0,
+   "why": "Greenland and Åland are examples.",
+   "review": "political-intro"
+  }
+ ],
+ "figure": {
+  "figure": "forms-of-governance-power",
+  "caption": "In a unitary state, power is held at the center; in a federal state, a constitution divides it between levels."
+ },
+ "chain": [
+  {
+   "cause": "A state is small or culturally similar across its land",
+   "effect": "it can run most matters from the capital, so it is often unitary"
+  },
+  {
+   "cause": "A state is very large or holds many nations and languages",
+   "effect": "regions want to run some matters their own way, so it is often federal"
+  },
+  {
+   "cause": "A constitution protects regional powers",
+   "effect": "laws differ from one region to the next, while the national government keeps defense and money"
+  }
+ ],
+ "ideas": [
+  "A <b>unitary state</b> concentrates power in the national government; regions carry out its decisions and have only the powers it gives them (France, Japan, China).",
+  "A <b>federal state</b> divides power by constitution between a national government and regional governments, each with its own powers (the United States, Germany, India, Brazil, Nigeria).",
+  "Federal systems often suit very large or culturally diverse states. A unitary state can still have an autonomous region (Åland in Finland).",
+  "A federal state still has a national government. Always name it when you describe federalism."
+ ],
+ "misconception": {
+  "wrong": "In a federal state, the regions run everything and there is no real national government.",
+  "right": "A federal state has a national government that runs matters such as defense, money and foreign policy, while regional governments run others, such as schools and police."
+ },
+ "check": [
+  "hug-forms-of-governance-1",
+  "hug-forms-of-governance-2",
+  "hug-forms-of-governance-3",
+  "hug-forms-of-governance-4",
+  "hug-forms-of-governance-11",
+  "hug-forms-of-governance-15"
+ ],
+ "summary": "States share power across space in two main ways. A unitary state concentrates power in the national government, which gives regions only the powers it chooses. A federal state divides power by constitution between a national government and regional governments, so laws differ from region to region. Large or culturally diverse states are often federal, and both forms always keep a national government."
+}

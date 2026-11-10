@@ -1,0 +1,26 @@
+{
+ "development": {
+  "def": "The process of improving the material conditions of people's lives, such as income, health, education and choices."
+ },
+ "gdp": {
+  "def": "Gross domestic product: the value of all goods and services produced inside a country's borders in a year, whoever owns the firms."
+ },
+ "gnp": {
+  "def": "Gross national product: the value of goods and services produced by a country's people and firms, wherever in the world they produce it."
+ },
+ "gni": {
+  "def": "Gross national income: all income earned by a country's residents, at home and abroad. GNI per capita divides it by the population."
+ },
+ "informal-sector": {
+  "def": "Work that is not registered, taxed or counted by the government, such as street selling or day labor paid in cash."
+ },
+ "hdi": {
+  "def": "Human Development Index: a UNDP measure from 0 to 1 that combines health (life expectancy), education (years of schooling) and income (GNI per capita)."
+ },
+ "gii": {
+  "def": "Gender Inequality Index: a UNDP measure of gaps between women and men in reproductive health, empowerment and the labor market. Lower means less inequality."
+ },
+ "literacy-rate": {
+  "def": "The share of adults in a population who can read and write."
+ }
+}

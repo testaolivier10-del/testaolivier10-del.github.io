@@ -1,0 +1,11 @@
+{
+ "legend": {
+  "def": "The box on a map that says what each color, shade, symbol or line stands for, often with the units. Also called a key."
+ },
+ "data-source-line": {
+  "def": "A line under a map, table or chart that says who made the data and in what year, or that the data are invented for practice."
+ },
+ "trend": {
+  "def": "A change in data over time, described by its direction (rising or falling), its dates and how much it changed."
+ }
+}

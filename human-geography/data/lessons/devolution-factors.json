@@ -1,0 +1,66 @@
+{
+ "topic": "devolution-factors",
+ "hook": "In 1995, Quebec came within about one percentage point of voting to leave Canada. In 2014, 44.7% of Scottish voters chose independence from the United Kingdom. In 1971, Bangladesh broke away from Pakistan after a war. Why do some regions push to run their own affairs, or to leave altogether?",
+ "prereq": [
+  {
+   "q": "What is a federal state?",
+   "options": [
+    "A state whose constitution divides power between national and regional governments",
+    "A state run entirely from the capital",
+    "A state with one nation",
+    "A group of states"
+   ],
+   "correct": 0,
+   "why": "Germany and the United States are federal.",
+   "review": "forms-of-governance"
+  },
+  {
+   "q": "What is a centrifugal force?",
+   "options": [
+    "Something that divides a group or state",
+    "Something that unites a group or state",
+    "The spread of a culture by migrants",
+    "A boundary drawn by outsiders"
+   ],
+   "correct": 0,
+   "why": "Centrifugal forces pull apart; centripetal forces pull together.",
+   "review": "cultural-patterns"
+  }
+ ],
+ "figure": {
+  "figure": "devolution-factors-wheel",
+  "caption": "Six factors that can push a state toward devolution."
+ },
+ "chain": [
+  {
+   "cause": "A group feels its language, culture or interests are ignored by the national government",
+   "effect": "it demands more self-rule or independence"
+  },
+  {
+   "cause": "The group is concentrated in one region, far from the capital or cut off by water",
+   "effect": "its demands are easier to organize and harder to ignore"
+  },
+  {
+   "cause": "The national government gives in, or the conflict turns violent",
+   "effect": "power moves to the region, or the state breaks apart"
+  }
+ ],
+ "ideas": [
+  "<b>Devolution</b> is the transfer of power from the national government to regional governments; at its furthest, a region breaks away.",
+  "Factors: <b>physical division</b> (Bangladesh, cut off from western Pakistan), <b>ethnic separatism</b> (Quebec, Scotland, Catalonia), <b>ethnic cleansing</b> (Bosnia in the 1990s), <b>terrorism</b> (ETA in Spain), <b>economic and social problems</b>, and <b>irredentism</b> (Germany and the Sudetenland, 1938).",
+  "Separatism comes from inside a state; irredentism comes from a neighbor that claims land where its people live."
+ ],
+ "misconception": {
+  "wrong": "Devolution means a region becomes independent.",
+  "right": "Devolution is any move of power from the center to regions. Most devolution stops short of independence: Scotland got its own parliament in 1999 and stayed in the United Kingdom."
+ },
+ "check": [
+  "hug-devolution-factors-5",
+  "hug-devolution-factors-6",
+  "hug-devolution-factors-7",
+  "hug-devolution-factors-8",
+  "hug-devolution-factors-14",
+  "hug-devolution-factors-15"
+ ],
+ "summary": "Devolution moves power from a national government to its regions. It is pushed by physical division, ethnic separatism, ethnic cleansing, terrorism, economic and social problems, and irredentism. A minority concentrated in its own region, as in Quebec, Scotland or Catalonia, is the most common source of pressure. Most devolution ends with more regional self-rule, but some states break apart, as Pakistan did in 1971."
+}

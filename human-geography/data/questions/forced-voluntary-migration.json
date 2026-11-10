@@ -1,0 +1,508 @@
+{
+ "stimuli": {
+  "forced-voluntary-migration-s1": {
+   "kind": "image",
+   "title": "A flow map of two migration paths from Mexico to the United States (invented flows)",
+   "image": {
+    "figure": "forced-voluntary-migration-flows",
+    "alt": "Flow map of Mexico and the United States with two invented paths. Path 1, in three numbered steps: a village in Oaxaca to Mexico City, then to Tijuana, then to Los Angeles. Path 2: three arrows from a town in Puebla to New York, labeled first migrant 1995, brother 2001 and cousins 2008.",
+    "caption": "Invented flows for practice. Path 1 (three steps): a village in Oaxaca to Mexico City, then Tijuana, then Los Angeles. Path 2: from a town in Puebla to New York: the first migrant in 1995, a brother in 2001, cousins in 2008. Base map: Natural Earth; borders follow its de facto lines."
+   }
+  },
+  "forced-voluntary-migration-s2": {
+   "kind": "data",
+   "title": "Five people on the move (invented cases)",
+   "invented": true,
+   "table": {
+    "caption": "Five invented cases of people on the move, for practice",
+    "cols": [
+     "Person",
+     "What happened"
+    ],
+    "rows": [
+     [
+      "Amal",
+      "Fled fighting in her city, crossed into a neighboring country and was granted protection there"
+     ],
+     [
+      "Bilal",
+      "Fled floods in his province and now lives in a camp in another province of the same country"
+     ],
+     [
+      "Chen",
+      "Crossed a border, asked for protection because of his religion and is waiting for a decision"
+     ],
+     [
+      "Dana",
+      "Works on a farm in another country on a two-year permit and plans to go home"
+     ],
+     [
+      "Emil",
+      "Moves his sheep up to mountain pastures each summer and back to the valley each winter"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-forced-voluntary-migration-1",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which kind of migration does Path 1 show?",
+   "stimulus": "forced-voluntary-migration-s1",
+   "options": [
+    "Step migration",
+    "Chain migration",
+    "Transhumance",
+    "Forced migration"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Step migration is a move made in stages, each to a larger or closer-to-the-goal place. Path 1 has three steps.",
+    "options": [
+     "Right: the migrant moves in stages: village, large city, border city, then Los Angeles.",
+     "chain migration is relatives following earlier migrants, as in Path 2.",
+     "transhumance is the seasonal movement of herders and their animals.",
+     "nothing on the map shows the migrant was forced to move."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-2",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which kind of migration does Path 2 show?",
+   "stimulus": "forced-voluntary-migration-s1",
+   "options": [
+    "Step migration",
+    "Chain migration",
+    "Internal migration",
+    "Guest worker migration"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Chain migration happens when migrants follow relatives or neighbors who moved before them, often to the same city or neighborhood. The labels show a first migrant in 1995, then a brother and cousins.",
+    "options": [
+     "Path 2 goes straight to New York in one move each time.",
+     "Right: relatives follow the first migrant to the same place over the years.",
+     "Path 2 crosses an international border.",
+     "nothing shows a temporary work permit; relatives are joining family."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-3",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "The first step of Path 1, from a village in Oaxaca to Mexico City, is which kind of move?",
+   "stimulus": "forced-voluntary-migration-s1",
+   "options": [
+    "Transnational migration",
+    "Transhumance",
+    "Internal, rural-to-urban migration",
+    "Forced migration across an international border"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Internal migration is a move within one country. A move from a village to a big city is rural-to-urban migration, the largest kind of migration in many countries.",
+    "options": [
+     "that step does not cross a border.",
+     "transhumance is the seasonal moving of herds.",
+     "Right: it stays inside Mexico and goes from the countryside to a city.",
+     "the step stays inside Mexico, and nothing shows force."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-4",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.F",
+   "q": "What is one limitation of this map for explaining why the migrants moved?",
+   "stimulus": "forced-voluntary-migration-s1",
+   "options": [
+    "It does not show where the migrants started their journeys",
+    "It shows the moves at the global scale, so the countries are unclear",
+    "It is a real record of the many migrants from Oaxaca and Puebla",
+    "It shows routes and order, not causes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Flow maps show direction, route and sometimes volume. They cannot show causes such as wages, drought or family ties: you need other sources for those.",
+    "options": [
+     "the start of each path is marked on the map.",
+     "the map shows two named countries and named cities.",
+     "the flows are invented for practice and show one family each.",
+     "Right: arrows show paths, not push or pull factors."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-5",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which person in the table is a refugee?",
+   "stimulus": "forced-voluntary-migration-s2",
+   "options": [
+    "Amal",
+    "Bilal",
+    "Chen",
+    "Dana"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A refugee has crossed an international border to escape danger or persecution and has been recognized as needing protection.",
+    "options": [
+     "Right: she fled across a border and was granted protection as a refugee.",
+     "he is still in his own country, so he is an internally displaced person.",
+     "he has asked for protection but is still waiting, so he is an asylum seeker.",
+     "she moved by choice to work: a guest worker."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-6",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How is Bilal’s situation different from Amal’s?",
+   "stimulus": "forced-voluntary-migration-s2",
+   "options": [
+    "He moved by choice, while she was forced to move",
+    "He stays inside his own country; she crossed a border",
+    "He crossed a border, while she stayed inside her country",
+    "He is waiting for a decision on protection, while she has been granted it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both were forced to move. The difference is the border: an internally displaced person (IDP) stays inside the country; a refugee has crossed into another.",
+    "options": [
+     "both were forced from their homes.",
+     "Right: Bilal is an internally displaced person, Amal a refugee.",
+     "this reverses the two cases.",
+     "that describes Chen, not Bilal."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-7",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is Chen?",
+   "stimulus": "forced-voluntary-migration-s2",
+   "options": [
+    "A refugee who has already been granted protection",
+    "An internally displaced person",
+    "An asylum seeker",
+    "A guest worker on a temporary permit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An asylum seeker has crossed a border and asked for protection as a refugee but has not yet received a decision.",
+    "options": [
+     "his claim has not yet been decided.",
+     "he has crossed an international border.",
+     "Right: he has asked for protection and is waiting for a decision.",
+     "he asked for protection, not a work permit."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-8",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which statement correctly compares Dana and Emil?",
+   "stimulus": "forced-voluntary-migration-s2",
+   "options": [
+    "Both are forced to move by danger at home",
+    "Dana does transhumance, while Emil is a guest worker",
+    "Both have crossed a border to ask for protection",
+    "Both choose to move: guest work and transhumance"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A guest worker moves to another country to work for a set time. Transhumance is the seasonal movement of herders and animals between pastures. Both are voluntary.",
+    "options": [
+     "neither case mentions danger.",
+     "this swaps the two.",
+     "Emil stays in his region; neither asks for protection.",
+     "Right: both are voluntary moves of different kinds."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-9",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What separates forced migration from voluntary migration?",
+   "options": [
+    "Whether the migrant had a real choice to stay",
+    "How far the migrant moved",
+    "Whether the migrant crossed a border",
+    "How many people moved at the same time from one place"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Forced migration happens when people are made to move, by violence, persecution, disaster or enslavement. Voluntary migration happens when people choose to move, usually for work, family or a better life.",
+    "options": [
+     "Right: forced migrants are driven out by danger or by other people.",
+     "forced and voluntary moves can be short or long.",
+     "both can happen inside a country or across borders.",
+     "both can involve one person or millions."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-10",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Historians estimate that about 12.5 million Africans were forced onto ships to the Americas between the 1500s and the 1860s (Trans-Atlantic Slave Trade Database). Which kind of migration was this?",
+   "options": [
+    "Chain migration",
+    "Forced migration",
+    "Step migration",
+    "Guest worker migration"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The transatlantic slave trade was one of the largest forced migrations in history. Its effects on the population and culture of the Americas and Africa last centuries later.",
+    "options": [
+     "chain migration is people choosing to follow relatives.",
+     "Right: enslaved people had no choice; they were captured and shipped.",
+     "the people were moved by force, not in stages by choice.",
+     "guest workers choose to move and are paid for work."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-11",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "From 1942 to 1964, the US Bracero Program let men from Mexico work on US farms for a season and then return home. Which kind of migration was this?",
+   "options": [
+    "Refugee migration",
+    "Transhumance",
+    "Guest worker migration",
+    "Internal migration within Mexico"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Guest workers are allowed into a country to work for a limited time. Germany’s agreements with Italy, Türkiye and other countries from the 1950s to 1973 were another guest worker program.",
+    "options": [
+     "the workers were not fleeing danger.",
+     "transhumance is herders moving with their animals.",
+     "Right: workers moved by choice for a set time, under a government program.",
+     "the workers crossed an international border."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-12",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Between about 1910 and 1970, some 6 million African Americans moved from the rural South of the United States to cities of the North and West, in what is called the Great Migration. Which terms fit this move best?",
+   "options": [
+    "Transnational and forced",
+    "Intraregional and seasonal",
+    "Guest worker migration on temporary US work permits",
+    "Internal, interregional and mostly voluntary"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Internal migration is within a country; interregional means from one region to another. The line between forced and voluntary can blur: segregation laws and violence in the South were strong push factors.",
+    "options": [
+     "the move stayed inside the United States.",
+     "people moved between regions and stayed, not within one region for a season.",
+     "they were US citizens moving within their own country.",
+     "Right: it stayed inside one country, between its regions, though racist violence and laws pushed hard."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-13",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A nurse from the Philippines works in Canada, sends money home, visits each year and is active in a Filipino association in both countries. Which term describes her?",
+   "options": [
+    "A transnational migrant",
+    "An internally displaced person",
+    "An asylum seeker",
+    "A step migrant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Transnational migrants keep close links with their country of origin and their new country, living in both through family, money, travel and organizations.",
+    "options": [
+     "Right: she keeps strong ties to both countries at once.",
+     "she moved by choice across a border.",
+     "she did not ask for protection.",
+     "nothing shows she moved in stages."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-14",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "War broke out in Sudan in April 2023, and by the end of 2024 about 14 million Sudanese had been forced from their homes, more than from any other country (UNHCR Global Trends, end-2024 data, published 2025). Most stayed inside Sudan. What were most of them?",
+   "options": [
+    "Refugees",
+    "Internally displaced persons",
+    "Guest workers",
+    "Transhumant herders moving with the seasons"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Internally displaced persons (IDPs) are forced from their homes but remain in their own country. Worldwide, there are more IDPs than refugees.",
+    "options": [
+     "refugees have crossed an international border; most stayed in Sudan.",
+     "Right: they fled their homes but did not cross a border.",
+     "they were forced out, not moving for a work permit.",
+     "they fled war, not moving herds with the seasons."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-15",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which of these are voluntary migration? Select all that apply.",
+   "options": [
+    "A family follows relatives to a city abroad for work",
+    "A student moves to the capital to attend university",
+    "Villagers flee a wildfire and live in a school in the next town",
+    "A journalist crosses a border and asks for protection after threats",
+    "People are captured and shipped to work on another continent"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Voluntary migrants choose to move. People driven out by disaster, threats or enslavement are forced migrants.",
+    "options": [
+     "Right: chain migration, by choice.",
+     "Right: internal migration, by choice.",
+     "They were forced out: internally displaced.",
+     "He fled danger: an asylum seeker.",
+     "That is enslavement, forced migration."
+    ]
+   }
+  },
+  {
+   "id": "hug-forced-voluntary-migration-16",
+   "unit": "unit-2",
+   "topic": "forced-voluntary-migration",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "1.C",
+   "q": "Build a comparison of two kinds of forced migrant, with a real case.",
+   "specific": {
+    "frame": "___ is an internally displaced person, whereas ___ is a refugee, because ___.",
+    "write": {
+     "both": true,
+     "mechanism": true
+    },
+    "model": "A Sudanese family that fled the fighting in 2023 to another part of Sudan is an internally displaced person, whereas a Sudanese family that crossed into Chad is a refugee, because only the second family left its own country.",
+    "slots": {
+     "sideA": {
+      "label": "First case",
+      "options": [
+       "A Sudanese family that fled the fighting in 2023 to another part of Sudan",
+       "Some people"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name a real case with its place."
+      }
+     },
+     "sideB": {
+      "label": "Second case",
+      "options": [
+       "a Sudanese family that crossed into Chad",
+       "other people"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name the second real case."
+      }
+     },
+     "cause": {
+      "label": "The difference",
+      "options": [
+       "only the second family left its own country",
+       "they are different"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "say what the difference is: the border."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A compare names both cases and the difference between them: crossing an international border."
+   }
+  }
+ ]
+}

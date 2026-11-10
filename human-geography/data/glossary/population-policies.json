@@ -1,0 +1,11 @@
+{
+ "pronatalist-policy": {
+  "def": "A government policy that tries to raise the number of births, for example with payments for each child, paid parental leave or cheaper child care."
+ },
+ "antinatalist-policy": {
+  "def": "A government policy that tries to lower the number of births, for example with family planning programs or limits on family size."
+ },
+ "immigration-policy": {
+  "def": "A government’s rules about who may move into the country, how many people and for how long."
+ }
+}

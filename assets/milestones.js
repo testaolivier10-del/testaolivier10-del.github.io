@@ -15,7 +15,7 @@
      anp     A chapter is complete when every BUILT topic in it is in
              anp_progress_v1.lessons (the lesson's check questions answered to
              the end). Each record is a timestamp, so the date earned is real.
-     AP®     The eleven AP® courses: a unit is complete when every topic in it
+     AP®     The twelve AP® courses: a unit is complete when every topic in it
              with a lesson is in <key>_progress_v1.lessons (timestamps), with
              units and lessons read from assets/path/<key>.json.
      all     The course is complete when every chapter (unit) is.
@@ -75,7 +75,7 @@
       blurb: 'An anatomy and physiology course, free to start: lessons that build in order from cells to systems, mechanism-first physiology, a virtual lab practical and system exams.'
     }
   };
-  /* The eleven AP® courses (consistency audit 2026-11, D4): units and their lessons come from the course's path file
+  /* The twelve AP® courses (consistency audit 2026-11, D4): units and their lessons come from the course's path file
      (assets/path/<key>.json, scripts/build-paths.mjs), finished lessons from <key>_progress_v1.lessons, each a
      timestamp, the same record A&P keeps. A unit is a chapter here; the course is complete when every unit is. */
   var AP = [
@@ -89,7 +89,8 @@
     ['appsych', 'AP® Psychology', 'psychology', 'Psychology exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.'],
     ['apprecalc', 'AP® Precalculus', 'precalculus', 'Precalculus exam prep: lessons from scratch, free notes, a function lab, typed answers graded by value, and every free-response type.'],
     ['apmacro', 'AP® Macroeconomics', 'macroeconomics', 'Macroeconomics exam prep: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.'],
-    ['apmicro', 'AP® Microeconomics', 'microeconomics', 'Microeconomics exam prep: lessons from scratch, free notes, graphs drawn and shaded by hand, and every free-response question drilled part by part.']
+    ['apmicro', 'AP® Microeconomics', 'microeconomics', 'Microeconomics exam prep: lessons from scratch, free notes, graphs drawn and shaded by hand, and every free-response question drilled part by part.'],
+    ['aphug', 'AP® Human Geography', 'human-geography', 'Human geography exam prep: lessons from scratch, free notes, every model built by hand, and free responses drilled one task verb at a time.']
   ];
   AP.forEach(function(a){
     COURSES[a[0]] = { name: a[1], home: '/' + a[2] + '/', dash: '/' + a[2] + '/dashboard.html', path: '/assets/path/' + a[0] + '.json', ap: true, blurb: a[3] };

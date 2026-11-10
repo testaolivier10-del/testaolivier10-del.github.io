@@ -1,4 +1,4 @@
-/* The course home: one layout for all thirteen courses. Round 3 (docs/site-redesign.md) gave it the tall cover
+/* The course home: one layout for all fifteen courses. Round 3 (docs/site-redesign.md) gave it the tall cover
    band; course redesign round 4 (docs/course-redesign-r4.md, decision 2; mockups docs/redesign-r4/mockups/Main and
    HomeReturning) made the guided path the home.
 
@@ -25,7 +25,7 @@ const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const DATA = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'course-homes.json'), 'utf8'));
 const strip = (s) => String(s).replace(/<[^>]+>/g, '');
 const attr = (s) => String(s).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/"/g, '&quot;');
-const DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics' };
+const DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics', aphug: 'human-geography' };
 
 /* The tool covers: index.json per course gives each cover's real tool title. */
 function toolCovers(key) {
@@ -60,6 +60,8 @@ function pathSkeleton(key, up, primaryHref) {
   if (!existsSync(f)) return null;
   const D = JSON.parse(readFileSync(f, 'utf8'));
   // A course registered before its first unit is published has no stops yet (AP® Microeconomics, Phase 0).
+  if (!D.topics.length) return null;
+  // A course registered before any topic is published (Phase 0) has an empty path.
   if (!D.topics.length) return null;
   const T = D.topics.map((t, i) => ({ ...t, i }));
   const skill = (t) => D.units[t.u] && D.units[t.u].label === 'Skills';
@@ -195,7 +197,8 @@ export function r3HomeMain(key, ctx) {
      the extra tool lines live on the Tools page. */
   const top = d.tools.slice(0, 3);
   const allN = d.tools.length;
-  const toolsMore = `<a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a>`;
+  const toolsMore = `<a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a>`
+    + (L.more || []).map(([href, label]) => ` <a class="go" href="${href}">${label} &rarr;</a>`).join('');
 
   /* ---- only in this course ---- */
   const xs = d.extras.map((x, i) => {

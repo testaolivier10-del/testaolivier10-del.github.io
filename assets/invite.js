@@ -38,6 +38,7 @@
     { key: 'apcalcbc', path: '/calculus-bc/', productName: 'AP® Calculus BC' },
     { key: 'apmacro', path: '/macroeconomics/', productName: 'AP® Macroeconomics' },
     { key: 'apmicro', path: '/microeconomics/', productName: 'AP® Microeconomics' },
+    { key: 'aphug', path: '/human-geography/', productName: 'AP® Human Geography' },
   ];
   // courses:end
 

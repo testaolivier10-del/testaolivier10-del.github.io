@@ -1,0 +1,71 @@
+{
+ "topic": "migration-effects",
+ "hook": "In 2024, migrants sent about 129 billion US dollars home to India, more than to any other country (World Bank, 2024 estimate). In Kerala, India, new houses paid for by workers in the Gulf line village roads. In Riverton, an invented farm town, a meat plant reopens with workers from abroad and church services change language. Migration reshapes both the places people leave and the places they go.",
+ "prereq": [
+  {
+   "q": "A person works abroad on a two-year permit and plans to go home. What kind of migrant is this?",
+   "options": [
+    "A guest worker",
+    "A refugee",
+    "An asylum seeker",
+    "An internally displaced person"
+   ],
+   "correct": 0,
+   "why": "Guest workers are allowed in to work for a set time.",
+   "review": "forced-voluntary-migration"
+  },
+  {
+   "q": "Jobs at the destination are which kind of factor?",
+   "options": [
+    "A pull factor",
+    "A push factor",
+    "An intervening obstacle",
+    "An intervening opportunity"
+   ],
+   "correct": 0,
+   "why": "Attractions at the destination pull people in.",
+   "review": "migration-causes"
+  }
+ ],
+ "figure": {
+  "figure": "migration-effects-two-way",
+  "caption": "Workers flow from the origin to the destination, and remittances flow back. Effects are economic, political, cultural and demographic at both ends."
+ },
+ "chain": [
+  {
+   "cause": "Young adults leave a place for jobs elsewhere",
+   "effect": "the origin grows older and the destination’s workforce grows"
+  },
+  {
+   "cause": "Migrants earn wages at the destination",
+   "effect": "they send remittances home, which pay for food, schools and houses"
+  },
+  {
+   "cause": "Doctors, nurses and engineers leave",
+   "effect": "the origin suffers a brain drain of skills it paid to train"
+  },
+  {
+   "cause": "New residents bring their foods, languages and religions",
+   "effect": "the destination’s culture changes, and its people debate immigration policy"
+  }
+ ],
+ "ideas": [
+  "<b>Remittances</b> are money migrants send home. They raise incomes at the origin but can make families depend on work abroad.",
+  "<b>Brain drain</b> is the loss of skilled, educated people from a place, such as doctors and nurses leaving Zimbabwe and Nigeria.",
+  "Effects are <b>economic</b> (jobs, wages, remittances), <b>political</b> (debates and laws over immigration), <b>cultural</b> (food, language, religion) and <b>demographic</b> (age and sex structure).",
+  "Every effect has a place and a scale: local (a village, a town) and national (a country’s income or laws). Past migrations, such as Irish emigration after 1845, still shape places."
+ ],
+ "misconception": {
+  "wrong": "Migration affects only the country people move to.",
+  "right": "Migration changes both ends. The origin gains remittances and may lose young and skilled workers; the destination gains workers and new culture and debates immigration policy."
+ },
+ "check": [
+  "hug-migration-effects-1",
+  "hug-migration-effects-2",
+  "hug-migration-effects-3",
+  "hug-migration-effects-5",
+  "hug-migration-effects-6",
+  "hug-migration-effects-9"
+ ],
+ "summary": "Migration has economic, political, cultural and demographic effects on both the places people leave and the places they go. Origins gain remittances and may lose skills (brain drain) and young adults; destinations gain workers, new foods, languages and religions, and debate immigration policy. Name the place and the scale of every effect."
+}

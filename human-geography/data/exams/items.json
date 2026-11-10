@@ -1,0 +1,662 @@
+{
+ "about": "Exam-only questions for the two practice exams (docs/aphug-architecture.md, \"Practice exams\"): five options each, never in the practice bank. Ids hug-exam-<form>-<nn>; stimuli exam-<form>-s<n>. Every number is recomputed by ApHugCalc and every map or pyramid read is checked against its data (EXAM_NUMBERS and EXAM_READS in scripts/lib/aphug-exams.mjs).",
+ "stimuli": {
+  "exam-1-s1": {
+   "kind": "map",
+   "title": "Country A: households with internet access at home, by province",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Shaded map of Country A by province: the share of households with internet access at home is highest in the Capital Region and on the South Coast and lowest in the Western Uplands and Southern Forest",
+    "legendTitle": "Households with internet access at home (percent, invented)",
+    "classes": [
+     "Under 40%",
+     "40% to 59%",
+     "60% to 79%",
+     "80% or more"
+    ],
+    "values": {
+     "capital": 3,
+     "coast": 3,
+     "east": 2,
+     "northeast": 2,
+     "central": 1,
+     "north": 1,
+     "west": 0,
+     "south": 0
+    }
+   }
+  },
+  "exam-1-s2": {
+   "kind": "data",
+   "title": "Population pyramid of Country V",
+   "invented": true,
+   "plot": {
+    "kind": "pyramid",
+    "label": "Population pyramid of Country V: the bars are widest at ages 0 to 4 and get steadily shorter with each older group, a wide base and a narrow top",
+    "groups": [
+     "0-4",
+     "5-9",
+     "10-14",
+     "15-19",
+     "20-24",
+     "25-29",
+     "30-34",
+     "35-39",
+     "40-44",
+     "45-49",
+     "50-54",
+     "55-59",
+     "60-64",
+     "65-69",
+     "70-74",
+     "75-79",
+     "80+"
+    ],
+    "left": [
+     7.6,
+     6.9,
+     6.1,
+     5.2,
+     4.5,
+     3.9,
+     3.3,
+     2.7,
+     2.3,
+     1.9,
+     1.6,
+     1.2,
+     0.9,
+     0.7,
+     0.5,
+     0.3,
+     0.2
+    ],
+    "right": [
+     7.3,
+     6.7,
+     6,
+     5.1,
+     4.5,
+     3.9,
+     3.4,
+     2.8,
+     2.4,
+     2,
+     1.7,
+     1.3,
+     1,
+     0.8,
+     0.6,
+     0.4,
+     0.3
+    ],
+    "xLabel": "Percent of the population",
+    "leftLabel": "Male",
+    "rightLabel": "Female"
+   }
+  },
+  "exam-1-s3": {
+   "kind": "map",
+   "title": "Country A: the largest city in each province",
+   "map": {
+    "base": "country-a",
+    "render": "symbol",
+    "invented": true,
+    "label": "Graduated symbol map of the largest city in each province of Country A: one very large circle in the Capital Region and much smaller circles in the other seven provinces, the next largest on the South Coast",
+    "legendTitle": "Population of the largest city in each province",
+    "symbols": {
+     "unit": "thousand people (invented)",
+     "items": [
+      {
+       "at": "capital",
+       "value": 1200
+      },
+      {
+       "at": "coast",
+       "value": 260
+      },
+      {
+       "at": "central",
+       "value": 180
+      },
+      {
+       "at": "east",
+       "value": 150
+      },
+      {
+       "at": "northeast",
+       "value": 140
+      },
+      {
+       "at": "west",
+       "value": 90
+      },
+      {
+       "at": "south",
+       "value": 80
+      },
+      {
+       "at": "north",
+       "value": 60
+      }
+     ],
+     "legend": [
+      100,
+      500,
+      1200
+     ]
+    }
+   }
+  },
+  "exam-2-s1": {
+   "kind": "text",
+   "title": "A bakery owner in Little Saigon",
+   "text": "<p><b>A bakery owner in Little Saigon, Westminster, California</b> (an invented interview, written for practice, 2026)</p><p>“My parents opened this bakery in 1985, a few years after many Vietnamese families settled here. Back then, almost every sign on the street was in Vietnamese. Now our customers come from all over Orange County, and the menu is in Vietnamese and English. My children speak English at school and with their friends, and Vietnamese at home with their grandmother. They still help us bake for Tết, the Lunar New Year.”</p>"
+  },
+  "exam-2-s2": {
+   "kind": "map",
+   "title": "Five sea passages in North Africa and Southwest Asia",
+   "map": {
+    "base": "north-africa-sw-asia",
+    "render": "reference",
+    "label": "Reference map of North Africa and Southwest Asia with five sea passages marked A to E: A at the western end of the Mediterranean Sea, B between the Black Sea and the Mediterranean, C between the Mediterranean and the Red Sea, D at the southern end of the Red Sea, E at the mouth of the Persian Gulf",
+    "marks": [
+     {
+      "at": [
+       -5.6,
+       36
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       29,
+       41.1
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       32.5,
+       29.9
+      ],
+      "text": "C"
+     },
+     {
+      "at": [
+       43.4,
+       12.6
+      ],
+      "text": "D"
+     },
+     {
+      "at": [
+       56.4,
+       26.6
+      ],
+      "text": "E"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-exam-1-01",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "stimulus": "exam-1-s1",
+   "q": "A student writes that this map shows data at the national scale, because it covers all of Country A. Which scale of analysis do the data show?",
+   "options": [
+    "National, because the map covers the whole of one country",
+    "Global, because internet access is spreading around the world",
+    "Regional, because the provinces are grouped into four classes",
+    "Local (subnational), because each value is for one province",
+    "A large map scale, because the map shows one country in detail"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The scale of analysis is the scale of the data, not the size of the area drawn. Each shaded value is for one province, so the data are at the local (subnational) scale.",
+    "options": [
+     "This is the slip the student made: a national value would be one number for all of Country A, and this map has eight.",
+     "A worldwide trend is not on this map; its values are for provinces of one country.",
+     "The four classes group values for the legend; they do not change what each value describes, which is one province.",
+     "Right: one value per province is local (subnational) data, even though the map covers the whole country.",
+     "Map scale is how much the map is reduced; the question asks about the scale of analysis, the level of the data."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-1-02",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "exam-1-s2",
+   "q": "About what share of Country V's population is under age 15?",
+   "options": [
+    "About 21%",
+    "About 15%",
+    "About 41%",
+    "About 56%",
+    "About 4%"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Add the three youngest groups on both sides: males 7.6 + 6.9 + 6.1 = 20.6 and females 7.3 + 6.7 + 6.0 = 20.0, so about 40.6%, or about 41%.",
+    "options": [
+     "About 21% is one side only, the males (20.6); the share of the population counts both sides.",
+     "About 15% is the 0 to 4 group alone (7.6 + 7.3); ages 5 to 14 are under 15 too.",
+     "Right: the six bars for ages 0 to 14 add to about 41% of the population.",
+     "About 56% is ages 15 to 64, the working-age group.",
+     "About 4% is ages 65 and over, the top of the pyramid."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-1-03",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "exam-1-s3",
+   "q": "If Country A's cities followed the rank-size rule, about how many people would its third-largest city have?",
+   "options": [
+    "About 600,000",
+    "About 180,000",
+    "About 133,000",
+    "About 300,000",
+    "About 400,000"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "The rank-size rule puts the city of rank n at 1/n the size of the largest. The largest city has about 1,200,000 people, so the third-largest should have about 1,200,000 / 3 = 400,000.",
+    "options": [
+     "About 600,000 is half the largest city: the rule's size for the second-largest city.",
+     "About 180,000 is the map's real third-largest city; the question asks what the rule predicts.",
+     "About 133,000 divides by 9, the rank squared; the rule divides by the rank.",
+     "About 300,000 divides by 4: the rule's size for the fourth-largest city.",
+     "Right: 1,200,000 / 3 = 400,000."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-1-04",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "exam-1-s3",
+   "q": "Which statement best describes Country A's urban hierarchy on the map?",
+   "options": [
+    "It has a primate city: the largest is more than four times the second",
+    "It follows the rank-size rule, with each city about the size the rule predicts",
+    "Its cities are about the same size in each of the eight provinces",
+    "Two cities of about equal size lead the hierarchy",
+    "The smallest cities are in the Capital Region and on the South Coast"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The largest city, about 1,200,000, is more than four times the second, about 260,000 on the South Coast. A city that much larger than the rest is a primate city.",
+    "options": [
+     "Right: 1,200,000 is more than four times 260,000, the mark of a primate city.",
+     "The rule predicts about 600,000 for the second city; the map shows about 260,000, far smaller.",
+     "The circles differ a great deal: one is far larger than the other seven.",
+     "One city leads alone; the second is about a fifth of its size.",
+     "The largest cities are in the Capital Region and on the South Coast; the smallest are in the Northern Hills and Southern Forest."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-1-05",
+   "unit": "unit-2",
+   "topic": "distribution-consequences",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Invented Country H has 40 million people, 400,000 square kilometers of land and 20,000 square kilometers of arable land. What is its physiological density?",
+   "options": [
+    "2,000 people per square kilometer of arable land",
+    "100 people per square kilometer of total land",
+    "200 people per square kilometer of arable land",
+    "A carrying capacity of 2,000 people",
+    "20,000 people per square kilometer of arable land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Physiological density is people per unit of arable land: 40,000,000 / 20,000 = 2,000 people per square kilometer of farmland.",
+    "options": [
+     "Right: 40,000,000 people / 20,000 square kilometers of arable land = 2,000.",
+     "100 per square kilometer uses all the land (40,000,000 / 400,000): that is arithmetic density.",
+     "200 is off by a factor of 10; 40,000,000 / 20,000 is 2,000.",
+     "Carrying capacity is how many people the land can support; physiological density is a measure of pressure, people per unit of farmland.",
+     "20,000 is the arable area itself, not people per square kilometer."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-1-06",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which technology was NOT part of the Green Revolution that began in the 1960s?",
+   "options": [
+    "High-yield varieties of rice and wheat",
+    "Synthetic fertilizers",
+    "Wider irrigation from wells and canals",
+    "Chemical pesticides",
+    "Crops given genes from another species in a lab"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "Crops with genes inserted from another species are genetically modified organisms (GMOs). They were first sold commercially in the 1990s, decades after the Green Revolution began, so they were not part of it.",
+    "options": [
+     "High-yield varieties, bred by crossing plants, were the heart of the Green Revolution.",
+     "Synthetic fertilizers were part of the package: the new seeds needed them to give large harvests.",
+     "Irrigation spread with the new seeds, which needed steady water.",
+     "Pesticides were part of the package that came with the new seeds.",
+     "Right: genetically modified crops came in the 1990s and are a separate technology."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-1-07",
+   "unit": "unit-7",
+   "topic": "development-theories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student writes that invented Country P \"moved up into the semiperiphery\" after factories from wealthier countries opened there. Which model is the student using?",
+   "options": [
+    "Rostow's stages of economic growth",
+    "Wallerstein's world-system theory",
+    "The demographic transition model",
+    "Least cost theory",
+    "The gravity model"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Core, semiperiphery and periphery are the three tiers of Wallerstein's world-system theory, which sees one connected world economy in which a country's place can change.",
+    "options": [
+     "Rostow's model has five stages, from traditional society to high mass consumption; it has no semiperiphery.",
+     "Right: the semiperiphery is a tier of Wallerstein's world-system theory.",
+     "The demographic transition model describes birth and death rates, not places in the world economy.",
+     "Least cost theory explains where one factory locates, not a country's tier.",
+     "The gravity model predicts interaction between two places from their size and distance."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-1-08",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Two invented countries have about the same gross national income per person, but Country X has a much higher Human Development Index (HDI) than Country Y. What best explains the gap?",
+   "options": [
+    "Country X has a larger population than Country Y",
+    "Country X earns more per person than Country Y",
+    "Country X has more land than Country Y",
+    "Country X has better health and education than Country Y",
+    "Country X has a larger primary sector than Country Y"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The HDI combines health (life expectancy), education (years of schooling) and income. With income about equal, the gap must come from health and education.",
+    "options": [
+     "Population size is not part of the HDI.",
+     "The question says their income per person is about the same, so income cannot explain the gap.",
+     "Land area is not part of the HDI.",
+     "Right: health and education are the other two parts of the HDI.",
+     "The HDI does not measure economic sectors; a larger primary sector usually goes with lower development."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-01",
+   "unit": "unit-1",
+   "topic": "spatial-concepts",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Singapore is a city-state on a small, low island at the southern tip of the Malay Peninsula. Which statement describes Singapore's situation rather than its site?",
+   "options": [
+    "It sits beside the Strait of Malacca, a main shipping route between oceans",
+    "It is built on a low, mostly flat main island",
+    "Much of its land was made by filling in the sea",
+    "Its climate is hot and wet in each month of the year",
+    "Its absolute location is about 1° N, 104° E"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Situation is a place's location relative to other places. Singapore's position on a busy shipping route between the Indian Ocean and the Pacific is its situation.",
+    "options": [
+     "Right: its position on a route between other places is its situation.",
+     "The shape and height of the island are features of the place itself: its site.",
+     "Land made by filling in the sea is part of its site, the physical ground the city stands on.",
+     "Climate is a physical feature of the place itself, part of its site.",
+     "Latitude and longitude give absolute location, not situation."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-02",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Invented Country K has a crude birth rate of 32 and a crude death rate of 7 per 1,000 people a year. With no migration, about how many years will its population take to double?",
+   "options": [
+    "About 2.8 years",
+    "About 25 years",
+    "About 28 years",
+    "About 22 years",
+    "About 70 years"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The rate of natural increase is (32 - 7) / 10 = 2.5%. By the rule of 70, the doubling time is 70 / 2.5 = 28 years.",
+    "options": [
+     "2.8 years divides 70 by 25, the gap per 1,000; turn it into a percent first (2.5%).",
+     "25 is the gap between the rates per 1,000 people, not a number of years.",
+     "Right: RNI = 2.5%, and 70 / 2.5 = 28 years.",
+     "About 22 years divides 70 by 3.2, the birth rate alone; deaths must be taken away first.",
+     "70 is the rule's number before dividing by the growth rate."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-03",
+   "unit": "unit-2",
+   "topic": "migration-causes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A family leaves a village in Guatemala planning to reach the United States. In Mexico City they find steady work and good schools, and they stay. What does this show?",
+   "options": [
+    "An intervening obstacle",
+    "Chain migration",
+    "Transhumance",
+    "Forced migration",
+    "An intervening opportunity"
+   ],
+   "correct": 4,
+   "why": {
+    "correct": "An intervening opportunity is a chance along the way, here work and schools in Mexico City, that leads a migrant to stop short of the planned destination.",
+    "options": [
+     "An obstacle would block or slow the move; this family found something good and chose to stay.",
+     "Chain migration is following relatives or friends who moved earlier; nothing here says the family joined anyone.",
+     "Transhumance is the seasonal movement of herders and their animals.",
+     "The family chose to move and chose to stay, so the move is voluntary.",
+     "Right: work and schools on the way led them to stop: an intervening opportunity."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-04",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "exam-2-s1",
+   "q": "The owner's children speak English at school and Vietnamese at home, and still bake for Tết. Which term best describes this?",
+   "options": [
+    "Assimilation",
+    "Acculturation",
+    "Ethnocentrism",
+    "Environmental determinism",
+    "Hierarchical diffusion"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Acculturation is taking on traits of another culture while keeping one's own. The children use English outside the home and keep Vietnamese and the Tết baking.",
+    "options": [
+     "Assimilation is giving up the old culture for the new one; the children keep Vietnamese and Tết.",
+     "Right: they adopt English and keep their own language and festival.",
+     "Ethnocentrism is judging other cultures by one's own; nothing in the passage judges anyone.",
+     "Environmental determinism says the physical environment decides culture; the passage is about people and choices.",
+     "Hierarchical diffusion is spread from larger places or people of power downward; the passage describes one family."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-05",
+   "unit": "unit-4",
+   "topic": "power-territoriality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "exam-2-s2",
+   "q": "An oil tanker leaves a port on the Persian Gulf (also called the Arabian Gulf) for the Indian Ocean. Which marked choke point must it pass?",
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "correct": 4,
+   "fixed": true,
+   "why": {
+    "correct": "E is the Strait of Hormuz, the only sea route out of the Persian Gulf, so every tanker leaving the Gulf passes it.",
+    "options": [
+     "A is the Strait of Gibraltar, at the western end of the Mediterranean, far from the Gulf.",
+     "B is the Bosporus, between the Black Sea and the Mediterranean.",
+     "C is the Suez Canal, between the Mediterranean and the Red Sea.",
+     "D is the Bab-el-Mandeb, at the southern end of the Red Sea; a tanker from the Gulf need not enter the Red Sea.",
+     "Right: E, the Strait of Hormuz, is the mouth of the Persian Gulf."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-06",
+   "unit": "unit-6",
+   "topic": "cities-worldwide",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Tysons, Virginia, outside Washington, D.C., grew from a rural crossroads in the 1960s into a large cluster of offices and shopping malls along highways, with more jobs than residents. What is Tysons?",
+   "options": [
+    "An exurb",
+    "A central business district",
+    "A squatter settlement",
+    "An edge city",
+    "A primate city"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An edge city is a large node of offices and shopping that grows at the edge of a metro area along highways, often with more jobs than homes.",
+    "options": [
+     "An exurb is a low-density area of homes beyond the suburbs, with few jobs of its own.",
+     "The central business district of the metro area is downtown Washington, D.C.",
+     "A squatter settlement is housing built without legal title, usually at the edge of a city in a periphery country.",
+     "Right: offices and malls at the edge of the metro area, along highways, with more jobs than residents.",
+     "A primate city is a country's largest city, far larger than the next; Tysons is part of one metro area."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-07",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A plant turns 10 tonnes of copper ore into 1 tonne of copper. Where does least cost theory predict the plant will locate?",
+   "options": [
+    "Next to the market, because the product is heavier",
+    "Near the mine, because the product weighs far less than the ore",
+    "Halfway between the mine and the market",
+    "At the port closest to the buyers",
+    "In the largest city of the country"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Copper smelting is weight-losing: the ore weighs ten times the product. Least cost theory puts the plant near the raw material, so the heavy ore travels the least.",
+    "options": [
+     "The product is lighter, not heavier: it weighs a tenth of the ore.",
+     "Right: shipping 1 tonne of copper costs less than shipping 10 tonnes of ore.",
+     "Halfway means hauling the heavy ore part of the way for nothing.",
+     "A port near the buyers would mean shipping the heavy ore the whole distance.",
+     "A city may be the market, but the theory weighs transport costs, which favor the mine."
+    ]
+   }
+  },
+  {
+   "id": "hug-exam-2-08",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In invented Country K, one worker can make 20 shirts or 4 phones in a day. In invented Country L, one worker can make 30 shirts or 10 phones. Which country has the comparative advantage in shirts?",
+   "options": [
+    "Country L, because its workers make more shirts",
+    "Neither, because Country L makes more of both goods",
+    "Country K, because each shirt costs it fewer phones",
+    "Country L, because each shirt costs it fewer phones",
+    "Both equally, because each makes two goods"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Comparative advantage goes to the country that gives up less to make a good. A shirt costs Country K 4 / 20 = 0.2 phones and Country L 10 / 30, about 0.33 phones, so K has the comparative advantage in shirts.",
+    "options": [
+     "Making more shirts is an absolute advantage; comparative advantage compares what each country gives up.",
+     "L has the absolute advantage in both, but each country still has a comparative advantage in one good.",
+     "Right: a shirt costs K 0.2 phones and L about 0.33 phones.",
+     "The costs are the other way: each shirt costs L about 0.33 phones and K only 0.2.",
+     "Making two goods does not make the costs equal: 0.2 and 0.33 phones a shirt differ."
+    ]
+   }
+  }
+ ]
+}

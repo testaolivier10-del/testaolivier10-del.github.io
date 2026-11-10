@@ -1,0 +1,465 @@
+{
+ "about": "The \"Models you must know\" page (models.html, scripts/lib/aphug-entry.mjs modelsPage). Every model the CED names, in course order. The 21 models Model Studio teaches (human-geography/data/tools/model-studio.json) bring their picture, claim, assumptions and limits from there; this file adds a real, dated example for each and the models students mix up. The five the trainer does not build are written here in full, with a model spec (ApHugModel) for their picture. Facts follow docs/aphug-research/accuracy-risks.md: every figure has a source and a year.",
+ "order": [
+  "determinism-possibilism",
+  "dtm",
+  "epidemiological",
+  "malthus",
+  "ravenstein",
+  "diffusion",
+  "boundaries",
+  "centripetal-centrifugal",
+  "von-thunen",
+  "commodity-dependence",
+  "bid-rent",
+  "rank-size",
+  "gravity",
+  "central-place",
+  "burgess",
+  "hoyt",
+  "multiple-nuclei",
+  "galactic",
+  "latin-american",
+  "southeast-asian",
+  "african",
+  "least-cost",
+  "rostow",
+  "world-system",
+  "dependency",
+  "complementarity"
+ ],
+ "studio": {
+  "dtm": {
+   "example": "In 2023 Japan recorded about 727,000 births and about 1.58 million deaths (Japan's Ministry of Health, Labour and Welfare, 2024): rates consistent with stage 5, a population shrinking from natural decrease.",
+   "confuse": [
+    [
+     "epidemiological",
+     "The demographic transition tracks birth and death rates; the epidemiological transition tracks what people die of."
+    ]
+   ]
+  },
+  "epidemiological": {
+   "example": "In the United States, the leading causes of death in 1900 were pneumonia and influenza, tuberculosis and diarrhea; in 2022 they were heart disease and cancer (CDC, National Center for Health Statistics): a move into the degenerative stage.",
+   "confuse": [
+    [
+     "dtm",
+     "Its stages are about causes of death, not the birth and death rates the demographic transition shows."
+    ]
+   ]
+  },
+  "malthus": {
+   "example": "Malthus wrote in 1798. World population grew from about 1 billion around 1800 to about 8.2 billion in 2024 (UN WPP 2024), and food supply per person still rose, largely through new farm technology such as the Green Revolution."
+  },
+  "ravenstein": {
+   "example": "Ravenstein drew his laws mainly from the British census of 1881, in papers published in 1885 and 1889: most migrants moved a short way, many of them toward growing industrial towns such as Manchester and Liverpool."
+  },
+  "diffusion": {
+   "example": "Relocation: Spanish spread to the Americas with colonists after 1492. Contagious: COVID-19 spread from person to person after the first cases were reported in Wuhan, China, in December 2019 (WHO).",
+   "confuse": [
+    [
+     null,
+     "Relocation diffusion moves with migrants, so the source loses some of its carriers; expansion diffusion (contagious, hierarchical, stimulus) spreads while the source keeps the trait."
+    ]
+   ]
+  },
+  "boundaries": {
+   "example": "The 49th parallel between Canada and the United States, agreed in 1818 and 1846 before most settlers arrived, is geometric and antecedent; the pieces of the Berlin Wall (1961 to 1989) left standing are a relict boundary.",
+   "confuse": [
+    [
+     null,
+     "Antecedent is drawn before most settlers arrive; subsequent is drawn after, as the cultural landscape takes shape; a consequent boundary is a subsequent one drawn along a cultural line; superimposed is forced on by an outside power."
+    ]
+   ]
+  },
+  "von-thunen": {
+   "example": "Von Thünen published The Isolated State in 1826, drawn from his own estate near Rostock, Germany. Perishable farming still clusters near big markets: the greenhouses of the Westland area near Rotterdam and The Hague supply fresh vegetables and flowers.",
+   "confuse": [
+    [
+     "bid-rent",
+     "Von Thünen rings are farm land uses around a market town; bid-rent is land uses in a city, from the CBD outward."
+    ]
+   ]
+  },
+  "bid-rent": {
+   "example": "In Chicago, the tallest office towers, such as the Willis Tower (finished in 1973), stand in the Loop, where land costs the most; housing and then farms take over as land gets cheaper with distance.",
+   "confuse": [
+    [
+     "von-thunen",
+     "Both are rings set by distance to a center, but bid-rent is about who can pay the most for city land; von Thünen is about farm products and transport costs."
+    ]
+   ]
+  },
+  "rank-size": {
+   "example": "In the 2020 US census, New York City had about 8.8 million people, Los Angeles about 3.9 million (about half) and Chicago about 2.7 million (about a third): close to the rank-size rule.",
+   "confuse": [
+    [
+     "central-place",
+     "Rank-size is about how big each city is by rank; central place theory is about the spacing and market areas of centers. A primate city breaks the rank-size rule: it is far more than twice the second city."
+    ]
+   ]
+  },
+  "gravity": {
+   "example": "In 2019 Dublin to London was one of the busiest international air routes in Europe: two large cities a short flight apart, as the gravity model expects.",
+   "confuse": [
+    [
+     "rank-size",
+     "The gravity model predicts interaction between two places from size and distance; rank-size predicts city sizes alone."
+    ]
+   ]
+  },
+  "central-place": {
+   "example": "Christaller published the theory in 1933 from southern Germany, where cities such as Munich, Nuremberg and Stuttgart served as high-order centers with market towns spaced between them.",
+   "confuse": [
+    [
+     "gravity",
+     "Central place theory explains where centers sit and how far people travel for each good (range and threshold); the gravity model explains how much two places interact."
+    ]
+   ]
+  },
+  "burgess": {
+   "example": "Chicago in the 1920s: the Loop at the center, factories and immigrant neighborhoods in the zone around it, and commuter towns along the rail lines beyond the city.",
+   "confuse": [
+    [
+     "hoyt",
+     "Burgess draws rings around the CBD; Hoyt draws wedges along transport lines."
+    ]
+   ]
+  },
+  "hoyt": {
+   "example": "Hoyt's 1939 study of 142 US cities: in Chicago, high-rent housing ran north along the Lake Michigan shore, away from the industry along the rail lines.",
+   "confuse": [
+    [
+     "burgess",
+     "Hoyt's land uses run out from the CBD in wedges along roads and rails, not in even rings."
+    ]
+   ]
+  },
+  "multiple-nuclei": {
+   "example": "Metro Los Angeles in the 2020s, with separate centers at Downtown, the Port of Los Angeles, the airport district around LAX, university campuses and the film studios.",
+   "confuse": [
+    [
+     "galactic",
+     "Multiple nuclei is several specialized centers inside one city; the galactic city is a car-based metro area with edge cities ringing an old downtown."
+    ]
+   ]
+  },
+  "galactic": {
+   "example": "Tysons, Virginia, outside Washington, D.C., grew from a rural crossroads in the 1960s into a cluster of offices and malls along highways, and was described as an edge city in 1991.",
+   "confuse": [
+    [
+     "multiple-nuclei",
+     "The galactic city adds edge cities and beltways around a metro area; multiple nuclei describes separate centers inside one city."
+    ]
+   ]
+  },
+  "latin-american": {
+   "example": "In Mexico City, the Paseo de la Reforma, laid out in the 1860s, became a spine of offices and wealthy homes running west from the old colonial center.",
+   "confuse": [
+    [
+     "african",
+     "Both have squatter or informal settlements at the edge, but only the Latin American model has a commercial spine with elite housing."
+    ]
+   ]
+  },
+  "southeast-asian": {
+   "example": "Jakarta, Indonesia, grew around the port of Batavia, founded by the Dutch in 1619; the old port zone sits on the coast, with commercial zones inland and informal settlements on the edges.",
+   "confuse": [
+    [
+     "latin-american",
+     "The Southeast Asian model centers on the old colonial port, not a plaza and CBD with a spine."
+    ]
+   ]
+  },
+  "african": {
+   "example": "Nairobi, Kenya, founded in 1899 as a railway depot, has a colonial-era CBD, a busy market zone and informal settlements such as Kibera.",
+   "confuse": [
+    [
+     "latin-american",
+     "The African model has three CBDs (colonial, traditional and market) instead of one CBD with a spine."
+    ]
+   ]
+  },
+  "least-cost": {
+   "example": "Copper is smelted near the mines in Zambia's Copperbelt, where smelters opened in the 1930s: smelting loses weight, so it pays to process the ore before shipping it.",
+   "confuse": [
+    [
+     "central-place",
+     "Least cost theory places one factory by transport, labor and agglomeration costs; central place theory places markets and services."
+    ]
+   ]
+  },
+  "rostow": {
+   "example": "Rostow published The Stages of Economic Growth in 1960, drawing on the histories of Britain and the United States; South Korea's fast growth from the 1960s on is often read as a take-off.",
+   "confuse": [
+    [
+     "world-system",
+     "Rostow has each country climb the same five stages on its own; Wallerstein sees one world economy with core, semiperiphery and periphery."
+    ]
+   ]
+  },
+  "world-system": {
+   "example": "Wallerstein set out the theory in 1974. Countries often classed as semiperiphery include Brazil, China, India and Mexico, but the tiers are a model, not an official list.",
+   "confuse": [
+    [
+     "rostow",
+     "World-system theory has tiers in one connected economy, not stages a country passes through alone."
+    ],
+    [
+     "dependency",
+     "Dependency theory has two groups, rich and poor, and blames trade ties for poverty; world-system theory adds the semiperiphery."
+    ]
+   ]
+  }
+ },
+ "extra": {
+  "determinism-possibilism": {
+   "topic": "human-environment",
+   "name": "Environmental determinism and possibilism",
+   "claim": "Determinism, an old and rejected idea, says the physical environment decides how people live. Possibilism says the environment sets limits and offers options, and people choose among them with their culture and technology.",
+   "assumes": [
+    "Determinism: climate and land shape behavior directly.",
+    "Possibilism: people can change or work around their environment."
+   ],
+   "limit": "Determinism ignores culture, technology and choice, and it was used to justify European rule over other peoples; possibilism can understate real limits such as drought.",
+   "example": "Possibilism: people in the Netherlands have drained land from the sea since the Middle Ages, and the Flevoland polders, drained in the 1950s and 1960s, became a province in 1986.",
+   "confuse": [
+    [
+     "dtm",
+     "Not a stage model: these are two views of how much the environment controls people."
+    ]
+   ],
+   "model": {
+    "layout": "stages",
+    "title": "Two views of people and the environment",
+    "slots": [
+     {
+      "id": "s1",
+      "name": "View 1 (old, rejected)"
+     },
+     {
+      "id": "s2",
+      "name": "View 2"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p1",
+      "text": "Determinism: the land decides"
+     },
+     {
+      "id": "p2",
+      "text": "Possibilism: people choose"
+     }
+    ],
+    "key": {
+     "s1": "p1",
+     "s2": "p2"
+    }
+   }
+  },
+  "centripetal-centrifugal": {
+   "topic": "centrifugal-centripetal",
+   "name": "Centripetal and centrifugal forces",
+   "claim": "Centripetal forces pull a state's people together; centrifugal forces push them apart. The balance between them shapes whether a state holds together or devolves power.",
+   "assumes": [
+    "A shared trait can unite and a sharp divide can split.",
+    "The same trait can work in either direction at different scales."
+   ],
+   "limit": "It names forces but does not measure them, so it cannot say on its own whether a state will break apart.",
+   "example": "In Belgium, the language divide between Dutch-speaking Flanders and French-speaking Wallonia is a centrifugal force; Belgium became a federal state in 1993, partly to manage it.",
+   "confuse": [
+    [
+     "boundaries",
+     "These are forces within a state, not types of boundary lines."
+    ]
+   ],
+   "model": {
+    "layout": "tiers",
+    "title": "Forces on a state",
+    "slots": [
+     {
+      "id": "s1",
+      "name": "Tier 1: pulls together"
+     },
+     {
+      "id": "s2",
+      "name": "Tier 2: pushes apart"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p1",
+      "text": "Centripetal: a shared language"
+     },
+     {
+      "id": "p2",
+      "text": "Centrifugal: a deep regional divide"
+     }
+    ],
+    "key": {
+     "s1": "p1",
+     "s2": "p2"
+    }
+   }
+  },
+  "commodity-dependence": {
+   "topic": "global-agriculture",
+   "name": "Commodity dependence",
+   "claim": "A country that earns most of its export income from one or a few raw goods rises and falls with their world prices.",
+   "assumes": [
+    "Raw goods prices swing more than prices of factory goods.",
+    "The country has few other exports to fall back on."
+   ],
+   "limit": "Some countries that export mostly raw goods, such as Norway with oil, stay wealthy because they save and invest the earnings.",
+   "example": "In 2015, as world copper prices fell, Zambia, whose exports are mostly copper, saw its currency, the kwacha, lose much of its value against the dollar.",
+   "confuse": [
+    [
+     "dependency",
+     "Commodity dependence is about relying on a few exports; dependency theory is a theory of why poorer countries stay poor."
+    ]
+   ],
+   "model": {
+    "layout": "stages",
+    "title": "How commodity dependence hurts",
+    "slots": [
+     {
+      "id": "s1"
+     },
+     {
+      "id": "s2"
+     },
+     {
+      "id": "s3"
+     },
+     {
+      "id": "s4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p1",
+      "text": "One main raw export"
+     },
+     {
+      "id": "p2",
+      "text": "Its world price falls"
+     },
+     {
+      "id": "p3",
+      "text": "Export earnings and jobs fall"
+     },
+     {
+      "id": "p4",
+      "text": "Debt rises and services are cut"
+     }
+    ],
+    "key": {
+     "s1": "p1",
+     "s2": "p2",
+     "s3": "p3",
+     "s4": "p4"
+    }
+   }
+  },
+  "dependency": {
+   "topic": "development-theories",
+   "name": "Dependency theory",
+   "claim": "Poorer countries stay poor because of how they are tied to richer ones: since colonial times they export cheap raw materials and import costly factory goods.",
+   "assumes": [
+    "The world economy has a rich center and a poor edge.",
+    "Trade ties built under colonial rule continue after independence."
+   ],
+   "limit": "Some former colonies, such as South Korea and Singapore, became wealthy through trade with richer countries.",
+   "example": "In the 1950s, economists at the UN Economic Commission for Latin America argued that exporting raw goods and importing factory goods kept the region poor.",
+   "confuse": [
+    [
+     "world-system",
+     "Dependency theory has two groups; world-system theory adds a semiperiphery and treats the world as one system."
+    ],
+    [
+     "commodity-dependence",
+     "Dependency is a theory of poverty; commodity dependence is one pattern of trade it points to."
+    ]
+   ],
+   "model": {
+    "layout": "tiers",
+    "title": "Dependency theory",
+    "slots": [
+     {
+      "id": "s1",
+      "name": "Tier 1: the richer core"
+     },
+     {
+      "id": "s2",
+      "name": "Tier 2: the poorer periphery"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p1",
+      "text": "Sells factory goods, lends money"
+     },
+     {
+      "id": "p2",
+      "text": "Sells cheap raw materials"
+     }
+    ],
+    "key": {
+     "s1": "p1",
+     "s2": "p2"
+    }
+   }
+  },
+  "complementarity": {
+   "topic": "trade-world-economy",
+   "name": "Complementarity and comparative advantage",
+   "claim": "Trade happens when one place has what another needs (complementarity), and each place gains by making what it gives up the least to make (comparative advantage).",
+   "assumes": [
+    "Goods can be moved at a cost worth paying.",
+    "Each place can shift workers and land into the good it makes best."
+   ],
+   "limit": "It leaves out who wins and loses inside a country: workers in a sector that shrinks under trade can lose their jobs.",
+   "example": "Costa Rica grows bananas in its warm lowlands and Canada grows wheat and makes machines, so each supplies what the other needs; Ricardo explained comparative advantage in 1817 with English cloth and Portuguese wine.",
+   "confuse": [
+    [
+     "gravity",
+     "Complementarity says why two places trade at all; the gravity model says how much, from size and distance. Comparative advantage is not absolute advantage: a country better at everything still gains by trading."
+    ]
+   ],
+   "model": {
+    "layout": "stages",
+    "title": "Why places trade",
+    "slots": [
+     {
+      "id": "s1"
+     },
+     {
+      "id": "s2"
+     },
+     {
+      "id": "s3"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p1",
+      "text": "Each has what the other needs"
+     },
+     {
+      "id": "p2",
+      "text": "Each makes what costs it least"
+     },
+     {
+      "id": "p3",
+      "text": "They trade and both gain"
+     }
+    ],
+    "key": {
+     "s1": "p1",
+     "s2": "p2",
+     "s3": "p3"
+    }
+   }
+  }
+ }
+}

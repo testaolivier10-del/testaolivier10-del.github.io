@@ -1,0 +1,8 @@
+{
+ "task-verb": {
+  "def": "The word in a question that says what your answer must do, such as identify, describe, explain or compare."
+ },
+ "rubric": {
+  "def": "The scoring guide readers use to mark an answer. On the AP® Human Geography exam each part has one point and one rubric line saying what earns it."
+ }
+}

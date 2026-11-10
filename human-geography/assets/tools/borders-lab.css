@@ -1,0 +1,75 @@
+/* Borders lab (human-geography/assets/tools/borders-lab.js). OWNED BY THIS TOOL ONLY (builder T4).
+   Drawn at the page's pixel size so words stay 12 to 14 px. The border is
+   always the darkest line; a relict border turns grey and dashed. Ardic and
+   Bessan towns differ in color AND shape of fill (solid and ringed), and every
+   color is named in the legend. */
+.bl-svg,.bl-qfig,.bl-leg{--bl-land:#F3EEE2;--bl-edge:#9C9488;--bl-river:#6FA8C7;--bl-border:#7A3310;--bl-relict:#8A8478;--bl-town:#0B4F5A;--bl-ar:#0B4F5A;--bl-be:#C24E00;
+  --bl-people:rgba(194,78,0,.10);--bl-ink:#1B1B1B;--bl-tag:#FFFFFF;--bl-sea:#DCEAF4;--bl-z1:#B9D7E8;--bl-z2:#CDE3EF;--bl-z3:#E3EFF6;--bl-z4:#F3F8FB;--bl-on:#0B4F5A;--bl-in:#0B6E4F;--bl-out:#C24E00;--bl-hot:#F8DCC8;}
+:root[data-theme="dark"] .bl-svg,:root[data-theme="dark"] .bl-qfig,:root[data-theme="dark"] .bl-leg{--bl-land:#2A2F2E;--bl-edge:#6F766F;--bl-river:#4D86A6;--bl-border:#F2B48A;--bl-relict:#8D958F;--bl-town:#8CCFD9;--bl-ar:#8CCFD9;--bl-be:#FF9A5C;
+  --bl-people:rgba(255,154,92,.12);--bl-ink:#F1F1EE;--bl-tag:#1B2021;--bl-sea:#1D3442;--bl-z1:#2D5A73;--bl-z2:#244B60;--bl-z3:#1C3C4D;--bl-z4:#16303D;--bl-on:#8CCFD9;--bl-in:#7BE0C1;--bl-out:#FF9A5C;--bl-hot:#4A3022;}
+.bl-card{display:grid;gap:14px;}
+.bl-fig{display:flex;flex-direction:column;gap:8px;}
+.bl-pic{position:relative;min-height:300px;height:min(62vh,560px);}
+.ls-root .bl-fig{flex:1 1 auto;min-height:0;height:100%;}
+.ls-root .bl-pic{flex:1 1 auto;height:auto;min-height:260px;}
+.bl-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.bl-pic .bl-svg{position:absolute;inset:0;}
+.bl-realbox{position:absolute;inset:0;overflow:auto;}
+.bl-realbox[hidden],.bl-svg[hidden]{display:none;}
+.bl-real{margin:0;}
+.bl-qfig{margin:0;} .bl-qfig .bl-svg{height:auto;}
+.bl-grp[hidden]{display:none;}
+.bl-grp{display:flex;flex-direction:column;gap:10px;}
+.bl-grp .bl-go{align-self:flex-start;min-height:44px;}
+.bl-ctl{display:flex;flex-direction:column;gap:12px;}
+.bl-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.bl-lbl{margin:0 0 6px;font:700 var(--ls-s,14px)/1.3 var(--font-ui);color:var(--muted);}
+.ls-root .bl-chips .tchip[aria-pressed=true],.bl-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--paper);}
+.bl-tipslot{height:52px;}
+.bl-land{fill:var(--bl-land);stroke:var(--bl-edge);stroke-width:1.2;}
+.bl-river{fill:none;stroke:var(--bl-river);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:.85;}
+.bl-people{fill:var(--bl-people);stroke:var(--bl-be);stroke-width:1.2;stroke-dasharray:5 4;}
+.bl-border{fill:none;stroke:var(--bl-border);stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round;}
+.bl-border.is-relict{stroke:var(--bl-relict);stroke-dasharray:8 6;stroke-width:2.4;}
+.bl-post{fill:var(--bl-relict);}
+.bl-town{fill:var(--bl-town);stroke:var(--bl-tag);stroke-width:1.5;}
+.bl-town.is-ar{fill:var(--bl-ar);} .bl-town.is-be{fill:var(--bl-tag);stroke:var(--bl-be);stroke-width:3;}
+.bl-cname{font:800 13.5px var(--font-ui);fill:var(--bl-ink);stroke:var(--bl-land);stroke-width:4px;paint-order:stroke;}
+.bl-tag rect{fill:var(--bl-tag);stroke:var(--bl-ink);stroke-width:1.4;}
+.bl-tag text{font:800 12.5px var(--font-ui);fill:var(--bl-ink);}
+.bl-tag.is-line rect{stroke:var(--bl-border);stroke-width:2;}
+.bl-axis{stroke:var(--bl-edge);stroke-width:2;}
+.bl-span{fill:var(--bl-town);opacity:.35;}
+.bl-ev{stroke:var(--bl-tag);stroke-width:2;} .bl-ev.is-town{fill:var(--bl-town);} .bl-ev.is-line{fill:var(--bl-border);} .bl-ev.is-join{fill:var(--bl-relict);}
+.bl-yr{font:700 12px var(--font-ui);fill:var(--bl-ink);}
+.bl-now{stroke:var(--bl-ink);stroke-width:2;}
+.bl-shape{fill:var(--bl-town);fill-opacity:.85;stroke:var(--bl-ink);stroke-width:1.2;vector-effect:non-scaling-stroke;}
+.bl-shape.is-inner{fill:var(--bl-land);fill-opacity:1;}
+.bl-prov{fill:var(--bl-land);stroke:var(--bl-edge);stroke-width:1.2;}
+.bl-prov.is-hot{fill:var(--bl-hot);}
+.bl-f path{stroke-width:3.6;stroke-linecap:round;fill:none;}
+.bl-f.is-in path{stroke:var(--bl-in);} .bl-f.is-in .bl-fh{fill:var(--bl-in);stroke:none;}
+.bl-f.is-out path{stroke:var(--bl-out);} .bl-f.is-out .bl-fh{fill:var(--bl-out);stroke:none;}
+.bl-capital{fill:var(--bl-ink);}
+.bl-sea{fill:var(--bl-sea);}
+.bl-coast{fill:var(--bl-land);stroke:var(--bl-edge);stroke-width:1.4;}
+.bl-zone{stroke:none;transition:fill .25s;} .bl-zone.z1{fill:var(--bl-z1);} .bl-zone.z2{fill:var(--bl-z2);} .bl-zone.z3{fill:var(--bl-z3);} .bl-zone.z4{fill:var(--bl-z4);}
+.bl-zone.is-on{fill:var(--bl-hot);}
+.bl-znum circle{fill:var(--bl-tag);stroke:var(--bl-ink);stroke-width:1.4;} .bl-znum text{font:800 13px var(--font-ui);fill:var(--bl-ink);}
+.bl-lim{stroke:var(--bl-ink);stroke-width:1.4;stroke-dasharray:4 4;}
+.bl-nm{font:700 12px var(--font-ui);fill:var(--bl-ink);}
+.bl-cap2{font:600 12px var(--font-ui);fill:var(--bl-ink);}
+.bl-ship path{fill:var(--bl-border);} .bl-ship rect{fill:var(--bl-ink);}
+.bl-legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;font:600 13px/1.3 var(--font-ui);color:var(--ink);}
+.bl-legend li{display:flex;align-items:center;gap:6px;}
+.bl-sw{flex:none;display:inline-block;width:14px;height:14px;border-radius:50%;}
+.bl-sw.is-town,.bl-sw.is-ar{background:var(--bl-town);} .bl-sw.is-be{background:var(--bl-tag);border:3px solid var(--bl-be);}
+.bl-sw.is-line{width:22px;height:0;border-radius:0;border-top:3.4px solid var(--bl-border);}
+.bl-sw.is-join{background:var(--bl-relict);} .bl-sw.is-post{border-radius:2px;background:var(--bl-relict);width:11px;height:11px;}
+.bl-sw.is-people{border-radius:4px;background:var(--bl-people);border:1.2px dashed var(--bl-be);}
+.bl-sw.is-river{width:22px;height:0;border-radius:0;border-top:4px solid var(--bl-river);}
+.bl-sw.is-in{width:22px;height:0;border-radius:0;border-top:3.6px solid var(--bl-in);} .bl-sw.is-out{width:22px;height:0;border-radius:0;border-top:3.6px solid var(--bl-out);}
+.bl-sw.is-hot{border-radius:3px;background:var(--bl-hot);border:1px solid var(--bl-edge);}
+.bl-zkey{margin:0;padding-left:0;list-style:none;display:grid;gap:4px;font:600 13px/1.35 var(--font-ui);color:var(--ink);}
+.bl-zkey li.is-on b{color:var(--cink);text-decoration:underline;}
+.ls-root .bl-legend,.ls-root .bl-leg > .bt-small,.ls-root .bl-zkey{padding-right:46px;}

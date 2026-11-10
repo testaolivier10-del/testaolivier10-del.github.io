@@ -1,0 +1,71 @@
+{
+ "topic": "spatial-concepts",
+ "hook": "Singapore is a tiny island with almost no farms and no oil, yet it is one of the busiest ports in the world. The reason is not what the island has but where it is. It sits beside the Strait of Malacca, the sea lane between the Indian Ocean and the South China Sea, so huge numbers of ships pass its harbor. To explain a place, geographers look at the spot itself and at its links to everywhere else.",
+ "prereq": [
+  {
+   "q": "Two towns are each 100 km from a city, but one takes 1 hour to reach and the other 3 hours. Which idea is this?",
+   "options": [
+    "Relative distance",
+    "Absolute distance",
+    "Absolute direction",
+    "Elevation"
+   ],
+   "correct": 0,
+   "why": "Relative distance is measured in time, cost or ease of travel, not kilometers.",
+   "review": "views-of-the-world"
+  },
+  {
+   "q": "Houses packed around a village square show which pattern?",
+   "options": [
+    "Clustering",
+    "Dispersal",
+    "Distortion",
+    "Elevation"
+   ],
+   "correct": 0,
+   "why": "Clustering means features are grouped close together.",
+   "review": "views-of-the-world"
+  }
+ ],
+ "figure": {
+  "figure": "spatial-concepts-decay-site",
+  "caption": "Distance decay (left); site and situation (right)."
+ },
+ "chain": [
+  {
+   "cause": "A place has a good site, such as a sheltered harbor",
+   "effect": "it can serve ships, trade or settlement on the spot"
+  },
+  {
+   "cause": "It also has a good situation, near busy routes",
+   "effect": "flows of goods and people pass through it, and it grows"
+  },
+  {
+   "cause": "Contact falls as distance grows (distance decay)",
+   "effect": "nearby places interact more than far ones"
+  },
+  {
+   "cause": "Faster transport and communication shrink travel time",
+   "effect": "time-space compression weakens distance decay, and far places interact more"
+  }
+ ],
+ "ideas": [
+  "<b>Absolute location</b> is an exact position, given by <b>latitude</b> and <b>longitude</b>. <b>Relative location</b> describes a place by what it is near.",
+  "<b>Site</b> is the physical character of a place itself (land, water, climate). <b>Situation</b> is its location relative to other places and routes.",
+  "<b>Place</b> is a location plus the meaning people give it (its sense of place). <b>Space</b> is the area between places and how things are arranged in it, forming a <b>spatial pattern</b>.",
+  "<b>Flows</b> move people, goods, money and ideas between places. <b>Distance decay</b> says contact falls with distance; <b>time-space compression</b> says faster links make places feel closer."
+ ],
+ "misconception": {
+  "wrong": "A city's site is everything about where it is, including its trade routes.",
+  "right": "Site is the spot itself: its land, water and climate. Trade routes, rail lines and neighbors are situation, its links to other places."
+ },
+ "check": [
+  "hug-spatial-concepts-1",
+  "hug-spatial-concepts-2",
+  "hug-spatial-concepts-3",
+  "hug-spatial-concepts-8",
+  "hug-spatial-concepts-10",
+  "hug-spatial-concepts-12"
+ ],
+ "summary": "Geographers locate places in two ways: absolutely, with latitude and longitude, and relatively, by what a place is near. Site is the character of the spot itself; situation is its links to other places, and both explain why places grow. Place is a location with meaning; space is how things are arranged across an area. Flows connect places, distance decay weakens contact with distance, and time-space compression makes far places feel closer."
+}

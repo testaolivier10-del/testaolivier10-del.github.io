@@ -1,0 +1,490 @@
+{
+ "stimuli": {
+  "agriculture-challenges-s1": {
+   "kind": "image",
+   "title": "An invented town: where fresh food is sold",
+   "image": {
+    "figure": "agriculture-challenges-food-desert",
+    "alt": "A drawn street grid of an invented town. One supermarket, marked S, is in the northeast, with a circle showing everything within 1 mile of it. Neighborhood N, in the southwest, is outside that circle; it has two corner stores, marked C, that sell snacks and little fresh food. A bus line runs east to west between the neighborhood and the supermarket.",
+    "caption": "A LevlPrep drawing of an invented town."
+   }
+  },
+  "agriculture-challenges-s2": {
+   "kind": "data",
+   "title": "Three ways a farmer sells tomatoes",
+   "invented": true,
+   "table": {
+    "caption": "Selling 1 kilogram of tomatoes three ways (invented data for practice)",
+    "cols": [
+     "How it is sold",
+     "Price the shopper pays (dollars)",
+     "Share of that price the farmer keeps",
+     "Distance the tomatoes travel (km)"
+    ],
+    "rows": [
+     [
+      "Supermarket, through a long chain",
+      "4.00",
+      "20%",
+      "2,500"
+     ],
+     [
+      "Community-supported agriculture (CSA) share",
+      "5.00",
+      "90%",
+      "30"
+     ],
+     [
+      "Farmers market stall",
+      "6.00",
+      "85%",
+      "15"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-agriculture-challenges-1",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which concept does neighborhood N in the drawing most likely show?",
+   "options": [
+    "A food desert",
+    "Community-supported agriculture",
+    "Fair trade",
+    "Aquaculture"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A food desert is an area where people have poor access to affordable, healthy food, such as a neighborhood far from any supermarket.",
+    "options": [
+     "Right: N is more than a mile from the only supermarket and has corner stores with little fresh food.",
+     "CSA is a way of buying a share of a farm's harvest, not a place with poor food access.",
+     "Fair trade is a system of minimum prices for producers, not a neighborhood.",
+     "Aquaculture is fish and shellfish farming."
+    ]
+   },
+   "stimulus": "agriculture-challenges-s1"
+  },
+  {
+   "id": "hug-agriculture-challenges-2",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "q": "The US Department of Agriculture counts an urban area as a food desert only if it is both far from a supermarket and low-income. What does the drawing NOT show that would be needed to decide?",
+   "options": [
+    "The distance from neighborhood N to the supermarket",
+    "Where the corner stores are located",
+    "The incomes of the people who live in neighborhood N",
+    "Whether a bus line runs near the neighborhood"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reading a source includes seeing its limits. Distance alone is not the definition; income matters because families with cars or money can travel farther.",
+    "options": [
+     "The 1-mile circle shows that N is beyond it.",
+     "The C symbols show them inside N.",
+     "Right: the drawing shows distance and stores but says nothing about income.",
+     "The drawing shows the bus line."
+    ]
+   },
+   "stimulus": "agriculture-challenges-s1"
+  },
+  {
+   "id": "hug-agriculture-challenges-3",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which change would most directly improve fresh-food access for people in neighborhood N?",
+   "options": [
+    "A second supermarket right next to the first one in the northeast",
+    "Removing the bus line through the town",
+    "More snack shelves in the two corner stores",
+    "A weekly farmers market or farm stand in N"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Local food movements, urban farms and new stores are common responses to food deserts. The bus line also matters for people without cars.",
+    "options": [
+     "That adds stores far from N, inside the area already served.",
+     "That makes it harder for people without cars to reach the supermarket.",
+     "More snacks do not add fresh food.",
+     "Right: it brings fresh food into the neighborhood itself."
+    ]
+   },
+   "stimulus": "agriculture-challenges-s1"
+  },
+  {
+   "id": "hug-agriculture-challenges-4",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "According to the table, which way of selling gives the farmer the largest share of the price?",
+   "options": [
+    "The supermarket",
+    "The CSA share",
+    "The farmers market",
+    "They give the same share"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Direct sales cut out the middle steps of the chain, so the farmer keeps more of each dollar.",
+    "options": [
+     "The farmer keeps just 20% when selling through the supermarket chain.",
+     "Right: the farmer keeps 90% of the price through the CSA.",
+     "The farmer keeps 85% there, a little less than through the CSA.",
+     "The shares are 20%, 90% and 85%."
+    ]
+   },
+   "stimulus": "agriculture-challenges-s2"
+  },
+  {
+   "id": "hug-agriculture-challenges-5",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Using the table, how many dollars does the farmer keep from 1 kilogram sold through the supermarket?",
+   "why": {
+    "correct": "$4.00 \\times 0.20 = 0.80$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      4,
+      {
+       "fn": "div",
+       "args": [
+        20,
+        100
+       ]
+      }
+     ]
+    },
+    "unit": "dollars",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "20 is the percent. Turn it into a fraction (0.20) and multiply by the 4-dollar price."
+     },
+     {
+      "value": 3.2,
+      "why": "3.20 dollars is what the rest of the chain keeps (80%). The farmer keeps 20% of 4 dollars."
+     }
+    ]
+   },
+   "stimulus": "agriculture-challenges-s2"
+  },
+  {
+   "id": "hug-agriculture-challenges-6",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Based on the table, what is one trade-off of buying through the farmers market instead of the supermarket?",
+   "options": [
+    "The tomatoes travel farther, but the shopper pays less",
+    "The farmer earns less, and the shopper pays less",
+    "The farmer earns more, but the shopper pays a higher price",
+    "Nothing changes, because the prices are the same"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Local food movements can raise farm income and cut shipping distance, but the food can cost more, which matters for low-income households.",
+    "options": [
+     "They travel 15 km instead of 2,500 km, and the shopper pays more.",
+     "The farmer earns more and the shopper pays more.",
+     "Right: 85% of 6 dollars is far more for the farmer than 20% of 4 dollars, but the shopper pays 2 dollars more.",
+     "The prices differ: 4 dollars and 6 dollars."
+    ]
+   },
+   "stimulus": "agriculture-challenges-s2"
+  },
+  {
+   "id": "hug-agriculture-challenges-7",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is food insecurity?",
+   "options": [
+    "Not having reliable access to enough safe, healthy food",
+    "Growing crops with genes changed in a lab",
+    "Paying a farm in advance for a share of its harvest",
+    "Raising fish and shellfish in ponds or pens"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Food insecurity is about access: a family may live near food but lack the money, transport or stable supply to get enough of it.",
+    "options": [
+     "Right: it includes hunger and also uncertainty about where the next meal will come from.",
+     "That describes GMO crops.",
+     "That is community-supported agriculture.",
+     "That is aquaculture."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-8",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which statement describes the debate over GMO crops neutrally?",
+   "options": [
+    "Scientists agree GMOs harm health, so most countries have banned them",
+    "Reviews found them safe to eat; critics raise other concerns",
+    "GMOs were the main seeds of the Green Revolution in the 1960s",
+    "GMO crops are grown mostly by subsistence farmers around the world"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Write about debates with attribution: what reviews found, and what critics argue. GMO debates include health, the environment, seed ownership and who profits.",
+    "options": [
+     "Major reviews have not found that, and GMO crops are grown in many countries.",
+     "Right: a 2016 US National Academies review found no evidence they are less safe to eat; critics point to seed patents, weed resistance and corporate control.",
+     "GMO crops came in the late 1990s.",
+     "Most GMO crops are grown on large commercial farms in a few countries."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-9",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In parts of Southeast Asia, coastal mangrove forests have been cleared to build shrimp ponds for export. Which statement weighs this aquaculture fairly?",
+   "options": [
+    "It has little effect on the coast because the shrimp live in ponds",
+    "It harms the environment and produces no food or income",
+    "It is the same as fishing in the open ocean",
+    "It gives food and income but can harm habitat and water"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Aquaculture now produces more aquatic animals than wild fishing (FAO, 2024, for 2022). It can ease pressure on wild fish but may cause habitat loss and pollution.",
+    "options": [
+     "Clearing mangroves and pond waste both affect the coast.",
+     "Shrimp farming provides food and jobs.",
+     "Aquaculture raises animals in controlled ponds or pens; fishing catches wild ones.",
+     "Right: aquaculture has economic benefits and environmental costs."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-10",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A coffee cooperative in Peru sells beans labeled \"fair trade.\" What does this label mean for the farmers?",
+   "options": [
+    "Buyers pay a minimum price and an extra premium",
+    "The coffee was grown from genes changed in a lab",
+    "The coffee was grown within 100 km of where it is sold",
+    "The farmers paid shoppers in advance for their harvest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fair trade aims to give producers in less developed countries steadier prices and better terms, a response to commodity price swings.",
+    "options": [
+     "Right: fair trade guarantees producers a minimum price and a premium for community projects, under set labor and environmental rules.",
+     "That would be a GMO, which the label is not about.",
+     "Fair trade coffee is often shipped across the world.",
+     "In CSA, shoppers pay farmers in advance, not the reverse."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-11",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A Wisconsin dairy farm turns its milk into cheese that it sells under its own name for a much higher price. What is this an example of?",
+   "options": [
+    "Subsistence agriculture",
+    "Shifting cultivation",
+    "A value-added specialty product",
+    "Food insecurity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Value-added crops and products earn more for each unit. Organic, local, branded or processed goods are common examples.",
+    "options": [
+     "The farm sells the cheese for profit.",
+     "Shifting cultivation is clearing forest plots in turn.",
+     "Right: processing raw milk into branded cheese adds value on the farm.",
+     "Food insecurity is a lack of reliable access to food."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-12",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "New housing developments have covered farmland on the edges of growing towns in California's Central Valley. Why does this matter for food supply?",
+   "options": [
+    "It moves farms closer to their markets, raising yields",
+    "It adds new farmland where houses used to be",
+    "It turns commercial farms into subsistence farms",
+    "Some of the most productive farmland is lost for good"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Feeding a growing population is harder when good farmland near towns is lost to building, a land-use change at the local and regional scale.",
+    "options": [
+     "Building on farmland removes it from production.",
+     "The change runs the other way: farms become houses.",
+     "The land leaves farming altogether.",
+     "Right: soil and water that grew food are paved over and rarely return to farming."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-13",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "From 2020 to 2023, the Horn of Africa (Ethiopia, Kenya and Somalia) had five failed rainy seasons in a row. What effect did this most likely have?",
+   "options": [
+    "Food insecurity fell because crops need less rain",
+    "Crop and herd losses raised food insecurity",
+    "Herders moved to wet rainforest to start plantations",
+    "Farmland was lost to new suburbs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Adverse weather is one of the challenges of feeding the world, and climate change is expected to make some extremes more frequent.",
+    "options": [
+     "Crops and pasture need rain; failed seasons cut output.",
+     "Right: drought cut harvests and killed livestock, so millions faced hunger.",
+     "The response to drought is not shifting to plantations.",
+     "The cause here is weather, not building on farmland."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-14",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "A family pays a farm 400 dollars in the spring and picks up a box of vegetables every week of the summer. What is this? Select all that apply.",
+   "options": [
+    "Community-supported agriculture",
+    "Fair trade",
+    "Aquaculture",
+    "Monocropping"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Community-supported agriculture (CSA) is a local food arrangement: members pay up front, and the farm shares its harvest with them.",
+    "options": [
+     "Right: shoppers buy a share of the harvest in advance and share the farm's risk.",
+     "Fair trade is a labeling system with minimum prices for producers, often far away.",
+     "Aquaculture farms fish and shellfish.",
+     "A CSA box usually holds many different crops."
+    ]
+   }
+  },
+  {
+   "id": "hug-agriculture-challenges-15",
+   "unit": "unit-5",
+   "topic": "agriculture-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of a response to a food challenge in a named place.",
+   "why": {
+    "correct": "Place, response and effect, joined by \"so\"."
+   },
+   "specific": {
+    "frame": "In ___, people with poor access to fresh food started ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Detroit, Michigan, people with poor access to fresh food started urban farms on vacant lots, so neighbors could buy vegetables close to home.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Detroit, Michigan",
+       "some cities"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place."
+      }
+     },
+     "cause": {
+      "label": "Response",
+      "options": [
+       "urban farms on vacant lots",
+       "more shrimp ponds on the coast"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Shrimp ponds do not answer a lack of fresh food in a city neighborhood."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "neighbors could buy vegetables close to home",
+       "the city lost its farmland to houses"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a different challenge, not the result of urban farms."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

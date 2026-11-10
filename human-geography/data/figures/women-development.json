@@ -1,0 +1,12 @@
+{
+ "women-development-cycle": {
+  "file": "figures/women-development-cycle.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 452,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A loop of four steps around the word microlending. A small loan goes, often, to a woman in a group. She starts or grows a small business. Its income pays for food, school and the repayment. A repaid loan lets her borrow more, and the loop starts again."
+ }
+}

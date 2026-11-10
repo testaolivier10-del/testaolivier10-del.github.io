@@ -1,0 +1,158 @@
+{
+ "id": "frq-landscape-two",
+ "type": "two",
+ "points": 7,
+ "title": "One street a century apart: landscape, migration and globalization",
+ "units": [
+  "unit-3",
+  "unit-2"
+ ],
+ "topics": [
+  "culture-on-the-land",
+  "forced-voluntary-migration",
+  "diffusion-types",
+  "diffusion-today"
+ ],
+ "practices": [
+  "4.A",
+  "4.D",
+  "2.B",
+  "1.B",
+  "4.F",
+  "5.B"
+ ],
+ "stimuli": [
+  {
+   "kind": "image",
+   "title": "Scene 1: Main Street, about 1925",
+   "image": {
+    "figure": "culture-on-the-land-1925",
+    "alt": "Scene 1, Main Street of an invented river town in about 1925: a white wooden church with a steeple and cross, a general store with the sign \"Lindqvist & Sons General Store\", a brick flour mill with a smoking smokestack, and two small workers' houses. A horse pulls a cart on the dirt street and two people walk past. Every sign is in English.",
+    "caption": "An invented town, drawn for practice."
+   }
+  },
+  {
+   "kind": "image",
+   "title": "Scene 2: the same street, about 2025",
+   "image": {
+    "figure": "culture-on-the-land-2025",
+    "alt": "Scene 2, the same Main Street in about 2025: the church still stands; the general store building is now \"Hilal Halal Market\" and a Somali restaurant; the flour mill keeps its smokestack but is now \"Mill Lofts and Coffee\"; the workers' houses are gone and a building holds a \"Global Burger\" chain restaurant and a \"Phones 5G\" store. Cars drive on a paved street and people walk past.",
+    "caption": "An invented town, drawn for practice."
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify one feature in Scene 1 that shows religion on the cultural landscape.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies the church (its steeple and cross).",
+     "accept": [
+      "the church",
+      "the steeple with a cross"
+     ]
+    }
+   ],
+   "sample": "The white church with a steeple and a cross on top shows religion on the cultural landscape."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe how the use of the mill building changed from Scene 1 to Scene 2.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes the change from a working flour mill to homes and a coffee shop, keeping the old building and smokestack.",
+     "accept": [
+      "flour mill became lofts and a coffee shop",
+      "industry to housing and services"
+     ]
+    }
+   ],
+   "sample": "In Scene 1 the brick building is a working flour mill with smoke rising from its stack, while in Scene 2 the same building and smokestack remain but hold lofts and a coffee shop instead of industry."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain how the two scenes show sequent occupance.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains that later occupants kept and reused marks of earlier ones (church, mill, store building), so the landscape shows layers.",
+     "accept": [
+      "the mill and store buildings were reused by new groups",
+      "old and new marks stand together"
+     ]
+    }
+   ],
+   "sample": "Later residents kept the church and reused the old mill and store buildings for new purposes, so marks from the 1920s town still stand beside newer ones, which shows the landscape built up in layers by successive groups."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain how one feature in Scene 2 shows cultural convergence caused by globalization.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains that a global chain (Global Burger, the phone store) brings the same products found worldwide, so the street looks more like others.",
+     "accept": [
+      "Global Burger chain restaurant",
+      "Phones 5G store"
+     ]
+    }
+   ],
+   "sample": "The Global Burger restaurant is part of a chain sold in many countries, so its arrival makes this street look like streets in other towns around the world, which is cultural convergence driven by global trade and advertising."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain how migration produced the halal market and Somali restaurant in Scene 2.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains relocation diffusion: Somali migrants (many arrived as refugees, followed by relatives) settled in the town and opened businesses serving their community.",
+     "accept": [
+      "Somali refugees and chain migration",
+      "relocation diffusion of food and religious customs"
+     ]
+    }
+   ],
+   "sample": "Somali migrants, many of whom came to the United States as refugees in the 1990s and were then joined by relatives through chain migration, settled in towns like this one and opened a halal market and a restaurant to serve their community, so their food and religious customs spread by relocation diffusion."
+  },
+  {
+   "label": "F",
+   "verb": "compare",
+   "prompt": "Compare the groups of people shown by the businesses in Scene 1 and in Scene 2.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Compares both scenes: Scene 1 shows a Scandinavian-origin owner family (Lindqvist), whereas Scene 2 shows a Somali Muslim community; both are migrant groups marking the street.",
+     "accept": [
+      "Scandinavian immigrant family vs Somali community",
+      "both show immigrants shaping Main Street"
+     ]
+    }
+   ],
+   "sample": "In Scene 1 the store is owned by the Lindqvist family, a Swedish name that suggests Scandinavian immigrants, whereas in Scene 2 the same building holds a halal market and a Somali restaurant, which point to a Somali Muslim community; both scenes show migrants shaping Main Street."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the two scenes can show how culture changed across the whole town.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree, then explains it with scale: one street is a local sample and cannot show the whole town without other data.",
+     "accept": [
+      "to a limited or small degree: one street only",
+      "needs census data for the whole town"
+     ]
+    }
+   ],
+   "sample": "To a limited degree: the scenes show one street at the local scale, so they cannot tell us whether other neighborhoods changed the same way or how many residents belong to each group, which would require census data for the whole town."
+  }
+ ]
+}

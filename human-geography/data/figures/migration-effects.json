@@ -1,0 +1,22 @@
+{
+ "migration-effects-two-way": {
+  "file": "figures/migration-effects-two-way.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram: workers, often young adults, flow from the origin to the destination, and remittances, money sent home, flow back. At the origin: money for schools and homes, skills lost (brain drain), an older population with fewer births. At the destination: jobs filled and new businesses, new foods, languages and religions, and debates over immigration policy."
+ },
+ "migration-effects-country-a-flows": {
+  "file": "figures/migration-effects-country-a-flows.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Flow map of Country A, an invented country, with migrants per year. Within the country, arrows run to the Capital Region from the Northern Hills (40,000, the widest), the Western Uplands (25,000) and the Lake District (10,000), and from the Southern Forest to the South Coast (15,000). Dashed arrows show moves abroad: 20,000 a year from the Northern Hills and 15,000 from the South Coast."
+ }
+}

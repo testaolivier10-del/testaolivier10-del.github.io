@@ -1,0 +1,66 @@
+{
+ "topic": "sovereignty-challenges",
+ "hook": "In 2016, UK voters chose to leave the European Union to \"take back control.\" In 1999, Canada created Nunavut so that Inuit could govern their own territory. In 1991, the Soviet Union broke into 15 states. Sovereignty can be shared upward, to groups of states, and downward, to regions, and both change what a national government can decide alone.",
+ "prereq": [
+  {
+   "q": "What is devolution?",
+   "options": [
+    "Moving power from the national government to regions",
+    "Moving power from regions to the national government",
+    "Redrawing voting districts",
+    "A state taking land where its people live"
+   ],
+   "correct": 0,
+   "why": "Devolution moves power downward.",
+   "review": "devolution-factors"
+  },
+  {
+   "q": "What is sovereignty?",
+   "options": [
+    "A state's right and power to govern its territory without outside control",
+    "A people's shared culture",
+    "A narrow sea passage",
+    "A region's own parliament"
+   ],
+   "correct": 0,
+   "why": "Sovereignty belongs to states.",
+   "review": "political-processes"
+  }
+ ],
+ "figure": {
+  "figure": "sovereignty-challenges-updown",
+  "caption": "Sovereignty can be shared upward to supranational organizations and downward to regions."
+ },
+ "chain": [
+  {
+   "cause": "Some problems cross borders, such as defense, disease, pollution and trade",
+   "effect": "states join supranational organizations to face them together"
+  },
+  {
+   "cause": "Members agree to shared rules, courts or decisions",
+   "effect": "each state gives up some sovereignty in return for the gains"
+  },
+  {
+   "cause": "Regions demand more self-rule at the same time",
+   "effect": "power also moves down to autonomous regions, or a state breaks apart"
+  }
+ ],
+ "ideas": [
+  "Devolution can create autonomous regions or subnational units (Spain, Belgium, Canada's Nunavut, Nigeria's states) or break a state apart (Sudan in 2011, the Soviet Union in 1991). <b>Balkanization</b> is a breakup into smaller, often hostile states.",
+  "<b>Supranationalism</b> is cooperation among three or more states through an organization: the UN, NATO, the EU, ASEAN, the African Union, the Arctic Council. Members give up some sovereignty.",
+  "Communication technology can help devolution, supranational cooperation and <b>democratization</b>, the spread of democratic government."
+ ],
+ "misconception": {
+  "wrong": "Every supranational organization limits its members in the same way.",
+  "right": "Organizations differ by function. EU members follow shared laws and court rulings; NATO members pledge shared defense; the Arctic Council acts only when all eight states agree, so it limits sovereignty little."
+ },
+ "check": [
+  "hug-sovereignty-challenges-1",
+  "hug-sovereignty-challenges-2",
+  "hug-sovereignty-challenges-3",
+  "hug-sovereignty-challenges-9",
+  "hug-sovereignty-challenges-13",
+  "hug-sovereignty-challenges-15"
+ ],
+ "summary": "Sovereignty is challenged from below and above. Devolution can create autonomous regions and subnational units, as in Spain, Belgium, Canada and Nigeria, or break a state apart, as with Sudan and the Soviet Union. Supranational organizations such as the UN, NATO, the EU, ASEAN, the African Union and the Arctic Council help states face shared problems, gain larger markets and defend each other, but limit what each member decides alone. Communication technology speeds all of these changes, including democratization."
+}

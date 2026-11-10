@@ -1,0 +1,463 @@
+{
+ "stimuli": {
+  "urban-change-challenges-s1": {
+   "kind": "text",
+   "title": "A public hearing on a riverfront plan",
+   "text": "<p><b>Invented passage for practice, 2026.</b> At a city council hearing on a city redevelopment plan to clear and replace a closed rail yard and 200 older rental homes with 1,500 new apartments, offices and a riverside park:</p><p><i>A developer:</i> \"This plan brings 2,000 jobs, a new park and 10 million dollars a year in taxes.\"</p><p><i>A renter of 22 years:</i> \"My building is on your map. Where will my family go? Nothing in this city is affordable to us.\"</p><p><i>A city planner:</i> \"We propose that 20% of the new apartments be priced for families earning less than the city's median income.\"</p>"
+  },
+  "urban-change-challenges-s2": {
+   "kind": "data",
+   "title": "Rent burden in four neighborhoods",
+   "invented": true,
+   "plot": {
+    "kind": "bar",
+    "label": "Bar chart: share of renter households spending more than 30 percent of income on rent in four invented neighborhoods. Northside 62 percent, Old Mill 48 percent, Lakeview 30 percent, Hilltop 18 percent.",
+    "xLabel": "Neighborhood",
+    "yLabel": "Renters paying over 30% of income (%)",
+    "categories": [
+     "Northside",
+     "Old Mill",
+     "Lakeview",
+     "Hilltop"
+    ],
+    "values": [
+     62,
+     48,
+     30,
+     18
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-urban-change-challenges-1",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which term best describes the plan in the passage?",
+   "stimulus": "urban-change-challenges-s1",
+   "options": [
+    "Redlining",
+    "Blockbusting",
+    "Suburbanization",
+    "Urban renewal"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Clearing an area of older buildings and rebuilding it under a city plan is urban renewal.",
+    "options": [
+     "Redlining is refusing loans or services by location.",
+     "Blockbusting was agents stirring fear to buy homes cheaply.",
+     "Suburbanization is movement out to the suburbs.",
+     "Right: clearing and rebuilding an area."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-2",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which speakers give a benefit and a cost of the plan?",
+   "stimulus": "urban-change-challenges-s1",
+   "options": [
+    "The renter names jobs; the developer names displacement",
+    "The planner names a cost; the developer names no benefit",
+    "The developer names jobs and taxes; the renter names displacement",
+    "The three speakers name costs and no benefits"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The developer lists jobs, a park and taxes (benefits); the renter fears losing a home (a cost). Strong answers give both sides.",
+    "options": [
+     "This swaps the two speakers.",
+     "The planner proposes a response; the developer names benefits.",
+     "Right: one benefit, one cost.",
+     "The developer names benefits."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-3",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which policy does the city planner propose?",
+   "stimulus": "urban-change-challenges-s1",
+   "options": [
+    "Blockbusting",
+    "Inclusionary zoning",
+    "An urban growth boundary",
+    "Redlining"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Requiring a share of new homes priced for lower-income households is inclusionary zoning.",
+    "options": [
+     "Blockbusting was an illegal sales practice.",
+     "Right: affordable units inside new buildings.",
+     "A growth boundary limits building at the edge of a metro area.",
+     "Redlining refuses services by location."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-4",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "If the plan is built without the planner's proposal, what is the most likely effect on the renters?",
+   "stimulus": "urban-change-challenges-s1",
+   "options": [
+    "Most are displaced to cheaper areas farther out",
+    "Most move into the new apartments at the same rent",
+    "Their rents fall as supply grows",
+    "They gain ownership of their homes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Their buildings are torn down, and new apartments at market prices are likely to cost more, so many must move to cheaper areas.",
+    "options": [
+     "Right: clearance without affordable units displaces renters.",
+     "New market-rate apartments usually cost more.",
+     "Their own homes are removed, so their rent does not fall.",
+     "Nothing in the plan gives renters ownership."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-5",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which neighborhood has the highest share of renters paying more than 30% of their income on rent?",
+   "stimulus": "urban-change-challenges-s2",
+   "options": [
+    "Old Mill",
+    "Lakeview",
+    "Hilltop",
+    "Northside"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Northside's bar is tallest, at 62%.",
+    "options": [
+     "Old Mill is 48%.",
+     "Lakeview is 30%.",
+     "Hilltop is 18%, the lowest.",
+     "Right: 62% is the highest."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-6",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "How many times larger is Northside's rent burden share than Hilltop's, to the nearest whole number?",
+   "stimulus": "urban-change-challenges-s2",
+   "options": [
+    "About 2 times",
+    "About 4 times",
+    "About 3 times",
+    "About 44 times"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "62 / 18 is about 3.4, so about 3 times.",
+    "options": [
+     "Twice 18 is 36, well below 62.",
+     "Four times 18 is 72, above 62.",
+     "Right: 62 / 18 is about 3.",
+     "44 is the difference (62 - 18), not the ratio."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-7",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which conclusion goes beyond what the chart shows?",
+   "stimulus": "urban-change-challenges-s2",
+   "options": [
+    "Rent burden varies widely across the four neighborhoods",
+    "Northside's rents are high because of gentrification",
+    "Hilltop has the lowest share of burdened renters",
+    "Over half of Northside's renters are burdened"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The chart shows shares, not causes. High burden can come from low incomes, high rents or both; it cannot show gentrification.",
+    "options": [
+     "The bars range from 18% to 62%: that is shown.",
+     "Right: the chart gives no cause.",
+     "Hilltop's 18% is the lowest bar.",
+     "Northside's 62% is over half."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-8",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In 1940, a bank refused all home loans in one neighborhood because of where it was, even to buyers with good incomes. What is this practice called?",
+   "options": [
+    "Redlining",
+    "Blockbusting",
+    "Gentrification",
+    "Inclusionary zoning"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Refusing loans or setting worse terms because of a property's location is redlining.",
+    "options": [
+     "Right: services refused by location.",
+     "Blockbusting was stirring fear to buy homes cheaply.",
+     "Gentrification is higher-income people moving in.",
+     "Inclusionary zoning adds affordable homes to new buildings."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-9",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In 1960s Chicago, agents told white owners that Black families were moving onto their block, bought their houses cheaply, then sold them to Black families at much higher prices. What was this practice?",
+   "options": [
+    "Redlining",
+    "Urban renewal",
+    "Gentrification",
+    "Blockbusting"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Stirring fear of racial change to buy cheap and sell high was blockbusting, outlawed by the Fair Housing Act of 1968.",
+    "options": [
+     "Redlining is lenders refusing services by location.",
+     "Urban renewal is government clearing and rebuilding.",
+     "Gentrification is higher-income people moving into a lower-income area.",
+     "Right: blockbusting."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-10",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Boston's West End was cleared under urban renewal in the late 1950s and rebuilt with high-rise apartments. Which statement gives both sides?",
+   "options": [
+    "It had no effect on the people who lived there",
+    "It lowered housing costs for the families who lived there",
+    "It added modern housing but displaced a whole community",
+    "It was a private project with no government role"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Supporters saw new housing and taxes; critics saw thousands of families forced out and a community destroyed.",
+    "options": [
+     "Thousands of residents had to move.",
+     "Most former residents could not afford the new towers.",
+     "Right: a benefit and a cost.",
+     "Urban renewal was paid for by government programs."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-11",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In 2014, Flint, Michigan, a majority-Black city, switched its water source to save money, and lead from old pipes entered tap water. A state task force later called it a clear case of environmental injustice. Why does that term fit?",
+   "options": [
+    "Pollution spread evenly to each US city",
+    "The harm fell hardest on a poor, mostly Black community",
+    "The city chose its water to protect public health",
+    "The problem came from a natural disaster"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Environmental injustice is an unequal burden of environmental harm on poor and minority communities. In Flint, a cost-cutting decision exposed such a community to lead.",
+    "options": [
+     "The harm was concentrated in Flint, not spread evenly.",
+     "Right: an unequal burden on a poor and minority community.",
+     "The switch was made to save money, and it harmed public health.",
+     "It came from a government decision, not a natural disaster."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-12",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Families in a favela in Rio de Janeiro have built homes on land they do not legally own. Why might they hesitate to improve their homes?",
+   "options": [
+    "Without secure land tenure, they could be evicted",
+    "Zoning forbids any repairs in Brazil",
+    "Their homes already have full city services",
+    "They plan to move to the suburbs next year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Land tenure is the right to occupy land. Without legal title, residents risk eviction, so spending on their homes is a gamble.",
+    "options": [
+     "Right: insecure tenure discourages investment.",
+     "Zoning is not the main barrier; title is.",
+     "Many favelas lack full water and sewer service.",
+     "Nothing suggests a planned move."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-13",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A US metro area is split among 60 separate cities and counties, each with its own taxes and zoning. Which problem is most likely?",
+   "options": [
+    "The governments agree quickly on new rail lines",
+    "Wealthy suburbs pay most of the central city's costs",
+    "The metro area has a single tax rate",
+    "Regional transit and shared costs are hard to plan"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fragmented government means many bodies must agree. Each protects its own taxes and zoning, so regional plans stall and costs are not shared.",
+    "options": [
+     "More governments usually means slower agreement.",
+     "Suburbs usually keep their own tax revenue.",
+     "Each city and county sets its own taxes.",
+     "Right: fragmentation makes regional planning hard."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-14",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which are commonly reported outcomes of gentrification for long-time renters? Select all that apply.",
+   "options": [
+    "Rising rents that push some to move",
+    "Loss of familiar shops and neighbors",
+    "Lower property taxes for the city",
+    "Falling home values for owners"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Rising rents can displace renters, and the shops and neighbors they relied on may leave. Property values and city taxes usually rise.",
+    "options": [
+     "Right: displacement by rising rents.",
+     "Right: loss of community.",
+     "Higher values usually raise property tax revenue.",
+     "Gentrification usually raises home values."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-change-challenges-15",
+   "unit": "unit-6",
+   "topic": "urban-change-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of how one policy responds to rising housing costs in a named place.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Montgomery County, Maryland, inclusionary zoning since 1974 has required a share of affordable homes in new developments, so some lower-income families can live in neighborhoods they could not otherwise afford.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Montgomery County, Maryland",
+       "some suburbs"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place; a vague answer earns no credit."
+      }
+     },
+     "cause": {
+      "label": "Policy",
+      "options": [
+       "inclusionary zoning since 1974 has required a share of affordable homes in new developments",
+       "redlining since 1974 has refused loans in poorer areas"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Redlining is the problem, not a response to it, and it is illegal."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "some lower-income families can live in neighborhoods they could not otherwise afford",
+       "new homes are sold at the highest possible prices"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The policy prices a share of homes below market, not at the top."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A full explanation names the place and policy and links it to its effect."
+   }
+  }
+ ]
+}

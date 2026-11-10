@@ -1,0 +1,83 @@
+{
+ "topic": "cultural-patterns",
+ "hook": "Belgium has two main languages, and they do not mix much on the map: Dutch in the north, French in the south. Inside each half, a shared language makes neighbors feel at home. Across the whole country, the same split has made governing hard for decades. One trait, two effects: that is the puzzle of this topic.",
+ "prereq": [
+  {
+   "q": "An area where one ethnic group is concentrated, visible in its signs and shops, is called what?",
+   "options": [
+    "An ethnic neighborhood",
+    "A functional region",
+    "A physical landscape",
+    "A cartogram"
+   ],
+   "correct": 0,
+   "why": "An ethnic neighborhood is an area where one ethnic group is concentrated.",
+   "review": "culture-on-the-land"
+  },
+  {
+   "q": "A map shows one value for each province of one country. What is the scale of analysis?",
+   "options": [
+    "Local (subnational)",
+    "National",
+    "Global",
+    "Regional (several countries)"
+   ],
+   "correct": 0,
+   "why": "The scale of analysis is the scale of the data: provinces inside one country are subnational.",
+   "review": "scales-of-analysis"
+  },
+  {
+   "q": "An area that people believe exists, such as \"the South\" in the United States, is which kind of region?",
+   "options": [
+    "Perceptual region",
+    "Formal region",
+    "Functional region",
+    "Transition zone"
+   ],
+   "correct": 0,
+   "why": "A perceptual (vernacular) region exists in people's minds and feelings.",
+   "review": "regional-analysis"
+  }
+ ],
+ "figure": {
+  "figure": "cultural-patterns-forces",
+  "caption": "Centripetal forces pull a group together; centrifugal forces push it apart."
+ },
+ "chain": [
+  {
+   "cause": "People who share a language, religion or ethnicity live close together",
+   "effect": "a regional pattern of culture forms that you can map"
+  },
+  {
+   "cause": "People shape that area with murals, festivals, signs and places of worship",
+   "effect": "placemaking gives the area a strong sense of place"
+  },
+  {
+   "cause": "A trait is shared across a whole country",
+   "effect": "it pulls people together: a centripetal force"
+  },
+  {
+   "cause": "A trait is concentrated in one region and differs from the rest of the country",
+   "effect": "it can unite that region but pull it away from the country: a centrifugal force"
+  }
+ ],
+ "ideas": [
+  "Language, religion and ethnicity form <b>regional patterns</b>: Dutch in northern Belgium and French in the south; a mostly Muslim north and mostly Christian south in Nigeria. Describe a pattern by naming where, what and how much.",
+  "<b>Placemaking</b> is people shaping a place to express who they are, such as the murals of Pilsen in Chicago. It builds a <b>sense of place</b>: the meaning a place holds for people.",
+  "A <b>centripetal force</b> pulls people together (a shared language, a national holiday). A <b>centrifugal force</b> pushes them apart (two languages in separate regions, a religious divide).",
+  "Name the scale: one trait can be centripetal inside a region and centrifugal for the country, as the Catalan language is in Spain."
+ ],
+ "misconception": {
+  "wrong": "A trait is either always a centripetal force or always a centrifugal force.",
+  "right": "It depends on the scale. In Quebec, French unites most people within the province (centripetal), while at the national scale of Canada it has fed a movement to leave (centrifugal)."
+ },
+ "check": [
+  "hug-cultural-patterns-1",
+  "hug-cultural-patterns-2",
+  "hug-cultural-patterns-3",
+  "hug-cultural-patterns-8",
+  "hug-cultural-patterns-9",
+  "hug-cultural-patterns-15"
+ ],
+ "summary": "Language, religion and ethnicity are not spread evenly: they form regional patterns that you describe by naming where, what and how much. People shape their places through placemaking, which builds a sense of place. Cultural traits act as centripetal forces when they pull people together and centrifugal forces when they push them apart, and the same trait can do both at different scales, as Dutch and French do in Belgium."
+}

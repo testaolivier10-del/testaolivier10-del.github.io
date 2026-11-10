@@ -127,7 +127,11 @@ const EXTRA_PAGE = {
   'free unit practice tests': 'exams.html', 'score calculator': 'score-calculator.html',
   'equations sheet, explained': 'equations-sheet.html', 'formulas to know': 'formula-sheet.html',
   'the reference sheet, explained': 'formula-sheet.html', 'formulas you must memorize': 'formula-sheet.html',
+  'the models you must know': 'models.html',
 };
+/* A course page worth a link beside "All N tools" on the home (AP® Human Geography launch, 2026-11-10: the free
+   models page is the course's reference sheet). */
+const HOME_MORE = { aphug: [['models.html', 'The models you must know']] };
 export function apHomeCtx(o) {
   const d = homeData(o.key);
   const first = o.first;
@@ -155,6 +159,7 @@ export function apHomeCtx(o) {
       tryMore: sample && sample.moreHref ? sample.moreHref : firstHref,
       extras: d.extras.map((x) => EXTRA_PAGE[x.h.toLowerCase()] || ''),
       guide: 'dashboard.html', freeCta: firstHref,
+      more: HOME_MORE[o.key] || [],
     },
   };
 }

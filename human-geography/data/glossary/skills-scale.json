@@ -1,0 +1,20 @@
+{
+ "map-scale": {
+  "def": "The ratio between a distance on a map and the same distance on the ground, such as 1:50,000. A large-scale map shows a small area in detail; a small-scale map shows a large area with less detail."
+ },
+ "scale-of-analysis": {
+  "def": "The size of the unit that data describe or that a question is about: global, regional, national or local. It is set by the data, not by the size of the map."
+ },
+ "global-scale": {
+  "def": "The scale of analysis that looks at the whole world, comparing places across it."
+ },
+ "regional-scale": {
+  "def": "The scale of analysis that looks at a part of the world made of several countries, such as South Asia or Latin America."
+ },
+ "national-scale": {
+  "def": "The scale of analysis that looks at one country as a whole, with one value for each country."
+ },
+ "local-scale": {
+  "def": "The scale of analysis that looks at a part of a country, such as a province, state, city or neighborhood. Data for parts of a country are also called subnational."
+ }
+}

@@ -1,0 +1,563 @@
+/* AP® Human Geography course styles, on top of assets/theme.css. Forked from AP® Psychology's stylesheet
+   (docs/aphug-spec.md decision 1): the same visual language tokens (Okabe–Ito based, colorblind-safe,
+   light and dark), page shell, stepped lesson, textbook frame and question styles, renamed hug-*, plus
+   what this course adds: maps (hug-map.js) with their legend and border note, drawn scenes, the
+   model item (hug-model.js) and the task verb on free-response parts.
+
+   The course color: deep ocean teal on every page (body.hug; docs/aphug-spec.md decision 9, provisional),
+   the same values as body[data-course="aphug"] in assets/theme.css and IDENTITY.accent in
+   scripts/lib/aphug-build.mjs. Light: --cink #094953 on --ctint #E1F1F4 8.7:1, 10.1:1 on white, 9.5:1
+   on the page; dark: --cink #A8DEE6 11.5:1 on the dark card, 9.6:1 on the tint rgba(80,190,205,0.10)
+   over it. Hue 188°, between NREMT's teal (174°) and Psychology's cerulean (202°); the berry first
+   tried (320°) was taken by AP® Microeconomics (319°). Then the math
+   layer: formulas (MathML from hug-math.js), data figures (hug-plot.js: line, bar, scatter, the
+   population pyramid) and numbers. */
+body.hug{--ctint:#E1F1F4;--cink:#094953;}
+:root[data-theme="dark"] body.hug{--ctint:rgba(80,190,205,0.10);--cink:#A8DEE6;}
+
+/* ============================================================ 0. Math */
+/* Formulas: MathML, in a math font where the device has one. Display
+   formulas scroll sideways on a phone rather than overflow the page. */
+math.hug-m{font-family:"STIX Two Math","Cambria Math","Latin Modern Math","STIXGeneral",math,serif;font-size:1.08em;}
+math.hug-m[display="block"]{display:block math;margin:.6em 0;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0;}
+math.hug-m mtext{font-family:var(--font-body,inherit);}
+.hug-q-calc{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12px var(--font-ui);letter-spacing:.02em;vertical-align:2px;}
+/* Plots (hug-plot.js): Okabe-Ito based series, lighter in dark mode;
+   open points are hollow. Color is never the only cue: curves carry labels. */
+.hug-plot-wrap{overflow-x:auto;max-width:100%;}
+.hug-plot{display:block;max-width:100%;height:auto;margin:0 auto;font:600 11px var(--font-ui);}
+.hug-plot text{fill:var(--ink-2,var(--ink));}
+.hug-plot .hug-plot-axlabel,.hug-plot .hug-plot-label{font-weight:800;fill:var(--ink);}
+.hug-plot-grid line{stroke:var(--line);stroke-width:1;}
+.hug-plot-axis line{stroke:var(--ink);stroke-width:1.3;}
+.hug-plot-curve{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;}
+.hug-plot-curve.is-dashed,.hug-plot-line.is-dashed{stroke-dasharray:6 5;}
+.hug-plot-line{stroke-width:1.8;}
+.hug-plot-asym{stroke:var(--ink-3,#777);stroke-width:1.3;stroke-dasharray:4 4;}
+.hug-plot-field line{stroke:var(--ink-2,#555);stroke-width:1.3;stroke-linecap:round;}
+.hug-plot-shade{fill:var(--cink);fill-opacity:.16;}
+.hug-plot-pt{stroke-width:2;}
+.hug-plot-pt.is-open{fill:var(--white,#fff);}
+/* Data figures: bars, pyramid halves, the legend's swatches. */
+.hug-plot-bar{fill:currentColor;fill-opacity:.22;stroke-width:1.4;}
+.hug-plot-bar.is-box{fill-opacity:.12;}
+.hug-plot-bar.is-shaded{fill-opacity:.6;}
+.hug-plot-legend text{font:700 11px var(--font-ui);fill:var(--ink);}
+.hug-plot .hug-plot-legend .hug-plot-bar{fill-opacity:.5;}
+.hug-plot text.hug-plot-pylabel{font-weight:800;paint-order:stroke;stroke:var(--white,#fff);stroke-width:3px;}
+.hug-plot .s1{stroke:#094953;color:#094953;} .hug-plot .s2{stroke:#C24E00;color:#C24E00;} .hug-plot .s3{stroke:#009E73;color:#009E73;}
+.hug-plot .s4{stroke:#A8508A;color:#A8508A;} .hug-plot .s5{stroke:#7A4F9E;color:#7A4F9E;}
+.hug-plot .hug-plot-pt.s1:not(.is-open){fill:#094953;} .hug-plot .hug-plot-pt.s2:not(.is-open){fill:#C24E00;} .hug-plot .hug-plot-pt.s3:not(.is-open){fill:#009E73;}
+.hug-plot .hug-plot-pt.s4:not(.is-open){fill:#A8508A;} .hug-plot .hug-plot-pt.s5:not(.is-open){fill:#7A4F9E;}
+.hug-plot text.s1{fill:#094953;stroke:none;} .hug-plot text.s2{fill:#A84400;stroke:none;} .hug-plot text.s3{fill:#00805C;stroke:none;}
+:root[data-theme="dark"] .hug-plot .s1{stroke:#8CCFD9;color:#8CCFD9;} :root[data-theme="dark"] .hug-plot .s2{stroke:#F29A5C;color:#F29A5C;}
+:root[data-theme="dark"] .hug-plot .s3{stroke:#52CFA6;color:#52CFA6;} :root[data-theme="dark"] .hug-plot .s4{stroke:#E0A3CB;color:#E0A3CB;}
+:root[data-theme="dark"] .hug-plot .s5{stroke:#C3A3E0;color:#C3A3E0;}
+:root[data-theme="dark"] .hug-plot .hug-plot-pt.s1:not(.is-open){fill:#8CCFD9;} :root[data-theme="dark"] .hug-plot .hug-plot-pt.s2:not(.is-open){fill:#F29A5C;}
+:root[data-theme="dark"] .hug-plot text.s1{fill:#8CCFD9;} :root[data-theme="dark"] .hug-plot text.s2{fill:#F29A5C;} :root[data-theme="dark"] .hug-plot text.s3{fill:#52CFA6;}
+/* Series strokes are for paths, lines and points: a label in a series colour keeps a plain glyph. */
+.hug-plot text.s4,.hug-plot text.s5,:root[data-theme="dark"] .hug-plot text.s1,:root[data-theme="dark"] .hug-plot text.s2,:root[data-theme="dark"] .hug-plot text.s3,:root[data-theme="dark"] .hug-plot text.s4,:root[data-theme="dark"] .hug-plot text.s5{stroke:none;}
+/* A source line under real data, or the invented-data note (accuracy-risks.md rule 1). */
+.hug-src{margin-top:.5em;font-style:italic;}
+/* Maps (hug-map.js): the picture is an SVG file with fixed colors on a white
+   card (so it reads the same in dark mode); marks, isoline values and the
+   legend are HTML at the page's size, legible at 360 px. */
+.hug-map{margin:.6em 0;}
+.hug-map-pic{position:relative;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;line-height:0;}
+.hug-map-pic img{display:block;width:100%;height:auto;}
+.hug-map-over{position:absolute;inset:0;pointer-events:none;line-height:1.2;}
+.hug-map-mark,.hug-map-iso{position:absolute;transform:translate(-50%,-115%);padding:1px 6px;border-radius:6px;background:#fff;color:#1B1B1B;border:1.5px solid #1B1B1B;font:800 13px/1.25 var(--font-ui);white-space:nowrap;}
+.hug-map-iso{transform:translate(-50%,-50%);border-color:#7A2E0E;color:#7A2E0E;font-size:12px;}
+.hug-map-mark.is-low{transform:translate(-50%,15%);}
+.hug-map-label{position:absolute;transform:translate(-50%,-50%);padding:0 4px;border-radius:4px;background:rgba(255,255,255,.85);color:#1B1B1B;font:700 12px/1.3 var(--font-ui);white-space:nowrap;}
+.hug-map-big{white-space:nowrap;}
+.hug-legend{margin:.5em 0 .2em;}
+.hug-lg-title{margin:0 0 .3em;font:800 13px var(--font-ui);}
+.hug-legend ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;}
+.hug-legend li{display:flex;align-items:center;gap:6px;font:600 13px/1.3 var(--font-ui);}
+.hug-lg-sw{flex:none;width:18px;height:14px;border:1px solid #6E6A63;border-radius:3px;}
+.hug-lg-sw.is-nd{background:repeating-linear-gradient(45deg,#fff 0 3px,#9A958C 3px 4.4px);}
+.hug-lg-dot{flex:none;width:8px;height:8px;border-radius:50%;background:#7A2E0E;}
+.hug-lg-iso{flex:none;width:22px;height:0;border-top:2px solid #7A2E0E;}
+.hug-lg-line{flex:none;width:24px;height:0;}
+.hug-lg-stn{flex:none;width:10px;height:10px;border-radius:50%;background:#fff;border:2.2px solid #1B1B1B;box-sizing:border-box;}
+.hug-lg-codes{display:flex;flex-wrap:wrap;gap:2px 12px;margin:.4em 0 0;font:600 13px/1.4 var(--font-ui);}
+.hug-lg-codes b{font-weight:800;}
+.hug-legend li.hug-lg-sym{flex-direction:column;align-items:flex-start;width:100%;}
+.hug-lg-symart{position:relative;display:block;width:100%;line-height:0;}
+.hug-lg-symart svg{display:block;width:100%;height:auto;}
+.hug-lg-symnum{position:relative;display:block;height:1.3em;line-height:1.3;}
+.hug-lg-symnum span{position:absolute;transform:translateX(-50%);font:700 12px var(--font-ui);}
+.hug-map figcaption{margin-top:.3em;}
+.hug-border-note,.hug-base-src{color:var(--ink-2,var(--ink));}
+/* A drawn scene (no photos): the figure, or a placeholder until it is drawn. */
+.hug-scene.is-placeholder{margin:.6em 0;padding:14px 16px;border:2px dashed var(--line);border-radius:10px;background:var(--surface2);}
+.hug-scene-ph{margin:0;}
+/* The task verb on a free-response part, and what it demands. */
+.hug-verb{display:inline-block;margin-right:4px;padding:0 8px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12px/1.6 var(--font-ui);letter-spacing:.02em;vertical-align:1px;}
+.hug-frq-demand,.hug-fq-demand{margin:.15em 0 .5em;}
+/* The model item (hug-model.js): a numbered drawing, the places as a list of
+   buttons, and the pieces to place. Every piece and place is a button (tap,
+   click, Enter or Space); drag works with a mouse or a finger. */
+.hug-model{margin:.4em 0;}
+.hug-model-title{margin:0 0 .4em;font:800 14px var(--font-ui);}
+.hug-model-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start;}
+@media (min-width:640px){.hug-model-grid{grid-template-columns:minmax(160px,240px) minmax(0,1fr);}}
+.hug-model-art{position:relative;max-width:240px;margin:0 auto;}
+.hug-model[data-layout="stages"] .hug-model-art,.hug-model[data-layout="tiers"] .hug-model-art{max-width:320px;}
+.hug-model-svg{display:block;width:100%;height:auto;}
+.hug-model-band{stroke:var(--ink);stroke-width:1.2;}
+.hug-model-band.b0{fill:#E1F1F4;} .hug-model-band.b1{fill:#E8D3F2;} .hug-model-band.b2{fill:#D7E6F5;} .hug-model-band.b3{fill:#DCEFE2;}
+.hug-model-core{fill:#fff;stroke:var(--ink);stroke-width:1.2;}
+.hug-model-arrow{stroke:var(--ink);stroke-width:1.5;}
+.hug-model-num{font:800 15px var(--font-ui);fill:#1B1B1B;}
+.hug-model-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:800 11px/1.1 var(--font-ui);text-align:center;color:#1B1B1B;max-width:64px;pointer-events:none;}
+.hug-model-slots{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.hug-model-row{display:grid;grid-template-columns:minmax(0,1fr);gap:3px;}
+.hug-model-sn{font:800 13px var(--font-ui);color:var(--ink-2,var(--ink));}
+.hug-model-slot{min-height:44px;width:100%;text-align:left;padding:8px 12px;border:2px dashed var(--line);border-radius:10px;background:var(--white,#fff);color:var(--ink);font:600 15px/1.3 var(--font-ui);cursor:pointer;}
+.hug-model-slot.is-filled{border-style:solid;border-color:var(--cink);}
+.hug-model-slot.is-over,.hug-model.has-sel .hug-model-slot:not(.is-filled){border-color:var(--cink);background:var(--ctint);}
+.hug-model-ph{color:var(--ink-2,var(--ink));font-weight:600;opacity:.8;}
+.hug-model-why{font:600 13px/1.35 var(--font-ui);}
+.hug-model-row.pos-ok .hug-model-slot{border-color:var(--good,#1E7B4F);}
+.hug-model-row.pos-ok .hug-model-why{color:var(--good,#1E7B4F);}
+.hug-model-row.pos-no .hug-model-slot{border-color:var(--bad,#B3261E);}
+.hug-model-row.pos-no .hug-model-why{color:var(--bad,#B3261E);}
+.hug-model-help{margin:.6em 0 .3em;}
+.hug-model-tray{display:flex;flex-wrap:wrap;gap:8px;}
+.hug-model-piece{min-height:44px;padding:8px 14px;border:1.5px solid var(--cink);border-radius:999px;background:var(--white,#fff);color:var(--ink);font:700 14px/1.25 var(--font-ui);cursor:grab;touch-action:none;}
+.hug-model-piece[aria-pressed="true"]{background:var(--cink);color:var(--paper,#fff);}
+.hug-model-ghost{position:fixed;z-index:1000;transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 6px 18px rgba(0,0,0,.25);}
+.hug-model.is-locked .hug-model-slot,.hug-model.is-locked .hug-model-piece{cursor:default;}
+/* free: the figure full width, a numbered badge centered on each place, the
+   places listed under it (no slot sits on the drawing, so nothing overlaps). */
+.hug-model[data-layout="free"] .hug-model-grid{grid-template-columns:minmax(0,1fr);}
+.hug-model-fig{position:relative;max-width:720px;margin:0 auto;width:100%;}
+.hug-model-fig img,.hug-model-fig svg{display:block;width:100%;height:auto;}
+.hug-model-spot{position:absolute;transform:translate(-50%,-50%);min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:#094953;color:#fff;font:800 14px/26px var(--font-ui);text-align:center;box-shadow:0 0 0 2px #fff;pointer-events:none;}
+.hug-model[data-layout="free"] .hug-model-row{grid-template-columns:auto minmax(0,1fr);column-gap:8px;}
+.hug-model[data-layout="free"] .hug-model-row>.hug-model-sn,.hug-model[data-layout="free"] .hug-model-row>.hug-model-slot,.hug-model[data-layout="free"] .hug-model-row>.hug-model-why{grid-column:2;}
+.hug-model-badge{grid-column:1;grid-row:1 / span 2;align-self:center;min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:#094953;color:#fff;font:800 14px/26px var(--font-ui);text-align:center;}
+@media (prefers-reduced-motion:reduce){.hug-model-ghost{box-shadow:none;}}
+
+
+/* ============================================================ 1. Visual language */
+:root{
+  --hug-o2:#D55E00;        /* oxygenated blood: vermillion */
+  --hug-o2-fill:#F6D2BD;
+  --hug-deo2:#0072B2;      /* deoxygenated blood: blue */
+  --hug-deo2-fill:#C3DDF0;
+  --hug-symp:#CC79A7;      /* sympathetic: reddish purple */
+  --hug-symp-fill:#F1DAE7;
+  --hug-para:#009E73;      /* parasympathetic: bluish green */
+  --hug-para-fill:#C4E8DC;
+  --hug-aff:#E69F00;       /* afferent (toward the control center): orange */
+  --hug-aff-fill:#F8E3B8;
+  --hug-eff:#56B4E9;       /* efferent (away from it): sky blue */
+  --hug-eff-fill:#D2EAF8;
+  --hug-hi:#8E3B2E;        /* the high side of a gradient */
+  --hug-hi-fill:#EFD5CF;
+  --hug-lo:#5B6B8C;        /* the low side */
+  --hug-lo-fill:#E1E6F0;
+  --hug-memb:#6B5E3C;      /* membranes */
+  --hug-shape:#5D6B69;     /* neutral structure */
+  --hug-shape-fill:#EEF2F1;
+  --hug-causes:#1F2A28;    /* "causes" arrows */
+  --hug-flows:#1F2A28;     /* "flows to" arrows */
+  --hug-mask:#FFF7E6;
+}
+:root[data-theme="dark"]{
+  --hug-o2:#FF9A5C;  --hug-o2-fill:rgba(213,94,0,0.28);
+  --hug-deo2:#6CB8EC; --hug-deo2-fill:rgba(0,114,178,0.30);
+  --hug-symp:#E7A5CA; --hug-symp-fill:rgba(204,121,167,0.26);
+  --hug-para:#4FD1AA; --hug-para-fill:rgba(0,158,115,0.26);
+  --hug-aff:#F3C04F;  --hug-aff-fill:rgba(230,159,0,0.26);
+  --hug-eff:#8FD0F5;  --hug-eff-fill:rgba(86,180,233,0.24);
+  --hug-hi:#F0A08F;   --hug-hi-fill:rgba(142,59,46,0.34);
+  --hug-lo:#AEBBD6;   --hug-lo-fill:rgba(91,107,140,0.30);
+  --hug-memb:#D8C58F;
+  --hug-shape:#B7C4C1; --hug-shape-fill:rgba(183,196,193,0.10);
+  --hug-causes:#E6EEEC; --hug-flows:#E6EEEC;
+  --hug-mask:#2B3432;
+}
+
+/* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
+.hug-fig svg, svg.hug-svg{max-width:100%;height:auto;overflow:visible;}
+/* Inline stimulus drawings (particle views) carry a fixed width; they shrink to the column on a phone. */
+.hug-stim-html svg{max-width:100%;height:auto;}
+.hug-fig .shape{fill:var(--hug-shape-fill);stroke:var(--hug-shape);stroke-width:2;}
+.hug-fig .o2{fill:var(--hug-o2-fill);stroke:var(--hug-o2);stroke-width:2;}
+.hug-fig .deo2{fill:var(--hug-deo2-fill);stroke:var(--hug-deo2);stroke-width:2;}
+.hug-fig .symp{fill:var(--hug-symp-fill);stroke:var(--hug-symp);stroke-width:2;}
+.hug-fig .para{fill:var(--hug-para-fill);stroke:var(--hug-para);stroke-width:2;}
+.hug-fig .aff{fill:var(--hug-aff-fill);stroke:var(--hug-aff);stroke-width:2;}
+.hug-fig .eff{fill:var(--hug-eff-fill);stroke:var(--hug-eff);stroke-width:2;}
+.hug-fig .hi{fill:var(--hug-hi-fill);stroke:var(--hug-hi);stroke-width:2;}
+.hug-fig .lo{fill:var(--hug-lo-fill);stroke:var(--hug-lo);stroke-width:2;}
+.hug-fig .memb{fill:none;stroke:var(--hug-memb);stroke-width:3;}
+.hug-fig .accent{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.hug-fig .line{fill:none !important;}
+.hug-fig .o2.line{stroke:var(--hug-o2);} .hug-fig .deo2.line{stroke:var(--hug-deo2);}
+/* The two arrow kinds (spec section 6). "causes": solid, filled head.
+   "flows": dashed, open head. The heads are markers defined once per page by
+   hug-core.js, so an author only writes class="causes" or class="flows". */
+.hug-fig .causes{fill:none;stroke:var(--hug-causes);stroke-width:2.5;marker-end:url(#hug-head-causes);}
+.hug-fig .flows{fill:none;stroke:var(--hug-flows);stroke-width:2.2;stroke-dasharray:7 5;marker-end:url(#hug-head-flows);}
+.hug-fig .o2.flows{stroke:var(--hug-o2);} .hug-fig .deo2.flows{stroke:var(--hug-deo2);}
+.hug-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
+.hug-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
+.hug-fig text{fill:var(--ink);font-family:var(--font-ui);}
+#hug-defs{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* ============================================================ 2. Page shell */
+.hug-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.hug-crumb a{color:var(--muted);text-decoration:none;}
+.hug-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.hug-hero{padding-top:22px;}
+.hug-hero h1{max-width:24ch;}
+.hug-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.hug-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
+a.hug-tag:hover{text-decoration:underline;}
+.hug-part{margin:0 0 30px;max-width:760px;}
+.hug-part h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0 0 12px;}
+.hug-part p,.hug-prose p,.hug-prose li{font-weight:600;line-height:1.7;}
+.hug-hint{color:var(--muted);font-size:14px;}
+.hug-small{color:var(--muted);font:700 13px var(--font-ui);}
+.hug-unbuilt{color:var(--muted);}
+.hug-links{margin:0;padding-left:20px;}
+.hug-links li{margin:4px 0;}
+.hug-plain{margin:6px 0 14px;padding-left:20px;}
+.hug-hook{background:var(--ctint);border-radius:var(--radius, 18px);padding:18px 22px;}
+
+/* The causal chain: numbered cause -> effect steps. */
+.hug-chain{list-style:none;counter-reset:step;margin:0;padding:0;}
+.hug-chain li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.hug-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.hug-chain .hug-arrow{color:var(--cink);font-weight:900;}
+.hug-chain .hug-cause{font-weight:700;}
+.hug-ideas{margin:0;padding-left:20px;}.hug-ideas li{margin:0 0 10px;}
+.hug-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hug-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.hug-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}
+.hug-wrong b{color:var(--bad-text, #B3261E);}
+.hug-right b{color:var(--good-text, #1B7B5B);}
+
+/* Figures and the lesson figure panel. */
+.hug-figure{margin:18px 0 24px;}
+.hug-figure figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.hug-credit{display:block;font-size:12px;margin-top:3px;}
+.hug-figimg{position:relative;display:inline-block;max-width:100%;}
+.hug-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+/* Enlarge (hug-nav.js): the button on narrow screens, a tap on the drawing,
+   and the full-screen dialog with the drawing at its own width. */
+.hug-fig-zoom{display:none;margin:6px 0 0 auto;min-height:36px;padding:4px 12px;border:1.5px solid var(--cink);border-radius:999px;background:var(--white,#fff);color:var(--cink);font:800 13px var(--font-ui);cursor:zoom-in;box-shadow:0 1px 4px rgba(0,0,0,.18);}
+@media (max-width:760px){.hug-fig-zoom{display:block;} .hug-figimg:not(.has-masks) img{cursor:zoom-in;}}
+@media print{.hug-fig-zoom{display:none !important;}}
+.hug-zoom-open,.hug-zoom-open body{overflow:hidden;}
+.hug-zoom{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;background:var(--paper,#fff);}
+.hug-zoom-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-bottom:1px solid var(--line);}
+.hug-zoom-t{margin:0;font:600 13px/1.3 var(--font-ui);color:var(--muted);}
+.hug-zoom-x{min-height:44px;}
+.hug-zoom-body{flex:1;overflow:auto;padding:12px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;}
+.hug-zoom-body .hug-figimg{display:block;}
+.hug-zoom-body .hug-figimg img{max-width:none;}
+/* Dark mode: the diagrams are SVG files drawn on white in the course palette
+   (the Okabe-Ito hues above), shown as <img>, so page tokens cannot reach
+   inside them. Inverting lightness and turning the hue back round keeps every
+   hue in place while light fills go dark and dark strokes and labels go light,
+   the same swap the A&P figures make with their dark tokens; the white ground
+   lands near the dark card surface. Follows the site's theme toggle. */
+:root[data-theme="dark"] .hug-figimg img{filter:invert(.88) hue-rotate(180deg) saturate(1.25) brightness(1.05);}
+@media print{:root[data-theme="dark"] .hug-figimg img{filter:none;}}
+.hug-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
+.hug-mask span{position:absolute;left:-9999px;}
+.hug-labels-hidden .hug-mask{background:var(--hug-mask);outline:2px solid var(--cink);cursor:pointer;}
+.hug-labels-hidden .hug-mask:focus-visible{outline:3px solid var(--accent);}
+.hug-labels-hidden .hug-mask.revealed{background:transparent;outline:2px dashed var(--good, #1B7B5B);}
+.hug-toggle-labels{margin-top:4px;}
+
+/* Prose (notes pages). */
+.hug-prose{max-width:760px;}
+.hug-prose h2{font-size:23px;margin:34px 0 10px;}
+.hug-prose h3{font-size:18px;margin:24px 0 8px;}
+.hug-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.hug-prose table.compare th,.hug-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+.hug-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.hug-prose table.compare tbody th{font-weight:800;}
+.hug-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.hug-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.going-further,.hug-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.hug-preview{border:2px dashed var(--cink);}
+.hug-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.for-your-exam{background:var(--ctint);}
+.hug-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;}
+.hug-foot{padding:26px 0 40px;}
+.hug-gate{margin:0 0 18px;}.hug-gate .premium-card{margin:0;}.hug-gate-notes{margin:8px 0 0;font:700 14px/1.5 var(--font-ui);}
+.hug-accuracy-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+.hug-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.hug-q-credit{margin:4px 0 0;color:var(--muted);}
+
+/* ============================================================ Lesson layout (redesign)
+   A rail with the lesson's parts, a coral title card joined to a white card
+   and chip rows under it. Without JS every part shows in one scroll and the
+   rail links jump to them; hug-lesson.js adds .hug-stepped (one part a step). */
+.hug-ls{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 clamp(24px,4vw,54px);align-items:start;}
+.hug-ls-rail{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;max-height:calc(100vh - var(--site-header-h,112px) - 36px);overflow-y:auto;}
+.hug-ls-main{min-width:0;}
+.hug-ls-k{font:900 12px/1.5 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.hug-ls-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;}
+.hug-ls-links a{display:inline-flex;align-items:center;gap:6px;font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.hug-ls-links a:hover,.hug-ls-chips a:hover{color:var(--cink);}
+.hug-ls-prog{display:flex;align-items:center;gap:12px;}
+.hug-ls-prog[hidden]{display:none;}
+.hug-ls-track{flex:1;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.hug-ls-fill{width:0;height:100%;background:var(--cink);border-radius:999px;transition:width .25s ease;}
+.hug-ls-count{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.hug-ls-steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.hug-ls-steps a{display:flex;align-items:flex-start;gap:10px;padding:7px 8px;border-radius:9px;font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.hug-ls-steps a:hover{background:var(--hover-tint);}
+.hug-ls-steps .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:900 11px var(--font-mono);margin-top:-2px;}
+.hug-ls-steps .done a{color:var(--ink);}
+.hug-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.hug-ls-steps .done:not(.current) .n{background:var(--good-text);color:var(--white);font-size:0;}
+.hug-ls-steps .done:not(.current) .n::after{content:"\2713";font:900 12px var(--font-ui);}
+.hug-ls-hint{font:700 13px var(--font-ui);color:var(--muted);margin-left:auto;text-align:right;}
+.hug-ls-hint:empty{display:none;}
+.hug-ls-hint + .hug-ls-go{margin-left:0;}
+.hug-ls-go:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+.hug-free-first{margin:16px 0;padding:18px 20px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);}
+.hug-free-first p{margin:0 0 12px;font-weight:700;color:var(--muted);}
+.hug-ls-steps .current a{background:var(--ctint);color:var(--cink);}
+.hug-ls-hero{margin-top:16px;padding:clamp(24px,4vw,44px) clamp(24px,4vw,44px) 26px;background:var(--ctint);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.hug-ls-hero .eyebrow{color:var(--cink);}
+.hug-ls-hero .hug-tag{background:var(--white);}
+.hug-ls-hero h1{margin:0 0 6px;max-width:20ch;}
+.hug-ls-hero .lede{margin:0 0 14px;max-width:52ch;color:var(--muted);font-weight:700;}
+.hug-ls-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-lg);margin-top:-2px;padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);}
+.hug-ls [id]{scroll-margin-top:calc(var(--site-header-h,112px) + 12px);}
+.hug-stepped .hug-ls-card{min-height:360px;display:flex;flex-direction:column;}
+.hug-ls-card .hug-part{max-width:72ch;}
+.hug-ls-card #figure{max-width:none;}
+.hug-stepped .hug-step{display:none;flex:1;margin:0;}
+.hug-stepped .hug-step.is-on{display:block;}
+.hug-step .hug-step-k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.hug-step h2{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 14px;}
+.hug-step h2:focus{outline:none;}
+.hug-step-body > :first-child{margin-top:0;}
+.hug-step-body > :last-child{margin-bottom:0;}
+.hug-ls-actions{display:flex;align-items:center;gap:12px;margin-top:26px;}
+.hug-ls-actions[hidden],.hug-ls-actions [hidden]{display:none;}
+.hug-ls-back{font:800 14.5px var(--font-ui);color:var(--muted);background:none;border:0;padding:10px 6px;cursor:pointer;}
+.hug-ls-back:hover{color:var(--ink);}
+.hug-ls-go{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:900 15px var(--font-ui);color:var(--paper);background:var(--cink);padding:13px 24px;border-radius:var(--radius);border:0;cursor:pointer;text-decoration:none;box-shadow:var(--lift-sm);}
+.hug-ls-go:hover{filter:brightness(1.07);color:var(--paper);}
+.hug-ls-related{margin:22px 0 30px;display:flex;flex-direction:column;gap:10px;}
+.hug-ls-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;}
+.hug-ls-label{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:74px;}
+.hug-ls-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0;}
+.hug-ls-chips a,.hug-ls-chips .hug-unbuilt,.hug-ls-chips summary{display:inline-block;color:var(--ink);background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-sm);padding:6px 11px;font:700 12.5px var(--font-ui);text-decoration:none;}
+.hug-ls-chips details{display:contents;}
+.hug-ls-chips summary{cursor:pointer;color:var(--cink);list-style:none;}
+@media (prefers-reduced-motion:no-preference){.hug-stepped .hug-step.is-on{animation:hug-step-in .25s ease both;}}
+@keyframes hug-step-in{from{opacity:0;transform:translateY(6px);}}
+@media (max-width:900px){
+  .hug-ls{display:block;}
+  .hug-ls-rail{position:static;max-height:none;overflow:visible;padding:14px 0 0;gap:10px;}
+  .hug-ls-links{flex-direction:row;flex-wrap:wrap;gap:6px 18px;}
+  .hug-ls-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .hug-ls-steps a{padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
+  .hug-stepped .hug-ls-steps .t{display:none;}
+  .hug-stepped .hug-ls-steps .current .t{display:inline;}
+}
+@media (max-width:560px){.hug-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.hug-stepped .hug-step{display:block;margin:0 0 28px;}.hug-ls-prog,.hug-ls-actions{display:none;}.hug-stepped .hug-ls-steps .t{display:inline;}}
+@media print{.hug-ls{display:block;}.hug-ls-rail,.hug-ls-actions{display:none !important;}.hug-stepped .hug-step{display:block;}}
+
+/* Glossary terms in running text: underlined, with a definition on hover,
+   focus or tap (hug-glossary.js). */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+
+/* Questions. */
+.hug-qs{display:grid;gap:14px;}
+.hug-q{background:var(--white);box-shadow:var(--lift-sm);border-radius:16px;padding:16px 18px;}
+.hug-q-stem{margin:0 0 10px;font-weight:700;}
+.hug-q-n{color:var(--cink);font-weight:900;}
+.hug-opts{margin:0;padding-left:20px;}
+.hug-opt-btns{display:grid;gap:8px;}
+.hug-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
+.hug-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
+.hug-opt[aria-disabled="true"]{cursor:default;}
+.hug-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.hug-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
+.hug-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.hug-opt .hug-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.hug-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.hug-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
+.hug-q-feedback .hug-verdict{font-weight:900;}
+.hug-q-feedback .ok{color:var(--good-text, #1B7B5B);} .hug-q-feedback .no{color:var(--bad-text, #B3261E);}
+.hug-order{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.hug-order li{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);}
+.hug-order li.pos-ok{border-color:var(--good, #1B7B5B);} .hug-order li.pos-no{border-color:var(--bad, #B3261E);}
+.hug-order .hug-order-text{flex:1;font-weight:700;}
+.hug-order button{min-width:34px;min-height:34px;border-radius:9px;border:0;background:var(--ctint);color:var(--cink);font:900 15px var(--font-ui);cursor:pointer;}
+.hug-predict{width:100%;border-collapse:collapse;}
+.hug-predict th,.hug-predict td{padding:8px 6px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;}
+.hug-predict .hug-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.hug-predict .hug-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+.hug-predict .hug-dir button[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.hug-predict tr.var-ok th{color:var(--good-text, #1B7B5B);} .hug-predict tr.var-no th{color:var(--bad-text, #B3261E);}
+.hug-predict .hug-var-why{font-weight:600;font-size:13.5px;color:var(--muted);}
+.hug-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
+.js .hug-q-key{display:none;}
+
+/* Mastery text, study cards and filters. */
+.hug-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
+.hug-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.hug-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.hug-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+.hug-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
+.hug-filter input,.hug-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
+
+
+/* ============ Unit, notes and Learn pages
+   The textbook layout is shared by every course: assets/course/book.css
+   (.bk-*), loaded by those pages after base.css. Only Chem specifics stay. */
+
+@media (max-width:560px){
+  .hug-part h2{font-size:19px;}
+}
+@media print{
+  .hug-toggle-labels,.hug-q-actions,#site-header,.course-nav{display:none !important;}
+  .js .hug-q-key{display:block;}
+}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.hug-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.hug-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.hug-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
+.hug-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (hug-book.js), so nothing on screen moves. */
+#hug-book{min-height:100vh;}
+
+/* ============================================================ AP Human Geography additions */
+/* 44 px touch targets on every control a student answers with. */
+.hug-opt,.hug-ls-go,.hug-ls-back,.bk-btn,.hug-check,.hug-dir button,.hug-order button,.hug-num input{min-height:44px;}
+.hug-order button{min-width:44px;}
+.hug-foot .report-btn,.hug-report-page .report-btn{min-height:44px;}
+.hug-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;margin:8px 0 0;}
+.hug-review-note{font:700 13.5px/1.5 var(--font-ui);color:var(--muted);margin:14px 0 0;}
+.hug-soon{padding:18px 20px;border-radius:var(--radius-lg,18px);background:var(--white);border:var(--bw,2px) solid var(--line);font-weight:700;}
+.hug-hero{padding-top:22px;}
+
+/* Answer marks: a word as well as a colour (A&P decision 81). */
+.hug-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;}
+.hug-mark.ok{background:var(--good-text,#1B7B5B);color:var(--white,#fff);}
+.hug-mark.no{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
+.hug-mark.miss{background:var(--amber-text,#8A5A00);color:var(--white,#fff);}
+.hug-mark.ok::before{content:"\2713  ";}.hug-mark.no::before{content:"\2715  ";}
+.hug-dir button[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.hug-predict .hug-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.hug-predict .hug-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+
+/* Stimulus sets: one panel, then its 4-5 questions, held together. */
+.hug-set{border:var(--bw,2px) solid var(--line);border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--paper);}
+.hug-set>*,.hug-qs>*{min-width:0;}
+.hug-qs{grid-template-columns:minmax(0,1fr);}
+.hug-stim{background:var(--white);border-radius:14px;padding:16px 18px;box-shadow:var(--lift-sm);}
+.hug-stim-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);margin:0 0 4px;}
+.hug-stim h3{font:900 17px var(--font-ui);margin:0 0 8px;}
+.hug-stim-text p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+table.hug-data{width:100%;border-collapse:collapse;font:600 14px/1.45 var(--font-ui);}
+table.hug-data caption{text-align:left;font:800 13px var(--font-ui);color:var(--muted);padding:0 0 6px;}
+table.hug-data th,table.hug-data td{padding:8px 10px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+table.hug-data thead th{background:var(--ctint);color:var(--cink);}
+table.hug-data td{font-variant-numeric:tabular-nums;}
+
+/* Charts drawn by the generator (scripts/lib/aphug-build.mjs chartSvg).
+   Series differ by colour AND marker shape, in light and dark. */
+:root{--hug-s1:#0072B2;--hug-s2:#D55E00;--hug-s3:#009E73;--hug-s4:#CC79A7;--hug-s5:#5E5E5E;}
+:root[data-theme="dark"]{--hug-s1:#6CB8EC;--hug-s2:#FF9A5C;--hug-s3:#4FD1AA;--hug-s4:#E7A5CA;--hug-s5:#C9C9C9;}
+.hug-chart{margin:4px 0;}
+.hug-svg{width:100%;max-width:560px;height:auto;display:block;}
+.hug-svg .axis{stroke:var(--ink);stroke-width:1.5;}
+.hug-svg .grid{stroke:var(--line, rgba(0,0,0,0.1));stroke-width:1;}
+.hug-svg .tick{fill:var(--muted);font:700 12px var(--font-ui);}
+.hug-svg .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.hug-svg .series{fill:none;stroke-width:2.5;}
+.hug-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.hug-svg .s1{stroke:var(--hug-s1);} .hug-svg .s2{stroke:var(--hug-s2);} .hug-svg .s3{stroke:var(--hug-s3);} .hug-svg .s4{stroke:var(--hug-s4);} .hug-svg .s5{stroke:var(--hug-s5);} .hug-svg .series.s5{stroke-dasharray:7 4;}
+.hug-svg .pt.s1,.hug-svg .bar.s1{fill:var(--hug-s1);} .hug-svg .pt.s2,.hug-svg .bar.s2{fill:var(--hug-s2);} .hug-svg .pt.s3,.hug-svg .bar.s3{fill:var(--hug-s3);} .hug-svg .pt.s4,.hug-svg .bar.s4{fill:var(--hug-s4);} .hug-svg .pt.s5,.hug-svg .bar.s5{fill:var(--hug-s5);}
+/* A plot's series key (a <p>); a map's legend is a <div class="hug-legend"> above. */
+p.hug-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
+p.hug-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+p.hug-legend .s1 i{background:var(--hug-s1);} p.hug-legend .s2 i{background:var(--hug-s2);} p.hug-legend .s3 i{background:var(--hug-s3);} p.hug-legend .s4 i{background:var(--hug-s4);} p.hug-legend .s5 i{background:var(--hug-s5);}
+.hug-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
+
+/* Numeric answers. */
+.hug-num{display:flex;flex-direction:column;gap:6px;}
+.hug-num label{font:800 14px var(--font-ui);}
+.hug-num-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.hug-num input{width:12ch;padding:8px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:800 17px var(--font-mono, monospace);}
+.hug-num input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.hug-num-unit{font:800 15px var(--font-ui);color:var(--muted);}
+.hug-num-ulabel{font:800 14px var(--font-ui);margin-left:6px;}
+.hug-num input.hug-num-u{width:10ch;}
+.hug-then{margin-top:12px;}
+/* Value, units and significant figures, each with its own mark. */
+.hug-num-parts{list-style:none;margin:8px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font:700 14px var(--font-ui);}
+.hug-num-parts li{display:flex;align-items:center;gap:6px;}
+.hug-num-notes{margin:6px 0;padding-left:20px;font-size:14.5px;line-height:1.5;}
+.hug-num-notes li{margin:2px 0;}
+/* "Make it specific" builders, slot by slot (specific items in hug-questions.js and the
+   "Make it specific" builder in pages/justify.js): one labelled select per
+   slot, stacked, full width so long wordings stay readable at phone width. */
+.hug-cl{display:flex;flex-direction:column;gap:12px;margin:6px 0;}
+.hug-cl-slot{display:flex;flex-direction:column;align-items:flex-start;gap:4px;font:800 14px var(--font-ui);}
+.hug-cl-slot select{width:100%;max-width:100%;min-height:44px;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:600 15px var(--font-ui);}
+.hug-cl-slot select:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.hug-cl-slot .hug-mark{margin-left:0;}
+.hug-cl-write{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.hug-cl-write label{font:800 14px var(--font-ui);}
+.hug-cl-write textarea{width:100%;box-sizing:border-box;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:500 15px var(--font-ui);}
+
+
+
+/* Glossary page: its styles are inlined in human-geography/glossary.html (build-aphug.mjs, GLOSSARY_CSS). */
+
+/* The printable unit sheet: one page on screen, compact on paper. */
+.hug-sheet-head h1{margin:6px 0 10px;}
+.hug-sheet-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin:10px 0 24px;}
+.hug-sheet-topic{background:var(--white);border-radius:14px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 13.5px/1.5 var(--font-ui);}
+.hug-sheet-topic h2{font:900 16px var(--font-ui);margin:0 0 6px;}
+.hug-sheet-topic h2 span{color:var(--cink);}
+.hug-sheet-topic ul{margin:6px 0;padding-left:18px;}
+.hug-sheet-chain{color:var(--muted);}
+.hug-sheet-terms{margin:6px 0 0;display:grid;gap:4px;}
+.hug-sheet-terms dt{display:inline;font-weight:900;}
+.hug-sheet-terms dt::after{content:": ";}
+.hug-sheet-terms dd{display:inline;margin:0;}
+@media print{
+  body.hug{background:#fff;color:#000;}
+  .hug-foot .privacy-link,.hug-crumb,.hug-nav-ref .btn-press,.report-btn{display:none !important;}
+  .hug-sheet-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .hug-sheet-topic{box-shadow:none;border:1px solid #999;padding:8px 10px;font-size:10.5pt;break-inside:avoid;}
+  .hug-sheet-head h1{font-size:16pt;}
+  .hug-set{border-color:#999;}
+}
+@media (max-width:560px){.hug-sheet-grid{grid-template-columns:minmax(0,1fr);}.hug-set{padding:10px;}}
+
+/* Share bar: Share to Google Classroom, Copy link, Print (lessons, notes,
+   unit sheets, FRQs; scripts/build-aphug.mjs shareBar). Fixed height, so
+   nothing shifts when the copy label changes. */
+.hug-share{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;}
+.hug-share-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--cink);font:800 13.5px var(--font-ui);text-decoration:none;cursor:pointer;white-space:nowrap;min-width:7.5em;justify-content:center;}
+.hug-share-btn:hover{border-color:var(--cink);color:var(--cink);}
+.hug-share-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media print{.hug-share{display:none !important;}}

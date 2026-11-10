@@ -48,7 +48,7 @@ function walk(dir, out = []) {
     if (SKIP_DIRS.has(name)) continue;
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data')) && !full.endsWith(join('psychology', 'data')) && !full.endsWith(join('precalculus', 'data')) && !full.endsWith(join('macroeconomics', 'data')) && !full.endsWith(join('microeconomics', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data')) && !full.endsWith(join('psychology', 'data')) && !full.endsWith(join('precalculus', 'data')) && !full.endsWith(join('macroeconomics', 'data')) && !full.endsWith(join('microeconomics', 'data')) && !full.endsWith(join('human-geography', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;
@@ -81,6 +81,7 @@ function imageFor(file) {
   if (file.startsWith('calculus-bc/')) return `${ORIGIN}/calculus-bc/assets/og-image.png`;
   if (file.startsWith('macroeconomics/')) return `${ORIGIN}/macroeconomics/assets/og-image.png`;
   if (file.startsWith('microeconomics/')) return `${ORIGIN}/microeconomics/assets/og-image.png`;
+  if (file.startsWith('human-geography/')) return `${ORIGIN}/human-geography/assets/og-image.png`;
   return `${ORIGIN}/assets/og-image.png`;
 }
 

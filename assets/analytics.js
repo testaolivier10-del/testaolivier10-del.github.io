@@ -51,6 +51,7 @@
     { key: 'apcalcbc', dir: 'calculus-bc' },
     { key: 'apmacro', dir: 'macroeconomics' },
     { key: 'apmicro', dir: 'microeconomics' },
+    { key: 'aphug', dir: 'human-geography' },
   ];
   // courses:end
 

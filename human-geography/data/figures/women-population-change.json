@@ -1,0 +1,12 @@
+{
+ "women-population-change-chain": {
+  "file": "figures/women-population-change-chain.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 392,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram: a box, more schooling, paid work and health care for women, branches three ways. Later marriage and more family planning lead to fewer births. Mothers knowing more about health leads to fewer child deaths. More women moving for work leads to new migration patterns. Example: Bangladesh, where the total fertility rate fell from more than 6 in the early 1970s to 2.3 in 2022."
+ }
+}

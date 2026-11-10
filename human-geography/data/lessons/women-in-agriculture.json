@@ -1,0 +1,66 @@
+{
+ "topic": "women-in-agriculture",
+ "hook": "In a village in Nepal, the men of many families work in cities or in other countries and send money home. The rice, the goats and the decisions about the farm are left to the women who stay. Who does farm work is not fixed: it changes with place, culture and the economy.",
+ "prereq": [
+  {
+   "q": "A man moves from a village to a city in his own country for work. What kind of migration is this?",
+   "options": [
+    "Internal migration",
+    "International migration",
+    "Forced migration",
+    "Chain migration abroad"
+   ],
+   "correct": 0,
+   "why": "Moving within one country is internal migration.",
+   "review": "forced-voluntary-migration"
+  },
+  {
+   "q": "Which describes subsistence agriculture?",
+   "options": [
+    "Farming mainly to feed the farmer's family",
+    "Farming mainly to sell for profit",
+    "Growing one crop on a field year after year",
+    "Raising animals on a fenced ranch"
+   ],
+   "correct": 0,
+   "why": "Subsistence farming feeds the household.",
+   "review": "production-regions"
+  }
+ ],
+ "figure": {
+  "figure": "women-in-agriculture-jobs",
+  "caption": "The share of working women and men employed in agrifood systems differs by region (FAO, 2023)."
+ },
+ "chain": [
+  {
+   "cause": "Many men in rural Nepal migrate to cities or abroad for work",
+   "effect": "fewer men remain to farm"
+  },
+  {
+   "cause": "Fewer men remain to farm",
+   "effect": "women take on more farm work and decisions"
+  },
+  {
+   "cause": "Women often have less secure land rights and access to credit",
+   "effect": "they may have trouble investing in the farms they now run"
+  }
+ ],
+ "ideas": [
+  "<b>Women's farm labor</b> spans production, processing, distribution and consumption, and it varies by place, culture, laws and type of farming.",
+  "FAO (2023): 36% of working women and 38% of working men worldwide are in agrifood work; in Southern Asia, 71% of women and 47% of men.",
+  "Gaps in wages, land rights and access to credit and inputs, not ability, explain why farms run by women produce less on the same land. Closing them could cut food insecurity."
+ ],
+ "misconception": {
+  "wrong": "Women produce less on their farms because they are less able farmers.",
+  "right": "FAO links the gap to unequal access to land, credit, seeds, fertilizer, training and markets. With equal access, the gap shrinks."
+ },
+ "check": [
+  "hug-women-in-agriculture-1",
+  "hug-women-in-agriculture-2",
+  "hug-women-in-agriculture-3",
+  "hug-women-in-agriculture-4",
+  "hug-women-in-agriculture-8",
+  "hug-women-in-agriculture-9"
+ ],
+ "summary": "Women's farm labor covers every stage of the food system and differs by place and type of production. FAO data show women make up a large share of agrifood workers in Southern Asia and Sub-Saharan Africa, and gaps in pay, land rights and access to inputs, not ability, hold back their output."
+}

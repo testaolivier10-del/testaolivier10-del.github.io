@@ -1,0 +1,479 @@
+{
+ "stimuli": {
+  "urban-sustainability-s1": {
+   "kind": "image",
+   "title": "Two ways to build",
+   "image": {
+    "figure": "urban-sustainability-tod",
+    "alt": "Two panels. Left: a rail station in the middle of a ten-minute walking circle, with shops on the ground floor of apartment and office buildings, a small park and sidewalks, all close together. Right: houses on curving dead-end streets far from a strip mall and an office park, linked only by a wide road.",
+    "caption": "A LevlPrep drawing comparing two neighborhood designs."
+   }
+  },
+  "urban-sustainability-s2": {
+   "kind": "data",
+   "title": "Two neighborhoods compared",
+   "invented": true,
+   "table": {
+    "caption": "Two neighborhoods in the same metro area, 2025 (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Station Square",
+     "Oak Hollow"
+    ],
+    "rows": [
+     [
+      "Homes per hectare",
+      "60",
+      "8"
+     ],
+     [
+      "Share of trips on foot, bike or transit",
+      "55%",
+      "6%"
+     ],
+     [
+      "Average monthly rent for two bedrooms",
+      "\\$2,100",
+      "\\$1,500"
+     ],
+     [
+      "Average car kilometers per household per day",
+      "12",
+      "58"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-urban-sustainability-1",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which feature of the left panel shows mixed-use development?",
+   "stimulus": "urban-sustainability-s1",
+   "options": [
+    "Shops below apartments",
+    "The curving dead-end streets lined with houses",
+    "The wide road joining the mall and the office park",
+    "The strip mall set far away from the homes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mixed use puts homes, shops and offices in the same building or block. Shops below apartments are a classic example.",
+    "options": [
+     "Right: different uses stacked in one building.",
+     "Dead-end streets belong to the right panel and separate uses.",
+     "A wide road links separated uses; it is not mixed use.",
+     "A strip mall far from homes separates uses."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-2",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which term best describes the design in the left panel?",
+   "stimulus": "urban-sustainability-s1",
+   "options": [
+    "Urban sprawl",
+    "An edge city",
+    "A squatter settlement",
+    "Transit-oriented development"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Dense, mixed-use building within a short walk of a rail station is transit-oriented development.",
+    "options": [
+     "Sprawl is the low-density, car-based pattern in the right panel.",
+     "An edge city is a suburban office center at a highway junction.",
+     "The buildings are planned, not self-built on land residents do not own.",
+     "Right: density and mixed use around a station."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-3",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Compared with the right panel, how would daily travel in the left panel most likely differ?",
+   "stimulus": "urban-sustainability-s1",
+   "options": [
+    "More car trips, because the station is crowded",
+    "Longer trips, because buildings are taller",
+    "More trips on foot and by train",
+    "About the same, since both have roads"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In the left panel, homes, shops, jobs and the station are within a short walk, so many trips need no car. In the right panel, every destination is far, so people drive.",
+    "options": [
+     "A busy station means people ride trains instead of driving.",
+     "Height puts more destinations close by, so trips get shorter.",
+     "Right: nearby destinations and transit cut car trips.",
+     "The right panel's layout makes the car the only practical option."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-4",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which is a criticism often made of neighborhoods like the one in the left panel?",
+   "stimulus": "urban-sustainability-s1",
+   "options": [
+    "They use far more farmland for each home than suburbs do",
+    "Rents can rise and price people out",
+    "They push most households to own two or more cars",
+    "They are built too far from the station to use it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Walkable, transit-rich neighborhoods are in demand. When supply is short, rents climb, which can push lower-income households out.",
+    "options": [
+     "Compact building uses less land per home, not more.",
+     "Right: rising housing costs are the main criticism.",
+     "They reduce the need for cars.",
+     "The neighborhood is built around the station."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-5",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which neighborhood is more walkable, according to the table?",
+   "stimulus": "urban-sustainability-s2",
+   "options": [
+    "Station Square",
+    "Oak Hollow",
+    "They are equally walkable",
+    "The table gives no evidence"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Station Square has 55% of trips on foot, by bike or by transit and far fewer car kilometers, signs of high walkability.",
+    "options": [
+     "Right: more trips on foot and fewer car kilometers.",
+     "Oak Hollow has only 6% of trips without a car.",
+     "The two differ sharply on every travel measure.",
+     "The trip shares and car kilometers are evidence."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-6",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "About how many times more car kilometers does an Oak Hollow household drive each day than a Station Square household?",
+   "stimulus": "urban-sustainability-s2",
+   "options": [
+    "About 2 times",
+    "About 10 times",
+    "About 46 times",
+    "About 5 times"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "58 divided by 12 is about 4.8, so about 5 times as many.",
+    "options": [
+     "Twice would be 24 km, well below 58.",
+     "Ten times would be 120 km.",
+     "46 is the difference (58 - 12), not the ratio.",
+     "Right: 58 / 12 is about 5."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-7",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which statement uses the table to give both a benefit and a cost of Station Square's design?",
+   "stimulus": "urban-sustainability-s2",
+   "options": [
+    "Its households drive more each day, and its rents are lower",
+    "It has fewer homes per hectare and also lower rents",
+    "Less driving, but higher rent",
+    "It has more car kilometers per household and fewer homes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Less driving (12 vs 58 km) is a benefit; higher rent (\\$2,100 vs \\$1,500) is a cost. A strong answer names both.",
+    "options": [
+     "Station Square drives less and has higher rents.",
+     "It has more homes per hectare (60 vs 8) and higher rents.",
+     "Right: one benefit and one cost, both from the table.",
+     "It has fewer car kilometers and more homes."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-8",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is an urban growth boundary?",
+   "options": [
+    "A city's legal border for taxes",
+    "A line beyond which building is limited",
+    "The edge of a river's floodplain",
+    "A border between two countries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An urban growth boundary separates land where building is allowed from rural land where it is limited.",
+    "options": [
+     "City limits set taxes and services, not where growth may go.",
+     "Right: it steers building inside the line.",
+     "A floodplain is a physical feature.",
+     "A border between countries is a political boundary."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-9",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "The Portland, Oregon, region adopted an urban growth boundary in 1979. Which outcome does this policy aim for?",
+   "options": [
+    "Denser growth inside the line",
+    "Faster growth of new suburbs on the farmland around the city",
+    "Lower density at the city's center as people move out",
+    "More highways built out to distant exurbs and farm towns"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The boundary steers homes and offices inward, so density rises inside it while farms and forests outside are protected.",
+    "options": [
+     "Right: growth goes up and in, not out.",
+     "That is sprawl, which the boundary is meant to limit.",
+     "The policy raises density inside the line.",
+     "The policy discourages exurban spread."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-10",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Seaside, Florida, begun in the early 1980s, has a grid of narrow streets, houses close to the sidewalk with porches, and a town center within walking distance. Which planning movement does it represent?",
+   "options": [
+    "Urban sprawl",
+    "Galactic city",
+    "Zone in transition",
+    "New Urbanism"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Designing neighborhoods like older walkable towns, with porches, a street grid and a nearby center, is New Urbanism.",
+    "options": [
+     "Sprawl spreads homes far from shops on wide roads.",
+     "The galactic city model describes a whole metro area with edge cities.",
+     "The zone in transition belongs to the concentric zone model.",
+     "Right: walkable streets and a town center are New Urbanism."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-11",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Boulder, Colorado, has capped the number of new homes built each year since the 1970s. Which effect would critics most expect?",
+   "options": [
+    "Falling home prices as builders compete for buyers",
+    "More sprawl on open land inside the city limits",
+    "Rising home prices",
+    "Less open space protected around the edge of the city"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "If people keep wanting to move in but few homes can be built, prices rise. That is the main criticism of slow-growth caps.",
+    "options": [
+     "A cap limits builders, so competition does not drive prices down.",
+     "A cap slows building, so it does not create sprawl inside the city.",
+     "Right: limited supply pushes prices up.",
+     "The cap is meant to protect open space."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-12",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Critics say smart growth can lead to \"de facto segregation\". What does that mean here?",
+   "options": [
+    "A city law assigns people to neighborhoods by their income",
+    "Separation by income through cost, not law",
+    "New highways are built on purpose to divide neighborhoods",
+    "Residents choose to live close to the new transit stations"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "De facto means \"in fact\" rather than by law. If prices rise in desirable areas, lower-income families are separated out by cost alone.",
+    "options": [
+     "A law that assigns people would be de jure, by law.",
+     "Right: separation by cost, not by law.",
+     "Smart growth usually favors transit over new highways.",
+     "Choosing to live near transit is not segregation."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-13",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Copenhagen's 1947 \"Finger Plan\" lets the city grow outward only along rail lines, like fingers, and keeps green wedges open between them. Which two smart growth ideas does it combine?",
+   "options": [
+    "Transit-oriented growth and protected green space",
+    "Edge cities and exurbs",
+    "Squatter settlements and market gardens",
+    "A primate city and the rank-size rule"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Growth along rail lines is transit-oriented; the green wedges protect open land, much as a greenbelt does.",
+    "options": [
+     "Right: building follows transit, and green land stays open.",
+     "Edge cities and exurbs are products of car-based spread.",
+     "Those belong to models of cities in other regions, not to a planning policy.",
+     "Those describe city sizes in a country, not a plan for growth."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-14",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which policies are smart growth tools? Select all that apply.",
+   "options": [
+    "Building apartments above shops near a rail station",
+    "Protecting a greenbelt around the city",
+    "Building a new highway to farmland 50 km away",
+    "Zoning large lots for single houses on the edge"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Smart growth steers building into compact, connected places and protects land at the edge.",
+    "options": [
+     "Right: mixed use near transit.",
+     "Right: a greenbelt limits outward spread.",
+     "A highway to distant farmland encourages sprawl.",
+     "Large lots at the edge are low-density sprawl."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-sustainability-15",
+   "unit": "unit-6",
+   "topic": "urban-sustainability",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.E",
+   "q": "Build a statement that gives one benefit and one criticism of a named smart growth policy.",
+   "specific": {
+    "frame": "___ kept ___, but ___.",
+    "write": {
+     "both": true
+    },
+    "model": "Portland's urban growth boundary kept farms and forests close to the city and helped light rail succeed, but critics argue it limited land for homes, so housing costs rose.",
+    "slots": {
+     "place": {
+      "label": "Place and policy",
+      "options": [
+       "Portland's urban growth boundary",
+       "Growth rules"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place and policy: a vague answer earns nothing."
+      }
+     },
+     "sideA": {
+      "label": "Benefit",
+      "options": [
+       "farms and forests close to the city and helped light rail succeed",
+       "drivers from using the city's roads"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The boundary limits where building goes; it does not ban driving."
+      }
+     },
+     "sideB": {
+      "label": "Criticism",
+      "options": [
+       "critics argue it limited land for homes, so housing costs rose",
+       "it caused the city to sprawl onto farmland"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The boundary limits sprawl; the criticism is about housing costs."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A strong answer names the place and policy, and speaks of both a benefit and a cost."
+   }
+  }
+ ]
+}

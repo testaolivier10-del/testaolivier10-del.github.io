@@ -1,0 +1,608 @@
+{
+ "stimuli": {
+  "religion-language-diffusion-s1": {
+   "kind": "map",
+   "title": "Language B by province of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth of invented Country A by province: the share of people who speak Language B at home is 90% or more in the Northern Hills and Lake District, 50% to 89% in the Central Valley, 10% to 49% in the Capital Region, Western Uplands and Eastern Plains, and under 10% in the Southern Forest and South Coast",
+    "legendTitle": "People who speak Language B at home (percent, invented)",
+    "classes": [
+     "Under 10%",
+     "10% to 49%",
+     "50% to 89%",
+     "90% or more"
+    ],
+    "values": {
+     "north": 3,
+     "northeast": 3,
+     "central": 2,
+     "capital": 1,
+     "west": 1,
+     "east": 1,
+     "south": 0,
+     "coast": 0
+    },
+    "marks": [
+     {
+      "at": "north",
+      "text": "Northern Hills"
+     },
+     {
+      "at": "coast",
+      "text": "South Coast"
+     }
+    ]
+   }
+  },
+  "religion-language-diffusion-s2": {
+   "kind": "data",
+   "title": "The world by religion, 2020",
+   "source": "Pew Research Center, 2025 report (2020 data)",
+   "table": {
+    "caption": "Share of the world's people by religious group, 2020 (Pew Research Center, 2025 report). Smaller groups are not shown.",
+    "cols": [
+     "Group",
+     "Share of world population"
+    ],
+    "rows": [
+     [
+      "Christians",
+      "28.8%"
+     ],
+     [
+      "Muslims",
+      "25.6%"
+     ],
+     [
+      "Religiously unaffiliated",
+      "24.2%"
+     ],
+     [
+      "Hindus",
+      "14.9%"
+     ],
+     [
+      "Buddhists",
+      "4.1%"
+     ],
+     [
+      "Jews",
+      "under 1%"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-religion-language-diffusion-1",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "religion-language-diffusion-s1",
+   "q": "Which statement best describes where Language B is spoken at home?",
+   "options": [
+    "Mostly in the north, falling toward the south",
+    "Mostly along the South Coast, falling toward the north",
+    "Evenly in each province, at about half the people",
+    "Mostly in the Capital Region and nowhere else"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "the Northern Hills and Lake District are 90% or more, the middle provinces are lower, and the Southern Forest and South Coast are under 10%.",
+    "options": [
+     "Right: the Northern Hills and Lake District are 90% or more, the middle provinces are lower, and the Southern Forest and South Coast are under 10%.",
+     "The South Coast is in the lowest class, under 10%. The highest shares are in the north.",
+     "The shares range from under 10% to 90% or more, so the pattern is uneven.",
+     "The Capital Region is in the 10% to 49% class; the north has far higher shares."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-2",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "religion-language-diffusion-s1",
+   "q": "Which province is most likely a zone where speakers of both languages mix every day?",
+   "options": [
+    "The Northern Hills, at 90% or more",
+    "The Central Valley, at 50% to 89%",
+    "The South Coast, at under 10%",
+    "The Lake District, at 90% or more"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "a province with a large share of Language B speakers and many speakers of other languages sits between the two language areas, where they mix.",
+    "options": [
+     "Almost everyone there speaks Language B at home, so mixing is limited.",
+     "Right: a province with a large share of Language B speakers and many speakers of other languages sits between the two language areas, where they mix.",
+     "Very few people there speak Language B at home, so there is little mixing.",
+     "Like the Northern Hills, it is almost all Language B, not a mixed zone."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-3",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "stimulus": "religion-language-diffusion-s1",
+   "q": "A national report says, \"Country A is a bilingual country.\" What does the province map show that this national statement hides?",
+   "options": [
+    "Language B is spoken by no one in Country A",
+    "Each person in Country A speaks both languages",
+    "The two languages sit in separate regions",
+    "Language B is spoken mostly in the south"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "at the national scale both languages are present, but at the subnational scale they are concentrated in different regions, which matters for schools, signs and politics.",
+    "options": [
+     "The map shows Language B as the home language of 90% or more in two provinces.",
+     "The map shows the share speaking Language B at home, which differs by province; it does not show that everyone speaks both.",
+     "Right: at the national scale both languages are present, but at the subnational scale they are concentrated in different regions, which matters for schools, signs and politics.",
+     "Language B is concentrated in the north."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-4",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "religion-language-diffusion-s2",
+   "q": "According to the table, which universalizing religion had the largest share of the world's people in 2020?",
+   "options": [
+    "Islam, at 25.6%",
+    "Hinduism, at 14.9%",
+    "Buddhism, at 4.1%",
+    "Christianity, at 28.8%"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Christianity is a universalizing religion, and at 28.8% it is the largest group in the table.",
+    "options": [
+     "Islam is universalizing, but 25.6% is smaller than Christianity's 28.8%.",
+     "Hinduism is classed as an ethnic religion in AP® Human Geography, and its share is smaller.",
+     "Buddhism is universalizing, but its share is far smaller than Christianity's.",
+     "Right: Christianity is a universalizing religion, and at 28.8% it is the largest group in the table."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-5",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "religion-language-diffusion-s2",
+   "q": "Hindus are 14.9% of the world's people, yet most of them live in one country, India. Which statement best explains this?",
+   "options": [
+    "As an ethnic religion, Hinduism mostly stayed near its hearth",
+    "As a universalizing religion, Hinduism sent missionaries worldwide",
+    "Hinduism began in Southwest Asia and moved east to India",
+    "The table shows that most Hindus live in India"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ethnic religions are tied to one people and place and seldom seek converts, so most followers remain near the hearth in South Asia.",
+    "options": [
+     "Right: ethnic religions are tied to one people and place and seldom seek converts, so most followers remain near the hearth in South Asia.",
+     "In the AP® Human Geography classification Hinduism is an ethnic religion, and it did not spread mainly by missionaries.",
+     "Hinduism's hearth is in South Asia, not Southwest Asia.",
+     "The table gives world shares only; it shows nothing about where followers live."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-6",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "religion-language-diffusion-s2",
+   "q": "Add the shares of the three universalizing religions listed in the table (Christians, Muslims and Buddhists). What percent of the world's people did they make up in 2020?",
+   "why": {
+    "correct": "Christians 28.8% + Muslims 25.6% + Buddhists 4.1% = 58.5% (Sikhs are not in the table)."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sum",
+     "args": [
+      [
+       28.8,
+       25.6,
+       4.1
+      ]
+     ]
+    },
+    "unit": "%",
+    "places": 1,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         28.8,
+         25.6,
+         4.1,
+         14.9
+        ]
+       ]
+      },
+      "why": "You added Hindus too. Hinduism is classed as an ethnic religion, so leave it out."
+     },
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         28.8,
+         25.6
+        ]
+       ]
+      },
+      "why": "You left out Buddhists. Buddhism is a universalizing religion too."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-7",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "stimulus": "religion-language-diffusion-s2",
+   "q": "Which question can the table NOT answer?",
+   "options": [
+    "Which group had the largest share of the world in 2020",
+    "Where in the world most Buddhists live",
+    "Whether Hindus outnumbered Buddhists in 2020",
+    "What share of people had no religion in 2020"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the table gives each group's share of the world, not where its followers live. A map or a table by country would be needed.",
+    "options": [
+     "The table answers this: Christians, at 28.8%.",
+     "Right: the table gives each group's share of the world, not where its followers live. A map or a table by country would be needed.",
+     "The table answers this: 14.9% is larger than 4.1%.",
+     "The table gives it: the religiously unaffiliated were 24.2%."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-8",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which statement correctly compares universalizing and ethnic religions?",
+   "options": [
+    "Ethnic religions have more followers than universalizing religions",
+    "Universalizing religions are older than ethnic religions",
+    "Universalizing ones seek converts anywhere; ethnic ones do not",
+    "Ethnic religions spread mainly by expansion, not relocation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "universalizing religions welcome followers from any place or group and spread widely. Ethnic religions are tied to one people and their homeland, and spread mostly when followers move.",
+    "options": [
+     "The size of a religion is not the difference; the difference is whether it seeks followers beyond one group.",
+     "Age is not the difference; Hinduism and Judaism are older than several universalizing religions.",
+     "Right: universalizing religions welcome followers from any place or group and spread widely. Ethnic religions are tied to one people and their homeland, and spread mostly when followers move.",
+     "Ethnic religions spread mostly by relocation, when followers migrate."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-9",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Sikhism began in the Punjab region of South Asia in the late 1400s. Large Sikh gurdwaras (places of worship) now stand in Surrey, British Columbia, and Brampton, Ontario, in Canada. How did Sikhism mainly reach these cities?",
+   "options": [
+    "Contagious diffusion, from Punjab to its neighbors across the ocean",
+    "Stimulus diffusion, as Canadians invented a new religion",
+    "Hierarchical diffusion, as Canada's government adopted Sikhism",
+    "Relocation diffusion, as Sikh families migrated to Canada"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "the religion traveled with people who moved from Punjab to Canada, often through chain migration. That is relocation diffusion.",
+    "options": [
+     "Canada is not next to Punjab; the religion did not ripple outward through nearby places.",
+     "The gurdwaras serve Sikhism itself, carried by migrants, not a new religion.",
+     "Canada's government did not adopt the religion; families brought it.",
+     "Right: the religion traveled with people who moved from Punjab to Canada, often through chain migration. That is relocation diffusion."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-10",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Judaism is classed as an ethnic religion, with its hearth in the eastern Mediterranean. Yet Jewish communities live in many countries, from the United States to Argentina. Which statement best explains this?",
+   "options": [
+    "Jewish people migrated and carried their religion",
+    "Judaism sent missionaries to win converts in many countries",
+    "Judaism spread hierarchically from big cities to small towns",
+    "Judaism is a universalizing religion in the AP® Human Geography classification"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ethnic religions spread mainly by relocation diffusion. Over many centuries Jewish people moved, often because they were expelled or persecuted, and took their religion with them.",
+    "options": [
+     "Right: ethnic religions spread mainly by relocation diffusion. Over many centuries Jewish people moved, often because they were expelled or persecuted, and took their religion with them.",
+     "Judaism has not spread mainly by seeking converts; it spread as Jewish people moved.",
+     "The spread followed the movement of people, not a ladder of city size.",
+     "In the AP® Human Geography classification Judaism is an ethnic religion."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-11",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Islam began in the 600s on the Arabian Peninsula. It reached parts of Southeast Asia through Muslim traders, and in many port kingdoms the rulers converted first and their subjects followed. Which kind of diffusion describes the second step?",
+   "options": [
+    "Contagious diffusion, from neighbor to neighbor",
+    "Hierarchical diffusion, from rulers down to their subjects",
+    "Stimulus diffusion, as rulers invented a new religion",
+    "Reverse hierarchical diffusion, from villages up to rulers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "when a trait spreads from powerful people to everyone else, it is hierarchical diffusion.",
+    "options": [
+     "The stem says rulers converted first, then subjects: a top-down spread, not a ripple.",
+     "Right: when a trait spreads from powerful people to everyone else, it is hierarchical diffusion.",
+     "The rulers adopted Islam; they did not invent a new religion.",
+     "The spread ran from rulers down, not from villages up."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-12",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the 300s, Roman emperors first allowed Christianity and later made it the official religion of the Roman Empire, after which it spread through the empire's cities and towns. Which kind of diffusion does this show?",
+   "options": [
+    "Relocation diffusion by Christians leaving the empire",
+    "Stimulus diffusion that created a new religion in Rome",
+    "Hierarchical diffusion through the most powerful people",
+    "Ethnic diffusion that kept it near its hearth"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "support from emperors at the top helped the religion spread through the empire's cities, a top-down pattern.",
+    "options": [
+     "The stem describes the religion spreading within the empire after its rulers adopted it, not people leaving.",
+     "Romans adopted Christianity; they did not change it into a new religion.",
+     "Right: support from emperors at the top helped the religion spread through the empire's cities, a top-down pattern.",
+     "Christianity is universalizing and spread far from its hearth."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-13",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Place each name at its level, from the largest group of languages at the top to the smallest at the bottom.",
+   "model": {
+    "layout": "tiers",
+    "title": "Language family to dialect",
+    "slots": [
+     {
+      "id": "fam",
+      "name": "Language family"
+     },
+     {
+      "id": "br",
+      "name": "Branch"
+     },
+     {
+      "id": "lang",
+      "name": "Language"
+     },
+     {
+      "id": "dia",
+      "name": "Dialect"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "ie",
+      "text": "Indo-European"
+     },
+     {
+      "id": "rom",
+      "text": "Romance"
+     },
+     {
+      "id": "spa",
+      "text": "Spanish"
+     },
+     {
+      "id": "mex",
+      "text": "Mexican Spanish"
+     },
+     {
+      "id": "sw",
+      "text": "Swahili"
+     }
+    ],
+    "key": {
+     "fam": "ie",
+     "br": "rom",
+     "lang": "spa",
+     "dia": "mex"
+    },
+    "slips": [
+     {
+      "piece": "rom",
+      "slot": "fam",
+      "why": "Romance is a branch inside the Indo-European family, not a family of its own."
+     },
+     {
+      "piece": "sw",
+      "slot": "lang",
+      "why": "Swahili is a language, but it is not part of the Indo-European family, so it does not belong in this chain."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Family, then branch, then language, then dialect: Indo-European, Romance, Spanish, Mexican Spanish."
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-14",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "People in Mexico City and in Madrid, Spain, both speak Spanish, but they use some different words and pronounce some sounds differently. These two forms of Spanish are best described as which of these?",
+   "options": [
+    "Two separate language families",
+    "A pidgin and a creole",
+    "Two separate branches of a family",
+    "Dialects of one language"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "dialects are regional versions of one language that differ in words and sounds but can still be understood by speakers of each.",
+    "options": [
+     "Both are Spanish, so they are in the same family and the same language.",
+     "Both are full languages spoken from birth; neither is a pidgin.",
+     "A branch holds several languages, such as Spanish and French; these are two forms of one language.",
+     "Right: dialects are regional versions of one language that differ in words and sounds but can still be understood by speakers of each."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-15",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Los Angeles, San Francisco, Santa Fe and San Antonio are cities in the United States. What do these toponyms reveal?",
+   "options": [
+    "Spanish speakers named these places",
+    "French speakers settled the Southwest first",
+    "The cities were founded in the year 2000",
+    "The cities share the same climate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "a toponym is a place name. Spanish names across the Southwest record Spanish and Mexican rule and settlement there before the United States.",
+    "options": [
+     "Right: a toponym is a place name. Spanish names across the Southwest record Spanish and Mexican rule and settlement there before the United States.",
+     "These names are Spanish, not French.",
+     "The names are much older; Santa Fe dates from the early 1600s.",
+     "Place names record who named a place, not its climate."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-16",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "English and Hindi sound nothing alike, yet linguists place both in the Indo-European language family. What does this tell you?",
+   "options": [
+    "They are dialects of the same language",
+    "They share a distant ancestor language",
+    "Hindi grew out of English during British rule",
+    "They are both lingua francas in most countries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "a language family is a group of languages that grew from one ancient ancestor. English (Germanic branch) and Hindi (Indo-Iranian branch) both descend from it.",
+    "options": [
+     "Speakers of English and Hindi cannot understand each other, so they are separate languages, not dialects.",
+     "Right: a language family is a group of languages that grew from one ancient ancestor. English (Germanic branch) and Hindi (Indo-Iranian branch) both descend from it.",
+     "Hindi did not come from English; both grew from a much older shared ancestor.",
+     "Being in one family is about ancestry, not about how widely a language is used."
+    ]
+   }
+  },
+  {
+   "id": "hug-religion-language-diffusion-17",
+   "unit": "unit-3",
+   "topic": "religion-language-diffusion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Buddhism began in northeastern South Asia about 2,500 years ago, yet most Buddhists now live in East and Southeast Asia. Which statement best explains this pattern?",
+   "options": [
+    "As an ethnic religion it stayed close to its hearth",
+    "Buddhists were moved by colonial rulers in the 1900s",
+    "As a universalizing religion it spread far",
+    "Buddhism began in Japan and moved west to India"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "monks, traders and rulers carried Buddhism along trade routes to East and Southeast Asia, where it took root, while it later became a small minority in its hearth region.",
+    "options": [
+     "Buddhism is a universalizing religion, and its followers are mostly far from the hearth.",
+     "Buddhism reached East Asia many centuries before the 1900s.",
+     "Right: monks, traders and rulers carried Buddhism along trade routes to East and Southeast Asia, where it took root, while it later became a small minority in its hearth region.",
+     "Its hearth is in South Asia, and it moved east, not west."
+    ]
+   }
+  }
+ ]
+}
