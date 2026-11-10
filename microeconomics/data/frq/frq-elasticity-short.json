@@ -2,7 +2,7 @@
  "id": "frq-elasticity-short",
  "type": "short",
  "points": 5,
- "title": "Elasticity from a demand schedule: price elasticity and the total revenue test",
+ "title": "Elasticity from a demand schedule: price elasticity, the total revenue test and substitutes",
  "units": [
   "unit-2"
  ],
@@ -69,34 +69,20 @@
   {
    "label": "B",
    "points": 1,
-   "prompt": "Based on your answer to part A, <b>identify</b> whether demand is elastic or inelastic in this price range.",
+   "prompt": "<b>Identify</b> what happens to Ridgeway's total revenue when the price falls from \\$10 to \\$8, and state whether this is consistent with your answer to part A.",
    "rubric": [
     {
-     "point": "Elastic, because 2.5 is greater than 1 (accept a consistent answer from an incorrect part A)",
+     "point": "Total revenue increases, from \\$1,000 to \\$1,200, consistent with elastic demand (elasticity above 1) in this range",
      "accept": [
-      "elastic"
-     ]
-    }
-   ],
-   "sample": "Demand is elastic in this range, because the absolute value of the elasticity, 2.5, is greater than 1."
-  },
-  {
-   "label": "C",
-   "points": 1,
-   "prompt": "<b>Identify</b> what happens to Ridgeway's total revenue when the price falls from \\$10 to \\$8.",
-   "rubric": [
-    {
-     "point": "Total revenue increases, from \\$1,000 to \\$1,200",
-     "accept": [
-      "rises",
+      "rises, as expected with elastic demand",
       "increases by \\$200"
      ]
     }
    ],
-   "sample": "Total revenue increases from $10 \\times 100 = \\$1{,}000$ to $8 \\times 150 = \\$1{,}200$. With elastic demand, price and total revenue move in opposite directions."
+   "sample": "Total revenue increases from $10 \\times 100 = \\$1{,}000$ to $8 \\times 150 = \\$1{,}200$. This is consistent with part A: an elasticity of 2.5 is greater than 1, so demand is elastic, and with elastic demand price and total revenue move in opposite directions."
   },
   {
-   "label": "D",
+   "label": "C",
    "points": 1,
    "prompt": "Ridgeway considers cutting the price from \\$6 to \\$4. Using the total revenue test, <b>explain</b> whether demand is elastic or inelastic in this range.",
    "rubric": [
@@ -108,6 +94,20 @@
     }
    ],
    "sample": "Total revenue falls from $6 \\times 180 = \\$1{,}080$ to $4 \\times 200 = \\$800$. Price and total revenue move in the same direction, so demand is inelastic in this range."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "A new studio opens in the same town and sells handmade mugs much like Ridgeway's. <b>Explain</b> how this is likely to affect the price elasticity of demand for Ridgeway's mugs.",
+   "rubric": [
+    {
+     "point": "Demand becomes more elastic, because buyers now have a close substitute and can switch to it when Ridgeway raises its price",
+     "accept": [
+      "more elastic: more close substitutes"
+     ]
+    }
+   ],
+   "sample": "Demand for Ridgeway's mugs becomes more elastic. The new studio's mugs are a close substitute, so if Ridgeway raises its price, more buyers switch to the other studio, and quantity demanded falls by a larger percentage than before."
   }
  ]
 }

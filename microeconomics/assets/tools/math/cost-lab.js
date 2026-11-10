@@ -14,8 +14,8 @@
    unit: EXPLORE.tp), so every row of the table lands on the curves the
    engine draws, within rounding. A fixed cost TFC moves ATC and AFC only (an
    ATC offset of (TFC / 10 - F) / Fstep); a cost per unit of output m
-   (materials, a per-unit tax) moves MC, AVC and ATC up by m (an MC and ATC
-   offset of m).
+   (materials, a per-unit tax) moves MC, AVC and ATC up by m (an MC offset
+   of m; the engine lifts ATC with MC).
 
      EXPLORE                    { wage, labor[], tp[], tfc, mats }  the explore firm
      table(o)                   every column of the explore table, each cell from
@@ -58,7 +58,8 @@
   }
   function offsets(tfc, mats){
     var p = G().COST.firm, m = mats || 0;
-    return { MC: M.round(m, 6), ATC: M.round(m + (tfc / 10 - p.F) / p.Fstep, 6) };
+    // ATC's own steps are the fixed cost only: the engine lifts ATC with MC for a per-unit cost (integration T1-1).
+    return { MC: M.round(m, 6), ATC: M.round((tfc / 10 - p.F) / p.Fstep, 6) };
   }
   function minRow(col){
     var best = -1;

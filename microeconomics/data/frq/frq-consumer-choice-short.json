@@ -2,7 +2,7 @@
  "id": "frq-consumer-choice-short",
  "type": "short",
  "points": 5,
- "title": "A consumer with a budget: marginal utility per dollar, the best bundle and a sunk cost",
+ "title": "A consumer with a budget: marginal utility per dollar, the best bundle, a larger budget and a sunk cost",
  "units": [
   "unit-1"
  ],
@@ -88,18 +88,17 @@
   },
   {
    "label": "C",
-   "prompt": "<b>Calculate</b> Jonah's total utility from the combination you identified in part B. Show your work.",
+   "prompt": "Next month Jonah has \\$35 to spend, and the prices do not change. <b>Identify</b> the combination of paperbacks and movie tickets that now maximizes his total utility.",
    "points": 1,
    "rubric": [
     {
-     "point": "States 290 utils, with work shown (50 + 40 + 120 + 80), consistent with part B.",
+     "point": "3 paperbacks and 2 movie tickets: the extra \\$5 buys a third paperback, worth 30 ÷ 5 = 6 utils per dollar",
      "accept": [
-      "290",
-      "a total that correctly follows from the bundle given in part B"
+      "three books and two tickets"
      ]
     }
    ],
-   "sample": "Total utility $= 50 + 40 + 120 + 80 = 290$ utils."
+   "sample": "Jonah buys 3 paperbacks and 2 movie tickets, which costs $3 \\times 5 + 2 \\times 10 = 35$ dollars. After the first \\$30 is spent as in part B, the extra \\$5 cannot buy a ticket, but it buys a third paperback, which adds $\\frac{30}{5} = 6$ utils per dollar."
   },
   {
    "label": "D",

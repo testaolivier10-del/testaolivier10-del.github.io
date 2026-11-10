@@ -83,7 +83,7 @@ export function check(data, map) {
     const left = Math.abs(gap - pol), dwl = 0.25 * left * left;
     if (!close(st.dwl, dwl, 1e-9, 1e-9)) errs.push(`${w}: DWL ${st.dwl}, own ${dwl}`);
     if (!left) { if (B) errs.push(`${w}: a loss is shaded when none is left`); continue; }
-    const mB = Graph.eq(B, {}), eB = Graph.named(B, {}, 'efficient');
+    const mB = Graph.eq(B, Graph.fixedOffsets(B)), eB = Graph.named(B, Graph.fixedOffsets(B), 'efficient');
     if (!close(mB[0], st.market, 0, 1e-6) || !close(eB[0], effQ(t, gap), 0, 1e-6)) errs.push(`${w}: the shading spec's quantities differ from the picture`);
     const cells = Graph.areas(B).cells.filter(x => Graph.regionCells(B, 'dwl').includes(x.id));
     const area = cells.reduce((a, x) => a + Graph.polyArea(x.poly), 0);

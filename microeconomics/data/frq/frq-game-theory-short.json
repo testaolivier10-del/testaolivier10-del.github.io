@@ -2,7 +2,7 @@
  "id": "frq-game-theory-short",
  "type": "short",
  "points": 5,
- "title": "Two grocers choose their opening hours: dominant strategies, Nash equilibrium and a fee",
+ "title": "Two grocers choose their opening hours: dominant strategies, Nash equilibrium and a town rule",
  "units": [
   "unit-4"
  ],
@@ -87,141 +87,44 @@
   {
    "label": "B",
    "points": 1,
-   "prompt": "<b>Explain</b>, using the numbers in the matrix, why Alder Market does not have a dominant strategy.",
+   "prompt": "<b>Explain</b> how Alder Market can use Bexley Foods' dominant strategy to choose its own hours.",
    "rubric": [
     {
-     "point": "Gives both comparisons for Alder: if Bexley chooses Late, Regular is better (35 > 25); if Bexley chooses Regular, Late is better (60 > 48).",
+     "point": "Alder expects Bexley to play its dominant strategy, Late hours, and against Late hours Alder earns more with Regular hours (35 > 25), so it chooses Regular",
      "accept": [
-      "35 > 25 and 60 > 48"
+      "Bexley always keeps late hours, so Alder picks Regular because 35 > 25"
      ]
     }
    ],
-   "sample": "If Bexley keeps late hours, Alder earns 25 from Late and 35 from Regular, so Regular is better. If Bexley keeps regular hours, Alder earns 60 from Late and 48 from Regular, so Late is better. Alder's best choice depends on Bexley's, so it has no dominant strategy."
+   "sample": "Bexley Foods does better with Late hours whatever Alder does, so Alder can expect Bexley to keep Late hours. Against Late hours, Alder earns 25 with Late and 35 with Regular, so Alder chooses Regular hours."
   },
   {
    "label": "C",
    "points": 1,
-   "type": "matrix",
-   "prompt": "The town starts charging Bexley Foods a fee of 15 (hundred dollars) a week whenever it keeps Late hours. <b>Identify</b> every Nash equilibrium after the fee.",
-   "matrix": {
-    "players": [
-     {
-      "name": "Alder Market",
-      "strategies": [
-       "Late hours",
-       "Regular hours"
-      ]
-     },
-     {
-      "name": "Bexley Foods",
-      "strategies": [
-       "Late hours",
-       "Regular hours"
-      ]
-     }
-    ],
-    "payoffs": [
-     [
-      [
-       25,
-       30
-      ],
-      [
-       60,
-       20
-      ]
-     ],
-     [
-      [
-       35,
-       55
-      ],
-      [
-       48,
-       45
-      ]
-     ]
-    ],
-    "unit": "$",
-    "change": {
-     "player": 1,
-     "strategy": 0,
-     "amount": -15
-    },
-    "do": [
-     "nash"
-    ]
-   },
+   "prompt": "The town passes a rule that both stores must keep Regular hours. <b>Identify</b> the change in each store's weekly profit compared with the Nash equilibrium, and <b>explain</b> which store would oppose the rule.",
    "rubric": [
     {
-     "point": "The only Nash equilibrium is now (Alder Late hours, Bexley Regular hours).",
+     "point": "Alder Market gains 13 (35 to 48) and Bexley Foods loses 10 (55 to 45), so Bexley would oppose the rule",
      "accept": [
-      "Alder late, Bexley regular"
-     ],
-     "auto": "nash"
+      "Alder +13, Bexley -10; Bexley opposes"
+     ]
     }
    ],
-   "sample": "Bexley's Late payoffs fall to 15 and 40, so Regular hours is now better for Bexley whatever Alder does (20 > 15 and 45 > 40). Alder's best response to Bexley's Regular hours is Late hours (60 > 48). The only Nash equilibrium is Alder Late hours, Bexley Regular hours."
+   "sample": "At the Nash equilibrium (Alder Regular, Bexley Late) the stores earn 35 and 55. Under the rule both keep Regular hours and earn 48 and 45. Alder Market gains 13 (hundred dollars) a week and Bexley Foods loses 10, so Bexley would oppose the rule."
   },
   {
    "label": "D",
    "points": 1,
-   "type": "matrix",
-   "prompt": "Using the original matrix, before the fee, <b>identify</b> the cell that gives the two stores the largest combined profit.",
-   "matrix": {
-    "players": [
-     {
-      "name": "Alder Market",
-      "strategies": [
-       "Late hours",
-       "Regular hours"
-      ]
-     },
-     {
-      "name": "Bexley Foods",
-      "strategies": [
-       "Late hours",
-       "Regular hours"
-      ]
-     }
-    ],
-    "payoffs": [
-     [
-      [
-       25,
-       30
-      ],
-      [
-       60,
-       20
-      ]
-     ],
-     [
-      [
-       35,
-       55
-      ],
-      [
-       48,
-       45
-      ]
-     ]
-    ],
-    "unit": "$",
-    "do": [
-     "joint"
-    ]
-   },
+   "prompt": "<b>Explain</b>, using the numbers in the matrix, how the rule in part C changes the two stores' combined profit.",
    "rubric": [
     {
-     "point": "Both stores keep Regular hours (48 + 45 = 93), which is not the Nash equilibrium.",
+     "point": "Combined profit rises from 90 (35 + 55) to 93 (48 + 45), because the rule moves the stores to the cell with the largest total",
      "accept": [
-      "both regular, 93 in total"
-     ],
-     "auto": "joint"
+      "it rises by 3, from 90 to 93"
+     ]
     }
    ],
-   "sample": "Adding the two payoffs in each cell gives 55, 80, 90 and 93. The largest is both stores keeping Regular hours: 48 + 45 = 93 (hundred dollars). It is not the Nash equilibrium: from there Bexley would switch to Late hours (55 > 45)."
+   "sample": "At the Nash equilibrium the stores earn 35 + 55 = 90 (hundred dollars) together. Under the rule they earn 48 + 45 = 93, the largest total in the matrix, so their combined profit rises by 3, even though Bexley alone is worse off."
   }
  ]
 }

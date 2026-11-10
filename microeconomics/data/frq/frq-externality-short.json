@@ -2,7 +2,7 @@
  "id": "frq-externality-short",
  "type": "short",
  "points": 5,
- "title": "Cement dust: a negative production externality, deadweight loss and the corrective tax",
+ "title": "Cement dust: a negative production externality, the external cost and why the efficient amount is not zero",
  "units": [
   "unit-6"
  ],
@@ -63,22 +63,7 @@
   {
    "label": "B",
    "points": 1,
-   "prompt": "<b>Identify</b> whether the market quantity is greater than, less than or equal to the socially efficient quantity, and <b>explain</b>.",
-   "rubric": [
-    {
-     "point": "Greater than: firms produce where MPB = MPC and ignore the \\$3 external cost, so they produce units whose MSC exceeds their MSB",
-     "accept": [
-      "the market overproduces because private cost is below social cost"
-     ]
-    }
-   ],
-   "sample": "The market quantity is greater than the efficient quantity. The plants decide using their own marginal cost, MPC, which leaves out the \\$3 of dust damage per ton, so the market produces where MPB = MPC. Between QE and QM each ton costs society more (MSC) than it is worth (MSB)."
-  },
-  {
-   "label": "C",
-   "points": 1,
    "type": "graph",
-   "prompt": "<b>Shade</b> the area of deadweight loss that results from the market outcome.",
    "graph": {
     "kind": "externality",
     "ext": {
@@ -88,34 +73,52 @@
      "shade"
     ],
     "key": {
-     "shade": "dwl"
+     "shade": "ext-cost"
+    },
+    "slips": {
+     "dwl": "That triangle is the deadweight loss. The external cost counts the \\$3 of damage on every ton produced, from zero to QM."
     }
    },
+   "prompt": "<b>Shade</b> the area that shows the total external cost of the dust at the market quantity.",
    "rubric": [
     {
-     "point": "The triangle between MSC and demand from QE to QM, fully shaded",
+     "point": "The area between MSC and S (= MPC) from zero to the market quantity, fully shaded",
      "accept": [
-      "the area between MSC and MSB from the efficient to the market quantity"
+      "the band between MSC and supply out to QM"
      ],
      "auto": "shade"
     }
    ],
-   "sample": "The deadweight loss is the triangle bounded by MSC above, demand below, and the vertical line at QM, with its point at QE where MSC meets demand."
+   "sample": "The external cost is \\$3 for each ton produced, so the total is the band between MSC and S, from zero out to the market quantity QM, where demand meets S."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Explain</b> why the socially efficient quantity of cement is not zero, even though every ton produces dust.",
+   "rubric": [
+    {
+     "point": "Up to QE, the marginal social benefit of each ton (shown by demand) is greater than its marginal social cost, including the \\$3 of dust damage, so producing those tons adds to total surplus",
+     "accept": [
+      "MSB > MSC for the tons up to QE",
+      "the benefit of the first tons is greater than their private cost plus the \\$3 of damage"
+     ]
+    }
+   ],
+   "sample": "The efficient quantity is where MSB = MSC, not where the damage is zero. For every ton up to QE, buyers value the cement (MSB, shown by demand) more than it costs society to make, including the \\$3 of dust damage, so producing those tons makes society better off. Only tons beyond QE cost more than they are worth."
   },
   {
    "label": "D",
    "points": 1,
-   "prompt": "<b>Identify</b> the per-unit tax on cement that would lead the market to the socially efficient quantity.",
+   "prompt": "Suppose the dust damage were \\$5 a ton instead of \\$3. <b>Identify</b> what would happen to the deadweight loss of the market outcome, and <b>explain</b>.",
    "rubric": [
     {
-     "point": "A tax of \\$3 per ton, equal to the marginal external cost at the efficient quantity",
+     "point": "The deadweight loss would increase, because MSC would lie further above supply, so the efficient quantity is smaller and the market overproduces more tons, each with a larger gap between MSC and MSB",
      "accept": [
-      "\\$3 per ton",
-      "a tax equal to the external cost per unit"
+      "it increases: a bigger gap between MSC and S, so more overproduction"
      ]
     }
    ],
-   "sample": "A tax of \\$3 per ton, equal to the external cost per ton at the efficient quantity. It shifts supply up to MSC, so the market produces QE."
+   "sample": "The deadweight loss would increase. With \\$5 of damage per ton, MSC lies further above S, so it crosses demand at a smaller efficient quantity, while the market quantity, where D meets S, does not change. The market now overproduces more tons, and on each of them MSC exceeds MSB by more, so the triangle grows."
   }
  ]
 }

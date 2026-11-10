@@ -2,7 +2,7 @@
  "id": "frq-monopoly-long",
  "type": "long",
  "points": 10,
- "title": "A patent monopoly: price, profit, surplus, elasticity and a price ceiling",
+ "title": "A monopoly from a key resource: price, profit, deadweight loss, elasticity and a per-unit tax",
  "units": [
   "unit-2",
   "unit-4"
@@ -20,7 +20,7 @@
   "2.A",
   "3.A"
  ],
- "scenario": "Corvane Labs (invented) holds a patent on a home test kit for water quality, so it is the only seller. It maximizes profit and is earning a positive economic profit. Its marginal cost curve is U-shaped and passes through the minimum of its average total cost curve.",
+ "scenario": "Corvane Labs (invented) owns the only supply of a rare reagent that home test kits for water quality need, so no other firm can make the kits and Corvane is the only seller. It maximizes profit and is earning a positive economic profit. Its marginal cost curve is U-shaped and passes through the minimum of its average total cost curve.",
  "stimulus": {
   "title": "Corvane Labs at its profit-maximizing output",
   "invented": true,
@@ -92,26 +92,29 @@
    "label": "B",
    "points": 1,
    "type": "graph",
-   "prompt": "<b>Shade</b> the area of consumer surplus.",
+   "prompt": "<b>Shade</b> the area of Corvane Labs' economic profit.",
    "graph": {
     "kind": "monopoly",
     "do": [
      "shade"
     ],
     "key": {
-     "shade": "cs"
+     "shade": "profit"
+    },
+    "slips": {
+     "tr": "That is total revenue. Profit is only the part between PM and ATC."
     }
    },
    "rubric": [
     {
-     "point": "Shades the area under demand and above PM, from zero to QM, completely.",
+     "point": "Shades the rectangle between PM and ATC at QM, from zero to QM, completely.",
      "accept": [
-      "the triangle between D and PM out to QM"
+      "(PM - ATC) x QM shown as a rectangle"
      ],
      "auto": "shade"
     }
    ],
-   "sample": "Consumer surplus is the triangle under the demand curve and above PM, from the vertical axis out to QM."
+   "sample": "Economic profit is the rectangle from PM down to ATC at QM, and from the vertical axis out to QM."
   },
   {
    "label": "C",
@@ -186,61 +189,69 @@
    "label": "F(i)",
    "points": 1,
    "type": "graph",
-   "prompt": "The government sets a price ceiling equal to the price at which demand meets marginal cost. <b>Draw</b> the price ceiling, labeled PR.",
    "graph": {
     "kind": "monopoly",
-    "line": {
-     "id": "Pr"
-    },
     "do": [
-     "line"
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "MC",
+     "ATC"
     ],
     "key": {
-     "line": {
-      "to": "allocative"
-     }
+     "shifts": [
+      {
+       "curve": "MC",
+       "dir": "up"
+      }
+     ],
+     "because": "a per-unit tax on each kit, a variable cost"
+    },
+    "slips": {
+     "D": "The tax is paid by the seller on each unit; buyers' willingness to pay, and so demand, does not change.",
+     "ATC": "A per-unit tax adds to the cost of every extra kit, so MC moves up (and ATC with it)."
     }
    },
+   "prompt": "The government places a per-unit tax of \\$5 on each kit Corvane Labs sells. <b>Show</b> the effect of the tax on your graph in part A by shifting the curve or curves that change.",
    "rubric": [
     {
-     "point": "A horizontal line at the height where demand crosses MC, labeled PR, below PM.",
+     "point": "MC shifts up (and ATC with it); demand and MR do not move",
      "accept": [
-      "the ceiling drawn through the point where D meets MC"
+      "MC2 above MC1, D and MR unchanged"
      ],
-     "auto": "line"
+     "auto": "shift"
     }
    ],
-   "sample": "The ceiling PR is a horizontal line at the price where the demand curve crosses MC, below PM."
+   "sample": "A tax on each kit adds \\$5 to the cost of every extra kit, so MC shifts up to MC2, and ATC shifts up with it. Demand and MR do not move."
   },
   {
    "label": "F(ii)",
    "points": 1,
-   "prompt": "<b>Identify</b> what happens to the quantity of kits Corvane Labs sells under the price ceiling, compared with QM.",
+   "prompt": "<b>Identify</b> what happens to the quantity of kits Corvane Labs sells and to the price it charges after the tax, compared with QM and PM.",
    "rubric": [
     {
-     "point": "The quantity increases (to the quantity where demand meets MC).",
+     "point": "The quantity decreases and the price increases",
      "accept": [
-      "rises",
-      "output increases"
+      "Q falls, P rises"
      ]
     }
    ],
-   "sample": "The quantity increases, from QM to the quantity where demand meets MC."
+   "sample": "The quantity falls, because the higher MC now crosses MR at a smaller quantity, and the price rises, because a smaller quantity is read at a higher point on the demand curve."
   },
   {
    "label": "F(iii)",
    "points": 1,
-   "prompt": "<b>Identify</b> what happens to the deadweight loss under the price ceiling.",
+   "prompt": "<b>Identify</b> what happens to the deadweight loss in the market for kits after the tax, and <b>explain</b>.",
    "rubric": [
     {
-     "point": "The deadweight loss is eliminated (falls to zero).",
+     "point": "The deadweight loss increases, because the quantity sold moves further below the allocatively efficient quantity, where demand meets the original MC",
      "accept": [
-      "decreases to zero",
-      "disappears"
+      "it increases: output falls further below the efficient quantity"
      ]
     }
    ],
-   "sample": "The deadweight loss is eliminated: the firm now produces the allocatively efficient quantity, where P = MC."
+   "sample": "The deadweight loss increases. Before the tax Corvane already sold fewer kits than the efficient quantity, where demand meets the original MC (the true cost of making a kit). The tax cuts output further, so even more kits that buyers value above their cost of production are not made."
   }
  ]
 }

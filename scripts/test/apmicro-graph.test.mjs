@@ -18,7 +18,7 @@ const M = B.window.ApMicroGraph, G = B.window.ApMicroGrade;
 const plain = x => JSON.parse(JSON.stringify(x));
 const near = (a, b, tol = 1e-3) => assert.ok(Math.abs(a - b) <= tol, `${a} is not ${b}`);
 const full = spec => G.graph(spec, M.keyResponse(spec));
-const KINDS = ['ppc', 'sd', 'sd-micro', 'costs', 'pc', 'monopoly', 'monocomp', 'labor', 'monopsony', 'externality', 'lorenz'];
+const KINDS = ['ppc', 'sd', 'demand', 'sd-micro', 'costs', 'pc', 'monopoly', 'monocomp', 'labor', 'monopsony', 'externality', 'lorenz'];
 
 test('every kind: its panels, axes and curves', () => {
   assert.deepEqual(Object.keys(M.KINDS), KINDS);
@@ -269,4 +269,147 @@ test('the describe line and the FRQ kit\'s auto points come from the same grader
   const g = full(spec);
   assert.deepEqual(plain(g.points.map(p => p.id)), ['labels', 'shift', 'point', 'line']);
   assert.match(M.describe(spec, { shifts: { D: 1 } }), /demand shifted right/);
+});
+
+/* ---------------- integration 2026-11-09 (docs/apmicro-reviews/integration.md) */
+const svgOf = (spec, st) => M.svg(spec, st || { labelsShown: true });
+const texts = svg => [...svg.matchAll(/<text class="([^"]*)" x="([-\d.]+)" y="([-\d.]+)" text-anchor="(\w+)">([\s\S]*?)<\/text>/g)].map(m => ({ cls: m[1], x: +m[2], y: +m[3], a: m[4], t: m[5].replace(/<[^>]+>/g, '') }));
+
+test('a per-unit cost (MC up) lifts AVC and ATC by the same amount and leaves AFC; ATC is drawn as shifted', () => {
+  const up = M.curves({ kind: 'costs', afc: true }, { MC: 1 }), base = M.curves({ kind: 'costs', afc: true }, {});
+  const at = (cs, id, q) => M.y(M.find(cs, id), q);
+  for (const q of [1, 2, 5.6, 8]) { near(at(up, 'ATC', q) - at(base, 'ATC', q), 1); near(at(up, 'AVC', q) - at(base, 'AVC', q), 1); near(at(up, 'AFC', q), at(base, 'AFC', q)); }
+  near(M.named({ kind: 'costs' }, { MC: 1 }, 'min-atc')[0], M.named({ kind: 'costs' }, {}, 'min-atc')[0], 0.01);
+  assert.equal(M.find(up, 'ATC').steps, 1);
+  assert.match(svgOf({ kind: 'costs', do: ['label'] }, { labelsShown: true, shifts: { MC: 1 } }), /is-old[^>]*>ATC/);
+  const lump = M.curves({ kind: 'costs' }, { ATC: 1 });   // a lump-sum cost: ATC only
+  near(at(lump, 'AVC', 3), at(base, 'AVC', 3)); assert.ok(at(lump, 'ATC', 3) > at(base, 'ATC', 3) + 0.5);
+});
+test('the checker accepts slips.point, showLabel and pointMarks, and refuses them misused', () => {
+  const pt = { kind: 'monopoly', do: ['point'], key: { point: { at: 'profit-max' } }, slips: { point: 'Read the price off demand above MR = MC, not off MC.' } };
+  assert.deepEqual(plain(M.check(pt)), []);
+  assert.deepEqual(plain(M.check({ ...pt, pointMarks: { x: 'Q_M', y: 'P_M' } })), []);
+  assert.ok(M.check({ ...pt, pointMarks: { z: 'Q' } }).length);
+  const ext = { kind: 'externality', ext: { type: 'neg-prod', gap: 2 }, do: ['label'], show: { S: -1 }, showLabel: { S: 'S + tax' } };
+  assert.deepEqual(plain(M.check(ext)), []);
+  assert.ok(M.check({ ...ext, showLabel: { D: 'D + x' } }).length, 'a label for a curve not shown shifted');
+  assert.ok(M.check({ kind: 'monopoly', do: ['label'], start: { D: 3 } }).length === 0, 'a starting shift of 3 steps is allowed');
+});
+test('a tax or subsidy shift item does not draw the after-tax guides before the student shifts S', () => {
+  const spec = { kind: 'sd-micro', policy: { type: 'tax', amount: 2 }, do: ['shift'], key: { shifts: [{ curve: 'S', dir: 'left', steps: 2 }], because: 'a per-unit tax on sellers' } };
+  assert.doesNotMatch(svgOf(spec, {}), />Q<tspan[^>]*>T</);
+  assert.match(svgOf(spec, { key: true }), />Q<tspan[^>]*>T</);
+  assert.match(svgOf({ kind: 'sd-micro', policy: { type: 'tax', amount: 2 }, do: ['label'] }), />Q<tspan[^>]*>T</);
+});
+test('grab strokes take no taps when nothing can be dragged', () => {
+  assert.match(svgOf({ kind: 'sd', do: ['shade'], key: { shade: 'cs' } }), /class="mic-gr-grab"[^>]*pointer-events="none"/);
+  assert.doesNotMatch(svgOf({ kind: 'sd', do: ['shift'], key: { shifts: [{ curve: 'D', dir: 'right' }], because: 'higher income' } }, {}), /mic-gr-grab"[^>]*data-curve[^>]*pointer-events/);
+  assert.doesNotMatch(svgOf({ kind: 'sd', do: ['shift'], key: { shifts: [{ curve: 'D', dir: 'right' }], because: 'higher income' } }, {}).match(/<g class="mic-gr-c" data-curve="D">[\s\S]*?<\/g>/)[0], /pointer-events/);
+});
+test('old curve numbers (curveN0), a follower\'s old label left out, showLabel on a shown shift', () => {
+  const lr = svgOf({ kind: 'sd', do: ['label'] }, { labelsShown: true, shifts: { S: 1 }, n0: 2, n1: 3, curveN0: 1, curveN: 2 });
+  assert.match(lr, /is-old[^>]*>S<tspan[^>]*>1</); assert.match(lr, /class="mic-gr-clabel "[^>]*>S<tspan[^>]*>2</);
+  const mc = { kind: 'monocomp', do: ['label'] };
+  assert.match(svgOf(mc, { labelsShown: true, shifts: { D: -1 } }), /is-old[^>]*>MR/);
+  assert.doesNotMatch(svgOf(mc, { labelsShown: true, shifts: { D: -1 }, followerOld: false }), /is-old[^>]*>MR/);
+  const tax = svgOf({ kind: 'externality', ext: { type: 'neg-prod', gap: 2 }, do: ['label'], show: { S: -1 }, showLabel: { S: 'S + tax' } });
+  assert.match(tax, />S \+ tax</); assert.match(tax, /is-old[^>]*>S = MPC</); assert.doesNotMatch(tax, /S = MPC<tspan[^>]*>[12]/);
+});
+test('areas follow a shown shift; the externality social curve keeps its gap from a started private curve', () => {
+  const sd = { kind: 'sd', do: ['shade'], key: { shade: 'cs' }, show: { D: 2 } };
+  near(M.areas(sd).cells.filter(c => M.regionCells(sd, 'cs').includes(c.id)).reduce((a, c) => a + M.polyArea(c.poly), 0), 0.5 * 6 * 6 - 2, 0.05);   // D moved 2 right: P = 6, the triangle above 10 is off the graph
+  const st = { kind: 'externality', ext: { type: 'neg-prod', gap: 2 }, do: ['label'], start: { S: 1 } };
+  near(M.find(M.curves(st, {}), 'MSC').at, 4);
+  // A partial corrective tax (1 of a 2-step external cost): the market makes 4.5, efficient 4, dwl = 1/2 x 0.5 x 1.
+  const part = { kind: 'externality', ext: { type: 'neg-prod', gap: 2 }, do: ['shade'], key: { shade: 'dwl' }, show: { S: -1 } };
+  const dwl = M.areas(part).cells.filter(c => M.regionCells(part, 'dwl').includes(c.id)), xs = dwl.flatMap(c => c.poly.map(p => p[0]));
+  near(dwl.reduce((a, c) => a + M.polyArea(c.poly), 0), 0.25, 0.01); near(Math.min(...xs), 4); near(Math.max(...xs), 4.5);
+  // No shift: the regions are the ones authors keyed before.
+  for (const t of ['neg-prod', 'pos-prod', 'pos-cons', 'neg-cons']) { const s = { kind: 'externality', ext: { type: t, gap: 2 }, do: ['shade'], key: { shade: 'dwl' } }, R = M.areas(s).regions; assert.deepEqual(plain(R.dwl), ['a']); assert.deepEqual(plain(R[t.startsWith('neg') ? 'ext-cost' : 'ext-benefit']).sort(), ['a', 'b', 'c']); }
+});
+test('a monopoly under a regulated price has its own consumer surplus, profit or loss and deadweight loss', () => {
+  const base = { kind: 'monopoly', do: ['shade'], key: { shade: 'dwl' } }, pm = M.named(base, {}, 'profit-max'), al = M.named(base, {}, 'allocative');
+  const reg = { ...base, line: { id: 'Pr', at: al[1] } };
+  assert.deepEqual(plain(M.check({ ...reg, key: { shade: 'cs' } })), []);
+  assert.ok(M.check(reg).some(m => /"dwl" is not a region/.test(m)), 'a price at P = MC leaves no deadweight loss to shade');
+  const mid = { ...base, line: { id: 'Pr', at: (pm[1] + al[1]) / 2 } }, R = M.areas(mid).regions;
+  assert.ok(R.cs && R.dwl && (R.profit || R.loss));
+  const qr = M.xAt(M.find(M.curves(mid, {}), 'D'), mid.line.at), dx = M.areas(mid).cells.find(c => c.id === R.dwl[0]).poly.map(p => p[0]);
+  near(Math.min(...dx), qr, 0.01); near(Math.max(...dx), al[0], 0.01);
+});
+test('a placed point: its label avoids the curves, and pointMarks draws guides and axis marks', () => {
+  const spec = { kind: 'monopsony', do: ['point'], key: { point: { at: 'hire' } }, pointLabel: 'Hire', pointMarks: { x: 'L_M', y: 'W_M' } };
+  const p = M.keyResponse(spec).point, s = svgOf(spec, { point: p, labelsShown: true });
+  assert.match(s, />L<tspan[^>]*>M</); assert.match(s, />W<tspan[^>]*>M</);
+  const lab = texts(s).find(t => t.cls === 'mic-gr-plabel'), w = 4 * 7.4, x0 = lab.a === 'end' ? lab.x - w : lab.x;
+  const box = [x0, lab.y - 11, x0 + w, lab.y + 4];
+  for (const c of M.curves(spec, {})) for (let x = 0; x <= 10; x += 0.05) { const h = M.y(c, x); if (h == null) continue; const X = M.px(x), Y = M.py(h); assert.ok(!(X > box[0] && X < box[2] && Y > box[1] && Y < box[3]), `"Hire" sits on ${c.id}`); }
+});
+test('axis marks close in value are spread apart', () => {
+  const s = svgOf({ kind: 'sd-micro', policy: { type: 'tax', amount: 1 }, do: ['label'] });
+  const ys = texts(s).filter(t => t.cls.startsWith('mic-gr-mark') && t.x === M.BOX.L - 4).map(t => t.y).sort((a, b) => a - b);
+  for (let i = 1; i < ys.length; i++) assert.ok(ys[i] - ys[i - 1] >= 13 - 1e-6, `marks ${ys[i - 1]} and ${ys[i]} touch`);
+  const xs = texts(svgOf({ kind: 'sd-micro', policy: { type: 'tariff', at: 2, amount: 1 }, do: ['label'] })).filter(t => t.cls.startsWith('mic-gr-mark') && t.y === M.BOX.T + M.BOX.PH + 13).map(t => t.x).sort((a, b) => a - b);
+  for (let i = 1; i < xs.length; i++) assert.ok(xs[i] - xs[i - 1] >= 14, `x marks ${xs[i - 1]} and ${xs[i]} touch`);
+});
+test('labels never overlap: every kind, shifts of one and two steps, price lines, policies', () => {
+  const box = t => { const sub = /<tspan class="mic-gr-sub"[^>]*>([^<]*)/.exec(t.raw) || ['', ''], main = t.raw.replace(/<tspan[^>]*>[^<]*<\/tspan>/g, '').replace(/<[^>]+>/g, ''), w = main.length * 7.2 + sub[1].length * 5.2, x0 = t.a === 'end' ? t.x - w : t.a === 'middle' ? t.x - w / 2 : t.x; return [x0, t.y - 10, x0 + w, t.y + 2]; };
+  const all = svg => [...svg.matchAll(/<text class="(mic-gr-clabel[^"]*|mic-gr-plabel[^"]*)" x="([-\d.]+)" y="([-\d.]+)" text-anchor="(\w+)">([\s\S]*?)<\/text>/g)].filter(m => !/<tspan x=/.test(m[5])).map(m => ({ x: +m[2], y: +m[3], a: m[4], raw: m[5] }));
+  const cases = [];
+  for (const d of [-2, -1, 1, 2]) for (const [kind, c] of [['sd', 'D'], ['sd', 'S'], ['costs', 'MC'], ['costs', 'ATC'], ['pc', 'S'], ['monopoly', 'D'], ['labor', 'DL'], ['monopsony', 'MRP']]) cases.push([{ kind, do: ['label'] }, { [c]: d }]);
+  for (const L of [3, 4.5, 6, 7.5]) cases.push([{ kind: 'costs', line: { id: 'P', at: L }, do: ['label'] }, {}]);
+  for (const ty of ['tax', 'subsidy']) for (const a of [1, 2, 3]) cases.push([{ kind: 'sd-micro', policy: { type: ty, amount: a }, do: ['label'] }, {}]);
+  let n = 0;
+  for (const [spec, shifts] of cases) for (const panel of svgOf(spec, { labelsShown: true, shifts }).split('<svg').slice(1)) {
+    const b = all(panel).map(box);
+    for (let i = 0; i < b.length; i++) for (let j = i + 1; j < b.length; j++) if (b[i][0] < b[j][2] - 1 && b[j][0] < b[i][2] - 1 && b[i][1] < b[j][3] - 1 && b[j][1] < b[i][3] - 1) n++;
+  }
+  assert.equal(n, 0);
+});
+test('a costs graph with a price line reads "Price and cost", marks P, and its line is a label slot; no AVC label on the line label', () => {
+  const spec = { kind: 'costs', line: { id: 'P', at: 6.5 }, do: ['label'] };
+  assert.equal(M.panels(spec)[0].y, 'priceCost'); assert.ok(M.labelOptions(spec, 'y').includes('cost'));
+  assert.ok(M.labelSlots(spec).includes('P'));
+  const s = svgOf(spec);
+  assert.ok(texts(s).some(t => t.cls.startsWith('mic-gr-mark') && t.t === 'P'), 'the axis mark is P'); assert.doesNotMatch(s, /class="mic-gr-mark[^"]*"[^>]*>d = MR/);
+  assert.deepEqual(plain(full({ ...spec, key: {} })).score, 1, 'every slot, the line included, has a right answer');
+});
+test('below the minimum of AVC the firm shuts down: q = 0, no profit or loss box at a positive quantity', () => {
+  const minAvc = M.named({ kind: 'pc' }, {}, 'min-avc');
+  const low = { kind: 'pc', do: ['label'], start: { D: -2, S: 2 } }, L = M.lineAt(low, { shifts: {} });
+  assert.ok(L < minAvc[1]);
+  assert.deepEqual(plain(M.named(low, {}, 'firm')), [0, L]);
+  assert.equal(M.areas({ ...low, do: ['shade'], key: { shade: 'tr' } }).cells.length, 0);
+  assert.match(svgOf(low), /q = 0/); assert.doesNotMatch(svgOf(low), />q<tspan[^>]*>F</);
+});
+test('a straight PPC: the "on" band is narrower on a flat line, and never too thin to land on', () => {
+  const flat = { kind: 'ppc', names: { x: 'A', y: 'B' }, linear: true, ends: { x: 9, y: 3 }, do: ['point'], key: { point: { region: 'on' } } };
+  const c = M.find(M.curves(flat, {}), 'PPC'), X = c.at * c.kx, Y = c.at * c.ky, n = Math.hypot(X, Y);
+  const off = d => [X / 2 + d * Y / n, Y / 2 + d * X / n];   // d graph units out from the middle, perpendicular
+  assert.equal(M.region(flat, {}, off(0.3)), 'outside', 'was on with the fixed 0.4 band'); assert.equal(M.region(flat, {}, off(0.15)), 'on'); assert.equal(M.region(flat, {}, off(-0.3)), 'inside');
+  const square = { ...flat, ends: { x: 8, y: 8 } }, cs = M.find(M.curves(square, {}), 'PPC'), Xs = cs.at * cs.kx;
+  assert.equal(M.region(square, {}, [Xs / 2 + 0.25, Xs / 2 + 0.25]), 'on', '0.35 out on a 45-degree line is still on (band 0.4)');
+});
+test('the demand kind: total revenue and consumer surplus at a price, the unit-elastic midpoint', () => {
+  const spec = { kind: 'demand', line: { id: 'P', at: 6 }, do: ['shade'], key: { shade: 'tr' } };
+  assert.deepEqual(plain(M.check(spec)), []);
+  near(M.areas(spec).cells.find(c => c.id === M.regionCells(spec, 'tr')[0]) ? M.areas(spec).cells.filter(c => M.regionCells(spec, 'tr').includes(c.id)).reduce((a, c) => a + M.polyArea(c.poly), 0) : 0, 24, 0.05);
+  assert.deepEqual(plain(M.named({ kind: 'demand' }, {}, 'unit-elastic')), [5, 5]);
+  const s = svgOf({ kind: 'demand', line: { id: 'P', at: 6 }, do: ['label'] });
+  assert.doesNotMatch(s, /data-curve="S"/); assert.doesNotMatch(s, /mic-gr-eq/); assert.match(s, />Q</);
+  assert.deepEqual(plain(full({ kind: 'demand', do: ['point'], key: { point: { at: 'unit-elastic' } } })).score, 1);
+});
+test('slopes on sd-micro: a steep demand and flat supply put most of a tax on buyers, on the graph', () => {
+  const spec = { kind: 'sd-micro', policy: { type: 'tax', amount: 2 }, slopes: { D: 2, S: 0.5 }, do: ['shade'], key: { shade: 'buyer-burden' } };
+  assert.deepEqual(plain(M.check(spec)), []);
+  const A = M.areas(spec), size = r => A.cells.filter(c => M.regionCells(spec, r).includes(c.id)).reduce((a, c) => a + M.polyArea(c.poly), 0);
+  assert.ok(size('buyer-burden') > 3 * size('seller-burden'), 'the steeper side bears more');
+  const e = M.eq({ kind: 'sd', slopes: { D: 2, S: 0.5 } }, { D: 1 }); near(5 - 2 * (e[0] - 6), e[1]); near(5 + 0.5 * (e[0] - 5), e[1]);
+  assert.ok(M.check({ kind: 'monopoly', slopes: { D: 2 }, do: ['label'] }).length, 'slopes are for sd and sd-micro');
+  assert.deepEqual(plain(M.check({ kind: 'sd', do: ['label'] })), []);
+});
+test('a cell letter keeps clear of a shift arrow', () => {
+  const s = svgOf({ kind: 'sd-micro', policy: { type: 'tax', amount: 1 }, do: ['label'] }, { labelsShown: true, letters: true });
+  const arrow = /<path class="mic-gr-arrow" d="M([-\d.]+) ([-\d.]+)L([-\d.]+) ([-\d.]+)/.exec(s);
+  if (arrow) for (const t of texts(s).filter(t => t.cls === 'mic-gr-cletter')) { const [x0, y0, x1, y1] = arrow.slice(1).map(Number); const tt = Math.max(0, Math.min(1, ((t.x - x0) * (x1 - x0) + (t.y - 4 - y0) * (y1 - y0)) / ((x1 - x0) ** 2 + (y1 - y0) ** 2 || 1))); assert.ok(Math.hypot(t.x - (x0 + tt * (x1 - x0)), t.y - 4 - (y0 + tt * (y1 - y0))) > 6, `letter ${t.t} on the arrow`); }
 });

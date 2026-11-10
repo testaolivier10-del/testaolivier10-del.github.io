@@ -1,0 +1,495 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 6 (docs/apmicro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmicro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-6",
+   "id": "u6-dwl-tax",
+   "topic": "market-efficiency",
+   "practice": "4.C",
+   "skill": "efficiency",
+   "title": "The deadweight loss of a tax",
+   "prompt": "<b>Calculate</b> the deadweight loss of a \\$3 per-unit tax that lowers the quantity traded from 120 to 100 units, and explain why it is a loss.",
+   "checklist": [
+    "Uses the triangle between demand and supply over the units no longer traded",
+    "Shows the numbers: 1/2 x 20 x \\$3",
+    "Says those units were worth more to buyers than they cost sellers"
+   ],
+   "earns": {
+    "answer": "The tax stops 120 - 100 = 20 units from being traded. Each was worth more to buyers than it cost sellers to make, so the surplus they would have created is lost: 1/2 x 20 x \\$3 = \\$30, the triangle between demand and supply over those units.",
+    "why": "It sizes the triangle with the one half and says why the trades lost are a loss."
+   },
+   "misses": {
+    "answer": "The deadweight loss is \\$3 x 100 = \\$300, the tax the government collects.",
+    "why": "That is tax revenue, a transfer to the government; the deadweight loss is the triangle on the units not traded."
+   },
+   "specific": {
+    "slots": {
+     "q": {
+      "label": "The units lost",
+      "options": [
+       "20",
+       "100",
+       "120"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the quantity still traded.",
+       "2": "That is the quantity before the tax."
+      }
+     },
+     "size": {
+      "label": "Deadweight loss",
+      "options": [
+       "\\$30",
+       "\\$60",
+       "\\$300"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That leaves out the one half.",
+       "2": "That is tax revenue."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-neg-externality",
+   "topic": "externalities",
+   "practice": "2.B",
+   "skill": "efficiency",
+   "title": "A negative externality and its fix",
+   "prompt": "<b>Explain</b> how the market quantity of electricity from a polluting plant compares with the efficient quantity, and what policy would correct it.",
+   "checklist": [
+    "Says MSC is above the private supply (MPC) by the cost to others",
+    "Says the market produces more than the efficient quantity where MSB = MSC",
+    "Names a per-unit tax equal to the external cost per unit"
+   ],
+   "earns": {
+    "answer": "Pollution is a cost to others, so the marginal social cost (MSC) is above the plant's private cost (MPC). The market produces where demand meets MPC, more than the efficient quantity where MSB = MSC, which creates a deadweight loss. A per-unit tax equal to the external cost per unit shifts private supply up to MSC and brings output down to the efficient quantity.",
+    "why": "It compares the two quantities, names the deadweight loss and the corrective tax."
+   },
+   "misses": {
+    "answer": "The market makes too little electricity, so the government should subsidize it.",
+    "why": "With a negative externality the market overproduces, so the fix is a tax, not a subsidy."
+   },
+   "specific": {
+    "slots": {
+     "q": {
+      "label": "The market quantity is",
+      "options": [
+       "more than the efficient quantity",
+       "less than the efficient quantity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ignoring a cost to others makes output too large."
+      }
+     },
+     "fix": {
+      "label": "The corrective policy",
+      "options": [
+       "a per-unit tax equal to the external cost",
+       "a per-unit subsidy",
+       "a price ceiling"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A subsidy raises output further.",
+       "2": "A ceiling does not price the pollution."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-pos-externality",
+   "topic": "externalities",
+   "practice": "2.B",
+   "skill": "efficiency",
+   "title": "A positive externality and its fix",
+   "prompt": "<b>Explain</b> how the market quantity of college education compares with the efficient quantity if educated workers also raise the productivity of others, and what policy would correct it.",
+   "checklist": [
+    "Says MSB is above private demand (MPB) by the benefit to others",
+    "Says the market produces less than the efficient quantity where MSB = MSC",
+    "Names a per-unit subsidy equal to the external benefit per unit"
+   ],
+   "earns": {
+    "answer": "The benefit to others makes the marginal social benefit (MSB) higher than the private benefit (MPB). The market produces where MPB meets supply, less than the efficient quantity where MSB = MSC, which leaves a deadweight loss. A per-unit subsidy equal to the external benefit per unit raises the quantity to the efficient one.",
+    "why": "It compares the quantities, names the loss and the corrective subsidy."
+   },
+   "misses": {
+    "answer": "The market makes too much education, so a tax would fix it.",
+    "why": "With a positive externality the market underproduces, so the fix is a subsidy."
+   },
+   "specific": {
+    "slots": {
+     "q": {
+      "label": "The market quantity is",
+      "options": [
+       "less than the efficient quantity",
+       "more than the efficient quantity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ignoring a benefit to others makes output too small."
+      }
+     },
+     "fix": {
+      "label": "The corrective policy",
+      "options": [
+       "a per-unit subsidy equal to the external benefit",
+       "a per-unit tax"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A tax lowers output further from the efficient quantity."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-pigouvian-tax",
+   "topic": "externalities",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "The size of a corrective tax",
+   "prompt": "<b>Calculate</b> the per-unit tax that brings a factory's output to the efficient quantity if its pollution does \\$3 of harm to others for each unit, and explain the result.",
+   "checklist": [
+    "Sets the tax equal to the external cost per unit: \\$3",
+    "Says the tax raises the firm's private cost to the social cost",
+    "Says the market then produces where MSB = MSC"
+   ],
+   "earns": {
+    "answer": "The external cost is \\$3 a unit, so the corrective tax is \\$3 per unit. It raises the factory's private marginal cost by \\$3, up to the marginal social cost, so the market now produces where demand (MSB) meets MSC: the efficient quantity, with no deadweight loss.",
+    "why": "It sizes the tax from the external cost and explains what it does to output."
+   },
+   "misses": {
+    "answer": "The tax should be large enough to stop the factory from polluting at all.",
+    "why": "The efficient quantity is not zero output; the tax equals the harm per unit, \\$3."
+   },
+   "specific": {
+    "slots": {
+     "tax": {
+      "label": "The tax per unit",
+      "options": [
+       "\\$3, the external cost",
+       "large enough to stop all output"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Some output is worth its full social cost; the tax prices the harm, \\$3."
+      }
+     },
+     "result": {
+      "label": "With the tax the market produces",
+      "options": [
+       "where MSB = MSC",
+       "zero"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The efficient quantity is where MSB meets MSC, not zero."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-public-good",
+   "topic": "public-goods",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Why markets underprovide public goods",
+   "prompt": "<b>Explain</b> why a private firm would provide too little of a flood wall that protects a whole town.",
+   "checklist": [
+    "Says the wall is nonexcludable: people who do not pay are still protected",
+    "Says it is nonrival: one more person protected costs nothing extra",
+    "Names the free-rider problem: few would pay, so the firm cannot cover its costs"
+   ],
+   "earns": {
+    "answer": "The flood wall is nonexcludable, since the firm cannot stop people who do not pay from being protected, and nonrival, since protecting one more household costs nothing extra. So people have a reason to free ride, few would pay, and a private firm could not cover its costs, so it would provide too little.",
+    "why": "It names both properties and the free-rider problem that follows."
+   },
+   "misses": {
+    "answer": "A private firm would not build it because flood walls are too expensive.",
+    "why": "High cost is not the reason; the problem is that people who do not pay still benefit."
+   },
+   "specific": {
+    "slots": {
+     "excl": {
+      "label": "The wall is",
+      "options": [
+       "nonexcludable",
+       "excludable"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Everyone behind the wall is protected, paying or not."
+      }
+     },
+     "prob": {
+      "label": "The problem is",
+      "options": [
+       "free riding",
+       "diminishing returns"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Diminishing returns are about production, not about who pays."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-common-resource",
+   "topic": "public-goods",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "Overuse of a common resource",
+   "prompt": "<b>Explain</b> why a lake open to anyone who wants to fish is likely to be overfished.",
+   "checklist": [
+    "Says the fish are rival: a fish caught by one person cannot be caught by another",
+    "Says the lake is nonexcludable: no one can be kept from fishing",
+    "Says each fisher ignores the cost to others, so the lake is overused"
+   ],
+   "earns": {
+    "answer": "Fish in an open lake are rival, because each fish one person catches is a fish no one else can catch, and nonexcludable, because anyone may fish. Each fisher weighs only his own catch and ignores the cost of fewer fish for everyone else, so together they take more than is efficient and the lake is overfished.",
+    "why": "It names both properties and the cost each fisher ignores."
+   },
+   "misses": {
+    "answer": "The lake is overfished because fish are a public good.",
+    "why": "A public good is nonrival; fish are rival, which makes the lake a common resource."
+   },
+   "specific": {
+    "slots": {
+     "rival": {
+      "label": "The fish are",
+      "options": [
+       "rival",
+       "nonrival"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A fish caught by one person is gone for others."
+      }
+     },
+     "type": {
+      "label": "So the lake is",
+      "options": [
+       "a common resource",
+       "a public good",
+       "a club good"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Public goods are nonrival.",
+       "2": "Club goods are excludable."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-lump-sum",
+   "topic": "intervention-structures",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "A lump-sum tax on a monopoly",
+   "prompt": "<b>Explain</b> how a lump-sum tax on a monopoly changes its MC and ATC curves, its output and its price.",
+   "checklist": [
+    "Says a lump-sum tax is a fixed cost: ATC shifts up",
+    "Says MC does not change with a lump-sum tax",
+    "Says output and price stay where MR = MC, and profit falls"
+   ],
+   "earns": {
+    "answer": "A lump-sum tax is paid whatever the firm produces, so it is a fixed cost: ATC shifts up and MC does not move. Since MR and MC are unchanged, the monopoly keeps producing where MR = MC and charges the same price from demand. Only its profit falls, by the amount of the tax.",
+    "why": "It separates the curves that move and follows through to output, price and profit."
+   },
+   "misses": {
+    "answer": "The tax raises costs, so the monopoly cuts output and raises its price.",
+    "why": "A lump-sum tax leaves MC in place, so output and price do not change."
+   },
+   "specific": {
+    "slots": {
+     "curves": {
+      "label": "The curve that shifts up",
+      "options": [
+       "ATC only",
+       "MC and ATC"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A lump-sum tax does not change with output, so MC stays."
+      }
+     },
+     "q": {
+      "label": "Output and price",
+      "options": [
+       "stay the same",
+       "output falls, price rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is what a per-unit tax would do, by raising MC."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-regulated-monopoly",
+   "topic": "intervention-structures",
+   "practice": "2.B",
+   "skill": "efficiency",
+   "title": "Regulating a monopoly to the efficient quantity",
+   "prompt": "<b>Explain</b> what a price ceiling set where demand meets MC does to a monopoly's output and to deadweight loss.",
+   "checklist": [
+    "Says the ceiling makes MR flat at that price up to demand",
+    "Says the monopoly now produces where demand meets MC",
+    "Says the deadweight loss is removed"
+   ],
+   "earns": {
+    "answer": "With a ceiling at the price where demand meets MC, the monopoly cannot charge more, so its marginal revenue is flat at that price up to the demand curve. It produces where that price equals MC, the quantity where demand meets MC. That is the efficient quantity, so the deadweight loss is removed.",
+    "why": "It explains the new MR, the new output and the efficiency result."
+   },
+   "misses": {
+    "answer": "The ceiling lowers the price, so the monopoly produces less and there is a shortage.",
+    "why": "At this ceiling the monopoly produces more, up to where demand meets MC, with no shortage."
+   },
+   "specific": {
+    "slots": {
+     "q": {
+      "label": "Output",
+      "options": [
+       "rises to where demand meets MC",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With a flat MR at the ceiling, the firm produces more, not less."
+      }
+     },
+     "dwl": {
+      "label": "Deadweight loss",
+      "options": [
+       "is removed",
+       "grows"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output reaches the efficient quantity."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-lorenz",
+   "topic": "inequality",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Reading a Lorenz curve point",
+   "prompt": "<b>Calculate</b> the point on the Lorenz curve at 40 percent of households, if the lowest fifth of households receive 5 percent of income and the second fifth 10 percent, and compare it with the line of equality.",
+   "checklist": [
+    "Adds the shares from the bottom: 5% + 10%",
+    "Plots the point at 40% of households and 15% of income",
+    "Says the line of equality would be at 40%, so income is unequal"
+   ],
+   "earns": {
+    "answer": "A Lorenz curve is cumulative, so at 40 percent of households income is 5% + 10% = 15%. The point is (40%, 15%). On the line of equality it would be 40%, so the curve lies below the line and income is unequally shared.",
+    "why": "It adds the shares from the bottom and compares with the line of equality."
+   },
+   "misses": {
+    "answer": "At 40 percent of households, income is 10 percent, the second fifth's share.",
+    "why": "A Lorenz curve adds the shares from the bottom; the second fifth alone is not the point."
+   },
+   "specific": {
+    "slots": {
+     "add": {
+      "label": "Income at 40% of households",
+      "options": [
+       "15%",
+       "10%",
+       "40%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the second fifth alone.",
+       "2": "That is the line of equality."
+      }
+     },
+     "cmp": {
+      "label": "Against the line of equality, the curve is",
+      "options": [
+       "below it: unequal",
+       "on it: equal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "15% is less than 40%, so the curve lies below the line."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-progressive-tax",
+   "topic": "inequality",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "Taxes and transfers and the Lorenz curve",
+   "prompt": "<b>Explain</b> how a more progressive income tax, with the revenue paid as transfers to low-income households, changes the Lorenz curve for income after taxes and transfers.",
+   "checklist": [
+    "Says income moves from high-income to low-income households",
+    "Says the lower shares rise, so the curve moves toward the line of equality",
+    "Says the Gini coefficient falls"
+   ],
+   "earns": {
+    "answer": "A more progressive tax takes a larger share of high incomes, and the transfers raise low incomes. The shares of the lower groups rise, so the after-tax Lorenz curve moves toward the line of equality, and the Gini coefficient, the gap between the line and the curve, falls.",
+    "why": "It explains the shift in income shares and the direction the curve moves."
+   },
+   "misses": {
+    "answer": "The tax lowers everyone's income, so the Lorenz curve moves away from the line of equality.",
+    "why": "The transfers raise low incomes, so the curve moves toward the line, not away."
+   },
+   "specific": {
+    "slots": {
+     "dir": {
+      "label": "The Lorenz curve moves",
+      "options": [
+       "toward the line of equality",
+       "away from the line of equality"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Income is shared more equally after the transfers."
+      }
+     },
+     "gini": {
+      "label": "The Gini coefficient",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A curve closer to the line means a smaller Gini coefficient."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

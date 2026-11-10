@@ -2,14 +2,13 @@
  "id": "frq-game-monopoly-long",
  "type": "long",
  "points": 10,
- "title": "Two bike-share firms in a payoff matrix, then a monopoly with a lump-sum fee",
+ "title": "Two bike-share firms in a payoff matrix, then one firm's short-run cost curves",
  "units": [
   "unit-3",
   "unit-4"
  ],
  "topics": [
   "short-run-costs",
-  "monopoly",
   "oligopoly-game-theory"
  ],
  "practices": [
@@ -92,22 +91,7 @@
   {
    "label": "B",
    "points": 1,
-   "prompt": "<b>Explain</b>, using the numbers in the matrix, why Sunpath does not have a dominant strategy.",
-   "rubric": [
-    {
-     "point": "Gives both comparisons for Sunpath: if Pedalwise expands, Stay is better (25 > 10); if Pedalwise stays, Expand is better (50 > 48). So its best choice depends on Pedalwise's.",
-     "accept": [
-      "25 > 10 and 50 > 48"
-     ]
-    }
-   ],
-   "sample": "If Pedalwise chooses Expand, Sunpath earns 10 from Expand and 25 from Stay, so Stay is better. If Pedalwise chooses Stay, Sunpath earns 50 from Expand and 48 from Stay, so Expand is better. Sunpath's best choice changes with Pedalwise's choice, so it has no dominant strategy."
-  },
-  {
-   "label": "C",
-   "points": 1,
    "type": "matrix",
-   "prompt": "The city now pays Sunpath a subsidy of \\$20 thousand a month whenever it chooses Expand. <b>Identify</b> each firm's dominant strategy, if any, after the subsidy.",
    "matrix": {
     "players": [
      {
@@ -148,151 +132,152 @@
      ]
     ],
     "unit": "$",
-    "change": {
-     "player": 1,
-     "strategy": 0,
-     "amount": 20
-    },
     "do": [
-     "dominant"
+     "joint"
     ]
    },
+   "prompt": "<b>Identify</b> the pair of strategies that gives the two firms the largest combined profit.",
    "rubric": [
     {
-     "point": "Sunpath's dominant strategy is now Expand (30 > 25 and 70 > 48), and Pedalwise's is still Expand.",
+     "point": "Both firms Stay (50 + 48 = 98), which is not the Nash equilibrium",
      "accept": [
-      "both firms: Expand"
+      "both stay, 98 in total"
      ],
-     "auto": "dominant"
+     "auto": "joint"
     }
    ],
-   "sample": "Sunpath's Expand payoffs rise to 30 and 70. Expand now beats Stay whatever Pedalwise does (30 > 25 and 70 > 48), so Expand is Sunpath's dominant strategy. Pedalwise's payoffs did not change, so Expand is still its dominant strategy."
+   "sample": "Adding the two payoffs in each cell gives 55, 95, 90 and 98. The largest is both firms choosing Stay: 50 + 48 = 98 (thousand dollars)."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Explain</b>, using the numbers in the matrix, why the pair of strategies in part B is not a Nash equilibrium.",
+   "rubric": [
+    {
+     "point": "If Sunpath stays, Pedalwise earns more by choosing Expand (70 > 50), so Pedalwise would switch away from Stay",
+     "accept": [
+      "Pedalwise would switch to Expand because 70 > 50"
+     ]
+    }
+   ],
+   "sample": "At (Stay, Stay) Pedalwise earns 50. If it switched to Expand while Sunpath stays, it would earn 70, so Pedalwise is not making its best response and would switch. A cell where a firm wants to change its choice is not a Nash equilibrium."
   },
   {
    "label": "D",
    "points": 2,
    "type": "graph",
-   "prompt": "Later, Pedalwise buys Sunpath and becomes the only bike-share firm in the city, earning a positive economic profit. <b>Draw</b> a correctly labeled graph for Pedalwise showing demand, marginal revenue, marginal cost and average total cost, and <b>show</b> its profit-maximizing price and quantity, labeled PM and QM.",
    "graph": {
-    "kind": "monopoly",
+    "kind": "costs",
     "do": [
      "label",
      "point"
     ],
-    "pointLabel": "M",
+    "pointLabel": "X",
     "key": {
      "point": {
-      "at": "profit-max"
+      "at": "min-atc"
      }
     }
    },
+   "prompt": "Pedalwise's costs: <b>draw</b> a correctly labeled graph of Pedalwise's short-run marginal cost (MC), average variable cost (AVC) and average total cost (ATC) curves, and <b>show</b> the number of rides at which ATC is at its minimum, labeled X.",
    "rubric": [
     {
-     "point": "A correctly labeled monopoly graph: axes, downward-sloping D, MR below D, MC crossing ATC at the minimum of ATC.",
+     "point": "A correctly labeled graph: cost on the vertical axis and output (rides) on the horizontal axis; U-shaped AVC and ATC, with ATC above AVC; MC rising through the minimum of AVC and of ATC",
      "accept": [
-      "axes labeled P and Q"
+      "axes labeled cost and Q",
+      "MC crossing AVC and ATC at their lowest points"
      ],
      "auto": "labels"
     },
     {
-     "point": "QM where MR = MC and PM on the demand curve above QM, with PM above ATC at QM.",
+     "point": "X at the output where MC crosses ATC, the lowest point of ATC",
      "accept": [
-      "dotted lines from demand to both axes"
+      "the minimum of ATC, where MC = ATC"
      ],
      "auto": "point"
     }
    ],
-   "sample": "Price and cost on the vertical axis, Quantity on the horizontal. D slopes down, MR lies below it, MC crosses ATC at its minimum. QM is where MR = MC; PM is read straight up on the demand curve, above ATC at QM."
+   "sample": "Cost on the vertical axis, output (rides) on the horizontal. AVC and ATC are U-shaped, ATC above AVC, and the gap between them narrows as output rises. MC rises through the lowest point of AVC and then the lowest point of ATC. X is marked at the output where MC crosses ATC."
   },
   {
    "label": "E",
    "points": 1,
+   "prompt": "<b>Explain</b> why the MC curve crosses the ATC curve at the lowest point of ATC.",
+   "rubric": [
+    {
+     "point": "When MC is below ATC, each extra ride pulls the average down; when MC is above ATC, it pulls the average up; so ATC is lowest where MC = ATC",
+     "accept": [
+      "a marginal below the average lowers it and above the average raises it"
+     ]
+    }
+   ],
+   "sample": "If the cost of one more ride (MC) is less than the average cost per ride, adding that ride lowers the average, so ATC falls. If MC is more than ATC, adding the ride raises the average, so ATC rises. ATC therefore stops falling and starts rising exactly where MC equals ATC, its lowest point."
+  },
+  {
+   "label": "F(i)",
+   "points": 1,
    "type": "graph",
-   "prompt": "The city charges Pedalwise a lump-sum license fee each year, the same whatever number of rides it provides. <b>Show</b> the effect of the fee on your graph by shifting the curve or curves that change.",
    "graph": {
-    "kind": "monopoly",
+    "kind": "costs",
     "do": [
      "shift"
     ],
     "movable": [
-     "D",
      "MC",
      "ATC"
     ],
     "key": {
      "shifts": [
       {
-       "curve": "ATC",
+       "curve": "MC",
        "dir": "up"
       }
      ],
-     "because": "a lump-sum license fee (a fixed cost)"
+     "because": "higher pay per repair, a variable cost"
+    },
+    "slips": {
+     "ATC": "Pay for each repair rises with every extra ride, so it is a variable cost: MC shifts up, and AVC and ATC move up with it."
     }
    },
+   "prompt": "Pedalwise pays its mechanics for each repair, and the pay per repair rises. <b>Show</b> the effect on your graph by shifting the curve or curves that change.",
    "rubric": [
     {
-     "point": "Shifts ATC up and leaves MC (and D and MR) unchanged.",
+     "point": "MC shifts up, and AVC and ATC shift up with it",
      "accept": [
-      "ATC2 drawn above ATC1, MC unchanged"
+      "MC2 drawn above MC1, with AVC and ATC higher"
      ],
      "auto": "shift"
     }
    ],
-   "sample": "ATC shifts up to ATC2. MC, demand and MR do not move."
-  },
-  {
-   "label": "F(i)",
-   "points": 1,
-   "prompt": "<b>Identify</b> the effect of the lump-sum fee on Pedalwise's profit-maximizing quantity and price.",
-   "rubric": [
-    {
-     "point": "Both the quantity and the price stay the same.",
-     "accept": [
-      "no change in QM or PM",
-      "unchanged"
-     ]
-    }
-   ],
-   "sample": "Pedalwise's profit-maximizing quantity and price do not change."
+   "sample": "Pay per repair is a variable cost, so the cost of each extra ride rises: MC shifts up to MC2, and AVC and ATC shift up with it."
   },
   {
    "label": "F(ii)",
    "points": 1,
-   "prompt": "<b>Explain</b> your answer to F(i).",
+   "prompt": "<b>Explain</b> why Pedalwise's average fixed cost does not change when the pay per repair rises.",
    "rubric": [
     {
-     "point": "Explains that the fee is a fixed cost, so it does not change marginal cost; MR and MC still cross at the same quantity, and the price on demand at that quantity is the same (only profit falls).",
+     "point": "Pay per repair is a variable cost, so total fixed cost (and so AFC = TFC ÷ Q at each output) is unchanged",
      "accept": [
-      "MC does not change, so MR = MC at the same quantity"
+      "the rise is in variable cost, not fixed cost"
      ]
     }
    ],
-   "sample": "The lump-sum fee does not depend on how many rides Pedalwise provides, so it is a fixed cost: it raises ATC but leaves MC unchanged. MR still equals MC at the same quantity, and the price read from demand at that quantity is the same. Only Pedalwise's profit falls, by the amount of the fee."
+   "sample": "Average fixed cost is total fixed cost divided by output. Pay per repair changes with the number of rides, so it is a variable cost; total fixed cost is the same as before, and so is AFC at every output."
   },
   {
    "label": "G",
    "points": 1,
-   "type": "graph",
-   "prompt": "<b>Shade</b> the deadweight loss that results from Pedalwise's monopoly.",
-   "graph": {
-    "kind": "monopoly",
-    "do": [
-     "shade"
-    ],
-    "key": {
-     "shade": "dwl"
-    }
-   },
+   "prompt": "<b>Identify</b> what happens to the vertical gap between ATC and AVC as Pedalwise provides more rides, and <b>explain</b>.",
    "rubric": [
     {
-     "point": "Shades the area between demand and MC, from QM to the quantity where demand meets MC.",
+     "point": "The gap narrows, because it equals AFC, and AFC falls as the same fixed cost is spread over more rides",
      "accept": [
-      "the triangle between D and MC to the right of QM"
-     ],
-     "auto": "shade"
+      "it gets smaller: ATC - AVC = AFC, which falls as output rises"
+     ]
     }
    ],
-   "sample": "The deadweight loss is the triangle between the demand curve and MC, from QM to the quantity where demand meets MC."
+   "sample": "The gap gets smaller. ATC - AVC = AFC, and AFC is a fixed amount divided by the number of rides, so it falls as Pedalwise provides more rides."
   }
  ]
 }

@@ -18,7 +18,9 @@ least-cost input rule, tax types in 6.5, and the graph labeling appendix.
 Not confirmed for Micro. Treated as Macro (resolved there: five on the CED's sample questions, no change listed for
 the course): five, (A) to (E), on practice exam forms (`MCQ_OPTIONS = 5`, `scripts/lib/apmicro-exams.mjs`), four
 in the bank (`BANK_OPTIONS = 4`; the forms add a fifth option to each bank question). Confirm from the Micro CED's
-sample questions and College Board's course changes page before Phase 3.
+sample questions and College Board's course changes page before Phase 3. (Phase 3, 2026-11-09: still not
+confirmed from a Micro source; the forms are built with five, as planned. If the exam has four, drop the fifth
+options in `data/exams/fifth.json`, rewrite the 20 exam-only items to four and set `MCQ_OPTIONS = 4`.)
 
 ## midpoint: is the midpoint elasticity formula required? (open, 2026-11-09)
 
@@ -103,3 +105,34 @@ rectangles in `mic-monopoly-15` and `mic-monopolistic-competition-15` are thin (
 kits by the MR = MC rule although profit is \$8 at both 3 and 4 kits (now explained, with 3 as a named mistake);
 a person may prefer new table numbers with no tie.
 
+
+## land-resources: do harvested crops and raw materials count as "land"? (open, 2026-11-09)
+
+From `docs/apmicro-reviews/u1.md`. Textbooks differ on whether harvested crops, timber and mined raw materials are
+"land" (natural resources) or goods made with land, labor and capital. The Unit 1 items now avoid classifying them.
+A person should pick one house rule for the course (suggested: land is the natural resource in place, a forest or
+an ore deposit; what is harvested or mined from it is a good) and say it once in the 1.1 notes, so items can use it.
+(Integration 2026-11-09: since `graph.start` now allows 3 steps, point (2) of `u4-review` can be acted on by a
+reviewer.)
+
+
+## phase3: points left by the Phase 3 build (open, 2026-11-09)
+
+From `docs/apmicro-reviews/phase3.md`.
+1. **Engine (integrator)**: at 360 px a graph stimulus scales its SVG text down to about 8 px (area letters, P and
+   Q marks), for bank and exam graphs alike; the payoff matrix's row-header column is narrow enough to break a
+   9-letter strategy name inside the word. The exam items use short strategy names (Ads, No ads; Early, Late) to
+   avoid the second. A minimum rendered text size on phones, or a scrollable wider graph, needs a `mic-graph.js` or
+   `mic.css` change.
+2. **Shared toast**: the "Save my progress" toast on the results screen reads "30/60 &mdash; and 26 missed ..." with
+   an em dash (shared site file, not the course).
+3. **Stimulus cap**: `EXAM_STIMULI` 8-22 a form is our estimate, copied from Macro. With it, Units 1 and 2 use
+   standalone bank questions almost only; if the Micro exam has more stimulus questions, the cap and the forms
+   could carry more of the bank's data and graph sets.
+4. **Exam-only science**: items 1-02 to 1-10 and 2-02 to 2-10 cover Topics 3.2 to 6.5, where the CED text was not
+   read (`ced-text`); the shutdown rule, the fair-return price, MRP = MFC with the wage from supply and the Lorenz
+   curve as cumulative shares are standard and match the course's own lessons. Phase 4 reviewers check them.
+5. **Bank fix made in Phase 3**: the Skylark Air stimulus (`price-discrimination-s3`) had "$90" and "$260"
+   unescaped, so they rendered as one math span and overflowed the Unit 4 test page at 360 px; now `\$`. The
+   content check does not catch an unescaped dollar pair that parses as TeX; a rule for "letters run together in a
+   math span" would.

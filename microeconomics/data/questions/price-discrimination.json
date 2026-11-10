@@ -71,7 +71,7 @@
   "price-discrimination-s3": {
    "kind": "text",
    "title": "Skylark Air fares",
-   "text": "<p>Skylark Air (invented) is the only airline on the route between two small cities. It sells the same seat for $90 if booked three weeks ahead with a Saturday night stay, and for $260 if booked the week of travel. Tickets carry the traveler's name and cannot be resold. Business travelers usually book late; vacation travelers plan ahead.</p>"
+   "text": "<p>Skylark Air (invented) is the only airline on the route between two small cities. It sells the same seat for \\$90 if booked three weeks ahead with a Saturday night stay, and for \\$260 if booked the week of travel. Tickets carry the traveler's name and cannot be resold. Business travelers usually book late; vacation travelers plan ahead.</p>"
   }
  },
  "items": [

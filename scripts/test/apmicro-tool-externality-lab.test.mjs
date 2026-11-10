@@ -42,7 +42,11 @@ test('externality-lab: Explore model matches the recipes', () => {
   assert.equal(s.market, 5); assert.equal(s.efficient, 4); assert.equal(s.dwl, Calc.evaluate({ fn: 'dwl', args: [1, 2] }));
   assert.equal(model.state('neg-prod', 2, 2).dwl, 0);
   assert.equal(model.specB('neg-prod', 2, 2), null);
-  assert.equal(model.specB('neg-prod', 2, 3).ext.type, 'pos-prod', 'a tax past the external cost leaves a loss on the other side');
+  // A tax past the external cost leaves a loss on the other side: the engine shades it on the picture itself
+  // (between the market quantity 3.5 and the efficient 4).
+  const over = model.specB('neg-prod', 2, 3), G = globalThis.ApMicroGraph || runtime('externality-lab').Graph;
+  const xs = G.areas(over).cells.filter(c => G.regionCells(over, 'dwl').includes(c.id)).flatMap(c => c.poly.map(p => p[0]));
+  assert.ok(Math.min(...xs) >= 3.5 - 1e-6 && Math.max(...xs) <= 4 + 1e-6, 'the over-correction loss lies between 3.5 and 4');
   const t = model.publicTable(model.PEOPLE, 40);
   assert.deepEqual([...t.rows.map(r => r.sum)], [72, 54, 38, 24, 12]);
   assert.equal(t.efficient, 2);

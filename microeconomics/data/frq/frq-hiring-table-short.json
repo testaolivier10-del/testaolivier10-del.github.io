@@ -2,7 +2,7 @@
  "id": "frq-hiring-table-short",
  "type": "short",
  "points": 5,
- "title": "A hiring table at a bicycle repair shop",
+ "title": "A hiring table at a bicycle repair shop: a lower wage, a higher price and derived demand",
  "units": [
   "unit-3",
   "unit-5"
@@ -59,75 +59,74 @@
   {
    "label": "A",
    "points": 1,
-   "prompt": "<b>Calculate</b> the marginal revenue product of the third mechanic. Show your work.",
+   "prompt": "<b>Calculate</b> the marginal revenue product of the fourth mechanic. Show your work.",
    "rubric": [
     {
-     "point": "\\$40 a day, with work shown: MP = 34 - 24 = 10 repairs, and MRP = 10 × \\$4",
+     "point": "\\$24 a day, with work shown: MP = 40 - 34 = 6 repairs, and MRP = 6 × \\$4",
      "accept": [
-      "(34 - 24) × 4 = 40",
-      "MRP = MP × P = 10 × \\$4 = \\$40"
+      "(40 - 34) × 4 = 24",
+      "MRP = MP × P = 6 × \\$4 = \\$24"
      ]
     }
    ],
-   "sample": "The third mechanic's marginal product is 34 - 24 = 10 repairs. MRP = MP × P = 10 × \\$4 = \\$40 a day."
+   "sample": "The fourth mechanic's marginal product is 40 - 34 = 6 repairs. MRP = MP × P = 6 × \\$4 = \\$24 a day."
   },
   {
-   "label": "B",
+   "label": "B(i)",
    "points": 1,
-   "prompt": "<b>Identify</b> the mechanic with whom diminishing marginal returns begin.",
+   "prompt": "The market wage for mechanics falls to \\$20 a day. <b>Identify</b> the number of mechanics Spokewell now hires to maximize profit.",
    "rubric": [
     {
-     "point": "The third mechanic: marginal product falls from 14 (second) to 10 (third)",
+     "point": "4 mechanics",
      "accept": [
-      "the third mechanic",
-      "marginal product begins to fall with the third"
+      "four"
      ]
     }
    ],
-   "sample": "Diminishing marginal returns begin with the third mechanic. Marginal product rises from 10 to 14 with the second mechanic, then falls to 10 with the third."
+   "sample": "Spokewell now hires 4 mechanics."
   },
   {
-   "label": "C(i)",
+   "label": "B(ii)",
    "points": 1,
-   "prompt": "<b>Identify</b> the number of mechanics Spokewell hires to maximize profit.",
+   "prompt": "<b>Explain</b> your answer to B(i) using marginal revenue product and marginal resource cost.",
    "rubric": [
     {
-     "point": "3 mechanics",
+     "point": "The fourth mechanic's MRP (\\$24) is greater than the MRC of \\$20 (the wage), while the fifth mechanic's MRP (3 × \\$4 = \\$12) is less than \\$20, so hiring stops at 4",
      "accept": [
-      "three"
-     ]
-    }
-   ],
-   "sample": "Spokewell hires 3 mechanics."
-  },
-  {
-   "label": "C(ii)",
-   "points": 1,
-   "prompt": "<b>Explain</b> your answer to C(i) using marginal revenue product and marginal resource cost.",
-   "rubric": [
-    {
-     "point": "The third mechanic's MRP (\\$40) is at least the MRC of \\$30 (the wage), while the fourth mechanic's MRP (6 × \\$4 = \\$24) is less than \\$30, so hiring stops at 3",
-     "accept": [
-      "MRP of the 3rd = \\$40 > \\$30 and MRP of the 4th = \\$24 < \\$30",
+      "MRP of the 4th = \\$24 > \\$20 and MRP of the 5th = \\$12 < \\$20",
       "hire while MRP ≥ MRC = wage"
      ]
     }
    ],
-   "sample": "A profit-maximizing firm hires while MRP is at least MRC, and in a competitive labor market MRC equals the wage, \\$30. The MRPs are \\$40, \\$56, \\$40, \\$24 and \\$12. The third mechanic adds \\$40, more than \\$30, but the fourth adds only 6 × \\$4 = \\$24, less than \\$30, so Spokewell hires 3."
+   "sample": "A profit-maximizing firm hires while MRP is at least MRC, and in a competitive labor market MRC equals the wage, now \\$20. The MRPs are \\$40, \\$56, \\$40, \\$24 and \\$12. The fourth mechanic adds \\$24, more than \\$20, but the fifth adds only 3 × \\$4 = \\$12, less than \\$20, so Spokewell hires 4."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "Instead, the wage stays at \\$30 a day, and the market price of a repair rises to \\$6. <b>Identify</b> whether Spokewell now hires the fourth mechanic, and <b>explain</b> using numbers.",
+   "rubric": [
+    {
+     "point": "Yes: at \\$6 the fourth mechanic's MRP is 6 × \\$6 = \\$36, more than the \\$30 wage (the fifth's is 3 × \\$6 = \\$18, less than \\$30)",
+     "accept": [
+      "yes, MRP = 6 × 6 = \\$36 > \\$30"
+     ]
+    }
+   ],
+   "sample": "Yes. A higher price raises the MRP of every mechanic. The fourth mechanic's MRP is now 6 × \\$6 = \\$36, more than the \\$30 wage, so hiring that mechanic adds to profit. (The fifth mechanic's MRP, 3 × \\$6 = \\$18, is still below \\$30.)"
   },
   {
    "label": "D",
    "points": 1,
-   "prompt": "The rent on Spokewell's shop rises by \\$100 a week. <b>Identify</b> the effect on the number of mechanics it hires, and <b>explain</b>.",
+   "prompt": "<b>Explain</b> why Spokewell's demand for mechanics is called a derived demand.",
    "rubric": [
     {
-     "point": "No change (still 3 mechanics), because rent is a fixed cost that changes neither any mechanic's MRP nor the MRC (the wage)",
+     "point": "Spokewell hires mechanics only because customers buy repairs: its demand for mechanics comes from (is derived from) the demand for the repairs they produce",
      "accept": [
-      "the number hired stays the same because a fixed cost does not change MRP or MRC"
+      "the demand for labor depends on the demand for the product the labor makes"
      ]
     }
    ],
-   "sample": "Spokewell still hires 3 mechanics. Rent is a fixed cost: it is paid whatever the number of mechanics, so it changes neither the MRP of any mechanic nor the \\$30 cost of hiring one more. The comparison of MRP with MRC, and so the hiring choice, is unchanged; only profit falls."
+   "sample": "Spokewell does not want mechanics for their own sake; it hires them to produce repairs that customers buy. So its demand for mechanics depends on the demand for repairs, through the price of a repair in MRP = MP × P: if the demand for repairs rises, so does the demand for mechanics."
   }
  ]
 }

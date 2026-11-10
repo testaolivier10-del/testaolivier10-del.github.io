@@ -95,7 +95,7 @@ One branch, `claude/apmicro`, one PR at the end.
 | 0 | Fork AP® Macroeconomics: runtime `microeconomics/assets/` (`mic-*`), `ApMicroCalc`, graph engine extensions (5b), generator, checks, tests, fixture, registration hidden, SQL migration; CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-11-09** (5b-as-built below; `docs/apmicro-architecture.md`) |
 | 1 | Content: lessons, notes, banks (with stimulus sets and `graph` items), FRQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
-| 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | |
+| 3 | Two practice exams, unit tests, "Make it specific" prompts, graph and formula page, cram kit | **built 2026-11-09** (section 5c, decision 11): two forms in the May 2027 format (60 standalone five-option MCQs in course order, U1 8, U2 14, U3 14, U4 11, U5 7, U6 6; 50 bank questions each with a fifth option in `data/exams/fifth.json` plus 10 exam-only; FRQs long, short, short on different units); 20 exam-only items (numbers in `EXAM_NUMBERS`, graphs in `EXAM_GRAPHS`, payoff matrices in `EXAM_MATRICES`); 64 "Make it specific" prompts (10 per unit, 4 in graph skills, every skill, a builder on each, numbers in `JUSTIFY_NUMBERS`); formula page 29 rows, 11 flagged, 17 graphs (7 flagged) and the payoff matrix; unit tests and cram kit tested on the real forms; review `docs/apmicro-reviews/phase3.md`; open points under `phase3` in needs-author |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
 | Launch | Publish, generators (paths included), continuity pass, "fifteen courses" wording (count `assets/courses.js` at merge), full CI with browser checks, PR, launch steps | |
 
@@ -148,6 +148,47 @@ One branch, `claude/apmicro`, one PR at the end.
   part (`type: 'matrix'`) and drill step (`kind: 'matrix'`).
 - Course shell budget raised to 113 KB (`mic-graph.js` is about 27 KB gzipped); the formulas page to 24 KB.
 
+### 5c. Phase 3 as built (2026-11-09)
+
+- **Format**: as Macro's 5c. Five choices, (A) to (E), on the forms and four in the bank (needs-author `mcq-options`
+  still open for Micro: not confirmed from the Micro CED); Section I questions stand alone, one stimulus to one
+  question (`EXAM_SETS` data 2-12, graph 3-10, text 0-8; `EXAM_STIMULI` 8-22; `EXAM_ONLY` 8-16 a form,
+  `scripts/lib/apmicro-exams.mjs`).
+- **Forms** (`microeconomics/data/exams/forms.json`): one question a block, in course order, by unit weight (8, 14,
+  14, 11, 7, 6). Each of the 100 bank questions the forms use gets a fifth option in `fifth.json` (option and why),
+  merged by `examVersion` into `assets/exams/items.json`, which serves all 120 questions with five options and the
+  explanations inline. No lesson check item, no stimulus twice, no question in both forms. The `EXAM_STIMULI` cap of
+  22 is what forced standalone bank questions over set questions in Units 1 and 2 (bank stimulus questions per form:
+  10 and 9).
+- **Exam-only items** (`items.json`, `mic-exam-<form>-<nn>`, 10 a form: U2 2, U3 3, U4 3, U5 1, U6 1, where Units 3
+  to 6 run short of standalone questions, and to put graph and matrix reads in each form): 20 stimuli (11 data,
+  7 graph, 2 payoff matrices as text stimuli). Keys at (A) to (E) four times each. Every numeric key and its named
+  distractors recomputed in `EXAM_NUMBERS` (11 items, ApMicroCalc); every graph read in `EXAM_GRAPHS` (7: the
+  lettered cells of each region an option names, and named points compared, e.g. the fair-return quantity between
+  MR = MC and P = MC); every matrix read in `EXAM_MATRICES` (2: dominant strategies, every Nash cell, the
+  joint-payoff cell; `checkMatrices`, new). Stimulus questions per form: 20 (data 7, graph 9, text 4) and 19
+  (10, 6, 3); graph-reading questions 9 and 6, payoff matrix 1 each.
+- **Section II**: form 1 `frq-perfect-competition-long` (U2, U3), `frq-game-theory-short` (U4),
+  `frq-externality-short` (U6); form 2 `frq-labor-market-long` (U3, U5), `frq-price-control-short` (U2),
+  `frq-ppc-trade-short` (U1). Long questions carry graph parts.
+- **Prompts** (`microeconomics/data/justify/*.json`): 64, ten per unit and four in graph skills; skills graph 13,
+  calculate 15, identify 9, marginal 6, area 5, compare 4, efficiency 4, longrun 3, derived 3, price 2; a builder on
+  each; the first 3 in course order free; 29 with numbers or matrix claims in `JUSTIFY_NUMBERS`.
+- **Formula page** (`EQ`, `GRAPHS`, `MATRIX_CARD` in `scripts/lib/apmicro-entry.mjs`): 29 rows in five groups
+  (choices and trade 2, elasticity and revenue 7, surplus, taxes and trade 7, production, costs and profit 9,
+  factor markets 4), each an ApMicroCalc recipe with a worked line; 11 rows and 7 graphs flagged "Easy to forget"
+  and listed at the top; 17 graphs drawn by the engine and the payoff matrix. Phase 3 added price elasticity of
+  supply, producer surplus, average product, total cost and marginal revenue (flagged).
+- **Unit tests** never show a practice-exam question (`unitSample`), 12 per unit. Cram kit tested with the real
+  topics, 18 FRQs, prompts and forms. Content check: exam-only items as five-option items, fifth options for
+  repeats, absolutes, math, language and position words, the length tell, key position and test-wise limits per
+  form as served, graph, matrix and number recomputation.
+- Walked in Chromium at 1280 light and 360 dark (form 1 whole, form 2 at 1280): start, graph MCQ 21 (ceiling, areas
+  lettered), matrix MCQ 47, FRQ 1 part A graph, end, self-score, results on the shared score card with Section I
+  (30/60) and Section II (self score) apart; no console errors from the pages (only the analytics call the sandbox
+  blocks), no horizontal overflow. Matrix strategy names kept short (Ads, No ads) so the row headers do not break
+  inside a word at 360.
+
 ## 6. Trainers
 
 Each has Explore and Test yourself (seeded drills, feedback naming the slip), as the other courses.
@@ -186,6 +227,24 @@ page (the AI grader hook only when its eval passes).
 6. (2026-11-09) **Free tier:** "Graph skills you need", Unit 1 and Unit 2 topics 2.1 to 2.4 as lessons (notes are
    always free), following Macro's shape (early units free).
 7. (2026-11-09) **Invented firms, goods and countries** in graded content, as Macro's rule; dollars throughout.
+8. (2026-11-09, integration) **General cost words early.** Total cost is taught in 1.5 and marginal cost (MC) in
+   1.6, both in full in 3.2 (pull-forward `general-cost-words`); "technology" is an everyday word; the lump-sum tax
+   is taught in 3.2 with the ATC-only shift; productive efficiency has its PPC sense in 1.3 and its minimum-ATC sense
+   in 3.7. A concept's glossary definition comes from the file of the topic that teaches it. The mark "AP®" is not
+   the average-product alias. Details: `docs/apmicro-reviews/integration.md`.
+9. (2026-11-09, integration) **FRQ ordering stays as Macro's:** an FRQ unlocks with the latest topic it lists; a
+   Unit 2 FRQ says "competitive: many buyers and sellers, each too small to set the price", never "perfectly
+   competitive" (3.7).
+10. (2026-11-09, integration) **Engine additions** (`mic-graph.js`): a per-unit cost lifts ATC with MC; areas follow
+   the curves as shown (`start`, `show`); a regulated monopoly price has its own regions; the `demand` kind;
+   `slopes` on sd and sd-micro for incidence; `showLabel`, `pointMarks`, `curveN0`, `followerOld`; shutdown below
+   minimum AVC; starting shifts up to 3 steps; label placement with axis marks spread. Select-all items with one
+   key: 11 of 35 (rule: at least 20%).
+11. (2026-11-09, Phase 3) **Exams, prompts and the formula page as built** (section 5c), Macro's decision 11 for
+   Micro: five choices on the forms and standalone Section I questions; the bank stays at four options and the forms
+   add a fifth per question; exam-only items where Units 3 to 6 run short of standalone questions and to put graph
+   reads and a payoff matrix in each form; payoff-matrix reads checked by `ApMicroMatrix` (`EXAM_MATRICES`) as graph
+   reads are by the engine.
 
 ## 9. Open items for the owner
 

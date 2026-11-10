@@ -17,11 +17,9 @@
      state(type, gap, t)        { market, efficient, dq, wedge, dwl } in graph units,
                                 after a corrective policy of t steps (t = gap fixes it)
      specA(type, gap, t)        the picture: the private curve shifted by the policy
-     specB(type, gap, t)        the same market drawn so ApMicroGraph.areas shades the
-                                deadweight loss left after the policy (null when none):
-                                the policy-adjusted curve as the private one, the social
-                                curve where it really is (see the lead request in
-                                docs/apmicro-reviews/self-t4.md)
+     specB(type, gap, t)        the picture as a shading spec (key: the deadweight loss
+                                left after the policy; null when none). The engine shades
+                                from the curves as shown, so this is specA with do shade.
      publicTable(people, mc)    a public good: sum of marginal benefits per unit and the
                                 efficient number of units (the last whose sum is at least MC)
      generate(rng, ctx, type)   the drills:
@@ -55,11 +53,9 @@
     return s;
   }
   function specB(type, gap, t){
-    var K = KINDS[type], left = gap - (t || 0);
-    if(!left) return null;
-    var s = { kind: 'externality', ext: { type: left > 0 ? type : FLIP[type], gap: Math.abs(left) }, do: ['shade'], key: { shade: 'dwl' } };
-    // The social curve is placed from the graph's middle, so it moves with start too: back where it really is.
-    if(t){ s.start = {}; s.start[K.curve] = K.dir * t; s.start[K.social] = K.dir * t; }
+    // The picture itself, asked to shade: ApMicroGraph.areas follows the shown policy shift (integration 10).
+    if(!(gap - (t || 0))) return null;
+    var s = specA(type, gap, t, ['shade']); s.key = { shade: 'dwl' };
     return s;
   }
 

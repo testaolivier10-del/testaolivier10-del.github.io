@@ -47,7 +47,7 @@ export const MIC_TOPICS = Object.entries(UNIT_SIZES)
   .flatMap(([u, k]) => Array.from({ length: k }, (_, i) => `${u}.${i + 1}`));
 export const RESOLUTIONS = ['pull-forward', 'preview'];
 // The graph kinds an FRQ theme may name (mic-graph.js KINDS), and matrix (mic-matrix.js).
-export const GRAPH_KINDS = ['ppc', 'sd', 'sd-micro', 'costs', 'pc', 'monopoly', 'monocomp', 'labor', 'monopsony', 'externality', 'lorenz', 'matrix'];
+export const GRAPH_KINDS = ['ppc', 'sd', 'demand', 'sd-micro', 'costs', 'pc', 'monopoly', 'monocomp', 'labor', 'monopsony', 'externality', 'lorenz', 'matrix'];
 // The spec's trainers (docs/apmicro-spec.md section 6) and the "Make it
 // specific" trainer: each must be planned in some chapter, exactly once.
 export const REQUIRED_SIMULATORS = [

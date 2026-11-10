@@ -81,7 +81,6 @@
 .ls-root.ls-phone .sl-ts{grid-column:1/-1;font-size:12px;}
 .sl-qfig .table-wrap{max-width:480px;width:100%;margin:auto 0;}
 /* Shading only (no curve moves here): the curves' wide invisible grab strokes must not swallow a tap on an area. */
-.sl-fig .mic-gr-grab,.sl-qfig .mic-gr-grab{pointer-events:none;}
 /* A phone drill: the graph keeps the room (help line hidden, area buttons and the legend compact). */
 .sl-leg{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
 .ls-root.ls-phone .sl-qfig .mic-gr-help{display:none;}

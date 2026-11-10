@@ -1,0 +1,201 @@
+{
+ "about": "\"Make it specific\" prompts for the \"Graph skills you need\" chapter (docs/apmicro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmicro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "graph-skills",
+   "id": "gs-label-axes",
+   "topic": "axes-points",
+   "practice": "4.A",
+   "skill": "graph",
+   "title": "Label a graph so the reader can score it",
+   "prompt": "<b>Draw</b> a correctly labeled graph showing how the quantity a store sells of a good changes as its price changes, and say what each axis shows.",
+   "checklist": [
+    "Puts price on the vertical axis and quantity on the horizontal axis",
+    "Labels the curve and marks any point the question names on both axes",
+    "Uses the names in the question, not a letter alone, for each axis"
+   ],
+   "earns": {
+    "answer": "On my graph the vertical axis is labeled \"Price\" and the horizontal axis \"Quantity\". The curve slopes down and is labeled D. The point at the current price is marked P1 on the price axis and Q1 on the quantity axis, so a reader can see both values.",
+    "why": "Both axes are named, the curve is labeled and the point is marked on each axis, which is what a reader checks first."
+   },
+   "misses": {
+    "answer": "I drew a line going down from left to right, with x and y on the axes.",
+    "why": "x and y are not economic labels, the curve has no name and no point is marked, so the graph earns nothing."
+   },
+   "specific": {
+    "slots": {
+     "y": {
+      "label": "The vertical axis shows",
+      "options": [
+       "Price",
+       "Quantity",
+       "y"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Quantity goes on the horizontal axis.",
+       "2": "A bare y is not a label a reader can score."
+      }
+     },
+     "point": {
+      "label": "A point the question names is marked",
+      "options": [
+       "on both axes, as P1 and Q1",
+       "on the curve alone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Without P1 and Q1 on the axes, the values cannot be read or compared."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "graph-skills",
+   "id": "gs-slope",
+   "topic": "slopes-curves",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "The slope of a line from two points",
+   "prompt": "<b>Calculate</b> the slope of a straight line that passes through the points (2, 30) and (6, 50), and show your work.",
+   "checklist": [
+    "Divides the change in the vertical value by the change in the horizontal value",
+    "Uses the same order for both changes (second point minus first)",
+    "States the slope with its sign: positive here"
+   ],
+   "earns": {
+    "answer": "Slope is the rise over the run: (50 - 30) / (6 - 2) = 5. Both changes take the second point minus the first, and the slope is positive, so the line rises by 5 for each 1 it moves to the right.",
+    "why": "It shows the formula with the numbers and gives the sign, so the work earns the point."
+   },
+   "misses": {
+    "answer": "The slope is 20 because the line goes from 30 up to 50.",
+    "why": "That is the rise alone; the run of 4 is not divided out, so the number is wrong and no work is shown."
+   },
+   "specific": {
+    "slots": {
+     "top": {
+      "label": "On top of the fraction",
+      "options": [
+       "the change in the vertical value, 50 - 30",
+       "the change in the horizontal value, 6 - 2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the run; slope is rise over run."
+      }
+     },
+     "sign": {
+      "label": "The slope is",
+      "options": [
+       "positive, 5",
+       "negative, -5",
+       "positive, 20"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Both values rise together, so the slope is positive.",
+       "2": "20 is the rise alone; divide by the run of 4."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "graph-skills",
+   "id": "gs-shift-vs-move",
+   "topic": "shifts-movements",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "A shift of the curve or a move along it",
+   "prompt": "<b>Explain</b> how a change in a good's own price and a change in something else that buyers care about appear differently on a graph of price and quantity.",
+   "checklist": [
+    "Says a change in the good's own price is a movement along the curve",
+    "Says a change in anything else buyers care about shifts the whole curve",
+    "Names the new curve or the new point (D2, or a point further along D1)"
+   ],
+   "earns": {
+    "answer": "A change in the good's own price is a movement along the curve, because price is on an axis: the point slides along D1. A change in something else buyers care about, such as their incomes, shifts the whole curve, and I label the new curve D2.",
+    "why": "It separates the two cases and says why: the price is on an axis, other causes are not."
+   },
+   "misses": {
+    "answer": "When the price changes the curve moves, and when other things change the curve moves too.",
+    "why": "It does not say which change is a movement along the curve and which is a shift, so neither case is right."
+   },
+   "specific": {
+    "slots": {
+     "price": {
+      "label": "A change in the good's own price is",
+      "options": [
+       "a movement along the curve",
+       "a shift of the curve"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Price is on an axis, so its change moves along the curve."
+      }
+     },
+     "other": {
+      "label": "A change in buyers' incomes is",
+      "options": [
+       "a shift of the whole curve",
+       "a movement along the curve"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Income is not on an axis, so the whole curve moves to a new position."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "graph-skills",
+   "id": "gs-shade-area",
+   "topic": "curves-crossing",
+   "practice": "4.C",
+   "skill": "area",
+   "title": "Shade and size a triangle between two lines",
+   "prompt": "<b>Calculate</b> the area of the triangle between two lines that cross, where its base runs 4 units along the horizontal axis and its height is 6 units, and say what the shading must cover.",
+   "checklist": [
+    "Uses one half times base times height for a triangle",
+    "Shows the numbers: 1/2 x 4 x 6",
+    "Says the shading covers the whole triangle between the lines"
+   ],
+   "earns": {
+    "answer": "A triangle's area is 1/2 x base x height, so 1/2 x 4 x 6 = 12 square units. On the graph I shade the whole triangle between the two lines, from where they cross out to the base, not part of it.",
+    "why": "The one half is there, the numbers are shown, and the shading covers the whole region."
+   },
+   "misses": {
+    "answer": "The area is 4 x 6 = 24, and I shaded the space near where the lines cross.",
+    "why": "It leaves out the one half that a triangle needs, and partial shading loses the point."
+   },
+   "specific": {
+    "slots": {
+     "formula": {
+      "label": "The area of a triangle is",
+      "options": [
+       "1/2 x base x height",
+       "base x height"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a rectangle; a triangle is half of it."
+      }
+     },
+     "shade": {
+      "label": "Shade",
+      "options": [
+       "the whole triangle between the lines",
+       "the part nearest the crossing"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Readers score the whole region; part of it loses the point."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

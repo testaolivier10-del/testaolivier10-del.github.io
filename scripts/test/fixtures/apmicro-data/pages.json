@@ -170,7 +170,7 @@
   },
   {
    "slug": "cost-lab",
-   "kind": "skill",
+   "kind": "simulator",
    "topic": "short-run-costs",
    "name": "Cost lab",
    "title": "Cost Curve Lab",

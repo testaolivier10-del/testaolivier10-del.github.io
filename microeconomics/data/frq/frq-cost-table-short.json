@@ -2,13 +2,14 @@
  "id": "frq-cost-table-short",
  "type": "short",
  "points": 5,
- "title": "A small bakery's cost table and its profit-maximizing output",
+ "title": "A small bakery's cost table: fixed cost, the profit-maximizing output and the shut-down rule",
  "units": [
   "unit-3"
  ],
  "topics": [
   "short-run-costs",
-  "profit-maximization"
+  "profit-maximization",
+  "firm-decisions"
  ],
  "practices": [
   "1.C",
@@ -75,21 +76,21 @@
   {
    "label": "B",
    "points": 1,
-   "prompt": "<b>Calculate</b> the average variable cost of 40 bagels. Show your work.",
+   "prompt": "<b>Identify</b> the bakery's total fixed cost, and <b>explain</b> how the table shows it.",
    "rubric": [
     {
-     "point": "\\$2, with work shown: total variable cost (120 - 40 = 80) divided by 40",
+     "point": "\\$40, because total cost at zero output is the cost the bakery pays even when it bakes nothing",
      "accept": [
-      "TVC = TC - TFC = 80; 80 / 40 = 2"
+      "\\$40: total cost when output is 0"
      ]
     }
    ],
-   "sample": "Total fixed cost is the cost at zero output, \\$40, so TVC at 40 bagels is $120 - 40 = 80$ dollars and AVC = $80 \\div 40 = 2$ dollars."
+   "sample": "Total fixed cost is \\$40. At zero bagels the bakery has no variable cost, so the \\$40 it still pays is the cost that does not change with output."
   },
   {
-   "label": "C",
+   "label": "C(i)",
    "points": 1,
-   "prompt": "<b>Identify</b> the profit-maximizing number of bagels.",
+   "prompt": "<b>Identify</b> the profit-maximizing number of bagels at the market price of \\$3.20.",
    "rubric": [
     {
      "point": "50 bagels",
@@ -101,9 +102,9 @@
    "sample": "The profit-maximizing output is 50 bagels a morning."
   },
   {
-   "label": "D",
+   "label": "C(ii)",
    "points": 1,
-   "prompt": "<b>Explain</b> your answer to part C using marginal analysis.",
+   "prompt": "<b>Explain</b> your answer to C(i) using marginal analysis.",
    "rubric": [
     {
      "point": "Up to 50 bagels each added bagel costs no more than the \\$3.20 it adds to revenue (MC of \\$3 between 40 and 50 is below MR = \\$3.20), while bagels 51 to 60 cost \\$4 each, more than MR, so producing them lowers profit",
@@ -115,18 +116,19 @@
    "sample": "Each bagel adds \\$3.20 to revenue (MR = P). From 40 to 50 bagels, MC is (150 - 120) / 10 = \\$3, below MR, so those bagels raise profit. From 50 to 60, MC is (190 - 150) / 10 = \\$4, above MR, so they would lower profit. The bakery stops at 50, the last output where MR is at least MC."
   },
   {
-   "label": "E",
+   "label": "D",
    "points": 1,
-   "prompt": "<b>Calculate</b> the bakery's profit at the profit-maximizing output. Show your work.",
+   "prompt": "The market price of bagels falls to \\$1.60. <b>Explain</b> whether the bakery should keep baking in the short run or shut down, using average variable cost.",
    "rubric": [
     {
-     "point": "\\$10, with work shown: total revenue (3.20 x 50 = 160) minus total cost (150)",
+     "point": "Shut down: the lowest AVC in the table is \\$1.75 (at 20 bagels, \\$35 ÷ 20), above the \\$1.60 price, so at every output revenue does not cover variable cost and baking would lose more than the \\$40 fixed cost",
      "accept": [
-      "TR - TC = 160 - 150 = 10"
+      "shut down because P = \\$1.60 is below the minimum AVC of \\$1.75",
+      "shut down: price below AVC at every output"
      ]
     }
    ],
-   "sample": "TR = $3.20 \\times 50 = 160$ dollars and TC = 150 dollars, so profit = $160 - 150 = 10$ dollars."
+   "sample": "AVC is (TC - 40) ÷ Q: \\$2.00 at 10 bagels, \\$1.75 at 20, about \\$1.83 at 30 and \\$2.00 at 40, so its lowest value is \\$1.75. A price of \\$1.60 is below that, so at any output the bakery would not cover its variable cost: baking 20 bagels, for example, brings in \\$32 but adds \\$35 of variable cost. By shutting down it loses only its \\$40 fixed cost, which is less, so it should shut down in the short run."
   }
  ]
 }

@@ -321,3 +321,18 @@ test('key position balance: no option holds the key in more than 40% of a topic,
   assert.equal(keyPositionTell([0, 0, 0, 0, 0].map(c => q(c, { fixed: true }))), null, 'fixed items keep their order');
   assert.equal(keyPositionTell([0, 0, 1, 2].map(c => q(c))), null, 'too few items to judge');
 });
+
+/* Integration 2026-11-09: the no-JavaScript key line of a shade item keeps the engine's region words out of the
+   ordering scan; a concept's definition comes from the glossary file of the topic that teaches it. */
+test('a shade item\'s key line wraps the region names in mic-noscan; the early definition wins', async () => {
+  const { questionHtml, loadCourse } = await import('../lib/apmicro-build.mjs');
+  const html = questionHtml({ id: 'mic-x-1', type: 'graph', q: 'Shade it.', graph: { kind: 'sd', do: ['shade'], key: { shade: 'cs' } }, why: 'Because.' }, 1);
+  assert.match(html, /Key: <span class="mic-noscan">shade consumer surplus<\/span>/);
+  const C = loadCourse();
+  assert.equal(C.glossary['total-cost']._file, 'cost-benefit.json');
+  assert.equal(C.glossary['marginal-cost']._file, 'marginal-analysis.json');
+  const { glossaryAll } = await import('../check-apmicro-content.mjs');
+  const { loadMap } = await import('../lib/apmicro-map.mjs');
+  const map = loadMap(new URL('../../docs/apmicro-dependency-map.json', import.meta.url));
+  assert.equal(glossaryAll(map)['total-cost'].def, C.glossary['total-cost'].def, 'the check reads the same definition as the build');
+});

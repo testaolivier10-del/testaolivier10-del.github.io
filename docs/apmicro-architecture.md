@@ -63,11 +63,12 @@ of AVC and of ATC; `COST.firm`, `COST.monopoly`, `COST.natural`.
 | kind | curves (movable) | regions to shade | named points | line |
 |---|---|---|---|---|
 | `ppc` (`bow: 'in'` for constant or decreasing cost) | PPC | | | |
-| `sd` | D, S | cs, ps, ts | eq | |
+| `sd` (`slopes`) | D, S | cs, ps, ts | eq | |
+| `demand` | D | tr, cs at the price line | unit-elastic, at-price | P (`line: { id: 'P', at }`) |
 | `sd-micro` with `policy` | D, S | per policy, below | eq | the policy line |
-| `costs` (`set: short\|long`, `afc`) | MC, ATC (AVC follows MC, AFC follows ATC); LRATC | | min-atc, min-avc, min-mc, mes | |
+| `costs` (`set: short\|long`, `afc`) | MC, ATC (AVC follows MC, AFC follows ATC); LRATC | | min-atc, min-avc, min-mc, mes | P (optional: the axis reads "Price and cost", the line is a label slot) |
 | `pc` (panels market, firm) | D, S; MC, ATC | profit or loss, tr, tc | market, firm, min-atc, min-avc | P, carried from market to firm |
-| `monopoly` (`natural`) | D (MR follows), MC, ATC | cs, dwl, profit, tr, tc | profit-max, mr=mc, allocative, fair-return, revenue-max | Pr |
+| `monopoly` (`natural`) | D (MR follows), MC, ATC | cs, dwl, profit, tr, tc (with `line` Pr below the monopoly price: the same names after the regulation, Q where Pr meets D or MC) | profit-max, mr=mc, allocative, fair-return, revenue-max | Pr |
 | `monocomp` (`run: short\|long`) | D (MR follows), MC, ATC | cs, dwl, profit (short run), tr, tc | profit-max, mr=mc, allocative, min-atc | |
 | `labor` (panels market, firm) | DL, SL; MRP | | market, firm | W, carried to the firm |
 | `monopsony` | SL (MFC follows), MRP | wage-bill, dwl | hire, mrp=mfc, competitive, min-wage | MW |
@@ -77,7 +78,14 @@ of AVC and of ATC; `COST.firm`, `COST.monopoly`, `COST.natural`.
 `sd-micro` regions by `policy.type`: `ceiling` and `floor` (`at`): cs, ps, dwl, ts, transfer, cs-before,
 ps-before; `tax` (`amount`): cs, ps, tax-revenue, buyer-burden, seller-burden, dwl; `subsidy` (`amount`): cs, ps,
 subsidy-cost, dwl; `world` (`at`): cs, ps, gain, ts; `tariff` (`at`, `amount`): cs, ps, tariff-revenue, dwl. A tax
-draws S shifted up by `amount` and a subsidy S shifted down (fixed offsets, not a student shift).
+draws S shifted up by `amount` and a subsidy S shifted down (fixed offsets, not a student shift); with a shift task
+the after-tax guides wait for the key. `slopes: { D, S }` (0.5, 1, 2) on `sd` and `sd-micro` sets steepness (a tax
+of `amount` is `amount / slope` steps sideways), so incidence follows elasticity.
+
+Areas follow the curves as shown (`start` and `show`): a corrective tax drawn with `show` shades the loss left. The
+externality's social curve sits `gap` steps from where its private curve starts and never moves. A per-unit cost
+(MC shifted) lifts AVC and ATC with it and draws ATC as shifted; a lump-sum cost (ATC shifted) moves ATC and AFC. On
+`pc`, a price below minimum AVC puts the firm at q = 0 (shutdown). `start` allows -3 to 3 steps.
 
 ### Item format (additions to Macro's)
 
@@ -91,6 +99,9 @@ graph: { kind, panels?, start?, show?, policy?, ext?, natural?, run?, set?, afc?
     shade?: <region> | [<region>, ...]                              graded by cell identity
   },
   letters?: true          print a letter in each cell (a stimulus asks "which area is ...")
+  showLabel?: { S: 'S + tax' }   the label of a curve drawn shifted by show (unnumbered)
+  pointMarks?: { x: 'Q_M', y: 'P_M' }   dashed guides and axis marks for the placed point
+  slopes?: { D, S }       sd and sd-micro only
   slips?: { <curve or region>: sentence } }
 ```
 
@@ -110,7 +121,11 @@ one cell too many or too few is wrong, and the feedback names what the extra or 
 viewBox 360 by 300 per panel. Two panels sit side by side when there is room (each at least 320 px) and wrap one
 above the other on a phone; the line in a two-panel kind is drawn dashed across the gap. Shading: tap or click a
 cell (letters a, b, c ... mark the cells), or use the "Area a" toggle buttons under the graph (keyboard and screen
-reader); a second tap clears it. Labels use candidate positions so they do not overlap; long line labels (d = MR = AR = P) wrap in the
+reader); a second tap clears it. Renderer state beyond Macro's: `shade` (cells shown shaded on a picture with no
+shade task, without letters), `curveN0` (the number on faded curves), `followerOld: false` (no label on a
+follower's old place). Grab strokes take no taps without a shift or line task. Labels use candidate positions so
+they do not overlap (the long line label is placed first; arrows and guides are soft obstacles; cell letters keep
+clear of arrows); axis marks close in value are spread along their axis; long line labels (d = MR = AR = P) wrap in the
 right margin. Every graph has an `aria-label` from `describe(spec)`, so a screen reader hears the policy, the
 shift and the outcome.
 
@@ -141,6 +156,13 @@ add a fifth (decision 5). Stimulus kinds `data`, `graph` (a spec, drawn at build
 `text`; a stimulus may also carry a `matrix`. The fixture `scripts/test/fixtures/apmicro-data/` has one of every
 format, including the new graph kinds, a shade item, a two-panel FRQ part and a matrix FRQ part.
 
+## Ordering scan and glossary
+
+`scripts/lib/apmicro-map.mjs` masks "AP®" (it is not the average-product alias "AP") and skips `.mic-preview`,
+`.mic-nav-ref` and `.mic-noscan` (words the engine writes, such as region names in a shade item's no-JavaScript key
+line). A concept's glossary definition is read from `glossary/<taughtIn>.json` when that file has it, else from the
+first file by name (build and content check agree; `glossaryAll(map)`).
+
 ## Generator: `scripts/build-apmicro.mjs` (+ `scripts/lib/apmicro-*.mjs`)
 
 As Macro's. `apmicro-build.mjs` holds `IDENTITY`, `FREE_UNITS` (`['unit-1']`) and `FREE_TOPICS` (Topics 2.1 to 2.4:
@@ -160,9 +182,21 @@ long (10 points) then two short (5 points). Four-function calculator in both sec
 the checker enforces the reader-report rules (a chain with three links, entry or exit in a long-run chain, MRP in a
 derived-demand chain, both comparisons for a dominant strategy, price from demand, the marginal rule stated).
 
+## Practice exams (Phase 3)
+
+`data/exams/forms.json` (two forms, one question a block, course order), `fifth.json` (a fifth option and its why
+for each bank question a form uses; `examVersion` puts it in at `fifthAt(id)`), `items.json` (exam-only items
+`mic-exam-<form>-<nn>` and their stimuli `exam-<form>-s<n>`). The checks in `scripts/lib/apmicro-exams.mjs`:
+`checkForms`, `checkFifth`, `checkNumbers` (`EXAM_NUMBERS`, `JUSTIFY_NUMBERS`), `checkGraphs` (`EXAM_GRAPHS`: curves
+moved, outcomes, `regions: { name: cells }` for lettered areas, `points: [a, '<', b, 'x'|'y']` for named points) and
+`checkMatrices` (`EXAM_MATRICES`: dominant strategies, Nash cells, joint cell, by `ApMicroMatrix`). A payoff matrix
+stimulus is a `text` stimulus with `matrix`; keep strategy names short (they head narrow rows on a phone). Status:
+`docs/apmicro-spec.md` section 5c.
+
 ## Tools
 
-Eight trainers (spec section 6), registered in `microeconomics/data/pages.json`, each four files owned by one
+Eight trainers (spec section 6), registered in `microeconomics/data/pages.json` (its `kind` must equal the data
+file's), each four files owned by one
 builder: `assets/tools/<slug>.js`, `assets/tools/math/<slug>.js`, `scripts/lib/apmicro-tool-checks/<slug>.mjs`,
 `scripts/test/apmicro-tool-<slug>.test.mjs`. Phase 0 stubs register `{ stub: true }` and pass the frame check; a
 tool page is built only when `data/tools/<slug>.json` exists and its topic is published. Drill steps: `num`,

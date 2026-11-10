@@ -39,7 +39,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/apmicro-build.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, checkFifth, checkGraphs, examVersion, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, MCQ_OPTIONS as EXAM_OPTIONS } from './lib/apmicro-exams.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, checkFifth, checkGraphs, checkMatrices, examVersion, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER, JUSTIFY_PER_SKILLS_CHAPTER, MCQ_OPTIONS as EXAM_OPTIONS } from './lib/apmicro-exams.mjs';
 import { scanPage, indexMap } from './lib/apmicro-map.mjs';
 import { Tex, Plot, Grade, Stats, Graph, Matrix } from './lib/apmicro-mathlib.mjs';
 export { trademarkProblems };
@@ -762,6 +762,9 @@ if (isMain) {
     if (exists(join(DATA, 'tools', `${t.slug}.json`))) {
       if (!exists(join(ROOT, 'microeconomics', 'assets', 'tools', `${t.slug}.js`))) bad(`no script microeconomics/assets/tools/${t.slug}.js`);
       if (!exists(join(ROOT, 'microeconomics', 'assets', 'tools', 'math', `${t.slug}.js`))) bad(`no model file microeconomics/assets/tools/math/${t.slug}.js`);
+      // The hub group (pages.json) and the page eyebrow (the data file) say the same kind (integration T2).
+      const tk = readJson(join(DATA, 'tools', `${t.slug}.json`)).kind;
+      if (tk && tk !== t.kind) bad(`kind "${t.kind}" here but "${tk}" in data/tools/${t.slug}.json; make them the same`);
     }
     if (t.studio !== true) bad('every tool is on the Tool Studio ("studio": true)');
     if (typeof t.topic !== 'string' || (map && !map.topicById(t.topic))) bad(`"topic" must be the tool's context topic in the map (got ${JSON.stringify(t.topic)})`);
@@ -826,6 +829,7 @@ if (isMain) {
       for (const e of testWise(served)) bad2(`${f.id}: ${e}`);
     }
     for (const e of checkGraphs(examItems, ex.stimuli)) bad2(e);
+    for (const e of checkMatrices(examItems, ex.stimuli)) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
     // About ten prompts per unit (as AP® Precalculus), a few in the graph skills chapter.
     if (prompts.length < 50) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 50`);

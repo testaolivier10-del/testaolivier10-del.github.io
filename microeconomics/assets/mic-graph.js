@@ -113,6 +113,11 @@
       confuse: { x: ['goodY', 'quantity', 'price'], y: ['goodX', 'price', 'quantity'] }, curveConfuse: ['D', 'MC'] },
     sd: { title: 'Supply and demand', x: 'quantity', y: 'price', curves: sdCurves, eq: ['D', 'S'], out: { x: 'quantity', y: 'price' }, mark: ['Q', 'P'],
       confuse: { x: ['realGdp', 'output', 'price'], y: ['priceLevel', 'quantity', 'cost'] }, curveConfuse: ['MR', 'MC'] },
+    // Demand alone (the Elasticity Lab, total revenue): a price line spec.line { id: 'P', at } marks a point on it.
+    demand: { title: 'Demand', x: 'quantity', y: 'price', curves: function(){ return [{ id: 'D', shape: 'down', at: 5 }]; }, eq: null, out: null,
+      text: function(spec, id){ return id === 'P' ? ['P', '', 'the price'] : null; },
+      confuse: { x: ['realGdp', 'output', 'price'], y: ['priceLevel', 'quantity', 'cost'] }, curveConfuse: ['S', 'MR'], lineConfuse: ['Dd', 'MR', 'S'],
+      points: { 'unit-elastic': 'main', 'at-price': 'main' } },
     'sd-micro': { title: 'Supply and demand', x: 'quantity', y: 'price', curves: sdCurves, eq: ['D', 'S'], out: { x: 'quantity', y: 'price' }, mark: ['Q', 'P'],
       confuse: { x: ['realGdp', 'output', 'price'], y: ['priceLevel', 'quantity', 'cost'] }, curveConfuse: ['MR', 'MC'],
       points: { eq: 'main' } },
@@ -175,7 +180,7 @@
   var VERTICAL_SHIFT = { horizontal: 1, mc: 1, avc: 1, atc: 1, afc: 1, lratc: 1, lorenz: 1 };
   var MAX_STEPS = 3;
   function kindOf(spec){ var k = KINDS[spec && spec.kind]; if(!k) throw new Error('ApMicroGraph: unknown graph kind "' + (spec && spec.kind) + '" (one of ' + Object.keys(KINDS).join(', ') + ')'); return k; }
-  function panelsOf(spec){ var k = kindOf(spec); return k.panels || [{ id: 'main', x: k.x, y: k.y }]; }
+  function panelsOf(spec){ var k = kindOf(spec); return k.panels || [{ id: 'main', x: k.x, y: spec.kind === 'costs' && spec.line ? 'priceCost' : k.y }]; }   // a cost graph with a price on it (integration u3)
   function defsOf(spec){ return kindOf(spec).curves(spec || {}); }
   function axisOf(shape){ return VERTICAL_SHIFT[shape] ? 'y' : 'x'; }
   function isPpc(shape){ return shape === 'ppc' || shape === 'ppcline' || shape === 'ppcin'; }
@@ -198,9 +203,11 @@
   function fixedOffsets(spec){
     var off = {}, P = spec.policy, does = spec.do || [];
     Object.keys(spec.show || {}).forEach(function(c){ off[c] = spec.show[c]; });
-    if(P && does.indexOf('shift') < 0){ if(P.type === 'tax') off.S = (off.S || 0) - (P.amount || 1); if(P.type === 'subsidy') off.S = (off.S || 0) + (P.amount || 1); }
+    if(P && does.indexOf('shift') < 0){ if(P.type === 'tax') off.S = (off.S || 0) - taxSteps(spec); if(P.type === 'subsidy') off.S = (off.S || 0) + taxSteps(spec); }
     return off;
   }
+  // A per-unit tax or subsidy of `amount` moves S up or down by amount: amount / (the slope of S) steps sideways.
+  function taxSteps(spec){ var P = spec.policy || {}, kS = spec.slopes && (spec.kind === 'sd' || spec.kind === 'sd-micro') && spec.slopes.S ? +spec.slopes.S : 1; return (P.amount || 1) / kS; }
   function merge(a, b){ var o = {}, k; for(k in a || {}) o[k] = a[k]; for(k in b || {}) o[k] = (o[k] || 0) + b[k]; for(k in o) if(!o[k]) delete o[k]; return o; }
 
   /* ---------------------------------------------------------- geometry */
@@ -216,6 +223,7 @@
     defs.forEach(function(d){
       var o = { id: d.id, shape: d.shape, panel: d.panel || 'main', p: d.p, follows: d.follows, fixed: !!d.fixed, at: (d.at || 0) + (start[d.id] || 0) + (off[d.id] || 0), base: (d.at || 0) + (start[d.id] || 0), steps: off[d.id] || 0 };
       if(line && d.shape === 'ppc'){ o.shape = 'ppcline'; o.kx = sh[0]; o.ky = sh[1]; }
+      if(spec.slopes && (spec.kind === 'sd' || spec.kind === 'sd-micro') && spec.slopes[d.id] && (d.shape === 'down' || d.shape === 'up')) o.k = +spec.slopes[d.id];
       out.push(o); by[d.id] = o;
     });
     defs.forEach(function(d){
@@ -233,8 +241,8 @@
   function find(list, id){ for(var i = 0; i < list.length; i++) if(list[i].id === id) return list[i]; return null; }
   function y(c, x){
     var v, p = c.p;
-    if(c.shape === 'down') v = 5 - (x - c.at);
-    else if(c.shape === 'up') v = 5 + (x - c.at);
+    if(c.shape === 'down') v = 5 - K(c) * (x - c.at);
+    else if(c.shape === 'up') v = 5 + K(c) * (x - c.at);
     else if(c.shape === 'horizontal') v = c.at;
     else if(c.shape === 'mr') v = 5 + c.at - 2 * x;
     else if(c.shape === 'mfc') v = 5 - c.at + 2 * x;
@@ -251,6 +259,8 @@
     else return null;   // vertical: no height function
     return v;
   }
+  // The steepness of a straight D or S (spec.slopes on sd and sd-micro; 1 everywhere else).
+  function K(c){ return c && c.k ? c.k : 1; }
   function inBox(p){ return p[0] >= -1e-9 && p[0] <= 10 + 1e-9 && p[1] >= -1e-9 && p[1] <= 10 + 1e-9; }
   function r6(v){ return Math.round(v * 1e6) / 1e6; }
   // The x in [lo, hi] where f changes sign (bisection), or null.
@@ -282,7 +292,7 @@
     if(!a || !b) return null;
     if(a.shape === 'vertical' && b.shape === 'vertical') return null;
     if(a.shape === 'vertical' || b.shape === 'vertical'){ var v = a.shape === 'vertical' ? a : b, o = v === a ? b : a, h = y(o, v.at); return h == null ? null : [v.at, h]; }
-    if(a.shape === 'down' && b.shape === 'up') return [(a.at + b.at) / 2, 5 + (a.at - b.at) / 2];
+    if(a.shape === 'down' && b.shape === 'up'){ if(K(a) === 1 && K(b) === 1) return [(a.at + b.at) / 2, 5 + (a.at - b.at) / 2]; var xk = (K(a) * a.at + K(b) * b.at) / (K(a) + K(b)); return [xk, 5 + K(b) * (xk - b.at)]; }
     if(a.shape === 'up' && b.shape === 'down') return cross(b, a);
     var x = root0(function(t){ var p = y(a, t), q = y(b, t); return p == null || q == null ? null : p - q; }, lo == null ? 0.3 : lo, hi == null ? 10 : hi);
     return x == null ? null : [x, y(a, x)];
@@ -360,7 +370,10 @@
       case 'mes': var LR = g('LRATC'); p = LR && lowest(LR, 0, 10); return p && [r6(p[0]), r6(p[1])];
       case 'firm':
         if(spec.kind === 'labor'){ var R = g('MRP'); if(L == null || !R) return null; var xr = xAt(R, L); return xr == null ? null : [r6(xr), r6(L)]; }
-        if(!MC || L == null) return null; var xf = xAt(MC, L); return xf == null ? null : [r6(xf), r6(L)];
+        if(!MC || L == null) return null;
+        // Below the minimum of AVC the firm shuts down: it produces nothing (integration u3).
+        var AV = g('AVC'), mv = AV && lowest(AV, 0.3, 10); if(mv && L < mv[1] - 1e-9) return [0, r6(L)];
+        var xf = xAt(MC, L); return xf == null ? null : [r6(xf), r6(L)];
       case 'mr=mc': p = cross(MR, MC, MC && lowest(MC, 0, 10)[0], 10); return p && [r6(p[0]), r6(p[1])];
       case 'profit-max': p = cross(MR, MC, MC && lowest(MC, 0, 10)[0], 10); return p && [r6(p[0]), r6(y(D, p[0]))];
       case 'allocative': p = cross(D, MC, MC && lowest(MC, 0, 10)[0], 10); return p && [r6(p[0]), r6(p[1])];
@@ -373,6 +386,8 @@
       case 'mrp=mfc': var mf2 = cross(g('MFC'), g('MRP')); return mf2 && [r6(mf2[0]), r6(mf2[1])];
       case 'competitive': var cp = cross(g('MRP'), g('SL')); return cp && [r6(cp[0]), r6(cp[1])];
       case 'min-wage': if(L == null) return null; var qs = xAt(g('SL'), L), qd = xAt(g('MRP'), L); if(qs == null || qd == null) return null; return [r6(Math.min(qs, qd)), r6(L)];
+      case 'unit-elastic': if(!D) return null; var xu = (5 + D.at) / 2; return [r6(xu), r6(y(D, xu))];   // the midpoint of a straight demand
+      case 'at-price': if(!D || L == null) return null; var xp = xAt(D, L); return xp == null ? null : [r6(xp), r6(L)];
       case 'efficient': var e = extOf(spec), X = EXT[e.type] || EXT['neg-prod'], s = g(X.social), o = X.of === 'S' ? g('D') : g('S'); p = cross(X.of === 'S' ? o : s, X.of === 'S' ? s : o); return p && [r6(p[0]), r6(p[1])];
     }
     void k;
@@ -405,7 +420,7 @@
       var E = cross(D0, S0), Qe = E[0], Pe = E[1], P = spec.policy;
       if(!P){ add('a', band(D0, Pe, 0, Qe)); add('b', band(Pe, S0, 0, Qe)); reg('cs', ['a']); reg('ps', ['b']); reg('ts', ['a', 'b']); }
       else if(P.type === 'ceiling' || P.type === 'floor' || P.type === 'tax'){
-        var Q1 = P.type === 'ceiling' ? xAt(S0, P.at) : P.type === 'floor' ? xAt(D0, P.at) : cross(D0, find(curves(spec, merge(shown, { S: -(P.amount || 1) })), 'S'))[0];
+        var Q1 = P.type === 'ceiling' ? xAt(S0, P.at) : P.type === 'floor' ? xAt(D0, P.at) : cross(D0, find(curves(spec, merge(shown, { S: -taxSteps(spec) })), 'S'))[0];
         if(Q1 != null && Q1 < Qe - 1e-6){
           var Pt = y(D0, Q1), Pb = y(S0, Q1);
           add('a', band(D0, Pt, 0, Q1)); add('b', band(Pt, Pe, 0, Q1)); add('c', band(D0, Pe, Q1, Qe)); add('d', band(Pe, Pb, 0, Q1)); add('e', band(Pe, S0, Q1, Qe)); add('f', band(Pb, S0, 0, Q1));
@@ -415,7 +430,7 @@
           if(P.type === 'tax'){ reg('cs', ['a']); reg('ps', ['f']); reg('tax-revenue', ['b', 'd']); reg('buyer-burden', ['b']); reg('seller-burden', ['d']); }
         }
       } else if(P.type === 'subsidy'){
-        var Q2 = cross(D0, find(curves(spec, merge(shown, { S: P.amount || 1 })), 'S'))[0], Pc = y(D0, Q2), Pp = y(S0, Q2);
+        var Q2 = cross(D0, find(curves(spec, merge(shown, { S: taxSteps(spec) })), 'S'))[0], Pc = y(D0, Q2), Pp = y(S0, Q2);
         add('a', band(D0, Pe, 0, Qe)); add('b', band(Pe, Pc, 0, Qe)); add('c', band(D0, Pc, Qe, Q2)); add('d', band(Pe, S0, 0, Qe)); add('e', band(Pp, Pe, 0, Qe)); add('f', band(Pp, S0, Qe, Q2)); add('g', band(S0, D0, Qe, Q2));
         reg('cs', ['a', 'b', 'c']); reg('ps', ['d', 'e', 'f']); reg('subsidy-cost', ['b', 'c', 'e', 'f', 'g']); reg('dwl', ['g']); reg('cs-before', ['a']); reg('ps-before', ['d']);
       } else if(P.type === 'world' && P.at < Pe){
@@ -432,8 +447,8 @@
         reg('cs', ['a']); reg('ps', ['b', 'c', 'g']); reg('tariff-revenue', ['e']); reg('dwl', ['d', 'f']); reg('cs-before', ['a', 'b', 'c', 'd', 'e', 'f']); reg('ps-before', ['g']);
       }
     } else if(spec.kind === 'pc'){
-      var L = lineAt(spec, { shifts: off }), MC = find(cs, 'MC'), ATC = find(cs, 'ATC'), q = L == null ? null : xAt(MC, L);
-      if(q != null){
+      var L = lineAt(spec, { shifts: off }), MC = find(cs, 'MC'), ATC = find(cs, 'ATC'), fq = L == null ? null : named(spec, off, 'firm', L), q = fq ? fq[0] : null;
+      if(q != null && q > 0){
         var A = y(ATC, q), hi = Math.max(L, A), lo = Math.min(L, A);
         if(Math.abs(L - A) > 0.05) add('a', band(hi, lo, 0, q), 'firm');
         add('b', band(lo, 0, 0, q), 'firm');
@@ -488,6 +503,10 @@
         if(hi2 - lo2 > 1e-6){ add('a', band(mxf(Soc, Oc), mn(Soc, Oc), lo2, hi2)); if(natural) add('c', band(mxf(Oc, Pv), mn(Oc, Pv), lo2, hi2)); }
         reg('dwl', ['a']); reg(neg ? 'ext-cost' : 'ext-benefit', natural ? ['a', 'b', 'c'] : ['b']);
       }
+    } else if(spec.kind === 'demand'){
+      // At the price line: a is total revenue (P x Q), b the consumer surplus above it.
+      var Dd = find(cs, 'D'), Pd = lineDef(spec) ? lineDef(spec).at : null, Qd = Pd == null ? null : xAt(Dd, Pd);
+      if(Qd != null){ add('a', band(Pd, 0, 0, Qd)); add('b', band(Dd, Pd, 0, Qd)); reg('tr', ['a']); reg('cs', ['b']); }
     } else if(spec.kind === 'lorenz'){
       var EQc = find(cs, 'EQ'), LC = find(cs, 'LC');
       add('a', band(EQc, LC, 0, 10)); add('b', band(LC, 0, 0, 10)); reg('gini', ['a']); reg('below', ['b']);
@@ -557,8 +576,10 @@
     var c = find(curves(spec, offsets), 'PPC');
     if(!c || !p) return null;
     if(c.shape === 'ppcline'){
-      var X = c.at * c.kx, Y = c.at * c.ky, dl = (p[0] / X + p[1] / Y - 1) * X * Y / Math.hypot(X, Y);
-      return Math.abs(dl) <= 0.4 ? 'on' : dl < 0 ? 'inside' : 'outside';
+      /* dl: the perpendicular distance to the line. The "on" band is 0.4, narrower on a flat line (8% of the shorter
+         intercept, integration u1) and never under 0.2, so a point placed on the quarter-step grid can still be on. */
+      var X = c.at * c.kx, Y = c.at * c.ky, dl = (p[0] / X + p[1] / Y - 1) * X * Y / Math.hypot(X, Y), band = Math.max(0.2, Math.min(0.4, 0.08 * Math.min(X, Y)));
+      return Math.abs(dl) <= band ? 'on' : dl < 0 ? 'inside' : 'outside';
     }
     if(c.shape === 'ppcin'){
       var dd = distTo(c, p), below = p[0] > c.at || y(c, p[0]) == null ? false : p[1] < y(c, p[0]);
@@ -579,14 +600,14 @@
     var ps = panelsOf(spec), out = ['x', 'y'];
     if(ps.length > 1) out.push('fx', 'fy');
     defsOf(spec).forEach(function(d){ out.push(d.id); });
-    var L = lineDef(spec); if(L && kindOf(spec).line) out.push(L.id);
+    var L = lineDef(spec); if(L && (kindOf(spec).line || ((spec.kind === 'costs' || spec.kind === 'demand') && spec.line))) out.push(L.id);
     return out;
   }
   function labelOptions(spec, slot){
     var k = kindOf(spec), ps = panelsOf(spec);
-    if(slot === 'x' || slot === 'y' || slot === 'fx' || slot === 'fy'){ var right = slotAnswer(spec, slot), conf = (k.confuse[slot] || k.confuse[slot.slice(-1)] || []).filter(function(c){ return c !== right; }); void ps; return [right].concat(conf); }
+    if(slot === 'x' || slot === 'y' || slot === 'fx' || slot === 'fy'){ var right = slotAnswer(spec, slot), conf = (k.confuse[slot] || k.confuse[slot.slice(-1)] || []).filter(function(c){ return c !== right; }); if(slot === 'y' && right !== k.y && conf.indexOf(k.y) < 0) conf.unshift(k.y); void ps; return [right].concat(conf.slice(0, 3)); }
     var L = lineDef(spec);
-    if(L && slot === L.id) return [L.id].concat(k.lineConfuse || []);
+    if(L && slot === L.id) return [L.id].concat(k.lineConfuse || ['Dd', 'MR', 'S']);
     var ids = defsOf(spec).map(function(d){ return d.id; });
     return ids.concat(k.curveConfuse.filter(function(c){ return ids.indexOf(c) < 0; }));
   }
@@ -612,7 +633,7 @@
     if(has('equilibrium') && !k.eq) bad('graph.do: a ' + spec.kind + ' graph has no market equilibrium (use "point" with key.point.at)');
     if(has('shade') && does.some(function(t){ return t !== 'shade' && t !== 'label'; })) bad('graph.do: "shade" goes with "label" only: draw the graph to shade with start, show or policy');
     var ids = defsOf(spec).map(function(d){ return d.id; }), mov = movableIds(spec);
-    Object.keys(spec.start || {}).forEach(function(c){ if(ids.indexOf(c) < 0) bad('graph.start: unknown curve "' + c + '" (a ' + spec.kind + ' graph has ' + ids.join(', ') + ')'); else if(!Number.isInteger(spec.start[c]) || Math.abs(spec.start[c]) > 2) bad('graph.start.' + c + ' is a whole number of steps from -2 to 2'); });
+    Object.keys(spec.start || {}).forEach(function(c){ if(ids.indexOf(c) < 0) bad('graph.start: unknown curve "' + c + '" (a ' + spec.kind + ' graph has ' + ids.join(', ') + ')'); else if(!Number.isInteger(spec.start[c]) || Math.abs(spec.start[c]) > MAX_STEPS) bad('graph.start.' + c + ' is a whole number of steps from -3 to 3'); });
     Object.keys(spec.show || {}).forEach(function(c){ if(mov.indexOf(c) < 0) bad('graph.show: "' + c + '" is not a curve that moves on a ' + spec.kind + ' graph'); else if(!Number.isInteger(spec.show[c]) || Math.abs(spec.show[c]) > MAX_STEPS) bad('graph.show.' + c + ' is a whole number of steps from -3 to 3'); });
     if(spec.kind === 'ppc' && (!spec.names || !spec.names.x || !spec.names.y)) bad('graph.names.x and .y name the two goods of a PPC');
     if(spec.bow !== undefined && (spec.kind !== 'ppc' || spec.bow !== 'in' || spec.linear)) bad('graph.bow: "in" (a bowed-in PPC, decreasing opportunity cost) is for a ppc graph that is not linear');
@@ -632,6 +653,11 @@
         if(P.type === 'tariff' && !(P.at + (P.amount || 1) < e0[1] - 0.2)) bad('graph.policy: the world price plus the tariff stays below the domestic equilibrium price (the country still imports)');
         if(has('shift') && (P.type === 'tax' || P.type === 'subsidy')) { var ks = ((spec.key || {}).shifts || [])[0]; if(!ks || ks.curve !== 'S') bad('graph.key.shifts: a per-unit ' + P.type + ' on sellers shifts S'); }
       }
+    }
+    if(spec.slopes !== undefined){
+      var SLOPES = [0.5, 1, 2];
+      if((spec.kind !== 'sd' && spec.kind !== 'sd-micro') || typeof spec.slopes !== 'object' || !Object.keys(spec.slopes).length || Object.keys(spec.slopes).some(function(c){ return ['D', 'S'].indexOf(c) < 0 || SLOPES.indexOf(spec.slopes[c]) < 0; })) bad('graph.slopes { D, S } sets how steep demand and supply are (0.5, 1 or 2; 1 is the usual 45 degrees) on an sd or sd-micro graph');
+      else if(spec.policy && (spec.policy.type === 'tax' || spec.policy.type === 'subsidy')){ var e9 = eq(spec, fixedOffsets(spec)); if(!e9 || !inBox(e9) || e9[0] < 0.5) bad('graph.slopes: with this ' + spec.policy.type + ' the market leaves the graph; use a smaller amount'); }
     }
     if(spec.ext !== undefined && (spec.kind !== 'externality' || !EXT[(spec.ext || {}).type] || (spec.ext.gap != null && !(Number.isInteger(spec.ext.gap) && spec.ext.gap >= 1 && spec.ext.gap <= 3)))) bad('graph.ext { type: ' + Object.keys(EXT).join(' | ') + ', gap: 1-3 } is for an externality graph');
     if(spec.kind === 'externality' && !spec.ext) bad('graph.ext.type names the externality (' + Object.keys(EXT).join(', ') + ')');
@@ -743,20 +769,20 @@
   var LX = 8.6;
   function labelAway(c){
     // Several places along the old curve, tried in order by place() (the first is the old single place).
-    if(c.shape === 'down') return [1.8, 1.0, 2.8, 3.8].map(function(x0){ var x = x0, yv = 5 - (x - c.at); if(yv > 9.4){ yv = 9.4; x = c.at - 4.4 + (x0 - 1.8); } return [px(Math.max(0.3, x)) + 6, py(yv) + 3, 'start']; }).concat(labelAt(c));
-    if(c.shape === 'up') return [3.2, 2.2, 4.2, 1.2].map(function(x0){ var x2 = x0, y2 = 5 + (x2 - c.at); if(y2 < 0.6){ y2 = 0.6; x2 = c.at - 4.4 + (x0 - 3.2); } return [px(Math.max(0.3, x2)) - 7, py(y2) - 3, 'end']; }).concat(labelAt(c));
+    if(c.shape === 'down') return [1.8, 1.0, 2.8, 3.8].map(function(x0){ var x = x0, yv = 5 - K(c) * (x - c.at); if(yv > 9.4){ yv = 9.4; x = c.at - 4.4 / K(c) + (x0 - 1.8); } return [px(Math.max(0.3, x)) + 6, py(yv) + 3, 'start']; }).concat(labelAt(c));
+    if(c.shape === 'up') return [3.2, 2.2, 4.2, 1.2].map(function(x0){ var x2 = x0, y2 = 5 + K(c) * (x2 - c.at); if(y2 < 0.6){ y2 = 0.6; x2 = c.at - 4.4 / K(c) + (x0 - 3.2); } return [px(Math.max(0.3, x2)) - 7, py(y2) - 3, 'end']; }).concat(labelAt(c));
     if(c.shape === 'vertical') return [px(c.at) - 5, py(0.6), 'end'];
     return labelAt(c, true);
   }
   function labelAt(c, inside){
     if(c.shape === 'vertical') return [px(c.at) + 5, py(9.6) + 6 + (Math.round(c.at) % 2 ? 0 : 15), 'start'];
     // Straight lines offer several places, tried in order (place() keeps the first clear one).
-    if(c.shape === 'down'){ var x2 = LX, y2 = 5 - (x2 - c.at); if(y2 < 0.5){ y2 = 0.5; x2 = c.at + 4.5; }
+    if(c.shape === 'down'){ var x2 = LX, y2 = 5 - K(c) * (x2 - c.at); if(y2 < 0.5){ y2 = 0.5; x2 = c.at + 4.5 / K(c); }
       var xd = Math.min(9.4, c.at + 2.4), xc = Math.max(0.6, c.at - 3.2);
-      return [[px(x2) + 6, py(y2) + 3, 'start'], [px(xd) - 6, py(5 - (xd - c.at)) + 15, 'end'], [px(xc) + 7, py(Math.min(9.6, 5 - (xc - c.at))) - 2, 'start']]; }
-    if(c.shape === 'up'){ var x1 = LX, y1 = 5 + (x1 - c.at); if(y1 > 9.6){ y1 = 9.6; x1 = c.at + 4.6; }
+      return [[px(x2) + 6, py(y2) + 3, 'start'], [px(xd) - 6, py(5 - K(c) * (xd - c.at)) + 15, 'end'], [px(xc) + 7, py(Math.min(9.6, 5 - K(c) * (xc - c.at))) - 2, 'start']]; }
+    if(c.shape === 'up'){ var x1 = LX, y1 = 5 + K(c) * (x1 - c.at); if(y1 > 9.6){ y1 = 9.6; x1 = c.at + 4.6 / K(c); }
       var xu = Math.min(9.2, c.at + 3.2);
-      return [[px(x1) - 7, py(y1) - 3, 'end'], [px(xu) + 8, py(5 + (xu - c.at)) + 13, 'start'], [px(Math.min(9.6, c.at + 4.4)) + 8, py(Math.min(9.6, 5 + 4.4)) + 13, 'start']]; }
+      return [[px(x1) - 7, py(y1) - 3, 'end'], [px(xu) + 8, py(5 + K(c) * (xu - c.at)) + 13, 'start'], [px(Math.min(9.6, c.at + 4.4 / K(c))) + 8, py(Math.min(9.6, 5 + 4.4)) + 13, 'start']]; }
     if(c.shape === 'ppc'){
       if(inside === 'in'){ var ri = (c.at - 0.45) / Math.SQRT2; return [px(ri) - 2, py(ri) + 12, 'end']; }
       var r = (c.at + 0.45) / Math.SQRT2; return [px(r) + 2, py(r) - 2, 'start']; }
@@ -776,10 +802,10 @@
   function pairLabels(c, b){
     var right = c.at > b.at, nw = labelAt(c), od = labelAt(b);
     if(c.shape === 'up'){
-      var lo = function(q){ var x = Math.min(q.at + 1.6, 8.2), yv = 5 + (x - q.at); return [px(x) + 8, py(yv) + 12, 'start']; };
+      var lo = function(q){ var x = Math.min(q.at + 1.6, 8.2), yv = 5 + K(q) * (x - q.at); return [px(x) + 8, py(yv) + 12, 'start']; };
       if(right) nw = lo(c); else od = lo(b);
     } else if(c.shape === 'down'){
-      var ll = function(q){ var x = q.at + 3.4, yv = 5 - (x - q.at); return [px(x) - 6, py(yv) + 14, 'end']; };
+      var ll = function(q){ var x = q.at + 3.4, yv = 5 - K(q) * (x - q.at); return [px(x) - 6, py(yv) + 14, 'end']; };
       if(right) od = ll(b); else nw = ll(c);
     } else if(c.shape === 'vertical'){
       nw = right ? [px(c.at) + 5, py(9.6) + 1, 'start'] : [px(c.at) - 5, py(9.6) + 1, 'end'];
@@ -796,8 +822,8 @@
     if(Math.abs(d) < 0.15) return '';
     var x0, y0, x1, y1;
     if(c.shape === 'vertical'){ y0 = y1 = 7.4; x0 = b.at; x1 = c.at; }
-    else if(c.shape === 'down'){ y0 = y1 = 7.6; x0 = b.at - 2.6; x1 = c.at - 2.6; }
-    else if(c.shape === 'up'){ y0 = y1 = 2.4; x0 = b.at - 2.6; x1 = c.at - 2.6; }
+    else if(c.shape === 'down'){ y0 = y1 = 7.6; x0 = b.at - 2.6 / K(b); x1 = c.at - 2.6 / K(c); }
+    else if(c.shape === 'up'){ y0 = y1 = 2.4; x0 = b.at - 2.6 / K(b); x1 = c.at - 2.6 / K(c); }
     else if(c.shape === 'ppcline'){ var cs = Math.cos(Math.PI / 3), sn = Math.sin(Math.PI / 3), rb = 1 / (cs / (b.at * b.kx) + sn / (b.at * b.ky)), rc = 1 / (cs / (c.at * c.kx) + sn / (c.at * c.ky)); x0 = rb * cs; y0 = rb * sn; x1 = rc * cs; y1 = rc * sn; }
     else if(c.shape === 'ppc' || c.shape === 'ppcin'){ var k = Math.cos(Math.PI / 3); x0 = b.at * k; y0 = b.at * Math.sin(Math.PI / 3); x1 = c.at * k; y1 = c.at * Math.sin(Math.PI / 3); if(c.shape === 'ppcin'){ x0 = b.at * 0.3; y0 = y(b, x0); x1 = c.at * 0.3; y1 = y(c, x1); } }
     else if(VERTICAL_SHIFT[c.shape]){ x0 = x1 = c.shape === 'lorenz' ? 6 : 8.2; y0 = y(b, x0); y1 = y(c, x1); if(y0 == null || y1 == null) return ''; }
@@ -855,11 +881,11 @@
   function centroid(poly){ var a = 0, cx = 0, cy = 0; for(var i = 0; i < poly.length; i++){ var p = poly[i], q = poly[(i + 1) % poly.length], cr = p[0] * q[1] - q[0] * p[1]; a += cr; cx += (p[0] + q[0]) * cr; cy += (p[1] + q[1]) * cr; } if(Math.abs(a) < 1e-9) return poly[0]; return [cx / (3 * a), cy / (3 * a)]; }
   /* Where a cell's letter goes: the point inside the cell farthest from its
      edges (in screen units), so a thin cell's letter does not sit on a curve. */
-  function labelSpot(poly){
+  function labelSpot(poly, avoid){
     var P = poly.map(function(q){ return [px(q[0]), py(q[1])]; }), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     P.forEach(function(q){ x0 = Math.min(x0, q[0]); x1 = Math.max(x1, q[0]); y0 = Math.min(y0, q[1]); y1 = Math.max(y1, q[1]); });
     function inside(x, y){ var c = false; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[i], b = P[j]; if((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) c = !c; } return c; }
-    function edge(x, y){ var m = Infinity; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[j], b = P[i], dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L)) : 0, ex = a[0] + t * dx - x, ey = a[1] + t * dy - y; m = Math.min(m, ex * ex + ey * ey); } return m; }
+    function edge(x, y){ var m = Infinity; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[j], b = P[i], dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L)) : 0, ex = a[0] + t * dx - x, ey = a[1] + t * dy - y; m = Math.min(m, ex * ex + ey * ey); } (avoid || []).forEach(function(q){ var ax = q[0] - x, ay = q[1] - y; m = Math.min(m, ax * ax + ay * ay); }); return m; }
     var best = null, bd = -1, N = 24;
     for(var i = 1; i < N; i++) for(var j = 1; j < N; j++){ var x = x0 + (x1 - x0) * i / N, y = y0 + (y1 - y0) * j / N; if(!inside(x, y)) continue; var d = edge(x, y); if(d > bd){ bd = d; best = [x, y]; } }
     if(!best){ var ct = centroid(poly); return [px(ct[0]), py(ct[1])]; }
@@ -885,7 +911,7 @@
       [[xAt(S, P.at), P.at, 'S1'], [xAt(S, t2), t2, 'S2'], [xAt(D, t2), t2, 'D2'], [xAt(D, P.at), P.at, 'D1']].forEach(function(m){ if(m[0] != null) qmark(m[0], m[1], 'Q', m[2]); });
     } else if((P.type === 'tax' || P.type === 'subsidy') && ((spec.do || []).indexOf('shift') < 0 || (state && state.key))){
       // With a shift task the student draws the shifted S: the after-tax guides would give it away (integration 7).
-      var e = cross(D, find(curves(spec, { S: (P.type === 'tax' ? -1 : 1) * (P.amount || 1) }), 'S'));
+      var e = cross(D, find(curves(spec, { S: (P.type === 'tax' ? -1 : 1) * taxSteps(spec) }), 'S'));
       if(e){ var pb = y(D, e[0]), ps = y(S, e[0]);
         g.push('<path class="mic-gr-guide" d="M' + f1(px(0)) + ' ' + f1(py(pb)) + 'H' + f1(px(e[0])) + 'V' + f1(py(0)) + 'M' + f1(px(0)) + ' ' + f1(py(ps)) + 'H' + f1(px(e[0])) + '"/>');
         g.push(amark('x', e[0], 'Q', P.type === 'tax' ? 'T' : 'SUB')); g.push(amark('y', pb, 'P', 'B')); g.push(amark('y', ps, 'P', 'S')); }
@@ -907,11 +933,12 @@
     g.push('<rect class="mic-gr-hit" x="' + L + '" y="' + T + '" width="' + PW + '" height="' + PH + '"/>');
     // Shading cells first, under the curves.
     var shadeTask = does.indexOf('shade') > -1, ar = (shadeTask || state.letters || (state.shade && state.shade.length)) ? areas(spec) : null, on = state.shade || [], keyCells = state.key && does.indexOf('shade') > -1 ? regionCells(spec, (spec.key || {}).shade) : [];
-    if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
-      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly);
+    // Drawn once the shift arrows are known (a letter keeps clear of an arrow, integration u2), under the curves.
+    var drawCells = function(avoid){ var out = []; if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
+      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly, avoid), g = out;
       if(!shadeTask && !state.letters && on.indexOf(c.id) < 0) return;   // a picture shading a region (state.shade) shows only it
       g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/>' + (shadeTask || state.letters ? '<text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>' : ''));
-    });
+    }); return out.join(''); };
     g.push('<path class="mic-gr-axis" d="M' + L + ' ' + T + 'V' + (T + PH) + 'H' + (L + PW) + '"/>');
     g.push('<text class="mic-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 31) + '" text-anchor="end">' + esc(nm(xs, panel.x)) + '</text>');
     g.push('<text class="mic-gr-alabel" transform="translate(' + (L - 34) + ' ' + T + ') rotate(-90)" text-anchor="end">' + esc(nm(ys, panel.y)) + '</text>');
@@ -963,6 +990,8 @@
     var arrows = now.map(function(c, i){ return c.steps ? arrowOf(base[i], c) : ''; });
     arrows.forEach(function(a){ var m = /^<path class="mic-gr-arrow" d="M([-\d.]+) ([-\d.]+)L([-\d.]+) ([-\d.]+)/.exec(a); if(m) soft.push(seg([+m[1], +m[2]], [+m[3], +m[4]])); });
     if(k.eq && find(base, k.eq[0])){ guideAt(eq(spec, {})); if(state.eq) guideAt(state.eq); }
+    var arrowPts = []; soft.forEach(function(pts){ arrowPts = arrowPts.concat(pts); });
+    g.splice(1, 0, drawCells(arrowPts.filter(function(q, i){ return i % 2 === 0; })));
     var whole = function(c, i){ return c.steps && Math.abs(c.at - base[i].at) >= 1 - 1e-9 && (c.shape === 'up' || c.shape === 'down' || c.shape === 'vertical'); };
     var txt = function(id){ return askLabels && !labels[id] ? null : curveText(spec, labels[id] || id); };
     // spec.showLabel { S: 'S + tax' }: the curve drawn shifted by spec.show reads so, with no number (integration 11).
@@ -1000,10 +1029,11 @@
       g.push('<g class="mic-gr-l" data-line="' + esc(LDf.id) + '"><path class="mic-gr-pline' + (state.focus === 'line' ? ' is-focus' : '') + '" d="' + hpath(LV) + '"/><path class="mic-gr-grab" d="' + hpath(LV) + '"' + (does.indexOf('line') < 0 ? ' pointer-events="none"' : '') + '/></g>' + lbl);
       if(!askLabels){
         var E0g = LDf.link ? eq(spec, {}) : null, moved0 = E0g && state.eq && (Math.abs(state.eq[0] - E0g[0]) > 1e-6 || Math.abs(state.eq[1] - E0g[1]) > 1e-6);
-        g.push(amark('y', LV, LDf.link ? (LDf.id === 'W' ? 'W' : 'P') : CURVE[LDf.id][0], LDf.link ? (E0g && Math.abs(LV - E0g[1]) > 1e-6 ? n1 : moved0 ? n0 : '') : CURVE[LDf.id][1]));
+        g.push(amark('y', LV, LDf.link || LDf.id === 'P' || LDf.id === 'W' ? LDf.id : CURVE[LDf.id][0], LDf.link ? (E0g && Math.abs(LV - E0g[1]) > 1e-6 ? n1 : moved0 ? n0 : '') : LDf.id === 'P' || LDf.id === 'W' ? '' : CURVE[LDf.id][1]));
       }
+      if(spec.kind === 'demand'){ var dq = named(spec, shifts, 'at-price', LV); if(dq){ g.push(vguide(dq[0], dq[1])); g.push(amark('x', dq[0], 'Q', '')); } }
       // The firm's quantity where the line meets MC (or MRP), with its guide, once known.
-      if(LDf.link){ var fp = named(spec, shifts, 'firm', LV); if(fp){ g.push(vguide(fp[0], fp[1])); g.push(amark('x', fp[0], 'q', pid === 'firm' ? 'F' : '')); } }
+      if(LDf.link){ var fp = named(spec, shifts, 'firm', LV); if(fp && fp[0] > 0){ g.push(vguide(fp[0], fp[1])); g.push(amark('x', fp[0], 'q', pid === 'firm' ? 'F' : '')); } else if(fp) g.push(amark('x', 0.9, 'q = 0', '', 'is-end')); }
     }
     // Carry the market price across to the firm (a dashed line to the panel's edge).
     if(two && LDf && LDf.link && LV != null){

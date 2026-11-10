@@ -9,10 +9,9 @@
    The size slider moves the social curve; the corrective tax or subsidy
    slider shifts the private curve (the old one kept faded) toward it; the
    loss shrinks to nothing when the policy equals the external cost or
-   benefit per unit and reopens on the other side past it. The shading is
-   a second ApMicroGraph.svg of the same market (model specB) stacked under
-   the picture with only its shaded cells shown, until the engine's areas()
-   follows a shown shift (a request to the lead, docs/apmicro-reviews/self-t4.md).
+   benefit per unit and reopens on the other side past it. The engine shades
+   the deadweight loss left on the picture itself (areas() follows the shown
+   policy shift) and labels the shifted curve with showLabel ("S + tax").
    Explore, public goods: three residents' marginal benefits stacked into
    the marginal social benefit, against the marginal cost; together vs
    each alone (the free rider).
@@ -46,7 +45,7 @@
     var view = 'ext', type = 'neg-prod', gap = 2, pol = 0, mc = 40, alone = false;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem xl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Externality lab</h2>' +
-      '<div class="xl-fig"><p class="xl-story"></p><div class="xl-g"><div class="xl-shade" aria-hidden="true"></div><div class="xl-pic"></div></div><div class="xl-pg"></div><ul class="xl-read"></ul></div>' +
+      '<div class="xl-fig"><p class="xl-story"></p><div class="xl-g"><div class="xl-pic"></div></div><div class="xl-pg"></div><ul class="xl-read"></ul></div>' +
       '<div class="xl-ctl"><div class="ls-seg xl-view" role="group" aria-label="View"><button type="button" data-v="ext" aria-pressed="true">Externalities</button><button type="button" data-v="pub" aria-pressed="false">Public goods</button></div>' +
         '<div class="xl-types ls-scroll" role="group" aria-label="Externality">' + ORDER.map(function(t){ return '<button type="button" class="ls-btn xl-type" data-x="' + t + '" aria-pressed="false">' + EX[t].short + '</button>'; }).join('') + '</div>' +
         '<div class="ls-seg xl-who" role="group" aria-label="Who decides" hidden><button type="button" data-w="0" aria-pressed="true">Together</button><button type="button" data-w="1" aria-pressed="false">Each alone</button></div>' +
@@ -77,9 +76,9 @@
       var eff = G.named(A, {}, 'efficient'), e1 = pol ? G.eq(A, G.fixedOffsets(A)) : null, k = K();
       // The shifted private curve is the private curve plus the policy: name it so (the engine would call it MPC2).
       var base = k.curve === 'S' ? 'S = MPC' : 'D = MPB', now = k.curve + (k.cost ? (k.curve === 'S' ? ' + tax' : ' \u2212 tax') : (k.curve === 'S' ? ' \u2212 subsidy' : ' + subsidy'));
-      $('.xl-pic').innerHTML = G.svg(A, { point: eff, eq: e1, labelsShown: true }, { label: 'Externality graph: ' + G.describe(A, { shifts: G.fixedOffsets(A) }) + ' ' + line() })
-        .replace('>' + base + '<tspan class="mic-gr-sub" dy="3">2</tspan></text>', '>' + now + '</text>');
-      $('.xl-shade').innerHTML = B ? G.svg(B, { shade: G.regionCells(B, 'dwl'), labelsShown: true }, { label: 'Deadweight loss' }) : '';
+      if(pol){ A.showLabel = {}; A.showLabel[k.curve] = now; }
+      $('.xl-pic').innerHTML = G.svg(A, { point: eff, eq: e1, labelsShown: true, shade: B ? G.regionCells(B, 'dwl') : [] }, { label: 'Externality graph: ' + G.describe(A, { shifts: G.fixedOffsets(A) }) + ' ' + line() });
+      void base;
       void st;
     }
     function pub(){
