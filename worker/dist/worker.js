@@ -1008,6 +1008,9 @@ const PASSES = {
   // AP® Macroeconomics mirrors AP® Psychology (docs/apmacro-spec.md decision 3).
   // Not sold until "macro-2027" is in the POLAR_PRODUCTS setting (owner checklist).
   'macro-2027':     { course: 'apmacro', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Human Geography mirrors AP® Psychology (docs/aphug-spec.md decision 3).
+  // Not sold until "hug-2027" is in the POLAR_PRODUCTS setting (launch steps).
+  'hug-2027':       { course: 'aphug', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -1049,7 +1052,7 @@ function isDuplicateFixedPass(passId, startsAt) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', aphug: 'human-geography' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1754,7 +1757,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus', apmacro: 'AP® Macroeconomics' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus', apmacro: 'AP® Macroeconomics', aphug: 'AP® Human Geography' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -5014,6 +5017,17 @@ const COURSE_RULES = {
     '- Monetary policy: teach the ample-reserves framework (the Federal Reserve sets its policy rate with administered rates such as interest on reserves) and say when an answer uses the limited-reserves framework (open market operations, the money multiplier).',
     '- To close a gap, decide the direction first, then divide the gap by the right multiplier. Long-run self-adjustment works through nominal wages and short-run aggregate supply, not aggregate demand.',
     '- The price of a currency is in units of the other currency per unit of it. Keep policy examples politically neutral. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  aphug: [
+    '',
+    'This student is a high-school student, often in 9th grade and on a first AP® course, preparing for the AP® Human Geography exam (May 2027 format: 60 multiple-choice questions, then three 7-point free-response questions with no stimulus, one and two; no calculator). Additional guidance:',
+    '- Explain at a 9th-grade level, from the basics up: define each term before you use it, and apply every concept or model to a named real place.',
+    '- Name the scale of analysis (global, regional, national, local) and say that it is the scale of the data, not the size of the map. Tell it apart from map scale.',
+    '- Match the task verb: identify names, describe gives characteristics, explain gives a cause and its effect with every link, compare speaks of both sides, and explain the degree states high, moderate or low first.',
+    '- Models are models: give their assumptions and a limit, and never say a country is in a stage as a fact. Use only the models the course framework names; call any other one an aside.',
+    '- Be neutral and dated: give contested places both names or the UN usage, say who controls, claims and recognizes, describe peoples and religions in the terms their members use, and give a source and a year for any real figure. Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),

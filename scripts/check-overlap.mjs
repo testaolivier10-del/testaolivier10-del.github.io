@@ -42,7 +42,7 @@ const CONC = Number(process.env.CONC || 4);
 const HEIGHT = { 390: 844, 1280: 900 };
 
 const COURSES = ['nremt', 'ochem', 'anatomy-physiology', 'bio', 'chem', 'physics', 'calculus', 'calculus-bc',
-  'precalculus', 'statistics', 'environmental-science', 'psychology', 'macroeconomics'];
+  'precalculus', 'statistics', 'environmental-science', 'psychology', 'macroeconomics', 'human-geography'];
 const ONE_OF = ['notes', 'lessons', 'units', 'unit-sheets', 'unit-tests', 'frq', 'chapters', 'concepts', 'mechanisms'];
 
 const TYPES = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',

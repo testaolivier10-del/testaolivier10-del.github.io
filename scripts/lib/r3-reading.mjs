@@ -43,7 +43,7 @@ export function twoTone(title) {
 
 /* The hand line is the course's tagline, not lesson text: mark it as navigation so the concept-order checks
    (scripts/lib/*-map.mjs skip .<prefix>-nav-ref) do not read "force by force" as using force early. */
-const NAV_REF = { anp: 'anp', apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apcalcbc: 'calc', apstat: 'stat', apenv: 'env', appsych: 'psy', apprecalc: 'pcalc', apmacro: 'mac' };
+const NAV_REF = { anp: 'anp', apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apcalcbc: 'calc', apstat: 'stat', apenv: 'env', appsych: 'psy', apprecalc: 'pcalc', apmacro: 'mac', aphug: 'hug' };
 function handClass(key) { return NAV_REF[key] ? `hand ${NAV_REF[key]}-nav-ref` : 'hand'; }
 
 function handFor(key) {

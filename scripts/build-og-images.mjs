@@ -186,6 +186,16 @@ const CARDS = [
     title: 'Macroeconomics for May 2027, every graph, every shift',
     sub: 'Free notes for every topic, every graph shifted and labeled by hand and checked point by point, and causal chains built link by link.',
   },
+  /* AP® Human Geography (folder human-geography/), the same rules: no mark, no
+     counts (docs/aphug-spec.md section 4). Render with
+     ONLY=human-geography/assets/og-image.png. */
+  {
+    out: 'human-geography/assets/og-image.png',
+    badge: 'Free notes',
+    brand: 'LevlPrep',
+    title: 'Human Geography for May 2027, from local to global',
+    sub: 'Free notes for every topic, every model built by hand, maps and population pyramids to read, and free responses drilled one task verb at a time.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

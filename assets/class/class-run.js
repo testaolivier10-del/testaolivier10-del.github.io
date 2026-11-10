@@ -35,7 +35,7 @@
   'use strict';
   var CACHE = 'levlprep_classes_v1', ATT = 'levlprep_class_att_v1', HOLD = 'levlprep_class_hold_v1', MAX_ANS = 300;
   // Course id -> the class prefix its pages use (the exam engine finds its Start button and message by it).
-  var PREFIX = { apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apcalcbc: 'calc', apstat: 'stat', apenv: 'env', appsych: 'psy', apprecalc: 'pcalc', apmacro: 'mac' };
+  var PREFIX = { apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apcalcbc: 'calc', apstat: 'stat', apenv: 'env', appsych: 'psy', apprecalc: 'pcalc', apmacro: 'mac', aphug: 'hug' };
   var RELEASES = { now: 1, after_submit: 1, after_due: 1 };
 
   function ts(v){ return v ? (typeof v === 'number' ? v : Date.parse(v)) : null; }

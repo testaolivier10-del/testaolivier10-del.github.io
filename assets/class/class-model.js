@@ -49,6 +49,7 @@
     appsych:   { dir: 'psychology', name: 'AP® Psychology', cur: 'psychology/assets/psy-curriculum.js', g: 'ApPsychCurriculum' },
     apprecalc: { dir: 'precalculus', name: 'AP® Precalculus', cur: 'precalculus/assets/pcalc-curriculum.js', g: 'ApPrecalcCurriculum' },
     apmacro:   { dir: 'macroeconomics', name: 'AP® Macroeconomics', cur: 'macroeconomics/assets/mac-curriculum.js', g: 'ApMacroCurriculum' },
+    aphug:     { dir: 'human-geography', name: 'AP® Human Geography', cur: 'human-geography/assets/hug-curriculum.js', g: 'ApHugCurriculum' },
     nremt:     { dir: 'nremt', name: 'EMT (NREMT)', cur: 'assets/class/nremt-map.js', g: 'LevlClassNremt', ap: false, frq: false, unitExams: false,
                  unitWord: 'Area', need: 'assets/class/nremt-map.js', topicFilter: false, bank: 'nremt/assets/questions-core.json' },
     ochem:     { dir: 'ochem', name: 'Organic Chemistry', cur: 'ochem/assets/curriculum.js', g: 'OchemCurriculum', ap: false, frq: false,
@@ -56,7 +57,7 @@
     anp:       { dir: 'anatomy-physiology', name: 'Anatomy & Physiology', cur: 'anatomy-physiology/assets/anp-curriculum.js', g: 'AnpCurriculum', ap: false, frq: false,
                  unitWord: 'Chapter' }
   };
-  var ORDER = ['apbio', 'apchem', 'apphys', 'apcalc', 'apcalcbc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apmacro', 'nremt', 'ochem', 'anp'];
+  var ORDER = ['apbio', 'apchem', 'apphys', 'apcalc', 'apcalcbc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apmacro', 'aphug', 'nremt', 'ochem', 'anp'];
 
   function readJson(get, k){ try{ var v = JSON.parse(get(k) || 'null'); return v && typeof v === 'object' ? v : null; }catch(e){ return null; } }
   function isAp(course){ var C = COURSES[course]; return !!C && C.ap !== false; }

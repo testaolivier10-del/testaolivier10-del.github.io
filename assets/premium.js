@@ -562,6 +562,53 @@
         ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
+    aphug: {
+      name: 'AP® Human Geography',
+      // Registered hidden in Phase 0 (docs/aphug-spec.md): nothing locked and
+      // nothing sold until the launch steps turn onSale on.
+      onSale: false,
+      dailyFree: 15,
+      // The free tier (docs/aphug-spec.md decision 6): the "Skills you need"
+      // chapter, Unit 1 and the lessons 2.1 to 2.5 (topic.free from
+      // FREE_TOPICS). Keep in step with FREE_UNITS and FREE_TOPICS in
+      // scripts/lib/aphug-build.mjs.
+      freeChapters: ['geo-skills', 'unit-1'],
+      compare: 'UWorld is $99 to $169 and Fiveable is $79 a year (checked November 2026).',
+      passes: [
+        { id: 'hug-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The models you must know, explained, and the cram-kit study plan outline',
+        'Every lesson in the skills chapter and Unit 1, and Unit 2 lessons 2.1 to 2.5',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Three trainers: Model Studio (Explore and the demographic transition), the scale lab and the map reader',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: all of Model Studio, the FRQ coach, the population lab, the diffusion lab, the borders lab and the city lab',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and skill',
+      ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['The models to know, explained', 'yes', 'yes'],
+        ['Interactive lessons', 'Skills, Unit 1 and 2.1 to 2.5', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and skill'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
+    },
     apprecalc: {
       name: 'AP® Precalculus',
       // On sale since the owner checklist (docs/apprecalc-spec.md section 9):
@@ -623,6 +670,7 @@
     { key: 'apprecalc', path: '/precalculus/' },
     { key: 'apcalcbc', path: '/calculus-bc/' },
     { key: 'apmacro', path: '/macroeconomics/' },
+    { key: 'aphug', path: '/human-geography/' },
   ];
   // courses:end
 

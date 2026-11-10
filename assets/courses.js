@@ -139,6 +139,15 @@
       path: '/macroeconomics/', dir: 'macroeconomics', storagePrefix: 'apmacro_', rankLabel: 'Macroeconomics rank',
       searchLabel: 'Macroeconomics', aliases: ['macroeconomics', 'macro', 'mac'], paid: true, status: 'live', order: 13,
     },
+    {
+      // As AP® Psychology (docs/aphug-spec.md decision 2): the mark only in
+      // the full names, never in a URL; the key travels as its folder,
+      // "human-geography". 'hidden' until published (Phase 0, 2026-11-09);
+      // order 15, after AP® Microeconomics.
+      key: 'aphug', short: 'Human Geography', name: 'AP® Human Geography', productName: 'AP® Human Geography',
+      path: '/human-geography/', dir: 'human-geography', storagePrefix: 'aphug_', rankLabel: 'Human Geography rank',
+      searchLabel: 'Human Geography', aliases: ['human-geography', 'geography', 'humangeo', 'hug'], paid: true, status: 'hidden', order: 15,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

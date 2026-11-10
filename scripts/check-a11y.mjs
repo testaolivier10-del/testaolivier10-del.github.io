@@ -164,6 +164,15 @@ const PAGES = [
   ['/macroeconomics/justify.html', 'the AP® Macroeconomics "Make it specific" trainer'],
   ['/macroeconomics/tools/graph-studio.html', 'the AP® Macroeconomics Graph Studio'],
   ...bioPages('macroeconomics', 'AP® Macroeconomics'),
+  // AP® Human Geography (registered hidden, nothing published yet): the app shells.
+  ['/human-geography/', 'the AP® Human Geography course home'],
+  ['/human-geography/glossary.html', 'the AP® Human Geography glossary'],
+  ['/human-geography/practice.html', 'the AP® Human Geography practice builder'],
+  ['/human-geography/exams.html', 'the AP® Human Geography exams app'],
+  ['/human-geography/frq.html', 'the AP® Human Geography free-response list'],
+  ['/human-geography/formula-sheet.html', 'the AP® Human Geography formulas page'],
+  ['/human-geography/justify.html', 'the AP® Human Geography "Make it specific" trainer'],
+  ...bioPages('human-geography', 'AP® Human Geography'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first

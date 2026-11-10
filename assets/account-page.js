@@ -28,6 +28,7 @@
     { key: 'apprecalc', paid: true },
     { key: 'apcalcbc', paid: true },
     { key: 'apmacro', paid: true },
+    { key: 'aphug', paid: true },
   ];
   // courses:end
   var COURSE_ORDER = COURSE_LIST.filter(function (c) { return c.paid; }).map(function (c) { return c.key; });

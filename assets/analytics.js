@@ -50,6 +50,7 @@
     { key: 'apprecalc', dir: 'precalculus' },
     { key: 'apcalcbc', dir: 'calculus-bc' },
     { key: 'apmacro', dir: 'macroeconomics' },
+    { key: 'aphug', dir: 'human-geography' },
   ];
   // courses:end
 

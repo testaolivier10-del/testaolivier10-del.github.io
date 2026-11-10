@@ -215,6 +215,7 @@ body[data-course="apenv"]{--bk-cover:url(../covers/apenv.svg);--bk-cbg:#22400F;}
 body[data-course="appsych"]{--bk-cover:url(../covers/appsych.svg);--bk-cbg:#07608A;}
 body[data-course="apprecalc"]{--bk-cover:url(../covers/apprecalc.svg);--bk-cbg:#0B4A33;}
 body[data-course="apmacro"]{--bk-cover:url(../covers/apmacro.svg);--bk-cbg:#2E4D0C;}
+body[data-course="aphug"]{--bk-cover:url(../covers/aphug.svg);--bk-cbg:#7A1F5C;}
 body:not([data-course]) .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
 @media (min-width:1101px){
   .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head)){grid-template-columns:minmax(0,1fr) 260px;}

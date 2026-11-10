@@ -77,6 +77,9 @@ const AP = {
   apmacro: { dir: 'macroeconomics', glob: 'ApMacro', note: 'Unit 1 is unlimited.', practice: 'Skill', pace: 70,
     kinds: [...AP_KINDS, ['f', 'Formulas']],
     exam: '60 multiple choice in 70 minutes, then 3 free response in 60 minutes' },
+  aphug: { dir: 'human-geography', glob: 'ApHug', note: 'The skills chapter and Unit 1 are unlimited.', practice: 'Skill', pace: 60,
+    kinds: [...AP_KINDS, ['f', 'Formulas']],
+    exam: '60 multiple choice in 60 minutes, then 3 free response in 75 minutes' },
 };
 
 /* The config practice-panel.js reads. */

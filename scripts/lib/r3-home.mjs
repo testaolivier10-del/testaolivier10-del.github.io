@@ -25,7 +25,7 @@ const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const DATA = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'course-homes.json'), 'utf8'));
 const strip = (s) => String(s).replace(/<[^>]+>/g, '');
 const attr = (s) => String(s).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/"/g, '&quot;');
-const DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics' };
+const DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', aphug: 'human-geography' };
 
 /* The tool covers: index.json per course gives each cover's real tool title. */
 function toolCovers(key) {
@@ -59,6 +59,8 @@ function pathSkeleton(key, up, primaryHref) {
   const f = join(ROOT, 'assets/path', `${key}.json`);
   if (!existsSync(f)) return null;
   const D = JSON.parse(readFileSync(f, 'utf8'));
+  // A course registered before any topic is published (Phase 0) has an empty path.
+  if (!D.topics.length) return null;
   const T = D.topics.map((t, i) => ({ ...t, i }));
   const skill = (t) => D.units[t.u] && D.units[t.u].label === 'Skills';
   const cus = [];

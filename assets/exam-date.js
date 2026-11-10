@@ -61,7 +61,9 @@
     // docs/apprecalc-research/framework.md section 5: Tuesday 11 May 2027, Session 1.
     apprecalc: { date: '2027-05-11', label: 'AP® Precalculus exam (Tue, May 11, 2027)' },
     // docs/apmacro-research/framework.md section 5: Friday 7 May 2027, Session 2.
-    apmacro: { date: '2027-05-07', label: 'AP® Macroeconomics exam (Fri, May 7, 2027)' }
+    apmacro: { date: '2027-05-07', label: 'AP® Macroeconomics exam (Fri, May 7, 2027)' },
+    // docs/aphug-research/framework.md section 5: Monday 3 May 2027, Session 1.
+    aphug: { date: '2027-05-03', label: 'AP® Human Geography exam (Mon, May 3, 2027)' }
   };
   function key(subject){ return (subject || 'levl') + '_exam_date'; }
   function stored(subject){

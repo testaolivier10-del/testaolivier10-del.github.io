@@ -20,7 +20,7 @@ export const COURSE_URL = Object.fromEntries(PAID.map((c) => [c.key, c.path]));
 const AP_SOURCES = [['Fiveable', 'https://fiveable.me/pricing']];
 const COMPARE_SOURCES = {
   nremt: [['App Store', 'https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128']],
-  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES, appsych: AP_SOURCES, apprecalc: AP_SOURCES, apcalcbc: AP_SOURCES, apmacro: [...AP_SOURCES, ['UWorld', 'https://collegeprep.uworld.com/ap/']],
+  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES, appsych: AP_SOURCES, apprecalc: AP_SOURCES, apcalcbc: AP_SOURCES, apmacro: [...AP_SOURCES, ['UWorld', 'https://collegeprep.uworld.com/ap/']], aphug: [...AP_SOURCES, ['UWorld', 'https://collegeprep.uworld.com/ap/']],
 };
 
 /* A price that changes on its own when the founding offer ends, with no

@@ -48,6 +48,9 @@
   14. AP® Macroeconomics's the same way (<!-- hub-mac:start/end -->,
       <!-- nf-mac:start/end -->, macroeconomics/manifest.json), hidden until
       its first unit is published (docs/apmacro-spec.md).
+  15. AP® Human Geography's the same way (<!-- hub-hug:start/end -->,
+      <!-- nf-hug:start/end -->, human-geography/manifest.json), hidden until
+      its first unit is published (docs/aphug-spec.md).
   14. AP® Calculus BC's the same way (<!-- hub-cbc:start/end -->,
       <!-- nf-cbc:start/end -->, calculus-bc/manifest.json), hidden until its
       launch (docs/apcalcbc-spec.md). */
@@ -97,6 +100,7 @@ const PSY = ORDER.includes('appsych');
 const PCALC = ORDER.includes('apprecalc');
 const CBC = ORDER.includes('apcalcbc');
 const MAC = ORDER.includes('apmacro');
+const HUG = ORDER.includes('aphug');
 /* Once every topic in the map is published the card stops promising more.
    "N published topics" keeps clear of check-site's ochem topic-count claim. */
 const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
@@ -111,6 +115,8 @@ const PCALC_MAP = join(ROOT, 'docs', 'apprecalc-dependency-map.json');
 const PCALC_ALL = existsSync(PCALC_MAP) && N.apprecalcTopics >= JSON.parse(readFileSync(PCALC_MAP, 'utf8')).topics.length;
 const MAC_MAP = join(ROOT, 'docs', 'apmacro-dependency-map.json');
 const MAC_ALL = existsSync(MAC_MAP) && N.apmacroTopics >= JSON.parse(readFileSync(MAC_MAP, 'utf8')).topics.length;
+const HUG_MAP = join(ROOT, 'docs', 'aphug-dependency-map.json');
+const HUG_ALL = existsSync(HUG_MAP) && N.aphugTopics >= JSON.parse(readFileSync(HUG_MAP, 'utf8')).topics.length;
 const CBC_ALL = N.apcalcbcTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apcalcbc-ced-map.json'), 'utf8')).bcTotal;
 const BIO_ALL = N.apbioTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apbio-dependency-map.json'), 'utf8')).topics.length;
 // Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology, AP® Precalculus, AP® Calculus BC, AP® Macroeconomics).
@@ -611,6 +617,10 @@ function hubMacCard() {
   return apCard({ href: 'macroeconomics/', tint: 'apmacro', cover: 'apmacro', t2: 'Macroeconomics', hand: 'every graph, every shift', name: 'AP® Macroeconomics',
     line: published(MAC_ALL, N.apmacroTopics, 'with every graph you shift and label by hand') });
 }
+function hubHugCard() {
+  return apCard({ href: 'human-geography/', tint: 'aphug', cover: 'aphug', t2: 'Human Geography', hand: 'every model, every scale', name: 'AP® Human Geography',
+    line: published(HUG_ALL, N.aphugTopics, 'with every model built by hand') });
+}
 function hubPcalcCard() {
   return apCard({ href: 'precalculus/', tint: 'apprecalc', cover: 'apprecalc', t2: 'Precalculus', hand: 'see every function move', name: 'AP® Precalculus',
     line: published(PCALC_ALL, N.apprecalcTopics, 'with every function you can drag and watch') });
@@ -631,6 +641,7 @@ function hubPcalcCard() {
   src = between(src, '<!-- hub-pcalc:start -->', '<!-- hub-pcalc:end -->', PCALC ? hubPcalcCard() : '', rel);
   src = between(src, '<!-- hub-cbc:start -->', '<!-- hub-cbc:end -->', CBC ? hubCbcCard() : '', rel);
   src = between(src, '<!-- hub-mac:start -->', '<!-- hub-mac:end -->', MAC ? hubMacCard() : '', rel);
+  src = between(src, '<!-- hub-hug:start -->', '<!-- hub-hug:end -->', HUG ? hubHugCard() : '', rel);
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
@@ -639,7 +650,7 @@ function hubPcalcCard() {
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
      from every open course's bank, never typed. AP® Calculus BC counts only its
      own questions: its bank also serves AB's, which apcalc already counts. */
-  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn, apmacro: N.apmacro };
+  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych, apprecalc: N.apprecalc, apcalcbc: N.apcalcbcOwn, apmacro: N.apmacro, aphug: N.aphug };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
   /* The facts strip under the hero is gone (owner comment 2026-11-02: clutter, it repeated the pill and the
      Free box); the question total, the one fact nothing else said, moved into the hero pill. */
@@ -676,7 +687,7 @@ function hubPcalcCard() {
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
   // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv' && x !== 'appsych' && x !== 'apprecalc' && x !== 'apcalcbc' && x !== 'apmacro')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv' && x !== 'appsych' && x !== 'apprecalc' && x !== 'apcalcbc' && x !== 'apmacro' && x !== 'aphug')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -685,7 +696,7 @@ function hubPcalcCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus AB', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus', apmacro: 'Macroeconomics' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus AB', apstat: 'Statistics', apenv: 'Environmental Science', apcalcbc: 'Calculus BC', appsych: 'Psychology', apprecalc: 'Precalculus', apmacro: 'Macroeconomics' , aphug: 'Human Geography' };
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
@@ -736,6 +747,11 @@ const MANIFESTS = {
     name: 'LevlPrep Macroeconomics',
     short_name: 'LevlPrep Macro',
     description: `Macroeconomics on the course framework, in its order, for the May 2027 exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the graph skills you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
+  },
+  'human-geography/manifest.json': {
+    name: 'LevlPrep Human Geography',
+    short_name: 'LevlPrep Geography',
+    description: `Human geography on the course framework, in its order, for the May 2027 exam: every notes page is free forever and the skills chapter and Unit 1 are fully interactive; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'precalculus/manifest.json': {
     name: 'LevlPrep Precalculus',
@@ -830,6 +846,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${MAC_ALL ? `All ${fmt(N.apmacroTopics)} published topics` : `${fmt(N.apmacroTopics)} published topic${N.apmacroTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one and every graph to shift by hand.</p>
     </a>`;
   out = between(out, '<!-- nf-mac:start -->', '<!-- nf-mac:end -->', MAC ? mac : '', rel);
+  const hug = `    <a class="card nf-card" href="/human-geography/"><img class="sp-cv" src="/assets/covers/aphug.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Human Geography</h2>
+      <p>${HUG_ALL ? `All ${fmt(N.aphugTopics)} published topics` : `${fmt(N.aphugTopics)} published topic${N.aphugTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one and every model built by hand.</p>
+    </a>`;
+  out = between(out, '<!-- nf-hug:start -->', '<!-- nf-hug:end -->', HUG ? hug : '', rel);
   put(rel, out);
 }
 

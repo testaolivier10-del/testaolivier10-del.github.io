@@ -138,6 +138,7 @@
     { key: 'apprecalc', short: 'Precalculus', dir: 'precalculus' },
     { key: 'apcalcbc', short: 'Calculus BC', dir: 'calculus-bc' },
     { key: 'apmacro', short: 'Macroeconomics', dir: 'macroeconomics' },
+    { key: 'aphug', short: 'Human Geography', dir: 'human-geography' },
   ];
   // courses:end
   var COURSE_SHORT = {};

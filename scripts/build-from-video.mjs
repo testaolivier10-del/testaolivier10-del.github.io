@@ -21,6 +21,7 @@ const COURSES = {
   appsych: 'AP® Psychology',
   apprecalc: 'AP® Precalculus',
   apmacro: 'AP® Macroeconomics',
+  aphug: 'AP® Human Geography',
   apcalcbc: 'AP® Calculus BC',
 };
 
