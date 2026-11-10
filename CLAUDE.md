@@ -221,6 +221,11 @@ owner's cutover checklist. levlprep.com is served by the Cloudflare site Worker 
 only the fallback); the repo is still public (see the status file). A new lesson page type must carry its free marker
 or the deploy fails.
 
+## Site health (search, speed, capacity)
+
+`docs/site-health.md` is the status file: why Google indexes slowly, the sitemap rules (no Premium stubs, `<lastmod>`
+from page text in `scripts/sitemap-dates.json`), cache headers, plan limits and the owner's open steps.
+
 ## Study reminders
 
 `docs/reminders.md` is the status file for who is offered reminders (every course's score card, the all-course due

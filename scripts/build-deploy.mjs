@@ -49,7 +49,11 @@ export function stubFor(rel, html, course) {
   const headEnd = html.indexOf('</head>');
   const bodyTag = /<body[^>]*>/i.exec(html);
   if (headEnd < 0 || !bodyTag) throw new Error(`deploy: ${rel} has no head or body`);
-  const head = html.slice(0, headEnd).replace(/<script\b(?![^>]*application\/ld\+json)[^>]*\bsrc=[^>]*>\s*<\/script>/gi, '');
+  // noindex: the stub has a title and one sentence, nothing a search engine
+  // should rank; the free notes page for the topic is the one to find (site
+  // health 2026-11-10). "follow" so its links still count.
+  const head = html.slice(0, headEnd).replace(/<script\b(?![^>]*application\/ld\+json)[^>]*\bsrc=[^>]*>\s*<\/script>/gi, '')
+    .replace(/<meta\s+name="robots"[^>]*>\s*/gi, '') + '<meta name="robots" content="noindex, follow">\n';
   const h1 = /<h1[^>]*>([\s\S]*?)<\/h1>/i.exec(html);
   const title = h1 ? text(h1[1]) : text((/<title>([\s\S]*?)<\/title>/i.exec(html) || [, ''])[1]).replace(/\s*[|·–-]\s*LevlPrep.*$/, '');
   // The page's own meta description says what it teaches; the first real paragraph if it has none.
@@ -88,6 +92,26 @@ ${bodyTag[0]}
 `;
 }
 
+/* Response headers for the static site (Workers static assets read _headers).
+   Fonts never change under the same name and course art changes rarely, so a
+   browser keeps them instead of asking again on every page; HTML, CSS and
+   scripts keep Cloudflare's default (always rechecked), so a deploy shows at
+   once. The workers.dev copy of the site is the same pages on another host:
+   noindex there, so only levlprep.com is in search. */
+export const HEADERS = `/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/covers/*
+  Cache-Control: public, max-age=604800
+
+https://:project.:account.workers.dev/*
+  X-Robots-Tag: noindex
+`;
+
 function main() {
   const files = execFileSync('git', ['ls-files', '-z'], { cwd: ROOT }).toString().split('\0').filter(Boolean);
   const site = files.filter(published);
@@ -125,7 +149,7 @@ function main() {
   }
   fs.mkdirSync(VAULT, { recursive: true });
   fs.writeFileSync(path.join(VAULT, '_index.json'), JSON.stringify(vaulted));
-  fs.writeFileSync(path.join(SITE, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n`);
+  fs.writeFileSync(path.join(SITE, '_headers'), HEADERS);
   console.log(`.deploy/site: ${site.length} files; .deploy/vault: ${Object.keys(vaulted).length} Premium lesson pages`, counts);
 }
 
