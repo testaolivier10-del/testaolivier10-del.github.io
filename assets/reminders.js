@@ -64,6 +64,33 @@
   var ASK_KEY = 'levlprep_reminder_ask';         // { shown, refused, last }
   var VISITS_KEY = 'levlprep_visits';            // written by analytics.js
 
+  var SCAN_KEY = 'levlprep_reminder_scan';       // when scanCourses() last rewrote the queued reminder
+  var SIGNUP_KEY = 'levlprep_reminder_signup';   // { id, at, asked }: the one question after a new account
+
+  // courses:begin REMINDER_COURSES key,name,path,storagePrefix (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var REMINDER_COURSES = [
+    { key: 'nremt', name: 'NREMT-EMT', path: '/nremt/', storagePrefix: 'nremt_' },
+    { key: 'ochem', name: 'Organic Chemistry', path: '/ochem/', storagePrefix: 'ochem_' },
+    { key: 'anp', name: 'Anatomy & Physiology', path: '/anatomy-physiology/', storagePrefix: 'anp_' },
+    { key: 'apbio', name: 'AP® Biology', path: '/bio/', storagePrefix: 'apbio_' },
+    { key: 'apchem', name: 'AP® Chemistry', path: '/chem/', storagePrefix: 'apchem_' },
+    { key: 'apphys', name: 'AP® Physics 1', path: '/physics/', storagePrefix: 'apphys_' },
+    { key: 'apcalc', name: 'AP® Calculus AB', path: '/calculus/', storagePrefix: 'apcalc_' },
+    { key: 'apstat', name: 'AP® Statistics', path: '/statistics/', storagePrefix: 'apstat_' },
+    { key: 'apenv', name: 'AP® Environmental Science', path: '/environmental-science/', storagePrefix: 'apenv_' },
+    { key: 'appsych', name: 'AP® Psychology', path: '/psychology/', storagePrefix: 'appsych_' },
+    { key: 'apprecalc', name: 'AP® Precalculus', path: '/precalculus/', storagePrefix: 'apprecalc_' },
+    { key: 'apcalcbc', name: 'AP® Calculus BC', path: '/calculus-bc/', storagePrefix: 'apcalcbc_' },
+    { key: 'apmacro', name: 'AP® Macroeconomics', path: '/macroeconomics/', storagePrefix: 'apmacro_' },
+    { key: 'apmicro', name: 'AP® Microeconomics', path: '/microeconomics/', storagePrefix: 'apmicro_' },
+  ];
+  // courses:end
+
+  /* NREMT and ochem report their own numbers. Every other course keeps one
+     record per question in <storagePrefix>progress_v1 with the time it comes
+     due, so scanCourses() reads them all (docs/reminders.md). */
+  var SELF_REPORTING = { nremt: 1, ochem: 1 };
+
   var DEFAULT_HOUR = 19;      // early evening, when studying actually happens
   var MAX_ASKS = 3;
   var MAX_REFUSALS = 2;
@@ -120,6 +147,41 @@
     // than no reminder: it is a reason to distrust the next one.
     if (settings().subscribed) schedule();
     else if (emailSettings().on) enableEmail();
+  }
+
+  /* What will be waiting when the reminder arrives, in every such course:
+     counted up to the next send time, since a question missed five minutes ago
+     is due by then. Runs on every page; reschedules at most once, when a
+     number changed or once a day (which also shows the student came back). */
+  function scanCourses() {
+    var state = read(STATE_KEY, {});
+    var by = nextSendAt(settings().hour).getTime();
+    var changed = false;
+    REMINDER_COURSES.forEach(function (c) {
+      if (SELF_REPORTING[c.key]) return;
+      var d = read(c.storagePrefix + 'progress_v1', null);
+      var had = state[c.key];
+      if (!d || !d.q) { return; }
+      var due = 0;
+      Object.keys(d.q).forEach(function (k) {
+        var r = d.q[k];
+        if (r && r.due && r.due <= by) due++;
+      });
+      if (!had && !due) return;              // never studied, or nothing coming: no record to keep
+      if (!had || had.due !== due) changed = true;
+      state[c.key] = { due: due, label: String(c.name).slice(0, 40), url: c.path + 'review.html', at: Date.now() };
+    });
+    write(STATE_KEY, state);
+
+    var on = settings().subscribed || emailSettings().on;
+    if (!on) return changed;
+    var last = Number(read(SCAN_KEY, 0)) || 0;
+    if (changed || Date.now() - last > 20 * 3600000) {
+      write(SCAN_KEY, Date.now());
+      if (settings().subscribed) schedule();
+      else enableEmail();
+    }
+    return changed;
   }
 
   /* A record older than a week is about a course this browser has not opened in
@@ -349,21 +411,34 @@
     return (v && Number(v.days)) || 0;
   }
 
+  /* Which channel can be offered: push where the browser can; where it cannot
+     (most iPhones) or it is blocked, email for a signed-in student; else null,
+     because the site does not ask a visitor for an address. */
+  function channel() {
+    if (!configured()) return null;
+    if (settings().subscribed || emailSettings().on) return null;
+    var ask = read(ASK_KEY, {});
+    var push = supported() && window.Notification.permission === 'default' && !ask.denied;
+    if (push) return 'push';
+    return emailAvailable() ? 'email' : null;
+  }
+
   /* Every reason not to ask, in one place. Permission is the scarcest thing
-     this site can spend and there is exactly one of it. */
-  function mayAsk() {
-    if (!configured() || !supported()) return false;
-    if (settings().subscribed) return false;
-    if (window.Notification.permission !== 'default') return false;  // already answered
+     this site can spend and there is exactly one of it.
+
+     opts.earned: a real session was just finished, the only thing that lets a
+     first visit be asked (most students come once; owner 2026-11-10). The
+     browser's own prompt still appears only after they press the button. */
+  function mayAsk(opts) {
+    if (!channel()) return false;
 
     var ask = read(ASK_KEY, {});
-    if (ask.denied) return false;
     if ((ask.refused || 0) >= MAX_REFUSALS) return false;
     if ((ask.shown || 0) >= MAX_ASKS) return false;
     if (ask.last && Date.now() - ask.last < ASK_GAP_DAYS * 86400000) return false;
 
     // Never a stranger. analytics.js keeps the visit history this reads.
-    if (visits() < 2) return false;
+    if (visits() < 2 && !(opts && opts.earned)) return false;
 
     // And never when there is nothing to remind them about — an offer to be
     // told about work that does not exist is just a permission prompt.
@@ -373,8 +448,9 @@
   /* The offer. Same shape as the other two things on this site that ask the
      student for anything (.levl-prompt in theme.css), and only one of those is
      ever in the DOM at once. */
-  function offer(context) {
-    if (!mayAsk()) return false;
+  function offer(context, opts) {
+    scanCourses();
+    if (!mayAsk(opts)) return false;
     if (document.querySelector('.levl-prompt')) return false;   // save/install is showing
 
     var ask = read(ASK_KEY, {});
@@ -382,22 +458,26 @@
     ask.last = Date.now();
     write(ASK_KEY, ask);
 
-    var text = compose();
+    return prompt(channel(), context || 'session', true);
+  }
+
+  /* Draws the question. counts: whether "No thanks" spends a refusal. */
+  function prompt(via, context, counts) {
+    var email = via === 'email';
     var el = document.createElement('div');
     el.className = 'levl-prompt';
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-label', 'Study reminders');
-    // The markup the other two nudges use, class for class. There is one
-    // design system here and this is the third thing to reach for it, not the
-    // first thing to bring its own.
+    // The markup the other two nudges use, class for class.
+    var yes = email ? 'Email me' : 'Remind me';
     el.innerHTML =
       '<div class="levl-prompt__text">' +
-        '<b>A nudge when something is due?</b>' +
-        '<small>One notification a day at ' + hourLabel(DEFAULT_HOUR) + ', only when you have work waiting. ' +
-        'It stops on its own if you stop studying.</small>' +
+        '<b>' + (email ? 'An email when something is due?' : 'A nudge when something is due?') + '</b>' +
+        '<small>' + (email ? 'One email a day at most' : 'One notification a day at ' + hourLabel(DEFAULT_HOUR)) +
+        ', only when you have work waiting. It stops on its own if you stop studying.</small>' +
       '</div>' +
       '<div class="levl-prompt__actions">' +
-        '<button type="button" class="levl-prompt__yes" data-act="yes">Remind me</button>' +
+        '<button type="button" class="levl-prompt__yes" data-act="yes">' + yes + '</button>' +
         '<button type="button" class="levl-prompt__no" data-act="no">No thanks</button>' +
       '</div>';
     document.body.appendChild(el);
@@ -408,7 +488,7 @@
       if (settled) return;
       settled = true;
       clearTimeout(timer);
-      if (refused) {
+      if (refused && counts) {
         var a = read(ASK_KEY, {});
         a.refused = (a.refused || 0) + 1;
         write(ASK_KEY, a);
@@ -422,20 +502,22 @@
       var btn = this;
       btn.disabled = true;
       btn.textContent = 'Just a moment…';
-      enable(DEFAULT_HOUR).then(function (res) {
+      (email ? enableEmail(DEFAULT_HOUR) : enable(DEFAULT_HOUR)).then(function (res) {
         if (res.ok) {
-          btn.textContent = 'Done — see you at ' + hourLabel(DEFAULT_HOUR);
+          btn.textContent = email ? 'Done. Check your inbox when work is due' : 'Done — see you at ' + hourLabel(DEFAULT_HOUR);
           setTimeout(function () { close(false); }, 2200);
         } else {
           // Never close on a failure as though it worked.
           btn.disabled = false;
-          btn.textContent = 'Remind me';
+          btn.textContent = yes;
           var span = el.querySelector('.levl-prompt__text small');
           span.textContent = res.reason === 'denied'
             ? 'Your browser has blocked notifications for this site. You can turn them back on in its site settings.'
             : res.reason === 'unsupported'
               ? 'This browser cannot do reminders. On an iPhone, add the site to your home screen first.'
-              : 'That did not work just now — try again in a moment.';
+              : res.reason === 'signed-out'
+                ? 'Sign in first, then turn reminders on from your account.'
+                : 'That did not work just now — try again in a moment.';
         }
       });
     });
@@ -444,8 +526,49 @@
     // ignoring something that appeared mid-sentence is not an answer.
     var timer = setTimeout(function () { close(false); }, 20000);
 
-    if (window.LevlAnalytics) window.LevlAnalytics.event('reminder-prompt-shown', { at: context || 'session' });
+    if (window.LevlAnalytics) window.LevlAnalytics.event('reminder-prompt-shown', { at: context, via: email ? 'email' : 'push' });
     return true;
+  }
+
+  /* ---- the one question after a new account ---------------------------- */
+
+  /* Asked once per account, about email, outside the three asks above. A new
+     account is often made on the way to paying, and nothing may land on top
+     of a payment: the question waits until no dialog is open, on this page or
+     a later one, for up to two days (docs/reminders.md). */
+  var SIGNUP_FRESH_MS = 15 * 60000, SIGNUP_KEEP_MS = 2 * 86400000;
+
+  function busy() {
+    return !!document.querySelector('.levl-prompt, .auth-modal-overlay.open, iframe[src*="polar.sh"], .polar-loader-spinner');
+  }
+
+  function noteAccount(user) {
+    if (!user || !user.id) return;
+    var p = read(SIGNUP_KEY, null);
+    if (p && p.id === user.id) return;                 // already noted (and maybe asked)
+    var made = Date.parse(user.created_at || '') || 0;
+    if (!made || Date.now() - made > SIGNUP_FRESH_MS) return;   // an old account signing in
+    write(SIGNUP_KEY, { id: user.id, at: Date.now(), asked: false });
+  }
+
+  function askAfterSignup(tries) {
+    var p = read(SIGNUP_KEY, null);
+    var account = window.StudyHubAccount;
+    var user = account && account.user && account.user();
+    if (!p || p.asked || !user || user.id !== p.id) return false;
+    if (Date.now() - p.at > SIGNUP_KEEP_MS) { p.asked = true; write(SIGNUP_KEY, p); return false; }
+    if (!configured() || settings().subscribed || emailSettings().on) { p.asked = true; write(SIGNUP_KEY, p); return false; }
+    if (busy()) {
+      if ((tries || 0) < 6) setTimeout(function () { askAfterSignup((tries || 0) + 1); }, 5000);
+      return false;                                     // still pending: the next page tries again
+    }
+    p.asked = true;
+    write(SIGNUP_KEY, p);
+    // Starts the one week gap; does not count toward the three.
+    var ask = read(ASK_KEY, {});
+    ask.last = Date.now();
+    write(ASK_KEY, ask);
+    return prompt('email', 'signup', false);
   }
 
   function hourLabel(h) {
@@ -514,13 +637,33 @@
     schedule: schedule,
     offer: offer,
     compose: compose,
+    scanCourses: scanCourses,
     /* Exported for scripts/test/reminders.test.mjs — the asking rules and the
        composed sentence are the whole product here, and both fail silently:
        a rule that is too loose burns a permission that cannot be asked for
        again, and a sentence quoting a stale number teaches people to ignore
        the next one. */
     _mayAsk: mayAsk,
+    _channel: channel,
+    _noteAccount: noteAccount,
+    _askAfterSignup: askAfterSignup,
+    _setCourses: function (list) { REMINDER_COURSES = list; },
     _nextSendAt: nextSendAt,
     _setKeys: function (vapid, endpoint) { VAPID_PUBLIC_KEY = vapid; ENDPOINT = endpoint; },
   };
+
+  /* On every page: keep the numbers true and watch for a new account. */
+  function boot() {
+    try { scanCourses(); } catch (e) { /* a malformed record must not stop the page */ }
+    var account = window.StudyHubAccount;
+    if (account && account.onAuthChange) {
+      account.onAuthChange(function (user) {
+        if (!user) return;
+        noteAccount(user);
+        setTimeout(function () { askAfterSignup(0); }, 3500);
+      });
+    }
+  }
+  if (document.readyState === 'complete') setTimeout(boot, 0);
+  else window.addEventListener('load', function () { setTimeout(boot, 0); });
 })(window, document);

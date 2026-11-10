@@ -212,6 +212,12 @@ or the deploy fails.
 `docs/site-health.md` is the status file: why Google indexes slowly, the sitemap rules (no Premium stubs, `<lastmod>`
 from page text in `scripts/sitemap-dates.json`), cache headers, plan limits and the owner's open steps.
 
+## Study reminders
+
+`docs/reminders.md` is the status file for who is offered reminders (every course's score card, the all-course due
+scan, the email offer, the one question after a new account) and the owner decisions behind it. How they are sent:
+README "Nothing brought anyone back" and `worker/README.md`.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
