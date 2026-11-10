@@ -1,0 +1,12 @@
+{
+ "short-run-costs-curves": {
+  "file": "figures/short-run-costs-curves.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A cost graph with MC, ATC, AVC and AFC. MC is U-shaped and rises through the lowest point of AVC at q1 and then through the lowest point of ATC at a larger output q2; AFC slopes down and is the gap between ATC and AVC."
+ }
+}

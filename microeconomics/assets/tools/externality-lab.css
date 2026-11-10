@@ -1,0 +1,43 @@
+/* Externality Lab (builder T4): scoped to .xl-*. */
+.xl-fig{display:flex;flex-direction:column;gap:8px;min-height:0;align-items:center;}
+.ls-root .mic-ls-stage .xl-fig{flex:1;}
+.xl-story{margin:0;max-width:42em;text-align:center;font:600 14px/1.45 var(--font-ui);color:var(--muted);}
+.xl-story b{color:var(--ink);}
+.xl-fig[data-view="pub"] .xl-g,.xl-fig[data-view="ext"] .xl-pg{display:none;}
+/* the picture and, under it, the same market drawn only for its shaded loss (same viewBox, so the cells line up) */
+.xl-g{flex:1;min-height:0;width:100%;max-width:560px;display:grid;}
+.xl-g > *{grid-area:1/1;min-height:0;display:flex;align-items:center;justify-content:center;}
+.xl-g .mic-graph-svg{width:100%;height:100%;max-height:100%;}
+.xl-read{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center;}
+.xl-read li{padding:5px 12px;border-radius:999px;background:var(--ctint);font:600 13px var(--font-ui);color:var(--ink);}
+.xl-read li.is-zero{background:transparent;box-shadow:inset 0 0 0 2px var(--good-text,#1F6E3E);}
+.xl-rk{font-weight:800;color:var(--cink);margin-right:4px;}
+.xl-ctl{display:flex;flex-direction:column;gap:12px;}
+.xl-ctl [hidden]{display:none !important;}
+/* public goods: stacked marginal benefits against the cost line */
+.xl-pg{width:100%;max-width:600px;display:flex;flex-direction:column;gap:8px;overflow:auto;}
+.xl-pcap{margin:0;font:600 13px/1.4 var(--font-ui);color:var(--muted);text-align:center;}
+.xl-bars{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}
+.xl-bar{display:grid;grid-template-columns:4.6em 1fr 3.4em;gap:8px;align-items:center;font:700 13px var(--font-ui);color:var(--ink);}
+.xl-bar:not(.is-on){opacity:.55;}
+.xl-track{position:relative;display:flex;height:26px;border-radius:6px;background:var(--track,#eee);overflow:visible;}
+.xl-seg{height:100%;}
+.xl-seg:first-child{border-radius:6px 0 0 6px;}
+.is-p0{--pc:var(--cink);} .is-p1{--pc:#3E7CB1;} .is-p2{--pc:#C9831C;}
+:root[data-theme="dark"] .is-p1{--pc:#7FB2E5;} :root[data-theme="dark"] .is-p2{--pc:#E9B25A;}
+.xl-seg{background:var(--pc);}
+.xl-mc{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1.5px;background:var(--ink);border-radius:2px;}
+.xl-bv{text-align:right;font-variant-numeric:tabular-nums;}
+.xl-keys{margin:0;display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font:700 12.5px var(--font-ui);color:var(--ink);}
+.xl-key::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--pc);}
+.xl-key.is-mc::before{width:3px;background:var(--ink);}
+.xl-ptbl{max-width:600px;}
+.xl-qfig{display:flex;flex-direction:column;gap:8px;justify-content:center;align-items:center;}
+.xl-qtext{max-width:38em;font:600 17px/1.5 var(--font-ui);color:var(--ink);}
+.xl-qfig.has-graph .xl-qtext{font:600 13.5px/1.45 var(--font-ui);color:var(--muted);text-align:center;}
+.xl-qscale{margin:0;font:600 12.5px var(--font-ui);color:var(--muted);}
+.xl-qtbl{width:100%;max-width:520px;}
+.xl-qtbl .xl-qt{width:100%;font-size:14px;}
+.xl-qtbl .xl-qt td,.xl-qtbl .xl-qt th{text-align:right;padding:4px 10px;}
+.xl-qg{width:100%;}
+.xl-qg:empty{display:none;}

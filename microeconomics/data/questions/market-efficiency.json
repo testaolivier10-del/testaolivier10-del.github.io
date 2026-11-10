@@ -1,0 +1,692 @@
+{
+ "stimuli": {
+  "market-efficiency-s1": {
+   "kind": "graph",
+   "title": "A per-unit subsidy in a market for bus rides, areas lettered",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "subsidy",
+     "amount": 2
+    },
+    "letters": true
+   }
+  },
+  "market-efficiency-s2": {
+   "kind": "data",
+   "title": "Evening hours at the Pellmore community pool",
+   "invented": true,
+   "table": {
+    "caption": "Marginal social benefit and marginal social cost of each extra evening hour the invented Pellmore pool stays open per week (invented data for practice)",
+    "cols": [
+     "Hour",
+     "MSB (dollars)",
+     "MSC (dollars)"
+    ],
+    "rows": [
+     [
+      "1st",
+      "18",
+      "4"
+     ],
+     [
+      "2nd",
+      "15",
+      "6"
+     ],
+     [
+      "3rd",
+      "12",
+      "8"
+     ],
+     [
+      "4th",
+      "9",
+      "10"
+     ],
+     [
+      "5th",
+      "6",
+      "12"
+     ],
+     [
+      "6th",
+      "3",
+      "14"
+     ]
+    ]
+   }
+  },
+  "market-efficiency-s3": {
+   "kind": "text",
+   "title": "Four invented markets",
+   "text": "<p>Market W: many farms sell wheat to many buyers, and no one outside the market gains or loses from it. Market X: one firm is the only seller of a medicine and produces where MR = MC. Market Y: a city sets taxi fares below the equilibrium price. Market Z: many bakeries sell bread, and the government pays them \\$1 for every loaf sold.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-market-efficiency-1",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A per-unit tax is placed on sellers in a competitive market with no effects on anyone outside it. Shade the deadweight loss.",
+   "why": {
+    "correct": "With the tax, the quantity traded falls below the efficient quantity, where MSB (demand) meets MSC (supply). The deadweight loss is the triangle between demand and supply from the quantity after the tax out to the efficient quantity (region dwl)."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tax",
+     "amount": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "tax-revenue": "That rectangle is the tax revenue: it goes to the government, so it is not lost."
+    }
+   }
+  },
+  {
+   "id": "mic-market-efficiency-2",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A per-unit subsidy is paid to sellers in a competitive market with no effects on anyone outside it. Shade the deadweight loss.",
+   "why": {
+    "correct": "The subsidy pushes the quantity past the efficient quantity. For those extra units the cost to society (on S, the MSC) is above their benefit (on D, the MSB). The deadweight loss is the triangle between S and D from the efficient quantity out to the new, larger quantity (region dwl)."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "subsidy",
+     "amount": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "subsidy-cost": "That is the whole cost of the subsidy to the government. The deadweight loss is only the triangle beyond the efficient quantity."
+    }
+   }
+  },
+  {
+   "id": "mic-market-efficiency-3",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A binding price ceiling is placed on a competitive market. Shade the deadweight loss.",
+   "why": {
+    "correct": "At the ceiling, sellers supply less than the efficient quantity, so the quantity traded falls. The deadweight loss is the triangle between demand and supply from that smaller quantity out to the efficient quantity (region dwl)."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "ceiling",
+     "at": 3
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    }
+   }
+  },
+  {
+   "id": "mic-market-efficiency-4",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the deadweight loss of this profit-maximizing monopoly.",
+   "why": {
+    "correct": "The monopoly produces where MR = MC, less than the allocatively efficient quantity where demand (MSB) meets MC (MSC). The deadweight loss is the area between demand and MC from the monopoly quantity to that efficient quantity (region dwl), not out to ATC."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "profit": "That rectangle is the monopoly's profit, a transfer to the firm, not a loss to society."
+    }
+   }
+  },
+  {
+   "id": "mic-market-efficiency-5",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "recall",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "In this competitive market, demand reflects every benefit of the good and supply every cost. Mark the socially efficient price and quantity.",
+   "why": {
+    "correct": "With no benefits or costs falling on others, demand is MSB and supply is MSC, so the efficient point is where they cross: the market equilibrium."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "eq"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-market-efficiency-6",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "In the graph, demand is the marginal social benefit of bus rides and supply the marginal social cost. Which area is the deadweight loss of the subsidy?",
+   "stimulus": "market-efficiency-s1",
+   "options": [
+    "Areas b, c, e, f and g",
+    "Area c",
+    "Area g",
+    "Area a"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The units beyond the efficient quantity cost more to make (MSC) than they are worth to buyers (MSB); the gap summed over those units is area g.",
+    "options": [
+     "That is the cost of the subsidy to the government, most of which goes to buyers and sellers.",
+     "Area c is a gain to buyers from the lower price.",
+     "Right: the triangle between supply and demand beyond the original equilibrium, out to the new quantity.",
+     "Area a is consumer surplus before the subsidy."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-7",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the graph, for the last bus ride produced with the subsidy, how do MSB and MSC compare?",
+   "stimulus": "market-efficiency-s1",
+   "options": [
+    "MSC is greater than MSB",
+    "MSB is greater than MSC",
+    "MSB equals MSC",
+    "MSC is zero, because the government pays"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A unit should be made only if its MSB is at least its MSC. The subsidy leads to units where MSC > MSB, which is why there is deadweight loss.",
+    "options": [
+     "Right: past the efficient quantity, supply lies above demand.",
+     "That holds for units below the efficient quantity, not for the last one produced with the subsidy.",
+     "They are equal only at the efficient quantity, which is smaller.",
+     "The subsidy shifts who pays; the cost to society of making the ride is unchanged."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-8",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the graph, compared with the efficient quantity, the quantity of bus rides with the subsidy is",
+   "stimulus": "market-efficiency-s1",
+   "options": [
+    "smaller, so the market underallocates resources to bus rides",
+    "the same, because demand did not shift",
+    "the same, because the subsidy is paid by the government",
+    "larger, so the market overallocates resources to bus rides"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Here the original equilibrium was efficient. Any policy that moves the quantity away from it, in either direction, creates deadweight loss.",
+    "options": [
+     "The subsidy raises the quantity.",
+     "Supply shifted right with the subsidy, so the quantity changed.",
+     "Who pays does not stop the quantity from rising.",
+     "Right: supply shifts right and the new crossing is beyond the original equilibrium."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-9",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the socially efficient number of evening hours?",
+   "stimulus": "market-efficiency-s2",
+   "why": {
+    "correct": "Open each hour whose MSB is at least its MSC. The third hour gives \\$12 of benefit for \\$8 of cost; the fourth gives \\$9 for \\$10. So 3 hours."
+   },
+   "numeric": {
+    "from": {
+     "fn": "profitMaxQ",
+     "args": [
+      [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      [
+       18,
+       15,
+       12,
+       9,
+       6,
+       3
+      ],
+      [
+       4,
+       6,
+       8,
+       10,
+       12,
+       14
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "Every hour has a positive benefit, but from the fourth on, each costs society more than it is worth."
+     },
+     {
+      "value": 4,
+      "why": "The fourth hour's MSB (\\$9) is below its MSC (\\$10), so it lowers total surplus."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-10",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. The pool stays open 5 hours. How much total surplus is lost compared with the efficient number of hours, in dollars?",
+   "stimulus": "market-efficiency-s2",
+   "why": {
+    "correct": "Hours 4 and 5 should not run. Hour 4 loses \\$10 - \\$9 = \\$1 and hour 5 loses \\$12 - \\$6 = \\$6, so \\$7 in all."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        10,
+        9
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        12,
+        6
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        12,
+        6
+       ]
+      },
+      "why": "\\$6 counts only the fifth hour. The fourth hour also costs more than it is worth, by \\$1."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        9,
+        6
+       ]
+      },
+      "why": "\\$15 adds the benefits of hours 4 and 5. The loss is the cost above the benefit for each."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-11",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. The pool stays open only 2 hours. How much total surplus is lost compared with the efficient number of hours, in dollars?",
+   "stimulus": "market-efficiency-s2",
+   "why": {
+    "correct": "The third hour should run but does not. It would have added \\$12 - \\$8 = \\$4 of surplus, so \\$4 is lost."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      12,
+      8
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "\\$12 is the third hour's benefit. The surplus lost is benefit minus cost: \\$12 - \\$8."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          12,
+          8
+         ]
+        },
+        {
+         "fn": "sub",
+         "args": [
+          10,
+          9
+         ]
+        }
+       ]
+      },
+      "why": "The fourth hour should not run, so it is not part of the loss from stopping at 2."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-12",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, which market produces the socially efficient quantity?",
+   "stimulus": "market-efficiency-s3",
+   "options": [
+    "Market X",
+    "Market W",
+    "Market Y",
+    "Market Z"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A competitive market with no third-party effects reaches MSB = MSC on its own.",
+    "options": [
+     "A monopoly sets price above MC and produces too little.",
+     "Right: with competition and no effects on others, D = MSB and S = MSC, so the equilibrium is efficient.",
+     "A binding price ceiling cuts the quantity supplied below the efficient quantity.",
+     "A subsidy pushes the quantity past the efficient quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-13",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "In the scenario, which markets produce more than the socially efficient quantity? Select all that apply.",
+   "stimulus": "market-efficiency-s3",
+   "options": [
+    "Market W",
+    "Market X",
+    "Market Y",
+    "Market Z"
+   ],
+   "correct": [
+    3
+   ],
+   "why": {
+    "correct": "Subsidies in an otherwise efficient market lead to overproduction; monopoly and binding ceilings lead to underproduction.",
+    "options": [
+     "Its equilibrium is efficient.",
+     "The monopoly restricts output, so it makes too little.",
+     "At the low fare, fewer rides are supplied: too little.",
+     "Right: the subsidy pushes bread output past the efficient quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-14",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, why is Market X's outcome inefficient?",
+   "stimulus": "market-efficiency-s3",
+   "options": [
+    "It earns an economic profit",
+    "Its price is above marginal cost, so units worth more than they cost are not made",
+    "Its price is below marginal cost",
+    "It produces more than buyers want"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Allocative efficiency needs P = MC. A monopoly stops where MR = MC, below the efficient quantity.",
+    "options": [
+     "Profit is a transfer from buyers; the loss comes from units not produced.",
+     "Right: at the monopoly quantity MSB (price) > MSC (MC).",
+     "A monopoly charges more than MC.",
+     "It produces less than the efficient quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-15",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Where is the socially efficient quantity of a good?",
+   "options": [
+    "Where total benefit is largest",
+    "Where the price is as low as possible",
+    "Where producers earn the most profit",
+    "Where marginal social benefit equals marginal social cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Below the efficient quantity, each added unit is worth more than it costs; above it, less. Total surplus is largest at MSB = MSC.",
+    "options": [
+     "Total benefit keeps rising while MSB is positive; the efficient point weighs cost too.",
+     "A low price says nothing about whether each unit is worth its cost.",
+     "Profit is the firm's goal, not society's; a monopoly's profit-maximizing quantity is too small.",
+     "Right: MSB = MSC."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-16",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a market failure?",
+   "options": [
+    "A market outcome that is not socially efficient",
+    "A market in which some firms lose money",
+    "A market in which prices rise quickly",
+    "A market in which the government sets prices"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A market fails when it leaves deadweight loss: too much or too little is made compared with MSB = MSC.",
+    "options": [
+     "Right: the market produces a quantity other than the one where MSB = MSC.",
+     "Losses and exit are a normal part of competitive markets.",
+     "Fast price changes can be efficient responses to shifts.",
+     "Government policy can cause inefficiency, but that is not the definition."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-17",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A market produces 40 units fewer than the efficient quantity. At the market quantity, MSB is \\$10 above MSC, and the gap shrinks evenly to zero at the efficient quantity. What is the deadweight loss, in dollars?",
+   "why": {
+    "correct": "The deadweight loss is a triangle: ½ × 40 × \\$10 = \\$200."
+   },
+   "numeric": {
+    "from": {
+     "fn": "dwl",
+     "args": [
+      40,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        40,
+        10
+       ]
+      },
+      "why": "\\$400 is the full rectangle. The gap shrinks to zero, so the area is a triangle: take one half."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-18",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "When the market quantity is below the efficient quantity, what is true of the next unit not produced?",
+   "options": [
+    "Its MSC is greater than its MSB",
+    "Its MSB equals its MSC",
+    "Its MSB is greater than its MSC",
+    "Its MSB and MSC are both zero"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Underproduction leaves units with MSB > MSC unmade; that lost net benefit is the deadweight loss.",
+    "options": [
+     "That describes units beyond the efficient quantity.",
+     "Equality holds only at the efficient quantity.",
+     "Right: society would gain by making it.",
+     "Neither is zero just because the unit is not made."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-19",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Total surplus in a market is largest when",
+   "options": [
+    "as many units as buyers want at a price of zero are made",
+    "consumer surplus is as large as possible",
+    "producer surplus is as large as possible",
+    "every unit with MSB at least MSC is made, and no other"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Total surplus = consumer surplus + producer surplus, and it is largest at the efficient quantity. Any other quantity leaves deadweight loss.",
+    "options": [
+     "Units past MSB = MSC cost more than they are worth.",
+     "A price ceiling can raise consumer surplus while lowering total surplus.",
+     "A monopoly can raise producer surplus while creating deadweight loss.",
+     "Right: that is the quantity where MSB = MSC."
+    ]
+   }
+  },
+  {
+   "id": "mic-market-efficiency-20",
+   "unit": "unit-6",
+   "topic": "market-efficiency",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A competitive market with no effects on anyone else is at equilibrium. A binding price floor is then set. What happens to efficiency?",
+   "options": [
+    "Efficiency rises, because sellers earn more per unit",
+    "Deadweight loss appears, because less is bought than the efficient quantity",
+    "Nothing changes, because supply and demand do not shift",
+    "Deadweight loss appears, because more is bought than the efficient quantity"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A binding floor moves the quantity traded away from MSB = MSC, so total surplus falls.",
+    "options": [
+     "Higher prices for sellers are a transfer; the lost units are a loss.",
+     "Right: at the floor, quantity demanded falls below the efficient quantity.",
+     "The quantity traded changes even though the curves do not.",
+     "At a price above equilibrium, buyers buy less, not more."
+    ]
+   }
+  }
+ ]
+}

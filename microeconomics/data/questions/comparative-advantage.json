@@ -1,0 +1,541 @@
+{
+ "stimuli": {
+  "comparative-advantage-s1": {
+   "kind": "data",
+   "title": "Output tables for two workshops",
+   "invented": true,
+   "table": {
+    "caption": "The most each workshop can make in one day if it makes only that good (invented data for practice)",
+    "cols": [
+     "Workshop",
+     "Chairs per day",
+     "Tables per day"
+    ],
+    "rows": [
+     [
+      "Fenwick",
+      "12",
+      "6"
+     ],
+     [
+      "Garnet",
+      "8",
+      "2"
+     ]
+    ]
+   }
+  },
+  "comparative-advantage-s2": {
+   "kind": "data",
+   "title": "Hours of labor needed in two countries",
+   "invented": true,
+   "table": {
+    "caption": "Hours of labor needed to make one unit in two invented countries (invented data for practice)",
+    "cols": [
+     "Country",
+     "Hours for 1 bushel of rice",
+     "Hours for 1 bolt of cloth"
+    ],
+    "rows": [
+     [
+      "Corvania",
+      "2",
+      "4"
+     ],
+     [
+      "Lumeria",
+      "3",
+      "9"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-comparative-advantage-1",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A producer has a comparative advantage in a good when it can make that good",
+   "options": [
+    "in a larger amount than another producer",
+    "with more workers than the other producer uses",
+    "at a lower opportunity cost",
+    "at a higher price than another producer"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Comparative advantage is about opportunity cost: what you give up to make one more unit.",
+    "options": [
+     "Making more with the same resources is absolute advantage.",
+     "Using more workers says nothing about what each unit costs in other goods.",
+     "Right: lower opportunity cost.",
+     "Price is not how either advantage is defined."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-2",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "comparative-advantage-s1",
+   "q": "What is Fenwick's opportunity cost of one table, in chairs?",
+   "why": {
+    "correct": "Fenwick gives up 12 chairs to make 6 tables: $\\frac{12}{6} = 2$ chairs per table."
+   },
+   "numeric": {
+    "unit": "chairs",
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      12,
+      6
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "opportunityCost",
+       "args": [
+        6,
+        12
+       ]
+      },
+      "why": "That is the cost of a CHAIR in tables. For a table, put the chairs given up (12) on top and the tables gained (6) below."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-3",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "comparative-advantage-s1",
+   "q": "What is Garnet's opportunity cost of one chair, in tables?",
+   "why": {
+    "correct": "Garnet gives up 2 tables to make 8 chairs: $\\frac{2}{8} = 0.25$ table per chair."
+   },
+   "numeric": {
+    "unit": "tables",
+    "from": {
+     "fn": "opportunityCost",
+     "args": [
+      2,
+      8
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "opportunityCost",
+       "args": [
+        8,
+        2
+       ]
+      },
+      "why": "That is the cost of a TABLE in chairs. For a chair, divide the tables given up (2) by the chairs gained (8)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-4",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "comparative-advantage-s1",
+   "q": "Which workshop has the absolute advantage in making chairs?",
+   "options": [
+    "Fenwick, because it can make 12 a day to Garnet's 8",
+    "Garnet, because a chair costs it just a quarter of a table",
+    "Garnet, because it makes fewer tables",
+    "Neither, because both can make chairs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Absolute advantage compares amounts made: Fenwick makes 12 chairs a day, Garnet 8.",
+    "options": [
+     "Right: more output with the same day of work.",
+     "A lower opportunity cost is comparative advantage, not absolute.",
+     "Making fewer tables is not an advantage in chairs.",
+     "Both can make chairs, but Fenwick makes more."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-5",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "comparative-advantage-s1",
+   "q": "Which workshop has the comparative advantage in tables, and why?",
+   "options": [
+    "Garnet: a table costs it 4 chairs, Fenwick 2",
+    "Fenwick: it makes 6 tables to Garnet's 2",
+    "Neither: Fenwick is better at both goods",
+    "Fenwick: a table costs it 2 chairs, Garnet 4"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Compare opportunity costs of a table: 2 chairs for Fenwick, 4 for Garnet. The lower cost wins.",
+    "options": [
+     "The comparative advantage goes to the LOWER cost, which is Fenwick's.",
+     "That compares amounts, which is absolute advantage.",
+     "Being better at both is absolute advantage; costs still differ, so each has a comparative advantage.",
+     "Right: 2 chairs is less than 4."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-6",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "comparative-advantage-s1",
+   "q": "Garnet specializes in chairs and Fenwick in tables. Which price for one table, paid in chairs, would benefit both workshops?",
+   "options": [
+    "1 chair",
+    "3 chairs",
+    "5 chairs",
+    "8 chairs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A table costs Fenwick 2 chairs to make and Garnet 4. At 3 chairs per table, Fenwick gets more than 2 for each table it sells and Garnet pays less than 4.",
+    "options": [
+     "At 1 chair, Fenwick gets less than the 2 chairs a table costs it to make.",
+     "Right: between 2 and 4.",
+     "At 5 chairs, Garnet pays more than the 4 chairs it would give up to make a table itself.",
+     "At 8 chairs, Garnet would pay twice its own cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-7",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "comparative-advantage-s2",
+   "q": "In Corvania, what is the opportunity cost of one bolt of cloth, in bushels of rice?",
+   "why": {
+    "correct": "The 4 hours for a bolt of cloth could make $\\frac{4}{2} = 2$ bushels of rice instead. With an input table, divide the hours for the good by the hours for the other good."
+   },
+   "numeric": {
+    "unit": "bushels",
+    "from": {
+     "fn": "div",
+     "args": [
+      4,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        2,
+        4
+       ]
+      },
+      "why": "That is the output-table rule applied to hours. With hours per unit, divide the hours for cloth (4) by the hours for rice (2)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-8",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "comparative-advantage-s2",
+   "q": "Which country has the absolute advantage in both goods?",
+   "options": [
+    "Lumeria, because it needs more hours for each good",
+    "Corvania: fewer hours for each good",
+    "Corvania in rice and Lumeria in cloth",
+    "Neither country"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With an input table, fewer hours per unit means more output from the same labor. Corvania needs 2 hours for rice (Lumeria 3) and 4 for cloth (Lumeria 9).",
+    "options": [
+     "More hours per unit means LESS output from the same labor.",
+     "Right: fewer hours for both.",
+     "Corvania uses fewer hours for cloth too.",
+     "Corvania uses fewer hours for both goods."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-9",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "comparative-advantage-s2",
+   "q": "Which country has the comparative advantage in rice?",
+   "options": [
+    "Corvania: it needs fewer hours for rice",
+    "Corvania: 1/2 bolt per bushel, to Lumeria's 1/3",
+    "Lumeria: it needs more hours for rice",
+    "Lumeria: 1/3 bolt per bushel, to Corvania's 1/2"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Opportunity cost of a bushel of rice: Corvania 2 ÷ 4 = 1/2 bolt, Lumeria 3 ÷ 9 = 1/3 bolt. Lumeria's is lower.",
+    "options": [
+     "Fewer hours is absolute advantage, not comparative.",
+     "The comparative advantage goes to the LOWER cost, Lumeria's 1/3.",
+     "Needing more hours is not why; its lower opportunity cost is.",
+     "Right: 1/3 is less than 1/2."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-10",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "comparative-advantage-s2",
+   "q": "If the two countries specialize by comparative advantage, what will each produce?",
+   "options": [
+    "Corvania cloth and Lumeria rice",
+    "Corvania rice and Lumeria cloth",
+    "Corvania both goods",
+    "Lumeria both goods"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cloth costs Corvania 2 bushels of rice and Lumeria 3, so Corvania specializes in cloth. Lumeria has the lower cost of rice.",
+    "options": [
+     "Right: each makes its lower-cost good.",
+     "That reverses both comparative advantages.",
+     "Specializing in both goods is not possible; each country has a comparative advantage in only one.",
+     "Lumeria has the comparative advantage in rice only."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-11",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Fenwick can make 12 chairs or 6 tables a day, or any mix on a straight line between them. Label the axes and the curve of its production possibilities graph.",
+   "why": {
+    "correct": "Chairs go on the horizontal axis and Tables on the vertical axis, as drawn, and the straight line is Fenwick's PPC."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Chairs",
+     "y": "Tables"
+    },
+    "linear": true,
+    "ends": {
+     "x": 12,
+     "y": 6
+    },
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-12",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Fenwick specializes in tables and trades some for chairs. It ends up with 6 chairs and 4 tables. Place point C at that combination.",
+   "why": {
+    "correct": "On its own line, 6 chairs leaves room for only 3 tables. With 4 tables, point C lies outside Fenwick's PPC: trade lets it consume beyond what it can make alone."
+   },
+   "graph": {
+    "kind": "ppc",
+    "names": {
+     "x": "Chairs",
+     "y": "Tables"
+    },
+    "linear": true,
+    "ends": {
+     "x": 12,
+     "y": 6
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "C",
+    "key": {
+     "point": {
+      "region": "outside"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-13",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does it mean to specialize?",
+   "options": [
+    "To make each good you consume by yourself",
+    "To buy most goods from producers in other countries",
+    "To focus production on a few goods",
+    "To make the good with the highest price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Specializing means focusing on what you make at a low opportunity cost and trading for the rest.",
+    "options": [
+     "Making everything yourself is the opposite of specializing.",
+     "Buying from others is trade; specializing is about what you make.",
+     "Right: focus on a few goods.",
+     "Specializing follows opportunity cost, not the highest price."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-14",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Two bakers have the same opportunity cost of a pie: 3 loaves of bread each. What can trade between them do?",
+   "options": [
+    "The faster baker gains and the slower one loses",
+    "Both gain, as two producers do from any trade",
+    "The slower baker gains the most",
+    "Neither gains from trading"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Gains from trade come from different opportunity costs. With equal costs, there is no price between them that helps one without hurting the other.",
+    "options": [
+     "Speed is absolute advantage; what matters is that the costs are equal.",
+     "Gains need different opportunity costs.",
+     "With equal costs, neither has a cost advantage to trade on.",
+     "Right: equal costs leave no gain."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-15",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A lawyer types faster than her assistant. Why might she still pay the assistant to do her typing?",
+   "options": [
+    "She has the comparative advantage in typing",
+    "Her assistant has the absolute advantage in typing",
+    "Typing costs her valuable legal work",
+    "Typing has no opportunity cost"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Her opportunity cost of typing is the legal work she gives up, which is high. The assistant gives up much less, so the assistant has the comparative advantage in typing.",
+    "options": [
+     "Her opportunity cost of typing is the higher one, so the assistant has the comparative advantage.",
+     "She types faster, so SHE has the absolute advantage.",
+     "Right: her opportunity cost of typing is high.",
+     "Every hour spent typing gives up some other use."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-16",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "A bushel of corn costs Country P 2 bushels of wheat and Country Q 5. Country P specializes in corn. At which prices, in wheat per bushel of corn, would both countries gain? Select all that apply.",
+   "options": [
+    "3 bushels of wheat",
+    "4 bushels of wheat",
+    "1 bushel of wheat",
+    "6 bushels of wheat"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Both gain at any price between the two opportunity costs, 2 and 5 bushels of wheat.",
+    "options": [
+     "Right: between 2 and 5.",
+     "Right: between 2 and 5.",
+     "At 1, P gets less than the 2 bushels of wheat corn costs it.",
+     "At 6, Q pays more than the 5 it would give up to grow corn itself."
+    ]
+   }
+  },
+  {
+   "id": "mic-comparative-advantage-17",
+   "unit": "unit-1",
+   "topic": "comparative-advantage",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the steps for showing that two producers gain from trade in order.",
+   "options": [
+    "Find each producer's opportunity cost of each good",
+    "Compare costs to find each comparative advantage",
+    "Have each specialize in its comparative-advantage good",
+    "Trade at a price between the two opportunity costs"
+   ],
+   "why": {
+    "correct": "Costs first, then comparative advantage, then specialization, then terms of trade between the costs."
+   }
+  }
+ ]
+}

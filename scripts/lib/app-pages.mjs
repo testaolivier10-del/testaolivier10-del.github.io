@@ -46,6 +46,9 @@ export const APP_STATE_PAGES = [
   'macroeconomics/dashboard.html',
   'macroeconomics/review.html',
   'macroeconomics/search.html',
+  'microeconomics/dashboard.html',
+  'microeconomics/review.html',
+  'microeconomics/search.html',
   // The guided study path (docs/guided-path.md): one per course, the student's own path.
   'nremt/path.html',
   'ochem/path.html',
@@ -60,6 +63,7 @@ export const APP_STATE_PAGES = [
   'psychology/path.html',
   'precalculus/path.html',
   'macroeconomics/path.html',
+  'microeconomics/path.html',
 ];
 
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';

@@ -1,0 +1,67 @@
+{
+ "topic": "other-elasticities",
+ "hook": "When a city's factories hire again and paychecks rise, the steakhouse downtown fills up and the bus company sells fewer monthly passes. When a cafe raises the price of coffee, it sells more tea and less cream. Two more elasticities measure these responses, and their signs tell you what kind of good you are looking at.",
+ "prereq": [
+  {
+   "q": "A good buyers want less of when their income rises is",
+   "options": [
+    "an inferior good",
+    "a normal good",
+    "a complement",
+    "a substitute"
+   ],
+   "correct": 0,
+   "why": "Inferior goods are replaced by preferred goods as income rises.",
+   "review": "demand"
+  },
+  {
+   "q": "Price elasticity of demand divides the percent change in quantity demanded by",
+   "options": [
+    "the percent change in price",
+    "the change in income",
+    "total revenue",
+    "the slope of demand"
+   ],
+   "correct": 0,
+   "why": "Elasticity compares two percent changes, quantity on top.",
+   "review": "price-elasticity-demand"
+  }
+ ],
+ "figure": {
+  "figure": "other-elasticities-signs",
+  "caption": "For income and cross-price elasticity, the sign is the answer: inferior or normal, complements, unrelated or substitutes."
+ },
+ "chain": [
+  {
+   "cause": "The price of coffee rises",
+   "effect": "coffee drinkers look for a cheaper drink"
+  },
+  {
+   "cause": "Some switch to tea, a substitute",
+   "effect": "the quantity of tea demanded rises at each tea price"
+  },
+  {
+   "cause": "Tea demand rises as the coffee price rises",
+   "effect": "the cross-price elasticity is positive: the goods are substitutes"
+  }
+ ],
+ "ideas": [
+  "<b>Income elasticity of demand</b> = percent change in quantity demanded divided by percent change in income. Keep the sign.",
+  "Positive: <b>normal good</b> (above 1, demand grows faster than income). Negative: <b>inferior good</b>.",
+  "<b>Cross-price elasticity of demand</b> = percent change in quantity demanded of X divided by percent change in the price of Y. Keep the sign.",
+  "Positive: <b>substitutes</b>. Negative: <b>complements</b>. Near zero: unrelated.",
+  "Elasticity can be measured for any determinant of demand; each is a percent change in quantity over a percent change in the cause."
+ ],
+ "misconception": {
+  "wrong": "A cross-price elasticity of $-0.3$ is small and negative, so the two goods are substitutes that barely affect each other.",
+  "right": "For cross-price elasticity the sign carries the meaning: negative means complements (a higher price of one lowers demand for the other). Substitutes have a positive cross-price elasticity."
+ },
+ "check": [
+  "mic-other-elasticities-1",
+  "mic-other-elasticities-2",
+  "mic-other-elasticities-5",
+  "mic-other-elasticities-9",
+  "mic-other-elasticities-14"
+ ],
+ "summary": "Income elasticity of demand divides the percent change in quantity demanded by the percent change in income; cross-price elasticity divides the percent change in quantity demanded of one good by the percent change in the price of another. Unlike price elasticity of demand, both keep their sign. A positive income elasticity marks a normal good and a negative one an inferior good. A positive cross-price elasticity marks substitutes, a negative one complements, and one near zero unrelated goods."
+}

@@ -1,0 +1,17 @@
+{
+ "demand": {
+  "def": "Demand: the quantities of a good buyers are willing and able to buy at each price, shown as a downward-sloping demand curve. The quantity demanded is the amount at one particular price."
+ },
+ "law-of-demand": {
+  "def": "The law of demand: other things equal, when a good's price rises the quantity demanded falls, and when it falls the quantity demanded rises."
+ },
+ "income-effect": {
+  "def": "Income effect: a lower price makes buyers' income go further, so they can buy more. Substitution effect: a lower price makes the good cheaper than its substitutes, so buyers switch toward it."
+ },
+ "market-demand": {
+  "def": "Market demand: the sum of every individual buyer's quantity demanded at each price (a horizontal sum of the individual demand curves)."
+ },
+ "demand-shifter": {
+  "def": "Determinants of demand: the changes other than the good's own price that shift demand: tastes, income (a normal good's demand rises with income, an inferior good's falls), prices of substitutes and complements, expectations and the number of buyers."
+ }
+}

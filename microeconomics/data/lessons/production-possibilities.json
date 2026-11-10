@@ -1,0 +1,83 @@
+{
+ "topic": "production-possibilities",
+ "hook": "A family farm has 200 acres, six workers and two tractors. It can plant corn, beans or a mix. Plant all corn and there are no beans; switch some fields to beans and corn falls. One curve shows every best mix the farm can grow, and its shape tells you how much of one crop each extra unit of the other really costs.",
+ "prereq": [
+  {
+   "q": "The opportunity cost of a choice is",
+   "options": [
+    "the value of the next-best alternative given up",
+    "the money price of the choice",
+    "the sum of every alternative given up",
+    "zero when the choice is free"
+   ],
+   "correct": 0,
+   "why": "Only the single next-best alternative counts.",
+   "review": "scarcity"
+  },
+  {
+   "q": "A curve that falls to the right has",
+   "options": [
+    "a negative slope",
+    "a positive slope",
+    "a slope of 0",
+    "a minimum point"
+   ],
+   "correct": 0,
+   "why": "One variable falls as the other rises.",
+   "review": "slopes-curves"
+  },
+  {
+   "q": "When a curve shifts right on a graph, the new curve is labeled",
+   "options": [
+    "with subscript 2 and an arrow from the old one",
+    "with the same label as before",
+    "with no label",
+    "by erasing the old curve"
+   ],
+   "correct": 0,
+   "why": "Keep the old curve (1), add the new (2) and an arrow.",
+   "review": "shifts-movements"
+  }
+ ],
+ "figure": {
+  "figure": "production-possibilities-points",
+  "caption": "A farm's PPC through A to E. U (2, 10) is inside: resources idle. Z (3, 16) is outside: not reachable now. PPC2 shows growth. Each extra truckload of corn costs 1, 2, 4 and then 7 truckloads of beans. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "The farm moves resources from beans to corn",
+   "effect": "it uses fields and workers that are less and less suited to corn"
+  },
+  {
+   "cause": "Each extra truckload of corn needs more of those less-suited resources",
+   "effect": "it gives up more beans than the truckload before"
+  },
+  {
+   "cause": "The opportunity cost of corn rises as more corn is grown",
+   "effect": "the PPC gets steeper as you move right: it bows out"
+  },
+  {
+   "cause": "The farm gains more resources or better technology",
+   "effect": "the whole PPC shifts out, and combinations once outside it become reachable"
+  }
+ ],
+ "ideas": [
+  "A <b>production possibilities curve (PPC)</b> shows the most of two goods a producer can make with its resources and methods. It shows scarcity (points beyond it), trade-offs (moving along it) and opportunity cost (what one good costs in the other).",
+  "Points on the curve show <b>productive efficiency</b>; points inside mean idle or wasted resources; points outside cannot be produced now.",
+  "Bowed out means <b>increasing opportunity cost</b>; a straight line means constant opportunity cost; bowed in (rare) means decreasing opportunity cost.",
+  "More or better resources, or better technology, shift the curve out: <b>economic growth</b>. Losing resources shifts it in.",
+  "Opportunity cost of one more unit of X = units of Y given up ÷ units of X gained."
+ ],
+ "misconception": {
+  "wrong": "Point U, inside the PPC, is where the farm gives up the least, so it is the most efficient choice.",
+  "right": "A point inside the curve wastes resources: the farm could grow more corn, more beans or both without giving anything up. Only points on the curve are productively efficient."
+ },
+ "check": [
+  "mic-production-possibilities-1",
+  "mic-production-possibilities-2",
+  "mic-production-possibilities-6",
+  "mic-production-possibilities-10",
+  "mic-production-possibilities-13"
+ ],
+ "summary": "A production possibilities curve shows every combination of two goods a producer can make when it uses all its resources efficiently with its current methods. Points on it are efficient, points inside waste resources, and points outside are out of reach for now. Moving along the curve shows the trade-off; the opportunity cost of one good is the amount of the other given up per unit gained. A bowed-out curve shows increasing opportunity cost, a straight one constant cost. More resources and better technology shift the curve out (growth)."
+}

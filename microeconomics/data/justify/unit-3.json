@@ -1,0 +1,520 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 3 (docs/apmicro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmicro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-3",
+   "id": "u3-diminishing-returns",
+   "topic": "production-function",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Where diminishing marginal returns begin",
+   "prompt": "<b>Identify</b> the worker with whom diminishing marginal returns begin, for a shop with one oven whose output is 10, 24, 34 and 40 pizzas with 1, 2, 3 and 4 workers. Show your work.",
+   "checklist": [
+    "Finds marginal product as the change in output from each added worker",
+    "Finds where marginal product starts to fall",
+    "Names the fixed input as the reason"
+   ],
+   "earns": {
+    "answer": "Marginal product is the change in output: 10, then 24 - 10 = 14, then 34 - 24 = 10, then 6. It rises with the second worker and falls with the third, so diminishing marginal returns begin with the third worker: the workers share one fixed oven.",
+    "why": "It computes each marginal product and names where it starts falling and why."
+   },
+   "misses": {
+    "answer": "Diminishing returns begin with the fourth worker, because 40 is the most output.",
+    "why": "Total output still rises; the test is marginal product, which falls from the third worker on."
+   },
+   "specific": {
+    "slots": {
+     "mp": {
+      "label": "The third worker's marginal product",
+      "options": [
+       "10 pizzas",
+       "34 pizzas",
+       "11.3 pizzas"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is total output with three workers.",
+       "2": "That is average product, 34 / 3."
+      }
+     },
+     "begins": {
+      "label": "Diminishing returns begin with",
+      "options": [
+       "the third worker",
+       "the fourth worker",
+       "the second worker"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "MP already fell with the third worker.",
+       "2": "The second worker's MP (14) is higher than the first's."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-marginal-cost-table",
+   "topic": "short-run-costs",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Marginal cost when output changes by more than 1",
+   "prompt": "<b>Calculate</b> the marginal cost per unit when a firm's output rises from 50 to 70 units and its total cost rises from \\$400 to \\$520.",
+   "checklist": [
+    "Uses MC = change in total cost / change in output",
+    "Divides by the change in output, 20, not by 1",
+    "States the answer per unit"
+   ],
+   "earns": {
+    "answer": "Marginal cost is the change in total cost divided by the change in output: (\\$520 - \\$400) / (70 - 50) = \\$6 per unit.",
+    "why": "It shows the formula with both changes and divides by the change in output."
+   },
+   "misses": {
+    "answer": "The marginal cost is \\$520 - \\$400 = \\$120.",
+    "why": "That is the change in total cost for 20 units together; per unit, divide by 20."
+   },
+   "specific": {
+    "slots": {
+     "div": {
+      "label": "Divide the change in total cost by",
+      "options": [
+       "the change in output, 20",
+       "1",
+       "output, 70"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Output rose by 20 units, not 1.",
+       "2": "Dividing by output gives an average, not a marginal cost."
+      }
+     },
+     "mc": {
+      "label": "Marginal cost",
+      "options": [
+       "\\$6 per unit",
+       "\\$120",
+       "\\$7.43"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the change for all 20 units.",
+       "2": "That is ATC at 70 units."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-mc-through-minimums",
+   "topic": "short-run-costs",
+   "practice": "4.A",
+   "skill": "graph",
+   "title": "MC crosses AVC and ATC at their lowest points",
+   "prompt": "<b>Explain</b> why the marginal cost curve crosses the average total cost curve at its lowest point.",
+   "checklist": [
+    "Says that when MC is below ATC, the next unit pulls the average down",
+    "Says that when MC is above ATC, it pulls the average up",
+    "Concludes that ATC is lowest where MC equals it, so MC crosses at the minimum"
+   ],
+   "earns": {
+    "answer": "When the cost of one more unit (MC) is below the average (ATC), producing it pulls the average down, so ATC falls. When MC is above ATC, it pulls the average up, so ATC rises. ATC stops falling and starts rising exactly where MC equals it, so MC crosses ATC at its lowest point, and the same logic holds for AVC.",
+    "why": "It gives the marginal-average rule both ways and draws the conclusion for the crossing."
+   },
+   "misses": {
+    "answer": "MC crosses ATC at the bottom because that is how the graph is drawn.",
+    "why": "It gives no reason; the marginal-average rule is the explanation."
+   },
+   "specific": {
+    "slots": {
+     "below": {
+      "label": "When MC is below ATC, ATC",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A unit cheaper than the average pulls the average down."
+      }
+     },
+     "cross": {
+      "label": "So MC crosses ATC",
+      "options": [
+       "at its lowest point",
+       "where ATC is falling",
+       "at the shutdown price"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "While ATC falls, MC is still below it.",
+       "2": "The shutdown point is the lowest point of AVC, not ATC."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-fixed-cost-change",
+   "topic": "short-run-costs",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "A fixed cost moves ATC, not MC",
+   "prompt": "<b>Explain</b> how a rise in a firm's yearly license fee, a fixed cost, changes its MC, AVC and ATC curves and its profit-maximizing output.",
+   "checklist": [
+    "Says ATC (and AFC) shift up",
+    "Says MC and AVC do not change",
+    "Says output where MR = MC stays the same"
+   ],
+   "earns": {
+    "answer": "A license fee is fixed: it does not change with output. It raises AFC, so ATC shifts up. MC and AVC depend only on variable costs, so they do not move. Because MC is unchanged, the output where MR = MC is unchanged; only profit falls.",
+    "why": "It separates the curves that move from those that do not and follows through to output."
+   },
+   "misses": {
+    "answer": "All the cost curves shift up, so the firm produces less.",
+    "why": "A fixed cost leaves MC in place, so the profit-maximizing output does not change."
+   },
+   "specific": {
+    "slots": {
+     "moves": {
+      "label": "The curves that shift up",
+      "options": [
+       "ATC and AFC",
+       "MC, AVC and ATC",
+       "MC alone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A fixed cost is not part of variable cost or marginal cost.",
+       "2": "MC depends on variable costs only."
+      }
+     },
+     "q": {
+      "label": "Output where MR = MC",
+      "options": [
+       "stays the same",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "MC did not move, so MR still meets it at the same quantity."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-economic-profit",
+   "topic": "types-of-profit",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "Accounting profit and economic profit",
+   "prompt": "<b>Calculate</b> the accounting profit and the economic profit of a bakery with \\$200,000 in revenue, \\$150,000 in explicit costs and an owner who gives up a \\$60,000 salary.",
+   "checklist": [
+    "Accounting profit: revenue minus explicit costs",
+    "Economic profit: also subtracts the implicit cost",
+    "Says the result is an economic loss"
+   ],
+   "earns": {
+    "answer": "Accounting profit is 200,000 - 150,000 = \\$50,000. Economic profit also subtracts the \\$60,000 salary the owner gives up, an implicit cost: 50,000 - 60,000 = -\\$10,000, an economic loss.",
+    "why": "Both profits are calculated, the implicit cost is named and the loss is stated."
+   },
+   "misses": {
+    "answer": "The bakery makes a profit of \\$50,000, so it is doing well.",
+    "why": "That is accounting profit only; with the forgone salary the owner earns less than her best alternative."
+   },
+   "specific": {
+    "slots": {
+     "acct": {
+      "label": "Accounting profit",
+      "options": [
+       "\\$50,000",
+       "-\\$10,000",
+       "\\$200,000"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is economic profit.",
+       "2": "That is revenue, before any cost."
+      }
+     },
+     "econ": {
+      "label": "Economic profit",
+      "options": [
+       "-\\$10,000, a loss",
+       "\\$110,000",
+       "\\$50,000"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The salary is a cost: subtract it.",
+       "2": "That leaves out the implicit cost."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-mr-mc-rule",
+   "topic": "profit-maximization",
+   "practice": "2.A",
+   "skill": "marginal",
+   "title": "Choose output with MR = MC",
+   "prompt": "<b>Explain</b> how many units a perfectly competitive firm should make at a price of \\$12 if the marginal cost of the 5th, 6th and 7th units is \\$10, \\$11 and \\$13.",
+   "checklist": [
+    "States the rule: produce where MR = MC (MR equals the price here)",
+    "Compares MR with MC for each unit",
+    "Gives the output: 6 units"
+   ],
+   "earns": {
+    "answer": "A competitive firm's MR equals the price, \\$12. It produces each unit whose MR is at least its MC, up to MR = MC: the 5th (\\$12 against \\$10) and the 6th (\\$12 against \\$11) add to profit, the 7th (\\$12 against \\$13) does not. It makes 6 units.",
+    "why": "It states the marginal rule and checks each unit with the numbers."
+   },
+   "misses": {
+    "answer": "It should make 7 units, because the price is close to the marginal cost.",
+    "why": "The 7th unit costs \\$13 and brings in \\$12, so it lowers profit."
+   },
+   "specific": {
+    "slots": {
+     "rule": {
+      "label": "The rule",
+      "options": [
+       "produce up to MR = MC",
+       "produce where price equals ATC",
+       "produce as many as possible"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the break-even point, not the profit-maximizing rule.",
+       "2": "Units with MC above MR lower profit."
+      }
+     },
+     "q": {
+      "label": "Output",
+      "options": [
+       "6 units",
+       "7 units",
+       "5 units"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The 7th unit's MC is above MR.",
+       "2": "The 6th unit still adds \\$1 to profit."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-shutdown",
+   "topic": "firm-decisions",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "The shutdown rule with numbers",
+   "prompt": "<b>Explain</b> whether a competitive firm should shut down in the short run at a price of \\$5, if at its best output of 100 units its ATC is \\$8 and its AVC is \\$6.",
+   "checklist": [
+    "Compares the price with AVC, not ATC",
+    "Calculates the loss from producing and from shutting down",
+    "Concludes: shut down, since the price is below AVC"
+   ],
+   "earns": {
+    "answer": "Producing loses (\\$5 - \\$8) x 100 = -\\$300. Shutting down loses only the fixed cost, (\\$8 - \\$6) x 100 = \\$200. The price is below AVC, so the firm cannot even cover its variable costs and should shut down, losing \\$200 instead of \\$300.",
+    "why": "It applies the price-AVC test and shows both losses."
+   },
+   "misses": {
+    "answer": "It should keep producing because it has to pay its fixed costs anyway.",
+    "why": "Fixed costs are paid either way; producing adds a loss on every unit, since the price is below AVC."
+   },
+   "specific": {
+    "slots": {
+     "test": {
+      "label": "Compare the price with",
+      "options": [
+       "AVC",
+       "ATC",
+       "MC at zero output"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Below ATC the firm makes a loss but may still produce; the shutdown test is AVC.",
+       "2": "The test is price against average variable cost."
+      }
+     },
+     "act": {
+      "label": "The firm should",
+      "options": [
+       "shut down",
+       "keep producing"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "At \\$5 the price is below its \\$6 AVC."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-pc-firm-demand",
+   "topic": "perfect-competition",
+   "practice": "4.A",
+   "skill": "graph",
+   "title": "The competitive firm's demand curve",
+   "prompt": "<b>Draw</b> and explain the demand curve a perfectly competitive firm faces, next to the market graph that sets the price.",
+   "checklist": [
+    "Shows the market price set where market supply meets market demand",
+    "Draws the firm's demand as a horizontal line at that price",
+    "Labels it d = MR = AR = P"
+   ],
+   "earns": {
+    "answer": "The market price is set where market supply meets market demand, on the left graph. The firm is a price taker, so on the right graph its demand curve is a horizontal line at that price, labeled d = MR = AR = P: it can sell any amount at the market price, so each unit adds the price to revenue.",
+    "why": "It ties the firm's line to the market price and labels it fully."
+   },
+   "misses": {
+    "answer": "The firm's demand slopes down like the market demand curve.",
+    "why": "A price taker can sell any amount at the market price, so its demand is horizontal."
+   },
+   "specific": {
+    "slots": {
+     "shape": {
+      "label": "The firm's demand curve is",
+      "options": [
+       "horizontal at the market price",
+       "downward sloping",
+       "vertical"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the market's demand; one firm cannot move the price.",
+       "2": "The firm can vary its quantity freely at the price."
+      }
+     },
+     "label": {
+      "label": "Label it",
+      "options": [
+       "d = MR = AR = P",
+       "MC"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "MC is the firm's cost curve, not its demand."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-long-run-entry",
+   "topic": "perfect-competition",
+   "practice": "2.A",
+   "skill": "longrun",
+   "title": "From profit to the long run",
+   "prompt": "<b>Explain</b> what happens in the long run in a perfectly competitive industry whose firms are earning economic profit.",
+   "checklist": [
+    "Says profit attracts new firms (entry)",
+    "Says market supply shifts right, so the price falls",
+    "Says entry stops when the price reaches minimum ATC and economic profit is zero"
+   ],
+   "earns": {
+    "answer": "Economic profit draws new firms into the industry. Entry shifts market supply to the right, which lowers the market price. Firms' profits fall, and entry continues until the price falls to the lowest point of ATC, where economic profit is zero.",
+    "why": "Every link is there: profit, entry, supply shifts, the price falls to minimum ATC."
+   },
+   "misses": {
+    "answer": "In the long run the profit goes away and price equals ATC.",
+    "why": "It states the end point but skips entry and the supply shift that get there."
+   },
+   "specific": {
+    "slots": {
+     "why": {
+      "label": "Profit causes",
+      "options": [
+       "entry of new firms",
+       "exit of firms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Exit follows losses, not profits."
+      }
+     },
+     "shift": {
+      "label": "Market supply",
+      "options": [
+       "shifts right, so the price falls",
+       "shifts left, so the price rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More firms mean more supply at each price."
+      }
+     },
+     "end": {
+      "label": "Entry stops at",
+      "options": [
+       "the lowest point of ATC",
+       "the lowest point of AVC"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "At minimum AVC firms still make a loss."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-long-run-exit",
+   "topic": "perfect-competition",
+   "practice": "2.A",
+   "skill": "longrun",
+   "title": "From losses to the long run",
+   "prompt": "<b>Explain</b> what happens in the long run in a perfectly competitive industry whose firms are earning economic losses.",
+   "checklist": [
+    "Says losses lead some firms to exit",
+    "Says market supply shifts left, so the price rises",
+    "Says exit stops when the price reaches minimum ATC"
+   ],
+   "earns": {
+    "answer": "Losses lead some firms to exit the industry. Exit shifts market supply to the left, which raises the market price. Losses shrink, and exit continues until the price rises to the lowest point of ATC, where the remaining firms earn zero economic profit.",
+    "why": "It links losses, exit, the supply shift and the price back to minimum ATC."
+   },
+   "misses": {
+    "answer": "Firms keep losing money until demand rises again.",
+    "why": "The long-run fix comes from exit shifting supply, not from waiting for demand."
+   },
+   "specific": {
+    "slots": {
+     "why": {
+      "label": "Losses cause",
+      "options": [
+       "exit of firms",
+       "entry of new firms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Losses keep new firms out and push some out."
+      }
+     },
+     "shift": {
+      "label": "Market supply",
+      "options": [
+       "shifts left, so the price rises",
+       "shifts right, so the price falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fewer firms mean less supply at each price."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

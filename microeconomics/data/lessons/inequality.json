@@ -1,0 +1,72 @@
+{
+ "topic": "inequality",
+ "hook": "Two invented countries have the same average income. In one, a nurse, a farmer and a bank manager live within a short walk of each other's standard of living. In the other, half of all income goes to the top fifth of households. An average hides the difference; a single curve shows it.",
+ "prereq": [
+  {
+   "q": "A point on a graph shows",
+   "options": [
+    "one value of each variable, read from the two axes",
+    "a slope",
+    "a shift of a curve",
+    "an area"
+   ],
+   "correct": 0,
+   "why": "An ordered pair: across, then up.",
+   "review": "axes-points"
+  },
+  {
+   "q": "A per-unit tax takes",
+   "options": [
+    "a fixed amount on each unit sold",
+    "a fixed amount per firm",
+    "a share of each household's income",
+    "nothing from buyers"
+   ],
+   "correct": 0,
+   "why": "It is charged per unit.",
+   "review": "government-intervention"
+  }
+ ],
+ "figure": {
+  "figure": "inequality-lorenz",
+  "caption": "Country B's Lorenz curve bows further from the line of equality than Country A's, so income in B is less equally shared. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Households are ranked from lowest to highest income and their shares added up",
+   "effect": "each point gives the share of income held by the lowest x percent: the Lorenz curve"
+  },
+  {
+   "cause": "Income is shared less equally",
+   "effect": "the curve bows further below the line of equality"
+  },
+  {
+   "cause": "The area between the line of equality and the curve grows",
+   "effect": "the Gini coefficient, that area as a share of the triangle, rises"
+  },
+  {
+   "cause": "Progressive taxes and transfer payments shift income toward lower-income households",
+   "effect": "the after-tax curve moves toward the line of equality"
+  }
+ ],
+ "ideas": [
+  "The <b>Lorenz curve</b> plots the cumulative percentage of income against the cumulative percentage of households, poorest first. The diagonal is the <b>line of equality</b>; the further the curve bows below it, the more unequal.",
+  "The <b>Gini coefficient</b> is the area between the line of equality and the Lorenz curve as a share of the triangle under the line: 0 is perfect equality, 1 the most unequal.",
+  "Taxes are <b>progressive</b>, <b>proportional</b> or <b>regressive</b> as the share of income they take rises, stays the same or falls with income. <b>Transfer payments</b> give money with no good or service in return.",
+  "Sources of inequality include differences in skills and training, inherited wealth, discrimination, market power and luck. <b>Income</b> is a yearly flow; <b>wealth</b> is a stock of assets."
+ ],
+ "misconception": {
+  "wrong": "A tax is progressive whenever higher-income households pay more dollars of tax.",
+  "right": "Look at the share of income, not the dollars. A tax that takes 5 percent from everyone has richer households paying more dollars, but it is proportional. Only a share that rises with income is progressive."
+ },
+ "check": [
+  "mic-inequality-15",
+  "mic-inequality-2",
+  "mic-inequality-5",
+  "mic-inequality-6",
+  "mic-inequality-10",
+  "mic-inequality-16",
+  "mic-inequality-17"
+ ],
+ "summary": "The Lorenz curve shows how income is shared: the cumulative percentage of income held by the cumulative percentage of households, from poorest to richest. The diagonal line of equality means equal shares, and the further the curve bows below it, the more unequal the distribution. The Gini coefficient measures that gap as a share of the area under the line. Taxes are progressive, proportional or regressive by how their share of income changes with income, and progressive taxes and transfer payments move the after-tax Lorenz curve toward equality. Inequality comes from differences in skills, wealth, discrimination, market power and luck."
+}

@@ -1,0 +1,83 @@
+{
+ "topic": "factor-demand-supply",
+ "hook": "In one summer an invented beach town loses a third of its lifeguards when a nearby water park offers better pay, while a heat wave fills the beaches. Every lifeguard who stays gets a raise. Two shifts are happening at once in one labor market, and both push the wage the same way.",
+ "prereq": [
+  {
+   "q": "When demand shifts right and supply stays put, the equilibrium price",
+   "options": [
+    "rises",
+    "falls",
+    "stays the same",
+    "is indeterminate"
+   ],
+   "correct": 0,
+   "why": "The new crossing is higher along the same supply curve.",
+   "review": "disequilibrium-changes"
+  },
+  {
+   "q": "A worker's MRP equals",
+   "options": [
+    "MP × MR",
+    "MR × P",
+    "TP × P",
+    "MP ÷ P"
+   ],
+   "correct": 0,
+   "why": "Marginal revenue product is the extra output times the extra revenue per unit.",
+   "review": "factor-markets"
+  },
+  {
+   "q": "A rise in the price of a good changes the quantity supplied by",
+   "options": [
+    "a movement along the supply curve",
+    "shifting supply right",
+    "shifting demand right",
+    "shifting supply left"
+   ],
+   "correct": 0,
+   "why": "A curve's own price moves you along it.",
+   "review": "supply"
+  }
+ ],
+ "figure": {
+  "figure": "factor-demand-supply-shifts",
+  "caption": "Left: more labor demand raises both the wage and employment. Right: less labor supply raises the wage but lowers employment."
+ },
+ "chain": [
+  {
+   "cause": "The demand for a product rises",
+   "effect": "its price rises"
+  },
+  {
+   "cause": "The product price rises",
+   "effect": "each worker's MRP rises"
+  },
+  {
+   "cause": "MRP rises at every quantity of labor",
+   "effect": "labor demand shifts right"
+  },
+  {
+   "cause": "Labor demand shifts right",
+   "effect": "the wage and the number of workers hired both rise"
+  }
+ ],
+ "ideas": [
+  "<b>Labor demand</b> shifts with the demand for (and price of) the product, worker productivity, the prices of other inputs and the number of firms.",
+  "A cheaper input that <b>replaces</b> workers lowers labor demand; a cheaper input used <b>with</b> workers raises it.",
+  "<b>Labor supply</b> shifts with the number of qualified people (population, migration, training rules, age rules), pay in other jobs, and how people feel about the work.",
+  "A change in the wage itself is a movement along both curves. Read the new equilibrium wage and quantity of labor exactly as in any market."
+ ],
+ "misconception": {
+  "wrong": "When a product becomes more popular, workers want to make it, so the supply of labor to that industry rises.",
+  "right": "More demand for the product raises its price and each worker's MRP, so firms want more workers: labor demand shifts right. The wage rises, and more workers are hired as a movement along labor supply."
+ },
+ "check": [
+  "mic-factor-demand-supply-1",
+  "mic-factor-demand-supply-2",
+  "mic-factor-demand-supply-15",
+  "mic-factor-demand-supply-16",
+  "mic-factor-demand-supply-17",
+  "mic-factor-demand-supply-19"
+ ],
+ "summary": "A labor market works like any market, with the wage as its price. Labor demand shifts with the demand for the product, productivity and the prices of other inputs (substitutes lower it when they get cheaper; complements raise it), because each changes MRP or how firms combine inputs. Labor supply shifts with the number of qualified people, pay in other jobs and the appeal of the work. Then read the new wage and employment from the graph: a demand shift moves them the same way; a supply shift moves them in opposite ways."
+}

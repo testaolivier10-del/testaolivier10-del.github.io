@@ -1,0 +1,675 @@
+{
+ "stimuli": {
+  "factor-demand-supply-s1": {
+   "kind": "graph",
+   "title": "The market for app developers after a change",
+   "graph": {
+    "kind": "labor",
+    "show": {
+     "DL": -1
+    },
+    "showEq": true,
+    "mfc": false
+   }
+  },
+  "factor-demand-supply-s2": {
+   "kind": "data",
+   "title": "Warehouse workers in Kettle Valley",
+   "invented": true,
+   "table": {
+    "caption": "Hourly wage, workers demanded and workers supplied in the invented Kettle Valley market for warehouse workers, before and after online orders rise (invented data for practice)",
+    "cols": [
+     "Hourly wage",
+     "Workers demanded (before)",
+     "Workers demanded (after)",
+     "Workers supplied"
+    ],
+    "rows": [
+     [
+      "\\$14",
+      "500",
+      "600",
+      "300"
+     ],
+     [
+      "\\$16",
+      "450",
+      "550",
+      "350"
+     ],
+     [
+      "\\$18",
+      "400",
+      "500",
+      "400"
+     ],
+     [
+      "\\$20",
+      "350",
+      "450",
+      "450"
+     ],
+     [
+      "\\$22",
+      "300",
+      "400",
+      "500"
+     ]
+    ]
+   }
+  },
+  "factor-demand-supply-s3": {
+   "kind": "text",
+   "title": "A year in the invented town of Fenmore",
+   "text": "<p>Fenmore has a large market for nurses. During one year: (1) the town's population ages and hospitals treat more patients; (2) a nearby city raises its nurses' pay well above Fenmore's; (3) Fenmore's hospitals buy monitoring equipment that lets each nurse care for more patients; (4) a new nursing school in Fenmore graduates its first large class.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-factor-demand-supply-1",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Builders in an invented region win many new orders for houses. On the graph of the market for carpenters, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "More demand for houses raises the price of houses and so each carpenter's MRP, so the demand for carpenters (DL) shifts right. The wage and the quantity of carpenters hired both rise."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DL",
+     "SL"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DL",
+       "dir": "right"
+      }
+     ],
+     "because": "more demand for houses, which raises carpenters' MRP",
+     "outcome": {
+      "wage": "up",
+      "quantity of labor": "up"
+     }
+    },
+    "slips": {
+     "SL": "Carpenters have not changed how willing they are to work; it is the builders who want more carpenters, so labor demand shifts."
+    },
+    "mfc": false
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-2",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new rule requires every electrician to complete an extra year of training before working. On the graph of the market for electricians, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "Fewer people qualify to work at each wage, so labor supply (SL) shifts left. The wage rises and the quantity of electricians hired falls."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DL",
+     "SL"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SL",
+       "dir": "left"
+      }
+     ],
+     "because": "a training rule that cuts the number of qualified electricians",
+     "outcome": {
+      "wage": "up",
+      "quantity of labor": "down"
+     }
+    },
+    "slips": {
+     "DL": "The rule changes who can work, the sellers of labor. Firms' demand for electricians has not changed."
+    },
+    "mfc": false
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-3",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Grocery stores install self-checkout machines that do the work of cashiers, and the machines become much cheaper. On the graph of the market for cashiers, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "The machines are a substitute for cashiers in production. When they get cheaper, stores use more machines and want fewer cashiers at each wage, so DL shifts left. The wage and the number of cashiers both fall."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DL",
+     "SL"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DL",
+       "dir": "left"
+      }
+     ],
+     "because": "cheaper machines that replace cashiers",
+     "outcome": {
+      "wage": "down",
+      "quantity of labor": "down"
+     }
+    },
+    "slips": {
+     "SL": "Cashiers' willingness to work is unchanged; the stores want fewer of them, so labor demand shifts."
+    },
+    "mfc": false
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-4",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Many young adults move to an invented city, and most of them look for restaurant jobs. On the graph of the market for restaurant workers, shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "More people offer to work at each wage, so labor supply (SL) shifts right. The wage falls and the quantity of workers hired rises."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "DL",
+     "SL"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SL",
+       "dir": "right"
+      }
+     ],
+     "because": "more people looking for restaurant work",
+     "outcome": {
+      "wage": "down",
+      "quantity of labor": "up"
+     }
+    },
+    "mfc": false
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-5",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "The graph shows a change in the market for app developers. Which event could have caused it?",
+   "stimulus": "factor-demand-supply-s1",
+   "options": [
+    "More students graduate with app-building skills",
+    "Developers become more productive with better software tools",
+    "Fewer people buy apps, so the price of apps falls",
+    "Other tech jobs start paying much higher wages"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Labor demand (DL) shifted left while labor supply stayed put. A fall in the demand for the product lowers its price and each developer's MRP.",
+    "options": [
+     "That would shift labor supply to the right; the graph shows labor demand shifting left.",
+     "Higher productivity raises MRP and shifts labor demand right, not left.",
+     "Right: a lower product price lowers developers' MRP, so labor demand shifts left, as drawn.",
+     "That would draw developers away and shift labor supply left; here labor demand moved."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-6",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the graph, what happens to the wage and the number of developers hired?",
+   "stimulus": "factor-demand-supply-s1",
+   "options": [
+    "Both fall",
+    "The wage falls and the number hired rises",
+    "The wage rises and the number hired falls",
+    "Both rise"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When labor demand falls, the equilibrium slides down labor supply: a lower wage and fewer workers hired.",
+    "options": [
+     "Right: the new crossing is lower and to the left.",
+     "A leftward shift of demand moves along supply to a lower wage and a smaller quantity.",
+     "That is what a leftward shift of labor supply would do.",
+     "That is a rightward shift of labor demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-7",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In the graph, a single firm that hires developers pays the new wage set in the market. How does the firm's own MRP curve compare with before?",
+   "stimulus": "factor-demand-supply-s1",
+   "options": [
+    "It is unchanged, because the firm makes the same number of apps",
+    "It has shifted right, because the wage is now lower",
+    "It has become horizontal at the new wage",
+    "It has shifted left, because each developer's work brings in less revenue"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Market labor demand is the sum of firms' demands. It shifted left because each firm's MRP fell.",
+    "options": [
+     "A lower product price lowers MR, so MRP = MP × MR falls even with the same MP.",
+     "A lower wage is a movement along a firm's MRP curve, not a shift of it.",
+     "MRP slopes down because marginal product falls; the wage does not change its shape.",
+     "Right: the cause of the market shift, a lower product price, lowers MRP at each firm too."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-8",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Use the table. Before online orders rise, what are the equilibrium wage and number of warehouse workers?",
+   "stimulus": "factor-demand-supply-s2",
+   "options": [
+    "\\$20 and 450 workers",
+    "\\$18 and 400 workers",
+    "\\$14 and 500 workers",
+    "\\$22 and 500 workers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Equilibrium is the wage at which the number of workers demanded equals the number supplied.",
+    "options": [
+     "That is the equilibrium after demand rises.",
+     "Right: at \\$18, 400 workers are demanded and 400 are supplied.",
+     "At \\$14, 500 are demanded but only 300 are supplied.",
+     "At \\$22, 500 are supplied but only 300 are demanded."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-9",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. After online orders rise, the wage is still \\$18 for a while. How many more workers do warehouses want at \\$18 than are willing to work?",
+   "stimulus": "factor-demand-supply-s2",
+   "why": {
+    "correct": "At \\$18, 500 workers are now demanded and 400 are supplied: a shortage of 500 - 400 = 100 workers, which pushes the wage up."
+   },
+   "numeric": {
+    "from": {
+     "fn": "shortage",
+     "args": [
+      500,
+      400
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        500,
+        400
+       ]
+      },
+      "why": "900 adds the two quantities. A shortage is the gap: workers demanded minus workers supplied."
+     },
+     {
+      "from": {
+       "fn": "shortage",
+       "args": [
+        600,
+        300
+       ]
+      },
+      "why": "300 is the gap at \\$14. Read the \\$18 row."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-10",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Use the table. After online orders rise, what are the new equilibrium wage and number of workers?",
+   "stimulus": "factor-demand-supply-s2",
+   "options": [
+    "\\$18 and 500 workers",
+    "\\$20 and 450 workers",
+    "\\$22 and 500 workers",
+    "\\$18 and 400 workers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "More online orders raise the demand for warehouse workers, so the wage rises from \\$18 to \\$20 and employment from 400 to 450.",
+    "options": [
+     "At \\$18 only 400 workers are supplied, so 500 cannot be hired.",
+     "Right: at \\$20, 450 are demanded (after) and 450 are supplied.",
+     "At \\$22, 500 are supplied but only 400 are demanded after the change.",
+     "That was the equilibrium before the rise in demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-11",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, how does event (2), higher pay for nurses in the nearby city, affect the market for nurses in Fenmore?",
+   "stimulus": "factor-demand-supply-s3",
+   "options": [
+    "Labor demand in Fenmore increases",
+    "Labor supply in Fenmore increases",
+    "Nothing changes, because Fenmore's wage is the same",
+    "Labor supply in Fenmore decreases"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Wages in other jobs a worker could take shift labor supply. Better pay elsewhere shifts Fenmore's supply of nurses left.",
+    "options": [
+     "Fenmore's hospitals have not changed how many nurses they want; the nurses' other options changed.",
+     "Better pay elsewhere pulls nurses away from Fenmore, not toward it.",
+     "The wage in other places is a shifter of labor supply here.",
+     "Right: some nurses leave for the better-paid jobs, so fewer offer to work in Fenmore at each wage."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-12",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "In the scenario, which events shift the demand for nurses in Fenmore? Select all that apply.",
+   "stimulus": "factor-demand-supply-s3",
+   "options": [
+    "(1) more patients in hospitals",
+    "(2) higher pay in the nearby city",
+    "(3) equipment that makes each nurse more productive",
+    "(4) a large class of new nurses"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Labor demand shifts with the demand for the product (care) and with productivity. Labor supply shifts with the number of qualified people and their other options.",
+    "options": [
+     "Right: more demand for hospital care raises the value of each nurse's work.",
+     "That shifts labor supply: nurses' options changed.",
+     "Right: higher marginal product raises each nurse's MRP.",
+     "More trained nurses shift labor supply, not demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-13",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, events (1) and (4) happen together. What can you say about the equilibrium in Fenmore's market for nurses?",
+   "stimulus": "factor-demand-supply-s3",
+   "options": [
+    "Employment rises, and the wage change is indeterminate",
+    "The wage rises, and the employment change is indeterminate",
+    "The wage and employment both rise for certain",
+    "The wage falls and employment is unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Demand right and supply right: quantity rises for sure; the wage rises if the demand shift is larger and falls if the supply shift is larger.",
+    "options": [
+     "Right: more demand and more supply both raise quantity, but they push the wage in opposite directions.",
+     "Both shifts raise employment, so employment is certain; the wage is the uncertain one.",
+     "The supply increase pushes the wage down, so the wage change depends on the sizes of the shifts.",
+     "Both shifts raise the number of nurses hired."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-14",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, event (4) happens alone. What happens to the wage and employment of nurses in Fenmore?",
+   "stimulus": "factor-demand-supply-s3",
+   "options": [
+    "The wage rises and employment rises",
+    "The wage falls and employment falls",
+    "The wage falls and employment rises",
+    "The wage rises and employment falls"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "More qualified nurses means more labor offered at each wage: a lower wage and more nurses hired.",
+    "options": [
+     "That is what a rise in labor demand would do.",
+     "That is a fall in labor demand.",
+     "Right: labor supply shifts right, so the equilibrium slides down labor demand.",
+     "That is a fall in labor supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-15",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order: the demand for solar panels rises, and the market for panel installers changes.",
+   "options": [
+    "The price of solar panel installations rises",
+    "Each installer's MRP rises (MP × the higher price)",
+    "The demand for installers (DL) shifts right",
+    "The wage of installers and the number hired both rise"
+   ],
+   "why": {
+    "correct": "Name every link: product price, MRP, labor demand, then the new wage and employment."
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-16",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A country raises the minimum age at which people may work in factories. What happens in the market for factory workers?",
+   "options": [
+    "Labor demand shifts left: the wage and employment fall",
+    "Labor supply shifts right: the wage falls and employment rises",
+    "Labor demand shifts right: the wage and employment rise",
+    "Labor supply shifts left: the wage rises and employment falls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Rules on who may work shift labor supply. A higher minimum age shifts it left.",
+    "options": [
+     "Factories still want the same workers; the rule changes who may sell their labor.",
+     "The rule removes workers, so supply falls.",
+     "Nothing here makes workers more valuable to factories.",
+     "Right: fewer people may work at each wage."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-17",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a graph of the market for plumbers, how is a higher wage shown when nothing else about the market has changed?",
+   "options": [
+    "Labor supply shifts right",
+    "A movement along labor supply and labor demand, not a shift of either",
+    "Labor demand shifts left",
+    "Both curves shift left"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As with any market, a change in the curve's own price (here the wage) is a movement along the curve.",
+    "options": [
+     "The wage is on the axis; its change moves along the supply curve.",
+     "Right: a change in the wage itself moves along the curves.",
+     "A higher wage lowers the quantity of labor demanded along the curve.",
+     "Only a change in a shifter, not in the wage, shifts a curve."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-18",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Delivery drones and drivers are complements for a parcel company: each drone needs a driver to load it. Drones become much cheaper. What happens to the demand for drivers?",
+   "options": [
+    "It decreases",
+    "It does not change",
+    "It increases",
+    "Labor supply decreases instead"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A cheaper complementary input leads firms to use more of it, and more of the labor that goes with it.",
+    "options": [
+     "That would be true if drones replaced drivers. Here they are used together.",
+     "The price of a complementary input shifts labor demand.",
+     "Right: the company buys more drones, and each needs a driver.",
+     "The change is on the company's side: the demand for drivers."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-19",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these would shift the labor supply curve for truck drivers to the right? Select all that apply.",
+   "options": [
+    "A cheaper, shorter path to a commercial driver's license",
+    "Higher pay in warehouse jobs that drivers could take",
+    "Safer trucks that make the job less stressful",
+    "A rise in the demand for shipping",
+    "A rise in drivers' wages"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Labor supply shifts with the number of people who can do the job, their other options and how they feel about the work.",
+    "options": [
+     "Right: more people can qualify at each wage.",
+     "That pulls drivers away, shifting supply left.",
+     "Right: more people are willing to drive at each wage.",
+     "That shifts labor demand, not supply.",
+     "A wage change is a movement along supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-demand-supply-20",
+   "unit": "unit-5",
+   "topic": "factor-demand-supply",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "The price of a machine that does the same job as forklift operators falls sharply. Assume warehouses replace operators with the machines. What happens to the wage and employment of forklift operators?",
+   "options": [
+    "Both fall",
+    "Both rise",
+    "The wage rises and employment falls",
+    "The wage falls and employment rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A cheaper substitute input lowers the demand for labor that does the same job.",
+    "options": [
+     "Right: labor demand shifts left, down along labor supply.",
+     "Cheaper substitutes for workers lower the demand for those workers.",
+     "That pattern comes from a fall in labor supply.",
+     "That pattern comes from a rise in labor supply."
+    ]
+   }
+  }
+ ]
+}

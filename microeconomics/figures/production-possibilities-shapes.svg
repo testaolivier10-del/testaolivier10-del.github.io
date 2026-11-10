@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" width="800" height="330" role="img" aria-labelledby="production-possibilities-shapes-t production-possibilities-shapes-d" font-family="Arial, Helvetica, sans-serif">
+<title id="production-possibilities-shapes-t">Three PPC shapes and the opportunity cost each shows</title>
+<desc id="production-possibilities-shapes-d">Three production possibilities curves for Good A and Good B. Bowed out: increasing opportunity cost, because resources suit one good more than the other; the usual case. A straight line: constant opportunity cost, because resources are equally good at both goods. Bowed in, dashed and labeled as a contrast: decreasing opportunity cost, each extra unit costs less of the other good.</desc>
+<defs><marker id="production-possibilities-shapes-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="production-possibilities-shapes-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="production-possibilities-shapes-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="production-possibilities-shapes-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="production-possibilities-shapes-arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="800" height="330" fill="#FFFFFF"/>
+<text x="145" y="30" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Bowed out</text>
+<line x1="70" y1="44" x2="70" y2="220" stroke="#1F2A28" stroke-width="2"/>
+<line x1="70" y1="220" x2="256" y2="220" stroke="#1F2A28" stroke-width="2"/>
+<text x="250" y="250" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">Good A</text>
+<text x="54" y="50" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 54 50)">Good B</text>
+<path d="M70 75.5L72.7 75.5L75.3 75.6L78 75.7L80.7 75.9L83.3 76L86 76.3L88.6 76.6L91.3 76.9L93.9 77.3L96.6 77.7L99.2 78.2L101.8 78.7L104.4 79.2L107 79.8L109.6 80.4L112.2 81.1L114.7 81.8L117.3 82.6L119.8 83.4L122.3 84.2L124.8 85.1L127.3 86L129.8 87L132.2 88L134.7 89L137.1 90.1L139.5 91.2L141.8 92.4L144.2 93.6L146.5 94.9L148.8 96.1L151.1 97.5L153.3 98.8L155.6 100.2L157.8 101.6L159.9 103.1L162.1 104.6L164.2 106.1L166.3 107.7L168.3 109.3L170.4 110.9L172.4 112.6L174.3 114.3L176.3 116.1L178.2 117.8L180.1 119.6L181.9 121.5L183.7 123.3L185.5 125.2L187.2 127.1L188.9 129.1L190.6 131L192.2 133L193.8 135.1L195.3 137.1L196.8 139.2L198.3 141.3L199.8 143.4L201.1 145.6L202.5 147.8L203.8 149.9L205.1 152.2L206.3 154.4L207.5 156.7L208.7 158.9L209.8 161.2L210.8 163.5L211.9 165.9L212.8 168.2L213.8 170.6L214.7 173L215.5 175.3L216.3 177.8L217.1 180.2L217.8 182.6L218.5 185L219.1 187.5L219.7 190L220.2 192.4L220.7 194.9L221.1 197.4L221.5 199.9L221.9 202.4L222.2 204.9L222.4 207.4L222.6 209.9L222.8 212.4L222.9 215L223 217.5L223 220" fill="none" stroke="#7E1A5E" stroke-width="3"/>
+<text x="145" y="275" font-size="13" fill="#7E1A5E" text-anchor="middle" font-weight="700">increasing opportunity cost</text>
+<text x="145" y="295" font-size="12" fill="#6B7370" text-anchor="middle">resources suit one good more than</text>
+<text x="145" y="311" font-size="12" fill="#6B7370" text-anchor="middle">the other: the usual case</text>
+<text x="400" y="30" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Straight line</text>
+<line x1="325" y1="44" x2="325" y2="220" stroke="#1F2A28" stroke-width="2"/>
+<line x1="325" y1="220" x2="511" y2="220" stroke="#1F2A28" stroke-width="2"/>
+<text x="505" y="250" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">Good A</text>
+<text x="309" y="50" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 309 50)">Good B</text>
+<line x1="325" y1="75.5" x2="478" y2="220" stroke="#084F78" stroke-width="3"/>
+<text x="400" y="275" font-size="13" fill="#084F78" text-anchor="middle" font-weight="700">constant opportunity cost</text>
+<text x="400" y="295" font-size="12" fill="#6B7370" text-anchor="middle">resources are equally good at</text>
+<text x="400" y="311" font-size="12" fill="#6B7370" text-anchor="middle">both goods</text>
+<text x="655" y="30" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Bowed in (contrast)</text>
+<line x1="580" y1="44" x2="580" y2="220" stroke="#1F2A28" stroke-width="2"/>
+<line x1="580" y1="220" x2="766" y2="220" stroke="#1F2A28" stroke-width="2"/>
+<text x="760" y="250" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">Good A</text>
+<text x="564" y="50" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 564 50)">Good B</text>
+<path d="M580 75.5L582.6 82.5L585.1 89L587.7 95.2L590.2 101L592.8 106.5L595.3 111.6L597.9 116.5L600.4 121.1L603 125.5L605.5 129.7L608.1 133.7L610.6 137.4L613.2 141L615.7 144.5L618.3 147.8L620.8 150.9L623.4 153.9L625.9 156.8L628.5 159.5L631 162.2L633.6 164.8L636.1 167.2L638.7 169.6L641.2 171.8L643.8 174L646.3 176.1L648.9 178.2L651.4 180.1L654 182L656.5 183.9L659.1 185.7L661.6 187.4L664.2 189L666.7 190.6L669.3 192.2L671.8 193.7L674.4 195.2L676.9 196.6L679.5 198L682 199.4L684.6 200.7L687.1 201.9L689.7 203.2L692.2 204.4L694.8 205.6L697.3 206.7L699.9 207.8L702.4 208.9L705 209.9L707.5 211L710.1 212L712.6 213L715.2 213.9L717.7 214.8L720.3 215.8L722.8 216.6L725.3 217.5L727.9 218.4L730.5 219.2L733 220" fill="none" stroke="#6B7370" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="655" y="275" font-size="13" fill="#6B7370" text-anchor="middle" font-weight="700">decreasing opportunity cost</text>
+<text x="655" y="295" font-size="12" fill="#6B7370" text-anchor="middle">each extra unit costs less of the</text>
+<text x="655" y="311" font-size="12" fill="#6B7370" text-anchor="middle">other good: rare, shown to compare</text>
+</svg>

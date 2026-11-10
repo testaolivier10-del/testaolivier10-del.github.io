@@ -1,0 +1,11 @@
+{
+ "marginal-revenue": {
+  "def": "Marginal revenue (MR): the extra revenue from selling one more unit, the change in total revenue divided by the change in quantity."
+ },
+ "profit-max-rule": {
+  "def": "Produce the output where marginal revenue equals marginal cost (MR = MC); from a table, the last unit whose MR is at least its MC."
+ },
+ "firm-demand": {
+  "def": "For a firm that sells every unit at one market price, the demand curve is a horizontal line at that price, and it is also the firm's marginal and average revenue: d = MR = AR = P."
+ }
+}

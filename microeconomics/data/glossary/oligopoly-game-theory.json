@@ -1,0 +1,23 @@
+{
+ "payoff-matrix": {
+  "def": "A table of the payoffs (profits or other gains) each player gets from every combination of the two players' strategies. By convention the row player's payoff is listed first in each cell."
+ },
+ "best-response": {
+  "def": "The strategy that gives a player the largest payoff when the other player's choice is held fixed."
+ },
+ "dominant-strategy": {
+  "def": "A strategy that gives a player a higher payoff than its other strategies whatever the other player does; proved with one comparison for each of the other player's choices. A dominated strategy is one that another strategy always beats."
+ },
+ "nash-equilibrium": {
+  "def": "An outcome in which each player's strategy is its best response to the other's, so neither player can gain by changing its strategy alone. A game can have one, several or no Nash equilibria (Nash equilibria) in pure strategies."
+ },
+ "collusion": {
+  "def": "An agreement among rival firms to limit output or raise prices to increase their joint profit. A formal group that does this is a cartel; each member gains by cheating, so cartels tend to be unstable (and are illegal in many countries)."
+ },
+ "game-theory": {
+  "def": "The study of choices when each player's payoff depends on the other players' choices (strategic interaction), used to model firms in an oligopoly."
+ },
+ "prisoners-dilemma": {
+  "def": "A game in which each player's dominant strategy leads to a Nash equilibrium that leaves both players worse off than if both had chosen differently (the prisoners' dilemma of two firms that both cut prices)."
+ }
+}

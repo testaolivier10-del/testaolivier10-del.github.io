@@ -1,0 +1,11 @@
+{
+ "factor-market": {
+  "def": "A market where firms buy the factors of production (labor, land and capital) from the households that own them. The payments are wages, rent and interest."
+ },
+ "derived-demand": {
+  "def": "Demand for a factor of production that comes from the demand for the product it helps make. More demand for bread means more demand for bakers."
+ },
+ "mrp": {
+  "def": "Marginal revenue product: the extra revenue a firm earns from hiring one more unit of a factor. MRP = marginal product × marginal revenue (MP × P for a price taker)."
+ }
+}

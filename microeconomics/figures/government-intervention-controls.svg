@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" role="img" aria-labelledby="government-intervention-controls-t government-intervention-controls-d" font-family="Arial, Helvetica, sans-serif">
+<title id="government-intervention-controls-t">A binding price ceiling and a binding price floor</title>
+<desc id="government-intervention-controls-d">Two panels for the same ferry ride market, equilibrium $5 and 50 rides. Left: a price ceiling at $3, below equilibrium, is binding: buyers want 70 rides but sellers offer only 30, a shortage of 40, and only 30 rides are traded. Right: a price floor at $7, above equilibrium, is binding: sellers offer 70 rides but buyers want only 30, a surplus of 40, and only 30 rides are traded. In both, the triangle between the curves from 30 to 50 rides is deadweight loss. Invented data for practice.</desc>
+<defs><marker id="government-intervention-controls-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="government-intervention-controls-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="government-intervention-controls-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="government-intervention-controls-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="780" height="400" fill="#FFFFFF"/>
+<path d="M70 44V320H366" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="215" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="215" dy="0">Price ceiling at $3</tspan></text>
+<text x="360" y="356" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="360" dy="0">Ferry rides per day</tspan></text>
+<text transform="translate(30 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M215 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="215" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="215" dy="0">50</tspan></text>
+<path d="M360 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="360" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="360" dy="0">100</tspan></text>
+<path d="M70 242.9h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="246.9" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$3</tspan></text>
+<path d="M70 191.4h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="195.4" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$5</tspan></text>
+<path d="M70 140h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="144" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$7</tspan></text>
+<path d="M157 140L215 191.4L157 242.9Z" fill="#FBD9C6" stroke="#D55E00" stroke-width="1.4"/>
+<path d="M70 62.9L345.5 307.1" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="350.5" y="311.1" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="350.5" dy="0">D</tspan></text>
+<path d="M70 320L345.5 75.7" fill="none" stroke="#7E1A5E" stroke-width="2.8" stroke-linecap="round"/>
+<text x="331.5" y="69.7" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="331.5" dy="0">S</tspan></text>
+<path d="M70 242.9L354.2 242.9" fill="none" stroke="#D55E00" stroke-width="2.4" stroke-linecap="round"/>
+<text x="352.2" y="235.9" font-size="13" text-anchor="end" fill="#D55E00" font-weight="bold"><tspan x="352.2" dy="0">Pc</tspan></text>
+<path d="M157 242.9V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="157" y="337" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="157" dy="0">30</tspan></text>
+<path d="M273 242.9V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="273" y="337" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="273" dy="0">70</tspan></text>
+<path d="M215 191.4V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M70 191.4H215" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<circle cx="215" cy="191.4" r="4.5" fill="#1F2A28"/>
+<text x="223" y="187.4" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="223" dy="0">E</tspan></text>
+<text x="215" y="262.9" font-size="12" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="215" dy="0">Shortage of 40</tspan></text>
+<text x="175.9" y="176.1" font-size="11" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="175.9" dy="0">DWL</tspan></text>
+<path d="M450 44V320H746" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="595" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="595" dy="0">Price floor at $7</tspan></text>
+<text x="740" y="356" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="740" dy="0">Ferry rides per day</tspan></text>
+<text transform="translate(410 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M595 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="595" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="595" dy="0">50</tspan></text>
+<path d="M740 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="740" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="740" dy="0">100</tspan></text>
+<path d="M450 242.9h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="442" y="246.9" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="442" dy="0">$3</tspan></text>
+<path d="M450 191.4h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="442" y="195.4" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="442" dy="0">$5</tspan></text>
+<path d="M450 140h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="442" y="144" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="442" dy="0">$7</tspan></text>
+<path d="M537 140L595 191.4L537 242.9Z" fill="#FBD9C6" stroke="#D55E00" stroke-width="1.4"/>
+<path d="M450 62.9L725.5 307.1" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="730.5" y="311.1" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="730.5" dy="0">D</tspan></text>
+<path d="M450 320L725.5 75.7" fill="none" stroke="#7E1A5E" stroke-width="2.8" stroke-linecap="round"/>
+<text x="711.5" y="69.7" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="711.5" dy="0">S</tspan></text>
+<path d="M450 140L734.2 140" fill="none" stroke="#D55E00" stroke-width="2.4" stroke-linecap="round"/>
+<text x="732.2" y="133" font-size="13" text-anchor="end" fill="#D55E00" font-weight="bold"><tspan x="732.2" dy="0">Pf</tspan></text>
+<path d="M537 140V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="537" y="337" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="537" dy="0">30</tspan></text>
+<path d="M653 140V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="653" y="337" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="653" dy="0">70</tspan></text>
+<path d="M595 191.4V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M450 191.4H595" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<circle cx="595" cy="191.4" r="4.5" fill="#1F2A28"/>
+<text x="603" y="187.4" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="603" dy="0">E</tspan></text>
+<text x="595" y="130" font-size="12" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="595" dy="0">Surplus of 40</tspan></text>
+<text x="555.9" y="176.1" font-size="11" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="555.9" dy="0">DWL</tspan></text>
+<text x="390" y="392" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="390" dy="0">Invented data for practice.</tspan></text>
+</svg>

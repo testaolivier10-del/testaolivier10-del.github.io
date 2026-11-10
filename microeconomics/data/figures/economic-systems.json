@@ -1,0 +1,12 @@
+{
+ "economic-systems-compare": {
+  "file": "figures/economic-systems-compare.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three columns comparing a market economy (prices and private choices coordinate), a command economy (a central plan coordinates) and a mixed economy (markets plus government rules), above a spectrum from market to central plan."
+ }
+}

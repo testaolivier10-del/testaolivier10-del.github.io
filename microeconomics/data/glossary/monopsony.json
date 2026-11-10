@@ -1,0 +1,11 @@
+{
+ "monopsony": {
+  "def": "A market with a single buyer, most often one employer that hires nearly all the workers of a kind in an area. It faces the upward-sloping labor supply curve."
+ },
+ "monopsony-wage": {
+  "def": "The wage a monopsonist pays: it hires where MRP = MFC and pays the wage read on the labor supply curve at that quantity. Its wage bill is that wage times the workers hired."
+ },
+ "minimum-wage": {
+  "def": "A legal lowest wage. In a competitive labor market a binding minimum wage lowers employment; in a monopsony, one set between the monopsony wage and the competitive wage can raise both the wage and employment."
+ }
+}

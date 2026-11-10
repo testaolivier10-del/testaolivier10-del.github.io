@@ -1,0 +1,506 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 5 (docs/apmicro-architecture.md, \"Make it specific\"): a free-response task the readers often score as too vague, a checklist, an answer that earns the point and one that misses it, and a builder (slots) that assembles the specific answer. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apmicro-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-5",
+   "id": "u5-derived-demand",
+   "topic": "factor-markets",
+   "practice": "2.A",
+   "skill": "derived",
+   "title": "Derived demand, link by link",
+   "prompt": "<b>Explain</b> how a rise in the demand for fishing boats affects the wage and employment of welders who build them, in a competitive labor market.",
+   "checklist": [
+    "Product demand rises, so the price of boats (MR) rises",
+    "MRP = MP x P rises, so the demand for welders shifts right",
+    "The wage and employment of welders rise"
+   ],
+   "earns": {
+    "answer": "Higher demand for boats raises the price of a boat, which raises the marginal revenue each boat brings. Since MRP = MP x P, each welder's MRP rises, so the demand for welders shifts right. With labor supply unchanged, the wage rises and more welders are employed.",
+    "why": "Every link is there: product demand, price, MRP, labor demand, then wage and employment."
+   },
+   "misses": {
+    "answer": "More boats are wanted, so more welders are hired.",
+    "why": "It skips the price, MRP and the labor demand shift, and says nothing about the wage."
+   },
+   "specific": {
+    "slots": {
+     "price": {
+      "label": "Higher boat demand first raises",
+      "options": [
+       "the price of boats",
+       "welders' marginal product"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each welder works as before; what rises first is the price of the boat."
+      }
+     },
+     "mrp": {
+      "label": "So welders' MRP",
+      "options": [
+       "rises, and labor demand shifts right",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A higher product price raises MRP."
+      }
+     },
+     "out": {
+      "label": "The wage and employment",
+      "options": [
+       "both rise",
+       "the wage rises, employment falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A rightward demand shift along upward supply raises both."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-mrp-calc",
+   "topic": "factor-markets",
+   "practice": "3.C",
+   "skill": "calculate",
+   "title": "MRP from marginal product and price",
+   "prompt": "<b>Calculate</b> the MRP of the next worker at a firm that sells in a competitive market at \\$4 a unit, if that worker adds 12 units, and say whether the firm should hire her at a wage of \\$40.",
+   "checklist": [
+    "Uses MRP = MP x P (marginal revenue equals the price here)",
+    "Shows the numbers: 12 x \\$4",
+    "Compares MRP with the wage to decide"
+   ],
+   "earns": {
+    "answer": "MRP is marginal product times marginal revenue, and in a competitive product market MR is the price: 12 x \\$4 = \\$48. That is above the \\$40 wage, so hiring her adds \\$8 to profit and the firm should hire her.",
+    "why": "It uses the right formula with the numbers and applies the hiring rule."
+   },
+   "misses": {
+    "answer": "Her MRP is \\$4 x \\$40 = \\$160, so she is worth hiring.",
+    "why": "MRP multiplies marginal product by marginal revenue, not the price by the wage."
+   },
+   "specific": {
+    "slots": {
+     "f": {
+      "label": "MRP equals",
+      "options": [
+       "MP x MR (the price here)",
+       "MR x price",
+       "wage x MP"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "MR times price double counts the price; MRP is marginal product times MR.",
+       "2": "The wage is the cost side, MRC."
+      }
+     },
+     "hire": {
+      "label": "At a wage of \\$40 she is",
+      "options": [
+       "hired: \\$48 is more than \\$40",
+       "not hired"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Her MRP is above her cost, so she adds to profit."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-hire-rule",
+   "topic": "competitive-factor-markets",
+   "practice": "2.A",
+   "skill": "marginal",
+   "title": "Hire where MRP = MRC",
+   "prompt": "<b>Explain</b> how many workers a firm in a competitive labor market hires at a wage of \\$30 if the MRP of the 3rd, 4th and 5th workers is \\$45, \\$30 and \\$20.",
+   "checklist": [
+    "States the rule: hire up to MRP = MRC",
+    "Says MRC equals the wage for a wage taker",
+    "Gives the number: 4 workers"
+   ],
+   "earns": {
+    "answer": "A firm hires up to MRP = MRC, and a wage taker's MRC is the wage, \\$30. The 3rd worker adds \\$45 for \\$30 and the 4th \\$30 for \\$30, so both are hired; the 5th adds \\$20, less than \\$30, so she is not. The firm hires 4 workers.",
+    "why": "It states the rule, says MRC is the wage and checks each worker."
+   },
+   "misses": {
+    "answer": "The firm hires 3 workers, since the 3rd has the highest MRP.",
+    "why": "The test is MRP against MRC for each added worker; the 4th still covers her wage."
+   },
+   "specific": {
+    "slots": {
+     "rule": {
+      "label": "Hire up to",
+      "options": [
+       "MRP = MRC",
+       "the largest MRP",
+       "MRP = MP"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The largest MRP is only the first worker; keep hiring while MRP covers MRC.",
+       "2": "MP is output, not a cost to compare with."
+      }
+     },
+     "n": {
+      "label": "Workers hired",
+      "options": [
+       "4",
+       "3",
+       "5"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The 4th worker's MRP equals the wage, so hiring her does not lower profit.",
+       "2": "The 5th worker's MRP is below the wage."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-wage-taker",
+   "topic": "competitive-factor-markets",
+   "practice": "4.A",
+   "skill": "graph",
+   "title": "The firm's labor supply in a competitive market",
+   "prompt": "<b>Draw</b> side-by-side graphs of a competitive labor market and one firm in it, and explain the firm's labor supply curve.",
+   "checklist": [
+    "Shows the market wage set where market labor demand meets labor supply",
+    "Draws the firm's labor supply as horizontal at that wage, S = MFC = W",
+    "Shows the firm hiring where MRP meets that line"
+   ],
+   "earns": {
+    "answer": "On the market graph the wage is set where labor demand meets labor supply. The firm is a wage taker, so on its own graph labor supply is a horizontal line at that wage, labeled S = MFC = W: each added worker costs the same wage. The firm hires where its MRP curve meets the line.",
+    "why": "It ties the firm's line to the market wage, labels it and shows the hire."
+   },
+   "misses": {
+    "answer": "The firm's labor supply slopes up like the market supply of labor.",
+    "why": "One firm in a competitive market can hire as many as it wants at the market wage, so its supply is horizontal."
+   },
+   "specific": {
+    "slots": {
+     "shape": {
+      "label": "The firm's labor supply is",
+      "options": [
+       "horizontal at the market wage",
+       "upward sloping"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the market's labor supply or a monopsony's."
+      }
+     },
+     "hire": {
+      "label": "The firm hires where",
+      "options": [
+       "MRP meets S = MFC = W",
+       "market demand meets market supply"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That sets the wage, not the firm's hiring."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-labor-supply-shift",
+   "topic": "factor-demand-supply",
+   "practice": "4.B",
+   "skill": "graph",
+   "title": "An increase in labor supply",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the market for nurses and show the effect of a rise in the number of trained nurses on the wage and employment.",
+   "checklist": [
+    "Shifts labor supply to the right (SL1 to SL2)",
+    "Shows the wage falling and employment rising",
+    "Labels the axes Wage and Quantity of labor, and both supply curves"
+   ],
+   "earns": {
+    "answer": "More trained nurses shifts the labor supply curve to the right, from SL1 to SL2. Labor demand does not change. At the new equilibrium the wage falls from W1 to W2 and the number of nurses employed rises from Q1 to Q2.",
+    "why": "It shifts the right curve the right way and reads both outcomes."
+   },
+   "misses": {
+    "answer": "More nurses means hospitals want more nurses, so demand shifts right and the wage rises.",
+    "why": "More trained nurses adds to supply; hospitals' demand did not change."
+   },
+   "specific": {
+    "slots": {
+     "curve": {
+      "label": "The curve that shifts",
+      "options": [
+       "labor supply, to the right",
+       "labor demand, to the right"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Hospitals' MRP did not change; the number of workers did."
+      }
+     },
+     "out": {
+      "label": "The wage and employment",
+      "options": [
+       "wage falls, employment rises",
+       "both rise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A rightward supply shift along downward demand lowers the wage."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-product-price-fall",
+   "topic": "factor-demand-supply",
+   "practice": "2.A",
+   "skill": "derived",
+   "title": "A falling product price and labor demand",
+   "prompt": "<b>Explain</b> how a fall in the price of strawberries affects the wage and employment of strawberry pickers, in a competitive labor market.",
+   "checklist": [
+    "The lower product price lowers MR",
+    "MRP = MP x P falls, so the demand for pickers shifts left",
+    "The wage and employment of pickers fall"
+   ],
+   "earns": {
+    "answer": "A lower price of strawberries lowers the marginal revenue of each basket picked. Because MRP = MP x P, each picker's MRP falls, which shifts the demand for pickers to the left. With supply unchanged, the wage falls and fewer pickers are employed.",
+    "why": "It links the product price to MRP, labor demand, then the wage and employment."
+   },
+   "misses": {
+    "answer": "Strawberries are cheaper, so pickers are paid less.",
+    "why": "It leaves out the MRP and labor demand links, and the change in employment."
+   },
+   "specific": {
+    "slots": {
+     "mrp": {
+      "label": "The pickers' MRP",
+      "options": [
+       "falls",
+       "rises",
+       "is unchanged"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A lower price lowers MR, and MRP with it.",
+       "2": "MRP is MP times the product price, so it changes."
+      }
+     },
+     "out": {
+      "label": "Wage and employment",
+      "options": [
+       "both fall",
+       "the wage falls, employment rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Demand shifts left, so along upward supply both fall."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-complement-capital",
+   "topic": "factor-demand-supply",
+   "practice": "2.A",
+   "skill": "derived",
+   "title": "Cheaper machines that work with labor",
+   "prompt": "<b>Explain</b> how a fall in the price of delivery vans, which drivers need to do their job, affects the demand for drivers.",
+   "checklist": [
+    "Says firms buy more vans, a complement to drivers",
+    "Says each driver can deliver more, so MP and MRP rise",
+    "Says the demand for drivers shifts right, raising the wage and employment"
+   ],
+   "earns": {
+    "answer": "Cheaper vans lead firms to use more of them, and vans and drivers are complements: each van needs a driver. So more drivers are needed and each one delivers more, which raises marginal product, and MRP = MP x P rises. The demand for drivers shifts right, so the wage and employment of drivers increase.",
+    "why": "It names the complement relationship and follows it to MRP and labor demand."
+   },
+   "misses": {
+    "answer": "Cheaper vans replace drivers, so the demand for drivers falls.",
+    "why": "Vans and drivers work together here; a cheaper complement raises the demand for labor."
+   },
+   "specific": {
+    "slots": {
+     "rel": {
+      "label": "Vans and drivers are",
+      "options": [
+       "complements",
+       "substitutes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A driver is needed for each van, so they are used together."
+      }
+     },
+     "dem": {
+      "label": "The demand for drivers",
+      "options": [
+       "shifts right",
+       "shifts left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With more vans and a higher MRP, firms want more drivers."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-least-cost",
+   "topic": "competitive-factor-markets",
+   "practice": "2.A",
+   "skill": "marginal",
+   "title": "The least-cost mix of inputs",
+   "prompt": "<b>Explain</b> whether a firm is using the least-cost mix of labor and capital if the last worker adds 30 units at a wage of \\$15 and the last machine adds 50 units at a rental price of \\$20.",
+   "checklist": [
+    "Divides each marginal product by its price",
+    "Compares output per dollar for each input",
+    "Says to use more of the input with more output per dollar"
+   ],
+   "earns": {
+    "answer": "Compare marginal product per dollar: labor gives 30 / \\$15 = 2 units per dollar and capital gives 50 / \\$20 = 2.5 units per dollar. The two are not equal, so the mix is not least-cost: the firm should use more capital and less labor until output per dollar is equal for both.",
+    "why": "It divides by each price, compares and gives the direction of the change."
+   },
+   "misses": {
+    "answer": "The firm should use more capital because a machine adds 50 units and a worker adds 30.",
+    "why": "It compares marginal products without dividing by the prices of the inputs."
+   },
+   "specific": {
+    "slots": {
+     "comp": {
+      "label": "Compare",
+      "options": [
+       "MP per dollar of each input",
+       "MP alone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A dearer input must add more to be worth it; divide by price."
+      }
+     },
+     "act": {
+      "label": "The firm should use",
+      "options": [
+       "more capital, less labor",
+       "more labor, less capital"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Capital gives 2.5 units per dollar against labor's 2."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-monopsony-hire",
+   "topic": "monopsony",
+   "practice": "2.A",
+   "skill": "marginal",
+   "title": "A monopsony's hire and wage",
+   "prompt": "<b>Explain</b> how many workers a monopsonist hires and what it pays, if the 4th worker's MRP is \\$20 and MFC \\$18, the 5th worker's MRP is \\$16 and MFC \\$22, and labor supply shows a wage of \\$12 for 4 workers.",
+   "checklist": [
+    "States the rule: hire up to MRP = MFC",
+    "Hires 4: the 5th worker's MFC is above her MRP",
+    "Reads the wage down on labor supply: \\$12, not the MRP or the MFC"
+   ],
+   "earns": {
+    "answer": "A monopsonist hires up to MRP = MFC. The 4th worker adds \\$20 for \\$18, so she is hired; the 5th adds \\$16 for \\$22, so she is not. The firm hires 4 workers and pays the wage labor supply needs for 4: \\$12, below both MRP and MFC.",
+    "why": "It applies MRP = MFC to each worker and reads the wage from labor supply."
+   },
+   "misses": {
+    "answer": "The monopsonist hires 4 workers and pays \\$18, their MFC.",
+    "why": "The number is right, but the wage paid is read from labor supply, which is below MFC."
+   },
+   "specific": {
+    "slots": {
+     "n": {
+      "label": "Workers hired",
+      "options": [
+       "4",
+       "5"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The 5th worker costs \\$22 at the margin and adds \\$16."
+      }
+     },
+     "w": {
+      "label": "The wage paid",
+      "options": [
+       "\\$12, from labor supply",
+       "\\$18, the MFC",
+       "\\$20, the MRP"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "MFC is above the wage for a monopsonist.",
+       "2": "The wage is not set at MRP in a monopsony."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-monopsony-min-wage",
+   "topic": "monopsony",
+   "practice": "1.A",
+   "skill": "identify",
+   "title": "A minimum wage in a monopsony",
+   "prompt": "<b>Explain</b> how a minimum wage set between the monopsony wage and the competitive wage changes employment at a monopsonist.",
+   "checklist": [
+    "Says the minimum wage makes MFC flat at that wage up to labor supply",
+    "Says the firm now hires where MRP meets the minimum wage",
+    "Concludes that employment rises"
+   ],
+   "earns": {
+    "answer": "Up to the number of workers willing to work at the minimum wage, each worker costs the same wage, so MFC becomes flat at the minimum wage. The monopsonist now hires where MRP meets that wage, which is more workers than before. Employment rises, unlike with a minimum wage above equilibrium in a competitive market.",
+    "why": "It explains the flat MFC and why the hire increases."
+   },
+   "misses": {
+    "answer": "A minimum wage above the market wage always reduces employment.",
+    "why": "That is true of a competitive market, not of a monopsony, where this minimum wage raises employment."
+   },
+   "specific": {
+    "slots": {
+     "mfc": {
+      "label": "With the minimum wage, MFC",
+      "options": [
+       "is flat at the minimum wage",
+       "rises faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each worker up to the supply curve costs the same wage, so MFC is flat."
+      }
+     },
+     "emp": {
+      "label": "Employment",
+      "options": [
+       "rises",
+       "falls"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The firm now hires where MRP meets the higher, flat wage, which is more workers."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

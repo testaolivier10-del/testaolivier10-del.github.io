@@ -1,0 +1,11 @@
+{
+ "shortage": {
+  "def": "Shortage (excess demand): at a price below equilibrium, the amount by which quantity demanded exceeds quantity supplied. It pushes the price up."
+ },
+ "surplus-goods": {
+  "def": "Surplus of a good (excess supply): at a price above equilibrium, the amount by which quantity supplied exceeds quantity demanded. It pushes the price down. Not the same as consumer or producer surplus."
+ },
+ "double-shift": {
+  "def": "Simultaneous shifts: demand and supply shifting at the same time. The change both shifts agree on is certain; the other is indeterminate, meaning it depends on which shift is larger."
+ }
+}

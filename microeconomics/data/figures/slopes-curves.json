@@ -1,0 +1,12 @@
+{
+ "slopes-curves-shapes": {
+  "file": "figures/slopes-curves-shapes.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 580,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four small graphs: an upward line with its rise of 3 over a run of 4 marked (slope 0.75), a downward line (negative slope), a horizontal and a vertical line, and a U-shaped curve with its minimum point marked."
+ }
+}

@@ -1,0 +1,631 @@
+{
+ "stimuli": {
+  "trade-policy-s1": {
+   "kind": "graph",
+   "title": "A small country at the world price with a tariff, areas lettered",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tariff",
+     "at": 3,
+     "amount": 1
+    },
+    "letters": true
+   }
+  },
+  "trade-policy-s2": {
+   "kind": "data",
+   "title": "The rice market in Dornia",
+   "invented": true,
+   "table": {
+    "caption": "Tons of rice demanded and supplied per day in Dornia, an invented small country, at each price. The world price of rice is \\$3 a ton (invented data for practice)",
+    "cols": [
+     "Price per ton",
+     "Quantity demanded in Dornia",
+     "Quantity supplied by Dornian farms"
+    ],
+    "rows": [
+     [
+      "\\$2",
+      "80",
+      "20"
+     ],
+     [
+      "\\$3",
+      "70",
+      "30"
+     ],
+     [
+      "\\$4",
+      "60",
+      "40"
+     ],
+     [
+      "\\$5",
+      "50",
+      "50"
+     ],
+     [
+      "\\$6",
+      "40",
+      "60"
+     ]
+    ]
+   }
+  },
+  "trade-policy-s3": {
+   "kind": "text",
+   "title": "Varrow opens its wheat market",
+   "text": "<p>Varrow, an invented small country, has not traded wheat with other countries. Inside Varrow, wheat sells for \\$180 a ton. The government removes its ban on trade. Wheat sells on the world market for \\$240 a ton, and Varrow is too small for its sales to change that price.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-trade-policy-1",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "trade-policy-s1",
+   "q": "In the graph, the country imports at the world price plus a tariff. Which area is the government's tariff revenue?",
+   "options": [
+    "Areas d and f",
+    "Areas b and c",
+    "Area e",
+    "Areas d, e and f"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Tariff revenue is the tariff per unit times the imports after the tariff: the rectangle between the world price and the world price plus the tariff, over the gap between domestic quantity supplied and quantity demanded at the higher price. That is area e.",
+    "options": [
+     "Those two triangles are the deadweight loss.",
+     "Those go to domestic producers as extra producer surplus.",
+     "Right: the tariff times the imports that remain.",
+     "That adds the deadweight loss triangles; only area e is collected."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-2",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "trade-policy-s1",
+   "q": "In the graph, which areas are the deadweight loss of the tariff?",
+   "options": [
+    "Areas d and f",
+    "Area e",
+    "Areas b and c",
+    "Area a"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Area d is lost because domestic farms now make units that cost more than the world price; area f is lost because buyers no longer buy units they valued above the world price. Together, areas d and f.",
+    "options": [
+     "Right: the two triangles.",
+     "Area e is tariff revenue, which the government collects.",
+     "Those are transfers to domestic producers.",
+     "Area a is consumer surplus that remains after the tariff."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-3",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "trade-policy-s1",
+   "q": "In the graph, which areas make up domestic producer surplus with the tariff?",
+   "options": [
+    "Area g",
+    "Areas e and g",
+    "Areas a, b and c",
+    "Areas b, c and g"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Domestic producers sell at the world price plus the tariff. Their surplus is the area above supply and below that price, out to the quantity they supply: areas b, c and g. At the world price alone it was area g.",
+    "options": [
+     "That was producer surplus at the world price, before the tariff.",
+     "Area e goes to the government.",
+     "Area a is consumer surplus.",
+     "Right: above supply, below the higher price."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-4",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "trade-policy-s1",
+   "q": "In the graph, how much consumer surplus do buyers lose when the tariff is added to the world price?",
+   "options": [
+    "Area e",
+    "Areas b, c, d, e and f",
+    "Areas d and f",
+    "Areas b and c"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At the world price, consumer surplus was areas a through f. With the tariff it is area a. Buyers lose areas b, c, d, e and f: part goes to producers (b and c), part to the government (e), and the rest is deadweight loss (d and f).",
+    "options": [
+     "Area e is only the part that becomes tariff revenue.",
+     "Right: everything between the two prices under demand.",
+     "Those are only the parts no one gets.",
+     "That is only the part domestic producers gain."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-5",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "trade-policy-s2",
+   "q": "Dornia opens to trade at the world price of \\$3. How many tons of rice does it import per day?",
+   "why": {
+    "correct": "At \\$3, Dornians want 70 tons and Dornian farms supply 30. Imports fill the gap: $70 - 30 = 40$ tons."
+   },
+   "numeric": {
+    "from": {
+     "fn": "imports",
+     "args": [
+      70,
+      30
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 70,
+      "why": "That is all the rice Dornians buy. Domestic farms still supply 30 tons; imports are the gap."
+     },
+     {
+      "value": 20,
+      "why": "That is the gap at \\$4. Read the \\$3 row."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-6",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "trade-policy-s2",
+   "q": "Dornia adds a tariff of \\$1 a ton, so rice now sells in Dornia for \\$4. How many tons does it import per day?",
+   "why": {
+    "correct": "At \\$4, Dornians want 60 tons and Dornian farms supply 40: imports fall to $60 - 40 = 20$ tons."
+   },
+   "numeric": {
+    "from": {
+     "fn": "imports",
+     "args": [
+      60,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "That is the import level at the world price. At \\$4 domestic supply is higher and quantity demanded lower."
+     },
+     {
+      "value": 60,
+      "why": "That is the quantity demanded at \\$4; subtract the 40 tons Dornian farms supply."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-7",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "trade-policy-s2",
+   "q": "How much revenue does the \\$1 tariff raise per day, in dollars?",
+   "why": {
+    "correct": "Tariff revenue is the tariff times the imports after the tariff: $\\$1 \\times 20 = \\$20$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "tariffRevenue",
+     "args": [
+      1,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "That uses imports before the tariff. The tariff falls only on the 20 tons still imported."
+     },
+     {
+      "value": 60,
+      "why": "That taxes all the rice bought in Dornia. Only imports pay the tariff."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-8",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "trade-policy-s2",
+   "q": "Without trade, Dornia's rice market clears at \\$5 and 50 tons. By how many dollars per day does total surplus in Dornia rise when it opens to trade at \\$3, with no tariff?",
+   "why": {
+    "correct": "The gain from trade is the triangle between the domestic curves and the world price, from 30 tons to 70 tons: base 40 tons (the imports), height \\$5 minus \\$3. $\\tfrac{1}{2} \\times 40 \\times \\$2 = \\$40$. (Consumer surplus rises from \\$125 to \\$245; producer surplus falls from \\$125 to \\$45.)"
+   },
+   "numeric": {
+    "from": {
+     "fn": "triangle",
+     "args": [
+      40,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 80,
+      "why": "That is a rectangle; the gain from trade is a triangle, so take one half."
+     },
+     {
+      "value": 120,
+      "why": "That is the rise in consumer surplus alone. Producer surplus falls by \\$80, so total surplus rises by \\$40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-9",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "trade-policy-s3",
+   "q": "Once Varrow opens to trade, what happens in its wheat market?",
+   "options": [
+    "The price falls and Varrow imports wheat",
+    "The price rises to \\$240 and Varrow exports wheat",
+    "The price stays at \\$180 and Varrow sells abroad",
+    "The price rises to \\$240 and Varrow imports wheat"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The world price (\\$240) is above Varrow's own price (\\$180). The price in Varrow rises to \\$240: farms supply more, buyers want less, and Varrow exports the difference.",
+    "options": [
+     "Imports happen when the world price is below the domestic price.",
+     "Right: a world price above the domestic price means exports.",
+     "Farmers will not sell at home for \\$180 when they can get \\$240 abroad.",
+     "At \\$240 Varrow's farms supply more than its buyers want."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-10",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "trade-policy-s3",
+   "q": "Who in Varrow gains and who loses when it opens to trade in wheat?",
+   "options": [
+    "Wheat buyers gain; wheat farmers lose",
+    "Both farmers and buyers gain",
+    "Both farmers and buyers lose",
+    "Wheat farmers gain; wheat buyers lose"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The higher price raises producer surplus (farms sell more at \\$240) and lowers consumer surplus (buyers pay more and buy less). Producers gain more than consumers lose, so total surplus rises.",
+    "options": [
+     "That happens when the world price is below the domestic price.",
+     "Buyers pay \\$60 more a ton.",
+     "Farmers sell more wheat at a higher price.",
+     "Right: the price rises to the world price."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-11",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "trade-policy-s3",
+   "q": "What happens to total surplus in Varrow's wheat market after it opens to trade?",
+   "options": [
+    "It rises: producers gain more than consumers lose",
+    "It falls: consumers lose more than producers gain",
+    "It does not change: the gains and losses cancel",
+    "It rises by exactly what consumers lose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total surplus rises. The gain to producers is larger than the loss to consumers by a triangle: the gain from trade on the wheat Varrow exports.",
+    "options": [
+     "Right: the extra is the gain from trade.",
+     "The producers' gain includes the loss to consumers plus a triangle.",
+     "They do not cancel; the triangle of gains from trade is new.",
+     "Producers' gain equals consumers' loss plus the gain from trade."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-12",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A small country opens its market and will import the good. Draw the world price on the graph.",
+   "why": {
+    "correct": "A country imports when the world price is below the price it would have without trade, so the world price line sits below the domestic equilibrium price."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "line": {
+     "id": "PW"
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "side": "below"
+     }
+    },
+    "slips": {
+     "PW": "A world price above the domestic equilibrium price would make the country an exporter."
+    }
+   }
+  },
+  {
+   "id": "mic-trade-policy-13",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A small country imports at the world price, with no tariff. Shade consumer surplus.",
+   "why": {
+    "correct": "Buyers pay the world price and buy the quantity demanded at it. Consumer surplus is the area under demand and above the world price, out to that larger quantity."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "world",
+     "at": 3
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    },
+    "slips": {
+     "cs-before": "That is consumer surplus without trade; at the lower world price it is larger."
+    }
+   }
+  },
+  {
+   "id": "mic-trade-policy-14",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A country exports at a world price above its domestic equilibrium price. Shade domestic producer surplus.",
+   "why": {
+    "correct": "Producers sell at the world price and supply the quantity on supply at that price. Producer surplus is the area above supply and below the world price, out to that quantity."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "world",
+     "at": 7
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "ps"
+    }
+   }
+  },
+  {
+   "id": "mic-trade-policy-15",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A tariff is added to the world price. Shade the tariff revenue.",
+   "why": {
+    "correct": "Tariff revenue is the rectangle between the world price and the world price plus the tariff, over the imports that remain: from the quantity domestic firms supply to the quantity buyers demand at the higher price."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tariff",
+     "at": 3,
+     "amount": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "tariff-revenue"
+    },
+    "slips": {
+     "dwl": "Those triangles are the deadweight loss; the revenue is the rectangle between them."
+    }
+   }
+  },
+  {
+   "id": "mic-trade-policy-16",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A tariff is added to the world price. Shade the deadweight loss of the tariff.",
+   "why": {
+    "correct": "Two triangles: one between supply and the world price where domestic firms now produce units that cost more than imports, and one between demand and the world price where buyers give up units they valued above the world price."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tariff",
+     "at": 3,
+     "amount": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    }
+   }
+  },
+  {
+   "id": "mic-trade-policy-17",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Instead of a tariff, Dornia allows only 20 tons of rice imports a day (an import quota). Compared with free trade at \\$3, what happens?",
+   "options": [
+    "The price stays at \\$3 and imports fall to 20 tons",
+    "The price falls because fewer imports compete",
+    "The price rises to \\$4 and imports fall to 20 tons",
+    "Imports rise because the quota guarantees 20 tons"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With imports limited to 20 tons, the price in Dornia rises until domestic quantity demanded minus quantity supplied equals 20: at \\$4. Imports fall, domestic farms supply more, and buyers buy less. Unlike a tariff, the government collects no revenue from the quota itself.",
+    "options": [
+     "With fewer imports at \\$3 there would be a shortage, so the price rises.",
+     "Fewer imports leave buyers competing for less rice.",
+     "Right: limiting imports raises the domestic price.",
+     "Imports were 40 tons; the quota cuts them."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-18",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why does a country that opens to trade import a good whose world price is below its own price?",
+   "options": [
+    "Domestic farms are forced to stop producing",
+    "The government sets the world price below the domestic price",
+    "Imports raise the domestic price",
+    "Other producers make it at a lower opportunity cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Other countries can supply the good at a lower opportunity cost: they have a comparative advantage in it. Buying at the lower world price lets the country use its own resources where it has a comparative advantage.",
+    "options": [
+     "Domestic farms keep producing up to where supply meets the world price.",
+     "The world price comes from the world market.",
+     "Imports at a lower world price lower the domestic price.",
+     "Right: comparative advantage drives trade."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-19",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "A small country that imports a good adds a tariff. Which group gains from the tariff? Select all that apply.",
+   "options": [
+    "Domestic buyers of the good",
+    "Domestic producers of the good",
+    "Foreign sellers of the good"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "The tariff raises the domestic price. Domestic producers sell more at a higher price, so they gain. Buyers pay more and buy less, and foreign sellers sell less into the country. (The government also collects revenue.)",
+    "options": [
+     "They pay more and buy less.",
+     "Right: a higher price and more sales.",
+     "They sell fewer units into the country."
+    ]
+   }
+  },
+  {
+   "id": "mic-trade-policy-20",
+   "unit": "unit-2",
+   "topic": "trade-policy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How does a tariff on imports compare with an import quota that allows the same amount of imports?",
+   "options": [
+    "A quota lowers the domestic price; a tariff raises it",
+    "A tariff creates a deadweight loss, but a quota does not create one",
+    "Same price and imports; only a tariff gives the government revenue",
+    "A quota raises imports above free trade; a tariff lowers them"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both raise the domestic price, raise domestic output, lower imports and create a deadweight loss. The difference is who gets the rectangle between the world price and the higher domestic price: with a tariff, the government collects it as revenue; with a quota, it goes to whoever holds the right to import.",
+    "options": [
+     "Both raise the domestic price.",
+     "Both cut trade below free trade, so both create deadweight loss.",
+     "Right: the revenue rectangle is the difference.",
+     "Both lower imports."
+    ]
+   }
+  }
+ ]
+}

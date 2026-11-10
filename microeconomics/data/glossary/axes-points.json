@@ -1,0 +1,11 @@
+{
+ "axis": {
+  "def": "One of the two number lines of a graph: the horizontal axis (x-axis) runs left to right and the vertical axis (y-axis) runs up. On a market graph quantity goes across and price goes up."
+ },
+ "ordered-pair": {
+  "def": "Two numbers in parentheses, (x, y), that locate one point: the horizontal value first, then the vertical value."
+ },
+ "direct-relationship": {
+  "def": "A direct (positive) relationship means two variables rise and fall together; an inverse (negative) relationship means one rises as the other falls."
+ }
+}

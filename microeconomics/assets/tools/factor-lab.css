@@ -1,0 +1,55 @@
+/* Factor Market Lab (builder T4): scoped to .fl-*. The MRP column takes the curve color (--cink), the wage and MFC columns the ink of the wage line. */
+.fl-fig{display:flex;flex-direction:column;gap:10px;min-height:0;}
+.ls-root .mic-ls-stage .fl-fig{flex:1;}
+.fl-tabs{align-self:center;width:min(100%,360px);}
+.fl-body{flex:1;min-height:0;display:flex;flex-direction:column;}
+.fl-fig[data-tab="table"] .fl-g,.fl-fig[data-tab="graph"] .fl-tbl{display:none;}
+.fl-tbl{overflow:auto;min-height:0;}
+.fl-g{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
+.fl-g .mic-gr-panels{width:100%;}
+.fl-g .mic-graph-svg{width:100%;max-width:520px;max-height:100%;}
+.fl-t{max-width:560px;margin:0 auto;}
+.fl-t caption{caption-side:top;text-align:left;font:700 13px var(--font-ui);color:var(--muted);padding-bottom:6px;}
+.fl-t th,.fl-t td{text-align:right;padding:6px 8px;}
+.fl-t th[scope=row]{text-align:center;color:var(--ink);}
+.fl-t .fl-c-mrp{color:var(--cink);}
+.fl-t td.fl-c-mrp{font-weight:800;}
+.fl-t .fl-c-w,.fl-t .fl-c-mfc{color:var(--ink);}
+.fl-t tr.is-not td,.fl-t tr.is-not th{opacity:.5;}
+.fl-t tr.is-hired td{background:color-mix(in srgb, var(--cink) 6%, transparent);}
+.fl-t tr.hl td,.fl-t tr.hl th{background:var(--ctint);box-shadow:inset 0 -2px 0 var(--cink);}
+.fl-note{max-width:560px;margin:8px auto 0;font:600 14px/1.45 var(--font-ui);color:var(--ink);}
+/* the monopsony graph: letters off, the wage bill in the accent, the deadweight loss hatched */
+.fl-g .mic-gr-cletter,.fl-qg .fl-hide{display:none;}
+.fl-g .mic-gr-cell{cursor:default;}
+.fl-g .mic-gr-cell[data-cell="b"].is-on{fill:color-mix(in srgb, var(--muted,#777) 22%, transparent);stroke:var(--muted,#777);stroke-dasharray:3 3;}
+.fl-g .fl-nobill .mic-gr-cell{display:none;}
+.fl-ctl{display:flex;flex-direction:column;gap:12px;}
+.fl-ctl .bt-slider[hidden]{display:none;}
+.fl-qfig{display:flex;flex-direction:column;gap:8px;justify-content:center;}
+.fl-qtbl{width:100%;max-width:520px;margin:0 auto;}
+.fl-qtbl .fl-qt{width:100%;}
+.fl-qtbl .fl-qt{margin:0 auto;font-size:14px;}
+.fl-qtbl .fl-qt caption{font:700 13px var(--font-ui);color:var(--muted);padding-bottom:4px;}
+.fl-qtbl .fl-qt td,.fl-qtbl .fl-qt th{padding:4px 10px;text-align:right;}
+.fl-qtbl.is-small .fl-qt{font-size:12.5px;}
+.fl-qg:empty{display:none;}
+@media (min-width:1000px){
+  .fl-fig .fl-tabs{display:none;}
+  .fl-body{flex-direction:row;gap:18px;align-items:center;}
+  .fl-fig[data-tab] .fl-tbl,.fl-fig[data-tab] .fl-g{display:flex;}
+  .fl-tbl{flex:1 1 44%;flex-direction:column;justify-content:center;max-height:100%;}
+  .fl-g{flex:1 1 56%;height:100%;}
+  .fl-fig[data-view="comp"] .fl-g .mic-gr-panels{flex-direction:column;flex-wrap:nowrap;height:100%;align-items:center;}
+  .fl-fig[data-view="comp"] .fl-g .mic-gr-panels > svg{flex:1 1 0;min-height:0;width:auto;max-width:100%;height:50%;}
+  .fl-qfig:has(.fl-qg:not(:empty)){flex-direction:row;align-items:center;justify-content:center;}
+  .fl-qfig:has(.fl-qg:not(:empty)) > *{flex:1 1 0;min-width:0;}
+}
+.fl-lc{display:flex;flex-direction:column;gap:10px;justify-content:center;}
+.fl-lc figcaption{text-align:center;font:800 13px var(--font-ui);color:var(--muted);}
+.fl-lc-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.fl-lc-c{flex:1 1 140px;max-width:240px;display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:16px;background:var(--white,#fff);box-shadow:inset 0 0 0 1.5px var(--line);font:600 15px/1.35 var(--font-ui);color:var(--ink);text-align:center;}
+.fl-lc-c b{font-size:17px;color:var(--cink);}
+.fl-pd{margin-top:6px;font:800 16px var(--font-mono);color:var(--muted);}
+.fl-lc-c.is-done .fl-pd{color:var(--ink);}
+.fl-lc-c.is-best{box-shadow:inset 0 0 0 3px var(--cink);}

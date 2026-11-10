@@ -50,7 +50,7 @@ function freeChapter(course, ch) {
 
 const AP = {
   bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc', 'calculus-bc': 'apcalcbc', statistics: 'apstat',
-  'environmental-science': 'apenv', psychology: 'appsych', precalculus: 'apprecalc', macroeconomics: 'apmacro',
+  'environmental-science': 'apenv', psychology: 'appsych', precalculus: 'apprecalc', macroeconomics: 'apmacro', microeconomics: 'apmicro',
 };
 
 /* rel: a path relative to the repo root, with forward slashes. Returns the

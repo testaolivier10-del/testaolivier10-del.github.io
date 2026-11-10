@@ -1,0 +1,14 @@
+{
+ "mrc": {
+  "def": "Marginal resource cost (also marginal factor cost, MFC): the added cost of hiring one more unit of a factor, the change in total factor cost divided by the change in the quantity hired. For a wage taker it equals the wage."
+ },
+ "hiring-rule": {
+  "def": "A profit-maximizing firm hires a factor up to where its marginal revenue product equals its marginal resource cost (MRP = MRC). From a table: the last unit whose MRP is at least its MRC."
+ },
+ "wage-taker": {
+  "def": "A firm that hires so small a share of a labor market that it takes the market wage as given; its labor supply line is horizontal at that wage (S = MFC = W)."
+ },
+ "least-cost": {
+  "def": "A firm makes a given output at the lowest cost when the marginal product per dollar is the same for every input: MP of labor ÷ wage = MP of capital ÷ rental price."
+ }
+}

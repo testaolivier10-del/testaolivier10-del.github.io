@@ -1,0 +1,72 @@
+{
+ "topic": "long-run-costs",
+ "hook": "A neighborhood brewery that triples in size can buy grain by the truckload, run a bottling line instead of filling bottles by hand, and spread its marketing over far more cans. Each can gets cheaper. Grow it into a giant with plants on three continents, though, and meetings, paperwork and missed messages can push the cost of each can back up.",
+ "prereq": [
+  {
+   "q": "In the long run, a firm can change",
+   "options": [
+    "every input, including the size of its plant",
+    "only the number of workers",
+    "only its prices",
+    "no inputs"
+   ],
+   "correct": 0,
+   "why": "No input is fixed in the long run.",
+   "review": "production-function"
+  },
+  {
+   "q": "Average total cost is",
+   "options": [
+    "total cost divided by output",
+    "the change in total cost from one more unit",
+    "fixed cost divided by output",
+    "total cost minus variable cost"
+   ],
+   "correct": 0,
+   "why": "ATC = TC / Q.",
+   "review": "short-run-costs"
+  }
+ ],
+ "figure": {
+  "figure": "long-run-costs-lratc",
+  "caption": "Each dashed curve is the short-run ATC of one plant size. LRATC falls (economies of scale), stays flat (constant returns to scale) and rises (diseconomies of scale); minimum efficient scale is where it first reaches its lowest level."
+ },
+ "chain": [
+  {
+   "cause": "A small firm grows by adding every input",
+   "effect": "it can use specialized workers and machines and buy in bulk"
+  },
+  {
+   "cause": "Specialization and bulk buying make output grow faster than costs",
+   "effect": "long-run average total cost falls: economies of scale"
+  },
+  {
+   "cause": "The firm reaches minimum efficient scale",
+   "effect": "LRATC hits its lowest level and may stay flat for a range: constant returns to scale"
+  },
+  {
+   "cause": "The firm grows so large that it is hard to coordinate",
+   "effect": "costs grow faster than output, so LRATC rises: diseconomies of scale"
+  }
+ ],
+ "ideas": [
+  "In the long run every input can change. <b>LRATC</b> is the lowest average cost of each output when the firm picks the best plant size.",
+  "<b>Returns to scale</b>: double every input; if output more than doubles, increasing returns; exactly doubles, constant; less than doubles, decreasing.",
+  "LRATC falls with <b>economies of scale</b>, is flat with constant returns to scale and rises with <b>diseconomies of scale</b>.",
+  "<b>Minimum efficient scale</b> is the smallest output with the lowest LRATC. Large next to market demand: few firms. Small: many firms."
+ ],
+ "misconception": {
+  "wrong": "Diseconomies of scale are just diminishing marginal returns in a big firm.",
+  "right": "Diminishing marginal returns are a short-run idea: one input is fixed. Diseconomies of scale are a long-run idea: every input grows, and cost per unit rises from the problems of running a very large firm."
+ },
+ "check": [
+  "mic-long-run-costs-11",
+  "mic-long-run-costs-1",
+  "mic-long-run-costs-2",
+  "mic-long-run-costs-3",
+  "mic-long-run-costs-8",
+  "mic-long-run-costs-9",
+  "mic-long-run-costs-13"
+ ],
+ "summary": "In the long run every input can change, so a firm chooses the plant size with the lowest cost for each output; long-run average total cost traces those lowest costs. Returns to scale compare the growth of output with the growth of all inputs. With input prices unchanged, increasing returns bring economies of scale (falling LRATC), constant returns a flat LRATC and decreasing returns diseconomies of scale (rising LRATC). Minimum efficient scale, the smallest output at the lowest LRATC, compared with market demand, helps decide how many firms an industry can hold."
+}

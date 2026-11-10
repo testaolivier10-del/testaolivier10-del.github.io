@@ -1,0 +1,75 @@
+{
+ "topic": "oligopoly-game-theory",
+ "hook": "Two gas stations face each other across an intersection. If one cuts its price by ten cents, it steals the other's customers, unless the other cuts too, and then both earn less. Each owner has to guess what the other will do before choosing. That is oligopoly, and game theory is the tool for it.",
+ "prereq": [
+  {
+   "q": "An oligopoly is a market with",
+   "options": [
+    "a few large, interdependent firms",
+    "one seller",
+    "many firms selling identical products",
+    "many firms selling differentiated products"
+   ],
+   "correct": 0,
+   "why": "A few firms, each affected by the others' choices.",
+   "review": "imperfect-competition"
+  },
+  {
+   "q": "A firm with market power produces where",
+   "options": [
+    "MR = MC",
+    "P = MC",
+    "P = ATC",
+    "TR is largest"
+   ],
+   "correct": 0,
+   "why": "MR = MC, with the price from demand.",
+   "review": "monopoly"
+  }
+ ],
+ "figure": {
+  "figure": "oligopoly-game-theory-matrix",
+  "caption": "A payoff matrix (Firm A's payoff first, thousands of dollars). Each firm's best response is underlined. Advertise wins both comparisons for each firm, so (Advertise, Advertise) is the Nash equilibrium, though both would earn more if neither advertised."
+ },
+ "chain": [
+  {
+   "cause": "A few firms are interdependent",
+   "effect": "each firm's best choice depends on what its rivals choose"
+  },
+  {
+   "cause": "A firm compares its own payoffs with the rival's choice held fixed",
+   "effect": "it finds its best response to each of the rival's choices"
+  },
+  {
+   "cause": "One strategy is the best response to every choice of the rival",
+   "effect": "it is a dominant strategy (proved with both comparisons)"
+  },
+  {
+   "cause": "Each firm is making its best response to the other",
+   "effect": "the cell is a Nash equilibrium: neither gains by switching alone"
+  },
+  {
+   "cause": "In a prisoner's dilemma each firm's dominant strategy lowers joint profit",
+   "effect": "collusion would pay the group, but each firm gains by cheating, so cartels are unstable"
+  }
+ ],
+ "ideas": [
+  "<b>Oligopoly</b>: a few interdependent firms, barriers to entry. <b>Game theory</b> studies their choices with a <b>payoff matrix</b>: the row player's payoff is listed first.",
+  "<b>Best response</b>: hold the rival's choice fixed and compare only your own payoffs. Do this for each of the rival's choices.",
+  "<b>Dominant strategy</b>: best whatever the rival does. Prove it (or that there is none) with <b>both comparisons</b>, with numbers.",
+  "<b>Nash equilibrium</b>: each player's choice is a best response to the other's. There may be one, several or none: check every cell. The largest combined payoff is not, by itself, a Nash equilibrium."
+ ],
+ "misconception": {
+  "wrong": "A firm's dominant strategy is the strategy that contains the largest payoff in the matrix.",
+  "right": "A dominant strategy must beat the firm's other strategies against each of the rival's choices. Check one comparison per rival choice, with numbers: the strategy holding the single largest payoff may lose the other comparison."
+ },
+ "check": [
+  "mic-oligopoly-game-theory-1",
+  "mic-oligopoly-game-theory-2",
+  "mic-oligopoly-game-theory-3",
+  "mic-oligopoly-game-theory-4",
+  "mic-oligopoly-game-theory-18",
+  "mic-oligopoly-game-theory-9"
+ ],
+ "summary": "In an oligopoly a few interdependent firms must consider each other's choices, which a payoff matrix shows. A best response is the strategy that pays a player most with the rival's choice held fixed. A dominant strategy is the best response to every choice of the rival, proved with both comparisons. A Nash equilibrium is a cell where each player is making its best response, so neither gains by switching alone; a game can have one, several or none. In a prisoner's dilemma, dominant strategies lead to a Nash equilibrium that is worse for both than the joint-profit cell, which is why collusion and cartels tend to break down. A tax, subsidy or cost change alters payoffs and can change the equilibrium."
+}

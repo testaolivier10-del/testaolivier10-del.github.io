@@ -1,0 +1,1065 @@
+{
+ "about": "Topic map of the AP Microeconomics Course and Exam Description (effective fall 2026, no content change for 2026-27), in LevlPrep's own words from docs/apmicro-research/framework.md. Every topic title is official (Course at a Glance). Objectives and knowledge are our summaries; for 3.4 to 6.5 they come from scoring guidelines, Chief Reader Reports and standard economics (the CED text could not be read past 3.3) and say so in source.",
+ "ced": {
+  "title": "AP Microeconomics Course and Exam Description",
+  "edition": "Effective fall 2026 (6 units, 36 topics); no content change for 2026-27",
+  "effective": "Fall 2026; exam May 2027",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-microeconomics-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-microeconomics-course-at-a-glance.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-microeconomics/exam"
+  ],
+  "verification": "All 36 titles and skill tags from the Course at a Glance. CED text readable for Units 1-2 and Topics 3.1-3.3. Exclusions read: indifference curves (1.6), graphing quotas (2.9). Read 2026-11-09."
+ },
+ "bigIdeas": [
+  {
+   "id": "MKT",
+   "name": "Scarcity and Markets",
+   "summary": "How scarcity forces choices and how markets set prices and quantities."
+  },
+  {
+   "id": "CBA",
+   "name": "Costs, Benefits, and Marginal Analysis",
+   "summary": "How consumers and firms compare costs and benefits at the margin."
+  },
+  {
+   "id": "PRD",
+   "name": "Production Choices and Behavior",
+   "summary": "How firms produce, set prices and hire in different market structures."
+  },
+  {
+   "id": "POL",
+   "name": "Market Inefficiency and Public Policy",
+   "summary": "When markets fail and how policy changes outcomes."
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Principles and Models",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "1.A": "Describe economic concepts, principles or models",
+    "1.B": "Identify an economic concept, principle or model from an example",
+    "1.C": "Identify an economic concept, principle or model using data or calculations",
+    "1.D": "Describe similarities, differences and limitations of concepts, principles or models"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Interpretation",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "2.A": "Explain how an outcome occurs or what action achieves it",
+    "2.B": "Explain outcomes with several variables or actions",
+    "2.C": "Interpret an outcome using data or calculations"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Manipulation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "3.A": "Determine an outcome using a model",
+    "3.B": "Determine the effects of changes on other markets",
+    "3.C": "Determine effects using data or calculations"
+   }
+  },
+  {
+   "id": 4,
+   "name": "Graphing and Visuals",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "skillNames": {
+    "4.A": "Draw an accurately labeled graph or visual",
+    "4.B": "Show a specific situation on a labeled graph or visual",
+    "4.C": "Show the effect of a change on a labeled graph or visual"
+   }
+  }
+ ],
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Basic Economic Concepts",
+   "weight": "12-15%",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "scarcity",
+     "title": "Scarcity",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how scarcity forces trade-offs in using limited resources."
+     ],
+     "knowledge": [
+      "Wants outrun the resources (land, labor, capital, entrepreneurship) available, so every choice gives something up.",
+      "Most resources are scarce; some, such as knowledge everyone can use at once, may not be."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "1.2",
+     "slug": "economic-systems",
+     "title": "Resource Allocation and Economic Systems",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how market, command and mixed systems answer what to produce, how and for whom."
+     ],
+     "knowledge": [
+      "Every allocation answers what, how and for whom.",
+      "Market, command and mixed systems answer through different institutions and coordinating mechanisms."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "1.3",
+     "slug": "production-possibilities",
+     "title": "Production Possibilities Curve",
+     "bigIdea": "MKT",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Use a PPC to show trade-offs, efficiency, opportunity cost and growth."
+     ],
+     "knowledge": [
+      "Points on the curve are efficient, inside are unused resources, outside are unattainable now.",
+      "The shape shows constant, increasing or decreasing opportunity cost; more resources or better technology shift it out."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "1.4",
+     "slug": "comparative-advantage",
+     "title": "Comparative Advantage and Trade",
+     "bigIdea": "MKT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find absolute and comparative advantage and terms of trade that help both sides."
+     ],
+     "knowledge": [
+      "Absolute advantage is more output from the same resources; comparative advantage is the lower opportunity cost.",
+      "Specializing by comparative advantage lets both sides consume beyond their own PPCs at terms between their opportunity costs."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "1.5",
+     "slug": "cost-benefit",
+     "title": "Cost-Benefit Analysis",
+     "bigIdea": "CBA",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Compare total costs and benefits, explicit and implicit, to find the best choice."
+     ],
+     "knowledge": [
+      "Economic cost includes explicit and implicit costs.",
+      "Net benefit (total benefit minus total cost) is largest at the best choice; some choices need totals, others margins."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "1.6",
+     "slug": "marginal-analysis",
+     "title": "Marginal Analysis and Consumer Choice",
+     "bigIdea": "CBA",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Use marginal benefit and marginal cost, and marginal utility per dollar, to find the best quantity."
+     ],
+     "knowledge": [
+      "With diminishing marginal utility, a consumer maximizes total utility by equalizing marginal utility per dollar across goods with the budget spent.",
+      "The best quantity is where marginal benefit equals marginal cost; sunk costs and fixed benefits do not change it. Indifference curves are beyond the course."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Supply and Demand",
+   "weight": "20-25%",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "demand",
+     "title": "Demand",
+     "bigIdea": "MKT",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain the law of demand and what shifts demand."
+     ],
+     "knowledge": [
+      "The law of demand is a movement along the curve, from income and substitution effects and diminishing marginal utility.",
+      "Market demand is the horizontal sum of individual demands; tastes, income, related prices, expectations and the number of buyers shift it."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.2",
+     "slug": "supply",
+     "title": "Supply",
+     "bigIdea": "MKT",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain the law of supply and what shifts supply."
+     ],
+     "knowledge": [
+      "The law of supply is a movement along the curve.",
+      "Market supply is the sum of individual supplies; input prices, technology, related outputs, taxes and subsidies, expectations and the number of sellers shift it."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.3",
+     "slug": "price-elasticity-demand",
+     "title": "Price Elasticity of Demand",
+     "bigIdea": "MKT",
+     "skills": [
+      "3.A",
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Calculate and interpret the price elasticity of demand and the total revenue test."
+     ],
+     "knowledge": [
+      "Price elasticity of demand is the percent change in quantity demanded over the percent change in price, read in absolute value: elastic above 1, inelastic below 1, unit elastic at 1.",
+      "Elasticity changes along a straight-line demand curve, so slope is not elasticity; the total revenue test links the price change and revenue to elasticity."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.4",
+     "slug": "price-elasticity-supply",
+     "title": "Price Elasticity of Supply",
+     "bigIdea": "MKT",
+     "skills": [
+      "3.A",
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Calculate and interpret the price elasticity of supply."
+     ],
+     "knowledge": [
+      "Price elasticity of supply is the percent change in quantity supplied over the percent change in price, with the same benchmarks.",
+      "Supply is more elastic with more time and easier input switching."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.5",
+     "slug": "other-elasticities",
+     "title": "Other Elasticities",
+     "bigIdea": "MKT",
+     "skills": [
+      "3.A",
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Use income and cross-price elasticity to classify goods."
+     ],
+     "knowledge": [
+      "Income elasticity: positive for normal goods, negative for inferior goods.",
+      "Cross-price elasticity: positive for substitutes, negative for complements, near zero for unrelated goods."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.6",
+     "slug": "equilibrium-surplus",
+     "title": "Market Equilibrium and Consumer and Producer Surplus",
+     "bigIdea": "MKT",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Find equilibrium and measure consumer, producer and total surplus."
+     ],
+     "knowledge": [
+      "Equilibrium clears the market; with no market failure it maximizes total surplus.",
+      "Consumer surplus lies under demand above the price; producer surplus above supply below the price."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.7",
+     "slug": "disequilibrium-changes",
+     "title": "Market Disequilibrium and Changes in Equilibrium",
+     "bigIdea": "MKT",
+     "skills": [
+      "3.A",
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Predict shortages, surpluses and the effects of shifts on price, quantity and surplus."
+     ],
+     "knowledge": [
+      "Shortages push price up and surpluses push it down until the market clears.",
+      "Shifts change price, quantity and surplus; the size of each change depends on the elasticities; double shifts leave one variable indeterminate."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.8",
+     "slug": "government-intervention",
+     "title": "The Effects of Government Intervention in Markets",
+     "bigIdea": "POL",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Show the effects of price controls, taxes and subsidies on outcomes, surplus and deadweight loss."
+     ],
+     "knowledge": [
+      "Binding ceilings sit below equilibrium and cause shortages; binding floors sit above and cause surpluses.",
+      "A per-unit tax or subsidy shifts a curve by its amount; incidence depends on the elasticities; intervention in an efficient market creates deadweight loss."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "2.9",
+     "slug": "trade-policy",
+     "title": "International Trade and Public Policy",
+     "bigIdea": "POL",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Show the effects of opening to trade, tariffs and quotas on a domestic market."
+     ],
+     "knowledge": [
+      "At the world price a country imports when it is below the domestic price and exports when above.",
+      "A tariff raises the domestic price, cuts imports, raises revenue and creates deadweight loss; quotas cut imports (graphing a quota is beyond the course)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Production, Cost, and the Perfect Competition Model",
+   "weight": "22-25%",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "production-function",
+     "title": "The Production Function",
+     "bigIdea": "PRD",
+     "skills": [
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Calculate total, marginal and average product and explain diminishing marginal returns."
+     ],
+     "knowledge": [
+      "Marginal product is the change in total product from one more unit of an input; average product is total product per unit of input.",
+      "Adding a variable input to fixed inputs in the short run eventually brings diminishing marginal returns."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "3.2",
+     "slug": "short-run-costs",
+     "title": "Short-Run Production Costs",
+     "bigIdea": "PRD",
+     "skills": [
+      "4.A",
+      "1.A"
+     ],
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Calculate every short-run cost measure from a table and draw the cost curves."
+     ],
+     "knowledge": [
+      "TC = TFC + TVC; fixed cost is the same at every output, including zero.",
+      "MC = change in TC over change in output; diminishing returns make MC rise, and MC passes through the minimum of AVC and ATC."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "3.3",
+     "slug": "long-run-costs",
+     "title": "Long-Run Production Costs",
+     "bigIdea": "PRD",
+     "skills": [
+      "1.D",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe returns to scale and economies and diseconomies of scale on the LRATC curve."
+     ],
+     "knowledge": [
+      "In the long run every cost is variable; LRATC shows economies of scale, constant returns and diseconomies.",
+      "Minimum efficient scale helps set how many firms a market holds."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from the CED text summarized in docs/apmicro-research/framework.md section 3; focus skills from the Course at a Glance tags"
+    },
+    {
+     "id": "3.4",
+     "slug": "types-of-profit",
+     "title": "Types of Profit",
+     "bigIdea": "CBA",
+     "skills": [
+      "1.C",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Distinguish accounting, economic and normal profit."
+     ],
+     "knowledge": [
+      "Accounting profit = total revenue minus explicit costs; economic profit also subtracts implicit costs.",
+      "Normal profit is zero economic profit."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "3.5",
+     "slug": "profit-maximization",
+     "title": "Profit Maximization",
+     "bigIdea": "CBA",
+     "skills": [
+      "2.A",
+      "3.A"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Find the profit-maximizing output with MR = MC and calculate profit."
+     ],
+     "knowledge": [
+      "A firm maximizes profit where MR = MC (in a table, the last unit whose MR is at least its MC).",
+      "Profit = TR - TC = (P - ATC) × Q."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "3.6",
+     "slug": "firm-decisions",
+     "title": "Firms' Short-Run Decisions to Produce and Long-Run Decisions to Enter or Exit a Market",
+     "bigIdea": "PRD",
+     "skills": [
+      "2.A",
+      "3.A"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain the shutdown rule and entry and exit."
+     ],
+     "knowledge": [
+      "In the short run a firm produces only if price is at least minimum AVC; fixed costs do not change the output choice.",
+      "Economic profit draws entry and losses cause exit, shifting market supply until economic profit is zero."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "3.7",
+     "slug": "perfect-competition",
+     "title": "Perfect Competition",
+     "bigIdea": "PRD",
+     "skills": [
+      "4.A",
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Draw side-by-side market and firm graphs in the short and long run."
+     ],
+     "knowledge": [
+      "The competitive firm is a price taker: its demand is horizontal at the market price, d = MR = AR = P.",
+      "Long-run equilibrium is at minimum ATC with zero economic profit."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Imperfect Competition",
+   "weight": "15-22%",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "imperfect-competition",
+     "title": "Introduction to Imperfectly Competitive Markets",
+     "bigIdea": "PRD",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Describe barriers to entry and market power."
+     ],
+     "knowledge": [
+      "Barriers to entry let a firm keep market power.",
+      "An imperfect competitor faces downward-sloping demand, so its MR lies below demand."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "4.2",
+     "slug": "monopoly",
+     "title": "Monopoly",
+     "bigIdea": "PRD",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Draw a monopoly graph: quantity where MR = MC, price from demand, profit, consumer surplus and deadweight loss."
+     ],
+     "knowledge": [
+      "A monopolist produces where MR = MC and charges the price on demand above that quantity, on the elastic part of demand.",
+      "Natural monopoly: ATC falls over the whole demand range; regulated prices at P = MC (may need a subsidy) or P = ATC (fair return)."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "4.3",
+     "slug": "price-discrimination",
+     "title": "Price Discrimination",
+     "bigIdea": "PRD",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Show the effect of perfect price discrimination."
+     ],
+     "knowledge": [
+      "A perfectly price-discriminating monopolist has MR equal to demand, so it produces where demand meets MC.",
+      "Consumer surplus falls to zero and deadweight loss disappears."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "4.4",
+     "slug": "monopolistic-competition",
+     "title": "Monopolistic Competition",
+     "bigIdea": "PRD",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Show short-run profit or loss and the long-run tangency in monopolistic competition."
+     ],
+     "knowledge": [
+      "Product differentiation gives each firm downward-sloping demand.",
+      "Entry or exit shifts each firm's demand until it is tangent to ATC: zero economic profit, excess capacity, price above MC."
+     ],
+     "source": "Course at a Glance (official title); knowledge is standard economics in our words (docs/apmicro-research/framework.md section 3; no FRQ 2023-2026; needs-author ced-text)"
+    },
+    {
+     "id": "4.5",
+     "slug": "oligopoly-game-theory",
+     "title": "Oligopoly and Game Theory",
+     "bigIdea": "PRD",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Use payoff matrices to find dominant strategies and Nash equilibria."
+     ],
+     "knowledge": [
+      "A dominant strategy is best whatever the rival does; it may not exist and both comparisons settle it.",
+      "A Nash equilibrium is a cell where neither player gains by switching alone; there may be one, two or none in pure strategies."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Factor Markets",
+   "weight": "10-13%",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "factor-markets",
+     "title": "Introduction to Factor Markets",
+     "bigIdea": "PRD",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain derived demand and marginal revenue product."
+     ],
+     "knowledge": [
+      "The demand for a factor is derived from the demand for the product it makes.",
+      "MRP = MP × MR (MP × P for a competitive seller)."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "5.2",
+     "slug": "factor-demand-supply",
+     "title": "Changes in Factor Demand and Factor Supply",
+     "bigIdea": "PRD",
+     "skills": [
+      "3.A",
+      "3.C"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Predict what shifts labor demand and labor supply."
+     ],
+     "knowledge": [
+      "Product price or demand and productivity shift labor demand.",
+      "Population, preferences and rules on who can work shift labor supply."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "5.3",
+     "slug": "competitive-factor-markets",
+     "title": "Profit-Maximizing Behavior in Perfectly Competitive Factor Markets",
+     "bigIdea": "PRD",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Find the profit-maximizing hiring and the least-cost input mix."
+     ],
+     "knowledge": [
+      "A competitive firm hires where MRP = MRC = the market wage; fixed costs do not change hiring.",
+      "Least-cost input mix: MP of labor per dollar equals MP of capital per dollar."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "5.4",
+     "slug": "monopsony",
+     "title": "Monopsonistic Markets",
+     "bigIdea": "PRD",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Show a monopsonist's hiring and wage."
+     ],
+     "knowledge": [
+      "A monopsonist's MFC lies above labor supply; it hires where MRP = MFC and pays the wage read from labor supply.",
+      "A minimum wage between the monopsony wage and the competitive wage can raise both wage and employment."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "id": "unit-6",
+   "title": "Market Failure and the Role of Government",
+   "weight": "8-13%",
+   "topics": [
+    {
+     "id": "6.1",
+     "slug": "market-efficiency",
+     "title": "Socially Efficient and Inefficient Market Outcomes",
+     "bigIdea": "POL",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Compare market outcomes with the socially efficient one."
+     ],
+     "knowledge": [
+      "The efficient quantity is where marginal social benefit equals marginal social cost.",
+      "Any other quantity creates deadweight loss."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "6.2",
+     "slug": "externalities",
+     "title": "Externalities",
+     "bigIdea": "POL",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Show production and consumption externalities and their corrections."
+     ],
+     "knowledge": [
+      "A negative externality makes the market overproduce; a positive one makes it underproduce.",
+      "A per-unit tax or subsidy equal to the external cost or benefit at the efficient quantity corrects it; a lump-sum tax does not change MC, price or quantity."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "6.3",
+     "slug": "public-goods",
+     "title": "Public and Private Goods",
+     "bigIdea": "POL",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Classify goods by rivalry and excludability and explain free riding."
+     ],
+     "knowledge": [
+      "Goods are rival or nonrival and excludable or nonexcludable.",
+      "Public goods invite free riding, so markets underprovide them."
+     ],
+     "source": "Course at a Glance (official title); knowledge is standard economics in our words (docs/apmicro-research/framework.md section 3; no FRQ 2023-2026; needs-author ced-text)"
+    },
+    {
+     "id": "6.4",
+     "slug": "intervention-structures",
+     "title": "The Effects of Government Intervention in Different Market Structures",
+     "bigIdea": "POL",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C",
+      "3.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Show government intervention in different market structures."
+     ],
+     "knowledge": [
+      "A price ceiling on a monopoly can raise quantity; a minimum wage in a monopsony can raise employment.",
+      "Lump-sum and per-unit taxes and subsidies affect firms differently; natural monopolies are regulated."
+     ],
+     "source": "Course at a Glance (official title); knowledge from scoring guidelines and Chief Reader Reports in docs/apmicro-research/framework.md section 3 (CED text not read; needs-author ced-text)"
+    },
+    {
+     "id": "6.5",
+     "slug": "inequality",
+     "title": "Inequality",
+     "bigIdea": "POL",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Measure inequality with the Lorenz curve and describe its sources and policies."
+     ],
+     "knowledge": [
+      "The Lorenz curve shows the cumulative share of income held by the cumulative share of households; the further it bows from the line of equality, the more unequal.",
+      "Taxes can be progressive, proportional or regressive; transfers change the distribution. The Gini coefficient is taught as one measure (needs-author ced-text)."
+     ],
+     "source": "Course at a Glance (official title); knowledge is standard economics in our words (docs/apmicro-research/framework.md section 3; no FRQ 2023-2026; needs-author ced-text)"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "axes-points",
+   "title": "Axes, Variables and Points",
+   "before": "scarcity",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Read and label two axes, plot a point and tell a positive from a negative relationship."
+   ],
+   "knowledge": [
+    "Each axis is one variable with its name and units; a point is one pair of values.",
+    "A curve rising left to right shows a positive (direct) relationship; falling, a negative (inverse) one."
+   ]
+  },
+  {
+   "slug": "slopes-curves",
+   "title": "Slopes and Curve Shapes",
+   "before": "scarcity",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Find a slope as rise over run and describe curved shapes."
+   ],
+   "knowledge": [
+    "Slope is the change on the vertical axis over the change on the horizontal axis.",
+    "A U-shaped curve falls, bottoms out at its minimum, then rises; a horizontal line has zero slope."
+   ]
+  },
+  {
+   "slug": "shifts-movements",
+   "title": "Shifts and Movements Along a Curve",
+   "before": "scarcity",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Tell a movement along a curve from a shift of the curve."
+   ],
+   "knowledge": [
+    "A change in the variable on an axis moves along the curve.",
+    "A change in anything else shifts the whole curve."
+   ]
+  },
+  {
+   "slug": "curves-crossing",
+   "title": "Curves That Cross and Areas",
+   "before": "scarcity",
+   "skills": [
+    "4.A"
+   ],
+   "practices": [
+    4
+   ],
+   "objectives": [
+    "Read where two curves cross and the areas between curves and lines."
+   ],
+   "knowledge": [
+    "Where two curves cross both conditions hold; compare the new crossing with the old on each axis.",
+    "An area between curves and lines is a triangle or rectangle: one half base times height, or base times height."
+   ]
+  }
+ ],
+ "topicCount": 36,
+ "topicCountByUnit": {
+  "1": 6,
+  "2": 9,
+  "3": 7,
+  "4": 5,
+  "5": 4,
+  "6": 5
+ },
+ "exam": {
+  "date2027": "2027-05-04",
+  "day": "Tuesday",
+  "session": "Session 2",
+  "totalTime": "2 h 10 min",
+  "delivery": "Hybrid digital: multiple choice in Bluebook; free responses shown in Bluebook and handwritten (graphs drawn by hand) in a paper booklet.",
+  "mcq": {
+   "questions": 60,
+   "minutes": 70,
+   "weight": "66%",
+   "options": "not confirmed (treated as Macro: 5 on exam forms, 4 in the bank; needs-author mcq-options)"
+  },
+  "frq": {
+   "questions": 3,
+   "minutes": 60,
+   "readingMinutes": 10,
+   "weight": "33%",
+   "types": {
+    "long": "Q1, 10 points, half the section, about 25 min",
+    "short": "Q2 and Q3, 5 points each, a quarter of the section each, about 12 min each"
+   }
+  },
+  "calculator": "Four-function on both sections; Bluebook has a Desmos four-function calculator built in.",
+  "reference": "No formula sheet."
+ }
+}

@@ -68,7 +68,7 @@
     if(changed) write(DONE, d);
   }
   /* Each course's pages take their own parameters (LevlClassModel.href, docs/teacher-classes.md "Links").
-     On the ten AP® courses practice, review, mastery and exam links also carry la=<assignment id>: the page then
+     On the eleven AP® courses practice, review, mastery and exam links also carry la=<assignment id>: the page then
      runs the assignment with its controls (assets/class/class-run.js); review and mastery run on the practice page.
      NREMT, ochem and A&P pages have no class runner yet, so their links stay plain. */
   var pageC = null, needTried = false;

@@ -1,0 +1,8 @@
+{
+ "income-elasticity": {
+  "def": "Income elasticity of demand: the percent change in quantity demanded divided by the percent change in income. Positive for a normal good (above 1 when demand grows faster than income), negative for an inferior good."
+ },
+ "cross-elasticity": {
+  "def": "Cross-price elasticity of demand: the percent change in quantity demanded of one good divided by the percent change in the price of another. Positive for substitutes, negative for complements, near zero for unrelated goods."
+ }
+}

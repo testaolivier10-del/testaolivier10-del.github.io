@@ -1,0 +1,23 @@
+{
+ "marginal": {
+  "def": "Marginal analysis decides one more unit at a time: do one more when its marginal benefit (the extra benefit of that unit) is at least its marginal cost (the extra cost of that unit)."
+ },
+ "utility": {
+  "def": "The satisfaction a consumer gets from consuming goods and services; total utility is the satisfaction from all the units consumed."
+ },
+ "marginal-utility": {
+  "def": "The extra utility from consuming one more unit of a good (MU); it usually falls as more is consumed, which is diminishing marginal utility."
+ },
+ "mu-per-dollar": {
+  "def": "Marginal utility divided by the price of the good (MU/P). A consumer maximizes utility by spending the whole budget so that MU/P is equal across goods."
+ },
+ "sunk-cost": {
+  "def": "A cost that has already been paid and cannot be recovered; it is the same whatever is chosen next, so it does not change the best decision."
+ },
+ "budget-constraint": {
+  "def": "The limit a consumer's income and the prices of goods place on what can be bought: total spending cannot exceed the budget."
+ },
+ "marginal-cost": {
+  "def": "Marginal cost (MC): the extra cost of doing one more unit of something, the change in total cost from one more unit. Keep going while marginal benefit is at least marginal cost (MB ≥ MC)."
+ }
+}

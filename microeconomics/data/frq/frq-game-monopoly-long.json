@@ -1,0 +1,285 @@
+{
+ "id": "frq-game-monopoly-long",
+ "type": "long",
+ "points": 10,
+ "title": "Two bike-share firms in a payoff matrix, then one firm's short-run cost curves",
+ "units": [
+  "unit-3",
+  "unit-4"
+ ],
+ "topics": [
+  "short-run-costs",
+  "oligopoly-game-theory"
+ ],
+ "practices": [
+  "3.A",
+  "2.A",
+  "4.A",
+  "4.B",
+  "4.C"
+ ],
+ "scenario": "Pedalwise and Sunpath (invented) are the only bike-share firms in a city. Each decides, at the same time and without talking to the other, whether to expand into a new district (Expand) or stay in its current districts (Stay). The matrix shows each firm's monthly profit in thousands of dollars; in each cell Pedalwise's payoff is listed first. Both firms know the matrix.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "type": "matrix",
+   "prompt": "<b>Identify</b> each firm's dominant strategy, if it has one, and every Nash equilibrium.",
+   "matrix": {
+    "players": [
+     {
+      "name": "Pedalwise",
+      "strategies": [
+       "Expand",
+       "Stay"
+      ]
+     },
+     {
+      "name": "Sunpath",
+      "strategies": [
+       "Expand",
+       "Stay"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       45,
+       10
+      ],
+      [
+       70,
+       25
+      ]
+     ],
+     [
+      [
+       40,
+       50
+      ],
+      [
+       50,
+       48
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "dominant",
+     "nash"
+    ],
+    "unitLabel": "thousands of dollars"
+   },
+   "rubric": [
+    {
+     "point": "Pedalwise's dominant strategy is Expand, and Sunpath has no dominant strategy.",
+     "accept": [
+      "Pedalwise: Expand; Sunpath: none"
+     ],
+     "auto": "dominant"
+    },
+    {
+     "point": "The only Nash equilibrium is (Pedalwise Expand, Sunpath Stay).",
+     "accept": [
+      "Pedalwise expands and Sunpath stays"
+     ],
+     "auto": "nash"
+    }
+   ],
+   "sample": "Pedalwise's dominant strategy is Expand. Sunpath has no dominant strategy. The only Nash equilibrium is Pedalwise Expand, Sunpath Stay, with payoffs of \\$70 thousand and \\$25 thousand."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "type": "matrix",
+   "matrix": {
+    "players": [
+     {
+      "name": "Pedalwise",
+      "strategies": [
+       "Expand",
+       "Stay"
+      ]
+     },
+     {
+      "name": "Sunpath",
+      "strategies": [
+       "Expand",
+       "Stay"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       45,
+       10
+      ],
+      [
+       70,
+       25
+      ]
+     ],
+     [
+      [
+       40,
+       50
+      ],
+      [
+       50,
+       48
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "joint"
+    ],
+    "unitLabel": "thousands of dollars"
+   },
+   "prompt": "<b>Identify</b> the pair of strategies that gives the two firms the largest combined profit.",
+   "rubric": [
+    {
+     "point": "Both firms Stay (50 + 48 = 98), which is not the Nash equilibrium",
+     "accept": [
+      "both stay, 98 in total"
+     ],
+     "auto": "joint"
+    }
+   ],
+   "sample": "Adding the two payoffs in each cell gives 55, 95, 90 and 98. The largest is both firms choosing Stay: 50 + 48 = 98 (thousand dollars)."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Explain</b>, using the numbers in the matrix, why the pair of strategies in part B is not a Nash equilibrium.",
+   "rubric": [
+    {
+     "point": "If Sunpath stays, Pedalwise earns more by choosing Expand (70 > 50), so Pedalwise would switch away from Stay",
+     "accept": [
+      "Pedalwise would switch to Expand because 70 > 50"
+     ]
+    }
+   ],
+   "sample": "At (Stay, Stay) Pedalwise earns 50. If it switched to Expand while Sunpath stays, it would earn 70, so Pedalwise is not making its best response and would switch. A cell where a firm wants to change its choice is not a Nash equilibrium."
+  },
+  {
+   "label": "D",
+   "points": 2,
+   "type": "graph",
+   "graph": {
+    "kind": "costs",
+    "do": [
+     "label",
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "at": "min-atc"
+     }
+    }
+   },
+   "prompt": "Pedalwise's costs: <b>draw</b> a correctly labeled graph of Pedalwise's short-run marginal cost (MC), average variable cost (AVC) and average total cost (ATC) curves, and <b>show</b> the number of rides at which ATC is at its minimum, labeled X.",
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: cost on the vertical axis and output (rides) on the horizontal axis; U-shaped AVC and ATC, with ATC above AVC; MC rising through the minimum of AVC and of ATC",
+     "accept": [
+      "axes labeled cost and Q",
+      "MC crossing AVC and ATC at their lowest points"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "X at the output where MC crosses ATC, the lowest point of ATC",
+     "accept": [
+      "the minimum of ATC, where MC = ATC"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "Cost on the vertical axis, output (rides) on the horizontal. AVC and ATC are U-shaped, ATC above AVC, and the gap between them narrows as output rises. MC rises through the lowest point of AVC and then the lowest point of ATC. X is marked at the output where MC crosses ATC."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "<b>Explain</b> why the MC curve crosses the ATC curve at the lowest point of ATC.",
+   "rubric": [
+    {
+     "point": "When MC is below ATC, each extra ride pulls the average down; when MC is above ATC, it pulls the average up; so ATC is lowest where MC = ATC",
+     "accept": [
+      "a marginal below the average lowers it and above the average raises it"
+     ]
+    }
+   ],
+   "sample": "If the cost of one more ride (MC) is less than the average cost per ride, adding that ride lowers the average, so ATC falls. If MC is more than ATC, adding the ride raises the average, so ATC rises. ATC therefore stops falling and starts rising exactly where MC equals ATC, its lowest point."
+  },
+  {
+   "label": "F(i)",
+   "points": 1,
+   "type": "graph",
+   "graph": {
+    "kind": "costs",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "MC",
+     "ATC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MC",
+       "dir": "up"
+      }
+     ],
+     "because": "higher pay per repair, a variable cost"
+    },
+    "slips": {
+     "ATC": "Pay for each repair rises with every extra ride, so it is a variable cost: MC shifts up, and AVC and ATC move up with it."
+    }
+   },
+   "prompt": "Pedalwise pays its mechanics for each repair, and the pay per repair rises. <b>Show</b> the effect on your graph by shifting the curve or curves that change.",
+   "rubric": [
+    {
+     "point": "MC shifts up, and AVC and ATC shift up with it",
+     "accept": [
+      "MC2 drawn above MC1, with AVC and ATC higher"
+     ],
+     "auto": "shift"
+    }
+   ],
+   "sample": "Pay per repair is a variable cost, so the cost of each extra ride rises: MC shifts up to MC2, and AVC and ATC shift up with it."
+  },
+  {
+   "label": "F(ii)",
+   "points": 1,
+   "prompt": "<b>Explain</b> why Pedalwise's average fixed cost does not change when the pay per repair rises.",
+   "rubric": [
+    {
+     "point": "Pay per repair is a variable cost, so total fixed cost (and so AFC = TFC ÷ Q at each output) is unchanged",
+     "accept": [
+      "the rise is in variable cost, not fixed cost"
+     ]
+    }
+   ],
+   "sample": "Average fixed cost is total fixed cost divided by output. Pay per repair changes with the number of rides, so it is a variable cost; total fixed cost is the same as before, and so is AFC at every output."
+  },
+  {
+   "label": "G",
+   "points": 1,
+   "prompt": "<b>Identify</b> what happens to the vertical gap between ATC and AVC as Pedalwise provides more rides, and <b>explain</b>.",
+   "rubric": [
+    {
+     "point": "The gap narrows, because it equals AFC, and AFC falls as the same fixed cost is spread over more rides",
+     "accept": [
+      "it gets smaller: ATC - AVC = AFC, which falls as output rises"
+     ]
+    }
+   ],
+   "sample": "The gap gets smaller. ATC - AVC = AFC, and AFC is a fixed amount divided by the number of rides, so it falls as Pedalwise provides more rides."
+  }
+ ]
+}

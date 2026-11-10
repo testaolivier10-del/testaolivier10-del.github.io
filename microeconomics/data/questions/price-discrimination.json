@@ -1,0 +1,675 @@
+{
+ "stimuli": {
+  "price-discrimination-s1": {
+   "kind": "data",
+   "title": "Halloway Cinema: two groups of ticket buyers",
+   "invented": true,
+   "table": {
+    "caption": "Halloway Cinema, the only cinema in a small town, sells evening tickets to two groups (invented data for practice)",
+    "cols": [
+     "Group",
+     "Price elasticity of demand (absolute value)",
+     "Ticket price (dollars)",
+     "Tickets sold per night"
+    ],
+    "rows": [
+     [
+      "Students (with a student ID)",
+      "2.5",
+      "6",
+      "200"
+     ],
+     [
+      "Other adults",
+      "1.5",
+      "10",
+      "300"
+     ]
+    ]
+   }
+  },
+  "price-discrimination-s2": {
+   "kind": "data",
+   "title": "Oriel Clinic: one price or a price for each patient",
+   "invented": true,
+   "table": {
+    "caption": "Oriel Clinic, the only eye clinic in a region: demand for an eye exam and the cost of one more exam (invented data for practice; quantity in thousands of exams a year)",
+    "cols": [
+     "Quantity (thousands)",
+     "Price buyers will pay (dollars)",
+     "Marginal revenue with one price (dollars)",
+     "Marginal cost (dollars)"
+    ],
+    "rows": [
+     [
+      "2",
+      "80",
+      "60",
+      "20"
+     ],
+     [
+      "4",
+      "60",
+      "20",
+      "20"
+     ],
+     [
+      "6",
+      "40",
+      "-20",
+      "20"
+     ],
+     [
+      "8",
+      "20",
+      "-60",
+      "20"
+     ]
+    ]
+   }
+  },
+  "price-discrimination-s3": {
+   "kind": "text",
+   "title": "Skylark Air fares",
+   "text": "<p>Skylark Air (invented) is the only airline on the route between two small cities. It sells the same seat for \\$90 if booked three weeks ahead with a Saturday night stay, and for \\$260 if booked the week of travel. Tickets carry the traveler's name and cannot be resold. Business travelers usually book late; vacation travelers plan ahead.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-price-discrimination-1",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "price-discrimination-s1",
+   "q": "Use the table. Why does Halloway charge students the lower price?",
+   "options": [
+    "Students' demand is more elastic, so a high price would lose many of them",
+    "Students' demand is less elastic, so they buy whatever the price",
+    "Halloway's marginal cost of a student seat is lower than for an adult seat",
+    "Students buy fewer tickets, so each one is worth less to the cinema"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Students' demand is more elastic (2.5) than other adults' demand (1.5). A price discriminator charges the higher price to the group that is less sensitive to price and the lower price to the more sensitive group.",
+    "options": [
+     "Right: the more elastic group gets the lower price.",
+     "Students' 2.5 is larger than adults' 1.5, so students are the more price-sensitive group.",
+     "A seat costs the same to provide whoever sits in it; the difference is in demand.",
+     "The price follows how sensitive each group is to price, not how many tickets it buys."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-2",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "price-discrimination-s1",
+   "q": "Why does Halloway ask to see a student ID at the door?",
+   "options": [
+    "To measure how elastic each student's demand is",
+    "To keep adults from paying the student price, so the two groups stay separate",
+    "To lower the cinema's marginal cost of each ticket it sells",
+    "To make demand for tickets more inelastic among students"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Price discrimination works only if the seller can tell the groups apart and stop buyers in the low-price group from reselling to the high-price group. The ID check does both.",
+    "options": [
+     "An ID shows who is a student; it does not measure elasticity.",
+     "Right: preventing resale and sorting buyers are conditions for price discrimination.",
+     "Checking IDs adds a little cost; it does not lower marginal cost.",
+     "The check sorts buyers; it does not change how they respond to price."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-3",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "price-discrimination-s1",
+   "q": "Use the table. What is Halloway's total revenue per night from both groups, in dollars?",
+   "why": {
+    "correct": "$\\text{TR} = 6 \\times 200 + 10 \\times 300 = 1{,}200 + 3{,}000 = 4{,}200$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        6,
+        200
+       ]
+      },
+      {
+       "fn": "mul",
+       "args": [
+        10,
+        300
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        8,
+        500
+       ]
+      },
+      "why": "That uses the average price for every ticket. Multiply each group's price by its own tickets, then add."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        10,
+        300
+       ]
+      },
+      "why": "That is the revenue from other adults only. Add the students' revenue, \\$6 times 200."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-4",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "price-discrimination-s1",
+   "q": "Halloway dropped the student price and charged everyone \\$10. What would most likely happen to student ticket sales and to the cinema's profit?",
+   "options": [
+    "Student sales would barely change and profit would rise",
+    "Student sales would rise, because the price is now the same for everyone",
+    "Student sales would fall sharply and profit would fall",
+    "Student sales would fall, but profit would rise by the full \\$4 a ticket"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Students' demand is elastic, so a much higher price would cut their purchases by a large share, and the lost student revenue and profit would not be made up. That is why separating the groups raises profit.",
+    "options": [
+     "That would be true for inelastic demand; students' 2.5 is elastic.",
+     "A higher price lowers the quantity demanded.",
+     "Right: elastic demand means a large drop in quantity, so the lost sales cost more than the higher price earns.",
+     "Fewer tickets are sold, so profit does not rise by \\$4 on each of the old sales."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-5",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-discrimination-s2",
+   "q": "With one price for everyone, Oriel produces where MR = MC: 4 thousand exams at \\$60. Demand is a straight line from \\$100 at zero exams. What is consumer surplus, in thousands of dollars?",
+   "why": {
+    "correct": "Consumer surplus is the triangle under demand above the price: $\\frac{1}{2} \\times 4 \\times (100 - 60) = 80$ thousand dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "consumerSurplus",
+     "args": [
+      4,
+      100,
+      60
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        4,
+        40
+       ]
+      },
+      "why": "That is a rectangle. Consumer surplus is a triangle, so take one half."
+     },
+     {
+      "from": {
+       "fn": "consumerSurplus",
+       "args": [
+        8,
+        100,
+        20
+       ]
+      },
+      "why": "That uses the efficient quantity and price. With one price, Oriel sells only 4 thousand exams at \\$60."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-6",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-discrimination-s2",
+   "q": "Use the table. With one price, what is the deadweight loss, in thousands of dollars?",
+   "why": {
+    "correct": "Oriel stops at 4 thousand, but demand meets MC at 8 thousand. The deadweight loss is the triangle between demand and MC: $\\frac{1}{2} \\times (8 - 4) \\times (60 - 20) = 80$ thousand dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "dwl",
+     "args": [
+      4,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        4,
+        40
+       ]
+      },
+      "why": "That is the rectangle; deadweight loss is a triangle, so take one half."
+     },
+     {
+      "from": {
+       "fn": "dwl",
+       "args": [
+        4,
+        20
+       ]
+      },
+      "why": "The price wedge at 4 thousand exams is the price (\\$60) minus MC (\\$20), which is \\$40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-7",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "price-discrimination-s2",
+   "q": "Oriel learns to charge each patient the most that patient will pay (perfect price discrimination). How many exams does it now provide?",
+   "options": [
+    "4 thousand, the same as with one price",
+    "2 thousand, because it charges higher prices",
+    "6 thousand, halfway between the two outcomes",
+    "8 thousand, where demand meets marginal cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With perfect price discrimination, selling one more exam does not lower the price of the others, so marginal revenue equals the price on the demand curve. Oriel provides exams until demand meets MC: 8 thousand.",
+    "options": [
+     "With one price, MR was below demand; now MR is the demand curve, so output rises.",
+     "Each patient pays their own price, so Oriel gains from every exam worth more than \\$20.",
+     "The rule is MR = MC, and MR is now the demand curve, which meets MC at 8 thousand.",
+     "Right: its MR curve is now the demand curve, so MR = MC where D = MC."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-8",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-discrimination-s2",
+   "q": "With perfect price discrimination, how much does Oriel earn above its marginal costs (revenue minus the cost of the exams), in thousands of dollars?",
+   "why": {
+    "correct": "Every patient pays the most they will pay, so Oriel collects the whole area between demand and MC out to 8 thousand: $\\frac{1}{2} \\times 8 \\times (100 - 20) = 320$ thousand dollars. Consumer surplus is zero and there is no deadweight loss."
+   },
+   "numeric": {
+    "from": {
+     "fn": "triangle",
+     "args": [
+      8,
+      80
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          60,
+          20
+         ]
+        },
+        4
+       ]
+      },
+      "why": "That is the one-price outcome. With perfect price discrimination Oriel sells 8 thousand exams, each at its own price."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        8,
+        80
+       ]
+      },
+      "why": "That is a rectangle; the area between a straight demand line and flat MC is a triangle, so take one half."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-9",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "price-discrimination-s3",
+   "q": "Which feature of Skylark's fares stops travelers from buying cheap seats and reselling them?",
+   "options": [
+    "Each ticket carries the traveler's name",
+    "Skylark is the sole airline on the route",
+    "Seats cost the same to fly whoever books them",
+    "Vacation travelers plan their trips ahead"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Names on tickets prevent resale; without that, vacation travelers could buy cheap seats and sell them to business travelers, and the two prices could not last.",
+    "options": [
+     "Right: preventing resale keeps the groups apart.",
+     "That gives Skylark market power, another condition; it does not stop resale.",
+     "That is why the price gap is discrimination, not a cost difference.",
+     "Planning ahead sorts the groups; it does not stop resale."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-10",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "price-discrimination-s3",
+   "q": "Why does Skylark charge late bookers more?",
+   "options": [
+    "Late bookers cost Skylark more to fly, so their seats are priced higher",
+    "Late bookers' demand is less elastic: they need to fly on that day",
+    "Late bookers' demand is more elastic, so they pay more",
+    "Late bookers are fewer, so each ticket is scarcer"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Late bookers are mostly business travelers who must fly on a given day, so their demand is less elastic. Charging the less elastic group the higher price raises Skylark's profit.",
+    "options": [
+     "The seat is the same; the price gap comes from demand, not cost.",
+     "Right: the higher price goes to the less price-sensitive group.",
+     "A more elastic group would get the lower price.",
+     "The price follows how sensitive each group is to price."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-11",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "price-discrimination-s3",
+   "q": "Compared with charging one price to everyone, Skylark's two fares most likely",
+   "options": [
+    "lower the number of seats sold and raise Skylark's profit",
+    "raise the number of seats sold and lower Skylark's profit",
+    "raise the number of seats sold and Skylark's profit",
+    "leave seats sold unchanged and lower fares on average"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Selling cheap seats to vacation travelers who would not pay one higher single price lets Skylark fill more seats, so output rises, and profit rises because it captures more of buyers' willingness to pay.",
+    "options": [
+     "The low fare adds buyers, so seats sold rise.",
+     "Skylark would not choose a pricing plan that lowers its profit.",
+     "Right: the low fare adds travelers who would not buy at one high price.",
+     "The cheap fare reaches new buyers, so quantity changes."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-12",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Price discrimination is",
+   "options": [
+    "charging a higher price for a better version of a good that costs more to make",
+    "charging more in a city where shipping costs are higher",
+    "cutting the price for each buyer by the same amount during a sale",
+    "selling one good at different prices to different buyers, not due to cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Price discrimination is selling the same good to different buyers at different prices, where the price gap does not come from a difference in cost.",
+    "options": [
+     "A better version costs more to make; that is not price discrimination.",
+     "A price gap that follows a cost gap is not discrimination.",
+     "A sale for all buyers is one price, not different prices for different buyers.",
+     "Right: the prices differ because buyers differ."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-13",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which conditions must hold for a firm to price discriminate? Select all that apply.",
+   "options": [
+    "The firm has market power",
+    "The firm can stop buyers from reselling the good",
+    "The firm can tell buyers apart by how sensitive they are to price",
+    "The firm has a lower marginal cost than its rivals",
+    "Demand for the good is perfectly elastic",
+    "The firm's buyers have the same elasticity of demand"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "The firm needs market power (a downward-sloping demand curve), a way to separate buyers into groups with different elasticities, and a way to stop resale between groups.",
+    "options": [
+     "Right: a price taker cannot set prices at all.",
+     "Right: otherwise low-price buyers resell to high-price buyers.",
+     "Right: it needs groups with different elasticities.",
+     "Cost is not a condition; a firm with high costs can still price discriminate.",
+     "Perfectly elastic demand means no market power, so no price discrimination.",
+     "If the groups had the same elasticity, one price would be best for both."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-14",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "When a monopolist moves from one price to perfect price discrimination, what happens to consumer surplus and deadweight loss?",
+   "options": [
+    "Consumer surplus falls to zero, and deadweight loss falls to zero",
+    "Consumer surplus falls to zero, and deadweight loss grows",
+    "Consumer surplus rises, and deadweight loss falls to zero",
+    "Both stay the same, but the firm's profit rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each buyer pays the most they will pay, so consumer surplus falls to zero, and the firm produces out to where demand meets MC, so deadweight loss falls to zero. All of the surplus becomes the firm's profit.",
+    "options": [
+     "Right: the firm takes all the surplus and produces the efficient quantity.",
+     "Output rises to where demand meets MC, so the deadweight loss disappears.",
+     "Each buyer pays their highest price, so no consumer surplus is left.",
+     "Profit rises because surplus moves from buyers to the firm and the lost surplus is now produced."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-15",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "For a perfectly price-discriminating monopolist, the marginal revenue curve is",
+   "options": [
+    "below the demand curve, as for a single-price monopolist",
+    "the same as the demand curve",
+    "horizontal at the market price",
+    "the same as the marginal cost curve"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Selling one more unit does not lower the price paid by anyone else, so each unit adds its own price to revenue: the MR curve is the demand curve.",
+    "options": [
+     "That holds when the price must be cut on every unit; here it is not.",
+     "Right: each extra unit brings in its own price.",
+     "That describes a price taker.",
+     "MR and MC are different curves; the firm produces where they cross."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-discrimination-16",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "This monopolist becomes able to charge each buyer the most that buyer will pay. Mark its new output and the price of the last unit it sells.",
+   "why": {
+    "correct": "With perfect price discrimination, MR is the demand curve, so the firm produces where demand meets MC; the last unit sells at a price equal to MC. That is the allocatively efficient point."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "E",
+    "key": {
+     "point": {
+      "at": "allocative"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-price-discrimination-17",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the area of surplus that is lost when this monopolist charges one price, and that perfect price discrimination would recover.",
+   "why": {
+    "correct": "The lost surplus is the deadweight loss of the single-price monopoly: the triangle between demand and MC, from the monopoly quantity to the quantity where demand meets MC. A perfect price discriminator produces those units, so the loss disappears (as profit, not consumer surplus)."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "cs": "That is the consumer surplus under one price; it is not lost, but a perfect price discriminator would take it as profit."
+    }
+   }
+  },
+  {
+   "id": "mic-price-discrimination-18",
+   "unit": "unit-4",
+   "topic": "price-discrimination",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the answer: why does a perfectly price-discriminating monopolist produce the efficient quantity?",
+   "why": {
+    "correct": "Because its MR curve is the demand curve, MR = MC happens where demand meets MC, which is the allocatively efficient quantity."
+   },
+   "specific": {
+    "frame": "Its marginal revenue curve is the ___ curve, so MR = MC where ___ meets MC.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Because it charges each buyer the most that buyer will pay, selling one more unit does not lower its other prices, so its marginal revenue curve is the demand curve. It produces more units, up to where demand meets marginal cost, which is the allocatively efficient quantity.",
+    "slots": {
+     "mr": {
+      "label": "Its MR curve",
+      "options": [
+       "demand",
+       "marginal cost"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "MR and MC are different curves; with perfect price discrimination MR is the demand curve."
+      }
+     },
+     "meet": {
+      "label": "Which curve meets MC",
+      "options": [
+       "demand",
+       "marginal revenue below demand"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "There is no separate MR curve below demand here: MR is demand."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

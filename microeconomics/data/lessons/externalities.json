@@ -1,0 +1,84 @@
+{
+ "topic": "externalities",
+ "hook": "A paper mill upriver makes paper that people pay for. It also releases fumes that make families downstream run air filters all summer. The mill pays for wood, workers and power, but not for the filters. Because that cost stays outside its books, the river town gets more paper, and more fumes, than is best.",
+ "prereq": [
+  {
+   "q": "The socially efficient quantity is where",
+   "options": [
+    "MSB = MSC",
+    "price is lowest",
+    "producers earn the most profit",
+    "quantity demanded is largest"
+   ],
+   "correct": 0,
+   "why": "Every unit worth more than it costs is made.",
+   "review": "market-efficiency"
+  },
+  {
+   "q": "A per-unit tax on sellers shifts the supply curve",
+   "options": [
+    "up (left) by the tax",
+    "down (right) by the tax",
+    "not at all",
+    "to vertical"
+   ],
+   "correct": 0,
+   "why": "Sellers need the tax on top of their cost.",
+   "review": "government-intervention"
+  },
+  {
+   "q": "A firm's fixed costs affect",
+   "options": [
+    "ATC but not MC",
+    "MC but not ATC",
+    "both MC and ATC",
+    "neither"
+   ],
+   "correct": 0,
+   "why": "A fixed cost does not change with output, so the cost of one more unit is unchanged.",
+   "review": "short-run-costs"
+  }
+ ],
+ "figure": {
+  "figure": "externalities-negative",
+  "caption": "The market makes QM where MPB = MPC. Counting the external cost, the efficient quantity is QE where MSB = MSC. The triangle between MSC and MSB from QE to QM is deadweight loss."
+ },
+ "chain": [
+  {
+   "cause": "Producing the good imposes a cost on people outside the market",
+   "effect": "MSC lies above the firms' MPC (supply)"
+  },
+  {
+   "cause": "Firms decide using MPC only",
+   "effect": "the market produces where MPB = MPC, more than where MSB = MSC"
+  },
+  {
+   "cause": "The units beyond the efficient quantity cost society more than they are worth",
+   "effect": "there is deadweight loss: a market failure"
+  },
+  {
+   "cause": "A per-unit tax equal to the external cost is placed on the good",
+   "effect": "supply shifts up to MSC, and the market produces the efficient quantity"
+  }
+ ],
+ "ideas": [
+  "An <b>externality</b> is a cost or benefit that falls on people outside the deal. Production externalities show up on the supply side (MSC vs MPC); consumption externalities on the demand side (MSB vs MPB).",
+  "<b>Negative</b> externalities (MSC above MPC, or MSB below MPB) mean the market makes <b>too much</b>. <b>Positive</b> ones mean it makes <b>too little</b>.",
+  "Always state both quantities: the market at MPB = MPC, the efficient one at MSB = MSC. The deadweight loss triangle sits between them and points toward the efficient quantity.",
+  "A <b>corrective (Pigouvian) tax</b> or subsidy per unit equal to the external cost or benefit at the efficient quantity fixes it. A <b>lump-sum tax</b> does not change MC, price or quantity."
+ ],
+ "misconception": {
+  "wrong": "A polluting firm will cut its pollution if it has to pay a fixed yearly fee.",
+  "right": "A fixed fee is a lump-sum tax: it raises total cost but not the cost of the next unit, so the firm's output, and the pollution that comes with it, stay the same. Only a charge per unit changes the quantity."
+ },
+ "check": [
+  "mic-externalities-19",
+  "mic-externalities-2",
+  "mic-externalities-3",
+  "mic-externalities-4",
+  "mic-externalities-12",
+  "mic-externalities-13",
+  "mic-externalities-20"
+ ],
+ "summary": "An externality is a cost or benefit that falls on people outside a market. With a negative externality, the social cost exceeds the private cost (or the social benefit falls short of the private benefit), so the market, which uses private curves, produces more than the efficient quantity where MSB = MSC; with a positive externality it produces less. The deadweight loss is the triangle between the social and private curves from the market quantity to the efficient quantity. A per-unit tax or subsidy equal to the external cost or benefit at the efficient quantity moves the market there; a lump-sum tax does not, because it leaves marginal cost unchanged."
+}

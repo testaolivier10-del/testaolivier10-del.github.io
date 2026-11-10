@@ -1,0 +1,555 @@
+{
+ "stimuli": {
+  "long-run-costs-s1": {
+   "kind": "data",
+   "title": "Lindqvist Kayaks: plant size and long-run cost",
+   "invented": true,
+   "table": {
+    "caption": "The lowest total cost of each yearly output when the firm can choose any plant size (invented data for practice)",
+    "cols": [
+     "Output (kayaks per year)",
+     "Long-run total cost (\\$)"
+    ],
+    "rows": [
+     [
+      "100",
+      "1,000"
+     ],
+     [
+      "200",
+      "1,600"
+     ],
+     [
+      "300",
+      "1,800"
+     ],
+     [
+      "400",
+      "2,400"
+     ],
+     [
+      "500",
+      "3,500"
+     ],
+     [
+      "600",
+      "4,800"
+     ]
+    ]
+   }
+  },
+  "long-run-costs-s2": {
+   "kind": "graph",
+   "title": "A firm's long-run average total cost curve",
+   "graph": {
+    "kind": "costs",
+    "set": "long"
+   }
+  },
+  "long-run-costs-s3": {
+   "kind": "text",
+   "title": "Sunmere Solar grows its factory",
+   "text": "<p>Sunmere Solar doubles every input it uses: workers, assembly lines, floor space and machines. Its weekly output of solar panels rises from 1,000 to 2,500. Years later, at a much larger size, it doubles every input again, and weekly output rises from 4,000 to 7,000. Input prices stay the same throughout. (An invented business, for practice.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-long-run-costs-1",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is long-run average total cost at 500 kayaks a year, in dollars?",
+   "why": {
+    "correct": "LRATC is long-run total cost divided by output: $3{,}500 \\div 500 = 7$ dollars a kayak."
+   },
+   "numeric": {
+    "from": {
+     "fn": "atc",
+     "args": [
+      3500,
+      500
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          3500,
+          2400
+         ]
+        },
+        100
+       ]
+      },
+      "why": "That is the extra cost of the last 100 kayaks per kayak (1,100 / 100). LRATC divides the long-run total cost by output."
+     },
+     {
+      "value": 3500,
+      "why": "That is long-run total cost. Divide it by the 500 kayaks."
+     }
+    ]
+   },
+   "stimulus": "long-run-costs-s1"
+  },
+  {
+   "id": "mic-long-run-costs-2",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. Over which range of output does the firm have economies of scale?",
+   "options": [
+    "From 300 to 400 kayaks, where LRATC stays at \\$6",
+    "From 400 to 600 kayaks, where long-run total cost rises fastest",
+    "From 100 to 300 kayaks, where LRATC falls from \\$10 to \\$6",
+    "From 100 to 600 kayaks, because long-run total cost rises"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "LRATC is 10, 8, 6, 6, 7 and 8 dollars. It falls from 100 to 300 kayaks (economies of scale), is flat from 300 to 400 and rises after 400.",
+    "options": [
+     "LRATC is flat there: constant returns to scale.",
+     "LRATC rises from 6 to 8 there: diseconomies of scale.",
+     "Right: LRATC is 10, 8, then 6.",
+     "Total cost always grows with output; scale is judged by the average, which falls and later rises."
+    ]
+   },
+   "stimulus": "long-run-costs-s1"
+  },
+  {
+   "id": "mic-long-run-costs-3",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. What is the firm's minimum efficient scale?",
+   "options": [
+    "300 kayaks a year",
+    "400 kayaks a year",
+    "100 kayaks a year",
+    "600 kayaks a year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Minimum efficient scale is the smallest output at which long-run average total cost is lowest: 300 kayaks, at \\$6.",
+    "options": [
+     "Right: the smallest output at which LRATC reaches its lowest value, \\$6.",
+     "LRATC is also \\$6 at 400, but 300 is the smallest output at that lowest level.",
+     "At 100 kayaks LRATC is \\$10, its highest value.",
+     "At 600 kayaks LRATC has risen to \\$8: diseconomies of scale."
+    ]
+   },
+   "stimulus": "long-run-costs-s1"
+  },
+  {
+   "id": "mic-long-run-costs-4",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Use the table. Buyers in the whole market want about 30,000 kayaks a year at a price near \\$6. About how many firms like this one can produce at the lowest long-run average total cost?",
+   "options": [
+    "About 5 firms, each making 6,000 kayaks",
+    "One firm, because one large firm has the lowest cost",
+    "About 300 firms, each making 100 kayaks",
+    "About 75 to 100 firms, each making 300 to 400 kayaks"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Minimum efficient scale is small (300 kayaks) next to the market (30,000), so many firms can each produce at the lowest average cost. A small minimum efficient scale relative to demand supports a market with many firms.",
+    "options": [
+     "A firm making 6,000 kayaks would be far into diseconomies of scale, with high average cost.",
+     "LRATC rises past 400 kayaks, so one huge firm would have a higher average cost.",
+     "At 100 kayaks LRATC is \\$10, well above the lowest level.",
+     "Right: 30,000 / 400 = 75 and 30,000 / 300 = 100, so the market can hold many low-cost firms."
+    ]
+   },
+   "stimulus": "long-run-costs-s1"
+  },
+  {
+   "id": "mic-long-run-costs-5",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the graph, LRATC slopes downward at small outputs. Which is a likely reason?",
+   "options": [
+    "A fixed input is shared by more workers",
+    "Larger firms buy materials in bulk at a discount",
+    "Managers find it harder to coordinate a larger firm",
+    "Buyers pay more for the product of a larger firm"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On the falling part of LRATC the firm has economies of scale: specialized machines and workers and bulk discounts lower cost per unit as the firm grows.",
+    "options": [
+     "That is diminishing marginal returns, a short-run idea; in the long run no input is fixed.",
+     "Right: bulk buying is a source of economies of scale.",
+     "That raises average cost: a source of diseconomies of scale.",
+     "LRATC is a cost curve; buyers' prices do not shape it."
+    ]
+   },
+   "stimulus": "long-run-costs-s2"
+  },
+  {
+   "id": "mic-long-run-costs-6",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the graph, what does the part of LRATC to the right of its lowest point show?",
+   "options": [
+    "Economies of scale: average cost falls as the firm grows",
+    "Diseconomies of scale",
+    "Diminishing marginal returns from a fixed plant",
+    "Minimum efficient scale, the lowest average cost"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Past its lowest point, LRATC rises: a larger firm has a higher cost per unit, often from the strain of coordinating many workers and sites.",
+    "options": [
+     "Economies of scale are on the falling part, to the left.",
+     "Right: LRATC rising with output is diseconomies of scale.",
+     "That is a short-run idea; LRATC lets every input change.",
+     "Minimum efficient scale is at the bottom of the curve, not to its right."
+    ]
+   },
+   "stimulus": "long-run-costs-s2"
+  },
+  {
+   "id": "mic-long-run-costs-7",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the graph, a firm is producing on the downward-sloping part of LRATC. If it builds a larger plant and produces more, its long-run average total cost will",
+   "options": [
+    "rise, because a larger plant costs more in total",
+    "stay the same, because each input grew by the same share",
+    "rise, because diminishing marginal returns set in",
+    "fall, as it moves down the curve"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Left of minimum efficient scale, growing lowers long-run average total cost. That is the cost advantage of size in industries with large economies of scale.",
+    "options": [
+     "Total cost rises, but it is spread over even more units, so the average falls here.",
+     "Equal growth in inputs can still lower cost per unit when there are economies of scale.",
+     "Diminishing returns need a fixed input; in the long run none is fixed.",
+     "Right: on the falling part, more output means a lower average cost."
+    ]
+   },
+   "stimulus": "long-run-costs-s2"
+  },
+  {
+   "id": "mic-long-run-costs-8",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, the first doubling of inputs shows",
+   "options": [
+    "increasing returns to scale, because output more than doubles",
+    "decreasing returns to scale, because output rises by less than inputs",
+    "constant returns to scale, because each input doubled",
+    "diminishing marginal returns, because one input is fixed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Returns to scale compare output growth with input growth when every input changes. Output going from 1,000 to 2,500 (2.5 times) when inputs double is increasing returns to scale.",
+    "options": [
+     "Right: output rises 2.5 times when every input doubles.",
+     "Output rose by more than double (1,000 to 2,500), not less.",
+     "Constant returns would mean output exactly doubles, to 2,000.",
+     "No input is fixed here; every input doubled."
+    ]
+   },
+   "stimulus": "long-run-costs-s3"
+  },
+  {
+   "id": "mic-long-run-costs-9",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, input prices do not change. What happens to the firm's long-run average total cost after the first doubling?",
+   "options": [
+    "It rises: the firm has diseconomies of scale",
+    "It stays the same: total cost doubled",
+    "It falls: the firm has economies of scale",
+    "It falls: the firm has diminishing marginal returns"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With input prices fixed, doubling every input doubles total cost. Output rises 2.5 times, so cost per unit falls to $\\frac{2}{2.5} = 0.8$ of what it was: economies of scale.",
+    "options": [
+     "Cost per panel rises only if output grows by less than the inputs.",
+     "Total cost doubled, but output more than doubled, so the average fell.",
+     "Right: costs double but output rises 2.5 times, so cost per panel falls.",
+     "Diminishing marginal returns would raise costs, and they need a fixed input."
+    ]
+   },
+   "stimulus": "long-run-costs-s3"
+  },
+  {
+   "id": "mic-long-run-costs-10",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, the second doubling raises output from 4,000 to 7,000 panels. Which describes the firm at this larger size?",
+   "options": [
+    "Increasing returns to scale and economies of scale",
+    "Constant returns to scale and minimum efficient scale",
+    "Decreasing returns to scale and diseconomies of scale",
+    "Diminishing marginal returns from its fixed factory"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Inputs (and total cost) double, but output grows only 1.75 times, so cost per panel rises: decreasing returns to scale bring diseconomies of scale.",
+    "options": [
+     "Output rises 1.75 times, less than the doubling of inputs.",
+     "Constant returns would need output to reach exactly 8,000.",
+     "Right: output grows by less than double, so cost per panel rises.",
+     "The factory doubled too: no input is fixed."
+    ]
+   },
+   "stimulus": "long-run-costs-s3"
+  },
+  {
+   "id": "mic-long-run-costs-11",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the long-run average total cost curve?",
+   "options": [
+    "The lowest average cost of each output, any plant size",
+    "The average cost of each output with the plant held fixed",
+    "The extra cost of one more unit with a fixed plant",
+    "The total cost of the largest plant the firm could build"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the long run every input can change, so for each output the firm chooses the plant size with the lowest cost. LRATC traces those lowest average costs.",
+    "options": [
+     "Right: LRATC lets the firm pick the best plant size for each output.",
+     "That is a short-run ATC curve.",
+     "That is short-run marginal cost.",
+     "LRATC is an average for each output, not one plant's total."
+    ]
+   }
+  },
+  {
+   "id": "mic-long-run-costs-12",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the curve of a firm's long-run cost graph.",
+   "why": {
+    "correct": "Cost goes on the vertical axis and quantity of output on the horizontal axis; the U-shaped curve is LRATC, long-run average total cost."
+   },
+   "graph": {
+    "kind": "costs",
+    "set": "long",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-long-run-costs-13",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the firm's minimum efficient scale on its long-run average total cost curve.",
+   "why": {
+    "correct": "Minimum efficient scale is where LRATC first reaches its lowest level: the bottom of the curve."
+   },
+   "graph": {
+    "kind": "costs",
+    "set": "long",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "M",
+    "key": {
+     "point": {
+      "at": "mes"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-long-run-costs-14",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How do diminishing marginal returns differ from diseconomies of scale?",
+   "options": [
+    "They are two names for the same rise in cost",
+    "Diminishing returns happen in the long run; diseconomies in the short run",
+    "Diseconomies of scale come from rising input prices",
+    "One needs a fixed input; the other needs growth in each input"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Diminishing marginal returns: in the short run, more of one input added to a fixed input. Diseconomies of scale: in the long run, all inputs grow and cost per unit rises, often from coordination problems.",
+    "options": [
+     "Both raise costs, but they have different causes and time frames.",
+     "It is the other way round.",
+     "Diseconomies come from the strain of size, with input prices unchanged.",
+     "Right: one is a short-run idea, the other a long-run idea."
+    ]
+   }
+  },
+  {
+   "id": "mic-long-run-costs-15",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "In the long run, a bakery chain can make 1,500 loaves a day at a lowest total cost of \\$9,000. What is its long-run average total cost per loaf, in dollars?",
+   "why": {
+    "correct": "LRATC = long-run total cost divided by output = $9{,}000 \\div 1{,}500 = 6$ dollars a loaf."
+   },
+   "numeric": {
+    "from": {
+     "fn": "atc",
+     "args": [
+      9000,
+      1500
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1500,
+        9000
+       ]
+      },
+      "why": "That divides output by cost. Average cost is cost divided by output: 9,000 / 1,500."
+     },
+     {
+      "value": 9000,
+      "why": "That is long-run total cost. Divide it by the 1,500 loaves."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-long-run-costs-16",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are likely causes of diseconomies of scale? Select all that apply.",
+   "options": [
+    "Messages pass through many layers of managers and get delayed",
+    "The firm spreads its design costs over more units",
+    "The firm gets a discount for buying steel in large amounts",
+    "The firm can afford a specialized machine that speeds up production"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Diseconomies of scale come from the problems of coordinating a very large organization; bulk discounts, specialized equipment and spreading costs over more units are economies of scale.",
+    "options": [
+     "Yes: coordination gets harder as a firm grows.",
+     "No: spreading fixed costs over more output lowers cost per unit, an economy of scale.",
+     "No: bulk discounts lower cost per unit, an economy of scale.",
+     "No: specialized capital is an economy of scale."
+    ]
+   }
+  },
+  {
+   "id": "mic-long-run-costs-17",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In one industry, minimum efficient scale is half of the quantity the whole market buys. Which market is most likely?",
+   "options": [
+    "A market with hundreds of small firms",
+    "A market with a few large firms",
+    "A market where firm size does not affect cost",
+    "A market where each firm makes one unit"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When minimum efficient scale is large compared with total demand, only a few firms can produce at the lowest cost, so the industry tends to have few, large firms.",
+    "options": [
+     "Small firms would be far up the falling part of LRATC with high costs.",
+     "Right: at most two firms can each reach minimum efficient scale.",
+     "This industry has large economies of scale, so size matters a great deal.",
+     "Tiny firms would have far higher average costs."
+    ]
+   }
+  },
+  {
+   "id": "mic-long-run-costs-18",
+   "unit": "unit-3",
+   "topic": "long-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "A firm grows from very small to very large, with input prices unchanged. Put the stages of its LRATC in order.",
+   "options": [
+    "Economies of scale: LRATC falls",
+    "Minimum efficient scale: LRATC first reaches its lowest level",
+    "Constant returns to scale: LRATC stays flat",
+    "Diseconomies of scale: LRATC rises"
+   ],
+   "why": {
+    "correct": "Growth first lowers cost per unit, then cost per unit levels off at its lowest value starting at minimum efficient scale, and finally rises as size becomes hard to manage."
+   }
+  }
+ ]
+}

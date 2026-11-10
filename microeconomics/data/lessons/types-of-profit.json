@@ -1,0 +1,72 @@
+{
+ "topic": "types-of-profit",
+ "hook": "A baker leaves a \\$45,000 job to open her own shop. At year end her accountant says the shop made \\$60,000 in profit, and she smiles. An economist asks a harder question: after paying yourself what you gave up, how much is left? That second number, economic profit, is the one that decides whether firms come and go.",
+ "prereq": [
+  {
+   "q": "The salary a business owner gives up to run her own shop is",
+   "options": [
+    "an implicit cost",
+    "an explicit cost",
+    "a sunk cost",
+    "a variable cost"
+   ],
+   "correct": 0,
+   "why": "No money is paid, but she gives up that income: an implicit cost.",
+   "review": "cost-benefit"
+  },
+  {
+   "q": "Total revenue is",
+   "options": [
+    "price times quantity sold",
+    "price minus cost",
+    "quantity minus cost",
+    "the cost of one more unit"
+   ],
+   "correct": 0,
+   "why": "TR = P x Q.",
+   "review": "price-elasticity-demand"
+  }
+ ],
+ "figure": {
+  "figure": "types-of-profit-bars",
+  "caption": "The same \\$120,000 of revenue. An accountant subtracts explicit costs (\\$80,000) and finds \\$40,000 of accounting profit; an economist also subtracts implicit costs (\\$30,000) and finds \\$10,000 of economic profit. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "The owner uses her own time and savings in the business",
+   "effect": "she gives up the salary and interest they could earn elsewhere: implicit costs"
+  },
+  {
+   "cause": "Economic profit subtracts those implicit costs as well as explicit costs",
+   "effect": "economic profit is smaller than accounting profit"
+  },
+  {
+   "cause": "Economic profit is positive",
+   "effect": "the business pays more than the owner's best alternative"
+  },
+  {
+   "cause": "Resources earn more in this industry than elsewhere",
+   "effect": "other entrepreneurs are drawn to it"
+  }
+ ],
+ "ideas": [
+  "<b>Accounting profit</b> = total revenue - explicit costs.",
+  "<b>Economic profit</b> = total revenue - explicit costs - implicit costs = accounting profit - implicit costs. Below zero it is an <b>economic loss</b>.",
+  "<b>Normal profit</b> is zero economic profit: revenue covers every opportunity cost, so the owner does as well as in her next-best choice.",
+  "Economic profit, not accounting profit, signals whether resources earn more in an industry than elsewhere."
+ ],
+ "misconception": {
+  "wrong": "A firm with zero economic profit is making no money and should close.",
+  "right": "Zero economic profit is a normal profit: the firm has an accounting profit equal to its implicit costs, so the owner earns exactly what her best alternative would pay."
+ },
+ "check": [
+  "mic-types-of-profit-9",
+  "mic-types-of-profit-1",
+  "mic-types-of-profit-2",
+  "mic-types-of-profit-3",
+  "mic-types-of-profit-4",
+  "mic-types-of-profit-11",
+  "mic-types-of-profit-16"
+ ],
+ "summary": "Accounting profit subtracts only explicit costs from total revenue. Economic profit also subtracts implicit costs, the income the owner gives up by using her own time, savings and property in the business, so it is never larger than accounting profit. Zero economic profit is a normal profit: the owner earns what she could earn elsewhere. Positive economic profit means resources earn more here than in their next-best use, which draws in new firms; an economic loss means they earn less."
+}

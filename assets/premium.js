@@ -562,6 +562,51 @@
         ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
+    apmicro: {
+      name: 'AP® Microeconomics',
+      // On sale since 2026-11-10 (docs/apmicro-spec.md section 9): Polar product
+      // micro-2027, Worker POLAR_PRODUCTS set; the lead applies the migration.
+      dailyFree: 15,
+      // The free tier (docs/apmicro-spec.md decision 6): Unit 1, Topics 2.1 to
+      // 2.4 and every "Graph skills you need" lesson. Keep in step with
+      // FREE_UNITS and FREE_TOPICS in scripts/lib/apmicro-build.mjs.
+      freeChapters: ['unit-1'],
+      compare: 'Fiveable is $79 a year (checked November 2026).',
+      passes: [
+        { id: 'micro-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The graphs and formulas you must know, explained, and the cram-kit study plan outline',
+        'Every lesson in Unit 1, the first four lessons of Unit 2, and every "Graph skills you need" lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Three trainers: the graph studio, the elasticity lab and the game theory lab',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: the surplus lab, the cost lab, firm and market, the factor lab and the externality lab',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and skill',
+      ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['The graphs and formulas to know, explained', 'yes', 'yes'],
+        ['Interactive lessons', 'Unit 1, four in Unit 2, and graph skills lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and skill'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
+    },
     apprecalc: {
       name: 'AP® Precalculus',
       // On sale since the owner checklist (docs/apprecalc-spec.md section 9):
@@ -623,6 +668,7 @@
     { key: 'apprecalc', path: '/precalculus/' },
     { key: 'apcalcbc', path: '/calculus-bc/' },
     { key: 'apmacro', path: '/macroeconomics/' },
+    { key: 'apmicro', path: '/microeconomics/' },
   ];
   // courses:end
 

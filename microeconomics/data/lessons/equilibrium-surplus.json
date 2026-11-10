@@ -1,0 +1,79 @@
+{
+ "topic": "equilibrium-surplus",
+ "hook": "You were ready to pay \\$80 for a concert ticket and got it for \\$50: you walked away \\$30 better off. The band would have played for less than it was paid, and it is better off too. Markets create these gains on both sides, and at the market equilibrium the total gain is as large as it can be.",
+ "prereq": [
+  {
+   "q": "The area of a triangle is",
+   "options": [
+    "one half times base times height",
+    "base times height",
+    "base plus height",
+    "two times base times height"
+   ],
+   "correct": 0,
+   "why": "A triangle is half of a rectangle with the same base and height.",
+   "review": "curves-crossing"
+  },
+  {
+   "q": "A demand curve shows, for each quantity, the",
+   "options": [
+    "most buyers are willing to pay for that unit",
+    "least sellers will accept",
+    "price the government sets",
+    "total spending of buyers"
+   ],
+   "correct": 0,
+   "why": "Read up from a quantity to demand: the most a buyer will pay for that unit.",
+   "review": "demand"
+  },
+  {
+   "q": "A supply curve slopes up because",
+   "options": [
+    "sellers offer more only at higher prices",
+    "buyers want more at higher prices",
+    "the number of sellers falls",
+    "prices are fixed"
+   ],
+   "correct": 0,
+   "why": "A higher price covers the rising cost of extra output.",
+   "review": "supply"
+  }
+ ],
+ "figure": {
+  "figure": "equilibrium-surplus-areas",
+  "caption": "At equilibrium E (\\$4, 60 bars), consumer surplus is \\$180 and producer surplus \\$90. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A unit is traded where demand lies above supply",
+   "effect": "it is worth more to the buyer than it costs the seller to supply"
+  },
+  {
+   "cause": "Trading it adds that gap to total surplus",
+   "effect": "buyers and sellers keep trading units up to where the curves cross"
+  },
+  {
+   "cause": "At the equilibrium quantity every such unit is traded and no unit worth less is",
+   "effect": "total surplus (consumer plus producer surplus) is as large as it can be"
+  }
+ ],
+ "ideas": [
+  "<b>Market equilibrium</b>: the price where quantity demanded equals quantity supplied, where the curves cross. Mark PE and QE on the axes.",
+  "<b>Consumer surplus</b> (CS): what buyers would pay minus what they pay. The area under demand, above the price, out to the quantity traded.",
+  "<b>Producer surplus</b> (PS): the price minus the least sellers would accept. The area above supply, below the price, out to the quantity traded.",
+  "<b>Total surplus</b> = CS + PS. In a competitive market with no other problems, it is largest at equilibrium.",
+  "For straight lines, each surplus is a triangle: $\\tfrac{1}{2} \\times$ base $\\times$ height."
+ ],
+ "misconception": {
+  "wrong": "Consumer surplus is the money buyers spend, the rectangle of price times quantity.",
+  "right": "Spending (price times quantity) is not a gain to buyers. Consumer surplus is the gap between what buyers would pay and what they do pay: the triangle under demand and above the price."
+ },
+ "check": [
+  "mic-equilibrium-surplus-1",
+  "mic-equilibrium-surplus-2",
+  "mic-equilibrium-surplus-5",
+  "mic-equilibrium-surplus-6",
+  "mic-equilibrium-surplus-8"
+ ],
+ "summary": "A market is in equilibrium at the price where quantity demanded equals quantity supplied. Consumer surplus is the gain to buyers, the area under demand above the price; producer surplus is the gain to sellers, the area above supply below the price; both run out to the quantity traded. Their sum, total surplus, is largest at the competitive equilibrium, and prices act as signals that move resources to where buyers value them most."
+}

@@ -1,0 +1,14 @@
+{
+ "long-run-atc": {
+  "def": "Long-run average total cost (LRATC): the lowest average total cost of producing each output when the firm can change every input, including its plant size."
+ },
+ "economies-of-scale": {
+  "def": "Economies of scale: long-run average total cost falls as the firm grows. Constant returns to scale: it stays flat. Diseconomies of scale: it rises as the firm grows."
+ },
+ "returns-to-scale": {
+  "def": "How output responds when every input grows by the same share. If inputs double and output more than doubles, increasing returns to scale; exactly doubles, constant; less than doubles, decreasing returns to scale."
+ },
+ "mes": {
+  "def": "Minimum efficient scale: the smallest output at which long-run average total cost reaches its lowest level."
+ }
+}

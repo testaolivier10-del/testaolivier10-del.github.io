@@ -1,0 +1,22 @@
+{
+ "production-possibilities-points": {
+  "file": "figures/production-possibilities-points.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bowed-out production possibilities curve for a farm's corn and beans through points A to E, with point U inside (idle resources), point Z outside (unattainable now) and a dashed outward-shifted curve PPC2 (growth)."
+ },
+ "production-possibilities-shapes": {
+  "file": "figures/production-possibilities-shapes.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three production possibilities curves side by side: bowed out (increasing opportunity cost), a straight line (constant opportunity cost) and, as a labeled contrast, bowed in (decreasing opportunity cost)."
+ }
+}

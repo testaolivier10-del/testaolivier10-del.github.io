@@ -1,0 +1,242 @@
+{
+ "id": "frq-trade-tariff-long",
+ "type": "long",
+ "points": 10,
+ "title": "A small country opens its lentil market: comparative advantage, the gain from trade, imports and a tariff",
+ "units": [
+  "unit-1",
+  "unit-2"
+ ],
+ "topics": [
+  "comparative-advantage",
+  "trade-policy"
+ ],
+ "practices": [
+  "1.C",
+  "4.A",
+  "4.B",
+  "3.C",
+  "2.B"
+ ],
+ "scenario": "Castrel and Ostavia are invented countries. In one day, a worker in Castrel can produce either 4 tons of lentils or 8 bolts of cloth, and a worker in Ostavia can produce either 6 tons of lentils or 6 bolts of cloth. Castrel is a small country: its trade does not change the world price of lentils. In Castrel, the domestic market for lentils is competitive, with straight-line demand and supply curves, and without trade the price is \\$7 a ton.",
+ "stimulus": {
+  "title": "Lentils in Castrel",
+  "invented": true,
+  "table": {
+   "caption": "Tons of lentils demanded and supplied per day in Castrel at each price (invented data for practice)",
+   "cols": [
+    "Price per ton",
+    "Quantity demanded",
+    "Quantity supplied"
+   ],
+   "rows": [
+    [
+     "\\$4",
+     "80",
+     "20"
+    ],
+    [
+     "\\$5",
+     "70",
+     "30"
+    ],
+    [
+     "\\$6",
+     "60",
+     "40"
+    ],
+    [
+     "\\$7",
+     "50",
+     "50"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the opportunity cost of 1 ton of lentils in each country, and <b>identify</b> which country has the comparative advantage in lentils.",
+   "rubric": [
+    {
+     "point": "Opportunity cost of 1 ton of lentils: 2 bolts of cloth in Castrel (8 ÷ 4) and 1 bolt of cloth in Ostavia (6 ÷ 6)",
+     "accept": [
+      "Castrel 2 cloth, Ostavia 1 cloth"
+     ]
+    },
+    {
+     "point": "Ostavia has the comparative advantage in lentils, because its opportunity cost is lower",
+     "accept": [
+      "Ostavia, lower opportunity cost"
+     ]
+    }
+   ],
+   "sample": "In Castrel, 1 ton of lentils costs $8 \\div 4 = 2$ bolts of cloth; in Ostavia it costs $6 \\div 6 = 1$ bolt. Ostavia gives up less cloth for each ton, so Ostavia has the comparative advantage in lentils, and Castrel will tend to import lentils."
+  },
+  {
+   "label": "B",
+   "points": 2,
+   "type": "graph",
+   "prompt": "Castrel opens to trade, and the world price of lentils is \\$4 a ton. <b>Draw</b> a correctly labeled graph of Castrel's lentil market and <b>show</b> the world price.",
+   "graph": {
+    "kind": "sd-micro",
+    "line": {
+     "id": "PW"
+    },
+    "do": [
+     "label",
+     "line"
+    ],
+    "key": {
+     "line": {
+      "side": "below"
+     }
+    },
+    "slips": {
+     "PW": "Castrel's own price is \\$7; a world price of \\$4 sits below the domestic equilibrium."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: price and quantity axes, downward-sloping domestic demand and upward-sloping domestic supply",
+     "accept": [
+      "P and Q axes with D and S labeled"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "A horizontal world price line (PW) below the domestic equilibrium price",
+     "accept": [
+      "PW drawn below PE"
+     ],
+     "auto": "line"
+    }
+   ],
+   "sample": "Vertical axis: Price; horizontal axis: Quantity of lentils. Domestic demand D slopes down and domestic supply S slopes up, crossing at \\$7 and 50 tons. A horizontal line labeled PW is drawn at \\$4, below that crossing."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the area that represents Castrel's gain in total surplus from opening to trade at the world price.",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "world",
+     "at": 3
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "gain"
+    },
+    "slips": {
+     "cs": "That is all of consumer surplus at the world price. The gain from trade is only the triangle that did not exist before trade.",
+     "cs-before": "That surplus existed before trade. The gain is the triangle between demand and supply below the domestic price, out to the quantity demanded at the world price."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades the triangle between demand and supply below the no-trade price and above the world price, from the domestic quantity supplied to the quantity demanded at the world price",
+     "accept": [
+      "the triangle between D, S and PW to the right of domestic output"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "The gain from trade is the triangle bounded by the demand curve, the supply curve and the world price line, between the quantity Castrel's farms supply at the world price and the quantity demanded at the world price. Part of producer surplus becomes consumer surplus, but this triangle is new surplus."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "Using the table, <b>calculate</b> Castrel's lentil imports per day at the world price. Show your work.",
+   "rubric": [
+    {
+     "point": "60 tons, with work: 80 demanded minus 20 supplied at \\$4",
+     "accept": [
+      "$80 - 20 = 60$"
+     ]
+    }
+   ],
+   "sample": "At \\$4, Castrel demands 80 tons and its farms supply 20, so imports are $80 - 20 = 60$ tons a day."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "Castrel then places a tariff of \\$1 a ton on imported lentils, so lentils sell in Castrel for \\$5. <b>Calculate</b> the tariff revenue per day. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$40, with work: \\$1 times the imports after the tariff, 70 − 30 = 40 tons",
+     "accept": [
+      "$1 \\times (70 - 30) = 40$"
+     ]
+    }
+   ],
+   "sample": "At \\$5, imports are $70 - 30 = 40$ tons. Tariff revenue = $\\$1 \\times 40 = \\$40$ a day."
+  },
+  {
+   "label": "F",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the deadweight loss caused by the tariff.",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tariff",
+     "at": 3,
+     "amount": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "tariff-revenue": "That rectangle is the tariff revenue, collected by the government; the deadweight loss is the two triangles beside it."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades both triangles: between supply and the world price from the old to the new domestic output, and between demand and the world price from the new to the old quantity demanded",
+     "accept": [
+      "both deadweight loss triangles"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "Two triangles: one bounded by the supply curve and the world price line between the domestic output at PW and at PW + t, and one bounded by the demand curve and the world price line between the quantity demanded at PW + t and at PW."
+  },
+  {
+   "label": "G(i)",
+   "points": 1,
+   "prompt": "Using the table, <b>calculate</b> the deadweight loss caused by the \\$1 tariff. Show your work.",
+   "rubric": [
+    {
+     "point": "\\$10 a day, with work: two triangles of $\\frac{1}{2} \\times 1 \\times 10 = 5$ each (domestic output rises from 20 to 30 tons, and quantity demanded falls from 80 to 70 tons)",
+     "accept": [
+      "5 + 5 = 10",
+      "\\$10"
+     ]
+    }
+   ],
+   "sample": "The tariff raises the price by \\$1. Domestic output rises from 20 to 30 tons, giving a triangle of $\\frac{1}{2} \\times 1 \\times (30 - 20) = 5$ dollars, and quantity demanded falls from 80 to 70 tons, giving $\\frac{1}{2} \\times 1 \\times (80 - 70) = 5$ dollars. The deadweight loss is $5 + 5 = 10$ dollars a day."
+  },
+  {
+   "label": "G(ii)",
+   "points": 1,
+   "prompt": "<b>Explain</b> why Castrel's lentil farmers support the tariff even though it lowers total surplus in Castrel.",
+   "rubric": [
+    {
+     "point": "The tariff raises the price farmers receive and the quantity they sell (from \\$4 and 20 tons to \\$5 and 30 tons), so producer surplus rises, even though consumers lose more than farmers and the government gain",
+     "accept": [
+      "producer surplus rises because they sell more at a higher price"
+     ]
+    }
+   ],
+   "sample": "With the tariff, Castrel's farms sell 30 tons at \\$5 instead of 20 tons at \\$4, so their producer surplus rises. Consumers lose more than the farmers and the government gain together, which is why total surplus falls by the deadweight loss, but the farmers themselves are better off."
+  }
+ ]
+}

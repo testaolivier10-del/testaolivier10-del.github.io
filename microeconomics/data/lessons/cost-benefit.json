@@ -1,0 +1,71 @@
+{
+ "topic": "cost-benefit",
+ "hook": "Rosa can spend the summer running her own lawn-care business or keep her \\$4,000 job at a garden center. On paper the business takes in \\$6,500 and costs \\$1,600 for the mower, gas and flyers, so it looks like a \\$4,900 win. But that leaves out the paycheck she gives up. Count every cost, the ones she pays and the ones she gives up, and the decision looks much closer.",
+ "prereq": [
+  {
+   "q": "The opportunity cost of a choice is",
+   "options": [
+    "the value of the next-best alternative given up",
+    "the money you pay for it",
+    "the sum of every alternative",
+    "zero when nothing is paid"
+   ],
+   "correct": 0,
+   "why": "Only the next-best alternative counts.",
+   "review": "scarcity"
+  },
+  {
+   "q": "A firm uses its own building instead of renting it out for \\$500 a month. Using it",
+   "options": [
+    "gives up \\$500 a month",
+    "costs nothing, because the firm owns it",
+    "costs the building's purchase price every month",
+    "earns the firm \\$500"
+   ],
+   "correct": 0,
+   "why": "The rent it could have earned is the next-best use.",
+   "review": "scarcity"
+  }
+ ],
+ "figure": {
+  "figure": "cost-benefit-net",
+  "caption": "Total benefit and the cost of 0 to 5 guitar lessons a month at \\$25 a lesson. Net benefit is largest, \\$45, at 3 lessons, even though total benefit keeps rising. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "You list every cost of a choice",
+   "effect": "you include explicit costs (money paid) and implicit costs (the value of what you give up)"
+  },
+  {
+   "cause": "You add explicit and implicit costs",
+   "effect": "you get the full economic cost of the choice"
+  },
+  {
+   "cause": "You subtract the economic cost from the total benefit",
+   "effect": "you get the net benefit"
+  },
+  {
+   "cause": "You compare the net benefit of each option",
+   "effect": "you choose the option with the largest net benefit, not the largest total benefit"
+  }
+ ],
+ "ideas": [
+  "<b>Explicit costs</b> are money payments. <b>Implicit costs</b> are the value of resources you already own or time you give up, with no money paid.",
+  "Economic cost = explicit costs + implicit costs. Leaving out implicit costs makes a choice look better than it is.",
+  "<b>Total benefit</b> is what a choice gives you: for a consumer, the satisfaction of using a good; for a firm, the money it takes in from sales (its revenue).",
+  "<b>Net benefit</b> = total benefit - total cost. The best choice has the largest net benefit.",
+  "Some choices are all or nothing (compare totals); others are about how much (the next topic looks at one more unit at a time)."
+ ],
+ "misconception": {
+  "wrong": "The best number of guitar lessons is 5, because 5 lessons give the most total benefit.",
+  "right": "The fifth lesson adds more cost than benefit. Net benefit, total benefit minus total cost, is largest at 3 lessons (\\$120 - \\$75 = \\$45)."
+ },
+ "check": [
+  "mic-cost-benefit-1",
+  "mic-cost-benefit-2",
+  "mic-cost-benefit-4",
+  "mic-cost-benefit-7",
+  "mic-cost-benefit-13"
+ ],
+ "summary": "A choice's total cost includes explicit costs, the money you pay, and implicit costs, the value of your own time and resources that you give up. Its total benefit is the satisfaction it gives a consumer or the revenue it brings a firm. Net benefit is total benefit minus total cost, and the best choice is the one with the largest net benefit. Ignoring implicit costs, or chasing the largest total benefit instead of the largest net benefit, leads to the wrong choice."
+}

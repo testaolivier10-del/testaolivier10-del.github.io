@@ -1,0 +1,12 @@
+{
+ "inequality-lorenz": {
+  "file": "figures/inequality-lorenz.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A Lorenz curve graph with Cumulative percentage of households on the horizontal axis and Cumulative percentage of income on the vertical axis, both from 0 to 100 percent. The diagonal is the line of equality. Country A's curve passes through 8, 22, 40 and 62 percent of income at 20, 40, 60 and 80 percent of households. Country B's curve lies below it, through 4, 12, 26 and 50 percent, so income in Country B is less equally shared. The shaded area between the line of equality and Country B's curve is the area the Gini coefficient compares with the whole triangle under the line. Invented data for practice."
+ }
+}

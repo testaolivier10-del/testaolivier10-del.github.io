@@ -1,0 +1,759 @@
+{
+ "stimuli": {
+  "externalities-s1": {
+   "kind": "graph",
+   "title": "A factory upriver: a negative production externality graph",
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "neg-prod"
+    },
+    "letters": true
+   }
+  },
+  "externalities-s2": {
+   "kind": "data",
+   "title": "The Brasswick paper mill market",
+   "invented": true,
+   "table": {
+    "caption": "An invented market for paper in which each ton made releases fumes that cost nearby residents \\$4 per ton (invented data for practice)",
+    "cols": [
+     "Quantity (tons per day)",
+     "MPB = MSB (dollars per ton)",
+     "MPC (dollars per ton)",
+     "MSC (dollars per ton)"
+    ],
+    "rows": [
+     [
+      "30",
+      "14",
+      "6",
+      "10"
+     ],
+     [
+      "40",
+      "12",
+      "8",
+      "12"
+     ],
+     [
+      "50",
+      "10",
+      "10",
+      "14"
+     ],
+     [
+      "60",
+      "8",
+      "12",
+      "16"
+     ]
+    ]
+   }
+  },
+  "externalities-s3": {
+   "kind": "text",
+   "title": "Four situations in an invented city",
+   "text": "<p>(1) A cement plant's dust settles on cars nearby. (2) Students who get a flu shot also make their classmates less likely to fall ill. (3) A gardener's flower beds, planted for her own business, make the whole street nicer to walk along. (4) Late-night fireworks bought for private parties keep neighbors awake.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-externalities-1",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "A factory's production pollutes a river used by people downstream. Label the axes and every curve of the externality graph.",
+   "why": {
+    "correct": "Price on the vertical axis, Quantity on the horizontal axis. Demand is D = MPB = MSB (no benefit falls on others). Supply is S = MPC, the firms' own cost. MSC lies above S by the external cost per unit."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "neg-prod"
+    },
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-externalities-2",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "On this negative production externality graph, mark the quantity and price the unregulated market produces.",
+   "why": {
+    "correct": "Buyers and sellers look only at private benefit and private cost, so the market settles where MPB, the demand curve, meets MPC, the supply curve."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "neg-prod"
+    },
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "market"
+     }
+    },
+    "slips": {
+     "MSC": "MSC includes the pollution cost, which the sellers do not pay; the market ignores it."
+    }
+   }
+  },
+  {
+   "id": "mic-externalities-3",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "On this negative production externality graph, mark the socially efficient quantity and price.",
+   "why": {
+    "correct": "Efficiency counts every cost: the efficient point is where MSB, here the demand curve, meets MSC, at a smaller quantity and a higher price than the market's."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "neg-prod"
+    },
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "efficient"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-externalities-4",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the deadweight loss caused by the negative production externality.",
+   "why": {
+    "correct": "Units between the efficient quantity and the market quantity cost society more (MSC) than they are worth (MSB). The deadweight loss is the triangle between MSC and D from the efficient quantity to the market quantity, pointing toward the efficient quantity (region dwl)."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "neg-prod"
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "ext-cost": "That is the total external cost of all the units made. Only the part beyond the efficient quantity is deadweight loss."
+    }
+   }
+  },
+  {
+   "id": "mic-externalities-5",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The government places a per-unit tax on the polluting firms equal to the external cost per unit. Shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "The tax raises each firm's marginal cost by the external cost, so supply shifts up (left) onto MSC. The new equilibrium is the efficient one: a higher price and a smaller quantity."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "neg-prod"
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left",
+       "steps": 2
+      }
+     ],
+     "because": "a per-unit tax equal to the external cost",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    },
+    "slips": {
+     "D": "The tax is paid by the sellers per unit, so it raises their cost: supply shifts, not demand."
+    }
+   }
+  },
+  {
+   "id": "mic-externalities-6",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Getting a flu shot also protects the people around you. On this positive consumption externality graph, mark the socially efficient quantity and price.",
+   "why": {
+    "correct": "MSB lies above demand (MPB) by the external benefit. The efficient point is where MSB meets MSC, here the supply curve: a larger quantity than the market makes."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "pos-cons"
+    },
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "efficient"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-externalities-7",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The government gives buyers of flu shots a per-unit subsidy equal to the external benefit. Shift the right curve and mark the new equilibrium.",
+   "why": {
+    "correct": "A subsidy to buyers raises what each buyer gains from a shot, so demand shifts right onto MSB. The new equilibrium is the efficient quantity, larger than before, at a higher price received by sellers."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "pos-cons"
+    },
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right",
+       "steps": 2
+      }
+     ],
+     "because": "a per-unit subsidy to buyers equal to the external benefit",
+     "outcome": {
+      "price": "up",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "S": "The subsidy goes to buyers here, so it raises their willingness to pay: demand shifts."
+    }
+   }
+  },
+  {
+   "id": "mic-externalities-8",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "A beekeeper's bees pollinate nearby orchards for free: a positive production externality. Shade the deadweight loss.",
+   "why": {
+    "correct": "MSC lies below S (MPC) by the external benefit, so the market makes less than the efficient quantity, where D meets MSC. The deadweight loss is the triangle between D and MSC from the market quantity to the efficient quantity (region dwl)."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "pos-prod"
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    }
+   }
+  },
+  {
+   "id": "mic-externalities-9",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "In the graph, which area is the deadweight loss?",
+   "stimulus": "externalities-s1",
+   "options": [
+    "Areas a, b and c",
+    "Area c",
+    "Area a",
+    "Area b"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Deadweight loss counts only the units that should not be made, and only the amount by which their MSC exceeds their MSB.",
+    "options": [
+     "Together these are the total external cost of every unit the market makes.",
+     "Area c lies between D and S beyond the efficient quantity; it is part of what buyers and sellers gain on those units.",
+     "Right: the triangle between MSC and D from the efficient quantity to the market quantity.",
+     "Area b is the external cost of units that are worth making."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-10",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "In the graph, which area is the total external cost of the quantity the market produces?",
+   "stimulus": "externalities-s1",
+   "options": [
+    "Areas a, b and c",
+    "Area a",
+    "Areas b and c",
+    "Area b"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The external cost per unit is the vertical gap between MSC and MPC. Summed over every unit made, it is the whole band out to the market quantity.",
+    "options": [
+     "Right: the band between MSC and S from zero to the market quantity.",
+     "Area a is the deadweight loss only.",
+     "That leaves out area a, which is also between MSC and S.",
+     "That is the external cost of the efficient quantity only."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-11",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the graph, how do the market quantity and the efficient quantity compare, and why?",
+   "stimulus": "externalities-s1",
+   "options": [
+    "The market makes less, because pollution lowers demand",
+    "They are equal, because the market is competitive",
+    "The market makes more, because buyers value the good above its price",
+    "The market makes more, because firms ignore the external cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With a negative externality, MSC > MPC, so the market overproduces and charges too low a price.",
+    "options": [
+     "Demand is unchanged; the extra cost falls on people outside the market.",
+     "Competition reaches MSB = MSC only when sellers bear every cost.",
+     "The overproduction comes from the cost side, not from buyers.",
+     "Right: they produce where MPB = MPC, beyond where MSB = MSC."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-12",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Use the table. What are the market quantity and the socially efficient quantity of paper?",
+   "stimulus": "externalities-s2",
+   "options": [
+    "Market 40 tons; efficient 50 tons",
+    "Market 50 tons; efficient 40 tons",
+    "Market 50 tons; efficient 50 tons",
+    "Market 60 tons; efficient 40 tons"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The market uses private curves (MPB = MPC); efficiency uses social curves (MSB = MSC).",
+    "options": [
+     "The market ignores the fumes, so it makes more, not less.",
+     "Right: MPB = MPC at 50 (\\$10), and MSB = MSC at 40 (\\$12).",
+     "At 50 tons MSC (\\$14) is above MSB (\\$10).",
+     "At 60 tons MPC (\\$12) is above MPB (\\$8), so the market stops sooner."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-13",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What per-unit tax on paper would lead the market to the efficient quantity, in dollars per ton?",
+   "stimulus": "externalities-s2",
+   "why": {
+    "correct": "Set the tax equal to the external cost per unit at the efficient quantity: MSC - MPC at 40 tons = \\$12 - \\$8 = \\$4 per ton. Firms then face the full social cost."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      12,
+      8
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "\\$12 is the whole marginal social cost at 40 tons. The tax should add only the part firms ignore: \\$12 - \\$8."
+     },
+     {
+      "value": 8,
+      "why": "\\$8 is the firms' own marginal cost at 40 tons. The tax equals the gap between MSC and MPC."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-14",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. Assume the curves are straight lines between the rows. What is the deadweight loss at the market quantity, in dollars per day?",
+   "stimulus": "externalities-s2",
+   "why": {
+    "correct": "Between 40 and 50 tons, MSC is above MSB. At 50 tons the gap is \\$14 - \\$10 = \\$4, and at 40 tons it is zero. DWL = ½ × (50 - 40) × \\$4 = \\$20."
+   },
+   "numeric": {
+    "from": {
+     "fn": "dwl",
+     "args": [
+      10,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        10,
+        4
+       ]
+      },
+      "why": "\\$40 is the rectangle. The gap shrinks to zero at 40 tons, so the area is a triangle: take one half."
+     },
+     {
+      "from": {
+       "fn": "dwl",
+       "args": [
+        50,
+        4
+       ]
+      },
+      "why": "\\$100 uses all 50 tons as the base. Only the 10 tons beyond the efficient quantity are lost."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-15",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. With the corrective tax of \\$4 per ton, the market makes the efficient quantity. How much tax revenue does the government collect per day, in dollars?",
+   "stimulus": "externalities-s2",
+   "why": {
+    "correct": "Tax revenue = tax × quantity after the tax = \\$4 × 40 = \\$160."
+   },
+   "numeric": {
+    "from": {
+     "fn": "taxRevenue",
+     "args": [
+      4,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "taxRevenue",
+       "args": [
+        4,
+        50
+       ]
+      },
+      "why": "\\$200 uses the quantity before the tax. Revenue uses the quantity after the tax: 40 tons."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-16",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, which situation is a positive consumption externality?",
+   "stimulus": "externalities-s3",
+   "options": [
+    "(1) the cement dust",
+    "(2) the flu shots",
+    "(3) the flower beds",
+    "(4) the fireworks"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sort by two questions: does it help or harm others, and does it come from making the good or from using it?",
+    "options": [
+     "That is a cost from production: a negative production externality.",
+     "Right: using (consuming) the shot benefits other people.",
+     "That benefit comes from a firm's production: a positive production externality.",
+     "That is a cost from consumption: a negative consumption externality."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-17",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the scenario, for situation (4), how do MSB and MPB compare, and what does the market do?",
+   "stimulus": "externalities-s3",
+   "options": [
+    "MSB is above MPB, so the market buys too few fireworks",
+    "MSC is above MPC, so the market buys too many fireworks",
+    "MSB equals MPB, so the market is efficient",
+    "MSB is below MPB, so the market buys too many fireworks"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A negative consumption externality puts MSB below the demand curve (MPB), so the market quantity exceeds the efficient quantity.",
+    "options": [
+     "That would be a benefit to others, not a cost.",
+     "The cost comes from using the fireworks, not making them, so it is shown on the benefit side.",
+     "The neighbors bear a cost that buyers ignore.",
+     "Right: the neighbors' lost sleep is a cost of using the good, so society's benefit is less than the buyers'."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-18",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, which policy is matched to the cause of the market failure in situation (2)?",
+   "stimulus": "externalities-s3",
+   "options": [
+    "A per-unit subsidy to people who get the shot",
+    "A per-unit tax on flu shots",
+    "A lump-sum payment to clinics whatever number of shots they give",
+    "A price ceiling on flu shots below the market price"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The external benefit comes from consumption, so pay buyers per unit: the subsidy shifts demand to MSB.",
+    "options": [
+     "Right: it raises buyers' benefit to match MSB, so more people get the shot.",
+     "A tax would lower the quantity, but the market already makes too few.",
+     "A payment that does not depend on the number given does not change the quantity.",
+     "A binding ceiling cuts the quantity supplied, moving further from the efficient quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-19",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is an externality?",
+   "options": [
+    "A good that is sold to buyers in other countries",
+    "A cost that a firm pays to its outside suppliers",
+    "A cost or benefit of a deal that falls on people outside it",
+    "A benefit a buyer gets from a good she pays for"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Because the third party is not part of the deal, the market ignores the effect, and the quantity is not efficient.",
+    "options": [
+     "That is an export.",
+     "A cost the firm pays itself is a private cost.",
+     "Right: a third party gains or loses without paying or being paid.",
+     "That is a private benefit, already in demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-20",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A town charges a polluting factory a fixed fee of \\$50,000 a year, whatever it produces. What happens to the factory's output and to the deadweight loss?",
+   "options": [
+    "Output falls to the efficient quantity, removing the deadweight loss",
+    "Output rises, because the factory makes more to cover the fee",
+    "Output falls, but the deadweight loss rises",
+    "Neither changes, because the fee does not change marginal cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "To correct an externality, the policy must change the marginal decision: a per-unit tax equal to the external cost. A lump-sum tax changes profit, not output.",
+    "options": [
+     "Only a per-unit tax changes the cost of the last unit and so the quantity.",
+     "A fixed fee is paid whatever the output; it gives no reason to make more.",
+     "With MC unchanged, output does not change.",
+     "Right: a lump-sum tax raises total and average cost, but not MC, so output stays where it was."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-21",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Insulating a home also lowers neighbors' shared heating costs. At the efficient quantity of insulation, a unit's marginal social benefit is \\$13 and its marginal private benefit to the buyer is \\$10. What per-unit subsidy to buyers corrects the market, in dollars per unit?",
+   "why": {
+    "correct": "A corrective (Pigouvian) subsidy equals the external benefit per unit at the efficient quantity: MSB - MPB = \\$13 - \\$10 = \\$3."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      13,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 13,
+      "why": "\\$13 is the whole social benefit. Buyers already count \\$10 of it; the subsidy adds only the external part, \\$13 - \\$10."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        13,
+        10
+       ]
+      },
+      "why": "\\$23 adds the two benefits. The external benefit is the gap between them."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-22",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which statement about a negative production externality is correct?",
+   "options": [
+    "The market price is too high and the quantity too low",
+    "The market price is too low and the quantity too high",
+    "MSC lies below MPC",
+    "Demand lies above MSB"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Negative production externality: MSC > MPC, market Q > efficient Q, market P < efficient P.",
+    "options": [
+     "That is the pattern of a positive production externality.",
+     "Right: firms do not pay the external cost, so supply is too far right.",
+     "With a negative production externality MSC lies above MPC.",
+     "The externality is on the cost side; here demand equals MSB."
+    ]
+   }
+  },
+  {
+   "id": "mic-externalities-23",
+   "unit": "unit-6",
+   "topic": "externalities",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.A",
+   "q": "Which policies would move a market with a negative production externality toward the efficient quantity? Select all that apply.",
+   "options": [
+    "A per-unit tax on producers equal to the external cost",
+    "A lump-sum tax on each producer",
+    "A per-unit subsidy to producers",
+    "A per-unit tax on buyers equal to the external cost",
+    "A price floor set below the market price"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "A per-unit tax equal to the external cost, on either side of the market, makes buyers and sellers face the full social cost of the last unit.",
+    "options": [
+     "Right: it shifts supply up to MSC.",
+     "It leaves marginal cost, price and quantity unchanged.",
+     "That would raise output further.",
+     "Right: it lowers demand by the same amount and leads to the same quantity.",
+     "A floor below the market price does not bind, so price and quantity do not change."
+    ]
+   }
+  }
+ ]
+}
