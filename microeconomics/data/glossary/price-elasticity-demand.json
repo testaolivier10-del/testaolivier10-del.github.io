@@ -1,0 +1,14 @@
+{
+ "price-elasticity": {
+  "def": "Price elasticity of demand: the percent change in quantity demanded divided by the percent change in price, read as an absolute value. Elastic if greater than 1, inelastic if less than 1, unit elastic if 1; perfectly inelastic demand is vertical and perfectly elastic demand is horizontal."
+ },
+ "total-revenue": {
+  "def": "Total revenue (TR): price times quantity sold. The total revenue test: with elastic demand, price and TR move in opposite directions; with inelastic demand they move together; with unit elastic demand TR does not change."
+ },
+ "midpoint-method": {
+  "def": "Midpoint method: a way to compute elasticity that divides each change by the average of the starting and ending values, so the answer is the same for a rise or a fall in price. One accepted route, not the only one."
+ },
+ "elasticity-determinants": {
+  "def": "Determinants of price elasticity of demand: the availability of close substitutes, whether the good is a necessity or a luxury, its share of the buyer's budget, how narrowly the good is defined, and how much time buyers have to adjust."
+ }
+}

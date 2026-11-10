@@ -376,14 +376,80 @@
       "author": "D"
      },
      {
+      "title": "A cost and demand table for a patent monopoly",
+      "topic": "monopoly",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "A ferry with no rivals and high fixed costs (natural monopoly)",
+      "topic": "monopoly",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A price maker's demand schedule",
+      "topic": "imperfect-competition",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Four markets to classify",
+      "topic": "imperfect-competition",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "Two groups of buyers with different elasticities",
+      "topic": "price-discrimination",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "One price or perfect price discrimination",
+      "topic": "price-discrimination",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Airline fares booked early and late",
+      "topic": "price-discrimination",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
+      "title": "A monopolistically competitive firm in the short run, areas lettered",
+      "topic": "monopolistic-competition",
+      "stimulus": "graph",
+      "author": "D"
+     },
+     {
+      "title": "A sandwich shop in long-run equilibrium",
+      "topic": "monopolistic-competition",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Food trucks: profit, entry and differentiation",
+      "topic": "monopolistic-competition",
+      "stimulus": "text",
+      "author": "D"
+     },
+     {
       "title": "A payoff matrix for two cafes choosing prices",
+      "topic": "oligopoly-game-theory",
+      "stimulus": "graph",
+      "author": "D"
+     },
+     {
+      "title": "Two cement firms, a quota and cheating",
       "topic": "oligopoly-game-theory",
       "stimulus": "data",
       "author": "D"
      },
      {
-      "title": "A ride service with no rivals and high fixed costs",
-      "topic": "monopoly",
+      "title": "Two streaming services choose a release day (two equilibria and a payoff change)",
+      "topic": "oligopoly-game-theory",
       "stimulus": "text",
       "author": "D"
      }
@@ -1393,6 +1459,18 @@
    ]
   },
   {
+   "id": "ceteris-paribus",
+   "term": "ceteris paribus",
+   "aliases": [
+    "other things equal",
+    "all else equal"
+   ],
+   "taughtIn": "shifts-movements",
+   "dependsOn": [
+    "shift-curve"
+   ]
+  },
+  {
    "id": "intersection",
    "term": "intersection",
    "aliases": [
@@ -1489,6 +1567,17 @@
    "term": "property rights",
    "aliases": [
     "private property"
+   ],
+   "taughtIn": "economic-systems",
+   "dependsOn": [
+    "market-economy"
+   ]
+  },
+  {
+   "id": "incentive",
+   "term": "incentive",
+   "aliases": [
+    "incentives"
    ],
    "taughtIn": "economic-systems",
    "dependsOn": [
@@ -2862,6 +2951,18 @@
    "term": "common resource",
    "aliases": [
     "tragedy of the commons"
+   ],
+   "taughtIn": "public-goods",
+   "dependsOn": [
+    "rival",
+    "excludable"
+   ]
+  },
+  {
+   "id": "club-good",
+   "term": "club good",
+   "aliases": [
+    "club goods"
    ],
    "taughtIn": "public-goods",
    "dependsOn": [

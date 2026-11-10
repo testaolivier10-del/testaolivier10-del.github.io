@@ -1,0 +1,14 @@
+{
+ "perfect-competition": {
+  "def": "A market with many buyers and sellers of an identical product, full information about prices and free entry and exit, so each firm is a price taker that cannot change the market price."
+ },
+ "long-run-eq": {
+  "def": "In perfect competition, the state in which entry and exit have pushed the price to minimum ATC, so P = MR = MC = minimum ATC and every firm earns zero economic profit."
+ },
+ "constant-cost": {
+  "def": "A constant-cost industry is one whose firms' costs do not change as the industry grows or shrinks, so its long-run supply curve is horizontal at minimum ATC. (Increasing- and decreasing-cost industries, whose costs rise or fall with industry size, are an extension.)"
+ },
+ "allocative-efficiency": {
+  "def": "Producing the quantity at which price equals marginal cost (P = MC), so the value buyers place on the last unit equals the cost of making it and total surplus is as large as it can be."
+ }
+}

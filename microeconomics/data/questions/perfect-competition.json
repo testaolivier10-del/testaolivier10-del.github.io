@@ -1,0 +1,612 @@
+{
+ "stimuli": {
+  "perfect-competition-s1": {
+   "kind": "graph",
+   "title": "A perfectly competitive market and a typical firm in the short run",
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    }
+   }
+  },
+  "perfect-competition-s2": {
+   "kind": "data",
+   "title": "A wheat farm after a rise in market demand",
+   "invented": true,
+   "table": {
+    "caption": "A typical farm in a perfectly competitive, constant-cost wheat market (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Market price before the rise in demand",
+      "\\$6 a bushel"
+     ],
+     [
+      "Market price now",
+      "\\$8 a bushel"
+     ],
+     [
+      "Farm's output now, where MR = MC",
+      "2,400 bushels"
+     ],
+     [
+      "ATC at 2,400 bushels",
+      "\\$6.50"
+     ],
+     [
+      "Lowest point of ATC",
+      "\\$6, at 2,000 bushels"
+     ]
+    ]
+   }
+  },
+  "perfect-competition-s3": {
+   "kind": "text",
+   "title": "Sea salt harvesters on the Tarrow coast",
+   "text": "<p>Hundreds of small harvesters gather sea salt along the Tarrow coast. Buyers see the salt from one harvester as the same as any other's, and prices are posted at a daily market, so every buyer knows the going price. Anyone can rent a stretch of shore and start harvesting, and a harvester can stop and sell her equipment at any time. (An invented market, for practice.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-perfect-competition-1",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In the graphs, what is the typical firm earning in the short run?",
+   "options": [
+    "Zero economic profit: the firm is at the lowest point of ATC",
+    "An economic loss: MC is above ATC",
+    "An economic profit: price is above ATC at its output",
+    "A loss, but it keeps producing: price is above AVC"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Find q where d = MR = AR = P meets MC, then compare the price with ATC there: P > ATC, so the firm earns an economic profit.",
+    "options": [
+     "The firm produces where MR = MC, to the right of the lowest point of ATC, and the price is above ATC there.",
+     "Comparing MC with ATC says whether ATC is rising; profit compares price with ATC.",
+     "Right: the price line is above ATC where MR = MC.",
+     "The price is above ATC too, so the firm earns a profit."
+    ]
+   },
+   "stimulus": "perfect-competition-s1"
+  },
+  {
+   "id": "mic-perfect-competition-2",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In the graphs, what happens in this market in the long run?",
+   "options": [
+    "Firms enter, market supply shifts right and the price falls",
+    "Firms exit, market supply shifts left and the price rises",
+    "Market demand shifts left as buyers react to the high price",
+    "Nothing changes, because the firm maximizes profit already"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Economic profit draws new firms in. Entry shifts market supply right, the price falls, and the process stops when the price reaches the lowest point of ATC.",
+    "options": [
+     "Right: profit draws firms in until it is gone.",
+     "Exit follows losses; these firms earn a profit.",
+     "Buyers move along demand; it is entry that changes the market.",
+     "Profit maximization sets the firm's output, but the profit draws in new firms."
+    ]
+   },
+   "stimulus": "perfect-competition-s1"
+  },
+  {
+   "id": "mic-perfect-competition-3",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In the graphs, the industry is constant-cost. Compared with the short run shown, at the new long-run equilibrium",
+   "options": [
+    "the price is higher and the market sells less",
+    "the price is lower and the market sells less",
+    "the price is the same and each firm sells more",
+    "the price is lower and the market sells more"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Entry shifts market supply right: the price falls back to the lowest point of ATC (zero economic profit) and the market quantity rises. Each firm makes less than in the short run, but there are more firms.",
+    "options": [
+     "Entry shifts supply right, which lowers the price and raises the quantity.",
+     "A rightward supply shift raises the market quantity.",
+     "The price falls as firms enter, and each firm produces less, at the lowest point of ATC.",
+     "Right: entry adds supply, so price falls to the lowest point of ATC and market output rises."
+    ]
+   },
+   "stimulus": "perfect-competition-s1"
+  },
+  {
+   "id": "mic-perfect-competition-4",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the farm's economic profit now, in dollars?",
+   "why": {
+    "correct": "Profit = (P - ATC) x q = $(8 - 6.50) \\times 2{,}400 = 3{,}600$ dollars, at the output where MR = MC."
+   },
+   "numeric": {
+    "from": {
+     "fn": "unitProfit",
+     "args": [
+      8,
+      6.5,
+      2400
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "unitProfit",
+       "args": [
+        8,
+        6.5,
+        2000
+       ]
+      },
+      "why": "That uses 2,000 bushels, the output at the lowest point of ATC. Profit uses the farm's actual output, 2,400."
+     },
+     {
+      "from": {
+       "fn": "unitProfit",
+       "args": [
+        8,
+        6,
+        2400
+       ]
+      },
+      "why": "That uses the lowest ATC, \\$6. Use ATC at the farm's output, \\$6.50."
+     }
+    ]
+   },
+   "stimulus": "perfect-competition-s2"
+  },
+  {
+   "id": "mic-perfect-competition-5",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Use the table. In the long run, after new farms enter, what will the market price be?",
+   "options": [
+    "\\$8, the higher price stays",
+    "\\$6, the lowest point of ATC",
+    "\\$6.50, the farm's current ATC",
+    "Below \\$6, because many farms enter"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Entry continues until economic profit is zero, which is where price equals the lowest point of ATC: \\$6. In a constant-cost industry entering firms do not raise input prices, so the cost curves stay put.",
+    "options": [
+     "At \\$8 farms earn profit, so more enter and the price falls.",
+     "Right: in a constant-cost industry, entry drives the price back to the lowest ATC.",
+     "At \\$6.50 farms would still earn profit at their best output; entry continues.",
+     "Below \\$6 farms would make losses and some would exit."
+    ]
+   },
+   "stimulus": "perfect-competition-s2"
+  },
+  {
+   "id": "mic-perfect-competition-6",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Use the table. In the new long-run equilibrium, how much does a typical farm produce?",
+   "options": [
+    "2,400 bushels, as it does now",
+    "2,000 bushels, where ATC is lowest",
+    "More than 2,400 bushels, as the market grows",
+    "Nothing, because price equals ATC"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "At P = \\$6 the MR line touches the lowest point of ATC, and MC crosses there, so each farm produces 2,000 bushels and earns normal profit.",
+    "options": [
+     "At the lower price, MR = MC at a smaller output.",
+     "Right: at P = \\$6, MR = MC at the lowest point of ATC.",
+     "The market grows through more farms, not larger ones.",
+     "Zero economic profit is a normal profit; the farm keeps producing."
+    ]
+   },
+   "stimulus": "perfect-competition-s2"
+  },
+  {
+   "id": "mic-perfect-competition-7",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, which features make each harvester a price taker?",
+   "options": [
+    "Harvesters can start or stop at any time",
+    "Salt is gathered from the shore",
+    "Each harvester rents her own stretch of shore",
+    "Many small sellers of an identical product, with known prices"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With many sellers of an identical product and buyers who know the price, any one seller is too small to change the market price: a price taker.",
+    "options": [
+     "Free entry and exit shape the long run; price taking comes from many sellers of the same product.",
+     "Where the salt comes from does not make a harvester a price taker.",
+     "Renting land is a cost; it does not make her a price taker.",
+     "Right: no single harvester can move the market price."
+    ]
+   },
+   "stimulus": "perfect-competition-s3"
+  },
+  {
+   "id": "mic-perfect-competition-8",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, one harvester posts a price 10% above the going market price. What happens to her sales?",
+   "options": [
+    "They fall to almost zero, as buyers go to other harvesters",
+    "They fall by about 10%, as with any demand curve",
+    "They stay the same, as buyers are loyal",
+    "They rise, as buyers think her salt is better"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A perfectly competitive firm faces a horizontal (perfectly elastic) demand curve at the market price: above it, it sells next to nothing; at it, it sells as much as it wants.",
+    "options": [
+     "Right: her demand is horizontal at the market price.",
+     "Her salt is identical to everyone else's, so buyers switch completely.",
+     "Buyers see the salt as identical, so they have no reason to stay.",
+     "Buyers see every harvester's salt as the same."
+    ]
+   },
+   "stimulus": "perfect-competition-s3"
+  },
+  {
+   "id": "mic-perfect-competition-9",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, why do harvesters earn zero economic profit in the long run?",
+   "options": [
+    "The government sets the price of salt",
+    "Salt is a product that buyers want less of over time",
+    "Anyone can start harvesting, so profits draw in new sellers",
+    "Harvesters agree to keep their profits low"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With free entry and exit, any economic profit draws new harvesters in and any loss pushes some out, so in the long run the price settles at the lowest point of ATC.",
+    "options": [
+     "Nothing in the scenario says the price is set by law.",
+     "Demand is not the reason; entry and exit remove profit and losses.",
+     "Right: free entry and exit push the price to the lowest point of ATC.",
+     "Hundreds of independent sellers do not coordinate prices."
+    ]
+   },
+   "stimulus": "perfect-competition-s3"
+  },
+  {
+   "id": "mic-perfect-competition-10",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes, the curves and the firm's demand line on side-by-side graphs of a perfectly competitive market and a typical firm.",
+   "why": {
+    "correct": "Market (left): Price and Quantity, D and S. Firm (right): Price and cost and Quantity, MC, ATC and AVC, and the horizontal d = MR = AR = P line at the market price carried across."
+   },
+   "graph": {
+    "kind": "pc",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-perfect-competition-11",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of a substitute good rises. Shift the right curve in the market panel and draw the firm's new demand line.",
+   "why": {
+    "correct": "Market demand shifts right and the market price rises; the firm takes the higher price, so its d = MR = AR = P line moves up to the new market price."
+   },
+   "graph": {
+    "kind": "pc",
+    "do": [
+     "shift",
+     "line"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in the price of a substitute good",
+     "line": {
+      "to": "eq"
+     }
+    },
+    "slips": {
+     "S": "A substitute's price changes what buyers want, so it shifts market demand, not supply."
+    }
+   }
+  },
+  {
+   "id": "mic-perfect-competition-12",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The market is in long-run equilibrium. Mark the typical firm's output.",
+   "why": {
+    "correct": "In long-run equilibrium P = MR = MC = the lowest point of ATC, so the firm produces where MC crosses ATC at its lowest point and earns zero economic profit."
+   },
+   "graph": {
+    "kind": "pc",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "q",
+    "key": {
+     "point": {
+      "at": "min-atc"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-perfect-competition-13",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the typical firm's total revenue.",
+   "why": {
+    "correct": "Total revenue = P x q: the rectangle from the price down to the horizontal axis, from zero to the quantity where MR = MC."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "tr"
+    },
+    "slips": {
+     "profit": "That is only the profit, the part above ATC. Total revenue runs from the price down to zero."
+    }
+   }
+  },
+  {
+   "id": "mic-perfect-competition-14",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In long-run equilibrium, a perfectly competitive market is",
+   "options": [
+    "allocatively but not productively efficient",
+    "productively but not allocatively efficient",
+    "both allocatively and productively efficient",
+    "neither, because firms earn no economic profit"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Allocative efficiency: P = MC, so the value buyers put on the last unit equals its cost. Productive efficiency: output is made at the lowest point of ATC. Both hold in long-run equilibrium.",
+    "options": [
+     "The price is also at the lowest point of ATC, so it is productively efficient too.",
+     "P = MC also holds, so it is allocatively efficient too.",
+     "Right: both efficiency conditions hold.",
+     "Zero economic profit is a normal profit and fits both kinds of efficiency."
+    ]
+   }
+  },
+  {
+   "id": "mic-perfect-competition-15",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "recall",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which are features of a perfectly competitive market? Select all that apply.",
+   "options": [
+    "Many buyers and many sellers",
+    "Firms sell identical products",
+    "Each firm sets its own price",
+    "Firms spend heavily on brand advertising"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Perfect competition: many buyers and sellers, identical products, buyers and sellers who know the price, and free entry and exit. Each firm is a price taker.",
+    "options": [
+     "Yes: each is too small to move the price.",
+     "Yes: buyers see one firm's good as the same as another's.",
+     "No: each firm takes the market price.",
+     "No: with identical products there is no brand to advertise."
+    ]
+   }
+  },
+  {
+   "id": "mic-perfect-competition-16",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In a constant-cost industry, what is the shape of the long-run industry supply curve?",
+   "options": [
+    "Horizontal, at the lowest point of ATC",
+    "Upward sloping, like short-run market supply",
+    "Vertical, at the current market quantity",
+    "The same as the firm's MC curve"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When an industry grows or shrinks without changing its firms' costs, entry and exit bring the price back to the same lowest ATC, so long-run supply is horizontal at that price.",
+    "options": [
+     "Right: after entry or exit the price returns to the same level.",
+     "In a constant-cost industry, a larger industry has the same costs, so the long-run price does not rise.",
+     "Entry and exit change the quantity; the long-run supply curve is not vertical.",
+     "MC above AVC is one firm's short-run supply; long-run industry supply reflects entry and exit."
+    ]
+   }
+  },
+  {
+   "id": "mic-perfect-competition-17",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the long-run explanation specific: firms in a perfectly competitive market are earning economic profit. Fill in each blank.",
+   "why": {
+    "correct": "Profit, entry, a rightward shift of market supply, a lower price, and zero economic profit at the lowest point of ATC: every link of the long-run chain."
+   },
+   "specific": {
+    "frame": "Economic profit draws new firms ___, so market supply shifts ___ and the market price ___ until it equals the lowest point of ATC.",
+    "slots": {
+     "dir": {
+      "label": "Firms move",
+      "options": [
+       "in",
+       "out"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Firms leave after losses; profit draws them in."
+      }
+     },
+     "shift": {
+      "label": "Market supply",
+      "options": [
+       "right",
+       "left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More sellers increase supply, a shift to the right."
+      }
+     },
+     "price": {
+      "label": "The price",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More supply at the same demand lowers the price."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Economic profit draws new firms in because resources earn more here than elsewhere, so market supply shifts right and the market price falls until it equals the lowest point of ATC, where economic profit is zero."
+   }
+  },
+  {
+   "id": "mic-perfect-competition-18",
+   "unit": "unit-3",
+   "topic": "perfect-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "A perfectly competitive market is in long-run equilibrium with a market quantity of 12,000 units. Each identical firm produces 40 units, at the lowest point of its ATC, \\$15. How many firms are in the market?",
+   "why": {
+    "correct": "Number of firms = market quantity / output per firm = $12{,}000 \\div 40 = 300$ firms."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      12000,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        12000,
+        15
+       ]
+      },
+      "why": "That divides by the price. Divide the market quantity by each firm's output, 40 units."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        40,
+        15
+       ]
+      },
+      "why": "That is one firm's total revenue (40 x 15), not the number of firms."
+     }
+    ]
+   }
+  }
+ ]
+}

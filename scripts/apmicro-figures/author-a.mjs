@@ -259,7 +259,7 @@ function add(topic, id, w, h, title, desc, body, alt) {
     `Production possibilities for one day. Fenwick Workshop can make 12 chairs or 6 tables; Garnet Workshop can make 8 chairs or 2 tables. One table costs Fenwick ${oc.fT} chairs and Garnet ${oc.gT}, so Fenwick has the comparative advantage in tables; one chair costs Fenwick ${oc.fC} table and Garnet ${oc.gC}, so Garnet has the comparative advantage in chairs, even though Fenwick makes more of both. A price between 2 and 4 chairs per table helps both. Invented data for practice.`,
     g.join('\n'), `Two straight production possibilities lines for one day: Fenwick Workshop, 12 chairs or 6 tables, and Garnet Workshop, 8 chairs or 2 tables. A table costs Fenwick ${oc.fT} chairs and Garnet ${oc.gT}; a chair costs Fenwick ${oc.fC} table and Garnet ${oc.gC}.`);
 }
-{ // cost-benefit: total benefit, total cost and net benefit of guitar lessons (questions cost-benefit-s2, lesson, notes)
+{ // cost-benefit: total benefit, cost and net benefit of guitar lessons (questions cost-benefit-s2, lesson, notes)
   const n = [0, 1, 2, 3, 4, 5], tb = [0, 50, 90, 120, 140, 150], tc = n.map(k => Calc.mul(k, 25));
   const net = n.map((k, i) => Calc.sub(tb[i], tc[i]));
   const best = net.indexOf(Calc.max(...net));
@@ -272,13 +272,13 @@ function add(topic, id, w, h, title, desc, body, alt) {
     g.push(text(F.X(k), F.Y(0) + 19, String(k), { anchor: 'middle', size: 12, fill: GREY }));
     g.push(text(F.X(k), F.Y(Math.max(tb[i], tc[i])) - 8, `net ${net[i]}`, { anchor: 'middle', size: 11, fill: i === best ? VERM : GREY, bold: i === best }));
   });
-  g.push(rect(560, 60, 16, 16, { fill: ACC, rx: 2 }), text(584, 74, 'Total benefit', { size: 13 }), rect(560, 88, 16, 16, { fill: CER, rx: 2 }), text(584, 102, 'Total cost ($25 a lesson)', { size: 13 }));
-  g.push(text(560, 144, 'Net benefit = total benefit', { size: 13 }), text(560, 162, 'minus total cost.', { size: 13 }), text(560, 196, `It is largest at ${best} lessons:`, { size: 13, fill: VERM, bold: true }), text(560, 214, `$${tb[best]} - $${tc[best]} = $${net[best]}.`, { size: 13, fill: VERM, bold: true }));
+  g.push(rect(560, 60, 16, 16, { fill: ACC, rx: 2 }), text(584, 74, 'Total benefit', { size: 13 }), rect(560, 88, 16, 16, { fill: CER, rx: 2 }), text(584, 102, 'Cost ($25 a lesson)', { size: 13 }));
+  g.push(text(560, 144, 'Net benefit = total benefit', { size: 13 }), text(560, 162, 'minus the full cost.', { size: 13 }), text(560, 196, `It is largest at ${best} lessons:`, { size: 13, fill: VERM, bold: true }), text(560, 214, `$${tb[best]} - $${tc[best]} = $${net[best]}.`, { size: 13, fill: VERM, bold: true }));
   g.push(text(560, 252, 'More lessons still add benefit,', { size: 12, fill: GREY }), text(560, 268, 'but they add more cost than', { size: 12, fill: GREY }), text(560, 284, 'benefit after the third.', { size: 12, fill: GREY }));
   if (best !== 3) throw new Error('cost-benefit: the best quantity changed');
-  add('cost-benefit', 'cost-benefit-net', 800, 380, 'Total benefit, total cost and net benefit',
-    `Paired bars for 0 to 5 guitar lessons a month: total benefit $0, $50, $90, $120, $140 and $150, and total cost at $25 a lesson, $0 to $125. Net benefit, total benefit minus total cost, is 0, 25, 40, 45, 40 and 25 dollars, largest at ${best} lessons ($${net[best]}). Invented data for practice.`,
-    g.join('\n'), `A bar chart of total benefit and total cost for 0 to 5 guitar lessons a month at $25 a lesson; net benefit is largest, $${net[best]}, at ${best} lessons. Invented data.`);
+  add('cost-benefit', 'cost-benefit-net', 800, 380, 'Total benefit, cost and net benefit',
+    `Paired bars for 0 to 5 guitar lessons a month: total benefit $0, $50, $90, $120, $140 and $150, and the cost at $25 a lesson, $0 to $125. Net benefit, total benefit minus cost, is 0, 25, 40, 45, 40 and 25 dollars, largest at ${best} lessons ($${net[best]}). Invented data for practice.`,
+    g.join('\n'), `A bar chart of total benefit and cost for 0 to 5 guitar lessons a month at $25 a lesson; net benefit is largest, $${net[best]}, at ${best} lessons. Invented data.`);
 }
 { // marginal-analysis: marginal utility per dollar for tacos and smoothies (questions marginal-analysis-s1, lesson, notes)
   const muT = [20, 16, 12, 8, 4], pT = 2, muS = [48, 32, 24, 16], pS = 4, budget = 12;

@@ -337,7 +337,7 @@
       steps: [
         choice('mc', 'What happens to the firm’s marginal cost?', mcOpts, mcC, mcWhy, '3.A'),
         graphStep('graph', 'Show the change on the firm’s cost curves: shift each curve that moves (AVC moves with MC, AFC with ATC).', spec, '4.C',
-          lump ? 'A fixed cost moves ATC (and AFC) only: MC and AVC do not depend on fixed cost.' : 'A per-unit cost raises the cost of every unit: MC, AVC and ATC all shift ' + dir + ' by the amount per unit.'),
+          lump ? 'A fixed cost moves ATC (and AFC) only: MC and AVC do not depend on fixed cost.' : 'A per-unit cost changes the cost of every unit: MC, AVC and ATC all shift ' + dir + ' by the amount per unit.'),
         num('atc', 'After the change, what is average total cost at ' + O.q[k] + ' ' + f.what + '?', newAtc, [
           { value: t.atc[k], why: 'That is ATC before the change. Add the change to total cost first, then divide by Q.' },
           lump ? { value: ev('add', t.atc[k], ch.up * amt), why: 'A fixed cost is spread over every unit: ATC changes by the fee ÷ Q, not by the whole fee.' } : { value: ev('add', t.atc[k], ch.up * amt * O.q[k]), why: 'The per-unit cost adds ' + m0(amt) + ' to the cost of each unit, so ATC changes by ' + m0(amt) + ', not by ' + m0(amt) + ' × Q.' }

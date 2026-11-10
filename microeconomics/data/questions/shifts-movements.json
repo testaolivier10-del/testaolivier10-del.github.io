@@ -1,0 +1,402 @@
+{
+ "stimuli": {
+  "shifts-movements-s1": {
+   "kind": "text",
+   "title": "Marlow Street Bakery's busy week",
+   "text": "<p>Marlow Street Bakery keeps a graph of its croissant market: price per croissant on the vertical axis, croissants sold per day on the horizontal axis, a downward curve D for its customers and an upward curve S for what it offers. During one week: on <b>Monday</b> the bakery cuts the price of a croissant from \\$4 to \\$3. On <b>Tuesday</b> a large office opens next door. On <b>Thursday</b> the butter the bakery buys doubles in price. On <b>Friday</b> a cafe across the street starts selling its own croissants for \\$2. (An invented bakery.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-shifts-movements-1",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a graph with price on the vertical axis, which change causes a movement along a curve rather than a shift of it?",
+   "options": [
+    "A change in the number of buyers",
+    "A change in buyers' incomes",
+    "A change in the price of the good itself",
+    "A change in the cost of the sellers' materials"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Only a change in a variable on one of the axes moves the market along the curve. The good's own price is on the vertical axis.",
+    "options": [
+     "The number of buyers is not on an axis, so a change in it shifts the curve.",
+     "Income is not on an axis, so a change in it shifts the curve.",
+     "Right: price is on an axis, so the market moves along the curve.",
+     "Material costs are not on an axis, so a change in them shifts the sellers' curve."
+    ]
+   }
+  },
+  {
+   "id": "mic-shifts-movements-2",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A curve \"shifts right\" on a graph with quantity across and price up. What does that mean?",
+   "options": [
+    "At every price, the quantity is larger than before",
+    "At each quantity, the price is lower than before",
+    "The price rose and the quantity rose along the same curve",
+    "The curve became steeper"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A shift right moves every point of the curve to a larger quantity at the same price.",
+    "options": [
+     "Right: each price now goes with a larger quantity.",
+     "This reads the move up and down; \"right\" is about quantity at each price.",
+     "Moving along one curve is a movement, not a shift.",
+     "A shift moves the curve; it does not have to change how steep it is."
+    ]
+   }
+  },
+  {
+   "id": "mic-shifts-movements-3",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new apartment building opens and at every price more people want to buy sandwiches at a deli. Shift the right curve the right way.",
+   "why": {
+    "correct": "More sandwiches wanted at every price is a shift of the buyers' curve D to the right. The sandwich price did not cause it, so it is not a movement along D."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "more buyers living nearby"
+    },
+    "slips": {
+     "S": "The new building brings buyers, so it moves the buyers' curve D; a change in the deli's own costs would move S."
+    }
+   }
+  },
+  {
+   "id": "mic-shifts-movements-4",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The flour a bakery buys becomes more expensive, so at every price the bakery offers fewer loaves. Shift the right curve the right way.",
+   "why": {
+    "correct": "Fewer loaves offered at every price is a shift of the sellers' curve S to the left."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the cost of flour"
+    },
+    "slips": {
+     "D": "Flour is a cost for the bakery, so it moves the sellers' curve S, not the buyers' curve D."
+    }
+   }
+  },
+  {
+   "id": "mic-shifts-movements-5",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A furniture maker buys a new saw that cuts twice as fast, so at every price it can offer more chairs. Shift the right curve the right way.",
+   "why": {
+    "correct": "A faster saw lowers the cost of each chair, so more chairs are offered at every price: S shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "a faster saw that lowers costs"
+    },
+    "slips": {
+     "D": "The saw changes what the maker can offer, so it moves S; buyers want the same number of chairs as before at each price."
+    }
+   }
+  },
+  {
+   "id": "mic-shifts-movements-6",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The price of movie tickets rises and nothing else changes. Place point X where buyers end up on the curve D.",
+   "why": {
+    "correct": "A higher price, the variable on the vertical axis, moves buyers up along D to a smaller quantity. The curve itself stays where it is."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "D",
+      "x": "down",
+      "y": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-shifts-movements-7",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student says, \"The price of bus fares fell, so the curve D for bus rides shifted right.\" What is wrong with the claim?",
+   "options": [
+    "A lower fare shifts D left, not right",
+    "The fare is on the horizontal axis, so D stays put",
+    "Nothing is wrong: a lower fare shifts D right",
+    "A fare change is a movement along D, not a shift"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The fare is the price on the vertical axis. A lower fare moves riders down along the same curve to more rides.",
+    "options": [
+     "A price change does not shift D in either direction.",
+     "Price is on the vertical axis of a market graph, not the horizontal one.",
+     "A price change is a movement, not a shift.",
+     "Right: a price change is a movement along the curve."
+    ]
+   }
+  },
+  {
+   "id": "mic-shifts-movements-8",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "shifts-movements-s1",
+   "q": "On Monday the bakery cuts the price of a croissant from \\$4 to \\$3. How does its graph show this?",
+   "options": [
+    "A shift of D to the right, at each price",
+    "A movement down along D",
+    "A shift of D to the left, at each price",
+    "A movement up along D to a smaller quantity"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The price is on the vertical axis, so a lower price moves buyers down along D to more croissants sold.",
+    "options": [
+     "The price change does not shift D; it moves buyers along it.",
+     "Right: same curve, new point.",
+     "Nothing about buyers changed except the price, so D stays put.",
+     "A LOWER price moves buyers down along D, to a larger quantity."
+    ]
+   }
+  },
+  {
+   "id": "mic-shifts-movements-9",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "shifts-movements-s1",
+   "q": "On Tuesday a large office opens next door. How does the graph show this?",
+   "options": [
+    "A movement down along D, as after a price cut",
+    "D shifts right: more are wanted at each price",
+    "S shifts right: the bakery offers more at each price",
+    "D shifts left: fewer croissants are wanted at each price"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "More nearby customers want more croissants at every price. That change is not on either axis, so D shifts right.",
+    "options": [
+     "The price did not change, so this is not a movement along D.",
+     "Right: more buyers shift D right.",
+     "The office brings buyers, not cheaper baking, so S stays put.",
+     "More buyers raise the quantity wanted at each price, so D moves right, not left."
+    ]
+   }
+  },
+  {
+   "id": "mic-shifts-movements-10",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "shifts-movements-s1",
+   "q": "On Thursday the butter the bakery buys doubles in price. How does the graph show this?",
+   "options": [
+    "D shifts left: buyers want fewer croissants",
+    "A movement up along S to a larger quantity",
+    "S shifts right: the bakery offers more croissants at each price",
+    "S shifts left: fewer croissants offered at each price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Butter is a cost for the bakery. Higher costs mean fewer croissants offered at every price: S shifts left.",
+    "options": [
+     "Buyers do not pay for the bakery's butter directly; the cost moves S, not D.",
+     "A movement along S needs a change in the croissant price itself.",
+     "Higher costs make the bakery offer fewer croissants, not more.",
+     "Right: a higher cost shifts S left."
+    ]
+   }
+  },
+  {
+   "id": "mic-shifts-movements-11",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "shifts-movements-s1",
+   "q": "On Friday a cafe across the street starts selling its own croissants for \\$2. What is the most likely change on Marlow Street Bakery's graph?",
+   "options": [
+    "D shifts left: some buyers go to the cafe",
+    "D shifts right: customers want more croissants",
+    "A movement down along the curve D",
+    "S shifts left: the bakery bakes fewer croissants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A cheaper choice across the street pulls some buyers away, so fewer Marlow Street croissants are wanted at every price: D shifts left. Marlow Street's own price did not change.",
+    "options": [
+     "Right: fewer buyers at every price.",
+     "The cafe pulls customers away, not toward the bakery.",
+     "Marlow Street's own price did not change, so this is not a movement along D.",
+     "The cafe does not change the bakery's costs; it changes what buyers want."
+    ]
+   }
+  },
+  {
+   "id": "mic-shifts-movements-12",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the explanation specific: a cafe raises the price of its muffins and sells fewer. Fill in each blank.",
+   "why": {
+    "correct": "A change in the variable on an axis is a movement along the curve; anything else shifts it."
+   },
+   "specific": {
+    "frame": "The ___ changed, and it is the variable on ___, so the graph shows ___.",
+    "slots": {
+     "variable": {
+      "label": "What changed",
+      "options": [
+       "price of muffins",
+       "number of buyers",
+       "cost of flour"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nothing in the scenario says the number of buyers changed; only the muffin price did.",
+       "2": "The scenario changes the muffin price, not the cafe's costs."
+      }
+     },
+     "axis": {
+      "label": "Which axis",
+      "options": [
+       "the vertical axis",
+       "neither axis"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Price is on the vertical axis of a market graph, so it is on an axis."
+      }
+     },
+     "result": {
+      "label": "What the graph shows",
+      "options": [
+       "a movement up along D",
+       "a shift of D to the left"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A change in the good's own price never shifts D; buyers move along it to a smaller quantity."
+      }
+     }
+    },
+    "model": "The price of muffins changed, and it is the variable on the vertical axis, so the graph shows a movement up along D to a smaller quantity, not a shift of the curve."
+   }
+  },
+  {
+   "id": "mic-shifts-movements-13",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the steps for deciding between a shift and a movement in order.",
+   "options": [
+    "Name what changed in the scenario",
+    "Check whether it is a variable on one of the axes",
+    "If it is, move along the curve; if not, shift the curve",
+    "Label the new curve with subscript 2 and draw an arrow"
+   ],
+   "why": {
+    "correct": "Start from the cause, test it against the axes, decide shift or movement, then show it on the graph with labels."
+   }
+  }
+ ]
+}

@@ -1,0 +1,491 @@
+{
+ "stimuli": {
+  "public-goods-s1": {
+   "kind": "text",
+   "title": "Goods sorted by rivalry and excludability",
+   "text": "<p>An invented town, Wexmoor, has: (1) slices of pizza sold at a stand; (2) a fireworks show over the harbor that anyone in town can see; (3) fish in a lake that anyone may fish; (4) a members-only online film library with a monthly fee and plenty of capacity.</p>"
+  },
+  "public-goods-s2": {
+   "kind": "data",
+   "title": "A streetlight on Juniper Lane in Harrowmere",
+   "invented": true,
+   "table": {
+    "caption": "The yearly benefit each of the three households on an invented street would get from one streetlight that costs \\$70 a year to run (invented data for practice)",
+    "cols": [
+     "Household",
+     "Yearly benefit from the streetlight"
+    ],
+    "rows": [
+     [
+      "Abara",
+      "\\$40"
+     ],
+     [
+      "Bell",
+      "\\$25"
+     ],
+     [
+      "Cruz",
+      "\\$15"
+     ]
+    ]
+   }
+  },
+  "public-goods-s3": {
+   "kind": "text",
+   "title": "Fishing on Sablewood Lake",
+   "text": "<p>Sablewood Lake (invented) has no owner, and anyone may fish there. Each angler keeps every fish he catches. Over a few seasons the catch per angler falls, because the fish are taken faster than they can breed.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-public-goods-1",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, which item is a public good?",
+   "stimulus": "public-goods-s1",
+   "options": [
+    "(1) the pizza",
+    "(3) the fish",
+    "(2) the fireworks show",
+    "(4) the film library"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A public good is both nonrival and nonexcludable.",
+    "options": [
+     "A slice eaten by one person cannot be eaten by another, and the stand can refuse to sell: rival and excludable.",
+     "A fish caught by one person is not there for another: rival, so it is a common resource.",
+     "Right: one more viewer does not reduce anyone's view (nonrival), and no one can be stopped from looking (nonexcludable).",
+     "Nonpayers can be kept out with a login, so it is excludable: a club good."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-2",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, which item is a common resource?",
+   "stimulus": "public-goods-s1",
+   "options": [
+    "(3) the fish in the lake",
+    "(2) the fireworks show",
+    "(4) the film library",
+    "(1) the pizza"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Common resources are rival and nonexcludable, so they tend to be overused.",
+    "options": [
+     "Right: rival (a fish caught is gone) but nonexcludable (anyone may fish).",
+     "Viewing is nonrival, so it is a public good.",
+     "It is nonrival but excludable: a club good.",
+     "Pizza is excludable: it is a private good."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-3",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, the film library is nonrival and excludable. What kind of good is it?",
+   "stimulus": "public-goods-s1",
+   "options": [
+    "A public good",
+    "A common resource",
+    "A private good",
+    "A club good"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Club goods can be sold, because nonpayers can be excluded, even though one more user costs almost nothing.",
+    "options": [
+     "A public good is also nonexcludable; this library charges a fee and keeps nonpayers out.",
+     "Common resources are rival and nonexcludable: the opposite on both counts.",
+     "Private goods are rival; extra viewers do not use up the library.",
+     "Right: one member's viewing does not reduce another's, but nonmembers can be shut out."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-4",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, why is a private firm unlikely to put on the fireworks show and sell it?",
+   "stimulus": "public-goods-s1",
+   "options": [
+    "One more viewer would make the show cost more to produce",
+    "People who do not pay can still watch, so few would pay",
+    "Fireworks shows are worth less than they cost to everyone",
+    "Viewers would use up the show before others could see it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Nonexcludability creates the free-rider problem, so markets underprovide public goods.",
+    "options": [
+     "Nonrival: one more viewer adds almost nothing to the cost.",
+     "Right: free riders enjoy the show without paying, so a seller cannot cover its cost.",
+     "The problem is collecting payment, not the show's value.",
+     "Watching does not use up the show."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-5",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. Because the light is nonrival, all three households enjoy it at once. What is the total benefit of the streetlight, in dollars per year?",
+   "stimulus": "public-goods-s2",
+   "why": {
+    "correct": "For a public good, add every user's benefit from the same unit: \\$40 + \\$25 + \\$15 = \\$80."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        40,
+        25
+       ]
+      },
+      15
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "\\$40 is the largest single benefit. Everyone enjoys the same light, so add all three."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        80,
+        3
+       ]
+      },
+      "why": "About \\$26.67 is the average benefit. The light's worth to the street is the sum of all three benefits."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-6",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Use the table. Is the streetlight socially efficient to provide?",
+   "stimulus": "public-goods-s2",
+   "options": [
+    "No: no single household values it at \\$70 or more",
+    "Yes: \\$80 of total benefit beats the \\$70 cost",
+    "No: the Cruz household values it at just \\$15",
+    "Yes: the Abara household values it at \\$40"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A public good is worth providing when the total of everyone's marginal benefit is at least its marginal cost.",
+    "options": [
+     "Compare the cost with the sum of benefits, since all three use the same light.",
+     "Right: the sum of benefits exceeds the cost, so society gains \\$10 a year.",
+     "One low value does not decide it; add every household's benefit.",
+     "One household's value is less than the cost; it is the total that matters."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-7",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Use the table. Each household waits for the others to pay for the light, and no one does. What explains this outcome?",
+   "stimulus": "public-goods-s2",
+   "options": [
+    "The light costs more than its total benefit",
+    "The light is rival, so one household's use blocks the others",
+    "The households would rather have a private good",
+    "Free riding: each hopes to use the light without paying"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A good worth providing goes unprovided because nonpayers cannot be excluded. Paying with a tax on the street is one fix.",
+    "options": [
+     "The total benefit, \\$80, is above the \\$70 cost.",
+     "Light on a street is nonrival: all three use it at once.",
+     "The problem is collecting payment for a nonexcludable good.",
+     "Right: since no one can be kept from the light, each household's best move is to let others pay."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-8",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, why are the fish overused?",
+   "stimulus": "public-goods-s3",
+   "options": [
+    "Each angler ignores the cost of a smaller stock to others",
+    "Fish are nonrival, so one angler's catch leaves the stock unchanged",
+    "The lake's owner charges too little for a fishing permit",
+    "Anglers value fish less than the cost of catching them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This is the tragedy of the commons: open access to a rival resource leads to overuse.",
+    "options": [
+     "Right: the fish are rival and nonexcludable, so no one weighs the harm to future catches.",
+     "A fish caught is gone: fish are rival.",
+     "The lake has no owner and charges nothing.",
+     "They keep fishing because each catch is worth it to them."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-9",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the scenario, how is overfishing a negative externality?",
+   "stimulus": "public-goods-s3",
+   "options": [
+    "Each angler pays for the fish he catches",
+    "Fishing makes the lake better for swimmers",
+    "Each fish taken lowers other anglers' catch, unpaid",
+    "Each angler catches fewer fish when he fishes longer"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each angler ignores the cost he imposes on others, so the lake is fished past the efficient level.",
+    "options": [
+     "No one pays for the fish; that is the problem.",
+     "That would be a benefit, not a cost, and the scenario does not say it.",
+     "Right: the cost of a smaller stock falls on others, so private cost is below social cost.",
+     "That is diminishing returns for one angler, not a cost on others."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-10",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, which policy would most directly reduce overfishing?",
+   "stimulus": "public-goods-s3",
+   "options": [
+    "A subsidy for each fish caught",
+    "Removing the rules on fishing at the lake",
+    "A lump-sum fee charged to the town's grocery stores",
+    "A limit on the number of fish each angler may keep"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Limits, permits or a fee per fish make anglers face the cost of using the stock.",
+    "options": [
+     "That would raise the catch.",
+     "Open access is the cause of the overuse.",
+     "That does not change anglers' marginal decisions.",
+     "Right: it caps the use of the rival resource."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-11",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A good is nonrival when",
+   "options": [
+    "no one can be kept from using it, paid or not",
+    "one person's use leaves no less for others",
+    "it is provided by the government",
+    "its price is set at zero"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rival: my use leaves less for you. Nonrival: it does not.",
+    "options": [
+     "That is nonexcludable.",
+     "Right: many can use it at once, like a radio broadcast.",
+     "Who provides it does not define rivalry.",
+     "Price does not define rivalry."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-12",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A good is excludable when",
+   "options": [
+    "one person's use leaves less for others",
+    "it is sold at a high price",
+    "people who do not pay can be kept from using it",
+    "it can be used by a single person in its lifetime"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Excludability makes it possible to charge for a good.",
+    "options": [
+     "That is rivalry.",
+     "Price alone does not exclude anyone who pays.",
+     "Right: a ticket gate or a login does this.",
+     "That is not the definition; excludable is about keeping out nonpayers."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-13",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why do private markets tend to provide too little of a public good?",
+   "options": [
+    "Free riders pay nothing, so sellers' revenue falls short",
+    "Public goods cost more to produce than most private goods",
+    "Each user's benefit is too large to measure",
+    "Public goods are rival, so they run out"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because sellers cannot exclude nonpayers, the market quantity is below the efficient quantity. Governments often provide such goods and pay with taxes.",
+    "options": [
+     "Right: nonexcludability lets people benefit without paying.",
+     "Cost is not what sets them apart.",
+     "The problem is collecting payment, not measuring benefit.",
+     "Public goods are nonrival."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-14",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are public goods? Select all that apply.",
+   "options": [
+    "National defense",
+    "A flood wall that protects a whole town",
+    "A seat on a crowded commuter train",
+    "A ticketed concert in a stadium",
+    "Groundwater pumped freely from a shared aquifer"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A public good must be both nonrival and nonexcludable.",
+    "options": [
+     "Right: nonrival and nonexcludable.",
+     "Right: everyone behind it is protected at once, and no one can be left out.",
+     "Rival: one rider's seat is not available to another.",
+     "Excludable: there is a ticket gate.",
+     "Rival and nonexcludable: a common resource."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-15",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A toll road is uncrowded, so one more car does not slow anyone down, and drivers who do not pay are stopped at the gate. What kind of good is the road?",
+   "options": [
+    "A club good",
+    "A public good",
+    "A common resource",
+    "A private good"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Excludable and nonrival goods can be sold by firms, often with a membership or entry fee.",
+    "options": [
+     "Right: nonrival (while uncrowded) and excludable.",
+     "The gate makes it excludable.",
+     "A common resource is rival and nonexcludable.",
+     "One more car does not use up the road, so it is nonrival."
+    ]
+   }
+  },
+  {
+   "id": "mic-public-goods-16",
+   "unit": "unit-6",
+   "topic": "public-goods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "The same toll road becomes badly congested at rush hour. How does that change its rivalry?",
+   "options": [
+    "It becomes nonexcludable: drivers can no longer be stopped",
+    "Nothing changes: roads are nonrival",
+    "It becomes rival: each extra car slows the others",
+    "It becomes a public good"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Many goods are nonrival only up to a point. When crowded, they become rival.",
+    "options": [
+     "The gate still works.",
+     "Rivalry depends on use; a crowded road is rival.",
+     "Right: congestion means one driver's use reduces the value to others.",
+     "With a gate it stays excludable."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,246 @@
+{
+ "id": "frq-monopoly-long",
+ "type": "long",
+ "points": 10,
+ "title": "A patent monopoly: price, profit, surplus, elasticity and a price ceiling",
+ "units": [
+  "unit-2",
+  "unit-4"
+ ],
+ "topics": [
+  "price-elasticity-demand",
+  "government-intervention",
+  "monopoly"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "4.C",
+  "1.C",
+  "2.A",
+  "3.A"
+ ],
+ "scenario": "Corvane Labs (invented) holds a patent on a home test kit for water quality, so it is the only seller. It maximizes profit and is earning a positive economic profit. Its marginal cost curve is U-shaped and passes through the minimum of its average total cost curve.",
+ "stimulus": {
+  "title": "Corvane Labs at its profit-maximizing output",
+  "invented": true,
+  "table": {
+   "caption": "Corvane Labs, per week, at the output where MR = MC (invented data for practice)",
+   "cols": [
+    "Measure",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Quantity of kits",
+     "200"
+    ],
+    [
+     "Price per kit (dollars)",
+     "40"
+    ],
+    [
+     "Average total cost per kit (dollars)",
+     "25"
+    ],
+    [
+     "Marginal revenue and marginal cost (dollars)",
+     "18"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph for Corvane Labs showing demand, marginal revenue, marginal cost and average total cost, and <b>show</b> its profit-maximizing price and quantity, labeled PM and QM.",
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "label",
+     "point"
+    ],
+    "pointLabel": "M",
+    "key": {
+     "point": {
+      "at": "profit-max"
+     }
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: axes \"Price and cost\" and \"Quantity\", a downward-sloping D, MR below D, and MC crossing ATC at the minimum of ATC.",
+     "accept": [
+      "MR drawn below demand and steeper",
+      "axes labeled P and Q"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "QM where MR = MC, with PM read from the demand curve above QM, both marked on the axes.",
+     "accept": [
+      "dotted lines from the point on demand to both axes"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "Price and cost on the vertical axis, Quantity on the horizontal. D slopes down; MR starts at the same point on the price axis and lies below D; MC is U-shaped and crosses ATC at the lowest point of ATC. QM is where MR crosses MC; going straight up from QM to D gives PM. ATC at QM lies below PM, so the firm earns a profit."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the area of consumer surplus.",
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades the area under demand and above PM, from zero to QM, completely.",
+     "accept": [
+      "the triangle between D and PM out to QM"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "Consumer surplus is the triangle under the demand curve and above PM, from the vertical axis out to QM."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the deadweight loss caused by the monopoly.",
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades the area between demand and MC, from QM to the quantity where demand meets MC.",
+     "accept": [
+      "the triangle between D and MC to the right of QM"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "The deadweight loss is the triangle between the demand curve and the MC curve, from QM out to the quantity where demand crosses MC. It is not shaded down to ATC."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "<b>Calculate</b> Corvane Labs' weekly economic profit using the data in the table. Show your work.",
+   "rubric": [
+    {
+     "point": "Profit of \\$3,000 with work shown: (40 minus 25) times 200, or 8,000 minus 5,000.",
+     "accept": [
+      "(P - ATC) x Q = 15 x 200 = 3,000",
+      "TR - TC = 8,000 - 5,000 = 3,000"
+     ]
+    }
+   ],
+   "sample": "Profit = (P minus ATC) times Q = (\\$40 minus \\$25) times 200 = \\$15 times 200 = \\$3,000 a week."
+  },
+  {
+   "label": "E(i)",
+   "points": 1,
+   "prompt": "<b>Identify</b> whether demand for the kits is elastic, inelastic or unit elastic at QM.",
+   "rubric": [
+    {
+     "point": "Elastic.",
+     "accept": [
+      "relatively elastic"
+     ]
+    }
+   ],
+   "sample": "Demand is elastic at QM."
+  },
+  {
+   "label": "E(ii)",
+   "points": 1,
+   "prompt": "<b>Explain</b> your answer to E(i).",
+   "rubric": [
+    {
+     "point": "Explains that marginal revenue at QM is positive (MR = MC = \\$18 > 0), and MR is positive only on the elastic part of demand (a lower price would raise total revenue).",
+     "accept": [
+      "MR > 0 so total revenue rises as price falls, so demand is elastic",
+      "the monopolist produces above the unit-elastic point where MR = 0"
+     ]
+    }
+   ],
+   "sample": "At QM, MR equals MC, which is \\$18, so MR is positive. Marginal revenue is positive only on the elastic part of the demand curve, where a lower price raises total revenue; it is zero at the unit-elastic point. So demand is elastic at QM."
+  },
+  {
+   "label": "F(i)",
+   "points": 1,
+   "type": "graph",
+   "prompt": "The government sets a price ceiling equal to the price at which demand meets marginal cost. <b>Draw</b> the price ceiling, labeled PR.",
+   "graph": {
+    "kind": "monopoly",
+    "line": {
+     "id": "Pr"
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "to": "allocative"
+     }
+    }
+   },
+   "rubric": [
+    {
+     "point": "A horizontal line at the height where demand crosses MC, labeled PR, below PM.",
+     "accept": [
+      "the ceiling drawn through the point where D meets MC"
+     ],
+     "auto": "line"
+    }
+   ],
+   "sample": "The ceiling PR is a horizontal line at the price where the demand curve crosses MC, below PM."
+  },
+  {
+   "label": "F(ii)",
+   "points": 1,
+   "prompt": "<b>Identify</b> what happens to the quantity of kits Corvane Labs sells under the price ceiling, compared with QM.",
+   "rubric": [
+    {
+     "point": "The quantity increases (to the quantity where demand meets MC).",
+     "accept": [
+      "rises",
+      "output increases"
+     ]
+    }
+   ],
+   "sample": "The quantity increases, from QM to the quantity where demand meets MC."
+  },
+  {
+   "label": "F(iii)",
+   "points": 1,
+   "prompt": "<b>Identify</b> what happens to the deadweight loss under the price ceiling.",
+   "rubric": [
+    {
+     "point": "The deadweight loss is eliminated (falls to zero).",
+     "accept": [
+      "decreases to zero",
+      "disappears"
+     ]
+    }
+   ],
+   "sample": "The deadweight loss is eliminated: the firm now produces the allocatively efficient quantity, where P = MC."
+  }
+ ]
+}

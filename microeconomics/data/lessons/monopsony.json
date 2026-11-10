@@ -1,0 +1,84 @@
+{
+ "topic": "monopsony",
+ "hook": "In an invented mountain county there is one hospital, and nearly every nurse in the county works there. The hospital knows that offering more pay would bring in more nurses, but it would have to pay the raise to every nurse already on staff. That extra cost changes how many nurses it hires and what it pays them.",
+ "prereq": [
+  {
+   "q": "A competitive firm hires up to where",
+   "options": [
+    "MRP = MRC",
+    "MRP is highest",
+    "total revenue equals total cost",
+    "MP is highest"
+   ],
+   "correct": 0,
+   "why": "Each worker is hired while she adds at least as much revenue as cost.",
+   "review": "competitive-factor-markets"
+  },
+  {
+   "q": "A labor supply curve slopes upward because",
+   "options": [
+    "a higher wage draws more people to work",
+    "firms want fewer workers at higher wages",
+    "MRP falls as more are hired",
+    "a higher wage lowers productivity"
+   ],
+   "correct": 0,
+   "why": "More people are willing to work at higher pay.",
+   "review": "factor-demand-supply"
+  },
+  {
+   "q": "A monopolist reads its price from",
+   "options": [
+    "the demand curve above the quantity where MR = MC",
+    "the MR curve",
+    "the MC curve",
+    "the ATC curve"
+   ],
+   "correct": 0,
+   "why": "Quantity from MR = MC, price from demand.",
+   "review": "monopoly"
+  }
+ ],
+ "figure": {
+  "figure": "monopsony-graph",
+  "caption": "The monopsony hires QM, where MRP = MFC, and pays WM, read down on labor supply. The wage bill is shaded; the triangle between MRP and SL out to QC is the deadweight loss."
+ },
+ "chain": [
+  {
+   "cause": "The firm is the only buyer of this labor",
+   "effect": "it faces the upward-sloping labor supply curve"
+  },
+  {
+   "cause": "Hiring one more worker means a higher wage for every worker",
+   "effect": "MFC lies above labor supply"
+  },
+  {
+   "cause": "The firm hires where MRP = MFC",
+   "effect": "it hires fewer workers than where MRP meets labor supply"
+  },
+  {
+   "cause": "Fewer workers are needed",
+   "effect": "the wage read on labor supply is lower than the competitive wage"
+  }
+ ],
+ "ideas": [
+  "A <b>monopsony</b> is a single buyer of a factor. It faces the market labor supply curve, so to hire more it must raise pay for everyone.",
+  "So MFC lies above S<sub>L</sub>. The monopsonist hires where <b>MRP = MFC</b>, then pays the wage read down on <b>S<sub>L</sub></b> at that quantity.",
+  "Compared with a competitive market: fewer workers, a lower wage, and deadweight loss between MRP and S<sub>L</sub>. The <b>wage bill</b> is W × L, the rectangle under the wage.",
+  "A <b>minimum wage</b> between the monopsony wage and the competitive wage makes MFC flat at the minimum wage, so both the wage and employment rise."
+ ],
+ "misconception": {
+  "wrong": "The single employer pays the wage where MRP crosses MFC, because that is the point it chose.",
+  "right": "MRP = MFC gives only the number of workers. The wage is the lowest pay that brings in that many workers: read straight down to the labor supply curve."
+ },
+ "check": [
+  "mic-monopsony-17",
+  "mic-monopsony-18",
+  "mic-monopsony-2",
+  "mic-monopsony-3",
+  "mic-monopsony-10",
+  "mic-monopsony-11",
+  "mic-monopsony-12"
+ ],
+ "summary": "A monopsony is the only buyer of a kind of labor. Because it must raise everyone's pay to hire one more worker, its MFC lies above labor supply. It hires where MRP = MFC and pays the wage read on the labor supply curve at that quantity, so it hires fewer workers and pays less than a competitive market would, with deadweight loss between MRP and labor supply. The wage bill is the wage times the workers hired. A minimum wage set between the monopsony wage and the competitive wage makes MFC flat and raises both the wage and employment."
+}

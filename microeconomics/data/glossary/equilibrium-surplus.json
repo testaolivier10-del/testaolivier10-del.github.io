@@ -1,0 +1,14 @@
+{
+ "equilibrium": {
+  "def": "Market equilibrium: the price and quantity at which quantity demanded equals quantity supplied, where the demand and supply curves cross. The market clears at the equilibrium price."
+ },
+ "consumer-surplus": {
+  "def": "Consumer surplus (CS): the difference between what buyers are willing to pay and what they actually pay, summed over the units bought. On a graph, the area under demand and above the price, out to the quantity traded."
+ },
+ "producer-surplus": {
+  "def": "Producer surplus (PS): the difference between the price sellers receive and the least they would accept, summed over the units sold. On a graph, the area above supply and below the price, out to the quantity traded."
+ },
+ "total-surplus": {
+  "def": "Total surplus: consumer surplus plus producer surplus, the total gain from trade in a market. In a competitive market it is largest at the equilibrium quantity."
+ }
+}

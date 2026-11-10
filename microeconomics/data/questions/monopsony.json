@@ -1,0 +1,690 @@
+{
+ "stimuli": {
+  "monopsony-s1": {
+   "kind": "graph",
+   "title": "A town with one large employer: the monopsony graph",
+   "graph": {
+    "kind": "monopsony",
+    "letters": true
+   }
+  },
+  "monopsony-s2": {
+   "kind": "data",
+   "title": "Hiring nurses at the only hospital in Caddock County",
+   "invented": true,
+   "table": {
+    "caption": "The invented Caddock County hospital is the only employer of nurses in the county. It must pay every nurse the same wage. (Invented data for practice.)",
+    "cols": [
+     "Nurses hired",
+     "Hourly wage needed to hire that many",
+     "Total labor cost per hour",
+     "MRP of the last nurse"
+    ],
+    "rows": [
+     [
+      "1",
+      "\\$8",
+      "\\$8",
+      "\\$30"
+     ],
+     [
+      "2",
+      "\\$10",
+      "\\$20",
+      "\\$26"
+     ],
+     [
+      "3",
+      "\\$12",
+      "\\$36",
+      "\\$22"
+     ],
+     [
+      "4",
+      "\\$14",
+      "\\$56",
+      "\\$18"
+     ],
+     [
+      "5",
+      "\\$16",
+      "\\$80",
+      "\\$14"
+     ]
+    ]
+   }
+  },
+  "monopsony-s3": {
+   "kind": "text",
+   "title": "A minimum wage for Caddock County nurses",
+   "text": "<p>Use the Caddock County table. The county sets a minimum wage of \\$14 an hour for nurses. The hospital may pay more but not less. At \\$14 an hour, up to 4 nurses are willing to work; a fifth would need \\$16.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-monopsony-1",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the monopsony graph: both axes and all three curves.",
+   "why": {
+    "correct": "Wage on the vertical axis and Quantity of labor on the horizontal axis. SL slopes up; MFC starts at the same point and rises twice as steeply, above SL; MRP slopes down and is the firm's demand for labor."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-monopsony-2",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the point that shows the number of workers the monopsonist hires and the wage it pays.",
+   "why": {
+    "correct": "Find the quantity where MRP = MFC, then go straight down to the labor supply curve: the wage is the lowest pay that brings in that many workers. The point is on SL below the MRP = MFC crossing."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "hire"
+     }
+    },
+    "slips": {
+     "MFC": "The crossing of MRP and MFC gives the quantity hired, but the wage is read down on the labor supply curve."
+    }
+   }
+  },
+  {
+   "id": "mic-monopsony-3",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the monopsonist's wage bill.",
+   "why": {
+    "correct": "The wage bill is the wage times the number hired: the rectangle from the origin out to the quantity where MRP = MFC and up to the wage read on SL (region wage-bill). Its top edge is the wage, not the MRP = MFC height."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "wage-bill"
+    }
+   }
+  },
+  {
+   "id": "mic-monopsony-4",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the deadweight loss that results from the monopsony.",
+   "why": {
+    "correct": "Workers between the monopsony quantity and the competitive quantity (where MRP meets SL) each add more to revenue than the pay they would accept. The lost surplus is the triangle between MRP and SL from the monopsony quantity to the competitive quantity (region dwl)."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    }
+   }
+  },
+  {
+   "id": "mic-monopsony-5",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A minimum wage is set equal to the wage that a competitive labor market would reach. Draw the minimum wage line at that height.",
+   "why": {
+    "correct": "The competitive wage is where MRP meets SL. A minimum wage at that level makes MFC flat at the minimum wage out to SL, so the firm hires the competitive quantity."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "line": {
+     "id": "MW"
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "to": "competitive"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopsony-6",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The graph shows a minimum wage set above the monopsony wage and below the competitive wage. Mark the number of workers the firm now hires at the minimum wage.",
+   "why": {
+    "correct": "Up to the labor supply curve, each worker costs exactly the minimum wage, so MFC is flat at that height. The firm hires out to where the minimum wage line meets SL, because MRP is still above the minimum wage there: more workers than without the minimum wage."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "line": {
+     "id": "MW",
+     "at": 5
+    },
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "min-wage"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopsony-7",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "In the graph, which area is the wage bill the employer pays?",
+   "stimulus": "monopsony-s1",
+   "options": [
+    "Area b",
+    "Areas a and b",
+    "Area a",
+    "The area under MRP out to the number hired"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Wage bill = wage × workers hired. Its height is the wage on SL at the quantity where MRP = MFC.",
+    "options": [
+     "Area b is the triangle between MRP and SL beyond the number hired: the deadweight loss.",
+     "Area b lies beyond the number hired, so no wages are paid there.",
+     "Right: the rectangle under the wage read on SL, out to the number hired.",
+     "That is the total revenue the workers bring in, not what they are paid."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-8",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "In the graph, which area is the deadweight loss caused by the monopsony?",
+   "stimulus": "monopsony-s1",
+   "options": [
+    "Area b",
+    "Area a",
+    "Areas a and b",
+    "There is no deadweight loss"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The deadweight loss is the surplus from workers who are not hired even though their MRP exceeds the wage they would accept.",
+    "options": [
+     "Right: between MRP and SL, from the monopsony quantity to where MRP meets SL.",
+     "Area a is the wage bill.",
+     "Area a is paid to workers who are hired; it is not lost.",
+     "Fewer workers are hired than where MRP meets SL, so surplus is lost."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-9",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the graph, compared with a perfectly competitive labor market with the same MRP and SL curves, the monopsony",
+   "stimulus": "monopsony-s1",
+   "options": [
+    "hires fewer workers and pays a higher wage",
+    "hires more workers and pays a lower wage",
+    "hires the same number of workers and pays a lower wage",
+    "hires fewer workers and pays a lower wage"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Each extra hire raises the pay of every worker, so the monopsonist hires less than a competitive market would and pays less.",
+    "options": [
+     "A smaller quantity on an upward-sloping SL means a lower wage, not a higher one.",
+     "MFC lies above SL, so the monopsony stops sooner.",
+     "Its quantity is where MRP = MFC, which is less than where MRP = SL.",
+     "Right: it stops where MRP = MFC, to the left of where MRP meets SL, and pays the lower wage on SL."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-10",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the marginal factor cost of the third nurse, in dollars per hour?",
+   "stimulus": "monopsony-s2",
+   "why": {
+    "correct": "MFC = change in total labor cost ÷ change in nurses = (\\$36 - \\$20) ÷ 1 = \\$16. It is above the \\$12 wage because hiring the third nurse also raises the first two nurses' pay by \\$2 each."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrc",
+     "args": [
+      20,
+      36,
+      2,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "\\$12 is the wage. For a single employer, MFC is above the wage: the new nurse's \\$12 plus \\$2 more for each of the two nurses already hired."
+     },
+     {
+      "value": 36,
+      "why": "\\$36 is the total labor cost of three nurses. MFC is the change: \\$36 - \\$20."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-11",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "Use the table. How many nurses does the hospital hire to maximize profit?",
+   "stimulus": "monopsony-s2",
+   "why": {
+    "correct": "MFCs are \\$8, \\$12, \\$16, \\$20 and \\$24. Hire while MRP ≥ MFC: the third nurse adds \\$22 and costs \\$16; the fourth adds \\$18 and costs \\$20. Hire 3."
+   },
+   "numeric": {
+    "from": {
+     "fn": "hireCount",
+     "args": [
+      [
+       30,
+       26,
+       22,
+       18,
+       14
+      ],
+      [
+       8,
+       12,
+       16,
+       20,
+       24
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "hireCount",
+       "args": [
+        [
+         30,
+         26,
+         22,
+         18,
+         14
+        ],
+        [
+         8,
+         10,
+         12,
+         14,
+         16
+        ]
+       ]
+      },
+      "why": "4 compares MRP with the wage, as a wage taker would. A single employer compares MRP with MFC, which is higher than the wage."
+     },
+     {
+      "value": 5,
+      "why": "The fourth and fifth nurses add less to revenue than to the hospital's labor cost."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-12",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Use the table. What hourly wage does the hospital pay at the profit-maximizing number of nurses?",
+   "stimulus": "monopsony-s2",
+   "options": [
+    "\\$16",
+    "\\$12",
+    "\\$22",
+    "\\$14"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Find the quantity from MRP = MFC, then read the wage from labor supply at that quantity.",
+    "options": [
+     "\\$16 is the MFC of the third nurse. The pay is read from the \"wage needed\" column (labor supply).",
+     "Right: 3 nurses are hired, and the table shows \\$12 is the wage needed to hire 3.",
+     "\\$22 is the third nurse's MRP. Pay is the least wage that brings in 3 nurses.",
+     "\\$14 is the wage needed for 4 nurses, but the hospital hires 3."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-13",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the hospital's wage bill per hour at the profit-maximizing number of nurses, in dollars?",
+   "stimulus": "monopsony-s2",
+   "why": {
+    "correct": "Wage bill = wage × nurses = \\$12 × 3 = \\$36 per hour (the table's total labor cost for 3 nurses)."
+   },
+   "numeric": {
+    "from": {
+     "fn": "wageBill",
+     "args": [
+      12,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "wageBill",
+       "args": [
+        16,
+        3
+       ]
+      },
+      "why": "\\$48 uses the MFC as the wage. Each nurse is paid \\$12, read from labor supply."
+     },
+     {
+      "from": {
+       "fn": "wageBill",
+       "args": [
+        22,
+        3
+       ]
+      },
+      "why": "\\$66 uses the MRP as the wage. Pay comes from labor supply: \\$12 × 3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-14",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, what is the hospital's marginal factor cost of the second, third and fourth nurses after the minimum wage?",
+   "stimulus": "monopsony-s3",
+   "options": [
+    "\\$12, \\$16 and \\$20, as before",
+    "\\$14 each, because every nurse already earns \\$14",
+    "\\$10, \\$12 and \\$14, the wages in the table",
+    "\\$26, \\$22 and \\$18, their MRPs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A minimum wage set above the monopsony wage turns the firm into a wage taker up to the labor supply curve.",
+    "options": [
+     "Those MFCs came from raising everyone's pay to hire one more; at a fixed \\$14 that no longer happens.",
+     "Right: hiring one more nurse no longer raises anyone else's pay, so MFC equals the minimum wage up to labor supply.",
+     "Every nurse must now be paid at least \\$14.",
+     "Those are revenues the nurses add, not their cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-15",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, how many nurses does the hospital hire after the minimum wage?",
+   "stimulus": "monopsony-s3",
+   "options": [
+    "3, the same as before",
+    "2, down from 3",
+    "5, up from 3",
+    "4, up from 3"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The minimum wage lowers MFC for the nurses the hospital was not hiring, so it hires more of them.",
+    "options": [
+     "MFC for the fourth nurse falls from \\$20 to \\$14, below her \\$18 MRP.",
+     "In a monopsony, a minimum wage between the monopsony and competitive wages raises employment.",
+     "The fifth nurse would need \\$16 and adds only \\$14.",
+     "Right: the fourth nurse adds \\$18 and costs \\$14, so she is hired; a fifth would need \\$16 and adds only \\$14."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-16",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the scenario, what happens to nurses' wage and employment compared with no minimum wage?",
+   "stimulus": "monopsony-s3",
+   "options": [
+    "Both rise, to \\$14 and 4 nurses",
+    "The wage rises and employment falls",
+    "The wage rises and employment stays at 3",
+    "Both fall"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Unlike in a competitive labor market, a minimum wage in a monopsony between the monopsony wage and the competitive wage raises the wage and employment together.",
+    "options": [
+     "Right: a minimum wage set between the monopsony wage and the competitive wage can raise both.",
+     "That happens with a minimum wage above the equilibrium in a competitive labor market, not here.",
+     "The fourth nurse now costs less than she adds, so she is hired.",
+     "The wage cannot fall below \\$14, and employment rises."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-17",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a monopsony?",
+   "options": [
+    "A market with a single seller of a product",
+    "A labor market with many employers that each take the wage",
+    "A market with a single buyer, such as one employer of a kind of labor",
+    "A firm that hires workers in many different towns"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Mono-psony: one buyer. A town where one firm hires nearly all workers of one kind is the classic case.",
+    "options": [
+     "That is a monopoly.",
+     "That is a perfectly competitive labor market.",
+     "Right: one buyer faces the whole upward-sloping labor supply curve.",
+     "Having many workplaces does not make a firm the single buyer."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-18",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why does a monopsonist's MFC curve lie above the labor supply curve?",
+   "options": [
+    "It pays each new worker more than the workers already hired",
+    "Its workers produce more output than workers elsewhere",
+    "It pays each worker the worker's MRP",
+    "To hire one more worker it must raise the wage for every worker"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A single employer faces the upward-sloping labor supply curve. A higher quantity needs a higher wage paid to all, so MFC > W.",
+    "options": [
+     "Every worker is paid the same wage; the extra cost comes from raising everyone's pay.",
+     "Output is about MRP; MFC is about cost.",
+     "It pays the wage on labor supply, which is below MRP at its quantity.",
+     "Right: so the added cost is the new worker's wage plus the raise for all the others."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-19",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A single employer pays 10 workers \\$15 an hour. To hire an 11th worker it must raise the wage to \\$16 for all 11. What is the MFC of the 11th worker, in dollars per hour?",
+   "why": {
+    "correct": "Total labor cost goes from 10 × \\$15 = \\$150 to 11 × \\$16 = \\$176, so MFC = \\$176 - \\$150 = \\$26: the new worker's \\$16 plus a \\$1 raise for each of the other 10."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrc",
+     "args": [
+      150,
+      176,
+      10,
+      11
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "\\$16 is the new wage. The added cost also includes the \\$1 raise for the 10 workers already hired."
+     },
+     {
+      "value": 176,
+      "why": "\\$176 is the new total labor cost. MFC is the change: \\$176 - \\$150."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-20",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In a perfectly competitive labor market, a minimum wage is set above the equilibrium wage. How does its effect on employment differ from a minimum wage set between the monopsony wage and the competitive wage in a monopsony?",
+   "options": [
+    "It raises employment, like the one in the monopsony",
+    "It lowers employment; the monopsony one raises it",
+    "Both lower employment",
+    "Neither changes employment"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The same policy can have opposite effects on employment depending on the market structure.",
+    "options": [
+     "Above the competitive equilibrium, firms want fewer workers at the higher wage.",
+     "Right: in a competitive market, firms move up their labor demand and hire fewer; in the monopsony, MFC falls for the next workers.",
+     "In the monopsony case, MFC for the next workers falls to the minimum wage, so employment rises.",
+     "Both binding wages change who is hired."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopsony-21",
+   "unit": "unit-5",
+   "topic": "monopsony",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The price of the product made by a monopsonist's workers rises. Shift the right curve and mark the new number of workers hired and the wage paid.",
+   "why": {
+    "correct": "A higher product price raises MRP = MP × P, so MRP shifts right. The new MRP = MFC crossing is at a larger quantity; reading down to SL gives a higher wage."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "shift",
+     "point"
+    ],
+    "movable": [
+     "MRP"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MRP",
+       "dir": "right"
+      }
+     ],
+     "because": "a higher price for the product the workers make",
+     "point": {
+      "at": "hire"
+     }
+    }
+   }
+  }
+ ]
+}

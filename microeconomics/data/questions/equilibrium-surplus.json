@@ -1,0 +1,580 @@
+{
+ "stimuli": {
+  "equilibrium-surplus-s1": {
+   "kind": "data",
+   "title": "The market for kelp bars in Port Ancel",
+   "invented": true,
+   "table": {
+    "caption": "Kelp bars demanded and supplied per day in Port Ancel, an invented harbor town. Demand is a straight line that reaches zero at \\$10; supply is a straight line that starts at \\$1 (invented data for practice)",
+    "cols": [
+     "Price",
+     "Quantity demanded",
+     "Quantity supplied"
+    ],
+    "rows": [
+     [
+      "\\$2",
+      "80",
+      "20"
+     ],
+     [
+      "\\$3",
+      "70",
+      "40"
+     ],
+     [
+      "\\$4",
+      "60",
+      "60"
+     ],
+     [
+      "\\$5",
+      "50",
+      "80"
+     ],
+     [
+      "\\$6",
+      "40",
+      "100"
+     ]
+    ]
+   }
+  },
+  "equilibrium-surplus-s2": {
+   "kind": "graph",
+   "title": "A competitive market with its areas lettered",
+   "graph": {
+    "kind": "sd",
+    "letters": true
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-equilibrium-surplus-1",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "equilibrium-surplus-s1",
+   "q": "What are the equilibrium price and quantity of kelp bars?",
+   "options": [
+    "\\$3 and 70 bars",
+    "\\$5 and 80 bars",
+    "\\$4 and 60 bars",
+    "\\$6 and 100 bars"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At \\$4, buyers want 60 bars and sellers offer 60: quantity demanded equals quantity supplied, so the market clears at \\$4 and 60 bars.",
+    "options": [
+     "At \\$3 sellers offer only 40 of the 70 bars wanted.",
+     "At \\$5 buyers want only 50 of the 80 bars offered.",
+     "Right: 60 demanded and 60 supplied.",
+     "At \\$6 buyers want 40 bars, far fewer than are offered."
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-2",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "equilibrium-surplus-s1",
+   "q": "Calculate consumer surplus in the kelp bar market at equilibrium, in dollars per day.",
+   "why": {
+    "correct": "Consumer surplus is the triangle under demand and above the price, out to the quantity traded: $\\tfrac{1}{2} \\times 60 \\times (\\$10 - \\$4) = \\$180$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "consumerSurplus",
+     "args": [
+      60,
+      10,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "rectangle",
+       "args": [
+        60,
+        6
+       ]
+      },
+      "why": "That is a rectangle. Consumer surplus is a triangle, so take one half: $\\tfrac{1}{2} \\times 60 \\times 6$."
+     },
+     {
+      "from": {
+       "fn": "triangle",
+       "args": [
+        60,
+        4
+       ]
+      },
+      "why": "That uses the price, \\$4, as the height. The height is the gap from the price up to where demand starts: \\$10 minus \\$4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-3",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "equilibrium-surplus-s1",
+   "q": "Calculate producer surplus in the kelp bar market at equilibrium, in dollars per day.",
+   "why": {
+    "correct": "Producer surplus is the triangle above supply and below the price, out to the quantity traded: $\\tfrac{1}{2} \\times 60 \\times (\\$4 - \\$1) = \\$90$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "producerSurplus",
+     "args": [
+      60,
+      4,
+      1
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "rectangle",
+       "args": [
+        60,
+        3
+       ]
+      },
+      "why": "That is a rectangle. Producer surplus is a triangle: take one half."
+     },
+     {
+      "from": {
+       "fn": "triangle",
+       "args": [
+        60,
+        4
+       ]
+      },
+      "why": "That measures down to \\$0. Supply starts at \\$1, so the height is \\$4 minus \\$1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-4",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "equilibrium-surplus-s1",
+   "q": "Calculate total surplus in the kelp bar market at equilibrium, in dollars per day.",
+   "why": {
+    "correct": "Total surplus is consumer surplus plus producer surplus: $\\$180 + \\$90 = \\$270$. It is the triangle between demand and supply out to 60 bars: $\\tfrac{1}{2} \\times 60 \\times (\\$10 - \\$1) = \\$270$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "consumerSurplus",
+       "args": [
+        60,
+        10,
+        4
+       ]
+      },
+      {
+       "fn": "producerSurplus",
+       "args": [
+        60,
+        4,
+        1
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 540,
+      "why": "That forgets the one half in each triangle."
+     },
+     {
+      "value": 90,
+      "why": "That subtracts producer surplus from consumer surplus. Total surplus adds them."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-5",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "equilibrium-surplus-s2",
+   "q": "In the graph, which area is consumer surplus?",
+   "options": [
+    "Area a",
+    "Area b",
+    "Areas a and b together",
+    "The area to the right of the equilibrium quantity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Consumer surplus lies under the demand curve and above the equilibrium price, from zero out to the equilibrium quantity: area a.",
+    "options": [
+     "Right: under demand, above the price.",
+     "Area b lies above supply and below the price: producer surplus.",
+     "Together they are total surplus.",
+     "No units are traded there, so no surplus is earned."
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-6",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "equilibrium-surplus-s2",
+   "q": "In the graph, which area is producer surplus?",
+   "options": [
+    "Area a",
+    "Areas a and b together",
+    "The area under the supply curve",
+    "Area b"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Producer surplus lies above the supply curve and below the equilibrium price, out to the equilibrium quantity: area b.",
+    "options": [
+     "Area a is under demand and above the price: consumer surplus.",
+     "Together they are total surplus.",
+     "That is what it costs sellers to supply the units, not their surplus.",
+     "Right: above supply, below the price."
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-7",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "equilibrium-surplus-s2",
+   "q": "Suppose sellers produced more than the equilibrium quantity and found buyers for the extra units only by charging less. Compared with total surplus at equilibrium, total surplus would be",
+   "options": [
+    "larger, because more units are traded",
+    "smaller: those units cost more than they are worth",
+    "the same, because the gains and losses cancel",
+    "larger, because buyers pay a lower price"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Beyond the equilibrium quantity, each extra unit costs sellers more (the height of supply) than it is worth to buyers (the height of demand), so producing it subtracts from total surplus. Total surplus is largest at equilibrium.",
+    "options": [
+     "More units add surplus only while demand lies above supply.",
+     "Right: past equilibrium, supply lies above demand.",
+     "Each extra unit is a loss; nothing cancels it.",
+     "A lower price moves surplus between groups; the extra units still lose value."
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-8",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade consumer surplus at the market equilibrium.",
+   "why": {
+    "correct": "Consumer surplus is the triangle under the demand curve and above the equilibrium price, from zero to the equilibrium quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    },
+    "slips": {
+     "ps": "That area lies above supply and below the price: producer surplus. Consumer surplus is under demand."
+    }
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-9",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade producer surplus at the market equilibrium.",
+   "why": {
+    "correct": "Producer surplus is the triangle above the supply curve and below the equilibrium price, from zero to the equilibrium quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "ps"
+    },
+    "slips": {
+     "cs": "That area lies under demand and above the price: consumer surplus. Producer surplus is above supply."
+    }
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-10",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade total surplus at the market equilibrium.",
+   "why": {
+    "correct": "Total surplus is consumer surplus plus producer surplus: the whole triangle between demand and supply from zero out to the equilibrium quantity, with its edges on demand above and supply below."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "ts"
+    }
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-11",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Demand for a good has risen to the curve shown. Shade consumer surplus at the new market equilibrium.",
+   "why": {
+    "correct": "Find where the curves now cross. Consumer surplus is the triangle under demand and above that price, from zero out to that quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "cs"
+    }
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-12",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 1,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the market equilibrium on the graph.",
+   "why": {
+    "correct": "The equilibrium is where demand and supply cross: the one price at which quantity demanded equals quantity supplied."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "eq"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-13",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is market equilibrium?",
+   "options": [
+    "The price at which sellers earn the most profit they can",
+    "The price where quantity demanded equals quantity supplied",
+    "The highest price any buyer would pay for the first unit",
+    "The quantity at which the government sets prices"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Market equilibrium is the price and quantity at which quantity demanded equals quantity supplied: where the demand and supply curves cross. At that price the market clears.",
+    "options": [
+     "Equilibrium is about matching quantities, not sellers' best outcome.",
+     "Right: the market clears.",
+     "That is where demand starts on the price axis.",
+     "Equilibrium arises from buyers and sellers in a market."
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-14",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Four buyers would pay at most \\$10, \\$8, \\$6 and \\$4 for one concert poster each. Posters sell for \\$5 each. What is the total consumer surplus of the buyers who buy, in dollars?",
+   "why": {
+    "correct": "Only buyers whose willingness to pay is at least \\$5 buy: those willing to pay \\$10, \\$8 and \\$6. Each gains the gap between what they would pay and the price: $5 + 3 + 1 = 9$ dollars. The \\$4 buyer does not buy."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        10,
+        5
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        8,
+        5
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        6,
+        5
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "That counts the \\$4 buyer, who does not buy at \\$5 and so gains nothing (not minus \\$1)."
+     },
+     {
+      "value": 28,
+      "why": "That adds what each buyer would pay. Consumer surplus is what they would pay minus the price, for those who buy."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-15",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A farmer would sell a bushel of apples for as little as \\$12 and sells it for \\$20. What is the farmer's producer surplus on that bushel?",
+   "options": [
+    "\\$20",
+    "\\$12",
+    "\\$32",
+    "\\$8"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Producer surplus is the price received minus the lowest price the seller would accept: $\\$20 - \\$12 = \\$8$.",
+    "options": [
+     "That is the whole price, not the gain over the least the farmer would accept.",
+     "That is the least the farmer would accept.",
+     "Surplus is the difference, not the sum.",
+     "Right: \\$20 minus \\$12."
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-16",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A frost cuts the coffee harvest and the price of coffee rises. Coffee growers in other regions plant more coffee trees, and some cafes switch to tea. What role is the higher price playing?",
+   "options": [
+    "A signal steering growers and buyers",
+    "A cost that shifts demand for coffee to the right",
+    "A price that growers set and buyers accept",
+    "A sign that the market has stopped working"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The price is a signal: it tells growers to send more land and labor to coffee and tells buyers to economize on it. Price signals allocate scarce resources toward where they are most valued.",
+    "options": [
+     "Right: prices carry information and incentives.",
+     "A higher price moves buyers along demand; it does not shift it.",
+     "The price comes from the market, not from one side.",
+     "The market is responding as markets do, through the price."
+    ]
+   }
+  },
+  {
+   "id": "mic-equilibrium-surplus-17",
+   "unit": "unit-2",
+   "topic": "equilibrium-surplus",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Which statements about total surplus at the equilibrium of a competitive market are correct? Select all that apply.",
+   "options": [
+    "It equals consumer surplus plus producer surplus",
+    "It is as large as it can be at the equilibrium quantity",
+    "It equals the price times the quantity traded",
+    "It rises if sellers produce beyond the equilibrium quantity"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Total surplus is consumer plus producer surplus. At equilibrium every unit worth more to a buyer than it costs a seller is traded, and no unit worth less is, so total surplus is as large as it can be.",
+    "options": [
+     "Right: the gains to both sides together.",
+     "Right: producing more or less would lower it.",
+     "That is what buyers spend, not their gain.",
+     "Extra units past equilibrium cost more than they are worth to buyers."
+    ]
+   }
+  }
+ ]
+}

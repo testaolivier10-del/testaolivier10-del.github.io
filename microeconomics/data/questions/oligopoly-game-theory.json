@@ -1,0 +1,932 @@
+{
+ "stimuli": {
+  "oligopoly-game-theory-s1": {
+   "kind": "graph",
+   "title": "Two cafes choosing prices (daily profit in dollars, Ember Cafe first)",
+   "matrix": {
+    "players": [
+     {
+      "name": "Ember Cafe",
+      "strategies": [
+       "High price",
+       "Low price"
+      ]
+     },
+     {
+      "name": "Tidewater Cafe",
+      "strategies": [
+       "High price",
+       "Low price"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       60,
+       60
+      ],
+      [
+       20,
+       80
+      ]
+     ],
+     [
+      [
+       80,
+       20
+      ],
+      [
+       40,
+       40
+      ]
+     ]
+    ],
+    "unit": "$"
+   }
+  },
+  "oligopoly-game-theory-s2": {
+   "kind": "data",
+   "title": "Two cement firms and a quota",
+   "invented": true,
+   "table": {
+    "caption": "Kiln Rock and Grey Ridge (invented) are the only cement makers in a region. Weekly profit, in thousands of dollars, if each keeps to a shared output quota or produces more (invented data for practice)",
+    "cols": [
+     "Kiln Rock's choice",
+     "Grey Ridge's choice",
+     "Kiln Rock's profit",
+     "Grey Ridge's profit"
+    ],
+    "rows": [
+     [
+      "Keep quota",
+      "Keep quota",
+      "50",
+      "50"
+     ],
+     [
+      "Produce more",
+      "Keep quota",
+      "70",
+      "30"
+     ],
+     [
+      "Keep quota",
+      "Produce more",
+      "30",
+      "70"
+     ],
+     [
+      "Produce more",
+      "Produce more",
+      "40",
+      "40"
+     ]
+    ]
+   }
+  },
+  "oligopoly-game-theory-s3": {
+   "kind": "text",
+   "title": "Two streaming services choose a release day",
+   "text": "<p>Orrin and Velo (invented) are the two largest streaming services in a country. Each is releasing its big new series and picks a release day, Friday or Tuesday, at the same time. Releasing on the same day splits viewers. The payoffs are the new subscribers each wins, in thousands, with Orrin's payoff first.</p>",
+   "matrix": {
+    "players": [
+     {
+      "name": "Orrin",
+      "strategies": [
+       "Friday",
+       "Tuesday"
+      ]
+     },
+     {
+      "name": "Velo",
+      "strategies": [
+       "Friday",
+       "Tuesday"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       20,
+       20
+      ],
+      [
+       50,
+       40
+      ]
+     ],
+     [
+      [
+       40,
+       50
+      ],
+      [
+       10,
+       10
+      ]
+     ]
+    ],
+    "unit": "thousand"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-oligopoly-game-theory-1",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "matrix",
+   "practice": "3.A",
+   "stimulus": "oligopoly-game-theory-s1",
+   "q": "Ember Cafe and Tidewater Cafe (invented) are the only cafes in a village, and each sets its price for the week without knowing the other's choice. In each cell, Ember's daily profit is listed first. Mark each cafe's dominant strategy, if it has one, and every Nash equilibrium.",
+   "why": {
+    "correct": "Ember: if Tidewater prices high, \\$80 from Low beats \\$60 from High; if Tidewater prices low, \\$40 from Low beats \\$20 from High. Low wins both comparisons, so Low is dominant. Tidewater's payoffs are the mirror image, so Low is dominant for it too. Neither gains by switching alone from (Low, Low), the only Nash equilibrium."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Ember Cafe",
+      "strategies": [
+       "High price",
+       "Low price"
+      ]
+     },
+     {
+      "name": "Tidewater Cafe",
+      "strategies": [
+       "High price",
+       "Low price"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       60,
+       60
+      ],
+      [
+       20,
+       80
+      ]
+     ],
+     [
+      [
+       80,
+       20
+      ],
+      [
+       40,
+       40
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-2",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "oligopoly-game-theory-s1",
+   "q": "Which statement correctly shows that Low price is Ember Cafe's dominant strategy?",
+   "options": [
+    "80 > 60 if Tidewater prices high, and 40 > 20 if Tidewater prices low",
+    "80 is the largest payoff that Ember can earn in any cell, so Low wins",
+    "40 + 40 = 80 is less than 60 + 60 = 120",
+    "40 > 20 if Tidewater prices low, so Low is better"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A dominant strategy is better whatever the rival does, so it takes one comparison for each of Tidewater's choices: 80 > 60 when Tidewater prices high and 40 > 20 when Tidewater prices low.",
+    "options": [
+     "Right: Low is better against each of Tidewater's choices.",
+     "The single largest payoff does not prove a strategy wins against each choice of the rival.",
+     "That compares combined payoffs, which says nothing about Ember's best choice.",
+     "One comparison is not enough; check Tidewater pricing high too."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-3",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "matrix",
+   "practice": "3.A",
+   "stimulus": "oligopoly-game-theory-s1",
+   "q": "Which cell gives the two cafes the largest combined profit?",
+   "why": {
+    "correct": "Add the two payoffs in each cell: 120, 100, 100 and 80. Both pricing high gives \\$120 together."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Ember Cafe",
+      "strategies": [
+       "High price",
+       "Low price"
+      ]
+     },
+     {
+      "name": "Tidewater Cafe",
+      "strategies": [
+       "High price",
+       "Low price"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       60,
+       60
+      ],
+      [
+       20,
+       80
+      ]
+     ],
+     [
+      [
+       80,
+       20
+      ],
+      [
+       40,
+       40
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "joint"
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-4",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "oligopoly-game-theory-s1",
+   "q": "The cafes would both earn more if both priced high. Why do they end up both pricing low?",
+   "options": [
+    "Pricing low gives each cafe the largest payoff in the matrix",
+    "Each cafe gains by pricing low whatever the other does",
+    "Customers will not pay high prices at either cafe",
+    "The cafes agree to price low to keep rivals out of the village"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "From (High, High), each cafe gains by switching alone to Low (\\$80 instead of \\$60), so High is not stable. Each one's dominant strategy is Low, and the result is worse for both: a prisoner's dilemma.",
+    "options": [
+     "\\$80 is the largest, but they reach (Low, Low) with \\$40 each; the logic is dominance.",
+     "Right: Low is dominant for both, giving a prisoner's dilemma.",
+     "At (High, High) both cafes still earn \\$60, so customers do buy.",
+     "They choose separately; no agreement is described."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-5",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "oligopoly-game-theory-s2",
+   "q": "Use the table. What is the two firms' joint profit if both keep the quota, in thousands of dollars?",
+   "why": {
+    "correct": "Joint profit is the sum of the two payoffs in one outcome: $50 + 50 = 100$ thousand dollars, the most of any outcome."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      50,
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        50,
+        70,
+        30,
+        40
+       ]
+      },
+      "why": "That adds one firm's profit across all four outcomes. Joint profit adds both firms' profits in one outcome."
+     },
+     {
+      "value": 50,
+      "why": "50 is one firm's profit. Add both firms' profits for the outcome where both keep the quota."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-6",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "oligopoly-game-theory-s2",
+   "q": "Use the table. If Grey Ridge keeps the quota, how much more profit does Kiln Rock earn by producing more, in thousands of dollars?",
+   "why": {
+    "correct": "Holding Grey Ridge at \"keep quota\", Kiln Rock earns 70 by producing more and 50 by keeping the quota: $70 - 50 = 20$ thousand dollars more."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      70,
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        70,
+        30
+       ]
+      },
+      "why": "That compares Kiln Rock's 70 with Grey Ridge's 30. Compare Kiln Rock's own two payoffs with Grey Ridge's choice held fixed."
+     },
+     {
+      "value": 70,
+      "why": "70 is Kiln Rock's profit from producing more. The gain is 70 minus the 50 it would earn by keeping the quota."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-7",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "oligopoly-game-theory-s2",
+   "q": "Use the table. What is the Nash equilibrium?",
+   "options": [
+    "Both keep the quota",
+    "Kiln Rock produces more and Grey Ridge keeps the quota",
+    "Both produce more",
+    "There is no Nash equilibrium in this table"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Producing more is dominant for Kiln Rock (70 > 50 if Grey Ridge keeps the quota, 40 > 30 if it produces more) and, by the same numbers, for Grey Ridge. So both produce more and earn 40 each, and neither gains by switching alone.",
+    "options": [
+     "That gives the most joint profit, but each firm gains by switching alone.",
+     "Grey Ridge would switch: 40 from producing more beats 30.",
+     "Right: producing more is each firm's dominant strategy.",
+     "Both producing more is stable: neither firm gains by switching alone."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-8",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "oligopoly-game-theory-s2",
+   "q": "Why is the agreement to keep the quota hard to sustain?",
+   "options": [
+    "Keeping the quota gives each firm an economic loss each week",
+    "The two firms' combined profit is lower when both keep the quota",
+    "Producing more lowers each firm's profit whatever the other does",
+    "Each firm earns more by producing extra, whatever the other does"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Collusion pays the group, but each firm gains by cheating whatever the other does, and the agreement cannot be enforced in court. So each has an incentive to produce more.",
+    "options": [
+     "Keeping the quota gives each firm 50, the outcome with the most joint profit.",
+     "Joint profit is highest (100) when both keep the quota.",
+     "Producing more raises a firm's own profit against either choice.",
+     "Right: cheating is each firm's dominant strategy."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-9",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "matrix",
+   "practice": "3.A",
+   "stimulus": "oligopoly-game-theory-s3",
+   "q": "Mark each service's dominant strategy, if any, and every Nash equilibrium. (Payoffs are thousands of new subscribers; Orrin's are listed first.)",
+   "why": {
+    "correct": "Orrin: if Velo picks Friday, Tuesday is better (40 > 20); if Velo picks Tuesday, Friday is better (50 > 10). Its best choice changes, so it has no dominant strategy, and Velo's payoffs mirror Orrin's. There are two Nash equilibria, (Friday, Tuesday) and (Tuesday, Friday): in each, neither gains by switching alone."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Orrin",
+      "strategies": [
+       "Friday",
+       "Tuesday"
+      ]
+     },
+     {
+      "name": "Velo",
+      "strategies": [
+       "Friday",
+       "Tuesday"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       20,
+       20
+      ],
+      [
+       50,
+       40
+      ]
+     ],
+     [
+      [
+       40,
+       50
+      ],
+      [
+       10,
+       10
+      ]
+     ]
+    ],
+    "unit": "thousand",
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-10",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "oligopoly-game-theory-s3",
+   "q": "Which statement correctly shows that Orrin has no dominant strategy?",
+   "options": [
+    "40 > 20 if Velo picks Friday, but 50 > 10 if Velo picks Tuesday",
+    "50 is Orrin's largest payoff, and it is in the Friday row",
+    "40 > 20 if Velo picks Friday, so Tuesday is the better day",
+    "20 + 50 = 70 is more than 40 + 10 = 50, so Friday is better"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "No dominant strategy needs both comparisons, showing the best choice changes: Tuesday is better if Velo picks Friday (40 > 20), and Friday is better if Velo picks Tuesday (50 > 10).",
+    "options": [
+     "Right: the best choice changes with Velo's choice.",
+     "One large payoff says nothing about whether Friday wins both comparisons.",
+     "Check Velo picking Tuesday too: then Friday is better.",
+     "Adding a strategy's payoffs across the rival's choices is not how a best response is found."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-11",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "matrix",
+   "practice": "3.B",
+   "stimulus": "oligopoly-game-theory-s3",
+   "q": "A sponsor offers Velo 45 thousand extra subscribers if it releases on Tuesday, whatever Orrin does. Using the payoffs after this change, mark each service's dominant strategy, if any, and every Nash equilibrium.",
+   "why": {
+    "correct": "Velo's Tuesday payoffs rise to 85 and 55. Now Tuesday beats Friday for Velo whether Orrin picks Friday (85 > 20) or Tuesday (55 > 50): Tuesday is dominant. Orrin's best response to Tuesday is Friday (50 > 10), and Orrin still has no dominant strategy. The only Nash equilibrium is (Friday, Tuesday)."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Orrin",
+      "strategies": [
+       "Friday",
+       "Tuesday"
+      ]
+     },
+     {
+      "name": "Velo",
+      "strategies": [
+       "Friday",
+       "Tuesday"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       20,
+       20
+      ],
+      [
+       50,
+       40
+      ]
+     ],
+     [
+      [
+       40,
+       50
+      ],
+      [
+       10,
+       10
+      ]
+     ]
+    ],
+    "unit": "thousand",
+    "change": {
+     "player": 1,
+     "strategy": 1,
+     "amount": 45
+    },
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-12",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "oligopoly-game-theory-s3",
+   "q": "Before the sponsor's offer, why can game theory not predict which day each service will pick?",
+   "options": [
+    "There is no Nash equilibrium in the matrix",
+    "There are two Nash equilibria and no dominant strategies",
+    "Both services have a dominant strategy of Friday",
+    "The payoffs are new subscribers rather than dollars of profit, so it fails"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "There are two Nash equilibria and no dominant strategies, so the model says the outcome will be one of the two, each service on a different day, but not which one.",
+    "options": [
+     "Two cells are Nash equilibria: different days in each.",
+     "Right: either equilibrium is stable.",
+     "Neither has a dominant strategy: the best day depends on the rival's day.",
+     "Any payoff works in a matrix; the issue is that there are two equilibria."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-13",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In an oligopoly, why does each firm need to think about its rivals' choices?",
+   "options": [
+    "Each firm is a price taker that sells at the market price",
+    "There are so many firms that no one can affect the price",
+    "Each firm's choice changes its rivals' profits",
+    "Entry is easy, so new rivals arrive each week"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With only a few large firms, each one's price or output changes what the others earn: the firms are interdependent. That is why game theory is used to study oligopoly.",
+    "options": [
+     "Price takers ignore rivals; oligopolists cannot.",
+     "That describes perfect competition.",
+     "Right: interdependence is the mark of oligopoly.",
+     "Oligopolies usually have barriers to entry."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-14",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "matrix",
+   "practice": "3.A",
+   "q": "Two firms each decide whether to expand a factory this year; Firm A's payoff (profit in thousands of dollars) is listed first. If Firm B chooses Wait, what is Firm A's best response?",
+   "why": {
+    "correct": "Hold Firm B at Wait and compare only Firm A's payoffs in that column: Expand gives \\$45 and Wait gives \\$40, so Expand is the best response."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Firm A",
+      "strategies": [
+       "Expand",
+       "Wait"
+      ]
+     },
+     {
+      "name": "Firm B",
+      "strategies": [
+       "Expand",
+       "Wait"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       15,
+       25
+      ],
+      [
+       45,
+       10
+      ]
+     ],
+     [
+      [
+       30,
+       35
+      ],
+      [
+       40,
+       20
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "best"
+    ],
+    "ask": {
+     "best": {
+      "player": 0,
+      "given": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-15",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "matrix",
+   "practice": "3.A",
+   "q": "Using the same two firms (Firm A's payoff first), mark each firm's dominant strategy, if any, and every Nash equilibrium.",
+   "why": {
+    "correct": "Firm A: Wait is better if B expands (30 > 15), Expand is better if B waits (45 > 40): no dominant strategy. Firm B: Expand is better if A expands (25 > 10) and if A waits (35 > 20): Expand is dominant. Firm A's best response to Expand is Wait, so the Nash equilibrium is (Wait, Expand)."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Firm A",
+      "strategies": [
+       "Expand",
+       "Wait"
+      ]
+     },
+     {
+      "name": "Firm B",
+      "strategies": [
+       "Expand",
+       "Wait"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       15,
+       25
+      ],
+      [
+       45,
+       10
+      ]
+     ],
+     [
+      [
+       30,
+       35
+      ],
+      [
+       40,
+       20
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-16",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "matrix",
+   "practice": "3.A",
+   "q": "Nimbus Air (rows) and Corra Air (columns) are the only airlines on a route (invented). Nimbus's weekly profit, in thousands of dollars, is listed first. Mark each airline's dominant strategy, if any, and every Nash equilibrium.",
+   "why": {
+    "correct": "Nimbus: against Corra's Low fare, Medium gives 45 (more than 30 or 25); against High, Medium gives 70 (more than 50 or 60). Medium wins every comparison, so it is dominant. Corra: Low is better if Nimbus picks Low (35 > 20), High is better if Nimbus picks Medium (55 > 40): no dominant strategy. Corra's best response to Medium is High, so the Nash equilibrium is (Medium fare, High fare)."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Nimbus Air",
+      "strategies": [
+       "Low fare",
+       "Medium fare",
+       "High fare"
+      ]
+     },
+     {
+      "name": "Corra Air",
+      "strategies": [
+       "Low fare",
+       "High fare"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       30,
+       35
+      ],
+      [
+       50,
+       20
+      ]
+     ],
+     [
+      [
+       45,
+       40
+      ],
+      [
+       70,
+       55
+      ]
+     ],
+     [
+      [
+       25,
+       30
+      ],
+      [
+       60,
+       50
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-17",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A dominant strategy is a strategy that",
+   "options": [
+    "contains the largest single payoff in the matrix",
+    "gives the two players the largest combined payoff",
+    "the player chooses after first seeing what the rival did",
+    "beats its other strategies whatever the rival does"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A dominant strategy gives a player a higher payoff than any other strategy, whatever the other player chooses. It is proved with one comparison for each of the other player's choices.",
+    "options": [
+     "A large payoff in one cell does not make a strategy better against each choice of the rival.",
+     "That is the joint-profit cell, which is a different idea.",
+     "In these games the players choose at the same time.",
+     "Right: it wins against each choice of the rival."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-18",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A cell of a payoff matrix is a Nash equilibrium when",
+   "options": [
+    "neither player can gain by changing its strategy alone",
+    "it gives the largest combined payoff",
+    "both players earn the same payoff",
+    "one player earns its largest payoff in the matrix"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a Nash equilibrium each player is making its best response to the other's choice, so neither can gain by changing its own strategy alone.",
+    "options": [
+     "Right: each choice is a best response to the other.",
+     "The joint-payoff cell may not be stable; in a prisoner's dilemma it is not.",
+     "Equal payoffs have nothing to do with whether either player would switch.",
+     "The other player may want to switch from that cell."
+    ]
+   }
+  },
+  {
+   "id": "mic-oligopoly-game-theory-19",
+   "unit": "unit-4",
+   "topic": "oligopoly-game-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the answer: show that Low price is Ember Cafe's dominant strategy in the cafe game (Ember's payoff first: High/High 60, High/Low 20, Low/High 80, Low/Low 40).",
+   "why": {
+    "correct": "A dominant-strategy claim needs both comparisons, one for each of the rival's choices, with the numbers."
+   },
+   "specific": {
+    "frame": "If Tidewater prices high, Ember earns ___ from Low and 60 from High; if Tidewater prices low, Ember earns 40 from Low and ___ from High.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Low price is dominant for Ember because it gives a higher payoff whatever Tidewater does: if Tidewater prices high, Ember earns 80 from Low, more than 60 from High; if Tidewater prices low, Ember earns 40 from Low, more than 20 from High.",
+    "slots": {
+     "first": {
+      "label": "Low against a high rival price",
+      "options": [
+       "80",
+       "20"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "20 is Ember's payoff from High when Tidewater prices low; read Ember's payoff in the Low row, High column."
+      }
+     },
+     "second": {
+      "label": "High against a low rival price",
+      "options": [
+       "20",
+       "80"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "80 is Ember's payoff from Low when Tidewater prices high."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

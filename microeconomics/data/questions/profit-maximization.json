@@ -1,0 +1,688 @@
+{
+ "stimuli": {
+  "profit-maximization-s1": {
+   "kind": "data",
+   "title": "Marlowe Mug Works: output and total cost at a price of \\$20",
+   "invented": true,
+   "table": {
+    "caption": "Daily total cost of a pottery that sells every mug at \\$20, the price in a large market it cannot change (invented data for practice)",
+    "cols": [
+     "Mugs per day",
+     "Total cost (\\$)"
+    ],
+    "rows": [
+     [
+      "0",
+      "30"
+     ],
+     [
+      "1",
+      "42"
+     ],
+     [
+      "2",
+      "50"
+     ],
+     [
+      "3",
+      "60"
+     ],
+     [
+      "4",
+      "74"
+     ],
+     [
+      "5",
+      "92"
+     ],
+     [
+      "6",
+      "116"
+     ],
+     [
+      "7",
+      "146"
+     ]
+    ]
+   }
+  },
+  "profit-maximization-s2": {
+   "kind": "graph",
+   "title": "A firm's cost curves and the price it sells at",
+   "graph": {
+    "kind": "costs",
+    "line": {
+     "id": "P",
+     "at": 6.5
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-profit-maximization-1",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the marginal cost of the sixth mug, in dollars?",
+   "why": {
+    "correct": "Marginal cost = change in total cost / change in output = $\\frac{116 - 92}{6 - 5} = 24$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "costTable",
+     "args": [
+      [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      [
+       30,
+       42,
+       50,
+       60,
+       74,
+       92,
+       116,
+       146
+      ]
+     ],
+     "pick": "mc.6"
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "atc",
+       "args": [
+        116,
+        6
+       ]
+      },
+      "why": "That is the average total cost of six mugs (116 / 6). Marginal cost is the change in total cost per added mug."
+     },
+     {
+      "value": 116,
+      "why": "That is the total cost of six mugs. Subtract the total cost of five: 116 - 92."
+     }
+    ]
+   },
+   "stimulus": "profit-maximization-s1"
+  },
+  {
+   "id": "mic-profit-maximization-2",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. How many mugs a day maximize the firm's profit?",
+   "why": {
+    "correct": "Each mug adds \\$20 to revenue (MR = \\$20). MC is 12, 8, 10, 14, 18, 24 and 30. The fifth mug is the last with MR ≥ MC (20 ≥ 18); the sixth costs 24 > 20. Produce 5 mugs."
+   },
+   "numeric": {
+    "from": {
+     "fn": "profitMaxQ",
+     "args": [
+      [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      20,
+      [
+       null,
+       12,
+       8,
+       10,
+       14,
+       18,
+       24,
+       30
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "The sixth mug costs \\$24 to make and sells for \\$20, so making it lowers profit by \\$4. Stop at the last mug whose MR is at least its MC."
+     },
+     {
+      "value": 2,
+      "why": "Marginal cost is lowest at two mugs, but mugs three to five still add more to revenue (\\$20 each) than to cost."
+     }
+    ]
+   },
+   "stimulus": "profit-maximization-s1"
+  },
+  {
+   "id": "mic-profit-maximization-3",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the firm's profit at its profit-maximizing output, in dollars?",
+   "why": {
+    "correct": "Profit = TR - TC = $20 \\times 5 - 92 = 8$ dollars, the same as $(20 - 18.4) \\times 5 = 8$ using ATC = 92 / 5 = 18.4."
+   },
+   "numeric": {
+    "from": {
+     "fn": "profit",
+     "args": [
+      {
+       "fn": "totalRevenue",
+       "args": [
+        20,
+        5
+       ]
+      },
+      92
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "totalRevenue",
+       "args": [
+        20,
+        5
+       ]
+      },
+      "why": "That is total revenue. Subtract total cost, \\$92."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        20,
+        18
+       ]
+      },
+      "why": "That is the gain on the fifth mug alone (MR - MC). Profit is total revenue minus total cost for all five mugs."
+     }
+    ]
+   },
+   "stimulus": "profit-maximization-s1"
+  },
+  {
+   "id": "mic-profit-maximization-4",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. Why should the firm not make a sixth mug?",
+   "options": [
+    "Total cost rises when the sixth mug is made",
+    "Average total cost is above the price at six mugs",
+    "Its MC (\\$24) is above its MR (\\$20)",
+    "Marginal cost is rising at six mugs"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare the margin: the sixth mug adds \\$20 to revenue and \\$24 to cost, so profit falls by \\$4. Stop where MR = MC, or at the last unit with MR ≥ MC.",
+    "options": [
+     "Total cost rises with every mug; the test is whether it rises by more than revenue.",
+     "ATC at six mugs is about \\$19.33, below the \\$20 price; the test is MR against MC.",
+     "Right: the sixth mug lowers profit by \\$4.",
+     "MC is already rising from the third mug, and mugs four and five still add profit."
+    ]
+   },
+   "stimulus": "profit-maximization-s1"
+  },
+  {
+   "id": "mic-profit-maximization-5",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Use the table. What is the firm's average revenue when it sells 5 mugs?",
+   "options": [
+    "\\$20, the price of each mug",
+    "\\$100, the revenue from five mugs",
+    "\\$18.40, the cost of a mug on average",
+    "\\$8, the profit from five mugs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Average revenue is total revenue divided by quantity. When every unit sells at the same price, AR = MR = P = \\$20.",
+    "options": [
+     "Right: AR = TR / Q = 100 / 5 = 20, the price.",
+     "That is total revenue; divide by the five mugs.",
+     "That is average total cost (92 / 5).",
+     "That is profit, not revenue per mug."
+    ]
+   },
+   "stimulus": "profit-maximization-s1"
+  },
+  {
+   "id": "mic-profit-maximization-6",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the graph, the firm sells every unit at the price shown by the horizontal line. At which output does it maximize profit?",
+   "options": [
+    "Where ATC is at its lowest point",
+    "Where MC is at its lowest point",
+    "Where the price line meets ATC on the right",
+    "Where the price line crosses rising MC"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The horizontal line is d = MR = AR = P. Profit is largest where MR = MC, on the rising part of MC.",
+    "options": [
+     "That minimizes cost per unit, not profit; at this price more output adds to profit.",
+     "Past that point, units still add more to revenue than to cost.",
+     "Profit is zero there; the firm has gone too far.",
+     "Right: there MR = MC."
+    ]
+   },
+   "stimulus": "profit-maximization-s2"
+  },
+  {
+   "id": "mic-profit-maximization-7",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "In the graph, which area shows the firm's profit at its profit-maximizing output, q*?",
+   "options": [
+    "The rectangle from the price down to zero, from zero to q*",
+    "The rectangle from the price down to ATC, from zero to q*",
+    "The rectangle from ATC down to zero, from zero to q*",
+    "The area between the price line and MC"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Profit = TR - TC = (P - ATC) x q*. On the graph it is the rectangle between the price and ATC at q*, out to q*.",
+    "options": [
+     "That is total revenue.",
+     "Right: profit = (P - ATC) x q*.",
+     "That is total cost.",
+     "Profit uses ATC, the cost per unit, not MC."
+    ]
+   },
+   "stimulus": "profit-maximization-s2"
+  },
+  {
+   "id": "mic-profit-maximization-8",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the graph, the price falls until the price line just touches the lowest point of ATC. The firm's best output now earns",
+   "options": [
+    "a profit, because MR still equals MC",
+    "zero economic profit: price equals ATC",
+    "a loss, because the price fell",
+    "a profit, because MC is below the price"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Where the price line touches the bottom of ATC, MR = MC there and P = ATC, so economic profit is zero: the break-even point.",
+    "options": [
+     "MR = MC gives the best output, but at that output P = ATC, so profit is zero.",
+     "Right: P = ATC, so revenue just covers every cost, a normal profit.",
+     "The price is still high enough to cover ATC at that output.",
+     "At the new best output MC equals the price."
+    ]
+   },
+   "stimulus": "profit-maximization-s2"
+  },
+  {
+   "id": "mic-profit-maximization-9",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "The firm sells at a price set in a large market. Label the axes and the curves of the firm's graph, including its demand curve.",
+   "why": {
+    "correct": "Price and cost on the vertical axis, quantity of output across. The horizontal line is d = MR = AR = P: every unit sells at P, so P is the firm's demand, its average revenue and its marginal revenue."
+   },
+   "graph": {
+    "kind": "costs",
+    "line": {
+     "id": "P",
+     "at": 6.5
+    },
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-profit-maximization-10",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The left panel shows the market; the firm in the right panel sells every unit at the market price. Mark the firm's profit-maximizing quantity on its demand curve.",
+   "why": {
+    "correct": "The firm's demand is the horizontal line at the market price, d = MR = AR = P. It produces where that line crosses MC: MR = MC."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "point"
+    ],
+    "pointLabel": "q*",
+    "key": {
+     "point": {
+      "at": "firm"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-profit-maximization-11",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Shade the firm's economic profit.",
+   "why": {
+    "correct": "Profit is the rectangle between the price (top edge) and ATC at the profit-maximizing quantity (bottom edge), from zero to that quantity."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "profit"
+    },
+    "slips": {
+     "tr": "That is total revenue, out from zero to the price. Profit is only the part above ATC."
+    }
+   }
+  },
+  {
+   "id": "mic-profit-maximization-12",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Draw the firm's demand curve at the price set in the market panel.",
+   "why": {
+    "correct": "The firm sells as much as it wants at the market price, so its demand is a horizontal line at that price: d = MR = AR = P."
+   },
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "to": "eq"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-profit-maximization-13",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Marginal revenue is",
+   "options": [
+    "total revenue divided by the quantity sold",
+    "total revenue minus total cost",
+    "the price times the quantity sold",
+    "the extra revenue from one more unit"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Marginal revenue is the extra revenue from one more unit sold: the change in total revenue divided by the change in quantity.",
+    "options": [
+     "That is average revenue.",
+     "That is profit.",
+     "That is total revenue.",
+     "Right: MR = ΔTR / ΔQ."
+    ]
+   }
+  },
+  {
+   "id": "mic-profit-maximization-14",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A firm's total revenue rises from \\$400 to \\$460 when it sells 25 units instead of 20. What is its marginal revenue per unit, in dollars?",
+   "why": {
+    "correct": "MR = $\\frac{460 - 400}{25 - 20} = \\frac{60}{5} = 12$ dollars per unit."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalRevenue",
+     "args": [
+      400,
+      460,
+      20,
+      25
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "That is the change in total revenue for all 5 units. Divide by the change in quantity, 5."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        460,
+        25
+       ]
+      },
+      "why": "That is average revenue at 25 units (460 / 25). Marginal revenue uses the changes."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-profit-maximization-15",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "At a firm's current output, marginal revenue is \\$15 and marginal cost is \\$11. To raise profit, the firm should",
+   "options": [
+    "produce more, as MR exceeds MC",
+    "produce less, because cost is rising",
+    "keep output the same, because it earns a profit",
+    "raise its price above \\$15"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "While MR > MC, each extra unit adds MR - MC to profit. The firm expands until MR = MC.",
+    "options": [
+     "Right: MR > MC, so more output raises profit.",
+     "Rising cost matters only when it passes MR; here MR is still larger.",
+     "Profit is not yet as large as it can be while MR > MC.",
+     "The question is about output at the given price."
+    ]
+   }
+  },
+  {
+   "id": "mic-profit-maximization-16",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the explanation specific: why does a firm produce where MR = MC? Fill in each blank.",
+   "why": {
+    "correct": "The marginal rule: produce every unit whose marginal revenue is at least its marginal cost, which ends where MR = MC."
+   },
+   "specific": {
+    "frame": "Below that output each unit adds ___ to revenue than to cost, so producing it raises profit; above it each unit adds ___ to cost than to revenue, so profit ___.",
+    "slots": {
+     "below": {
+      "label": "Below the output",
+      "options": [
+       "more",
+       "less"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Below the output where MR = MC, MR is greater than MC, so units add more to revenue."
+      }
+     },
+     "above": {
+      "label": "Above the output",
+      "options": [
+       "more",
+       "less"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Above it, MC is greater than MR, so units add more to cost."
+      }
+     },
+     "profit": {
+      "label": "Profit",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A unit that adds more to cost than to revenue lowers profit."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Below that output each unit adds more to revenue than to cost, so producing it raises profit; above it each unit adds more to cost than to revenue, so profit falls. Profit is greatest where MR = MC because no unit is left that would raise it."
+   }
+  },
+  {
+   "id": "mic-profit-maximization-17",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A firm sells 200 units at a price of \\$12. Its average total cost at that output is \\$9. What is its profit, in dollars?",
+   "why": {
+    "correct": "Profit = (P - ATC) x Q = $(12 - 9) \\times 200 = 600$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "unitProfit",
+     "args": [
+      12,
+      9,
+      200
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        12,
+        9
+       ]
+      },
+      "why": "That is the profit on each unit. Multiply by the 200 units."
+     },
+     {
+      "from": {
+       "fn": "totalRevenue",
+       "args": [
+        12,
+        200
+       ]
+      },
+      "why": "That is total revenue. Subtract total cost, 9 x 200 = 1,800."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-profit-maximization-18",
+   "unit": "unit-3",
+   "topic": "profit-maximization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.A",
+   "q": "A firm sells every unit at the same price and produces where MR = MC. Which statements must hold at that output? Select all that apply.",
+   "options": [
+    "Producing one more unit would add more to cost than to revenue",
+    "Price equals marginal cost",
+    "Average total cost is at its lowest point",
+    "Marginal cost is at its lowest point"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "At the profit-maximizing output MR = MC, and with a constant price MR = P. That output is not where any cost curve bottoms out.",
+    "options": [
+     "True: past that output MC is above MR.",
+     "True: when every unit sells at the same price, MR = P, so P equals MC there.",
+     "False: the best output depends on the price; it is at the lowest point of ATC only when P = ATC there.",
+     "False: the firm produces on the rising part of MC."
+    ]
+   }
+  }
+ ]
+}

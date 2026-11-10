@@ -1,0 +1,83 @@
+{
+ "topic": "price-discrimination",
+ "hook": "Two people sit side by side on the same flight. One paid \\$90 because she booked a month ahead; the other paid \\$260 because he booked yesterday. The seat cost the airline the same. Why would a seller charge two prices for one product, and who wins?",
+ "prereq": [
+  {
+   "q": "A monopolist produces where",
+   "options": [
+    "MR = MC, with the price read from demand",
+    "P = MC",
+    "P = ATC",
+    "MR = 0"
+   ],
+   "correct": 0,
+   "why": "Quantity from MR = MC, price from demand above it.",
+   "review": "monopoly"
+  },
+  {
+   "q": "Demand with a price elasticity of 2.5 (absolute value) is",
+   "options": [
+    "elastic",
+    "inelastic",
+    "unit elastic",
+    "perfectly inelastic"
+   ],
+   "correct": 0,
+   "why": "Greater than 1 means elastic: buyers are very sensitive to price.",
+   "review": "price-elasticity-demand"
+  },
+  {
+   "q": "Consumer surplus is the area",
+   "options": [
+    "under demand and above the price, out to the quantity bought",
+    "under the price and above supply",
+    "between demand and MC beyond the quantity sold",
+    "under the MC curve"
+   ],
+   "correct": 0,
+   "why": "It is what buyers would pay minus what they do pay.",
+   "review": "equilibrium-surplus"
+  }
+ ],
+ "figure": {
+  "figure": "price-discrimination-perfect",
+  "caption": "With one price, the monopolist stops at QM and leaves a deadweight loss. With perfect price discrimination, MR is the demand curve, so it produces QE where D = MC: consumer surplus and deadweight loss are zero, and all surplus is profit."
+ },
+ "chain": [
+  {
+   "cause": "A firm with market power can sort buyers and stop resale",
+   "effect": "it can charge different groups different prices"
+  },
+  {
+   "cause": "It charges the less elastic group more and the more elastic group less",
+   "effect": "it captures more of buyers' willingness to pay, so profit rises"
+  },
+  {
+   "cause": "With perfect price discrimination one more sale does not lower any other price",
+   "effect": "MR equals the price, so the MR curve is the demand curve"
+  },
+  {
+   "cause": "It produces where demand meets MC",
+   "effect": "output is the efficient quantity: deadweight loss is zero, consumer surplus is zero, and all surplus is profit"
+  }
+ ],
+ "ideas": [
+  "<b>Price discrimination</b>: selling the same good at different prices to different buyers, for reasons other than cost.",
+  "Three conditions: <b>market power</b>, a way to <b>sort buyers</b> by elasticity, and a way to <b>stop resale</b>.",
+  "The <b>less elastic</b> group pays the higher price; the <b>more elastic</b> group pays less.",
+  "<b>Perfect price discrimination</b>: each buyer pays the most they will pay. MR = D, so Q is where <b>D = MC</b>: no deadweight loss, no consumer surplus, all surplus is profit."
+ ],
+ "misconception": {
+  "wrong": "Perfect price discrimination makes consumers better off, because it removes the deadweight loss.",
+  "right": "The deadweight loss disappears, so total surplus is as large as it can be, but every bit of it goes to the firm: consumer surplus falls to zero. Efficiency and fairness are different questions."
+ },
+ "check": [
+  "mic-price-discrimination-12",
+  "mic-price-discrimination-1",
+  "mic-price-discrimination-2",
+  "mic-price-discrimination-3",
+  "mic-price-discrimination-15",
+  "mic-price-discrimination-14"
+ ],
+ "summary": "Price discrimination is charging different buyers different prices for the same good when costs do not differ. It needs market power, a way to sort buyers and a way to stop resale, and it charges the higher price to the less elastic group. It raises the firm's profit and usually its output. With perfect price discrimination, each buyer pays the most they will pay, so the MR curve is the demand curve and the firm produces where demand meets MC: the efficient quantity, with no deadweight loss and no consumer surplus."
+}

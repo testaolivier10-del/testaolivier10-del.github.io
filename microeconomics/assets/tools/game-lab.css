@@ -30,6 +30,7 @@
 .gl-in{width:4.2em;min-height:40px;margin:2px;padding:0 6px;border:1.5px solid var(--line);border-radius:8px;font:700 14px var(--font-mono);background:var(--white,#fff);color:var(--ink);}
 .gl-in.is-a{color:var(--cink);}
 .gl-tie{color:var(--accent,#C24E00);}
+.gl-qcap{max-width:36em;margin:0 auto;text-align:center;font:600 14px/1.4 var(--font-ui) !important;}
 .gl-qfig{display:flex;flex-direction:column;gap:8px;justify-content:center;}
 .gl-qmx{display:flex;flex-direction:column;justify-content:center;}
 .gl-qnote{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
@@ -43,7 +44,10 @@
 }
 @media (prefers-reduced-motion:reduce){ .gl-mx .mic-mx-cell{transition:none;} }
 @media (min-width:1000px){
-  .gl-mx .mic-mx{font-size:18px;border-spacing:6px;}
+  .gl-mx .mic-mx,.gl-qmx .mic-mx{font-size:18px;border-spacing:6px;}
+  .gl-qmx .mic-mx-cell{min-width:120px;}
+  .gl-qmx .mic-mx-btn{min-height:72px;}
+  .gl-qmx .mic-mx-cell:not(:has(button)){padding:22px 16px;}
   .gl-mx .mic-mx-cell{min-width:140px;}
   .gl-mx .mic-mx-btn{min-height:84px;}
   .gl-mx .mic-mx-st{font-size:15px;}

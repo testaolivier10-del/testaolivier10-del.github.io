@@ -1,0 +1,505 @@
+{
+ "stimuli": {
+  "scarcity-s1": {
+   "kind": "data",
+   "title": "Harbor Lane Print Shop's Saturday",
+   "invented": true,
+   "table": {
+    "caption": "Jobs the shop could print on its one press this Saturday, and what each is worth to the shop after materials (invented data for practice)",
+    "cols": [
+     "Job",
+     "Worth to the shop (\\$)"
+    ],
+    "rows": [
+     [
+      "Wedding invitations",
+      "900"
+     ],
+     [
+      "Store banners",
+      "650"
+     ],
+     [
+      "Cafe menus",
+      "400"
+     ]
+    ]
+   }
+  },
+  "scarcity-s2": {
+   "kind": "text",
+   "title": "Juniper Ridge Bike Co. starts up",
+   "text": "<p>Ana Ruiz quits her job and puts her savings into a bike repair company, Juniper Ridge Bike Co. She rents a lot beside a river and uses its water to wash bikes. She hires two mechanics, buys wrenches, a repair stand and a delivery van, and spends her evenings deciding which repairs to offer and what to charge. (An invented company.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-scarcity-1",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does scarcity mean in economics?",
+   "options": [
+    "A good has run out in stores",
+    "People with low incomes face it, but others do not",
+    "Resources are limited while wants are unlimited",
+    "Prices are higher than people would like"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Scarcity is the gap between limited resources and unlimited wants. It is always present, not just when shelves are empty.",
+    "options": [
+     "A store running out is a stock-out at one moment; scarcity never goes away.",
+     "Rich people, firms and governments face scarcity too, at least of time.",
+     "Right: limited resources, unlimited wants.",
+     "High prices can follow from scarcity, but they are not what it means."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-2",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A billionaire has more money than she could ever spend. Does she face scarcity?",
+   "options": [
+    "Yes: her time is still limited",
+    "No: with enough money nothing is scarce",
+    "No: scarcity is a problem that firms face, not people",
+    "Yes, but just in years when prices are rising"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Money does not create more hours in a day. Every choice of how to spend her time still gives something up.",
+    "options": [
+     "Right: time is scarce for everyone.",
+     "Money cannot buy more hours, so some choices still give things up.",
+     "Households and governments face scarcity too.",
+     "Scarcity does not depend on the price level."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-3",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is capital, as a factor of production?",
+   "options": [
+    "Cash in the bakery's bank account",
+    "The baker's skill at decorating cakes",
+    "The wheat grown on a farm",
+    "An oven in a bakery"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Capital means goods made to produce other goods: tools, machines and buildings. An oven qualifies.",
+    "options": [
+     "Money buys capital but is not itself a factor of production.",
+     "Effort and skill are labor.",
+     "Crops and other natural resources fall under land.",
+     "Right: a machine used to make bread."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-4",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Why is a well-known recipe less scarce than the flour used to bake it?",
+   "options": [
+    "A recipe takes no time or effort to invent at first",
+    "Many can use it at once without using it up",
+    "Flour is a form of capital",
+    "Recipes are produced by the government"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Using flour uses it up, but one baker following a recipe does not stop another from following it too. Knowledge like this is not scarce in the usual way.",
+    "options": [
+     "Inventing a recipe takes time and effort; what matters is that using it does not use it up.",
+     "Right: shared use does not use it up.",
+     "Flour is a raw material from land, not capital, and that is not the reason.",
+     "Recipes come from many people, and who made one does not matter here."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-5",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A free concert is held on a weeknight. For a student who would otherwise work a \\$50 shift, what is the opportunity cost of going?",
+   "options": [
+    "Zero, because the ticket is free",
+    "The \\$50 shift she gives up",
+    "The price other people pay for concerts",
+    "The cost of the band's equipment"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The ticket price is zero, but going means giving up her next-best use of the evening: a shift worth \\$50.",
+    "options": [
+     "A free ticket still costs the time, and the time had another use.",
+     "Right: the next-best use of her time.",
+     "Other people's prices are not what she gives up.",
+     "The band's costs are not a choice she makes."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-6",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "scarcity-s1",
+   "q": "The shop chooses the wedding invitations. What is the opportunity cost of that choice, in dollars?",
+   "why": {
+    "correct": "The next-best job is the banners, worth \\$650. Only one other job could have been printed, so the opportunity cost is $\\max(650, 400) = 650$ dollars."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "max",
+     "args": [
+      650,
+      400
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        650,
+        400
+       ]
+      },
+      "why": "That adds both jobs, but the press could print only one of them. The opportunity cost is the single next-best job."
+     },
+     {
+      "value": 900,
+      "why": "That is the value of the job the shop chose. The opportunity cost is what it gave up: the next-best job."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-7",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "scarcity-s1",
+   "q": "Suppose the shop prints the store banners instead. What is the opportunity cost of that choice, in dollars?",
+   "why": {
+    "correct": "With the banners chosen, the next-best job is the wedding invitations, worth \\$900."
+   },
+   "numeric": {
+    "unit": "$",
+    "from": {
+     "fn": "max",
+     "args": [
+      900,
+      400
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        900,
+        400
+       ]
+      },
+      "why": "Only one other job could be printed. Take the best of the two, not their sum."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-8",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "scarcity-s1",
+   "q": "Why is printing the wedding invitations the best choice for the shop?",
+   "options": [
+    "It has no opportunity cost",
+    "Its opportunity cost, \\$1,050, is the lowest",
+    "It takes up less time on the press than either of the other jobs",
+    "Its \\$900 value beats its \\$650 opportunity cost"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A choice is worth making when its value is greater than the value of the next-best option it gives up: 900 > 650.",
+    "options": [
+     "Every choice has an opportunity cost; here it is \\$650.",
+     "\\$1,050 adds both other jobs, which is not the opportunity cost.",
+     "Each job takes the press for the whole Saturday.",
+     "Right: 900 is more than 650."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-9",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "scarcity-s1",
+   "q": "A cafe raises its offer for the menus so they are worth \\$1,000 to the shop. What happens to the opportunity cost of printing the wedding invitations?",
+   "options": [
+    "It rises to \\$1,000, more than the invitations are worth",
+    "It stays at \\$650, because the banners still count",
+    "It falls to \\$400, the value of the job left over",
+    "It rises to \\$1,650"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Now the next-best job is the menus at \\$1,000. The invitations, worth \\$900, would give up more than they bring in.",
+    "options": [
+     "Right: the menus become the next best.",
+     "The next-best option changed, so the opportunity cost changed.",
+     "The menus are now the most valuable alternative, not the least.",
+     "That adds two jobs; only the single next-best counts."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-10",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s2",
+   "q": "Which factor of production are the wrenches, the repair stand and the delivery van?",
+   "options": [
+    "Land",
+    "Labor",
+    "Capital",
+    "Entrepreneurship"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Tools, machines and vehicles made to produce other goods and services are capital.",
+    "options": [
+     "Land means natural resources such as the lot and the river water.",
+     "Labor is the mechanics' effort.",
+     "Right: tools and machines are capital.",
+     "Entrepreneurship is Ana's organizing and risk taking."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-11",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s2",
+   "q": "Which factor of production is the river water Ana uses to wash bikes?",
+   "options": [
+    "Capital",
+    "Labor",
+    "Entrepreneurship",
+    "Land"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In economics, land means every natural resource: soil, water, minerals and the ground itself.",
+    "options": [
+     "Capital is made by people; river water is not.",
+     "Water is not human effort.",
+     "Water is not the act of organizing a business.",
+     "Right: a natural resource."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-12",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "scarcity-s2",
+   "q": "Which factor of production does Ana supply by quitting her job, risking her savings and deciding what to offer and charge?",
+   "options": [
+    "Labor",
+    "Capital",
+    "Entrepreneurship",
+    "Land"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Organizing the other factors and bearing the risk of the business is entrepreneurship.",
+    "options": [
+     "Labor is the mechanics' repair work; Ana's role here is organizing and risk.",
+     "Her savings buy capital, but risking them and running the business is entrepreneurship.",
+     "Right: organizing and taking the risk.",
+     "Land is natural resources."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-13",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "scarcity-s2",
+   "q": "What is the opportunity cost of Ana starting the company?",
+   "options": [
+    "Zero, because she owns the company",
+    "Her next-best option, such as her old job's pay",
+    "The rent on the lot and nothing else",
+    "Everything she could have done with the money and time, added up"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Starting the company meant giving up her next-best alternative, most likely her old job and what it paid.",
+    "options": [
+     "Owning a business does not erase what she gave up to start it.",
+     "Right: her next-best alternative.",
+     "Rent is a payment she makes, but the opportunity cost of the choice is her best alternative.",
+     "Only the next-best alternative counts, not every possibility."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-14",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A city spends \\$2 million on a new park instead of fixing roads. Which idea does this show?",
+   "options": [
+    "A trade-off: the park money cannot also fix roads",
+    "Scarcity does not apply to governments",
+    "The park has no opportunity cost because it is public",
+    "The roads will be fixed for free"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Governments face scarcity too. Using money for one project means it is not available for another.",
+    "options": [
+     "Right: one use gives up the other.",
+     "Governments have limited budgets, so they face scarcity.",
+     "Public projects still give up other uses of the money.",
+     "Fixing roads takes resources that now went to the park."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-15",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "A pizzeria uses each of these. Which are labor? Select all that apply.",
+   "options": [
+    "The cooks who make the pizzas",
+    "The drivers who deliver them",
+    "The pizza ovens",
+    "The tomatoes from a nearby farm"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Labor is human effort used in production: cooking and delivering both count.",
+    "options": [
+     "Right: the cooks' effort is labor.",
+     "Right: the drivers' effort is labor.",
+     "Ovens are capital.",
+     "Farm produce comes from land, a natural resource."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-16",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A student says, \"My opportunity cost of studying tonight is the money I spent on my textbook.\" What is wrong with this?",
+   "options": [
+    "Nothing: past spending is the opportunity cost",
+    "Studying has no opportunity cost",
+    "The textbook money is gone either way; the cost is tonight's next-best use",
+    "The opportunity cost is the price of a brand-new copy of the textbook"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Opportunity cost looks forward: what you give up by choosing this over your next-best option now. Money already spent is not given up by tonight's choice.",
+    "options": [
+     "Money spent in the past is not given up by a choice made now.",
+     "Every use of time gives up some other use.",
+     "Right: it is the next-best use of the evening.",
+     "Buying a new book is not what tonight's choice gives up."
+    ]
+   }
+  },
+  {
+   "id": "mic-scarcity-17",
+   "unit": "unit-1",
+   "topic": "scarcity",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the steps for finding the opportunity cost of a choice in order.",
+   "options": [
+    "List the options you could choose",
+    "Pick the option you choose",
+    "Find the best of the options left over",
+    "Its value is the opportunity cost"
+   ],
+   "why": {
+    "correct": "List the choices, set aside the one you take, and the best remaining one is what you give up."
+   }
+  }
+ ]
+}

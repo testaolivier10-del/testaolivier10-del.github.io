@@ -31,7 +31,7 @@
   "Label both axes every time. An unlabeled axis loses the graph point on the exam."
  ],
  "misconception": {
-  "wrong": "The ordered pair (80, 3) on a price and quantity graph means a price of \\$80 and 80 tacos is not on the graph.",
+  "wrong": "On a graph with tacos across and price up, the ordered pair (80, 3) means 3 tacos at a price of \\$80.",
   "right": "The first number is always the horizontal value. With quantity across and price up, (80, 3) means 80 tacos at a price of \\$3."
  },
  "check": [

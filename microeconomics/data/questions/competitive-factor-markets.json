@@ -1,0 +1,677 @@
+{
+ "stimuli": {
+  "competitive-factor-markets-s1": {
+   "kind": "data",
+   "title": "Hiring at the Larkspur furniture workshop",
+   "invented": true,
+   "table": {
+    "caption": "Chairs per week at the invented Larkspur workshop, which sells chairs in a perfectly competitive market at \\$20 each and hires carpenters in a perfectly competitive labor market (invented data for practice)",
+    "cols": [
+     "Carpenters",
+     "Total product (chairs per week)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0"
+     ],
+     [
+      "1",
+      "10"
+     ],
+     [
+      "2",
+      "18"
+     ],
+     [
+      "3",
+      "25"
+     ],
+     [
+      "4",
+      "31"
+     ],
+     [
+      "5",
+      "36"
+     ],
+     [
+      "6",
+      "40"
+     ]
+    ]
+   }
+  },
+  "competitive-factor-markets-s2": {
+   "kind": "text",
+   "title": "Workers or kiln time at Ortolan Ceramics",
+   "text": "<p>Ortolan Ceramics (invented) makes bowls with workers and rented kiln time, and it buys both in competitive markets. The last worker-hour it uses adds 40 bowls and costs \\$20. The last hour of kiln time adds 90 bowls and costs \\$30. The owner wants to make the same number of bowls at the lowest cost.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-competitive-factor-markets-1",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the side-by-side graphs of a perfectly competitive labor market and one firm that hires in it: both pairs of axes, the market curves, the firm's MRP curve and the firm's labor supply line.",
+   "why": {
+    "correct": "Both panels have Wage on the vertical axis and Quantity of labor on the horizontal axis. The market has DL and SL. The firm has its MRP curve and a horizontal line at the market wage labeled S = MFC = W."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-2",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "On the firm's graph, draw the firm's labor supply (marginal factor cost) line at the right height.",
+   "why": {
+    "correct": "The firm is a wage taker: it can hire as many workers as it wants at the wage set where DL meets SL, and each added worker costs that wage. So S = MFC = W is horizontal at the market wage, carried across from the market graph."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "line"
+    ],
+    "key": {
+     "line": {
+      "to": "eq"
+     }
+    },
+    "slips": {
+     "MRP": "MRP is the firm's demand for labor. The firm's supply line is horizontal at the wage the market sets."
+    }
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-3",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "On the firm's graph, mark the number of workers the firm hires to maximize profit.",
+   "why": {
+    "correct": "The firm hires where MRP = MFC: where its MRP curve meets the horizontal wage line. Before that point each worker adds more revenue than the wage; after it, less."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "firm"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-4",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new law limits the hours each worker in this industry may work, so fewer hours of labor are offered at each wage. Shift the right curve in the labor market, then draw the firm's new wage line.",
+   "why": {
+    "correct": "Labor supply (SL) shifts left in the market, so the market wage rises. The firm takes the higher wage: its S = MFC = W line moves up to the new market wage."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "shift",
+     "line"
+    ],
+    "movable": [
+     "DL",
+     "SL"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "SL",
+       "dir": "left"
+      }
+     ],
+     "because": "a law that cuts the hours of labor offered",
+     "line": {
+      "to": "eq"
+     }
+    },
+    "slips": {
+     "DL": "The law changes how much labor is offered, the supply side; firms' demand is unchanged."
+    }
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-5",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "In the same industry, many new firms open and hire this kind of worker, while one existing firm's MRP does not change. Shift the right curve in the labor market and mark how many workers the existing firm now hires.",
+   "why": {
+    "correct": "More firms raise market labor demand: DL shifts right and the wage rises. The existing firm takes the higher wage, and where its unchanged MRP curve meets the higher wage line it hires fewer workers."
+   },
+   "graph": {
+    "kind": "labor",
+    "do": [
+     "shift",
+     "point"
+    ],
+    "movable": [
+     "DL",
+     "SL"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "DL",
+       "dir": "right"
+      }
+     ],
+     "because": "more firms hiring this kind of worker",
+     "point": {
+      "at": "firm"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-6",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the marginal revenue product of the fifth carpenter, in dollars per week?",
+   "stimulus": "competitive-factor-markets-s1",
+   "why": {
+    "correct": "The fifth carpenter adds 36 - 31 = 5 chairs, and each sells for \\$20, so MRP = MP × P = 5 × \\$20 = \\$100."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrp",
+     "args": [
+      5,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        36,
+        20
+       ]
+      },
+      "why": "\\$720 is the revenue from all five carpenters' chairs. MRP uses the fifth carpenter's marginal product: 5 chairs."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        6,
+        20
+       ]
+      },
+      "why": "\\$120 is the fourth carpenter's MRP (6 chairs). The fifth adds 36 - 31 = 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-7",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "Use the table. The market wage is \\$110 per week. How many carpenters does the workshop hire to maximize profit?",
+   "stimulus": "competitive-factor-markets-s1",
+   "why": {
+    "correct": "MRPs are \\$200, \\$160, \\$140, \\$120, \\$100 and \\$80. Hire while MRP is at least the wage (MRP ≥ MRC = \\$110): the fourth carpenter adds \\$120, the fifth only \\$100. So hire 4."
+   },
+   "numeric": {
+    "from": {
+     "fn": "hireCount",
+     "args": [
+      [
+       200,
+       160,
+       140,
+       120,
+       100,
+       80
+      ],
+      110
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "Every carpenter adds some revenue, but the fifth and sixth add less than the \\$110 they cost. Stop at the last one whose MRP is at least the wage."
+     },
+     {
+      "value": 5,
+      "why": "The fifth carpenter's MRP is \\$100, below the \\$110 wage, so hiring her lowers profit."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-8",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Use the table. The market wage rises from \\$110 to \\$130 per week. How many carpenters does the workshop now hire?",
+   "stimulus": "competitive-factor-markets-s1",
+   "options": [
+    "4",
+    "2",
+    "3",
+    "5"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A higher wage is a movement up along the firm's MRP curve: fewer workers are worth hiring.",
+    "options": [
+     "The fourth carpenter's MRP, \\$120, is now below the \\$130 wage.",
+     "The third carpenter still adds \\$140, more than the \\$130 wage.",
+     "Right: the third carpenter's MRP (\\$140) is at least \\$130, but the fourth's (\\$120) is not.",
+     "A higher wage means fewer hires, not more."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-9",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Use the table. The workshop's rent rises by \\$500 a week, a fixed cost. The wage stays at \\$110. What happens to the number of carpenters it hires?",
+   "stimulus": "competitive-factor-markets-s1",
+   "options": [
+    "It stays at 4: rent changes neither MRP nor MRC",
+    "It falls to 3, so the workshop can save on total costs",
+    "It rises to 5, to cover the higher rent",
+    "It falls to 0, because profit is lower"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hiring depends on marginal values only: MRP and MRC. A fixed cost lowers profit but leaves hiring unchanged.",
+    "options": [
+     "Right: a fixed cost is paid whatever the number hired, so the comparison of MRP with the wage does not change.",
+     "Firing a carpenter whose MRP exceeds the wage would lower profit further; rent is paid either way.",
+     "The fifth carpenter adds \\$100 and costs \\$110, so she lowers profit whatever the rent.",
+     "Lower profit does not change which carpenters add more than they cost."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-10",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "In the scenario, what is the marginal product per dollar of labor, in bowls per dollar?",
+   "stimulus": "competitive-factor-markets-s2",
+   "why": {
+    "correct": "MP per dollar = MP ÷ price of the input = 40 ÷ \\$20 = 2 bowls per dollar."
+   },
+   "numeric": {
+    "from": {
+     "fn": "perDollar",
+     "args": [
+      40,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        20,
+        40
+       ]
+      },
+      "why": "0.5 divides the wage by MP. Put the marginal product on top: bowls per dollar."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        40,
+        20
+       ]
+      },
+      "why": "800 multiplies. The rule compares output per dollar spent, MP ÷ price."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-11",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, how should Ortolan change its mix of inputs to make the same output at a lower cost?",
+   "stimulus": "competitive-factor-markets-s2",
+   "options": [
+    "Use more worker-hours and less kiln time",
+    "Keep the mix, because a kiln hour adds more bowls than a worker-hour",
+    "Keep the mix, because the kiln costs more per hour than a worker",
+    "Use more kiln time and fewer worker-hours"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The least-cost rule: MP of labor ÷ wage = MP of capital ÷ rental price. Here 2 < 3, so move spending toward capital.",
+    "options": [
+     "Labor gives only 2 bowls per dollar against 3 for kiln time.",
+     "Compare output per dollar, not output alone: 90 ÷ \\$30 = 3 and 40 ÷ \\$20 = 2.",
+     "A higher price alone does not decide it; kiln time still gives more bowls per dollar.",
+     "Right: kiln time gives 3 bowls per dollar and labor 2, so shifting spending toward kiln time makes the same bowls for less."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-12",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, Ortolan rents more kiln time and uses fewer worker-hours. What happens to the two \"per dollar\" numbers as it does?",
+   "stimulus": "competitive-factor-markets-s2",
+   "options": [
+    "Both rise, because the cost of making each bowl falls",
+    "Kiln time's falls and labor's rises, until they are equal",
+    "Kiln time's rises and labor's falls",
+    "Neither changes, because the prices of both inputs are fixed"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As more kiln time is used its MP falls, and as fewer worker-hours are used their MP rises. The firm stops when MP per dollar is the same for both.",
+    "options": [
+     "Each input's MP changes in opposite directions as the mix shifts.",
+     "Right: diminishing marginal returns lower the MP of the input used more and raise the MP of the input used less.",
+     "Using more of an input lowers its marginal product, not raises it.",
+     "Prices are fixed, but marginal products change as the amounts used change."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-13",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Suppose the bowls sell for \\$1 each, so each input's MRP equals its MP in dollars. Ortolan adjusts until labor and kiln time each give 1.5 bowls per dollar. Is it maximizing profit?",
+   "stimulus": "competitive-factor-markets-s2",
+   "options": [
+    "Yes: the two ratios are equal, so profit is already as large as it can be",
+    "No: each input adds more than it costs, so it should use more of both",
+    "No: it should use less of both inputs",
+    "Yes: any ratio above 1 means the firm earns a profit"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Least cost: MP/price equal across inputs. Most profit: each input hired until MRP = its price, so MRP ÷ price = 1 for every input.",
+    "options": [
+     "Equal ratios give the cheapest way to make this output, not the best output. Profit maximization also needs MRP = input price.",
+     "Right: MRP ÷ price = 1.5 for each input means each adds \\$1.50 per dollar spent; profit rises until each ratio is 1 (MRP = price of the input).",
+     "Each dollar spent brings back \\$1.50, so using less would lower profit.",
+     "A profit is not the most profit; each extra unit of input would still add more than it costs."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-14",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why is a firm in a perfectly competitive labor market called a wage taker?",
+   "options": [
+    "It pays each worker the value of that worker's output",
+    "It takes a share of each worker's wage as profit",
+    "It sets the wage where its MRP is highest",
+    "It is too small a buyer of labor to change the wage"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Like a price taker in a product market, a wage taker faces a horizontal supply of labor at the market wage: S = MFC = W.",
+    "options": [
+     "Every worker gets the same market wage; pay is not set worker by worker.",
+     "Profit is revenue minus cost; \"taker\" refers to taking the wage as given.",
+     "A wage taker does not set the wage; the market does.",
+     "Right: it takes the wage set by market labor demand and supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-15",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the profit-maximizing hiring rule for any firm?",
+   "options": [
+    "Hire until marginal revenue product equals marginal resource cost",
+    "Hire until total revenue equals total cost",
+    "Hire until marginal product is at its highest",
+    "Hire until average product equals the wage"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each worker adds MRP to revenue and MRC to cost. Hire while MRP ≥ MRC; the last worker hired is where they are equal (or the last one where MRP is at least MRC in a table).",
+    "options": [
+     "Right: MRP = MRC (for a wage taker, MRP = the wage).",
+     "That is where profit is zero, not where it is largest.",
+     "The highest MP is usually early; the firm keeps hiring while MRP covers MRC.",
+     "Hiring decisions compare marginal values, not averages."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-16",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A firm's total labor cost is \\$180 with 2 workers and \\$270 with 3 workers. What is the marginal resource cost of the third worker, in dollars?",
+   "why": {
+    "correct": "MRC = change in total labor cost ÷ change in workers = (\\$270 - \\$180) ÷ 1 = \\$90. For a wage taker it equals the wage."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrc",
+     "args": [
+      180,
+      270,
+      2,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        90,
+        3
+       ]
+      },
+      "why": "\\$30 divides the \\$90 change by 3 workers. The change in workers is 1 (from 2 to 3), so divide by 1."
+     },
+     {
+      "value": 270,
+      "why": "\\$270 is the total cost of three workers. MRC is the change from adding the third: 270 - 180."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-17",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A competitive firm's next worker has an MRP of \\$95. The market wage is \\$80. What should the firm do?",
+   "options": [
+    "Not hire, because her MRP is below the MRP of earlier workers",
+    "Hire if the firm's total revenue is above its total cost",
+    "Hire her: she adds \\$15 more to revenue than to cost",
+    "Lower the wage to \\$95"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Hire while MRP is at least MRC. Here \\$95 > \\$80.",
+    "options": [
+     "Comparing with earlier workers does not matter; compare her MRP with the wage.",
+     "The decision is at the margin: \\$95 against \\$80.",
+     "Right: MRP > MRC, so hiring raises profit.",
+     "A wage taker cannot set the wage, and \\$95 is higher anyway."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-18",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "A perfectly competitive firm sells in a competitive product market and hires in a competitive labor market. Which changes would lead it to hire more workers? Select all that apply.",
+   "options": [
+    "A rise in the price of its product",
+    "New equipment that raises each worker's output",
+    "A rise in the rent on its building",
+    "A rise in the market wage",
+    "A fall in the price of its product"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The firm hires where MRP = MRC. More workers are hired when MRP rises or the wage falls.",
+    "options": [
+     "Right: MRP = MP × P rises.",
+     "Right: higher MP raises MRP.",
+     "A fixed cost changes neither MRP nor MRC.",
+     "A higher MRC means fewer workers are worth hiring.",
+     "A lower price lowers MRP."
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-19",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "2.C",
+   "q": "A competitive firm's workers have MRPs of \\$70, \\$60, \\$50, \\$40 and \\$30. The market wage is \\$50. How many workers does it hire?",
+   "why": {
+    "correct": "Hire while MRP ≥ wage: \\$70, \\$60 and \\$50 all cover the \\$50 wage (the third worker breaks even), while the fourth adds \\$40. Hire 3."
+   },
+   "numeric": {
+    "from": {
+     "fn": "hireCount",
+     "args": [
+      [
+       70,
+       60,
+       50,
+       40,
+       30
+      ],
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "The third worker's MRP equals the wage, so hiring her does not lower profit; by the MRP = MRC rule the firm hires 3."
+     },
+     {
+      "value": 5,
+      "why": "The fourth and fifth workers add less than the \\$50 they cost."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-competitive-factor-markets-20",
+   "unit": "unit-5",
+   "topic": "competitive-factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Why does a firm's marginal factor cost of labor equal the wage when the labor market is perfectly competitive?",
+   "options": [
+    "The firm pays each worker the MRP of that worker",
+    "Each added worker produces as much as the one before",
+    "The wage falls as the firm hires more workers",
+    "Each added worker is hired at the same market wage"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For a wage taker, MFC = change in total labor cost ÷ change in workers = W.",
+    "options": [
+     "Workers are paid the market wage, not their MRP.",
+     "Output per worker is about MRP, not about cost.",
+     "A wage taker hires any number at the same wage.",
+     "Right: so total labor cost rises by exactly the wage with each worker."
+    ]
+   }
+  }
+ ]
+}

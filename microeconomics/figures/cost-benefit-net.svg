@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-labelledby="cost-benefit-net-t cost-benefit-net-d" font-family="Arial, Helvetica, sans-serif">
-<title id="cost-benefit-net-t">Total benefit, total cost and net benefit</title>
-<desc id="cost-benefit-net-d">Paired bars for 0 to 5 guitar lessons a month: total benefit $0, $50, $90, $120, $140 and $150, and total cost at $25 a lesson, $0 to $125. Net benefit, total benefit minus total cost, is 0, 25, 40, 45, 40 and 25 dollars, largest at 3 lessons ($45). Invented data for practice.</desc>
+<title id="cost-benefit-net-t">Total benefit, cost and net benefit</title>
+<desc id="cost-benefit-net-d">Paired bars for 0 to 5 guitar lessons a month: total benefit $0, $50, $90, $120, $140 and $150, and the cost at $25 a lesson, $0 to $125. Net benefit, total benefit minus cost, is 0, 25, 40, 45, 40 and 25 dollars, largest at 3 lessons ($45). Invented data for practice.</desc>
 <defs><marker id="cost-benefit-net-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="cost-benefit-net-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="cost-benefit-net-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="cost-benefit-net-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="cost-benefit-net-arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="800" height="380" fill="#FFFFFF"/>
 <line x1="100" y1="24" x2="100" y2="330" stroke="#1F2A28" stroke-width="2"/>
 <line x1="100" y1="330" x2="526" y2="330" stroke="#1F2A28" stroke-width="2"/>
@@ -34,9 +34,9 @@
 <rect x="560" y="60" width="16" height="16" rx="2" fill="#7E1A5E" stroke="none" stroke-width="1.6"/>
 <text x="584" y="74" font-size="13" fill="#1F2A28">Total benefit</text>
 <rect x="560" y="88" width="16" height="16" rx="2" fill="#084F78" stroke="none" stroke-width="1.6"/>
-<text x="584" y="102" font-size="13" fill="#1F2A28">Total cost ($25 a lesson)</text>
+<text x="584" y="102" font-size="13" fill="#1F2A28">Cost ($25 a lesson)</text>
 <text x="560" y="144" font-size="13" fill="#1F2A28">Net benefit = total benefit</text>
-<text x="560" y="162" font-size="13" fill="#1F2A28">minus total cost.</text>
+<text x="560" y="162" font-size="13" fill="#1F2A28">minus the full cost.</text>
 <text x="560" y="196" font-size="13" fill="#D55E00" font-weight="700">It is largest at 3 lessons:</text>
 <text x="560" y="214" font-size="13" fill="#D55E00" font-weight="700">$120 - $75 = $45.</text>
 <text x="560" y="252" font-size="12" fill="#6B7370">More lessons still add benefit,</text>

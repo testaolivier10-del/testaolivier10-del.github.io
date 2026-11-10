@@ -1,0 +1,82 @@
+/* Surplus and Policy Lab (microeconomics/assets/tools/surplus-lab.js). OWNED BY THIS TOOL ONLY
+   (builder T3). The graph is ApMicroGraph's (mic.css, "Graphs"); this file
+   colors its area cells by the area they belong to (one color per area, the
+   same on the value chip under the graph), lays out the chips, the policy
+   row and Details' "Who pays a tax", and the drill's figure and legend. */
+.sl-fig,.sl-qfig,.sl-inc{--sl-cs:#2563B8;--sl-ps:#1F7A45;--sl-rev:#B07300;--sl-gain:#0B7D86;--sl-dwl:#C0303A;}
+:root[data-theme="dark"] .sl-fig,:root[data-theme="dark"] .sl-qfig,:root[data-theme="dark"] .sl-inc{--sl-cs:#7FB2F5;--sl-ps:#6FD39A;--sl-rev:#F2C25C;--sl-gain:#5FD3DB;--sl-dwl:#FF8A90;}
+.sl-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;min-width:0;}
+.mic-ls-stage>.sl-fig{flex:1 1 auto;min-height:0;justify-content:center;justify-content:safe center;}
+.sl-graph{width:100%;max-width:520px;min-height:0;}
+.sl-graph svg{display:block;width:100%;height:auto;max-height:min(58vh,520px);margin:0 auto;}
+.ls-root.ls-phone .sl-graph svg{max-height:none;}
+
+/* area cells: filled by area, no dashed cell borders in the explore view */
+.sl-fig .mic-gr-cell{stroke:none;transition:fill .2s;}
+.sl-fig .mic-gr-cell.sl-r-cs{fill:color-mix(in srgb,var(--sl-cs) 30%,transparent);}
+.sl-fig .mic-gr-cell.sl-r-ps{fill:color-mix(in srgb,var(--sl-ps) 30%,transparent);}
+.sl-fig .mic-gr-cell.sl-r-rev{fill:color-mix(in srgb,var(--sl-rev) 38%,transparent);}
+.sl-fig .mic-gr-cell.sl-r-gain{fill:color-mix(in srgb,var(--sl-gain) 34%,transparent);}
+.sl-fig .mic-gr-cell.sl-r-dwl{fill:color-mix(in srgb,var(--sl-dwl) 42%,transparent);}
+.sl-fig .mic-gr-cell.sl-r-none{fill:color-mix(in srgb,var(--ink) 4%,transparent);}
+.sl-fig .mic-gr-cell.sl-outline{stroke:var(--sl-rev);stroke-width:1.6;stroke-dasharray:5 3;}
+.sl-fig .mic-gr-cell:hover{filter:brightness(.92);}
+.sl-noletters .mic-gr-cletter{display:none;}
+@media (prefers-reduced-motion: reduce){.sl-fig .mic-gr-cell{transition:none;}}
+
+/* the value chips: one per area, its color swatch, its size */
+.sl-vals{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 8px;max-width:640px;}
+.sl-val{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:4px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--white,#fff);color:var(--ink);font:700 13px/1.2 var(--font-ui);cursor:pointer;}
+.sl-val .sl-sw{width:14px;height:14px;border-radius:4px;flex:none;}
+.sl-v-cs .sl-sw{background:color-mix(in srgb,var(--sl-cs) 55%,transparent);border:1.5px solid var(--sl-cs);}
+.sl-v-ps .sl-sw{background:color-mix(in srgb,var(--sl-ps) 55%,transparent);border:1.5px solid var(--sl-ps);}
+.sl-v-rev .sl-sw{background:color-mix(in srgb,var(--sl-rev) 60%,transparent);border:1.5px solid var(--sl-rev);}
+.sl-v-gain .sl-sw{background:color-mix(in srgb,var(--sl-gain) 55%,transparent);border:1.5px solid var(--sl-gain);}
+.sl-v-dwl .sl-sw{background:color-mix(in srgb,var(--sl-dwl) 60%,transparent);border:1.5px solid var(--sl-dwl);}
+.sl-val .sl-vv{font-weight:800;font-variant-numeric:tabular-nums;}
+.sl-val.is-on{border-color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.sl-val.is-dim{opacity:.55;}
+.sl-val:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.sl-ts{flex-basis:100%;margin:0;text-align:center;font:700 13px var(--font-ui);color:var(--ink);}
+.sl-ts .sl-was{color:var(--muted);font-weight:600;}
+
+/* the dock */
+.sl-ctl{display:grid;gap:10px;min-width:0;}
+.sl-pols{display:flex;gap:6px;flex-wrap:wrap;}
+.ls-root.ls-phone .sl-pols{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px;}
+.sl-pol{min-height:44px;white-space:nowrap;}
+.sl-pol.on,.sl-ic.on{background:var(--cink);border-color:var(--cink);color:var(--white,#fff);}
+:root[data-theme="dark"] .sl-pol.on,:root[data-theme="dark"] .sl-ic.on{color:#2a0b22;}
+.sl-none,.sl-note{margin:0;}
+
+/* Details: who pays a tax */
+.sl-incpick{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;}
+.sl-ic{min-height:44px;}
+.sl-split{display:flex;width:100%;height:40px;border-radius:10px;overflow:hidden;border:1.5px solid var(--line);margin:8px 0 4px;}
+.sl-split>span{display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden;font:800 12.5px var(--font-ui);color:var(--ink);white-space:nowrap;transition:width .3s;}
+.sl-sb{background:color-mix(in srgb,var(--sl-cs) 30%,transparent);}
+.sl-ss{background:color-mix(in srgb,var(--sl-ps) 30%,transparent);}
+@media (prefers-reduced-motion: reduce){.sl-split>span{transition:none;}}
+.sl-ntbl td{font-variant-numeric:tabular-nums;}
+
+/* Test yourself: the figure on the stage, its legend under the graph */
+.sl-qfig{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;}
+.sl-qgraph{width:100%;max-width:500px;}
+.sl-qgraph .mic-gr-stage{max-width:500px;}
+.sl-leg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px 16px;margin:0;max-width:560px;width:100%;font:600 12.5px/1.45 var(--font-ui);color:var(--ink);}
+.sl-leg>div{display:flex;gap:6px;min-width:0;}
+.sl-leg dt{font-weight:800;white-space:nowrap;}
+.sl-leg dd{margin:0;color:var(--muted);}
+.sl-tbl{max-width:420px;}
+.sl-tbl tr.is-eq th,.sl-tbl tr.is-eq td{background:var(--ctint);}
+.ls-root.ls-phone .mic-ls-stage>.sl-fig{padding-bottom:44px;box-sizing:border-box;}
+/* A phone: the graph takes the room the chips leave (it scales to fit), the chips sit two to a row. */
+.ls-root.ls-phone .mic-ls-stage>.sl-fig{height:100%;justify-content:flex-start;gap:4px;}
+.ls-root.ls-phone .sl-graph{flex:1 1 auto;min-height:0;display:flex;justify-content:center;}
+.ls-root.ls-phone .sl-graph svg{width:auto;height:100%;max-width:100%;}
+.ls-root.ls-phone .sl-vals{display:grid;grid-template-columns:1fr 1fr;gap:4px;width:100%;flex:none;}
+.ls-root.ls-phone .sl-val{padding:2px 8px;font-size:12px;gap:5px;justify-content:flex-start;min-width:0;}
+.ls-root.ls-phone .sl-val .sl-vn{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ls-root.ls-phone .sl-val .sl-vv{margin-left:auto;}
+.ls-root.ls-phone .sl-ts{grid-column:1/-1;font-size:12px;}
+.sl-qfig .table-wrap{max-width:480px;width:100%;margin:auto 0;}

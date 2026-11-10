@@ -1,0 +1,8 @@
+{
+ "intersection": {
+  "def": "The point where two curves cross: the one price and quantity that lie on both curves."
+ },
+ "area-graph": {
+  "def": "The space inside a shape on a graph: a rectangle's area is base × height and a triangle's is ½ × base × height, with the base read on the horizontal axis and the height on the vertical axis."
+ }
+}

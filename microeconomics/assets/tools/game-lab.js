@@ -119,7 +119,7 @@
       return { s: s, A: A };
     }
     function why(r){
-      var s = r.s, A = r.A, head, body = '';
+      var s = r.s, A = r.A, head, body = '', short = null;
       if(sel){
         var t = GL.test(s, sel[0], sel[1]), P = A.P[sel[0]][sel[1]];
         head = '<b>' + esc(GL.cellName(s, sel)) + '</b>: ' + esc(names(0)) + ' ' + P[0] + ', ' + esc(names(1)) + ' ' + P[1] + '. ' + (t.nash ? 'Neither firm gains by switching alone: a Nash equilibrium.' :
@@ -128,6 +128,7 @@
       } else if(show){
         var ps = show === 'both' ? [0, 1] : [+show];
         head = ps.map(function(p){ return esc(GL.proof(s, p)); }).join(' ');
+        short = ps.map(function(p){ return esc(GL.verdict(s, p)) + '.'; }).join(' ') + (show === 'both' ? ' ' + esc(cap(GL.nashWords(s, A.nash))) + '.' : '') + ' The comparisons are in Explanation.';
         body = '<p>A dominant strategy is better <b>whatever</b> the other firm does, so it takes two comparisons, one for each of the other firm’s choices, with the numbers. One comparison is not enough, and the largest single payoff proves nothing.</p>' +
           (show === 'both' ? '<p>A cell marked for both firms is a best response for each to the other: a Nash equilibrium. ' + esc(cap(GL.nashWords(s, A.nash))) + '.</p>' : '');
       } else {
@@ -137,7 +138,7 @@
       if(pol.amount) body += '<p><b>Policy:</b> ' + esc(policyLine()) + ' ' + esc(GL.verdict(s, pol.player)) + '. ' + esc(cap(GL.nashWords(s, A.nash))) + '.</p>';
       T.explain($('.gl-say'), head, body);
       if(LS){
-        LS.caption(head, 'explore');
+        LS.caption(short || head, 'explore');
         var pills = [];
         if(sel){ var tt = GL.test(s, sel[0], sel[1]); pills.push({ html: tt.nash ? 'Nash equilibrium' : 'Not an equilibrium', tone: tt.nash ? 'good' : 'ghost' }); }
         if(pol.amount) pills.push({ html: (pol.amount < 0 ? 'Tax ' + (-pol.amount) : 'Subsidy ' + pol.amount), tone: 'accent' });
@@ -227,7 +228,7 @@
   /* ------------------------------------------------------ test yourself */
   var TITLES = { dominant: 'Dominant strategies, proved', nash: 'Every Nash equilibrium', best: 'Best responses', change: 'A tax or subsidy changes the game' };
   function quiz(host, data){
-    T.drill(host, data, { slug: 'game-lab', noun: 'drill',
+    T.drill(host, data, { slug: 'game-lab', noun: 'drill', studioAsk: true,
       generate: function(r, ctx, type){ return GL.generate(r, ctx, type); },
       types: [{ value: 'dominant', label: 'Dominant strategies and the proof' }, { value: 'nash', label: 'Every Nash equilibrium' }, { value: 'best', label: 'Best responses' }, { value: 'change', label: 'A tax or subsidy' }],
       typeLabel: 'Kind of problem',
@@ -235,13 +236,14 @@
       extra: function(el, p, api){
         el.innerHTML = '<figure class="cd-fig gl-qfig"><figcaption class="gl-qcap"></figcaption><div class="gl-qmx"></div><ul class="gl-qnote" aria-label="Found so far"></ul></figure>';
         api.mx = el.querySelector('.gl-qmx'); api.note = el.querySelector('.gl-qnote');
-        el.querySelector('.gl-qcap').textContent = p.after ? 'Before the ' + (p.change.amount < 0 ? 'tax' : 'subsidy') : 'The game';
+        api.story = (data.contexts.filter(function(c){ return c.id === p.ctx; })[0] || {}).story || '';
+        el.querySelector('.gl-qcap').textContent = (p.after ? 'Before the ' + (p.change.amount < 0 ? 'tax' : 'subsidy') + '. ' : '') + api.story;
         api.mx.innerHTML = X.html(p.matrix);
       },
       graphHost: function(s, api){
         var d = document.createElement('div');
         api.mx.innerHTML = ''; api.mx.appendChild(d);
-        var cap = api.mx.parentNode.querySelector('.gl-qcap'); if(cap && api.problem.after && s.spec.change) cap.textContent = 'After the ' + (api.problem.change.amount < 0 ? 'tax' : 'subsidy');
+        var cap = api.mx.parentNode.querySelector('.gl-qcap'); if(cap && api.problem.after && s.spec.change) cap.textContent = 'After the ' + (api.problem.change.amount < 0 ? 'tax' : 'subsidy') + '. ' + api.story;
         return d;
       },
       onStep: function(s, right, api){

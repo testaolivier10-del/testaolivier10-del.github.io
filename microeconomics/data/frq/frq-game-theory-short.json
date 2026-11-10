@@ -1,0 +1,227 @@
+{
+ "id": "frq-game-theory-short",
+ "type": "short",
+ "points": 5,
+ "title": "Two grocers choose their opening hours: dominant strategies, Nash equilibrium and a fee",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "oligopoly-game-theory"
+ ],
+ "practices": [
+  "3.A",
+  "2.A",
+  "3.B"
+ ],
+ "scenario": "Alder Market and Bexley Foods (invented) are the only grocery stores in a town. Each chooses, at the same time and without talking to the other, whether to keep Late hours or Regular hours. The matrix shows each store's weekly profit in hundreds of dollars; in each cell Alder Market's payoff is listed first. Both stores know the matrix.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "type": "matrix",
+   "prompt": "<b>Identify</b> each store's dominant strategy, if it has one, and every Nash equilibrium.",
+   "matrix": {
+    "players": [
+     {
+      "name": "Alder Market",
+      "strategies": [
+       "Late hours",
+       "Regular hours"
+      ]
+     },
+     {
+      "name": "Bexley Foods",
+      "strategies": [
+       "Late hours",
+       "Regular hours"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       25,
+       30
+      ],
+      [
+       60,
+       20
+      ]
+     ],
+     [
+      [
+       35,
+       55
+      ],
+      [
+       40,
+       45
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   },
+   "rubric": [
+    {
+     "point": "Alder Market has no dominant strategy, and Bexley Foods' dominant strategy is Late hours.",
+     "accept": [
+      "Alder: none; Bexley: Late"
+     ],
+     "auto": "dominant"
+    },
+    {
+     "point": "The only Nash equilibrium is (Alder Regular hours, Bexley Late hours).",
+     "accept": [
+      "Alder regular, Bexley late"
+     ],
+     "auto": "nash"
+    }
+   ],
+   "sample": "Alder Market has no dominant strategy. Bexley Foods' dominant strategy is Late hours (30 > 20 if Alder keeps late hours, 55 > 45 if Alder keeps regular hours). The only Nash equilibrium is Alder Regular hours, Bexley Late hours, with payoffs of 35 and 55."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Explain</b>, using the numbers in the matrix, why Alder Market does not have a dominant strategy.",
+   "rubric": [
+    {
+     "point": "Gives both comparisons for Alder: if Bexley chooses Late, Regular is better (35 > 25); if Bexley chooses Regular, Late is better (60 > 40).",
+     "accept": [
+      "35 > 25 and 60 > 40"
+     ]
+    }
+   ],
+   "sample": "If Bexley keeps late hours, Alder earns 25 from Late and 35 from Regular, so Regular is better. If Bexley keeps regular hours, Alder earns 60 from Late and 40 from Regular, so Late is better. Alder's best choice depends on Bexley's, so it has no dominant strategy."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "type": "matrix",
+   "prompt": "The town starts charging Bexley Foods a fee of 15 (hundred dollars) a week whenever it keeps Late hours. <b>Identify</b> every Nash equilibrium after the fee.",
+   "matrix": {
+    "players": [
+     {
+      "name": "Alder Market",
+      "strategies": [
+       "Late hours",
+       "Regular hours"
+      ]
+     },
+     {
+      "name": "Bexley Foods",
+      "strategies": [
+       "Late hours",
+       "Regular hours"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       25,
+       30
+      ],
+      [
+       60,
+       20
+      ]
+     ],
+     [
+      [
+       35,
+       55
+      ],
+      [
+       40,
+       45
+      ]
+     ]
+    ],
+    "unit": "$",
+    "change": {
+     "player": 1,
+     "strategy": 0,
+     "amount": -15
+    },
+    "do": [
+     "nash"
+    ]
+   },
+   "rubric": [
+    {
+     "point": "The only Nash equilibrium is now (Alder Late hours, Bexley Regular hours).",
+     "accept": [
+      "Alder late, Bexley regular"
+     ],
+     "auto": "nash"
+    }
+   ],
+   "sample": "Bexley's Late payoffs fall to 15 and 40, so Regular hours is now better for Bexley whatever Alder does (20 > 15 and 45 > 40). Alder's best response to Bexley's Regular hours is Late hours (60 > 40). The only Nash equilibrium is Alder Late hours, Bexley Regular hours."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "type": "matrix",
+   "prompt": "Using the original matrix, before the fee, <b>identify</b> the cell that gives the two stores the largest combined profit.",
+   "matrix": {
+    "players": [
+     {
+      "name": "Alder Market",
+      "strategies": [
+       "Late hours",
+       "Regular hours"
+      ]
+     },
+     {
+      "name": "Bexley Foods",
+      "strategies": [
+       "Late hours",
+       "Regular hours"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       25,
+       30
+      ],
+      [
+       60,
+       20
+      ]
+     ],
+     [
+      [
+       35,
+       55
+      ],
+      [
+       40,
+       45
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "joint"
+    ]
+   },
+   "rubric": [
+    {
+     "point": "Alder Regular hours, Bexley Late hours (35 + 55 = 90).",
+     "accept": [
+      "Alder regular, Bexley late, 90 in total"
+     ],
+     "auto": "joint"
+    }
+   ],
+   "sample": "Adding the two payoffs in each cell gives 55, 80, 90 and 85. The largest is Alder Regular hours, Bexley Late hours: 35 + 55 = 90 (hundred dollars)."
+  }
+ ]
+}

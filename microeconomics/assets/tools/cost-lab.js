@@ -145,7 +145,8 @@
     }
     function cardHtml(t){
       var i = st.sel;
-      var cells = COLS.slice(2).map(function(c){ var v = cellText(t, c, i); return '<div class="cl-cc ' + (c.curve ? 'cl-c-' + c.curve : '') + '"><span class="cl-cc-k">' + c.h + '</span><span class="cl-cc-v">' + (v || '·') + '</span></div>'; }).join('');
+      var order = ['mc', 'avc', 'atc', 'afc', 'mp', 'tvc', 'tc', 'tfc'];
+      var cells = order.map(function(k){ return COLS.filter(function(c){ return c.k === k; })[0]; }).map(function(c){ var v = cellText(t, c, i); return '<div class="cl-cc ' + (c.curve ? 'cl-c-' + c.curve : '') + '"><span class="cl-cc-k">' + c.h + '</span><span class="cl-cc-v">' + (v || '·') + '</span></div>'; }).join('');
       return '<div class="cl-card-head"><button type="button" class="bt-btn cl-prev" aria-label="Previous row"' + (i <= 0 ? ' disabled' : '') + '>‹</button><p class="cl-card-t"><b>' + t.labor[i] + (t.labor[i] === 1 ? ' worker' : ' workers') + '</b>, Q = ' + t.tp[i] + '</p><button type="button" class="bt-btn cl-next" aria-label="Next row"' + (i >= st.rows - 1 ? ' disabled' : '') + '>›</button></div><div class="cl-cards">' + cells + '</div>';
     }
     function rowWords(t, i){
