@@ -180,7 +180,7 @@
     return out.join('');
   }
   function seaKey(nm){
-    return '<ol class="bl-zkey">' + B.ZONES.map(function(z, i){ var on = nm != null && B.zoneAt(nm) === z; return '<li' + (on ? ' class="is-on"' : '') + '><b>' + (i + 1) + '. ' + esc(z.name) + '</b> (' + (i === 0 ? 'baseline to 12' : i === 1 ? '12 to 24' : i === 2 ? '12 to 200, overlapping the contiguous zone' : 'beyond 200') + ' nautical miles)</li>'; }).join('') + '</ol>';
+    return '<ol class="bl-zkey">' + B.ZONES.map(function(z, i){ var on = nm != null && B.zoneAt(nm) === z; return '<li' + (on ? ' class="is-on"' : '') + '><b>' + (i + 1) + '. ' + esc(z.name) + '</b> (' + (i === 0 ? 'baseline to 12 nautical miles' : i === 1 ? '12 to 24 nautical miles' : i === 2 ? '12 to 200 nautical miles, overlapping the contiguous zone' : 'beyond 200 nautical miles') + ')</li>'; }).join('') + '</ol>';
   }
 
   /* ------------------------------------------------------- real cases */
