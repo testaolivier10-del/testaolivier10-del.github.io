@@ -1,0 +1,84 @@
+{
+ "topic": "firm-decisions",
+ "hook": "A ski rental shop makes a loss in a warm winter. Should it lock its doors tomorrow? It still owes rent on its lease whether it opens or not. If the rentals it can make bring in more than the staff and cleaning they cost, staying open shrinks the loss. Next year, when the lease ends, the question changes: stay in the business at all, or leave?",
+ "prereq": [
+  {
+   "q": "A firm sells every unit at the market price and produces where",
+   "options": [
+    "MR = MC",
+    "ATC is lowest",
+    "MC is lowest",
+    "TR is largest"
+   ],
+   "correct": 0,
+   "why": "That is the profit-maximizing rule.",
+   "review": "profit-maximization"
+  },
+  {
+   "q": "Total fixed cost at zero output is",
+   "options": [
+    "the same as at any other output",
+    "zero",
+    "equal to variable cost",
+    "smaller than at higher outputs"
+   ],
+   "correct": 0,
+   "why": "Fixed cost does not change with output.",
+   "review": "short-run-costs"
+  },
+  {
+   "q": "Positive economic profit means the firm's resources earn",
+   "options": [
+    "more than in their next-best use",
+    "exactly their opportunity cost",
+    "less than in their next-best use",
+    "nothing at all"
+   ],
+   "correct": 0,
+   "why": "Economic profit is above all opportunity costs.",
+   "review": "types-of-profit"
+  }
+ ],
+ "figure": {
+  "figure": "firm-decisions-three-prices",
+  "caption": "Above the lowest point of ATC (P1) the firm earns a profit; between the lowest points of AVC and ATC (P2) it makes a loss but keeps producing; below the lowest point of AVC (P3) it shuts down."
+ },
+ "chain": [
+  {
+   "cause": "The market price falls below the lowest point of ATC",
+   "effect": "firms make economic losses"
+  },
+  {
+   "cause": "In the long run, firms with losses can get out of their fixed commitments",
+   "effect": "some firms exit the market"
+  },
+  {
+   "cause": "Fewer firms sell in the market",
+   "effect": "market supply shifts left and the price rises"
+  },
+  {
+   "cause": "The price rises back to the lowest point of ATC",
+   "effect": "the remaining firms earn zero economic profit, so exit stops"
+  }
+ ],
+ "ideas": [
+  "<b>Short run, shutdown rule</b>: produce (where MR = MC) if P is at least the lowest point of AVC; shut down if P is below it. Shut down, the loss is the fixed cost.",
+  "Fixed costs do not change MC or AVC, so they do not change the short-run output choice.",
+  "Above the shutdown point, the MC curve is the firm's short-run supply curve.",
+  "<b>Long run</b>: economic profit draws firms in (<b>entry</b>), shifting market supply right; losses push firms out (<b>exit</b>), shifting it left, until economic profit is zero."
+ ],
+ "misconception": {
+  "wrong": "A firm making a loss should close at once.",
+  "right": "In the short run a firm that covers its variable costs (P at least the lowest AVC) loses less by producing than by closing, because closing still leaves the fixed cost. It exits only in the long run, if the losses last."
+ },
+ "check": [
+  "mic-firm-decisions-1",
+  "mic-firm-decisions-2",
+  "mic-firm-decisions-3",
+  "mic-firm-decisions-15",
+  "mic-firm-decisions-12",
+  "mic-firm-decisions-13",
+  "mic-firm-decisions-17"
+ ],
+ "summary": "In the short run a firm compares the price with average variable cost: if P is at least the lowest point of AVC it produces where MR = MC, even at a loss, because closing would lose the whole fixed cost; if P is below that point it shuts down. Fixed costs do not change that choice. Above the shutdown point, MC is the firm's short-run supply curve. In the long run, economic profit draws new firms in and losses push firms out; entry shifts market supply right and exit shifts it left, moving the price until economic profit is zero."
+}

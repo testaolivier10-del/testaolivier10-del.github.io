@@ -1,0 +1,12 @@
+{
+ "demand-movement-shift": {
+  "file": "figures/demand-movement-shift.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a price fall moves buyers along one demand curve from A (30 wraps at $5) to B (50 wraps at $3). Right: higher incomes shift demand right from D1 to D2, so 60 wraps instead of 40 are wanted at $4."
+ }
+}

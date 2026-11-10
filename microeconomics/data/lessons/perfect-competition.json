@@ -1,0 +1,84 @@
+{
+ "topic": "perfect-competition",
+ "hook": "One wheat farmer harvests a record crop, yet the price of wheat does not budge: her crop is a speck in a world market. She can sell all she grows at the going price and nothing above it. That is life in perfect competition, and it is why the firm graph and the market graph are always drawn side by side.",
+ "prereq": [
+  {
+   "q": "A firm that sells every unit at the market price has a demand curve that is",
+   "options": [
+    "horizontal at the price: d = MR = AR = P",
+    "downward sloping, with MR below it",
+    "vertical at its output",
+    "the same as its MC curve"
+   ],
+   "correct": 0,
+   "why": "Each unit adds the price to revenue.",
+   "review": "profit-maximization"
+  },
+  {
+   "q": "In the long run, economic profit in a market leads to",
+   "options": [
+    "entry, which shifts market supply right",
+    "exit, which shifts market supply left",
+    "a shift of market demand",
+    "higher fixed costs"
+   ],
+   "correct": 0,
+   "why": "Profit draws new firms in.",
+   "review": "firm-decisions"
+  },
+  {
+   "q": "Deadweight loss is zero when",
+   "options": [
+    "the market produces the quantity that maximizes total surplus",
+    "the price is above equilibrium",
+    "there is a shortage",
+    "the government sets a price floor"
+   ],
+   "correct": 0,
+   "why": "Total surplus is largest at the efficient quantity.",
+   "review": "government-intervention"
+  }
+ ],
+ "figure": {
+  "figure": "perfect-competition-side-by-side",
+  "caption": "The market (left) sets the price PM; the firm (right) takes it as a horizontal line d = MR = AR = P and produces qF where MR = MC. In long-run equilibrium that is at the lowest point of ATC, with zero economic profit."
+ },
+ "chain": [
+  {
+   "cause": "Market demand rises",
+   "effect": "the market price rises and each firm earns an economic profit at its new MR = MC output"
+  },
+  {
+   "cause": "Economic profit is positive and entry is free",
+   "effect": "new firms enter the market"
+  },
+  {
+   "cause": "New firms enter",
+   "effect": "market supply shifts right and the market price falls"
+  },
+  {
+   "cause": "The price falls to the lowest point of ATC",
+   "effect": "economic profit is zero, entry stops and the market is back in long-run equilibrium with more firms"
+  }
+ ],
+ "ideas": [
+  "<b>Perfect competition</b>: many buyers and sellers, identical products, known prices, free entry and exit. Each firm is a <b>price taker</b>.",
+  "Draw market and firm side by side: the market price carried across is the firm's horizontal <b>d = MR = AR = P</b>; the firm produces q where MR = MC.",
+  "<b>Long-run equilibrium</b>: entry and exit push P to <b>minimum ATC</b>, so economic profit is zero and P = MC = minimum ATC.",
+  "That outcome is allocatively efficient (<b>P = MC</b>) and productively efficient (lowest ATC). In a <b>constant-cost industry</b> long-run supply is horizontal."
+ ],
+ "misconception": {
+  "wrong": "A perfectly competitive firm faces the same downward-sloping demand curve as the market.",
+  "right": "The market demand curve slopes down, but each firm is so small that it can sell all it wants at the market price: its own demand curve is horizontal, d = MR = AR = P."
+ },
+ "check": [
+  "mic-perfect-competition-1",
+  "mic-perfect-competition-2",
+  "mic-perfect-competition-3",
+  "mic-perfect-competition-10",
+  "mic-perfect-competition-12",
+  "mic-perfect-competition-14",
+  "mic-perfect-competition-17"
+ ],
+ "summary": "In perfect competition, many firms sell an identical product and can enter or exit freely, so each firm is a price taker: its demand curve is horizontal at the market price, d = MR = AR = P. Drawn side by side, the market sets the price and the firm produces where MR = MC; profit or loss is (P - ATC) x q. In the long run, profit draws firms in and losses push firms out until the price equals minimum ATC: zero economic profit, P = MC (allocative efficiency) and production at the lowest ATC (productive efficiency). In a constant-cost industry the price returns to the same level, so long-run supply is horizontal."
+}

@@ -1,0 +1,660 @@
+{
+ "stimuli": {
+  "monopolistic-competition-s1": {
+   "kind": "graph",
+   "title": "A monopolistically competitive firm in the short run, areas lettered",
+   "graph": {
+    "kind": "monocomp",
+    "run": "short",
+    "letters": true
+   }
+  },
+  "monopolistic-competition-s2": {
+   "kind": "data",
+   "title": "Maple Row Sandwiches in the long run",
+   "invented": true,
+   "table": {
+    "caption": "Maple Row Sandwiches, one of many sandwich shops in a city, in long-run equilibrium (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Sandwiches sold per hour",
+      "40"
+     ],
+     [
+      "Price per sandwich (dollars)",
+      "8.00"
+     ],
+     [
+      "Average total cost at 40 sandwiches (dollars)",
+      "8.00"
+     ],
+     [
+      "Marginal cost at 40 sandwiches (dollars)",
+      "5.00"
+     ],
+     [
+      "Output at the minimum of ATC (sandwiches per hour)",
+      "60"
+     ],
+     [
+      "Minimum ATC (dollars)",
+      "6.50"
+     ]
+    ]
+   }
+  },
+  "monopolistic-competition-s3": {
+   "kind": "text",
+   "title": "The food trucks on Cobalt Street",
+   "text": "<p>Dozens of food trucks park on Cobalt Street (invented). Each has its own menu and style, and a new truck can start within a month. Last spring, Fennel and Fire, a truck selling spicy noodle bowls, earned an economic profit: long lines every lunch. By autumn four new noodle trucks had parked nearby, and Fennel and Fire's lines were shorter.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-monopolistic-competition-1",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "monopolistic-competition-s1",
+   "q": "The graph shows a monopolistically competitive firm that maximizes profit in the short run. Which area is its economic profit?",
+   "options": [
+    "Area b",
+    "Area a",
+    "Area c",
+    "Area d"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the quantity where MR = MC, the price read from demand is above ATC. Profit is the rectangle between the price and ATC, from zero to that quantity: area b.",
+    "options": [
+     "Right: (P minus ATC) times Q.",
+     "Area a lies above the price, under demand: consumer surplus.",
+     "Area c is ATC times Q: total cost.",
+     "Area d, between demand and MC past the firm's quantity, is deadweight loss."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-2",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "monopolistic-competition-s1",
+   "q": "Entry into this market is easy. What happens next?",
+   "options": [
+    "New firms enter, and this firm's ATC shifts down until profit is zero",
+    "Entry shifts this firm's demand left until profit is zero",
+    "Firms exit, and this firm's demand shifts right",
+    "Nothing changes, because the firm has market power"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Economic profit draws new firms with similar products. Each existing firm loses some customers, so its demand (and MR) shifts left until demand is tangent to ATC and economic profit is zero.",
+    "options": [
+     "Entry takes away customers; it does not lower this firm's costs.",
+     "Right: entry takes customers until P = ATC.",
+     "Firms leave a market with losses, not one with profit.",
+     "Its market power is small and entry is easy, so the profit is competed away."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-3",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "monopolistic-competition-s1",
+   "q": "Which area is the deadweight loss?",
+   "options": [
+    "Area b",
+    "Areas b and d",
+    "Area d",
+    "Area a"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The firm stops where MR = MC, short of the quantity where demand meets MC. The triangle between demand and MC over those missing units is the deadweight loss: area d.",
+    "options": [
+     "Area b is the profit the firm keeps.",
+     "Area b goes to the firm; it is not lost.",
+     "Right: between D and MC, from the firm's quantity to where D meets MC.",
+     "Area a is consumer surplus that buyers keep."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-4",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "monopolistic-competition-s2",
+   "q": "Use the table. What is Maple Row's economic profit per hour, in dollars?",
+   "why": {
+    "correct": "$(P - \\text{ATC}) \\times Q = (8 - 8) \\times 40 = 0$: zero economic profit, as in every long-run equilibrium with easy entry."
+   },
+   "numeric": {
+    "from": {
+     "fn": "unitProfit",
+     "args": [
+      8,
+      8,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          8,
+          5
+         ]
+        },
+        40
+       ]
+      },
+      "why": "That uses MC in place of ATC. Profit per unit is the price minus average total cost."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          8,
+          6.5
+         ]
+        },
+        40
+       ]
+      },
+      "why": "That uses the minimum of ATC, but the shop does not produce there. Use ATC at the 40 sandwiches it sells."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-5",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "monopolistic-competition-s2",
+   "q": "Use the table. How much excess capacity does Maple Row have, in sandwiches per hour?",
+   "why": {
+    "correct": "Excess capacity is the gap between the output at minimum ATC and the output the firm chooses: $60 - 40 = 20$ sandwiches per hour."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      60,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "40 is what it sells. Excess capacity is how far that falls short of the 60 at minimum ATC."
+     },
+     {
+      "value": 1.5,
+      "why": "1.5 is the gap in cost (\\$8 minus \\$6.50). Excess capacity is measured in output."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-6",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "monopolistic-competition-s2",
+   "q": "Use the table. Is Maple Row allocatively efficient in the long run?",
+   "options": [
+    "Yes, because its price equals its average total cost",
+    "Yes, because it earns zero economic profit",
+    "No, because its price (\\$8) is below minimum ATC (\\$6.50)",
+    "No, because its price (\\$8) is above its marginal cost (\\$5)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Allocative efficiency needs P = MC. Maple Row's price (\\$8) is above its marginal cost (\\$5), so buyers value one more sandwich more than it costs to make, and too few are made.",
+    "options": [
+     "P = ATC means zero economic profit; efficiency needs P = MC.",
+     "Zero profit says nothing about whether P = MC.",
+     "\\$8 is above \\$6.50; the gap from minimum ATC is about productive efficiency.",
+     "Right: P > MC means some valuable units are not produced."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-7",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "monopolistic-competition-s2",
+   "q": "Use the table. Is Maple Row productively efficient in the long run?",
+   "options": [
+    "No: it makes 40, not the 60 where ATC is lowest",
+    "Yes, because its economic profit is zero",
+    "Yes, because it produces where MR = MC",
+    "No, because its price is above its average total cost"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Productive efficiency means producing at minimum ATC. Maple Row produces 40 sandwiches at an ATC of \\$8, not 60 at \\$6.50, so it is not productively efficient: that gap is its excess capacity.",
+    "options": [
+     "Right: ATC of \\$8 is above the minimum of \\$6.50.",
+     "Zero profit at a point on the falling part of ATC is not minimum cost.",
+     "MR = MC maximizes profit; it does not put the firm at minimum ATC.",
+     "Its price equals ATC at 40 sandwiches."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-8",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "monopolistic-competition-s3",
+   "q": "Why did new noodle trucks arrive?",
+   "options": [
+    "Demand for lunch on Cobalt Street had just risen",
+    "Fennel and Fire was earning an economic profit, and entry was easy",
+    "The city banned other kinds of food trucks",
+    "Fennel and Fire was making a loss, so rivals saw a chance"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Fennel and Fire's economic profit signaled that this kind of truck earned more than the owners' next best use of their money and time, and entry was easy.",
+    "options": [
+     "Entry follows economic profit; a demand change matters only through profit.",
+     "Right: profit attracts entry when there are no barriers.",
+     "Nothing in the description says so; entry was easy for any truck.",
+     "Losses push firms out; rivals entered because of profit."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-9",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "monopolistic-competition-s3",
+   "q": "How did the new trucks affect the demand for Fennel and Fire's bowls?",
+   "options": [
+    "Demand increased and became less elastic",
+    "Demand did not change; the truck simply cut its price",
+    "Demand decreased and became more elastic",
+    "Demand decreased and became perfectly inelastic"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With close substitutes nearby, some of its buyers switched, so its demand decreased (shifted left) and became more elastic, since buyers now had more choices.",
+    "options": [
+     "More rivals take buyers away and add substitutes.",
+     "Buyers moved to the new trucks at every price, so demand itself shifted.",
+     "Right: fewer buyers at each price, and more substitutes.",
+     "More substitutes make demand more elastic, not less."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-10",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "monopolistic-competition-s3",
+   "q": "If trucks keep entering while there is profit, what will Fennel and Fire earn in the long run?",
+   "options": [
+    "A smaller but still positive economic profit",
+    "An economic loss, since its lines are shorter",
+    "Zero accounting profit, with its price equal to MC",
+    "Zero economic profit, with its price equal to ATC"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Entry continues until each truck's demand is tangent to its ATC: price equals ATC and economic profit is zero (a normal profit).",
+    "options": [
+     "Easy entry keeps going until economic profit is zero.",
+     "If losses appeared, trucks would leave until profit returned to zero.",
+     "Zero economic profit still covers the owner's opportunity costs; and P stays above MC.",
+     "Right: entry stops when the profit is gone."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-11",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "monopolistic-competition-s3",
+   "q": "Fennel and Fire starts advertising its \"secret chili oil\" to stand out. If it works, what does it do to the truck's demand curve?",
+   "options": [
+    "Shifts it right and makes it less elastic",
+    "Shifts it left and makes it more elastic",
+    "Makes it horizontal, like a price taker's",
+    "Lowers its ATC curve, leaving demand where it was"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Successful differentiation makes buyers see fewer close substitutes, so demand rises (shifts right) and becomes less elastic, letting the truck raise its price, at least until rivals copy it.",
+    "options": [
+     "Right: more loyal buyers with fewer substitutes in their eyes.",
+     "Advertising that works draws buyers in, not away.",
+     "Differentiation moves away from a horizontal demand curve.",
+     "Advertising costs money, so it raises ATC; its aim is to raise demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-12",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and every curve on this graph of a monopolistically competitive firm in long-run equilibrium.",
+   "why": {
+    "correct": "Price and cost on the vertical axis, quantity on the horizontal. D slopes down and just touches ATC; MR is below D; MC crosses ATC at its minimum."
+   },
+   "graph": {
+    "kind": "monocomp",
+    "run": "long",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-13",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the price and quantity of this monopolistically competitive firm in long-run equilibrium.",
+   "why": {
+    "correct": "Find the quantity where MR = MC and go up to demand. In the long run that point is where demand is tangent to ATC, so P = ATC and economic profit is zero."
+   },
+   "graph": {
+    "kind": "monocomp",
+    "run": "long",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "L",
+    "key": {
+     "point": {
+      "at": "profit-max"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-14",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "This firm earns an economic profit and entry is easy. Show what happens to the firm's curves as new firms enter.",
+   "why": {
+    "correct": "Entry takes customers away, so this firm's demand shifts left (MR moves with it). Costs do not change. Demand keeps shifting until it is tangent to ATC."
+   },
+   "graph": {
+    "kind": "monocomp",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "MC",
+     "ATC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "left"
+      }
+     ],
+     "because": "entry of new firms attracted by economic profit"
+    },
+    "slips": {
+     "ATC": "Entry takes buyers away; it does not change this firm's costs. Shift demand."
+    }
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-15",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "This monopolistically competitive firm is making a loss in the short run. Shade the loss.",
+   "why": {
+    "correct": "At the quantity where MR = MC, ATC is above the price read from demand. The loss is the rectangle between ATC and the price, from zero to that quantity."
+   },
+   "graph": {
+    "kind": "monocomp",
+    "start": {
+     "D": -2,
+     "ATC": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "loss"
+    },
+    "slips": {
+     "tc": "That area runs down to the horizontal axis: it is total cost. The loss is only between ATC and the price."
+    }
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-16",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Firms in this market are making losses, so some leave. Show what happens to this firm's curves.",
+   "why": {
+    "correct": "When rivals exit, their customers move to the remaining firms, so this firm's demand shifts right until it is tangent to ATC and the loss is gone."
+   },
+   "graph": {
+    "kind": "monocomp",
+    "start": {
+     "D": -2,
+     "ATC": 2
+    },
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "MC",
+     "ATC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "exit of firms that were making losses"
+    }
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-17",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.D",
+   "q": "How does long-run equilibrium in monopolistic competition differ from long-run equilibrium in perfect competition? Select all that apply.",
+   "options": [
+    "The firm produces less than the output at minimum ATC",
+    "Price is above marginal cost",
+    "Economic profit is positive",
+    "Price is below average total cost"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Both end with zero economic profit. But the monopolistically competitive firm faces a downward-sloping demand curve, so it produces short of minimum ATC (excess capacity) and charges a price above MC.",
+    "options": [
+     "Right: excess capacity.",
+     "Right: P > MC, so the outcome is not allocatively efficient.",
+     "Easy entry drives economic profit to zero in both structures.",
+     "Price equals ATC (the tangency) in the long run."
+    ]
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-18",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the steps in order, starting from short-run economic profit in monopolistic competition.",
+   "options": [
+    "Firms earn economic profit",
+    "New firms with similar products enter",
+    "Each firm's demand shifts left",
+    "Demand becomes tangent to ATC and economic profit is zero"
+   ],
+   "why": {
+    "correct": "Profit draws entry; entry takes buyers from each firm, shifting its demand left; that continues until demand is tangent to ATC; then profit is zero and entry stops."
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-19",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Build the answer: why does a monopolistically competitive firm have excess capacity in the long run?",
+   "why": {
+    "correct": "Its demand curve slopes down, so the tangency with ATC is on the falling part of ATC, to the left of the minimum."
+   },
+   "specific": {
+    "frame": "Its demand curve is ___, so it is tangent to ATC where ATC is ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Because the firm's demand curve slopes downward, entry shifts it left until it is tangent to ATC on the falling part of ATC. So the firm produces less than the output at minimum ATC, and that gap is its excess capacity.",
+    "slots": {
+     "slope": {
+      "label": "Its demand curve",
+      "options": [
+       "downward sloping",
+       "horizontal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A horizontal demand curve belongs to a price taker, which ends at minimum ATC."
+      }
+     },
+     "part": {
+      "label": "Where on ATC",
+      "options": [
+       "still falling",
+       "at its minimum"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A downward-sloping line can touch a U-shaped curve only where the curve is also falling."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-monopolistic-competition-20",
+   "unit": "unit-4",
+   "topic": "monopolistic-competition",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does a monopolistically competitive firm have in common with a monopolist?",
+   "options": [
+    "Barriers that keep new firms out",
+    "A downward-sloping demand curve",
+    "Positive economic profit in the long run",
+    "A product with no close substitutes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both face a downward-sloping demand curve, so both have MR below demand and charge a price above MC. They differ in entry: easy in monopolistic competition, blocked in monopoly.",
+    "options": [
+     "Entry is easy in monopolistic competition.",
+     "Right: both are price makers.",
+     "Entry drives a monopolistic competitor's profit to zero.",
+     "Monopolistic competitors sell close, though not identical, substitutes."
+    ]
+   }
+  }
+ ]
+}

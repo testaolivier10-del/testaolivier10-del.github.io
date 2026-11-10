@@ -1,0 +1,83 @@
+{
+ "topic": "disequilibrium-changes",
+ "hook": "A toy goes viral in November. By December the shelves are empty, parents line up at dawn, and resellers ask double online. By February the stores have restocked and the price has settled. Markets out of balance do not stay that way: the price moves until quantity demanded and quantity supplied meet again.",
+ "prereq": [
+  {
+   "q": "Market equilibrium is the price at which",
+   "options": [
+    "quantity demanded equals quantity supplied",
+    "sellers earn the most",
+    "buyers pay the least",
+    "demand and supply both shift"
+   ],
+   "correct": 0,
+   "why": "At equilibrium the market clears.",
+   "review": "equilibrium-surplus"
+  },
+  {
+   "q": "A rise in buyers' incomes for a normal good",
+   "options": [
+    "shifts demand right",
+    "shifts supply right",
+    "moves buyers along demand",
+    "shifts demand left"
+   ],
+   "correct": 0,
+   "why": "Income is a demand shifter; for a normal good, more income means more demand.",
+   "review": "demand"
+  },
+  {
+   "q": "A rise in the price of an input",
+   "options": [
+    "shifts supply left",
+    "shifts supply right",
+    "shifts demand left",
+    "moves sellers along supply"
+   ],
+   "correct": 0,
+   "why": "Costlier inputs mean less offered at each price.",
+   "review": "supply"
+  }
+ ],
+ "figure": {
+  "figure": "disequilibrium-changes-gaps",
+  "caption": "At \\$30 a shortage of 30 helmets pushes the price up; at \\$50 a surplus of 30 pushes it down, toward \\$40. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Demand rises (a curve shifts right)",
+   "effect": "at the old price, quantity demanded exceeds quantity supplied: a shortage"
+  },
+  {
+   "cause": "Buyers compete for the scarce units",
+   "effect": "the price rises"
+  },
+  {
+   "cause": "The price rises",
+   "effect": "quantity supplied rises along supply and quantity demanded falls along the new demand curve"
+  },
+  {
+   "cause": "The two quantities meet",
+   "effect": "a new equilibrium with a higher price and a larger quantity"
+  }
+ ],
+ "ideas": [
+  "Below equilibrium: a <b>shortage</b>, quantity demanded minus quantity supplied, pushes the price up. Above it: a <b>surplus</b>, quantity supplied minus quantity demanded, pushes the price down.",
+  "One shift: demand moves price and quantity the same way; supply moves them opposite ways.",
+  "Two shifts at once (<b>simultaneous shifts</b>): one of price or quantity is <b>indeterminate</b> unless you know which shift is larger.",
+  "A shift changes consumer, producer and total surplus; recompute each triangle at the new equilibrium.",
+  "The more inelastic the curve that does not shift, the more the change shows up in price rather than quantity."
+ ],
+ "misconception": {
+  "wrong": "Above the equilibrium price there is too much supply, so the supply curve shifts left until the market clears.",
+  "right": "Above equilibrium, quantity supplied exceeds quantity demanded at that price: a surplus. Neither curve shifts. The price falls, sellers move down along supply and buyers along demand, until the two quantities are equal."
+ },
+ "check": [
+  "mic-disequilibrium-changes-1",
+  "mic-disequilibrium-changes-2",
+  "mic-disequilibrium-changes-5",
+  "mic-disequilibrium-changes-6",
+  "mic-disequilibrium-changes-8"
+ ],
+ "summary": "At any price other than equilibrium the market is in disequilibrium: below it a shortage pushes the price up, above it a surplus pushes it down, until quantity demanded equals quantity supplied. When one curve shifts, the equilibrium moves along the other: demand shifts move price and quantity together, supply shifts move them apart. When both shift, one change is certain and the other is indeterminate. Each shift also changes consumer, producer and total surplus, and elasticities decide how much of the change is in price."
+}

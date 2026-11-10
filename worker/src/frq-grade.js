@@ -1,4 +1,4 @@
-/* The AI free-response grader for the seven AP® courses (docs/frq-grader.md).
+/* The AI free-response grader for the eight AP® courses (docs/frq-grader.md).
 
    POST /frq/grade  { course: 'apbio', id: 'frq-agar-shape', answers: { a: '...', b: '...' } }
    with the student's Supabase session, from the site's own Origin.
@@ -41,7 +41,7 @@ import { MODELS, extractText } from './ai.js';
 import { questionText, rubricText } from './frq-text.js';
 import { calibrationText } from './frq-calibration.js';
 
-export const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro'];
+export const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro'];
 export const DAILY_CAP = 10;
 export const DEFAULT_MODEL = 'claude-haiku-5-5';
 // Bump when the instructions, the schema or the checks change in a way that
@@ -120,6 +120,13 @@ const COURSE_CONVENTIONS = {
 - An "explain" point needs the cause and every link of the causal chain the rubric names (for example: lower interest rate, more investment, aggregate demand increases, real output rises); skipping a link the rubric requires does not earn it.
 - Keep commonly confused ideas apart: real versus nominal, cyclical versus natural unemployment, the reserve market (ample reserves, the Fed's administered rates) versus the money market, a shift of a curve versus a movement along it, and the currency on each axis of a foreign exchange graph.
 - Graph parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
+  apmicro: `COURSE CONVENTIONS: AP® Microeconomics.
+- A calculation point needs the correct value and, when the rubric says "with work shown", the work (the numbers and the operation). A correct number with no work earns nothing on such a point.
+- Marginal values come from changes: marginal cost is the change in total cost over the change in output, marginal revenue product is marginal product times the price. Total or average values in their place are wrong.
+- An "explain" point needs the comparison the rubric names, with the numbers when it asks for them (for example MR against MC, MRP against the wage, price against minimum AVC); a rule stated with no comparison does not earn it.
+- Directions and classes matter: elastic or inelastic, increase or decrease, shut down or keep producing. A claim with no direction, or the wrong one, does not earn the point.
+- Keep commonly confused ideas apart: a shift of a curve versus a movement along it, total versus marginal versus average, accounting versus economic profit, and the market's quantity versus the efficient quantity.
+- Graph and payoff matrix parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
 };
 
 export function systemBlocks(course) {

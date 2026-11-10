@@ -1,0 +1,607 @@
+{
+ "stimuli": {
+  "disequilibrium-changes-s1": {
+   "kind": "data",
+   "title": "The market for bike helmets in Dunmore",
+   "invented": true,
+   "table": {
+    "caption": "Bike helmets demanded and supplied per week in Dunmore, an invented city (invented data for practice)",
+    "cols": [
+     "Price",
+     "Quantity demanded",
+     "Quantity supplied"
+    ],
+    "rows": [
+     [
+      "\\$20",
+      "80",
+      "20"
+     ],
+     [
+      "\\$30",
+      "70",
+      "40"
+     ],
+     [
+      "\\$40",
+      "60",
+      "60"
+     ],
+     [
+      "\\$50",
+      "50",
+      "80"
+     ],
+     [
+      "\\$60",
+      "40",
+      "100"
+     ]
+    ]
+   }
+  },
+  "disequilibrium-changes-s2": {
+   "kind": "text",
+   "title": "Olive oil in Teralia: two news items in one season",
+   "text": "<p>Teralia is an invented country with a large market for olive oil. In one season:</p><ol><li>A long drought ruins much of the olive harvest, so presses have fewer olives to work with.</li><li>A widely reported medical study finds that olive oil is good for the heart, and many families decide to cook with it.</li></ol><p>No other news affects the market.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-disequilibrium-changes-1",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "disequilibrium-changes-s1",
+   "q": "At a price of \\$30, is there a shortage or a surplus of helmets, and how large is it? Give the size of the gap in helmets.",
+   "why": {
+    "correct": "At \\$30, quantity demanded is 70 and quantity supplied is 40. Quantity demanded is larger, so there is a shortage of $70 - 40 = 30$ helmets."
+   },
+   "numeric": {
+    "from": {
+     "fn": "shortage",
+     "args": [
+      70,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 110,
+      "why": "That adds the two quantities. A shortage is the gap: quantity demanded minus quantity supplied."
+     },
+     {
+      "value": 40,
+      "why": "That is the quantity supplied. The shortage is how far it falls short of the 70 demanded."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-2",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "disequilibrium-changes-s1",
+   "q": "If the price of helmets starts at \\$30, what happens next, and why?",
+   "options": [
+    "The price falls toward \\$20 as sellers clear their stock",
+    "Demand shifts left until it meets supply at \\$30",
+    "The price rises toward \\$40 as buyers compete for too few helmets",
+    "The price stays at \\$30 because 40 helmets are sold"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With a shortage, buyers compete for too few helmets and sellers find they can charge more. The price rises; as it does, quantity demanded falls and quantity supplied rises until they meet at \\$40.",
+    "options": [
+     "Sellers have too few helmets, not too many.",
+     "A shortage changes the price; it does not shift a curve.",
+     "Right: a shortage pushes the price up.",
+     "A gap between the quantities pushes the price to change."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-3",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "disequilibrium-changes-s1",
+   "q": "At a price of \\$60, what is the size of the gap between the quantities, in helmets?",
+   "why": {
+    "correct": "At \\$60, quantity supplied is 100 and quantity demanded is 40: a surplus of $100 - 40 = 60$ helmets, which pushes the price down."
+   },
+   "numeric": {
+    "from": {
+     "fn": "surplusQty",
+     "args": [
+      100,
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 140,
+      "why": "That adds the two quantities. A surplus is quantity supplied minus quantity demanded."
+     },
+     {
+      "value": 30,
+      "why": "That is the surplus at \\$50. Read the \\$60 row."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-4",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "disequilibrium-changes-s1",
+   "q": "Helmet laws spread, and buyers now want 30 more helmets at each price in the table. What are the new equilibrium price and quantity?",
+   "options": [
+    "\\$50 and 80 helmets",
+    "\\$40 and 90 helmets",
+    "\\$60 and 70 helmets",
+    "\\$40 and 60 helmets"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "New quantities demanded: 110, 100, 90, 80 and 70. At \\$50, 80 are demanded and 80 supplied, so the new equilibrium is \\$50 and 80 helmets: a higher price and quantity.",
+    "options": [
+     "Right: 80 demanded and 80 supplied at \\$50.",
+     "At \\$40 sellers still offer only 60; 90 are now demanded.",
+     "At \\$60 sellers offer 100 but buyers want 70.",
+     "That is the old equilibrium; demand has risen."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-5",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disequilibrium-changes-s2",
+   "q": "What does the drought alone do to the market for olive oil in Teralia?",
+   "options": [
+    "Demand decreases: price and quantity fall",
+    "Supply decreases: price and quantity both fall",
+    "Supply increases: price falls and quantity rises",
+    "Supply decreases: price rises and quantity falls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fewer olives raise the cost of making oil, so supply shifts left. Alone, that raises the equilibrium price and lowers the equilibrium quantity.",
+    "options": [
+     "The drought affects producers, so supply shifts.",
+     "A supply decrease raises the price.",
+     "A ruined harvest lowers supply.",
+     "Right: a leftward supply shift."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-6",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disequilibrium-changes-s2",
+   "q": "With both news items together, what happens to the equilibrium price and quantity of olive oil?",
+   "options": [
+    "The price and the quantity both rise",
+    "The price rises; the change in quantity is indeterminate",
+    "The quantity falls; the change in price is indeterminate",
+    "The price rises and the quantity falls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The drought (supply left) and the study (demand right) both push the price up, so the price rises. The drought lowers quantity and the study raises it, so the change in quantity is indeterminate without the sizes of the shifts.",
+    "options": [
+     "The drought alone lowers quantity, so the total change is unknown.",
+     "Right: both shifts raise the price, but they pull quantity in opposite directions.",
+     "Both shifts push the price the same way: up.",
+     "The study raises quantity, so its change depends on which shift is larger."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-7",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disequilibrium-changes-s2",
+   "q": "An economist later finds that the shift in demand was much larger than the shift in supply. What happened to the equilibrium quantity of olive oil?",
+   "options": [
+    "It fell",
+    "It rose",
+    "It stayed the same",
+    "It is still indeterminate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When the demand increase outweighs the supply decrease, the rise in quantity from demand is larger than the fall from supply, so the equilibrium quantity rises.",
+    "options": [
+     "That would happen if the supply shift were larger.",
+     "Right: the larger demand shift wins on quantity.",
+     "That would need the two effects to cancel exactly.",
+     "Knowing which shift is larger settles it."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-8",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A popular video makes padel, a racket sport, a craze. Shift the right curve in the market for padel rackets and mark the new equilibrium.",
+   "why": {
+    "correct": "Tastes shift demand right. The new equilibrium lies up and to the right along supply: a higher equilibrium price and quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a change in tastes toward padel",
+     "outcome": {
+      "price": "up",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "S": "The video changes what buyers want, so demand shifts; racket makers' costs did not change."
+    }
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-9",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A cheaper chip lowers the cost of making smartwatches. Shift the right curve in the market for smartwatches and mark the new equilibrium.",
+   "why": {
+    "correct": "Lower input costs shift supply right. The new equilibrium lies down and to the right along demand: a lower price and a larger quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "a fall in the price of an input",
+     "outcome": {
+      "price": "down",
+      "quantity": "up"
+     }
+    },
+    "slips": {
+     "D": "A cheaper chip lowers the cost of making watches, so supply shifts, not demand."
+    }
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-10",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "In the market for e-bikes, incomes rise (e-bikes are a normal good) and a new battery design cuts production costs. Shift both curves and mark the new equilibrium.",
+   "why": {
+    "correct": "Demand shifts right (higher income, normal good) and supply shifts right (lower costs). Both raise quantity, so quantity rises; the price change is indeterminate, because demand pushes it up and supply pushes it down."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      },
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "higher incomes and lower production costs",
+     "outcome": {
+      "quantity": "up"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-11",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A frost destroys half the wheat crop, and wheat is the main input for bread. Nothing changes for bread buyers. Shift the right curve in the market for bread and mark the new equilibrium.",
+   "why": {
+    "correct": "The frost raises the price of wheat, an input for bread, so the supply of bread shifts left. The new equilibrium has a higher price and a smaller quantity."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift",
+     "equilibrium"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "left"
+      }
+     ],
+     "because": "a rise in the price of an input (wheat)",
+     "outcome": {
+      "price": "up",
+      "quantity": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-12",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At a price below the equilibrium price, which is true?",
+   "options": [
+    "Quantity supplied exceeds quantity demanded: a surplus",
+    "Demand shifts left to meet supply",
+    "The market clears at the lower price",
+    "Quantity demanded exceeds quantity supplied: a shortage"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Below equilibrium, buyers want more than sellers offer: quantity demanded exceeds quantity supplied, a shortage. The shortage pushes the price up.",
+    "options": [
+     "A surplus happens above the equilibrium price.",
+     "Disequilibrium changes the price, not the curves.",
+     "The market clears only at the equilibrium price.",
+     "Right: below equilibrium, a shortage."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-13",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In a kelp bar market, demand reaches zero at \\$10 and supply starts at \\$1, with equilibrium at \\$4 and 60 bars a day. Demand rises: the new demand curve reaches zero at \\$13, and the new equilibrium is \\$5 and 80 bars. By how many dollars does consumer surplus change?",
+   "why": {
+    "correct": "Before: $\\tfrac{1}{2} \\times 60 \\times (10 - 4) = \\$180$. After: $\\tfrac{1}{2} \\times 80 \\times (13 - 5) = \\$320$. Consumer surplus rises by $\\$320 - \\$180 = \\$140$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "consumerSurplus",
+       "args": [
+        80,
+        13,
+        5
+       ]
+      },
+      {
+       "fn": "consumerSurplus",
+       "args": [
+        60,
+        10,
+        4
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 320,
+      "why": "That is consumer surplus after the change. Subtract the \\$180 before to get the change."
+     },
+     {
+      "value": 280,
+      "why": "That forgets the one half in each triangle."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-14",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In the same kelp bar market, by how many dollars does producer surplus change when the equilibrium moves from \\$4 and 60 bars to \\$5 and 80 bars?",
+   "why": {
+    "correct": "Before: $\\tfrac{1}{2} \\times 60 \\times (4 - 1) = \\$90$. After: $\\tfrac{1}{2} \\times 80 \\times (5 - 1) = \\$160$. Producer surplus rises by \\$70."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "producerSurplus",
+       "args": [
+        80,
+        5,
+        1
+       ]
+      },
+      {
+       "fn": "producerSurplus",
+       "args": [
+        60,
+        4,
+        1
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 160,
+      "why": "That is producer surplus after the change; subtract the \\$90 before."
+     },
+     {
+      "value": 140,
+      "why": "That is the change in consumer surplus. Producer surplus lies above supply and below the price."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-15",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Demand for two goods rises by the same amount. Good X has very inelastic supply; good Y has very elastic supply. Which statement is correct?",
+   "options": [
+    "The price of X rises more than the price of Y",
+    "The quantity of X rises more than the quantity of Y",
+    "The price of Y rises more than the price of X",
+    "Both prices rise by the same amount"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With inelastic supply, sellers cannot add much output, so most of the demand increase shows up as a higher price. With elastic supply, output rises a lot and the price only a little.",
+    "options": [
+     "Right: inelastic supply pushes the change into price.",
+     "Inelastic supply limits how much X sellers can add.",
+     "Elastic supply lets Y sellers meet the demand with more output.",
+     "The size of the price change depends on the elasticity of supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-16",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Supply of a good decreases while demand stays the same. Which results are certain? Select all that apply.",
+   "options": [
+    "The equilibrium price rises",
+    "The equilibrium quantity rises",
+    "Consumer surplus rises",
+    "The change in price is indeterminate"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A supply decrease with demand unchanged moves the equilibrium up and to the left along demand: the price rises and the quantity falls, and consumer surplus shrinks.",
+    "options": [
+     "Right: less supply raises the price.",
+     "A supply decrease lowers the quantity.",
+     "Buyers pay more for fewer units, so consumer surplus falls.",
+     "Only one curve shifts, so both changes are known."
+    ]
+   }
+  },
+  {
+   "id": "mic-disequilibrium-changes-17",
+   "unit": "unit-2",
+   "topic": "disequilibrium-changes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Demand for umbrellas falls and supply of umbrellas rises at the same time. Which change is certain?",
+   "options": [
+    "The quantity falls; price is indeterminate",
+    "The price rises; quantity is indeterminate",
+    "The price falls; quantity is indeterminate",
+    "Both price and quantity fall"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both shifts push the price down, so the price falls for sure. Demand falling lowers quantity while supply rising raises it, so the quantity change is indeterminate.",
+    "options": [
+     "The two shifts pull quantity in opposite directions.",
+     "Both shifts push the price down.",
+     "Right: both shifts lower the price.",
+     "The supply increase raises quantity, so its change is not certain."
+    ]
+   }
+  }
+ ]
+}

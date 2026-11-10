@@ -1,0 +1,12 @@
+{
+ "long-run-costs-lratc": {
+  "file": "figures/long-run-costs-lratc.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A long-run average total cost curve that falls (economies of scale), stays flat (constant returns to scale) and then rises (diseconomies of scale), with three dashed short-run ATC curves touching it and minimum efficient scale marked where the flat part begins."
+ }
+}

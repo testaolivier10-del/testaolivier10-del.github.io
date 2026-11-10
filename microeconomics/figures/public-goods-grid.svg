@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400" role="img" aria-labelledby="public-goods-grid-t public-goods-grid-d" font-family="Arial, Helvetica, sans-serif">
+<title id="public-goods-grid-t">Four kinds of goods, by rivalry and excludability</title>
+<desc id="public-goods-grid-d">A two-by-two grid. Columns: rival and nonrival. Rows: excludable and nonexcludable. Rival and excludable: private goods, such as a sandwich or a bike. Nonrival and excludable: club goods, such as a streaming service. Rival and nonexcludable: common resources, such as fish in the ocean. Nonrival and nonexcludable: public goods, such as national defense or a flood wall.</desc>
+<defs><marker id="public-goods-grid-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="public-goods-grid-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="public-goods-grid-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="public-goods-grid-arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker></defs>
+<rect width="700" height="400" fill="#FFFFFF"/>
+<text x="297.5" y="52" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Rival</text>
+<text x="552.5" y="52" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Nonrival</text>
+<text x="156" y="145" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="end">Excludable</text>
+<text x="156" y="285" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="end">Nonexcludable</text>
+<rect x="174" y="74" width="247" height="132" rx="10" fill="#F8E6F1" stroke="#7E1A5E" stroke-width="2"/>
+<text x="297.5" y="116" font-size="17" font-weight="bold" fill="#1F2A28" text-anchor="middle">Private good</text>
+<text x="297.5" y="148" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">a sandwich, a bike,</text>
+<text x="297.5" y="168" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">a pair of shoes</text>
+<rect x="429" y="74" width="247" height="132" rx="10" fill="#DDEBF7" stroke="#0072B2" stroke-width="2"/>
+<text x="552.5" y="116" font-size="17" font-weight="bold" fill="#1F2A28" text-anchor="middle">Club good</text>
+<text x="552.5" y="148" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">a streaming service,</text>
+<text x="552.5" y="168" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">an uncrowded toll road</text>
+<rect x="174" y="214" width="247" height="132" rx="10" fill="#FBE3D2" stroke="#D55E00" stroke-width="2"/>
+<text x="297.5" y="256" font-size="17" font-weight="bold" fill="#1F2A28" text-anchor="middle">Common resource</text>
+<text x="297.5" y="288" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">fish in the ocean,</text>
+<text x="297.5" y="308" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">a shared pasture</text>
+<rect x="429" y="214" width="247" height="132" rx="10" fill="#F2F4F3" stroke="#1F2A28" stroke-width="2"/>
+<text x="552.5" y="256" font-size="17" font-weight="bold" fill="#1F2A28" text-anchor="middle">Public good</text>
+<text x="552.5" y="288" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">national defense,</text>
+<text x="552.5" y="308" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">a flood wall</text>
+<text x="425" y="375" font-size="12" font-weight="normal" fill="#6B7672" text-anchor="middle">Rival: one person's use leaves less for others. Excludable: nonpayers can be kept out.</text>
+</svg>

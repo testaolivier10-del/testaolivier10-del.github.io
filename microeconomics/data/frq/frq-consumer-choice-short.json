@@ -1,0 +1,118 @@
+{
+ "id": "frq-consumer-choice-short",
+ "type": "short",
+ "points": 5,
+ "title": "A consumer with a budget: marginal utility per dollar, the best bundle, a larger budget and a sunk cost",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "cost-benefit",
+  "marginal-analysis"
+ ],
+ "practices": [
+  "2.A",
+  "2.C",
+  "1.C"
+ ],
+ "scenario": "Jonah has \\$30 to spend this month on used paperback books, which cost \\$5 each, and movie tickets, which cost \\$10 each. He spends the whole \\$30. The table shows the marginal utility (in utils) he gets from each book and each ticket. Earlier in the year he paid a \\$15 fee, which cannot be refunded, to join a bookstore club.",
+ "stimulus": {
+  "title": "Jonah's marginal utility",
+  "invented": true,
+  "table": {
+   "caption": "Marginal utility of each paperback (\\$5) and each movie ticket (\\$10), in utils (invented data for practice)",
+   "cols": [
+    "Unit",
+    "MU of paperbacks",
+    "MU of movie tickets"
+   ],
+   "rows": [
+    [
+     "1st",
+     "50",
+     "120"
+    ],
+    [
+     "2nd",
+     "40",
+     "80"
+    ],
+    [
+     "3rd",
+     "30",
+     "50"
+    ],
+    [
+     "4th",
+     "20",
+     ""
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Calculate</b> Jonah's marginal utility per dollar from his second movie ticket. Show your work.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States 8 utils per dollar, with work shown (80 ÷ \\$10).",
+     "accept": [
+      "8",
+      "80/10 = 8"
+     ]
+    }
+   ],
+   "sample": "Marginal utility per dollar $= \\frac{\\text{MU}}{P} = \\frac{80}{10} = 8$ utils per dollar."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>Identify</b> the combination of paperbacks and movie tickets that maximizes Jonah's total utility with his \\$30, and <b>explain</b> using marginal utility per dollar.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Identifies 2 paperbacks and 2 movie tickets.",
+     "accept": [
+      "two books and two tickets"
+     ]
+    },
+    {
+     "point": "Explains that this bundle spends the whole \\$30 and the last paperback and the last ticket each give 8 utils per dollar (40 ÷ 5 = 80 ÷ 10), so MU per dollar is equal.",
+     "accept": [
+      "buys each next unit with the highest MU per dollar (12, 10, then 8 and 8) until the \\$30 is spent"
+     ]
+    }
+   ],
+   "sample": "Jonah maximizes utility with 2 paperbacks and 2 movie tickets. It costs $2 \\times 5 + 2 \\times 10 = 30$ dollars, his whole budget, and the last paperback gives $\\frac{40}{5} = 8$ utils per dollar while the last ticket gives $\\frac{80}{10} = 8$ utils per dollar. Because the marginal utility per dollar is equal, no change in the bundle can raise his total utility."
+  },
+  {
+   "label": "C",
+   "prompt": "Next month Jonah has \\$35 to spend, and the prices do not change. <b>Identify</b> the combination of paperbacks and movie tickets that now maximizes his total utility.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "3 paperbacks and 2 movie tickets: the extra \\$5 buys a third paperback, worth 30 ÷ 5 = 6 utils per dollar",
+     "accept": [
+      "three books and two tickets"
+     ]
+    }
+   ],
+   "sample": "Jonah buys 3 paperbacks and 2 movie tickets, which costs $3 \\times 5 + 2 \\times 10 = 35$ dollars. After the first \\$30 is spent as in part B, the extra \\$5 cannot buy a ticket, but it buys a third paperback, which adds $\\frac{30}{5} = 6$ utils per dollar."
+  },
+  {
+   "label": "D",
+   "prompt": "<b>Explain</b> whether the \\$15 club fee Jonah paid earlier changes the combination that maximizes his utility this month.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "No, because the fee is a sunk cost: it has already been paid and cannot be recovered, so it is the same whatever he buys and does not change the marginal utility per dollar of any choice.",
+     "accept": [
+      "no: the fee is sunk and does not affect the benefits or costs of buying one more book or ticket"
+     ]
+    }
+   ],
+   "sample": "No. The \\$15 fee is a sunk cost: Jonah paid it earlier and cannot get it back, whatever he buys this month. It does not change the price or the marginal utility of any book or ticket, so the best bundle is still 2 paperbacks and 2 tickets."
+  }
+ ]
+}

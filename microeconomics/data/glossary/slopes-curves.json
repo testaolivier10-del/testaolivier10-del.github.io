@@ -1,0 +1,8 @@
+{
+ "slope": {
+  "def": "How steeply a line rises or falls: the rise (change in the vertical value) divided by the run (change in the horizontal value)."
+ },
+ "u-shaped": {
+  "def": "A curve that falls, reaches a minimum point where its slope is 0, and then rises."
+ }
+}

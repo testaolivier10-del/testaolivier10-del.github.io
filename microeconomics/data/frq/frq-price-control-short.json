@@ -1,0 +1,122 @@
+{
+ "id": "frq-price-control-short",
+ "type": "short",
+ "points": 5,
+ "title": "A binding price ceiling on kayak rentals: the shortage, the quantity rented and deadweight loss",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "government-intervention"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "3.C",
+  "3.A"
+ ],
+ "scenario": "In Lake Mirren, an invented resort town, the market for hourly kayak rentals is in equilibrium at \\$30 an hour with 200 rentals a day. The town council sets a maximum price of \\$20 an hour. At \\$20, visitors want 260 rentals a day and rental shops offer 140.",
+ "parts": [
+  {
+   "label": "A",
+   "points": 2,
+   "type": "graph",
+   "prompt": "<b>Draw</b> a correctly labeled graph of the market for kayak rentals and <b>show</b> the price ceiling.",
+   "graph": {
+    "kind": "sd-micro",
+    "line": {
+     "id": "Pc"
+    },
+    "do": [
+     "label",
+     "line"
+    ],
+    "key": {
+     "line": {
+      "side": "below"
+     }
+    },
+    "slips": {
+     "Pc": "A ceiling above the \\$30 equilibrium would not bind; the \\$20 ceiling sits below it."
+    }
+   },
+   "rubric": [
+    {
+     "point": "A correctly labeled graph: price and quantity axes, downward-sloping demand, upward-sloping supply",
+     "accept": [
+      "P and Q axes with D and S labeled"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "A horizontal price ceiling line below the equilibrium price",
+     "accept": [
+      "Pc drawn below PE"
+     ],
+     "auto": "line"
+    }
+   ],
+   "sample": "Vertical axis: Price; horizontal axis: Quantity of rentals. Demand D slopes down and supply S slopes up, crossing at \\$30 and 200 rentals. A horizontal line labeled Pc is drawn at \\$20, below the crossing, with Qs (140) and Qd (260) marked where it meets S and D."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the size of the shortage. Show your work.",
+   "rubric": [
+    {
+     "point": "120 rentals, with work: 260 demanded minus 140 supplied",
+     "accept": [
+      "$260 - 140 = 120$"
+     ]
+    }
+   ],
+   "sample": "Shortage = quantity demanded − quantity supplied at \\$20 = $260 - 140 = 120$ rentals a day."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Identify</b> the number of kayak rentals that take place each day under the ceiling, and <b>explain</b>.",
+   "rubric": [
+    {
+     "point": "140 rentals, because only the quantity shops supply at \\$20 can be rented (the smaller of Qd and Qs)",
+     "accept": [
+      "140, the quantity supplied"
+     ]
+    }
+   ],
+   "sample": "140 rentals a day. A rental needs both a visitor and a shop, and shops offer only 140 at \\$20, so the quantity traded is the quantity supplied."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "type": "graph",
+   "prompt": "<b>Shade</b> the deadweight loss caused by the price ceiling.",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "ceiling",
+     "at": 3
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "dwl"
+    },
+    "slips": {
+     "transfer": "That rectangle is surplus moved from shops to renters, not lost."
+    }
+   },
+   "rubric": [
+    {
+     "point": "Shades the triangle between demand and supply from the quantity supplied at the ceiling out to the equilibrium quantity",
+     "accept": [
+      "the triangle between D and S from Qs to QE"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "The deadweight loss is the triangle bounded by demand above, supply below, and the vertical line at the quantity supplied at the ceiling, running out to the equilibrium quantity where the curves cross."
+  }
+ ]
+}

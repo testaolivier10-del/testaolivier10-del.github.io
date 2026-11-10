@@ -1,0 +1,192 @@
+{
+ "id": "frq-placeholder-long",
+ "type": "long",
+ "points": 10,
+ "placeholder": true,
+ "title": "Placeholder: a competitive market and firm, long question",
+ "units": [
+  "unit-3",
+  "unit-6"
+ ],
+ "topics": [
+  "perfect-competition",
+  "inequality"
+ ],
+ "practices": [
+  "4.A",
+  "4.C",
+  "2.A",
+  "3.C"
+ ],
+ "scenario": "A placeholder market is in long-run equilibrium when demand for its good rises.",
+ "stimulus": {
+  "title": "Placeholder: a firm's costs",
+  "invented": true,
+  "table": {
+   "caption": "Placeholder: output and total cost (invented data)",
+   "cols": [
+    "Output",
+    "Total cost (dollars)"
+   ],
+   "rows": [
+    [
+     "0",
+     "100"
+    ],
+    [
+     "10",
+     "160"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Draw</b> correctly labeled side-by-side graphs for the market and a typical firm, and <b>show</b> the effect of the rise in demand.",
+   "points": 4,
+   "type": "graph",
+   "graph": {
+    "kind": "pc",
+    "do": [
+     "label",
+     "shift",
+     "line",
+     "point"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in market demand",
+     "line": {
+      "to": "eq"
+     },
+     "point": {
+      "at": "firm"
+     }
+    }
+   },
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "labels"
+    },
+    {
+     "point": "Placeholder rubric point 2 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "shift"
+    },
+    {
+     "point": "Placeholder rubric point 3 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "line"
+    },
+    {
+     "point": "Placeholder rubric point 4 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "point"
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part A, long enough to read."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>Shade</b> the firm's economic profit on the graph.",
+   "points": 1,
+   "type": "graph",
+   "graph": {
+    "kind": "pc",
+    "start": {
+     "D": 1
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "profit"
+    }
+   },
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ],
+     "auto": "shade"
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part B, long enough to read."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Calculate</b> the average total cost of 10 units. Show your work.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part C, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part C, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part C, long enough to read."
+  },
+  {
+   "label": "D(i)",
+   "prompt": "<b>Identify</b> what happens to the number of firms in the long run.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part D(i), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part D(i), long enough to read."
+  },
+  {
+   "label": "D(ii)",
+   "prompt": "<b>Explain</b> your answer to D(i).",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part D(ii), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part D(ii), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part D(ii), long enough to read."
+  }
+ ]
+}

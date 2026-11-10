@@ -1,0 +1,491 @@
+{
+ "stimuli": {
+  "economic-systems-s1": {
+   "kind": "data",
+   "title": "How three countries decide",
+   "invented": true,
+   "table": {
+    "caption": "Who decides in three invented countries (invented data for practice)",
+    "cols": [
+     "Country",
+     "Who owns most factories and farms",
+     "What sets most prices",
+     "Who decides what gets made"
+    ],
+    "rows": [
+     [
+      "Arvel",
+      "private owners",
+      "buyers and sellers in markets",
+      "firms, guided by what buyers pay"
+     ],
+     [
+      "Brennick",
+      "the state",
+      "a national planning board",
+      "the planning board"
+     ],
+     [
+      "Coralia",
+      "mostly private owners; the state runs the railways",
+      "markets, with some government rules",
+      "mostly firms; the government provides schools and roads"
+     ]
+    ]
+   }
+  },
+  "economic-systems-s2": {
+   "kind": "text",
+   "title": "Tessaly's winter coats",
+   "text": "<p>In the invented country of Tessaly, a central planning office decides how many coats the state-owned clothing factories make each year and sets the price of every coat. This year the office ordered 2 million summer jackets and 1 million winter coats. By December, stores have racks of unsold summer jackets, while winter coats are gone within days of each delivery and long lines form whenever a truck arrives. The price of a winter coat stays where the office set it.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-economic-systems-1",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which three questions must every economic system answer?",
+   "options": [
+    "Who votes, who governs, and who pays the taxes",
+    "How much to save, borrow and lend",
+    "What to produce, how to produce it, and for whom",
+    "Which goods to import, export and tax"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Scarcity means every society must decide what to make, how to make it and who gets it. Systems differ in who answers.",
+    "options": [
+     "Those are questions about government, not how resources are allocated.",
+     "Saving and borrowing are choices inside a system, not its three questions.",
+     "Right: what, how and for whom.",
+     "Trade and taxes are policies, not the three basic questions."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-2",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a market economy, what mainly coordinates the choices of millions of buyers and sellers?",
+   "options": [
+    "Prices",
+    "A central planning board",
+    "Tradition passed down in families",
+    "Votes held for each good"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Prices carry information about what buyers want and what it costs to make, and they give people reasons to act on it.",
+    "options": [
+     "Right: prices coordinate.",
+     "A planning board coordinates a command economy.",
+     "Tradition decided production in some older societies, not in a market economy.",
+     "Markets do not vote on each good."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-3",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "economic-systems-s1",
+   "q": "Which kind of economic system does Brennick have?",
+   "options": [
+    "A market economy",
+    "A mixed economy that relies mostly on markets",
+    "A system with no answer to \"what to produce\"",
+    "A command economy"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In Brennick the state owns the factories and farms and a planning board sets prices and decides what is made: a command economy.",
+    "options": [
+     "In a market economy private owners and prices decide; Brennick uses a board.",
+     "Brennick's board makes the main decisions, not markets.",
+     "Every system answers it; in Brennick the board does.",
+     "Right: central ownership and a central plan."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-4",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "economic-systems-s1",
+   "q": "Which kind of economic system does Coralia have?",
+   "options": [
+    "A command economy",
+    "A mixed economy",
+    "A pure market economy with no government role",
+    "A traditional economy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Coralia relies mostly on private owners and markets, but its government runs the railways, sets some rules and provides schools and roads: a mixed economy.",
+    "options": [
+     "Most decisions in Coralia are made by firms and markets, not a central plan.",
+     "Right: markets plus a government role.",
+     "The government runs railways and provides schools and roads, so markets are not acting alone.",
+     "Nothing in the table says decisions follow custom."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-5",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "economic-systems-s1",
+   "q": "In which country does a change in what buyers are willing to pay most directly change what gets made?",
+   "options": [
+    "Brennick",
+    "Arvel",
+    "Coralia's railways",
+    "Coralia, for its schools and roads"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In Arvel firms decide what to make guided by what buyers pay, so a change in prices changes production directly.",
+    "options": [
+     "Brennick's planning board decides, whatever buyers would pay.",
+     "Right: firms follow what buyers pay.",
+     "Coralia's railways are run by the state, not guided by prices.",
+     "Coralia's government provides its schools and roads, whatever buyers would pay."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-6",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "economic-systems-s1",
+   "q": "In Arvel, who answers \"for whom\" goods are produced?",
+   "options": [
+    "The national planning board",
+    "Whoever lines up first",
+    "The government, by handing out goods equally",
+    "Buyers willing and able to pay"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In a market economy, goods go to the people who are willing and able to pay for them, which depends on their incomes and wants.",
+    "options": [
+     "Arvel has no planning board; that is Brennick.",
+     "Prices, not lines, ration goods in a market.",
+     "Equal hand-outs are a choice a government might make, not how Arvel works.",
+     "Right: willingness and ability to pay."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-7",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "economic-systems-s2",
+   "q": "What kind of economic system does the scenario describe for Tessaly's clothing?",
+   "options": [
+    "A command economy",
+    "A market economy",
+    "A mixed economy run by markets",
+    "An economy without scarcity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A central office decides how much is made and sets prices in state-owned factories: a command system.",
+    "options": [
+     "Right: central planning and state ownership.",
+     "In a market, prices and private firms would decide.",
+     "The planning office, not markets, decides here.",
+     "Coats run out within days, so scarcity is clearly present."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-8",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "economic-systems-s2",
+   "q": "Why do winter coats run out while summer jackets pile up?",
+   "options": [
+    "Tessaly has no factories able to sew coats",
+    "Buyers in Tessaly have no money",
+    "The fixed price sends no signal to make more coats",
+    "Coats are a factor of production"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With prices set by the office, nothing rises to tell factories that coats are wanted, and no one gains by switching from jackets to coats.",
+    "options": [
+     "The factories already make 1 million coats, so they can sew them.",
+     "Long lines show people are trying to buy.",
+     "Right: a fixed price sends no signal.",
+     "Coats are a finished good, not a resource used in production."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-9",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "economic-systems-s2",
+   "q": "If coat prices were set in a market instead, what would most likely happen?",
+   "options": [
+    "Coat prices would fall, and firms would make fewer coats",
+    "Nothing would change, because prices do not affect firms",
+    "Firms would make more summer jackets",
+    "Coat prices would rise, so firms make more coats"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Buyers lining up for coats would push the price up. A higher price makes coats more rewarding to produce, so firms shift resources toward coats.",
+    "options": [
+     "Strong buying pushes a market price up, not down.",
+     "Prices change what firms can earn, so they change what firms make.",
+     "Jackets are piling up, so a market would send resources away from them.",
+     "Right: higher price, more coats."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-10",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "economic-systems-s2",
+   "q": "Who answers \"what to produce\" for Tessaly's clothing?",
+   "options": [
+    "The buyers in the lines",
+    "The store clerks",
+    "The central planning office",
+    "The workers in each factory, by vote"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The office orders 2 million jackets and 1 million coats, so it decides what is made.",
+    "options": [
+     "Buyers line up, but their wants do not change the plan.",
+     "Clerks sell what arrives; they do not decide what is made.",
+     "Right: the office sets the output.",
+     "Nothing in the scenario says workers vote on output."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-11",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What are property rights?",
+   "options": [
+    "Rules that set the price of each good",
+    "Legal rights to own, use and gain from property",
+    "Government ownership of factories",
+    "Rights to receive goods for free"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Property rights say who owns something and let the owner use it, sell it and keep what it earns.",
+    "options": [
+     "Price setting is a different policy.",
+     "Right: ownership and its rewards.",
+     "That describes state ownership, the opposite of private property.",
+     "Owning something is not a right to free goods."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-12",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why do well-defined property rights help a market economy work?",
+   "options": [
+    "Owners keep what they earn, so they have reason to produce",
+    "They let the government set the prices of goods",
+    "They promise each firm that it will make a profit",
+    "They remove scarcity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If you can keep the rewards of building or improving something, you have a reason to do it. Without secure ownership, that reason weakens.",
+    "options": [
+     "Right: secure rewards create incentives.",
+     "Property rights let owners, not the government, decide.",
+     "Owners can still lose money; rights do not promise a profit.",
+     "Scarcity remains in every system."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-13",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A country lets private firms make most goods, but its government runs public schools, builds highways and sets safety rules. Which system is this?",
+   "options": [
+    "A pure market economy",
+    "A command economy",
+    "A mixed economy",
+    "An economy with no government"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Markets plus a government that provides some goods and makes rules is a mixed economy.",
+    "options": [
+     "A pure market economy would leave schools and highways to private firms too.",
+     "Most goods here come from private firms, not a central plan.",
+     "Right: markets with a government role.",
+     "The government plays a clear role here."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-14",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A sneaker company sees its new model selling out and its price rising on resale sites. It moves workers from older models to the new one. Which idea does this show?",
+   "options": [
+    "Prices steer resources toward what buyers want",
+    "A central plan tells the firm what to make",
+    "The firm ignores prices when choosing what to make",
+    "Workers in a firm stay on the products they started on"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The higher price shows buyers value the new model, and making more of it is more rewarding, so the firm moves labor toward it.",
+    "options": [
+     "Right: prices guide where resources go.",
+     "No planner is involved; the firm reacts to prices.",
+     "The firm reacts directly to the price signal.",
+     "The firm just moved workers from one model to another."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-15",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which statement compares market and command economies accurately?",
+   "options": [
+    "Market economies face scarcity and command economies do not",
+    "Command economies get by without any prices",
+    "Market economies get by without any government",
+    "Markets coordinate by prices; command economies by plans"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Both face scarcity and both have prices and governments; the difference is who decides and what coordinates the decisions.",
+    "options": [
+     "Scarcity is universal.",
+     "Command economies set prices by plan rather than letting markets set them.",
+     "Every real market economy has a government that enforces contracts and property rights.",
+     "Right: prices versus plans."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-16",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are institutions a market economy relies on? Select all that apply.",
+   "options": [
+    "Enforceable contracts",
+    "Property rights",
+    "A planning board that sets output",
+    "Prices fixed by the government for each good"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Markets need rules that let people own things and trust deals: property rights, contracts and the rule of law.",
+    "options": [
+     "Right: deals must be enforceable.",
+     "Right: owners must be able to keep and use what they own.",
+     "Setting output by plan is how a command economy works.",
+     "Market prices come from buyers and sellers, not government decree."
+    ]
+   }
+  },
+  {
+   "id": "mic-economic-systems-17",
+   "unit": "unit-1",
+   "topic": "economic-systems",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "In a market economy, buyers suddenly want more electric bikes. Put the steps in order.",
+   "options": [
+    "Buyers want more electric bikes than stores have",
+    "The price of electric bikes rises",
+    "Making electric bikes becomes more rewarding for firms",
+    "Firms move resources into making more electric bikes"
+   ],
+   "why": {
+    "correct": "Wants change, the price signals it, the higher price creates an incentive, and firms respond by shifting resources."
+   }
+  }
+ ]
+}

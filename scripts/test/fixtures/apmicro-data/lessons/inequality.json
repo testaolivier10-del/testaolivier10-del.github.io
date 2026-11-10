@@ -1,0 +1,62 @@
+{
+ "topic": "inequality",
+ "hook": "Placeholder hook for the test fixture: two towns with the same average income can feel very different, because what matters is how the income is shared.",
+ "prereq": [
+  {
+   "q": "Placeholder: what is a percentage of a total?",
+   "options": [
+    "A part out of every 100",
+    "A total divided by two",
+    "A price",
+    "A quantity"
+   ],
+   "correct": 0,
+   "why": "Placeholder: a share out of 100.",
+   "review": "axes-points"
+  },
+  {
+   "q": "Placeholder: what does a tax on each unit sold do to the supply curve?",
+   "options": [
+    "Shifts it up by the tax",
+    "Shifts it down by the tax",
+    "Leaves it in place",
+    "Makes it vertical"
+   ],
+   "correct": 0,
+   "why": "Placeholder: sellers need the tax on top of their cost.",
+   "review": "government-intervention"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "The richest fifth gains a larger share",
+   "effect": "the Lorenz curve bows further out"
+  },
+  {
+   "cause": "The curve bows further out",
+   "effect": "the area between it and the diagonal grows"
+  },
+  {
+   "cause": "The area between the curves grows",
+   "effect": "the Gini coefficient rises"
+  }
+ ],
+ "ideas": [
+  "Placeholder: the diagonal is perfect equality.",
+  "Placeholder: the further the curve bows, the more unequal."
+ ],
+ "misconception": {
+  "wrong": "Placeholder: a Lorenz curve shows prices.",
+  "right": "Placeholder: it shows how income is shared."
+ },
+ "check": [
+  "mic-inequality-1",
+  "mic-inequality-2",
+  "mic-inequality-4",
+  "mic-inequality-5",
+  "mic-inequality-20",
+  "mic-inequality-23"
+ ],
+ "summary": "Placeholder summary: the Lorenz curve plots the cumulative share of income against the cumulative share of households, the line of equality is the diagonal, and the further the curve bows below it the more unequal the distribution; progressive taxes and transfers move it toward equality."
+}

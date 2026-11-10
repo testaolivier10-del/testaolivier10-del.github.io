@@ -1,0 +1,732 @@
+{
+ "stimuli": {
+  "inequality-s1": {
+   "kind": "data",
+   "title": "Placeholder: income shares by fifth of households",
+   "invented": true,
+   "table": {
+    "caption": "Placeholder: share of income by fifth (invented data for practice)",
+    "cols": [
+     "Fifth",
+     "Share of income (%)"
+    ],
+    "rows": [
+     [
+      "Poorest",
+      "5"
+     ],
+     [
+      "Second",
+      "15"
+     ],
+     [
+      "Middle",
+      "20"
+     ],
+     [
+      "Fourth",
+      "25"
+     ],
+     [
+      "Richest",
+      "35"
+     ]
+    ]
+   }
+  },
+  "inequality-s2": {
+   "kind": "graph",
+   "title": "Placeholder: a per-unit subsidy, areas lettered",
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "subsidy",
+     "amount": 2
+    },
+    "letters": true
+   }
+  },
+  "inequality-s3": {
+   "kind": "text",
+   "title": "Placeholder: a lighthouse on a busy coast",
+   "text": "<p>Placeholder scenario: a lighthouse signal guides every passing ship, and one ship seeing it does not stop another from seeing it.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-inequality-1",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Placeholder: what does a Lorenz curve show?",
+   "options": [
+    "The price of a good at each quantity",
+    "The output a firm makes with each worker",
+    "The cost of each extra unit",
+    "The share of income held by each share of households"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Placeholder: cumulative households against cumulative income.",
+    "options": [
+     "That is a demand curve.",
+     "That is a production function.",
+     "That is marginal cost.",
+     "Right: cumulative income by cumulative households."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-2",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Placeholder: a per-unit tax is placed on sellers. Shade the tax revenue.",
+   "why": {
+    "correct": "Placeholder: the rectangle between the price buyers pay and the price sellers keep, out to the quantity after the tax."
+   },
+   "graph": {
+    "kind": "sd-micro",
+    "policy": {
+     "type": "tax",
+     "amount": 2
+    },
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "tax-revenue"
+    },
+    "slips": {
+     "dwl": "Placeholder: that triangle is the deadweight loss; the revenue is the rectangle."
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-3",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Placeholder: label the axes and both curves of the inequality graph.",
+   "why": {
+    "correct": "Placeholder: cumulative households across, cumulative income up, the diagonal and the bowed curve."
+   },
+   "graph": {
+    "kind": "lorenz",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-inequality-4",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Placeholder: a tax cuts the quantity traded from 50 to 40 and opens a price wedge of 4 dollars. What is the deadweight loss, in dollars?",
+   "why": {
+    "correct": "Placeholder: $\\tfrac{1}{2} \\times 10 \\times 4 = 20$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "dwl",
+     "args": [
+      10,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        10,
+        4
+       ]
+      },
+      "why": "Placeholder: that is the rectangle; the deadweight loss is a triangle, so take one half."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-5",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Placeholder: a tax takes a larger share of income from people with higher incomes. Which kind of tax is it?",
+   "options": [
+    "Proportional",
+    "Regressive",
+    "Progressive",
+    "Lump-sum"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Placeholder: the share rises with income.",
+    "options": [
+     "The share would stay the same.",
+     "The share would fall with income.",
+     "Right: the share rises with income.",
+     "A lump-sum tax is the same amount for all."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-6",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Placeholder: according to the table, what share of income does the poorest fifth hold?",
+   "options": [
+    "15%",
+    "20%",
+    "35%",
+    "5%"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Placeholder: read the first row, where the poorest fifth holds $20\\%$ of the income it would hold with equal shares.",
+    "options": [
+     "That is the second fifth's share.",
+     "That is an equal share.",
+     "That is the cumulative share of the poorest two fifths plus more.",
+     "Right: the first row."
+    ]
+   },
+   "stimulus": "inequality-s1"
+  },
+  {
+   "id": "mic-inequality-7",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "inequality-s1",
+   "q": "Placeholder: what cumulative percent of income do the poorest two fifths hold?",
+   "why": {
+    "correct": "Placeholder: $5 + 15 = 20$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "lorenz",
+     "args": [
+      [
+       5,
+       15,
+       20,
+       25,
+       35
+      ]
+     ],
+     "pick": "1"
+    },
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "Placeholder: 15 is the second fifth alone; add the first fifth."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-8",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "stimulus": "inequality-s1",
+   "q": "Placeholder: which fifths hold more than an equal share of income? Select all that apply.",
+   "options": [
+    "The poorest fifth",
+    "The second fifth",
+    "The fourth fifth",
+    "The richest fifth"
+   ],
+   "correct": [
+    2,
+    3
+   ],
+   "why": {
+    "correct": "Placeholder: an equal share is 20%.",
+    "options": [
+     "5% is below 20%.",
+     "15% is below 20%.",
+     "Right: 25% is above 20%.",
+     "Right: 35% is above 20%."
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-9",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Placeholder: if every fifth held 20%, where would the Lorenz curve lie?",
+   "options": [
+    "Below the diagonal",
+    "On the line of equality",
+    "Along the horizontal axis",
+    "Above the diagonal"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Placeholder: equal shares make the curve the diagonal.",
+    "options": [
+     "That shows inequality.",
+     "Right: it would be the diagonal.",
+     "That would mean no one has income.",
+     "A Lorenz curve never rises above it."
+    ]
+   },
+   "stimulus": "inequality-s1"
+  },
+  {
+   "id": "mic-inequality-10",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Placeholder: in the graph, which area is the deadweight loss of the subsidy?",
+   "options": [
+    "Area b",
+    "Area e",
+    "Area g",
+    "Area a"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Placeholder: between supply and demand, beyond the efficient quantity.",
+    "options": [
+     "Area b goes to buyers.",
+     "Area e goes to sellers.",
+     "Right: area g.",
+     "Area a is consumer surplus before the subsidy."
+    ]
+   },
+   "stimulus": "inequality-s2"
+  },
+  {
+   "id": "mic-inequality-11",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Placeholder: in the graph, which areas together are the cost of the subsidy?",
+   "options": [
+    "b and e alone",
+    "a, b and c",
+    "b, c, e, f and g",
+    "d, e and f"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Placeholder: the whole rectangle out to the new quantity.",
+    "options": [
+     "That leaves out c, f and g.",
+     "That is consumer surplus.",
+     "Right: the whole rectangle.",
+     "That is producer surplus."
+    ]
+   },
+   "stimulus": "inequality-s2"
+  },
+  {
+   "id": "mic-inequality-12",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Placeholder: in the graph, what happens to the quantity traded after the subsidy?",
+   "options": [
+    "It falls",
+    "It stays the same",
+    "It falls to zero",
+    "It rises"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Placeholder: supply shifts right.",
+    "options": [
+     "Supply shifted right, not left.",
+     "The crossing moved.",
+     "The market does not close.",
+     "Right: the new crossing is further right."
+    ]
+   },
+   "stimulus": "inequality-s2"
+  },
+  {
+   "id": "mic-inequality-13",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Placeholder: build the answer: why does a monopolist charge more than marginal cost?",
+   "why": {
+    "correct": "Placeholder: it produces where MR = MC and reads the price from demand, which lies above MR."
+   },
+   "specific": {
+    "frame": "It produces where ___ equals ___, and reads its price from ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Placeholder: it produces where marginal revenue equals marginal cost, because the next unit would add more to cost than to revenue, and reads its price from the demand curve above that quantity, which is higher than marginal cost.",
+    "slots": {
+     "rule": {
+      "label": "The rule",
+      "options": [
+       "MR",
+       "P"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: price equals MC is the efficient rule, not the monopolist's."
+      }
+     },
+     "curve": {
+      "label": "The curve",
+      "options": [
+       "demand",
+       "marginal revenue"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: the price comes from demand, not from MR."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-14",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Placeholder: put the long-run steps in order after a rise in demand in a competitive market.",
+   "options": [
+    "Firms earn economic profit",
+    "New firms enter",
+    "Market supply shifts right",
+    "Price falls back to minimum ATC"
+   ],
+   "why": {
+    "correct": "Placeholder: each step causes the next."
+   }
+  },
+  {
+   "id": "mic-inequality-15",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Placeholder: in the scenario, which kind of good is the lighthouse signal?",
+   "options": [
+    "A private good",
+    "A public good",
+    "A common resource",
+    "A club good sold by subscription"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Placeholder: nonrival and nonexcludable.",
+    "options": [
+     "It is not rival or excludable.",
+     "Right: nonrival and nonexcludable.",
+     "It is not rival.",
+     "No one can be excluded."
+    ]
+   },
+   "stimulus": "inequality-s3"
+  },
+  {
+   "id": "mic-inequality-16",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Placeholder: in the scenario, why will few ships pay for the signal?",
+   "options": [
+    "They can use it without paying",
+    "The signal is too costly to see",
+    "The price is set by MR",
+    "They prefer a price floor"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the free-rider problem.",
+    "options": [
+     "Right: free riders.",
+     "Seeing it costs nothing extra.",
+     "No firm sets this price.",
+     "There is no floor here."
+    ]
+   },
+   "stimulus": "inequality-s3"
+  },
+  {
+   "id": "mic-inequality-17",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Placeholder: in the scenario, who is likely to provide the signal?",
+   "options": [
+    "A single ship",
+    "The government",
+    "No one at any price",
+    "The ship with the most cargo"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Placeholder: public goods are often provided by government.",
+    "options": [
+     "One ship would bear the whole cost.",
+     "Right: paid for with taxes.",
+     "Governments provide many such goods.",
+     "Cargo does not change free riding."
+    ]
+   },
+   "stimulus": "inequality-s3"
+  },
+  {
+   "id": "mic-inequality-18",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Placeholder: mark the monopolist's price and quantity.",
+   "why": {
+    "correct": "Placeholder: the quantity where MR = MC, the price up on demand."
+   },
+   "graph": {
+    "kind": "monopoly",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "M",
+    "key": {
+     "point": {
+      "at": "profit-max"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-19",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "Placeholder: demand rises in a competitive market. Shift the right curve and draw the firm's new price line.",
+   "why": {
+    "correct": "Placeholder: market demand shifts right; the firm takes the higher price."
+   },
+   "graph": {
+    "kind": "pc",
+    "do": [
+     "shift",
+     "line"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "D",
+       "dir": "right"
+      }
+     ],
+     "because": "a rise in market demand",
+     "line": {
+      "to": "eq"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-20",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "analyze",
+   "diff": 2,
+   "type": "matrix",
+   "practice": "3.A",
+   "q": "Placeholder: mark each firm's dominant strategy, if any, and every Nash equilibrium.",
+   "why": {
+    "correct": "Placeholder: Firm A's dominant strategy is Low; Firm B has none; the Nash equilibrium is (Low, Low)."
+   },
+   "matrix": {
+    "players": [
+     {
+      "name": "Firm A",
+      "strategies": [
+       "Low",
+       "High"
+      ]
+     },
+     {
+      "name": "Firm B",
+      "strategies": [
+       "Low",
+       "High"
+      ]
+     }
+    ],
+    "payoffs": [
+     [
+      [
+       40,
+       30
+      ],
+      [
+       70,
+       20
+      ]
+     ],
+     [
+      [
+       20,
+       60
+      ],
+      [
+       50,
+       50
+      ]
+     ]
+    ],
+    "unit": "$",
+    "do": [
+     "dominant",
+     "nash"
+    ]
+   }
+  },
+  {
+   "id": "mic-inequality-21",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Placeholder: shade the monopsonist's wage bill.",
+   "why": {
+    "correct": "Placeholder: the wage read from labor supply times the workers hired."
+   },
+   "graph": {
+    "kind": "monopsony",
+    "do": [
+     "shade"
+    ],
+    "key": {
+     "shade": "wage-bill"
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-22",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Placeholder: mark the socially efficient quantity and price.",
+   "why": {
+    "correct": "Placeholder: where marginal social benefit meets marginal social cost."
+   },
+   "graph": {
+    "kind": "externality",
+    "ext": {
+     "type": "neg-prod"
+    },
+    "do": [
+     "point"
+    ],
+    "key": {
+     "point": {
+      "at": "efficient"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-inequality-23",
+   "unit": "unit-6",
+   "topic": "inequality",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Placeholder: which change makes the Lorenz curve bow further from the line of equality?",
+   "options": [
+    "A transfer to the poorest households",
+    "A more progressive tax",
+    "A larger share of income for the richest fifth",
+    "Equal shares for each fifth"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Placeholder: more income at the top means more inequality.",
+    "options": [
+     "That moves it toward equality.",
+     "That moves it toward equality.",
+     "Right: the curve bows further out.",
+     "That is the line of equality itself."
+    ]
+   }
+  }
+ ]
+}

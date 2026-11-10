@@ -1,0 +1,8 @@
+{
+ "labor-demand-shifter": {
+  "def": "A change other than the wage that shifts labor demand: the demand for the product, worker productivity, the prices of other inputs, or the number of firms."
+ },
+ "labor-supply": {
+  "def": "The number of workers willing and able to work at each wage. It shifts with population, training and age rules, pay in other jobs and how people feel about the work."
+ }
+}

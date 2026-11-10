@@ -1,0 +1,22 @@
+{
+ "perfect-competition-side-by-side": {
+  "file": "figures/perfect-competition-side-by-side.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Side-by-side graphs. The market's demand and supply set the price PM; the firm takes it as a horizontal line d = MR = AR = P and produces qF where MR = MC, at the lowest point of ATC, earning zero economic profit."
+ },
+ "perfect-competition-long-run": {
+  "file": "figures/perfect-competition-long-run.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Side-by-side graphs: market demand rises from D1 to D2, raising the price to P2 and giving the firm a profit at q2; new firms enter, supply shifts from S1 to S2, and the price returns to P1 at the lowest point of ATC, with a larger market quantity."
+ }
+}

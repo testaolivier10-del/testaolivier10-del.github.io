@@ -1,0 +1,73 @@
+/* Graph Studio (microeconomics/assets/tools/graph-studio.js). OWNED BY THIS TOOL
+   ONLY (builder T1). The graphs themselves are ApMicroGraph's (mic.css,
+   "Graphs"); this file lays them out on the Tool Studio stage (one panel, or
+   the market and firm side by side, one above the other on a phone) and
+   styles the dock and the rubric strip. */
+
+/* ---------------------------------------------------------- the stage */
+.gs-fig{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.gs-pane{flex:1 1 0;min-width:0;min-height:0;margin:0;display:flex;flex-direction:column;align-items:center;}
+.gs-host{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.gs-host.mic-graph{margin:0;}
+.gs-host .mic-gr-stage{flex:1;min-height:0;width:100%;max-width:none;display:flex;align-items:center;justify-content:center;}
+.gs-host .mic-graph-svg{width:100%;height:100%;max-height:100%;}
+/* Two panels (market and firm, labor market and firm): side by side, each
+   as tall as the stage allows; one above the other on a narrow stage. */
+.gs-host .mic-gr-panels{width:100%;height:100%;min-height:0;display:flex;flex-wrap:nowrap;gap:10px;align-items:stretch;justify-content:center;}
+.gs-host .mic-gr-panels > svg{flex:1 1 0;min-width:0;max-width:none;height:100%;}
+@container (max-width: 560px){
+  .gs-host .mic-gr-panels{flex-direction:column;gap:2px;}
+  .gs-host .mic-gr-panels > svg{flex:1 1 0;min-height:0;width:100%;}
+}
+.gs-fig,.gs-qfig{container-type:inline-size;}
+
+/* ----------------------------------------------------------- the dock */
+.gs-ctl{display:flex;flex-direction:column;gap:10px;}
+.gs-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+.gs-scen-l{font:800 13px var(--font-ui);flex:0 0 100%;}
+.gs-gsel{flex:1 1 100%;min-width:0;min-height:44px;max-width:100%;}
+.gs-scen{flex:1 1 200px;min-width:0;min-height:44px;max-width:100%;}
+.gs-show{flex:none;min-height:44px;}
+.gs-hand .mic-gr-controls,.gs-stepctl .mic-gr-controls{display:flex;flex-wrap:wrap;justify-content:flex-start;margin:0;gap:6px;}
+.gs-hand .mic-gr-handle,.gs-stepctl .mic-gr-handle{min-height:44px;padding:4px 10px;font-size:12.5px;background:var(--white);color:var(--ink);}
+.gs-hand .mic-gr-handle span{font-weight:600;}
+.gs-hand:empty{display:none;}
+.gs-cap{margin:0;font:600 14px/1.45 var(--font-ui);}
+.ls-root .gs-cap{display:none;}
+.gs-opts{display:flex;flex-wrap:wrap;gap:8px;}
+.gs-h4{font:800 14px var(--font-ui);margin:1em 0 .3em;}
+.gs-tbl th{text-align:left;vertical-align:top;padding-right:12px;}
+.gs-tbl td ul{margin:0;padding-left:1.1em;}
+.gs-cname{display:block;font-weight:600;font-size:12px;color:var(--muted);white-space:normal;max-width:12em;}
+
+/* ------------------------------------------------------ test yourself */
+.gs-qbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.gs-qbar label{font:800 13px var(--font-ui);}
+.gs-qbar select{flex:1 1 180px;min-width:0;min-height:44px;max-width:100%;}
+.gs-qstage{min-height:0;}
+.gs-qfig{flex:1;min-height:0;margin:0;display:flex;flex-direction:column;gap:6px;}
+.gs-qhost{flex:1;min-height:0;}
+.gs-rubric{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;flex:none;}
+.gs-rubric li{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 4px;border-radius:999px;border:1.5px solid var(--line);font:700 12.5px var(--font-ui);color:var(--muted);background:var(--white);}
+.gs-rk{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--paper);font:800 11px var(--font-ui);color:var(--muted);}
+.gs-rubric li.is-cur{border-color:var(--cink);color:var(--ink);}
+.gs-rubric li.is-cur .gs-rk{background:var(--cink);color:var(--white);}
+.gs-rubric li.is-ok{border-color:var(--good-text,#1B7F3A);color:var(--good-text,#1B7F3A);}
+.gs-rubric li.is-ok .gs-rk{background:var(--good-text,#1B7F3A);color:var(--white);}
+.gs-rubric li.is-no{border-color:var(--bad-text,#B3261E);color:var(--bad-text,#B3261E);}
+.gs-rubric li.is-no .gs-rk{background:var(--bad-text,#B3261E);color:var(--white);}
+.gs-stepctl{display:flex;flex-direction:column;gap:8px;}
+.gs-stepctl .mic-gr-labels{margin:0;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+.gs-stepctl .mic-gr-labels select{max-width:100%;min-width:0;}
+.gs-hint{margin:0;}
+
+/* A phone: in Test yourself the graph is the answer (curves are dragged on
+   it), so its stage keeps about half the screen; the dock scrolls under it
+   and its Check row stays pinned. A two-panel graph gets more height. */
+.ls-root.ls-phone .gs-hint{display:none;}
+.ls-root.ls-phone .gs-rubric li{font-size:11.5px;padding:2px 8px 2px 3px;}
+@media (max-width:640px) and (orientation:portrait){
+  body[data-app="tool-graph-studio"] .ls-root.ls-quiz .ls-stage{min-height:min(50svh,420px);}
+  body[data-app="tool-graph-studio"] .ls-stage:has(.mic-graph.is-two){min-height:min(78svh,640px);}
+}
+@media (prefers-reduced-motion: reduce){ .gs-rubric li{transition:none;} }

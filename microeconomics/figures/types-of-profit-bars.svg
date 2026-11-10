@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 400" width="820" height="400" role="img" aria-labelledby="types-of-profit-bars-t types-of-profit-bars-d" font-family="Arial, Helvetica, sans-serif">
+<title id="types-of-profit-bars-t">Accounting profit and economic profit from the same revenue</title>
+<desc id="types-of-profit-bars-d">Three bars in thousands of dollars. Total revenue is $120k. An accountant subtracts the explicit costs of $80k and finds an accounting profit of $40k. An economist also subtracts the implicit costs of $30k, the owner's forgone salary and interest, and finds an economic profit of $10k. Invented data for practice.</desc>
+<defs><marker id="types-of-profit-bars-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="types-of-profit-bars-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="types-of-profit-bars-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="types-of-profit-bars-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker></defs><rect width="820" height="400" fill="#FFFFFF"/>
+<line x1="60" y1="360" x2="760" y2="360" stroke="#1F2A28" stroke-width="2"/>
+<rect x="80" y="84" width="150" height="276" rx="0" fill="#084F78" stroke="#FFFFFF" stroke-width="2"/>
+<text x="155" y="227" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700">Revenue $120k</text>
+<text x="155" y="384" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700">Total revenue</text>
+<rect x="300" y="176" width="150" height="184" rx="0" fill="#6B7370" stroke="#FFFFFF" stroke-width="2"/>
+<text x="375" y="273" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700">Explicit $80k</text>
+<rect x="300" y="84" width="150" height="92" rx="0" fill="#7E1A5E" stroke="#FFFFFF" stroke-width="2"/>
+<text x="375" y="135" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700">Accounting profit $40k</text>
+<text x="375" y="384" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700">An accountant sees</text>
+<rect x="520" y="176" width="150" height="184" rx="0" fill="#6B7370" stroke="#FFFFFF" stroke-width="2"/>
+<text x="595" y="273" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700">Explicit $80k</text>
+<rect x="520" y="107" width="150" height="69" rx="0" fill="#D55E00" stroke="#FFFFFF" stroke-width="2"/>
+<text x="595" y="146.5" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700">Implicit $30k</text>
+<rect x="520" y="84" width="150" height="23" rx="0" fill="#7E1A5E" stroke="#FFFFFF" stroke-width="2"/>
+<text x="595" y="100.5" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="700">Econ. profit $10k</text>
+<text x="595" y="384" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700">An economist sees</text>
+<line x1="240" y1="84" x2="300" y2="84" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="450" y1="84" x2="520" y2="84" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="410" y="40" font-size="14" fill="#7E1A5E" text-anchor="middle" font-weight="700">Accounting profit = 120 - 80 = 40</text>
+<text x="410" y="62" font-size="14" fill="#7E1A5E" text-anchor="middle" font-weight="700">Economic profit = 120 - 80 - 30 = 10</text>
+</svg>

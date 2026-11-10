@@ -1,0 +1,12 @@
+{
+ "competitive-factor-markets-side": {
+  "file": "figures/competitive-factor-markets-side.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Side-by-side graphs with Wage on the vertical axis and Quantity of labor on the horizontal axis. In the labor market, DL and SL cross at the market wage WM and quantity QM. The wage is carried across to the firm, where it is a horizontal line labeled S = MFC = W. The firm hires qF workers, where its downward-sloping MRP curve meets that line."
+ }
+}

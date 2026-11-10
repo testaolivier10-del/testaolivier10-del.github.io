@@ -1,0 +1,12 @@
+{
+ "curves-crossing-areas": {
+  "file": "figures/curves-crossing-areas.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph where a downward curve D and an upward curve S cross at E, 50 boxes at $5. A shaded triangle A under D and above $5 has area 125; a shaded rectangle B under $5 out to 50 boxes has area 250."
+ }
+}

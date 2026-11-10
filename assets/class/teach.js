@@ -579,7 +579,7 @@
   function msH(key, label, inner){ return '<details class="pp-ms" data-ms="' + key + '"' + (B.openMs === key ? ' open' : '') + '><summary class="pp-sel">' + label + '</summary><div class="pp-ms-list">' + inner + '</div></details>'; }
   function controlsHtml(){
     if(B.kind === 'frq') return '';
-    // Only the ten AP® courses run assignments with controls (assets/class/class-run.js, ?la=); elsewhere, say so.
+    // Only the eleven AP® courses run assignments with controls (assets/class/class-run.js, ?la=); elsewhere, say so.
     if(!M.isAp(S.rep.class.course)) return '<div class="pp-grp"><h3 class="pp-gh">Controls</h3><p class="d5-mut" style="margin:0 0 20px">Time limits, shuffled questions, held answers and your own questions work on the AP® courses for now. In ' + esc(course().name || 'this course') + ', students do this assignment on the course’s usual pages, and you see their results here as usual.</p></div>';
     var times = [[0, 'No time limit'], [10, '10 minutes'], [15, '15 minutes'], [20, '20 minutes'], [30, '30 minutes'], [45, '45 minutes'], [60, '1 hour'], [90, '90 minutes'], [180, '3 hours']];
     if(B.timeLimit && !times.some(function(o){ return o[0] === B.timeLimit; })) times.push([B.timeLimit, B.timeLimit + ' minutes']);

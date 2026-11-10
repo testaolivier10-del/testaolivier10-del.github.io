@@ -1,0 +1,79 @@
+{
+ "topic": "price-elasticity-demand",
+ "hook": "Two stores raise prices by 10% on the same day. The gas station on the highway barely notices: drivers still fill up. The sparkling water brand at the supermarket loses a third of its sales overnight, because five other brands sit on the same shelf. How strongly buyers respond to a price is a number you can calculate.",
+ "prereq": [
+  {
+   "q": "By the law of demand, when a good's price rises the quantity demanded",
+   "options": [
+    "falls",
+    "rises",
+    "stays the same",
+    "shifts the curve right"
+   ],
+   "correct": 0,
+   "why": "Price and quantity demanded move in opposite directions.",
+   "review": "demand"
+  },
+  {
+   "q": "Goods used in place of each other, such as two brands of water, are",
+   "options": [
+    "substitutes",
+    "complements",
+    "inferior goods",
+    "factors of production"
+   ],
+   "correct": 0,
+   "why": "Substitutes can replace each other.",
+   "review": "demand"
+  },
+  {
+   "q": "The slope of a straight line is",
+   "options": [
+    "the rise over the run, the same at each point",
+    "largest at its middle",
+    "the area under the line",
+    "the point where it meets an axis"
+   ],
+   "correct": 0,
+   "why": "A straight line has one constant slope.",
+   "review": "slopes-curves"
+  }
+ ],
+ "figure": {
+  "figure": "price-elasticity-demand-ranges",
+  "caption": "Demand is elastic above the midpoint and inelastic below it, and total revenue peaks where demand is unit elastic. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A good has many close substitutes",
+   "effect": "buyers switch away when its price rises"
+  },
+  {
+   "cause": "Buyers switch away",
+   "effect": "the quantity demanded falls by a larger percent than the price rose: demand is elastic"
+  },
+  {
+   "cause": "Demand is elastic",
+   "effect": "the lost sales outweigh the higher price, so total revenue falls"
+  }
+ ],
+ "ideas": [
+  "<b>Price elasticity of demand</b> = percent change in quantity demanded divided by percent change in price. Read the <b>absolute value</b>.",
+  "Greater than 1: <b>elastic</b>. Less than 1: <b>inelastic</b>. Exactly 1: <b>unit elastic</b>. Zero: <b>perfectly inelastic</b> (vertical). Infinite: <b>perfectly elastic</b> (horizontal).",
+  "<b>Total revenue test</b>: elastic demand, price and TR move opposite; inelastic demand, they move together; unit elastic, TR does not change.",
+  "Along a straight-line demand curve the slope is constant but elasticity is not: elastic at the top, unit elastic at the midpoint, inelastic at the bottom.",
+  "Demand is more elastic with close substitutes, a large budget share, a narrowly defined good and more time to adjust."
+ ],
+ "misconception": {
+  "wrong": "An elasticity of $-0.4$ is negative, so demand is elastic; a steeper curve is always the less elastic one.",
+  "right": "Judge elasticity by the absolute value: 0.4 is less than 1, so demand is inelastic. And slope is not elasticity: one straight-line demand curve has the same slope everywhere but is elastic at high prices and inelastic at low ones."
+ },
+ "check": [
+  "mic-price-elasticity-demand-1",
+  "mic-price-elasticity-demand-2",
+  "mic-price-elasticity-demand-5",
+  "mic-price-elasticity-demand-6",
+  "mic-price-elasticity-demand-17"
+ ],
+ "summary": "Price elasticity of demand measures how strongly the quantity demanded responds to a price change: the percent change in quantity over the percent change in price, read as an absolute value. Above 1 demand is elastic, below 1 inelastic, at 1 unit elastic. The total revenue test follows: with elastic demand a price rise lowers total revenue, with inelastic demand it raises it. Close substitutes, a large budget share and more time to adjust make demand more elastic."
+}

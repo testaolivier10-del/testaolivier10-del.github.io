@@ -1,0 +1,80 @@
+{
+ "topic": "supply",
+ "hook": "A strawberry farm sells 20 boxes at the weekend market when the price is \\$4, and digs up a back field to sell more when the price hits \\$5. The next spring, fertilizer doubles in price and the farm offers fewer boxes even at \\$5. One change moved the farm along its supply curve; the other moved the curve itself.",
+ "prereq": [
+  {
+   "q": "Land, labor, capital and entrepreneurship are",
+   "options": [
+    "the factors of production",
+    "the determinants of demand",
+    "types of goods",
+    "kinds of markets"
+   ],
+   "correct": 0,
+   "why": "They are the resources used to produce goods and services.",
+   "review": "scarcity"
+  },
+  {
+   "q": "A price change that moves buyers from one point to another on the same demand curve is",
+   "options": [
+    "a movement along the curve",
+    "a shift of the curve",
+    "an increase in demand",
+    "a decrease in demand"
+   ],
+   "correct": 0,
+   "why": "A change in the good's own price is a movement along the curve.",
+   "review": "demand"
+  },
+  {
+   "q": "A curve that slopes up from left to right shows",
+   "options": [
+    "a direct relationship",
+    "an inverse relationship",
+    "no relationship",
+    "a fixed price"
+   ],
+   "correct": 0,
+   "why": "Both variables rise together.",
+   "review": "axes-points"
+  }
+ ],
+ "figure": {
+  "figure": "supply-movement-shift",
+  "caption": "Left: a higher price moves sellers along S from 30 to 50 boxes. Right: a higher fertilizer price shifts supply left from S1 to S2. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "The price of a good rises, other things equal",
+   "effect": "each unit sells for more"
+  },
+  {
+   "cause": "A higher price covers the rising cost of producing extra units",
+   "effect": "sellers offer more: the quantity supplied rises"
+  },
+  {
+   "cause": "The quantity supplied rises because of the good's own price",
+   "effect": "sellers move up along the same supply curve; the curve does not shift"
+  }
+ ],
+ "ideas": [
+  "<b>Law of supply</b>: other things equal, a higher price means a larger quantity supplied. The curve slopes up.",
+  "A change in the good's <b>own price</b> is a movement along the curve: a change in <b>quantity supplied</b>.",
+  "A change in a <b>determinant</b> shifts the whole curve: input prices, technology, the prices of other goods the seller could make, taxes and subsidies, expectations, the number of sellers.",
+  "A shift left is a <b>decrease</b> in supply (less at each price); a shift right is an <b>increase</b>.",
+  "<b>Market supply</b> is the horizontal sum of every seller's quantity at each price."
+ ],
+ "misconception": {
+  "wrong": "An increase in supply moves the supply curve up.",
+  "right": "An increase in supply moves the curve to the right: more is offered at each price. Because supply slopes up, a rightward shift also sits lower on the graph, so \"up\" for a curve that slopes up means less supply, not more. Say right and left."
+ },
+ "check": [
+  "mic-supply-1",
+  "mic-supply-2",
+  "mic-supply-6",
+  "mic-supply-7",
+  "mic-supply-10",
+  "mic-supply-11"
+ ],
+ "summary": "Supply shows how much sellers offer at each price. By the law of supply, a higher price raises the quantity supplied, because a higher price covers the rising cost of producing more. A change in the good's own price moves sellers along the curve; a change in input prices, technology, the prices of other goods the seller could make, taxes or subsidies, expectations or the number of sellers shifts the whole curve. Market supply adds every seller's quantity at each price."
+}

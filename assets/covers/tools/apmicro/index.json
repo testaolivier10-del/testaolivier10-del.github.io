@@ -1,0 +1,42 @@
+[
+ {
+  "slug": "graph-studio",
+  "title": "Graph Studio",
+  "file": "apmicro/graph-studio.svg"
+ },
+ {
+  "slug": "game-lab",
+  "title": "Game Theory Lab",
+  "file": "apmicro/game-lab.svg"
+ },
+ {
+  "slug": "factor-lab",
+  "title": "Factor Market Lab",
+  "file": "apmicro/factor-lab.svg"
+ },
+ {
+  "slug": "externality-lab",
+  "title": "Externality Lab",
+  "file": "apmicro/externality-lab.svg"
+ },
+ {
+  "slug": "surplus-lab",
+  "title": "Surplus and Policy Lab",
+  "file": "apmicro/surplus-lab.svg"
+ },
+ {
+  "slug": "elasticity-lab",
+  "title": "Elasticity Lab",
+  "file": "apmicro/elasticity-lab.svg"
+ },
+ {
+  "slug": "cost-lab",
+  "title": "Cost Curve Lab",
+  "file": "apmicro/cost-lab.svg"
+ },
+ {
+  "slug": "firm-market",
+  "title": "Firm and Market Lab",
+  "file": "apmicro/firm-market.svg"
+ }
+]

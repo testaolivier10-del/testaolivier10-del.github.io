@@ -1,0 +1,12 @@
+{
+ "market-efficiency-dwl": {
+  "file": "figures/market-efficiency-dwl.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs with Price on the vertical axis and Quantity on the horizontal axis, each with D = MSB sloping down and S = MSC sloping up, crossing at the efficient quantity Q* and price P*. Left: only Q1, less than Q*, is made, and the triangle between MSB and MSC from Q1 to Q* is deadweight loss. Right: Q2, more than Q*, is made, and the triangle between MSC and MSB from Q* to Q2 is deadweight loss. Both triangles point toward Q*."
+ }
+}

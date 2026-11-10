@@ -1,0 +1,71 @@
+{
+ "topic": "slopes-curves",
+ "hook": "A delivery van burns a lot of fuel per mile crawling through town at 20 miles an hour, less at 50 on an open road, and more again at 70 as wind resistance climbs. Plot fuel against speed and you get a U: the curve falls, bottoms out, then rises. Reading which way a curve slopes, and how steeply, is how you read every graph in economics.",
+ "prereq": [
+  {
+   "q": "With quantity across and price up, the ordered pair (40, 5) means",
+   "options": [
+    "a quantity of 40 at a price of 5",
+    "a price of 40 at a quantity of 5",
+    "a total of 45",
+    "a quantity of 5 at a price of 40"
+   ],
+   "correct": 0,
+   "why": "The first number is the horizontal value, the second the vertical value.",
+   "review": "axes-points"
+  },
+  {
+   "q": "Points that fall as you move to the right show",
+   "options": [
+    "an inverse relationship",
+    "a direct relationship",
+    "no relationship",
+    "a mistake in the table"
+   ],
+   "correct": 0,
+   "why": "One variable rises while the other falls.",
+   "review": "axes-points"
+  }
+ ],
+ "figure": {
+  "figure": "slopes-curves-shapes",
+  "caption": "Four shapes. Upward: a rise of 3 over a run of 4 gives a slope of 0.75. Downward: a negative slope. A horizontal line has a slope of 0. A U-shaped curve falls, reaches its minimum point, then rises."
+ },
+ "chain": [
+  {
+   "cause": "You move between two points on a line",
+   "effect": "the vertical change is the rise and the horizontal change is the run"
+  },
+  {
+   "cause": "You divide the rise by the run",
+   "effect": "you get the slope: how much the vertical variable changes for each one-unit change in the horizontal one"
+  },
+  {
+   "cause": "The rise and the run have the same sign",
+   "effect": "the slope is positive and the line rises to the right"
+  },
+  {
+   "cause": "The rise and the run have opposite signs",
+   "effect": "the slope is negative and the line falls to the right"
+  }
+ ],
+ "ideas": [
+  "<b>Slope</b> = rise over run = (change in the vertical value) divided by (change in the horizontal value). Subtract in the same order on top and bottom.",
+  "Positive slope: the line rises to the right (a direct relationship). Negative slope: it falls to the right (an inverse relationship). A horizontal line has a slope of 0.",
+  "A straight line has the same slope everywhere. A curve has a slope that changes from point to point.",
+  "A <b>U-shaped curve</b> falls, then rises. At its <b>minimum point</b> the slope is 0: the curve stops falling and starts rising."
+ ],
+ "misconception": {
+  "wrong": "Slope is the run divided by the rise: the horizontal change over the vertical change.",
+  "right": "Slope is the rise over the run: the vertical change divided by the horizontal change. From (20, 8) to (60, 4) the slope is (4 - 8) / (60 - 20) = -0.1, not -10."
+ },
+ "check": [
+  "mic-slopes-curves-1",
+  "mic-slopes-curves-2",
+  "mic-slopes-curves-4",
+  "mic-slopes-curves-5",
+  "mic-slopes-curves-7",
+  "mic-slopes-curves-11"
+ ],
+ "summary": "Slope measures how steeply a line rises or falls: the rise (vertical change) divided by the run (horizontal change). A positive slope rises to the right, a negative slope falls to the right, and a horizontal line has a slope of 0. A straight line keeps one slope; a curve changes slope as you move along it. A U-shaped curve has a negative slope, then a slope of 0 at its minimum point, then a positive slope."
+}

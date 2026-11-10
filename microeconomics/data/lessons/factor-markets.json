@@ -1,0 +1,84 @@
+{
+ "topic": "factor-markets",
+ "hook": "Every spring the bike shops in a college town hang up \"Now hiring: mechanics\" signs. Nobody suddenly likes mechanics more. What changed is that riders pull their bikes out of storage and want them fixed. The shop wants mechanics because customers want repairs.",
+ "prereq": [
+  {
+   "q": "A bakery's second baker raises output from 40 to 70 loaves. Her marginal product is",
+   "options": [
+    "30 loaves",
+    "70 loaves",
+    "35 loaves",
+    "110 loaves"
+   ],
+   "correct": 0,
+   "why": "Marginal product is the change in output: 70 - 40 = 30.",
+   "review": "production-function"
+  },
+  {
+   "q": "For a firm in perfect competition, the marginal revenue from one more unit equals",
+   "options": [
+    "the market price",
+    "zero",
+    "its average total cost",
+    "its total revenue"
+   ],
+   "correct": 0,
+   "why": "A price taker sells every unit at the market price, so MR = P.",
+   "review": "perfect-competition"
+  },
+  {
+   "q": "A monopolist that wants to sell one more unit must",
+   "options": [
+    "lower its price, so MR is below the price",
+    "raise its price",
+    "keep its price, so MR equals the price",
+    "stop producing"
+   ],
+   "correct": 0,
+   "why": "The single seller faces the downward-sloping market demand, so MR lies below demand.",
+   "review": "monopoly"
+  }
+ ],
+ "figure": {
+  "figure": "factor-markets-mrp",
+  "caption": "Each added baker adds fewer loaves (MP falls), so at \\$3 a loaf each adds less revenue (MRP falls). The MRP curve is the bakery's demand curve for labor. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Buyers want more of a product",
+   "effect": "the price of the product rises"
+  },
+  {
+   "cause": "The product price rises",
+   "effect": "each worker's output is worth more, so MRP (MP × MR) rises"
+  },
+  {
+   "cause": "MRP rises at every quantity of labor",
+   "effect": "the firm wants more workers at each wage"
+  },
+  {
+   "cause": "Firms want more workers",
+   "effect": "the demand for that kind of labor increases: derived demand"
+  }
+ ],
+ "ideas": [
+  "In <b>factor markets</b> firms buy labor, land and capital; households sell them and earn wages, rent and interest.",
+  "The demand for a factor is <b>derived demand</b>: it comes from the demand for the product the factor helps make.",
+  "<b>Marginal revenue product</b> is the extra revenue from one more worker: MRP = MP × MR. For a price taker, MR = P, so MRP = MP × P.",
+  "MRP falls as workers are added, because of diminishing marginal returns (and, for a seller that must cut its price, falling MR). The MRP curve is the firm's demand curve for labor."
+ ],
+ "misconception": {
+  "wrong": "A worker's MRP is found by multiplying marginal revenue by the price of the product.",
+  "right": "MRP multiplies the worker's extra output by the extra revenue per unit: MRP = MP × MR. Only for a price taker does MR equal P, which makes it MP × P."
+ },
+ "check": [
+  "mic-factor-markets-11",
+  "mic-factor-markets-12",
+  "mic-factor-markets-1",
+  "mic-factor-markets-2",
+  "mic-factor-markets-4",
+  "mic-factor-markets-13",
+  "mic-factor-markets-17"
+ ],
+ "summary": "Firms buy labor, land and capital in factor markets, and their demand for these inputs is derived from the demand for the products the inputs make. A worker is worth the extra revenue the worker brings in, the marginal revenue product: MRP = MP × MR, or MP × P for a price taker. MRP falls as workers are added because marginal product falls, and the MRP curve is the firm's demand curve for labor. A higher product price or higher productivity raises MRP."
+}

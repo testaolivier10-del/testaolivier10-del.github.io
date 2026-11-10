@@ -1,0 +1,508 @@
+{
+ "stimuli": {
+  "price-elasticity-supply-s1": {
+   "kind": "data",
+   "title": "Two sellers respond to a higher price",
+   "invented": true,
+   "table": {
+    "caption": "Weekly quantity supplied before and after the price rises from \\$20 to \\$25 (invented data for practice)",
+    "cols": [
+     "Seller",
+     "Good",
+     "Quantity at \\$20",
+     "Quantity at \\$25"
+    ],
+    "rows": [
+     [
+      "Wren Studio",
+      "Hand-knit scarves",
+      "100",
+      "105"
+     ],
+     [
+      "Copperleaf Print",
+      "Printed posters",
+      "100",
+      "150"
+     ]
+    ]
+   }
+  },
+  "price-elasticity-supply-s2": {
+   "kind": "text",
+   "title": "The Bellweather Amphitheater on a summer night",
+   "text": "<p>The Bellweather Amphitheater, an invented outdoor venue, has exactly 8,000 seats and no standing room. For a Saturday concert, tickets sold for \\$50 last year. This year the band is more popular, and the venue can sell all 8,000 tickets at \\$90.</p><p>A developer plans to build a second, larger venue across the river, which will take about three years.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-price-elasticity-supply-1",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-elasticity-supply-s1",
+   "q": "Calculate the price elasticity of supply of Copperleaf's posters when the price rises from \\$20 to \\$25.",
+   "why": {
+    "correct": "Percent change in quantity supplied: $\\frac{150 - 100}{100} \\times 100 = 50\\%$. Percent change in price: $\\frac{25 - 20}{20} \\times 100 = 25\\%$. Elasticity: $50 \\div 25 = 2$, elastic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "priceElasticity",
+     "args": [
+      100,
+      150,
+      20,
+      25
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "That puts the price change on top. Divide the percent change in quantity supplied by the percent change in price."
+     },
+     {
+      "value": 10,
+      "why": "That divides the change in quantity (50 posters) by the change in price (\\$5). Use percent changes."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-2",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "stimulus": "price-elasticity-supply-s1",
+   "q": "Calculate the price elasticity of supply of Wren Studio's scarves for the same price rise.",
+   "why": {
+    "correct": "Quantity: $\\frac{105 - 100}{100} \\times 100 = 5\\%$. Price: $25\\%$. Elasticity: $5 \\div 25 = 0.2$, inelastic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "priceElasticity",
+     "args": [
+      100,
+      105,
+      20,
+      25
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "That puts the price change on top: 25% over 5%. Quantity goes on top."
+     },
+     {
+      "value": 1,
+      "why": "That divides the change in quantity (5 scarves) by the change in price (\\$5). Use percent changes."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-3",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "price-elasticity-supply-s1",
+   "q": "Which reason best explains why Copperleaf's supply is more elastic than Wren Studio's?",
+   "options": [
+    "Posters have more buyers than scarves",
+    "Scarves are a necessity, so their supply is inelastic",
+    "Posters are quick to add; scarves take skilled hours",
+    "The price of scarves rose by less than the price of posters"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A print shop with spare printers can turn out many more posters quickly, while each scarf takes hours of skilled hand knitting. The easier it is to add output, the more elastic supply is.",
+    "options": [
+     "Buyers affect demand; supply elasticity is about sellers adding output.",
+     "Necessity is a demand idea.",
+     "Right: ease of adding output drives supply elasticity.",
+     "Both prices rose by the same 25%."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-4",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "price-elasticity-supply-s1",
+   "q": "A year later Wren Studio has trained three new knitters. If the price again rose from \\$20 to \\$25, how would its response most likely compare with the first time?",
+   "options": [
+    "It would add more scarves: supply is more elastic with time",
+    "It would add fewer scarves: training makes supply less elastic",
+    "It would add the same 5 scarves, because the price change is the same",
+    "It would add scarves even if the price fell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Given time to hire and train workers, the studio can add more output for the same price rise, so its supply becomes more elastic.",
+    "options": [
+     "Right: more time to adjust inputs raises supply elasticity.",
+     "Trained knitters make it easier to add output.",
+     "The ability to respond changed, so the response changes.",
+     "By the law of supply, a lower price lowers quantity supplied."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-5",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "price-elasticity-supply-s2",
+   "q": "How would you describe the supply of seats for a Saturday concert at the amphitheater?",
+   "options": [
+    "Perfectly elastic: a horizontal supply curve",
+    "Elastic, because the price rose so much",
+    "Unit elastic, because the venue sells out",
+    "Perfectly inelastic: a vertical supply curve"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The number of seats is fixed at 8,000 whatever the price, so supply is perfectly inelastic: a vertical supply curve with elasticity 0.",
+    "options": [
+     "A horizontal curve would add seats at the same price without limit.",
+     "A large price change with no quantity change marks inelastic supply.",
+     "Unit elastic means quantity rises by the same percent as price.",
+     "Right: the quantity is 8,000 at each price."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-6",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "price-elasticity-supply-s2",
+   "q": "Demand for the band rises sharply. With the venue's supply as described, what happens this year?",
+   "options": [
+    "Both the price and the number of seats rise",
+    "The price rises and the number of seats stays 8,000",
+    "The number of seats rises and the price stays \\$50",
+    "The price falls because the venue sells out"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With a vertical supply curve, more demand cannot raise the number of seats, so all of the change shows up in the price: \\$50 to \\$90, with 8,000 seats sold either way.",
+    "options": [
+     "The venue has no more seats to sell.",
+     "Right: a vertical supply curve leaves quantity unchanged.",
+     "That would need perfectly elastic supply.",
+     "Selling out to more eager buyers pushes the price up."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-7",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "stimulus": "price-elasticity-supply-s2",
+   "q": "Once the second venue opens, how will the supply of concert seats in the area most likely change?",
+   "options": [
+    "Still perfectly inelastic, since each venue has fixed seats",
+    "More elastic, as more seats can be offered",
+    "Less elastic, because there are now more sellers",
+    "Perfectly elastic, because a new venue opens"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With a second venue, sellers can offer more seats when prices are high, so supply in the area becomes more elastic than the fixed 8,000 seats. Time to build capacity raises supply elasticity.",
+    "options": [
+     "Two venues together can respond more than one.",
+     "Right: more capacity, built over time, makes supply more elastic.",
+     "More sellers with capacity make supply respond more.",
+     "The new venue has a limit too; supply is more elastic, not perfectly so."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-8",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "How is the price elasticity of supply calculated?",
+   "options": [
+    "Percent change in price divided by percent change in quantity supplied",
+    "Change in quantity supplied divided by change in price",
+    "Percent change in quantity demanded divided by percent change in price",
+    "Percent change in quantity supplied divided by percent change in price"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Price elasticity of supply is the percent change in quantity supplied divided by the percent change in price. Because the two move together, it is positive.",
+    "options": [
+     "That is upside down.",
+     "That uses units; elasticity uses percent changes.",
+     "That is the price elasticity of demand.",
+     "Right: quantity on top, in percent."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-9",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "When the price of fresh raspberries rises 10%, growers increase the quantity supplied by 4%. What is the price elasticity of supply?",
+   "why": {
+    "correct": "Elasticity: $4\\% \\div 10\\% = 0.4$, less than 1, so supply is inelastic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "elasticity",
+     "args": [
+      4,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "That puts the price change on top. Divide the percent change in quantity supplied by the percent change in price."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-10",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "The price elasticity of supply of a good is 1.5. What does this mean?",
+   "options": [
+    "Elastic: a 10% price rise brings a 15% rise",
+    "Inelastic: a 10% price rise brings a 1.5% rise",
+    "Supply is unit elastic",
+    "A 10% price rise lowers quantity supplied by 15%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "1.5 is greater than 1: supply is elastic. A 10% rise in price raises the quantity supplied by 15%.",
+    "options": [
+     "Right: 1.5 times 10%.",
+     "An elasticity above 1 is elastic, and 1.5 times 10% is 15%.",
+     "Unit elastic is exactly 1.",
+     "Quantity supplied rises with price."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-11",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which good is likely to have the least elastic supply over the next week?",
+   "options": [
+    "Plastic cups made by machines that sit idle half the day",
+    "Canned beans stored in a large warehouse",
+    "Fresh fish from a small fleet",
+    "Digital music downloads"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Fresh fish spoils and the catch for the week is largely set by the boats already at sea, so sellers cannot add much quickly. Goods that are easy to store or to make from easy-to-buy inputs have more elastic supply.",
+    "options": [
+     "Spare capacity makes supply elastic.",
+     "Stored stock can be released when the price rises.",
+     "Right: perishable, with output that is hard to raise quickly.",
+     "An extra download costs almost nothing to supply."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-12",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A firm can make as many paper clips as buyers want at a price of \\$2 a box, but will make none at a lower price. What does its supply curve look like?",
+   "options": [
+    "Vertical: perfectly inelastic",
+    "A steep upward line: inelastic",
+    "A line sloping down",
+    "Horizontal at \\$2: perfectly elastic"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Any quantity at one price, and none below it, is perfectly elastic supply: a horizontal line at \\$2.",
+    "options": [
+     "A vertical curve would hold quantity fixed at each price.",
+     "Inelastic supply responds weakly to price; this one responds without limit.",
+     "Supply does not slope down.",
+     "Right: any quantity at that price."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-13",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why does the supply of most goods become more elastic as sellers have more time to respond to a price change?",
+   "options": [
+    "Buyers find more substitutes over time",
+    "Prices fall over time, so sellers produce more",
+    "Workers, machines and plants take time to add",
+    "Sellers forget the old price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With more time, sellers can hire and train workers, buy and install machines and build new plants, and new sellers can start up, so a price rise draws a larger increase in output.",
+    "options": [
+     "That makes demand more elastic, not supply.",
+     "By the law of supply, lower prices lower quantity supplied.",
+     "Right: capacity grows with time.",
+     "Supply elasticity is about the ability to change output."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-14",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "A city's supply of apartments is very inelastic this year. Which change would make it more elastic over the next few years? Select all that apply.",
+   "options": [
+    "The city approves new building plans in weeks instead of years",
+    "The city bans buildings taller than two floors",
+    "Many construction workers move away to other cities",
+    "Rents rise by 10% this year"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Supply becomes more elastic when it becomes easier to add units. Faster building approvals let builders respond to higher rents. A ban on new buildings or fewer builders makes supply less elastic, and higher rents alone are a movement along supply.",
+    "options": [
+     "Right: builders can add apartments when rents rise.",
+     "A limit on building makes supply less elastic.",
+     "Fewer builders make it harder to add units.",
+     "A higher rent is a movement along supply, not a change in its elasticity."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-15",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Two goods have the same 20% price rise. Quantity supplied of good X rises by 20% and of good Y by 30%. Which statement is correct?",
+   "options": [
+    "X is inelastic and Y is unit elastic",
+    "X is unit elastic and Y is elastic",
+    "Both are inelastic because their elasticities are positive",
+    "X is more elastic because it changed by the same percent"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "X: $20 \\div 20 = 1$, unit elastic. Y: $30 \\div 20 = 1.5$, elastic. Y's supply is more elastic.",
+    "options": [
+     "X's elasticity is exactly 1, and Y's is 1.5.",
+     "Right: 1 and 1.5.",
+     "The sign of supply elasticity is positive for any upward supply; compare the size with 1.",
+     "Y changed by a larger percent for the same price change."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-16",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "How does the price elasticity of supply differ from the price elasticity of demand?",
+   "options": [
+    "It is positive; the benchmarks are the same",
+    "It uses unit changes rather than percent changes",
+    "Supply is elastic below 1 and inelastic above 1",
+    "It depends on substitutes, as demand elasticity does"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both are a percent change in quantity over a percent change in price, with the same benchmarks (above 1 elastic, below 1 inelastic). Supply elasticity is positive because price and quantity supplied move together; demand elasticity is read as an absolute value because they move apart.",
+    "options": [
+     "Right: same formula and benchmarks, different side of the market.",
+     "Both use percent changes.",
+     "The benchmarks are the same as for demand: above 1 is elastic.",
+     "Supply elasticity depends on how easily sellers can add output."
+    ]
+   }
+  },
+  {
+   "id": "mic-price-elasticity-supply-17",
+   "unit": "unit-2",
+   "topic": "price-elasticity-supply",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Supply of a toy is elastic. Demand for the toy rises. Compared with a toy whose supply is inelastic, what happens?",
+   "options": [
+    "The price rises more, quantity less",
+    "Neither price nor quantity changes",
+    "Quantity rises more, the price less",
+    "The price falls because supply is elastic"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With elastic supply, sellers respond to the higher demand mostly by producing more, so quantity rises a lot and the price rises a little. With inelastic supply, the price rises more and the quantity less.",
+    "options": [
+     "That happens when supply is inelastic.",
+     "A rise in demand changes both unless a curve is flat or vertical.",
+     "Right: elastic supply absorbs the demand increase with more output.",
+     "Higher demand raises the price; elastic supply only limits how much."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "disequilibrium-changes-gaps": {
+  "file": "figures/disequilibrium-changes-gaps.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bike helmet market with equilibrium at $40 and 60 helmets: at $30 there is a shortage of 30 helmets (70 demanded, 40 supplied); at $50 there is a surplus of 30 (80 supplied, 50 demanded)."
+ },
+ "disequilibrium-changes-double": {
+  "file": "figures/disequilibrium-changes-double.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: demand and supply both increase, so quantity rises but the price change is indeterminate. Right: demand increases and supply decreases, so the price rises but the quantity change is indeterminate."
+ }
+}

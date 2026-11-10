@@ -1,0 +1,70 @@
+{
+ "topic": "curves-crossing",
+ "hook": "A box of strawberries sells for \\$5 at a farmers market because, at \\$5, the number of boxes shoppers want is the number farmers bring. On a graph that is the one point where the buyers' curve and the sellers' curve cross. Much of this course is finding that crossing point, seeing where it moves, and measuring the triangles and rectangles that form around it.",
+ "prereq": [
+  {
+   "q": "A curve shifts right when",
+   "options": [
+    "something other than its own price changes and a larger quantity goes with every price",
+    "the price of the good falls",
+    "the price of the good rises",
+    "the graph is relabeled"
+   ],
+   "correct": 0,
+   "why": "A shift comes from a change off the axes.",
+   "review": "shifts-movements"
+  },
+  {
+   "q": "The slope of a line through (0, 10) and (50, 5) is",
+   "options": [
+    "-0.1",
+    "-10",
+    "0.1",
+    "5"
+   ],
+   "correct": 0,
+   "why": "Rise -5 over run 50.",
+   "review": "slopes-curves"
+  }
+ ],
+ "figure": {
+  "figure": "curves-crossing-areas",
+  "caption": "D and S cross at E (50 boxes, \\$5). Triangle A, under D and above \\$5 out to 50 boxes, has area ½ × 50 × 5 = 125. Rectangle B, under \\$5 out to 50 boxes, has area 50 × 5 = 250. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A downward curve and an upward curve sit on the same graph",
+   "effect": "they cross at exactly one point"
+  },
+  {
+   "cause": "You read the crossing point",
+   "effect": "you get one price and one quantity that lie on both curves"
+  },
+  {
+   "cause": "One curve shifts",
+   "effect": "the crossing point slides along the curve that did not move to a new price and quantity"
+  },
+  {
+   "cause": "You compare the old and new crossing points",
+   "effect": "you state which way the price and the quantity each changed"
+  }
+ ],
+ "ideas": [
+  "The <b>intersection</b> (crossing point) of two curves is the one point on both. Read its price and quantity with dashed lines to both axes.",
+  "When one curve shifts, the crossing point slides along the curve that stayed put. Label the old point E1 and the new one E2.",
+  "Area of a <b>rectangle</b> = base × height. Area of a <b>triangle</b> = ½ × base × height.",
+  "Read a base along the horizontal axis and a height along the vertical axis, from the shape's own edges."
+ ],
+ "misconception": {
+  "wrong": "The area of the triangle under D and above \\$5, out to 50 boxes, is 50 × 5 = 250.",
+  "right": "That is the rectangle around the triangle. The triangle is half of it: ½ × 50 × 5 = 125."
+ },
+ "check": [
+  "mic-curves-crossing-1",
+  "mic-curves-crossing-2",
+  "mic-curves-crossing-3",
+  "mic-curves-crossing-6",
+  "mic-curves-crossing-8"
+ ],
+ "summary": "Where a downward curve and an upward curve cross, one price and one quantity lie on both curves: the intersection. Read it with dashed lines to both axes. When one curve shifts, the crossing point slides along the other curve, and you compare the old and new points to say what happened to price and quantity. Areas on graphs are rectangles (base × height) and triangles (½ × base × height), with the base read on the horizontal axis and the height on the vertical axis."
+}

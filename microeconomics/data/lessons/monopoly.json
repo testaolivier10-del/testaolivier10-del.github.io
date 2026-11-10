@@ -1,0 +1,84 @@
+{
+ "topic": "monopoly",
+ "hook": "A drug company holds the patent on a new allergy test, so for the next twelve years no one else may sell it. It could charge \\$500, but few people would buy; at \\$20 everyone would, but it would barely cover costs. Where does a monopolist set its price, and who loses when it does?",
+ "prereq": [
+  {
+   "q": "A price maker's marginal revenue curve lies",
+   "options": [
+    "below its demand curve",
+    "on its demand curve",
+    "above its demand curve",
+    "on its MC curve"
+   ],
+   "correct": 0,
+   "why": "To sell one more unit it cuts the price on every unit, so MR is less than the price.",
+   "review": "imperfect-competition"
+  },
+  {
+   "q": "Deadweight loss is",
+   "options": [
+    "the total surplus lost when output is not the efficient quantity",
+    "the profit a firm earns",
+    "the tax a firm pays",
+    "the consumer surplus after a sale"
+   ],
+   "correct": 0,
+   "why": "It is the value of trades that would have helped buyers and sellers but do not happen.",
+   "review": "government-intervention"
+  },
+  {
+   "q": "Allocative efficiency happens where",
+   "options": [
+    "P = MC",
+    "MR = MC",
+    "P = ATC",
+    "MR = 0"
+   ],
+   "correct": 0,
+   "why": "The value of the last unit to buyers (P) equals its cost (MC).",
+   "review": "perfect-competition"
+  }
+ ],
+ "figure": {
+  "figure": "monopoly-areas",
+  "caption": "The monopolist produces QM where MR = MC and charges PM from demand. Profit is the rectangle between PM and ATC; consumer surplus is above PM; deadweight loss is the triangle between D and MC from QM to QE."
+ },
+ "chain": [
+  {
+   "cause": "The monopolist faces the whole market demand curve",
+   "effect": "its MR curve lies below demand"
+  },
+  {
+   "cause": "It produces where MR = MC",
+   "effect": "its quantity (QM) is smaller than the quantity where demand meets MC"
+  },
+  {
+   "cause": "It reads its price from demand at QM",
+   "effect": "the price is above marginal cost"
+  },
+  {
+   "cause": "Units buyers value above their cost are not produced",
+   "effect": "there is a deadweight loss, the triangle between D and MC from QM to the efficient quantity"
+  }
+ ],
+ "ideas": [
+  "Find Q where <b>MR = MC</b>, then go up to <b>demand</b> for P. Profit (or loss) is $(P - \\text{ATC}) \\times Q$ at that Q.",
+  "A monopolist produces on the <b>elastic</b> part of demand (MR > 0). Total revenue is largest where MR = 0, the unit-elastic point.",
+  "<b>Monopoly deadweight loss</b>: the triangle between D and MC from QM to where D meets MC. Consumer surplus is under D and above PM, out to QM.",
+  "<b>Natural monopoly</b>: ATC falls over the whole range of demand. Socially optimal price P = MC (efficient, but a loss); fair-return price P = ATC (zero economic profit). A <b>lump-sum tax</b> raises ATC only: P and Q stay put."
+ ],
+ "misconception": {
+  "wrong": "A lump-sum tax on a monopolist raises its price, because the firm passes the tax on to buyers.",
+  "right": "A lump-sum tax is a fixed cost: it raises ATC but not MC. MR = MC at the same quantity, the price on demand is the same, and the whole tax comes out of profit. A per-unit tax, which raises MC, is the one that raises the price."
+ },
+ "check": [
+  "mic-monopoly-1",
+  "mic-monopoly-2",
+  "mic-monopoly-3",
+  "mic-monopoly-13",
+  "mic-monopoly-6",
+  "mic-monopoly-7",
+  "mic-monopoly-20"
+ ],
+ "summary": "A monopolist produces where MR = MC and charges the price on the demand curve above that quantity. Its profit is (P minus ATC) times Q; it can last because barriers block entry. It produces less and charges more than a competitive industry would, on the elastic part of demand, leaving a deadweight loss between D and MC from its quantity to the efficient one. A natural monopoly, whose ATC falls over the whole range of demand, can be regulated at P = MC (efficient but a loss) or at the fair-return price P = ATC (zero economic profit). A lump-sum tax changes ATC and profit but not price or quantity."
+}

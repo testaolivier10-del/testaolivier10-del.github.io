@@ -1,0 +1,12 @@
+{
+ "other-elasticities-signs": {
+  "file": "figures/other-elasticities-signs.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two number lines: a negative income elasticity means an inferior good and a positive one a normal good; a negative cross-price elasticity means complements, zero means unrelated goods, and a positive one means substitutes."
+ }
+}

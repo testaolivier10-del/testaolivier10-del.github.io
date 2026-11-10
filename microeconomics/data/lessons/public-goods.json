@@ -1,0 +1,71 @@
+{
+ "topic": "public-goods",
+ "hook": "Three households share a dark street. A streetlight would cost \\$70 a year, and together they would gladly pay more than that for it. Yet weeks go by and nobody pays, because whoever pays lights the street for the neighbors too. Each one waits for someone else.",
+ "prereq": [
+  {
+   "q": "A market failure is",
+   "options": [
+    "an outcome that is not socially efficient",
+    "any market where prices rise",
+    "a firm that earns a loss",
+    "a price set by government"
+   ],
+   "correct": 0,
+   "why": "The market makes more or less than where MSB = MSC.",
+   "review": "market-efficiency"
+  },
+  {
+   "q": "A positive externality leads a market to produce",
+   "options": [
+    "too little",
+    "too much",
+    "the efficient amount",
+    "nothing"
+   ],
+   "correct": 0,
+   "why": "The external benefit is ignored, so the market stops short.",
+   "review": "externalities"
+  }
+ ],
+ "figure": {
+  "figure": "public-goods-grid",
+  "caption": "Two questions sort every good: is it rival (does my use leave less for you)? Is it excludable (can nonpayers be kept out)?"
+ },
+ "chain": [
+  {
+   "cause": "A good is nonexcludable",
+   "effect": "people can enjoy it without paying"
+  },
+  {
+   "cause": "People can enjoy it without paying",
+   "effect": "each waits for others to pay: free riding"
+  },
+  {
+   "cause": "Few pay",
+   "effect": "a private seller cannot cover its cost, so the market provides too little or none"
+  },
+  {
+   "cause": "The total benefit still exceeds the cost",
+   "effect": "the outcome is inefficient, and government often provides the good, paid for with taxes"
+  }
+ ],
+ "ideas": [
+  "<b>Rival</b>: one person's use leaves less for others. <b>Excludable</b>: nonpayers can be kept out.",
+  "<b>Private goods</b> are rival and excludable; <b>public goods</b> nonrival and nonexcludable; <b>common resources</b> rival and nonexcludable; <b>club goods</b> nonrival and excludable.",
+  "Public goods suffer from the <b>free-rider problem</b>: markets underprovide them. A public good is worth providing when the <b>sum</b> of everyone's benefit is at least its cost.",
+  "Common resources are overused (the <b>tragedy of the commons</b>), because each user ignores the cost to others. Limits, permits or fees per unit reduce overuse."
+ ],
+ "misconception": {
+  "wrong": "A public good is any good the government provides.",
+  "right": "A public good is defined by two features, nonrival and nonexcludable, not by who provides it. Governments provide many private goods (a public school lunch is rival), and some public goods are funded privately."
+ },
+ "check": [
+  "mic-public-goods-11",
+  "mic-public-goods-12",
+  "mic-public-goods-1",
+  "mic-public-goods-2",
+  "mic-public-goods-13",
+  "mic-public-goods-14"
+ ],
+ "summary": "Goods differ in rivalry (does one person's use leave less for others?) and excludability (can nonpayers be kept out?). Private goods are rival and excludable and markets handle them well. Public goods are nonrival and nonexcludable: people can free ride, so markets provide too little, even when the sum of everyone's benefit exceeds the cost, and governments often provide them with taxes. Common resources are rival but nonexcludable, so they are overused. Club goods are excludable but nonrival."
+}

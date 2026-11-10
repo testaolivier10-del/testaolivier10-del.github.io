@@ -1,0 +1,83 @@
+{
+ "topic": "comparative-advantage",
+ "hook": "Fenwick Workshop is faster than Garnet Workshop at making both chairs and tables. Should Fenwick make everything itself? Surprisingly, no. If each workshop makes what it gives up the least to make, and they trade, both can end up with more furniture than either could make alone. The key is not who is faster, but who has the lower opportunity cost.",
+ "prereq": [
+  {
+   "q": "A straight-line PPC means the opportunity cost",
+   "options": [
+    "stays the same for each extra unit",
+    "rises with each extra unit",
+    "falls with each extra unit",
+    "is zero"
+   ],
+   "correct": 0,
+   "why": "A straight line has one slope.",
+   "review": "production-possibilities"
+  },
+  {
+   "q": "A tailor can make 30 shirts or 10 jackets. One jacket costs",
+   "options": [
+    "3 shirts",
+    "10 shirts",
+    "1/3 of a shirt",
+    "30 shirts"
+   ],
+   "correct": 0,
+   "why": "30 shirts given up / 10 jackets gained.",
+   "review": "production-possibilities"
+  },
+  {
+   "q": "A point outside a producer's PPC is",
+   "options": [
+    "a combination it cannot make alone with its current resources",
+    "an efficient combination",
+    "a combination with idle resources",
+    "its best choice"
+   ],
+   "correct": 0,
+   "why": "Outside the curve is unattainable by its own production.",
+   "review": "production-possibilities"
+  }
+ ],
+ "figure": {
+  "figure": "comparative-advantage-workshops",
+  "caption": "Fenwick: 12 chairs or 6 tables a day. Garnet: 8 chairs or 2 tables. A table costs Fenwick 2 chairs and Garnet 4, so Fenwick has the comparative advantage in tables and Garnet in chairs. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Two producers have different opportunity costs for the same good",
+   "effect": "each has a comparative advantage in the good it gives up less to make"
+  },
+  {
+   "cause": "Each producer specializes in its comparative-advantage good",
+   "effect": "together they make more in total than when each makes some of both"
+  },
+  {
+   "cause": "They trade at a price between their two opportunity costs",
+   "effect": "each gets the other good for less than it would cost to make itself"
+  },
+  {
+   "cause": "Both pay less than their own opportunity cost",
+   "effect": "both can consume a combination outside their own PPC"
+  }
+ ],
+ "ideas": [
+  "<b>Absolute advantage</b>: producing more of a good with the same resources (or using fewer resources for the same output).",
+  "<b>Comparative advantage</b>: producing a good at a lower opportunity cost. Each producer has a comparative advantage in something, unless their costs are equal.",
+  "Output table: opportunity cost of X = Y given up ÷ X gained. Input table (hours per unit): opportunity cost of X = hours for X ÷ hours for Y.",
+  "<b>Specialization</b> by comparative advantage plus trade lets both producers consume beyond their own PPCs.",
+  "Mutually beneficial <b>terms of trade</b> lie between the two producers' opportunity costs."
+ ],
+ "misconception": {
+  "wrong": "Fenwick makes more chairs and more tables than Garnet, so Fenwick has the comparative advantage in both and gains nothing by trading.",
+  "right": "That is absolute advantage. A table costs Fenwick 2 chairs but Garnet 4, while a chair costs Fenwick half a table but Garnet only a quarter. Fenwick has the comparative advantage in tables, Garnet in chairs, and both gain from trading."
+ },
+ "check": [
+  "mic-comparative-advantage-1",
+  "mic-comparative-advantage-2",
+  "mic-comparative-advantage-5",
+  "mic-comparative-advantage-9",
+  "mic-comparative-advantage-11"
+ ],
+ "summary": "Absolute advantage is making more of a good with the same resources; comparative advantage is making it at a lower opportunity cost. When producers specialize in the goods where they have a comparative advantage and trade, total output rises and both can consume combinations outside their own PPCs. Trade helps both when the terms of trade lie between the two producers' opportunity costs. From an output table, divide the other good given up by the good gained; from an input table, divide the hours for the good by the hours for the other good."
+}

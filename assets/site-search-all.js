@@ -37,6 +37,7 @@
     { key: 'apprecalc', searchLabel: 'Precalculus', name: 'AP® Precalculus', dir: 'precalculus', aliases: ['precalculus', 'precalc', 'pcalc'], status: 'live' },
     { key: 'apcalcbc', searchLabel: 'Calculus BC', name: 'AP® Calculus BC', dir: 'calculus-bc', aliases: ['calculus-bc', 'calc-bc', 'calcbc', 'bc'], status: 'live' },
     { key: 'apmacro', searchLabel: 'Macroeconomics', name: 'AP® Macroeconomics', dir: 'macroeconomics', aliases: ['macroeconomics', 'macro', 'mac'], status: 'live' },
+    { key: 'apmicro', searchLabel: 'Microeconomics', name: 'AP® Microeconomics', dir: 'microeconomics', aliases: ['microeconomics', 'micro', 'mic'], status: 'live' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
@@ -66,11 +67,11 @@
   }
 
   /* The ?course= value written for a course. A key with the token "ap" in it
-     (apbio, apchem, apphys, apcalc, apstat, apenv, appsych, apprecalc, apmacro) never goes into a URL (docs/apbio-spec.md decision 2): it travels
+     (apbio, apchem, apphys, apcalc, apstat, apenv, appsych, apprecalc, apmacro, apmicro) never goes into a URL (docs/apbio-spec.md decision 2): it travels
      as its folder ("bio"), which parseCourse reads back through its aliases. */
   function urlKey(key) {
     var tokens = String(key || '').toLowerCase().split(/[^a-z0-9]+/);
-    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1 && tokens.indexOf('apcalc') === -1 && tokens.indexOf('apstat') === -1 && tokens.indexOf('apenv') === -1 && tokens.indexOf('appsych') === -1 && tokens.indexOf('apprecalc') === -1 && tokens.indexOf('apcalcbc') === -1 && tokens.indexOf('apmacro') === -1) return key;
+    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1 && tokens.indexOf('apcalc') === -1 && tokens.indexOf('apstat') === -1 && tokens.indexOf('apenv') === -1 && tokens.indexOf('appsych') === -1 && tokens.indexOf('apprecalc') === -1 && tokens.indexOf('apcalcbc') === -1 && tokens.indexOf('apmacro') === -1 && tokens.indexOf('apmicro') === -1) return key;
     for (var i = 0; i < COURSE_LIST.length; i++) if (COURSE_LIST[i].key === key) return COURSE_LIST[i].dir;
     return key;
   }
@@ -961,6 +962,51 @@
                 if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
                 if (text.length < 30) return;
                 out.push({ course: 'apmacro', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
+                  heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
+              });
+              return out;
+            }).catch(function () { return []; });
+          })).then(function (all) { return [].concat.apply([], all); });
+        });
+      }],
+    ],
+    // AP® Microeconomics: the same, from scripts/build-apmicro.mjs (empty until a unit is published).
+    apmicro: [
+      ['lessons', function () {
+        return loadScript('microeconomics/assets/mic-curriculum.js').then(function () {
+          return apbioStructureChunks(window.ApMicroCurriculum, 'apmicro', 'microeconomics');
+        });
+      }],
+      ['glossary', function () {
+        return loadScript('microeconomics/assets/mic-math.js').catch(function () {}).then(function () {
+          return getJson('microeconomics/assets/glossary.json');
+        }).then(function (g) {
+          return glossaryChunks('apmicro', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
+        });
+      }],
+      ['notes', function () {
+        return loadScript('microeconomics/assets/mic-math.js').catch(function () {}).then(function () {
+          return getJson('microeconomics/assets/notes-index.json');
+        }).then(function (list) {
+          return Promise.all(list.map(function (n) {
+            var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+            var href = 'microeconomics/notes/' + id + '.html';
+            return getText(href).then(function (html) {
+              var doc = parseHtml(html);
+              var root = doc.querySelector('.mic-prose') || doc.querySelector('main') || doc.body;
+              root.querySelectorAll('.mic-crumb,.mic-onward,.mic-share,.mic-foot').forEach(function (x) { x.remove(); });
+              // Each formula as plain text, not its MathML symbols plus the TeX kept in its annotation.
+              root.querySelectorAll('math').forEach(function (m) { m.replaceWith(doc.createTextNode(mathText(m.outerHTML))); });
+              root.normalize();
+              var out = [];
+              var heading = n.title;
+              var hid = '';
+              root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function (el) {
+                var text = (el.textContent || '').replace(/\s+/g, ' ').trim().replace(/ ([.,;:])/g, '$1');
+                if (!text) return;
+                if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
+                if (text.length < 30) return;
+                out.push({ course: 'apmicro', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
                   heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
               });
               return out;

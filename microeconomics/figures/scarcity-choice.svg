@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-labelledby="scarcity-choice-t scarcity-choice-d" font-family="Arial, Helvetica, sans-serif">
+<title id="scarcity-choice-t">Scarcity forces a choice, and the next-best choice is its opportunity cost</title>
+<desc id="scarcity-choice-d">Unlimited wants and limited resources (land, labor, capital and entrepreneurship) create scarcity, so every choice has a trade-off. Example: Maya can spend Saturday on one of three things: a lifeguard shift worth $96, tutoring worth $60 or pickup soccer worth $40 to her. She picks the shift. Its opportunity cost is the next-best choice, tutoring at $60, not the $100 of both others together. Invented example.</desc>
+<defs><marker id="scarcity-choice-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="scarcity-choice-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="scarcity-choice-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="scarcity-choice-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="scarcity-choice-arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="800" height="380" fill="#FFFFFF"/>
+<rect x="30" y="40" width="230" height="110" rx="8" fill="#FBE6D9" stroke="#D55E00" stroke-width="1.6"/>
+<text x="145" y="74" font-size="18" fill="#1F2A28" text-anchor="middle" font-weight="700">Wants</text>
+<text x="145" y="100" font-size="13" fill="#1F2A28" text-anchor="middle">more goods, services and</text>
+<text x="145" y="118" font-size="13" fill="#1F2A28" text-anchor="middle">time than anyone can have</text>
+<rect x="30" y="180" width="230" height="180" rx="8" fill="#F8E6F1" stroke="#7E1A5E" stroke-width="1.6"/>
+<text x="145" y="212" font-size="17" fill="#1F2A28" text-anchor="middle" font-weight="700">Resources (limited)</text>
+<text x="46" y="240" font-size="13" fill="#1F2A28">Land: natural resources</text>
+<text x="46" y="260" font-size="13" fill="#1F2A28">Labor: human effort</text>
+<text x="46" y="280" font-size="13" fill="#1F2A28">Capital: tools, machines,</text>
+<text x="46" y="300" font-size="13" fill="#1F2A28">   buildings</text>
+<text x="46" y="320" font-size="13" fill="#1F2A28">Entrepreneurship: organizing</text>
+<text x="46" y="340" font-size="13" fill="#1F2A28">   and taking risks</text>
+<line x1="266" y1="96" x2="330" y2="180" stroke="#1F2A28" stroke-width="2.4" marker-end="url(#scarcity-choice-ar)"/>
+<line x1="266" y1="270" x2="330" y2="206" stroke="#1F2A28" stroke-width="2.4" marker-end="url(#scarcity-choice-ar)"/>
+<rect x="336" y="150" width="130" height="86" rx="8" fill="#F7F3F6" stroke="#1F2A28" stroke-width="1.6"/>
+<text x="401" y="186" font-size="17" fill="#1F2A28" text-anchor="middle" font-weight="700">Scarcity</text>
+<text x="401" y="208" font-size="13" fill="#1F2A28" text-anchor="middle">so every choice</text>
+<text x="401" y="224" font-size="13" fill="#1F2A28" text-anchor="middle">has a trade-off</text>
+<line x1="470" y1="193" x2="510" y2="193" stroke="#1F2A28" stroke-width="2.4" marker-end="url(#scarcity-choice-ar)"/>
+<text x="520" y="52" font-size="15" fill="#1F2A28" font-weight="700">Maya's Saturday: pick one</text>
+<rect x="520" y="70" width="250" height="48" rx="8" fill="#F8E6F1" stroke="#7E1A5E" stroke-width="1.6"/>
+<text x="535" y="100" font-size="14" fill="#7E1A5E" font-weight="700">Lifeguard shift</text>
+<text x="755" y="100" font-size="14" fill="#1F2A28" text-anchor="end">worth $96</text>
+<rect x="520" y="132" width="250" height="48" rx="8" fill="#FFFFFF" stroke="#084F78" stroke-width="1.6"/>
+<text x="535" y="162" font-size="14" fill="#1F2A28" font-weight="700">Tutoring</text>
+<text x="755" y="162" font-size="14" fill="#1F2A28" text-anchor="end">worth $60</text>
+<rect x="520" y="194" width="250" height="48" rx="8" fill="#FFFFFF" stroke="#6B7370" stroke-width="1.6"/>
+<text x="535" y="224" font-size="14" fill="#1F2A28" font-weight="700">Pickup soccer</text>
+<text x="755" y="224" font-size="14" fill="#1F2A28" text-anchor="end">worth $40</text>
+<text x="520" y="278" font-size="13" fill="#084F78" font-weight="700">She picks the shift. The opportunity cost</text>
+<text x="520" y="298" font-size="13" fill="#084F78" font-weight="700">is the next-best choice: tutoring, $60.</text>
+<text x="520" y="324" font-size="13" fill="#6B7370">Not $60 + $40: she could only have</text>
+<text x="520" y="342" font-size="13" fill="#6B7370">done one of the other two.</text>
+</svg>

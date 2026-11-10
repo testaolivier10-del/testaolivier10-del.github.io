@@ -1,0 +1,11 @@
+{
+ "monopoly-dwl": {
+  "def": "The surplus lost because a monopolist produces where MR = MC instead of where demand meets MC: the triangle between the demand curve and MC, from the monopoly quantity to the efficient quantity."
+ },
+ "natural-monopoly": {
+  "def": "A market where one firm can supply the whole demand at a lower average total cost than two or more firms could, because ATC falls over the whole range of demand. Regulators may set the socially optimal price (P = MC, which leaves a loss) or the fair-return price (P = ATC, zero economic profit)."
+ },
+ "lump-sum-tax": {
+  "def": "A tax of a fixed amount that does not depend on how much a firm produces (a lump-sum subsidy is a fixed payment). It changes fixed cost and ATC but not marginal cost, so it leaves the profit-maximizing price and quantity unchanged."
+ }
+}

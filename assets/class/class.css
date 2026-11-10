@@ -12,6 +12,7 @@
 [data-cover="appsych"]{--accent:#084F78;--ctint:#E3F0F8;--bac:#FFD23F}
 [data-cover="apprecalc"]{--accent:#11592F;--ctint:#E3F3E8;--bac:#8AF0C0}
 [data-cover="apmacro"]{--accent:#355A0A;--ctint:#EEF4E0;--bac:#C8F07A}
+[data-cover="apmicro"]{--accent:#7E1A5E;--ctint:#F8E6F1;--bac:#FF9BDF}
 :root[data-theme="dark"] [data-cover]{--accent:var(--bac);--ctint:rgba(255,255,255,.06)}
 
 /* ---- shared pieces ---- */
