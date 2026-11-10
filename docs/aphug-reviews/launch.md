@@ -146,3 +146,6 @@ merges main and opens the PR after AP® Microeconomics merges).
 - Spec: launch row, decision 12, section 9 checklist (product, Worker and `onSale` ticked; migration
   `2026-11j-aphug.sql` after `2026-11i-apmicro.sql` and the owner grant left for the lead at merge). CLAUDE.md and
   the architecture's registration note say "on sale".
+- Second full `BROWSER=1` run, on sale: every job passed but the tests (one: `aphug-build.test.mjs` still asserted
+  `onSale: false`; now asserts on sale). Reruns on the final head: the whole test job (2,401 pass, 0 fail) and
+  check-site pass. The borders-lab key fix came after the browser jobs (text only).
