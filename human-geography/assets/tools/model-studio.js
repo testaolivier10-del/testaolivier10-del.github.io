@@ -56,7 +56,9 @@
     var over = [];
     f.spots.forEach(function(list, i){ list.forEach(function(p){ over.push('<span class="ms-badge" data-n="' + (i + 1) + '" style="left:' + p[0] + '%;top:' + p[1] + '%">' + (i + 1) + '</span>'); }); });
     (f.labels || []).forEach(function(l){ over.push('<span class="ms-tag" style="left:' + l.x + '%;top:' + l.y + '%">' + esc(l.text) + '</span>'); });
-    return '<figure class="ms-fig"><div class="ms-card"><div class="ms-pic">' + f.svg + '<div class="ms-over" aria-hidden="true">' + over.join('') + '</div></div>' + legendHtml(f.legend) + '</div></figure>';
+    // Its width/height ratio, so on a short stage the box shrinks with the drawing and the badges stay on it.
+    var vb = /viewBox="\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)/.exec(f.svg), ar = vb && +vb[2] ? (+vb[1] / +vb[2]).toFixed(3) : '';
+    return '<figure class="ms-fig"><div class="ms-card"><div class="ms-pic"' + (ar ? ' style="--ms-ar:' + ar + '"' : '') + '>' + f.svg + '<div class="ms-over" aria-hidden="true">' + over.join('') + '</div></div>' + legendHtml(f.legend) + '</div></figure>';
   }
   function mark(figEl, n, state){
     if(!figEl) return;

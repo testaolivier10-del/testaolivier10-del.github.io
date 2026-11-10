@@ -198,6 +198,8 @@
 @media (max-width:600px){
   .lswitch{display:flex}
   .lswitch a{flex:1 1 0;justify-content:center;padding:7px 8px}
+  /* Four items (AP® Human Geography adds Models): two rows of two, not three and one. */
+  .lswitch:has(> a:nth-child(4)) a{flex:1 1 calc(50% - 2px)}
 }
 
 /* "Practice this lesson" at the head of each textbook topic (assets/course/learn.js) */

@@ -111,6 +111,10 @@
   .ms-plotfig .ms-card{max-width:none;}
   .ms-qfig:has(.ms-plotfig),.ms-plotfig{flex:none;}
 }
+/* A drawn figure never runs past the stage: its box shrinks with the drawing, so
+   the badges stay on it (the DTM figure overflowed a 1280 x 720 stage by its
+   legend's height, which made the stage a scroll region with nothing to focus). */
+.ms-page .ls-stage-body .ms-pic{max-width:calc((100cqh - 80px) * var(--ms-ar, 100));margin:0 auto;}
 /* Plots use the page's own colors (hug-plot.js themes them), not the white card. */
 .ms-plotfig .ms-card{background:transparent;border:0;padding:0;color:inherit;}
 .ms-plotfig .ms-src{color:inherit;opacity:.85;}
