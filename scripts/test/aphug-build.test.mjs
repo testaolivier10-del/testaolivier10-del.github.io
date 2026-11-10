@@ -93,7 +93,7 @@ test('a published unit builds every page kind, math rendered, maps and plots dra
   assert.deepEqual(FREE_UNITS, ['geo-skills', 'unit-1']);
   assert.equal(FREE_TOPICS.length, 5);
   assert.match(block, /freeChapters: \['geo-skills', 'unit-1'\]/);
-  assert.match(block, /onSale: false/, 'not on sale in Phase 0');
+  assert.match(block, /onSale: false/, 'not on sale until the owner checklist (spec section 9)');
   assert.match(block, /id: 'hug-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);
 });
 
@@ -104,9 +104,18 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('nothing is published in Phase 0, and the course is registered hidden', () => {
-  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, []);
-  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'aphug'[\s\S]*?aliases: \['human-geography', 'geography', 'humangeo', 'hug'\], paid: true, status: 'hidden', order: 15/);
+test('published and live everywhere it is registered (spec decision 11), Premium not on sale yet', () => {
+  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, ['geo-skills', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6', 'unit-7']);
+  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'aphug'[\s\S]*?aliases: \['human-geography', 'geography', 'humangeo', 'hug'\], paid: true, status: 'live', order: 15/);
+  assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'aphug'[^\n]*status: 'live'/);
+  assert.match(readFileSync('premium.html', 'utf8'), /AP® Human Geography/, 'on the pricing page');
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /human-geography\/lessons\//, 'in the sitemap');
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /human-geography\/models\.html/, 'the models page in the sitemap');
+  assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-hug:start -->\s*<a class="ccard" href="human-geography\/"/, 'a hub card');
+  assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-hug:start -->\s*\S/, 'a 404 card');
+  assert.match(readFileSync('worker/src/premium.js', 'utf8'), /'hug-2027': +\{ course: 'aphug', until: '2027-06-30T23:59:59-10:00' \}/);
+  assert.match(readFileSync('sw.js', 'utf8'), /COURSE_URLS\['human-geography'\]/);
+  assert.match(readFileSync('robots.txt', 'utf8'), /Disallow: \/human-geography\/data\/notes\//);
 });
 
 test('the course home has its own headline, accent and cover', () => {

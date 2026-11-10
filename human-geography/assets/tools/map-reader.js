@@ -131,7 +131,7 @@
     function valueLine(bid, id){
       var D = cur.x.data, B = R.base(bid), f = window.ApHugMap.feature(B, id);
       if(!f) return '';
-      if(f.context) return esc(f.name) + ' is outside this map’s area (grey).';
+      if(f.context) return esc(f.name) + ' is outside this map’s area (gray).';
       if(f.disputed) return esc(f.name) + ': no value in this practice set.';
       var inv = !!B.invented, t = st.type;
       if(t === 'reference') return '<b>' + esc(f.name) + '</b>. A reference map gives no values: it shows where the place is.';

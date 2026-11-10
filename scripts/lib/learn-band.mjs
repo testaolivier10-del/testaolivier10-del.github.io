@@ -48,14 +48,17 @@ export function bookSub(key) {
 const ICON = {
   book: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>',
   terms: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h10M4 18h7"/></svg>',
+  model: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>',
   video: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>',
 };
 
 /* The switch. `active` is 'book', 'glossary' or 'videos'; links are relative to the course folder. */
 export function learnSwitch(key, active) {
   const items = [['book', bookFile(key), 'Textbook'], ['glossary', 'glossary.html', 'Glossary'], ['videos', 'videos.html', 'Videos']];
+  // AP® Human Geography's free models page sits under Learn too (launch, 2026-11-10).
+  if (key === 'aphug') items.push(['models', 'models.html', 'Models']);
   return `<nav class="lswitch" aria-label="Learn">${items.map(([id, href, label]) =>
-    `<a href="${href}"${id === active ? ' aria-current="page"' : ''}>${ICON[id === 'book' ? 'book' : id === 'glossary' ? 'terms' : 'video']}<span>${label}</span></a>`).join('')}</nav>`;
+    `<a href="${href}"${id === active ? ' aria-current="page"' : ''}>${ICON[id === 'book' ? 'book' : id === 'glossary' ? 'terms' : id === 'models' ? 'model' : 'video']}<span>${label}</span></a>`).join('')}</nav>`;
 }
 
 /* The band. `crumb` is the page's breadcrumb nav (kept: audit 2026-10 added visible breadcrumbs), `sub` the sub

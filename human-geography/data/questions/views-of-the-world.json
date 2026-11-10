@@ -378,7 +378,7 @@
     "correct": "An isoline joins places with the same value. On this map the value is height above sea level, so the lines show elevation.",
     "options": [
      "The lines are labeled in meters above sea level, not distance.",
-     "Province borders are the thin grey lines; the labeled lines cross them.",
+     "Province borders are the thin gray lines; the labeled lines cross them.",
      "Right: an isoline joins points of equal value; the legend says the value here is height in meters.",
      "A reference map would show roads; these lines carry values of height."
     ]

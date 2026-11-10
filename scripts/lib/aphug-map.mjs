@@ -520,7 +520,9 @@ export function preStrip(html) {
   let s = html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<head[\s\S]*?<\/head>/gi, ' ');
+    .replace(/<head[\s\S]*?<\/head>/gi, ' ')
+    // The site footer (the trademark line says "this site"; "site" is a Unit 1 concept) is not the page's teaching.
+    .replace(/<footer\b[\s\S]*?<\/footer>/gi, ' ');
   s = removeClassBlocks(s, 'hug-preview');
   return removeClassBlocks(s, 'hug-nav-ref');
 }

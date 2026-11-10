@@ -28,7 +28,7 @@
   var DAY = 86400000, FULL = 12, HALF_LIFE = 45, FLOOR = 0.5, LEVEL_W = { r: 0.8, p: 1, a: 1.2 };
   var MAX_ITEMS = 1500;
 
-  // The courses a class can be for. The ten AP® courses share one engine and one progress shape
+  // The courses a class can be for. The twelve AP® courses share one engine and one progress shape
   // (<course>_progress_v1 and friends); NREMT, organic chemistry and A&P keep progress their own way and have
   // their own reader (READ below) and curriculum adapter (curriculum()). Flags for the teacher's page:
   //   ap: false       no AP® skills, score band or AP® wording

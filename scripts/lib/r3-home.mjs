@@ -1,4 +1,4 @@
-/* The course home: one layout for all thirteen courses. Round 3 (docs/site-redesign.md) gave it the tall cover
+/* The course home: one layout for all fifteen courses. Round 3 (docs/site-redesign.md) gave it the tall cover
    band; course redesign round 4 (docs/course-redesign-r4.md, decision 2; mockups docs/redesign-r4/mockups/Main and
    HomeReturning) made the guided path the home.
 
@@ -197,7 +197,8 @@ export function r3HomeMain(key, ctx) {
      the extra tool lines live on the Tools page. */
   const top = d.tools.slice(0, 3);
   const allN = d.tools.length;
-  const toolsMore = `<a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a>`;
+  const toolsMore = `<a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a>`
+    + (L.more || []).map(([href, label]) => ` <a class="go" href="${href}">${label} &rarr;</a>`).join('');
 
   /* ---- only in this course ---- */
   const xs = d.extras.map((x, i) => {

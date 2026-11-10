@@ -204,7 +204,12 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('macroeconomics'), 'apmacro');
   assert.equal(A.parseCourse('macro'), 'apmacro');
   eq(A.scopeKeys('apmacro'), ['apmacro']);
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro']);
+  // AP® Human Geography (live since its launch): key aphug, named by its folder, aliases geography and hug.
+  assert.equal(A.urlKey('aphug'), 'human-geography');
+  assert.equal(A.parseCourse('human-geography'), 'aphug');
+  assert.equal(A.parseCourse('geography'), 'aphug');
+  eq(A.scopeKeys('aphug'), ['aphug']);
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apcalcbc', 'apmacro', 'aphug']);
   eq(A.scopeKeys('apprecalc'), ['apprecalc']);
   eq(A.scopeKeys('apenv'), ['apenv']);
   eq(A.scopeKeys('appsych'), ['appsych']);

@@ -128,8 +128,10 @@ maps (`hug-map.js`, base maps in `human-geography/figures/base/`, map files in `
 (`hug-model.js`), pyramids and the three FRQ types with task verbs: `docs/aphug-architecture.md`; writing rules
 (plain words, define before use, a named real place and scale, task verbs, stimulus questions need the stimulus,
 neutral and dated, no released questions): `docs/aphug-authoring-guide.md`; map: `docs/aphug-phase0.md`; open
-points: `docs/aphug-needs-author.md`; briefs (authors A-G, builders T1-T4): `docs/aphug-briefs/`. Phase 0 done;
-registered hidden, Premium `onSale: false`; nothing published.
+points: `docs/aphug-needs-author.md`; briefs (authors A-G, builders T1-T4): `docs/aphug-briefs/`; launch log:
+`docs/aphug-reviews/launch.md`. Published and live (all seven units and the skills chapter); Premium not on sale
+(`onSale: false`) until the owner checklist in spec section 9 (migration `2026-11j-aphug.sql`, Polar product,
+`hug-2027` in the Worker); merges after AP® Microeconomics.
 
 ## AI FRQ grader (AP® courses)
 

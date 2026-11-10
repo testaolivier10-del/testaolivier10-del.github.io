@@ -88,7 +88,7 @@ Built like AP® Psychology, so every shared page type matches. Same shared layer
 XP, tutor, dashboard, covers, path, score card, teacher classes), item formats, the "not yet reviewed" note,
 trademark rules. Every shared-layer fix goes into the shared file. Psychology's build must stay byte-identical: run
 `node scripts/build-appsych.mjs --check` after any shared change. Identity: own accent (a hue clear of the other
-fifteen, provisional until launch), icon, headline, cover art (a globe or map grid), ranks.
+fifteen; final at launch, decision 11), icon, headline, cover art (a globe), ranks.
 
 **Maps.** World and regional base maps are drawn from Natural Earth public domain data (the `world-atlas` npm
 package, 110m), simplified at build time into small SVG paths under `human-geography/figures/`; no map tiles, no
@@ -108,8 +108,8 @@ before registration so the course lists and the SQL migration (`2026-11j-aphug.s
 | 1 | Content: lessons, notes, banks (with stimulus sets), FRQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, models page, cram kit | **done 2026-11-09** (section 5b, decision 10; `docs/aphug-reviews/phase3.md`) |
-| 4 | Independent accuracy checks per unit, tools and exams, plus one neutrality and currency pass over everything | |
-| Launch | Publish, generators (paths included), continuity pass, course-count wording (count `assets/courses.js`), full CI with browser checks, PR, launch steps | |
+| 4 | Independent accuracy checks per unit, tools and exams, plus one neutrality and currency pass over everything | **done 2026-11-09** (`docs/aphug-reviews/u1.md`-`u7.md`, `tools.md`, `exams.md`, `originality.md`) |
+| Launch | Publish, generators (paths included), continuity pass, course-count wording (count `assets/courses.js`), full CI with browser checks, PR, launch steps | **done 2026-11-10** (decision 11; `docs/aphug-reviews/launch.md`); PR and merge by the lead after AP® Microeconomics |
 
 ### 5b. Phase 3 as built (2026-11-09)
 
@@ -264,6 +264,41 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
     the repo root (`models.html`, `formula-sheet.html`, `assets/justify.json`) are left for the integrator's
     rebuild (`node scripts/build-aphug.mjs`), since the shared runtime was changing during this phase.
 
+11. (2026-11-10, launch) **Published and live, Premium not on sale.** All eight chapters in
+    `human-geography/data/published.json` (`geo-skills`, `unit-1`..`unit-7`: 71 topics, 1,107 bank questions, 21
+    FRQs), `status: 'live'` in `assets/courses.js`, every generator rerun (hub and 404 cards, premium page, terms
+    "passes with an end date", manifest, sitemap, search, pricing, home facts "14 courses" until AP® Microeconomics
+    goes live, course homes, og tags, paths, vault rules: 56 lessons vaulted), `models.html` linked from the course
+    home (beside "All 8 tools") and from Learn (a fourth "Models" switch, AP® Human Geography only), hand-written
+    course counts "fifteen courses" and "twelve AP® Exams" (with AP® Microeconomics, merged here at its Phase 0),
+    `sources.html` section with the dated sources, changelog entry, `robots.txt`, `sw.js` v119, social card
+    rendered, eight tool covers, course home "May 2027 exam". Before publishing: Model Studio's phone plots, the EEZ
+    slot, the exams review's three author items and `scale-words` settled ("local (subnational)" for data on parts
+    of one country in keys and notes; "regional" only for groups of countries). Identity: accent, headline "from
+    local to global.", hand line "every model, every scale" and ranks (Map Reader to Geography Legend) kept; the
+    cover's wire globe (it read as a ball) redrawn as an Earth with land, its grid, and a gold migration path to a
+    gold pin, from one source for cover, thumb and band art; the icon is the common globe sign; the hub's course
+    names take their accent color (Precalculus, Calculus BC, Macro, Micro and Human Geography had none). `aphug` in
+    the FRQ grader's `FRQ_COURSES` with conventions, a calibration example and four eval cases (still shipped off).
+    SQL `2026-11j-aphug.sql` lists every course, apmicro included, not applied. `onSale: false` stays until the
+    owner checklist below.
+
 ## 9. Open items for the owner
 
-Filled in at launch.
+- Confirm the identity (decision 11: teal accent `#094953`, the clay cover with an Earth and a migration path, the
+  globe icon, headline "from local to global.", ranks Map Reader to Geography Legend; needs-author `identity`), the
+  free tier (decision 6) and the free trainers (section 6), now live.
+- The rest is in `docs/aphug-needs-author.md` (teacher questions: `ced-text`, `mcq-options`, `mcq-sets`,
+  `scale-words` as settled, `tools-facts`, the fifth options, contested-topic prompts).
+
+**Launch checklist (owner), to put AP® Human Geography Premium on sale** (as AP® Macroeconomics, its spec section 9):
+- [ ] Apply migration `scripts/sql/migrations/2026-11j-aphug.sql` in Supabase (after `2026-11i-apmicro.sql`): adds
+      `aphug` to the three course checks and the nine functions with a course list. Check the live function bodies
+      match `2026-11i-apmicro.sql` first. Then grant owner access (`grant`, as for the other courses).
+- [ ] Create the Polar product "AP® Human Geography Premium (through June 30, 2027)", one-time, at the AP® price
+      ($25), with the Founding member discount (it has no product list, so it covers every product).
+- [ ] Add `"hug-2027": "<Polar product id>"` to `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask settings; deploy;
+      `keep_vars = true` keeps it on the merge deploy).
+- [ ] Remove `onSale: false` from `COURSES.aphug` in `assets/premium.js`; bump `sw.js`.
+- [ ] Merge the PR (the lead opens it after AP® Microeconomics merges, merging main in first).
+- [ ] Optional: an AP® Human Geography teacher reviews the course (the "not yet reviewed" note stays until then).

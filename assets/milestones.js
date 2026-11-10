@@ -15,7 +15,7 @@
      anp     A chapter is complete when every BUILT topic in it is in
              anp_progress_v1.lessons (the lesson's check questions answered to
              the end). Each record is a timestamp, so the date earned is real.
-     AP®     The ten AP® courses: a unit is complete when every topic in it
+     AP®     The twelve AP® courses: a unit is complete when every topic in it
              with a lesson is in <key>_progress_v1.lessons (timestamps), with
              units and lessons read from assets/path/<key>.json.
      all     The course is complete when every chapter (unit) is.
@@ -75,7 +75,7 @@
       blurb: 'An anatomy and physiology course, free to start: lessons that build in order from cells to systems, mechanism-first physiology, a virtual lab practical and system exams.'
     }
   };
-  /* The ten AP® courses (consistency audit 2026-11, D4): units and their lessons come from the course's path file
+  /* The twelve AP® courses (consistency audit 2026-11, D4): units and their lessons come from the course's path file
      (assets/path/<key>.json, scripts/build-paths.mjs), finished lessons from <key>_progress_v1.lessons, each a
      timestamp, the same record A&P keeps. A unit is a chapter here; the course is complete when every unit is. */
   var AP = [

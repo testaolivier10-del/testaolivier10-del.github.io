@@ -29,7 +29,7 @@
    Every page loads the same shell: theme.css, the two typefaces, account.js,
    site-chrome.js and the rest of /assets/. That is most of a first visit and
    nothing at all on every visit after, since it is one cache entry for the
-   whole site. Counted into all thirteen page budgets it would put every page
+   whole site. Counted into all fifteen page budgets it would put every page
    within a few KB of every other — exactly the resolution at which a
    page-specific regression disappears. So:
 

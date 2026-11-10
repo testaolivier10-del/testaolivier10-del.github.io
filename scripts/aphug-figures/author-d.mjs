@@ -135,7 +135,7 @@ const figs = []; // { topic, id, h, title, alt, body }
     body += text(148, y + 42, d, { size: 15, width: 315 });
   });
   body += text(20, 44 + 6 * 82 + 10, 'One boundary can fit more than one type.', { size: 15, weight: 700 });
-  figs.push({ topic: 'defining-boundaries', id, h: 44 + 6 * 82 + 26, title: 'Six boundary types', alt: 'Six small sketches, each with a red boundary line. Antecedent: the line is drawn before many settlers live there. Subsequent: a winding line drawn after settlement. Consequent: a line between two groups of houses of different colors, following a cultural line. Superimposed: a line drawn by outsiders through the middle of one group. Geometric: a straight line along 49 degrees north. Relict: a dashed grey line, a former boundary that no longer works. A note says one boundary can fit more than one type.', body });
+  figs.push({ topic: 'defining-boundaries', id, h: 44 + 6 * 82 + 26, title: 'Six boundary types', alt: 'Six small sketches, each with a red boundary line. Antecedent: the line is drawn before many settlers live there. Subsequent: a winding line drawn after settlement. Consequent: a line between two groups of houses of different colors, following a cultural line. Superimposed: a line drawn by outsiders through the middle of one group. Geometric: a straight line along 49 degrees north. Relict: a dashed gray line, a former boundary that no longer works. A note says one boundary can fit more than one type.', body });
 }
 
 /* 4.5 Sea zones under the law of the sea, labeled and lettered. */

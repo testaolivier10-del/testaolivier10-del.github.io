@@ -54,18 +54,32 @@ features at 1:110m, so a map cannot color them apart. Confirm the list and the c
 has an invented `metro` base (integration pass, `docs/aphug-reviews/integration.md`). Cartograms are still drawn
 figures (map-reader draws its own Country A cartogram). Decide whether a cartogram rendering is worth building.
 
-## frq-grader: the AI grader for seven one-point parts (open, 2026-11-09)
+## frq-grader: the AI grader for seven one-point parts (open, 2026-11-09; partly done at launch)
 
 The AI FRQ grader (`docs/frq-grader.md`) is calibrated on other courses' rubrics. HUG's three 7-point FRQs need
 their own eval set before the course joins `FRQ_COURSES`.
+- **Launch, 2026-11-10**: `aphug` joined `FRQ_COURSES` with its conventions (the task verb sets what earns each
+  part), a calibration example (`frq-population-policy-none` C and G) and four eval cases (41-44). Still open: rerun
+  the eval with them before the grader is switched on for this course; a teacher may check the four cases' marks.
 
-## identity: provisional accent, cover and ranks (open, 2026-11-09)
+## identity: provisional accent, cover and ranks (open, 2026-11-09; final proposal at launch)
+
+**Launch, 2026-11-10 (spec decision 11)**: accent, headline, hand line and ranks kept; the cover's wire globe read
+as a ball, so it is now an Earth with land, its grid and a gold migration path to a gold pin (cover, thumb and band
+art); the icon is the common globe sign. The owner confirms (spec section 9). The original note:
+
 
 The teal accent (hue 188, `#094953` on `#E1F1F4`), the clay cover (`#7A3310`) and its art (a globe with meridians), the headline "from local
 to global." and the ranks (Map Reader, Scale Shifter, Pattern Spotter, Region Builder, Model Maker, World Analyst,
 Geography Legend) are provisional. The owner approves them at launch. Tool covers come with each trainer.
 
-## scale-words: one house term for data on parts of a country (open, 2026-11-09)
+## scale-words: one house term for data on parts of a country (settled at launch, 2026-11-10; teacher to confirm)
+
+**Launch**: keys say "local (subnational)"; notes may say a province or state is a subnational unit; nothing says
+"regional scale" for part of one country (the notes, bank items and FRQ part changed are listed in
+`docs/aphug-reviews/launch.md`, section 1). A teacher who wants "regional" accepted for parts of a country would
+change the keys and these notes together. The original note:
+
 
 The course uses the CED's four scales (global, regional, national, local; framework.md 1.6) with one rule: the
 scale of analysis is the unit of the data. Regional means a group of countries; data for provinces, states or
@@ -75,7 +89,7 @@ textbooks call a province or a region inside a country "regional": a teacher sho
 say both usages exist, and whether "the regional scale" for the US Midwest or the Great Plains (notes listed in
 `docs/aphug-reviews/integration.md`) should become "local (subnational)".
 
-## publish-order: FRQs unlock only when all their units are live (open, 2026-11-09)
+## publish-order: FRQs unlock only when all their units are live (done 2026-11-10: all eight chapters published together)
 
 Every FRQ but the three Unit 1 ones joins two units (as the exam does), and it goes live only when every unit it
 lists is published. Published in course order, each unit adds its FRQs (Unit 1: 3, Unit 2: 3, Unit 3: 2, Unit 4:
@@ -320,9 +334,12 @@ Open points from self-c.md:
 1. World Bank FY27 classes on `views-of-the-world-s2` and `scales-of-analysis-s1`: verified from the World Bank
    blog (1 July 2026) and a matching August 2026 table; the World Bank's own classification page could not be
    opened from the review container. Confirm Sri Lanka (upper-middle, "narrowly crossed") on the World Bank page
-   before launch. Still open (low risk: keys read from the dated map).
+   before launch. **Launch check, 2026-11-10**: several July 2026 reports of the FY27 release say Sri Lanka moved back
+   to upper-middle income (Business Today, 4 July 2026; Daily FT; Newsfirst, 1 July 2026); the World Bank page itself
+   was not opened. Low risk; closed unless a teacher finds otherwise.
 2. UN WPP: the population.un.org site could not be opened; WPP 2024 figures were confirmed from a WPP 2024 table.
-   Check for a newer revision before launch. Still open.
+   Check for a newer revision before launch. **Launch check, 2026-11-10**: a web search finds no WPP revision after
+   2024 on the UN site (WPP 2024 is still the latest); recheck at the yearly pass.
 3. Scale words: provinces and states are keyed "local (subnational)", as the 2025 scoring accepted and as Unit 3
    keys them (self-c open point 1 is consistent now). A teacher may want to note that some textbooks call a state
    "regional". Still open (wording, not a fact).
@@ -448,7 +465,7 @@ a teacher should read them for neutrality.
   in 2026. Read but not refetched: the stable historical dates listed in the review. Still open: the teacher read
   of the contested-topic prompts for neutrality (found neutral and attributed in this review).
 
-## generated-at-root: rebuild after the integrator's runtime changes (open, 2026-11-09)
+## generated-at-root: rebuild after the integrator's runtime changes (done 2026-11-10: rebuilt at launch)
 
 The Phase 3 builder did not run the generator into the repo (the shared runtime was changing). After the
 integrator lands, run `node scripts/build-aphug.mjs`: it adds `human-geography/models.html` and updates

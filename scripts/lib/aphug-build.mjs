@@ -37,8 +37,8 @@ export const COURSE_HTML = 'AP&reg; Human Geography';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
 export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Human Geography teacher.';
-/* THE COURSE IDENTITY, in one place (docs/aphug-spec.md decision 5,
-   proposed; owner to confirm). The accent's CSS values live in
+/* THE COURSE IDENTITY, in one place (docs/aphug-spec.md decisions 9 and 11,
+   final at launch; owner to confirm). The accent's CSS values live in
    assets/theme.css (body[data-course="aphug"], with the contrast ratios in
    its comment) and human-geography/assets/hug.css (body.hug); the ranks
    in assets/hub-progress.js TITLES.aphug. Change the rest here and rebuild. */
@@ -46,10 +46,11 @@ export const IDENTITY = {
   headline: 'from local to global.',
   // Deep ocean teal, hue 188°, between NREMT's teal (174°) and Psychology's
   // cerulean (202°); the cover is clay (#7A3310) so the hub keeps it apart
-  // from Psychology's blue cover. Provisional until launch (spec decision 9).
+  // from Psychology's blue cover. Kept at launch (spec decision 11).
   accent: { ink: '#094953', tint: '#E1F1F4', darkInk: '#A8DEE6', darkTint: 'rgba(80,190,205,0.10)', soft: '#8CCFD9' },
-  // A globe with a meridian and two parallels: 24-px stroke paths, as every course card.
-  iconPaths: '<circle cx="12" cy="12" r="9"/><path d="M12 3c-2.6 2.5-3.9 5.5-3.9 9s1.3 6.5 3.9 9c2.6-2.5 3.9-5.5 3.9-9S14.6 5.5 12 3z"/><path d="M3.6 9h16.8M3.6 15h16.8" stroke-opacity=".75"/>',
+  // A globe (outline, one meridian, the equator), the common globe sign, in 24-px stroke paths as every course
+  // card; two parallels made it read as a ball at 24 px (launch, decision 11).
+  iconPaths: '<circle cx="12" cy="12" r="9.5"/><path d="M12 2.5c-2.8 2.6-4.2 5.8-4.2 9.5s1.4 6.9 4.2 9.5c2.8-2.6 4.2-5.8 4.2-9.5S14.8 5.1 12 2.5z"/><path d="M2.5 12h19"/>',
   firstRank: 'Map Reader',
 };
 // THE FREE TIER, in one place (docs/aphug-spec.md decision 6): the chapters

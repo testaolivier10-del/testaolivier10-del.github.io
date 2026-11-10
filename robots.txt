@@ -15,5 +15,6 @@ Disallow: /psychology/data/notes/
 Disallow: /precalculus/data/notes/
 Disallow: /calculus-bc/data/notes/
 Disallow: /macroeconomics/data/notes/
+Disallow: /human-geography/data/notes/
 
 Sitemap: https://levlprep.com/sitemap.xml
