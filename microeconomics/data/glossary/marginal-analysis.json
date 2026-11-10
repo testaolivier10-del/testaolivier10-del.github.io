@@ -16,5 +16,8 @@
  },
  "budget-constraint": {
   "def": "The limit a consumer's income and the prices of goods place on what can be bought: total spending cannot exceed the budget."
+ },
+ "marginal-cost": {
+  "def": "Marginal cost (MC): the extra cost of doing one more unit of something, the change in total cost from one more unit. Keep going while marginal benefit is at least marginal cost (MB ≥ MC)."
  }
 }

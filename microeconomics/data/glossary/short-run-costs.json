@@ -13,5 +13,8 @@
  },
  "average-costs": {
   "def": "Average costs are costs per unit of output: average fixed cost (AFC = TFC / Q), average variable cost (AVC = TVC / Q) and average total cost (ATC = TC / Q = AFC + AVC)."
+ },
+ "lump-sum-tax": {
+  "def": "A tax of a fixed amount that does not depend on how much a firm produces (a lump-sum subsidy is a fixed payment). It changes total fixed cost, AFC and ATC, but not marginal cost or AVC."
  }
 }

@@ -673,9 +673,14 @@ export function checkFrq(fid, f, map, figures = {}) {
   return errs;
 }
 
-function glossaryAll() {
+/* Every definition, as the build reads it: the first file (in name order) that has the concept, unless the file of
+   the topic that teaches it has one (a term taught early is defined at the early level). */
+export function glossaryAll(map = null) {
   const dir = join(DATA, 'glossary'), all = {};
-  if (exists(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json'))) Object.assign(all, readJson(join(dir, f)));
+  if (!exists(dir)) return all;
+  const files = readdirSync(dir).filter(f => f.endsWith('.json')).sort(), byFile = {};
+  for (const f of files) { byFile[f.slice(0, -5)] = readJson(join(dir, f)); for (const [k, v] of Object.entries(byFile[f.slice(0, -5)])) if (!(k in all)) all[k] = v; }
+  for (const c of (map && (map.raw || map).concepts) || []) if (byFile[c.taughtIn] && byFile[c.taughtIn][c.id]) all[c.id] = byFile[c.taughtIn][c.id];
   return all;
 }
 function figuresAll() {
@@ -688,7 +693,7 @@ const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.arg
 if (isMain) {
   const map = loadMap();
   const published = new Set(exists(join(DATA, 'published.json')) ? readJson(join(DATA, 'published.json')).chapters || [] : []);
-  const glossary = glossaryAll(), figures = figuresAll();
+  const glossary = glossaryAll(map), figures = figuresAll();
   const dataTopics = new Set(['lessons', 'notes', 'questions'].flatMap(d => exists(join(DATA, d)) ? readdirSync(join(DATA, d)).filter(f => !f.startsWith('.')).map(f => f.replace(/\.(json|html)$/, '')) : []));
   let failed = 0, draft = 0, total = 0;
   const pubItems = [], allItems = [], allStimuli = {};

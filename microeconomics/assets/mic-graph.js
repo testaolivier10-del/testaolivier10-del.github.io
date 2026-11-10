@@ -616,6 +616,7 @@
     Object.keys(spec.show || {}).forEach(function(c){ if(mov.indexOf(c) < 0) bad('graph.show: "' + c + '" is not a curve that moves on a ' + spec.kind + ' graph'); else if(!Number.isInteger(spec.show[c]) || Math.abs(spec.show[c]) > MAX_STEPS) bad('graph.show.' + c + ' is a whole number of steps from -3 to 3'); });
     if(spec.kind === 'ppc' && (!spec.names || !spec.names.x || !spec.names.y)) bad('graph.names.x and .y name the two goods of a PPC');
     if(spec.bow !== undefined && (spec.kind !== 'ppc' || spec.bow !== 'in' || spec.linear)) bad('graph.bow: "in" (a bowed-in PPC, decreasing opportunity cost) is for a ppc graph that is not linear');
+    if(spec.pointMarks !== undefined && (typeof spec.pointMarks !== 'object' || !['x', 'y'].some(function(a){ return spec.pointMarks[a]; }) || Object.keys(spec.pointMarks).some(function(a){ return ['x', 'y'].indexOf(a) < 0 || !/^[A-Za-z*]{1,3}(_[A-Za-z0-9*]{1,4})?$/.test(String(spec.pointMarks[a])); }))) bad('graph.pointMarks { x: "Q_M", y: "P_M" } marks a placed point on the axes (a letter or two, then _ and its subscript)');
     if(spec.linear !== undefined && (spec.kind !== 'ppc' || typeof spec.linear !== 'boolean')) bad('graph.linear (true: a straight-line PPC, constant opportunity cost) is for a ppc graph');
     if(spec.ends !== undefined && (!spec.linear || !(+spec.ends.x > 0) || !(+spec.ends.y > 0))) bad('graph.ends { x, y } gives a straight PPC\'s intercepts (the most of each good, both positive) and needs linear: true');
     if(spec.policy !== undefined){
@@ -704,6 +705,7 @@
       names.forEach(function(nm){ if(!R[nm]) bad('graph.key.shade: "' + nm + '" is not a region of this graph (' + Object.keys(R).join(', ') + ')'); });
     }
     Object.keys(spec.slips || {}).forEach(function(c){ if(c !== 'point' && ids.indexOf(c) < 0 && !REGION[c] && !(lineDef(spec) && lineDef(spec).id === c)) bad('graph.slips: "' + c + '" is not a curve, line, region or point'); else if(String(spec.slips[c]).length < 15) bad('graph.slips.' + c + ' explains the slip in a sentence'); });
+    Object.keys(spec.showLabel || {}).forEach(function(c){ var v = spec.showLabel[c]; if(!(spec.show || {})[c]) bad('graph.showLabel.' + c + ': names a curve drawn shifted by graph.show'); else if(typeof v !== 'string' || !v.trim() || v.length > 16) bad('graph.showLabel.' + c + ' is the shifted curve\'s label, 1 to 16 characters ("S + tax")'); });
     (spec.movable || []).forEach(function(c){ if(mov.indexOf(c) < 0) bad('graph.movable: "' + c + '" is not a curve that moves on its own'); });
     (key.shifts || []).forEach(function(s){ if(spec.movable && spec.movable.indexOf(s.curve) < 0) bad('graph.movable leaves out ' + s.curve + ', which the key shifts'); });
     return out;
@@ -740,8 +742,9 @@
   function endOf(c){ for(var x = 10; x >= 0.3; x -= 0.02){ var h = y(c, x); if(h != null && h >= 0.2 && h <= 9.7) return [x, h]; } return [9.8, 5]; }
   var LX = 8.6;
   function labelAway(c){
-    if(c.shape === 'down'){ var x = 1.8, yv = 5 - (x - c.at); if(yv > 9.4){ yv = 9.4; x = c.at - 4.4; } return [px(Math.max(0.3, x)) + 6, py(yv) + 3, 'start']; }
-    if(c.shape === 'up'){ var x2 = 3.2, y2 = 5 + (x2 - c.at); if(y2 < 0.6){ y2 = 0.6; x2 = c.at - 4.4; } return [px(Math.max(0.3, x2)) - 7, py(y2) - 3, 'end']; }
+    // Several places along the old curve, tried in order by place() (the first is the old single place).
+    if(c.shape === 'down') return [1.8, 1.0, 2.8, 3.8].map(function(x0){ var x = x0, yv = 5 - (x - c.at); if(yv > 9.4){ yv = 9.4; x = c.at - 4.4 + (x0 - 1.8); } return [px(Math.max(0.3, x)) + 6, py(yv) + 3, 'start']; }).concat(labelAt(c));
+    if(c.shape === 'up') return [3.2, 2.2, 4.2, 1.2].map(function(x0){ var x2 = x0, y2 = 5 + (x2 - c.at); if(y2 < 0.6){ y2 = 0.6; x2 = c.at - 4.4 + (x0 - 3.2); } return [px(Math.max(0.3, x2)) - 7, py(y2) - 3, 'end']; }).concat(labelAt(c));
     if(c.shape === 'vertical') return [px(c.at) - 5, py(0.6), 'end'];
     return labelAt(c, true);
   }
@@ -827,6 +830,23 @@
     return axis === 'x' ? '<text class="mic-gr-mark ' + (cls || '') + '" x="' + f1(px(v)) + '" y="' + (T + PH + 13) + '" text-anchor="middle">' + s + '</text>'
       : '<text class="mic-gr-mark ' + (cls || '') + '" x="' + (L - 4) + '" y="' + f1(py(v) + 4) + '" text-anchor="end">' + s + '</text>';
   }
+  /* Axis marks close in value (QE and QT for a one-step tax, PE and PW + t) are pushed apart along their axis after
+     drawing, so no two touch (integration T3-1). Marks on the horizontal axis sit at y = T + PH + 13, on the
+     vertical axis at x = L - 4; each keeps its anchor, and the run is pulled back inside the picture if it leaves. */
+  function spreadMarks(html){
+    var re = /<text class="mic-gr-mark([^"]*)" x="([-\d.]+)" y="([-\d.]+)" text-anchor="(\w+)">([\s\S]*?)<\/text>/g, xs = [], ys = [], m;
+    var wOf = function(inner){ var sub = (/<tspan[^>]*>([^<]*)<\/tspan>/.exec(inner) || [])[1] || '', main = inner.replace(/<tspan[^>]*>[^<]*<\/tspan>/g, '').replace(/&[a-z#0-9]+;/g, 'x').replace(/<[^>]+>/g, ''); return main.length * 6.6 + sub.length * 5; };
+    while((m = re.exec(html))){ var o = { s: m[0], cls: m[1], x: +m[2], y: +m[3], a: m[4], inner: m[5], w: wOf(m[5]) }; if(Math.abs(o.y - (T + PH + 13)) < 0.01) xs.push(o); else if(Math.abs(o.x - (L - 4)) < 0.01) ys.push(o); }
+    var moved = [];
+    var left = function(o){ return o.a === 'end' ? o.x - o.w : o.a === 'middle' ? o.x - o.w / 2 : o.x; };
+    xs.sort(function(a, b){ return left(a) - left(b); });
+    for(var i = 1; i < xs.length; i++){ var need = left(xs[i - 1]) + xs[i - 1].w + 3 - left(xs[i]); if(need > 0){ xs[i].x += need; moved.push(xs[i]); } }
+    if(xs.length){ var last = xs[xs.length - 1], over = left(last) + last.w - (W - 2); if(over > 0) xs.forEach(function(o){ o.x -= over; if(moved.indexOf(o) < 0) moved.push(o); }); }
+    ys.sort(function(a, b){ return b.y - a.y; });
+    for(var j = 1; j < ys.length; j++){ var gap = ys[j - 1].y - 13 - ys[j].y; if(gap < 0){ ys[j].y += gap; moved.push(ys[j]); } }
+    moved.forEach(function(o){ html = html.replace(o.s, '<text class="mic-gr-mark' + o.cls + '" x="' + f1(o.x) + '" y="' + f1(o.y) + '" text-anchor="' + o.a + '">' + o.inner + '</text>'); });
+    return html;
+  }
   function vguide(x, top, cls){ return '<path class="mic-gr-guide ' + (cls || '') + '" d="M' + f1(px(x)) + ' ' + f1(py(top)) + 'V' + f1(py(0)) + '"/>'; }
   function eName(n){ return 'E' + (n ? '<tspan class="mic-gr-sub" dy="3">' + esc(n) + '</tspan>' : ''); }
   function guides(p, cls){
@@ -886,10 +906,11 @@
     var g = [];
     g.push('<rect class="mic-gr-hit" x="' + L + '" y="' + T + '" width="' + PW + '" height="' + PH + '"/>');
     // Shading cells first, under the curves.
-    var ar = (does.indexOf('shade') > -1 || state.letters || (state.key && does.indexOf('shade') > -1)) ? areas(spec) : null, on = state.shade || [], keyCells = state.key && does.indexOf('shade') > -1 ? regionCells(spec, (spec.key || {}).shade) : [];
+    var shadeTask = does.indexOf('shade') > -1, ar = (shadeTask || state.letters || (state.shade && state.shade.length)) ? areas(spec) : null, on = state.shade || [], keyCells = state.key && does.indexOf('shade') > -1 ? regionCells(spec, (spec.key || {}).shade) : [];
     if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
       var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly);
-      g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/><text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>');
+      if(!shadeTask && !state.letters && on.indexOf(c.id) < 0) return;   // a picture shading a region (state.shade) shows only it
+      g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/>' + (shadeTask || state.letters ? '<text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>' : ''));
     });
     g.push('<path class="mic-gr-axis" d="M' + L + ' ' + T + 'V' + (T + PH) + 'H' + (L + PW) + '"/>');
     g.push('<text class="mic-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 31) + '" text-anchor="end">' + esc(nm(xs, panel.x)) + '</text>');
@@ -900,32 +921,55 @@
     var e0 = k.eq && find(base, k.eq[0]) ? eq(spec, {}) : null;
     var placed = [], cn = state.curveN != null ? String(state.curveN) : '2';
     function box(t, n, at){ var w = String(t[0]).length * 7.4 + String(t[1] + (n || '')).length * 5.4, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
-    function hit(a, b){ return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3]; }
+    // Labels keep 2 px apart (ATC and AVC ends no longer touch, integration T1-2).
+    function hit(a, b){ return a[0] < b[2] + 2 && b[0] < a[2] + 2 && a[1] < b[3] + 2 && b[1] < a[3] + 2; }
     var lines = now.map(function(c){ var pts = []; if(c.shape === 'vertical'){ for(var v = 0; v <= 10; v += 0.25) pts.push([px(c.at), py(v)]); } else for(var x = 0; x <= 10 + 1e-9; x += 0.1){ var h = y(c, x); if(h != null && h >= 0 && h <= 10) pts.push([px(x), py(h)]); } return pts; });
     var LV = lineAt(spec, state), LDf = lineDef(spec), lineHere = LDf && (LDf.panel || 'main') === pid && LV != null;
     if(lineHere){ var lp = []; for(var lx = 0; lx <= 10; lx += 0.1) lp.push([px(lx), py(LV)]); lines.push(lp); }
-    function crosses(bx, skip){ return lines.some(function(pts, j){ return j !== skip && pts.some(function(q){ return q[0] > bx[0] - 1 && q[0] < bx[2] + 1 && q[1] > bx[1] - 1 && q[1] < bx[3] + 1; }); }); }
+    function crosses(bx, skip, set){ return (set || lines).some(function(pts, j){ return (set || j !== skip) && pts.some(function(q){ return q[0] > bx[0] - 1 && q[0] < bx[2] + 1 && q[1] > bx[1] - 1 && q[1] < bx[3] + 1; }); }); }
+    /* Soft obstacles: dashed guides and shift arrows. A label avoids them when it can, never at the cost of a curve. */
+    var soft = [], seg = function(a, b){ var pts = [], n = Math.max(2, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 3)); for(var i = 0; i <= n; i++) pts.push([a[0] + (b[0] - a[0]) * i / n, a[1] + (b[1] - a[1]) * i / n]); return pts; };
+    var guideAt = function(p){ if(p){ soft.push(seg([px(0), py(p[1])], [px(p[0]), py(p[1])])); soft.push(seg([px(p[0]), py(p[1])], [px(p[0]), py(0)])); } };
     function place(t, n, at, skip){
       var tries = [0, 14, -14, 28, -28], bx, fallback = null, cands = Array.isArray(at[0]) ? at.slice() : [at];
       at = cands[0];
       // A long label that would leave the picture flips to the other side of its point.
       cands.slice().forEach(function(a){ var b0 = box(t, n, a); if(b0[2] > W - 2 && a[2] === 'start') cands.push([a[0] - 12, a[1], 'end']); if(b0[0] < 2 && a[2] === 'end') cands.push([a[0] + 12, a[1], 'start']); });
-      // Every candidate at its own height first, then nudged up or down.
+      // Every candidate at its own height first, then nudged up or down; clear of guides and arrows if it can be.
+      var hard = null;
       for(var tt = 0; tt < tries.length; tt++) for(var c = 0; c < cands.length; c++){
         var a2 = [cands[c][0], cands[c][1] + tries[tt], cands[c][2]]; bx = box(t, n, a2);
         if(a2[1] < 12 || a2[1] > T + PH - 2 || bx[2] > W || bx[0] < 0) continue;
         if(placed.some(function(q){ return hit(q, bx); })) continue;
-        if(!crosses(bx, skip)){ placed.push(bx); return a2; }
+        if(!crosses(bx, skip)){ if(!crosses(bx, -1, soft)){ placed.push(bx); return a2; } if(!hard) hard = [a2, bx]; }
         if(!fallback) fallback = [a2, bx];
       }
+      if(hard){ placed.push(hard[1]); return hard[0]; }
       if(fallback){ placed.push(fallback[1]); return fallback[0]; }
       placed.push(box(t, n, at)); return at;
     }
+    // The long line label (d = MR = AR = P) in two lines in the right margin, placed before the curve labels.
+    var lineLbl = '';
+    if(lineHere){
+      var lt0 = askLabels && !labels[LDf.id] ? null : curveText(spec, labels[LDf.id] || LDf.id);
+      if(LDf.link || (lt0 && lt0[1] === '' && lt0[0].length > 4)){
+        var words = lt0 ? lt0[0].split(' = ') : ['?'], half = Math.ceil(words.length / 2), l1 = words.slice(0, half).join(' = ') + (words.length > 1 ? ' =' : ''), l2 = words.slice(half).join(' = ');
+        var ly = Math.max(T + 10, Math.min(T + PH - 16, py(LV) - 4)), lx = px(10) + 4;
+        placed.push([lx, ly - 11, W, ly + (l2 ? 17 : 4)]);
+        lineLbl = '<text class="mic-gr-clabel is-line is-small" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="start">' + esc(l1) + (l2 ? '<tspan x="' + f1(lx) + '" dy="13">' + esc(l2) + '</tspan>' : '') + '</text>';
+      }
+    }
+    // Shift arrows and the dashed guides of the equilibria are soft obstacles for the labels.
+    var arrows = now.map(function(c, i){ return c.steps ? arrowOf(base[i], c) : ''; });
+    arrows.forEach(function(a){ var m = /^<path class="mic-gr-arrow" d="M([-\d.]+) ([-\d.]+)L([-\d.]+) ([-\d.]+)/.exec(a); if(m) soft.push(seg([+m[1], +m[2]], [+m[3], +m[4]])); });
+    if(k.eq && find(base, k.eq[0])){ guideAt(eq(spec, {})); if(state.eq) guideAt(state.eq); }
     var whole = function(c, i){ return c.steps && Math.abs(c.at - base[i].at) >= 1 - 1e-9 && (c.shape === 'up' || c.shape === 'down' || c.shape === 'vertical'); };
     var txt = function(id){ return askLabels && !labels[id] ? null : curveText(spec, labels[id] || id); };
+    // spec.showLabel { S: 'S + tax' }: the curve drawn shifted by spec.show reads so, with no number (integration 11).
+    var SL = spec.showLabel || {}, own = function(c){ return c.steps && SL[c.id] && (spec.show || {})[c.id] ? [String(SL[c.id]), '', curveName(c.id, spec)] : null; };
     var pos = now.map(function(c, i){
-      var t = txt(c.id) || ['?', String(i + 1)];
-      return place(t, c.steps ? cn : '', whole(c, i) ? pairLabels(c, base[i])[0] : labelAt(c), i);
+      var t = (txt(c.id) && own(c)) || txt(c.id) || ['?', String(i + 1)];
+      return place(t, c.steps && !own(c) ? cn : '', whole(c, i) ? pairLabels(c, base[i])[0] : labelAt(c), i);
     });
     var oldPos = now.map(function(c, i){
       var b = base[i], t = txt(c.id);
@@ -940,9 +984,9 @@
     }
     now.forEach(function(c, i){
       var moved = !!c.steps, b = base[i], t = txt(c.id), at = pos[i];
-      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t && oldPos[i] ? curveLabel(t, c0, oldPos[i], 'is-old') : '') + arrowOf(b, c));
+      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t && oldPos[i] ? curveLabel(t, own(c) ? '' : c0, oldPos[i], 'is-old') : '') + arrows[i]);
       g.push('<g class="mic-gr-c" data-curve="' + esc(c.id) + '"><path class="mic-gr-curve' + (state.focus === c.id ? ' is-focus' : '') + (c.fixed ? ' is-fixed' : '') + '" d="' + pathOf(c) + '"/>' +
-        '<path class="mic-gr-grab" d="' + pathOf(c) + '"' + (does.indexOf('shift') < 0 ? ' pointer-events="none"' : '') + '/></g>' + (t ? curveLabel(t, moved ? cn : '', at) : '<text class="mic-gr-clabel" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + at[2] + '">?<tspan class="mic-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
+        '<path class="mic-gr-grab" d="' + pathOf(c) + '"' + (does.indexOf('shift') < 0 ? ' pointer-events="none"' : '') + '/></g>' + (t ? (own(c) ? curveLabel(own(c), '', at) : curveLabel(t, moved ? cn : '', at)) : '<text class="mic-gr-clabel" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + at[2] + '">?<tspan class="mic-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
     });
     if(pid === 'main' || pid === (panelsOf(spec)[0] || {}).id) g.push(policyLayer(spec, state));
     if(spec.linear && spec.ends){ var pc = find(base, 'PPC');
@@ -952,14 +996,7 @@
       } }
     // The price or wage line (d = MR = AR = P on the firm, a regulated price, a minimum wage).
     if(lineHere){
-      var lt = txt(LDf.id), lbl = '';
-      if(LDf.link || (lt && lt[1] === '' && lt[0].length > 4)){
-        // A long line label (d = MR = AR = P) in two lines in the right margin, clear of the curves.
-        var words = lt ? lt[0].split(' = ') : ['?'], half = Math.ceil(words.length / 2), l1 = words.slice(0, half).join(' = ') + (words.length > 1 ? ' =' : ''), l2 = words.slice(half).join(' = ');
-        var ly = Math.max(T + 10, Math.min(T + PH - 16, py(LV) - 4)), lx = px(10) + 4;
-        placed.push([lx, ly - 11, W, ly + 17]);
-        lbl = '<text class="mic-gr-clabel is-line is-small" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="start">' + esc(l1) + (l2 ? '<tspan x="' + f1(lx) + '" dy="13">' + esc(l2) + '</tspan>' : '') + '</text>';
-      }
+      var lbl = lineLbl;
       g.push('<g class="mic-gr-l" data-line="' + esc(LDf.id) + '"><path class="mic-gr-pline' + (state.focus === 'line' ? ' is-focus' : '') + '" d="' + hpath(LV) + '"/><path class="mic-gr-grab" d="' + hpath(LV) + '"' + (does.indexOf('line') < 0 ? ' pointer-events="none"' : '') + '/></g>' + lbl);
       if(!askLabels){
         var E0g = LDf.link ? eq(spec, {}) : null, moved0 = E0g && state.eq && (Math.abs(state.eq[0] - E0g[0]) > 1e-6 || Math.abs(state.eq[1] - E0g[1]) > 1e-6);
@@ -987,10 +1024,14 @@
       g.push('<g class="mic-gr-pt" data-pt="eq"><circle class="mic-gr-eq" cx="' + f1(px(state.eq[0])) + '" cy="' + f1(py(state.eq[1])) + '" r="6"/><text class="mic-gr-plabel" x="' + f1(ea[0]) + '" y="' + f1(ea[1]) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + eName(n1) + '</text></g>'); }
     var ptPanel = (spec.key && spec.key.point && spec.key.point.at) ? pointPanel(spec, spec.key.point.at) : (panelsOf(spec)[0] || {}).id;
     if(state.point && ptPanel === pid){
-      var pNear = px(state.point[0]) > W - 40;
-      g.push('<g class="mic-gr-pt" data-pt="point"><circle class="mic-gr-eq is-point" cx="' + f1(px(state.point[0])) + '" cy="' + f1(py(state.point[1])) + '" r="6"/><text class="mic-gr-plabel" x="' + f1(px(state.point[0]) + (pNear ? -9 : 9)) + '" y="' + f1(py(state.point[1]) - 8) + '" text-anchor="' + (pNear ? 'end' : 'start') + '">' + esc(spec.pointLabel || 'X') + '</text></g>'); }
+      var PX = px(state.point[0]), PY = py(state.point[1]), plt = String(spec.pointLabel || 'X'), pm = spec.pointMarks;
+      // Dashed guides and axis marks for the point (P_M and Q_M, W_M and L_M), as the exam draws them (integration 12).
+      if(pm){ g.push(guides(state.point)); ['x', 'y'].forEach(function(a){ if(pm[a]){ var bits = String(pm[a]).split('_'); g.push(amark(a, state.point[a === 'x' ? 0 : 1], bits[0], bits[1] || '')); } }); }
+      // The label goes to the first clear corner around the point (no curve, no other label under it).
+      var pat = plt.trim() ? place([plt, ''], '', [[PX + 9, PY - 8, 'start'], [PX - 9, PY - 8, 'end'], [PX + 9, PY + 17, 'start'], [PX - 9, PY + 17, 'end'], [PX + 11, PY + 5, 'start'], [PX - 11, PY + 5, 'end']], -1) : [PX + 9, PY - 8, 'start'];
+      g.push('<g class="mic-gr-pt" data-pt="point"><circle class="mic-gr-eq is-point" cx="' + f1(PX) + '" cy="' + f1(PY) + '" r="6"/><text class="mic-gr-plabel" x="' + f1(pat[0]) + '" y="' + f1(pat[1]) + '" text-anchor="' + pat[2] + '">' + esc(plt) + '</text></g>'); }
     var label = opts.label || ((two ? panel.title + ' graph' : k.title + ' graph') + ': ' + describe(spec, state, pid));
-    return '<svg class="mic-graph-svg" data-panel="' + esc(pid) + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + g.join('') + '</svg>';
+    return '<svg class="mic-graph-svg" data-panel="' + esc(pid) + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + spreadMarks(g.join('')) + '</svg>';
   }
   function svg(spec, state, opts){
     state = state || {}; opts = opts || {};

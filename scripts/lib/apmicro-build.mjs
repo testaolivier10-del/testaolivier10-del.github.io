@@ -183,6 +183,12 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
     if (existsSync(qp)) questions[t.id] = readJson(qp);
   }
   const glossary = mergeDir(join(data, 'glossary'));
+  // A concept's definition comes from the glossary file of the topic that teaches it, when that file has one
+  // (a term taught early and in full later is defined at the early level; integration 4).
+  for (const c of map.concepts) {
+    const own = join(data, 'glossary', `${c.taughtIn}.json`);
+    if (existsSync(own)) { const g = readJson(own)[c.id]; if (g) glossary[c.id] = { ...g, _file: `${c.taughtIn}.json` }; }
+  }
   const figures = mergeDir(join(data, 'figures'));
   const labelDir = join(data, 'labels');
   if (existsSync(labelDir)) for (const f of readdirSync(labelDir).filter(f => f.endsWith('.json'))) {

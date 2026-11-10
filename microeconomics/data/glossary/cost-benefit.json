@@ -4,5 +4,8 @@
  },
  "total-benefit": {
   "def": "Everything a choice gives the decision maker: satisfaction for a consumer, revenue for a firm. Net benefit is total benefit minus full cost."
+ },
+ "total-cost": {
+  "def": "Total cost: everything a choice costs, its explicit costs (money paid out) and its implicit costs (the value of the next best alternative given up). A choice is worth making when total benefit exceeds total cost."
  }
 }
