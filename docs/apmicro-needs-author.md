@@ -85,6 +85,14 @@ inputs (`competitive-factor-markets`, one analyze item); (2) the term "club good
 (`public-goods`, added to the map as `club-good`); (3) one Lorenz item asks students to shade the area the Gini
 coefficient compares (identification only, no Gini value computed, as `gini` above says).
 
+Reviewer note (Units 5-6 accuracy review, 2026-11-09, `docs/apmicro-reviews/u5-6.md`): the CED PDF could again be
+read only through Topic 3.3, so none of the three is confirmed. The entry's "never the only route" is not quite
+true for (2): `mic-public-goods-3` and `mic-public-goods-15` key "A club good" as the answer itself. The economics
+is standard (Mankiw's term; Krugman says "artificially scarce good"), so they were left as written. If the CED does
+not name club goods, rewrite those two items to ask for the two properties (nonrival, excludable) instead of the
+name. `mic-inequality-17` also reads a rise in a given Gini coefficient (0.30 to 0.40) as less equality; nothing is
+computed.
+
 ## u4-review: points left by the Unit 4 accuracy review (open, 2026-11-09)
 
 From `docs/apmicro-reviews/u4.md`. (1) The CED's Unit 4 pages could not be read (the PDF text stops in Unit 3), so
