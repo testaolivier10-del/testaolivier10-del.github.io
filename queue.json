@@ -1161,7 +1161,7 @@
   },
   {
    "id": "w1109-03-lightning-triage",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-10",
    "date": null,
    "tiktok_caption": "Lightning just hit two hikers. One is screaming, and one isn't breathing.\nWho would you treat first?\nFor the NREMT this is reverse triage: after a lightning strike, the patient who is not breathing is treated first, because the heart often restarts by itself but the breathing may not.\nlevlprep.com\n#lightning #emt #nremt #firstaid",
@@ -1178,7 +1178,10 @@
    "thumb_v2": true,
    "cta": "none",
    "related_video": null,
-   "related_set": false
+   "related_set": false,
+   "review_blob": "d3d6a3bfad4a44729296014dd2462b8c3ce991cd",
+   "approved_on": "2026-11-10",
+   "approved_blob": "d3d6a3bfad4a44729296014dd2462b8c3ce991cd"
   }
  ]
 }
