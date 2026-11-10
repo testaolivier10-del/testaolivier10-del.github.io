@@ -1,0 +1,12 @@
+{
+ "population-composition-shapes": {
+  "file": "figures/population-composition-shapes.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three population pyramid outlines, males on the left and females on the right, youngest at the bottom. Expansive: a wide base that narrows quickly, a young, growing population. Stationary: nearly straight sides, births and deaths balanced for decades. Constrictive: a base narrower than the middle, births have fallen and the population is older."
+ }
+}

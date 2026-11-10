@@ -604,20 +604,19 @@
    "q": "Which are examples of newly industrialized countries often given for the 1960s to the 1990s? Select all that apply.",
    "options": [
     "South Korea",
-    "Singapore",
+    "Iceland",
     "The United Kingdom",
     "Germany",
     "South Sudan"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "South Korea and Singapore are often cited as newly industrialized countries; Britain and Germany industrialized long before.",
+    "correct": "South Korea is often cited as a newly industrialized country (as is Singapore); Britain and Germany industrialized long before.",
     "options": [
      "Right: often given as an example of fast, export-led industrialization.",
-     "Right: often given as an example, built on trade and manufacturing.",
+     "Iceland's economy rests on fishing, energy and tourism, not a fast shift to export factories.",
      "Britain industrialized first, in the late 1700s; it is not newly industrialized.",
      "Germany industrialized in the 1800s.",
      "South Sudan's economy relies mainly on oil exports, not factory growth."

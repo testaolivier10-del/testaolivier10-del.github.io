@@ -49,7 +49,7 @@ test('map-reader: Explore has every map type, and the cartogram keeps its square
   const x = model.exploreSpec('sub-saharan-africa', 'choropleth', { breaks: 'even' });
   assert.ok(x.spec.invented && /invented/.test(x.spec.legendTitle));
   const B = JSON.parse(readFileSync(join(ROOT, 'human-geography', 'figures', 'base', 'sub-saharan-africa.json'), 'utf8'));
-  assert.deepEqual(Map.check(x.spec, B), []);
+  assert.equal(Map.check(x.spec, B).length, 0);
   for (const f of B.features.filter(f => f.disputed)) assert.equal(x.spec.values[f.id], undefined, `${f.id} is disputed`);
 });
 

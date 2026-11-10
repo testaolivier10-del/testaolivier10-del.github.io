@@ -410,19 +410,18 @@
    "q": "Which of these are qualitative data about a neighborhood? Select all that apply.",
    "options": [
     "An oral history from a long-time resident",
-    "Field notes on which shops have closed",
+    "The number of shops that closed in 2025",
     "Median household income for the tract",
     "The share of homes that are rented"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Qualitative data are words, stories and observations; incomes and shares are quantitative.",
+    "correct": "Qualitative data are words, stories and observations; counts, incomes and shares are quantitative.",
     "options": [
      "Right: an oral history is a narrative.",
-     "Right: field notes are observation in words.",
+     "A count of closed shops is a number: quantitative.",
      "Income is a number from a census or survey.",
      "A share is a number from a census or survey."
     ]

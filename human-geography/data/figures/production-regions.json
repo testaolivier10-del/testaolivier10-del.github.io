@@ -2,8 +2,8 @@
  "production-regions-bid-rent": {
   "file": "figures/production-regions-bid-rent.svg",
   "ext": "svg",
-  "w": 720,
-  "h": 456,
+  "w": 480,
+  "h": 490,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",

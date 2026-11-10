@@ -554,6 +554,63 @@
      }
     }
    }
+  },
+  {
+   "id": "hug-trade-world-economy-18",
+   "unit": "unit-7",
+   "topic": "trade-world-economy",
+   "level": "analyze",
+   "diff": 3,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Using the coffee and tablets table (Country E: 12 bags or 6 tablets a day; Country F: 4 bags or 4 tablets), place the good each country should specialize in.",
+   "model": {
+    "layout": "tiers",
+    "title": "Specialize by comparative advantage",
+    "slots": [
+     {
+      "id": "e",
+      "name": "Country E makes"
+     },
+     {
+      "id": "f",
+      "name": "Country F makes"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "cof",
+      "text": "Coffee"
+     },
+     {
+      "id": "tab",
+      "text": "Tablets"
+     },
+     {
+      "id": "both",
+      "text": "Both goods"
+     }
+    ],
+    "key": {
+     "e": "cof",
+     "f": "tab"
+    },
+    "slips": [
+     {
+      "piece": "both",
+      "slot": "e",
+      "why": "E has the absolute advantage in both, but trade follows comparative advantage: E gives up less to make coffee."
+     },
+     {
+      "piece": "tab",
+      "slot": "e",
+      "why": "A tablet costs E 2 bags of coffee but F only 1, so F has the comparative advantage in tablets."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A bag of coffee costs E half a tablet and F one tablet, so E makes coffee; a tablet costs F one bag and E two, so F makes tablets."
+   }
   }
  ]
 }

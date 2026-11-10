@@ -1,0 +1,78 @@
+/* FRQ coach (human-geography/assets/tools/frq-coach.js). OWNED BY THIS TOOL ONLY
+   (builder T2). Scoped to .hug-fc-*: the question card (the stage), the part
+   strip and the part card with its three steps (the dock). Theme tokens only;
+   the course teal (--cink, --ctint) is the accent, green and red only on a
+   result, always with words. */
+.hug-fc-fig{min-width:0;display:flex;flex-direction:column;}
+.ls-root .hug-ls-stage .hug-fc-fig{flex:1;min-height:0;overflow:auto;}
+.hug-fc-q{max-width:720px;width:100%;margin:0 auto;box-sizing:border-box;padding:16px 20px 18px;background:var(--white);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 8px 24px -18px rgba(0,0,0,.35);font:500 15.5px/1.6 var(--font-ui);color:var(--ink);}
+.hug-fc-kick{margin:0;font:800 12px var(--font-ui);color:var(--muted);}
+.hug-fc-title{margin:2px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--ink);font:900 18px/1.25 var(--font-ui);}
+.hug-fc-scn{margin:0 0 10px;}
+.hug-fc-parts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}
+.hug-fc-part{display:flex;align-items:flex-start;gap:10px;padding:6px 8px;border-radius:10px;}
+.hug-fc-part.is-on{background:var(--ctint);box-shadow:inset 0 0 0 1.5px var(--cink);}
+.hug-fc-part.is-dim{opacity:.55;}
+.hug-fc-goto{flex:none;min-width:36px;min-height:36px;padding:0;border:0;border-radius:999px;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
+.hug-fc-goto:focus-visible,.hug-fc-pb:focus-visible,.hug-fc-ins:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.hug-fc-pl{display:inline-flex;align-items:center;justify-content:center;flex:none;width:28px;height:28px;border-radius:999px;background:var(--ink);color:var(--white);font:900 13px var(--font-ui);}
+.hug-fc-part.is-on .hug-fc-pl{background:var(--cink);}
+.hug-fc-parts .hug-fc-part > .hug-fc-pl{margin-top:2px;}
+.hug-fc-pt{padding-top:4px;}
+.hug-fc-verb{color:var(--cink);font-weight:900;}
+.hug-fc-foot{margin:10px 0 0;font:600 13px var(--font-ui);color:var(--muted);}
+.hug-fc-ctl{display:flex;flex-direction:column;gap:10px;min-width:0;}
+.hug-fc-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+.hug-fc-pb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:52px;padding:4px 2px;border:1.5px solid var(--line);border-radius:12px;
+  background:var(--white);color:var(--ink);cursor:pointer;min-width:0;}
+.hug-fc-pb[aria-pressed=true]{border-color:var(--cink);background:var(--ctint);box-shadow:inset 0 0 0 1px var(--cink);}
+.hug-fc-pb.is-done .hug-fc-pbl::after{content:" ✓";color:var(--good-text);}
+.hug-fc-pbl{font:900 15px var(--font-ui);}
+.hug-fc-pbv{max-width:100%;font:700 11.5px/1.15 var(--font-ui);color:var(--muted);text-align:center;overflow-wrap:anywhere;}
+.hug-fc-pb[aria-pressed=true] .hug-fc-pbv{color:var(--cink);}
+.hug-fc-verbcard{padding:10px 14px;border-radius:14px;background:var(--ctint);}
+.hug-fc-vk{margin:0;font:800 12px var(--font-ui);color:var(--muted);}
+.hug-fc-vn{margin:0;font:900 22px/1.2 var(--font-ui);color:var(--cink);}
+.hug-fc-vd{margin:2px 0 0;font:600 15px/1.45 var(--font-ui);color:var(--ink);}
+.hug-fc-step{margin-top:12px;}
+.hug-fc-sh{display:flex;align-items:center;gap:8px;margin:0 0 6px;padding:0;font:900 15px var(--font-ui);color:var(--ink);}
+.hug-fc-n{display:inline-flex;align-items:center;justify-content:center;flex:none;width:22px;height:22px;border-radius:999px;background:var(--ink);color:var(--white);font:900 12px var(--font-ui);}
+.hug-fc-ins-row{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 6px;}
+.hug-fc-ins{min-height:36px;padding:0 12px;border:1.5px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font:700 13.5px var(--font-ui);cursor:pointer;}
+.hug-fc-ins::before{content:"+ ";color:var(--cink);font-weight:900;}
+.hug-fc-write{display:block;width:100%;box-sizing:border-box;min-height:96px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);
+  font:500 15.5px/1.5 var(--font-ui);resize:vertical;}
+.hug-fc-write:focus{outline:3px solid var(--cink);outline-offset:1px;}
+.hug-fc-flags{list-style:none;margin:6px 0 2px;padding:0;display:flex;flex-direction:column;gap:4px;font:600 14px/1.4 var(--font-ui);}
+.hug-fc-flags li{display:flex;align-items:flex-start;gap:8px;}
+.hug-fc-flags li .hug-mark{flex:none;}
+.hug-fc-flags li.is-todo,.hug-fc-flags li.is-note{color:var(--muted);}
+.hug-fc-flags li.is-todo .hug-mark{border:1.5px solid var(--line);border-radius:6px;padding:0 6px;font:800 12px/1.6 var(--font-ui);color:var(--muted);}
+.hug-fc-rub{padding:10px 14px;border:1.5px solid var(--cink);border-radius:12px;background:var(--white);font:500 15px/1.5 var(--font-ui);}
+.hug-fc-rub p{margin:0 0 6px;}
+.hug-fc-rub:focus{outline:3px solid var(--cink);outline-offset:2px;}
+.hug-fc-rk{font:900 11.5px var(--font-ui)!important;letter-spacing:.05em;text-transform:uppercase;color:var(--cink);margin:0 0 2px!important;}
+.hug-fc-sample{font-weight:600;}
+.hug-fc-earn{margin:0;padding:0;border:0;min-width:0;}
+.hug-fc-opt{margin:0 0 6px;}
+.hug-fc-opt label{font:500 15px/1.45 var(--font-ui);}
+.hug-fc-res{margin:6px 0 0;font:500 15px/1.5 var(--font-ui);}
+.hug-fc-act{margin-top:12px;display:flex;justify-content:flex-end;}
+.hug-fc-wk{margin:8px 0 2px;font:900 12px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--cink);}
+.hug-fc-tipslot{display:block;}
+/* Drill text: the question with the asked parts in full, the others dimmed. */
+.bt-context .hug-fc-parts,.ls-drill-text .hug-fc-parts{margin-top:6px;}
+.bt-context .hug-fc-part,.ls-drill-text .hug-fc-part{padding:4px 0;}
+.bt-context .hug-fc-pl,.ls-drill-text .hug-fc-pl{width:24px;height:24px;font-size:12px;}
+@media (max-width:420px){
+  .hug-fc-q{padding:12px 14px;}
+  .hug-fc-vn{font-size:19px;}
+  .hug-fc-pbv{font-size:10.5px;}
+}
+/* A question is longer than the stage on a phone: let it start at the top and
+   scroll with the stage (the shared rule centers a short text with auto margins,
+   which cut the top of a long one; see docs/aphug-reviews/tools-frq-coach.md). */
+.ls-root .ls-drill-stage:has(> .ls-drill-text .hug-fc-parts){flex:0 0 auto;min-height:0;}
+.ls-root .ls-drill-stage > .ls-drill-text:only-child:has(.hug-fc-parts){margin:0;max-width:720px;width:100%;align-self:center;font:500 17px/1.55 var(--font-ui);}
+.ls-drill-text .hug-fc-scn{margin:0 0 8px;}

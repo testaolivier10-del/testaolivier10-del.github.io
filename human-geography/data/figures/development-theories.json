@@ -3,7 +3,7 @@
   "file": "figures/development-theories-rostow.svg",
   "ext": "svg",
   "w": 640,
-  "h": 390,
+  "h": 450,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
@@ -13,10 +13,10 @@
   "file": "figures/development-theories-world-system.svg",
   "ext": "svg",
   "w": 640,
-  "h": 420,
+  "h": 464,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "Three stacked boxes. Core at the top: most high-wage, high-tech and decision work. Semiperiphery in the middle: a mix of factories, some research and some farming. Periphery at the bottom: mostly raw materials and low-wage work. An arrow on the left carries raw materials and cheap labor up toward the core; an arrow on the right carries factory goods, loans and profits down from the core."
+  "alt": "Three stacked boxes. Core at the top: high-wage, high-tech and decision work. Semiperiphery in the middle: factories, some research and farming. Periphery at the bottom: raw materials and low-wage work. An arrow on the left carries raw goods and cheap labor up toward the core; an arrow on the right carries goods, loans and profits down from the core."
  }
 }

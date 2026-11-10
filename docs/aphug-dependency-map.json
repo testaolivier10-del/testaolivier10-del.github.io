@@ -368,9 +368,75 @@
       "author": "B"
      },
      {
-      "title": "A flow map of step and chain migration",
+      "title": "A flow map of step and chain migration (a drawn figure on a Natural Earth base, so an image set until flow maps are a rendering)",
       "topic": "forced-voluntary-migration",
+      "stimulus": "image",
+      "author": "B"
+     },
+     {
+      "title": "A world reference map of four marked places: the big clusters and the empty lands",
+      "topic": "population-distribution",
       "stimulus": "map",
+      "author": "B"
+     },
+     {
+      "title": "Country A by province: people per square kilometer (local scale)",
+      "topic": "population-distribution",
+      "stimulus": "map",
+      "author": "B"
+     },
+     {
+      "title": "A notice on health care in a sparse and a dense province",
+      "topic": "distribution-consequences",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "A table of birth, death and net migration rates for four countries",
+      "topic": "population-dynamics",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Birth and death rates of one country over 220 years, and rates with causes of death for four countries",
+      "topic": "transition-model",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Malthus in his own words (1798), and food against population for one country",
+      "topic": "malthusian-theory",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "A minister's pronatalist speech, and China's birth policies by year",
+      "topic": "population-policies",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Women's schooling against fertility, and Ravenstein's laws summarized",
+      "topic": "women-population-change",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Country A by province: people 65 and over (local scale), and dependency by age group",
+      "topic": "aging-populations",
+      "stimulus": "map",
+      "author": "B"
+     },
+     {
+      "title": "A migrant's story, and a world reference map of four countries of origin and destination",
+      "topic": "migration-causes",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "The top remittance receivers (World Bank, 2024), and a news report from a destination town",
+      "topic": "migration-effects",
+      "stimulus": "data",
       "author": "B"
      }
     ],
@@ -792,6 +858,126 @@
       "topic": "settlement-survey",
       "stimulus": "image",
       "author": "E"
+     },
+     {
+      "title": "Inputs and output on four farms",
+      "topic": "agriculture-intro",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "The Land Ordinance of 1785, in summary",
+      "topic": "settlement-survey",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Some early hearths of agriculture",
+      "topic": "agricultural-origins",
+      "stimulus": "map",
+      "author": "E"
+     },
+     {
+      "title": "The potato in Ireland",
+      "topic": "agricultural-origins",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Farm work, food and towns in Country A, 1750 to 1900",
+      "topic": "second-agricultural-revolution",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A new machine for the harvest, 1831",
+      "topic": "second-agricultural-revolution",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Four countries and the Green Revolution",
+      "topic": "green-revolution",
+      "stimulus": "map",
+      "author": "E"
+     },
+     {
+      "title": "What three kinds of farming can pay for land",
+      "topic": "production-regions",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Farm output sold for cash, by province of Country A",
+      "topic": "production-regions",
+      "stimulus": "map",
+      "author": "E"
+     },
+     {
+      "title": "US farms in 2017 and 2022",
+      "topic": "farm-organization",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A commodity chain from seed to plate",
+      "topic": "farm-organization",
+      "stimulus": "image",
+      "author": "E"
+     },
+     {
+      "title": "Where farms of each type are found, Country A",
+      "topic": "von-thunen",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A global supply chain for bananas",
+      "topic": "global-agriculture",
+      "stimulus": "image",
+      "author": "E"
+     },
+     {
+      "title": "Export earnings of Country B, 2024",
+      "topic": "global-agriculture",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Three farm landscapes",
+      "topic": "agriculture-consequences",
+      "stimulus": "image",
+      "author": "E"
+     },
+     {
+      "title": "The Aral Sea",
+      "topic": "agriculture-consequences",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "An invented town: where fresh food is sold",
+      "topic": "agriculture-challenges",
+      "stimulus": "image",
+      "author": "E"
+     },
+     {
+      "title": "Three ways a farmer sells tomatoes",
+      "topic": "agriculture-challenges",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Women and men working in agrifood systems",
+      "topic": "women-in-agriculture",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Gaps between women and men in farming",
+      "topic": "women-in-agriculture",
+      "stimulus": "text",
+      "author": "E"
      }
     ],
     "comparisonTables": [
@@ -841,9 +1027,51 @@
     ],
     "stimulusThemes": [
      {
+      "title": "A world reference map of four early city hearths",
+      "topic": "urbanization-origins",
+      "stimulus": "map",
+      "author": "F"
+     },
+     {
+      "title": "A history of an invented river town (site and situation)",
+      "topic": "urbanization-origins",
+      "stimulus": "text",
+      "author": "F"
+     },
+     {
+      "title": "A world symbol map of seven very large cities, 2025 (UN DESA)",
+      "topic": "cities-worldwide",
+      "stimulus": "map",
+      "author": "F"
+     },
+     {
+      "title": "Residents and jobs by part of an invented metro area",
+      "topic": "cities-worldwide",
+      "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "Four invented cities compared on global functions",
+      "topic": "cities-globalization",
+      "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "How one shipment of phones gets made (a network of world cities)",
+      "topic": "cities-globalization",
+      "stimulus": "text",
+      "author": "F"
+     },
+     {
       "title": "A rank-size table for two countries",
       "topic": "city-size-distribution",
       "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "City sizes by province in Country A",
+      "topic": "city-size-distribution",
+      "stimulus": "map",
       "author": "F"
      },
      {
@@ -853,15 +1081,81 @@
       "author": "F"
      },
      {
-      "title": "A metro area map with an urban growth boundary",
-      "topic": "sustainability-challenges",
+      "title": "Field notes from a city in Latin America",
+      "topic": "city-structure",
+      "stimulus": "text",
+      "author": "F"
+     },
+     {
+      "title": "Residential density by distance from the center in two cities",
+      "topic": "density-land-use",
+      "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "A city planning notice about an infill lot",
+      "topic": "density-land-use",
+      "stimulus": "text",
+      "author": "F"
+     },
+     {
+      "title": "Piped water by province in Country A",
+      "topic": "infrastructure",
       "stimulus": "map",
       "author": "F"
      },
      {
-      "title": "Census and interview data on a gentrifying neighborhood",
+      "title": "A new rail line: land values and jobs within reach",
+      "topic": "infrastructure",
+      "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "Two ways to build: a station neighborhood and car-based spread",
+      "topic": "urban-sustainability",
+      "stimulus": "image",
+      "author": "F"
+     },
+     {
+      "title": "Two neighborhoods compared: density, travel and rent",
+      "topic": "urban-sustainability",
+      "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "Census data on a changing neighborhood",
       "topic": "urban-data",
       "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "Interviews with residents of a changing neighborhood",
+      "topic": "urban-data",
+      "stimulus": "text",
+      "author": "F"
+     },
+     {
+      "title": "A public hearing on a riverfront plan",
+      "topic": "urban-change-challenges",
+      "stimulus": "text",
+      "author": "F"
+     },
+     {
+      "title": "Rent burden in four neighborhoods",
+      "topic": "urban-change-challenges",
+      "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "A drawn metro area with an urban growth boundary (drawn, not a base map)",
+      "topic": "sustainability-challenges",
+      "stimulus": "image",
+      "author": "F"
+     },
+     {
+      "title": "Farmland lost to building by province in Country A",
+      "topic": "sustainability-challenges",
+      "stimulus": "map",
       "author": "F"
      }
     ],
@@ -939,6 +1233,78 @@
       "title": "A passage on ecotourism in a protected forest",
       "topic": "sustainable-development",
       "stimulus": "text",
+      "author": "G"
+     },
+     {
+      "title": "Reference map of three early coalfield industrial regions of Europe",
+      "topic": "industrial-revolution",
+      "stimulus": "map",
+      "author": "G"
+     },
+     {
+      "title": "Line chart of farm and factory workers in Country A, 1800 to 1900 (invented)",
+      "topic": "industrial-revolution",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "Country A map of a mine, a market and a seaport: least cost location",
+      "topic": "economic-sectors",
+      "stimulus": "map",
+      "author": "G"
+     },
+     {
+      "title": "Invented development indicator table: GNI, HDI, GII, informal work, fertility",
+      "topic": "development-measures",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "Bar chart of women's pay as a percent of men's by kind of work (invented)",
+      "topic": "women-development",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "Passage from an invented village lending group: microlending",
+      "topic": "women-development",
+      "stimulus": "text",
+      "author": "G"
+     },
+     {
+      "title": "Line chart of a copper price and one country's export earnings (invented)",
+      "topic": "development-theories",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "Country A map of head offices by province: core and periphery inside a country",
+      "topic": "development-theories",
+      "stimulus": "map",
+      "author": "G"
+     },
+     {
+      "title": "Two-country, two-good output table: comparative advantage (invented)",
+      "topic": "trade-world-economy",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "Map of the founding members of Mercosur",
+      "topic": "trade-world-economy",
+      "stimulus": "map",
+      "author": "G"
+     },
+     {
+      "title": "Line chart of factory and service jobs in an invented city: deindustrialization",
+      "topic": "world-economy-changes",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "Line chart of forest cover and visitors in an invented reserve",
+      "topic": "sustainable-development",
+      "stimulus": "data",
       "author": "G"
      }
     ],

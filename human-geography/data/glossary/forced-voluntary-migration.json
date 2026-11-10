@@ -1,0 +1,38 @@
+{
+ "forced-migration": {
+  "def": "Migration in which people are made to move, by enslavement, war, persecution or disaster, and have no real choice to stay."
+ },
+ "voluntary-migration": {
+  "def": "Migration in which people choose to move, usually for work, family, study or a better life."
+ },
+ "refugee": {
+  "def": "A person who has crossed an international border to escape danger or persecution and has been recognized as needing protection."
+ },
+ "internally-displaced-person": {
+  "def": "A person forced to leave home who stays inside his or her own country."
+ },
+ "asylum-seeker": {
+  "def": "A person who has crossed a border and asked for protection as a refugee but has not yet received a decision."
+ },
+ "chain-migration": {
+  "def": "Migration in which people follow relatives or neighbors who moved before them, often to the same place."
+ },
+ "step-migration": {
+  "def": "Migration made in stages, such as from a village to a town and then to a large city."
+ },
+ "guest-worker": {
+  "def": "A person allowed into another country to work for a set time, who is expected to return home."
+ },
+ "transhumance": {
+  "def": "The seasonal movement of herders and their animals between pastures, such as to mountains in summer and valleys in winter."
+ },
+ "transnational-migration": {
+  "def": "Migration in which people keep strong ties to both their country of origin and their new country."
+ },
+ "internal-migration": {
+  "def": "Migration within one country. Interregional migration goes between regions; intraregional migration stays within one region."
+ },
+ "rural-urban-migration": {
+  "def": "Migration from the countryside to cities."
+ }
+}

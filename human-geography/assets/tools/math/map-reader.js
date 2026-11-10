@@ -170,12 +170,19 @@
   /* ------------------------------------------------ Country A isolines */
   /* Lines of equal value run north to south across Country A, bunched toward
      one side: x positions from the west, each line gently waved. */
+  /* Each line keeps only its longest run of points inside Country A, so no
+     line runs off the land. */
+  function inCountryA(pt){ return base('country-a').features.some(function(f){ return inside('country-a', f.id, pt); }); }
   function isoLines(r, values, xs){
     var ph = r() * 6, amp = 10 + r() * 10;
     return values.map(function(v, i){
-      var pts = [];
-      for(var y = 45; y <= 355; y += 31){ var x = xs[i] + amp * Math.sin(y / 70 + ph + i * 0.4); pts.push([M.round(x, 1), y]); }
-      return { value: v, points: pts };
+      var run = [], best = [];
+      for(var y = 30; y <= 370; y += 10){
+        var x = xs[i] + amp * Math.sin(y / 70 + ph + i * 0.4), pt = [M.round(x, 1), y];
+        if(inCountryA([pt[0], pt[1] - 2]) && inCountryA([pt[0], pt[1] + 2])) run.push(pt); else { if(run.length > best.length) best = run; run = []; }
+      }
+      if(run.length > best.length) best = run;
+      return { value: v, points: best };
     });
   }
   /* The value range at x on a line set (lines west to east): between which two lines. */
@@ -252,8 +259,8 @@
       spec.values = vals; spec.noData = NO_DATA;
       spec.label = 'Choropleth map of ' + placeName(bid) + ': ' + spec.legendTitle.toLowerCase() + ', highest toward the ' + D.dir;
     } else if(render === 'dot'){
-      var per = inv ? 40000 : Math.max(1, Math.round(Object.keys(D.people).reduce(function(s, k){ return s + D.people[k]; }, 0) / 260));
-      spec.dots = { each: inv ? '1 dot = 40,000 people' : '1 dot = ' + nf(per) + ' people (invented units)', points: dotsFor(r, bid, D.people, per) };
+      var per = inv ? 20000 : Math.max(1, Math.round(Object.keys(D.people).reduce(function(s, k){ return s + D.people[k]; }, 0) / 320));
+      spec.dots = { each: inv ? '1 dot = 20,000 people' : '1 dot = ' + nf(per) + ' people (invented units)', points: dotsFor(r, bid, D.people, per) };
       spec.legendTitle = 'Where people live (invented)';
       spec.label = 'Dot density map of ' + placeName(bid) + ': where people live, with dots clustered toward the ' + D.dir;
     } else if(render === 'symbol'){

@@ -3,10 +3,10 @@
   "file": "figures/economic-sectors-ladder.svg",
   "ext": "svg",
   "w": 640,
-  "h": 440,
+  "h": 494,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "Five stacked bands, from the bottom up. Primary: taking from nature, such as farming, mining and fishing. Secondary: making goods in factories and building. Tertiary: services such as shops, transport and health care. Quaternary: information and research, such as scientists, software and finance. Quinary: top decisions by the heads of big firms and governments."
+  "alt": "Five stacked bands, from the bottom up. Primary: taking from nature, such as farming, mining and fishing. Secondary: making goods in factories and building. Tertiary: services such as shops, transport and health care. Quaternary: information and research, such as science, software and finance. Quinary: top decisions by the heads of firms and governments."
  }
 }

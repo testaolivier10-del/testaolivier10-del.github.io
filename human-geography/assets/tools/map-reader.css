@@ -1,0 +1,38 @@
+/* Map reader (human-geography/assets/tools/map-reader.js). OWNED BY THIS TOOL ONLY (builder T3).
+   The map itself uses the course's map styles (.hug-map in hug.css); this file adds the inline
+   picture, the tap targets, the cartogram and the controls. */
+.hug-mr-card{display:grid;gap:14px;}
+.hug-mr-stage{display:flex;flex-direction:column;gap:6px;min-height:0;}
+.ls-root .hug-mr-stage{flex:1;overflow:auto;}
+.hug-mr-stage > *{flex:none;}
+.hug-mr-title{margin:0;font:700 14px var(--font-ui);color:var(--ink);}
+.hug-mr-fig{min-height:200px;}
+.hug-mr-map{margin:0;}
+.hug-mr-map .hug-map-pic svg{display:block;width:100%;height:auto;}
+.ls-root .hug-mr-stage .hug-mr-map .hug-map-pic{max-width:min(100%, calc((100vh - 300px) * 1.5));margin:0 auto;}
+.hug-mr-f{cursor:pointer;}
+.hug-mr-f:hover{fill-opacity:.82;}
+.hug-mr-read{margin:0;min-height:1.4em;font:600 14px/1.4 var(--font-ui);color:var(--ink);}
+.hug-mr-tap{color:var(--muted);}
+.hug-mr-ctl{display:flex;flex-direction:column;gap:10px;}
+.hug-mr-types{display:flex;flex-wrap:wrap;gap:6px;}
+.hug-mr-type{min-height:44px;padding:0 14px;border:0;border-radius:999px;background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);font:700 14px var(--font-ui);cursor:pointer;}
+.hug-mr-type[aria-pressed="true"]{background:var(--cink);color:var(--white);box-shadow:none;}
+.hug-mr-reads,.hug-mr-breaks{display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 2px var(--line);}
+.hug-mr-breaks[hidden]{display:none;}
+.hug-mr-rd,.hug-mr-br{flex:1;min-height:44px;border:0;border-radius:10px;background:transparent;color:var(--muted);font:800 14px var(--font-ui);cursor:pointer;padding:0 6px;white-space:nowrap;}
+.hug-mr-rd[aria-pressed="true"],.hug-mr-br[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.ls-root .hug-mr-reads.tseg,.ls-root .hug-mr-breaks.tseg{display:flex;width:100%;}
+.ls-root .hug-mr-breaks.tseg[hidden]{display:none;}
+.ls-root .hug-mr-reads.tseg button,.ls-root .hug-mr-breaks.tseg button{flex:1;padding:0 6px;}
+/* Cartogram: squares in the course teal, a letter in each, the names listed below. */
+.hug-mr-sq{fill:#7FBF9A;stroke:#174D33;stroke-width:1.5;cursor:pointer;}
+.hug-mr-sq:hover{fill:#62AE84;}
+.hug-mr-sql{position:absolute;transform:translate(-50%,-50%);padding:0 5px;border-radius:6px;background:#fff;color:#1B1B1B;border:1.5px solid #1B1B1B;font:800 13px/1.3 var(--font-ui);}
+.hug-mr-ckey{display:grid !important;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px 12px !important;}
+.hug-mr-keyline{font:600 14px/1.6 var(--font-ui);}
+.hug-mr-keyline b{display:inline-block;min-width:1.4em;padding:0 4px;margin-right:2px;border:1.5px solid currentColor;border-radius:6px;text-align:center;}
+.hug-mr-qfig{margin:0;}
+.hug-mr-qfig .table-wrap{margin-top:8px;}
+.ls-root .ls-drill-stage .hug-mr-qfig{overflow:auto;}
+.ls-root .cd-step.is-right.is-right input[type=text]{box-shadow:inset 0 0 0 2px var(--good-text);border-color:var(--good-text);}

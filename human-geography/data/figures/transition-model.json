@@ -1,0 +1,12 @@
+{
+ "transition-model-stages": {
+  "file": "figures/transition-model-stages.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of the demographic transition model in five stages. The birth rate stays high in stages 1 and 2, falls in stage 3 and is low in stages 4 and 5. The death rate is high in stage 1, falls in stage 2 and stays low, rising a little in stage 5, where it is above the birth rate. A dashed line shows total population rising slowly, then fast, then leveling and falling slightly."
+ }
+}

@@ -57,7 +57,7 @@
   ];
   var BY = {}; PLACES.forEach(function(p){ BY[p.id] = p; });
   // The province each place is in (Country A's feature ids), for the stories.
-  var PROVINCE = { north: 'Northern Hills', northeast: 'Lake District', east: 'Eastern Plains', capital: 'Capital Region', west: 'Western Uplands', central: 'Central Valley', south: 'Southern Forest', coast: 'South Coast' };
+  var PROVINCE = { north: 'the Northern Hills', northeast: 'the Lake District', east: 'the Eastern Plains', capital: 'the Capital Region', west: 'the Western Uplands', central: 'the Central Valley', south: 'the Southern Forest', coast: 'the South Coast' };
   var POLY = {
     north: [[60, 40], [250, 20], [300, 120], [180, 160], [70, 140]],
     northeast: [[250, 20], [470, 30], [520, 110], [400, 150], [300, 120]],
@@ -345,7 +345,7 @@
     var askA = fs[0], askB = fs.filter(function(x){ return x !== askA; })[r.int(0, 1)];
     var askC = r.pick(fs);
     var story = '<p>Invented case. ' + n + ' lives in ' + v.o + ' and thinks about moving to ' + v.d + '. The map numbers three factors:</p><ol class="dl-factors">' +
-      fs.map(function(x){ return '<li>' + esc(fill(x.f.t, v)) + '</li>'; }).join('') + '</ol>' + (mid === 'opportunity' ? '' : '<p>' + n + ' makes the move anyway.</p>');
+      fs.map(function(x){ return '<li>' + esc(cap(fill(x.f.t, v))) + '</li>'; }).join('') + '</ol>' + (mid === 'opportunity' ? '' : '<p>' + n + ' makes the move anyway.</p>');
     return {
       type: 'migration', ctx: ctx.id, topic: ctx.topic,
       given: { roles: fs.map(function(x){ return x.role; }), causes: fs.map(function(x){ return x.f.k; }), askA: askA.num, askB: askB.num, askC: askC.num, mid: mid },
@@ -404,7 +404,7 @@
     }), '1.D', 'apply');
     return {
       type: 'kinds', ctx: ctx.id, topic: ctx.topic, given: { kind: sc.k, options: opts },
-      text: '<p>Invented case. ' + esc(fill(sc.t, v)) + '</p>',
+      text: '<p>Invented case. ' + esc(cap(fill(sc.t, v))) + '</p>',
       steps: [stepF, stepK],
       solution: [K.forced ? 'Forced: the person left because of danger or disaster.' : 'Voluntary: the person chose to move.', K.name + '. ' + K.def],
       figure: null
@@ -447,7 +447,7 @@
         cell: M.cell(net, 0.0005, [{ value: C.evaluate({ fn: 'add', args: [out, back] }), why: 'You added the two flows. Net migration subtracts the flow out from the flow in.' }, { value: -net, why: 'The size is right but the sign is wrong: more people came to the capital than left it, so it gained.' }], 0.5) };
       text = '<p>Invented survey for practice: in one year, ' + fmtN(out) + ' people moved from ' + P + ' to the Capital Region, and ' + fmtN(back) + ' moved from the Capital Region to ' + P + '.</p>';
       sol = ['Net gain = ' + fmtN(out) + ' − ' + fmtN(back) + ' = ' + fmtN(net) + ' people.', 'A flow to the capital came with a smaller flow back: Ravenstein\'s law of counterflows.'];
-      given = { v: v, out: out, back: back }; flows = [{ from: CENTER[province], to: CENTER.capital, w: out }, { from: CENTER.capital, to: CENTER[province], w: back }];
+      given = { v: v, out: out, back: back }; flows = [{ from: CENTER[province], to: CENTER.capital, w: out }, { from: CENTER.capital, to: CENTER[province], w: back, back: true }];
     } else if(v === 'centers'){
       var far = r.pick([2, 3, 4, 5]) * 100, big = far * r.int(70, 90) / 100;
       var p2 = C.evaluate({ fn: 'share', args: [big, far] });

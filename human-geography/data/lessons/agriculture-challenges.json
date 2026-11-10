@@ -1,0 +1,66 @@
+{
+ "topic": "agriculture-challenges",
+ "hook": "A family in Detroit may live a mile from a dollar store full of chips and soda but several miles from the nearest supermarket selling fresh vegetables. Meanwhile a farm 50 km away sells boxes of produce to members who paid in spring. Feeding people well is as much about access as about growing food.",
+ "prereq": [
+  {
+   "q": "When did GMO crops first reach farms?",
+   "options": [
+    "In the late 1990s",
+    "In the 1960s",
+    "In the 1700s",
+    "About 10,000 years ago"
+   ],
+   "correct": 0,
+   "why": "GMO crops came after the Green Revolution, in the late 1990s.",
+   "review": "green-revolution"
+  },
+  {
+   "q": "What does a global supply chain include?",
+   "options": [
+    "Every step and place from farm to consumer, across countries",
+    "Just the ships that carry food",
+    "Just the farms that grow food",
+    "Just the stores that sell food"
+   ],
+   "correct": 0,
+   "why": "A supply chain is every step: growing, processing, shipping, storing and selling.",
+   "review": "global-agriculture"
+  }
+ ],
+ "figure": {
+  "figure": "agriculture-challenges-food-desert",
+  "caption": "Neighborhood N lies outside the 1-mile circle around the town's only supermarket."
+ },
+ "chain": [
+  {
+   "cause": "A neighborhood has no supermarket within a mile, and many families have low incomes and no car",
+   "effect": "people buy much of their food at corner stores"
+  },
+  {
+   "cause": "Corner stores sell little fresh food",
+   "effect": "families eat fewer fruits and vegetables"
+  },
+  {
+   "cause": "Residents start urban farms and a farmers market",
+   "effect": "fresh food becomes easier to get close to home"
+  }
+ ],
+ "ideas": [
+  "Debates: <b>GMOs</b> (reviews found them safe to eat; critics cite seed patents, resistant weeds and control by a few firms) and <b>aquaculture</b> (food and income, but some habitat loss and pollution).",
+  "Food-choice movements: organic, local food, <b>community-supported agriculture</b>, urban farming, <b>value-added specialty crops</b>, <b>fair trade</b> and dietary shifts.",
+  "<b>Food insecurity</b> comes mostly from poverty, conflict, poor distribution and bad weather; a <b>food desert</b> is an area with poor access to affordable, healthy food."
+ ],
+ "misconception": {
+  "wrong": "People go hungry because the world does not grow enough food.",
+  "right": "The world grows enough calories. Hunger comes mostly from poverty, conflict, poor distribution and bad weather that keep food from people."
+ },
+ "check": [
+  "hug-agriculture-challenges-1",
+  "hug-agriculture-challenges-2",
+  "hug-agriculture-challenges-3",
+  "hug-agriculture-challenges-4",
+  "hug-agriculture-challenges-7",
+  "hug-agriculture-challenges-9"
+ ],
+ "summary": "Farming faces debates over GMOs and aquaculture, and shoppers drive movements such as organic, local food, CSA, urban farming, value-added crops and fair trade. Food insecurity and food deserts come mostly from poverty, conflict, distribution, weather and lost farmland, not from too little food."
+}

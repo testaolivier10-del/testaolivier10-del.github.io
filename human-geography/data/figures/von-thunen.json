@@ -2,12 +2,12 @@
  "von-thunen-rings": {
   "file": "figures/von-thunen-rings.svg",
   "ext": "svg",
-  "w": 720,
-  "h": 470,
+  "w": 480,
+  "h": 728,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "Concentric rings around a market town M on a flat plain. Ring 1, nearest the market: market gardening and dairy. Ring 2: forest, for wood used as fuel and for building. Ring 3: grain and field crops. Ring 4: livestock ranching. Beyond ring 4 is wilderness."
+  "alt": "Concentric rings around a market town M on a flat plain. Ring 1, nearest the market: market gardening and dairy. Ring 2: forest, for fuel and lumber. Ring 3: grain and field crops. Ring 4: livestock ranching. Beyond ring 4 is wilderness."
  },
  "von-thunen-river": {
   "file": "figures/von-thunen-river.svg",

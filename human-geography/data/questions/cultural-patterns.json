@@ -40,7 +40,7 @@
   "cultural-patterns-s2": {
    "kind": "text",
    "title": "Murals in Pilsen, Chicago",
-   "text": "<p><b>Pilsen, Chicago</b> (LevlPrep summary, 2026)</p><p>Pilsen, on the Lower West Side of Chicago, Illinois, has been home to a large Mexican American community since the mid-1900s. Artists from the neighborhood have painted dozens of murals on walls, viaducts and schools. Many show Aztec symbols, Mexican history, local families and the Virgin of Guadalupe. The National Museum of Mexican Art opened in Pilsen in 1987. Each year, residents gather for street festivals with music and food from Mexico. Many residents say the murals tell visitors \"this is our neighborhood.\"</p>"
+   "text": "<p><b>Pilsen, Chicago</b> (LevlPrep summary, 2026)</p><p>Pilsen, on the Lower West Side of Chicago, Illinois, has been home to a large Mexican American community since the mid-1900s. Artists from the neighborhood have painted dozens of murals on walls, viaducts and schools. Many show Aztec symbols, Mexican history, local families and the Virgin of Guadalupe. The National Museum of Mexican Art (then called the Mexican Fine Arts Center Museum) opened in Pilsen in 1987. Each year, residents gather for street festivals with music and food from Mexico. Many residents say the murals tell visitors \"this is our neighborhood.\"</p>"
   }
  },
  "items": [
@@ -324,7 +324,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.B",
-   "q": "Tanzania has more than 100 ethnic groups, each with its own language. After independence, its leaders promoted Swahili as a shared language in schools and government. Which statement best explains the result?",
+   "q": "Tanzania has more than 100 ethnic groups, most with their own language. After independence, its leaders promoted Swahili as a shared language in schools and government. Which statement best explains the result?",
    "options": [
     "A shared language helped unite many groups as one country",
     "Swahili split the country into separate language regions",

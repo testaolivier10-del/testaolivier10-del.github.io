@@ -1,0 +1,140 @@
+{
+ "id": "frq-development-theory-none",
+ "type": "none",
+ "points": 7,
+ "title": "Theories of development: one path, one world system and their limits",
+ "units": [
+  "unit-7",
+  "unit-2"
+ ],
+ "topics": [
+  "development-theories",
+  "transition-model"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "1.C",
+  "1.E",
+  "2.E",
+  "5.D"
+ ],
+ "stimuli": [],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the stage of Rostow's stages of economic growth in which a few industries, often making goods for export, grow quickly and investment rises sharply.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names the take-off stage.",
+     "accept": [
+      "take-off",
+      "stage 3, take-off"
+     ]
+    }
+   ],
+   "sample": "Take-off, the third of Rostow's five stages."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe ONE characteristic of countries in the core of Wallerstein's world system theory.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives a characteristic of the core beyond its name: high-wage, high-tech or decision-making work, much of the world's research and head offices, or gaining from cheap raw materials and labor in the periphery.",
+     "accept": [
+      "most jobs are high-wage services, research or decision-making",
+      "they hold the head offices of large firms and do most research",
+      "they buy cheap raw materials from the periphery and sell it factory goods and loans"
+     ]
+    }
+   ],
+   "sample": "Core countries have mostly high-wage jobs in services, research and decision-making, and they hold the head offices of many large firms that buy raw materials from the periphery."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain how a country's movement through Rostow's stages of economic growth is likely to affect its position in the demographic transition model.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links economic growth to a demographic change with the mechanism: as industry and services grow, urbanization, more schooling for girls and better health care lower death rates and then birth rates, moving the country toward later stages of the demographic transition model.",
+     "accept": [
+      "factory and service jobs draw people to cities where children cost more to raise, so birth rates fall",
+      "more schooling and paid work for women lead to smaller families, so the country moves to stage 3 or 4",
+      "better health care lowers death rates first, so the country moves from stage 2 toward stage 3"
+     ]
+    }
+   ],
+   "sample": "As a country moves from take-off toward high mass consumption, more people work in factories and services in cities, and more girls stay in school, so families choose to have fewer children; birth rates fall after death rates, which moves the country from stage 2 toward stages 3 and 4 of the demographic transition model."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain ONE limitation of Rostow's stages of economic growth for a country that was once a colony.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a limit with its reason: the model assumes one Western path and ignores colonial history, so an economy built to export raw materials to a colonial power cannot simply follow the stages.",
+     "accept": [
+      "assumes every country follows the path of Britain and the United States, but colonial rule built economies around raw exports",
+      "ignores how richer countries shaped poorer ones, so it blames the former colony alone",
+      "leaves out unequal trade with former colonial powers"
+     ]
+    }
+   ],
+   "sample": "Rostow's model assumes every country can follow the path of Britain and the United States, but in a former colony such as Zambia, colonial rule built an economy around copper exports, so the country's position depends on world copper prices and on ties to richer countries that the model leaves out."
+  },
+  {
+   "label": "E",
+   "verb": "compare",
+   "prompt": "Compare how Rostow's stages of economic growth and dependency theory explain why a country that relies on exporting one raw material stays poor.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both theories: Rostow sees an early stage the country has not yet climbed out of (not enough investment), whereas dependency theory sees a role imposed by colonial history and unequal trade with the core.",
+     "accept": [
+      "Rostow: an early stage, before take-off; dependency theory: ties to the core keep it exporting raw materials",
+      "Rostow blames too little investment at home, while dependency theory blames unequal trade with richer countries"
+     ]
+    }
+   ],
+   "sample": "Rostow's model treats a country that exports one raw material as being in an early stage, before take-off, that it can climb out of by investing and trading, whereas dependency theory says the country stays poor because colonial history and unequal trade keep it selling cheap raw materials to the core and buying costly factory goods."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain how world system theory can be applied at a scale smaller than the global scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Applies the core and periphery idea inside a country or region and explains it: a core-like region holds the decision work and wealth while periphery-like regions supply labor or raw materials to it.",
+     "accept": [
+      "inside China, coastal cities are core-like and interior provinces send migrants and raw materials to them",
+      "within a country, the capital region holds head offices and research while outer regions supply workers and resources"
+     ]
+    }
+   ],
+   "sample": "At the national scale, the same tiers appear inside one country: in China, the coastal cities around Shanghai hold the head offices and research, so they act like a core, while many interior provinces send migrant workers and raw materials to the coast, so they act like a periphery."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which South Korea's development since 1960 supports Rostow's stages of economic growth.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree, then supports it: South Korea moved from farming through fast export-led industrial growth to a service and consumer economy, which fits the stages; but the role of strong government planning and outside aid, which the model does not stress, limits the fit.",
+     "accept": [
+      "to a large degree: it moved from a farming economy through export-led take-off to mass consumption",
+      "to a moderate degree: the sequence fits, but government planning and foreign aid drove it, which the model leaves out"
+     ]
+    }
+   ],
+   "sample": "To a large degree, because South Korea moved from a mostly farming economy in 1960 through fast export-led growth in shipbuilding, cars and electronics to an economy where most people work in services and can buy cars and appliances, which matches the stages from take-off to high mass consumption; however, strong government planning and outside aid drove that growth, which Rostow's model does not stress."
+  }
+ ]
+}

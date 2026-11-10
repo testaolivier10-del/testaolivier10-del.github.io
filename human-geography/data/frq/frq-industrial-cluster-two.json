@@ -1,0 +1,219 @@
+{
+ "id": "frq-industrial-cluster-two",
+ "type": "two",
+ "points": 7,
+ "title": "High-tech clusters and a new plant: agglomeration and growth poles",
+ "units": [
+  "unit-7",
+  "unit-2"
+ ],
+ "topics": [
+  "world-economy-changes",
+  "forced-voluntary-migration"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "1.B",
+  "3.C",
+  "3.D",
+  "2.C",
+  "5.C"
+ ],
+ "stimuli": [
+  {
+   "kind": "map",
+   "title": "High-tech workers in Country A, by province",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "label": "Choropleth map of Country A by province: the share of workers in high-tech industry is highest in the Capital Region and South Coast, middle in the Central Valley and Eastern Plains, where a new chip plant opened in 2018, and lowest in the north, west and south",
+    "invented": true,
+    "legendTitle": "Workers in high-tech industry, 2025 (percent, invented)",
+    "classes": [
+     "Under 5%",
+     "5% to 14%",
+     "15% or more"
+    ],
+    "values": {
+     "capital": 2,
+     "coast": 2,
+     "central": 1,
+     "east": 1,
+     "north": 0,
+     "northeast": 0,
+     "west": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital"
+     },
+     {
+      "at": "coast",
+      "text": "South Coast"
+     },
+     {
+      "at": "west",
+      "text": "Western Uplands"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "data",
+   "title": "Research spending in four provinces of Country A",
+   "invented": true,
+   "table": {
+    "caption": "Spending on research and development, by province (millions of dollars a year, invented data for practice). The chip plant in the Eastern Plains opened in 2018.",
+    "cols": [
+     "Province",
+     "2005",
+     "2015",
+     "2025"
+    ],
+    "rows": [
+     [
+      "Capital Region",
+      "400",
+      "650",
+      "900"
+     ],
+     [
+      "South Coast",
+      "150",
+      "300",
+      "420"
+     ],
+     [
+      "Eastern Plains",
+      "20",
+      "30",
+      "260"
+     ],
+     [
+      "Western Uplands",
+      "10",
+      "12",
+      "15"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Using Source 1, identify ONE province in the top class of high-tech employment.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names the Capital Region or the South Coast.",
+     "accept": [
+      "Capital Region",
+      "South Coast"
+     ]
+    }
+   ],
+   "sample": "The Capital Region, in the top class (15% or more)."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Using Source 1, describe the pattern of high-tech employment in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes the pattern with places: highest in the Capital Region and South Coast, middle in the provinces beside the capital, lowest in the northern, western and southwestern provinces.",
+     "accept": [
+      "concentrated in the center and south coast and low in the north, west and south",
+      "clustered in the Capital Region and South Coast, falling toward the outer provinces"
+     ]
+    }
+   ],
+   "sample": "High-tech jobs are concentrated in the Capital Region at the center and on the South Coast, where 15% or more of workers are in high-tech industry; the share is middling in the provinces just west and east of the capital and lowest, under 5%, in the provinces of the north, west and southwest, such as the Western Uplands."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain how agglomeration helps account for the high share of high-tech workers in the Capital Region.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains agglomeration with its mechanism: many related firms cluster because being close lets them share skilled workers, suppliers, services and ideas, which draws still more firms.",
+     "accept": [
+      "firms cluster to share skilled workers and suppliers, so more firms move in",
+      "being near other tech firms spreads ideas and pools workers, which attracts more firms"
+     ]
+    }
+   ],
+   "sample": "Agglomeration means firms cluster because being close helps them: high-tech firms in the Capital Region can hire from a large pool of skilled workers and share suppliers and ideas, so each new firm makes the region more attractive to the next, which keeps the share of high-tech jobs high."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Using Source 2, explain whether the chip plant in the Eastern Plains is acting as a growth pole.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Uses the table (research spending in the Eastern Plains rose from 30 in 2015 to 260 in 2025, after the plant opened in 2018) and explains the growth pole idea: one key project spreading growth to the region through suppliers and the multiplier effect.",
+     "accept": [
+      "yes: research spending jumped from 30 to 260 after 2018, so the plant drew suppliers and research to the region",
+      "yes, one key investment spread growth through the multiplier effect, shown by the jump in spending"
+     ]
+    }
+   ],
+   "sample": "Yes, because research spending in the Eastern Plains rose only from 20 to 30 million dollars between 2005 and 2015 but jumped to 260 million by 2025, after the chip plant opened in 2018; this suggests the plant drew suppliers and research firms to the region, so one key project is spreading growth outward, which is what a growth pole does."
+  },
+  {
+   "label": "E",
+   "verb": "compare",
+   "prompt": "Using Source 2, compare the change in research spending in the Capital Region with the change in the Western Uplands from 2005 to 2025.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both provinces with data: the Capital Region more than doubled (400 to 900), whereas the Western Uplands barely changed (10 to 15), so the gap widened.",
+     "accept": [
+      "Capital Region grew by 500 million while the Western Uplands grew by 5 million",
+      "both rose, but the Capital Region rose far more, so the gap widened"
+     ]
+    }
+   ],
+   "sample": "Both provinces increased research spending, but the Capital Region more than doubled it, from 400 to 900 million dollars, whereas the Western Uplands rose only from 10 to 15 million, so the gap between them widened."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain ONE likely effect of the growth of high-tech jobs in the Eastern Plains on internal migration in Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a migration effect with its cause: new jobs pull workers from other provinces, such as rural-to-urban or interregional migration from the Western Uplands or Southern Forest to the Eastern Plains.",
+     "accept": [
+      "workers move from low-wage outer provinces to the Eastern Plains for new jobs",
+      "rural-to-urban migration to towns near the plant grows"
+     ]
+    }
+   ],
+   "sample": "New high-tech and supplier jobs in the Eastern Plains would pull workers from provinces with few such jobs, such as the Western Uplands, so internal migration toward the Eastern Plains, much of it rural-to-urban, would increase."
+  },
+  {
+   "label": "G",
+   "verb": "explain",
+   "prompt": "Explain ONE limitation of using the province data in Sources 1 and 2 to draw conclusions about where high-tech firms are located within the Capital Region.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a scale limit: the data are one value per province, so they cannot show where inside the province (which city, suburb or district) the firms cluster.",
+     "accept": [
+      "one value per province cannot show which part of the Capital Region the firms are in",
+      "the data are at the provincial scale, so they hide local patterns such as a cluster in one suburb"
+     ]
+    }
+   ],
+   "sample": "Both sources give one value for each province, so they cannot show where inside the Capital Region the firms are; the high-tech firms might all sit in one suburb or district, and province-level data hide that local pattern."
+  }
+ ]
+}

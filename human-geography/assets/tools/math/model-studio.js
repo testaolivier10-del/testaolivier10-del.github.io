@@ -342,7 +342,7 @@
     var L = ctx.limits, right = r.pick(L.right);
     var wrong = M.shuffle(r, L.claims.map(function(t){ return { t: t, why: 'That is what the model says, not a limit of it.' }; }).concat(L.wrong)).slice(0, 3);
     return choiceFrom(right, wrong, { key: 'limits', fig: 'build', practice: '1.E', level: 'analyze',
-      label: '<b>Find a limit.</b> Which statement is a limitation of the ' + esc(ctx.name.charAt(0).toLowerCase() + ctx.name.slice(1)) + '?' });
+      label: '<b>Find a limit.</b> Which statement is a limitation of this model (' + esc(ctx.name) + ')?' });
   }
   function numStep(key, label, answer, mistakes, d, unit, rel){
     var ms = (mistakes || []).slice();
@@ -449,12 +449,12 @@
         var s = bids.slice().sort(function(x, y){ return y - x; });
         best = bids.indexOf(s[0]);
       } while(guard++ < 200 && !(s[0] - s[1] >= 4 && s[0] > 0));
-      var series = uses.map(function(u){ var pts = []; for(var x = 0; x <= 9; x += 0.5){ var y = u.a - u.b * x; if(y >= 0) pts.push([x, r1(y)]); } return { name: u.n, points: pts }; });
+      var series = uses.map(function(u){ var pts = []; for(var x = 0; x <= 9; x += 1){ var y = u.a - u.b * x; if(y >= 0) pts.push([x, r1(y)]); } return { name: u.n, points: pts }; });
       var spec = { kind: 'line', label: 'Bid-rent lines for four land uses in an invented city, from the CBD out to 9 km', x: [0, 9], y: [0, 120], xLabel: 'Distance from the CBD (km)', yLabel: 'Bid (rent per square meter)', series: series };
-      var tbl = uses.map(function(u){ return u.n + ' bids ' + u.a + ' at the CBD and ' + u.b + ' less each km'; }).join('; ');
+      var tbl = uses.map(function(u){ return u.n.toLowerCase() + ' ' + u.a + ' (\u2212' + u.b + ' a km)'; }).join(', ');
       var st1 = { kind: 'choice', key: 'apply', fig: 'apply', practice: '2.B', level: 'apply', fixed: true, options: uses.map(function(u){ return u.n; }), correct: best,
         why: uses.map(function(u, i){ return (i === best ? 'Yes. ' : 'Not this one. ') + u.n + ' bids ' + u.a + ' − ' + u.b + ' × ' + d + ' = ' + M.fmt(bids[i], 4) + (i === best ? ', the highest bid there.' : ', but ' + uses[best].n.toLowerCase() + ' bids ' + M.fmt(bids[best], 4) + '.'); }),
-        label: '<b>Apply it.</b> In an invented city, ' + tbl + '. Which land use outbids the others ' + d + ' km from the CBD?' };
+        label: '<b>Apply it.</b> In an invented city, each bid starts at the CBD and falls with each km: ' + tbl + '. Which land use outbids the others ' + d + ' km from the CBD?' };
       var st2 = numStep('rent', '<b>Now the number.</b> What does the winning use bid there, in rent per square meter?', bids[best],
         [{ value: uses[best].a, why: 'That is the bid at the CBD. Subtract what it loses over ' + d + ' km.' }, { value: uses[best].a + uses[best].b * d, why: 'Bids fall with distance: subtract, do not add.' }], 1, null, 0.001);
       return { fig: { kind: 'plot', spec: spec }, steps: [st1, st2], uses: uses, d: d, say: uses[best].n + ' (' + M.fmt(bids[best], 4) + ')' };
@@ -541,7 +541,7 @@
   function generate(r, ctx, type){
     var model = buildModel(r, ctx);
     var build = { kind: 'model', key: 'build', fig: 'build', practice: '1.A', level: 'apply', model: model,
-      label: '<b>Build it.</b> Put each piece of the ' + esc(ctx.name.charAt(0).toLowerCase() + ctx.name.slice(1)) + ' in its place.' + (model.pieces.length > model.slots.length ? ' Some pieces do not belong.' : '') };
+      label: '<b>Build it.</b> ' + esc(ctx.name) + ': put each piece in its place.' + (model.pieces.length > model.slots.length ? ' Some pieces do not belong.' : '') };
     var ap = APPLY[ctx.apply.kind](r, ctx, model);
     var lim = limitsStep(r, ctx);
     var steps = [build].concat(ap.steps, [lim]);
@@ -549,10 +549,10 @@
     var lt = lim.options[lim.correct];
     return {
       ctx: ctx.id, topic: ctx.topic, type: (ctx.types || [ctx.id])[0], title: ctx.name, apply: ap,
-      text: '<p>Build the ' + esc(ctx.name.charAt(0).toLowerCase() + ctx.name.slice(1)) + ', apply it to a case, then find one of its limits.</p>',
+      text: '<p><b>' + esc(ctx.name) + '.</b> Build the model, apply it to a case, then find one of its limits.</p>',
       steps: steps,
       figs: { build: { kind: 'model', figure: ctx.figure || null }, apply: ap.fig },
-      solution: ['<b>The model.</b> ' + esc(keyText) + '.', '<b>The case.</b> ' + esc(ap.say) + '.', '<b>A limit.</b> ' + esc(lt) + '.']
+      solution: ['<b>The model.</b> ' + esc(keyText) + '.', '<b>The case.</b> ' + esc(ap.say.charAt(0).toUpperCase() + ap.say.slice(1)) + '.', '<b>A limit.</b> ' + esc(lt) + '.']
     };
   }
 

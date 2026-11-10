@@ -2,8 +2,8 @@
  "agriculture-challenges-food-desert": {
   "file": "figures/agriculture-challenges-food-desert.svg",
   "ext": "svg",
-  "w": 720,
-  "h": 460,
+  "w": 480,
+  "h": 556,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",

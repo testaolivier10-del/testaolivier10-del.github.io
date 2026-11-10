@@ -1,0 +1,82 @@
+/* Population lab (human-geography/assets/tools/population-lab.js). OWNED BY THIS TOOL ONLY (builder T3).
+   Ported from AP® Environmental Science's age-structure trainer. Males in the course teal, females
+   vermillion (the course plot colors); under 15 green, 65 and over purple; birth rate olive, death
+   rate rose on the transition chart. */
+.hug-pl-card{display:grid;gap:14px;}
+:root{--hug-pl-m:#0B5E6B;--hug-pl-f:#C24E00;--hug-pl-young:#00805C;--hug-pl-old:#7A4F9E;--hug-pl-b:#474A10;--hug-pl-d:#B8336A;--hug-pl-gap:rgba(0,158,115,.15);}
+:root[data-theme="dark"]{--hug-pl-m:#8CCFD9;--hug-pl-f:#F29A5C;--hug-pl-young:#4FD1AA;--hug-pl-old:#C3A3E0;--hug-pl-b:#DCDB98;--hug-pl-d:#F08DB5;--hug-pl-gap:rgba(79,209,170,.16);}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--hug-pl-m:#8CCFD9;--hug-pl-f:#F29A5C;--hug-pl-young:#4FD1AA;--hug-pl-old:#C3A3E0;--hug-pl-b:#DCDB98;--hug-pl-d:#F08DB5;--hug-pl-gap:rgba(79,209,170,.16);}}
+.hug-pl-stage{display:flex;flex-direction:column;gap:8px;min-height:0;}
+.ls-root .hug-pl-stage{flex:1;}
+.hug-pl-fig{position:relative;flex:1;min-height:340px;}
+.bt-pane .hug-pl-fig{height:min(64vh,540px);}
+.hug-pl-note{margin:0;text-align:center;font:600 12.5px var(--font-ui);color:var(--muted);}
+.hug-pl-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);}
+.hug-pl-fig .hug-pl-svg{position:absolute;inset:0;}
+.hug-pl-svg:focus{outline:none;}
+.hug-pl-svg:focus-visible{outline:2px dashed var(--cink);outline-offset:-2px;border-radius:8px;}
+.hug-pl-svg text{fill:var(--ink);}
+.hug-pl-svg .hug-pl-tk{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;}
+.hug-pl-svg .hug-pl-axl{font:700 12.5px var(--font-ui);fill:var(--muted);}
+.hug-pl-svg .hug-pl-age{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;}
+.hug-pl-svg .hug-pl-age.is-sel{fill:var(--ink);font-weight:900;}
+.hug-pl-svg .hug-pl-sex{font:900 13px var(--font-ui);}
+.hug-pl-svg .hug-pl-sex.is-m{fill:var(--hug-pl-m);} .hug-pl-svg .hug-pl-sex.is-f{fill:var(--hug-pl-f);}
+.hug-pl-svg .hug-pl-grid{stroke:var(--line);stroke-width:1;}
+.hug-pl-svg .hug-pl-m{fill:var(--hug-pl-m);fill-opacity:.85;}
+.hug-pl-svg .hug-pl-f{fill:var(--hug-pl-f);fill-opacity:.85;}
+.hug-pl-svg .hug-pl-m.is-sel,.hug-pl-svg .hug-pl-f.is-sel{stroke:var(--ink);stroke-width:2;}
+.hug-pl-svg .hug-pl-br{fill:none;stroke-width:2.5;}
+.hug-pl-svg .hug-pl-br.is-young{stroke:var(--hug-pl-young);} .hug-pl-svg .hug-pl-br.is-old{stroke:var(--hug-pl-old);}
+.hug-pl-svg .hug-pl-brl{font:900 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.hug-pl-svg .hug-pl-brl.is-young{fill:var(--hug-pl-young);} .hug-pl-svg .hug-pl-brl.is-old{fill:var(--hug-pl-old);}
+.hug-pl-svg .hug-pl-hit{fill:transparent;cursor:pointer;}
+.hug-pl-svg .hug-pl-tip rect{fill:var(--ink);} .hug-pl-svg .hug-pl-tip text{fill:var(--white);font:900 13px var(--font-ui);}
+.hug-pl-svg .hug-pl-band{fill:var(--paper);} .hug-pl-svg .hug-pl-band.is-alt{fill:var(--white);}
+.hug-pl-svg .hug-pl-band.is-on{fill:var(--ctint);}
+.hug-pl-svg .hug-pl-stn{font:800 13px var(--font-ui);fill:var(--muted);} .hug-pl-svg .hug-pl-stn.is-on{fill:var(--cink);font-weight:900;}
+.hug-pl-svg .hug-pl-gap{fill:var(--hug-pl-gap);}
+.hug-pl-svg .hug-pl-cbr{fill:none;stroke:var(--hug-pl-b);stroke-width:3.5;stroke-linecap:round;}
+.hug-pl-svg .hug-pl-cdr{fill:none;stroke:var(--hug-pl-d);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:9 5;}
+.hug-pl-svg .hug-pl-cbrl{font:900 13px var(--font-ui);fill:var(--hug-pl-b);paint-order:stroke;stroke:var(--paper);stroke-width:3px;}
+.hug-pl-svg .hug-pl-cdrl{font:900 13px var(--font-ui);fill:var(--hug-pl-d);paint-order:stroke;stroke:var(--paper);stroke-width:3px;}
+.hug-pl-svg .hug-pl-now{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 4;}
+.hug-pl-svg .hug-pl-dot{stroke:var(--white);stroke-width:2.5;}
+.hug-pl-svg .hug-pl-dot.is-b{fill:var(--hug-pl-b);} .hug-pl-svg .hug-pl-dot.is-d{fill:var(--hug-pl-d);}
+.hug-pl-strip{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.hug-pl-chip{padding:4px 12px;border-radius:999px;font:700 calc(13px * var(--ls-scale,1)) var(--font-ui);background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+.hug-pl-chip b{font-family:var(--font-mono);font-weight:900;}
+.hug-pl-chip.is-young{box-shadow:inset 0 0 0 2px var(--hug-pl-young);} .hug-pl-chip.is-old{box-shadow:inset 0 0 0 2px var(--hug-pl-old);}
+.hug-pl-ctl{display:flex;flex-direction:column;gap:12px;}
+.hug-pl-stages{display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 2px var(--line);}
+.hug-pl-st{flex:1;min-height:44px;min-width:44px;border:0;border-radius:10px;background:transparent;color:var(--muted);font:800 14px var(--font-ui);cursor:pointer;padding:0 4px;white-space:nowrap;}
+.hug-pl-st[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.ls-root .hug-pl-stages.tseg{display:flex;width:100%;}
+.ls-root .hug-pl-stages.tseg button{flex:1;padding:0 6px;}
+.hug-pl-needs{margin:.4em 0;padding-left:1.1em;}
+.hug-pl-needs li{margin:.25em 0;}
+.hug-pl-dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:0 0 10px;}
+.hug-pl-dl div{background:var(--paper);border-radius:12px;padding:8px 10px;}
+.hug-pl-dl dt{font:800 12px var(--font-ui);color:var(--muted);} .hug-pl-dl dd{margin:2px 0 0;font:900 15px var(--font-mono);}
+.hug-pl-qfig{margin:0;}
+.hug-pl-qfig .hug-plot{width:100%;max-width:420px;}
+.hug-pl-qsvg{height:auto;max-height:100%;}
+.ls-root .ls-drill-stage .hug-pl-qfig > svg{max-height:100%;}
+.ls-root .ls-drill-stage .hug-pl-qfig{display:flex;flex-direction:column;align-items:center;max-height:100%;overflow:auto;}
+.ls-root .ls-drill-stage .hug-pl-qfig .hug-plot{height:min(calc(100vh - 250px),680px);width:auto;max-width:100%;}
+.hug-pl-lab{margin:0;font:800 13px var(--font-ui);color:var(--muted);}
+.hug-pl-views{display:flex;gap:4px;padding:3px;border-radius:12px;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line);}
+.hug-pl-views[hidden]{display:none !important;}
+.hug-pl-vw{flex:1;min-height:40px;border:0;border-radius:9px;background:transparent;color:var(--muted);font:800 13px var(--font-ui);cursor:pointer;}
+.hug-pl-vw[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.ls-root .hug-pl-views.tseg{display:flex;width:100%;}
+.ls-root .hug-pl-views.tseg button{flex:1;min-height:40px;}
+@media (max-width:640px){ .hug-pl-chip{padding:3px 9px;font-size:12.5px;} .hug-pl-strip{gap:4px;} }
+.ls-root .cd-step.is-right.is-right input[type=text]{box-shadow:inset 0 0 0 2px var(--good-text);border-color:var(--good-text);}
+/* A phone's stage is short: the drill figure keeps its natural size and the stage scrolls, so the age labels stay legible. */
+@media (max-width:640px){
+  .ls-root .ls-drill-stage:has(.hug-pl-qfig){align-items:flex-start;justify-content:flex-start;overflow:auto;}
+  .ls-root .ls-drill-stage .hug-pl-qfig{display:block;max-height:none;overflow:visible;width:100%;}
+  .ls-root .ls-drill-stage .hug-pl-qfig .hug-plot{height:auto;width:100%;max-width:400px;}
+  .ls-root .ls-drill-stage .hug-pl-qfig > svg{max-height:none;width:100%;}
+}

@@ -2,8 +2,8 @@
  "women-in-agriculture-jobs": {
   "file": "figures/women-in-agriculture-jobs.svg",
   "ext": "svg",
-  "w": 720,
-  "h": 440,
+  "w": 480,
+  "h": 490,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",

@@ -296,7 +296,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.B",
-   "q": "After independence, Tanzania's government made Swahili the language of schools and government, so people of more than 100 ethnic groups shared one language. What effect was this meant to have?",
+   "q": "After independence, Tanzania's government made Swahili the language of government and of primary schools, so people of more than 100 ethnic groups shared one language. What effect was this meant to have?",
    "options": [
     "To divide the country into language regions",
     "To help one ethnic group rule the others",
@@ -512,7 +512,7 @@
     "write": {
      "mechanism": true
     },
-    "model": "In Tanzania, the government made Swahili the language of schools and government after independence, so people from more than 100 ethnic groups share one language and a national identity.",
+    "model": "In Tanzania, the government made Swahili the language of government and of primary schools after independence, so people from more than 100 ethnic groups share one language and a national identity.",
     "slots": {
      "place": {
       "label": "State",
@@ -528,7 +528,7 @@
      "cause": {
       "label": "Force",
       "options": [
-       "the government made Swahili the language of schools and government after independence",
+       "the government made Swahili the language of government and of primary schools after independence",
        "each ethnic group was given its own army"
       ],
       "correct": 0,

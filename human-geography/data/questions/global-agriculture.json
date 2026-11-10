@@ -1,0 +1,498 @@
+{
+ "stimuli": {
+  "global-agriculture-s1": {
+   "kind": "image",
+   "title": "A global supply chain for bananas",
+   "image": {
+    "figure": "global-agriculture-banana-chain",
+    "alt": "Seven boxes joined by arrows: a farm in Ecuador, a packing house where fruit is washed and boxed, the port of Guayaquil, a refrigerated ship kept at about 13 degrees Celsius, a port in the United States, a ripening center where gas ripens the fruit, and a store where a shopper buys it. The first three steps are in the exporting country and the last three in the importing country. Each step adds cost and value, and a delay at any step can spoil the fruit.",
+    "caption": "A LevlPrep diagram of a banana supply chain."
+   }
+  },
+  "global-agriculture-s2": {
+   "kind": "data",
+   "title": "Export earnings of Country B, 2024",
+   "invented": true,
+   "table": {
+    "caption": "Country B's export earnings by product, 2024 (millions of US dollars; invented data for practice)",
+    "cols": [
+     "Product",
+     "Export earnings"
+    ],
+    "rows": [
+     [
+      "Coffee",
+      "600"
+     ],
+     [
+      "Cut flowers",
+      "120"
+     ],
+     [
+      "Tea",
+      "80"
+     ],
+     [
+      "Clothing",
+      "120"
+     ],
+     [
+      "All other products",
+      "80"
+     ],
+     [
+      "Total",
+      "1,000"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-global-agriculture-1",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "According to the diagram, which step takes place in the importing country?",
+   "options": [
+    "The ripening center, where gas ripens the fruit",
+    "The packing house, where fruit is washed and boxed",
+    "The port of Guayaquil, where the ship is loaded",
+    "The farm, where the bananas are grown and cut"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bananas are picked green in Ecuador, shipped cold and ripened near the stores that sell them, in the importing country.",
+    "options": [
+     "Right: the diagram places the ripening center among the steps in the importing country.",
+     "The packing house is in Ecuador, the exporting country.",
+     "Guayaquil is Ecuador's port, in the exporting country.",
+     "The farm is in Ecuador."
+    ]
+   },
+   "stimulus": "global-agriculture-s1"
+  },
+  {
+   "id": "hug-global-agriculture-2",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Why does the chain need a refrigerated ship?",
+   "options": [
+    "Bananas grow larger on the ship when kept cold",
+    "Cold ships are cheaper than ordinary ships",
+    "Bananas spoil fast, so they are kept cool at sea",
+    "Importing countries pay a fee for each warm ship"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Perishable goods need a cold chain from farm to store. Refrigerated shipping is what lets a tropical fruit reach stores thousands of kilometers away.",
+    "options": [
+     "Bananas do not grow after they are cut; cold slows their ripening.",
+     "Refrigeration adds cost; it is used because the fruit would spoil without it.",
+     "Right: cold storage slows ripening so the fruit survives weeks of shipping.",
+     "The diagram gives the reason: spoilage, not fees."
+    ]
+   },
+   "stimulus": "global-agriculture-s1"
+  },
+  {
+   "id": "hug-global-agriculture-3",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "A student says, \"A global supply chain is just the ships and trucks that carry food.\" Based on the diagram, why is this incomplete?",
+   "options": [
+    "The diagram shows no ships or trucks on its route",
+    "The chain ends at the moment the ship reaches the US port",
+    "Transport happens before the farm grows the fruit",
+    "It also includes growing, packing, ripening and selling"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Exam readers have docked answers that reduce a supply chain to transport. A global supply chain is every step and place a product passes through, from farm to consumer.",
+    "options": [
+     "It does show a ship and two ports.",
+     "The diagram continues to the ripening center and the store.",
+     "Transport comes after the fruit is grown and packed.",
+     "Right: of seven steps, only some are transport; the others grow, prepare and sell the fruit."
+    ]
+   },
+   "stimulus": "global-agriculture-s1"
+  },
+  {
+   "id": "hug-global-agriculture-4",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "A strike closes the US port for two weeks. Based on the diagram, what is the most likely effect?",
+   "options": [
+    "Farms in Ecuador grow bananas more slowly",
+    "Fruit on waiting ships spoils and US stores run short",
+    "Ripening centers in the US speed up their work to catch up",
+    "Shoppers in Ecuador pay more for bananas"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Global supply chains link distant places, so a problem in one place spreads along the chain to others.",
+    "options": [
+     "A US port strike does not change how bananas grow.",
+     "Right: a break at one step stops everything after it, and the fruit is perishable.",
+     "With no fruit arriving, ripening centers have nothing to ripen.",
+     "The fruit was bound for the US; Ecuador may even have extra."
+    ]
+   },
+   "stimulus": "global-agriculture-s1"
+  },
+  {
+   "id": "hug-global-agriculture-5",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "What percent of Country B's export earnings came from coffee in 2024?",
+   "why": {
+    "correct": "$\\frac{600}{1{,}000} \\times 100 = 60\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "share",
+     "args": [
+      600,
+      1000
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 0.6,
+      "why": "You found the fraction, 0.6. Multiply by 100 to give a percent."
+     },
+     {
+      "from": {
+       "fn": "share",
+       "args": [
+        600,
+        400
+       ]
+      },
+      "why": "Divide coffee by the total of all exports (1,000), not by the other products (400)."
+     }
+    ]
+   },
+   "stimulus": "global-agriculture-s2"
+  },
+  {
+   "id": "hug-global-agriculture-6",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Which concept does the table show most clearly?",
+   "options": [
+    "Subsistence agriculture",
+    "Economies of scale",
+    "Commodity dependence",
+    "Domestication"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Commodity dependence means relying on one or a few raw exports for most export earnings. Coffee alone is 60% of Country B's.",
+    "options": [
+     "Export earnings come from selling abroad; subsistence farming is for the family's own use.",
+     "The table shows what a country exports, not costs per unit.",
+     "Right: one raw farm product brings in most of the country's export earnings.",
+     "Domestication is the change of wild species into crops; the table is about trade."
+    ]
+   },
+   "stimulus": "global-agriculture-s2"
+  },
+  {
+   "id": "hug-global-agriculture-7",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "If the world price of coffee fell by half, what would most likely happen to Country B?",
+   "options": [
+    "Export earnings would drop sharply, hurting farmers and the budget",
+    "Its export earnings would rise because it sells more flowers",
+    "Nothing would change, because coffee is a small share of its total exports",
+    "Farmers would switch to tea at once with no cost"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Commodity dependence makes a country vulnerable to price swings it cannot control.",
+    "options": [
+     "Right: with 60% of earnings from coffee, a price crash cuts national income at once.",
+     "Flowers are only 12% of exports and nothing suggests they would grow.",
+     "Coffee is the largest share by far: 60%.",
+     "Coffee trees take years to grow; switching crops is slow and costly."
+    ]
+   },
+   "stimulus": "global-agriculture-s2"
+  },
+  {
+   "id": "hug-global-agriculture-8",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which policy would most reduce Country B's commodity dependence?",
+   "options": [
+    "Planting more coffee on newly cleared land to export more beans",
+    "Roasting and packaging coffee at home and growing other exports",
+    "Stopping clothing exports to focus on raw coffee",
+    "Selling coffee to just one importing country"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Countries reduce commodity dependence by diversifying exports and by processing raw goods at home so more value stays in the country.",
+    "options": [
+     "That would raise dependence on coffee further.",
+     "Right: adding value and diversifying spread earnings across more products.",
+     "That narrows exports, raising dependence.",
+     "One buyer adds risk; it does not reduce dependence on coffee."
+    ]
+   },
+   "stimulus": "global-agriculture-s2"
+  },
+  {
+   "id": "hug-global-agriculture-9",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is commodity dependence?",
+   "options": [
+    "Buying most of a country's food from one supermarket chain",
+    "Growing food mainly to feed the farmer's own family",
+    "Owning several steps of a commodity chain",
+    "Relying on one or a few raw exports for most export earnings"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "UNCTAD calls a country commodity dependent when raw commodities make up more than 60% of its merchandise export earnings.",
+    "options": [
+     "Commodity dependence is about a country's exports, not where shoppers buy food.",
+     "That is subsistence agriculture.",
+     "That is vertical integration.",
+     "Right: for example, a country earning most of its export income from coffee or cocoa."
+    ]
+   }
+  },
+  {
+   "id": "hug-global-agriculture-10",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Brazil exports more soybeans than any other country, and much of its crop is shipped to China, the largest soybean importer (USDA, 2024). Which statement best describes this link?",
+   "options": [
+    "A global supply chain links farms in Brazil to buyers in China",
+    "A local market links farms and buyers in one Brazilian town",
+    "Subsistence farms in Brazil feed their own families with soybeans",
+    "China grows soybeans in Brazil using shifting cultivation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Global supply chains connect producing and consuming regions continents apart. Much of China's soybean imports feed pigs and poultry.",
+    "options": [
+     "Right: soybeans grown in Brazil are shipped across the world to feed livestock in China.",
+     "The buyers are in China, on another continent.",
+     "These are large commercial farms selling abroad.",
+     "Brazilian soybeans are grown on large, fixed commercial farms."
+    ]
+   }
+  },
+  {
+   "id": "hug-global-agriculture-11",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "After Russia's full-scale invasion of Ukraine in February 2022, grain shipments from Ukraine's Black Sea ports were disrupted, and world wheat prices rose. What does this show about the global food system?",
+   "options": [
+    "Food prices depend on local weather alone",
+    "Wheat is a subsistence crop that is not traded",
+    "Politics and conflict can affect food supply in places far away",
+    "Supply chains affect just the countries that grow the crop"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Food distribution is shaped by politics, trade and transport routes, not just by how much food is grown. A UN and Türkiye brokered deal later let ships sail from July 2022 to July 2023.",
+    "options": [
+     "This case shows politics and conflict affecting prices, not weather alone.",
+     "Ukraine is a major wheat exporter; that is why prices moved.",
+     "Right: a war in one region raised prices for buyers in other regions that import grain.",
+     "Importing countries far from Ukraine felt the price rise."
+    ]
+   }
+  },
+  {
+   "id": "hug-global-agriculture-12",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "The world produces enough calories to feed everyone, yet some people go hungry. Which explanation fits the global food system?",
+   "options": [
+    "The world grows too little food to feed its growing population",
+    "Hungry people prefer to grow cash crops for export",
+    "Food spoils before it can be grown",
+    "Poverty, conflict and poor roads keep food from some people"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Access depends on income, prices, transport, storage and politics. This is one reason the Green Revolution did not end hunger everywhere.",
+    "options": [
+     "Global output is large enough; the problem is access and distribution.",
+     "This does not explain hunger; many hungry people are farmers who lack land, money or markets.",
+     "Food spoils after it is grown, during storage and shipping.",
+     "Right: hunger is often about who can get food, not about how much is grown."
+    ]
+   }
+  },
+  {
+   "id": "hug-global-agriculture-13",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which factors shape how food is distributed around the world? Select all that apply.",
+   "options": [
+    "Trade rules and taxes on imports",
+    "Wars and blocked ports or roads",
+    "The order of von Thünen's rings around a town",
+    "The survey method used to divide farmland",
+    "The hearth where a crop was first domesticated"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Politics, trade rules, transport and income shape food distribution.",
+    "options": [
+     "Right: they change what can be sold where and at what price.",
+     "Right: conflict can cut supply chains.",
+     "The rings describe local land use, not global distribution.",
+     "Survey methods shape field patterns, not world food distribution.",
+     "Where a crop began thousands of years ago does not decide where it is sold."
+    ]
+   }
+  },
+  {
+   "id": "hug-global-agriculture-14",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.C",
+   "q": "Cocoa grown on small family farms in Côte d'Ivoire is made into chocolate sold in Europe. How do the effects of a fall in the world cocoa price differ by scale?",
+   "options": [
+    "Nationally nothing changes; locally families earn more",
+    "Nationally export earnings fall; locally farm families earn less",
+    "Globally chocolate disappears; nationally prices rise",
+    "Locally farms grow more cocoa; globally prices rise"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Explaining across scales: one global price change affects the national economy and household incomes on local farms.",
+    "options": [
+     "A price fall lowers earnings at both scales.",
+     "Right: the same price drop cuts national export income and household incomes at the local scale.",
+     "A lower cocoa price makes cocoa cheaper, not scarce.",
+     "Lower prices give farmers less reason to grow more."
+    ]
+   }
+  },
+  {
+   "id": "hug-global-agriculture-15",
+   "unit": "unit-5",
+   "topic": "global-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of a risk of commodity dependence in a named place.",
+   "why": {
+    "correct": "Place, commodity and effect, with the link \"so\"."
+   },
+   "specific": {
+    "frame": "In ___, export earnings depend heavily on ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Côte d'Ivoire, export earnings depend heavily on cocoa, so a fall in the world cocoa price cuts the income of farm families and the government.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Côte d'Ivoire",
+       "a tropical country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name the country; a vague place earns no credit."
+      }
+     },
+     "concept": {
+      "label": "Export",
+      "options": [
+       "cocoa",
+       "clothing factories"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The point is a raw farm commodity, such as cocoa."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "a fall in the world cocoa price cuts the income of farm families and the government",
+       "the country can set the world price of cocoa as it wishes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Exporters of a raw commodity usually take the world price; they cannot set it."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -409,19 +409,18 @@
    "q": "Which details describe a city's site? Select all that apply.",
    "options": [
     "A deep natural harbor",
-    "A hill that is easy to defend",
+    "Trading with a large port across the sea",
     "Being one day's sail from three other ports",
     "Lying where two trade routes cross"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Site is the physical character of the place itself. Distances to other ports and crossing routes describe situation.",
+    "correct": "Site is the physical character of the place itself. Trade partners, distances to other ports and crossing routes describe situation.",
     "options": [
      "Right: a harbor is a physical feature of the place.",
-     "Right: a hill is a physical feature of the place.",
+     "Trade with another port is a link to another place: situation.",
      "Distance to other ports links the city to other places: situation.",
      "A crossing of routes is about links to other places: situation."
     ]

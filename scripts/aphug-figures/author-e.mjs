@@ -47,7 +47,7 @@ function box(x, y, w, h, label, o = {}) {
     lines(x + w / 2, y + h / 2 - (n - 1) * lh / 2 + size * 0.36, label, { anchor: 'middle', size, bold: o.bold, fill: o.ink || INK, lh });
 }
 // A round badge with a short label (a panel number or a zone letter).
-const badge = (x, y, s, o = {}) => circle(x, y, o.r || 15, { fill: o.fill || '#FFFFFF', stroke: o.stroke || INK, w: 2 }) + text(x, y + 6, s, { anchor: 'middle', size: 17, bold: true, fill: o.ink || INK });
+const badge = (x, y, s, o = {}) => circle(x, y, o.r || 18, { fill: o.fill || "#FFFFFF", stroke: o.stroke || INK, w: 2 }) + text(x, y + 7, s, { anchor: "middle", size: o.size || 20, bold: true, fill: o.ink || INK });
 const house = (x, y, s = 1, c = VERM) => path(`M${x - 7 * s},${y} L${x - 7 * s},${y - 9 * s} L${x},${y - 15 * s} L${x + 7 * s},${y - 9 * s} L${x + 7 * s},${y} Z`, { fill: c, stroke: INK, w: 1 });
 const tree = (x, y, s = 1) => circle(x, y - 6 * s, 7 * s, { fill: FOREST, stroke: '#3E7550', w: 1 });
 function svg(w, h, title, desc, body) {
@@ -65,25 +65,19 @@ function add(topic, id, w, h, title, alt, body) { figs.push({ topic, id, w, h, a
 /* ---------------------------------------------------- agriculture-intro */
 {
   let b = '';
-  const col = (x, head, sub, rows, c, fill) => {
-    let s = rect(x, 10, 340, 400, { fill: '#FFFFFF', stroke: c, w: 2.2 });
-    s += rect(x, 10, 340, 66, { fill, stroke: c, w: 2.2 });
-    s += text(x + 170, 40, head, { anchor: 'middle', size: 20, bold: true, fill: c });
-    s += text(x + 170, 64, sub, { anchor: 'middle', size: 15 });
-    rows.forEach(([name, place], i) => {
-      const y = 92 + i * 104;
-      s += rect(x + 16, y, 308, 90, { fill: SOFT, stroke: LINE });
-      s += text(x + 32, y + 34, name, { size: 18, bold: true });
-      s += lines(x + 32, y + 62, place, { size: 15, fill: GREY });
-    });
+  const W = 480;
+  const sec = (y, head, sub, rows, c, fill) => {
+    let s = rect(6, y, W - 12, 294, { fill: '#FFFFFF', stroke: c, w: 2.2 });
+    s += rect(6, y, W - 12, 62, { fill, stroke: c, w: 2.2 });
+    s += text(W / 2, y + 28, head, { anchor: 'middle', size: 22, bold: true, fill: c });
+    s += text(W / 2, y + 52, sub, { anchor: 'middle', size: 17 });
+    rows.forEach(([name, place], i) => { const yy = y + 74 + i * 72; s += rect(20, yy, W - 40, 62, { fill: SOFT, stroke: LINE }); s += text(34, yy + 26, name, { size: 19, bold: true }); s += text(34, yy + 50, place, { size: 17, fill: GREY }); });
     return s;
   };
-  b += col(10, 'Extensive', 'Few inputs per hectare, large areas', [['Shifting cultivation', 'Amazon basin, Brazil'], ['Nomadic herding', 'grasslands of Mongolia'], ['Ranching', 'the Pampas, Argentina']], VERM, WARM);
-  b += col(370, 'Intensive', 'Many inputs per hectare, small areas', [['Market gardening', 'near Rotterdam, Netherlands'], ['Plantation agriculture', 'oil palm in Malaysia'], ['Mixed crop and livestock', 'the Corn Belt, Iowa']], TEAL, TINT);
-  b += line(60, 440, 660, 440, { stroke: INK, w: 2.4, arrow: 'ink' });
-  b += text(360, 470, 'More labor, money and machines per hectare', { anchor: 'middle', size: 16, bold: true });
-  add('agriculture-intro', 'agriculture-intro-two-kinds', 720, 486, 'Extensive and intensive agriculture',
-    'Two columns. Extensive agriculture uses few inputs per hectare over large areas: shifting cultivation in the Amazon basin of Brazil, nomadic herding on the grasslands of Mongolia and ranching on the Pampas of Argentina. Intensive agriculture uses many inputs per hectare on small areas: market gardening near Rotterdam in the Netherlands, plantation agriculture such as oil palm in Malaysia, and mixed crop and livestock farming in the Corn Belt of Iowa. An arrow below points from extensive to intensive: more labor, money and machines per hectare.', b);
+  b += sec(6, 'Extensive', 'Few inputs per hectare, large areas', [['Shifting cultivation', 'Amazon basin, Brazil'], ['Nomadic herding', 'grasslands of Mongolia'], ['Ranching', 'the Pampas, Argentina']], VERM, WARM);
+  b += sec(314, 'Intensive', 'Many inputs per hectare, small areas', [['Market gardening', 'near Rotterdam, Netherlands'], ['Plantation agriculture', 'oil palm in Malaysia'], ['Mixed crop and livestock', 'the Corn Belt, Iowa']], TEAL, TINT);
+  add('agriculture-intro', 'agriculture-intro-two-kinds', 480, 614, 'Extensive and intensive agriculture',
+    'Two stacked panels. Extensive agriculture uses few inputs per hectare over large areas: shifting cultivation in the Amazon basin of Brazil, nomadic herding on the grasslands of Mongolia and ranching on the Pampas of Argentina. Intensive agriculture uses many inputs per hectare on small areas: market gardening near Rotterdam in the Netherlands, plantation agriculture such as oil palm in Malaysia, and mixed crop and livestock farming in the Corn Belt of Iowa.', b);
 }
 
 /* ---------------------------------------------------- settlement-survey */
@@ -164,113 +158,114 @@ add('settlement-survey', 'settlement-survey-methods-numbered', 720, 356, 'Three 
 /* ---------------------------------------------------- agricultural-origins */
 {
   let b = '';
-  b += rect(10, 60, 260, 300, { fill: MINT, stroke: GREEN, w: 2.2 });
-  b += text(140, 92, 'From the Americas', { anchor: 'middle', size: 19, bold: true, fill: '#00694D' });
-  ['maize (corn)', 'potatoes', 'tomatoes', 'cacao (chocolate)', 'cassava', 'chili peppers'].forEach((s, i) => { b += text(34, 128 + i * 36, s, { size: 17 }); });
-  b += rect(450, 60, 260, 300, { fill: TINT, stroke: TEAL, w: 2.2 });
-  b += text(580, 92, 'From Afro-Eurasia', { anchor: 'middle', size: 19, bold: true, fill: TEAL });
-  ['wheat and rice', 'sugarcane', 'coffee', 'cattle, pigs, horses', 'chickens', 'diseases: smallpox,', 'measles'].forEach((s, i) => { b += text(474, 128 + i * 32, s, { size: 17, fill: i >= 5 ? VERM : INK, bold: i >= 5 }); });
-  b += path('M276,160 C330,130 390,130 444,160', { stroke: GREEN, w: 3, arrow: 'green' });
-  b += path('M444,260 C390,290 330,290 276,260', { stroke: TEAL, w: 3, arrow: 'teal' });
-  b += text(360, 210, 'Atlantic', { anchor: 'middle', size: 16, italic: true, fill: GREY });
-  b += text(360, 30, 'The Columbian Exchange, after 1492', { anchor: 'middle', size: 20, bold: true });
-  b += text(360, 392, 'Plants, animals and diseases crossed the ocean in both directions.', { anchor: 'middle', size: 15, fill: GREY });
-  add('agricultural-origins', 'agricultural-origins-exchange', 720, 408, 'The Columbian Exchange',
-    'Two boxes joined by arrows across the Atlantic, titled the Columbian Exchange, after 1492. From the Americas to Europe, Africa and Asia: maize (corn), potatoes, tomatoes, cacao, cassava and chili peppers. From Afro-Eurasia to the Americas: wheat and rice, sugarcane, coffee, cattle, pigs, horses and chickens, and diseases such as smallpox and measles. Plants, animals and diseases crossed the ocean in both directions.', b);
+  b += text(240, 30, 'The Columbian Exchange, after 1492', { anchor: 'middle', size: 20, bold: true });
+  b += rect(6, 50, 228, 350, { fill: MINT, stroke: GREEN, w: 2.2 });
+  b += text(120, 80, 'From the Americas', { anchor: 'middle', size: 18, bold: true, fill: '#00694D' });
+  b += line(40, 96, 200, 96, { stroke: GREEN, w: 3, arrow: 'green' });
+  ['maize (corn)', 'potatoes', 'tomatoes', 'cacao', 'cassava', 'chili peppers'].forEach((s, i) => { b += text(22, 136 + i * 36, s, { size: 18 }); });
+  b += rect(246, 50, 228, 350, { fill: TINT, stroke: TEAL, w: 2.2 });
+  b += text(360, 80, 'From Afro-Eurasia', { anchor: 'middle', size: 18, bold: true, fill: TEAL });
+  b += line(440, 96, 280, 96, { stroke: TEAL, w: 3, arrow: 'teal' });
+  ['wheat, rice', 'sugarcane', 'coffee', 'cattle, pigs', 'horses, chickens', 'smallpox,', 'measles'].forEach((s, i) => { b += text(262, 136 + i * 36, s, { size: 18, fill: i >= 5 ? VERM : INK, bold: i >= 5 }); });
+  b += lines(240, 432, 'Plants, animals and diseases crossed\nthe Atlantic in both directions.', { anchor: 'middle', size: 17, fill: GREY });
+  add('agricultural-origins', 'agricultural-origins-exchange', 480, 470, 'The Columbian Exchange',
+    'Two boxes, titled the Columbian Exchange, after 1492. From the Americas to Europe, Africa and Asia: maize (corn), potatoes, tomatoes, cacao, cassava and chili peppers. From Afro-Eurasia to the Americas: wheat and rice, sugarcane, coffee, cattle, pigs, horses and chickens, and diseases such as smallpox and measles. Plants, animals and diseases crossed the Atlantic in both directions.', b);
 }
 
 /* ---------------------------------------------------- second-agricultural-revolution */
 {
   let b = '';
-  b += text(360, 30, 'A four-field rotation (Norfolk, England, 1700s)', { anchor: 'middle', size: 19, bold: true });
-  const crops = [['Wheat', 'grain to sell', FIELD2], ['Turnips', 'winter feed\nfor animals', '#E9C9B0'], ['Barley', 'grain', '#EFE2A4'], ['Clover', 'grazing; puts\nnitrogen in soil', FIELD]];
-  const pos = [[150, 60], [380, 60], [380, 250], [150, 250]];
+  b += text(240, 30, 'A four-field rotation', { anchor: 'middle', size: 21, bold: true });
+  b += text(240, 56, '(Norfolk, England, 1700s)', { anchor: 'middle', size: 17, fill: GREY });
+  const crops = [['Wheat', 'grain to sell', FIELD2], ['Turnips', 'winter feed\nfor animals', '#E9C9B0'], ['Barley', 'grain', '#EFE2A4'], ['Clover', 'grazing; adds\nnitrogen to soil', FIELD]];
+  const pos = [[24, 80], [256, 80], [256, 280], [24, 280]];
   crops.forEach(([n, s, f], i) => {
     const [x, y] = pos[i];
-    b += rect(x, y, 190, 150, { fill: f, stroke: INK, w: 1.8, rx: 6 });
-    b += text(x + 95, y + 50, n, { anchor: 'middle', size: 20, bold: true });
-    b += lines(x + 95, y + 84, s, { anchor: 'middle', size: 15 });
+    b += rect(x, y, 200, 160, { fill: f, stroke: INK, w: 1.8, rx: 6 });
+    b += text(x + 100, y + 52, n, { anchor: 'middle', size: 22, bold: true });
+    b += lines(x + 100, y + 90, s, { anchor: 'middle', size: 18 });
   });
-  b += path('M342,135 L376,135', { stroke: TEAL, w: 3, arrow: 'teal' }) + path('M475,212 L475,246', { stroke: TEAL, w: 3, arrow: 'teal' }) +
-    path('M376,325 L342,325', { stroke: TEAL, w: 3, arrow: 'teal' }) + path('M245,246 L245,212', { stroke: TEAL, w: 3, arrow: 'teal' });
-  b += lines(16, 120, 'Each year,\nevery field\nmoves to the\nnext crop.', { size: 15, fill: TEAL, bold: true });
-  b += lines(584, 120, 'No field is\nleft empty,\nso more food\nand more\nanimals.', { size: 15, fill: TEAL, bold: true });
-  add('second-agricultural-revolution', 'second-agricultural-revolution-rotation', 720, 420, 'A four-field crop rotation',
-    'Four fields in a square, linked by arrows that go around in a circle: wheat (grain to sell), then turnips (winter feed for animals), then barley (grain), then clover (grazing that puts nitrogen back in the soil), then wheat again. Each year every field moves to the next crop. No field is left empty, so the farm grows more food and can feed more animals. This rotation spread from Norfolk, England, in the 1700s.', b);
+  b += line(226, 160, 252, 160, { stroke: TEAL, w: 3, arrow: 'teal' }) + line(356, 242, 356, 276, { stroke: TEAL, w: 3, arrow: 'teal' }) +
+    line(254, 360, 228, 360, { stroke: TEAL, w: 3, arrow: 'teal' }) + line(124, 278, 124, 244, { stroke: TEAL, w: 3, arrow: 'teal' });
+  b += lines(240, 476, 'Each year every field moves to the next\ncrop, so no field is left empty.', { anchor: 'middle', size: 17, fill: TEAL, bold: true });
+  add('second-agricultural-revolution', 'second-agricultural-revolution-rotation', 480, 516, 'A four-field crop rotation',
+    'Four fields in a square, linked by arrows that go around in a circle: wheat (grain to sell), then turnips (winter feed for animals), then barley (grain), then clover (grazing that adds nitrogen to the soil), then wheat again. Each year every field moves to the next crop, so no field is left empty and the farm can feed more animals. This rotation spread from Norfolk, England, in the 1700s.', b);
 }
 
 /* ---------------------------------------------------- green-revolution */
 {
   let b = '';
-  const ins = ['High-yield seeds', 'Chemical fertilizer', 'Irrigation water', 'Pesticides and machines'];
-  ins.forEach((s, i) => { b += box(10, 20 + i * 78, 220, 60, s, { fill: TINT, size: 16, bold: true }); b += line(232, 50 + i * 78, 290, 170, { stroke: TEAL, w: 2, arrow: 'teal' }); });
-  b += box(296, 130, 160, 84, 'More grain\nper hectare', { fill: '#FFFFFF', stroke: INK, w: 2.6, size: 18, bold: true });
-  b += line(458, 160, 498, 92, { stroke: GREEN, w: 2.4, arrow: 'green' }) + line(458, 186, 498, 252, { stroke: VERM, w: 2.4, arrow: 'verm' });
-  b += rect(500, 20, 210, 140, { fill: MINT, stroke: GREEN, w: 2 }) + text(605, 48, 'Benefits', { anchor: 'middle', size: 18, bold: true, fill: '#00694D' }) +
-    lines(516, 78, 'more food grown\nfewer famines\nlower grain prices', { size: 15 });
-  b += rect(500, 182, 210, 150, { fill: WARM, stroke: VERM, w: 2 }) + text(605, 210, 'Costs', { anchor: 'middle', size: 18, bold: true, fill: VERM }) +
-    lines(516, 240, 'heavy water use\nchemical runoff\ndebt for small farms\nfewer crop varieties', { size: 15 });
-  b += text(360, 372, 'The Green Revolution package, about 1960s to 1980s', { anchor: 'middle', size: 17, bold: true, fill: TEAL });
-  add('green-revolution', 'green-revolution-package', 720, 390, 'The Green Revolution package',
-    'Four inputs on the left: high-yield seeds, chemical fertilizer, irrigation water, and pesticides and machines. Arrows from all four lead to one box: more grain per hectare. From it, one arrow leads to benefits (more food grown, fewer famines, lower grain prices) and one to costs (heavy water use, chemical runoff, debt for small farms, fewer crop varieties). Caption: the Green Revolution package, about the 1960s to the 1980s.', b);
+  b += text(240, 28, 'The Green Revolution package', { anchor: 'middle', size: 20, bold: true, fill: TEAL });
+  b += text(240, 52, 'about the 1960s to the 1980s', { anchor: 'middle', size: 17, fill: GREY });
+  const ins = [['High-yield', 'seeds'], ['Chemical', 'fertilizer'], ['Irrigation', 'water'], ['Pesticides', 'and machines']];
+  ins.forEach(([a, c], i) => { const x = 10 + (i % 2) * 236, y = 70 + Math.floor(i / 2) * 76; b += box(x, y, 224, 64, `${a}\n${c}`, { fill: TINT, size: 17, bold: true }); });
+  b += line(240, 220, 240, 246, { stroke: TEAL, w: 3, arrow: 'teal' });
+  b += box(110, 250, 260, 60, 'More grain per hectare', { fill: '#FFFFFF', stroke: INK, w: 2.6, size: 19, bold: true });
+  b += line(180, 312, 120, 340, { stroke: GREEN, w: 2.6, arrow: 'green' }) + line(300, 312, 360, 340, { stroke: VERM, w: 2.6, arrow: 'verm' });
+  b += rect(6, 344, 228, 170, { fill: MINT, stroke: GREEN, w: 2 }) + text(120, 374, 'Benefits', { anchor: 'middle', size: 19, bold: true, fill: '#00694D' }) +
+    lines(20, 406, 'more food grown\nfewer famines\nlower grain prices', { size: 17 });
+  b += rect(246, 344, 228, 170, { fill: WARM, stroke: VERM, w: 2 }) + text(360, 374, 'Costs', { anchor: 'middle', size: 19, bold: true, fill: VERM }) +
+    lines(260, 406, 'heavy water use\nchemical runoff\ndebt for small farms\nfewer crop varieties', { size: 17 });
+  add('green-revolution', 'green-revolution-package', 480, 522, 'The Green Revolution package',
+    'Four inputs at the top: high-yield seeds, chemical fertilizer, irrigation water, and pesticides and machines. An arrow leads to one box: more grain per hectare. From it, one arrow leads to benefits (more food grown, fewer famines, lower grain prices) and one to costs (heavy water use, chemical runoff, debt for small farms, fewer crop varieties). Title: the Green Revolution package, about the 1960s to the 1980s.', b);
 }
 {
   let b = '';
-  const items = [['First\nAgricultural\nRevolution', 'from about\n12,000 years ago', 'plants and animals\ndomesticated'], ['Second\nAgricultural\nRevolution', '1700s and 1800s', 'rotation, new\ntools, machines'], ['Green\nRevolution', 'about 1960s\nto 1980s', 'high-yield seeds,\nfertilizer'], ['Genetically\nmodified\ncrops', 'from the\nlate 1990s', 'genes changed\nin a lab']];
-  b += line(30, 70, 700, 70, { stroke: INK, w: 3, arrow: 'ink' });
+  const items = [['First Agricultural Revolution', 'from about 12,000 years ago', 'plants and animals domesticated'], ['Second Agricultural Revolution', '1700s and 1800s', 'rotation, new tools, machines'], ['Green Revolution', 'about 1960s to 1980s', 'high-yield seeds, fertilizer'], ['Genetically modified crops', 'from the late 1990s', 'genes changed in a lab']];
+  b += text(240, 30, 'Big changes in farming, in order', { anchor: 'middle', size: 20, bold: true });
+  b += line(30, 60, 30, 600, { stroke: INK, w: 3, arrow: 'ink' });
   items.forEach(([n, d, w], i) => {
-    const x = 20 + i * 172;
-    b += circle(x + 80, 70, 10, { fill: i === 3 ? PURP : TEAL });
-    b += rect(x, 100, 160, 190, { fill: i === 3 ? '#F4E6EF' : TINT, stroke: i === 3 ? PURP : TEAL, w: 1.8 });
-    b += lines(x + 80, 128, n, { anchor: 'middle', size: 16, bold: true });
-    b += lines(x + 80, 208, d, { anchor: 'middle', size: 15, fill: VERM, bold: true });
-    b += lines(x + 80, 258, w, { anchor: 'middle', size: 15 });
+    const y = 56 + i * 134, last = i === 3;
+    b += circle(30, y + 56, 10, { fill: last ? PURP : TEAL });
+    b += rect(54, y, 418, 116, { fill: last ? '#F4E6EF' : TINT, stroke: last ? PURP : TEAL, w: 1.8 });
+    b += text(70, y + 32, n, { size: 19, bold: true });
+    b += text(70, y + 62, d, { size: 18, fill: VERM, bold: true });
+    b += text(70, y + 92, w, { size: 18 });
   });
-  b += text(360, 36, 'Big changes in farming, in order', { anchor: 'middle', size: 19, bold: true });
-  add('green-revolution', 'green-revolution-timeline', 720, 330, 'Big changes in farming, in order',
-    'A timeline with four boxes. First Agricultural Revolution, from about 12,000 years ago: plants and animals domesticated. Second Agricultural Revolution, 1700s and 1800s: crop rotation, new tools and machines. Green Revolution, about the 1960s to the 1980s: high-yield seeds and fertilizer. Genetically modified crops, from the late 1990s: genes changed in a lab. The last box is a different color: it came after the Green Revolution and is not part of it.', b);
+  add('green-revolution', 'green-revolution-timeline', 480, 610, 'Big changes in farming, in order',
+    'A timeline with four boxes from top to bottom. First Agricultural Revolution, from about 12,000 years ago: plants and animals domesticated. Second Agricultural Revolution, 1700s and 1800s: crop rotation, new tools and machines. Green Revolution, about the 1960s to the 1980s: high-yield seeds and fertilizer. Genetically modified crops, from the late 1990s: genes changed in a lab. The last box is a different color: it came after the Green Revolution and is not part of it.', b);
 }
 
 /* ---------------------------------------------------- production-regions: bid-rent */
 {
   let b = '';
-  const X0 = 90, Y0 = 380, W = 580, H = 320;
+  const X0 = 64, Y0 = 400, W = 390, H = 300;
   const xs = d => X0 + d / 100 * W, ys = r => Y0 - r / 100 * H;
-  // three bid-rent lines: rent = a - b * distance
   const L = [{ n: 'Market gardening', a: 95, k: 2.2, c: VERM }, { n: 'Grain', a: 60, k: 0.9, c: TEAL }, { n: 'Ranching', a: 26, k: 0.26, c: GREEN }];
   const cross = (p, q) => (p.a - q.a) / (p.k - q.k);
   const d1 = cross(L[0], L[1]), d2 = cross(L[1], L[2]), dEnd = L[2].a / L[2].k;
-  for (const l of L) b += line(xs(0), ys(l.a), xs(Math.min(100, l.a / l.k)), ys(Math.max(0, l.a - l.k * Math.min(100, l.a / l.k))), { stroke: l.c, w: 3 });
-  b += line(X0, Y0, X0, Y0 - H - 10, { w: 2, arrow: 'ink' }) + line(X0, Y0, X0 + W + 10, Y0, { w: 2, arrow: 'ink' });
-  b += lines(20, 60, 'Rent a\nfarmer\ncan pay', { size: 15, bold: true });
-  b += text(X0 + W / 2, Y0 + 60, 'Distance from the market', { anchor: 'middle', size: 16, bold: true });
-  b += text(X0, Y0 + 22, 'Market', { anchor: 'middle', size: 15 });
-  // highest-bidder bands under the axis
+  for (const l of L) { const end = Math.min(100, l.a / l.k); b += line(xs(0), ys(l.a), xs(end), ys(Math.max(0, l.a - l.k * end)), { stroke: l.c, w: 3.4 }); }
+  b += line(X0, Y0, X0, Y0 - H - 14, { w: 2, arrow: 'ink' }) + line(X0, Y0, X0 + W + 14, Y0, { w: 2, arrow: 'ink' });
+  b += text(12, 24, 'Rent a farmer can pay', { size: 18, bold: true });
+  b += text(X0 + W / 2, Y0 + 70, 'Distance from the market', { anchor: 'middle', size: 18, bold: true });
+  b += text(X0, Y0 + 24, 'Market', { anchor: 'middle', size: 17 });
   const bands = [[0, d1, L[0]], [d1, d2, L[1]], [d2, Math.min(100, dEnd), L[2]]];
-  for (const [a, c, l] of bands) b += rect(xs(a), Y0 + 30, xs(c) - xs(a), 12, { fill: l.c, rx: 2 });
-  b += text(xs(8), ys(95) + 4, 'Market gardening', { size: 16, bold: true, fill: VERM });
-  b += text(xs(36), ys(36), 'Grain', { size: 16, bold: true, fill: TEAL });
-  b += text(xs(62), ys(13) - 6, 'Ranching', { size: 16, bold: true, fill: GREEN });
-  add('production-regions', 'production-regions-bid-rent', 720, 456, 'Bid-rent lines for three kinds of farming',
+  for (const [a, c, l] of bands) b += rect(xs(a), Y0 + 34, xs(c) - xs(a), 14, { fill: l.c, rx: 2 });
+  b += text(xs(10), ys(92), 'Market gardening', { size: 18, bold: true, fill: VERM });
+  b += text(xs(40), ys(36), 'Grain', { size: 18, bold: true, fill: TEAL });
+  b += text(xs(70), ys(12) - 4, 'Ranching', { size: 18, bold: true, fill: GREEN });
+  add('production-regions', 'production-regions-bid-rent', 480, 490, 'Bid-rent lines for three kinds of farming',
     'A graph. The vertical axis is the rent a farmer can pay for a hectare of land; the horizontal axis is distance from the market. Three falling lines: market gardening starts highest and falls fastest, grain starts in the middle and falls more slowly, ranching starts lowest and falls slowest. A colored band under the axis shows which use can pay the most at each distance: market gardening nearest the market, then grain, then ranching farthest away.', b);
 }
 
 /* ---------------------------------------------------- farm-organization: commodity chain */
 {
   let b = '';
-  const steps = [['Inputs', 'seed,\nfertilizer,\nmachines'], ['Farm', 'grows the\ncrop'], ['Processor', 'mills, packs,\ncooks'], ['Distributor', 'ships and\nstores'], ['Store', 'sells to\nshoppers'], ['Consumer', 'buys and\neats']];
+  b += text(240, 28, 'A commodity chain:', { anchor: 'middle', size: 20, bold: true });
+  b += text(240, 54, 'every step from seed to plate', { anchor: 'middle', size: 18 });
+  const steps = [['Inputs', 'seed, fertilizer,\nmachines'], ['Farm', 'grows the\ncrop'], ['Processor', 'mills, packs,\ncooks'], ['Distributor', 'ships and\nstores'], ['Store', 'sells to\nshoppers'], ['Consumer', 'buys and\neats']];
+  const pos = [[6, 76], [166, 76], [326, 76], [326, 250], [166, 250], [6, 250]];
   steps.forEach(([n, s], i) => {
-    const x = 6 + i * 119;
-    b += rect(x, 90, 104, 130, { fill: i === 1 ? MINT : TINT, stroke: i === 1 ? GREEN : TEAL, w: 2 });
-    b += text(x + 52, 122, n, { anchor: 'middle', size: 16, bold: true });
-    b += lines(x + 52, 158, s, { anchor: 'middle', size: 15 });
-    if (i < 5) b += line(x + 106, 155, x + 117, 155, { stroke: INK, w: 2.2, arrow: 'ink' });
+    const [x, y] = pos[i];
+    b += rect(x, y, 148, 130, { fill: i === 1 ? MINT : TINT, stroke: i === 1 ? GREEN : TEAL, w: 2 });
+    b += text(x + 74, y + 32, n, { anchor: 'middle', size: 19, bold: true });
+    b += lines(x + 74, y + 68, s, { anchor: 'middle', size: 17 });
   });
-  b += text(360, 34, 'A commodity chain: every step from seed to plate', { anchor: 'middle', size: 18, bold: true });
-  b += path('M10,250 L10,262 L470,262 L470,250', { stroke: VERM, w: 2.4 });
-  b += lines(240, 290, 'One agribusiness may own or control\nseveral steps (vertical integration)', { anchor: 'middle', size: 15, bold: true, fill: VERM });
-  add('farm-organization', 'farm-organization-chain', 720, 330, 'A commodity chain from seed to plate',
-    'Six boxes joined by arrows, left to right: inputs (seed, fertilizer, machines), farm (grows the crop), processor (mills, packs, cooks), distributor (ships and stores), store (sells to shoppers) and consumer (buys and eats). A bracket under the first four boxes says one agribusiness may own or control several steps, which is called vertical integration.', b);
+  b += line(155, 141, 164, 141, { w: 2.6, arrow: 'ink' }) + line(315, 141, 324, 141, { w: 2.6, arrow: 'ink' }) + line(400, 207, 400, 247, { w: 2.6, arrow: 'ink' }) +
+    line(325, 315, 316, 315, { w: 2.6, arrow: 'ink' }) + line(165, 315, 156, 315, { w: 2.6, arrow: 'ink' });
+  b += lines(240, 416, 'Vertical integration: one agribusiness\nowns or controls several of these steps.', { anchor: 'middle', size: 17, bold: true, fill: VERM });
+  add('farm-organization', 'farm-organization-chain', 480, 460, 'A commodity chain from seed to plate',
+    'Six boxes joined by arrows in two rows: inputs (seed, fertilizer, machines), then farm (grows the crop), then processor (mills, packs, cooks), then distributor (ships and stores), then store (sells to shoppers), then consumer (buys and eats). A note says that vertical integration means one agribusiness owns or controls several of these steps.', b);
 }
 
 /* ---------------------------------------------------- von-thunen */
@@ -281,20 +276,20 @@ function rings(cx, cy, R, fills) {
 }
 {
   let b = '';
-  const cx = 230, cy = 230, R = [50, 95, 150, 210];
-  b += rect(4, 4, 452, 452, { fill: '#EFEBDD', stroke: LINE, rx: 4 });
+  const cx = 240, cy = 226, R = [46, 92, 150, 214];
+  b += rect(4, 4, 472, 446, { fill: '#EFEBDD', stroke: LINE, rx: 4 });
   b += rings(cx, cy, R, [VERM, FOREST, FIELD2, FIELD]);
-  b += circle(cx, cy, 16, { fill: '#FFFFFF', stroke: INK, w: 2 }) + text(cx, cy + 6, 'M', { anchor: 'middle', size: 16, bold: true });
-  [[cx, cy - 72, '1'], [cx, cy - 122, '2'], [cx, cy - 180, '3'], [cx + 150, cy + 150, '4']].forEach(([x, y, s]) => { b += badge(x, y, s, { r: 14 }); });
-  const leg = [['M', 'Market town', '#FFFFFF'], ['1', 'Market gardening\nand dairy', VERM], ['2', 'Forest (wood\nfor fuel, building)', FOREST], ['3', 'Grain and\nfield crops', FIELD2], ['4', 'Livestock ranching', FIELD]];
+  b += circle(cx, cy, 18, { fill: '#FFFFFF', stroke: INK, w: 2 }) + text(cx, cy + 7, 'M', { anchor: 'middle', size: 19, bold: true });
+  [[cx, cy - 69, '1'], [cx, cy - 121, '2'], [cx, cy - 182, '3'], [cx + 152, cy + 140, '4']].forEach(([x, y, s]) => { b += badge(x, y, s, { r: 17 }); });
+  const leg = [['M', 'Market town', '#FFFFFF'], ['1', 'Market gardening and dairy', VERM], ['2', 'Forest (fuel and lumber)', FOREST], ['3', 'Grain and field crops', FIELD2], ['4', 'Livestock ranching', FIELD]];
   leg.forEach(([k, s, f], i) => {
-    const y = 26 + i * 84;
-    b += rect(476, y, 36, 36, { fill: f, stroke: INK, w: 1.4, rx: 4 }) + text(494, y + 24, k, { anchor: 'middle', size: 16, bold: true, fill: k === '1' || k === '2' ? '#FFFFFF' : INK });
-    b += lines(524, y + 14, s, { size: 15 });
+    const y = 466 + i * 46;
+    b += rect(14, y, 36, 36, { fill: f, stroke: INK, w: 1.4, rx: 4 }) + text(32, y + 25, k, { anchor: 'middle', size: 18, bold: true, fill: k === '1' || k === '2' ? '#FFFFFF' : INK });
+    b += text(64, y + 25, s, { size: 18 });
   });
-  b += lines(476, 446, 'Beyond ring 4:\nwilderness', { size: 15, fill: GREY });
-  add('von-thunen', 'von-thunen-rings', 720, 470, 'Von Thünen model: rings of land use around one market',
-    'Concentric rings around a market town M on a flat plain. Ring 1, nearest the market: market gardening and dairy. Ring 2: forest, for wood used as fuel and for building. Ring 3: grain and field crops. Ring 4: livestock ranching. Beyond ring 4 is wilderness.', b);
+  b += text(14, 714, 'Beyond ring 4: wilderness', { size: 17, fill: GREY });
+  add('von-thunen', 'von-thunen-rings', 480, 728, 'Von Thünen model: rings of land use around one market',
+    'Concentric rings around a market town M on a flat plain. Ring 1, nearest the market: market gardening and dairy. Ring 2: forest, for fuel and lumber. Ring 3: grain and field crops. Ring 4: livestock ranching. Beyond ring 4 is wilderness.', b);
 }
 {
   // The stimulus: an invented region where a river and a second town bend the rings.
@@ -318,21 +313,21 @@ function rings(cx, cy, R, fills) {
 /* ---------------------------------------------------- global-agriculture */
 {
   let b = '';
-  const steps = [['Farm', 'Ecuador'], ['Packing\nhouse', 'washed,\nboxed'], ['Port', 'Guayaquil'], ['Cold ship', 'kept at\nabout\n13 °C'], ['Port', 'United\nStates'], ['Ripening\ncenter', 'gas\nripens\nfruit'], ['Store', 'shopper\nbuys']];
+  b += text(240, 28, 'A global supply chain for bananas', { anchor: 'middle', size: 20, bold: true });
+  const steps = [['Farm', 'Ecuador'], ['Packing house', 'washed, boxed'], ['Port', 'Guayaquil, Ecuador'], ['Cold ship', 'kept at about 13 °C'], ['Port', 'United States'], ['Ripening center', 'gas ripens the fruit'], ['Store', 'a shopper buys it']];
   steps.forEach(([n, s], i) => {
-    const x = 4 + i * 102;
-    const sea = i === 3;
-    b += rect(x, 70, 92, 150, { fill: sea ? '#DCEEF6' : i < 3 ? MINT : TINT, stroke: sea ? '#1F5F82' : i < 3 ? GREEN : TEAL, w: 2 });
-    b += lines(x + 46, 104, n, { anchor: 'middle', size: 15, bold: true });
-    b += lines(x + 46, 162, s, { anchor: 'middle', size: 15 });
-    if (i < 6) b += line(x + 93, 145, x + 101, 145, { stroke: INK, w: 2, arrow: 'ink' });
+    const y = 48 + i * 70, sea = i === 3, exp = i < 3;
+    b += rect(40, y, 434, 54, { fill: sea ? '#DCEEF6' : exp ? MINT : TINT, stroke: sea ? '#1F5F82' : exp ? GREEN : TEAL, w: 2 });
+    b += text(54, y + 34, n, { size: 19, bold: true });
+    b += text(462, y + 34, s, { size: 17, anchor: 'end' });
+    if (i < 6) b += line(257, y + 55, 257, y + 68, { w: 2.4, arrow: 'ink' });
   });
-  b += text(360, 36, 'A global supply chain for bananas', { anchor: 'middle', size: 19, bold: true });
-  b += path('M8,240 L8,252 L298,252 L298,240', { stroke: GREEN, w: 2.4 }) + text(153, 276, 'In the exporting country', { anchor: 'middle', size: 15, bold: true, fill: '#00694D' });
-  b += path('M412,240 L412,252 L712,252 L712,240', { stroke: TEAL, w: 2.4 }) + text(562, 276, 'In the importing country', { anchor: 'middle', size: 15, bold: true, fill: TEAL });
-  b += text(360, 314, 'Each step adds cost and value; a delay at any step can spoil the fruit.', { anchor: 'middle', size: 15, fill: GREY });
-  add('global-agriculture', 'global-agriculture-banana-chain', 720, 330, 'A global supply chain for bananas',
-    'Seven boxes joined by arrows: a farm in Ecuador, a packing house where fruit is washed and boxed, the port of Guayaquil, a refrigerated ship kept at about 13 degrees Celsius, a port in the United States, a ripening center where gas ripens the fruit, and a store where a shopper buys it. The first three steps are in the exporting country and the last three in the importing country. Each step adds cost and value, and a delay at any step can spoil the fruit.', b);
+  b += path('M30,52 L20,52 L20,238 L30,238', { stroke: GREEN, w: 3 }) + path('M30,332 L20,332 L20,518 L30,518', { stroke: TEAL, w: 3 });
+  b += `<text x="14" y="145" font-size="16" fill="#00694D" font-weight="700" text-anchor="middle" transform="rotate(-90 14 145)">Exporting country</text>`;
+  b += `<text x="14" y="425" font-size="16" fill="${TEAL}" font-weight="700" text-anchor="middle" transform="rotate(-90 14 425)">Importing country</text>`;
+  b += lines(240, 560, 'Each step adds cost and value; a delay\nat any step can spoil the fruit.', { anchor: 'middle', size: 17, fill: GREY });
+  add('global-agriculture', 'global-agriculture-banana-chain', 480, 600, 'A global supply chain for bananas',
+    'Seven steps from top to bottom, joined by arrows: a farm in Ecuador, a packing house where fruit is washed and boxed, the port of Guayaquil, a refrigerated ship kept at about 13 degrees Celsius, a port in the United States, a ripening center where gas ripens the fruit, and a store where a shopper buys it. The first three steps are marked as in the exporting country and the last three as in the importing country. Each step adds cost and value, and a delay at any step can spoil the fruit.', b);
 }
 
 /* ---------------------------------------------------- agriculture-consequences */
@@ -363,55 +358,54 @@ function rings(cx, cy, R, fills) {
 }
 {
   let b = '';
-  const steps = ['Farmers irrigate\ndry land for\nyears', 'Water evaporates\nin the hot sun', 'Salts in the water\nare left behind\nin the soil', 'Crops grow poorly;\nsome fields are\nabandoned'];
+  b += text(240, 30, 'How irrigation can lead to salinization', { anchor: 'middle', size: 19, bold: true });
+  const steps = ['Farmers irrigate dry land for years', 'Water evaporates in the hot sun', 'Salts in the water stay in the soil', 'Crops grow poorly; some fields\nare abandoned'];
   steps.forEach((s, i) => {
-    const x = 6 + i * 180;
-    b += box(x, 60, 160, 130, s, { fill: i === 3 ? WARM : TINT, stroke: i === 3 ? VERM : TEAL, size: 16 });
-    if (i < 3) b += line(x + 162, 125, x + 178, 125, { stroke: INK, w: 2.4, arrow: 'ink' });
+    const y = 52 + i * 96;
+    b += box(30, y, 420, 72, s, { fill: i === 3 ? WARM : TINT, stroke: i === 3 ? VERM : TEAL, size: 18 });
+    if (i < 3) b += line(240, y + 73, 240, y + 94, { w: 2.6, arrow: 'ink' });
   });
-  b += text(360, 34, 'How irrigation can lead to salinization', { anchor: 'middle', size: 19, bold: true });
-  b += lines(360, 230, 'Fixes: drain fields, flush salts with extra water,\nuse drip irrigation that wets only the roots.', { anchor: 'middle', size: 15, fill: GREY });
-  add('agriculture-consequences', 'agriculture-consequences-salinization', 720, 272, 'How irrigation can lead to salinization',
-    'Four boxes joined by arrows: farmers irrigate dry land for years; the water evaporates in the hot sun; salts in the water are left behind in the soil; crops grow poorly and some fields are abandoned. Below: fixes include draining fields, flushing salts with extra water and drip irrigation that wets only the roots.', b);
+  b += lines(240, 456, 'Fixes: drain fields, flush salts with extra\nwater, use drip irrigation that wets\nonly the roots.', { anchor: 'middle', size: 17, fill: GREY });
+  add('agriculture-consequences', 'agriculture-consequences-salinization', 480, 530, 'How irrigation can lead to salinization',
+    'Four boxes from top to bottom, joined by arrows: farmers irrigate dry land for years; the water evaporates in the hot sun; salts in the water stay in the soil; crops grow poorly and some fields are abandoned. Below: fixes include draining fields, flushing salts with extra water and drip irrigation that wets only the roots.', b);
 }
 
 /* ---------------------------------------------------- agriculture-challenges: food desert */
 {
   let b = '';
-  b += rect(4, 4, 712, 452, { fill: '#F1F1EC', stroke: LINE, rx: 4 });
-  for (let i = 0; i < 9; i++) b += line(4 + i * 89, 4, 4 + i * 89, 456, { stroke: '#FFFFFF', w: 6 });
-  for (let j = 0; j < 6; j++) b += line(4, 4 + j * 90, 716, 4 + j * 90, { stroke: '#FFFFFF', w: 6 });
-  b += circle(560, 140, 130, { fill: '#009E73', op: 0.12, stroke: GREEN, w: 2.4 });
-  b += rect(540, 122, 40, 36, { fill: GREEN, stroke: INK, w: 1.6, rx: 4 }) + text(560, 147, 'S', { anchor: 'middle', size: 18, bold: true, fill: '#FFFFFF' });
-  b += text(560, 300, '1 mile', { anchor: 'middle', size: 15, bold: true, fill: '#00694D' });
-  b += line(560, 140, 560, 270, { stroke: GREEN, w: 2, dash: '5 4' });
-  b += rect(40, 250, 330, 190, { fill: '#C24E00', op: 0.1, stroke: VERM, w: 2.4, dash: '8 5' });
-  b += text(205, 276, 'Neighborhood N', { anchor: 'middle', size: 16, bold: true, fill: VERM });
-  [[110, 340], [260, 380]].forEach(([x, y]) => { b += rect(x - 16, y - 14, 32, 28, { fill: VERM, stroke: INK, w: 1.4, rx: 4 }) + text(x, y + 6, 'C', { anchor: 'middle', size: 16, bold: true, fill: '#FFFFFF' }); });
-  b += path('M20,200 L716,200', { stroke: PURP, w: 3, dash: '10 6' }) + text(80, 190, 'Bus line', { anchor: 'middle', size: 15, bold: true, fill: PURP });
-  const leg = [['S', 'Supermarket: fresh food', GREEN], ['C', 'Corner store: snacks, little fresh food', VERM]];
-  leg.forEach(([k, s, f], i) => { b += rect(400, 360 + i * 40, 28, 26, { fill: f, rx: 4 }) + text(414, 379 + i * 40, k, { anchor: 'middle', size: 15, bold: true, fill: '#FFFFFF' }) + text(436, 379 + i * 40, s, { size: 15 }); });
-  add('agriculture-challenges', 'agriculture-challenges-food-desert', 720, 460, 'An invented town: where fresh food is sold',
+  b += rect(4, 4, 472, 452, { fill: '#F1F1EC', stroke: LINE, rx: 4 });
+  for (let i = 0; i < 7; i++) b += line(4 + i * 78, 4, 4 + i * 78, 456, { stroke: '#FFFFFF', w: 6 });
+  for (let j = 0; j < 7; j++) b += line(4, 4 + j * 75, 476, 4 + j * 75, { stroke: '#FFFFFF', w: 6 });
+  b += circle(360, 120, 100, { fill: '#009E73', op: 0.12, stroke: GREEN, w: 2.6 });
+  b += rect(340, 102, 40, 36, { fill: GREEN, stroke: INK, w: 1.6, rx: 4 }) + text(360, 127, 'S', { anchor: 'middle', size: 20, bold: true, fill: '#FFFFFF' });
+  b += line(360, 140, 360, 220, { stroke: GREEN, w: 2, dash: '5 4' }) + text(410, 214, '1 mile', { anchor: 'middle', size: 18, bold: true, fill: '#00694D' });
+  b += rect(20, 300, 250, 140, { fill: '#C24E00', op: 0.1, stroke: VERM, w: 2.6, dash: '8 5' });
+  b += text(145, 326, 'Neighborhood N', { anchor: 'middle', size: 19, bold: true, fill: VERM });
+  [[80, 380], [200, 405]].forEach(([x, y]) => { b += rect(x - 17, y - 15, 34, 30, { fill: VERM, stroke: INK, w: 1.4, rx: 4 }) + text(x, y + 7, 'C', { anchor: 'middle', size: 18, bold: true, fill: '#FFFFFF' }); });
+  b += path('M4,262 L476,262', { stroke: PURP, w: 3.4, dash: '10 6' }) + rect(14, 236, 86, 22, { fill: '#FFFFFF', rx: 3 }) + text(57, 253, 'Bus line', { anchor: 'middle', size: 17, bold: true, fill: PURP });
+  b += rect(14, 474, 30, 28, { fill: GREEN, rx: 4 }) + text(29, 495, 'S', { anchor: 'middle', size: 17, bold: true, fill: '#FFFFFF' }) + text(56, 495, 'Supermarket: fresh food', { size: 18 });
+  b += rect(14, 514, 30, 28, { fill: VERM, rx: 4 }) + text(29, 535, 'C', { anchor: 'middle', size: 17, bold: true, fill: '#FFFFFF' }) + text(56, 535, 'Corner store: snacks, little fresh food', { size: 18 });
+  add('agriculture-challenges', 'agriculture-challenges-food-desert', 480, 556, 'An invented town: where fresh food is sold',
     'A drawn street grid of an invented town. One supermarket, marked S, is in the northeast, with a circle showing everything within 1 mile of it. Neighborhood N, in the southwest, is outside that circle; it has two corner stores, marked C, that sell snacks and little fresh food. A bus line runs east to west between the neighborhood and the supermarket.', b);
 }
 
 /* ---------------------------------------------------- women-in-agriculture (FAO 2023 data) */
 {
   let b = '';
-  const data = [['World', 36, 38], ['Sub-Saharan\nAfrica', 66, 60], ['Southern Asia', 71, 47]];
-  const X0 = 70, Y0 = 360, H = 260, G = 210;
-  for (let v = 0; v <= 80; v += 20) { const y = Y0 - v / 80 * H; b += line(X0, y, 700, y, { stroke: v ? '#E3E8E7' : INK, w: v ? 1 : 2 }) + text(X0 - 10, y + 5, `${v}%`, { anchor: 'end', size: 15 }); }
+  const data = [['World', 36, 38], ['Sub-Saharan\nAfrica', 66, 60], ['Southern\nAsia', 71, 47]];
+  const X0 = 58, Y0 = 380, H = 250, G = 140;
+  for (let v = 0; v <= 80; v += 20) { const y = Y0 - v / 80 * H; b += line(X0, y, 470, y, { stroke: v ? '#E3E8E7' : INK, w: v ? 1 : 2 }) + text(X0 - 8, y + 6, `${v}%`, { anchor: 'end', size: 16 }); }
   data.forEach(([n, w, m], i) => {
-    const x = X0 + 40 + i * G;
-    b += rect(x, Y0 - w / 80 * H, 60, w / 80 * H, { fill: PURP, rx: 0 }) + text(x + 30, Y0 - w / 80 * H - 8, `${w}%`, { anchor: 'middle', size: 15, bold: true });
-    b += rect(x + 66, Y0 - m / 80 * H, 60, m / 80 * H, { fill: TEAL, rx: 0 }) + text(x + 96, Y0 - m / 80 * H - 8, `${m}%`, { anchor: 'middle', size: 15, bold: true });
-    b += lines(x + 63, Y0 + 24, n, { anchor: 'middle', size: 15 });
+    const x = X0 + 18 + i * G;
+    b += rect(x, Y0 - w / 80 * H, 50, w / 80 * H, { fill: PURP, rx: 0 }) + text(x + 25, Y0 - w / 80 * H - 8, `${w}%`, { anchor: 'middle', size: 17, bold: true });
+    b += rect(x + 54, Y0 - m / 80 * H, 50, m / 80 * H, { fill: TEAL, rx: 0 }) + text(x + 79, Y0 - m / 80 * H - 8, `${m}%`, { anchor: 'middle', size: 17, bold: true });
+    b += lines(x + 52, Y0 + 26, n, { anchor: 'middle', size: 17 });
   });
-  b += rect(470, 14, 22, 18, { fill: PURP, rx: 0 }) + text(500, 29, 'Working women', { size: 15 });
-  b += rect(470, 40, 22, 18, { fill: TEAL, rx: 0 }) + text(500, 55, 'Working men', { size: 15 });
-  b += lines(10, 24, 'Share of workers\nwhose job is in\nagrifood systems', { size: 15, bold: true });
-  b += text(360, 426, 'Source: FAO, The Status of Women in Agrifood Systems, 2023.', { anchor: 'middle', size: 15, fill: GREY });
-  add('women-in-agriculture', 'women-in-agriculture-jobs', 720, 440, 'Share of working women and men employed in agrifood systems',
+  b += lines(10, 26, 'Share of workers whose job\nis in agrifood systems', { size: 18, bold: true });
+  b += rect(10, 74, 22, 18, { fill: PURP, rx: 0 }) + text(40, 90, 'Working women', { size: 17 });
+  b += rect(220, 74, 22, 18, { fill: TEAL, rx: 0 }) + text(250, 90, 'Working men', { size: 17 });
+  b += lines(240, 456, 'Source: FAO, The Status of Women in\nAgrifood Systems, 2023.', { anchor: 'middle', size: 16, fill: GREY });
+  add('women-in-agriculture', 'women-in-agriculture-jobs', 480, 490, 'Share of working women and men employed in agrifood systems',
     'A bar chart from FAO, The Status of Women in Agrifood Systems, 2023. Share of workers whose job is in agrifood systems: world, 36% of working women and 38% of working men; Sub-Saharan Africa, 66% of women and 60% of men; Southern Asia, 71% of women and 47% of men.', b);
 }
 

@@ -394,19 +394,18 @@
    "q": "Which responses aim to protect land at the edge of a metro area? Select all that apply.",
    "options": [
     "Buying development rights from farmers",
-    "Drawing an urban growth boundary",
+    "Widening roads out to the edge",
     "Building a highway to a distant exurb",
     "Zoning edge land for large house lots"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Buying development rights keeps farms in farming; a growth boundary limits building beyond a line. Highways and large lots spread the city.",
+    "correct": "Buying development rights keeps farms in farming. Wider roads, highways and large lots spread the city outward.",
     "options": [
      "Right: farms stay farms.",
-     "Right: building stays inside the line.",
+     "Wider roads to the edge make it easier to build there.",
      "A highway to an exurb encourages sprawl.",
      "Large lots at the edge are low-density sprawl."
     ]

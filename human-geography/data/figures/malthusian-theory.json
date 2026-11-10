@@ -1,0 +1,12 @@
+{
+ "malthusian-theory-curves": {
+  "file": "figures/malthusian-theory-curves.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph over four generations: population doubles each generation (1, 2, 4, 8, 16) while food grows by one step each generation (1, 2, 3, 4, 5), so the population line rises far above the food line. A box says population outruns food, followed by famine, disease and war."
+ }
+}

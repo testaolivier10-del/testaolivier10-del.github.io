@@ -1,0 +1,465 @@
+{
+ "stimuli": {
+  "women-in-agriculture-s1": {
+   "kind": "data",
+   "title": "Women and men working in agrifood systems",
+   "source": "FAO, The Status of Women in Agrifood Systems, 2023",
+   "plot": {
+    "kind": "bar",
+    "label": "Bar chart: the share of working women and working men whose job is in agrifood systems. World: women 36%, men 38%. Sub-Saharan Africa: women 66%, men 60%. Southern Asia: women 71%, men 47%.",
+    "xLabel": "Region",
+    "yLabel": "Share of workers in agrifood systems (%)",
+    "categories": [
+     "World",
+     "Sub-Saharan Africa",
+     "Southern Asia"
+    ],
+    "series": [
+     {
+      "name": "Working women",
+      "values": [
+       36,
+       66,
+       71
+      ]
+     },
+     {
+      "name": "Working men",
+      "values": [
+       38,
+       60,
+       47
+      ]
+     }
+    ]
+   }
+  },
+  "women-in-agriculture-s2": {
+   "kind": "text",
+   "title": "Gaps between women and men in farming",
+   "text": "<p>From FAO, The Status of Women in Agrifood Systems (2023), in our summary. Women in farm wage work earn about 82 cents for every dollar men earn. On farms of the same size, farms run by women produce about 24% less, a gap FAO links to unequal access to land, credit, seeds, fertilizer, training and markets. In 40 of the 46 countries that reported, men were more likely than women to own or have secure rights to farmland. FAO estimates that closing the gaps in farm productivity and wages could reduce the number of people facing food insecurity by about 45 million.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-women-in-agriculture-1",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In which region does the chart show the largest gap between the shares of women and men working in agrifood systems?",
+   "options": [
+    "Southern Asia",
+    "The world as a whole",
+    "Sub-Saharan Africa",
+    "The gap is equal in the three groups"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare the pairs of bars: Southern Asia has by far the largest difference.",
+    "options": [
+     "Right: 71% of working women and 47% of working men, a gap of 24 percentage points.",
+     "The world shares are close: 36% and 38%.",
+     "The gap there is 6 points: 66% and 60%.",
+     "The gaps are 2, 6 and 24 points."
+    ]
+   },
+   "stimulus": "women-in-agriculture-s1"
+  },
+  {
+   "id": "hug-women-in-agriculture-2",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement compares the world figures with Sub-Saharan Africa's?",
+   "options": [
+    "Women rely less on agrifood work in Sub-Saharan Africa than in the world as a whole",
+    "Men in Sub-Saharan Africa rely less on agrifood work than men worldwide",
+    "Women and men both rely more on it in Sub-Saharan Africa",
+    "The figures for Sub-Saharan Africa match the world figures"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A compare speaks of both places: shares in Sub-Saharan Africa are much higher than the world's for both women and men.",
+    "options": [
+     "Sub-Saharan Africa's 66% is far higher than the world's 36%.",
+     "Men there are at 60%, versus 38% worldwide.",
+     "Right: about two thirds of workers there are in agrifood systems, versus just over a third worldwide.",
+     "They are far higher."
+    ]
+   },
+   "stimulus": "women-in-agriculture-s1"
+  },
+  {
+   "id": "hug-women-in-agriculture-3",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "In Southern Asia, many men have left rural areas for jobs in cities or abroad. How could this help explain the pattern in the chart?",
+   "options": [
+    "Men who move to cities take up more farm jobs there",
+    "Women leave farming when men migrate",
+    "Migration has no link to who works on farms",
+    "Women remaining in villages do more of the farm work"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Linking units: male out-migration can leave women managing farms, a shift some researchers call the feminization of agriculture, seen in places such as Nepal.",
+    "options": [
+     "City jobs are mostly outside farming.",
+     "The chart shows a large share of women in agrifood work.",
+     "Who stays behind shapes who farms.",
+     "Right: when men migrate for work, women often take on more of the farming at home."
+    ]
+   },
+   "stimulus": "women-in-agriculture-s1"
+  },
+  {
+   "id": "hug-women-in-agriculture-4",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "What is one limit of this chart for studying women's farm work?",
+   "options": [
+    "It gives no figures for men",
+    "Regional averages hide large differences between countries",
+    "It has no source or year",
+    "It shows a single region"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Data at the regional scale summarize many countries. To study one country or village, you need data at that scale. The chart also does not show unpaid work or who owns the land.",
+    "options": [
+     "It shows bars for men in each region.",
+     "Right: a regional figure cannot show how one country, or one village, differs.",
+     "It cites FAO, 2023.",
+     "It shows the world and two regions."
+    ]
+   },
+   "stimulus": "women-in-agriculture-s1"
+  },
+  {
+   "id": "hug-women-in-agriculture-5",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "According to the passage, what does FAO link the gap in farm output to?",
+   "options": [
+    "Women working fewer hours than men in most regions",
+    "Women farming smaller plots than men",
+    "Unequal access to land, credit, inputs and markets",
+    "Women growing different crops from men in each of the countries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Read the source closely: the gap is linked to access to resources, not to ability.",
+    "options": [
+     "The passage does not say that; it points to access to resources.",
+     "The passage compares farms of the same size.",
+     "Right: FAO ties the gap to unequal access to resources, on farms of the same size.",
+     "Crop choice is not the reason given."
+    ]
+   },
+   "stimulus": "women-in-agriculture-s2"
+  },
+  {
+   "id": "hug-women-in-agriculture-6",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Based on the passage, why might secure land rights help women farmers raise output?",
+   "options": [
+    "Titles can secure loans and make investment worthwhile",
+    "Land titles make crops grow faster without other inputs",
+    "Land titles lower the price of food for shoppers",
+    "Land titles are required to sell at a farmers market"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Secure land rights let farmers borrow against land and invest in it, which the passage connects to closing the productivity gap.",
+    "options": [
+     "Right: secure rights make it possible to borrow and worth it to improve the land.",
+     "Rights do not change biology; they change access to credit and the reason to invest.",
+     "The passage does not link land rights to food prices.",
+     "The passage does not mention that."
+    ]
+   },
+   "stimulus": "women-in-agriculture-s2"
+  },
+  {
+   "id": "hug-women-in-agriculture-7",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "According to the passage, what could happen at the global scale if the gaps were closed?",
+   "options": [
+    "Women would earn 82 cents for each dollar men earn",
+    "About 45 million fewer people would be food insecure",
+    "Farm output would fall by 24%",
+    "Men would lose their land rights in 46 countries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The source links a local and national issue, unequal access, to a global outcome: food insecurity.",
+    "options": [
+     "That is the current gap, not the result of closing it.",
+     "Right: FAO estimates a drop of about 45 million in food-insecure people.",
+     "Closing the gap would raise output, not lower it.",
+     "The passage says nothing like that."
+    ]
+   },
+   "stimulus": "women-in-agriculture-s2"
+  },
+  {
+   "id": "hug-women-in-agriculture-8",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement about women's roles in agriculture is most accurate?",
+   "options": [
+    "Women do the same farm work from country to country",
+    "Women do little farm work anywhere in the world",
+    "Women work in food processing rather than in growing food",
+    "They vary by place, culture and type of farming"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Women's farm labor varies with place, culture, laws and the type of production, from small family plots to large commercial farms.",
+    "options": [
+     "Roles differ greatly by place and type of farming.",
+     "FAO data show large shares of women in agrifood work, especially in Southern Asia and Sub-Saharan Africa.",
+     "Women grow food on farms around the world.",
+     "Right: women's roles in growing, processing, selling and preparing food differ widely from place to place."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-in-agriculture-9",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the markets of Accra, Ghana, many traders who buy produce from farmers and sell it to shoppers are women. Which stage of the food system does this describe?",
+   "options": [
+    "Distribution",
+    "Domestication",
+    "Production",
+    "Irrigation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Women's roles span production, processing, distribution and consumption. In many West African markets, women are central to distribution.",
+    "options": [
+     "Right: traders move food from farms to consumers.",
+     "Domestication is the first changing of wild species into crops.",
+     "Production is growing the food on farms.",
+     "Irrigation is watering crops."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-in-agriculture-10",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In Burkina Faso and Ghana, women collect shea nuts and turn them into shea butter for sale, including for export. Which stage of the food system does the butter-making represent?",
+   "options": [
+    "Consumption",
+    "Domestication",
+    "Processing",
+    "Distribution"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Processing adds value. Shea butter is a well-known case of women's work adding value to a farm and forest product.",
+    "options": [
+     "Consumption is eating or using the final product.",
+     "Domestication is the first changing of wild species.",
+     "Right: turning nuts into butter is processing, which adds value.",
+     "Distribution is moving and selling the product."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-in-agriculture-11",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "The USDA's 2022 Census of Agriculture found that 36% of US farm producers were women. At what scale are these data, and what can they not show?",
+   "options": [
+    "Global; they leave out the United States",
+    "Local; they leave out the national total",
+    "Regional; they leave out women producers",
+    "National; they hide differences between states"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Name the scale of the data, then its limit: a national figure cannot show how states or counties differ.",
+    "options": [
+     "The data are for the United States.",
+     "The figure is the national total.",
+     "The figure is about women producers.",
+     "Right: one national share hides local and regional variation."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-in-agriculture-12",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which factors help explain why women's roles in farming differ between places? Select all that apply.",
+   "options": [
+    "Laws and customs about who can own or inherit land",
+    "Whether men migrate away for work",
+    "The order of von Thünen's rings",
+    "Women being less able to farm than men",
+    "The survey method used to divide land"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Gender roles in farming come from culture, laws, economics and migration, and they change over time.",
+    "options": [
+     "Right: land rights shape who controls farms.",
+     "Right: out-migration can shift farm work to women.",
+     "The rings describe land use by distance, not who does the work.",
+     "FAO links gaps to unequal access to resources, not ability.",
+     "Survey methods shape field shapes, not gender roles."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-in-agriculture-13",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "As commercial farming with machines spreads in a region, what is a common effect on women's farm work there?",
+   "options": [
+    "Women's farm work rises because machines need more workers",
+    "Some lose paid farm jobs as machines replace hand labor",
+    "Women's roles stay exactly as they were",
+    "Women move into shifting cultivation in nearby forests"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Changes in the type of production change women's roles, sometimes cutting hand-labor jobs and sometimes opening new ones in processing and trade.",
+    "options": [
+     "Machines usually reduce the number of workers needed.",
+     "Right: mechanization can cut jobs such as hand weeding and harvesting.",
+     "Changes in farming usually change who does which jobs.",
+     "Commercial farming does not usually push people into forest plots."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-in-agriculture-14",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A government program gives women farmers in Ethiopia joint titles to the land they farm with their husbands. Based on this topic, what is the most likely result?",
+   "options": [
+    "Women stop farming because the land is now owned",
+    "The land is divided into long lots along rivers",
+    "Women find it easier to get loans and invest in the land",
+    "Farm output falls because two owners disagree"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Land rights are one of the gaps FAO names. Ethiopia's land certification programs, which often list both spouses, are a much-studied example.",
+    "options": [
+     "Owning land is a reason to keep farming and invest, not to stop.",
+     "Land titles do not change the survey method.",
+     "Right: secure rights open access to credit and give a reason to improve the land.",
+     "Studies of land titling point to more investment, not lower output."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-in-agriculture-15",
+   "unit": "unit-5",
+   "topic": "women-in-agriculture",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how a change in a named place affected women's farm labor.",
+   "why": {
+    "correct": "Place, cause and effect, with the link \"so\". This connects migration in Unit 2 to farming in Unit 5."
+   },
+   "specific": {
+    "frame": "In ___, many men moved away for work, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In rural Nepal, many men moved away for work, so women took on more of the farming and farm decisions at home.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "rural Nepal",
+       "some villages"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "women took on more of the farming and farm decisions at home",
+       "farm work in the villages stopped"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Farm work continued; who did it changed."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -290,7 +290,7 @@
     ]
    },
    "why": {
-    "correct": "The falls were a sacred place to the Dakota people, then the center of a milling city from the 1800s, and since the late 1900s a place of museums, parks and homes in old mill buildings. Each layer is still visible."
+    "correct": "The falls were a sacred place to the Dakota people, then the center of a milling city from the 1800s, and, as the mills closed in the late 1900s and early 2000s, a place of museums, parks and homes in old mill buildings. Each layer is still visible."
    }
   },
   {
@@ -305,7 +305,7 @@
    "options": [
     "A thatched-roof cottage built of stone in rural western Ireland",
     "An adobe home at Taos Pueblo in New Mexico",
-    "A Navajo hogan, an eight-sided home with an east-facing door",
+    "A Navajo hogan, a many-sided home with an east-facing door",
     "550 Madison Avenue in New York, a 1984 tower with a notched top"
    ],
    "correct": 3,
@@ -405,7 +405,7 @@
    "diff": 2,
    "type": "single",
    "practice": "4.B",
-   "q": "On the Navajo Nation, which spreads across parts of Arizona, New Mexico and Utah, some families still build hogans, eight-sided homes whose doors face east toward the rising sun. What does a hogan show on the cultural landscape?",
+   "q": "On the Navajo Nation, which spreads across parts of Arizona, New Mexico and Utah, some families still build hogans, many-sided homes (often six or eight sides) whose doors face east toward the rising sun. What does a hogan show on the cultural landscape?",
    "options": [
     "A popular culture trend copied from shopping malls",
     "A physical feature shaped by wind and erosion",

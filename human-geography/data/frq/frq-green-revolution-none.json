@@ -1,0 +1,146 @@
+{
+ "id": "frq-green-revolution-none",
+ "type": "none",
+ "points": 7,
+ "title": "The Green Revolution and food supply: technology, effects and a limit of Malthus",
+ "units": [
+  "unit-2",
+  "unit-5"
+ ],
+ "topics": [
+  "malthusian-theory",
+  "green-revolution"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "1.E",
+  "2.C",
+  "5.B"
+ ],
+ "stimuli": [],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify one technology that was part of the Green Revolution.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names one Green Revolution technology.",
+     "accept": [
+      "high-yield varieties (seeds) of wheat or rice",
+      "chemical fertilizer",
+      "irrigation",
+      "pesticides",
+      "machinery or mechanization"
+     ]
+    }
+   ],
+   "sample": "High-yield varieties of wheat and rice, bred by crossing plants to give more grain per hectare."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe where the Green Revolution had its largest effect on food production between the 1960s and the 1980s.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes a region or type of place with large gains, more than a name.",
+     "accept": [
+      "irrigated plains of South Asia, such as Punjab in India or Pakistan",
+      "rice-growing areas of East and Southeast Asia",
+      "wheat areas of Mexico",
+      "places with irrigation that grew wheat and rice"
+     ]
+    }
+   ],
+   "sample": "Its largest effect was on irrigated plains that grow wheat and rice in South and Southeast Asia, such as Punjab in India and Pakistan, where yields rose sharply from the mid-1960s."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain how the Green Revolution increased food supply at the national scale in a country such as India.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains the link from the new technology to more food for the country.",
+     "accept": [
+      "high-yield seeds with water and fertilizer raised yields per hectare, so national grain output rose",
+      "more harvests per year on irrigated land added to total output"
+     ]
+    }
+   ],
+   "sample": "In India, farmers planted high-yield wheat and rice with irrigation and fertilizer, so each hectare produced much more grain, and national grain output rose faster than population, which reduced the need for food imports."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain one negative environmental consequence of the Green Revolution.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains an environmental harm with its cause.",
+     "accept": [
+      "heavy irrigation lowered water tables",
+      "fertilizer or pesticide runoff polluted water",
+      "fewer crop varieties reduced biodiversity"
+     ]
+    }
+   ],
+   "sample": "Irrigated rice and wheat in Punjab need large amounts of water, so farmers pumped groundwater faster than rain could refill it, which lowered the water table."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain one negative social or economic consequence of the Green Revolution for small farmers at the local scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a harm to small farmers and why it happened.",
+     "accept": [
+      "the inputs were costly, so small farmers fell into debt",
+      "larger farmers gained more, so inequality between farmers grew",
+      "machines replaced hired laborers",
+      "small farmers who could not afford inputs sold their land"
+     ]
+    }
+   ],
+   "sample": "In a village in Punjab, the new seeds needed fertilizer, pesticides and pumped water that cost money, so small farmers who borrowed to buy them could fall into debt, while larger farmers with savings gained the most."
+  },
+  {
+   "label": "F",
+   "verb": "compare",
+   "prompt": "Compare the seeds of the Green Revolution with genetically modified (GMO) crops.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives a difference or similarity that speaks of both.",
+     "accept": [
+      "Green Revolution seeds were bred by crossing plants, whereas GMOs have genes changed in a lab",
+      "Green Revolution seeds spread from the 1960s, whereas GMOs came in the late 1990s",
+      "both were bred to raise yields or protect crops"
+     ]
+    }
+   ],
+   "sample": "Green Revolution seeds were bred by crossing plants and spread from the 1960s to the 1980s, whereas GMO crops have genes changed in a lab and were first sold in the late 1990s."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the Green Revolution challenges Malthusian theory.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree and explains it with the link between food and population.",
+     "accept": [
+      "to a large degree: food output grew faster than population, against Malthus's prediction",
+      "to a moderate degree: food grew faster, but neo-Malthusians argue the gains rely on water and fuel that may run short",
+      "to a limited degree: hunger continued in places the Green Revolution did not reach"
+     ]
+    }
+   ],
+   "sample": "To a large degree it challenges Malthus, because Malthus predicted food would grow more slowly than population, but in countries such as India new seeds and inputs made grain output grow faster than population; neo-Malthusians reply that the gains depend on water and fuel that may not last."
+  }
+ ]
+}

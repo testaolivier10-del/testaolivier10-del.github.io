@@ -476,23 +476,22 @@
    "diff": 2,
    "type": "multi",
    "practice": "1.D",
-   "q": "Which of these are among the UN Sustainable Development Goals? Select all that apply.",
+   "q": "Which of these is among the UN Sustainable Development Goals? Select all that apply.",
    "options": [
     "No poverty",
-    "Climate action",
+    "Faster logging of rainforests",
     "Higher tariffs on imports",
     "Double oil output by 2030",
     "More mass consumption"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "The SDGs include no poverty (Goal 1) and climate action (Goal 13), along with goals on hunger, health, education, gender, water and energy.",
+    "correct": "Of these, only no poverty (Goal 1) is an SDG; the goals also include climate action (Goal 13) and goals on hunger, health, education, gender, water and energy.",
     "options": [
      "Right: Goal 1.",
-     "Right: Goal 13.",
+     "The SDGs aim to protect forests, not log them faster.",
      "Tariffs are trade policy, not an SDG.",
      "More oil output is not a goal; the SDGs include clean energy.",
      "The SDGs call for responsible consumption, not more of it."

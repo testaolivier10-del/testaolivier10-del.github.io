@@ -86,32 +86,103 @@ From `docs/aphug-research/accuracy-risks.md`; check each against its source befo
 - Language families: avoid contested families (Altaic).
 - Map projections: the trade-off examples (Mercator, Robinson, Peters, and others) in framework.md section 7.
 
-## unit-4-facts: Unit 4 facts written from memory (open, author D, 2026-11-09)
+## unit-4-facts: Unit 4 facts written from memory (reviewed 2026-11-09, docs/aphug-reviews/u4.md)
 
-Written without a source read this session; check each before Unit 4 is published.
+Reviewer check of author D's list. "Verified" names the source read; "open" items still need a person.
 
-- Referendum results used in `devolution-factors-s1` and notes: Quebec 1980 Yes 40.4%, No 59.6%, turnout 85.6%;
-  Quebec 1995 Yes 49.4%, No 50.6%, turnout 93.5% (Elections Québec); Scotland 2014 Yes 44.7%, No 55.3%, turnout
-  84.6% (Electoral Commission). Brexit 2016: Leave 51.9%, Remain 48.1%.
-- `political-processes-s1` (independence classes for Sub-Saharan Africa): choices made: Liberia, Ethiopia and South
-  Africa "before 1950" (South Africa self-governing from 1910/1931, majority rule only 1994); Guinea-Bissau in
-  1965-1979 (declared 1973, recognized 1974); Zimbabwe 1980 (not the 1965 unilateral declaration); Eritrea 1993 and
-  South Sudan 2011 counted as independence from another African state; Somaliland left unvalued (disputed). The
-  source line is "compiled by LevlPrep, 2026": a reviewer may prefer a named source.
-- CFA franc (`power-territoriality`): "many states in West and Central Africa", backed by France's treasury,
-  reforms announced 2019. Whether Mali, Burkina Faso and Niger still use it as of 2026 was not checked, which is why
-  no count is given.
-- Supranational functions table (`sovereignty-challenges-s1`): summarized from the founding documents, not re-read;
-  African Union intervention right (Constitutive Act art. 4(h)) and suspension after coups; Arctic Council works by
-  consensus of eight states with six Indigenous Permanent Participants; NATO Article 5 invoked once (2001).
-- Smaller facts: Korean DMZ about 4 km by 250 km (1953); Nigeria 12 states (1967) to 36 (1996); Nunavut 1999;
-  Spain's autonomous communities after 1978; Belgium federal 1993; Canada equalization since 1957; Tanzania's
-  Swahili policy and "more than 100 ethnic groups"; ETA ceasefire 2011 and dissolution 2018; Partition about 15
-  million people moved (estimates range from 10 to 20 million); Chile and Argentina boundary treaty 1881; US and
-  Canada 49th parallel agreed 1818 and 1846; Kenya and Tanzania lines 1886 and 1890; the Chamizal dispute settled 1963;
-  Ever Given blocked the Suez Canal 23 to 29 March 2021; Russian flag on the North Pole seabed 2007; 1960 UN Resolution
-  1514 wording; 17 African states independent in 1960; OAU border resolution 1964; 2020 census reapportionment (Texas
-  +2, Ohio and New York -1); Rucho v. Common Cause (2019); Finland NATO 2023, Sweden 2024.
-- Classification calls a reviewer may contest: Iceland as "close to a nation-state"; the China and Viet Nam boundary
-  as subsequent; Chile and Argentina as antecedent (Indigenous peoples lived there; the notes say so); Eastern Europe
-  in the Cold War as the shatterbelt example; Somalia after 1991 as the failed-state example.
+- Verified, Elections Québec: 1980 Yes 40.44%, No 59.56%, turnout 85.61%
+  (https://www.electionsquebec.qc.ca/en/results-and-statistics/referendum-on-the-1980-sovereignty-association-proposal-for-quebec/);
+  1995 Yes 49.42%, No 50.58%, turnout 93.52%
+  (https://www.electionsquebec.qc.ca/en/results-and-statistics/1995-referendum-on-quebecs-accession-to-sovereignty/).
+  The rounded table values (40.4/59.6/85.6; 49.4/50.6/93.5) are right.
+- Verified, Electoral Management Board for Scotland (the official 2014 count): Yes 44.7%, No 55.3%, turnout 84.6%
+  (https://emb.scot/scottish-independence-referendum-2014-3/scottish-independence-referendum-18-september-2014). The
+  stimulus credits "Electoral Commission"; both published the result, so it stands.
+- Verified (secondary): Brexit 2016 Leave 51.9%, Remain 48.1%; UK left in 2020.
+- Verified with a caveat, `political-processes-s1` classes: every date class checked against the standard dates
+  (1960 values, Sierra Leone and Tanzania 1961, Uganda, Rwanda and Burundi 1962, Kenya 1963, Malawi and Zambia 1964,
+  Gambia 1965 to Djibouti 1977, Zimbabwe 1980, Namibia 1990, Eritrea 1993, South Sudan 2011). 17 African states in
+  1960: Library of Congress (https://blogs.loc.gov/maps/2023/10/mapping-the-year-of-africa/). Sudan is a grey context
+  shape on this base map, so its 1956 date is not needed. Open: South Africa in "before 1950" (Union 1910, Statute of
+  Westminster 1931, majority rule 1994) is a judgement call; a teacher may prefer a footnote. The "compiled by LevlPrep"
+  source line stays.
+- Verified, CFA franc: as of March 2026 Mali, Burkina Faso and Niger remain in the eight-member West African Economic
+  and Monetary Union, which uses the CFA franc, "backed by the French treasury"
+  (https://prod.currency-news.com/news/2026/mar/05/no-new-currency-for-west-african-states/). The 2019 reform
+  (announced 21 December 2019) covers the West African CFA franc only; notes now say so
+  (https://www.africanews.com/2019/12/22/end-of-an-era-west-african-states-to-halt-use-of-cfa-franc/). Recheck yearly:
+  the Sahel states talk of a currency of their own.
+- Verified, supranational table: AU Constitutive Act art. 4(h) (intervention for war crimes, genocide, crimes against
+  humanity, by Assembly decision) and art. 30 (governments that take power by unconstitutional means may not take part)
+  (https://dirco1.azurewebsites.net/au.nepad/constitutive.htm); Arctic Council founded 19 September 1996 by the Ottawa
+  Declaration, an intergovernmental forum, decisions by consensus of the eight Arctic States, six Indigenous Permanent
+  Participants, military security excluded (https://arctic-council.org/about/). NATO Article 5 invoked once (2001),
+  UN Charter art. 25, EU 1993, ASEAN 1967: standard, not re-read.
+- Verified (secondary): Finland joined NATO 4 April 2023, Sweden 7 March 2024.
+- Verified (secondary): Korean DMZ about 4 km by about 250 km (1953 armistice); Chamizal settled 1963 after the 1864
+  shift (NPS, https://www.nps.gov/cham/learn/historyculture/chamizalconvention.htm); Ever Given aground 23 to 29 March
+  2021; 2020 reapportionment Texas +2, Ohio and New York -1 each; Rucho v. Common Cause (2019); Greenland
+  self-government 2009; Nunavut 1999; Nigeria 12 states (1967) to 36 (1996); Belgium federal 1993; Spain 1978; ETA
+  2011 and 2018; equalization 1957; CPR 1885; 1818 and 1846 treaties; 1881 Chile and Argentina treaty; OAU 1964;
+  Resolution 1514 wording (14 December 1960); 2016 South China Sea award and China's rejection.
+- Fixed: Partition now gives the range (about 15 million, estimates about 10 to 20 million); Tanzania's Swahili is
+  the language of government and of primary schools (secondary teaching is in English).
+- New dated facts added by the reviewer, recheck yearly: Louisiana v. Callais, 29 April 2026, narrowed when Section 2
+  of the Voting Rights Act requires majority-minority districts (CRS LSB11431,
+  https://www.everycrsreport.com/reports/LSB11431.html); California Proposition 50, 4 November 2025, legislature map for
+  US House elections 2026 to 2030 (https://ballotpedia.org/California_Changes_to_Congressional_Redistricting_Amendment_(2025));
+  nine Schengen members with temporary internal checks as of 2 June 2026 (European Commission IP/26/1223,
+  https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1223/IP_26_1223_EN.pdf).
+- Open, classification calls for a teacher: Iceland as "close to a nation-state"; the China and Viet Nam boundary as
+  subsequent; Chile and Argentina as antecedent (the notes name the Indigenous caveat); Eastern Europe in the Cold War
+  as the shatterbelt example; Somalia after 1991 as the failed-state example; provincial data called "local
+  (subnational)" scale in `devolution-factors` item 6 and FRQ Q3 part A. None is keyed on a disputed status.
+
+## unit-7-facts: Author G facts to verify (open, 2026-11-09)
+
+Unit 7 claims written from memory, kept cautious; a reviewer should check each against its source before launch.
+
+- ILO estimate that about 61% of the world's workers had informal jobs ("Women and Men in the Informal Economy", 2018).
+- Grameen Bank story: Yunus's first loan in 1976; Nobel Peace Prize 2006 shared with the bank.
+- Rana Plaza collapse near Dhaka, 2013, more than 1,100 deaths; Iceland's equal-pay certification law of 2017;
+  Rwanda's majority of women in the lower house since 2008 (IPU); Andhra Pradesh microfinance restrictions, 2010.
+- Dates: Watt's steam engine (1770s), Lowell mills (1820s), 1851 census urban majority in England and Wales, Factory
+  Act 1833, Japan from 1868, shipping containers in the 1950s, Weber 1909, Rostow 1960, Wallerstein 1970s,
+  Prebisch at ECLA, Mexico's 1982 debt crisis, IMF 1944, WTO 1995, OPEC 1960, Mercosur 1991 (founding four), USMCA
+  2020, China's SEZs 1980 (Hainan 1988) and open coastal cities 1984 (Shanghai, Tianjin), Ford's assembly line 1913,
+  BMW Spartanburg 1994, Newfoundland cod moratorium 1992 (about 30,000 jobs), SDGs 2015 for 2030, Our Common Future
+  1987, Greece's 2010 rescue loans.
+- Qualitative claims: Zambia's exports mostly copper and its mid-1970s borrowing after a copper price fall; Côte
+  d'Ivoire the largest cocoa grower; Kenya's large geothermal share (Olkaria, near Lake Naivasha); Iceland's aluminum
+  smelters; Kerala's literacy and life expectancy compared with its income; South Sudan "low income" in FY27.
+- HDI values in `development-measures-s1` come from accuracy-risks.md section 1 (UNDP 2025 report, 2023 data):
+  re-read on the UNDP data center (it was not reachable from the authoring session) and swap in the 2026 report if
+  it is out before launch.
+
+## unit-5-facts: Author E facts to verify (open, 2026-11-09)
+
+Unit 5 claims written from memory or from secondary summaries, kept cautious and never the only route to a key; a
+reviewer should check each against its source before launch. Checked this session (fetched): FAO, The Status of
+Women in Agrifood Systems (2023) figures (36% and 38%; Sub-Saharan Africa 66% and 60%; Southern Asia 71% and 47%;
+82 cents; 24%; 40 of 46 countries; 45 million); FAO SOFIA 2024 (aquaculture 94.4 Mt, 51% of aquatic animals in 2022);
+UNCTAD State of Commodity Dependence 2025 (more than 60% threshold; 95 of 143 developing countries, 2021-2023);
+USDA 2022 Census via Choices magazine (1.9 million farms, 463 acres, 36% women producers, 6% of farms with 1 million
+dollars or more in sales making 78% of sales; 4% and 69% in 2017).
+
+- Not re-read: USDA ERS (2005, EIB-3) 41% of US workers in farming in 1900 and 1.9% in 2000; about 6.8 million US
+  farms in 1935; FAO SOFI 2024 "about 733 million people faced hunger in 2023"; the 2016 US National Academies GMO
+  review's finding; Kazakhstan's Kok-Aral dam finished in 2005; Ethiopia's land certification listing both spouses;
+  bananas shipped at about 13 °C; Brazil the largest soybean exporter and China the largest importer (cited "USDA,
+  2024"); horses reaching the Comanche and Lakota in the 1600s and 1700s; Irish famine figures (about 1 million
+  deaths, more than 1 million emigrants); IR8 released 1966; Borlaug's Nobel 1970; the term "Green Revolution" 1968;
+  Land Ordinance 1785; McCormick reaper 1831; Deere steel plow 1837; Tull seed drill 1701; Conservation Reserve
+  Program since 1985; Everglades restoration commitments since 2000; Horn of Africa five failed rainy seasons
+  2020-2023; Black Sea grain deal July 2022 to July 2023.
+- Hearth dates are given only as "about 12,000 to 10,000 years ago" for the start of farming; the hearth table names
+  crops, not dates. The CED's list (Fertile Crescent, Indus River valley, Southeast Asia, Central America) is from
+  framework.md's paraphrase (needs-author `ced-text`).
+- Map edits for review: `irrigation` moved from agriculture-consequences to agriculture-intro (5.1 and 5.3 need it);
+  `gmo` moved from agriculture-challenges to green-revolution (5.5 must say GMOs are not Green Revolution).
+- `frq-farm-trade-one` lists `trade-world-economy` (7.6) so it may key comparative advantage; it therefore unlocks
+  after Unit 7 topic 7.6, not with Unit 5. If the lead wants it live with Unit 5, part D must change to a Unit 5 or
+  earlier concept.

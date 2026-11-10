@@ -12,11 +12,11 @@
  "agriculture-consequences-salinization": {
   "file": "figures/agriculture-consequences-salinization.svg",
   "ext": "svg",
-  "w": 720,
-  "h": 272,
+  "w": 480,
+  "h": 530,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "Four boxes joined by arrows: farmers irrigate dry land for years; the water evaporates in the hot sun; salts in the water are left behind in the soil; crops grow poorly and some fields are abandoned. Below: fixes include draining fields, flushing salts with extra water and drip irrigation that wets only the roots."
+  "alt": "Four boxes from top to bottom, joined by arrows: farmers irrigate dry land for years; the water evaporates in the hot sun; salts in the water stay in the soil; crops grow poorly and some fields are abandoned. Below: fixes include draining fields, flushing salts with extra water and drip irrigation that wets only the roots."
  }
 }

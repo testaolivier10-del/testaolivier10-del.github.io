@@ -608,20 +608,19 @@
    "q": "Which of these jobs are in the tertiary (service) sector? Select all that apply.",
    "options": [
     "A nurse in a hospital in Lagos, Nigeria",
-    "A truck driver delivering goods in Ohio",
+    "A miner digging copper in northern Chile",
     "A fisher catching tuna off Ghana",
     "A welder building ships in Busan, South Korea",
     "A worker cutting timber in British Columbia"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Tertiary jobs provide services, such as health care and transport; fishing and logging are primary, and shipbuilding is secondary.",
+    "correct": "Tertiary jobs provide services, such as health care; fishing, mining and logging are primary, and shipbuilding is secondary.",
     "options": [
      "Right: health care is a service.",
-     "Right: transport is a service.",
+     "Mining takes from nature: primary.",
      "Fishing takes from nature: primary.",
      "Building ships is manufacturing: secondary.",
      "Cutting timber takes from nature: primary."
@@ -681,6 +680,63 @@
       }
      }
     }
+   }
+  },
+  {
+   "id": "hug-economic-sectors-17",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "2.B",
+   "q": "Using least cost theory, place each factory where its transport costs are lowest.",
+   "model": {
+    "layout": "tiers",
+    "title": "Least cost location",
+    "slots": [
+     {
+      "id": "raw",
+      "name": "Near the raw material"
+     },
+     {
+      "id": "mkt",
+      "name": "Near the market"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "cu",
+      "text": "Copper smelter (weight-losing)"
+     },
+     {
+      "id": "pop",
+      "text": "Soft-drink bottler (weight-gaining)"
+     },
+     {
+      "id": "none",
+      "text": "Break-of-bulk point"
+     }
+    ],
+    "key": {
+     "raw": "cu",
+     "mkt": "pop"
+    },
+    "slips": [
+     {
+      "piece": "pop",
+      "slot": "raw",
+      "why": "Bottling adds water, so the product gets heavier: ship it the shortest distance by locating near buyers."
+     },
+     {
+      "piece": "none",
+      "slot": "mkt",
+      "why": "A break-of-bulk point is a transfer place, not a factory to locate."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Weight-losing industries locate near their raw materials; weight-gaining industries locate near their markets."
    }
   }
  ]

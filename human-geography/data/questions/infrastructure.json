@@ -429,19 +429,18 @@
    "q": "Which of these count as infrastructure? Select all that apply.",
    "options": [
     "Internet cables and cell towers",
-    "A public clinic",
+    "A store's prices",
     "A farmer's crop of maize",
     "A family's car"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Infrastructure is shared systems and public facilities: communications and clinics count; private crops and cars do not.",
+    "correct": "Infrastructure is shared physical systems and public facilities: communications networks count; prices, private crops and cars do not.",
     "options": [
      "Right: communications networks are infrastructure.",
-     "Right: public facilities such as clinics are infrastructure.",
+     "Prices are not a physical system or facility.",
      "A crop is a product, not a shared system.",
      "A private car uses roads but is not infrastructure."
     ]

@@ -1,0 +1,12 @@
+{
+ "aging-populations-pyramid": {
+  "file": "figures/aging-populations-pyramid.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A constrictive population pyramid divided into three colored groups: people under 15 (youth dependents) at the bottom, people aged 15 to 64 (working age) in the middle, and people 65 and over (elderly dependents) at the top, where the female side is a little longer. The dependency ratio is the people under 15 plus the people 65 and over, divided by the people aged 15 to 64, times 100."
+ }
+}

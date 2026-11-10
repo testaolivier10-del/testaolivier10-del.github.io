@@ -1,5 +1,5 @@
 {
- "about": "Model Studio (builder T1): one context per model the CED names. Each context unlocks with its topic. Read docs/aphug-reviews/tools-model-studio.md.",
+ "about": "Model Studio (builder T1): one context per model the CED names. Each context unlocks with its topic. The builder report lists what each part checks.",
  "slug": "model-studio",
  "kind": "simulator",
  "topic": "transition-model",

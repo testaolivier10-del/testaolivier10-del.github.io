@@ -7,7 +7,7 @@
     "base": "country-a",
     "render": "choropleth",
     "invented": true,
-    "label": "Choropleth of invented Country A by province: the year a new dance style first became popular. It started in the Capital Region in 2022, reached the provinces of Port Bay and Lake City, the next largest cities, in 2023, the Central Valley and Eastern Plains next to the capital in 2024, and the rural west, north and south in 2025 or later",
+    "label": "Choropleth of invented Country A by province: the year a new dance style first became popular. It started in the Capital Region in 2022, reached the provinces of Port Bay and Lake City, the next largest cities, in 2023, the Central Valley and Eastern Plains, which also border the capital, in 2024, and the rural west, north and south in 2025 or later",
     "legendTitle": "Year the dance style first became popular (invented)",
     "classes": [
      "2025 or later",
@@ -84,7 +84,7 @@
    "type": "single",
    "practice": "3.C",
    "stimulus": "diffusion-types-s1",
-   "q": "The style reached the provinces of Port Bay and Lake City in 2023, a year before it reached the Central Valley right next to the capital. Which kind of diffusion does this jump show?",
+   "q": "The style reached the provinces of Port Bay and Lake City in 2023, a year before it reached the Central Valley, which borders the capital just as those two provinces do. Which kind of diffusion does this jump show?",
    "options": [
     "Contagious diffusion, from each place to the place next door",
     "Hierarchical diffusion, from the largest city to the next ones",
@@ -93,9 +93,9 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "the style skipped the nearby Central Valley and went first to the next biggest cities. Moving down a ladder of city size is hierarchical diffusion.",
+    "correct": "the style passed over the Central Valley, just as close to the capital, and went first to the next biggest cities. Moving down a ladder of city size is hierarchical diffusion.",
     "options": [
-     "Contagious diffusion would reach the Central Valley, next door to the capital, before far-off cities. The map shows the opposite.",
+     "Contagious diffusion would reach every province bordering the capital at about the same time. Instead the style went first to the two provinces with the next biggest cities.",
      "Right: the style skipped the nearby Central Valley and went first to the next biggest cities. Moving down a ladder of city size is hierarchical diffusion.",
      "The capital is still the darkest province; nothing shows that the style left its hearth.",
      "The map shows one dance style arriving in new places, not the idea being changed into a new form."

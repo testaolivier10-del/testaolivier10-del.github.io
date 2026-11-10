@@ -1,0 +1,12 @@
+{
+ "population-policies-timeline": {
+  "file": "figures/population-policies-timeline.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Timeline from 1970 to 2026. China: the one-child policy, antinatalist, from 1980 to 2015, then the limit eased to two children from 2016, and a three-child policy from 2021 aimed at raising births. Singapore: Stop at Two, antinatalist, from 1972, then from 1987 a pronatalist call for three or more children if families can afford them. Iran: a family planning program, antinatalist, from 1989, and a 2021 law to raise births."
+ }
+}

@@ -3,10 +3,10 @@
   "file": "figures/world-economy-changes-poles.svg",
   "ext": "svg",
   "w": 640,
-  "h": 324,
+  "h": 450,
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "Two panels. Agglomeration: many small factories clustered together, labeled many firms cluster together to share workers, suppliers and ideas. Growth pole: one large factory with arrows reaching out to four small towns, labeled one key project sparks growth in the towns and region around it."
+  "alt": "Two panels. Agglomeration: many small factories clustered together, labeled many firms cluster to share workers, suppliers and ideas. Growth pole: one large factory with arrows reaching out to four small towns, labeled one key project sparks growth in the towns and region around it."
  }
 }
