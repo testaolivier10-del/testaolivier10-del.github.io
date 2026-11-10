@@ -1,0 +1,2865 @@
+{
+ "stimuli": {
+  "population-composition-s1": {
+   "kind": "map",
+   "title": "Placeholder: a world choropleth of an invented measure",
+   "map": {
+    "base": "world",
+    "render": "choropleth",
+    "label": "Placeholder world choropleth: an invented measure in five classes, higher toward the south",
+    "invented": true,
+    "legendTitle": "Invented measure (units for practice)",
+    "classes": [
+     "Under 10",
+     "10 to 19",
+     "20 to 29",
+     "30 to 39",
+     "40 or more"
+    ],
+    "values": {
+     "fiji": 2,
+     "tanzania": 2,
+     "canada": 0,
+     "united-states": 0,
+     "uzbekistan": 0,
+     "papua-new-guinea": 2,
+     "indonesia": 2,
+     "argentina": 3,
+     "chile": 3,
+     "democratic-republic-of-the-congo": 2,
+     "somalia": 1,
+     "kenya": 2,
+     "sudan": 2,
+     "chad": 1,
+     "haiti": 1,
+     "dominican-republic": 1,
+     "russia": 0,
+     "bahamas": 1,
+     "norway": 0,
+     "timor-leste": 3,
+     "south-africa": 3,
+     "lesotho": 3,
+     "mexico": 1,
+     "uruguay": 3,
+     "brazil": 2,
+     "bolivia": 3,
+     "peru": 2,
+     "colombia": 2,
+     "panama": 2,
+     "costa-rica": 1,
+     "nicaragua": 1,
+     "honduras": 2,
+     "el-salvador": 1,
+     "guatemala": 1,
+     "belize": 2,
+     "guyana": 2,
+     "suriname": 2,
+     "france": 0,
+     "ecuador": 2,
+     "puerto-rico": 1,
+     "jamaica": 1,
+     "cuba": 1,
+     "zimbabwe": 3,
+     "botswana": 3,
+     "namibia": 3,
+     "senegal": 2,
+     "mali": 1,
+     "mauritania": 1,
+     "benin": 2,
+     "niger": 1,
+     "nigeria": 2,
+     "togo": 1,
+     "ghana": 2,
+     "cote-d-ivoire": 2,
+     "guinea": 1,
+     "guinea-bissau": 1,
+     "liberia": 2,
+     "sierra-leone": 1,
+     "burkina-faso": 1,
+     "central-african-republic": 2,
+     "congo": 2,
+     "gabon": 2,
+     "equatorial-guinea": 2,
+     "zambia": 2,
+     "malawi": 3,
+     "mozambique": 3,
+     "eswatini": 3,
+     "burundi": 2,
+     "israel": 0,
+     "lebanon": 1,
+     "madagascar": 3,
+     "gambia": 1,
+     "tunisia": 1,
+     "algeria": 0,
+     "jordan": 1,
+     "united-arab-emirates": 1,
+     "qatar": 1,
+     "kuwait": 1,
+     "iraq": 1,
+     "oman": 1,
+     "vanuatu": 3,
+     "cambodia": 2,
+     "laos": 1,
+     "myanmar": 1,
+     "viet-nam": 1,
+     "north-korea": 0,
+     "south-korea": 1,
+     "mongolia": 0,
+     "india": 1,
+     "bangladesh": 1,
+     "bhutan": 0,
+     "nepal": 1,
+     "pakistan": 1,
+     "afghanistan": 0,
+     "tajikistan": 0,
+     "kyrgyzstan": 1,
+     "turkmenistan": 0,
+     "iran": 1,
+     "armenia": 0,
+     "sweden": 0,
+     "belarus": 0,
+     "ukraine": 0,
+     "poland": 0,
+     "austria": 0,
+     "hungary": 0,
+     "moldova": 0,
+     "romania": 0,
+     "lithuania": 0,
+     "latvia": 0,
+     "estonia": 0,
+     "germany": 0,
+     "bulgaria": 0,
+     "greece": 1,
+     "turkiye": 0,
+     "croatia": 0,
+     "switzerland": 0,
+     "luxembourg": 0,
+     "belgium": 0,
+     "netherlands": 0,
+     "portugal": 0,
+     "spain": 1,
+     "ireland": 0,
+     "new-caledonia": 3,
+     "solomon-islands": 3,
+     "new-zealand": 4,
+     "australia": 3,
+     "sri-lanka": 2,
+     "china": 0,
+     "italy": 0,
+     "united-kingdom": 0,
+     "iceland": 0,
+     "azerbaijan": 0,
+     "georgia": 0,
+     "philippines": 2,
+     "malaysia": 2,
+     "brunei": 2,
+     "slovenia": 0,
+     "finland": 0,
+     "slovakia": 0,
+     "czechia": 0,
+     "eritrea": 1,
+     "japan": 0,
+     "paraguay": 3,
+     "yemen": 1,
+     "saudi-arabia": 1,
+     "cyprus": 0,
+     "morocco": 1,
+     "egypt": 1,
+     "libya": 0,
+     "ethiopia": 2,
+     "djibouti": 2,
+     "uganda": 2,
+     "rwanda": 2,
+     "bosnia-and-herzegovina": 0,
+     "north-macedonia": 0,
+     "serbia": 0,
+     "montenegro": 0,
+     "trinidad-and-tobago": 2,
+     "south-sudan": 1
+    }
+   }
+  },
+  "population-composition-s2": {
+   "kind": "map",
+   "title": "Placeholder: a world dot map",
+   "map": {
+    "base": "world",
+    "render": "dot",
+    "label": "Placeholder world dot map: invented dots clustered in a few bands",
+    "invented": true,
+    "legendTitle": "Invented population",
+    "dots": {
+     "each": "1 dot = 5 million people (invented)",
+     "points": [
+      [
+       -103,
+       -30
+      ],
+      [
+       -96,
+       -30
+      ],
+      [
+       -68,
+       -30
+      ],
+      [
+       -40,
+       -30
+      ],
+      [
+       -33,
+       -30
+      ],
+      [
+       -12,
+       -30
+      ],
+      [
+       -5,
+       -30
+      ],
+      [
+       23,
+       -30
+      ],
+      [
+       51,
+       -30
+      ],
+      [
+       58,
+       -30
+      ],
+      [
+       86,
+       -30
+      ],
+      [
+       114,
+       -30
+      ],
+      [
+       121,
+       -30
+      ],
+      [
+       -103,
+       -25
+      ],
+      [
+       -75,
+       -25
+      ],
+      [
+       -68,
+       -25
+      ],
+      [
+       -47,
+       -25
+      ],
+      [
+       -40,
+       -25
+      ],
+      [
+       -12,
+       -25
+      ],
+      [
+       16,
+       -25
+      ],
+      [
+       23,
+       -25
+      ],
+      [
+       51,
+       -25
+      ],
+      [
+       79,
+       -25
+      ],
+      [
+       86,
+       -25
+      ],
+      [
+       107,
+       -25
+      ],
+      [
+       114,
+       -25
+      ],
+      [
+       -110,
+       -20
+      ],
+      [
+       -103,
+       -20
+      ],
+      [
+       -82,
+       -20
+      ],
+      [
+       -75,
+       -20
+      ],
+      [
+       -47,
+       -20
+      ],
+      [
+       -19,
+       -20
+      ],
+      [
+       -12,
+       -20
+      ],
+      [
+       16,
+       -20
+      ],
+      [
+       44,
+       -20
+      ],
+      [
+       51,
+       -20
+      ],
+      [
+       72,
+       -20
+      ],
+      [
+       79,
+       -20
+      ],
+      [
+       107,
+       -20
+      ],
+      [
+       135,
+       -20
+      ],
+      [
+       -110,
+       -15
+      ],
+      [
+       -82,
+       -15
+      ],
+      [
+       -54,
+       -15
+      ],
+      [
+       -47,
+       -15
+      ],
+      [
+       -19,
+       -15
+      ],
+      [
+       9,
+       -15
+      ],
+      [
+       16,
+       -15
+      ],
+      [
+       37,
+       -15
+      ],
+      [
+       44,
+       -15
+      ],
+      [
+       72,
+       -15
+      ],
+      [
+       100,
+       -15
+      ],
+      [
+       107,
+       -15
+      ],
+      [
+       128,
+       -15
+      ],
+      [
+       135,
+       -15
+      ],
+      [
+       -89,
+       -10
+      ],
+      [
+       -82,
+       -10
+      ],
+      [
+       -54,
+       -10
+      ],
+      [
+       -26,
+       -10
+      ],
+      [
+       -19,
+       -10
+      ],
+      [
+       2,
+       -10
+      ],
+      [
+       9,
+       -10
+      ],
+      [
+       37,
+       -10
+      ],
+      [
+       65,
+       -10
+      ],
+      [
+       72,
+       -10
+      ],
+      [
+       93,
+       -10
+      ],
+      [
+       100,
+       -10
+      ],
+      [
+       128,
+       -10
+      ],
+      [
+       135,
+       -10
+      ],
+      [
+       -89,
+       -5
+      ],
+      [
+       -61,
+       -5
+      ],
+      [
+       -54,
+       -5
+      ],
+      [
+       -33,
+       -5
+      ],
+      [
+       -26,
+       -5
+      ],
+      [
+       2,
+       -5
+      ],
+      [
+       30,
+       -5
+      ],
+      [
+       37,
+       -5
+      ],
+      [
+       58,
+       -5
+      ],
+      [
+       65,
+       -5
+      ],
+      [
+       93,
+       -5
+      ],
+      [
+       100,
+       -5
+      ],
+      [
+       121,
+       -5
+      ],
+      [
+       128,
+       -5
+      ],
+      [
+       -96,
+       0
+      ],
+      [
+       -89,
+       0
+      ],
+      [
+       -68,
+       0
+      ],
+      [
+       -61,
+       0
+      ],
+      [
+       -33,
+       0
+      ],
+      [
+       -5,
+       0
+      ],
+      [
+       2,
+       0
+      ],
+      [
+       23,
+       0
+      ],
+      [
+       30,
+       0
+      ],
+      [
+       58,
+       0
+      ],
+      [
+       65,
+       0
+      ],
+      [
+       86,
+       0
+      ],
+      [
+       93,
+       0
+      ],
+      [
+       121,
+       0
+      ],
+      [
+       -103,
+       5
+      ],
+      [
+       -96,
+       5
+      ],
+      [
+       -68,
+       5
+      ],
+      [
+       -40,
+       5
+      ],
+      [
+       -33,
+       5
+      ],
+      [
+       -12,
+       5
+      ],
+      [
+       -5,
+       5
+      ],
+      [
+       23,
+       5
+      ],
+      [
+       30,
+       5
+      ],
+      [
+       51,
+       5
+      ],
+      [
+       58,
+       5
+      ],
+      [
+       86,
+       5
+      ],
+      [
+       114,
+       5
+      ],
+      [
+       121,
+       5
+      ],
+      [
+       -103,
+       10
+      ],
+      [
+       -75,
+       10
+      ],
+      [
+       -68,
+       10
+      ],
+      [
+       -47,
+       10
+      ],
+      [
+       -40,
+       10
+      ],
+      [
+       -12,
+       10
+      ],
+      [
+       -5,
+       10
+      ],
+      [
+       16,
+       10
+      ],
+      [
+       23,
+       10
+      ],
+      [
+       51,
+       10
+      ],
+      [
+       79,
+       10
+      ],
+      [
+       86,
+       10
+      ],
+      [
+       107,
+       10
+      ],
+      [
+       114,
+       10
+      ],
+      [
+       -110,
+       15
+      ],
+      [
+       -103,
+       15
+      ],
+      [
+       -82,
+       15
+      ],
+      [
+       -75,
+       15
+      ],
+      [
+       -47,
+       15
+      ],
+      [
+       -40,
+       15
+      ],
+      [
+       -19,
+       15
+      ],
+      [
+       -12,
+       15
+      ],
+      [
+       16,
+       15
+      ],
+      [
+       44,
+       15
+      ],
+      [
+       51,
+       15
+      ],
+      [
+       72,
+       15
+      ],
+      [
+       79,
+       15
+      ],
+      [
+       107,
+       15
+      ],
+      [
+       135,
+       15
+      ],
+      [
+       -110,
+       20
+      ],
+      [
+       -82,
+       20
+      ],
+      [
+       -75,
+       20
+      ],
+      [
+       -54,
+       20
+      ],
+      [
+       -47,
+       20
+      ],
+      [
+       -19,
+       20
+      ],
+      [
+       9,
+       20
+      ],
+      [
+       16,
+       20
+      ],
+      [
+       37,
+       20
+      ],
+      [
+       44,
+       20
+      ],
+      [
+       72,
+       20
+      ],
+      [
+       100,
+       20
+      ],
+      [
+       107,
+       20
+      ],
+      [
+       128,
+       20
+      ],
+      [
+       135,
+       20
+      ],
+      [
+       -110,
+       25
+      ],
+      [
+       -89,
+       25
+      ],
+      [
+       -82,
+       25
+      ],
+      [
+       -54,
+       25
+      ],
+      [
+       -26,
+       25
+      ],
+      [
+       -19,
+       25
+      ],
+      [
+       2,
+       25
+      ],
+      [
+       9,
+       25
+      ],
+      [
+       37,
+       25
+      ],
+      [
+       65,
+       25
+      ],
+      [
+       72,
+       25
+      ],
+      [
+       93,
+       25
+      ],
+      [
+       100,
+       25
+      ],
+      [
+       128,
+       25
+      ],
+      [
+       135,
+       25
+      ],
+      [
+       -89,
+       30
+      ],
+      [
+       -61,
+       30
+      ],
+      [
+       -54,
+       30
+      ],
+      [
+       -33,
+       30
+      ],
+      [
+       -26,
+       30
+      ],
+      [
+       2,
+       30
+      ],
+      [
+       30,
+       30
+      ],
+      [
+       37,
+       30
+      ],
+      [
+       58,
+       30
+      ],
+      [
+       65,
+       30
+      ],
+      [
+       93,
+       30
+      ],
+      [
+       100,
+       30
+      ],
+      [
+       121,
+       30
+      ],
+      [
+       128,
+       30
+      ],
+      [
+       -96,
+       35
+      ],
+      [
+       -89,
+       35
+      ],
+      [
+       -68,
+       35
+      ],
+      [
+       -61,
+       35
+      ],
+      [
+       -33,
+       35
+      ],
+      [
+       -5,
+       35
+      ],
+      [
+       2,
+       35
+      ],
+      [
+       23,
+       35
+      ],
+      [
+       30,
+       35
+      ],
+      [
+       58,
+       35
+      ],
+      [
+       65,
+       35
+      ],
+      [
+       86,
+       35
+      ],
+      [
+       93,
+       35
+      ],
+      [
+       121,
+       35
+      ],
+      [
+       -103,
+       40
+      ],
+      [
+       -96,
+       40
+      ],
+      [
+       -68,
+       40
+      ],
+      [
+       -40,
+       40
+      ],
+      [
+       -33,
+       40
+      ],
+      [
+       -12,
+       40
+      ],
+      [
+       -5,
+       40
+      ],
+      [
+       23,
+       40
+      ],
+      [
+       30,
+       40
+      ],
+      [
+       51,
+       40
+      ],
+      [
+       58,
+       40
+      ],
+      [
+       86,
+       40
+      ],
+      [
+       114,
+       40
+      ],
+      [
+       121,
+       40
+      ],
+      [
+       -103,
+       45
+      ],
+      [
+       -75,
+       45
+      ],
+      [
+       -68,
+       45
+      ],
+      [
+       -47,
+       45
+      ],
+      [
+       -40,
+       45
+      ],
+      [
+       -12,
+       45
+      ],
+      [
+       -5,
+       45
+      ],
+      [
+       16,
+       45
+      ],
+      [
+       23,
+       45
+      ],
+      [
+       51,
+       45
+      ],
+      [
+       79,
+       45
+      ],
+      [
+       86,
+       45
+      ],
+      [
+       107,
+       45
+      ],
+      [
+       114,
+       45
+      ],
+      [
+       -110,
+       50
+      ],
+      [
+       -103,
+       50
+      ],
+      [
+       -82,
+       50
+      ],
+      [
+       -75,
+       50
+      ],
+      [
+       -47,
+       50
+      ],
+      [
+       -40,
+       50
+      ],
+      [
+       -19,
+       50
+      ],
+      [
+       -12,
+       50
+      ],
+      [
+       16,
+       50
+      ],
+      [
+       44,
+       50
+      ],
+      [
+       51,
+       50
+      ],
+      [
+       72,
+       50
+      ],
+      [
+       79,
+       50
+      ],
+      [
+       107,
+       50
+      ],
+      [
+       135,
+       50
+      ]
+     ]
+    }
+   }
+  },
+  "population-composition-s3": {
+   "kind": "map",
+   "title": "Placeholder: a world graduated symbol map",
+   "map": {
+    "base": "world",
+    "render": "symbol",
+    "label": "Placeholder world graduated symbol map: invented values for six countries",
+    "invented": true,
+    "legendTitle": "Invented output",
+    "symbols": {
+     "unit": "million tonnes (invented)",
+     "items": [
+      {
+       "at": "china",
+       "value": 40
+      },
+      {
+       "at": "india",
+       "value": 30
+      },
+      {
+       "at": "brazil",
+       "value": 18
+      },
+      {
+       "at": "united-states",
+       "value": 25
+      },
+      {
+       "at": "nigeria",
+       "value": 8
+      },
+      {
+       "at": "australia",
+       "value": 5
+      }
+     ],
+     "legend": [
+      5,
+      20,
+      40
+     ]
+    }
+   }
+  },
+  "population-composition-s4": {
+   "kind": "map",
+   "title": "Placeholder: a world isoline map",
+   "map": {
+    "base": "world",
+    "render": "isoline",
+    "label": "Placeholder world isoline map: three invented lines of equal value across the Northern Hemisphere",
+    "invented": true,
+    "legendTitle": "Invented index",
+    "isolines": {
+     "unit": "index points (invented)",
+     "lines": [
+      {
+       "value": 10,
+       "points": [
+        [
+         -120,
+         55
+        ],
+        [
+         -60,
+         52
+        ],
+        [
+         0,
+         56
+        ],
+        [
+         60,
+         54
+        ],
+        [
+         120,
+         57
+        ]
+       ]
+      },
+      {
+       "value": 20,
+       "points": [
+        [
+         -110,
+         40
+        ],
+        [
+         -50,
+         38
+        ],
+        [
+         10,
+         42
+        ],
+        [
+         70,
+         40
+        ],
+        [
+         130,
+         41
+        ]
+       ]
+      },
+      {
+       "value": 30,
+       "points": [
+        [
+         -100,
+         25
+        ],
+        [
+         -40,
+         22
+        ],
+        [
+         20,
+         26
+        ],
+        [
+         80,
+         24
+        ],
+        [
+         140,
+         26
+        ]
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "population-composition-s5": {
+   "kind": "map",
+   "title": "Placeholder: a reference map with lettered countries",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Placeholder reference map of the world with four countries marked A to D",
+    "focus": [
+     "japan",
+     "nigeria"
+    ],
+    "legendTitle": "Countries in the questions",
+    "marks": [
+     {
+      "at": "japan",
+      "text": "A"
+     },
+     {
+      "at": "nigeria",
+      "text": "B"
+     },
+     {
+      "at": "brazil",
+      "text": "C"
+     },
+     {
+      "at": "india",
+      "text": "D"
+     }
+    ]
+   }
+  },
+  "population-composition-s6": {
+   "kind": "data",
+   "title": "Placeholder: a population pyramid of Country A",
+   "invented": true,
+   "plot": {
+    "kind": "pyramid",
+    "label": "Placeholder population pyramid of Country A with a wide base",
+    "groups": [
+     "0-9",
+     "10-19",
+     "20-29",
+     "30-39",
+     "40-49",
+     "50-59",
+     "60-69",
+     "70+"
+    ],
+    "left": [
+     14,
+     12,
+     9,
+     6,
+     4,
+     3,
+     1.5,
+     0.5
+    ],
+    "right": [
+     13.5,
+     11.5,
+     9,
+     6,
+     4.5,
+     3,
+     2,
+     1
+    ],
+    "xLabel": "Percent of the population",
+    "leftLabel": "Male",
+    "rightLabel": "Female"
+   }
+  },
+  "population-composition-s7": {
+   "kind": "data",
+   "title": "Placeholder: people by age group in two countries",
+   "invented": true,
+   "table": {
+    "caption": "Placeholder: people by age group (invented data for practice)",
+    "cols": [
+     "Country",
+     "Under 15",
+     "15 to 64",
+     "65 and over"
+    ],
+    "rows": [
+     [
+      "Country A",
+      "40%",
+      "56%",
+      "4%"
+     ],
+     [
+      "Country B",
+      "13%",
+      "62%",
+      "25%"
+     ]
+    ]
+   }
+  },
+  "population-composition-s8": {
+   "kind": "data",
+   "title": "Placeholder: share of people 65 and over",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Placeholder line chart: share of people 65 and over in two invented countries, 1980 to 2020",
+    "xLabel": "Year",
+    "yLabel": "Percent 65 and over",
+    "series": [
+     {
+      "name": "Country A",
+      "points": [
+       [
+        1980,
+        3
+       ],
+       [
+        1990,
+        3.5
+       ],
+       [
+        2000,
+        4
+       ],
+       [
+        2010,
+        4.5
+       ],
+       [
+        2020,
+        5
+       ]
+      ]
+     },
+     {
+      "name": "Country B",
+      "points": [
+       [
+        1980,
+        10
+       ],
+       [
+        1990,
+        13
+       ],
+       [
+        2000,
+        17
+       ],
+       [
+        2010,
+        21
+       ],
+       [
+        2020,
+        25
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "population-composition-s9": {
+   "kind": "image",
+   "title": "Placeholder: a drawn street scene",
+   "image": {
+    "alt": "Placeholder drawn scene: a school with a full playground beside a small clinic, in a town where most people are young."
+   }
+  },
+  "population-composition-s10": {
+   "kind": "text",
+   "title": "Placeholder: a town council notice",
+   "text": "<p>Placeholder passage: the council of an invented town plans to close two primary schools and open a day center for older residents, because fewer children and more people over 65 now live there.</p>"
+  },
+  "population-composition-s11": {
+   "kind": "map",
+   "title": "Placeholder: older residents by province of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "label": "Placeholder choropleth of Country A by province: the share of people 65 and over in three classes",
+    "invented": true,
+    "legendTitle": "People 65 and over (percent, invented)",
+    "classes": [
+     "Under 10%",
+     "10% to 19%",
+     "20% or more"
+    ],
+    "values": {
+     "north": 2,
+     "northeast": 2,
+     "east": 1,
+     "capital": 0,
+     "west": 1,
+     "central": 0,
+     "south": 1,
+     "coast": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-population-composition-1",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: which pattern does the choropleth show?",
+   "options": [
+    "Values rise toward the south",
+    "Values rise toward the north",
+    "Values are the same everywhere",
+    "Islands have the highest values"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Values rise toward the south.",
+    "options": [
+     "Right: the answer is values rise toward the south.",
+     "Placeholder: not \"Values rise toward the north\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Values are the same everywhere\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Islands have the highest values\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s1",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-2",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what does the hatched pattern mean?",
+   "options": [
+    "There are no data for that country",
+    "The highest class",
+    "The lowest class",
+    "A disputed border"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is There are no data for that country.",
+    "options": [
+     "Right: the answer is there are no data for that country.",
+     "Placeholder: not \"The highest class\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The lowest class\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A disputed border\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s1",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-3",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: how many classes does the legend use?",
+   "options": [
+    "Five",
+    "Three",
+    "Four",
+    "Six"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Five.",
+    "options": [
+     "Right: the answer is five.",
+     "Placeholder: not \"Three\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Four\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Six\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s1",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-4",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what does each dot on this map stand for?",
+   "options": [
+    "5 million people",
+    "One city",
+    "One country",
+    "5 people"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is 5 million people.",
+    "options": [
+     "Right: the answer is 5 million people.",
+     "Placeholder: not \"One city\": a placeholder explanation of the slip.",
+     "Placeholder: not \"One country\": a placeholder explanation of the slip.",
+     "Placeholder: not \"5 people\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s2",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-5",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: where do the dots cluster most?",
+   "options": [
+    "In a few bands across the continents",
+    "Over the oceans",
+    "Near the poles",
+    "Evenly over the land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is In a few bands across the continents.",
+    "options": [
+     "Right: the answer is in a few bands across the continents.",
+     "Placeholder: not \"Over the oceans\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Near the poles\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Evenly over the land\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s2",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-6",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what kind of thematic map is this?",
+   "options": [
+    "A dot density map",
+    "A choropleth map",
+    "An isoline map",
+    "A cartogram"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is A dot density map.",
+    "options": [
+     "Right: the answer is a dot density map.",
+     "Placeholder: not \"A choropleth map\": a placeholder explanation of the slip.",
+     "Placeholder: not \"An isoline map\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A cartogram\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s2",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-7",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: which country has the largest symbol?",
+   "options": [
+    "China",
+    "Nigeria",
+    "Australia",
+    "Brazil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is China.",
+    "options": [
+     "Right: the answer is china.",
+     "Placeholder: not \"Nigeria\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Australia\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Brazil\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s3",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-8",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what does the size of each circle show?",
+   "options": [
+    "The value, by its area",
+    "The size of the country",
+    "The population density",
+    "The distance from the equator"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is The value, by its area.",
+    "options": [
+     "Right: the answer is the value, by its area.",
+     "Placeholder: not \"The size of the country\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The population density\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The distance from the equator\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s3",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-9",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what kind of thematic map is this?",
+   "options": [
+    "A graduated symbol map",
+    "A dot density map",
+    "A choropleth map",
+    "A reference map"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is A graduated symbol map.",
+    "options": [
+     "Right: the answer is a graduated symbol map.",
+     "Placeholder: not \"A dot density map\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A choropleth map\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A reference map\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s3",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-10",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what does each line on this map join?",
+   "options": [
+    "Places with the same value",
+    "Places in one country",
+    "Roads between cities",
+    "The edges of regions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Places with the same value.",
+    "options": [
+     "Right: the answer is places with the same value.",
+     "Placeholder: not \"Places in one country\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Roads between cities\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The edges of regions\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s4",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-11",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: which line lies farthest north?",
+   "options": [
+    "The line labeled 10",
+    "The line labeled 20",
+    "The line labeled 30",
+    "They overlap"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is The line labeled 10.",
+    "options": [
+     "Right: the answer is the line labeled 10.",
+     "Placeholder: not \"The line labeled 20\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The line labeled 30\": a placeholder explanation of the slip.",
+     "Placeholder: not \"They overlap\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s4",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-12",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what kind of thematic map is this?",
+   "options": [
+    "An isoline map",
+    "A dot density map",
+    "A choropleth map",
+    "A cartogram"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is An isoline map.",
+    "options": [
+     "Right: the answer is an isoline map.",
+     "Placeholder: not \"A dot density map\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A choropleth map\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A cartogram\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s4",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-13",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: which letter marks Japan?",
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is A.",
+    "options": [
+     "Right: the answer is a.",
+     "Placeholder: not \"B\": a placeholder explanation of the slip.",
+     "Placeholder: not \"C\": a placeholder explanation of the slip.",
+     "Placeholder: not \"D\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s5",
+   "fixed": true
+  },
+  {
+   "id": "hug-population-composition-14",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: which letter marks Brazil?",
+   "options": [
+    "C",
+    "A",
+    "B",
+    "D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is C.",
+    "options": [
+     "Right: the answer is c.",
+     "Placeholder: not \"A\": a placeholder explanation of the slip.",
+     "Placeholder: not \"B\": a placeholder explanation of the slip.",
+     "Placeholder: not \"D\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s5",
+   "fixed": true
+  },
+  {
+   "id": "hug-population-composition-15",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: which letter marks India?",
+   "options": [
+    "D",
+    "A",
+    "B",
+    "C"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is D.",
+    "options": [
+     "Right: the answer is d.",
+     "Placeholder: not \"A\": a placeholder explanation of the slip.",
+     "Placeholder: not \"B\": a placeholder explanation of the slip.",
+     "Placeholder: not \"C\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s5",
+   "fixed": true
+  },
+  {
+   "id": "hug-population-composition-16",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: what does the wide base of this pyramid show?",
+   "options": [
+    "A large share of young people",
+    "A large share of older people",
+    "More men than women at most ages",
+    "A shrinking population"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is A large share of young people.",
+    "options": [
+     "Right: the answer is a large share of young people.",
+     "Placeholder: not \"A large share of older people\": a placeholder explanation of the slip.",
+     "Placeholder: not \"More men than women at most ages\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A shrinking population\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s6",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-17",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: which age group is the largest share of this population?",
+   "options": [
+    "0-9",
+    "70+",
+    "30-39",
+    "50-59"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is 0-9.",
+    "options": [
+     "Right: the answer is 0-9.",
+     "Placeholder: not \"70+\": a placeholder explanation of the slip.",
+     "Placeholder: not \"30-39\": a placeholder explanation of the slip.",
+     "Placeholder: not \"50-59\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s6",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-18",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: what will this population most likely need in ten years?",
+   "options": [
+    "More schools and jobs for young people",
+    "Fewer schools",
+    "Fewer homes",
+    "Fewer jobs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is More schools and jobs for young people.",
+    "options": [
+     "Right: the answer is more schools and jobs for young people.",
+     "Placeholder: not \"Fewer schools\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Fewer homes\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Fewer jobs\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s6",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-19",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: which country has the older age structure?",
+   "options": [
+    "Country B",
+    "Country A",
+    "They are the same",
+    "The table leaves it out"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Country B.",
+    "options": [
+     "Right: the answer is country b.",
+     "Placeholder: not \"Country A\": a placeholder explanation of the slip.",
+     "Placeholder: not \"They are the same\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The table leaves it out\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s7",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-20",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: what share of Country A is under 15?",
+   "options": [
+    "40%",
+    "13%",
+    "56%",
+    "4%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is 40%.",
+    "options": [
+     "Right: the answer is 40%.",
+     "Placeholder: not \"13%\": a placeholder explanation of the slip.",
+     "Placeholder: not \"56%\": a placeholder explanation of the slip.",
+     "Placeholder: not \"4%\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s7",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-21",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: which country has the larger working-age share?",
+   "options": [
+    "Country B",
+    "Country A",
+    "They are equal",
+    "The table leaves it out"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Country B.",
+    "options": [
+     "Right: the answer is country b.",
+     "Placeholder: not \"Country A\": a placeholder explanation of the slip.",
+     "Placeholder: not \"They are equal\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The table leaves it out\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s7",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-22",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: how did Country B’s share of people 65 and over change?",
+   "options": [
+    "It rose from 10% to 25%",
+    "It fell from 25% to 10%",
+    "It stayed at 10%",
+    "It rose from 3% to 5%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is It rose from 10% to 25%.",
+    "options": [
+     "Right: the answer is it rose from 10% to 25%.",
+     "Placeholder: not \"It fell from 25% to 10%\": a placeholder explanation of the slip.",
+     "Placeholder: not \"It stayed at 10%\": a placeholder explanation of the slip.",
+     "Placeholder: not \"It rose from 3% to 5%\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s8",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-23",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: which country aged faster from 1980 to 2020?",
+   "options": [
+    "Country B",
+    "Country A",
+    "They aged equally",
+    "The chart leaves it out"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Country B.",
+    "options": [
+     "Right: the answer is country b.",
+     "Placeholder: not \"Country A\": a placeholder explanation of the slip.",
+     "Placeholder: not \"They aged equally\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The chart leaves it out\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s8",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-24",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: what does the chart not show?",
+   "options": [
+    "How many people live in each country",
+    "The year of each value",
+    "The share of people 65 and over",
+    "Which line is which country"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is How many people live in each country.",
+    "options": [
+     "Right: the answer is how many people live in each country.",
+     "Placeholder: not \"The year of each value\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The share of people 65 and over\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Which line is which country\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s8",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-25",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what does this scene suggest about the town’s age structure?",
+   "options": [
+    "Most people are young",
+    "Most people are over 65",
+    "The town has few children",
+    "Most people are the same age"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Most people are young.",
+    "options": [
+     "Right: the answer is most people are young.",
+     "Placeholder: not \"Most people are over 65\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The town has few children\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Most people are the same age\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s9",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-26",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: which service in the scene is busiest?",
+   "options": [
+    "The school",
+    "The clinic",
+    "The bus stop",
+    "The market"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is The school.",
+    "options": [
+     "Right: the answer is the school.",
+     "Placeholder: not \"The clinic\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The bus stop\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The market\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s9",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-27",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Placeholder: what kind of source is this?",
+   "options": [
+    "A drawn landscape",
+    "A data table",
+    "A thematic map",
+    "A census report"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is A drawn landscape.",
+    "options": [
+     "Right: the answer is a drawn landscape.",
+     "Placeholder: not \"A data table\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A thematic map\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A census report\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s9",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-28",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: why does the council plan to close schools?",
+   "options": [
+    "Fewer children live in the town",
+    "More children live in the town",
+    "The schools are too new",
+    "The town has few older residents"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Fewer children live in the town.",
+    "options": [
+     "Right: the answer is fewer children live in the town.",
+     "Placeholder: not \"More children live in the town\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The schools are too new\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The town has few older residents\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s10",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-29",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: what will the council open?",
+   "options": [
+    "A day center for older residents",
+    "A new school",
+    "A factory",
+    "A farm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is A day center for older residents.",
+    "options": [
+     "Right: the answer is a day center for older residents.",
+     "Placeholder: not \"A new school\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A factory\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A farm\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s10",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-30",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Placeholder: what change in age structure does the passage describe?",
+   "options": [
+    "The town is aging",
+    "The town is getting younger",
+    "The town is not changing",
+    "The town is growing fast"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is The town is aging.",
+    "options": [
+     "Right: the answer is the town is aging.",
+     "Placeholder: not \"The town is getting younger\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The town is not changing\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The town is growing fast\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s10",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-31",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "Placeholder: at what scale of analysis are this map’s data?",
+   "options": [
+    "Local (subnational): provinces of one country",
+    "National: the whole of Country A",
+    "Global: the world",
+    "Regional: a world region"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Local (subnational): provinces of one country.",
+    "options": [
+     "Right: the answer is local (subnational): provinces of one country.",
+     "Placeholder: not \"National: the whole of Country A\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Global: the world\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Regional: a world region\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s11",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-32",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "Placeholder: which province is in the lowest class?",
+   "options": [
+    "Capital Region",
+    "Northern Hills",
+    "Lake District",
+    "Eastern Plains"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Capital Region.",
+    "options": [
+     "Right: the answer is capital region.",
+     "Placeholder: not \"Northern Hills\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Lake District\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Eastern Plains\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s11",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-33",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "Placeholder: what can this map not show?",
+   "options": [
+    "Differences inside each province",
+    "Which provinces have the most older people",
+    "Where the capital is",
+    "The classes used"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the answer is Differences inside each province.",
+    "options": [
+     "Right: the answer is differences inside each province.",
+     "Placeholder: not \"Which provinces have the most older people\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Where the capital is\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The classes used\": a placeholder explanation of the slip."
+    ]
+   },
+   "stimulus": "population-composition-s11",
+   "fixed": false
+  },
+  {
+   "id": "hug-population-composition-34",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Placeholder: in the 0-9 group of a pyramid there are 14 males for every 13.5 females (percent of the population). What is the sex ratio, to the nearest whole number?",
+   "why": {
+    "correct": "Placeholder: $\\frac{14}{13.5} \\times 100 \\approx 104$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "sexRatio",
+       "args": [
+        14,
+        13.5
+       ]
+      },
+      0
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "sexRatio",
+         "args": [
+          13.5,
+          14
+         ]
+        },
+        0
+       ]
+      },
+      "why": "Placeholder: males go on top: males per 100 females."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-35",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Placeholder: the share of people 65 and over in Country B grew from 10% to 25%. By what percent did the share grow?",
+   "why": {
+    "correct": "Placeholder: $\\frac{25 - 10}{10} \\times 100 = 150$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      10,
+      25
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        25,
+        10
+       ]
+      },
+      "why": "Placeholder: 15 is the change in points; divide by the old value and multiply by 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-36",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.B",
+   "q": "Placeholder: which statements about a wide-based pyramid are true? Select all that apply.",
+   "options": [
+    "It shows a large share of children",
+    "It suggests the population is growing",
+    "It shows a shrinking population",
+    "It shows mostly older people"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Placeholder: a wide base means many young people and growth.",
+    "options": [
+     "Right: the youngest bars are longest.",
+     "Right: many young people means growth ahead.",
+     "Placeholder: a narrow base would show that.",
+     "Placeholder: a wide top would show that."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-37",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Placeholder: put the pyramid shapes in order from the fastest-growing population to a shrinking one.",
+   "options": [
+    "Expansive (wide base)",
+    "Stationary (straight sides)",
+    "Constrictive (narrow base)"
+   ],
+   "why": {
+    "correct": "Placeholder: a wide base means many young people; a narrow base means few."
+   }
+  },
+  {
+   "id": "hug-population-composition-38",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Placeholder: build an explanation of what a wide-based pyramid means for a named place.",
+   "why": {
+    "correct": "Placeholder: a concept, a place and a cause with its effect."
+   },
+   "specific": {
+    "frame": "In ___, a wide-based pyramid means ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Placeholder: in Country A, a wide-based pyramid means many children, so the country will need more schools in the next ten years.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Country A",
+       "some countries"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: name the place the pyramid shows."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "more schools will be needed",
+       "the population will shrink"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: a wide base means growth, not decline."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-population-composition-39",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Placeholder: place the age groups on a pyramid, youngest at the bottom.",
+   "model": {
+    "layout": "tiers",
+    "title": "Placeholder: a population pyramid, top to bottom",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "Top bar"
+     },
+     {
+      "id": "t2",
+      "name": "Middle bar"
+     },
+     {
+      "id": "t3",
+      "name": "Bottom bar"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "old",
+      "text": "65 and over"
+     },
+     {
+      "id": "mid",
+      "text": "15 to 64"
+     },
+     {
+      "id": "young",
+      "text": "Under 15"
+     },
+     {
+      "id": "none",
+      "text": "Arable land"
+     }
+    ],
+    "key": {
+     "t1": "old",
+     "t2": "mid",
+     "t3": "young"
+    },
+    "slips": [
+     {
+      "piece": "young",
+      "slot": "t1",
+      "why": "Placeholder: the youngest group is the bottom bar of a pyramid."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Placeholder: a pyramid stacks age groups from youngest at the bottom to oldest at the top."
+   }
+  },
+  {
+   "id": "hug-population-composition-40",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Placeholder: build a ring model around a market: place the land uses from the center outward.",
+   "model": {
+    "layout": "rings",
+    "title": "Placeholder: rings around one market",
+    "center": "Market",
+    "slots": [
+     {
+      "id": "r1"
+     },
+     {
+      "id": "r2"
+     },
+     {
+      "id": "r3"
+     },
+     {
+      "id": "r4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "garden",
+      "text": "Market gardening and dairy"
+     },
+     {
+      "id": "wood",
+      "text": "Forest for fuel"
+     },
+     {
+      "id": "grain",
+      "text": "Grain fields"
+     },
+     {
+      "id": "ranch",
+      "text": "Ranching"
+     }
+    ],
+    "key": {
+     "r1": "garden",
+     "r2": "wood",
+     "r3": "grain",
+     "r4": "ranch"
+    }
+   },
+   "why": {
+    "correct": "Placeholder: perishable and heavy goods sit closest to the market."
+   }
+  },
+  {
+   "id": "hug-population-composition-41",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Placeholder: order three stages of a model, first to last.",
+   "model": {
+    "layout": "stages",
+    "slots": [
+     {
+      "id": "s1"
+     },
+     {
+      "id": "s2"
+     },
+     {
+      "id": "s3"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "a",
+      "text": "High and close"
+     },
+     {
+      "id": "b",
+      "text": "Falling apart"
+     },
+     {
+      "id": "c",
+      "text": "Low and close"
+     }
+    ],
+    "key": {
+     "s1": "a",
+     "s2": "b",
+     "s3": "c"
+    }
+   },
+   "why": {
+    "correct": "Placeholder: a placeholder three-stage model."
+   }
+  },
+  {
+   "id": "hug-population-composition-42",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.C",
+   "q": "Placeholder: place three wedges around a center, clockwise from the top.",
+   "model": {
+    "layout": "sectors",
+    "title": "Placeholder: three wedges",
+    "center": "Center",
+    "slots": [
+     {
+      "id": "k1"
+     },
+     {
+      "id": "k2"
+     },
+     {
+      "id": "k3"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "x",
+      "text": "Wedge one"
+     },
+     {
+      "id": "y",
+      "text": "Wedge two"
+     },
+     {
+      "id": "z",
+      "text": "Wedge three"
+     }
+    ],
+    "key": {
+     "k1": "x",
+     "k2": "y",
+     "k3": "z"
+    }
+   },
+   "why": {
+    "correct": "Placeholder: a placeholder wedge drawing."
+   }
+  },
+  {
+   "id": "hug-population-composition-43",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Placeholder: what does a population pyramid with a narrow base suggest?",
+   "options": [
+    "Few children and many older people",
+    "Many children and fast growth",
+    "A large total population",
+    "A high sex ratio"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: A narrow base means few young people.",
+    "options": [
+     "Right: a narrow base means few young people.",
+     "Placeholder: not \"Many children and fast growth\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A large total population\": a placeholder explanation of the slip.",
+     "Placeholder: not \"A high sex ratio\": a placeholder explanation of the slip."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-44",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Placeholder: which measure compares people with farmland?",
+   "options": [
+    "Physiological density",
+    "Arithmetic density",
+    "The sex ratio",
+    "Map scale"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: People per unit of arable land.",
+    "options": [
+     "Right: people per unit of arable land.",
+     "Placeholder: not \"Arithmetic density\": a placeholder explanation of the slip.",
+     "Placeholder: not \"The sex ratio\": a placeholder explanation of the slip.",
+     "Placeholder: not \"Map scale\": a placeholder explanation of the slip."
+    ]
+   }
+  }
+ ]
+}

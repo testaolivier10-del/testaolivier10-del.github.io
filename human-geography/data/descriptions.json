@@ -1,0 +1,18 @@
+{
+ "about": "Hand-written meta descriptions for pages whose opening text has no whole sentence short enough to be one. Shaped { lessons: {topic: text}, notes: {topic: text}, units: {chapter: text}, titles: {topic: text} }; \"titles\" is a shorter topic name for the <title> of its lesson and notes pages when the full one would be cut. Never use the mark here: no \"AP\" in any meta description (docs/aphug-spec.md decision 2).",
+ "lessons": {},
+ "notes": {},
+ "units": {},
+ "titles": {
+  "transition-model": "The Demographic Transition",
+  "women-population-change": "Women and Demographic Change",
+  "distribution-consequences": "Population Distribution Effects",
+  "centrifugal-centripetal": "Centrifugal and Centripetal Forces",
+  "urbanization-origins": "Origins of Urbanization",
+  "second-agricultural-revolution": "Second Agricultural Revolution",
+  "urban-change-challenges": "Challenges of Urban Change",
+  "sustainability-challenges": "Urban Sustainability Challenges",
+  "world-economy-changes": "Changes in the World Economy",
+  "skills-frq": "How FRQs Are Scored"
+ }
+}

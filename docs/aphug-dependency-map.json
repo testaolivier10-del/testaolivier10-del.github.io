@@ -1,0 +1,5532 @@
+{
+ "about": "AP Human Geography concept dependency map (docs/aphug-spec.md, docs/aphug-phase0.md): the 68 topics of the CED in order, the \"Skills you need\" topics with the topic each comes before, and every starting concept with the topic that teaches it and the concepts it depends on. Our own words; no CED text. Checked by scripts/check-aphug-map.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "Course and Exam Description effective fall 2020 (V.1), unchanged for 2026-27 (7 units, 68 topics)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/aphug-ced-map.json, itself from docs/aphug-research/framework.md. Essential knowledge for 4.9 to 7.8 read through a paraphrasing tool (docs/aphug-needs-author.md, ced-text)."
+ },
+ "practicesConfirmed": false,
+ "bigIdeas": [
+  {
+   "id": "PSO",
+   "name": "Patterns and Spatial Organization",
+   "summary": "How things are arranged in space and why."
+  },
+  {
+   "id": "IMP",
+   "name": "Impacts and Interactions",
+   "summary": "How people and places affect one another."
+  },
+  {
+   "id": "SPS",
+   "name": "Spatial Processes and Societal Change",
+   "summary": "How processes unfold across space and change societies."
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Concepts and Processes",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D",
+    "1.E"
+   ],
+   "mcqWeight": [
+    25,
+    36
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Spatial Relationships",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E"
+   ],
+   "mcqWeight": [
+    16,
+    25
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Data Analysis",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E",
+    "3.F"
+   ],
+   "mcqWeight": [
+    13,
+    20
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Source Analysis",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E",
+    "4.F"
+   ],
+   "mcqWeight": [
+    13,
+    20
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Scale Analysis",
+   "skills": [
+    "5.A",
+    "5.B",
+    "5.C",
+    "5.D"
+   ],
+   "mcqWeight": [
+    13,
+    20
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Skills you need"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "geo-skills",
+   "part": "skills",
+   "title": "Skills you need",
+   "tools": {
+    "simulators": [
+     {
+      "id": "frq-coach",
+      "title": "FRQ coach: answer free-response parts one at a time with the task verb's demand checked",
+      "topic": "skills-frq"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-scale-regions-none",
+      "title": "Regions and scale: formal, functional and perceptual regions at two scales",
+      "topic": "skills-scale",
+      "type": "none",
+      "author": "A"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A choropleth with a misleading legend: what the shades really measure",
+      "topic": "skills-reading",
+      "stimulus": "map",
+      "author": "A"
+     },
+     {
+      "title": "One data set at national and provincial scale (Country A)",
+      "topic": "skills-scale",
+      "stimulus": "map",
+      "author": "A"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Thinking Geographically",
+   "weight": [
+    8,
+    10
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "map-reader",
+      "title": "Map reader: reference and thematic maps, choropleth, dot, graduated symbol and isoline, legends and patterns named with a place",
+      "topic": "views-of-the-world"
+     },
+     {
+      "id": "scale-lab",
+      "title": "Scale lab: scale of analysis against map scale, and one data set at global, regional, national and local scale",
+      "topic": "scales-of-analysis"
+     },
+     {
+      "id": "justify",
+      "title": "Make it specific: concept, place and scale in every written answer, checked against a rubric",
+      "topic": "regional-analysis"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-census-data-one",
+      "title": "A census map of one country: the scale of the data, the pattern, and what it cannot show",
+      "topic": "data-in-decisions",
+      "type": "one",
+      "author": "A"
+     },
+     {
+      "id": "frq-human-environment-two",
+      "title": "Two sources on land use in a river valley: determinism, possibilism and sustainability",
+      "topic": "human-environment",
+      "type": "two",
+      "author": "A"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Reference and thematic maps of the same region",
+      "topic": "views-of-the-world",
+      "stimulus": "map",
+      "author": "A"
+     },
+     {
+      "title": "A table of census and satellite data for a growing city",
+      "topic": "data-in-decisions",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A drawn landscape of terraced fields",
+      "topic": "human-environment",
+      "stimulus": "image",
+      "author": "A"
+     },
+     {
+      "title": "A perceptual region from a survey (Country A)",
+      "topic": "regional-analysis",
+      "stimulus": "map",
+      "author": "A"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Reference and thematic maps; choropleth, dot, graduated symbol and isoline",
+      "topic": "views-of-the-world"
+     },
+     {
+      "title": "Formal, functional and perceptual regions",
+      "topic": "regional-analysis"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Population and Migration Patterns and Processes",
+   "weight": [
+    12,
+    17
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "population-lab",
+      "title": "Population lab: pyramids, the transition stages, rates, doubling time and dependency ratios (ApHugCalc)",
+      "topic": "population-composition"
+     },
+     {
+      "id": "model-studio",
+      "title": "Model Studio (flagship): build every named model by hand, apply it to a real case, then pick out its limits",
+      "topic": "transition-model"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-population-policy-none",
+      "title": "Population growth, policy and aging: RNI, TFR and a pronatalist or antinatalist policy",
+      "topic": "population-policies",
+      "type": "none",
+      "author": "B"
+     },
+     {
+      "id": "frq-aging-pyramid-one",
+      "title": "A population pyramid of an aging country: the shape, the dependency ratio and the effects",
+      "topic": "aging-populations",
+      "type": "one",
+      "author": "B"
+     },
+     {
+      "id": "frq-migration-flows-two",
+      "title": "A migration flow map and a table of remittances: push and pull, and effects at two scales",
+      "topic": "migration-effects",
+      "type": "two",
+      "author": "B"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A world choropleth of total fertility rate (dated source)",
+      "topic": "population-dynamics",
+      "stimulus": "map",
+      "author": "B"
+     },
+     {
+      "title": "Two population pyramids, expansive and constrictive",
+      "topic": "population-composition",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A table of density measures for three invented countries",
+      "topic": "distribution-consequences",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A flow map of step and chain migration",
+      "topic": "forced-voluntary-migration",
+      "stimulus": "map",
+      "author": "B"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Arithmetic, physiological and agricultural density",
+      "topic": "distribution-consequences"
+     },
+     {
+      "title": "The five stages of the demographic transition model",
+      "topic": "transition-model"
+     },
+     {
+      "title": "Pronatalist and antinatalist policies",
+      "topic": "population-policies"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From births and deaths to a population pyramid",
+      "topic": "population-dynamics"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Cultural Patterns and Processes",
+   "weight": [
+    12,
+    17
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "diffusion-lab",
+      "title": "Diffusion lab: diffusion types and migration on a map: push and pull, Ravenstein, step and chain",
+      "topic": "diffusion-types"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-diffusion-religion-none",
+      "title": "How a universalizing religion spread: diffusion types, hearths and effects on the landscape",
+      "topic": "religion-language-diffusion",
+      "type": "none",
+      "author": "C"
+     },
+     {
+      "id": "frq-language-map-one",
+      "title": "A language map of a bilingual country: the pattern, centripetal and centrifugal forces",
+      "topic": "cultural-patterns",
+      "type": "one",
+      "author": "C"
+     },
+     {
+      "id": "frq-landscape-two",
+      "title": "Two drawn scenes of one street a century apart: sequent occupance and globalization",
+      "topic": "culture-on-the-land",
+      "type": "two",
+      "author": "C"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A diffusion map of a cultural trait from its hearth",
+      "topic": "diffusion-types",
+      "stimulus": "map",
+      "author": "C"
+     },
+     {
+      "title": "A drawn ethnic neighborhood streetscape",
+      "topic": "culture-on-the-land",
+      "stimulus": "image",
+      "author": "C"
+     },
+     {
+      "title": "A passage on a lingua franca at a port",
+      "topic": "diffusion-history",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "A language map of a bilingual country",
+      "topic": "religion-language-diffusion",
+      "stimulus": "map",
+      "author": "C"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "The kinds of diffusion",
+      "topic": "diffusion-types"
+     },
+     {
+      "title": "Universalizing and ethnic religions",
+      "topic": "religion-language-diffusion"
+     },
+     {
+      "title": "Acculturation, assimilation, syncretism and multiculturalism",
+      "topic": "diffusion-effects"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Political Patterns and Processes",
+   "weight": [
+    12,
+    17
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "borders-lab",
+      "title": "Borders lab: boundary types, state shapes, centripetal and centrifugal forces, devolution, the law of the sea zones",
+      "topic": "defining-boundaries"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-supranational-none",
+      "title": "Supranational organizations and sovereignty: what members gain and give up",
+      "topic": "sovereignty-challenges",
+      "type": "none",
+      "author": "D"
+     },
+     {
+      "id": "frq-boundary-map-one",
+      "title": "A boundary map: boundary types, disputes and the law of the sea zones",
+      "topic": "boundary-functions",
+      "type": "one",
+      "author": "D"
+     },
+     {
+      "id": "frq-devolution-two",
+      "title": "A map of an autonomous region and a table of voting results: devolution and its causes",
+      "topic": "devolution-factors",
+      "type": "two",
+      "author": "D"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A boundary map with six boundary types marked",
+      "topic": "defining-boundaries",
+      "stimulus": "map",
+      "author": "D"
+     },
+     {
+      "title": "The law of the sea zones off one coast",
+      "topic": "boundary-functions",
+      "stimulus": "image",
+      "author": "D"
+     },
+     {
+      "title": "A districting map of one county, two plans",
+      "topic": "internal-boundaries",
+      "stimulus": "map",
+      "author": "D"
+     },
+     {
+      "title": "A table of supranational organization functions",
+      "topic": "sovereignty-challenges",
+      "stimulus": "data",
+      "author": "D"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "The six boundary types",
+      "topic": "defining-boundaries"
+     },
+     {
+      "title": "Unitary and federal states",
+      "topic": "forms-of-governance"
+     },
+     {
+      "title": "Nation, state, nation-state, stateless nation",
+      "topic": "political-intro"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Agriculture and Rural Land-Use Patterns and Processes",
+   "weight": [
+    12,
+    17
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "city-lab",
+      "title": "City lab: bid-rent and von Thünen rings, the city models side by side, central place and rank-size",
+      "topic": "von-thunen"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-green-revolution-none",
+      "title": "The Green Revolution and food supply: technology, effects and a limit of Malthus",
+      "topic": "green-revolution",
+      "type": "none",
+      "author": "E"
+     },
+     {
+      "id": "frq-farm-trade-one",
+      "title": "An export table for one crop: commodity dependence, comparative advantage and supply chains",
+      "topic": "global-agriculture",
+      "type": "one",
+      "author": "E"
+     },
+     {
+      "id": "frq-von-thunen-two",
+      "title": "A land-use map and a distance table: how well von Thünen fits a real region",
+      "topic": "von-thunen",
+      "type": "two",
+      "author": "E"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Von Thünen rings around one market town",
+      "topic": "von-thunen",
+      "stimulus": "image",
+      "author": "E"
+     },
+     {
+      "title": "A world map of shifting cultivation and nomadic herding",
+      "topic": "agriculture-intro",
+      "stimulus": "map",
+      "author": "E"
+     },
+     {
+      "title": "A crop yield chart before and after the Green Revolution",
+      "topic": "green-revolution",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Three survey methods drawn from above",
+      "topic": "settlement-survey",
+      "stimulus": "image",
+      "author": "E"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Intensive and extensive agriculture",
+      "topic": "agriculture-intro"
+     },
+     {
+      "title": "The four agricultural revolutions",
+      "topic": "green-revolution"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-6",
+   "n": 6,
+   "part": "course",
+   "title": "Cities and Urban Land-Use Patterns and Processes",
+   "weight": [
+    12,
+    17
+   ],
+   "tools": {
+    "frqThemes": [
+     {
+      "id": "frq-gentrification-none",
+      "title": "Urban renewal and gentrification: who gains, who is displaced, and the policy responses",
+      "topic": "urban-change-challenges",
+      "type": "none",
+      "author": "F"
+     },
+     {
+      "id": "frq-rail-boundary-one",
+      "title": "A metro area map with rail lines and city limits: sprawl, transit and fragmented government",
+      "topic": "urban-sustainability",
+      "type": "one",
+      "author": "F"
+     },
+     {
+      "id": "frq-world-cities-two",
+      "title": "A world map of metacities and world cities and a city data table: hierarchy and models",
+      "topic": "cities-globalization",
+      "type": "two",
+      "author": "F"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A rank-size table for two countries",
+      "topic": "city-size-distribution",
+      "stimulus": "data",
+      "author": "F"
+     },
+     {
+      "title": "A drawn city model with zones numbered",
+      "topic": "city-structure",
+      "stimulus": "image",
+      "author": "F"
+     },
+     {
+      "title": "A metro area map with an urban growth boundary",
+      "topic": "sustainability-challenges",
+      "stimulus": "map",
+      "author": "F"
+     },
+     {
+      "title": "Census and interview data on a gentrifying neighborhood",
+      "topic": "urban-data",
+      "stimulus": "data",
+      "author": "F"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "The urban models side by side",
+      "topic": "city-structure"
+     },
+     {
+      "title": "Rank-size, primate city, gravity and central place",
+      "topic": "city-size-distribution"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From site and situation to a world city",
+      "topic": "urbanization-origins"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-7",
+   "n": 7,
+   "part": "course",
+   "title": "Industrial and Economic Development Patterns and Processes",
+   "weight": [
+    12,
+    17
+   ],
+   "tools": {
+    "frqThemes": [
+     {
+      "id": "frq-development-theory-none",
+      "title": "Rostow, Wallerstein and dependency theory: one country's path and each model's limits",
+      "topic": "development-theories",
+      "type": "none",
+      "author": "G"
+     },
+     {
+      "id": "frq-development-table-one",
+      "title": "A development indicator table: HDI, GII and what each measure shows and hides",
+      "topic": "development-measures",
+      "type": "one",
+      "author": "G"
+     },
+     {
+      "id": "frq-industrial-cluster-two",
+      "title": "A regional map of industry and a research spending table: agglomeration and growth poles",
+      "topic": "world-economy-changes",
+      "type": "two",
+      "author": "G"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A development indicator table for five countries (dated source)",
+      "topic": "development-measures",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "A map of special economic zones along one coast",
+      "topic": "world-economy-changes",
+      "stimulus": "map",
+      "author": "G"
+     },
+     {
+      "title": "A chart of employment by sector over time",
+      "topic": "economic-sectors",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "A passage on ecotourism in a protected forest",
+      "topic": "sustainable-development",
+      "stimulus": "text",
+      "author": "G"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "The economic sectors",
+      "topic": "economic-sectors"
+     },
+     {
+      "title": "Rostow, Wallerstein and dependency theory",
+      "topic": "development-theories"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From the Industrial Revolution to the world economy",
+      "topic": "industrial-revolution"
+     }
+    ]
+   }
+  }
+ ],
+ "topics": [
+  {
+   "id": "skills-reading",
+   "ced": null,
+   "title": "Reading Maps and Data",
+   "chapter": "geo-skills",
+   "kind": "skill",
+   "skills": [
+    "3.A",
+    "3.B",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "before": "views-of-the-world",
+   "searchPhrase": "reading maps and data human geography"
+  },
+  {
+   "id": "skills-scale",
+   "ced": null,
+   "title": "Scale of Analysis and Map Scale",
+   "chapter": "geo-skills",
+   "kind": "skill",
+   "skills": [
+    "5.A"
+   ],
+   "practices": [
+    5
+   ],
+   "before": "views-of-the-world",
+   "searchPhrase": "scale of analysis and map scale human geography"
+  },
+  {
+   "id": "skills-frq",
+   "ced": null,
+   "title": "How FRQs Are Scored and What Each Task Verb Demands",
+   "chapter": "geo-skills",
+   "kind": "skill",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "before": "views-of-the-world",
+   "searchPhrase": "how frqs are scored and what each task verb demands human geography"
+  },
+  {
+   "id": "views-of-the-world",
+   "ced": "1.1",
+   "title": "Introduction to Maps",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    1,
+    4
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "introduction to maps human geography explained"
+  },
+  {
+   "id": "data-sources",
+   "ced": "1.2",
+   "title": "Geographic Data",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "geographic data human geography explained"
+  },
+  {
+   "id": "data-in-decisions",
+   "ced": "1.3",
+   "title": "The Power of Geographic Data",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "3.B",
+    "3.E",
+    "3.F"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "the power of geographic data human geography explained"
+  },
+  {
+   "id": "spatial-concepts",
+   "ced": "1.4",
+   "title": "Spatial Concepts",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "spatial concepts human geography explained"
+  },
+  {
+   "id": "human-environment",
+   "ced": "1.5",
+   "title": "Human-Environmental Interaction",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "1.C",
+    "1.E"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "human-environmental interaction human geography explained"
+  },
+  {
+   "id": "scales-of-analysis",
+   "ced": "1.6",
+   "title": "Scales of Analysis",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "5.A",
+    "5.B",
+    "5.C"
+   ],
+   "practices": [
+    5
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "scales of analysis human geography explained"
+  },
+  {
+   "id": "regional-analysis",
+   "ced": "1.7",
+   "title": "Regional Analysis",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    2,
+    5
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "regional analysis human geography explained"
+  },
+  {
+   "id": "population-distribution",
+   "ced": "2.1",
+   "title": "Population Distribution",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "population distribution human geography explained"
+  },
+  {
+   "id": "distribution-consequences",
+   "ced": "2.2",
+   "title": "Consequences of Population Distribution",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "3.C",
+    "3.D"
+   ],
+   "practices": [
+    1,
+    3
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "consequences of population distribution human geography explained"
+  },
+  {
+   "id": "population-composition",
+   "ced": "2.3",
+   "title": "Population Composition",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.E"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "population composition human geography explained"
+  },
+  {
+   "id": "population-dynamics",
+   "ced": "2.4",
+   "title": "Population Dynamics",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "3.C",
+    "3.E"
+   ],
+   "practices": [
+    1,
+    3
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "population dynamics human geography explained"
+  },
+  {
+   "id": "transition-model",
+   "ced": "2.5",
+   "title": "The Demographic Transition Model",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "1.E",
+    "2.E"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "the demographic transition model human geography explained"
+  },
+  {
+   "id": "malthusian-theory",
+   "ced": "2.6",
+   "title": "Malthusian Theory",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "1.E"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "malthusian theory human geography explained"
+  },
+  {
+   "id": "population-policies",
+   "ced": "2.7",
+   "title": "Population Policies",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "population policies human geography explained"
+  },
+  {
+   "id": "women-population-change",
+   "ced": "2.8",
+   "title": "Women and Demographic Change",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "women and demographic change human geography explained"
+  },
+  {
+   "id": "aging-populations",
+   "ced": "2.9",
+   "title": "Aging Populations",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "3.E"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "aging populations human geography explained"
+  },
+  {
+   "id": "migration-causes",
+   "ced": "2.10",
+   "title": "Causes of Migration",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "causes of migration human geography explained"
+  },
+  {
+   "id": "forced-voluntary-migration",
+   "ced": "2.11",
+   "title": "Forced and Voluntary Migration",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "forced and voluntary migration human geography explained"
+  },
+  {
+   "id": "migration-effects",
+   "ced": "2.12",
+   "title": "Effects of Migration",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "2.D"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "effects of migration human geography explained"
+  },
+  {
+   "id": "culture-intro",
+   "ced": "3.1",
+   "title": "Introduction to Culture",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "introduction to culture human geography explained"
+  },
+  {
+   "id": "culture-on-the-land",
+   "ced": "3.2",
+   "title": "Cultural Landscapes",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C"
+   ],
+   "practices": [
+    4
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "cultural landscapes human geography explained"
+  },
+  {
+   "id": "cultural-patterns",
+   "ced": "3.3",
+   "title": "Cultural Patterns",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "cultural patterns human geography explained"
+  },
+  {
+   "id": "diffusion-types",
+   "ced": "3.4",
+   "title": "Types of Diffusion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.D",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "types of diffusion human geography explained"
+  },
+  {
+   "id": "diffusion-history",
+   "ced": "3.5",
+   "title": "Historical Causes of Diffusion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.D"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "historical causes of diffusion human geography explained"
+  },
+  {
+   "id": "diffusion-today",
+   "ced": "3.6",
+   "title": "Contemporary Causes of Diffusion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "contemporary causes of diffusion human geography explained"
+  },
+  {
+   "id": "religion-language-diffusion",
+   "ced": "3.7",
+   "title": "Diffusion of Religion and Language",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "3.B",
+    "4.B"
+   ],
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "diffusion of religion and language human geography explained"
+  },
+  {
+   "id": "diffusion-effects",
+   "ced": "3.8",
+   "title": "Effects of Diffusion",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "effects of diffusion human geography explained"
+  },
+  {
+   "id": "political-intro",
+   "ced": "4.1",
+   "title": "Introduction to Political Geography",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.C"
+   ],
+   "practices": [
+    1
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "introduction to political geography human geography explained"
+  },
+  {
+   "id": "political-processes",
+   "ced": "4.2",
+   "title": "Political Processes",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.D"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "political processes human geography explained"
+  },
+  {
+   "id": "power-territoriality",
+   "ced": "4.3",
+   "title": "Political Power and Territoriality",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "political power and territoriality human geography explained"
+  },
+  {
+   "id": "defining-boundaries",
+   "ced": "4.4",
+   "title": "Defining Political Boundaries",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "4.B"
+   ],
+   "practices": [
+    1,
+    4
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "defining political boundaries human geography explained"
+  },
+  {
+   "id": "boundary-functions",
+   "ced": "4.5",
+   "title": "The Function of Political Boundaries",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "the function of political boundaries human geography explained"
+  },
+  {
+   "id": "internal-boundaries",
+   "ced": "4.6",
+   "title": "Internal Boundaries",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "internal boundaries human geography explained"
+  },
+  {
+   "id": "forms-of-governance",
+   "ced": "4.7",
+   "title": "Forms of Governance",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "forms of governance human geography explained"
+  },
+  {
+   "id": "devolution-factors",
+   "ced": "4.8",
+   "title": "Defining Devolutionary Factors",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "defining devolutionary factors human geography explained"
+  },
+  {
+   "id": "sovereignty-challenges",
+   "ced": "4.9",
+   "title": "Challenges to Sovereignty",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "5.B"
+   ],
+   "practices": [
+    1,
+    5
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "challenges to sovereignty human geography explained"
+  },
+  {
+   "id": "centrifugal-centripetal",
+   "ced": "4.10",
+   "title": "Consequences of Centrifugal and Centripetal Forces",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "2.D"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "consequences of centrifugal and centripetal forces human geography explained"
+  },
+  {
+   "id": "agriculture-intro",
+   "ced": "5.1",
+   "title": "Introduction to Agriculture",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "introduction to agriculture human geography explained"
+  },
+  {
+   "id": "settlement-survey",
+   "ced": "5.2",
+   "title": "Settlement Patterns and Survey Methods",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "4.A",
+    "4.B"
+   ],
+   "practices": [
+    4
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "settlement patterns and survey methods human geography explained"
+  },
+  {
+   "id": "agricultural-origins",
+   "ced": "5.3",
+   "title": "Agricultural Origins and Diffusions",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.D"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "agricultural origins and diffusions human geography explained"
+  },
+  {
+   "id": "second-agricultural-revolution",
+   "ced": "5.4",
+   "title": "The Second Agricultural Revolution",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.D"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "the second agricultural revolution human geography explained"
+  },
+  {
+   "id": "green-revolution",
+   "ced": "5.5",
+   "title": "The Green Revolution",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.E",
+    "2.D"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "the green revolution human geography explained"
+  },
+  {
+   "id": "production-regions",
+   "ced": "5.6",
+   "title": "Agricultural Production Regions",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "agricultural production regions human geography explained"
+  },
+  {
+   "id": "farm-organization",
+   "ced": "5.7",
+   "title": "Spatial Organization of Agriculture",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "spatial organization of agriculture human geography explained"
+  },
+  {
+   "id": "von-thunen",
+   "ced": "5.8",
+   "title": "Von Thünen Model",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "1.E",
+    "2.E"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "von thünen model human geography explained"
+  },
+  {
+   "id": "global-agriculture",
+   "ced": "5.9",
+   "title": "The Global System of Agriculture",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "3.C"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "the global system of agriculture human geography explained"
+  },
+  {
+   "id": "agriculture-consequences",
+   "ced": "5.10",
+   "title": "Consequences of Agricultural Practices",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "4.B"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "consequences of agricultural practices human geography explained"
+  },
+  {
+   "id": "agriculture-challenges",
+   "ced": "5.11",
+   "title": "Challenges of Contemporary Agriculture",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.E",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "challenges of contemporary agriculture human geography explained"
+  },
+  {
+   "id": "women-in-agriculture",
+   "ced": "5.12",
+   "title": "Women in Agriculture",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "3.D"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "women in agriculture human geography explained"
+  },
+  {
+   "id": "urbanization-origins",
+   "ced": "6.1",
+   "title": "The Origin and Influences of Urbanization",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "the origin and influences of urbanization human geography explained"
+  },
+  {
+   "id": "cities-worldwide",
+   "ced": "6.2",
+   "title": "Cities Across the World",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.A",
+    "3.B"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "cities across the world human geography explained"
+  },
+  {
+   "id": "cities-globalization",
+   "ced": "6.3",
+   "title": "Cities and Globalization",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "cities and globalization human geography explained"
+  },
+  {
+   "id": "city-size-distribution",
+   "ced": "6.4",
+   "title": "The Size and Distribution of Cities",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "1.E",
+    "3.C"
+   ],
+   "practices": [
+    1,
+    3
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "the size and distribution of cities human geography explained"
+  },
+  {
+   "id": "city-structure",
+   "ced": "6.5",
+   "title": "The Internal Structure of Cities",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.D",
+    "2.E",
+    "4.C"
+   ],
+   "practices": [
+    1,
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "the internal structure of cities human geography explained"
+  },
+  {
+   "id": "density-land-use",
+   "ced": "6.6",
+   "title": "Density and Land Use",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "4.B"
+   ],
+   "practices": [
+    2,
+    4
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "density and land use human geography explained"
+  },
+  {
+   "id": "infrastructure",
+   "ced": "6.7",
+   "title": "Infrastructure",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "2.C"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "infrastructure human geography explained"
+  },
+  {
+   "id": "urban-sustainability",
+   "ced": "6.8",
+   "title": "Urban Sustainability",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.E",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "urban sustainability human geography explained"
+  },
+  {
+   "id": "urban-data",
+   "ced": "6.9",
+   "title": "Urban Data",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.F"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "urban data human geography explained"
+  },
+  {
+   "id": "urban-change-challenges",
+   "ced": "6.10",
+   "title": "Challenges of Urban Changes",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "challenges of urban changes human geography explained"
+  },
+  {
+   "id": "sustainability-challenges",
+   "ced": "6.11",
+   "title": "Challenges of Urban Sustainability",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "challenges of urban sustainability human geography explained"
+  },
+  {
+   "id": "industrial-revolution",
+   "ced": "7.1",
+   "title": "The Industrial Revolution",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.D"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "the industrial revolution human geography explained"
+  },
+  {
+   "id": "economic-sectors",
+   "ced": "7.2",
+   "title": "Economic Sectors and Patterns",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "economic sectors and patterns human geography explained"
+  },
+  {
+   "id": "development-measures",
+   "ced": "7.3",
+   "title": "Measures of Development",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "3.A",
+    "3.C",
+    "3.F"
+   ],
+   "practices": [
+    3
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "measures of development human geography explained"
+  },
+  {
+   "id": "women-development",
+   "ced": "7.4",
+   "title": "Women and Economic Development",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "3.D"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "women and economic development human geography explained"
+  },
+  {
+   "id": "development-theories",
+   "ced": "7.5",
+   "title": "Theories of Development",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "1.C",
+    "1.E",
+    "2.E"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "SPS"
+   ],
+   "searchPhrase": "theories of development human geography explained"
+  },
+  {
+   "id": "trade-world-economy",
+   "ced": "7.6",
+   "title": "Trade and the World Economy",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "trade and the world economy human geography explained"
+  },
+  {
+   "id": "world-economy-changes",
+   "ced": "7.7",
+   "title": "Changes as a Result of the World Economy",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "2.B",
+    "2.C"
+   ],
+   "practices": [
+    2
+   ],
+   "bigIdeas": [
+    "PSO"
+   ],
+   "searchPhrase": "changes as a result of the world economy human geography explained"
+  },
+  {
+   "id": "sustainable-development",
+   "ced": "7.8",
+   "title": "Sustainable Development",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "skills": [
+    "2.C",
+    "5.B"
+   ],
+   "practices": [
+    2,
+    5
+   ],
+   "bigIdeas": [
+    "IMP"
+   ],
+   "searchPhrase": "sustainable development human geography explained"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"physiological density\", \"stimulus diffusion\", \"bid-rent theory\" are not used early).",
+  "words": [
+   "map",
+   "maps",
+   "population",
+   "populations",
+   "migration",
+   "migrate",
+   "migrants",
+   "migrant",
+   "culture",
+   "cultures",
+   "cultural",
+   "city",
+   "cities",
+   "urban",
+   "farming",
+   "farm",
+   "farms",
+   "agriculture",
+   "border",
+   "borders",
+   "boundaries",
+   "resources",
+   "natural resources",
+   "development",
+   "developed",
+   "developing",
+   "industrial",
+   "trend",
+   "trends",
+   "survey",
+   "surveys",
+   "density",
+   "nations",
+   "region",
+   "regions",
+   "state (country)",
+   "death rate",
+   "death rates",
+   "birth rate",
+   "birth rates",
+   "downtown",
+   "suburb",
+   "suburbs",
+   "suburban",
+   "place names",
+   "sense of place"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "legend",
+   "term": "legend (map)",
+   "aliases": [
+    "map legend",
+    "key (map)"
+   ],
+   "taughtIn": "skills-reading",
+   "dependsOn": []
+  },
+  {
+   "id": "data-source-line",
+   "term": "source line",
+   "aliases": [
+    "data source"
+   ],
+   "taughtIn": "skills-reading",
+   "dependsOn": []
+  },
+  {
+   "id": "trend",
+   "term": "trend",
+   "aliases": [
+    "trends"
+   ],
+   "taughtIn": "skills-reading",
+   "dependsOn": []
+  },
+  {
+   "id": "map-scale",
+   "term": "map scale",
+   "aliases": [
+    "cartographic scale",
+    "ratio scale",
+    "scale bar",
+    "large-scale map",
+    "small-scale map"
+   ],
+   "taughtIn": "skills-scale",
+   "dependsOn": []
+  },
+  {
+   "id": "task-verb",
+   "term": "task verb",
+   "aliases": [
+    "task verbs"
+   ],
+   "taughtIn": "skills-frq",
+   "dependsOn": []
+  },
+  {
+   "id": "rubric",
+   "term": "rubric",
+   "aliases": [
+    "scoring guideline",
+    "scoring guidelines"
+   ],
+   "taughtIn": "skills-frq",
+   "dependsOn": [
+    "task-verb"
+   ]
+  },
+  {
+   "id": "map",
+   "term": "map",
+   "aliases": [
+    "maps"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": []
+  },
+  {
+   "id": "reference-map",
+   "term": "reference map",
+   "aliases": [
+    "reference maps"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "thematic-map",
+   "term": "thematic map",
+   "aliases": [
+    "thematic maps"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "map-projection",
+   "term": "map projection",
+   "aliases": [
+    "projection",
+    "projections",
+    "map projections"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "distortion",
+   "term": "distortion",
+   "aliases": [
+    "distort",
+    "distorts"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map-projection"
+   ]
+  },
+  {
+   "id": "absolute-distance",
+   "term": "absolute distance",
+   "aliases": [],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "relative-distance",
+   "term": "relative distance",
+   "aliases": [],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "absolute-direction",
+   "term": "absolute direction",
+   "aliases": [
+    "cardinal directions"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "relative-direction",
+   "term": "relative direction",
+   "aliases": [],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "clustering",
+   "term": "clustering",
+   "aliases": [
+    "clustered",
+    "cluster"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "dispersal",
+   "term": "dispersal",
+   "aliases": [
+    "dispersed"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "elevation",
+   "term": "elevation",
+   "aliases": [],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "choropleth-map",
+   "term": "choropleth map",
+   "aliases": [
+    "choropleth",
+    "choropleth maps"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "thematic-map"
+   ]
+  },
+  {
+   "id": "dot-map",
+   "term": "dot density map",
+   "aliases": [
+    "dot map",
+    "dot maps",
+    "dot density"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "thematic-map"
+   ]
+  },
+  {
+   "id": "graduated-symbol-map",
+   "term": "graduated symbol map",
+   "aliases": [
+    "proportional symbol map",
+    "graduated symbol"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "thematic-map"
+   ]
+  },
+  {
+   "id": "isoline-map",
+   "term": "isoline map",
+   "aliases": [
+    "isoline",
+    "isolines",
+    "isopleth"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "thematic-map"
+   ]
+  },
+  {
+   "id": "cartogram",
+   "term": "cartogram",
+   "aliases": [
+    "cartograms"
+   ],
+   "taughtIn": "views-of-the-world",
+   "dependsOn": [
+    "thematic-map"
+   ]
+  },
+  {
+   "id": "geographic-data",
+   "term": "geographic data",
+   "aliases": [
+    "spatial data"
+   ],
+   "taughtIn": "data-sources",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "gis",
+   "term": "geographic information system",
+   "aliases": [
+    "GIS"
+   ],
+   "taughtIn": "data-sources",
+   "dependsOn": [
+    "geographic-data"
+   ]
+  },
+  {
+   "id": "gps",
+   "term": "satellite navigation system",
+   "aliases": [
+    "GPS",
+    "global positioning system"
+   ],
+   "taughtIn": "data-sources",
+   "dependsOn": [
+    "geographic-data"
+   ]
+  },
+  {
+   "id": "remote-sensing",
+   "term": "remote sensing",
+   "aliases": [
+    "satellite imagery"
+   ],
+   "taughtIn": "data-sources",
+   "dependsOn": [
+    "geographic-data"
+   ]
+  },
+  {
+   "id": "field-observation",
+   "term": "field observation",
+   "aliases": [
+    "fieldwork",
+    "field work",
+    "field data"
+   ],
+   "taughtIn": "data-sources",
+   "dependsOn": [
+    "geographic-data"
+   ]
+  },
+  {
+   "id": "quantitative-data",
+   "term": "quantitative data",
+   "aliases": [
+    "quantitative"
+   ],
+   "taughtIn": "data-sources",
+   "dependsOn": [
+    "geographic-data"
+   ]
+  },
+  {
+   "id": "qualitative-data",
+   "term": "qualitative data",
+   "aliases": [
+    "qualitative"
+   ],
+   "taughtIn": "data-sources",
+   "dependsOn": [
+    "geographic-data"
+   ]
+  },
+  {
+   "id": "census",
+   "term": "census",
+   "aliases": [
+    "censuses"
+   ],
+   "taughtIn": "data-in-decisions",
+   "dependsOn": [
+    "quantitative-data"
+   ]
+  },
+  {
+   "id": "data-limitation",
+   "term": "limitation of data",
+   "aliases": [
+    "limitations of data",
+    "data limitation"
+   ],
+   "taughtIn": "data-in-decisions",
+   "dependsOn": [
+    "geographic-data"
+   ]
+  },
+  {
+   "id": "absolute-location",
+   "term": "absolute location",
+   "aliases": [
+    "latitude",
+    "longitude"
+   ],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "absolute-distance"
+   ]
+  },
+  {
+   "id": "relative-location",
+   "term": "relative location",
+   "aliases": [],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "relative-distance"
+   ]
+  },
+  {
+   "id": "space-concept",
+   "term": "space (geography)",
+   "aliases": [],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": []
+  },
+  {
+   "id": "place-concept",
+   "term": "place (geography)",
+   "aliases": [
+    "sense of place"
+   ],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": []
+  },
+  {
+   "id": "flow",
+   "term": "flow",
+   "aliases": [
+    "flows"
+   ],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "relative-location"
+   ]
+  },
+  {
+   "id": "distance-decay",
+   "term": "distance decay",
+   "aliases": [],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "relative-distance"
+   ]
+  },
+  {
+   "id": "time-space-compression",
+   "term": "time-space compression",
+   "aliases": [
+    "time-space convergence"
+   ],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "distance-decay"
+   ]
+  },
+  {
+   "id": "spatial-pattern",
+   "term": "pattern (spatial)",
+   "aliases": [
+    "spatial pattern",
+    "spatial patterns"
+   ],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "clustering"
+   ]
+  },
+  {
+   "id": "site",
+   "term": "site",
+   "aliases": [],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "absolute-location"
+   ]
+  },
+  {
+   "id": "situation",
+   "term": "situation",
+   "aliases": [],
+   "taughtIn": "spatial-concepts",
+   "dependsOn": [
+    "relative-location"
+   ]
+  },
+  {
+   "id": "natural-resource",
+   "term": "natural resource",
+   "aliases": [
+    "natural resources",
+    "resources"
+   ],
+   "taughtIn": "human-environment",
+   "dependsOn": []
+  },
+  {
+   "id": "sustainability",
+   "term": "sustainability",
+   "aliases": [
+    "sustainable"
+   ],
+   "taughtIn": "human-environment",
+   "dependsOn": [
+    "natural-resource"
+   ]
+  },
+  {
+   "id": "land-use",
+   "term": "land use",
+   "aliases": [
+    "land uses"
+   ],
+   "taughtIn": "human-environment",
+   "dependsOn": []
+  },
+  {
+   "id": "environmental-determinism",
+   "term": "environmental determinism",
+   "aliases": [
+    "determinism"
+   ],
+   "taughtIn": "human-environment",
+   "dependsOn": []
+  },
+  {
+   "id": "possibilism",
+   "term": "possibilism",
+   "aliases": [],
+   "taughtIn": "human-environment",
+   "dependsOn": [
+    "environmental-determinism"
+   ]
+  },
+  {
+   "id": "scale-of-analysis",
+   "term": "scale of analysis",
+   "aliases": [
+    "scales of analysis"
+   ],
+   "taughtIn": "scales-of-analysis",
+   "dependsOn": [
+    "map"
+   ]
+  },
+  {
+   "id": "global-scale",
+   "term": "global scale",
+   "aliases": [],
+   "taughtIn": "scales-of-analysis",
+   "dependsOn": [
+    "scale-of-analysis"
+   ]
+  },
+  {
+   "id": "regional-scale",
+   "term": "regional scale",
+   "aliases": [],
+   "taughtIn": "scales-of-analysis",
+   "dependsOn": [
+    "scale-of-analysis"
+   ]
+  },
+  {
+   "id": "national-scale",
+   "term": "national scale",
+   "aliases": [],
+   "taughtIn": "scales-of-analysis",
+   "dependsOn": [
+    "scale-of-analysis"
+   ]
+  },
+  {
+   "id": "local-scale",
+   "term": "local scale",
+   "aliases": [
+    "subnational"
+   ],
+   "taughtIn": "scales-of-analysis",
+   "dependsOn": [
+    "scale-of-analysis"
+   ]
+  },
+  {
+   "id": "region",
+   "term": "region",
+   "aliases": [
+    "regions"
+   ],
+   "taughtIn": "regional-analysis",
+   "dependsOn": [
+    "spatial-pattern"
+   ]
+  },
+  {
+   "id": "formal-region",
+   "term": "formal region",
+   "aliases": [
+    "uniform region"
+   ],
+   "taughtIn": "regional-analysis",
+   "dependsOn": [
+    "region"
+   ]
+  },
+  {
+   "id": "functional-region",
+   "term": "functional region",
+   "aliases": [
+    "nodal region"
+   ],
+   "taughtIn": "regional-analysis",
+   "dependsOn": [
+    "region",
+    "flow"
+   ]
+  },
+  {
+   "id": "perceptual-region",
+   "term": "perceptual region",
+   "aliases": [
+    "vernacular region"
+   ],
+   "taughtIn": "regional-analysis",
+   "dependsOn": [
+    "region"
+   ]
+  },
+  {
+   "id": "transition-zone",
+   "term": "transition zone",
+   "aliases": [
+    "transitional boundary"
+   ],
+   "taughtIn": "regional-analysis",
+   "dependsOn": [
+    "region"
+   ]
+  },
+  {
+   "id": "population",
+   "term": "population",
+   "aliases": [
+    "populations"
+   ],
+   "taughtIn": "population-distribution",
+   "dependsOn": []
+  },
+  {
+   "id": "population-distribution",
+   "term": "population distribution",
+   "aliases": [],
+   "taughtIn": "population-distribution",
+   "dependsOn": [
+    "spatial-pattern",
+    "population"
+   ]
+  },
+  {
+   "id": "ecumene",
+   "term": "ecumene",
+   "aliases": [],
+   "taughtIn": "population-distribution",
+   "dependsOn": [
+    "population-distribution"
+   ]
+  },
+  {
+   "id": "population-density",
+   "term": "population density",
+   "aliases": [
+    "density"
+   ],
+   "taughtIn": "distribution-consequences",
+   "dependsOn": [
+    "population-distribution"
+   ]
+  },
+  {
+   "id": "arithmetic-density",
+   "term": "arithmetic density",
+   "aliases": [],
+   "taughtIn": "distribution-consequences",
+   "dependsOn": [
+    "population-density"
+   ]
+  },
+  {
+   "id": "physiological-density",
+   "term": "physiological density",
+   "aliases": [],
+   "taughtIn": "distribution-consequences",
+   "dependsOn": [
+    "population-density"
+   ]
+  },
+  {
+   "id": "agricultural-density",
+   "term": "agricultural density",
+   "aliases": [],
+   "taughtIn": "distribution-consequences",
+   "dependsOn": [
+    "population-density"
+   ]
+  },
+  {
+   "id": "arable-land",
+   "term": "arable land",
+   "aliases": [
+    "farmland"
+   ],
+   "taughtIn": "distribution-consequences",
+   "dependsOn": []
+  },
+  {
+   "id": "carrying-capacity",
+   "term": "carrying capacity",
+   "aliases": [],
+   "taughtIn": "distribution-consequences",
+   "dependsOn": [
+    "population-density"
+   ]
+  },
+  {
+   "id": "population-pyramid",
+   "term": "population pyramid",
+   "aliases": [
+    "population pyramids",
+    "age-sex pyramid"
+   ],
+   "taughtIn": "population-composition",
+   "dependsOn": [
+    "population-distribution"
+   ]
+  },
+  {
+   "id": "age-structure",
+   "term": "age structure",
+   "aliases": [],
+   "taughtIn": "population-composition",
+   "dependsOn": [
+    "population-pyramid"
+   ]
+  },
+  {
+   "id": "sex-ratio",
+   "term": "sex ratio",
+   "aliases": [],
+   "taughtIn": "population-composition",
+   "dependsOn": [
+    "population-pyramid"
+   ]
+  },
+  {
+   "id": "cohort",
+   "term": "cohort",
+   "aliases": [
+    "age cohort",
+    "cohorts"
+   ],
+   "taughtIn": "population-composition",
+   "dependsOn": [
+    "population-pyramid"
+   ]
+  },
+  {
+   "id": "crude-birth-rate",
+   "term": "crude birth rate",
+   "aliases": [
+    "CBR",
+    "birth rate",
+    "birth rates"
+   ],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "population-distribution"
+   ]
+  },
+  {
+   "id": "crude-death-rate",
+   "term": "crude death rate",
+   "aliases": [
+    "CDR",
+    "death rate",
+    "death rates"
+   ],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "population-distribution"
+   ]
+  },
+  {
+   "id": "total-fertility-rate",
+   "term": "total fertility rate",
+   "aliases": [
+    "TFR",
+    "fertility rate"
+   ],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "crude-birth-rate"
+   ]
+  },
+  {
+   "id": "infant-mortality-rate",
+   "term": "infant mortality rate",
+   "aliases": [
+    "IMR",
+    "infant mortality"
+   ],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "crude-death-rate"
+   ]
+  },
+  {
+   "id": "life-expectancy",
+   "term": "life expectancy",
+   "aliases": [],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "crude-death-rate"
+   ]
+  },
+  {
+   "id": "rate-of-natural-increase",
+   "term": "rate of natural increase",
+   "aliases": [
+    "RNI",
+    "natural increase"
+   ],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "crude-birth-rate",
+    "crude-death-rate"
+   ]
+  },
+  {
+   "id": "doubling-time",
+   "term": "doubling time",
+   "aliases": [
+    "rule of 70"
+   ],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "rate-of-natural-increase"
+   ]
+  },
+  {
+   "id": "replacement-fertility",
+   "term": "replacement-level fertility",
+   "aliases": [
+    "replacement level",
+    "replacement rate"
+   ],
+   "taughtIn": "population-dynamics",
+   "dependsOn": [
+    "total-fertility-rate"
+   ]
+  },
+  {
+   "id": "demographic-transition-model",
+   "term": "demographic transition model",
+   "aliases": [
+    "DTM",
+    "demographic transition"
+   ],
+   "taughtIn": "transition-model",
+   "dependsOn": [
+    "crude-birth-rate",
+    "crude-death-rate"
+   ]
+  },
+  {
+   "id": "epidemiological-transition",
+   "term": "epidemiological transition model",
+   "aliases": [
+    "epidemiological transition"
+   ],
+   "taughtIn": "transition-model",
+   "dependsOn": [
+    "crude-death-rate"
+   ]
+  },
+  {
+   "id": "malthusian-theory",
+   "term": "Malthusian theory",
+   "aliases": [
+    "Malthus",
+    "Thomas Malthus",
+    "Malthusian"
+   ],
+   "taughtIn": "malthusian-theory",
+   "dependsOn": [
+    "carrying-capacity"
+   ]
+  },
+  {
+   "id": "neo-malthusian",
+   "term": "neo-Malthusian",
+   "aliases": [
+    "neo-Malthusians"
+   ],
+   "taughtIn": "malthusian-theory",
+   "dependsOn": [
+    "malthusian-theory"
+   ]
+  },
+  {
+   "id": "pronatalist-policy",
+   "term": "pronatalist policy",
+   "aliases": [
+    "pronatalist",
+    "pronatalist policies"
+   ],
+   "taughtIn": "population-policies",
+   "dependsOn": [
+    "total-fertility-rate"
+   ]
+  },
+  {
+   "id": "antinatalist-policy",
+   "term": "antinatalist policy",
+   "aliases": [
+    "antinatalist",
+    "antinatalist policies"
+   ],
+   "taughtIn": "population-policies",
+   "dependsOn": [
+    "total-fertility-rate"
+   ]
+  },
+  {
+   "id": "immigration-policy",
+   "term": "immigration policy",
+   "aliases": [
+    "immigration policies"
+   ],
+   "taughtIn": "population-policies",
+   "dependsOn": []
+  },
+  {
+   "id": "female-education",
+   "term": "female education",
+   "aliases": [
+    "education for women"
+   ],
+   "taughtIn": "women-population-change",
+   "dependsOn": [
+    "total-fertility-rate"
+   ]
+  },
+  {
+   "id": "ravenstein-laws",
+   "term": "Ravenstein's laws of migration",
+   "aliases": [
+    "Ravenstein",
+    "Ravenstein's laws"
+   ],
+   "taughtIn": "women-population-change",
+   "dependsOn": []
+  },
+  {
+   "id": "aging-population",
+   "term": "aging population",
+   "aliases": [
+    "population aging"
+   ],
+   "taughtIn": "aging-populations",
+   "dependsOn": [
+    "life-expectancy"
+   ]
+  },
+  {
+   "id": "dependency-ratio",
+   "term": "dependency ratio",
+   "aliases": [
+    "dependency ratios",
+    "youth dependency ratio",
+    "elderly dependency ratio"
+   ],
+   "taughtIn": "aging-populations",
+   "dependsOn": [
+    "age-structure"
+   ]
+  },
+  {
+   "id": "migration",
+   "term": "migration",
+   "aliases": [
+    "migrate",
+    "migrants",
+    "migrant"
+   ],
+   "taughtIn": "migration-causes",
+   "dependsOn": []
+  },
+  {
+   "id": "push-factor",
+   "term": "push factor",
+   "aliases": [
+    "push factors"
+   ],
+   "taughtIn": "migration-causes",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "pull-factor",
+   "term": "pull factor",
+   "aliases": [
+    "pull factors"
+   ],
+   "taughtIn": "migration-causes",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "intervening-opportunity",
+   "term": "intervening opportunity",
+   "aliases": [
+    "intervening opportunities"
+   ],
+   "taughtIn": "migration-causes",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "intervening-obstacle",
+   "term": "intervening obstacle",
+   "aliases": [
+    "intervening obstacles"
+   ],
+   "taughtIn": "migration-causes",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "forced-migration",
+   "term": "forced migration",
+   "aliases": [],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "voluntary-migration",
+   "term": "voluntary migration",
+   "aliases": [],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "refugee",
+   "term": "refugee",
+   "aliases": [
+    "refugees"
+   ],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "forced-migration"
+   ]
+  },
+  {
+   "id": "internally-displaced-person",
+   "term": "internally displaced person",
+   "aliases": [
+    "IDP",
+    "IDPs",
+    "internally displaced persons"
+   ],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "forced-migration"
+   ]
+  },
+  {
+   "id": "asylum-seeker",
+   "term": "asylum seeker",
+   "aliases": [
+    "asylum seekers",
+    "asylum"
+   ],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "forced-migration"
+   ]
+  },
+  {
+   "id": "chain-migration",
+   "term": "chain migration",
+   "aliases": [],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "voluntary-migration"
+   ]
+  },
+  {
+   "id": "step-migration",
+   "term": "step migration",
+   "aliases": [],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "voluntary-migration"
+   ]
+  },
+  {
+   "id": "guest-worker",
+   "term": "guest worker",
+   "aliases": [
+    "guest workers"
+   ],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "voluntary-migration"
+   ]
+  },
+  {
+   "id": "transhumance",
+   "term": "transhumance",
+   "aliases": [],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "voluntary-migration"
+   ]
+  },
+  {
+   "id": "transnational-migration",
+   "term": "transnational migration",
+   "aliases": [
+    "transnational"
+   ],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "voluntary-migration"
+   ]
+  },
+  {
+   "id": "internal-migration",
+   "term": "internal migration",
+   "aliases": [
+    "interregional migration",
+    "intraregional migration"
+   ],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "voluntary-migration"
+   ]
+  },
+  {
+   "id": "rural-urban-migration",
+   "term": "rural-to-urban migration",
+   "aliases": [
+    "rural to urban migration"
+   ],
+   "taughtIn": "forced-voluntary-migration",
+   "dependsOn": [
+    "internal-migration"
+   ]
+  },
+  {
+   "id": "remittance",
+   "term": "remittance",
+   "aliases": [
+    "remittances"
+   ],
+   "taughtIn": "migration-effects",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "brain-drain",
+   "term": "brain drain",
+   "aliases": [],
+   "taughtIn": "migration-effects",
+   "dependsOn": [
+    "migration"
+   ]
+  },
+  {
+   "id": "culture",
+   "term": "culture",
+   "aliases": [
+    "cultures",
+    "cultural"
+   ],
+   "taughtIn": "culture-intro",
+   "dependsOn": []
+  },
+  {
+   "id": "culture-trait",
+   "term": "culture trait",
+   "aliases": [
+    "culture traits",
+    "cultural trait"
+   ],
+   "taughtIn": "culture-intro",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "cultural-relativism",
+   "term": "cultural relativism",
+   "aliases": [],
+   "taughtIn": "culture-intro",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "ethnocentrism",
+   "term": "ethnocentrism",
+   "aliases": [
+    "ethnocentric"
+   ],
+   "taughtIn": "culture-intro",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "cultural-landscape",
+   "term": "cultural landscape",
+   "aliases": [
+    "cultural landscapes"
+   ],
+   "taughtIn": "culture-on-the-land",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "sequent-occupance",
+   "term": "sequent occupance",
+   "aliases": [],
+   "taughtIn": "culture-on-the-land",
+   "dependsOn": [
+    "cultural-landscape"
+   ]
+  },
+  {
+   "id": "postmodern-architecture",
+   "term": "postmodern architecture",
+   "aliases": [],
+   "taughtIn": "culture-on-the-land",
+   "dependsOn": [
+    "cultural-landscape"
+   ]
+  },
+  {
+   "id": "ethnic-neighborhood",
+   "term": "ethnic neighborhood",
+   "aliases": [
+    "ethnic neighborhoods",
+    "ethnic enclave"
+   ],
+   "taughtIn": "culture-on-the-land",
+   "dependsOn": [
+    "cultural-landscape"
+   ]
+  },
+  {
+   "id": "ethnicity",
+   "term": "ethnicity",
+   "aliases": [
+    "ethnic group",
+    "ethnic groups"
+   ],
+   "taughtIn": "culture-on-the-land",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "placemaking",
+   "term": "placemaking",
+   "aliases": [],
+   "taughtIn": "cultural-patterns",
+   "dependsOn": [
+    "place-concept"
+   ]
+  },
+  {
+   "id": "centripetal-force",
+   "term": "centripetal force",
+   "aliases": [
+    "centripetal forces",
+    "centripetal"
+   ],
+   "taughtIn": "cultural-patterns",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "centrifugal-force",
+   "term": "centrifugal force",
+   "aliases": [
+    "centrifugal forces",
+    "centrifugal"
+   ],
+   "taughtIn": "cultural-patterns",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "diffusion",
+   "term": "diffusion",
+   "aliases": [
+    "cultural diffusion"
+   ],
+   "taughtIn": "diffusion-types",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "hearth",
+   "term": "hearth",
+   "aliases": [
+    "hearths",
+    "cultural hearth"
+   ],
+   "taughtIn": "diffusion-types",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "relocation-diffusion",
+   "term": "relocation diffusion",
+   "aliases": [],
+   "taughtIn": "diffusion-types",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "expansion-diffusion",
+   "term": "expansion diffusion",
+   "aliases": [],
+   "taughtIn": "diffusion-types",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "contagious-diffusion",
+   "term": "contagious diffusion",
+   "aliases": [],
+   "taughtIn": "diffusion-types",
+   "dependsOn": [
+    "expansion-diffusion"
+   ]
+  },
+  {
+   "id": "hierarchical-diffusion",
+   "term": "hierarchical diffusion",
+   "aliases": [
+    "reverse hierarchical diffusion"
+   ],
+   "taughtIn": "diffusion-types",
+   "dependsOn": [
+    "expansion-diffusion"
+   ]
+  },
+  {
+   "id": "stimulus-diffusion",
+   "term": "stimulus diffusion",
+   "aliases": [],
+   "taughtIn": "diffusion-types",
+   "dependsOn": [
+    "expansion-diffusion"
+   ]
+  },
+  {
+   "id": "colonialism",
+   "term": "colonialism",
+   "aliases": [
+    "colonial",
+    "colonies",
+    "colony"
+   ],
+   "taughtIn": "diffusion-history",
+   "dependsOn": []
+  },
+  {
+   "id": "imperialism",
+   "term": "imperialism",
+   "aliases": [
+    "imperial"
+   ],
+   "taughtIn": "diffusion-history",
+   "dependsOn": [
+    "colonialism"
+   ]
+  },
+  {
+   "id": "creolization",
+   "term": "creolization",
+   "aliases": [
+    "creole"
+   ],
+   "taughtIn": "diffusion-history",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "lingua-franca",
+   "term": "lingua franca",
+   "aliases": [],
+   "taughtIn": "diffusion-history",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "globalization",
+   "term": "globalization",
+   "aliases": [
+    "globalized"
+   ],
+   "taughtIn": "diffusion-today",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "cultural-convergence",
+   "term": "cultural convergence",
+   "aliases": [],
+   "taughtIn": "diffusion-today",
+   "dependsOn": [
+    "globalization"
+   ]
+  },
+  {
+   "id": "cultural-divergence",
+   "term": "cultural divergence",
+   "aliases": [],
+   "taughtIn": "diffusion-today",
+   "dependsOn": [
+    "globalization"
+   ]
+  },
+  {
+   "id": "language-family",
+   "term": "language family",
+   "aliases": [
+    "language families",
+    "Indo-European"
+   ],
+   "taughtIn": "religion-language-diffusion",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "dialect",
+   "term": "dialect",
+   "aliases": [
+    "dialects"
+   ],
+   "taughtIn": "religion-language-diffusion",
+   "dependsOn": [
+    "language-family"
+   ]
+  },
+  {
+   "id": "toponym",
+   "term": "toponym",
+   "aliases": [
+    "toponyms",
+    "place name",
+    "place names"
+   ],
+   "taughtIn": "religion-language-diffusion",
+   "dependsOn": [
+    "place-concept"
+   ]
+  },
+  {
+   "id": "universalizing-religion",
+   "term": "universalizing religion",
+   "aliases": [
+    "universalizing religions"
+   ],
+   "taughtIn": "religion-language-diffusion",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "ethnic-religion",
+   "term": "ethnic religion",
+   "aliases": [
+    "ethnic religions"
+   ],
+   "taughtIn": "religion-language-diffusion",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "acculturation",
+   "term": "acculturation",
+   "aliases": [],
+   "taughtIn": "diffusion-effects",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "assimilation",
+   "term": "assimilation",
+   "aliases": [
+    "assimilate"
+   ],
+   "taughtIn": "diffusion-effects",
+   "dependsOn": [
+    "acculturation"
+   ]
+  },
+  {
+   "id": "syncretism",
+   "term": "syncretism",
+   "aliases": [
+    "syncretic"
+   ],
+   "taughtIn": "diffusion-effects",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "multiculturalism",
+   "term": "multiculturalism",
+   "aliases": [
+    "multicultural"
+   ],
+   "taughtIn": "diffusion-effects",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "state",
+   "term": "state (country)",
+   "aliases": [
+    "independent state",
+    "sovereign state"
+   ],
+   "taughtIn": "political-intro",
+   "dependsOn": []
+  },
+  {
+   "id": "nation",
+   "term": "nation (people)",
+   "aliases": [
+    "nations"
+   ],
+   "taughtIn": "political-intro",
+   "dependsOn": [
+    "culture"
+   ]
+  },
+  {
+   "id": "nation-state",
+   "term": "nation-state",
+   "aliases": [
+    "nation-states"
+   ],
+   "taughtIn": "political-intro",
+   "dependsOn": [
+    "state",
+    "nation"
+   ]
+  },
+  {
+   "id": "stateless-nation",
+   "term": "stateless nation",
+   "aliases": [
+    "stateless nations"
+   ],
+   "taughtIn": "political-intro",
+   "dependsOn": [
+    "nation"
+   ]
+  },
+  {
+   "id": "multinational-state",
+   "term": "multinational state",
+   "aliases": [
+    "multinational states"
+   ],
+   "taughtIn": "political-intro",
+   "dependsOn": [
+    "state",
+    "nation"
+   ]
+  },
+  {
+   "id": "multistate-nation",
+   "term": "multistate nation",
+   "aliases": [
+    "multistate nations"
+   ],
+   "taughtIn": "political-intro",
+   "dependsOn": [
+    "state",
+    "nation"
+   ]
+  },
+  {
+   "id": "autonomous-region",
+   "term": "autonomous region",
+   "aliases": [
+    "semiautonomous region",
+    "autonomous regions"
+   ],
+   "taughtIn": "political-intro",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "sovereignty",
+   "term": "sovereignty",
+   "aliases": [
+    "sovereign"
+   ],
+   "taughtIn": "political-processes",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "self-determination",
+   "term": "self-determination",
+   "aliases": [],
+   "taughtIn": "political-processes",
+   "dependsOn": [
+    "nation"
+   ]
+  },
+  {
+   "id": "independence-movement",
+   "term": "independence movement",
+   "aliases": [
+    "independence movements"
+   ],
+   "taughtIn": "political-processes",
+   "dependsOn": [
+    "self-determination"
+   ]
+  },
+  {
+   "id": "territoriality",
+   "term": "territoriality",
+   "aliases": [],
+   "taughtIn": "power-territoriality",
+   "dependsOn": [
+    "sovereignty"
+   ]
+  },
+  {
+   "id": "neocolonialism",
+   "term": "neocolonialism",
+   "aliases": [],
+   "taughtIn": "power-territoriality",
+   "dependsOn": [
+    "colonialism"
+   ]
+  },
+  {
+   "id": "shatterbelt",
+   "term": "shatterbelt",
+   "aliases": [
+    "shatterbelts"
+   ],
+   "taughtIn": "power-territoriality",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "choke-point",
+   "term": "choke point",
+   "aliases": [
+    "choke points",
+    "chokepoint"
+   ],
+   "taughtIn": "power-territoriality",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "boundary",
+   "term": "boundary (political)",
+   "aliases": [
+    "boundaries",
+    "border",
+    "borders"
+   ],
+   "taughtIn": "defining-boundaries",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "relict-boundary",
+   "term": "relict boundary",
+   "aliases": [],
+   "taughtIn": "defining-boundaries",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "superimposed-boundary",
+   "term": "superimposed boundary",
+   "aliases": [],
+   "taughtIn": "defining-boundaries",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "subsequent-boundary",
+   "term": "subsequent boundary",
+   "aliases": [],
+   "taughtIn": "defining-boundaries",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "antecedent-boundary",
+   "term": "antecedent boundary",
+   "aliases": [],
+   "taughtIn": "defining-boundaries",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "geometric-boundary",
+   "term": "geometric boundary",
+   "aliases": [],
+   "taughtIn": "defining-boundaries",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "consequent-boundary",
+   "term": "consequent boundary",
+   "aliases": [
+    "ethnographic boundary"
+   ],
+   "taughtIn": "defining-boundaries",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "demarcation",
+   "term": "demarcation",
+   "aliases": [
+    "demarcated",
+    "delimited",
+    "delimitation"
+   ],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "demilitarized-zone",
+   "term": "demilitarized zone",
+   "aliases": [
+    "DMZ"
+   ],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "berlin-conference",
+   "term": "Berlin Conference",
+   "aliases": [],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "colonialism"
+   ]
+  },
+  {
+   "id": "unclos",
+   "term": "United Nations Convention on the Law of the Sea",
+   "aliases": [
+    "UNCLOS",
+    "law of the sea"
+   ],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "territorial-sea",
+   "term": "territorial sea",
+   "aliases": [
+    "territorial waters"
+   ],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "unclos"
+   ]
+  },
+  {
+   "id": "eez",
+   "term": "exclusive economic zone",
+   "aliases": [
+    "EEZ",
+    "EEZs"
+   ],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "unclos"
+   ]
+  },
+  {
+   "id": "redistricting",
+   "term": "redistricting",
+   "aliases": [
+    "reapportionment"
+   ],
+   "taughtIn": "internal-boundaries",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "gerrymandering",
+   "term": "gerrymandering",
+   "aliases": [
+    "gerrymander",
+    "packing",
+    "cracking"
+   ],
+   "taughtIn": "internal-boundaries",
+   "dependsOn": [
+    "redistricting"
+   ]
+  },
+  {
+   "id": "unitary-state",
+   "term": "unitary state",
+   "aliases": [
+    "unitary states",
+    "unitary"
+   ],
+   "taughtIn": "forms-of-governance",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "federal-state",
+   "term": "federal state",
+   "aliases": [
+    "federal states",
+    "federalism",
+    "federal system"
+   ],
+   "taughtIn": "forms-of-governance",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "devolution",
+   "term": "devolution",
+   "aliases": [
+    "devolve",
+    "devolutionary"
+   ],
+   "taughtIn": "devolution-factors",
+   "dependsOn": [
+    "sovereignty"
+   ]
+  },
+  {
+   "id": "ethnic-separatism",
+   "term": "ethnic separatism",
+   "aliases": [
+    "separatism",
+    "separatist"
+   ],
+   "taughtIn": "devolution-factors",
+   "dependsOn": [
+    "ethnicity",
+    "devolution"
+   ]
+  },
+  {
+   "id": "ethnic-cleansing",
+   "term": "ethnic cleansing",
+   "aliases": [],
+   "taughtIn": "devolution-factors",
+   "dependsOn": [
+    "ethnicity"
+   ]
+  },
+  {
+   "id": "irredentism",
+   "term": "irredentism",
+   "aliases": [
+    "irredentist"
+   ],
+   "taughtIn": "devolution-factors",
+   "dependsOn": [
+    "boundary"
+   ]
+  },
+  {
+   "id": "terrorism",
+   "term": "terrorism",
+   "aliases": [],
+   "taughtIn": "devolution-factors",
+   "dependsOn": []
+  },
+  {
+   "id": "supranationalism",
+   "term": "supranationalism",
+   "aliases": [
+    "supranational organization",
+    "supranational organizations",
+    "supranational"
+   ],
+   "taughtIn": "sovereignty-challenges",
+   "dependsOn": [
+    "sovereignty"
+   ]
+  },
+  {
+   "id": "balkanization",
+   "term": "balkanization",
+   "aliases": [],
+   "taughtIn": "sovereignty-challenges",
+   "dependsOn": [
+    "devolution"
+   ]
+  },
+  {
+   "id": "democratization",
+   "term": "democratization",
+   "aliases": [],
+   "taughtIn": "sovereignty-challenges",
+   "dependsOn": [
+    "state"
+   ]
+  },
+  {
+   "id": "failed-state",
+   "term": "failed state",
+   "aliases": [
+    "failed states"
+   ],
+   "taughtIn": "centrifugal-centripetal",
+   "dependsOn": [
+    "centrifugal-force"
+   ]
+  },
+  {
+   "id": "ethnonationalism",
+   "term": "ethnonationalism",
+   "aliases": [
+    "ethnic nationalism"
+   ],
+   "taughtIn": "centrifugal-centripetal",
+   "dependsOn": [
+    "centripetal-force"
+   ]
+  },
+  {
+   "id": "agriculture",
+   "term": "agriculture",
+   "aliases": [
+    "farming",
+    "farm",
+    "farms"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": []
+  },
+  {
+   "id": "intensive-agriculture",
+   "term": "intensive agriculture",
+   "aliases": [
+    "intensive farming",
+    "intensive"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "extensive-agriculture",
+   "term": "extensive agriculture",
+   "aliases": [
+    "extensive farming",
+    "extensive"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "market-gardening",
+   "term": "market gardening",
+   "aliases": [
+    "truck farming"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "intensive-agriculture"
+   ]
+  },
+  {
+   "id": "plantation-agriculture",
+   "term": "plantation agriculture",
+   "aliases": [
+    "plantation",
+    "plantations"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "intensive-agriculture"
+   ]
+  },
+  {
+   "id": "mixed-crop-livestock",
+   "term": "mixed crop and livestock farming",
+   "aliases": [
+    "mixed crop and livestock"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "intensive-agriculture"
+   ]
+  },
+  {
+   "id": "shifting-cultivation",
+   "term": "shifting cultivation",
+   "aliases": [
+    "slash and burn",
+    "swidden"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "extensive-agriculture"
+   ]
+  },
+  {
+   "id": "nomadic-herding",
+   "term": "nomadic herding",
+   "aliases": [
+    "pastoral nomadism",
+    "pastoralism"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "extensive-agriculture"
+   ]
+  },
+  {
+   "id": "ranching",
+   "term": "ranching",
+   "aliases": [
+    "ranch"
+   ],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "extensive-agriculture"
+   ]
+  },
+  {
+   "id": "mediterranean-agriculture",
+   "term": "Mediterranean agriculture",
+   "aliases": [],
+   "taughtIn": "agriculture-intro",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "clustered-settlement",
+   "term": "clustered settlement",
+   "aliases": [
+    "nucleated settlement"
+   ],
+   "taughtIn": "settlement-survey",
+   "dependsOn": [
+    "clustering"
+   ]
+  },
+  {
+   "id": "dispersed-settlement",
+   "term": "dispersed settlement",
+   "aliases": [],
+   "taughtIn": "settlement-survey",
+   "dependsOn": [
+    "dispersal"
+   ]
+  },
+  {
+   "id": "linear-settlement",
+   "term": "linear settlement",
+   "aliases": [],
+   "taughtIn": "settlement-survey",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "metes-and-bounds",
+   "term": "metes and bounds",
+   "aliases": [],
+   "taughtIn": "settlement-survey",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "township-and-range",
+   "term": "township and range",
+   "aliases": [
+    "rectangular survey"
+   ],
+   "taughtIn": "settlement-survey",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "long-lot",
+   "term": "long lot",
+   "aliases": [
+    "long lots"
+   ],
+   "taughtIn": "settlement-survey",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "domestication",
+   "term": "domestication",
+   "aliases": [
+    "domesticated"
+   ],
+   "taughtIn": "agricultural-origins",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "first-agricultural-revolution",
+   "term": "First Agricultural Revolution",
+   "aliases": [
+    "Neolithic Revolution"
+   ],
+   "taughtIn": "agricultural-origins",
+   "dependsOn": [
+    "domestication"
+   ]
+  },
+  {
+   "id": "fertile-crescent",
+   "term": "Fertile Crescent",
+   "aliases": [],
+   "taughtIn": "agricultural-origins",
+   "dependsOn": [
+    "domestication"
+   ]
+  },
+  {
+   "id": "columbian-exchange",
+   "term": "Columbian Exchange",
+   "aliases": [],
+   "taughtIn": "agricultural-origins",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "second-agricultural-revolution",
+   "term": "Second Agricultural Revolution",
+   "aliases": [],
+   "taughtIn": "second-agricultural-revolution",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "mechanization",
+   "term": "mechanization",
+   "aliases": [
+    "mechanized"
+   ],
+   "taughtIn": "second-agricultural-revolution",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "green-revolution",
+   "term": "Green Revolution",
+   "aliases": [
+    "Third Agricultural Revolution"
+   ],
+   "taughtIn": "green-revolution",
+   "dependsOn": [
+    "mechanization"
+   ]
+  },
+  {
+   "id": "high-yield-seed",
+   "term": "high-yield variety",
+   "aliases": [
+    "high-yield seeds",
+    "HYV",
+    "high-yield varieties"
+   ],
+   "taughtIn": "green-revolution",
+   "dependsOn": [
+    "green-revolution"
+   ]
+  },
+  {
+   "id": "subsistence-agriculture",
+   "term": "subsistence agriculture",
+   "aliases": [
+    "subsistence farming",
+    "subsistence"
+   ],
+   "taughtIn": "production-regions",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "commercial-agriculture",
+   "term": "commercial agriculture",
+   "aliases": [
+    "commercial farming"
+   ],
+   "taughtIn": "production-regions",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "monocropping",
+   "term": "monocropping",
+   "aliases": [
+    "monoculture"
+   ],
+   "taughtIn": "production-regions",
+   "dependsOn": [
+    "commercial-agriculture"
+   ]
+  },
+  {
+   "id": "bid-rent-theory",
+   "term": "bid-rent theory",
+   "aliases": [
+    "bid-rent",
+    "bid rent",
+    "bid-rent curve"
+   ],
+   "taughtIn": "production-regions",
+   "dependsOn": [
+    "land-use"
+   ]
+  },
+  {
+   "id": "agribusiness",
+   "term": "agribusiness",
+   "aliases": [],
+   "taughtIn": "farm-organization",
+   "dependsOn": [
+    "commercial-agriculture"
+   ]
+  },
+  {
+   "id": "commodity-chain",
+   "term": "commodity chain",
+   "aliases": [
+    "commodity chains"
+   ],
+   "taughtIn": "farm-organization",
+   "dependsOn": [
+    "commercial-agriculture"
+   ]
+  },
+  {
+   "id": "economies-of-scale",
+   "term": "economies of scale",
+   "aliases": [],
+   "taughtIn": "farm-organization",
+   "dependsOn": []
+  },
+  {
+   "id": "von-thunen-model",
+   "term": "von Thünen model",
+   "aliases": [
+    "von Thünen",
+    "von Thunen"
+   ],
+   "taughtIn": "von-thunen",
+   "dependsOn": [
+    "land-use",
+    "bid-rent-theory"
+   ]
+  },
+  {
+   "id": "supply-chain",
+   "term": "global supply chain",
+   "aliases": [
+    "supply chain",
+    "supply chains"
+   ],
+   "taughtIn": "global-agriculture",
+   "dependsOn": [
+    "commodity-chain"
+   ]
+  },
+  {
+   "id": "commodity-dependence",
+   "term": "commodity dependence",
+   "aliases": [
+    "export commodity dependence"
+   ],
+   "taughtIn": "global-agriculture",
+   "dependsOn": [
+    "commercial-agriculture"
+   ]
+  },
+  {
+   "id": "desertification",
+   "term": "desertification",
+   "aliases": [],
+   "taughtIn": "agriculture-consequences",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "salinization",
+   "term": "salinization",
+   "aliases": [],
+   "taughtIn": "agriculture-consequences",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "terracing",
+   "term": "terracing",
+   "aliases": [
+    "terraces",
+    "terrace"
+   ],
+   "taughtIn": "agriculture-consequences",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "irrigation",
+   "term": "irrigation",
+   "aliases": [
+    "irrigated"
+   ],
+   "taughtIn": "agriculture-consequences",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "deforestation",
+   "term": "deforestation",
+   "aliases": [],
+   "taughtIn": "agriculture-consequences",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "gmo",
+   "term": "genetically modified organism",
+   "aliases": [
+    "GMO",
+    "GMOs",
+    "genetically modified"
+   ],
+   "taughtIn": "agriculture-challenges",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "aquaculture",
+   "term": "aquaculture",
+   "aliases": [],
+   "taughtIn": "agriculture-challenges",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "food-desert",
+   "term": "food desert",
+   "aliases": [
+    "food deserts"
+   ],
+   "taughtIn": "agriculture-challenges",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "food-insecurity",
+   "term": "food insecurity",
+   "aliases": [],
+   "taughtIn": "agriculture-challenges",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "fair-trade",
+   "term": "fair trade",
+   "aliases": [],
+   "taughtIn": "agriculture-challenges",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "community-supported-agriculture",
+   "term": "community-supported agriculture",
+   "aliases": [
+    "CSA"
+   ],
+   "taughtIn": "agriculture-challenges",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "value-added-crop",
+   "term": "value-added specialty crop",
+   "aliases": [
+    "value-added specialty crops",
+    "value-added"
+   ],
+   "taughtIn": "agriculture-challenges",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "women-farm-labor",
+   "term": "women's farm labor",
+   "aliases": [
+    "women in agriculture"
+   ],
+   "taughtIn": "women-in-agriculture",
+   "dependsOn": [
+    "agriculture"
+   ]
+  },
+  {
+   "id": "city",
+   "term": "city",
+   "aliases": [
+    "cities",
+    "urban"
+   ],
+   "taughtIn": "urbanization-origins",
+   "dependsOn": []
+  },
+  {
+   "id": "urbanization",
+   "term": "urbanization",
+   "aliases": [
+    "urbanized"
+   ],
+   "taughtIn": "urbanization-origins",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "megacity",
+   "term": "megacity",
+   "aliases": [
+    "megacities"
+   ],
+   "taughtIn": "cities-worldwide",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "metacity",
+   "term": "metacity",
+   "aliases": [
+    "metacities"
+   ],
+   "taughtIn": "cities-worldwide",
+   "dependsOn": [
+    "megacity"
+   ]
+  },
+  {
+   "id": "suburbanization",
+   "term": "suburbanization",
+   "aliases": [
+    "suburb",
+    "suburbs",
+    "suburban"
+   ],
+   "taughtIn": "cities-worldwide",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "urban-sprawl",
+   "term": "urban sprawl",
+   "aliases": [
+    "sprawl"
+   ],
+   "taughtIn": "cities-worldwide",
+   "dependsOn": [
+    "suburbanization"
+   ]
+  },
+  {
+   "id": "edge-city",
+   "term": "edge city",
+   "aliases": [
+    "edge cities"
+   ],
+   "taughtIn": "cities-worldwide",
+   "dependsOn": [
+    "suburbanization"
+   ]
+  },
+  {
+   "id": "exurb",
+   "term": "exurb",
+   "aliases": [
+    "exurbs"
+   ],
+   "taughtIn": "cities-worldwide",
+   "dependsOn": [
+    "suburbanization"
+   ]
+  },
+  {
+   "id": "boomburb",
+   "term": "boomburb",
+   "aliases": [
+    "boomburbs"
+   ],
+   "taughtIn": "cities-worldwide",
+   "dependsOn": [
+    "suburbanization"
+   ]
+  },
+  {
+   "id": "world-city",
+   "term": "world city",
+   "aliases": [
+    "world cities",
+    "global city",
+    "global cities"
+   ],
+   "taughtIn": "cities-globalization",
+   "dependsOn": [
+    "city",
+    "globalization"
+   ]
+  },
+  {
+   "id": "urban-hierarchy",
+   "term": "urban hierarchy",
+   "aliases": [],
+   "taughtIn": "cities-globalization",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "rank-size-rule",
+   "term": "rank-size rule",
+   "aliases": [
+    "rank-size"
+   ],
+   "taughtIn": "city-size-distribution",
+   "dependsOn": [
+    "urban-hierarchy"
+   ]
+  },
+  {
+   "id": "primate-city",
+   "term": "primate city",
+   "aliases": [
+    "primate cities",
+    "law of the primate city"
+   ],
+   "taughtIn": "city-size-distribution",
+   "dependsOn": [
+    "urban-hierarchy"
+   ]
+  },
+  {
+   "id": "gravity-model",
+   "term": "gravity model",
+   "aliases": [],
+   "taughtIn": "city-size-distribution",
+   "dependsOn": [
+    "distance-decay"
+   ]
+  },
+  {
+   "id": "central-place-theory",
+   "term": "central place theory",
+   "aliases": [
+    "Christaller",
+    "central place",
+    "central places"
+   ],
+   "taughtIn": "city-size-distribution",
+   "dependsOn": [
+    "urban-hierarchy"
+   ]
+  },
+  {
+   "id": "range-of-good",
+   "term": "range (central place)",
+   "aliases": [
+    "range of a good"
+   ],
+   "taughtIn": "city-size-distribution",
+   "dependsOn": [
+    "central-place-theory"
+   ]
+  },
+  {
+   "id": "threshold",
+   "term": "threshold (central place)",
+   "aliases": [
+    "threshold population"
+   ],
+   "taughtIn": "city-size-distribution",
+   "dependsOn": [
+    "central-place-theory"
+   ]
+  },
+  {
+   "id": "cbd",
+   "term": "central business district",
+   "aliases": [
+    "CBD",
+    "downtown"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "concentric-zone-model",
+   "term": "concentric zone model",
+   "aliases": [
+    "Burgess model",
+    "Burgess"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "cbd"
+   ]
+  },
+  {
+   "id": "sector-model",
+   "term": "sector model",
+   "aliases": [
+    "Hoyt model",
+    "Hoyt"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "cbd"
+   ]
+  },
+  {
+   "id": "multiple-nuclei-model",
+   "term": "multiple nuclei model",
+   "aliases": [
+    "Harris and Ullman"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "cbd"
+   ]
+  },
+  {
+   "id": "galactic-city-model",
+   "term": "galactic city model",
+   "aliases": [
+    "peripheral model",
+    "galactic city"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "edge-city"
+   ]
+  },
+  {
+   "id": "latin-american-city-model",
+   "term": "Latin American city model",
+   "aliases": [
+    "Latin American city"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "cbd"
+   ]
+  },
+  {
+   "id": "southeast-asian-city-model",
+   "term": "Southeast Asian city model",
+   "aliases": [
+    "Southeast Asian city"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "cbd"
+   ]
+  },
+  {
+   "id": "african-city-model",
+   "term": "African city model",
+   "aliases": [
+    "African city"
+   ],
+   "taughtIn": "city-structure",
+   "dependsOn": [
+    "cbd"
+   ]
+  },
+  {
+   "id": "infilling",
+   "term": "infilling",
+   "aliases": [
+    "infill"
+   ],
+   "taughtIn": "density-land-use",
+   "dependsOn": [
+    "land-use"
+   ]
+  },
+  {
+   "id": "residential-density",
+   "term": "residential density",
+   "aliases": [
+    "high density housing",
+    "low density housing"
+   ],
+   "taughtIn": "density-land-use",
+   "dependsOn": [
+    "population-density"
+   ]
+  },
+  {
+   "id": "infrastructure",
+   "term": "infrastructure",
+   "aliases": [],
+   "taughtIn": "infrastructure",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "smart-growth",
+   "term": "smart growth",
+   "aliases": [
+    "smart-growth"
+   ],
+   "taughtIn": "urban-sustainability",
+   "dependsOn": [
+    "urban-sprawl"
+   ]
+  },
+  {
+   "id": "new-urbanism",
+   "term": "New Urbanism",
+   "aliases": [],
+   "taughtIn": "urban-sustainability",
+   "dependsOn": [
+    "smart-growth"
+   ]
+  },
+  {
+   "id": "mixed-use",
+   "term": "mixed-use development",
+   "aliases": [
+    "mixed use",
+    "mixed-use"
+   ],
+   "taughtIn": "urban-sustainability",
+   "dependsOn": [
+    "land-use"
+   ]
+  },
+  {
+   "id": "transit-oriented-development",
+   "term": "transit-oriented development",
+   "aliases": [
+    "TOD"
+   ],
+   "taughtIn": "urban-sustainability",
+   "dependsOn": [
+    "smart-growth"
+   ]
+  },
+  {
+   "id": "greenbelt",
+   "term": "greenbelt",
+   "aliases": [
+    "greenbelts",
+    "urban growth boundary",
+    "urban growth boundaries"
+   ],
+   "taughtIn": "urban-sustainability",
+   "dependsOn": [
+    "urban-sprawl"
+   ]
+  },
+  {
+   "id": "walkability",
+   "term": "walkability",
+   "aliases": [
+    "walkable"
+   ],
+   "taughtIn": "urban-sustainability",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "survey-data",
+   "term": "survey data",
+   "aliases": [
+    "survey",
+    "surveys"
+   ],
+   "taughtIn": "urban-data",
+   "dependsOn": [
+    "quantitative-data"
+   ]
+  },
+  {
+   "id": "redlining",
+   "term": "redlining",
+   "aliases": [],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "blockbusting",
+   "term": "blockbusting",
+   "aliases": [],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "gentrification",
+   "term": "gentrification",
+   "aliases": [
+    "gentrified"
+   ],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "urban-renewal",
+   "term": "urban renewal",
+   "aliases": [],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "squatter-settlement",
+   "term": "squatter settlement",
+   "aliases": [
+    "squatter settlements",
+    "informal settlement",
+    "informal settlements"
+   ],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "disamenity-zone",
+   "term": "disamenity zone",
+   "aliases": [
+    "zone of abandonment",
+    "zones of abandonment",
+    "disamenity zones"
+   ],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "inclusionary-zoning",
+   "term": "inclusionary zoning",
+   "aliases": [
+    "zoning"
+   ],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "environmental-injustice",
+   "term": "environmental injustice",
+   "aliases": [],
+   "taughtIn": "urban-change-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "ecological-footprint",
+   "term": "ecological footprint",
+   "aliases": [],
+   "taughtIn": "sustainability-challenges",
+   "dependsOn": [
+    "sustainability"
+   ]
+  },
+  {
+   "id": "brownfield",
+   "term": "brownfield",
+   "aliases": [
+    "brownfields"
+   ],
+   "taughtIn": "sustainability-challenges",
+   "dependsOn": [
+    "city"
+   ]
+  },
+  {
+   "id": "industrialization",
+   "term": "industrialization",
+   "aliases": [
+    "Industrial Revolution",
+    "industrial"
+   ],
+   "taughtIn": "industrial-revolution",
+   "dependsOn": []
+  },
+  {
+   "id": "primary-sector",
+   "term": "primary sector",
+   "aliases": [],
+   "taughtIn": "economic-sectors",
+   "dependsOn": []
+  },
+  {
+   "id": "secondary-sector",
+   "term": "secondary sector",
+   "aliases": [],
+   "taughtIn": "economic-sectors",
+   "dependsOn": [
+    "industrialization"
+   ]
+  },
+  {
+   "id": "tertiary-sector",
+   "term": "tertiary sector",
+   "aliases": [
+    "service sector"
+   ],
+   "taughtIn": "economic-sectors",
+   "dependsOn": []
+  },
+  {
+   "id": "quaternary-sector",
+   "term": "quaternary sector",
+   "aliases": [],
+   "taughtIn": "economic-sectors",
+   "dependsOn": [
+    "tertiary-sector"
+   ]
+  },
+  {
+   "id": "quinary-sector",
+   "term": "quinary sector",
+   "aliases": [],
+   "taughtIn": "economic-sectors",
+   "dependsOn": [
+    "tertiary-sector"
+   ]
+  },
+  {
+   "id": "break-of-bulk",
+   "term": "break-of-bulk point",
+   "aliases": [
+    "break of bulk"
+   ],
+   "taughtIn": "economic-sectors",
+   "dependsOn": [
+    "industrialization"
+   ]
+  },
+  {
+   "id": "least-cost-theory",
+   "term": "least cost theory",
+   "aliases": [
+    "Weber",
+    "least-cost theory"
+   ],
+   "taughtIn": "economic-sectors",
+   "dependsOn": [
+    "industrialization"
+   ]
+  },
+  {
+   "id": "core",
+   "term": "core (world system)",
+   "aliases": [
+    "core countries"
+   ],
+   "taughtIn": "economic-sectors",
+   "dependsOn": []
+  },
+  {
+   "id": "semiperiphery",
+   "term": "semiperiphery",
+   "aliases": [
+    "semiperipheral",
+    "semi-periphery"
+   ],
+   "taughtIn": "economic-sectors",
+   "dependsOn": [
+    "core"
+   ]
+  },
+  {
+   "id": "periphery",
+   "term": "periphery",
+   "aliases": [
+    "peripheral countries",
+    "periphery countries"
+   ],
+   "taughtIn": "economic-sectors",
+   "dependsOn": [
+    "core"
+   ]
+  },
+  {
+   "id": "development",
+   "term": "development",
+   "aliases": [
+    "developed",
+    "developing"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": []
+  },
+  {
+   "id": "gdp",
+   "term": "gross domestic product",
+   "aliases": [
+    "GDP",
+    "GDP per capita"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "gnp",
+   "term": "gross national product",
+   "aliases": [
+    "GNP"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "gni",
+   "term": "gross national income",
+   "aliases": [
+    "GNI",
+    "GNI per capita"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": [
+    "gdp"
+   ]
+  },
+  {
+   "id": "informal-sector",
+   "term": "informal sector",
+   "aliases": [
+    "informal economy"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "hdi",
+   "term": "Human Development Index",
+   "aliases": [
+    "HDI"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "gii",
+   "term": "Gender Inequality Index",
+   "aliases": [
+    "GII"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "literacy-rate",
+   "term": "literacy rate",
+   "aliases": [
+    "literacy"
+   ],
+   "taughtIn": "development-measures",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "microlending",
+   "term": "microlending",
+   "aliases": [
+    "microloan",
+    "microloans",
+    "microfinance",
+    "microcredit"
+   ],
+   "taughtIn": "women-development",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "rostow-stages",
+   "term": "Rostow's stages of economic growth",
+   "aliases": [
+    "Rostow",
+    "Rostow's model",
+    "stages of economic growth"
+   ],
+   "taughtIn": "development-theories",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "world-system-theory",
+   "term": "world system theory",
+   "aliases": [
+    "Wallerstein",
+    "world-system theory",
+    "world systems theory"
+   ],
+   "taughtIn": "development-theories",
+   "dependsOn": [
+    "core",
+    "semiperiphery",
+    "periphery"
+   ]
+  },
+  {
+   "id": "dependency-theory",
+   "term": "dependency theory",
+   "aliases": [],
+   "taughtIn": "development-theories",
+   "dependsOn": [
+    "periphery"
+   ]
+  },
+  {
+   "id": "complementarity",
+   "term": "complementarity",
+   "aliases": [],
+   "taughtIn": "trade-world-economy",
+   "dependsOn": []
+  },
+  {
+   "id": "comparative-advantage",
+   "term": "comparative advantage",
+   "aliases": [],
+   "taughtIn": "trade-world-economy",
+   "dependsOn": []
+  },
+  {
+   "id": "absolute-advantage",
+   "term": "absolute advantage",
+   "aliases": [],
+   "taughtIn": "trade-world-economy",
+   "dependsOn": [
+    "comparative-advantage"
+   ]
+  },
+  {
+   "id": "neoliberalism",
+   "term": "neoliberalism",
+   "aliases": [
+    "neoliberal"
+   ],
+   "taughtIn": "trade-world-economy",
+   "dependsOn": [
+    "development"
+   ]
+  },
+  {
+   "id": "trade-bloc",
+   "term": "trade bloc",
+   "aliases": [
+    "trade blocs",
+    "trading bloc",
+    "trade agreement",
+    "trade agreements"
+   ],
+   "taughtIn": "trade-world-economy",
+   "dependsOn": [
+    "supranationalism"
+   ]
+  },
+  {
+   "id": "tariff",
+   "term": "tariff",
+   "aliases": [
+    "tariffs"
+   ],
+   "taughtIn": "trade-world-economy",
+   "dependsOn": []
+  },
+  {
+   "id": "outsourcing",
+   "term": "outsourcing",
+   "aliases": [
+    "offshoring"
+   ],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "core"
+   ]
+  },
+  {
+   "id": "deindustrialization",
+   "term": "deindustrialization",
+   "aliases": [],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "industrialization"
+   ]
+  },
+  {
+   "id": "newly-industrialized-country",
+   "term": "newly industrialized country",
+   "aliases": [
+    "NIC",
+    "NICs",
+    "newly industrialized countries"
+   ],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "industrialization"
+   ]
+  },
+  {
+   "id": "special-economic-zone",
+   "term": "special economic zone",
+   "aliases": [
+    "SEZ",
+    "free-trade zone",
+    "export-processing zone",
+    "maquiladora",
+    "maquiladoras"
+   ],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "trade-bloc"
+   ]
+  },
+  {
+   "id": "international-division-of-labor",
+   "term": "international division of labor",
+   "aliases": [],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "outsourcing"
+   ]
+  },
+  {
+   "id": "post-fordism",
+   "term": "post-Fordism",
+   "aliases": [
+    "Fordism",
+    "post-Fordist"
+   ],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "industrialization"
+   ]
+  },
+  {
+   "id": "multiplier-effect",
+   "term": "multiplier effect",
+   "aliases": [],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": []
+  },
+  {
+   "id": "agglomeration",
+   "term": "agglomeration",
+   "aliases": [],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "economies-of-scale"
+   ]
+  },
+  {
+   "id": "just-in-time",
+   "term": "just-in-time delivery",
+   "aliases": [
+    "just-in-time"
+   ],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "post-fordism"
+   ]
+  },
+  {
+   "id": "growth-pole",
+   "term": "growth pole",
+   "aliases": [
+    "growth poles"
+   ],
+   "taughtIn": "world-economy-changes",
+   "dependsOn": [
+    "agglomeration"
+   ]
+  },
+  {
+   "id": "sustainable-development",
+   "term": "sustainable development",
+   "aliases": [],
+   "taughtIn": "sustainable-development",
+   "dependsOn": [
+    "sustainability",
+    "development"
+   ]
+  },
+  {
+   "id": "ecotourism",
+   "term": "ecotourism",
+   "aliases": [],
+   "taughtIn": "sustainable-development",
+   "dependsOn": [
+    "sustainable-development"
+   ]
+  },
+  {
+   "id": "sdgs",
+   "term": "Sustainable Development Goals",
+   "aliases": [
+    "SDGs",
+    "SDG"
+   ],
+   "taughtIn": "sustainable-development",
+   "dependsOn": [
+    "sustainable-development"
+   ]
+  }
+ ],
+ "circularDependencies": []
+}

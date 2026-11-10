@@ -1,0 +1,231 @@
+{
+ "about": "The AP Human Geography app pages. scripts/build-aphug.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in human-geography/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApHugCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/aphug-spec.md decision 2). tools[] are the eight trainers of docs/aphug-spec.md section 6, pre-registered in Phase 0: page human-geography/tools/<slug>.html, script human-geography/assets/tools/<slug>.js, model human-geography/assets/tools/math/<slug>.js (ApHugMath.<camelSlug>), content human-geography/data/tools/<slug>.json, validator scripts/lib/aphug-tool-checks/<slug>.mjs, test scripts/test/aphug-tool-<slug>.test.mjs (docs/aphug-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. FREE OR PREMIUM is set here and only here: a tool with \"premium\": \"tools\" is Premium; model-studio, scale-lab and map-reader carry none and are free (docs/aphug-spec.md section 6; model-studio gates its own Premium parts: free is Explore plus the demographic transition drills).",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Human geography practice by unit, topic or skill: map, data, image and text sets, models to build, concepts applied to named places, and answers made specific.",
+   "card": "Drill a unit, a topic or a skill, with map, data, image and text sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your human-geography spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Exams",
+   "desc": "Timed human-geography unit tests and full practice exams in the May 2027 format: 60 multiple-choice questions, then the three free-response questions.",
+   "card": "Unit tests and full timed practice exams in the May 2027 format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Human geography free-response practice: three 7-point questions (no stimulus, one, two), each task verb shown, a rubric line a point, a full-credit sample.",
+   "card": "Three 7-point questions, part by part, with the task verb shown and a full-credit sample.",
+   "script": "pages/frq.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Make it specific",
+   "title": "Make it specific",
+   "desc": "Human geography answers specific enough to score: a named place, the scale, an explanation with its because, and both sides of a comparison.",
+   "lede": "Write the answer, then check it against the rubric and two model answers: one that earns the point and one that loses it.",
+   "card": "A named place, the scale, and an explanation with its because, checked against a rubric.",
+   "script": "pages/justify.js",
+   "studio": true,
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Human Geography cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with timed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition human-geography flashcards built from the glossary and the formulas you must know, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary and the formulas.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Tools",
+   "desc": "Human geography trainers: Model Studio, the FRQ coach, the scale lab, the map reader, the population, diffusion, borders and city labs.",
+   "card": "Trainers and simulators, then the questions about what you saw.",
+   "script": "pages/tools.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Progress",
+   "title": "Progress",
+   "desc": "Your human-geography mastery by unit, topic and skill, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and skill.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every human-geography lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For human-geography teachers: stable share links, printable notes and unit sheets, and Google Classroom sharing, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "model-studio",
+   "kind": "simulator",
+   "topic": "transition-model",
+   "name": "Model Studio",
+   "title": "Model Studio",
+   "desc": "Every model the course framework names, built by hand: drag the rings, sectors, stages and tiers into place, apply the model to a real case, then pick out its limits. Graded piece by piece.",
+   "blurb": "Build every named model by hand, apply it, then find its limits.",
+   "lede": "Build the model piece by piece, then test it on a real place.",
+   "studio": true
+  },
+  {
+   "slug": "frq-coach",
+   "kind": "simulator",
+   "topic": "skills-frq",
+   "name": "FRQ coach",
+   "title": "FRQ Coach",
+   "desc": "Free-response parts answered one at a time with the task verb's demand checked: identify, define, describe, explain, compare and explain the degree, each with its rubric line.",
+   "blurb": "Answer each part the way its task verb asks.",
+   "lede": "Read the verb first, then write exactly what it demands.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "scale-lab",
+   "kind": "simulator",
+   "topic": "scales-of-analysis",
+   "name": "Scale lab",
+   "title": "Scale Lab",
+   "desc": "Scale of analysis against map scale, and one data set at global, regional, national and local scale telling four different stories.",
+   "blurb": "Scale of analysis against map scale, at four scales.",
+   "lede": "Change the scale and watch the pattern change.",
+   "studio": true
+  },
+  {
+   "slug": "map-reader",
+   "kind": "simulator",
+   "topic": "views-of-the-world",
+   "name": "Map reader",
+   "title": "Map Reader",
+   "desc": "Reference and thematic maps: choropleth, dot, graduated symbol and isoline maps, their legends and the patterns they show, always named with a place.",
+   "blurb": "Choropleth, dot, graduated symbol and isoline maps.",
+   "lede": "Read the legend first, then name the pattern and the place.",
+   "studio": true
+  },
+  {
+   "slug": "population-lab",
+   "kind": "simulator",
+   "topic": "population-composition",
+   "name": "Population lab",
+   "title": "Population Lab",
+   "desc": "Population pyramids, the stages of the demographic transition, birth, death and natural increase rates, doubling time and dependency ratios, each worked by hand.",
+   "blurb": "Pyramids, transition stages, rates and ratios.",
+   "lede": "Read the pyramid, then work out what it means for the place.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "diffusion-lab",
+   "kind": "simulator",
+   "topic": "diffusion-types",
+   "name": "Diffusion lab",
+   "title": "Diffusion Lab",
+   "desc": "Diffusion types and migration on a map: relocation and expansion, contagious, hierarchical and stimulus, push and pull, Ravenstein, step and chain migration.",
+   "blurb": "Diffusion types and migration on a map.",
+   "lede": "Watch a trait or a people move, then name how.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "borders-lab",
+   "kind": "simulator",
+   "topic": "defining-boundaries",
+   "name": "Borders lab",
+   "title": "Borders Lab",
+   "desc": "Boundary types, state shapes, centripetal and centrifugal forces, devolution and the zones of the law of the sea.",
+   "blurb": "Boundary types, forces, devolution, the sea zones.",
+   "lede": "Read the boundary's history, then name its type.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "city-lab",
+   "kind": "simulator",
+   "topic": "von-thunen",
+   "name": "City lab",
+   "title": "City Lab",
+   "desc": "Bid-rent and von Thünen rings, the city models side by side, central place theory and the rank-size rule.",
+   "blurb": "Bid-rent, von Thünen and the city models.",
+   "lede": "Place the land uses, then test the model on a real city.",
+   "studio": true,
+   "premium": "tools"
+  }
+ ]
+}

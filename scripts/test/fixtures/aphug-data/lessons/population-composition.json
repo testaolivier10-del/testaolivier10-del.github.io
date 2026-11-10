@@ -1,0 +1,62 @@
+{
+ "topic": "population-composition",
+ "hook": "Placeholder: two countries can have the same number of people and very different futures. A population pyramid shows why.",
+ "prereq": [
+  {
+   "q": "Placeholder: what does physiological density compare?",
+   "options": [
+    "People and arable land",
+    "People and all land",
+    "Farmers and all land",
+    "Cities and farms"
+   ],
+   "correct": 0,
+   "why": "Placeholder: people per unit of farmland.",
+   "review": "distribution-consequences"
+  },
+  {
+   "q": "Placeholder: what is the scale of analysis of a map of provinces?",
+   "options": [
+    "Local (subnational)",
+    "Global",
+    "Regional",
+    "National"
+   ],
+   "correct": 0,
+   "why": "Placeholder: the data are for parts of one country.",
+   "review": "scales-of-analysis"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "Many children are born for years",
+   "effect": "the pyramid has a wide base"
+  },
+  {
+   "cause": "People live longer and fewer are born",
+   "effect": "the top widens and the base narrows"
+  },
+  {
+   "cause": "The base narrows for decades",
+   "effect": "fewer people reach working age later"
+  }
+ ],
+ "ideas": [
+  "Placeholder: a population pyramid shows age structure and sex ratio.",
+  "Placeholder: its shape hints at future needs: schools or care for older people."
+ ],
+ "misconception": {
+  "wrong": "Placeholder: a wide pyramid means a large population.",
+  "right": "Placeholder: a wide base means a young population, whatever its size."
+ },
+ "check": [
+  "hug-population-composition-16",
+  "hug-population-composition-17",
+  "hug-population-composition-18",
+  "hug-population-composition-34",
+  "hug-population-composition-35",
+  "hug-population-composition-38"
+ ],
+ "summary": "Placeholder: a population pyramid shows the age structure and sex ratio of a population, and its shape hints at growth, decline and future needs."
+}
