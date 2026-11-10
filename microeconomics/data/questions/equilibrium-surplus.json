@@ -377,14 +377,14 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.B",
-   "q": "Demand for a good has risen to the curve shown. Shade consumer surplus at the new market equilibrium.",
+   "q": "Supply of a good has increased to the curve shown. Shade consumer surplus at the new market equilibrium.",
    "why": {
-    "correct": "Find where the curves now cross. Consumer surplus is the triangle under demand and above that price, from zero out to that quantity."
+    "correct": "Find where the curves now cross: a lower price and a larger quantity than before. Consumer surplus is the triangle under demand and above that price, from zero out to that quantity."
    },
    "graph": {
     "kind": "sd",
     "start": {
-     "D": 1
+     "S": 1
     },
     "do": [
      "shade"

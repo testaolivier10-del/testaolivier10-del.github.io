@@ -560,7 +560,7 @@
    "q": "Why does a country that opens to trade import a good whose world price is below its own price?",
    "options": [
     "Domestic farms are forced to stop producing",
-    "The government sets the world price",
+    "The government sets the world price below the domestic price",
     "Imports raise the domestic price",
     "Other producers make it at a lower opportunity cost"
    ],
@@ -612,9 +612,9 @@
    "q": "How does a tariff on imports compare with an import quota that allows the same amount of imports?",
    "options": [
     "A quota lowers the domestic price; a tariff raises it",
-    "A tariff creates deadweight loss; a quota does not",
+    "A tariff creates a deadweight loss, but a quota does not create one",
     "Same price and imports; only a tariff gives the government revenue",
-    "A quota raises imports; a tariff lowers them"
+    "A quota raises imports above free trade; a tariff lowers them"
    ],
    "correct": 2,
    "why": {

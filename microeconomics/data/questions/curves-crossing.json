@@ -96,17 +96,17 @@
         5
        ]
       },
-      "why": "That is base times height, the area of a rectangle. A triangle is half of that: ½ × 50 × 5."
+      "why": "250 is twice the triangle. Either you dropped the ½ (50 × 5 is the rectangle) or you measured the height from the axis (½ × 50 × 10). The height runs from \\$5 up to \\$10, which is 5, and a triangle is half of base × height: ½ × 50 × 5."
      },
      {
       "from": {
-       "fn": "triangle",
+       "fn": "rectangle",
        "args": [
         50,
         10
        ]
       },
-      "why": "The height runs from \\$5 up to \\$10, which is 5, not 10. Measure from the price line, not from the axis."
+      "why": "That drops the ½ and also measures the height from the axis. The triangle's height runs from \\$5 to \\$10 (5), and its area is ½ × 50 × 5."
      }
     ]
    }

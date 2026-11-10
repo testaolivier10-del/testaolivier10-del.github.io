@@ -24,11 +24,11 @@
 <circle cx="240" cy="222" r="5" fill="#084F78"/>
 <text x="249" y="227" font-size="14" fill="#084F78" font-weight="700">U (2, 10)</text>
 <circle cx="310" cy="145.2" r="5" fill="#D55E00"/>
-<text x="319" y="139.2" font-size="14" fill="#D55E00" font-weight="700">Z (3, 16)</text>
+<text x="318" y="138.2" font-size="14" fill="#D55E00" font-weight="700">Z</text>
 <line x1="373" y1="228.4" x2="415" y2="196.4" stroke="#6B7370" stroke-width="2" marker-end="url(#production-possibilities-points-arG)"/>
 <text x="560" y="80" font-size="13" fill="#7E1A5E">A to E: on the curve, efficient</text>
 <text x="560" y="104" font-size="13" fill="#084F78">U: inside, workers or land idle</text>
-<text x="560" y="128" font-size="13" fill="#D55E00">Z: outside, not reachable now</text>
+<text x="560" y="128" font-size="13" fill="#D55E00">Z (3, 16): outside, not reachable now</text>
 <text x="560" y="168" font-size="13" fill="#6B7370">PPC2: more resources or better</text>
 <text x="560" y="186" font-size="13" fill="#6B7370">methods let the farm reach Z</text>
 <text x="560" y="230" font-size="13" fill="#1F2A28">Each extra truckload of corn</text>

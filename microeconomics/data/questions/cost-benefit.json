@@ -329,7 +329,7 @@
     "options": [
      "They add \\$20 and \\$10 of benefit, just less than they cost.",
      "Right: more added cost than added benefit.",
-     "The cost keeps rising by \\$25 a lesson.",
+     "Each lesson still costs \\$25, so the full cost keeps rising by \\$25 a lesson.",
      "Nothing in the table limits his money."
     ]
    }
@@ -476,7 +476,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.A",
-   "q": "A town can build one new playground for \\$90,000 that residents value at \\$150,000, or a skate park for \\$60,000 that they value at \\$100,000. Which choice has the larger net benefit?",
+   "q": "A town can build one new playground for \\$90,000 that residents value at \\$150,000, or a skate park for \\$60,000 that they value at \\$100,000. Which choice has the larger net benefit, and why?",
    "options": [
     "The skate park, because it costs less",
     "The playground, because residents value it more",

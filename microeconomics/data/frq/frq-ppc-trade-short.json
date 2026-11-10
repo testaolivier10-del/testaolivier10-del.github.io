@@ -20,7 +20,7 @@
  "parts": [
   {
    "label": "A",
-   "prompt": "<b>Draw</b> a correctly labeled production possibilities curve for Pinecrest Studio, with mugs on the horizontal axis. On your graph, <b>plot</b> point X, a combination of mugs and vases Pinecrest could consume after specializing and trading with Quarry Lane but could not produce on its own.",
+   "prompt": "<b>Draw</b> a correctly labeled production possibilities curve for Quarry Lane Studio, with mugs on the horizontal axis. On your graph, <b>plot</b> point X, a combination of mugs and vases Quarry Lane could consume after specializing and trading with Pinecrest but could not produce on its own.",
    "points": 2,
    "type": "graph",
    "graph": {
@@ -31,8 +31,8 @@
     },
     "linear": true,
     "ends": {
-     "x": 60,
-     "y": 20
+     "x": 24,
+     "y": 12
     },
     "do": [
      "label",
@@ -47,22 +47,22 @@
    },
    "rubric": [
     {
-     "point": "A correctly labeled graph: Mugs on the horizontal axis, Vases on the vertical axis, and a straight-line PPC labeled (intercepts 60 mugs and 20 vases).",
+     "point": "A correctly labeled graph: Mugs on the horizontal axis, Vases on the vertical axis, and a straight-line PPC labeled (intercepts 24 mugs and 12 vases).",
      "accept": [
       "axes labeled \"Mugs\" and \"Vases\" or \"Quantity of mugs\" and \"Quantity of vases\"",
-      "the line labeled PPC or Pinecrest"
+      "the line labeled PPC or Quarry Lane"
      ],
      "auto": "labels"
     },
     {
-     "point": "Point X plotted outside (beyond) Pinecrest's PPC.",
+     "point": "Point X plotted outside (beyond) Quarry Lane's PPC.",
      "accept": [
-      "any point above and to the right of the line, for example 30 mugs and 12 vases"
+      "any point above and to the right of the line, for example 20 mugs and 4 vases"
      ],
      "auto": "point"
     }
    ],
-   "sample": "The graph has Mugs on the horizontal axis and Vases on the vertical axis. A straight line labeled PPC runs from 20 vases on the vertical axis to 60 mugs on the horizontal axis. Point X sits outside the line, at 30 mugs and 12 vases: on its own, 30 mugs would leave room for only 10 vases, but trade lets Pinecrest consume beyond its own PPC."
+   "sample": "The graph has Mugs on the horizontal axis and Vases on the vertical axis. A straight line labeled PPC runs from 12 vases on the vertical axis to 24 mugs on the horizontal axis. Point X sits outside the line, at 20 mugs and 4 vases: Quarry Lane makes 12 vases and trades 8 of them for 20 mugs (2.5 mugs a vase). On its own, 20 mugs would leave room for only 2 vases, so trade lets Quarry Lane consume beyond its own PPC."
   },
   {
    "label": "B",

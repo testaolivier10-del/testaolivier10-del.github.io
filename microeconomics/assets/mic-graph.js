@@ -93,7 +93,7 @@
     monopoly: costModel(2, 2.5, 3.5, 4, 2),      // monopoly and monopolistic competition
     natural: { a: 2, b: 0, c: 0, F: 12, Fstep: 3 } // natural monopoly: MC flat at 2, ATC = 2 + 12/q falls over the demand range
   };
-  function fixedCost(c){ return Math.max(0.4, c.p.F + ((c.s || 0) - (c.o || 0)) * c.p.Fstep); }
+  function fixedCost(c){ return Math.max(0.4, c.p.F + (c.s || 0) * c.p.Fstep); }   // a lump-sum cost (ATC's own steps) only; a per-unit cost (MC's) leaves it
 
   /* ------------------------------------------------------------- kinds */
   // Default curves. A def may name: panel (two-panel kinds), follows (moves
@@ -158,7 +158,8 @@
       points: { hire: 'main', 'mrp=mfc': 'main', competitive: 'main', 'min-wage': 'main' } },
     externality: { title: 'Externality', x: 'quantity', y: 'price',
       curves: function(spec){ var e = extOf(spec), x = EXT[e.type] || EXT['neg-prod'];
-        var out = sdCurves(); out.push({ id: x.social, shape: x.of === 'S' ? 'up' : 'down', at: 5 + x.sign * e.gap, socialOf: x.of, fixed: true }); return out; },
+        // The social curve sits gap steps from where its private curve starts (spec.start), and never moves after.
+        var out = sdCurves(); out.push({ id: x.social, shape: x.of === 'S' ? 'up' : 'down', at: 5 + ((spec.start || {})[x.of] || 0) + x.sign * e.gap, socialOf: x.of, fixed: true }); return out; },
       text: function(spec, id){ var e = extOf(spec), x = EXT[e.type] || EXT['neg-prod'];
         if(id === 'D') return x.social === 'MSB' ? ['D = MPB', '', 'demand (marginal private benefit)'] : ['D = MPB = MSB', '', 'demand (marginal private and social benefit)'];
         if(id === 'S') return x.social === 'MSC' ? ['S = MPC', '', 'supply (marginal private cost)'] : ['S = MPC = MSC', '', 'supply (marginal private and social cost)'];
@@ -209,7 +210,7 @@
   }
   // A monocomp demand at its long-run position: tangent to ATC (the intercept 5 + at is min over q of ATC + q).
   function tangentAt(p){ var best = Infinity; for(var q = 0.3; q <= 10; q += 0.001){ var v = atcBase(p, q, 0, 0) + q; if(v < best) best = v; } return Math.round((best - 5) * 1e6) / 1e6; }
-  function atcBase(p, q, o, s){ var F = Math.max(0.4, p.F + (s - o) * p.Fstep); return p.a - p.b * q + p.c * q * q + o + F / q; }
+  function atcBase(p, q, o, s){ var F = Math.max(0.4, p.F + s * p.Fstep); return p.a - p.b * q + p.c * q * q + o + F / q; }
   function curves(spec, offsets){
     var start = spec.start || {}, off = offsets || {}, defs = defsOf(spec), line = spec.kind === 'ppc' && spec.linear, sh = line ? lineShares(spec) : null, out = [], by = {};
     defs.forEach(function(d){
@@ -225,6 +226,8 @@
       if(d.shape === 'afc' && by[d.follows]){ o.s = by[d.follows].at; o.steps = by[d.follows].steps; o.o = by[d.costOf] ? by[d.costOf].at : 0; }
       if(d.shape === 'mc' || d.shape === 'avc') o.o = d.shape === 'mc' ? o.at : o.o;
     });
+    // A per-unit cost moves ATC with MC: drawn as a shift, its old place faded (AFC, a fixed cost, stays).
+    defs.forEach(function(d){ var o = by[d.id], M = d.costOf && by[d.costOf]; if(d.shape === 'atc' && M && M.steps && !o.steps) o.steps = M.steps; });
     return out;
   }
   function find(list, id){ for(var i = 0; i < list.length; i++) if(list[i].id === id) return list[i]; return null; }
@@ -395,12 +398,14 @@
     var off = offsets || fixedOffsets(spec), cs0 = curves(spec, {}), cs = curves(spec, off), cells = [], regions = {};
     var add = function(id, poly, panel){ if(poly && polyArea(poly) > 0.02) cells.push({ id: id, poly: poly, panel: panel || 'main' }); };
     var reg = function(name, ids){ var have = cells.map(function(c){ return c.id; }), got = ids.filter(function(i){ return have.indexOf(i) > -1; }); if(got.length) regions[name] = got; };
-    var D0 = find(cs0, 'D'), S0 = find(cs0, 'S'), mn = function(a, b){ return function(x){ return Math.min(y(a, x), y(b, x)); }; }, mxf = function(a, b){ return function(x){ return Math.max(y(a, x), y(b, x)); }; };
+    // The market before the policy, as drawn: start and spec.show (a shown shift moves the areas too, integration 10).
+    var shown = spec.show || {}, csS = curves(spec, shown);
+    var D0 = find(csS, 'D'), S0 = find(csS, 'S'), mn = function(a, b){ return function(x){ return Math.min(y(a, x), y(b, x)); }; }, mxf = function(a, b){ return function(x){ return Math.max(y(a, x), y(b, x)); }; };
     if(spec.kind === 'sd-micro' || spec.kind === 'sd'){
       var E = cross(D0, S0), Qe = E[0], Pe = E[1], P = spec.policy;
       if(!P){ add('a', band(D0, Pe, 0, Qe)); add('b', band(Pe, S0, 0, Qe)); reg('cs', ['a']); reg('ps', ['b']); reg('ts', ['a', 'b']); }
       else if(P.type === 'ceiling' || P.type === 'floor' || P.type === 'tax'){
-        var Q1 = P.type === 'ceiling' ? xAt(S0, P.at) : P.type === 'floor' ? xAt(D0, P.at) : cross(D0, find(curves(spec, { S: -(P.amount || 1) }), 'S'))[0];
+        var Q1 = P.type === 'ceiling' ? xAt(S0, P.at) : P.type === 'floor' ? xAt(D0, P.at) : cross(D0, find(curves(spec, merge(shown, { S: -(P.amount || 1) })), 'S'))[0];
         if(Q1 != null && Q1 < Qe - 1e-6){
           var Pt = y(D0, Q1), Pb = y(S0, Q1);
           add('a', band(D0, Pt, 0, Q1)); add('b', band(Pt, Pe, 0, Q1)); add('c', band(D0, Pe, Q1, Qe)); add('d', band(Pe, Pb, 0, Q1)); add('e', band(Pe, S0, Q1, Qe)); add('f', band(Pb, S0, 0, Q1));
@@ -410,7 +415,7 @@
           if(P.type === 'tax'){ reg('cs', ['a']); reg('ps', ['f']); reg('tax-revenue', ['b', 'd']); reg('buyer-burden', ['b']); reg('seller-burden', ['d']); }
         }
       } else if(P.type === 'subsidy'){
-        var Q2 = cross(D0, find(curves(spec, { S: P.amount || 1 }), 'S'))[0], Pc = y(D0, Q2), Pp = y(S0, Q2);
+        var Q2 = cross(D0, find(curves(spec, merge(shown, { S: P.amount || 1 })), 'S'))[0], Pc = y(D0, Q2), Pp = y(S0, Q2);
         add('a', band(D0, Pe, 0, Qe)); add('b', band(Pe, Pc, 0, Qe)); add('c', band(D0, Pc, Qe, Q2)); add('d', band(Pe, S0, 0, Qe)); add('e', band(Pp, Pe, 0, Qe)); add('f', band(Pp, S0, Qe, Q2)); add('g', band(S0, D0, Qe, Q2));
         reg('cs', ['a', 'b', 'c']); reg('ps', ['d', 'e', 'f']); reg('subsidy-cost', ['b', 'c', 'e', 'f', 'g']); reg('dwl', ['g']); reg('cs-before', ['a']); reg('ps-before', ['d']);
       } else if(P.type === 'world' && P.at < Pe){
@@ -438,7 +443,24 @@
       }
     } else if(spec.kind === 'monopoly' || spec.kind === 'monocomp'){
       var D = find(cs, 'D'), MCm = find(cs, 'MC'), ATCm = find(cs, 'ATC'), pm = named(spec, off, 'profit-max'), al = named(spec, off, 'allocative');
-      if(pm){
+      var Pr = spec.kind === 'monopoly' && spec.line && spec.line.at != null ? spec.line.at : null;
+      if(pm && Pr != null && Pr < pm[1] - 0.05){
+        /* A regulated price (a ceiling Pr below the monopoly price, integration 8): MR is Pr out to demand, so the
+           firm sells Q where Pr meets demand or MC, whichever comes first. Same region names, after the regulation:
+           cs under demand above Pr, profit or loss between Pr and ATC, dwl between demand and MC out to D = MC. */
+        var qd = xAt(D, Pr), qc = xAt(MCm, Pr), Qr = qd == null ? qc : qc == null ? qd : Math.min(qd, qc);
+        if(Qr != null){
+          var Ar = y(ATCm, Qr), hr = Math.max(Pr, Ar), lr = Math.min(Pr, Ar);
+          add('a', band(D, Pr, 0, Qr));
+          if(Math.abs(Pr - Ar) > 0.05) add('b', band(hr, lr, 0, Qr));
+          add('c', band(lr, 0, 0, Qr));
+          if(al && al[0] > Qr + 0.05) add('d', band(D, MCm, Qr, al[0]));
+          reg('cs', ['a']); reg('dwl', ['d']);
+          if(Pr > Ar + 0.05){ reg('profit', ['b']); reg('tr', ['b', 'c']); reg('tc', ['c']); }
+          else if(Pr < Ar - 0.05){ reg('loss', ['b']); reg('tr', ['c']); reg('tc', ['b', 'c']); }
+          else { reg('tr', ['c']); reg('tc', ['c']); }
+        }
+      } else if(pm){
         var Qm = pm[0], Pm = pm[1], Am = y(ATCm, Qm), hm = Math.max(Pm, Am), lm = Math.min(Pm, Am);
         add('a', band(D, Pm, 0, Qm));
         if(Math.abs(Pm - Am) > 0.05) add('b', band(hm, lm, 0, Qm));
@@ -453,13 +475,19 @@
       var h = named(spec, off, 'hire'), c2 = named(spec, off, 'competitive'), SL = find(cs, 'SL'), MRP = find(cs, 'MRP');
       if(h){ add('a', band(h[1], 0, 0, h[0])); if(c2 && c2[0] > h[0]) add('b', band(MRP, SL, h[0], c2[0])); reg('wage-bill', ['a']); reg('dwl', ['b']); }
     } else if(spec.kind === 'externality'){
-      var ex = extOf(spec), X = EXT[ex.type] || EXT['neg-prod'], Dx = find(cs0, 'D'), Sx = find(cs0, 'S'), Soc = find(cs0, X.social), m = cross(Dx, Sx), ef = named(spec, {}, 'efficient');
-      var lo2 = Math.min(m[0], ef[0]), hi2 = Math.max(m[0], ef[0]);
-      if(ex.type === 'neg-prod'){ add('a', band(Soc, Dx, ef[0], m[0])); add('b', band(Soc, Sx, 0, ef[0])); add('c', band(Dx, Sx, ef[0], m[0])); reg('dwl', ['a']); reg('ext-cost', ['a', 'b', 'c']); }
-      else if(ex.type === 'pos-prod'){ add('a', band(Dx, Soc, m[0], ef[0])); add('b', band(Sx, Soc, 0, m[0])); add('c', band(Sx, Dx, m[0], ef[0])); reg('dwl', ['a']); reg('ext-benefit', ['a', 'b', 'c']); }
-      else if(ex.type === 'pos-cons'){ add('a', band(Soc, Sx, m[0], ef[0])); add('b', band(Soc, Dx, 0, m[0])); add('c', band(Sx, Dx, m[0], ef[0])); reg('dwl', ['a']); reg('ext-benefit', ['a', 'b', 'c']); }
-      else { add('a', band(Sx, Soc, ef[0], m[0])); add('b', band(Dx, Soc, 0, ef[0])); add('c', band(Dx, Sx, ef[0], m[0])); reg('dwl', ['a']); reg('ext-cost', ['a', 'b', 'c']); }
-      void lo2; void hi2;
+      /* The market quantity comes from D and S as shown (a corrective tax or subsidy drawn with spec.show), the social
+         curve stays put (integration 10). b: between the social and private curves out to the smaller quantity;
+         a (dwl) and c between the two quantities. The external cost counts the units produced (0 to the market
+         quantity), the external benefit runs to the efficient quantity, as before; over-correction leaves a dwl on
+         the other side and nothing in c. */
+      var ex = extOf(spec), X = EXT[ex.type] || EXT['neg-prod'], Dx = find(cs, 'D'), Sx = find(cs, 'S'), Soc = find(cs, X.social);
+      var Pv = find(cs0, X.of), Oc = X.of === 'S' ? Dx : Sx, m = cross(Dx, Sx), ef = cross(Soc, Oc);
+      if(m && ef){
+        var mq = m[0], eq0 = ef[0], lo2 = Math.min(mq, eq0), hi2 = Math.max(mq, eq0), neg = ex.type === 'neg-prod' || ex.type === 'neg-cons', natural = neg ? mq > eq0 : mq < eq0;
+        add('b', band(mxf(Soc, Pv), mn(Soc, Pv), 0, lo2));
+        if(hi2 - lo2 > 1e-6){ add('a', band(mxf(Soc, Oc), mn(Soc, Oc), lo2, hi2)); if(natural) add('c', band(mxf(Oc, Pv), mn(Oc, Pv), lo2, hi2)); }
+        reg('dwl', ['a']); reg(neg ? 'ext-cost' : 'ext-benefit', natural ? ['a', 'b', 'c'] : ['b']);
+      }
     } else if(spec.kind === 'lorenz'){
       var EQc = find(cs, 'EQ'), LC = find(cs, 'LC');
       add('a', band(EQc, LC, 0, 10)); add('b', band(LC, 0, 0, 10)); reg('gini', ['a']); reg('below', ['b']);
@@ -675,7 +703,7 @@
       if(!names.length) bad('graph.key.shade names the region to shade (' + (Object.keys(R).join(', ') || 'this graph has none') + ')');
       names.forEach(function(nm){ if(!R[nm]) bad('graph.key.shade: "' + nm + '" is not a region of this graph (' + Object.keys(R).join(', ') + ')'); });
     }
-    Object.keys(spec.slips || {}).forEach(function(c){ if(ids.indexOf(c) < 0 && !REGION[c] && !(lineDef(spec) && lineDef(spec).id === c)) bad('graph.slips: "' + c + '" is not a curve, line or region'); else if(String(spec.slips[c]).length < 15) bad('graph.slips.' + c + ' explains the slip in a sentence'); });
+    Object.keys(spec.slips || {}).forEach(function(c){ if(c !== 'point' && ids.indexOf(c) < 0 && !REGION[c] && !(lineDef(spec) && lineDef(spec).id === c)) bad('graph.slips: "' + c + '" is not a curve, line, region or point'); else if(String(spec.slips[c]).length < 15) bad('graph.slips.' + c + ' explains the slip in a sentence'); });
     (spec.movable || []).forEach(function(c){ if(mov.indexOf(c) < 0) bad('graph.movable: "' + c + '" is not a curve that moves on its own'); });
     (key.shifts || []).forEach(function(s){ if(spec.movable && spec.movable.indexOf(s.curve) < 0) bad('graph.movable leaves out ' + s.curve + ', which the key shifts'); });
     return out;
@@ -820,7 +848,7 @@
   function polyPath(poly){ return 'M' + poly.map(function(p){ return f1(px(p[0])) + ' ' + f1(py(p[1])); }).join('L') + 'Z'; }
 
   /* The policy lines and quantity marks of an sd-micro graph, as the exam draws them. */
-  function policyLayer(spec){
+  function policyLayer(spec, state){
     var P = spec.policy, g = [];
     if(!P) return '';
     var cs0 = curves(spec, {}), D = find(cs0, 'D'), S = find(cs0, 'S');
@@ -835,7 +863,8 @@
     } else if(P.type === 'tariff'){
       var t2 = P.at + (P.amount || 1); line(P.at, 'PW'); line(t2, 'PT');
       [[xAt(S, P.at), P.at, 'S1'], [xAt(S, t2), t2, 'S2'], [xAt(D, t2), t2, 'D2'], [xAt(D, P.at), P.at, 'D1']].forEach(function(m){ if(m[0] != null) qmark(m[0], m[1], 'Q', m[2]); });
-    } else if(P.type === 'tax' || P.type === 'subsidy'){
+    } else if((P.type === 'tax' || P.type === 'subsidy') && ((spec.do || []).indexOf('shift') < 0 || (state && state.key))){
+      // With a shift task the student draws the shifted S: the after-tax guides would give it away (integration 7).
       var e = cross(D, find(curves(spec, { S: (P.type === 'tax' ? -1 : 1) * (P.amount || 1) }), 'S'));
       if(e){ var pb = y(D, e[0]), ps = y(S, e[0]);
         g.push('<path class="mic-gr-guide" d="M' + f1(px(0)) + ' ' + f1(py(pb)) + 'H' + f1(px(e[0])) + 'V' + f1(py(0)) + 'M' + f1(px(0)) + ' ' + f1(py(ps)) + 'H' + f1(px(e[0])) + '"/>');
@@ -845,9 +874,11 @@
   }
 
   /* One panel's SVG. state: { shifts, eq, point, labels, line, shade, key,
-     focus, n0, n1, curveN, marks0, labelsShown, letters }. */
+     focus, n0, n1, curveN, curveN0 (old curves' number, default n0),
+    followerOld (false: no label on a follower's old place), marks0,
+    labelsShown, letters }. */
   function svgPanel(spec, state, panel, opts){
-    var n0 = state.n0 != null ? String(state.n0) : '1', n1 = state.n1 != null ? String(state.n1) : '2';
+    var n0 = state.n0 != null ? String(state.n0) : '1', c0 = state.curveN0 != null ? String(state.curveN0) : n0, n1 = state.n1 != null ? String(state.n1) : '2';
     var k = kindOf(spec), shifts = state.shifts || {}, labels = state.labels || {}, does = spec.do || [], pid = panel.id, two = panelsOf(spec).length > 1;
     var xs = pid === 'firm' ? 'fx' : 'x', ys = pid === 'firm' ? 'fy' : 'y';
     var askLabels = does.indexOf('label') > -1 && !state.labelsShown;
@@ -899,7 +930,8 @@
     var oldPos = now.map(function(c, i){
       var b = base[i], t = txt(c.id);
       if(!c.steps || !t) return null;
-      return place(t, n0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' ? c.steps > 0 : (b.shape === 'ppc' || b.shape === 'ppcin') && c.at > b.at ? 'in' : true), -1);
+      if(state.followerOld === false && c.follows) return null;   // the faded MR1 crowds the axis (integration T2-4)
+      return place(t, c0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' ? c.steps > 0 : (b.shape === 'ppc' || b.shape === 'ppcin') && c.at > b.at ? 'in' : true), -1);
     });
     if(state.key){
       var ko = keyOffsets(spec);
@@ -908,11 +940,11 @@
     }
     now.forEach(function(c, i){
       var moved = !!c.steps, b = base[i], t = txt(c.id), at = pos[i];
-      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t ? curveLabel(t, n0, oldPos[i], 'is-old') : '') + arrowOf(b, c));
+      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t && oldPos[i] ? curveLabel(t, c0, oldPos[i], 'is-old') : '') + arrowOf(b, c));
       g.push('<g class="mic-gr-c" data-curve="' + esc(c.id) + '"><path class="mic-gr-curve' + (state.focus === c.id ? ' is-focus' : '') + (c.fixed ? ' is-fixed' : '') + '" d="' + pathOf(c) + '"/>' +
-        '<path class="mic-gr-grab" d="' + pathOf(c) + '"/></g>' + (t ? curveLabel(t, moved ? cn : '', at) : '<text class="mic-gr-clabel" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + at[2] + '">?<tspan class="mic-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
+        '<path class="mic-gr-grab" d="' + pathOf(c) + '"' + (does.indexOf('shift') < 0 ? ' pointer-events="none"' : '') + '/></g>' + (t ? curveLabel(t, moved ? cn : '', at) : '<text class="mic-gr-clabel" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + at[2] + '">?<tspan class="mic-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
     });
-    if(pid === 'main' || pid === (panelsOf(spec)[0] || {}).id) g.push(policyLayer(spec));
+    if(pid === 'main' || pid === (panelsOf(spec)[0] || {}).id) g.push(policyLayer(spec, state));
     if(spec.linear && spec.ends){ var pc = find(base, 'PPC');
       if(pc && pc.shape === 'ppcline' && !(spec.start && spec.start.PPC)){
         g.push('<text class="mic-gr-mark is-end" x="' + f1(px(pc.at * pc.kx)) + '" y="' + (T + PH + 13) + '" text-anchor="middle">' + esc(spec.ends.x) + '</text>');
@@ -928,7 +960,7 @@
         placed.push([lx, ly - 11, W, ly + 17]);
         lbl = '<text class="mic-gr-clabel is-line is-small" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="start">' + esc(l1) + (l2 ? '<tspan x="' + f1(lx) + '" dy="13">' + esc(l2) + '</tspan>' : '') + '</text>';
       }
-      g.push('<g class="mic-gr-l" data-line="' + esc(LDf.id) + '"><path class="mic-gr-pline' + (state.focus === 'line' ? ' is-focus' : '') + '" d="' + hpath(LV) + '"/><path class="mic-gr-grab" d="' + hpath(LV) + '"/></g>' + lbl);
+      g.push('<g class="mic-gr-l" data-line="' + esc(LDf.id) + '"><path class="mic-gr-pline' + (state.focus === 'line' ? ' is-focus' : '') + '" d="' + hpath(LV) + '"/><path class="mic-gr-grab" d="' + hpath(LV) + '"' + (does.indexOf('line') < 0 ? ' pointer-events="none"' : '') + '/></g>' + lbl);
       if(!askLabels){
         var E0g = LDf.link ? eq(spec, {}) : null, moved0 = E0g && state.eq && (Math.abs(state.eq[0] - E0g[0]) > 1e-6 || Math.abs(state.eq[1] - E0g[1]) > 1e-6);
         g.push(amark('y', LV, LDf.link ? (LDf.id === 'W' ? 'W' : 'P') : CURVE[LDf.id][0], LDf.link ? (E0g && Math.abs(LV - E0g[1]) > 1e-6 ? n1 : moved0 ? n0 : '') : CURVE[LDf.id][1]));

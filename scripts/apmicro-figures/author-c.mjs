@@ -278,11 +278,12 @@ function twoPanel(g, o = {}) {
   for (const [e, n] of [[E1, '1'], [E2, '2'], [E3, '3']]) g.push(dot(M.X(e[0]), M.Y(e[1]), { r: 5, fill: n === '2' ? VERM : INK }), vguide(M, e[0], e[1]), xtick(M, e[0], `Q_${n}`, { size: 12 }));
   g.push(ytick(M, E2[1], 'P_2', { bold: true, fill: VERM }), ytick(M, E1[1], 'P_1', { bold: true }));
   g.push(line(M.X(0), M.Y(E1[1]), M.X(10), M.Y(E1[1]), { stroke: INK, w: 1.6, dash: '2 3' }), text(M.X(0.3), M.Y(E1[1]) - 7, 'long-run supply', { size: 11, fill: INK }));
+  const q2 = qAt(E2[1]), a2 = ATC(q2);
+  // The profit box first, so ATC and MC are drawn on top of it (reviewer u3: the box hid ATC).
+  g.push(poly(Fm, [[0, E2[1]], [q2, E2[1]], [q2, a2], [0, a2]], TINT, 0.95));
   g.push(fpath(Fm, ATC, 0.6, 10, { stroke: VERM }), fpath(Fm, MC, 0, 10, { stroke: ACC, w: 3.4 }));
   const mcEnd = [...Array(200).keys()].map(i => i / 20).filter(x => MC(x) <= 9.7).pop();
   g.push(text(Fm.X(mcEnd) + 6, Fm.Y(MC(mcEnd)) + 4, 'MC', { fill: ACC, bold: true, size: 15 }), text(Fm.X(10) + 6, Fm.Y(ATC(10)) - 2, 'ATC', { fill: VERM, bold: true, size: 14 }));
-  const q2 = qAt(E2[1]), a2 = ATC(q2);
-  g.push(poly(Fm, [[0, E2[1]], [q2, E2[1]], [q2, a2], [0, a2]], TINT, 0.95));
   g.push(line(Fm.X(0), Fm.Y(E2[1]), Fm.X(10), Fm.Y(E2[1]), { stroke: VERM, w: 2.6 }), text(Fm.X(10) + 6, Fm.Y(E2[1]) + 4, 'MR = P_2', { fill: VERM, bold: true, size: 13 }));
   g.push(line(Fm.X(0), Fm.Y(E1[1]), Fm.X(10), Fm.Y(E1[1]), { stroke: INK, w: 2.6 }), text(Fm.X(10) + 6, Fm.Y(E1[1]) + 14, 'MR = P_1', { bold: true, size: 13 }));
   g.push(line(M.X(E2[0]), M.Y(E2[1]), Fm.X(0), Fm.Y(E2[1]), { stroke: GREY, w: 1.2, dash: '5 4' }));

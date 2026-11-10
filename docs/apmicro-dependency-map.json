@@ -1756,7 +1756,8 @@
    "wage",
    "wages",
    "profit",
-   "scarce"
+   "scarce",
+   "technology"
   ]
  },
  "concepts": [
@@ -1992,6 +1993,9 @@
    "taughtIn": "production-possibilities",
    "dependsOn": [
     "ppc"
+   ],
+   "fullIn": [
+    "perfect-competition"
    ]
   },
   {
@@ -2649,10 +2653,12 @@
    "aliases": [
     "TC"
    ],
-   "taughtIn": "short-run-costs",
+   "taughtIn": "cost-benefit",
    "dependsOn": [
-    "fixed-cost",
-    "variable-cost"
+    "explicit-cost"
+   ],
+   "fullIn": [
+    "short-run-costs"
    ]
   },
   {
@@ -2661,10 +2667,13 @@
    "aliases": [
     "MC"
    ],
-   "taughtIn": "short-run-costs",
+   "taughtIn": "marginal-analysis",
    "dependsOn": [
-    "total-cost",
-    "diminishing-returns"
+    "marginal",
+    "total-cost"
+   ],
+   "fullIn": [
+    "short-run-costs"
    ]
   },
   {
@@ -2679,7 +2688,8 @@
    ],
    "taughtIn": "short-run-costs",
    "dependsOn": [
-    "total-cost"
+    "total-cost",
+    "diminishing-returns"
    ]
   },
   {
@@ -2969,7 +2979,8 @@
    "taughtIn": "monopolistic-competition",
    "dependsOn": [
     "monopolistic-competition",
-    "long-run-eq"
+    "long-run-eq",
+    "productive-efficiency"
    ]
   },
   {
@@ -3289,7 +3300,7 @@
    "aliases": [
     "lump-sum subsidy"
    ],
-   "taughtIn": "monopoly",
+   "taughtIn": "short-run-costs",
    "dependsOn": [
     "fixed-cost"
    ]
@@ -3435,5 +3446,38 @@
    ]
   }
  ],
- "circularDependencies": []
+ "circularDependencies": [
+  {
+   "id": "general-cost-words",
+   "problem": "CED 1.5 and 1.6 weigh total benefit against total cost and marginal benefit against marginal cost, but the cost concepts are Topic 3.2.",
+   "detail": "Total cost (all the costs of a choice) is taught in 1.5 and marginal cost (the cost of one more unit) with the MB = MC rule in 1.6; 3.2 stays their main topic, adding TC = TFC + TVC, MC from a cost table and the MC curve shaped by diminishing returns. Integration 2026-11-09 (authors A and C).",
+   "resolution": "pull-forward",
+   "into": [
+    "cost-benefit",
+    "marginal-analysis"
+   ],
+   "fullIn": [
+    "short-run-costs"
+   ],
+   "concepts": [
+    "total-cost",
+    "marginal-cost"
+   ]
+  },
+  {
+   "id": "productive-efficiency-two-senses",
+   "problem": "Productive efficiency appears with the PPC (CED 1.3) and again as production at minimum ATC (CED 3.7, 4.4).",
+   "detail": "Taught in 1.3 as producing on the PPC (no resources wasted); 3.7 gives the firm-level sense, producing at the lowest ATC, which a competitive firm reaches in the long run and a monopolistically competitive firm does not (excess capacity, 4.4). Integration 2026-11-09 (author D).",
+   "resolution": "pull-forward",
+   "into": [
+    "production-possibilities"
+   ],
+   "fullIn": [
+    "perfect-competition"
+   ],
+   "concepts": [
+    "productive-efficiency"
+   ]
+  }
+ ]
 }

@@ -19,7 +19,7 @@
   "4.B",
   "4.C"
  ],
- "scenario": "Ridgeway and Sunpath (invented) are the only bike-share firms in a city. Each decides, at the same time and without talking to the other, whether to expand into a new district (Expand) or stay in its current districts (Stay). The matrix shows each firm's monthly profit in thousands of dollars; in each cell Ridgeway's payoff is listed first. Both firms know the matrix.",
+ "scenario": "Pedalwise and Sunpath (invented) are the only bike-share firms in a city. Each decides, at the same time and without talking to the other, whether to expand into a new district (Expand) or stay in its current districts (Stay). The matrix shows each firm's monthly profit in thousands of dollars; in each cell Pedalwise's payoff is listed first. Both firms know the matrix.",
  "parts": [
   {
    "label": "A",
@@ -29,7 +29,7 @@
    "matrix": {
     "players": [
      {
-      "name": "Ridgeway",
+      "name": "Pedalwise",
       "strategies": [
        "Expand",
        "Stay"
@@ -73,21 +73,21 @@
    },
    "rubric": [
     {
-     "point": "Ridgeway's dominant strategy is Expand, and Sunpath has no dominant strategy.",
+     "point": "Pedalwise's dominant strategy is Expand, and Sunpath has no dominant strategy.",
      "accept": [
-      "Ridgeway: Expand; Sunpath: none"
+      "Pedalwise: Expand; Sunpath: none"
      ],
      "auto": "dominant"
     },
     {
-     "point": "The only Nash equilibrium is (Ridgeway Expand, Sunpath Stay).",
+     "point": "The only Nash equilibrium is (Pedalwise Expand, Sunpath Stay).",
      "accept": [
-      "Ridgeway expands and Sunpath stays"
+      "Pedalwise expands and Sunpath stays"
      ],
      "auto": "nash"
     }
    ],
-   "sample": "Ridgeway's dominant strategy is Expand. Sunpath has no dominant strategy. The only Nash equilibrium is Ridgeway Expand, Sunpath Stay, with payoffs of \\$70 thousand and \\$25 thousand."
+   "sample": "Pedalwise's dominant strategy is Expand. Sunpath has no dominant strategy. The only Nash equilibrium is Pedalwise Expand, Sunpath Stay, with payoffs of \\$70 thousand and \\$25 thousand."
   },
   {
    "label": "B",
@@ -95,13 +95,13 @@
    "prompt": "<b>Explain</b>, using the numbers in the matrix, why Sunpath does not have a dominant strategy.",
    "rubric": [
     {
-     "point": "Gives both comparisons for Sunpath: if Ridgeway expands, Stay is better (25 > 10); if Ridgeway stays, Expand is better (50 > 48). So its best choice depends on Ridgeway's.",
+     "point": "Gives both comparisons for Sunpath: if Pedalwise expands, Stay is better (25 > 10); if Pedalwise stays, Expand is better (50 > 48). So its best choice depends on Pedalwise's.",
      "accept": [
       "25 > 10 and 50 > 48"
      ]
     }
    ],
-   "sample": "If Ridgeway chooses Expand, Sunpath earns 10 from Expand and 25 from Stay, so Stay is better. If Ridgeway chooses Stay, Sunpath earns 50 from Expand and 48 from Stay, so Expand is better. Sunpath's best choice changes with Ridgeway's choice, so it has no dominant strategy."
+   "sample": "If Pedalwise chooses Expand, Sunpath earns 10 from Expand and 25 from Stay, so Stay is better. If Pedalwise chooses Stay, Sunpath earns 50 from Expand and 48 from Stay, so Expand is better. Sunpath's best choice changes with Pedalwise's choice, so it has no dominant strategy."
   },
   {
    "label": "C",
@@ -111,7 +111,7 @@
    "matrix": {
     "players": [
      {
-      "name": "Ridgeway",
+      "name": "Pedalwise",
       "strategies": [
        "Expand",
        "Stay"
@@ -159,20 +159,20 @@
    },
    "rubric": [
     {
-     "point": "Sunpath's dominant strategy is now Expand (30 > 25 and 70 > 48), and Ridgeway's is still Expand.",
+     "point": "Sunpath's dominant strategy is now Expand (30 > 25 and 70 > 48), and Pedalwise's is still Expand.",
      "accept": [
       "both firms: Expand"
      ],
      "auto": "dominant"
     }
    ],
-   "sample": "Sunpath's Expand payoffs rise to 30 and 70. Expand now beats Stay whatever Ridgeway does (30 > 25 and 70 > 48), so Expand is Sunpath's dominant strategy. Ridgeway's payoffs did not change, so Expand is still its dominant strategy."
+   "sample": "Sunpath's Expand payoffs rise to 30 and 70. Expand now beats Stay whatever Pedalwise does (30 > 25 and 70 > 48), so Expand is Sunpath's dominant strategy. Pedalwise's payoffs did not change, so Expand is still its dominant strategy."
   },
   {
    "label": "D",
    "points": 2,
    "type": "graph",
-   "prompt": "Later, Ridgeway buys Sunpath and becomes the only bike-share firm in the city, earning a positive economic profit. <b>Draw</b> a correctly labeled graph for Ridgeway showing demand, marginal revenue, marginal cost and average total cost, and <b>show</b> its profit-maximizing price and quantity, labeled PM and QM.",
+   "prompt": "Later, Pedalwise buys Sunpath and becomes the only bike-share firm in the city, earning a positive economic profit. <b>Draw</b> a correctly labeled graph for Pedalwise showing demand, marginal revenue, marginal cost and average total cost, and <b>show</b> its profit-maximizing price and quantity, labeled PM and QM.",
    "graph": {
     "kind": "monopoly",
     "do": [
@@ -208,7 +208,7 @@
    "label": "E",
    "points": 1,
    "type": "graph",
-   "prompt": "The city charges Ridgeway a lump-sum license fee each year, the same whatever number of rides it provides. <b>Show</b> the effect of the fee on your graph by shifting the curve or curves that change.",
+   "prompt": "The city charges Pedalwise a lump-sum license fee each year, the same whatever number of rides it provides. <b>Show</b> the effect of the fee on your graph by shifting the curve or curves that change.",
    "graph": {
     "kind": "monopoly",
     "do": [
@@ -243,7 +243,7 @@
   {
    "label": "F(i)",
    "points": 1,
-   "prompt": "<b>Identify</b> the effect of the lump-sum fee on Ridgeway's profit-maximizing quantity and price.",
+   "prompt": "<b>Identify</b> the effect of the lump-sum fee on Pedalwise's profit-maximizing quantity and price.",
    "rubric": [
     {
      "point": "Both the quantity and the price stay the same.",
@@ -253,7 +253,7 @@
      ]
     }
    ],
-   "sample": "Ridgeway's profit-maximizing quantity and price do not change."
+   "sample": "Pedalwise's profit-maximizing quantity and price do not change."
   },
   {
    "label": "F(ii)",
@@ -267,13 +267,13 @@
      ]
     }
    ],
-   "sample": "The lump-sum fee does not depend on how many rides Ridgeway provides, so it is a fixed cost: it raises ATC but leaves MC unchanged. MR still equals MC at the same quantity, and the price read from demand at that quantity is the same. Only Ridgeway's profit falls, by the amount of the fee."
+   "sample": "The lump-sum fee does not depend on how many rides Pedalwise provides, so it is a fixed cost: it raises ATC but leaves MC unchanged. MR still equals MC at the same quantity, and the price read from demand at that quantity is the same. Only Pedalwise's profit falls, by the amount of the fee."
   },
   {
    "label": "G",
    "points": 1,
    "type": "graph",
-   "prompt": "<b>Shade</b> the deadweight loss that results from Ridgeway's monopoly.",
+   "prompt": "<b>Shade</b> the deadweight loss that results from Pedalwise's monopoly.",
    "graph": {
     "kind": "monopoly",
     "do": [

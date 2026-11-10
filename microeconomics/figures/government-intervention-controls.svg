@@ -33,7 +33,7 @@
 <circle cx="215" cy="191.4" r="4.5" fill="#1F2A28"/>
 <text x="223" y="187.4" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="223" dy="0">E</tspan></text>
 <text x="215" y="262.9" font-size="12" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="215" dy="0">Shortage of 40</tspan></text>
-<text x="186" y="195.4" font-size="11" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="186" dy="0">DWL</tspan></text>
+<text x="175.9" y="176.1" font-size="11" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="175.9" dy="0">DWL</tspan></text>
 <path d="M450 44V320H746" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
 <text x="595" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="595" dy="0">Price floor at $7</tspan></text>
 <text x="740" y="356" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="740" dy="0">Ferry rides per day</tspan></text>
@@ -64,6 +64,6 @@
 <circle cx="595" cy="191.4" r="4.5" fill="#1F2A28"/>
 <text x="603" y="187.4" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="603" dy="0">E</tspan></text>
 <text x="595" y="130" font-size="12" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="595" dy="0">Surplus of 40</tspan></text>
-<text x="566" y="195.4" font-size="11" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="566" dy="0">DWL</tspan></text>
+<text x="555.9" y="176.1" font-size="11" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="555.9" dy="0">DWL</tspan></text>
 <text x="390" y="392" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="390" dy="0">Invented data for practice.</tspan></text>
 </svg>

@@ -97,7 +97,7 @@
    "options": [
     "Cash in the bakery's bank account",
     "The baker's skill at decorating cakes",
-    "The wheat grown on a farm",
+    "The farmland the wheat grows on",
     "An oven in a bakery"
    ],
    "correct": 3,
@@ -106,7 +106,7 @@
     "options": [
      "Money buys capital but is not itself a factor of production.",
      "Effort and skill are labor.",
-     "Crops and other natural resources fall under land.",
+     "Farmland is a natural resource, so it is land.",
      "Right: a machine used to make bread."
     ]
    }
@@ -132,7 +132,7 @@
     "options": [
      "Inventing a recipe takes time and effort; what matters is that using it does not use it up.",
      "Right: shared use does not use it up.",
-     "Flour is a raw material from land, not capital, and that is not the reason.",
+     "Flour is an ingredient used up in baking, not a tool or machine, and that is not the reason anyway.",
      "Recipes come from many people, and who made one does not matter here."
     ]
    }
@@ -446,12 +446,12 @@
     0
    ],
    "why": {
-    "correct": "Labor is human effort used in production: the cooks' work. The van and ovens are capital, and the tomatoes come from land.",
+    "correct": "Labor is human effort used in production: the cooks' work. The van and ovens are capital, and the tomatoes are an ingredient, not labor.",
     "options": [
      "Right: the cooks' effort is labor.",
      "A van is a machine made to produce a service: capital.",
      "Ovens are capital.",
-     "Farm produce comes from land, a natural resource."
+     "Tomatoes are an ingredient the pizzeria buys, not human effort."
     ]
    }
   },

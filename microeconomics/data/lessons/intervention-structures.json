@@ -69,7 +69,7 @@
  ],
  "misconception": {
   "wrong": "A price ceiling always causes a shortage and lowers the quantity sold.",
-  "right": "That is true in a competitive market. For a monopoly, a ceiling at or above the price where demand meets MC removes the reason to restrict output, so the firm sells more at the lower price."
+  "right": "That is true in a competitive market. For a monopoly, a ceiling below the monopoly price but at or above the price where demand meets MC removes the reason to restrict output, so the firm sells more at the lower price."
  },
  "check": [
   "mic-intervention-structures-16",

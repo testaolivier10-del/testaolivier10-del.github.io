@@ -149,7 +149,7 @@
     "correct": "Quantity rose 2% while income rose 10%: income elasticity $2 \\div 10 = 0.2$. Positive means normal; between 0 and 1 means demand grows more slowly than income, as for most necessities.",
     "options": [
      "Inferior means demand falls as income rises; bread demand rose.",
-     "That divides 10% by 5%; the quantity rose 2%.",
+     "That reads the 2% rise in quantity as the elasticity. Divide it by the 10% rise in income: 0.2.",
      "Right: positive and below 1.",
      "Any positive income elasticity marks a normal good."
     ]

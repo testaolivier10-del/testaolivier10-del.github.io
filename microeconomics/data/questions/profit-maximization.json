@@ -363,15 +363,14 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.A",
-   "q": "The firm sells at a price set in a large market. Label the axes and the curves of the firm's graph, including its demand curve.",
+   "q": "The left graph shows the market; the firm on the right sells every unit at the market price. Label the axes and curves of both graphs, including the firm's demand curve.",
    "why": {
-    "correct": "Price and cost on the vertical axis, quantity of output across. The horizontal line is d = MR = AR = P: every unit sells at P, so P is the firm's demand, its average revenue and its marginal revenue."
+    "correct": "Market: Price and Quantity, D and S. Firm: Price and cost on the vertical axis, quantity across, MC, ATC and AVC. The horizontal line carried across from the market price is d = MR = AR = P: every unit sells at P, so P is the firm's demand, its average revenue and its marginal revenue."
    },
    "graph": {
-    "kind": "costs",
-    "line": {
-     "id": "P",
-     "at": 6.5
+    "kind": "pc",
+    "start": {
+     "D": 1
     },
     "do": [
      "label"

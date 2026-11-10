@@ -153,18 +153,11 @@
     "mistakes": [
      {
       "value": 200,
-      "why": "Check the sign: the price is below ATC, so the shop makes a loss of \\$200."
+      "why": "Check the sign: the price is below ATC, so the shop makes a loss of \\$200. (Using AVC instead, (10 - 8) x 100, also gives 200: profit uses ATC, which includes fixed cost.)"
      },
      {
-      "from": {
-       "fn": "unitProfit",
-       "args": [
-        10,
-        8,
-        100
-       ]
-      },
-      "why": "That uses AVC. Profit uses ATC, which includes fixed cost: (10 - 12) x 100."
+      "value": -2,
+      "why": "That is the loss on each job (10 - 12). Multiply by the 100 jobs."
      }
     ]
    },

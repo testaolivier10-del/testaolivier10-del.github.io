@@ -377,13 +377,13 @@
      },
      {
       "from": {
-       "fn": "sub",
+       "fn": "add",
        "args": [
-        150,
-        50
+        200,
+        150
        ]
       },
-      "why": "\\$100 subtracts the wrong numbers. Profit = total revenue - (total cost + tax) = \\$600 - \\$550."
+      "why": "\\$350 adds the tax to profit. A tax is a cost: \\$200 - \\$150 = \\$50."
      }
     ]
    }

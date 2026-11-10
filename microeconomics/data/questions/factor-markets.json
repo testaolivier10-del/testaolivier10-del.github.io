@@ -48,12 +48,11 @@
    "title": "Two firms add workers: a price taker and a single seller",
    "invented": true,
    "table": {
-    "caption": "Firm X sells in a perfectly competitive market at \\$10 a unit. Firm Y is the only seller of its good, so it must cut its price to sell more. Both have the same marginal product (invented data for practice).",
+    "caption": "Firm X sells in a perfectly competitive market at \\$10 a unit. Firm Y is the only seller of its good, so it must cut its price to sell more, and its marginal revenue is below its price. Both have the same marginal product (invented data for practice).",
     "cols": [
      "Worker",
      "Marginal product (units)",
      "Firm X: marginal revenue per unit",
-     "Firm Y: price per unit after the sale",
      "Firm Y: marginal revenue per unit"
     ],
     "rows": [
@@ -61,20 +60,17 @@
       "1st",
       "6",
       "\\$10",
-      "\\$12",
       "\\$10"
      ],
      [
       "2nd",
       "5",
       "\\$10",
-      "\\$11",
       "\\$8"
      ],
      [
       "3rd",
       "4",
-      "\\$10",
       "\\$10",
       "\\$6"
      ],
@@ -82,7 +78,6 @@
       "4th",
       "3",
       "\\$10",
-      "\\$9",
       "\\$4"
      ]
     ]
@@ -353,7 +348,7 @@
         10
        ]
       },
-      "why": "\\$40 multiplies by the price. Firm Y must cut its price to sell more, so each extra unit adds only its marginal revenue, \\$6, not the \\$10 price."
+      "why": "\\$40 multiplies by \\$10, a price taker's marginal revenue. Firm Y must cut its price to sell more, so each extra unit adds only its own marginal revenue, \\$6."
      },
      {
       "from": {
@@ -435,7 +430,7 @@
     "options": [
      "The table gives both firms the same marginal product for each worker.",
      "Right: both firms face falling MP, but only Firm Y also faces falling MR, so its MRP drops faster.",
-     "Firm Y's price starts above \\$10; the gap comes from Firm Y's marginal revenue falling below its price.",
+     "The table compares marginal revenue, not prices; the gap comes from Firm Y's marginal revenue falling as it sells more.",
      "A price taker's marginal revenue stays at the price, \\$10."
     ]
    }

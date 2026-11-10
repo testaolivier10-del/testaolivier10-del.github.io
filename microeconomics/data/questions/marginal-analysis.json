@@ -169,7 +169,7 @@
      "Right: 12 per dollar beats 10.",
      "Two tacos give 36 utils for \\$4 (10 and 8 per dollar), less than the smoothie's 48.",
      "One taco uses only \\$2 and gives less per dollar.",
-     "Saving gives Leo no utility at the festival here."
+     "In this problem money left unspent gives Leo no utility."
     ]
    }
   },
@@ -391,7 +391,7 @@
    "type": "single",
    "practice": "2.A",
    "stimulus": "marginal-analysis-s3",
-   "q": "Should Pellham Games finish the game?",
+   "q": "Should Pellham Games finish the game, and why?",
    "options": [
     "No: it will not earn back the \\$200,000",
     "Yes: it has spent \\$200,000 and has to finish",
@@ -616,7 +616,7 @@
    "diff": 2,
    "type": "single",
    "practice": "1.B",
-   "q": "Which statement describes Leo's budget constraint at the festival?",
+   "q": "Leo has \\$12 to spend on tacos at \\$2 each and smoothies at \\$4 each. Which statement describes his budget constraint?",
    "options": [
     "He can buy any mix costing \\$12 or less",
     "He has to buy equal numbers of tacos and smoothies",
@@ -642,7 +642,7 @@
    "diff": 2,
    "type": "single",
    "practice": "1.D",
-   "q": "Ana paid \\$40 for a concert ticket she cannot resell. On the night, she feels sick and would enjoy staying home more. A friend says, \"Go, or you waste \\$40.\" What is the best reasoning?",
+   "q": "Talia paid \\$40 for a concert ticket she cannot resell. On the night, she feels sick and would enjoy staying home more. A friend says, \"Go, or you waste \\$40.\" What is the best reasoning?",
    "options": [
     "She has to go, or the \\$40 is lost",
     "She should go, because the ticket's benefit includes the \\$40",

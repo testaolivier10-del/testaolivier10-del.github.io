@@ -85,3 +85,13 @@ inputs (`competitive-factor-markets`, one analyze item); (2) the term "club good
 (`public-goods`, added to the map as `club-good`); (3) one Lorenz item asks students to shade the area the Gini
 coefficient compares (identification only, no Gini value computed, as `gini` above says).
 
+## u4-review: points left by the Unit 4 accuracy review (open, 2026-11-09)
+
+From `docs/apmicro-reviews/u4.md`. (1) The CED's Unit 4 pages could not be read (the PDF text stops in Unit 3), so
+4.1-4.5 scope, including mixed strategies and sequential games, is still unconfirmed (`ced-text`). (2) The loss
+rectangles in `mic-monopoly-15` and `mic-monopolistic-competition-15` are thin (about 0.35 units tall) because
+`graph.start` allows at most 2 steps; graded by cells, so correct, but hard to tap on a phone. Allowing 3 steps in
+`start` (integrator, `mic-graph.js` check) would let a reviewer make the loss clearer. (3) `mic-monopoly-6` keys 4
+kits by the MR = MC rule although profit is \$8 at both 3 and 4 kits (now explained, with 3 as a named mistake);
+a person may prefer new table numbers with no tie.
+

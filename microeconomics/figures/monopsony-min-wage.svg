@@ -23,5 +23,5 @@
 <text x="483.8" y="52.4" font-size="14" font-weight="bold" fill="#0072B2" text-anchor="start">S<tspan font-size="10" dy="4">L</tspan></text>
 <text x="299" y="52.4" font-size="14" font-weight="bold" fill="#D55E00" text-anchor="start">MFC</text>
 <text x="458.6" y="278.7" font-size="14" font-weight="bold" fill="#7E1A5E" text-anchor="start">MRP</text>
-<text x="116.3" y="184.2" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="start">MFC = minimum wage</text>
+<text x="116.3" y="184.2" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="start">MFC = W<tspan font-size="10" dy="4">min</tspan></text>
 </svg>

@@ -738,7 +738,7 @@
     "A lump-sum tax on each producer",
     "A per-unit subsidy to producers",
     "A per-unit tax on buyers equal to the external cost",
-    "A price ceiling below the market price"
+    "A price floor set below the market price"
    ],
    "correct": [
     0,
@@ -751,7 +751,7 @@
      "It leaves marginal cost, price and quantity unchanged.",
      "That would raise output further.",
      "Right: it lowers demand by the same amount and leads to the same quantity.",
-     "It cuts output, but sets a price that does not match MSC; it is not a corrective tax."
+     "A floor below the market price does not bind, so price and quantity do not change."
     ]
    }
   }

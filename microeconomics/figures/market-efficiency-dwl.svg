@@ -18,7 +18,7 @@
 <text x="164" y="340.3" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">1</tspan></text>
 <text x="334.8" y="282.2" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MSB</text>
 <text x="334.8" y="68.9" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="start">S = MSC</text>
-<text x="183.6" y="189.1" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="middle">DWL</text>
+<text x="180.8" y="179.6" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="middle">DWL</text>
 <text x="630" y="34" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Too much is made</text>
 <path d="M490 50V320H770" fill="none" stroke="#1F2A28" stroke-width="2"/>
 <text x="770" y="360" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Quantity</text>

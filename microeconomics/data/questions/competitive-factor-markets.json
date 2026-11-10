@@ -565,7 +565,7 @@
     "Not hire, because her MRP is below the MRP of earlier workers",
     "Hire if the firm's total revenue is above its total cost",
     "Hire her: she adds \\$15 more to revenue than to cost",
-    "Lower the wage to \\$95"
+    "Hire her and pay her a wage of \\$95, her MRP"
    ],
    "correct": 2,
    "why": {
@@ -574,7 +574,7 @@
      "Comparing with earlier workers does not matter; compare her MRP with the wage.",
      "The decision is at the margin: \\$95 against \\$80.",
      "Right: MRP > MRC, so hiring raises profit.",
-     "A wage taker cannot set the wage, and \\$95 is higher anyway."
+     "A wage taker pays the market wage, \\$80; paying her full MRP would add nothing to profit."
     ]
    }
   },

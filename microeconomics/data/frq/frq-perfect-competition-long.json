@@ -46,7 +46,7 @@
    },
    "rubric": [
     {
-     "point": "Correctly labeled graphs: market with Price and Quantity, D and S; mill with Price (and cost) and Quantity, MC and ATC",
+     "point": "Correctly labeled graphs: market with Price and Quantity, D and S; mill with Price (and cost) and Quantity, MC, ATC and AVC",
      "accept": [
       "P and Q on both graphs",
       "MC rising through the lowest point of ATC"
@@ -68,7 +68,7 @@
      "auto": "point"
     }
    ],
-   "sample": "Market (left): Price on the vertical axis, Quantity on the horizontal, a downward D and an upward S crossing at PM and QM. Mill (right): Price and cost on the vertical axis, quantity on the horizontal; MC rises through the lowest point of ATC. A dashed line carries PM across to a horizontal line labeled d = MR = AR = P, which touches ATC at its lowest point. qF is where MR = MC, directly below that point, so P = ATC and the mill earns zero economic profit."
+   "sample": "Market (left): Price on the vertical axis, Quantity on the horizontal, a downward D and an upward S crossing at PM and QM. Mill (right): Price and cost on the vertical axis, quantity on the horizontal; MC rises through the lowest points of AVC and ATC. A dashed line carries PM across to a horizontal line labeled d = MR = AR = P, which touches ATC at its lowest point. qF is where MR = MC, directly below that point, so P = ATC and the mill earns zero economic profit."
   },
   {
    "label": "B",

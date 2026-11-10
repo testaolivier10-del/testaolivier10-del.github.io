@@ -198,11 +198,11 @@
    "diff": 2,
    "type": "single",
    "practice": "2.C",
-   "q": "In the figure, with which worker does marginal product equal average product?",
+   "q": "In the figure, after marginal product reaches its peak, with which worker does it come down to equal average product?",
    "options": [
     "The second worker, where marginal product is highest",
     "The fifth worker, where total product is 48 loaves",
-    "The first worker, where both start at zero",
+    "The fourth worker, where total product is 44 loaves",
     "The third worker, where both are 12 loaves"
    ],
    "correct": 3,
@@ -211,7 +211,7 @@
     "options": [
      "Marginal product (14) is above average product (12) for the second worker.",
      "Marginal product (4) is far below average product (9.6) for the fifth worker.",
-     "For the first worker both are 10 loaves, but the question asks where the curves meet as MP falls; the third worker is where MP comes down to average product.",
+     "Marginal product (8) is already below average product (11) for the fourth worker, so the two met earlier.",
      "Right: the third worker adds 12 loaves and average product with three workers is 36 / 3 = 12."
     ]
    },

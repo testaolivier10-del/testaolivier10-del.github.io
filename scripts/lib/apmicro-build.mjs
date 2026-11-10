@@ -664,7 +664,10 @@ export function questionHtml(q, n) {
     // The starting graph, readable without JavaScript; mic-questions.js swaps in the live one.
     opts = `<div class="mic-plot-wrap">${Graph.svg(q.graph, {})}</div><p class="mic-small">Work on the graph (it needs JavaScript), then check.</p>`;
     const gk = q.graph.key || {};
-    key = `<li>Key: ${esc([...(gk.shifts || []).map(x => `${Graph.curveName(x.curve, q.graph)} shifts ${x.dir}`), ...[].concat(gk.shade || []).map(r => `shade ${Graph.REGION[r] || r}`)].join('; ') || 'see the explanation')}</li>`;
+    // The region names are the engine's words, not the topic's: mic-noscan keeps them out of the ordering scan
+    // (the item's stem carries its own preview where a region is named early).
+    const kparts = [...(gk.shifts || []).map(x => esc(`${Graph.curveName(x.curve, q.graph)} shifts ${x.dir}`)), ...[].concat(gk.shade || []).map(r => `<span class="mic-noscan">${esc(`shade ${Graph.REGION[r] || r}`)}</span>`)];
+    key = `<li>Key: ${kparts.join('; ') || 'see the explanation'}</li>`;
   } else if (q.type === 'matrix') {
     // The matrix, readable without JavaScript; mic-questions.js swaps in the live one.
     const k = Matrix.keyResponse(q.matrix), P = q.matrix.players;

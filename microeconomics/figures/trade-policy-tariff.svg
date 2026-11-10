@@ -44,7 +44,7 @@
 <text x="320" y="387" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="320" dy="0">60</tspan></text>
 <path d="M360 278.6V370" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
 <text x="360" y="387" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="360" dy="0">70</tspan></text>
-<text x="280" y="267.3" font-size="11" text-anchor="middle" fill="#8A5A00" font-weight="bold"><tspan x="280" dy="0">Tariff revenue $20</tspan></text>
+<text x="280" y="267.3" font-size="11" text-anchor="middle" fill="#8A5A00" font-weight="bold"><tspan x="280" dy="0">Revenue $20</tspan></text>
 <path d="M200 398V404H360V398" fill="none" stroke="#355A0A" stroke-width="1.6"/>
 <text x="280" y="419" font-size="12" text-anchor="middle" fill="#355A0A" font-weight="bold"><tspan x="280" dy="0">Imports at $3: 40 tons</tspan></text>
 <path d="M240 426V432H320V426" fill="none" stroke="#8A5A00" stroke-width="1.6"/>

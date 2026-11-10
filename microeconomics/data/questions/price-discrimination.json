@@ -2,10 +2,10 @@
  "stimuli": {
   "price-discrimination-s1": {
    "kind": "data",
-   "title": "Pinecrest Cinema: two groups of ticket buyers",
+   "title": "Halloway Cinema: two groups of ticket buyers",
    "invented": true,
    "table": {
-    "caption": "Pinecrest Cinema, the only cinema in a small town, sells evening tickets to two groups (invented data for practice)",
+    "caption": "Halloway Cinema, the only cinema in a small town, sells evening tickets to two groups (invented data for practice)",
     "cols": [
      "Group",
      "Price elasticity of demand (absolute value)",
@@ -84,11 +84,11 @@
    "type": "single",
    "practice": "2.C",
    "stimulus": "price-discrimination-s1",
-   "q": "Use the table. Why does Pinecrest charge students the lower price?",
+   "q": "Use the table. Why does Halloway charge students the lower price?",
    "options": [
     "Students' demand is more elastic, so a high price would lose many of them",
     "Students' demand is less elastic, so they buy whatever the price",
-    "Pinecrest's marginal cost of a student seat is lower than for an adult seat",
+    "Halloway's marginal cost of a student seat is lower than for an adult seat",
     "Students buy fewer tickets, so each one is worth less to the cinema"
    ],
    "correct": 0,
@@ -111,7 +111,7 @@
    "type": "single",
    "practice": "1.B",
    "stimulus": "price-discrimination-s1",
-   "q": "Why does Pinecrest ask to see a student ID at the door?",
+   "q": "Why does Halloway ask to see a student ID at the door?",
    "options": [
     "To measure how elastic each student's demand is",
     "To keep adults from paying the student price, so the two groups stay separate",
@@ -138,7 +138,7 @@
    "type": "numeric",
    "practice": "1.C",
    "stimulus": "price-discrimination-s1",
-   "q": "Use the table. What is Pinecrest's total revenue per night from both groups, in dollars?",
+   "q": "Use the table. What is Halloway's total revenue per night from both groups, in dollars?",
    "why": {
     "correct": "$\\text{TR} = 6 \\times 200 + 10 \\times 300 = 1{,}200 + 3{,}000 = 4{,}200$ dollars."
    },
@@ -195,7 +195,7 @@
    "type": "single",
    "practice": "2.B",
    "stimulus": "price-discrimination-s1",
-   "q": "Pinecrest dropped the student price and charged everyone \\$10. What would most likely happen to student ticket sales and to the cinema's profit?",
+   "q": "Halloway dropped the student price and charged everyone \\$10. What would most likely happen to student ticket sales and to the cinema's profit?",
    "options": [
     "Student sales would barely change and profit would rise",
     "Student sales would rise, because the price is now the same for everyone",

@@ -226,9 +226,9 @@
    "stimulus": "government-intervention-s2",
    "q": "Who gains and who loses from Halden's rent ceiling?",
    "options": [
-    "Renters as a group gain and landlords lose",
-    "Landlords gain because apartments are scarce",
-    "No one loses, because rents are lower",
+    "Renters as a group gain from the lower rent, and landlords lose",
+    "Landlords gain, because scarce apartments are easier to rent out",
+    "No one loses, because renters now pay a lower rent",
     "Renters who find a unit gain; landlords and renters left out lose"
    ],
    "correct": 3,
@@ -710,7 +710,7 @@
    "diff": 3,
    "type": "single",
    "practice": "2.B",
-   "q": "A government limits the number of fishing licenses, so the catch of a fish falls from 900 to 600 tons a year below the market quantity. Other things equal, what happens in the fish market?",
+   "q": "A government limits the number of fishing licenses, so the yearly catch of a fish falls from the market quantity of 900 tons to 600 tons. Other things equal, what happens in the fish market?",
    "options": [
     "The quantity falls to 600 tons and the price falls",
     "The price stays the same because demand is unchanged",

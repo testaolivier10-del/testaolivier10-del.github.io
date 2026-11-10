@@ -392,10 +392,10 @@
     "Name what changed in the scenario",
     "Check whether it is a variable on one of the axes",
     "If it is, move along the curve; if not, shift the curve",
-    "Label the new curve with subscript 2 and draw an arrow"
+    "For a shift, label the new curve 2 and draw an arrow"
    ],
    "why": {
-    "correct": "Start from the cause, test it against the axes, decide shift or movement, then show it on the graph with labels."
+    "correct": "Start from the cause, test it against the axes, decide shift or movement, then, for a shift, show it on the graph with labels."
    }
   }
  ]

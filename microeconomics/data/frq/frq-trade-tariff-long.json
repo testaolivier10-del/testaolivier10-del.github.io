@@ -18,7 +18,7 @@
   "3.C",
   "2.B"
  ],
- "scenario": "Castrel and Ostavia are invented countries. In one day, a worker in Castrel can produce either 4 tons of rice or 8 bolts of cloth, and a worker in Ostavia can produce either 6 tons of rice or 6 bolts of cloth. Castrel is a small country: its trade does not change the world price of rice. In Castrel, the domestic market for rice is competitive, with straight-line demand and supply curves, and without trade the price is \\$6 a ton.",
+ "scenario": "Castrel and Ostavia are invented countries. In one day, a worker in Castrel can produce either 4 tons of rice or 8 bolts of cloth, and a worker in Ostavia can produce either 6 tons of rice or 6 bolts of cloth. Castrel is a small country: its trade does not change the world price of rice. In Castrel, the domestic market for rice is competitive, with straight-line demand and supply curves, and without trade the price is \\$7 a ton.",
  "stimulus": {
   "title": "Rice in Castrel",
   "invented": true,
@@ -44,6 +44,11 @@
      "\\$6",
      "60",
      "40"
+    ],
+    [
+     "\\$7",
+     "50",
+     "50"
     ]
    ]
   }
@@ -89,7 +94,7 @@
      }
     },
     "slips": {
-     "PW": "Castrel's own price is \\$6; a world price of \\$4 sits below the domestic equilibrium."
+     "PW": "Castrel's own price is \\$7; a world price of \\$4 sits below the domestic equilibrium."
     }
    },
    "rubric": [
@@ -108,7 +113,7 @@
      "auto": "line"
     }
    ],
-   "sample": "Vertical axis: Price; horizontal axis: Quantity of rice. Domestic demand D slopes down and domestic supply S slopes up, crossing at \\$6. A horizontal line labeled PW is drawn at \\$4, below that crossing."
+   "sample": "Vertical axis: Price; horizontal axis: Quantity of rice. Domestic demand D slopes down and domestic supply S slopes up, crossing at \\$7 and 50 tons. A horizontal line labeled PW is drawn at \\$4, below that crossing."
   },
   {
    "label": "C",

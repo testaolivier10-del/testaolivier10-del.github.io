@@ -104,14 +104,14 @@ mkdirSync(REG, { recursive: true });
   b.push(box(300, 282, 180, 70, { fill: VTINT, stroke: VER }), text(390, 314, 'Factor market', { size: 15, weight: 'bold' }), text(390, 334, 'labor, land, capital', { size: 12 }));
   // Real flows (solid): goods from firms to households; factors from households to firms.
   b.push(arrow(id, 600, 145, 485, 75, { color: 'arB', stroke: BLU }), text(555, 102, 'goods and services', { size: 12, fill: BLU, anchor: 'start' }));
-  b.push(arrow(id, 300, 75, 185, 145, { color: 'arB', stroke: BLU }));
+  b.push(arrow(id, 300, 75, 185, 145, { color: 'arB', stroke: BLU }), text(236, 96, 'goods and services', { size: 12, fill: BLU, anchor: 'end' }));
   b.push(arrow(id, 185, 235, 300, 310, { color: 'arV', stroke: VER }), text(236, 304, 'labor, land, capital', { size: 12, fill: VER, anchor: 'end' }));
-  b.push(arrow(id, 485, 310, 600, 235, { color: 'arV', stroke: VER }));
+  b.push(arrow(id, 485, 310, 600, 235, { color: 'arV', stroke: VER }), text(548, 304, 'labor, land, capital', { size: 12, fill: VER, anchor: 'start' }));
   // Money flows (dashed): spending and revenue; wages, rent and interest as income.
-  b.push(arrow(id, 215, 160, 320, 100, { dash: '6 4' }), text(212, 128, 'spending', { size: 12, anchor: 'end' }));
-  b.push(arrow(id, 460, 100, 565, 160, { dash: '6 4' }), text(538, 124, 'revenue', { size: 12, anchor: 'start' }));
-  b.push(arrow(id, 565, 222, 460, 282, { dash: '6 4' }), text(560, 270, 'wages, rent, interest', { size: 12, anchor: 'start' }));
-  b.push(arrow(id, 320, 282, 215, 222, { dash: '6 4' }), text(230, 262, 'income', { size: 12, anchor: 'end' }));
+  b.push(arrow(id, 215, 160, 320, 100, { dash: '6 4' }), text(275, 152, 'spending', { size: 12, anchor: 'start' }));
+  b.push(arrow(id, 460, 100, 565, 160, { dash: '6 4' }), text(505, 152, 'revenue', { size: 12, anchor: 'end' }));
+  b.push(arrow(id, 565, 222, 460, 282, { dash: '6 4' }), text(505, 236, 'wages, rent, interest', { size: 12, anchor: 'end' }));
+  b.push(arrow(id, 320, 282, 215, 222, { dash: '6 4' }), text(275, 236, 'income', { size: 12, anchor: 'start' }));
   b.push(text(390, 190, 'Solid: goods and factors', { size: 12, fill: GREY }), text(390, 208, 'Dashed: money', { size: 12, fill: GREY }));
   add('factor-markets', id, W, H, 'Product markets and factor markets',
     'Households buy goods and services from firms in the product market and sell labor, land and capital to firms in the factor market. Money flows the other way: spending becomes firms\' revenue, and wages, rent and interest become households\' income.', b.join('\n'));
@@ -203,7 +203,7 @@ const SLm = x => x + 1, MFCm = x => 2 * x + 1, MRPm = x => 10 - x;
   p.line(0, 5, 4, 5, { stroke: VER, sw: 3.4 }).line(4, 5, 4, 9, { stroke: VER, sw: 1.8, dash: '4 3' }).fn(MFCm, 4, 4.4, { stroke: VER, sw: 3.4 });
   p.guide(3, 4, lab('Q', 'M'), lab('W', 'M'), { color: '#9AA3A0' }).guide(4, 5, lab('Q', 'min'), lab('W', 'min'));
   p.label(8.9, 9.6, lab('S', 'L'), { fill: BLU, anchor: 'start' }).label(4.5, 9.6, 'MFC', { fill: VER, anchor: 'start' }).label(8.3, 2.3, 'MRP', { fill: ACC, anchor: 'start' });
-  p.note(0.15, 5.35, 'MFC = minimum wage', { fill: VER, anchor: 'start', weight: 'bold' });
+  p.note(0.15, 5.35, 'MFC = ' + lab('W', 'min'), { fill: VER, anchor: 'start', weight: 'bold' });
   add('monopsony', id, W, H, 'A minimum wage set between the monopsony wage and the competitive wage',
     'The same monopsony graph with a minimum wage Wmin set above the monopsony wage WM and below the competitive wage. Up to the labor supply curve, each extra worker now costs exactly Wmin, so the firm\'s MFC is flat at Wmin. The firm hires Qmin workers, where the flat MFC reaches labor supply, which is more than QM, and every worker earns the higher wage Wmin.', p.done());
 }
@@ -216,7 +216,7 @@ const SLm = x => x + 1, MFCm = x => 2 * x + 1, MRPm = x => 10 - x;
   L.poly([[3, 3], [3, 7], [5, 5]], VTINT);
   L.fn(down(5), 1, 9, { stroke: ACC }).fn(up(5), 1, 9, { stroke: BLU }).guide(5, 5, 'Q*', 'P*');
   L.raw(`<path d="M${L.X(3)} ${L.Y(7)}V${L.Y(0)}" stroke="${GREY}" stroke-width="1.5" stroke-dasharray="5 4"/>`).note(3, -0.75, lab('Q', '1'), { size: 13 });
-  L.label(9.1, 1.4, 'D = MSB', { fill: ACC, anchor: 'end', size: 13 }).label(9.1, 9.3, 'S = MSC', { fill: BLU, anchor: 'start', size: 13 }).note(3.7, 4.85, 'DWL', { weight: 'bold', fill: VER, size: 12 });
+  L.label(9.1, 1.4, 'D = MSB', { fill: ACC, anchor: 'end', size: 13 }).label(9.1, 9.3, 'S = MSC', { fill: BLU, anchor: 'start', size: 13 }).note(3.6, 5.2, 'DWL', { weight: 'bold', fill: VER, size: 12 });
   b.push(L.done());
   const R = panel(id, 490, 50, 280, 270, { x: 'Quantity', y: 'Price', title: 'Too much is made' });
   R.poly([[5, 5], [7, 7], [7, 3]], VTINT);

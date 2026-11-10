@@ -44,5 +44,5 @@
 <text x="550" y="538" font-size="12" fill="#6B7370" text-anchor="middle">minimum point, then positive</text>
 <path d="M462 382.8L466.4 389.4L470.8 395.6L475.2 401.4L479.6 407L484 412.2L488.4 417.1L492.8 421.6L497.2 425.8L501.6 429.7L506 433.2L510.4 436.4L514.8 439.2L519.2 441.8L523.6 444L528 445.8L532.4 447.3L536.8 448.5L541.2 449.3L545.6 449.8L550 450L554.4 449.8L558.8 449.3L563.2 448.5L567.6 447.3L572 445.8L576.4 444L580.8 441.8L585.2 439.2L589.6 436.4L594 433.2L598.4 429.7L602.8 425.8L607.2 421.6L611.6 417.1L616 412.2L620.4 407L624.8 401.4L629.2 395.6L633.6 389.4L638 382.8" fill="none" stroke="#7E1A5E" stroke-width="3"/>
 <line x1="440" y1="450" x2="550" y2="450" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><line x1="550" y1="450" x2="550" y2="480" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><circle cx="550" cy="450" r="5" fill="#D55E00"/>
-<text x="560" y="442" font-size="12" fill="#D55E00" font-weight="700">minimum point</text>
+<text x="558" y="468" font-size="12" fill="#D55E00" font-weight="700">minimum point</text>
 </svg>

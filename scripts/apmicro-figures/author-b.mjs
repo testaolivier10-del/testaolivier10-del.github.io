@@ -291,11 +291,11 @@ const usd = v => `$${v}`;
 {
   const f = new Fig('disequilibrium-changes-double', 760, 400, 'Both curves shift: one change is certain, the other indeterminate',
     'Two supply and demand panels. Left: demand and supply both increase. Quantity rises for sure, but the new price can be higher, lower or the same as before, depending on which shift is larger: the price is indeterminate. Right: demand increases while supply decreases. The price rises for sure, but the quantity change is indeterminate.');
-  for (const [i, title, dS] of [[0, 'D up and S up', 1.8], [1, 'D up and S down', -1.8]]) {
+  for (const [i, title, dS] of [[0, 'Demand and supply both increase', 1.8], [1, 'Demand increases, supply decreases', -1.8]]) {
     const P = panel(f, { ox: 70 + i * 370, oy: 50, pw: 270, ph: 250, xmax: 10, ymax: 10, xlab: 'Quantity', ylab: 'Price', title }).axes();
     P.line(0.8, 9.2, 8.2, 1.8, { color: MUTED, sw: 2, dash: '6 5', label: 'D1', lx: P.X(8.2) - 4, ly: P.Y(1.8) + 18 });
-    P.line(2.6, 9.2, 10, 1.8, { color: BLUE, label: 'D2', lx: P.X(10) - 20, ly: P.Y(1.8) - 8 });
-    P.line(0.8, 0.8, 9.2, 9.2, { color: MUTED, sw: 2, dash: '6 5', label: 'S1', lx: P.X(9.2) - 26, ly: P.Y(9.2) + 4 });
+    P.line(2.6, 9.2, 10, 1.8, { color: BLUE, label: 'D2', lx: P.X(10) - 4, ly: P.Y(1.8) + 18 });
+    P.line(0.8, 0.8, 9.2, 9.2, { color: MUTED, sw: 2, dash: '6 5', label: 'S1', lx: i ? P.X(9.2) + 6 : P.X(9.2) - 26, ly: i ? P.Y(9.2) + 14 : P.Y(9.2) + 4 });
     if (dS > 0) P.line(2.6, 0.8, 10, 8.2, { color: PLUM, label: 'S2', lx: P.X(10) - 22, ly: P.Y(8.2) - 6 });
     else P.line(0.8, 2.6, 7.4, 9.2, { color: PLUM, label: 'S2' });
     P.dot(5, 5, 'E1', { dx: 0, dy: 22, anchor: 'middle', color: MUTED });
@@ -339,7 +339,7 @@ const usd = v => `$${v}`;
     P.vline(30, i ? 7 : 3, { label: '30' }).vline(70, at, { label: '70' }).vline(50, 5, { label: '' }).hline(5, 50, { label: '' });
     P.dot(50, 5, 'E', { dx: 8, dy: -4 });
     f.text(P.X(50), P.Y(at) + (i ? -10 : 20), i ? 'Surplus of 40' : 'Shortage of 40', { size: 12, bold: true, anchor: 'middle', color: VERM });
-    f.text(P.X(40), P.Y(5) + 4, 'DWL', { size: 11, bold: true, anchor: 'middle', color: VERM });
+    f.text(P.X(36.5), P.Y(5.75) + 4, 'DWL', { size: 11, bold: true, anchor: 'middle', color: VERM });
   }
   f.text(390, 392, 'Invented data for practice.', { size: 11, anchor: 'middle', color: MUTED });
   save('government-intervention', f, 'Left: a $3 price ceiling below the $5 equilibrium leaves a shortage of 40 ferry rides and only 30 traded. Right: a $7 price floor above it leaves a surplus of 40 and only 30 traded. Both create a deadweight loss triangle from 30 to 50 rides.');
@@ -359,7 +359,7 @@ const usd = v => `$${v}`;
   P.line(0, 4, 98, 4, { color: '#8A5A00', sw: 2.4, label: 'PW + t', lx: P.X(98), ly: P.Y(4) - 7, anchor: 'end' });
   P.hline(5, 50, { label: '' }).dot(50, 5, 'No trade', { dx: 8, dy: -6 });
   for (const q of [30, 40, 60, 70]) P.vline(q, q < 50 ? (q === 30 ? 3 : 4) : (q === 60 ? 4 : 3), { label: String(q) });
-  f.text(P.X(50), P.Y(3.5) + 4, 'Tariff revenue $20', { size: 11, bold: true, anchor: 'middle', color: '#8A5A00' });
+  f.text(P.X(50), P.Y(3.5) + 4, 'Revenue $20', { size: 11, bold: true, anchor: 'middle', color: '#8A5A00' });
   P.bracket(30, 70, 'Imports at $3: 40 tons', GREEN, 34).bracket(40, 60, 'Imports at $4: 20 tons', '#8A5A00', 62);
   f.text(510, 110, ['Free trade at $3:', 'Qd 70, Qs 30, imports 40'], { size: 13, bold: true, color: GREEN });
   f.text(510, 170, ['With a $1 tariff ($4):', 'Qd 60, Qs 40, imports 20', 'Revenue = $1 × 20 = $20'], { size: 13, bold: true, color: '#8A5A00' });

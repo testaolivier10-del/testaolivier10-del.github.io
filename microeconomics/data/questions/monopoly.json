@@ -227,7 +227,7 @@
    "stimulus": "monopoly-s2",
    "q": "Use the table. How many kits a day maximize Quillon's profit?",
    "why": {
-    "correct": "Marginal revenue is 12, 10, 8, 6, 4, 2 and marginal cost is 3, 4, 5, 6, 8, 10. MR is at least MC up to the fourth kit (MR \\$6 = MC \\$6); the fifth kit adds \\$4 to revenue and \\$8 to cost. So Quillon makes 4 kits."
+    "correct": "Marginal revenue is 12, 10, 8, 6, 4, 2 and marginal cost is 3, 4, 5, 6, 8, 10. MR is at least MC up to the fourth kit (MR \\$6 = MC \\$6); the fifth kit adds \\$4 to revenue and \\$8 to cost. So Quillon makes 4 kits. The fourth kit adds \\$6 to revenue and \\$6 to cost, so profit is \\$8 at both 3 and 4 kits; the rule MR = MC picks 4."
    },
    "numeric": {
     "from": {
@@ -260,6 +260,10 @@
      ]
     },
     "mistakes": [
+     {
+      "value": 3,
+      "why": "Profit is \\$8 at 3 kits and at 4 kits, because the fourth kit adds \\$6 to revenue and \\$6 to cost. The rule is to produce where MR = MC, and here MR = MC = \\$6 at the fourth kit."
+     },
      {
       "value": 5,
       "why": "At 5 kits the price (\\$8) equals marginal cost: that is the efficient quantity, not the monopolist's. The fifth kit adds only \\$4 to revenue but \\$8 to cost."
