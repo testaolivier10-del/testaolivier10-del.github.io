@@ -33,19 +33,19 @@
 
   var GAMES = [
     { id: 'price-war', name: 'Price war', short: 'Price war', shape: 'dilemma',
-      story: 'Two airlines on one route each choose a low or a high fare. Payoffs are weekly profits in thousands of dollars.',
+      story: 'Two airlines on one route each choose a low or a high fare. Payoffs are weekly profits in thousands of dollars.', unitLabel: 'thousands of dollars',
       players: [{ name: 'Alpha Air', strategies: ['Low fare', 'High fare'] }, { name: 'Beta Jet', strategies: ['Low fare', 'High fare'] }],
       payoffs: [[[30, 30], [70, 10]], [[10, 70], [50, 50]]], policy: { player: 0, strategy: 0 } },
     { id: 'ads', name: 'Advertising', short: 'Advertising', shape: 'one',
-      story: 'Two soda makers decide whether to run a TV campaign. Payoffs are monthly profits in thousands of dollars.',
+      story: 'Two soda makers decide whether to run a TV campaign. Payoffs are monthly profits in thousands of dollars.', unitLabel: 'thousands of dollars',
       players: [{ name: 'Fizzco', strategies: ['Advertise', 'Do not'] }, { name: 'Popwell', strategies: ['Advertise', 'Do not'] }],
       payoffs: [[[40, 25], [60, 20]], [[30, 35], [45, 40]]], policy: { player: 1, strategy: 0 } },
     { id: 'standard', name: 'Pick a standard', short: 'Standard', shape: 'coord',
-      story: 'Two phone makers each pick a charging plug. Sales are best when both pick the same one. Payoffs are profits in millions of dollars.',
+      story: 'Two phone makers each pick a charging plug. Sales are best when both pick the same one. Payoffs are profits in millions of dollars.', unitLabel: 'millions of dollars',
       players: [{ name: 'Northcell', strategies: ['Plug A', 'Plug B'] }, { name: 'Southtel', strategies: ['Plug A', 'Plug B'] }],
       payoffs: [[[50, 40], [10, 15]], [[20, 5], [40, 50]]], policy: { player: 0, strategy: 1 } },
     { id: 'chase', name: 'Sale week', short: 'Sale week', shape: 'none',
-      story: 'A large store wants its sale in a different week from a rival; the rival wants the same week, to steal shoppers. Payoffs are profits in thousands of dollars.',
+      story: 'A large store wants its sale in a different week from a rival; the rival wants the same week, to steal shoppers. Payoffs are profits in thousands of dollars.', unitLabel: 'thousands of dollars',
       players: [{ name: 'Mega Mart', strategies: ['Week 1', 'Week 2'] }, { name: 'Shop Hub', strategies: ['Week 1', 'Week 2'] }],
       payoffs: [[[20, 45], [50, 15]], [[55, 10], [25, 40]]], policy: { player: 0, strategy: 0 } }
   ];
@@ -55,6 +55,7 @@
     var s = { players: [{ name: g.players[0].name, strategies: g.players[0].strategies.slice() }, { name: g.players[1].name, strategies: g.players[1].strategies.slice() }],
       payoffs: copyP(g.payoffs), do: does || ['nash'] };
     if(g.unit) s.unit = g.unit;
+    if(g.unitLabel) s.unitLabel = g.unitLabel;
     if(change && change.amount) s.change = { player: change.player, strategy: change.strategy == null ? null : change.strategy, amount: change.amount };
     return s;
   }
@@ -92,12 +93,12 @@
   function make(r, shape, ctx){
     for(var t = 0; t < 4000; t++){
       var P = [[[r.pick(VALUES), r.pick(VALUES)], [r.pick(VALUES), r.pick(VALUES)]], [[r.pick(VALUES), r.pick(VALUES)], [r.pick(VALUES), r.pick(VALUES)]]];
-      var s = { players: ctx.players.map(function(p){ return { name: p.name, strategies: p.strategies.slice() }; }), payoffs: P, do: ['nash'] };
+      var s = { players: ctx.players.map(function(p){ return { name: p.name, strategies: p.strategies.slice() }; }), payoffs: P, do: ['nash'], unitLabel: 'thousands of dollars' };
       if(shapeOf(s) === shape) return s;
     }
     throw new Error('game-lab: no ' + shape + ' game found');
   }
-  function with_(s, does, extra){ var o = { players: s.players, payoffs: copyP(s.payoffs), do: does }; for(var k in extra || {}) o[k] = extra[k]; if(s.change && !(extra && 'change' in extra)) o.change = s.change; return o; }
+  function with_(s, does, extra){ var o = { players: s.players, payoffs: copyP(s.payoffs), do: does }; if(s.unitLabel) o.unitLabel = s.unitLabel; for(var k in extra || {}) o[k] = extra[k]; if(s.change && !(extra && 'change' in extra)) o.change = s.change; return o; }
 
   /* ------------------------------------------------------------ words */
   function money(v){ return String(v); }

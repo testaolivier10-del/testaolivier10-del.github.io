@@ -8,7 +8,8 @@
     "show": {
      "DL": -1
     },
-    "showEq": true
+    "showEq": true,
+    "mfc": false
    }
   },
   "factor-demand-supply-s2": {
@@ -101,7 +102,8 @@
     },
     "slips": {
      "SL": "Carpenters have not changed how willing they are to work; it is the builders who want more carpenters, so labor demand shifts."
-    }
+    },
+    "mfc": false
    }
   },
   {
@@ -141,7 +143,8 @@
     },
     "slips": {
      "DL": "The rule changes who can work, the sellers of labor. Firms' demand for electricians has not changed."
-    }
+    },
+    "mfc": false
    }
   },
   {
@@ -181,7 +184,8 @@
     },
     "slips": {
      "SL": "Cashiers' willingness to work is unchanged; the stores want fewer of them, so labor demand shifts."
-    }
+    },
+    "mfc": false
    }
   },
   {
@@ -218,7 +222,8 @@
       "wage": "down",
       "quantity of labor": "up"
      }
-    }
+    },
+    "mfc": false
    }
   },
   {

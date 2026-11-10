@@ -10,8 +10,5 @@
  },
  "pigouvian": {
   "def": "A corrective (Pigouvian) tax or subsidy: a per-unit tax equal to the external cost, or per-unit subsidy equal to the external benefit, at the efficient quantity, which moves the market to MSB = MSC."
- },
- "lump-sum-tax": {
-  "def": "A tax of a fixed amount that does not depend on how much a firm produces. It raises total and average cost but not marginal cost, so price and quantity do not change."
  }
 }

@@ -64,13 +64,14 @@
     }
     function stop(){ timers.forEach(clearTimeout); timers = []; cur = null; }
     function names(p){ return game.players[p].name; }
+    function per(){ return /^millions/.test(game.unitLabel || '') ? 'million' : 'thousand'; }
     function policyLine(){
       if(!pol.amount) return 'No tax or subsidy.';
-      return (pol.amount < 0 ? 'A tax of ' + (-pol.amount) : 'A subsidy of ' + pol.amount) + ' thousand dollars on ' + names(pol.player) + ' whenever it chooses ' + game.players[pol.player].strategies[pol.strategy] + '.';
+      return (pol.amount < 0 ? 'A tax of ' + (-pol.amount) : 'A subsidy of ' + pol.amount) + ' ' + per() + ' dollars on ' + names(pol.player) + ' whenever it chooses ' + game.players[pol.player].strategies[pol.strategy] + '.';
     }
     function sliderLabel(){
       var lab = slider.el.querySelector('label');
-      lab.textContent = 'Tax (−) or subsidy (+) on ' + names(pol.player) + ', ' + game.players[pol.player].strategies[pol.strategy] + ' (thousands)';
+      lab.textContent = 'Tax (−) or subsidy (+) on ' + names(pol.player) + ', ' + game.players[pol.player].strategies[pol.strategy] + ' (' + per() + 's)';
       slider.el.querySelectorAll('.bt-step')[0].setAttribute('aria-label', 'More tax'); slider.el.querySelectorAll('.bt-step')[1].setAttribute('aria-label', 'More subsidy');
     }
 

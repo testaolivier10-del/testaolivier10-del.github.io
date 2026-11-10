@@ -315,8 +315,21 @@
     }, function(){ return q; });
   }
 
+  /* Graph words on a phone: an engine graph is a 360-unit viewBox, so a narrow
+     column draws its words small (8 px at 286 px wide). Each graph gets
+     data-fit xs or xxs by its drawn width and mic.css sets bigger words. A
+     trainer's stage is left alone: it sizes its graph to the screen itself. */
+  function fitGraphs(){
+    if(!window.ResizeObserver || !window.MutationObserver) return;
+    var ro = new ResizeObserver(function(es){ es.forEach(function(e){ var w = e.contentRect.width, f = !w ? '' : w < 262 ? 'xxs' : w < 306 ? 'xs' : ''; if(f) e.target.setAttribute('data-fit', f); else e.target.removeAttribute('data-fit'); }); });
+    function scan(n){ if(n.querySelectorAll) n.querySelectorAll('svg.mic-graph-svg:not([data-fit-on])').forEach(function(s){ s.setAttribute('data-fit-on', ''); if(!s.closest('.ls-root')) ro.observe(s); }); }
+    scan(document);
+    new MutationObserver(function(ms){ ms.forEach(function(m){ if(m.addedNodes.length && m.target.nodeType === 1) scan(m.target); }); }).observe(document.body, { childList: true, subtree: true });
+  }
+
   try{ document.documentElement.classList.add('js'); }catch(e){}
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountPremium); else mountPremium();
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fitGraphs); else fitGraphs();
 
   window.ApMicroCore = {
     KEY: KEY, COURSE: COURSE, load: load, record: record, levelKey: levelKey,

@@ -145,8 +145,9 @@ function monopolyAreas() {
   b += guides(B, Qm, Pm, null, ['P', 'M']) + line(B.X(Qm), B.Y(Pm), B.X(Qm), B.y0, { dash: '5 4', sw: 1.4, stroke: MUTED }) + sub(B.X(Qm), B.y0 + 20, 'Q', 'M', { anchor: 'middle', size: 13 });
   b += guides(B, Qm, A, null, ['ATC', 'M'], { dot: false }) + dot(B.X(mm[0]), B.Y(mm[1]), BLUE);
   b += line(B.X(Qa), B.Y(al[1]), B.X(Qa), B.y0, { dash: '5 4', sw: 1.4, stroke: MUTED }) + sub(B.X(Qa), B.y0 + 20, 'Q', 'E', { anchor: 'middle', size: 13 }) + dot(B.X(Qa), B.Y(al[1]), VERM);
-  b += text(B.X(Qm * 0.3), B.Y((Pm + G.y(Dc, 0)) / 2 - 0.35), 'CS', { bold: true, size: 13, anchor: 'middle' });
-  b += text(B.X(Qm / 2), B.Y((Pm + A) / 2) + 5, 'Profit', { bold: true, size: 13, anchor: 'middle' });
+  // CS sits between MR and D just above PM; Profit in the corner under ATC (no curve crosses either word).
+  b += text(B.X(2.15), B.Y(Pm + 0.16), 'CS', { bold: true, size: 13, anchor: 'middle' });
+  b += text(B.X(0.7), B.Y(A + 0.23), 'Profit', { bold: true, size: 13, anchor: 'middle' });
   b += line(B.X(Qm + 0.55), B.Y(5.4), B.X(6.6), B.Y(7.9), { sw: 1.2, stroke: MUTED }) + text(B.X(6.7), B.Y(7.9) + 4, 'DWL', { bold: true, size: 13 });
   b += text(B.X(mm[0]) + 8, B.Y(mm[1]) + 18, 'MR = MC', { size: 12, fill: BLUE, bold: true });
   // key
@@ -195,7 +196,7 @@ function discrimination() {
   b += curvePath(L, { y: MR }, 0, 5, BLUE) + curveLabel(L, 4.9, MR(4.9), 'MR', BLUE, { dy: 4 });
   b += curvePath(L, { y: MC }, 0, 10, VERM) + curveLabel(L, 0.2, 2, 'MC', VERM, { dy: -8 });
   b += guides(L, 4, 6, ['Q', 'M'], ['P', 'M']) + line(L.X(8), L.Y(2), L.X(8), L.y0, { dash: '5 4', sw: 1.4, stroke: MUTED }) + sub(L.X(8), L.y0 + 20, 'Q', 'E', { anchor: 'middle', size: 13 });
-  b += text(L.X(1.2), L.Y(7.1), 'CS', { bold: true, size: 13, anchor: 'middle' }) + text(L.X(2), L.Y(4) + 5, 'Profit', { bold: true, size: 13, anchor: 'middle' }) + text(L.X(5.1), L.Y(3.2), 'DWL', { bold: true, size: 13, anchor: 'middle' });
+  b += text(L.X(2.3), L.Y(6.25), 'CS', { bold: true, size: 13, anchor: 'middle' }) + text(L.X(2), L.Y(4) + 5, 'Profit', { bold: true, size: 13, anchor: 'middle' }) + text(L.X(5.1), L.Y(3.2), 'DWL', { bold: true, size: 13, anchor: 'middle' });
   b += curvePath(R, { y: D }, 0, 10, INK) + text(R.X(6.6), R.Y(D(6.6)) - 12, 'D = MR', { bold: true, size: 15 });
   b += curvePath(R, { y: MC }, 0, 10, VERM) + curveLabel(R, 0.2, 2, 'MC', VERM, { dy: -8 });
   b += guides(R, 8, 2, ['Q', 'E'], null);
@@ -221,14 +222,14 @@ function monocomp() {
   b += draw(L, s1, 4.8) + curveLabel(L, 9.3, yOf(s1, 'D', 9.3), 'D', INK, { dy: -6 }) + curveLabel(L, 4.75, yOf(s1, 'MR', 4.75), 'MR', BLUE, { dy: 8 })
     + curveLabel(L, 5.25, yOf(s1, 'MC', 5.25), 'MC', VERM, { dy: 12 }) + curveLabel(L, 7.6, yOf(s1, 'ATC', 7.6), 'ATC', ACC, { dy: 4 });
   b += guides(L, p1[0], p1[1], ['Q', '1'], ['P', '1']) + guides(L, p1[0], A1, null, ['ATC', '1'], { dot: false });
-  b += text(L.X(p1[0] / 2), L.Y((p1[1] + A1) / 2) + 5, 'Profit', { bold: true, size: 13, anchor: 'middle' });
+  b += text(L.X(0.75), L.Y(A1 + 0.18), 'Profit', { bold: true, size: 13, anchor: 'middle' });
   const p2 = G.named(s2, {}, 'profit-max'), mn = G.named(s2, {}, 'min-atc');
   b += draw(R, s2, 2.9) + curveLabel(R, 6.4, yOf(s2, 'D', 6.4), 'D', INK, { dy: -2 }) + curveLabel(R, 1.6, yOf(s2, 'MR', 1.6), 'MR', BLUE, { dy: 4, dx: -34 })
     + curveLabel(R, 5.25, yOf(s2, 'MC', 5.25), 'MC', VERM, { dy: 12 }) + curveLabel(R, 7.6, yOf(s2, 'ATC', 7.6), 'ATC', ACC, { dy: 4 });
   b += guides(R, p2[0], p2[1], ['Q', '2'], ['P = ATC', ''], { color: ACC });
   b += line(R.X(mn[0]), R.Y(mn[1]), R.X(mn[0]), R.y0, { dash: '5 4', sw: 1.4, stroke: MUTED }) + sub(R.X(mn[0]), R.y0 + 20, 'Q', 'min ATC', { anchor: 'start', size: 13 }) + dot(R.X(mn[0]), R.Y(mn[1]), ACC);
   b += line(R.X(p2[0]), R.y0 + 36, R.X(mn[0]) - 3, R.y0 + 36, { stroke: VERM, sw: 1.8, arrow: 'arrV' }) + text(R.X((p2[0] + mn[0]) / 2), R.y0 + 56, 'Excess capacity', { anchor: 'middle', size: 12, bold: true, fill: VERM });
-  b += text(R.X(4.6), R.Y(8.6), 'D is tangent to ATC at Q2:', { size: 12, fill: MUTED }) + text(R.X(4.6), R.Y(8.6) + 16, 'P = ATC, and P > MC.', { size: 12, fill: MUTED });
+  b += text(R.X(5.8), R.Y(8.6), 'D is tangent to ATC at Q2:', { size: 12, fill: MUTED }) + text(R.X(5.8), R.Y(8.6) + 16, 'P = ATC, and P > MC.', { size: 12, fill: MUTED });
   save('monopolistic-competition', 'monopolistic-competition-runs', W, H,
     'Monopolistic competition in the short run and the long run',
     'Left: in the short run a monopolistically competitive firm produces Q1 where MR = MC and charges P1 from its demand curve; P1 is above ATC, so it earns the shaded economic profit. Right: entry shifts each firm\'s demand left until, in the long run, demand is tangent to ATC at Q2, where P = ATC and economic profit is zero. Q2 is less than the quantity at minimum ATC: excess capacity. Price is above MC.',

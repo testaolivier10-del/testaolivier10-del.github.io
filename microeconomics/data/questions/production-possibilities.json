@@ -310,7 +310,7 @@
      "Idle workers move the farm inside the curve, not outward.",
      "A price change does not change what the farm can grow.",
      "Moving along the curve changes the mix, not the limit.",
-     "Right: more resources and better methods shift the curve out."
+     "Right: more resources and better technology shift the curve out."
     ]
    }
   },
@@ -433,7 +433,7 @@
    "practice": "4.C",
    "q": "A new irrigation system lets the farm grow more of both crops on the same land. Show the change on the graph.",
    "why": {
-    "correct": "Better methods raise what the farm can grow of both crops, so the whole PPC shifts out."
+    "correct": "Better technology raises what the farm can grow of both crops, so the whole PPC shifts out."
    },
    "graph": {
     "kind": "ppc",
@@ -620,7 +620,7 @@
     1
    ],
    "why": {
-    "correct": "More resources or better methods shift the curve out. Idle resources and a change in the mix do not.",
+    "correct": "More resources and better technology shift the curve out. Idle resources and a change in the mix do not.",
     "options": [
      "Right: more land is more resources.",
      "Right: a better seed is a better method.",

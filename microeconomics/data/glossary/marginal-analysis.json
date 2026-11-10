@@ -1,6 +1,6 @@
 {
  "marginal": {
-  "def": "Marginal analysis decides one more unit at a time: do one more when its marginal benefit (the extra benefit of that unit) is at least its additional cost."
+  "def": "Marginal analysis decides one more unit at a time: do one more when its marginal benefit (the extra benefit of that unit) is at least its marginal cost (the extra cost of that unit)."
  },
  "utility": {
   "def": "The satisfaction a consumer gets from consuming goods and services; total utility is the satisfaction from all the units consumed."

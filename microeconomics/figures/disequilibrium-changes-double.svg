@@ -18,7 +18,7 @@
 <circle cx="205" cy="175" r="4.5" fill="#5B6664"/>
 <text x="205" y="197" font-size="12" text-anchor="middle" fill="#5B6664" font-weight="bold"><tspan x="205" dy="0">E1</tspan></text>
 <circle cx="253.6" cy="175" r="4.5" fill="#1F2A28"/>
-<text x="261.6" y="167" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="261.6" dy="0">E2</tspan></text>
+<text x="263.6" y="180" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="263.6" dy="0">E2</tspan></text>
 <text x="205" y="378" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="205" dy="0">Quantity rises; price indeterminate</tspan></text>
 <path d="M440 44V300H716" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
 <text x="575" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="575" dy="0">Demand increases, supply decreases</tspan></text>
@@ -35,6 +35,6 @@
 <circle cx="575" cy="175" r="4.5" fill="#5B6664"/>
 <text x="575" y="197" font-size="12" text-anchor="middle" fill="#5B6664" font-weight="bold"><tspan x="575" dy="0">E1</tspan></text>
 <circle cx="575" cy="130" r="4.5" fill="#1F2A28"/>
-<text x="583" y="122" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="583" dy="0">E2</tspan></text>
+<text x="585" y="135" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="585" dy="0">E2</tspan></text>
 <text x="575" y="378" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="575" dy="0">Price rises; quantity indeterminate</tspan></text>
 </svg>

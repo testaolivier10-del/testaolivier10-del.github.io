@@ -93,7 +93,9 @@
       ['MC', 'ATC'].forEach(function(c){ start[c] = base[c]; var d = (now[c] - base[c]) * k; if(Math.abs(d) > 1e-6) shifts[c] = d; });
       var spec = { kind: 'costs', afc: st.afc, start: start };
       var label = 'Cost curves of the firm: ' + G.describe(spec, { shifts: shifts }) + ' ' + st.rows + ' of 8 workers hired.' + (st.mins ? ' Marginal cost crosses AVC and ATC at their lowest points.' : '');
-      var svg = G.svg(spec, { shifts: shifts, focus: st.focus }, { label: label });
+      // On a phone the faded curves go unlabeled: six labels crowd the top right (launch review).
+      var narrow = svgEl && svgEl.clientWidth > 0 && svgEl.clientWidth < 480;
+      var svg = G.svg(spec, { shifts: shifts, focus: st.focus, oldLabels: !narrow, curveN: narrow ? '' : null }, { label: label });
       svg = svg.replace(/<g class="mic-gr-c" data-curve="(\w+)">/g, '<g class="mic-gr-c cl-g-$1" data-curve="$1">').replace(/(<text class="mic-gr-clabel )(?!is-old)/g, '$1');
       // tag each live curve label with its curve's color, in drawing order
       var order = []; svg.replace(/data-curve="(\w+)"/g, function(_, c){ order.push(c); return _; });
@@ -118,6 +120,8 @@
           var ya = py(A[1]), yb = py(B[1]); if(ya - yb < 12){ var mid = (ya + yb) / 2; ya = mid + 6; yb = mid - 6; }
           x.push('<text class="cl-amark cl-t-AVC" x="' + (G.BOX.L - 4) + '" y="' + f1(ya + 4) + '" text-anchor="end">P<tspan dy="3" class="mic-gr-sub">SD</tspan></text>');
           x.push('<text class="cl-amark cl-t-ATC" x="' + (G.BOX.L - 4) + '" y="' + f1(yb + 4) + '" text-anchor="end">P<tspan dy="3" class="mic-gr-sub">BE</tspan></text>');
+          // P_BE high on the axis would touch the axis title at its top: the title moves to the foot of the axis.
+          var Bx = G.BOX; if(yb < Bx.T + 48 && ya < Bx.T + Bx.PH - 44) svg = svg.replace('transform="translate(' + (Bx.L - 34) + ' ' + Bx.T + ') rotate(-90)" text-anchor="end"', 'transform="translate(' + (Bx.L - 34) + ' ' + (Bx.T + Bx.PH) + ') rotate(-90)" text-anchor="start"');
         }
       }
       // the table's rows as points (MC between two rows, at the middle of the step)

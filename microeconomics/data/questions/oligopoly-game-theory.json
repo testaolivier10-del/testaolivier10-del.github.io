@@ -128,7 +128,7 @@
       ]
      ]
     ],
-    "unit": "thousand"
+    "unitLabel": "thousands of new subscribers"
    }
   }
  },
@@ -490,11 +490,11 @@
       ]
      ]
     ],
-    "unit": "thousand",
     "do": [
      "dominant",
      "nash"
-    ]
+    ],
+    "unitLabel": "thousands of new subscribers"
    }
   },
   {
@@ -576,7 +576,6 @@
       ]
      ]
     ],
-    "unit": "thousand",
     "change": {
      "player": 1,
      "strategy": 1,
@@ -585,7 +584,8 @@
     "do": [
      "dominant",
      "nash"
-    ]
+    ],
+    "unitLabel": "thousands of new subscribers"
    }
   },
   {
@@ -701,7 +701,8 @@
       "player": 0,
       "given": 1
      }
-    }
+    },
+    "unitLabel": "thousands of dollars"
    }
   },
   {
@@ -759,7 +760,8 @@
     "do": [
      "dominant",
      "nash"
-    ]
+    ],
+    "unitLabel": "thousands of dollars"
    }
   },
   {
@@ -828,7 +830,8 @@
     "do": [
      "dominant",
      "nash"
-    ]
+    ],
+    "unitLabel": "thousands of dollars"
    }
   },
   {

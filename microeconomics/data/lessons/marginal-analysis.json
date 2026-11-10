@@ -5,8 +5,8 @@
   {
    "q": "Net benefit is",
    "options": [
-    "total benefit minus the full cost",
-    "total benefit plus the full cost",
+    "total benefit minus the total cost",
+    "total benefit plus the total cost",
     "the largest total benefit",
     "explicit costs plus implicit costs"
    ],
@@ -50,7 +50,7 @@
   }
  ],
  "ideas": [
-  "<b>Marginal analysis</b>: decide one more unit at a time. Do one more unit when its <b>marginal benefit</b> is at least its additional cost; stop when it is less.",
+  "<b>Marginal analysis</b>: decide one more unit at a time. Do one more unit when its <b>marginal benefit</b> is at least its <b>marginal cost</b> (MC), the extra cost of that unit; stop when it is less.",
   "<b>Utility</b> is satisfaction. <b>Marginal utility (MU)</b> is the extra utility from one more unit, and it usually falls as you consume more: <b>diminishing marginal utility</b>.",
   "Utility-maximizing rule: spend the whole budget so that $\\frac{\\text{MU}_X}{P_X} = \\frac{\\text{MU}_Y}{P_Y}$. Buy each next unit where MU per dollar is highest.",
   "The <b>budget constraint</b> limits the bundles a consumer can afford: spending on all goods cannot exceed income.",
@@ -67,5 +67,5 @@
   "mic-marginal-analysis-7",
   "mic-marginal-analysis-11"
  ],
- "summary": "Marginal analysis compares the extra benefit of one more unit with its extra cost: keep going while the marginal benefit is at least the additional cost. Consumers get utility from goods, and marginal utility usually diminishes as they consume more. With a budget, a consumer maximizes total utility by buying the next unit with the highest marginal utility per dollar until the budget is spent and MU ÷ P is equal across goods. Sunk costs are already paid whatever you choose, so they never change the best decision."
+ "summary": "Marginal analysis compares the extra benefit of one more unit with its extra cost: keep going while the marginal benefit is at least the marginal cost. Consumers get utility from goods, and marginal utility usually diminishes as they consume more. With a budget, a consumer maximizes total utility by buying the next unit with the highest marginal utility per dollar until the budget is spent and MU ÷ P is equal across goods. Sunk costs are already paid whatever you choose, so they never change the best decision."
 }

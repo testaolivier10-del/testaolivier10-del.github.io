@@ -35,7 +35,7 @@
 <text x="472" y="241.1" font-size="13" text-anchor="end" fill="#8A5A00" font-weight="bold"><tspan x="472" dy="0">PW + t</tspan></text>
 <path d="M80 217.6H280" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
 <circle cx="280" cy="217.6" r="4.5" fill="#1F2A28"/>
-<text x="288" y="211.6" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="288" dy="0">No trade</tspan></text>
+<text x="290" y="222.6" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="290" dy="0">No trade</tspan></text>
 <path d="M200 278.6V370" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
 <text x="200" y="387" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="200" dy="0">30</tspan></text>
 <path d="M240 248.1V370" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>

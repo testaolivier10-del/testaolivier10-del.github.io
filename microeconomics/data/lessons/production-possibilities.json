@@ -57,7 +57,7 @@
    "effect": "the PPC gets steeper as you move right: it bows out"
   },
   {
-   "cause": "The farm gains more resources or better methods",
+   "cause": "The farm gains more resources or better technology",
    "effect": "the whole PPC shifts out, and combinations once outside it become reachable"
   }
  ],
@@ -65,7 +65,7 @@
   "A <b>production possibilities curve (PPC)</b> shows the most of two goods a producer can make with its resources and methods. It shows scarcity (points beyond it), trade-offs (moving along it) and opportunity cost (what one good costs in the other).",
   "Points on the curve show <b>productive efficiency</b>; points inside mean idle or wasted resources; points outside cannot be produced now.",
   "Bowed out means <b>increasing opportunity cost</b>; a straight line means constant opportunity cost; bowed in (rare) means decreasing opportunity cost.",
-  "More or better resources, or better methods, shift the curve out: <b>economic growth</b>. Losing resources shifts it in.",
+  "More or better resources, or better technology, shift the curve out: <b>economic growth</b>. Losing resources shifts it in.",
   "Opportunity cost of one more unit of X = units of Y given up ÷ units of X gained."
  ],
  "misconception": {
@@ -79,5 +79,5 @@
   "mic-production-possibilities-10",
   "mic-production-possibilities-13"
  ],
- "summary": "A production possibilities curve shows every combination of two goods a producer can make when it uses all its resources efficiently with its current methods. Points on it are efficient, points inside waste resources, and points outside are out of reach for now. Moving along the curve shows the trade-off; the opportunity cost of one good is the amount of the other given up per unit gained. A bowed-out curve shows increasing opportunity cost, a straight one constant cost. More resources or better methods shift the curve out (growth)."
+ "summary": "A production possibilities curve shows every combination of two goods a producer can make when it uses all its resources efficiently with its current methods. Points on it are efficient, points inside waste resources, and points outside are out of reach for now. Moving along the curve shows the trade-off; the opportunity cost of one good is the amount of the other given up per unit gained. A bowed-out curve shows increasing opportunity cost, a straight one constant cost. More resources and better technology shift the curve out (growth)."
 }

@@ -68,7 +68,8 @@
     "do": [
      "dominant",
      "nash"
-    ]
+    ],
+    "unitLabel": "thousands of dollars"
    },
    "rubric": [
     {
@@ -134,7 +135,8 @@
     "unit": "$",
     "do": [
      "joint"
-    ]
+    ],
+    "unitLabel": "thousands of dollars"
    },
    "prompt": "<b>Identify</b> the pair of strategies that gives the two firms the largest combined profit.",
    "rubric": [

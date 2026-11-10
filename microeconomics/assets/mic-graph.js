@@ -153,6 +153,8 @@
       panels: [{ id: 'market', x: 'quantityLabor', y: 'wage', title: 'Labor market' }, { id: 'firm', x: 'quantityLabor', y: 'wage', title: 'Firm' }],
       curves: function(){ return [{ id: 'DL', shape: 'down', at: 5, panel: 'market' }, { id: 'SL', shape: 'up', at: 5, panel: 'market' }, { id: 'MRP', shape: 'down', at: 5, panel: 'firm' }]; },
       line: { id: 'W', panel: 'firm', link: true },
+      // mfc: false before MFC is taught (Topic 5.1): the firm's wage line reads S = W.
+      text: function(spec, id){ return id === 'W' && spec.mfc === false ? ['S = W', '', "the firm's labor supply at the market wage (S = W)"] : null; },
       eq: ['DL', 'SL'], out: { x: 'quantity of labor', y: 'wage' }, mark: ['Q', 'W'],
       confuse: { x: ['quantity', 'output', 'wage'], y: ['price', 'priceCost', 'quantityLabor'], fx: ['quantity', 'output', 'wage'], fy: ['price', 'priceCost', 'quantityLabor'] },
       curveConfuse: ['D', 'S', 'MFC'], lineConfuse: ['SL', 'MRP', 'MW'],
@@ -858,18 +860,19 @@
   }
   /* Axis marks close in value (QE and QT for a one-step tax, PE and PW + t) are pushed apart along their axis after
      drawing, so no two touch (integration T3-1). Marks on the horizontal axis sit at y = T + PH + 13, on the
-     vertical axis at x = L - 4; each keeps its anchor, and the run is pulled back inside the picture if it leaves. */
+     vertical axis at x = L - 4; each keeps its anchor, and the run is pulled back inside the picture if it leaves.
+     Widths are taken at the bigger phone size (mic.css data-fit), so marks do not touch there either. */
   function spreadMarks(html){
     var re = /<text class="mic-gr-mark([^"]*)" x="([-\d.]+)" y="([-\d.]+)" text-anchor="(\w+)">([\s\S]*?)<\/text>/g, xs = [], ys = [], m;
-    var wOf = function(inner){ var sub = (/<tspan[^>]*>([^<]*)<\/tspan>/.exec(inner) || [])[1] || '', main = inner.replace(/<tspan[^>]*>[^<]*<\/tspan>/g, '').replace(/&[a-z#0-9]+;/g, 'x').replace(/<[^>]+>/g, ''); return main.length * 6.6 + sub.length * 5; };
+    var wOf = function(inner){ var sub = (/<tspan[^>]*>([^<]*)<\/tspan>/.exec(inner) || [])[1] || '', main = inner.replace(/<tspan[^>]*>[^<]*<\/tspan>/g, '').replace(/&[a-z#0-9]+;/g, 'x').replace(/<[^>]+>/g, ''); return main.length * 8.2 + sub.replace(/[^A-Z]/g, '').length * 8.8 + sub.replace(/[A-Z]/g, '').length * 5.8; };
     while((m = re.exec(html))){ var o = { s: m[0], cls: m[1], x: +m[2], y: +m[3], a: m[4], inner: m[5], w: wOf(m[5]) }; if(Math.abs(o.y - (T + PH + 13)) < 0.01) xs.push(o); else if(Math.abs(o.x - (L - 4)) < 0.01) ys.push(o); }
     var moved = [];
     var left = function(o){ return o.a === 'end' ? o.x - o.w : o.a === 'middle' ? o.x - o.w / 2 : o.x; };
     xs.sort(function(a, b){ return left(a) - left(b); });
-    for(var i = 1; i < xs.length; i++){ var need = left(xs[i - 1]) + xs[i - 1].w + 3 - left(xs[i]); if(need > 0){ xs[i].x += need; moved.push(xs[i]); } }
+    for(var i = 1; i < xs.length; i++){ var need = left(xs[i - 1]) + xs[i - 1].w + 4 - left(xs[i]); if(need > 0){ xs[i].x += need; moved.push(xs[i]); } }
     if(xs.length){ var last = xs[xs.length - 1], over = left(last) + last.w - (W - 2); if(over > 0) xs.forEach(function(o){ o.x -= over; if(moved.indexOf(o) < 0) moved.push(o); }); }
     ys.sort(function(a, b){ return b.y - a.y; });
-    for(var j = 1; j < ys.length; j++){ var gap = ys[j - 1].y - 15 - ys[j].y; if(gap < 0){ ys[j].y += gap; moved.push(ys[j]); } }
+    for(var j = 1; j < ys.length; j++){ var gap = ys[j - 1].y - 20 - ys[j].y; if(gap < 0){ ys[j].y += gap; moved.push(ys[j]); } }
     moved.forEach(function(o){ html = html.replace(o.s, '<text class="mic-gr-mark' + o.cls + '" x="' + f1(o.x) + '" y="' + f1(o.y) + '" text-anchor="' + o.a + '">' + o.inner + '</text>'); });
     return html;
   }
@@ -921,7 +924,7 @@
 
   /* One panel's SVG. state: { shifts, eq, point, labels, line, shade, key,
      focus, n0, n1, curveN, curveN0 (old curves' number, default n0),
-    followerOld (false: no label on a follower's old place), marks0,
+    followerOld (false: no label on a follower's old place), oldLabels (false: none on any old curve), marks0,
     labelsShown, letters }. */
   function svgPanel(spec, state, panel, opts){
     var n0 = state.n0 != null ? String(state.n0) : '1', c0 = state.curveN0 != null ? String(state.curveN0) : n0, n1 = state.n1 != null ? String(state.n1) : '2';
@@ -942,25 +945,26 @@
       g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/>' + (shadeTask || state.letters ? '<text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>' : ''));
     }); return out.join(''); };
     g.push('<path class="mic-gr-axis" d="M' + L + ' ' + T + 'V' + (T + PH) + 'H' + (L + PW) + '"/>');
-    g.push('<text class="mic-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 31) + '" text-anchor="end">' + esc(nm(xs, panel.x)) + '</text>');
+    g.push('<text class="mic-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 35) + '" text-anchor="end">' + esc(nm(xs, panel.x)) + '</text>');
     g.push('<text class="mic-gr-alabel" transform="translate(' + (L - 34) + ' ' + T + ') rotate(-90)" text-anchor="end">' + esc(nm(ys, panel.y)) + '</text>');
     if(two) g.push('<text class="mic-gr-ptitle" x="' + (L + PW / 2) + '" y="' + (T + 2) + '" text-anchor="middle">' + esc(panel.title) + '</text>');
     var all = curves(spec, {}), allNow = curves(spec, shifts), inP = function(c){ return c.panel === pid; };
     var base = all.filter(inP), now = allNow.filter(inP);
     var e0 = k.eq && find(base, k.eq[0]) ? eq(spec, {}) : null;
     var placed = [], cn = state.curveN != null ? String(state.curveN) : '2';
-    // Measured: a 13 px bold label is about 9 px a character (MC 20, AVC 27), a subscript about 6.
-    function box(t, n, at){ var w = String(t[0]).length * 9 + String(t[1] + (n || '')).length * 6, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
-    // Labels keep 2 px apart (ATC and AVC ends no longer touch, integration T1-2).
-    function hit(a, b){ return a[0] < b[2] + 2 && b[0] < a[2] + 2 && a[1] < b[3] + 2 && b[1] < a[3] + 2; }
-    var lines = now.map(function(c){ var pts = []; if(c.shape === 'vertical'){ for(var v = 0; v <= 10; v += 0.25) pts.push([px(c.at), py(v)]); } else for(var x = 0; x <= 10 + 1e-9; x += 0.1){ var h = y(c, x); if(h != null && h >= 0 && h <= 10) pts.push([px(x), py(h)]); } return pts; });
+    // Measured in the site font: a 13 px bold label is about 10.5 px a character (MC 23, ATC 29, AVC 31), a subscript about 7.
+    function box(t, n, at){ var w = String(t[0]).length * 10.5 + String(t[1] + (n || '')).length * 7, x0 = at[2] === 'end' ? at[0] - w : at[2] === 'middle' ? at[0] - w / 2 : at[0]; return [x0, at[1] - 11, x0 + w, at[1] + 4]; }
+    // Labels keep 4 px apart across and 2 px up and down (MC and ATC side by side no longer touch: launch review).
+    function hit(a, b){ return a[0] < b[2] + 4 && b[0] < a[2] + 4 && a[1] < b[3] + 2 && b[1] < a[3] + 2; }
+    function ptsOf(c){ var pts = []; if(c.shape === 'vertical'){ for(var v = 0; v <= 10; v += 0.25) pts.push([px(c.at), py(v)]); } else for(var x = 0; x <= 10 + 1e-9; x += 0.1){ var h = y(c, x); if(h != null && h >= 0 && h <= 10) pts.push([px(x), py(h)]); } return pts; }
+    var lines = now.map(ptsOf);
     var LV = lineAt(spec, state), LDf = lineDef(spec), lineHere = LDf && (LDf.panel || 'main') === pid && LV != null;
     if(lineHere){ var lp = []; for(var lx = 0; lx <= 10; lx += 0.1) lp.push([px(lx), py(LV)]); lines.push(lp); }
     function crosses(bx, skip, set){ return (set || lines).some(function(pts, j){ return (set || j !== skip) && pts.some(function(q){ return q[0] > bx[0] - 1 && q[0] < bx[2] + 1 && q[1] > bx[1] - 1 && q[1] < bx[3] + 1; }); }); }
     /* Soft obstacles: dashed guides and shift arrows. A label avoids them when it can, never at the cost of a curve. */
     var soft = [], seg = function(a, b){ var pts = [], n = Math.max(2, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 3)); for(var i = 0; i <= n; i++) pts.push([a[0] + (b[0] - a[0]) * i / n, a[1] + (b[1] - a[1]) * i / n]); return pts; };
     var guideAt = function(p){ if(p){ soft.push(seg([px(0), py(p[1])], [px(p[0]), py(p[1])])); soft.push(seg([px(p[0]), py(p[1])], [px(p[0]), py(0)])); } };
-    function place(t, n, at, skip){
+    function place(t, n, at, skip, along){
       var tries = [0, 14, -14, 28, -28], bx, fallback = null, cands = Array.isArray(at[0]) ? at.slice() : [at];
       at = cands[0];
       // A long label that would leave the picture flips to the other side of its point.
@@ -976,7 +980,17 @@
       }
       if(hard){ placed.push(hard[1]); return hard[0]; }
       if(fallback){ placed.push(fallback[1]); return fallback[0]; }
-      placed.push(box(t, n, at)); return at;
+      // Nothing near the end fits (two curves leave through the top): walk back along the curve for a clear spot.
+      var pts = along || (skip >= 0 && lines[skip]) || [];
+      // First clear of every curve, then clear of the other labels only; never outside the picture.
+      for(var pass = 0; pass < 2; pass++) for(var q = pts.length - 1; q >= 0; q -= 2) for(var sd = 0; sd < 2; sd++){
+        var a3 = [pts[q][0] + (sd ? -8 : 8), pts[q][1] + 4, sd ? 'end' : 'start'], b3 = box(t, n, a3);
+        if(a3[1] < 12 || a3[1] > T + PH - 2 || b3[2] > W || b3[0] < 0 || placed.some(function(z){ return hit(z, b3); }) || (!pass && crosses(b3, skip))) continue;
+        placed.push(b3); return a3;
+      }
+      // Still nothing: the first candidate, pulled inside the picture.
+      var b4 = box(t, n, at), dx = b4[2] > W - 2 ? W - 2 - b4[2] : b4[0] < 2 ? 2 - b4[0] : 0;
+      at = [at[0] + dx, Math.max(12, Math.min(T + PH - 2, at[1])), at[2]]; placed.push(box(t, n, at)); return at;
     }
     // The long line label (d = MR = AR = P) in two lines in the right margin, placed before the curve labels.
     var lineLbl = '';
@@ -984,8 +998,8 @@
       var lt0 = askLabels && !labels[LDf.id] ? null : curveText(spec, labels[LDf.id] || LDf.id);
       if(LDf.link || (lt0 && lt0[1] === '' && lt0[0].length > 4)){
         var words = lt0 ? lt0[0].split(' = ') : ['?'], half = Math.ceil(words.length / 2), l1 = words.slice(0, half).join(' = ') + (words.length > 1 ? ' =' : ''), l2 = words.slice(half).join(' = ');
-        var ly = Math.max(T + 10, Math.min(T + PH - 16, py(LV) - 4)), lx = px(10) + 4;
-        placed.push([lx, ly - 11, W, ly + (l2 ? 17 : 4)]);
+        var ly = Math.max(T + 10, Math.min(T + PH - 16, py(LV) - 4)), lx = Math.min(px(10) + 4, W - 2 - Math.max(l1.length, l2.length) * 6.8);
+        placed.push([lx - 2, ly - 14, W, ly + (l2 ? 19 : 6)]);
         lineLbl = '<text class="mic-gr-clabel is-line is-small" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="start">' + esc(l1) + (l2 ? '<tspan x="' + f1(lx) + '" dy="13">' + esc(l2) + '</tspan>' : '') + '</text>';
       }
     }
@@ -1000,6 +1014,9 @@
     g.splice(1, 0, drawCells(arrowPts.filter(function(q, i){ return i % 2 === 0; }).concat(curvePts)));
     var whole = function(c, i){ return c.steps && Math.abs(c.at - base[i].at) >= 1 - 1e-9 && (c.shape === 'up' || c.shape === 'down' || c.shape === 'vertical'); };
     var txt = function(id){ return askLabels && !labels[id] ? null : curveText(spec, labels[id] || id); };
+    // A faded curve keeps only the first name of a long label (S1 for S = MPC = MSC, beside the live S = MPC = MSC2),
+    // except a curve named by showLabel, whose old name is the point (S = MPC under S + tax).
+    var oldTxt = function(id){ var t = txt(id); return t && / = /.test(t[0]) ? [t[0].split(' = ')[0], t[1], t[2]] : t; };
     // spec.showLabel { S: 'S + tax' }: the curve drawn shifted by spec.show reads so, with no number (integration 11).
     var SL = spec.showLabel || {}, own = function(c){ return c.steps && SL[c.id] && (spec.show || {})[c.id] ? [String(SL[c.id]), '', curveName(c.id, spec)] : null; };
     var pos = now.map(function(c, i){
@@ -1007,10 +1024,11 @@
       return place(t, c.steps && !own(c) ? cn : '', whole(c, i) ? pairLabels(c, base[i])[0] : labelAt(c), i);
     });
     var oldPos = now.map(function(c, i){
-      var b = base[i], t = txt(c.id);
+      var b = base[i], t = own(c) ? txt(c.id) : oldTxt(c.id);
       if(!c.steps || !t) return null;
       if(state.followerOld === false && c.follows) return null;   // the faded MR1 crowds the axis (integration T2-4)
-      return place(t, c0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' ? c.steps > 0 : (b.shape === 'ppc' || b.shape === 'ppcin') && c.at > b.at ? 'in' : true), -1);
+      if(state.oldLabels === false) return null;   // a narrow stage: faded curves unlabeled (launch, cost lab on a phone)
+      return place(t, c0, whole(c, i) ? pairLabels(c, b)[1] : Math.abs(c.at - b.at) < 1 - 1e-9 ? labelAway(b) : labelAt(b, b.shape === 'ppcline' ? c.steps > 0 : (b.shape === 'ppc' || b.shape === 'ppcin') && c.at > b.at ? 'in' : true), -1, ptsOf(b));
     });
     if(state.key){
       var ko = keyOffsets(spec);
@@ -1019,7 +1037,7 @@
     }
     now.forEach(function(c, i){
       var moved = !!c.steps, b = base[i], t = txt(c.id), at = pos[i];
-      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t && oldPos[i] ? curveLabel(t, own(c) ? '' : c0, oldPos[i], 'is-old') : '') + arrows[i]);
+      if(moved) g.push('<path class="mic-gr-curve is-old" d="' + pathOf(b) + '"/>' + (t && oldPos[i] ? curveLabel(own(c) ? t : oldTxt(c.id), own(c) ? '' : c0, oldPos[i], 'is-old') : '') + arrows[i]);
       g.push('<g class="mic-gr-c" data-curve="' + esc(c.id) + '"><path class="mic-gr-curve' + (state.focus === c.id ? ' is-focus' : '') + (c.fixed ? ' is-fixed' : '') + '" d="' + pathOf(c) + '"/>' +
         '<path class="mic-gr-grab" d="' + pathOf(c) + '"' + (does.indexOf('shift') < 0 ? ' pointer-events="none"' : '') + '/></g>' + (t ? (own(c) ? curveLabel(own(c), '', at) : curveLabel(t, moved ? cn : '', at)) : '<text class="mic-gr-clabel" x="' + f1(at[0]) + '" y="' + f1(at[1]) + '" text-anchor="' + at[2] + '">?<tspan class="mic-gr-sub" dy="3">' + (i + 1) + '</tspan></text>'));
     });

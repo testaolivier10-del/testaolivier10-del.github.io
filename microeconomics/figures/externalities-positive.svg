@@ -18,7 +18,7 @@
 <circle cx="362" cy="164" r="4.5" fill="#1F2A28"/>
 <text x="362" y="370" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">E</tspan></text>
 <text x="102" y="169" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">P<tspan font-size="10" dy="4">E</tspan></text>
-<text x="492.2" y="306.6" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MPB</text>
+<text x="492.2" y="340.7" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MPB</text>
 <text x="513.2" y="260.1" font-size="13" font-weight="bold" fill="#D55E00" text-anchor="start">MSB</text>
 <text x="168.8" y="336.1" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="start">S = MPC = MSC</text>
 <line x1="334.7" y1="162.5" x2="412.4" y2="92.7" stroke="#D55E00" stroke-width="1.2"/>

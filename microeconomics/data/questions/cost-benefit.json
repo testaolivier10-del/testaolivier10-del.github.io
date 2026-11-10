@@ -40,10 +40,10 @@
   },
   "cost-benefit-s2": {
    "kind": "data",
-   "title": "Guitar lessons: total benefit and full cost",
+   "title": "Guitar lessons: total benefit and total cost",
    "invented": true,
    "table": {
-    "caption": "Total benefit to Jamal (in dollars he would pay) and full cost of guitar lessons at \\$25 each (invented data for practice)",
+    "caption": "Total benefit to Jamal (in dollars he would pay) and total cost of guitar lessons at \\$25 each (invented data for practice)",
     "cols": [
      "Lessons per month",
      "Total benefit (\\$)",
@@ -275,7 +275,7 @@
     "mistakes": [
      {
       "value": 140,
-      "why": "That is the total benefit alone. Net benefit subtracts the full cost of \\$100."
+      "why": "That is the total benefit alone. Net benefit subtracts the total cost of \\$100."
      }
     ]
    }
@@ -325,11 +325,11 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "Going from 3 to 5 lessons raises total benefit by $150 - 120 = 30$ dollars but full cost by $125 - 75 = 50$ dollars, so net benefit falls.",
+    "correct": "Going from 3 to 5 lessons raises total benefit by $150 - 120 = 30$ dollars but total cost by $125 - 75 = 50$ dollars, so net benefit falls.",
     "options": [
      "They add \\$20 and \\$10 of benefit, just less than they cost.",
      "Right: more added cost than added benefit.",
-     "Each lesson still costs \\$25, so the full cost keeps rising by \\$25 a lesson.",
+     "Each lesson still costs \\$25, so the total cost keeps rising by \\$25 a lesson.",
      "Nothing in the table limits his money."
     ]
    }
@@ -352,7 +352,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "At \\$15 a lesson the full costs are 0, 15, 30, 45, 60 and 75, so net benefits are 0, 35, 60, 75, 80 and 75 dollars: largest at 4 lessons.",
+    "correct": "At \\$15 a lesson the total costs are 0, 15, 30, 45, 60 and 75, so net benefits are 0, 35, 60, 75, 80 and 75 dollars: largest at 4 lessons.",
     "options": [
      "At 3 lessons the net benefit is \\$75, less than \\$80 at 4.",
      "Right: \\$140 - \\$60 = \\$80 at 4 lessons.",
@@ -385,7 +385,7 @@
     "mistakes": [
      {
       "value": 600,
-      "why": "That counts only the tuition. The pay she gives up is an implicit cost and part of the full cost."
+      "why": "That counts only the tuition. The pay she gives up is an implicit cost and part of the total cost."
      }
     ]
    }
@@ -459,7 +459,7 @@
    ],
    "correct": 2,
    "why": {
-    "correct": "The full cost of a choice includes what you give up. Leaving out implicit costs overstates the net benefit.",
+    "correct": "The total cost of a choice includes what you give up. Leaving out implicit costs overstates the net benefit.",
     "options": [
      "Pay given up is a cost even though no money is spent.",
      "Adding implicit costs changes the result.",

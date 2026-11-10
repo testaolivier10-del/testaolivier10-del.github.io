@@ -3,7 +3,7 @@
   "def": "An explicit cost is a money payment for a resource, such as rent or wages paid; an implicit cost is the value of a resource the decision maker already owns or gives up, such as her own time, with no payment made."
  },
  "total-benefit": {
-  "def": "Everything a choice gives the decision maker: satisfaction for a consumer, revenue for a firm. Net benefit is total benefit minus full cost."
+  "def": "Everything a choice gives the decision maker: satisfaction for a consumer, revenue for a firm. Net benefit is total benefit minus total cost."
  },
  "total-cost": {
   "def": "Total cost: everything a choice costs, its explicit costs (money paid out) and its implicit costs (the value of the next best alternative given up). A choice is worth making when total benefit exceeds total cost."

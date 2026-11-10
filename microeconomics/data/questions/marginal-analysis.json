@@ -456,12 +456,12 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "Now finishing adds \\$40,000 of benefit for \\$50,000 of additional cost, so it lowers net benefit by \\$10,000. The sunk \\$200,000 is still irrelevant.",
+    "correct": "Now finishing adds \\$40,000 of benefit for \\$50,000 of marginal cost, so it lowers net benefit by \\$10,000. The sunk \\$200,000 is still irrelevant.",
     "options": [
      "The \\$200,000 is gone either way and cannot justify more spending.",
      "Positive sales are not enough; they must be larger than the cost still ahead.",
      "The right answer, but the reason is the \\$50,000 still ahead, not the sunk \\$200,000.",
-     "Right: the additional cost is larger than the additional benefit."
+     "Right: the marginal cost is larger than the marginal benefit."
     ]
    }
   },

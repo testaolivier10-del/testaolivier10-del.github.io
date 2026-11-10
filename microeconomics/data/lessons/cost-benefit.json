@@ -53,12 +53,12 @@
   "<b>Explicit costs</b> are money payments. <b>Implicit costs</b> are the value of resources you already own or time you give up, with no money paid.",
   "Economic cost = explicit costs + implicit costs. Leaving out implicit costs makes a choice look better than it is.",
   "<b>Total benefit</b> is what a choice gives you: for a consumer, the satisfaction of using a good; for a firm, the money it takes in from sales (its revenue).",
-  "<b>Net benefit</b> = total benefit - full cost. The best choice has the largest net benefit.",
+  "<b>Net benefit</b> = total benefit - total cost. The best choice has the largest net benefit.",
   "Some choices are all or nothing (compare totals); others are about how much (the next topic looks at one more unit at a time)."
  ],
  "misconception": {
   "wrong": "The best number of guitar lessons is 5, because 5 lessons give the most total benefit.",
-  "right": "The fifth lesson adds more cost than benefit. Net benefit, total benefit minus full cost, is largest at 3 lessons (\\$120 - \\$75 = \\$45)."
+  "right": "The fifth lesson adds more cost than benefit. Net benefit, total benefit minus total cost, is largest at 3 lessons (\\$120 - \\$75 = \\$45)."
  },
  "check": [
   "mic-cost-benefit-1",
@@ -67,5 +67,5 @@
   "mic-cost-benefit-7",
   "mic-cost-benefit-13"
  ],
- "summary": "A choice's full cost includes explicit costs, the money you pay, and implicit costs, the value of your own time and resources that you give up. Its total benefit is the satisfaction it gives a consumer or the revenue it brings a firm. Net benefit is total benefit minus full cost, and the best choice is the one with the largest net benefit. Ignoring implicit costs, or chasing the largest total benefit instead of the largest net benefit, leads to the wrong choice."
+ "summary": "A choice's total cost includes explicit costs, the money you pay, and implicit costs, the value of your own time and resources that you give up. Its total benefit is the satisfaction it gives a consumer or the revenue it brings a firm. Net benefit is total benefit minus total cost, and the best choice is the one with the largest net benefit. Ignoring implicit costs, or chasing the largest total benefit instead of the largest net benefit, leads to the wrong choice."
 }

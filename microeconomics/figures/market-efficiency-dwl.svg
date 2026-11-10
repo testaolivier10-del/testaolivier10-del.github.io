@@ -16,7 +16,7 @@
 <text x="72" y="190" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">P*</text>
 <path d="M164 131V320" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="164" y="340.3" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">1</tspan></text>
-<text x="334.8" y="282.2" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MSB</text>
+<text x="334.8" y="311.9" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MSB</text>
 <text x="334.8" y="68.9" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="start">S = MSC</text>
 <text x="180.8" y="179.6" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="middle">DWL</text>
 <text x="630" y="34" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="middle">Too much is made</text>
@@ -32,7 +32,7 @@
 <text x="482" y="190" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">P*</text>
 <path d="M686 131V320" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="686" y="340.3" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">2</tspan></text>
-<text x="744.8" y="282.2" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MSB</text>
+<text x="744.8" y="311.9" font-size="13" font-weight="bold" fill="#7E1A5E" text-anchor="end">D = MSB</text>
 <text x="744.8" y="68.9" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="start">S = MSC</text>
 <text x="666.4" y="189.1" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="middle">DWL</text>
 </svg>

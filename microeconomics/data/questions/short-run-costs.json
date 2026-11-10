@@ -472,9 +472,9 @@
    "diff": 2,
    "type": "graph",
    "practice": "4.C",
-   "q": "The city raises a lump-sum license fee that every food truck pays once a year, whatever it sells. Shift the curve or curves that change for one food truck.",
+   "q": "The city raises a lump-sum tax that every food truck pays once a year, whatever it sells. Shift the curve or curves that change for one food truck.",
    "why": {
-    "correct": "A fixed fee raises total fixed cost, so AFC and ATC rise at every output. It adds nothing to the cost of one more unit, so MC and AVC do not move."
+    "correct": "A lump-sum tax raises total fixed cost, so AFC and ATC rise at every output. It adds nothing to the cost of one more unit, so MC and AVC do not move."
    },
    "graph": {
     "kind": "costs",
@@ -492,10 +492,10 @@
        "dir": "up"
       }
      ],
-     "because": "a higher lump-sum license fee, a fixed cost"
+     "because": "a higher lump-sum tax, a fixed cost"
     },
     "slips": {
-     "MC": "The fee is the same at every output, so it does not change the cost of one more unit: MC stays put. Only ATC (through AFC) rises."
+     "MC": "The tax is the same at every output, so it does not change the cost of one more unit: MC stays put. Only ATC (through AFC) rises."
     }
    }
   },

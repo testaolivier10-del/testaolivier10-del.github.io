@@ -413,3 +413,12 @@ test('a cell letter keeps clear of a shift arrow', () => {
   const arrow = /<path class="mic-gr-arrow" d="M([-\d.]+) ([-\d.]+)L([-\d.]+) ([-\d.]+)/.exec(s);
   if (arrow) for (const t of texts(s).filter(t => t.cls === 'mic-gr-cletter')) { const [x0, y0, x1, y1] = arrow.slice(1).map(Number); const tt = Math.max(0, Math.min(1, ((t.x - x0) * (x1 - x0) + (t.y - 4 - y0) * (y1 - y0)) / ((x1 - x0) ** 2 + (y1 - y0) ** 2 || 1))); assert.ok(Math.hypot(t.x - (x0 + tt * (x1 - x0)), t.y - 4 - (y0 + tt * (y1 - y0))) > 6, `letter ${t.t} on the arrow`); }
 });
+test('labor before MFC is taught (mfc: false): the firm wage line reads S = W, never MFC', () => {
+  const s = svgOf({ kind: 'labor', mfc: false, do: ['shift'] }), t = svgOf({ kind: 'labor', do: ['shift'] });
+  assert.ok(!/MFC/.test(s), 'no MFC anywhere'); assert.match(s, /(S = W)/);
+  assert.match(t, /S = MFC =/);
+});
+test('old curve labels can be left off (oldLabels: false), the live ones unnumbered (curveN: "")', () => {
+  const s = svgOf({ kind: 'costs', do: ['label'] }, { labelsShown: true, shifts: { MC: 1 }, oldLabels: false, curveN: '' });
+  assert.ok(!/mic-gr-clabel is-old/.test(s)); assert.ok(!/MC<tspan class="mic-gr-sub"[^>]*>2/.test(s));
+});
