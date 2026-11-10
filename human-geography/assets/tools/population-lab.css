@@ -8,6 +8,9 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--hug-pl-m:#8CCFD9;--hug-pl-f:#F29A5C;--hug-pl-young:#4FD1AA;--hug-pl-old:#C3A3E0;--hug-pl-b:#DCDB98;--hug-pl-d:#F08DB5;--hug-pl-gap:rgba(79,209,170,.16);}}
 .hug-pl-stage{display:flex;flex-direction:column;gap:8px;min-height:0;}
 .ls-root .hug-pl-stage{flex:1;}
+/* In the tool stage the pyramid takes the height left under the summary pills (at least 230 px), so a phone stage
+   shows its axis numbers instead of cutting them off at the foot (launch screen pass, 2026-11-10). */
+.ls-root .hug-pl-fig{min-height:230px;}
 .hug-pl-fig{position:relative;flex:1;min-height:340px;}
 .bt-pane .hug-pl-fig{height:min(64vh,540px);}
 .hug-pl-note{margin:0;text-align:center;font:600 12.5px var(--font-ui);color:var(--muted);}

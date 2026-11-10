@@ -159,7 +159,7 @@
     }
     function setStage(s){ stage = s; var S0 = A.STAGES[s]; tfr = S0.tfr; e0 = S0.e0; cbr = S0.cbr; cdr = S0.cdr; slT.set(tfr); slE.set(e0); draw(true); chips(); }
     function chips(){ (LS ? LS.root : host).querySelectorAll('.hug-pl-st').forEach(function(x){ var on = +x.getAttribute('data-s') === stage; x.setAttribute('aria-pressed', String(on)); x.classList.toggle('on', on); }); }
-    function size(){ var b = svg.getBoundingClientRect(); return [Math.max(300, Math.round(b.width || 640)), Math.max(320, Math.round(b.height || 440))]; }
+    function size(){ var b = svg.getBoundingClientRect(); return [Math.max(300, Math.round(b.width || 640)), Math.max(220, Math.round(b.height || 440))]; }
     function draw(tween){
       var target = A.pyramid(tfr, e0);
       if(tween && shown && !reduced() && P && P.loop){
