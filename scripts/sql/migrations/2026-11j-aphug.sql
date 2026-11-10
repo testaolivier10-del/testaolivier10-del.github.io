@@ -2,9 +2,10 @@
 -- course (docs/aphug-spec.md, Phase 0). Named 2026-11j-aphug.sql so it sorts after
 -- 2026-11i-apmicro.sql (AP® Microeconomics), whose course lists it extends:
 -- migrations run, and are compared with schema.sql, in file-name order.
--- AP® Microeconomics was not on this branch when this was written, so the lists
--- here end 'apmacro', 'apmicro', 'aphug'; when both are merged, add 'apmicro' before
--- 'aphug' here and in schema.sql. NOT APPLIED anywhere yet.
+-- Every course list here ends 'apmacro', 'apmicro', 'aphug' (AP® Microeconomics was
+-- merged into this branch at its Phase 0), the same lists as schema.sql; its bodies
+-- equal 2026-11i-apmicro.sql's with 'aphug' added (checked at launch, 2026-11-10).
+-- NOT APPLIED anywhere yet (owner checklist, docs/aphug-spec.md section 9).
 --
 -- Run once, BEFORE the AP® Human Geography pass goes on sale: Supabase dashboard ->
 -- SQL Editor -> New query -> paste -> Run. Needs every migration before it first.
@@ -323,9 +324,14 @@ returns boolean language sql immutable as $$
                       'apprecalc', 'apcalcbc', 'apmacro', 'apmicro', 'aphug');
 $$;
 
+revoke all on function public.premium_add_pass(uuid, text, text, integer, text, integer, timestamptz, text, text, timestamptz) from public, anon, authenticated;
+grant execute on function public.premium_add_pass(uuid, text, text, integer, text, integer, timestamptz, text, text, timestamptz) to service_role;
+revoke all on function public.count_premium_paid(text) from public, anon, authenticated;
+grant execute on function public.count_premium_paid(text) to service_role;
 grant execute on function public.report_question(text, text, text, text) to anon, authenticated;
 grant execute on function public.join_waitlist(text, text, text) to anon, authenticated;
 grant execute on function public.count_premium_step(text, text) to anon, authenticated;
 grant execute on function public.record_exam_completion(text, integer) to authenticated;
 grant execute on function public.teach_create_class(text, text, jsonb) to authenticated;
 grant execute on function public.teach_save_question(uuid, jsonb) to authenticated;
+revoke all on function public.free_usage_course_ok(text) from public, anon, authenticated;

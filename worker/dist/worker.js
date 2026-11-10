@@ -2486,6 +2486,33 @@ const CALIBRATION = {
                  B: [{ quote: '', reason: 'Real GDP fell from 500 to 480, so output decreased.', earned: false }] } },
     ],
   },
+  aphug: {
+    id: 'frq-population-policy-none',
+    question: 'A question with no stimulus, on population policies and fertility. Each part is worth one point.',
+    parts: [
+      { label: 'C', prompt: 'Explain why a country\u2019s population can keep growing for several decades after its TFR falls below replacement level.',
+        rubric: ['Explains that a large number of young people from earlier high fertility are now at childbearing age, so births still exceed deaths for a time.'] },
+      { label: 'G', prompt: 'Explain the degree to which a national TFR describes fertility in every region of a large country, such as India.',
+        rubric: ['States a degree and explains that a national average hides differences between regions at the subnational scale.'] },
+    ],
+    answers: [
+      { kind: 'full credit',
+        text: { C: 'Years of high fertility left a large young population. Now many of them are in their twenties and thirties having children, so births still outnumber deaths for decades even though each woman has fewer children (population momentum).',
+                G: 'Only to a limited degree. The national TFR is an average, and it hides big differences between states: Bihar has a much higher TFR than Kerala, so you need data at the subnational scale.' },
+        grade: { C: [{ quote: 'many of them are in their twenties and thirties having children, so births still outnumber deaths for decades', reason: 'Links the large young cohort from past high fertility to births exceeding deaths.', earned: true }],
+                 G: [{ quote: 'Only to a limited degree. The national TFR is an average, and it hides big differences between states', reason: 'States a degree and explains that the average hides subnational differences.', earned: true }] } },
+      { kind: 'partial',
+        text: { C: 'Because the age structure is young: lots of young couples still have children, so there are more births than deaths for a while.',
+                G: 'The national TFR hides differences between regions, because some states have high fertility and others low.' },
+        grade: { C: [{ quote: 'lots of young couples still have children, so there are more births than deaths for a while', reason: 'Young age structure keeps births above deaths, a form the rubric accepts.', earned: true }],
+                 G: [{ quote: '', reason: 'Explains the hidden differences but never states a degree, which an "explain the degree" point requires.', earned: false }] } },
+      { kind: 'no credit',
+        text: { C: 'Because the TFR is still above zero, so people are still being born.',
+                G: 'To a large degree, India is one country.' },
+        grade: { C: [{ quote: '', reason: 'Births above zero do not explain growth; no link to a large young cohort.', earned: false }],
+                 G: [{ quote: '', reason: 'States a degree but gives no reason about regional differences, and the degree contradicts the point.', earned: false }] } },
+    ],
+  },
 };
 
 function calibrationText(course) {
@@ -2550,7 +2577,7 @@ function calibrationText(course) {
 
 
 
-const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro'];
+const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'aphug'];
 const DAILY_CAP = 10;
 const DEFAULT_MODEL = 'claude-haiku-5-5';
 // Bump when the instructions, the schema or the checks change in a way that
@@ -2629,6 +2656,11 @@ const COURSE_CONVENTIONS = {
 - An "explain" point needs the cause and every link of the causal chain the rubric names (for example: lower interest rate, more investment, aggregate demand increases, real output rises); skipping a link the rubric requires does not earn it.
 - Keep commonly confused ideas apart: real versus nominal, cyclical versus natural unemployment, the reserve market (ample reserves, the Fed's administered rates) versus the money market, a shift of a curve versus a movement along it, and the currency on each axis of a foreign exchange graph.
 - Graph parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
+  aphug: `COURSE CONVENTIONS: AP® Human Geography.
+- Each part is one point, and its task verb sets what earns it. "Identify" or "define" needs the term or a correct definition only. "Describe" needs more than a name: the pattern, place or feature in some detail. "Explain" needs the cause and the effect joined by a reason (a "because" or "so"); a description with no link does not earn it. "Compare" must speak of both sides (a difference or a similarity), not one. "Explain the degree" needs a stated degree (to a large, moderate or limited degree) and a reason that supports it; a reason with no degree, or a degree with no reason, does not earn it.
+- When the rubric asks for a real place or example, a vague answer ("some countries", "a city") does not earn it; a named place does. Accept any real example the rubric's wording allows, not only the ones listed.
+- Scale words: global, regional (a group of countries), national, local. Data for provinces, states or counties are at the local (subnational) scale; accept "subnational" for it.
+- Keep commonly confused ideas apart: carrying capacity versus population density, site versus situation, GMOs versus the Green Revolution's bred seeds, relocation versus expansion diffusion, devolution versus supranationalism.`,
 };
 
 function systemBlocks(course) {

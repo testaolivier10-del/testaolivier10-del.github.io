@@ -648,6 +648,41 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
     }));
   }
 }
+/* AP® Human Geography Practice (live since its launch, docs/aphug-spec.md decision 11): the first published
+   topic's set loads the bank index, then that unit's file, and explanations only after an answer. A model item
+   (pieces placed into slots) is answered by placing the first piece left into each slot in turn. */
+{
+  const idx = join(ROOT, 'human-geography', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    results.push(await anpFlow('/human-geography/practice.html (flow)', async (page, bank, problems) => {
+      await page.goto(ORIGIN + '/human-geography/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
+      await page.waitForFunction(() => /[?&]topic=/.test(document.getElementById('ppGo')?.getAttribute('href') || ''), null, { timeout: 15000 });
+      await page.click('#ppGo');
+      await page.waitForSelector('.hug-pr-stage .hug-q', { timeout: 15000 });
+      if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
+      const q = page.locator('.hug-pr-stage .hug-q').first();
+      const opt = q.locator('.hug-opt').first();
+      if (await opt.count()) await opt.click();
+      else if (await q.locator('.hug-num input, input[inputmode]').count()) await q.locator('.hug-num input, input[inputmode]').first().fill('1');
+      else {
+        const slots = q.locator('.hug-model-slot');
+        for (let i = 0; i < await slots.count(); i++) {
+          const piece = q.locator('.hug-model-tray .hug-model-piece:visible').first();
+          if (!(await piece.count())) break;
+          await piece.click();
+          await slots.nth(i).click();
+        }
+      }
+      for (const sel of await q.locator('select[data-slot]').all()) await sel.selectOption({ index: 1 });
+      const check = page.locator('.hug-pr-stage .hug-q .hug-check').first();
+      if (await check.count() && await check.isVisible()) await check.click();
+      await page.waitForSelector('.hug-q-feedback .hug-verdict', { timeout: 15000 });
+      if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
+    }));
+  }
+}
 results.sort((a, b) => a.path.localeCompare(b.path));
 
 let failures = 0;

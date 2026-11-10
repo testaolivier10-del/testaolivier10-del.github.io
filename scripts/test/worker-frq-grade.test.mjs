@@ -515,7 +515,7 @@ test('question text: MathML becomes TeX, figures their alt text, tables rows', (
 });
 
 test('calibration: one per course, each a real question whose rubric it copies, full / partial / none', () => {
-  const dir = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', apmacro: 'macroeconomics' };
+  const dir = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', apmacro: 'macroeconomics', aphug: 'human-geography' };
   for (const c of FRQ_COURSES) {
     const cal = CALIBRATION[c];
     assert.ok(cal, c);

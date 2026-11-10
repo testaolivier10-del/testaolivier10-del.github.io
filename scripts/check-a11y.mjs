@@ -174,7 +174,7 @@ const PAGES = [
   ['/microeconomics/formula-sheet.html', 'the AP® Microeconomics graphs and formulas page'],
   ['/microeconomics/justify.html', 'the AP® Microeconomics "Make it specific" trainer'],
   ...bioPages('microeconomics', 'AP® Microeconomics'),
-  // AP® Human Geography (registered hidden, nothing published yet): the app shells.
+  // AP® Human Geography (live since its launch, docs/aphug-spec.md decision 11).
   ['/human-geography/', 'the AP® Human Geography course home'],
   ['/human-geography/glossary.html', 'the AP® Human Geography glossary'],
   ['/human-geography/practice.html', 'the AP® Human Geography practice builder'],
@@ -182,6 +182,9 @@ const PAGES = [
   ['/human-geography/frq.html', 'the AP® Human Geography free-response list'],
   ['/human-geography/formula-sheet.html', 'the AP® Human Geography formulas page'],
   ['/human-geography/justify.html', 'the AP® Human Geography "Make it specific" trainer'],
+  ['/human-geography/models.html', 'the AP® Human Geography models page'],
+  ['/human-geography/tools/model-studio.html', 'the AP® Human Geography Model Studio'],
+  ['/human-geography/tools/map-reader.html', 'the AP® Human Geography map reader'],
   ...bioPages('human-geography', 'AP® Human Geography'),
 ];
 
