@@ -275,7 +275,7 @@ ${bodyOpen(' data-app="formula-sheet"')}
     <ul class="mic-eq-not">${TABLES.map(r => `<li><b>${esc(r[0])}.</b> ${R(r[1])}</li>`).join('')}</ul>
   </section>
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Formula flashcards</a>`, (liveTools || []).some(t => t.slug === 'graph-studio') ? `<a href="tools/graph-studio.html">Graph studio</a>` : '', `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Formula flashcards</a>`, (liveTools || []).some(t => t.slug === 'graph-studio') ? `<a href="tools/graph-studio.html">Graph Studio</a>` : '', `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:formula-sheet')}

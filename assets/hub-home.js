@@ -24,7 +24,7 @@
       { key: 'apprecalc', name: 'AP® Precalculus', path: '/precalculus/', status: 'live' },
       { key: 'apcalcbc', name: 'AP® Calculus BC', path: '/calculus-bc/', status: 'live' },
       { key: 'apmacro', name: 'AP® Macroeconomics', path: '/macroeconomics/', status: 'live' },
-      { key: 'apmicro', name: 'AP® Microeconomics', path: '/microeconomics/', status: 'hidden' },
+      { key: 'apmicro', name: 'AP® Microeconomics', path: '/microeconomics/', status: 'live' },
     ];
     // courses:end
     var COURSES = COURSE_LIST.filter(function(c){ return c.status !== 'hidden'; }).map(function(c){

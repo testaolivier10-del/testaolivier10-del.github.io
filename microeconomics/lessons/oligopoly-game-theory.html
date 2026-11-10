@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oligopoly and Game Theory — AP® Microeconomics | LevlPrep</title>
+<meta name="description" content="In an oligopoly a few interdependent firms must consider each other's choices, which a payoff matrix shows.">
+<link rel="canonical" href="https://levlprep.com/microeconomics/lessons/oligopoly-game-theory.html">
+<meta property="og:title" content="Oligopoly and Game Theory — AP® Microeconomics | LevlPrep">
+<meta property="og:description" content="In an oligopoly a few interdependent firms must consider each other's choices, which a payoff matrix shows.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/microeconomics/lessons/oligopoly-game-theory.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/microeconomics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/course/lesson.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/mic.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/microeconomics/lessons/oligopoly-game-theory.html#lesson",
+      "name": "Oligopoly and Game Theory",
+      "url": "https://levlprep.com/microeconomics/lessons/oligopoly-game-theory.html",
+      "description": "In an oligopoly a few interdependent firms must consider each other's choices, which a payoff matrix shows.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".mic-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "payoff matrix"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "best response"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "dominant strategy"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Nash equilibrium"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "collusion"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "game theory"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "prisoner's dilemma"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/microeconomics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Microeconomics",
+          "item": "https://levlprep.com/microeconomics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Imperfect Competition",
+          "item": "https://levlprep.com/microeconomics/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Oligopoly and Game Theory",
+          "item": "https://levlprep.com/microeconomics/lessons/oligopoly-game-theory.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="mic" data-topic="oligopoly-game-theory" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="mic-crumb mic-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Microeconomics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Imperfect Competition</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Oligopoly and Game Theory</span></nav></div>
+<div class="xshell mic-ls cx-ls mic-stepped" data-course="apmicro" data-next-title="Introduction to Factor Markets" data-next-unit="unit-5">
+  <aside class="mic-ls-rail mic-nav-ref" aria-label="Lesson parts">
+    <p class="mic-ls-k cx-ls-k">Unit 4 · Imperfect Competition</p>
+    <p class="mic-ls-links"><a href="../units/unit-4.html">&larr; Back to the unit</a><a href="../notes/oligopoly-game-theory.html">Read the notes</a></p>
+    <div class="mic-ls-prog cx-ls-prog"><div class="mic-ls-track"><div class="mic-ls-fill"></div></div><span class="mic-ls-count">Step 1 / 11</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of 11</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="mic-ls-steps cx-ls-steps" id="lesson-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="mic-ls-main mic-lesson r3 r3-lesson" data-cover="apmicro">
+  <header class="mic-ls-hero">
+    <div class="eyebrow">Unit 4 · Topic 4.5 </div>
+    <h1>Oligopoly and Game Theory</h1>
+    <p class="lede">In an oligopoly a few interdependent firms must consider each other's choices, which a payoff matrix shows.</p>
+    <p class="mic-tags mic-nav-ref"><span class="mic-tag">Practice 2: Interpretation</span></p>
+  </header>
+  <div class="mic-ls-card">
+  <section class="mic-part mic-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="mic-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="mic-step-body mic-hook">Two gas stations face each other across an <a class="gl" href="../notes/curves-crossing.html" data-c="intersection">intersection</a>. If one cuts its price by ten cents, it steals the other's customers, unless the other cuts too, and then both earn less. Each owner has to guess what the other will do before choosing. That is <a class="gl" href="../notes/imperfect-competition.html" data-c="oligopoly">oligopoly</a>, and <span class="gl" tabindex="0" data-c="game-theory">game theory</span> is the tool for it.</div>
+  </section>
+  <section class="mic-part mic-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="mic-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="mic-step-body"><nav class="mic-nav-ref" aria-label="Earlier topics"><ul class="mic-links"><li><a href="../notes/imperfect-competition.html">Introduction to Imperfectly Competitive Markets</a></li></ul></nav></div>
+  </section>
+  <section class="mic-part mic-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="mic-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="mic-step-body"><div class="mic-qs" data-set="prereq"><div class="mic-q" data-qid="oligopoly-game-theory-pre-1"><p class="mic-q-stem"><span class="mic-q-n">1.</span> An oligopoly is a market with</p><ol class="mic-opts"><li>a few large, interdependent firms</li><li>one seller</li><li>many firms selling identical products</li><li>many firms selling differentiated products</li></ol><details class="mic-q-key"><summary>Show the answer</summary><p>A few firms, each affected by the others' choices.</p><ul><li><b>Correct:</b> a few large, interdependent firms: </li><li>one seller: </li><li>many firms selling identical products: </li><li>many firms selling differentiated products: </li></ul></details></div><div class="mic-q" data-qid="oligopoly-game-theory-pre-2"><p class="mic-q-stem"><span class="mic-q-n">2.</span> A firm with market power produces where</p><ol class="mic-opts"><li>MR = MC</li><li>P = MC</li><li>P = ATC</li><li>TR is largest</li></ol><details class="mic-q-key"><summary>Show the answer</summary><p>MR = MC, with the price from demand.</p><ul><li><b>Correct:</b> MR = MC: </li><li>P = MC: </li><li>P = ATC: </li><li>TR is largest: </li></ul></details></div></div></div>
+  </section>
+  <section class="mic-part mic-step" id="figure" aria-labelledby="h-figure">
+    <p class="mic-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="mic-step-body"><figure class="mic-figure mic-lesson-fig"><div class="mic-figimg" data-fig="oligopoly-game-theory-matrix"><img src="../figures/oligopoly-game-theory-matrix.svg" alt="A payoff matrix for two firms choosing Advertise or Do not, with Firm A's payoff first in each cell; best responses are underlined and the cell where both advertise is marked as the Nash equilibrium." width="720" height="360" loading="lazy" decoding="async"></div><figcaption>A <span class="gl" tabindex="0" data-c="payoff-matrix">payoff matrix</span> (Firm A's payoff first, thousands of dollars). Each firm's <span class="gl" tabindex="0" data-c="best-response">best response</span> is underlined. Advertise wins both comparisons for each firm, so (Advertise, Advertise) is the <span class="gl" tabindex="0" data-c="nash-equilibrium">Nash equilibrium</span>, though both would earn more if neither advertised. <span class="mic-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="mic-part mic-step" id="chain" aria-labelledby="h-chain">
+    <p class="mic-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="mic-step-body"><ol class="mic-chain"><li><span class="mic-cause">A few firms are interdependent</span><span class="mic-arrow" aria-hidden="true">→</span><span class="mic-effect">each firm's best choice depends on what its rivals choose</span></li><li><span class="mic-cause">A firm compares its own payoffs with the rival's choice held fixed</span><span class="mic-arrow" aria-hidden="true">→</span><span class="mic-effect">it finds its best response to each of the rival's choices</span></li><li><span class="mic-cause">One strategy is the best response to every choice of the rival</span><span class="mic-arrow" aria-hidden="true">→</span><span class="mic-effect">it is a <span class="gl" tabindex="0" data-c="dominant-strategy">dominant strategy</span> (proved with both comparisons)</span></li><li><span class="mic-cause">Each firm is making its best response to the other</span><span class="mic-arrow" aria-hidden="true">→</span><span class="mic-effect">the cell is a Nash <a class="gl" href="../notes/equilibrium-surplus.html" data-c="equilibrium">equilibrium</a>: neither gains by switching alone</span></li><li><span class="mic-cause">In a <span class="gl" tabindex="0" data-c="prisoners-dilemma">prisoner's dilemma</span> each firm's dominant strategy lowers <span class="gl" tabindex="0" data-c="collusion">joint profit</span></span><span class="mic-arrow" aria-hidden="true">→</span><span class="mic-effect">collusion would pay the group, but each firm gains by cheating, so cartels are unstable</span></li></ol></div>
+  </section>
+  <section class="mic-part mic-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="mic-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="mic-step-body"><ul class="mic-ideas"><li><b>Oligopoly</b>: a few interdependent firms, <a class="gl" href="../notes/imperfect-competition.html" data-c="barriers">barriers to entry</a>. <b>Game theory</b> studies their choices with a <b>payoff matrix</b>: the row player's payoff is listed first.</li><li><b>Best response</b>: hold the rival's choice fixed and compare only your own payoffs. Do this for each of the rival's choices.</li><li><b>Dominant strategy</b>: best whatever the rival does. Prove it (or that there is none) with <b>both comparisons</b>, with numbers.</li><li><b>Nash equilibrium</b>: each player's choice is a best response to the other's. There may be one, several or none: check every cell. The largest combined payoff is not, by itself, a Nash equilibrium.</li></ul></div>
+  </section>
+  <section class="mic-part mic-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="mic-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="mic-step-body mic-misconception"><p class="mic-wrong"><b>The wrong idea:</b> A firm's dominant strategy is the strategy that contains the largest payoff in the matrix.</p><p class="mic-right"><b>What actually happens:</b> A dominant strategy must beat the firm's other strategies against each of the rival's choices. Check one comparison per rival choice, with numbers: the strategy holding the single largest payoff may lose the other comparison.</p></div>
+  </section>
+  <section class="mic-part mic-step" id="check" aria-labelledby="h-check">
+    <p class="mic-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="mic-step-body"><p class="mic-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="mic-qs" data-set="check"><div class="mic-set"><section class="mic-stim" data-stim="oligopoly-game-theory-s1" aria-labelledby="stim-oligopoly-game-theory-s1"><p class="mic-stim-k">Graph</p><h3 id="stim-oligopoly-game-theory-s1">Two cafes choosing prices (daily profit in dollars, Ember Cafe first)</h3><div class="mic-plot-wrap"><div class="mic-mx-wrap"><div class="table-wrap" tabindex="0" role="region" aria-label="Payoffs (dollars): Ember Cafe first, Tidewater Cafe second"><table class="mic-mx"><caption class="mic-mx-cap">Payoffs (dollars): Ember Cafe first, Tidewater Cafe second</caption><thead><tr><td class="mic-mx-corner" rowspan="2" colspan="2"></td><th scope="colgroup" colspan="2" class="mic-mx-pl is-b">Tidewater Cafe</th></tr><tr><th scope="col" class="mic-mx-st is-b">High price</th><th scope="col" class="mic-mx-st is-b">Low price</th></tr></thead><tbody><tr><th scope="rowgroup" rowspan="2" class="mic-mx-pl is-a"><span>Ember Cafe</span></th><th scope="row" class="mic-mx-st is-a">High price</th><td class="mic-mx-cell"><span class="mic-mx-a">$60</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$60</span></td><td class="mic-mx-cell"><span class="mic-mx-a">$20</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$80</span></td></tr><tr><th scope="row" class="mic-mx-st is-a">Low price</th><td class="mic-mx-cell"><span class="mic-mx-a">$80</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$20</span></td><td class="mic-mx-cell"><span class="mic-mx-a">$40</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$40</span></td></tr></tbody></table></div></div></section><div class="mic-q" data-qid="mic-oligopoly-game-theory-1"><p class="mic-q-stem"><span class="mic-q-n">1.</span> Ember Cafe and Tidewater Cafe (invented) are the only cafes in a village, and each sets its price for the week without knowing the other's choice. In each cell, Ember's daily profit is listed first. Mark each cafe's dominant strategy, if it has one, and every Nash equilibrium.</p><div class="mic-plot-wrap"><div class="mic-mx-wrap"><div class="table-wrap" tabindex="0" role="region" aria-label="Payoffs (dollars): Ember Cafe first, Tidewater Cafe second"><table class="mic-mx"><caption class="mic-mx-cap">Payoffs (dollars): Ember Cafe first, Tidewater Cafe second</caption><thead><tr><td class="mic-mx-corner" rowspan="2" colspan="2"></td><th scope="colgroup" colspan="2" class="mic-mx-pl is-b">Tidewater Cafe</th></tr><tr><th scope="col" class="mic-mx-st is-b">High price</th><th scope="col" class="mic-mx-st is-b">Low price</th></tr></thead><tbody><tr><th scope="rowgroup" rowspan="2" class="mic-mx-pl is-a"><span>Ember Cafe</span></th><th scope="row" class="mic-mx-st is-a">High price</th><td class="mic-mx-cell"><span class="mic-mx-a">$60</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$60</span></td><td class="mic-mx-cell"><span class="mic-mx-a">$20</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$80</span></td></tr><tr><th scope="row" class="mic-mx-st is-a">Low price</th><td class="mic-mx-cell"><span class="mic-mx-a">$80</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$20</span></td><td class="mic-mx-cell"><span class="mic-mx-a">$40</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$40</span></td></tr></tbody></table></div></div><p class="mic-small">Work on the matrix (it needs JavaScript), then check.</p><details class="mic-q-key"><summary>Show the answer</summary><p>Ember: if Tidewater prices high, $80 from Low beats $60 from High; if Tidewater prices low, $40 from Low beats $20 from High. Low wins both comparisons, so Low is dominant. Tidewater's payoffs are the mirror image, so Low is dominant for it too. Neither gains by switching alone from (Low, Low), the only Nash equilibrium.</p><ul><li>Key: Ember Cafe: Low price; Tidewater Cafe: Low price. Nash equilibria: (Low price, Low price)</li></ul></details></div><div class="mic-q" data-qid="mic-oligopoly-game-theory-2"><p class="mic-q-stem"><span class="mic-q-n">2.</span> Which statement correctly shows that Low price is Ember Cafe's dominant strategy?</p><ol class="mic-opts"><li>80 > 60 if Tidewater prices high, and 40 > 20 if Tidewater prices low</li><li>80 is the largest payoff that Ember can earn in any cell, so Low wins</li><li>40 + 40 = 80 is less than 60 + 60 = 120</li><li>40 > 20 if Tidewater prices low, so Low is better</li></ol><details class="mic-q-key"><summary>Show the answer</summary><p>A dominant strategy is better whatever the rival does, so it takes one comparison for each of Tidewater's choices: 80 > 60 when Tidewater prices high and 40 > 20 when Tidewater prices low.</p><ul><li><b>Correct:</b> 80 > 60 if Tidewater prices high, and 40 > 20 if Tidewater prices low: Right: Low is better against each of Tidewater's choices.</li><li>80 is the largest payoff that Ember can earn in any cell, so Low wins: The single largest payoff does not prove a strategy wins against each choice of the rival.</li><li>40 + 40 = 80 is less than 60 + 60 = 120: That compares combined payoffs, which says nothing about Ember's best choice.</li><li>40 > 20 if Tidewater prices low, so Low is better: One comparison is not enough; check Tidewater pricing high too.</li></ul></details></div><div class="mic-q" data-qid="mic-oligopoly-game-theory-3"><p class="mic-q-stem"><span class="mic-q-n">3.</span> Which cell gives the two cafes the largest combined profit?</p><div class="mic-plot-wrap"><div class="mic-mx-wrap"><div class="table-wrap" tabindex="0" role="region" aria-label="Payoffs (dollars): Ember Cafe first, Tidewater Cafe second"><table class="mic-mx"><caption class="mic-mx-cap">Payoffs (dollars): Ember Cafe first, Tidewater Cafe second</caption><thead><tr><td class="mic-mx-corner" rowspan="2" colspan="2"></td><th scope="colgroup" colspan="2" class="mic-mx-pl is-b">Tidewater Cafe</th></tr><tr><th scope="col" class="mic-mx-st is-b">High price</th><th scope="col" class="mic-mx-st is-b">Low price</th></tr></thead><tbody><tr><th scope="rowgroup" rowspan="2" class="mic-mx-pl is-a"><span>Ember Cafe</span></th><th scope="row" class="mic-mx-st is-a">High price</th><td class="mic-mx-cell"><span class="mic-mx-a">$60</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$60</span></td><td class="mic-mx-cell"><span class="mic-mx-a">$20</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$80</span></td></tr><tr><th scope="row" class="mic-mx-st is-a">Low price</th><td class="mic-mx-cell"><span class="mic-mx-a">$80</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$20</span></td><td class="mic-mx-cell"><span class="mic-mx-a">$40</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">$40</span></td></tr></tbody></table></div></div><p class="mic-small">Work on the matrix (it needs JavaScript), then check.</p><details class="mic-q-key"><summary>Show the answer</summary><p>Add the two payoffs in each cell: 120, 100, 100 and 80. Both pricing high gives $120 together.</p><ul><li>Key: largest combined payoff: (High price, High price)</li></ul></details></div><div class="mic-q" data-qid="mic-oligopoly-game-theory-4"><p class="mic-q-stem"><span class="mic-q-n">4.</span> The cafes would both earn more if both priced high. Why do they end up both pricing low?</p><ol class="mic-opts"><li>Pricing low gives each cafe the largest payoff in the matrix</li><li>Each cafe gains by pricing low whatever the other does</li><li>Customers will not pay high prices at either cafe</li><li>The cafes agree to price low to keep rivals out of the village</li></ol><details class="mic-q-key"><summary>Show the answer</summary><p>From (High, High), each cafe gains by switching alone to Low ($80 instead of $60), so High is not stable. Each one's dominant strategy is Low, and the result is worse for both: a prisoner's dilemma.</p><ul><li>Pricing low gives each cafe the largest payoff in the matrix: $80 is the largest, but they reach (Low, Low) with $40 each; the logic is dominance.</li><li><b>Correct:</b> Each cafe gains by pricing low whatever the other does: Right: Low is dominant for both, giving a prisoner's dilemma.</li><li>Customers will not pay high prices at either cafe: At (High, High) both cafes still earn $60, so customers do buy.</li><li>The cafes agree to price low to keep rivals out of the village: They choose separately; no agreement is described.</li></ul></details></div></div><div class="mic-q" data-qid="mic-oligopoly-game-theory-18"><p class="mic-q-stem"><span class="mic-q-n">5.</span> A cell of a payoff matrix is a Nash equilibrium when</p><ol class="mic-opts"><li>neither player can gain by changing its strategy alone</li><li>it gives the largest combined payoff</li><li>both players earn the same payoff</li><li>one player earns its largest payoff in the matrix</li></ol><details class="mic-q-key"><summary>Show the answer</summary><p>In a Nash equilibrium each player is making its best response to the other's choice, so neither can gain by changing its own strategy alone.</p><ul><li><b>Correct:</b> neither player can gain by changing its strategy alone: Right: each choice is a best response to the other.</li><li>it gives the largest combined payoff: The joint-payoff cell may not be stable; in a prisoner's dilemma it is not.</li><li>both players earn the same payoff: Equal payoffs have nothing to do with whether either player would switch.</li><li>one player earns its largest payoff in the matrix: The other player may want to switch from that cell.</li></ul></details></div><div class="mic-set"><section class="mic-stim" data-stim="oligopoly-game-theory-s3" aria-labelledby="stim-oligopoly-game-theory-s3"><p class="mic-stim-k">Scenario</p><h3 id="stim-oligopoly-game-theory-s3">Two streaming services choose a release day</h3><div class="mic-stim-text"><p>Orrin and Velo (invented) are the two largest streaming services in a country. Each is releasing its big new series and picks a release day, Friday or Tuesday, at the same time. Releasing on the same day splits viewers. The payoffs are the new subscribers each wins, in thousands, with Orrin's payoff first.</p></div><div class="mic-plot-wrap"><div class="mic-mx-wrap"><div class="table-wrap" tabindex="0" role="region" aria-label="Payoffs (thousands of new subscribers): Orrin first, Velo second"><table class="mic-mx"><caption class="mic-mx-cap">Payoffs (thousands of new subscribers): Orrin first, Velo second</caption><thead><tr><td class="mic-mx-corner" rowspan="2" colspan="2"></td><th scope="colgroup" colspan="2" class="mic-mx-pl is-b">Velo</th></tr><tr><th scope="col" class="mic-mx-st is-b">Friday</th><th scope="col" class="mic-mx-st is-b">Tuesday</th></tr></thead><tbody><tr><th scope="rowgroup" rowspan="2" class="mic-mx-pl is-a"><span>Orrin</span></th><th scope="row" class="mic-mx-st is-a">Friday</th><td class="mic-mx-cell"><span class="mic-mx-a">20</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">20</span></td><td class="mic-mx-cell"><span class="mic-mx-a">50</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">40</span></td></tr><tr><th scope="row" class="mic-mx-st is-a">Tuesday</th><td class="mic-mx-cell"><span class="mic-mx-a">40</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">50</span></td><td class="mic-mx-cell"><span class="mic-mx-a">10</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">10</span></td></tr></tbody></table></div></div></section><div class="mic-q" data-qid="mic-oligopoly-game-theory-9"><p class="mic-q-stem"><span class="mic-q-n">6.</span> Mark each service's dominant strategy, if any, and every Nash equilibrium. (Payoffs are thousands of new subscribers; Orrin's are listed first.)</p><div class="mic-plot-wrap"><div class="mic-mx-wrap"><div class="table-wrap" tabindex="0" role="region" aria-label="Payoffs (thousands of new subscribers): Orrin first, Velo second"><table class="mic-mx"><caption class="mic-mx-cap">Payoffs (thousands of new subscribers): Orrin first, Velo second</caption><thead><tr><td class="mic-mx-corner" rowspan="2" colspan="2"></td><th scope="colgroup" colspan="2" class="mic-mx-pl is-b">Velo</th></tr><tr><th scope="col" class="mic-mx-st is-b">Friday</th><th scope="col" class="mic-mx-st is-b">Tuesday</th></tr></thead><tbody><tr><th scope="rowgroup" rowspan="2" class="mic-mx-pl is-a"><span>Orrin</span></th><th scope="row" class="mic-mx-st is-a">Friday</th><td class="mic-mx-cell"><span class="mic-mx-a">20</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">20</span></td><td class="mic-mx-cell"><span class="mic-mx-a">50</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">40</span></td></tr><tr><th scope="row" class="mic-mx-st is-a">Tuesday</th><td class="mic-mx-cell"><span class="mic-mx-a">40</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">50</span></td><td class="mic-mx-cell"><span class="mic-mx-a">10</span><span class="mic-mx-sep">, </span><span class="mic-mx-b">10</span></td></tr></tbody></table></div></div><p class="mic-small">Work on the matrix (it needs JavaScript), then check.</p><details class="mic-q-key"><summary>Show the answer</summary><p>Orrin: if Velo picks Friday, Tuesday is better (40 > 20); if Velo picks Tuesday, Friday is better (50 > 10). Its best choice changes, so it has no dominant strategy, and Velo's payoffs mirror Orrin's. There are two Nash equilibria, (Friday, Tuesday) and (Tuesday, Friday): in each, neither gains by switching alone.</p><ul><li>Key: Orrin: no dominant strategy; Velo: no dominant strategy. Nash equilibria: (Friday, Tuesday), (Tuesday, Friday)</li></ul></details></div></div></div></div>
+  </section>
+  <section class="mic-part mic-step" id="summary" aria-labelledby="h-summary">
+    <p class="mic-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="mic-step-body">In an oligopoly a few interdependent firms must consider each other's choices, which a payoff matrix shows. A best response is the strategy that pays a player most with the rival's choice held fixed. A dominant strategy is the best response to every choice of the rival, proved with both comparisons. A Nash equilibrium is a cell where each player is making its best response, so neither gains by switching alone; a game can have one, several or none. In a prisoner's dilemma, dominant strategies lead to a Nash equilibrium that is worse for both than the joint-profit cell, which is why collusion and cartels tend to break down. A <a class="gl" href="../notes/government-intervention.html" data-c="per-unit-tax">tax</a>, <a class="gl" href="../notes/government-intervention.html" data-c="subsidy">subsidy</a> or cost change alters payoffs and can change the equilibrium.</div>
+  </section>
+  <section class="mic-part mic-step" id="next" aria-labelledby="h-next">
+    <p class="mic-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="mic-step-body"><nav class="mic-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="factor-markets.html">Introduction to Factor Markets &rarr;</a></p></nav></div>
+  </section>
+  <section class="mic-part mic-step" id="connections" aria-labelledby="h-connections">
+    <p class="mic-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="mic-step-body"><ul class="mic-links mic-nav-ref"><li><a href="../notes/imperfect-competition.html">Back: Introduction to Imperfectly Competitive Markets (4.1)</a></li><li><a href="factor-markets.html">Next: Introduction to Factor Markets (5.1)</a></li></ul></div>
+  </section>
+    <div class="mic-ls-actions mic-nav-ref"><button type="button" class="mic-ls-back">&larr; Previous</button><button type="button" class="mic-ls-go">Continue &rarr;</button><a class="mic-ls-go" hidden href="factor-markets.html">Next lesson &rarr;</a></div>
+  </div>
+  <div class="cx-ls-end">
+    <div class="mic-share mic-nav-ref" role="group" aria-label="Share or print this lesson"><a class="mic-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fmicroeconomics%2Flessons%2Foligopoly-game-theory.html&amp;title=Oligopoly%20and%20Game%20Theory%3A%20microeconomics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="mic-share-btn" data-copy="https://levlprep.com/microeconomics/lessons/oligopoly-game-theory.html">Copy link</button><button type="button" class="mic-share-btn" data-print>Print</button></div>
+    <p class="mic-small mic-nav-ref"><a href="../practice.html?topic=oligopoly-game-theory">Question set for this topic</a></p>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.mic-ls'),p=s&&s.querySelectorAll('.mic-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.mic-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apmicro_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="mic-foot xshell">
+  <p class="mic-accuracy-note"> This course has not yet been reviewed by an AP® Microeconomics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="mic-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apmicro" data-report-question="lesson:oligopoly-game-theory">Report a problem</button></span></p>
+  <p class="mic-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../teach/">Teachers</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="mic-page-data">{"topic":"oligopoly-game-theory","unit":"unit-4","free":false,"prereq":[{"id":"oligopoly-game-theory-pre-1","type":"single","unit":"unit-4","topic":"oligopoly-game-theory","q":"An oligopoly is a market with","options":["a few large, interdependent firms","one seller","many firms selling identical products","many firms selling differentiated products"],"correct":0,"why":{"correct":"A few firms, each affected by the others' choices.","options":["","","",""]},"reviewHref":"../notes/imperfect-competition.html","reviewTitle":"Introduction to Imperfectly Competitive Markets"},{"id":"oligopoly-game-theory-pre-2","type":"single","unit":"unit-4","topic":"oligopoly-game-theory","q":"A firm with market power produces where","options":["MR = MC","P = MC","P = ATC","TR is largest"],"correct":0,"why":{"correct":"MR = MC, with the price from demand.","options":["","","",""]},"reviewHref":"../notes/monopoly.html","reviewTitle":"Monopoly"}],"check":[{"id":"mic-oligopoly-game-theory-1","type":"matrix","unit":"unit-4","topic":"oligopoly-game-theory","practice":"3.A","level":"analyze","diff":2,"stimulus":"oligopoly-game-theory-s1","q":"Ember Cafe and Tidewater Cafe (invented) are the only cafes in a village, and each sets its price for the week without knowing the other's choice. In each cell, Ember's daily profit is listed first. Mark each cafe's dominant strategy, if it has one, and every Nash equilibrium.","matrix":{"players":[{"name":"Ember Cafe","strategies":["High price","Low price"]},{"name":"Tidewater Cafe","strategies":["High price","Low price"]}],"payoffs":[[[60,60],[20,80]],[[80,20],[40,40]]],"unit":"$","do":["dominant","nash"]},"why":{"correct":"Ember: if Tidewater prices high, $80 from Low beats $60 from High; if Tidewater prices low, $40 from Low beats $20 from High. Low wins both comparisons, so Low is dominant. Tidewater's payoffs are the mirror image, so Low is dominant for it too. Neither gains by switching alone from (Low, Low), the only Nash equilibrium."}},{"id":"mic-oligopoly-game-theory-2","type":"single","unit":"unit-4","topic":"oligopoly-game-theory","practice":"2.C","level":"analyze","diff":2,"stimulus":"oligopoly-game-theory-s1","q":"Which statement correctly shows that Low price is Ember Cafe's dominant strategy?","options":["80 > 60 if Tidewater prices high, and 40 > 20 if Tidewater prices low","80 is the largest payoff that Ember can earn in any cell, so Low wins","40 + 40 = 80 is less than 60 + 60 = 120","40 > 20 if Tidewater prices low, so Low is better"],"correct":0,"why":{"correct":"A dominant strategy is better whatever the rival does, so it takes one comparison for each of Tidewater's choices: 80 > 60 when Tidewater prices high and 40 > 20 when Tidewater prices low.","options":["Right: Low is better against each of Tidewater's choices.","The single largest payoff does not prove a strategy wins against each choice of the rival.","That compares combined payoffs, which says nothing about Ember's best choice.","One comparison is not enough; check Tidewater pricing high too."]}},{"id":"mic-oligopoly-game-theory-3","type":"matrix","unit":"unit-4","topic":"oligopoly-game-theory","practice":"3.A","level":"analyze","diff":2,"stimulus":"oligopoly-game-theory-s1","q":"Which cell gives the two cafes the largest combined profit?","matrix":{"players":[{"name":"Ember Cafe","strategies":["High price","Low price"]},{"name":"Tidewater Cafe","strategies":["High price","Low price"]}],"payoffs":[[[60,60],[20,80]],[[80,20],[40,40]]],"unit":"$","do":["joint"]},"why":{"correct":"Add the two payoffs in each cell: 120, 100, 100 and 80. Both pricing high gives $120 together."}},{"id":"mic-oligopoly-game-theory-4","type":"single","unit":"unit-4","topic":"oligopoly-game-theory","practice":"2.B","level":"analyze","diff":2,"stimulus":"oligopoly-game-theory-s1","q":"The cafes would both earn more if both priced high. Why do they end up both pricing low?","options":["Pricing low gives each cafe the largest payoff in the matrix","Each cafe gains by pricing low whatever the other does","Customers will not pay high prices at either cafe","The cafes agree to price low to keep rivals out of the village"],"correct":1,"why":{"correct":"From (High, High), each cafe gains by switching alone to Low ($80 instead of $60), so High is not stable. Each one's dominant strategy is Low, and the result is worse for both: a prisoner's dilemma.","options":["$80 is the largest, but they reach (Low, Low) with $40 each; the logic is dominance.","Right: Low is dominant for both, giving a prisoner's dilemma.","At (High, High) both cafes still earn $60, so customers do buy.","They choose separately; no agreement is described."]}},{"id":"mic-oligopoly-game-theory-18","type":"single","unit":"unit-4","topic":"oligopoly-game-theory","practice":"1.A","level":"apply","diff":2,"q":"A cell of a payoff matrix is a Nash equilibrium when","options":["neither player can gain by changing its strategy alone","it gives the largest combined payoff","both players earn the same payoff","one player earns its largest payoff in the matrix"],"correct":0,"why":{"correct":"In a Nash equilibrium each player is making its best response to the other's choice, so neither can gain by changing its own strategy alone.","options":["Right: each choice is a best response to the other.","The joint-payoff cell may not be stable; in a prisoner's dilemma it is not.","Equal payoffs have nothing to do with whether either player would switch.","The other player may want to switch from that cell."]}},{"id":"mic-oligopoly-game-theory-9","type":"matrix","unit":"unit-4","topic":"oligopoly-game-theory","practice":"3.A","level":"analyze","diff":3,"stimulus":"oligopoly-game-theory-s3","q":"Mark each service's dominant strategy, if any, and every Nash equilibrium. (Payoffs are thousands of new subscribers; Orrin's are listed first.)","matrix":{"players":[{"name":"Orrin","strategies":["Friday","Tuesday"]},{"name":"Velo","strategies":["Friday","Tuesday"]}],"payoffs":[[[20,20],[50,40]],[[40,50],[10,10]]],"do":["dominant","nash"],"unitLabel":"thousands of new subscribers"},"why":{"correct":"Orrin: if Velo picks Friday, Tuesday is better (40 > 20); if Velo picks Tuesday, Friday is better (50 > 10). Its best choice changes, so it has no dominant strategy, and Velo's payoffs mirror Orrin's. There are two Nash equilibria, (Friday, Tuesday) and (Tuesday, Friday): in each, neither gains by switching alone."}}],"stimuli":{"oligopoly-game-theory-s1":{"kind":"graph","title":"Two cafes choosing prices (daily profit in dollars, Ember Cafe first)","html":"\u003cdiv class=\"mic-plot-wrap\">\u003cdiv class=\"mic-mx-wrap\">\u003ctable class=\"mic-mx\">\u003ccaption class=\"mic-mx-cap\">Payoffs (dollars): Ember Cafe first, Tidewater Cafe second\u003c/caption>\u003cthead>\u003ctr>\u003ctd class=\"mic-mx-corner\" rowspan=\"2\" colspan=\"2\">\u003c/td>\u003cth scope=\"colgroup\" colspan=\"2\" class=\"mic-mx-pl is-b\">Tidewater Cafe\u003c/th>\u003c/tr>\u003ctr>\u003cth scope=\"col\" class=\"mic-mx-st is-b\">High price\u003c/th>\u003cth scope=\"col\" class=\"mic-mx-st is-b\">Low price\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"rowgroup\" rowspan=\"2\" class=\"mic-mx-pl is-a\">\u003cspan>Ember Cafe\u003c/span>\u003c/th>\u003cth scope=\"row\" class=\"mic-mx-st is-a\">High price\u003c/th>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">$60\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">$60\u003c/span>\u003c/td>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">$20\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">$80\u003c/span>\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\" class=\"mic-mx-st is-a\">Low price\u003c/th>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">$80\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">$20\u003c/span>\u003c/td>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">$40\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">$40\u003c/span>\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003c/div>"},"oligopoly-game-theory-s3":{"kind":"text","title":"Two streaming services choose a release day","html":"\u003cdiv class=\"mic-stim-text\">\u003cp>Orrin and Velo (invented) are the two largest streaming services in a country. Each is releasing its big new series and picks a release day, Friday or Tuesday, at the same time. Releasing on the same day splits viewers. The payoffs are the new subscribers each wins, in thousands, with Orrin's payoff first.\u003c/p>\u003c/div>\u003cdiv class=\"mic-plot-wrap\">\u003cdiv class=\"mic-mx-wrap\">\u003ctable class=\"mic-mx\">\u003ccaption class=\"mic-mx-cap\">Payoffs (thousands of new subscribers): Orrin first, Velo second\u003c/caption>\u003cthead>\u003ctr>\u003ctd class=\"mic-mx-corner\" rowspan=\"2\" colspan=\"2\">\u003c/td>\u003cth scope=\"colgroup\" colspan=\"2\" class=\"mic-mx-pl is-b\">Velo\u003c/th>\u003c/tr>\u003ctr>\u003cth scope=\"col\" class=\"mic-mx-st is-b\">Friday\u003c/th>\u003cth scope=\"col\" class=\"mic-mx-st is-b\">Tuesday\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"rowgroup\" rowspan=\"2\" class=\"mic-mx-pl is-a\">\u003cspan>Orrin\u003c/span>\u003c/th>\u003cth scope=\"row\" class=\"mic-mx-st is-a\">Friday\u003c/th>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">20\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">20\u003c/span>\u003c/td>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">50\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">40\u003c/span>\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\" class=\"mic-mx-st is-a\">Tuesday\u003c/th>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">40\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">50\u003c/span>\u003c/td>\u003ctd class=\"mic-mx-cell\">\u003cspan class=\"mic-mx-a\">10\u003c/span>\u003cspan class=\"mic-mx-sep\">, \u003c/span>\u003cspan class=\"mic-mx-b\">10\u003c/span>\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/lesson.js" defer></script>
+<script src="../../assets/course/read-toggle.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApMicroSection = 'learn'; window.ApMicroBase = '../';</script>
+<script src="../assets/mic-curriculum.js" defer></script>
+<script src="../assets/mic-core.js" defer></script>
+<script src="../assets/mic-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/mic-math.js" defer></script>
+<script src="../assets/mic-calc.js" defer></script>
+<script src="../assets/mic-graph.js" defer></script>
+<script src="../assets/mic-matrix.js" defer></script>
+<script src="../assets/mic-grade.js" defer></script>
+<script src="../assets/mic-questions.js" defer></script>
+<script src="../assets/mic-lesson.js" defer></script>
+</body>
+</html>

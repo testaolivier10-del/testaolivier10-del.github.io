@@ -106,19 +106,21 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('registered hidden everywhere Macro is registered (spec decision 3), Premium not on sale', () => {
-  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, []);
-  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmicro'[\s\S]*?aliases: \['microeconomics', 'micro', 'mic'\], paid: true, status: 'hidden', order: 14/);
-  assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmicro'[^\n]*status: 'hidden'/);
-  assert.doesNotMatch(readFileSync('sitemap.xml', 'utf8'), /microeconomics\//, 'not in the sitemap while hidden');
-  assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mic:start -->\s*<!-- hub-mic:end -->/, 'an empty hub card slot');
-  assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mic:start -->\s*<!-- nf-mic:end -->/, 'an empty 404 card slot');
+test('published and live everywhere Macro is registered (spec decision 12), Premium not on sale yet', () => {
+  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, ['graph-skills', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6']);
+  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmicro'[\s\S]*?aliases: \['microeconomics', 'micro', 'mic'\], paid: true, status: 'live', order: 14/);
+  assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmicro'[^\n]*status: 'live'/);
+  assert.match(readFileSync('premium.html', 'utf8'), /AP® Microeconomics/, 'on the pricing page');
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /microeconomics\/lessons\//, 'in the sitemap');
+  assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mic:start -->\s*<a class="ccard" href="microeconomics\/"/, 'a hub card');
+  assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mic:start -->\s*\S/, 'a 404 card');
+  assert.match(readFileSync('assets/premium.js', 'utf8'), /apmicro: \{[\s\S]*?onSale: false,/, 'not on sale until the owner checklist');
   assert.match(readFileSync('worker/src/premium.js', 'utf8'), /'micro-2027': +\{ course: 'apmicro', until: '2027-06-30T23:59:59-10:00' \}/);
   assert.match(readFileSync('worker/src/index.js', 'utf8'), /apmicro:/);
   assert.match(readFileSync('sw.js', 'utf8'), /COURSE_URLS\['microeconomics'\]/);
   assert.match(readFileSync('assets/exam-date.js', 'utf8'), /apmicro: \{ date: '2027-05-04'/);
   assert.match(readFileSync('scripts/vault/rules.mjs', 'utf8'), /microeconomics: 'apmicro'/);
-  assert.ok(existsSync('scripts/sql/migrations/2026-11i-apmicro.sql'), 'the migration is written (applied at launch)');
+  assert.ok(existsSync('scripts/sql/migrations/2026-11i-apmicro.sql'), 'the migration is written (the owner checklist applies it)');
 });
 
 test('the course home has its own headline, accent and cover, not AP® Macroeconomics\'s', () => {

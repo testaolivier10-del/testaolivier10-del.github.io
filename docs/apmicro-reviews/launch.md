@@ -49,3 +49,42 @@ checklist.
 - Standalone figures (`check-legibility`, 16 lines through labels in 10 author figures): labels moved in
   `scripts/apmicro-figures/author-b.mjs`, `author-d.mjs` and `author-e.mjs` (E1 and E2 into the right wedge of their
   curves, CS between MR and D, Profit under ATC, D = MSB under its curve's end, the tax DWL label below demand).
+
+## 3. Published and live (spec decision 12)
+
+- `microeconomics/data/published.json`: `graph-skills`, `unit-1`..`unit-6` (40 topics, 726 bank questions).
+- `assets/courses.js`: `status: 'live'`; every generator in `ci-local.sh` order run twice (`/tmp/micl/gen.sh`:
+  courses, og tags, sitemap, notes pages, the course, homes, inner pages, tool pages, lesson meta, crumbs, flashcards,
+  question bank, worker, site config, paths and path pages, practice panel, pricing). Generated: hub and 404 cards,
+  premium.html block (not on sale), terms list, manifest, search scope, sitemap, home pill "14 courses · 20,697
+  questions". `scripts/lib/course-homes.json` said "Being written" in the home's exam strip: now 726 questions.
+- Premium stays `onSale: false`. The "not yet reviewed by an AP® Microeconomics teacher" note stays; no score
+  calculator, band or Beta label. The home says "May 2027 exam".
+- Site-wide: "Fourteen courses" (home meta description, short forms to stay under 160 characters; search meta, og
+  and noscript links with a micro tint; certificate og; `cross-course.js`, `r3-reading.mjs`, `check-weight.mjs`
+  comments), "eleven AP® Exams" (home lede, class and milestone comments). `sources.html` section, changelog
+  "New course: AP® Microeconomics" (10 November 2026), `robots.txt` hides `microeconomics/data/notes/`, `sw.js`
+  v119. Social card re-rendered (three lines, fits). Teacher classes: `apmicro` in `ORDER`. The eight tool covers
+  (Phase 2) kept.
+
+## 4. Identity
+
+- Accent kept: raspberry `#7E1A5E`. Next to the other covers the provisional cover (white cost curves, a pale pink
+  profit box, a pink dashed price line, a gold point) read close to Calculus AB's (a pink curve, a dashed tangent and
+  a dot on a wine background). The profit box is now filled solid (opacity .7), so the picture reads as an area, the
+  course's flagship, and apart from AB's curve and tangent; it stays clearly not Macro's AD-AS. Cover, art and thumb
+  changed together. Icon, headline "every curve, every area." and ranks kept (owner to confirm). The long one-word
+  name already scales on a phone (`mast-long`).
+
+## 5. Launch leftovers
+
+- `check-console.mjs` micro practice flow and `check-a11y.mjs` pages were written in Phase 0; Graph Studio and the
+  Game Theory Lab added to the a11y sample. `scripts/lib/app-pages.mjs` already lists dashboard, review, search and
+  path.
+- AI FRQ grader: `apmicro` in `FRQ_COURSES`, course conventions, a calibration example (`frq-cost-table-short` A and
+  B) and four eval cases (41-44) on text-only FRQs; `docs/frq-grader.md`. Still shipped off; the eval not rerun.
+
+## 6. SQL
+
+- main gained no migration since the fork: `2026-11i-apmicro.sql` keeps its name and still sorts after
+  `2026-11h-free-usage.sql`; `sql-migration.test.mjs` passes (schema.sql matches). Not applied.
