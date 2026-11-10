@@ -1,0 +1,495 @@
+{
+ "stimuli": {
+  "data-in-decisions-s1": {
+   "kind": "data",
+   "title": "Port Nova, a growing city in Country A: census and satellite data",
+   "invented": true,
+   "table": {
+    "caption": "Port Nova, Country A (invented data for practice). People and piped water come from the national census; built-up area comes from satellite images.",
+    "cols": [
+     "Year",
+     "People (census, thousands)",
+     "Built-up area (satellite, square km)",
+     "Homes with piped water (census, %)"
+    ],
+    "rows": [
+     [
+      "2000",
+      "200",
+      "40",
+      "70%"
+     ],
+     [
+      "2010",
+      "300",
+      "70",
+      "62%"
+     ],
+     [
+      "2020",
+      "450",
+      "120",
+      "55%"
+     ]
+    ]
+   }
+  },
+  "data-in-decisions-s2": {
+   "kind": "text",
+   "title": "Planning flood shelters with satellite images (written for practice, LevlPrep 2026)",
+   "text": "<p>After heavy rains in an invented river town, the district office compared satellite images taken before and after the flood. The images showed which streets were under water and for how many days. Using a GIS, staff layered the flooded streets over the census count of people on each block. They chose three schools on high ground as shelters, each within a short walk of the blocks with the most people. One officer noted that clouds hid part of the town on the second day, so some flooding there may not have been recorded.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-data-in-decisions-1",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Using the table, by what percent did Port Nova's number of people grow from 2000 to 2020?",
+   "stimulus": "data-in-decisions-s1",
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      200,
+      450
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 250,
+      "why": "250 is the change in thousands of people (450 - 200). A percent change divides that change by the starting value, 200, then multiplies by 100."
+     },
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        450,
+        200
+       ]
+      },
+      "why": "You started from 2020. Percent change runs from the old value (2000) to the new one (2020)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Percent change = (new - old) / old x 100 = $\\frac{450 - 200}{200} \\times 100 = 125\\%$."
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-2",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Compare the growth of Port Nova's people and its built-up area from 2000 to 2020. What does the comparison suggest?",
+   "stimulus": "data-in-decisions-s1",
+   "options": [
+    "The area tripled while people grew by less, so the city spread out faster than it gained people",
+    "People and built-up area grew by about the same amount, so the city kept the same shape and size",
+    "People grew faster than the built-up area, so the city became more crowded on each square km",
+    "The built-up area shrank while the number of people grew, so new homes were packed in tightly"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Comparing two columns shows a relationship: land was built over faster than people arrived, a sign of outward spread.",
+    "options": [
+     "Right: 40 to 120 square km is three times as large, while 200,000 to 450,000 people is less than three times as many.",
+     "The two grew by different amounts: the area tripled, the people a bit more than doubled.",
+     "This reverses the data: the area grew faster than the number of people.",
+     "The satellite figures rise from 40 to 120 square km; the area did not shrink."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-3",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "The share of homes with piped water fell from 70% to 55%. What decision could the city water board base on this trend?",
+   "stimulus": "data-in-decisions-s1",
+   "options": [
+    "Close parts of the water network, since fewer homes use it with each decade",
+    "Extend pipes to new neighborhoods, where growth has outrun the network",
+    "Stop the next census, since the trend is already known for the decades ahead",
+    "Move people back to the older neighborhoods, which have the most pipes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Data inform a decision when the decision matches what the data show: here, a gap between growth and services.",
+    "options": [
+     "More homes have piped water in total; it is the share that fell, because the city grew faster than the pipes.",
+     "Right: the city grew fast, and a falling share suggests new homes were built beyond the existing pipes.",
+     "A trend does not tell you what will happen next; new counts are needed to check it.",
+     "That is not a realistic choice for a water board, and the data do not show which neighborhoods have pipes."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-4",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "The water board wants to know which neighborhoods lack pipes. What is a limitation of this table for that task?",
+   "stimulus": "data-in-decisions-s1",
+   "options": [
+    "It is quantitative, so it says nothing that a water board could use",
+    "It uses satellite images, which show the land but nothing about water pipes",
+    "It gives one value for the whole city, not one for each neighborhood",
+    "It gives data for three years, which is too many years to compare at once"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Data for a whole city hide differences between its neighborhoods. Say what the data leave out for the decision at hand.",
+    "options": [
+     "Numbers are useful; the problem is the size of the unit they describe.",
+     "Satellite images measured the built-up area well; that is not the issue.",
+     "Right: the table describes Port Nova as a whole; the decision is about neighborhoods inside it.",
+     "Three dates show a trend, which is useful."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-5",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which two kinds of data did the district office combine?",
+   "stimulus": "data-in-decisions-s2",
+   "options": [
+    "Interviews with families and photos taken by residents",
+    "A reference map of the town and a weather forecast for the week",
+    "Satellite navigation logs and a survey of shop owners",
+    "Satellite images of floods and census counts by block"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The office layered remote sensing data and census data in a GIS to make a local decision.",
+    "options": [
+     "Neither interviews nor residents' photos are mentioned.",
+     "The passage names no weather forecast; the images were taken after the rain.",
+     "Neither navigation logs nor a shop survey appear in the passage.",
+     "Right: the passage names satellite images (remote sensing) and the census count on each block, layered in a GIS."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-6",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis was the shelter decision made?",
+   "stimulus": "data-in-decisions-s2",
+   "options": [
+    "Local: blocks and streets within one town",
+    "National: the whole of the country",
+    "Regional: several countries in the river basin",
+    "Global: the world's flood risk"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Name the scale from the units: blocks and streets in one town are the local scale.",
+    "options": [
+     "Right: the data and the decision are about blocks, streets and schools in one town.",
+     "Nothing in the passage covers a whole country.",
+     "Only one town is in the passage.",
+     "The passage is about one town, not the world."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-7",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.F",
+   "q": "What limitation of the satellite data does the officer point out?",
+   "stimulus": "data-in-decisions-s2",
+   "options": [
+    "Satellite images are hard to layer in a GIS with census data",
+    "Clouds hid part of the town, so some flooding may be missing",
+    "The census counted people by block, which is too detailed",
+    "The schools were on high ground, so the images could not see them"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Every source has limits. Remote sensing can miss what clouds, roofs or darkness hide.",
+    "options": [
+     "The passage shows the opposite: the images were layered in a GIS.",
+     "Right: optical satellite images cannot see through clouds, so cloudy areas leave gaps.",
+     "Block counts were what made the shelter choice possible.",
+     "High ground does not hide a building from a satellite."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-8",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "What is a census?",
+   "options": [
+    "A satellite image of a country, taken once a decade by its government",
+    "A survey that asks a few hundred people their opinions",
+    "An official count of all the people in a country, with facts about households",
+    "A reference map of a country's provinces and their capital cities"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A census is a government's count of its whole population, often every ten years.",
+    "options": [
+     "Satellite images are remote sensing; a census counts people, usually by asking them.",
+     "A survey samples some people; a census tries to count everyone.",
+     "Right: a census tries to count everyone, and usually records ages, households and more.",
+     "A census may be mapped, but it is a count of people, not a map."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-9",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "The United States counts its people every ten years. How does that count shape a national decision?",
+   "options": [
+    "It sets the borders between the states for the next ten years",
+    "It decides which cities will hold the next national election for Congress",
+    "It picks the candidates who run for president",
+    "It sets how many seats each state gets in the House"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Census counts are used to share seats in the House among states, a decision at the national scale.",
+    "options": [
+     "State borders do not change with the census.",
+     "Elections are held across the country, not in chosen cities.",
+     "Census counts do not choose candidates.",
+     "Right: House seats are shared among the states by population, using each new census."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-10",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "5.A",
+   "q": "A grocery chain studies census data on the number of households and their ages in each neighborhood of Atlanta before opening a store. What kind of decision is this?",
+   "options": [
+    "A business decision at the local scale",
+    "A government decision at the national scale",
+    "A personal decision at the global scale",
+    "A government decision at the regional scale"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Census and satellite data inform personal, business and government decisions at every scale.",
+    "options": [
+     "Right: a company is choosing among neighborhoods of one city.",
+     "The decision maker is a business, and the choice is among neighborhoods.",
+     "A company is deciding, and the data cover one city, not the world.",
+     "No government is deciding, and no group of countries is involved."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-11",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.E",
+   "q": "A family in Houston checks an official flood map before buying a house. What does this show about geographic data?",
+   "options": [
+    "Flood maps are made for government planners, so the family misused one",
+    "Individuals use geographic data for personal decisions too",
+    "A flood map is qualitative data, so it is less reliable than a census",
+    "The family made a national decision about the whole country's floods"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Geographic data shape decisions by individuals too: where to buy, rent or travel.",
+    "options": [
+     "Flood maps are published for the public to use.",
+     "Right: people use maps and data to decide where to live, travel or work.",
+     "A flood map shows mapped risk zones; it is not a set of interviews.",
+     "One house in one city is a local, personal decision."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-12",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "India's census due in 2021 was postponed, so for years planners relied on counts from 2011. What limitation does this create?",
+   "options": [
+    "The data were too recent to compare with the counts from earlier decades",
+    "The data were qualitative, so they could not be mapped",
+    "The data were out of date, missing years of growth and movement",
+    "The data covered the whole world, so they hid India's states"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Census data age between counts. Old data can lead to decisions that miss where people now live.",
+    "options": [
+     "The problem is the opposite: the counts were old.",
+     "Census counts are quantitative and can be mapped by state or district.",
+     "Right: India's cities and states changed a lot after 2011, so old counts could misplace schools, clinics and funds.",
+     "A national census covers one country, not the world."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-13",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Some people are hard to count in a census, such as people without a fixed home or people in remote villages. What problem does this cause?",
+   "options": [
+    "An overcount, so the places where they live get more seats than they should",
+    "Too much data, so planners are swamped by the results and stop using them",
+    "No problem, because satellites fill in each missing person",
+    "An undercount, so places with many such people may get less funding"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Undercounts are a known limitation of census data, and they hit some places and groups harder than others.",
+    "options": [
+     "Missing people lowers the count; it does not raise it.",
+     "Missing people means less data, not too much.",
+     "Satellites can show buildings or lights, but they cannot count people the way a census does.",
+     "Right: an undercount means some people are missing from the numbers used to share money and seats."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-14",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "A city planner in Nairobi, Kenya, can get census counts for the whole city or for each small area within it. Why would block-level counts help her place new health clinics?",
+   "options": [
+    "They show where people live inside the city, so clinics can go near the most people",
+    "They give one total for Nairobi, which is easier to compare with other cities in Africa",
+    "They come from satellites, so they show which roofs need repair",
+    "They are qualitative, so they record how residents feel about clinics"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Match the scale of the data to the decision: placing clinics inside a city needs counts for small areas inside it.",
+    "options": [
+     "Right: the decision is about places inside the city, so the data must be for places inside the city.",
+     "One city total is useful for comparing cities but cannot show where inside Nairobi to build.",
+     "Census counts come from asking households, not from satellites.",
+     "Counts are quantitative; feelings would need interviews or surveys."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-in-decisions-15",
+   "unit": "unit-1",
+   "topic": "data-in-decisions",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "5.B",
+   "q": "Build an answer that names a decision, the data behind it and the scale.",
+   "specific": {
+    "frame": "At the ___ scale, ___ used ___ to decide ___.",
+    "write": {
+     "scale": true
+    },
+    "model": "At the local scale, a school board used census counts of children in each district to decide where to build a new school.",
+    "slots": {
+     "scale": {
+      "label": "Scale",
+      "options": [
+       "local",
+       "global"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Districts in one school system are local, not the whole world."
+      }
+     },
+     "who": {
+      "label": "Who decided",
+      "options": [
+       "a school board",
+       "satellites"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Satellites collect data; people and organizations make decisions."
+      }
+     },
+     "data": {
+      "label": "Data",
+      "options": [
+       "census counts of children in each district",
+       "a world map of income groups"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A world map gives one value per country; it cannot show districts."
+      }
+     },
+     "decision": {
+      "label": "Decision",
+      "options": [
+       "where to build a new school",
+       "how many seats the state gets"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Seats are shared at the national scale, not by a school board."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A strong answer names who decided, what data they used, what they decided and at what scale."
+   }
+  }
+ ]
+}

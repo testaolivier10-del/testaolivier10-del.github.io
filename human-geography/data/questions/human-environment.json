@@ -1,0 +1,477 @@
+{
+ "stimuli": {
+  "human-environment-s1": {
+   "kind": "image",
+   "title": "A hillside farmed in steps (a LevlPrep drawing)",
+   "image": {
+    "figure": "human-environment-terraces",
+    "alt": "A drawn scene of a steep, forested hillside cut into seven narrow, flat steps of green crops, each held up by a low stone wall. A small channel carries water down the slope beside the steps. Two houses stand near a river at the foot of the hill.",
+    "caption": "A drawn scene, not a real place."
+   }
+  },
+  "human-environment-s2": {
+   "kind": "text",
+   "title": "The shrinking Aral Sea (written for practice, LevlPrep 2026)",
+   "text": "<p>The Aral Sea, on the border of Kazakhstan and Uzbekistan, was once one of the largest lakes in the world. From the 1960s, Soviet planners diverted the two rivers that fed it, the Amu Darya and the Syr Darya, to water huge new cotton fields. Cotton output rose. The sea shrank and split into parts, its fishing towns were left far from the water, and winds blew salty dust from the dry seabed onto nearby farms. Since 2005, a dam built with World Bank support has helped the northern part of the sea refill partly.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-human-environment-1",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which statement describes how people changed this hillside?",
+   "stimulus": "human-environment-s1",
+   "options": [
+    "They cut flat steps held by stone walls and led water down a channel",
+    "They left the slope as it was and planted crops in the forest at the top",
+    "They cleared the whole hill of trees and built houses across the slope",
+    "They dug a river at the foot of the hill to drain the fields above"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Describe the human changes you can see: flat steps, stone walls and a water channel.",
+    "options": [
+     "Right: the steps, walls and channel are all human changes to a steep slope.",
+     "The forest at the top is left standing; the crops are on the steps below it.",
+     "The forest remains at the top, and the two houses are by the river, not across the hill.",
+     "The river is at the foot of the hill; nothing shows it was dug."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-2",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which idea about people and the environment does this scene support best?",
+   "stimulus": "human-environment-s1",
+   "options": [
+    "Environmental determinism: the steep land decided that no one could farm here",
+    "Possibilism: the steep land set limits, but people chose a way to farm it",
+    "Environmental determinism: the climate made these people grow crops in steps",
+    "Distance decay: the fields get smaller and smaller farther from the river"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Possibilism: the environment offers limits and options, and people choose, using culture and technology.",
+    "options": [
+     "The scene shows the opposite: people farm the steep land.",
+     "Right: the slope was a limit, and people chose a way to work with it.",
+     "Determinism says the environment decides; the steps show a human choice and skill.",
+     "The steps are narrower near the top because the hill is, not because of distance from the river."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-3",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "How could the stepped fields help make farming on this hillside sustainable?",
+   "stimulus": "human-environment-s1",
+   "options": [
+    "The steps let farmers clear the forest at the top more quickly",
+    "The stone walls keep the river from flooding the two houses at the foot",
+    "The flat steps slow rainwater, so less soil washes down the slope",
+    "The steps make the hill taller, so it gets more sunlight"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sustainability means using land and resources so they last. Steps that keep soil in place let a slope be farmed far into the future.",
+    "options": [
+     "The forest is left at the top; clearing it would make the slope less stable, not more.",
+     "The walls are up the hill, holding the steps, not along the river.",
+     "Right: on a bare slope, rain carries soil away; flat steps hold water and soil in place, so the land can be farmed for generations.",
+     "Cutting steps does not change the height of the hill."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-4",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.F",
+   "q": "What can this drawing NOT tell you about the hillside?",
+   "stimulus": "human-environment-s1",
+   "options": [
+    "Whether the slope has been changed by people",
+    "Whether there is a water channel",
+    "Whether crops are grown on the steps",
+    "Who built the steps, and when"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An image shows what a landscape looks like at one moment; history and reasons need other sources.",
+    "options": [
+     "The steps and walls clearly show human changes.",
+     "The channel is drawn beside the steps.",
+     "Green crops are drawn on every step.",
+     "Right: a picture shows what is there, not its history or the people behind it. That needs other sources."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-5",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which change in land use started the sea's decline?",
+   "stimulus": "human-environment-s2",
+   "options": [
+    "River water was taken to grow cotton on new fields",
+    "Fishing towns were built along the shore of the sea",
+    "Salty dust was blown onto nearby farms by the wind",
+    "A dam was built to hold water in the northern part"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Land use is how people use an area of land. A shift to cotton fields used the water that fed the sea.",
+    "options": [
+     "Right: turning dry land into cotton fields used the rivers' water, so less reached the sea.",
+     "The fishing towns were there before; they suffered from the decline.",
+     "The dust was a result of the shrinking, not its cause.",
+     "The dam came after 2005 and helped part of the sea refill."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-6",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why is the Aral Sea often used as an example of resource use that was not sustainable?",
+   "stimulus": "human-environment-s2",
+   "options": [
+    "Cotton is a natural resource that will not grow again once it is picked",
+    "The rivers were used so heavily that the sea, its fish and nearby farms suffered",
+    "The sea was too far from big cities to be useful to the people of the region",
+    "The rivers ran dry because the climate of the region changed by itself"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Unsustainable use meets present needs in a way that harms the ability of others, now and later, to meet theirs.",
+    "options": [
+     "Cotton can be grown again; the problem was how the water was used.",
+     "Right: meeting one goal (cotton) used up the water so fast that other needs and future users lost out.",
+     "The sea supported fishing towns; its loss mattered to people.",
+     "The passage gives the cause: the rivers were diverted by planners."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-7",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The partial refilling of the northern sea after a dam was built shows which idea?",
+   "stimulus": "human-environment-s2",
+   "options": [
+    "Environmental determinism: the sea's climate decided its fate",
+    "Distance decay: towns far from the sea lost contact with it",
+    "Possibilism: people chose a new way to manage the same environment",
+    "Absolute location: the sea moved to a new position farther to the north"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Human choices, not the environment alone, shaped the Aral Sea twice: by draining it and by partly restoring it.",
+    "options": [
+     "The passage shows human choices, first harmful and then helpful, shaping the sea.",
+     "The towns lost the water, not contact by distance; this misses the dam.",
+     "Right: a human choice changed the outcome in the same physical setting.",
+     "The sea shrank and refilled in place; it did not move."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-8",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 1,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Place the two ideas about people and the environment in the order geographers held them, earlier to later.",
+   "model": {
+    "layout": "stages",
+    "title": "How geographers' thinking changed",
+    "slots": [
+     {
+      "id": "early",
+      "name": "Earlier view (late 1800s, early 1900s)"
+     },
+     {
+      "id": "later",
+      "name": "Later view (from the 1900s on)"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "det",
+      "text": "Environmental determinism"
+     },
+     {
+      "id": "pos",
+      "text": "Possibilism"
+     },
+     {
+      "id": "sus",
+      "text": "Sustainability"
+     }
+    ],
+    "key": {
+     "early": "det",
+     "later": "pos"
+    },
+    "slips": [
+     {
+      "piece": "pos",
+      "slot": "early",
+      "why": "Possibilism came later, as a reaction against determinism: geographers showed people make choices in any environment."
+     },
+     {
+      "piece": "sus",
+      "slot": "later",
+      "why": "Sustainability is a goal for using resources, not one of the two views of how the environment shapes people."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Geographers moved from environmental determinism (the environment decides) to possibilism (the environment sets limits, people choose)."
+   }
+  },
+  {
+   "id": "hug-human-environment-9",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Around 1900, some writers claimed that hot climates made people less hardworking, so people from cooler lands should rule them. Which idea is this, and why was it rejected?",
+   "options": [
+    "Possibilism; it gave people too much credit for adapting to their surroundings and climate",
+    "Sustainability; it said hot places should save their resources for the future",
+    "Environmental determinism; it was rejected because hot climates were too hard to study",
+    "Determinism; it ignored culture and choice, and it was used to justify European rule"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Environmental determinism claimed the physical environment decides human behavior. Geographers rejected it as wrong and as a cover for unequal rule.",
+    "options": [
+     "Possibilism says people choose; this claim says the climate decides.",
+     "Nothing in the claim is about using resources so they last.",
+     "It was rejected because the evidence showed people succeed in every climate, not because the places were hard to study.",
+     "Right: determinism said the environment fixes how people behave. It ignored human choice and was used to defend conquest and rule by European powers."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-10",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "About a sixth of the Netherlands is land that people took from the sea by building dikes and pumping out the water. Which idea does this support?",
+   "options": [
+    "Possibilism",
+    "Environmental determinism",
+    "Distance decay",
+    "Time-space compression"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dutch land reclamation is a classic case of possibilism: the environment limits, people choose.",
+    "options": [
+     "Right: a low, wet coast was a limit, and people chose to reshape it with technology.",
+     "Determinism would expect the sea to decide where the Dutch could live.",
+     "Distance decay is about contact falling with distance.",
+     "Time-space compression is about faster links between places."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-11",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Las Vegas, Nevada, gets most of its water from the Colorado River, stored behind Hoover Dam in Lake Mead. Which statement about this is most accurate?",
+   "options": [
+    "The desert climate made it impossible for a large city to grow in this place",
+    "A dam let the city grow in a dry climate, but it relies on a shared river",
+    "The city uses a nonrenewable natural resource that will run out next year",
+    "Las Vegas has no link to the river, so the dam does not matter to it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Human choices can work around an environment, but they create new limits, such as dependence on a shared river.",
+    "options": [
+     "A large city exists there, so the climate did not make it impossible.",
+     "Right: it shows possibilism and a sustainability question in one example.",
+     "River water is renewable when it is not overused; the issue is sharing a limited supply.",
+     "The question says the city gets most of its water from the river."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-12",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is a renewable natural resource?",
+   "options": [
+    "Coal burned in a power plant",
+    "Oil pumped from under the ground",
+    "Sunlight used for electricity",
+    "Natural gas piped to homes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A natural resource is something from nature that people use. Renewable ones replace themselves; nonrenewable ones are used up.",
+    "options": [
+     "Coal formed over millions of years; once burned, it is gone.",
+     "Oil takes millions of years to form, so it is nonrenewable.",
+     "Right: sunlight keeps arriving, so it is renewable.",
+     "Natural gas is a fossil fuel and nonrenewable."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-13",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Off Newfoundland, Canada, heavy fishing caused the cod stock to collapse, and Canada banned commercial cod fishing in 1992. What does this show about sustainability?",
+   "options": [
+    "Fish are a nonrenewable resource, like oil",
+    "Sustainability means using as much of a resource as possible right away",
+    "The cod collapse was caused by the cold climate of the North Atlantic waters",
+    "A renewable resource can run out if it is used faster than it renews"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sustainability means meeting present needs without harming the ability of future people to meet theirs.",
+    "options": [
+     "Fish reproduce, so they are renewable; the problem was overuse.",
+     "Sustainability means using resources so they last for future users.",
+     "Heavy fishing, not the climate, caused the collapse.",
+     "Right: fish are renewable, but only if catches stay below what the stock can replace."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-14",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In Manaus, Brazil, a stretch of rainforest is cleared for a new road and housing. Which concept describes this change?",
+   "options": [
+    "A change in land use",
+    "A change in absolute location",
+    "An example of distance decay",
+    "An example of a map projection"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Land use is the purpose people give an area of land: forest, farms, homes, factories, roads.",
+    "options": [
+     "Right: land use is how people use land; forest became roads and houses.",
+     "The land has not moved; its use has changed.",
+     "Distance decay is about contact across distance.",
+     "A map projection is a way of drawing the Earth flat."
+    ]
+   }
+  },
+  {
+   "id": "hug-human-environment-15",
+   "unit": "unit-1",
+   "topic": "human-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of possibilism using a real place.",
+   "specific": {
+    "frame": "In ___, ___ limited people, but they ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In the Netherlands, a low, flooded coast limited people, but they built dikes and pumped out the sea, so they could live and farm on land that had been under water.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "the Netherlands",
+       "a country somewhere"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Too vague: name a real place."
+      }
+     },
+     "limit": {
+      "label": "Environmental limit",
+      "options": [
+       "a low, flooded coast",
+       "a large population"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A large population is not a limit set by the physical environment."
+      }
+     },
+     "choice": {
+      "label": "Human choice",
+      "options": [
+       "built dikes and pumped out the sea",
+       "had to leave"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "If the environment forced people out, that would support determinism, not possibilism."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Possibilism: name the place, the limit the environment set and the choice people made, linked to the result."
+   }
+  }
+ ]
+}

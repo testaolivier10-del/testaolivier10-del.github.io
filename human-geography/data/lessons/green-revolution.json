@@ -1,0 +1,71 @@
+{
+ "topic": "green-revolution",
+ "hook": "In the mid-1960s, short, sturdy wheat bred in Mexico was planted across Punjab in India. With canal and well water and bags of fertilizer, the same fields soon grew far more grain. The change fed millions, and it also drained water and left some small farmers in debt.",
+ "prereq": [
+  {
+   "q": "What did Thomas Malthus predict?",
+   "options": [
+    "Population would grow faster than food, leading to famine and other checks",
+    "Food would grow faster than population forever",
+    "Birth rates would fall as countries developed",
+    "Most people would move from farms to towns"
+   ],
+   "correct": 0,
+   "why": "Malthus (1798) argued food supply grows more slowly than population.",
+   "review": "malthusian-theory"
+  },
+  {
+   "q": "Replacing human and animal labor with machines is called what?",
+   "options": [
+    "Mechanization",
+    "Domestication",
+    "Irrigation",
+    "Enclosure"
+   ],
+   "correct": 0,
+   "why": "Mechanization was a key part of the Second Agricultural Revolution.",
+   "review": "second-agricultural-revolution"
+  }
+ ],
+ "figure": {
+  "figure": "green-revolution-package",
+  "caption": "High-yield seeds gave big harvests only with water, fertilizer and other inputs, which brought costs as well as benefits."
+ },
+ "chain": [
+  {
+   "cause": "Scientists bred short, high-yield varieties of wheat and rice",
+   "effect": "each plant could turn water and fertilizer into much more grain"
+  },
+  {
+   "cause": "Farmers on irrigated plains planted the new seeds with fertilizer",
+   "effect": "grain harvests rose sharply in places such as Punjab, India"
+  },
+  {
+   "cause": "Irrigated rice and wheat need large amounts of water",
+   "effect": "heavy pumping lowered groundwater levels"
+  },
+  {
+   "cause": "The inputs cost money that larger farmers could pay more easily",
+   "effect": "some small farmers fell behind or into debt"
+  }
+ ],
+ "ideas": [
+  "The <b>Green Revolution</b> (about 1960s to 1980s) spread <b>high-yield varieties</b> of wheat and rice with fertilizer, irrigation, pesticides and machines, starting from research in Mexico and the Philippines.",
+  "Positive: more food, fewer famines, cheaper grain. Negative: heavy water and chemical use, less crop variety, and gains that favored larger farmers.",
+  "It spread unevenly: irrigated plains in Asia gained most; dry, rain-fed regions in Sub-Saharan Africa gained less.",
+  "<b>GMOs</b>, with genes changed in a lab, came in the late 1990s. They are not part of the Green Revolution."
+ ],
+ "misconception": {
+  "wrong": "GMO crops were the main technology of the Green Revolution.",
+  "right": "Green Revolution seeds were bred by crossing plants in the 1960s to 1980s. GMOs, with genes changed in a lab, reached farms in the late 1990s."
+ },
+ "check": [
+  "hug-green-revolution-1",
+  "hug-green-revolution-2",
+  "hug-green-revolution-3",
+  "hug-green-revolution-4",
+  "hug-green-revolution-10",
+  "hug-green-revolution-12"
+ ],
+ "summary": "The Green Revolution, from the 1960s to the 1980s, spread high-yield wheat and rice with fertilizer, irrigation and pesticides. It raised food output and weakened Malthus's prediction, but it used much water and chemicals, favored larger farmers and spread unevenly. GMOs came later, in the late 1990s."
+}

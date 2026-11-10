@@ -1,0 +1,11 @@
+{
+ "rostow-stages": {
+  "def": "A model by W. W. Rostow (1960) that says countries develop through five stages: traditional society, preconditions for take-off, take-off, drive to maturity and high mass consumption."
+ },
+ "world-system-theory": {
+  "def": "Immanuel Wallerstein's model of one connected world economy in which countries play core, semiperiphery or periphery roles, and can move between them."
+ },
+ "dependency-theory": {
+  "def": "A theory that says poorer countries stay poor because of their dependence on richer ones, built through colonial rule and trade in raw materials for factory goods."
+ }
+}

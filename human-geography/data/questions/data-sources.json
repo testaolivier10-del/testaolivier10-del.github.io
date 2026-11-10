@@ -1,0 +1,574 @@
+{
+ "stimuli": {
+  "data-sources-s1": {
+   "kind": "text",
+   "title": "Field notes from a market street (written for practice, LevlPrep 2026)",
+   "text": "<p><i>Saturday, 10 a.m., Market Street, the capital of Country A.</i> I counted 42 stalls between the bus stop and the river. Most sell fruit, phone covers or clothes. Two stall owners told me they moved here last year because the old market was torn down for a parking garage. The street smells of grilled corn, and it is loud with music and bargaining. Shoppers say they come because \"everything is cheaper than in the mall.\"</p>"
+  },
+  "data-sources-s2": {
+   "kind": "map",
+   "title": "Bright lights at night in Country A, seen by satellite",
+   "map": {
+    "base": "country-a",
+    "render": "dot",
+    "invented": true,
+    "label": "Dot map of Country A: dots for bright lights at night seen by satellite are packed in the Capital Region and along the South Coast, with few in the Western Uplands and Southern Forest",
+    "legendTitle": "Bright lights at night (invented)",
+    "dots": {
+     "each": "1 dot = 1 brightly lit place seen from space (invented)",
+     "points": [
+      [
+       320,
+       170
+      ],
+      [
+       340,
+       180
+      ],
+      [
+       360,
+       190
+      ],
+      [
+       330,
+       200
+      ],
+      [
+       350,
+       210
+      ],
+      [
+       370,
+       215
+      ],
+      [
+       345,
+       230
+      ],
+      [
+       380,
+       240
+      ],
+      [
+       320,
+       230
+      ],
+      [
+       360,
+       250
+      ],
+      [
+       400,
+       300
+      ],
+      [
+       430,
+       310
+      ],
+      [
+       460,
+       305
+      ],
+      [
+       490,
+       300
+      ],
+      [
+       520,
+       290
+      ],
+      [
+       450,
+       330
+      ],
+      [
+       480,
+       320
+      ],
+      [
+       420,
+       330
+      ],
+      [
+       480,
+       180
+      ],
+      [
+       500,
+       220
+      ],
+      [
+       400,
+       80
+      ],
+      [
+       430,
+       100
+      ],
+      [
+       240,
+       160
+      ],
+      [
+       200,
+       90
+      ],
+      [
+       150,
+       230
+      ],
+      [
+       250,
+       300
+      ]
+     ]
+    },
+    "marks": [
+     {
+      "at": "west",
+      "text": "Western Uplands"
+     },
+     {
+      "at": [
+       470,
+       360
+      ],
+      "text": "South Coast"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-data-sources-1",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "What kind of geographic data are these notes, taken as a whole?",
+   "stimulus": "data-sources-s1",
+   "options": [
+    "Mostly qualitative data from field observation and interviews",
+    "Mostly quantitative data, measured from far away by remote sensing",
+    "Positions recorded by a satellite navigation system on a phone",
+    "A thematic map of the market street"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Field notes and interviews are qualitative data from field observation: words, impressions and reasons that numbers alone do not capture.",
+    "options": [
+     "Right: the writer watched, listened and asked people questions on the street. Most of what is recorded is words and experiences.",
+     "Remote sensing gathers data from a distance, such as satellite images. This writer stood on the street.",
+     "A satellite navigation system (such as GPS) records positions, not smells, opinions or reasons for moving.",
+     "These are written notes, not a map."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-2",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Which detail in the notes is quantitative data?",
+   "stimulus": "data-sources-s1",
+   "options": [
+    "The street smells of grilled corn",
+    "There were 42 stalls between the bus stop and the river",
+    "Shoppers say everything is cheaper than in the mall",
+    "Two stall owners moved here because the old market was torn down"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Quantitative data are numbers you can count or measure; qualitative data are words, pictures and experiences.",
+    "options": [
+     "A smell is a sense impression: qualitative.",
+     "Right: a count is a number, so it is quantitative.",
+     "An opinion in shoppers' words is qualitative.",
+     "A reason given in an interview is qualitative, even though it mentions two people."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-3",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "The writer wants to show how Market Street connects to bus stops, parking and the river. What would a geographic information system (GIS) add?",
+   "stimulus": "data-sources-s1",
+   "options": [
+    "It could replace the interviews by measuring how shoppers feel about prices",
+    "It could take a photo of the street from a satellite each hour",
+    "It could layer the stalls, bus stops, parking and river on one map",
+    "It could count the stalls more accurately than a person can"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A GIS is software that layers different data tied to places, so you can see how they line up.",
+    "options": [
+     "Feelings come from asking people; a GIS can store answers but cannot measure them.",
+     "That describes remote sensing, which a GIS may use as one layer.",
+     "Right: a GIS stores data as layers tied to locations, so you can compare them on one map.",
+     "Counting is done in the field or from images; the GIS combines and maps the results."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-4",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.F",
+   "q": "What is a weakness of these notes as evidence about Market Street?",
+   "stimulus": "data-sources-s1",
+   "options": [
+    "They use a count of stalls, and a number says nothing about a street",
+    "They were gathered in the field, so they are less accurate than any map",
+    "They are written in the first person, so they are not real data",
+    "They cover one Saturday morning, so weekdays and evenings may differ"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Field observation is rich but narrow: it covers one place at one time. Say what it leaves out.",
+    "options": [
+     "Numbers can describe a street; the stall count is useful.",
+     "Field data can be very accurate for what they cover; the issue is how little they cover.",
+     "The street is in Country A, an invented country; naming a place is a strength, not a weakness.",
+     "Right: one visit at one time is a small sample; the street may look different at other times."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-5",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "These data were collected by satellites far above Country A. What is this method called?",
+   "stimulus": "data-sources-s2",
+   "options": [
+    "Remote sensing",
+    "Field observation in each province",
+    "Interviews with residents",
+    "A satellite navigation system"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Satellites and aircraft that record images or light from far away are doing remote sensing.",
+    "options": [
+     "Right: remote sensing gathers data about places from a distance, usually by satellite or aircraft.",
+     "Field observation means going to the place and recording what you see.",
+     "Interviews ask people questions; satellites record light and images.",
+     "A satellite navigation system (such as GPS) tells a receiver where it is; it does not photograph the ground."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-6",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which statement describes the pattern on this map?",
+   "stimulus": "data-sources-s2",
+   "options": [
+    "Dispersed evenly, with about the same number of lights in each of the eight provinces",
+    "Clustered in the Capital Region and on the South Coast; few in the Western Uplands",
+    "Clustered in the Western Uplands and Northern Hills, with few near the South Coast",
+    "Clustered in the north of Country A, with a few lights scattered along the coast"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Describe a dot map by naming where dots cluster and where they are sparse.",
+    "options": [
+     "The dots are uneven: packed in the middle and south, sparse in the west.",
+     "Right: it names where the dots are packed and where they are few.",
+     "This reverses the map: the west has few dots.",
+     "Most dots are in the Capital Region and on the South Coast, not the north."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-7",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.F",
+   "q": "A planner reads this map as a map of where people live. What is the best caution?",
+   "stimulus": "data-sources-s2",
+   "options": [
+    "The satellite passed over at night, so it missed the people who were asleep indoors",
+    "A dot map shows counts, so it says nothing about where the lights are found",
+    "Lights show electricity, so villages without power may hold people the map misses",
+    "The dots show the height of the land, so they are about elevation, not people"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Remote sensing measures what it can see (here, light). Ask what that measure leaves out before using it for something else.",
+    "options": [
+     "Satellites do record lights at night; that is how the map was made.",
+     "A dot map shows exactly where things are; that is its strength.",
+     "Right: light is a clue to where people are, not a count of them. Villages without electricity look empty from space.",
+     "The legend says the dots are bright lights, not height."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-8",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A delivery driver's phone shows exactly where the truck is on a street map as it moves. Which tool is the phone using?",
+   "options": [
+    "Remote sensing from a satellite camera",
+    "A thematic map of the city's traffic",
+    "Field observation by the driver",
+    "A satellite navigation system (such as GPS)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Satellite navigation systems, such as the United States' GPS, give an exact location anywhere with a clear view of the sky.",
+    "options": [
+     "Remote sensing images the ground; it does not tell a phone where it is.",
+     "The street map shows where roads are; the location dot comes from satellite navigation.",
+     "Nobody is recording observations; the phone calculates its position.",
+     "Right: a satellite navigation system works out the receiver's exact location from satellite signals."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-9",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "Brazil's space research agency uses satellite images to track how much of the Amazon rainforest is cleared each year. Why is remote sensing a good fit for this job?",
+   "options": [
+    "It measures a huge, remote forest the same way every year",
+    "It records why each farmer decided to clear part of the forest",
+    "It needs no computers or experts, so it is cheap and quick to run",
+    "It shows the forest at the local scale and no other"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Remote sensing suits large areas and repeated measurement; it cannot record people's reasons.",
+    "options": [
+     "Right: satellites cover vast areas regularly, so changes from year to year can be compared.",
+     "Reasons come from interviews or documents; images show what changed, not why.",
+     "Satellite images are processed by computers.",
+     "Images can be studied at many scales, from one hillside to the whole Amazon."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-10",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.C",
+   "q": "A city wants to know how residents feel about a new bus line. Which data source fits best?",
+   "options": [
+    "Satellite images of the bus routes",
+    "Interviews or open-ended surveys of residents",
+    "A satellite navigation log of where each bus went",
+    "A reference map of the city's streets and bus stops"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Match the data to the question: opinions need qualitative sources such as interviews.",
+    "options": [
+     "Images show where routes are, not how people feel about them.",
+     "Right: feelings and opinions are qualitative, so ask people directly.",
+     "A location log shows where buses went, not what riders think.",
+     "A street map shows where things are, not opinions."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-11",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 1,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Which of these are qualitative geographic data? Select all that apply.",
+   "options": [
+    "A diary kept by a traveler crossing the Sahara",
+    "The share of homes in Seoul with internet access",
+    "The number of cars crossing a bridge each hour",
+    "Average yearly rainfall in Mumbai"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Words and pictures (diaries, photos, interviews, news stories) are qualitative; counts and measurements are quantitative.",
+    "options": [
+     "Right: a diary records experiences in words.",
+     "A share is a number (a percent): quantitative.",
+     "A count of cars is a number: quantitative.",
+     "An average of measurements is a number: quantitative."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-12",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "What is geographic data?",
+   "options": [
+    "Any number in a science textbook, wherever it was measured or came from",
+    "The names of countries listed in alphabetical order, from A to Z",
+    "Information tied to a location, such as how much of something is in a place",
+    "Pictures of the Earth that are taken from outer space"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Geographic data are tied to places, so they can be mapped and compared across space.",
+    "options": [
+     "Many numbers have no link to a place, such as a person's age alone.",
+     "A list of names with no locations or values is not geographic data in itself.",
+     "Right: what makes data geographic is a link to a place.",
+     "Satellite pictures are one kind of geographic data, but not the only kind."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-13",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.D",
+   "q": "A geographer studies a neighborhood in Lagos, Nigeria, using a GIS. She adds a layer of flood-prone streets and a layer of clinic locations. What question can the layers now answer?",
+   "options": [
+    "Why residents chose to live on the flood-prone streets of the neighborhood",
+    "How residents feel about the care they get at the clinics near them",
+    "What the neighborhood looked like a hundred years ago",
+    "Which clinics are on streets that flood and may be hard to reach in the rains"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A GIS answers \"where do these things overlap?\" by stacking layers tied to location.",
+    "options": [
+     "Reasons for choices need interviews or other qualitative sources.",
+     "Feelings need surveys or interviews, not map layers.",
+     "These layers show the present; old maps or records would be needed.",
+     "Right: overlaying layers shows where two things meet, which is what a GIS is built for."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-14",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.F",
+   "q": "A student studies street life in Seoul by reading travel blogs and watching videos posted by visitors. What is a weakness of these sources?",
+   "options": [
+    "They show what visitors chose to record, so they may miss residents' daily life",
+    "They are quantitative counts, so they leave out what the street is like to be on",
+    "They come from the field, so they are less useful than a map of the same streets",
+    "They are remote sensing data taken from space, so they lack street-level detail"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Qualitative sources carry the writer's point of view. Ask whose view it is and what it leaves out.",
+    "options": [
+     "Right: travel accounts are shaped by who wrote them and what they found interesting.",
+     "Blogs and videos are qualitative, not quantitative.",
+     "Field sources can be very useful; the issue is whose view they give.",
+     "They are not remote sensing; they were made by people on the ground."
+    ]
+   }
+  },
+  {
+   "id": "hug-data-sources-15",
+   "unit": "unit-1",
+   "topic": "data-sources",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "4.C",
+   "q": "Build an answer that matches a data source to a question about Mexico City.",
+   "specific": {
+    "frame": "To learn ___, a geographer should use ___, because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "To learn how far Mexico City's built-up area spread between 2000 and 2020, a geographer should use satellite images, because they record the whole city the same way at both dates.",
+    "slots": {
+     "question": {
+      "label": "Question",
+      "options": [
+       "how far Mexico City's built-up area spread between 2000 and 2020",
+       "what Mexico City is like"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Too vague to choose a source for: say what you want to measure, where and when."
+      }
+     },
+     "source": {
+      "label": "Source",
+      "options": [
+       "satellite images",
+       "interviews with a few residents",
+       "a recent reference map of the streets"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Interviews give views and stories, not a measure of the whole city's growth.",
+       "2": "A map of today shows one date, so it cannot show change since 2000."
+      }
+     },
+     "reason": {
+      "label": "Reason",
+      "options": [
+       "they record the whole city the same way at both dates",
+       "they are modern"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Being modern is not a reason; say what the source can measure that the question needs."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A strong answer names the question, the source and the reason the source can answer it."
+   }
+  }
+ ]
+}

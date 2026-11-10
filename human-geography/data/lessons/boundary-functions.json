@@ -1,0 +1,67 @@
+{
+ "topic": "boundary-functions",
+ "hook": "Stand on the Korean DMZ and you see fences, guard posts and a strip of land no army may enter. Drive from France into Belgium and you may not even notice you crossed a border. Sail 150 nautical miles off Peru and the fish belong to Peru. Boundaries do different jobs in different places, on land and at sea.",
+ "prereq": [
+  {
+   "q": "What is a superimposed boundary?",
+   "options": [
+    "A boundary forced on an area by an outside power",
+    "A boundary that follows a language line",
+    "A boundary that no longer works",
+    "A boundary drawn before settlement"
+   ],
+   "correct": 0,
+   "why": "Many African borders are superimposed.",
+   "review": "defining-boundaries"
+  },
+  {
+   "q": "What is territoriality?",
+   "options": [
+    "Trying to control people and things by claiming an area",
+    "A state's legal right to rule",
+    "The area of a state",
+    "A narrow sea passage"
+   ],
+   "correct": 0,
+   "why": "Territoriality is the behavior of claiming space.",
+   "review": "power-territoriality"
+  }
+ ],
+ "figure": {
+  "figure": "boundary-functions-zones",
+  "caption": "Sea zones under the law of the sea (UNCLOS), measured from the coast. Not to scale."
+ },
+ "chain": [
+  {
+   "cause": "States define a boundary in a treaty and delimit it on maps",
+   "effect": "they know, in principle, where each one's territory ends"
+  },
+  {
+   "cause": "They demarcate it with markers and administer it with crossings and rules",
+   "effect": "the boundary controls how people and goods move, more or less strictly"
+  },
+  {
+   "cause": "Rivers move, wording is vague, or resources lie under the line",
+   "effect": "boundaries are often disputed"
+  }
+ ],
+ "ideas": [
+  "Boundaries are <b>defined</b> in words, <b>delimited</b> on maps, <b>demarcated</b> on the ground and <b>administered</b> day to day.",
+  "Boundaries shape interaction: open ones (the Schengen Area) let people cross freely; closed ones, such as Korea's <b>demilitarized zone</b>, stop almost all contact.",
+  "The <b>Berlin Conference</b> (1884 and 1885) set rules for European claims in Africa, leading to superimposed borders.",
+  "The law of the sea (<b>UNCLOS</b>): <b>territorial sea</b> to 12 nautical miles, <b>contiguous zone</b> to 24, <b>exclusive economic zone</b> to 200, then the high seas."
+ ],
+ "misconception": {
+  "wrong": "A state rules its whole exclusive economic zone just as it rules its land.",
+  "right": "Full rule reaches only 12 nautical miles (the territorial sea). In the exclusive economic zone, out to 200 nautical miles, the state owns the resources, but other states' ships may still sail through."
+ },
+ "check": [
+  "hug-boundary-functions-1",
+  "hug-boundary-functions-2",
+  "hug-boundary-functions-3",
+  "hug-boundary-functions-8",
+  "hug-boundary-functions-10",
+  "hug-boundary-functions-14"
+ ],
+ "summary": "Boundaries are defined, delimited, demarcated and administered, and they are often disputed. They control the flow of people and goods, from open borders in the Schengen Area to the closed Korean DMZ. Many African borders go back to the Berlin Conference era. At sea, the law of the sea sets a territorial sea to 12 nautical miles, a contiguous zone to 24 and an exclusive economic zone to 200, beyond which lie the high seas."
+}

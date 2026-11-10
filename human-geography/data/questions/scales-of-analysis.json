@@ -1,0 +1,578 @@
+{
+ "stimuli": {
+  "scales-of-analysis-s1": {
+   "kind": "map",
+   "title": "South Asia: income groups of countries",
+   "map": {
+    "base": "south-asia",
+    "render": "choropleth",
+    "label": "Shaded map of South Asia by World Bank income group: Sri Lanka is upper-middle income, Afghanistan is low income, and India, Pakistan, Bangladesh, Nepal and Bhutan are lower-middle income",
+    "source": "World Bank FY27 income groups (July 2026)",
+    "legendTitle": "World Bank FY27 income group (by income per person)",
+    "classes": [
+     "Low income",
+     "Lower-middle income",
+     "Upper-middle income"
+    ],
+    "values": {
+     "afghanistan": 0,
+     "india": 1,
+     "pakistan": 1,
+     "bangladesh": 1,
+     "nepal": 1,
+     "bhutan": 1,
+     "sri-lanka": 2
+    },
+    "marks": [
+     {
+      "at": "india",
+      "text": "India"
+     },
+     {
+      "at": "sri-lanka",
+      "text": "Sri Lanka"
+     },
+     {
+      "at": "afghanistan",
+      "text": "Afghanistan"
+     }
+    ]
+   }
+  },
+  "scales-of-analysis-s2": {
+   "kind": "map",
+   "title": "Country A: households earning above the national middle income, by province",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Shaded map of Country A by province: the share of households earning above the national middle income is highest in the Capital Region and on the South Coast and lowest in the Western Uplands and Southern Forest",
+    "legendTitle": "Households above the national middle income (percent, invented)",
+    "classes": [
+     "Under 35%",
+     "35% to 49%",
+     "50% to 64%",
+     "65% or more"
+    ],
+    "values": {
+     "capital": 3,
+     "coast": 3,
+     "northeast": 2,
+     "east": 2,
+     "central": 1,
+     "north": 1,
+     "west": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": [
+       370,
+       255
+      ],
+      "text": "Capital Region"
+     },
+     {
+      "at": "west",
+      "text": "Western Uplands"
+     },
+     {
+      "at": [
+       470,
+       345
+      ],
+      "text": "South Coast"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-scales-of-analysis-1",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "The map covers the region of South Asia. At what scale of analysis are its data?",
+   "stimulus": "scales-of-analysis-s1",
+   "options": [
+    "National: each shade is one value for one country",
+    "Regional: the map covers South Asia",
+    "Global: income groups are set for the whole world",
+    "Local: India's states are shown inside it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the unit of the data, not the area of the map: one value per country is the national scale.",
+    "options": [
+     "Right: the unit each value describes is a country, so the data are national, even though the map shows a region.",
+     "The area shown is a region, but the scale of analysis is set by the unit of the data: countries.",
+     "The groups are worldwide categories, but each value here describes one country.",
+     "India is one shade; no states are shown."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-2",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the pattern at this scale, naming places?",
+   "stimulus": "scales-of-analysis-s1",
+   "options": [
+    "India is upper-middle income, and Sri Lanka and Afghanistan are both low income",
+    "Sri Lanka upper-middle, Afghanistan low, and the other five lower-middle income",
+    "The seven countries share one income group, lower-middle income, across the map",
+    "Afghanistan and Sri Lanka are upper-middle income, India low income"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Name the places in each class from the legend.",
+    "options": [
+     "India is lower-middle; Sri Lanka is upper-middle.",
+     "Right: it names each class and the places in it (World Bank FY27).",
+     "Three classes appear on the map, not one.",
+     "This swaps the classes: Afghanistan is low income and India lower-middle."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-3",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "India is one shade on this map. What would a map of India's states, at the local scale, most likely show?",
+   "stimulus": "scales-of-analysis-s1",
+   "options": [
+    "One income group in each state, matching India's single shade at the national scale",
+    "Nothing new, because local data repeat what the national data already show",
+    "Big gaps: states such as Goa far richer per person than others, such as Bihar",
+    "Data for South Asia's other countries, which this map leaves out"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A pattern at one scale can hide a different pattern at a smaller scale.",
+    "options": [
+     "A national shade is an average of very different states, not a sign that they match.",
+     "Local data often show patterns that national data hide.",
+     "Right: one national value blends rich and poor states; a map of the states would reveal them.",
+     "A map of India's states would show India, not its neighbors."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-4",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.C",
+   "q": "A report gives one figure for Country A: half of all households earn above the middle income. What does the map add?",
+   "stimulus": "scales-of-analysis-s2",
+   "options": [
+    "Each province has about half of its households above the middle income, like the nation",
+    "Country A earns more than its neighbors, as the national figure shows",
+    "Incomes are rising fastest in the Western Uplands and the Southern Forest",
+    "They cluster in the Capital Region and South Coast; few are in the Western Uplands"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Data at a smaller scale show variation that one national figure hides.",
+    "options": [
+     "The provinces differ widely; \"half\" is only the national figure.",
+     "No other country is on the map.",
+     "The map shows one date, so it cannot show which incomes are rising.",
+     "Right: the provinces range from under 35% to 65% or more, so the national figure hides a gap."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-5",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "The national figure was made by adding up the households of all eight provinces into one number. What is this called, and what is its drawback?",
+   "stimulus": "scales-of-analysis-s2",
+   "options": [
+    "Aggregated data; one value for all provinces hides how they differ",
+    "Qualitative data; it is built from words, so it is hard to put on a map",
+    "Remote sensing; it was measured by satellite, so it misses people",
+    "A spatial pattern; it shows where households are clustered"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Aggregated data combine small units into a larger one. They are useful for comparing countries, but they hide variation inside.",
+    "options": [
+     "Right: aggregating smaller units into a bigger one makes a single figure that can hide large differences.",
+     "The national figure is a number, so it is quantitative.",
+     "Household incomes come from surveys or a census, not satellites.",
+     "One national number cannot show where anything is clustered."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-6",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "A large new port opens on the South Coast, linking it to world shipping. Which effect across scales is most likely?",
+   "stimulus": "scales-of-analysis-s2",
+   "options": [
+    "The port changes nothing in Country A, because world trade happens at the global scale",
+    "Global trade brings jobs to the coast, so its gap with the uplands may widen",
+    "Incomes in each province rise by the same amount, because the port belongs to the nation",
+    "The Western Uplands gain the most, because they are farthest from the new port"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Processes at one scale (global trade) shape patterns at another (one province), so explain the link across scales.",
+    "options": [
+     "Global processes have local effects; that is the point of linking scales.",
+     "Right: a global process (world trade) has a local effect (coastal jobs), which can change the national pattern.",
+     "Effects are uneven: places near the port gain most.",
+     "Distance decay suggests the places nearest the port gain most."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-7",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis should a minister read this map to decide which provinces get new job programs?",
+   "stimulus": "scales-of-analysis-s2",
+   "options": [
+    "National, because the minister works for the whole country",
+    "Global, because jobs depend on world trade",
+    "Local (subnational), since the choice is between provinces",
+    "Regional, because Country A is part of a world region"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Match the scale of the data to the scale of the decision.",
+    "options": [
+     "The minister works nationally, but the decision is about which provinces.",
+     "World trade matters, but the choice is between Country A's provinces.",
+     "Right: a choice between provinces needs data by province.",
+     "Regional data would compare countries, not provinces."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-8",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "recall",
+   "diff": 1,
+   "type": "model",
+   "practice": "5.A",
+   "q": "Stack the four scales of analysis from the largest area at the top to the smallest at the bottom.",
+   "model": {
+    "layout": "tiers",
+    "title": "Scales of analysis, largest to smallest",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "Top: largest area"
+     },
+     {
+      "id": "t2",
+      "name": "Second"
+     },
+     {
+      "id": "t3",
+      "name": "Third"
+     },
+     {
+      "id": "t4",
+      "name": "Bottom: smallest area"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "g",
+      "text": "Global (the world)"
+     },
+     {
+      "id": "r",
+      "text": "Regional (South Asia)"
+     },
+     {
+      "id": "n",
+      "text": "National (India)"
+     },
+     {
+      "id": "l",
+      "text": "Local (the city of Mumbai)"
+     },
+     {
+      "id": "m",
+      "text": "Map scale (1:50,000)"
+     }
+    ],
+    "key": {
+     "t1": "g",
+     "t2": "r",
+     "t3": "n",
+     "t4": "l"
+    },
+    "slips": [
+     {
+      "piece": "n",
+      "slot": "t2",
+      "why": "A region such as South Asia holds several countries, so it is larger than one nation."
+     },
+     {
+      "piece": "m",
+      "slot": "t4",
+      "why": "Map scale is a ratio for drawing a map, not a scale of analysis."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Global, regional, national, local: each fits inside the one above it."
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-9",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.C",
+   "q": "A map of a United States presidential election colored by state shows large blocks of one color. A map of the same election by county shows cities voting differently from nearby rural counties. What does this show?",
+   "options": [
+    "State maps are wrong and should not be used to report the results of an election",
+    "County maps show a different election from the one shown on the state map",
+    "Rural counties and cities vote the same way, as the state map shows",
+    "Patterns change with scale: county data show a city and rural divide that states hide"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Changing the scale of analysis can reveal patterns that larger units hide.",
+    "options": [
+     "Each map is accurate for its units; they answer different questions.",
+     "It is the same election, counted in smaller units.",
+     "The county map shows cities and rural counties voting differently.",
+     "Right: the same votes, grouped by smaller units, show a different pattern."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-10",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Rising world demand for avocados led farmers in Michoacán, Mexico, to plant more avocado orchards on hillsides that were forest. Which scales does this example link?",
+   "options": [
+    "A global process (world demand) and a local change (land use in Michoacán)",
+    "A national process (Mexican law) and a global change (world climate)",
+    "A local process (one farm) and a regional change (across Latin America)",
+    "A regional process (South Asian trade) and a national change (Mexico's border)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Explaining across scales means linking a process at one scale to its effect at another.",
+    "options": [
+     "Right: demand far away changes land use in one part of one country.",
+     "The example is about world demand, not a national law.",
+     "The change is in one Mexican state, driven by world demand.",
+     "South Asia is not part of the example."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-11",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "A student finds that Brazil's national average rainfall is moderate and concludes that the city of Manaus gets moderate rain. Why is this conclusion weak?",
+   "options": [
+    "Rainfall data are qualitative, so averaging them gives a misleading number",
+    "A national average is aggregated, so it hides very wet places like the Amazon",
+    "Manaus is outside Brazil, so Brazil's national data leave the city out",
+    "Rainfall is measured at the global scale, so national averages are wrong"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Do not apply an aggregated national value to one local place; check data at the local scale.",
+    "options": [
+     "Rainfall is measured in millimeters: quantitative.",
+     "Right: an average for a huge country blends very different climates; Manaus, in the Amazon, is far wetter than the national average.",
+     "Manaus is in Brazil, in the Amazon region.",
+     "Rainfall is measured at weather stations, place by place."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-12",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Sea level is rising around the world as the oceans warm. Officials in Miami, Florida, raise streets and install pumps. How do these scales relate?",
+   "options": [
+    "A local process causes a global effect, which the national government answers",
+    "A national process causes a regional effect, which the world answers",
+    "A global process has a local effect, which a local government answers",
+    "The scales are unrelated, since Miami's streets are local"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Many local problems have global causes. Name both scales and the link.",
+    "options": [
+     "Miami did not cause the global rise; it is responding to it.",
+     "The process is global and the response is by a city.",
+     "Right: rising seas are global; flooded streets and the city's response are local.",
+     "The local problem comes from a global process, so the scales are linked."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-13",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.C",
+   "q": "Why might a national government and a city mayor reach different conclusions from the same health data?",
+   "options": [
+    "One of the two is reading the data wrongly, since data give one answer",
+    "Health data are global, so neither leader can use them for a decision",
+    "Mayors use qualitative data, while national governments use quantitative data",
+    "Each reads the data at a different scale, with its own pattern"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Different scales can support different, valid conclusions, so always state your scale.",
+    "options": [
+     "Both can be right; they are asking about different units.",
+     "Health data are collected locally and can be read at every scale.",
+     "Both mayors and governments use many kinds of data.",
+     "Right: a national average may look fine while one city or neighborhood has a serious problem."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-14",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.C",
+   "q": "A world map shows that most of the world's largest cities are in Asia. A map of Japan shows that most Japanese people live on a narrow coastal strip. Which statement uses both scales correctly?",
+   "options": [
+    "At the global scale, Asia holds many large cities; at the national scale, Japan's people crowd its coasts",
+    "At the global scale, Japan's coast is crowded; at the national scale, Asia holds many large cities",
+    "Both maps are at the local scale, because both show cities on coasts",
+    "Both maps are at the global scale, because Japan is part of the world map"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Tie each pattern to the scale of the map that shows it.",
+    "options": [
+     "Right: each pattern is named at the scale of its own map.",
+     "This swaps the scales: the world map compares regions, and the map of Japan shows one country.",
+     "Neither map is local: one shows the world, the other one country.",
+     "A map of one country shows a national pattern, even though the country is also on the world map."
+    ]
+   }
+  },
+  {
+   "id": "hug-scales-of-analysis-15",
+   "unit": "unit-1",
+   "topic": "scales-of-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "5.C",
+   "q": "Build a sentence that compares a pattern at two scales.",
+   "specific": {
+    "frame": "At the ___ scale, ___, whereas at the ___ scale, ___.",
+    "write": {
+     "scale": true
+    },
+    "model": "At the national scale, Country A has half its households above the middle income, whereas at the local scale, the Capital Region is above 65% and the Western Uplands below 35%.",
+    "slots": {
+     "scaleA": {
+      "label": "First scale",
+      "options": [
+       "national",
+       "global"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The figure for all of Country A is national, not global."
+      }
+     },
+     "patternA": {
+      "label": "Pattern at the first scale",
+      "options": [
+       "Country A has half its households above the middle income",
+       "the map has eight provinces"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a fact about the map, not a pattern in the data."
+      }
+     },
+     "scaleB": {
+      "label": "Second scale",
+      "options": [
+       "local",
+       "regional"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Provinces inside one country are local, not regional."
+      }
+     },
+     "patternB": {
+      "label": "Pattern at the second scale",
+      "options": [
+       "the Capital Region is above 65% and the Western Uplands below 35%",
+       "incomes vary"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Too vague: name the places and values."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A compare across scales names both scales and a pattern at each, with places."
+   }
+  }
+ ]
+}

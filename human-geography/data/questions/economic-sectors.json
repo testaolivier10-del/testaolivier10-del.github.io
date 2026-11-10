@@ -1,0 +1,687 @@
+{
+ "stimuli": {
+  "economic-sectors-s1": {
+   "kind": "map",
+   "title": "A mine, a market and a port in Country A",
+   "map": {
+    "base": "country-a",
+    "render": "reference",
+    "label": "Reference map of Country A, an invented country: a copper mine in the Northern Hills, the main market in the Capital Region at the center, and the only seaport on the South Coast",
+    "legendTitle": "Places for a factory to locate (invented for practice)",
+    "marks": [
+     {
+      "at": "north",
+      "text": "Copper mine"
+     },
+     {
+      "at": "capital",
+      "text": "Main market"
+     },
+     {
+      "at": "coast",
+      "text": "Seaport"
+     }
+    ]
+   }
+  },
+  "economic-sectors-s2": {
+   "kind": "data",
+   "title": "Workers by economic sector in Country B, 1970 to 2020",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of Country B, 1970 to 2020: primary sector workers fall from 60% to 9%, secondary rise from 15% to a peak of 30% in 1990 and 2000 then fall to 21%, and tertiary rise from 25% to 70%",
+    "xLabel": "Year",
+    "yLabel": "Percent of all workers",
+    "series": [
+     {
+      "name": "Primary",
+      "points": [
+       [
+        1970,
+        60
+       ],
+       [
+        1980,
+        48
+       ],
+       [
+        1990,
+        34
+       ],
+       [
+        2000,
+        22
+       ],
+       [
+        2010,
+        14
+       ],
+       [
+        2020,
+        9
+       ]
+      ]
+     },
+     {
+      "name": "Secondary",
+      "points": [
+       [
+        1970,
+        15
+       ],
+       [
+        1980,
+        24
+       ],
+       [
+        1990,
+        30
+       ],
+       [
+        2000,
+        30
+       ],
+       [
+        2010,
+        26
+       ],
+       [
+        2020,
+        21
+       ]
+      ]
+     },
+     {
+      "name": "Tertiary",
+      "points": [
+       [
+        1970,
+        25
+       ],
+       [
+        1980,
+        28
+       ],
+       [
+        1990,
+        36
+       ],
+       [
+        2000,
+        48
+       ],
+       [
+        2010,
+        60
+       ],
+       [
+        2020,
+        70
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-economic-sectors-1",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A copper smelter turns about 100 tonnes of ore into 2 tonnes of copper. Using least cost theory, where on the map should it locate?",
+   "options": [
+    "Near the copper mine in the Northern Hills",
+    "Near the main market in the Capital Region",
+    "At the seaport on the South Coast, far from the mine",
+    "In the Western Uplands, where there is no mine or market"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A weight-losing industry locates near its raw material: the product weighs far less than the ore, so smelting first saves transport.",
+    "options": [
+     "Right: smelting is weight-losing, so it locates near the mine and ships only the light metal.",
+     "That fits a weight-gaining industry. Here 98 tonnes of waste rock would travel to the capital for nothing.",
+     "Hauling all the waste rock to the coast costs more than smelting at the mine first.",
+     "Least cost theory picks the place with the lowest transport cost, and the uplands add distance from both."
+    ]
+   },
+   "stimulus": "economic-sectors-s1"
+  },
+  {
+   "id": "hug-economic-sectors-2",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A soft-drink company bottles drinks by adding local water to a small amount of syrup. Where on the map should its plant locate?",
+   "options": [
+    "Next to the copper mine, far from most buyers",
+    "Near the main market in the Capital Region",
+    "At the seaport, to export the water by ship",
+    "Anywhere in the country, since transport costs are equal"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A weight-gaining industry adds weight (here water) during production, so it locates near the market to keep its heavy shipments short.",
+    "options": [
+     "The mine has nothing the bottler needs; its plant would sit far from buyers.",
+     "Right: bottling is weight-gaining, so it locates near the buyers it ships to.",
+     "The water is found almost everywhere; exporting it adds cost.",
+     "Distance from buyers changes the cost of shipping heavy bottles."
+    ]
+   },
+   "stimulus": "economic-sectors-s1"
+  },
+  {
+   "id": "hug-economic-sectors-3",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Copper from the smelter leaves Country A by sea. At the seaport, it moves from trains onto ships. What does that make the seaport?",
+   "options": [
+    "A break-of-bulk point, where goods change transport",
+    "A raw material site, where the copper is first dug out of the ground",
+    "A market, where the copper is mostly used up in factories",
+    "A quinary decision center"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A port where goods move between trains and ships is a break-of-bulk point; firms often process goods there because they are unloaded anyway.",
+    "options": [
+     "Right: a break-of-bulk point is where cargo switches modes, here from rail to ship.",
+     "The copper is dug at the mine, not at the port.",
+     "The copper passes through the port on its way abroad.",
+     "Top decisions are a kind of work, not a transfer point for goods."
+    ]
+   },
+   "stimulus": "economic-sectors-s1"
+  },
+  {
+   "id": "hug-economic-sectors-4",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Country A offers a new copper smelter ten years without taxes if it builds in the Eastern Plains, far from the mine. The firm accepts. What limit of least cost theory does this show?",
+   "options": [
+    "It leaves out government incentives such as tax breaks",
+    "It says copper smelting is weight-gaining, which is wrong here",
+    "It works at the local scale and fails at the national scale",
+    "It assumes factories locate next to the capital city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Least cost theory assumes firms seek the lowest transport, labor and nearby-firm costs; a tax break can pull a plant elsewhere, which the basic model leaves out.",
+    "options": [
+     "Right: the model weighs transport, labor and nearby firms, but real firms also respond to tax breaks and other policies.",
+     "Least cost theory classes smelting as weight-losing; that part still holds.",
+     "The choice here is within one country; the problem is a missing factor, not the scale.",
+     "The model sends weight-losing industries to raw materials, not to the capital."
+    ]
+   },
+   "stimulus": "economic-sectors-s1"
+  },
+  {
+   "id": "hug-economic-sectors-5",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "According to the chart, in which years did the secondary sector employ its largest share of Country B's workers?",
+   "options": [
+    "1970 and 1980",
+    "1990 and 2000",
+    "2010 and 2020",
+    "2020, at its highest point"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The secondary line rises to 30% in 1990, holds at 30% in 2000, then falls.",
+    "options": [
+     "The secondary line is lower then (15% and 24%).",
+     "Right: the secondary line peaks at 30% in both 1990 and 2000.",
+     "The secondary share had fallen by then, to 26% and 21%.",
+     "In 2020 the secondary share is 21%, below its 1990 and 2000 peak."
+    ]
+   },
+   "stimulus": "economic-sectors-s2"
+  },
+  {
+   "id": "hug-economic-sectors-6",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes the change in Country B's economy from 1970 to 2020?",
+   "options": [
+    "Farm and mine work gave way to factories, then services",
+    "Factories replaced services as the largest sector by 2020",
+    "The primary sector grew while services shrank",
+    "The three sectors each stayed about the same size"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A describe answer gives the direction and the order of the change: primary down throughout, secondary up then down, tertiary up to 70% of workers.",
+    "options": [
+     "Right: primary falls the whole time; secondary rises then falls; tertiary rises to 70%.",
+     "In 2020 services employ 70% and factories 21%.",
+     "Both lines move the other way: primary falls, services grow.",
+     "The lines change by 39 to 51 points; the mix shifted a great deal."
+    ]
+   },
+   "stimulus": "economic-sectors-s2"
+  },
+  {
+   "id": "hug-economic-sectors-7",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Country B had about 40 million workers in 2020. Using the chart, about how many million worked in the tertiary sector?",
+   "why": {
+    "correct": "In 2020 the tertiary share is 70%, and $40 \\times 0.70 = 28$ million workers."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      40,
+      {
+       "fn": "div",
+       "args": [
+        70,
+        100
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        40,
+        {
+         "fn": "div",
+         "args": [
+          21,
+          100
+         ]
+        }
+       ]
+      },
+      "why": "That uses the secondary line (21%). Read the tertiary line for 2020: 70%."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        40,
+        {
+         "fn": "div",
+         "args": [
+          9,
+          100
+         ]
+        }
+       ]
+      },
+      "why": "That uses the primary line (9%). Read the tertiary line for 2020: 70%."
+     }
+    ]
+   },
+   "stimulus": "economic-sectors-s2"
+  },
+  {
+   "id": "hug-economic-sectors-8",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "What best explains the steady fall of the primary line in Country B?",
+   "options": [
+    "Machines let fewer farmers grow the food",
+    "Country B stopped growing food and now imports it instead",
+    "Primary workers were moved into the quinary sector by law",
+    "The country ran out of land suitable for farming in 1970"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As machines and new methods raise output per farmer, fewer farm jobs are needed, so workers shift into the secondary and tertiary sectors.",
+    "options": [
+     "Right: higher farm output per worker frees people for factory and service work.",
+     "Fewer farmers does not mean no farming; machines raise output per worker.",
+     "No law is needed: people move to better-paid town jobs as farms need fewer hands.",
+     "The fall is gradual over 50 years, which fits rising farm productivity, not a sudden loss of land."
+    ]
+   },
+   "stimulus": "economic-sectors-s2"
+  },
+  {
+   "id": "hug-economic-sectors-9",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.A",
+   "q": "Place each job at a carmaker in its economic sector, from the top of the ladder (quinary) to the bottom (primary).",
+   "model": {
+    "layout": "tiers",
+    "title": "The five economic sectors, top to bottom",
+    "slots": [
+     {
+      "id": "q5",
+      "name": "Quinary"
+     },
+     {
+      "id": "q4",
+      "name": "Quaternary"
+     },
+     {
+      "id": "t3",
+      "name": "Tertiary"
+     },
+     {
+      "id": "s2",
+      "name": "Secondary"
+     },
+     {
+      "id": "p1",
+      "name": "Primary"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "ceo",
+      "text": "Chief executive of the carmaker"
+     },
+     {
+      "id": "code",
+      "text": "Engineer writing car software"
+     },
+     {
+      "id": "sales",
+      "text": "Salesperson at a car dealer"
+     },
+     {
+      "id": "line",
+      "text": "Worker on the assembly line"
+     },
+     {
+      "id": "ore",
+      "text": "Miner digging iron ore for steel"
+     },
+     {
+      "id": "farm",
+      "text": "The farmland next to the plant"
+     }
+    ],
+    "key": {
+     "q5": "ceo",
+     "q4": "code",
+     "t3": "sales",
+     "s2": "line",
+     "p1": "ore"
+    },
+    "slips": [
+     {
+      "piece": "code",
+      "slot": "q5",
+      "why": "Writing software creates information, which is quaternary; quinary is the top decision-making."
+     },
+     {
+      "piece": "sales",
+      "slot": "s2",
+      "why": "Selling cars is a service (tertiary); making them is secondary."
+     },
+     {
+      "piece": "ore",
+      "slot": "s2",
+      "why": "Digging ore takes it straight from nature, which is primary; making steel from it is secondary."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Sort each job by what the worker does: decide (quinary), handle information (quaternary), serve (tertiary), make (secondary), take from nature (primary)."
+   }
+  },
+  {
+   "id": "hug-economic-sectors-10",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A scientist at a drug company in Basel, Switzerland, runs lab research on new medicines. The company's chief executive decides to build a new factory. How are their jobs classed?",
+   "options": [
+    "Both are tertiary, because both work for a service firm",
+    "Both are secondary, because the company makes medicines",
+    "The scientist is quaternary; the chief executive is quinary",
+    "The scientist is quinary; the chief executive is quaternary"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Quaternary work handles information and research; quinary work is the highest level of decision-making.",
+    "options": [
+     "Research and top decisions are split out from general services as quaternary and quinary.",
+     "Sort by what each worker does, not by what the firm sells.",
+     "Right: research creates information (quaternary); top-level decisions are quinary.",
+     "This swaps them: research is quaternary, top decisions are quinary."
+    ]
+   }
+  },
+  {
+   "id": "hug-economic-sectors-11",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Shipping containers came into use in the 1950s and let cargo move from ship to train to truck without unpacking. What was one effect on where factories locate?",
+   "options": [
+    "Cheaper shipping let factories locate far from buyers",
+    "Factories had to move next to ports to use the containers",
+    "Transport costs rose instead",
+    "Ports stopped being break-of-bulk points as ships grew larger"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Containers cut the cost and time of moving goods, which weakened the pull of the market and let manufacturing spread to low-wage places worldwide.",
+    "options": [
+     "Right: lower transport costs let firms chase cheap labor or land across oceans.",
+     "Containers move inland by train and truck too, so factories did not have to sit at ports.",
+     "Containers cut transport costs rather than raising them.",
+     "Cargo still changes from ship to train or truck at ports, just faster."
+    ]
+   }
+  },
+  {
+   "id": "hug-economic-sectors-12",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Rotterdam, at the mouth of the Rhine River in the Netherlands, has many oil refineries and processing plants beside its docks. Why do they cluster there?",
+   "options": [
+    "Oil is drilled under the docks",
+    "Rotterdam is the capital, so firms are required to locate there",
+    "Cargo switches to barges and trains there anyway",
+    "The Rhine is too shallow for barges, so goods stop at the coast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Rotterdam is a break-of-bulk point: ocean cargo switches to river barges, trains and trucks there, so refining and processing at the docks saves handling costs.",
+    "options": [
+     "The oil arrives by ship; it is not drilled under the city.",
+     "Amsterdam is the capital, and capitals do not force firms to locate in them.",
+     "Right: at a break-of-bulk point the goods are handled anyway, so processing them on the spot saves a step.",
+     "Barges do carry goods up the Rhine into Germany; that is why the port works as a transfer point."
+    ]
+   }
+  },
+  {
+   "id": "hug-economic-sectors-13",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Several aluminum smelters have been built in Iceland, which has plenty of hydroelectric and geothermal power but no bauxite (aluminum ore). What best explains this location?",
+   "options": [
+    "Smelting uses huge amounts of cheap electricity",
+    "Iceland has the lowest wages in Europe, which draws factories",
+    "Aluminum is weight-gaining, so it locates near its buyers in Iceland",
+    "Iceland is a break-of-bulk point between Europe and Asia for most cargo"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Least cost reasoning includes energy: an industry that uses vast amounts of electricity locates where power is cheap, here in Iceland.",
+    "options": [
+     "Right: for an energy-hungry industry, power is the key input, so it pulls the smelter to the cheap energy.",
+     "Wages in Iceland are high; cheap power, not cheap labor, is the draw.",
+     "Iceland is a small market; the metal is exported.",
+     "The draw is energy, not a role as a major transfer port."
+    ]
+   }
+  },
+  {
+   "id": "hug-economic-sectors-14",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "In world-economy terms, why do countries often classed as core have a smaller share of workers in the primary sector than countries often classed as periphery?",
+   "options": [
+    "Core countries have very few farms or mines left to work in",
+    "Machines do more farm work, and more jobs are in services",
+    "Periphery countries ban service jobs to protect farming",
+    "Primary-sector jobs pay more in the periphery than in the core"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The core is defined by high-wage service, research and decision jobs and productive industry; farming there uses machines and few workers, so the primary share is small.",
+    "options": [
+     "Core countries still farm and mine a lot; they just need fewer workers to do it.",
+     "Right: high productivity in farming frees workers for tertiary, quaternary and quinary jobs.",
+     "There is no such ban; many people farm because other jobs are scarce.",
+     "Pay is usually lower in the periphery; the difference is in the mix of jobs available."
+    ]
+   }
+  },
+  {
+   "id": "hug-economic-sectors-15",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.D",
+   "q": "Which of these jobs are in the tertiary (service) sector? Select all that apply.",
+   "options": [
+    "A nurse in a hospital in Lagos, Nigeria",
+    "A truck driver delivering goods in Ohio",
+    "A fisher catching tuna off Ghana",
+    "A welder building ships in Busan, South Korea",
+    "A worker cutting timber in British Columbia"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Tertiary jobs provide services, such as health care and transport; fishing and logging are primary, and shipbuilding is secondary.",
+    "options": [
+     "Right: health care is a service.",
+     "Right: transport is a service.",
+     "Fishing takes from nature: primary.",
+     "Building ships is manufacturing: secondary.",
+     "Cutting timber takes from nature: primary."
+    ]
+   }
+  },
+  {
+   "id": "hug-economic-sectors-16",
+   "unit": "unit-7",
+   "topic": "economic-sectors",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of why copper is smelted near the mines of northern Chile, naming the model.",
+   "why": {
+    "correct": "A full explanation names the model, the weight-losing cause and the transport-cost effect."
+   },
+   "specific": {
+    "frame": "Using ___, copper is smelted near the mines of northern Chile because ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Using least cost theory, copper is smelted near the mines of northern Chile because copper ore is mostly waste rock, so shipping the smelted metal costs far less than shipping the ore.",
+    "slots": {
+     "model": {
+      "label": "Model",
+      "options": [
+       "least cost theory",
+       "the demographic transition model"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That model is about birth and death rates, not where factories locate."
+      }
+     },
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "copper ore is mostly waste rock",
+       "Chile has many workers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Labor is a cost, but the location here is set by the ore's weight."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "shipping the smelted metal costs far less than shipping the ore",
+       "the copper becomes heavier"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Smelting is weight-losing: the product is lighter than the ore."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

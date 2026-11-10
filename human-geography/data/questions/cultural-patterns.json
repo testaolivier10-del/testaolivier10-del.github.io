@@ -57,7 +57,7 @@
    "options": [
     "The Highland share is highest in the northwest and lowest in the east",
     "The Highland share is highest in the Capital Region and the South Coast",
-    "The Highland group is spread evenly across every province of the country",
+    "The Highland group is spread evenly across the provinces of the country",
     "The Highland share rises steadily from the west of the country to the east"
    ],
    "correct": 0,
@@ -83,7 +83,7 @@
    "q": "What is the scale of analysis of the data on this map?",
    "options": [
     "National: the map shows the whole country",
-    "Local (subnational): one value for each province",
+    "Local (subnational), one value a province",
     "Global: the group is compared with the world",
     "Regional: several countries in a world region"
    ],
@@ -109,7 +109,7 @@
    "stimulus": "cultural-patterns-s1",
    "q": "Highland leaders in the Northern Hills ask for their own schools taught in the Highland language. Based on the map, how could the Highland identity act at two scales?",
    "options": [
-    "It unites the whole country because the group lives in every province",
+    "It unites the whole country because the group lives in each province",
     "It divides the Northern Hills but unites the Capital Region",
     "It unites the northwest but may divide Country A as a whole",
     "It has no effect, because ethnicity is not part of culture"
@@ -165,7 +165,7 @@
    "options": [
     "As a centripetal force that strengthens a shared identity",
     "As a centrifugal force that splits residents into groups",
-    "As proof that every Chicago neighborhood looks the same",
+    "As proof that Chicago neighborhoods look much the same as each other",
     "As a physical feature formed by the river near Pilsen"
    ],
    "correct": 0,
@@ -191,8 +191,8 @@
    "q": "Which detail in the passage best shows that Pilsen has a strong sense of place?",
    "options": [
     "Pilsen is located on the Lower West Side of Chicago",
-    "Residents say the murals tell visitors \"this is our neighborhood\"",
-    "The museum opened in 1987, nearly forty years ago",
+    "Residents say the murals say \"this is our neighborhood\"",
+    "The National Museum of Mexican Art opened there in 1987",
     "Murals are painted on walls, viaducts and schools"
    ],
    "correct": 1,
@@ -219,7 +219,7 @@
    "options": [
     "What kinds of images appear in the neighborhood murals",
     "When the National Museum of Mexican Art opened in Pilsen",
-    "What share of Pilsen residents are Mexican American this year",
+    "What share of Pilsen residents are Mexican American",
     "What residents say the murals tell people who visit"
    ],
    "correct": 2,
@@ -300,7 +300,7 @@
    "practice": "2.B",
    "q": "In 1995, voters in Quebec, Canada, where most people speak French, voted on whether Quebec should leave Canada. The \"No\" side won with about 50.6% of the vote. What does this close vote show?",
    "options": [
-    "A shared language pulling all of Canada closer together",
+    "A shared language pulling the people of Canada closer together",
     "Placemaking by English speakers in the province",
     "The physical landscape setting Quebec apart from Canada",
     "A language region can pull against the rest of the country"
@@ -328,7 +328,7 @@
    "options": [
     "A shared language helped unite many groups as one country",
     "Swahili split the country into separate language regions",
-    "Each ethnic group stopped using every other language",
+    "Each ethnic group soon stopped using its home language",
     "The policy is an example of the physical landscape at work"
    ],
    "correct": 0,
@@ -379,7 +379,7 @@
    "q": "Many people in Catalonia, Spain, share the Catalan language, and debates about Catalonia's place in Spain have divided the country. What does this show about centripetal and centrifugal forces?",
    "options": [
     "A shared language can act as a centripetal force alone",
-    "Centrifugal forces appear only at the global scale",
+    "Centrifugal forces appear mainly at the global scale",
     "One trait can unite at one scale and divide at another",
     "Language plays no part in uniting or dividing people"
    ],
@@ -404,10 +404,10 @@
    "practice": "2.A",
    "q": "In Nigeria, most people in the north are Muslim and most people in the south are Christian, with many mixed areas between. Which statement describes this as a regional pattern?",
    "options": [
-    "Religion is the same in every region of Nigeria",
+    "Religion is much the same in each region of Nigeria",
     "Religion is clustered, with no place named",
     "Religion is mostly Muslim in the south of the country",
-    "Religion differs by region: mostly Muslim north, mostly Christian south"
+    "A mostly Muslim north and a mostly Christian south"
    ],
    "correct": 3,
    "why": {
@@ -486,7 +486,7 @@
    "practice": "1.A",
    "q": "Which of these is the best example of placemaking?",
    "options": [
-    "Neighbors painting a mural of their history on a wall",
+    "Neighbors painting a mural of their history",
     "A river cutting a valley over thousands of years",
     "A national law setting the speed limit on highways",
     "A storm knocking down trees along a road"

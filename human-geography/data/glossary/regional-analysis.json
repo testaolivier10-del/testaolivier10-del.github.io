@@ -1,0 +1,17 @@
+{
+ "region": {
+  "def": "An area that geographers group together because its places share something: a trait, a tie to a center or a shared belief."
+ },
+ "formal-region": {
+  "def": "A region whose places share one or more measurable traits, such as a main language, a climate or a main crop. Also called a uniform region."
+ },
+ "functional-region": {
+  "def": "A region tied together by flows to and from a center, such as the area a city's commuters come from or a newspaper delivers to. Also called a nodal region."
+ },
+ "perceptual-region": {
+  "def": "A region defined by what people believe or feel about places, such as \"the South\" in the United States. Also called a vernacular region."
+ },
+ "transition-zone": {
+  "def": "The area at the edge of a region where its defining trait fades and another region begins, such as the Sahel between the Sahara and the grasslands to the south."
+ }
+}

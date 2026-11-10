@@ -1,0 +1,71 @@
+{
+ "topic": "population-policies",
+ "hook": "In 1980, China told most city couples they could have one child. In 2021, it told them they could have three, and began paying families to help with child care. The same country, forty years apart, wanted opposite things. Governments around the world try to steer births and migration. Do their policies work?",
+ "prereq": [
+  {
+   "q": "What is replacement-level fertility in a country where few children die?",
+   "options": [
+    "About 2.1 births per woman",
+    "About 1 birth per woman",
+    "About 4 births per woman",
+    "About 10 births per woman"
+   ],
+   "correct": 0,
+   "why": "About 2.1 children per woman replace both parents where few children die.",
+   "review": "population-dynamics"
+  },
+  {
+   "q": "Which is a critique of Malthusian theory?",
+   "options": [
+    "Fertility fell as countries changed",
+    "Population grows geometrically",
+    "Famine checks population growth",
+    "Food grows arithmetically"
+   ],
+   "correct": 0,
+   "why": "Falling fertility is a critique; the others are parts of the theory.",
+   "review": "malthusian-theory"
+  }
+ ],
+ "figure": {
+  "figure": "population-policies-timeline",
+  "caption": "Population policies over time: China, Singapore and Iran each moved from lowering births to raising them as fertility fell."
+ },
+ "chain": [
+  {
+   "cause": "Fertility is high and the population is growing fast",
+   "effect": "a government may adopt an antinatalist policy"
+  },
+  {
+   "cause": "The antinatalist policy and other changes lower births",
+   "effect": "fertility falls, sometimes below replacement level"
+  },
+  {
+   "cause": "Fertility stays below replacement",
+   "effect": "the workforce shrinks and older people become a larger share, so the government may switch to a pronatalist policy"
+  },
+  {
+   "cause": "Pronatalist policies work slowly or a little",
+   "effect": "many governments also use immigration policy to fill jobs now"
+  }
+ ],
+ "ideas": [
+  "A <b>pronatalist policy</b> tries to raise births (payments, paid leave, child care). An <b>antinatalist policy</b> tries to lower them (family planning, limits).",
+  "An <b>immigration policy</b> sets who may move into a country and how many, such as Canada’s points system (1967).",
+  "Policies can be voluntary or coercive, and they have intended and unintended effects: China’s one-child policy (1980 to 2015) lowered births but also raised the sex ratio at birth.",
+  "Always date a policy. China, Singapore and Iran each moved from antinatalist to pronatalist policies as fertility fell."
+ ],
+ "misconception": {
+  "wrong": "China still has a one-child policy.",
+  "right": "China’s one-child policy ran from 1980 to 2015. It allowed two children from 2016 and three from 2021, and it has since added support for families. Always give the year."
+ },
+ "check": [
+  "hug-population-policies-1",
+  "hug-population-policies-2",
+  "hug-population-policies-5",
+  "hug-population-policies-6",
+  "hug-population-policies-9",
+  "hug-population-policies-12"
+ ],
+ "summary": "Governments use pronatalist policies to raise births, antinatalist policies to lower them and immigration policies to decide who may move in. Policies can be voluntary or coercive and have intended and unintended effects. Many countries, including China (1980, 2016, 2021), Singapore and Iran, switched from lowering births to raising them as fertility fell."
+}

@@ -1,0 +1,688 @@
+{
+ "stimuli": {
+  "population-composition-s1": {
+   "kind": "data",
+   "title": "Population pyramid of Country P",
+   "invented": true,
+   "plot": {
+    "kind": "pyramid",
+    "label": "Population pyramid of Country P: the bars are widest at ages 0 to 4 and get shorter at every older age, a wide base and a narrow top",
+    "groups": [
+     "0-4",
+     "5-9",
+     "10-14",
+     "15-19",
+     "20-24",
+     "25-29",
+     "30-34",
+     "35-39",
+     "40-44",
+     "45-49",
+     "50-54",
+     "55-59",
+     "60-64",
+     "65-69",
+     "70-74",
+     "75-79",
+     "80+"
+    ],
+    "left": [
+     7.7,
+     6.9,
+     6.1,
+     5.4,
+     4.7,
+     4.0,
+     3.4,
+     2.9,
+     2.4,
+     1.9,
+     1.5,
+     1.1,
+     0.9,
+     0.6,
+     0.4,
+     0.2,
+     0.1
+    ],
+    "right": [
+     7.4,
+     6.7,
+     5.9,
+     5.3,
+     4.6,
+     4.0,
+     3.4,
+     2.9,
+     2.4,
+     1.9,
+     1.5,
+     1.2,
+     1.0,
+     0.7,
+     0.5,
+     0.3,
+     0.2
+    ],
+    "xLabel": "Percent of the population",
+    "leftLabel": "Male",
+    "rightLabel": "Female"
+   }
+  },
+  "population-composition-s2": {
+   "kind": "data",
+   "title": "Population pyramid of Country Q",
+   "invented": true,
+   "plot": {
+    "kind": "pyramid",
+    "label": "Population pyramid of Country Q: the bars are shortest at ages 0 to 4, widest at ages 45 to 59, and more women than men at ages 80 and over, a narrow base",
+    "groups": [
+     "0-4",
+     "5-9",
+     "10-14",
+     "15-19",
+     "20-24",
+     "25-29",
+     "30-34",
+     "35-39",
+     "40-44",
+     "45-49",
+     "50-54",
+     "55-59",
+     "60-64",
+     "65-69",
+     "70-74",
+     "75-79",
+     "80+"
+    ],
+    "left": [
+     2.0,
+     2.2,
+     2.4,
+     2.5,
+     2.7,
+     2.9,
+     3.1,
+     3.4,
+     3.6,
+     3.8,
+     3.9,
+     3.7,
+     3.4,
+     3.0,
+     2.5,
+     1.8,
+     1.3
+    ],
+    "right": [
+     2.0,
+     2.2,
+     2.4,
+     2.5,
+     2.7,
+     2.9,
+     3.1,
+     3.4,
+     3.6,
+     3.9,
+     4.0,
+     3.9,
+     3.7,
+     3.4,
+     3.0,
+     2.4,
+     2.5
+    ],
+    "xLabel": "Percent of the population",
+    "leftLabel": "Male",
+    "rightLabel": "Female"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-population-composition-1",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Which phrase describes the shape of Country P’s pyramid?",
+   "stimulus": "population-composition-s1",
+   "options": [
+    "Expansive: a wide base that narrows quickly",
+    "Constrictive: a base narrower than the middle bars of the pyramid",
+    "Stationary: nearly straight sides until old age",
+    "Top-heavy: more older people than children"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An expansive pyramid has a wide base and narrows quickly toward the top. It shows a young population with many children.",
+    "options": [
+     "Right: the youngest bars are the longest and each older bar is shorter.",
+     "P’s base is its widest part.",
+     "P’s sides slope in steeply from the bottom.",
+     "P has far more children than older people."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-2",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Add the bars for ages 0 to 14 (both sexes) on Country P’s pyramid. To the nearest whole percent, what share of Country P’s people are under 15?",
+   "stimulus": "population-composition-s1",
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "sum",
+       "args": [
+        [
+         7.7,
+         6.9,
+         6.1,
+         7.4,
+         6.7,
+         5.9
+        ]
+       ]
+      },
+      0
+     ]
+    },
+    "unit": "%",
+    "tol": 1,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "sum",
+         "args": [
+          [
+           7.7,
+           6.9,
+           6.1
+          ]
+         ]
+        },
+        0
+       ]
+      },
+      "why": "You added only the male bars. The pyramid splits each age group into males (left) and females (right); add both sides."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Add six bars, three male and three female: 7.7 + 6.9 + 6.1 + 7.4 + 6.7 + 5.9, which is about 41 percent."
+   }
+  },
+  {
+   "id": "hug-population-composition-3",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "What will Country P most likely need more of in the next 15 years?",
+   "stimulus": "population-composition-s1",
+   "options": [
+    "Care homes and pensions for a growing share of retired people",
+    "Fewer teachers, because the number of children is falling",
+    "Schools, and then jobs for young adults",
+    "Workers from abroad to replace a shrinking workforce"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A wide base means many children. Over the next 15 years they move up the pyramid, first into schools and then into the job market.",
+    "options": [
+     "P has very few people over 65; its needs are for the young.",
+     "the youngest bars are the longest, so the number of children is large.",
+     "Right: the many many young children will need schools, then work.",
+     "P’s workforce will grow as its many children reach working age."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-4",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which cohort is the largest in Country Q?",
+   "stimulus": "population-composition-s2",
+   "options": [
+    "Children aged 0 to 4",
+    "People aged 80 and over",
+    "Young adults aged 20 to 24",
+    "People aged 50 to 54"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A cohort is a group of people born in the same years. In Country Q the 50-54 cohort has the longest bars.",
+    "options": [
+     "the 0-4 bars are the shortest in the pyramid.",
+     "the 80+ group is small, even though women outnumber men in it.",
+     "the 20-24 bars are shorter than the bars for ages 40 to 59.",
+     "Right: the 50-54 bars are the longest on both sides."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-5",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "What does the narrow base of Country Q’s pyramid suggest?",
+   "stimulus": "population-composition-s2",
+   "options": [
+    "Fewer babies are born each year than 50 years ago",
+    "Many young children are dying before they reach school age",
+    "Many families with babies have moved into Country Q from abroad",
+    "The population of Country Q will grow quickly in the next 20 years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A base narrower than the middle bars is a constrictive pyramid. It shows that births have fallen: the cohorts born recently are smaller than those born decades ago.",
+    "options": [
+     "Right: the youngest cohorts are smaller than those born half a century earlier.",
+     "the base narrows smoothly over many groups, the pattern of falling births.",
+     "that would widen the base, not narrow it.",
+     "few children now means fewer future parents, so growth slows."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-6",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "In Country Q, women outnumber men in the 80 and over group. Which statement best explains this?",
+   "stimulus": "population-composition-s2",
+   "options": [
+    "More girls than boys are born each year in most countries",
+    "On average, women live longer than men",
+    "Older women are counted twice in many censuses",
+    "Older men in Country Q have moved abroad in large numbers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Women live longer than men on average in almost every country, so the sex ratio falls at older ages and the female side of the top bars is longer.",
+    "options": [
+     "slightly more boys are usually born, about 105 for every 100 girls.",
+     "Right: more women survive to the oldest ages, so the female bar is longer.",
+     "there is no such counting rule.",
+     "the pyramid cannot show this, and men living shorter lives is the usual reason."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-7",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can Country Q’s national pyramid NOT answer?",
+   "stimulus": "population-composition-s2",
+   "options": [
+    "Whether children or adults aged 50 to 54 are more numerous in Country Q",
+    "Whether women outnumber men in the oldest group",
+    "Which cities in Country Q have the most older people",
+    "Which age group is the largest in Country Q"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A national pyramid describes the whole country’s age and sex structure. It cannot show where in the country each group lives, or why the pattern formed: those need data at another scale.",
+    "options": [
+     "the bars show this: the 50-54 bars are longer.",
+     "the 80+ bars show more women than men.",
+     "Right: a national pyramid has no data on where people live inside the country.",
+     "the longest bars show the largest cohort."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-8",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a cohort?",
+   "options": [
+    "The share of men compared with women in a population",
+    "The number of people for each square kilometer of land",
+    "A graph that shows a population by age and sex",
+    "A group of people born in the same years"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A cohort is a group born in the same period, such as everyone aged 20 to 24. Pyramids show one cohort per bar.",
+    "options": [
+     "that is the sex ratio.",
+     "that is population density.",
+     "that is a population pyramid, which is made of cohorts.",
+     "Right: each bar of a pyramid is a cohort."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-9",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "An invented country has 52 million males and 48 million females. What is its sex ratio, to the nearest whole number?",
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "sexRatio",
+       "args": [
+        52,
+        48
+       ]
+      },
+      0
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "sexRatio",
+         "args": [
+          48,
+          52
+         ]
+        },
+        0
+       ]
+      },
+      "why": "You put females on top. The sex ratio is males per 100 females, so males go on top."
+     },
+     {
+      "value": 52,
+      "why": "That is the share of males in the population (52 percent), not males per 100 females."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Sex ratio = males per 100 females: $\\frac{52}{48} \\times 100 \\approx 108$."
+   }
+  },
+  {
+   "id": "hug-population-composition-10",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "In Qatar, men aged 25 to 44 far outnumber women of the same ages (Qatar census, 2020). Which explanation fits this part of its pyramid?",
+   "options": [
+    "Far more boys than girls were born in Qatar 30 years ago",
+    "Many men from other countries come to work there",
+    "Women in Qatar leave the country for work at age 25",
+    "Women in Qatar are not counted in its census data"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A large bulge of men of working age on the left side of a pyramid usually shows workers who moved in from other countries. In Qatar, most of them work in building and services.",
+    "options": [
+     "births alone cannot make men outnumber women this much.",
+     "Right: a bulge of working-age men is the mark of labor migration.",
+     "there is no such large outflow of women.",
+     "Qatar’s census counts both men and women."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-11",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "The baby boom in the United States lasted from 1946 to 1964. In a pyramid of the United States for 2020, where would the baby boomers appear?",
+   "options": [
+    "As a wide band at ages 0 to 19",
+    "As a wide band at ages 30 to 44, the middle of the pyramid",
+    "As a wide band at ages 55 to 74",
+    "As a narrow band at ages 80 and over"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A cohort moves up the pyramid as it ages. A large birth cohort shows as a bulge that climbs about one bar every five years.",
+    "options": [
+     "those are people born from 2001 to 2020.",
+     "those were born from 1976 to 1990.",
+     "Right: people born 1946 to 1964 were 56 to 74 years old in 2020.",
+     "the boomers were all younger than 75 in 2020."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-12",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "A pyramid for State College, Pennsylvania, a town with a large university, has a huge bulge at ages 18 to 24. The pyramid for the whole United States does not. What does this show?",
+   "options": [
+    "The United States is losing people aged 18 to 24 to other countries",
+    "State College has more babies than other towns in the country",
+    "The national data for the United States are wrong",
+    "Patterns at the local scale can differ from the national pattern"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Scale changes what a pyramid shows. A college town (local scale) has a bulge of students that the national pyramid hides.",
+    "options": [
+     "the national pyramid shows no such loss, and the town gives no evidence of it.",
+     "the bulge is at ages 18 to 24, not at the base.",
+     "both can be right: the town pulls students from the whole country.",
+     "Right: students gather in one town, so the local pyramid has a bulge."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-13",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Which can you read directly from a population pyramid? Select all that apply.",
+   "options": [
+    "The share of the population in each age group",
+    "Whether men or women are more numerous at each age",
+    "Where in the country older people live",
+    "Why births have fallen",
+    "How many people moved in last year"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A pyramid shows age structure (the share in each age group) and the sex ratio at each age. It does not show places, causes or yearly moves.",
+    "options": [
+     "Right: each bar is a cohort’s share.",
+     "Right: compare the left and right bars.",
+     "A pyramid has no locations; that needs a map.",
+     "A pyramid shows that births fell, not why.",
+     "A pyramid shows age and sex, not yearly moves."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-composition-14",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "3.E",
+   "q": "As a country’s birth rate falls over many decades, its pyramid changes shape. Put the shapes in order, from high birth rate to very low birth rate.",
+   "model": {
+    "layout": "stages",
+    "title": "Pyramid shapes as births fall",
+    "slots": [
+     {
+      "id": "s1"
+     },
+     {
+      "id": "s2"
+     },
+     {
+      "id": "s3"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "exp",
+      "text": "Expansive: wide base, narrow top"
+     },
+     {
+      "id": "sta",
+      "text": "Stationary: straight sides"
+     },
+     {
+      "id": "con",
+      "text": "Constrictive: base narrower than middle"
+     },
+     {
+      "id": "tri",
+      "text": "Upside-down triangle"
+     }
+    ],
+    "key": {
+     "s1": "exp",
+     "s2": "sta",
+     "s3": "con"
+    },
+    "slips": [
+     {
+      "piece": "con",
+      "slot": "s2",
+      "why": "A constrictive pyramid comes last: its base has shrunk below the middle bars. Straight sides (stationary) come first, when births have just leveled off."
+     }
+    ]
+   },
+   "why": {
+    "correct": "High births give a wide base (expansive). When births level off, the sides become nearly straight (stationary). When births fall below earlier levels, the base becomes narrower than the middle (constrictive)."
+   }
+  },
+  {
+   "id": "hug-population-composition-15",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "3.E",
+   "q": "Build an explanation of what a pyramid shape means for a named country.",
+   "specific": {
+    "frame": "In ___, the pyramid has ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Niger, the pyramid has a very wide base, with nearly half of the people under 15 (UN WPP 2024), so the country needs many more schools and, later, jobs.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Niger",
+       "a poor country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name a real country; \"a poor country\" is vague and not a pyramid shape."
+      }
+     },
+     "pattern": {
+      "label": "Shape",
+      "options": [
+       "a very wide base, with nearly half of the people under 15",
+       "many people"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"many people\" is about size, not shape; describe the base."
+      }
+     },
+     "effect": {
+      "label": "Effect and its link",
+      "options": [
+       "the country needs many more schools and, later, jobs",
+       "the population is large"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "that repeats the data; an explanation names what the shape leads to."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Name the place, describe the shape from the data, then link it to a future need."
+   }
+  },
+  {
+   "id": "hug-population-composition-16",
+   "unit": "unit-2",
+   "topic": "population-composition",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A pyramid of a retirement town in Florida is widest at ages 65 to 79 and very narrow at ages 0 to 19. Which service will the town most likely need more of?",
+   "options": [
+    "New primary schools for a large number of young children",
+    "Child care centers for working parents with babies",
+    "Playgrounds and youth sports fields",
+    "Health care for older residents"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A pyramid shows who lives in a place, which tells planners what services they need. A top-heavy local pyramid points to health care and services for older people.",
+    "options": [
+     "the 0-19 bars are very narrow.",
+     "there are few young families in this town.",
+     "few children live in the town.",
+     "Right: a large share of people over 65 needs more doctors and clinics."
+    ]
+   }
+  }
+ ]
+}

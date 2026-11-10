@@ -1,0 +1,8 @@
+{
+ "demographic-transition-model": {
+  "def": "A model of how birth and death rates change over time in five stages: deaths fall first, then births, so population growth speeds up and then slows or turns negative."
+ },
+ "epidemiological-transition": {
+  "def": "A model of how the main causes of death change as a society changes: from infections and famine to chronic diseases such as heart disease and cancer, with new infections possible."
+ }
+}

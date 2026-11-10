@@ -1,0 +1,472 @@
+{
+ "stimuli": {
+  "population-policies-s1": {
+   "kind": "text",
+   "title": "A speech by the family minister of an invented country",
+   "text": "<p><i>Invented for practice.</i> Family minister of Country E, January 2026:</p><p>\"Our total fertility rate has fallen to 1.3, and each year more people retire than start work. From July, every family will receive a payment for each child born, parents may share 18 months of paid leave, and child care will cost no more than 5 percent of a family’s income. We will also offer work visas to 60,000 nurses and builders from abroad each year to fill jobs now.\"</p>"
+  },
+  "population-policies-s2": {
+   "kind": "data",
+   "title": "China’s birth policies, 1980 to 2021",
+   "source": "LevlPrep summary of policy announcements by the Government of China, 1980 to 2021",
+   "table": {
+    "caption": "How China’s national birth policy changed (dated summary)",
+    "cols": [
+     "Years",
+     "Policy",
+     "Main rule"
+    ],
+    "rows": [
+     [
+      "1980 to 2015",
+      "One-child policy",
+      "Most urban couples limited to one child; some exceptions, such as many rural families whose first child was a girl"
+     ],
+     [
+      "2016 to 2021",
+      "Two-child policy",
+      "All couples allowed two children"
+     ],
+     [
+      "2021 on",
+      "Three-child policy",
+      "Couples allowed three children; limits on family size later removed in practice, with support for child care"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-population-policies-1",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which kind of policy do the payments, paid leave and cheaper child care in the speech make up?",
+   "stimulus": "population-policies-s1",
+   "options": [
+    "A pronatalist policy",
+    "An antinatalist policy",
+    "An immigration policy",
+    "A policy to slow the rate of natural increase"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A pronatalist policy encourages people to have more children, with money, leave or services. Country E has a TFR of 1.3, far below replacement.",
+    "options": [
+     "Right: they aim to raise the number of births.",
+     "antinatalist policies try to lower births; these reward having children.",
+     "the work visas are the immigration part; payments for births are not.",
+     "raising births speeds up natural increase; it does not slow it."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-2",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which demographic problem is the minister most trying to solve?",
+   "stimulus": "population-policies-s1",
+   "options": [
+    "A population growing too fast for its schools and housing",
+    "Too few young workers to replace the people who retire",
+    "A sex ratio with far more men than women in young adult cohorts",
+    "Too many people moving abroad to find jobs in other countries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A TFR well below replacement shrinks each new cohort, so fewer people reach working age while large older cohorts retire. The policy tries to raise births and fill jobs now.",
+    "options": [
+     "a TFR of 1.3 means slow growth or decline, not fast growth.",
+     "Right: she says more people retire than start work and the TFR is 1.3.",
+     "the speech does not mention the sex ratio.",
+     "the speech is about births and filling jobs, not people leaving."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-3",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Why does the minister also offer work visas, instead of relying on payments for births alone?",
+   "stimulus": "population-policies-s1",
+   "options": [
+    "Payments for births lower the total fertility rate right away",
+    "Immigrants are not counted in a country’s population",
+    "Babies born now will not be working age for about 20 years",
+    "A pronatalist policy needs people to leave the country first"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Pronatalist policies act slowly: a child born in 2026 starts work around 2046. An immigration policy brings working-age people at once, so many countries use both.",
+    "options": [
+     "payments aim to raise births, and any effect is slow.",
+     "immigrants who live in a country are counted in its population.",
+     "Right: immigration fills jobs now; new births help decades later.",
+     "there is no such rule; the two policies work together."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-4",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which result would show that the payments had only a limited effect?",
+   "stimulus": "population-policies-s1",
+   "options": [
+    "The TFR rises from 1.3 to 2.1 within ten years",
+    "Many more families apply for the child payment in the first year",
+    "The government spends more on the policy in its second year",
+    "The TFR rises from 1.3 to 1.4 and then levels off"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Many pronatalist policies raise births a little or for a short time. South Korea spent heavily on such policies after 2006, yet its TFR fell to 0.72 in 2023 (Statistics Korea, 2024).",
+    "options": [
+     "reaching replacement level would be a large effect.",
+     "applications show use of the policy, not its effect on births.",
+     "spending says nothing about whether births rose.",
+     "Right: a small rise that stops far below 2.1 means a limited effect."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-5",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the change shown in the table?",
+   "stimulus": "population-policies-s2",
+   "options": [
+    "China moved from limiting births toward allowing and supporting more",
+    "China moved from encouraging births to limiting them",
+    "China kept the same policy for the whole period",
+    "China ended its birth limits in 1980"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The table shows a strongly antinatalist policy (1980 to 2015) relaxed in 2016 and 2021, with support for child care added: a move toward pronatalist goals.",
+    "options": [
+     "Right: the limit rose from one child to two, then three.",
+     "this reverses the order in the table.",
+     "the rule changed in 2016 and again in 2021.",
+     "1980 is when the one-child policy began."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-6",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which reason best explains why China relaxed its limits in 2016 and 2021?",
+   "stimulus": "population-policies-s2",
+   "options": [
+    "China’s population was growing too fast for its food supply",
+    "Births fell, and fewer young workers would support more older people",
+    "Most families had already been having three children",
+    "Other countries required China to change its policy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "By the 2010s China’s birth rate was low and its population was getting older, so its leaders tried to raise births. China’s population fell in 2022 for the first time in decades (National Bureau of Statistics of China, 2023).",
+    "options": [
+     "that was the worry in 1980; by 2016 growth had slowed sharply.",
+     "Right: low fertility meant a shrinking workforce and a growing share of older people.",
+     "most urban families had one child under the old policy.",
+     "the change was China’s own decision about its population."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-7",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which was an unintended effect of the one-child policy?",
+   "stimulus": "population-policies-s2",
+   "options": [
+    "The birth rate rose sharply in the 1980s",
+    "China’s population started shrinking in the 1980s",
+    "Many more boys than girls were born",
+    "Most rural families stopped having children"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Where families could have only one child, a preference for sons led to more boys than girls being born. China’s sex ratio at birth rose well above 105 in the 2000s (National Bureau of Statistics of China).",
+    "options": [
+     "the policy lowered births; it did not raise them.",
+     "the population kept growing until the 2020s.",
+     "Right: the sex ratio at birth rose well above the usual 105.",
+     "rural families often had two children under the exceptions."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-8",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is an antinatalist policy?",
+   "options": [
+    "A government policy that tries to raise the number of births",
+    "A government policy that sets how many people may move in",
+    "A rule that counts the number of births in a census",
+    "A government policy that tries to lower the number of births"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Antinatalist policies aim to lower fertility, through family planning, cheaper contraception, rewards for small families or, in some cases, legal limits.",
+    "options": [
+     "that is a pronatalist policy.",
+     "that is an immigration policy.",
+     "counting is not a policy to change births.",
+     "Right: antinatalist means against births."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-9",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Singapore urged families to \"Stop at Two\" in the 1970s, then in 1987 began urging families who could afford it to have three or more. Which statement compares the two policies?",
+   "options": [
+    "The first was antinatalist, while the second was pronatalist",
+    "Both policies were antinatalist, because both named a number of children",
+    "The first was pronatalist, while the second was antinatalist",
+    "Both policies were immigration policies"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A compare speaks of both. Singapore’s 1970s policy aimed to lower births; after fertility fell far below replacement, the 1987 policy aimed to raise them.",
+    "options": [
+     "Right: Singapore first tried to lower births, then to raise them.",
+     "naming a number is not the point; one aimed lower, one higher.",
+     "this reverses the two.",
+     "neither policy was about who may move in."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-10",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In 1966, Romania’s government banned most abortions and limited contraception to raise births. Births rose sharply in 1967 and then fell back. Which statement best describes this policy?",
+   "options": [
+    "A voluntary antinatalist policy that lowered births",
+    "Coercive pronatalist, with harmful unintended effects",
+    "An immigration policy that changed the sex ratio",
+    "A pronatalist policy whose effect on births lasted for decades"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Population policies can be voluntary (payments, leave) or coercive (bans, limits). Romania’s 1966 decree raised births briefly, but unsafe abortions raised deaths of women, and many children ended up in orphanages.",
+    "options": [
+     "it was meant to raise births, and it was not voluntary.",
+     "Right: it forced births up, and many women died from unsafe abortions.",
+     "the policy was about births, not people moving in.",
+     "births fell back within a few years."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-11",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "In 2019, Hungary began offering large loans to young married couples that are cancelled after a third child. Which kind of policy is this?",
+   "options": [
+    "Antinatalist",
+    "An immigration policy",
+    "Pronatalist",
+    "A policy to stop people moving abroad"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Hungary’s Family Protection Action Plan (2019) uses money to encourage births: a voluntary pronatalist policy.",
+    "options": [
+     "it rewards more children, not fewer.",
+     "it is about births to couples already in Hungary.",
+     "Right: it rewards having more children.",
+     "its rule is about children, not about leaving the country."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-12",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Canada uses a points system, begun in 1967, that ranks people who apply to move there by education, work skills and language. Which kind of policy is this, and what is one aim?",
+   "options": [
+    "A pronatalist policy to raise births among Canadians",
+    "An antinatalist policy to slow Canada’s population growth",
+    "A policy to move people from cities to rural areas of Canada",
+    "An immigration policy that brings in skilled workers"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An immigration policy sets who may move into a country and how many. Canada’s points system favors skills the economy needs.",
+    "options": [
+     "it is about who moves in, not births.",
+     "it adds people; it does not lower births.",
+     "the system is about entry to the country.",
+     "Right: it decides who may move to Canada, favoring skills."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-13",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.C",
+   "q": "A country’s total fertility rate is 6 and its population doubles about every 25 years. Which policies would an antinatalist government most likely use? Select all that apply.",
+   "options": [
+    "Free or cheap contraception and family planning clinics",
+    "Campaigns that praise small families",
+    "Cash payments for each child born",
+    "Longer paid leave for new parents",
+    "Lower taxes for families with four or more children"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Antinatalist policies make it easier or more rewarding to have fewer children. Payments, leave and tax breaks for children are pronatalist tools.",
+    "options": [
+     "Right: easier family planning lowers births.",
+     "Right: messages can change ideas about family size.",
+     "That rewards births: a pronatalist tool.",
+     "That supports having children: a pronatalist tool.",
+     "That rewards large families."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-policies-14",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.C",
+   "q": "Build an explanation of the intended effect of a real population policy.",
+   "specific": {
+    "frame": "In ___, the government ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Iran, the government opened free family planning clinics across the country from 1989, so couples had fewer children and the total fertility rate fell sharply during the 1990s.",
+    "slots": {
+     "place": {
+      "label": "Place and time",
+      "options": [
+       "Iran",
+       "Asia"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name one country; a continent has many policies."
+      }
+     },
+     "cause": {
+      "label": "Policy",
+      "options": [
+       "opened free family planning clinics across the country from 1989",
+       "had a policy"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "say what the policy did and when."
+      }
+     },
+     "effect": {
+      "label": "Link and effect",
+      "options": [
+       "couples had fewer children and the total fertility rate fell sharply during the 1990s",
+       "the population changed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "say how the population changed and through which link."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Name the country and date, the policy and the link to its effect on births."
+   }
+  },
+  {
+   "id": "hug-population-policies-15",
+   "unit": "unit-2",
+   "topic": "population-policies",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Iran ran a strong family planning program from 1989, then in 2021 passed a law limiting free access to contraception and adding rewards for births. What does this case show about population policies?",
+   "options": [
+    "Antinatalist policies have no effect on fertility",
+    "Pronatalist policies come before antinatalist ones",
+    "Governments may reverse a policy once its goal is met",
+    "Population policies are decided by other countries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Like China and Singapore, Iran first tried to lower births and later, when fertility fell below replacement, to raise them. Policies change as a population changes.",
+    "options": [
+     "Iran’s fertility fell sharply after 1989.",
+     "Iran’s order was antinatalist first, then pronatalist.",
+     "Right: Iran moved from antinatalist to pronatalist as fertility fell low.",
+     "Iran made its own policies."
+    ]
+   }
+  }
+ ]
+}

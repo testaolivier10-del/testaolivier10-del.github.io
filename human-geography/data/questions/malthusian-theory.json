@@ -1,0 +1,660 @@
+{
+ "stimuli": {
+  "malthusian-theory-s1": {
+   "kind": "text",
+   "title": "From Thomas Malthus, An Essay on the Principle of Population (1798)",
+   "text": "<p>\"Population, when unchecked, increases in a geometrical ratio. [The food supply] increases only in an arithmetical ratio.\"</p><p><i>Plain words:</i> left alone, a population multiplies (1, 2, 4, 8, 16), while the food supply only adds a fixed amount each time (1, 2, 3, 4, 5). Malthus argued that hunger, disease and war, which he called checks, would keep population in line with food.</p>"
+  },
+  "malthusian-theory-s2": {
+   "kind": "data",
+   "title": "Population and food production in Country W, 1960 to 2020",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of Country W from 1960 to 2020, both lines starting at 100: the food production index rises to 380 and the population index rises to 290, so food grows faster than population",
+    "xLabel": "Year",
+    "yLabel": "Index (1960 = 100)",
+    "series": [
+     {
+      "name": "Food production",
+      "points": [
+       [
+        1960,
+        100
+       ],
+       [
+        1970,
+        140
+       ],
+       [
+        1980,
+        185
+       ],
+       [
+        1990,
+        240
+       ],
+       [
+        2000,
+        290
+       ],
+       [
+        2010,
+        340
+       ],
+       [
+        2020,
+        380
+       ]
+      ]
+     },
+     {
+      "name": "Population",
+      "points": [
+       [
+        1960,
+        100
+       ],
+       [
+        1970,
+        130
+       ],
+       [
+        1980,
+        165
+       ],
+       [
+        1990,
+        200
+       ],
+       [
+        2000,
+        235
+       ],
+       [
+        2010,
+        265
+       ],
+       [
+        2020,
+        290
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-malthusian-theory-1",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "According to the passage, how did Malthus think population and food supply grow?",
+   "stimulus": "malthusian-theory-s1",
+   "options": [
+    "Population multiplies; food adds a fixed amount each time",
+    "Food multiplies, while population adds a fixed amount each time",
+    "Both grow at the same steady rate, so they stay balanced",
+    "Population shrinks over time while food supply keeps growing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Malthus said population grows geometrically (1, 2, 4, 8) and food arithmetically (1, 2, 3, 4), so population would outrun food.",
+    "options": [
+     "Right: a geometric ratio doubles; an arithmetic ratio adds the same step.",
+     "this reverses the two ratios in the passage.",
+     "Malthus argued the opposite: population pulls ahead of food.",
+     "Malthus said population grows unless checks stop it."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-2",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "What did Malthus mean by \"checks\"?",
+   "stimulus": "malthusian-theory-s1",
+   "options": [
+    "Government counts of the population taken in a census",
+    "Events such as famine, disease and war that keep population down",
+    "New farm tools that raise food output and let population grow",
+    "Payments to families who have more children"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Checks are what stop a population from outgrowing its food. Malthus named misery (famine, disease, war) and, later, moral restraint such as marrying later.",
+    "options": [
+     "a census counts people; it does not limit their number.",
+     "Right: the passage names hunger, disease and war as checks.",
+     "that is a critique of Malthus, not one of his checks.",
+     "that is a policy to raise births, not a check."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-3",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which evidence most weakens the claim in the passage?",
+   "stimulus": "malthusian-theory-s1",
+   "options": [
+    "Some countries had famines in the 1900s",
+    "World population grew from about 1 billion in 1800 to 8.2 billion in 2024",
+    "World food output grew faster than population from the 1960s to the 2010s",
+    "Food prices rose in some years after bad harvests"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Malthus assumed food could grow only by fixed steps. In fact, new seeds, fertilizer and machines raised food output faster than population for decades (FAO data), so the world did not hit his limit.",
+    "options": [
+     "famines fit Malthus’s idea of checks; they do not weaken it.",
+     "fast growth fits his first claim; it does not show food kept up.",
+     "Right: that shows food can grow faster than an arithmetic ratio.",
+     "a bad year fits his worry; long-run food growth is the stronger test."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-4",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the trend on the chart?",
+   "stimulus": "malthusian-theory-s2",
+   "options": [
+    "Population grew faster than food production after 1960",
+    "Food production fell while population grew",
+    "Food production and population grew at exactly the same rate",
+    "Food production grew faster than population after 1960"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Both indexes start at 100 in 1960. By 2020, food production is 380 and population 290, so food output per person rose.",
+    "options": [
+     "the population line stays below the food line after 1960.",
+     "both lines rise.",
+     "the lines start together and then separate, with food higher.",
+     "Right: by 2020 food reached 380 and population 290 on the index."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-5",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "How do the data for Country W relate to Malthusian theory?",
+   "stimulus": "malthusian-theory-s2",
+   "options": [
+    "They do not fit it: food grew faster than population",
+    "They support it: population outran food after 1960",
+    "They support it: food grew in a steady arithmetic ratio",
+    "They show that checks such as famine held population down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Malthus predicted population would outgrow food. Country W’s food output grew faster than its population, which is the main critique of his theory: technology raised output.",
+    "options": [
+     "Right: Malthus predicted food would fall behind; here it pulled ahead.",
+     "the food line is above the population line.",
+     "food grew faster than population, the opposite of his prediction.",
+     "population nearly tripled, with no sign of a check."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-6",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "A student says, \"The chart proves no one in Country W is hungry.\" What is the best reason this claim goes too far?",
+   "stimulus": "malthusian-theory-s2",
+   "options": [
+    "The chart shows that food production fell after 2000",
+    "National totals do not show who can afford or reach the food",
+    "The chart has no data for the years before 1990",
+    "Population indexes can not be compared with food indexes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Food supply at the national scale says nothing about how food is shared. Poverty, prices and conflict can leave people hungry in a country with enough food in total.",
+    "options": [
+     "the food index keeps rising to 2020.",
+     "Right: hunger can exist when there is enough food overall but some people cannot get it.",
+     "it starts in 1960.",
+     "both use 1960 = 100, so they can be compared."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-7",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the chart. Food production per person is the food index divided by the population index, times 100. To the nearest whole number, what was Country W’s food per person index in 2020 (1960 = 100)?",
+   "stimulus": "malthusian-theory-s2",
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          380,
+          290
+         ]
+        },
+        100
+       ]
+      },
+      0
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 90,
+      "why": "You subtracted the indexes (380 − 290). Per person means dividing food by population."
+     },
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          {
+           "fn": "div",
+           "args": [
+            290,
+            380
+           ]
+          },
+          100
+         ]
+        },
+        0
+       ]
+      },
+      "why": "You divided population by food. Food per person puts food on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Food per person = 380 ÷ 290 × 100 ≈ 131, so each person had about 31 percent more food than in 1960."
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-8",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the central idea of Malthusian theory?",
+   "options": [
+    "Birth rates fall after death rates as a society changes",
+    "People move from crowded places to empty ones over time",
+    "Food supply grows faster than population over time",
+    "Population tends to grow faster than the food supply"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Thomas Malthus (1798) argued that population grows faster than food, so famine, disease or war would follow unless people had fewer children.",
+    "options": [
+     "that is the demographic transition model.",
+     "that is about migration, not Malthus.",
+     "this reverses his claim.",
+     "Right: this is the core claim of his 1798 essay."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-9",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A writer argues in 2025 that rapid population growth will use up fresh water and harm the climate, so the world must slow growth. Which term best describes this view?",
+   "options": [
+    "Neo-Malthusian",
+    "Possibilism",
+    "Environmental determinism",
+    "Demographic transition model"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Neo-Malthusians, such as Paul Ehrlich in The Population Bomb (1968), extend Malthus’s idea beyond food to water, energy and the environment.",
+    "options": [
+     "Right: it applies Malthus’s worry to resources and the environment.",
+     "possibilism says people choose how to use their environment; it is not about limits to growth.",
+     "determinism says the environment shapes culture.",
+     "the DTM describes birth and death rates; it does not argue for slowing growth."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-10",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which fact is a critique of Malthus based on falling fertility?",
+   "options": [
+    "Some countries trade for food they do not grow themselves",
+    "Birth rates fell as countries changed, so growth slowed",
+    "Famines still happened in some places in the 1900s",
+    "New seeds and fertilizer raised crop yields after 1960"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Malthus did not foresee that families would choose to have fewer children. The UN projects world population to peak near 10.3 billion in the mid-2080s (UN WPP 2024).",
+    "options": [
+     "that is a critique based on trade, not fertility.",
+     "Right: many countries moved to stages 3 and 4 of the DTM.",
+     "this fits Malthus; it is not a critique.",
+     "that is a critique based on technology."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-11",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "In 1943, millions died of famine in Bengal, then part of British India, although food production that year was not unusually low. Which critique of Malthus does this support?",
+   "options": [
+    "Population grows faster than food in each region of a country",
+    "Technology raised food output faster than population there",
+    "Hunger is often about who can get food, not the total",
+    "Fertility fell, so fewer people needed food"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The economist Amartya Sen (1981) showed that in the Bengal famine, food was there but many poor people could not afford it. Distribution and access, not just supply, decide who goes hungry.",
+    "options": [
+     "this repeats Malthus; it is not a critique.",
+     "the case is about access to food, not rising output.",
+     "Right: prices, war and poor relief left people unable to buy food.",
+     "the famine was not caused by fertility."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-12",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Malthus wrote that an unchecked population doubles about every 25 years. Using the rule of 70, what rate of natural increase, in percent, gives a doubling time of 25 years?",
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      70,
+      25
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 1750,
+      "why": "You multiplied 70 by 25. To find the rate, divide: 70 ÷ 25."
+     },
+     {
+      "value": 28,
+      "why": "That is the rate per 1,000 people. In percent it is 2.8."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rule of 70: doubling time ≈ 70 ÷ RNI, so RNI ≈ 70 ÷ 25 = 2.8 percent."
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-13",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build Malthus’s argument: place each step in order, first to last.",
+   "model": {
+    "layout": "stages",
+    "title": "Malthus’s argument (1798)",
+    "unit": "Step",
+    "slots": [
+     {
+      "id": "m1"
+     },
+     {
+      "id": "m2"
+     },
+     {
+      "id": "m3"
+     },
+     {
+      "id": "m4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "pop",
+      "text": "Population grows geometrically"
+     },
+     {
+      "id": "food",
+      "text": "Food grows arithmetically"
+     },
+     {
+      "id": "gap",
+      "text": "Population outruns food supply"
+     },
+     {
+      "id": "chk",
+      "text": "Famine, disease and war check growth"
+     },
+     {
+      "id": "tech",
+      "text": "New seeds raise crop yields"
+     }
+    ],
+    "key": {
+     "m1": "pop",
+     "m2": "food",
+     "m3": "gap",
+     "m4": "chk"
+    },
+    "slips": [
+     {
+      "piece": "tech",
+      "slot": "m4",
+      "why": "Rising yields from new seeds are a critique of Malthus, not part of his argument. He said checks such as famine end the gap."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Malthus: population multiplies, food adds, population outruns food, then checks (famine, disease, war) bring population back down. Technology is a critique, not a step."
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-14",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.E",
+   "q": "Which are critiques of Malthusian theory? Select all that apply.",
+   "options": [
+    "New technology raised food output faster than population",
+    "Fertility fell in many countries as they changed",
+    "Hunger is often caused by poverty and conflict, not a lack of food",
+    "Population can grow faster than food if nothing checks it",
+    "Famines have killed many people in the past",
+    "Food supply grows by fixed steps each generation"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Three main critiques: technology raised output, fertility fell with development, and hunger comes from distribution and poverty more than total supply.",
+    "options": [
+     "Right: food grew faster than an arithmetic ratio.",
+     "Right: families chose to have fewer children.",
+     "Right: access to food, not just supply, decides hunger.",
+     "This is Malthus’s claim, not a critique.",
+     "This fits his idea of checks.",
+     "This restates his arithmetic ratio."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-15",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "1.E",
+   "q": "Build an explanation of one weakness of Malthusian theory, with a real example.",
+   "specific": {
+    "frame": "One weakness of ___ is that ___. For example, ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "One weakness of Malthusian theory is that it did not foresee new farm technology, so food output grew faster than population. For example, India’s grain harvest grew faster than its population from the 1960s to the 2010s, because farmers used new seeds and fertilizer.",
+    "slots": {
+     "model": {
+      "label": "Model",
+      "options": [
+       "Malthusian theory",
+       "the demographic transition model"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "the question is about Malthus’s theory."
+      }
+     },
+     "limit": {
+      "label": "Weakness and its link",
+      "options": [
+       "it did not foresee new farm technology, so food output grew faster than population",
+       "it is old"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "age is not a weakness by itself; say what the theory missed and what followed."
+      }
+     },
+     "evidence": {
+      "label": "Real example",
+      "options": [
+       "India’s grain harvest grew faster than its population from the 1960s to the 2010s",
+       "some places have more food"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name a real place and what happened there."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A weakness says what the model missed and links it to what happened, with a real place as evidence."
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-16",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A neo-Malthusian looks at a country whose population is growing 3 percent a year, with farmland already scarce. What would she most likely predict?",
+   "options": [
+    "Food per person will rise without any change in farming",
+    "The population will start to shrink very soon",
+    "People will move into the country to farm its free land",
+    "Pressure on land and water will rise unless growth slows"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Neo-Malthusians argue that fast growth strains land, water and energy, so they call for slower growth. Critics reply that technology and trade can raise carrying capacity.",
+    "options": [
+     "that is the opposite of her worry about scarce land.",
+     "a 3 percent growth rate means fast growth, not decline.",
+     "the case says farmland is already scarce.",
+     "Right: neo-Malthusians link fast growth to strain on resources."
+    ]
+   }
+  },
+  {
+   "id": "hug-malthusian-theory-17",
+   "unit": "unit-2",
+   "topic": "malthusian-theory",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which statement best compares Malthus with his neo-Malthusian followers?",
+   "options": [
+    "Malthus feared for food; later thinkers add water and climate",
+    "Malthus favored fast growth, but neo-Malthusians want it to slow down",
+    "Both believe technology will solve the problem of growth",
+    "Neo-Malthusians reject the idea of limits that Malthus proposed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A compare speaks of both. Malthus (1798) feared population would outrun food; neo-Malthusians such as Paul Ehrlich (1968) fear it will outrun many resources, including the environment.",
+    "options": [
+     "Right: both fear growth outrunning resources, but they look at different resources.",
+     "Malthus also feared fast growth.",
+     "both are skeptical that technology will keep up.",
+     "they extend his idea of limits, they do not reject it."
+    ]
+   }
+  }
+ ]
+}

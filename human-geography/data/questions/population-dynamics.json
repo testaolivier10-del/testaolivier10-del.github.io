@@ -1,0 +1,727 @@
+{
+ "stimuli": {
+  "population-dynamics-s1": {
+   "kind": "map",
+   "title": "Total fertility rate by country, 2023",
+   "map": {
+    "base": "world",
+    "render": "choropleth",
+    "label": "Choropleth map of the world: the total fertility rate is 4.0 or more in many countries of Sub-Saharan Africa and in Afghanistan, and below 2.1 in Europe, East Asia, North America and most of South America",
+    "source": "UN World Population Prospects 2024, total fertility rate, 2023 estimates, in three broad classes",
+    "legendTitle": "Total fertility rate (average births per woman)",
+    "classes": [
+     "Under 2.1 (below replacement)",
+     "2.1 to 3.9",
+     "4.0 or more"
+    ],
+    "noData": "Not shaded (no data, or too close to a class line)",
+    "values": {
+     "norway": 0,
+     "sweden": 0,
+     "finland": 0,
+     "denmark": 0,
+     "iceland": 0,
+     "united-kingdom": 0,
+     "ireland": 0,
+     "france": 0,
+     "spain": 0,
+     "portugal": 0,
+     "italy": 0,
+     "germany": 0,
+     "netherlands": 0,
+     "belgium": 0,
+     "luxembourg": 0,
+     "switzerland": 0,
+     "austria": 0,
+     "czechia": 0,
+     "slovakia": 0,
+     "poland": 0,
+     "hungary": 0,
+     "slovenia": 0,
+     "croatia": 0,
+     "bosnia-and-herzegovina": 0,
+     "serbia": 0,
+     "montenegro": 0,
+     "north-macedonia": 0,
+     "albania": 0,
+     "greece": 0,
+     "bulgaria": 0,
+     "romania": 0,
+     "moldova": 0,
+     "ukraine": 0,
+     "belarus": 0,
+     "lithuania": 0,
+     "latvia": 0,
+     "estonia": 0,
+     "russia": 0,
+     "cyprus": 0,
+     "turkiye": 0,
+     "armenia": 0,
+     "azerbaijan": 0,
+     "iran": 0,
+     "china": 0,
+     "japan": 0,
+     "south-korea": 0,
+     "north-korea": 0,
+     "thailand": 0,
+     "viet-nam": 0,
+     "malaysia": 0,
+     "brunei": 0,
+     "bhutan": 0,
+     "india": 0,
+     "brazil": 0,
+     "argentina": 0,
+     "chile": 0,
+     "uruguay": 0,
+     "colombia": 0,
+     "costa-rica": 0,
+     "el-salvador": 0,
+     "cuba": 0,
+     "jamaica": 0,
+     "puerto-rico": 0,
+     "bahamas": 0,
+     "trinidad-and-tobago": 0,
+     "mexico": 0,
+     "united-states": 0,
+     "canada": 0,
+     "australia": 0,
+     "new-zealand": 0,
+     "united-arab-emirates": 0,
+     "qatar": 0,
+     "kenya": 1,
+     "ghana": 1,
+     "zimbabwe": 1,
+     "rwanda": 1,
+     "namibia": 1,
+     "botswana": 1,
+     "south-africa": 1,
+     "lesotho": 1,
+     "eswatini": 1,
+     "egypt": 1,
+     "algeria": 1,
+     "morocco": 1,
+     "libya": 1,
+     "gabon": 1,
+     "eritrea": 1,
+     "djibouti": 1,
+     "pakistan": 1,
+     "iraq": 1,
+     "syria": 1,
+     "jordan": 1,
+     "israel": 1,
+     "oman": 1,
+     "yemen": 1,
+     "kazakhstan": 1,
+     "uzbekistan": 1,
+     "kyrgyzstan": 1,
+     "tajikistan": 1,
+     "turkmenistan": 1,
+     "mongolia": 1,
+     "cambodia": 1,
+     "laos": 1,
+     "papua-new-guinea": 1,
+     "timor-leste": 1,
+     "fiji": 1,
+     "haiti": 1,
+     "guatemala": 1,
+     "honduras": 1,
+     "bolivia": 1,
+     "paraguay": 1,
+     "guyana": 1,
+     "niger": 2,
+     "chad": 2,
+     "mali": 2,
+     "democratic-republic-of-the-congo": 2,
+     "central-african-republic": 2,
+     "somalia": 2,
+     "angola": 2,
+     "nigeria": 2,
+     "burkina-faso": 2,
+     "burundi": 2,
+     "benin": 2,
+     "mozambique": 2,
+     "uganda": 2,
+     "tanzania": 2,
+     "sudan": 2,
+     "south-sudan": 2,
+     "cameroon": 2,
+     "gambia": 2,
+     "guinea": 2,
+     "cote-d-ivoire": 2,
+     "mauritania": 2,
+     "afghanistan": 2
+    }
+   }
+  },
+  "population-dynamics-s2": {
+   "kind": "data",
+   "title": "Birth, death and migration rates in four countries",
+   "invented": true,
+   "table": {
+    "caption": "Rates per 1,000 people per year in Countries J, K, L and M (invented data for practice)",
+    "cols": [
+     "Country",
+     "Crude birth rate",
+     "Crude death rate",
+     "Net migration rate"
+    ],
+    "rows": [
+     [
+      "Country J",
+      "38",
+      "8",
+      "−2"
+     ],
+     [
+      "Country K",
+      "12",
+      "10",
+      "+6"
+     ],
+     [
+      "Country L",
+      "9",
+      "12",
+      "+1"
+     ],
+     [
+      "Country M",
+      "25",
+      "7",
+      "−10"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-population-dynamics-1",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes the pattern on the map?",
+   "stimulus": "population-dynamics-s1",
+   "options": [
+    "Highest in Sub-Saharan Africa; below 2.1 in Europe and East Asia",
+    "Rates are highest in Europe and lowest in Africa",
+    "Rates are about the same in each world region",
+    "Rates are highest in the Americas, from Canada in the north to Chile in the south"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A strong description names where values are high and low. TFR is 4.0 or more in much of Sub-Saharan Africa (Niger, Chad, Nigeria) and below 2.1 across Europe, East Asia and most of the Americas.",
+    "options": [
+     "Right: this names where the high and low classes are, using the legend.",
+     "this reverses the map: Europe is in the lowest class.",
+     "the map shows three very different classes in different regions.",
+     "most of the Americas are below 2.1."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-2",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Compare India and Nigeria on the map. Which statement is correct?",
+   "stimulus": "population-dynamics-s1",
+   "options": [
+    "Both countries are in the class of 4.0 or more",
+    "India is below 2.1 and Nigeria is 4.0 or more",
+    "India has a higher total fertility rate than Nigeria",
+    "Both countries are in the class of 2.1 to 3.9"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Read each country’s shade against the legend. India is below replacement (under 2.1); Nigeria is 4.0 or more.",
+    "options": [
+     "India is shaded in the lowest class, below 2.1.",
+     "Right: India is in the lowest class and Nigeria in the highest.",
+     "the map shows the reverse.",
+     "neither is in the middle class on this map."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-3",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.E",
+   "q": "Many countries on the map are below 2.1. If a country stays below 2.1 for decades and no one moves in, what will most likely happen to its population?",
+   "stimulus": "population-dynamics-s1",
+   "options": [
+    "It will double in about 35 years",
+    "It will stay the same size for ever, because 2.1 is a stable level",
+    "It will shrink, as each generation is smaller than the last",
+    "It will grow faster, because each woman has more children"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Replacement-level fertility is about 2.1 births per woman. Below it, each generation of parents is replaced by a smaller one, so in the long run the population falls unless migrants arrive.",
+    "options": [
+     "doubling needs a positive rate of natural increase; below-replacement fertility leads toward decline.",
+     "staying below 2.1 means fewer births than are needed to replace parents.",
+     "Right: below replacement level, fewer children are born than are needed to replace their parents.",
+     "a TFR under 2.1 means fewer children per woman, not more."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-4",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which is a limitation of this map?",
+   "stimulus": "population-dynamics-s1",
+   "options": [
+    "It does not show which countries have the highest total fertility rates",
+    "It shows birth rates in each city, which makes it hard to read",
+    "It gives no source or year, so there is no way to check the values on it",
+    "One value per country hides differences inside each country"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The data are at the national scale. In India, for example, fertility is much lower in Kerala in the south than in Bihar in the north (National Family Health Survey, 2019-21). One national shade hides that.",
+    "options": [
+     "it does show this: the darkest class is 4.0 or more.",
+     "the data are national, not by city.",
+     "the map names its source and year: UN World Population Prospects 2024, 2023 estimates.",
+     "Right: a national average can hide very different rates in different states or provinces."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-5",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. What is Country J’s rate of natural increase, in percent?",
+   "stimulus": "population-dynamics-s2",
+   "numeric": {
+    "from": {
+     "fn": "rni",
+     "args": [
+      38,
+      8
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "rniPer1000",
+       "args": [
+        38,
+        8
+       ]
+      },
+      "why": "That is per 1,000 people. To turn it into a percent, divide by 10: 30 per 1,000 is 3 percent."
+     },
+     {
+      "from": {
+       "fn": "growthRate",
+       "args": [
+        38,
+        8,
+        -2
+       ]
+      },
+      "why": "You added the net migration rate. The rate of natural increase uses births and deaths only."
+     }
+    ]
+   },
+   "why": {
+    "correct": "RNI = (CBR − CDR) ÷ 10 = (38 − 8) ÷ 10 = 3 percent. Migration is not part of it."
+   }
+  },
+  {
+   "id": "hug-population-dynamics-6",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "If Country J’s rate of natural increase stays at 3 percent, about how many years will its population take to double? Use the rule of 70 and round to the nearest whole year.",
+   "stimulus": "population-dynamics-s2",
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "doublingTime",
+       "args": [
+        {
+         "fn": "rni",
+         "args": [
+          38,
+          8
+         ]
+        }
+       ]
+      },
+      0
+     ]
+    },
+    "unit": "years",
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "You divided 70 by 30, the rate per 1,000. The rule of 70 uses the rate in percent: 70 ÷ 3."
+     },
+     {
+      "value": 210,
+      "why": "You multiplied 70 by 3. Doubling time is 70 divided by the percent rate."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Doubling time ≈ 70 ÷ RNI in percent = 70 ÷ 3 ≈ 23 years."
+   }
+  },
+  {
+   "id": "hug-population-dynamics-7",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "Which country’s population is shrinking even when migration is counted?",
+   "stimulus": "population-dynamics-s2",
+   "options": [
+    "Country K",
+    "Country M",
+    "Country L",
+    "Country J"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Total change per 1,000 = births − deaths + net migration. Country L: 9 − 12 + 1 = −2, so it shrinks. The others grow.",
+    "options": [
+     "K grows: births exceed deaths by 2 and migration adds 6 per 1,000.",
+     "M loses 10 per 1,000 to migration but gains 18 from natural increase.",
+     "Right: its deaths exceed its births by 3 per 1,000, and only 1 per 1,000 is added by migration.",
+     "J grows fast: 30 per 1,000 from natural increase, minus 2 from migration."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-8",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Country K’s rate of natural increase is only 0.2 percent, yet its population grows four times as fast. What explains the difference?",
+   "stimulus": "population-dynamics-s2",
+   "options": [
+    "Its death rate is higher than its birth rate",
+    "The rate of natural increase includes people who move in",
+    "Its total fertility rate is above replacement level",
+    "Net migration adds 6 people per 1,000 each year"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Growth = natural increase + net migration. K: (12 − 10) + 6 = 8 per 1,000, or 0.8 percent, four times its RNI of 0.2 percent.",
+    "options": [
+     "K’s birth rate (12) is higher than its death rate (10).",
+     "it does not: RNI uses births and deaths only.",
+     "the table gives no TFR, and K’s birth rate is low.",
+     "Right: RNI leaves out migration, so it misses the 6 per 1,000 who move in."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-9",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does the total fertility rate measure?",
+   "options": [
+    "The average number of children per woman over her lifetime",
+    "The number of births per 1,000 people in one year",
+    "The number of babies who die before age 1 per 1,000 births",
+    "The share of women in a population who are of working age"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "TFR is the average number of children born to a woman over her lifetime if the birth rates of a given year stay the same. Unlike the crude birth rate, it is not changed by age structure.",
+    "options": [
+     "Right: TFR is births per woman over a lifetime.",
+     "that is the crude birth rate.",
+     "that is the infant mortality rate.",
+     "that is part of age structure, not fertility."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-10",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A country records 30 deaths of babies under one year old for every 1,000 live births. Which measure is this?",
+   "options": [
+    "The crude death rate of the whole population",
+    "The infant mortality rate",
+    "The total fertility rate",
+    "Life expectancy at birth"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The infant mortality rate is the number of babies who die before their first birthday per 1,000 live births. It is a strong sign of health care and clean water.",
+    "options": [
+     "CDR counts deaths of people of every age per 1,000 people.",
+     "Right: IMR counts deaths of babies under age 1 per 1,000 live births.",
+     "TFR is births per woman, not deaths.",
+     "life expectancy is a number of years, not a rate per 1,000."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-11",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "An invented country of 25 million people had 500,000 births last year. What was its crude birth rate, in births per 1,000 people?",
+   "numeric": {
+    "from": {
+     "fn": "cbr",
+     "args": [
+      500000,
+      25000000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is the percent (births ÷ population × 100). The crude birth rate is per 1,000 people."
+     },
+     {
+      "value": 0.02,
+      "why": "That is births ÷ population with no scaling. Multiply by 1,000 to get births per 1,000 people."
+     }
+    ]
+   },
+   "why": {
+    "correct": "CBR = births ÷ population × 1,000 = 500,000 ÷ 25,000,000 × 1,000 = 20 per 1,000."
+   }
+  },
+  {
+   "id": "hug-population-dynamics-12",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Replacement-level fertility is about 2.1 births per woman in countries where few children die, not exactly 2. Why is it a little above 2?",
+   "options": [
+    "Some parents move to other countries before their children grow up",
+    "Each woman has to replace herself, her partner and one grandparent",
+    "The number is rounded up to make it easier to remember",
+    "Some children die young, and more boys than girls are born"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Two parents need two children who survive to adulthood. Because some children die young and about 105 boys are born for every 100 girls, it takes about 2.1 births per woman. Where many children die, the level is higher.",
+    "options": [
+     "migration is not part of replacement-level fertility.",
+     "replacement means two children to replace two parents.",
+     "the 0.1 has a real cause: child deaths and the sex ratio at birth.",
+     "Right: extra births are needed to replace both parents with two adults."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-13",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.E",
+   "q": "South Korea’s total fertility rate was 0.72 in 2023 (Statistics Korea, 2024). If it stays near that level and few people move in, what is most likely?",
+   "options": [
+    "Each generation will be about a third the size of the last",
+    "The population will double within one generation",
+    "The population will stay the same because the death rate is low",
+    "The crude birth rate will rise above the crude death rate soon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each woman has well under one child on average, so each new generation is much smaller than its parents’. Without large migration, the population will shrink and grow older.",
+    "options": [
+     "Right: 0.72 children per woman is about a third of the 2.1 needed for replacement.",
+     "a TFR far below 2.1 leads to decline, not growth.",
+     "low deaths cannot make up for so few births over the long run.",
+     "with so few births, deaths are likely to stay above births."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-14",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In many rural farming areas, families have more children than in cities of the same country. Which economic reason helps explain this?",
+   "options": [
+    "Rural areas have more hospitals, so more babies are born there",
+    "Children help on farms but cost more to raise in cities",
+    "City families earn less money, so they choose to have fewer children",
+    "Rural families pay much higher taxes for each child they have"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Fertility has economic causes. On a farm, children can work and care for parents later. In a city, children need years of costly schooling and space, so families tend to have fewer.",
+    "options": [
+     "rural areas usually have fewer hospitals than cities.",
+     "Right: children add labor on farms; in cities housing and school costs are higher.",
+     "city incomes are usually higher; the point is the cost of raising a child.",
+     "taxes are not the usual reason for this pattern."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-15",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which change would most likely raise life expectancy in a country?",
+   "options": [
+    "A rise in the share of young people who move to the capital city",
+    "A higher total fertility rate in rural areas of the country",
+    "Clean drinking water and vaccines for children",
+    "A fall in the number of people who move into the country"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Life expectancy is the average number of years a newborn can expect to live. It rises when deaths from infection fall: clean water, sanitation, vaccines and health care.",
+    "options": [
+     "moving inside a country changes where people live, not how long they live.",
+     "more births do not by themselves make people live longer.",
+     "Right: these cut deaths from disease, so people live longer on average.",
+     "fewer immigrants changes population size, not life expectancy."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-16",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.C",
+   "q": "Which measures do you need to calculate the rate of natural increase? Select all that apply.",
+   "options": [
+    "Crude birth rate",
+    "Crude death rate",
+    "Net migration rate",
+    "Total fertility rate",
+    "Infant mortality rate"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "RNI = (CBR − CDR) ÷ 10, in percent. Migration is not part of it.",
+    "options": [
+     "Right: RNI starts from births per 1,000 people.",
+     "Right: RNI subtracts deaths per 1,000 people.",
+     "Migration is left out of RNI; add it only for total growth.",
+     "TFR is births per woman; RNI uses the crude rates.",
+     "IMR is a different measure of deaths."
+    ]
+   }
+  },
+  {
+   "id": "hug-population-dynamics-17",
+   "unit": "unit-2",
+   "topic": "population-dynamics",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how a social factor changes fertility in a named place.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Kerala, India, most girls stay in school through their teens, so they marry later and have fewer children, and the state’s total fertility rate is below replacement (National Family Health Survey, 2019-21).",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Kerala, India",
+       "some states"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name the real place."
+      }
+     },
+     "cause": {
+      "label": "Social factor",
+      "options": [
+       "most girls stay in school through their teens",
+       "people are educated"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "too vague: say who stays in school and for how long."
+      }
+     },
+     "effect": {
+      "label": "Link and effect",
+      "options": [
+       "they marry later and have fewer children",
+       "fertility changes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "give the link (marrying later) and the direction (fewer children)."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "An explanation names the factor, the link and the effect on fertility, in a real place."
+   }
+  }
+ ]
+}

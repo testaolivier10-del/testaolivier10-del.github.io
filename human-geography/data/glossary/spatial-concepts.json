@@ -1,0 +1,32 @@
+{
+ "absolute-location": {
+  "def": "The exact position of a place on the Earth, usually given by latitude (degrees north or south of the equator) and longitude (degrees east or west of the prime meridian)."
+ },
+ "relative-location": {
+  "def": "Where a place is compared with other places or features, such as \"near the center of the United States, where two rivers meet\"."
+ },
+ "space-concept": {
+  "def": "The area between and around places, and how people and things are arranged across it."
+ },
+ "place-concept": {
+  "def": "A location plus the meaning, character and feelings people give it. Those feelings are called a sense of place."
+ },
+ "flow": {
+  "def": "A movement of people, goods, money or ideas from one place to another."
+ },
+ "distance-decay": {
+  "def": "The idea that contact between places falls as the distance between them grows."
+ },
+ "time-space-compression": {
+  "def": "The way faster transport and communication cut the time needed to link places, so distant places feel closer."
+ },
+ "spatial-pattern": {
+  "def": "How things are arranged across space, such as clustered, dispersed or in a line along a river."
+ },
+ "site": {
+  "def": "The physical character of a place itself, such as its landforms, water, soil and climate."
+ },
+ "situation": {
+  "def": "The location of a place relative to other places, routes and features, which shapes its links to them."
+ }
+}

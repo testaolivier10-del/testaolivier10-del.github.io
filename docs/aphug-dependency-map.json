@@ -146,6 +146,18 @@
       "topic": "skills-scale",
       "stimulus": "map",
       "author": "A"
+     },
+     {
+      "title": "A line chart of two towns: reading a trend",
+      "topic": "skills-reading",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A practice FRQ part and a student answer, scored against its verb",
+      "topic": "skills-frq",
+      "stimulus": "text",
+      "author": "A"
      }
     ]
    }
@@ -214,6 +226,66 @@
      },
      {
       "title": "A perceptual region from a survey (Country A)",
+      "topic": "regional-analysis",
+      "stimulus": "map",
+      "author": "A"
+     },
+     {
+      "title": "Lines of equal height: reading an isoline map (Country A)",
+      "topic": "views-of-the-world",
+      "stimulus": "map",
+      "author": "A"
+     },
+     {
+      "title": "Field notes from a market street: qualitative and quantitative data",
+      "topic": "data-sources",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "Lights at night seen by satellite: a dot map (Country A)",
+      "topic": "data-sources",
+      "stimulus": "map",
+      "author": "A"
+     },
+     {
+      "title": "Satellite images and census counts for flood shelters",
+      "topic": "data-in-decisions",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "Singapore's site and situation",
+      "topic": "spatial-concepts",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "Distance decay: where a stadium's fans come from",
+      "topic": "spatial-concepts",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "The shrinking Aral Sea: land use and sustainability",
+      "topic": "human-environment",
+      "stimulus": "text",
+      "author": "A"
+     },
+     {
+      "title": "South Asia income groups: national data on a regional map",
+      "topic": "scales-of-analysis",
+      "stimulus": "map",
+      "author": "A"
+     },
+     {
+      "title": "Household income by province: what a national figure hides (Country A)",
+      "topic": "scales-of-analysis",
+      "stimulus": "map",
+      "author": "A"
+     },
+     {
+      "title": "Commuters into a capital: a functional region (Country A)",
       "topic": "regional-analysis",
       "stimulus": "map",
       "author": "A"
@@ -387,6 +459,78 @@
       "title": "A language map of a bilingual country",
       "topic": "religion-language-diffusion",
       "stimulus": "map",
+      "author": "C"
+     },
+     {
+      "title": "Notes of two visitors at a family dinner in Seoul",
+      "topic": "culture-intro",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Folk and popular culture in Lancaster County, Pennsylvania",
+      "topic": "culture-intro",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "One riverbank in three periods (sequent occupance)",
+      "topic": "culture-on-the-land",
+      "stimulus": "image",
+      "author": "C"
+     },
+     {
+      "title": "An ethnic group by province of Country A",
+      "topic": "cultural-patterns",
+      "stimulus": "map",
+      "author": "C"
+     },
+     {
+      "title": "Murals and placemaking in Pilsen, Chicago",
+      "topic": "cultural-patterns",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Sequoyah and the Cherokee syllabary",
+      "topic": "diffusion-types",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Four countries and their colonial languages (world reference map)",
+      "topic": "diffusion-history",
+      "stimulus": "map",
+      "author": "C"
+     },
+     {
+      "title": "Internet use and an Indigenous language in Country A (line chart)",
+      "topic": "diffusion-today",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Reviving te reo Maori in New Zealand",
+      "topic": "diffusion-today",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "The world by religion, Pew 2025 report (2020 data)",
+      "topic": "religion-language-diffusion",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "Four cases of cultures meeting",
+      "topic": "diffusion-effects",
+      "stimulus": "text",
+      "author": "C"
+     },
+     {
+      "title": "Three generations of one migrant family (table)",
+      "topic": "diffusion-effects",
+      "stimulus": "data",
       "author": "C"
      }
     ],
@@ -3979,6 +4123,26 @@
    "aliases": [
     "EEZ",
     "EEZs"
+   ],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "unclos"
+   ]
+  },
+  {
+   "id": "contiguous-zone",
+   "term": "contiguous zone",
+   "aliases": [],
+   "taughtIn": "boundary-functions",
+   "dependsOn": [
+    "unclos"
+   ]
+  },
+  {
+   "id": "international-waters",
+   "term": "international waters",
+   "aliases": [
+    "high seas"
    ],
    "taughtIn": "boundary-functions",
    "dependsOn": [

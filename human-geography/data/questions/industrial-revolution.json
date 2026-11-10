@@ -124,7 +124,7 @@
     "Coal fueled the steam engines",
     "Coalfields were where the best farmland was found",
     "Rulers kept factories away from the coast by law",
-    "Each region held its country's capital city"
+    "Each was a capital"
    ],
    "correct": 0,
    "why": {
@@ -259,7 +259,7 @@
     "Towns grow as rural people take factory jobs",
     "Cities empty out as factory workers go back to farms",
     "Farm output drops to zero as farmworkers leave",
-    "People spread out evenly across the countryside"
+    "People spread evenly over the land"
    ],
    "correct": 0,
    "why": {
@@ -339,7 +339,7 @@
     "Mills could leave rivers and cluster in towns near coal",
     "Mills moved next to waterfalls so the engines stayed cool",
     "Factories were allowed in capital cities and nowhere else",
-    "Factories spread out evenly across the whole countryside"
+    "Factories spread evenly over the countryside"
    ],
    "correct": 0,
    "why": {
@@ -578,7 +578,7 @@
    "options": [
     "India's hand weavers lost buyers and work",
     "India soon built more steam mills than Britain had",
-    "India stopped growing cotton for export to Britain",
+    "India stopped growing cotton",
     "Indian weavers moved to Manchester to run its mills"
    ],
    "correct": 0,

@@ -1,0 +1,655 @@
+{
+ "stimuli": {
+  "production-regions-s1": {
+   "kind": "data",
+   "title": "What three kinds of farming can pay for land",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of the rent three kinds of farming can pay per hectare at distances from 0 to 100 km from a market: market gardening starts highest and falls fastest, reaching zero at 45 km; grain starts lower and falls more slowly, reaching zero at about 67 km; ranching starts lowest and falls slowest, reaching zero at 100 km.",
+    "xLabel": "Distance from the market (km)",
+    "yLabel": "Rent a farmer can pay (dollars per hectare)",
+    "series": [
+     {
+      "name": "Market gardening",
+      "points": [
+       [
+        0,
+        900
+       ],
+       [
+        15,
+        600
+       ],
+       [
+        30,
+        300
+       ],
+       [
+        45,
+        0
+       ]
+      ]
+     },
+     {
+      "name": "Grain",
+      "points": [
+       [
+        0,
+        400
+       ],
+       [
+        15,
+        310
+       ],
+       [
+        30,
+        220
+       ],
+       [
+        45,
+        130
+       ],
+       [
+        60,
+        40
+       ],
+       [
+        67,
+        0
+       ]
+      ]
+     },
+     {
+      "name": "Ranching",
+      "points": [
+       [
+        0,
+        150
+       ],
+       [
+        25,
+        112
+       ],
+       [
+        50,
+        75
+       ],
+       [
+        75,
+        37
+       ],
+       [
+        100,
+        0
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "production-regions-s2": {
+   "kind": "map",
+   "title": "Farm output sold for cash, by province of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth of Country A by province: the share of farm output that is sold is highest in the Capital Region and Central Valley and lowest in the Southern Forest and Northern Hills",
+    "legendTitle": "Farm output sold for cash (percent, invented)",
+    "classes": [
+     "Under 25%",
+     "25% to 49%",
+     "50% to 74%",
+     "75% or more"
+    ],
+    "values": {
+     "capital": 3,
+     "central": 3,
+     "east": 2,
+     "coast": 2,
+     "northeast": 1,
+     "west": 1,
+     "north": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     },
+     {
+      "at": "south",
+      "text": "Southern Forest"
+     },
+     {
+      "at": "north",
+      "text": "Northern Hills"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-production-regions-1",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "According to the chart, which kind of farming can pay the highest rent for land 10 km from the market?",
+   "options": [
+    "Market gardening",
+    "Grain",
+    "Ranching",
+    "The three can pay about the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read up from 10 km on the distance axis: the market gardening line is highest, so that use would outbid the others for this land.",
+    "options": [
+     "Right: at 10 km market gardening can pay about 700 dollars a hectare, more than grain or ranching.",
+     "Grain can pay about 340 dollars a hectare at 10 km, less than market gardening.",
+     "Ranching can pay the least near the market, about 140 dollars a hectare.",
+     "The lines are far apart at 10 km."
+    ]
+   },
+   "stimulus": "production-regions-s1"
+  },
+  {
+   "id": "hug-production-regions-2",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Between 40 and 50 km from the market, which kind of farming can pay the most for land?",
+   "options": [
+    "Market gardening",
+    "Ranching",
+    "Grain",
+    "Ranching and grain equally"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Bid-rent theory says land goes to the use that can pay the most. In the middle band that is grain, so a ring of grain farms forms there.",
+    "options": [
+     "Market gardening falls fast and reaches zero at 45 km.",
+     "Ranching overtakes grain past about 56 km, beyond this band.",
+     "Right: past about 36 km the grain line is above the market gardening line, and it stays above ranching until about 56 km.",
+     "Grain is well above ranching between 40 and 50 km; they cross only past about 56 km."
+    ]
+   },
+   "stimulus": "production-regions-s1"
+  },
+  {
+   "id": "hug-production-regions-3",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Why does the market gardening line fall faster than the ranching line?",
+   "options": [
+    "Ranchers sell their animals at a much higher price per hectare",
+    "Vegetables grow faster far away from the market",
+    "Market gardens need less labor for each hectare",
+    "Its fresh produce costs more to ship and spoils on long trips"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The slope shows how fast transport costs eat into what a use can earn. Perishable produce has the steepest slope.",
+    "options": [
+     "Ranching earns little per hectare; that is why its line starts lowest.",
+     "Growth rate does not change with distance; shipping cost and spoilage do.",
+     "Market gardens need much more labor per hectare, not less.",
+     "Right: perishable, bulky produce loses value fast with distance, so the rent it can pay drops quickly."
+    ]
+   },
+   "stimulus": "production-regions-s1"
+  },
+  {
+   "id": "hug-production-regions-4",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "A new highway and refrigerated trucks cut the cost of shipping fresh produce. How would the market gardening line most likely change?",
+   "options": [
+    "It would fall more steeply, so gardening would move closer in to town",
+    "It would fall less steeply, so gardening could extend farther out",
+    "It would match the ranching line exactly",
+    "It would disappear from the chart"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Transport technology changes bid-rent patterns: when distance costs less, intensive uses can spread farther from the market.",
+    "options": [
+     "Cheaper shipping lowers the cost of distance, which flattens the line.",
+     "Right: lower transport cost flattens the line, so market gardening can outbid grain over a wider area.",
+     "Cheaper shipping helps produce most, so its line does not drop to ranching's.",
+     "Market gardening remains profitable near the market."
+    ]
+   },
+   "stimulus": "production-regions-s1"
+  },
+  {
+   "id": "hug-production-regions-5",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which statement describes the pattern on the map?",
+   "options": [
+    "Sold output is highest in the Southern Forest and lowest near the capital",
+    "Sold output is about equal across the provinces of the country",
+    "Sold output peaks near the capital and is lowest in the far south and north",
+    "Sold output is highest along the South Coast and lowest in the Central Valley"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A pattern names where values are high and low: highest around the capital and Central Valley, lowest in the forest and hills at the edges.",
+    "options": [
+     "The legend shows the reverse: the Southern Forest is in the lowest class.",
+     "The provinces fall into four different classes.",
+     "Right: the darkest class is in the Capital Region and Central Valley; the lightest is in the Southern Forest and Northern Hills.",
+     "The Central Valley is in the highest class."
+    ]
+   },
+   "stimulus": "production-regions-s2"
+  },
+  {
+   "id": "hug-production-regions-6",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "What is the scale of analysis of the data on this map?",
+   "options": [
+    "Local (subnational): each value is for a province",
+    "National: the map shows the whole country",
+    "Global: the data compare countries of the world",
+    "Regional: the data compare world regions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The scale of analysis is the scale of the data shown, not the size of the area drawn. Province data are local (subnational).",
+    "options": [
+     "Right: the data describe parts of one country, so they are subnational.",
+     "The scale of analysis is the scale of the data. Each value is for a province, not for the country.",
+     "Only one country is shown.",
+     "The values are for provinces of one country."
+    ]
+   },
+   "stimulus": "production-regions-s2"
+  },
+  {
+   "id": "hug-production-regions-7",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which explanation best accounts for the low share of sold output in the Southern Forest?",
+   "options": [
+    "Land near the capital is cheap, so farmers there grow food to eat",
+    "Far from the capital's market, more families grow food to eat",
+    "Forest provinces have the highest rents in the country",
+    "Farmers in the forest sell most of their crops abroad"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Bid-rent and access go together: near the main market, land is costly and farms sell most of what they grow; far away, more farming is for the family's own use.",
+    "options": [
+     "Land near a large market usually costs more, pushing farmers to grow for sale.",
+     "Right: where markets are distant and transport is costly, subsistence agriculture is more common.",
+     "Rents are usually lowest far from the main market.",
+     "The map shows that most output there is not sold."
+    ]
+   },
+   "stimulus": "production-regions-s2"
+  },
+  {
+   "id": "hug-production-regions-8",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is subsistence agriculture?",
+   "options": [
+    "Farming mainly to sell crops for profit",
+    "Growing one crop on the same field year after year",
+    "Raising animals on fixed, fenced grassland",
+    "Farming mainly to feed the farmer's own family"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Subsistence agriculture grows food for the farming household; commercial agriculture grows it for sale.",
+    "options": [
+     "That is commercial agriculture.",
+     "That is monocropping.",
+     "That is ranching, which is usually commercial.",
+     "Right: subsistence farmers eat most of what they grow and sell little."
+    ]
+   }
+  },
+  {
+   "id": "hug-production-regions-9",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A family in rural Bangladesh grows rice on a small plot and eats most of it, while a farm in Iowa sells all of its corn to a grain company. Which comparison is accurate?",
+   "options": [
+    "The Bangladesh farm is subsistence, whereas the Iowa farm is commercial",
+    "Both farms are commercial, but Iowa's is larger",
+    "The Bangladesh farm is commercial, whereas the Iowa farm is subsistence",
+    "Both are subsistence farms because both grow grain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A compare speaks of both sides: subsistence in Bangladesh, whereas commercial in Iowa.",
+    "options": [
+     "Right: one grows mainly to eat, the other entirely to sell.",
+     "The Bangladesh family eats most of its crop, so it is not mainly commercial.",
+     "The labels are reversed.",
+     "What decides it is whether the crop is eaten or sold, not which crop it is."
+    ]
+   }
+  },
+  {
+   "id": "hug-production-regions-10",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In Mato Grosso, Brazil, huge farms grow soybeans across thousands of hectares. What is one risk of this monocropping?",
+   "options": [
+    "The farm is too small to sell its crop to buyers",
+    "The farm grows too many different crops to manage",
+    "A pest or price drop can hit the whole harvest at once",
+    "The farm moves to a new forest plot after a few years"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Monocropping is efficient for machines and sales, but it puts all the risk on one crop and can wear down soils without rotation.",
+    "options": [
+     "These farms are among the largest in the world and sell nearly all they grow.",
+     "Monocropping is the opposite: one crop.",
+     "Right: with one crop, a disease, pest or fall in price affects everything the farm grows.",
+     "That describes shifting cultivation, not large commercial soy farms."
+    ]
+   }
+  },
+  {
+   "id": "hug-production-regions-11",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "According to bid-rent theory, why is land near a large market usually farmed intensively?",
+   "options": [
+    "It costs less, so farmers can leave much of it unused for years",
+    "Its soil is the richest in the region",
+    "Farmers near markets are not allowed to keep animals",
+    "It costs more, so just high-earning uses can afford it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Bid-rent theory: the closer to the market, the more land costs, and the more each hectare must earn. That favors intensive uses such as market gardening and dairy.",
+    "options": [
+     "Land near a market costs more, not less.",
+     "Bid-rent theory explains land use by access and cost, not soil.",
+     "Bid-rent theory is about what users can pay, not about rules on animals.",
+     "Right: land users bid for access to the market; intensive uses earn enough per hectare to pay the high rent."
+    ]
+   }
+  },
+  {
+   "id": "hug-production-regions-12",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "A market gardener earns 900 dollars a hectare at the market. Shipping costs 30 dollars a hectare for each km of distance. Using this simple bid-rent rule, what rent can the gardener pay for land 20 km away, in dollars per hectare?",
+   "why": {
+    "correct": "$900 - (30 \\times 20) = 300$ dollars per hectare."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      900,
+      {
+       "fn": "mul",
+       "args": [
+        30,
+        20
+       ]
+      }
+     ]
+    },
+    "unit": "dollars/hectare",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        900,
+        30
+       ]
+      },
+      "why": "You subtracted the cost of 1 km only. Multiply the cost per km by the distance (30 × 20 = 600), then subtract."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        30,
+        20
+       ]
+      },
+      "why": "600 is the shipping cost. Subtract it from the 900 the gardener earns at the market."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-production-regions-13",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the bid-rent pattern: place each land use in the ring where it can pay the most, from the market outward.",
+   "model": {
+    "layout": "rings",
+    "title": "Highest bidder at each distance from a market",
+    "center": "Market",
+    "slots": [
+     {
+      "id": "r1"
+     },
+     {
+      "id": "r2"
+     },
+     {
+      "id": "r3"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "garden",
+      "text": "Market gardening"
+     },
+     {
+      "id": "grain",
+      "text": "Grain"
+     },
+     {
+      "id": "ranch",
+      "text": "Ranching"
+     },
+     {
+      "id": "none",
+      "text": "Shifting cultivation"
+     }
+    ],
+    "key": {
+     "r1": "garden",
+     "r2": "grain",
+     "r3": "ranch"
+    },
+    "slips": [
+     {
+      "piece": "ranch",
+      "slot": "r1",
+      "why": "Ranching earns the least per hectare, so it cannot pay the high rent near the market; it ends up farthest out."
+     },
+     {
+      "piece": "none",
+      "slot": "r3",
+      "why": "Bid-rent ranks commercial uses competing for land near one market; shifting cultivation is not one of them here."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The use that earns most per hectare but loses value fastest with distance takes the center; uses with low earnings and cheap transport take the outer rings."
+   }
+  },
+  {
+   "id": "hug-production-regions-14",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Rank the land uses by the rent each can pay right at the market, highest at the top.",
+   "model": {
+    "layout": "tiers",
+    "title": "Rent each use can pay at the market",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "Highest"
+     },
+     {
+      "id": "t2",
+      "name": "Middle"
+     },
+     {
+      "id": "t3",
+      "name": "Lowest"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "garden",
+      "text": "Market gardening"
+     },
+     {
+      "id": "grain",
+      "text": "Grain"
+     },
+     {
+      "id": "ranch",
+      "text": "Ranching"
+     }
+    ],
+    "key": {
+     "t1": "garden",
+     "t2": "grain",
+     "t3": "ranch"
+    },
+    "slips": [
+     {
+      "piece": "grain",
+      "slot": "t1",
+      "why": "Grain earns less per hectare than fresh produce, so it cannot outbid market gardening at the market."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At the market, intensive uses that earn much per hectare can pay the most rent: market gardening, then grain, then ranching."
+   }
+  },
+  {
+   "id": "hug-production-regions-15",
+   "unit": "unit-5",
+   "topic": "production-regions",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.E",
+   "q": "Build a statement of one limit of bid-rent theory, applied to a real place.",
+   "why": {
+    "correct": "A model's limit names the assumption and a real place where it does not hold."
+   },
+   "specific": {
+    "frame": "Bid-rent theory assumes ___, but in ___ ___.",
+    "write": {
+     "mechanism": false
+    },
+    "model": "Bid-rent theory assumes one market with equal transport in every direction, but in the Netherlands highways, rivers and several large cities give many places good access to markets.",
+    "slots": {
+     "limit": {
+      "label": "Assumption",
+      "options": [
+       "one market with equal transport in every direction",
+       "farmers grow food mainly for their own families"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bid-rent theory is about commercial uses bidding for market access, not subsistence."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "the Netherlands",
+       "the Amazon rainforest"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Pick a place with several markets and transport routes to show the limit."
+      }
+     },
+     "effect": {
+      "label": "Why it fails there",
+      "options": [
+       "highways, rivers and several large cities give many places good access to markets",
+       "all land is the same distance from the sea"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Distance to the sea is not the point; many markets and routes break the single-center pattern."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

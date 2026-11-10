@@ -1,0 +1,71 @@
+{
+ "topic": "urban-data",
+ "hook": "A city council asks: is our east side changing, and is that good? A census table says rents doubled in 20 years and incomes rose. An interview with a woman who has lived there for 40 years says her church friends have all moved away and the corner store now sells 6-dollar coffee. Both are true. Each answers a different question, and planners need both.",
+ "prereq": [
+  {
+   "q": "Which is quantitative data?",
+   "options": [
+    "The number of renters in each census tract",
+    "A resident's story about her street",
+    "Field notes describing how a park feels at night",
+    "A drawing of a mental map"
+   ],
+   "correct": 0,
+   "why": "Quantitative data are numbers that can be counted or measured.",
+   "review": "data-sources"
+  },
+  {
+   "q": "What is a census?",
+   "options": [
+    "An official count of a population and its traits",
+    "A map of land use",
+    "A poll of voters before an election",
+    "A list of a city's laws"
+   ],
+   "correct": 0,
+   "why": "A census counts every person and records traits such as age and housing.",
+   "review": "data-in-decisions"
+  }
+ ],
+ "figure": {
+  "figure": "urban-data-kinds",
+  "caption": "Quantitative data answer how many and how much; qualitative data answer how people feel and why."
+ },
+ "chain": [
+  {
+   "cause": "A census or survey counts people, homes, rents and incomes in small areas",
+   "effect": "planners can see what changed and by how much in each neighborhood"
+  },
+  {
+   "cause": "Numbers show what changed but not why or what it means to residents",
+   "effect": "researchers add interviews, field observation and residents' stories"
+  },
+  {
+   "cause": "Qualitative data come from a small number of people",
+   "effect": "they show meaning and causes but cannot show how common a view is"
+  },
+  {
+   "cause": "Both kinds of data are combined",
+   "effect": "a city can make decisions that fit both the trends and the people living through them"
+  }
+ ],
+ "ideas": [
+  "<b>Quantitative data</b> on cities come from censuses and surveys: population, age, income, rent, how people travel to work. <b>Survey data</b> come from asking a sample of people a fixed set of questions.",
+  "In the United States, the census counts everyone every 10 years (most recently in 2020); the American Community Survey asks a sample of households each year, so its figures are estimates with a margin of error.",
+  "<b>Qualitative data</b> on cities come from interviews, field studies, photos, mental maps and residents' stories. They show attitudes and reasons.",
+  "Every source has limits: numbers miss meaning; a few interviews may not represent everyone; data for a whole city can hide differences between its neighborhoods."
+ ],
+ "misconception": {
+  "wrong": "Numbers are objective, so census data are always better than interviews.",
+  "right": "Each kind answers different questions. A census can show that rents rose 80% in a tract; only interviews and field work can show why people left, how they feel about it or what the neighborhood meant to them. Strong studies use both."
+ },
+ "check": [
+  "hug-urban-data-1",
+  "hug-urban-data-2",
+  "hug-urban-data-3",
+  "hug-urban-data-5",
+  "hug-urban-data-6",
+  "hug-urban-data-9"
+ ],
+ "summary": "Urban geographers study change with quantitative data (census and survey counts of people, housing, income and travel) and qualitative data (interviews, field observation and residents' narratives). Numbers show what changed and how much; qualitative data show why and what it means. Each has limits, so strong answers use both and name the scale of the data."
+}

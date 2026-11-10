@@ -1,0 +1,11 @@
+{
+ "infilling": {
+  "def": "Building new homes or businesses on vacant or underused lots inside an area that is already built up, instead of on open land at the edge."
+ },
+ "residential-density": {
+  "def": "The number of housing units or people on a given area of land; apartments give high density, detached houses on large lots give low density."
+ },
+ "zoning": {
+  "def": "Local laws that divide a city into zones and set what may be built in each, such as homes, stores or factories, and how tall or dense."
+ }
+}

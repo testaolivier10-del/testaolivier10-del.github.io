@@ -1,0 +1,537 @@
+{
+ "stimuli": {
+  "sovereignty-challenges-s1": {
+   "kind": "data",
+   "title": "What five supranational organizations do",
+   "source": "Summarized by LevlPrep from each organization's founding treaty and official website, read November 2026",
+   "table": {
+    "caption": "Main functions of five supranational organizations (founding year in brackets)",
+    "cols": [
+     "Organization",
+     "Main function",
+     "What members agree to"
+    ],
+    "rows": [
+     [
+      "United Nations (1945)",
+      "Peace, security and cooperation among states",
+      "To carry out decisions of the Security Council"
+     ],
+     [
+      "NATO (1949)",
+      "Military alliance for shared defense",
+      "To treat an armed attack on one member as an attack on all"
+     ],
+     [
+      "European Union (1993)",
+      "Single market, shared laws and, for most members, one currency",
+      "To follow EU laws and EU court rulings in shared areas; free movement of people"
+     ],
+     [
+      "African Union (2002)",
+      "Peace, security and development in Africa",
+      "That the union may step in to stop genocide or war crimes; a member can be suspended after a coup"
+     ],
+     [
+      "Arctic Council (1996)",
+      "Protecting the Arctic environment and the lives of its peoples",
+      "To work by agreement of all eight Arctic states, with Indigenous peoples' groups at the table"
+     ]
+    ]
+   }
+  },
+  "sovereignty-challenges-s2": {
+   "kind": "map",
+   "title": "Four states and how they changed",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four states marked: A in southwestern Europe, B in northern North America, C in West Africa, D in Central Asia",
+    "legendTitle": "States in the questions",
+    "marks": [
+     {
+      "at": "spain",
+      "text": "A"
+     },
+     {
+      "at": [
+       -95,
+       62
+      ],
+      "text": "B"
+     },
+     {
+      "at": "nigeria",
+      "text": "C"
+     },
+     {
+      "at": "kazakhstan",
+      "text": "D"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-sovereignty-challenges-1",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "According to the table, which organization exists mainly for shared military defense?",
+   "options": [
+    "NATO",
+    "The European Union",
+    "The Arctic Council",
+    "The African Union"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the \"Main function\" column: NATO is the military alliance for shared defense.",
+    "options": [
+     "Right: NATO is a military alliance: an attack on one member counts as an attack on all.",
+     "The EU's main functions are its single market and shared laws.",
+     "The Arctic Council works on the Arctic environment and its peoples.",
+     "The African Union works on peace and development, not a shared army of all members."
+    ]
+   },
+   "stimulus": "sovereignty-challenges-s1"
+  },
+  {
+   "id": "hug-sovereignty-challenges-2",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which organization in the table asks its members to follow laws made by shared bodies and rulings of a shared court?",
+   "options": [
+    "NATO",
+    "The Arctic Council",
+    "The United Nations",
+    "The European Union"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The EU goes furthest in pooling sovereignty: in its shared areas, EU law applies in every member state.",
+    "options": [
+     "NATO members agree on shared defense, not shared laws.",
+     "The Arctic Council works by agreement of all eight states.",
+     "UN members agree to carry out Security Council decisions, not to follow a body of shared laws.",
+     "Right: EU members follow EU laws and EU court rulings in shared areas."
+    ]
+   },
+   "stimulus": "sovereignty-challenges-s1"
+  },
+  {
+   "id": "hug-sovereignty-challenges-3",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Which organization in the table limits its members' sovereignty the least, according to what members agree to?",
+   "options": [
+    "The European Union",
+    "The African Union",
+    "The Arctic Council",
+    "NATO"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An organization that acts by agreement of all its members leaves each one able to say no, so it limits sovereignty little.",
+    "options": [
+     "EU members follow shared laws and court rulings.",
+     "The union may step in and can suspend members.",
+     "Right: It works by agreement of all eight states, so each can block a decision.",
+     "NATO members commit to defend each other."
+    ]
+   },
+   "stimulus": "sovereignty-challenges-s1"
+  },
+  {
+   "id": "hug-sovereignty-challenges-4",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.E",
+   "q": "What can a student NOT learn from this table?",
+   "options": [
+    "Which organization deals with Arctic issues",
+    "How many states each organization has",
+    "Which organization is a military alliance",
+    "In which year the African Union was founded"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The table describes what each body does. Membership changes over time, so learn what each organization does, not how many members it has.",
+    "options": [
+     "The Arctic Council row shows that.",
+     "Right: The table lists functions, not membership counts.",
+     "The NATO row shows that.",
+     "The table gives 2002."
+    ]
+   },
+   "stimulus": "sovereignty-challenges-s1"
+  },
+  {
+   "id": "hug-sovereignty-challenges-5",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "In 1999, a new territory was created in the north of the state at mark B, governed mostly by and for Inuit. Which state is it?",
+   "options": [
+    "Canada",
+    "Spain",
+    "Kazakhstan",
+    "Nigeria"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nunavut, in northern Canada, gives Inuit, most of its people, a government of their own inside Canada: devolution to a subnational unit.",
+    "options": [
+     "Right: Mark B is in northern Canada, where Nunavut was created in 1999.",
+     "Spain is at mark A, in Europe.",
+     "Kazakhstan is at mark D, in Central Asia.",
+     "Nigeria is at mark C, in West Africa."
+    ]
+   },
+   "stimulus": "sovereignty-challenges-s2"
+  },
+  {
+   "id": "hug-sovereignty-challenges-6",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which marked state became independent when the Soviet Union broke apart in 1991?",
+   "options": [
+    "Mark A",
+    "Mark B",
+    "Mark C",
+    "Mark D"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Kazakhstan (mark D) is one of the 15 states formed when the Soviet Union broke apart: devolution all the way to new states.",
+    "options": [
+     "Mark A is Spain, independent for centuries.",
+     "Mark B is in Canada.",
+     "Mark C is Nigeria, independent from Britain in 1960.",
+     "Right: Mark D is Kazakhstan, one of the 15 states that came out of the Soviet Union."
+    ]
+   },
+   "stimulus": "sovereignty-challenges-s2"
+  },
+  {
+   "id": "hug-sovereignty-challenges-7",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The states at marks A and C both answered regional pressure by sharing power with subnational units, but did not break apart. What does this show?",
+   "options": [
+    "Devolution leads to a breakup in each case",
+    "Both states became unitary to stop devolution",
+    "Devolution can keep a state together by giving regions self-rule",
+    "Both states joined NATO to end regional pressure"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Spain (mark A) created autonomous communities after 1978, and Nigeria (mark C) grew from 12 states in 1967 to 36 by 1996. Giving regions power can ease pressure to leave.",
+    "options": [
+     "Spain and Nigeria are still single states.",
+     "Both moved power toward regions, not away from them.",
+     "Right: Spain's autonomous communities and Nigeria's states give regions power inside one state.",
+     "Nigeria is not in NATO, and NATO is about defense."
+    ]
+   },
+   "stimulus": "sovereignty-challenges-s2"
+  },
+  {
+   "id": "hug-sovereignty-challenges-8",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is supranationalism?",
+   "options": [
+    "A region breaking away from its state",
+    "Three or more states joining an organization for shared goals",
+    "A people seeking a state of its own",
+    "A state taking land where its people live"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Supranationalism is cooperation among three or more states through an organization for shared goals, such as defense, trade or the environment, in which members give up some sovereignty.",
+    "options": [
+     "That is devolution, the opposite direction.",
+     "Right: Members share some decisions, so each gives up a little sovereignty.",
+     "That is self-determination or separatism.",
+     "That is irredentism."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-9",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In the 1990s, Yugoslavia broke apart into several smaller states, often after wars between them. What is this process called?",
+   "options": [
+    "Balkanization",
+    "Supranationalism",
+    "Democratization",
+    "Reapportionment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Balkanization is the breakup of a region or state into smaller states that are often hostile to each other. It is named for the Balkans in southeastern Europe.",
+    "options": [
+     "Right: The breakup of a region into smaller, often hostile states is named for the Balkans.",
+     "Supranationalism brings states together; this split one apart.",
+     "Democratization is the spread of democratic government.",
+     "Reapportionment shares out seats in a legislature."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-10",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In Tunisia in 2010 and 2011, protesters used mobile phones and social media to share news and plan marches, and the long-time ruler left power. Which process did communication technology help?",
+   "options": [
+    "Balkanization",
+    "Irredentism",
+    "Ethnic cleansing",
+    "Democratization"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Communication technology can help democratization (and also devolution and supranational cooperation) by letting people share information and organize across space.",
+    "options": [
+     "Tunisia did not break into smaller states.",
+     "No neighboring state claimed Tunisian land.",
+     "The protests did not remove an ethnic group.",
+     "Right: The spread of democratic government was helped by fast, shared news."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-11",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In 2011, after decades of conflict, people in southern Sudan voted to leave Sudan, and South Sudan became independent. What does this show?",
+   "options": [
+    "Supranationalism making a state larger",
+    "A unitary state becoming federal",
+    "Devolution can end in a breakup of the state",
+    "Irredentism by a neighboring state"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At its furthest, devolution breaks a state apart. Sudan in 2011 and the Soviet Union in 1991 are two examples of state breakup.",
+    "options": [
+     "Sudan became smaller, not part of a larger body.",
+     "Sudan split; it did not just share power.",
+     "Right: Power moved so far to the region that it became its own state.",
+     "The push came from people inside Sudan."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-12",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In 2016, 51.9% of UK voters chose to leave the European Union, and the UK left in 2020. Supporters of leaving often said they wanted to \"take back control.\" What were they reacting to?",
+   "options": [
+    "NATO's control over the British army and navy",
+    "Limits the EU puts on a member's sovereignty",
+    "The UN's control of UK elections",
+    "The Arctic Council's rules on British cities"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Supranational membership brings benefits, such as a large shared market, but limits sovereignty. In the UK, a majority decided the costs were too high; 48.1% voted to stay.",
+    "options": [
+     "NATO does not run its members' armies.",
+     "Right: EU members follow shared laws and allow free movement of people.",
+     "The UN does not run UK elections.",
+     "The Arctic Council does not make rules for cities."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-13",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "When soldiers take power in a coup in an African state, the African Union often suspends that state from the union until elected government returns. How does this affect sovereignty?",
+   "options": [
+    "Members accept outside judgment of their rulers",
+    "It makes the suspended state fully independent of the rest of Africa",
+    "It turns the suspended state into a federal state",
+    "It gives the union control of the state's army"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Supranational bodies can limit sovereignty: members agree to rules about how they govern, and to penalties when they break them.",
+    "options": [
+     "Right: Joining the union means accepting penalties for breaking its rules.",
+     "Suspension does not change a state's borders or independence.",
+     "Suspension does not change a state's form of government.",
+     "The union suspends; it does not take over armies."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-14",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How do supranationalism and devolution both challenge a state's sovereignty?",
+   "options": [
+    "Both move power from regions up to the national government in the capital",
+    "Both make a state larger by adding territory",
+    "Both remove the national government from power",
+    "One shares power up to groups of states, the other down to regions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Supranationalism moves some decisions up to organizations such as the EU; devolution moves some down to regions such as Scotland. Either way, the national government decides less alone.",
+    "options": [
+     "Both move power away from the national government.",
+     "Neither adds territory.",
+     "National governments remain in both cases.",
+     "Right: Both leave the national government deciding less on its own."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-15",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Which are reasons states join supranational organizations? Select all that apply.",
+   "options": [
+    "To deal with problems that cross borders, such as pollution or disease",
+    "To defend each other against attack",
+    "To gain a bigger market for their goods and services",
+    "To gain full control over their own laws",
+    "To redraw their internal voting districts",
+    "To end their membership in the United Nations"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "States join for security, for larger markets and to face global problems together, and pay for it with some sovereignty.",
+    "options": [
+     "Right: One state cannot clean a shared sea alone.",
+     "Right: Alliances such as NATO pool defense.",
+     "Right: A shared market lets firms sell to more people at lower cost.",
+     "Joining usually means sharing some lawmaking, not gaining control.",
+     "Voting districts are a national matter.",
+     "Joining other bodies does not end UN membership."
+    ]
+   }
+  },
+  {
+   "id": "hug-sovereignty-challenges-16",
+   "unit": "unit-4",
+   "topic": "sovereignty-challenges",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of one gain and one cost of joining a supranational organization.",
+   "why": {
+    "correct": "Name the organization, then what members gain and what they give up, with the link."
+   },
+   "specific": {
+    "frame": "By joining ___, a state gains ___, but ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "By joining the European Union, a state gains free movement of goods and people in a single market, but it must follow EU laws in shared areas, so its own parliament decides less on its own.",
+    "slots": {
+     "place": {
+      "label": "Organization",
+      "options": [
+       "the European Union",
+       "an organization"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real organization."
+      }
+     },
+     "cause": {
+      "label": "Gain",
+      "options": [
+       "free movement of goods and people in a single market",
+       "control over the laws of other members"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Members share lawmaking; no one member controls the others."
+      }
+     },
+     "effect": {
+      "label": "Cost",
+      "options": [
+       "it must follow EU laws in shared areas, so its own parliament decides less on its own",
+       "it loses its seat at the United Nations"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "EU members keep their UN seats."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "topic": "cities-globalization",
+ "hook": "A clothing company in Sweden designs a jacket. A bank in London lends the money to make it, a law firm in New York writes the contracts, a factory in Bangladesh sews it, and a shipping firm in Singapore moves it. Every one of those decisions was made in a city, and most were made in a handful of very connected cities. This lesson is about those cities and the ladder of cities below them.",
+ "prereq": [
+  {
+   "q": "What is globalization?",
+   "options": [
+    "The growing links among places around the world through trade, money, people and ideas",
+    "The spread of one language to every country",
+    "A country taking control of a colony",
+    "A fall in trade between countries"
+   ],
+   "correct": 0,
+   "why": "Globalization is the deepening of connections across the world.",
+   "review": "diffusion-today"
+  },
+  {
+   "q": "A fashion appears first in big cities, then in smaller cities, and last in small towns. What kind of diffusion is this?",
+   "options": [
+    "Hierarchical diffusion",
+    "Contagious diffusion",
+    "Relocation diffusion",
+    "Stimulus diffusion"
+   ],
+   "correct": 0,
+   "why": "It moves down a ladder of places from larger to smaller, skipping the space between.",
+   "review": "diffusion-types"
+  },
+  {
+   "q": "Using the usual thresholds, a city of 25 million people is a...",
+   "options": [
+    "Metacity",
+    "Megacity but not a metacity",
+    "Boomburb",
+    "Edge city"
+   ],
+   "correct": 0,
+   "why": "Twenty million or more makes a metacity.",
+   "review": "cities-worldwide"
+  }
+ ],
+ "figure": {
+  "figure": "cities-globalization-hierarchy",
+  "caption": "The urban hierarchy: a few world cities at the top, many small towns at the base."
+ },
+ "chain": [
+  {
+   "cause": "Large firms want to be near banks, lawyers, investors and each other",
+   "effect": "their headquarters and top offices cluster in a few big cities"
+  },
+  {
+   "cause": "Those cities hold the decisions, money and information that run the world economy",
+   "effect": "they become world cities at the top of the urban hierarchy"
+  },
+  {
+   "cause": "World cities are tied to each other by flights, cables and money",
+   "effect": "ideas, investment and fashions spread from them down the hierarchy and out across the world"
+  },
+  {
+   "cause": "Highly paid jobs and global money pour into world cities",
+   "effect": "housing costs rise, and the gap between high-wage and low-wage workers widens inside them"
+  }
+ ],
+ "ideas": [
+  "A <b>world city</b> (also called a global city) is a city whose firms, banks and organizations make decisions that reach across the world. Its power comes from its links, not its population.",
+  "The <b>urban hierarchy</b> ranks cities by the size of the area they serve and control: a few world cities at the top, then major regional cities, national cities, regional cities and small towns.",
+  "World cities form a network. In the 2024 GaWC study, London and New York were the two most connected cities, based on the offices of finance, law, consulting, accounting and advertising firms.",
+  "Global decisions made in world cities have local effects elsewhere: a choice in London can open or close a factory in Viet Nam."
+ ],
+ "misconception": {
+  "wrong": "The biggest cities in the world are the most important world cities.",
+  "right": "World city status comes from global functions (headquarters, finance, media, links), not from population. Some megacities have huge populations but few global firms, while smaller cities can rank high because they host major banks, insurers or international bodies."
+ },
+ "check": [
+  "hug-cities-globalization-1",
+  "hug-cities-globalization-2",
+  "hug-cities-globalization-3",
+  "hug-cities-globalization-8",
+  "hug-cities-globalization-9",
+  "hug-cities-globalization-14"
+ ],
+ "summary": "World cities sit at the top of the urban hierarchy because they host the headquarters, banks, law firms, media and international bodies that steer the world economy. They form a network linked by flows of money, information and people, and decisions made in them spread down the hierarchy and out to places at every scale."
+}

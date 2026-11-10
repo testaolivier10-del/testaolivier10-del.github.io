@@ -1,0 +1,71 @@
+{
+ "topic": "women-population-change",
+ "hook": "In the early 1970s, a woman in Bangladesh had more than six children on average. By 2022 the average was 2.3 (Bangladesh Demographic and Health Survey, 2022). Bangladesh did not become rich overnight. What changed were the lives of its women: more girls in school, millions of women in paid jobs, and clinics in every district.",
+ "prereq": [
+  {
+   "q": "What does the total fertility rate measure?",
+   "options": [
+    "Average children per woman over her lifetime",
+    "Births per 1,000 people a year",
+    "Infant deaths per 1,000 births",
+    "Years a newborn can expect to live"
+   ],
+   "correct": 0,
+   "why": "TFR is births per woman over a lifetime at one year’s rates.",
+   "review": "population-dynamics"
+  },
+  {
+   "q": "Which kind of policy tries to raise the number of births?",
+   "options": [
+    "Pronatalist",
+    "Antinatalist",
+    "Immigration policy",
+    "Family planning"
+   ],
+   "correct": 0,
+   "why": "Pronatalist means for births.",
+   "review": "population-policies"
+  }
+ ],
+ "figure": {
+  "figure": "women-population-change-chain",
+  "caption": "How more schooling and paid work for women link to fewer births, fewer child deaths and new patterns of migration."
+ },
+ "chain": [
+  {
+   "cause": "More girls stay in school longer",
+   "effect": "they marry and have their first child later"
+  },
+  {
+   "cause": "Women gain paid jobs and know more about family planning",
+   "effect": "families choose to have fewer children, so the TFR falls"
+  },
+  {
+   "cause": "Mothers know more about health and use clinics",
+   "effect": "fewer babies and young children die"
+  },
+  {
+   "cause": "Women’s roles change",
+   "effect": "more women move for work, within their country and abroad"
+  }
+ ],
+ "ideas": [
+  "<b>Female education</b> (schooling for girls and women), paid jobs, health care and access to contraception lower fertility in most places.",
+  "Women’s changing roles also lower <b>mortality</b>: children of mothers with more schooling are less likely to die young.",
+  "<b>Ravenstein’s laws of migration</b> (1885, 1889): most moves are short, many in steps; long-distance migrants go to big cities; each flow has a counterflow; within a country women moved more than men.",
+  "Ravenstein’s limits: 1800s British data, before air travel; many more women and long-distance migrants move abroad now."
+ ],
+ "misconception": {
+  "wrong": "Fertility falls only when a country becomes rich.",
+  "right": "Fertility often falls with changes in women’s lives even before incomes rise much: Bangladesh’s TFR fell from more than 6 to 2.3 as girls’ schooling, women’s jobs and family planning spread."
+ },
+ "check": [
+  "hug-women-population-change-1",
+  "hug-women-population-change-3",
+  "hug-women-population-change-5",
+  "hug-women-population-change-6",
+  "hug-women-population-change-10",
+  "hug-women-population-change-13"
+ ],
+ "summary": "More schooling, paid work, health care and contraception for women lower fertility and child deaths in most places, as in Bangladesh and Kerala, India. Changing roles also change who migrates. Ravenstein’s laws, drawn from 1800s British data, say most moves are short and step by step, every flow has a counterflow, and women moved more than men within their own country."
+}

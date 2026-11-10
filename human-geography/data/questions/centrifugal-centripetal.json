@@ -1,0 +1,555 @@
+{
+ "stimuli": {
+  "centrifugal-centripetal-s1": {
+   "kind": "text",
+   "title": "A report on invented Country R",
+   "text": "<p>Country R became independent in 1962. Its government made Rava, a language spoken by few people as a first language, the language of every school, so children of all peoples learn it. In 1975 a railway was finished from the port to the far north. Since 1990, the richer south has paid into a fund that builds clinics in the poorer north.</p><p>Yet in 2024 the Ostin people of the western hills, who speak their own language, held protests asking for their own schools. Many Ostin say jobs and roads go to the south first.</p><p>Invented for practice.</p>"
+  },
+  "centrifugal-centripetal-s2": {
+   "kind": "data",
+   "title": "Income and services in four invented regions",
+   "invented": true,
+   "table": {
+    "caption": "Four regions of invented Country S (invented data for practice)",
+    "cols": [
+     "Region",
+     "Average income per person (dollars a year)",
+     "Homes with electricity",
+     "Main language"
+    ],
+    "rows": [
+     [
+      "Capital region",
+      "24,000",
+      "99%",
+      "Sell"
+     ],
+     [
+      "Coast",
+      "18,000",
+      "95%",
+      "Sell"
+     ],
+     [
+      "Plateau",
+      "6,000",
+      "48%",
+      "Mareh"
+     ],
+     [
+      "Desert",
+      "4,000",
+      "30%",
+      "Mareh"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-centrifugal-centripetal-1",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which policy in the passage is a centripetal force?",
+   "options": [
+    "Teaching Rava in every school",
+    "The Ostin protests for schools in their own language",
+    "Jobs and roads going to the south first",
+    "The Ostin speaking their own language"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A centripetal force unites a state. A shared school language links all of Country R's peoples.",
+    "options": [
+     "Right: A shared language learned by all peoples pulls the state together.",
+     "Demands for separate schools pull away from the center.",
+     "Unequal treatment is a centrifugal force.",
+     "A separate language can pull a group apart from the state."
+    ]
+   },
+   "stimulus": "centrifugal-centripetal-s1"
+  },
+  {
+   "id": "hug-centrifugal-centripetal-2",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "According to the passage, what is the main centrifugal force at work among the Ostin?",
+   "options": [
+    "The railway from the port to the far north",
+    "The fund that builds clinics in the north",
+    "The year Country R became independent",
+    "A feeling that jobs and roads favor the south"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Uneven development, or the belief that one region gets more, is a centrifugal force. The passage says many Ostin feel jobs and roads go to the south first.",
+    "options": [
+     "The railway links regions; it is centripetal.",
+     "Sharing money with poorer areas is centripetal.",
+     "A date is not a force.",
+     "Right: Uneven development is a centrifugal force."
+    ]
+   },
+   "stimulus": "centrifugal-centripetal-s1"
+  },
+  {
+   "id": "hug-centrifugal-centripetal-3",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "How does the clinic fund described in the passage help hold Country R together?",
+   "options": [
+    "It moves people from the north to the south",
+    "It makes the Ostin language the national language of Country R",
+    "It spreads services to poorer areas, easing resentment",
+    "It gives the north its own army"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Fairer sharing of money and services, as in Canada's payments to poorer provinces, is a centripetal force: it lowers the sense of unfairness that drives regions apart.",
+    "options": [
+     "The fund builds clinics; it does not move people.",
+     "Rava is the school language.",
+     "Right: Sharing money more fairly is centripetal.",
+     "The passage says nothing about an army."
+    ]
+   },
+   "stimulus": "centrifugal-centripetal-s1"
+  },
+  {
+   "id": "hug-centrifugal-centripetal-4",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "The Ostin language binds the Ostin together but sets them apart from the rest of Country R. What does this show?",
+   "options": [
+    "Language is a centripetal force in each case",
+    "One trait can unite at one scale and divide at another",
+    "Language has no effect on how united or divided a state is",
+    "The Ostin are a failed state"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Scale matters: the same language that is centripetal for the Ostin (regional or local scale) is centrifugal for Country R (national scale), just as French unites Quebec but can divide Canada.",
+    "options": [
+     "Here it divides Country R at the national scale.",
+     "Right: Language unites the Ostin locally and divides the state nationally.",
+     "The protests show it does.",
+     "The Ostin are a people, not a state."
+    ]
+   },
+   "stimulus": "centrifugal-centripetal-s1"
+  },
+  {
+   "id": "hug-centrifugal-centripetal-5",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which pattern does the table show?",
+   "options": [
+    "Mareh-speaking regions are poorer, with less electricity",
+    "Income and electricity are about equal in each of the regions",
+    "The Mareh-speaking regions have the highest incomes",
+    "The Coast is poorer than the Desert"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read across the rows: the Sell-speaking Capital and Coast are richer and better served than the Mareh-speaking Plateau and Desert.",
+    "options": [
+     "Right: The Plateau and Desert have the lowest incomes and electricity shares.",
+     "Incomes range from 4,000 to 24,000 dollars.",
+     "They have the lowest.",
+     "The Coast earns 18,000 dollars, the Desert 4,000."
+    ]
+   },
+   "stimulus": "centrifugal-centripetal-s2"
+  },
+  {
+   "id": "hug-centrifugal-centripetal-6",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Why could the pattern in the table become a strong centrifugal force in Country S?",
+   "options": [
+    "The four regions share one language",
+    "The richest region of the country lies far from the capital",
+    "Electricity reaches nearly each home in the country",
+    "Poverty and language overlap, feeding blame of the center"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Uneven development is centrifugal, and more so when it lines up with ethnicity or language: the poorer group can come to see the state as serving someone else.",
+    "options": [
+     "Two languages are listed.",
+     "The capital region is the richest.",
+     "Only 30% of homes in the Desert have it.",
+     "Right: When an ethnic divide matches a wealth divide, grievances build along one line."
+    ]
+   },
+   "stimulus": "centrifugal-centripetal-s2"
+  },
+  {
+   "id": "hug-centrifugal-centripetal-7",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can the table NOT answer?",
+   "options": [
+    "Which region has the lowest income per person",
+    "Which language is spoken in the Plateau",
+    "Whether Mareh speakers want to leave",
+    "What share of Coast homes have electricity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Data on income and services can suggest a reason for division, but they cannot show what people think. That would need a survey or a vote.",
+    "options": [
+     "The Desert, at 4,000 dollars.",
+     "The table lists Mareh for the Plateau.",
+     "Right: The table shows income, power and language, not what people want.",
+     "The table gives 95% for the Coast."
+    ]
+   },
+   "stimulus": "centrifugal-centripetal-s2"
+  },
+  {
+   "id": "hug-centrifugal-centripetal-8",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a failed state?",
+   "options": [
+    "A state that has lost a major war in the last hundred years",
+    "A state whose government cannot control its land or give basic services",
+    "A state that has chosen to leave a supranational organization",
+    "A nation that has no state of its own"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A failed state is one whose government has lost control of much of its territory and cannot provide basic services such as security, courts or clean water.",
+    "options": [
+     "Losing a war does not make a failed state.",
+     "Right: It has lost control of much of its territory and cannot keep order.",
+     "Leaving the EU, for example, did not make the UK a failed state.",
+     "That is a stateless nation."
+    ]
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-9",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "After its national government collapsed in 1991, Somalia had no working government across most of its land for many years, while armed groups controlled different areas. What does this show?",
+   "options": [
+    "Centrifugal forces can cause a failed state",
+    "Centripetal forces can lead to a failed state over time",
+    "A strong ethnonationalism splits each state",
+    "Supranationalism leads to failed states"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When centrifugal forces, such as rivalry between armed groups, overwhelm the center, a state can fail: it can no longer keep order or provide services across its territory.",
+    "options": [
+     "Right: Rival groups pulled the state apart until the center stopped working.",
+     "Centripetal forces hold a state together.",
+     "Most Somalis share a language and religion; clan rivalry divided them.",
+     "Somalia's collapse came from inside."
+    ]
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-10",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "After independence, Tanzania's government made Swahili the language of schools and government, so people of more than 100 ethnic groups shared one language. What effect was this meant to have?",
+   "options": [
+    "To divide the country into language regions",
+    "To help one ethnic group rule the others",
+    "To prepare the regions to become separate states",
+    "To build cohesion, a centripetal force"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A national language shared by all peoples is a centripetal force. Swahili was chosen partly because it was widely spoken and not tied to one large ethnic group.",
+    "options": [
+     "A shared language does the opposite.",
+     "Swahili was not the first language of one large group, which helped it unite them.",
+     "It was meant to unite Tanzania.",
+     "Right: A shared language helps many peoples see themselves as one nation."
+    ]
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-11",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Since 1957, Canada's national government has sent extra money to provinces with less money to spend, so people across the country get similar public services. Which kind of force is this?",
+   "options": [
+    "Centrifugal, through uneven development",
+    "Centrifugal, through ethnic separatism",
+    "Centripetal, through fairer sharing of resources",
+    "Centripetal, through a shared religion"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Fairer sharing of money and services is a centripetal force: regions that get similar services have less reason to feel left out.",
+    "options": [
+     "The payments reduce unevenness instead of causing it.",
+     "The payments go to provinces by need, not by ethnic group.",
+     "Right: Sharing money with poorer provinces reduces resentment and ties regions together.",
+     "The payments are about money, not religion."
+    ]
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-12",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Many Kurds in Türkiye, Iraq, Iran and Syria share a strong feeling that the Kurdish nation should govern itself. What is this feeling an example of?",
+   "options": [
+    "Supranationalism",
+    "Ethnonationalism",
+    "Balkanization",
+    "Redistricting"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Ethnonationalism is a strong sense of belonging to one's ethnic nation, with the wish that the nation govern itself. For a stateless nation like the Kurds, it is centrifugal for the states they live in.",
+    "options": [
+     "Supranationalism is cooperation among states.",
+     "Right: A strong attachment to one's ethnic nation and its self-rule is ethnonationalism.",
+     "Balkanization is the breakup of a region into hostile states.",
+     "Redistricting is redrawing voting districts."
+    ]
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-13",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How can ethnonationalism act as a centripetal force in one state and a centrifugal force in another?",
+   "options": [
+    "It unites a one-nation state but divides a state of several nations",
+    "It is centripetal on islands and centrifugal on continents",
+    "It is centripetal in federal states but centrifugal in unitary states, by law",
+    "It is centripetal in rich states and centrifugal in poor states"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a state that is close to a nation-state, shared ethnic identity can hold people together. In a multinational state, the ethnonationalism of a minority pulls toward separation.",
+    "options": [
+     "Right: Its effect depends on whether the nation and the state match.",
+     "Location on an island is not what decides it.",
+     "Form of government does not decide it.",
+     "Wealth does not decide it."
+    ]
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-14",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Match each example from Canada to the force it shows.",
+   "model": {
+    "layout": "tiers",
+    "title": "Forces in Canada",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "Centripetal: transport linking regions"
+     },
+     {
+      "id": "t2",
+      "name": "Centripetal: fairer sharing of money"
+     },
+     {
+      "id": "t3",
+      "name": "Centrifugal: uneven development"
+     },
+     {
+      "id": "t4",
+      "name": "Centrifugal: a rival identity"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "rail",
+      "text": "A railway from coast to coast (1885)"
+     },
+     {
+      "id": "pay",
+      "text": "Payments to provinces with less money"
+     },
+     {
+      "id": "rich",
+      "text": "Some provinces far richer than others"
+     },
+     {
+      "id": "lang",
+      "text": "A French-speaking majority in Quebec"
+     },
+     {
+      "id": "cp",
+      "text": "A choke point"
+     }
+    ],
+    "key": {
+     "t1": "rail",
+     "t2": "pay",
+     "t3": "rich",
+     "t4": "lang"
+    },
+    "slips": [
+     {
+      "piece": "pay",
+      "slot": "t3",
+      "why": "The payments reduce uneven development; they pull the country together."
+     },
+     {
+      "piece": "cp",
+      "slot": "t1",
+      "why": "A choke point is a narrow sea passage, not a link between Canada's regions."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Centripetal forces pull a state together (links, fair sharing); centrifugal forces pull it apart (uneven development, rival identities)."
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-15",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Which are centrifugal forces? Select all that apply.",
+   "options": [
+    "One region is much poorer than the rest and feels neglected",
+    "A minority group with its own language seeks self-rule",
+    "A national holiday celebrated across the country",
+    "A national road network that links each region to the capital"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Centrifugal forces divide a state: uneven development, rival identities and ethnic nationalist movements. Shared symbols and transport links are centripetal.",
+    "options": [
+     "Right: Uneven development pulls a region away.",
+     "Right: An ethnonationalist movement pulls toward separation.",
+     "Shared celebrations pull people together.",
+     "Transport links pull regions together."
+    ]
+   }
+  },
+  {
+   "id": "hug-centrifugal-centripetal-16",
+   "unit": "unit-4",
+   "topic": "centrifugal-centripetal",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how a centripetal force holds a real state together.",
+   "why": {
+    "correct": "Name the state, the force and how it unites people."
+   },
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Tanzania, the government made Swahili the language of schools and government after independence, so people from more than 100 ethnic groups share one language and a national identity.",
+    "slots": {
+     "place": {
+      "label": "State",
+      "options": [
+       "Tanzania",
+       "an African country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name the real state."
+      }
+     },
+     "cause": {
+      "label": "Force",
+      "options": [
+       "the government made Swahili the language of schools and government after independence",
+       "each ethnic group was given its own army"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Separate armies would pull the state apart."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "people from more than 100 ethnic groups share one language and a national identity",
+       "each region became a separate state"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A shared language holds a state together; it does not split it."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

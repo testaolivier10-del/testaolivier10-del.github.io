@@ -1,0 +1,99 @@
+{
+  "about": "Scale lab (builder T2; spec sections 3.3 and 6). Explore: one invented data set at the global, regional, national and local scale, and the map-scale ladder. Test yourself: seeded drills from the model ApHugMath.scaleLab. Every value is invented; the chain contexts are real, dated cases chosen under the accuracy-risks rules. Checked by its validator in scripts/lib.",
+  "slug": "scale-lab",
+  "kind": "simulator",
+  "topic": "scales-of-analysis",
+  "intro": "<p>Geographers use the word <b>scale</b> in two ways. The <b>scale of analysis</b> is the size of the unit each value describes: global (the world), regional (a group of countries), national (one country) or local (part of a country). <b>Map scale</b> is the ratio between the map and the ground, such as 1:50,000.</p><p>Here one invented data set is shown at all four scales of analysis, so you can watch the pattern change, and the map-scale ladder shows what large scale and small scale mean.</p>",
+  "howItWorks": "<p><b>Explore.</b> Pick a scale. The map, the legend and the lines under it show what the data say at that scale and what they hide. New data set draws fresh invented numbers. Map scale shows what a map 10 cm across covers at each ratio, worked with the course's map-scale formula (map cm × the denominator ÷ 100,000 = ground km).</p><p><b>Test yourself.</b> Seeded problems: name the scale of the data (never the size of the map), explain a relationship between two scales, find the limitation of a source at the wrong scale, and convert a map distance to the ground. Each step is checked on its own, and a wrong answer gets the reason for that exact slip. Every number is invented for practice; no real figure is shown.</p>",
+  "howItWorksTitle": "How this trainer works",
+  "contexts": [
+    { "id": "identify-maps", "topic": "scales-of-analysis", "types": ["identify"] },
+    { "id": "country-a", "topic": "scales-of-analysis", "types": ["across"] },
+    {
+      "id": "chain-palm-oil", "topic": "scales-of-analysis", "types": ["chain"],
+      "chain": {
+        "setup": "Around the world, demand for palm oil, used in many foods, soaps and fuels, has grown since the 1990s. In Riau, a province on the island of Sumatra in Indonesia, large areas of rainforest have been cleared for oil palm plantations.",
+        "cause": { "text": "world demand for palm oil grows", "scale": "global", "unit": "buyers all over the world" },
+        "effect": { "text": "rainforest in Riau is cleared for plantations", "scale": "local", "unit": "one province of Indonesia" },
+        "link": "Companies buy more palm oil to sell around the world, so growers in Riau can earn more from oil palms than from forest, so they clear forest to plant more palms.",
+        "linkWhy": "It names the global cause, each step in between (buyers, then growers' earnings) and the local effect in Riau.",
+        "wrong": [
+          { "text": "Rainforest in Riau is cleared, so world demand for palm oil grows.", "why": "This runs the chain backward: the world demand comes first and the clearing in Riau follows from it." },
+          { "text": "World demand for palm oil grows because more people around the world buy it.", "why": "This only restates the global cause. It never reaches Riau, so the link between the two scales is missing." },
+          { "text": "Indonesia's national population grows, so more forest is cleared everywhere.", "why": "This swaps in a different cause at a different scale. The question asks how the world demand reaches Riau." }
+        ]
+      }
+    },
+    {
+      "id": "chain-factory", "topic": "scales-of-analysis", "types": ["chain"],
+      "chain": {
+        "setup": "Since the 1980s, many companies have moved factory work to countries where wages are lower. Flint, Michigan, in the United States, was a car-making city that lost most of its car factory jobs over the same years.",
+        "cause": { "text": "companies move factory work to places with lower wages", "scale": "global", "unit": "the world economy" },
+        "effect": { "text": "car factory jobs disappear in Flint", "scale": "local", "unit": "one city in the United States" },
+        "link": "Companies can make parts and cars more cheaply where wages are lower, so they build new factories there and close some in higher-wage places such as Flint, so workers in Flint lose their jobs.",
+        "linkWhy": "It goes from the global shift in where factories are built, through the closing of plants, to the local job losses in Flint.",
+        "wrong": [
+          { "text": "Workers in Flint lose their jobs, so companies around the world move factory work.", "why": "This runs the chain backward: the global shift in factory work is the cause, and the jobs lost in Flint are the effect." },
+          { "text": "Companies move factory work because wages are lower in some countries.", "why": "This only explains the global cause. It never says what happens in Flint, so the link across scales is missing." },
+          { "text": "Flint's map scale is large, so its factories are easy to see and close.", "why": "Map scale is the ratio of a map to the ground. It has nothing to do with why factories close." }
+        ]
+      }
+    },
+    {
+      "id": "chain-sea-level", "topic": "scales-of-analysis", "types": ["chain"],
+      "chain": {
+        "setup": "As Earth's climate warms, the average sea level around the world has risen since 1900. Since the 2010s, some low streets in Miami Beach, Florida, have flooded at the highest tides of the year, even on dry, sunny days.",
+        "cause": { "text": "the world's average sea level rises", "scale": "global", "unit": "the oceans of the whole world" },
+        "effect": { "text": "low streets in Miami Beach flood at high tide", "scale": "local", "unit": "one city in Florida" },
+        "link": "Warmer temperatures melt ice on land and make seawater expand, so the sea rises everywhere, so the highest tides now reach low streets in Miami Beach.",
+        "linkWhy": "It names the global cause, the steps (melting ice, expanding water, a higher sea) and the local effect on Miami Beach's streets.",
+        "wrong": [
+          { "text": "Streets in Miami Beach flood, so the world's sea level rises.", "why": "This runs the chain backward: flooding on a few streets cannot raise the oceans. The rising sea is the cause." },
+          { "text": "The sea level rises because the climate is warming.", "why": "This only explains the global cause. It never reaches Miami Beach, so the link across scales is missing." },
+          { "text": "Florida's state government floods the streets on purpose to clean them.", "why": "Nothing in the description says this. Use the cause it gives: the rising sea." }
+        ]
+      }
+    },
+    {
+      "id": "chain-brasilia", "topic": "scales-of-analysis", "types": ["chain"],
+      "chain": {
+        "setup": "In 1960 Brazil's national government moved the country's capital from Rio de Janeiro, on the coast, to Brasília, a new city built on the inland plateau. Brasília grew from a building site into a large city.",
+        "cause": { "text": "Brazil's government moves the capital inland", "scale": "national", "unit": "the government of one whole country" },
+        "effect": { "text": "Brasília grows into a large city", "scale": "local", "unit": "one city in Brazil" },
+        "link": "Government offices and jobs moved to Brasília, so workers and their families migrated there, so the new city's population grew quickly.",
+        "linkWhy": "It goes from the national decision, through the jobs that moved and the migrants who followed them, to the growth of one city.",
+        "wrong": [
+          { "text": "Brasília grew into a large city, so the government moved the capital there.", "why": "This runs the chain backward: Brasília was built for the capital, and it grew after the move." },
+          { "text": "The government moved the capital because it wanted a new capital.", "why": "This restates the cause and never reaches Brasília's growth, so the link is missing." },
+          { "text": "The world's population grew, so every capital city grew.", "why": "This swaps in a global cause. The description is about one national decision and one city." }
+        ]
+      }
+    },
+    {
+      "id": "chain-eu-workers", "topic": "scales-of-analysis", "types": ["chain"],
+      "chain": {
+        "setup": "The European Union (EU) lets citizens of its member countries live and work in any other member country. After Poland joined the EU in 2004, many workers moved from Poland to the United Kingdom, which was then a member (the United Kingdom left the EU in 2020).",
+        "cause": { "text": "the EU lets workers move freely among its members", "scale": "regional", "unit": "a group of countries" },
+        "effect": { "text": "migration from Poland to the United Kingdom grows", "scale": "national", "unit": "two whole countries" },
+        "link": "Polish workers no longer needed a work permit to take a job in the United Kingdom, where wages were higher, so many moved there for work.",
+        "linkWhy": "It goes from the regional rule (free movement in the EU), through the work permit and the higher wages, to the flow between two countries.",
+        "wrong": [
+          { "text": "Workers moved from Poland to the United Kingdom, so the EU was created.", "why": "This runs the chain backward: the EU existed long before 2004, and its rules made the move easier." },
+          { "text": "The EU lets workers move freely because its members agreed to it.", "why": "This only explains the regional rule. It never says why workers moved from Poland to the United Kingdom." },
+          { "text": "One neighborhood in London grew, so all of Poland's workers left.", "why": "This starts at the wrong scale and claims far too much. The cause given is the EU's rule." }
+        ]
+      }
+    },
+    {
+      "id": "limits", "topic": "scales-of-analysis", "types": ["limit"],
+      "questions": [
+        { "text": "Which neighborhoods of Country A's capital city need new bus routes?", "scale": "local", "unit": "the neighborhoods of one city", "cover": 0 },
+        { "text": "Which province of Country A should get a new hospital first?", "scale": "local", "unit": "the provinces of one country", "cover": 1 },
+        { "text": "Is Country A's share higher than its neighbors' shares?", "scale": "national", "unit": "whole countries, side by side", "cover": 2 },
+        { "text": "Which world region should an aid group focus on first?", "scale": "regional", "unit": "the world's regions", "cover": 3 },
+        { "text": "Has the share for the whole world gone up since 2000?", "scale": "global", "unit": "the whole world", "cover": 3 }
+      ]
+    },
+    { "id": "map-scale", "topic": "skills-scale", "types": ["mapscale"] }
+  ]
+}

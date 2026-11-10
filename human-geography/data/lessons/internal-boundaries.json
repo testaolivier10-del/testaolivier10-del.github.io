@@ -1,0 +1,67 @@
+{
+ "topic": "internal-boundaries",
+ "hook": "In 1812, Massachusetts drew a voting district so twisted that a newspaper said it looked like a salamander. The governor who signed it was Elbridge Gerry, and the \"Gerry-mander\" got its name. The same voters can elect very different representatives depending on where the lines fall. Internal boundaries, the lines inside a state, decide who wins.",
+ "prereq": [
+  {
+   "q": "What is a census?",
+   "options": [
+    "An official count of a country's people",
+    "A vote on independence",
+    "A map of districts",
+    "A border crossing"
+   ],
+   "correct": 0,
+   "why": "The US census happens every 10 years.",
+   "review": "data-in-decisions"
+  },
+  {
+   "q": "What does it mean to delimit a boundary?",
+   "options": [
+    "To draw it on official maps",
+    "To mark it on the ground",
+    "To run it day to day",
+    "To describe it in a treaty"
+   ],
+   "correct": 0,
+   "why": "Defined in words, delimited on maps, demarcated on the ground.",
+   "review": "boundary-functions"
+  }
+ ],
+ "figure": {
+  "figure": "internal-boundaries-plans",
+  "caption": "The same voters, two plans: where the lines fall decides the seats."
+ },
+ "chain": [
+  {
+   "cause": "A census shows that people have moved",
+   "effect": "seats are shared out again (reapportionment) and district lines are redrawn (redistricting)"
+  },
+  {
+   "cause": "Whoever draws the lines packs or cracks the other party's voters",
+   "effect": "that party's votes are wasted in a few districts or spread too thin to win"
+  },
+  {
+   "cause": "Many votes are wasted",
+   "effect": "a party can win fewer seats than its share of the votes"
+  }
+ ],
+ "ideas": [
+  "Internal boundaries divide a state into units such as provinces, counties and voting districts.",
+  "<b>Redistricting</b> redraws voting districts, in the United States after each census, so each holds about the same number of people.",
+  "<b>Gerrymandering</b> draws lines to favor one party or group. <b>Packing</b> crowds a party's voters into a few districts; <b>cracking</b> splits them across many.",
+  "Always say the effect on votes: packing wastes votes in lopsided wins, cracking leaves votes too spread out to win."
+ ],
+ "misconception": {
+  "wrong": "A party that gets most of the votes always wins most of the seats.",
+  "right": "Seats depend on where the district lines fall. With packing and cracking, a party with about 60% of the votes can win only 40% of the seats."
+ },
+ "check": [
+  "hug-internal-boundaries-1",
+  "hug-internal-boundaries-2",
+  "hug-internal-boundaries-3",
+  "hug-internal-boundaries-4",
+  "hug-internal-boundaries-9",
+  "hug-internal-boundaries-16"
+ ],
+ "summary": "Internal boundaries divide a state into smaller units, including voting districts. Redistricting redraws those districts, in the United States after each census, at the national, state and local scales. Gerrymandering draws them to favor one side: packing wastes a party's votes in a few lopsided districts, and cracking spreads them too thin to win. Independent commissions and rules for compact districts make it harder."
+}

@@ -1,0 +1,622 @@
+{
+ "stimuli": {
+  "defining-boundaries-s1": {
+   "kind": "map",
+   "title": "Six boundaries on a world map",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with six boundaries marked A to F: A in central North America, B in central Europe, C in East Africa, D in South Asia, E in southern South America, F in Southeast Asia",
+    "legendTitle": "Boundaries in the questions",
+    "marks": [
+     {
+      "at": [
+       -100,
+       49
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       10.5,
+       51.5
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       37.6,
+       -3.3
+      ],
+      "text": "C"
+     },
+     {
+      "at": [
+       71,
+       27
+      ],
+      "text": "D"
+     },
+     {
+      "at": [
+       -70.3,
+       -36
+      ],
+      "text": "E"
+     },
+     {
+      "at": [
+       102.6,
+       22.6
+      ],
+      "text": "F"
+     }
+    ]
+   }
+  },
+  "defining-boundaries-s2": {
+   "kind": "data",
+   "title": "How four invented boundaries were made",
+   "invented": true,
+   "table": {
+    "caption": "Four boundaries in an invented region (invented data for practice)",
+    "cols": [
+     "Boundary",
+     "When and how it was drawn",
+     "What it follows"
+    ],
+    "rows": [
+     [
+      "Line 1",
+      "1890, by two empires meeting far away",
+      "A straight line that cuts through the homeland of the Tero people"
+     ],
+     [
+      "Line 2",
+      "1920, after a vote by local people",
+      "The line between towns that speak Vesh and towns that speak Oran"
+     ],
+     [
+      "Line 3",
+      "1850, when few settlers lived there",
+      "A large river"
+     ],
+     [
+      "Line 4",
+      "Was a border from 1950 to 1990",
+      "A wall, now a park inside one state"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-defining-boundaries-1",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Mark B shows where a boundary once divided a state from 1949 to 1990. It no longer works as a border, but traces of it remain on the land. Which type is it?",
+   "options": [
+    "Relict",
+    "Antecedent",
+    "Consequent",
+    "Geometric"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A relict boundary no longer works but can still be seen in the cultural landscape. The line between East and West Germany at mark B is one: watchtowers and a long strip of protected land mark it.",
+    "options": [
+     "Right: Mark B is the former border between East and West Germany, gone since Germany reunited in 1990.",
+     "Antecedent boundaries are drawn before many settlers arrive, and they still work.",
+     "Consequent boundaries follow a cultural line and still work.",
+     "Geometric boundaries are straight lines; the old German line wound across the land."
+    ]
+   },
+   "stimulus": "defining-boundaries-s1"
+  },
+  {
+   "id": "hug-defining-boundaries-2",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which type of boundary is the one at mark A?",
+   "options": [
+    "Relict",
+    "Consequent",
+    "Superimposed",
+    "Geometric"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The boundary at mark A follows a line of latitude, 49° N, for about 2,000 kilometers: a geometric boundary.",
+    "options": [
+     "The boundary at mark A still works as a border.",
+     "It does not follow a line between cultures; people on both sides share much of their culture.",
+     "It was agreed by the United States and Britain, the powers that governed each side.",
+     "Right: Mark A is on the boundary between the United States and Canada, which follows the 49th parallel (49° N) across the west."
+    ]
+   },
+   "stimulus": "defining-boundaries-s1"
+  },
+  {
+   "id": "hug-defining-boundaries-3",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which mark is on a boundary drawn in 1947 to separate areas with mostly Muslim and mostly Hindu populations?",
+   "options": [
+    "Mark C",
+    "Mark E",
+    "Mark D",
+    "Mark F"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The boundary at mark D was drawn by a British official in 1947 to follow religious majorities, so it is consequent (and superimposed too).",
+    "options": [
+     "Mark C is on the Kenya and Tanzania boundary, drawn by Britain and Germany.",
+     "Mark E is on the Chile and Argentina boundary along the Andes.",
+     "Right: Mark D is on the boundary between India and Pakistan, drawn at independence in 1947.",
+     "Mark F is on the China and Viet Nam boundary."
+    ]
+   },
+   "stimulus": "defining-boundaries-s1"
+  },
+  {
+   "id": "hug-defining-boundaries-4",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which mark is on a boundary that follows the crest of a high mountain range?",
+   "options": [
+    "Mark A",
+    "Mark E",
+    "Mark B",
+    "Mark D"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Chile and Argentina agreed in 1881 that their boundary would follow the highest peaks of the Andes (mark E).",
+    "options": [
+     "Mark A is on a straight line across plains.",
+     "Right: Mark E is on the Chile and Argentina boundary, which follows the high peaks of the Andes.",
+     "Mark B is on a former line in central Europe.",
+     "Mark D is on a boundary across mostly flat land and desert."
+    ]
+   },
+   "stimulus": "defining-boundaries-s1"
+  },
+  {
+   "id": "hug-defining-boundaries-5",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A boundary can fit more than one type. The one at mark A follows 49° N and was agreed in 1818 and 1846, before most settlers reached the land it crosses. Which pair of types fits it?",
+   "options": [
+    "Geometric and antecedent",
+    "Relict and consequent",
+    "Subsequent and relict",
+    "Consequent and superimposed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The boundary at mark A is geometric (a line of latitude) and antecedent (drawn before most settlers arrived, though Indigenous peoples already lived there).",
+    "options": [
+     "Right: It is a straight line of latitude, drawn before heavy settlement.",
+     "It still works, and it does not follow a cultural divide.",
+     "It was drawn before most settlers arrived, and it still works.",
+     "It follows no cultural line, and the powers on both sides agreed it."
+    ]
+   },
+   "stimulus": "defining-boundaries-s1"
+  },
+  {
+   "id": "hug-defining-boundaries-6",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which line in the table is a relict boundary?",
+   "options": [
+    "Line 1",
+    "Line 2",
+    "Line 3",
+    "Line 4"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A relict boundary no longer works but leaves traces on the land, like the wall that is now a park.",
+    "options": [
+     "Line 1 still divides two states.",
+     "Line 2 still divides two language areas.",
+     "Line 3 still follows its river as a border.",
+     "Right: It was a border until 1990 and is now a park inside one state."
+    ]
+   },
+   "stimulus": "defining-boundaries-s2"
+  },
+  {
+   "id": "hug-defining-boundaries-7",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which line in the table is a consequent boundary?",
+   "options": [
+    "Line 1",
+    "Line 3",
+    "Line 2",
+    "Line 4"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A consequent boundary follows a cultural line, such as language or religion. Line 2 separates Vesh-speaking and Oran-speaking towns.",
+    "options": [
+     "Line 1 cuts through one people; it does not follow a cultural line.",
+     "Line 3 follows a river, a physical feature.",
+     "Right: It follows the line between two language groups.",
+     "Line 4 no longer works as a border."
+    ]
+   },
+   "stimulus": "defining-boundaries-s2"
+  },
+  {
+   "id": "hug-defining-boundaries-8",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Which two types does Line 1 fit?",
+   "options": [
+    "Consequent and relict",
+    "Geometric and superimposed",
+    "Antecedent and consequent",
+    "Subsequent and relict"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Read both columns: \"a straight line\" makes it geometric, and \"by two empires far away\" that \"cuts through\" a people makes it superimposed.",
+    "options": [
+     "Line 1 ignores the Tero people and still works.",
+     "Right: It is a straight line, and outside empires forced it through the Tero homeland.",
+     "The table says nothing about few settlers, and Line 1 follows no cultural line.",
+     "Line 1 still works as a border."
+    ]
+   },
+   "stimulus": "defining-boundaries-s2"
+  },
+  {
+   "id": "hug-defining-boundaries-9",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a political boundary?",
+   "options": [
+    "A line that marks where one state's territory ends and another's begins",
+    "A zone where two cultures blend into each other",
+    "A road that connects two large cities",
+    "A people's shared sense of history"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A political boundary is an invisible line, on land or at sea, where one state's (or region's) territory meets another's.",
+    "options": [
+     "Right: Boundaries separate the territories of states or smaller units.",
+     "That is a transition zone between regions.",
+     "A road links places; a boundary divides them.",
+     "That describes a nation."
+    ]
+   }
+  },
+  {
+   "id": "hug-defining-boundaries-10",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "At a meeting in 1884 and 1885, European powers set rules for claiming Africa, and many borders were later drawn across the lands of peoples such as the Maasai, now split between Kenya and Tanzania. Which type are these borders?",
+   "options": [
+    "Consequent",
+    "Subsequent",
+    "Relict",
+    "Superimposed"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A superimposed boundary is forced on an area by an outside power, often ignoring the peoples who live there.",
+    "options": [
+     "Consequent boundaries follow cultural lines; these cut across them.",
+     "Subsequent boundaries grow from local settlement; these came from outside.",
+     "These boundaries still work as borders.",
+     "Right: Outside powers forced them on the land, cutting through existing peoples."
+    ]
+   }
+  },
+  {
+   "id": "hug-defining-boundaries-11",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The Berlin Wall divided Berlin from 1961 to 1989. A few pieces still stand as a memorial. What type of boundary are those pieces part of?",
+   "options": [
+    "Antecedent",
+    "Geometric",
+    "Relict",
+    "Consequent"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A relict boundary has stopped working but remains visible in the cultural landscape, as the Berlin Wall memorial does.",
+    "options": [
+     "The wall was built through a crowded city.",
+     "The wall followed streets and old district lines, not a straight line.",
+     "Right: The wall no longer works as a border, but it still marks the landscape.",
+     "Germans lived on both sides; it did not follow a cultural line."
+    ]
+   }
+  },
+  {
+   "id": "hug-defining-boundaries-12",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How does a subsequent boundary differ from an antecedent boundary?",
+   "options": [
+    "A subsequent one is straight; an antecedent one follows rivers",
+    "A subsequent one comes after settlement; an antecedent one comes before",
+    "A subsequent one is no longer used; an antecedent one still works",
+    "A subsequent one is drawn by outsiders; an antecedent one by locals"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Antecedent boundaries are drawn before many people settle an area; subsequent boundaries are drawn after, as the cultural landscape takes shape.",
+    "options": [
+     "Shape is not what defines either type.",
+     "Right: The difference is timing: before or after people settled the area.",
+     "A boundary that is no longer used is relict.",
+     "Being drawn by outsiders makes a boundary superimposed."
+    ]
+   }
+  },
+  {
+   "id": "hug-defining-boundaries-13",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Match each boundary type to how it was made.",
+   "model": {
+    "layout": "tiers",
+    "title": "Boundary types and how they were made",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "Drawn before many settlers lived there"
+     },
+     {
+      "id": "t2",
+      "name": "Drawn after settlement, as the land filled"
+     },
+     {
+      "id": "t3",
+      "name": "Follows a cultural line such as language"
+     },
+     {
+      "id": "t4",
+      "name": "Forced on a place by outside powers"
+     },
+     {
+      "id": "t5",
+      "name": "A straight line of latitude or longitude"
+     },
+     {
+      "id": "t6",
+      "name": "No longer works, but still seen on the land"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "ant",
+      "text": "Antecedent"
+     },
+     {
+      "id": "sub",
+      "text": "Subsequent"
+     },
+     {
+      "id": "con",
+      "text": "Consequent"
+     },
+     {
+      "id": "sup",
+      "text": "Superimposed"
+     },
+     {
+      "id": "geo",
+      "text": "Geometric"
+     },
+     {
+      "id": "rel",
+      "text": "Relict"
+     },
+     {
+      "id": "fr",
+      "text": "Formal region"
+     }
+    ],
+    "key": {
+     "t1": "ant",
+     "t2": "sub",
+     "t3": "con",
+     "t4": "sup",
+     "t5": "geo",
+     "t6": "rel"
+    },
+    "slips": [
+     {
+      "piece": "sup",
+      "slot": "t3",
+      "why": "A superimposed boundary often cuts across cultures; a consequent one follows them."
+     },
+     {
+      "piece": "sub",
+      "slot": "t1",
+      "why": "Subsequent means after: it comes after settlement. Antecedent comes before."
+     },
+     {
+      "piece": "fr",
+      "slot": "t3",
+      "why": "A formal region is a kind of region, not a kind of boundary."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ask two questions: when was it drawn (before or after settlement), and what does it follow (a straight line, a cultural line, nothing anymore)?"
+   }
+  },
+  {
+   "id": "hug-defining-boundaries-14",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "analyze",
+   "diff": 3,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Much of the boundary between Kenya and Tanzania is made of straight lines, agreed by Britain and Germany in 1886 and 1890 through the lands of the Maasai. Which types does it fit? Select all that apply.",
+   "options": [
+    "Geometric",
+    "Superimposed",
+    "Relict",
+    "Consequent",
+    "Antecedent"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "One boundary can fit more than one type. The Kenya and Tanzania line is geometric (straight) and superimposed (drawn by outside powers through a people).",
+    "options": [
+     "Right: Long sections are straight lines.",
+     "Right: Two outside powers drew it through the Maasai lands.",
+     "It still works as a border.",
+     "It cuts across a people instead of following a cultural line.",
+     "Many people already lived there, so it was not drawn before settlement."
+    ]
+   }
+  },
+  {
+   "id": "hug-defining-boundaries-15",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "Colorado and Wyoming, two US states, are separated by a straight line along 41° N. What does this example show?",
+   "options": [
+    "Geometric boundaries appear between states, not inside them",
+    "Straight lines are relict boundaries",
+    "Geometric boundaries can divide units inside a state too",
+    "Boundaries inside a state follow cultural lines"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Boundary types work at more than one scale. The Colorado and Wyoming line is a geometric boundary at the subnational scale.",
+    "options": [
+     "This example sits inside one country.",
+     "The Colorado and Wyoming line still works.",
+     "Right: Boundary types apply at the subnational scale as well as between countries.",
+     "This one follows a line of latitude."
+    ]
+   }
+  },
+  {
+   "id": "hug-defining-boundaries-16",
+   "unit": "unit-4",
+   "topic": "defining-boundaries",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build a specific description of one boundary that fits two types.",
+   "why": {
+    "correct": "A strong description names the real boundary and why each type fits."
+   },
+   "specific": {
+    "frame": "The boundary between ___ is ___, because ___.",
+    "model": "The boundary between India and Pakistan is consequent and superimposed, because it was drawn in 1947 to follow religious majorities, and a British official drew it.",
+    "slots": {
+     "place": {
+      "label": "Boundary",
+      "options": [
+       "India and Pakistan",
+       "two countries in Asia"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name the real boundary; \"two countries\" earns no credit."
+      }
+     },
+     "kind": {
+      "label": "Types",
+      "options": [
+       "consequent and superimposed",
+       "antecedent and relict"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "It still works, and many people lived there when it was drawn."
+      }
+     },
+     "cause": {
+      "label": "Why",
+      "options": [
+       "it was drawn in 1947 to follow religious majorities, and a British official drew it",
+       "it follows a high mountain range"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Most of the India and Pakistan line crosses plains and desert, not mountains."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

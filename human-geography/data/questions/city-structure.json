@@ -1,0 +1,802 @@
+{
+ "stimuli": {
+  "city-structure-s1": {
+   "kind": "image",
+   "title": "A city model with numbered zones",
+   "image": {
+    "figure": "city-structure-zones",
+    "alt": "A city model of five rings around one center, numbered 1 at the center to 5 at the outer edge, drawn as half circles open to a lake on the east side. A railroad enters from the west and ends at zone 2.",
+    "caption": "A LevlPrep drawing of a city model; zone names are left off."
+   }
+  },
+  "city-structure-s2": {
+   "kind": "text",
+   "title": "Field notes from a city in Latin America",
+   "text": "<p><b>Invented field notes for practice, 2026.</b> \"We started at the cathedral on the main plaza, among banks and government offices. From there a wide avenue lined with office towers, embassies and mansions runs west for eight kilometers to a new shopping mall and a gated suburb. In the other directions, the houses near the center are old but solid. Farther out, families are adding second floors to concrete homes. On the dry hills at the city's edge, people who arrived in the last few years have built houses from brick and metal sheets on land they do not own. Water arrives by truck twice a week.\"</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-city-structure-1",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which model does the drawing show?",
+   "stimulus": "city-structure-s1",
+   "options": [
+    "The sector model",
+    "The multiple nuclei model",
+    "The concentric zone model",
+    "The galactic city model"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Equal rings around one center, with no wedges and no separate centers, are the concentric zone model.",
+    "options": [
+     "The sector model uses wedges, and the drawing has none.",
+     "The multiple nuclei model has several centers; the drawing has one.",
+     "Right: rings around one center.",
+     "The galactic city model has edge cities along a ring highway."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-2",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "In which numbered zone would this model place factories and run-down housing where new immigrants first settle?",
+   "stimulus": "city-structure-s1",
+   "options": [
+    "Zone 1",
+    "Zone 2",
+    "Zone 3",
+    "Zone 5"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Zone 2 is the zone in transition, just outside the CBD: factories, warehouses and cheap, crowded housing.",
+    "options": [
+     "Zone 1 is the CBD of offices and stores.",
+     "Right: the zone in transition is next to the CBD.",
+     "Zone 3 holds workers who have moved up out of zone 2.",
+     "Zone 5 is the commuter zone at the edge."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-3",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.E",
+   "q": "A family earns more money and moves from zone 3 to zone 4. What does the model predict for the home they leave?",
+   "stimulus": "city-structure-s1",
+   "options": [
+    "A poorer household moves into it",
+    "It is torn down for a new office tower",
+    "It becomes part of the CBD",
+    "It stays empty for good"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the model, groups move outward as they gain income, and poorer newcomers take their place: a step-by-step outward movement.",
+    "options": [
+     "Right: each zone is taken over by the group from the zone inside it.",
+     "Office towers belong in zone 1, not zone 3.",
+     "The CBD grows slowly into zone 2, not zone 3.",
+     "The model predicts the home is filled, not left empty."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-4",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "The drawing shows a railroad, but the zones ignore it. Which model would better show factories stretching out along the rail line?",
+   "stimulus": "city-structure-s1",
+   "options": [
+    "The concentric zone model",
+    "The rank-size rule",
+    "The central place model",
+    "The sector model"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The sector model lets land uses stretch into wedges along transport lines, such as a factory wedge beside a railroad.",
+    "options": [
+     "That is the model drawn, which ignores the railroad.",
+     "The rank-size rule is about city sizes in a country, not land use inside a city.",
+     "Central place theory is about spacing between settlements.",
+     "Right: wedges along transport lines are the sector model."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-5",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which model best fits the city in the field notes?",
+   "stimulus": "city-structure-s2",
+   "options": [
+    "The concentric zone model",
+    "The galactic city model",
+    "The Latin American city model",
+    "The African city model"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A CBD by the main plaza, a wealthy avenue running out to a mall and an elite suburb, and the poorest, newest homes at the edge match the Latin American city model.",
+    "options": [
+     "The concentric zone model puts the poorest near the center, not at the edge.",
+     "The galactic city model has edge cities along a beltway; the notes describe none.",
+     "Right: plaza, spine and peripheral squatter settlements.",
+     "The African city model has three CBDs; the notes describe one."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-6",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "In the Latin American city model, what is the wide avenue with office towers and mansions running to a mall?",
+   "stimulus": "city-structure-s2",
+   "options": [
+    "The zone of maturity",
+    "The spine",
+    "The zone in transition",
+    "An edge city"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The spine is a wedge of commerce and wealthy homes that runs from the CBD along a grand avenue.",
+    "options": [
+     "The zone of maturity is a ring of older, solid homes.",
+     "Right: the spine and its elite residential sector.",
+     "The zone in transition belongs to the concentric zone model.",
+     "An edge city is a suburban job center in North American models."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-7",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.E",
+   "q": "Compared with the concentric zone model, where do the poorest residents live in the field notes, and why?",
+   "stimulus": "city-structure-s2",
+   "options": [
+    "At the edge, where newcomers can build on unclaimed land",
+    "Near the center, because old housing there is cheap",
+    "Along the avenue, because it has the most jobs",
+    "In the gated suburb, because land there is free"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In many Latin American cities, the newest and poorest arrivals build on unclaimed land at the edge, where they can settle without paying. The concentric zone model puts the poorest near the center instead.",
+    "options": [
+     "Right: the pattern is reversed from the concentric zone model.",
+     "That is where the concentric zone model puts them; the notes put them at the edge.",
+     "The avenue holds offices and mansions.",
+     "The gated suburb is for wealthy families."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-8",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "The notes say water reaches the hillside homes by truck twice a week. What does that detail suggest about these homes?",
+   "stimulus": "city-structure-s2",
+   "options": [
+    "They are in the zone of maturity, the oldest part of the city",
+    "They are part of the wealthy spine along the avenue",
+    "They were built by the city government for new workers",
+    "They are squatter settlements not yet linked to city water pipes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Squatter settlements are built by residents on land they do not own, often before the city lays water pipes or sewers, so water must be trucked in.",
+    "options": [
+     "The zone of maturity holds older, solid homes near the center with full services.",
+     "The spine is the richest part of the city.",
+     "The notes say residents built the homes themselves on land they do not own.",
+     "Right: self-built homes at the edge often lack piped water."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-9",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Why does the CBD of a large city have the tallest buildings?",
+   "options": [
+    "Building codes require towers near the center",
+    "Tall buildings are cheaper to build than short ones",
+    "Land there costs the most, so firms build upward to use it fully",
+    "The ground at the center is the strongest"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Bid-rent: the center is the most accessible place, so firms bid the most for it. High land prices make it pay to stack many floors on each lot.",
+    "options": [
+     "Height follows land value, not a rule that requires towers.",
+     "Towers cost more per floor to build; they pay only where land is costly.",
+     "Right: high land values push buildings up.",
+     "Height follows land value, not the strength of the ground."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-10",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.E",
+   "q": "Metro Atlanta has edge cities, such as Perimeter Center and Cumberland, near interchanges on its I-285 beltway, and many people drive between suburbs and edge cities without going downtown. Which model fits best?",
+   "options": [
+    "Multiple nuclei",
+    "Galactic city",
+    "Sector",
+    "Concentric zone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Edge cities spaced along a ring highway around an old downtown are the galactic city model.",
+    "options": [
+     "Multiple nuclei has several centers of different kinds, not edge cities set along a beltway.",
+     "Right: edge cities along a beltway.",
+     "The sector model has wedges from one CBD.",
+     "The concentric zone model has rings around one CBD."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-11",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.E",
+   "q": "Metro Los Angeles has many separate centers: a downtown, a port, an airport district, university areas and film studios. Which model fits best?",
+   "options": [
+    "Multiple nuclei",
+    "Concentric zone",
+    "Sector",
+    "Latin American city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Several separate centers of different kinds, each drawing its own land uses, are the multiple nuclei model.",
+    "options": [
+     "Right: many nuclei of different kinds.",
+     "The concentric zone model has one center.",
+     "The sector model has one center with wedges.",
+     "The Latin American model has one CBD with a spine."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-12",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.E",
+   "q": "In Chicago, wealthy neighborhoods stretch north from downtown along the shore of Lake Michigan for many kilometers. Which model does this support?",
+   "options": [
+    "Concentric zone",
+    "Multiple nuclei",
+    "African city",
+    "Sector"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A high-rent wedge spreading outward in one direction along an attractive feature is the sector model.",
+    "options": [
+     "Rings would put wealthy homes all around the city, not in one direction.",
+     "This is one wedge from one center, not several centers.",
+     "The African city model is about three CBDs and an informal edge.",
+     "Right: a wedge along the lakeshore."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-structure-13",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the concentric zone model: place each zone from the center outward.",
+   "model": {
+    "layout": "rings",
+    "title": "Concentric zone model",
+    "center": "Center",
+    "slots": [
+     {
+      "id": "z1"
+     },
+     {
+      "id": "z2"
+     },
+     {
+      "id": "z3"
+     },
+     {
+      "id": "z4"
+     },
+     {
+      "id": "z5"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "cbd",
+      "text": "CBD"
+     },
+     {
+      "id": "trans",
+      "text": "Zone in transition"
+     },
+     {
+      "id": "work",
+      "text": "Workers' homes"
+     },
+     {
+      "id": "mid",
+      "text": "Middle-class homes"
+     },
+     {
+      "id": "comm",
+      "text": "Commuter zone"
+     },
+     {
+      "id": "spine",
+      "text": "Elite spine"
+     }
+    ],
+    "key": {
+     "z1": "cbd",
+     "z2": "trans",
+     "z3": "work",
+     "z4": "mid",
+     "z5": "comm"
+    },
+    "slips": [
+     {
+      "piece": "comm",
+      "slot": "z2",
+      "why": "Commuters live at the edge and travel in. The zone next to the CBD is the zone in transition, with factories and cheap housing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the center: CBD, zone in transition, workers' homes, middle-class homes, commuter zone. The spine belongs to the Latin American model."
+   }
+  },
+  {
+   "id": "hug-city-structure-14",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build a sector model city. A rail line runs east from the CBD and a lakeshore boulevard runs north. Place each land use in its wedge.",
+   "model": {
+    "layout": "tiers",
+    "title": "Sector model: which wedge holds what",
+    "slots": [
+     {
+      "id": "n",
+      "name": "Wedge along the lakeshore (north)"
+     },
+     {
+      "id": "e",
+      "name": "Wedge along the rail line (east)"
+     },
+     {
+      "id": "se",
+      "name": "Wedge next to the rail wedge"
+     },
+     {
+      "id": "w",
+      "name": "Wedge between the two (west)"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "high",
+      "text": "High-income homes"
+     },
+     {
+      "id": "ind",
+      "text": "Factories and warehouses"
+     },
+     {
+      "id": "low",
+      "text": "Low-income homes"
+     },
+     {
+      "id": "midw",
+      "text": "Middle-income homes"
+     },
+     {
+      "id": "edge",
+      "text": "Edge city offices"
+     }
+    ],
+    "key": {
+     "n": "high",
+     "e": "ind",
+     "se": "low",
+     "w": "midw"
+    },
+    "slips": [
+     {
+      "piece": "high",
+      "slot": "e",
+      "why": "High-income homes follow pleasant routes such as a lakeshore and stay away from rail yards and factories."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Hoyt's wedges: wealth follows the attractive lakeshore, industry follows the rail line, low-income homes sit next to industry, middle-income homes fill the rest."
+   }
+  },
+  {
+   "id": "hug-city-structure-15",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build a multiple nuclei city: match each nucleus to the land use that clusters there.",
+   "model": {
+    "layout": "tiers",
+    "title": "Multiple nuclei: what gathers at each center",
+    "slots": [
+     {
+      "id": "cbd",
+      "name": "Old CBD"
+     },
+     {
+      "id": "air",
+      "name": "Airport"
+     },
+     {
+      "id": "uni",
+      "name": "University"
+     },
+     {
+      "id": "port",
+      "name": "Port and rail yards"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "bank",
+      "text": "Banks and city offices"
+     },
+     {
+      "id": "hotel",
+      "text": "Hotels and freight firms"
+     },
+     {
+      "id": "book",
+      "text": "Bookstores, student housing"
+     },
+     {
+      "id": "heavy",
+      "text": "Heavy industry"
+     }
+    ],
+    "key": {
+     "cbd": "bank",
+     "air": "hotel",
+     "uni": "book",
+     "port": "heavy"
+    },
+    "slips": [
+     {
+      "piece": "heavy",
+      "slot": "uni",
+      "why": "Heavy industry needs ships and rail to move bulky goods, so it gathers at the port and rail yards."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Similar uses gather near the center that serves them: offices downtown, travel businesses at the airport, student life near the university, heavy industry at the port."
+   }
+  },
+  {
+   "id": "hug-city-structure-16",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the galactic city model: place each part from the center outward.",
+   "model": {
+    "layout": "rings",
+    "title": "Galactic city model",
+    "center": "Old downtown",
+    "slots": [
+     {
+      "id": "g1"
+     },
+     {
+      "id": "g2"
+     },
+     {
+      "id": "g3"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "inner",
+      "text": "Older inner suburbs"
+     },
+     {
+      "id": "belt",
+      "text": "Beltway with edge cities"
+     },
+     {
+      "id": "ex",
+      "text": "Exurbs among farms"
+     },
+     {
+      "id": "trans",
+      "text": "Zone in transition"
+     }
+    ],
+    "key": {
+     "g1": "inner",
+     "g2": "belt",
+     "g3": "ex"
+    },
+    "slips": [
+     {
+      "piece": "belt",
+      "slot": "g1",
+      "why": "Edge cities grow out at the beltway, past the older inner suburbs, where land is cheaper and highways meet."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Around the old downtown: older inner suburbs, then the beltway with edge cities at its interchanges, then exurbs. The zone in transition belongs to the concentric zone model."
+   }
+  },
+  {
+   "id": "hug-city-structure-17",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the Latin American city model: place the rings from the CBD outward (the spine aside).",
+   "model": {
+    "layout": "rings",
+    "title": "Latin American city model",
+    "center": "CBD and plaza",
+    "slots": [
+     {
+      "id": "m1"
+     },
+     {
+      "id": "m2"
+     },
+     {
+      "id": "m3"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "mat",
+      "text": "Zone of maturity"
+     },
+     {
+      "id": "acc",
+      "text": "Zone of in situ accretion"
+     },
+     {
+      "id": "sq",
+      "text": "Peripheral squatter settlements"
+     },
+     {
+      "id": "comm",
+      "text": "Commuter zone"
+     }
+    ],
+    "key": {
+     "m1": "mat",
+     "m2": "acc",
+     "m3": "sq"
+    },
+    "slips": [
+     {
+      "piece": "sq",
+      "slot": "m1",
+      "why": "In this model the newest, poorest settlements are at the edge, not next to the center: the reverse of the concentric zone model."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From the center outward: older solid homes (maturity), homes improved bit by bit (in situ accretion), then self-built settlements at the edge. The commuter zone is a Burgess idea."
+   }
+  },
+  {
+   "id": "hug-city-structure-18",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the Southeast Asian city model: place the zones from the old port outward.",
+   "model": {
+    "layout": "rings",
+    "title": "Southeast Asian city model",
+    "center": "Old port",
+    "slots": [
+     {
+      "id": "a1"
+     },
+     {
+      "id": "a2"
+     },
+     {
+      "id": "a3"
+     },
+     {
+      "id": "a4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "com",
+      "text": "Western and immigrant trade zones"
+     },
+     {
+      "id": "mix",
+      "text": "Zones of mixed land uses"
+     },
+     {
+      "id": "sub",
+      "text": "New middle-class suburbs"
+     },
+     {
+      "id": "garden",
+      "text": "Market gardens at the edge"
+     },
+     {
+      "id": "spine",
+      "text": "Elite spine to a mall"
+     }
+    ],
+    "key": {
+     "a1": "com",
+     "a2": "mix",
+     "a3": "sub",
+     "a4": "garden"
+    },
+    "slips": [
+     {
+      "piece": "garden",
+      "slot": "a2",
+      "why": "Market gardens need open land and sit at the edge, where they feed the city; mixed zones of homes and small businesses fill the middle."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The old port is the focus, with trading zones beside it, mixed zones around them, new suburbs farther out and market gardens at the edge."
+   }
+  },
+  {
+   "id": "hug-city-structure-19",
+   "unit": "unit-6",
+   "topic": "city-structure",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the African city model: match each part of the city to what it holds.",
+   "model": {
+    "layout": "tiers",
+    "title": "African city model",
+    "slots": [
+     {
+      "id": "col",
+      "name": "Colonial CBD"
+     },
+     {
+      "id": "trad",
+      "name": "Traditional CBD"
+     },
+     {
+      "id": "mkt",
+      "name": "Market zone"
+     },
+     {
+      "id": "edge",
+      "name": "Outer edge"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "grid",
+      "text": "Offices on a grid of wide streets"
+     },
+     {
+      "id": "shops",
+      "text": "Small shops on narrow lanes"
+     },
+     {
+      "id": "stalls",
+      "text": "Open-air stalls"
+     },
+     {
+      "id": "inf",
+      "text": "Informal settlements"
+     }
+    ],
+    "key": {
+     "col": "grid",
+     "trad": "shops",
+     "mkt": "stalls",
+     "edge": "inf"
+    },
+    "slips": [
+     {
+      "piece": "grid",
+      "slot": "trad",
+      "why": "Wide streets in a grid were laid out by colonial planners; the traditional CBD grew with narrow lanes and small shops."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Three CBDs sit side by side: a colonial one of offices in a grid, a traditional one of small shops and an open-air market. Informal settlements spread at the edge."
+   }
+  }
+ ]
+}

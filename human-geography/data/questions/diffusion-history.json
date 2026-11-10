@@ -1,0 +1,497 @@
+{
+ "stimuli": {
+  "diffusion-history-s1": {
+   "kind": "text",
+   "title": "Swahili, a language of East African ports",
+   "text": "<p><b>Swahili on the East African coast</b> (LevlPrep summary, 2026)</p><p>For more than a thousand years, ports such as Kilwa, Mombasa and Zanzibar traded across the Indian Ocean with merchants from Arabia, Persia and India. Swahili, a Bantu language of the coast, took in many Arabic words through this trade; its name comes from an Arabic word for \"coasts.\" In the 1800s, trading caravans carried goods and Swahili inland toward the Great Lakes. Traders, porters and farmers who spoke different home languages used Swahili to bargain with each other. Kenya and Tanzania later made Swahili a national language, and people across East Africa speak it as a second language.</p>"
+  },
+  "diffusion-history-s2": {
+   "kind": "map",
+   "title": "Four countries and their colonial histories",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four countries marked: A Brazil, B Senegal, C India and D the Philippines",
+    "legendTitle": "Countries in the questions",
+    "focus": [
+     "brazil",
+     "senegal",
+     "india",
+     "philippines"
+    ],
+    "marks": [
+     {
+      "at": "brazil",
+      "text": "A"
+     },
+     {
+      "at": "senegal",
+      "text": "B"
+     },
+     {
+      "at": "india",
+      "text": "C"
+     },
+     {
+      "at": "philippines",
+      "text": "D"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-diffusion-history-1",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "diffusion-history-s1",
+   "q": "In the passage, traders with different home languages used Swahili to bargain. What does this make Swahili for them?",
+   "options": [
+    "A lingua franca, a shared language between groups",
+    "A pidgin, because no one speaks Swahili from birth",
+    "A form of folk culture limited to one village",
+    "An example of ethnocentrism among the traders"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "a lingua franca is a language people with different home languages use to communicate, often for trade.",
+    "options": [
+     "Right: a lingua franca is a language people with different home languages use to communicate, often for trade.",
+     "Many coastal people speak Swahili as their first language, so it is a full language, not a pidgin.",
+     "The passage shows Swahili used across a large area by many groups.",
+     "Using a shared language to trade is not a judgment of another culture."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-2",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "diffusion-history-s1",
+   "q": "Which cause in the passage best explains why Swahili contains many Arabic words?",
+   "options": [
+    "The caravans that went inland toward the Great Lakes",
+    "Centuries of trade with Arabian merchants",
+    "Kenya and Tanzania making Swahili a national language",
+    "Farmers far inland using Swahili as a second language"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "long contact through trade brought Arabic words into the language of the ports, a historical cause of diffusion.",
+    "options": [
+     "The caravans carried Swahili inland, but the Arabic words came from contact on the coast.",
+     "Right: long contact through trade brought Arabic words into the language of the ports, a historical cause of diffusion.",
+     "That came much later and does not explain where the words came from.",
+     "Inland farmers learned Swahili; they were not the source of its Arabic words."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-3",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "stimulus": "diffusion-history-s1",
+   "q": "In the 1800s, caravans of traders and porters walked inland and took Swahili with them. Which kind of diffusion is this stage?",
+   "options": [
+    "Stimulus diffusion, because inland groups invented a new language",
+    "Hierarchical diffusion, from small villages up to the coast",
+    "Relocation diffusion, carried by people on the move",
+    "No diffusion, because Swahili stayed on the coast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "the language traveled with the people who moved inland along the caravan routes.",
+    "options": [
+     "Inland groups learned Swahili itself; they did not build a new language from the idea.",
+     "The movement ran from the coast inland, carried by traders, not up a ladder of size.",
+     "Right: the language traveled with the people who moved inland along the caravan routes.",
+     "The passage says the caravans carried Swahili inland, so it did spread."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-4",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "diffusion-history-s1",
+   "q": "Based on the passage, a market town far inland where people speak several home languages would most likely use Swahili in which way?",
+   "options": [
+    "As the home language of most families in the town",
+    "As a language heard on the coast but not inland",
+    "As a written code used by merchants from Persia",
+    "As a shared trade language"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "in a place with many home languages, Swahili works as a lingua franca for buying and selling, while families keep their own languages.",
+    "options": [
+     "The passage says people inland speak Swahili as a second language, not at home.",
+     "The passage says caravans carried Swahili inland, where people used it to bargain.",
+     "Swahili is a spoken language of East Africa, not a code of Persian merchants.",
+     "Right: in a place with many home languages, Swahili works as a lingua franca for buying and selling, while families keep their own languages."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-5",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "stimulus": "diffusion-history-s2",
+   "q": "Country A was ruled by Portugal from the 1500s until 1822. Which language is its official language as a result?",
+   "options": [
+    "Portuguese",
+    "Spanish",
+    "French",
+    "Dutch"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "country A is Brazil. Portuguese colonizers made their language the language of government and schools, and it remains Brazil's official language.",
+    "options": [
+     "Right: country A is Brazil. Portuguese colonizers made their language the language of government and schools, and it remains Brazil's official language.",
+     "Spanish is the official language of most of Brazil's neighbors, which Spain ruled. Brazil was ruled by Portugal.",
+     "France ruled other places in the Americas, such as Haiti, but not country A.",
+     "The Dutch held parts of northeast Brazil only briefly in the 1600s; Portuguese rule lasted."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-6",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "diffusion-history-s2",
+   "q": "Country B uses French in its government and schools, while most people speak Wolof or another African language at home. Which history best explains this pattern?",
+   "options": [
+    "Trade with Arabian merchants across the Indian Ocean",
+    "French colonial rule set the language of government",
+    "Migration of French speakers out of Senegal after 1960",
+    "Spanish rule over West Africa in the 1800s"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "country B is Senegal, ruled by France until 1960. French stayed the language of government, while home languages such as Wolof stayed in daily life.",
+    "options": [
+     "Senegal faces the Atlantic, and Arabian trade does not explain French in government.",
+     "Right: country B is Senegal, ruled by France until 1960. French stayed the language of government, while home languages such as Wolof stayed in daily life.",
+     "People leaving would not explain why French is still used in Senegal's government.",
+     "Senegal was a French colony, not a Spanish one."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-7",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "diffusion-history-s2",
+   "q": "Country C, India, has Hindi as an official language and uses English in its courts, universities and national business. Country D, the Philippines, uses Filipino and English. What do C and D have in common?",
+   "options": [
+    "Both were Portuguese colonies, like country A",
+    "Both have English as the first language of most people",
+    "A colonial power left English as a shared language",
+    "Both learned English through trade along the Swahili coast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Britain ruled India and the United States ruled the Philippines (1898 to 1946). In both, English stayed as a shared language of government and education.",
+    "options": [
+     "Neither was a Portuguese colony. India was ruled by Britain and the Philippines by Spain and then the United States.",
+     "Most people in both countries speak another language at home; English is a shared second language.",
+     "Right: Britain ruled India and the United States ruled the Philippines (1898 to 1946). In both, English stayed as a shared language of government and education.",
+     "English came to both through colonial rule, not through East African trade."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-8",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "What is the difference between a pidgin and a creole?",
+   "options": [
+    "A pidgin is written down; a creole is mostly spoken",
+    "A creole mixes two languages; a pidgin uses one",
+    "A pidgin is official in a country; a creole is not",
+    "A creole has native speakers; a pidgin does not"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "a pidgin is a simple mixed language for contact that no one speaks from birth. When children grow up speaking it as a first language, it becomes a creole.",
+    "options": [
+     "Writing is not the difference. Both can be spoken or written.",
+     "Both come from mixing languages. What differs is whether anyone speaks it from birth.",
+     "Haitian Creole is official in Haiti, so this is not the difference.",
+     "Right: a pidgin is a simple mixed language for contact that no one speaks from birth. When children grow up speaking it as a first language, it becomes a creole."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-9",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Tok Pisin began in the 1800s as a simple trade and work language in what is now Papua New Guinea. Many children there now grow up speaking it as their first language, and it is an official language. What process does this show?",
+   "options": [
+    "Creolization: a contact language gains native speakers",
+    "Ethnocentrism: one language is judged better than another",
+    "Relocation diffusion: speakers moved to Papua New Guinea",
+    "Hierarchical diffusion: the language reached cities first"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "when a pidgin gains native speakers and grows into a full language, it has become a creole. That process is creolization.",
+    "options": [
+     "Right: when a pidgin gains native speakers and grows into a full language, it has become a creole. That process is creolization.",
+     "Nothing in the stem judges a language. It describes a language changing as children learn it.",
+     "The stem describes a language growing in one place, not people carrying it there.",
+     "The stem says nothing about cities. It is about a contact language gaining native speakers."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-10",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Britain ruled Hong Kong as a colony from 1842 to 1997, sending governors and building British courts and schools. Which term describes this kind of rule?",
+   "options": [
+    "Creolization",
+    "Colonialism",
+    "Placemaking",
+    "A lingua franca"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "colonialism is one country taking control of a place and its people, governing them and often settling there.",
+    "options": [
+     "Creolization is the mixing of cultures into a new form, not a kind of rule.",
+     "Right: colonialism is one country taking control of a place and its people, governing them and often settling there.",
+     "Placemaking is people shaping their own place to show their identity.",
+     "A lingua franca is a shared language, not a kind of rule."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-11",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "In the late 1800s and early 1900s, several powerful countries forced China to open ports to their trade and set rules there, without ruling all of China as a colony. Which term fits this best?",
+   "options": [
+    "Colonialism: ruling a place directly and settling it",
+    "Creolization: blending two cultures into a new one",
+    "Imperialism: extending power and influence over another place",
+    "Contagious diffusion: spreading from neighbor to neighbor"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "imperialism is extending a country's power over other places by force, money or culture, whether or not it rules them directly.",
+    "options": [
+     "The stem says China was not ruled as a colony; the foreign powers pressed for influence instead.",
+     "The stem is about power over trade, not about cultures blending.",
+     "Right: imperialism is extending a country's power over other places by force, money or culture, whether or not it rules them directly.",
+     "The stem is about power over another country, not a pattern of spread."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-12",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Papermaking began in China and reached Samarkand, in Central Asia, by about the 700s, then Baghdad and later Europe. Which historical cause best explains this spread?",
+   "options": [
+    "European colonial rule over China in the 700s",
+    "Streaming video teaching people how to make paper",
+    "Creole languages formed in Caribbean ports",
+    "Trade routes linking China with lands to the west"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "the Silk Roads carried goods, people and skills between China and lands to the west, so papermaking spread along them.",
+    "options": [
+     "No European power ruled China in the 700s. Trade routes, not colonies, carried papermaking west.",
+     "Streaming video did not exist in the 700s.",
+     "Caribbean creoles came centuries later and have nothing to do with papermaking.",
+     "Right: the Silk Roads carried goods, people and skills between China and lands to the west, so papermaking spread along them."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-13",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Cricket is a major sport in India, Pakistan, Australia and Jamaica but is little played in Brazil or Mexico. Which history best explains this pattern at the global scale?",
+   "options": [
+    "The British Empire carried cricket to the places it ruled",
+    "Cricket needs a hot climate, which Brazil and Mexico lack",
+    "Cricket began in India and spread west to Britain",
+    "Television in the 1990s spread cricket to these countries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Britain ruled all four of the first group of countries and brought cricket with it. Brazil and Mexico had other colonial rulers.",
+    "options": [
+     "Right: Britain ruled all four of the first group of countries and brought cricket with it. Brazil and Mexico had other colonial rulers.",
+     "Brazil and Mexico have hot regions. The pattern follows colonial history, not climate.",
+     "Cricket began in England and spread through the British Empire.",
+     "Cricket was played in these countries long before television."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-14",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Gumbo, a dish from Louisiana, mixes okra from West Africa, a French way of thickening a sauce and ground sassafras leaves used by the Choctaw people. Which process does this dish show?",
+   "options": [
+    "Colonialism: one country ruling another place",
+    "Creolization: cultures mixing into a new local form",
+    "Ethnocentrism: judging other cultures by your own",
+    "A lingua franca: a shared language for trade"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "West African, French and Native American traits met in Louisiana and blended into something new. That is creolization.",
+    "options": [
+     "Colonial history helped bring the cultures together, but the dish itself shows mixing into a new form.",
+     "Right: West African, French and Native American traits met in Louisiana and blended into something new. That is creolization.",
+     "A blended dish does not judge any culture.",
+     "Gumbo is a food, not a language."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-15",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A pilot from Brazil lands an international flight in Japan, and talks to the control tower in English. Why is English used?",
+   "options": [
+    "It is the first language of both the pilot and the controller",
+    "English is a creole that grew up at airports",
+    "It serves as a lingua franca for international flights",
+    "Japan was a British colony until the 1940s"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "when people with different home languages must communicate, they use a shared language. For international flights that language is English.",
+    "options": [
+     "The pilot likely speaks Portuguese at home and the controller Japanese.",
+     "English is not a creole of airports; it is a shared language people learn for work.",
+     "Right: when people with different home languages must communicate, they use a shared language. For international flights that language is English.",
+     "Japan was never a British colony."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-history-16",
+   "unit": "unit-3",
+   "topic": "diffusion-history",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of how colonialism spread a language to a named place.",
+   "why": {
+    "correct": "Name the place, the language and the colonial link that put the language there."
+   },
+   "specific": {
+    "frame": "In ___, ___ is widely spoken because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Brazil, Portuguese is widely spoken because Portugal ruled Brazil from the 1500s until 1822 and made Portuguese the language of government, churches and schools, so it replaced or joined local languages.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Brazil",
+       "South America in general"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "South America is too broad: most of its countries speak Spanish. Name the country."
+      }
+     },
+     "lang": {
+      "label": "Language",
+      "options": [
+       "Portuguese",
+       "Spanish"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Spanish is spoken in Brazil's neighbors. Brazil was ruled by Portugal."
+      }
+     },
+     "link": {
+      "label": "Because",
+      "options": [
+       "Portugal ruled it for about 300 years and made Portuguese the language of government and schools",
+       "Brazil is close to Portugal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Brazil is across the Atlantic from Portugal; the link is colonial rule, not distance."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

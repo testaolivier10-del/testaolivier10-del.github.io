@@ -1,0 +1,70 @@
+{
+ "topic": "second-agricultural-revolution",
+ "hook": "In 1831, a crew in Virginia cut wheat with hand tools while a horse-drawn machine beside them did the work of many workers. Within a few decades, farms across Britain and North America were growing more food with fewer people, and the people who were no longer needed on farms moved to towns.",
+ "prereq": [
+  {
+   "q": "Which was a result of the First Agricultural Revolution?",
+   "options": [
+    "People settled in permanent villages",
+    "People moved to factories in towns",
+    "Crops crossed the Atlantic by ship",
+    "Farmers began using machines"
+   ],
+   "correct": 0,
+   "why": "Farming tied people to their fields, so villages formed.",
+   "review": "agricultural-origins"
+  },
+  {
+   "q": "In stage 2 of the demographic transition model, what happens?",
+   "options": [
+    "Death rates fall while birth rates stay high",
+    "Birth rates fall while death rates stay high",
+    "Both rates are low and close together",
+    "Both rates rise quickly"
+   ],
+   "correct": 0,
+   "why": "Better food and health lower death rates first, so population grows fast.",
+   "review": "transition-model"
+  }
+ ],
+ "figure": {
+  "figure": "second-agricultural-revolution-rotation",
+  "caption": "The four-field rotation: no field left empty, and more animals fed through winter."
+ },
+ "chain": [
+  {
+   "cause": "New rotations, breeding and machines spread on British farms in the 1700s and 1800s",
+   "effect": "each farm worker produced much more food"
+  },
+  {
+   "cause": "Each worker produced more and farms were enclosed",
+   "effect": "farms needed fewer workers"
+  },
+  {
+   "cause": "Fewer farm jobs pushed people off the land while factories offered work",
+   "effect": "people moved to towns and cities"
+  },
+  {
+   "cause": "More and better food reached more people",
+   "effect": "death rates fell and the population grew"
+  }
+ ],
+ "ideas": [
+  "The <b>Second Agricultural Revolution</b> began in Britain and western Europe in the 1700s and spread to North America in the 1800s, alongside the rise of factories.",
+  "Its changes: crop rotation (the Norfolk four-field system), selective breeding, enclosure and <b>mechanization</b> (seed drill, steel plow, reaper).",
+  "Effects: more food per worker, better diets and lower death rates, and fewer farm jobs, which pushed people to towns and factory work."
+ ],
+ "misconception": {
+  "wrong": "The Second Agricultural Revolution means farmers began growing crops for the first time.",
+  "right": "That was the First Agricultural Revolution. The second changed how existing farms worked: rotation, breeding, enclosure and machines, from the 1700s."
+ },
+ "check": [
+  "hug-second-agricultural-revolution-1",
+  "hug-second-agricultural-revolution-2",
+  "hug-second-agricultural-revolution-3",
+  "hug-second-agricultural-revolution-5",
+  "hug-second-agricultural-revolution-6",
+  "hug-second-agricultural-revolution-10"
+ ],
+ "summary": "The Second Agricultural Revolution, from the 1700s in Britain and the 1800s in North America, brought crop rotation, selective breeding, enclosure and mechanization. Each farm worker grew more food, diets and life spans improved, and people no longer needed on farms moved to towns."
+}

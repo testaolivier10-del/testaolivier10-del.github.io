@@ -1,0 +1,26 @@
+{
+ "crude-birth-rate": {
+  "def": "The number of births in a year for every 1,000 people in a population."
+ },
+ "crude-death-rate": {
+  "def": "The number of deaths in a year for every 1,000 people in a population."
+ },
+ "total-fertility-rate": {
+  "def": "The average number of children a woman would have in her lifetime if the birth rates of one year stayed the same."
+ },
+ "infant-mortality-rate": {
+  "def": "The number of babies who die before their first birthday for every 1,000 live births."
+ },
+ "life-expectancy": {
+  "def": "The average number of years a newborn can expect to live if the death rates of its birth year stay the same."
+ },
+ "rate-of-natural-increase": {
+  "def": "The crude birth rate minus the crude death rate, given as a percent (divide by 10). It leaves out migration."
+ },
+ "doubling-time": {
+  "def": "The number of years a population takes to double at a steady growth rate. By the rule of 70, it is about 70 divided by the growth rate in percent."
+ },
+ "replacement-fertility": {
+  "def": "The total fertility rate at which each generation just replaces itself: about 2.1 births per woman where few children die."
+ }
+}

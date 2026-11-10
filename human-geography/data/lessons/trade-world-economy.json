@@ -1,0 +1,72 @@
+{
+ "topic": "trade-world-economy",
+ "hook": "Suppose one country can make both coffee and tablets faster than its neighbor. Should it make everything itself and skip trade? On a recent AP® Human Geography exam, only about 6% of students earned the point on a part like this (College Board, 2025). The answer, worked out by David Ricardo in 1817, is no: both countries can gain. Here is why, and how trade rules, trade blocs and debt tie the world together.",
+ "prereq": [
+  {
+   "q": "What is a supranational organization?",
+   "options": [
+    "A group of three or more countries that cooperate and give up some control",
+    "A city that is the center of world finance",
+    "A country split into smaller states",
+    "A company that works in many countries"
+   ],
+   "correct": 0,
+   "why": "Supranational organizations, like trade blocs, ask members to share some sovereignty.",
+   "review": "sovereignty-challenges"
+  },
+  {
+   "q": "In world-system terms, what do periphery countries mostly export?",
+   "options": [
+    "Raw materials",
+    "Research and patents",
+    "Banking services",
+    "Software"
+   ],
+   "correct": 0,
+   "why": "The periphery mostly exports raw materials and relies on low-wage work.",
+   "review": "development-theories"
+  }
+ ],
+ "figure": {
+  "figure": "trade-world-economy-advantage",
+  "caption": "Country A makes more of both goods, but it gives up less to make rice, and Country B gives up less to make bikes."
+ },
+ "chain": [
+  {
+   "cause": "Each country gives up some of one good to make another (opportunity cost)",
+   "effect": "the country that gives up less has the comparative advantage in that good"
+  },
+  {
+   "cause": "Each country specializes in its comparative advantage and trades",
+   "effect": "both end up with more goods than they could make alone"
+  },
+  {
+   "cause": "Countries form trade blocs such as the EU and Mercosur",
+   "effect": "tariffs fall among members, so trade among them grows, and members share some sovereignty"
+  },
+  {
+   "cause": "A government cannot pay its debts, as Mexico in 1982",
+   "effect": "the IMF lends with structural adjustment, and crises spread through an interdependent world"
+  }
+ ],
+ "ideas": [
+  "<b>Complementarity</b>: one place has what another needs, as Costa Rica's bananas and Canada's wheat.",
+  "<b>Absolute advantage</b>: making more of a good. <b>Comparative advantage</b>: making it at a lower opportunity cost. Trade follows comparative advantage.",
+  "Opportunity cost of one unit = what you give up divided by what you get, from the same day of work.",
+  "<b>Neoliberalism</b> cuts the government's role: fewer <b>tariffs</b> (taxes on imports), sold state firms, less spending. The <b>WTO</b> sets trade rules; <b>trade blocs</b> cut tariffs among members.",
+  "The <b>IMF</b> lends to governments in crisis, with conditions (structural adjustment). Debt and trade make the world <b>interdependent</b>."
+ ],
+ "misconception": {
+  "wrong": "A country that can make more of both goods should make both and not trade.",
+  "right": "That country has the absolute advantage in both, but trade follows comparative advantage: each country makes the good it gives up the least to make, and both gain."
+ },
+ "check": [
+  "hug-trade-world-economy-1",
+  "hug-trade-world-economy-2",
+  "hug-trade-world-economy-3",
+  "hug-trade-world-economy-4",
+  "hug-trade-world-economy-11",
+  "hug-trade-world-economy-17"
+ ],
+ "summary": "Trade happens where places complement each other. Comparative advantage, the lower opportunity cost, decides who should make what, even when one country has the absolute advantage in everything. Neoliberal policies, tariffs, the WTO, trade blocs such as the EU and Mercosur, OPEC and IMF loans shape trade and make the world economy interdependent."
+}

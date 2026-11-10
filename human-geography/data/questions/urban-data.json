@@ -1,0 +1,476 @@
+{
+ "stimuli": {
+  "urban-data-s1": {
+   "kind": "data",
+   "title": "Census figures for the East Ridge neighborhood",
+   "invented": true,
+   "table": {
+    "caption": "East Ridge census tract, an invented neighborhood (invented data for practice)",
+    "cols": [
+     "Measure",
+     "2000",
+     "2010",
+     "2020"
+    ],
+    "rows": [
+     [
+      "Population",
+      "4,200",
+      "4,000",
+      "4,300"
+     ],
+     [
+      "Median household income (dollars a year)",
+      "31,000",
+      "38,000",
+      "72,000"
+     ],
+     [
+      "Median monthly rent (dollars)",
+      "650",
+      "800",
+      "1,450"
+     ],
+     [
+      "Share of homes rented, not owned",
+      "78%",
+      "74%",
+      "58%"
+     ],
+     [
+      "Share of residents who moved in during the last 5 years",
+      "20%",
+      "24%",
+      "46%"
+     ]
+    ]
+   }
+  },
+  "urban-data-s2": {
+   "kind": "text",
+   "title": "Interviews with East Ridge residents",
+   "text": "<p><b>Invented interviews for practice, 2026.</b></p><p><i>Rosa, 68, renter for 40 years:</i> \"My rent went up three times in four years. Most of my friends from church have moved to the suburbs. I still love this street, but it does not feel like mine.\"</p><p><i>Marcus, 34, bought a house in 2019:</i> \"We picked East Ridge for the old houses and the bus line downtown. The neighbors were kind to us, but I know some people see us as the reason prices went up.\"</p><p><i>Mr. Tran, owner of a corner store since 1995:</i> \"Sales are up, but my old customers are gone. The new ones want different things.\"</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-urban-data-1",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which trend from 2000 to 2020 does the table show?",
+   "stimulus": "urban-data-s1",
+   "options": [
+    "Population more than doubled",
+    "The share of renters rose",
+    "Rent and income both rose sharply",
+    "Fewer residents were newcomers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Median rent rose from 650 to 1,450 dollars and median income from 31,000 to 72,000 dollars, while population barely changed.",
+    "options": [
+     "Population changed little, from 4,200 to 4,300.",
+     "The share of renters fell, from 78% to 58%.",
+     "Right: both more than doubled.",
+     "The share of newcomers rose, from 20% to 46%."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-2",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Between 2010 and 2020, which measure changed the most in percent terms?",
+   "stimulus": "urban-data-s1",
+   "options": [
+    "Population, up about 8%",
+    "Median household income, up about 90%",
+    "Share of homes rented, down about 50%",
+    "Median rent, up about 20%"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Income rose from 38,000 to 72,000 dollars: about 89%, close to 90%. Rent rose about 81%, population about 8%.",
+    "options": [
+     "Population rose about 8%, much less than income.",
+     "Right: (72,000 - 38,000) / 38,000 is about 0.89.",
+     "The renting share fell 16 points, from 74% to 58%, not by half.",
+     "Rent rose from 800 to 1,450 dollars, about 81%."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-3",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can the census table NOT answer?",
+   "stimulus": "urban-data-s1",
+   "options": [
+    "Why long-time residents moved away",
+    "How much median rent rose",
+    "Whether the share of renters fell",
+    "How many people lived there in 2010"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The table counts people and homes but records no reasons or feelings. Interviews are needed for why.",
+    "options": [
+     "Right: reasons for moving are not in a census table.",
+     "The table gives rent for each year.",
+     "The table gives the renting share for each year.",
+     "The table gives 4,000 for 2010."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-4",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale are the data in the table?",
+   "stimulus": "urban-data-s1",
+   "options": [
+    "National: the whole country",
+    "Global: many countries",
+    "Regional: a group of states",
+    "Local: one census tract"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The data describe one census tract, a neighborhood of a few thousand people: the local scale.",
+    "options": [
+     "A whole country would have millions of people, not 4,300.",
+     "Only one neighborhood is shown.",
+     "A tract is far smaller than a group of states.",
+     "Right: one small area inside a city."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-5",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "What kind of data do the interviews provide?",
+   "stimulus": "urban-data-s2",
+   "options": [
+    "Quantitative census counts",
+    "Survey estimates with margins of error",
+    "Qualitative data on attitudes",
+    "Remote sensing images"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Interviews give words, feelings and reasons from a few people: qualitative data.",
+    "options": [
+     "Census counts are numbers for everyone in an area.",
+     "Surveys ask a fixed set of questions of a sample and report numbers.",
+     "Right: personal accounts of how change feels.",
+     "The interviews are spoken accounts, not satellite images."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-6",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "What do the interviews show that the census table does not?",
+   "stimulus": "urban-data-s2",
+   "options": [
+    "That median rent rose",
+    "How residents feel about the change",
+    "That the share of renters fell",
+    "How many people live in East Ridge"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The table shows rising rent and income; only the interviews show loss of community, a newcomer's view and a shop owner's mixed feelings.",
+    "options": [
+     "The table already shows rising rent.",
+     "Right: meaning and attitudes come from qualitative data.",
+     "The table already shows the renting share fell.",
+     "The table gives the population."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-7",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.D",
+   "q": "What is the main limit of using these three interviews to describe the whole neighborhood?",
+   "stimulus": "urban-data-s2",
+   "options": [
+    "Three people may not represent its 4,300",
+    "Interviews give too many numbers",
+    "People tend to be less honest in interviews",
+    "The people interviewed live outside East Ridge"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A small sample of interviews can reveal views and reasons, but it cannot show how common those views are across thousands of residents.",
+    "options": [
+     "Right: a small sample cannot stand for everyone.",
+     "Interviews give words, not many numbers.",
+     "Honesty is not the issue here; the limit is how few people were asked.",
+     "All three people live or work in East Ridge."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-8",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.E",
+   "q": "Mr. Tran says \"sales are up, but my old customers are gone.\" How does this fit the census table?",
+   "stimulus": "urban-data-s2",
+   "options": [
+    "It contradicts the table, which shows incomes falling",
+    "It shows the population fell sharply",
+    "It shows rents fell as stores did better",
+    "Higher incomes and many newcomers explain both"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Incomes more than doubled and 46% of residents were newcomers by 2020: richer new customers raise sales while older customers leave.",
+    "options": [
+     "The table shows incomes rising, not falling.",
+     "The population rose slightly.",
+     "The table shows rents rising.",
+     "Right: the numbers and the story agree."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-9",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which is an example of survey data?",
+   "options": [
+    "A geographer's notes from walking a street",
+    "A resident's life story",
+    "Answers from a sample of households to set questions",
+    "A satellite image of a city at night"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Survey data come from asking a sample of people the same set of questions, such as the American Community Survey.",
+    "options": [
+     "Field notes are qualitative observation.",
+     "A life story is a narrative, qualitative data.",
+     "Right: a sample and fixed questions make a survey.",
+     "A satellite image is remote sensing."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-10",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "The American Community Survey reports that median rent in one small tract rose by 2% from one year to the next, with a margin of error of plus or minus 6%. What can you conclude?",
+   "options": [
+    "Rent rose by exactly 2%",
+    "The data cannot show whether rent really changed",
+    "Rent fell by 6%",
+    "The survey counted each household"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The change (2%) is smaller than the margin of error (6%), so the true change could be up, down or none. Survey estimates for small areas need care.",
+    "options": [
+     "The 2% is an estimate, not an exact figure.",
+     "Right: the change is inside the margin of error.",
+     "Nothing shows a 6% fall; 6% is the margin of error.",
+     "The ACS asks a sample, not every household."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-11",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.D",
+   "q": "A city's average rent rose 5% over ten years, but rent in one census tract doubled. Why does the citywide figure hide the change?",
+   "options": [
+    "Citywide data average many tracts together",
+    "The tract was counted twice",
+    "Citywide data come from interviews",
+    "The tract is outside the city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Aggregated data combine many neighborhoods into one number, so a sharp change in one tract is diluted. Name the scale of the data.",
+    "options": [
+     "Right: aggregation hides local differences.",
+     "Nothing suggests a double count.",
+     "Citywide averages come from census or survey numbers.",
+     "The tract is one of the city's own."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-12",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A researcher wants to learn why families left a neighborhood after their landlord sold the building. Which method fits best?",
+   "options": [
+    "A census count of the neighborhood",
+    "A satellite image of the block",
+    "A map of median income by tract",
+    "Interviews with families who left"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The question asks why, so it needs reasons in people's own words: interviews.",
+    "options": [
+     "A census count shows how many left, not why.",
+     "An image shows buildings, not reasons.",
+     "An income map shows patterns, not reasons.",
+     "Right: reasons come from qualitative data."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-13",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A planner wants to know which of the city's 200 census tracts had the fastest rise in rent from 2010 to 2020. Which source fits best?",
+   "options": [
+    "Interviews with ten residents",
+    "One resident's mental map",
+    "Census and survey data by tract",
+    "A walk through one neighborhood"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Comparing 200 tracts on one measure over time needs consistent numbers for each tract: census and survey data.",
+    "options": [
+     "Ten interviews cannot cover 200 tracts.",
+     "A mental map shows one person's view.",
+     "Right: numbers by tract allow fair comparison.",
+     "One walk covers one neighborhood."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-14",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Which of these are qualitative data about a neighborhood? Select all that apply.",
+   "options": [
+    "An oral history from a long-time resident",
+    "Field notes on which shops have closed",
+    "Median household income for the tract",
+    "The share of homes that are rented"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Qualitative data are words, stories and observations; incomes and shares are quantitative.",
+    "options": [
+     "Right: an oral history is a narrative.",
+     "Right: field notes are observation in words.",
+     "Income is a number from a census or survey.",
+     "A share is a number from a census or survey."
+    ]
+   }
+  },
+  {
+   "id": "hug-urban-data-15",
+   "unit": "unit-6",
+   "topic": "urban-data",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "4.C",
+   "q": "Build a statement comparing what census data and interviews show about a changing neighborhood.",
+   "specific": {
+    "frame": "Census data show ___, whereas interviews show ___.",
+    "write": {
+     "both": true
+    },
+    "model": "Census data show that median rent in the East Ridge tract more than doubled from 2000 to 2020, whereas interviews show that long-time renters like Rosa feel the street no longer belongs to them.",
+    "slots": {
+     "sideA": {
+      "label": "What census data show",
+      "options": [
+       "that median rent in the East Ridge tract more than doubled from 2000 to 2020",
+       "why each family chose to move away"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A census records counts, not each family's reasons."
+      }
+     },
+     "sideB": {
+      "label": "What interviews show",
+      "options": [
+       "that long-time renters like Rosa feel the street no longer belongs to them",
+       "the exact median income of the whole tract"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An exact median income for the tract comes from census or survey numbers."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A compare speaks of both sources and says how they differ."
+   }
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "city-size-distribution",
+ "hook": "Bangkok is many times larger than any other city in Thailand. In some other countries, the second city is about half the size of the first and the third about a third. Why do some countries have one giant city and others a smooth ladder of cities? And why are big cities far apart while villages are close together? Four models give answers.",
+ "prereq": [
+  {
+   "q": "What does the urban hierarchy rank?",
+   "options": [
+    "Cities by the size of the area they serve and control",
+    "Cities by their age",
+    "Countries by their land area",
+    "Neighborhoods by income"
+   ],
+   "correct": 0,
+   "why": "Higher levels serve and control larger areas.",
+   "review": "cities-globalization"
+  },
+  {
+   "q": "Two towns are the same size. Which is likely to trade more with a big city 50 km away than with one 500 km away?",
+   "options": [
+    "Both trade more with the nearer city, because of distance decay",
+    "Both trade more with the farther city",
+    "Distance makes no difference to trade",
+    "Only the larger town trades at all"
+   ],
+   "correct": 0,
+   "why": "Distance decay: interaction falls as distance grows.",
+   "review": "spatial-concepts"
+  }
+ ],
+ "figure": {
+  "figure": "city-size-distribution-central-place",
+  "caption": "Central place theory: a city, towns and villages, each serving a hexagon-shaped market area."
+ },
+ "chain": [
+  {
+   "cause": "A shop needs enough buyers to cover its costs (its threshold)",
+   "effect": "it can only open where enough people live within reach"
+  },
+  {
+   "cause": "People travel farther for rare, costly goods than for everyday ones (range)",
+   "effect": "high-order goods gather in a few large places; low-order goods are sold in many small ones"
+  },
+  {
+   "cause": "Places at each level space themselves to share the market",
+   "effect": "a pattern of a few large central places and many small ones forms, a hierarchy of market areas"
+  },
+  {
+   "cause": "One city holds the capital, the main port and most investment",
+   "effect": "it grows far larger than the next city and becomes a primate city, breaking the rank-size pattern"
+  }
+ ],
+ "ideas": [
+  "The <b>rank-size rule</b>: the city of rank n has about 1/n the population of the largest city. A <b>primate city</b> is a largest city far bigger than the second (often more than twice as big) that dominates its country.",
+  "The <b>gravity model</b>: interaction between two places rises with their populations and falls with the square of the distance between them: $\\frac{P_1 \\times P_2}{d^2}$.",
+  "<b>Central place theory</b> (Christaller, 1933): settlements are market centers. <b>Threshold</b> is the fewest buyers a seller needs; <b>range</b> is how far people will travel for a good. Market areas are drawn as hexagons.",
+  "Each is a model with assumptions: a flat, even plain, equal travel in every direction, shoppers going to the nearest place. Real borders, landforms, cars and online shopping bend them."
+ ],
+ "misconception": {
+  "wrong": "Range and threshold mean the same thing: how many people a place serves.",
+  "right": "Threshold is a number of people (the fewest buyers a seller needs to stay open). Range is a distance (how far buyers will travel for the good). A heart surgery center has a high threshold and a long range; a gas station has a low threshold and a short range."
+ },
+ "check": [
+  "hug-city-size-distribution-1",
+  "hug-city-size-distribution-2",
+  "hug-city-size-distribution-3",
+  "hug-city-size-distribution-9",
+  "hug-city-size-distribution-10",
+  "hug-city-size-distribution-11"
+ ],
+ "summary": "The rank-size rule predicts a smooth ladder of city sizes; a primate city breaks it, usually because a capital or colonial port gathered power and money. The gravity model predicts more interaction between big, close places. Central place theory explains the spacing of settlements from threshold and range. All four are models that fit some countries better than others."
+}

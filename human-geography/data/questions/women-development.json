@@ -1,0 +1,544 @@
+{
+ "stimuli": {
+  "women-development-s1": {
+   "kind": "data",
+   "title": "Women's pay compared with men's in Country C, by kind of work",
+   "invented": true,
+   "plot": {
+    "kind": "bar",
+    "label": "Bar chart of Country C: women's average pay as a percent of men's is 70% in farming, 78% in factories, 86% in services and 80% in research and finance",
+    "categories": [
+     "Farming",
+     "Factories",
+     "Services",
+     "Research and finance"
+    ],
+    "values": [
+     70,
+     78,
+     86,
+     80
+    ],
+    "xLabel": "Kind of work",
+    "yLabel": "Women's pay as % of men's",
+    "y": [
+     0,
+     100
+    ]
+   }
+  },
+  "women-development-s2": {
+   "kind": "text",
+   "title": "A village lending group reports (invented passage for practice)",
+   "text": "<p><i>From the 2026 yearly note of the Lake District Women's Savings Group, an invented lending group in Country A.</i></p><p>Our group lends small sums, most under 200 dollars, to women who meet each week in circles of five. No one needs land or a building as security: the circle stands behind each loan. This year 118 of our 120 borrowers repaid on time. Most bought goats, sewing machines or stock for small shops. Members tell us they now pay school fees for their daughters. Two members had to borrow from a moneylender to repay us after their shops failed, and many members sell the same goods at the same market.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-women-development-1",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "According to the chart, in which kind of work is the gender wage gap largest in Country C?",
+   "options": [
+    "Farming",
+    "Services",
+    "Research and finance",
+    "Factories"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The gap is 100% minus women's pay as a percent of men's, so the lowest bar shows the largest gap.",
+    "options": [
+     "Right: women earn 70% of what men earn there, the lowest bar, so the gap (30 points) is largest.",
+     "Services has the highest bar (86%), so its gap is the smallest.",
+     "At 80%, its gap (20 points) is smaller than farming's.",
+     "At 78%, its gap (22 points) is smaller than farming's."
+    ]
+   },
+   "stimulus": "women-development-s1"
+  },
+  {
+   "id": "hug-women-development-2",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "In factories in Country C, how many percentage points below men's pay is women's average pay?",
+   "why": {
+    "correct": "Women earn 78% of men's pay, so the gap is $100 - 78 = 22$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      100,
+      78
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        100,
+        70
+       ]
+      },
+      "why": "That is the farming bar (70%). Read the factories bar: 78%."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        100,
+        86
+       ]
+      },
+      "why": "That is the services bar (86%). Read the factories bar: 78%."
+     }
+    ]
+   },
+   "stimulus": "women-development-s1"
+  },
+  {
+   "id": "hug-women-development-3",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which explanation best fits a gender wage gap in every kind of work shown on the chart?",
+   "options": [
+    "Women work fewer hours",
+    "Fewer women are managers; more do care work",
+    "The chart counts women who work part time and no others",
+    "Country C pays each worker the same wage by law"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A gap that appears in every sector points to causes that cut across sectors: fewer women in senior roles, more unpaid care work and unequal pay for similar work.",
+    "options": [
+     "Women often work as many hours or more, counting unpaid care; the gap is in pay, not effort.",
+     "Right: women are crowded into lower-paid roles and more often work part time because of care work.",
+     "The chart compares average pay; nothing says it counts part-time women alone.",
+     "If every worker earned the same, there would be no gap at all."
+    ]
+   },
+   "stimulus": "women-development-s1"
+  },
+  {
+   "id": "hug-women-development-4",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which is a limitation of the chart for judging pay fairness in Country C?",
+   "options": [
+    "It hides differences in jobs and hours",
+    "It uses a bar chart, so its values are hard to read",
+    "It shows four kinds of work, which is too few for any pattern",
+    "It gives women's pay as a percent, which is meaningless"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Average pay hides differences in job, rank and hours, so it cannot show on its own whether women are paid less for the same work.",
+    "options": [
+     "Right: an average mixes jobs and hours, so it cannot separate unequal pay for equal work from other causes.",
+     "Each bar has a clear value on the percent axis.",
+     "Four groups are enough to see a pattern in the gap.",
+     "A percent of men's pay is a standard way to show the gap."
+    ]
+   },
+   "stimulus": "women-development-s1"
+  },
+  {
+   "id": "hug-women-development-5",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.D",
+   "q": "What does the passage describe?",
+   "options": [
+    "A trading partnership between nearby villages and towns",
+    "Microlending: small loans to women",
+    "A government tax on small shops",
+    "A factory that hires women in the Lake District"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Small loans without land as security, made mostly to women for small businesses, are microlending.",
+    "options": [
+     "The passage is about small loans to women, not trade between villages.",
+     "Right: small loans without the usual bank security, mostly to women, to start small businesses.",
+     "Nothing in the passage is a tax; it describes loans.",
+     "The women run their own small businesses; no factory is described."
+    ]
+   },
+   "stimulus": "women-development-s2"
+  },
+  {
+   "id": "hug-women-development-6",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "According to the passage, why does the group lend in circles of five?",
+   "options": [
+    "The circle backs each loan, not land",
+    "The law in Country A allows loans in fives",
+    "Circles borrow more",
+    "Each woman is required to run the same shop as the others"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Group lending replaces land or buildings as security: the circle backs each member, so repayment stays high.",
+    "options": [
+     "Right: members support each other and feel responsible to the group, which keeps repayment high.",
+     "The passage gives no such law; the circle replaces land as security.",
+     "The loans stay small, under 200 dollars.",
+     "The passage notes members sell the same goods as a problem, not a rule."
+    ]
+   },
+   "stimulus": "women-development-s2"
+  },
+  {
+   "id": "hug-women-development-7",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Based on the passage, which outcome is most likely for the members' daughters?",
+   "options": [
+    "They leave school earlier to run the family shop",
+    "They move abroad",
+    "They stay in school longer",
+    "They become moneylenders to the group"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Women who control income tend to spend it on food, health and schooling, so girls' schooling is a likely gain.",
+    "options": [
+     "Members report paying school fees, so daughters are more likely to stay in school.",
+     "Nothing suggests migration; the loans are small and mostly repaid.",
+     "Right: income a woman controls is often spent on her children's schooling.",
+     "The passage gives no sign of this."
+    ]
+   },
+   "stimulus": "women-development-s2"
+  },
+  {
+   "id": "hug-women-development-8",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which detail in the passage shows a limitation of microlending?",
+   "options": [
+    "118 of 120 borrowers repaid on time",
+    "Members now pay school fees for their daughters",
+    "Loans need no land or building as security",
+    "Two borrowed elsewhere to repay"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Failed businesses, debts paid with new debts, and many sellers of the same goods in one market are known limits of microlending.",
+    "options": [
+     "That is a strength: repayment was high.",
+     "That is a benefit, not a limitation.",
+     "That opens loans to poor women, a strength.",
+     "Right: a failed business can leave a debt that drives borrowers into costlier loans."
+    ]
+   },
+   "stimulus": "women-development-s2"
+  },
+  {
+   "id": "hug-women-development-9",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "As countries develop, more women usually take paid work outside the home. Which change helps explain this?",
+   "options": [
+    "Farm work for women rises as farms use more machines",
+    "More girls finish school and fertility falls",
+    "Unpaid work at home is counted in GDP once a country develops",
+    "Service jobs disappear as factories grow"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Female education and falling fertility, plus growing factory and service jobs, draw more women into paid work.",
+    "options": [
+     "Machines reduce farm labor; they do not raise it.",
+     "Right: schooling opens jobs, and fewer births mean fewer years of full-time child care.",
+     "Unpaid work is not counted in GDP at any level of development.",
+     "Service jobs grow with development, and many employ women."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-development-10",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Since the 1980s, most workers in Bangladesh's garment factories have been women. Which statement gives both sides of what this has meant?",
+   "options": [
+    "Women earn their own income, though pay is low and some sites have been unsafe",
+    "Women gained equal pay with men, and the factories have had no safety problems",
+    "Women lost paid work as men took the new factory jobs",
+    "The jobs moved women back into farming in rural Bangladesh"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The garment boom gave many women their own income and more say at home, but with low pay, long hours and dangerous buildings in some cases.",
+    "options": [
+     "Right: the jobs brought income and some independence, alongside low pay and risks such as the 2013 Rana Plaza collapse.",
+     "The gender wage gap remained, and the 2013 Rana Plaza collapse killed more than 1,100 people.",
+     "Most garment workers have been women, so women gained paid work.",
+     "The jobs are in factories, mostly around Dhaka, not in farming."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-development-11",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is the gender wage gap?",
+   "options": [
+    "The gap between women's and men's average pay",
+    "The share of women who work in the informal sector",
+    "The gap in years of schooling between girls and boys",
+    "The number of women in a country's parliament"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The gender wage gap compares the average pay of women and men.",
+    "options": [
+     "Right: often shown as women's pay as a percent of men's.",
+     "That is a measure of informal work, not of pay differences.",
+     "That is an education gap, part of the GII, not a pay gap.",
+     "That measures political empowerment, not pay."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-development-12",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Iceland passed a law in 2017 that requires larger employers to prove they pay women and men equally for work of equal value. What does this show?",
+   "options": [
+    "Development by itself closes the gender wage gap",
+    "The gender wage gap exists in periphery countries alone",
+    "Policy, not income alone, shapes opportunity",
+    "Women in Iceland work in the informal sector"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A pay gap can persist in a rich country, so governments use policies such as Iceland's law to close it.",
+    "options": [
+     "If development alone closed it, a rich country would not need such a law.",
+     "Iceland has a very high HDI, yet it acted on a pay gap.",
+     "Right: even a very high-income country used a law to push for equal pay.",
+     "The law is about formal employers' pay, not informal work."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-development-13",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "Rwanda has had a majority of women in the lower house of its parliament since its 2008 election. Which part of the Gender Inequality Index does this fact relate to?",
+   "options": [
+    "Reproductive health",
+    "Labor market participation",
+    "Life expectancy at birth",
+    "Empowerment"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Seats in parliament are part of the GII's empowerment dimension, along with secondary schooling.",
+    "options": [
+     "Reproductive health covers deaths in childbirth and teenage births, not seats in parliament.",
+     "That covers women and men in paid work, not seats in parliament.",
+     "That is part of the HDI, not the GII.",
+     "Right: the GII's empowerment dimension counts seats in parliament and secondary schooling."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-development-14",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.B",
+   "q": "Which help explain why women in many places have less opportunity than men to start a business? Select all that apply.",
+   "options": [
+    "Less access to bank loans and land titles",
+    "More hours of unpaid care work at home",
+    "A higher HDI in places where women work",
+    "Laws that require women to live in cities",
+    "Fewer women than men in the population"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Unequal access to credit and land, and the weight of unpaid care work, limit women's chances to start businesses.",
+    "options": [
+     "Right: without land or credit, starting a business is hard; microlending tries to fill this gap.",
+     "Right: time spent on care work leaves less time for a business.",
+     "The HDI is a national measure; it does not block women from business.",
+     "No such general laws exist; this is not a cause.",
+     "Women and men are roughly equal in number in most places; numbers are not the barrier."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-development-15",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 1,
+   "type": "order",
+   "practice": "1.B",
+   "q": "Put the steps of the microlending cycle in order, starting with the loan.",
+   "options": [
+    "A woman receives a small loan",
+    "She starts or grows a small business",
+    "Her business earns income",
+    "She repays and can borrow again"
+   ],
+   "why": {
+    "correct": "The loan funds a business, the business earns income, and repayment makes a new, often larger, loan possible."
+   }
+  },
+  {
+   "id": "hug-women-development-16",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how microlending can change a woman's life, naming a place and the scale.",
+   "why": {
+    "correct": "A full explanation names the scale, a real place, what the loan funded and the effect on income."
+   },
+   "specific": {
+    "frame": "At the ___ scale, in ___, a microloan let a woman buy ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "At the local scale, in a village in Bangladesh, a microloan let a woman buy a sewing machine, so she earned her own income and could pay her children's school fees.",
+    "slots": {
+     "scale": {
+      "label": "Scale of analysis",
+      "options": [
+       "local",
+       "global"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "One woman in one village is the local scale."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "a village in Bangladesh",
+       "somewhere poor"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place; \"somewhere poor\" earns no credit."
+      }
+     },
+     "cause": {
+      "label": "What the loan bought",
+      "options": [
+       "a sewing machine",
+       "a seat in parliament"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A microloan funds a small business, not political office."
+      }
+     },
+     "effect": {
+      "label": "So",
+      "options": [
+       "she earned her own income and could pay her children's school fees",
+       "the gender wage gap closed nationwide"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "One loan works at the local scale; it cannot close a national gap."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-women-development-17",
+   "unit": "unit-7",
+   "topic": "women-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Cooking, fetching water and caring for children add nothing to a country's GDP. Why does this matter for measuring women's contribution?",
+   "options": [
+    "Women do most unpaid work, so GDP misses much of it",
+    "This work is counted twice in the HDI, which raises it",
+    "Unpaid work is done mostly in core countries",
+    "GDP counts the work of men alone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because women do most unpaid care work worldwide, income measures such as GDP understate their contribution.",
+    "options": [
+     "Right: unpaid work is real work, but income measures leave it out.",
+     "The HDI does not count unpaid work at all.",
+     "Unpaid care work is done everywhere.",
+     "GDP counts paid work by anyone; it misses unpaid work by anyone."
+    ]
+   }
+  }
+ ]
+}

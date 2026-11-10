@@ -1,0 +1,599 @@
+{
+ "stimuli": {
+  "development-measures-s1": {
+   "kind": "data",
+   "title": "Human Development Index for five countries",
+   "source": "UNDP Human Development Report 2025 (2023 data); World Bank FY27 income groups (July 2026)",
+   "table": {
+    "caption": "Human Development Index (HDI, 0 to 1) and World Bank FY27 income group",
+    "cols": [
+     "Country",
+     "HDI (2023 data)",
+     "World Bank FY27 income group"
+    ],
+    "rows": [
+     [
+      "Iceland",
+      "0.972",
+      "High income"
+     ],
+     [
+      "Norway",
+      "0.970",
+      "High income"
+     ],
+     [
+      "Switzerland",
+      "0.970",
+      "High income"
+     ],
+     [
+      "United States",
+      "0.938",
+      "High income"
+     ],
+     [
+      "South Sudan",
+      "0.388",
+      "Low income"
+     ]
+    ]
+   }
+  },
+  "development-measures-s2": {
+   "kind": "data",
+   "title": "Development indicators for five countries",
+   "invented": true,
+   "table": {
+    "caption": "Development indicators (invented data for practice). For GII, lower means less gender inequality.",
+    "cols": [
+     "Country",
+     "GNI per capita (US\\$)",
+     "HDI",
+     "GII",
+     "Workers in informal jobs (%)",
+     "Total fertility rate"
+    ],
+    "rows": [
+     [
+      "A",
+      "52,000",
+      "0.94",
+      "0.05",
+      "10",
+      "1.6"
+     ],
+     [
+      "B",
+      "21,000",
+      "0.72",
+      "0.52",
+      "45",
+      "3.8"
+     ],
+     [
+      "C",
+      "9,800",
+      "0.80",
+      "0.21",
+      "30",
+      "1.9"
+     ],
+     [
+      "D",
+      "3,200",
+      "0.62",
+      "0.44",
+      "75",
+      "3.1"
+     ],
+     [
+      "E",
+      "900",
+      "0.42",
+      "0.61",
+      "90",
+      "6.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-development-measures-1",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes what the table shows?",
+   "options": [
+    "High-income ones top 0.9; South Sudan is under 0.4",
+    "The five are about equal",
+    "South Sudan has the highest HDI because it has the lowest income",
+    "The United States has the highest HDI of the five countries listed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the values: the four high-income countries are between 0.938 and 0.972, while South Sudan is 0.388.",
+    "options": [
+     "Right: it names the pattern and the size of the gap, with values.",
+     "The values run from 0.388 to 0.972, a very wide gap.",
+     "South Sudan has the lowest HDI and is low income.",
+     "Iceland is highest (0.972); the United States is lowest of the four high-income countries."
+    ]
+   },
+   "stimulus": "development-measures-s1"
+  },
+  {
+   "id": "hug-development-measures-2",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Norway and Switzerland both have an HDI of 0.970 in this table. What is the best conclusion?",
+   "options": [
+    "Their people have identical incomes, health and schooling",
+    "One of the two values is likely a printing error",
+    "Ranks shift by report; compare within one edition",
+    "The HDI is unable to compare these two countries in any way"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A composite index can tie, and its values are revised with each report, so ranks are compared only within one edition and never treated as fixed.",
+    "options": [
+     "Different mixes of the three dimensions can give the same composite value.",
+     "Ties happen in composite indices; nothing suggests an error.",
+     "Right: HDI is revised each report and back years are recalculated, so ties and ranks shift.",
+     "It can compare them within one edition; it simply shows them as tied."
+    ]
+   },
+   "stimulus": "development-measures-s1"
+  },
+  {
+   "id": "hug-development-measures-3",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Which question could this table NOT answer?",
+   "options": [
+    "Which country had the lowest HDI in the 2023 data?",
+    "Does human development differ by US region?",
+    "Which of these countries are in the World Bank's FY27 high-income group?",
+    "Is Iceland's HDI higher than that of the United States?"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The data are at the national scale: one value per country. They cannot show patterns at a regional or local scale inside a country.",
+    "options": [
+     "The table answers this: South Sudan (0.388).",
+     "Right: the table gives one national value per country, so it cannot show differences inside a country.",
+     "The table answers this in its last column.",
+     "The table answers this: 0.972 compared with 0.938."
+    ]
+   },
+   "stimulus": "development-measures-s1"
+  },
+  {
+   "id": "hug-development-measures-4",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Which country's HDI is lowest compared with what its GNI per capita would suggest?",
+   "options": [
+    "Country A",
+    "Country B",
+    "Country C",
+    "Country E"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare the order of the two columns: B is second in income but third in HDI, below C, so its health and education lag behind its income.",
+    "options": [
+     "Country A has both the highest income and the highest HDI, so they match.",
+     "Right: B has more than twice C's income but a lower HDI (0.72 against 0.80), so its income is not turning into health and schooling.",
+     "C has a higher HDI than B with less than half the income, so it does better than its income suggests.",
+     "E has the lowest income and the lowest HDI, so they match."
+    ]
+   },
+   "stimulus": "development-measures-s2"
+  },
+  {
+   "id": "hug-development-measures-5",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "According to the table, which country has the least gender inequality?",
+   "options": [
+    "Country A, with a GII of 0.05",
+    "Country E, with a GII of 0.61",
+    "Country B, with the second-highest income",
+    "Country C, with a GII of 0.21"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GII runs the other way from HDI: 0 would mean no gap between women and men, so the lowest value shows the least inequality.",
+    "options": [
+     "Right: for GII, lower means less inequality, and 0.05 is the lowest value.",
+     "This is the highest GII, so the most inequality. For GII, lower is better.",
+     "Income does not measure the gap between women and men; read the GII column.",
+     "C's GII is low, but A's (0.05) is lower."
+    ]
+   },
+   "stimulus": "development-measures-s2"
+  },
+  {
+   "id": "hug-development-measures-6",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Compare the GII and total fertility rate columns. Which pattern and explanation fit the data?",
+   "options": [
+    "Higher GII goes with lower fertility, because unequal places have small families",
+    "The columns show no pattern",
+    "Fertility depends on GNI alone, so GII adds nothing to explain it",
+    "Higher GII, higher fertility: less schooling for women"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Countries with higher GII (wider gaps in schooling, empowerment and paid work) have higher fertility here; female education and paid work tend to lower fertility.",
+    "options": [
+     "The data show the reverse: E has the highest GII and the highest fertility.",
+     "They rise together: A has the lowest of both and E the highest of both.",
+     "B has higher income than C but much higher fertility, alongside a much higher GII.",
+     "Right: where gaps in schooling and paid work are wide, women tend to marry younger and have more children."
+    ]
+   },
+   "stimulus": "development-measures-s2"
+  },
+  {
+   "id": "hug-development-measures-7",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Why might Country D's GNI per capita understate what its people earn and produce?",
+   "options": [
+    "GNI leaves out goods that are sold at home",
+    "Most of D's workers are informal",
+    "Country D's HDI is higher than its GNI",
+    "D's fertility rate pulls its GNI down by law"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Informal work (street selling, cash day labor) is not registered or taxed, so much of it never enters official income figures.",
+    "options": [
+     "GNI counts income from production sold at home as well as abroad.",
+     "Right: 75% of D's workers are informal, and unregistered, untaxed work is often left out of GNI.",
+     "HDI and GNI are on different scales; comparing their numbers says nothing.",
+     "Fertility affects population, but no law links it to the GNI figure."
+    ]
+   },
+   "stimulus": "development-measures-s2"
+  },
+  {
+   "id": "hug-development-measures-8",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the World Bank FY27 income groups, a country is lower-middle income if its GNI per capita is from \\$1,176 to \\$4,635. Which country in the table falls in that group?",
+   "options": [
+    "Country C, at \\$9,800",
+    "Country E, at \\$900",
+    "Country D, at \\$3,200",
+    "Country B, at \\$21,000"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Read D's GNI per capita (\\$3,200) and check it against the FY27 lower-middle band of \\$1,176 to \\$4,635. The bands move each July, so always name the year.",
+    "options": [
+     "\\$9,800 is above \\$4,635, so C is upper-middle income in FY27.",
+     "\\$900 is at or below \\$1,175, so E is low income in FY27.",
+     "Right: \\$3,200 lies between \\$1,176 and \\$4,635.",
+     "\\$21,000 is above \\$14,375, so B is high income in FY27."
+    ]
+   },
+   "stimulus": "development-measures-s2"
+  },
+  {
+   "id": "hug-development-measures-9",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A Japanese-owned car plant in Kentucky sends its profits to its owners in Japan. How is that output counted?",
+   "options": [
+    "In US GDP, because the plant is inside the United States",
+    "In US GNI alone, since the cars are sold in the United States",
+    "In neither measure, because the owners are foreign",
+    "In Japan's GDP, because the owners live in Japan"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GDP is about where production happens; GNI is about who earns the income. The plant adds to US GDP, and its profits add to Japan's GNI.",
+    "options": [
+     "Right: GDP counts what is produced inside the borders; the profits earned by Japanese owners count in Japan's GNI.",
+     "GNI follows who earns the income, here the Japanese owners, not where the cars are sold.",
+     "Production inside US borders always counts in US GDP.",
+     "GDP counts production inside a country's borders; the plant is in Kentucky."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-measures-10",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "recall",
+   "diff": 1,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which measures make up the Human Development Index? Select all that apply.",
+   "options": [
+    "Life expectancy at birth",
+    "Years of schooling",
+    "GNI per capita (PPP)",
+    "Seats held by women in parliament",
+    "Energy use per person",
+    "Share of workers in the informal sector"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "The HDI combines health (life expectancy), education (years of schooling) and income (GNI per capita, PPP).",
+    "options": [
+     "Right: the health dimension.",
+     "Right: the education dimension (expected and average years).",
+     "Right: the standard of living dimension.",
+     "That is part of the Gender Inequality Index, not the HDI.",
+     "Energy use is a separate indicator, not part of the HDI.",
+     "Informal work is not one of the HDI's three dimensions."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-measures-11",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "In Lagos, Nigeria, many people earn a living selling food and phone credit from street stalls, paid in cash and unregistered. What is this work an example of?",
+   "options": [
+    "The quinary sector",
+    "The informal sector",
+    "Gross national product",
+    "The Gender Inequality Index"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Unregistered, untaxed work paid in cash is the informal sector, which official income figures often miss.",
+    "options": [
+     "Quinary jobs are top-level decisions; street selling is not.",
+     "Right: work that is not registered, taxed or counted by the government is informal.",
+     "GNP is a measure of output, not a kind of work.",
+     "GII is a measure of gaps between women and men, not a kind of work."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-measures-12",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.C",
+   "q": "The Indian state of Kerala has long had higher literacy and life expectancy than most other Indian states, though its income per person is not far ahead. What does this show about scale?",
+   "options": [
+    "India's national HDI hides large differences between its states",
+    "Kerala's data prove that income has no link to health anywhere",
+    "National data are more accurate than regional data",
+    "Literacy can be measured at the national scale but not by state"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The same measure at a regional scale reveals variation that the national value hides.",
+    "options": [
+     "Right: a national average smooths over regional differences, so a regional view tells a different story.",
+     "One case cannot show that; it shows income is not the only driver.",
+     "Neither is more accurate; they answer questions at different scales.",
+     "Literacy is measured by state; that is how Kerala's rate is known."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-measures-13",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "Two countries have the same energy use per person. In one, most electricity comes from coal; in the other, most comes from hydropower and wind. What does the second fact add?",
+   "options": [
+    "It shows which country has the higher GNI per capita",
+    "It shows population size",
+    "It shows how the power is made",
+    "It shows that the two countries have the same HDI"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Energy use measures how much power people use; the mix of fossil and renewable sources adds how it is produced.",
+    "options": [
+     "The energy mix does not tell you income.",
+     "Energy use per person already divides by population.",
+     "Right: the share from fossil fuels versus renewable sources is itself an indicator.",
+     "Energy is not part of the HDI, so nothing follows about it."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-measures-14",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "An invented country has a GNI of \\$60 billion and 20 million people. What is its GNI per capita, in US dollars? (Invented data for practice.)",
+   "why": {
+    "correct": "GNI per capita is GNI divided by population: $\\frac{60{,}000{,}000{,}000}{20{,}000{,}000} = 3{,}000$ dollars per person."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      60000000000.0,
+      20000000.0
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        20000000.0,
+        60000000000.0
+       ]
+      },
+      "why": "You divided population by GNI. Per capita means per person: GNI divided by the number of people."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-development-measures-15",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Why should students compare the HDI values of two countries only within the same UNDP report?",
+   "options": [
+    "Each report revises values, even for back years",
+    "The HDI is published once in twenty years",
+    "Each report uses a different set of 3 countries",
+    "Older reports measured income alone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Composite indices are revised with each report, and back years are recalculated, so only values from one edition are comparable.",
+    "options": [
+     "Right: composite indices are recalculated each edition.",
+     "It is published far more often than that.",
+     "Each report covers nearly every country.",
+     "The HDI has combined health, education and income since it began."
+    ]
+   }
+  },
+  {
+   "id": "hug-development-measures-16",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "3.F",
+   "q": "Build a statement of one limitation of GNI per capita as a measure of development.",
+   "why": {
+    "correct": "A limitation names what the measure shows, what it hides, and why that matters."
+   },
+   "specific": {
+    "frame": "GNI per capita shows ___, but it hides ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "GNI per capita shows the average income per person, but it hides how income is shared, so a few very rich people can make a country look better off than most of its people are.",
+    "slots": {
+     "data": {
+      "label": "What it shows",
+      "options": [
+       "the average income per person",
+       "the health of the people"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Health is in life expectancy and the HDI, not GNI per capita."
+      }
+     },
+     "limit": {
+      "label": "What it hides",
+      "options": [
+       "how income is shared",
+       "the size of the population"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Per capita already divides by population."
+      }
+     },
+     "effect": {
+      "label": "So",
+      "options": [
+       "a few very rich people can make a country look better off than most of its people are",
+       "it is the best single measure"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A limitation explains what goes wrong; it is not praise."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-development-measures-17",
+   "unit": "unit-7",
+   "topic": "development-measures",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why is the infant mortality rate often used as a sign of development?",
+   "options": [
+    "It tracks access to care, water and food",
+    "It measures the share of babies born in cities",
+    "It is counted as one of the HDI's three dimensions",
+    "It shows the average income of new parents"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Infant deaths drop sharply where care, clean water and food are available, so the rate tracks living conditions closely.",
+    "options": [
+     "Right: babies under one are the most vulnerable to poor care, water and nutrition.",
+     "It counts deaths of babies under one, not where they are born.",
+     "The HDI uses life expectancy, not infant mortality, for health.",
+     "It is a health measure, not an income measure."
+    ]
+   }
+  }
+ ]
+}

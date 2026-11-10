@@ -1,0 +1,511 @@
+{
+ "stimuli": {
+  "density-land-use-s1": {
+   "kind": "data",
+   "title": "Residential density by distance from the center in two cities",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart: homes per hectare by distance from the city center in City 1 and City 2. Both lines fall with distance; City 1 stays much higher than City 2 at every distance.",
+    "xLabel": "Distance from the center (km)",
+    "yLabel": "Homes per hectare",
+    "series": [
+     {
+      "name": "City 1",
+      "points": [
+       [
+        0,
+        120
+       ],
+       [
+        2,
+        100
+       ],
+       [
+        4,
+        85
+       ],
+       [
+        6,
+        70
+       ],
+       [
+        8,
+        55
+       ],
+       [
+        10,
+        40
+       ]
+      ]
+     },
+     {
+      "name": "City 2",
+      "points": [
+       [
+        0,
+        60
+       ],
+       [
+        2,
+        30
+       ],
+       [
+        4,
+        15
+       ],
+       [
+        6,
+        10
+       ],
+       [
+        8,
+        7
+       ],
+       [
+        10,
+        5
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "density-land-use-s2": {
+   "kind": "text",
+   "title": "A city planning notice",
+   "text": "<p><b>Invented notice for practice, 2026.</b> \"The city will hold a public hearing on a plan to build a five-story building with 60 apartments and a corner grocery on the empty lot at 4th Street and Oak Avenue, a parking lot since a factory closed there in 1998. The lot is zoned for factories and must be rezoned for homes and shops. The block is lined with two-story houses. Supporters say the plan will add homes near the bus line. Some neighbors say a five-story building is too tall for the block and will bring more traffic.\"</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-density-land-use-1",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes the data in the chart?",
+   "stimulus": "density-land-use-s1",
+   "options": [
+    "Both fall with distance; City 1 stays denser",
+    "Density rises with distance from the center in both of the cities",
+    "City 2 is denser than City 1 near the center but not farther out",
+    "The two cities reach the same density by about 10 km from the center"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both lines slope down, and City 1's line is above City 2's at every distance (120 vs 60 at the center, 40 vs 5 at 10 km).",
+    "options": [
+     "Right: both fall, and City 1 stays higher.",
+     "Both lines slope downward.",
+     "At the center, City 1 has 120 homes per hectare and City 2 has 60.",
+     "At 10 km, City 1 has 40 and City 2 has 5."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-2",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Between the center and 4 km out, by how much does City 2's density fall compared with City 1's?",
+   "stimulus": "density-land-use-s1",
+   "options": [
+    "City 2 falls by 15 homes per hectare, City 1 by 85",
+    "Both fall by the same amount, about 40 homes per hectare",
+    "City 2 rises over this stretch while City 1 falls",
+    "City 2 falls by 45, City 1 by 35"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "City 2: 60 to 15, a fall of 45. City 1: 120 to 85, a fall of 35. City 2 drops faster near the center.",
+    "options": [
+     "Those are the values at 4 km, not the falls.",
+     "The falls are 45 and 35, not equal.",
+     "Both lines fall over this stretch.",
+     "Right: 60 - 15 = 45 and 120 - 85 = 35."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-3",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "City 2 grew mostly after 1950, when most families owned cars. City 1 grew mostly before 1900. Which best explains the difference in the chart?",
+   "stimulus": "density-land-use-s1",
+   "options": [
+    "City 1 had more cars than City 2, so it could afford to build higher",
+    "Streetcars made City 2 denser at its edge than near its center",
+    "Cars let City 2 spread out on cheap land",
+    "Elevators lowered density in City 1's center by spacing out its towers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Before cars, people had to live within walking or streetcar distance of work, so City 1 packed homes close together. Cars let City 2 spread out at low density.",
+    "options": [
+     "City 1 grew before most people owned cars.",
+     "Streetcars raise density along their lines, and City 2 grew after the car.",
+     "Right: car-era growth spreads homes out at low density.",
+     "Elevators raise density by allowing taller buildings."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-4",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which term best describes the plan in the notice?",
+   "stimulus": "density-land-use-s2",
+   "options": [
+    "Urban sprawl",
+    "Infilling",
+    "Suburbanization",
+    "A squatter settlement"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Building on an empty lot inside an area already built up is infilling.",
+    "options": [
+     "Sprawl spreads onto open land at the edge.",
+     "Right: new building on an empty lot inside the city.",
+     "Suburbanization moves people out of the central city.",
+     "The plan is a legal building approved by the city."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-5",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Why must the lot be rezoned before the building can go up?",
+   "stimulus": "density-land-use-s2",
+   "options": [
+    "It is zoned for factories",
+    "Its zoning sets a minimum height of five stories for any building",
+    "Its zoning keeps the lot as a parking lot for the old factory",
+    "The grocery store on the corner needs a farm permit first"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Zoning says what can be built on each lot. This lot is zoned for factories, so homes and a grocery are not allowed until the zone changes.",
+    "options": [
+     "Right: the planned uses do not match the lot's zone.",
+     "The notice says nothing about a height minimum.",
+     "The lot is zoned for factories, not kept empty by law.",
+     "A grocery is a shop, not a farm."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-6",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "What would the plan most likely do to the block's residential density?",
+   "stimulus": "density-land-use-s2",
+   "options": [
+    "Lower it, by replacing houses with a store",
+    "Leave it unchanged, because the lot was empty",
+    "Lower it, by adding a parking lot",
+    "Raise it, by adding 60 homes on one lot"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sixty apartments on a lot with no homes adds many housing units to the same area, so homes per hectare rise.",
+    "options": [
+     "No houses are torn down; the lot is a parking lot.",
+     "Adding homes to an empty lot changes the density of the block.",
+     "The plan replaces a parking lot with homes.",
+     "Right: more homes on the same land means higher density."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-7",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "Which statement fairly describes the debate in the notice?",
+   "stimulus": "density-land-use-s2",
+   "options": [
+    "People on the block agree, so the public hearing is just a formality",
+    "Neighbors want the city to bring more factories back to the lot",
+    "Homes near a bus line versus height and traffic",
+    "Supporters want the lot kept as parking for the bus line riders"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The notice gives both sides: homes near a bus line versus a building taller than the block and more traffic.",
+    "options": [
+     "The notice reports neighbors who disagree.",
+     "No one in the notice asks for factories.",
+     "Right: both sides, each with its reason.",
+     "The supporters favor the apartment plan."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-8",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which neighborhood has the highest residential density?",
+   "options": [
+    "Detached houses, each on a large lot with a yard",
+    "Six-story apartment blocks",
+    "Farms with one farmhouse on each farm",
+    "A shopping mall with a large parking lot"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Residential density counts homes on an area of land. Apartment blocks put the most homes on each hectare.",
+    "options": [
+     "Large lots mean few homes per hectare.",
+     "Right: many homes stacked on each lot.",
+     "One house per farm is very low density.",
+     "A mall has few or no homes."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-9",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Houses in the old medina of Fez, Morocco, face inward onto private courtyards and have few windows on the street. Which influence on housing does this best show?",
+   "options": [
+    "Culture, in a value placed on family privacy",
+    "Technology, in the use of steel and elevators",
+    "Zoning, in a rule that sets building heights",
+    "Cycles of development, in the decline of an old area"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The inward-facing courtyard form expresses a cultural value: privacy for the family from the street.",
+    "options": [
+     "Right: the form of the home reflects cultural values.",
+     "Courtyard homes are old, low buildings, not steel towers.",
+     "The design comes from culture, not from a modern height rule.",
+     "The question is about the form of homes, not decline."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-10",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Steel frames and safe passenger elevators spread in New York and Chicago in the late 1800s. What effect did they have on land use near the CBD?",
+   "options": [
+    "Lower buildings, so the density near the center fell",
+    "Factories moved out of the suburbs into the center",
+    "Homes spread out into suburbs on large lots",
+    "Taller buildings and higher density"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "People no longer had to climb stairs, so buildings rose far higher, packing more offices and homes on each lot.",
+    "options": [
+     "Elevators allowed taller, not lower, buildings.",
+     "Elevators did not move factories downtown.",
+     "Spreading out came later, with cars.",
+     "Right: technology let cities build upward."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-11",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Detroit lost more than half its population between the 1950 and 2020 US censuses, and many houses were torn down. Which stage of the cycle of development does this show?",
+   "options": [
+    "Infilling, adding new homes on empty lots",
+    "Early growth of new homes on open farmland",
+    "Decline, leaving vacant land",
+    "The rise of a new CBD on the edge of the city"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Losing people and jobs, then demolishing empty houses, is the decline stage. The vacant land can later be reused.",
+    "options": [
+     "Infilling adds buildings; here they were removed.",
+     "Detroit was built up long before; this is the later decline.",
+     "Right: decline leaves empty lots.",
+     "A shrinking city is not forming a new CBD."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-12",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A city's zoning allows only one detached house per lot on most of its residential land. What is the most likely effect?",
+   "options": [
+    "Many new apartment towers in those neighborhoods",
+    "Low residential density across most neighborhoods",
+    "Factories built next to homes",
+    "Higher density at the city's edge than at its center"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "If only single houses are allowed, apartments cannot be built there, so density stays low wherever that rule applies.",
+    "options": [
+     "The rule forbids apartments in those zones.",
+     "Right: the rule locks in low density.",
+     "Zoning usually keeps factories apart from homes.",
+     "The rule affects most residential land; it does not reverse the usual pattern."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-13",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Houston, Texas, has no citywide zoning code. Which pattern would you most expect to see there?",
+   "options": [
+    "Homes and stores mixed on some streets",
+    "Factories kept far from homes by a city law on land use",
+    "Buildings of about the same height on each block in the city",
+    "Very few new buildings since the city was first founded"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Without zoning, different land uses can locate next to each other wherever a builder chooses, though private deed rules limit some areas.",
+    "options": [
+     "Right: without zoning, uses mix more freely.",
+     "Without zoning, no city law sets that separation.",
+     "Heights vary with land values and builders' choices.",
+     "Houston has grown a great deal."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-14",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which of these are examples of infilling? Select all that apply.",
+   "options": [
+    "Apartments built on an empty parking lot downtown",
+    "A new subdivision built on farmland 40 km from the city",
+    "A new office tower on a vacant lot between two old buildings",
+    "A highway built through open forest"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Infilling uses vacant or underused land inside an area already built up.",
+    "options": [
+     "Right: an empty lot downtown is inside the built-up area.",
+     "Farmland at the edge is outside the built-up area: that is sprawl.",
+     "Right: a vacant lot between buildings is infill.",
+     "A highway through forest builds on open land."
+    ]
+   }
+  },
+  {
+   "id": "hug-density-land-use-15",
+   "unit": "unit-6",
+   "topic": "density-land-use",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how one force shaped residential density in a named city.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Hong Kong, flat land is scarce and the government built many public housing towers, so most families live in high-rise apartments and residential density is very high.",
+    "slots": {
+     "place": {
+      "label": "City",
+      "options": [
+       "Hong Kong",
+       "a crowded city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real city: a vague place earns no credit."
+      }
+     },
+     "cause": {
+      "label": "Force",
+      "options": [
+       "flat land is scarce and the government built many public housing towers",
+       "most families own large houses with yards"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Large houses with yards mean low density, the opposite of Hong Kong."
+      }
+     },
+     "effect": {
+      "label": "Effect on density",
+      "options": [
+       "most families live in high-rise apartments and residential density is very high",
+       "most families live on farms outside the city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The force named pushes people into towers, not onto farms."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A full explanation names the city, the force and the link to density."
+   }
+  }
+ ]
+}

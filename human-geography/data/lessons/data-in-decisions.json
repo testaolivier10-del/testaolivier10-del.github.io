@@ -1,0 +1,80 @@
+{
+ "topic": "data-in-decisions",
+ "hook": "In February 2023, earthquakes struck southern Türkiye and northern Syria. Within days, UN satellite analysts compared images from before and after to map damaged buildings across whole cities, faster than teams on the ground could. Rescue groups used the maps to decide where to search first. Data about places are not just facts: they decide where help, money and services go.",
+ "prereq": [
+  {
+   "q": "Which is quantitative data?",
+   "options": [
+    "The number of stalls on a street",
+    "An interview with a stall owner",
+    "Field notes about the smell of a market",
+    "A traveler's diary"
+   ],
+   "correct": 0,
+   "why": "A count is a number; the others are words and experiences.",
+   "review": "data-sources"
+  },
+  {
+   "q": "What does remote sensing do?",
+   "options": [
+    "Gathers data from a distance, usually by satellite",
+    "Finds the exact location of a phone",
+    "Layers data on one map",
+    "Asks people questions in their homes"
+   ],
+   "correct": 0,
+   "why": "Remote sensing records the Earth from far away; GPS finds locations; a GIS layers data.",
+   "review": "data-sources"
+  },
+  {
+   "q": "A map of one country is shaded by province. What is the scale of analysis?",
+   "options": [
+    "Local (subnational)",
+    "National",
+    "Regional",
+    "Global"
+   ],
+   "correct": 0,
+   "why": "Each value is for a province, a part of the country.",
+   "review": "skills-scale"
+  }
+ ],
+ "figure": {
+  "figure": "data-in-decisions-flow",
+  "caption": "Data lead to decisions by people and organizations at different scales."
+ },
+ "chain": [
+  {
+   "cause": "A government counts its people in a census, or a satellite images the ground",
+   "effect": "decision makers learn how many people live where and how places are changing"
+  },
+  {
+   "cause": "Leaders share money, seats or services by those numbers",
+   "effect": "the data shape where schools, clinics, pipes and aid go"
+  },
+  {
+   "cause": "The data are out of date, miss people or hide differences inside an area",
+   "effect": "decisions can send resources to the wrong places"
+  }
+ ],
+ "ideas": [
+  "A <b>census</b> is an official count of all the people in a country, often every ten years, with facts about households.",
+  "Census data and satellite images inform decisions by <b>individuals</b> (where to buy a house), <b>businesses</b> (where to open a store) and <b>governments</b> (where to build, how to share seats and money).",
+  "These decisions happen at every scale: a school board (local), a national agency, a group of countries or the whole world.",
+  "Every source has a <b>limitation of data</b>: censuses age and miss people; satellites cannot see through clouds or into homes; data for a whole city hide its neighborhoods."
+ ],
+ "misconception": {
+  "wrong": "Official data such as a census are complete and always up to date.",
+  "right": "A census is taken every few years and misses some people, such as those without a fixed home. Good decisions say how old the data are and who may be missing."
+ },
+ "check": [
+  "hug-data-in-decisions-1",
+  "hug-data-in-decisions-2",
+  "hug-data-in-decisions-3",
+  "hug-data-in-decisions-4",
+  "hug-data-in-decisions-9",
+  "hug-data-in-decisions-12",
+  "hug-data-in-decisions-13"
+ ],
+ "summary": "Census data and satellite images are powerful because decisions follow them: where a family buys a home, where a company opens a store, where a city lays pipes, how a country shares seats and money, and where aid goes after a disaster. They inform choices at every scale, from a block to the world. Every source also has limits: censuses age and undercount, satellites miss what clouds or roofs hide, and data for large areas hide what happens inside them."
+}

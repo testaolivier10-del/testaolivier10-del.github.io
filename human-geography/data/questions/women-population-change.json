@@ -1,0 +1,566 @@
+{
+ "stimuli": {
+  "women-population-change-s1": {
+   "kind": "data",
+   "title": "Women’s schooling and fertility in 13 countries",
+   "invented": true,
+   "plot": {
+    "kind": "scatter",
+    "label": "Scatter plot of 13 invented countries: as the average years of school for women rise from 2 to 13, the total fertility rate falls from about 6.6 to 1.5, with one country at 11 years and a rate of 4.3 far above the trend",
+    "points": [
+     [
+      2,
+      6.6
+     ],
+     [
+      3,
+      5.9
+     ],
+     [
+      4,
+      5.4
+     ],
+     [
+      5,
+      4.6
+     ],
+     [
+      6,
+      4.1
+     ],
+     [
+      7,
+      3.4
+     ],
+     [
+      8,
+      2.9
+     ],
+     [
+      9,
+      2.5
+     ],
+     [
+      10,
+      2.1
+     ],
+     [
+      11,
+      1.8
+     ],
+     [
+      12,
+      1.6
+     ],
+     [
+      13,
+      1.5
+     ],
+     [
+      11,
+      4.3
+     ]
+    ],
+    "trend": true,
+    "xLabel": "Average years of school, women aged 25 and over",
+    "yLabel": "Total fertility rate",
+    "zero": true
+   }
+  },
+  "women-population-change-s2": {
+   "kind": "text",
+   "title": "Ravenstein’s laws of migration, summarized",
+   "text": "<p><i>LevlPrep summary of E. G. Ravenstein, \"The Laws of Migration\" (1885 and 1889), based on British census data:</i></p><ul><li>Most migrants move only a short distance.</li><li>Many move in steps, from village to town to city.</li><li>People who move long distances usually head for large cities.</li><li>Each flow of migrants produces a smaller flow back.</li><li>People from the countryside move more than people from towns.</li><li>Within their own country, women move more than men; men more often move long distances and abroad.</li><li>Most migrants are adults, and most move for economic reasons.</li></ul>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-women-population-change-1",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the relationship on the scatter plot?",
+   "stimulus": "women-population-change-s1",
+   "options": [
+    "Where women have more years of school, the TFR tends to be lower",
+    "Where women have more years of school, the TFR tends to be higher",
+    "There is no relationship between the two measures",
+    "The TFR is the same in each of the 13 countries on the plot"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The pattern is negative: more years of school for women goes with fewer children per woman. Readers want the direction stated, not just \"a relationship\".",
+    "options": [
+     "Right: the points slope down from left to right.",
+     "that would be an upward slope; the points slope down.",
+     "most points lie close to a downward trend line.",
+     "the TFR ranges from about 1.5 to 6.6."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-2",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.E",
+   "q": "Based on the trend, which TFR would you expect in a country where women average 9 years of school?",
+   "stimulus": "women-population-change-s1",
+   "options": [
+    "About 6.5",
+    "About 2.5",
+    "About 4.5",
+    "About 1.2"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Read across from 9 years on the x-axis to the trend: about 2.5 births per woman.",
+    "options": [
+     "that matches about 2 years of school.",
+     "Right: the point at 9 years sits at about 2.5.",
+     "that matches about 5 years of school.",
+     "that is below even the countries with 13 years of school."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-3",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "q": "One country has 11 years of school for women but a TFR of 4.3, far above the trend. Which is the most likely explanation?",
+   "stimulus": "women-population-change-s1",
+   "options": [
+    "Women in that country have no access to schools",
+    "The trend shows that schooling raises fertility",
+    "Strong cultural or policy support for large families",
+    "The country’s data are probably wrong and can be ignored in the trend"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Schooling is one force among many. Religious teaching, family customs or pronatalist policies can keep fertility high. Explain an outlier rather than ignore it.",
+    "options": [
+     "the point shows 11 years of school on average.",
+     "the trend slopes down; this point is the exception.",
+     "Right: other factors can keep fertility high despite schooling.",
+     "outliers often have real causes worth explaining."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-4",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "A student says, \"The plot proves that sending girls to school is the only cause of falling fertility.\" What is the best reason this goes too far?",
+   "stimulus": "women-population-change-s1",
+   "options": [
+    "The plot shows that schooling has no link to fertility",
+    "The plot has too many countries to show a pattern",
+    "The plot uses the total fertility rate, which counts deaths",
+    "A pattern across countries does not prove one cause"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Correlation is not proof of cause. Countries where women have more schooling also tend to have more jobs for women, better health care and easier access to contraception. Each of these lowers fertility too.",
+    "options": [
+     "the plot shows a strong negative pattern.",
+     "13 points can show a clear pattern.",
+     "TFR counts births per woman, not deaths.",
+     "Right: income, cities, health care and contraception also change with schooling."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-5",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A young woman moves from her village to a nearby town, and five years later to the capital. Which of Ravenstein’s laws does her path fit?",
+   "stimulus": "women-population-change-s2",
+   "options": [
+    "Many migrants move in steps toward larger places",
+    "Each flow of migrants produces a smaller flow back",
+    "People from towns move more than people from the countryside",
+    "Men move more than women within their own country"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ravenstein found many migrants move in stages: village to town to city.",
+    "options": [
+     "Right: village, then town, then city is a step-by-step path.",
+     "she moves forward each time; nothing here flows back.",
+     "the summary says the reverse: rural people move more.",
+     "the summary says women move more within their country."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-6",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Each year many young people move from rural areas of a country to its capital, and a smaller number of retired people move from the capital back to the countryside. Which law does the second group fit?",
+   "stimulus": "women-population-change-s2",
+   "options": [
+    "Most migrants move a short distance from home",
+    "Each flow of migrants produces a smaller flow back",
+    "People who move long distances head for large cities",
+    "Most migrants are adults who move for economic reasons"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Ravenstein said every migration stream has a counterflow: a smaller movement the other way.",
+    "options": [
+     "the question is about the direction of the second flow, not its distance.",
+     "Right: the retirees are a smaller flow in the opposite direction.",
+     "the retirees are leaving the capital.",
+     "retirees moving to the countryside are not moving for work."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-7",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Ravenstein found that women moved more often than men within Britain but less often abroad. Which explanation fits his time best?",
+   "stimulus": "women-population-change-s2",
+   "options": [
+    "Women were not allowed to leave their home villages",
+    "Men stayed home to look after children and farms",
+    "Many young women moved to nearby towns for jobs as servants",
+    "Laws in the 1880s banned women from travelling abroad"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Women’s work shaped where they moved: many found work as servants or in textile mills nearby, while men more often took long-distance jobs or sailed abroad.",
+    "options": [
+     "women did move: more than men within the country.",
+     "men moved too, more often over long distances.",
+     "Right: short moves for jobs in nearby towns were common for women.",
+     "there was no such general ban in Britain."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-8",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which is a limitation of Ravenstein’s laws?",
+   "stimulus": "women-population-change-s2",
+   "options": [
+    "They say nothing about why people move",
+    "They were based on data from many countries around the world",
+    "They say most migrants are children",
+    "They come from 1800s British data, before flights and phones"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Ravenstein used British census data from the 1800s. Air travel, phones and the internet now make long-distance and international moves far more common, and many women move abroad for work.",
+    "options": [
+     "the summary says most people move for economic reasons.",
+     "they were based mostly on British census data.",
+     "the summary says most migrants are adults.",
+     "Right: modern transport makes long, international moves much more common."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-9",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What do geographers mean by female education?",
+   "options": [
+    "The amount of schooling that girls and women receive",
+    "The number of women who work outside the home",
+    "The number of children born per woman in a lifetime",
+    "Lessons about family life given to boys and girls in school"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Female education is the schooling girls and women receive. It is one of the strongest forces linked to lower fertility.",
+    "options": [
+     "Right: often measured as years of school or the share of girls in school.",
+     "that is women’s work, a related idea.",
+     "that is the total fertility rate.",
+     "female education is about girls’ and women’s schooling."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-10",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Children of mothers who finished secondary school are less likely to die before age 5, in most countries. Which link best explains this?",
+   "options": [
+    "Schooled mothers have more children, so each child gets more care",
+    "Schooled mothers learn more about health and use clinics more",
+    "Mothers who stay in school live farther from hospitals",
+    "Mothers with more schooling move abroad, so their children are counted elsewhere"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Women’s changing roles affect mortality too. Mothers with more schooling tend to know more about clean water, nutrition and vaccines and to use health care, so infant and child deaths fall.",
+    "options": [
+     "schooled mothers usually have fewer children, not more.",
+     "Right: knowledge of hygiene, nutrition and vaccines lowers child deaths.",
+     "distance is not the link here.",
+     "the pattern holds where families stay put."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-11",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In Bangladesh, millions of young women moved from villages to garment factories in Dhaka from the 1980s on. Bangladesh’s TFR fell from more than 6 in the early 1970s to 2.3 in 2022 (Bangladesh Demographic and Health Survey, 2022). How could factory jobs help lower fertility?",
+   "options": [
+    "Factory work made children more useful as farm workers",
+    "Women in factories had more time to raise large families",
+    "Women with wages tend to marry later and have fewer children",
+    "The jobs raised the death rate, so families had fewer children"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Jobs give women income and independence. Women who work for wages tend to marry later, use family planning and have fewer children. The change happened alongside family planning programs and more schooling for girls.",
+    "options": [
+     "factory work in a city makes children less useful as workers.",
+     "factory hours leave less time, not more.",
+     "Right: paid work raises the cost of leaving a job to raise many children.",
+     "the link is about choices, not more deaths."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-12",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Many nurses and care workers who move from the Philippines to other countries are women. What does this show about women and migration?",
+   "options": [
+    "Women move abroad after their husbands have moved first",
+    "Ravenstein’s laws predict that women move abroad more than men",
+    "Women no longer move within their own countries",
+    "Changing roles let more women move abroad for work themselves"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "As women’s roles change, more women migrate on their own, often over long distances, for jobs in nursing, care and domestic work. This differs from Ravenstein’s 1800s pattern.",
+    "options": [
+     "many women migrate on their own for work.",
+     "Ravenstein found the reverse in his time.",
+     "women still move within countries too.",
+     "Right: women are now often the main migrant in a family."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-13",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Complete Ravenstein’s laws: place each answer beside the question it answers.",
+   "model": {
+    "layout": "tiers",
+    "title": "Ravenstein’s laws of migration (1885, 1889)",
+    "slots": [
+     {
+      "id": "dist",
+      "name": "How far do most migrants move?"
+     },
+     {
+      "id": "path",
+      "name": "How do many reach the city?"
+     },
+     {
+      "id": "long",
+      "name": "Where do long-distance migrants go?"
+     },
+     {
+      "id": "back",
+      "name": "What does each flow produce?"
+     },
+     {
+      "id": "who",
+      "name": "Who moves more inside a country?"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "short",
+      "text": "A short distance"
+     },
+     {
+      "id": "steps",
+      "text": "In steps, village to town to city"
+     },
+     {
+      "id": "big",
+      "text": "Large cities"
+     },
+     {
+      "id": "counter",
+      "text": "A smaller flow back"
+     },
+     {
+      "id": "women",
+      "text": "Women"
+     },
+     {
+      "id": "far",
+      "text": "A long distance"
+     }
+    ],
+    "key": {
+     "dist": "short",
+     "path": "steps",
+     "long": "big",
+     "back": "counter",
+     "who": "women"
+    },
+    "slips": [
+     {
+      "piece": "far",
+      "slot": "dist",
+      "why": "Ravenstein found most migrants move only a short distance; the few long-distance migrants head for large cities."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Most move short distances, many in steps; long-distance migrants go to large cities; each flow has a counterflow; within a country women moved more than men in his data."
+   }
+  },
+  {
+   "id": "hug-women-population-change-14",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Through which links does more schooling for girls tend to lower a country’s total fertility rate? Select all that apply.",
+   "options": [
+    "Girls who stay in school marry and have children later",
+    "Women with more schooling can earn more in paid jobs",
+    "Schooled women know more about family planning",
+    "Schools give families money for each child born",
+    "Schooling raises the infant mortality rate",
+    "Girls in school are less likely to survive to adulthood"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "More schooling for girls means later marriage, more paid work and more use of family planning, so fewer children per woman.",
+    "options": [
+     "Right: later marriage shortens the years of childbearing.",
+     "Right: paid work raises the cost of leaving work to raise children.",
+     "Right: knowledge and use of contraception rise with schooling.",
+     "That is a pronatalist payment, not a link from schooling.",
+     "Schooling of mothers lowers infant deaths.",
+     "Schooling does not lower survival."
+    ]
+   }
+  },
+  {
+   "id": "hug-women-population-change-15",
+   "unit": "unit-2",
+   "topic": "women-population-change",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of how a change in women’s roles affects fertility in a named place.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Bangladesh, millions of young women took paid jobs in garment factories from the 1980s, so many married later and had fewer children, and the TFR fell to 2.3 by 2022 (Bangladesh Demographic and Health Survey, 2022).",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Bangladesh",
+       "a country in Asia"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name the real country."
+      }
+     },
+     "cause": {
+      "label": "Change in women’s roles",
+      "options": [
+       "millions of young women took paid jobs in garment factories from the 1980s",
+       "women changed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "say what changed and when."
+      }
+     },
+     "effect": {
+      "label": "Link and effect",
+      "options": [
+       "many married later and had fewer children",
+       "fertility was affected"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "give the link (later marriage) and the direction (fewer children)."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Name the place, the change in women’s roles, the link and the effect on fertility."
+   }
+  }
+ ]
+}

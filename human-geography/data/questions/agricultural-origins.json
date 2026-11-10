@@ -56,17 +56,18 @@
    "practice": "2.A",
    "q": "Which letter marks the area of the Fertile Crescent, where wheat and barley were first domesticated?",
    "options": [
-    "B",
     "A",
+    "B",
     "C",
     "E"
    ],
-   "correct": 1,
+   "correct": 0,
+   "fixed": true,
    "why": {
     "correct": "The Fertile Crescent arcs through Southwest Asia, from the eastern Mediterranean through the Tigris and Euphrates valleys. On this map it is A.",
     "options": [
-     "B marks the Indus River valley in South Asia, another early hearth.",
      "Right: A is in Southwest Asia, in the area of the Tigris and Euphrates rivers, part of the Fertile Crescent.",
+     "B marks the Indus River valley in South Asia, another early hearth.",
      "C marks Central America, the hearth of maize, beans and squash.",
      "E marks the Andes of South America, where potatoes were domesticated."
     ]
@@ -89,6 +90,7 @@
     "E"
    ],
    "correct": 1,
+   "fixed": true,
    "why": {
     "correct": "Central America (often called Mesoamerica) is the hearth of maize, beans and squash. It is C on this map.",
     "options": [
@@ -111,18 +113,18 @@
    "q": "Before 1492, crops from areas C and E were not grown in areas A and B. What best explains this pattern?",
    "options": [
     "The crops from C and E were domesticated after 1492",
-    "An ocean separated the hearths until the Columbian Exchange",
     "Areas A and B had climates in which no American crop could grow",
-    "Farmers in A and B did not trade with anyone before 1492"
+    "Farmers in A and B did not trade with anyone before 1492",
+    "An ocean separated the hearths until the Columbian Exchange"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "Distance and the oceans were the barrier. Once ships linked the hemispheres, the Columbian Exchange spread crops between hearths that had developed separately.",
     "options": [
      "Maize and potatoes were domesticated thousands of years before 1492.",
-     "Right: the Atlantic and Pacific kept the Americas' crops apart from Afro-Eurasia until ships crossed after 1492.",
      "Maize and potatoes now grow widely in Southwest and South Asia, so climate was not the barrier.",
-     "People in Southwest and South Asia traded widely; their trade simply did not reach the Americas."
+     "People in Southwest and South Asia traded widely; their trade simply did not reach the Americas.",
+     "Right: the Atlantic and Pacific kept the Americas' crops apart from Afro-Eurasia until ships crossed after 1492."
     ]
    },
    "stimulus": "agricultural-origins-s1"
@@ -165,17 +167,17 @@
    "q": "According to the passage, which process brought the potato from the Andes to Ireland?",
    "options": [
     "The First Agricultural Revolution",
-    "The Columbian Exchange",
     "Contagious diffusion across land from the Andes to Ireland",
+    "The Columbian Exchange",
     "Stimulus diffusion of a farming idea, not the plant itself"
    ],
-   "correct": 1,
+   "correct": 2,
    "why": {
     "correct": "The Columbian Exchange moved plants, animals and diseases between the Americas and Afro-Eurasia after 1492. The potato is one of its best-known crops.",
     "options": [
      "That is the first domestication of plants and animals, thousands of years earlier, in the Andes itself.",
-     "Right: after 1492, ships carried crops such as the potato from the Americas to Europe.",
      "An ocean lies between them; the potato crossed it by ship.",
+     "Right: after 1492, ships carried crops such as the potato from the Americas to Europe.",
      "The passage says the plant itself was carried to Europe."
     ]
    },
@@ -191,17 +193,17 @@
    "practice": "4.B",
    "q": "Based on the passage, why was the blight so deadly in Ireland?",
    "options": [
-    "The potato could not grow in Ireland's cool, wet climate",
     "Many families depended on one kind of potato for most of their food",
+    "The potato could not grow in Ireland's cool, wet climate",
     "The potato had been brought to Ireland just a few years before 1845",
     "The blight spread to Ireland from the United States"
    ],
-   "correct": 1,
+   "correct": 0,
    "why": {
     "correct": "Depending on one crop is risky. When blight struck the one potato variety most poor families relied on, their main food source collapsed.",
     "options": [
-     "The passage says the potato grew well in Ireland's climate.",
      "Right: when the one crop failed, those families had little else to eat.",
+     "The passage says the potato grew well in Ireland's climate.",
      "It arrived in the late 1500s, more than 200 years earlier.",
      "The passage does not say that; it says many Irish people later moved to the United States."
     ]
@@ -246,18 +248,18 @@
    "q": "What is domestication?",
    "options": [
     "Bringing a plant from one continent to another by ship",
-    "Changing wild plants or animals over generations by choosing which ones breed",
     "Clearing a forest plot and farming it for a few years",
-    "Watering crops with canals in a dry place"
+    "Watering crops with canals in a dry place",
+    "Changing wild plants or animals over generations by choosing which ones breed"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "Domestication is the slow change of wild species into crops and livestock that depend on people, through people choosing which ones to plant or breed.",
     "options": [
      "Moving plants between continents is diffusion, such as the Columbian Exchange.",
-     "Right: people kept seeds and animals with traits they wanted, and over many generations the species changed.",
      "That describes shifting cultivation.",
-     "That is irrigation."
+     "That is irrigation.",
+     "Right: people kept seeds and animals with traits they wanted, and over many generations the species changed."
     ]
    }
   },
@@ -271,17 +273,17 @@
    "practice": "1.B",
    "q": "After the First Agricultural Revolution, many people stopped moving to hunt and gather and lived in one place year-round. What best explains this change?",
    "options": [
-    "People traded their crops for food from the Americas",
     "Fields and herds needed care, and harvests could be stored",
+    "People traded their crops for food from the Americas",
     "Tractors made it possible to farm from a fixed home",
     "Nomadic herding spread to each hearth area"
    ],
-   "correct": 1,
+   "correct": 0,
    "why": {
     "correct": "Farming meant staying near fields and herds, and stored surpluses let villages grow. Permanent settlement followed.",
     "options": [
-     "Farmers in Afro-Eurasia had no contact with the Americas at that time.",
      "Right: tending crops and storing food tied people to one place.",
+     "Farmers in Afro-Eurasia had no contact with the Americas at that time.",
      "Tractors came thousands of years later.",
      "Herding involves moving, the opposite of living in one place year-round."
     ]
@@ -298,17 +300,17 @@
    "q": "Which was a long-term effect of the food surplus that farming produced in hearths such as the Fertile Crescent?",
    "options": [
     "Populations fell because fewer people were needed",
-    "Some people could do jobs other than farming",
     "Herders replaced farmers across the whole region",
+    "Some people could do jobs other than farming",
     "Wild plants replaced crops as the main food"
    ],
-   "correct": 1,
+   "correct": 2,
    "why": {
     "correct": "Farming in hearths like the Fertile Crescent made more food than farmers needed. That surplus supported larger populations, towns and people with other jobs.",
     "options": [
      "Food surpluses supported larger, not smaller, populations.",
-     "Right: a surplus feeds people who make tools, trade, write or govern, so jobs became specialized.",
      "Farming spread; it did not give way to herding.",
+     "Right: a surplus feeds people who make tools, trade, write or govern, so jobs became specialized.",
      "Domesticated crops became the main food."
     ]
    }
@@ -324,18 +326,18 @@
    "q": "In the 1600s and 1700s, horses brought by Spanish settlers spread north into the Great Plains of North America. Nations such as the Comanche and Lakota began to hunt bison on horseback. This is an example of which process?",
    "options": [
     "The First Agricultural Revolution in the Americas",
-    "The Columbian Exchange changing life in the Americas",
     "Domestication of the bison by Plains nations",
-    "Stimulus diffusion of a farming tool from Mexico"
+    "Stimulus diffusion of a farming tool from Mexico",
+    "The Columbian Exchange changing life in the Americas"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "The Columbian Exchange moved animals as well as plants. Horses from Europe spread across the Plains and changed hunting and travel.",
     "options": [
      "That is the first domestication of local plants and animals thousands of years earlier.",
-     "Right: the horse came from Afro-Eurasia and transformed how Plains nations hunted and traveled.",
      "Plains nations hunted wild bison; they did not domesticate them.",
-     "The horse itself was carried across the ocean, then spread across the land."
+     "The horse itself was carried across the ocean, then spread across the land.",
+     "Right: the horse came from Afro-Eurasia and transformed how Plains nations hunted and traveled."
     ]
    }
   },
@@ -400,18 +402,18 @@
    "q": "Farming spread from the Fertile Crescent into Europe over thousands of years, as each generation of farmers cleared land a little farther from the last. Which type of diffusion is this?",
    "options": [
     "Relocation diffusion, carried by ship across an ocean",
+    "Expansion diffusion, spreading from place to place",
     "Hierarchical diffusion, moving first between large cities",
-    "Stimulus diffusion, changing into a new practice",
-    "Expansion diffusion, spreading from place to place"
+    "Stimulus diffusion, changing into a new practice"
    ],
-   "correct": 3,
+   "correct": 1,
    "why": {
     "correct": "Farming spread outward from its hearth to neighboring areas, which is expansion diffusion (contagious). The Columbian Exchange, by contrast, carried crops across an ocean: relocation diffusion.",
     "options": [
      "Relocation diffusion moves an idea with people to a distant place; here farming crept outward step by step.",
+     "Right: farming spread outward from its hearth while staying strong at home, a form of contagious expansion diffusion.",
      "Cities did not yet exist across Europe; farming spread through neighboring lands.",
-     "The same crops and practices spread, not just an idea that was changed.",
-     "Right: farming spread outward from its hearth while staying strong at home, a form of contagious expansion diffusion."
+     "The same crops and practices spread, not just an idea that was changed."
     ]
    }
   },

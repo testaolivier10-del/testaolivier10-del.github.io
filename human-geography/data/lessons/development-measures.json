@@ -1,0 +1,72 @@
+{
+ "topic": "development-measures",
+ "hook": "In the UNDP's 2025 report, Iceland scored 0.972 on the Human Development Index and South Sudan 0.388 (2023 data). One number, two very different lives. But what goes into that number, and what does it leave out? A street vendor in Lagos, a mother cooking for her family, and a gap in pay between women and men may not show up in it at all.",
+ "prereq": [
+  {
+   "q": "What does the infant mortality rate measure?",
+   "options": [
+    "Deaths of babies under one year per 1,000 live births",
+    "Births per 1,000 people a year",
+    "Children per woman in her lifetime",
+    "Deaths of people over 65 per 1,000"
+   ],
+   "correct": 0,
+   "why": "It counts deaths of babies under one per 1,000 live births, a key development indicator.",
+   "review": "population-dynamics"
+  },
+  {
+   "q": "Which economic sector includes street vendors, teachers and truck drivers?",
+   "options": [
+    "Tertiary",
+    "Primary",
+    "Secondary",
+    "Quinary"
+   ],
+   "correct": 0,
+   "why": "Selling, teaching and transport are services: the tertiary sector.",
+   "review": "economic-sectors"
+  }
+ ],
+ "figure": {
+  "figure": "development-measures-hdi",
+  "caption": "The Human Development Index combines health, education and income into one number from 0 to 1."
+ },
+ "chain": [
+  {
+   "cause": "Development has many parts: income, health, schooling, fairness",
+   "effect": "no single number can capture all of it"
+  },
+  {
+   "cause": "GNI per capita is an average of counted income",
+   "effect": "it hides inequality, unpaid work and the informal sector"
+  },
+  {
+   "cause": "The HDI adds life expectancy and schooling to income",
+   "effect": "it shows more of people's lives, but still as a national average"
+  },
+  {
+   "cause": "Women and men often have unequal health, power and paid work",
+   "effect": "the GII measures that gap, where lower is better"
+  }
+ ],
+ "ideas": [
+  "<b>GDP</b> counts production inside the borders; <b>GNP</b> and <b>GNI</b> count income earned by a country's people and firms anywhere. <b>Per capita</b> means per person.",
+  "The <b>informal sector</b> (unregistered, untaxed work) and unpaid work are missing from much of GNI.",
+  "The <b>HDI</b> combines health (life expectancy), education (years of schooling) and income (GNI per capita, PPP), from 0 to 1.",
+  "The <b>GII</b> measures gaps between women and men in reproductive health, empowerment and paid work. <b>Lower is better.</b>",
+  "Every measure shows something and hides something; name both, and compare indices within one edition."
+ ],
+ "misconception": {
+  "wrong": "A high GNI per capita means most people in the country live well.",
+  "right": "GNI per capita is an average. It hides how income is shared, the informal sector and unpaid work, so pair it with HDI, GII and social measures."
+ },
+ "check": [
+  "hug-development-measures-4",
+  "hug-development-measures-5",
+  "hug-development-measures-6",
+  "hug-development-measures-9",
+  "hug-development-measures-10",
+  "hug-development-measures-12"
+ ],
+ "summary": "Development is measured with income measures (GDP, GNP, GNI per capita), social measures (fertility, infant mortality, literacy, health care, energy use) and composites: the HDI (health, education, income) and the GII (gaps between women and men, lower is better). Each shows something and hides something, such as inequality and the informal sector."
+}

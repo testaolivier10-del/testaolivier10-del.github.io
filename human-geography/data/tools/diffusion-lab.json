@@ -1,0 +1,15 @@
+{
+  "slug": "diffusion-lab",
+  "kind": "simulator",
+  "topic": "diffusion-types",
+  "intro": "<p>Watch a trait spread across Country A, an invented country, one step at a time: carried by people who move (relocation), passed to the nearest places (contagious), handed down from the biggest cities (hierarchical) or changed along the way (stimulus). Then watch people move: what pushes them out, what pulls them in, what stops them on the way, and the patterns Ravenstein saw in who moves where.</p>",
+  "howItWorksTitle": "How this trainer works",
+  "howItWorks": "<p>Every map is Country A, an invented country of eight provinces, so the patterns are clean and nothing claims to be a real place. Real places appear only as named real cases, each worded as the textbooks give them.</p><p>In Test yourself, read the map first: find the hearth, name the type of diffusion and say whether it is relocation or expansion. Real diffusion often mixes types, and some maps do. For migration, sort each factor (push, pull, intervening obstacle or opportunity), name its cause, name the kind of migration, and work out a number from an invented survey to test one of Ravenstein's laws. Every wrong answer says what the slip was.</p>",
+  "partTopics": { "law": "women-population-change" },
+  "contexts": [
+    { "id": "diffusion", "topic": "diffusion-types", "types": ["diffusion", "mixed"] },
+    { "id": "migration", "topic": "migration-causes", "types": ["migration"] },
+    { "id": "kinds", "topic": "forced-voluntary-migration", "types": ["kinds"] },
+    { "id": "ravenstein", "topic": "women-population-change", "types": ["ravenstein"] }
+  ]
+}

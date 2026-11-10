@@ -1,0 +1,572 @@
+{
+ "stimuli": {
+  "green-revolution-s1": {
+   "kind": "data",
+   "title": "Wheat yields in two regions, 1950 to 2000",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of wheat yield in two invented regions, 1950 to 2000: Region X, an irrigated plain, rises from 0.8 to 2.8 tonnes per hectare, climbing fastest after 1960; Region Y, a dry region that relies on rain, rises slowly from 0.7 to 1.2.",
+    "xLabel": "Year",
+    "yLabel": "Wheat yield (tonnes per hectare)",
+    "series": [
+     {
+      "name": "Region X (irrigated plain)",
+      "points": [
+       [
+        1950,
+        0.8
+       ],
+       [
+        1960,
+        1
+       ],
+       [
+        1970,
+        1.5
+       ],
+       [
+        1980,
+        2
+       ],
+       [
+        1990,
+        2.5
+       ],
+       [
+        2000,
+        2.8
+       ]
+      ]
+     },
+     {
+      "name": "Region Y (dry, rain-fed)",
+      "points": [
+       [
+        1950,
+        0.7
+       ],
+       [
+        1960,
+        0.8
+       ],
+       [
+        1970,
+        0.9
+       ],
+       [
+        1980,
+        1
+       ],
+       [
+        1990,
+        1.1
+       ],
+       [
+        2000,
+        1.2
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "green-revolution-s2": {
+   "kind": "map",
+   "title": "Four countries and the Green Revolution",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four countries marked: A in South Asia, B in North America south of the United States, C in Southeast Asia and D in West Africa",
+    "legendTitle": "Countries in the questions",
+    "focus": [
+     "india",
+     "mexico",
+     "philippines",
+     "niger"
+    ],
+    "marks": [
+     {
+      "at": "india",
+      "text": "A"
+     },
+     {
+      "at": "mexico",
+      "text": "B"
+     },
+     {
+      "at": "philippines",
+      "text": "C"
+     },
+     {
+      "at": "niger",
+      "text": "D"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-green-revolution-1",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Which statement compares the two regions in the chart?",
+   "options": [
+    "Yields rose in both, but much faster in Region X after 1960",
+    "Yields rose quickly in Region Y after 1960 but fell in Region X",
+    "Yields were the same in both regions in 2000",
+    "Yields in both regions stayed flat from 1950 to 2000"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A compare speaks of both lines: both rise, but the irrigated plain pulls far ahead after 1960, when Green Revolution seeds spread.",
+    "options": [
+     "Right: Region X climbs from 1.0 to 2.8 after 1960, while Region Y rises slowly to 1.2.",
+     "Region X rises steeply; Region Y rises slowly. Neither falls.",
+     "In 2000 Region X yields 2.8 and Region Y 1.2 tonnes per hectare.",
+     "Both lines rise, Region X much more steeply."
+    ]
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "hug-green-revolution-2",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "By what percent did wheat yield in Region X increase from 1960 to 1990?",
+   "why": {
+    "correct": "$\\frac{2.5 - 1.0}{1.0} \\times 100 = 150\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      1,
+      2.5
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 250,
+      "why": "You divided the new value by the old one (2.5 / 1.0 × 100). Percent change uses the change: (2.5 - 1.0) / 1.0 × 100."
+     },
+     {
+      "value": 1.5,
+      "why": "1.5 is the change in tonnes per hectare. Divide it by the 1960 value and multiply by 100 to get a percent."
+     }
+    ]
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "hug-green-revolution-3",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Which explanation best accounts for the gap between the two regions after 1960?",
+   "options": [
+    "Region Y planted the new seeds first, so its soil was worn out",
+    "Region X stopped irrigating after 1960 and switched to rain-fed crops",
+    "The new seeds needed water and fertilizer, which Region X could supply",
+    "GMO crops were planted in Region X in the 1960s"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The Green Revolution was a package: high-yield seeds plus irrigation, fertilizer and pesticides. Where water was short, yields rose much less.",
+    "options": [
+     "If Region Y had planted them first, its line would rise first; it rises least.",
+     "The legend calls Region X an irrigated plain.",
+     "Right: high-yield varieties give big gains only with irrigation and fertilizer, which the irrigated plain had.",
+     "GMOs reached farms in the late 1990s, not the 1960s."
+    ]
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "hug-green-revolution-4",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.D",
+   "q": "A student uses Region X alone to argue that the Green Revolution ended hunger everywhere. Why is this conclusion weak?",
+   "options": [
+    "Region X's yield fell after 1990",
+    "The chart shows no data before 1960",
+    "Region Y's yield rose faster than Region X's over the whole period",
+    "Region Y shows gains were small where water was scarce"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Results at one place do not show a global pattern. Regions without irrigation, such as much of Sub-Saharan Africa, gained far less.",
+    "options": [
+     "Region X keeps rising, from 2.5 to 2.8.",
+     "It starts in 1950.",
+     "Region Y rose more slowly.",
+     "Right: the chart itself shows uneven results; one region cannot stand for the world."
+    ]
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "hug-green-revolution-5",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the 1950s, Norman Borlaug and other scientists bred short, disease-resistant wheat at a research center in one marked country. Which letter is it?",
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "Wheat breeding in Mexico from the 1940s and 1950s gave the seeds that South Asian farmers later adopted.",
+    "options": [
+     "A marks India, which later planted the Mexican wheat widely from the mid-1960s.",
+     "Right: B marks Mexico, where the new wheat varieties were bred.",
+     "C marks the Philippines, where a rice institute bred the high-yield rice IR8.",
+     "D marks Niger, in the dry Sahel of West Africa."
+    ]
+   },
+   "stimulus": "green-revolution-s2"
+  },
+  {
+   "id": "hug-green-revolution-6",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In 1966 a research institute released IR8, a high-yield rice. In which marked country was it bred?",
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "correct": 2,
+   "fixed": true,
+   "why": {
+    "correct": "IR8 came from the International Rice Research Institute in the Philippines and spread across rice-growing Asia.",
+    "options": [
+     "A marks India, a major adopter of the new rice and wheat.",
+     "B marks Mexico, where the wheat was bred.",
+     "Right: C marks the Philippines, home of the International Rice Research Institute.",
+     "D marks Niger, where rice is a minor crop."
+    ]
+   },
+   "stimulus": "green-revolution-s2"
+  },
+  {
+   "id": "hug-green-revolution-7",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Farmers in the country marked D gained much less from the Green Revolution than farmers in the country marked A. Which reason best explains the difference?",
+   "options": [
+    "D farms dry, rain-fed land with little irrigation",
+    "D's farmers had no crops of their own until the 1970s",
+    "D is too far north for wheat and rice to grow",
+    "D adopted GMO crops instead in the 1960s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Green Revolution centered on wheat and rice with irrigation. Dry regions growing millet, sorghum and cassava, such as the Sahel, gained less.",
+    "options": [
+     "Right: the new seeds were mainly wheat and rice and needed water, which much of Niger lacks.",
+     "Niger has been farmed for thousands of years; its farmers grow millet and sorghum.",
+     "Niger is closer to the equator than India; the limits are water and crop type, not latitude.",
+     "GMO crops were not sold until the late 1990s."
+    ]
+   },
+   "stimulus": "green-revolution-s2"
+  },
+  {
+   "id": "hug-green-revolution-8",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "About when did the Green Revolution spread across many less developed countries?",
+   "options": [
+    "From the 1700s through the 1800s",
+    "From the 1960s through the 1980s",
+    "About 10,000 years ago",
+    "From the late 1990s onward"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The term was coined in 1968, and the main spread ran from the 1960s into the 1980s.",
+    "options": [
+     "That was the Second Agricultural Revolution.",
+     "Right: the new seeds spread widely from the mid-1960s through the 1980s.",
+     "That was the First Agricultural Revolution.",
+     "GMO crops came into wide use from the late 1990s, after the Green Revolution."
+    ]
+   }
+  },
+  {
+   "id": "hug-green-revolution-9",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "What makes a high-yield variety different from the older local seeds it replaced?",
+   "options": [
+    "Its genes were changed in a lab by inserting DNA from another species",
+    "It needs no fertilizer or water to grow well",
+    "It grows tall so its stalks can reach more sunlight",
+    "It grows more grain per hectare when given water and fertilizer"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "High-yield varieties were bred by crossing plants, not by lab gene changes. Short, stiff stalks held heavier grain, and yields depended on water and fertilizer.",
+    "options": [
+     "That describes a GMO. Green Revolution seeds came from careful cross-breeding.",
+     "It needs more of both to reach its high yields.",
+     "Many were bred short, so heavy heads of grain would not knock the stalks over.",
+     "Right: high-yield varieties were bred to turn water and fertilizer into more grain."
+    ]
+   }
+  },
+  {
+   "id": "hug-green-revolution-10",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A news story calls GMO soybeans \"part of the Green Revolution.\" Why is this incorrect?",
+   "options": [
+    "GMOs came decades later, in the late 1990s",
+    "GMOs were grown long before the Green Revolution began",
+    "Soybeans were domesticated in the Fertile Crescent",
+    "The Green Revolution did not use any new seeds"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Keep the two apart: Green Revolution seeds were bred by crossing plants (1960s to 1980s); GMOs have genes changed in a lab and spread from the late 1990s.",
+    "options": [
+     "Right: the Green Revolution used cross-bred seeds from the 1960s; lab gene changes reached farms in the late 1990s.",
+     "GMOs came after the Green Revolution, not before.",
+     "Soybeans were domesticated in East Asia; in any case, this is not why the claim is wrong.",
+     "New high-yield seeds were at its center."
+    ]
+   }
+  },
+  {
+   "id": "hug-green-revolution-11",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In Punjab, India, Green Revolution farms pump groundwater to irrigate rice and wheat. What negative environmental effect has this caused?",
+   "options": [
+    "More forest cover as farmers leave the land",
+    "Less use of chemical fertilizer and pesticide on the fields",
+    "Falling water tables from pumping faster than rain refills",
+    "Wetter soils because rain increased in the region"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Irrigated rice and wheat need much water. Pumping more groundwater than rain replaces makes water tables fall, a cost of the package.",
+    "options": [
+     "Punjab's land is intensively farmed, not returning to forest.",
+     "Green Revolution farming uses more fertilizer, not less.",
+     "Right: heavy pumping for thirsty crops has lowered groundwater levels in Punjab.",
+     "The problem comes from pumping, not from changes in rain."
+    ]
+   }
+  },
+  {
+   "id": "hug-green-revolution-12",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which was a negative social effect of the Green Revolution in parts of South Asia?",
+   "options": [
+    "Grain prices rose because harvests became smaller",
+    "Farmers returned to shifting cultivation in the forests",
+    "Fewer people could buy rice and wheat in the market",
+    "Farmers who could not afford inputs fell behind or into debt"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The package favored farmers with land, water and credit. Inequality between farmers often grew even as total food supply rose.",
+    "options": [
+     "Harvests grew, and grain prices generally fell.",
+     "Green Revolution farming is intensive and fixed.",
+     "More grain made rice and wheat more widely available.",
+     "Right: seeds, fertilizer, pumps and pesticides cost money, so larger farmers gained most and some small farmers borrowed heavily."
+    ]
+   }
+  },
+  {
+   "id": "hug-green-revolution-13",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "How does the Green Revolution challenge Malthusian theory?",
+   "options": [
+    "It proved that population grows faster than food",
+    "Technology raised food output faster than population grew",
+    "It stopped population growth in South Asia",
+    "It showed that famines are caused by too few people"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Malthus (1798) argued food grows slowly. The Green Revolution raised yields so much that food per person rose in many countries. Neo-Malthusians reply that it depends on water and fuel that may run short.",
+    "options": [
+     "That is Malthus's claim; the Green Revolution is evidence against it.",
+     "Right: Malthus expected food supply to grow slowly; new seeds and inputs made it grow quickly.",
+     "Population kept growing; food grew faster.",
+     "Malthus linked famines to too many people for the food; the Green Revolution showed food supply can rise."
+    ]
+   }
+  },
+  {
+   "id": "hug-green-revolution-14",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which were parts of the Green Revolution package? Select all that apply.",
+   "options": [
+    "High-yield varieties of wheat and rice",
+    "Chemical fertilizer and irrigation",
+    "Genetically modified seeds made in a lab",
+    "The four-field rotation of Norfolk, England",
+    "Clearing new rainforest plots each few years"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "High-yield seeds, fertilizer, irrigation, pesticides and machines made up the Green Revolution package.",
+    "options": [
+     "Right: the core of the package.",
+     "Right: the new seeds needed both to reach high yields.",
+     "GMOs came in the late 1990s, after the Green Revolution.",
+     "That was part of the Second Agricultural Revolution in the 1700s.",
+     "That is shifting cultivation, an extensive system."
+    ]
+   }
+  },
+  {
+   "id": "hug-green-revolution-15",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.D",
+   "q": "Put these big changes in farming in order, from earliest to most recent.",
+   "options": [
+    "First domestication of crops in hearths",
+    "Crop rotation and machines in Britain",
+    "High-yield wheat and rice spread in Asia",
+    "GMO crops are sold to farmers"
+   ],
+   "why": {
+    "correct": "The First Agricultural Revolution, the Second (1700s to 1800s), the Green Revolution (1960s to 1980s), then GMO crops (late 1990s)."
+   }
+  },
+  {
+   "id": "hug-green-revolution-16",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of one effect of the Green Revolution in a named place.",
+   "why": {
+    "correct": "Place, technology and effect, joined by \"so\"."
+   },
+   "specific": {
+    "frame": "In ___, farmers planted ___ with irrigation and fertilizer, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Punjab, India, farmers planted high-yield varieties of wheat with irrigation and fertilizer, so wheat harvests rose sharply in the late 1960s and 1970s.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Punjab, India",
+       "Iowa in the 1800s",
+       "many places"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Iowa in the 1800s belongs to the Second Agricultural Revolution.",
+       "2": "Name a real place; \"many places\" earns no credit."
+      }
+     },
+     "concept": {
+      "label": "What they planted",
+      "options": [
+       "high-yield varieties of wheat",
+       "GMO corn"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "GMO corn came in the late 1990s, after the Green Revolution."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "wheat harvests rose sharply in the late 1960s and 1970s",
+       "wheat harvests fell because the soil was too wet"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Harvests rose; that was the point of the package."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

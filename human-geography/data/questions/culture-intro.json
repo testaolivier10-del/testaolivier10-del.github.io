@@ -393,20 +393,19 @@
    "practice": "1.A",
    "q": "Which of these are culture traits? Select all that apply.",
    "options": [
-    "The way people greet each other in a town",
+    "The depth of a lake beside the town",
     "A holiday that a group celebrates each year",
     "The height of a mountain near the town",
     "The average yearly rainfall in the area",
     "The age of the rocks under the town"
    ],
    "correct": [
-    0,
     1
    ],
    "why": {
-    "correct": "Culture traits are learned and shared by a group: a greeting and a holiday are traits. Mountains, rainfall and rocks belong to the physical environment.",
+    "correct": "Culture traits are learned and shared by a group, such as a holiday. Lakes, mountains, rainfall and rocks belong to the physical environment.",
     "options": [
-     "Right: a greeting is learned behavior shared by a group.",
+     "Depth is a physical fact about the lake, not something people learn.",
      "Right: holidays are shared customs passed on in a culture.",
      "Height is a physical fact, not something people learn.",
      "Rainfall is climate, part of the physical environment.",

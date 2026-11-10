@@ -91,17 +91,18 @@
    "practice": "2.A",
    "q": "Which letter marks a country where many families move herds of sheep, goats, horses and yaks across dry grasslands with the seasons?",
    "options": [
-    "B",
     "A",
+    "B",
     "C",
     "D"
    ],
-   "correct": 1,
+   "correct": 0,
+   "fixed": true,
    "why": {
     "correct": "Nomadic herding fits dry grasslands too dry for crops. The letter in East Asia, A, marks Mongolia, where herders move animals to fresh grass with the seasons.",
     "options": [
-     "B marks Brazil. Its Amazon rainforest is better known for shifting cultivation, not herds moving across dry grassland.",
      "Right: A marks Mongolia, in East Asia, where nomadic herding on dry grasslands is common.",
+     "B marks Brazil. Its Amazon rainforest is better known for shifting cultivation, not herds moving across dry grassland.",
      "C marks Malaysia, a hot, wet country known for oil palm plantations, not herding.",
      "D marks Argentina. It has grasslands, but cattle there are mostly raised on fenced ranches that stay in one place."
     ]
@@ -124,6 +125,7 @@
     "D"
    ],
    "correct": 1,
+   "fixed": true,
    "why": {
     "correct": "The farming described is shifting cultivation, an extensive system of tropical rainforests. On this map the rainforest country is Brazil, marked B.",
     "options": [
@@ -146,18 +148,18 @@
    "q": "Compare the farming common in the countries marked A and D. Which statement is accurate?",
    "options": [
     "Both grow tree crops on big estates, but A uses more workers per hectare",
-    "Both use large areas for livestock, but herds in A move while D's ranches stay put",
     "A farms land intensively, while D farms the same amount of land extensively",
-    "Both clear forest plots and leave them to recover for years, but A moves more often"
+    "Both clear forest plots and leave them to recover for years, but A moves more often",
+    "Both use large areas for livestock, but herds in A move while D's ranches stay put"
    ],
-   "correct": 1,
+   "correct": 3,
    "why": {
     "correct": "A compare speaks of both sides. Mongolia, marked A, and Argentina, marked D, both use huge areas with few inputs per hectare to raise livestock, so both are extensive. They differ in movement: nomadic herders move; ranchers raise animals on fixed land.",
     "options": [
      "Tree crops on big estates describe plantation agriculture, as in Malaysia, not Mongolia or Argentina.",
-     "Right: both are extensive livestock systems; herders in Mongolia move with their animals, while ranchers in Argentina keep cattle on fixed, fenced land.",
      "Herding in A uses very few inputs per hectare, so it is extensive, not intensive.",
-     "Clearing plots and letting them recover is shifting cultivation, found in rainforests such as Brazil's."
+     "Clearing plots and letting them recover is shifting cultivation, found in rainforests such as Brazil's.",
+     "Right: both are extensive livestock systems; herders in Mongolia move with their animals, while ranchers in Argentina keep cattle on fixed, fenced land."
     ]
    },
    "stimulus": "agriculture-intro-s1"
@@ -200,17 +202,17 @@
    "q": "According to the table, which farm is farmed most intensively?",
    "options": [
     "Farm 4",
-    "Farm 1",
     "Farm 2",
+    "Farm 1",
     "Farm 3"
    ],
-   "correct": 1,
+   "correct": 2,
    "why": {
     "correct": "Intensity is about inputs per unit of land, not farm size. Farm 1 puts the most money and labor into each hectare.",
     "options": [
      "Farm 4 is the largest farm, but it spends only 20 dollars a hectare: large area with few inputs is extensive.",
-     "Right: Farm 1 spends the most per hectare (4,000 dollars) and has the most workers on the smallest area.",
      "Farm 2 spends 500 dollars a hectare, far less than Farm 1.",
+     "Right: Farm 1 spends the most per hectare (4,000 dollars) and has the most workers on the smallest area.",
      "Farm 3 spends 900 dollars a hectare, less than a quarter of Farm 1's spending."
     ]
    },
@@ -266,18 +268,18 @@
    "practice": "3.F",
    "q": "A student says, \"Farm 4 must be the least successful farm because its output per hectare is lowest.\" Based on the table, why is this conclusion weak?",
    "options": [
+    "Its low output per hectare is spread over the largest area",
     "The table shows Farm 4 has the most workers of any farm",
     "The table shows Farm 4 spends more per hectare than Farm 2",
-    "Its low output per hectare is spread over the largest area",
     "Output value per hectare is not shown for Farm 4"
    ],
-   "correct": 2,
+   "correct": 0,
    "why": {
     "correct": "Read the table across. Output per hectare measures intensity, not success. Multiply it by area: Farm 4 produces 90 × 2,000 = 180,000 dollars, while Farm 1 produces 30,000 × 2 = 60,000 dollars.",
     "options": [
+     "Right: 90 dollars a hectare on 2,000 hectares is 180,000 dollars in all, more than any other farm's total. Extensive farms earn from area, not from each hectare.",
      "Farm 4 has 4 workers, the same as Farm 3 and fewer than Farm 1.",
      "Farm 4 spends 20 dollars a hectare, much less than Farm 2's 500 dollars.",
-     "Right: 90 dollars a hectare on 2,000 hectares is 180,000 dollars in all, more than any other farm's total. Extensive farms earn from area, not from each hectare.",
      "The table does show it: 90 dollars a hectare."
     ]
    },
@@ -294,17 +296,17 @@
    "q": "What makes a kind of farming intensive?",
    "options": [
     "The farm covers a very large area of land with many fields",
-    "The crops are grown to be sold in another country",
     "Much labor, money or machinery is used on each hectare",
+    "The crops are grown to be sold in another country",
     "The farm raises animals instead of crops"
    ],
-   "correct": 2,
+   "correct": 1,
    "why": {
     "correct": "Intensive and extensive describe inputs (labor, money, machines, fertilizer) per unit of land.",
     "options": [
      "Size alone does not decide it. Many very large farms, such as ranches, are extensive.",
-     "Where a crop is sold says nothing about the inputs used on each hectare.",
      "Right: intensive agriculture puts many inputs into each unit of land.",
+     "Where a crop is sold says nothing about the inputs used on each hectare.",
      "Dairy farms near cities raise animals and are intensive; nomadic herds are extensive."
     ]
    }
@@ -376,19 +378,19 @@
    "practice": "2.C",
    "q": "In the Imperial Valley of California, a desert, farmers grow lettuce and vegetables on the same fields year after year. What best explains how desert land became intensive farmland?",
    "options": [
+    "Irrigation water brought by canal from the Colorado River",
     "Herds moving with the seasons to find new grass and water",
     "Letting fields rest for years so the soil recovers",
-    "Heavy summer rain from tropical storms",
-    "Irrigation water brought by canal from the Colorado River"
+    "Heavy summer rain from tropical storms"
    ],
-   "correct": 3,
+   "correct": 0,
    "why": {
     "correct": "Irrigation is the human supply of water to crops. It lets dry places, such as the Imperial Valley in California, be farmed intensively, a sign of possibilism: people use technology to work around the environment.",
     "options": [
+     "Right: irrigation supplies the water rain does not, so farmers can put many inputs into each hectare.",
      "Moving herds describes nomadic herding, an extensive use of dry land.",
      "Long rest periods describe shifting cultivation and lower the use of each hectare.",
-     "The Imperial Valley gets very little rain; that is why it needs canals.",
-     "Right: irrigation supplies the water rain does not, so farmers can put many inputs into each hectare."
+     "The Imperial Valley gets very little rain; that is why it needs canals."
     ]
    }
   },
@@ -404,17 +406,17 @@
    "options": [
     "Harvests rise because each plot is planted more often than before",
     "Farmers can switch to nomadic herding in the same forest",
-    "The climate becomes drier, so plots need irrigation",
-    "The soil has too little time to recover, so harvests fall"
+    "The soil has too little time to recover, so harvests fall",
+    "The climate becomes drier, so plots need irrigation"
    ],
-   "correct": 3,
+   "correct": 2,
    "why": {
     "correct": "Shifting cultivation works when the land has a long rest (it is left fallow). When more people need food from the same forest, the rest shrinks, the soil is worn out and yields fall: the land is pushed past its carrying capacity.",
     "options": [
      "More frequent use without time to recover lowers yields on poor rainforest soils.",
      "Herding needs open grassland, not rainforest.",
-     "Shortening the rest period changes the soil, not the regional climate.",
-     "Right: the long rest rebuilds nutrients; cutting it short wears out rainforest soils and yields drop."
+     "Right: the long rest rebuilds nutrients; cutting it short wears out rainforest soils and yields drop.",
+     "Shortening the rest period changes the soil, not the regional climate."
     ]
    }
   },
@@ -455,18 +457,18 @@
    "q": "In Iowa, many farmers grow corn and soybeans and feed much of the corn to their own hogs and cattle. What kind of agriculture is this?",
    "options": [
     "Ranching",
+    "Mixed crop and livestock farming",
     "Plantation agriculture",
-    "Shifting cultivation",
-    "Mixed crop and livestock farming"
+    "Shifting cultivation"
    ],
-   "correct": 3,
+   "correct": 1,
    "why": {
     "correct": "Mixed crop and livestock farming, common in the US Corn Belt and much of Europe, links crops and animals on one farm. It is intensive.",
     "options": [
      "Ranching grazes animals over large areas of grassland; it does not center on growing feed crops.",
+     "Right: crops and animals are raised together on one farm, and the crops feed the animals.",
      "Plantations grow one crop, usually in the tropics, for sale far away.",
-     "Shifting cultivation moves from plot to plot in a forest.",
-     "Right: crops and animals are raised together on one farm, and the crops feed the animals."
+     "Shifting cultivation moves from plot to plot in a forest."
     ]
    }
   },
@@ -482,17 +484,17 @@
    "options": [
     "Herding spreads to the places where farmland is most expensive",
     "Herding is found where heavy rain falls year-round",
-    "Herding is found mostly beside large cities",
-    "Land too dry for most crops can still feed grazing animals"
+    "Land too dry for most crops can still feed grazing animals",
+    "Herding is found mostly beside large cities"
    ],
-   "correct": 3,
+   "correct": 2,
    "why": {
     "correct": "Climate shapes the pattern. The dry belt from the Sahara to the Gobi has too little rain for most crops, so herding animals that move to new grass is a way of using it.",
     "options": [
      "Dry grasslands are among the cheapest land, which suits a system using so much of it.",
      "Year-round heavy rain describes rainforests, used for shifting cultivation and plantations.",
-     "Herds need huge areas, far from crowded places.",
-     "Right: where rain is too low and uncertain for crops, moving animals to grass is a way to farm the land."
+     "Right: where rain is too low and uncertain for crops, moving animals to grass is a way to farm the land.",
+     "Herds need huge areas, far from crowded places."
     ]
    }
   },

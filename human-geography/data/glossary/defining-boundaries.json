@@ -1,0 +1,23 @@
+{
+ "boundary": {
+  "def": "An invisible line, on land or at sea, that marks where the territory of one state or region ends and another begins. Also called a border."
+ },
+ "relict-boundary": {
+  "def": "A boundary that no longer works as a border but can still be seen in the cultural landscape, such as the old line between East and West Germany."
+ },
+ "superimposed-boundary": {
+  "def": "A boundary forced on an area by an outside power, often without regard for the peoples who live there, such as many borders in Africa drawn by European empires."
+ },
+ "subsequent-boundary": {
+  "def": "A boundary drawn after an area was settled, as the cultural landscape took shape, such as the boundary between China and Viet Nam."
+ },
+ "antecedent-boundary": {
+  "def": "A boundary drawn before many settlers lived in an area, such as the US and Canada line along 49° N in the west."
+ },
+ "geometric-boundary": {
+  "def": "A boundary drawn as a straight line, often along a line of latitude or longitude, such as 49° N between the United States and Canada."
+ },
+ "consequent-boundary": {
+  "def": "A boundary drawn to follow a cultural line, such as language or religion. Also called an ethnographic boundary. Example: India and Pakistan (1947)."
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "topic": "human-environment",
+ "hook": "The Netherlands is low and flat, and much of it lies below sea level. By the old idea of environmental determinism, the sea should decide where the Dutch can live. Instead, over centuries, they built dikes and pumped out water, and about a sixth of the country is land taken from the sea. The environment set the limit; people chose what to do about it.",
+ "prereq": [
+  {
+   "q": "Which describes a place's site?",
+   "options": [
+    "Its land, water and climate",
+    "Its links to other places",
+    "Its latitude and longitude",
+    "What people feel about it"
+   ],
+   "correct": 0,
+   "why": "Site is the physical character of the spot itself.",
+   "review": "spatial-concepts"
+  },
+  {
+   "q": "Which kind of data is an interview with a farmer?",
+   "options": [
+    "Qualitative",
+    "Quantitative",
+    "Remote sensing",
+    "A census"
+   ],
+   "correct": 0,
+   "why": "Interviews record words and experiences.",
+   "review": "data-sources"
+  }
+ ],
+ "figure": {
+  "figure": "human-environment-two-views",
+  "caption": "Environmental determinism said the environment decides; possibilism says it sets limits and people choose."
+ },
+ "chain": [
+  {
+   "cause": "The physical environment sets limits, such as steep slopes, dry land or a low coast",
+   "effect": "people face choices about how to use the land and its natural resources"
+  },
+  {
+   "cause": "People use culture and technology to adapt or reshape the land",
+   "effect": "land use changes: fields on slopes, land taken from the sea, cities in deserts"
+  },
+  {
+   "cause": "Resources are used faster than they can be replaced",
+   "effect": "the land, water or fish run down, which is not sustainable"
+  }
+ ],
+ "ideas": [
+  "<b>Natural resources</b> are things from nature that people use. Renewable ones (sunlight, wind, fish, water) can replace themselves; nonrenewable ones (oil, coal) are used up.",
+  "<b>Land use</b> is how people use an area of land: forest, farms, homes, roads, factories.",
+  "<b>Sustainability</b> means using resources so that people now meet their needs without harming the ability of future people to meet theirs.",
+  "<b>Environmental determinism</b> said the environment decides human behavior; it was rejected and was used to justify European rule. <b>Possibilism</b> says the environment sets limits and people choose."
+ ],
+ "misconception": {
+  "wrong": "Possibilism means people can do anything, whatever the environment.",
+  "right": "Possibilism still says the environment sets limits. People choose among the options it offers, using their culture and technology, and their choices can have costs, as at the Aral Sea."
+ },
+ "check": [
+  "hug-human-environment-1",
+  "hug-human-environment-2",
+  "hug-human-environment-3",
+  "hug-human-environment-8",
+  "hug-human-environment-9",
+  "hug-human-environment-10"
+ ],
+ "summary": "People and the environment shape each other. Natural resources can be renewable or nonrenewable, and how people use land changes the environment. Sustainability means using resources so they last for future users. Geographers once held environmental determinism, the idea that the environment decides how people live; they rejected it as wrong and as a cover for unequal rule, and moved to possibilism: the environment sets limits, and people choose."
+}

@@ -177,8 +177,8 @@
    "options": [
     "Country Y has too little farmland to feed its people",
     "Most people in Country Y work on farms",
-    "Country Y has passed the number of people its land can support",
-    "Few farmers work each km² of farmland, likely with many machines on large farms"
+    "Country Y has more people than its land can support with the farming it uses",
+    "Few farmers work each km² of farmland, likely using machines"
    ],
    "correct": 3,
    "why": {
@@ -202,10 +202,10 @@
    "q": "A student says, \"Country Z has the highest densities, so it has passed its carrying capacity.\" Why does the table NOT support this claim?",
    "stimulus": "distribution-consequences-s1",
    "options": [
-    "Carrying capacity depends on technology, resources and trade, which the table does not show",
+    "Carrying capacity depends on technology and trade, not shown here",
     "Country Z has the fewest farmers, so its density is low",
     "Carrying capacity is the same thing as arithmetic density",
-    "Density cannot be calculated from a population and a land area"
+    "A density is not something you can work out from a population and a land area"
    ],
    "correct": 0,
    "why": {
@@ -230,7 +230,7 @@
    "stimulus": "distribution-consequences-s2",
    "options": [
     "Hospitals are overcrowded because so many people live close together",
-    "Clinics serve few patients each, so some close and people travel far for care",
+    "Clinics have few patients, so some close and travel is long",
     "Health care is easier to reach because the roads have little traffic",
     "The province is building a third hospital to meet demand"
    ],
@@ -257,8 +257,8 @@
    "stimulus": "distribution-consequences-s2",
    "options": [
     "Both provinces have too few patients to keep their clinics open",
-    "The Capital Region has fewer people per square kilometer than the Northern Hills",
-    "Low density makes services hard to reach in the Northern Hills, while high density overloads them in the Capital Region",
+    "The Capital Region has fewer people per square kilometer than the Northern Hills, so its hospitals are quiet",
+    "Services are far away in the Northern Hills but overloaded in the Capital Region",
     "Density has no effect on health care in either province"
    ],
    "correct": 2,
@@ -285,7 +285,7 @@
    "options": [
     "National: the whole of Country A as one unit",
     "Global: countries around the world",
-    "Regional: a world region of several countries",
+    "Regional: a world region made up of several countries",
     "Local (subnational): two provinces of one country"
    ],
    "correct": 3,
@@ -311,7 +311,7 @@
    "options": [
     "Physiological density",
     "Arithmetic density",
-    "Agricultural density",
+    "Agricultural density (farmers)",
     "Carrying capacity"
    ],
    "correct": 0,
@@ -336,8 +336,8 @@
    "q": "Egypt has a moderate arithmetic density but a very high physiological density. What explains the difference?",
    "options": [
     "Most Egyptians work as farmers",
-    "Only a few percent of Egypt’s land can grow crops, almost all of it along the Nile",
-    "Egypt has more land that can grow crops than most countries",
+    "Very little of Egypt’s land can grow crops, and most of it is by the Nile",
+    "Egypt has more land that can grow crops than most countries in Africa and Asia",
     "Egypt’s population is spread evenly over its desert"
    ],
    "correct": 1,
@@ -387,7 +387,7 @@
    "practice": "1.C",
    "q": "The Netherlands has one of the highest population densities in Europe, yet it grows a large surplus of food for export. Which idea does this best show?",
    "options": [
-    "Agricultural density and carrying capacity are the same measure",
+    "Agricultural density and carrying capacity are two names for the same measure",
     "Physiological density is low wherever farms export food",
     "Dense countries have to buy their food from other countries",
     "High density does not mean an area has passed its carrying capacity"
@@ -413,9 +413,9 @@
    "practice": "2.C",
    "q": "A government plans to build a new hospital. Its province has very low density, with villages far apart. Which problem is most likely?",
    "options": [
-    "Many patients would live far from the hospital, so travel times would be long",
+    "Many patients would live far away, so trips would be long",
     "The hospital would be too crowded on its first day of opening",
-    "Housing near the hospital would become too expensive for workers",
+    "Housing near the hospital would become too expensive for its nurses and other workers",
     "There would be too much traffic on roads near the hospital"
    ],
    "correct": 0,
@@ -525,10 +525,10 @@
    "practice": "1.B",
    "q": "Why is physiological density often a better measure than arithmetic density of the pressure a population puts on its land?",
    "options": [
-    "It counts only the farmers, who do most of the work on the land",
+    "It counts just the farmers, who do most of the work on the land",
     "It is the number of people an area can support with its technology",
-    "It uses all the land in the country, including the cities",
-    "It counts only land that can grow crops, so deserts and ice do not lower it"
+    "It uses the whole land area of the country, including the cities",
+    "It counts the land that feeds people, leaving out deserts and ice"
    ],
    "correct": 3,
    "why": {

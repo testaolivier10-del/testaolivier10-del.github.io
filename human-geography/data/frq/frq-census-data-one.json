@@ -1,0 +1,190 @@
+{
+ "id": "frq-census-data-one",
+ "type": "one",
+ "points": 7,
+ "title": "A census map of one country: scale, pattern and limits",
+ "units": [
+  "geo-skills",
+  "unit-1"
+ ],
+ "topics": [
+  "skills-scale",
+  "data-in-decisions",
+  "scales-of-analysis"
+ ],
+ "practices": [
+  "3.B",
+  "3.E",
+  "3.F",
+  "5.A",
+  "5.B",
+  "5.C"
+ ],
+ "stimuli": [
+  {
+   "kind": "map",
+   "title": "Homes with piped water by province, Country A, 2020 census (invented)",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Shaded map of Country A by province from an invented 2020 census: the share of homes with piped water is 80% or more in the Capital Region and Lake District, lower on the coast and plains, and under 40% in the Western Uplands and Southern Forest",
+    "legendTitle": "Homes with piped water (percent, invented 2020 census)",
+    "classes": [
+     "Under 40%",
+     "40% to 59%",
+     "60% to 79%",
+     "80% or more"
+    ],
+    "values": {
+     "capital": 3,
+     "northeast": 3,
+     "coast": 2,
+     "east": 2,
+     "central": 2,
+     "north": 1,
+     "west": 0,
+     "south": 0
+    },
+    "marks": [
+     {
+      "at": [
+       370,
+       255
+      ],
+      "text": "Capital Region"
+     },
+     {
+      "at": "west",
+      "text": "Western Uplands"
+     },
+     {
+      "at": "south",
+      "text": "Southern Forest"
+     },
+     {
+      "at": "northeast",
+      "text": "Lake District"
+     }
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the scale of analysis of the data shown on the map.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names the local (subnational or provincial) scale.",
+     "accept": [
+      "local",
+      "subnational",
+      "provincial scale"
+     ]
+    }
+   ],
+   "sample": "The local (subnational) scale: there is one value for each province."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe the pattern of homes with piped water shown on the map.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes where shares are high and low with named provinces from the map.",
+     "accept": [
+      "highest in the Capital Region and Lake District, lowest in the Western Uplands and Southern Forest",
+      "high in the center and northeast, low in the west and south"
+     ]
+    }
+   ],
+   "sample": "The share of homes with piped water is highest, 80% or more, in the Capital Region and the Lake District, and lowest, under 40%, in the Western Uplands and the Southern Forest."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain one reason why the share of homes with piped water could be higher in the Capital Region than in the Western Uplands.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives a reason with its link, such as more people and money close together, so pipes reach more homes at lower cost.",
+     "accept": [
+      "many homes packed close together, so each kilometer of pipe serves more homes",
+      "the capital has more government money and services, so networks were built there first",
+      "steep, high land in the uplands makes pipes costly, so fewer were built"
+     ]
+    }
+   ],
+   "sample": "In the Capital Region many homes are close together, so each kilometer of pipe serves many households, which makes building a network cheaper than in the scattered villages of the Western Uplands."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain how the national government of Country A could use these census data to make a decision.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a decision and links it to what the data show.",
+     "accept": [
+      "send money for new pipes to the provinces under 40%, because the map shows where need is greatest",
+      "set priorities for water projects by province, so funds go where access is lowest"
+     ]
+    }
+   ],
+   "sample": "The government could send most of its water budget to the Western Uplands and Southern Forest, because the census shows fewer than 40% of homes there have piped water, so new pipes would reach the most homes in need."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain one limitation of census data such as these for planning water projects.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a limitation and why it matters for planning.",
+     "accept": [
+      "the census is from 2020, so homes built since then are missing",
+      "some people are undercounted, so needs may be larger than shown",
+      "one value per province hides villages that differ, so projects may miss them"
+     ]
+    }
+   ],
+   "sample": "The census was taken in 2020, so it misses homes built since then, which means new neighborhoods without pipes may not appear in the data."
+  },
+  {
+   "label": "F",
+   "verb": "compare",
+   "prompt": "Compare what this map shows with what one national figure for piped water in Country A would show.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both: the map shows differences between provinces, whereas a national figure gives one average that hides them.",
+     "accept": [
+      "the map shows a gap between provinces, while a national figure hides it",
+      "both use the same census, but one is aggregated"
+     ]
+    }
+   ],
+   "sample": "The map shows that access ranges from under 40% in the Western Uplands to over 80% in the Capital Region, whereas one national figure would give a single average that hides those differences."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which this map could be used to decide which villages within the Western Uplands need new water pipes.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree first, then explains that province data cannot show villages inside a province.",
+     "accept": [
+      "low degree: one value for the whole province, so it cannot show which villages lack pipes",
+      "small extent: it shows the province needs help but not where within it"
+     ]
+    }
+   ],
+   "sample": "To a low degree: the map gives one value for the whole Western Uplands, so it shows the province needs pipes but cannot show which villages inside it lack them; village-level data would be needed."
+  }
+ ]
+}

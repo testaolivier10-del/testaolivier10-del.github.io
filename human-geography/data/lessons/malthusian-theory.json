@@ -1,0 +1,71 @@
+{
+ "topic": "malthusian-theory",
+ "hook": "In 1798, an English clergyman named Thomas Malthus warned that people would always have more children than the land could feed. World population was then about 1 billion. By 2024 it was about 8.2 billion (UN, 2024), and food output per person had risen, not fallen. Was Malthus wrong, or just early?",
+ "prereq": [
+  {
+   "q": "What is carrying capacity?",
+   "options": [
+    "How many people an area can support without damage",
+    "The number of people per square kilometer",
+    "The number of farmers per square kilometer of farmland",
+    "The share of land that can grow crops"
+   ],
+   "correct": 0,
+   "why": "Carrying capacity is how many people an area can support; it depends on technology and trade.",
+   "review": "distribution-consequences"
+  },
+  {
+   "q": "In which stage of the demographic transition model does the birth rate start to fall?",
+   "options": [
+    "Stage 3",
+    "Stage 1",
+    "Stage 2",
+    "Stage 5"
+   ],
+   "correct": 0,
+   "why": "Deaths fall in stage 2; births start to fall in stage 3.",
+   "review": "transition-model"
+  }
+ ],
+ "figure": {
+  "figure": "malthusian-theory-curves",
+  "caption": "Malthus’s idea: population grows geometrically (1, 2, 4, 8) and food arithmetically (1, 2, 3, 4), so population outruns food."
+ },
+ "chain": [
+  {
+   "cause": "Population grows geometrically while food grows arithmetically",
+   "effect": "population outruns the food supply"
+  },
+  {
+   "cause": "There is not enough food for everyone",
+   "effect": "famine, disease and war (checks) raise deaths"
+  },
+  {
+   "cause": "New seeds, fertilizer and machines raise crop yields",
+   "effect": "food grows faster than Malthus expected, which weakens his theory"
+  },
+  {
+   "cause": "Families choose to have fewer children as countries change",
+   "effect": "population growth slows, another critique of Malthus"
+  }
+ ],
+ "ideas": [
+  "<b>Malthusian theory</b> (Thomas Malthus, 1798): population grows faster than food, so famine, disease or war (checks) follow unless people have fewer children.",
+  "<b>Neo-Malthusians</b>, such as Paul Ehrlich (1968), apply the worry to water, energy and the environment.",
+  "Critiques: technology raised food output; fertility fell as countries changed; hunger comes mostly from poverty, conflict and how food is shared; trade moves food between places.",
+  "The idea links to carrying capacity: technology and trade can raise how many people an area can support."
+ ],
+ "misconception": {
+  "wrong": "Hunger in a country proves that its population has outgrown its food supply, as Malthus predicted.",
+  "right": "Hunger often comes from poverty, prices, conflict and how food is shared. In the Bengal famine of 1943, food was available, but many people could not afford it."
+ },
+ "check": [
+  "hug-malthusian-theory-1",
+  "hug-malthusian-theory-3",
+  "hug-malthusian-theory-4",
+  "hug-malthusian-theory-5",
+  "hug-malthusian-theory-8",
+  "hug-malthusian-theory-11"
+ ],
+ "summary": "Thomas Malthus argued in 1798 that population grows faster than food, so checks such as famine, disease and war would follow. Neo-Malthusians extend the worry to other resources. Three critiques stand out: technology raised food output, fertility fell as countries changed, and hunger depends on access to food more than total supply."
+}

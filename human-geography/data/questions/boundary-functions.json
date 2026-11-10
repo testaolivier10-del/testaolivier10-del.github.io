@@ -1,0 +1,510 @@
+{
+ "stimuli": {
+  "boundary-functions-s1": {
+   "kind": "image",
+   "title": "Sea zones off one coast",
+   "image": {
+    "figure": "boundary-functions-zones-lettered",
+    "alt": "A strip of sea running out from a coast in four bands lettered A to D. Band A runs from the coast to 12 nautical miles, band B from 12 to 24, band C from 24 to 200 and band D lies beyond 200 nautical miles. Not to scale.",
+    "caption": "Distances are in nautical miles (1 nautical mile is about 1.85 km), measured from the coast. Not to scale."
+   }
+  },
+  "boundary-functions-s2": {
+   "kind": "text",
+   "title": "The life of one boundary (invented)",
+   "text": "<p>In 1903, a treaty between Country K and Country L said their border would follow \"the main channel of the Sela River, then a straight line east to Mount Tor.\" In 1906, surveyors drew the line on official maps. In 1910, workers set stone markers along it every kilometer. Since 1950, both states have run customs posts where roads cross it, and in 2024 they agreed new rules for checking trucks.</p><p>Invented for practice.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-boundary-functions-1",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which band in the drawing is the territorial sea, where the coastal state rules much as it does on land?",
+   "options": [
+    "Band A",
+    "Band B",
+    "Band C",
+    "Band D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Under the law of the sea, the territorial sea reaches up to 12 nautical miles from the coast: band A.",
+    "options": [
+     "Right: Band A runs from the coast out to 12 nautical miles.",
+     "Band B, from 12 to 24 nautical miles, is the contiguous zone.",
+     "Band C lies inside the exclusive economic zone.",
+     "Band D, beyond 200 nautical miles, is the high seas."
+    ]
+   },
+   "stimulus": "boundary-functions-s1"
+  },
+  {
+   "id": "hug-boundary-functions-2",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "A fishing boat from another state is caught fishing without permission 150 nautical miles from this coast. In which band is it, and why does that matter?",
+   "options": [
+    "Band A, where foreign ships are banned from sailing",
+    "Band D, where any state may fish freely",
+    "Band B, where the coastal state checks for smuggling",
+    "Band C, where the fish belong to the coastal state"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Read the distances: 150 nautical miles is between 24 and 200, in band C. The exclusive economic zone gives the coastal state the rights to fish, oil, gas and minerals there.",
+    "options": [
+     "Band A ends at 12 nautical miles, and foreign ships may pass through it peacefully.",
+     "Band D begins beyond 200 nautical miles.",
+     "Band B ends at 24 nautical miles.",
+     "Right: At 150 nautical miles the boat is inside the exclusive economic zone."
+    ]
+   },
+   "stimulus": "boundary-functions-s1"
+  },
+  {
+   "id": "hug-boundary-functions-3",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "In which band may ships and boats of every state fish and sail freely, because no state has rights there?",
+   "options": [
+    "Band A",
+    "Band B",
+    "Band D",
+    "Band C"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Band D lies beyond 200 nautical miles: the high seas, or international waters, where every state may sail and fish.",
+    "options": [
+     "Band A is the territorial sea, ruled by the coastal state.",
+     "In band B the coastal state can enforce customs and immigration laws.",
+     "Right: Beyond 200 nautical miles lie the high seas, open to all states.",
+     "In band C the fish and seabed resources belong to the coastal state."
+    ]
+   },
+   "stimulus": "boundary-functions-s1"
+  },
+  {
+   "id": "hug-boundary-functions-4",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.E",
+   "q": "The drawing shows one coast with open sea in front of it. What does it NOT show?",
+   "options": [
+    "How far the territorial sea reaches from the coast",
+    "What happens when two coasts are under 400 nm apart",
+    "Where the high seas begin",
+    "That the bands are measured from the coast"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Every band is measured from one coast. Where two states face each other across less than 400 nautical miles of sea, their zones overlap and they must agree on a line, often halfway between.",
+    "options": [
+     "Band A shows that: out to 12 nautical miles.",
+     "Right: With two coasts close together, the 200-mile zones overlap and must be split.",
+     "Band D shows that: beyond 200 nautical miles.",
+     "The distances start at the coastline."
+    ]
+   },
+   "stimulus": "boundary-functions-s1"
+  },
+  {
+   "id": "hug-boundary-functions-5",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "According to the passage, in which year was the boundary demarcated?",
+   "options": [
+    "1910",
+    "1903",
+    "1906",
+    "1950"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Boundaries are defined in words (1903), delimited on maps (1906), demarcated on the ground (1910) and administered day to day (since 1950).",
+    "options": [
+     "Right: Demarcated means marked on the ground, and the stone markers went in that year.",
+     "In 1903 the treaty defined the boundary in words.",
+     "In 1906 surveyors delimited it on maps.",
+     "From 1950 the states administered it with customs posts."
+    ]
+   },
+   "stimulus": "boundary-functions-s2"
+  },
+  {
+   "id": "hug-boundary-functions-6",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "The 2024 rules for checking trucks are an example of which stage in the life of a boundary?",
+   "options": [
+    "Definition",
+    "Delimitation",
+    "Demarcation",
+    "Administration"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Administration is how states run a boundary: customs posts, checks and rules for crossing.",
+    "options": [
+     "Definition happened in the 1903 treaty.",
+     "Delimitation means drawing the line on maps.",
+     "Demarcation means marking the line on the ground.",
+     "Right: Running the boundary day to day, at crossings, is administration."
+    ]
+   },
+   "stimulus": "boundary-functions-s2"
+  },
+  {
+   "id": "hug-boundary-functions-7",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "q": "The Sela River slowly shifts its main channel over the years. Which kind of dispute is the treaty's wording most likely to cause?",
+   "options": [
+    "A dispute over which state owns the top of Mount Tor",
+    "A dispute over the language spoken at customs posts",
+    "A dispute over where exactly the line runs",
+    "A dispute over whether the stone markers are relict"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A boundary defined by a river that moves can lead to a locational dispute: the states disagree about where exactly the line now is. The United States and Mexico had one over the Rio Grande, settled in 1963.",
+    "options": [
+     "The treaty only uses Mount Tor as an end point.",
+     "The passage says nothing about language.",
+     "Right: If the line follows a moving channel, its location changes and can be argued over.",
+     "Markers on a working border are not relict."
+    ]
+   },
+   "stimulus": "boundary-functions-s2"
+  },
+  {
+   "id": "hug-boundary-functions-8",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Two island states face each other across 280 nautical miles of sea. Each claims an exclusive economic zone of 200 nautical miles. How many nautical miles wide is the strip where their claims overlap?",
+   "why": {
+    "correct": "Together the two claims reach $200 + 200 = 400$ nautical miles, but only 280 nautical miles of sea lie between them, so the overlap is $400 - 280 = 120$ nautical miles."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        200,
+        200
+       ]
+      },
+      280
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        280,
+        200
+       ]
+      },
+      "why": "80 is the gap left by one claim alone. Add both claims (400), then subtract the distance (280)."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        400,
+        200
+       ]
+      },
+      "why": "Both claims together reach 400 nautical miles; subtract the 280 nautical miles of sea, not 200."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-boundary-functions-9",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "One nautical mile is about 1.85 km. About how many kilometers wide is a 200-nautical-mile exclusive economic zone? Round to the nearest 10 km.",
+   "why": {
+    "correct": "$200 \\times 1.85 = 370$ km."
+   },
+   "numeric": {
+    "unit": "km",
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        200,
+        1.85
+       ]
+      },
+      -1
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          200,
+          1.85
+         ]
+        },
+        -1
+       ]
+      },
+      "why": "You divided. A nautical mile is longer than a kilometer, so the number of kilometers is larger: multiply 200 by 1.85."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-boundary-functions-10",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Place the zones of the law of the sea in order from the coast outward.",
+   "model": {
+    "layout": "rings",
+    "title": "Sea zones from the coast outward",
+    "center": "Coast",
+    "slots": [
+     {
+      "id": "r1",
+      "name": "Ring 1 (from the coast)"
+     },
+     {
+      "id": "r2"
+     },
+     {
+      "id": "r3"
+     },
+     {
+      "id": "r4",
+      "name": "Ring 4 (farthest out)"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "ts",
+      "text": "Territorial sea (to 12 nm)"
+     },
+     {
+      "id": "cz",
+      "text": "Contiguous zone (to 24 nm)"
+     },
+     {
+      "id": "eez",
+      "text": "Exclusive economic zone (to 200 nm)"
+     },
+     {
+      "id": "hs",
+      "text": "High seas"
+     },
+     {
+      "id": "tz",
+      "text": "Transition zone"
+     }
+    ],
+    "key": {
+     "r1": "ts",
+     "r2": "cz",
+     "r3": "eez",
+     "r4": "hs"
+    },
+    "slips": [
+     {
+      "piece": "eez",
+      "slot": "r1",
+      "why": "The exclusive economic zone starts at the edge of the territorial sea; the coastal state rules the first 12 nautical miles much as it rules land."
+     },
+     {
+      "piece": "tz",
+      "slot": "r2",
+      "why": "A transition zone is a blurred edge between regions, not a sea zone."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Territorial sea to 12 nautical miles, contiguous zone to 24, exclusive economic zone to 200, then the high seas."
+   }
+  },
+  {
+   "id": "hug-boundary-functions-11",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Since 1953, a strip of land about 4 km wide and about 250 km long has separated North Korea and South Korea, with no armed forces allowed inside it. What is this strip?",
+   "options": [
+    "A relict boundary",
+    "An exclusive economic zone",
+    "A demilitarized zone",
+    "A choke point"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The Korean Demilitarized Zone (DMZ) was set up by the 1953 armistice. It is one of the most closed boundaries in the world.",
+    "options": [
+     "The Korean boundary still works as a closed border.",
+     "That is a sea zone, not a strip of land.",
+     "Right: A strip where armed forces are not allowed, set up by agreement after fighting.",
+     "A choke point is a narrow sea passage on a trade route."
+    ]
+   }
+  },
+  {
+   "id": "hug-boundary-functions-12",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "The Berlin Conference of 1884 and 1885 set rules for how European powers could claim land in Africa. What was its main effect on the map of Africa?",
+   "options": [
+    "Each African people received its own independent state",
+    "Borders were drawn by outside powers, often across African peoples",
+    "African borders were set to follow language lines",
+    "European powers agreed to leave Africa alone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "No African rulers took part. Over the following decades, European powers drew borders that grouped some peoples together and split others, and most of those borders became the borders of independent states.",
+    "options": [
+     "African peoples were not represented, and few got their own state.",
+     "Right: The race for Africa drew superimposed borders that later states kept.",
+     "Most borders ignored language and other cultural lines.",
+     "They agreed on rules for dividing it."
+    ]
+   }
+  },
+  {
+   "id": "hug-boundary-functions-13",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How is a delimited boundary different from a demarcated one?",
+   "options": [
+    "Delimited is drawn on a map; demarcated is marked on the ground",
+    "Delimited is marked on the ground; demarcated is drawn on a map",
+    "Delimited is defined in a treaty; demarcated is guarded by soldiers",
+    "Delimited is a land boundary; demarcated is a sea boundary"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "States define a boundary in words, delimit it on maps, demarcate it with markers on the ground and administer it day to day.",
+    "options": [
+     "Right: Maps come first, then posts, fences or walls on the ground.",
+     "This swaps the two.",
+     "Defining in words comes before delimiting; guarding is administration.",
+     "Both words apply on land and at sea."
+    ]
+   }
+  },
+  {
+   "id": "hug-boundary-functions-14",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Inside most of the European Union's Schengen Area, people cross between member states with no passport checks. How does this change what the boundaries do?",
+   "options": [
+    "The boundaries no longer exist on any map",
+    "The boundaries now block most trade between the member states",
+    "The boundaries have become demilitarized zones",
+    "They still divide states but barely slow people down"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Boundaries shape interaction. An open boundary in the Schengen Area lets people and goods flow freely, while a closed one like Korea's stops almost all contact.",
+    "options": [
+     "The boundaries are still on maps and in law.",
+     "Open crossings make trade easier, not harder.",
+     "A DMZ is a strip with no armed forces, like Korea's.",
+     "Right: The lines remain in law, but crossing them is easy."
+    ]
+   }
+  },
+  {
+   "id": "hug-boundary-functions-15",
+   "unit": "unit-4",
+   "topic": "boundary-functions",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "China, Viet Nam, the Philippines, Malaysia, Brunei and Taiwan all claim some of the small islands and reefs of the South China Sea. Why do states care so much about tiny features at sea?",
+   "options": [
+    "The features have large cities that pay taxes to the state that owns them",
+    "Ships may legally stop at these features and nowhere else nearby",
+    "Holding them can bring rights to nearby fish, oil and gas",
+    "The law of the sea gives each reef a 200-mile zone of its own"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Under the law of the sea, land can bring rights to the waters around it, so control of islands can mean control of fishing grounds and possible oil and gas. A 2016 arbitral ruling went against China's broad claim, and China rejects that ruling.",
+    "options": [
+     "Most of the features have few or no permanent residents.",
+     "Ships can stop in many places.",
+     "Right: A claim to land at sea can support a claim to the waters around it.",
+     "Under the law of the sea, rocks that cannot support people get no exclusive economic zone."
+    ]
+   }
+  }
+ ]
+}
