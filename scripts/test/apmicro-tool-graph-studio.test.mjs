@@ -110,7 +110,7 @@ test('graph-studio: planted economics mistakes in the data are caught', () => {
   assert.match(plant('tax-shift', s => { s.shifts[0].steps = 1; }), /policy\.amount/);
   assert.match(plant('mono-profit', s => { s.point.key.at = 'mr=mc'; }), /named point profit-max/);
   assert.match(plant('sd-along-d', s => { s.along = 'S'; }), /movement along D/);
-  assert.match(plant('sd-income', s => { s.cause = 'Incomes rise — a lot.'; }), /em or en dash/);
+  assert.match(plant('sd-income', s => { s.cause = 'Incomes rise ' + String.fromCharCode(8212) + ' a lot.'; }), /em or en dash/);
   assert.match(plant('sd-income', s => { s.cause = 'The price of {fruit} rises.'; }), /\{fruit\} has no word/);
   assert.match(plant('pc-loss', s => { s.check[0].why.pop(); }), /one reason per option/);
   const d = copy(); d.scenarios.find(s => s.id === 'sd-tech').shifter = 'magic';

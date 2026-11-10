@@ -111,7 +111,7 @@
         '<div class="fm-row fm-mono" hidden><div class="fm-dslider"></div><div class="fm-shows" role="group" aria-label="Show areas"><button type="button" class="tchip fm-show on" data-a="profit" aria-pressed="true">Profit</button><button type="button" class="tchip fm-show" data-a="cs" aria-pressed="false">Consumer surplus</button><button type="button" class="tchip fm-show" data-a="dwl" aria-pressed="false">Deadweight loss</button></div></div>' +
         '<div class="fm-row fm-mcomp" hidden><div class="fm-btns"><button type="button" class="btn-press sm fm-mlong">Run the long run</button><button type="button" class="bt-btn fm-mreset">Back to the short run</button></div></div>' +
       '</div><div class="fm-say"></div><div class="fm-nums"></div>' +
-      T.moreHtml('<div class="fm-handles"><p class="bt-small">Move the market curves yourself (perfect competition): tab to a handle and use the arrow keys, or press it.</p>' +
+      T.moreHtml('<div class="fm-handles"><p class="bt-small">Move the market curves yourself (perfect competition): press a button, or tab to it and use the left and right arrow keys (Home starts over).</p>' +
         '<div class="fm-hrow"><button type="button" class="bt-btn fm-h" data-c="D" data-v="-0.5">Demand left</button><button type="button" class="bt-btn fm-h" data-c="D" data-v="0.5">Demand right</button>' +
         '<button type="button" class="bt-btn fm-h" data-c="S" data-v="-0.5">Supply left</button><button type="button" class="bt-btn fm-h" data-c="S" data-v="0.5">Supply right</button></div></div>', 'move the market curves yourself');
     var fig = host.querySelector('.fm-fig'), svgEl = host.querySelector('.fm-svg'), say = T.announcer(host.querySelector('.fm-live'));
@@ -285,6 +285,13 @@
     select.addEventListener('change', function(){ if(select.value) shock(select.value); });
     host.querySelectorAll('.fm-h').forEach(function(b){
       b.addEventListener('click', function(){ if(st.kind !== 'pc') setKind('pc'); nudge(b.getAttribute('data-c'), +b.getAttribute('data-v')); });
+      // arrow keys move the same curve either way; Home puts the market back
+      b.addEventListener('keydown', function(e){
+        var c = b.getAttribute('data-c'), v = /Right|Up/.test(e.key) ? 0.5 : /Left|Down/.test(e.key) ? -0.5 : null;
+        if(e.key === 'Home'){ e.preventDefault(); resetPc(); return; }
+        if(v === null) return;
+        e.preventDefault(); if(st.kind !== 'pc') setKind('pc'); nudge(c, v);
+      });
     });
     fig.addEventListener('click', function(e){ var t = e.target.closest('.fm-tab'); if(t) setPanel(t.getAttribute('data-p')); });
     function fit(){ fig.classList.toggle('is-narrow', fig.clientWidth > 0 && fig.clientWidth < 600); }

@@ -55,7 +55,7 @@ export const SHIFTER = {
   'lorenz:toward': [['LC', 'toward']], 'lorenz:away': [['LC', 'away']], 'lorenz:area': 'area'
 };
 /* A corrective tax or subsidy closes the whole gap: its steps equal ext.gap. */
-const DASH = /[—–]/;
+const DASH = new RegExp('[' + String.fromCharCode(8212, 8211) + ']');
 
 /* -------------------------------------------- the data file itself */
 export function check(data, map) {
