@@ -2625,16 +2625,16 @@
    "aliases": [
     "scales of analysis"
    ],
-   "taughtIn": "scales-of-analysis",
+   "taughtIn": "skills-scale",
    "dependsOn": [
-    "map"
+    "map-scale"
    ]
   },
   {
    "id": "global-scale",
    "term": "global scale",
    "aliases": [],
-   "taughtIn": "scales-of-analysis",
+   "taughtIn": "skills-scale",
    "dependsOn": [
     "scale-of-analysis"
    ]
@@ -2643,7 +2643,7 @@
    "id": "regional-scale",
    "term": "regional scale",
    "aliases": [],
-   "taughtIn": "scales-of-analysis",
+   "taughtIn": "skills-scale",
    "dependsOn": [
     "scale-of-analysis"
    ]
@@ -2652,7 +2652,7 @@
    "id": "national-scale",
    "term": "national scale",
    "aliases": [],
-   "taughtIn": "scales-of-analysis",
+   "taughtIn": "skills-scale",
    "dependsOn": [
     "scale-of-analysis"
    ]
@@ -2662,6 +2662,18 @@
    "term": "local scale",
    "aliases": [
     "subnational"
+   ],
+   "taughtIn": "skills-scale",
+   "dependsOn": [
+    "scale-of-analysis"
+   ]
+  },
+  {
+   "id": "aggregation",
+   "term": "aggregated data",
+   "aliases": [
+    "aggregation",
+    "aggregate data"
    ],
    "taughtIn": "scales-of-analysis",
    "dependsOn": [
@@ -4487,7 +4499,7 @@
    "aliases": [
     "irrigated"
    ],
-   "taughtIn": "agriculture-consequences",
+   "taughtIn": "agriculture-intro",
    "dependsOn": [
     "agriculture"
    ]
@@ -4509,7 +4521,7 @@
     "GMOs",
     "genetically modified"
    ],
-   "taughtIn": "agriculture-challenges",
+   "taughtIn": "green-revolution",
    "dependsOn": [
     "agriculture"
    ]
