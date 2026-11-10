@@ -198,7 +198,18 @@ function premiumPage() {
         '@type': 'Product', name: `${COURSES[k].name} Premium`, url: `${url}#${k}`,
         description: `Premium for ${COURSES[k].name}: ${COURSES[k].premium.join('; ')}.`,
         brand: { '@type': 'Brand', name: 'LevlPrep' },
-        offers: courseOffers(k),
+        image: `${ORIGIN}/assets/og-image.png`,
+        // Search Console flagged these Products for missing fields. A pass is a
+        // digital product: always available, refundable in full for 7 days.
+        offers: courseOffers(k).map((o) => ({
+          ...o,
+          availability: 'https://schema.org/InStock',
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy', applicableCountry: 'US',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            merchantReturnDays: 7, returnFees: 'https://schema.org/FreeReturn',
+          },
+        })),
       })),
     ],
   };

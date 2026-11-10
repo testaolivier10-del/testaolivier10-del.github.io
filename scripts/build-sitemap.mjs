@@ -18,6 +18,8 @@ import { execFileSync } from 'node:child_process';
 import { join, posix } from 'node:path';
 import { isNoindex } from './lib/app-pages.mjs';
 import { COURSES } from './lib/courses.mjs';
+import { createHash } from 'node:crypto';
+import { premiumCourse } from './vault/rules.mjs';
 
 const OUT = 'sitemap.xml';
 const check = process.argv.includes('--check');
@@ -78,22 +80,49 @@ function priorityFor(path) {
   return '0.5';
 }
 
-/* The date of the commit that last touched the file. Falls back to today for
-   a page that is new and not yet committed, which is the honest answer for a
-   file whose history is "now". The author date (%as), not the committer date:
-   a rebase or cherry-pick rewrites the committer date of every commit it
-   moves, which would stamp untouched pages with the day of the merge. */
+/* When the page's own content last changed (site health 2026-11-10).
+
+   This used to be the date of the last commit that touched the file. A
+   sitewide change (a new header, a renamed stylesheet) touches every page, so
+   all 2,696 entries said "changed" on the same day, twice in one week. Search
+   Console showed the result: 98% of Google's few crawls went to rechecking
+   pages it already had and 2% to new ones. A lastmod that is not about the
+   content is worse than none.
+
+   Now each page's readable text (no head, scripts, styles, header, nav or
+   footer) is hashed, and scripts/sitemap-dates.json remembers the hash and
+   the day it last changed. Same text, same date. A page seen for the first
+   time takes the date it already had in sitemap.xml, else its last commit.
+   The file is only written by a plain run, never by --check. */
+const DATES = 'scripts/sitemap-dates.json';
 const today = new Date().toISOString().slice(0, 10);
-function lastModified(file) {
+let dates = {};
+try { dates = JSON.parse(readFileSync(DATES, 'utf8')); } catch { /* first run */ }
+const previous = {};
+try {
+  for (const m of readFileSync(OUT, 'utf8').matchAll(/<loc>([^<]*)<\/loc>\s*<lastmod>([^<]*)<\/lastmod>/g)) previous[m[1]] = m[2];
+} catch { /* no sitemap yet */ }
+
+export function contentHash(html) {
+  const body = html.replace(/^[\s\S]*?<body[^>]*>/i, '')
+    .replace(/<(script|style|header|nav|footer)\b[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return createHash('sha1').update(body).digest('hex').slice(0, 12);
+}
+function gitDate(file) {
   try {
-    const out = execFileSync('git', ['log', '-1', '--format=%as', '--', file], {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
-    }).trim();
-    return out || today;
+    return execFileSync('git', ['log', '-1', '--format=%as', '--', file], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim() || today;
   } catch {
     return today;
   }
+}
+const seen = {};
+function lastModified(file, html, loc) {
+  const hash = contentHash(html);
+  const was = dates[file];
+  const date = was && was[0] === hash ? was[1] : was ? today : previous[loc] || gitDate(file);
+  seen[file] = [hash, date];
+  return date;
 }
 
 const entries = [];
@@ -118,7 +147,13 @@ for (const raw of walk('.')) {
   // the one listed, so this copy is not submitted again.
   const top = file.includes('/') ? file.split('/')[0] : '';
   if (top && new URL(m[1]).pathname.split('/')[1] !== top) continue;
-  entries.push({ loc: m[1], path: new URL(m[1]).pathname, lastmod: lastModified(file) });
+  // A Premium lesson is served to the public as a stub with a title and one
+  // sentence (scripts/build-deploy.mjs), which also carries noindex. Listing
+  // it would ask Google to spend its crawling on a page with nothing to rank
+  // (751 of 2,700 entries on 2026-11-10). The free notes page for the same
+  // topic is the one written to be found.
+  if (premiumCourse(file, html)) continue;
+  entries.push({ loc: m[1], path: new URL(m[1]).pathname, lastmod: lastModified(file, html, m[1]) });
 }
 
 if (problems.length) {
@@ -168,5 +203,6 @@ if (check) {
   console.log(`${OUT} lists all ${entries.length} pages.`);
 } else {
   writeFileSync(OUT, xml);
+  writeFileSync(DATES, JSON.stringify(Object.fromEntries(Object.keys(seen).sort().map((k) => [k, seen[k]])), null, 0).replace(/\],/g, '],\n') + '\n');
   console.log(`${entries.length} URLs -> ${OUT}`);
 }

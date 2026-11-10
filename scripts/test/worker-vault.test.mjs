@@ -107,5 +107,7 @@ test('a stub keeps the head, drops every script but the vault loader, and holds 
   assert.match(s, /<body data-topic="t">/);
   assert.match(s, /<h1>Big &amp; small<\/h1>/);
   assert.match(s, /What it teaches\./);
+  assert.match(s, /<meta name="robots" content="noindex, follow">\s*<style>/);
+  assert.equal(s.match(/name="robots"/g).length, 1);
   assert.match(s, /src="\/assets\/vault\.js" data-course="apbio" data-path="bio\/lessons\/t\.html"/);
 });
