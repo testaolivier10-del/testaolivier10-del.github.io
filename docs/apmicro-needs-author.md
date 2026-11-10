@@ -148,6 +148,8 @@ From `docs/apmicro-reviews/launch.md`.
 1. **Tool overlap scan at 360** (a box test, not ink): E1 and E2 when the long run returns to the same point, P1 and
    P2, W1 and W2 axis marks 20 units apart whose font boxes still touch, D1 and MSB in the externality fix drill, ATC
    and AVC end labels in the cost lab's Explore with a large fixed cost; looked at, readable. The factor lab's
-   monopsony drill graph sits under the stage's top edge on a phone, so SL reads as clipped there.
+   monopsony drill graph sits under the stage's top edge on a phone, so SL reads as clipped there. In the externality
+   lab's fix drill, after a wrong attempt and Show the answer, up to five long labels share the top right of a phone
+   graph and a faded dashed curve can cross one; readable, not clean.
 2. **Shared, for the lead**: Macro's `mac-graph.js` has the same label width estimate (9 px a character) and no
    phone sizing; not changed (Macro stays byte-identical).

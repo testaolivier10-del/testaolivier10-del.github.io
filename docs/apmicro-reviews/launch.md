@@ -110,3 +110,11 @@ checklist.
 - Owner asked for the course to go live with Premium on sale. The lead made the Polar product (id
   `71628aac-b0a8-415c-bb35-f1f1d35ea6bf`, $25 one-time) and set `micro-2027` in the Worker's `POLAR_PRODUCTS`; the
   lead applies the migration and grants owner access. `onSale: false` removed, `sw.js` v120, spec section 9, CLAUDE.md.
+
+## 9. Final CI (2026-11-10)
+
+- Third full `BROWSER=1 scripts/ci-local.sh` on `473122e6` (Premium on sale, per-character label widths, band art):
+  **ALL PASS** (log `/tmp/micl/ci3.log`). Tools rewalked at 360 with a Premium stub (cost-lab, firm-market and
+  externality-lab are locked for a visitor now): every drill finishes, no console error.
+- Tried and reverted: old curve paths as soft label obstacles (the externality fix drill got worse), and more letter
+  obstacles for small lettered cells (no room in those cells; letters readable as they are).
