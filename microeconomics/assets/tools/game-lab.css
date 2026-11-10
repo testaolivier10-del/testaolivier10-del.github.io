@@ -1,0 +1,52 @@
+/* Game Theory Lab (builder T4): scoped to .gl-* on top of mic-tools.css and the matrix styles in mic.css. */
+.gl-fig{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;min-height:0;}
+.ls-root .mic-ls-stage .gl-fig{flex:1;}
+.gl-story{margin:0;max-width:40em;text-align:center;font:600 14px/1.45 var(--font-ui);color:var(--muted);}
+.gl-story b{color:var(--ink);}
+.gl-mx{width:100%;}
+/* mic.css paints cells with var(--surface,#fff), a token theme.css does not define, so cells stay white in dark mode (reported to the lead); use the card surface. */
+.gl-mx .mic-mx-cell,.gl-qmx .mic-mx-cell{background:var(--white,#fff);}
+.gl-mx .mic-mx-cell.is-on,.gl-qmx .mic-mx-cell.is-on{background:color-mix(in srgb, var(--cink) 16%, var(--white,#fff));}
+
+.gl-mx .mic-mx{font-size:15px;}
+.gl-mx .mic-mx-cell{min-width:104px;transition:background-color .2s, box-shadow .2s;}
+.gl-mx .mic-mx-btn{min-height:64px;position:relative;padding:10px 8px 22px;}
+.gl-mx .mic-mx-a,.gl-mx .mic-mx-b{display:inline-block;padding:1px 6px;border-radius:999px;border:2px solid transparent;}
+.gl-mx .gl-br{border-color:currentColor;background:color-mix(in srgb, currentColor 12%, transparent);}
+.gl-mx .gl-cmp{box-shadow:inset 0 0 0 3px color-mix(in srgb, var(--cink) 45%, transparent);background:color-mix(in srgb, var(--cink) 6%, var(--surface,#fff));}
+.gl-mx .gl-nash{border-color:var(--good-text,#1F6E3E);box-shadow:inset 0 0 0 2px var(--good-text,#1F6E3E);}
+.gl-mx .gl-to{border-style:dashed;border-color:var(--accent,#C24E00);}
+.gl-tag{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);white-space:nowrap;font:800 10.5px var(--font-ui);letter-spacing:.02em;color:var(--good-text,#1F6E3E);}
+.gl-tag.is-to{color:var(--accent,#C24E00);}
+.gl-read{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center;max-width:44em;}
+.gl-r{padding:5px 12px;border-radius:999px;background:var(--ctint);color:var(--ink);font:600 13px/1.35 var(--font-ui);}
+.gl-r.is-none{background:var(--track,#eee);}
+.gl-r.is-nash{box-shadow:inset 0 0 0 2px var(--good-text,#1F6E3E);background:transparent;}
+.gl-r.is-warn{background:transparent;box-shadow:inset 0 0 0 2px var(--accent,#C24E00);}
+.gl-rk{font-weight:800;color:var(--cink);margin-right:4px;}
+.gl-ctl{display:flex;flex-direction:column;gap:12px;}
+.gl-target{display:flex;flex-wrap:wrap;gap:8px;}
+.gl-etbl td{white-space:nowrap;}
+.gl-in{width:4.2em;min-height:40px;margin:2px;padding:0 6px;border:1.5px solid var(--line);border-radius:8px;font:700 14px var(--font-mono);background:var(--white,#fff);color:var(--ink);}
+.gl-in.is-a{color:var(--cink);}
+.gl-tie{color:var(--accent,#C24E00);}
+.gl-qfig{display:flex;flex-direction:column;gap:8px;justify-content:center;}
+.gl-qmx{display:flex;flex-direction:column;justify-content:center;}
+.gl-qnote{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.gl-qnote li{padding:4px 10px;border-radius:999px;font:700 12.5px var(--font-ui);background:var(--ctint);color:var(--cink);}
+.gl-qnote li.is-shown{background:var(--track,#eee);color:var(--muted);}
+.gl-qnote:empty{display:none;}
+@media (max-width:420px){
+  .gl-mx .mic-mx-cell{min-width:86px;}
+  .gl-mx .mic-mx{font-size:14px;border-spacing:3px;}
+  .gl-story{font-size:13px;}
+}
+@media (prefers-reduced-motion:reduce){ .gl-mx .mic-mx-cell{transition:none;} }
+@media (min-width:1000px){
+  .gl-mx .mic-mx{font-size:18px;border-spacing:6px;}
+  .gl-mx .mic-mx-cell{min-width:140px;}
+  .gl-mx .mic-mx-btn{min-height:84px;}
+  .gl-mx .mic-mx-st{font-size:15px;}
+  .gl-mx .mic-mx-pl{font-size:13px;}
+  .gl-story{font-size:15px;}
+}

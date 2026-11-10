@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="disequilibrium-changes-double-t disequilibrium-changes-double-d" font-family="Arial, Helvetica, sans-serif">
+<title id="disequilibrium-changes-double-t">Both curves shift: one change is certain, the other indeterminate</title>
+<desc id="disequilibrium-changes-double-d">Two supply and demand panels. Left: demand and supply both increase. Quantity rises for sure, but the new price can be higher, lower or the same as before, depending on which shift is larger: the price is indeterminate. Right: demand increases while supply decreases. The price rises for sure, but the quantity change is indeterminate.</desc>
+<defs><marker id="disequilibrium-changes-double-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="disequilibrium-changes-double-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="disequilibrium-changes-double-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="disequilibrium-changes-double-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="760" height="400" fill="#FFFFFF"/>
+<path d="M70 44V300H346" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="205" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="205" dy="0">D up and S up</tspan></text>
+<text x="340" y="336" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="340" dy="0">Quantity</tspan></text>
+<text transform="translate(30 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M91.6 70L291.4 255" fill="none" stroke="#5B6664" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text x="287.4" y="273" font-size="13" text-anchor="start" fill="#5B6664" font-weight="bold"><tspan x="287.4" dy="0">D1</tspan></text>
+<path d="M140.2 70L340 255" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="320" y="247" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="320" dy="0">D2</tspan></text>
+<path d="M91.6 280L318.4 70" fill="none" stroke="#5B6664" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text x="292.4" y="74" font-size="13" text-anchor="start" fill="#5B6664" font-weight="bold"><tspan x="292.4" dy="0">S1</tspan></text>
+<path d="M140.2 280L340 95" fill="none" stroke="#7E1A5E" stroke-width="2.8" stroke-linecap="round"/>
+<text x="318" y="89" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="318" dy="0">S2</tspan></text>
+<circle cx="205" cy="175" r="4.5" fill="#5B6664"/>
+<text x="205" y="197" font-size="12" text-anchor="middle" fill="#5B6664" font-weight="bold"><tspan x="205" dy="0">E1</tspan></text>
+<circle cx="253.6" cy="175" r="4.5" fill="#1F2A28"/>
+<text x="261.6" y="167" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="261.6" dy="0">E2</tspan></text>
+<text x="205" y="378" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="205" dy="0">Quantity rises; price indeterminate</tspan></text>
+<path d="M440 44V300H716" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="575" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="575" dy="0">D up and S down</tspan></text>
+<text x="710" y="336" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="710" dy="0">Quantity</tspan></text>
+<text transform="translate(400 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M461.6 70L661.4 255" fill="none" stroke="#5B6664" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text x="657.4" y="273" font-size="13" text-anchor="start" fill="#5B6664" font-weight="bold"><tspan x="657.4" dy="0">D1</tspan></text>
+<path d="M510.2 70L710 255" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="690" y="247" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="690" dy="0">D2</tspan></text>
+<path d="M461.6 280L688.4 70" fill="none" stroke="#5B6664" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text x="662.4" y="74" font-size="13" text-anchor="start" fill="#5B6664" font-weight="bold"><tspan x="662.4" dy="0">S1</tspan></text>
+<path d="M461.6 235L639.8 70" fill="none" stroke="#7E1A5E" stroke-width="2.8" stroke-linecap="round"/>
+<text x="644.8" y="74" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="644.8" dy="0">S2</tspan></text>
+<circle cx="575" cy="175" r="4.5" fill="#5B6664"/>
+<text x="575" y="197" font-size="12" text-anchor="middle" fill="#5B6664" font-weight="bold"><tspan x="575" dy="0">E1</tspan></text>
+<circle cx="575" cy="130" r="4.5" fill="#1F2A28"/>
+<text x="583" y="122" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="583" dy="0">E2</tspan></text>
+<text x="575" y="378" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="575" dy="0">Price rises; quantity indeterminate</tspan></text>
+</svg>

@@ -1,0 +1,12 @@
+{
+ "supply-movement-shift": {
+  "file": "figures/supply-movement-shift.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a price rise moves sellers along one supply curve from 30 boxes at $3 to 50 boxes at $5. Right: a higher fertilizer price shifts supply left from S1 to S2, so 30 boxes instead of 50 are offered at $5."
+ }
+}

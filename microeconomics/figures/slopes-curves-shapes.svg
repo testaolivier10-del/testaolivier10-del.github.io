@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 580" width="740" height="580" role="img" aria-labelledby="slopes-curves-shapes-t slopes-curves-shapes-d" font-family="Arial, Helvetica, sans-serif">
+<title id="slopes-curves-shapes-t">Curve shapes and what their slopes say</title>
+<desc id="slopes-curves-shapes-d">Four small graphs. Upward sloping: from the point (2, 3) to (6, 6) the rise is 3 and the run is 4, so the slope is 0.75, positive. Downward sloping: a negative slope, one variable falls as the other rises. Flat and straight up: a horizontal line has a slope of 0; on a vertical line the horizontal value never changes. U-shaped: the slope is negative, then 0 at the minimum point, then positive.</desc>
+<defs><marker id="slopes-curves-shapes-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="slopes-curves-shapes-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="slopes-curves-shapes-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="slopes-curves-shapes-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="slopes-curves-shapes-arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="740" height="580" fill="#FFFFFF"/>
+<text x="190" y="40" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Upward sloping: positive slope</text>
+<line x1="80" y1="54" x2="80" y2="210" stroke="#1F2A28" stroke-width="2"/>
+<line x1="80" y1="210" x2="306" y2="210" stroke="#1F2A28" stroke-width="2"/>
+<text x="300" y="240" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="64" y="60" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 64 60)">y</text>
+<text x="190" y="252" font-size="12" fill="#6B7370" text-anchor="middle">slope = rise / run = 3 / 4 = 0.75</text>
+<text x="190" y="268" font-size="12" fill="#6B7370" text-anchor="middle">both variables rise together</text>
+<line x1="102" y1="176.3" x2="278" y2="86.3" stroke="#7E1A5E" stroke-width="3"/>
+<line x1="124" y1="165" x2="212" y2="165" stroke="#084F78" stroke-width="2" stroke-dasharray="5 4"/>
+<line x1="212" y1="165" x2="212" y2="120" stroke="#D55E00" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="124" cy="165" r="5" fill="#1F2A28"/>
+<circle cx="212" cy="120" r="5" fill="#1F2A28"/>
+<text x="168" y="182" font-size="12" fill="#084F78" text-anchor="middle" font-weight="700">run 4</text>
+<text x="220" y="146.5" font-size="12" fill="#D55E00" font-weight="700">rise 3</text>
+<text x="550" y="40" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Downward sloping: negative slope</text>
+<line x1="440" y1="54" x2="440" y2="210" stroke="#1F2A28" stroke-width="2"/>
+<line x1="440" y1="210" x2="666" y2="210" stroke="#1F2A28" stroke-width="2"/>
+<text x="660" y="240" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="424" y="60" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 424 60)">y</text>
+<text x="550" y="252" font-size="12" fill="#6B7370" text-anchor="middle">the rise is negative: one variable</text>
+<text x="550" y="268" font-size="12" fill="#6B7370" text-anchor="middle">falls as the other rises</text>
+<line x1="462" y1="75" x2="638" y2="195" stroke="#084F78" stroke-width="3"/>
+<text x="190" y="310" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">Flat and straight up</text>
+<line x1="80" y1="324" x2="80" y2="480" stroke="#1F2A28" stroke-width="2"/>
+<line x1="80" y1="480" x2="306" y2="480" stroke="#1F2A28" stroke-width="2"/>
+<text x="300" y="510" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="64" y="330" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 64 330)">y</text>
+<text x="190" y="522" font-size="12" fill="#6B7370" text-anchor="middle">horizontal: slope 0 (y never changes)</text>
+<text x="190" y="538" font-size="12" fill="#6B7370" text-anchor="middle">vertical: x never changes</text>
+<line x1="91" y1="390" x2="289" y2="390" stroke="#D55E00" stroke-width="3"/>
+<line x1="223" y1="472.5" x2="223" y2="337.5" stroke="#6B7370" stroke-width="3"/>
+<text x="102" y="382" font-size="12" fill="#D55E00">horizontal</text>
+<text x="229" y="349" font-size="12" fill="#6B7370">vertical</text>
+<text x="550" y="310" font-size="15" fill="#1F2A28" text-anchor="middle" font-weight="700">U-shaped: falls, bottoms out, rises</text>
+<line x1="440" y1="324" x2="440" y2="480" stroke="#1F2A28" stroke-width="2"/>
+<line x1="440" y1="480" x2="666" y2="480" stroke="#1F2A28" stroke-width="2"/>
+<text x="660" y="510" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700">x</text>
+<text x="424" y="330" font-size="13" fill="#1F2A28" text-anchor="end" font-weight="700" transform="rotate(-90 424 330)">y</text>
+<text x="550" y="522" font-size="12" fill="#6B7370" text-anchor="middle">negative slope, then 0 at the</text>
+<text x="550" y="538" font-size="12" fill="#6B7370" text-anchor="middle">minimum point, then positive</text>
+<path d="M462 382.8L466.4 389.4L470.8 395.6L475.2 401.4L479.6 407L484 412.2L488.4 417.1L492.8 421.6L497.2 425.8L501.6 429.7L506 433.2L510.4 436.4L514.8 439.2L519.2 441.8L523.6 444L528 445.8L532.4 447.3L536.8 448.5L541.2 449.3L545.6 449.8L550 450L554.4 449.8L558.8 449.3L563.2 448.5L567.6 447.3L572 445.8L576.4 444L580.8 441.8L585.2 439.2L589.6 436.4L594 433.2L598.4 429.7L602.8 425.8L607.2 421.6L611.6 417.1L616 412.2L620.4 407L624.8 401.4L629.2 395.6L633.6 389.4L638 382.8" fill="none" stroke="#7E1A5E" stroke-width="3"/>
+<line x1="440" y1="450" x2="550" y2="450" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><line x1="550" y1="450" x2="550" y2="480" stroke="#6B7370" stroke-width="1.4" stroke-dasharray="5 4"/><circle cx="550" cy="450" r="5" fill="#D55E00"/>
+<text x="560" y="442" font-size="12" fill="#D55E00" font-weight="700">minimum point</text>
+</svg>

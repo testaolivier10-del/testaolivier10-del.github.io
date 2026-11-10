@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 430" width="600" height="430" role="img" aria-labelledby="monopsony-graph-t monopsony-graph-d" font-family="Arial, Helvetica, sans-serif">
+<title id="monopsony-graph-t">A monopsony hires where MRP = MFC and pays the wage on labor supply</title>
+<desc id="monopsony-graph-d">A monopsony graph with Wage on the vertical axis and Quantity of labor on the horizontal axis. MFC rises twice as steeply as the labor supply curve SL from the same starting wage. The firm hires QM workers, where MRP crosses MFC, and pays the wage WM read down from that quantity to SL. The wage bill, WM times QM, is the shaded rectangle. Under competition the quantity would be QC and the wage WC, where MRP meets SL; the triangle between MRP and SL from QM to QC is the deadweight loss.</desc>
+<defs><marker id="monopsony-graph-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="monopsony-graph-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="monopsony-graph-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="monopsony-graph-arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker></defs>
+<rect width="600" height="430" fill="#FFFFFF"/>
+<path d="M110 40V350H530" fill="none" stroke="#1F2A28" stroke-width="2"/>
+<text x="530" y="390" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">Quantity of labor</text>
+<text transform="translate(70 40) rotate(-90)" font-size="13" fill="#1F2A28" text-anchor="end">Wage</text>
+<path d="M110 350L236 350L236 226L110 226Z" fill="#F8E6F1" stroke="none" fill-opacity="1"/>
+<path d="M236 226L236 133L299 179.5Z" fill="#FBE3D2" stroke="none" fill-opacity="1"/>
+<path d="M110 319L116.2 314.5L122.3 309.9L128.5 305.4L134.6 300.8L140.8 296.3L147 291.7L153.1 287.2L159.3 282.6L165.4 278.1L171.6 273.5L177.8 269L183.9 264.4L190.1 259.9L196.2 255.3L202.4 250.8L208.6 246.3L214.7 241.7L220.9 237.2L227 232.6L233.2 228.1L239.4 223.5L245.5 219L251.7 214.4L257.8 209.9L264 205.3L270.2 200.8L276.3 196.2L282.5 191.7L288.6 187.1L294.8 182.6L301 178.1L307.1 173.5L313.3 169L319.4 164.4L325.6 159.9L331.8 155.3L337.9 150.8L344.1 146.2L350.2 141.7L356.4 137.1L362.6 132.6L368.7 128L374.9 123.5L381 118.9L387.2 114.4L393.4 109.9L399.5 105.3L405.7 100.8L411.8 96.2L418 91.7L424.2 87.1L430.3 82.6L436.5 78L442.6 73.5L448.8 68.9L455 64.4L461.1 59.8L467.3 55.3L473.4 50.7L479.6 46.2" fill="none" stroke="#0072B2" stroke-width="2.6"/>
+<path d="M110 319L113.1 314.5L116.2 309.9L119.2 305.4L122.3 300.8L125.4 296.3L128.5 291.7L131.6 287.2L134.6 282.6L137.7 278.1L140.8 273.5L143.9 269L147 264.4L150 259.9L153.1 255.3L156.2 250.8L159.3 246.3L162.4 241.7L165.4 237.2L168.5 232.6L171.6 228.1L174.7 223.5L177.8 219L180.8 214.4L183.9 209.9L187 205.3L190.1 200.8L193.2 196.2L196.2 191.7L199.3 187.1L202.4 182.6L205.5 178.1L208.6 173.5L211.6 169L214.7 164.4L217.8 159.9L220.9 155.3L224 150.8L227 146.2L230.1 141.7L233.2 137.1L236.3 132.6L239.4 128L242.4 123.5L245.5 118.9L248.6 114.4L251.7 109.9L254.8 105.3L257.8 100.8L260.9 96.2L264 91.7L267.1 87.1L270.2 82.6L273.2 78L276.3 73.5L279.4 68.9L282.5 64.4L285.6 59.8L288.6 55.3L291.7 50.7L294.8 46.2" fill="none" stroke="#D55E00" stroke-width="2.6"/>
+<path d="M135.2 58.6L141.5 63.3L147.8 67.9L154.1 72.6L160.4 77.2L166.7 81.9L173 86.5L179.3 91.2L185.6 95.8L191.9 100.4L198.2 105.1L204.5 109.8L210.8 114.4L217.1 119.1L223.4 123.7L229.7 128.3L236 133L242.3 137.7L248.6 142.3L254.9 147L261.2 151.6L267.5 156.3L273.8 160.9L280.1 165.6L286.4 170.2L292.7 174.9L299 179.5L305.3 184.1L311.6 188.8L317.9 193.4L324.2 198.1L330.5 202.8L336.8 207.4L343.1 212.1L349.4 216.7L355.7 221.4L362 226L368.3 230.7L374.6 235.3L380.9 240L387.2 244.6L393.5 249.3L399.8 253.9L406.1 258.5L412.4 263.2L418.7 267.9L425 272.5L431.3 277.2L437.6 281.8L443.9 286.5L450.2 291.1L456.5 295.8L462.8 300.4L469.1 305.1L475.4 309.7L481.7 314.3L488 319L494.3 323.7L500.6 328.3L506.9 333L513.2 337.6" fill="none" stroke="#7E1A5E" stroke-width="2.6"/>
+<path d="M236 133V350" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/><path d="M110 133H236" stroke="#6B7672" stroke-width="1" stroke-dasharray="2 4"/>
+<path d="M110 226H236V350" fill="none" stroke="#6B7672" stroke-width="1.5" stroke-dasharray="5 4"/>
+<circle cx="236" cy="226" r="4.5" fill="#1F2A28"/>
+<text x="236" y="370" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">M</tspan></text>
+<text x="102" y="231" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">W<tspan font-size="10" dy="4">M</tspan></text>
+<path d="M110 179.5H299V350" fill="none" stroke="#9AA3A0" stroke-width="1.5" stroke-dasharray="5 4"/>
+<circle cx="299" cy="179.5" r="4.5" fill="#1F2A28"/>
+<text x="299" y="370" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="middle">Q<tspan font-size="10" dy="4">C</tspan></text>
+<text x="102" y="184.5" font-size="13" font-weight="normal" fill="#1F2A28" text-anchor="end">W<tspan font-size="10" dy="4">C</tspan></text>
+<circle cx="236" cy="133" r="4.5" fill="#D55E00"/>
+<text x="483.8" y="52.4" font-size="14" font-weight="bold" fill="#0072B2" text-anchor="start">S<tspan font-size="10" dy="4">L</tspan></text>
+<text x="299" y="52.4" font-size="14" font-weight="bold" fill="#D55E00" text-anchor="start">MFC</text>
+<text x="458.6" y="278.7" font-size="14" font-weight="bold" fill="#7E1A5E" text-anchor="start">MRP</text>
+<text x="198.2" y="303.5" font-size="12" font-weight="bold" fill="#7E1A5E" text-anchor="middle">wage bill</text>
+<text x="254.9" y="185.7" font-size="11" font-weight="bold" fill="#D55E00" text-anchor="middle">DWL</text>
+<text x="122.6" y="123.7" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">MRP = MFC</text>
+</svg>

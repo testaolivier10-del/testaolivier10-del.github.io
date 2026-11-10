@@ -1,0 +1,84 @@
+{
+ "topic": "production-function",
+ "hook": "A food truck with one grill hires a second cook and the line moves twice as fast. A third cook helps a little. By the fifth cook, people are bumping elbows and waiting for a turn at the grill. The truck has not changed, so each new cook adds less food than the last. That pattern shows up in every kitchen, farm and factory.",
+ "prereq": [
+  {
+   "q": "Labor, capital, land and entrepreneurship are together called",
+   "options": [
+    "the factors of production",
+    "the gains from trade",
+    "opportunity costs",
+    "property rights"
+   ],
+   "correct": 0,
+   "why": "They are the inputs a firm combines to produce goods and services.",
+   "review": "scarcity"
+  },
+  {
+   "q": "Thinking \"at the margin\" means looking at",
+   "options": [
+    "the effect of one more unit",
+    "the total of all units",
+    "the average of all units",
+    "the first unit only"
+   ],
+   "correct": 0,
+   "why": "Marginal means the next, or extra, unit.",
+   "review": "marginal-analysis"
+  },
+  {
+   "q": "When workers split a job into tasks and each does one task, they are using",
+   "options": [
+    "specialization",
+    "absolute advantage",
+    "scarcity",
+    "a trade-off"
+   ],
+   "correct": 0,
+   "why": "Specialization lets each worker get faster at one task.",
+   "review": "comparative-advantage"
+  }
+ ],
+ "figure": {
+  "figure": "production-function-tp-mp",
+  "caption": "A bakery with one oven. Total product rises by less and less after the second worker; marginal product falls from the third worker on (diminishing marginal returns) and reaches zero with the sixth. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "The firm adds workers while its kitchen, field or factory stays fixed",
+   "effect": "each new worker has less of the fixed input to work with"
+  },
+  {
+   "cause": "Each new worker has less of the fixed input",
+   "effect": "the marginal product of each new worker falls: diminishing marginal returns"
+  },
+  {
+   "cause": "Marginal product falls below average product",
+   "effect": "average product falls too"
+  },
+  {
+   "cause": "Marginal product falls toward zero",
+   "effect": "total product rises more and more slowly and stops rising when marginal product reaches zero"
+  }
+ ],
+ "ideas": [
+  "A <b>production function</b> links inputs to output. In the <b>short run</b> at least one input is fixed; in the <b>long run</b> every input can change.",
+  "<b>Total product</b> (TP) is all the output. <b>Marginal product</b>: $\\text{MP} = \\frac{\\Delta \\text{TP}}{\\Delta L}$. <b>Average product</b>: $\\text{average product} = \\frac{\\text{TP}}{L}$.",
+  "MP often rises at first (specialization), then falls: <b>diminishing marginal returns</b>, from adding a variable input to a fixed one.",
+  "When MP is above average product, average product rises; when MP is below average product, average product falls. TP is at its peak where MP is zero."
+ ],
+ "misconception": {
+  "wrong": "Diminishing marginal returns means total output falls when another worker is hired.",
+  "right": "It means each new worker adds less than the one before. Total product still rises as long as marginal product is positive; it falls only if marginal product turns negative."
+ },
+ "check": [
+  "mic-production-function-11",
+  "mic-production-function-12",
+  "mic-production-function-15",
+  "mic-production-function-5",
+  "mic-production-function-6",
+  "mic-production-function-7",
+  "mic-production-function-17"
+ ],
+ "summary": "A production function shows how much output a firm gets from its inputs. In the short run at least one input is fixed, so adding workers eventually brings diminishing marginal returns: each worker adds less than the one before. Marginal product is the change in total product divided by the change in labor, and average product is total product divided by labor. Marginal product above average pulls the average up; below it, the average falls; total product peaks where marginal product reaches zero."
+}

@@ -1,0 +1,17 @@
+{
+ "fixed-cost": {
+  "def": "Total fixed cost (TFC): a cost that does not change with output in the short run, such as rent, and that is paid even when output is zero."
+ },
+ "variable-cost": {
+  "def": "Total variable cost (TVC): a cost that rises and falls with output, such as materials and hourly labor; it is zero when output is zero."
+ },
+ "total-cost": {
+  "def": "Total cost (TC): total fixed cost plus total variable cost at a given output."
+ },
+ "marginal-cost": {
+  "def": "Marginal cost (MC): the extra cost of producing one more unit, the change in total cost divided by the change in output."
+ },
+ "average-costs": {
+  "def": "Average costs are costs per unit of output: average fixed cost (AFC = TFC / Q), average variable cost (AVC = TVC / Q) and average total cost (ATC = TC / Q = AFC + AVC)."
+ }
+}

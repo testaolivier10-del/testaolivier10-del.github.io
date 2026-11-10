@@ -1,0 +1,12 @@
+{
+ "marginal-analysis-per-dollar": {
+  "file": "figures/marginal-analysis-per-dollar.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A marginal utility table for tacos ($2) and smoothies ($4) with a $12 budget; the best bundle, 2 tacos and 2 smoothies, equalizes marginal utility per dollar at 8 and gives total utility 116."
+ }
+}

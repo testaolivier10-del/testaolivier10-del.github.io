@@ -1,0 +1,22 @@
+{
+ "intervention-structures-natural": {
+  "file": "figures/intervention-structures-natural.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A natural monopoly graph with Price and cost on the vertical axis and Quantity on the horizontal axis. ATC falls over the whole range of demand and stays above the flat MC curve. Unregulated, the firm produces QM where MR = MC and charges PM from the demand curve. The fair-return price PF, where demand meets ATC, gives a larger quantity QF and zero economic profit. The socially optimal price PS, where demand meets MC, gives the largest quantity QS, but there price is below ATC, so the firm makes a loss."
+ },
+ "intervention-structures-ceiling": {
+  "file": "figures/intervention-structures-ceiling.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A monopoly graph with Price and cost on the vertical axis and Quantity on the horizontal axis, showing D, MR below it, MC passing through the minimum of ATC, and ATC. Unregulated, the monopoly produces QM where MR = MC and charges PM from demand. A price ceiling PC set where demand meets MC makes the ceiling the firm's marginal revenue up to demand, so it produces QC, more than QM, at the lower price PC."
+ }
+}

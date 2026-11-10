@@ -1,0 +1,12 @@
+{
+ "price-elasticity-demand-ranges": {
+  "file": "figures/price-elasticity-demand-ranges.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A straight-line demand curve for phone cases is elastic above its midpoint, unit elastic at $5 and 50 cases, and inelastic below it. Total revenue rises to its largest value, $250, at the midpoint and then falls."
+ }
+}

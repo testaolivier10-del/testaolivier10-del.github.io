@@ -1,0 +1,648 @@
+{
+ "stimuli": {
+  "short-run-costs-s1": {
+   "kind": "data",
+   "title": "Tamsin Candle Works: output and total cost",
+   "invented": true,
+   "table": {
+    "caption": "Total cost of making candles each day in the short run (invented data for practice)",
+    "cols": [
+     "Output (candles per day)",
+     "Total cost (\\$)"
+    ],
+    "rows": [
+     [
+      "0",
+      "100"
+     ],
+     [
+      "10",
+      "180"
+     ],
+     [
+      "20",
+      "240"
+     ],
+     [
+      "30",
+      "290"
+     ],
+     [
+      "40",
+      "360"
+     ],
+     [
+      "50",
+      "450"
+     ],
+     [
+      "60",
+      "560"
+     ]
+    ]
+   }
+  },
+  "short-run-costs-s2": {
+   "kind": "graph",
+   "title": "A firm's short-run cost curves",
+   "graph": {
+    "kind": "costs",
+    "afc": true
+   }
+  },
+  "short-run-costs-s3": {
+   "kind": "text",
+   "title": "The monthly costs of Pepperwood Bakery",
+   "text": "<p>Pepperwood Bakery pays \\$2,000 a month in rent on a one-year lease and a \\$600 yearly city license fee that is the same whatever it bakes. It also buys flour and sugar for every batch and pays its bakers by the hour, scheduling more hours when it bakes more. (An invented business, for practice.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-short-run-costs-1",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the marginal cost of a candle when output rises from 30 to 40 candles a day, in dollars?",
+   "why": {
+    "correct": "Marginal cost is the change in total cost divided by the change in output: $\\frac{360 - 290}{40 - 30} = \\frac{70}{10} = 7$ dollars a candle."
+   },
+   "numeric": {
+    "from": {
+     "fn": "costTable",
+     "args": [
+      [
+       0,
+       10,
+       20,
+       30,
+       40,
+       50,
+       60
+      ],
+      [
+       100,
+       180,
+       240,
+       290,
+       360,
+       450,
+       560
+      ]
+     ],
+     "pick": "mc.4"
+    },
+    "mistakes": [
+     {
+      "value": 70,
+      "why": "That is the change in total cost for all 10 candles. Marginal cost is per unit: divide \\$70 by the change in output, 10 candles."
+     },
+     {
+      "from": {
+       "fn": "atc",
+       "args": [
+        360,
+        40
+       ]
+      },
+      "why": "That is the average total cost of 40 candles (360 / 40). Marginal cost uses the change in total cost."
+     }
+    ]
+   },
+   "stimulus": "short-run-costs-s1"
+  },
+  {
+   "id": "mic-short-run-costs-2",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the average variable cost of 40 candles a day, in dollars?",
+   "why": {
+    "correct": "Fixed cost is the cost at zero output, \\$100, so variable cost at 40 candles is $360 - 100 = 260$ and $\\text{AVC} = 260 \\div 40 = 6.5$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "costTable",
+     "args": [
+      [
+       0,
+       10,
+       20,
+       30,
+       40,
+       50,
+       60
+      ],
+      [
+       100,
+       180,
+       240,
+       290,
+       360,
+       450,
+       560
+      ]
+     ],
+     "pick": "avc.4"
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "atc",
+       "args": [
+        360,
+        40
+       ]
+      },
+      "why": "That is average total cost (360 / 40). Subtract the fixed cost first: variable cost is 360 - 100 = 260."
+     },
+     {
+      "from": {
+       "fn": "afc",
+       "args": [
+        100,
+        40
+       ]
+      },
+      "why": "That is average fixed cost (100 / 40). Average variable cost uses variable cost, 260."
+     }
+    ]
+   },
+   "stimulus": "short-run-costs-s1"
+  },
+  {
+   "id": "mic-short-run-costs-3",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. Over which range of output is marginal cost equal to average total cost, where average total cost is at its lowest?",
+   "options": [
+    "From 20 to 30 candles, where marginal cost is \\$5",
+    "From 50 to 60 candles, where total cost is \\$560",
+    "From 40 to 50 candles, where both are \\$9",
+    "From 0 to 10 candles, where the firm starts producing"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "ATC is 18, 12, 9.67, 9, 9 and 9.33. MC from 40 to 50 candles is \\$9, equal to ATC, which is where ATC bottoms out: MC crosses ATC at its minimum.",
+    "options": [
+     "MC of \\$5 is below ATC there (\\$12 and about \\$9.67), so ATC is still falling.",
+     "MC is \\$11 there, above ATC, so ATC is already rising.",
+     "Right: MC is (450 - 360) / 10 = 9, and ATC is 9 at both 40 and 50 candles.",
+     "MC is \\$8 and ATC is \\$18 at 10 candles: MC is far below ATC."
+    ]
+   },
+   "stimulus": "short-run-costs-s1"
+  },
+  {
+   "id": "mic-short-run-costs-4",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Use the table. What is total fixed cost when the firm makes 60 candles a day?",
+   "options": [
+    "\\$100, the same as at zero output",
+    "\\$560, the total cost at 60 candles",
+    "\\$460, the cost of the added candles",
+    "\\$600, six times the cost of 10 candles"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total fixed cost is the cost at zero output, \\$100, and it is the same at every output in the short run.",
+    "options": [
+     "Right: fixed cost does not change with output.",
+     "That is total cost, which includes variable cost.",
+     "That is variable cost: 560 - 100.",
+     "Fixed cost is not multiplied by output; it stays at \\$100."
+    ]
+   },
+   "stimulus": "short-run-costs-s1"
+  },
+  {
+   "id": "mic-short-run-costs-5",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In the graph, which curve passes through the lowest point of both AVC and ATC?",
+   "options": [
+    "AFC",
+    "ATC",
+    "AVC",
+    "MC"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When MC is below an average it pulls the average down; when MC is above, it pulls the average up. So MC crosses AVC and ATC exactly at their lowest points.",
+    "options": [
+     "AFC falls the whole way and does not cross the other averages at their minimums.",
+     "ATC is one of the curves MC crosses, not the curve doing the crossing.",
+     "AVC is crossed by MC at its own minimum.",
+     "Right: marginal cost crosses each average at that average's minimum."
+    ]
+   },
+   "stimulus": "short-run-costs-s2"
+  },
+  {
+   "id": "mic-short-run-costs-6",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the graph, why do the ATC and AVC curves get closer together as output rises?",
+   "options": [
+    "Marginal cost falls as output rises",
+    "Average fixed cost falls as output grows",
+    "Total fixed cost falls as the firm produces more",
+    "Variable cost becomes a fixed cost at high output"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ATC = AVC + AFC. AFC = TFC / Q, so the same fixed cost spread over more units shrinks the gap between ATC and AVC.",
+    "options": [
+     "MC rises at larger outputs; the gap is about fixed cost.",
+     "Right: the gap between ATC and AVC is AFC, which shrinks as output grows.",
+     "Total fixed cost is the same at every output; only the cost per unit falls.",
+     "Variable cost changes with output at every level; it does not turn into a fixed cost."
+    ]
+   },
+   "stimulus": "short-run-costs-s2"
+  },
+  {
+   "id": "mic-short-run-costs-7",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the graph, MC slopes upward at larger outputs. Which idea best explains this?",
+   "options": [
+    "The firm pays a larger fixed cost when it produces more",
+    "Diminishing marginal returns",
+    "Specialization makes each extra unit cheaper",
+    "Buyers are willing to pay less for more units"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With a fixed plant, the marginal product of labor eventually falls. Each extra unit then needs more labor hours, so marginal cost rises.",
+    "options": [
+     "Fixed cost does not change with output, so it cannot make MC rise.",
+     "Right: when each worker adds less, each extra unit takes more paid work, so its cost rises.",
+     "Specialization lowers MC at small outputs; it does not explain the rise.",
+     "MC is a cost curve; buyers' willingness to pay does not set it."
+    ]
+   },
+   "stimulus": "short-run-costs-s2"
+  },
+  {
+   "id": "mic-short-run-costs-8",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "In the scenario, which of Pepperwood Bakery's costs are fixed costs? Select all that apply.",
+   "options": [
+    "The monthly rent on the lease",
+    "The yearly city license fee",
+    "Flour and sugar for each batch",
+    "Hourly pay for bakers"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Fixed costs do not change with output in the short run (rent, the license fee); variable costs rise with output (ingredients, hourly labor).",
+    "options": [
+     "Fixed: it is paid whatever the bakery bakes.",
+     "Fixed: the scenario says it is the same at any output.",
+     "Variable: more batches use more flour and sugar.",
+     "Variable: the bakery schedules more hours when it bakes more."
+    ]
+   },
+   "stimulus": "short-run-costs-s3"
+  },
+  {
+   "id": "mic-short-run-costs-9",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, Pepperwood Bakery closes for a week to repair its oven and bakes nothing. Which of its costs does it still pay that week?",
+   "options": [
+    "Flour and sugar, because they were bought for the week",
+    "Nothing, because costs fall to zero when output does",
+    "Hourly pay, because bakers are on the schedule",
+    "Its rent and its license fee"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At zero output, total cost equals total fixed cost: the rent and the license fee are still due.",
+    "options": [
+     "Ingredients are a variable cost; with no batches, none are used.",
+     "Variable costs fall to zero; fixed costs remain.",
+     "With no baking, the bakery schedules no hours, so this variable cost falls.",
+     "Right: fixed costs do not fall to zero when output does."
+    ]
+   },
+   "stimulus": "short-run-costs-s3"
+  },
+  {
+   "id": "mic-short-run-costs-10",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, the price of flour rises. How does this change Pepperwood Bakery's cost curves?",
+   "options": [
+    "MC, AVC and ATC shift up; AFC does not change",
+    "AFC shifts up, and the other curves stay put",
+    "ATC shifts up but MC does not change",
+    "No curve shifts; the bakery moves along its curves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A higher price of a variable input raises the cost of each extra unit (MC) and variable cost at each output (AVC), so ATC rises too. Fixed cost, and so AFC, is unchanged.",
+    "options": [
+     "Right: flour is a variable cost, so every curve built on variable cost moves up.",
+     "Flour is not a fixed cost, so AFC is unchanged.",
+     "That is the effect of a higher fixed cost. Flour is used in every extra loaf, so MC rises too.",
+     "A change in an input price shifts cost curves; it is not a change in output."
+    ]
+   },
+   "stimulus": "short-run-costs-s3"
+  },
+  {
+   "id": "mic-short-run-costs-11",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.A",
+   "q": "Label the axes and the three curves of a firm's short-run cost graph.",
+   "why": {
+    "correct": "Cost goes on the vertical axis and quantity of output on the horizontal axis. MC is the curve that dips and rises steeply, ATC is the higher U, and AVC is the lower U; MC passes through the lowest point of each."
+   },
+   "graph": {
+    "kind": "costs",
+    "do": [
+     "label"
+    ],
+    "key": {}
+   }
+  },
+  {
+   "id": "mic-short-run-costs-12",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the output at which average total cost is at its lowest.",
+   "why": {
+    "correct": "ATC is lowest where MC crosses it: to the left MC is below ATC and pulls it down; to the right MC is above and pulls it up."
+   },
+   "graph": {
+    "kind": "costs",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "at": "min-atc"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-short-run-costs-13",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "Mark the lowest point of average variable cost.",
+   "why": {
+    "correct": "MC crosses AVC at AVC's lowest point, at a smaller output than the lowest point of ATC, because ATC also includes average fixed cost."
+   },
+   "graph": {
+    "kind": "costs",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "V",
+    "key": {
+     "point": {
+      "at": "min-avc"
+     }
+    }
+   }
+  },
+  {
+   "id": "mic-short-run-costs-14",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The city raises a lump-sum license fee that every food truck pays once a year, whatever it sells. Shift the curve or curves that change for one food truck.",
+   "why": {
+    "correct": "A fixed fee raises total fixed cost, so AFC and ATC rise at every output. It adds nothing to the cost of one more unit, so MC and AVC do not move."
+   },
+   "graph": {
+    "kind": "costs",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "MC",
+     "ATC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "ATC",
+       "dir": "up"
+      }
+     ],
+     "because": "a higher lump-sum license fee, a fixed cost"
+    },
+    "slips": {
+     "MC": "The fee is the same at every output, so it does not change the cost of one more unit: MC stays put. Only ATC (through AFC) rises."
+    }
+   }
+  },
+  {
+   "id": "mic-short-run-costs-15",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "The hourly wage of a car wash's attendants rises. Shift the curve or curves that change.",
+   "why": {
+    "correct": "Hourly labor is a variable cost, so the cost of each extra wash rises: MC shifts up, and AVC and ATC shift up with it."
+   },
+   "graph": {
+    "kind": "costs",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "MC",
+     "ATC"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "MC",
+       "dir": "up"
+      }
+     ],
+     "because": "a higher wage for hourly workers, a variable cost"
+    },
+    "slips": {
+     "ATC": "Hourly pay rises with every extra car washed, so it is a variable cost: MC shifts up, and AVC and ATC move up with it."
+    }
+   }
+  },
+  {
+   "id": "mic-short-run-costs-16",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A printer's total cost rises from \\$1,200 to \\$1,500 when it prints 250 posters instead of 200. What is the marginal cost per poster, in dollars?",
+   "why": {
+    "correct": "Marginal cost is $\\frac{1{,}500 - 1{,}200}{250 - 200} = \\frac{300}{50} = 6$ dollars per poster."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalCost",
+     "args": [
+      1200,
+      1500,
+      200,
+      250
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 300,
+      "why": "That is the change in total cost for all 50 posters. Divide by the change in output, 50 posters."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        300,
+        250
+       ]
+      },
+      "why": "That divides the change in cost by the new output, 250. Divide by the change in output, 250 - 200 = 50 posters."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-short-run-costs-17",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A firm has total fixed cost of \\$300 and total variable cost of \\$500 when it makes 40 units. What is its average total cost, in dollars?",
+   "why": {
+    "correct": "Total cost is $300 + 500 = 800$ dollars, so $\\text{ATC} = 800 \\div 40 = 20$ dollars a unit (AFC 7.50 plus AVC 12.50)."
+   },
+   "numeric": {
+    "from": {
+     "fn": "atc",
+     "args": [
+      {
+       "fn": "totalCost",
+       "args": [
+        300,
+        500
+       ]
+      },
+      40
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "avc",
+       "args": [
+        500,
+        40
+       ]
+      },
+      "why": "That is average variable cost (500 / 40). Average total cost adds fixed cost: 800 / 40."
+     },
+     {
+      "value": 800,
+      "why": "That is total cost. Divide it by the 40 units."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-short-run-costs-18",
+   "unit": "unit-3",
+   "topic": "short-run-costs",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "At a firm's current output, marginal cost is \\$8 and average total cost is \\$11. If the firm makes one more unit, average total cost will",
+   "options": [
+    "rise, because total cost rises",
+    "stay at \\$11, because fixed cost has not changed",
+    "fall, because the extra unit costs less than the current average",
+    "rise to \\$19, the sum of the two costs"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When MC is below ATC, ATC is falling; when MC is above ATC, ATC is rising. So MC crosses ATC at ATC's minimum.",
+    "options": [
+     "Total cost rises by \\$8, but that is less than the \\$11 average, so the average falls.",
+     "The average changes whenever the marginal unit differs from it.",
+     "Right: a unit below the average pulls the average down.",
+     "Marginal and average cost are not added; compare them instead."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,720 @@
+{
+ "stimuli": {
+  "factor-markets-s1": {
+   "kind": "data",
+   "title": "Tallow Candle Works: workers and output",
+   "invented": true,
+   "table": {
+    "caption": "Daily output at Tallow Candle Works, which sells candles in a perfectly competitive market at \\$2 each (invented data for practice)",
+    "cols": [
+     "Workers",
+     "Total product (candles per day)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0"
+     ],
+     [
+      "1",
+      "30"
+     ],
+     [
+      "2",
+      "55"
+     ],
+     [
+      "3",
+      "75"
+     ],
+     [
+      "4",
+      "90"
+     ],
+     [
+      "5",
+      "100"
+     ]
+    ]
+   }
+  },
+  "factor-markets-s2": {
+   "kind": "text",
+   "title": "Welders at the Brackwater boatyards",
+   "text": "<p>Brackwater is an invented harbor town where several boatyards build small fishing boats. Each boat needs many hours of welding. This year a new fish-processing plant opens nearby, and local fishing crews want more boats. The boatyards begin looking for more welders, and the welders' union reports that boatyards are offering more hours.</p>"
+  },
+  "factor-markets-s3": {
+   "kind": "data",
+   "title": "Two firms add workers: a price taker and a single seller",
+   "invented": true,
+   "table": {
+    "caption": "Firm X sells in a perfectly competitive market at \\$10 a unit. Firm Y is the only seller of its good, so it must cut its price to sell more. Both have the same marginal product (invented data for practice).",
+    "cols": [
+     "Worker",
+     "Marginal product (units)",
+     "Firm X: marginal revenue per unit",
+     "Firm Y: price per unit after the sale",
+     "Firm Y: marginal revenue per unit"
+    ],
+    "rows": [
+     [
+      "1st",
+      "6",
+      "\\$10",
+      "\\$12",
+      "\\$10"
+     ],
+     [
+      "2nd",
+      "5",
+      "\\$10",
+      "\\$11",
+      "\\$8"
+     ],
+     [
+      "3rd",
+      "4",
+      "\\$10",
+      "\\$10",
+      "\\$6"
+     ],
+     [
+      "4th",
+      "3",
+      "\\$10",
+      "\\$9",
+      "\\$4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "mic-factor-markets-1",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the marginal product of the third worker, in candles per day?",
+   "stimulus": "factor-markets-s1",
+   "why": {
+    "correct": "Marginal product is the change in total product from one more worker: 75 - 55 = 20 candles."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalProduct",
+     "args": [
+      55,
+      75,
+      2,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "averageProduct",
+       "args": [
+        75,
+        3
+       ]
+      },
+      "why": "25 is the average product of three workers (75 ÷ 3). Marginal product is the change in output from the third worker alone: 75 - 55."
+     },
+     {
+      "value": 75,
+      "why": "75 is total product with three workers. The third worker adds only the change: 75 - 55 = 20."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-2",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the marginal revenue product of the fourth worker, in dollars per day?",
+   "stimulus": "factor-markets-s1",
+   "why": {
+    "correct": "The fourth worker adds 90 - 75 = 15 candles, and for a competitive seller each candle adds the price, \\$2, to revenue. MRP = MP × MR = 15 × \\$2 = \\$30."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrp",
+     "args": [
+      15,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        90,
+        2
+       ]
+      },
+      "why": "\\$180 is the revenue from all four workers' output (90 × \\$2). MRP uses the fourth worker's marginal product only: 15 × \\$2."
+     },
+     {
+      "value": 15,
+      "why": "15 is the marginal product in candles. Multiply by the marginal revenue of a candle, \\$2, to get dollars."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-3",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the table, why does each added worker bring in less revenue than the one before?",
+   "stimulus": "factor-markets-s1",
+   "options": [
+    "The price of candles falls as the firm hires more workers",
+    "Later workers are paid a lower wage than earlier ones",
+    "Each worker adds fewer candles at the same \\$2 price",
+    "Total product falls after the second worker"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "MRP = MP × MR. Here MR is the \\$2 price for every candle, so MRP falls only because marginal product falls: 30, 25, 20, 15, 10 candles.",
+    "options": [
+     "A perfectly competitive seller takes the market price; \\$2 holds for every candle it sells.",
+     "The wage is a cost of a worker, not part of the revenue that worker brings in.",
+     "Right: marginal product falls (diminishing marginal returns) while the price stays at \\$2, so MRP falls.",
+     "Total product keeps rising, to 100 candles; it rises by smaller amounts."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-4",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. The market price of candles rises from \\$2 to \\$3. What is the new marginal revenue product of the second worker, in dollars per day?",
+   "stimulus": "factor-markets-s1",
+   "why": {
+    "correct": "The second worker still adds 55 - 30 = 25 candles. At \\$3 each, MRP = 25 × \\$3 = \\$75, up from \\$50."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrp",
+     "args": [
+      25,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mrp",
+       "args": [
+        25,
+        2
+       ]
+      },
+      "why": "\\$50 is the MRP at the old price. A higher product price raises every worker's MRP: use \\$3."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        55,
+        3
+       ]
+      },
+      "why": "\\$165 uses total product with two workers. MRP uses the second worker's marginal product, 25 candles."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-5",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, why do the boatyards want more welders?",
+   "stimulus": "factor-markets-s2",
+   "options": [
+    "Buyers want more boats, and welders' work is needed to build them",
+    "Welders have decided to work more hours this year",
+    "The boatyards earn revenue from selling welding services to crews",
+    "A welder is a good that households buy for their own use"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This is derived demand: firms want a factor because buyers want the product the factor helps produce.",
+    "options": [
+     "Right: the demand for welders comes from the demand for the boats they help make.",
+     "That would be a change on the sellers' side of the market for welders, not the boatyards' reason for hiring.",
+     "The boatyards sell boats; welding is an input they buy.",
+     "Welders' work is a factor of production that firms buy, not a consumer good."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-6",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, in which market do the boatyards buy welders' work, and who sells it?",
+   "stimulus": "factor-markets-s2",
+   "options": [
+    "A product market, where households sell finished boats to the boatyards",
+    "A product market, where firms sell labor to households",
+    "A factor market, where firms sell boats to fishing crews",
+    "A factor market, where households sell their labor to firms"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Factor markets are where labor, land and capital are bought and sold. Households (here, welders) sell; firms (the boatyards) buy.",
+    "options": [
+     "Boats are sold by the boatyards (firms) in a product market; welding work is traded in a factor market.",
+     "Firms buy labor; they do not sell it to households.",
+     "Boats are a product, and they are traded in a product market.",
+     "Right: labor is a factor of production; households sell it and firms buy it."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-7",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "In the scenario, which later event would most likely lead the boatyards to want fewer welders?",
+   "stimulus": "factor-markets-s2",
+   "options": [
+    "More fishing crews move to Brackwater",
+    "The fish-processing plant closes and crews order fewer boats",
+    "The price of a new fishing boat rises",
+    "Welders find new tools that let them weld faster"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The demand for a factor is derived from the demand for the product. Less demand for boats means a lower price for boats and a lower MRP for each welder.",
+    "options": [
+     "More crews would raise the demand for boats and so for welders.",
+     "Right: lower demand for boats lowers the price of boats and the revenue each welder brings in, so the boatyards want fewer welders.",
+     "A higher boat price raises the revenue each welder's work brings in, so boatyards want more welders.",
+     "Faster welding raises each welder's marginal product, so each welder is worth more to a boatyard."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-8",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is Firm Y's marginal revenue product of the third worker, in dollars?",
+   "stimulus": "factor-markets-s3",
+   "why": {
+    "correct": "MRP = MP × MR. The third worker adds 4 units, and each adds \\$6 of marginal revenue for Firm Y: 4 × \\$6 = \\$24."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrp",
+     "args": [
+      4,
+      6
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        4,
+        10
+       ]
+      },
+      "why": "\\$40 multiplies by the price. Firm Y must cut its price to sell more, so each extra unit adds only its marginal revenue, \\$6, not the \\$10 price."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        6,
+        10
+       ]
+      },
+      "why": "\\$60 multiplies marginal revenue by price. MRP is marginal product times marginal revenue: 4 × \\$6."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-9",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is Firm X's marginal revenue product of the second worker, in dollars?",
+   "stimulus": "factor-markets-s3",
+   "why": {
+    "correct": "Firm X is a price taker, so its marginal revenue is the price, \\$10. MRP = 5 × \\$10 = \\$50."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrp",
+     "args": [
+      5,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mrp",
+       "args": [
+        5,
+        8
+       ]
+      },
+      "why": "\\$40 uses Firm Y's marginal revenue. Firm X sells every unit at \\$10, so its MR is \\$10."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        6,
+        5
+       ]
+      },
+      "why": "11 adds two marginal products. MRP is one worker's marginal product times marginal revenue: 5 × \\$10."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-10",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Use the table. Why does Firm Y's MRP fall faster than Firm X's as each firm adds workers?",
+   "stimulus": "factor-markets-s3",
+   "options": [
+    "Firm Y's workers have a smaller marginal product than Firm X's",
+    "Firm Y's marginal revenue falls as well as its marginal product",
+    "Firm X can charge a higher price than Firm Y for each unit",
+    "Firm X's marginal revenue rises as it sells more units"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "MRP = MP × MR. For a price taker MR is the constant price; for a single seller MR falls as output rises, because it lowers the price on every unit to sell one more.",
+    "options": [
+     "The table gives both firms the same marginal product for each worker.",
+     "Right: both firms face falling MP, but only Firm Y also faces falling MR, so its MRP drops faster.",
+     "Firm Y's price starts above \\$10; the gap comes from Firm Y's marginal revenue falling below its price.",
+     "A price taker's marginal revenue stays at the price, \\$10."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-11",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a factor market?",
+   "options": [
+    "A market where households buy finished goods from firms",
+    "A market where a government sets the price of each input",
+    "A market where firms sell goods to other countries",
+    "A market where firms buy labor, land and capital from their owners"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In a factor market, households (and other owners of resources) sell labor, land and capital, and firms buy them. Payments are wages, rent and interest.",
+    "options": [
+     "That is a product market.",
+     "Prices in factor markets are usually set by buyers and sellers; who sets them is not what defines the market.",
+     "Selling abroad is trade in goods, which happens in product markets.",
+     "Right: factor markets trade the inputs used to make goods and services."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-12",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why is the demand for a factor of production called a derived demand?",
+   "options": [
+    "Buyers want the product that the factor helps make",
+    "The factor's price is figured out by a formula set by the firm",
+    "Workers derive satisfaction from the goods they make",
+    "The factor's demand curve is drawn from the firm's total cost"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A bakery does not want bakers for their own sake; it wants them because people buy bread. If bread demand falls, the bakery wants fewer bakers.",
+    "options": [
+     "Right: the factor's value to the firm comes from the product's value to buyers.",
+     "Derived refers to where the demand comes from, not to how a price is calculated.",
+     "Workers' satisfaction is about the sellers of labor; derived demand is about the buyers.",
+     "It comes from the revenue the factor brings in (its MRP), which depends on the product's demand."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-13",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A firm sells its output in a perfectly competitive market. Which expression gives the marginal revenue product of a worker?",
+   "options": [
+    "Marginal revenue × price",
+    "Total product × price",
+    "Marginal product × price",
+    "Marginal product ÷ price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "MRP is the extra revenue from one more worker: the extra output (MP) times the extra revenue per unit (MR). In perfect competition MR = P.",
+    "options": [
+     "This multiplies two dollar amounts per unit and leaves out the worker's output. MRP = MP × MR.",
+     "That is the revenue from all the workers' output, not from one more worker.",
+     "Right: for a price taker, marginal revenue equals price, so MRP = MP × MR = MP × P.",
+     "Dividing gives units of output per dollar, a different measure. MRP multiplies MP by the revenue each unit adds."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-14",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why is a firm's MRP curve its demand curve for labor?",
+   "options": [
+    "It shows how many people want to work at each wage",
+    "It shows the firm's total cost of hiring each number of workers",
+    "It shows how much output each worker makes on average",
+    "It shows what each added worker is worth to the firm"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At a given wage, the firm keeps hiring while a worker adds at least that much revenue. So the MRP schedule tells how many workers the firm wants at each wage: its demand for labor.",
+    "options": [
+     "That describes the people offering to work, the sellers in the market, not the firm.",
+     "Costs are a different curve; MRP measures revenue added by each worker.",
+     "That is average product, not the extra revenue from one more worker.",
+     "Right: a firm is willing to pay up to a worker's MRP, so the MRP curve gives the quantity of labor it wants at each wage."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-15",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A new machine lets each of a firm's workers produce more output. The product price does not change. What happens to the MRP of each worker?",
+   "options": [
+    "It falls, because the machine replaces some workers",
+    "It rises, because each worker's marginal product rises",
+    "It stays the same, because the price of the product is unchanged",
+    "It rises, because the price of the product rises"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Higher productivity raises marginal product at each quantity of labor, so MRP rises even with the same product price.",
+    "options": [
+     "The question says each worker makes more; that raises MP and MRP at each quantity of labor.",
+     "Right: MRP = MP × MR, and MP is higher at every number of workers.",
+     "MRP depends on MP as well as the price; a rise in MP raises MRP.",
+     "The price is unchanged here; MRP rises through marginal product."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-16",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Hiring one more worker raises a firm's output by 8 units. Each extra unit adds \\$5 to the firm's revenue. What is that worker's marginal revenue product, in dollars?",
+   "why": {
+    "correct": "MRP = MP × MR = 8 × \\$5 = \\$40."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mrp",
+     "args": [
+      8,
+      5
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        8,
+        5
+       ]
+      },
+      "why": "13 adds the two numbers. MRP multiplies the extra output by the extra revenue per unit: 8 × \\$5."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        8,
+        5
+       ]
+      },
+      "why": "1.6 divides. MRP is marginal product times marginal revenue."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-17",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "analyze",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Put the links in order: buyers start wanting more bicycles, and a bike maker hires more assemblers.",
+   "options": [
+    "Demand for bicycles increases",
+    "The price of bicycles rises",
+    "Each assembler's MRP rises (MP × the higher price)",
+    "The bike maker wants to hire more assemblers at each wage"
+   ],
+   "why": {
+    "correct": "Derived demand runs from the product to the factor: more demand for the product, a higher product price, a higher MRP for each worker, and so more workers wanted at each wage."
+   }
+  },
+  {
+   "id": "mic-factor-markets-18",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are payments made in a factor market? Select all that apply.",
+   "options": [
+    "Wages a garage pays its mechanics",
+    "Rent a farmer pays for a field",
+    "The price a shopper pays for a loaf of bread",
+    "A shoe store's revenue from selling sneakers",
+    "A sales tax paid on a new phone"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Factor payments are wages (labor), rent (land), interest (capital) and profit (entrepreneurship).",
+    "options": [
+     "Right: wages are the payment for labor.",
+     "Right: rent is the payment for land.",
+     "Bread is a finished good, bought in a product market.",
+     "Revenue from selling goods comes from a product market.",
+     "A tax on a purchase of a good is part of a product-market sale, not a factor payment."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-19",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which of these is a transaction in a factor market?",
+   "options": [
+    "A student buys a coffee at the café",
+    "A café sells gift cards to customers",
+    "A café hires a weekend barista",
+    "A family buys a used car from a neighbor"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In a factor market the firm is the buyer and the owner of labor, land or capital is the seller.",
+    "options": [
+     "Coffee is a product sold to a household.",
+     "That is a sale of the café's product.",
+     "Right: the café is buying labor, a factor of production.",
+     "A car bought for the family's own use is a consumer good."
+    ]
+   }
+  },
+  {
+   "id": "mic-factor-markets-20",
+   "unit": "unit-5",
+   "topic": "factor-markets",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "The price of a good falls, and nothing else changes. What happens to the marginal revenue product of the workers who make it?",
+   "options": [
+    "It falls at every quantity of labor",
+    "It rises, because the good is cheaper to make",
+    "It stays the same, because marginal product is unchanged",
+    "It falls for the first worker and rises for the others"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a competitive seller MRP = MP × P. A lower P lowers MRP for every worker.",
+    "options": [
+     "Right: each worker makes the same output, but each unit now brings in less revenue.",
+     "A lower selling price lowers revenue per unit; it says nothing about cost.",
+     "MRP = MP × MR; with MR lower, MRP falls even though MP is the same.",
+     "The lower price lowers the revenue from every worker's output."
+    ]
+   }
+  }
+ ]
+}

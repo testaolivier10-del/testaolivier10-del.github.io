@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310" width="800" height="310" role="img" aria-labelledby="marginal-analysis-per-dollar-t marginal-analysis-per-dollar-d" font-family="Arial, Helvetica, sans-serif">
+<title id="marginal-analysis-per-dollar-t">Marginal utility per dollar picks the best bundle</title>
+<desc id="marginal-analysis-per-dollar-d">A table for Leo, who has $12 to spend on tacos at $2 and smoothies at $4. Marginal utility of tacos 20, 16, 12, 8, 4 (per dollar 10, 8, 6, 4, 2); of smoothies 48, 32, 24, 16 (per dollar 12, 8, 6, 4). The best bundle is 2 tacos and 2 smoothies, which spends the whole $12; the last of each gives 8 utils per dollar, and total utility is 116. Invented data for practice.</desc>
+<defs><marker id="marginal-analysis-per-dollar-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="marginal-analysis-per-dollar-arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="marginal-analysis-per-dollar-arV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="marginal-analysis-per-dollar-arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="marginal-analysis-per-dollar-arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="800" height="310" fill="#FFFFFF"/>
+<text x="400" y="30" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700">Leo has $12. Tacos cost $2, smoothies $4. Buy the unit with the higher MU per dollar first.</text>
+<rect x="60" y="60" width="80" height="36" rx="0" fill="#F7F3F6" stroke="#6B7370" stroke-width="1"/>
+<text x="100" y="83" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Unit</text>
+<rect x="140" y="60" width="110" height="36" rx="0" fill="#F7F3F6" stroke="#6B7370" stroke-width="1"/>
+<text x="195" y="83" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">MU taco</text>
+<rect x="250" y="60" width="110" height="36" rx="0" fill="#F8E6F1" stroke="#6B7370" stroke-width="1"/>
+<text x="305" y="83" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">MU / $2</text>
+<rect x="360" y="60" width="130" height="36" rx="0" fill="#F7F3F6" stroke="#6B7370" stroke-width="1"/>
+<text x="425" y="83" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">MU smoothie</text>
+<rect x="490" y="60" width="110" height="36" rx="0" fill="#E3EEF6" stroke="#6B7370" stroke-width="1"/>
+<text x="545" y="83" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">MU / $4</text>
+<rect x="60" y="96" width="80" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="100" y="119" font-size="13" fill="#1F2A28" text-anchor="middle">1</text>
+<rect x="140" y="96" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="195" y="119" font-size="13" fill="#1F2A28" text-anchor="middle">20</text>
+<rect x="250" y="96" width="110" height="36" rx="0" fill="#F8E6F1" stroke="#6B7370" stroke-width="1"/>
+<text x="305" y="119" font-size="13" fill="#7E1A5E" text-anchor="middle" font-weight="700">10</text>
+<rect x="360" y="96" width="130" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="425" y="119" font-size="13" fill="#1F2A28" text-anchor="middle">48</text>
+<rect x="490" y="96" width="110" height="36" rx="0" fill="#E3EEF6" stroke="#6B7370" stroke-width="1"/>
+<text x="545" y="119" font-size="13" fill="#084F78" text-anchor="middle" font-weight="700">12</text>
+<rect x="60" y="132" width="80" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="100" y="155" font-size="13" fill="#1F2A28" text-anchor="middle">2</text>
+<rect x="140" y="132" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="195" y="155" font-size="13" fill="#1F2A28" text-anchor="middle">16</text>
+<rect x="250" y="132" width="110" height="36" rx="0" fill="#F8E6F1" stroke="#6B7370" stroke-width="1"/>
+<text x="305" y="155" font-size="13" fill="#7E1A5E" text-anchor="middle" font-weight="700">8</text>
+<rect x="360" y="132" width="130" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="425" y="155" font-size="13" fill="#1F2A28" text-anchor="middle">32</text>
+<rect x="490" y="132" width="110" height="36" rx="0" fill="#E3EEF6" stroke="#6B7370" stroke-width="1"/>
+<text x="545" y="155" font-size="13" fill="#084F78" text-anchor="middle" font-weight="700">8</text>
+<rect x="60" y="168" width="80" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="100" y="191" font-size="13" fill="#1F2A28" text-anchor="middle">3</text>
+<rect x="140" y="168" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="195" y="191" font-size="13" fill="#1F2A28" text-anchor="middle">12</text>
+<rect x="250" y="168" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="305" y="191" font-size="13" fill="#1F2A28" text-anchor="middle">6</text>
+<rect x="360" y="168" width="130" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="425" y="191" font-size="13" fill="#1F2A28" text-anchor="middle">24</text>
+<rect x="490" y="168" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="545" y="191" font-size="13" fill="#1F2A28" text-anchor="middle">6</text>
+<rect x="60" y="204" width="80" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="100" y="227" font-size="13" fill="#1F2A28" text-anchor="middle">4</text>
+<rect x="140" y="204" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="195" y="227" font-size="13" fill="#1F2A28" text-anchor="middle">8</text>
+<rect x="250" y="204" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="305" y="227" font-size="13" fill="#1F2A28" text-anchor="middle">4</text>
+<rect x="360" y="204" width="130" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="425" y="227" font-size="13" fill="#1F2A28" text-anchor="middle">16</text>
+<rect x="490" y="204" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="545" y="227" font-size="13" fill="#1F2A28" text-anchor="middle">4</text>
+<rect x="60" y="240" width="80" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="100" y="263" font-size="13" fill="#1F2A28" text-anchor="middle">5</text>
+<rect x="140" y="240" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="195" y="263" font-size="13" fill="#1F2A28" text-anchor="middle">4</text>
+<rect x="250" y="240" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="305" y="263" font-size="13" fill="#1F2A28" text-anchor="middle">2</text>
+<rect x="360" y="240" width="130" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="425" y="263" font-size="13" fill="#1F2A28" text-anchor="middle"></text>
+<rect x="490" y="240" width="110" height="36" rx="0" fill="#FFFFFF" stroke="#6B7370" stroke-width="1"/>
+<text x="545" y="263" font-size="13" fill="#1F2A28" text-anchor="middle"></text>
+<text x="620" y="110" font-size="14" fill="#1F2A28" font-weight="700">The best bundle:</text>
+<text x="620" y="134" font-size="13" fill="#1F2A28">2 tacos and 2 smoothies</text>
+<text x="620" y="154" font-size="13" fill="#1F2A28">costs $4 + $8 = $12</text>
+<text x="620" y="186" font-size="13" fill="#1F2A28">The last taco and the last</text>
+<text x="620" y="204" font-size="13" fill="#1F2A28">smoothie each give 8 per</text>
+<text x="620" y="222" font-size="13" fill="#1F2A28">dollar: the ratios are equal.</text>
+<text x="620" y="256" font-size="13" fill="#D55E00" font-weight="700">Total utility: 116</text>
+<text x="400" y="290" font-size="12" fill="#6B7370" text-anchor="middle">MU falls with each extra unit (diminishing marginal utility). Invented data.</text>
+</svg>

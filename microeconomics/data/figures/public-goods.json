@@ -1,0 +1,12 @@
+{
+ "public-goods-grid": {
+  "file": "figures/public-goods-grid.svg",
+  "ext": "svg",
+  "w": 700,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A two-by-two grid. Columns: rival and nonrival. Rows: excludable and nonexcludable. Rival and excludable: private goods, such as a sandwich or a bike. Nonrival and excludable: club goods, such as a streaming service. Rival and nonexcludable: common resources, such as fish in the ocean. Nonrival and nonexcludable: public goods, such as national defense or a flood wall."
+ }
+}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" width="700" height="440" role="img" aria-labelledby="government-intervention-tax-t government-intervention-tax-d" font-family="Arial, Helvetica, sans-serif">
+<title id="government-intervention-tax-t">A per-unit tax: who pays, the revenue and the deadweight loss</title>
+<desc id="government-intervention-tax-d">Ferry rides: demand D and supply S cross at $5 and 50 rides. A $2 tax on each ride, collected from sellers, shifts supply up by $2 to S + tax. The new quantity is 40 rides; buyers pay $6 and sellers keep $4. Tax revenue is the rectangle $2 times 40 rides, $80: buyers pay $40 of it and sellers $40. Consumer surplus shrinks to the triangle above $6, producer surplus to the triangle below $4, and the triangle between the curves from 40 to 50 rides, $10, is deadweight loss. Invented data for practice.</desc>
+<defs><marker id="government-intervention-tax-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="government-intervention-tax-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="government-intervention-tax-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="government-intervention-tax-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="700" height="440" fill="#FFFFFF"/>
+<path d="M80 44V370H466" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="460" y="406" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="460" dy="0">Ferry rides per day</tspan></text>
+<text transform="translate(40 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M156 370v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="156" y="387" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="156" dy="0">20</tspan></text>
+<path d="M346 370v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="346" y="387" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="346" dy="0">70</tspan></text>
+<path d="M460 370v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="460" y="387" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="460" dy="0">100</tspan></text>
+<path d="M80 311.8h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="315.8" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$2</tspan></text>
+<path d="M80 253.6h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="257.6" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$4</tspan></text>
+<path d="M80 224.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="228.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$5</tspan></text>
+<path d="M80 195.5h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="199.5" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$6</tspan></text>
+<path d="M80 79.1h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="72" y="83.1" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="72" dy="0">$10</tspan></text>
+<path d="M80 79.1L232 195.5L80 195.5Z" fill="#DCEAF5"/>
+<text x="118" y="170.4" font-size="13" text-anchor="middle" fill="#084F78" font-weight="bold"><tspan x="118" dy="0">CS</tspan></text>
+<path d="M80 195.5L232 195.5L232 253.6L80 253.6Z" fill="#FCEBC8"/>
+<text x="121.8" y="232.9" font-size="12" text-anchor="middle" fill="#8A5A00" font-weight="bold"><tspan x="121.8" dy="0">Revenue</tspan></text>
+<path d="M232 195.5L270 224.5L232 253.6Z" fill="#FBD9C6" stroke="#D55E00" stroke-width="1.4"/>
+<path d="M80 253.6L232 253.6L80 370Z" fill="#F6E1EE"/>
+<text x="102.8" y="330.4" font-size="13" text-anchor="middle" fill="#7E1A5E" font-weight="bold"><tspan x="102.8" dy="0">PS</tspan></text>
+<path d="M80 79.1L441 355.5" fill="none" stroke="#084F78" stroke-width="2.8" stroke-linecap="round"/>
+<text x="446" y="359.5" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="446" dy="0">D</tspan></text>
+<path d="M80 370L441 93.6" fill="none" stroke="#7E1A5E" stroke-width="2.8" stroke-linecap="round"/>
+<text x="446" y="97.6" font-size="13" text-anchor="start" fill="#7E1A5E" font-weight="bold"><tspan x="446" dy="0">S</tspan></text>
+<path d="M80 311.8L403 64.5" fill="none" stroke="#7E1A5E" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="7 4"/>
+<text x="395" y="58.5" font-size="13" text-anchor="end" fill="#7E1A5E" font-weight="bold"><tspan x="395" dy="0">S + tax</tspan></text>
+<path d="M80 195.5H232" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M80 253.6H232" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M232 195.5V370" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="232" y="387" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="232" dy="0">40</tspan></text>
+<path d="M270 224.5V370" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="270" y="387" font-size="12" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="270" dy="0">50</tspan></text>
+<circle cx="270" cy="224.5" r="4.5" fill="#1F2A28"/>
+<text x="278" y="220.5" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="278" dy="0">E1</tspan></text>
+<circle cx="232" cy="195.5" r="4.5" fill="#1F2A28"/>
+<text x="238" y="186.5" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="238" dy="0">E2</tspan></text>
+<text x="300.4" y="178" font-size="12" text-anchor="start" fill="#D55E00" font-weight="bold"><tspan x="300.4" dy="0">DWL $10</tspan></text>
+<path d="M298.5 183.8L254.8 221.6" stroke="#D55E00" stroke-width="1.4"/>
+<text x="490" y="120" font-size="13" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="490" dy="0">Buyers pay $6 (up $1)</tspan><tspan x="490" dy="16.25">Sellers keep $4 (down $1)</tspan><tspan x="490" dy="16.25">Tax per ride: $6 − $4 = $2</tspan></text>
+<text x="490" y="200" font-size="13" text-anchor="start" fill="#8A5A00" font-weight="bold"><tspan x="490" dy="0">Revenue = $2 × 40 = $80</tspan><tspan x="490" dy="16.25">DWL = ½ × (50 − 40) × $2</tspan><tspan x="490" dy="16.25">       = $10</tspan></text>
+<text x="350" y="430" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="350" dy="0">Invented data for practice.</tspan></text>
+</svg>

@@ -1,0 +1,17 @@
+{
+ "production-function": {
+  "def": "The relationship between the inputs a firm uses and the most output it can make from them. In the short run at least one input is fixed; in the long run every input can change."
+ },
+ "total-product": {
+  "def": "Total product (TP): the whole amount of output a firm produces with a given amount of an input, such as a number of workers."
+ },
+ "marginal-product": {
+  "def": "Marginal product (MP): the extra output from one more unit of an input, the change in total product divided by the change in that input."
+ },
+ "average-product": {
+  "def": "Average product: output per unit of an input, total product divided by the amount of that input (for labor, output per worker)."
+ },
+ "diminishing-returns": {
+  "def": "Diminishing marginal returns: in the short run, as more of a variable input is added to a fixed input, the marginal product of that input eventually falls."
+ }
+}

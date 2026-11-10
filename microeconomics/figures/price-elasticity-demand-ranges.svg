@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" width="780" height="420" role="img" aria-labelledby="price-elasticity-demand-ranges-t price-elasticity-demand-ranges-d" font-family="Arial, Helvetica, sans-serif">
+<title id="price-elasticity-demand-ranges-t">Elasticity changes along a straight-line demand curve</title>
+<desc id="price-elasticity-demand-ranges-d">Left: a straight-line demand curve for phone cases from $10 at zero cases to 100 cases at $0. Above the midpoint ($5, 50 cases) demand is elastic; at the midpoint it is unit elastic; below it demand is inelastic, even though the slope is the same everywhere. Right: total revenue (price times quantity) at each quantity. It rises from $0 to its largest value, $250, at the midpoint and then falls back to $0: cutting the price raises revenue in the elastic range and lowers it in the inelastic range. Invented data for practice.</desc>
+<defs><marker id="price-elasticity-demand-ranges-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="price-elasticity-demand-ranges-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="price-elasticity-demand-ranges-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="price-elasticity-demand-ranges-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="780" height="420" fill="#FFFFFF"/>
+<path d="M70 44V320H356" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="210" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="210" dy="0">Demand</tspan></text>
+<text x="350" y="356" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="350" dy="0">Quantity of cases</tspan></text>
+<text transform="translate(30 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Price</text>
+<path d="M126 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="126" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="126" dy="0">20</tspan></text>
+<path d="M182 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="182" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="182" dy="0">40</tspan></text>
+<path d="M238 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="238" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="238" dy="0">60</tspan></text>
+<path d="M294 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="294" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="294" dy="0">80</tspan></text>
+<path d="M350 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="350" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="350" dy="0">100</tspan></text>
+<path d="M70 266h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="270" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$2</tspan></text>
+<path d="M70 212h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="216" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$4</tspan></text>
+<path d="M70 158h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="162" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$6</tspan></text>
+<path d="M70 104h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="108" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$8</tspan></text>
+<path d="M70 50h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="62" y="54" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="62" dy="0">$10</tspan></text>
+<path d="M70 50L210 185" fill="none" stroke="#084F78" stroke-width="4" stroke-linecap="round"/>
+<path d="M210 185L350 320" fill="none" stroke="#4B8DB8" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 185H210" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<text x="64" y="189" font-size="12" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="64" dy="0">$5</tspan></text>
+<path d="M210 185V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<circle cx="210" cy="185" r="4.5" fill="#1F2A28"/>
+<text x="220" y="177" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="220" dy="0">Unit elastic</tspan></text>
+<text x="131.6" y="87.8" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="131.6" dy="0">Elastic</tspan><tspan x="131.6" dy="16.25">(|E| &gt; 1)</tspan></text>
+<text x="266" y="222.8" font-size="13" text-anchor="start" fill="#4B8DB8" font-weight="bold"><tspan x="266" dy="0">Inelastic</tspan><tspan x="266" dy="16.25">(|E| &lt; 1)</tspan></text>
+<text x="327.6" y="260.6" font-size="13" text-anchor="start" fill="#084F78" font-weight="bold"><tspan x="327.6" dy="0">D</tspan></text>
+<path d="M460 44V320H746" fill="none" stroke="#1F2A28" stroke-width="1.8"/>
+<text x="600" y="34" font-size="15" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="600" dy="0">Total revenue</tspan></text>
+<text x="740" y="356" font-size="13" text-anchor="end" fill="#1F2A28" font-weight="bold"><tspan x="740" dy="0">Quantity of cases</tspan></text>
+<text transform="translate(414 50) rotate(-90)" text-anchor="end" font-size="13" font-weight="bold" fill="#1F2A28">Total revenue</text>
+<path d="M516 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="516" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="516" dy="0">20</tspan></text>
+<path d="M572 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="572" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="572" dy="0">40</tspan></text>
+<path d="M628 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="628" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="628" dy="0">60</tspan></text>
+<path d="M684 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="684" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="684" dy="0">80</tspan></text>
+<path d="M740 320v5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="740" y="337" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="740" dy="0">100</tspan></text>
+<path d="M460 275h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="452" y="279" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="452" dy="0">$50</tspan></text>
+<path d="M460 230h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="452" y="234" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="452" dy="0">$100</tspan></text>
+<path d="M460 185h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="452" y="189" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="452" dy="0">$150</tspan></text>
+<path d="M460 140h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="452" y="144" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="452" dy="0">$200</tspan></text>
+<path d="M460 95h-5" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="452" y="99" font-size="11" text-anchor="end" fill="#5B6664"><tspan x="452" dy="0">$250</tspan></text>
+<path d="M460 320L467 298.1L474 277.3L481 257.6L488 239L495 221.6L502 205.3L509 190.1L516 176L523 163.1L530 151.3L537 140.6L544 131L551 122.6L558 115.3L565 109.1L572 104L579 100.1L586 97.3L593 95.6L600 95L607 95.6L614 97.3L621 100.1L628 104L635 109.1L642 115.3L649 122.6L656 131L663 140.6L670 151.3L677 163.1L684 176L691 190.1L698 205.3L705 221.6L712 239L719 257.6L726 277.3L733 298.1L740 320" fill="none" stroke="#355A0A" stroke-width="2.8"/>
+<text x="720.4" y="212" font-size="13" text-anchor="start" fill="#355A0A" font-weight="bold"><tspan x="720.4" dy="0">TR</tspan></text>
+<path d="M460 95H600" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<path d="M600 95V320" stroke="#1F2A28" stroke-width="1.2" fill="none" stroke-dasharray="4 4"/>
+<circle cx="600" cy="95" r="4.5" fill="#1F2A28"/>
+<text x="608" y="85" font-size="12" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="608" dy="0">Largest: $250 at $5</tspan></text>
+<text x="560.8" y="257" font-size="12" text-anchor="middle" fill="#084F78" font-weight="bold"><tspan x="560.8" dy="0">Price cut,</tspan><tspan x="560.8" dy="15">TR rises</tspan></text>
+<text x="639.2" y="257" font-size="12" text-anchor="middle" fill="#4B8DB8" font-weight="bold"><tspan x="639.2" dy="0">Price cut,</tspan><tspan x="639.2" dy="15">TR falls</tspan></text>
+<text x="390" y="410" font-size="11" text-anchor="middle" fill="#5B6664"><tspan x="390" dy="0">Invented data for practice. The slope of D is the same everywhere; elasticity is not.</tspan></text>
+</svg>

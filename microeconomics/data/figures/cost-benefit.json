@@ -1,0 +1,12 @@
+{
+ "cost-benefit-net": {
+  "file": "figures/cost-benefit-net.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bar chart of total benefit and total cost for 0 to 5 guitar lessons a month at $25 a lesson; net benefit is largest, $45, at 3 lessons. Invented data."
+ }
+}

@@ -1,0 +1,622 @@
+{
+ "stimuli": {
+  "production-function-s1": {
+   "kind": "data",
+   "title": "Hollis Berry Farm: pickers and baskets",
+   "invented": true,
+   "table": {
+    "caption": "Baskets of berries picked per day on one field as pickers are added (invented data for practice)",
+    "cols": [
+     "Pickers",
+     "Total product (baskets per day)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0"
+     ],
+     [
+      "1",
+      "12"
+     ],
+     [
+      "2",
+      "30"
+     ],
+     [
+      "3",
+      "45"
+     ],
+     [
+      "4",
+      "56"
+     ],
+     [
+      "5",
+      "62"
+     ],
+     [
+      "6",
+      "62"
+     ]
+    ]
+   }
+  },
+  "production-function-s2": {
+   "kind": "graph",
+   "title": "Total, marginal and average product in a bakery with one oven",
+   "figure": "production-function-tp-mp"
+  },
+  "production-function-s3": {
+   "kind": "text",
+   "title": "Copperline Print Shop adds workers",
+   "text": "<p>Copperline Print Shop owns two printing presses and cannot buy more this month. With one worker, that worker sets up jobs, runs the presses and packs orders. With two or three workers, one sets up jobs while the others run the presses, and output per worker climbs. By the sixth worker, people are waiting in line for a free press, and each new worker adds less output than the one before. (An invented business, for practice.)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "mic-production-function-1",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the marginal product of the fourth picker, in baskets per day?",
+   "why": {
+    "correct": "Marginal product is the change in total product divided by the change in labor: $\\frac{56 - 45}{4 - 3} = 11$ baskets."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalProduct",
+     "args": [
+      45,
+      56,
+      3,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "averageProduct",
+       "args": [
+        56,
+        4
+       ]
+      },
+      "why": "That is the average product of four pickers (56 / 4 = 14). Marginal product is the change in total product from the third to the fourth picker."
+     },
+     {
+      "value": 56,
+      "why": "That is the total product with four pickers. Marginal product is the extra output the fourth picker adds: subtract 45 from 56."
+     }
+    ]
+   },
+   "stimulus": "production-function-s1"
+  },
+  {
+   "id": "mic-production-function-2",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "Use the table. What is the average product when the farm has five pickers, in baskets per picker?",
+   "why": {
+    "correct": "Average product is total product divided by labor: $62 \\div 5 = 12.4$ baskets per picker."
+   },
+   "numeric": {
+    "from": {
+     "fn": "averageProduct",
+     "args": [
+      62,
+      5
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "marginalProduct",
+       "args": [
+        56,
+        62,
+        4,
+        5
+       ]
+      },
+      "why": "That is the marginal product of the fifth picker (62 - 56 = 6). Average product is total product divided by the number of pickers."
+     },
+     {
+      "value": 62,
+      "why": "That is total product. Divide it by the five pickers to get output per picker."
+     }
+    ]
+   },
+   "stimulus": "production-function-s1"
+  },
+  {
+   "id": "mic-production-function-3",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Use the table. With which picker do diminishing marginal returns begin?",
+   "options": [
+    "The second picker, who adds 18 baskets",
+    "The sixth picker, who adds no baskets",
+    "The third picker: MP falls from 18 to 15",
+    "The first picker, because output starts at zero"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Marginal product is 12, 18, 15, 11, 6 and 0. It first falls with the third picker, so diminishing marginal returns begin there.",
+    "options": [
+     "The second picker adds more than the first (18 > 12), so marginal product is still rising.",
+     "By the sixth picker marginal product has fallen to zero, but it started falling much earlier.",
+     "Right: marginal product rises from 12 to 18, then falls to 15 with the third picker.",
+     "The first picker adds 12 baskets; marginal product then rises, so returns are not yet diminishing."
+    ]
+   },
+   "stimulus": "production-function-s1"
+  },
+  {
+   "id": "mic-production-function-4",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Use the table. The owner leases a second field next season and can change the number of fields, pickers and crates. Which statement describes this decision?",
+   "options": [
+    "It is a long-run decision, because each input can now change",
+    "It is a short-run decision, because the farm still has pickers",
+    "It shows diminishing marginal returns, because output per field falls",
+    "It changes nothing, because the number of pickers per field stays the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The short run has at least one fixed input (here, the one field). When the farm can change every input, including land, it is planning for the long run.",
+    "options": [
+     "Right: once no input is fixed, the firm is in the long run.",
+     "Pickers can change in the short run too; what makes this long run is that the land can now change.",
+     "Diminishing marginal returns come from adding one input to a fixed input. Here no input is fixed.",
+     "Changing the amount of land is exactly what makes this a long-run choice."
+    ]
+   },
+   "stimulus": "production-function-s1"
+  },
+  {
+   "id": "mic-production-function-5",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In the figure, with which worker does marginal product equal average product?",
+   "options": [
+    "The second worker, where marginal product is highest",
+    "The fifth worker, where total product is 48 loaves",
+    "The first worker, where both start at zero",
+    "The third worker, where both are 12 loaves"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "MP is 10, 14, 12, 8, 4, 0 and average product is 10, 12, 12, 11, 9.6, 8. As MP falls from its peak it meets average product at the third worker (12 and 12); after that MP is below average product and average product falls.",
+    "options": [
+     "Marginal product (14) is above average product (12) for the second worker.",
+     "Marginal product (4) is far below average product (9.6) for the fifth worker.",
+     "For the first worker both are 10 loaves, but the question asks where the curves meet as MP falls; the third worker is where MP comes down to average product.",
+     "Right: the third worker adds 12 loaves and average product with three workers is 36 / 3 = 12."
+    ]
+   },
+   "stimulus": "production-function-s2"
+  },
+  {
+   "id": "mic-production-function-6",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the figure, diminishing marginal returns begin with the third worker, yet total product keeps rising through the fifth worker. Why?",
+   "options": [
+    "Average product is rising, which pulls total product up",
+    "Marginal product falls but stays above zero",
+    "The bakery buys more ovens as it hires",
+    "Total product rises as long as marginal product rises"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Diminishing marginal returns means each worker adds less than the one before, not that output falls. Total product rises while marginal product is positive and stops rising when MP reaches zero (the sixth worker).",
+    "options": [
+     "Average product is falling after the third worker, and it does not drive total product.",
+     "Right: falling MP slows the rise in TP; TP falls only if MP turns negative.",
+     "The oven is fixed in the short run; that is why marginal product falls.",
+     "Marginal product is already falling here, yet total product still rises."
+    ]
+   },
+   "stimulus": "production-function-s2"
+  },
+  {
+   "id": "mic-production-function-7",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.C",
+   "q": "Which statements does the figure support? Select all that apply.",
+   "options": [
+    "The second worker adds 14 loaves",
+    "Average product falls once marginal product is below it",
+    "Total product falls when the sixth worker is hired",
+    "Diminishing marginal returns begin with the second worker"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Read MP as the change in TP for each worker and compare it with average product: 14 for the second worker, and average product falls once MP drops below it.",
+    "options": [
+     "True: TP rises from 10 to 24.",
+     "True: from the fourth worker on, MP is below average product and average product falls.",
+     "False: TP stays at 48; the sixth worker adds zero, not a negative amount.",
+     "False: the second worker adds more (14) than the first (10)."
+    ]
+   },
+   "stimulus": "production-function-s2"
+  },
+  {
+   "id": "mic-production-function-8",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In the scenario, why does output per worker climb as the shop goes from one worker to three?",
+   "options": [
+    "The shop buys more presses for each new worker",
+    "Workers specialize: one sets up jobs while others run the presses",
+    "Each new worker is paid a higher wage",
+    "The presses wear out more slowly with more workers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With a few workers sharing the fixed presses, each can focus on one task. Specialization raises marginal product before diminishing returns set in.",
+    "options": [
+     "The scenario says the shop cannot buy more presses this month.",
+     "Right: specialization and the division of labor raise marginal product at first.",
+     "Wages are not in the scenario, and pay does not set marginal product here.",
+     "Nothing in the scenario says this; the gain comes from dividing the tasks."
+    ]
+   },
+   "stimulus": "production-function-s3"
+  },
+  {
+   "id": "mic-production-function-9",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the scenario, which idea explains why the sixth worker adds less output than the fifth?",
+   "options": [
+    "The shop has grown too large to manage well",
+    "A fall in demand for printing",
+    "Comparative advantage, because the sixth worker is less skilled",
+    "Diminishing marginal returns, because the presses are a fixed input"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Diminishing marginal returns happen in the short run when a variable input (workers) is added to a fixed input (two presses).",
+    "options": [
+     "Size problems belong to the long run, when every input can change; here the presses are fixed.",
+     "Demand is not in the scenario; the drop in added output comes from the production process.",
+     "Nothing says the sixth worker is less skilled; the limit is the number of presses.",
+     "Right: more workers share the same two presses, so each adds less."
+    ]
+   },
+   "stimulus": "production-function-s3"
+  },
+  {
+   "id": "mic-production-function-10",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Next month Copperline doubles its presses to four and keeps six workers. What happens to the marginal product of the sixth worker?",
+   "options": [
+    "It rises, because each worker now has more presses to work with",
+    "It falls, because diminishing marginal returns get stronger",
+    "It stays the same, because the number of workers did not change",
+    "It becomes zero, because the shop now has too many presses"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Marginal product depends on how much of the other inputs workers have. With four presses the sixth worker no longer waits in line, so the output that worker adds rises.",
+    "options": [
+     "Right: more of the other input makes each worker more productive.",
+     "Diminishing returns come from crowding a fixed input; adding presses eases the crowding.",
+     "The workers are the same, but each now has more capital, so each can produce more.",
+     "Extra presses do not make a worker less productive."
+    ]
+   },
+   "stimulus": "production-function-s3"
+  },
+  {
+   "id": "mic-production-function-11",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What makes a period \"the short run\" for a firm?",
+   "options": [
+    "It lasts less than one year",
+    "The firm can change each input it uses",
+    "At least one input is fixed",
+    "The firm produces no output yet"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In the short run at least one input is fixed; in the long run every input can change. The length in calendar time depends on the industry.",
+    "options": [
+     "The short run is not a set length of time; it ends when every input can change.",
+     "That describes the long run.",
+     "Right: the short run is defined by a fixed input, not by a number of months.",
+     "A firm produces in the short run; it just cannot change every input."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-function-12",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A call center's total product rises from 300 to 340 calls a day when it goes from 10 to 12 workers. What is the marginal product per added worker, in calls a day?",
+   "why": {
+    "correct": "Marginal product is the change in total product divided by the change in labor: $\\frac{340 - 300}{12 - 10} = 20$ calls per added worker."
+   },
+   "numeric": {
+    "from": {
+     "fn": "marginalProduct",
+     "args": [
+      300,
+      340,
+      10,
+      12
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "That is the change in total product for both workers together. Divide by the change in labor (2 workers)."
+     },
+     {
+      "from": {
+       "fn": "averageProduct",
+       "args": [
+        340,
+        12
+       ]
+      },
+      "why": "That is the average product of 12 workers. Marginal product uses the change in output and the change in labor."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mic-production-function-13",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is a production function?",
+   "options": [
+    "A list of the prices a firm charges for each product",
+    "A table of how many units buyers want at each price",
+    "How much output each mix of inputs can make",
+    "A record of the firm's yearly spending on wages"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A production function describes the relationship between the inputs a firm uses (labor, capital, land) and the output it can produce.",
+    "options": [
+     "Prices belong to demand and revenue, not to the production function.",
+     "That is a demand schedule.",
+     "Right: a production function links inputs to output.",
+     "Spending is a cost; the production function is about physical output."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-function-14",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "At a bike repair shop, the marginal product of the next mechanic is below the current average product. If the shop hires that mechanic, average product will",
+   "options": [
+    "fall, because the mechanic adds less than the average",
+    "rise, because total product rises",
+    "stay the same, because marginal product is still positive",
+    "fall to zero, because returns are diminishing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Marginal product below average product pulls average product down, just as a test score below your average lowers your average.",
+    "options": [
+     "Right: adding a value below an average pulls the average down.",
+     "Total product rises, but by less than the average, so output per worker falls.",
+     "A positive marginal product raises total product, but the average depends on how MP compares with average product.",
+     "Average product falls a little; it does not drop to zero."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-function-15",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why do diminishing marginal returns occur in the short run?",
+   "options": [
+    "Later workers hired are less skilled than the first ones",
+    "The price of the product falls as output rises",
+    "The firm grows so large that it is hard to manage",
+    "A variable input is added to a fixed input"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Diminishing marginal returns are a short-run idea: adding workers to a fixed kitchen, field or factory eventually leaves each new worker less of the fixed input.",
+    "options": [
+     "The idea assumes workers are alike; returns diminish even with identical workers.",
+     "Diminishing returns are about physical output, not prices.",
+     "That is a long-run problem of size, when no input is fixed.",
+     "Right: that is the source of diminishing marginal returns."
+    ]
+   }
+  },
+  {
+   "id": "mic-production-function-16",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.A",
+   "q": "Workers are added one at a time to a kitchen of fixed size. Put the stages in the order they happen.",
+   "options": [
+    "Marginal product rises as workers specialize",
+    "Marginal product falls but stays positive: diminishing marginal returns",
+    "Marginal product reaches zero and total product is at its maximum",
+    "Marginal product turns negative and total product falls"
+   ],
+   "why": {
+    "correct": "Specialization first raises marginal product; then crowding the fixed kitchen lowers it; at zero total product peaks; beyond that, extra workers get in the way and total product falls."
+   }
+  },
+  {
+   "id": "mic-production-function-17",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "q": "Make the explanation specific: a restaurant adds cooks to a kitchen with one stove. Fill in each blank.",
+   "why": {
+    "correct": "A fixed input shared by more workers is what makes marginal product fall in the short run."
+   },
+   "specific": {
+    "frame": "Because the ___ is fixed, each added cook has ___ of it to use, so the marginal product of each cook ___.",
+    "slots": {
+     "input": {
+      "label": "The fixed input",
+      "options": [
+       "stove",
+       "number of cooks"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The number of cooks is what changes; the stove is the fixed input."
+      }
+     },
+     "share": {
+      "label": "How much each cook has",
+      "options": [
+       "less",
+       "more"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More cooks share one stove, so each has less of it, not more."
+      }
+     },
+     "mp": {
+      "label": "Marginal product",
+      "options": [
+       "falls",
+       "rises"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Once cooks crowd the stove, each added cook adds less than the one before."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true
+    },
+    "model": "Because the stove is fixed, each added cook has less of it to use, so the marginal product of each added cook falls: diminishing marginal returns."
+   }
+  },
+  {
+   "id": "mic-production-function-18",
+   "unit": "unit-3",
+   "topic": "production-function",
+   "level": "analyze",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "q": "A tutoring center's five tutors have an average product of 20 sessions a week. A sixth tutor would add 14 sessions. What would the average product of six tutors be, in sessions per tutor?",
+   "why": {
+    "correct": "Total product rises from $5 \\times 20 = 100$ to $100 + 14 = 114$ sessions, so average product is $114 \\div 6 = 19$: the new tutor, below the average, pulls it down."
+   },
+   "numeric": {
+    "from": {
+     "fn": "averageProduct",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          20,
+          5
+         ]
+        },
+        14
+       ]
+      },
+      6
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 17,
+      "why": "That averages 20 and 14 as if they were two equal groups. Find total product first: 5 x 20 + 14 = 114 sessions."
+     },
+     {
+      "value": 14,
+      "why": "That is the sixth tutor's marginal product, not the average for all six."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "comparative-advantage-workshops": {
+  "file": "figures/comparative-advantage-workshops.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two straight production possibilities lines for one day: Fenwick Workshop, 12 chairs or 6 tables, and Garnet Workshop, 8 chairs or 2 tables. A table costs Fenwick 2 chairs and Garnet 4; a chair costs Fenwick 0.5 table and Garnet 0.25."
+ }
+}

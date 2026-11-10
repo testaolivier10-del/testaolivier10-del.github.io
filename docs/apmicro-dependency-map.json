@@ -2345,9 +2345,8 @@
     "d = MR = AR = P",
     "MR = D = AR = P"
    ],
-   "taughtIn": "perfect-competition",
+   "taughtIn": "profit-maximization",
    "dependsOn": [
-    "perfect-competition",
     "marginal-revenue"
    ]
   },
@@ -2416,7 +2415,7 @@
    "aliases": [
     "monopolist"
    ],
-   "taughtIn": "monopoly",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
     "barriers"
    ]
@@ -2427,9 +2426,9 @@
    "aliases": [
     "MR below demand"
    ],
-   "taughtIn": "monopoly",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
-    "monopoly",
+    "market-power",
     "marginal-revenue"
    ]
   },
@@ -2474,7 +2473,7 @@
    "aliases": [
     "product differentiation"
    ],
-   "taughtIn": "monopolistic-competition",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
     "market-power"
    ]
@@ -2495,7 +2494,7 @@
    "aliases": [
     "interdependence"
    ],
-   "taughtIn": "oligopoly-game-theory",
+   "taughtIn": "imperfect-competition",
    "dependsOn": [
     "market-power"
    ]
@@ -2553,6 +2552,29 @@
    "taughtIn": "oligopoly-game-theory",
    "dependsOn": [
     "payoff-matrix"
+   ]
+  },
+  {
+   "id": "game-theory",
+   "term": "game theory",
+   "aliases": [
+    "strategic interaction"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "oligopoly"
+   ]
+  },
+  {
+   "id": "prisoners-dilemma",
+   "term": "prisoner's dilemma",
+   "aliases": [
+    "prisoners' dilemma"
+   ],
+   "taughtIn": "oligopoly-game-theory",
+   "dependsOn": [
+    "dominant-strategy",
+    "nash-equilibrium"
    ]
   },
   {
@@ -2783,9 +2805,8 @@
    "aliases": [
     "lump-sum subsidy"
    ],
-   "taughtIn": "externalities",
+   "taughtIn": "monopoly",
    "dependsOn": [
-    "pigouvian",
     "fixed-cost"
    ]
   },

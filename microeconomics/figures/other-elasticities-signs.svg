@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" role="img" aria-labelledby="other-elasticities-signs-t other-elasticities-signs-d" font-family="Arial, Helvetica, sans-serif">
+<title id="other-elasticities-signs-t">Read the sign: income and cross-price elasticity</title>
+<desc id="other-elasticities-signs-d">Two number lines. Income elasticity of demand: below zero the good is inferior (buyers want less when income rises); above zero the good is normal, and above 1 it is a normal good whose demand grows faster than income. Cross-price elasticity of demand: below zero the goods are complements (a higher price of one lowers demand for the other); near zero they are unrelated; above zero they are substitutes (a higher price of one raises demand for the other).</desc>
+<defs><marker id="other-elasticities-signs-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="other-elasticities-signs-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#084F78"/></marker><marker id="other-elasticities-signs-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7E1A5E"/></marker><marker id="other-elasticities-signs-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker></defs>
+<rect width="760" height="330" fill="#FFFFFF"/>
+<text x="80" y="66" font-size="15" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="80" dy="0">Income elasticity of demand = %ΔQd / %Δincome</tspan></text>
+<path d="M80 110H680" stroke="#1F2A28" stroke-width="2" marker-end="url(#other-elasticities-signs-ink)" marker-start="url(#other-elasticities-signs-ink)"/>
+<path d="M330 100V120" stroke="#1F2A28" stroke-width="2"/>
+<text x="330" y="138" font-size="13" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="330" dy="0">0</tspan></text>
+<rect x="90" y="78" width="230" height="22" rx="5" fill="#FBD9C6"/>
+<text x="205" y="94" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="205" dy="0">Negative: inferior good</tspan></text>
+<path d="M480 102V118" stroke="#1F2A28" stroke-width="2"/>
+<text x="480" y="138" font-size="13" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="480" dy="0">1</tspan></text>
+<rect x="340" y="78" width="130" height="22" rx="5" fill="#DCEAF5"/>
+<text x="405" y="94" font-size="13" text-anchor="middle" fill="#084F78" font-weight="bold"><tspan x="405" dy="0">Normal (0 to 1)</tspan></text>
+<rect x="490" y="78" width="180" height="22" rx="5" fill="#DCEAF5"/>
+<text x="580" y="94" font-size="13" text-anchor="middle" fill="#084F78" font-weight="bold"><tspan x="580" dy="0">Normal (above 1)</tspan></text>
+<text x="580" y="152" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="580" dy="0">demand grows faster than income</tspan></text>
+<text x="80" y="206" font-size="15" text-anchor="start" fill="#1F2A28" font-weight="bold"><tspan x="80" dy="0">Cross-price elasticity of demand = %ΔQd of X / %ΔP of Y</tspan></text>
+<path d="M80 250H680" stroke="#1F2A28" stroke-width="2" marker-end="url(#other-elasticities-signs-ink)" marker-start="url(#other-elasticities-signs-ink)"/>
+<path d="M330 240V260" stroke="#1F2A28" stroke-width="2"/>
+<text x="330" y="278" font-size="13" text-anchor="middle" fill="#1F2A28" font-weight="bold"><tspan x="330" dy="0">0</tspan></text>
+<rect x="90" y="218" width="230" height="22" rx="5" fill="#FBD9C6"/>
+<text x="205" y="234" font-size="13" text-anchor="middle" fill="#D55E00" font-weight="bold"><tspan x="205" dy="0">Negative: complements</tspan></text>
+<text x="330" y="296" font-size="12" text-anchor="middle" fill="#5B6664"><tspan x="330" dy="0">Zero: unrelated</tspan></text>
+<rect x="340" y="218" width="330" height="22" rx="5" fill="#DCEAF5"/>
+<text x="505" y="234" font-size="13" text-anchor="middle" fill="#084F78" font-weight="bold"><tspan x="505" dy="0">Positive: substitutes</tspan></text>
+</svg>

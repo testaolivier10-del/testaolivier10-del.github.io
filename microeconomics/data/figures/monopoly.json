@@ -1,0 +1,22 @@
+{
+ "monopoly-areas": {
+  "file": "figures/monopoly-areas.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A monopoly graph with Price and cost on the vertical axis and Quantity on the horizontal axis. QM is where MR crosses MC; PM is read up on the demand curve. Consumer surplus (blue), the profit rectangle between PM and ATC (pink) and the deadweight loss triangle between D and MC from QM to QE (orange) are shaded."
+ },
+ "monopoly-natural": {
+  "file": "figures/monopoly-natural.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A natural monopoly graph with Price and cost on the vertical axis and Quantity on the horizontal axis: a falling ATC curve above a flat MC, demand D and MR. Three points are marked: QM and PM where MR = MC, QF and PF where D meets ATC, and QS and PS where D meets MC."
+ }
+}
