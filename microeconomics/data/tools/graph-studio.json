@@ -1262,7 +1262,8 @@
    "shifts": [
     {
      "curve": "D",
-     "dir": "right"
+     "dir": "right",
+     "steps": 2
     }
    ],
    "slips": {
@@ -1301,7 +1302,8 @@
    "shifts": [
     {
      "curve": "D",
-     "dir": "left"
+     "dir": "left",
+     "steps": 2
     }
    ],
    "line": {
@@ -1337,7 +1339,8 @@
    "shifts": [
     {
      "curve": "S",
-     "dir": "right"
+     "dir": "right",
+     "steps": 2
     }
    ],
    "line": {
@@ -1366,7 +1369,7 @@
    "title": "Firms enter",
    "spec": {
     "start": {
-     "D": 1
+     "D": 2
     }
    },
    "cause": "Firms are earning economic profits, so in the long run new firms enter the market.",
@@ -1374,7 +1377,8 @@
    "shifts": [
     {
      "curve": "S",
-     "dir": "right"
+     "dir": "right",
+     "steps": 2
     }
    ],
    "slips": {
@@ -1403,7 +1407,7 @@
    "title": "A profitable price",
    "spec": {
     "start": {
-     "D": 1
+     "D": 2
     }
    },
    "cause": "The market price is above the firm's minimum ATC.",
@@ -1427,7 +1431,7 @@
    "title": "A price below ATC",
    "spec": {
     "start": {
-     "D": -1
+     "D": -2
     }
    },
    "cause": "The market price is below the firm's minimum ATC but above its minimum AVC.",

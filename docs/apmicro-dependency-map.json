@@ -300,6 +300,102 @@
       "topic": "trade-policy",
       "stimulus": "graph",
       "author": "B"
+     },
+     {
+      "title": "Three buyers' smoothie schedules added into market demand",
+      "topic": "demand",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Four news items about e-scooter rentals: shift or movement",
+      "topic": "demand",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Two farms' strawberry schedules added into market supply",
+      "topic": "supply",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "Four events for furniture workshops: what shifts supply",
+      "topic": "supply",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Three goods at an island store: what makes demand elastic",
+      "topic": "price-elasticity-demand",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Two sellers respond to the same price rise: supply elasticity",
+      "topic": "price-elasticity-supply",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A venue with fixed seats: perfectly inelastic supply",
+      "topic": "price-elasticity-supply",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "Household purchases when incomes rise: income elasticity",
+      "topic": "other-elasticities",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A cafe raises the price of coffee: cross-price elasticity",
+      "topic": "other-elasticities",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A market schedule with straight-line demand and supply: equilibrium and surplus",
+      "topic": "equilibrium-surplus",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A competitive market with consumer and producer surplus lettered",
+      "topic": "equilibrium-surplus",
+      "stimulus": "graph",
+      "author": "B"
+     },
+     {
+      "title": "A demand and supply schedule: shortage, surplus and a demand shift",
+      "topic": "disequilibrium-changes",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A drought and a health study at once: simultaneous shifts",
+      "topic": "disequilibrium-changes",
+      "stimulus": "text",
+      "author": "B"
+     },
+     {
+      "title": "A per-unit tax in a table: revenue, incidence and deadweight loss",
+      "topic": "government-intervention",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A small country's schedule at the world price: imports, a tariff and its revenue",
+      "topic": "trade-policy",
+      "stimulus": "data",
+      "author": "B"
+     },
+     {
+      "title": "A country opens to trade at a world price above its own: exports",
+      "topic": "trade-policy",
+      "stimulus": "text",
+      "author": "B"
      }
     ],
     "comparisonTables": [],
@@ -668,6 +764,60 @@
       "topic": "monopsony",
       "stimulus": "graph",
       "author": "E"
+     },
+     {
+      "title": "Tallow Candle Works: workers, output and MRP",
+      "topic": "factor-markets",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Welders at the Brackwater boatyards: derived demand",
+      "topic": "factor-markets",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Two firms add workers: a price taker and a single seller",
+      "topic": "factor-markets",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "The market for app developers after a change in labor demand",
+      "topic": "factor-demand-supply",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Warehouse workers in Kettle Valley: a labor market table",
+      "topic": "factor-demand-supply",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A year in Fenmore: shifts in the market for nurses",
+      "topic": "factor-demand-supply",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Workers or kiln time at Ortolan Ceramics: the least-cost rule",
+      "topic": "competitive-factor-markets",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Hiring nurses at the only hospital in Caddock County: MFC and the wage",
+      "topic": "monopsony",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A minimum wage for Caddock County nurses",
+      "topic": "monopsony",
+      "stimulus": "text",
+      "author": "E"
      }
     ],
     "comparisonTables": [],
@@ -718,6 +868,78 @@
       "title": "Income shares by fifth of households: the Lorenz curve",
       "topic": "inequality",
       "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A per-unit subsidy in a market for bus rides: deadweight loss beyond the efficient quantity",
+      "topic": "market-efficiency",
+      "stimulus": "graph",
+      "author": "E"
+     },
+     {
+      "title": "Evening hours at the Pellmore community pool: MSB and MSC",
+      "topic": "market-efficiency",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Four invented markets: efficient or not",
+      "topic": "market-efficiency",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "The Dunmore paper mill market: market and efficient quantity, tax and deadweight loss",
+      "topic": "externalities",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Four situations in an invented city: kinds of externality",
+      "topic": "externalities",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "A streetlight on Juniper Lane: summing benefits of a public good",
+      "topic": "public-goods",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Fishing on Sablewood Lake: a common resource",
+      "topic": "public-goods",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Brightwater Power: regulating a natural monopoly",
+      "topic": "intervention-structures",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Taxing a monopoly ferry: lump-sum or per unit",
+      "topic": "intervention-structures",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "One minimum wage, two towns: competitive and monopsony labor markets",
+      "topic": "intervention-structures",
+      "stimulus": "text",
+      "author": "E"
+     },
+     {
+      "title": "Two tax systems in Orrin: proportional and regressive",
+      "topic": "inequality",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "Changes on the island of Corrin: sources of inequality and transfers",
+      "topic": "inequality",
+      "stimulus": "text",
       "author": "E"
      }
     ],
@@ -2006,6 +2228,17 @@
    "id": "law-of-supply",
    "term": "law of supply",
    "aliases": [],
+   "taughtIn": "supply",
+   "dependsOn": [
+    "supply"
+   ]
+  },
+  {
+   "id": "market-supply",
+   "term": "market supply",
+   "aliases": [
+    "individual supply"
+   ],
    "taughtIn": "supply",
    "dependsOn": [
     "supply"

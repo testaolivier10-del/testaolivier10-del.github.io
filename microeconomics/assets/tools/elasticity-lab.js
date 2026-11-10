@@ -144,7 +144,7 @@
       var spec = { label: 'Total revenue against quantity along this demand curve: a hill, largest at 50 units ($500), where demand is unit elastic. A at ' + n(A.a.q) + ' units (' + money(A.a.tr) + '), B at ' + n(A.b.q) + ' units (' + money(A.b.tr) + ').',
         width: 360, height: 300, x: [0, 100], y: [0, 560], xStep: 25, yStep: 100, xLabel: 'Quantity', yLabel: 'Total revenue ($)', grid: true,
         curves: [{ fn: function(q){ return (20 - q / 5) * q; }, domain: [0, 100], cls: 'el-trc' }],
-        points: [{ at: [A.a.q, A.a.tr], label: 'A', cls: 'el-tra' }, { at: [A.b.q, A.b.tr], label: 'B', cls: 'el-trb' }, { at: [50, 500], open: true, cls: 'el-trm' }] };
+        points: [{ at: [A.a.q, A.a.tr], label: 'A', cls: 'el-tra' }, { at: [A.b.q, A.b.tr], label: 'B', cls: 'el-trb' }, { at: [50, 500], open: true, label: 'Largest', cls: 'el-trm' }] };
       trEl.innerHTML = P ? P.svg(spec) : '';
       var trUp = A.b.tr > A.a.tr + 1e-9, trSame = Math.abs(A.b.tr - A.a.tr) < 1e-9;
       read.innerHTML = '<span class="el-chip el-c-e">|Ed| <b>' + M.fixed(A.e, 2) + '</b> ' + w + '</span><span class="el-chip el-c-tr">TR <b>' + money(A.a.tr) + '</b> → <b>' + money(A.b.tr) + '</b></span>';

@@ -1,0 +1,17 @@
+[
+ {
+  "slug": "game-lab",
+  "title": "Game Theory Lab",
+  "file": "apmicro/game-lab.svg"
+ },
+ {
+  "slug": "factor-lab",
+  "title": "Factor Market Lab",
+  "file": "apmicro/factor-lab.svg"
+ },
+ {
+  "slug": "externality-lab",
+  "title": "Externality Lab",
+  "file": "apmicro/externality-lab.svg"
+ }
+]

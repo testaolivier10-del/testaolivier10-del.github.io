@@ -291,19 +291,19 @@
         var L = G.lineAt(spec, { shifts: sh }), q = G.named(spec, sh, 'firm', L), mv = G.named(spec, sh, 'min-avc');
         if(q){
           if(mv && L < mv[1] - 0.05) out.push({ text: 'Below min AVC: shut down', tone: 'warn' });
-          else { var st = status(L, G.y(f('ATC'), q[0])); out.push({ text: STATUS[st], tone: st === 'profit' ? 'good' : st === 'loss' ? 'warn' : 'readout' }); }
+          else { var st = status(L, G.y(f('ATC'), q[0])); out.push({ text: STATUS[st], tone: st === 'profit' ? 'good' : st === 'loss' ? 'warn' : 'accent' }); }
         }
       } else if(graph === 'monopoly' || graph === 'monocomp'){
         var pm = G.named(spec, sh, 'profit-max');
-        if(pm){ var st2 = status(pm[1], G.y(f('ATC'), pm[0])); out.push({ text: STATUS[st2], tone: st2 === 'profit' ? 'good' : st2 === 'loss' ? 'warn' : 'readout' }); }
+        if(pm){ var st2 = status(pm[1], G.y(f('ATC'), pm[0])); out.push({ text: STATUS[st2], tone: st2 === 'profit' ? 'good' : st2 === 'loss' ? 'warn' : 'accent' }); }
       } else if(graph === 'costs' && spec.set !== 'long'){
-        out.push({ text: 'MC through min AVC and min ATC', tone: 'readout' });
+        out.push({ text: 'MC crosses AVC and ATC at their lowest points', tone: 'accent' });
       } else if(graph === 'monopsony'){
         var h = G.named(spec, sh, 'hire'), c = G.named(spec, sh, 'competitive');
-        if(h && c) out.push({ text: 'Hires fewer than competition', tone: 'readout' });
+        if(h && c) out.push({ text: 'Fewer workers, lower wage than competition', tone: 'accent' });
       } else if(graph === 'lorenz'){
         var s = (state && state.shifts && state.shifts.LC) || 0;
-        if(s) out.push({ text: s > 0 ? 'More equal' : 'Less equal', tone: 'readout' });
+        if(s) out.push({ text: s > 0 ? 'More equal' : 'Less equal', tone: 'accent' });
       }
     }catch(e){ /* the picture still draws */ }
     return out;

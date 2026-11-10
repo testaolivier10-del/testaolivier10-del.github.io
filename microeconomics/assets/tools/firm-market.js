@@ -161,6 +161,8 @@
       var S = FM.monoState(kind === 'monopoly' ? { kind: 'monopoly' } : { kind: 'monocomp', run: 'short' }, off);
       var label = (kind === 'monopoly' ? 'Monopoly graph. ' : 'Monopolistic competition graph. ') + G.describe(spec, { shifts: shifts }) + ' ' + monoWords(kind, S);
       var svg = G.svg(spec, { shifts: shifts }, { label: label }), lay = [], x = [];
+      // MR moves with D: its faded old label only crowds the axis (D1 says where demand was)
+      svg = svg.replace(/<text class="mic-gr-clabel is-old"[^>]*>MR<tspan[^>]*>1<\/tspan><\/text>/, '');
       var show = kind === 'monopoly' ? st.mono.show : { profit: 1 };
       if(show.cs) lay.push(boxOf(cellsOf(spec, shifts, ['cs']), 'fm-a-cs', 'CS'));
       if(show.dwl) lay.push(boxOf(cellsOf(spec, shifts, ['dwl']), 'fm-a-dwl', ''));
@@ -194,6 +196,7 @@
       svgEl.innerHTML = declutter(tag(st.kind === 'pc' ? pcSvg() : monoSvg(st.kind)));
       if(!st.anim) words();
       longBtn.disabled = !!st.anim || Math.abs(FM.pcState(st.pc.d, st.pc.s).P - 5) < 0.05;
+      ctl.querySelector('.fm-mlong').disabled = !!st.anim || st.mcomp.phase === 'long';
     }
     function words(){
       var head, body = [], rows = [];
