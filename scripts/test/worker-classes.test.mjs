@@ -410,7 +410,7 @@ test('Google: off without the flag and secrets; consent URL with a signed state;
   assert.equal((await call(w, '/class/google/finish', { gp })).status, 200);
   assert.equal(w.db.class_oauth.length, 1);
   assert.equal(w.db.class_oauth[0].teacher_id, T);
-  assert.doesNotMatch(w.db.class_oauth[0].refresh_enc, /rt/, 'the refresh token is never stored in the clear');
+  assert.ok(!w.db.class_oauth[0].refresh_enc.includes('1//rt'), 'the refresh token is never stored in the clear');
   assert.equal(w.db.class_oauth[0].account_email, 'teacher@school.org');
   const short = world({ env: G_ON, fetch: googleFake({ scope: 'openid email' }) });
   const st = await clsSign(short.env, 'gstate', { u: T, c: C }, 600);
