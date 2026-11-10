@@ -303,6 +303,35 @@ def draw(c, ps, x=540, ground=1670, s=1.1, t=0.0, cl=None):
     if kr > 0.02:                                           # the cloth bunches on top of the lifted shoulder, beside the neck
         stroke(c, [T(-88, 34 + dr), T(-74, 22 + dr), T(-82, 4 + dr)], 3.2, TOP_SH, 150 * kr); stroke(c, [T(-66, 42 + dr), T(-56, 28 + dr), T(-62, 12 + dr)], 3, TOP_SH, 110 * kr)
     c.restore()
+    c.restore(); c.save()                                   # the apron is drawn outside the shirt's clip (its skirt hangs below the hem)
+    if cfg.get('apron'):                                     # a baker's apron: a bib on the chest, a neck strap, ties at the waist and a skirt to above the knees
+        AC = cfg['apron']; AS = mix(AC, (80, 60, 70), 0.28); AH = mix(AC, (255, 255, 255), 0.4); AD = mix(AC, (40, 30, 50), 0.5)
+        bt = -34                                             # top of the bib, below the collar
+        skirt_y = wst[1] + 250
+        ap = smooth_closed([T(-50, bt), T(50, bt), T(64, bt - 20), T(70, -120), (wst[0] + 96 + hx * 0.3, wst[1] - 8), (wst[0] + 104 + hx * 0.6, skirt_y - 40),
+                            (wst[0] + 98 + hx, skirt_y), (wst[0] + hx, skirt_y + 8), (wst[0] - 98 + hx, skirt_y), (wst[0] - 104 + hx * 0.6, skirt_y - 40),
+                            (wst[0] - 96 + hx * 0.3, wst[1] - 8), T(-70, -120), T(-64, bt - 20)])
+        for sd in (-1, 1):                                   # the neck strap: up from each top corner, round behind the neck
+            a_, b_ = T(sd * 46, bt - 4), T(sd * 30, 46); c.drawLine(a_[0], a_[1], b_[0], b_[1], SP(AS, 11)); c.drawLine(a_[0], a_[1], b_[0], b_[1], SP(AC, 6))
+        c.drawPath(ap, P((0, 0, 0), 60, MaskFilter=blur(8)))
+        shaded(c, ap, AC, AS, sh=(-d[0] * 1.4, -d[1] * 0.4), rimL=AH, rl=(d[0] * 0.4, d[1] * 0.4))
+        c.save(); c.clipPath(ap, skia.ClipOp.kIntersect, True)
+        c.drawPath(smooth_closed([T(30, bt), T(80, bt), (wst[0] + 120, skirt_y + 20), (wst[0] + 30, skirt_y + 20), (wst[0] + 36, wst[1])]), P(AS, 70, MaskFilter=blur(18)))   # form shadow on the side away from the light
+        for j, xx in enumerate((-46, 4, 52)):                # soft vertical folds in the skirt, from the waist down
+            stroke(c, [(wst[0] + xx + hx * 0.6, wst[1] + 40), (wst[0] + xx * 1.08 + hx * 0.8, wst[1] + 150), (wst[0] + xx * 1.15 + hx, skirt_y - 4)], 3, AS, 120)
+        pk = skia.Path(); pk.addRRect(skia.RRect.MakeRectXY(skia.Rect(wst[0] - 64 + hx * 0.6, wst[1] + 58, wst[0] + 64 + hx * 0.6, wst[1] + 136), 10, 10))
+        c.drawPath(pk, P(mix(AC, AS, 0.35))); c.drawPath(pk, SP(AS, 3, 200))                                  # front pocket
+        c.drawLine(wst[0] + hx * 0.6, wst[1] + 60, wst[0] + hx * 0.6, wst[1] + 134, SP(AS, 2.5, 200))
+        stroke(c, [(wst[0] - 100 + hx * 0.4, wst[1] - 6), (wst[0] + hx * 0.5, wst[1] - 2), (wst[0] + 100 + hx * 0.4, wst[1] - 6)], 7, AS, 160)  # the waist tie runs across
+        if cfg.get('flour'):                                 # flour dusted on the front
+            rs = np.random.default_rng(3)
+            for _ in range(26):
+                fx_, fy_ = wst[0] + rs.uniform(-80, 80), wst[1] + rs.uniform(-60, 220)
+                c.drawCircle(fx_, fy_, rs.uniform(3, 9), P((255, 255, 255), 70, MaskFilter=blur(3)))
+        c.restore()
+        for sd in (-1, 1):                                   # the tie loops out at the hips
+            p0 = (wst[0] + sd * 100 + hx * 0.4, wst[1] - 4)
+            stroke(c, [p0, (p0[0] + sd * 18, p0[1] + 18), (p0[0] + sd * 12, p0[1] + 56)], 6, AS, 230)
     for A_ in (AL, AR):                                     # shoulder seams and elbow folds
         sd = A_['side']; sh = sh_l if sd > 0 else sh_r
         el, d2 = A_['el'], A_['d2']; n2 = (-d2[1], d2[0])

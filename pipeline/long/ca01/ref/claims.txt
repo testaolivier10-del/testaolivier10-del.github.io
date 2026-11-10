@@ -1,0 +1,35 @@
+Numbered factual claims in an AP Calculus AB video (functions and exponent rules). Check each one.
+1. A function takes an input and gives exactly one output.
+2. For f(x) = x² − 3x, f(−2) = 10; without parentheses −2² reads as −4.
+3. For f(x) = x² − 3x, f(a+1) = a² − a − 2, and this is not f(a) + 1.
+4. Domain = set of inputs the rule accepts; range = set of outputs it actually produces.
+5. In this course, two things shrink a domain: denominator cannot be 0; a square root needs a number ≥ 0.
+6. h(x) = √(x+4)/(x−1) has domain x ≥ −4 and x ≠ 1; x = −4 is allowed.
+7. The graph of f is the set of points (x, f(x)); f(a) is the height of the graph above/below x = a.
+8. A filled dot is a point on the graph; an open circle marks a point the graph approaches but does not include.
+9. To solve f(x) = k, draw y = k and read the x-values where it meets the graph; f is positive where the graph is above the x-axis.
+10. Piecewise f(x) = x² (x < 2), 3x − 1 (x ≥ 2): f(2) = 5, f(1.9) = 3.61.
+11. Slope m = (y₂ − y₁)/(x₂ − x₁); through (1, 4) and (3, −2) the slope is −3; point-slope form y − 4 = −3(x − 1).
+12. The AP Calculus exam accepts a tangent/line equation in point-slope form without rearranging it.
+13. With f(x) = x², g(x) = 3x − 1: f(g(x)) = (3x − 1)², g(f(x)) = 3x² − 1.
+14. √(x² + 1) is f(g(x)) with inside x² + 1 and outside √x; this decomposition is used in Unit 3 (chain rule) of AP Calc AB.
+15. f(x) + k moves the graph up k; −f(x) reflects it over the x-axis; f(x − h) moves it right h.
+16. A rational function is a polynomial divided by a polynomial. C(n) = (2n + 40)/n approaches 2 as n grows (horizontal asymptote y = 2, the ratio of leading coefficients when degrees are equal). Where the denominator is 0 and the numerator is not, there is a vertical asymptote.
+17. "When top and bottom are both zero at the same x, something more interesting happens; that's Unit 1 (limits)."
+18. Exponent rules: x^m·x^n = x^(m+n); x^m/x^n = x^(m−n); (x^m)^n = x^(mn); x⁰ = 1 for x ≠ 0.
+19. x⁻² = 1/x² shown by x³/x⁵; 2⁻³ = 1/8; a negative exponent never makes the number negative.
+20. 3x⁻² = 3/x²; (3x)⁻² = 1/(9x²); 5/x³ − 1/(2x) = 5x⁻³ − ½x⁻¹.
+21. x^(1/2) = √x because (x^(1/2))² = x; in x^(m/n) the denominator is the root and the numerator the power; 8^(2/3) = 4.
+22. 2^(1/2) ≈ 1.41; 4 × 1.41 ≈ 5.7 (4√2 = 5.657).
+23. (x + y)² ≠ x² + y² (1+2)² = 9 not 5; √(x² + 9) ≠ x + 3 (x = 4 gives 5 not 7); −3² = −9 while (−3)² = 9.
+24. STORY: a sourdough starter is "fed" by discarding most of it and adding fresh flour and water, after which its volume rises over the following hours; a rubber band on the jar is commonly used to mark the starting level or a target level; bakers often use a starter when it has roughly doubled (at or near its peak).
+25. STORY: a fed starter at warm room temperature doubling in about four hours is plausible for an active starter (the story says "his notes say this starter doubles about every four hours" in his warm kitchen).
+26. STORY: modelling the rise as steady doubling, two hours after feeding (half a doubling time) the height is 4·√2 ≈ 5.7 cm, not 6 cm. (Is it reasonable to present steady exponential growth as the baker's simple model for the early rise? Flag if the video should add a caveat.)
+27. STORY: a starter fed at 9 p.m. that doubles at 1 a.m. lets the baker mix dough at 1 a.m. and have loaves out of the oven by dawn (about 6 to 7 a.m.); is that timeline plausible for sourdough (bulk fermentation, shaping, proof, bake)?
+28. STORY: cost per loaf = (2n + 40)/n for $40 to fire the oven and $2 of flour per loaf (plausible illustrative numbers, not a claim about real costs).
+
+Practice questions (answer them yourself; answers are not given):
+Q1. Let g(x) = x² + 2x. Find g(−3). Find the domain of k(x) = √(x − 2)/(x − 5).
+Q2. f(x) = x + 1 if x < 3, 2x if x ≥ 3. Find f(3) and f(2.9). Is the point (3, 4) on the graph?
+Q3. f(x) = x², g(x) = x − 4. Find f(g(1)) and g(f(1)). How does the graph of y = (x + 3)² sit compared with y = x²?
+Q4. Write 6/x² + √x as a sum of powers of x. Evaluate 27^(2/3).

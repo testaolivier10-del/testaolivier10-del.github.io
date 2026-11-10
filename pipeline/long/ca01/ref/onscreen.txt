@@ -1,0 +1,37 @@
+What appears on screen, beat by beat (teaching beats are on a navy grid board with handwritten math; story beats are a drawn bakery at night, side view):
+hook: bakery at night, Marco (baker, apron) behind the workbench; glass jar of starter with a rubber band; tape marks "4 cm" at the starter level and "8 cm" at the band; wall clock 11:00; notebook page "doubles every 4 h", "fed 9 pm"; question chip "how tall now?"
+promise: three chips: function, graphs, exponents
+why: four small cards: formula, graph, table, sentence; then "(−2)² vs −2²" and "x⁻² → ?" with a red strike
+f1: f(x) box machine: input x -> output f(x); f(x) = x² − 3x written, empty slots ( )² − 3( )
+f2: f(−2) = (−2)² − 3(−2) = 4 + 6 = 10; then −2² = −4 struck in red
+f3: f(a+1) = (a+1)² − 3(a+1) = a² + 2a + 1 − 3a − 3 = a² − a − 2; "≠ f(a) + 1"
+f4: domain = inputs it accepts; range = outputs it makes; two rules: denominator ≠ 0, √( ) needs ≥ 0
+f5: h(x) = √(x+4)/(x−1); x+4 ≥ 0 → x ≥ −4; x − 1 ≠ 0 → x ≠ 1; number line with filled dot at −4, open circle at 1
+f6: jar close up, time axis under it; "input: t hours since feeding", "output: height"; h(0) = 4 cm; h(2) = ?
+p1q/p1a: g(x) = x² + 2x, g(−3) = ?; k(x) = √(x−2)/(x−5); worked answers 3; x ≥ 2, x ≠ 5; trap −3² + 2(−3) = −15 struck
+g1: axes, a curve; point a on the x axis, arrow up to the curve, height f(a)
+g2: piecewise graph with an open circle at (1, 3.5) and a filled dot at (1, 5); f(1) = 5
+g3: horizontal line y = k meeting the graph at two x values; region above the x axis shaded; range bracket on the y axis
+g4: Marco's chart taped to the wall: starter height (cm) vs time (8 pm to 11 pm); rises to 9 cm, drops at 9 pm to 4 cm with an open circle at 9 and filled dot at 4, then rises again; Marco pours most of the starter into a bowl and adds flour and water (story)
+g5: f(x) = { x² if x < 2 ; 3x − 1 if x ≥ 2 }; f(2) = 5 ; f(1.9) = 3.61; graph with the boundary at x = 2
+p2q/p2a: f(x) = { x + 1 if x < 3 ; 2x if x ≥ 3 }; f(3) = 6, f(2.9) = 3.9; (3, 4) open circle, not on the graph
+l1: m = (y₂ − y₁)/(x₂ − x₁); points (1, 4), (3, −2); m = −6/2 = −3; line drawn going down
+l2: y − y₁ = m(x − x₁); y − 4 = −3(x − 1)
+l3: f(g(x)) with nested boxes; f(x) = x², g(x) = 3x − 1; f(g(x)) = (3x − 1)²; g(f(x)) = 3x² − 1; "≠"
+l4: √(x² + 1): inside x² + 1 highlighted, outside √ highlighted
+l5: three small graphs: f(x) + k up; −f(x) flipped; f(x − h) right
+l6: Marco's height curve and a second copy slid right by 2 hours, labeled h(t − 2); then a copy moved up 2 cm, labeled h(t) + 2; the jar on a small wooden stand
+l7: C(n) = (2n + 40)/n; graph for n > 0 falling toward a dashed line y = 2 (horizontal asymptote); dashed vertical line at n = 0 (vertical asymptote); oven glowing in the story bakery
+p3q/p3a: f(x) = x², g(x) = x − 4; f(g(1)) = f(−3) = 9; g(f(1)) = g(1) = −3; graph of (x+3)² beside x², arrow left 3
+e1: x³ = x · x · x
+e2: jar doubling animation: ×2, ×2, ×2 over three 4 hour stretches; 2 · 2 · 2 = 2³ = 8
+e3: x³ · x² = x⁵ (factor dots counted); x⁵/x² = x³ (two cancel); (x³)² = x⁶; x⁰ = 1 (x ≠ 0)
+e4: x³/x⁵ = 1/x² ; x³/x⁵ = x³⁻⁵ = x⁻² ; so x⁻² = 1/x²; 2⁻³ = 1/8
+e5: the jar's timeline running backward from the feeding: 2⁻¹ = ½ at −4 h (dashed, labeled "if it had been growing")
+e6: 3x⁻² = 3/x² ; (3x)⁻² = 1/(9x²); 5/x³ − 1/(2x) = 5x⁻³ − ½x⁻¹
+e7: (x^½)² = x ; x^½ = √x ; x^(m/n): bottom = root, top = power ; 8^(2/3) = (∛8)² = 2² = 4
+e8: jar at 11 pm: 4 · 2^½ ≈ 4 · 1.41 ≈ 5.7 cm; tape mark at 5.7; "halfway in time ≠ halfway in height"
+e9: table of slips: (x + y)² ≠ x² + y² with (1+2)² = 9 not 5; √(x² + 9) ≠ x + 3 with x = 4: 5 not 7; −3² = −9, (−3)² = 9
+p4q/p4a: 6/x² + √x = 6x⁻² + x^½ ; 27^(2/3) = (∛27)² = 9 ; traps struck: (6x)⁻², 18
+rc: one picture with four corners: function box, graph with dots, composite boxes and a shifted curve, exponent rules
+end: 1:00 a.m., starter at the band (8 cm); Marco mixing dough; dawn, loaves, door sign OPEN; levlprep.com; next: "Change at an instant"

@@ -306,16 +306,24 @@
         "calculus/notes/math-functions.html",
         "calculus/notes/math-exponent-rules.html"
       ],
-      "title": "",
-      "description_file": "",
-      "video": "",
-      "thumb": "",
-      "captions": "",
+      "title": "Functions, Graphs and Exponent Rules for AP Calculus AB",
+      "description_file": "long/yt-calc-01-youtube.md",
+      "video": "long/yt-calc-01-functions-exponents.mp4",
+      "thumb": "long/yt-calc-01-thumb.png",
+      "captions": "long/yt-calc-01-captions.srt",
       "playlist": "AP Calculus AB | LevlPrep",
       "date": "",
-      "status": "building",
+      "status": "pending",
       "approved_on": "",
-      "youtube_id": ""
+      "youtube_id": "",
+      "thumb_b": "long/yt-calc-01-thumb-b.png",
+      "thumb_c": "long/yt-calc-01-thumb-c.png",
+      "thumbnail_set": false,
+      "playlist_added": false,
+      "captions_set": false,
+      "ab_test": false,
+      "endscreen_set": false,
+      "pr_url": ""
     }
   ]
 }
