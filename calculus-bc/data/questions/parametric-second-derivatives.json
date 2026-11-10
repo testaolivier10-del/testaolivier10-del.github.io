@@ -391,6 +391,32 @@
    "why": {
     "correct": "$\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{dx/dt} = \\frac{-2}{4} = -\\frac{1}{2}$: concave down at that point."
    }
+  },
+  {
+   "id": "cbc-parametric-second-derivatives-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "parametric-second-derivatives",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At the point of a parametric curve where $t = 2$, $\\frac{dy}{dx} = 3$ and $\\frac{d^2y}{dx^2} = -\\frac{1}{2}$. Near this point, how does the curve compare with its tangent line?",
+   "options": [
+    "The curve lies above the tangent line, because the slope is positive there",
+    "The curve lies above the tangent line, because the curve is concave up there",
+    "The curve crosses the tangent line, because it has a point of inflection there",
+    "The curve lies below the tangent line, because the curve is concave down there"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\frac{d^2y}{dx^2} = -\\frac{1}{2} < 0$, so the curve is concave down near the point. A concave down curve bends away below its tangent line, so the curve lies below the line there.",
+    "options": [
+     "The slope says the curve rises. Which side of the tangent line it is on comes from the sign of $\\frac{d^2y}{dx^2}$.",
+     "A negative second derivative means concave down, not concave up.",
+     "A point of inflection needs $\\frac{d^2y}{dx^2}$ to change sign. Here it is $-\\frac{1}{2}$, not 0, so the concavity does not change at this point.",
+     "$\\frac{d^2y}{dx^2} < 0$: concave down, so the curve is below its tangent line near the point."
+    ]
+   }
   }
  ]
 }

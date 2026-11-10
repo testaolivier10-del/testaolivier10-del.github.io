@@ -487,6 +487,32 @@
      "Right: increasing means it rises; a decreasing rate of change means it rises more and more slowly, so it is concave down."
     ]
    }
+  },
+  {
+   "id": "pcalc-change-in-tandem-16",
+   "unit": "unit-1",
+   "topic": "change-in-tandem",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Each list gives the outputs of a function at $x = 0, 1, 2, 3$. For which function are the outputs increasing while the rate of change is also increasing?",
+   "type": "single",
+   "options": [
+    "$2, 5, 7, 8$",
+    "$2, 3, 5, 8$",
+    "$8, 5, 3, 2$",
+    "$2, 4, 6, 8$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For $2, 3, 5, 8$ the changes over the equal steps are $1, 2, 3$: each is positive, so the outputs increase, and the changes themselves grow, so the rate of change is increasing. The graph is concave up.",
+    "options": [
+     "The changes are $3, 2, 1$: the outputs increase, but the rate of change is decreasing.",
+     "The changes $1, 2, 3$ are positive and growing.",
+     "The changes are $-3, -2, -1$: the outputs are decreasing.",
+     "The changes are $2, 2, 2$: the outputs increase at a constant rate."
+    ]
+   }
   }
  ]
 }

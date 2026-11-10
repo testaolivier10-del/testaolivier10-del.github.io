@@ -194,3 +194,18 @@ Written: 46 prompts in `psychology/data/justify/` (Units 1-5 and the research sk
 AAQ and EBQ skill the checker knows, a slot builder on every prompt, the first 3 free. Every study is invented
 and labeled; every derived number is in `JUSTIFY_NUMBERS`. The content check's skip is gone: it now requires
 40+ prompts and 6 to 9 per chapter (`JUSTIFY_PER_CHAPTER`); research skills ids start `rs-`.
+
+## tool-audit-2026-11: conditioning model and one Milgram figure (open, 2026-11-10)
+
+From the hands-on tool audit (`docs/tool-audit-2026-11.md`), for the accuracy reviewer:
+
+- **Spontaneous recovery in the conditioning lab's model** (`psychology/assets/tools/math/conditioning-lab.js`,
+  `classical`). Before: a rest moved the association toward 45% of its peak, so after only a few tone-alone
+  trials the first tone after the rest showed fewer drops than the last one before it, under a caption saying
+  the response came back. Now: a rest gives back 45% of what extinction took away, the recovered level is the
+  ceiling for the next rest (each later recovery is smaller) and two rests in a row count once. It is a
+  teaching model, not data; check that "smaller each time" and "45%" are fair to teach. Drill records
+  (8 to 10 extinction trials) still pass the tool check: recovery above the end of extinction, below acquisition.
+- **Milgram, orders by telephone.** The social influence tool shows 22.5% (9 of 40; Milgram, 1974). Several
+  textbooks print 20.5%. Left as it is.
+

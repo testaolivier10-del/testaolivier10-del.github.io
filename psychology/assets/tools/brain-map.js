@@ -438,7 +438,7 @@
       var sb = B.splitBrain(field, cut), h = sb.first;
       if(stage < 1) return 'The word will flash in the ' + field + ' visual field.';
       if(stage < 3) return 'The ' + field + ' visual field goes to the ' + h + ' hemisphere' + (cut ? ', and the cut corpus callosum keeps it there.' : ', and the corpus callosum shares it.');
-      return (sb.says ? 'The patient says “' + obj + '.”' : 'The patient says they saw nothing.') + ' The ' + (sb.leftHand && sb.rightHand ? 'both hands find' : sb.leftHand ? 'left hand finds' : 'right hand finds') + ' the ' + obj + (sb.leftHand && sb.rightHand ? '.' : ' by touch.');
+      return (sb.says ? 'The patient says “' + obj + '.”' : 'The patient says they saw nothing.') + ' ' + (sb.leftHand && sb.rightHand ? 'Both hands find' : sb.leftHand ? 'The left hand finds' : 'The right hand finds') + ' the ' + obj + (sb.leftHand && sb.rightHand ? '.' : ' by touch.');
     }
     function words(){
       var head, sub = '', why = '';

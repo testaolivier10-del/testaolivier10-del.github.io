@@ -496,6 +496,32 @@
    "why": {
     "correct": "Cooing (about 2 months), babbling (about 6 months), one word (about 12 months), telegraphic speech (about 18 to 24 months)."
    }
+  },
+  {
+   "id": "psy-language-development-16",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "When her father smiles at her, a 10-week-old makes long, soft vowel sounds such as \"ooh\" and \"aah,\" with no consonants yet. Which milestone is this?",
+   "options": [
+    "Babbling",
+    "Cooing",
+    "The one-word stage",
+    "Telegraphic speech"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Cooing begins at about 2 months: vowel-like sounds such as \"ooh\" and \"aah.\" Babbling adds repeated consonant-vowel syllables at about 6 months.",
+    "options": [
+     "Babbling is repeated consonant-vowel syllables such as \"ba-ba-ba,\" starting at about 6 months.",
+     "Right: vowel-like sounds at about 2 months are cooing.",
+     "In the one-word stage, around the first birthday, a single word stands for a whole idea.",
+     "Telegraphic speech, at about 18 to 24 months, combines content words such as \"Daddy go car.\""
+    ]
+   }
   }
  ]
 }

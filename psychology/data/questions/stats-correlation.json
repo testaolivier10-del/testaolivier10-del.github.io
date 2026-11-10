@@ -494,6 +494,59 @@
      "Right: the directionality problem, plus possible third variables."
     ]
    }
+  },
+  {
+   "id": "psy-stats-correlation-15",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-correlation-s2",
+   "q": "Using the rough guide for strength, how would you describe the relationship between hours of part-time work and homework hours ($r = -0.18$)?",
+   "options": [
+    "A weak negative correlation",
+    "A strong negative correlation",
+    "A weak positive correlation",
+    "A moderate positive correlation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The sign gives the direction (negative: more work hours go with fewer homework hours) and the size, 0.18, falls in the weak range of 0.1 to 0.4.",
+    "options": [
+     "Right: the minus sign is the direction, and a size of 0.18 is weak.",
+     "A negative sign does not make a correlation strong. The size, 0.18, is weak.",
+     "The coefficient is negative: as work hours rise, homework hours tend to fall.",
+     "The size, 0.18, is below 0.4, and the sign is negative."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-16",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "A blog reports that adults’ shoe size and reading speed have a correlation of $r = +1.30$. What should a careful reader conclude?",
+   "options": [
+    "Shoe size and reading speed are very strongly related",
+    "Having bigger feet causes adults to read faster",
+    "The value was reported wrong, since $r$ cannot be above 1",
+    "The relationship is weak, since 1.30 is close to 1"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A correlation coefficient is always between $-1$ and $+1$. A value of $+1.30$ is impossible, so the number is a mistake.",
+    "options": [
+     "No correlation can be stronger than $+1$ or $-1$, so 1.30 is not a strong correlation. It is an error.",
+     "A correlation never shows cause, and this one is not even a possible value.",
+     "Right: $r$ runs from $-1$ to $+1$.",
+     "A size close to 1 would be strong, not weak, and 1.30 is outside the possible range."
+    ]
+   }
   }
  ]
 }

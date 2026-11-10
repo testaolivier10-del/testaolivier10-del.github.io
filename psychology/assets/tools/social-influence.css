@@ -84,3 +84,6 @@
 .si-src{font-weight:700;font-size:10.5px;fill:var(--muted);font-style:italic;}
 .si-dot{fill:var(--si-bar);} .si-dot.is-on{fill:var(--si-bar-on);}
 .si-bl.is-s{font-size:10px;}
+
+/* "8 people" stays on one line beside its slider (it wrapped under itself at desktop width). */
+.ls-root .si-ctl .bt-out,.si-ctl .bt-out{white-space:nowrap;}

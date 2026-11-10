@@ -50,14 +50,19 @@
   var RATE = 0.3, MAXCR = 12, RECOVER = 0.45;
   /* trials: a list of 'pair' | 'tone' | 'rest'. Returns V after each trial
      and the CR the tone alone would bring then (pairing trials too: the
-     drops measured as the tone starts, before the food). A 'rest' moves
-     V up toward RECOVER of its last peak (spontaneous recovery). */
+     drops measured as the tone starts, before the food). A 'rest' gives
+     back RECOVER of what extinction took away (spontaneous recovery), so
+     the first tone after it brings more drops than the last one before it,
+     however short the extinction was (the old rule, a climb toward a fixed
+     share of the peak, showed FEWER drops after a rest that followed only a
+     few tone-alone trials). The recovered level is the ceiling for the next
+     rest, so each later recovery is smaller; two rests in a row count once. */
   function classical(trials){
-    var V = 0, peak = 0, v = [], cr = [];
+    var V = 0, peak = 0, rested = false, v = [], cr = [];
     (trials || []).forEach(function(t){
-      if(t === 'pair'){ V = V + RATE * (1 - V); if(V > peak) peak = V; }
-      else if(t === 'tone'){ V = V + RATE * (0 - V); }
-      else if(t === 'rest'){ var target = RECOVER * peak; if(V < target) V = V + (target - V) * 0.9; }
+      if(t === 'pair'){ V = V + RATE * (1 - V); if(V > peak) peak = V; rested = false; }
+      else if(t === 'tone'){ V = V + RATE * (0 - V); rested = false; }
+      else if(t === 'rest'){ if(!rested && V < peak){ V = V + RECOVER * (peak - V); peak = V; } rested = true; }
       v.push(V); cr.push(MAXCR * V);
     });
     return { v: v, cr: cr };

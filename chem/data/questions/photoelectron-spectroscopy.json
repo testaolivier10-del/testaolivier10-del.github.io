@@ -415,6 +415,37 @@
      "One subshell gives one peak; two positions mean two subshells."
     ]
    }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-16",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many peaks does the photoelectron spectrum of calcium (20 electrons, 1s² 2s² 2p⁶ 3s² 3p⁶ 4s²) have?",
+   "numeric": {
+    "answer": 6,
+    "tol": 0,
+    "unit": "peaks",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 4,
+      "rel": 0.01,
+      "why": "Value: 4 is the number of occupied shells. Each subshell gives its own peak."
+     },
+     {
+      "value": 20,
+      "rel": 0.01,
+      "why": "Value: 20 is the number of electrons. Electrons in the same subshell share one peak."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Every electron in one subshell has the same binding energy, so each occupied subshell gives one peak: 1s, 2s, 2p, 3s, 3p and 4s make 6 peaks."
+   }
   }
  ]
 }

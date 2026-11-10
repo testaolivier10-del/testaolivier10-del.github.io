@@ -439,6 +439,32 @@
      "Right: a crossing at the pole need not happen at the same $\\theta$, so check $r = 0$ on each curve."
     ]
    }
+  },
+  {
+   "id": "cbc-polar-area-between-16",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "polar-area-between",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Find the area of the region inside the circle $r = 2$ and outside the cardioid $r = 2 - 2\\sin\\theta$.",
+   "numeric": {
+    "answer": "8 - pi",
+    "mistakes": [
+     {
+      "value": "16 - 2pi",
+      "why": "The polar area formula has a factor $\\frac{1}{2}$: $\\frac{1}{2}\\int_0^{\\pi} \\left(4 - (2 - 2\\sin\\theta)^2\\right)d\\theta$."
+     },
+     {
+      "value": "pi - 8",
+      "why": "Subtract the inner curve from the outer one. For $0 < \\theta < \\pi$ the circle is farther from the pole, so the integrand is $2^2 - (2 - 2\\sin\\theta)^2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The curves meet where $2 - 2\\sin\\theta = 2$, so $\\sin\\theta = 0$: $\\theta = 0$ and $\\theta = \\pi$. Between them the cardioid is inside the circle. Area $= \\frac{1}{2}\\int_0^{\\pi} \\left(2^2 - (2 - 2\\sin\\theta)^2\\right)d\\theta = \\frac{1}{2}\\int_0^{\\pi} \\left(8\\sin\\theta - 4\\sin^2\\theta\\right)d\\theta = \\frac{1}{2}(16 - 2\\pi) = 8 - \\pi$."
+   }
   }
  ]
 }

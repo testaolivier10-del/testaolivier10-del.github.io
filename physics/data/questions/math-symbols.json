@@ -273,6 +273,171 @@
      "Units: (m/s) ÷ m = 1/s, not a time; the fraction is upside down."
     ]
    }
+  },
+  {
+   "id": "phys-math-symbols-11",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 1,
+   "q": "A student sees Δt = 4.0 s in a problem and says, \"So Δ times t is 4.0 s, and I need to know Δ to find t.\" What is wrong?",
+   "options": [
+    "Δ is a constant equal to 2, so t = 2.0 s",
+    "Δt means the time at the start, when the clock reads zero",
+    "Δt is a single symbol that means the change in t",
+    "Nothing is wrong: Δ is an unknown that must be found first"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Δ means \"change in\". It is never a number that multiplies. Δt = t(final) − t(initial), so Δt = 4.0 s says that 4.0 s passed.",
+    "options": [
+     "Δ has no numerical value. It is part of the name of the quantity.",
+     "The time at the start is written with a subscript, t₀. Δt is a difference between two times.",
+     "Right: read Δt as \"the change in t\".",
+     "Δ is not a variable. Treating it as one splits a single symbol into two."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The area of a triangle is A = ½bh, where b is its base and h its height. Solve for h.",
+   "options": [
+    "h = A / (2b)",
+    "h = 2A / b",
+    "h = 2Ab",
+    "h = Ab / 2"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "h is multiplied by ½ and by b. Undo each: multiply both sides by 2, then divide both sides by b. h = 2A/b. Units: m² ÷ m = m, a length.",
+    "options": [
+     "To undo \"times ½\" you multiply by 2. Here the 2 was left on the bottom.",
+     "Right: the units come out as meters, as a height should.",
+     "b multiplies h, so it must be divided away. This expression has units of m³.",
+     "Both steps were done the wrong way: this multiplies by b and by ½ again."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-13",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cart moving at a steady 1.2 m/s is at x = 7.5 m when t = 5.0 s. Solve x = x₀ + vt for x₀, then find where the cart started.",
+   "numeric": {
+    "answer": 1.5,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 13.5,
+      "tol": 0.1,
+      "why": "Value: you added vt. Rearranging gives x₀ = x − vt, so subtract the 6.0 m the cart traveled."
+     },
+     {
+      "value": 6,
+      "why": "Value: 6.0 m is vt, the distance traveled. The start is x − vt."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Subtract vt from both sides: x₀ = x − vt = 7.5 m − (1.2 m/s)(5.0 s) = 7.5 m − 6.0 m = 1.5 m."
+   }
+  },
+  {
+   "id": "phys-math-symbols-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student derives t = d × v for the time to travel a distance d at a steady speed v. Which common-sense check shows that the expression is wrong?",
+   "options": [
+    "It predicts a longer distance takes more time",
+    "It contains two symbols on the right side",
+    "It has no subscripts on d or v",
+    "It predicts a faster speed takes more time"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In t = d × v, making v larger makes t larger. A faster trip over the same distance should take less time, so v belongs on the bottom: t = d/v.",
+    "options": [
+     "A longer distance should take more time, so this part of the expression behaves sensibly.",
+     "The number of symbols is not a check. The correct expression, d/v, also has two.",
+     "Subscripts are labels for telling values apart. Leaving them off does not make an expression wrong.",
+     "Right: the expression fails the \"does the direction make sense\" check."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A car moving at a steady speed covers a distance D in a time T. It keeps the same speed for a further time 3T. What is the total distance it has covered, in terms of D?",
+   "options": [
+    "4D",
+    "3D",
+    "D + 3T",
+    "3D/T"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The speed is v = D/T. In the further time 3T the car covers v(3T) = (D/T)(3T) = 3D. Total: D + 3D = 4D.",
+    "options": [
+     "Right: the total time is 4T at the same speed, so the total distance is 4D.",
+     "3D is the distance covered in the further time only. The question asks for the total.",
+     "A distance and a time have different units and cannot be added.",
+     "This has units of m/s, a speed. A distance must come out in meters."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-symbols-16",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-symbols",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A toy train moves at a steady velocity. It is at x = 2.0 m when t = 1.0 s and at x = 11.0 m when t = 4.0 s. Use v = Δx/Δt to find its velocity.",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.75,
+      "tol": 0.05,
+      "why": "Value: you divided the final position by the final time. Use the changes: Δx = 11.0 m − 2.0 m and Δt = 4.0 s − 1.0 s."
+     },
+     {
+      "value": 2.25,
+      "tol": 0.05,
+      "why": "Value: you divided Δx by the final time. Δt is 4.0 s − 1.0 s = 3.0 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δx = 11.0 m − 2.0 m = 9.0 m. Δt = 4.0 s − 1.0 s = 3.0 s. v = 9.0 m ÷ 3.0 s = 3.0 m/s."
+   }
   }
  ]
 }

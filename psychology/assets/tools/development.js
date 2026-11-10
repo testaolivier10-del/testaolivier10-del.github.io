@@ -337,7 +337,10 @@
     D.PARENT.forEach(function(p){
       var qx = p.warm ? sx(5) : sx(0), qy = p.demand ? sy(10) : sy(5), on = p === st;
       g.push('<rect x="' + qx + '" y="' + qy + '" width="' + (gs / 2) + '" height="' + (gs / 2) + '" class="dv-quad' + (on ? ' is-on' : '') + '"/>');
-      g.push('<text class="dv-quad-t' + (on ? ' is-on' : '') + '" x="' + (qx + gs / 4) + '" y="' + (qy + gs / 4 + 4) + '" text-anchor="middle">' + p.name + '</text>');
+      // The dot sat on its own quadrant's name ("Aut●ritative"): that name moves to the half of the quadrant the dot is not in.
+      var ly = qy + gs / 4 + 4;
+      if(on && !o.blank) ly = sy(d) - qy < gs / 4 ? qy + gs / 2 - 12 : qy + 20;
+      g.push('<text class="dv-quad-t' + (on ? ' is-on' : '') + '" x="' + (qx + gs / 4) + '" y="' + ly + '" text-anchor="middle">' + p.name + '</text>');
     });
     g.push('<rect x="' + gx + '" y="' + gy + '" width="' + gs + '" height="' + gs + '" class="dv-gridbox"/>');
     g.push('<text class="dv-axl" x="' + (gx + gs / 2) + '" y="' + (gy + gs + 24) + '" text-anchor="middle">Warmth →</text>');
@@ -428,6 +431,8 @@
     var svg = $('.dv-svg'), allLanes = true, tl = null, grid = null;
     var sAge = T.slider({ label: 'Age', min: 0, max: AGES.length - 1, step: 1, value: ageI, onInput: function(v){ act(); stop(); ageI = v; draw(); words(); say(lifeLine()); } });
     labelSlider(sAge, function(v){ return ageWords(AGES[v]); });
+    // The main control of two lenses: on a phone the studio keeps it on screen (the Play row no longer sticks there, see development.css).
+    sAge.el.setAttribute('data-ls-primary', '');
     $('.dv-grp-age').appendChild(sAge.el);
     var sWarm = T.slider({ label: 'Warmth', min: 0, max: 10, step: 1, value: warm, onInput: function(v){ act(); warm = v; draw(); words(); say(parentLine()); } });
     var sDem = T.slider({ label: 'Demands and rules', min: 0, max: 10, step: 1, value: dem, onInput: function(v){ act(); dem = v; draw(); words(); say(parentLine()); } });
@@ -453,6 +458,7 @@
       act(); stop(); lens = v;
       if(v === 'aging' && age() < 20){ ageI = AGES.indexOf(70); sAge.set(ageI); }
       sync(); draw(); words();
+      if(LS && LS.fit) LS.fit();   // each lens has its own controls: re-fit the phone stage
       say({ life: 'Lifespan lens. ', attach: 'Attachment lens. ', parent: 'Parenting lens. ', aging: 'Aging mind lens. ' }[v] + lineNow());
     }
     function sync(){
@@ -591,7 +597,8 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, sAge.el, 'Start here: drag to move through a life', { cls: 'dv-tipslot' });
+      // On a phone the slider is pinned at the screen's foot: the tip points at it there, with no slot to open.
+      if(s.mode() === 'explore'){ if(s.root.classList.contains('ls-phone')) s.hint({ target: sAge.el, text: 'Start here: drag to move through a life' }); else ApPsychTools.hintSlot(s, sAge.el, 'Start here: drag to move through a life', { cls: 'dv-tipslot' }); }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.dv-fig')); }
     }
     sync(); draw(); words();

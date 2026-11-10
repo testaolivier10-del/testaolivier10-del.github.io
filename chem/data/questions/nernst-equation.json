@@ -467,6 +467,32 @@
      "Right: Q(X) = 0.10 and Q(Y) = 10, so E(X) > E° > E(Y)."
     ]
    }
+  },
+  {
+   "id": "chem-nernst-equation-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A cell runs Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) at standard conditions. A little Na₂S solution is added to the copper half-cell, and solid CuS precipitates. What happens to the cell potential?",
+   "options": [
+    "It falls, because removing the reactant Cu²⁺ raises Q",
+    "It rises, because removing Cu²⁺ pulls the reaction forward",
+    "It stays the same, because E° does not depend on concentration",
+    "It rises, because the added ions carry more current"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q = [Zn²⁺]/[Cu²⁺]. Precipitating CuS lowers [Cu²⁺], so Q rises above 1. The cell is now closer to equilibrium, and E drops below E°.",
+    "options": [
+     "Right: less of the reactant ion means a larger Q and a smaller E.",
+     "Removing a reactant makes the forward reaction less favored, not more.",
+     "E° is fixed, but the cell is no longer at standard conditions, and E depends on Q.",
+     "The potential depends on Q, not on how many ions are present to carry current."
+    ]
+   }
   }
  ]
 }

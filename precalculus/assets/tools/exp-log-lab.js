@@ -183,15 +183,22 @@
       o.push(path(G, function(x){ return st.a * Math.pow(st.b, x); }, 0, 6.3, 'el-curve el-E'));
       rows.forEach(function(q){ o.push(dot(G, q.x, q.L, 'el-pt el-L', q.x === k || q.x === k - 1 ? 5.5 : 4)); o.push(dot(G, q.x, q.E, 'el-pt el-E', q.x === k || q.x === k - 1 ? 5.5 : 4)); });
       // the step itself: rise of L (+m) and of E (×b)
-      [['L', r0.L, r.L, '+' + g3(st.m)], ['E', r0.E, r.E, '×' + g3(st.b)]].forEach(function(s, i){
+      var riseY = [];
+      [['L', r0.L, r.L, (st.m >= 0 ? '+' : '') + g3(st.m)], ['E', r0.E, r.E, '×' + g3(st.b)]].forEach(function(s, i){
         if(Math.max(s[1], s[2]) < G.y[0] || Math.min(s[1], s[2]) > G.y[1]) return;
         var x = G.sx(k) + (i ? 7 : -7), y1 = G.sy(s[1]), y2 = G.sy(s[2]);
         o.push('<line class="el-rise el-' + s[0] + '" x1="' + r1(G.sx(k - 1)) + '" y1="' + r1(y1) + '" x2="' + r1(x) + '" y2="' + r1(y1) + '"/><line class="el-rise el-' + s[0] + '" x1="' + r1(x) + '" y1="' + r1(y1) + '" x2="' + r1(x) + '" y2="' + r1(y2) + '"/>');
-        o.push('<text class="el-lab el-' + s[0] + '" x="' + r1(x + (i ? 6 : -6)) + '" y="' + r1((y1 + y2) / 2 + 4) + '" text-anchor="' + (i ? 'start' : 'end') + '">' + mn(s[3]) + '</text>');
+        var ly = (y1 + y2) / 2 + 4;
+        riseY.push(ly);
+        o.push('<text class="el-lab el-' + s[0] + '" x="' + r1(x + (i ? 6 : -6)) + '" y="' + r1(ly) + '" text-anchor="' + (i ? 'start' : 'end') + '">' + mn(s[3]) + '</text>');
       });
       var t = st.b > 1 ? EL.overtake(st.a, st.m, st.b) : null;
-      if(t && t <= 6.3){ o.push(dot(G, t, st.a + st.m * t, 'el-pass', 6)); o.push(label(G, t, st.a + st.m * t, 'E passes L', 'el-E', t > 4.5 ? 'end' : 'start', t > 4.5 ? -8 : 8, -8)); }
-      o.push(label(G, 6.25, st.a + st.m * 6.25, 'L', 'el-L el-name', 'end', -4, -8), label(G, Math.min(6.25, Math.log(G.y[1] * 0.97 / st.a) / Math.log(st.b) || 6.25), Math.min(G.y[1] * 0.97, st.a * Math.pow(st.b, 6.25)), 'E', 'el-E el-name', 'end', -6, 4));
+      if(t && t <= 6.3){ o.push(dot(G, t, st.a + st.m * t, 'el-pass', 6)); 
+        // lift the note clear of the step labels when the crossing is beside the chosen step
+        var py = G.sy(st.a + st.m * t) - 8, lift = 0;
+        riseY.forEach(function(yy){ if(Math.abs(G.sx(t) - G.sx(k)) < 120 && py - lift > yy - 30 && py - lift < yy + 16) lift = Math.max(lift, py - (yy - 30)); });
+        o.push(label(G, t, st.a + st.m * t, 'E passes L', 'el-E', t > 4.5 ? 'end' : 'start', t > 4.5 ? -8 : 8, -8 - lift)); }
+      o.push(label(G, 6.25, st.a + st.m * 6.25, 'L', 'el-L el-name', 'end', -4, -8), label(G, st.b > 1 ? Math.min(6.25, Math.log(G.y[1] * 0.97 / st.a) / Math.log(st.b) || 6.25) : 6.25 /* a decaying E has its name at the right end, not off the left edge */, Math.min(G.y[1] * 0.97, st.a * Math.pow(st.b, 6.25)), 'E', 'el-E el-name', 'end', -6, st.b > 1 ? 4 : -9));
       svg.innerHTML = o.join('');
       svg.setAttribute('aria-label', 'Graph of L(x) = ' + st.a + ' + ' + st.m + 'x and E(x) = ' + st.a + ' times ' + st.b + ' to the x, for x from 0 to 6. Step from x = ' + (k - 1) + ' to ' + k + ': L goes from ' + g3(r0.L) + ' to ' + g3(r.L) + ', E from ' + g3(r0.E) + ' to ' + g3(r.E) + '.');
       // the step table, linked to the graph by colour and by the chosen column

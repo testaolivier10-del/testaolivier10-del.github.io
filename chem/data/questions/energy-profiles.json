@@ -613,6 +613,32 @@
      "Every elementary reaction passes through a transition state, whichever way the energy goes."
     ]
    }
+  },
+  {
+   "id": "chem-energy-profiles-16",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "On an energy profile, a point lies one quarter of the way along the reaction coordinate, partway up the hump. What does that point describe?",
+   "options": [
+    "The mixture after one quarter of the reaction time has passed",
+    "Particles whose bonds have begun to stretch, before the transition state",
+    "A mixture in which exactly one quarter of the reactant molecules have become products",
+    "A stable intermediate that could be collected from the flask"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The reaction coordinate tracks how far the atoms of one set of colliding particles have moved from the reactant arrangement toward the product arrangement. Partway up the hump, bonds are stretching and the potential energy is rising toward the transition state.",
+    "options": [
+     "The reaction coordinate is not time. A profile cannot tell you how many seconds have passed.",
+     "Right: the point describes an arrangement of atoms on the way to the top of the barrier.",
+     "A profile follows one reaction event, not the fraction of a whole sample that has reacted.",
+     "A point on the side of a hump is not stable: it is on its way up or down, and nothing can be collected there."
+    ]
+   }
   }
  ]
 }

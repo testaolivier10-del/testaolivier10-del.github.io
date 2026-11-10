@@ -236,7 +236,9 @@
       g.push('<rect x="' + n1(lx - hh * 0.35) + '" y="' + n1(floor - hh * 0.36) + '" width="' + n1(hh * 0.7) + '" height="' + n1(hh * 0.08) + '" rx="3" class="si-table"/>');
       g.push(person({ x: lx, y: floor, h: hh, age: 47, skin: SKIN[0], hair: '#B3ACA2', gray: true, hairStyle: 'bald', shirt: 'var(--si-s4)', pose: 'sit', facing: -1, face: cond === 'remote' ? 'neutral' : 'cry' }));
       g.push('<text class="si-note" x="' + n1(lx) + '" y="' + n1(Y + 22) + '" text-anchor="middle">Learner (an actor)</text>');
-      if(cond !== 'remote') g.push('<text class="si-note is-bad" x="' + n1(lx) + '" y="' + n1(Y + 38) + '" text-anchor="middle">protests through the wall</text>');
+      // two lines on a phone: in one, the words ran off the right edge of the picture
+      if(cond !== 'remote') g.push(phone ? '<text class="si-note is-bad" x="' + n1(lx) + '" y="' + n1(Y + 38) + '" text-anchor="middle">protests through</text><text class="si-note is-bad" x="' + n1(lx) + '" y="' + n1(Y + 52) + '" text-anchor="middle">the wall</text>'
+        : '<text class="si-note is-bad" x="' + n1(lx) + '" y="' + n1(Y + 38) + '" text-anchor="middle">protests through the wall</text>');
       if(cond === 'voice' || cond === 'peers' || cond === 'phone' || cond === 'office') g.push('<path class="si-wave" d="M' + n1(wallX - 6) + ' ' + n1(floor - hh * 0.7) + ' q-8 10 0 20 M' + n1(wallX - 14) + ' ' + n1(floor - hh * 0.74) + ' q-10 14 0 28"/>');
       if(cond === 'remote') g.push('<text class="si-note" x="' + n1(lx) + '" y="' + n1(Y + 38) + '" text-anchor="middle">pounds on the wall</text>');
     }
@@ -311,7 +313,7 @@
      values in percent 0 to 100; o.title, o.source, o.horizontal. */
   function bars(X, Y, W, H, items, o){
     o = o || {};
-    var g = [], top = Y + (o.title ? 40 : 6), bot = Y + H - (o.source ? (o.horizontal ? 30 : 46) : 18);
+    var g = [], top = Y + (o.title ? 40 : 6), bot = Y + H - (o.source ? (o.horizontal ? 30 : 46) : 18) - (o.lines3 ? 13 : 0);   // lines3: room for a third line of column names
     if(o.title) g.push('<text class="si-gt" x="' + n1(X) + '" y="' + n1(Y + 14) + '">' + esc(o.title) + '</text>');
     if(o.horizontal){
       var lw = Math.min(W * 0.42, Math.max.apply(null, items.map(function(it){ return textW(it.label, 12, 700); })) + 10), x0 = X + lw, x1 = X + W - 44, rh = (bot - top) / items.length;
@@ -383,10 +385,12 @@
     var svg = $('.si-svg'), showGraph = true;
     var sSize = T.slider({ label: 'People who give the wrong answer first', min: 0, max: SIZES.length - 1, step: 1, value: sizeI, onInput: function(v){ act(); sizeI = v; draw(); words(); say(line()); } });
     (function(){ var out = sSize.el.querySelector('output'), inp = sSize.input; function show(){ var t = SIZE_LAB[+inp.value] + (+inp.value === 0 ? '' : +inp.value === 1 ? ' person' : ' people'); out.textContent = t; inp.setAttribute('aria-valuetext', t); } inp.addEventListener('input', show); sSize.el.querySelectorAll('.bt-step').forEach(function(b){ b.addEventListener('click', show); }); show(); })();
+    // The first control a student uses: on a phone the studio keeps it on screen (it sat under the fold).
+    sSize.el.setAttribute('data-ls-primary', '');
     $('.si-size').appendChild(sSize.el);
     function onClick(e){
       var b = e.target.closest('.si-sits button');
-      if(b){ act(); sit = b.getAttribute('data-v'); sync(); draw(); words(); say(SITS.filter(function(x){ return x.v === sit; })[0].label + '. ' + line()); return; }
+      if(b){ act(); sit = b.getAttribute('data-v'); sync(); draw(); words(); if(LS && LS.fit) LS.fit();   /* the pinned slider belongs to Conformity only */ say(SITS.filter(function(x){ return x.v === sit; })[0].label + '. ' + line()); return; }
       var c = e.target.closest('.si-grp-row button');
       if(!c) return;
       act();
@@ -442,7 +446,7 @@
         out.push(groupScene(sx, sy, sw, sh, watched, skill, shout, phone));
         if(showGraph){
           var side = phone, h1 = side ? gH - 30 : (gH - 52) / 2, w1 = side ? (gW - 12) / 2 : gW;
-          out.push(bars(gx, gy, w1, h1, [{ label: phone ? 'Good\nalone' : 'Good,\nalone', value: D.FACIL.good[0], on: skill === 'good' && !watched }, { label: phone ? 'Good\nwatched' : 'Good,\nwatched', value: D.FACIL.good[1], on: skill === 'good' && watched }, { label: phone ? 'Weak\nalone' : 'Weaker,\nalone', value: D.FACIL.poor[0], on: skill === 'poor' && !watched, cls: 'is-alt' }, { label: phone ? 'Weak\nwatched' : 'Weaker,\nwatched', value: D.FACIL.poor[1], on: skill === 'poor' && watched, cls: 'is-alt' }], { title: 'Pool shots made', source: phone ? 'Michaels et al. (1982)' : 'Michaels and colleagues (1982)' }));
+          out.push(bars(gx, gy, w1, h1, [{ label: phone ? 'Good\nalone' : 'Good,\nalone', value: D.FACIL.good[0], on: skill === 'good' && !watched }, { label: phone ? 'Good\n\nwatched' : 'Good,\nwatched', value: D.FACIL.good[1], on: skill === 'good' && watched }, { label: phone ? 'Weak\nalone' : 'Weaker,\nalone', value: D.FACIL.poor[0], on: skill === 'poor' && !watched, cls: 'is-alt' }, { label: phone ? 'Weak\n\nwatched' : 'Weaker,\nwatched', value: D.FACIL.poor[1], on: skill === 'poor' && watched, cls: 'is-alt' }], { title: 'Pool shots made', source: phone ? 'Michaels et al. (1982)' : 'Michaels and colleagues (1982)', lines3: phone }));
           out.push(bars(side ? gx + w1 + 12 : gx, side ? gy : gy + h1 + 12, w1, h1, D.LOAF.others.map(function(o, i){ return { label: o === 0 ? 'Alone' : phone ? (o === 1 ? '+1' : '+5') : o === 1 ? '1 other' : '5 others', value: D.LOAF.effort[i], on: shout === o + 1 }; }), { title: phone ? 'Shouting effort' : 'Effort, % of shouting alone', source: phone ? 'Latane et al. (1979)' : 'Latane, Williams and Harkins (1979)' }));
         }
         label = 'Pool player, ' + (skill === 'good' ? 'good' : 'weaker') + ', ' + (watched ? 'watched by four people' : 'unobserved') + '; shouting ' + (shout === 1 ? 'alone' : 'with ' + (shout - 1) + ' others') + '. ' + line();
@@ -524,7 +528,8 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp; sp.setup('Scene and results');
       sync(); draw(); words();
-      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, sSize.el, 'Start here: add people who answer wrong', { cls: 'si-tipslot' });
+      // On a phone the slider is pinned at the screen's foot: the tip points at it there, with no slot to open.
+      if(s.mode() === 'explore'){ if(s.root.classList.contains('ls-phone')) s.hint({ target: sSize.el, text: 'Start here: add people who answer wrong' }); else ApPsychTools.hintSlot(s, sSize.el, 'Start here: add people who answer wrong', { cls: 'si-tipslot' }); }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.si-fig')); }
     }
     sync(); draw(); words();

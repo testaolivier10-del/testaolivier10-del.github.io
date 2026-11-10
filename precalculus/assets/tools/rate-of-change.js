@@ -144,7 +144,7 @@
       var w = Math.max(240, Math.round(bwrap.clientWidth || 600)), h = Math.max(80, Math.round(bwrap.clientHeight || 110));
       var ms = S.map(function(s){ return s.m; }), lo = Math.min(0, Math.min.apply(null, ms)), hi = Math.max(0, Math.max.apply(null, ms));
       if(hi - lo < 1e-9){ hi += 1; }
-      var L = V ? V.L : 44, R = 58, Tp = 18, B = 18, n = S.length, gw = (w - L - R) / n, bw = Math.min(54, gw * 0.42);
+      var L = V ? V.L : 44, R = 58, Tp = 18, B = lo < 0 ? 32 : 18 /* a negative bar's number goes under it: keep it off the row of changes */, n = S.length, gw = (w - L - R) / n, bw = Math.min(54, gw * 0.42);
       var sy = function(v){ return Tp + (hi - v) / (hi - lo) * (h - Tp - B); }, o = [];
       bars.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       o.push('<text class="rc-blab" x="' + (L - 6) + '" y="' + (Tp - 4) + '" text-anchor="end">rate</text>');

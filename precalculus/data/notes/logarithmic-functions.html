@@ -9,6 +9,7 @@
 <li>Always <b>increasing</b> and always <b>concave down</b>, so no local maximum, no minimum and no point of inflection.</li>
 <li>It crosses the $x$-axis at $(1, 0)$, because $\log_b 1 = 0$, and passes through $(b, a)$.</li>
 </ul>
+<figure id="fig-shape" data-fig="logarithmic-functions-shape"><figcaption>The graph of $y = \log_2 x$: no points at or left of $x = 0$, a vertical asymptote there, a zero at $(1, 0)$, then a slow, concave down climb through $(2, 1)$, $(4, 2)$ and $(8, 3)$.</figcaption></figure>
 <p>If $0 < b < 1$, or if $a < 0$, the graph is reflected: it decreases instead. The domain and asymptote do not change.</p>
 <table class="compare">
 <thead><tr><th scope="col"></th><th scope="col">$y = b^x$ ($b > 1$)</th><th scope="col">$y = \log_b x$ ($b > 1$)</th></tr></thead>
@@ -27,6 +28,7 @@
 <p>Behavior near it, from the right, the only side where $h$ is defined: $\lim_{x \to -4^+} h(x) = -\infty$.</p>
 <p>Zero: $\log_2(x + 4) = 1$, so $x + 4 = 2$ and $x = -2$.</p>
 </div>
+<figure id="fig-moved" data-fig="logarithmic-functions-moved"><figcaption>Worked example 1. The graph of $h(x) = \log_2(x + 4) - 1$ is the graph of $\log_2 x$ moved $4$ left and $1$ down, so its asymptote is $x = -4$ and its zero is $(-2, 0)$.</figcaption></figure>
 <p>Write both parts of the limit: the side ($-4^+$) and the sign ($-\infty$). Exam readers take points for a missing sign or a limit from the wrong side.</p>
 <div class="worked">
 <p><b>Worked example 2.</b> Find the domain of $f(x) = \ln(5 - x)$.</p>
@@ -35,6 +37,7 @@
 
 <h2>How fast a logarithmic function grows</h2>
 <p>Equal factors in the input give equal steps in the output. For $g(x) = 2\log_2(x - 1)$, the input $x - 1$ goes $2, 4, 8$ (each time doubling) and the output goes $2, 4, 6$: up $2$ each time. So the input has to cover longer and longer stretches for each equal step up.</p>
+<figure id="fig-steps" data-fig="logarithmic-functions-asymptote"><figcaption>$g(x) = 2\log_2(x - 1)$: from $(3, 2)$ to $(5, 4)$ to $(9, 6)$ the output rises by the same $2$, while the horizontal distance grows from $2$ to $4$.</figcaption></figure>
 <div class="worked">
 <p><b>Worked example 3.</b> Use average rates of change of $f(x) = \ln x$ on $[1, 2]$, $[2, 3]$ and $[3, 4]$ to describe its concavity.</p>
 <p>$\frac{\ln 2 - \ln 1}{1} \approx 0.693$, $\frac{\ln 3 - \ln 2}{1} \approx 0.405$, $\frac{\ln 4 - \ln 3}{1} \approx 0.288$.</p>

@@ -505,6 +505,32 @@
      "Right: holding temperature constant means salinity is the only factor that changes."
     ]
    }
+  },
+  {
+   "id": "env-ecological-tolerance-16",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fish species grows and breeds well in water at 20 °C, poorly at 10 °C and poorly at 31 °C. What does this pattern show about its range of tolerance?",
+   "options": [
+    "Only water that is too warm causes stress",
+    "The fish does equally well at any temperature",
+    "Temperature does not limit this species",
+    "Conditions can be too low as well as too high"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A range of tolerance has an optimal range in the middle and a zone of physiological stress on each side. Water that is too cold stresses the fish just as water that is too warm does.",
+    "options": [
+     "The fish also does poorly at 10 °C, so cold water is stressful too.",
+     "It does well only near 20 °C.",
+     "Its growth and breeding change with temperature, so temperature does limit it.",
+     "Right: there is a stress zone at both ends of the range."
+    ]
+   }
   }
  ]
 }

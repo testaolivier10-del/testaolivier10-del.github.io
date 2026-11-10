@@ -346,6 +346,84 @@
      "Divide by 5 to solve $5k = \\ln\\frac{1}{2}$; do not multiply."
     ]
    }
+  },
+  {
+   "id": "calc-math-exp-log-14",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Solve $\\ln x + \\ln(x - 3) = \\ln 10$ for $x$.",
+   "numeric": {
+    "answer": 5,
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "$x = -2$ solves $x(x - 3) = 10$, but $\\ln(-2)$ does not exist. Keep the solution with $x > 3$."
+     },
+     {
+      "value": "13/2",
+      "why": "A sum of logs is the log of a product, not of a sum: $\\ln x + \\ln(x - 3) = \\ln\\left(x(x - 3)\\right)$, so solve $x(x - 3) = 10$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Combine the logs: $\\ln\\left(x(x - 3)\\right) = \\ln 10$, so $x^2 - 3x - 10 = 0$, which factors as $(x - 5)(x + 2) = 0$. Both logs need $x > 3$, so $x = 5$. Check: $\\ln 5 + \\ln 2 = \\ln 10$."
+   }
+  },
+  {
+   "id": "calc-math-exp-log-15",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Evaluate $\\ln\\left(\\frac{1}{e^2}\\right)$ exactly.",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$\\frac{1}{e^2} = e^{-2}$, with a negative exponent, so the log is $-2$. The log of a number between 0 and 1 is negative."
+     },
+     {
+      "value": "-1/2",
+      "why": "$\\ln$ asks for the exponent on $e$. Write $\\frac{1}{e^2} = e^{-2}$ and read off $-2$, not its reciprocal."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{1}{e^2} = e^{-2}$, and $\\ln(e^x) = x$ for every $x$, so $\\ln\\left(e^{-2}\\right) = -2$."
+   }
+  },
+  {
+   "id": "calc-math-exp-log-16",
+   "unit": "skills-math",
+   "topic": "math-exp-log",
+   "type": "single",
+   "practice": "3.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student solves $5e^{3x} = 40$ and writes $x = \\ln\\frac{8}{3}$. What went wrong?",
+   "options": [
+    "Nothing: $\\ln\\frac{8}{3}$ and $\\frac{\\ln 8}{3}$ are two ways to write the same number",
+    "The 3 was divided inside the logarithm; $3x = \\ln 8$ gives $x = \\frac{\\ln 8}{3}$",
+    "The logarithm should be taken first, which gives $3x = \\frac{\\ln 40}{5}$ and then $x$",
+    "The equation has no solution, because 8 is not a whole-number power of $e$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Isolate the exponential: $e^{3x} = 8$. Take $\\ln$: $3x = \\ln 8$. The division by 3 happens outside the log: $x = \\frac{\\ln 8}{3} = \\ln 2 \\approx 0.693$, while $\\ln\\frac{8}{3} \\approx 0.981$.",
+    "options": [
+     "They differ: $\\ln\\frac{8}{3} \\approx 0.981$, while $\\frac{\\ln 8}{3} = \\ln 2 \\approx 0.693$.",
+     "After $e^{3x} = 8$, taking $\\ln$ gives $3x = \\ln 8$, and dividing by 3 happens outside the log.",
+     "Taking $\\ln$ first is allowed, but $\\ln\\left(5e^{3x}\\right) = \\ln 5 + 3x$, not $5 \\cdot 3x$. Done correctly it gives $3x = \\ln 40 - \\ln 5 = \\ln 8$, the same equation as before.",
+     "$e^{3x}$ takes every positive value, so $e^{3x} = 8$ has a solution; the exponent does not need to be a whole number."
+    ]
+   }
   }
  ]
 }

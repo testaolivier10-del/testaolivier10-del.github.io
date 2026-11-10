@@ -553,6 +553,32 @@
      "Oxygen is about 21%; CO2 is about 0.04%."
     ]
    }
+  },
+  {
+   "id": "env-atmosphere-16",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which list puts the layers of the atmosphere in order, starting at the ground?",
+   "options": [
+    "Stratosphere, troposphere, mesosphere, thermosphere",
+    "Troposphere, mesosphere, stratosphere, thermosphere",
+    "Thermosphere, mesosphere, stratosphere, troposphere",
+    "Troposphere, stratosphere, mesosphere, thermosphere"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "From the ground up: troposphere (weather), stratosphere (ozone layer), mesosphere (coldest), thermosphere (very thin, hot).",
+    "options": [
+     "The troposphere is the layer we live in, so it comes first.",
+     "The stratosphere lies directly above the troposphere, below the mesosphere.",
+     "That is the order from the top down.",
+     "Right: the troposphere is at the bottom and the thermosphere at the top."
+    ]
+   }
   }
  ]
 }

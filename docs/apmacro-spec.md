@@ -251,6 +251,10 @@ student draws in the page (the AI grader hook only when its eval passes).
    exam". `apmacro` in the FRQ grader's `FRQ_COURSES` (still shipped off). The AD and SRAS lessons' Check yourself
    lost their AD-AS graph items (they draw LRAS before 3.5; needs-author `adas-early-graphs`). `onSale: false`
    stays until the owner checklist below.
+14. (2026-11-10, tool audit) **Hands-on pass through the eight trainers** against the body map bar, with every
+   finding fixed in the tools' own files and nothing removed: `docs/tool-audit-2026-11.md` (ratings, fixes, what
+   is still open on phones, two rebuild candidates for the owner: indicators lab, multiplier lab). No economics
+   errors found; one open point in needs-author `tool-audit-2026-11`.
 
 ## 9. Open items for the owner
 

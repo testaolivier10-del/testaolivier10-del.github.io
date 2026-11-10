@@ -650,6 +650,32 @@
      "Right: IR matches vibrational gaps."
     ]
    }
+  },
+  {
+   "id": "chem-electromagnetic-spectrum-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "electromagnetic-spectrum",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A chemist wants to find out whether an unknown colorless liquid contains O–H or C=O bonds. Which kind of radiation should be passed through the sample?",
+   "options": [
+    "Infrared, because it is absorbed by vibrating bonds",
+    "Microwave, because it is absorbed by bonds that break",
+    "Visible light, because each bond has its own color",
+    "Ultraviolet, because it makes the bonds rotate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each kind of bond vibrates at its own energy, and those energies match infrared photons. The wavenumbers a sample absorbs in the infrared show which bonds it contains.",
+    "options": [
+     "Right: an O–H bond and a C=O bond absorb at different wavenumbers in the infrared.",
+     "Microwave photons carry too little energy to break bonds. They change how molecules rotate.",
+     "A colorless liquid absorbs no visible light, and visible light moves electrons between energy levels rather than identifying bonds.",
+     "Ultraviolet photons move electrons to higher energy levels. Rotation is changed by microwaves."
+    ]
+   }
   }
  ]
 }

@@ -205,7 +205,7 @@
         if(got.iso || got.count) o.push('<line class="ss-hline" x1="' + r1(G.L) + '" y1="' + r1(G.sy(F.v)) + '" x2="' + r1(G.R) + '" y2="' + r1(G.sy(F.v)) + '"/>', lab(G, 2 * Math.PI, F.v, 'y = ' + mn(M.fixed(F.v, 3)), 'ss-mut', 'end', -4, F.v > 0 ? -6 : 14));
         if(got.count) F.sols.forEach(function(x, i){ o.push('<line class="ss-drop" x1="' + r1(G.sx(x)) + '" y1="' + r1(G.sy(F.v)) + '" x2="' + r1(G.sx(x)) + '" y2="' + r1(G.sy(0)) + '"/>', dot(G, x, F.v, 'ss-pt' + ((i === 0 && got.x1) || (i === 1 && got.x2) ? ' is-got' : ''), 6)); });
         o.push(lab(G, 0.15, Y * 0.85, 'y = ' + F.f + ' x', 'ss-a', 'start'));
-        if(mine != null && isFinite(mine)){ var mx = Math.max(-0.2, Math.min(2 * Math.PI + 0.2, mine)); o.push('<line class="ss-yours" x1="' + r1(G.sx(mx)) + '" y1="' + r1(G.T) + '" x2="' + r1(G.sx(mx)) + '" y2="' + r1(G.B) + '"/>', lab(G, mx, -Y * 0.85, 'yours', 'ss-yours-t', 'start', 5)); }
+        if(mine != null && isFinite(mine)){ var mx = Math.max(-0.2, Math.min(2 * Math.PI + 0.2, mine)); o.push('<line class="ss-yours" x1="' + r1(G.sx(mx)) + '" y1="' + r1(G.T) + '" x2="' + r1(G.sx(mx)) + '" y2="' + r1(G.B) + '"/>', lab(G, mx, -Y * 0.85, 'yours', 'ss-yours-t', mx > 5.4 ? 'end' : 'start', mx > 5.4 ? -5 : 5)); }   // at the right edge the word goes left of its line
       } else if(F.kind === 'quad'){
         var q = function(u){ return (u - F.u1) * (u - F.u2); }, lo = Math.min(F.u1, F.u2, 0) - 1.5, hi = Math.max(F.u1, F.u2) + 1.5, vy = q((F.u1 + F.u2) / 2);
         G = frameOf(w, h, [lo, hi], [Math.min(-1, vy * 1.2), Math.max(q(lo), q(hi)) * 0.8]);

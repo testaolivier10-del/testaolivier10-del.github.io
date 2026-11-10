@@ -512,6 +512,32 @@
      "Populations with resistant individuals can adapt to a disease over generations."
     ]
    }
+  },
+  {
+   "id": "env-evolving-populations-16",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A field is sprayed with the same insect-killing chemical every year. After ten years, most of the pest insects survive the spray. Which explanation is correct?",
+   "options": [
+    "Each insect built up resistance during its own life",
+    "The spray caused the insects to change their genes on purpose",
+    "Insects learned to avoid the spray and taught their young",
+    "A few resistant insects survived each year and passed on the trait"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Some insects already had an inherited trait that let them survive. They lived to reproduce while the others died, so the trait became more common in each generation. The population evolved; no single insect did.",
+    "options": [
+     "An individual does not evolve during its life. Resistance was inherited, not built up.",
+     "A need does not produce the right gene. The variation was already there before the spray.",
+     "Resistance to a chemical is an inherited body trait, not a learned behavior.",
+     "Right: variation, survival and reproduction, and inheritance over many generations."
+    ]
+   }
   }
  ]
 }

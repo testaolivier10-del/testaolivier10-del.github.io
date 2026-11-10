@@ -304,6 +304,145 @@
     "15, from adding the values and ignoring the 5"
    ],
    "correct": 0
+  },
+  {
+   "id": "stat-math-formulas-12",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the values 2, 3 and 7, what is $\\sum (x_i - 4)^2$?",
+   "why": {
+    "correct": "Subtract, square each result, then add: $(-2)^2 + (-1)^2 + 3^2 = 4 + 1 + 9 = 14$.",
+    "options": [
+     "That adds the distances $-2$, $-1$ and 3 without squaring them. Square each one first.",
+     "That drops the signs and adds 2 + 1 + 3. Each distance is squared, not made positive.",
+     "That doubles each distance (4 + 2 + 6). Squaring multiplies a number by itself.",
+     "Right: the squares are 4, 1 and 9, and they add to 14."
+    ]
+   },
+   "options": [
+    "0",
+    "6",
+    "12",
+    "14"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-formulas-13",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is larger, $0.09$ or $\\sqrt{0.09}$?",
+   "why": {
+    "correct": "$\\sqrt{0.09} = 0.3$ because $0.3 \\times 0.3 = 0.09$. The square root of a number between 0 and 1 is larger than the number.",
+    "options": [
+     "That holds for numbers above 1. Between 0 and 1 the square root is larger than the number.",
+     "Right: $0.3 \\times 0.3 = 0.09$, and 0.3 is larger than 0.09.",
+     "A square root equals its number only at 0 and 1.",
+     "$0.03 \\times 0.03 = 0.0009$, not 0.09. The root is 0.3."
+    ]
+   },
+   "options": [
+    "$0.09$, because a square root makes a number smaller",
+    "$\\sqrt{0.09} = 0.3$, which is larger than $0.09$",
+    "They are equal, because $0.09$ is less than 1",
+    "$0.09$, because $\\sqrt{0.09} = 0.03$"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-formulas-14",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A formula says $y = \\frac{x - 30}{4}$, and $x = 42$. Which written answer shows the work the way the exam asks?",
+   "why": {
+    "correct": "Full credit needs three things: the formula, the numbers put into it, and the result.",
+    "options": [
+     "Right: it shows the formula, the substitution and the result.",
+     "A bare answer shows no method, so a slip would earn nothing.",
+     "The numbers put into the formula are missing.",
+     "The formula and the result are missing; finish the calculation."
+    ]
+   },
+   "options": [
+    "$y = \\frac{x - 30}{4} = \\frac{42 - 30}{4} = 3$",
+    "$y = 3$",
+    "$y = \\frac{x - 30}{4} = 3$",
+    "$\\frac{42 - 30}{4}$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-formulas-15",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Type an expression for $\\frac{8 + 12}{5 - 1}$ the way a calculator needs it.",
+   "why": {
+    "correct": "$\\frac{8 + 12}{5 - 1} = \\frac{20}{4} = 5$. The fraction bar groups the whole top and the whole bottom, so each needs its own brackets."
+   },
+   "setup": {
+    "answer": "(8 + 12)/(5 - 1)",
+    "mustUse": [
+     "8",
+     "12",
+     "5"
+    ],
+    "mistakes": [
+     {
+      "expr": "(8 + 12)/5 - 1",
+      "why": "Without brackets on the bottom, the top is divided by 5 and then 1 is subtracted, giving 3. Group the bottom too: (8 + 12)/(5 - 1)."
+     },
+     {
+      "expr": "8 + 12/(5 - 1)",
+      "why": "Without brackets on the top, only the 12 is divided, giving 11. Group the top too: (8 + 12)/(5 - 1)."
+     },
+     {
+      "expr": "8 + 12/5 - 1",
+      "why": "With no brackets only 12 is divided by 5, giving 9.4. Group the top and the bottom: (8 + 12)/(5 - 1)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-formulas-16",
+   "unit": "skills-math",
+   "topic": "math-formulas",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is $20 - 8 \\div 4 \\times 2$?",
+   "why": {
+    "correct": "Division and multiplication go left to right before the subtraction: $8 \\div 4 = 2$, then $2 \\times 2 = 4$, then $20 - 4 = 16$.",
+    "options": [
+     "That subtracts first: $(20 - 8) \\div 4 \\times 2$. Subtraction comes after division and multiplication.",
+     "That multiplies $4 \\times 2$ before dividing. Division and multiplication go left to right: $8 \\div 4$ first.",
+     "Right: $8 \\div 4 \\times 2 = 4$, and $20 - 4 = 16$.",
+     "That works out $(20 - 8) \\div (4 \\times 2)$. No brackets group the terms that way."
+    ]
+   },
+   "options": [
+    "6",
+    "19",
+    "16",
+    "1.5"
+   ],
+   "correct": 2
   }
  ]
 }

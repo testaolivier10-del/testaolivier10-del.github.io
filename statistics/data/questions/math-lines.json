@@ -282,6 +282,166 @@
     "$y = 8 + 4x$"
    ],
    "correct": 3
+  },
+  {
+   "id": "stat-math-lines-11",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "4.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "A line gives a plant's height $y$ in centimeters from its age $x$ in weeks. What are the units of the slope?",
+   "why": {
+    "correct": "A slope is in y units per x unit: here centimeters per week.",
+    "options": [
+     "That is x units per y unit, upside down.",
+     "Right: the slope is the change in height (centimeters) for each one-week increase in age.",
+     "Those are the units of y and of the intercept. The slope is a rate.",
+     "Those are the units of x. The slope is a rate: y units per x unit."
+    ]
+   },
+   "options": [
+    "Weeks per centimeter",
+    "Centimeters per week",
+    "Centimeters",
+    "Weeks"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-lines-12",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "An algebra book writes a line as $y = 4x + 9$. In the statistics form $y = a + bx$, what are $a$ and $b$?",
+   "why": {
+    "correct": "The number multiplying $x$ is the slope $b$; the constant is the intercept $a$. So $y = 9 + 4x$.",
+    "options": [
+     "Right: the same line is $y = 9 + 4x$, with intercept 9 and slope 4.",
+     "That goes by position. The slope is the number multiplying $x$, wherever it is written.",
+     "The line crosses the vertical axis at 9, not at 0.",
+     "Writing the terms in the other order does not change the sign of the slope."
+    ]
+   },
+   "options": [
+    "$a = 9$ and $b = 4$",
+    "$a = 4$ and $b = 9$",
+    "$a = 0$ and $b = 4$",
+    "$a = 9$ and $b = -4$"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "stat-math-lines-13",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which point lies on the line $y = 5 + 2x$?",
+   "why": {
+    "correct": "Substitute the x-value and compare: $5 + 2(4) = 13$.",
+    "options": [
+     "At $x = 4$ the line gives $5 + 2(4) = 13$; 9 is its value at $x = 2$.",
+     "That adds $5 + 2 + 3$. Multiply first: $5 + 2(3) = 11$.",
+     "That works out $(5 + 2) \\times 2$. Multiply first: $5 + 2(2) = 9$.",
+     "Right: $5 + 2(4) = 5 + 8 = 13$."
+    ]
+   },
+   "options": [
+    "$(4, 9)$",
+    "$(3, 10)$",
+    "$(2, 14)$",
+    "$(4, 13)$"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-lines-14",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A tank's water level is $y = 40 - 4x$ centimeters after $x$ minutes. Starting from any moment, how does the level change over the next 3 minutes?",
+   "why": {
+    "correct": "The slope is the change in y for each one-unit increase in x, so 3 minutes change the level by $-4 \\times 3 = -12$ centimeters.",
+    "options": [
+     "That is the change over 1 minute. Over 3 minutes it is three times as much.",
+     "Right: $-4$ centimeters per minute for 3 minutes is a fall of 12 centimeters, wherever you start.",
+     "28 centimeters is the level at $x = 3$, which is where you end only if you start at $x = 0$.",
+     "The slope is negative, so the level falls."
+    ]
+   },
+   "options": [
+    "It falls 4 centimeters",
+    "It falls 12 centimeters",
+    "It falls to 28 centimeters",
+    "It rises 12 centimeters"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-lines-15",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "setup",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "A line has slope $-2$ and passes through $(5, 30)$. Type an expression for its y-intercept.",
+   "why": {
+    "correct": "$30 = a + (-2)(5) = a - 10$, so $a = 30 - (-2)(5) = 40$. Going back from $x = 5$ to $x = 0$ on a falling line raises y."
+   },
+   "setup": {
+    "answer": "30 - (-2)*5",
+    "mustUse": [
+     "30",
+     "5"
+    ],
+    "mistakes": [
+     {
+      "expr": "30 - 2*5",
+      "why": "The slope is $-2$, so $30 = a + (-2)(5)$ and $a = 30 + 10 = 40$. Subtracting 10 loses the sign."
+     },
+     {
+      "expr": "30/5",
+      "why": "That divides y by x. Use $y = a + bx$: $30 = a + (-2)(5)$, then solve for $a$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "stat-math-lines-16",
+   "unit": "skills-math",
+   "topic": "math-lines",
+   "type": "single",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two data plans cost $y = 10 + 2x$ dollars (plan A) and $y = 4 + 3x$ dollars (plan B) for $x$ gigabytes. Which statement is correct?",
+   "why": {
+    "correct": "Compare intercepts for the cost at $x = 0$ (10 against 4) and slopes for the rate (2 against 3 dollars per gigabyte).",
+    "options": [
+     "Plan A does start higher, but its slope, 2, is smaller than plan B's slope, 3.",
+     "Plan B does rise faster, but its intercept, 4, is below plan A's intercept, 10.",
+     "Right: intercepts 10 and 4 give the cost at 0 gigabytes; slopes 2 and 3 give the cost of each extra gigabyte.",
+     "That swaps the two plans: the intercepts are 10 for plan A and 4 for plan B, and the slopes are 2 and 3."
+    ]
+   },
+   "options": [
+    "Plan A costs more at 0 gigabytes and rises faster",
+    "Plan B costs more at 0 gigabytes and rises faster",
+    "Plan A costs more at 0 gigabytes; plan B rises faster",
+    "Plan B costs more at 0 gigabytes; plan A rises faster"
+   ],
+   "correct": 2
   }
  ]
 }

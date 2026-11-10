@@ -559,6 +559,32 @@
     },
     "model": "Managers could set slower speed limits for ships in whale feeding areas, which reduces harm because slower propellers make less underwater noise, so whale calls are masked less."
    }
+  },
+  {
+   "id": "env-noise-pollution-16",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which pair lists two major sources of noise pollution in a city?",
+   "options": [
+    "Parks and street trees",
+    "Road traffic and construction",
+    "Street lights and billboards",
+    "Rain and light wind"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Transportation (roads, rail, aircraft), construction and industry are the main sources of noise pollution in cities.",
+    "options": [
+     "Trees and green space absorb sound. They reduce noise.",
+     "Right: both are loud and last for hours each day.",
+     "These are sources of light pollution, not noise.",
+     "These are natural sounds and are not loud enough to cause harm."
+    ]
+   }
   }
  ]
 }

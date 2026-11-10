@@ -278,7 +278,7 @@
       ], { practice: '2.B', hint: 'Exact (like 5pi/6) or correct to three decimal places, in radians.', sign: 'A negative angle turns clockwise; this one asks for $0 \\le \\theta < 2\\pi$. Find the quadrant from the signs of $x$ and $y$.' })
     ];
     var sol2 = ['$r = \\sqrt{x^2 + y^2} = \\sqrt{' + n(x2 * x2) + ' + ' + n(y2 * y2) + '} = ' + R2 + '$.',
-      'The point is in ' + QN[quadrant(x2, y2)] + '. $\\tan\\theta = \\frac{y}{x}$, and the angle in that quadrant with this tangent is $\\theta = ' + piTex(k2) + '$' + (quadrant(x2, y2) === 1 ? '' : ' (not $\\tan^{-1}\\frac{y}{x} \\approx ' + n(raw) + '$, which points into ' + QN[quadrant(Math.cos(raw), Math.sin(raw))] + ')') + '.',
+      'The point is in ' + QN[quadrant(x2, y2)] + '. $\\tan\\theta = \\frac{y}{x}$, and the angle in that quadrant with this tangent is $\\theta = ' + piTex(k2) + '$' + (quadrant(x2, y2) === 1 ? '' : (quadrant(Math.cos(raw), Math.sin(raw)) === quadrant(x2, y2) ? ' ($\\tan^{-1}\\frac{y}{x} \\approx ' + n(raw) + '$ points the same way but is negative, outside $[0, 2\\pi)$: add $2\\pi$)' : ' (not $\\tan^{-1}\\frac{y}{x} \\approx ' + n(raw) + '$, which points into ' + QN[quadrant(Math.cos(raw), Math.sin(raw))] + ')')) + '.',
       'So $(r, \\theta) = \\left(' + R2 + ', ' + piTex(k2) + '\\right)$. Check: $' + R2 + '\\cos ' + piTex(k2) + ' = ' + eTex(X2) + '$.'];
     return { text: text2, steps: steps2, solution: sol2, variant: 'toPolar', fig: { kind: 'convert', r: R2, t: t2, x: x2, y: y2, rmax: R2, shown: true }, values: { r: R2, k: k2, x: x2, y: y2, q: quadrant(x2, y2) } };
   };

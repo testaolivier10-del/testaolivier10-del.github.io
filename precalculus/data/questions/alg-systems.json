@@ -228,6 +228,189 @@
      "Calculators solve systems with decimals."
     ]
    }
+  },
+  {
+   "id": "pcalc-alg-systems-10",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $3x + 2y = 16$ and $x - y = 2$ by elimination. What is $x$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$2$ is $y$. Multiply the second equation by $2$ and add: $5x = 20$, so $x = 4$."
+     },
+     {
+      "value": "18/5",
+      "why": "Multiply the whole second equation by $2$, the right side too: $2x - 2y = 4$. Adding gives $5x = 20$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Multiply the second equation by $2$: $2x - 2y = 4$. Add it to the first so $y$ cancels: $5x = 20$, so $x = 4$. Then $y = 2$. Check: $3(4) + 2(2) = 16$."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-11",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What can you say about the system $y = 2x - 3$ and $4x - 2y = 6$?",
+   "type": "single",
+   "options": [
+    "It has one solution, the point $(0, -3)$",
+    "It has no solution, because the lines are parallel with different intercepts",
+    "Both equations give the same line, so each point on it is a solution",
+    "It has two solutions, one from each equation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Substitute $y = 2x - 3$ into the second equation: $4x - 2(2x - 3) = 4x - 4x + 6 = 6$, which is true for every $x$. The second equation is the first one rearranged, so the two lines are the same line.",
+    "options": [
+     "$(0, -3)$ is a solution, but so is $(1, -1)$ and each other point of the line.",
+     "Parallel lines have the same slope and different intercepts. Here $4x - 2y = 6$ rearranges to $y = 2x - 3$: the same intercept too.",
+     "Substituting gives $6 = 6$, true for every $x$.",
+     "Two different lines meet at most once. These are one line, so the solutions are the points of that line."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-12",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line $y = mx + b$ passes through $(2, 7)$ and $(5, 16)$. Write the system for $m$ and $b$ and solve it. What is $b$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "$3$ is $m$. Put it back into $2m + b = 7$: $6 + b = 7$."
+     },
+     {
+      "value": 13,
+      "why": "$2m + b = 7$ with $m = 3$ gives $b = 7 - 6$, not $7 + 6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each point gives an equation: $2m + b = 7$ and $5m + b = 16$. Subtract the first from the second: $3m = 9$, so $m = 3$. Back-substitute: $6 + b = 7$, so $b = 1$. Check: $5(3) + 1 = 16$."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-13",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which ordered pair $(x, y)$ is the solution of the system $x + y = 5$ and $2x - y = 4$?",
+   "type": "single",
+   "options": [
+    "$(2, 3)$",
+    "$(4, 4)$",
+    "$(1, 4)$",
+    "$(3, 2)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A solution makes both equations true. $(3, 2)$: $3 + 2 = 5$ and $2(3) - 2 = 4$. Adding the two equations finds it: $3x = 9$, so $x = 3$ and $y = 2$.",
+    "options": [
+     "$(2, 3)$ fits $x + y = 5$, but $2(2) - 3 = 1$, not $4$.",
+     "$(4, 4)$ fits $2x - y = 4$, but $4 + 4 = 8$, not $5$.",
+     "$(1, 4)$ fits $x + y = 5$, but $2(1) - 4 = -2$, not $4$.",
+     "Both equations are true: $3 + 2 = 5$ and $6 - 2 = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-14",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A quadratic $y = ax^2 + bx + c$ passes through $(0, 3)$, $(1, 4)$ and $(2, 9)$. What is $b$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$2$ is $a$. Put it back into $a + b = 1$: $b = 1 - 2$."
+     },
+     {
+      "value": 1,
+      "why": "$a + b = 1$ is one of the equations, not the value of $b$. With $a = 2$, $b = -1$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(0, 3)$ gives $c = 3$ at once. Then $(1, 4)$: $a + b + 3 = 4$, so $a + b = 1$. And $(2, 9)$: $4a + 2b + 3 = 9$, so $4a + 2b = 6$. Subtract twice the first from the second: $2a = 4$, so $a = 2$ and $b = -1$. The model is $y = 2x^2 - x + 3$."
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-15",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Adult tickets cost 12 dollars and child tickets cost 7 dollars. In all, 50 tickets are sold for 450 dollars. With $a$ adult tickets and $c$ child tickets, which system fits?",
+   "type": "single",
+   "options": [
+    "$a + c = 50$ and $12a + 7c = 450$",
+    "$a + c = 450$ and $12a + 7c = 50$",
+    "$12a + 7c = 50$ and $a + c = 19$",
+    "$a + c = 50$ and $7a + 12c = 450$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One equation counts tickets: $a + c = 50$. The other counts dollars: each adult ticket brings in 12 and each child ticket 7, so $12a + 7c = 450$.",
+    "options": [
+     "Tickets: $a + c = 50$. Dollars: $12a + 7c = 450$.",
+     "The totals are swapped: 50 is the number of tickets and 450 is the number of dollars.",
+     "$12a + 7c$ counts dollars, so it equals 450. And $12 + 7 = 19$ is not a number of tickets.",
+     "The prices are swapped: adult tickets, $a$, cost 12 dollars."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-systems-16",
+   "unit": "skills-algebra",
+   "topic": "alg-systems",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Use a calculator to solve the system $2.4x + 1.5y = 9.3$ and $0.8x - 3.2y = 1.7$. Give $x$ correct to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3.638513513513514,
+    "mistakes": [
+     {
+      "value": 0.37837837837837857,
+      "why": "That is $y$. The question asks for $x$: read the first value the solver gives."
+     },
+     {
+      "value": 3.64,
+      "why": "Two decimal places is not enough. Keep the solver's full value and give it correct to three decimal places."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Enter the coefficients in the calculator's system solver: $x \\approx 3.639$ and $y \\approx 0.378$ (stored values $3.63851\\ldots$ and $0.37837\\ldots$). By hand: multiply the second equation by $3$ and subtract it from the first to get $11.1y = 4.2$, then back-substitute without rounding $y$."
+   }
   }
  ]
 }

@@ -557,6 +557,32 @@
     },
     "model": "If the clay content of the soil increases, then the time for 200 mL of water to drain through a 10 cm column will increase."
    }
+  },
+  {
+   "id": "env-soil-properties-16",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Clay soil often has as much total pore space as sandy soil, yet water passes through clay far more slowly. Why?",
+   "options": [
+    "Clay has high porosity but low permeability",
+    "Clay has low porosity and low permeability",
+    "Clay particles are larger than sand grains",
+    "Clay repels water, so none can enter it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Porosity is how much pore space a soil has. Permeability is how easily water flows through it. The pores in clay are tiny and poorly connected, so water moves slowly even though the total pore space is large.",
+    "options": [
+     "Right: plenty of pore space, but the pores are too small for water to flow through easily.",
+     "The total pore space in clay is as large as in sand, or larger.",
+     "Clay particles are the smallest of the three sizes.",
+     "Clay takes in water and holds it tightly. It does not repel it."
+    ]
+   }
   }
  ]
 }

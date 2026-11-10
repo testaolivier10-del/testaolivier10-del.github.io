@@ -79,7 +79,7 @@
       '<div class="ml-ctl">' +
         '<div class="ls-seg ml-views" role="group" aria-label="Scene">' + VIEWS.map(function(v){ return '<button type="button" data-v="' + v.v + '" aria-pressed="false">' + v.label + '</button>'; }).join('') + '</div>' +
         '<div class="ml-grp ml-grp-list">' +
-          '<form class="ml-recall" hidden novalidate><label for="' + nid + '-in">Type a word you remember, then Enter</label><div class="ml-recall-row"><input id="' + nid + '-in" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="enter"><button type="submit" class="bt-btn">Add</button></div></form>' +
+          '<form class="ml-recall" data-ls-primary hidden novalidate><label for="' + nid + '-in">Type a word you remember, then Enter</label><div class="ml-recall-row"><input id="' + nid + '-in" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="enter"><button type="submit" class="bt-btn">Add</button></div></form>' +
           '<div class="ml-go"><button type="button" class="btn-press sm ls-btn ls-pri ml-start">Start: study 10 words</button></div>' +
           '<div class="ls-seg ml-when" role="group" aria-label="When you recall"><button type="button" data-d="0" aria-pressed="true">Recall at once</button><button type="button" data-d="1" aria-pressed="false">After 30 s of counting</button></div>' +
         '</div>' +
@@ -181,7 +181,7 @@
       return 'You recalled ' + result.n + ' of ' + N + ': ' + p.f + ' of the first 3, ' + p.m + ' of the middle 4, ' + p.l + ' of the last 3.';
     }
     function d30(){ return ML.retention(reviews, 30); }
-    function forgetLine(){ return (reviews.length ? 'Reviews on day ' + reviews.map(function(d){ return String(+d.toFixed(2)); }).join(', ') : 'No review') + ': about ' + r0(d30()) + '% kept on day 30 (no review: ' + r0(ML.retention([], 30)) + '%).'; }
+    function forgetLine(){ return (reviews.length ? 'Reviews on day ' + reviews.map(function(d){ return String(+d.toFixed(2)); }).join(', ') : 'No review') + ': about ' + r0(d30()) + '% kept on day 30' + (reviews.length ? ' (no review: ' + r0(ML.retention([], 30)) + '%)' : '') + '.'; }
     function sc(){ return ML.SCENES[story]; }
     function interfLine(){
       var s = sc();

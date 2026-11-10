@@ -482,6 +482,32 @@
      "A whole shell n = 2 holds 8 (2s and 2p together), but one p subshell holds 6."
     ]
    }
+  },
+  {
+   "id": "chem-electron-configuration-16",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "electron-configuration",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sulfur atom (16 electrons) gains two electrons to form the sulfide ion, S²⁻. What is the electron configuration of S²⁻?",
+   "options": [
+    "1s² 2s² 2p⁶ 3s² 3p⁴",
+    "1s² 2s² 2p⁶ 3s² 3p²",
+    "1s² 2s² 2p⁶ 3s² 3p⁶",
+    "1s² 2s² 2p⁶ 3s² 3p⁴ 4s²"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "S²⁻ has 16 + 2 = 18 electrons. The added electrons go into the next open subshell, 3p, which can hold 6: 1s² 2s² 2p⁶ 3s² 3p⁶.",
+    "options": [
+     "That is the neutral sulfur atom, with 16 electrons. The ion has two more.",
+     "That removes two electrons. A 2− charge means two electrons were gained.",
+     "Right: 2 + 2 + 6 + 2 + 6 = 18 electrons, with the 3p subshell full.",
+     "The 3p subshell still has room for two more electrons, so it fills before 4s."
+    ]
+   }
   }
  ]
 }

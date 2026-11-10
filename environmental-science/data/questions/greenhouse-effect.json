@@ -543,6 +543,32 @@
      "Where a gas comes from does not decide whether it absorbs infrared."
     ]
    }
+  },
+  {
+   "id": "env-greenhouse-effect-16",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of human activities is a major source of methane (CH₄)?",
+   "options": [
+    "Raising cattle and growing rice in paddies",
+    "Making cement and clearing forests",
+    "Spraying aerosols and running old coolers",
+    "Burning high-sulfur coal in power plants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Methane comes from cattle, rice paddies, landfills and leaks from natural gas systems. In each case bacteria break down organic matter where there is little oxygen, or the gas escapes directly.",
+    "options": [
+     "Right: both are major human sources of methane.",
+     "These are major sources of carbon dioxide.",
+     "These released CFCs.",
+     "Sulfur in coal gives sulfur dioxide, which is not a greenhouse gas."
+    ]
+   }
   }
  ]
 }

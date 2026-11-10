@@ -58,6 +58,8 @@
 /* annotations */
 .adl-gap,.adl-gapend{fill:none;stroke:var(--adl-gap);stroke-width:2.2;stroke-linecap:round;}
 .adl-gaplabel{fill:var(--adl-gap);font:800 11px var(--font-ui);}
+/* A halo in the page color, so a curve or guide line that runs behind the words does not strike through them. */
+.adl-gaplabel{paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
 .adl-tick{fill:var(--ink);font:800 12px var(--font-ui);}
 .adl-plabel{font-size:12.5px;}
 .mac-gr-eq.adl-now,.adl-fig .mac-gr-eq.is-point{fill:var(--cink);}

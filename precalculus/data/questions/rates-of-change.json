@@ -519,6 +519,32 @@
      "The outputs are equal, but they need not be $0$."
     ]
    }
+  },
+  {
+   "id": "pcalc-rates-of-change-16",
+   "unit": "unit-1",
+   "topic": "rates-of-change",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The average rate of change of $f$ on $[2, 6]$ is $3.5$, and $f(2) = -1$. What is $f(6)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 13,
+    "mistakes": [
+     {
+      "value": 14,
+      "why": "$14$ is the change in $f$. Add it to the starting value: $f(6) = f(2) + 14 = -1 + 14$."
+     },
+     {
+      "value": 20,
+      "why": "Multiply the rate by the length of the interval, $6 - 2 = 4$, not by $6$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{f(6) - f(2)}{6 - 2} = 3.5$, so $f(6) - f(2) = 3.5 \\cdot 4 = 14$ and $f(6) = -1 + 14 = 13$. The average rate of change times the length of the interval is the total change in $f$."
+   }
   }
  ]
 }

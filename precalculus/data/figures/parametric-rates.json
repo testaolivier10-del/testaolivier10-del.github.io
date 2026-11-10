@@ -18,5 +18,25 @@
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
   "alt": "The curve x(t) = t squared plus 1, y(t) = 4t minus t squared for t from 0 to 4, moving right the whole time, rising to a top point and falling again. Points are marked at t = 0 (1, 0), t = 1 (2, 3), t = 2 (5, 4), t = 3 (10, 3) and t = 4 (17, 0)."
+ },
+ "parametric-rates-skier": {
+  "file": "figures/parametric-rates-skier.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The four logged positions of the skier: (0, 50) at t = 0, (6, 46) at t = 2, (16, 38) at t = 4 and (30, 26) at t = 6, joined by thin gray segments. A heavy blue segment joins (6, 46) to (30, 26). Dashed legs show a change in x of 24 and a change in y of -20, so the segment has slope -5/6."
+ },
+ "parametric-rates-flat": {
+  "file": "figures/parametric-rates-flat.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The curve x(t) = t squared plus 1, y(t) = 4t minus t squared for t from 0 to 4. It starts at (1, 0), rises to (5, 4) at t = 2 and falls to (17, 0). A dashed horizontal segment joins the points at t = 1, (2, 3), and t = 3, (10, 3): its slope is 0 although the point moved 8 units right."
  }
 }

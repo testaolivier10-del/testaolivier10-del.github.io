@@ -591,6 +591,32 @@
      "Right: it targets runoff from many fields."
     ]
    }
+  },
+  {
+   "id": "env-pollution-sources-16",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A scientist suspects that one factory pipe is polluting a river. Which sampling plan would best test this?",
+   "options": [
+    "Sample just upstream and just downstream of the pipe",
+    "Sample the water once a year at the mouth of the river",
+    "Sample the rain falling across the whole watershed",
+    "Sample the soil of the farm fields along the river"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A point source enters at one place. If the pollutant is low just upstream of the pipe and high just downstream, the pipe is the source.",
+    "options": [
+     "Right: comparing the two sides of a single outlet isolates its effect.",
+     "One sample at the river mouth mixes every source together.",
+     "Rain would show pollution from the air, not from the pipe.",
+     "Field soil would point to nonpoint runoff, not to the pipe."
+    ]
+   }
   }
  ]
 }

@@ -2,7 +2,8 @@
    ONLY (builder T3). Scoped to .ml-*; colors from the course tokens (mac.css):
    --cink for spending and the totals, the warm accent for taxes, so the two
    read apart in light and dark. */
-.ml-card{--ml-tax:#B54700;--ml-now:#084F78;}
+/* .ls-root too: in the studio the figure is moved out of .ml-card, and without the tokens the tax bars drew black. */
+.ml-card,.ls-root{--ml-tax:#B54700;--ml-now:#084F78;}
 :root[data-theme="dark"] .ml-card,:root[data-theme="dark"] .ls-root{--ml-tax:#F29A5C;--ml-now:#8CC8E8;}
 .ml-stage{display:flex;flex-direction:column;flex:1;min-height:0;}
 .ml-fig{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;}
@@ -57,7 +58,7 @@
 .ml-t td{vertical-align:top;padding:6px;display:table-cell;}
 .ml-t td + td{border-left:2px solid var(--ink);}
 .ml-t td span{display:block;color:var(--muted);font-size:12px;}
-.ml-t td b{display:block;margin-bottom:4px;}
+.ml-t td b{display:block;margin-bottom:4px;white-space:nowrap;}
 .ml-t b.is-ex{color:var(--cink);}
 /* Controls */
 .ml-seg{display:flex;flex-wrap:wrap;align-items:center;gap:4px;}
@@ -82,8 +83,8 @@
   .ml-nums div{padding:4px 6px;}
   .ml-nums dt{font-size:10.5px;line-height:1.2;}
   .ml-nums dd{font-size:13px;}
-  .ml-moneyrow{grid-template-columns:1fr 1fr;gap:6px;}
-  .ml-mm svg{max-height:150px;}
+  .ml-moneyrow{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6px;}
+  .ml-mm svg{max-height:190px;}
   .ml-t{font-size:12px;}
   .ml-read{font-size:12.5px;gap:4px;}
   .ml-chip{padding:3px 8px;}
@@ -95,6 +96,10 @@
 .ml-fig[data-v="money"] .ml-barbox{flex:none;height:clamp(170px,34vh,380px);}
 @media (max-width:640px){
   .ml-qbars{height:30svh;min-height:170px;}
+  /* A drill's stage is cut down to fit the answer box (the studio's --ls-sh): the chart takes the height that is
+     left, so its column names are not cut off, and stops short of the Enlarge button, which sat on "Total". */
+  .ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qfig{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;}
+  .ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qbars{flex:1 1 0;height:auto;min-height:118px;margin:0 44px 0 0;}
   .ml-fig[data-v="money"] .ml-barbox{height:24svh;min-height:150px;margin-bottom:0;}
   .ml-t td span{display:inline;}
   .ml-t td span::after{content:" ";}

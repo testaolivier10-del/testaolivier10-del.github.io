@@ -246,6 +246,201 @@
    "why": {
     "correct": "Change in $y$ = slope $\\times$ change in $x$ $= -4 \\cdot 3 = -12$. A line changes by the same amount for every equal step in $x$."
    }
+  },
+  {
+   "id": "pcalc-alg-lines-10",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the slope of the line through $(4, 1)$ and $(4, 7)$?",
+   "type": "single",
+   "options": [
+    "$0$",
+    "$6$",
+    "Undefined",
+    "$\\frac{1}{6}$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The run is $4 - 4 = 0$, and $\\frac{7 - 1}{0}$ has no value. The two points are straight above each other: the line is the vertical line $x = 4$, and its slope is undefined.",
+    "options": [
+     "Slope $0$ is a horizontal line, where the rise is $0$. Here the run is $0$.",
+     "$6$ is the rise. Slope divides the rise by the run, and the run is $0$.",
+     "Run $0$: the line is vertical, so the slope is undefined.",
+     "The run is $4 - 4 = 0$, not $1$. Slope is rise over run, $\\frac{6}{0}$, and dividing by $0$ gives no value."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-11",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line has slope $-2$ and passes through $(3, 7)$. What is the $y$-coordinate of its $y$-intercept?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 13,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "From $x = 3$ back to $x = 0$ the change in $x$ is $-3$, so $y$ changes by $-2(-3) = +6$: $7 + 6$, not $7 - 6$."
+     },
+     {
+      "value": 7,
+      "why": "$7$ is the $y$-value at $x = 3$. The $y$-intercept is at $x = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Point-slope form solved for $y$: $y = 7 - 2(x - 3)$. At $x = 0$: $y = 7 - 2(-3) = 13$. In slope-intercept form the line is $y = -2x + 13$."
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-12",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write an equation of the line through $(-1, 4)$ and $(3, -4)$. Solve for $y$.",
+   "type": "expr",
+   "expr": {
+    "answer": "-2x + 2",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -4,
+     4
+    ],
+    "mode": "exact",
+    "lhs": "y =",
+    "mistakes": [
+     {
+      "expr": "2x + 6",
+      "why": "Subtract in the same order on top and bottom: $\\frac{-4 - 4}{3 - (-1)} = \\frac{-8}{4} = -2$. The line falls from left to right."
+     },
+     {
+      "expr": "-2x + 4",
+      "why": "$4$ is the $y$-value at $x = -1$, not at $x = 0$. Use $y = 4 - 2(x + 1)$, which gives the intercept $2$."
+     },
+     {
+      "expr": "-x/2 + 7/2",
+      "why": "Slope is rise over run: $\\frac{-8}{4} = -2$, not $\\frac{4}{-8}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope: $m = \\frac{-4 - 4}{3 - (-1)} = \\frac{-8}{4} = -2$. Point-slope form from $(-1, 4)$: $y = 4 - 2(x + 1) = -2x + 2$. Check the other point: $-2(3) + 2 = -4$."
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-13",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A tank holds $W(t) = 200 - 8t$ liters of water $t$ minutes after a drain opens. What does the number $200$ mean?",
+   "type": "single",
+   "options": [
+    "The tank holds 200 liters when the drain opens, at $t = 0$",
+    "The tank loses 200 liters of water each minute",
+    "The tank is empty 200 minutes after the drain opens",
+    "The tank can hold at most 200 liters of water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$200$ is the $y$-intercept: $W(0) = 200 - 8(0) = 200$ liters, the amount at $t = 0$. The slope, $-8$ liters per minute, is the rate of draining.",
+    "options": [
+     "$W(0) = 200$: the amount at the start.",
+     "The rate is the slope: the tank loses $8$ liters each minute.",
+     "The tank is empty when $200 - 8t = 0$, at $t = 25$ minutes.",
+     "The model gives the amount at $t = 0$. It says nothing about the size of the tank."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-14",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A line passes through $(0, 5)$ and has slope $3$. For which $x$ is $y = 26$ on this line?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 7,
+    "mistakes": [
+     {
+      "value": 83,
+      "why": "That puts $26$ in for $x$. Here $26$ is the $y$-value: solve $5 + 3x = 26$."
+     },
+     {
+      "value": "26/3",
+      "why": "Subtract the intercept first: $3x = 26 - 5 = 21$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The line is $y = 5 + 3x$. Set $5 + 3x = 26$: $3x = 21$, so $x = 7$. Check: $5 + 3(7) = 26$."
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-15",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Do the points $(0, 1)$, $(2, 5)$ and $(5, 11)$ lie on one line?",
+   "type": "single",
+   "options": [
+    "No; the slopes between the pairs of points are $2$ and $3$",
+    "No; the $x$-values are not equally spaced, so no line fits",
+    "Yes; the $y$-values go up by the same amount each time",
+    "Yes; the slope between each pair of points is $2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "From $(0, 1)$ to $(2, 5)$: $\\frac{5 - 1}{2 - 0} = 2$. From $(2, 5)$ to $(5, 11)$: $\\frac{11 - 5}{5 - 2} = \\frac{6}{3} = 2$. The same slope between the pairs means one line, $y = 2x + 1$.",
+    "options": [
+     "The second slope is $\\frac{6}{3} = 2$: divide the rise $6$ by the run $3$.",
+     "Points on a line do not need equally spaced inputs. Compare slopes, which divide each rise by its own run.",
+     "The $y$-values go up by $4$ and then by $6$. What matches is the slope, $\\frac{4}{2} = \\frac{6}{3} = 2$.",
+     "Both slopes are $2$, so the three points are on $y = 2x + 1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-lines-16",
+   "unit": "skills-algebra",
+   "topic": "alg-lines",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A plumber charges 40 dollars to come to a house plus 65 dollars for each hour of work. Which equation gives the cost $C$, in dollars, of a job that takes $h$ hours?",
+   "type": "single",
+   "options": [
+    "$C = 65 + 40h$",
+    "$C = 40 + 65h$",
+    "$C = 105h$",
+    "$C = 40h + 65$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The fixed charge is the $y$-intercept, the cost at $h = 0$: $40$. The charge per hour is the slope: $65$ dollars per hour. So $C = 40 + 65h$.",
+    "options": [
+     "The numbers are swapped: $65$ is the amount per hour, so it multiplies $h$.",
+     "Intercept $40$, slope $65$ dollars per hour.",
+     "The 40 dollars is charged once, not every hour.",
+     "This charges 40 dollars per hour and 65 dollars once, the reverse of the description."
+    ]
+   }
   }
  ]
 }

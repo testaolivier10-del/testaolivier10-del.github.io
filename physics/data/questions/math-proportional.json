@@ -269,6 +269,168 @@
      "Fixing d is exactly what makes t depend on v alone."
     ]
    }
+  },
+  {
+   "id": "phys-math-proportional-11",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two cars travel at the same speed and brake. The stopping distance is d = v²/(2a). Car B brakes with twice the deceleration of car A. How does car B's stopping distance compare with car A's?",
+   "options": [
+    "It is 4 times as long",
+    "It is twice as long",
+    "It is half as long",
+    "It is one quarter as long"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The speed is the same for both, so cross it out. What is left is d ∝ 1/a: the deceleration is on the bottom with a power of 1. Doubling a divides d by 2.",
+    "options": [
+     "The square belongs to v, which does not change here, and a larger deceleration shortens the distance.",
+     "A larger deceleration stops the car sooner. Because a is on the bottom, d gets smaller.",
+     "Right: a is in the denominator to the first power, so the factor 2 divides the distance.",
+     "Only v is squared in this equation. The deceleration a has a power of 1."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A cart starts from rest with a steady acceleration, so Δx = ½at². By what factor must the time increase for the cart to travel 9 times as far?",
+   "options": [
+    "3",
+    "9",
+    "81",
+    "4.5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Δx ∝ t², so t ∝ √Δx. For 9 times the distance, the time must be √9 = 3 times as long. Check: 3² = 9.",
+    "options": [
+     "Right: running the square relationship backward takes a square root.",
+     "That would be true only if Δx were directly proportional to t. With t², 9 times the time gives 81 times the distance.",
+     "Squaring 9 answers a different question: how much farther the cart goes in 9 times the time.",
+     "Halving the factor is not how a square relationship works. Take the square root."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-13",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "A train moves at a steady speed and covers 140 m in 4.0 s. How far does it move in 10. s? Use the proportion, without finding the speed.",
+   "numeric": {
+    "answer": 350,
+    "tol": 10,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 56,
+      "why": "Value: you divided by the factor. At a steady speed d ∝ t, so 2.5 times the time gives 2.5 times the distance."
+     },
+     {
+      "value": 875,
+      "why": "Value: you squared the factor. d = vt has t to the first power, so the factor is 2.5, not 2.5²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "d = vt with v fixed, so d ∝ t. Factor on t: 10. s ÷ 4.0 s = 2.5. Factor on d: 2.5. d = 2.5 × 140 m = 350 m."
+   }
+  },
+  {
+   "id": "phys-math-proportional-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A table of measurements gives these pairs (x, y): (2, 12), (4, 6), (8, 3). Which relationship fits the data?",
+   "options": [
+    "y ∝ x",
+    "y ∝ 1/x²",
+    "y ∝ √x",
+    "y ∝ 1/x"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Each time x doubles, y halves, and the product x × y stays at 24. That is the sign of an inverse relationship, y ∝ 1/x.",
+    "options": [
+     "In a direct relationship y would double when x doubles. Here y gets smaller.",
+     "For an inverse square, doubling x would make y one quarter as large: 12, then 3, then 0.75.",
+     "With a square root, y would grow slowly as x grows. Here y falls.",
+     "Right: x × y = 24 in every row."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student claims that doubling a car's speed more than doubles its stopping distance, and has derived d = v²/(2a). Which sentence best supports the claim with the equation?",
+   "options": [
+    "Faster cars are harder to stop, so the distance must grow by more than the speed does",
+    "d ∝ v², so doubling v makes d 2² = 4 times as long, which is more than double",
+    "d = v²/(2a), so when v goes up, d goes up as well",
+    "d ∝ v, so doubling v doubles d, and a real car then needs a little more"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A full answer names the power and the factor, then ties it back to the claim: d ∝ v², a factor of 2 on v gives 2² = 4 on d, and 4 is more than double.",
+    "options": [
+     "This restates the claim in everyday words. It does not use the equation at all.",
+     "Right: the power, the factor and the link to the claim are all there.",
+     "This says only that d increases. It does not show that the increase is more than double.",
+     "The equation has v squared, so d is not directly proportional to v."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-16",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The reading of a light sensor is inversely proportional to the square of its distance from a small lamp. The sensor reads 80. units at 1.0 m. What does it read at 4.0 m?",
+   "numeric": {
+    "answer": 5,
+    "tol": 0.1,
+    "unit": "units",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "Value: you divided by 4. For an inverse square, divide by the factor squared: 4² = 16."
+     },
+     {
+      "value": 1280,
+      "why": "Value: you multiplied by 16. Moving farther away makes the reading smaller, so divide."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reading ∝ 1/d². Factor on d: 4.0 m ÷ 1.0 m = 4. Factor on the reading: 1/4² = 1/16. Reading = 80. ÷ 16 = 5.0 units."
+   }
   }
  ]
 }

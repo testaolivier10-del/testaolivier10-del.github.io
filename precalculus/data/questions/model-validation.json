@@ -586,6 +586,32 @@
      "Match the concavity the residuals reveal."
     ]
    }
+  },
+  {
+   "id": "pcalc-model-validation-16",
+   "unit": "unit-2",
+   "topic": "model-validation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "At $x = 4$ a model predicts the value $18$, and the residual of the model there is $2.5$. What is the actual data value at $x = 4$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "41/2",
+    "mistakes": [
+     {
+      "value": 15.5,
+      "why": "A residual is actual minus predicted, so a positive residual means the actual value is above the prediction: $18 + 2.5$."
+     },
+     {
+      "value": 2.5,
+      "why": "$2.5$ is the residual, the gap between the two values. Add it to the predicted value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Residual $=$ actual value $-$ predicted value. So $2.5 = \\text{actual} - 18$, and the actual value is $18 + 2.5 = 20.5$. The model underestimates here."
+   }
   }
  ]
 }

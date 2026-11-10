@@ -443,6 +443,32 @@
    "why": {
     "correct": "Momentum first: it is unchanged. Energy second: the total is conserved, but kinetic energy decreases."
    }
+  },
+  {
+   "id": "phys-collisions-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two carts collide and stick together on a level, frictionless track. The total kinetic energy after the collision is less than before. What happened to the missing kinetic energy?",
+   "options": [
+    "It was destroyed in the collision, since the carts stuck together",
+    "It became momentum, which is why the momentum is conserved",
+    "It went into deforming and warming the carts, and into sound",
+    "It is stored as gravitational potential energy of the carts"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Energy is not destroyed. In an inelastic collision some of the kinetic energy of the system becomes other forms: the carts deform and warm up slightly, and a little leaves as sound.",
+    "options": [
+     "Energy is never destroyed. It changes form.",
+     "Momentum and energy are different quantities, and one does not turn into the other. Momentum is conserved here because no net external force acts.",
+     "Right: the kinetic energy decreases, and the total energy does not.",
+     "The track is level, so the height of the carts and their gravitational potential energy do not change."
+    ]
+   }
   }
  ]
 }

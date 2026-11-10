@@ -464,6 +464,37 @@
    "why": {
     "correct": "Δx_cm = RΔθ = (0.30 m)(5.0 × 2π rad) = 9.4 m, about 9.4 m."
    }
+  },
+  {
+   "id": "phys-rolling-16",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A bicycle wheel of radius 0.35 m rolls without slipping along a road at 7.0 m/s. What is its angular speed, in rad/s?",
+   "numeric": {
+    "answer": 20,
+    "tol": 1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.45,
+      "tol": 0.05,
+      "why": "Value: you multiplied v by R. v_cm = Rω, so ω = v_cm ÷ R."
+     },
+     {
+      "value": 0.05,
+      "tol": 0.001,
+      "why": "Value: you divided R by v. ω = v_cm ÷ R."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rolling without slipping means v_cm = Rω, so ω = v_cm/R = (7.0 m/s) ÷ (0.35 m) = 20. rad/s."
+   }
   }
  ]
 }

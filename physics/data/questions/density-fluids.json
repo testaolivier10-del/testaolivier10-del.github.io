@@ -467,6 +467,32 @@
      "The particles keep moving even when the liquid as a whole is still."
     ]
    }
+  },
+  {
+   "id": "phys-density-fluids-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "density-fluids",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "An aluminum block (density 2700 kg/m³) and a lead block (density 11,300 kg/m³) have the same mass. How do their volumes compare?",
+   "options": [
+    "The aluminum block has about 4 times the volume of the lead block",
+    "The lead block has about 4 times the volume of the aluminum block",
+    "They have the same volume, because they have the same mass",
+    "The aluminum block has about 16 times the volume of the lead block"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "V = m/ρ. With the same mass, volume is inversely proportional to density. Lead is 11,300 ÷ 2700 ≈ 4.2 times as dense, so the aluminum block needs about 4.2 times the volume to have the same mass.",
+    "options": [
+     "Right: the less dense material takes up more space for the same mass.",
+     "The denser material packs the same mass into a smaller volume, not a larger one.",
+     "Equal masses have equal volumes only when the densities are equal.",
+     "V = m/ρ has ρ to the first power, so the ratio is about 4.2, not 4.2²."
+    ]
+   }
   }
  ]
 }

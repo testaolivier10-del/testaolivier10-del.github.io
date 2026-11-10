@@ -93,8 +93,9 @@
         return { wide: true, W: 1000, H: H, cx: cx, cy: cyw, R: R, gx0: cx + R + 92, gx1: 976, gy: cyw, fs: 21, tk: 15, read: Math.max(32, cyw - R - 62) };
       }
       H = Math.round(clamp(400 * h / Math.max(1, w), 560, 900)); R = Math.floor(clamp((H - 200) / 4, 92, 150));
-      var cy = R + 36, read = cy + R + 46, gy = read + 22 + 18 + R;
-      return { wide: false, W: 400, H: Math.max(H, gy + R + 104), cx: 200, cy: cy, R: R, gx0: 46, gx1: 386, gy: gy, fs: 16, tk: 13, read: read };
+      // room above the circle for P's label at π/2 and below it at 3π/2, so neither is cut off or lands on the readout
+      var cy = R + 52, read = cy + R + 68, gy = read + 22 + 18 + R;
+      return { wide: false, W: 400, H: Math.max(H, gy + R + 82), cx: 200, cy: cy, R: R, gx0: 46, gx1: 386, gy: gy, fs: 16, tk: 13, read: read };
     }
     function sx(t){ return L.gx0 + t / TAU * (L.gx1 - L.gx0); }
     function gyv(v){ return L.gy - L.R * v; }
@@ -185,12 +186,18 @@
         // circle), the red leg goes unlabeled: the readout under the circle names it in the same red
         // (consistency audit 2026-11, C3).
         var sinOut = !(a.cos >= 0 && Px + 26 + L.fs * 3 > cx + R + (L.wide ? 34 : 26) - 14);
+        // ... and where the label would lie across the circle itself, it is left to the readout too
+        var sinD = Math.abs(Px - cx) + 26, sinHw = Math.sqrt(Math.max(0, R * R - Math.pow((Py - cy) / 2, 2)));
+        if(sinD < sinHw + 4 && sinD + L.fs * 2.6 > sinHw - 4) sinOut = false;
         if(Math.abs(a.sin) > 0.18 && sinOut) o.push(txt(Px + (a.cos >= 0 ? 26 : -26), (cy + Py) / 2 + L.fs * 0.35, 'sin θ', 'uc-lab uc-c-sin', a.cos >= 0 ? 'start' : 'end'));
       } else {
         // tan θ: the line through O and P meets x = 1 at height tan θ
         var x1 = cx + R, top = 1.5;
         o.push('<line class="uc-tline" x1="' + x1 + '" y1="' + r1(cy - R * top) + '" x2="' + x1 + '" y2="' + r1(cy + R * top) + '"/>');
-        o.push(txt(x1 + 6, cy - R * top + L.fs, 'x = 1', 'uc-lab uc-c-tan', 'start'));
+        // kept inside the picture; at the foot of the line while P's own label is up beside its top
+        var x1Low = a.cos > 0 && a.sin > 0.6 && !(Math.abs(a.tan) <= top);
+        o.push(txt(x1 + 6, x1Low ? (L.wide ? cy + R * top - 6 : L.read - L.fs * 1.6) : Math.max(L.fs + 2, cy - R * top + L.fs), 'x = 1', 'uc-lab uc-c-tan', 'start'));
+        var tanLabY = null;
         if(isFinite(a.tan)){
           var tv = clamp(a.tan, -top, top), tx = Math.abs(a.tan) > top ? cx + R * top / Math.abs(a.tan) : x1, ty = cy - R * tv;
           var back = a.cos < 0;
@@ -198,7 +205,10 @@
           if(Math.abs(a.tan) <= top){
             o.push('<line class="uc-tseg" x1="' + x1 + '" y1="' + cy + '" x2="' + x1 + '" y2="' + r1(ty) + '"/>');
             o.push('<circle class="uc-tpt" cx="' + x1 + '" cy="' + r1(ty) + '" r="6"/>');
-            o.push(txt(x1 + 10, ty + (a.tan >= 0 ? -6 : L.fs), 'tan θ', 'uc-lab uc-c-tan', 'start'));
+            // beside the point, clear of the x label and the axis numbers, with room for the slope on the next line
+            var yLo = L.fs * 3.8, yHi = (L.wide ? L.H - 10 : L.read - L.fs * 1.4) - L.fs * 1.25;
+            tanLabY = a.tan >= 0 ? clamp(Math.min(ty - 6, cy - 8 - L.fs * 1.1), yLo, yHi) : clamp(Math.max(ty + L.fs, cy + L.tk + 10 + L.fs), yLo, yHi);
+            o.push(txt(x1 + 10, tanLabY, 'tan θ', 'uc-lab uc-c-tan', 'start'));
           }
         }
       }
@@ -220,8 +230,15 @@
         else { ax += an === 'start' ? 4 : an === 'end' ? -4 : 0; ay += Math.sin(q[1]) > 0.3 ? -2 : Math.sin(q[1]) < -0.3 ? L.tk + 2 : L.tk * 0.35; }
         o.push(txt(ax, ay, q[0], 'uc-alab', an));
       });
+      // tan view with the point on x = 1 in sight: the slope goes on its own line beside "tan θ", not on top of it
+      if(tan && a.cos > 0 && tanLabY != null){ lx = cx + R + 10; ly = tanLabY + (a.tan >= 0 ? -1 : 1) * L.fs * 1.2; anc = 'start'; }
+      ly = Math.max(L.fs + 1, ly);
+      // at the far left a long label would run off the picture: set it against the edge, above the point
+      if(anc === 'end' && lx - plab.length * L.fs * 0.56 < 2){ lx = 2; anc = 'start'; ly += a.sin >= 0 ? -L.fs * 1.5 : L.fs * 2.7; }
       o.push(txt(lx, ly, esc(plab), 'uc-plab', anc));
-      o.push(txt(Px + (a.cos >= 0 ? -22 : 22), Py + (a.sin >= 0 ? -18 : 30), 'P', 'uc-pname', a.cos >= 0 ? 'end' : 'start'));
+      // P's name sits up and inward of the point; near the top that is where "y" and "π/2" are, so it drops beside the point
+      var pTop = a.sin > 0.75 && Math.abs(a.cos) > 0.08 && Math.abs(Px - cx) < 22 + L.fs * 2.4;
+      o.push(txt(Px + (a.cos >= 0 ? -1 : 1) * (a.sin > 0.75 && !pTop ? 34 : 22), Py + (pTop ? 8 : a.sin >= 0 ? -18 : 30), 'P', 'uc-pname', a.cos >= 0 ? 'end' : 'start'));
       // the graphs: ghosts of one full turn, then the part traced so far
       var g = [];
       if(!tan){
@@ -460,6 +477,13 @@
     box.className = 'cd-fig uc-fig';
     el.appendChild(box);
     var W = 360, Hh = 360, cx = 180, cy = 180;
+    // a point's label, kept inside the 360-wide picture: near the edge it is set against the edge instead of running off it
+    function edgeLab(x, y, text, right){
+      var wd = String(text).length * 8.4;
+      if(right && x + wd > W - 4) return txt(W - 4, y, esc(text), 'uc-plab', 'end');
+      if(!right && x - wd < 4) return txt(4, y, esc(text), 'uc-plab', 'start');
+      return txt(x, y, esc(text), 'uc-plab', right ? 'start' : 'end');
+    }
     function circleSvg(){
       var o = [], R = 124, ray = f.kind === 'ray', a = ray ? null : UC.angle(f.m);
       var t = ray ? Math.atan2(f.y, f.x) : a.theta, c = Math.cos(t), s = Math.sin(t);
@@ -471,7 +495,7 @@
         var R0 = 72;
         o.push('<circle class="uc-circle is-r" cx="' + cx + '" cy="' + cy + '" r="' + R + '"/><circle class="uc-circle" cx="' + cx + '" cy="' + cy + '" r="' + R0 + '"/>');
         o.push(txt(cx + R0 * 0.72 + 4, cy + R0 * 0.72 + 14, '1', 'uc-alab', 'start'), txt(cx + R * 0.72 + 4, cy + R * 0.72 + 14, 'r = ' + f.r, 'uc-alab', 'start'));
-        if(done.rc){ o.push('<circle class="uc-tpt" cx="' + r1(Px) + '" cy="' + r1(Py) + '" r="6"/>'); o.push(txt(Px + (c >= 0 ? 10 : -10), Py + (s >= 0 ? -10 : 20), '(' + f.r + ' cos θ, ' + f.r + ' sin θ)', 'uc-plab', c >= 0 ? 'start' : 'end')); }
+        if(done.rc){ o.push('<circle class="uc-tpt" cx="' + r1(Px) + '" cy="' + r1(Py) + '" r="6"/>'); o.push(edgeLab(Px + (c >= 0 ? 10 : -10), Py + (s >= 0 ? -10 : 20), '(' + f.r + ' cos θ, ' + f.r + ' sin θ)', c >= 0)); }
         Px = cx + R0 * c; Py = cy - R0 * s; R = R0;
       } else if(ray){
         o.push('<circle class="uc-circle is-r" cx="' + cx + '" cy="' + cy + '" r="' + R + '"/>');
@@ -496,7 +520,7 @@
         o.push('<circle class="uc-pfix" cx="' + r1(Px) + '" cy="' + r1(Py) + '" r="7"/>');
         var lab = ray ? '(' + f.x + ', ' + f.y + ')' : 'P';
         if(!ray && a && done.sin && done.cos) lab = 'P(' + a.cos.text + ', ' + a.sin.text + ')';
-        o.push(txt(Px + (c >= 0 ? 12 : -12), Py + (s >= 0 ? -12 : 24), esc(lab), 'uc-plab', c >= 0 ? 'start' : 'end'));
+        o.push(edgeLab(Px + (c >= 0 ? 12 : -12), Py + (s >= 0 ? -12 : 24), lab, c >= 0));
         if(ray && done.r) o.push(txt((cx + Px) / 2 - 10 * s, (cy + Py) / 2 - 10 * c, 'r = ' + f.r, 'uc-lab', 'middle'));
         if(done.tan && (ray || (a && !a.tan.undef))) o.push(txt(cx + R * 0.55 * c + (c >= 0 ? -14 : 14) * Math.abs(s), cy - R * 0.55 * s - 14 * Math.abs(c) - 4, 'slope ' + (ray ? (f.y / f.x > 0 ? '' : '−') + Math.abs(f.y) / gcd(Math.abs(f.y), Math.abs(f.x)) + '/' + Math.abs(f.x) / gcd(Math.abs(f.y), Math.abs(f.x)) : a.tan.text), 'uc-lab uc-c-tan', c >= 0 ? 'end' : 'start'));
         if(done.quad || done.signs){ var q = ray ? 0 : a.quadrant; if(q) o.push(txt(cx + Math.cos(PI / 4 + (q - 1) * PI / 2) * R * 0.6, cy - Math.sin(PI / 4 + (q - 1) * PI / 2) * R * 0.6 + 6, ['', 'I', 'II', 'III', 'IV'][q], 'uc-quad is-on')); }

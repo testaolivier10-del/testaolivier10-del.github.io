@@ -505,6 +505,32 @@
      "That would make the base even narrower."
     ]
    }
+  },
+  {
+   "id": "env-age-structure-16",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a country’s age structure diagram, the bars for ages 0 to 4 are much shorter than the bars for ages 20 to 24. What does this most likely show?",
+   "options": [
+    "Fewer babies are born now than 20 years ago",
+    "Many more adults are dying than before",
+    "A baby boom happened in the last five years",
+    "Most young adults have left the country"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each bar is a cohort. A youngest cohort much smaller than the cohorts born 20 years earlier means fewer babies are being born now than then.",
+    "options": [
+     "Right: a base narrower than the bars above it is the mark of fewer births.",
+     "More adult deaths would shorten the adult bars, and here the adult bars are the long ones.",
+     "A baby boom would make the bottom bars longer, not shorter.",
+     "If young adults had left, the 20 to 24 bars would be short. They are long."
+    ]
+   }
   }
  ]
 }

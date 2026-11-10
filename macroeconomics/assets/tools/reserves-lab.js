@@ -56,7 +56,8 @@
     var extra = [], now = G.curves(spec, shifts);
     if(kind === 'reserves' && t && t.ample){
       var rd = G.find(now, 'RD');
-      extra.push(mark('IORB rate', px(4.05), py(rd.at) - 6, 'is-note'));   // above the flat part, clear of the shift arrow
+      // above the flat part, clear of the shift arrow; under it when reserve supply has moved left, where E2's label lands above the line
+      extra.push(mark('IORB rate', px(4.05), py(rd.at) + ((shifts.RS || 0) < -0.3 ? 15 : -6), 'is-note'));
     }
     return html.replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg" preserveAspectRatio="xMidYMin meet"').replace('</svg>', extra.join('') + '</svg>');
   }
@@ -76,7 +77,7 @@
       '<div class="rl-ctl">' +
         '<div class="ls-seg rl-fw" role="group" aria-label="Framework">' + RL.FRAMEWORKS.map(function(f){ return '<button type="button" data-fw="' + f.id + '" aria-pressed="false">' + f.name + '</button>'; }).join('') + '</div>' +
         '<div class="rl-tools ls-scroll" role="group" aria-label="Fed tool">' + RL.TOOLS.map(function(t){ return '<button type="button" class="ls-btn rl-tool" data-t="' + t.id + '" aria-pressed="false">' + esc(t.short) + '</button>'; }).join('') + '</div>' +
-        '<div class="rl-acts" role="group" aria-label="Action"><button type="button" class="ls-btn rl-act" data-s="1"></button><button type="button" class="ls-btn rl-act" data-s="-1"></button></div>' +
+        '<div class="rl-acts ls-act" role="group" aria-label="Action"><button type="button" class="ls-btn rl-act" data-s="1"></button><button type="button" class="ls-btn rl-act" data-s="-1"></button></div>' +
       '</div>' +
       '<div class="rl-say"></div>' +
       T.moreHtml('<button type="button" class="bt-btn rl-reset">Start over</button><p class="bt-small">Start over puts every curve back where it began.</p>', 'start over') +
@@ -127,6 +128,8 @@
       return e.act + ' with ' + RL.fwOf(fw).name.toLowerCase() + ': the policy rate ' + word(e.rate) + ', investment ' + word(e.inv) + ', AD shifts ' + e.ad + ', real output ' + word(e.output) + ' and the price level ' + word(e.price) + '.';
     }
     function word(d){ return d === 'up' ? 'rises' : d === 'down' ? 'falls' : 'stays the same'; }
+    function words2(d){ return d === 'up' ? 'rise' : d === 'down' ? 'fall' : 'stay the same'; }   // "Interest rates" is plural
+    function an(name){ return (/^[aeiou]/i.test(name) ? 'an ' : 'a ') + name; }
     function arrowOf(d){ return d === 'up' ? '↑' : d === 'down' ? '↓' : '–'; }
 
     function chain(){
@@ -137,7 +140,7 @@
         var d = l[2], on = d && d !== 'same';
         var sym = !d ? '' : l[1] === 'AD' ? (d === 'up' ? '→' : d === 'down' ? '←' : '–') : arrowOf(d);
         var short = { 'Policy rate': 'PR', 'Interest rates': 'i', 'Investment': 'I', 'AD': 'AD', 'Real GDP': 'Y', 'Price level': 'PL' }[l[1]];
-        var words = !d ? 'not yet' : l[1] === 'AD' ? (d === 'up' ? 'shifts right' : d === 'down' ? 'shifts left' : 'no shift') : word(d);
+        var words = !d ? 'not yet' : l[1] === 'AD' ? (d === 'up' ? 'shifts right' : d === 'down' ? 'shifts left' : 'no shift') : l[1] === 'Interest rates' ? words2(d) : word(d);
         return '<li class="rl-link is-' + l[0] + (on ? ' is-on' : d ? ' is-flat' : '') + '" style="--i:' + i + '"><span class="rl-link-n" aria-hidden="true"><span class="rl-long">' + l[1] + '</span><span class="rl-short">' + short + '</span></span><span class="rl-link-d" aria-hidden="true">' + (sym || '·') + '</span><span class="sr-only">' + l[1] + ': ' + words + '</span></li>';
       }).join('');
     }
@@ -160,7 +163,7 @@
       ($('.rl-tools') ? $('.rl-tools').querySelectorAll('.rl-tool') : []).forEach(function(b){
         var id = b.getAttribute('data-t'), on = id === tool, off = RL.toolOf(id).fw !== fw;
         b.setAttribute('aria-pressed', String(on)); b.classList.toggle('is-other', off);
-        b.setAttribute('aria-label', RL.toolOf(id).name + (off ? ' (a ' + RL.fwOf(RL.toolOf(id).fw).name.toLowerCase() + ' tool)' : ''));
+        b.setAttribute('aria-label', RL.toolOf(id).name + (off ? ' (' + an(RL.fwOf(RL.toolOf(id).fw).name.toLowerCase()) + ' tool)' : ''));
       });
       var acts = $('.rl-acts').querySelectorAll('.rl-act');
       acts[0].textContent = t.acts[0]; acts[1].textContent = t.acts[1];
@@ -171,7 +174,7 @@
       var whyHead = e ? (e.works ? '<b>' + esc(e.act) + '.</b> ' : '<b>' + esc(e.act) + ': the policy rate does not move.</b> ') : '<b>' + esc(RL.fwOf(fw).name) + '.</b> ' + esc(RL.fwOf(fw).line);
       var body = e ? '<p>' + esc(e.why) + '</p>' + (e.rate !== 'same' ? '<p>Then: interest rates ' + word(e.i) + ', so investment and other interest-sensitive spending ' + word(e.inv) + ', AD shifts ' + e.ad + ', and real output ' + word(e.output) + ' while the price level ' + word(e.price) + ' (unemployment ' + word(e.unemp) + ').</p>' : '') +
         (e.slip ? '<p class="mac-slip"><b>The slip readers see:</b> ' + esc(e.slip) + '</p>' : '')
-        : '<p>' + esc(t.name) + (t.fw === fw ? ' is a ' + RL.fwOf(fw).name.toLowerCase() + ' tool.' : ' is a ' + RL.fwOf(t.fw).name.toLowerCase() + ' tool; try it here to see why the Fed does not use it in this framework.') + '</p>';
+        : '<p>' + esc(t.name) + (t.fw === fw ? ' is ' + an(RL.fwOf(fw).name.toLowerCase()) + ' tool.' : ' is ' + an(RL.fwOf(t.fw).name.toLowerCase()) + ' tool; try it here to see why the Fed does not use it in this framework.') + '</p>';
       T.explain($('.rl-say'), whyHead, body);
       if(LS){
         LS.caption(e ? esc(line()) : '<b>' + esc(RL.fwOf(fw).name) + ':</b> ' + esc(RL.fwOf(fw).line) + ' Pick an action.', 'explore');

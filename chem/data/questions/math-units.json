@@ -341,6 +341,94 @@
      "The meters are right, but seconds end up on top, giving m·s/min²."
     ]
    }
+  },
+  {
+   "id": "chem-math-units-14",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A metal has a density of 19.3 g/cm³. What is the volume of a 57.9 g piece of this metal, in cubic centimeters?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.01,
+    "unit": "cm³",
+    "units": [
+     "cm^3",
+     "cm3",
+     "mL"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1117,
+      "rel": 0.01,
+      "why": "Value: you multiplied by the density. To cancel grams, use the density upside down: 57.9 g × (1 cm³ / 19.3 g)."
+     },
+     {
+      "value": 0.333,
+      "rel": 0.01,
+      "why": "Value: you divided the density by the mass. Start from the mass and cancel grams."
+     }
+    ]
+   },
+   "why": {
+    "correct": "57.9 g × (1 cm³ / 19.3 g) = 3.00 cm³. Grams cancel and cubic centimeters are left."
+   }
+  },
+  {
+   "id": "chem-math-units-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A vitamin tablet contains 250 µg of a nutrient. What is this mass in grams?",
+   "options": [
+    "0.250 g",
+    "0.000250 g",
+    "250,000,000 g",
+    "0.0250 g"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "250 µg × (1 g / 1,000,000 µg) = 0.000250 g. A microgram is one millionth of a gram.",
+    "options": [
+     "That treats micro like milli. 250 mg is 0.250 g; micro is 1000 times smaller again.",
+     "Right: micrograms cancel and the number becomes a million times smaller.",
+     "The factor is upside down. A tablet cannot hold 250 million grams; the gram is the bigger unit, so the number must shrink.",
+     "Micro means one millionth, so the decimal point moves six places, not four."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-units-16",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A liquid has a density of 1.2 g/mL. What is its density in kilograms per liter?",
+   "options": [
+    "1200 kg/L",
+    "0.0012 kg/L",
+    "120 kg/L",
+    "1.2 kg/L"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "1.2 g/mL × (1 kg / 1000 g) × (1000 mL / 1 L) = 1.2 kg/L. The top unit and the bottom unit each change by a factor of 1000, so the two factors cancel.",
+    "options": [
+     "Only the volume was converted. Grams must also become kilograms, which divides by 1000.",
+     "Only the mass was converted. Milliliters must also become liters, which multiplies by 1000.",
+     "Both conversions use 1000, not 10 and 100: 1 kg = 1000 g and 1 L = 1000 mL.",
+     "Right: a liter of water-like liquid has a mass near a kilogram, so about 1 kg/L is sensible."
+    ]
+   }
   }
  ]
 }

@@ -618,3 +618,13 @@ discouraged workers are out of the labor force; seasonal unemployment is not use
 
 Vertical-curve labels over their line, colliding old and new labels and the PPC label under a point: fixed in the
 shared renderer by the lead; T3's local workarounds were removed and the graphs rechecked at 360 and 1280 px.
+
+### tool-audit-2026-11: a named central bank in tool drills (open, 2026-11-10)
+
+From the hands-on tool audit (`docs/tool-audit-2026-11.md`). The multiplier lab's money creation drills say "The
+Federal Reserve buys ..." and the reserves lab's drills use both "The Federal Reserve operates with ample reserves"
+and "the central bank". The invented-countries rule (authoring guide) lets dollars stand in closed-economy content
+but says graded content never has a real central bank do something. Either the rule gets an exception for the
+ample-reserves framework (which is the Federal Reserve's) or the limited-reserves drills should say "the central
+bank". Not changed in the audit.
+

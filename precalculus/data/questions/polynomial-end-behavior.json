@@ -497,6 +497,32 @@
      "Right: the leading term is $x^2 \\cdot (-x)^3 = -x^5$."
     ]
    }
+  },
+  {
+   "id": "pcalc-polynomial-end-behavior-16",
+   "unit": "unit-1",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $f(x) = 0.01x^4$ and $g(x) = 1000x^3$. Which statement about large positive values of $x$ is true?",
+   "type": "single",
+   "options": [
+    "$g(x) > f(x)$ for large $x$, because its coefficient is far larger",
+    "$f(x) > g(x)$ once $x > 100{,}000$, because the higher degree wins",
+    "$f(x) = g(x)$ for large $x$, because both have the limit $\\infty$",
+    "$g(x) > f(x)$ for large $x$, because $x^3$ grows faster than $x^4$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\frac{f(x)}{g(x)} = \\frac{0.01x^4}{1000x^3} = \\frac{x}{100{,}000}$, which is greater than $1$ when $x > 100{,}000$ and keeps growing. As $x$ increases without bound, the term of higher degree dominates, whatever the coefficients are.",
+    "options": [
+     "The coefficient gives $g$ a head start, but $\\frac{f(x)}{g(x)} = \\frac{x}{100{,}000}$ passes $1$ at $x = 100{,}000$.",
+     "The ratio $\\frac{f(x)}{g(x)} = \\frac{x}{100{,}000}$ exceeds $1$ from there on.",
+     "Both grow without bound, but not at the same pace: their ratio $\\frac{x}{100{,}000}$ keeps growing.",
+     "For $x > 1$, $x^4$ is larger than $x^3$: a higher power grows faster."
+    ]
+   }
   }
  ]
 }

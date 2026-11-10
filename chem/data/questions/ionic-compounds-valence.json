@@ -448,6 +448,32 @@
      "K⁺ has 18 electrons, like argon."
     ]
    }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-16",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A metal X forms an ionic chloride with the formula XCl₂ and an ionic oxide with the formula XO. In which group of the periodic table is X most likely found?",
+   "options": [
+    "Group 1",
+    "Group 16",
+    "Group 2",
+    "Group 17"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Cl⁻ is 1− and O²⁻ is 2−. One X balances two Cl⁻ or one O²⁻, so X forms a 2+ ion. A metal that loses two valence electrons is in group 2.",
+    "options": [
+     "A group 1 metal forms a 1+ ion, which would give XCl and X₂O.",
+     "Group 16 elements are nonmetals that gain two electrons to form 2− ions. X must be a cation here.",
+     "Right: X²⁺ gives XCl₂ and XO, as magnesium and calcium do.",
+     "Group 17 elements form 1− ions, like chloride itself. They do not form ionic chlorides as the cation."
+    ]
+   }
   }
  ]
 }

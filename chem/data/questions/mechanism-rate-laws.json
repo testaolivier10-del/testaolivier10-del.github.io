@@ -458,6 +458,32 @@
    "why": {
     "correct": "rate = k[A][B] = (3.2 × 10⁻² M⁻¹ s⁻¹)(0.25 M)(0.40 M) = 3.2 × 10⁻³ M/s."
    }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-16",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A proposed mechanism is: (1) NO₂ + F₂ → NO₂F + F (slow); (2) F + NO₂ → NO₂F (fast). What are the overall equation and the overall order of the predicted rate law?",
+   "options": [
+    "NO₂ + F₂ → NO₂F + F; second order",
+    "2 NO₂ + F₂ → 2 NO₂F; third order",
+    "2 NO₂ + F₂ → 2 NO₂F; second order",
+    "2 NO₂ + F₂ → 2 NO₂F; first order"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Adding the steps cancels the intermediate F: 2 NO₂ + F₂ → 2 NO₂F. The rate law comes from the slow step, rate = k[NO₂][F₂], which is first order in each reactant and second order overall.",
+    "options": [
+     "That is only step 1. The overall equation is the sum of the steps, with the intermediate F canceled.",
+     "The order comes from the slow step, not from the coefficients of the overall equation (2 + 1).",
+     "Right: the slow step has one NO₂ and one F₂, so the orders are 1 and 1.",
+     "The slow step has two reactant particles, NO₂ and F₂, and each one appears in the rate law."
+    ]
+   }
   }
  ]
 }

@@ -178,6 +178,12 @@ Never paste a YouTube iframe into a page.
 `docs/tools-upgrade-2026-10.md` is the status file: the hands-on audit of every tool (`docs/tool-audit-2026-10.md`),
 the fixes for it, and three builds (NREMT exam item types and adaptive exam, ochem synthesis trainer, A&P 3D anatomy).
 
+## Making the site fuller (2026-11)
+
+`docs/fuller-2026-11.md` is the status file: what the 2026-11-10 round did (NREMT lessons and bank audit, deeper AP
+banks, precalculus figures, the tool audit of the four newer courses in `docs/tool-audit-2026-11.md`) and what is
+next (audit of the other banks, ochem per-option lines, tool rebuild mockups).
+
 ## Database backups
 
 `docs/backups.md` is the status file: the nightly copy the Worker makes itself (`worker/src/backup.js`, its own

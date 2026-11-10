@@ -478,6 +478,32 @@
      "Right: the outputs approach $7$ as $x$ approaches $4$ from both sides."
     ]
    }
+  },
+  {
+   "id": "pcalc-rational-holes-16",
+   "unit": "unit-1",
+   "topic": "rational-holes",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "What does the graph of $g(x) = \\frac{x - 3}{(x - 3)^2}$ have at $x = 3$?",
+   "type": "single",
+   "options": [
+    "A hole, because the factor $x - 3$ is in both the numerator and the denominator",
+    "A zero, because the numerator $x - 3$ equals $0$ at $x = 3$",
+    "An ordinary point, because the factors cancel and $g(3) = 1$",
+    "A vertical asymptote, because a factor $x - 3$ stays in the denominator after canceling"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For $x \\ne 3$, $g(x) = \\frac{1}{x - 3}$. The factor $x - 3$ has a higher multiplicity in the denominator than in the numerator, so one copy remains below after canceling. The outputs grow without bound in size near $x = 3$: a vertical asymptote, not a hole.",
+    "options": [
+     "A hole needs the factor to cancel out of the denominator. Here one copy of $x - 3$ is left there.",
+     "$x = 3$ is not in the domain, so it is not a zero: the denominator is $0$ there too.",
+     "$g(3)$ is undefined, and after canceling the function is $\\frac{1}{x - 3}$, which has no value at $3$ either.",
+     "After canceling, $\\frac{1}{x - 3}$ still has $x - 3$ in the denominator."
+    ]
+   }
   }
  ]
 }

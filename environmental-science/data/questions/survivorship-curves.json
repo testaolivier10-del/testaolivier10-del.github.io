@@ -504,6 +504,32 @@
      "Q starts old age with far fewer survivors."
     ]
    }
+  },
+  {
+   "id": "env-survivorship-curves-16",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "An oak tree drops thousands of acorns a year. Nearly all of them die as seeds or seedlings, but an oak that survives can live for 300 years. Which survivorship curve fits the oak, and why?",
+   "options": [
+    "Type I, because the survivors live a very long time",
+    "Type II, because deaths are spread evenly over all ages",
+    "Type III, because nearly all deaths come very early",
+    "Type I, because trees protect their seeds for years"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The type depends on when most deaths happen, not on how long the survivors live. Nearly all the acorns and seedlings die at the start, so the curve drops steeply and then levels off for the few survivors: Type III.",
+    "options": [
+     "A long life for the few survivors does not make the curve Type I. In Type I most individuals survive until late in life, and most acorns do not.",
+     "Type II means the same fraction dies at every age. Here the deaths are packed into the first years.",
+     "Right: a steep early drop, then a long flat stretch.",
+     "An oak gives its acorns no care after they fall, and most are eaten or fail to grow."
+    ]
+   }
   }
  ]
 }

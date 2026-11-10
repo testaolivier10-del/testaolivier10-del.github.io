@@ -560,6 +560,32 @@
     "From $-0.06$ to $-0.01$"
    ],
    "correct": 3
+  },
+  {
+   "id": "stat-ci-two-proportions-claims-16",
+   "unit": "unit-3",
+   "topic": "ci-two-proportions-claims",
+   "type": "single",
+   "practice": "4.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "From one set of data, a 95% interval for $p_1 - p_2$ is from 0.004 to 0.096 and a 99% interval is from $-0.010$ to 0.110. What does this say about a two-sided test of $H_0: p_1 - p_2 = 0$ with the same data?",
+   "why": {
+    "correct": "A 95% interval matches a two-sided test at $\\alpha = 0.05$ and a 99% interval matches $\\alpha = 0.01$. Here 0 is outside the 95% interval and inside the 99% interval.",
+    "options": [
+     "That swaps the levels: the 99% interval, which matches $\\alpha = 0.01$, is the one that contains 0.",
+     "Both are right. A 99% interval is longer, so it can reach 0 when the 95% interval does not.",
+     "The 99% interval always contains the 95% interval. What matters is whether each one contains 0.",
+     "Right: 0 is not plausible at the 95% level but is plausible at the 99% level, so the evidence is convincing at $\\alpha = 0.05$ and not at $\\alpha = 0.01$."
+    ]
+   },
+   "options": [
+    "It would reject $H_0$ at $\\alpha = 0.01$ but not at $\\alpha = 0.05$",
+    "One interval must be wrong, since they disagree about 0",
+    "It would not reject $H_0$ at either level, since the intervals overlap",
+    "It would reject $H_0$ at $\\alpha = 0.05$ but not at $\\alpha = 0.01$"
+   ],
+   "correct": 3
   }
  ]
 }

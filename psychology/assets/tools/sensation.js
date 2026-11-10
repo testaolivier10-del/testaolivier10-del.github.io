@@ -337,7 +337,7 @@
     }
     function reclass(){ trials.forEach(function(t){ var yes = t.x >= c; t.out = t.sig ? (yes ? 'hit' : 'miss') : (yes ? 'fa' : 'cr'); }); }
     function counts(){ var n = { hit: 0, miss: 0, fa: 0, cr: 0 }; trials.forEach(function(t){ n[t.out]++; }); return n; }
-    function tally(){ var n = counts(); return trials.length + ' trials: ' + n.hit + ' hits, ' + n.miss + ' misses, ' + n.fa + ' false alarms, ' + n.cr + ' correct rejections.'; }
+    function tally(){ var n = counts(); return trials.length + ' trials: ' + n.hit + (n.hit === 1 ? ' hit, ' : ' hits, ') + n.miss + (n.miss === 1 ? ' miss, ' : ' misses, ') + n.fa + (n.fa === 1 ? ' false alarm, ' : ' false alarms, ') + n.cr + (n.cr === 1 ? ' correct rejection.' : ' correct rejections.'); }
     function sdtLine(){ var r = X.sdt(d, c); return 'Hits ' + pc(r.hit) + ' of signal trials, false alarms ' + pc(r.fa) + ' of no-signal trials.'; }
     function weberLine(){ var j = X.jnd(I, X.WEBER.brightness.k); return 'JND ' + M.fmt(j, 3) + '. A change of ' + add + ' is ' + (add >= j - 1e-9 ? 'noticed.' : 'usually not noticed.'); }
     function afterWords(){ return pic === 'flag' ? 'blue, white and red stripes' : X.AFTER[pic]; }

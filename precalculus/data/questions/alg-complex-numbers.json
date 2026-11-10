@@ -208,6 +208,214 @@
      "It has no real solutions, but it does have two complex ones."
     ]
    }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-9",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is $i^{10}$?",
+   "type": "single",
+   "options": [
+    "$1$",
+    "$-1$",
+    "$i$",
+    "$-i$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Powers of $i$ repeat every four: $i^4 = 1$, so $i^8 = 1$. Then $i^{10} = i^8 \\cdot i^2 = 1 \\cdot (-1) = -1$.",
+    "options": [
+     "$i^8 = 1$ and $i^{12} = 1$. $i^{10}$ is two steps past $i^8$ in the cycle.",
+     "$10 = 8 + 2$, so $i^{10} = i^8 \\cdot i^2 = -1$.",
+     "$i^9 = i$. One more factor of $i$ gives $i^{10} = i^2 = -1$.",
+     "$i^{11} = -i$. $i^{10}$ is one step earlier in the cycle."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-10",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Evaluate $(3i)^2$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -9,
+    "mistakes": [
+     {
+      "value": 9,
+      "why": "$i^2 = -1$, so $(3i)^2 = 9i^2 = -9$. The square of an imaginary number is negative."
+     },
+     {
+      "value": -3,
+      "why": "Square the $3$ as well: $(3i)^2 = 3^2 \\cdot i^2 = 9 \\cdot (-1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(3i)^2 = 3^2 \\cdot i^2 = 9 \\cdot (-1) = -9$. That is why $3i$ is a square root of $-9$."
+   }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-11",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Simplify $(-2 + 5i) + (6 - i)$.",
+   "type": "single",
+   "options": [
+    "$4 + 6i$",
+    "$8 + 4i$",
+    "$4 + 4i$",
+    "$-8 + 6i$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Add real parts and imaginary parts separately: $(-2 + 6) + (5 - 1)i = 4 + 4i$.",
+    "options": [
+     "The second number has $-i$, so the imaginary parts give $5 - 1 = 4$, not $5 + 1$.",
+     "The real parts are $-2$ and $6$: $-2 + 6 = 4$, not $8$.",
+     "Real parts: $-2 + 6 = 4$. Imaginary parts: $5 + (-1) = 4$.",
+     "This subtracts the second number. The question adds: $-2 + 6 = 4$ and $5 - 1 = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-12",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the complex number $7 - 4i$, written as $a + bi$, what is the imaginary part $b$?",
+   "type": "single",
+   "options": [
+    "$-4$",
+    "$4$",
+    "$7$",
+    "$-7$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$7 - 4i = 7 + (-4)i$, so the real part is $a = 7$ and the imaginary part is $b = -4$. The sign belongs to $b$.",
+    "options": [
+     "$7 - 4i = 7 + (-4)i$: the number multiplying $i$ is $-4$.",
+     "The minus sign belongs to the imaginary part: $b = -4$.",
+     "$7$ is the real part, $a$.",
+     "$7$ is the real part and it is positive; the imaginary part is the number multiplying $i$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-13",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Solve $x^2 + 9 = 0$.",
+   "type": "single",
+   "options": [
+    "$x = \\pm 3$",
+    "$x = -9$",
+    "$x = \\pm 9i$",
+    "$x = \\pm 3i$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$x^2 = -9$, so $x = \\pm\\sqrt{-9} = \\pm 3i$. Check: $(3i)^2 + 9 = -9 + 9 = 0$.",
+    "options": [
+     "$(\\pm 3)^2 = 9$, so $x^2 + 9 = 18$, not $0$. No real number has a negative square.",
+     "$x^2 = -9$ still needs a square root: $x = \\pm\\sqrt{-9}$.",
+     "Take the square root of $9$ too: $\\sqrt{-9} = 3i$, and $(9i)^2 = -81$.",
+     "$x^2 = -9$ gives $x = \\pm 3i$, since $(3i)^2 = -9$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-14",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A quadratic equation with real coefficients has $3 - 4i$ as one solution. What is the other solution?",
+   "type": "single",
+   "options": [
+    "$3 + 4i$",
+    "$-3 + 4i$",
+    "$-3 - 4i$",
+    "$4 - 3i$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With real coefficients and a negative discriminant, the $\\pm$ in the quadratic formula produces the two solutions together, $a + bi$ and $a - bi$. The partner of $3 - 4i$ is its complex conjugate, $3 + 4i$.",
+    "options": [
+     "Same real part, opposite imaginary part: the complex conjugate.",
+     "That changes both signs. The $\\pm$ changes the sign of the imaginary part and leaves the real part $3$.",
+     "That changes the real part and keeps the imaginary part. The conjugate does the reverse.",
+     "The real and imaginary parts do not trade places."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-15",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the discriminant of $x^2 - 6x + 13 = 0$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -16,
+    "mistakes": [
+     {
+      "value": 88,
+      "why": "The discriminant subtracts: $b^2 - 4ac = 36 - 52$, not $36 + 52$."
+     },
+     {
+      "value": 16,
+      "why": "$36 - 52 = -16$. The negative sign matters: it says the solutions are not real."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$b^2 - 4ac = (-6)^2 - 4(1)(13) = 36 - 52 = -16$. It is negative, so the equation has no real solutions; the formula gives $x = \\frac{6 \\pm 4i}{2} = 3 \\pm 2i$."
+   }
+  },
+  {
+   "id": "pcalc-alg-complex-numbers-16",
+   "unit": "skills-algebra",
+   "topic": "alg-complex-numbers",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Multiply out $(1 + i)^2$.",
+   "type": "single",
+   "options": [
+    "$0$",
+    "$2 + 2i$",
+    "$2i$",
+    "$2$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$(1 + i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 2i$. The real parts cancel.",
+    "options": [
+     "$1 + i^2 = 0$ leaves out the middle term $2i$.",
+     "$i^2 = -1$, not $+1$, so the real part is $1 - 1 = 0$.",
+     "$1 + 2i + i^2 = 1 + 2i - 1$.",
+     "The middle term $2i$ does not disappear, and $1 + i^2 = 0$, not $2$."
+    ]
+   }
   }
  ]
 }

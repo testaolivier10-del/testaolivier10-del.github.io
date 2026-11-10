@@ -402,6 +402,32 @@
    "why": {
     "correct": "$\\mathbf{r}'(t) = \\left\\langle -2t\\sin(t^2), \\frac{1}{2}e^{t/2} \\right\\rangle$. At $t = 1.2$ (radian mode) the speed is $\\sqrt{(-2.4\\sin 1.44)^2 + (0.5e^{0.6})^2} \\approx 2.548$."
    }
+  },
+  {
+   "id": "cbc-vector-derivatives-16",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-derivatives",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle has position $\\mathbf{r}(t) = \\left\\langle t^2 + t, t^3 - 12t \\right\\rangle$ for $t > 0$. At what time $t$ is its velocity vector horizontal?",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": "2sqrt(3)",
+      "why": "That solves $y(t) = 0$, where the particle is on the $x$-axis. A horizontal velocity needs $y'(t) = 0$."
+     },
+     {
+      "value": 4,
+      "why": "$3t^2 - 12 = 0$ gives $t^2 = 4$. Take the square root: $t = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\mathbf{r}'(t) = \\left\\langle 2t + 1, 3t^2 - 12 \\right\\rangle$. The velocity is horizontal when its vertical component is 0 and its horizontal component is not: $3t^2 - 12 = 0$ gives $t = 2$ for $t > 0$, and $x'(2) = 5 \\ne 0$."
+   }
   }
  ]
 }

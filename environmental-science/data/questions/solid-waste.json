@@ -617,6 +617,32 @@
     },
     "model": "The operators could install a liner and leachate collection pipes in new cells and pump and treat leachate from the old ones, which protects the well because the leachate is caught and treated before it can seep into the groundwater."
    }
+  },
+  {
+   "id": "env-solid-waste-16",
+   "unit": "unit-8",
+   "topic": "solid-waste",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do workers at a sanitary landfill spread a layer of soil over the trash at the end of each day?",
+   "options": [
+    "To help the trash break down faster",
+    "To limit odors, pests and windblown litter",
+    "To stop leachate from forming",
+    "To let more oxygen reach the trash"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Daily cover is a layer of soil that keeps rats, birds and insects away from the waste, holds in odors and stops litter from blowing away.",
+    "options": [
+     "Covering the trash does not speed up its breakdown. Buried trash decays very slowly.",
+     "Right: that is the purpose of daily cover.",
+     "Leachate is handled by the liner and the collection pipes at the bottom.",
+     "Soil cover keeps air out rather than letting it in."
+    ]
+   }
   }
  ]
 }

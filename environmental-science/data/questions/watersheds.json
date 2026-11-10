@@ -531,6 +531,32 @@
      "A watershed is surface land, not an aquifer."
     ]
    }
+  },
+  {
+   "id": "env-watersheds-16",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A stream keeps flowing through a month with no rain. Where does most of its water come from during that month?",
+   "options": [
+    "Runoff from the last storm that is still on its way downhill",
+    "Groundwater that seeps into the stream from the aquifer",
+    "Water that crosses the divide from the next watershed",
+    "Dew that collects along the stream banks each night"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Water that soaked into the ground during earlier storms recharged the aquifer. The aquifer feeds that water back into the stream slowly, which keeps the stream flowing in dry weather.",
+    "options": [
+     "Runoff moves over the surface and reaches the stream within hours or days of a storm, not a month later.",
+     "Right: a watershed and its aquifer are connected, and the aquifer supplies the stream between rains.",
+     "A divide is high ground. Water flows away from it on both sides and does not cross it.",
+     "Dew is far too little water to keep a stream flowing."
+    ]
+   }
   }
  ]
 }

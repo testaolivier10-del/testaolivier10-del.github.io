@@ -465,6 +465,32 @@
      "Water flea feeding does not stop."
     ]
    }
+  },
+  {
+   "id": "env-trophic-levels-16",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which organism is an autotroph?",
+   "options": [
+    "A mushroom growing on a log",
+    "Algae growing in a pond",
+    "A tadpole grazing on pond scum",
+    "A hawk hunting over a meadow"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An autotroph (a producer) makes its own food, usually from sunlight by photosynthesis. Algae do this. Every other organism in the list must take in food made by others.",
+    "options": [
+     "A mushroom is a fungus. It absorbs food from the dead log.",
+     "Right: algae are producers, at trophic level 1.",
+     "A tadpole eats algae, so it is a primary consumer.",
+     "A hawk is a carnivore, a consumer near the top."
+    ]
+   }
   }
  ]
 }

@@ -380,6 +380,32 @@
      "They do collide: at $t = 2$ both $x$ and $y$ agree."
     ]
    }
+  },
+  {
+   "id": "cbc-planar-motion-16",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "planar-motion",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle has position $\\mathbf{r}(t) = \\left\\langle t^3 - 3t, 4t^2 \\right\\rangle$. Find the magnitude of its acceleration vector at $t = 1$.",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     {
+      "value": 14,
+      "why": "The magnitude of $\\left\\langle 6, 8 \\right\\rangle$ is $\\sqrt{6^2 + 8^2}$, not $6 + 8$."
+     },
+     {
+      "value": 8,
+      "why": "That is the speed at $t = 1$, the magnitude of $\\mathbf{v}(1) = \\left\\langle 0, 8 \\right\\rangle$. Differentiate once more for the acceleration."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\mathbf{v}(t) = \\left\\langle 3t^2 - 3, 8t \\right\\rangle$ and $\\mathbf{a}(t) = \\left\\langle 6t, 8 \\right\\rangle$. At $t = 1$, $\\mathbf{a}(1) = \\left\\langle 6, 8 \\right\\rangle$, with magnitude $\\sqrt{36 + 64} = 10$."
+   }
   }
  ]
 }

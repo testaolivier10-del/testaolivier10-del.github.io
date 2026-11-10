@@ -36,6 +36,7 @@
 <h2>What the properties do to graphs</h2>
 <p>The product property turns a horizontal dilation into a vertical translation. For $h(x) = \log_2(4x)$:</p>
 <p>$$h(x) = \log_2 4 + \log_2 x = 2 + \log_2 x.$$</p>
+<figure id="fig-shift" data-fig="logarithmic-manipulation-shift"><figcaption>$h(x) = \log_2(4x)$ is $f(x) = \log_2 x$ moved up $2$: $(1, 0)$ goes to $(1, 2)$ and $(4, 2)$ goes to $(4, 4)$.</figcaption></figure>
 <p>So multiplying every input by $4$ (a horizontal dilation by a factor of $\frac{1}{4}$) gives the same graph as moving $\log_2 x$ up $2$ units. The power property turns a power on the input into a vertical dilation: $\log_2(x^3) = 3\log_2 x$ for $x > 0$.</p>
 
 <h2>The domain trap</h2>
@@ -45,4 +46,5 @@
 <p>At $x = -1$: $\ln((-1)^2) = \ln 1 = 0$, but $2\ln(-1)$ is undefined.</p>
 <p>So they agree only for $x > 0$. For every $x \ne 0$, the true statement is $\ln(x^2) = 2\ln|x|$.</p>
 </div>
+<figure id="fig-domain" data-fig="logarithmic-manipulation-domain"><figcaption>$y = \ln(x^2)$ (green) has a branch on each side of the $y$-axis. $y = 2\ln x$ (light blue dashes) lies on the right branch only, so the two agree just for $x > 0$.</figcaption></figure>
 <p>When a problem asks for an expression equal to another "for every $x$ in its domain", check a negative input before you use the power property.</p>

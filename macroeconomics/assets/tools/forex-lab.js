@@ -67,6 +67,8 @@
     var say = T.announcer(host.querySelector('.fxl-live'));
     var sel = document.createElement('div');
     sel.className = 'bt-ctl bt-select fxl-shock';
+    // The one control that starts everything: on a phone the studio keeps it on screen (it sat under the fold).
+    sel.setAttribute('data-ls-primary', '');
     host.querySelector('.fxl-shockrow').appendChild(sel);
     var cue = T.cue('Pick what changes, then read both markets.');
     host.insertBefore(cue.el, host.firstChild);

@@ -502,6 +502,32 @@
      "A metal below silver would not reduce Cu²⁺; nickel does."
     ]
    }
+  },
+  {
+   "id": "chem-redox-reactions-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Zinc metal reacts with acid: Zn(s) + 2H⁺(aq) → Zn²⁺(aq) + H₂(g). Which is the reduction half-reaction?",
+   "options": [
+    "Zn → Zn²⁺ + 2e⁻",
+    "H₂ → 2H⁺ + 2e⁻",
+    "2H⁺ + 2e⁻ → H₂",
+    "Zn²⁺ + 2e⁻ → Zn"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reduction is a gain of electrons. Each H⁺ goes from +1 to 0 in H₂, so the two H⁺ ions gain two electrons: 2H⁺ + 2e⁻ → H₂.",
+    "options": [
+     "That is the oxidation half-reaction: zinc loses electrons and goes from 0 to +2.",
+     "That is the reverse of what happens. H⁺ is a reactant here and H₂ is a product.",
+     "Right: the electrons are on the reactant side, and the charges balance (2+ and 2− give 0).",
+     "That is the reverse of what happens to zinc. In this reaction zinc metal is used up, not formed."
+    ]
+   }
   }
  ]
 }

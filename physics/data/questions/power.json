@@ -433,6 +433,37 @@
      "Right: power times time is energy."
     ]
    }
+  },
+  {
+   "id": "phys-power-16",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A motor delivers a steady 60. W of power for 2.0 minutes. How much work does it do? Give the value and its unit.",
+   "numeric": {
+    "answer": 7200,
+    "tol": 100,
+    "unit": "J",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 120,
+      "why": "Value: convert the time to seconds first. 2.0 min = 120 s, and W = Pt."
+     },
+     {
+      "value": 0.5,
+      "tol": 0.01,
+      "why": "Value: you divided power by time. P = W/Δt, so W = PΔt."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = W/Δt, so W = PΔt = (60. W)(120 s) = 7200 J = 7.2 × 10³ J. A watt is a joule per second, so the time must be in seconds."
+   }
   }
  ]
 }

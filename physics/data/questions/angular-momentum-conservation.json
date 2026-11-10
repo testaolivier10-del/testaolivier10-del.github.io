@@ -443,6 +443,32 @@
      "A smaller I means a faster spin, not a slower one."
     ]
    }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A bicycle wheel spins freely on its axle. A brake pad is then pressed against the rim and the wheel slows down. Taking the wheel alone as the system, which statement is correct?",
+   "options": [
+    "Its angular momentum is constant, because angular momentum is always conserved",
+    "Its angular momentum decreases, because the pad exerts a net external torque on it",
+    "Its angular momentum is constant, because the pad does not change its rotational inertia",
+    "Its angular momentum decreases, because its rotational inertia gets smaller"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The friction force from the pad acts at the rim, so it has a torque about the axle. The pad is outside the system, so this is a net external torque, and it changes the wheel's angular momentum: τΔt = ΔL.",
+    "options": [
+     "Angular momentum of a system is constant only when the net external torque on it is zero. Here it is not.",
+     "Right: the condition for conservation fails for this choice of system.",
+     "I does stay the same, but L = Iω falls because ω falls.",
+     "The wheel keeps its mass and shape, so I is unchanged. It is ω that decreases."
+    ]
+   }
   }
  ]
 }

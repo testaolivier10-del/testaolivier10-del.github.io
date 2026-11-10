@@ -11,6 +11,17 @@
     "results": "The speech group recalled an average of 9 words; the comparison group recalled 12.",
     "discussion": "At the end of the session, researchers told each student that no speech had been planned, explained why the study needed this cover story, and answered their questions."
    }
+  },
+  "research-ethics-s2": {
+   "kind": "study",
+   "title": "Does a richer cage help rats learn a maze?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether rats housed with toys and tunnels learn a maze faster than rats housed in plain cages.",
+    "participants": "Twenty-four adult rats took part. The researchers reported that this was the smallest number that could show a difference between two groups. The university’s animal care and use committee approved the plan before the study began.",
+    "method": "Rats were randomly assigned to live for four weeks in cages with toys and tunnels or in plain cages. All cages were clean, with food and water always available, and a veterinarian checked each rat every day. Each rat then ran a maze once a day for ten days. The reward for finishing was a food pellet; no shocks or other painful methods were used.",
+    "results": "By day 10, rats from the cages with toys and tunnels finished the maze in an average of 22 seconds; rats from the plain cages took 35 seconds."
+   }
   }
  },
  "items": [
@@ -347,6 +358,113 @@
      "That is the measure, given during the session.",
      "Right: the summary says the IRB approved the study.",
      "Assignment is a design feature, not an ethical safeguard."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-13",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "A proposed study would falsely tell participants that they had failed an intelligence test, measure their mood for a week, and only then explain the truth. Why would a review board be likely to refuse this plan?",
+   "options": [
+    "Deception is never allowed in research with human participants",
+    "Participants were not randomly sampled from a larger population",
+    "Mood should be studied in animals before it is studied in people",
+    "It risks real distress, and debriefing waits a week"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Deception is allowed only when the question cannot be studied honestly, the risk is small, and participants are debriefed as soon as possible. Here the false feedback could cause lasting distress and the debriefing waits a week.",
+    "options": [
+     "Deception can be approved when the risk is small and debriefing is prompt. This plan fails both conditions.",
+     "How participants are sampled affects generalizing, not whether they are protected from harm.",
+     "No guideline requires that. The problem is the risk to these participants.",
+     "Right: a week of believing false, upsetting feedback is more than minimal risk, and debriefing should come as soon as possible."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-14",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s2",
+   "q": "No informed consent is mentioned in this summary. Which statement explains why, and what took its place?",
+   "options": [
+    "Animals cannot consent, so an animal care committee reviewed it",
+    "Consent is not needed whenever a study uses random assignment to groups",
+    "The rats were debriefed after the maze, which replaces consent",
+    "Consent is required only when a study uses deception"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Animals cannot agree to take part, so an animal care and use committee reviews each study: housing, how pain is prevented, and whether the question justifies using animals.",
+    "options": [
+     "Right: the summary says the university’s animal care and use committee approved the plan before the study began.",
+     "Random assignment is a design feature. It never replaces an ethical safeguard.",
+     "Debriefing explains a study to human participants. It does not apply to rats.",
+     "Human participants give informed consent in any study, with or without deception."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-15",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s2",
+   "q": "Researchers are expected to use as few animals as possible. Which detail in the summary shows this guideline being applied?",
+   "options": [
+    "Each rat ran the maze once a day for ten days and earned a food pellet",
+    "The study used 24 rats, the fewest that could show a difference",
+    "Rats were randomly assigned to the two kinds of cage",
+    "Rats from the richer cages finished the maze faster"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The summary says 24 rats was the smallest number that could show a difference between two groups, so no more animals were used than the question needed.",
+    "options": [
+     "That is the procedure for measuring learning, not a limit on the number of animals.",
+     "Right: the researchers chose the smallest number of rats that could answer the question.",
+     "Random assignment is a design feature that makes the groups comparable.",
+     "That is the result of the study, not an ethical safeguard."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-16",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s2",
+   "q": "Which choice in the method best shows the researchers keeping the risk of pain and harm low?",
+   "options": [
+    "Housing half of the rats in plain cages for all four weeks of the study",
+    "Timing how long each rat took to finish the maze",
+    "Rewarding rats with food, with no shocks, and daily vet checks",
+    "Comparing the two groups’ average times on day 10"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Protection from harm for animals means preventing or treating pain and using the least invasive methods that work: here a food reward in place of painful methods, and a veterinarian checking each rat daily.",
+    "options": [
+     "The plain cage is the comparison condition, part of the design.",
+     "Timing the maze is the measure of learning.",
+     "Right: the method avoided painful procedures and had a veterinarian monitor the animals’ health.",
+     "Comparing averages is how the results were analyzed."
     ]
    }
   }

@@ -472,6 +472,32 @@
      "Anions from strong acids are unaffected by pH in either direction."
     ]
    }
+  },
+  {
+   "id": "chem-ph-and-solubility-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A white powder is a mixture of solid BaSO₄ and solid BaCO₃. Dilute HNO₃ is added and the mixture is stirred. What is expected?",
+   "options": [
+    "BaSO₄ dissolves and BaCO₃ remains",
+    "BaCO₃ dissolves and BaSO₄ remains",
+    "Both solids dissolve completely",
+    "Neither solid is affected by the acid"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "CO₃²⁻ is a basic anion: H₃O⁺ converts it to H₂CO₃, which leaves as CO₂ gas. That keeps Q below Ksp for BaCO₃, so it dissolves. SO₄²⁻ is the conjugate base of a strong acid and is hardly protonated, so BaSO₄ stays solid.",
+    "options": [
+     "Sulfate is not basic enough to be removed by H₃O⁺, and carbonate is.",
+     "Right: acid dissolves the salt with the basic anion, with bubbles of CO₂, and leaves the other behind, which separates the two.",
+     "Only a salt whose anion reacts with H₃O⁺ becomes more soluble in acid.",
+     "Carbonate reacts readily with H₃O⁺, so BaCO₃ does dissolve."
+    ]
+   }
   }
  ]
 }

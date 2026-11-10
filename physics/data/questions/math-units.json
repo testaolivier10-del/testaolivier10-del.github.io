@@ -289,6 +289,139 @@
      "Right: when adding, the answer keeps the fewest decimal places of the data. Both have one decimal place."
     ]
    }
+  },
+  {
+   "id": "phys-math-units-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A spark lasts 0.00072 s. What is this in scientific notation?",
+   "options": [
+    "7.2 × 10⁴ s",
+    "72 × 10⁻⁵ s",
+    "7.2 × 10⁻⁴ s",
+    "7.2 × 10⁻³ s"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Move the decimal point 4 places to the right to get 7.2, a number from 1 to 10. The number is small, so the power is negative: 7.2 × 10⁻⁴ s.",
+    "options": [
+     "A positive power makes a large number: 7.2 × 10⁴ s is 72,000 s.",
+     "The value is right, but 72 is not a number from 1 to 10.",
+     "Right: 7.2 × 0.0001 = 0.00072.",
+     "That is 0.0072 s. The point moves four places, not three."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-units-13",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A human hair is 85 μm wide. How wide is that in meters? (Scientific notation such as 1.0e-3 is fine.)",
+   "numeric": {
+    "answer": 0.000085,
+    "tol": 0.000001,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.085,
+      "why": "Value: that treats micro as milli. Micro means 10⁻⁶, a millionth."
+     },
+     {
+      "value": 85000000,
+      "why": "Value: you multiplied by a million. A meter is far bigger than a micrometer, so the number must get smaller."
+     }
+    ]
+   },
+   "why": {
+    "correct": "85 μm × (1 m / 1,000,000 μm) = 0.000085 m = 8.5 × 10⁻⁵ m."
+   }
+  },
+  {
+   "id": "phys-math-units-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A storage crate has a volume of 1 m³. What is its volume in cubic centimeters?",
+   "options": [
+    "100 cm³",
+    "1,000,000 cm³",
+    "10,000 cm³",
+    "300 cm³"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A cubic meter is a cube 100 cm on each side: 100 cm × 100 cm × 100 cm = 1,000,000 cm³. A volume needs the factor (100 cm / 1 m) three times.",
+    "options": [
+     "That uses the factor once, which is right for a length, not a volume.",
+     "Right: 100³ = 1,000,000.",
+     "That uses the factor twice, which is right for an area.",
+     "The factor is multiplied three times, not added three times."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-units-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A run lasts 7200 s, measured to two significant figures. Which way of writing it makes the two significant figures clear?",
+   "options": [
+    "7200. s",
+    "7.200 × 10³ s",
+    "7200 s",
+    "7.2 × 10³ s"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Zeros at the end of a number with no decimal point are unclear. Scientific notation removes the doubt: 7.2 × 10³ s shows exactly two significant figures.",
+    "options": [
+     "A decimal point at the end marks all four digits as measured.",
+     "This shows four significant figures: 7, 2, 0 and 0.",
+     "Written this way, a reader cannot tell whether the zeros were measured.",
+     "Right: only the digits 7 and 2 are shown as measured."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-units-16",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student converts 250 cm to meters and writes 25,000 m. Which check catches the mistake, and what went wrong?",
+   "options": [
+    "A meter is bigger than a centimeter, so the number should get smaller; the factor was upside down",
+    "A meter is smaller than a centimeter, so the number should be even larger; a factor was left out",
+    "The digits changed, and a conversion should never change the digits",
+    "The answer has too many significant figures; the conversion itself is right"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The correct setup is 250 cm × (1 m / 100 cm) = 2.5 m, with centimeters canceling. Multiplying by 100 instead leaves the wrong unit and a number that grew when it should have shrunk.",
+    "options": [
+     "Right: put the unit you want on top and the unit to cancel on the bottom.",
+     "There are 100 cm in 1 m, so the meter is the bigger unit.",
+     "A conversion keeps the size of the quantity but changes the number that describes it.",
+     "Significant figures are not the problem here. 25,000 m is ten thousand times too large."
+    ]
+   }
   }
  ]
 }

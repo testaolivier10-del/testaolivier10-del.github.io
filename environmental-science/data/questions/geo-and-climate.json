@@ -485,6 +485,32 @@
      "Ocean currents are driven by winds; they do not push the winds away."
     ]
    }
+  },
+  {
+   "id": "env-geo-and-climate-16",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the Northern Hemisphere the big ocean gyres turn clockwise. What kind of current does this bring to the west coast of a continent, such as the coast of California?",
+   "options": [
+    "A warm current that flows from the tropics toward the pole",
+    "A cold current that flows from the far north toward the equator",
+    "A warm current that flows from the far north toward the equator",
+    "A cold current that flows from the tropics toward the pole"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A clockwise gyre carries water north along the western side of an ocean and south along its eastern side. The eastern side of the ocean is the west coast of a continent, so the water that arrives there comes from high latitudes and is cold. The California Current is an example.",
+    "options": [
+     "That describes the east coast of a continent, where the gyre carries tropical water toward the pole, as the Gulf Stream does.",
+     "Right: water coming down from high latitudes is cold, and it cools the coast beside it.",
+     "The direction is right, but water that comes from the far north has lost its heat. It is a cold current.",
+     "Water leaving the tropics is warm, and on a west coast the gyre flows toward the equator."
+    ]
+   }
   }
  ]
 }
