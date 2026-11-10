@@ -130,9 +130,9 @@ maps (`hug-map.js`, base maps in `human-geography/figures/base/`, map files in `
 (plain words, define before use, a named real place and scale, task verbs, stimulus questions need the stimulus,
 neutral and dated, no released questions): `docs/aphug-authoring-guide.md`; map: `docs/aphug-phase0.md`; open
 points: `docs/aphug-needs-author.md`; briefs (authors A-G, builders T1-T4): `docs/aphug-briefs/`; launch log:
-`docs/aphug-reviews/launch.md`. Published and live (all seven units and the skills chapter); Premium on sale once merged (Polar product and
-`hug-2027` in the Worker done; the lead applies migration `2026-11j-aphug.sql` and the owner grant: spec section 9);
-merges after AP® Microeconomics.
+`docs/aphug-reviews/launch.md`. Published and live (all seven units and the skills chapter); Premium on sale once merged (Polar product,
+`hug-2027` in the Worker, migration `2026-11j-aphug.sql` and the owner grant done: spec section 9); merges right after
+AP® Microeconomics, which this branch already contains (fifteen courses, twelve AP® Exams).
 
 ## AI FRQ grader (AP® courses)
 

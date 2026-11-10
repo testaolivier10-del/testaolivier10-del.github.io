@@ -149,3 +149,29 @@ merges main and opens the PR after AP® Microeconomics merges).
 - Second full `BROWSER=1` run, on sale: every job passed but the tests (one: `aphug-build.test.mjs` still asserted
   `onSale: false`; now asserts on sale). Reruns on the final head: the whole test job (2,401 pass, 0 fail) and
   check-site pass. The borders-lab key fix came after the browser jobs (text only).
+
+## 8. Merge with AP® Microeconomics' final branch (2026-11-10)
+
+- `git fetch origin claude/apmicro main`: Micro's final head `ad29861d` (published, live, Premium on sale, `sw.js`
+  v120); main still `b30de6b0`, already in Micro's branch, so nothing more to merge. The local `origin/claude/apmicro`
+  ref was stale at `1490e742`; refetched with an explicit refspec before merging.
+- `git merge origin/claude/apmicro`: 29 conflicts. `microeconomics/` taken whole from Micro's branch (the cherry-picked
+  formula row and the later graph engine, `formulas.json`, formula page); `git diff origin/claude/apmicro --
+  microeconomics/` is empty. Hand-written files keep both courses, Micro before Human Geography in every list:
+  "Fifteen courses" and "twelve AP® Exams" kept from this branch (home, search, certificate, `cross-course.js`,
+  `r3-reading.mjs`, `check-weight.mjs`, class and milestone comments); class `ORDER`, search scope test, robots,
+  search noscript links and tints, `FRQ_COURSES` and conventions, calibration examples, `sources.html` (meta "to
+  microeconomics and human geography"), changelog (both "New course" entries, Human Geography first). Weight budgets:
+  Micro's raised 119 and this branch's `HUG_SHELL` both kept. FRQ eval cases: Micro has 41-44, so Human Geography's
+  are now 45-48 (`cases.mjs`, `docs/frq-grader.md`, needs-author `frq-grader`; 48 cases).
+- Generated files (hub and 404 cards, home facts "15 courses", premium and pricing, terms, manifest, sitemap, search,
+  worker bundle) taken from either side and every generator in `ci-local.sh` order rerun twice (`/tmp/hugm/gen.sh`).
+  Both passes on sale (no `onSale: false` left). `sw.js` v121, one above both branches. Both SQL files present
+  (`2026-11i-apmicro.sql`, `2026-11j-aphug.sql`); schema.sql is their result (`sql-migration.test.mjs` passes).
+- Against Micro's tree, no other course folder differs (bio, chem, physics, calculus, calculus-bc, statistics,
+  environmental-science, psychology, precalculus, macroeconomics, nremt, ochem, anatomy-physiology all byte-identical);
+  the shared differences are this branch's own Human Geography additions and the site-wide lists and counts.
+- Full `BROWSER=1 scripts/ci-local.sh` on the merge commit `be615f84` (log `/tmp/hug-ci-final.log`): **ALL PASS**, first
+  run, nothing to fix.
+- The lead applied both migrations (`2026-11i-apmicro.sql`, then `2026-11j-aphug.sql`) and granted owner access for
+  both courses: spec section 9 ticked; CLAUDE.md updated.

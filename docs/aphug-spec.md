@@ -299,16 +299,16 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
 - The rest is in `docs/aphug-needs-author.md` (teacher questions: `ced-text`, `mcq-options`, `mcq-sets`,
   `scale-words` as settled, `tools-facts`, the fifth options, contested-topic prompts).
 
-**Launch checklist (owner), to put AP® Human Geography Premium on sale** (on sale since 2026-11-10, decision 12;
-the migration and grant are left for the lead at merge) (as AP® Macroeconomics, its spec section 9):
-- [ ] (lead, at merge) Apply migration `scripts/sql/migrations/2026-11j-aphug.sql` in Supabase (after `2026-11i-apmicro.sql`): adds
-      `aphug` to the three course checks and the nine functions with a course list. Check the live function bodies
-      match `2026-11i-apmicro.sql` first. Then grant owner access (`grant`, as for the other courses).
+**Launch checklist (owner), to put AP® Human Geography Premium on sale** (on sale since 2026-11-10, decision 12)
+(as AP® Macroeconomics, its spec section 9):
+- [x] (lead) Apply migration `scripts/sql/migrations/2026-11j-aphug.sql` in Supabase (after `2026-11i-apmicro.sql`): adds
+      `aphug` to the three course checks and the nine functions with a course list. Done by the lead 2026-11-10, with
+      `2026-11i-apmicro.sql` before it; owner access granted for both courses (`grant`).
 - [x] Create the Polar product "AP® Human Geography Premium (through June 30, 2027)", one-time, at the AP® price
       ($25), with the Founding member discount (it has no product list, so it covers every product). Done 2026-11-10:
       id `b113bad7-2656-4d3f-a9c4-ae3ffa0ee25e`.
 - [x] Add `"hug-2027": "<Polar product id>"` to `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask settings; deploy;
       `keep_vars = true` keeps it on the merge deploy).
-- [x] Remove `onSale: false` from `COURSES.aphug` in `assets/premium.js`; bump `sw.js` (v120, decision 12).
-- [ ] Merge the PR (the lead opens it after AP® Microeconomics merges, merging main in first).
+- [x] Remove `onSale: false` from `COURSES.aphug` in `assets/premium.js`; bump `sw.js` (v120, decision 12; v121 after the merge with AP® Microeconomics, one above both branches).
+- [ ] Merge the PR (the lead opens it after AP® Microeconomics merges; Micro's final branch `ad29861d` is merged in here, 2026-11-10).
 - [ ] Optional: an AP® Human Geography teacher reviews the course (the "not yet reviewed" note stays until then).
