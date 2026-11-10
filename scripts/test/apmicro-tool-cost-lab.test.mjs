@@ -50,7 +50,9 @@ test('cost-lab: the explore table follows its recipes and lands on the engine’
   const p = G.COST.firm, E = model.EXPLORE;
   // each worker's output is where the engine's variable cost reaches wage × L (to a whole unit)
   const tvc = x => 10 * (p.a * x - p.b * x * x + p.c * x ** 3);
-  E.labor.forEach((L, i) => { if (!L) return; let lo = 0, hi = 12; for (let k = 0; k < 80; k++) { const m = (lo + hi) / 2; if (tvc(m) < E.wage * L) lo = m; else hi = m; } assert.equal(Math.round(lo * 10), E.tp[i], `TP of worker ${L}`); });
+  E.labor.forEach((L, i) => { if (!L) return; let lo = 0, hi = 12; for (let k = 0; k < 80; k++) { const m = (lo + hi) / 2; if (tvc(m) < E.wage * L) lo = m; else hi = m; } assert.ok(Math.abs(lo * 10 - E.tp[i]) < 1.5, `TP of worker ${L}`); });
+  const mp = E.tp.slice(1).map((t, i) => t - E.tp[i]), top = mp.indexOf(Math.max(...mp));
+  mp.forEach((v, i) => { if (i && i <= top) assert.ok(v > mp[i - 1]); if (i > top) assert.ok(v < mp[i - 1]); });
   for (const [tfc, mats] of [[80, 0], [120, 0], [40, 1.5], [160, 3]]) {
     const t = model.table({ tfc, mats }), off = model.offsets(tfc, mats), spec = { kind: 'costs', afc: true }, cs = G.curves(spec, off);
     const y = id => x => G.y(G.find(cs, id), x);
@@ -61,10 +63,10 @@ test('cost-lab: the explore table follows its recipes and lands on the engine’
       assert.ok(Math.abs(t.mc[i] - C.evaluate({ fn: 'marginalCost', args: [t.tc[i - 1], t.tc[i], t.tp[i - 1], Q] })) < 1e-9);
       assert.ok(Math.abs(t.afc[i] - tfc / Q) < 1e-9 && Math.abs(t.atc[i] - t.afc[i] - t.avc[i]) < 1e-9);
       // the row's points sit on the curves (whole-unit output: within a small rounding band)
-      assert.ok(Math.abs(t.avc[i] - y('AVC')(Q / 10)) < 0.12, `AVC row ${i} ${tfc} ${mats}`);
-      assert.ok(Math.abs(t.atc[i] - y('ATC')(Q / 10)) < 0.25, `ATC row ${i} ${tfc} ${mats}`);
+      assert.ok(Math.abs(t.avc[i] - y('AVC')(Q / 10)) < 0.15, `AVC row ${i} ${tfc} ${mats}`);
+      assert.ok(Math.abs(t.atc[i] - y('ATC')(Q / 10)) < 0.3, `ATC row ${i} ${tfc} ${mats}`);
       assert.ok(Math.abs(t.afc[i] - y('AFC')(Q / 10)) < 1e-6, `AFC row ${i}`);
-      if (t.mc[i] < 10) assert.ok(Math.abs(t.mc[i] - y('MC')((t.tp[i - 1] + Q) / 20)) < 0.35, `MC row ${i}`);
+      if (t.mc[i] < 10) assert.ok(Math.abs(t.mc[i] - y('MC')((t.tp[i - 1] + Q) / 20)) < 0.3, `MC row ${i}`);
     }
     // MC passes through the minimum of AVC and ATC
     for (const [name, id] of [['min-avc', 'AVC'], ['min-atc', 'ATC']]) { const m = G.named(spec, off, name); assert.ok(Math.abs(y('MC')(m[0]) - m[1]) < 1e-3, `MC through ${name}`); }

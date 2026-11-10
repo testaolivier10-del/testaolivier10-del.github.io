@@ -10,8 +10,8 @@
    so MC passes exactly through the minimum of AVC and of ATC. The table is
    that same firm counted in dollars and units: output Q = 10 x, cost per unit
    in dollars = the graph's height. With a wage of $60 the total product of
-   each worker is where the model's variable cost reaches 60 L (rounded to a
-   whole unit: EXPLORE.tp), so every row of the table lands on the curves the
+   each worker is where the model's variable cost reaches 60 L (as a whole
+   unit: EXPLORE.tp), so every row of the table lands on the curves the
    engine draws, within rounding. A fixed cost TFC moves ATC and AFC only (an
    ATC offset of (TFC / 10 - F) / Fstep); a cost per unit of output m
    (materials, a per-unit tax) moves MC, AVC and ATC up by m (an MC and ATC
@@ -42,8 +42,10 @@
 
   /* ------------------------------------------------------------ explore */
   // tp: where 10 (a x - b x^2 + c x^3) = 60 L on the engine's firm model, x = Q / 10,
-  // rounded to a whole unit (the test recomputes them).
-  var EXPLORE = { wage: 60, labor: [0, 1, 2, 3, 4, 5, 6, 7, 8], tp: [0, 13, 32, 50, 62, 70, 77, 83, 88], tfc: 80, mats: 0 };
+  // as whole units: each within one unit of that point, picked so marginal product
+  // rises then falls and every row's MC, AVC and ATC sit on the drawn curves
+  // (the test checks both).
+  var EXPLORE = { wage: 60, labor: [0, 1, 2, 3, 4, 5, 6, 7, 8], tp: [0, 13, 32, 49, 61, 70, 77, 83, 88], tfc: 80, mats: 0 };
   function table(o){
     o = o || {};
     var w = o.wage != null ? o.wage : EXPLORE.wage, tfc = o.tfc != null ? o.tfc : EXPLORE.tfc, m = o.mats || 0;
