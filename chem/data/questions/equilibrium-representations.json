@@ -530,6 +530,32 @@
    "why": {
     "correct": "Only an equilibrium mixture gives K. Counts become concentrations through moles and volume; then use the expression."
    }
+  },
+  {
+   "id": "chem-equilibrium-representations-16",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A graph of concentration against time for A(g) ⇌ B(g) starts with only A. Both curves level off, with [B] three times [A]. What does the graph show about K<sub>c</sub>?",
+   "options": [
+    "K<sub>c</sub> = 0, because the reaction has stopped",
+    "K<sub>c</sub> = 1, because the forward and reverse rates are equal",
+    "K<sub>c</sub> is about 0.33, because some A is left over",
+    "K<sub>c</sub> is about 3, because [B]/[A] = 3 where the curves are flat"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "K<sub>c</sub> = [B]/[A], read from the flat parts of the curves where the system is at equilibrium. [B] is three times [A], so K<sub>c</sub> is about 3 and the products are favored.",
+    "options": [
+     "At equilibrium both reactions still run, at equal rates. K is a ratio of concentrations and is not zero.",
+     "Equal rates do not mean equal concentrations. K compares the concentrations, which are not equal here.",
+     "That is [A]/[B]. K has the products on top.",
+     "Right: the flat region gives the equilibrium concentrations, and their ratio is K."
+    ]
+   }
   }
  ]
 }

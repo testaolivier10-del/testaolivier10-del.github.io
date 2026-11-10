@@ -1,0 +1,101 @@
+{
+  "id": "cardiac-arrest-and-chain-of-survival",
+  "title": "Cardiac arrest and the chain of survival",
+  "chapter": 21,
+  "section": "ch21-arrest-pathophys",
+  "hook": "<p>A man collapses in a grocery store. A bystander tells the dispatcher, \"He's still breathing, he takes a big gasp every ten seconds or so.\" Nobody starts CPR.</p><p>Those gasps are not breathing. They are the last signals of a brain that still has a little oxygen left, in a body whose heart has stopped. The two things that will decide whether he lives, high-quality CPR and early defibrillation, are both yours to give.</p>",
+  "steps": [
+    {
+      "find": "A patient has collapsed, is unresponsive and makes an occasional gasping or snoring breath.",
+      "act": "Recognize agonal respirations. Gasping is not breathing. If there is no pulse, or you are not sure there is one, start compressions."
+    },
+    {
+      "find": "The arrest came with no warning: an adult who abruptly collapsed.",
+      "act": "Think sudden cardiac arrest from a dysrhythmia such as ventricular fibrillation. Compressions and the earliest possible shock are what this patient needs."
+    },
+    {
+      "find": "The arrest followed a breathing problem or shock, such as drowning, an opioid overdose or choking, or the patient is an infant or child.",
+      "act": "Think asphyxial arrest: the body ran out of oxygen first. Compressions still start at once, and good ventilations matter especially here."
+    },
+    {
+      "find": "The AED or monitor finds an organized rhythm, or advises no shock, and the patient has no pulse.",
+      "act": "Continue CPR. An organized rhythm without a pulse is pulseless electrical activity (PEA): the electrical system is working but the heart is not pumping. A shock will not fix it."
+    },
+    {
+      "find": "You are one link in a chain that started before you arrived and continues after you leave.",
+      "act": "Deliver your two links, high-quality CPR and defibrillation, as well as they can be done, and hand the patient on to advanced resuscitation and hospital care."
+    }
+  ],
+  "ideas": [
+    "<b>EMTs own CPR.</b> Research shows only two interventions reliably change the outcome of cardiac arrest: quality chest compressions and early defibrillation. Both are in EMT scope.",
+    "<b>The 2025 AHA chain of survival</b> is one chain for adult and pediatric arrest, in or out of hospital, with six links: (1) recognition and emergency activation, (2) high-quality CPR, (3) defibrillation, (4) advanced resuscitation, (5) post-cardiac arrest care, (6) recovery and survivorship. A newborn at delivery follows a separate chain of care.",
+    "<b>CPR means compressions and breaths.</b> Ventilation matters in pediatric arrest and in adult arrests caused by drowning or opioid poisoning.",
+    "<b>Mechanical failure:</b> the heart cannot pump because of a structural problem (damaged muscle after a heart attack, a failed valve, trauma such as pericardial tamponade), even if its electrical activity is normal.",
+    "<b>Electrical dysfunction:</b> complete loss of electrical activity is asystole. Chaotic or disorganized activity is ventricular fibrillation or pulseless ventricular tachycardia, which defibrillation can often correct.",
+    "<b>Adult arrests are usually sudden and cardiac. Pediatric arrests are the opposite:</b> most are asphyxial, and only a minority start with a shockable rhythm.",
+    "<b>Agonal gasps</b> happen when the heart stops suddenly while some oxygen remains in the blood. They are linked with a better chance of survival, but only if someone starts CPR.",
+    "<b>High-performance CPR</b> is a system: planning, practiced roles, feedback, and a tight focus on compressions and defibrillation. Systems that work this way report far higher survival than the national average."
+  ],
+  "misconception": {
+    "wrong": "He is still gasping every few seconds, so he is breathing and does not need CPR yet.",
+    "right": "Agonal gasps are a sign of cardiac arrest, not of breathing. They cannot sustain the patient. An unresponsive patient who is only gasping and has no pulse, or no pulse you are sure of, gets compressions now."
+  },
+  "check": [
+    {
+      "q": "Which two links in the chain of survival are the interventions shown to reliably change the outcome of cardiac arrest?",
+      "options": [
+        "Recognition and advanced resuscitation",
+        "Advanced resuscitation and post-cardiac arrest care",
+        "Defibrillation and recovery",
+        "High-quality CPR and defibrillation"
+      ],
+      "correct": 3,
+      "why": "Quality compressions and early defibrillation are the two interventions research shows reliably alter the outcome, and both are within EMT scope. Advanced medications and airways come later in the chain and depend on those two being done well."
+    },
+    {
+      "q": "A pulseless patient's monitor shows an organized rhythm. What is this called?",
+      "options": [
+        "Pulseless electrical activity",
+        "Ventricular fibrillation",
+        "Ventricular asystole",
+        "Spontaneous circulation"
+      ],
+      "correct": 0,
+      "why": "An organized electrical rhythm with no pulse is PEA: the electrical system works but the heart is not pumping effectively. Asystole is the absence of electrical activity, and ventricular fibrillation is chaotic, not organized."
+    },
+    {
+      "q": "A 4-year-old is pulled from a pool in cardiac arrest. Compared with a typical adult sudden collapse, what matters more for this child?",
+      "options": [
+        "Waiting for ALS before starting anything",
+        "Delaying compressions to check a blood pressure",
+        "Effective ventilations along with compressions",
+        "Giving compressions only, without breaths"
+      ],
+      "correct": 2,
+      "why": "Drowning and most pediatric arrests are asphyxial: the arrest came from a lack of oxygen, so quality ventilations are especially important alongside compressions. Compression-only CPR is tempting from adult bystander teaching but leaves out what this child lacks most."
+    },
+    {
+      "q": "How did the 2025 AHA guidelines change the chain of survival?",
+      "options": [
+        "They removed defibrillation as one of the links in the chain",
+        "They returned to one chain for adult and pediatric arrest in any setting",
+        "They split it into four separate chains by age and by setting",
+        "They moved advanced resuscitation ahead of high-quality CPR"
+      ],
+      "correct": 1,
+      "why": "The 2025 guidelines went back to a single six-link chain covering adult and pediatric arrest in any setting, where the 2020 guidelines had separate chains. Defibrillation remains the third link, after high-quality CPR."
+    },
+    {
+      "q": "An unresponsive man gasps once about every 10 seconds. You are not sure whether you feel a carotid pulse. What do you do?",
+      "options": [
+        "Place him in the recovery position and watch",
+        "Give oxygen by non-rebreather mask",
+        "Keep checking the pulse until you are certain",
+        "Start chest compressions"
+      ],
+      "correct": 3,
+      "why": "Gasping is not breathing, and if you are uncertain about a pulse you start compressions. Continuing to search for a pulse costs time the patient does not have."
+    }
+  ],
+  "summary": "<p>Cardiac arrest is the emergency the EMT owns, because high-quality CPR and early defibrillation are the two interventions that reliably change who survives. They are links 2 and 3 of the single six-link 2025 chain of survival. Arrest comes from mechanical failure, which can leave an organized rhythm with no pulse (PEA), or more often from electrical dysfunction such as ventricular fibrillation or asystole. Sudden arrests need compressions and a fast shock; asphyxial arrests, including most pediatric ones, need good ventilations too. Agonal gasps are a sign of arrest, never a reason to wait.</p>"
+}

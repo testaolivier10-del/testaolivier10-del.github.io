@@ -584,6 +584,32 @@
      "The tilt stays about 23.5° all year; only its direction relative to the Sun changes."
     ]
    }
+  },
+  {
+   "id": "env-solar-radiation-seasons-16",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"It is summer when Earth is closest to the Sun.\" Which observation shows that this is wrong?",
+   "options": [
+    "The Sun rises in the east in every season",
+    "Days are longer in summer than they are in winter",
+    "The Moon changes shape over each month",
+    "The two hemispheres have opposite seasons"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "If distance caused the seasons, the whole planet would have summer at once. When it is summer in the Northern Hemisphere it is winter in the Southern Hemisphere, which is what the tilt of the axis predicts.",
+    "options": [
+     "This is true, but it does not test the distance idea.",
+     "Longer summer days fit the tilt, but the student could still claim that distance matters.",
+     "The phases of the Moon have nothing to do with the seasons.",
+     "Right: one distance from the Sun cannot give two opposite seasons."
+    ]
+   }
   }
  ]
 }

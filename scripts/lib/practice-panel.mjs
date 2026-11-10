@@ -120,7 +120,7 @@ export function panelConfig(key) {
   };
   /* The flashcard domains are the deck's own (nremt/assets/flashcards.json "domains"). */
   if (key === 'nremt') return {
-    course: 'nremt', family: 'nremt', explained: 'every answer explained', note: 'The study notes stay open.', dir: 'nremt',
+    course: 'nremt', family: 'nremt', explained: 'every option explained', note: 'The study notes stay open.', dir: 'nremt',
     formats: fmt(['q', 'exam', 'cat', 'scen', 'cards']), unitWord: 'Domains', practice: null, pace: 72,
     from: ['new', 'due', 'missed', 'weak'], counts: [10, 20, 30, 50],
     examKinds: [['std', '100 questions, 2 hours'], ['real', 'Exam-realistic: no flagging, no going back']],

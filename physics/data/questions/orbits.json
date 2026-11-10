@@ -438,6 +438,32 @@
      "There is no such extra force; gravity alone is the centripetal force."
     ]
    }
+  },
+  {
+   "id": "phys-orbits-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A satellite moves in a circular orbit of radius r around a planet. A second satellite with twice the mass is placed in a circular orbit of the same radius. How does its orbital speed compare?",
+   "options": [
+    "It is the same",
+    "It is twice as large",
+    "It is half as large",
+    "It is √2 times as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gravity supplies the centripetal force: GMm/r² = mv²/r. The satellite's mass m cancels, leaving v = √(GM/r). The speed depends on the planet's mass and the radius only.",
+    "options": [
+     "Right: every object in a circular orbit of the same radius moves at the same speed.",
+     "A larger mass feels a larger gravitational force, but it also needs a larger force to follow the same circle.",
+     "More mass does not slow an orbit. The mass cancels from the equation.",
+     "A √2 appears when comparing escape speed with orbital speed, not when the satellite's mass changes."
+    ]
+   }
   }
  ]
 }

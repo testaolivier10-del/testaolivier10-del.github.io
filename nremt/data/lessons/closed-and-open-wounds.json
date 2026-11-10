@@ -1,0 +1,102 @@
+{
+  "id": "closed-and-open-wounds",
+  "title": "Closed and open wounds",
+  "chapter": 30,
+  "section": "ch30-wounds",
+  "hook": "<p>A painter was cleaning a high-pressure spray gun when it fired into his index finger. There is a pinpoint hole, almost no blood and very little pain. He wants a bandage and to get back to work.</p><p>Soft-tissue injuries fool people in both directions. A dramatic scalp cut can be minor, and a tiny puncture can hide damage that costs a hand. This lesson sorts wounds into closed and open, and covers the handful of special situations where the usual care changes.</p>",
+  "steps": [
+    {
+      "find": "The skin is intact but there is bruising, swelling or a crush mechanism.",
+      "act": "Treat it as a closed wound: manage airway, breathing and circulation, give oxygen if indicated, and if the mechanism suggests bleeding inside the body, treat for internal bleeding and shock. Splint painful or deformed extremities and transport promptly."
+    },
+    {
+      "find": "The skin is broken and the wound is bleeding.",
+      "act": "Expose the wound and control the bleeding first, with direct pressure. Cleaning comes second, and only the surface. Life-threatening bleeding from a limb (spurting, pulsing or pooling fast) gets a tourniquet right away. Do not rely on elevation."
+    },
+    {
+      "find": "The bleeding is controlled.",
+      "act": "Cover the wound with a sterile dressing, hold it with a bandage, and check the pulse beyond the bandage once it is on. Treat for shock and give oxygen if indicated."
+    },
+    {
+      "find": "An object is impaled in the patient.",
+      "act": "Leave it in place and stabilize it with bulky dressings on both sides. The two standard exceptions are an object through the cheek that is blocking the airway, and an object in the chest that makes CPR impossible."
+    },
+    {
+      "find": "A body part has been avulsed or amputated.",
+      "act": "Control the bleeding, then save the part: wrap it in a sterile dressing (dry or moistened with saline, per local protocol), seal it in a plastic bag and keep the bag cool, for example on ice or in cold water. Never put the part itself directly on ice and never soak it in water. Send it with the patient."
+    },
+    {
+      "find": "A high-pressure tool has injected paint, grease or fluid into a hand, and the wound looks trivial.",
+      "act": "Take it very seriously: the damage inside is severe. Elevate and splint the limb, do not apply cold, and persuade the patient to be transported even with no pain."
+    }
+  ],
+  "ideas": [
+    "<b>Skin has 3 layers:</b> the epidermis (no blood vessels), the dermis (vessels, nerves, glands) and the subcutaneous layer (mostly fat). Once the dermis is open, bleeding and infection become real risks.",
+    "<b>Closed wounds:</b> a contusion is a bruise, and swelling or color change can take up to 48 hours; a hematoma is blood from a larger vessel, up to a liter; a crush injury passes force inward, so solid organs bleed and hollow organs leak even with intact skin.",
+    "<b>Open wounds:</b> abrasion (outer layer, dirt ground in), laceration (depth cannot be judged from outside), puncture (small entry, check for an exit), avulsion (a flap torn loose), amputation (bleeding may be severe or surprisingly limited), bites (high infection rates; a human bite can indicate assault or abuse).",
+    "<b>Blast injuries, 4 mechanisms:</b> primary is the pressure wave, secondary is flying fragments, tertiary is being thrown, quaternary is everything else, such as burns and chemical exposure.",
+    "<b>Genital injuries</b> bleed heavily. Control the bleeding, protect the patient's privacy and dignity, and keep the possibility of sexual assault or abuse in mind, especially in a child."
+  ],
+  "misconception": {
+    "wrong": "A small entry wound with little bleeding and little pain is a minor injury.",
+    "right": "The size of the hole says nothing about depth. A puncture is judged by how deep it goes, and a high-pressure injection injury looks minor on the surface while being devastating inside. Both are assessed carefully and transported."
+  },
+  "check": [
+    {
+      "q": "A man has a kitchen knife impaled in his thigh. It is not bleeding heavily. What do you do with the knife?",
+      "options": [
+        "Remove it and apply direct pressure",
+        "Remove it only if it comes out easily",
+        "Stabilize it in place with bulky dressings",
+        "Push it through so it can be bandaged flat"
+      ],
+      "correct": 2,
+      "why": "An impaled object is left in place and stabilized with bulky dressings on both sides (the exceptions are one in the cheek blocking the airway and one that prevents CPR, and neither applies to a thigh). Removing it, even gently, can release bleeding the object was holding back and cause more damage on the way out."
+    },
+    {
+      "q": "A worker's finger has been amputated by a saw. How should the finger be handled?",
+      "options": [
+        "Placed directly on ice in a cup",
+        "Wrapped in a sterile dressing, bagged and kept cool",
+        "Soaked in a container of clean water",
+        "Left at the scene, since it cannot survive"
+      ],
+      "correct": 1,
+      "why": "The part is wrapped in a sterile dressing, sealed in a bag and kept cool, and it goes with the patient. Direct contact with ice freezes and damages the tissue, and soaking it in water damages it too."
+    },
+    {
+      "q": "A mechanic injected grease into his palm with a high-pressure gun. The wound is a tiny dot and he has no pain. Which action is correct?",
+      "options": [
+        "Elevate and splint the hand and urge transport",
+        "Apply a cold pack and let him return to work",
+        "Squeeze the hand to push the grease back out",
+        "Clean the dot and advise seeing a doctor if it hurts"
+      ],
+      "correct": 0,
+      "why": "High-pressure injection injuries look minor and are devastating inside. The limb is elevated and splinted, cold is never applied, and the patient is persuaded to accept transport even with no pain. Waiting for pain is the tempting mistake, because lack of pain is typical early on."
+    },
+    {
+      "q": "You reach a patient with a dirty, steadily bleeding laceration on the forearm. What comes first?",
+      "options": [
+        "Clean all the debris out of the wound",
+        "Elevate the arm above the heart",
+        "Apply a sterile dressing loosely",
+        "Control the bleeding with direct pressure"
+      ],
+      "correct": 3,
+      "why": "Controlling bleeding takes priority over cleaning, and direct pressure is the method. Elevation is no longer part of bleeding control because it delays the pressure that actually works."
+    },
+    {
+      "q": "In an explosion, a bystander is hit by flying metal fragments. Which blast injury mechanism is this?",
+      "options": [
+        "Primary",
+        "Secondary",
+        "Tertiary",
+        "Quaternary"
+      ],
+      "correct": 1,
+      "why": "Secondary blast injury is caused by fragments driven into the patient. Primary is the pressure wave itself, tertiary is the patient being thrown, and quaternary covers the rest, such as burns and chemical exposure."
+    }
+  ],
+  "summary": "<p>Closed wounds (contusion, hematoma, crush injury) leave the skin intact and can hide serious internal bleeding: support the ABCs, treat for shock, splint and transport. Open wounds (abrasion, laceration, puncture, avulsion, amputation, bite) break the skin: expose, control bleeding with direct pressure before cleaning, use a tourniquet at once for life-threatening limb bleeding, then dress, bandage and check the distal pulse. Leave impaled objects in place and stabilize them. Keep an amputated part wrapped, bagged and cool, never directly on ice or in water. High-pressure injection injuries look small and are severe: elevate, splint, no cold, transport. Blast injuries have 4 mechanisms, and genital injuries call for bleeding control, privacy and awareness of possible assault.</p>"
+}

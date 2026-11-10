@@ -492,6 +492,32 @@
      "The tower is open to the air; the height of water is what matters."
     ]
    }
+  },
+  {
+   "id": "phys-fluid-pressure-16",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A flat aquarium window has an area of 0.30 m². The average gauge pressure of the water on it is 4.0 × 10³ Pa. What force does this gauge pressure produce on the window, in newtons?",
+   "numeric": {
+    "answer": 1200,
+    "tol": 50,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 13000,
+      "tol": 500,
+      "why": "Value: you divided the pressure by the area. P = F/A, so F = PA."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = F/A, so F = PA = (4.0 × 10³ Pa)(0.30 m²) = 1.2 × 10³ N. A pascal is a newton per square meter, so Pa × m² = N."
+   }
   }
  ]
 }

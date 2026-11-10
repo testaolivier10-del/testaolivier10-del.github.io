@@ -1,0 +1,87 @@
+{
+  "id": "accessing-911",
+  "title": "Accessing the system: 911",
+  "chapter": 1,
+  "section": "ch1-911",
+  "hook": "<p>A teenager finds her grandfather on the kitchen floor. He is not breathing. She calls 911 from her cell phone, crying too hard to give the address. The dispatcher already has a location on the screen, sends an ambulance, and then says: \"Put the phone on speaker. Kneel next to him. I am going to tell you how to push on his chest.\"</p><p>Help started before any crew left the station. This lesson covers how the public reaches EMS, what Enhanced 911 does, and what the dispatcher does while you are still on the way.</p>",
+  "steps": [
+    {
+      "find": "Someone has an emergency and needs EMS.",
+      "act": "They reach the system by calling 911. The 911 system covers roughly 99% of the population and handles about 240 million calls a year."
+    },
+    {
+      "find": "The call comes from a landline.",
+      "act": "Enhanced 911 automatically identifies the caller's phone number and location, so help can be sent even if the caller cannot speak."
+    },
+    {
+      "find": "The call comes from a mobile device, as more than 80% of 911 calls do.",
+      "act": "Location arrives in two phases. Phase 1 gives the caller's number (with the cell site handling the call). Phase 2 gives the physical location of the device itself."
+    },
+    {
+      "find": "The call is placed over the internet (VoIP).",
+      "act": "These calls are harder to locate, and this remains an ongoing technical challenge. The dispatcher may need to get the address from the caller."
+    },
+    {
+      "find": "The emergency medical dispatcher (EMD) has the call and the crew is not there yet.",
+      "act": "The EMD sends the right resources and gives pre-arrival instructions, such as how to perform CPR, provide ventilation or control bleeding, until the crew arrives."
+    }
+  ],
+  "ideas": [
+    "<b>911 is how the public reaches EMS.</b> It covers roughly 99% of the population and takes about 240 million calls a year, more than 80% of them from mobile devices.",
+    "<b>Enhanced 911</b> automatically identifies a landline caller's number and location. Some systems can locate wireless callers as well.",
+    "<b>Wireless location comes in two phases:</b> Phase 1 identifies the caller's number; Phase 2 identifies the physical location of the device.",
+    "<b>VoIP calls are harder to locate.</b>",
+    "<b>The EMD is specially trained and certified.</b> The EMD does two jobs: sends the right resources, and coaches the caller with pre-arrival instructions."
+  ],
+  "misconception": {
+    "wrong": "The dispatcher only takes the address and sends the ambulance. Patient care starts when the EMTs walk in.",
+    "right": "An emergency medical dispatcher is trained and certified to give pre-arrival instructions. A caller can be doing CPR or holding pressure on a wound, guided by the EMD, minutes before you arrive. Expect to take over care that has already begun."
+  },
+  "check": [
+    {
+      "q": "What does Enhanced 911 add to a basic 911 call from a landline?",
+      "options": [
+        "It automatically identifies the caller's number and location",
+        "It connects the caller directly to the nearest ambulance crew",
+        "It sends the caller's medical history to the hospital",
+        "It records the call so it can be used for quality review"
+      ],
+      "correct": 0,
+      "why": "Enhanced 911 automatically shows the dispatcher the landline caller's number and location. It does not route the call to a crew or share medical records; the dispatcher still decides what to send."
+    },
+    {
+      "q": "For a 911 call from a mobile device, what does Phase 2 provide that Phase 1 does not?",
+      "options": [
+        "The caller's name and home address",
+        "The caller's phone number",
+        "The caller's nearest hospital",
+        "The physical location of the device"
+      ],
+      "correct": 3,
+      "why": "Phase 1 identifies the caller's number; Phase 2 identifies the physical location of the device. The phone number is the tempting wrong answer because it is real information, but it already comes with Phase 1."
+    },
+    {
+      "q": "A caller reports that her husband has collapsed and is not breathing. Besides sending an ambulance, what is the emergency medical dispatcher trained to do?",
+      "options": [
+        "Tell her to wait outside so the crew can find the house",
+        "Give her instructions for CPR until the crew arrives",
+        "Advise her to drive him to the nearest hospital herself",
+        "Ask her to call back once the ambulance has arrived"
+      ],
+      "correct": 1,
+      "why": "EMDs give pre-arrival instructions such as how to perform CPR, provide ventilation or control bleeding. Waiting outside sounds helpful, but it leaves a patient who is not breathing with no care at all."
+    },
+    {
+      "q": "Which type of 911 call is described as the hardest to locate, and still an ongoing technical challenge?",
+      "options": [
+        "A call from a landline in a private home",
+        "A call from a mobile phone with Phase 2 service",
+        "A call placed over the internet (VoIP)",
+        "A call from a landline in a business"
+      ],
+      "correct": 2,
+      "why": "Internet (VoIP) calls are harder to locate. Landlines are located automatically by Enhanced 911, and a mobile phone with Phase 2 reports the location of the device."
+    }
+  ],
+  "summary": "<p>The public reaches EMS by calling 911, a system that covers roughly 99% of the population and takes about 240 million calls a year, more than 80% from mobile devices. Enhanced 911 automatically identifies a landline caller's number and location; for wireless calls, Phase 1 identifies the number and Phase 2 the physical location of the device, and VoIP calls remain harder to locate. The call is answered by a trained, certified emergency medical dispatcher, who sends the right resources and gives pre-arrival instructions such as CPR, ventilation and bleeding control until the crew arrives.</p>"
+}

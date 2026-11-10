@@ -29,6 +29,36 @@
      ]
     ]
    }
+  },
+  "slopes-curves-s2": {
+   "kind": "data",
+   "title": "Two straight lines on the same axes",
+   "invented": true,
+   "table": {
+    "caption": "Vertical values of line A and line B at three horizontal values (invented data for practice)",
+    "cols": [
+     "Horizontal value",
+     "Line A",
+     "Line B"
+    ],
+    "rows": [
+     [
+      "0",
+      "2",
+      "8"
+     ],
+     [
+      "2",
+      "6",
+      "9"
+     ],
+     [
+      "4",
+      "10",
+      "10"
+     ]
+    ]
+   }
   }
  },
  "items": [
@@ -368,6 +398,158 @@
       "y": "down"
      }
     }
+   }
+  },
+  {
+   "id": "mac-slopes-curves-12",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s2",
+   "q": "Using the first two rows of the table, what is the slope of line B?",
+   "why": {
+    "correct": "Rise $9 - 8 = 1$, run $2 - 0 = 2$, so the slope is $\\frac{1}{2} = 0.5$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        9,
+        8
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        2,
+        0
+       ]
+      }
+     ]
+    },
+    "places": 1,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "You divided the run by the rise. Slope is the change in the vertical value over the change in the horizontal value: 1 / 2."
+     },
+     {
+      "value": 1,
+      "why": "That is the rise alone. Divide it by the run, 2."
+     }
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-13",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s2",
+   "q": "Which line is steeper, and how do you know?",
+   "options": [
+    "Line B: it starts higher, at 8 against 2",
+    "Line B: its values are larger in the first two rows",
+    "Neither: both lines reach 10 at a horizontal value of 4",
+    "Line A: it rises 4 for every 2 across, a slope of 2"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Steepness is slope. Line A's slope is $\\frac{6 - 2}{2 - 0} = 2$; line B's is $\\frac{9 - 8}{2 - 0} = 0.5$.",
+    "options": [
+     "Where a line starts does not set its tilt. Line B rises only 1 for every 2 across.",
+     "Larger values put a line higher on the graph. They do not make it steeper.",
+     "The lines meet at that point, but line A climbed 8 to get there and line B climbed 2.",
+     "Right: a slope of 2 is steeper than a slope of 0.5."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-14",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "stimulus": "slopes-curves-s2",
+   "q": "A student finds line A's slope from the first two rows, then again from the last two rows. What should she find?",
+   "options": [
+    "A larger slope from the last two rows",
+    "A smaller slope from the last two rows",
+    "The same slope, 2, from both pairs of rows",
+    "A negative slope from the last two rows"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A straight line has the same slope at every point: $\\frac{6 - 2}{2 - 0} = 2$ and $\\frac{10 - 6}{4 - 2} = 2$.",
+    "options": [
+     "A slope that grows along the way belongs to a curve, not to a straight line.",
+     "A slope that shrinks along the way belongs to a curve, not to a straight line.",
+     "Right: any two points on a straight line give the same rise over run.",
+     "Line A rises to the right in every row, so its slope stays positive."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-15",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "A line falls to the right through (1, 9) and (4, 3). A student writes its slope as $\\frac{3 - 9}{1 - 4} = 2$. What went wrong?",
+   "options": [
+    "The top and bottom were subtracted in different orders",
+    "The rise and the run were swapped in the fraction",
+    "Nothing: a line through these points has a slope of 2",
+    "The slope of a falling line is always zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Subtract second point minus first point both times: $\\frac{3 - 9}{4 - 1} = \\frac{-6}{3} = -2$. A line that falls to the right has a negative slope.",
+    "options": [
+     "Right: the top is second minus first, but the bottom is first minus second, which flips the sign.",
+     "The rise is on top and the run is on the bottom. The slip is the order of subtraction in the run.",
+     "The line falls to the right, so a positive slope cannot be right.",
+     "Zero is the slope of a horizontal line. This line falls 2 for each unit to the right."
+    ]
+   }
+  },
+  {
+   "id": "mac-slopes-curves-16",
+   "unit": "graph-skills",
+   "topic": "slopes-curves",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why does a vertical line have no rise-over-run number for its slope?",
+   "options": [
+    "Its rise is zero, so the slope is zero",
+    "Its run is zero, and you cannot divide by zero",
+    "Its slope is negative at every point",
+    "Its slope changes from point to point"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Between any two points on a vertical line the horizontal value does not change, so the run is zero and rise over run cannot be computed.",
+    "options": [
+     "A rise of zero describes a horizontal line, whose slope is zero.",
+     "Right: the horizontal value stays the same, so the run is zero.",
+     "A negative slope belongs to a line that falls to the right.",
+     "A changing slope belongs to a curve. A vertical line is straight."
+    ]
    }
   }
  ]

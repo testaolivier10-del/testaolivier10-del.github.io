@@ -508,6 +508,32 @@
      "A climate shift over thousands of years is not a spring event."
     ]
    }
+  },
+  {
+   "id": "env-natural-disruptions-16",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "About 20,000 years ago, sea level was about 120 meters lower than today. What was a likely effect on land animals?",
+   "options": [
+    "They could cross exposed land between areas now separated by sea",
+    "They had less land to live on than they have today",
+    "They were cut off on islands more often than today",
+    "They were not affected, because sea level matters only to fish"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With so much water held in glaciers, shallow sea floor was exposed as dry land. Land animals could walk between places that are separated by water today.",
+    "options": [
+     "Right: lower sea level exposed land and connected areas.",
+     "Lower sea level exposed more land, not less.",
+     "Lower seas joined islands to mainlands. Rising seas are what cut land areas off.",
+     "Changes in sea level move coastlines, which changes habitat on land as well."
+    ]
+   }
   }
  ]
 }

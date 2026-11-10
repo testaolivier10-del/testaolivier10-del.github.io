@@ -650,6 +650,32 @@
     },
     "model": "Managers could return some water to the lake bed and plant native shrubs on the exposed areas, which reduces dust because wet or covered soil cannot be lifted by the wind."
    }
+  },
+  {
+   "id": "env-co2-particulates-16",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which natural event adds both carbon dioxide and particulate matter to the air?",
+   "options": [
+    "Sea spray drying over the ocean",
+    "A forest fire started by lightning",
+    "Trees releasing pollen in spring",
+    "Algae carrying out photosynthesis"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A wildfire burns plants, releasing the carbon they stored as CO2, and its smoke is particulate matter. A fire started by lightning is a natural source of both.",
+    "options": [
+     "Sea spray adds salt particles, but no CO2.",
+     "Right: burning releases CO2, and smoke is made of fine particles.",
+     "Pollen is a natural particulate. Releasing it adds no CO2.",
+     "Photosynthesis takes CO2 out of the air."
+    ]
+   }
   }
  ]
 }

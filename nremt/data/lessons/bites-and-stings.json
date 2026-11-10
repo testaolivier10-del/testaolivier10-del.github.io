@@ -1,0 +1,92 @@
+{
+  "id": "bites-and-stings",
+  "title": "Bites and stings",
+  "chapter": 35,
+  "section": "ch35-bites-stings",
+  "hook": "<p>A hiker was bitten on the ankle by a snake nobody got a good look at. His friend has already tied a belt above the bite, is holding a bag of ice on it, and asks whether he should cut the wound and suck the venom out.</p><p>Every one of those is an old remedy, and every one makes things worse. Most of the care for bites and stings is knowing what to leave alone.</p>",
+  "steps": [
+    {
+      "find": "A patient has been stung by a bee or wasp and the stinger is still in the skin.",
+      "act": "Remove the stinger and venom sac quickly. The method matters less than the speed. Remove rings and other jewelry from the affected limb and immobilize the limb."
+    },
+    {
+      "find": "The sting patient looks well so far.",
+      "act": "Keep watching. About 5 percent of people react allergically to stings, and anaphylaxis is the main danger. Reassess the airway, breathing and skin. If anaphylaxis develops, treat it at once as your protocol directs: epinephrine auto-injector, oxygen and care for shock."
+    },
+    {
+      "find": "A patient has been bitten by a snake that is venomous or was not identified.",
+      "act": "Treat it as serious. Find the fang marks, remove rings and anything else that could constrict as the limb swells, and immobilize the bitten limb. Position the limb as your protocol directs; the usual textbook teaching is not to raise it above the level of the heart. Keep the patient still and transport."
+    },
+    {
+      "find": "Someone wants to use ice, a tight band, cutting, suction or squeezing on a snakebite.",
+      "act": "Stop them. Never apply ice or a cold pack, never tie a tourniquet or tight band above the bite, never cut and suction the wound, never squeeze the site and never suck the venom out by mouth. None of these removes venom, and each can add injury."
+    },
+    {
+      "find": "A swimmer has been stung by a jellyfish or a Portuguese man-of-war.",
+      "act": "Lift or pull off any tentacles still on the skin without touching them with bare hands, and rinse with seawater (vinegar only where your protocol calls for it). Keep the patient's hands away from the mouth and eyes, then use nonscalding hot water to ease the pain."
+    },
+    {
+      "find": "A patient has a puncture wound from a stingray or a sea urchin.",
+      "act": "Soak the wound in nonscalding hot water, for 30 to 90 minutes if time allows, to ease the pain. Do not let the soak delay transport."
+    }
+  ],
+  "ideas": [
+    "<b>Stings:</b> the risk is anaphylaxis. Get the stinger out fast, by any method.",
+    "<b>Jewelry comes off early,</b> before swelling traps it, for stings and for snakebites.",
+    "<b>Snakebite deaths are rare</b> in the United States, fewer than 10 a year, and bee and wasp stings kill more people. Bites from unidentified or venomous snakes are still treated as serious.",
+    "<b>Snakebite care:</b> immobilize the limb, keep the patient still, transport. Limb height follows local protocol; most texts say no higher than the heart.",
+    "<b>Snakebite never list:</b> ice or cold packs, tourniquets or tight bands, cutting, suction, squeezing, sucking by mouth.",
+    "<b>Marine stings and punctures:</b> nonscalding hot water is the pain treatment. It must not delay transport."
+  ],
+  "misconception": {
+    "wrong": "For a snakebite, put ice on it, then cut the fang marks and suck out the venom.",
+    "right": "Ice, cutting, suction and squeezing do not remove venom and they damage tissue, and a tourniquet or tight band adds harm too. The care is to remove constricting items, immobilize the limb, keep the patient still and transport."
+  },
+  "check": [
+    {
+      "q": "A gardener was stung on the hand by a bee, and the stinger is still in the skin. What matters most about removing it?",
+      "options": [
+        "That it is pinched out slowly with tweezers",
+        "That it is left in until the hospital removes it",
+        "That it is removed quickly, by whatever method",
+        "That ice is applied for ten minutes beforehand"
+      ],
+      "correct": 2,
+      "why": "The stinger and venom sac should come out quickly, and the method matters less than the speed. Careful slow removal is tempting because of the old warning about squeezing the sac, but the delay matters more than the technique."
+    },
+    {
+      "q": "A man was bitten on the forearm by a snake he could not identify. After removing his watch and ring, how do you care for the arm?",
+      "options": [
+        "Immobilized, with the patient kept at rest",
+        "Kept moving so the swelling stays down",
+        "Hanging down with a tight band above the bite",
+        "Wrapped in cold packs and left free to move"
+      ],
+      "correct": 0,
+      "why": "The bitten limb is immobilized and the patient is kept at rest, because movement speeds the spread of venom. The tight band is the tempting old remedy, but tourniquets and bands are harmful in snakebite, and cold packs are on the never list too."
+    },
+    {
+      "q": "Which action is appropriate for a patient with a suspected venomous snakebite?",
+      "options": [
+        "Applying a cold pack to slow the venom's spread",
+        "Squeezing the site to push the venom back out",
+        "Making small cuts over the fang marks and suctioning",
+        "Removing rings and bracelets from the bitten limb"
+      ],
+      "correct": 3,
+      "why": "Constricting items are removed because the limb will swell. Cold, squeezing, and cutting with suction are all on the never list: none removes venom and each can add injury. The cold pack is the most tempting of these because it feels harmless."
+    },
+    {
+      "q": "A wader stepped on a stingray and has a painful puncture wound on the foot. What eases the pain, and what is the limit on using it?",
+      "options": [
+        "An ice water soak, for as long as it takes",
+        "A nonscalding hot water soak that does not delay transport",
+        "A vinegar soak, repeated every ten minutes",
+        "A tight pressure wrap, left on until the hospital"
+      ],
+      "correct": 1,
+      "why": "A stingray or sea urchin puncture is soaked in nonscalding hot water, for 30 to 90 minutes if time allows, but the soak must not delay transport. Ice is the tempting choice for pain, but heat is what the notes call for with these injuries."
+    }
+  ],
+  "summary": "<p>For insect stings the danger is anaphylaxis: remove the stinger and venom sac quickly by any method, take off jewelry, immobilize the limb, and watch closely for anaphylaxis. Snakebite deaths are rare, but a bite from a venomous or unidentified snake is treated as serious: find the fang marks, remove constricting items, immobilize the limb, keep the patient still and transport. Never use ice, a tourniquet, cutting, suction or squeezing. For jellyfish and man-of-war stings, tentacles are removed without bare hands, the area is rinsed with seawater (vinegar per local protocol) and nonscalding hot water is used for pain; stingray and sea urchin punctures are soaked in nonscalding hot water without delaying transport.</p>"
+}

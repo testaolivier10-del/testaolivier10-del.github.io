@@ -60,14 +60,16 @@
   }
   function gridSvg(g, o){
     o = o || {};
-    var out = [], st = g.k < 22 ? 2 : 1, x, y;
+    // steps that keep lines at least 7px and numbers at least 26px apart, however far the window zooms out (a path to y = −30 put a number every 10px)
+    var stepFor = function(px){ var c = [1, 2, 5, 10, 20, 50, 100, 200, 500]; for(var i = 0; i < c.length; i++) if(c[i] * g.k >= px) return c[i]; return 1000; };
+    var out = [], un = stepFor(7), st = Math.max(un, g.k < 22 ? 2 : 1), x, y;
     out.push('<rect class="vm-panel" x="' + r1(g.box.x0) + '" y="' + r1(g.box.y0) + '" width="' + r1(g.box.w) + '" height="' + r1(g.box.h) + '" rx="8"/>');
     var lines = [];
-    for(x = Math.ceil(g.X[0]); x <= g.X[1]; x++) lines.push('<line' + (x === 0 ? ' class="vm-ax"' : x % st ? ' class="vm-minor"' : '') + ' x1="' + r1(g.sx(x)) + '" y1="' + r1(g.box.y0) + '" x2="' + r1(g.sx(x)) + '" y2="' + r1(g.box.y0 + g.box.h) + '"/>');
-    for(y = Math.ceil(g.Y[0]); y <= g.Y[1]; y++) lines.push('<line' + (y === 0 ? ' class="vm-ax"' : y % st ? ' class="vm-minor"' : '') + ' x1="' + r1(g.box.x0) + '" y1="' + r1(g.sy(y)) + '" x2="' + r1(g.box.x0 + g.box.w) + '" y2="' + r1(g.sy(y)) + '"/>');
+    for(x = Math.ceil(g.X[0] / un) * un; x <= g.X[1]; x += un) lines.push('<line' + (x === 0 ? ' class="vm-ax"' : x % st ? ' class="vm-minor"' : '') + ' x1="' + r1(g.sx(x)) + '" y1="' + r1(g.box.y0) + '" x2="' + r1(g.sx(x)) + '" y2="' + r1(g.box.y0 + g.box.h) + '"/>');
+    for(y = Math.ceil(g.Y[0] / un) * un; y <= g.Y[1]; y += un) lines.push('<line' + (y === 0 ? ' class="vm-ax"' : y % st ? ' class="vm-minor"' : '') + ' x1="' + r1(g.box.x0) + '" y1="' + r1(g.sy(y)) + '" x2="' + r1(g.box.x0 + g.box.w) + '" y2="' + r1(g.sy(y)) + '"/>');
     out.push('<g class="vm-grid">' + lines.join('') + '</g>');
     if(o.labels !== false){
-      var lab = [], ls = g.k < 30 ? 2 : 1;
+      var lab = [], ls = Math.max(g.k < 30 ? 2 : 1, stepFor(26));
       for(x = Math.ceil(g.X[0] + 0.4); x <= g.X[1] - 0.4; x++) if(x && x % ls === 0) lab.push('<text x="' + r1(g.sx(x)) + '" y="' + r1(clamp(g.sy(0) + 14, g.box.y0 + 12, g.box.y0 + g.box.h - 4)) + '" text-anchor="middle">' + F(x, 0) + '</text>');
       for(y = Math.ceil(g.Y[0] + 0.4); y <= g.Y[1] - 0.4; y++) if(y && y % ls === 0) lab.push('<text x="' + r1(clamp(g.sx(0) - 5, g.box.x0 + 14, g.box.x0 + g.box.w)) + '" y="' + r1(g.sy(y) + 4) + '" text-anchor="end">' + F(y, 0) + '</text>');
       out.push('<g class="vm-tk">' + lab.join('') + '</g>');

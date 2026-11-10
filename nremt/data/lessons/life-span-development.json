@@ -1,0 +1,110 @@
+{
+  "id": "life-span-development",
+  "title": "How patients change with age",
+  "chapter": 8,
+  "section": "ch8-lifespan",
+  "hook": "<p>Two calls in one shift. First, a 9-month-old with a heart rate of 130 and 30 breaths a minute, who screams the moment you lift her from her mother. Second, an 84-year-old who is confused, while his daughter shrugs: \"He's just old.\"</p><p>The baby's numbers would alarm you in an adult and are normal for her age, and her screaming is normal too. The man's confusion is the finding you cannot wave away. What counts as normal, and how you approach the patient, changes with every stage of life.</p>",
+  "steps": [
+    {
+      "find": "An infant has a heart rate and breathing rate far above adult values.",
+      "act": "Judge against the age, not against an adult. Infants normally run fast. They also breathe through the nose in the first weeks, breathe with the diaphragm so the belly moves more than the chest, and tire quickly in respiratory distress."
+    },
+    {
+      "find": "You look at the soft spot on top of an infant's head.",
+      "act": "Read it. A sunken fontanelle suggests dehydration. A bulging fontanelle in an infant who is not crying suggests increased pressure inside the skull."
+    },
+    {
+      "find": "An infant or toddler panics when you move them away from the parent.",
+      "act": "Keep the parent close, even holding the child. Separation anxiety is normal at this age and gets in the way of your assessment."
+    },
+    {
+      "find": "A preschooler is frightened and seems to think being sick is their fault.",
+      "act": "Be reassuring and keep explanations simple. Magical thinking is normal at this age, and a preschooler may believe an illness or injury is a punishment."
+    },
+    {
+      "find": "A school-age child wants to know what you are doing.",
+      "act": "Tell them, and involve them in their own care. Children of 6 to 12 can understand explanations."
+    },
+    {
+      "find": "A teenager gives short, guarded answers in front of parents or friends.",
+      "act": "Give them privacy. Adolescents may not answer honestly in front of others. Stay alert for signs of eating disorders, self-harm and depression."
+    },
+    {
+      "find": "An older adult is confused, or has a fast heart rate.",
+      "act": "Do not assume confusion is normal aging; look for a cause. A fast heart rate is tolerated less well in late adulthood, and the risk of falls is high."
+    }
+  ],
+  "ideas": [
+    "<b>Two things change with age:</b> physiologic development (the body, the vital signs, motor ability) and psychosocial development (trust, independence, identity).",
+    "<b>Eight stages:</b> infancy (birth to 1 year), toddler (12 to 36 months), preschool (3 to 5 years), school age (6 to 12), adolescence (13 to 18), early adulthood (19 to 40), middle adulthood (41 to 60) and late adulthood (61 and up).",
+    "<b>The trend to remember:</b> as age goes up, heart rate and breathing rate go down and blood pressure goes up. You need a feel for normal at each age, not every number.",
+    "<b>Infants grow fast.</b> Birth weight doubles by 6 months and triples by 12 months, and the head is about a quarter of the body weight.",
+    "<b>Fontanelles close with age:</b> the posterior by about 2 to 3 months, the anterior by 9 to 18 months.",
+    "<b>Newborn reflexes.</b> Moro: when startled, the arms fly out, the fingers spread, then grab. Palmar: grasps a finger placed in the palm. Rooting: turns toward a touch on the cheek. Sucking: starts sucking when the lips are stroked.",
+    "<b>Infant psychology.</b> Crying is the main way an infant communicates. Bonding is the infant's sense that its needs will be met, and a consistent, responsive environment builds trust.",
+    "<b>Puberty</b> is the point where CPR guidelines switch from pediatric to adult.",
+    "<b>Adults.</b> Physical condition peaks between 19 and 26, and accidents are a leading cause of death in early adulthood. Middle adulthood brings vision changes, cholesterol and cancer concerns, and menopause. Late adulthood brings a less efficient heart, declining lungs and a slower metabolism."
+  ],
+  "misconception": {
+    "wrong": "Confusion is just part of getting old, so in an elderly patient it is not an important finding.",
+    "right": "Confusion is never assumed to be normal for age. In an older adult it is treated as a change in mental status that needs a cause, the same as in any other patient."
+  },
+  "check": [
+    {
+      "q": "A quiet, sleeping 5-month-old has a bulging anterior fontanelle. What does this suggest?",
+      "options": [
+        "Dehydration from fluid loss",
+        "Normal growth for this age",
+        "Increased pressure inside the skull",
+        "A fontanelle that is about to close"
+      ],
+      "correct": 2,
+      "why": "A bulging fontanelle in an infant who is not crying suggests increased intracranial pressure. Dehydration is the tempting mix-up: it makes the fontanelle sunken, not bulging."
+    },
+    {
+      "q": "How do normal vital signs change from infancy to late adulthood?",
+      "options": [
+        "Heart rate and breathing rate fall; blood pressure rises",
+        "Heart rate and breathing rate rise; blood pressure falls",
+        "Heart rate, breathing rate and blood pressure all rise",
+        "Heart rate, breathing rate and blood pressure all fall"
+      ],
+      "correct": 0,
+      "why": "As age increases, the heart rate and the breathing rate decrease and the blood pressure increases. That is why a rate that is normal for an infant would be alarming in an adult."
+    },
+    {
+      "q": "You need to assess a frightened 2-year-old with a fever. What is the best approach?",
+      "options": [
+        "Take the child to the ambulance alone so the parent cannot interfere",
+        "Explain each step in detail and ask the child for permission",
+        "Ask the parent to wait outside until you are finished",
+        "Keep the parent close and assess the child on the parent's lap"
+      ],
+      "correct": 3,
+      "why": "Separation anxiety is normal in toddlers and interferes with assessment, so the parent stays close. Detailed explanations suit a school-age child; a 2-year-old is not ready for them."
+    },
+    {
+      "q": "A 15-year-old with abdominal pain gives vague answers while her mother stands beside her. What should you do?",
+      "options": [
+        "Direct all of your questions to the mother",
+        "Find a way to speak with the patient in private",
+        "Tell the patient she must answer in front of her mother",
+        "Skip the history and rely on the physical exam"
+      ],
+      "correct": 1,
+      "why": "Privacy is critical with adolescents, who may not answer in front of parents or friends. Asking the mother instead is tempting, but she may not know the answers and the patient stays silent."
+    },
+    {
+      "q": "You startle a newborn, and the baby throws both arms out, spreads the fingers and then grabs. Which reflex is this?",
+      "options": [
+        "The rooting reflex",
+        "The palmar reflex",
+        "The Moro reflex",
+        "The sucking reflex"
+      ],
+      "correct": 2,
+      "why": "The Moro reflex is the startle response: arms out, fingers spread, then a grab. The palmar reflex is the grasp when a finger is placed in the palm, with no startle involved."
+    }
+  ],
+  "summary": "<p>Patients change in two ways with age: the body and its vital signs, and the mind and its social needs. Across the eight stages of life the heart rate and breathing rate fall and the blood pressure rises, so normal depends on age. Infants breathe fast, through the nose and with the belly, and their fontanelles are a window on dehydration and intracranial pressure. Keep parents close to infants and toddlers, reassure preschoolers in simple words, explain things to school-age children, give adolescents privacy and watch for self-harm and eating disorders. In older adults, never write confusion off as age, and remember that a fast heart rate is poorly tolerated and falls are common.</p>"
+}

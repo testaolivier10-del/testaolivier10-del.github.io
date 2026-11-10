@@ -497,6 +497,32 @@
      "Right: r-selected insects rebound quickly; K-like birds, raising few young, take longer to recover."
     ]
    }
+  },
+  {
+   "id": "env-r-k-selection-16",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "An albatross pair raises one chick every two years, and both parents feed it for months. The birds first breed at about ten years old. How is this species best described?",
+   "options": [
+    "Mainly K-selected",
+    "Mainly r-selected",
+    "Neither, because it is a bird",
+    "r-selected, because it lives at sea"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Few offspring, long parental care and late breeding are K-selected traits. Such a species grows slowly and recovers slowly from losses.",
+    "options": [
+     "Right: heavy investment in very few young.",
+     "r-selected species have many offspring, give little care and mature early.",
+     "The terms describe reproductive strategies in any group of organisms.",
+     "Where a species lives does not set its strategy. Its pattern of reproduction does."
+    ]
+   }
   }
  ]
 }

@@ -69,6 +69,8 @@
     var groups = { ppc: document.createElement('div'), trade: document.createElement('div') };
     Object.keys(groups).forEach(function(k){ groups[k].className = 'pt-group'; ctl.appendChild(groups[k]); });
     var xSl = T.slider({ label: 'Robots made', min: 0, max: 70, step: 5, value: 40, onInput: function(v){ st.x = v / 10; st.free = null; touch(); update(false); } });
+    // The main control: on a phone the studio keeps it on screen (it sat under the fold, with the curve scrolled away once reached).
+    xSl.el.setAttribute('data-ls-primary', '');
     groups.ppc.appendChild(xSl.el);
     var evBox = document.createElement('div');
     evBox.innerHTML = '<p class="pt-lbl">What happens</p><div class="pt-events">' + PT.PPC_EVENTS.map(function(e){ return '<button type="button" class="bt-btn pt-ev" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '<button type="button" class="bt-btn pt-ev" data-ev="reset">Start over</button></div>';

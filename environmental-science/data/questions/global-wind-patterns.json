@@ -478,6 +478,32 @@
     },
     "model": "Air heated at the equator rises, cools and drops its rain, then the dry air moves toward the poles high up, so near 30° N it sinks and warms, which causes clouds to evaporate and leaves the land dry."
    }
+  },
+  {
+   "id": "env-global-wind-patterns-16",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Air rises at the equator, flows toward the poles high up, sinks near 30° and returns along the surface. What is this loop called?",
+   "options": [
+    "The Coriolis cell",
+    "The polar cell",
+    "The Hadley cell",
+    "The jet stream"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The Hadley cell is the loop of air between the equator and about 30° in each hemisphere. Its rising air makes the wet tropics, and its sinking air makes the dry belt near 30°.",
+    "options": [
+     "The Coriolis effect is the turning of moving air by Earth’s rotation. It is not a cell.",
+     "The polar cell lies between about 60° and the pole.",
+     "Right: the loop from 0° to about 30°.",
+     "A jet stream is a fast, narrow wind high in the atmosphere, not a loop of rising and sinking air."
+    ]
+   }
   }
  ]
 }

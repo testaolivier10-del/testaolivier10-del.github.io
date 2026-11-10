@@ -433,6 +433,32 @@
    "why": {
     "correct": "The change is H⁺(aq) + OH⁻(aq) → H₂O(l). Hydroxide is used up, water forms, and the spectators follow their sources."
    }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Nitrous acid, HNO₂, donates a proton to a water molecule. Which pair of products forms?",
+   "options": [
+    "H₂NO₂⁺ and OH⁻",
+    "NO₂⁻ and H₃O⁺",
+    "NO₂⁻ and OH⁻",
+    "HNO₃ and H₂"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The acid loses H⁺ and becomes its conjugate base, NO₂⁻. The water molecule gains the H⁺ and becomes its conjugate acid, H₃O⁺. Atoms and charge balance: HNO₂ + H₂O → NO₂⁻ + H₃O⁺.",
+    "options": [
+     "That would be water donating a proton to HNO₂. Here HNO₂ is the donor.",
+     "Right: one proton moves from HNO₂ to H₂O, so one product is 1− and the other is 1+.",
+     "The total charge would go from 0 to 2−, and the proton would have nowhere to go. Water accepts the proton and becomes H₃O⁺.",
+     "A proton transfer moves one H⁺. It does not add oxygen to the acid or release hydrogen gas."
+    ]
+   }
   }
  ]
 }

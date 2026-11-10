@@ -1,0 +1,105 @@
+{
+  "id": "altered-mental-status-and-diabetes",
+  "title": "Altered mental status and diabetes",
+  "chapter": 22,
+  "section": "ch22-ams-diabetes",
+  "hook": "<p>Police call you for a \"drunk\" man at a bus stop. He is slurring his words, staggering and pushing people away. His skin is pale, cold and wet with sweat. On his wrist is a bracelet that reads DIABETIC.</p><p>He may not have had a drink all day. A brain that runs out of sugar looks a lot like a brain full of alcohol, and one of the two can be fixed in minutes with a tube of glucose.</p>",
+  "steps": [
+    {
+      "find": "A patient is not acting right: anxious, confused, combative, sleepy or unresponsive.",
+      "act": "Start with safety, because a patient with altered mental status can be unpredictable. Do the primary assessment with hypoxia, CO<sub>2</sub> retention and shock in mind, and establish the AVPU level early. Refine it later with a Glasgow Coma Scale score."
+    },
+    {
+      "find": "The patient cannot give you a clear history.",
+      "act": "Interview family and bystanders, review the medications, and look for medical alert jewelry or an insulin pump."
+    },
+    {
+      "find": "The patient has altered mental status and may be diabetic.",
+      "act": "Check the blood glucose, generally with your own meter. Below 70 mg/dL is the usual threshold for hypoglycemia (some protocols use 60). Treat the low number together with the symptoms."
+    },
+    {
+      "find": "The onset was sudden and the skin is cold, pale and clammy.",
+      "act": "Suspect hypoglycemia. If the patient has a history of diabetes, has an altered mental status and is awake enough to swallow safely, give oral glucose per protocol."
+    },
+    {
+      "find": "The onset was slow, over days. The skin is warm, red and dry, the breathing is deep and rapid, and the breath may smell fruity.",
+      "act": "Suspect hyperglycemia: diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS). You do not need to tell the two apart, because your care is the same: support the airway and breathing and transport."
+    },
+    {
+      "find": "The patient becomes drowsy or loses consciousness while you are giving oral glucose.",
+      "act": "Stop the glucose, protect the airway and call for ALS. Nothing goes in the mouth of a patient who cannot swallow safely."
+    }
+  ],
+  "ideas": [
+    "<b>Altered mental status</b> ranges from mild anxiety to unconsciousness and is always a serious finding. Causes are structural (such as a head injury), chemical (such as toxins) or metabolic (such as a lack of oxygen or glucose).",
+    "<b>The brain needs oxygen, glucose and water.</b> A shortage of any one causes rapid and serious changes in mental status.",
+    "<b>Insulin</b> lets glucose cross into most cells. Brain cells take up glucose without it. <b>Type 1 diabetes:</b> the pancreas makes no insulin, so the patient must take it. <b>Type 2:</b> the cells do not use insulin properly; managed with diet, oral medications and sometimes insulin.",
+    "<b>Hypoglycemia is fast; hyperglycemia is slow.</b> Low sugar: sudden onset, cold, pale, clammy skin. High sugar: days to weeks, warm, red, dry skin, deep rapid breathing, sometimes a fruity breath odor.",
+    "<b>Causes of hypoglycemia:</b> too much insulin or oral medication, not eating, heavy exercise, vomiting a meal, or a raised metabolic rate.",
+    "<b>Low glucose is more dangerous than high.</b> Giving glucose helps a hypoglycemic patient and does no meaningful harm to a hyperglycemic one, so when you are unsure, giving it is the safer choice.",
+    "<b>Below about 50 mg/dL</b> the mental status is often so depressed that the patient cannot take oral glucose safely.",
+    "<b>Both low and high blood sugar can look like intoxication.</b> Always consider a diabetic cause behind apparent drunkenness."
+  ],
+  "misconception": {
+    "wrong": "You must know whether the sugar is high or low before giving oral glucose, because glucose could badly hurt a patient whose sugar is already high.",
+    "right": "A dose of oral glucose does no meaningful harm to a hyperglycemic patient and can rescue a hypoglycemic one. When the picture fits and the patient can swallow safely, giving glucose is the safer default."
+  },
+  "check": [
+    {
+      "q": "A patient with diabetes is confused, pale and sweaty. He is awake, follows commands and can swallow. His glucose is 54 mg/dL. What do you do?",
+      "options": [
+        "Give oral glucose per protocol",
+        "Withhold glucose until ALS arrives",
+        "Help him take his own insulin",
+        "Give him water and recheck in 15 minutes"
+      ],
+      "correct": 0,
+      "why": "He meets all three of the usual criteria: a history of diabetes, an altered mental status and the ability to swallow safely. Insulin would push the glucose even lower, and water does nothing for it."
+    },
+    {
+      "q": "Which set of findings points to hyperglycemia and not hypoglycemia?",
+      "options": [
+        "Sudden onset; cold, pale, clammy skin",
+        "Sudden onset after a skipped lunch; shakiness",
+        "Onset over several days; warm, dry skin; deep, rapid breathing",
+        "Onset over minutes after exercise; sweating"
+      ],
+      "correct": 2,
+      "why": "Hyperglycemia develops slowly, over days to weeks, with warm, red, dry skin and deep, rapid breathing, sometimes with a fruity breath odor. Sudden onset with cold, clammy skin is the picture of hypoglycemia."
+    },
+    {
+      "q": "You are squeezing oral glucose between the cheek and gum of a hypoglycemic patient when she becomes unresponsive. What do you do first?",
+      "options": [
+        "Give the rest of the tube quickly",
+        "Give her sips of juice to wash it down",
+        "Sit her up and keep going more slowly",
+        "Stop the glucose and protect her airway"
+      ],
+      "correct": 3,
+      "why": "Oral glucose is only for a patient who is awake enough to swallow safely. Once she loses consciousness, anything in the mouth is an aspiration risk, so you stop and secure the airway. Finishing the dose is tempting because she needs sugar, but she now needs ALS to give it another way."
+    },
+    {
+      "q": "Police ask you to check a man they believe is drunk. He is staggering and slurring, with cool, sweaty skin and no smell of alcohol. What should you do early?",
+      "options": [
+        "Let police take him to sleep it off",
+        "Check his blood glucose",
+        "Give him coffee and watch him",
+        "Restrain him face down for safety"
+      ],
+      "correct": 1,
+      "why": "Both hypoglycemia and hyperglycemia can mimic intoxication, so a diabetic cause is always considered behind apparent drunkenness. A glucose check takes seconds and can find a problem you can treat on the spot."
+    },
+    {
+      "q": "The brain's wakefulness center depends on three things. A shortage of any one causes rapid altered mental status. What are they?",
+      "options": [
+        "Oxygen, insulin and sodium",
+        "Glucose, insulin and water",
+        "Oxygen, glucose and water",
+        "Oxygen, protein and calcium"
+      ],
+      "correct": 2,
+      "why": "The reticular activating system needs oxygen, glucose and water. Insulin is the tempting wrong choice, but brain cells take up glucose without insulin."
+    }
+  ],
+  "summary": "<p>Altered mental status is always serious and has structural, chemical and metabolic causes, with lack of oxygen and lack of glucose high on the list. After safety and a primary assessment, gather the history from others and check the blood glucose. Hypoglycemia is sudden, with cold, pale, clammy skin; hyperglycemia is slow, with warm, dry skin and deep, rapid breathing. Oral glucose goes to the patient with a history of diabetes and altered mental status who can swallow safely, and it stops the moment the patient cannot. When unsure, glucose is the safer default, because low sugar is the more dangerous of the two.</p>"
+}

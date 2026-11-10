@@ -253,6 +253,11 @@ with one rubric line per point and full-credit samples.
       layout (#116) in the merge, and `check-console` gained a psychology practice flow (and answers a "Make it
       specific" item, which made the environmental science flow fail when one came first).
     - Budgets unchanged by the pass (every `check-weight` budget passes).
+14. (2026-11-10, tool audit) **Hands-on pass through the ten trainers** against the body map bar, with every
+    finding fixed in the tools' own files and nothing removed: `docs/tool-audit-2026-11.md` (ratings, fixes, what
+    is still open on phones, two rebuild candidates for the owner: development, social influence). One science
+    change, the conditioning lab's spontaneous recovery model, is logged for review in needs-author
+    `tool-audit-2026-11`.
 
 ## 9. Open items for the owner
 

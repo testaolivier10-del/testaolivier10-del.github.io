@@ -503,6 +503,32 @@
     },
     "model": "The school could compost the food scraps in a school garden, which reduces landfill waste because microbes break the food down with oxygen into humus instead of making methane in a landfill."
    }
+  },
+  {
+   "id": "env-waste-reduction-16",
+   "unit": "unit-8",
+   "topic": "waste-reduction",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which set of materials is suited to composting?",
+   "options": [
+    "Food scraps and yard trimmings",
+    "Glass bottles and steel cans",
+    "Plastic bags and foam cups",
+    "Batteries and old phones"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Composting lets microbes break down organic waste, such as food scraps and yard trimmings, into a material that improves soil.",
+    "options": [
+     "Right: organic matter decays into compost.",
+     "Glass and metal do not decay. They are recycled.",
+     "These plastics do not break down in a compost pile.",
+     "E-waste holds toxic metals and needs special handling."
+    ]
+   }
   }
  ]
 }

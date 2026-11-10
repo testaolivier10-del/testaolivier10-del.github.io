@@ -1,0 +1,92 @@
+{
+  "id": "blood-disorders-and-sickle-cell",
+  "title": "Blood disorders and sickle cell disease",
+  "chapter": 28,
+  "section": "ch28-hematologic",
+  "hook": "<p>A 76-year-old woman tripped on a rug and bumped her head on a door frame. No loss of consciousness, a small bruise, and she feels fine. She would rather not go to the hospital. On the kitchen counter is a bottle of warfarin.</p><p>That bottle changes the call. In a patient whose blood does not clot normally, a minor bump can cause serious bleeding inside the skull. This lesson covers the blood problems an EMT needs to recognize: blood thinners, anemia and sickle cell disease.</p>",
+  "steps": [
+    {
+      "find": "You are assessing any trauma patient, even one with a minor-looking injury.",
+      "act": "Ask specifically whether the patient takes a blood thinner. Patients may not think to mention it."
+    },
+    {
+      "find": "The patient takes an anticoagulant (warfarin, Eliquis, Xarelto, Lovenox) or an antiplatelet drug (aspirin, Plavix).",
+      "act": "Treat even a minor injury, such as a small bump to the head, as carrying a real risk of bleeding. Encourage transport, watch for changes and notify the hospital early."
+    },
+    {
+      "find": "A patient with sudden blood loss, from trauma or a gastrointestinal bleed, shows signs of shock quickly.",
+      "act": "This is acute anemia: red blood cells were lost fast. Treat for shock and transport promptly."
+    },
+    {
+      "find": "A patient is pale and tired, with pale inner eyelids, and has a history of heavy periods or slow gastrointestinal blood loss.",
+      "act": "This is chronic anemia. The body has adapted, so signs of shock appear only late. Do not be reassured by vital signs that still look acceptable."
+    },
+    {
+      "find": "A patient with sickle cell disease has severe pain in the arms, legs, chest or abdomen.",
+      "act": "Recognize a sickle cell pain crisis: misshapen red cells are clumping and blocking small vessels. Take the pain seriously and keep assessing for other complications."
+    },
+    {
+      "find": "The same patient is short of breath, has chest pain and a low oxygen saturation, or shows stroke signs.",
+      "act": "Suspect acute chest syndrome or a stroke from blocked vessels. Give oxygen for hypoxia and transport promptly. Never write it off as \"just another pain crisis.\""
+    }
+  ],
+  "ideas": [
+    "<b>Clotting has two parts:</b> platelets gather first and fast; clotting factors, proteins made in the liver, then build the stable clot.",
+    "A <b>coagulopathy</b> is any clotting abnormality. For the EMT the important form is blood that clots too slowly, most often because of a prescribed blood thinner.",
+    "<b>Anticoagulants</b> block clotting factors: warfarin (Coumadin), Eliquis, Xarelto, Lovenox. <b>Antiplatelet agents</b> block platelet clumping: aspirin, Plavix.",
+    "<b>Anemia</b> is too few red blood cells. Acute anemia shows shock fast; chronic anemia shows pallor and fatigue, with shock late.",
+    "<b>Sickle cell disease</b> is an inherited hemoglobin defect. The misshapen cells clump and block small vessels (sludging), causing pain crises, acute chest syndrome, stroke, priapism and jaundice.",
+    "<b>Sickle cell trait is not the disease.</b> People with the trait usually have no complications and a normal lifespan."
+  ],
+  "misconception": {
+    "wrong": "A patient with sickle cell disease who calls again for pain is having a routine pain crisis and nothing more needs to be looked for.",
+    "right": "The pain is real and severe, and during a crisis the risk of infection, stroke and acute chest syndrome is high at the same time. Every presentation gets a full assessment, with particular attention to breathing, oxygen saturation and stroke signs."
+  },
+  "check": [
+    {
+      "q": "An 80-year-old man who takes Eliquis bumped his head on a cabinet. He is alert, has a small bruise and wants to stay home. What is the main concern?",
+      "options": [
+        "A skull fracture from the low-energy impact",
+        "A blood clot forming because of the medication",
+        "Bleeding inside the skull despite the minor mechanism",
+        "An allergic reaction to the anticoagulant"
+      ],
+      "correct": 2,
+      "why": "In a patient on a blood thinner, significant intracranial bleeding can follow a mechanism that looks trivial. Eliquis slows clotting; it does not cause clots, so the clot option has the drug's effect backwards."
+    },
+    {
+      "q": "Which pair is made up of one anticoagulant and one antiplatelet agent?",
+      "options": [
+        "Warfarin and aspirin",
+        "Aspirin and Plavix",
+        "Xarelto and Lovenox",
+        "Eliquis and Lovenox"
+      ],
+      "correct": 0,
+      "why": "Warfarin is an anticoagulant, which inhibits clotting factors; aspirin is an antiplatelet agent, which inhibits platelet aggregation. Eliquis, Xarelto and Lovenox are all anticoagulants, and aspirin and Plavix are both antiplatelet agents, so the other pairs come from a single group."
+    },
+    {
+      "q": "A 19-year-old with sickle cell disease has leg pain, and now also chest pain, shortness of breath and an oxygen saturation of 88%. What should you suspect?",
+      "options": [
+        "An ordinary pain crisis that needs no extra concern",
+        "Sickle cell trait showing its usual symptoms",
+        "Chronic anemia that has developed slowly",
+        "Acute chest syndrome, a serious complication"
+      ],
+      "correct": 3,
+      "why": "Shortness of breath, chest pain and hypoxia in a patient with sickle cell disease point to acute chest syndrome. Calling it just another pain crisis is the mistake to avoid. Sickle cell trait usually causes no complications at all."
+    },
+    {
+      "q": "A woman with months of heavy menstrual bleeding is pale and tired with pale conjunctiva. Her pulse and blood pressure are near normal. What does this suggest?",
+      "options": [
+        "Acute anemia, with shock expected within minutes",
+        "Chronic anemia, where shock signs appear only late",
+        "A coagulopathy caused by an antiplatelet drug",
+        "A sickle cell crisis blocking the small vessels"
+      ],
+      "correct": 1,
+      "why": "Slow blood loss produces chronic anemia: pallor, fatigue and pale conjunctiva, with signs of shock only late because the body has had time to compensate. Acute anemia comes from sudden loss and produces shock rapidly."
+    }
+  ],
+  "summary": "<p>Blood clots through platelets first, then clotting factors made in the liver. Blood thinners interfere with one or the other: anticoagulants such as warfarin, Eliquis, Xarelto and Lovenox, and antiplatelet agents such as aspirin and Plavix. Ask every trauma patient about them, treat even a minor head bump as a bleeding risk, and tell the hospital early. Anemia is a shortage of red blood cells: sudden loss brings shock fast, slow loss brings pallor and fatigue with shock late. Sickle cell disease is inherited; its misshapen cells block small vessels and cause pain crises, acute chest syndrome, stroke, priapism and jaundice. Sickle cell trait is not the disease, and no crisis is ever \"just another pain crisis.\"</p>"
+}

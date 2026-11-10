@@ -503,6 +503,32 @@
      "The species present change, not the traits of one species."
     ]
    }
+  },
+  {
+   "id": "env-succession-16",
+   "unit": "unit-2",
+   "topic": "succession",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In an old field, pine seedlings grow well in open sun but die in the shade under mature pines. Oak seedlings survive in that shade. What will most likely happen over the next century?",
+   "options": [
+    "Grasses will return and replace the pines",
+    "The pines will stay, since they arrived first",
+    "Oaks will slowly replace the pines",
+    "The forest will go back to bare rock"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Later stages of succession are taken over by species that tolerate shade. Oak seedlings can grow under the pine canopy and pine seedlings cannot, so oaks fill the gaps as the old pines die.",
+    "options": [
+     "Sun-loving grasses cannot grow under a closed canopy.",
+     "Arriving first does not help if a species cannot replace itself in its own shade.",
+     "Right: shade-tolerant trees take over from sun-loving ones.",
+     "Soil gets deeper and richer during succession. It does not disappear."
+    ]
+   }
   }
  ]
 }

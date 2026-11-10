@@ -540,6 +540,32 @@
      "Percents and decimals are both fine; the problem is what the interval describes."
     ]
    }
+  },
+  {
+   "id": "stat-ci-one-proportion-claims-16",
+   "unit": "unit-3",
+   "topic": "ci-one-proportion-claims",
+   "type": "single",
+   "practice": "4.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "From a random sample of 800 renters in a city, a 95% confidence interval for the proportion of all the city's renters who own a pet is from 0.31 to 0.37. A student writes, \"If we took many random samples of 800 renters, 95% of them would have a sample proportion between 0.31 and 0.37.\" What is wrong? (Invented data.)",
+   "why": {
+    "correct": "Other samples give other intervals. The level says that about 95% of those intervals would capture the true proportion of all the city's renters who own a pet.",
+    "options": [
+     "The level is about how often the method's intervals capture the true proportion, not about where other sample proportions land.",
+     "The interval is about one population proportion, not about individual renters.",
+     "This interval is fixed and so is $p$: it either captures $p$ or it does not. The 95% belongs to the method.",
+     "Right: each new sample has its own $\\hat{p}$ and its own interval, and about 95% of those intervals capture $p$."
+    ]
+   },
+   "options": [
+    "Nothing: that is what the 95% confidence level means",
+    "It should say 95% of the renters, not 95% of the samples",
+    "It should say there is a 95% probability that $p$ is in this interval",
+    "The 95% counts intervals that capture $p$, not $\\hat{p}$ values inside this one"
+   ],
+   "correct": 3
   }
  ]
 }

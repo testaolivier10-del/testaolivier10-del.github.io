@@ -458,6 +458,32 @@
      "Time helps slow but favored reactions, not unfavored ones."
     ]
    }
+  },
+  {
+   "id": "chem-coupled-reactions-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "coupled-reactions",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Reaction A has ΔG° = +20 kJ/mol and Reaction B has ΔG° = −50 kJ/mol. They share no reactants, products or intermediates. Both are run in the same flask. Will Reaction B drive Reaction A?",
+   "options": [
+    "Yes: the two ΔG° values add up to −30 kJ/mol, so both reactions are now favored",
+    "No: with no shared species the reactions cannot be added into one overall reaction",
+    "Yes: the energy released by B is taken up directly by the reactants of A",
+    "No: a reaction with a positive ΔG° can never be made to happen by any means"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Coupling works only when the two reactions share a species, so that they add into one overall equation with one overall ΔG°. Two unrelated reactions in one flask each keep their own ΔG°, and A stays unfavored.",
+    "options": [
+     "The values can be added only for reactions that combine into one overall reaction through a shared species.",
+     "Right: sharing the flask is not enough. A product of one must be a reactant of the other.",
+     "Free energy is not handed from one reaction to another. Coupling works through a shared species, such as an intermediate that the favored step uses up.",
+     "An unfavored reaction can be driven by coupling, by electrical energy or by light. It just cannot be driven by an unconnected reaction."
+    ]
+   }
   }
  ]
 }

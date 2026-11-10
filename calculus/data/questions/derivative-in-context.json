@@ -533,6 +533,32 @@
      "That multiplies by 12 instead of by the 2-day change in time."
     ]
    }
+  },
+  {
+   "id": "calc-derivative-in-context-16",
+   "unit": "unit-4",
+   "topic": "derivative-in-context",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "The temperature of an oven is $T(t)$ degrees Fahrenheit, $t$ minutes after it is switched off. At $t = 12$ the temperature is falling at 3 degrees Fahrenheit per minute. Which equation says this?",
+   "options": [
+    "$T(12) = -3$",
+    "$T'(12) = 3$",
+    "$T'(12) = -3$",
+    "$T'(-3) = 12$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A rate of change of $T$ at one time is a value of $T'$, and a falling temperature has a negative rate: $T'(12) = -3$, in degrees Fahrenheit per minute.",
+    "options": [
+     "$T(12)$ is a temperature, in degrees Fahrenheit, not a rate. The rate at $t = 12$ is $T'(12)$.",
+     "A falling temperature has a negative rate of change, so the sign is wrong.",
+     "The rate at $t = 12$ is $T'(12)$, and falling makes it negative.",
+     "The input of $T'$ is the time, 12 minutes. The rate, $-3$, is the output."
+    ]
+   }
   }
  ]
 }

@@ -483,6 +483,32 @@
      }
     }
    }
+  },
+  {
+   "id": "psy-nervous-system-16",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Mia picks up an ice cube and feels the cold in her fingertips. Which division of the nervous system carries this sensation from her skin toward the spinal cord and brain?",
+   "options": [
+    "The sympathetic division",
+    "The parasympathetic division",
+    "The somatic nervous system",
+    "The central nervous system"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The somatic nervous system carries sensations from the skin, muscles and joints to the central nervous system, and carries commands out to the skeletal muscles.",
+    "options": [
+     "The sympathetic division arouses the body for action. It does not carry touch or temperature from the skin.",
+     "The parasympathetic division calms the body and lets digestion resume.",
+     "Right: the somatic nervous system links the skin and skeletal muscles with the central nervous system.",
+     "The central nervous system is the brain and spinal cord, where the message arrives. Nerves outside it carry the message in."
+    ]
+   }
   }
  ]
 }

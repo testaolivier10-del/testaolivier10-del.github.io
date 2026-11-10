@@ -140,6 +140,7 @@
       bandsOf.forEach(function(pc){ if(pc.dist === 'steady') return; out.push('<rect class="pg-band is-' + pc.dist + '" x="' + r1(gxf(pc.a)) + '" y="' + r1(g.gT) + '" width="' + r1(gxf(pc.b) - gxf(pc.a)) + '" height="' + r1(g.gB - g.gT) + '"/>'); });
       var dense = g.gR - g.gL > 420, xt = []; for(var j = 0; j <= (dense ? 8 : 4); j++) xt.push(j * TAU / (dense ? 8 : 4));
       var yt = P.ticks(lo, hi, Math.max(3, Math.round((g.gB - g.gT) / 50)));
+      if(yt.length < 3) yt = P.ticks(lo, hi, 6);   // a range such as −4.6 to 4.6 would keep only 0: an axis with no scale
       out.push('<g class="pg-ggrid">' + xt.map(function(t){ return '<line x1="' + r1(gxf(t)) + '" y1="' + r1(g.gT) + '" x2="' + r1(gxf(t)) + '" y2="' + r1(g.gB) + '"/>'; }).join('') +
         yt.map(function(v){ return '<line' + (Math.abs(v) < 1e-12 ? ' class="pg-zero"' : '') + ' x1="' + r1(g.gL) + '" y1="' + r1(gyf(v)) + '" x2="' + r1(g.gR) + '" y2="' + r1(gyf(v)) + '"/>'; }).join('') + '</g>');
       out.push('<g class="pg-gtk">' + xt.map(function(t){ return '<text x="' + r1(gxf(t)) + '" y="' + r1(g.gB + 16) + '" text-anchor="middle">' + PG.angleText(t) + '</text>'; }).join('') +

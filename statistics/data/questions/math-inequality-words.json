@@ -283,6 +283,140 @@
     "At most 4",
     "At least 4"
    ]
+  },
+  {
+   "id": "stat-math-inequality-words-12",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A count X can be 0 to 8. Which values are \"more than 2 but fewer than 6\"?",
+   "why": {
+    "correct": "\"More than 2\" and \"fewer than 6\" both leave out their boundary: $2 < X < 6$, the values 3, 4 and 5.",
+    "options": [
+     "That includes both boundaries, which is \"from 2 to 6, inclusive\".",
+     "Right: $2 < X < 6$ leaves out 2 and 6.",
+     "\"More than 2\" does not include 2.",
+     "\"Fewer than 6\" does not include 6."
+    ]
+   },
+   "options": [
+    "2, 3, 4, 5, 6",
+    "3, 4, 5",
+    "2, 3, 4, 5",
+    "3, 4, 5, 6"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "stat-math-inequality-words-13",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Ten households own 0, 0, 1, 1, 2, 2, 2, 3, 4 and 6 pets. What part of the households own fewer than 2 pets?",
+   "why": {
+    "correct": "\"Fewer than 2\" means 0 or 1: four households, so $\\frac{4}{10} = 0.4$.",
+    "options": [
+     "That is \"at most 2\": it adds the three households with exactly 2 pets.",
+     "That is the part with more than 2 pets (3, 4 and 6).",
+     "That is \"at least 2\", the other six households.",
+     "Right: the values 0, 0, 1 and 1 are fewer than 2, so $\\frac{4}{10} = 0.4$."
+    ]
+   },
+   "options": [
+    "0.7",
+    "0.3",
+    "0.6",
+    "0.4"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "stat-math-inequality-words-14",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A count X can be 0 to 10. Which event is made of exactly the values that \"at least 4\" leaves out?",
+   "why": {
+    "correct": "\"At least 4\" is 4 to 10, so it leaves out 0, 1, 2 and 3: $X \\le 3$, or \"fewer than 4\".",
+    "options": [
+     "That includes 4, which \"at least 4\" already includes.",
+     "That is 0, 1 and 2. It misses 3, which \"at least 4\" also leaves out.",
+     "Right: \"at least 4\" is 4 through 10, and what remains is 0 through 3.",
+     "Those values, 5 through 10, are all inside \"at least 4\"."
+    ]
+   },
+   "options": [
+    "At most 4",
+    "Fewer than 3",
+    "At most 3",
+    "More than 4"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "stat-math-inequality-words-15",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "multi",
+   "practice": "3.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these phrases include the boundary number 4 itself? Select all that apply.",
+   "why": {
+    "correct": "\"At least\", \"at most\", \"no more than\" and \"no fewer than\" include the boundary. \"More than\" and \"fewer than\" leave it out.",
+    "options": [
+     "Right: at least 4 is $X \\ge 4$.",
+     "More than 4 is $X > 4$: it starts at 5.",
+     "Right: no more than 4 is $X \\le 4$.",
+     "Fewer than 4 is $X < 4$: it stops at 3.",
+     "Right: at most 4 is $X \\le 4$.",
+     "Right: no fewer than 4 is $X \\ge 4$."
+    ]
+   },
+   "options": [
+    "At least 4",
+    "More than 4",
+    "No more than 4",
+    "Fewer than 4",
+    "At most 4",
+    "No fewer than 4"
+   ],
+   "correct": [0, 2, 4, 5]
+  },
+  {
+   "id": "stat-math-inequality-words-16",
+   "unit": "skills-math",
+   "topic": "math-inequality-words",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Ten students read 1, 2, 3, 3, 4, 5, 5, 7, 8 and 9 books. How many more students are counted by \"at least 3\" than by \"more than 3\"?",
+   "why": {
+    "correct": "The two phrases differ only at the boundary: \"at least 3\" also counts the two students who read exactly 3 books (8 students against 6).",
+    "options": [
+     "Right: 8 students read at least 3 books and 6 read more than 3. The difference is the two students at exactly 3.",
+     "For a count the boundary matters: two students read exactly 3 books.",
+     "That is the number who read more than 3 books, not the difference.",
+     "That is the number who read at least 3 books, not the difference."
+    ]
+   },
+   "options": [
+    "2",
+    "0",
+    "6",
+    "8"
+   ],
+   "correct": 0
   }
  ]
 }

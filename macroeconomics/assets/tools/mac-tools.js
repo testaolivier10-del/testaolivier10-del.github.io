@@ -958,9 +958,15 @@
        nobody sees (development and social influence did this first). */
     var rb = target.getBoundingClientRect();
     if(window.IntersectionObserver && (rb.bottom > window.innerHeight || rb.top < 0)){
-      var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); setTimeout(function(){ now(); }, 120); } }, { threshold: 1 });
+      var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ stopWait(); setTimeout(function(){ now(); }, 120); } }, { threshold: 1 });
       io.observe(target);
-      return { dismiss: function(){ io.disconnect(); }, place: function(){} };
+      /* A student who starts using the tool while the tip is still waiting never needs it: without this a
+         half-hidden Start button, once tapped, got its "Start here" tip in the middle of the task. */
+      var WAIT = ['click', 'keydown', 'input', 'change'];   // not pointerdown: a finger scrolling the page to reach the control must not cancel its tip
+      var used = function(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; if(e && e.target && e.target.closest && !e.target.closest('.ls-stage, .ls-dock')) return; stopWait(); };
+      var stopWait = function(){ io.disconnect(); WAIT.forEach(function(t){ s.root.removeEventListener(t, used, true); }); };
+      WAIT.forEach(function(t){ s.root.addEventListener(t, used, true); });
+      return { dismiss: stopWait, place: function(){} };
     }
     return now();
     function now(){

@@ -533,6 +533,41 @@
    "why": {
     "correct": "$R'(x) = 40 - 0.2x$, so $R'(150) = 40 - 30 = 10$ dollars per ticket: near 150 tickets, one more ticket adds about 10 dollars of revenue."
    }
+  },
+  {
+   "id": "calc-rates-in-context-16",
+   "unit": "unit-4",
+   "topic": "rates-in-context",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "The depth of water at a dock is $d(t) = 6 + 2\\sin\\left(\\frac{\\pi t}{6}\\right)$ meters, $t$ hours after midnight. Find $d'(6)$ exactly, with units.",
+   "numeric": {
+    "answer": "-pi/3",
+    "unit": "meters per hour",
+    "askUnit": true,
+    "units": [
+     "m/h",
+     "m/hr",
+     "meters/hour",
+     "meters per hr",
+     "meter per hour"
+    ],
+    "mistakes": [
+     {
+      "value": -2,
+      "why": "The chain rule multiplies by the derivative of the inside, $\\frac{\\pi}{6}$: $d'(t) = 2 \\cdot \\frac{\\pi}{6}\\cos\\left(\\frac{\\pi t}{6}\\right)$."
+     },
+     {
+      "value": "pi/3",
+      "why": "$\\cos\\pi = -1$, so the rate is negative: at $t = 6$ the depth is falling."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$d'(t) = 2\\cos\\left(\\frac{\\pi t}{6}\\right) \\cdot \\frac{\\pi}{6} = \\frac{\\pi}{3}\\cos\\left(\\frac{\\pi t}{6}\\right)$. At $t = 6$: $d'(6) = \\frac{\\pi}{3}\\cos\\pi = -\\frac{\\pi}{3}$ meters per hour, about $-1.047$. The depth is falling at 6 a.m."
+   }
   }
  ]
 }

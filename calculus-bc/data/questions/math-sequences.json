@@ -386,6 +386,84 @@
      "The terms are positive and, after $n = 2$, shrink toward 0."
     ]
    }
+  },
+  {
+   "id": "cbc-math-sequences-14",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\sum_{k=0}^{3} 3\\left(\\frac{1}{2}\\right)^k$.",
+   "numeric": {
+    "answer": "45/8",
+    "mistakes": [
+     {
+      "value": "21/8",
+      "why": "The sum starts at $k = 0$, and $\\left(\\frac{1}{2}\\right)^0 = 1$, so the first term is 3. Starting at $k = 1$ leaves it out."
+     },
+     {
+      "value": "15/8",
+      "why": "Each term carries the factor 3: $3\\left(1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8}\\right)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Four terms, $k = 0, 1, 2, 3$: $3 + \\frac{3}{2} + \\frac{3}{4} + \\frac{3}{8} = 3 \\cdot \\frac{15}{8} = \\frac{45}{8}$. The constant 3 factors out of the sum."
+   }
+  },
+  {
+   "id": "cbc-math-sequences-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which sequence diverges?",
+   "options": [
+    "$a_n = \\left(\\frac{2}{3}\\right)^n$",
+    "$a_n = \\left(-\\frac{1}{2}\\right)^n$",
+    "$a_n = 1^n$",
+    "$a_n = (1.01)^n$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$r^n$ approaches 0 when $|r| < 1$, stays at 1 when $r = 1$, and grows without bound when $r > 1$. Since $1.01 > 1$, the terms $(1.01)^n$ grow without bound, slowly at first, so the sequence diverges.",
+    "options": [
+     "$\\left|\\frac{2}{3}\\right| < 1$, so the terms shrink toward 0: the sequence converges to 0.",
+     "The signs alternate, but the sizes $\\left(\\frac{1}{2}\\right)^n$ shrink to 0, so the sequence converges to 0.",
+     "Every term is 1, so the sequence converges to 1.",
+     "A base larger than 1 gives terms that grow without bound: $(1.01)^{1000} \\approx 20{,}959$."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-sequences-16",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sequences",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which sum has the same terms as $\\sum_{k=1}^{5} \\frac{1}{k + 2}$?",
+   "options": [
+    "$\\sum_{k=3}^{7} \\frac{1}{k + 2}$",
+    "$\\sum_{k=3}^{7} \\frac{1}{k}$",
+    "$\\sum_{k=0}^{4} \\frac{1}{k + 2}$",
+    "$\\sum_{k=3}^{7} \\frac{1}{k - 2}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The given sum is $\\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} + \\frac{1}{6} + \\frac{1}{7}$. Raising both limits by 2 means lowering the index inside the formula by 2: $k + 2$ becomes $k$, so the sum is $\\sum_{k=3}^{7} \\frac{1}{k}$.",
+    "options": [
+     "The limits moved but the formula did not: this is $\\frac{1}{5} + \\cdots + \\frac{1}{9}$.",
+     "$k = 3, \\ldots, 7$ gives $\\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} + \\frac{1}{6} + \\frac{1}{7}$, the same five terms.",
+     "Starting at $k = 0$ with the same formula gives $\\frac{1}{2} + \\cdots + \\frac{1}{6}$.",
+     "The index was lowered by 4 in all, not 2: this is $1 + \\frac{1}{2} + \\cdots + \\frac{1}{5}$."
+    ]
+   }
   }
  ]
 }

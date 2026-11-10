@@ -525,6 +525,32 @@
      "The model has four stages."
     ]
    }
+  },
+  {
+   "id": "env-population-transition-16",
+   "unit": "unit-3",
+   "topic": "population-transition",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country’s death rate is low and its birth rate is now falling toward it, so its population growth is slowing. Which stage of the demographic transition is it in?",
+   "options": [
+    "Stage 1, preindustrial",
+    "Stage 2, transitional",
+    "Stage 4, postindustrial",
+    "Stage 3, industrial"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In stage 3 the death rate is already low and the birth rate falls, so the gap between them narrows and growth slows.",
+    "options": [
+     "In stage 1 both rates are high and the population hardly grows.",
+     "In stage 2 the death rate falls while the birth rate stays high, so growth is fastest.",
+     "In stage 4 both rates are low and about equal, so growth is near zero.",
+     "Right: a falling birth rate with a low death rate marks stage 3."
+    ]
+   }
   }
  ]
 }

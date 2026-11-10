@@ -1,0 +1,89 @@
+{
+  "id": "ems-public-health-evidence",
+  "title": "EMS in public health and evidence-based practice",
+  "chapter": 1,
+  "section": "ch1-public-health",
+  "hook": "<p>For years, nearly every patient with chest pain got high-flow oxygen. It felt like the safe thing to do, and everyone had always done it. Then researchers followed what actually happened to those patients, and found that oxygen a patient does not need does not help, and too much of it may make a heart attack or a stroke turn out worse.</p><p>That is evidence-based practice: care changes when the evidence says it should. This lesson covers how EMS decides what works, what EMS does for the health of a whole community, and what professional behavior looks like on a call.</p>",
+  "steps": [
+    {
+      "find": "A treatment has \"always been done this way,\" and someone asks whether it actually helps.",
+      "act": "Treat it as a question for evidence. Evidence-based techniques are those supported by scientific evidence, not by tradition alone."
+    },
+    {
+      "find": "A new practice is being considered for your service.",
+      "act": "Follow the process: form a hypothesis, review the literature, evaluate the evidence together with the Medical Director, and adopt the practice only if the evidence supports it."
+    },
+    {
+      "find": "You read about a new technique in an EMS magazine.",
+      "act": "Weigh the source. Peer-reviewed research has been vetted by other experts before it is published in a journal, which makes it more reliable. EMS magazines are informative but do not publish original, peer-reviewed research."
+    },
+    {
+      "find": "On a call you notice loose rugs and poor lighting in an older patient's home.",
+      "act": "That is public health work. Identifying fall hazards is part of injury prevention, and EMS is well placed for it because it works inside patients' homes and communities."
+    },
+    {
+      "find": "You meet a patient for the first time.",
+      "act": "Be professional: neat uniform, introduce yourself and your crew, reassure the patient. If a partner needs correcting, do it privately and constructively, never in front of the patient."
+    }
+  ],
+  "ideas": [
+    "<b>Public health</b> is the system that looks after the health of a whole population: clean water, vaccination, prenatal care and the like.",
+    "<b>EMS contributes through:</b> injury prevention for older adults (fall hazards, blood pressure clinics, the File of Life) and for the young (car-seat clinics, bicycle helmet programs), public vaccination programs, and disease surveillance.",
+    "<b>Disease surveillance:</b> trends in call volume are an early warning of influenza, opioid overdoses and mass-casualty events.",
+    "<b>Mobile Integrated Health Care,</b> also called community paramedicine, is the name for this expanded role.",
+    "<b>Patient outcomes</b> are the measure that matters: long-term results, not simply survival to the hospital.",
+    "<b>Oxygen is the classic example.</b> It is not a \"wonder drug,\" and excess oxygen can worsen the outcome of a heart attack or a stroke.",
+    "<b>EMS research is hard:</b> the environment is unstable, patient encounters are brief, data collection is disjointed, and consent from critically ill patients raises ethical issues."
+  ],
+  "misconception": {
+    "wrong": "A treatment worked if the patient was still alive when we reached the hospital.",
+    "right": "Survival to the hospital is a short-term result. Evidence-based practice judges care by patient outcomes, meaning long-term results. A treatment can look fine at the hospital door and still leave patients worse off later, which is what was found with oxygen given to patients who did not need it."
+  },
+  "check": [
+    {
+      "q": "In evidence-based practice, what is the measure that matters most when judging a treatment?",
+      "options": [
+        "Whether crews find it easy to perform",
+        "How long it has been in the protocols",
+        "Whether the patient survives to the hospital",
+        "The patient's long-term outcome"
+      ],
+      "correct": 3,
+      "why": "Patient outcomes mean long-term results, not simply survival to the hospital. Survival to the hospital is the tempting answer, but a patient can arrive alive and still do worse in the long run."
+    },
+    {
+      "q": "Which source is the most reliable place to find evidence for a new EMS practice?",
+      "options": [
+        "A peer-reviewed journal article",
+        "A feature in an EMS magazine",
+        "A story from an experienced partner",
+        "A post in an online EMS group"
+      ],
+      "correct": 0,
+      "why": "Peer-reviewed research has been vetted by other experts before publication. EMS magazines are informative, but they do not publish original, peer-reviewed research, and a partner's story is tradition, not evidence."
+    },
+    {
+      "q": "An EMS agency notices a sharp rise in overdose calls in one neighborhood over a week and reports it. Which public health role is this?",
+      "options": [
+        "Injury prevention",
+        "Disease surveillance",
+        "Vaccination programs",
+        "Prenatal care"
+      ],
+      "correct": 1,
+      "why": "Trends in call volume are an early warning of influenza, opioid overdoses and mass-casualty events, which is disease surveillance. Injury prevention is the tempting choice, but it means programs such as fall-hazard checks and car-seat clinics."
+    },
+    {
+      "q": "Your partner makes a small mistake on a call that does not put the patient at risk. What is the professional way to correct it?",
+      "options": [
+        "Point it out at once so the patient knows you caught it",
+        "Say nothing to anyone and fix it quietly yourself",
+        "Speak to your partner privately and constructively",
+        "Report it to the hospital staff in front of the patient"
+      ],
+      "correct": 2,
+      "why": "Correction is given privately and constructively, never in front of the patient. Criticizing a partner in front of the patient is the unprofessional behavior in the chapter's example, and saying nothing means the mistake is never addressed."
+    }
+  ],
+  "summary": "<p>EMS is part of public health, the system that looks after the health of a whole population. Agencies run injury prevention for older adults and young people, take part in vaccination programs, and act as an early warning through disease surveillance; the expanded role is called Mobile Integrated Health Care or community paramedicine. Evidence-based practice means using what scientific evidence supports, judged by long-term patient outcomes, adopted with the Medical Director only when the evidence supports it, and drawn from peer-reviewed research. Oxygen is the classic example: it is not a wonder drug, and too much can worsen a heart attack or stroke. Professionalism means a neat appearance, introducing yourself, reassuring the patient and correcting colleagues in private.</p>"
+}

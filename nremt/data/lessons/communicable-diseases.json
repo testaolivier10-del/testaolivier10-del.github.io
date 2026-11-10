@@ -1,0 +1,117 @@
+{
+  "id": "communicable-diseases",
+  "title": "Communicable diseases and protecting yourself",
+  "chapter": 24,
+  "section": "ch24-communicable",
+  "hook": "<p>A thin man in a shelter has been coughing for weeks. He has fevers, soaks his sheets with sweat at night and has lost weight. Your partner tosses you a surgical mask.</p><p>That is the wrong mask. Cough, fever, night sweats and weight loss is the picture of tuberculosis, and a surgical mask does not filter the small particles that carry it. Knowing how each disease travels tells you what to wear, what to do after an exposure, and when you do not need to worry.</p>",
+  "steps": [
+    {
+      "find": "A patient has a long-running cough with fever, night sweats and weight loss.",
+      "act": "Suspect tuberculosis and put on an N-95 respirator, not a surgical mask, because a surgical mask does not filter the small particles that carry the organism."
+    },
+    {
+      "find": "A patient has an abrupt fever, a severe headache, a neck too stiff to bring the chin to the chest, light sensitivity, and small skin spots that do not blanch when pressed.",
+      "act": "Suspect meningococcal meningitis, which can lead to shock, brain damage and deafness. Protect yourself from the patient's respiratory secretions with Standard Precautions and a mask as your protocol directs. Unprotected close contact with those secretions, such as mouth-to-mouth ventilation or suctioning without a mask, may call for preventive antibiotics, so report the exposure."
+    },
+    {
+      "find": "A patient is nauseated with yellow skin and eyes.",
+      "act": "Think hepatitis. Hepatitis A spreads by the fecal-oral route; hepatitis B and C spread through blood and other body fluids. Many people with hepatitis C have no symptoms at all, which is one reason precautions are used with everyone."
+    },
+    {
+      "find": "You are stuck by a needle or splashed with blood from a patient who may have HIV.",
+      "act": "Wash the site first, then report it right away so you can be evaluated for postexposure prophylaxis (PEP), a 28-day course of antiviral medication. PEP is started as soon as possible, ideally within hours, and never later than 72 hours."
+    },
+    {
+      "find": "You learn that a patient you transported has active tuberculosis.",
+      "act": "Report the exposure and get a baseline TB test, with a repeat test later."
+    },
+    {
+      "find": "A patient looks perfectly ordinary.",
+      "act": "Use Standard Precautions anyway. Resistant organisms such as MRSA, VRE and C. diff are carried by patients you will often not know are carrying them, which is why precautions apply to every patient and not to selected ones."
+    }
+  ],
+  "ideas": [
+    "<b>Bacteria</b> are living single cells that reproduce on their own. <b>Viruses</b> are not cells and can only reproduce inside a host.",
+    "<b>Infectious is not the same as communicable.</b> Infectious means caused by a microbe; communicable means it can spread from person to person. Lyme disease is infectious (bacteria from a tick bite) but not communicable: the patient cannot give it to you.",
+    "<b>The hepatitis viruses.</b> A: fecal-oral, usually full recovery, vaccine available. B: blood and body fluids, can become chronic with cirrhosis and liver cancer, vaccine available. C: blood and body fluids, mainly shared needles, often silent for years, no vaccine, but curable with treatment.",
+    "<b>HIV</b> spreads through needle sharing, unprotected sex and from mother to newborn. Treatment can push the amount of virus so low that the risk of passing it on is virtually eliminated.",
+    "<b>Latent TB</b> means infected, without symptoms and not contagious. About 90 percent of these patients never develop active disease.",
+    "<b>Signs that name the disease:</b> a barking cough in a child (croup), coughing fits with a whoop on breathing in (pertussis), painful swelling of the parotid glands (mumps), an itchy rash with fever (chickenpox).",
+    "<b>Influenza</b> spreads by droplets and by contact. Antiviral medicine works best when started within 48 hours of the first symptoms, so early recognition matters.",
+    "<b>Lyme disease</b> often shows a bull's-eye rash and responds to antibiotics, best when started early. In most cases a tick has to stay attached for more than 24 hours to pass it on, so a tick found and removed promptly is much less likely to cause infection.",
+    "<b>New diseases in the news:</b> check what you hear against the CDC or your local health department, not news reports."
+  ],
+  "misconception": {
+    "wrong": "A surgical mask on me is enough protection from any patient with a cough.",
+    "right": "When tuberculosis is suspected you need an N-95 respirator. A surgical mask does not filter the small airborne particles that carry the TB organism."
+  },
+  "check": [
+    {
+      "q": "A patient has had a cough for a month with fever, night sweats and weight loss. What respiratory protection do you need?",
+      "options": [
+        "A surgical mask on yourself",
+        "An N-95 respirator on yourself",
+        "A face shield without a mask",
+        "No mask if you wear gloves"
+      ],
+      "correct": 1,
+      "why": "These are the signs of tuberculosis, which calls for an N-95 respirator. A surgical mask is the tempting choice, but it does not filter the small particles that carry the organism."
+    },
+    {
+      "q": "A 19-year-old college student has a sudden fever, a severe headache, a stiff neck and small purple spots that do not fade when pressed. What do you suspect?",
+      "options": [
+        "Influenza",
+        "Mumps",
+        "Hepatitis A",
+        "Meningococcal meningitis"
+      ],
+      "correct": 3,
+      "why": "Abrupt fever, severe headache, nuchal rigidity and petechiae together point to meningococcal meningitis. Influenza also brings fever and aches, but not a rigid neck or a rash that does not blanch."
+    },
+    {
+      "q": "You are stuck with a used needle from a patient known to have HIV. After washing the site, what matters most about postexposure prophylaxis?",
+      "options": [
+        "Starting it as soon as possible, within 72 hours at the latest",
+        "Waiting for your own blood test before starting",
+        "Starting it one week after the exposure",
+        "Taking a single dose at the end of the shift"
+      ],
+      "correct": 0,
+      "why": "PEP works by timing: begin as soon as possible, ideally within hours, and never later than 72 hours. It is a 28-day course, not a single dose, and waiting for test results wastes the window."
+    },
+    {
+      "q": "Why is Lyme disease described as infectious but not communicable?",
+      "options": [
+        "It is caused by a toxin and no microbe is involved",
+        "It spreads between people only through blood",
+        "It is caused by bacteria but does not spread person to person",
+        "It spreads through the air but only outdoors"
+      ],
+      "correct": 2,
+      "why": "Infectious means caused by a microbe, and Lyme disease is caused by bacteria delivered by a tick bite. Communicable means it passes from person to person, which Lyme disease does not."
+    },
+    {
+      "q": "Which statement about hepatitis C is correct?",
+      "options": [
+        "It spreads by the fecal-oral route and has a vaccine",
+        "It spreads by blood, has no vaccine, and can be cured",
+        "It spreads by airborne droplets and has a vaccine",
+        "It spreads by blood, has a vaccine, and cannot be treated"
+      ],
+      "correct": 1,
+      "why": "Hepatitis C spreads through blood and body fluids, mainly shared needles. There is no vaccine, but effective curative treatment exists. Fecal-oral spread with a vaccine describes hepatitis A."
+    },
+    {
+      "q": "Why are Standard Precautions used with every patient rather than only those who look sick?",
+      "options": [
+        "Because agency policy requires gloves for billing",
+        "Because all patients are assumed to have tuberculosis",
+        "Because precautions replace the need for vaccines",
+        "Because carriers of resistant organisms often cannot be identified"
+      ],
+      "correct": 3,
+      "why": "Organisms such as MRSA, VRE and C. diff, and infections such as hepatitis C, are often carried by patients with no sign of them. You cannot pick out who is carrying what, so the precautions go on for everyone."
+    }
+  ],
+  "summary": "<p>Infectious means caused by a microbe; communicable means it spreads between people. How a disease travels sets your protection: suspected tuberculosis (cough, fever, night sweats, weight loss) needs an N-95 respirator, and blood-borne infections such as hepatitis B, hepatitis C and HIV are the reason Standard Precautions apply to every patient. Abrupt fever, severe headache, a stiff neck and petechiae mean meningococcal meningitis. After a blood exposure, wash the site, report it and start PEP as soon as possible and no later than 72 hours; after a TB exposure, report it and get a baseline test and a repeat. For new diseases, trust the CDC and your health department over the news.</p>"
+}

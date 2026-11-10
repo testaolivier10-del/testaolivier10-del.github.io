@@ -1,0 +1,107 @@
+{
+  "id": "operating-the-ambulance-and-air-rescue",
+  "title": "Operating the ambulance and air rescue",
+  "chapter": 38,
+  "section": "ch38-operating",
+  "hook": "<p>You are driving to a reported stroke with lights and siren on. The light ahead is red. A car on the cross street has its windows up and music playing, and the driver is looking the other way. You have the legal right to go through that red light. That right will not stop the crash.</p><p>More EMTs are hurt in and around the ambulance than by any patient. This lesson covers what the law really allows, how to move and hand over a patient, and how to work safely around a helicopter.</p>",
+  "steps": [
+    {
+      "find": "You are responding to an emergency, or transporting a sick or injured patient, with warning devices on.",
+      "act": "The traffic-law exemptions apply, but only with proper use of the warning devices and with due regard for the safety of others. They never protect reckless driving, and they do not apply on nonemergency runs."
+    },
+    {
+      "find": "You are approaching traffic or an intersection with the siren on.",
+      "act": "Never assume a driver has heard you or will yield; drivers often do not notice an ambulance until it is within about 100 feet. Keep headlights on day and night, and use the full lighting package in emergency mode."
+    },
+    {
+      "find": "You are sent to a highway incident and another unit is already there.",
+      "act": "Stay off the highway and stage near an on-ramp until you are called in. If you go in, keep the ambulance on the same side of the road as the incident and avoid driving over debris and skid marks. Wear an ANSI safety vest and helmet; wear full turnout gear where extrication is under way."
+    },
+    {
+      "find": "The patient is on the stretcher and ready to move.",
+      "act": "Secure the patient before the move, with at least three straps: chest, hips or waist, and legs. Use the shoulder straps too when the stretcher has them. This includes a patient receiving CPR."
+    },
+    {
+      "find": "You are en route to the hospital.",
+      "act": "At least one EMT rides with the patient, and two is better. Notify the hospital by radio. Reassess vital signs every 5 minutes for an unstable patient and every 15 minutes for a stable one. Ask whether this transport really needs lights and siren; very few do."
+    },
+    {
+      "find": "You arrive at the hospital.",
+      "act": "Hand over care formally to hospital staff. Putting a patient in a bed and leaving without a handoff is abandonment, even when the patient is not an emergency."
+    },
+    {
+      "find": "A critical patient may need a helicopter.",
+      "act": "Request air rescue for high-priority patients. Set up a landing zone about 100 by 100 feet, on a slope under 8 degrees, clear of wires, towers, vehicles and loose objects. Approach the aircraft only when a flight crew member escorts you, and stay away from the tail rotor."
+    }
+  ],
+  "ideas": [
+    "<b>After a crash the law asks two things:</b> did you use due regard for others, and was this, to the best of your knowledge, a true emergency?",
+    "<b>The siren</b> is the most misused device on the ambulance.",
+    "<b>Lights and siren are overused.</b> They save little time, on average from under a minute to about 4 minutes, and they raise the risk of a crash. Only a small share of transports truly need them (the figure usually quoted is under 5%).",
+    "<b>Air rescue criteria:</b> shock; GCS under 10; head injury with altered mental status; chest trauma with respiratory distress; penetrating injury to a body cavity; amputation above the hand or foot; extensive burns; a pulse regained after cardiac arrest.",
+    "<b>Around the helicopter:</b> approach from the front, where the pilot can see you, never from the rear, and from the downhill side on a slope. Keep traffic and people well back (the notes give at least 100 feet for traffic and no smoking within 200 feet; flight services set their own distances).",
+    "<b>Marking the landing zone:</b> show the wind direction with a marker on the upwind side, using the lights or markers your flight service and local protocol call for."
+  ],
+  "misconception": {
+    "wrong": "With lights and siren on, I have the right of way, so other drivers are responsible for getting out of my path.",
+    "right": "Lights and siren ask for the right of way; they do not guarantee it. The exemptions depend on due regard for others' safety, and many drivers will not see or hear you until you are very close."
+  },
+  "check": [
+    {
+      "q": "An EMT drives through a red light at speed with lights and siren on and hits a car. Which statement about the law is correct?",
+      "options": [
+        "The EMT is protected because the warning devices were on",
+        "The exemptions do not cover driving without due regard for others",
+        "The other driver is at fault for failing to yield",
+        "The exemptions apply on any run, emergency or not"
+      ],
+      "correct": 1,
+      "why": "Emergency vehicle exemptions require due regard for the safety of others and never excuse reckless driving. Having the warning devices on is necessary but not enough, and the exemptions do not apply to nonemergency runs at all."
+    },
+    {
+      "q": "You are transporting a patient with chest pain whose blood pressure is falling. How often do you reassess vital signs?",
+      "options": [
+        "Every 15 minutes",
+        "Every 10 minutes",
+        "Every 5 minutes",
+        "Once, on arrival"
+      ],
+      "correct": 2,
+      "why": "An unstable patient is reassessed every 5 minutes. Every 15 minutes is the interval for a stable patient, and a falling blood pressure with chest pain is not stable."
+    },
+    {
+      "q": "You bring a stable patient to a busy emergency department for a scheduled evaluation. No nurse is free. What do you do?",
+      "options": [
+        "Stay with the patient until staff accept a handoff report",
+        "Place the patient in an empty bed and return to service",
+        "Leave your written report on the bed and go",
+        "Ask the patient's relative to tell the staff"
+      ],
+      "correct": 0,
+      "why": "Responsibility ends only with a formal transfer of care to hospital staff. Leaving a patient in a bed without a handoff is abandonment, and that holds for nonemergency patients too. A written report or a relative is not a handoff."
+    },
+    {
+      "q": "A medical helicopter has landed with its rotors turning. When may you walk toward it?",
+      "options": [
+        "As soon as the skids are on the ground",
+        "When you can approach from behind the tail",
+        "When the pilot switches off the landing light",
+        "When a flight crew member escorts you in"
+      ],
+      "correct": 3,
+      "why": "You approach a helicopter only with an escort from the flight crew, and you stay clear of the tail rotor at all times. The tail rotor is hard to see when it is spinning, so the rear of the aircraft is the most dangerous place to be."
+    },
+    {
+      "q": "You are the second ambulance sent to a crash on an interstate. The first unit is on scene and has not asked for you yet. Where do you go?",
+      "options": [
+        "Onto the shoulder across from the crash",
+        "Directly behind the first unit at the crash",
+        "Off the highway, staged near an on-ramp",
+        "Into the median with the emergency lights on"
+      ],
+      "correct": 2,
+      "why": "Units that are not first on scene stay off the highway and stage near an on-ramp until called. Extra vehicles on the road add risk without adding help, and parking across from the incident puts crews on foot across live lanes."
+    }
+  ],
+  "summary": "<p>The legal exemptions for an ambulance apply only on a true emergency response or transport, with the warning devices used properly and with due regard for others. Never assume a driver hears the siren. At a highway incident, later units stage off the road. Secure every patient to the stretcher before moving, ride with the patient, call the hospital, and reassess every 5 minutes if unstable and every 15 if stable. Few transports need lights and siren. End every call with a formal handoff; leaving without one is abandonment. Air rescue is for high-priority patients, the landing zone is about 100 by 100 feet on nearly level, clear ground, and you approach the helicopter only with a crew escort and never near the tail rotor.</p>"
+}

@@ -181,8 +181,8 @@ tab in `assets/site-chrome.js`. Rebuild both scripts after changing a course's t
 ## Question quality
 
 `docs/question-quality.md` is the status file: what the 2026-11 audit measured in every bank, what was fixed
-(NREMT reshuffle, honest "explained" wording, dealt choices on teacher printed tests, Env Sci length cues, tally
-fixes), live answer data and what is open. The analytics runs check question health (Project doc A3.9).
+(NREMT reshuffle, honest "explained" wording, NREMT per-option lines in `nremt/assets/option-whys.json`, dealt
+choices on teacher printed tests, Env Sci length cues, tally fixes), live answer data and what is open. The analytics runs check question health (Project doc A3.9).
 
 ## Analytics
 
@@ -205,6 +205,12 @@ Never paste a YouTube iframe into a page.
 
 `docs/tools-upgrade-2026-10.md` is the status file: the hands-on audit of every tool (`docs/tool-audit-2026-10.md`),
 the fixes for it, and three builds (NREMT exam item types and adaptive exam, ochem synthesis trainer, A&P 3D anatomy).
+
+## Making the site fuller (2026-11)
+
+`docs/fuller-2026-11.md` is the status file: what the 2026-11-10 round did (NREMT lessons and bank audit, deeper AP
+banks, precalculus figures, the tool audit of the four newer courses in `docs/tool-audit-2026-11.md`) and what is
+next (audit of the other banks, ochem per-option lines, tool rebuild mockups).
 
 ## Database backups
 

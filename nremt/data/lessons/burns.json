@@ -1,0 +1,108 @@
+{
+  "id": "burns",
+  "title": "Burns",
+  "chapter": 30,
+  "section": "ch30-burns",
+  "hook": "<p>A man is pulled from a kitchen fire. The burns on his forearms are red and blistered and he is in a lot of pain. But what should worry you most is his voice: it is hoarse, and there is soot around his nostrils.</p><p>The burn you can see is rarely what kills in the first hour. The airway is. After that, a burn is judged by how deep it is, how much of the body it covers and where it is, and those three things decide where the patient goes.</p>",
+  "steps": [
+    {
+      "find": "The patient is still in contact with the heat source, or clothing is smoldering.",
+      "act": "Make sure the scene is safe, then stop the burning process. Cool a fresh thermal burn with cool running water, per local protocol (first aid guidance is at least 10 minutes). Cooling a large burn risks hypothermia, so limit it and keep the patient warm. Never use ice."
+    },
+    {
+      "find": "The patient has a hoarse voice, stridor, soot around the nose or mouth, or singed nasal hair.",
+      "act": "Suspect an inhalation injury: the airway can swell shut. Complete the primary assessment, give oxygen, treat for shock and transport promptly."
+    },
+    {
+      "find": "You examine the burn itself.",
+      "act": "Classify the depth. Superficial: red and painful, epidermis only. Partial thickness: blisters and intense pain, into the dermis. Full thickness: charred, white or leathery and dry, sometimes painless in the center and painful at the edges."
+    },
+    {
+      "find": "You need to say how big the burn is.",
+      "act": "Estimate the body surface area with the Rule of Nines. In an adult each of these is 9%: head and neck, each arm, chest, abdomen, upper back, lower back with buttocks, the front of each leg and the back of each leg. The genitals are 1%."
+    },
+    {
+      "find": "The burn is assessed.",
+      "act": "Cover it with a dry sterile dressing. No ointments, sprays or butter, and do not break blisters. A cool wet dressing is only for a small isolated burn; over more than 10% of the body it risks hypothermia."
+    },
+    {
+      "find": "The burn is from a chemical.",
+      "act": "Brush off any dry chemical first, then flush with large amounts of flowing water for at least 20 minutes and keep flushing on the way. Do not try to neutralize it."
+    },
+    {
+      "find": "The burn is from electricity.",
+      "act": "Assume the source is still live until it is confirmed off. Look for at least 2 burn sites (entry and exit), have the AED ready, protect the spine if indicated, cover burns with dry sterile dressings and transport, because heart problems can appear late."
+    }
+  ],
+  "ideas": [
+    "<b>Depth:</b> superficial (epidermis), partial thickness (epidermis and dermis, blisters), full thickness (all layers, maybe deeper).",
+    "<b>Children and the Rule of Nines:</b> the head and neck count 18% and each leg 13.5%; the rest is counted as in an adult.",
+    "<b>Burn center criteria:</b> partial-thickness burns over more than 10% of the body; burns of the face, hands, feet, genitalia or a major joint; any full-thickness burn; electrical burns; inhalation burns; burns with other trauma; patients with special needs. Current American Burn Association criteria also list chemical burns.",
+    "<b>Acids and alkalis:</b> acids coagulate tissue, which tends to limit how deep they go (hydrofluoric acid is the exception and goes deep with little to see). Alkalis liquefy tissue, go deeper and need longer flushing.",
+    "<b>Radiation</b> causes burns at the time and radiation sickness later. Do not approach without proper protection and training.",
+    "<b>Dressing and bandage:</b> the dressing is the sterile layer on the wound; the bandage holds it and need not be sterile. Wrap from distal to proximal, not too tight or loose, no loose ends, and leave fingers and toes showing unless they are burned.",
+    "<b>Immersion and scald burns</b> raise the possibility of abuse, especially in children."
+  ],
+  "misconception": {
+    "wrong": "A burn that does not hurt in the middle is a mild burn.",
+    "right": "A full-thickness burn can be painless at its center because the nerve endings there have been destroyed. Lack of pain can mean the deepest kind of burn, and any full-thickness burn meets burn center criteria."
+  },
+  "check": [
+    {
+      "q": "An adult has burns covering the whole front of the chest and abdomen and all of one arm. Using the Rule of Nines, about how much of the body is burned?",
+      "options": [
+        "9%",
+        "18%",
+        "27%",
+        "36%"
+      ],
+      "correct": 2,
+      "why": "The chest is 9%, the abdomen is 9% and one whole arm is 9%, for 27%. Stopping at 18% leaves out one of the three regions."
+    },
+    {
+      "q": "A burn is charred and leathery in the middle, where the patient feels nothing, with painful blistered skin around the edge. How deep is the central area?",
+      "options": [
+        "Full thickness",
+        "Partial thickness",
+        "Superficial",
+        "Unburned skin"
+      ],
+      "correct": 0,
+      "why": "A full-thickness burn is charred, white or leathery and dry, and may be painless at the center because the nerves are destroyed, with pain at the edges. Blisters and intense pain mark a partial-thickness burn, which is what the surrounding ring is."
+    },
+    {
+      "q": "A worker has dry lime powder on his forearms and they are starting to burn. What do you do first?",
+      "options": [
+        "Flush right away with flowing water",
+        "Apply vinegar to neutralize the powder",
+        "Cover the arms with dry sterile dressings",
+        "Brush the dry powder off the skin"
+      ],
+      "correct": 3,
+      "why": "A dry chemical is brushed off first, then the area is flushed with copious flowing water for at least 20 minutes. Flushing first is tempting, but brushing removes most of the chemical before water touches it. Chemical burns are never neutralized."
+    },
+    {
+      "q": "A patient rescued from a house fire has a hoarse voice and singed nasal hair. The skin burns look small. What is the main concern?",
+      "options": [
+        "Infection of the small burned areas",
+        "An inhalation injury that threatens the airway",
+        "Hypothermia from loss of the skin",
+        "Pain from the superficial burns"
+      ],
+      "correct": 1,
+      "why": "Hoarseness, stridor, soot and singed nasal hair point to an inhalation injury, and airway swelling can become life-threatening. Infection matters later, but the airway is the immediate threat."
+    },
+    {
+      "q": "Which of these burns does not meet burn center criteria on its own?",
+      "options": [
+        "A partial-thickness burn of one palm",
+        "A full-thickness burn the size of a coin on the thigh",
+        "A superficial burn on the forearm from hot water",
+        "An electrical burn to the foot with an exit wound"
+      ],
+      "correct": 2,
+      "why": "A small superficial burn of the forearm meets none of the criteria. A partial-thickness burn of a hand, any full-thickness burn and any electrical burn does, whatever its size."
+    }
+  ],
+  "summary": "<p>Stop the burning, then look to the airway: hoarseness, stridor, soot and singed nasal hair mean possible inhalation injury. Classify burns by depth (superficial, partial thickness, full thickness) and by extent with the Rule of Nines, remembering a child's larger head and smaller legs. Know the burn center criteria. Cover thermal burns with dry sterile dressings; no ointment, no ice, no broken blisters. Cool a fresh burn with cool running water as local protocol allows, and keep the patient warm so a large burn does not lead to hypothermia. Chemical burns: brush off dry chemical, then flush with flowing water for at least 20 minutes. Electrical burns: assume the source is live, find entry and exit, keep the AED ready. Stay out of radiation scenes without protection and training.</p>"
+}

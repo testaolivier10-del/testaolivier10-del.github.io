@@ -396,6 +396,32 @@
      "That is where the particle started; the integral says it moved."
     ]
    }
+  },
+  {
+   "id": "cbc-vector-integrals-16",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "vector-integrals",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A particle has velocity $\\mathbf{v}(t) = \\left\\langle 3, 4t \\right\\rangle$. How far apart are its positions at $t = 0$ and $t = 2$?",
+   "numeric": {
+    "answer": 10,
+    "mistakes": [
+     {
+      "value": 14,
+      "why": "The change in position is $\\left\\langle 6, 8 \\right\\rangle$. Its magnitude is $\\sqrt{6^2 + 8^2}$, not $6 + 8$."
+     },
+     {
+      "value": "sqrt(73)",
+      "why": "That is the speed at $t = 2$, the magnitude of $\\mathbf{v}(2) = \\left\\langle 3, 8 \\right\\rangle$. Integrate each component first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The change in position is the integral of the velocity, one component at a time: $\\int_0^2 \\mathbf{v}(t)\\,dt = \\left\\langle \\int_0^2 3\\,dt, \\int_0^2 4t\\,dt \\right\\rangle = \\left\\langle 6, 8 \\right\\rangle$. Its magnitude is $\\sqrt{36 + 64} = 10$. That is the straight-line distance between the two positions."
+   }
   }
  ]
 }

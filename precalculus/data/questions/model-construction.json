@@ -481,6 +481,32 @@
      "$23 + 6 = 29$."
     ]
    }
+  },
+  {
+   "id": "pcalc-model-construction-16",
+   "unit": "unit-1",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A printer costs 300 dollars, and each printed page costs 0.05 dollars in ink. Which function gives the average cost per page, in dollars, after $n$ pages?",
+   "type": "single",
+   "options": [
+    "$A(n) = 300 + 0.05n$",
+    "$A(n) = \\frac{300 + 0.05n}{n}$",
+    "$A(n) = \\frac{300}{n}$",
+    "$A(n) = \\frac{n}{300 + 0.05n}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The total cost of $n$ pages is $300 + 0.05n$ dollars. The average cost per page divides the total by the number of pages: $A(n) = \\frac{300 + 0.05n}{n}$, a rational function.",
+    "options": [
+     "That is the total cost. The average per page divides it by $n$.",
+     "Total cost divided by the number of pages.",
+     "That spreads the printer's price over the pages but leaves out the ink, 0.05 dollars per page.",
+     "That is pages per dollar. Cost per page puts the cost on top."
+    ]
+   }
   }
  ]
 }

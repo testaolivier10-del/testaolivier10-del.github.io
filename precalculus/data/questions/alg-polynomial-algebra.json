@@ -258,6 +258,203 @@
      "$x^2 = 9$ gives $x = \\pm 3$, not $\\pm 9$."
     ]
    }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-10",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is $x^3 + 64$ written as a product?",
+   "type": "single",
+   "options": [
+    "$(x + 4)(x^2 + 4x + 16)$",
+    "$(x + 4)^3$",
+    "$(x + 4)(x^2 - 4x + 16)$",
+    "$(x - 4)(x^2 + 4x + 16)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sum of cubes with $a = x$ and $b = 4$: $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$, so $x^3 + 64 = (x + 4)(x^2 - 4x + 16)$. Multiplying back, the middle terms cancel.",
+    "options": [
+     "In a sum of cubes the middle term of the second factor is $-ab$: $-4x$, not $+4x$.",
+     "$(x + 4)^3 = x^3 + 12x^2 + 48x + 64$, which has two extra terms.",
+     "$(a + b)(a^2 - ab + b^2)$ with $a = x$, $b = 4$.",
+     "That is the difference of cubes, $x^3 - 64$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-11",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which polynomial does NOT factor with real numbers?",
+   "type": "single",
+   "options": [
+    "$x^2 - 16$",
+    "$x^2 + 16$",
+    "$x^2 + 8x + 16$",
+    "$x^2 - 16x$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$x^2 + 16$ is a sum of squares. It is at least $16$ for every real $x$, so it has no real zeros and no real factors.",
+    "options": [
+     "Difference of squares: $(x - 4)(x + 4)$.",
+     "A sum of squares has no real zeros, so it has no real factors.",
+     "A perfect square: $(x + 4)^2$.",
+     "Common factor: $x(x - 16)$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-12",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Multiply out $(3x - 2)^2$.",
+   "type": "expr",
+   "expr": {
+    "answer": "9x^2 - 12x + 4",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -3,
+     3
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "expanded"
+    },
+    "mistakes": [
+     {
+      "expr": "9x^2 + 4",
+      "why": "A square of a difference has a middle term: $(3x - 2)(3x - 2)$ gives $-6x - 6x = -12x$."
+     },
+     {
+      "expr": "9x^2 - 4",
+      "why": "$9x^2 - 4$ is $(3x - 2)(3x + 2)$. Here both factors are $3x - 2$, and $(-2)(-2) = +4$."
+     },
+     {
+      "expr": "9x^2 - 6x + 4",
+      "why": "The middle term appears twice: $3x \\cdot (-2)$ and $(-2) \\cdot 3x$, together $-12x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$(3x - 2)(3x - 2) = 9x^2 - 6x - 6x + 4 = 9x^2 - 12x + 4$."
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-13",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which expression is NOT a polynomial?",
+   "type": "single",
+   "options": [
+    "$4x^3 - x + 7$",
+    "$6 - x^5$",
+    "$\\frac{1}{2}x^4$",
+    "$x^2 + \\frac{3}{x}$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A polynomial is a sum of terms $ax^n$ with whole-number exponents $n$. $\\frac{3}{x}$ has the variable in a denominator, so $x^2 + \\frac{3}{x}$ is not a polynomial.",
+    "options": [
+     "Each term is a number times a whole-number power of $x$.",
+     "The order of the terms does not matter: this is $-x^5 + 6$.",
+     "A fraction as a coefficient is fine; the exponent $4$ is a whole number.",
+     "$\\frac{3}{x}$ divides by the variable, which a polynomial does not do."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-14",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "$x - 2$ is a factor of $p(x) = x^3 + kx - 6$. What is $k$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "$p(2) = 8 + 2k - 6 = 2 + 2k$. Setting this equal to $0$ gives $2k = -2$, so $k$ is negative."
+     },
+     {
+      "value": -7,
+      "why": "The factor $x - 2$ goes with the zero $x = 2$, not $x = -2$. Use $p(2) = 0$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "If $x - 2$ is a factor, then $p(2) = 0$: $8 + 2k - 6 = 0$, so $2k = -2$ and $k = -1$. Check: $x^3 - x - 6 = (x - 2)(x^2 + 2x + 3)$."
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-15",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student solves $x^3 = 4x$ by dividing both sides by $x$, gets $x^2 = 4$, and answers $x = 2$ or $x = -2$. What is wrong?",
+   "type": "single",
+   "options": [
+    "Dividing by $x$ dropped the solution $x = 0$",
+    "$x^2 = 4$ has just one solution, $x = 2$",
+    "The equation has no solutions, since $x^3$ and $4x$ differ",
+    "Dividing by $x$ should have given $x^2 = 4x$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dividing by $x$ assumes $x \\ne 0$, and $x = 0$ does solve the equation: $0^3 = 4(0)$. Factor instead: $x^3 - 4x = x(x - 2)(x + 2) = 0$, so $x = 0$, $2$ or $-2$.",
+    "options": [
+     "$x = 0$ is a solution, and dividing by $x$ silently removed it.",
+     "A square root has two signs: $(-2)^2 = 4$ too, so both are solutions.",
+     "$x = 2$ works: $2^3 = 8 = 4(2)$. The equation has three solutions.",
+     "Dividing $x^3$ by $x$ gives $x^2$ and dividing $4x$ by $x$ gives $4$. The slip is dividing by an expression that can be $0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-polynomial-algebra-16",
+   "unit": "skills-algebra",
+   "topic": "alg-polynomial-algebra",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is $2x^3 - 2x^2 - 12x$ factored completely?",
+   "type": "single",
+   "options": [
+    "$2x(x + 3)(x - 2)$",
+    "$x(2x^2 - 2x - 12)$",
+    "$2x(x - 6)(x + 1)$",
+    "$2x(x - 3)(x + 2)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Common factor first: $2x(x^2 - x - 6)$. Then the trinomial: two numbers with product $-6$ and sum $-1$ are $-3$ and $2$, so $2x(x - 3)(x + 2)$.",
+    "options": [
+     "The signs are swapped: $(x + 3)(x - 2) = x^2 + x - 6$, but the middle term needed is $-x$.",
+     "This is equal to the original but not finished: take out the $2$ as well, then factor $x^2 - x - 6$.",
+     "$(x - 6)(x + 1) = x^2 - 5x - 6$. The two numbers need the sum $-1$, not $-5$.",
+     "$2x(x^2 - x - 6)$, and $x^2 - x - 6 = (x - 3)(x + 2)$."
+    ]
+   }
   }
  ]
 }

@@ -12,6 +12,19 @@
     "bands": true,
     "xLabel": "Reading test score"
    }
+  },
+  "stats-normal-s2": {
+   "kind": "visual",
+   "title": "A normal curve of sleep on school nights",
+   "invented": true,
+   "plot": {
+    "label": "Normal curve of hours of sleep on school nights for 1,000 teens with mean 7 hours and standard deviation 1 hour, marked at each standard deviation from 4 to 10 with the 34%, 13.5% and 2.35% bands",
+    "kind": "normal",
+    "mean": 7,
+    "sd": 1,
+    "bands": true,
+    "xLabel": "Hours of sleep on a school night"
+   }
   }
  },
  "items": [
@@ -383,6 +396,129 @@
      "Only 145 has z = +3; 55 has z = -3.",
      "34% is the band between the mean and one SD.",
      "Right: 100 - 45 = 55 and 100 + 45 = 145, with an SD of 15."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-13",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-normal-s2",
+   "q": "By the 68-95-99.7 rule, what percent of the teens slept between 8 and 9 hours?",
+   "why": {
+    "correct": "8 hours is one standard deviation above the mean and 9 hours is two. The band between them holds $13.5\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      1,
+      2
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "34% is the band next to the mean, 7 to 8 hours. The question asks about the next band out, 8 to 9."
+     },
+     {
+      "value": 47.5,
+      "why": "47.5% is everything from the mean to two SDs above it, 7 to 9 hours. Leave out the 34% from 7 to 8."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-14",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-normal-s2",
+   "q": "A teen slept 5 hours. By the 68-95-99.7 rule, what is this teen’s percentile rank?",
+   "why": {
+    "correct": "5 hours is two standard deviations below the mean. Below it lies $2.35 + 0.15 = 2.5\\%$ of the teens, so the percentile rank is 2.5."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentileRule",
+     "args": [
+      -2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 97.5,
+      "why": "97.5 is the percentile rank two SDs above the mean, at 9 hours. 5 hours is two SDs below."
+     },
+     {
+      "value": 5,
+      "why": "5% lies outside two SDs on both sides together. Below 5 hours is only the lower half of that."
+     },
+     {
+      "value": 47.5,
+      "why": "47.5% is the share between 5 and 7 hours. A percentile rank is the percent below the score."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-15",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-normal-s2",
+   "q": "Which statement about the mean, median and mode of this distribution is correct?",
+   "options": [
+    "The mean is 7 hours, but the median is lower",
+    "All three are 7 hours, at the peak of the curve",
+    "The mode is 7 hours, but the mean is higher",
+    "They cannot be found from a curve like this one"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A normal curve is symmetric, so the mean, the median and the mode all sit at the same point, the peak in the middle: 7 hours.",
+    "options": [
+     "The curve is symmetric, so half the teens are below 7 hours and the median equals the mean.",
+     "Right: in a symmetric, bell-shaped distribution the three measures are equal.",
+     "The mean would be pulled above the mode only if the curve had a long tail to the right.",
+     "The peak of a normal curve marks all three, so they can be read from it."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-16",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Jon answered 60% of the questions on a very hard exam correctly, and his score report says he is at the 92nd percentile. How can both be true?",
+   "options": [
+    "He outscored 92% of test takers while missing 40% of the items",
+    "The report is wrong: 60% correct must be the 60th percentile",
+    "He answered 92% of the hardest questions correctly",
+    "He scored two standard deviations above the mean of the exam"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A percentile rank is the percent of scores below a score, not the percent of questions right. On a very hard exam, 60% correct can beat almost everyone.",
+    "options": [
+     "Right: percentile rank compares him with the other test takers.",
+     "A percentile is not the percent of questions right. It depends on how everyone else scored.",
+     "A percentile rank says nothing about which questions he got right.",
+     "Two standard deviations above the mean is about the 97.5th percentile, and the report says 92nd."
     ]
    }
   }

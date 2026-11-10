@@ -488,6 +488,32 @@
    "why": {
     "correct": "The base is the ratio per unit; the starting value $4$ stays."
    }
+  },
+  {
+   "id": "pcalc-linear-vs-exponential-16",
+   "unit": "unit-2",
+   "topic": "linear-vs-exponential",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A linear function $f$ and an exponential function $g$ both pass through $(0, 4)$ and $(1, 12)$. What is $g(3) - f(3)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 80,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "The two functions agree at $x = 0$ and $x = 1$, not at $x = 3$: $f$ adds $8$ each step and $g$ multiplies by $3$ each step."
+     },
+     {
+      "value": 8,
+      "why": "$g$ multiplies by $3$ for each step of $1$: $g(3) = 4 \\cdot 3^3 = 108$, not $36$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Linear: over equal steps the outputs change by a constant difference, $12 - 4 = 8$, so $f(3) = 4 + 8(3) = 28$. Exponential: the outputs change by a constant ratio, $\\frac{12}{4} = 3$, so $g(3) = 4 \\cdot 3^3 = 108$. The difference is $108 - 28 = 80$."
+   }
   }
  ]
 }

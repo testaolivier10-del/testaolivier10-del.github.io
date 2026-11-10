@@ -546,6 +546,32 @@
      }
     ]
    }
+  },
+  {
+   "id": "env-energy-flow-16",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "An animal takes in 1,000 kcal of food energy but stores only about 100 kcal as new body tissue. According to the first law of thermodynamics, what happened to the rest?",
+   "options": [
+    "It changed form, mostly into heat",
+    "It was destroyed by digestion",
+    "It was returned to the plants",
+    "It turned into new matter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The first law says energy is not created or destroyed; it only changes form. The other 900 kcal left the animal mostly as heat from respiration and as energy in its waste.",
+    "options": [
+     "Right: all 1,000 kcal can be accounted for, but most is no longer usable by the next level.",
+     "Energy is never destroyed. It changes form.",
+     "Energy flows one way, from producers to consumers. It does not go back to the producers.",
+     "Energy does not become matter in living things."
+    ]
+   }
   }
  ]
 }

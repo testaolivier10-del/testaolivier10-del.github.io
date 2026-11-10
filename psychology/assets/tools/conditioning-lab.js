@@ -191,6 +191,11 @@
     }
 
     /* ------------------------------------------------ numbers and words */
+    /* Did the first tone after the rest bring more drops than the last one before it? */
+    function recoveredNow(st){
+      var r = trials.lastIndexOf('rest');
+      return r < 1 || st.cr[trials.length - 1] > st.cr[r - 1] + 0.05;
+    }
     function ccState(){
       var r = CL.classical(trials), v = r.v, n = trials.length;
       var nPair = trials.filter(function(t){ return t === 'pair'; }).length, V = n ? v[n - 1] : 0;
@@ -219,7 +224,7 @@
       if(view === 'cc'){
         var st = ccState(), PH = { none: 'Before conditioning.', acq: 'Acquisition.', ext: 'Extinction.', rest: 'A rest.', rec: 'Spontaneous recovery.', nolearn: 'No learning yet.' };
         head = PH[st.phase] + ' ' + (trials.length ? ccLine() : 'The tone is a neutral stimulus: it brings no saliva.');
-        sub = st.phase === 'acq' ? (st.learned ? 'The tone now brings saliva on its own: it is a CS.' : 'Keep pairing: each pairing strengthens the association.') : st.phase === 'ext' ? 'With no food after it, the tone brings fewer drops each time.' : st.phase === 'rec' ? 'The response came back after the rest, weaker than before.' : st.phase === 'rest' ? 'Now try Tone alone.' : st.phase === 'nolearn' ? 'A tone that was never paired with food brings no saliva.' : 'Press Tone + food.';
+        sub = st.phase === 'acq' ? (st.learned ? 'The tone now brings saliva on its own: it is a CS.' : 'Keep pairing: each pairing strengthens the association.') : st.phase === 'ext' ? 'With no food after it, the tone brings fewer drops each time.' : st.phase === 'rec' ? (recoveredNow(st) ? 'The response came back after the rest, weaker than before.' : 'Little had faded before the rest, so there was little to bring back. Sound the tone alone a few more times, then rest again.') : st.phase === 'rest' ? 'Now try Tone alone.' : st.phase === 'nolearn' ? 'A tone that was never paired with food brings no saliva.' : 'Press Tone + food.';
         why = '<p><b>Before.</b> Food in the mouth (the unconditioned stimulus, UCS) makes a dog salivate with no learning (the unconditioned response, UCR). A tone is a neutral stimulus: it brings no saliva.</p>' +
           '<p><b>Acquisition.</b> Pair the tone with the food again and again. The tone becomes a conditioned stimulus (CS), and salivating to the tone is the conditioned response (CR). Learning is fast at first, then levels off.</p>' +
           '<p><b>Extinction.</b> Sound the tone with no food: the CR weakens trial by trial.</p>' +
@@ -324,7 +329,7 @@
       trials.forEach(function(t){ if(t === 'rest'){ bands.push({ rest: idx }); return; } idx++; var ph = t === 'pair' ? 'acq' : 'ext'; if(!cur || cur.ph !== ph){ cur = { ph: ph, a: idx, b: idx }; bands.push(cur); } else cur.b = idx; });
       bands.forEach(function(b){ if(b.rest != null) return; g.push('<rect class="cl-band is-' + b.ph + '" x="' + (x(b.a) - (gR - gL) / X / 2).toFixed(1) + '" y="' + gT + '" width="' + ((b.b - b.a + 1) * (gR - gL) / X).toFixed(1) + '" height="' + (gB - gT) + '"/>'); });
       [0, 4, 8, 12].forEach(function(v){ g.push('<line class="cl-grid" x1="' + gL + '" x2="' + gR + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(gL - 7, y(v) + 4, String(v), 'cl-tv', 'end')); });
-      bands.forEach(function(b){ if(b.rest == null) return; var rx = gL + b.rest / X * (gR - gL); g.push('<line class="cl-restl" x1="' + rx.toFixed(1) + '" x2="' + rx.toFixed(1) + '" y1="' + gT + '" y2="' + gB + '"/>' + txt(rx, gT - 6, 'rest', 'cl-bt2')); });
+      bands.forEach(function(b){ if(b.rest == null) return; var rx = gL + b.rest / X * (gR - gL); g.push('<line class="cl-restl" x1="' + rx.toFixed(1) + '" x2="' + rx.toFixed(1) + '" y1="' + gT + '" y2="' + gB + '"/>' + txt(rx + 4, gT + 28, 'rest', 'cl-bt2', 'start')); });
       // acquisition is named at the foot of its band (its points end high), extinction at the top (its points end low)
       bands.forEach(function(b){ if(b.rest != null || b.b - b.a < 2) return; g.push(txt((x(b.a) + x(b.b)) / 2 + (b.ph === 'acq' ? (gR - gL) / X : 0), b.ph === 'acq' ? gB - 10 : gT + 15, b.ph === 'acq' ? 'acquisition' : 'extinction', 'cl-bt2 is-' + b.ph)); });
       var pts = [], j = 0;
@@ -449,9 +454,9 @@
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'phases'){
       var acq = g.pts.slice(0, g.nA), ext = g.pts.slice(g.nA, g.nA + g.nE), rec = g.pts.slice(g.restAt);
-      html = P.svg({ label: 'Drops of saliva to the tone on each trial: ' + g.pts.map(function(q){ return 'trial ' + q[0] + ' ' + q[1]; }).join(', ') + '. A rest between trials ' + g.restAt + ' and ' + (g.restAt + 1) + '.', kind: 'line', width: PW, height: PH,
+      html = P.svg({ label: 'Drops of saliva to the tone on each trial: ' + g.pts.map(function(q){ return 'trial ' + q[0] + ' ' + q[1]; }).join(', ') + '. A rest between trials ' + g.restAt + ' and ' + (g.restAt + 1) + '.', kind: 'line', width: PW, height: wide ? PH : 190,
         x: [0, g.pts.length + 1], y: [0, 14], xStep: 2, yStep: 2,
-        series: [{ name: 'Tone + food', points: acq }, { name: 'Tone alone', points: ext, dashed: true, cls: 's2' }, { name: 'Tone alone after a rest', points: rec, dashed: true, cls: 's2' }],
+        series: [{ name: 'Tone + food', points: acq }, { name: 'Tone alone', points: ext, dashed: true, cls: 's2' }, { name: wide ? 'Tone alone after a rest' : 'After a rest', points: rec, dashed: true, cls: 's2' }],   // short names on a phone
         lines: [{ seg: true, through: [[g.restAt + 0.5, 0], [g.restAt + 0.5, 13.5]], cls: 's3', dashed: true, label: 'rest' }],
         xLabel: 'Trial', yLabel: 'Drops of saliva' });
     } else if(g.kind === 'labels'){

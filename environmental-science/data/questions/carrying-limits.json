@@ -495,6 +495,32 @@
      "The herd once went higher, during overshoot."
     ]
    }
+  },
+  {
+   "id": "env-carrying-limits-16",
+   "unit": "unit-3",
+   "topic": "carrying-limits",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two wet years in a row double the amount of grass on a rangeland. What happens to the range’s carrying capacity for grazing animals?",
+   "options": [
+    "It rises for as long as the extra grass lasts",
+    "It falls, because more grass crowds the animals",
+    "It stays fixed, because carrying capacity never changes",
+    "It becomes unlimited while the rain continues"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Carrying capacity is the largest population the environment can support, so it depends on resources. More food raises it. It can fall again when dry years return.",
+    "options": [
+     "Right: carrying capacity moves up and down with the resource supply.",
+     "Grass is food for grazers. More of it supports more animals, not fewer.",
+     "Carrying capacity changes whenever the supply of food, water or space changes.",
+     "Other limits, such as water and space, still cap the population."
+    ]
+   }
   }
  ]
 }

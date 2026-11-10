@@ -1,0 +1,103 @@
+{
+  "id": "abdominal-trauma",
+  "title": "Abdominal trauma",
+  "chapter": 31,
+  "section": "ch31-abdomen",
+  "hook": "<p>A man was slashed across the belly in a fight. He is lying on the sidewalk, awake and frightened, and a loop of intestine is showing through the wound. A bystander is about to push it back in \"so it stays clean.\"</p><p>Abdominal trauma comes in two forms: the kind you can see, like this, and the kind you cannot, like a torn spleen bleeding into a belly that looks normal. Both can kill, and the care for both is short and specific.</p>",
+  "steps": [
+    {
+      "find": "A patient has a blunt or penetrating injury to the abdomen.",
+      "act": "Watch for vomiting and protect the airway. Lay the patient supine with the knees flexed to relax the abdominal muscles. Give oxygen for hypoxia, treat for shock and give nothing by mouth."
+    },
+    {
+      "find": "The injury is to the right upper or left upper quadrant, and the patient is showing signs of shock.",
+      "act": "Suspect bleeding from the liver (right upper) or spleen (left upper). Both have a rich blood supply and can bleed enough to kill. Transport rapidly."
+    },
+    {
+      "find": "The abdomen is rigid and very painful after an injury.",
+      "act": "Suspect a ruptured hollow organ: its contents have spilled into the abdominal cavity and are causing peritonitis. Treat for shock and transport."
+    },
+    {
+      "find": "There is a gunshot wound at the level of the lower ribs.",
+      "act": "Assume both a chest injury and an abdominal injury. Bullets deflect, fragment and tumble, so do not assume only the structures under the entry wound are hurt."
+    },
+    {
+      "find": "Abdominal organs are protruding through an open wound.",
+      "act": "Do not touch them and do not try to put them back. Cover them with a sterile dressing moistened with saline, and keep it moist. Many protocols add an occlusive layer over the moist dressing to hold in moisture and warmth. Never use aluminum foil."
+    },
+    {
+      "find": "An object is impaled in the abdomen.",
+      "act": "Do not remove it. Stabilize it in place with bulky dressings and leave the patient's legs in the position you found them."
+    }
+  ],
+  "ideas": [
+    "<b>Evisceration</b> is abdominal organs protruding through an open wound.",
+    "<b>Solid organs bleed.</b> The liver (right upper quadrant) and spleen (left upper quadrant) are the most commonly injured solid organs.",
+    "<b>Hollow organs spill.</b> A rupture releases contents into the abdominal cavity, causing peritonitis and a rigid abdomen.",
+    "<b>Open or closed, the base care is the same:</b> airway, supine with knees flexed, oxygen for hypoxia, treat for shock, nothing by mouth.",
+    "<b>Open wounds add:</b> control bleeding and dress the wounds.",
+    "<b>No foil.</b> Aluminum foil can cut eviscerated organs."
+  ],
+  "misconception": {
+    "wrong": "Exposed organs should be gently pushed back into the abdomen to protect them and keep them clean.",
+    "right": "Eviscerated organs are never touched or replaced in the field. Handling them causes injury and carries contamination into the abdomen. They are covered with a moist sterile dressing and the patient is transported."
+  },
+  "check": [
+    {
+      "q": "A patient has a loop of bowel protruding from a stab wound to the abdomen. How do you cover it?",
+      "options": [
+        "A dry gauze pad taped down firmly",
+        "A sheet of aluminum foil pressed over it",
+        "A pressure bandage wrapped around the abdomen",
+        "A sterile dressing moistened with saline"
+      ],
+      "correct": 3,
+      "why": "Eviscerated organs are covered with a sterile dressing moistened with saline and re-moistened as needed. Dry gauze sticks to the organs and dries them out, and aluminum foil can cut them."
+    },
+    {
+      "q": "A cyclist hit the handlebars hard with the left upper abdomen. The skin shows only a faint mark, but he is pale with a rapid pulse. Which organ is most likely bleeding?",
+      "options": [
+        "The spleen",
+        "The liver",
+        "The appendix",
+        "The bladder"
+      ],
+      "correct": 0,
+      "why": "The spleen lies in the left upper quadrant, is highly vascular and is one of the two most commonly injured solid organs. The liver is the other, but it lies in the right upper quadrant."
+    },
+    {
+      "q": "In what position do you place a patient with abdominal trauma, if no other injury prevents it?",
+      "options": [
+        "Sitting upright with the legs straight",
+        "Supine with the knees flexed",
+        "Prone with the head turned to the side",
+        "Supine with the legs raised high"
+      ],
+      "correct": 1,
+      "why": "Supine with the knees flexed relaxes the abdominal muscles and eases pain. Sitting upright or lying prone tightens or presses on the abdomen."
+    },
+    {
+      "q": "A patient has a gunshot entry wound at the level of the lower right ribs. What should you assume about the injuries?",
+      "options": [
+        "Only the right lung is injured",
+        "Only the liver is injured",
+        "Both chest and abdominal injuries are present",
+        "Only the tissue under the wound is injured"
+      ],
+      "correct": 2,
+      "why": "A gunshot wound at the level of the lower ribs is assumed to have injured both the chest and the abdomen. Bullets deflect, fragment and tumble, so the path cannot be judged from the entry wound alone."
+    },
+    {
+      "q": "A patient fell onto a metal rod that is now impaled in the lower abdomen. He is lying with his knees bent to one side. What do you do?",
+      "options": [
+        "Remove the rod and pack the wound with gauze",
+        "Straighten the legs, then stabilize the rod",
+        "Cut the rod flush with the skin and bandage it",
+        "Stabilize the rod and leave the legs as found"
+      ],
+      "correct": 3,
+      "why": "An impaled object is never removed; it is stabilized in place with bulky dressings, and the legs are left in the position in which they were found. Straightening the legs moves the abdominal wall around the object."
+    }
+  ],
+  "summary": "<p>In abdominal trauma, solid organs bleed and hollow organs spill. The liver in the right upper quadrant and the spleen in the left upper quadrant are the most commonly injured solid organs and can cause life-threatening bleeding; a ruptured hollow organ causes peritonitis and a rigid abdomen. Gunshot wounds are unpredictable, and one at the lower ribs means both chest and abdominal injury. For any abdominal injury: protect the airway, position supine with knees flexed, give oxygen for hypoxia, treat for shock, and give nothing by mouth. Never touch or replace eviscerated organs; cover them with a moist sterile dressing and never foil. Never remove an impaled object; stabilize it and leave the legs as found.</p>"
+}

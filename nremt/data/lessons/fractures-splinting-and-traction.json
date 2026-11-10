@@ -1,0 +1,111 @@
+{
+  "id": "fractures-splinting-and-traction",
+  "title": "Fractures, splinting and traction",
+  "chapter": 32,
+  "section": "ch32-msk",
+  "hook": "<p>A motorcyclist is lying in the road with an obviously deformed thigh. There is no blood on the ground. He is pale and sweaty, and his pulse is 124. Your partner reaches for the traction splint and starts measuring it carefully against the good leg.</p><p>A closed femur fracture can bleed about a liter into the thigh, and a pelvis even more. Fractures are rarely fatal on their own, but the bleeding can be, and so can the time spent perfecting a splint on a patient who needs a hospital.</p>",
+  "steps": [
+    {
+      "find": "A patient has an obvious limb injury along with other problems.",
+      "act": "Life threats come first. Complete the primary assessment and treat what you find before you turn to the limb."
+    },
+    {
+      "find": "An extremity is painful, swollen or deformed.",
+      "act": "Treat it as a fracture. You do not need to decide whether it is a fracture, dislocation, sprain or strain. Expose the site and check circulation, sensation and motor function (CSM) beyond the injury."
+    },
+    {
+      "find": "The injury is in the shaft of a long bone and is angulated; or it is at a joint.",
+      "act": "Realignment is generally for angulated long-bone shafts. Splint a joint in the position found, unless the limb beyond it is blue or pulseless; then try gentle traction toward a neutral position, per local protocol."
+    },
+    {
+      "find": "You are applying the splint.",
+      "act": "Immobilize the injury site and the joints next to it, then recheck CSM. Match the speed of the work to the patient's priority."
+    },
+    {
+      "find": "The patient is unstable.",
+      "act": "Do not delay transport to perfect a splint. Secure the patient as a whole and go; \"splinting someone to death\" is the most serious splinting hazard."
+    },
+    {
+      "find": "The mid-thigh is painful, swollen or deformed, with no injury to the hip, knee, pelvis or lower leg.",
+      "act": "This is the indication for a traction splint. Do not use one with a pelvis, hip or knee injury, an avulsion or partial amputation, or an injury to the lower third of the leg."
+    },
+    {
+      "find": "The pelvis is deformed or unstable, or the mechanism carries a high risk of pelvic fracture.",
+      "act": "Move the patient as little as possible and as a unit, never lifting with the pelvis unsupported. Apply a pelvic binder or a sheet wrap about 10 inches wide at the level of the greater trochanters, firm without overcompressing."
+    },
+    {
+      "find": "An injured limb has pain, a feeling of pressure, swelling, and feels hard compared with the other side.",
+      "act": "Suspect compartment syndrome: pressure inside a muscle compartment is cutting off the tissue's blood supply. The limb may be lost if it is not relieved, so transport promptly and report it."
+    }
+  ],
+  "ideas": [
+    "<b>Bone bleeds.</b> Approximate loss from a closed fracture: tibia and fibula about 500 mL (1 pint), femur about 1,000 mL (2 pints), pelvis 1,500 to 2,000 mL (3 to 4 pints) or more.",
+    "<b>Four injury types:</b> fracture (a broken bone, open or closed), dislocation (bone ends out of the joint), sprain (ligament stretched or torn), strain (muscle overstretched).",
+    "<b>The six Ps of a compromised limb:</b> Pain, Pallor, Paresthesia, Pulses (weak or absent), Paralysis, Pressure.",
+    "<b>Why splint:</b> less pain, less damage to soft tissue, nerves and vessels, no closed fracture turning into an open one, and less blood loss.",
+    "<b>Knee dislocation</b> (tibia displaced from the femur) can compress the popliteal artery. An absent pulse beyond it is a true emergency, and gentle repositioning may be needed to restore the pulse. A dislocated kneecap is a different, less urgent injury.",
+    "<b>Ankle and foot:</b> sprains and fractures are hard to tell apart, so both are treated as fractures, often with a pillow splint. Never remove bone fragments from an open fracture."
+  ],
+  "misconception": {
+    "wrong": "A deformed thigh always gets a traction splint before the patient is moved, because that is the correct treatment for a femur fracture.",
+    "right": "A traction splint is for an isolated mid-shaft femur injury in a patient who can afford the time. With an injury to the pelvis, hip, knee or lower leg it is contraindicated, and in an unstable patient the priority is transport, not a perfect splint."
+  },
+  "check": [
+    {
+      "q": "A patient has a painful, deformed mid-thigh and also severe pain and swelling at the knee on the same leg. Is a traction splint appropriate?",
+      "options": [
+        "Yes, because the femur injury takes priority",
+        "No, because a knee injury is a contraindication",
+        "Yes, if traction is applied very gently",
+        "No, because traction splints are for the lower leg"
+      ],
+      "correct": 1,
+      "why": "A traction splint is contraindicated when the pelvis, hip or knee is injured, because traction pulls across the injured joint. It is a femur device, not one for the lower leg, so that reason for saying no is wrong."
+    },
+    {
+      "q": "A patient's knee is dislocated and the foot is cold, pale and has no pulse. What does this mean?",
+      "options": [
+        "A true emergency: the popliteal artery may be compressed",
+        "An expected finding that will resolve after splinting",
+        "A patellar dislocation, which is not urgent",
+        "A sprain that can be treated with a pillow splint"
+      ],
+      "correct": 0,
+      "why": "A true knee dislocation can compress the popliteal artery and cut off blood to the lower leg; an absent distal pulse is a true emergency, and gentle repositioning may be needed to restore it. A patellar dislocation is a different, less urgent injury."
+    },
+    {
+      "q": "When do you check circulation, sensation and motor function in an injured limb?",
+      "options": [
+        "Only before the splint is applied",
+        "Only after the splint is applied",
+        "Only if the limb looks pale or blue",
+        "Both before and after splinting"
+      ],
+      "correct": 3,
+      "why": "CSM is checked before and after splinting. The first check gives a baseline, and the second shows whether the splint or the movement has made the limb worse. Checking only once cannot show a change."
+    },
+    {
+      "q": "A patient with a pelvic fracture from a fall and no external bleeding is in shock. About how much blood can a pelvic fracture lose internally?",
+      "options": [
+        "About 250 mL (half a pint)",
+        "About 500 mL (1 pint)",
+        "1,500 to 2,000 mL (3 to 4 pints) or more",
+        "No more than 1,000 mL (2 pints)"
+      ],
+      "correct": 2,
+      "why": "A pelvic fracture can bleed 1,500 to 2,000 mL or more with nothing visible outside. About 500 mL is the figure for a tibia and fibula fracture, and about 1,000 mL for a femur."
+    },
+    {
+      "q": "A patient with multiple injuries is unstable, with a rapid weak pulse and falling blood pressure. He also has a deformed forearm. How do you handle the forearm?",
+      "options": [
+        "Apply a full padded splint before moving him",
+        "Realign the forearm carefully, then splint it",
+        "Stabilize it quickly and do not delay transport",
+        "Leave it entirely alone until the hospital"
+      ],
+      "correct": 2,
+      "why": "Life threats come first and the speed of splinting matches the patient's priority. Delaying an unstable patient to perfect a splint is \"splinting someone to death.\" The arm is still supported so it is not injured further on the way."
+    }
+  ],
+  "summary": "<p>Broken bones bleed, even when closed: roughly a pint for the tibia and fibula, 2 for the femur and 3 to 4 or more for the pelvis. Treat any painful, swollen or deformed limb as a fracture. Life threats first; then expose, check CSM, immobilize the site and the joints next to it, and check CSM again, without ever delaying an unstable patient for a perfect splint. Splint joints as found unless the limb beyond is blue or pulseless. Traction splints are for isolated mid-shaft femur injuries only. Pelvic injuries get minimal movement and a binder at the greater trochanters. Know the six Ps and the hard, painful limb of compartment syndrome, and treat a pulseless foot after a knee dislocation as a true emergency.</p>"
+}

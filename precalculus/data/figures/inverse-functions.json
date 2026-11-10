@@ -7,5 +7,15 @@
   "ext": "svg",
   "w": 360,
   "h": 340
+ },
+ "inverse-functions-restrict": {
+  "file": "figures/inverse-functions-restrict.svg",
+  "ext": "svg",
+  "w": 380,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The parabola y = (x - 2) squared + 1. Its left half, for x less than 2, is dashed gray; its right half, for x at least 2, is solid green starting at the vertex (2, 1). The inverse, y = 2 + square root of (x - 1), is blue and starts at (1, 2). The two solid curves mirror each other across the dashed line y = x; (3, 2) on f matches (2, 3) on the inverse."
  }
 }

@@ -1,0 +1,104 @@
+{
+  "id": "adequate-vs-inadequate-breathing",
+  "title": "Adequate vs. inadequate breathing",
+  "chapter": 19,
+  "section": "ch19-respiratory",
+  "hook": "<p>A 70-year-old man is slumped in a chair. He is breathing 8 times a minute, each breath is shallow, and he only mumbles when you speak to him. Your partner reaches for a non-rebreather mask.</p><p>The mask is the wrong tool. The first question with any patient who is short of breath is whether the breathing is adequate, because the answer decides whether the patient needs oxygen or needs you to breathe for him.</p>",
+  "steps": [
+    {
+      "find": "A patient is short of breath. You look at the rate, the rhythm, the depth and the effort, and you listen to both lungs.",
+      "act": "Decide whether breathing is adequate. Adequate breathing has a normal rate for the patient's age (adult 12 to 20, school-age child 18 to 30, infant 30 to 60 per minute), a regular rhythm, breath sounds present and equal on both sides, adequate and equal chest expansion, adequate depth and no labored effort."
+    },
+    {
+      "find": "Breathing is adequate, but the patient is in distress or the oxygen saturation is low.",
+      "act": "Give supplemental oxygen to maintain a normal saturation and treat the underlying cause. A non-rebreather mask works here because the patient is moving the air himself."
+    },
+    {
+      "find": "Breathing is inadequate: altered mental status, a rate that is too slow or too fast with shallow depth, cyanosis, or a saturation that stays low despite oxygen.",
+      "act": "Assist ventilations with positive pressure, using a pocket mask or a bag-valve mask (BVM), with oxygen attached."
+    },
+    {
+      "find": "The patient is not breathing but has a pulse: no chest rise and no air movement.",
+      "act": "Ventilate. An adult gets about 10 breaths a minute (1 every 6 seconds). An infant or child gets 20 to 30 a minute (1 every 2 to 3 seconds). Do not hyperventilate."
+    },
+    {
+      "find": "You are ventilating an infant or child and the pulse is slow or falling.",
+      "act": "Treat it as real trouble. Recheck the airway position, the chest rise and the oxygen supply and tubing."
+    },
+    {
+      "find": "You cannot tell whether the breathing is adequate.",
+      "act": "Ventilate anyway. Err toward action."
+    }
+  ],
+  "ideas": [
+    "<b>Inspiration is active:</b> the diaphragm and intercostal muscles contract, the chest gets bigger, the pressure inside drops and air is pulled in. <b>Expiration is passive.</b>",
+    "<b>Rate alone is not the answer.</b> A fast rate from crying, exertion or anxiety can still be adequate. What matters is whether it comes with altered mental status, cyanosis or a low SpO<sub>2</sub>.",
+    "<b>Mental status changes early.</b> The brain has no oxygen reserve: anxiety and a sense of doom, then confusion, combativeness or lethargy, then unconsciousness.",
+    "<b>Signs that compensation is failing:</b> breathing that slows or becomes irregular, speaking only 1 or 2 words at a time, a silent chest, a low SpO<sub>2</sub> despite oxygen, and agonal gasps just before respiratory arrest.",
+    "<b>Labored breathing</b> shows as accessory muscle use, nasal flaring, retractions, grunting and seesaw breathing. Children compensate mainly by breathing faster, which tires them quickly.",
+    "<b>Bradycardia in a child with breathing trouble is never normal.</b> Early hypoxia speeds the heart up. A slow heart comes late and warns of cardiac arrest.",
+    "<b>Never hyperventilate.</b> Blowing off too much CO<sub>2</sub> constricts the blood vessels of the brain and reduces its blood flow."
+  ],
+  "misconception": {
+    "wrong": "A patient with breathing trouble needs high-flow oxygen by non-rebreather mask, and the sicker the patient, the more that mask matters.",
+    "right": "A non-rebreather only helps a patient who is breathing adequately. It does not move air. A patient whose breathing is inadequate or absent needs positive pressure ventilation with a pocket mask or BVM."
+  },
+  "check": [
+    {
+      "q": "An adult is breathing 8 times a minute with shallow breaths and responds only to pain. What does this patient need?",
+      "options": [
+        "A nasal cannula at 4 liters per minute",
+        "A non-rebreather mask at 15 liters per minute",
+        "Coaching to slow down and breathe deeply",
+        "Assisted ventilations with a bag-valve mask"
+      ],
+      "correct": 3,
+      "why": "A slow rate, shallow depth and altered mental status mean inadequate breathing, which is treated with positive pressure ventilation. A non-rebreather is tempting but delivers oxygen only to a patient who is moving air adequately."
+    },
+    {
+      "q": "A 6-year-old in respiratory distress had a heart rate of 140. It is now 58 and she is becoming limp. What does this mean?",
+      "options": [
+        "She is calming down and improving",
+        "She is close to cardiac arrest",
+        "The pulse oximeter is misreading",
+        "This is a normal resting rate for her age"
+      ],
+      "correct": 1,
+      "why": "Bradycardia in a child with a respiratory problem is never normal. Early hypoxia speeds the heart up; slowing comes late, when compensation is failing, and warns of imminent arrest. A child who is improving becomes more alert, not limp."
+    },
+    {
+      "q": "A patient having a severe asthma attack was wheezing loudly. Now you hear almost nothing through the stethoscope, though his chest is still moving. What is happening?",
+      "options": [
+        "He is moving too little air to make sound",
+        "The attack has ended and his airways are open",
+        "The stethoscope is against clothing",
+        "He has started to hyperventilate"
+      ],
+      "correct": 0,
+      "why": "A silent chest means air movement is so reduced that there is nothing to hear, even though the chest moves. It is a sign of failing compensation. It is easy to mistake for improvement, but an improving patient moves more air and looks better."
+    },
+    {
+      "q": "An adult has a pulse but is not breathing. About how often do you ventilate?",
+      "options": [
+        "Once every 2 to 3 seconds",
+        "Once every 10 seconds",
+        "Once every 6 seconds",
+        "As fast as the bag refills"
+      ],
+      "correct": 2,
+      "why": "An adult with a pulse who is not breathing gets about 10 breaths a minute, 1 every 6 seconds. One breath every 2 to 3 seconds is the infant and child rate, and ventilating as fast as possible is hyperventilation, which reduces blood flow to the brain."
+    },
+    {
+      "q": "A frightened teenager is breathing 28 times a minute after an argument. She is alert, pink, speaking in full sentences and has an SpO2 of 99%. How do you judge her breathing?",
+      "options": [
+        "Inadequate, because the rate is above 20",
+        "Adequate for now: the rate is fast but nothing else is abnormal",
+        "Inadequate, so begin bag-valve mask ventilation",
+        "It cannot be judged without a blood pressure"
+      ],
+      "correct": 1,
+      "why": "Rate alone never tells the whole story. A fast rate from anxiety can still be adequate when mental status, color, speech and saturation are normal. Ventilating her would be treating a number, not the patient."
+    }
+  ],
+  "summary": "<p>Adequate breathing has a normal rate for age, a regular rhythm, equal breath sounds, good chest expansion, adequate depth and no labored effort. Inadequate breathing shows up early as a change in mental status and later as cyanosis, one or two word speech, a silent chest, slowing or irregular respirations and, in children, bradycardia. Adequate breathing with distress gets oxygen. Inadequate or absent breathing gets positive pressure ventilation: about 10 breaths a minute for an adult and 20 to 30 for an infant or child, never hyperventilation. When in doubt, ventilate.</p>"
+}

@@ -578,6 +578,32 @@
      "Acid rain is mostly SO₂ and NOx; CO₂ dissolves directly from the air."
     ]
    }
+  },
+  {
+   "id": "env-ocean-acidification-16",
+   "unit": "unit-9",
+   "topic": "ocean-acidification",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Tiny shelled plankton are a main food of young salmon in one region. How could ocean acidification affect the salmon?",
+   "options": [
+    "Salmon grow faster, since acid water holds more oxygen",
+    "Salmon are not affected, since they have no shells",
+    "Salmon dissolve as the seawater turns acidic",
+    "Salmon have less food, as fewer plankton build shells"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With fewer carbonate ions, shell-building plankton grow and survive poorly. The animals that eat them, such as young salmon, then have less food. The harm passes up the food web.",
+    "options": [
+     "A lower pH does not raise dissolved oxygen.",
+     "Salmon do not build shells, but they depend on animals that do.",
+     "Seawater stays basic (about pH 8.1), and it does not dissolve fish.",
+     "Right: the harm starts at the base of the food web."
+    ]
+   }
   }
  ]
 }

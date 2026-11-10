@@ -1,0 +1,120 @@
+{
+  "id": "steps-of-resuscitation",
+  "title": "The steps of resuscitation",
+  "chapter": 21,
+  "section": "ch21-steps",
+  "hook": "<p>A 54-year-old woman is on her bedroom floor, wedged between the bed and the wall. She is unresponsive, she is not breathing and you feel no carotid pulse. Her husband asks whether you should carry her to the living room, where there is more space.</p><p>Every second without compressions is a second without blood flow to her brain. A resuscitation is four steps, and the first one starts right where she is.</p>",
+  "steps": [
+    {
+      "find": "The patient is unresponsive and not breathing, or only gasping. You take up to 10 seconds, and no longer, to check a pulse (carotid in an adult, carotid or femoral in a child, brachial in an infant) and find none.",
+      "act": "Step 1: start compressions immediately, where the patient is found, clearing just enough space to work. In an infant or child, a heart rate under 60 with poor perfusion despite good oxygenation and ventilation also gets compressions."
+    },
+    {
+      "find": "You are compressing an adult's chest.",
+      "act": "Two hands on the lower half of the sternum, 100 to 120 compressions a minute, 2 to 2.4 inches (5 to 6 cm) deep, with full recoil and no leaning. Give 30 compressions to 2 breaths. Switch compressors at least every 2 minutes and keep pauses as short as possible."
+    },
+    {
+      "find": "The patient is a child (1 year to puberty) or an infant (under 1 year).",
+      "act": "Same rate. Compress at least one third of the depth of the chest: about 2 inches in a child, about 1.5 inches in an infant. Use one or two hands for a child; for an infant, two thumbs with the hands encircling the chest, or the heel of one hand. The ratio is 30:2 for one rescuer and 15:2 for two."
+    },
+    {
+      "find": "The AED arrives.",
+      "act": "Step 2: turn it on first and follow its prompts. Put the pads on bare, dry skin without stopping compressions. Remove medication patches, shave heavy hair and keep the pads off a visible pacemaker."
+    },
+    {
+      "find": "The AED is analyzing, then advises a shock.",
+      "act": "Nobody touches the patient during analysis. Clear everyone, deliver the shock, and resume compressions immediately without waiting for a prompt. The AED reanalyzes every 2 minutes."
+    },
+    {
+      "find": "Cycles of CPR and analysis continue.",
+      "act": "Step 3: keep going. A pulse often does not return until the second, third or fourth shock. For a child under 8 use pediatric pads if you have them; if not, use the adult AED."
+    },
+    {
+      "find": "The patient starts to breathe, move or wake up, and you feel a pulse.",
+      "act": "Step 4: this is return of spontaneous circulation (ROSC). Support the airway and breathing without hyperventilating, titrate oxygen to an SpO<sub>2</sub> of 90 to 98%, acquire a 12-lead if you are permitted, and transport rapidly. Recheck the pulse about every 30 seconds in a patient who is still unconscious. If it is lost, stop the vehicle, resume CPR and reanalyze."
+    }
+  ],
+  "ideas": [
+    "<b>Three findings confirm arrest:</b> unresponsive, not breathing (gasping does not count) and no pulse within 10 seconds.",
+    "<b>Compression fraction</b> is the share of the resuscitation during which compressions are actually being given. Keep it high: compress where the patient lies and do not pause to place pads.",
+    "<b>Full recoil.</b> The heart refills when the chest comes back up. Leaning on the chest reduces the blood flow of every compression that follows.",
+    "<b>Infant technique changed in 2025:</b> the two-finger technique was eliminated because it did not reach adequate depth. Use two thumbs encircling the chest or the heel of one hand.",
+    "<b>The AED goes on as soon as it is at hand, at any age.</b> Only a lone rescuer at an unwitnessed infant or child arrest gives about 2 minutes of CPR before leaving to get one.",
+    "<b>With an advanced airway in place</b> compressions run continuously, with a breath about every 6 seconds for an adult and every 2 to 3 seconds for an infant or child.",
+    "<b>Roles are set in advance:</b> one provider on compressions, one on the AED, one at the head for airway and ventilations.",
+    "<b>CPR continues until</b> a pulse returns, care is transferred to a higher-level provider, you are too exhausted to continue, or a physician or other authority orders it stopped."
+  ],
+  "misconception": {
+    "wrong": "Children get 2 minutes of CPR before the AED is used, so with a child the AED can wait.",
+    "right": "The AED is attached and used as soon as it arrives, at any age. The 2 minutes of CPR first applies only to a lone rescuer at an unwitnessed infant or child arrest who would have to leave the patient to fetch one. A crew compresses while a partner gets the AED."
+  },
+  "check": [
+    {
+      "q": "What is the correct compression rate and depth for an adult?",
+      "options": [
+        "80 to 100 per minute, 1.5 to 2 inches deep",
+        "100 to 120 per minute, 2 to 2.4 inches deep",
+        "100 to 120 per minute, at least 3 inches deep",
+        "120 to 140 per minute, 2 to 2.4 inches deep"
+      ],
+      "correct": 1,
+      "why": "Adult compressions are 100 to 120 a minute and 2 to 2.4 inches (5 to 6 cm) deep. Deeper is not better: beyond about 2.4 inches you cause injury without adding blood flow."
+    },
+    {
+      "q": "You and your partner are doing CPR on a 9-month-old. Which technique and ratio are correct under the 2025 guidelines?",
+      "options": [
+        "Two fingers on the sternum, 30 compressions to 2 breaths",
+        "Two fingers on the sternum, 15 compressions to 2 breaths",
+        "Two hands on the sternum, 30 compressions to 2 breaths",
+        "Two thumbs encircling the chest, 15 compressions to 2 breaths"
+      ],
+      "correct": 3,
+      "why": "With two rescuers an infant gets 15:2, using two thumbs with the hands encircling the chest (or the heel of one hand). The two-finger technique was removed in 2025 because it did not reliably reach one third of the chest's depth."
+    },
+    {
+      "q": "The AED has just delivered a shock. What do you do next?",
+      "options": [
+        "Resume compressions immediately",
+        "Check for a pulse for 10 seconds",
+        "Wait for the AED to reanalyze the rhythm",
+        "Give two breaths, then check breathing"
+      ],
+      "correct": 0,
+      "why": "Compressions resume right after the shock without waiting for a prompt. Checking for a pulse is tempting, but even a successful shock rarely gives a strong pulse at once, and the pause costs blood flow. The AED reanalyzes after 2 minutes."
+    },
+    {
+      "q": "A patient in cardiac arrest is found in a narrow hallway. When should compressions begin?",
+      "options": [
+        "After she is carried to the ambulance",
+        "After she is moved to the largest room",
+        "Right away, where she is found",
+        "After the AED has analyzed the rhythm"
+      ],
+      "correct": 2,
+      "why": "Compressions begin where the patient is found. Moving the patient first is a common and avoidable delay. The AED is attached while compressions continue, not before they start."
+    },
+    {
+      "q": "After the third shock the patient has a pulse and is breathing on her own but remains unconscious. Her SpO2 is 100% on high-flow oxygen. What do you do with the oxygen?",
+      "options": [
+        "Remove it completely, since she has a pulse",
+        "Hyperventilate her with a bag-valve mask",
+        "Keep it at maximum flow until the hospital",
+        "Titrate it down to keep the SpO2 at 90 to 98%"
+      ],
+      "correct": 3,
+      "why": "After ROSC, oxygen is titrated to a window. Too little oxygen worsens the brain injury, and so does too much. Maximum oxygen all the way in is the older habit, and removing oxygen completely risks hypoxia."
+    },
+    {
+      "q": "A 6-year-old is in cardiac arrest. Your AED has only adult pads. What do you do?",
+      "options": [
+        "Use the adult pads and the AED",
+        "Do CPR only and never use the AED",
+        "Cut the adult pads down to a smaller size",
+        "Wait for a unit that carries pediatric pads"
+      ],
+      "correct": 0,
+      "why": "Pediatric pads are preferred for a child under 8, but if none are available the adult AED is used. A larger shock is better than no shock. Place the pads so they do not touch, front and back if needed."
+    }
+  ],
+  "summary": "<p>Arrest is confirmed by unresponsiveness, no normal breathing and no pulse within 10 seconds. Step 1 is compressions where the patient lies: 100 to 120 a minute, 2 to 2.4 inches in an adult and at least one third of the chest in children and infants, full recoil, 30:2 (15:2 for two rescuers on a child or infant), with a new compressor every 2 minutes. Step 2 is the AED as soon as it arrives, at any age, with compressions resumed right after each shock. Step 3 is to keep cycling. Step 4, after ROSC, is airway support without hyperventilation, oxygen titrated to 90 to 98%, pulse checks every 30 seconds and rapid transport.</p>"
+}

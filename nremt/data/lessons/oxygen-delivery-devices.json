@@ -1,0 +1,103 @@
+{
+  "id": "oxygen-delivery-devices",
+  "title": "Delivery devices, flow rates and targets",
+  "chapter": 10,
+  "section": "ch10-delivery-devices",
+  "hook": "<p>A man with a long history of COPD is short of breath. His saturation reads 84%. One crew member wants a non-rebreather at 15 L/min until the reading is 100%. Another says COPD patients should not get oxygen at all.</p><p>Both are wrong. Oxygen is a drug: it has a dose, a device that delivers it and a target. This lesson covers the four devices, the flow each one is built for, and the saturation you are aiming at.</p>",
+  "steps": [
+    {
+      "find": "The patient has mild hypoxia, or will not tolerate a mask.",
+      "act": "Use a nasal cannula at 1 to 6 L/min, which gives roughly 24 to 44% oxygen."
+    },
+    {
+      "find": "The patient has significant hypoxia and is breathing adequately.",
+      "act": "Use a non-rebreather mask at 10 to 15 L/min, roughly 80 to 90% oxygen. Inflate the reservoir bag before you put the mask on the patient."
+    },
+    {
+      "find": "The reservoir bag of the non-rebreather collapses when the patient breathes in.",
+      "act": "Turn the flow up. A collapsing bag means the flow is too low and the mask is not delivering what it should."
+    },
+    {
+      "find": "The patient's own breathing is inadequate or absent.",
+      "act": "Use a bag-valve mask with a reservoir at 15 L/min, close to 100% oxygen. Here you are moving the air, not just enriching it."
+    },
+    {
+      "find": "The patient is on oxygen and you have a pulse oximeter reading.",
+      "act": "Titrate to a target. For most patients that is about 94% or above. For a patient with known COPD the commonly taught target is about 88 to 92%. Local protocol sets the actual numbers."
+    },
+    {
+      "find": "A patient with known COPD is hypoxic.",
+      "act": "Give oxygen and titrate it toward the lower target. A lower target is a reason to titrate, never a reason to withhold."
+    }
+  ],
+  "ideas": [
+    "<b>The flow rate is part of the device.</b> Outside its range a device either does not work or does harm.",
+    "<b>Nasal cannula:</b> below 1 L/min delivers essentially nothing; above 6 L/min dries and irritates the nose without adding much.",
+    "<b>Simple face mask:</b> 6 to 10 L/min, roughly 35 to 60%. It is for a moderate need and is less often carried.",
+    "<b>Non-rebreather:</b> below about 10 L/min it cannot keep its reservoir inflated.",
+    "<b>Percentages are approximate.</b> They depend on how much room air the patient pulls in around the device.",
+    "<b>Treat hypoxia, not appearances.</b> Reaching the target on a nasal cannula is better than overshooting it on a non-rebreather."
+  ],
+  "misconception": {
+    "wrong": "Every patient who looks unwell should get high-flow oxygen by non-rebreather.",
+    "right": "Current practice is to treat hypoxia and titrate to a saturation target, about 94% or above for most patients and about 88 to 92% with known COPD, per local protocol. More oxygen than the patient needs is not better care."
+  },
+  "check": [
+    {
+      "q": "What is the flow range for a nasal cannula?",
+      "options": [
+        "1 to 6 L/min",
+        "6 to 10 L/min",
+        "10 to 15 L/min",
+        "15 to 25 L/min"
+      ],
+      "correct": 0,
+      "why": "A nasal cannula runs at 1 to 6 L/min. Above 6 it dries the nose without adding much oxygen. The 6 to 10 range belongs to the simple face mask and 10 to 15 to the non-rebreather."
+    },
+    {
+      "q": "A patient on a non-rebreather at 8 L/min has a reservoir bag that goes flat with every breath in. What do you do?",
+      "options": [
+        "Change to a nasal cannula at 6 L/min",
+        "Remove the reservoir bag from the mask",
+        "Tighten the strap and leave the flow alone",
+        "Increase the flow until the bag stays inflated"
+      ],
+      "correct": 3,
+      "why": "A non-rebreather needs about 10 to 15 L/min to keep its reservoir inflated. A bag that collapses on inspiration means the flow is too low. Tightening the strap does not fix a flow problem."
+    },
+    {
+      "q": "A patient with known COPD is short of breath with a saturation of 84%. What is the right approach?",
+      "options": [
+        "Withhold oxygen to protect the drive to breathe",
+        "Give oxygen and titrate to about 88 to 92%",
+        "Give high-flow oxygen until the reading is 100%",
+        "Wait for the hospital to decide about oxygen"
+      ],
+      "correct": 1,
+      "why": "A hypoxic COPD patient gets oxygen, titrated to the commonly taught target of about 88 to 92% per local protocol. Withholding is the old teaching and leaves the patient hypoxic; aiming for 100% overshoots the target."
+    },
+    {
+      "q": "Which device is right for a patient who is not breathing?",
+      "options": [
+        "Nasal cannula at 6 L/min",
+        "Simple face mask at 10 L/min",
+        "Bag-valve mask with reservoir at 15 L/min",
+        "Non-rebreather mask at 15 L/min"
+      ],
+      "correct": 2,
+      "why": "Only the bag-valve mask moves air for the patient. A non-rebreather at 15 L/min gives a high concentration, but only to a patient who is breathing adequately on their own."
+    },
+    {
+      "q": "Why are the oxygen percentages listed for each device only approximate?",
+      "options": [
+        "Oxygen tanks vary in purity from fill to fill",
+        "Flowmeters cannot be read precisely in the field",
+        "Oxygen is absorbed by the plastic tubing",
+        "The patient draws in room air around the device"
+      ],
+      "correct": 3,
+      "why": "The concentration that reaches the patient depends on how much room air is pulled in around the device with each breath, so the figures are approximate."
+    }
+  ],
+  "summary": "<p>Each device has its own flow range: nasal cannula 1 to 6 L/min (about 24 to 44%), simple face mask 6 to 10 L/min (about 35 to 60%), non-rebreather 10 to 15 L/min (about 80 to 90%) with the reservoir inflated first, and bag-valve mask with reservoir at 15 L/min (close to 100%) for inadequate breathing. Titrate to a target: about 94% or above for most patients and about 88 to 92% for known COPD, per local protocol. A lower target means titrate, never withhold.</p>"
+}

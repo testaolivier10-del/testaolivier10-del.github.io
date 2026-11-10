@@ -384,6 +384,112 @@
      "Random assignment compares conditions; it does not change who is in the sample."
     ]
    }
+  },
+  {
+   "id": "psy-research-sampling-13",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "research-sampling-s2",
+   "q": "The respondents’ ages do not match the town’s. Which term names this kind of gap between a sample and its population?",
+   "options": [
+    "A confounding variable",
+    "Random assignment",
+    "An operational definition",
+    "Sampling bias"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sampling bias means the sample differs from the population in ways that can change the results. Here adults under 30 are 55% of the respondents but 20% of the town’s adults.",
+    "options": [
+     "A confounding variable is an outside factor that differs between the conditions of an experiment. The survey has no conditions.",
+     "Random assignment places participants in conditions. The gap here is about who answered the survey.",
+     "An operational definition says how a variable is measured, not who is in the sample.",
+     "Right: the respondents are much younger than the town’s adults, so the sample is biased."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-14",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "research-sampling-s2",
+   "q": "If the sample were representative of the town’s adults, what would the \"Share of respondents\" column look like?",
+   "options": [
+    "Close to 20%, 35%, 30% and 15%, like the town",
+    "Exactly 25% in each of the four age groups",
+    "Mostly adults aged 30 to 49, the town’s largest group",
+    "The same shares as now, with more respondents"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A representative sample has about the same mix as its population, so each age group’s share of the respondents would be close to its share of the town’s adults.",
+    "options": [
+     "Right: a representative sample mirrors the population’s mix of ages.",
+     "Equal shares would match a town with equal age groups. This town’s groups are 20%, 35%, 30% and 15%.",
+     "Taking mostly the largest group would leave out most of the town’s adults.",
+     "More respondents with the same age mix would repeat the same bias."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-15",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A researcher recruits 50 volunteers at her own gym and randomly assigns them to stretch or to sit for ten minutes before a memory test. The stretching group scores higher. Which conclusion is best supported?",
+   "options": [
+    "Stretching improves memory in adults everywhere, because assignment was random",
+    "Stretching caused the higher scores for people like these volunteers",
+    "No cause can be claimed, because the participants were volunteers",
+    "The sample represents all adults, because 50 people took part"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Random assignment supports a cause-and-effect conclusion for the participants. Without random sampling, the results say less about people who are not like these gym volunteers.",
+    "options": [
+     "Random assignment does not make gym volunteers represent adults everywhere. That would take random sampling.",
+     "Right: random assignment allows the causal claim, and the volunteer sample limits how far it generalizes.",
+     "Volunteers limit generalizing, not the causal claim. Random assignment still balanced the two groups.",
+     "The number of participants does not make a sample representative. How they were chosen does."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-16",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A website poll on screen time collects 900,000 responses from its visitors. A research firm instead phones 1,500 adults chosen at random from the whole country. The two results differ. Which describes the country’s adults better, and why?",
+   "options": [
+    "The website poll, because 900,000 is far more people",
+    "The website poll, because its visitors chose to answer",
+    "The phone survey, because random sampling avoids bias",
+    "Neither one, because the two sets of results disagree"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Random sampling gives every adult the same chance of being chosen, so the sample is likely to be representative. A larger biased sample repeats the same bias more confidently.",
+    "options": [
+     "Size does not fix bias: visitors to one website are not like adults in general.",
+     "Choosing to answer makes the sample self-selected, which is a source of bias.",
+     "Right: a small random sample beats a huge sample of whoever visited one website.",
+     "Disagreement is expected when one sample is biased. The random sample is the one to trust."
+    ]
+   }
   }
  ]
 }

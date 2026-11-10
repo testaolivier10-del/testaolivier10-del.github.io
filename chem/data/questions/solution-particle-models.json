@@ -434,6 +434,32 @@
      "The ions separate rather than staying together as KCl units."
     ]
    }
+  },
+  {
+   "id": "chem-solution-particle-models-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solution-particle-models",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Equal volumes of 0.10 M NaCl and 0.10 M CaCl₂ are mixed, and no reaction occurs. In a particle diagram of the mixture, what is the ratio of Na⁺ to Ca²⁺ to Cl⁻ ions?",
+   "options": [
+    "1 : 1 : 2",
+    "1 : 2 : 3",
+    "1 : 1 : 3",
+    "2 : 1 : 3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Equal volumes at equal molarity hold equal numbers of formula units. Each NaCl gives 1 Na⁺ and 1 Cl⁻; each CaCl₂ gives 1 Ca²⁺ and 2 Cl⁻. For one of each: 1 Na⁺, 1 Ca²⁺ and 1 + 2 = 3 Cl⁻.",
+    "options": [
+     "That leaves out the chloride from NaCl. Both solutes supply Cl⁻.",
+     "CaCl₂ gives one Ca²⁺ per formula unit. The 2 in the formula belongs to chloride.",
+     "Right: the diagram is also neutral, since (+1) + (+2) + 3(−1) = 0.",
+     "That would need twice as much NaCl as CaCl₂. Equal volumes at equal molarity give equal amounts."
+    ]
+   }
   }
  ]
 }

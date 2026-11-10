@@ -497,6 +497,157 @@
      "500 is the difference in watts, not kWh."
     ]
    }
+  },
+  {
+   "id": "env-math-units-13",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A leaking faucet wastes 12 liters of water a day. How many liters does it waste in a year (365 days)?",
+   "numeric": {
+    "unit": "L",
+    "units": [
+     "liters",
+     "L/yr",
+     "liters per year"
+    ],
+    "from": {
+     "fn": "mul",
+     "args": [
+      12,
+      365
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 30.4166666667,
+      "why": "You divided 365 by 12. Multiply the daily amount by the number of days so that days cancel."
+     },
+     {
+      "value": 144,
+      "why": "That uses 12 months. The rate is per day, so multiply by 365 days."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{12\\,\\text{L}}{1\\,\\text{day}} \\times 365\\,\\text{days} = 4{,}380$ L. Days cancel, leaving liters."
+   }
+  },
+  {
+   "id": "env-math-units-14",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rain barrel holds 50 L. Using 1 gal = 3.79 L, which conversion factor do you multiply 50 L by to get gallons?",
+   "options": [
+    "$\\frac{3.79\\,\\text{L}}{1\\,\\text{gal}}$",
+    "$\\frac{1\\,\\text{gal}}{3.79\\,\\text{L}}$",
+    "$\\frac{3.79\\,\\text{gal}}{1\\,\\text{L}}$",
+    "$\\frac{1\\,\\text{L}}{3.79\\,\\text{gal}}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Put the unwanted unit, liters, on the bottom so it cancels: $50\\,\\text{L} \\times \\frac{1\\,\\text{gal}}{3.79\\,\\text{L}}$ is about 13 gal. A gallon is bigger than a liter, so fewer gallons than liters makes sense.",
+    "options": [
+     "With liters on top, liters do not cancel: the result would be in L² per gallon.",
+     "Right: liters cancel and gallons are left.",
+     "This says 3.79 gallons equal 1 liter, which swaps the two units.",
+     "This also swaps the units: 1 liter is not 3.79 gallons."
+    ]
+   }
+  },
+  {
+   "id": "env-math-units-15",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 2-kW electric heater used 10 kWh of energy. For how many hours did it run?",
+   "numeric": {
+    "unit": "h",
+    "units": [
+     "hours",
+     "hour",
+     "hr"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "div",
+     "args": [
+      10,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "You multiplied. Energy = power × time, so time = energy ÷ power: 10 kWh / 2 kW."
+     },
+     {
+      "value": 0.2,
+      "why": "You divided power by energy. Time = energy ÷ power."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Energy = power × time, so time = energy ÷ power: $\\frac{10\\,\\text{kWh}}{2\\,\\text{kW}} = 5$ h. Kilowatts cancel, leaving hours."
+   }
+  },
+  {
+   "id": "env-math-units-16",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A car releases 0.2 kg of CO2 for each kilometer and is driven 40 km a day. How many metric tons of CO2 does it release in a year (365 days)? (1 metric ton = 1,000 kg.)",
+   "numeric": {
+    "unit": "metric tons",
+    "units": [
+     "t",
+     "tons",
+     "metric ton",
+     "metric tons CO2",
+     "t CO2"
+    ],
+    "tol": 0.01,
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        0.2,
+        40,
+        365
+       ]
+      },
+      1000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2920,
+      "why": "That is in kilograms. Multiply by 1 metric ton / 1,000 kg."
+     },
+     {
+      "value": 0.008,
+      "why": "That is the metric tons for one day. Multiply by 365 days for the year."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{0.2\\,\\text{kg}}{1\\,\\text{km}} \\times \\frac{40\\,\\text{km}}{1\\,\\text{day}} \\times 365\\,\\text{days} \\times \\frac{1\\,\\text{metric ton}}{1{,}000\\,\\text{kg}} = 2.92$ metric tons. Kilometers, days and kilograms cancel."
+   }
   }
  ]
 }

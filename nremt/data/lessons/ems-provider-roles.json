@@ -1,0 +1,100 @@
+{
+  "id": "ems-provider-roles",
+  "title": "Provider levels and the EMT's role",
+  "chapter": 1,
+  "section": "ch1-ems-systems-roles",
+  "hook": "<p>You pull up to a two-car crash. One driver is slumped over the wheel. Fuel is running across the road, traffic is still moving past, and a bystander is waving you toward the car and shouting at you to hurry.</p><p>What you do first, second and third here is not improvised. An EMT's responsibilities come in a definite order, and the first one is not the patient. This lesson covers the four levels of provider, how an EMT is expected to think, the order of your responsibilities, and the traits the job asks for.</p>",
+  "steps": [
+    {
+      "find": "You arrive at a scene with hazards: leaking fuel and moving traffic.",
+      "act": "Personal safety comes first, then the safety of your crew, the patient and bystanders. You work alongside the other public safety professionals on scene to make it safe."
+    },
+    {
+      "find": "You reach the patient.",
+      "act": "Assess before you treat. Patient assessment always comes before patient care, because you cannot treat what you have not found."
+    },
+    {
+      "find": "Your findings do not give you enough to decide what to do.",
+      "act": "Ask more questions or examine the patient further before you act. Critical decision making means gathering information from the scene, the assessment and other sources, and putting it all together."
+    },
+    {
+      "find": "The patient has been assessed and cared for and needs to go to a hospital.",
+      "act": "Lift and move the patient safely, then transport. Think about the destination: the closest hospital is not always the right one when a specialty center is available."
+    },
+    {
+      "find": "You arrive at the hospital.",
+      "act": "Transfer care to the hospital staff. A patient is never abandoned before that transfer is complete. Throughout the call you act as the patient's advocate."
+    }
+  ],
+  "ideas": [
+    "<b>Four national levels, least to most training:</b> emergency medical responder (EMR), emergency medical technician (EMT), advanced EMT (AEMT), paramedic.",
+    "<b>EMR:</b> often first on scene; activates EMS, gives basic care for life threats and controls the scene. <b>EMT:</b> the minimum certification for ambulance staff; basic medical and trauma care, and transport.",
+    "<b>AEMT:</b> everything an EMT does, plus advanced airway devices, IV and IO fluids, and some medications. <b>Paramedic:</b> all of that plus advanced assessment and decision making; the highest prehospital level.",
+    "<b>Order of responsibilities:</b> your safety; the safety of crew, patient and bystanders; assessment; care; lifting and moving; transport; transfer of care; patient advocacy throughout.",
+    "<b>Physical traits:</b> good health and fitness, able to lift and carry 125 lb (57 kg), good near and distance vision, functional color vision (skin, lip and nail bed color are clues), clear speech and good hearing.",
+    "<b>Personal traits:</b> pleasant, sincere, cooperative, resourceful, a self-starter, emotionally stable, able to lead, neat and clean, a good listener who is nonjudgmental and fair. No alcohol within 8 hours of duty and no smoking on duty.",
+    "<b>The role reaches past the call:</b> community health and injury prevention, such as noticing fall hazards or poisoning risks in a patient's home."
+  ],
+  "misconception": {
+    "wrong": "The patient always comes first. A good EMT runs straight to the person who needs help.",
+    "right": "Your own safety comes first, then your crew, then the patient and bystanders. An EMT who is hurt cannot help anyone and becomes a second patient. Putting the patient first comes after the scene is safe, and it shows up as assessment, care and advocacy."
+  },
+  "check": [
+    {
+      "q": "Which list puts the four national provider levels in order from least to most training?",
+      "options": [
+        "EMT, EMR, AEMT, paramedic",
+        "EMR, AEMT, EMT, paramedic",
+        "EMR, EMT, AEMT, paramedic",
+        "EMT, EMR, paramedic, AEMT"
+      ],
+      "correct": 2,
+      "why": "The order is EMR, EMT, AEMT, paramedic. The tempting mistake is to put EMT first because it is the level you are studying, but the EMR has less training and is often the first on scene."
+    },
+    {
+      "q": "Which skill separates an AEMT from an EMT?",
+      "options": [
+        "Basic medical and trauma care",
+        "Transporting patients by ambulance",
+        "Controlling the scene until help arrives",
+        "IV and IO fluids and some medications"
+      ],
+      "correct": 3,
+      "why": "The AEMT does everything an EMT does plus advanced airway devices, IV and IO fluids, and some medications. Basic care and transport are already EMT skills, and scene control is listed for the EMR."
+    },
+    {
+      "q": "You arrive at a crash where fuel is leaking and a driver is slumped over the wheel. What is your first responsibility?",
+      "options": [
+        "Your own personal safety",
+        "Opening the driver's airway",
+        "Assessing the driver's injuries",
+        "Moving the driver to the stretcher"
+      ],
+      "correct": 0,
+      "why": "Personal safety comes first, followed by the safety of the crew, the patient and bystanders. The airway matters a great deal, but you cannot manage it if the scene injures you first."
+    },
+    {
+      "q": "You have assessed a patient, but what you found is not enough to decide on the right care. What does critical decision making tell you to do?",
+      "options": [
+        "Give the treatment that helps most patients",
+        "Ask more questions or examine the patient further",
+        "Transport at once and let the hospital decide",
+        "Wait and watch until the picture becomes clear"
+      ],
+      "correct": 1,
+      "why": "When the information is not enough, gather more by asking questions or examining further before you act. Giving the usual treatment is tempting, but a drug that helps one patient can worsen another patient's condition."
+    },
+    {
+      "q": "Why does an EMT need functional color vision?",
+      "options": [
+        "To read the colored labels on oxygen cylinders",
+        "To pass the driving test for the ambulance",
+        "To see color changes in the skin, lips and nail beds",
+        "To tell apart the wires on the cardiac monitor"
+      ],
+      "correct": 2,
+      "why": "Color changes in the skin, lips and nail beds are clues to the patient's condition, so the EMT has to be able to see them. The other options are not the reason the notes give."
+    }
+  ],
+  "summary": "<p>Prehospital providers are trained to four national levels: EMR, EMT, AEMT and paramedic. The EMT is the minimum certification for ambulance staff and gives basic medical and trauma care and transport. An EMT thinks by gathering information from the scene and the assessment, putting it together, and getting more when it is not enough. Responsibilities run in order: personal safety, the safety of others, assessment before care, safe lifting and moving, transport, and transfer of care without abandonment, with patient advocacy throughout. The job asks for fitness (lifting and carrying 125 lb), good vision including color vision, clear speech and hearing, and steady, fair, professional conduct.</p>"
+}

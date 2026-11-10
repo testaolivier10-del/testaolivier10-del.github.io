@@ -560,6 +560,44 @@
      "$16 \\ne 10$, so the forms are not equivalent."
     ]
    }
+  },
+  {
+   "id": "pcalc-exponential-manipulation-16",
+   "unit": "unit-2",
+   "topic": "exponential-manipulation",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write $\\frac{6^x}{2^x}$ as a single power.",
+   "type": "expr",
+   "expr": {
+    "answer": "3^x",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     3
+    ],
+    "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 3
+    },
+    "mistakes": [
+     {
+      "expr": "3",
+      "why": "The exponents are equal, but they do not cancel: $\\frac{6^x}{2^x} = \\left(\\frac{6}{2}\\right)^x = 3^x$. At $x = 2$ it is $\\frac{36}{4} = 9$."
+     },
+     {
+      "expr": "4^x",
+      "why": "Divide the bases, do not subtract them: $\\left(\\frac{6}{2}\\right)^x = 3^x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Power of a product: $6^x = (2 \\cdot 3)^x = 2^x \\cdot 3^x$, so the $2^x$ cancels and $\\frac{6^x}{2^x} = 3^x$. In short, a quotient of powers with the same exponent is a power of the quotient, $\\left(\\frac{6}{2}\\right)^x$. Check $x = 2$: $\\frac{36}{4} = 9 = 3^2$."
+   }
   }
  ]
 }

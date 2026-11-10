@@ -560,6 +560,32 @@
      ]
     }
    }
+  },
+  {
+   "id": "env-endocrine-disruptors-16",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which everyday items are a common source of the endocrine disruptors BPA and phthalates?",
+   "options": [
+    "Table salt and baking soda",
+    "Glass jars and steel pans",
+    "Some plastics and can linings",
+    "Cotton cloth and wool yarn"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "BPA and phthalates are used in some plastics, in the linings of food cans and in vinyl. They can move from these products into food and drink.",
+    "options": [
+     "These are simple salts with no hormone-like action.",
+     "Glass and steel do not contain these chemicals. They are often used to avoid them.",
+     "Right: these products are the main route of human exposure.",
+     "Natural fibers are not made with these chemicals."
+    ]
+   }
   }
  ]
 }

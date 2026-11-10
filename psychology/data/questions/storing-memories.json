@@ -447,6 +447,32 @@
      "Consolidation is the brain stabilizing a memory over time, not something Noor does on purpose while studying."
     ]
    }
+  },
+  {
+   "id": "psy-storing-memories-16",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "For which task is maintenance rehearsal well suited?",
+   "options": [
+    "Understanding the causes of a war for an essay exam next month",
+    "Remembering a friend's birthday from one year to the next",
+    "Holding a locker combination in mind until you can write it down",
+    "Learning what a new science term means and how to apply it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Maintenance rehearsal, repeating information over and over, keeps it in short-term memory for now but does little to store it long term. It suits holding something briefly.",
+    "options": [
+     "Lasting understanding needs elaborative rehearsal: linking the causes to their meaning and to what you already know.",
+     "Repeating a date for a few seconds will not keep it for a year. That takes deeper encoding.",
+     "Right: repetition holds the numbers for the few seconds until they are written down.",
+     "Meaning and application come from elaborative rehearsal, not from repetition."
+    ]
+   }
   }
  ]
 }

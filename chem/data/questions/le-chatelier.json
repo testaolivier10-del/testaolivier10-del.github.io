@@ -631,6 +631,32 @@
      "N₂ is a reactant here; adding it does shift the equilibrium."
     ]
    }
+  },
+  {
+   "id": "chem-le-chatelier-16",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Fe<sup>3+</sup>(aq) + SCN<sup>−</sup>(aq) ⇌ FeSCN<sup>2+</sup>(aq) is at equilibrium in a beaker. Water is added until the volume has doubled, at constant temperature. Which way does the equilibrium shift, and why?",
+   "options": [
+    "Toward the reactants, because Q is now greater than K",
+    "Toward the products, because Q is now less than K",
+    "No shift, because every concentration fell by the same factor",
+    "No shift, because water does not appear in the expression for K"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Doubling the volume halves every concentration. Q = [FeSCN<sup>2+</sup>] / ([Fe<sup>3+</sup>][SCN<sup>−</sup>]) has one concentration on top and two on the bottom, so Q becomes (½) / (½ × ½) = 2 times its old value. Now Q > K, and the net reaction runs in reverse, toward the side with more dissolved particles, until Q = K.",
+    "options": [
+     "Right: dilution shifts a solution equilibrium toward the side with more dissolved particles, here the two reactant ions.",
+     "Q rose, it did not fall. The bottom of Q has two concentrations that were each halved, so the bottom shrank more than the top.",
+     "Each concentration is halved, but Q has two of them on the bottom and one on top, so Q does not stay the same.",
+     "Water is not in K, but adding it changes the concentrations that are, and that changes Q."
+    ]
+   }
   }
  ]
 }

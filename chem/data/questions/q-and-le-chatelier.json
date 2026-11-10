@@ -451,6 +451,32 @@
    "why": {
     "correct": "Claim, evidence and reasoning: what changed, the comparison, the direction, and when it stops."
    }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-16",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g) is at equilibrium in a rigid, sealed flask. Argon gas is pumped in at constant temperature. Which statement is justified?",
+   "options": [
+    "Q &lt; K, so the net reaction goes forward to lower the higher pressure",
+    "Q &gt; K, so the net reaction goes in reverse to make room for the argon",
+    "K rises with the total pressure, so more NH<sub>3</sub> forms",
+    "Q = K still, because no concentration in Q has changed, so there is no shift"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Q contains only [N<sub>2</sub>], [H<sub>2</sub>] and [NH<sub>3</sub>]. Adding argon to a rigid flask changes none of them: the moles and the volume are the same. Q still equals K and nothing shifts.",
+    "options": [
+     "The total pressure is higher, but Q is built from the reacting gases only, and their concentrations are unchanged.",
+     "Argon does not take part in the reaction and does not change any term in Q.",
+     "K changes only with temperature.",
+     "Right: a change shifts an equilibrium only if it makes Q different from K."
+    ]
+   }
   }
  ]
 }

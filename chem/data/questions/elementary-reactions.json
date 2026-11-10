@@ -426,6 +426,32 @@
      "Its rate law would be k[NOCl]²."
     ]
    }
+  },
+  {
+   "id": "chem-elementary-reactions-16",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the termolecular elementary step 2 NO + O₂ → 2 NO₂, both [NO] and [O₂] are doubled at constant temperature. By what factor does the rate of this step change?",
+   "options": [
+    "8",
+    "4",
+    "6",
+    "2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For an elementary step the orders are the coefficients: rate = k[NO]²[O₂]. Doubling [NO] multiplies the rate by 2² = 4, and doubling [O₂] multiplies it by 2, so the rate is 4 × 2 = 8 times as large.",
+    "options": [
+     "Right: (2)² × (2) = 8.",
+     "That counts each reactant as first order. NO has a coefficient of 2 in this elementary step, so its order is 2.",
+     "The factors multiply, they do not add: 4 × 2, not 4 + 2.",
+     "That counts only the change in [O₂]. Doubling [NO] also raises the rate, by a factor of 4."
+    ]
+   }
   }
  ]
 }

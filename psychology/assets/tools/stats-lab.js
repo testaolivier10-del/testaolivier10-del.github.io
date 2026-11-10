@@ -41,7 +41,7 @@
   function f1(x){ return mi(M.fixed(x, 1)); }
   function zTxt(z){ var v = M.round(z, 2); return (v > 0 ? '+' : '') + mi(String(v)); }
   function ord(n){ return SL.ord(n); }
-  function pctTxt(p){ return p < 1 ? (p < 0.1 ? 'under 0.1' : n2(p)) : p > 99 ? (p > 99.9 ? 'over 99.9' : n2(p)) : String(Math.round(p)); }
+  function pctTxt(p){ return p < 1 ? (p < 0.1 ? 'under 0.1' : n2(p)) : p > 99 ? (p > 99.9 ? 'over 99.9' : n2(p)) : Math.abs(p * 2 - Math.round(p * 2)) < 1e-9 && Math.round(p) !== p ? n2(p) : String(Math.round(p)); }
   function reduced(){ return T.reduced(); }
   var MEAS = null;
   function tw(t, size, weight){
@@ -118,6 +118,8 @@
 
     // Correlation controls
     var sR = T.slider({ label: 'Correlation you aim for', min: -1, max: 1, step: 0.1, value: rT, decimals: 1, onInput: function(v){ act(); rT = M.round(v, 1); newPoints(true); say(corrLine()); } });
+    // The one control of this lens: on a phone the studio keeps it on screen (it sat under the fold, with no handle on the picture).
+    sR.el.setAttribute('data-ls-primary', '');
     $('.sl-grp-corr').appendChild(sR.el);
     var againBtn = document.createElement('button'); againBtn.type = 'button'; againBtn.className = 'bt-btn sl-again'; againBtn.textContent = 'New sample';
     $('.sl-grp-corr').appendChild(againBtn);
@@ -137,6 +139,7 @@
     function setView(v){
       if(v === view) return;
       act(); view = v; syncView(); redraw();
+      if(LS && LS.fit) LS.fit();   // the pinned slider belongs to Correlation only
       say({ curve: 'Normal curve. ', center: 'Center and spread. ', corr: 'Correlation. ' }[v] + line());
     }
     function syncView(){

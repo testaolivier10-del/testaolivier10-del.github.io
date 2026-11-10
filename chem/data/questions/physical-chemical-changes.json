@@ -443,6 +443,32 @@
      "Color alone does not decide; the different melting point and the gas show sample 2 changed."
     ]
    }
+  },
+  {
+   "id": "chem-physical-chemical-changes-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "An iron nail left in damp air becomes coated with rust, and the mass of the nail goes up. Which explanation is best?",
+   "options": [
+    "A physical change: water from the air sticks to the surface of the iron",
+    "A chemical change: iron atoms split into smaller atoms that weigh more in total",
+    "A physical change: the iron atoms move farther apart as the nail ages",
+    "A chemical change: iron atoms bond with oxygen from the air"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Rust is an iron oxide, a compound with new bonds between iron and oxygen. The oxygen atoms come from the air and are now part of the solid, so the mass goes up. New bonds and a new substance mean a chemical change.",
+    "options": [
+     "Rust is a different substance from wet iron: it has its own color and does not turn back to iron when dried.",
+     "Atoms are not split in a chemical change. They are rearranged into new combinations.",
+     "Atoms moving apart would not add mass. The added mass is oxygen.",
+     "Right: the same iron atoms are there, now bonded to oxygen atoms."
+    ]
+   }
   }
  ]
 }

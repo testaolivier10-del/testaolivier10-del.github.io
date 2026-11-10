@@ -335,6 +335,115 @@
    "why": {
     "correct": "(1.5 × 10²¹) × (3.0 × 10⁻²³ g) = 4.5 × 10⁻² g = 0.045 g. Coefficients multiply (1.5 × 3.0 = 4.5) and exponents add (21 − 23 = −2)."
    }
+  },
+  {
+   "id": "chem-math-scientific-notation-13",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which ordinary number equals 7.25 × 10⁻⁴?",
+   "options": [
+    "0.000725",
+    "0.0000725",
+    "72,500",
+    "0.00725"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The exponent −4 moves the decimal point 4 places to the left: 7.25 becomes 0.000725.",
+    "options": [
+     "Right: the 7 lands in the fourth place after the decimal point.",
+     "That is 7.25 × 10⁻⁵: the point was moved one place too many.",
+     "That is 7.25 × 10⁴. A negative exponent makes the number small.",
+     "That is 7.25 × 10⁻³: the point was moved only three places."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A city has about 6 × 10⁸ L of water in a reservoir and uses about 3 × 10⁵ L in an hour. How many times as large as the hourly use is the amount in the reservoir?",
+   "options": [
+    "2 × 10¹³ times",
+    "3 × 10³ times",
+    "2 × 10³ times",
+    "2 × 10⁻³ times"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Divide: (6 × 10⁸) ÷ (3 × 10⁵). Coefficients: 6 ÷ 3 = 2. Powers: 10⁸⁻⁵ = 10³. The reservoir holds 2 × 10³ = 2000 times the hourly use.",
+    "options": [
+     "Adding the exponents is for multiplying. A comparison by \"how many times\" is a division, so the exponents subtract.",
+     "The powers of ten are right, but the coefficients divide too: 6 ÷ 3 = 2, not 6 − 3.",
+     "Right: 600,000,000 ÷ 300,000 = 2000.",
+     "That is the small number divided by the large one. The reservoir is larger, so the ratio is above 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-15",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "Calculate (2.4 × 10⁻³) ÷ (6.0 × 10⁴). Give the answer in correct scientific notation (type it as, for example, 2.5e-6).",
+   "numeric": {
+    "answer": 4e-8,
+    "tol": 1e-9,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4e-7,
+      "rel": 0.01,
+      "why": "Value: 2.4 ÷ 6.0 = 0.40, so the result is 0.40 × 10⁻⁷. Making the coefficient 4.0 (10 times larger) lowers the exponent by one, to −8."
+     },
+     {
+      "value": 4,
+      "rel": 0.01,
+      "why": "Value: you added the exponents. Dividing subtracts them: −3 − 4 = −7."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Coefficients: 2.4 ÷ 6.0 = 0.40. Powers: 10⁻³ ÷ 10⁴ = 10⁻³⁻⁴ = 10⁻⁷. That is 0.40 × 10⁻⁷, and moving the point one place gives 4.0 × 10⁻⁸."
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-16",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A report lists a particle size as 45 × 10⁻⁶ m so that the exponent matches the micrometer. What is this in correct scientific notation?",
+   "options": [
+    "4.5 × 10⁻⁷ m",
+    "4.5 × 10⁻⁵ m",
+    "0.45 × 10⁻⁴ m",
+    "4.5 × 10⁻⁶ m"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "45 = 4.5 × 10¹, so 45 × 10⁻⁶ = 4.5 × 10¹ × 10⁻⁶ = 4.5 × 10⁻⁵ m. Making the coefficient 10 times smaller makes the power of ten 10 times larger.",
+    "options": [
+     "The exponent moved the wrong way. The coefficient got smaller, so the power of ten must get larger: −6 becomes −5.",
+     "Right: 0.000045 m either way.",
+     "The value is right, but 0.45 is not between 1 and 10, so this is not correct scientific notation.",
+     "Changing 45 to 4.5 without changing the exponent makes the number 10 times too small."
+    ]
+   }
   }
  ]
 }

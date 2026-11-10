@@ -24,8 +24,8 @@ measured, what was fixed and what is still open, so a later session can carry on
 
 - Every question has an explanation. In the AP® courses and A&P every choice item (single and select-all) also has
   one per option; sequence, find-the-error, missing-step and prediction items explain the whole answer instead, by
-  design. NREMT (median about 540 characters) and Organic Chemistry (median about 200, 172 under 60) explain the
-  right answer only.
+  design. NREMT (median about 540 characters) and Organic Chemistry (median about 200, 172 under 60) explained the
+  right answer only when this was measured; NREMT has had a line per option since 2026-11-10 (see Fixed).
 - No "all of the above" or "none of the above"; no exact duplicate questions (A&P's 159 repeated stems are label
   questions on different pins of the same figure).
 - Choices are shuffled on screen everywhere: AP® courses and A&P every time a question is drawn (worksheets too),
@@ -41,8 +41,25 @@ measured, what was fixed and what is still open, so a later session can carry on
 
 - NREMT deals each question's choices afresh on every visit (`nremt/practice-engine.js shuffleQuestionOptions`);
   the saved order is kept only while an exam is in progress, so a resumed exam still grades against its letters.
-- "every option explained" on the Practice band only where it is true (AP® courses and A&P); NREMT and ochem say
-  "every answer explained" (`explained` in `panelConfig`, `paintCount` in `assets/course/practice-panel.js`).
+- "every option explained" on the Practice band only where it is true (AP® courses, A&P and, since 2026-11-10,
+  NREMT); ochem says "every answer explained" (`explained` in `panelConfig`, `scripts/lib/practice-panel.mjs`;
+  `paintCount` in `assets/course/practice-panel.js`).
+- NREMT now explains every choice, not only the right one (2026-11-10). `nremt/assets/option-whys.json` holds one
+  short line per option for all 1,997 single and select-all questions, keyed by question id, in the bank's stored
+  option order. After an answer is checked, each option shows its own line under it, the same way the AP® courses
+  do: in practice and every untimed mode (review, missed, flagged, weak spots), in the answer list after an exam
+  or a set (each option listed with "Your answer" and "Correct answer" tags, like the AP® exam results), and on
+  the score card's "what you missed" (the line for the choice the student picked). The long explanation is
+  unchanged. Order, drag-and-drop and table questions have no lines and look as before.
+  - The choices are dealt afresh each visit, so the page carries each line to wherever its option lands
+    (`shownWhys` in `nremt/assets/question-ids.js`, called from `nremt/practice-engine.js`). The "Correct: " and
+    "Not this: " labels in the file are not shown; the option's colour and tag say it.
+  - The file loads in the background when a session starts, like the explanations, and is kept for offline use
+    (`sw.js`). If it has not arrived, or a question has no lines, or a "Correct" label is not on the keyed
+    option, the page shows exactly what it showed before.
+  - Checks: `scripts/build-question-bank.mjs` fails if a key is not a single or select-all question's id, if the
+    number of lines is not the number of options, if a "Correct: " line is not exactly on a keyed option, or if a
+    choice question has no lines. Tests: `scripts/test/nremt-option-whys.test.mjs`.
 - Teacher printed tests (`assets/class/teach.js viewPrint`) printed the bank's stored order, so an AP® Biology answer
   key was mostly A. Each bank question's choices are now dealt per question and version (seeded) with the key
   following; `fixed` items and the teacher's own questions keep their order.
@@ -77,5 +94,7 @@ reports, and propose changes to the owner; they never edit questions.
 
 - A paid expert spot check per course (about 100 random questions), NREMT first.
 - Relabel difficulty from real results once the data allows (analytics run A3.9c).
-- Organic Chemistry: 363 true or false items (guessable half the time) and short explanations; NREMT and ochem have no
-  per-option explanations.
+- Organic Chemistry: 363 true or false items (guessable half the time), short explanations and no per-option
+  explanations (NREMT has them since 2026-11-10).
+- NREMT per-option lines: no clinician has read them yet; they go with the NREMT expert spot check above. A new
+  NREMT choice question now needs its lines in `nremt/assets/option-whys.json` or the bank check fails.

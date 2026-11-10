@@ -1,0 +1,103 @@
+{
+  "id": "suctioning-and-airway-sounds",
+  "title": "Suctioning and the sounds of an obstructed airway",
+  "chapter": 9,
+  "section": "ch9-suction",
+  "hook": "<p>An unresponsive patient has vomited. Each breath makes a wet, bubbling sound. Your partner tilts the head back further, and the sound does not change at all.</p><p>An airway in trouble usually tells you what is wrong by the sound it makes. Snoring, gurgling, stridor and wheezing each point to a different problem with a different answer. This lesson covers those four sounds and how to suction without doing harm.</p>",
+  "steps": [
+    {
+      "find": "You hear gurgling: fluid such as blood, vomit or secretions in the airway.",
+      "act": "Suction. Repositioning does nothing for fluid. Pre-oxygenate first when you can, because suction removes air along with the fluid."
+    },
+    {
+      "find": "You are getting the catheter ready.",
+      "act": "Measure it from the corner of the mouth to the earlobe or the angle of the jaw. Insert it with the suction off, only to that depth and never past where you can see, then apply suction as you withdraw in a sweeping motion."
+    },
+    {
+      "find": "The suction catheter is in the patient's mouth.",
+      "act": "Keep each attempt short: about 15 seconds at most in an adult, and about 10 seconds in a child and about 5 seconds in an infant, with a lower suction pressure. Some texts teach 10 seconds for adults, so follow local protocol. Then ventilate, and suction again if needed."
+    },
+    {
+      "find": "The vomit is thick enough to clog even a rigid catheter.",
+      "act": "Log-roll the patient onto their side and let gravity clear the mouth."
+    },
+    {
+      "find": "A child's heart rate drops while you are suctioning.",
+      "act": "Stop and ventilate. Touching the back of the throat can trigger a vagal response that slows the heart, and this matters most in infants and children."
+    },
+    {
+      "find": "You hear snoring, stridor or wheezing instead of gurgling.",
+      "act": "Snoring is the tongue: use a manual maneuver, then an adjunct. Stridor is narrowing at or above the larynx: treat it as an emergency, transport rapidly, and treat the cause when you can (epinephrine per protocol for anaphylaxis). Wheezing is narrowed lower airways: it is treated with medication, not with an adjunct or suction."
+    }
+  ],
+  "ideas": [
+    "<b>Suction is time-limited</b> because the patient is not breathing or being ventilated while the catheter is in. The pattern is suction, ventilate, suction again.",
+    "<b>Rigid (Yankauer) catheter:</b> thick secretions and vomit in an adult's mouth. <b>Soft (French) catheter:</b> the nose, a stoma, or through an adjunct.",
+    "<b>Snoring</b> is the tongue against the back of the throat. <b>Gurgling</b> is fluid.",
+    "<b>Stridor</b> is high-pitched and heard on breathing in. It comes from swelling (anaphylaxis, burns, infection) or a foreign body at or above the larynx.",
+    "<b>Wheezing</b> is a whistling sound, classically on breathing out, from narrowed lower airways: asthma, COPD, and the lower-airway part of anaphylaxis.",
+    "<b>Effort with no air movement</b> is a complete obstruction. Silence with effort is worse than any of the four sounds."
+  ],
+  "misconception": {
+    "wrong": "Keep suctioning until the airway is perfectly clear, however long that takes.",
+    "right": "Every second of suction is a second without air. Suction for a short, defined time, ventilate, and go back in if you need to. A hypoxic patient gets more hypoxic during suction before getting better."
+  },
+  "check": [
+    {
+      "q": "An unresponsive patient has a wet, bubbling sound with each breath. What does the airway need?",
+      "options": [
+        "A head-tilt/chin-lift",
+        "A nasopharyngeal airway",
+        "A bronchodilator inhaler",
+        "Suction of the mouth and throat"
+      ],
+      "correct": 3,
+      "why": "Gurgling is fluid in the airway, and the answer is suction. A head-tilt/chin-lift is the answer to snoring, which is the tongue; it does nothing for fluid."
+    },
+    {
+      "q": "When is suction applied during the procedure?",
+      "options": [
+        "While the catheter is being withdrawn",
+        "While the catheter is being inserted",
+        "Before the catheter enters the mouth",
+        "Continuously from start to finish"
+      ],
+      "correct": 0,
+      "why": "Insert with the suction off, then apply it on the way out with a sweeping motion. Suction on the way in pulls soft tissue into the tip and removes oxygen for longer."
+    },
+    {
+      "q": "A patient with facial swelling after a bee sting has a high-pitched sound each time she breathes in. What does this sound tell you?",
+      "options": [
+        "Fluid is pooling in the back of the throat",
+        "The tongue has fallen against the throat",
+        "The upper airway is narrowing at or above the larynx",
+        "The small lower airways are in spasm"
+      ],
+      "correct": 2,
+      "why": "A high-pitched sound on breathing in is stridor: narrowing at or above the larynx, here from swelling. After a sting that points to anaphylaxis, which calls for epinephrine per protocol and rapid transport. Wheezing is the lower-airway sound and is classically heard on breathing out."
+    },
+    {
+      "q": "You are suctioning an infant and the heart rate falls. What do you do?",
+      "options": [
+        "Finish the attempt, then reassess",
+        "Stop suctioning and ventilate",
+        "Switch to a larger rigid catheter",
+        "Insert the catheter a little deeper"
+      ],
+      "correct": 1,
+      "why": "Stimulating the back of the throat can cause a vagal response and slow the heart, especially in infants and children. Stop and ventilate. Finishing the attempt prolongs both the stimulation and the time without air."
+    },
+    {
+      "q": "A man at a restaurant is making obvious efforts to breathe. His chest heaves, but you hear no sound and feel no air moving. What is this?",
+      "options": [
+        "A partial obstruction by the tongue",
+        "A mild obstruction that he will clear",
+        "A lower-airway spasm from asthma",
+        "A complete airway obstruction"
+      ],
+      "correct": 3,
+      "why": "Respiratory effort with no air movement is a complete obstruction, the worst finding on the list. A partial obstruction makes noise because some air is still moving."
+    }
+  ],
+  "summary": "<p>Suction clears blood, vomit and secretions, but it also removes air, so it is short: about 15 seconds in an adult (10 in some texts, per local protocol), about 10 seconds in a child and about 5 in an infant. Measure the catheter, insert it without suction to a depth you can see, and suction on the way out; pre-oxygenate before and ventilate after. Snoring is the tongue and needs positioning and an adjunct; gurgling is fluid and needs suction; stridor is upper-airway narrowing and needs rapid transport; wheezing is lower-airway narrowing and needs medication. Effort with no air movement is a complete obstruction.</p>"
+}

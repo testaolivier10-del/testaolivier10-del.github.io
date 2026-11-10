@@ -22,6 +22,40 @@
      10
     ]
    }
+  },
+  "stats-significance-s2": {
+   "kind": "data",
+   "title": "Three studies of a vocabulary app",
+   "invented": true,
+   "table": {
+    "caption": "Words recalled out of 40: the app group’s mean minus the comparison group’s mean (invented data for practice)",
+    "cols": [
+     "Study",
+     "Participants",
+     "Difference in words recalled",
+     "p value"
+    ],
+    "rows": [
+     [
+      "A",
+      "30",
+      "4.0",
+      "$p = .12$"
+     ],
+     [
+      "B",
+      "400",
+      "3.5",
+      "$p = .001$"
+     ],
+     [
+      "C",
+      "12,000",
+      "0.3",
+      "$p = .01$"
+     ]
+    ]
+   }
   }
  },
  "items": [
@@ -306,6 +340,166 @@
       }
      }
     }
+   }
+  },
+  {
+   "id": "psy-stats-significance-11",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "stats-significance-s1",
+   "q": "Students were randomly assigned to walk or to sit, and the difference was statistically significant. Taken together, what do these two facts allow the researchers to conclude?",
+   "options": [
+    "Walking and worry are related, but no cause can be claimed",
+    "Walking probably caused the lower worry ratings",
+    "Every student will worry less after a ten-minute walk",
+    "The 0.8-point difference is a large and important effect"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Significance says the 0.8-point difference is unlikely to be chance. Random assignment makes the groups alike in other ways, so the walk is the likely cause.",
+    "options": [
+     "That limit applies to correlational studies. Here students were randomly assigned, which supports a causal claim.",
+     "Right: chance is unlikely (significance) and other differences between the groups are unlikely (random assignment).",
+     "Means describe groups. Some students in the walking group will still have worried more.",
+     "Neither significance nor random assignment says the difference is large. Effect size answers that."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-12",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Twelve small studies of a study-skills course report effects that range from none to large. A team combines the results of all twelve to estimate the course’s true effect. What is this approach, and why use it?",
+   "options": [
+    "A case study, which examines one person in depth",
+    "A replication, which repeats a single study",
+    "A meta-analysis, which better estimates an effect’s size",
+    "A survey, which asks many people the same questions"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A meta-analysis combines the results of many studies. Small studies bounce around by chance, so pooling them gives a better estimate of how large an effect really is.",
+    "options": [
+     "A case study looks closely at one person or group. This team is pooling twelve studies.",
+     "A replication repeats one study to see whether its result holds. Here the results of many studies are combined.",
+     "Right: pooling many studies evens out the chance variation in each one.",
+     "A survey collects new answers from people. This team is combining results that already exist."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-13",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "In a study, two groups’ means are 0.8 standard deviations apart. How do researchers usually describe an effect size like this?",
+   "options": [
+    "As a small effect",
+    "As a medium effect",
+    "As a result due to chance",
+    "As a large effect"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Researchers often call a difference of about 0.2 standard deviations small, 0.5 medium and 0.8 large, though what counts as important depends on the question.",
+    "options": [
+     "About 0.2 standard deviations is called small.",
+     "About 0.5 standard deviations is called medium.",
+     "Effect size describes how big a difference is. Whether it could be chance is what significance addresses.",
+     "Right: about 0.8 standard deviations is usually called a large effect."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-14",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "stats-significance-s2",
+   "q": "By the usual convention, which studies found a statistically significant difference?",
+   "options": [
+    "Studies B and C",
+    "Study A only",
+    "Studies A and B",
+    "All three studies"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The convention is $p < .05$. Study B ($p = .001$) and Study C ($p = .01$) are below .05; Study A ($p = .12$) is not.",
+    "options": [
+     "Right: .001 and .01 are both below .05.",
+     "Study A has the largest difference, but its p value, .12, is above .05.",
+     "Study A’s p value, .12, is above .05, and Study C’s, .01, is below it.",
+     "Study A’s difference could plausibly be due to chance: $p = .12$."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-15",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "stats-significance-s2",
+   "q": "Which study’s result is statistically significant but probably too small to matter to a student?",
+   "options": [
+    "Study A, with a difference of 4.0 words",
+    "Study B, with a difference of 3.5 words",
+    "None: a significant result always matters",
+    "Study C, with a difference of 0.3 words"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Significance is not size. With 12,000 participants even a difference of 0.3 words out of 40 is unlikely to be chance, yet it is too small to notice.",
+    "options": [
+     "Study A has the largest difference, but it is not statistically significant ($p = .12$).",
+     "Study B is significant, and 3.5 more words out of 40 is a difference a student would notice.",
+     "Significance says a difference is unlikely to be chance, not that it is large or important.",
+     "Right: a huge sample makes a tiny difference significant."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-16",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "stats-significance-s2",
+   "q": "Suppose the app really made no difference. About how often would chance alone produce a difference at least as large as the one in Study B?",
+   "options": [
+    "About 1 time in 20",
+    "About 400 times in 1,000",
+    "About 1 time in 1,000",
+    "Never: chance cannot produce a difference"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The p value is the probability of a difference at least this large if only chance were at work. For Study B, $p = .001$, or about 1 in 1,000.",
+    "options": [
+     "1 in 20 is .05, the cutoff for significance. Study B’s p value is .001.",
+     "400 is the number of participants in Study B, not a probability.",
+     "Right: $p = .001$ is 1 in 1,000.",
+     "Chance can always produce some difference between groups. The p value says how often."
+    ]
    }
   }
  ]

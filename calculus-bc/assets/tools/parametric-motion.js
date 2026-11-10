@@ -154,7 +154,7 @@
       if(ax > 0 && ax < g.h) o.push('<line class="pm-axis" x1="0" y1="' + r1(ax) + '" x2="' + g.w + '" y2="' + r1(ax) + '"/>');
       if(ay > 0 && ay < g.w) o.push('<line class="pm-axis" x1="' + r1(ay) + '" y1="0" x2="' + r1(ay) + '" y2="' + g.h + '"/>');
       var ly = clamp(ax, 14, g.h - 6), lx = clamp(ay, 6, g.w - 40);
-      o.push('<g class="pm-tk">' + gx.filter(function(v){ return Math.abs(v) > 1e-9; }).map(function(v){ return '<text x="' + r1(g.sx(v)) + '" y="' + r1(ly + (ax > g.h - 20 ? -6 : 14)) + '" text-anchor="middle">' + F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1) + '</text>'; }).join('') +
+      o.push('<g class="pm-tk">' + gx.filter(function(v){ return Math.abs(v) > 1e-9 && g.sx(v) > 12 && g.sx(v) < g.w - 12; /* a number on the very edge is cut in half */ }).map(function(v){ return '<text x="' + r1(g.sx(v)) + '" y="' + r1(ly + (ax > g.h - 20 ? -6 : 14)) + '" text-anchor="middle">' + F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1) + '</text>'; }).join('') +
         gy.filter(function(v){ return Math.abs(v) > 1e-9; }).map(function(v){ return '<text x="' + r1(lx + 6) + '" y="' + r1(g.sy(v) + 4) + '">' + F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1) + '</text>'; }).join('') + '</g>');
       o.push('<text class="pm-axl" x="' + (g.w - 8) + '" y="' + r1(clamp(ax - 6, 14, g.h - 8)) + '" text-anchor="end">x</text><text class="pm-axl" x="' + r1(clamp(ay + 8, 8, g.w - 14)) + '" y="16">y</text>');
       if(p.wheel){ var gy0 = r1(g.sy(0)); o.push('<rect class="pm-ground" x="0" y="' + gy0 + '" width="' + g.w + '" height="14"/>'); }
@@ -208,7 +208,7 @@
     /* ------------------------------------------------ the speed graph */
     function speedLayout(){
       var w = Math.max(260, Math.round(swrap.clientWidth || 600)), h = Math.max(70, Math.round(swrap.clientHeight || 110));
-      var p = pa(), tb = info().tb, hi = Math.max.apply(null, tb.sp) * 1.15 || 1, L = w < 420 ? 34 : 40, R = 10, top = 8, bot = 20;
+      var p = pa(), tb = info().tb, hi = Math.max.apply(null, tb.sp) * (h < 96 ? 1.42 : 1.15) || 1 /* on a short panel the curve stays under the two labels */, L = w < 420 ? 34 : 40, R = 10, top = 8, bot = 20;
       return { w: w, h: h, L: L, R: R, top: top, bot: bot, hi: hi, pw: w - L - R, ph: h - top - bot,
         gx: function(t){ return L + (t - p.t[0]) / (p.t[1] - p.t[0]) * (w - L - R); }, gy: function(v){ return top + (1 - v / hi) * (h - top - bot); } };
     }
@@ -261,7 +261,8 @@
       if(!LS) return;
       var p = pa(), s = PM.at(p, st.t), narrow = false;
       try{ narrow = LS.root.classList.contains('ls-phone') || matchMedia('(max-width: 599.98px)').matches; }catch(e){}
-      var slope = isFinite(s.slope) && s.speed > 1e-6 ? F(s.slope, 2) : '—';
+      // a slope in the thousands is the slider one step from a vertical tangent: say so instead of printing −1883.65
+      var slope = isFinite(s.slope) && s.speed > 1e-6 ? (Math.abs(s.slope) > 500 ? 'near vertical' : F(s.slope, 2)) : '—';
       LS.pills(narrow ? [{ html: '<span class="pm-pk pv">speed</span> ' + F(s.speed, 2) + ' · <span class="pm-pk pt">dy/dx</span> ' + slope, tone: 'ghost' }]
         : [{ k: 'speed', html: F(s.speed, 2), tone: 'readout' }, { k: 'dy/dx', html: slope, tone: 'readout' }], 'left', 'explore');
       LS.pills([{ html: 't = ' + F(st.t, 2), tone: st.playing ? 'accent' : 'ghost' }], 'right', 'explore');
@@ -363,8 +364,21 @@
     return [w, h];
   }
   /* The plot's ranges with one scale on both axes, so the path keeps its shape. */
-  function figSpec(p, path){
-    var f = p.fig, sz = figSize(560, 380), xs = path.map(function(q){ return q[0]; }), ys = path.map(function(q){ return q[1]; });
+  /* On a phone the quiz stage can be much shorter than the plot was drawn for (a step with four long choices
+     leaves it 240px): the plot was then shrunk to fit and its numbers fell to 7px. Redraw it to the slot's shape. */
+  function fitSlot(box, me, redraw){
+    if(!window.ResizeObserver) return;
+    new ResizeObserver(function(){
+      var svg = box.querySelector('svg');
+      if(!svg || (window.innerWidth || 1280) > 640 || !box.closest || !box.closest('.ls-stage')) return;
+      var r = svg.getBoundingClientRect(), vb = svg.viewBox && svg.viewBox.baseVal;
+      if(!vb || !vb.height || r.width < 120 || r.height < 120) return;
+      var h = Math.max(170, Math.min(440, Math.round(340 * r.height / r.width)));
+      if(Math.abs(h - vb.height) / vb.height > 0.12){ me.size = [340, h]; redraw(); }
+    }).observe(box);
+  }
+  function figSpec(p, path, size){
+    var f = p.fig, sz = size || figSize(560, 380), xs = path.map(function(q){ return q[0]; }), ys = path.map(function(q){ return q[1]; });
     var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys);
     if(!f.rel){ x0 = Math.min(x0, 0); x1 = Math.max(x1, 0); y0 = Math.min(y0, 0); y1 = Math.max(y1, 0); }
     var pad = Math.max(x1 - x0, y1 - y0, 1) * 0.1; x0 -= pad; x1 += pad; y0 -= pad; y1 += pad;
@@ -392,13 +406,14 @@
   function pathFigure(box, p){
     var marks = T.tries(), path = PM.figPath(p.fig, 240), me = { marks: marks, path: path, hidden: !!p.fig.hide };
     function redraw(){
-      var spec = figSpec(p, path), svg;
+      var spec = figSpec(p, path, me.size), svg;
       try{ svg = P.svg(spec); }catch(e){ return; }
       var Fr = P.frame(spec);
       box.innerHTML = '<div class="pm-figwrap">' + svg.replace(/<\/svg>$/, pathSvg(Fr, p, path, me.hidden) + marks.svg(Fr) + '</svg>') + '</div>';
     }
     redraw();
     me.redraw = redraw;
+    fitSlot(box, me, redraw);
     return me;
   }
   var METHOD = {

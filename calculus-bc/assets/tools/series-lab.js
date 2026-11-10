@@ -72,7 +72,10 @@
       var cp = pts[N - 1], right = cp[0] > F.w * 0.62, ly = cp[1] - 10;
       var ysum = o.sum != null && isFinite(o.sum) ? F.sy(o.sum) : null;
       if(ly < F.pad.t + 12 || (ysum != null && Math.abs(ly - 4 - ysum) < 16) || (ysum != null && ysum < cp[1] && cp[1] - ysum < 26)) ly = cp[1] + 20;
-      out.push('<text class="sl-curlab" x="' + r2(right ? cp[0] - 10 : cp[0] + 10) + '" y="' + r2(Math.min(F.h - F.pad.b - 4, ly)) + '" text-anchor="' + (right ? 'end' : 'start') + '">S' + sub(n0 + N - 1) + ' = ' + esc(sig(s[N - 1])) + '</text>');
+      ly = Math.min(F.h - F.pad.b - 4, ly);
+      // pushed back up by the x-axis onto the sum's own label (a sum of 0 at the center of a power series): sit on the line above it
+      if(ysum != null && o.sumLabel && right && Math.abs(ly - (ysum - 7)) < 15) ly = ysum - 7 - 17;
+      out.push('<text class="sl-curlab" x="' + r2(right ? cp[0] - 10 : cp[0] + 10) + '" y="' + r2(ly) + '" text-anchor="' + (right ? 'end' : 'start') + '">S' + sub(n0 + N - 1) + ' = ' + esc(sig(s[N - 1])) + '</text>');
     }
     return { svg: base.replace('</svg>', out.join('') + '</svg>'), F: F, sums: s, terms: a };
   }

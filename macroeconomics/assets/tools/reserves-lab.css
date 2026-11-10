@@ -81,10 +81,15 @@
 /* ---------------------------------------------------- test yourself */
 .rl-qfig{margin:0;width:100%;}
 .rl-qfig .mac-graph{width:100%;}
+/* Phone: the row of curve handles ends under the stage's Enlarge button (bottom right), which covered "Start over". */
+.ls-root.ls-phone .ls-stage .rl-qfig .mac-gr-controls{padding:0 50px;}
 .rl-qfig .mac-graph{margin:0;}
 .rl-qrow,.rl-after{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;align-items:start;}
 .rl-after:empty{display:none;}
 .rl-qpanel{min-width:0;}
+/* Phone drills: the stage is cut down to fit the answer (the studio's --ls-sh), and a graph drawn at full width was
+   taller than it, so its horizontal axis and curve names were cut off. The graph now fits the height it has. */
+.ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .rl-qpanel .mac-graph-svg{display:block;width:100%;height:auto;max-height:calc(var(--ls-sh, 62svh) - 44px);}
 .rl-taccount{max-width:420px;margin:0 auto;}
 .rl-taccount td{font-variant-numeric:tabular-nums;}
 .ls-root .rl-qfig .mac-gr-stage{max-width:min(560px, calc((100svh - 330px) * 1.07));}

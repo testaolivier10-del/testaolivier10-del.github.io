@@ -324,6 +324,136 @@
    "why": {
     "correct": "$r = 2\\cos\\frac{\\pi}{4} = \\sqrt{2}$, so $y = r\\sin\\theta = \\sqrt{2} \\cdot \\frac{\\sqrt{2}}{2} = 1$."
    }
+  },
+  {
+   "id": "cbc-math-polar-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which polar coordinates name the same point as $\\left(2, \\frac{\\pi}{3}\\right)$?",
+   "options": [
+    "$\\left(-2, \\frac{\\pi}{3}\\right)$",
+    "$\\left(2, -\\frac{\\pi}{3}\\right)$",
+    "$\\left(2, \\frac{4\\pi}{3}\\right)$",
+    "$\\left(-2, \\frac{4\\pi}{3}\\right)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Adding $\\pi$ to the angle points the ray the opposite way, and a negative $r$ walks backward through the pole, so the two changes together land on the same point: $\\left(-2, \\frac{\\pi}{3} + \\pi\\right) = \\left(-2, \\frac{4\\pi}{3}\\right)$. Both are $(1, \\sqrt{3})$ in rectangular coordinates.",
+    "options": [
+     "Flipping the sign of $r$ alone lands on the opposite side of the pole, at $(-1, -\\sqrt{3})$.",
+     "A negative angle turns clockwise, which reaches $(1, -\\sqrt{3})$, below the $x$-axis.",
+     "Adding $\\pi$ alone points to the opposite ray, at $(-1, -\\sqrt{3})$. Flip the sign of $r$ as well.",
+     "Add $\\pi$ to $\\theta$ and flip the sign of $r$: the point does not change."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-13",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which describes the graph of the polar equation $\\theta = \\frac{3\\pi}{4}$, with $r$ any real number?",
+   "options": [
+    "A circle of radius $\\frac{3\\pi}{4}$ centered at the pole",
+    "A line through the pole with slope $-1$",
+    "A line through the pole with slope $1$",
+    "A horizontal line $\\frac{3\\pi}{4}$ units above the pole"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "$\\theta = c$ fixes the angle and lets $r$ vary, so the graph is the line through the pole at that angle. Its slope is $\\tan\\frac{3\\pi}{4} = -1$.",
+    "options": [
+     "A circle centered at the pole fixes the distance: $r = a$. Here the angle is fixed.",
+     "Every point is on the ray at angle $\\frac{3\\pi}{4}$ or, for negative $r$, on the opposite ray: a line of slope $\\tan\\frac{3\\pi}{4} = -1$.",
+     "Slope 1 belongs to $\\theta = \\frac{\\pi}{4}$. The angle $\\frac{3\\pi}{4}$ is in the second quadrant, where the tangent is negative.",
+     "$\\frac{3\\pi}{4}$ is an angle, not a height. The graph is a tilted line through the pole."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-14",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which polar curve is a limaçon with an inner loop?",
+   "options": [
+    "$r = 2 + 2\\sin\\theta$",
+    "$r = 3 + \\sin\\theta$",
+    "$r = 1 + 2\\sin\\theta$",
+    "$r = 2\\sin\\theta$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "$r = a + b\\sin\\theta$ has an inner loop when $|a| < |b|$: then $r$ is negative for some angles, and those points form the loop. For $r = 1 + 2\\sin\\theta$, $r < 0$ where $\\sin\\theta < -\\frac{1}{2}$.",
+    "options": [
+     "Equal numbers give a cardioid: $r$ reaches 0 once, at $\\theta = \\frac{3\\pi}{2}$, and is not negative anywhere.",
+     "$r$ stays between 2 and 4, so it is positive throughout and the curve has no loop.",
+     "$1 < 2$, so $r$ changes sign: it is negative for $\\frac{7\\pi}{6} < \\theta < \\frac{11\\pi}{6}$, which draws the inner loop.",
+     "With no constant term this is a circle through the pole, with diameter 2."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-15",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which polar equation describes the vertical line $x = 3$?",
+   "options": [
+    "$r = 3\\sec\\theta$",
+    "$r = 3\\cos\\theta$",
+    "$r = 3$",
+    "$\\theta = 3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Replace $x$ with $r\\cos\\theta$: $r\\cos\\theta = 3$, so $r = \\frac{3}{\\cos\\theta} = 3\\sec\\theta$.",
+    "options": [
+     "$x = r\\cos\\theta = 3$ gives $r = \\frac{3}{\\cos\\theta}$.",
+     "$r = 3\\cos\\theta$ is a circle through the pole with diameter 3. Divide by $\\cos\\theta$; do not multiply.",
+     "$r = 3$ is the circle of radius 3 centered at the pole.",
+     "$\\theta = 3$ is a line through the pole at an angle of 3 radians."
+    ]
+   }
+  },
+  {
+   "id": "cbc-math-polar-16",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-polar",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the smallest positive angle $\\theta$ at which the curve $r = 1 - 2\\cos\\theta$ passes through the pole.",
+   "numeric": {
+    "answer": "pi/3",
+    "mistakes": [
+     {
+      "value": "2pi/3",
+      "why": "That solves $\\cos\\theta = -\\frac{1}{2}$, where $r = 1 + 1 = 2$. Set $r = 0$: $\\cos\\theta = \\frac{1}{2}$."
+     },
+     {
+      "value": "pi/6",
+      "why": "$\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$. The angle with cosine $\\frac{1}{2}$ is $\\frac{\\pi}{3}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The curve is at the pole when $r = 0$: $1 - 2\\cos\\theta = 0$, so $\\cos\\theta = \\frac{1}{2}$. The smallest positive solution is $\\theta = \\frac{\\pi}{3}$ (the next is $\\frac{5\\pi}{3}$)."
+   }
   }
  ]
 }

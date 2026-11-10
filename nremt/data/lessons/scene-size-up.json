@@ -1,0 +1,108 @@
+{
+  "id": "scene-size-up",
+  "title": "Scene size-up",
+  "chapter": 11,
+  "section": "ch11-scene-size-up",
+  "hook": "<p>You are dispatched to a two-car collision at night. As you roll up, you see a police cruiser already there, one car on its side, and a dark streak of fluid running across the road toward the gutter. A driver is waving you in close.</p><p>Before you help anyone, you have to answer four questions: is it safe, what protection do you need, what happened, and how many patients are there? That is the scene size-up. It starts before the ambulance stops and it does not end until the call does.</p>",
+  "steps": [
+    {
+      "find": "You are approaching a scene where police or fire units are already present.",
+      "act": "Do your own size-up anyway. Never assume a scene is safe. Start before the ambulance stops, keep observing as you approach, and look again before you get out."
+    },
+    {
+      "find": "A collision scene has no apparent hazard.",
+      "act": "Park at least 50 feet away in all directions."
+    },
+    {
+      "find": "Fuel has spilled, or a vehicle is on fire.",
+      "act": "Park at least 100 feet away, even if the fire looks small. With spilled fuel, park upwind, and uphill if the fuel is flowing, stay out of gutters and ditches, and use no flares."
+    },
+    {
+      "find": "Wires are down, or a hazardous material may be involved.",
+      "act": "For wires, park at least one full span of wire away from the poles. For a hazardous material, check the Emergency Response Guidebook or call CHEMTREC, and park upwind at the distance the substance calls for."
+    },
+    {
+      "find": "You hear fighting or loud voices, see weapons or signs of alcohol or drug use, notice an unusual silence, or know of past violence at the address.",
+      "act": "Do not enter a violent scene to give care. Wait until it has been made safe."
+    },
+    {
+      "find": "You are about to make patient contact.",
+      "act": "Choose your Standard Precautions for the situation: gloves and eyewear for trauma with suspected bleeding, a mask and eyewear added when suctioning or when the patient is spitting blood, and an N-95 or HEPA respirator when tuberculosis or another airborne disease is suspected."
+    },
+    {
+      "find": "There are more patients than your crew can handle.",
+      "act": "Call for more ambulances immediately. Scan for passengers and pedestrians, and call early: once you are busy with patient care it is easy to forget, and help takes time to arrive."
+    }
+  ],
+  "ideas": [
+    "<b>Four components:</b> scene safety, Standard Precautions, the nature of the call (mechanism of injury or nature of illness), and the number of patients with the resources they need.",
+    "<b>Mechanism of injury (MOI)</b> is the force that caused the injury, and it tells you what to look for. A high index of suspicion means staying alert for injury even with no obvious signs.",
+    "<b>Every crash is three collisions:</b> the vehicle hits an object, the body hits the inside of the vehicle, and the organs hit the inside of the body.",
+    "<b>Crash type predicts injury:</b> head-on gives up-and-over (head, neck, chest, abdomen) or down-and-under (knee, leg, hip) patterns; rear-end gives neck and head injury; side-impact gives neck injury and direct injury to the struck side; rollover is the most serious, with multiple impacts and a risk of ejection.",
+    "<b>Falls:</b> consider height, surface, the body part that hit and anything that broke the fall. The 2021 national field triage guideline uses more than 10 feet (3 m) at every age.",
+    "<b>Penetrating trauma by velocity:</b> knives and arrows are low, handguns and shotguns are medium, rifles are high. A bullet also injures by cavitation, a temporary cavity larger than the bullet.",
+    "<b>Blunt trauma</b> can rupture organs while the outside looks nearly normal, so the mechanism is your main clue."
+  ],
+  "misconception": {
+    "wrong": "If police and fire are already on scene, the scene is safe and the size-up is done.",
+    "right": "You always do your own size-up, and you keep doing it. Scenes change, so the size-up continues for the whole call."
+  },
+  "check": [
+    {
+      "q": "You arrive at a crash and see fuel running from one of the cars. How far away do you park at minimum?",
+      "options": [
+        "At least 25 feet, downhill",
+        "At least 50 feet, in any direction",
+        "At least 100 feet, upwind",
+        "At least 500 feet, downwind"
+      ],
+      "correct": 2,
+      "why": "Spilled fuel calls for at least 100 feet, upwind, and uphill if the fuel is flowing. Fifty feet is the distance when there is no apparent hazard."
+    },
+    {
+      "q": "Which list gives the components of the scene size-up?",
+      "options": [
+        "Scene safety, Standard Precautions, nature of the call, number of patients and resources",
+        "General impression, mental status, airway and breathing, circulation",
+        "History, physical exam, vital signs, reassessment",
+        "Dispatch, response, patient contact, transport decision"
+      ],
+      "correct": 0,
+      "why": "The size-up is scene safety, Standard Precautions, the mechanism of injury or nature of illness, and the number of patients with the resources needed. General impression, mental status and the ABCs belong to the primary assessment, which comes next."
+    },
+    {
+      "q": "A patient with a cough of several weeks, night sweats and weight loss may have tuberculosis. What protection do you add?",
+      "options": [
+        "A second pair of gloves",
+        "A surgical mask on yourself only",
+        "A gown and shoe covers",
+        "An N-95 or HEPA respirator"
+      ],
+      "correct": 3,
+      "why": "A suspected airborne disease such as tuberculosis calls for an N-95 or HEPA respirator. Extra gloves or a gown protect against contact with fluids, not against airborne particles."
+    },
+    {
+      "q": "The driver in a rollover crash is walking around and says he feels fine. He has no visible injuries. How do you treat this?",
+      "options": [
+        "As a minor call, because he has no complaints",
+        "As a possible serious injury, because of the mechanism",
+        "As a refusal, because he is up and walking",
+        "As a medical call, because nothing looks injured"
+      ],
+      "correct": 1,
+      "why": "A rollover is the most serious type of crash, and blunt trauma can cause internal injury with few outside signs. A high index of suspicion means you do not rule out injury just because none is obvious."
+    },
+    {
+      "q": "A minivan crash has five injured people and yours is the only ambulance there. When do you call for more?",
+      "options": [
+        "After you finish the first primary assessment",
+        "Once the sickest patient has been loaded",
+        "Immediately, before you are busy with patient care",
+        "Only if a patient gets worse on scene"
+      ],
+      "correct": 2,
+      "why": "When patients outnumber your resources, call for help immediately. Once you are involved in patient care it is easy to forget, and by then help may arrive too late."
+    }
+  ],
+  "summary": "<p>The scene size-up has four components: scene safety, Standard Precautions, the nature of the call, and the number of patients with the resources they need. Do your own size-up every time and keep it going for the whole call. At a crash, park at least 50 feet away with no apparent hazard and at least 100 feet with spilled fuel or fire; stay a full span from downed wires, and never enter a violent scene. Match your protective equipment to the situation, use the mechanism of injury to predict what you will find, and call for extra help early.</p>"
+}

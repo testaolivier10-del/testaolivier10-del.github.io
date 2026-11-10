@@ -494,6 +494,32 @@
      "One fixed factor, one direction."
     ]
    }
+  },
+  {
+   "id": "pcalc-exponential-functions-16",
+   "unit": "unit-2",
+   "topic": "exponential-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "An exponential function $f(x) = ab^x$ has $f(0) = 6$ and $f(1) = 9$. What is $f(2)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "27/2",
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "That adds $3$ again, which is what a linear function does. An exponential function multiplies by the same factor each step: $\\frac{9}{6} = 1.5$."
+     },
+     {
+      "value": 18,
+      "why": "The factor is $\\frac{f(1)}{f(0)} = \\frac{9}{6} = 1.5$, not $2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$f(0) = a = 6$, and $f(1) = 6b = 9$ gives $b = 1.5$. Each step of $1$ in $x$ multiplies the output by $1.5$: $f(2) = 9(1.5) = 13.5$."
+   }
   }
  ]
 }

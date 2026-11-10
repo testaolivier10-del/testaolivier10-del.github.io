@@ -596,6 +596,32 @@
      ]
     }
    }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-16",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "After an oil spill, a cleanup crew sprays chemical dispersants on the slick. What is a drawback of this method?",
+   "options": [
+    "It makes the oil float in a thicker layer on the surface",
+    "The oil stays in the water, and the spray adds its own risks",
+    "It lifts all of the oil out of the water within a few hours",
+    "It works only where the water is calm and closed in by land"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Dispersants break a slick into small droplets that mix into the water. The oil is still in the sea, and the dispersant itself can harm marine life.",
+    "options": [
+     "Dispersants do the opposite: they break the slick up.",
+     "Right: the slick is gone from the surface, but oil and dispersant are now in the water.",
+     "Nothing is removed. Skimmers remove oil; dispersants spread it out.",
+     "Booms and skimmers are the tools that work best in calm water."
+    ]
+   }
   }
  ]
 }

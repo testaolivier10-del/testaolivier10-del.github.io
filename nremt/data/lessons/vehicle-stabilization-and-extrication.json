@@ -1,0 +1,106 @@
+{
+  "id": "vehicle-stabilization-and-extrication",
+  "title": "Stabilization, access and disentanglement",
+  "chapter": 40,
+  "section": "ch40-extrication",
+  "hook": "<p>A sedan sits upright on all four wheels in an intersection, its driver's door crushed inward. The driver is awake and calling for help. The car looks solid. A firefighter is unloading the hydraulic tools, and a bystander is already reaching through the window to pull on the driver's arm.</p><p>Extrication goes wrong when the steps are done out of order. The car is stabilized before anyone goes in, and the simplest way in is tried before the tools come out.</p>",
+  "steps": [
+    {
+      "find": "A crashed vehicle is sitting on its wheels and looks stable.",
+      "act": "Treat it as unstable; every vehicle in a collision is. Confirm the engine is off, the transmission is in park and the parking brake is set, then take out the remaining movement with step chocks."
+    },
+    {
+      "find": "A vehicle is on its side or its roof.",
+      "act": "Do not let bystanders push it upright. It is stabilized with cribbing or struts before anyone tries to reach the patient."
+    },
+    {
+      "find": "The vehicle is stable and you need to reach the patient.",
+      "act": "Try before you pry: try every door the ordinary way first. A door that opens costs nothing and saves the time that tools would take."
+    },
+    {
+      "find": "No door will open.",
+      "act": "Go through a window. Side and rear windows are usually tempered glass, which breaks into small rounded pieces, so they are preferred over the laminated windshield. Cover the occupants with an aluminized blanket before breaking glass near them."
+    },
+    {
+      "find": "You have reached the patient, who is still trapped.",
+      "act": "Assess and begin care while the rescue team disentangles. The plan has three parts in order: the doors, then the roof, then moving the whole front end as one unit."
+    },
+    {
+      "find": "The work is moving toward the dashboard and airbags.",
+      "act": "The negative battery cable is disconnected first. Stay out of the airbag's path even then, because a residual charge can remain, and the module itself is never cut or drilled."
+    },
+    {
+      "find": "The patient is unstable.",
+      "act": "The ten phases stay the same, but the pace changes: an unstable patient gets rapid extrication onto a long board. The spinal precautions are the same as for a stable patient; only the speed differs."
+    }
+  ],
+  "ideas": [
+    "<b>Ten phases, in order:</b> prepare, size up, recognize and manage hazards, stabilize the vehicle, gain access, assess the patient, disentangle, immobilize and extricate, transport, terminate.",
+    "<b>Stabilize before access.</b> A car on its wheels can still roll or shift once rescuers start working in and around it.",
+    "<b>Why doors and roof come off:</b> full access for care, a large exit if a new hazard appears, fresh air for patient and crew, and faster access that improves survival.",
+    "<b>The Nader pin:</b> a hardened pin in the door latch of every U.S. car since 1966. It keeps doors shut in a crash so occupants are not thrown out, and it means a crowbar no longer opens a jammed door; hydraulic spreaders are needed.",
+    "<b>The recurring lesson:</b> every gain in occupant safety makes a new problem for the rescuer."
+  ],
+  "misconception": {
+    "wrong": "A car that is upright on all four wheels is stable, so stabilizing it is a waste of time when a patient is trapped.",
+    "right": "Every vehicle in a collision is unstable, however settled it looks. It can roll or shift once people climb in and tools start moving metal, so it is chocked before anyone gains access."
+  },
+  "check": [
+    {
+      "q": "In the ten phases of extrication, which comes directly before gaining access to the patient?",
+      "options": [
+        "Disentangling the patient",
+        "Stabilizing the vehicle",
+        "Assessing the patient",
+        "Terminating the incident"
+      ],
+      "correct": 1,
+      "why": "The order is size up, manage hazards, stabilize the vehicle, then gain access. Assessment and disentanglement come after access. Going in before the vehicle is stable risks the car shifting with a rescuer inside."
+    },
+    {
+      "q": "A car is upright and stabilized, and the patient is inside. What is the first way to try to reach the patient?",
+      "options": [
+        "Break the windshield with a hand tool",
+        "Force the nearest door with hydraulic spreaders",
+        "Cut the roof posts and fold the roof back",
+        "Try each door handle in the ordinary way"
+      ],
+      "correct": 3,
+      "why": "Try before you pry. A door that simply opens gives the fastest access with no tools and no broken glass. Spreaders, glass and roof removal come only after the doors have been tried."
+    },
+    {
+      "q": "No door will open, and you must break glass to reach the patient. Which glass is the better choice, and why?",
+      "options": [
+        "A side window, because tempered glass breaks into small rounded pieces",
+        "The windshield, because laminated glass shatters completely",
+        "The windshield, because it is the largest opening",
+        "A side window, because laminated glass is easy to cut"
+      ],
+      "correct": 0,
+      "why": "Side and rear windows are usually tempered glass, which breaks into small rounded pieces, so they are preferred. The windshield is laminated and holds together when struck. Cover the occupants with an aluminized blanket first."
+    },
+    {
+      "q": "The rescue team is about to push the dashboard and front end off a trapped driver. The airbag did not deploy. What is done first?",
+      "options": [
+        "The airbag module is cut out of the steering wheel",
+        "The ignition key is turned to the off position",
+        "The negative battery cable is disconnected",
+        "A rescuer leans across the wheel to shield the driver"
+      ],
+      "correct": 2,
+      "why": "The negative battery cable is disconnected first. Rescuers still stay out of the airbag's path because a residual charge can remain, and the module is never cut or drilled. Turning off the ignition alone does not disable the airbag."
+    },
+    {
+      "q": "A trapped driver becomes pale and confused, and her pulse is fast and weak. How does the extrication change?",
+      "options": [
+        "The phases are done in a different order",
+        "The same phases are done faster, with rapid extrication",
+        "Spinal precautions are dropped to save time",
+        "The team stops and waits for her to stabilize"
+      ],
+      "correct": 1,
+      "why": "The phases do not change with the patient's condition, but the pace does. An unstable patient gets rapid extrication onto a long board with the same spinal principles. Dropping the precautions or waiting are both wrong for a patient in shock."
+    }
+  ],
+  "summary": "<p>Extrication runs in ten phases, and the order matters: hazards are managed and the vehicle is stabilized before anyone gains access. Every crashed vehicle is unstable; on its wheels it is put in park, braked and chocked, and on its side or roof it is held with cribbing or struts. Try before you pry, then use a tempered side or rear window with the occupants covered. Disentanglement goes doors, roof, then the front end, with the negative battery cable disconnected first and everyone clear of the airbag. The Nader pin is why jammed doors need hydraulic spreaders. For an unstable patient the steps are the same and only the speed changes.</p>"
+}

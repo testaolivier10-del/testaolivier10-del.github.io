@@ -1,0 +1,103 @@
+{
+  "id": "blood-pressure-oximetry-glucose",
+  "title": "Blood pressure, pulse oximetry and glucose",
+  "chapter": 13,
+  "section": "ch13-vital-signs",
+  "hook": "<p>A woman pulled from a house fire is confused and has a pounding headache. Your partner clips on the pulse oximeter and reads out 99%. \"Her oxygen is perfect,\" he says.</p><p>It is not. Carbon monoxide makes a pulse oximeter read falsely high. Every monitoring device has a way of being wrong, and this lesson covers how to take a blood pressure that can be trusted and what the oximeter, the glucometer and capnography can and cannot tell you.</p>",
+  "steps": [
+    {
+      "find": "You have not put a cuff on yet, and you can feel a radial pulse.",
+      "act": "Take it as a rough sign that blood is reaching the periphery, nothing more. If the radial pulse is gone but the carotid remains, suspect significant shock. Do not turn pulses into a pressure number; measure the blood pressure as soon as you can."
+    },
+    {
+      "find": "You are choosing a cuff.",
+      "act": "Pick one whose bladder covers roughly 80% of the circumference of the upper arm and about two-thirds of its length. A cuff that is too small reads falsely high; one that is too large reads falsely low."
+    },
+    {
+      "find": "You are choosing an arm.",
+      "act": "Avoid an injured arm, an arm with a dialysis fistula, the arm on the side of a previous mastectomy and an arm with an IV running. Support the arm you use at the level of the heart."
+    },
+    {
+      "find": "You are measuring by auscultation.",
+      "act": "Deflate at about 2 mmHg per second. The first sound you hear is the systolic pressure and the point where the sound disappears is the diastolic. By palpation you get the systolic pressure only."
+    },
+    {
+      "find": "The oximeter reads 98% but the patient is cyanotic and using accessory muscles.",
+      "act": "Treat the patient, not the number. Oximetry reports saturation, not how well the patient is breathing, and it never overrides what you see."
+    },
+    {
+      "find": "A patient has an altered mental status with no obvious cause.",
+      "act": "Check the blood glucose. Read the result together with the mental status and the history: a normal fasting value is roughly 70 to 99 mg/dL, and below 70 mg/dL is the commonly used threshold for hypoglycemia."
+    }
+  ],
+  "ideas": [
+    "<b>Three ways to measure blood pressure:</b> auscultation, palpation (systolic only) and an automatic monitor.",
+    "<b>Older texts gave numbers to pulses</b> (radial about 80, femoral 70, carotid 60). When tested against measured pressures the rule overestimated them, so it is not quoted as a reading.",
+    "<b>Arm position:</b> an arm held below heart level reads high; above heart level reads low. Deflating too fast skips past the true points.",
+    "<b>Pulse oximetry</b> measures the percentage of hemoglobin carrying oxygen. It is unreliable with poor perfusion or shock, nail polish and cold extremities, and carbon monoxide poisoning makes it read falsely high.",
+    "<b>Capnography</b> measures exhaled carbon dioxide, normally about 35 to 45 mmHg. It shows whether the patient is ventilating, and it drops immediately when air stops moving.",
+    "<b>Monitors refine the picture; they never replace it.</b>"
+  ],
+  "misconception": {
+    "wrong": "A pulse oximeter reading in the high 90s means the patient is breathing well enough.",
+    "right": "The oximeter shows saturation only. A patient on high-flow oxygen can hold a high reading for minutes after ventilation has become inadequate, and carbon monoxide gives a falsely high number. Look at the work of breathing; capnography is the device that shows ventilation."
+  },
+  "check": [
+    {
+      "q": "You take a blood pressure on a large adult using a cuff that is too small for the arm. How will the reading be affected?",
+      "options": [
+        "It will be falsely low",
+        "It will be falsely high",
+        "It will show the systolic only",
+        "It will not be affected"
+      ],
+      "correct": 1,
+      "why": "A cuff that is too small reads falsely high. Falsely low comes from a cuff that is too large, such as an adult cuff on a child."
+    },
+    {
+      "q": "A patient rescued from a garage with a running car is confused. The pulse oximeter reads 99%. What should you think?",
+      "options": [
+        "The reading may be falsely high from carbon monoxide",
+        "The reading rules out any problem with oxygen",
+        "The reading is falsely low from cold fingers",
+        "The reading shows she is ventilating normally"
+      ],
+      "correct": 0,
+      "why": "Carbon monoxide poisoning makes a pulse oximeter read falsely high, so a normal number is not reassuring here. Cold extremities also make the reading unreliable, but that does not fit this history."
+    },
+    {
+      "q": "You measure a blood pressure by palpation. What do you get?",
+      "options": [
+        "Both systolic and diastolic pressures",
+        "The diastolic pressure only",
+        "The pulse pressure only",
+        "The systolic pressure only"
+      ],
+      "correct": 3,
+      "why": "By palpation you feel the pulse return as the cuff deflates, which marks the systolic pressure. The diastolic point needs a stethoscope: it is where the sound disappears."
+    },
+    {
+      "q": "What does capnography tell you that pulse oximetry cannot?",
+      "options": [
+        "How much hemoglobin is carrying oxygen",
+        "How much sugar is in the blood",
+        "Whether the patient is ventilating",
+        "Whether the blood pressure is falling"
+      ],
+      "correct": 2,
+      "why": "Capnography measures exhaled carbon dioxide, so it shows whether air is moving in and out. Hemoglobin saturation is what the oximeter measures."
+    },
+    {
+      "q": "A patient has a dialysis fistula in the left arm and no other injuries. Where do you take the blood pressure?",
+      "options": [
+        "On the left arm, above the fistula",
+        "On the right arm",
+        "On the left arm, below the fistula",
+        "On neither arm; skip the reading"
+      ],
+      "correct": 1,
+      "why": "Avoid the arm with a dialysis fistula and use the other arm. The same goes for an injured arm, the side of a previous mastectomy and an arm with an IV running."
+    }
+  ],
+  "summary": "<p>Palpable pulses are only a rough sign of perfusion, so measure the blood pressure as soon as you can: by auscultation (first sound systolic, disappearance diastolic), by palpation (systolic only) or with an automatic monitor. Use the right cuff size, support the arm at heart level, deflate at about 2 mmHg per second, and avoid an injured arm, a fistula arm, a mastectomy side and an arm with an IV. Pulse oximetry shows saturation, not ventilation, and reads falsely high with carbon monoxide. Capnography (normal about 35 to 45 mmHg) shows ventilation. Check glucose for unexplained altered mental status; below 70 mg/dL is the usual threshold for hypoglycemia.</p>"
+}

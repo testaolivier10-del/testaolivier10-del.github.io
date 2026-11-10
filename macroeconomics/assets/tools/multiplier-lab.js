@@ -47,16 +47,20 @@
      Drawn at the box's pixel size so the text stays readable at 360 px. */
   function bars(box, cols, o){
     var w = Math.max(280, box.clientWidth || 560), h = Math.max(170, Math.min(520, box.clientHeight || 260));
-    var L = 46, R = 10, Tp = 22, B = 34, pw = w - L - R, ph = h - Tp - B;
+    var L = 46, R = 10, Tp = 28, B = 34, pw, ph;
     var hi = 0, lo = 0;
     cols.forEach(function(c){ var pos = 0, neg = 0; c.parts.forEach(function(p){ if(p.v > 0) pos += p.v; else neg += p.v; }); if(c.outline != null){ pos = Math.max(pos, c.outline); neg = Math.min(neg, c.outline); } hi = Math.max(hi, pos); lo = Math.min(lo, neg); });
     if(o.scale){ if(hi > 0 || lo === 0) hi = Math.max(hi, o.scale); else lo = Math.min(lo, -o.scale); }
     if(hi === 0 && lo === 0) hi = 1;
+    // Room on the left for the longest axis number ($10,000 was cut off at 46 px), and under the axis name for the top one.
+    L = Math.max(L, 14 + 7.6 * Math.max(String(o.fmt(hi)).length, lo < 0 ? String(o.fmt(lo)).length : 0));
+    // Bars that go down: room under the longest one for its number, above the column names.
+    pw = w - L - R; ph = h - Tp - B - (lo < 0 ? 16 : 0);
     var span = hi - lo, sy = function(v){ return Tp + (hi - v) / span * ph; }, cw = pw / cols.length, bw = Math.min(46, cw * 0.62);
     // Narrow: value labels only where they fit (the first and the strong columns).
     var tight = cw < 44;
     var g = ['<line class="ml-zero" x1="' + L + '" x2="' + (w - R) + '" y1="' + f1(sy(0)) + '" y2="' + f1(sy(0)) + '"/>'];
-    g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(hi) + 4) + '" text-anchor="end">' + esc(o.fmt(hi)) + '</text>');
+    if(hi > 0) g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(hi) + 4) + '" text-anchor="end">' + esc(o.fmt(hi)) + '</text>');
     if(lo < 0) g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(lo) + 4) + '" text-anchor="end">' + esc(o.fmt(lo)) + '</text>');
     g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(0) + 4) + '" text-anchor="end">0</text>');
     cols.forEach(function(c, i){
@@ -233,7 +237,7 @@
       if(m.now) cols.unshift({ label: 'Deposit', parts: [{ v: m.now, cls: 'is-now' }] });
       cols.push({ label: 'Total', strong: true, parts: (m.now ? [{ v: m.now, cls: 'is-now' }] : []).concat(m.rounds.map(function(v, i){ return { v: v, cls: 'is-sum', op: Math.max(0.35, 1 - i * 0.08) }; })), outline: m.dm, value: m.dm });
       cols.forEach(function(c){ c.short = c.label.replace('Bank ', '').replace('Deposit', 'D'); });
-      bars(box, cols, { fmt: function(v){ return usd(Math.round(v)); }, xName: 'Each bank lends its excess reserves; the loan is redeposited', yName: 'New money ($ million)',
+      bars(box, cols, { fmt: function(v){ return usd(Math.round(v)); }, xName: (box.clientWidth || 560) < 440 ? 'Each bank lends its excess; the loan is redeposited' : 'Each bank lends its excess reserves; the loan is redeposited', yName: 'New money ($ million)',
         label: 'Money creation: ' + (m.now ? 'a new deposit of ' + usd(m.now, 'million') + ', then ' : '') + 'loans of ' + usd(m.rounds[0], 'million') + ', ' + usd(m.rounds[1], 'million') + ' and so on, up to ' + usd(m.dm, 'million') + ' in all.' });
       figs.money.querySelector('.ml-read').innerHTML = '<span class="ml-chip">Excess reserves ' + usd(m.ex, 'million') + '</span><span class="ml-op">×</span><span class="ml-chip">1 ÷ ' + n(st.rr) + ' = ' + n(m.mm) + '</span>' + (m.now ? '<span class="ml-op">+</span><span class="ml-chip">deposit ' + usd(m.now) + '</span>' : '') + '<span class="ml-op">=</span><span class="ml-chip is-total">ΔM up to ' + usd(m.dm, 'million') + '</span>';
       // Bank 1's balance sheet: the change this event makes.
@@ -241,7 +245,8 @@
       figs.money.querySelector('.ml-tacct').innerHTML = '<table class="ml-t"><caption>Bank 1: what changes</caption><thead><tr><th scope="col">Assets</th><th scope="col">Liabilities</th></tr></thead><tbody><tr><td>' +
         '<span>Required reserves</span><b>' + usd(m.req) + '</b><span>Excess reserves</span><b class="is-ex">' + usd(m.ex) + '</b>' + (bonds ? '<span>Bonds</span><b>' + usd(bonds) + '</b>' : '') + '</td><td><span>Checking deposits</span><b>' + usd(dep) + '</b></td></tr></tbody></table>';
       void res;
-      var mspec = { kind: 'money', do: [] }, msh = m.dm ? { MS: m.dm > 0 ? 1 : -1 } : {};
+      // A shift of 2 keeps M1/M2 and i1/i2 apart in this small graph (it shows direction, not size).
+      var mspec = { kind: 'money', do: [] }, msh = m.dm ? { MS: m.dm > 0 ? 2 : -2 } : {};
       figs.money.querySelector('.ml-mm').innerHTML = G.svg(mspec, { shifts: msh, eq: m.dm ? G.eq(mspec, msh) : null }, { label: 'Money market (limited reserves): money supply ' + (m.dm > 0 ? 'shifts right and the nominal interest rate falls' : 'shifts left and the nominal interest rate rises') + '.' });
       var head = { cash: 'A cash deposit: no new money at first, but loans can add up to <b>' + usd(m.dm, 'million') + '</b>.',
         buyBank: 'The Fed buys bonds from a bank: all ' + usd(st.X, 'million') + ' is excess, so the money supply can grow by <b>' + usd(m.dm, 'million') + '</b>.',

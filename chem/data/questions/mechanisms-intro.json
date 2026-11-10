@@ -418,6 +418,32 @@
      "Gases appear in equations all the time; that is not the reason."
     ]
    }
+  },
+  {
+   "id": "chem-mechanisms-intro-16",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a three-step mechanism, species Q is a product of step 1, does not appear in step 2, and is a reactant in step 3. Q is not in the overall equation. What is Q?",
+   "options": [
+    "A reactant, because it is consumed in step 3",
+    "A product, because it is formed in step 1",
+    "An intermediate, because it is made and then used up",
+    "Not part of the mechanism at all, because it does not appear in step 2"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An intermediate is formed in one step and consumed in a later step, so it cancels when the steps are added. The later step does not have to be the very next one.",
+    "options": [
+     "A reactant of the overall reaction is present at the start and appears in the overall equation. Q does neither.",
+     "A product of the overall reaction remains at the end. Q is used up in step 3.",
+     "Right: Q appears once on each side of the added steps and cancels.",
+     "A species does not have to take part in every step. Q is formed and consumed within the mechanism."
+    ]
+   }
   }
  ]
 }

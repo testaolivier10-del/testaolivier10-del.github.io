@@ -8,5 +8,25 @@
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
   "alt": "Cosine restricted to [0, pi], falling from (0, 1) to (pi, -1), and its reflection across the line y = x, the graph of inverse cosine, falling from (-1, pi) to (1, 0)."
+ },
+ "inverse-trig-sine-piece": {
+  "file": "figures/inverse-trig-sine-piece.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of y = sin x from about negative pi to 2 pi in gray, with the piece from negative pi over 2 to pi over 2 drawn in heavy green, rising from (negative pi over 2, -1) to (pi over 2, 1). A dashed horizontal line at height one half crosses the sine curve at pi over 6 and again at 5 pi over 6."
+ },
+ "inverse-trig-arctan": {
+  "file": "figures/inverse-trig-arctan.svg",
+  "ext": "svg",
+  "w": 400,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Graph of y = inverse tangent of x for x from -6 to 6. The curve rises through (0, 0) and (1, pi over 4) and levels off between two dashed horizontal asymptotes, y = pi over 2 above and y = negative pi over 2 below."
  }
 }

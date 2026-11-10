@@ -211,6 +211,29 @@ FIGS['powers-of-x'] = () => {
   return doc('powers-of-x', W, H, 'Three powers of x', 'For x greater than 0: the green curve y = x squared rises steeply, the blue curve y = x to the one-half power (the square root of x) rises slowly, and the crimson curve y = x to the negative one power (1 over x) falls toward the x-axis. All three pass through the point (1, 1), because 1 to any power is 1.', P.svg(), P.clipDef);
 };
 
+/* math-exponent-rules (notes): the powers of 2 from 2^3 down to 2^-3. Each
+   step down takes 1 from the exponent and divides the value by 2. 400 px wide
+   so the labels stay readable on a phone. */
+FIGS['exponent-ladder'] = () => {
+  const W = 400, H = 404, top = 62, step = 46;
+  const rows = [[3, '8'], [2, '4'], [1, '2'], [0, '1'], [-1, '1/2'], [-2, '1/4 = 1/2<sup>2</sup>'], [-3, '1/8 = 1/2<sup>3</sup>']];
+  let b = text(W / 2, 26, 'Down one step: exponent − 1, value ÷ 2', { size: 15, anchor: 'middle', weight: 'bold' });
+  rows.forEach(([n, v], i) => {
+    const y = top + i * step, zero = n === 0, neg = n < 0;
+    b += rect(24, y - 17, 236, 34, { fill: zero ? C.tint : neg ? C.blueTint : C.pale, stroke: zero ? C.crim : C.faint, width: zero ? 1.8 : 1.2 });
+    b += text(88, y + 6, `2<sup>${String(n).replace('-', '−')}</sup>`, { size: 17, anchor: 'end', weight: 'bold', color: zero ? C.crim : C.ink });
+    b += text(104, y + 6, '=', { size: 17, anchor: 'middle' });
+    b += text(122, y + 6, v, { size: 17, weight: 'bold', color: zero ? C.crim : C.ink });
+    if (i < rows.length - 1) {
+      b += arrow(290, y + 4, 290, y + step - 6, C.blue, { width: 2, head: 9, headWidth: 4.5 });
+      b += text(304, y + step / 2 + 5, '÷ 2', { size: 15, weight: 'bold', color: C.blue });
+    }
+  });
+  b += text(24, H - 14, 'Negative exponents give small positive numbers.', { size: 14, color: C.soft, weight: 'bold' });
+  return doc('exponent-ladder', W, H, 'Powers of 2 from 2 cubed down to 2 to the negative 3',
+    'A column of seven boxes: 2 to the 3 = 8, 2 to the 2 = 4, 2 to the 1 = 2, 2 to the 0 = 1, 2 to the negative 1 = 1/2, 2 to the negative 2 = 1/4, 2 to the negative 3 = 1/8. An arrow marked divide by 2 leads from each box to the next one down: lowering the exponent by 1 divides the value by 2. The pattern passes through 2 to the 0 = 1 and continues into fractions, which are all positive.', b);
+};
+
 /* change-at-an-instant: s(t) = 16t^2 feet; lines through P(1, 16) and Q at
    t = 2, 1.5, 1.2, then the line of slope 32. */
 FIGS['instant-chords'] = () => {

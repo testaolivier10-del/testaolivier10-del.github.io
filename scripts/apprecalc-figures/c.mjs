@@ -15,9 +15,9 @@ import { Plot } from '../lib/apprecalc-mathlib.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const OUT = join(ROOT, 'precalculus', 'figures');
-const INK = '#1F2A28', GREEN = '#11592F', BLUE = '#0072B2', VERM = '#D55E00', GRID = '#E2E6E4';
+export const INK = '#1F2A28', GREEN = '#11592F', BLUE = '#0072B2', VERM = '#D55E00', GRID = '#E2E6E4';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const STYLE = `<style>
+export const STYLE = `<style>
 text{font:600 11px Arial,Helvetica,sans-serif;fill:${INK};}
 .pcalc-plot-axlabel,.pcalc-plot-label{font-weight:700;font-size:12px;}
 .pcalc-plot-grid line{stroke:${GRID};stroke-width:1;}
@@ -38,7 +38,7 @@ function standalone(svg, title, desc) {
   return svg.replace(/^<svg class="pcalc-plot"/, '<svg xmlns="http://www.w3.org/2000/svg" class="pcalc-plot"')
     .replace(/(<svg[^>]*>)/, `$1<title>${esc(title)}</title><desc>${esc(desc)}</desc>${STYLE}<rect width="${m[1]}" height="${m[2]}" fill="#fff"/>`);
 }
-function plotFigure(spec, title, desc) { return standalone(Plot.svg(spec), title, desc); }
+export function plotFigure(spec, title, desc) { return standalone(Plot.svg(spec), title, desc); }
 
 /* A semi-log plot: x linear, y on a log scale (ticks at powers of base). */
 function semiLog({ W = 420, H = 300, x, xStep, decades, base = 10, points = [], line, xLabel, yLabel, title, desc, minor = true, pointLabels = [] }) {

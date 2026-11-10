@@ -589,6 +589,32 @@
    "why": {
     "correct": "v_max = 2πA/T = 2π(0.050 m)/(0.50 s) = 0.63 m/s. The average speed is 4A/T = 0.40 m/s; the top speed is higher because the mass slows near the ends."
    }
+  },
+  {
+   "id": "phys-shm-representations-16",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-representations",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block on a spring oscillates with an amplitude of 0.060 m. What total distance does the block travel during one full period?",
+   "options": [
+    "0.060 m",
+    "0.12 m",
+    "0 m",
+    "0.24 m"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In one period the block goes from +A to equilibrium, on to −A, back to equilibrium and back to +A. That is four stretches of length A: 4 × 0.060 m = 0.24 m.",
+    "options": [
+     "That is the amplitude: the distance from equilibrium to one extreme, covered in a quarter of a period.",
+     "That is the distance from one extreme to the other, covered in half a period.",
+     "Zero is the displacement over a full period, since the block returns to where it started. The distance traveled is not zero.",
+     "Right: one full cycle covers the amplitude four times."
+    ]
+   }
   }
  ]
 }

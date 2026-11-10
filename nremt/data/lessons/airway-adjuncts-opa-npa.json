@@ -1,0 +1,102 @@
+{
+  "id": "airway-adjuncts-opa-npa",
+  "title": "Airway adjuncts: OPA and NPA",
+  "chapter": 9,
+  "section": "ch9-adjuncts",
+  "hook": "<p>You have opened an unresponsive patient's airway with a head-tilt/chin-lift and the snoring has stopped. Then you let go to reach for the oxygen, and the snoring comes straight back.</p><p>A manual maneuver works only while you hold it. An airway adjunct holds the tongue off the back of the throat for you. There are two, and choosing between them comes down to one question: does this patient have a gag reflex?</p>",
+  "steps": [
+    {
+      "find": "The patient is unresponsive and has no gag reflex.",
+      "act": "Use an oropharyngeal airway (OPA). Size it from the corner of the mouth to the tip of the earlobe, or from the center of the mouth to the angle of the jaw."
+    },
+    {
+      "find": "You are inserting the OPA in an adult.",
+      "act": "Open the mouth, insert the airway with the tip pointing toward the roof of the mouth, and rotate it 180 degrees as it reaches the back of the mouth so it follows the curve of the tongue. The flange rests against the lips."
+    },
+    {
+      "find": "The patient is a child.",
+      "act": "Do not rotate the OPA. Hold the tongue down with a tongue depressor and insert the airway right side up, following the curve of the tongue. Rotation can tear a child's soft palate."
+    },
+    {
+      "find": "The patient gags as the OPA goes in.",
+      "act": "Take it out. A gag reflex means the OPA will cause gagging and vomiting, and that vomit can go into the lungs."
+    },
+    {
+      "find": "The patient is semi-conscious, keeps losing the airway, and gags on anything in the mouth. There are no signs of a basilar skull fracture or major mid-face injury.",
+      "act": "Use a nasopharyngeal airway (NPA). Size it from the tip of the nose to the tip of the earlobe, with a diameter about that of the patient's little finger. Lubricate it with a water-soluble lubricant, point the bevel toward the septum, and advance it straight back along the floor of the nose."
+    },
+    {
+      "find": "The NPA meets resistance.",
+      "act": "Do not force it. Withdraw it and try the other nostril."
+    }
+  ],
+  "ideas": [
+    "<b>An adjunct holds the tongue forward mechanically,</b> so a rescuer does not have to hold a manual maneuver the whole time.",
+    "<b>Neither adjunct protects the lungs.</b> Neither one seals the trachea, a patient can still aspirate, and suction stays within reach.",
+    "<b>OPA: no gag reflex.</b> Too long and it can push the epiglottis over the glottic opening; too short and the tongue stays where it was.",
+    "<b>NPA: tolerated by most patients with a gag reflex.</b> It goes straight back, never upward. Pushing upward drives the tube into the roof of the nasal cavity and causes bleeding.",
+    "<b>Avoid an NPA</b> with signs of a basilar skull fracture or significant mid-face trauma: raccoon eyes, Battle's sign, fluid from the nose or ears."
+  ],
+  "misconception": {
+    "wrong": "Once an OPA or NPA is in, the airway is secure and you can stop worrying about vomit.",
+    "right": "Neither adjunct is a definitive airway. They hold the tongue forward and nothing more. The patient can still vomit and aspirate, so you keep watching the airway and keep suction ready."
+  },
+  "check": [
+    {
+      "q": "Which patient is the right one for an oropharyngeal airway?",
+      "options": [
+        "A drowsy patient who coughs when you touch the back of the tongue",
+        "An unresponsive patient with no gag reflex",
+        "An alert patient who is short of breath and anxious",
+        "A semi-conscious patient who pushes your hand away"
+      ],
+      "correct": 1,
+      "why": "The OPA's one absolute requirement is no gag reflex. A drowsy or semi-conscious patient who still gags will retch and may vomit on an OPA; that patient is a candidate for an NPA."
+    },
+    {
+      "q": "How is a nasopharyngeal airway measured for length?",
+      "options": [
+        "From the tip of the nose to the tip of the earlobe",
+        "From the corner of the mouth to the angle of the jaw",
+        "From the center of the mouth to the earlobe",
+        "From the bridge of the nose to the chin"
+      ],
+      "correct": 0,
+      "why": "NPA length is nose tip to earlobe. The corner of the mouth to the earlobe or the angle of the jaw is the OPA measurement, which is the easy one to mix it up with."
+    },
+    {
+      "q": "A 4-year-old is unresponsive with no gag reflex. How do you insert the OPA?",
+      "options": [
+        "Tip toward the roof of the mouth, then rotate 180 degrees",
+        "Right side up, pushed in without holding the tongue",
+        "Upside down and left in that position",
+        "Right side up, with a tongue depressor holding the tongue down"
+      ],
+      "correct": 3,
+      "why": "In a child the OPA goes in right side up along the curve of the tongue, with a tongue depressor. The 180 degree rotation is the adult method and can tear a child's soft palate, and without the tongue depressor the airway can push the tongue back."
+    },
+    {
+      "q": "A patient fell from a ladder. He is semi-conscious with bruising behind one ear and clear fluid draining from his nose. Which adjunct do you avoid?",
+      "options": [
+        "The oropharyngeal airway",
+        "The rigid suction catheter",
+        "The nasopharyngeal airway",
+        "The bag-valve mask"
+      ],
+      "correct": 2,
+      "why": "Battle's sign and fluid from the nose point to a basilar skull fracture, and an NPA is avoided there because the tube could pass through the fracture. Suction and ventilation are still used as needed."
+    },
+    {
+      "q": "You are advancing a lubricated NPA and it stops against firm resistance. What do you do?",
+      "options": [
+        "Push harder with a twisting motion",
+        "Withdraw it and try the other nostril",
+        "Angle the tube upward toward the eyes",
+        "Leave it where it stopped and tape it"
+      ],
+      "correct": 1,
+      "why": "Resistance means stop, withdraw and try the other side. Force causes bleeding, and angling upward sends the tube into the roof of the nasal cavity; the passage runs straight back."
+    }
+  ],
+  "summary": "<p>An adjunct keeps the tongue off the back of the throat so your hands are free, but it does not protect against aspiration. The OPA is for a patient with no gag reflex: sized from the corner of the mouth to the earlobe or from the center of the mouth to the angle of the jaw, rotated 180 degrees in an adult, and inserted right side up with a tongue depressor in a child. The NPA is for a patient who still gags: sized nose to earlobe, lubricated, bevel toward the septum, advanced straight back, never forced, and avoided with signs of a basilar skull fracture or major mid-face trauma.</p>"
+}

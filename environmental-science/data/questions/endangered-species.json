@@ -274,6 +274,33 @@
    }
   },
   {
+   "id": "env-endangered-species-16",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "endangered-species-s2",
+   "q": "Which detail from the passage explains how DDT reduced the number of bald eagles?",
+   "options": [
+    "It killed the fish that eagles eat",
+    "It thinned eggshells, so eggs broke",
+    "It destroyed trees used for nesting",
+    "It drove eagles to other countries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The passage says DDT built up in fish and, in the eagles that ate them, caused thin eggshells that broke during nesting. Fewer chicks hatched, so the population fell.",
+    "options": [
+     "The passage says DDT built up in the fish, not that the fish died.",
+     "Right: broken eggs meant few young eagles to replace the adults.",
+     "The passage does not mention any harm to nesting trees.",
+     "The passage describes a fall in numbers, not eagles moving away."
+    ]
+   }
+  },
+  {
    "id": "env-endangered-species-10",
    "unit": "unit-9",
    "topic": "endangered-species",

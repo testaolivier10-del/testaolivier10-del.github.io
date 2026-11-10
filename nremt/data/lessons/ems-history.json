@@ -1,0 +1,87 @@
+{
+  "id": "ems-history",
+  "title": "How EMS began",
+  "chapter": 1,
+  "section": "ch1-history",
+  "hook": "<p>It is 1950 in a small town. A farmer is thrown from a tractor, and the vehicle that comes for him is the funeral home's hearse. The driver loads him in the back and drives fast. Nobody rides with him, nobody checks his breathing, and nobody controls his bleeding on the way.</p><p>For most of its history that was the whole job: a ride. This lesson follows how EMS went from a vehicle that carries the injured to care that starts where the patient is found, because that one idea is what every other chapter of the course builds on.</p>",
+  "steps": [
+    {
+      "find": "France, the 1790s. Wounded soldiers are lying on the battlefield with no way to reach a surgeon.",
+      "act": "The earliest documented emergency medical service is built to carry them off the field to the surgeons. As the EMT textbooks tell it, the job was transport, not care at the scene."
+    },
+    {
+      "find": "The American Civil War, and later the First World War, produce wounded in very large numbers.",
+      "act": "Clara Barton organizes care for the Civil War wounded and goes on to found the American Red Cross. By the First World War, volunteer ambulance corps are an established part of military medicine."
+    },
+    {
+      "find": "In Korea and Vietnam, the wounded begin to get real medical care in the field.",
+      "act": "These wars bring the major advances in field care, and those advances carry over into the civilian trauma centers that follow."
+    },
+    {
+      "find": "At home, cities start ambulance services in the early 1900s. Smaller communities get no service until the late 1940s, after the Second World War.",
+      "act": "Civilian service is still transport only, and in small towns it is often a funeral home's hearse or the fire department that provides it."
+    },
+    {
+      "find": "A patient today is found having a heart attack at home.",
+      "act": "Care of hospital quality begins at the scene and continues without interruption until the patient reaches the hospital. That is the defining shift in the history of EMS."
+    }
+  ],
+  "ideas": [
+    "<b>The first EMS was about transport.</b> The service documented in France in the 1790s carried the wounded off the battlefield to where surgeons could treat them.",
+    "<b>War drove the progress.</b> Clara Barton and the Civil War, volunteer ambulance corps by the First World War, then the major advances in field care in Korea and Vietnam.",
+    "<b>Military lessons became civilian care.</b> The advances in field care from Korea and Vietnam carried over into civilian trauma centers.",
+    "<b>Civilian EMS developed more slowly.</b> City ambulances in the early 1900s were transport only, and small communities had no service until the late 1940s, often a hearse or the fire department.",
+    "<b>The defining shift</b> is from \"just transport\" to care of hospital quality that begins at the scene and continues until the hospital."
+  ],
+  "misconception": {
+    "wrong": "An ambulance has always been a place where treatment happens. The job of EMS is basically a fast ride with some care added on.",
+    "right": "It is the other way around. For most of its history the ambulance was only a vehicle. Modern EMS is defined by care that starts at the scene and does not stop until the patient is handed over at the hospital. The ride is one part of that care."
+  },
+  "check": [
+    {
+      "q": "What was the main job of the earliest documented emergency medical service, in France in the 1790s?",
+      "options": [
+        "It kept a written record of every wounded soldier",
+        "It carried the wounded off the battlefield to care",
+        "It trained soldiers to give first aid to one another",
+        "It set up surgical hospitals close to the fighting"
+      ],
+      "correct": 1,
+      "why": "The first documented service existed to carry the wounded off the battlefield to where they could be treated. Training soldiers in first aid is tempting to pick because it sounds like modern EMS, but care that starts at the scene as the standard came much later."
+    },
+    {
+      "q": "Which wars brought the major advances in field care that carried over into civilian trauma centers?",
+      "options": [
+        "The Korean and Vietnam wars",
+        "The First and Second World Wars",
+        "The American Civil War",
+        "The French wars of the 1790s"
+      ],
+      "correct": 0,
+      "why": "The notes credit Korea and Vietnam with the major advances in field care, which then shaped civilian trauma centers. The First World War made volunteer ambulance corps a normal part of military medicine, but that was still mostly transport."
+    },
+    {
+      "q": "In the late 1940s a small American community finally gets ambulance service. Who is most likely to be providing it?",
+      "options": [
+        "A hospital-based paramedic team",
+        "A federal highway safety agency",
+        "A funeral home or the fire department",
+        "A trauma center surgical crew"
+      ],
+      "correct": 2,
+      "why": "Smaller communities had no service until after the Second World War, and it was often a funeral home's hearse or the fire department. Paramedics and trauma centers did not exist yet."
+    },
+    {
+      "q": "Which statement best describes the defining shift in the history of EMS?",
+      "options": [
+        "From volunteer crews to paid professional crews",
+        "From horse-drawn wagons to motor ambulances",
+        "From military control to state government control",
+        "From transport only to care that begins at the scene"
+      ],
+      "correct": 3,
+      "why": "The shift that defines modern EMS is from \"just transport\" to care of hospital quality that begins at the scene and continues to the hospital. The other changes happened, but none of them is the idea the rest of the course rests on."
+    }
+  ],
+  "summary": "<p>EMS began as transport. The earliest documented service, in France in the 1790s, was built to carry the wounded off the battlefield. Clara Barton organized care in the Civil War and founded the American Red Cross, volunteer ambulance corps were established by the First World War, and Korea and Vietnam brought the major advances in field care that fed civilian trauma centers. Civilian ambulances stayed transport only for decades, often a hearse or the fire department in small towns. The defining shift is to care of hospital quality that begins at the scene and continues without interruption to the hospital.</p>"
+}

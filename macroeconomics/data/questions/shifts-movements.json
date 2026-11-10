@@ -365,6 +365,120 @@
    "why": {
     "correct": "Start from the cause, test it against the axes, decide shift or movement, then show it on the graph with labels."
    }
+  },
+  {
+   "id": "mac-shifts-movements-13",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.B",
+   "q": "The price of oranges falls and nothing else changes. Place point X where sellers end up on the curve S.",
+   "why": {
+    "correct": "Price is on the vertical axis, so a lower price is a movement down along S: sellers offer a smaller quantity at the lower price."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "point"
+    ],
+    "pointLabel": "X",
+    "key": {
+     "point": {
+      "on": "S",
+      "x": "down",
+      "y": "down"
+     }
+    }
+   }
+  },
+  {
+   "id": "mac-shifts-movements-14",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "apply",
+   "diff": 2,
+   "type": "graph",
+   "practice": "4.C",
+   "q": "A new fertilizer lets farmers grow more wheat on the same land, so at every price they offer more wheat. Shift the right curve the right way.",
+   "why": {
+    "correct": "The fertilizer is not on either axis, so a curve shifts. It changes what sellers can offer: S shifts right."
+   },
+   "graph": {
+    "kind": "sd",
+    "do": [
+     "shift"
+    ],
+    "movable": [
+     "D",
+     "S"
+    ],
+    "key": {
+     "shifts": [
+      {
+       "curve": "S",
+       "dir": "right"
+      }
+     ],
+     "because": "a fertilizer that lets farmers grow more wheat"
+    },
+    "slips": {
+     "D": "The fertilizer changes what farmers can offer, so it moves S, not the buyers' curve D."
+    }
+   }
+  },
+  {
+   "id": "mac-shifts-movements-15",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which drawing of a rightward shift of D lets a reader see which curve moved and which way?",
+   "options": [
+    "The old curve erased, with one new curve labeled D",
+    "D2 drawn steeper than D1, so that the two curves cross",
+    "D1 kept, a parallel D2 to its right, and an arrow between them",
+    "An arrow along D1 that points down toward a lower price"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Keep the original curve as D1, draw the new curve parallel to it on the correct side as D2, and add an arrow from the old curve to the new one.",
+    "options": [
+     "With the old curve gone, a reader cannot see that anything moved or which way.",
+     "A shifted curve is drawn parallel to the original, with every point moved the same way.",
+     "Right: both curves, their subscripts and the arrow show the shift and its direction.",
+     "An arrow along the curve shows a movement along it, not a shift."
+    ]
+   }
+  },
+  {
+   "id": "mac-shifts-movements-16",
+   "unit": "graph-skills",
+   "topic": "shifts-movements",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Two bookstores each sell more copies of a novel this week. Store A put the novel on sale. Near store B a popular show praised the novel, and store B's price did not change. How do their graphs differ?",
+   "options": [
+    "Store A moves down along its curve; store B's curve shifts right",
+    "Both curves shift right, since both stores sold more copies",
+    "Store A's curve shifts right; store B moves down along its curve",
+    "Both stores move along their curves, since no curve can move"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Store A changed the price, a variable on an axis: a movement along D. Store B's change is in buyers' tastes, which is not on an axis: D shifts right. Selling more can be either one.",
+    "options": [
+     "Right: a price cut moves along the curve, and a change in tastes shifts it.",
+     "Selling more does not prove a shift. Store A's larger quantity comes from a lower price on the same curve.",
+     "That swaps them: the price changed at store A, and tastes changed at store B.",
+     "A curve moves whenever something other than the variables on the axes changes."
+    ]
+   }
   }
  ]
 }

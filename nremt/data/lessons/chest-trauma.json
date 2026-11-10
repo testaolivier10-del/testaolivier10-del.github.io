@@ -1,0 +1,104 @@
+{
+  "id": "chest-trauma",
+  "title": "Chest trauma",
+  "chapter": 31,
+  "section": "ch31-chest",
+  "hook": "<p>A man has been stabbed once on the right side of his chest. The wound is small and barely bleeding. Each time he breathes in, you hear a faint sucking sound, and he is working harder to breathe than he was a minute ago.</p><p>Chest injuries kill quietly. The chest can hold more than 3 liters of blood with nothing to see on the outside, and a small hole can let in enough air to collapse a lung and then squeeze the heart. The EMT's job is to seal what can be sealed, recognize what is getting worse, and move.</p>",
+  "steps": [
+    {
+      "find": "There is an open wound to the chest.",
+      "act": "Assume it enters the chest cavity and never probe it to check. Cover it at once: a gloved hand first if nothing else is ready, then an occlusive dressing that extends at least 2 inches beyond the wound on every side, or a vented chest seal if you carry one. Which dressing, and whether one side is left untaped, is set by local protocol."
+    },
+    {
+      "find": "After the wound is sealed, the patient gets worse: more trouble breathing, falling oxygen saturation, signs of shock, distended neck veins.",
+      "act": "Suspect a tension pneumothorax. Tracheal deviation is a late sign, so do not wait for it. Per local protocol, lift one edge of the dressing to let trapped air escape, request ALS and keep moving toward the hospital."
+    },
+    {
+      "find": "A section of the chest wall moves in when the rest moves out.",
+      "act": "This is a flail chest: 2 or more ribs next to each other, each broken in 2 or more places (some texts say 3 or more). Do not restrict the chest wall with tape, straps or sandbags. Give oxygen, and assist ventilation with a bag-valve mask if breathing is inadequate."
+    },
+    {
+      "find": "The patient has distended neck veins, muffled heart sounds, and low blood pressure with a narrowing pulse pressure.",
+      "act": "Recognize Beck's triad, the sign of cardiac tamponade. This cannot be fixed in the field. Transport rapidly and request ALS without waiting on scene for them."
+    },
+    {
+      "find": "A young athlete collapses right after a ball or blow strikes the chest.",
+      "act": "Suspect commotio cordis, a sudden cardiac arrest from the impact. Treat it as a ventricular fibrillation arrest: start CPR and defibrillate with the AED without delay."
+    },
+    {
+      "find": "You are packaging a chest trauma patient.",
+      "act": "Give oxygen to keep the saturation at 94% or above, let the patient take a position of comfort, and transport. Penetrating chest or neck trauma alone does not call for spinal motion restriction; add it only if blunt trauma also occurred."
+    }
+  ],
+  "ideas": [
+    "<b>Blunt trauma is not the safer kind.</b> Little on the outside can hide massive damage inside. Rib fractures are the most common serious blunt chest injury.",
+    "A <b>sucking chest wound</b> is a hole big enough that normal breathing pulls air through it into the chest.",
+    "<b>Pneumothorax:</b> decreased or absent breath sounds on one side and uneven chest movement. <b>Tension pneumothorax:</b> those signs plus worsening hypoxia, shock, distended neck veins and, late, tracheal deviation.",
+    "<b>Hemothorax:</b> the same signs as a pneumothorax, with shock from blood loss and possibly coughing up blood.",
+    "<b>Traumatic asphyxia:</b> dark red or purple face and neck, bulging eyes, swollen blue tongue and lips after a severe crush to the chest.",
+    "<b>Aortic injury or dissection:</b> tearing chest or back pain, with pulse or blood pressure differences between limbs.",
+    "<b>Request ALS early</b> for chest trauma, but never delay transport to wait for them."
+  ],
+  "misconception": {
+    "wrong": "A flail segment should be taped or strapped down firmly so it stops moving the wrong way.",
+    "right": "Restricting the chest wall makes breathing worse. The flail segment is left free even when the paradoxical motion is obvious; the patient gets oxygen, breathing support as needed and prompt transport."
+  },
+  "check": [
+    {
+      "q": "A patient has a gunshot wound to the left chest that makes a sucking sound when he breathes in. What do you do first?",
+      "options": [
+        "Probe the wound gently to see how deep it goes",
+        "Pack the wound tightly with plain gauze",
+        "Cover it with a gloved hand, then a chest seal or occlusive dressing",
+        "Leave the wound alone until ALS arrives to treat it"
+      ],
+      "correct": 2,
+      "why": "An open chest wound is covered immediately, with a gloved hand until a chest seal or occlusive dressing is on. Chest wounds are never probed and never packed, and waiting for ALS is tempting but gives air more time to collect in the chest."
+    },
+    {
+      "q": "A patient stabbed in the chest has distended neck veins, muffled heart sounds, and a low blood pressure with a narrowing pulse pressure. Breath sounds are equal on both sides. Which injury do these findings indicate?",
+      "options": [
+        "Cardiac tamponade",
+        "Flail chest",
+        "Traumatic asphyxia",
+        "Simple pneumothorax"
+      ],
+      "correct": 0,
+      "why": "Distended neck veins, muffled heart sounds and low blood pressure (with a narrowing pulse pressure) are Beck's triad, the sign of cardiac tamponade. A tension pneumothorax also causes distended neck veins, but it comes with absent breath sounds on one side, not muffled heart sounds."
+    },
+    {
+      "q": "A 14-year-old is hit in the chest by a baseball and collapses. He is unresponsive, not breathing and has no pulse. What is the priority?",
+      "options": [
+        "Apply an occlusive dressing to the chest",
+        "Restrict spinal motion before anything else",
+        "Wait for ALS to arrive before starting care",
+        "Start CPR and use the AED without delay"
+      ],
+      "correct": 3,
+      "why": "Sudden collapse after a chest impact is commotio cordis, treated as a ventricular fibrillation arrest: CPR and defibrillation right away. Waiting for ALS throws away the minutes in which a shock is most likely to work."
+    },
+    {
+      "q": "Which finding is a late sign of a tension pneumothorax?",
+      "options": [
+        "Decreased breath sounds on one side",
+        "Tracheal deviation away from the injury",
+        "Increasing difficulty breathing",
+        "A rapid pulse with anxious behavior"
+      ],
+      "correct": 1,
+      "why": "Tracheal deviation appears late. Decreased breath sounds, worsening breathing and signs of shock come earlier, so you act on those without waiting to see the trachea shift."
+    },
+    {
+      "q": "A man was stabbed once in the right chest. He did not fall and has no other injuries or neurological complaints. Does he need spinal motion restriction?",
+      "options": [
+        "Yes, every chest trauma patient needs it",
+        "Yes, because the wound is near the spine",
+        "No, penetrating trauma alone does not call for it",
+        "No, unless he first loses consciousness"
+      ],
+      "correct": 2,
+      "why": "A patient with penetrating trauma to the chest or neck does not automatically need spinal motion restriction; it is added only if blunt trauma also occurred. Applying it by reflex delays transport of a patient who needs a surgeon."
+    }
+  ],
+  "summary": "<p>Blunt chest trauma can hide massive injury, and every open chest wound is assumed to enter the chest cavity and is never probed. Cover an open wound at once with a gloved hand and then an occlusive dressing reaching 2 inches past the wound on all sides, or a vented chest seal, per local protocol. Watch for a tension pneumothorax and lift an edge of the dressing per protocol if it develops. Leave a flail segment free. Know the signs: one-sided breath sounds for pneumothorax, added shock and distended neck veins for tension pneumothorax (tracheal deviation is late), Beck's triad for tamponade, tearing pain with unequal pulses for aortic injury, and collapse after a chest blow for commotio cordis, which needs CPR and the AED immediately. Give oxygen to 94% or above, request ALS early, and do not delay transport.</p>"
+}

@@ -123,7 +123,7 @@
       if(st.labels && S.gap !== 'none' && Math.abs(S.gapSize) > 0.08){
         var gy = py(0.75);
         x.push('<path class="adl-gap" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy) + 'H' + f1(px(5)) + '"/><path class="adl-gapend" d="M' + f1(px(S.eq[0])) + ' ' + f1(gy - 5) + 'v10M' + f1(px(5)) + ' ' + f1(gy - 5) + 'v10"/>');
-        x.push('<text class="adl-gaplabel" x="' + f1((px(S.eq[0]) + px(5)) / 2) + '" y="' + f1(gy - 8) + '" text-anchor="middle">' + (S.gap === 'recessionary' ? 'Recessionary gap' : 'Inflationary gap') + '</text>');
+        x.push('<text class="adl-gaplabel" data-xa="' + f1(px(S.eq[0])) + '" data-xb="' + f1(px(5)) + '" x="' + f1((px(S.eq[0]) + px(5)) / 2) + '" y="' + f1(gy - 8) + '" text-anchor="middle">' + (S.gap === 'recessionary' ? 'Recessionary gap' : 'Inflationary gap') + '</text>');
       }
       if(lr && Math.abs(st.srSras - st.s) > 0.2 && Math.abs(st.srSras) > 0.2) x.push(ghost('up', 5 + st.srSras, 'SRAS', '2'));
       if(lr) x.push(dot(st.sr, st.labels ? 'E<tspan class="mac-gr-sub" dy="3">2</tspan>' : '', 'is-old', st.sr[0] < 5 ? 'left' : 'right'));
@@ -153,8 +153,32 @@
       var u = S.point[0], i = S.point[1];
       return 'Unemployment is ' + (Math.abs(u - 5) < 0.05 ? 'at' : u > 5 ? 'above' : 'below') + ' the natural rate and inflation is ' + (Math.abs(i - 5) < 0.05 ? 'at its starting rate' : i > 5 ? 'higher than at the start' : 'lower than at the start') + '.';
     }
+    /* The gap label sits over its bracket, where a shifted curve's own label
+       (AD2, SRAS2, AD1) can land too. Once drawn, try the bracket's other
+       sides and keep the first spot that touches no other label. */
+    function placeGapLabel(){
+      var t = adasEl.querySelector('.adl-gaplabel'), svg = t && t.ownerSVGElement;
+      if(!t || !t.getBBox) return;
+      var others = Array.prototype.filter.call(svg.querySelectorAll('text'), function(o){ return o !== t && o.textContent.trim(); }).map(function(o){ try{ return o.getBBox(); }catch(e){ return null; } }).filter(Boolean);
+      function hits(){
+        var b; try{ b = t.getBBox(); }catch(e){ return false; }
+        if(!b.width) return false;
+        return others.some(function(o){ return b.x < o.x + o.width + 3 && o.x < b.x + b.width + 3 && b.y < o.y + o.height + 1 && o.y < b.y + b.height + 1; });
+      }
+      if(!hits()) return;
+      var x0 = +t.getAttribute('x'), y0 = +t.getAttribute('y'), xa = +t.getAttribute('data-xa'), xb = +t.getAttribute('data-xb');
+      var lo = Math.min(xa, xb), hi = Math.max(xa, xb);
+      var tries = [['end', lo - 6, y0 + 12], ['start', hi + 6, y0 + 12], ['middle', x0, y0 - 14], ['end', lo - 8, y0 - 6], ['start', hi + 8, y0 - 6], ['middle', x0, y0 - 28]];
+      for(var i = 0; i < tries.length; i++){
+        t.setAttribute('text-anchor', tries[i][0]); t.setAttribute('x', f1(tries[i][1])); t.setAttribute('y', f1(tries[i][2]));
+        var b = t.getBBox();
+        if(b.x >= px(0) + 1 && b.x + b.width <= px(10) + 30 && !hits()) return;
+      }
+      t.setAttribute('text-anchor', 'middle'); t.setAttribute('x', f1(x0)); t.setAttribute('y', f1(y0));
+    }
     function draw(){
       adasEl.innerHTML = adasSvg();
+      placeGapLabel();
       if(pcEl) pcEl.innerHTML = pcSvg();
       var S = eqNow();
       longBtn.disabled = !!st.anim || S.gap === 'none';

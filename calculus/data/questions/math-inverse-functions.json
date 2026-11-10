@@ -383,6 +383,84 @@
      "That would be written $\\sin\\left(\\frac{1}{x}\\right)$: the sine of a reciprocal input. The $-1$ on the name $\\sin$ means the inverse function."
     ]
    }
+  },
+  {
+   "id": "calc-math-inverse-functions-14",
+   "unit": "skills-math",
+   "topic": "math-inverse-functions",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which function is one-to-one on the set of real numbers, so that it has an inverse without restricting its domain?",
+   "options": [
+    "$f(x) = x^2 - 5$",
+    "$f(x) = |x|$",
+    "$f(x) = \\sin x$",
+    "$f(x) = 2x - 5$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A function that only increases (or only decreases) is one-to-one. $f(x) = 2x - 5$ rises steadily, so every horizontal line meets its graph once, and $f^{-1}(x) = \\frac{x + 5}{2}$.",
+    "options": [
+     "$f(3) = f(-3) = 4$: two inputs share an output, so it fails the horizontal line test.",
+     "$|2| = |-2| = 2$, so two inputs share an output.",
+     "Sine repeats: $\\sin 0 = \\sin\\pi = 0$. It needs a restricted domain before it has an inverse.",
+     "A line with nonzero slope only increases or only decreases, so each output comes from exactly one input."
+    ]
+   }
+  },
+  {
+   "id": "calc-math-inverse-functions-15",
+   "unit": "skills-math",
+   "topic": "math-inverse-functions",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "A one-to-one function $f$ has domain and range all real numbers. Find $f^{-1}(f(8)) + f\\left(f^{-1}(-2)\\right)$.",
+   "numeric": {
+    "answer": 6,
+    "mistakes": [
+     {
+      "value": 10,
+      "why": "$f\\left(f^{-1}(-2)\\right) = -2$, not $2$: undoing and redoing returns the number you started with, sign included."
+     },
+     {
+      "value": -16,
+      "why": "The two functions undo each other, so each part returns its input: $8$ and $-2$. Add them; nothing is multiplied."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A function and its inverse undo each other: $f^{-1}(f(x)) = x$ and $f(f^{-1}(x)) = x$. So the sum is $8 + (-2) = 6$, whatever $f$ is."
+   }
+  },
+  {
+   "id": "calc-math-inverse-functions-16",
+   "unit": "skills-math",
+   "topic": "math-inverse-functions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which number is NOT a possible output of $\\arccos x$?",
+   "options": [
+    "$0$",
+    "$-\\frac{\\pi}{3}$",
+    "$\\frac{2\\pi}{3}$",
+    "$\\pi$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The outputs of $\\arccos x$ are the angles with $0 \\le \\theta \\le \\pi$, so a negative angle such as $-\\frac{\\pi}{3}$ is outside the range. $\\cos\\left(-\\frac{\\pi}{3}\\right) = \\frac{1}{2}$, and $\\arccos\\frac{1}{2} = \\frac{\\pi}{3}$.",
+    "options": [
+     "$\\arccos 1 = 0$, so 0 is an output.",
+     "Arccosine returns angles from 0 to $\\pi$, so no output is negative. (Arcsine and arctangent can return $-\\frac{\\pi}{3}$.)",
+     "$\\arccos\\left(-\\frac{1}{2}\\right) = \\frac{2\\pi}{3}$, so this is an output.",
+     "$\\arccos(-1) = \\pi$, so this is an output."
+    ]
+   }
   }
  ]
 }

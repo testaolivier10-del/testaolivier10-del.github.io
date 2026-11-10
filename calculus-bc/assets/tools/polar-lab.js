@@ -223,6 +223,7 @@
       var w = Math.max(260, Math.round(rwrap.clientWidth || 600)), h = Math.max(70, Math.round(rwrap.clientHeight || 112)), tb = info().tb, L = lims();
       var all = tb.r.concat(tb.R), lo = Math.min(0, Math.min.apply(null, all)), hi = Math.max(0, Math.max.apply(null, all)), pad = (hi - lo) * 0.12 || 1;
       lo -= pad; hi += pad;
+      if(h < 96) hi += (hi - lo) * 0.28;   // on a phone's short panel the curves stay under the panel's name
       var Lm = w < 420 ? 34 : 40, R = 10, top = 6, bot = 20;
       return { w: w, h: h, L: Lm, R: R, top: top, bot: bot, pw: w - Lm - R, ph: h - top - bot, lo: lo, hi: hi,
         gx: function(t){ return Lm + (t - L[0]) / (L[1] - L[0]) * (w - Lm - R); }, gy: function(v){ return top + (hi - v) / (hi - lo) * (h - top - bot); } };
@@ -271,7 +272,9 @@
       var sKey = key() + ':' + M.fixed(th, 2);
       if(sKey !== lastSetup){
         lastSetup = sKey;
-        setupEl.innerHTML = '<span class="pl-su-k">Area swept</span> ' + tex('\\frac{1}{2}\\int_{' + S.lo + '}^{' + thTex(th) + '} ' + S.body + '\\,d\\theta \\approx ' + M.fixed(A, 3));
+        // the integral and its value are two pieces, so on a phone the value drops to the next line instead of off the edge
+        setupEl.innerHTML = '<span class="pl-su-k">Area swept</span> <span class="pl-su-p">' + tex('\\frac{1}{2}\\int_{' + S.lo + '}^{' + thTex(th) + '} ' + S.body + '\\,d\\theta') + '</span> <span class="pl-su-p">' + tex('\\approx ' + M.fixed(A, 3)) + '</span>';
+        setupEl.classList.toggle('is-long', st.mode === 'two');
       }
       var Lm = lims(), whole = M.fixed(I.total, 3);
       var body = '<ul class="pl-why">' +
@@ -394,8 +397,21 @@
     return [w, h];
   }
   function curvesOf(p){ return p.fig.curves.map(function(c){ return { cls: c.cls, pts: PL.trace(PL.fn(c.r), c.a, c.b, 360) }; }); }
-  function figSpec(p, cs){
-    var sz = figSize(520, 400), all = [].concat.apply([[0, 0]], cs.map(function(c){ return c.pts; }));
+  /* On a phone the quiz stage can be much shorter than the plot was drawn for (a step with four long choices
+     leaves it 240px): the plot was then shrunk to fit and its numbers fell to 7px. Redraw it to the slot's shape. */
+  function fitSlot(box, me, redraw){
+    if(!window.ResizeObserver) return;
+    new ResizeObserver(function(){
+      var svg = box.querySelector('svg');
+      if(!svg || (window.innerWidth || 1280) > 640 || !box.closest || !box.closest('.ls-stage')) return;
+      var r = svg.getBoundingClientRect(), vb = svg.viewBox && svg.viewBox.baseVal;
+      if(!vb || !vb.height || r.width < 120 || r.height < 120) return;
+      var h = Math.max(170, Math.min(440, Math.round(340 * r.height / r.width)));
+      if(Math.abs(h - vb.height) / vb.height > 0.12){ me.size = [340, h]; redraw(); }
+    }).observe(box);
+  }
+  function figSpec(p, cs, size){
+    var sz = size || figSize(520, 400), all = [].concat.apply([[0, 0]], cs.map(function(c){ return c.pts; }));
     var xs = all.map(function(q){ return q[0]; }), ys = all.map(function(q){ return q[1]; });
     var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys), pad = Math.max(x1 - x0, y1 - y0, 1) * 0.08;
     x0 -= pad; x1 += pad; y0 -= pad; y1 += pad;
@@ -421,13 +437,14 @@
   function polarFigure(box, p){
     var marks = T.tries(), cs = curvesOf(p), me = { marks: marks, shade: p.type !== 'area' };
     function redraw(){
-      var spec = figSpec(p, cs), svg;
+      var spec = figSpec(p, cs, me.size), svg;
       try{ svg = P.svg(spec); }catch(e){ return; }
       var Fr = P.frame(spec);
       box.innerHTML = '<div class="pl-figwrap">' + svg.replace(/<\/svg>$/, figSvg(Fr, p, cs, me.shade) + marks.svg(Fr) + '</svg>') + '</div>';
     }
     redraw();
     me.redraw = redraw;
+    fitSlot(box, me, redraw);
     return me;
   }
   var METHOD = {

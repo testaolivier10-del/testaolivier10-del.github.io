@@ -537,6 +537,32 @@
      ]
     }
    }
+  },
+  {
+   "id": "env-ocean-warming-16",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the melting of floating sea ice add almost nothing to sea level, while the melting of ice sheets on land raises it?",
+   "options": [
+    "Sea ice is already in the ocean; land ice adds new water to it",
+    "Sea ice is made of salt, which takes up no space",
+    "Land ice is much colder than sea ice, so it expands as it melts",
+    "Sea ice melts too slowly to have any effect"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Floating ice already displaces its own weight of seawater, so when it melts the water level hardly changes. Ice on land is outside the ocean, and its meltwater is new water flowing in.",
+    "options": [
+     "Right: only water that was not already in the ocean raises the level.",
+     "Sea ice is frozen water. What matters is that it is already floating.",
+     "Meltwater from land raises sea level because it is added to the ocean, not because it expands.",
+     "Sea ice is melting quickly. It still does not raise sea level, because it is already afloat."
+    ]
+   }
   }
  ]
 }

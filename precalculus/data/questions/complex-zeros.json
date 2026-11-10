@@ -497,6 +497,32 @@
      "$-2$ is the input; the output is $-f(2)$."
     ]
    }
+  },
+  {
+   "id": "pcalc-complex-zeros-16",
+   "unit": "unit-1",
+   "topic": "complex-zeros",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A polynomial function of degree $3$ has real coefficients. Counting multiplicity, how many of its $3$ zeros can be real?",
+   "type": "single",
+   "options": [
+    "$0$ or $2$",
+    "$1$ or $3$",
+    "$2$ or $3$",
+    "$0$, $1$, $2$ or $3$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A degree $3$ polynomial has $3$ complex zeros, counting multiplicity. With real coefficients, the zeros that are not real come in conjugate pairs, so there are $0$ or $2$ of them. That leaves $3$ or $1$ real zeros.",
+    "options": [
+     "These are the possible numbers of zeros that are not real. Subtract from $3$.",
+     "Non-real zeros come in pairs: $3 - 0 = 3$ or $3 - 2 = 1$.",
+     "Two real zeros would leave one non-real zero without its conjugate partner.",
+     "Non-real zeros come two at a time, so the number of real zeros is odd."
+    ]
+   }
   }
  ]
 }

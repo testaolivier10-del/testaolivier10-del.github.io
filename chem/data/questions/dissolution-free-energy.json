@@ -465,6 +465,32 @@
      "ΔH°soln barely depends on temperature; the attractions decide it."
     ]
    }
+  },
+  {
+   "id": "chem-dissolution-free-energy-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a salt, separating the ions of the solid takes 700 kJ/mol and making room among the water molecules takes 15 kJ/mol. Forming ion-dipole attractions releases 730 kJ/mol. What is ΔH°soln, and what happens to the water temperature?",
+   "options": [
+    "+15 kJ/mol; the water cools",
+    "−1445 kJ/mol; the water warms",
+    "+1445 kJ/mol; the water cools",
+    "−15 kJ/mol; the water warms"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "ΔH°soln = (+700) + (+15) + (−730) = −15 kJ/mol. The two separating steps absorb energy and the attracting step releases it. A negative total means energy is released to the water, which warms.",
+    "options": [
+     "The size is right, but the sign is reversed: the energy released (730) is larger than the energy absorbed (715).",
+     "Only the ion-dipole step releases energy. The two separating steps absorb energy, so they count as positive.",
+     "All three steps were counted as absorbing energy. Forming attractions releases energy, so that term is negative.",
+     "Right: 715 kJ/mol in, 730 kJ/mol out, a net release of 15 kJ/mol."
+    ]
+   }
   }
  ]
 }

@@ -411,6 +411,197 @@
      "Percent changes from different starting values do not simply add."
     ]
    }
+  },
+  {
+   "id": "env-math-percents-12",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A wetland covers 2,000 hectares. Development removes 15% of it. How many hectares of wetland are left?",
+   "numeric": {
+    "unit": "ha",
+    "units": [
+     "hectares",
+     "hectare"
+    ],
+    "from": {
+     "fn": "sub",
+     "args": [
+      2000,
+      {
+       "fn": "percentOf",
+       "args": [
+        15,
+        2000
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 300,
+      "why": "300 ha is the area removed (15% of 2,000). The question asks what is left: 2,000 - 300."
+     },
+     {
+      "value": 1985,
+      "why": "You subtracted 15, not 15%. First find 15% of 2,000 ha (300 ha), then subtract."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Area removed: (15 / 100) × 2,000 ha = 300 ha. Area left: 2,000 ha - 300 ha = 1,700 ha."
+   }
+  },
+  {
+   "id": "env-math-percents-13",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "single",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A fishery’s yearly catch fell from 500 to 400 metric tons. One student reports a 20% decrease and another reports a 25% decrease. Who is right?",
+   "options": [
+    "The second: the change of 100 is divided by the new value, 400",
+    "The first: the change of 100 is divided by the old value, 500",
+    "Both: either value can go on the bottom",
+    "Neither: the decrease is 100%, because the change is 100"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "(400 - 500) / 500 × 100 = -20%, a 20% decrease. Percent change always divides by the old value, the starting point.",
+    "options": [
+     "Dividing by the new value gives 25%, which compares the change with the wrong starting point.",
+     "Right: the catch started at 500, so 500 goes on the bottom.",
+     "The two choices give different answers, and only the old value is the starting point.",
+     "100 metric tons is the change itself. A percent compares it with the starting 500."
+    ]
+   }
+  },
+  {
+   "id": "env-math-percents-14",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A home used 4,000 liters of water in a month, and 1,400 liters of it went to watering the garden. Write the setup for the percent of the water that went to the garden, then give the answer.",
+   "why": {
+    "correct": "$\\frac{1{,}400}{4{,}000} \\times 100 = 35\\%$. The part goes on top, the whole on the bottom, and × 100 makes it a percent."
+   },
+   "setup": {
+    "answer": "1400 / 4000 * 100",
+    "mustUse": [
+     "1400",
+     "4000",
+     "100"
+    ],
+    "mistakes": [
+     {
+      "expr": "4000 / 1400 * 100",
+      "why": "The part (the garden, 1,400) goes on top and the whole (4,000) on the bottom."
+     },
+     {
+      "expr": "1400 / 4000",
+      "why": "Multiply by 100 to turn the fraction into a percent."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "fractionOf",
+      "args": [
+       1400,
+       4000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.35,
+       "why": "0.35 is the fraction. Multiply by 100: 35%."
+      },
+      {
+       "value": 285.714285714,
+       "why": "You divided the whole by the part. The garden is the part: 1,400 / 4,000 × 100."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-percents-15",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A region generates 800 GWh of electricity a year: 35% from coal, 40% from natural gas and the rest from other sources. How many GWh come from the other sources?",
+   "numeric": {
+    "unit": "GWh",
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        100,
+        {
+         "fn": "add",
+         "args": [
+          35,
+          40
+         ]
+        }
+       ]
+      },
+      800
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 600,
+      "why": "600 GWh is the coal and natural gas together (75%). The other sources are the rest: 100% - 75% = 25%."
+     },
+     {
+      "value": 25,
+      "why": "25 is the percent from other sources. Take 25% of 800 GWh."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Share from other sources: 100% - (35% + 40%) = 25%. Then (25 / 100) × 800 GWh = 200 GWh."
+   }
+  },
+  {
+   "id": "env-math-percents-16",
+   "unit": "skills-math",
+   "topic": "math-percents",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Town A’s water use rose from 200 to 300 million liters a year. Town B’s rose from 2,000 to 2,500 million liters a year. Which statement is correct?",
+   "options": [
+    "Town B had the larger percent increase, because its use rose by more liters",
+    "Both towns had the same percent increase",
+    "Town A had the larger increase in liters and in percent",
+    "Town A had the larger percent increase, though Town B’s use rose by more liters"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Town A: (300 - 200) / 200 × 100 = 50%. Town B: (2,500 - 2,000) / 2,000 × 100 = 25%. Town B added more liters (500 million against 100 million), but Town A’s change is larger compared with where it started.",
+    "options": [
+     "A bigger change in liters is not a bigger percent change. Town B’s 500 is compared with a much larger starting value.",
+     "The percent increases are 50% and 25%.",
+     "Town A’s use rose by 100 million liters, less than Town B’s 500 million.",
+     "Right: percent change compares each change with its own starting value."
+    ]
+   }
   }
  ]
 }

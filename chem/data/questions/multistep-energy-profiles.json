@@ -558,6 +558,32 @@
      "A transition state is a peak; an intermediate is a valley."
     ]
    }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-16",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A two-step profile has these energies: reactants 0 kJ/mol, first peak +50, intermediate +20, second peak +45, products −30. Which statement describes the energy change of each step?",
+   "options": [
+    "Step 1 absorbs 50 kJ/mol; step 2 releases 30 kJ/mol",
+    "Step 1 absorbs 50 kJ/mol; step 2 absorbs 45 kJ/mol",
+    "Step 1 releases 20 kJ/mol; step 2 absorbs 50 kJ/mol",
+    "Step 1 absorbs 20 kJ/mol; step 2 releases 50 kJ/mol"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The energy change of a step is its end minus its start. Step 1: +20 − 0 = +20 kJ/mol (absorbed). Step 2: −30 − (+20) = −50 kJ/mol (released). Together they give the overall change, −30 kJ/mol.",
+    "options": [
+     "50 is the activation energy of step 1, and −30 is the overall change measured from the reactants. Step 2 starts at the intermediate.",
+     "Those are the heights of the two peaks, not the energy changes of the steps.",
+     "The signs are reversed and the values swapped: the intermediate is above the reactants, and the products are below the intermediate.",
+     "Right: reactants to intermediate is a climb of 20, and intermediate to products is a drop of 50."
+    ]
+   }
   }
  ]
 }

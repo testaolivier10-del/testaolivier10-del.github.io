@@ -99,7 +99,9 @@
     if(on('end') && R.slant){
       var sl = function(x){ return R.slant.m * x + R.slant.b; }, runs = P.sample(sl, XW[0], XW[1], G, 2);
       if(runs.length){ var a0 = runs[0][0], a1 = runs[0][runs[0].length - 1]; out.push('<line class="pr-ha" x1="' + r1(G.sx(a0[0])) + '" y1="' + r1(G.sy(a0[1])) + '" x2="' + r1(G.sx(a1[0])) + '" y2="' + r1(G.sy(a1[1])) + '"/>'); }
-      out.push('<text class="pr-lab pr-lab-ha" x="' + (G.R - 4) + '" y="' + (G.T + 14) + '" text-anchor="end">slant y = ' + mn(PR.typed(R.slant.m)) + 'x ' + (R.slant.b < 0 ? '− ' + mn(PR.typed(-R.slant.b)) : '+ ' + PR.typed(R.slant.b)) + '</text>');
+      // in the corner the line stays out of: top left when it rises (its right end, the end arrow and usually an x = label share the top right)
+      var slM = PR.typed(R.slant.m), slUp = R.slant.m > 0;
+      out.push('<text class="pr-lab pr-lab-ha" x="' + (slUp ? G.L + 6 : G.R - 4) + '" y="' + (G.T + 14) + '" text-anchor="' + (slUp ? 'start' : 'end') + '">slant y = ' + (slM.indexOf('/') > -1 ? '(' + mn(slM) + ')' : mn(slM)) + 'x ' + (R.slant.b < 0 ? '− ' + mn(PR.typed(-R.slant.b)) : '+ ' + PR.typed(R.slant.b)) + '</text>');
     }
     var labY = [];
     if(on('vas')) R.vas.forEach(function(v){
@@ -135,7 +137,7 @@
       if(!G.phone || !o.pins) out.push('<text class="pr-lab ' + colorAt(h.x) + '" x="' + r1(+hx + 9) + '" y="' + r1(+hyy - 8) + '">(' + mn(h.x) + ', ' + mn(PR.typed(h.y)) + ')</text>');
     });
     (o.marks || []).forEach(function(m){
-      if(m.x != null){ var mx = r1(G.sx(Math.max(XW[0], Math.min(XW[1], m.x)))); out.push('<line class="cd-yours pr-mark" x1="' + mx + '" y1="' + G.T + '" x2="' + mx + '" y2="' + G.B + '"/><text class="cd-yours pr-mark-t" x="' + r1(+mx + 5) + '" y="' + r1(G.B - 8) + '">yours</text>'); }
+      if(m.x != null){ var mx = r1(G.sx(Math.max(XW[0], Math.min(XW[1], m.x)))); out.push('<line class="cd-yours pr-mark" x1="' + mx + '" y1="' + G.T + '" x2="' + mx + '" y2="' + G.B + '"/><text class="cd-yours pr-mark-t" x="' + r1(+mx + (+mx > G.R - 44 ? -5 : 5)) + '" y="' + r1(G.B - 8) + '"' + (+mx > G.R - 44 ? ' text-anchor="end"' : '') + '>yours</text>'); }
       else if(m.y != null && m.y >= G.y[0] && m.y <= G.y[1]){ var my = r1(G.sy(m.y)), mxx = r1(G.sx(m.at)); out.push('<circle class="cd-yours pr-mark" cx="' + mxx + '" cy="' + my + '" r="6"/><text class="cd-yours pr-mark-t" x="' + r1(+mxx + 9) + '" y="' + r1(+my + 4) + '">yours</text>'); }
     });
     // the sign chart under the graph, on the same x-scale
@@ -464,10 +466,12 @@
     var nd = poly.num.length - 1, k = poly.den.length - 1, lead = poly.num[nd] / poly.den[k];
     var zs = M.roots(function(x){ return ev(poly.num, x); }, -6, 6, 600), ps = M.roots(function(x){ return ev(poly.den, x); }, -6, 6, 600);
     var vas = ps.map(function(x){ var l = f(x - 1e-6), r = f(x + 1e-6); return { x: x, left: l > 0 ? 1 : -1, right: r > 0 ? 1 : -1, k: 1 }; });
-    var end = nd < k ? { kind: 'ha', ha: 0 } : nd === k ? { kind: 'ha', ha: lead } : { kind: 'grow', left: (nd - k) % 2 ? -Math.sign(lead) : Math.sign(lead), right: Math.sign(lead) };
+    var end = nd < k ? { kind: 'ha', d: nd - k, ha: 0, left: 0, right: 0 } : nd === k ? { kind: 'ha', d: 0, ha: lead, left: lead, right: lead } : { kind: 'grow', left: (nd - k) % 2 ? -Math.sign(lead) : Math.sign(lead), right: Math.sign(lead) };
     var cuts = zs.concat(ps).sort(function(a, b){ return a - b; }), edges = [-Infinity].concat(cuts, [Infinity]), signs = [];
     for(var i = 0; i < edges.length - 1; i++){ var a = edges[i], b = edges[i + 1], at = !isFinite(a) && !isFinite(b) ? 0 : !isFinite(a) ? b - 1 : !isFinite(b) ? a + 1 : (a + b) / 2; signs.push({ a: a, b: b, s: f(at) > 0 ? 1 : -1, at: at }); }
-    var R = { zeros: zs.map(function(x){ return { x: x, m: 1, cross: true }; }), vas: vas, holes: [], end: end, slant: null, signs: signs, rational: true };
+    var R = { zeros: zs.map(function(x){ return { x: x, m: 1, cross: true }; }), vas: vas, holes: [], end: end, slant: null, signs: signs, rational: true,
+      // what PR.endText reads for the figure's spoken description: without these, a numerator of higher degree threw and the problem could not be finished
+      degN: nd, degD: k, d: nd - k, numC: poly.num, denC: poly.den };
     // a stand-in spec that carries its own evaluation (fOf, sOf)
     return { analyze: true, R: R, spec: { a: 1, factors: [], _f: f } };
   }

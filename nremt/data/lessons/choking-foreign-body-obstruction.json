@@ -1,0 +1,103 @@
+{
+  "id": "choking-foreign-body-obstruction",
+  "title": "Choking: foreign body airway obstruction",
+  "chapter": 9,
+  "section": "ch9-fbao",
+  "hook": "<p>At a restaurant, a man stands up from his table with both hands at his throat. His friend is slapping his back and shouting for help. As you reach him, he tries to cough and almost nothing comes out.</p><p>With a choking patient there is only one question: is enough air moving? The answer decides whether you stand back and coach or step in at once. The 2025 American Heart Association guidelines also changed what stepping in looks like.</p>",
+  "steps": [
+    {
+      "find": "The patient is coughing forcefully and can speak. You can hear air moving.",
+      "act": "This is a mild obstruction. Do not intervene. Stay with the patient, encourage the coughing and watch closely. A forceful cough moves more air than any thrust you can deliver."
+    },
+    {
+      "find": "The cough is weak or absent, the patient cannot speak, and there is high-pitched stridor or no sound at all. The patient may clutch the throat or turn blue.",
+      "act": "This is a severe obstruction. Act now. A weak, ineffective cough still counts as severe."
+    },
+    {
+      "find": "The patient with a severe obstruction is a responsive adult or child.",
+      "act": "Give 5 back blows between the shoulder blades with the heel of your hand, then 5 abdominal thrusts: a fist thumb-side in, just above the navel and below the xiphoid, each thrust inward and upward. Repeat until the object comes out or the patient becomes unresponsive."
+    },
+    {
+      "find": "The patient is in late pregnancy, or you cannot get your arms around the abdomen, as with significant obesity.",
+      "act": "Give 5 chest thrusts in place of the abdominal thrusts, still after 5 back blows."
+    },
+    {
+      "find": "The patient is a responsive infant under 1 year old.",
+      "act": "Support the head and jaw, lay the infant face down along your forearm with the head lower than the chest, and give 5 back blows. Turn the infant over as a unit and give 5 chest thrusts on the lower half of the breastbone with the heel of one hand. Never give abdominal thrusts to an infant."
+    },
+    {
+      "find": "The patient becomes unresponsive.",
+      "act": "Lower the patient to the ground and start CPR, beginning with chest compressions. Before each set of breaths, look in the mouth and remove an object only if you can see it. Do not do blind finger sweeps."
+    }
+  ],
+  "ideas": [
+    "<b>Mild or severe depends on air movement,</b> not on how distressed the patient looks.",
+    "<b>One sequence for every age (2025 AHA):</b> 5 back blows, then 5 thrusts, repeated. Adults and children get abdominal thrusts; infants get chest thrusts.",
+    "<b>Back blows are new for adults and children.</b> The older teaching was abdominal thrusts alone.",
+    "<b>Infant chest thrusts use the heel of one hand,</b> not two fingers. Abdominal thrusts are not used under 1 year because the infant liver is large, sits low and is poorly protected.",
+    "<b>After the object is out, the patient still goes to the hospital:</b> thrusts can injure organs, a fragment may remain, and aspiration can show up later as pneumonia.",
+    "<b>Thrusts do nothing for a swollen airway</b> (anaphylaxis, an inhalation burn, epiglottitis). That is oxygen, minimal agitation and rapid transport, plus epinephrine per protocol when the cause is anaphylaxis."
+  ],
+  "misconception": {
+    "wrong": "If a choking patient is still coughing at all, the obstruction is mild and you should wait.",
+    "right": "Only a forceful, effective cough with speech means mild. A weak cough that moves little air is a severe obstruction, and it gets back blows and thrusts right away."
+  },
+  "check": [
+    {
+      "q": "A woman is choking on a piece of steak. She is coughing hard and gasps out, \"I'm okay.\" What do you do?",
+      "options": [
+        "Give 5 back blows, then 5 abdominal thrusts",
+        "Sweep her mouth with a gloved finger",
+        "Encourage her to keep coughing and watch her",
+        "Lay her down and begin chest compressions"
+      ],
+      "correct": 2,
+      "why": "A forceful cough and the ability to speak mean a mild obstruction, and her own cough is the most effective tool available. Back blows and thrusts are for a severe obstruction; using them now could drive the object deeper."
+    },
+    {
+      "q": "A 40-year-old man cannot speak or cough and is turning blue. Under the 2025 AHA guidelines, what comes first?",
+      "options": [
+        "5 back blows between the shoulder blades",
+        "5 abdominal thrusts above the navel",
+        "5 chest thrusts on the lower breastbone",
+        "2 rescue breaths with a pocket mask"
+      ],
+      "correct": 0,
+      "why": "The 2025 sequence starts with 5 back blows at every age, followed by 5 thrusts. Abdominal thrusts alone was the older adult teaching, which is why it is the tempting answer."
+    },
+    {
+      "q": "A 7-month-old has a severe obstruction. After 5 back blows, the object is still there. What do you give next?",
+      "options": [
+        "5 abdominal thrusts with two fingers",
+        "5 chest thrusts with two fingers",
+        "5 abdominal thrusts with one fist",
+        "5 chest thrusts with the heel of one hand"
+      ],
+      "correct": 3,
+      "why": "Infants get chest thrusts, delivered with the heel of one hand under the 2025 guidelines. Two fingers is the older technique and did not reach a useful depth. Abdominal thrusts are never used on an infant because of the large, poorly protected liver."
+    },
+    {
+      "q": "A choking adult goes limp and unresponsive in your arms. What do you do?",
+      "options": [
+        "Continue abdominal thrusts on the ground",
+        "Lower him to the ground and start chest compressions",
+        "Check the carotid pulse for a full minute",
+        "Sweep deep into the throat with your finger"
+      ],
+      "correct": 1,
+      "why": "An unresponsive choking patient gets CPR, starting with compressions, which generate high airway pressures. Look in the mouth before each set of breaths and remove only what you can see. Blind finger sweeps can push the object deeper."
+    },
+    {
+      "q": "You relieve a child's obstruction with back blows and abdominal thrusts. She is now breathing normally and crying. What is next?",
+      "options": [
+        "Release her to her parents with advice",
+        "Give two more sets of thrusts to be sure",
+        "Reassess her airway and breathing and transport her",
+        "Offer her water to check her swallowing"
+      ],
+      "correct": 2,
+      "why": "Every patient whose obstruction is relieved is still transported. Abdominal thrusts can injure the liver, spleen or stomach, a fragment may remain, and aspiration can cause pneumonia later."
+    }
+  ],
+  "summary": "<p>Choking is mild if the patient can cough forcefully and speak, and severe if the cough is weak or absent and air is not moving. Mild: encourage coughing and watch. Severe, in a responsive patient of any age: 5 back blows, then 5 thrusts, repeated. The thrusts are abdominal for adults and children, chest thrusts with the heel of one hand for infants, and chest thrusts for a patient in late pregnancy or one whose abdomen you cannot reach around. If the patient becomes unresponsive, start CPR with compressions and look in the mouth before breaths, with no blind finger sweeps. Transport every patient afterward, and remember that thrusts do not help a swollen airway.</p>"
+}

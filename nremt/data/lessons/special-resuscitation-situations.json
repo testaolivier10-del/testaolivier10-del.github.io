@@ -1,0 +1,116 @@
+{
+  "id": "special-resuscitation-situations",
+  "title": "Special resuscitation situations",
+  "chapter": 21,
+  "section": "ch21-special",
+  "hook": "<p>A man is pulled from an icy pond after 20 minutes under water. He is cold, blue, stiff with cold and has no pulse. A bystander says quietly, \"He's gone.\"</p><p>Maybe not. Cold stretches the window of survival, and \"not dead until warm and dead\" is a working rule. Some arrests bend the standard approach, and you need to know which parts bend and which never do.</p>",
+  "steps": [
+    {
+      "find": "A patient in cardiac arrest is severely cold.",
+      "act": "Start full resuscitation at once and keep it going while the patient is rewarmed: CPR, and the AED as soon as it is at hand. Whether shocks are repeated after a first unsuccessful one in a severely cold patient is set by your local protocol. Handle the patient gently, remove wet clothing, prevent further heat loss, and transport to a hospital that can rewarm actively. Do not terminate resuscitation in the field."
+    },
+    {
+      "find": "A patient in arrest has been pulled from the water.",
+      "act": "Most drowning arrests are asphyxial, so be aggressive with the airway and ventilations along with compressions. Start CPR with breaths before the AED goes on. Then pull the patient clear of the water and quickly wipe the chest dry before attaching the pads."
+    },
+    {
+      "find": "A patient goes into cardiac arrest in the back of the moving ambulance.",
+      "act": "Stop the vehicle, then do CPR and use the AED. Motion lowers compression quality, and some AEDs cannot analyze while the vehicle is moving."
+    },
+    {
+      "find": "You see a lump under the skin of the upper chest: a pacemaker or an implanted defibrillator.",
+      "act": "Resuscitate as usual. Place the pads a few inches away from the device, not on top of it, while staying in the normal pad area."
+    },
+    {
+      "find": "An unresponsive patient has a ventricular assist device (VAD or LVAD). You cannot feel a pulse.",
+      "act": "No pulse can be normal with a VAD, so judge by level of consciousness and breathing. If the patient is unconscious with signs of poor perfusion, assume the device has failed and begin compressions per local protocol."
+    },
+    {
+      "find": "Parents find their infant not breathing in the crib.",
+      "act": "Start resuscitation unless rigor mortis or dependent lividity is present. Support the family, and never speak to them in a suspicious tone."
+    }
+  ],
+  "ideas": [
+    "<b>Hypothermic arrest:</b> full resuscitation starts immediately and continues during rewarming, and the AED is used. Guidance on repeat shocks has changed more than once: the 2025 AHA guidelines say that if the first shock does not work, it may be reasonable to hold further shocks until the core temperature reaches 86°F (30°C), where the 2020 guidelines kept to the standard sequence. Follow your local protocol.",
+    "<b>The cold patient has a longer window of survival</b>, which is the meaning of \"not dead until warm and dead.\" Stiffness and fixed, dilated pupils are not reliable signs of death in severe hypothermia.",
+  "<b>Water and the AED:</b> the AED is used after drowning, but not on a patient lying in water or on a wet chest. Wiping the chest is enough; you do not wait for the patient to dry.",
+    "<b>Drowning is an oxygen problem first.</b> Breaths matter here more than in a sudden collapse.",
+    "<b>An implanted defibrillator that is firing</b> means the device is detecting a dangerous rhythm: transport immediately. A patient with past bypass surgery gets the same care as anyone else.",
+    "<b>SUID</b> (sudden unexpected infant death) is the death of an infant under 1 year with no immediately obvious cause. It is an umbrella term covering SIDS, accidental suffocation or strangulation in bed, and deaths that remain undetermined.",
+    "<b>SIDS is a diagnosis of exclusion</b> made only after a full investigation, autopsy and scene review. It cannot be determined in the field.",
+    "<b>It happens to well-cared-for babies.</b> It is better to resuscitate when it was not necessary than to fail to resuscitate when it was."
+  ],
+  "misconception": {
+    "wrong": "He is cold, stiff and has no pulse after that long in icy water, so he is dead and CPR is pointless.",
+    "right": "Severe cold can look like death, and it also protects the brain. Unless there is an obviously lethal injury, a hypothermic patient in cardiac arrest gets full resuscitation, continued during rewarming and transport. That is what \"not dead until warm and dead\" means."
+  },
+  "check": [
+    {
+      "q": "A patient in arrest was just pulled from a lake. He is lying at the shoreline with his legs still in the water and his chest soaking wet, and your partner has started CPR with breaths. What do you do before attaching the AED?",
+      "options": [
+        "Nothing; put the pads straight onto his wet chest",
+        "Pull him clear of the water and wipe his chest dry",
+        "Skip the AED; drowning patients are never shocked",
+        "Wait until his skin and clothes have fully dried"
+      ],
+      "correct": 1,
+      "why": "The AED is used for a drowning patient once CPR with breaths is under way, but not while he is lying in water or on a soaking-wet chest. Pull him clear and quickly wipe the chest so the pads stick and the current goes through the heart instead of across wet skin. Waiting for him to dry is the tempting overcorrection: wiping the chest is enough."
+    },
+    {
+      "q": "A patient with an LVAD is awake, talking and comfortable. You cannot feel a pulse or get a blood pressure. What does this mean?",
+      "options": [
+        "He is in cardiac arrest; begin compressions",
+        "The device has failed; shock him with the AED",
+        "This can be normal with an LVAD; assess mental status and breathing",
+        "He is in shock; lay him flat and raise his legs"
+      ],
+      "correct": 2,
+      "why": "A VAD can move blood in a continuous flow, so a living patient may have no palpable pulse or measurable blood pressure. Level of consciousness and breathing guide you. Compressions are for the VAD patient who is unconscious with poor perfusion."
+    },
+    {
+      "q": "Your patient goes into cardiac arrest while the ambulance is on the highway. What is the best action?",
+      "options": [
+        "Have the driver pull over and stop, then do CPR and use the AED",
+        "Continue at speed and do CPR as well as you can",
+        "Speed up and start CPR on arrival",
+        "Use the AED first while the ambulance keeps moving"
+      ],
+      "correct": 0,
+      "why": "Motion lowers compression quality, and some AEDs cannot analyze in a moving vehicle. Stopping feels like losing time, but effective compressions and an accurate analysis matter more."
+    },
+    {
+      "q": "You are placing AED pads and notice a hard lump under the skin below the right collarbone. Where does the pad go?",
+      "options": [
+        "Directly over the lump for the best contact",
+        "Nowhere; an AED cannot be used with an implanted device",
+        "On the abdomen, well below the ribs",
+        "A few inches away from the lump, still in the usual area"
+      ],
+      "correct": 3,
+      "why": "An implanted pacemaker or defibrillator does not stop you from defibrillating. The pad is offset a few inches from the device and kept in the general target area. A pad directly over the device can block the current and damage it."
+    },
+    {
+      "q": "A 3-month-old is found not breathing in her crib. She is still warm, with no rigor mortis and no lividity. A neighbor whispers that the parents must have done something. What do you do?",
+      "options": [
+        "Withhold resuscitation and call law enforcement",
+        "Question the parents before touching the infant",
+        "Begin resuscitation and treat the parents with compassion",
+        "Tell the parents the cause was SIDS"
+      ],
+      "correct": 2,
+      "why": "Without rigor mortis or dependent lividity, you resuscitate. SUID happens to well-cared-for babies, so the family gets support, not suspicion. SIDS is a diagnosis of exclusion made after investigation and cannot be named in the field."
+    },
+    {
+      "q": "A hypothermic patient in cardiac arrest has not responded after 20 minutes of CPR at the scene. Which is correct?",
+      "options": [
+        "Terminate resuscitation, since 20 minutes has passed",
+        "Continue resuscitation and transport for active rewarming",
+        "Stop CPR until the patient has been rewarmed",
+        "Rewarm him fully on scene before more CPR"
+      ],
+      "correct": 1,
+      "why": "Resuscitation is not terminated in the field for a hypothermic patient, because the window of survival is longer in the cold. CPR continues during transport to a hospital that can rewarm actively, with the AED used as your protocol directs. Twenty minutes is tempting as a stopping point, but the usual time limits do not apply to a cold patient."
+    }
+  ],
+  "summary": "<p>Special situations adjust the standard resuscitation without replacing it. A hypothermic patient gets full CPR and the AED per protocol, gentle handling and transport for rewarming, with no field termination. A drowning patient needs strong airway and ventilation care first, then a chest wiped dry before the AED. Arrest in a moving ambulance means stopping the vehicle. Pads go a few inches from a pacemaker or implanted defibrillator. A VAD patient may have no pulse while alive, so mental status and breathing guide you. In sudden unexpected infant death, resuscitate unless rigor mortis or lividity is present, and treat the family with compassion.</p>"
+}

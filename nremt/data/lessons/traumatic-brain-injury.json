@@ -1,0 +1,104 @@
+{
+  "id": "traumatic-brain-injury",
+  "title": "Traumatic brain injury",
+  "chapter": 33,
+  "section": "ch33-tbi",
+  "hook": "<p>A cyclist hit a curb and landed on his head. He was talking when you arrived. Ten minutes later he is hard to wake, his blood pressure has climbed to 190 over 90 and his pulse has dropped to 52.</p><p>The damage from the impact is already done. What happens to his brain in the next twenty minutes is still open, and it depends mostly on plain things: an open airway, enough oxygen and a blood pressure that does not fall.</p>",
+  "steps": [
+    {
+      "find": "A patient has a significant head injury.",
+      "act": "Treat the airway, breathing and circulation as the brain treatment. The primary injury cannot be changed. The secondary injury (hypoxia, hypotension, swelling) can be prevented: keep the airway open, keep the oxygen saturation up, and do not let the blood pressure drop. Check the blood glucose too, because low sugar harms an injured brain the same way."
+    },
+    {
+      "find": "The level of consciousness is getting worse.",
+      "act": "Treat it as rising pressure inside the skull. A falling level of consciousness is the most sensitive sign. Recheck often, record each change with the time, and move toward rapid transport."
+    },
+    {
+      "find": "Blood pressure is rising, the pulse is slowing and breathing is irregular.",
+      "act": "Recognize Cushing's triad, a late sign of rising intracranial pressure. It is the opposite of shock and it does not mean the patient is stabilizing. Also look for vomiting without nausea and a pupil that is dilated and does not react on one side."
+    },
+    {
+      "find": "The patient needs help breathing.",
+      "act": "Ventilate at a normal rate. Do not hyperventilate as a routine: blowing off carbon dioxide narrows the brain's blood vessels and cuts blood flow to a brain that needs more. Faster ventilation is only for specific signs of herniation, and only if your protocol directs it."
+    },
+    {
+      "find": "Clear or blood-tinged fluid is draining from the nose or an ear, or there is bruising around both eyes or behind an ear.",
+      "act": "Suspect a basilar skull fracture. Cover the nose or ear loosely with a sterile dressing and let the fluid drain. Do not pack it, and do not use a nasopharyngeal airway. Raccoon eyes and Battle's sign can take hours to show, so not seeing them early rules nothing out."
+    },
+    {
+      "find": "An adult with a head injury is hypotensive with a fast pulse.",
+      "act": "Look for bleeding somewhere else. In an adult, a head injury alone rarely causes low blood pressure. Infants are the exception: their blood volume is small enough that bleeding inside the head can cause shock."
+    }
+  ],
+  "ideas": [
+    "<b>Primary and secondary injury.</b> The primary injury happens at impact. The secondary injury comes afterward, and hypoxia and hypotension are its two biggest drivers.",
+    "<b>Good basic care is the treatment.</b> Airway, oxygenation and blood pressure are what an EMT can protect, along with checking the glucose.",
+    "<b>Cushing's triad:</b> rising blood pressure with a widening pulse pressure, a falling heart rate, and irregular breathing. It is late, and it mirrors shock.",
+    "<b>The earliest warning is the mental status.</b> A unilateral dilated, unreactive pupil and vomiting without nausea point the same way.",
+    "<b>No routine hyperventilation.</b> Normal rate unless protocol directs otherwise for signs of herniation.",
+    "<b>Basilar skull fracture:</b> raccoon eyes, Battle's sign, fluid from the nose or ears. Cover loosely, never pack, no NPA.",
+    "<b>Every concussion is evaluated.</b> Headache, confusion, amnesia and repeated questions can look the same as a slowly growing bleed in the first hour."
+  ],
+  "misconception": {
+    "wrong": "A head-injured patient should be ventilated fast, because blowing off carbon dioxide lowers the pressure in the skull.",
+    "right": "Routine hyperventilation narrows the brain's blood vessels and reduces blood flow to tissue that is already short of it. Ventilate at a normal rate, and go faster only if your protocol directs it for specific signs of herniation."
+  },
+  "check": [
+    {
+      "q": "A head-injured patient's vital signs change over ten minutes: blood pressure from 138/84 to 186/90, pulse from 88 to 54, and breathing has become irregular. What does this pattern mean?",
+      "options": [
+        "Rising intracranial pressure, a late and serious sign",
+        "Hemorrhagic shock from bleeding that has not been found",
+        "The patient is compensating and beginning to stabilize",
+        "Neurogenic shock from an injury to the spinal cord"
+      ],
+      "correct": 0,
+      "why": "Rising blood pressure, a slowing pulse and irregular breathing are Cushing's triad, a late sign of rising intracranial pressure. Shock is the tempting answer for any trauma patient, but hemorrhagic shock shows a falling pressure with a rising pulse, which is the reverse of this."
+    },
+    {
+      "q": "An unresponsive adult with a head injury is breathing 6 times a minute, and you begin bag-valve-mask ventilation. No signs of herniation are present. How do you ventilate?",
+      "options": [
+        "As fast as you can, to blow off carbon dioxide",
+        "At twice the normal rate until the pupils react",
+        "At a normal rate, with oxygen attached",
+        "Only when the saturation falls below 85 percent"
+      ],
+      "correct": 2,
+      "why": "The goal is to prevent hypoxia without overventilating, so the patient is ventilated at a normal rate. Fast ventilation is tempting because it was once taught for head injury, but lowering carbon dioxide constricts cerebral vessels and reduces blood flow to the brain."
+    },
+    {
+      "q": "After a fall, a patient has clear, blood-tinged fluid running from the left ear. What do you do about the drainage?",
+      "options": [
+        "Pack the ear canal firmly with sterile gauze",
+        "Tilt the head so the ear points up and stops draining",
+        "Suction the ear canal gently to keep it clear",
+        "Cover the ear loosely with a sterile dressing"
+      ],
+      "correct": 3,
+      "why": "Fluid from the ear after head trauma suggests a basilar skull fracture with cerebrospinal fluid leaking out. It is covered loosely and allowed to drain. Packing is the tempting choice because it is how other bleeding is controlled, but blocking the exit raises the pressure inside the skull."
+    },
+    {
+      "q": "A 40-year-old who struck his head in a crash has a blood pressure of 82/50, a pulse of 128 and cool, pale skin. What is the most likely explanation?",
+      "options": [
+        "The head injury itself is causing the low pressure",
+        "He is bleeding from an injury somewhere else",
+        "This is Cushing's triad from rising pressure",
+        "A concussion has slowed his circulation"
+      ],
+      "correct": 1,
+      "why": "In an adult, a head injury alone rarely causes hypotension, so shock in a head-injured adult means bleeding elsewhere until proven otherwise. Blaming the head injury is tempting because it is the obvious injury, but rising intracranial pressure raises the blood pressure and slows the pulse."
+    },
+    {
+      "q": "Which finding is the most sensitive indicator that pressure inside the skull is rising?",
+      "options": [
+        "Bruising behind the ear over the mastoid",
+        "Bruising that appears around both eyes",
+        "A level of consciousness that is getting worse",
+        "A headache that the patient rates as severe"
+      ],
+      "correct": 2,
+      "why": "A deteriorating level of consciousness is the most sensitive sign of rising intracranial pressure, which is why mental status is rechecked and recorded over time. Battle's sign and raccoon eyes are tempting because they are well known, but they are late signs of a basilar skull fracture and can take hours to appear."
+    }
+  ],
+  "summary": "<p>A brain injury has a primary part, done at impact, and a secondary part that EMT care can prevent: hypoxia, hypotension, swelling and low blood sugar. Protecting the airway, oxygenation and blood pressure is the treatment. A worsening level of consciousness is the most sensitive sign of rising pressure in the skull; Cushing's triad (rising blood pressure with a widening pulse pressure, a slowing pulse, irregular breathing), a one-sided dilated unreactive pupil and vomiting without nausea are further signs. Ventilate at a normal rate and do not hyperventilate unless protocol directs it for signs of herniation. Fluid from the nose or ears, raccoon eyes and Battle's sign suggest a basilar skull fracture: cover loosely, never pack, and avoid an NPA. An adult in shock after a head injury is bleeding somewhere else; an infant can be in shock from the head injury itself.</p>"
+}

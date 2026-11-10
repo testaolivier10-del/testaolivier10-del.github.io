@@ -493,6 +493,33 @@
      "The initial value, at $t = 0$."
     ]
    }
+  },
+  {
+   "id": "pcalc-exponential-modeling-16",
+   "unit": "unit-2",
+   "topic": "exponential-modeling",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A population of bacteria doubles every $3$ hours. How many hours does it take to grow to $8$ times its starting size?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 9,
+    "unit": "hours",
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "That multiplies $8$ by $3$. Count doublings instead: $8 = 2^3$ is three doublings, and each takes $3$ hours."
+     },
+     {
+      "value": 12,
+      "why": "$8$ times is three doublings ($2 \\to 4 \\to 8$), not four: $3 \\cdot 3 = 9$ hours."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The model is $P(t) = P_0 \\cdot 2^{t/3}$. Eight times the start means $2^{t/3} = 8 = 2^3$, so $\\frac{t}{3} = 3$ and $t = 9$ hours: three doublings of $3$ hours each."
+   }
   }
  ]
 }

@@ -218,7 +218,8 @@
   /* ============================================================ test yourself */
   function figSize(w, h){
     var W = window.innerWidth || 1280, Hh = window.innerHeight || 800;
-    if(W <= 640) return [340, Math.round(Math.max(240, Math.min(400, Hh * 0.62 - 140)))];
+    // a phone's quiz stage is short (the data table sits above the plot): a plot drawn taller than its slot is shrunk to fit and its numbers drop to 7px
+    if(W <= 640) return [340, Math.round(Math.max(190, Math.min(260, Hh * 0.36 - 70)))];
     if(W <= 999 && Hh <= 540) return [440, Math.round(Math.max(200, Math.min(280, Hh - 130)))];
     return [w, h];
   }

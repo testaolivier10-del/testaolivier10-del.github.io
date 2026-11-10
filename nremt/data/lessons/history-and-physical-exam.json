@@ -1,0 +1,104 @@
+{
+  "id": "history-and-physical-exam",
+  "title": "History taking and the physical exam",
+  "chapter": 14,
+  "section": "ch14-principles-assessment",
+  "hook": "<p>A 58-year-old woman says she \"just feels off.\" She denies having diabetes. On the kitchen counter you see a vial of insulin and a glucose meter. Her skin is cool and moist.</p><p>Nothing in that picture came from a machine. It came from asking, looking and noticing. History taking and the physical exam have a structure, and the structure is what keeps you from missing the thing that matters.</p>",
+  "steps": [
+    {
+      "find": "You begin the history. The patient can talk, and nothing about the call is so urgent that you need instant answers.",
+      "act": "Get down to the patient's level, show empathy and listen, so you do not ask again what was already answered. Use open-ended questions, which draw out detail. Save closed-ended (yes or no) questions for serious or urgent moments that need fast answers."
+    },
+    {
+      "find": "The patient has a chief complaint, such as pain.",
+      "act": "Work through OPQRST for the present illness: Onset, Provocation (what triggers it, what relieves it), Quality, Region and Radiation, Severity on a 0 to 10 scale, and Time (when it started, sudden or gradual, any change since)."
+    },
+    {
+      "find": "You need the rest of the story behind the complaint.",
+      "act": "Use SAMPLE: Signs and symptoms, Allergies, Medications (prescription, over the counter, recreational, supplements, birth control), Pertinent past history, Last oral intake, and Events leading up to it. Medications can reveal a condition the patient did not mention."
+    },
+    {
+      "find": "The patient cannot communicate.",
+      "act": "Take the history from family and bystanders, and from the medications and medical devices you find at the scene."
+    },
+    {
+      "find": "It is time for the physical exam.",
+      "act": "Use three techniques: observe (overall condition, and compare the injured side with the uninjured side), auscultate (listen, usually with a stethoscope) and palpate (feel for deformities and anything abnormal). Let the chief complaint choose which body system you examine in detail."
+    },
+    {
+      "find": "You have a history, an exam and vital signs.",
+      "act": "Form a field (working) diagnosis and keep a differential, the list of conditions that could explain the findings. Watch for red flags. Never let the search for a diagnosis delay treatment the patient needs now."
+    }
+  ],
+  "ideas": [
+    "The history has <b>two parts</b>: the history of present illness (HPI) and the past medical history (PMH).",
+    "<b>OPQRST</b> explores the present complaint. <b>SAMPLE</b> covers the rest of the history. A good question tends to lead to two more good questions.",
+    "<b>The complaint picks the exam.</b> Respiratory: decide first whether breathing is adequate, then chest wall motion, lung sounds, pulse oximetry and edema. Cardiovascular: skin, mental status, pulse, blood pressure, jugular vein distention (JVD) and chest tenderness. Nervous system: a stroke scale, sensation and movement in the limbs, grip and foot strength, pupils and gait. Endocrine: mental status, skin and blood glucose, plus a look for an insulin pump and medical ID jewelry.",
+    "<b>Abdomen:</b> note the position the patient chooses (curled up, guarding), inspect, then palpate the quadrants and leave the painful area for last.",
+    "<b>Allergic reaction:</b> inspect the point of contact, the skin for rash or hives, and the face, lips and mouth for swelling. Listen to the voice and the lungs.",
+    "<b>Alert infants and small children</b> are examined toe to head, on the parent's lap if possible. Use simple words, explain each step, and never lie about whether something will hurt.",
+    "<b>Mental shortcuts mislead.</b> Anchoring is sticking with your first idea despite new information. Confirmation bias is looking only for evidence that agrees with you. Search satisfying is stopping once you find one answer. Availability is leaning toward a condition because you saw it recently."
+  ],
+  "misconception": {
+    "wrong": "EMTs do not diagnose, so there is no point in thinking about what is actually wrong with the patient.",
+    "right": "EMTs do diagnose: cardiac arrest is a diagnosis. The field diagnosis is often general, such as abdominal pain of unknown cause, and its job is to rule out life threats, guide treatment by protocol and get the patient transported. It is a working label that changes when the findings change."
+  },
+  "check": [
+    {
+      "q": "You want a patient to describe her chest discomfort in her own words. Which question is open-ended?",
+      "options": [
+        "Is the pain sharp, or is it more of a dull ache?",
+        "Does it hurt more when you take a breath in?",
+        "Can you tell me what the discomfort feels like?",
+        "Is it worse now than it was an hour ago?"
+      ],
+      "correct": 2,
+      "why": "An open-ended question cannot be answered with yes or no, so it draws out more detail. The other three are closed-ended: each can be answered with yes, no or a choice you supplied. Closed questions have a place, but it is in urgent situations that need fast answers."
+    },
+    {
+      "q": "You ask a patient with abdominal pain, \"Does anything make it better or worse?\" Which part of OPQRST is this?",
+      "options": [
+        "Provocation",
+        "Region and radiation",
+        "Quality",
+        "Severity"
+      ],
+      "correct": 0,
+      "why": "Provocation asks what triggers the problem and what relieves it. Region and radiation asks where it is and whether it spreads, quality asks for a description, and severity is the 0 to 10 scale."
+    },
+    {
+      "q": "A confused man denies any medical problems. His wife hands you his insulin pen. What does this tell you?",
+      "options": [
+        "Nothing useful, because he denied having diabetes",
+        "He is likely diabetic, so check his blood glucose",
+        "He is misusing a medication that belongs to his wife",
+        "The M in SAMPLE only counts if the patient confirms it"
+      ],
+      "correct": 1,
+      "why": "Medications can reveal conditions the patient has not disclosed, and a patient who takes insulin has diabetes. A confused patient's denial does not cancel what the medication shows, so the glucose gets checked."
+    },
+    {
+      "q": "You are examining an alert, frightened 2-year-old who is sitting with her mother. Which approach is best?",
+      "options": [
+        "Head to toe on the stretcher, as for an adult",
+        "Head to toe quickly while a partner holds her still",
+        "Skip the exam and rely on the mother's history",
+        "Toe to head on the mother's lap, explaining as you go"
+      ],
+      "correct": 3,
+      "why": "With an alert infant or small child you reverse the usual order and work from toe to head, on the parent's lap if possible, explaining each step. Starting at the head on a stretcher frightens the child and makes the rest of the exam harder."
+    },
+    {
+      "q": "An EMT decides early that a patient is simply drunk. He holds to that view even after finding a head wound and a low blood glucose reading that do not fit. Which pitfall is this?",
+      "options": [
+        "Availability",
+        "Illusory correlation",
+        "Anchoring",
+        "Representativeness"
+      ],
+      "correct": 2,
+      "why": "Anchoring is holding on to the first hypothesis even when new information argues against it. Availability is being swayed by a condition you saw recently, which is not what happened here."
+    }
+  ],
+  "summary": "<p>The history has two parts, the present illness and the past history, and is best gathered with rapport and open-ended questions. OPQRST organizes the complaint and SAMPLE the background, with family, bystanders and medications filling in when the patient cannot. The exam uses three techniques (observe, auscultate, palpate) on the body system the chief complaint points to. From all of it the EMT forms a working field diagnosis, stays alert for red flags and thinking traps such as anchoring, and never lets the hunt for a label delay care.</p>"
+}

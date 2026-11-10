@@ -209,6 +209,172 @@
    "why": {
     "correct": "Name the sides, pick the ratio that uses both, clear the fraction, then solve: $x = \\frac{9}{0.6} = 15$."
    }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-11",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A right triangle has legs of length $9$ and $12$. The angle $A$ is across from the leg of length $9$. What is $\\cos A$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "4/5",
+    "mistakes": [
+     {
+      "value": "3/5",
+      "why": "$\\frac{9}{15}$ is opposite over hypotenuse, which is $\\sin A$. Cosine uses the adjacent side, $12$."
+     },
+     {
+      "value": "3/4",
+      "why": "$\\frac{9}{12}$ is opposite over adjacent, which is $\\tan A$. Cosine is adjacent over hypotenuse."
+     }
+    ]
+   },
+   "why": {
+    "correct": "First the hypotenuse: $\\sqrt{9^2 + 12^2} = \\sqrt{225} = 15$. From $A$, the adjacent side is $12$: $\\cos A = \\frac{12}{15} = \\frac{4}{5}$."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-12",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "From a point on level ground, the angle up to the top of a 21-meter tower is $40^\\circ$. Use $\\tan 40^\\circ \\approx 0.84$ to find the distance from the point to the base of the tower, in meters.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 25,
+    "unit": "meters",
+    "mistakes": [
+     {
+      "value": 17.64,
+      "why": "That multiplies $21$ by $0.84$. The unknown distance is on the bottom of the ratio: $0.84 = \\frac{21}{d}$, so $d = \\frac{21}{0.84}$."
+     },
+     {
+      "value": 0.04,
+      "why": "That divides $0.84$ by $21$. From $0.84 = \\frac{21}{d}$, multiply by $d$ and then divide by $0.84$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The tower is opposite the angle and the distance $d$ is adjacent: $\\tan 40^\\circ = \\frac{21}{d}$. Multiply by $d$: $d \\tan 40^\\circ = 21$. Divide: $d = \\frac{21}{0.84} = 25$ meters."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-13",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a right triangle, $A$ and $B$ are the two acute angles and $\\sin A = \\frac{5}{13}$. What is $\\cos B$?",
+   "type": "single",
+   "options": [
+    "$\\frac{12}{13}$",
+    "$\\frac{5}{13}$",
+    "$\\frac{5}{12}$",
+    "$\\frac{13}{5}$"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The leg opposite $A$ is the leg adjacent to $B$: moving to the other acute angle swaps the names of the legs. So $\\cos B = \\frac{\\text{adjacent to } B}{\\text{hypotenuse}} = \\frac{\\text{opposite } A}{\\text{hypotenuse}} = \\sin A = \\frac{5}{13}$.",
+    "options": [
+     "$\\frac{12}{13}$ is $\\cos A$ (and $\\sin B$): it uses the other leg, $12$.",
+     "The side opposite $A$ is adjacent to $B$, so the two ratios are the same.",
+     "$\\frac{5}{12}$ is $\\tan A$, a ratio of the two legs.",
+     "A cosine of an acute angle is less than $1$, because the hypotenuse is the longest side."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-14",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a right triangle you know the length of the side adjacent to a $25^\\circ$ angle, and you want the hypotenuse. Which ratio connects these two sides?",
+   "type": "single",
+   "options": [
+    "$\\sin 25^\\circ$",
+    "$\\tan 25^\\circ$",
+    "$\\cos 25^\\circ$",
+    "No ratio does; a second side is needed first"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Choose the ratio that uses the side you know and the side you want. Adjacent and hypotenuse are the two sides in cosine: $\\cos 25^\\circ = \\frac{\\text{adjacent}}{\\text{hypotenuse}}$.",
+    "options": [
+     "Sine uses the opposite side and the hypotenuse; the known side is adjacent.",
+     "Tangent uses the two legs and leaves out the hypotenuse.",
+     "CAH: cosine is adjacent over hypotenuse.",
+     "One side and one acute angle are enough: $\\text{hypotenuse} = \\frac{\\text{adjacent}}{\\cos 25^\\circ}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-15",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A right triangle has an acute angle $\\theta$, and the side adjacent to $\\theta$ has length $5$. Write the length of the side opposite $\\theta$ in terms of $\\theta$.",
+   "type": "expr",
+   "expr": {
+    "answer": "5tan(theta)",
+    "vars": [
+     "theta"
+    ],
+    "domain": [
+     0.1,
+     1.4
+    ],
+    "mode": "exact",
+    "lhs": "\\text{opposite} =",
+    "mistakes": [
+     {
+      "expr": "5/tan(theta)",
+      "why": "The unknown is on top of the ratio: $\\tan\\theta = \\frac{\\text{opposite}}{5}$, so multiply by $5$."
+     },
+     {
+      "expr": "5sin(theta)",
+      "why": "Sine uses the hypotenuse. The known side is adjacent, so use tangent: $\\tan\\theta = \\frac{\\text{opposite}}{5}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Opposite and adjacent are the two sides in tangent: $\\tan\\theta = \\frac{\\text{opposite}}{5}$, so opposite $= 5\\tan\\theta$."
+   }
+  },
+  {
+   "id": "pcalc-alg-right-triangle-16",
+   "unit": "skills-algebra",
+   "topic": "alg-right-triangle",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For an acute angle $\\theta$ of a right triangle, which value is impossible for $\\sin\\theta$?",
+   "type": "single",
+   "options": [
+    "$0.02$",
+    "$0.5$",
+    "$0.99$",
+    "$1.2$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "$\\sin\\theta = \\frac{\\text{opposite}}{\\text{hypotenuse}}$, and the hypotenuse is the longest side, so the ratio is between $0$ and $1$. $1.2$ would need a leg longer than the hypotenuse. (For $\\tan\\theta$, $1.2$ would be fine.)",
+    "options": [
+     "A very small angle has a very short opposite side, so a sine near $0$ is possible.",
+     "$\\sin 30^\\circ = 0.5$.",
+     "An angle close to $90^\\circ$ has a sine close to $1$.",
+     "A sine above $1$ would make the opposite leg longer than the hypotenuse."
+    ]
+   }
   }
  ]
 }

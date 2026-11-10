@@ -16,6 +16,8 @@
 .gs-link-h b{color:var(--ink);}
 .gs-fig.is-wide .gs-link{border-left:1px solid var(--line);padding-left:14px;}
 .gs-sw{flex:none;align-self:center;}
+/* Each name whole ("Foreign exchange" was cut to "Foreign excha..." at 390 px): the buttons size to their words. */
+.ls-root .gs-sw > button{flex:1 0 auto;padding:0 14px;overflow:visible;text-overflow:clip;white-space:nowrap;}
 .gs-sw[hidden]{display:none;}
 
 /* ----------------------------------------------------------- the dock */

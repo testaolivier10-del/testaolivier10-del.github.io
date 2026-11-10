@@ -1,0 +1,103 @@
+{
+  "id": "bag-valve-mask-ventilation",
+  "title": "Bag-valve-mask ventilation",
+  "chapter": 9,
+  "section": "ch9-bvm",
+  "hook": "<p>A man who overdosed is breathing four times a minute. He has a pulse. You put the mask on his face and squeeze the bag, and air hisses out past his cheeks. His chest does not move.</p><p>The bag-valve mask is the skill most often done badly, and the failure is almost always the seal, not the squeeze. This lesson covers how to hold the mask, how much to give and how fast, and what to check when the chest does not rise.</p>",
+  "steps": [
+    {
+      "find": "A patient is not breathing adequately and a second rescuer is available.",
+      "act": "Use two-rescuer technique. One rescuer holds the mask and the jaw with both hands and the other squeezes the bag. It delivers more volume than one rescuer can."
+    },
+    {
+      "find": "You are alone with the bag-valve mask.",
+      "act": "Use the E-C clamp. Thumb and index finger make a C over the mask, and the other three fingers make an E along the bony ridge of the jaw. Lift the jaw up into the mask; do not press the mask down into the face."
+    },
+    {
+      "find": "You are placing the mask.",
+      "act": "The narrow end goes over the bridge of the nose and the wide end sits in the groove between the lower lip and the chin."
+    },
+    {
+      "find": "You are squeezing the bag.",
+      "act": "Squeeze over about one second and stop when the chest visibly rises. Chest rise is the endpoint, not an emptied bag."
+    },
+    {
+      "find": "The patient has a pulse but is not breathing adequately.",
+      "act": "Adult: about 1 breath every 6 seconds (10 per minute). Infant or child: 1 breath every 2 to 3 seconds (20 to 30 per minute). No faster than that."
+    },
+    {
+      "find": "The chest does not rise when you squeeze.",
+      "act": "Start with the two common causes: re-seal the mask and reposition the head and jaw. Then suction if there is fluid, and then check for an obstruction. Squeezing harder is not on the list."
+    }
+  ],
+  "ideas": [
+    "<b>The bag-valve mask gives positive-pressure ventilation</b> to a patient who is not breathing adequately. An adult bag holds roughly 1,200 to 1,600 mL, far more than one breath needs.",
+    "<b>Oxygen:</b> with 15 L/min and a reservoir it delivers close to 100% oxygen. With no oxygen attached it delivers room air, about 21%, which is still worth giving while the tank is set up.",
+    "<b>The seal is the weak point.</b> When it leaks, the volume goes into the room instead of the patient.",
+    "<b>Too much is harmful.</b> Fast or large breaths push air into the stomach. A distended stomach pushes the diaphragm up and makes vomiting and aspiration more likely.",
+    "<b>Pressure in the chest matters too.</b> Over-ventilation raises it, which reduces blood returning to the heart and lowers cardiac output.",
+    "<b>During adult CPR with an advanced airway in place,</b> ventilations run at about 10 per minute without pausing compressions."
+  ],
+  "misconception": {
+    "wrong": "If the chest is not rising, squeeze the bag harder and faster.",
+    "right": "No chest rise is nearly always a leaking seal or a closed airway. More force makes a louder leak and fills the stomach. Re-seal, reposition, suction, then look for an obstruction."
+  },
+  "check": [
+    {
+      "q": "Two EMTs are ventilating an adult with a bag-valve mask. How should they divide the work?",
+      "options": [
+        "One holds the mask with one hand and squeezes with the other; the second watches",
+        "One holds the mask and jaw with both hands; the other squeezes the bag",
+        "Both squeeze the bag together while the mask rests on the face",
+        "They trade the whole device back and forth every few breaths"
+      ],
+      "correct": 1,
+      "why": "Two-rescuer technique puts both of one rescuer's hands on the mask and jaw, which fixes the seal, the most common point of failure. It delivers more volume than one-rescuer technique."
+    },
+    {
+      "q": "An adult has a strong pulse but is breathing only 4 shallow breaths a minute. At what rate do you ventilate?",
+      "options": [
+        "About 1 breath every 2 to 3 seconds",
+        "About 1 breath every 10 seconds",
+        "About 1 breath every second",
+        "About 1 breath every 6 seconds"
+      ],
+      "correct": 3,
+      "why": "An adult with a pulse gets about 1 breath every 6 seconds, or 10 per minute. One breath every 2 to 3 seconds is the infant and child rate; in an adult it would fill the stomach and raise pressure in the chest."
+    },
+    {
+      "q": "How do you know you have squeezed the bag enough for one breath?",
+      "options": [
+        "The chest visibly rises",
+        "The bag is completely empty",
+        "The reservoir bag collapses flat",
+        "You feel firm resistance in the bag"
+      ],
+      "correct": 0,
+      "why": "Visible chest rise is the endpoint. An adult bag holds 1,200 to 1,600 mL, so emptying it gives far too much volume and pushes air into the stomach."
+    },
+    {
+      "q": "You squeeze the bag and the chest does not rise. What do you check first?",
+      "options": [
+        "Whether there is a foreign body in the airway",
+        "Whether the mouth needs to be suctioned",
+        "Whether the mask is sealed on the face",
+        "Whether the oxygen tank is running low"
+      ],
+      "correct": 2,
+      "why": "A leaking mask is the most common failure by a wide margin, so the seal and the head position are checked before suction and before looking for an obstruction. An obstruction is possible but comes last on the list."
+    },
+    {
+      "q": "Why is ventilating too fast or with too much volume harmful?",
+      "options": [
+        "It cools the patient's airway too quickly",
+        "It fills the stomach with air and reduces blood return to the heart",
+        "It uses up the oxygen tank before arrival",
+        "It makes the mask seal harder to keep"
+      ],
+      "correct": 1,
+      "why": "Excess pressure forces air into the stomach, which raises the diaphragm and invites vomiting, and it raises pressure in the chest, which cuts the blood returning to the heart. Oxygen supply is a practical concern, but it is not the harm to the patient."
+    }
+  ],
+  "summary": "<p>The bag-valve mask ventilates a patient who is not breathing adequately, with close to 100% oxygen when it has 15 L/min and a reservoir. The seal is what fails, so two rescuers are preferred; alone, use the E-C clamp and lift the jaw into the mask. Squeeze over about one second until the chest rises. With a pulse, give an adult 1 breath every 6 seconds and an infant or child 1 breath every 2 to 3 seconds. Over-ventilation fills the stomach and lowers cardiac output. If the chest does not rise: re-seal, reposition, suction, then check for an obstruction.</p>"
+}
