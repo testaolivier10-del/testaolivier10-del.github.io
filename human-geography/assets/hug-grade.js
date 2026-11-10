@@ -242,7 +242,7 @@
       else if(A && (near(v / 1000, A, tol) || near(v * 1000, A, tol))) notes.unshift('Value: off by a factor of 1000. Check a prefix (k, M, m) or the word "thousand".');
       else if(A && (near(v / 1e6, A, tol) || near(v * 1e6, A, tol))) notes.unshift('Value: off by a factor of a million. Check "million" or the power of ten (× 10^6).');
       else if(A && (near(v / 1e9, A, tol) || near(v * 1e9, A, tol))) notes.unshift('Value: off by a factor of a billion. Check "billion" or the power of ten (× 10^9).');
-      else if(A && near(-v, A, tol)) notes.unshift('Value: the size is right but the sign is wrong. A z score is the score minus the mean: below the mean it is negative.');
+      else if(A && near(-v, A, tol)) notes.unshift('Value: the size is right but the sign is wrong.');
       else if(A && near(v, A, tol * 10)) notes.unshift('Value: close. Keep every digit until the last step, then round.');
       else notes.unshift('Value: not this number. Check the setup step by step.');
     }
@@ -300,7 +300,7 @@
       out.push({ rule: 'directional', ok: dir, hint: dir ? '' : 'Say which way: "will increase" or "will decrease", not "will affect" or "will change".' });
       if(!dir && VAGUE.test(t)) out.push({ rule: 'vague', ok: false, hint: '"Affects", "changes" and "impacts" do not say a direction. Name it.' });
     }
-    if(W.noQuestion) out.push({ rule: 'noQuestion', ok: String(text || '').indexOf('?') < 0, hint: 'A hypothesis is a statement you can test, not a question.' });
+    if(W.noQuestion) out.push({ rule: 'noQuestion', ok: String(text || '').indexOf('?') < 0, hint: 'Answer with a statement, not a question.' });
     if(W.variable && W.variable.length) out.push({ rule: 'variable', ok: W.variable.some(function(w){ return has(t, w); }), hint: 'Name the variable the scenario measures (' + W.variable[0] + ').' });
     if(W.otherThan && W.otherThan.length){
       var used = W.otherThan.filter(function(w){ return has(t, w); });

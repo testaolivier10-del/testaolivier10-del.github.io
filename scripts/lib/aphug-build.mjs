@@ -219,6 +219,16 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
   for (const id of Object.keys(questions)) { raw.questions[id] = questions[id]; questions[id] = prepareBank(R(questions[id], `questions/${id}.json`), id, mathProblems); }
   // A map stimulus's picture is figures/maps/<stimulus id>.svg (ids start with the topic).
   for (const id of Object.keys(questions)) for (const [sid, st] of Object.entries(questions[id].stimuli || {})) if (st && st.map) st.mapId = sid;
+  // A free-layout model item sits on its drawing: model.figure (a figure id)
+  // becomes modelFigure, the figure's markup with paths from the course root
+  // (hug-questions.js and questionHtml re-root them for the page).
+  for (const id of Object.keys(questions)) for (const q of questions[id].items || []) {
+    if (q.type !== 'model' || !q.model || q.model.layout !== 'free') continue;
+    if (!q.model.figure) mathProblems.push(`questions/${id}.json [${q.id}]: a free model needs model.figure (the drawing its places sit on)`);
+    else if (!figures[q.model.figure]) mathProblems.push(`questions/${id}.json [${q.id}]: model.figure "${q.model.figure}" is not in data/figures`);
+    // No Enlarge here: the enlarged copy would lose the numbered badges.
+    else q.modelFigure = figureImg({ figures }, q.model.figure, '').replace(/<button type="button" class="hug-fig-zoom"[\s\S]*?<\/button>/, '');
+  }
   for (const id of Object.keys(glossary)) glossary[id] = R(glossary[id], `glossary/${glossary[id]._file}`);
   for (const id of Object.keys(frq)) {
     frq[id] = R(frq[id], `frq/${id}.json`);
@@ -516,7 +526,11 @@ export function figureImg(C, figId, depth, { masks = false } = {}) {
   const labels = (f.labels || []).filter(l => l.box);
   const pct = (v, of) => (100 * v / of).toFixed(2) + '%';
   const maskHtml = masks ? labels.map(l => `<button type="button" class="hug-mask" data-label="${esc(l.id)}" aria-label="Hidden label: ${esc(l.name)}. Select to reveal." style="left:${pct(l.box[0], W)};top:${pct(l.box[1], H)};width:${pct(l.box[2], W)};height:${pct(l.box[3], H)}"><span>${esc(l.name)}</span></button>`).join('') : '';
-  return `<div class="hug-figimg${maskHtml ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${depth}figures/${figId}.${f.ext || 'svg'}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${maskHtml}</div>`;
+  // Enlarge (hug-nav.js): on a phone a 720 px drawing shrinks its 15 px words
+  // to about 6 px, so a figure without masks opens full size in a dialog
+  // (tap the drawing or the button; the button shows on narrow screens).
+  const zoom = maskHtml ? '' : '<button type="button" class="hug-fig-zoom" data-zoom>Enlarge<span class="sr-only"> the figure</span></button>';
+  return `<div class="hug-figimg${maskHtml ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${depth}figures/${figId}.${f.ext || 'svg'}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${maskHtml}${zoom}</div>`;
 }
 export const credit = (f, opts) => { const a = attribution(f, opts); return a.html ? `<span class="hug-credit">${a.html}</span>` : ''; };
 
@@ -677,6 +691,7 @@ export function questionForPage(q) {
     id: q.id, type: q.type, unit: q.unit, topic: q.topic, practice: q.practice, level: q.level, diff: q.diff,
     ...(q.stimulus ? { stimulus: q.stimulus } : {}), ...(q.fixed ? { fixed: true } : {}),
     q: q.q, options: q.options, correct: q.correct, numeric: q.numeric, specific: q.specific, model: q.model, why: q.why,
+    ...(q.modelFigure ? { modelFigure: q.modelFigure } : {}),
   };
 }
 
@@ -684,14 +699,14 @@ export function questionForPage(q) {
 export const formatKey = N => esc(Grade.formatKey(N));
 /* The question as static HTML, readable without JavaScript; hug-questions.js
    swaps in the live version. */
-export function questionHtml(q, n) {
+export function questionHtml(q, n, depth = '') {
   let opts = '', key = '';
   if (q.type === 'numeric') {
     const u = q.numeric.unit ? ` (${esc(q.numeric.unit)})` : '';
     opts = `<p class="hug-small">Type a number${u}. No calculator needed: work it out by hand, as on the exam.</p>`;
     key = `<li>Answer: ${formatKey(q.numeric)}</li>`;
   } else if (q.type === 'model') {
-    opts = Model.html(q.model, `mdl-${esc(q.id)}`);
+    opts = Model.html(q.model, `mdl-${esc(q.id)}`, q.modelFigure ? q.modelFigure.replace(/(src|href)="figures\//g, `$1="${depth}figures/`) : '');
     key = q.model.slots.map((sl, i) => `<li>${esc(Model.slotName(q.model, i))}: ${Model.pieceText(q.model, q.model.key[sl.id])}</li>`).join('');
   } else if (q.type === 'specific') {
     opts = '<p class="hug-small">Build the answer part by part, then write it in your own words.</p>';

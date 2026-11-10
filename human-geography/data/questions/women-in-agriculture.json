@@ -399,21 +399,21 @@
    "diff": 2,
    "type": "single",
    "practice": "1.B",
-   "q": "A government program gives women farmers in Ethiopia joint titles to the land they farm with their husbands. Based on this topic, what is the most likely result?",
+   "q": "A government program in Ethiopia gives wives and husbands joint certificates to the land they farm. In Ethiopia the state owns all land, so the certificates record secure rights to use it. Based on this topic, what is the most likely result?",
    "options": [
     "Women stop farming because the land is now owned",
     "The land is divided into long lots along rivers",
-    "Women find it easier to get loans and invest in the land",
+    "Women have more secure rights and more reason to invest in the land",
     "Farm output falls because two owners disagree"
    ],
    "correct": 2,
    "why": {
-    "correct": "Land rights are one of the gaps FAO names. Ethiopia's land certification programs, which often list both spouses, are a much-studied example.",
+    "correct": "Land rights are one of the gaps FAO names. Ethiopia's land certification, which since the late 1990s and 2000s has listed both spouses in many regions, is a much-studied example. Because the land itself cannot be sold or mortgaged, the gain is security and a reason to invest, not a loan backed by the land.",
     "options": [
-     "Owning land is a reason to keep farming and invest, not to stop.",
-     "Land titles do not change the survey method.",
-     "Right: secure rights open access to credit and give a reason to improve the land.",
-     "Studies of land titling point to more investment, not lower output."
+     "Secure rights are a reason to keep farming and invest, not to stop.",
+     "Certificates do not change the survey method.",
+     "Right: secure rights give a reason to improve the land, for example with terraces or trees.",
+     "Studies of land certification point to more investment, not lower output."
     ]
    }
   },

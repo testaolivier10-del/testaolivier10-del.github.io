@@ -23,5 +23,20 @@
   "slug": "population-lab",
   "title": "Population Lab",
   "file": "aphug/population-lab.svg"
+ },
+ {
+  "slug": "diffusion-lab",
+  "title": "Diffusion Lab",
+  "file": "aphug/diffusion-lab.svg"
+ },
+ {
+  "slug": "borders-lab",
+  "title": "Borders Lab",
+  "file": "aphug/borders-lab.svg"
+ },
+ {
+  "slug": "city-lab",
+  "title": "City Lab",
+  "file": "aphug/city-lab.svg"
  }
 ]

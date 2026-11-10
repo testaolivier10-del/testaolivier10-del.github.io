@@ -9,20 +9,20 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { HugMap as M } from '../lib/aphug-mathlib.mjs';
-import { equalEarth, slug, NAMES, DISPUTED, REGIONS } from '../build-aphug-basemaps.mjs';
+import { equalEarth, slug, NAMES, DISPUTED, REGIONS, countryA as makeCountryA, metroBase } from '../build-aphug-basemaps.mjs';
 
 const base = n => JSON.parse(readFileSync(`human-geography/figures/base/${n}.json`, 'utf8'));
-const world = base('world'), countryA = base('country-a');
+const world = base('world'), countryA = base('country-a'), metro = base('metro');
 const L = 'A placeholder map for the renderer tests';
 
 test('the base maps: the world, every region, Country A; small; official short names; disputed places flagged', () => {
   const files = readdirSync('human-geography/figures/base').filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)).sort();
-  assert.deepEqual(files, ['country-a', 'world', ...Object.keys(REGIONS)].sort());
+  assert.deepEqual(files, ['country-a', 'metro', 'world', ...Object.keys(REGIONS)].sort());
   for (const f of files) {
     const b = base(f);
     assert.ok(b.width > 0 && b.height > 0 && b.features.length > 0, f);
     assert.ok(readFileSync(`human-geography/figures/base/${f}.json`).length < 90 * 1024, `${f} stays small`);
-    assert.ok(b.features.every(x => /^M[\d.\s LZM-]+$/.test(x.d)), `${f}: plain path data`);
+    assert.ok(b.features.every(x => x.station ? Array.isArray(x.c) && x.d == null : x.line ? /^M[\d.\s LZMCS-]+$/.test(x.d) : /^M[\d.\s LZM-]+$/.test(x.d)), `${f}: plain path data`);
   }
   const names = new Set(world.features.map(f => f.name));
   for (const n of ['Türkiye', 'Eswatini', 'North Macedonia', 'Czechia', 'Viet Nam', "Côte d'Ivoire", 'Falkland Islands (Islas Malvinas)']) assert.ok(names.has(n), n);
@@ -92,4 +92,79 @@ test('the check refuses what cannot be drawn or read: no label, no source year, 
   assert.deepEqual([...M.check({ ...marks, marks: [{ at: 'brazil', text: 'A' }, { at: 'japan', text: 'B' }] }, world)], []);
   has({ base: 'world', render: 'isoline', label: L, invented: true, isolines: { unit: 'x', lines: [{ value: 1, points: [[0, 0]] }] } }, /at least two lines/);
   assert.ok(M.check({ base: 'nowhere', render: 'reference', label: L }, undefined).some(p => /unknown base/.test(p)));
+});
+
+test('the invented bases are what the script writes (no atlas needed), each area with a short code', () => {
+  assert.equal(JSON.stringify(makeCountryA()), JSON.stringify(countryA));
+  assert.equal(JSON.stringify(metroBase()), JSON.stringify(metro));
+  for (const b of [countryA, metro]) {
+    const codes = b.features.filter(f => !f.line && !f.station && !f.context).map(f => f.code);
+    assert.ok(codes.every(c => /^[A-Z]{2}$/.test(c)), b.id);
+    assert.equal(new Set(codes).size, codes.length, `${b.id}: codes are unique`);
+  }
+});
+
+test('the metro base: a central city inside its limit, eight suburbs, a rural fringe, river, rail, stations, highways, all in the legend', () => {
+  assert.ok(metro.invented);
+  assert.match(M.note(metro), /invented metropolitan area/);
+  const areas = metro.features.filter(f => !f.line && !f.station);
+  assert.equal(areas.filter(f => !f.context && !f.limit).length, 8, 'eight suburban cities');
+  assert.equal(areas.filter(f => f.limit).map(f => f.id).join(), 'central-city');
+  assert.deepEqual([...new Set(metro.features.filter(f => f.line).map(f => f.line))].sort(), ['highway', 'rail', 'river']);
+  assert.ok(metro.features.filter(f => f.station).length >= 4);
+  const spec = { base: 'metro', render: 'choropleth', label: 'Share of commuters who take the train, by city', invented: true, legendTitle: 'Rail commuters (percent)', classes: ['Under 10', '10-25', 'Over 25'], values: { 'central-city': 2, northfield: 0, millbrook: 1 }, labels: 'codes' };
+  assert.deepEqual([...M.check(spec, metro)], []);
+  const svg = M.svg(spec, metro);
+  assert.match(svg, /fill-rule="evenodd"/, 'the rural fringe has the built-up area cut out');
+  assert.match(svg, /stroke-dasharray/, 'the rail line is dashed');
+  assert.doesNotMatch(svg, /<text/);
+  const lg = M.legendHtml(spec, metro);
+  for (const w of ['Central city limit', 'River', 'Highway', 'Rail line', 'Rail station', '<b>CC</b> Central City', '<b>NF</b> Northfield']) assert.ok(lg.includes(w), w);
+  assert.equal(M.overlay(spec, metro).filter(o => o.kind === 'label').length, 9, 'the central city and eight suburbs labeled');
+  assert.ok(M.check({ ...spec, values: { rail: 1 } }, metro).some(p => /not an area/.test(p)));
+  assert.ok(M.check({ base: 'metro', render: 'reference', label: L, marks: [{ at: 'station-3', text: 'X' }] }, metro).length === 0, 'marks can point at a station');
+});
+
+test('province labels on Country A: codes with a key, or names; overlapping names are refused', () => {
+  const spec = { base: 'country-a', render: 'reference', label: L, labels: 'codes' };
+  assert.deepEqual([...M.check(spec, countryA)], []);
+  assert.equal(M.overlay(spec, countryA).filter(o => o.kind === 'label').length, 8);
+  assert.match(M.legendHtml(spec, countryA), /<b>CR<\/b> Capital Region/);
+  const some = { ...spec, labelOnly: ['capital', 'coast'] };
+  assert.equal(M.overlay(some, countryA).map(o => o.text).join(), 'CR,SC');
+  assert.doesNotMatch(M.legendHtml(some, countryA), /Northern Hills/, 'the key lists only the codes shown');
+  assert.ok(M.check({ ...spec, labels: 'names' }, countryA).some(p => /would overlap at 360 px/.test(p)), 'all eight full names do not fit at 360 px');
+  assert.ok(M.check({ ...spec, labels: 'codes' }, world).some(p => /no area codes/.test(p)));
+});
+
+test('a flow map: arrows from the data, wider for larger values, a legend of sample widths in the map units', () => {
+  const spec = { base: 'world', render: 'flow', label: 'Invented migration flows between four countries', invented: true, legendTitle: 'Migrants a year (invented)', flows: { unit: 'thousand migrants a year', items: [{ from: 'mexico', to: 'united-states', value: 1200 }, { from: 'india', to: 'united-arab-emirates', value: 400 }, { from: 'united-states', to: 'mexico', value: 100 }] } };
+  assert.deepEqual([...M.check(spec, world)], []);
+  const svg = M.svg(spec, world);
+  const widths = [...svg.matchAll(/stroke="#9C3A12"[^>]*stroke-width="([\d.]+)"/g)].map(m => +m[1]);
+  assert.equal(widths.length, 3);
+  assert.deepEqual(widths, [...widths].sort((a, b) => b - a), 'widest drawn first');
+  assert.ok(widths[0] > 2.5 * widths[2] && widths[1] > widths[2], 'width grows with the value');
+  assert.equal((svg.match(/Z" fill="#9C3A12"/g) || []).length, 3, 'one head per arrow');
+  // Opposite flows between the same pair bend to opposite sides.
+  const ctl = [...svg.matchAll(/Q([\d.]+) ([\d.]+)/g)].map(m => [+m[1], +m[2]]);
+  assert.notDeepEqual(ctl[0], ctl[2]);
+  const lg = M.legendHtml(spec, world);
+  assert.match(lg, /arrow width shows the value/);
+  assert.match(lg, /1,000</, 'thousands separators in the legend');
+  const has = (sp, re) => assert.ok(M.check(sp, world).some(p => re.test(p)), `${re}: ${M.check(sp, world).join(' | ')}`);
+  has({ ...spec, flows: { ...spec.flows, unit: '' } }, /names its unit/);
+  has({ ...spec, flows: { unit: 'x', items: [] } }, /1 to 12 arrows/);
+  has({ ...spec, flows: { unit: 'x', items: [{ from: 'atlantis', to: 'mexico', value: 1 }] } }, /flow from "atlantis"/);
+  has({ ...spec, flows: { unit: 'x', items: [{ from: 'mexico', to: 'mexico', value: 1 }] } }, /from one place to another/);
+  has({ ...spec, flows: { unit: 'x', items: [{ from: 'mexico', to: 'japan', value: 0 }] } }, /more than 0/);
+});
+
+test('graduated symbol legends print thousands separators', () => {
+  const spec = { base: 'world', render: 'symbol', label: L, invented: true, symbols: { unit: 'people', items: [{ at: 'china', value: 20000 }], legend: [5000, 20000] } };
+  const lg = M.legendHtml(spec, world);
+  assert.match(lg, />20,000</);
+  assert.match(lg, />5,000</);
+  assert.equal(M.num(1234567.5), '1,234,567.5');
+  assert.equal(M.num(999), '999');
 });

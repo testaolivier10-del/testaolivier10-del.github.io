@@ -116,7 +116,7 @@
    "stimulus": "aging-populations-s1",
    "options": [
     "The share of older people is highest in the Capital Region and lowest in the hills",
-    "The oldest provinces are rural ones far from the capital",
+    "Highest in the Northern Hills and Southern Forest; lowest in the Capital Region and South Coast",
     "The share of older people is about the same across the eight provinces",
     "Older people make up most of the population of the South Coast"
    ],
@@ -423,7 +423,7 @@
    "diff": 3,
    "type": "single",
    "practice": "2.C",
-   "q": "In 2023, France raised its minimum age for a full state pension from 62 to 64, and many people protested. Which effect of aging does this show?",
+   "q": "In 2023, France passed a law to raise its minimum pension age from 62 to 64 in steps, and many people protested; in late 2025 parliament paused the rise. Which effect of aging does this show?",
    "options": [
     "A social effect: more children for families to care for",
     "A cultural effect: a new language spoken by older people",

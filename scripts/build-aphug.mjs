@@ -152,7 +152,7 @@ function build() {
     return out;
   };
   const staticQuestions = (qs, stimuli, depth) => groupSets(qs).map(g => {
-    const items = g.items.map(q => questionHtml(q, qs.indexOf(q) + 1)).join('');
+    const items = g.items.map(q => questionHtml(q, qs.indexOf(q) + 1, depth)).join('');
     const s = g.stimulus && stimuli[g.stimulus];
     return s ? `<div class="hug-set">${stimulusPanel(g.stimulus, s, s.html.replace(/(src|href)="figures\//g, `$1="${depth}figures/`))}${items}</div>` : items;
   }).join('');
@@ -797,6 +797,16 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
   const frqIndex = () => JSON.stringify(frqs.map(f => ({ id: f.id, type: f.type, points: f.points, title: frqTitle(f), units: f.units, topics: f.topics, practices: f.practices, ...(f.placeholder ? { placeholder: true } : {}) })));
   /* Lined answer space for paper (shown only in print): about six lines a point. */
   const lines = n => `<div class="hug-lines" aria-hidden="true">${'<div></div>'.repeat(n)}</div>`;
+  /* The Premium gate of an FRQ page follows where the FRQ unlocks: its latest
+     topic in course order and that topic's unit (units[0] is the FRQ's main
+     unit for lists and tallies, not its gate: a Unit 1 and Unit 6 FRQ is not
+     free because Unit 1 is). */
+  const topicPos = new Map(map.topics.map((t, i) => [t.id, i]));
+  function frqGate(f) {
+    const last = (f.topics || []).slice().sort((a, b) => (topicPos.get(b) ?? -1) - (topicPos.get(a) ?? -1))[0];
+    const t = last && map.topicById(last);
+    return { unit: t ? t.chapter : f.units[0], topic: last || '' };
+  }
   function frqPage(f) {
     const depth = '../', title = frqTitle(f);
     const url = `${SITE}${BASE}frq/${f.id}.html`;
@@ -821,7 +831,7 @@ ${bodyOpen(` data-frq="${f.id}"`)}
     ${frqReadings(f).map((s, i) => stimulusPanel(`frq-${f.id}-${i + 1}`, s, stimulusBody(C, s, depth))).join('\n    ')}
     <ol class="hug-frq-parts">${f.parts.map(p => `<li class="hug-frq-part" data-part="${esc(p.label)}" data-verb="${esc(p.verb)}"><p class="hug-frq-prompt"><b class="hug-frq-label">(${esc(p.label)})</b> <span class="hug-verb">${esc(VERBS[p.verb].name)}</span> ${p.prompt} <span class="hug-small">[${p.points} point]</span></p><p class="hug-frq-demand hug-small"><b>${esc(VERBS[p.verb].name)} means:</b> ${esc(VERBS[p.verb].demand)}</p>${lines(6)}</li>`).join('')}</ol>
   </article>
-  <div id="app" class="hug-app-mount hug-frq-work" data-slug="frq-item" data-frq="${f.id}" data-unit="${esc(f.units[0])}" data-topic="${esc(f.topics[0] || '')}"><noscript><p>Writing your answer, the rubric and the sample answer need JavaScript. The question above prints without it.</p></noscript></div>
+  <div id="app" class="hug-app-mount hug-frq-work" data-slug="frq-item" data-frq="${f.id}" data-unit="${esc(frqGate(f).unit)}" data-topic="${esc(frqGate(f).topic)}"><noscript><p>Writing your answer, the rubric and the sample answer need JavaScript. The question above prints without it.</p></noscript></div>
 </main>
 ${footer(depth, `frq:${f.id}`)}
 <link rel="stylesheet" href="../assets/pages/pages.css">
@@ -961,7 +971,8 @@ ${tail({ depth, section: '' })}
     // Shared helpers, then this tool's own model (ApHugMath.<camelSlug>),
     // then the framework and the tool (docs/aphug-architecture.md, Tools).
     const lib = f => existsSync(join(ROOT, 'human-geography', 'assets', f)) ? [f] : [];
-    const extra = ['hug-questions.js', ...lib('tools/hug-tool-math.js'), ...lib(`tools/math/${t.slug}.js`), 'tools/hug-tools.js', ...lib('tools/hug-plot.js'), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
+    // hug-map.js: map trainers draw their maps in the page (ApHugMap).
+    const extra = ['hug-questions.js', 'hug-map.js', ...lib('tools/hug-tool-math.js'), ...lib(`tools/math/${t.slug}.js`), 'tools/hug-tools.js', ...lib('tools/hug-plot.js'), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
     const body = `
 ${bodyOpen(` data-app="tool-${t.slug}"`)}
 ${toolBand({ key: 'aphug', up: '../../', slug: t.slug, title: t.name, hand: esc(t.lede || t.tag || t.blurb), lede: esc(t.desc), backHref: '../tools.html',

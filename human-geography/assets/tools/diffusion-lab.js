@@ -72,7 +72,8 @@
   function numTag(p, n, cls){ return '<g class="dl-num ' + (cls || '') + '"><circle cx="' + p[0] + '" cy="' + p[1] + '" r="12"/><text x="' + p[0] + '" y="' + n1(p[1] + 5) + '" text-anchor="middle">' + n + '</text></g>'; }
   function letter(F, id, L){
     var pl = D.BY[id], p = F.P(pl.x, pl.y);
-    return '<text class="dl-letter" x="' + n1(p[0] + 9) + '" y="' + n1(p[1] - 6) + '">' + L + '</text>';
+    var left = p[0] + 24 > BOUNDS.W;
+    return '<text class="dl-letter" x="' + n1(left ? p[0] - 9 : p[0] + 9) + '" y="' + n1(p[1] - 6 < 16 ? p[1] + 18 : p[1] - 6) + '"' + (left ? ' text-anchor="end"' : '') + '>' + L + '</text>';
   }
   function mountains(F, x, y){
     var out = '';
@@ -338,8 +339,9 @@
       o.push(arrow(F, C[g.from], g.stop ? C[g.via] : C[g.to], { w: 3, cls: 'is-move', bend: 18, gap0: 16, gap1: 16 }));
       if(g.stop) o.push(arrow(F, C[g.via], C[g.to], { w: 2, dashed: true, cls: 'is-plan', bend: 12, gap0: 16, gap1: 16 }));
       else o.push('<circle class="dl-via" cx="' + Mi[0] + '" cy="' + Mi[1] + '" r="5"/>');
-      o.push(tag(A, 'From', 'is-place', A[1] < 60 ? 'below' : 'above'), tag(B, 'To', 'is-place', B[1] < 60 ? 'below' : 'above'));
-      g.tags.forEach(function(t){ var q = F.P(C[t.at][0], C[t.at][1]); o.push(numTag([n1(q[0] + (t.at === g.via ? 0 : 0)), n1(q[1] + 22)], t.num)); });
+      // From and To sit below their place, each factor's number above it: never on each other.
+      o.push(tag([A[0], A[1] + 2], 'From', 'is-place', 'below'), tag([B[0], B[1] + 2], 'To', 'is-place', 'below'));
+      g.tags.forEach(function(t){ var q = F.P(C[t.at][0], C[t.at][1]); o.push(numTag([q[0], n1(q[1] - 18)], t.num)); });
       inner = o.join('');
       label = 'Map of Country A: a move from one province to another, with the three numbered factors at the origin, on the way and at the destination.';
       leg = '<ul class="dl-legend" aria-label="Legend"><li><span class="dl-sw dl-ln" aria-hidden="true"></span>The move</li>' + (g.stop ? '<li><span class="dl-sw dl-ln is-dashed" aria-hidden="true"></span>The trip planned</li>' : '') + '<li><span class="dl-sw dl-numsw" aria-hidden="true">1</span>A numbered factor in the text</li></ul>';

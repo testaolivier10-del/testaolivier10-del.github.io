@@ -144,11 +144,11 @@
   {
    "label": "B",
    "verb": "describe",
-   "prompt": "Describe the pattern of land use shown in Source 1 in relation to the Capital Region.",
+   "prompt": "Using both sources, describe how the main farm land use changes with distance from the capital city.",
    "points": 1,
    "rubric": [
     {
-     "point": "Describes the change in land use with distance from the Capital Region, with places.",
+     "point": "Describes the change in land use with distance from the capital city, with places from the sources.",
      "accept": [
       "market gardening and dairy in the Capital Region, grain in nearby provinces, ranching in the farther hilly provinces, with the South Coast as an exception"
      ]

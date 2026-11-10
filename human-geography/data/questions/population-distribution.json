@@ -59,7 +59,7 @@
     "values": {
      "capital": 4,
      "coast": 3,
-     "central": 3,
+     "central": 2,
      "east": 2,
      "northeast": 1,
      "west": 1,
@@ -102,7 +102,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Place A (eastern China) and Place D (the Ganges valley) sit in the East Asia and South Asia clusters, where more than half of the world’s people live.",
+    "correct": "Place A (eastern China) and Place D (the Ganges valley) sit in the East Asia and South Asia clusters, where more than four in ten of the world’s people live (UN WPP 2024).",
     "options": [
      "Right: eastern China and the Ganges valley of South Asia are the two biggest clusters on Earth.",
      "the Sahara and northern Canada are two of the emptiest places on Earth.",
@@ -254,7 +254,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.B",
-   "q": "The South Coast is crowded even though it is far from the capital. Which human factor best explains this?",
+   "q": "The South Coast is one of the most crowded provinces, though it is not the capital. Which human factor best explains this?",
    "stimulus": "population-distribution-s2",
    "options": [
     "Rain falls in most months of the year along the coast of Country A",

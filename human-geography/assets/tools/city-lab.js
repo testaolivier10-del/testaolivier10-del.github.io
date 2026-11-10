@@ -59,13 +59,32 @@
       out.push('<ellipse class="cl-band s' + (i + 1) + '" cx="' + n1(cx) + '" cy="' + n1(cy) + '" rx="' + n1(r * st) + '" ry="' + n1(r) + '"/>');
     });
     if(o.river) out.push('<path class="cl-river is-top" d="M' + n1(cx - R * st - 10) + ' ' + n1(cy) + 'H' + n1(cx + R * st + 10) + '"/>');
-    // Numbers on each band, on a diagonal so they never sit on each other.
+    // Numbers on each band; a number that would touch an earlier one turns further round the ring.
+    var placed = [];
+    if(R < 90){
+      // Small rings (a phone): numbers stand outside, each with a leader to its ring.
+      var shown = bands.filter(function(b){ return R * (rr(b.to / maxD) - rr(b.from / maxD)) >= 3; }), n = shown.length;
+      shown.forEach(function(b, k){
+        var i = uses.indexOf(CL.useBy(uses, b.id)), mid = R * (rr(b.from / maxD) + rr(b.to / maxD)) / 2;
+        var bx = cx + R * st + 26, by = cy + (k - (n - 1) / 2) * 25, ax = cx + mid * st * Math.cos(-0.3 + 0.2 * k), ay = cy + mid * Math.sin(-0.3 + 0.2 * k);
+        out.push('<path class="cl-lead" d="M' + n1(ax) + ' ' + n1(ay) + 'L' + n1(bx - 11) + ' ' + n1(by) + '"/><circle class="cl-leaddot" cx="' + n1(ax) + '" cy="' + n1(ay) + '" r="2.4"/>');
+        out.push(numBadge(bx, by, i + 1));
+      });
+      out.push('<circle class="cl-market" cx="' + n1(cx) + '" cy="' + n1(cy) + '" r="5"/>');
+      return { svg: out.join(''), bands: bands };
+    }
     bands.forEach(function(b){
       var i = uses.indexOf(CL.useBy(uses, b.id)), r0 = R * rr(b.from / maxD), r1 = R * rr(b.to / maxD), mid = (r0 + r1) / 2;
       if(r1 - r0 < 12) return;
       if(i === 0) mid = Math.max(mid, Math.min(r1 - 4, 20));
-      var ang = -Math.PI / 4 - 0.35 * i;
-      out.push(numBadge(cx + mid * Math.cos(ang) * st, cy + mid * Math.sin(ang), i + 1));
+      var ang = -Math.PI / 4 - 0.35 * i, x = 0, y = 0;
+      for(var tries = 0; tries < 24; tries++){
+        x = cx + mid * Math.cos(ang) * st; y = cy + mid * Math.sin(ang);
+        if(placed.every(function(q){ return Math.hypot(q[0] - x, q[1] - y) >= 25; }) && Math.hypot(x - cx, y - cy) >= 19) break;
+        ang -= 0.32;
+      }
+      placed.push([x, y]);
+      out.push(numBadge(x, y, i + 1));
     });
     out.push('<circle class="cl-market" cx="' + n1(cx) + '" cy="' + n1(cy) + '" r="7"/>');
     return { svg: out.join(''), bands: bands };
@@ -73,12 +92,12 @@
   function bidPlot(uses, o, maxD, w, h, mark){
     var top = Math.max.apply(null, uses.map(function(u){ return CL.bid(u, 0, o); }));
     var spec = { label: 'Bid-rent lines: what each land use can pay for land at each distance from the ' + (uses === CL.FARM ? 'market' : 'city center'), width: Math.max(260, Math.round(w)), height: Math.max(200, Math.round(h)),
-      x: [0, maxD], y: [0, Math.ceil(top * 1.08 / 50) * 50], xLabel: 'Distance (km)', yLabel: uses === CL.FARM ? 'Bid rent ($ per hectare)' : 'Bid rent ($ per square meter)',
+      x: [0, maxD], y: [0, Math.ceil(top * 1.08 / 50) * 50], xLabel: w < 420 ? '' : 'Distance (km)', yLabel: uses === CL.FARM ? 'Bid rent ($ per hectare)' : 'Bid rent ($ per square meter)',
       curves: uses.map(function(u, i){ var z = CL.bid(u, 0, o) / (CL.bid(u, 0, o) - CL.bid(u, 1, o)); return { fn: function(d){ return CL.bid(u, d, o); }, domain: [0, Math.min(maxD, z)], cls: 's' + (i + 1) }; }),
       asymptotes: (mark != null ? [{ x: mark }] : []) };
     return Plot.svg(spec);
   }
-  function bandLegend(uses){ return '<ul class="cl-legend" aria-label="Legend">' + uses.map(function(u, i){ return '<li><span class="cl-sw s' + (i + 1) + '" aria-hidden="true"></span>' + (i + 1) + '. ' + esc(u.name) + '</li>'; }).join('') + '</ul>'; }
+  function bandLegend(uses, narrow){ return '<ul class="cl-legend" aria-label="Legend">' + uses.map(function(u, i){ return '<li><span class="cl-sw s' + (i + 1) + '" aria-hidden="true"></span>' + (i + 1) + '. ' + esc(u.name) + '</li>'; }).join('') + (narrow ? '<li>Graph, across: distance (km)</li>' : '') + '</ul>'; }
 
   /* -------------------------------------------------------- city models */
   /* Each model in a 240 x 240 box: zones as shapes, numbers as badges; the
@@ -155,10 +174,17 @@
 
   /* ---------------------------------------------------------- rank-size */
   var RS = { rule: [6, 3.2, 1.9, 1.4, 1.25, 0.95], primate: [6, 1.2, 0.9, 0.8, 0.6, 0.5] };
+  /* Bars for the cities, dots on a line for the rule (drawn here: the shared
+     bar chart puts its legend and axis title on top of each other when narrow). */
   function rsPlot(kind, w, h){
     var P1 = 6, pred = [1, 2, 3, 4, 5, 6].map(function(n){ return window.ApHugCalc.evaluate({ fn: 'rankSize', args: [P1, n] }); });
-    return Plot.svg({ kind: 'bar', label: 'Bar chart of the six largest cities of an invented country, in millions, beside the rank-size rule', width: Math.max(260, Math.round(w)), height: Math.max(200, Math.round(h)),
-      categories: ['1', '2', '3', '4', '5', '6'], series: [{ name: 'Actual (invented)', values: RS[kind] }, { name: 'Rank-size rule', values: pred }], xLabel: 'City rank', yLabel: 'Population (millions)' });
+    var L = 40, R = w - 12, T = 18, B = h - 30, X = function(i){ return L + (R - L) * (i + 0.5) / 6; }, Y = function(v){ return B - (B - T) * v / 7; }, bw = (R - L) / 6 * 0.56, o = [];
+    [0, 1, 2, 3, 4, 5, 6, 7].forEach(function(v){ if(v > 7) return; o.push('<path class="cl-grid" d="M' + L + ' ' + n1(Y(v)) + 'H' + R + '"/>'); if(v % 2 === 0 || h > 300) o.push('<text class="cl-tick" x="' + (L - 6) + '" y="' + n1(Y(v) + 4) + '" text-anchor="end">' + v + '</text>'); });
+    RS[kind].forEach(function(v, i){ o.push('<rect class="cl-bar" x="' + n1(X(i) - bw / 2) + '" y="' + n1(Y(v)) + '" width="' + n1(bw) + '" height="' + n1(B - Y(v)) + '" rx="2"/>'); o.push('<text class="cl-tick" x="' + n1(X(i)) + '" y="' + (B + 18) + '" text-anchor="middle">' + (i + 1) + '</text>'); });
+    o.push('<path class="cl-rule" d="M' + pred.map(function(v, i){ return n1(X(i)) + ' ' + n1(Y(v)); }).join('L') + '"/>');
+    pred.forEach(function(v, i){ o.push('<circle class="cl-ruledot" cx="' + n1(X(i)) + '" cy="' + n1(Y(v)) + '" r="5"/>'); });
+    o.push('<path class="cl-axis" d="M' + L + ' ' + T + 'V' + B + 'H' + R + '"/>');
+    return '<svg class="cl-svg" viewBox="0 0 ' + n1(w) + ' ' + n1(h) + '" role="img" aria-label="Bar chart of the six largest cities of an invented country, in millions, with the rank-size rule drawn as dots: ' + RS[kind].map(function(v, i){ return 'rank ' + (i + 1) + ' ' + v + ' million, rule ' + n1(pred[i]); }).join('; ') + '.">' + o.join('') + '</svg>';
   }
 
   /* ---------------------------------------------------------- mount */
@@ -192,7 +218,7 @@
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var sTc = T.slider({ label: 'Cost of transport', min: 0.5, max: 1.5, step: 0.1, value: 1, decimals: 1, onInput: function(v){ act(); tc = v; draw(); words(); } });
     var sPr = T.slider({ label: 'Price of milk and vegetables', min: 0.6, max: 1.4, step: 0.1, value: 1, decimals: 1, onInput: function(v){ act(); price = v; draw(); words(); } });
-    [[sTc, function(v){ return Math.round(v * 100) + '% of today'; }], [sPr, function(v){ return Math.round(v * 100) + '% of today'; }]].forEach(function(x){
+    [[sTc, function(v){ return Math.round(v * 100) + '% of the start'; }], [sPr, function(v){ return Math.round(v * 100) + '% of the start'; }]].forEach(function(x){
       var s = x[0], out = s.el.querySelector('output'), inp = s.input;
       function show(){ out.textContent = x[1](+inp.value); inp.setAttribute('aria-valuetext', out.textContent); }
       inp.addEventListener('input', show); s.el.querySelectorAll('.bt-step').forEach(function(b){ b.addEventListener('click', show); }); show();
@@ -227,11 +253,11 @@
       pic.classList.toggle('is-scroll', false);
       if(scene === 'bid'){
         var uses = place === 'farm' ? CL.FARM : CL.TOWN, maxD = MAXD[place], o = opts();
-        var rw = narrow ? W : W * 0.44, rh = narrow ? H * 0.5 : H, R = Math.min(rw / (o.river ? 1.55 : 1) / 2 - 12, rh / 2 - 12);
-        var rg = ringsSvg(null, rw / 2, rh / 2, R, uses, o, maxD);
+        var rw = narrow ? W : W * 0.44, rh = narrow ? H * 0.5 : H, R = Math.min((rw - (narrow ? 70 : 0)) / (o.river ? 1.55 : 1) / 2 - 12, rh / 2 - 12);
+        var rg = ringsSvg(null, narrow ? rw / 2 - 30 : rw / 2, rh / 2, R, uses, o, maxD);
         var pw = narrow ? W : W - rw - 12, ph = narrow ? H - rh - 8 : H;
         pic.innerHTML = '<div class="cl-split' + (narrow ? ' is-stack' : '') + '"><svg class="cl-svg cl-ringsvg" viewBox="0 0 ' + n1(rw) + ' ' + n1(rh) + '" style="height:' + n1(rh) + 'px" role="img" aria-label="' + esc(ringLabel(rg.bands, uses)) + '">' + rg.svg + '</svg><div class="cl-plotbox" style="height:' + n1(ph) + 'px">' + bidPlot(uses, o, maxD, pw, ph) + '</div></div>';
-        leg = bandLegend(uses) + '<p class="bt-small cl-note">Numbers invented for practice. ' + (place === 'farm' ? 'Center: the market town. ' : 'Center: the city center. ') + 'Ring widths are not to scale; the graph shows true distances. ' + (o.river ? 'With the river, rings stretch along it (a simplified picture).' : '') + '</p>';
+        leg = bandLegend(uses, pw < 420) + '<p class="bt-small cl-note">Numbers invented for practice. ' + (place === 'farm' ? 'Center: the market town. ' : 'Center: the city center. ') + 'Ring widths are not to scale; the graph shows true distances. ' + (o.river ? 'With the river, rings stretch along it (a simplified picture).' : '') + '</p>';
       } else if(scene === 'models'){
         var two = vs !== 'none', boxes = two ? 2 : 1, S, html = '';
         if(two && narrow){ S = (W - 20) / 240; pic.classList.add('is-scroll');
@@ -246,7 +272,7 @@
         leg = '<ul class="cl-legend" aria-label="Legend"><li><span class="cl-sw is-cp" aria-hidden="true"></span>Offers it</li><li><span class="cl-sw is-cpoff" aria-hidden="true"></span>Does not</li><li><span class="cl-sw is-hex" aria-hidden="true"></span>Its market area</li><li>Square: the city; large dots: towns; small dots: villages</li></ul>';
       } else {
         pic.innerHTML = '<div class="cl-plotbox" style="height:' + H + 'px">' + rsPlot(rk, W, H) + '</div>';
-        leg = '<p class="bt-small cl-note">Invented country for practice. The rank-size rule: the nth city has 1/n the population of the largest.</p>';
+        leg = '<ul class="cl-legend" aria-label="Legend"><li><span class="cl-sw is-bar" aria-hidden="true"></span>Actual population, millions (invented)</li><li><span class="cl-sw is-rule" aria-hidden="true"></span>Rank-size rule: largest / rank</li><li>Across: city rank</li></ul>';
       }
       $('.cl-leg').innerHTML = leg;
     }
@@ -322,9 +348,9 @@
       var uses = g.farm ? CL.FARM : CL.TOWN, u = CL.useBy(uses, g.u), v = CL.useBy(uses, g.v), maxD = Math.ceil(Math.max(u.A / u.a, v.A / v.a) / 5) * 5;
       var two = [u, v];
       var spec = { label: 'Two bid-rent lines, ' + u.name.toLowerCase() + ' and ' + v.name.toLowerCase() + ', with a dashed line at ' + g.d + ' km', width: W, height: H, x: [0, maxD], y: [0, Math.ceil(u.A * 1.08 / 50) * 50],
-        xLabel: 'Distance (km)', yLabel: g.farm ? 'Bid rent ($ per hectare)' : 'Bid rent ($ per square meter)', asymptotes: [{ x: g.d }],
+        xLabel: phone() ? '' : 'Distance (km)', yLabel: g.farm ? 'Bid rent ($ per hectare)' : 'Bid rent ($ per square meter)', asymptotes: [{ x: g.d }],
         curves: two.map(function(w){ var i = uses.indexOf(w); return { fn: function(d){ return CL.bid(w, d, {}); }, domain: [0, w.A / w.a], cls: 's' + (i + 1) }; }) };
-      inner = Plot.svg(spec) + '<ul class="cl-legend" aria-label="Legend">' + two.map(function(w){ var i = uses.indexOf(w); return '<li><span class="cl-sw s' + (i + 1) + '" aria-hidden="true"></span>' + esc(w.name) + '</li>'; }).join('') + '<li><span class="cl-sw is-dash" aria-hidden="true"></span>' + g.d + ' km</li></ul>';
+      inner = Plot.svg(spec) + '<ul class="cl-legend" aria-label="Legend">' + two.map(function(w){ var i = uses.indexOf(w); return '<li><span class="cl-sw s' + (i + 1) + '" aria-hidden="true"></span>' + esc(w.name) + '</li>'; }).join('') + '<li><span class="cl-sw is-dash" aria-hidden="true"></span>' + g.d + ' km</li>' + (phone() ? '<li>Across: distance (km)</li>' : '') + '</ul>';
     }
     el.innerHTML = '<figure class="cd-fig cl-qfig">' + inner + '</figure>';
   }

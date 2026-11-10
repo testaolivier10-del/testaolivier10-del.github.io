@@ -2,7 +2,7 @@
  "id": "frq-green-revolution-none",
  "type": "none",
  "points": 7,
- "title": "The Green Revolution and food supply: technology, effects and a limit of Malthus",
+ "title": "The Green Revolution: technology, uneven spread and neo-Malthusian limits",
  "units": [
   "unit-2",
   "unit-5"
@@ -60,18 +60,18 @@
   {
    "label": "C",
    "verb": "explain",
-   "prompt": "Explain how the Green Revolution increased food supply at the national scale in a country such as India.",
+   "prompt": "Explain why the high-yield seeds of the Green Revolution raised yields most where farmers had irrigation and fertilizer.",
    "points": 1,
    "rubric": [
     {
-     "point": "Explains the link from the new technology to more food for the country.",
+     "point": "Explains that the seeds gave large gains only as a package with water and fertilizer.",
      "accept": [
-      "high-yield seeds with water and fertilizer raised yields per hectare, so national grain output rose",
-      "more harvests per year on irrigated land added to total output"
+      "the new varieties were bred to turn extra water and fertilizer into more grain, so without them yields rose little",
+      "short, stiff stalks could carry the heavier grain that fertilizer and steady water produced, so the gain depended on those inputs"
      ]
     }
    ],
-   "sample": "In India, farmers planted high-yield wheat and rice with irrigation and fertilizer, so each hectare produced much more grain, and national grain output rose faster than population, which reduced the need for food imports."
+   "sample": "The new wheat and rice were bred to respond to water and fertilizer: given both, each plant grew much more grain on short, stiff stalks that did not fall over. On fields without irrigation or fertilizer the same seeds yielded little more than the old ones, so the biggest gains came where farmers could supply the whole package."
   },
   {
    "label": "D",
@@ -93,20 +93,19 @@
   {
    "label": "E",
    "verb": "explain",
-   "prompt": "Explain one negative social or economic consequence of the Green Revolution for small farmers at the local scale.",
+   "prompt": "Explain one reason the Green Revolution raised food output less in much of Sub-Saharan Africa than in South Asia.",
    "points": 1,
    "rubric": [
     {
-     "point": "Explains a harm to small farmers and why it happened.",
+     "point": "Explains a reason for the weaker spread in Sub-Saharan Africa.",
      "accept": [
-      "the inputs were costly, so small farmers fell into debt",
-      "larger farmers gained more, so inequality between farmers grew",
-      "machines replaced hired laborers",
-      "small farmers who could not afford inputs sold their land"
+      "most farms there are rain-fed with little irrigation, and the package depended on steady water",
+      "the main breeding focused on wheat and rice, while many farmers there grow millet, sorghum, cassava or yams",
+      "poor roads, storage and credit made seed and fertilizer hard to buy and harvests hard to sell"
      ]
     }
    ],
-   "sample": "In a village in Punjab, the new seeds needed fertilizer, pesticides and pumped water that cost money, so small farmers who borrowed to buy them could fall into debt, while larger farmers with savings gained the most."
+   "sample": "Much of Sub-Saharan Africa farms dry land that depends on rain, and many farmers grow millet, sorghum and cassava, while the Green Revolution package centered on irrigated wheat and rice. Because few farms had irrigation or improved seed for local crops, yields there rose far less than on the irrigated plains of South Asia."
   },
   {
    "label": "F",
@@ -123,24 +122,24 @@
      ]
     }
    ],
-   "sample": "Green Revolution seeds were bred by crossing plants and spread from the 1960s to the 1980s, whereas GMO crops have genes changed in a lab and were first sold in the late 1990s."
+   "sample": "Green Revolution seeds were bred by crossing plants and spread from the 1960s to the 1980s, whereas GMO crops have genes changed in a lab and spread widely on farms from the late 1990s."
   },
   {
    "label": "G",
    "verb": "explain-degree",
-   "prompt": "Explain the degree to which the Green Revolution challenges Malthusian theory.",
+   "prompt": "Explain the degree to which the Green Revolution supports the neo-Malthusian argument that gains in food supply may not last.",
    "points": 1,
    "rubric": [
     {
-     "point": "States a degree and explains it with the link between food and population.",
+     "point": "States a degree and explains it with evidence about whether the gains can be sustained.",
      "accept": [
-      "to a large degree: food output grew faster than population, against Malthus's prediction",
-      "to a moderate degree: food grew faster, but neo-Malthusians argue the gains rely on water and fuel that may run short",
-      "to a limited degree: hunger continued in places the Green Revolution did not reach"
+      "to a moderate degree: yields rose, but falling water tables and fertilizer made with fossil fuels suggest limits",
+      "to a large degree: in places such as Punjab the gains rely on pumping groundwater faster than rain refills it",
+      "to a limited degree: yields have kept rising with new methods, so technology has so far kept ahead of population"
      ]
     }
    ],
-   "sample": "To a large degree it challenges Malthus, because Malthus predicted food would grow more slowly than population, but in countries such as India new seeds and inputs made grain output grow faster than population; neo-Malthusians reply that the gains depend on water and fuel that may not last."
+   "sample": "To a moderate degree. Grain output did rise faster than population, but in Punjab the gains depend on pumping groundwater faster than rain refills it and on fertilizer made with fossil fuels, so neo-Malthusians argue the problem Malthus described was delayed rather than solved, even though yields have kept rising so far."
   }
  ]
 }

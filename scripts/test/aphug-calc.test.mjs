@@ -87,7 +87,7 @@ test('numeric: a number with an optional unit, tolerance and the named slips', (
   const nu = G.numeric(N, '68');
   assert.equal(nu.score, 0.5); assert.match(nu.notes[0], /needs its unit/);
   assert.match(G.numeric(N, '0.68%').notes[0], /100 times too small/);
-  assert.match(G.numeric({ answer: -2 }, '2').notes[0], /negative/);
+  assert.match(G.numeric({ answer: -2 }, '2').notes[0], /the sign is wrong\.$/);
   const m = G.numeric({ answer: 5, mistakes: [{ value: 20, why: 'Placeholder: that is the total; divide by the count.' }] }, '20');
   assert.equal(m.mistake.value, 20); assert.deepEqual([...m.notes], ['Placeholder: that is the total; divide by the count.']);
   assert.equal(G.numeric({ answer: 5 }, 'five').valid, false);

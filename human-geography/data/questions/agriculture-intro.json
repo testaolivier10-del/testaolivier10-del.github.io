@@ -117,7 +117,7 @@
    "diff": 2,
    "type": "single",
    "practice": "2.A",
-   "q": "In the rainforest of one marked country, farmers clear a small plot, grow crops for a few years, then let the forest grow back while they farm a new plot. Which letter is that country?",
+   "q": "In the Amazon rainforest of one marked country, farmers clear a small plot, grow crops for a few years, then let the forest grow back while they farm a new plot. Which letter is that country?",
    "options": [
     "A",
     "B",
@@ -127,11 +127,11 @@
    "correct": 1,
    "fixed": true,
    "why": {
-    "correct": "The farming described is shifting cultivation, an extensive system of tropical rainforests. On this map the rainforest country is Brazil, marked B.",
+    "correct": "The farming described is shifting cultivation, an extensive system of tropical rainforests. The Amazon rainforest lies mostly in Brazil, marked B.",
     "options": [
      "A marks Mongolia: its dry grasslands support herding, not cleared rainforest plots.",
      "Right: B marks Brazil, and the Amazon rainforest is a region where shifting cultivation is practiced.",
-     "C marks Malaysia, which has rainforest, but its farmland is best known for large oil palm plantations that stay in place.",
+     "C marks Malaysia, which has rainforest (and some shifting cultivation on Borneo), but the Amazon is in South America, not Southeast Asia.",
      "D marks Argentina, whose temperate grasslands (the Pampas) are used for ranching and grain, not rainforest plots."
     ]
    },

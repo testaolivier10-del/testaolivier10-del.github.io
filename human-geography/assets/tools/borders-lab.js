@@ -107,7 +107,7 @@
     ev.sort(function(a, b){ return a.y - b.y; });
     var lastX = -99, row = 0;
     ev.forEach(function(e){
-      var x = +X(e.y); row = x - lastX < 40 ? 1 - row : 0; lastX = x;
+      var x = +X(e.y); row = x - lastX < 48 ? 1 - row : 0; lastX = x;
       o.push('<circle class="bl-ev ' + e.c + '" cx="' + x + '" cy="' + yA + '" r="6"/><text class="bl-yr" x="' + x + '" y="' + (row ? yA + 24 : yA - 12) + '" text-anchor="middle">' + e.t + '</text>');
     });
     if(year != null) o.push('<path class="bl-now" d="M' + X(year) + ' ' + (yA - 16) + 'V' + (yA + 10) + '"/>');
@@ -400,7 +400,7 @@
     var W = phone() ? 360 : 600, H, inner, label, leg = '';
     if(g.kind === 'boundary'){
       var f = { first: g.facts.first, extra: g.facts.extra === 'consequent' || g.facts.extra === 'superimposed' || g.facts.extra === 'geometric' || g.facts.extra === 'relict' ? g.facts.extra : 'river', drawn: g.facts.drawn, settled: g.facts.settled };
-      H = phone() ? 270 : 400; inner = landSvg(W, H, f, 2000); label = 'The invented borderland as it is today, with a timeline of when the towns were settled and the border was drawn.'; leg = landLegend(f);
+      H = phone() ? 270 : 400; inner = landSvg(W, H, f, 2000); label = 'The invented borderland in 2000, with a timeline of when the towns were settled and the border was drawn.'; leg = landLegend(f);
     } else if(g.kind === 'shape'){
       H = phone() ? 240 : 320; inner = shapeSvg(W, H, g.shape, { flip: g.flip, rot: g.rot }); label = 'The outline of an invented state.';
     } else {

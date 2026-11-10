@@ -247,7 +247,7 @@
     "options": [
      "P has very few people over 65; its needs are for the young.",
      "the youngest bars are the longest, so the number of children is large.",
-     "Right: the many many young children will need schools, then work.",
+     "Right: the many young children will need schools, then work.",
      "P’s workforce will grow as its many children reach working age."
     ]
    }
@@ -595,7 +595,7 @@
      {
       "piece": "con",
       "slot": "s2",
-      "why": "A constrictive pyramid comes last: its base has shrunk below the middle bars. Straight sides (stationary) come first, when births have just leveled off."
+      "why": "A constrictive pyramid comes last: its base has shrunk below the middle bars. Straight sides (stationary) come before it, when births have just leveled off."
      }
     ]
    },

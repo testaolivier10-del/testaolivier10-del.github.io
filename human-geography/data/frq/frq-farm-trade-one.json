@@ -2,14 +2,14 @@
  "id": "frq-farm-trade-one",
  "type": "one",
  "points": 7,
- "title": "An export table for one crop: commodity dependence, comparative advantage and supply chains",
+ "title": "An export table for one crop: commodity dependence, price swings and supply chains",
  "units": [
-  "unit-5",
-  "unit-7"
+  "unit-2",
+  "unit-5"
  ],
  "topics": [
-  "global-agriculture",
-  "trade-world-economy"
+  "migration-causes",
+  "global-agriculture"
  ],
  "practices": [
   "2.B",
@@ -95,33 +95,34 @@
   {
    "label": "C",
    "verb": "explain",
-   "prompt": "Explain how the data in the table show that Country K is commodity dependent, and one risk this brings.",
+   "prompt": "Using the table, explain why Country K earned less from coffee in 2018 than in 2015, even though it exported more coffee.",
    "points": 1,
    "rubric": [
     {
-     "point": "Uses the share data and explains a risk.",
+     "point": "Uses the table to explain that the price received for each tonne fell.",
      "accept": [
-      "coffee is 55% to 63% of export earnings, so a fall in the world coffee price cuts national income",
-      "one raw crop brings most export income, so price swings make earnings unstable"
+      "earnings per tonne fell (about 3,000 dollars in 2015 to about 2,400 dollars in 2018), so the world price of coffee must have fallen",
+      "tonnes rose from 400 to 420 thousand but earnings fell from 1,200 to 1,000 million dollars, so each tonne sold for less"
      ]
     }
    ],
-   "sample": "Coffee, one raw crop, brings in 55% to 63% of all of Country K's export earnings, so when the world coffee price falls, as earnings did in 2018, the country's income from exports drops even though it ships more coffee."
+   "sample": "Country K exported more coffee in 2018 (420 thousand tonnes) than in 2015 (400 thousand), but earned less (1,000 million dollars compared with 1,200 million), so each tonne sold for less: about 2,400 dollars instead of 3,000. The world price of coffee fell, and Country K cannot control that price."
   },
   {
    "label": "D",
    "verb": "explain",
-   "prompt": "Explain how comparative advantage could help explain why Country K exports coffee and imports manufactured goods.",
+   "prompt": "Explain how a fall in coffee prices could act as a push factor for rural-to-urban migration in Country K.",
    "points": 1,
    "rubric": [
     {
-     "point": "Explains comparative advantage with a lower opportunity cost.",
+     "point": "Explains the link from lower farm income to people leaving rural areas.",
      "accept": [
-      "Country K's climate lets it grow coffee at a lower opportunity cost than other goods, so it specializes in coffee and trades for goods others make at lower opportunity cost"
+      "lower coffee prices cut the income of farm families, so some members leave for city jobs",
+      "farm workers lose jobs or wages when coffee earns less, pushing them to move to cities"
      ]
     }
    ],
-   "sample": "Country K's highland climate lets it grow coffee at a lower opportunity cost than it could make machinery, so it gains by specializing in coffee and trading it for manufactured goods that other countries produce at a lower opportunity cost."
+   "sample": "When coffee prices fall, families who grow coffee earn less for the same harvest and farms hire fewer workers, so young people in coffee-growing areas have fewer ways to earn a living and some move to cities to look for work."
   },
   {
    "label": "E",

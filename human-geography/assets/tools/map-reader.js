@@ -7,9 +7,8 @@
    maps (human-geography/figures/base/*.json, fetched once each): the picture
    is an inline SVG with no words in it, and every word (letters, line
    values, the legend, the border note) is HTML at the page's own size, the
-   same markup the course's map stimuli use (.hug-map). The tool page does not
-   load hug-map.js yet, so this script loads it first (request for the lead
-   in docs/aphug-reviews/self-t3.md).
+   same markup the course's map stimuli use (.hug-map). The tool page loads
+   hug-map.js (build-aphug.mjs toolShell).
 
    Explore: one invented data set, six map types.
      Type chips: reference, choropleth, dot density, graduated symbol,
@@ -30,12 +29,9 @@
   function studioOf(el){ var s = window.LevlStudio && window.LevlStudio.get(); var root = document.getElementById('app'); return s && root && root.getAttribute('data-studio') && root.contains(el) ? s : null; }
 
   /* ---------------------------------------------- loading the maps */
-  var libP = null, baseP = {};
-  function lib(){
-    if(window.ApHugMap) return Promise.resolve();
-    if(!libP) libP = new Promise(function(ok, no){ var s = document.createElement('script'); s.src = B0 + 'assets/hug-map.js'; s.onload = function(){ ok(); }; s.onerror = function(){ no(new Error('hug-map.js')); }; document.head.appendChild(s); });
-    return libP;
-  }
+  var baseP = {};
+  // The tool page loads hug-map.js (build-aphug.mjs toolShell).
+  function lib(){ return window.ApHugMap ? Promise.resolve() : Promise.reject(new Error('hug-map.js')); }
   function bases(ids){
     return lib().then(function(){
       return Promise.all(ids.map(function(id){

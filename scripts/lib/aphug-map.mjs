@@ -279,6 +279,8 @@ export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = 
     for (const f of c.fullIn || []) {
       if (!topicIndex.has(f)) err(`concept ${c.id}: fullIn unknown topic "${f}"`);
       else if (topicIndex.get(f) <= topicIndex.get(c.taughtIn)) err(`concept ${c.id}: fullIn "${f}" is not after where the short version is taught`);
+      // A pulled-forward concept's full version still counts for its topic (6.7 Infrastructure).
+      else byTopic.get(f).push(c);
     }
   }
   for (const t of map.topics) if (!byTopic.get(t.id).length) err(`topic ${t.id} teaches no concepts`);

@@ -2,11 +2,11 @@
  "stimuli": {
   "migration-effects-s1": {
    "kind": "data",
-   "title": "The five countries that received the most remittances, 2023",
-   "source": "World Bank, Migration and Development Brief 40 (2024), 2023 estimates, rounded",
+   "title": "The five countries that received the most remittances, 2024",
+   "source": "World Bank, Migration and Development Brief 41 (December 2024), 2024 estimates, rounded",
    "plot": {
     "kind": "bar",
-    "label": "Bar chart of remittances received in 2023, in billions of US dollars: India about 120, Mexico about 66, China about 50, the Philippines about 39 and Pakistan about 27",
+    "label": "Bar chart of remittances received in 2024, in billions of US dollars: India about 129, Mexico about 68, China about 48, the Philippines about 40 and Pakistan about 33",
     "categories": [
      "India",
      "Mexico",
@@ -15,11 +15,11 @@
      "Pakistan"
     ],
     "values": [
-     120,
-     66,
-     50,
-     39,
-     27
+     129,
+     68,
+     48,
+     40,
+     33
     ],
     "xLabel": "Country",
     "yLabel": "Billions of US dollars"
@@ -40,7 +40,7 @@
    "diff": 1,
    "type": "single",
    "practice": "3.B",
-   "q": "According to the chart, which country received the most remittances in 2023?",
+   "q": "According to the chart, which country received the most remittances in 2024?",
    "stimulus": "migration-effects-s1",
    "options": [
     "India",
@@ -50,12 +50,12 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Read the tallest bar: India received about 120 billion US dollars (World Bank, 2024).",
+    "correct": "Read the tallest bar: India received about 129 billion US dollars (World Bank, 2024 estimate).",
     "options": [
-     "Right: India’s bar, about 120 billion dollars, is the tallest.",
-     "Mexico is second, at about 66 billion dollars.",
-     "China is third, at about 50 billion dollars.",
-     "the Philippines is fourth, at about 39 billion dollars."
+     "Right: India’s bar, about 129 billion dollars, is the tallest.",
+     "Mexico is second, at about 68 billion dollars.",
+     "China is third, at about 48 billion dollars.",
+     "the Philippines is fourth, at about 40 billion dollars."
     ]
    }
   },
@@ -79,7 +79,7 @@
    "why": {
     "correct": "A description names the places and the size of the differences: India leads by far, Mexico is second, and four of the five are in Asia.",
     "options": [
-     "India received more than four times as much as Pakistan.",
+     "India received nearly four times as much as Pakistan.",
      "Right: India, China, the Philippines and Pakistan are in Asia.",
      "none of the five is in Europe.",
      "India and China are the largest by population and are near the top."
@@ -97,10 +97,10 @@
    "q": "Which question can this chart NOT answer?",
    "stimulus": "migration-effects-s1",
    "options": [
-    "Which of the five received the most remittances in 2023",
-    "Whether Mexico received more than China in 2023",
+    "Which of the five received the most remittances in 2024",
+    "Whether Mexico received more than China in 2024",
     "How much remittances matter to each economy",
-    "Roughly how much the Philippines received in 2023"
+    "Roughly how much the Philippines received in 2024"
    ],
    "correct": 2,
    "why": {
@@ -109,7 +109,7 @@
      "the chart shows this: India.",
      "the chart shows Mexico above China.",
      "Right: a total in dollars does not compare remittances with the size of the economy.",
-     "its bar reads about 39 billion dollars."
+     "its bar reads about 40 billion dollars."
     ]
    }
   },

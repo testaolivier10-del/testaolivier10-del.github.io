@@ -59,3 +59,11 @@
 .ls-root .hug-model-art{max-width:220px;}
 .ls-root .hug-model[data-layout="stages"] .hug-model-art{max-width:260px;}
 .ls-root .cl-legend,.ls-root .cl-note,.ls-root .cl-keys{padding-right:46px;}
+.cl-grid{stroke:var(--line,#ddd);stroke-width:1;}
+.cl-axis{fill:none;stroke:var(--cl-ink);stroke-width:1.4;}
+.cl-tick{font:600 12px var(--font-ui);fill:var(--cl-ink);}
+.cl-bar{fill:var(--cl-z5);stroke:var(--cl-on);stroke-width:1.2;}
+.cl-rule{fill:none;stroke:var(--hug-s2,#D55E00);stroke-width:2.4;stroke-dasharray:6 4;}
+.cl-ruledot{fill:var(--hug-s2,#D55E00);stroke:var(--cl-tag);stroke-width:1.5;}
+.cl-sw.is-bar{background:var(--cl-z5);border-color:var(--cl-on);} .cl-sw.is-rule{border-radius:50%;background:var(--hug-s2,#D55E00);}
+.cl-lead{stroke:var(--cl-ink);stroke-width:1.2;fill:none;} .cl-leaddot{fill:var(--cl-ink);}

@@ -2,7 +2,7 @@
  "id": "frq-development-table-one",
  "type": "one",
  "points": 7,
- "title": "A development indicator table: what HDI and GII show and hide",
+ "title": "One country over thirty years: what the HDI and GII show and hide",
  "units": [
   "unit-7",
   "unit-2"
@@ -23,58 +23,58 @@
  "stimuli": [
   {
    "kind": "data",
-   "title": "Development indicators for five countries",
+   "title": "Development and gender indicators in Country R, 1995 to 2025",
    "invented": true,
    "table": {
-    "caption": "Development indicators (invented data for practice). For GII, lower means less gender inequality.",
+    "caption": "Development and gender indicators for Country R (invented data for practice). For GII, lower means less gender inequality.",
     "cols": [
-     "Country",
-     "GNI per capita, PPP (US\\$)",
-     "HDI",
-     "GII",
-     "Girls' expected years of school",
-     "Total fertility rate"
+     "Indicator",
+     "1995",
+     "2010",
+     "2025"
     ],
     "rows": [
      [
-      "P",
-      "48,000",
-      "0.93",
-      "0.06",
-      "17",
-      "1.5"
+      "GNI per capita, PPP (US\\$)",
+      "6,000",
+      "11,000",
+      "19,000"
      ],
      [
-      "Q",
-      "30,000",
-      "0.78",
-      "0.48",
-      "11",
-      "3.2"
+      "HDI",
+      "0.59",
+      "0.68",
+      "0.76"
      ],
      [
-      "R",
-      "12,000",
-      "0.76",
-      "0.22",
-      "14",
-      "2.0"
+      "GII",
+      "0.55",
+      "0.40",
+      "0.30"
      ],
      [
-      "S",
-      "4,500",
-      "0.58",
-      "0.50",
-      "9",
-      "4.1"
+      "Maternal deaths per 100,000 births",
+      "310",
+      "150",
+      "60"
      ],
      [
-      "T",
-      "1,800",
-      "0.45",
-      "0.62",
-      "7",
-      "5.6"
+      "Seats in parliament held by women (%)",
+      "6",
+      "15",
+      "28"
+     ],
+     [
+      "Women in paid work (%)",
+      "32",
+      "41",
+      "52"
+     ],
+     [
+      "Total fertility rate",
+      "4.0",
+      "2.9",
+      "2.1"
      ]
     ]
    }
@@ -84,50 +84,50 @@
   {
    "label": "A",
    "verb": "identify",
-   "prompt": "Identify the country in the table with the most gender inequality.",
+   "prompt": "Identify the period, 1995 to 2010 or 2010 to 2025, in which Country R's GII fell more.",
    "points": 1,
    "rubric": [
     {
-     "point": "Names Country T (GII 0.62, the highest).",
+     "point": "Names 1995 to 2010 (the GII fell by 0.15, from 0.55 to 0.40, compared with 0.10 from 2010 to 2025).",
      "accept": [
-      "Country T",
-      "T"
+      "1995 to 2010",
+      "the first period"
      ]
     }
    ],
-   "sample": "Country T, which has the highest GII (0.62)."
+   "sample": "1995 to 2010, when the GII fell by 0.15 (from 0.55 to 0.40); from 2010 to 2025 it fell by 0.10."
   },
   {
    "label": "B",
    "verb": "describe",
-   "prompt": "Describe the relationship between girls' expected years of school and the total fertility rate shown in the table.",
+   "prompt": "Describe the change in Country R's HDI from 1995 to 2025, using data from the table.",
    "points": 1,
    "rubric": [
     {
-     "point": "Describes an inverse relationship with data: countries where girls expect more years of school have lower fertility.",
+     "point": "Describes a steady rise with data: from 0.59 in 1995 to 0.68 in 2010 and 0.76 in 2025.",
      "accept": [
-      "as girls' schooling rises, fertility falls (P: 17 years, TFR 1.5; T: 7 years, TFR 5.6)",
-      "an inverse or negative relationship, with table values"
+      "the HDI rose from 0.59 to 0.76",
+      "it rose in both periods, from 0.59 to 0.68 to 0.76"
      ]
     }
    ],
-   "sample": "The relationship is inverse: where girls expect more years of school, fertility is lower. Country P has 17 years of school for girls and a total fertility rate of 1.5, while Country T has 7 years and a rate of 5.6."
+   "sample": "Country R's HDI rose steadily, from 0.59 in 1995 to 0.68 in 2010 and 0.76 in 2025, an increase of 0.17 over thirty years."
   },
   {
    "label": "C",
    "verb": "explain",
-   "prompt": "Explain why Country Q's HDI is lower than its GNI per capita would suggest.",
+   "prompt": "Explain how the fall in maternal deaths shown in the table helps lower Country R's GII.",
    "points": 1,
    "rubric": [
     {
-     "point": "Uses the table (Q has more than twice R's income but a similar or lower HDI) and explains why: income is not turning into health and schooling, for example because income is unequally shared or comes from a few exports, and girls get less schooling.",
+     "point": "Explains that maternal deaths are part of the reproductive health dimension of the GII, so fewer deaths in childbirth (310 to 60 per 100,000 births) mean less measured disadvantage for women and a lower GII.",
      "accept": [
-      "Q earns 30,000 to R's 12,000 but has a similar HDI, because the income is concentrated and not spent on health and education",
-      "Q's girls expect only 11 years of school, so the education part of HDI is low"
+      "the GII counts maternal deaths as part of reproductive health, so fewer deaths lower it",
+      "deaths in childbirth harm only women, so cutting them from 310 to 60 narrows the gap the GII measures"
      ]
     }
    ],
-   "sample": "Country Q has a GNI per capita of 30,000 dollars, more than twice Country R's 12,000, yet its HDI (0.78) is almost the same as R's (0.76). This is because the HDI also counts health and schooling, and Q's girls expect only 11 years of school, so its income is not being turned into education and health for most people, which pulls its HDI down."
+   "sample": "The GII measures women's disadvantage in reproductive health, empowerment and paid work, and maternal deaths are part of reproductive health. As deaths in childbirth fell from 310 to 60 per 100,000 births, women's health improved compared with men's, so this part of the index improved and the GII fell."
   },
   {
    "label": "D",
@@ -148,51 +148,50 @@
   {
    "label": "E",
    "verb": "explain",
-   "prompt": "Explain ONE thing the Gender Inequality Index shows about a country that the HDI does not.",
+   "prompt": "Explain how the rise in women's paid work shown in the table could help account for the fall in Country R's total fertility rate.",
    "points": 1,
    "rubric": [
     {
-     "point": "Explains that the GII shows the gap between women and men (in reproductive health, empowerment such as seats in parliament and schooling, or paid work), which the HDI averages over everyone.",
+     "point": "Explains a link: as more women work for pay (32% to 52%), they often marry later, stay in school or work longer, and each child costs more in lost earnings, so families have fewer children (4.0 to 2.1).",
      "accept": [
-      "the gap between women and men in paid work",
-      "women's share of seats in parliament and secondary schooling",
-      "deaths in childbirth and teenage births"
+      "more women in paid work means later marriage and fewer children",
+      "working women give up more income for each child, so the fertility rate falls"
      ]
     }
    ],
-   "sample": "The GII shows the gap between women and men, for example in seats in parliament and in paid work, because it compares the two groups, whereas the HDI gives one average for the whole population and so hides how women fare compared with men."
+   "sample": "Between 1995 and 2025 the share of women in paid work rose from 32% to 52% while the total fertility rate fell from 4.0 to 2.1. Women with paid jobs often marry and have their first child later, and each child means more lost earnings, so many families choose to have fewer children."
   },
   {
    "label": "F",
    "verb": "explain",
-   "prompt": "Explain ONE limitation of using the national data in the table to describe development within Country S.",
+   "prompt": "Explain ONE limitation of using national data such as these to describe development within Country R.",
    "points": 1,
    "rubric": [
     {
-     "point": "Explains that national averages hide differences at a smaller scale: between regions, cities and rural areas, or women and men inside Country S.",
+     "point": "Explains that national averages hide differences at a smaller scale: between regions, cities and rural areas, or groups inside Country R.",
      "accept": [
       "one national value hides differences between regions or between cities and the countryside",
       "the data are at the national scale, so they cannot show local or regional patterns"
      ]
     }
    ],
-   "sample": "The table gives one national value for Country S, so it hides differences inside the country: a capital city may have far more schooling and income than rural regions, and an average of 4,500 dollars can describe almost nobody's life."
+   "sample": "The table gives one national value for each year, so it hides differences inside Country R: the capital may have far lower maternal deaths and more women in paid work than rural regions, so an average can describe almost nobody's life."
   },
   {
    "label": "G",
    "verb": "explain-degree",
-   "prompt": "Explain the degree to which raising girls' schooling in Country T would change its development indicators.",
+   "prompt": "Explain the degree to which the data in the table show that women and men in Country R now have equal opportunities.",
    "points": 1,
    "rubric": [
     {
-     "point": "States a degree, then explains with a mechanism: more schooling for girls lowers fertility and the GII and raises the education part of HDI, but income and health depend on other factors too.",
+     "point": "States a degree, then supports it with data: inequality has fallen (GII 0.55 to 0.30), but the GII is still above zero and women hold only 28% of seats in parliament, so opportunities are not yet equal.",
      "accept": [
-      "to a large degree: more schooling raises HDI's education part, lowers fertility and narrows the GII",
-      "to a moderate degree: schooling helps HDI and GII, but income and health care need other changes"
+      "to a low or moderate degree: the GII is still 0.30 and women hold only 28% of seats",
+      "to a moderate degree: big gains in health and paid work, but gaps remain in parliament"
      ]
     }
    ],
-   "sample": "To a moderate degree, because more years of school for girls would raise the education part of T's HDI and lower its GII, and educated women tend to marry later and have fewer children, so the fertility rate of 5.6 would fall over time; but T's very low income (1,800 dollars) and health care also hold its HDI down, and schooling alone would not change those quickly."
+   "sample": "To a low degree. Gender inequality has fallen a great deal: the GII dropped from 0.55 to 0.30 and women in paid work rose to 52%. However, a GII of 0.30 is still well above zero, and women hold only 28% of the seats in parliament, so women still have less political power and fewer opportunities than men."
   }
  ]
 }

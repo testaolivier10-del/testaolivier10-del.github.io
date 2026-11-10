@@ -69,6 +69,7 @@ math.hug-m mtext{font-family:var(--font-body,inherit);}
 .hug-map-mark,.hug-map-iso{position:absolute;transform:translate(-50%,-115%);padding:1px 6px;border-radius:6px;background:#fff;color:#1B1B1B;border:1.5px solid #1B1B1B;font:800 13px/1.25 var(--font-ui);white-space:nowrap;}
 .hug-map-iso{transform:translate(-50%,-50%);border-color:#7A2E0E;color:#7A2E0E;font-size:12px;}
 .hug-map-mark.is-low{transform:translate(-50%,15%);}
+.hug-map-label{position:absolute;transform:translate(-50%,-50%);padding:0 4px;border-radius:4px;background:rgba(255,255,255,.85);color:#1B1B1B;font:700 12px/1.3 var(--font-ui);white-space:nowrap;}
 .hug-map-big{white-space:nowrap;}
 .hug-legend{margin:.5em 0 .2em;}
 .hug-lg-title{margin:0 0 .3em;font:800 13px var(--font-ui);}
@@ -78,6 +79,10 @@ math.hug-m mtext{font-family:var(--font-body,inherit);}
 .hug-lg-sw.is-nd{background:repeating-linear-gradient(45deg,#fff 0 3px,#9A958C 3px 4.4px);}
 .hug-lg-dot{flex:none;width:8px;height:8px;border-radius:50%;background:#7A2E0E;}
 .hug-lg-iso{flex:none;width:22px;height:0;border-top:2px solid #7A2E0E;}
+.hug-lg-line{flex:none;width:24px;height:0;}
+.hug-lg-stn{flex:none;width:10px;height:10px;border-radius:50%;background:#fff;border:2.2px solid #1B1B1B;box-sizing:border-box;}
+.hug-lg-codes{display:flex;flex-wrap:wrap;gap:2px 12px;margin:.4em 0 0;font:600 13px/1.4 var(--font-ui);}
+.hug-lg-codes b{font-weight:800;}
 .hug-legend li.hug-lg-sym{flex-direction:column;align-items:flex-start;width:100%;}
 .hug-lg-symart{position:relative;display:block;width:100%;line-height:0;}
 .hug-lg-symart svg{display:block;width:100%;height:auto;}
@@ -125,9 +130,15 @@ math.hug-m mtext{font-family:var(--font-body,inherit);}
 .hug-model-piece[aria-pressed="true"]{background:var(--cink);color:var(--paper,#fff);}
 .hug-model-ghost{position:fixed;z-index:1000;transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 6px 18px rgba(0,0,0,.25);}
 .hug-model.is-locked .hug-model-slot,.hug-model.is-locked .hug-model-piece{cursor:default;}
-.hug-model-fig{position:relative;}
-.hug-model-spots{list-style:none;margin:0;padding:0;}
-.hug-model-spots .hug-model-row{position:absolute;}
+/* free: the figure full width, a numbered badge centered on each place, the
+   places listed under it (no slot sits on the drawing, so nothing overlaps). */
+.hug-model[data-layout="free"] .hug-model-grid{grid-template-columns:minmax(0,1fr);}
+.hug-model-fig{position:relative;max-width:720px;margin:0 auto;width:100%;}
+.hug-model-fig img,.hug-model-fig svg{display:block;width:100%;height:auto;}
+.hug-model-spot{position:absolute;transform:translate(-50%,-50%);min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:#094953;color:#fff;font:800 14px/26px var(--font-ui);text-align:center;box-shadow:0 0 0 2px #fff;pointer-events:none;}
+.hug-model[data-layout="free"] .hug-model-row{grid-template-columns:auto minmax(0,1fr);column-gap:8px;}
+.hug-model[data-layout="free"] .hug-model-row>.hug-model-sn,.hug-model[data-layout="free"] .hug-model-row>.hug-model-slot,.hug-model[data-layout="free"] .hug-model-row>.hug-model-why{grid-column:2;}
+.hug-model-badge{grid-column:1;grid-row:1 / span 2;align-self:center;min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:#094953;color:#fff;font:800 14px/26px var(--font-ui);text-align:center;}
 @media (prefers-reduced-motion:reduce){.hug-model-ghost{box-shadow:none;}}
 
 
@@ -238,6 +249,19 @@ a.hug-tag:hover{text-decoration:underline;}
 .hug-credit{display:block;font-size:12px;margin-top:3px;}
 .hug-figimg{position:relative;display:inline-block;max-width:100%;}
 .hug-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+/* Enlarge (hug-nav.js): the button on narrow screens, a tap on the drawing,
+   and the full-screen dialog with the drawing at its own width. */
+.hug-fig-zoom{display:none;position:absolute;right:6px;bottom:6px;min-height:36px;padding:4px 12px;border:1.5px solid var(--cink);border-radius:999px;background:var(--white,#fff);color:var(--cink);font:800 13px var(--font-ui);cursor:zoom-in;box-shadow:0 1px 4px rgba(0,0,0,.18);}
+@media (max-width:760px){.hug-fig-zoom{display:block;} .hug-figimg:not(.has-masks) img{cursor:zoom-in;}}
+@media print{.hug-fig-zoom{display:none !important;}}
+.hug-zoom-open,.hug-zoom-open body{overflow:hidden;}
+.hug-zoom{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;background:var(--paper,#fff);}
+.hug-zoom-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-bottom:1px solid var(--line);}
+.hug-zoom-t{margin:0;font:600 13px/1.3 var(--font-ui);color:var(--muted);}
+.hug-zoom-x{min-height:44px;}
+.hug-zoom-body{flex:1;overflow:auto;padding:12px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;}
+.hug-zoom-body .hug-figimg{display:block;}
+.hug-zoom-body .hug-figimg img{max-width:none;}
 /* Dark mode: the diagrams are SVG files drawn on white in the course palette
    (the Okabe-Ito hues above), shown as <img>, so page tokens cannot reach
    inside them. Inverting lightness and turning the hue back round keeps every
@@ -470,9 +494,10 @@ table.hug-data td{font-variant-numeric:tabular-nums;}
 .hug-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
 .hug-svg .s1{stroke:var(--hug-s1);} .hug-svg .s2{stroke:var(--hug-s2);} .hug-svg .s3{stroke:var(--hug-s3);} .hug-svg .s4{stroke:var(--hug-s4);} .hug-svg .s5{stroke:var(--hug-s5);} .hug-svg .series.s5{stroke-dasharray:7 4;}
 .hug-svg .pt.s1,.hug-svg .bar.s1{fill:var(--hug-s1);} .hug-svg .pt.s2,.hug-svg .bar.s2{fill:var(--hug-s2);} .hug-svg .pt.s3,.hug-svg .bar.s3{fill:var(--hug-s3);} .hug-svg .pt.s4,.hug-svg .bar.s4{fill:var(--hug-s4);} .hug-svg .pt.s5,.hug-svg .bar.s5{fill:var(--hug-s5);}
-.hug-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
-.hug-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
-.hug-legend .s1 i{background:var(--hug-s1);} .hug-legend .s2 i{background:var(--hug-s2);} .hug-legend .s3 i{background:var(--hug-s3);} .hug-legend .s4 i{background:var(--hug-s4);} .hug-legend .s5 i{background:var(--hug-s5);}
+/* A plot's series key (a <p>); a map's legend is a <div class="hug-legend"> above. */
+p.hug-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
+p.hug-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+p.hug-legend .s1 i{background:var(--hug-s1);} p.hug-legend .s2 i{background:var(--hug-s2);} p.hug-legend .s3 i{background:var(--hug-s3);} p.hug-legend .s4 i{background:var(--hug-s4);} p.hug-legend .s5 i{background:var(--hug-s5);}
 .hug-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
 
 /* Numeric answers. */

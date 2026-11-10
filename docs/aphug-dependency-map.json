@@ -2157,7 +2157,13 @@
    "bigIdeas": [
     "SPS"
    ],
-   "searchPhrase": "the second agricultural revolution human geography explained"
+   "searchPhrase": "the second agricultural revolution human geography explained",
+   "previews": [
+    {
+     "concept": "industrialization",
+     "reason": "The Second Agricultural Revolution came with the Industrial Revolution (machines, chemical fertilizer, rail to markets); a two-sentence box names it here, and 7.1 teaches industrialization in full."
+    }
+   ]
   },
   {
    "id": "green-revolution",
@@ -2723,7 +2729,10 @@
    "suburbs",
    "suburban",
    "place names",
-   "sense of place"
+   "sense of place",
+   "irrigation",
+   "irrigated",
+   "terraces"
   ]
  },
  "concepts": [
@@ -4127,8 +4136,11 @@
     "colonies",
     "colony"
    ],
-   "taughtIn": "diffusion-history",
-   "dependsOn": []
+   "taughtIn": "human-environment",
+   "dependsOn": [],
+   "fullIn": [
+    "diffusion-history"
+   ]
   },
   {
    "id": "imperialism",
@@ -4984,7 +4996,8 @@
    "aliases": [],
    "taughtIn": "second-agricultural-revolution",
    "dependsOn": [
-    "agriculture"
+    "agriculture",
+    "industrialization"
    ]
   },
   {
@@ -5026,8 +5039,7 @@
    "id": "subsistence-agriculture",
    "term": "subsistence agriculture",
    "aliases": [
-    "subsistence farming",
-    "subsistence"
+    "subsistence farming"
    ],
    "taughtIn": "production-regions",
    "dependsOn": [
@@ -5093,8 +5105,11 @@
    "id": "economies-of-scale",
    "term": "economies of scale",
    "aliases": [],
-   "taughtIn": "farm-organization",
-   "dependsOn": []
+   "taughtIn": "sovereignty-challenges",
+   "dependsOn": [],
+   "fullIn": [
+    "farm-organization"
+   ]
   },
   {
    "id": "von-thunen-model",
@@ -5589,9 +5604,10 @@
    "id": "infrastructure",
    "term": "infrastructure",
    "aliases": [],
-   "taughtIn": "infrastructure",
-   "dependsOn": [
-    "city"
+   "taughtIn": "centrifugal-centripetal",
+   "dependsOn": [],
+   "fullIn": [
+    "infrastructure"
    ]
   },
   {
@@ -6089,8 +6105,11 @@
    "aliases": [
     "tariffs"
    ],
-   "taughtIn": "trade-world-economy",
-   "dependsOn": []
+   "taughtIn": "sovereignty-challenges",
+   "dependsOn": [],
+   "fullIn": [
+    "trade-world-economy"
+   ]
   },
   {
    "id": "imf",
@@ -6243,5 +6262,65 @@
    ]
   }
  ],
- "circularDependencies": []
+ "circularDependencies": [
+  {
+   "id": "colonialism-in-1-7",
+   "concepts": [
+    "colonialism"
+   ],
+   "resolution": "pull-forward",
+   "into": [
+    "human-environment"
+   ],
+   "fullIn": [
+    "diffusion-history"
+   ],
+   "problem": "Environmental determinism (1.7) is taught with its history: it was used to argue for colonial rule. Colonialism is taught in 3.6.",
+   "detail": "1.7 defines colonialism in one line (rule of one country over another territory and its people) where determinism is criticized; 3.6 teaches it with diffusion, 4.2 and 4.3 build on it. Integration pass 2026-11-09."
+  },
+  {
+   "id": "scale-and-tariffs-in-4-9",
+   "concepts": [
+    "economies-of-scale",
+    "tariff"
+   ],
+   "resolution": "pull-forward",
+   "into": [
+    "sovereignty-challenges"
+   ],
+   "fullIn": [
+    "farm-organization",
+    "trade-world-economy"
+   ],
+   "problem": "The CED names economies of scale and trade deals as drivers of supranationalism (4.9), and a Unit 4 FRQ needs tariffs (members of a supranational union drop them). Economies of scale was taught in 5.7, tariffs in 7.6.",
+   "detail": "4.9 defines both in a line (a larger market lowers the cost of each unit; a tariff is a tax on imports); 5.7 and 7.6 teach them in full. \"Trade deals\" is not a course term and needs nothing; \"trade agreement\" and \"trade bloc\" stay in 7.6. Integration pass 2026-11-09."
+  },
+  {
+   "id": "infrastructure-in-4-10",
+   "concepts": [
+    "infrastructure"
+   ],
+   "resolution": "pull-forward",
+   "into": [
+    "centrifugal-centripetal"
+   ],
+   "fullIn": [
+    "infrastructure"
+   ],
+   "problem": "The CED names fairer infrastructure as a centripetal outcome (4.10) and food distribution shaped by infrastructure (5.9); infrastructure was taught in 6.7.",
+   "detail": "4.10 defines infrastructure in a line (roads, rail, power, water and communication lines a place depends on); 6.7 teaches how its location and quality shape development. It no longer depends on \"city\". Integration pass 2026-11-09."
+  },
+  {
+   "id": "industrial-revolution-in-5-4",
+   "concepts": [
+    "industrialization"
+   ],
+   "resolution": "preview",
+   "into": [
+    "second-agricultural-revolution"
+   ],
+   "problem": "The Second Agricultural Revolution (5.4) happened with the Industrial Revolution, which is taught in 7.1.",
+   "detail": "5.4 carries a preview box (class \"hug-preview\", data-concept \"industrialization\") naming the Industrial Revolution in two sentences; the term is used only inside it. Integration pass 2026-11-09."
+  }
+ ]
 }

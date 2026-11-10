@@ -15,13 +15,20 @@
        pieces: [{ id, text }]   more pieces than slots = distractors
        key: { slotId: pieceId },
        slips?: [{ piece, slot, why }]   authored feedback for one wrong placement
+       groups?: [[slotId, ...], ...]   interchangeable slots: a piece keyed to
+               any slot of a group is right in any slot of that group (sort
+               centripetal and centrifugal forces into two columns, say)
        figure?: 'figure-id' (free: the drawing the slots sit on) }
+   A free layout draws a numbered badge at each slot's box on the figure and
+   lists the places under it, like the other layouts (so nothing overlaps on
+   a 360 px phone); the figure HTML comes from the caller (html's third
+   argument: a bank item's modelFigure, a drill step's figureHtml).
 
    Pure (node and browser):
      check(model) -> problems[]
      grade(model, placed) -> { valid, correct, right, total, score, results: [{ slot, piece, ok, why }], slip }
      slotName(model, i) -> 'Ring 2' etc.;  artSvg(model) -> the drawing (numbers only, no words)
-     html(model, id) -> the static markup (no script needed to read it)
+     html(model, id, figureHtml?) -> the static markup (no script needed to read it)
    DOM (browser):
      mount(el, model, { onChange }) -> { get(), set(placed), lock(result), reset() }
        tap or click a piece, then a slot (or Enter and Space on each: every
@@ -61,10 +68,19 @@
     var used = {};
     slots.forEach(function(s){ var k = key[s.id]; if(!k) p('slot "' + s.id + '" has no key'); else if(!pid[k]) p('slot "' + s.id + '" is keyed to unknown piece "' + k + '"'); else if(used[k]) p('piece "' + k + '" is the key of two slots'); used[k] = 1; });
     Object.keys(key).forEach(function(k){ if(!sid[k]) p('key names unknown slot "' + k + '"'); });
-    (m.slips || []).forEach(function(s){ if(!pid[s.piece] || !sid[s.slot] || !s.why) p('a slip names a piece, a slot and why'); if(key[s.slot] === s.piece) p('slip "' + s.why + '" is the right answer'); });
+    var inGroup = {};
+    (m.groups || []).forEach(function(g){
+      if(!Array.isArray(g) || g.length < 2) p('a group lists at least two slots');
+      (g || []).forEach(function(x){ if(!sid[x]) p('group names unknown slot "' + x + '"'); if(inGroup[x]) p('slot "' + x + '" is in two groups'); inGroup[x] = g; });
+    });
+    (m.slips || []).forEach(function(s){ if(!pid[s.piece] || !sid[s.slot] || !s.why) p('a slip names a piece, a slot and why'); if(accepts(m, s.slot, s.piece)) p('slip "' + s.why + '" is the right answer'); });
     if((m.layout === 'rings' || m.layout === 'sectors') && m.center && plain(m.center).length > 14) p('center label "' + m.center + '" is longer than 14 characters');
     return out;
   }
+
+  function groupOf(m, slotId){ var gs = m.groups || []; for(var i = 0; i < gs.length; i++) if(gs[i].indexOf(slotId) > -1) return gs[i]; return [slotId]; }
+  /* Is piece right in slot (its own key, or the key of a slot in its group)? */
+  function accepts(m, slotId, pieceId){ return pieceId != null && groupOf(m, slotId).some(function(x){ return m.key[x] === pieceId; }); }
 
   /* placed: { slotId: pieceId }. */
   function grade(m, placed){
@@ -72,7 +88,7 @@
     var results = [], right = 0, slip = null, idx = {}, keyOf = {};
     m.slots.forEach(function(s, i){ idx[s.id] = i; keyOf[m.key[s.id]] = s.id; });
     m.slots.forEach(function(s, i){
-      var got = placed[s.id], ok = got != null && got === m.key[s.id], why = '';
+      var got = placed[s.id], ok = accepts(m, s.id, got), why = '';
       if(ok) right++;
       else if(got == null) why = 'Nothing is placed in ' + slotName(m, i) + '.';
       else {
@@ -80,6 +96,7 @@
         var home = keyOf[got];
         if(authored) why = authored.why;
         else if(home == null) why = plain(pieceText(m, got)) + ' is not part of this model.';
+        else if(m.groups && m.groups.length && groupOf(m, home).length > 1) why = plain(pieceText(m, got)) + ' belongs with ' + groupOf(m, home).map(function(x){ return slotName(m, idx[x]); }).join(' or ') + ', not ' + slotName(m, i) + '.';
         else if(placed[home] === m.key[s.id]) why = plain(pieceText(m, got)) + ' and ' + plain(pieceText(m, m.key[s.id])) + ' are swapped.';
         else if(Math.abs(idx[home] - i) === 1 && m.layout !== 'free') why = plain(pieceText(m, got)) + ' is one ' + (m.unit || UNIT[m.layout]) + ' off: it belongs in ' + slotName(m, idx[home]) + '.';
         else why = plain(pieceText(m, got)) + ' belongs in ' + slotName(m, idx[home]) + ', not ' + slotName(m, i) + '.';
@@ -120,15 +137,23 @@
 
   function html(m, id, figureHtml){
     id = id || 'mdl';
+    var free = m.layout === 'free';
     var slots = m.slots.map(function(s, i){
       var nm = esc(slotName(m, i));
-      var style = m.layout === 'free' ? ' style="left:' + s.box[0] + '%;top:' + s.box[1] + '%;width:' + s.box[2] + '%;height:' + s.box[3] + '%"' : '';
-      return '<li class="hug-model-row" data-slot="' + esc(s.id) + '"' + style + '><span class="hug-model-sn" id="' + id + '-sn' + i + '">' + nm + '</span><button type="button" class="hug-model-slot" data-slot="' + esc(s.id) + '" aria-describedby="' + id + '-sn' + i + '"><span class="hug-model-ph">Place here</span></button><span class="hug-model-why" aria-live="polite"></span></li>';
+      // A free slot's list row carries its badge number, so the name and
+      // the number on the drawing match even when the name is authored.
+      var badge = free ? '<span class="hug-model-badge" aria-hidden="true">' + (i + 1) + '</span>' : '';
+      return '<li class="hug-model-row" data-slot="' + esc(s.id) + '">' + badge + '<span class="hug-model-sn" id="' + id + '-sn' + i + '">' + nm + '</span><button type="button" class="hug-model-slot" data-slot="' + esc(s.id) + '" aria-describedby="' + id + '-sn' + i + '"><span class="hug-model-ph">Place here</span></button><span class="hug-model-why" aria-live="polite"></span></li>';
     }).join('');
     var pieces = m.pieces.map(function(x){ return '<button type="button" class="hug-model-piece" data-piece="' + esc(x.id) + '" aria-pressed="false">' + x.text + '</button>'; }).join('');
-    var art = m.layout === 'free' ? '<div class="hug-model-fig">' + (figureHtml || '') + '<ol class="hug-model-spots">' + slots + '</ol></div>' : '<div class="hug-model-art">' + artSvg(m) + '</div>';
+    // Free: numbered badges centered in each box on the figure (numbers only,
+    // so they stay legible however small the drawing gets); the places are
+    // the list under it.
+    var spots = free ? m.slots.map(function(s, i){ return '<span class="hug-model-spot" aria-hidden="true" style="left:' + r1(s.box[0] + s.box[2] / 2) + '%;top:' + r1(s.box[1] + s.box[3] / 2) + '%">' + (i + 1) + '</span>'; }).join('') : '';
+    // With no figure (a trainer that draws it on its stage) only the list shows.
+    var art = free ? (figureHtml ? '<div class="hug-model-fig">' + figureHtml + spots + '</div>' : '') : '<div class="hug-model-art">' + artSvg(m) + '</div>';
     return '<div class="hug-model" data-layout="' + esc(m.layout) + '" id="' + id + '">' + (m.title ? '<p class="hug-model-title">' + esc(m.title) + '</p>' : '') +
-      '<div class="hug-model-grid">' + art + (m.layout === 'free' ? '' : '<ol class="hug-model-slots">' + slots + '</ol>') + '</div>' +
+      '<div class="hug-model-grid">' + art + '<ol class="hug-model-slots">' + slots + '</ol></div>' +
       '<p class="hug-small hug-model-help">Pick a piece, then the place it belongs. Drag works too. Pick a filled place to take its piece back.</p>' +
       '<div class="hug-model-tray" role="group" aria-label="Pieces to place">' + pieces + '</div></div>';
   }
@@ -221,5 +246,5 @@
     };
   }
 
-  root.ApHugModel = { LAYOUTS: LAYOUTS, check: check, grade: grade, slotName: slotName, artSvg: artSvg, html: html, mount: mount, pieceText: pieceText };
+  root.ApHugModel = { LAYOUTS: LAYOUTS, check: check, grade: grade, accepts: accepts, slotName: slotName, artSvg: artSvg, html: html, mount: mount, pieceText: pieceText };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -81,3 +81,37 @@ test('the question engine grades a model item through the same grader', () => {
   assert.equal(g.slip, 'Ranching and Grain are swapped.');
   assert.equal(Q.grade(q, rings().key).correct, true);
 });
+
+test('a free layout: numbered badges on the figure and the places listed under it (nothing laid over the drawing)', () => {
+  const m = { layout: 'free', title: 'Multiple nuclei', slots: [{ id: 'a', box: [10, 10, 20, 10] }, { id: 'b', name: 'Spot by the airport', box: [60, 70, 20, 10] }],
+    pieces: [{ id: 'cbd', text: 'Central business district' }, { id: 'ind', text: 'Heavy industry' }], key: { a: 'cbd', b: 'ind' } };
+  assert.deepEqual([...M.check(m)], []);
+  const fig = '<div class="hug-figimg"><img src="figures/x.svg" alt="A drawn city"></div>';
+  const h = M.html(m, 'mdl-f', fig);
+  assert.ok(h.includes(fig), 'the figure is drawn');
+  assert.equal((h.match(/class="hug-model-spot" aria-hidden="true" style="left:20%;top:15%">1</g) || []).length, 1, 'badge 1 centered in its box');
+  assert.match(h, /class="hug-model-spot" aria-hidden="true" style="left:70%;top:75%">2</);
+  assert.doesNotMatch(h, /<li[^>]*style=/, 'no place is positioned over the figure');
+  assert.match(h, /<ol class="hug-model-slots">[\s\S]*hug-model-badge[^>]*>1<[\s\S]*Spot 1[\s\S]*Spot by the airport/, 'the list carries the same numbers and the names');
+  assert.equal((h.match(/class="hug-model-slot"/g) || []).length, 2);
+  // A trainer that draws the figure on its own stage passes none: only the list shows.
+  const bare = M.html(m, 'mdl-g');
+  assert.doesNotMatch(bare, /hug-model-fig|hug-model-spot/);
+  assert.match(bare, /hug-model-slots/);
+});
+
+test('interchangeable slots: a group accepts its pieces in any order, and a piece in the wrong group is named', () => {
+  const m = { layout: 'tiers', unit: 'column', slots: [{ id: 'p1', name: 'Centripetal 1' }, { id: 'p2', name: 'Centripetal 2' }, { id: 'f1', name: 'Centrifugal 1' }, { id: 'f2', name: 'Centrifugal 2' }],
+    pieces: [{ id: 'lang', text: 'A shared language' }, { id: 'flag', text: 'A national holiday' }, { id: 'sep', text: 'A separatist movement' }, { id: 'reg', text: 'Uneven regional wealth' }],
+    key: { p1: 'lang', p2: 'flag', f1: 'sep', f2: 'reg' }, groups: [['p1', 'p2'], ['f1', 'f2']] };
+  assert.deepEqual([...M.check(m)], []);
+  assert.equal(M.grade(m, { p1: 'flag', p2: 'lang', f1: 'reg', f2: 'sep' }).correct, true, 'any order inside a group');
+  const g = M.grade(m, { p1: 'sep', p2: 'lang', f1: 'flag', f2: 'reg' });
+  assert.equal(g.right, 2);
+  assert.match(g.slip, /A separatist movement belongs with Centrifugal 1 or Centrifugal 2, not Centripetal 1/);
+  const bad = edit => { const x = JSON.parse(JSON.stringify(m)); edit(x); return M.check(x); };
+  assert.ok(bad(x => { x.groups = [['p1']]; }).some(p => /at least two slots/.test(p)));
+  assert.ok(bad(x => { x.groups = [['p1', 'zz']]; }).some(p => /unknown slot "zz"/.test(p)));
+  assert.ok(bad(x => { x.groups = [['p1', 'p2'], ['p2', 'f1']]; }).some(p => /in two groups/.test(p)));
+  assert.ok(bad(x => { x.slips = [{ piece: 'flag', slot: 'p1', why: 'x' }]; }).some(p => /is the right answer/.test(p)), 'a slip that a group accepts is refused');
+});

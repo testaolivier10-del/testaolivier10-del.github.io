@@ -41,19 +41,18 @@
   {
    "label": "B",
    "verb": "identify",
-   "prompt": "Identify the two rates used to calculate a country’s rate of natural increase (RNI).",
+   "prompt": "Identify the TFR known as replacement-level fertility in a country where few children die.",
    "points": 1,
    "rubric": [
     {
-     "point": "Names the crude birth rate and the crude death rate (both needed).",
+     "point": "Gives about 2.1 births per woman (replacement level).",
      "accept": [
-      "Crude birth rate and crude death rate",
-      "CBR and CDR",
-      "Births per 1,000 and deaths per 1,000"
+      "About 2.1",
+      "About two children per woman, a little over 2"
      ]
     }
    ],
-   "sample": "The crude birth rate and the crude death rate."
+   "sample": "About 2.1 births per woman."
   },
   {
    "label": "C",
@@ -66,7 +65,7 @@
      "accept": [
       "Many young adults from past high fertility still have children, so births exceed deaths",
       "A young age structure keeps births above deaths (population momentum)",
-      "Deaths stay low because the population is young"
+      "A young population keeps deaths low while many couples still have children, so births exceed deaths"
      ]
     }
    ],

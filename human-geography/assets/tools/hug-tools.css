@@ -342,3 +342,9 @@ body[data-app^="tool-"] .hug-hero .eyebrow{margin-bottom:4px;}
 /* The course crumb hides in the studio from assets/course/tool-studio.css, with the other courses' crumbs. */
 /* Room for the first-run tip while it shows (ApHugTools.hintSlot). */
 .hug-tipslot{height:58px;flex:none;}
+/* The model item in the Tool Studio dock: the dock is narrow at every
+   viewport width, so the places list sits under the drawing (hug.css puts
+   them side by side from 640 px, which is right on a lesson page only). */
+.ls-root .hug-model-grid{grid-template-columns:minmax(0,1fr);}
+.ls-root .hug-model-art{max-width:220px;}
+.ls-root .hug-model[data-layout="stages"] .hug-model-art{max-width:260px;}

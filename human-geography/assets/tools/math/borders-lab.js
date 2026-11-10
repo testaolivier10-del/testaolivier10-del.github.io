@@ -189,7 +189,7 @@
     var s2 = choice('extra', 'A boundary can fit more than one type. Which other type does this one fit?', EXTRA.map(function(k){
       return opt(BTYPES[k].name, k === extra, k === extra ? BTYPES[k].def : EXTRA_SLIP[extra][k]);
     }), '1.D', 'analyze', true);
-    var s3 = choice('function', 'What does this border most likely do today?', relictOrNot(extra), '2.B', 'analyze');
+    var s3 = choice('function', 'What does this border do at the end of the story?', relictOrNot(extra), '2.B', 'analyze');
     return {
       type: 'boundary', ctx: ctx.id, topic: ctx.topic, given: f,
       text: '<p>Invented case. ' + story(f).join(' ') + '</p>',

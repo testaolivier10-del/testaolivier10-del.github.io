@@ -12,7 +12,7 @@
 
    This file holds ONLY what every trainer shares. Each trainer's model lives
    in its own file, human-geography/assets/tools/math/<slug>.js, which
-   registers ApHugMath.<camelSlug> (brain-map -> ApHugMath.brainMap), so
+   registers ApHugMath.<camelSlug> (model-studio -> ApHugMath.modelStudio), so
    tool builders never edit the same file. The generator loads this file,
    then the tool's model file, on the tool's page.
 
@@ -86,7 +86,7 @@
     if(!A) return { ok: false };
     if(near(x * 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too small. A percent is the fraction times 100.' };
     if(near(x / 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
-    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Below the mean, a z score is negative.' };
+    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong.' };
     if(near(x, A, Math.max(10 * r, 0.02), 10 * (ab || 0))) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
     return { ok: false };
   }

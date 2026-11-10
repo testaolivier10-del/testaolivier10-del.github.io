@@ -397,7 +397,7 @@
    "diff": 3,
    "type": "single",
    "practice": "1.E",
-   "q": "In 1943, millions died of famine in Bengal, then part of British India, although food production that year was not unusually low. Which critique of Malthus does this support?",
+   "q": "In 1943, millions died of famine in Bengal, then part of British India, although, by the economist Amartya Sen’s count, the food supply that year was not unusually low. Which critique of Malthus does this support?",
    "options": [
     "Population grows faster than food in each region of a country",
     "Technology raised food output faster than population there",
@@ -478,11 +478,11 @@
     "pieces": [
      {
       "id": "pop",
-      "text": "Population grows geometrically"
+      "text": "People multiply; food adds fixed steps"
      },
      {
       "id": "food",
-      "text": "Food grows arithmetically"
+      "text": "Food per person falls; hunger spreads"
      },
      {
       "id": "gap",
@@ -499,8 +499,8 @@
     ],
     "key": {
      "m1": "pop",
-     "m2": "food",
-     "m3": "gap",
+     "m2": "gap",
+     "m3": "food",
      "m4": "chk"
     },
     "slips": [
@@ -512,7 +512,7 @@
     ]
    },
    "why": {
-    "correct": "Malthus: population multiplies, food adds, population outruns food, then checks (famine, disease, war) bring population back down. Technology is a critique, not a step."
+    "correct": "Malthus: population multiplies while food adds fixed steps, so population outruns food, food per person falls, then checks (famine, disease, war) bring population back down. Technology is a critique, not a step."
    }
   },
   {

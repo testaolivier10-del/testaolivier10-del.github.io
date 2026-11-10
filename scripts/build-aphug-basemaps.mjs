@@ -9,8 +9,15 @@
    time (Douglas-Peucker in pixels) and rounded to 0.1 px. Also writes
    `country-a.json`, an invented country with eight provinces for practice at
    the national and local scale (spec section 4: invented data on real or
-   plainly invented outlines). Antarctica and the French Southern and
-   Antarctic Lands are left off.
+   plainly invented outlines), and `metro.json`, an invented metropolitan area
+   (a central city inside its city limit, eight suburban cities, the rural
+   edge, a river, a rail line with stations, a ring highway and a radial
+   highway) for Unit 6 maps at the local scale. Both invented bases give each
+   area a short `code` for map labels (spec `labels: 'codes'`). Antarctica
+   and the French Southern and Antarctic Lands are left off.
+
+   countryA() and metroBase() need no atlas: `--invented` rewrites only those
+   two files (or checks them with --check).
 
    The files are committed; nothing fetches the atlas at page or build time.
    To rebuild them (only when this script changes):
@@ -32,6 +39,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'human-geography', 'figures', 'base');
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
+const INVENTED_ONLY = args.includes('--invented');
 const ATLAS = args.includes('--atlas') ? args[args.indexOf('--atlas') + 1] : join(ROOT, 'node_modules', 'world-atlas', 'countries-110m.json');
 const SOURCE = 'Natural Earth 1:110m Admin 0 countries, version 4.1.0 (public domain), via the world-atlas package 2.0.2';
 
@@ -155,7 +163,7 @@ function makeBase(id, title, countries, { width, box, members, tol = 0.45 }) {
 }
 
 /* Country A: invented, eight provinces on a 600 x 400 plane (no projection). */
-function countryA() {
+export function countryA() {
   const P = {
     north: [[60, 40], [250, 20], [300, 120], [180, 160], [70, 140]],
     northeast: [[250, 20], [470, 30], [520, 110], [400, 150], [300, 120]],
@@ -167,11 +175,58 @@ function countryA() {
     coast: [[320, 270], [430, 260], [560, 230], [540, 340], [300, 370]],
   };
   const NAMES_A = { north: 'Northern Hills', northeast: 'Lake District', east: 'Eastern Plains', capital: 'Capital Region', west: 'Western Uplands', central: 'Central Valley', south: 'Southern Forest', coast: 'South Coast' };
-  const features = Object.entries(P).map(([id, pts]) => ({ id, name: NAMES_A[id], d: 'M' + pts.map(p => p.join(' ')).join('L') + 'Z', c: centroid(pts).map(r1) }));
+  const CODE_A = { north: 'NH', northeast: 'LD', east: 'EP', capital: 'CR', west: 'WU', central: 'CV', south: 'SF', coast: 'SC' };
+  const features = Object.entries(P).map(([id, pts]) => ({ id, name: NAMES_A[id], code: CODE_A[id], d: 'M' + pts.map(p => p.join(' ')).join('L') + 'Z', c: centroid(pts).map(r1) }));
   return { id: 'country-a', title: 'Country A (invented)', width: 600, height: 400, projection: { name: 'none' }, invented: true, source: 'Invented outline for practice', features };
 }
 
+/* The metro: an invented metropolitan area on a 600 x 420 plane (no
+   projection). Eight suburban cities are wedges between the central city's
+   limit and the edge of the built-up area; outside it, the rural fringe (a
+   context area, drawn grey). Lines (`line`: river, rail, highway) and rail
+   stations (`station`) are features too, so marks can point at them; the
+   central city carries `limit: true` (its city limit is drawn bold). */
+export function metroBase() {
+  const C = [300, 215], ang = k => (-112.5 + 45 * k) * Math.PI / 180;
+  // Radii per direction (N, NE, E, SE, S, SW, W, NW from the top), uneven on purpose.
+  const RI = [80, 92, 86, 78, 84, 90, 82, 88], RO = [190, 205, 250, 215, 185, 200, 245, 210];
+  const pt = (r, k) => [r1(C[0] + r * Math.cos(ang(k))), r1(C[1] + 0.82 * r * Math.sin(ang(k)))];
+  const inner = RI.map((r, k) => pt(r, k)), outer = RO.map((r, k) => pt(r, k));
+  const SUB = [
+    ['northfield', 'Northfield', 'NF'], ['lakeview', 'Lakeview', 'LV'], ['eastgate', 'Eastgate', 'EG'], ['millbrook', 'Millbrook', 'MB'],
+    ['southport', 'Southport', 'SP'], ['ashford', 'Ashford', 'AF'], ['westhill', 'Westhill', 'WH'], ['fairview', 'Fairview', 'FV'],
+  ];
+  const ring = pts => 'M' + pts.map(p => p.join(' ')).join('L') + 'Z';
+  const features = [];
+  // The rural fringe: the frame minus the built-up area (even-odd fill).
+  features.push({ id: 'rural', name: 'Rural fringe', code: 'RF', context: true, evenodd: true, d: 'M0 0L600 0L600 420L0 420Z' + ring(outer), c: [40, 30] });
+  features.push({ id: 'central-city', name: 'Central City', code: 'CC', limit: true, d: ring(inner), c: centroid(inner).map(r1) });
+  SUB.forEach(([id, name, code], k) => {
+    const pts = [inner[k], outer[k], outer[(k + 1) % 8], inner[(k + 1) % 8]];
+    features.push({ id, name, code, d: ring(pts), c: centroid(pts).map(r1) });
+  });
+  const line = (id, name, kind, pts, curve) => features.push({ id, name, line: kind, d: curve || ('M' + pts.map(p => p.join(' ')).join('L')), c: pts[Math.floor(pts.length / 2)] });
+  line('river', 'River', 'river', [[0, 262], [150, 250], [300, 242], [450, 205], [600, 214]], 'M0 262C90 268 160 236 230 246S360 252 420 214S540 200 600 214');
+  line('rail', 'Rail line', 'rail', [[90, 60], [190, 120], [300, 215], [400, 290], [520, 380]]);
+  line('ring-road', 'Ring highway', 'highway', [[300, 100]], ring([[300, 98], [415, 135], [445, 215], [410, 300], [300, 330], [190, 300], [155, 215], [190, 132]]));
+  line('highway-west', 'Western highway', 'highway', [[0, 190], [80, 196], [155, 215]]);
+  [[190, 120], [245, 167], [300, 215], [355, 256], [400, 290], [470, 342]].forEach((c, i) => features.push({ id: `station-${i + 1}`, name: `Station ${i + 1}`, station: true, c }));
+  return { id: 'metro', title: 'An invented metropolitan area', width: 600, height: 420, projection: { name: 'none' }, invented: true, note: 'An invented metropolitan area for practice.', source: 'Invented metropolitan area for practice', features };
+}
+
+function writeOut(files) {
+  let stale = 0;
+  mkdirSync(OUT, { recursive: true });
+  for (const [f, data] of Object.entries(files)) {
+    const out = JSON.stringify(data) + '\n', p = join(OUT, f);
+    if (CHECK) { if (!existsSync(p) || readFileSync(p, 'utf8') !== out) { console.error(`stale: human-geography/figures/base/${f}`); stale++; } }
+    else { writeFileSync(p, out); console.log(`${f}: ${data.features.length} features, ${(out.length / 1024).toFixed(1)} KB`); }
+  }
+  if (stale) process.exit(1);
+}
+
 function run() {
+  if (INVENTED_ONLY) return writeOut({ 'country-a.json': countryA(), 'metro.json': metroBase() });
   if (!existsSync(ATLAS)) { console.error(`build-aphug-basemaps: no atlas at ${ATLAS} (see the header for how to get world-atlas 2.0.2)`); process.exit(2); }
   const topo = JSON.parse(readFileSync(ATLAS, 'utf8'));
   const regionOf = new Map(Object.entries(REGIONS).flatMap(([r, v]) => v.members.map(m => [m, r])));
@@ -191,13 +246,7 @@ function run() {
   const files = { 'world.json': makeBase('world', 'World', countries, { width: 1000, box: BOX.world, tol: 0.6 }) };
   for (const [r, v] of Object.entries(REGIONS)) files[`${r}.json`] = makeBase(r, v.title, countries, { width: 600, box: BOX[r], members: v.members, tol: 0.5 });
   files['country-a.json'] = countryA();
-  let stale = 0;
-  mkdirSync(OUT, { recursive: true });
-  for (const [f, data] of Object.entries(files)) {
-    const out = JSON.stringify(data) + '\n', p = join(OUT, f);
-    if (CHECK) { if (!existsSync(p) || readFileSync(p, 'utf8') !== out) { console.error(`stale: human-geography/figures/base/${f}`); stale++; } }
-    else { writeFileSync(p, out); console.log(`${f}: ${data.features.length} features, ${(out.length / 1024).toFixed(1)} KB`); }
-  }
-  if (stale) process.exit(1);
+  files['metro.json'] = metroBase();
+  writeOut(files);
 }
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) run();

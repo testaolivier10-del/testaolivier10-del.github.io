@@ -2,7 +2,7 @@
  "id": "frq-supranational-none",
  "type": "none",
  "points": 7,
- "title": "Supranational organizations and sovereignty: what members gain and give up",
+ "title": "Joining a customs union and a shared currency: what a member state gains and gives up",
  "units": [
   "unit-2",
   "unit-4"
@@ -22,22 +22,20 @@
   {
    "label": "A",
    "verb": "identify",
-   "prompt": "Identify one supranational organization and one function it carries out.",
+   "prompt": "Identify ONE power over its own economy that a state gives up when it adopts a currency shared with other states.",
    "points": 1,
    "rubric": [
     {
-     "point": "Names a real supranational organization and a correct function of it.",
+     "point": "Names a power such as printing its own money, setting its own interest rates or running its own monetary policy.",
      "accept": [
-      "NATO: shared defense",
-      "EU: single market, shared laws or free movement of people",
-      "UN: peace and security",
-      "African Union: peace and security in Africa",
-      "ASEAN: cooperation in Southeast Asia",
-      "Arctic Council: protecting the Arctic environment"
+      "setting its own interest rates",
+      "printing its own money",
+      "control of its money supply or monetary policy",
+      "changing the value of its currency"
      ]
     }
    ],
-   "sample": "NATO: its members defend each other, treating an armed attack on one member as an attack on all."
+   "sample": "A state that adopts a shared currency, as members of the euro area did, gives up the power to set its own interest rates, because a shared central bank sets them for every member."
   },
   {
    "label": "B",
@@ -58,38 +56,35 @@
   {
    "label": "C",
    "verb": "describe",
-   "prompt": "Describe one way membership in a supranational organization limits a member state's sovereignty.",
+   "prompt": "Describe ONE way a customs union changes trade between its member states.",
    "points": 1,
    "rubric": [
     {
-     "point": "Describes a real limit: shared laws, court rulings, open borders, binding decisions, suspension or intervention.",
+     "point": "Describes a real change: taxes and limits on goods traded between members are removed, or members charge one shared tax on imports from outside.",
      "accept": [
-      "EU members follow EU laws and court rulings",
-      "EU members must allow free movement of people",
-      "UN members must carry out Security Council decisions",
-      "NATO members commit to defend others",
-      "the African Union can suspend a member after a coup"
+      "members stop taxing each other's goods at the border",
+      "goods cross members' borders without customs duties",
+      "members set one shared tax on imports from outside the union"
      ]
     }
    ],
-   "sample": "Members of the European Union must follow EU laws and the rulings of the EU court in shared areas such as rules for goods sold in the single market, so their own parliaments cannot pass laws that conflict with them."
+   "sample": "In a customs union, member states remove the taxes they charged on each other's goods at the border, so a factory in one member can sell in the others without paying duties at the border."
   },
   {
    "label": "D",
    "verb": "explain",
-   "prompt": "Explain one economic reason a state joins a supranational organization.",
+   "prompt": "Explain why farmers in a small state might oppose joining a customs union with larger, wealthier neighbors.",
    "points": 1,
    "rubric": [
     {
-     "point": "Gives an economic gain and links it to the state's benefit (for example, a larger market leads to more sales and jobs).",
+     "point": "Explains a cost with its link: without import taxes, cheaper food from large commercial farms in the neighbors enters freely, so local farmers lose sales or income.",
      "accept": [
-      "a larger market with no customs checks, so more sales and jobs",
-      "easier movement of goods, so lower costs",
-      "shared funds for poorer regions, so new roads and services"
+      "taxes on food imports end, so cheaper produce from big commercial farms undercuts small local farms",
+      "the state can no longer protect its farmers with import taxes, so they face more competition and may lose income"
      ]
     }
    ],
-   "sample": "A state joins the European Union because its firms can then sell to customers in every member state without customs checks, so they reach a much larger market, which can raise their sales and create jobs at home."
+   "sample": "Joining would end the import taxes that protect the small state's farms. Food from the neighbors' large commercial farms, which produce more cheaply, could then be sold freely in the small state, so local farmers could lose sales and income, and some could be forced to give up farming."
   },
   {
    "label": "E",
@@ -127,19 +122,19 @@
   {
    "label": "G",
    "verb": "explain-degree",
-   "prompt": "Explain the degree to which supranational organizations weaken the sovereignty of their member states.",
+   "prompt": "Explain the degree to which a member state can protect its own language and culture while belonging to a supranational organization.",
    "points": 1,
    "rubric": [
     {
-     "point": "States a degree, then supports it with a reason (for example, decisions are shared but members keep most powers and can leave).",
+     "point": "States a degree, then supports it with a reason (for example, the organization deals with trade and law but leaves schooling, language and religion to members, while free movement and shared media still spread outside culture).",
      "accept": [
-      "to a moderate degree: members share some decisions but keep most powers and can leave",
-      "to a high degree: EU law overrides national law in shared areas",
-      "to a low degree: bodies such as the Arctic Council act only with every member's agreement"
+      "to a high degree: education, language and cultural policy usually stay national decisions",
+      "to a moderate degree: the state keeps control of schools and official languages, but open borders and a single market spread other cultures",
+      "to a low degree: shared rules on trade and media limit how much a state can protect its own culture"
      ]
     }
    ],
-   "sample": "To a moderate degree: members share some decisions, such as EU laws in shared areas, but they keep control of most matters, such as their armies and taxes, and they can leave, as the United Kingdom did in 2020, so sovereignty is pooled rather than lost."
+   "sample": "To a moderate degree. Most supranational organizations, such as the European Union, leave schooling, official languages and religion to each member, so a state can still require its own language in schools and public life. However, free movement of people and a single market for goods, films and online services bring other languages and cultures in, which the state cannot easily keep out."
   }
  ]
 }

@@ -67,9 +67,6 @@
    laid over a figure) and the item's own small drawing is left out. */
 .ms-page .hug-model-grid{grid-template-columns:minmax(0,1fr);}
 .ms-page .hug-model .hug-model-art{display:none;}
-.ms-page .hug-model-fig{position:static;}
-.ms-page .hug-model-spots{display:grid;gap:8px;}
-.ms-page .hug-model-spots .hug-model-row{position:static !important;width:auto !important;height:auto !important;left:auto !important;top:auto !important;}
 .ms-page .ms-fig-art .hug-model-art{display:block;}
 .ms-page .hug-model-tray{margin-top:4px;}
 @media (prefers-reduced-motion:reduce){.ms-badge{transition:none;}}

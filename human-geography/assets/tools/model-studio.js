@@ -22,34 +22,20 @@
   if(!T || !M || !M.modelStudio || M.modelStudio.stub || !Mdl) return;
   var MS = M.modelStudio, esc = T.esc, SLUG = 'model-studio';
   try{ document.body.classList.add('ms-page'); }catch(e){}
-  /* Local workaround (requested of the lead, report "Requests"): drill()
-     mounts a model step before it declares its feedback node, and
-     ApHugModel.mount calls onChange on its first paint, so the first paint
-     throws. Until hug-tools.js is fixed, this page skips that first call. */
-  if(!Mdl.mount.msWrapped){
-    var mount0 = Mdl.mount;
-    Mdl.mount = function(el, m, o){
-      var ready = false, oc = o && o.onChange, o2 = {};
-      Object.keys(o || {}).forEach(function(k){ o2[k] = o[k]; });
-      o2.onChange = function(p){ if(ready && oc) oc(p); };
-      var api = mount0(el, m, o2); ready = true; return api;
-    };
-    Mdl.mount.msWrapped = true;
-  }
 
   function core(){ return window.ApHugCore; }
-  function locked(ctx){ var c = core(); if(ctx && ctx.free) return false; try{ return !!(c && c.locked && c.locked(c.unitOf ? c.unitOf(ctx.topic) : '', ctx.topic)); }catch(e){ return false; } }
+  /* Spec section 6: free is Explore plus the drills of a context marked
+     free (the demographic transition only). Every other drill is Premium
+     even when its topic's lesson is free (the epidemiological transition
+     sits on topic 2.5 too), so the gate is the whole-tool one: locked()
+     with no unit is true for a free user once Premium has launched. */
+  function locked(ctx){ var c = core(); if(ctx && ctx.free) return false; try{ return !!(c && c.locked && c.locked()); }catch(e){ return false; } }
   function lower(s){ return s.charAt(0).toLowerCase() + s.slice(1); }
 
   /* Base maps, fetched once each and only when a case needs one. */
-  var bases = {}, mapLib = null;
-  /* Local workaround (requested of the lead): the tool page does not load
-     hug-map.js, so this page loads it the first time a case has a map. */
-  function needMap(){
-    if(window.ApHugMap) return Promise.resolve(window.ApHugMap);
-    if(!mapLib) mapLib = new Promise(function(ok, no){ var sc = document.createElement('script'); sc.src = (window.ApHugBase || '../') + 'assets/hug-map.js'; sc.onload = function(){ ok(window.ApHugMap); }; sc.onerror = no; document.head.appendChild(sc); });
-    return mapLib;
-  }
+  var bases = {};
+  /* The tool page loads hug-map.js (build-aphug.mjs toolShell). */
+  function needMap(){ return Promise.resolve(window.ApHugMap); }
   function baseOf(id){
     if(!bases[id]) bases[id] = needMap().then(function(){ return fetch((window.ApHugBase || '../') + 'figures/base/' + id + '.json'); }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
     return bases[id];
@@ -250,7 +236,7 @@
       else { var ctx = all.filter(function(c){ return c.id === p.ctx; })[0]; shown.host.innerHTML = modelFig(ctx, p.steps[0].model); }
       var st = T.studioOf(host); if(st && st.fit) setTimeout(function(){ st.fit(); }, 0);
     }
-    T.drill(host, d2, { slug: SLUG, noun: 'drill', newLabel: 'New problem', typeLabel: 'Model',
+    T.drill(host, d2, { slug: SLUG, noun: 'drill', newLabel: 'New problem', typeLabel: 'Model', mixedLabel: 'Any model',
       types: d2.contexts.map(function(c){ return { value: c.types[0], label: c.name }; }),
       generate: function(r, ctx, type){ return MS.generate(r, ctx, type); },
       title: function(p){ return p.title; },

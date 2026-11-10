@@ -122,7 +122,7 @@
      ]
     }
    ],
-   "sample": "The bars are shortest at ages 0 to 4 and widest at ages 50 to 59, and the groups aged 65 and over are large, with more women than men at 80 and over, so most of the people are middle-aged or older and few are children."
+   "sample": "The bars are shortest at ages 0 to 4 and widest at ages 50 to 59, and the groups aged 65 and over are large, so most of the people are middle-aged or older and few are children."
   },
   {
    "label": "C",
@@ -192,18 +192,18 @@
   {
    "label": "G",
    "verb": "explain-degree",
-   "prompt": "Explain the degree to which this national pyramid can show where older people live within Country Z.",
+   "prompt": "Explain the degree to which Country Z’s age structure is typical of the world’s population at the global scale.",
    "points": 1,
    "rubric": [
     {
-     "point": "States a degree and explains that the national data cannot show differences between places inside the country (subnational scale).",
+     "point": "States a degree and explains with a contrast at the global scale: some countries share this aging structure, but the world as a whole is younger because many countries still have wide-based pyramids.",
      "accept": [
-      "To a small degree: it is national data, so it cannot show which provinces or cities are older",
-      "To a limited degree: subnational data are needed"
+      "To a limited degree: countries in Europe and East Asia are aging like Country Z, but Sub-Saharan Africa has young, wide-based pyramids",
+      "To a small degree: at the global scale far more people are children than in Country Z"
      ]
     }
    ],
-   "sample": "To a small degree. The pyramid is one national picture, so it cannot show which provinces or cities have the most older people; rural provinces that young adults leave are often much older than the capital, and only data at the subnational scale would show that."
+   "sample": "To a limited degree. Countries such as Japan and Italy have aging pyramids like Country Z’s, but at the global scale the population is much younger, because countries such as Niger, where nearly half the people were under 15 (UN WPP 2024), still have wide-based pyramids."
   }
  ]
 }

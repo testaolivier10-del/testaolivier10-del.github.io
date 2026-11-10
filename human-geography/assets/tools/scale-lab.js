@@ -18,9 +18,8 @@
    Test yourself: ApHugTools.drill over the model's generate(); a map drill
    draws its map on the stage.
 
-   Base maps are fetched once from ../figures/base/. hug-map.js is not on the
-   tool page's script list yet, so it is loaded here when missing (a request
-   for the lead in docs/aphug-reviews/tools-scale-lab.md). */
+   Base maps are fetched once from ../figures/base/. hug-map.js is on the
+   tool page's script list (build-aphug.mjs toolShell). */
 (function(){
   'use strict';
   var T = window.ApHugTools, M = window.ApHugMath;
@@ -29,9 +28,6 @@
   var BASES = {};
   function base(){ return window.ApHugBase || '../'; }
 
-  function need(src){
-    return new Promise(function(ok, no){ var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
-  }
   function loadBases(ids){
     return Promise.all(ids.filter(function(id){ return !BASES[id]; }).map(function(id){
       return fetch(base() + 'figures/base/' + id + '.json').then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(b){ BASES[id] = b; });
@@ -39,7 +35,7 @@
   }
 
   T.mount('scale-lab', function(app, data){
-    var ready = (window.ApHugMap ? Promise.resolve() : need(base() + 'assets/hug-map.js')).then(function(){ return loadBases(['world', 'country-a'].concat(S.REGION_BASES)); });
+    var ready = loadBases(['world', 'country-a'].concat(S.REGION_BASES));
     var ex = null;
     // The frame is built at once (the studio arranges it); the maps draw when the bases arrive.
     T.modes(app, { slug: 'scale-lab', labels: ['Explore', 'Test yourself'],

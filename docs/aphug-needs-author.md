@@ -181,33 +181,63 @@ Everything else stays open for a pass that can read the sources.
   concepts (set by the lead's plan) but use invented data and different tasks; a reader of the PDFs must confirm
   no wording or part sequence was adapted.
 
-## unit-5-facts: Author E facts to verify (open, 2026-11-09)
+## unit-5-facts: Author E facts (reviewer u5, 2026-11-09, docs/aphug-reviews/u5.md)
 
-Unit 5 claims written from memory or from secondary summaries, kept cautious and never the only route to a key; a
-reviewer should check each against its source before launch. Checked this session (fetched): FAO, The Status of
-Women in Agrifood Systems (2023) figures (36% and 38%; Sub-Saharan Africa 66% and 60%; Southern Asia 71% and 47%;
-82 cents; 24%; 40 of 46 countries; 45 million); FAO SOFIA 2024 (aquaculture 94.4 Mt, 51% of aquatic animals in 2022);
-UNCTAD State of Commodity Dependence 2025 (more than 60% threshold; 95 of 143 developing countries, 2021-2023);
-USDA 2022 Census via Choices magazine (1.9 million farms, 463 acres, 36% women producers, 6% of farms with 1 million
-dollars or more in sales making 78% of sales; 4% and 69% in 2017).
+Checked by the Unit 5 reviewer against dated sources (full list in `docs/aphug-reviews/u5.md`).
 
-- Not re-read: USDA ERS (2005, EIB-3) 41% of US workers in farming in 1900 and 1.9% in 2000; about 6.8 million US
-  farms in 1935; FAO SOFI 2024 "about 733 million people faced hunger in 2023"; the 2016 US National Academies GMO
-  review's finding; Kazakhstan's Kok-Aral dam finished in 2005; Ethiopia's land certification listing both spouses;
-  bananas shipped at about 13 °C; Brazil the largest soybean exporter and China the largest importer (cited "USDA,
-  2024"); horses reaching the Comanche and Lakota in the 1600s and 1700s; Irish famine figures (about 1 million
-  deaths, more than 1 million emigrants); IR8 released 1966; Borlaug's Nobel 1970; the term "Green Revolution" 1968;
-  Land Ordinance 1785; McCormick reaper 1831; Deere steel plow 1837; Tull seed drill 1701; Conservation Reserve
-  Program since 1985; Everglades restoration commitments since 2000; Horn of Africa five failed rainy seasons
-  2020-2023; Black Sea grain deal July 2022 to July 2023.
-- Hearth dates are given only as "about 12,000 to 10,000 years ago" for the start of farming; the hearth table names
-  crops, not dates. The CED's list (Fertile Crescent, Indus River valley, Southeast Asia, Central America) is from
-  framework.md's paraphrase (needs-author `ced-text`).
-- Map edits for review: `irrigation` moved from agriculture-consequences to agriculture-intro (5.1 and 5.3 need it);
-  `gmo` moved from agriculture-challenges to green-revolution (5.5 must say GMOs are not Green Revolution).
-- `frq-farm-trade-one` lists `trade-world-economy` (7.6) so it may key comparative advantage; it therefore unlocks
-  after Unit 7 topic 7.6, not with Unit 5. If the lead wants it live with Unit 5, part D must change to a Unit 5 or
-  earlier concept.
+Verified:
+
+- FAO, The Status of Women in Agrifood Systems (13 Apr 2023): 36% of working women and 38% of men in agrifood
+  systems; Sub-Saharan Africa 66% and 60%; Southern Asia 71% and 47%; 82 cents; 24% productivity gap; 45 million.
+  Verified (FAO newsroom, 13 Apr 2023; FAO report overview). "40 of 46 countries" was not re-read this pass (still
+  open, low risk: author fetched it).
+- FAO SOFIA 2024: aquaculture 94.4 Mt of aquatic animals, 51% of the total, 2022, first time ahead of capture.
+  Verified (FAO newsroom).
+- UNCTAD State of Commodity Dependence 2025: more than 60% of merchandise export earnings; 95 of 143 developing
+  countries, 2021-2023. Verified (UNCTAD news and report page).
+- USDA 2022 Census: 1,900,487 farms, 463 acres (441 in 2017), 36% women producers; $1 million farms 6% of farms
+  and 78% of sales (4% and 69% in 2017). Verified (NASS release 13 Feb 2024; Choices magazine).
+- About 6.8 million US farms at the 1935 peak. Verified (USDA ERS Chart of Note 106385).
+- 41% of US workers in farming in 1900, 1.9% in 2000 (Dimitri, Effland and Conklin, USDA ERS EIB-3, June 2005).
+  Verified: report title and date from the ERS PDF; the two figures as quoted by works citing it (the PDF text
+  could not be extracted).
+- FAO and partners, SOFI 2024: 713 to 757 million people faced hunger in 2023, midpoint about 733 million.
+  Verified (Devex report of SOFI 2024).
+- National Academies 2016: "no substantiated evidence that foods from GE crops were less safe". Verified
+  (National Academies Press, executive summary).
+- GMO dates: first GMO food on sale 1994 (FDA timeline); content now says GMO crops "spread widely on farms from the
+  late 1990s" instead of "first sold in the late 1990s". Verified.
+- IR8 1966; Borlaug Nobel Peace Prize 1970; "Green Revolution" named by William Gaud, 8 Mar 1968. Verified
+  (secondary summaries citing Gaud's speech).
+- Land Ordinance 1785: 6-mile townships, 36 sections of 640 acres, section 16 for schools. Verified (Knox College
+  text of the ordinance summary). The notes no longer say "west of the Appalachians"; surveying began in Ohio.
+- Black Sea Grain Initiative 22 July 2022 to 17 July 2023, UN and Türkiye. Verified (UN News, 17 July 2023).
+- Horn of Africa five failed rainy seasons, 2020-2023. Verified (peer-reviewed study citing WMO 2022).
+- Brazil the largest soybean exporter, China the largest importer. Verified (USDA FAS, Oilseeds: World Markets
+  and Trade).
+- Irish famine: about 1 million deaths, more than 1 million emigrants (Britannica gives up to 2 million). Verified.
+- Kok-Aral dike finished 2005; North Aral recovering. Verified (World Bank and Wikipedia summaries; the World Bank
+  results page now returns 404).
+- Bananas shipped at about 13 to 14 °C. Verified (Global Cold Chain Alliance).
+- Conservation Reserve Program from the Food Security Act of 23 Dec 1985 (USDA FSA); Everglades plan (CERP)
+  authorized by WRDA 2000. Verified.
+- Horses on the Plains in the 1600s and 1700s. Verified (NSF, 2023 study: horses in Plains cultures by the early
+  1600s; spread hastened after the 1680 Pueblo Revolt).
+- McCormick reaper 1831 (Virginia), Deere steel plow 1837, Tull seed drill about 1701. Verified (secondary history
+  sources; standard dates).
+- CED 5.3 hearths: "the Fertile Crescent and several other regions of the world, including the Indus River Valley,
+  Southeast Asia, and Central America". Verified (CED wording as quoted by a course site; CED PDF not opened).
+
+Fixed by the reviewer: Ethiopia's land certificates are use rights (the state owns land; it cannot be mortgaged),
+so `women-in-agriculture` item 14 no longer keys "easier to get loans".
+
+Still open:
+
+- `frq-farm-trade-one` now pairs units 2 and 5 (migration push factor replaces comparative advantage, which was too
+  close to the 2026 and 2025 set 2 released FRQs), so it unlocks after 5.9, not 7.6. The spec's FRQ plan may need
+  the new title and units (lead).
+- Map edits for review (from self-e): `irrigation` moved to agriculture-intro; `gmo` moved to green-revolution.
+  Still open for the lead (the checker passes).
 
 ## unit-3-facts: Unit 3 dated facts and open points (reviewer u3, 2026-11-09)
 
@@ -295,3 +325,48 @@ Open points from self-c.md:
    pollution) matched 2024 Set 2 Q2 G and E; they now ask about the central city's budget and land use near new
    stations. The stimulus type (a metro map with jurisdictions and a rail line) still resembles 2024 Set 2 Q2's;
    still open for the owner: keep (parts now differ) or swap the stimulus.
+
+## unit-2-facts: Author B's open points (reviewer u2, 2026-11-09, docs/aphug-reviews/u2.md)
+
+1. TFR map classes (`population-dynamics-s1`). Verified and fixed against World Bank WDI `SP.DYN.TFRT.IN`, 2023
+   (API, last updated 2026-10-08; built on UN WPP 2024), cross-checked with the UN WPP 2024 values for 2024 listed on
+   Wikipedia. Fixed: Yemen 2.1-3.9 to 4.0 or more (about 4.6); South Sudan 4.0 or more to 2.1-3.9 (about 3.9); Gambia
+   unshaded (about 4.0, on the line). Shaded, far from a line: Kuwait, Georgia, Ecuador, Tunisia (under 2.1), Malawi
+   (2.1-3.9). Every other class matches. Still open: the UN WPP site and data portal could not be read directly (the
+   portal API now needs a key); confirm against WPP 2024 itself before launch.
+2. Remittance chart (`migration-effects-s1`, notes, hook). The 2023 figures (120, 66, 50, 39, 27) were right
+   (World Bank, Migration and Development Brief 40, June 2024, read). Updated to the latest brief: Migration and
+   Development Brief 41 (December 2024), 2024 estimates: India 129, Mexico 68, China 48, Philippines 40, Pakistan 33
+   billion US dollars. Verified (World Bank Blogs, "In 2024, remittance flows ... $685 billion"). Recheck for a newer
+   brief at the yearly pass.
+3. Bangladesh TFR 2.3 (BDHS 2022). Verified (BDHS 2022 Key Indicators Report, DHS Program PR148: "declined from 3.3
+   to 2.3 over the last 22 years"). More than 6 in the early 1970s: standard, not re-read (low risk).
+4. Egypt arable land about 3 percent (World Bank, 2021). Verified (WDI `AG.LND.ARBL.ZS`: 3.09 percent, 2021).
+   Bangladesh more than 1,000 and Canada about 4 people per sq km (2022): verified (WDI `EN.POP.DNST`: 1,301 and 4.4).
+5. Japan more than a quarter 65 and over (2023); natural decrease every year since the late 2000s. Standard
+   (Statistics Bureau of Japan: 29.1 percent in 2023; deaths above births every year since 2007); not re-read this
+   pass (low risk). Italy nearly a quarter 65 and over (Istat, 2024): standard (24.3 percent on 1 January 2024), not
+   re-read (low risk).
+6. Iran's 2021 law. Verified (Human Rights Watch, 10 Nov 2021: approved by the Guardian Council 1 Nov 2021; ends free
+   contraceptives in the public health system, bans sterilization, adds paid maternity leave and other incentives).
+7. China 2021 wording. Verified in part: the 2021 decision (dated 26 June, released 20 July 2021, gov.cn) allows
+   three children with support measures, and fines for extra births ended in 2021 (wide press reports). Fixed: the
+   hook said China "began paying families" in 2021; the national payment (3,600 yuan a year per child under 3) began in
+   2025 (National Health Commission, Sept 2025). Hook, notes and the policy table now date each step.
+8. Romania births nearly doubled in 1967. Verified at secondary level only (Wikipedia, "Decree 770", citing
+   Lataianu 2002: births almost doubled, TFR about 1.9 to 3.7). Still open for a primary demographic source (low risk).
+9. Ireland's population fell about a fifth, 1841-1851; more than a million left. Standard census figures (8.18 to
+   6.55 million); not re-read this pass (low risk).
+10. Great Migration about 6 million (1910-1970); Trans-Atlantic Slave Trade Database about 12.5 million embarked.
+    Standard figures; not re-read this pass (low risk).
+11. Sudan the largest displacement. Verified and redated: UNHCR Global Trends (released 12 June 2025, end-2024 data):
+    14.3 million Sudanese refugees and IDPs, the world's largest displacement situation, ahead of Syria (13.5 million).
+    Item 14 now cites that report; the hook's "millions within a year (UNHCR, 2024)" is consistent.
+12. Malthus quotation with "[The food supply]" for "Subsistence". The 1798 wording is right. Still open: the owner may
+    prefer the original word with a gloss.
+13. Requests to the lead (flow maps as a map rendering; tap-to-enlarge figures at 360 px). Still open (builder work).
+14. France pension law. Fixed: the 2023 law raised the minimum pension age from 62 to 64 in steps; the 2026 social
+    security financing law (published 31 Dec 2025) suspended the rise (WTW summary, Jan 2026). Notes and item 12 of
+    `aging-populations` now say so.
+15. Released FRQs. Compared with 2023 to 2026 on apcentral; 2021 and 2022 are no longer posted there and were not
+    compared (still open). Two parts were rewritten for closeness (see u2.md).

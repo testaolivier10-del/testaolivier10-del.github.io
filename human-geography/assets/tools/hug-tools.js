@@ -509,7 +509,7 @@
 
   /* ------------------------------------------------- step drills */
   /* drill(app, data, o): the shared page for the seeded step drills
-     (statistics, conditioning schedules, study analysis). Every
+     (rates, densities, models, map and scale reading). Every
      problem comes from o.generate(rng, context, type), a pure ApHugMath
      generator, so the validator and the page run the same numbers. A
      problem is { ctx, topic, text, steps: [...], solution: [...] }; a step
@@ -525,6 +525,7 @@
      the specific slip it matches, and the student can try again or show the
      answer. The first try is what is recorded, as "<slug>:<context>:<step>".
      o: { slug, generate, types?: [{ value, label }], typeLabel?, contexts?,
+     mixedLabel? (the picker's first option, default "Any kind"),
      extra(host, problem, api)?, onVol(v, step, api)?, onStep(step, right, api)?,
      title(problem)?, newLabel? } */
   // Human Geography drills have no ICE "coef" rows; the step kind stays
@@ -541,7 +542,7 @@
     // Only the kinds this page has content for (contexts unlock with their units).
     var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
     if(kinds.length > 1){
-      kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', mixed: o.mixedLabel, options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
     var sd = studioDrill(app, area, o);
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
@@ -574,7 +575,7 @@
           body = '<div class="bt-num-row cd-num cd-unit"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"><label class="bt-small" for="' + sid + '-u">Unit</label><input type="text" class="cd-u" id="' + sid + '-u" autocomplete="off" spellcheck="false"></div>';
         } else if(s.kind === 'model'){
           // A model step (hug-model.js): pieces into rings, sectors, stages or tiers.
-          body = window.ApHugModel.html(s.model, sid + '-m');
+          body = window.ApHugModel.html(s.model, sid + '-m', s.figureHtml);
         } else if(s.kind === 'choice'){
           var order = s.fixed ? s.options.map(function(x, k){ return k; }) : Q.shuffle(s.options.map(function(x, k){ return k; }));
           body = '<fieldset class="cd-opts' + (s.optionsHtml ? ' cd-pics' : '') + '"><legend class="sr-only">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</legend>' + order.map(function(k, n){
@@ -601,8 +602,9 @@
           // On the Tool Studio stage the table can be taller than the stage: bring the row to fill into view.
           if(activeRow.closest('.ls-stage-body') && activeRow.scrollIntoView){ try{ activeRow.scrollIntoView({ block: 'nearest' }); }catch(e){} }
         }
-        var mctl = s.kind === 'model' ? window.ApHugModel.mount(el.querySelector('.hug-model'), s.model, { onChange: function(){ if(!done) fb.innerHTML = ''; } }) : null;
+        // fb first: mount paints at once and calls onChange.
         var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input'), uIn = el.querySelector('.cd-u'), range = el.querySelector('.cd-vol input');
+        var mctl = s.kind === 'model' ? window.ApHugModel.mount(el.querySelector('.hug-model'), s.model, { onChange: function(){ if(!done && fb) fb.innerHTML = ''; } }) : null;
         if(range){
           var sync = function(v){ if(o.onVol) o.onVol(v, s, api); };
           range.addEventListener('input', function(){ input.value = M.fixed(+range.value, 1); sync(+range.value); });
