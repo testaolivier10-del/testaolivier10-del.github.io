@@ -21,7 +21,7 @@
      ],
      [
       "Other adults",
-      "0.6",
+      "1.5",
       "10",
       "300"
      ]
@@ -93,10 +93,10 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Students' demand is elastic (2.5 is greater than 1) and other adults' demand is inelastic (0.6). A price discriminator charges the higher price to the group that is less sensitive to price and the lower price to the more sensitive group.",
+    "correct": "Students' demand is more elastic (2.5) than other adults' demand (1.5). A price discriminator charges the higher price to the group that is less sensitive to price and the lower price to the more sensitive group.",
     "options": [
      "Right: the more elastic group gets the lower price.",
-     "An elasticity of 2.5 is elastic, the more price-sensitive group.",
+     "Students' 2.5 is larger than adults' 1.5, so students are the more price-sensitive group.",
      "A seat costs the same to provide whoever sits in it; the difference is in demand.",
      "The price follows how sensitive each group is to price, not how many tickets it buys."
     ]
