@@ -200,11 +200,12 @@
     var cue = T.cue('Make transport cheaper or dearer, and watch the bid-rent lines and the rings move together.');
     $('.cl-ctl').insertBefore(cue.el, $('.cl-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
-    var sTc = T.slider({ label: 'Cost of transport', min: 0.5, max: 1.5, step: 0.1, value: 1, decimals: 1, onInput: function(v){ act(); tc = v; draw(); words(); } });
-    var sPr = T.slider({ label: 'Price of milk and vegetables', min: 0.6, max: 1.4, step: 0.1, value: 1, decimals: 1, onInput: function(v){ act(); price = v; draw(); words(); } });
+    var sTc = T.slider({ label: 'Cost of transport (100% is the start)', min: 0.5, max: 1.5, step: 0.1, value: 1, decimals: 1, onInput: function(v){ act(); tc = v; draw(); words(); } });
+    var sPr = T.slider({ label: 'Price of milk and vegetables (100% is the start)', min: 0.6, max: 1.4, step: 0.1, value: 1, decimals: 1, onInput: function(v){ act(); price = v; draw(); words(); } });
     [[sTc, function(v){ return Math.round(v * 100) + '% of the start'; }], [sPr, function(v){ return Math.round(v * 100) + '% of the start'; }]].forEach(function(x){
       var s = x[0], out = s.el.querySelector('output'), inp = s.input;
-      function show(){ out.textContent = x[1](+inp.value); inp.setAttribute('aria-valuetext', out.textContent); }
+      // The box shows the percent alone (with "of the start" it wrapped onto two lines); the label says what 100% is.
+      function show(){ out.textContent = Math.round(+inp.value * 100) + '%'; inp.setAttribute('aria-valuetext', x[1](+inp.value)); }
       inp.addEventListener('input', show); s.el.querySelectorAll('.bt-step').forEach(function(b){ b.addEventListener('click', show); }); show();
     });
     $('.cl-tc').appendChild(sTc.el); $('.cl-pr').appendChild(sPr.el);
