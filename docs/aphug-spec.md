@@ -104,7 +104,7 @@ before registration so the course lists and the SQL migration (`2026-11j-aphug.s
 | Phase | What | Status |
 |---|---|---|
 | R | Research: `docs/aphug-research/`; this spec | **done 2026-11-09** |
-| 0 | Fork AP® Psychology: runtime `human-geography/assets/` (`hug-*`), `ApHugCalc`, map and model stimuli, the three FRQ types, generator, checks, tests, fixture, base maps, registration hidden, SQL migration; CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author | |
+| 0 | Fork AP® Psychology: runtime `human-geography/assets/` (`hug-*`), `ApHugCalc`, map and model stimuli, the three FRQ types, generator, checks, tests, fixture, base maps, registration hidden, SQL migration; CED and dependency maps, exam config, tool scaffolding, architecture, authoring guide, briefs, needs-author || **done 2026-11-09** (decision 9; `docs/aphug-phase0.md`, `docs/aphug-architecture.md`) |
 | 1 | Content: lessons, notes, banks (with stimulus sets), FRQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, models page, cram kit | |
@@ -168,6 +168,25 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
    called backward or primitive; development terms follow the CED (core, semiperiphery, periphery; more and less
    developed only when quoting a model). Graded questions never hinge on a figure that goes stale within a year.
 8. (2026-11-09) **Only CED-named models are keyed**; others are labeled asides (section 2).
+9. (2026-11-09) **Phase 0 done, as built** (`docs/aphug-phase0.md`, `docs/aphug-architecture.md`). Accent
+   (provisional, needs-author `identity`): berry, hue 320°, light `--cink #741B56` on `--ctint #F8E7F3` (8.7:1;
+   9.8:1 on the page), dark `--cink #F4BEE2` (10.7:1 on the card) on `rgba(220,100,180,0.10)` (9.5:1); soft
+   `#E699CC`; header short name "Human Geography". Cover berry `#7A1F5C` with gold `#FFD166`, a globe with
+   meridians. Choices the spec left open or that differ from it: (a) a "Skills you need" chapter of 3 topics
+   (reading maps and data, scale, FRQ task verbs) placed before 1.1, 71 topics in all; (b) `ApHugCalc` recipes
+   `{fn, args, pick}` to 12 significant digits, RNI as a percent, doubling time by the rule of 70 (an error when
+   RNI is 0 or less); (c) maps are drawn at build time into `figures/maps/<stimulus id>.svg` from committed Natural
+   Earth 1:110m bases (world, ten regions of our choosing, invented Country A), Equal Earth projection, with every
+   word (marks, isoline values, legend, source, border note) in HTML so it stays legible at 360 px; flow maps and
+   cartograms are not renderings yet (needs-author `map-renders`); (d) the `model` item (rings, sectors, stages,
+   tiers, free) graded by piece and position, with named slips, used by banks, lessons and drills; (e) FRQ parts
+   carry a `verb`, and the page shows its demand; the content check reads each sample against its verb; (f) bank
+   singles have four options and exam forms five, the fifth from the form's `fifth` map (needs-author
+   `mcq-options`); set counts per kind are a guess (`mcq-sets`); skill weights not enforced until
+   `practicesConfirmed`; (g) the content check refuses non-neutral words for people, undated "currently" claims,
+   a dated source without a year, keyed models the CED does not name (outside `.hug-aside`) and verb-demand
+   misses; (h) the AI FRQ grader is not wired (`frq-grader`); (i) the site shell budget went from 348.4 to 349.4
+   KB. Registered hidden, `onSale: false`. SQL migration `2026-11j-aphug.sql` written, not applied.
 
 ## 9. Open items for the owner
 
