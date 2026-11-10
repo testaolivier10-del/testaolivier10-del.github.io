@@ -21,17 +21,20 @@ ready for teachers) and the fixes for it. Measurements: Project doc `claude/levl
   covers for a week, and marks the `workers.dev` copy of the site noindex.
 - `scripts/build-pricing.mjs`: the Premium Products carry `image`, `availability` and the 7-day return policy
   (Search Console's Product warnings).
-- Database: `2026-11k-progress-policies.sql` drops three duplicate `user_progress` policies. NOT applied yet (open step 5).
+- Database: `2026-11k-progress-policies.sql` drops three duplicate `user_progress` policies (applied 2026-11-10).
+
+## Done 2026-11-10 (after the merge, PR #180)
+- Sitemap resubmitted in Search Console: read the same day, 2,115 pages, status Success.
+- `2026-11k-progress-policies.sql` applied; `user_progress` has only the three `user_progress_*_own` policies.
+- Cloudflare, Workers Routes, `levlprep.com/*`: request limit failure mode set to "Fail open (proceed)". Past the
+  100,000 a day limit visitors get the GitHub Pages copy (which has no vault) instead of error 1027.
 
 ## Open (owner)
-1. Search Console: resubmit `sitemap.xml`; request indexing for the main notes pages (about 10 a day by hand).
-2. Cloudflare, Workers Routes, `levlprep.com/*`: set "Fail open", so past the 100,000 a day limit visitors get the
-   GitHub Pages copy instead of error 1027. Workers Paid ($5 a month) removes the limit; worth it near 20,000
-   page views a day (about 3,800 now).
+1. Search Console: request indexing for the main notes pages (about 10 a day by hand).
+2. Workers Paid ($5 a month) removes the 100,000 a day limit; worth it near 20,000 page views a day (about 3,800
+   on 2026-11-10).
 3. Email: Resend free is 100 a day. One class signing in with emailed codes can use it up; Resend Pro ($20 a
    month) before teacher outreach, and raise Supabase's emails per hour (Authentication, Rate Limits).
 4. Teachers: see the Project doc, section 4 (a real class trial, Google consent screen out of Testing, privacy
    agreement, Class Premium price).
-5. Supabase SQL editor: run `scripts/sql/migrations/2026-11k-progress-policies.sql` (three `drop policy`
-   lines; the policies schema.sql creates stay).
 Not done on purpose: long caching of CSS and scripts (file names carry no version, so a deploy would show late).
