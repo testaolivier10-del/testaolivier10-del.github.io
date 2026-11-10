@@ -248,7 +248,8 @@
   var STAGE_RANGES = { 1: { b: [37, 44], d: [27, 33] }, 2: { b: [34, 44], d: [8, 15] }, 3: { b: [18, 26], d: [6, 10] }, 4: { b: [10, 13], d: [9, 11] }, 5: { b: [7, 9], d: [10, 13] } };
   GEN.stage = function(r, c){
     var name = country(r), st = c.stage || pick(r, [1, 2, 3, 4, 5]), R0 = STAGE_RANGES[st], cbr = between(r, R0.b, 1), cdr = between(r, R0.d, 1);
-    if(st === 1) cdr = Math.min(cdr, cbr - 2);
+    // Stage 1 is high AND close: keep the gap to 2 to 8 per 1,000 (RNI under 1%), so it never reads as early stage 2.
+    if(st === 1) cdr = Math.max(Math.min(cdr, cbr - 2), cbr - 8);
     if(st === 4){ cdr = Math.min(cdr, cbr - 1); if(cbr - cdr > 3) cdr = cbr - 2; }
     if(st === 5) cdr = Math.max(cdr, cbr + 2);
     var text = '<p>' + name + ' (invented) has a crude birth rate of ' + cbr + ' and a crude death rate of ' + cdr + ' per 1,000 people a year. The dots show them on the demographic transition model.</p>';

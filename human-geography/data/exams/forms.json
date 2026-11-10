@@ -199,8 +199,8 @@
      "why": "In that stage infections come back as leading killers; Country T’s leading causes are heart disease, cancer and stroke."
     },
     "hug-diffusion-types-5": {
-     "text": "Expansion diffusion from Cherokee towns to English towns",
-     "why": "The idea spread from English speakers to Sequoyah, not from Cherokee towns outward, and it was reworked on the way."
+     "text": "Reverse hierarchical diffusion from small towns up to large cities",
+     "why": "The passage gives no order of places by size; the idea of writing spread from English speakers to Sequoyah and was reworked on the way."
     },
     "hug-diffusion-types-6": {
      "text": "Many Cherokee people learned to read within a few years",
@@ -315,8 +315,8 @@
      "why": "Olives and citrus are damaged by long hard frosts; all three places have mild, rainy winters and hot, dry summers."
     },
     "hug-settlement-survey-10": {
-     "text": "The government divided the land into large square sections for single farms",
-     "why": "Square sections for single families spread farmhouses out; clustered villages come from sharing wells, defense and services."
+     "text": "Living in a village gives each family the largest possible farm",
+     "why": "Living in a village does not make a farm larger; families cluster to share wells, defense, a market and a place of worship."
     },
     "hug-agricultural-origins-9": {
      "text": "Factories in towns offered steady wages to farm families",
@@ -367,8 +367,8 @@
      "why": "Rostow's last stage is the age of high mass consumption, so the model includes it."
     },
     "hug-trade-world-economy-9": {
-     "text": "A trade bloc that Costa Rica and Canada both belong to",
-     "why": "No shared bloc is needed to show the idea; each country supplies what the other needs, which is complementarity."
+     "text": "A single currency that Costa Rica and Canada both use",
+     "why": "Costa Rica uses the colón and Canada the Canadian dollar; each country supplying what the other needs is complementarity."
     },
     "hug-world-economy-changes-13": {
      "text": "Outsourcing of parts to other countries",
@@ -570,8 +570,8 @@
      "why": "Moves from nearby farms stay at the local scale; national visa rules link the town to the national scale."
     },
     "hug-culture-on-the-land-6": {
-     "text": "The new glass tower beside the river",
-     "why": "The tower is new in 2020; the brick mill and smokestack are left from the 1920 period."
+     "text": "The river that flows past the mill",
+     "why": "The river is a physical feature, not a mark left by people; the brick mill and smokestack are left from the 1920 period."
     },
     "hug-culture-on-the-land-7": {
      "text": "Placelessness: the riverbank looks like any other place",
@@ -722,8 +722,8 @@
      "why": "The London decision cut jobs in Dhaka, so it did have an effect, at the local scale."
     },
     "hug-city-structure-11": {
-     "text": "Galactic city",
-     "why": "The galactic model stresses edge cities ringing an old downtown; many separate specialized centers is multiple nuclei."
+     "text": "Central place theory",
+     "why": "Central place theory spaces towns and their market areas across a region; it is not a model of land use inside one city. Many separate specialized centers is multiple nuclei."
     },
     "hug-density-land-use-11": {
      "text": "Redevelopment of the city's oldest blocks into towers",

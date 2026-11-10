@@ -414,6 +414,12 @@ Open points from self-c.md:
   read for a second defensible answer.
 - Facts in the exam-only items to confirm: Tysons, Virginia, grew from a crossroads from the 1960s and has more
   jobs than residents; Singapore at about 1° N, 104° E; GMO crops first sold commercially in the 1990s.
+- **Phase 4 review, 2026-11-09 (`docs/aphug-reviews/exams.md`)**: all 120 served MCQs, the 104 fifths and the 16
+  exam-only items read; 5 fifths reworded (a Costa Rica and Canada "trade bloc" that their 2002 free trade
+  agreement half supports, "Galactic city" for Los Angeles, "Expansion diffusion" for Sequoyah, two repeats) and
+  the Singapore key corrected (it sits beside the Strait of Malacca, on the Singapore Strait). The three facts
+  above are confirmed (Tysons: 26,374 residents in 2020, daytime population over 100,000). Still open for a
+  teacher: `mcq-sets`, `scale-words`, and one human read of the fifth options as a set.
 
 ## phase3-facts: dated examples on the models page and in "Make it specific" (open, 2026-11-09)
 
@@ -436,6 +442,11 @@ Curitiba's bus rapid transit (1974); Shenzhen special economic zone (1980); Gram
 irrigation from the 1960s; World Bank FY27 thresholds (from `accuracy-risks.md`). "Make it specific" prompts
 on contested topics (gerrymandering, Québec, Kurds, microloans) were written to attribute and give both sides;
 a teacher should read them for neutrality.
+- **Phase 4 review, 2026-11-09 (`docs/aphug-reviews/exams.md`, sources table there)**: every fact above checked;
+  all right. Fixed: the Ravenstein example's wording (papers of 1885 and 1889, from the 1881 census) and the
+  Hungary prompt, which now says the exemption was widened to mothers of three in 2025 and younger mothers of two
+  in 2026. Read but not refetched: the stable historical dates listed in the review. Still open: the teacher read
+  of the contested-topic prompts for neutrality (found neutral and attributed in this review).
 
 ## generated-at-root: rebuild after the integrator's runtime changes (open, 2026-11-09)
 

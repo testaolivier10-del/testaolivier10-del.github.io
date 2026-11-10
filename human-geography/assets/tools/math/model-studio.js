@@ -362,7 +362,7 @@
     /* Demographic transition: an invented country's rates. */
     rates: function(r, ctx){
       var C = Calc(), stage = r.int(1, 5), b, d;
-      if(stage === 1){ b = r.int(38, 46); d = r.int(28, Math.min(36, b - 2)); }
+      if(stage === 1){ b = r.int(38, 46); d = r.int(Math.max(28, b - 8), Math.min(36, b - 2)); }
       else if(stage === 2){ b = r.int(36, 46); d = r.int(10, 17); }
       else if(stage === 3){ b = r.int(20, 28); d = r.int(6, 10); }
       else if(stage === 4){ d = r.int(8, 11); b = d + r.int(0, 3); }
