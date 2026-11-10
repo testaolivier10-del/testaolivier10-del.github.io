@@ -144,7 +144,7 @@ export const EQ = [
       [D`90{,}000 - 60{,}000 - 40{,}000`, { fn: 'economicProfit', args: [90000, 60000, 40000] }, D`\text{ dollars}`, 0]],
   ] },
   { id: 'factors', h: 'Factor markets', rows: [
-    [D`MRP = MP \times MR \;(= MP \times P \text{ in a competitive product market})`, 'Marginal revenue product.', 'A hiring table; labor demand.', 'Marginal product times marginal revenue, never MR times P.', 'Unit 5', 'factor-markets', ['factor-lab'], 'mrp',
+    [D`MRP = MP \times MR`, 'Marginal revenue product (MP x P when the firm sells in a competitive product market).', 'A hiring table; labor demand.', 'Marginal product times marginal revenue, never MR times P.', 'Unit 5', 'factor-markets', ['factor-lab'], 'mrp',
       [D`8 \times \$5`, { fn: 'mrp', args: [8, 5] }, '', 0, D`\$`], true],
     [D`MRC = \frac{\Delta TC}{\Delta L}`, 'Marginal resource (factor) cost.', 'Hiring where MRP = MRC; a monopsony\'s MFC.', 'For a firm that takes the market wage, MRC is the wage; for a monopsonist it is above the wage.', 'Unit 5', 'competitive-factor-markets', ['factor-lab'], 'mrc',
       [D`\frac{\$480 - \$400}{6 - 5}`, { fn: 'mrc', args: [400, 480, 5, 6] }, '', 0, D`\$`]],

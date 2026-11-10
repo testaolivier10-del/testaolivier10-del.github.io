@@ -805,6 +805,18 @@
     return '<path class="mic-gr-guide ' + (cls || '') + '" d="M' + f1(px(0)) + ' ' + f1(py(p[1])) + 'H' + f1(px(p[0])) + 'V' + f1(py(0)) + '"/>';
   }
   function centroid(poly){ var a = 0, cx = 0, cy = 0; for(var i = 0; i < poly.length; i++){ var p = poly[i], q = poly[(i + 1) % poly.length], cr = p[0] * q[1] - q[0] * p[1]; a += cr; cx += (p[0] + q[0]) * cr; cy += (p[1] + q[1]) * cr; } if(Math.abs(a) < 1e-9) return poly[0]; return [cx / (3 * a), cy / (3 * a)]; }
+  /* Where a cell's letter goes: the point inside the cell farthest from its
+     edges (in screen units), so a thin cell's letter does not sit on a curve. */
+  function labelSpot(poly){
+    var P = poly.map(function(q){ return [px(q[0]), py(q[1])]; }), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    P.forEach(function(q){ x0 = Math.min(x0, q[0]); x1 = Math.max(x1, q[0]); y0 = Math.min(y0, q[1]); y1 = Math.max(y1, q[1]); });
+    function inside(x, y){ var c = false; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[i], b = P[j]; if((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) c = !c; } return c; }
+    function edge(x, y){ var m = Infinity; for(var i = 0, j = P.length - 1; i < P.length; j = i++){ var a = P[j], b = P[i], dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L)) : 0, ex = a[0] + t * dx - x, ey = a[1] + t * dy - y; m = Math.min(m, ex * ex + ey * ey); } return m; }
+    var best = null, bd = -1, N = 24;
+    for(var i = 1; i < N; i++) for(var j = 1; j < N; j++){ var x = x0 + (x1 - x0) * i / N, y = y0 + (y1 - y0) * j / N; if(!inside(x, y)) continue; var d = edge(x, y); if(d > bd){ bd = d; best = [x, y]; } }
+    if(!best){ var ct = centroid(poly); return [px(ct[0]), py(ct[1])]; }
+    return best;
+  }
   function polyPath(poly){ return 'M' + poly.map(function(p){ return f1(px(p[0])) + ' ' + f1(py(p[1])); }).join('L') + 'Z'; }
 
   /* The policy lines and quantity marks of an sd-micro graph, as the exam draws them. */
@@ -845,8 +857,8 @@
     // Shading cells first, under the curves.
     var ar = (does.indexOf('shade') > -1 || state.letters || (state.key && does.indexOf('shade') > -1)) ? areas(spec) : null, on = state.shade || [], keyCells = state.key && does.indexOf('shade') > -1 ? regionCells(spec, (spec.key || {}).shade) : [];
     if(ar) ar.cells.filter(function(c){ return c.panel === pid; }).forEach(function(c){
-      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = centroid(c.poly);
-      g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/><text class="mic-gr-cletter" x="' + f1(px(ct[0])) + '" y="' + f1(py(ct[1]) + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>');
+      var cls = 'mic-gr-cell' + (on.indexOf(c.id) > -1 ? ' is-on' : '') + (keyCells.indexOf(c.id) > -1 ? ' is-key' : ''), ct = labelSpot(c.poly);
+      g.push('<path class="' + cls + '" data-cell="' + esc(c.id) + '" d="' + polyPath(c.poly) + '"/><text class="mic-gr-cletter" x="' + f1(ct[0]) + '" y="' + f1(ct[1] + 4) + '" text-anchor="middle">' + esc(c.id) + '</text>');
     });
     g.push('<path class="mic-gr-axis" d="M' + L + ' ' + T + 'V' + (T + PH) + 'H' + (L + PW) + '"/>');
     g.push('<text class="mic-gr-alabel" x="' + (L + PW) + '" y="' + (T + PH + 31) + '" text-anchor="end">' + esc(nm(xs, panel.x)) + '</text>');
