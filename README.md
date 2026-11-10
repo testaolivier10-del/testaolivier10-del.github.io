@@ -720,6 +720,8 @@ A scheduler that knows forty items are due today and has no way to say so is doi
 
 `privacy.html`'s promise that there was "no product email of any kind" had to change in the same commit as the table. That paragraph has now been wrong twice and corrected twice, and says so.
 
+**Who is asked (2026-11-10).** For two months the offer reached almost nobody: it appeared in two courses, only those two reported what was due, and a first visit was never asked. Now every course's score card offers it, one reader counts what is due in every course, a finished session lets a first visit be asked, a signed-in student whose browser cannot do push is offered email, and a new account is asked once. `docs/reminders.md` has the rules and the owner's decisions.
+
 Setup — VAPID keys, secrets, the cron — is in `worker/README.md`. Everything is inert until it is configured: no prompt, no button, no request, same rule as `analytics.js`. Tested in `scripts/test/reminders.test.mjs`.
 
 ## Searching a course

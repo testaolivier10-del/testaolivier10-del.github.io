@@ -207,6 +207,12 @@ owner's cutover checklist. levlprep.com is served by the Cloudflare site Worker 
 only the fallback); the repo is still public (see the status file). A new lesson page type must carry its free marker
 or the deploy fails.
 
+## Study reminders
+
+`docs/reminders.md` is the status file for who is offered reminders (every course's score card, the all-course due
+scan, the email offer, the one question after a new account) and the owner decisions behind it. How they are sent:
+README "Nothing brought anyone back" and `worker/README.md`.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
