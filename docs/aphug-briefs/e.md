@@ -9,7 +9,7 @@ Read `docs/aphug-briefs/content-common.md` first; it holds every rule. This file
 ## FRQs (one of each type)
 
 - Q1 type `none` (no stimulus) on `green-revolution`: The Green Revolution and food supply: technology, effects and a limit of Malthus. File `human-geography/data/frq/frq-green-revolution-none.json` (id `frq-green-revolution-none`).
-- Q2 type `one` (one stimulus) on `global-agriculture`: An export table for one crop: commodity dependence, comparative advantage and supply chains. File `human-geography/data/frq/frq-farm-trade-one.json` (id `frq-farm-trade-one`).
+- Q2 type `one` (one stimulus) on `global-agriculture`: An export table for one crop: commodity dependence, price swings and supply chains (comparative advantage dropped, so the FRQ unlocks with Unit 5; integration 2026-11-09). File `human-geography/data/frq/frq-farm-trade-one.json` (id `frq-farm-trade-one`).
 - Q3 type `two` (two stimuli) on `von-thunen`: A land-use map and a distance table: how well von Thünen fits a real region. File `human-geography/data/frq/frq-von-thunen-two.json` (id `frq-von-thunen-two`).
 
 ## Stimulus sets planned in the map

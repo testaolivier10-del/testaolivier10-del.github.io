@@ -190,6 +190,17 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
    Microeconomics) to 349.8 KB. Registered hidden, `onSale: false`, after merging `claude/apmicro` (both courses in every list). SQL migration
    `2026-11j-aphug.sql` (runs after `2026-11i-apmicro.sql`) written, not applied.
 
+10. (2026-11-09) **Integration pass** (`docs/aphug-reviews/integration.md`): every builder and author request in
+   the shared layer. Flow maps are a map rendering (`render: 'flow'`) and an invented `metro` base exists (needs-author
+   `map-renders` now covers cartograms only); invented bases carry area codes (`labels`); the `model` item's `free`
+   layout draws numbered badges on its figure with the places listed under it, and `groups` make slots
+   interchangeable; figures enlarge to full size on a phone (Enlarge); tool pages load `hug-map.js`; an FRQ page's
+   Premium gate follows its latest topic; Model Studio's free drills are the demographic transition's only. Map
+   placements: colonialism, terraces and irrigation pulled forward into 1.7; economies of scale and tariff into
+   4.9; infrastructure into 4.10; the Industrial Revolution is a preview box in 5.4; periphery and the IMF stay in
+   Unit 7. House scale words: "local (subnational)" for data on parts of a country (needs-author `scale-words`).
+   Publish units in course order or together (`publish-order`).
+
 ## 9. Open items for the owner
 
 Filled in at launch.

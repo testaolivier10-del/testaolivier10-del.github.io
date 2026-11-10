@@ -36,7 +36,7 @@ test('no Psychology leftovers in the runtime: the sign slip, z scores, hypothese
 
 test('tool pages load hug-map.js; the trainers no longer load it themselves', () => {
   assert.match(read('scripts/build-aphug.mjs'), /const extra = \['hug-questions\.js', 'hug-map\.js'/);
-  for (const f of ['model-studio', 'map-reader', 'scale-lab']) assert.doesNotMatch(read(`human-geography/assets/tools/${f}.js`), /assets\/hug-map\.js/, f);
+  for (const f of ['model-studio', 'map-reader', 'scale-lab', 'borders-lab', 'city-lab']) assert.doesNotMatch(read(`human-geography/assets/tools/${f}.js`), /assets\/hug-map\.js/, f);
 });
 
 test('a free model item in a bank carries its figure to the page (modelFigure), and the build refuses one without a drawing', async () => {
@@ -103,4 +103,21 @@ test('\\$ is the literal dollar sign: never math, printed as $ (the order check 
   assert.match(r.q, /^GNI per capita of \$1,145 to \$4,515, and <math /);
   assert.equal((r.q.match(/<math/g) || []).length, 1);
   assert.match(splitMath('costs \\$25 and $x$').prose, /costs \$25 and/);
+});
+
+test('no builder workaround is left for a shared fix (the mount wrapper, the dock grid)', () => {
+  for (const f of ['model-studio', 'borders-lab', 'city-lab']) assert.doesNotMatch(read(`human-geography/assets/tools/${f}.js`), /Mdl\.mount = |MD\.mount = |__t4Safe|msWrapped/, f);
+  for (const f of ['borders-lab', 'city-lab']) assert.doesNotMatch(read(`human-geography/assets/tools/${f}.css`), /\.ls-root \.hug-model-grid/, f);
+  assert.match(read('human-geography/assets/tools/hug-tools.css'), /\.ls-root \.hug-model-grid\{grid-template-columns:minmax\(0,1fr\);\}/);
+});
+
+test('plots: the y-axis name has its own band above the data, one 0 at a shared corner, room under the x ticks', async () => {
+  const { Plot } = await import('../lib/aphug-mathlib.mjs');
+  const svg = Plot.svg({ label: 'A bid rent line for the plot test', x: [0, 10], y: [0, 400], xLabel: 'Distance (km)', yLabel: 'Bid rent', curves: [{ fn: x => 400 - 40 * x }] });
+  const F = Plot.frame({ x: [0, 10], y: [0, 400], yLabel: 'Bid rent' });
+  const yl = +svg.match(/<text class="hug-plot-axlabel" x="[\d.]+" y="([\d.]+)" text-anchor="start">Bid rent/)[1];
+  assert.ok(yl < F.pad.t, 'the y-axis name sits above the plot area');
+  const zeros = [...svg.matchAll(/<text x="[\d.]+" y="[\d.]+" text-anchor="(?:middle|end)">0<\/text>/g)];
+  assert.equal(zeros.length, 1, 'one 0 at the corner');
+  assert.match(svg, /y="[\d.]+" text-anchor="middle">Distance \(km\)/);
 });

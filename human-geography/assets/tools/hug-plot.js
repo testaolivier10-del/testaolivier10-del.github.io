@@ -95,7 +95,10 @@
     var x = spec.x || [-5, 5], y = spec.y || [-5, 5];
     // The left margin fits the widest y tick label (measured, not fixed), so
     // long labels such as sleep stage names are never cut; 38 px at least.
-    var PAD = { l: Math.max(BASEPAD.l, Math.ceil(yLabelW(spec, y) + 12)), r: spec.rightAxis ? 40 : BASEPAD.r, t: BASEPAD.t + (dh ? dh.band : 0), b: BASEPAD.b };
+    // A y-axis name gets its own band above the plot (it never sits on the
+    // data: a curve that starts at the top-left corner ran through it).
+    var yBand = spec.yLabel && !spec.rightAxis && spec.axes !== false ? 16 : 0;
+    var PAD = { l: Math.max(BASEPAD.l, Math.ceil(yLabelW(spec, y) + 12)), r: spec.rightAxis ? 40 : BASEPAD.r, t: BASEPAD.t + (dh ? dh.band : 0) + yBand, b: BASEPAD.b };
     var iw = w - PAD.l - PAD.r, ih = h - PAD.t - PAD.b;
     var f = {
       x: x, y: y, w: w, h: h, pad: PAD,
@@ -213,15 +216,17 @@
         (spec.axisV === false ? [] : yt).filter(function(v){ return Math.abs(v) > 1e-12 || ax === B; }).map(function(v){ var py = r2(F.sy(v)); return '<line x1="' + r2(ay - 3) + '" y1="' + py + '" x2="' + r2(ay + 3) + '" y2="' + py + '"/>'; }).join('') + '</g>');
       var lab = [];
       xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L && !spec.centerAxis) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + xText(v) + '</text>'); });
-      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yText(v) + '</text>'); });
+      // One 0 at the corner when both axes start there (two 0s touched on a phone).
+      var x0Shown = ax === B && ay === L && xt.some(function(v){ return Math.abs(v) < 1e-12; });
+      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && (ax !== B || x0Shown)) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yText(v) + '</text>'); });
       // The x-axis name sits under the tick labels, centered, when the axis is
       // the bottom edge (every data plot), so it never covers the data; the
       // picture grows by one line for it. Inside the plot only when the axis
       // runs through it (a function plot through y = 0).
-      if(spec.xLabel && ax === B){ extraH = 16 + catWrap; lab.push('<text class="hug-plot-axlabel" x="' + r2((L + R) / 2) + '" y="' + r2(B + 31 + catWrap) + '" text-anchor="middle">' + esc(plain(spec.xLabel)) + '</text>'); }
+      if(spec.xLabel && ax === B){ extraH = 19 + catWrap; lab.push('<text class="hug-plot-axlabel" x="' + r2((L + R) / 2) + '" y="' + r2(B + 34 + catWrap) + '" text-anchor="middle">' + esc(plain(spec.xLabel)) + '</text>'); }
       else if(spec.xLabel) lab.push('<text class="hug-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
       if(spec.yLabel && spec.rightAxis) lab.push('<text class="hug-plot-axlabel" x="4" y="14" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
-      else if(spec.yLabel) lab.push('<text class="hug-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
+      else if(spec.yLabel) lab.push('<text class="hug-plot-axlabel" x="' + r2(Math.max(4, ay - 6)) + '" y="' + (T - 8) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
       out.push('<g class="hug-plot-ticks">' + lab.join('') + '</g>');
     }
     (spec.asymptotes || []).forEach(function(a){

@@ -251,7 +251,7 @@ a.hug-tag:hover{text-decoration:underline;}
 .hug-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
 /* Enlarge (hug-nav.js): the button on narrow screens, a tap on the drawing,
    and the full-screen dialog with the drawing at its own width. */
-.hug-fig-zoom{display:none;position:absolute;right:6px;bottom:6px;min-height:36px;padding:4px 12px;border:1.5px solid var(--cink);border-radius:999px;background:var(--white,#fff);color:var(--cink);font:800 13px var(--font-ui);cursor:zoom-in;box-shadow:0 1px 4px rgba(0,0,0,.18);}
+.hug-fig-zoom{display:none;margin:6px 0 0 auto;min-height:36px;padding:4px 12px;border:1.5px solid var(--cink);border-radius:999px;background:var(--white,#fff);color:var(--cink);font:800 13px var(--font-ui);cursor:zoom-in;box-shadow:0 1px 4px rgba(0,0,0,.18);}
 @media (max-width:760px){.hug-fig-zoom{display:block;} .hug-figimg:not(.has-masks) img{cursor:zoom-in;}}
 @media print{.hug-fig-zoom{display:none !important;}}
 .hug-zoom-open,.hug-zoom-open body{overflow:hidden;}

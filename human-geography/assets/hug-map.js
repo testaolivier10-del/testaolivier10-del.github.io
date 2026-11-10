@@ -208,10 +208,14 @@
   function flowArrow(spec, base, it){
     var a = at(base, it.from), b = at(base, it.to), w = flowWidth(spec, base, it.value), W = base.width;
     var dx = b[0] - a[0], dy = b[1] - a[1], len = Math.sqrt(dx * dx + dy * dy) || 1, nx = -dy / len, ny = dx / len;
+    // With area labels on, each arrow stops short of the label at either end
+    // (about 14 px at 360 px wide), so no head hides under a code.
+    if(spec.labels){ var gap = Math.min(W / 24, len / 4); a = [a[0] + dx / len * gap, a[1] + dy / len * gap]; b = [b[0] - dx / len * gap, b[1] - dy / len * gap]; dx = b[0] - a[0]; dy = b[1] - a[1]; len = Math.sqrt(dx * dx + dy * dy) || 1; }
     var bend = (it.bend == null ? 1 : it.bend) * 0.18 * len;
     var cx = (a[0] + b[0]) / 2 + nx * bend, cy = (a[1] + b[1]) / 2 + ny * bend;
     var tx = b[0] - cx, ty = b[1] - cy, tl = Math.sqrt(tx * tx + ty * ty) || 1; tx /= tl; ty /= tl;
-    var L = Math.max(2.8 * w, W / 70), hw = Math.max(1.7 * w, W / 130);
+    // The head never takes more than a third of a short arrow; it stays wider than the shaft.
+    var L = Math.min(Math.max(2.8 * w, W / 70), len / 3), hw = Math.max(Math.min(Math.max(1.7 * w, W / 130), L * 0.8), w * 0.9);
     var ex = b[0] - tx * L, ey = b[1] - ty * L;
     return '<path d="M' + r1(a[0]) + ' ' + r1(a[1]) + 'Q' + r1(cx) + ' ' + r1(cy) + ' ' + r1(ex) + ' ' + r1(ey) + '" fill="none" stroke="' + FLOW + '" stroke-opacity="0.85" stroke-width="' + r1(w) + '" stroke-linecap="round"/>' +
       '<path d="M' + r1(b[0]) + ' ' + r1(b[1]) + 'L' + r1(ex - ty * hw) + ' ' + r1(ey + tx * hw) + 'L' + r1(ex + ty * hw) + ' ' + r1(ey - tx * hw) + 'Z" fill="' + FLOW + '"/>' +

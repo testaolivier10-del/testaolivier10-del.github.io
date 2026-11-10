@@ -48,11 +48,11 @@ Marked `disputed` (a value on them needs `disputedOk`): Western Sahara, Northern
 Taiwan, Palestine, Falkland Islands / Islas Malvinas. Kashmir, Crimea and the South China Sea are not separate
 features at 1:110m, so a map cannot color them apart. Confirm the list and the caption wording.
 
-## map-renders: flow maps and cartograms (open, 2026-11-09)
+## map-renders: flow maps and cartograms (flow maps done 2026-11-09; cartograms open)
 
-`hug-map.js` draws reference, choropleth, dot, graduated symbol and isoline maps. Flow maps (migration, trade) and
-cartograms are drawn as figures for now. Decide whether to add them as renderings before Unit 2 authoring (flow maps
-appear on released exams).
+`hug-map.js` now draws flow maps (`render: 'flow'`, arrow width from the value, a legend of sample widths) and
+has an invented `metro` base (integration pass, `docs/aphug-reviews/integration.md`). Cartograms are still drawn
+figures (map-reader draws its own Country A cartogram). Decide whether a cartogram rendering is worth building.
 
 ## frq-grader: the AI grader for seven one-point parts (open, 2026-11-09)
 
@@ -64,6 +64,35 @@ their own eval set before the course joins `FRQ_COURSES`.
 The teal accent (hue 188, `#094953` on `#E1F1F4`), the clay cover (`#7A3310`) and its art (a globe with meridians), the headline "from local
 to global." and the ranks (Map Reader, Scale Shifter, Pattern Spotter, Region Builder, Model Maker, World Analyst,
 Geography Legend) are provisional. The owner approves them at launch. Tool covers come with each trainer.
+
+## scale-words: one house term for data on parts of a country (open, 2026-11-09)
+
+The course uses the CED's four scales (global, regional, national, local; framework.md 1.6) with one rule: the
+scale of analysis is the unit of the data. Regional means a group of countries; data for provinces, states or
+counties are "local (subnational)", the wording the 2025 scoring accepted (Chief Reader Report, set 2 Q3A). The
+glossary, the skills topic, scale-lab and every keyed item follow it (integration check, 2026-11-09). Some
+textbooks call a province or a region inside a country "regional": a teacher should confirm that the course may
+say both usages exist, and whether "the regional scale" for the US Midwest or the Great Plains (notes listed in
+`docs/aphug-reviews/integration.md`) should become "local (subnational)".
+
+## publish-order: FRQs unlock only when all their units are live (open, 2026-11-09)
+
+Every FRQ but the three Unit 1 ones joins two units (as the exam does), and it goes live only when every unit it
+lists is published. Published in course order, each unit adds its FRQs (Unit 1: 3, Unit 2: 3, Unit 3: 2, Unit 4:
+4, Units 5 to 7: 3 each; 21 in all). A unit published out of order (Unit 6 before Unit 2, say) has no FRQ.
+Publish in course order, or all at once.
+
+## tools-facts: trainers' open points for the Phase 4 accuracy pass (open, 2026-11-09)
+
+From the builders' reports (`self-t1.md` to `self-t4.md`): Ravenstein placed on 2.8 and worded as usually taught
+(five laws; the women and men law from the 1885 paper); epidemiological transition taught as four stages (Omran's
+three plus a later fourth); the Southeast Asian model's "alien commercial zone" renamed (Model Studio "Western and
+immigrant commerce", city-lab "merchant minority commercial zone": pick one wording); the African model's market
+zone as one of three centers; Hoyt "142 US cities, 1939"; the transition rate thresholds are ours
+(`ApHugCalc.transitionStage`); state shapes kept though the current CED does not name them (labeled an older
+classification; owner to confirm); borders-lab real cases (49th parallel 1818 and 1846, the inner German border,
+the 1899 Anglo-French line, Punjab 1947) and diffusion-lab real cases (pizza, paneer burgers); scale-lab's
+invented values on real outlines; no trainer uses real-country pyramid data.
 
 ## Facts marked [ours, verify] in the research
 
@@ -363,8 +392,10 @@ Open points from self-c.md:
     14.3 million Sudanese refugees and IDPs, the world's largest displacement situation, ahead of Syria (13.5 million).
     Item 14 now cites that report; the hook's "millions within a year (UNHCR, 2024)" is consistent.
 12. Malthus quotation with "[The food supply]" for "Subsistence". The 1798 wording is right. Still open: the owner may
-    prefer the original word with a gloss.
-13. Requests to the lead (flow maps as a map rendering; tap-to-enlarge figures at 360 px). Still open (builder work).
+    prefer the original word with a gloss. The order check no longer stands in the way: the bare word "subsistence"
+    is not a term of `subsistence-agriculture` since the integration pass (2026-11-09).
+13. Requests to the lead (flow maps as a map rendering; tap-to-enlarge figures at 360 px). Done in the integration
+    pass (2026-11-09): `render: 'flow'` and Enlarge on every figure without hidden labels.
 14. France pension law. Fixed: the 2023 law raised the minimum pension age from 62 to 64 in steps; the 2026 social
     security financing law (published 31 Dec 2025) suspended the rise (WTW summary, Jan 2026). Notes and item 12 of
     `aging-populations` now say so.

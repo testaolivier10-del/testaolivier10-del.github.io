@@ -2729,10 +2729,7 @@
    "suburbs",
    "suburban",
    "place names",
-   "sense of place",
-   "irrigation",
-   "irrigated",
-   "terraces"
+   "sense of place"
   ]
  },
  "concepts": [
@@ -5172,9 +5169,10 @@
     "terraces",
     "terrace"
    ],
-   "taughtIn": "agriculture-consequences",
-   "dependsOn": [
-    "agriculture"
+   "taughtIn": "human-environment",
+   "dependsOn": [],
+   "fullIn": [
+    "agriculture-consequences"
    ]
   },
   {
@@ -5183,9 +5181,10 @@
    "aliases": [
     "irrigated"
    ],
-   "taughtIn": "agriculture-intro",
-   "dependsOn": [
-    "agriculture"
+   "taughtIn": "human-environment",
+   "dependsOn": [],
+   "fullIn": [
+    "agriculture-intro"
    ]
   },
   {
@@ -6321,6 +6320,23 @@
    ],
    "problem": "The Second Agricultural Revolution (5.4) happened with the Industrial Revolution, which is taught in 7.1.",
    "detail": "5.4 carries a preview box (class \"hug-preview\", data-concept \"industrialization\") naming the Industrial Revolution in two sentences; the term is used only inside it. Integration pass 2026-11-09."
+  },
+  {
+   "id": "possibilism-examples-in-1-7",
+   "concepts": [
+    "irrigation",
+    "terracing"
+   ],
+   "resolution": "pull-forward",
+   "into": [
+    "human-environment"
+   ],
+   "fullIn": [
+    "agriculture-intro",
+    "agriculture-consequences"
+   ],
+   "problem": "Possibilism (1.7) is taught through the ways people change the land, above all terraces and irrigation (the 1.7 stimulus is a terraced, irrigated hillside); irrigation was taught in 5.1 and terracing in 5.10.",
+   "detail": "1.7 defines both in a line (terraces: flat steps cut into a slope to farm it; irrigation: bringing water to crops through channels, pipes or sprinklers); 5.1 and 5.10 teach them as farming practices and their effects. They no longer depend on \"agriculture\" (taught in 5.1). Integration pass 2026-11-09."
   }
  ]
 }

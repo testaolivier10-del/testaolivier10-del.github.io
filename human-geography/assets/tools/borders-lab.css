@@ -72,10 +72,4 @@
 .bl-sw.is-hot{border-radius:3px;background:var(--bl-hot);border:1px solid var(--bl-edge);}
 .bl-zkey{margin:0;padding-left:0;list-style:none;display:grid;gap:4px;font:600 13px/1.35 var(--font-ui);color:var(--ink);}
 .bl-zkey li.is-on b{color:var(--cink);text-decoration:underline;}
-/* A model step in the Tool Studio dock: the dock is narrow at every screen
-   width, so the drawing sits above the list of places (hug.css switches to two
-   columns by the viewport width; a request for the lead in self-t4.md). */
-.ls-root .hug-model-grid{grid-template-columns:minmax(0,1fr);}
-.ls-root .hug-model-art{max-width:220px;}
-.ls-root .hug-model[data-layout="stages"] .hug-model-art{max-width:260px;}
 .ls-root .bl-legend,.ls-root .bl-leg > .bt-small,.ls-root .bl-zkey{padding-right:46px;}

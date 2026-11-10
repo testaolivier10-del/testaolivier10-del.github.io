@@ -85,7 +85,10 @@ test('the "Skills you need" chapter sits before Unit 1, and no concept leans on 
   assert.deepEqual(order.slice(0, 4).map(t => t.id), ['skills-reading', 'skills-scale', 'skills-frq', 'views-of-the-world']);
   assert.ok(real.topics.filter(t => t.kind === 'skill').every(t => t.before === 'views-of-the-world' && !t.after));
   const taught = id => at(real.concepts.find(c => c.id === id).taughtIn);
-  for (const c of real.concepts) for (const d of c.dependsOn) assert.ok(taught(d) <= taught(c.id), `${c.id} uses ${d}`);
+  // The one exception is a declared preview box (the Industrial Revolution in 5.4).
+  const previewed = (c, d) => (real.topics.find(t => t.id === c.taughtIn).previews || []).some(p => p.concept === d);
+  for (const c of real.concepts) for (const d of c.dependsOn) assert.ok(taught(d) <= taught(c.id) || previewed(c, d), `${c.id} uses ${d}`);
+  assert.deepEqual(real.topics.flatMap(t => (t.previews || []).map(p => `${t.id}:${p.concept}`)), ['second-agricultural-revolution:industrialization']);
   const chain = ['map-scale', 'scale-of-analysis', 'population-density', 'physiological-density', 'population-pyramid', 'rate-of-natural-increase', 'demographic-transition-model', 'dependency-ratio', 'push-factor', 'diffusion', 'stimulus-diffusion', 'sovereignty', 'devolution', 'supranationalism', 'bid-rent-theory', 'von-thunen-model', 'rank-size-rule', 'concentric-zone-model', 'galactic-city-model', 'least-cost-theory', 'world-system-theory', 'comparative-advantage'];
   for (let i = 1; i < chain.length; i++) assert.ok(taught(chain[i - 1]) <= taught(chain[i]), `${chain[i - 1]} before ${chain[i]}`);
 });

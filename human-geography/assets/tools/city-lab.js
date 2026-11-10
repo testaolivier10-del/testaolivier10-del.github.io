@@ -24,22 +24,6 @@
   if(!T || !M || !M.cityLab || M.cityLab.stub) return;
   var CL = M.cityLab, esc = T.esc;
   function n1(v){ return Math.round(v * 10) / 10; }
-  /* Work-around until hug-tools.js is fixed (a request for the lead in
-     docs/aphug-reviews/self-t4.md): drill() hands ApHugModel.mount an
-     onChange that reads its feedback element before it exists, and mount()
-     calls onChange once while it paints. Hold onChange until mount returns. */
-  (function(){
-    var MD = window.ApHugModel;
-    if(!MD || MD.__t4Safe) return;
-    var orig = MD.mount;
-    MD.mount = function(el, m, o){
-      var ready = false, oc = o && o.onChange;
-      var ctl = orig.call(MD, el, m, Object.assign({}, o || {}, { onChange: function(x){ if(ready && oc) oc(x); } }));
-      ready = true;
-      return ctl;
-    };
-    MD.__t4Safe = true;
-  })();
   function phone(){ return (window.innerWidth || 1280) <= 640; }
   function numBadge(x, y, n, cls){ return '<g class="cl-num ' + (cls || '') + '"><circle cx="' + n1(x) + '" cy="' + n1(y) + '" r="11"/><text x="' + n1(x) + '" y="' + n1(y + 4.5) + '" text-anchor="middle">' + n + '</text></g>'; }
   function tag(x, y, text, W){

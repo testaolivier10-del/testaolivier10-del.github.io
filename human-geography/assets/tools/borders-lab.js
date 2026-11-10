@@ -26,22 +26,6 @@
   if(!T || !M || !M.bordersLab || M.bordersLab.stub) return;
   var B = M.bordersLab, esc = T.esc;
   function n1(v){ return Math.round(v * 10) / 10; }
-  /* Work-around until hug-tools.js is fixed (a request for the lead in
-     docs/aphug-reviews/self-t4.md): drill() hands ApHugModel.mount an
-     onChange that reads its feedback element before it exists, and mount()
-     calls onChange once while it paints. Hold onChange until mount returns. */
-  (function(){
-    var MD = window.ApHugModel;
-    if(!MD || MD.__t4Safe) return;
-    var orig = MD.mount;
-    MD.mount = function(el, m, o){
-      var ready = false, oc = o && o.onChange;
-      var ctl = orig.call(MD, el, m, Object.assign({}, o || {}, { onChange: function(x){ if(ready && oc) oc(x); } }));
-      ready = true;
-      return ctl;
-    };
-    MD.__t4Safe = true;
-  })();
   function phone(){ return (window.innerWidth || 1280) <= 640; }
   function tag(x, y, text, cls, W){
     var w = text.length * 7.6 + 14, h = 22, cx = Math.max(w / 2 + 3, Math.min((W || 9999) - w / 2 - 3, x));
@@ -200,14 +184,9 @@
   }
 
   /* ------------------------------------------------------- real cases */
-  var BASES = {}, mapLib = null;
-  /* hug-map.js is not on tool pages yet (a request for the lead in
-     docs/aphug-reviews/self-t4.md); until it is, load it once on demand. */
-  function needMap(){
-    if(window.ApHugMap) return Promise.resolve(window.ApHugMap);
-    if(!mapLib) mapLib = new Promise(function(ok, no){ var s = document.createElement('script'); s.src = (window.ApHugBase || '../') + 'assets/hug-map.js'; s.onload = function(){ ok(window.ApHugMap); }; s.onerror = no; document.head.appendChild(s); });
-    return mapLib;
-  }
+  var BASES = {};
+  /* The tool page loads hug-map.js (build-aphug.mjs toolShell). */
+  function needMap(){ return Promise.resolve(window.ApHugMap); }
   function base(id){
     if(BASES[id]) return BASES[id];
     BASES[id] = needMap().then(function(){ return fetch((window.ApHugBase || '../') + 'figures/base/' + id + '.json'); }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });

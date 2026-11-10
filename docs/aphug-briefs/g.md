@@ -10,7 +10,7 @@ Read `docs/aphug-briefs/content-common.md` first; it holds every rule. This file
 
 - Q1 type `none` (no stimulus) on `development-theories`: Rostow, Wallerstein and dependency theory: one country's path and each model's limits. File `human-geography/data/frq/frq-development-theory-none.json` (id `frq-development-theory-none`).
 - Q2 type `one` (one stimulus) on `development-measures`: A development indicator table: HDI, GII and what each measure shows and hides. File `human-geography/data/frq/frq-development-table-one.json` (id `frq-development-table-one`).
-- Q3 type `two` (two stimuli) on `world-economy-changes`: A regional map of industry and a research spending table: agglomeration and growth poles. File `human-geography/data/frq/frq-industrial-cluster-two.json` (id `frq-industrial-cluster-two`).
+- Q3 type `two` (two stimuli) on `world-economy-changes`: A foreign carmaker's plant in a farming province (a ministry plan as text, and a jobs-by-sector table): agglomeration, growth poles and the world economy (rewritten in the originality review, 2026-11-09). File `human-geography/data/frq/frq-industrial-cluster-two.json` (id `frq-industrial-cluster-two`).
 
 ## Stimulus sets planned in the map
 

@@ -52,12 +52,6 @@
 @media (max-width:640px){ .cl-keys.is-two{grid-template-columns:1fr;} }
 .cl-key-h{margin:0 0 4px;font:800 13.5px var(--font-ui);}
 .cl-key ol{margin:0;padding-left:1.6em;font:600 13px/1.4 var(--font-ui);}
-/* A model step in the Tool Studio dock: the dock is narrow at every screen
-   width, so the drawing sits above the list of places (hug.css switches to two
-   columns by the viewport width; a request for the lead in self-t4.md). */
-.ls-root .hug-model-grid{grid-template-columns:minmax(0,1fr);}
-.ls-root .hug-model-art{max-width:220px;}
-.ls-root .hug-model[data-layout="stages"] .hug-model-art{max-width:260px;}
 .ls-root .cl-legend,.ls-root .cl-note,.ls-root .cl-keys{padding-right:46px;}
 .cl-grid{stroke:var(--line,#ddd);stroke-width:1;}
 .cl-axis{fill:none;stroke:var(--cl-ink);stroke-width:1.4;}

@@ -52,7 +52,8 @@ exclusions. Nothing in this course uses them.
 
 ## Math and notation
 
-As AP® Psychology (TeX between dollar signs, MathML at build time). Human geography needs only fractions, `\times`,
+As AP® Psychology (TeX between dollar signs, MathML at build time). `\$` is the literal dollar sign: never math,
+printed as `$`, read as prose by the order check (in JSON `"\\$25"`, in notes HTML `\$25`). Human geography needs only fractions, `\times`,
 `\%`, `\approx` and `\text{}`: no concept owns notation in Phase 0 (an author may add a `notation` pattern to a
 concept, as the map test shows for doubling time).
 
@@ -112,12 +113,14 @@ item's set kind (`m`, `d`, `i`, `t`).
 ### Map stimulus (`ApHugMap`, `hug-map.js`)
 
 ```
-map: { base: 'world' | <region> | 'country-a', render: 'reference' | 'choropleth' | 'dot' | 'symbol' | 'isoline',
+map: { base: 'world' | <region> | 'country-a' | 'metro', render: 'reference' | 'choropleth' | 'dot' | 'symbol' | 'isoline' | 'flow',
        label: 'alt text, 20+ characters', source: 'dated' | invented: true, legendTitle,
        classes: [...2-6, low to high], values: { featureId: classIndex }, noData?, disputedOk?: 'reason',
        dots: { each, points: [[lon, lat], ...] },
        symbols: { unit, items: [{ at: featureId | [lon, lat], value }], legend?: [values] },   circle AREA ~ value
        isolines: { unit, lines: [{ value, points: [[lon, lat], ...], labelAt?: 0..1 }] },
+       flows: { unit, items: [{ from, to, value, bend? }], legend?: [values] },   1 to 12 arrows, width ~ value
+       labels?: 'codes' | 'names', labelOnly?: [featureId],                    area names or codes at centers
        focus?: [featureId], marks?: [{ at, text }] }
 ```
 
@@ -128,7 +131,14 @@ Equal Earth and simplified by `scripts/build-aphug-basemaps.mjs`; committed, nev
 neighbors drawn as grey context), and `country-a` (an invented country of eight provinces, for the local scale).
 Feature ids are slugs of the official short names (`turkiye`, `viet-nam`, `cote-d-ivoire`); Western Sahara,
 Northern Cyprus, Somaliland, Kosovo, Taiwan, Palestine and the Falkland Islands (Islas Malvinas) carry
-`disputed: true`. To list ids: `node -e "console.log(require('./human-geography/figures/base/world.json').features.map(f=>f.id).join(' '))"`.
+`disputed: true`. Invented bases: `country-a` (eight provinces, two-letter `code`s: NH, LD, EP, CR, WU, CV, SF,
+SC) and `metro` (600 x 420: `central-city` inside its bold city limit, eight suburbs `northfield` ... `fairview`,
+the grey `rural` fringe, `river`, `rail` with `station-1` to `station-6`, `ring-road`, `highway-west`; lines and
+stations are features a mark can point at, never areas a choropleth may color, and always listed in the legend).
+`node scripts/build-aphug-basemaps.mjs --invented [--check]` rewrites or checks those two without the atlas. A flow
+map's arrows bend to one side (opposite flows bend apart), take their width from the value (legend: three sample
+widths drawn at the map's scale), keep heads within a third of a short arrow, and stop short of area labels.
+Legend numbers carry thousands separators (`ApHugMap.num`). To list ids: `node -e "console.log(require('./human-geography/figures/base/world.json').features.map(f=>f.id).join(' '))"`.
 
 The build (`mapHtml` in `scripts/lib/aphug-build.mjs`) writes the picture as an SVG file with fixed colors (an
 `<img>`, on a white card in both themes) and puts every word in HTML at the page's size: the marks and isoline
@@ -139,8 +149,11 @@ show no position on any disputed territory." or, on Country A, "An invented coun
 Natural Earth" and "Open the map full size". `ApHugMap.check` refuses a map that cannot be read at 360 px: a label
 under 20 characters, a thematic map with no dated source or `invented`, a value on a disputed place without
 `disputedOk`, marks or values whose 360 px label boxes touch, a mark longer than 3 characters on the world map (22
-on a region), bad classes. Flow lines and cartograms are not renderings yet: draw them as figures (needs-author
-`map-renders`).
+on a region), bad classes. Cartograms are not a rendering yet: draw them as figures (needs-author `map-renders`).
+
+**Enlarge.** `figureImg` adds an Enlarge button to every figure without hidden labels (not to model drawings);
+under 760 px it shows under the drawing, and a tap on a drawing shown under 85% of its own width does the same:
+`hug-nav.js` opens a full-screen dialog with the drawing at its own width (scroll or pinch; Close or Esc).
 
 ### Population pyramid (`ApHugPlot` kind `pyramid`)
 
@@ -154,10 +167,15 @@ size in a card on a phone.
 ```
 { type: 'model', ..., model: { layout: 'rings' | 'sectors' | 'stages' | 'tiers' | 'free', title?, center?,
     unit?, slots: [{ id, name?, box?: [x%, y%, w%, h%] }], pieces: [{ id, text }], key: { slotId: pieceId },
-    slips?: [{ piece, slot, why }] }, modelFigure?: '<figure HTML for a free layout>' }
+    slips?: [{ piece, slot, why }], groups?: [[slotId, ...]], figure?: 'figure id (free)' } }
 ```
 
-Rings count from the center out; sectors clockwise from the top; stages first to last; tiers top to bottom. The
+A bank item with `layout: 'free'` names its drawing in `model.figure` (a `data/figures` id); the build adds
+`modelFigure` (the figure's markup) for pages and the static HTML, and lists a missing figure as a problem. A free
+layout draws a numbered badge centered in each slot's box on the drawing and lists the places under it with the
+same numbers (no place sits on the drawing); with no figure (a trainer drawing on its stage) only the list shows.
+`groups` makes slots interchangeable: a piece keyed to any slot of a group is right in any of them (the slip names
+the group). Rings count from the center out; sectors clockwise from the top; stages first to last; tiers top to bottom. The
 drawing shows only numbers; the places are a list of buttons beside it (below it on a phone) with their names
 ("Ring 1 (innermost)", or the authored `name`), and the pieces a tray of buttons: tap or click a piece, then its
 place (Enter and Space work on both), or drag a piece onto a place with a mouse or a finger; a filled place
@@ -167,7 +185,8 @@ tapped again sends its piece back. Graded by piece and position: `grade(model, p
 Ring 2", "X is not part of this model", "Nothing is placed in Ring 3"). The check refuses fewer than two or more
 than eight slots, a slot without a key, a piece keyed twice, more than three distractors, a piece over 40
 characters, a slip that is the right answer. Used the same way by bank items, lesson check items
-(`hug-questions.js` `modelItem`) and drill steps (`{ kind: 'model', model }` in `ApHugTools.drill`).
+(`hug-questions.js` `modelItem`) and drill steps (`{ kind: 'model', model, figureHtml? }` in `ApHugTools.drill`;
+`o.mixedLabel` names the kind picker's first option, "Any kind" by default).
 
 ### numeric
 
@@ -193,7 +212,9 @@ describe longer than a name). The build serves `readings` (titled "Source 1" and
 per part, `verbName` and `demand` from `VERBS` in `scripts/lib/aphug-exams.mjs`. The FRQ page shows each part's
 verb as a pill and its demand under the prompt, lined space for print, then (on request) one rubric line per point
 and the full-credit sample; the answer box gives the verb's live hints. An FRQ unlocks with the latest of its
-topics in course order and may use nothing taught after it.
+topics in course order and may use nothing taught after it: it is live when every unit it lists is published, and
+its page's Premium gate (`data-unit`, `data-topic`) is that latest topic and its unit (`units[0]` stays its main
+unit for lists and tallies).
 
 ### Plot spec (`ApHugPlot`)
 
@@ -229,8 +250,8 @@ As AP® Psychology (`--check`, `--out <dir>`, `APHUG_PUBLISHED=unit-1`, `APHUG_D
 | `pages/frq-kit.js` | The three types; 0-2 stimuli titled by kind; the verb pill and demand on every part; the verb's live hints. |
 | `pages/practice.js`, `dashboard.js`, `flashcards.js`, `search.js` | Filters for numeric, specific, model and the four set kinds; FRQ type names; skill categories; the "Formulas" deck. |
 | `hug.css` | Teal tint on `body.hug`; maps (picture card, marks, legend, caption), drawn-scene placeholder, the verb pill, the model item; the study, myth and help styles are gone. |
-| `tools/hug-plot.js` | `pyramid` added (gutter labels, outward ticks, no vertical axis); `histogram` and `normal` removed; data figures default to 300 px wide. |
-| `tools/hug-tools.js` | The `model` drill step. |
+| `tools/hug-plot.js` | `pyramid` added (gutter labels, outward ticks, no vertical axis); `histogram` and `normal` removed; data figures default to 300 px wide; the y-axis name in its own band above the plot; one 0 at a shared corner. |
+| `tools/hug-tools.js` | The `model` drill step (with `figureHtml`); `mixedLabel`. `hug-tools.css`: the model item one column in the Studio dock. |
 
 ## Tools
 
@@ -251,7 +272,7 @@ Slugs and topics: `model-studio` (transition-model), `frq-coach` (skills-frq), `
 `map-reader` (views-of-the-world), `population-lab` (population-composition), `diffusion-lab` (diffusion-types),
 `borders-lab` (defining-boundaries), `city-lab` (von-thunen). `_shared.mjs` loads `hug-math.js`, `hug-calc.js`,
 `hug-grade.js`, `hug-map.js`, `hug-model.js`, `hug-tool-math.js` and `hug-plot.js` in a vm (`runtime(slug)` returns
-`{ M, Tex, Calc, Grade, Plot, Map, Model, model }`). Drill steps: `num`, `choice`, `unit` and `model` (a setup step
+`{ M, Tex, Calc, Grade, Plot, Map, Model, model }`). Tool pages load `hug-map.js` with the shared scripts. Drill steps: `num`, `choice`, `unit` and `model` (a setup step
 is refused by `_drills.mjs`; a model step is checked and its key must grade right). Tool covers
 (`assets/covers/tools/aphug/`) come with each trainer in Phase 2.
 
@@ -310,6 +331,6 @@ node scripts/build-aphug.mjs --check
 node scripts/check-aphug-map.mjs --check            nothing used before it is taught
 node scripts/check-aphug-content.mjs --check        formats, recomputed keys, maps, models, sets, FRQ verbs, language, forms
 node scripts/build-aphug-basemaps.mjs --atlas <countries-110m.json> --check   the base maps (needs world-atlas 2.0.2)
-node --test scripts/test/aphug-*.test.mjs           map, build, calc, core, cram, exams, maps, math, model, plot, questions, syntax, tools
+node --test scripts/test/aphug-*.test.mjs           map, build, calc, core, cram, exams, integration, maps, math, model, plot, questions, syntax, tools
 scripts/ci-local.sh                                 all of the above (also .github/workflows/checks.yml)
 ```
