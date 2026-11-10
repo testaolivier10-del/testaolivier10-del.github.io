@@ -120,6 +120,20 @@ points: `docs/apmicro-needs-author.md`; briefs (authors A-E, builders T1-T4): `d
 section 9; the migration `2026-11i-apmicro.sql` is applied by the lead). Macro's build must stay
 byte-identical: run `node scripts/build-apmacro.mjs --check` after any shared change.
 
+## AP® Human Geography course
+
+`docs/aphug-spec.md` is the source of truth (owner brief, research summary, trainers, grading, build plan,
+decisions); read it before AP® Human Geography work and update it in the same commit. Research:
+`docs/aphug-research/` (`accuracy-risks.md` for stale facts, disputed places and group names). Formats, `ApHugCalc`,
+maps (`hug-map.js`, base maps in `human-geography/figures/base/`, map files in `figures/maps/`), the `model` item
+(`hug-model.js`), pyramids and the three FRQ types with task verbs: `docs/aphug-architecture.md`; writing rules
+(plain words, define before use, a named real place and scale, task verbs, stimulus questions need the stimulus,
+neutral and dated, no released questions): `docs/aphug-authoring-guide.md`; map: `docs/aphug-phase0.md`; open
+points: `docs/aphug-needs-author.md`; briefs (authors A-G, builders T1-T4): `docs/aphug-briefs/`; launch log:
+`docs/aphug-reviews/launch.md`. Published and live (all seven units and the skills chapter); Premium on sale once merged (Polar product,
+`hug-2027` in the Worker, migration `2026-11j-aphug.sql` and the owner grant done: spec section 9); merges right after
+AP® Microeconomics, which this branch already contains (fifteen courses, twelve AP® Exams).
+
 ## AI FRQ grader (AP® courses)
 
 `docs/frq-grader.md` is the status file (owner decisions, design, setup, eval and launch rule). Worker:

@@ -1,0 +1,12 @@
+{
+ "data-sources-two-kinds": {
+  "file": "figures/data-sources-two-kinds.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two columns. Quantitative data are numbers you can count or measure: a count of people in each town, satellite readings of crop cover, phone positions from satellite navigation, shares of homes with internet. Qualitative data are words, pictures and experiences: interviews with farmers, field notes and sketches, photos of a street, travel accounts and news stories. A note says a geographic information system, or GIS, stacks both kinds as layers on one map so you can ask how they line up."
+ }
+}

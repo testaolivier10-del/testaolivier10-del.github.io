@@ -1,0 +1,8 @@
+{
+ "redistricting": {
+  "def": "Redrawing the boundaries of voting districts so that each holds about the same number of people, in the United States after each census. Reapportionment, a different step, shares out seats among states first."
+ },
+ "gerrymandering": {
+  "def": "Drawing voting district boundaries to give one party or group an advantage. Packing crowds the other side's voters into a few districts; cracking splits them across many."
+ }
+}

@@ -1,0 +1,562 @@
+{
+ "stimuli": {
+  "diffusion-effects-s1": {
+   "kind": "text",
+   "title": "Four cases of cultures meeting",
+   "text": "<p><b>Four cases</b> (LevlPrep, 2026; cases 1 and 2 describe invented people, cases 3 and 4 real places)</p><p><b>Case 1.</b> Mai moved from Viet Nam to Houston, Texas, in 2015. She learned English for her job and cheers for the Houston Texans, but she speaks Vietnamese at home and celebrates Tết, the Lunar New Year.</p><p><b>Case 2.</b> The great-grandchildren of Norwegian immigrants to rural Minnesota speak only English. Apart from one holiday dish, they keep no Norwegian customs and think of themselves simply as Americans.</p><p><b>Case 3.</b> In Mexico, the Day of the Dead blends Indigenous traditions of honoring the dead with the Catholic days of All Saints and All Souls, into a festival with altars, marigolds and sugar skulls.</p><p><b>Case 4.</b> In Toronto, Canada, many groups keep their own languages, festivals and neighborhoods side by side. Canada made multiculturalism an official policy in 1971.</p>"
+  },
+  "diffusion-effects-s2": {
+   "kind": "data",
+   "title": "Three generations of one family",
+   "invented": true,
+   "table": {
+    "caption": "Culture traits in three generations of one invented family that moved from Country A to the United States (invented data for practice)",
+    "cols": [
+     "Generation",
+     "Language at home",
+     "Religion",
+     "Holiday food"
+    ],
+    "rows": [
+     [
+      "1st (moved as adults)",
+      "Language A only",
+      "Religion of Country A",
+      "Dishes from Country A"
+     ],
+     [
+      "2nd (born in the US)",
+      "Language A and English",
+      "Religion of Country A",
+      "Dishes from both countries"
+     ],
+     [
+      "3rd (grandchildren)",
+      "English only",
+      "Mixed: some none",
+      "Mostly US dishes"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-diffusion-effects-1",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "diffusion-effects-s1",
+   "q": "Which effect of diffusion does Case 1 show?",
+   "options": [
+    "Assimilation",
+    "Syncretism",
+    "Acculturation",
+    "Multiculturalism"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Mai adopted some traits of her new home (English, the Texans) while keeping her own (Vietnamese at home, Tết). That is acculturation.",
+    "options": [
+     "Assimilation would mean Mai's Vietnamese traits fading away, but she still speaks Vietnamese and celebrates Tết.",
+     "Mai keeps both cultures side by side; nothing in the case blends them into a new form.",
+     "Right: Mai adopted some traits of her new home (English, the Texans) while keeping her own (Vietnamese at home, Tết). That is acculturation.",
+     "Multiculturalism describes a society of many groups. Case 1 is about one person adopting some new traits and keeping her own."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-2",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "diffusion-effects-s1",
+   "q": "Which effect of diffusion does Case 2 show?",
+   "options": [
+    "Assimilation",
+    "Acculturation",
+    "Syncretism",
+    "Multiculturalism"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "by the fourth generation the family's Norwegian language and customs have faded, and they identify simply as Americans. That is assimilation.",
+    "options": [
+     "Right: by the fourth generation the family's Norwegian language and customs have faded, and they identify simply as Americans. That is assimilation.",
+     "Acculturation keeps the old culture alongside the new one. Here the Norwegian traits have nearly vanished.",
+     "Nothing has blended into a new form; one culture replaced the other.",
+     "The family no longer keeps its own culture beside others, so this is not multiculturalism."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-3",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "diffusion-effects-s1",
+   "q": "Which effect of diffusion does Case 3 show?",
+   "options": [
+    "Assimilation",
+    "Acculturation",
+    "Multiculturalism",
+    "Syncretism"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Indigenous and Catholic traditions blended into a new festival that neither had before. Blending into something new is syncretism.",
+    "options": [
+     "Indigenous traditions did not fade away; they are central to the festival.",
+     "Acculturation keeps two cultures separate in one person or group. Here the traditions merged into one new form.",
+     "Multiculturalism keeps cultures side by side and separate; here they blended.",
+     "Right: Indigenous and Catholic traditions blended into a new festival that neither had before. Blending into something new is syncretism."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-4",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "diffusion-effects-s1",
+   "q": "Which statement best compares Case 3 and Case 4?",
+   "options": [
+    "Both cases show cultures blending into one new form",
+    "Case 3 blends cultures; Case 4 keeps them apart",
+    "Both cases show one culture replacing another",
+    "Case 3 keeps cultures apart; Case 4 blends them"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "syncretism (Case 3) merges traits into something new, whereas multiculturalism (Case 4) keeps each group's traits distinct.",
+    "options": [
+     "Case 4 describes groups keeping their own traits side by side, not blending.",
+     "Right: syncretism (Case 3) merges traits into something new, whereas multiculturalism (Case 4) keeps each group's traits distinct.",
+     "Neither case shows replacement; that would be assimilation, as in Case 2.",
+     "This reverses the two cases."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-5",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "diffusion-effects-s2",
+   "q": "Which statement best describes the trend in the table from the first generation to the third?",
+   "options": [
+    "Traits from Country A fade with each generation",
+    "Traits from Country A grow stronger with each generation",
+    "Traits from Country A stay the same in each generation",
+    "Traits from Country A first appear in the third generation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "language, religion and food from Country A are strongest in the first generation and weakest in the third.",
+    "options": [
+     "Right: language, religion and food from Country A are strongest in the first generation and weakest in the third.",
+     "The third generation speaks English only and eats mostly US dishes, so the traits weaken.",
+     "Each column changes from the first row to the third.",
+     "The first generation has the most traits from Country A."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-6",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "diffusion-effects-s2",
+   "q": "Which generation best shows acculturation, and why?",
+   "options": [
+    "The 1st: it speaks just Language A at home",
+    "The 2nd: English added, Language A kept",
+    "The 3rd: it speaks just English at home",
+    "No generation: the table shows syncretism"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the second generation has added English and US food while keeping Language A and the family religion, which is acculturation.",
+    "options": [
+     "The first generation has adopted few traits of the new culture, so it shows little acculturation.",
+     "Right: the second generation has added English and US food while keeping Language A and the family religion, which is acculturation.",
+     "Losing Language A completely is closer to assimilation than acculturation.",
+     "Nothing in the table blends into a new form; traits are added and lost."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-7",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "stimulus": "diffusion-effects-s2",
+   "q": "A student says the table proves that every family from Country A assimilates by the third generation. What is the main limitation of this claim?",
+   "options": [
+    "It has too many columns to compare",
+    "It uses invented data from Country A",
+    "It shows one family, not the whole group",
+    "It does not show the family's religion"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "one family at the local scale cannot stand for every migrant family. You would need data on many families, from a census or a large study.",
+    "options": [
+     "Four columns are easy to compare; the problem is that there is one family.",
+     "Even with real data, one family could not prove a claim about every family.",
+     "Right: one family at the local scale cannot stand for every migrant family. You would need data on many families, from a census or a large study.",
+     "The table does show religion in each generation."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-8",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which statement correctly compares acculturation and assimilation?",
+   "options": [
+    "Both mean blending two cultures into a new form",
+    "Acculturation is forced; assimilation is a free choice",
+    "Assimilation keeps the old culture; acculturation drops it",
+    "Acculturation keeps old traits; assimilation loses them"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "in acculturation a group adopts some new traits but keeps its own. In assimilation it takes on the new culture so fully that its own traits fade away.",
+    "options": [
+     "That is syncretism. Acculturation and assimilation are about adopting another culture's traits.",
+     "Either one can be chosen or pressed on people. The difference is how much of the old culture remains.",
+     "This reverses the two terms.",
+     "Right: in acculturation a group adopts some new traits but keeps its own. In assimilation it takes on the new culture so fully that its own traits fade away."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-9",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Santería, practiced in Cuba, blends Yoruba religious traditions brought by enslaved West Africans with the saints of Roman Catholicism. Which effect of diffusion is this?",
+   "options": [
+    "Syncretism",
+    "Assimilation",
+    "Multiculturalism",
+    "Acculturation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "two religious traditions merged into a new form, which is syncretism.",
+    "options": [
+     "Right: two religious traditions merged into a new form, which is syncretism.",
+     "Yoruba traditions did not fade; they are central to Santería.",
+     "The traditions merged rather than staying side by side and separate.",
+     "This is a new blended religion, not people keeping their own culture while adding new traits."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-10",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "A city is described as a \"salad bowl\": each group keeps its own flavor, yet all share one bowl. Which effect of diffusion does the image describe?",
+   "options": [
+    "Assimilation",
+    "Multiculturalism",
+    "Syncretism",
+    "Ethnocentrism"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "in a salad, each piece keeps its own taste and shape, as groups keep their own traits while living together.",
+    "options": [
+     "Assimilation is closer to a \"melting pot,\" where traits melt into one culture.",
+     "Right: in a salad, each piece keeps its own taste and shape, as groups keep their own traits while living together.",
+     "Syncretism blends traits into a new form; a salad keeps them separate.",
+     "Ethnocentrism is judging others by your own culture, not living side by side."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-11",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Match each effect of diffusion to its example.",
+   "model": {
+    "layout": "tiers",
+    "title": "Four effects of diffusion",
+    "slots": [
+     {
+      "id": "acc",
+      "name": "Acculturation"
+     },
+     {
+      "id": "ass",
+      "name": "Assimilation"
+     },
+     {
+      "id": "syn",
+      "name": "Syncretism"
+     },
+     {
+      "id": "mul",
+      "name": "Multiculturalism"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "mai",
+      "text": "Learns English, keeps Tết at home"
+     },
+     {
+      "id": "nor",
+      "text": "Great-grandkids keep no old customs"
+     },
+     {
+      "id": "dead",
+      "text": "Day of the Dead blends two traditions"
+     },
+     {
+      "id": "tor",
+      "text": "Toronto groups live side by side"
+     },
+     {
+      "id": "pid",
+      "text": "Traders bargain in a shared language"
+     }
+    ],
+    "key": {
+     "acc": "mai",
+     "ass": "nor",
+     "syn": "dead",
+     "mul": "tor"
+    },
+    "slips": [
+     {
+      "piece": "mai",
+      "slot": "ass",
+      "why": "She still keeps Tết and her home language, so her own culture has not faded: that is acculturation, not assimilation."
+     },
+     {
+      "piece": "tor",
+      "slot": "syn",
+      "why": "Toronto's groups keep their own traits side by side; nothing blends into a new form, so it is multiculturalism."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Acculturation adds new traits and keeps old ones; assimilation lets old ones fade; syncretism blends into something new; multiculturalism keeps groups side by side."
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-12",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "From the 1880s until the last one closed in 1996, Canada's government ran residential schools that took many Indigenous children from their families and punished them for speaking their own languages. Which effect of diffusion did this policy aim at?",
+   "options": [
+    "Multiculturalism, keeping each culture side by side",
+    "Syncretism, blending cultures into a new form",
+    "Forced assimilation into the dominant culture",
+    "Acculturation, freely keeping one's own culture"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "the schools tried to replace Indigenous languages and ways of life with the dominant culture. Canada's Truth and Reconciliation Commission (2015) documented the harm they caused.",
+    "options": [
+     "The schools punished children for their own languages, the opposite of keeping cultures side by side.",
+     "The aim was replacement, not a blend.",
+     "Right: the schools tried to replace Indigenous languages and ways of life with the dominant culture. Canada's Truth and Reconciliation Commission (2015) documented the harm they caused.",
+     "The children were not free to keep their culture; the aim was to erase it."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-13",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Canada has had an official multiculturalism policy since 1971. At the local scale, Toronto has neighborhoods such as Chinatown and Little Portugal. How do the two scales relate?",
+   "options": [
+    "The national policy shows that each city has one culture",
+    "Local neighborhoods prove the national policy has failed",
+    "Scale makes no difference to how culture is seen",
+    "A national policy shows in local neighborhoods"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "the national policy supports groups keeping their cultures, and at the local scale that shows up as distinct neighborhoods in one city.",
+    "options": [
+     "A multiculturalism policy supports many cultures, not one.",
+     "Distinct neighborhoods fit a policy that supports groups keeping their cultures.",
+     "The example shows a national policy and its local landscape, which link two scales.",
+     "Right: the national policy supports groups keeping their cultures, and at the local scale that shows up as distinct neighborhoods in one city."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-14",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "An exchange student from Brazil spends a year in Chicago. She starts using American slang and eating pancakes for breakfast, but she still speaks Portuguese with her family on video calls. Which effect is this?",
+   "options": [
+    "Acculturation",
+    "Assimilation",
+    "Syncretism",
+    "Multiculturalism"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "she adopted some new traits while keeping her own language and ties, which is acculturation.",
+    "options": [
+     "Right: she adopted some new traits while keeping her own language and ties, which is acculturation.",
+     "Her Brazilian traits have not faded; she still speaks Portuguese with family.",
+     "Nothing has blended into a new form; she uses both cultures.",
+     "Multiculturalism describes a society of many groups, not one person adopting traits."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-15",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.C",
+   "q": "Build a comparison of assimilation and acculturation, using one named example for each.",
+   "why": {
+    "correct": "A compare speaks of both sides and says how they differ: the old culture fades in assimilation and stays in acculturation."
+   },
+   "specific": {
+    "frame": "In ___, ___ shows assimilation, whereas ___ shows acculturation, because ___.",
+    "write": {
+     "both": true
+    },
+    "model": "In Minnesota, great-grandchildren of Norwegian immigrants who speak only English show assimilation, whereas a newcomer in Houston who learns English but celebrates Tết at home shows acculturation, because assimilation lets the old culture fade but acculturation keeps it beside the new one.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Minnesota",
+       "somewhere in the United States"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A vague place earns no credit. Name the state."
+      }
+     },
+     "ass": {
+      "label": "Assimilation example",
+      "options": [
+       "great-grandchildren of Norwegian immigrants who speak only English",
+       "a newcomer who speaks two languages"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Someone who keeps two languages has not lost the old culture: that is acculturation."
+      }
+     },
+     "acc": {
+      "label": "Acculturation example",
+      "options": [
+       "a newcomer in Houston who learns English but celebrates Tết at home",
+       "a festival that blends two religions"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A blend of two religions into a new form is syncretism."
+      }
+     },
+     "link": {
+      "label": "The difference",
+      "options": [
+       "assimilation lets the old culture fade but acculturation keeps it beside the new one",
+       "both blend cultures into a new form"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Blending into a new form is syncretism, and a compare must say how the two differ."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-diffusion-effects-16",
+   "unit": "unit-3",
+   "topic": "diffusion-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are examples of syncretism? Select all that apply.",
+   "options": [
+    "The Day of the Dead in Mexico, blending Indigenous and Catholic traditions",
+    "Santería in Cuba, blending Yoruba traditions and Catholic saints",
+    "A newcomer learning English while speaking Vietnamese at home",
+    "Many groups keeping their own festivals in Toronto",
+    "Great-grandchildren who keep no customs from Norway"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Syncretism blends traits into a new form: the Day of the Dead and Santería. Learning a second language keeps two cultures apart (acculturation), and groups side by side are multiculturalism.",
+    "options": [
+     "Right: two traditions merged into a new festival.",
+     "Right: a new religion formed from two traditions.",
+     "She keeps the two cultures side by side: acculturation.",
+     "Groups side by side, each keeping its traits, is multiculturalism.",
+     "Old traits fading away is assimilation."
+    ]
+   }
+  }
+ ]
+}

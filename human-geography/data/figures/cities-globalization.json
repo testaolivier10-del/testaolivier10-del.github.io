@@ -1,0 +1,12 @@
+{
+ "cities-globalization-hierarchy": {
+  "file": "figures/cities-globalization-hierarchy.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A pyramid of five tiers. At the top, a few world cities such as London and New York that command global finance and media. Below, major cities that link large world regions. Then national capitals and large cities, then regional cities, and at the wide base many small towns. Arrows show money, decisions and information flowing down and across, and goods and people moving up."
+ }
+}

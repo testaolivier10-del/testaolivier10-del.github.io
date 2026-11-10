@@ -1,0 +1,22 @@
+{
+ "von-thunen-rings": {
+  "file": "figures/von-thunen-rings.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 728,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Concentric rings around a market town M on a flat plain. Ring 1, nearest the market: market gardening and dairy. Ring 2: forest, for fuel and lumber. Ring 3: grain and field crops. Ring 4: livestock ranching. Beyond ring 4 is wilderness."
+ },
+ "von-thunen-river": {
+  "file": "figures/von-thunen-river.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A drawn map of an invented region. Zones of land use surround a market town in stretched ovals that are much longer east to west, along a river, than north to south. Zones are lettered from the town outward: W nearest the town, then X, Y and Z. Area V, in the far corner, lies outside all the zones. A small town in the southeast has its own small zone the same color as zone W around it."
+ }
+}

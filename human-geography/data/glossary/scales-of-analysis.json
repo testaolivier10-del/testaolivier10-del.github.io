@@ -1,0 +1,5 @@
+{
+ "aggregation": {
+  "def": "Data made by combining values for smaller units into one value for a larger unit, such as adding provinces into a national figure. Aggregated data can hide differences between the smaller units."
+ }
+}

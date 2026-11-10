@@ -1,0 +1,32 @@
+{
+ "primary-sector": {
+  "def": "The part of the economy that takes resources straight from nature: farming, fishing, forestry and mining."
+ },
+ "secondary-sector": {
+  "def": "The part of the economy that turns raw materials into goods, such as factories and building."
+ },
+ "tertiary-sector": {
+  "def": "The part of the economy that provides services, such as shops, transport, health care and teaching. Also called the service sector."
+ },
+ "quaternary-sector": {
+  "def": "The part of the service economy that creates and moves information, such as research, software and finance."
+ },
+ "quinary-sector": {
+  "def": "The part of the service economy where the highest-level decisions are made, by top officers of big firms and governments."
+ },
+ "break-of-bulk": {
+  "def": "A place where goods are moved from one kind of transport to another, such as from ships to trains at a port. Processing plants often cluster there."
+ },
+ "least-cost-theory": {
+  "def": "A model that says a factory locates where its total costs of transport, labor and nearby firms are lowest. Weight-losing industries locate near raw materials, weight-gaining ones near markets."
+ },
+ "core": {
+  "def": "In world-system terms, the countries with mostly high-wage service, research and decision jobs and advanced industry. A model category, not an official list."
+ },
+ "semiperiphery": {
+  "def": "In world-system terms, countries between the core and the periphery, with a large factory sector and growing services. A model category, not an official list."
+ },
+ "periphery": {
+  "def": "In world-system terms, countries where many people do primary-sector and low-wage work, often exporting raw materials. A model category, not an official list."
+ }
+}

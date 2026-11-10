@@ -1,0 +1,12 @@
+{
+ "sustainable-development-circles": {
+  "file": "figures/sustainable-development-circles.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 516,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three overlapping circles. Economy: jobs and income. Society: health and school. Environment: air, water and climate. The point where all three overlap is labeled sustainable development."
+ }
+}

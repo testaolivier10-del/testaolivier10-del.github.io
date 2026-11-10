@@ -227,6 +227,17 @@
       { min: 20, title: 'Game Theorist' },
       { min: 30, title: 'Microeconomics Legend' },
     ],
+    // docs/aphug-spec.md section 4 (provisional until launch). The first is
+    // also IDENTITY.firstRank in scripts/lib/aphug-build.mjs.
+    aphug: [
+      { min: 1,  title: 'Map Reader' },
+      { min: 3,  title: 'Scale Shifter' },
+      { min: 6,  title: 'Pattern Spotter' },
+      { min: 10, title: 'Region Builder' },
+      { min: 15, title: 'Model Maker' },
+      { min: 20, title: 'World Analyst' },
+      { min: 30, title: 'Geography Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -247,6 +258,7 @@
     { key: 'apcalcbc', rankLabel: 'Calculus BC rank' },
     { key: 'apmacro', rankLabel: 'Macroeconomics rank' },
     { key: 'apmicro', rankLabel: 'Microeconomics rank' },
+    { key: 'aphug', rankLabel: 'Human Geography rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

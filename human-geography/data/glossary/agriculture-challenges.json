@@ -1,0 +1,20 @@
+{
+ "aquaculture": {
+  "def": "The farming of fish, shellfish and seaweed in ponds, tanks or ocean pens."
+ },
+ "food-desert": {
+  "def": "An area where people have poor access to affordable, healthy food, often a low-income area far from any supermarket."
+ },
+ "food-insecurity": {
+  "def": "Not having reliable access to enough safe, nutritious food."
+ },
+ "fair-trade": {
+  "def": "A labeling system in which buyers pay producers, often in less developed countries, a minimum price and a premium, under set labor and environmental rules."
+ },
+ "community-supported-agriculture": {
+  "def": "An arrangement in which members pay a local farm in advance for a share of its harvest and share its risk; also called CSA."
+ },
+ "value-added-crop": {
+  "def": "A farm product processed, branded or certified to earn more per unit, such as farmstead cheese or organic produce."
+ }
+}

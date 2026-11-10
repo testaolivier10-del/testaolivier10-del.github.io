@@ -1,0 +1,71 @@
+{
+ "topic": "diffusion-types",
+ "hook": "In 1821, a Cherokee silversmith named Sequoyah finished a way to write his language. He never learned to read English; he only saw that English speakers could send words on paper. One idea crossed a cultural line and came out as something new. Traits spread in a few different ways, and each way leaves a different pattern on a map.",
+ "prereq": [
+  {
+   "q": "What is distance decay?",
+   "options": [
+    "Contact between places falls as distance grows",
+    "Places get farther apart over time",
+    "Maps distort distance near the poles",
+    "Travel time shrinks as technology improves"
+   ],
+   "correct": 0,
+   "why": "Distance decay means interaction between two places weakens the farther apart they are.",
+   "review": "spatial-concepts"
+  },
+  {
+   "q": "Many families from one Mexican town settle in one Chicago neighborhood because relatives live there. What is this?",
+   "options": [
+    "Chain migration",
+    "Step migration",
+    "Forced migration",
+    "Internal migration"
+   ],
+   "correct": 0,
+   "why": "Chain migration is moving where family or friends from home already live.",
+   "review": "forced-voluntary-migration"
+  }
+ ],
+ "figure": {
+  "figure": "diffusion-types-four",
+  "caption": "Four ways a trait spreads: relocation, and the three kinds of expansion diffusion."
+ },
+ "chain": [
+  {
+   "cause": "A trait begins in one place, its hearth",
+   "effect": "it can spread outward to other places: diffusion"
+  },
+  {
+   "cause": "People who hold the trait move to a new place",
+   "effect": "the trait moves with them: relocation diffusion"
+  },
+  {
+   "cause": "The trait spreads while it stays strong at home",
+   "effect": "that is expansion diffusion, by contact (contagious), down a ladder of size or power (hierarchical), or as an idea that changes (stimulus)"
+  },
+  {
+   "cause": "Distance grows between the hearth and other places",
+   "effect": "contact falls, so contagious diffusion weakens far away, unless fast links shrink distance"
+  }
+ ],
+ "ideas": [
+  "<b>Diffusion</b> is the spread of a trait from its <b>hearth</b>, the place where it began.",
+  "<b>Relocation diffusion</b>: people move and carry the trait, as Irish migrants brought Saint Patrick's Day parades to Boston. <b>Expansion diffusion</b>: the trait spreads outward and stays strong at home.",
+  "Expansion comes in three kinds. <b>Contagious</b>: person to person, place to nearby place. <b>Hierarchical</b>: from big or powerful places to smaller ones (or in reverse, as Walmart did). <b>Stimulus</b>: the idea spreads but is changed, as with Sequoyah's syllabary.",
+  "Real spread mixes kinds: a trait can jump between big cities (hierarchical) and then ripple outward from each (contagious). Name each stage separately."
+ ],
+ "misconception": {
+  "wrong": "Any trait that reaches a faraway place got there by relocation diffusion.",
+  "right": "Relocation needs people to move with the trait. K-pop reached fans in many countries through streaming while staying hugely popular in South Korea: that is expansion diffusion."
+ },
+ "check": [
+  "hug-diffusion-types-1",
+  "hug-diffusion-types-2",
+  "hug-diffusion-types-3",
+  "hug-diffusion-types-8",
+  "hug-diffusion-types-9",
+  "hug-diffusion-types-10"
+ ],
+ "summary": "Diffusion is the spread of a trait from its hearth. In relocation diffusion people move and take the trait along. In expansion diffusion the trait spreads while it stays strong at home: contagiously to nearby people and places, hierarchically from large or powerful places to smaller ones (or the reverse), or as stimulus diffusion when the idea spreads but changes. Real cases often mix types, and distance decay and time-space compression shape how far and how fast a trait spreads."
+}

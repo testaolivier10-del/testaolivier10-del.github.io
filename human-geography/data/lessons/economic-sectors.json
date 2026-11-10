@@ -1,0 +1,72 @@
+{
+ "topic": "economic-sectors",
+ "hook": "Copper for the wires in your phone may have been dug in Chile, smelted beside the mine, shipped through a port, made into parts in China and sold by a store clerk near you, while engineers in California wrote its software. Every step is a different kind of work, done in a different place for a reason. Why is each step where it is?",
+ "prereq": [
+  {
+   "q": "What is the situation of a place?",
+   "options": [
+    "Its location relative to other places, such as rivers, roads and markets",
+    "Its physical features, such as soil and climate",
+    "Its latitude and longitude",
+    "The feeling people have about it"
+   ],
+   "correct": 0,
+   "why": "Situation is a place's location relative to other places; factory location depends on it.",
+   "review": "spatial-concepts"
+  },
+  {
+   "q": "What are economies of scale?",
+   "options": [
+    "Lower cost per item when a firm produces in large amounts",
+    "Higher prices for goods made far away",
+    "Taxes on goods that cross a border",
+    "Small farms that sell at local markets"
+   ],
+   "correct": 0,
+   "why": "Producing more spreads fixed costs over more items, so each costs less.",
+   "review": "farm-organization"
+  }
+ ],
+ "figure": {
+  "figure": "economic-sectors-ladder",
+  "caption": "The five economic sectors, from taking things from nature at the bottom to top decisions at the top."
+ },
+ "chain": [
+  {
+   "cause": "A good is made from raw materials, by workers, for buyers",
+   "effect": "its maker weighs the costs of raw materials, labor, energy and transport"
+  },
+  {
+   "cause": "A product weighs less than its raw materials (weight-losing)",
+   "effect": "the factory locates near the raw materials, as copper smelters do near Chile's mines"
+  },
+  {
+   "cause": "A product weighs more than its inputs (weight-gaining)",
+   "effect": "the factory locates near its market, as soft-drink bottlers do near cities"
+  },
+  {
+   "cause": "Goods switch from ships to trains at a port (a break-of-bulk point)",
+   "effect": "processing plants cluster there, as at Rotterdam"
+  }
+ ],
+ "ideas": [
+  "Five sectors: <b>primary</b> (take from nature), <b>secondary</b> (make goods), <b>tertiary</b> (services), <b>quaternary</b> (information and research), <b>quinary</b> (top decisions).",
+  "Sort a job by what the worker does, not by what the firm sells.",
+  "<b>Least cost theory</b>: a factory locates where transport, labor and nearby-firm costs are lowest. Weight-losing industries go to the raw material; weight-gaining ones go to the market.",
+  "A <b>break-of-bulk point</b> is where goods change transport modes, such as a port; processing clusters there.",
+  "Countries often classed as <b>core</b> have mostly service, research and decision jobs; those often classed as <b>periphery</b> have more primary work; the <b>semiperiphery</b> is in between."
+ ],
+ "misconception": {
+  "wrong": "A factory always locates where wages are lowest.",
+  "right": "Labor is one cost among several. A copper smelter sits by the mine to avoid hauling waste rock, a bottler sits by its buyers, and Iceland's aluminum smelters follow cheap power. The heaviest cost decides."
+ },
+ "check": [
+  "hug-economic-sectors-1",
+  "hug-economic-sectors-2",
+  "hug-economic-sectors-3",
+  "hug-economic-sectors-9",
+  "hug-economic-sectors-10",
+  "hug-economic-sectors-12"
+ ],
+ "summary": "Jobs fall into five sectors, from taking resources from nature to making the top decisions. Factories locate to keep total costs low: weight-losing industries near raw materials, weight-gaining ones near markets, and processing at break-of-bulk points. Core countries have mostly service and research jobs; the periphery more primary work."
+}

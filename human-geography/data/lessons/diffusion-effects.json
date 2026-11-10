@@ -1,0 +1,71 @@
+{
+ "topic": "diffusion-effects",
+ "hook": "Each November, families in Mexico build altars with marigolds and sugar skulls for the Day of the Dead, a festival that blends Indigenous traditions with Catholic holy days. A few thousand kilometers north, the great-grandchildren of Norwegian immigrants in Minnesota keep almost nothing of Norway. When cultures meet, the results differ, and AP® Human Geography names four of them.",
+ "prereq": [
+  {
+   "q": "Cultures meeting in one place mix into a new local form, such as a new language or food. What is this called?",
+   "options": [
+    "Creolization",
+    "Ethnocentrism",
+    "Distance decay",
+    "Placemaking"
+   ],
+   "correct": 0,
+   "why": "Creolization is the mixing of cultures into a new local form.",
+   "review": "diffusion-history"
+  },
+  {
+   "q": "Which religion does AP® Human Geography class as universalizing?",
+   "options": [
+    "Christianity",
+    "Hinduism",
+    "Judaism",
+    "Shinto"
+   ],
+   "correct": 0,
+   "why": "Christianity, Islam, Buddhism and Sikhism are classed as universalizing; Hinduism and Judaism as ethnic.",
+   "review": "religion-language-diffusion"
+  }
+ ],
+ "figure": {
+  "figure": "diffusion-effects-outcomes",
+  "caption": "Four results when two cultures meet."
+ },
+ "chain": [
+  {
+   "cause": "Diffusion brings two cultures into contact",
+   "effect": "people adopt, keep, lose or blend traits"
+  },
+  {
+   "cause": "A group adopts some new traits and keeps its own",
+   "effect": "that is acculturation, as with a newcomer who learns English but keeps her home language"
+  },
+  {
+   "cause": "Over generations, a group's own traits fade away",
+   "effect": "that is assimilation, sometimes chosen and sometimes forced, as in Canada's residential schools"
+  },
+  {
+   "cause": "Traits blend into a new form, or groups keep their cultures side by side",
+   "effect": "the result is syncretism (the Day of the Dead) or multiculturalism (Toronto)"
+  }
+ ],
+ "ideas": [
+  "<b>Acculturation</b>: a group adopts some traits of another culture and keeps its own.",
+  "<b>Assimilation</b>: a group takes on another culture so fully that its own traits fade away. It can be chosen, or forced by policy.",
+  "<b>Syncretism</b>: traits from two cultures blend into a new form, such as the Day of the Dead in Mexico or Santería in Cuba.",
+  "<b>Multiculturalism</b>: many cultures live side by side in one society and each keeps its own traits, as in Toronto under Canada's 1971 policy."
+ ],
+ "misconception": {
+  "wrong": "Acculturation and assimilation mean the same thing.",
+  "right": "They differ in what remains. In acculturation the old culture stays beside the new one (a newcomer in Houston who keeps Vietnamese at home). In assimilation it fades away (Norwegian immigrants' great-grandchildren in Minnesota who speak only English)."
+ },
+ "check": [
+  "hug-diffusion-effects-1",
+  "hug-diffusion-effects-2",
+  "hug-diffusion-effects-3",
+  "hug-diffusion-effects-4",
+  "hug-diffusion-effects-8",
+  "hug-diffusion-effects-10"
+ ],
+ "summary": "When diffusion brings cultures together, four results are common. In acculturation a group adds new traits and keeps its own. In assimilation its own traits fade away, by choice or by force. In syncretism traits blend into a new form, as in the Day of the Dead. In multiculturalism groups live side by side, each keeping its culture. Telling them apart comes down to one question: what happened to the original culture?"
+}

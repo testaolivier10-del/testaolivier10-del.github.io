@@ -29,7 +29,7 @@
    Every page loads the same shell: theme.css, the two typefaces, account.js,
    site-chrome.js and the rest of /assets/. That is most of a first visit and
    nothing at all on every visit after, since it is one cache entry for the
-   whole site. Counted into all fourteen page budgets it would put every page
+   whole site. Counted into all fifteen page budgets it would put every page
    within a few KB of every other — exactly the resolution at which a
    page-specific regression disappears. So:
 
@@ -67,6 +67,8 @@ const check = process.argv.includes('--check');
    number cannot go below without dropping a weight or a character set. The
    rest, ~95 KB, is theme.css and the shared modules, and that is the part any
    commit can move. */
+// AP® Human Geography's course shell budget (see its entry below): measured 77.1 KB in Phase 0.
+const HUG_SHELL = 80;
 const SHELL_BUDGETS = [
   /* The video lesson block's stylesheet and player (assets/video/), loaded
      only by pages that show a video; measured 3.5 KB. Thumbnails are images,
@@ -199,10 +201,13 @@ const SHELL_BUDGETS = [
      reads back the daily questions and free exams of a signed-in free user. Measured 348.1 KB. */
   /* 348.4 -> 349 for registering AP® Microeconomics (docs/apmicro-spec.md, Phase 0): the fourteenth course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam
-     date, the theme tint and the shared selector twins (measured 348.7 KB with it). */
-  /* 349 -> 351 (reminders offered in every course, owner 2026-11-10, docs/reminders.md): reminders.js reads what
-     is due in every course, offers email where push cannot work and asks once after a new account. Measured 350.8 KB. */
-  ['site', 351],
+     date, the theme tint and the shared selector twins (measured 348.7 KB with it).
+     349 -> 349.8 for registering AP® Human Geography (docs/aphug-spec.md, Phase 0), the fifteenth course, the
+     same lists again (measured 349.3 KB with both). */
+  /* 349.8 -> 352 (reminders offered in every course, owner 2026-11-10, docs/reminders.md): reminders.js reads what
+     is due in every course, offers email where push cannot work and asks once after a new account. Measured 350.8 KB
+     with fourteen courses; with AP® Human Geography in its course list as well, see the launch log. */
+  ['site', 352],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -522,6 +527,13 @@ const SHELL_BUDGETS = [
      (2026-11-10, docs/apmicro-reviews/launch.md): the built curriculum of the 40 published topics (Macro grew
      the same way) and the phone legibility fixes in mic-graph.js, mic-core.js and mic.css; measured 117.5. */
   ['microeconomics', 119],
+  /* AP® Human Geography (human-geography/, a fork of the AP® Psychology runtime,
+     docs/aphug-spec.md decision 1): ApHugCalc (hug-calc.js) in place of
+     ApPsychStats, the model item (hug-model.js) on every question page, the
+     task verbs on the FRQ kit; maps are SVG files drawn at build time, so
+     they are images, not shell. Measured in Phase 0 before any unit is
+     published (HUG_SHELL below). */
+  ['human-geography', HUG_SHELL],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -851,6 +863,16 @@ const BUDGETS = [
   // 24: eighteen drawn graphs (cost curves, firm and market panels, the factor and externality graphs), measured 22.3 at Phase 0.
   ['microeconomics/formula-sheet.html', 24],
   ['microeconomics/justify.html', 5],
+  ['human-geography/index.html', 8.5], // round 3 course home, see nremt/index.html
+  ['human-geography/practice.html', 3.8],
+  ['human-geography/exams.html', 3],
+  ['human-geography/frq.html', 3],
+  ['human-geography/glossary.html', 30],
+  ['human-geography/tools.html', 5],
+  ['human-geography/formula-sheet.html', 15],
+  // 26: "Models you must know", 26 models each drawn as inline SVG with its key, claim, limit and example (measured 22.7 at Phase 3).
+  ['human-geography/models.html', 26],
+  ['human-geography/justify.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -1316,6 +1338,19 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`microeconomics/unit-sheets/${sheet}`, 14]);
   }
 }
+/* The same for AP® Human Geography (human-geography/assets/notes-index.json, build-aphug.mjs),
+   with AP® Psychology's budgets as the reference until the first unit is published. */
+{
+  const idx = join(ROOT, 'human-geography', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`human-geography/lessons/${id}.html`, 22], [`human-geography/notes/${id}.html`, 22]);
+    const sheets = join(ROOT, 'human-geography', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`human-geography/unit-sheets/${sheet}`, 14]);
+  }
+}
 /* The same for AP® Calculus AB (calculus/assets/notes-index.json, build-apcalc.mjs).
    Math is MathML on the page, so a calculus page is heavier than its text. */
 {
@@ -1475,6 +1510,19 @@ if (existsSync(MIC_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['microeconomics/assets/glossary.json', 150], ['microeconomics/assets/notes-index.json', 4], ['microeconomics/assets/summaries.json', 40]);
+/* AP® Human Geography's, the same; and each map picture (figures/maps/*.svg,
+   drawn at build time on the Natural Earth base maps) and base file. */
+const HUG_BANK_DIR = join(ROOT, 'human-geography', 'assets', 'bank');
+if (existsSync(HUG_BANK_DIR)) {
+  for (const f of readdirSync(HUG_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`human-geography/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['human-geography/assets/glossary.json', 150], ['human-geography/assets/notes-index.json', 4], ['human-geography/assets/summaries.json', 40]);
+for (const dir of ['figures/maps', 'figures/base']) {
+  const d = join(ROOT, 'human-geography', dir);
+  if (existsSync(d)) for (const f of readdirSync(d).filter(f => /\.(svg|json)$/.test(f)).sort()) DATA_BUDGETS.push([`human-geography/${dir}/${f}`, 40]);
+}
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

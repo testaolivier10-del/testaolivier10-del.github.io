@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "regional-analysis-s1": {
+   "kind": "map",
+   "title": "Where is \"the North\" of Country A? A survey of residents",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Shaded map of Country A by province: the share of residents who say their province is part of \"the North\" is 80% or more in the Northern Hills and Lake District, between 40% and 79% in the Central Valley and Western Uplands, and under 40% elsewhere",
+    "legendTitle": "Residents who say their province is in \"the North\" (percent, invented survey)",
+    "classes": [
+     "Under 20%",
+     "20% to 39%",
+     "40% to 59%",
+     "60% to 79%",
+     "80% or more"
+    ],
+    "values": {
+     "north": 4,
+     "northeast": 4,
+     "central": 3,
+     "west": 2,
+     "capital": 1,
+     "east": 1,
+     "south": 0,
+     "coast": 0
+    },
+    "marks": [
+     {
+      "at": "north",
+      "text": "Northern Hills"
+     },
+     {
+      "at": [
+       240,
+       175
+      ],
+      "text": "Central Valley"
+     },
+     {
+      "at": [
+       470,
+       345
+      ],
+      "text": "South Coast"
+     }
+    ]
+   }
+  },
+  "regional-analysis-s2": {
+   "kind": "map",
+   "title": "Daily commuters into the Capital Region of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "symbol",
+    "invented": true,
+    "label": "Graduated symbol map of Country A: the circles for daily commuters into the Capital Region are largest in the neighboring Central Valley and Eastern Plains and smallest in the far Northern Hills and Western Uplands",
+    "legendTitle": "Daily commuters into the Capital Region (thousands, invented)",
+    "symbols": {
+     "unit": "thousand commuters a day (invented)",
+     "legend": [
+      5,
+      20,
+      60
+     ],
+     "items": [
+      {
+       "at": "central",
+       "value": 60
+      },
+      {
+       "at": "east",
+       "value": 40
+      },
+      {
+       "at": "coast",
+       "value": 30
+      },
+      {
+       "at": "northeast",
+       "value": 20
+      },
+      {
+       "at": "south",
+       "value": 10
+      },
+      {
+       "at": "west",
+       "value": 5
+      },
+      {
+       "at": "north",
+       "value": 5
+      }
+     ]
+    },
+    "marks": [
+     {
+      "at": [
+       345,
+       240
+      ],
+      "text": "Capital Region"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-regional-analysis-1",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What kind of region does this survey map?",
+   "stimulus": "regional-analysis-s1",
+   "options": [
+    "A perceptual region, defined by what people believe",
+    "A formal region: it is defined by one trait that is measured",
+    "A functional region: it is organized around a center",
+    "A transition zone: it is defined by a change in climate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Perceptual (vernacular) regions are defined by people's feelings and beliefs, so surveys are a good way to map them.",
+    "options": [
+     "Right: the region exists in people's minds, so it is measured by asking them.",
+     "A formal region rests on a measured trait, such as a language most people speak; this rests on opinions.",
+     "Nothing here is organized around a center or tied by trips to it.",
+     "The survey is about what people believe, not about climate."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-2",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Describe the edge of \"the North\" shown on this map.",
+   "stimulus": "regional-analysis-s1",
+   "options": [
+    "Sharp: each province is either fully in the region or fully out of it, with no middle",
+    "Fuzzy: in the Central Valley and Western Uplands, residents are split",
+    "It follows the South Coast, where most people say that they belong to the North",
+    "It is a straight line that a government drew across the country"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Regions often have transition zones at their edges, where the trait or belief that defines them fades.",
+    "options": [
+     "Several provinces fall in the middle classes, so the edge is not sharp.",
+     "Right: provinces in the middle classes form a transition zone, where the region fades out.",
+     "The South Coast is in the lowest class.",
+     "The survey measures beliefs; no government line appears."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-3",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which province is most clearly at the heart of \"the North\"?",
+   "stimulus": "regional-analysis-s1",
+   "options": [
+    "The Central Valley",
+    "The South Coast",
+    "The Northern Hills",
+    "The Capital Region"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The heart of a perceptual region is where the most people agree they belong.",
+    "options": [
+     "The Central Valley is in a middle class: residents are split.",
+     "The South Coast is in the lowest class, under 20%.",
+     "Right: it is in the top class, 80% or more.",
+     "The Capital Region is in the second-lowest class."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-4",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "What is a limitation of this survey as a map of \"the North\"?",
+   "stimulus": "regional-analysis-s1",
+   "options": [
+    "It is quantitative, so it says nothing about what people believe",
+    "It uses a choropleth, which is the wrong kind of map for showing percents",
+    "It shows an invented country, so the region it maps is not a real one to study",
+    "One value per province hides towns whose views differ from their province"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Data by province are aggregated: name what they hide at a smaller scale.",
+    "options": [
+     "The survey turns beliefs into percents; that is a fair way to measure them.",
+     "Choropleth maps suit percents well.",
+     "Invented places are fine for practice; the limit is the size of the units.",
+     "Right: provincial averages can hide a northern-minded valley inside a southern province."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-5",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "The commuters tie these provinces to the capital. What kind of region do they define?",
+   "stimulus": "regional-analysis-s2",
+   "options": [
+    "A functional region, organized around the capital",
+    "A formal region, where everyone shares one language",
+    "A perceptual region, drawn from what residents believe",
+    "A transition zone between two climates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Functional (nodal) regions are defined by flows to and from a center: commuters, deliveries, phone calls, newspaper readers.",
+    "options": [
+     "Right: a functional region is tied together by trips, trade or services focused on a center.",
+     "The map measures trips, not a shared trait such as a language.",
+     "The data are counts of trips, not beliefs.",
+     "Climate is not part of the map."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-6",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Describe the pattern of commuting on this map.",
+   "stimulus": "regional-analysis-s2",
+   "options": [
+    "The most commuters come from the Western Uplands, one of the provinces farthest away",
+    "Most come from the Central Valley, next to the capital; fewest from the far north and west",
+    "About the same number of commuters come from each of the seven provinces shown",
+    "The fewest commuters come from the provinces next to the capital"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a functional region, ties are strongest near the center and weaken with distance.",
+    "options": [
+     "The Western Uplands have one of the smallest circles.",
+     "Right: the circles shrink with distance from the capital, a sign of distance decay.",
+     "The circles range from 5 to 60 thousand.",
+     "The neighboring provinces have the largest circles."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-7",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A fast train line opens from the Western Uplands to the capital. How would this region most likely change?",
+   "stimulus": "regional-analysis-s2",
+   "options": [
+    "It would shrink, because faster trains push the capital away",
+    "It would turn into a formal region, because a train is one trait",
+    "It would reach farther west as more Western Uplands residents commute",
+    "It would stay the same, because regions keep the shape they were given"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Functional regions change shape when transport changes: time-space compression stretches them.",
+    "options": [
+     "Faster trains bring places closer in time, not farther.",
+     "A train line connects places; it is not a shared trait of the people.",
+     "Right: faster travel cuts the time to the center, so more people can commute from farther away.",
+     "Functional regions grow and shrink as links to the center change."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-8",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In Quebec, Canada, a large majority of people speak French as their first language. Which kind of region is Quebec in this sense?",
+   "options": [
+    "A functional region",
+    "A perceptual region",
+    "A transition zone",
+    "A formal region"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A formal (uniform) region shares one or more measurable traits, such as language, climate or a main crop.",
+    "options": [
+     "A functional region is tied to a center by flows, not defined by a shared trait.",
+     "A perceptual region rests on beliefs; language can be measured.",
+     "A transition zone is the fuzzy edge of a region, not the region itself.",
+     "Right: a formal region shares a measurable trait, here the main language."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-9",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which is the best example of a functional region?",
+   "options": [
+    "The area a Denver newspaper delivers to each morning",
+    "The area where most people speak Spanish in the United States",
+    "The area Americans call \"the Midwest\"",
+    "The area where corn is the main crop in the United States"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Functional regions are organized around a center: a newspaper, an airport, a store, a city.",
+    "options": [
+     "Right: it is defined by deliveries from one center, Denver.",
+     "A shared language makes a formal region.",
+     "A region defined by what people call it is perceptual.",
+     "A shared main crop makes a formal region."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-10",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Ask Americans which states are in \"the South\" and you get different answers. Why?",
+   "options": [
+    "It is a formal region with a border set in federal law, which people forget",
+    "It is a perceptual region, so its edges depend on what each person believes",
+    "It is a functional region tied to one city, Atlanta, by daily commuting",
+    "It is not a region, since it has no clear edges that everyone can agree on"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Perceptual (vernacular) regions are shaped by culture, history and the media, and people draw them differently.",
+    "options": [
+     "No law sets the region's edges.",
+     "Right: perceptual regions are real in people's minds, and minds differ, so the edges blur.",
+     "The South is not defined by trips to one city.",
+     "Regions with fuzzy edges are still regions; most regions have them."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-11",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Compare a formal region and a functional region.",
+   "options": [
+    "Both are defined by what people believe about a place",
+    "A formal region is tied to a center, whereas a functional region shares a trait",
+    "Formal regions share a trait, whereas functional regions are tied to a center",
+    "Both have sharp edges that stay fixed as transport and trade change over time"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A compare answer speaks of both: formal by a shared trait, functional by ties to a center.",
+    "options": [
+     "Beliefs define perceptual regions, not these two.",
+     "This swaps the two definitions.",
+     "Right: it says something about both and names the difference.",
+     "Both kinds usually have fuzzy edges, and functional regions change as links change."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-12",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "The Sahel is a belt across Africa south of the Sahara, where desert slowly gives way to grassland. What kind of area is the Sahel?",
+   "options": [
+    "A functional region organized around one city",
+    "A perceptual region drawn by surveys",
+    "A sharp line between the desert and the grassland",
+    "A transition zone between two formal regions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Edges between regions are usually zones where one set of traits gives way to another.",
+    "options": [
+     "The Sahel is defined by climate and plants, not trips to a center.",
+     "It is mapped from rainfall and plants, not from beliefs.",
+     "The change happens across a wide belt, not at a line.",
+     "Right: the dry climate fades into a wetter one across hundreds of kilometers."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-13",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Some definitions of \"the Middle East\" include Egypt and Türkiye; others leave out one or both. What does this show about regions?",
+   "options": [
+    "People draw regions for a purpose, so their edges can differ and be contested",
+    "The Middle East has no countries, so it is not a real region",
+    "There is one official map of the region, and the others are mistakes",
+    "Regions are set by the United Nations, and its map settles the argument"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Regions are generalizations: different people draw them differently, so their edges can overlap and be contested.",
+    "options": [
+     "Right: who draws a region, and why, shapes where its edges go.",
+     "The region clearly includes countries; the argument is about which ones.",
+     "No single official map of the Middle East exists.",
+     "Regions are tools people make, and their edges are often debated."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-14",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "5.A",
+   "q": "Which of these are regions at the local scale? Select all that apply.",
+   "options": [
+    "The delivery area of a pizza shop in Toronto",
+    "A neighborhood in Lagos known for its markets",
+    "Southeast Asia",
+    "The European Union"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Regions exist at every scale, from a neighborhood to a group of countries.",
+    "options": [
+     "Right: one shop's delivery area lies inside one city.",
+     "Right: a neighborhood lies inside one city.",
+     "Southeast Asia is a region at the regional scale: many countries.",
+     "The European Union joins many countries, so it is far larger than local."
+    ]
+   }
+  },
+  {
+   "id": "hug-regional-analysis-15",
+   "unit": "unit-1",
+   "topic": "regional-analysis",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build a sentence that identifies a region, its type and the trait or tie that defines it.",
+   "specific": {
+    "frame": "___ is a ___ region, because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "The area served by Atlanta's Hartsfield-Jackson airport is a functional region, because travelers from many nearby towns fly in and out through that one center.",
+    "slots": {
+     "region": {
+      "label": "Region",
+      "options": [
+       "The area served by Atlanta's Hartsfield-Jackson airport",
+       "Some area"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Too vague: name a real region."
+      }
+     },
+     "type": {
+      "label": "Type",
+      "options": [
+       "functional",
+       "formal",
+       "perceptual"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A formal region shares a trait; the airport's area is tied by trips to a center.",
+       "2": "A perceptual region rests on beliefs; this area is defined by travel to the airport."
+      }
+     },
+     "tie": {
+      "label": "What defines it",
+      "options": [
+       "travelers from many nearby towns fly in and out through that one center",
+       "it has a large airport"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Having an airport is a feature; the region is defined by the trips people make to it."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Name the region, its type and the trait or tie that defines it, with \"because\"."
+   }
+  }
+ ]
+}

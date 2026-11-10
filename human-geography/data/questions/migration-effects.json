@@ -1,0 +1,469 @@
+{
+ "stimuli": {
+  "migration-effects-s1": {
+   "kind": "data",
+   "title": "The five countries that received the most remittances, 2024",
+   "source": "World Bank, Migration and Development Brief 41 (December 2024), 2024 estimates, rounded",
+   "plot": {
+    "kind": "bar",
+    "label": "Bar chart of remittances received in 2024, in billions of US dollars: India about 129, Mexico about 68, China about 48, the Philippines about 40 and Pakistan about 33",
+    "categories": [
+     "India",
+     "Mexico",
+     "China",
+     "Philippines",
+     "Pakistan"
+    ],
+    "values": [
+     129,
+     68,
+     48,
+     40,
+     33
+    ],
+    "xLabel": "Country",
+    "yLabel": "Billions of US dollars"
+   }
+  },
+  "migration-effects-s2": {
+   "kind": "text",
+   "title": "A news report from an invented town",
+   "text": "<p><i>Invented for practice.</i> Riverton, a farm town in Country B, 2026:</p><p>Twenty years ago, Riverton was losing people. Then a meat-packing plant began hiring workers from abroad. The town’s population has grown by a third, the elementary school has added classrooms and two new grocery stores sell food from home countries. Church services are now held in three languages. At last month’s council meeting, some residents asked for more English classes and help for new families; others asked the national government to lower the number of work visas.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-migration-effects-1",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "According to the chart, which country received the most remittances in 2024?",
+   "stimulus": "migration-effects-s1",
+   "options": [
+    "India",
+    "Mexico",
+    "China",
+    "The Philippines"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the tallest bar: India received about 129 billion US dollars (World Bank, 2024 estimate).",
+    "options": [
+     "Right: India’s bar, about 129 billion dollars, is the tallest.",
+     "Mexico is second, at about 68 billion dollars.",
+     "China is third, at about 48 billion dollars.",
+     "the Philippines is fourth, at about 40 billion dollars."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-2",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement describes the pattern in the chart?",
+   "stimulus": "migration-effects-s1",
+   "options": [
+    "The five countries received about the same amount, near 60 billion dollars each",
+    "Four of the five are in Asia; India got far more than the rest",
+    "Most of the five countries are in Europe",
+    "The smaller the country, the more it received"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A description names the places and the size of the differences: India leads by far, Mexico is second, and four of the five are in Asia.",
+    "options": [
+     "India received nearly four times as much as Pakistan.",
+     "Right: India, China, the Philippines and Pakistan are in Asia.",
+     "none of the five is in Europe.",
+     "India and China are the largest by population and are near the top."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-3",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can this chart NOT answer?",
+   "stimulus": "migration-effects-s1",
+   "options": [
+    "Which of the five received the most remittances in 2024",
+    "Whether Mexico received more than China in 2024",
+    "How much remittances matter to each economy",
+    "Roughly how much the Philippines received in 2024"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Totals favor big countries. For a smaller country, such as Tajikistan or Nepal, remittances are a much larger share of national income even though the dollar total is smaller. A total cannot show that.",
+    "options": [
+     "the chart shows this: India.",
+     "the chart shows Mexico above China.",
+     "Right: a total in dollars does not compare remittances with the size of the economy.",
+     "its bar reads about 40 billion dollars."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-4",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Many Filipino families receive money from relatives working abroad. Which is a likely effect at the local scale in the Philippines?",
+   "stimulus": "migration-effects-s1",
+   "options": [
+    "Villages grow younger as workers abroad send money home",
+    "Fewer children attend school because families have more money",
+    "The money goes to the government and not to families",
+    "Families spend more on schools, health care and homes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Remittances are money migrants send home. At the local scale they pay for schooling, medicine, food and new houses, and they can make families depend on one worker abroad.",
+    "options": [
+     "migrants are often young adults, so their home villages tend to grow older.",
+     "extra income usually helps children stay in school.",
+     "remittances are sent to families, not to the government.",
+     "Right: remittances raise household income in the places migrants come from."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-5",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which change in Riverton is an economic effect of migration?",
+   "stimulus": "migration-effects-s2",
+   "options": [
+    "The meat-packing plant has the workers it needs",
+    "Church services are held in three languages",
+    "Residents asked the government to lower the number of work visas",
+    "People debate what kind of town Riverton should be"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Economic effects involve jobs, wages, businesses and taxes. In Riverton, migrants keep the plant running and support new stores.",
+    "options": [
+     "Right: migrants fill jobs that kept the plant running.",
+     "that is a cultural effect.",
+     "that is a political effect.",
+     "that is a social and political effect."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-6",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which change in Riverton is a cultural effect of migration?",
+   "stimulus": "migration-effects-s2",
+   "options": [
+    "The population of the town has grown by a third in twenty years",
+    "Grocery stores sell food from migrants’ home countries",
+    "Workers fill jobs at the meat-packing plant",
+    "Some residents asked for fewer work visas"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Cultural effects include new foods, languages, religions and festivals, which change the look and life of the destination.",
+    "options": [
+     "that is a demographic effect.",
+     "Right: new food and new languages change the town’s culture.",
+     "that is an economic effect.",
+     "that is a political effect."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-7",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "At the council meeting, residents asked for different things. What does this show about the political effects of migration?",
+   "stimulus": "migration-effects-s2",
+   "options": [
+    "Residents of the town agree on how to respond to migration",
+    "Migration has no effect on politics in small towns",
+    "Migration can bring debate over services and visas",
+    "The local council decides how many work visas the country gives"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Migration often brings political debate at several scales: local (classes, schools, housing) and national (visa numbers and immigration policy). Our job is to describe the debate, not to take a side.",
+    "options": [
+     "some want more help, others fewer visas.",
+     "the report shows a political debate in a small town.",
+     "Right: residents disagree about how to respond.",
+     "the residents asked the national government, which sets visa numbers."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-8",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Riverton’s growth is described at the local scale. Which statement links it to another scale?",
+   "stimulus": "migration-effects-s2",
+   "options": [
+    "Riverton’s school will add classrooms next year",
+    "Two new grocery stores opened in the town center in the last few years",
+    "The meat-packing plant is in Riverton",
+    "National visa rules shape how many workers reach the town"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Effects connect across scales. A national immigration policy (national scale) changes how many workers a plant can hire (local scale).",
+    "options": [
+     "that stays at the local scale.",
+     "that stays at the local scale.",
+     "that names a place but links no scales.",
+     "Right: a national policy shapes a local outcome."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-9",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a remittance?",
+   "options": [
+    "Money that migrants send to family in their home country",
+    "A tax that migrants pay when they arrive in a new country",
+    "Money a government pays to people who return home",
+    "A permit that lets a guest worker stay for a set time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A remittance is money a migrant sends back to family or community in the place of origin. Remittances are one of the largest money flows to many lower-income countries.",
+    "options": [
+     "Right: remittances flow from migrants back to their origin.",
+     "remittances are personal transfers, not a tax.",
+     "that is a return payment, not a remittance.",
+     "that is a work visa."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-10",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Many doctors and nurses trained in Zimbabwe and Nigeria have moved to work in the United Kingdom. Which is the most likely effect on Zimbabwe and Nigeria?",
+   "options": [
+    "Brain drain: more doctors per person at home",
+    "Brain drain: fewer skilled health workers at home",
+    "Lower spending on training health workers",
+    "Chain migration of patients to the United Kingdom"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Brain drain is the loss of educated, skilled people from a place. The origin loses the workers it trained, though remittances and migrants who return can bring some benefits back.",
+    "options": [
+     "when doctors leave, the number per person at home falls.",
+     "Right: when skilled people leave, the origin loses their skills.",
+     "the origin has already paid to train those who leave.",
+     "the case is about health workers, not patients."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-11",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Which statement compares a demographic effect of migration on the place of origin with one on the destination?",
+   "options": [
+    "Both places grow older, because migrants are mostly retired people",
+    "The origin grows younger as young adults leave, while the destination grows older",
+    "The origin grows older as young adults leave; the destination grows younger",
+    "Neither place changes, because migrants keep ties to both"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A compare speaks of both places. Losing young adults ages the origin and can lower its birth rate; gaining them makes the destination’s workforce younger.",
+    "options": [
+     "most migrants are young adults, not retirees.",
+     "this reverses the effects.",
+     "Right: migrants are mostly young adults.",
+     "ties to two places do not stop age structure from changing."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-12",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.D",
+   "q": "After the famine of 1845 to 1852, more than a million people left Ireland, mostly for the United States and Britain, and Ireland’s population fell by about a fifth from 1841 to 1851 (census of Ireland). Which is an effect of this migration on the destination?",
+   "options": [
+    "Ireland’s population grew quickly in the 1850s",
+    "The famine in Ireland ended because migrants sent food",
+    "Boston and New York lost people to Ireland",
+    "Irish communities grew in Boston and New York"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Past migrations shaped destinations. Irish migrants changed the population, religion and politics of cities such as Boston and New York.",
+    "options": [
+     "Ireland’s population fell.",
+     "the famine ended for many reasons; this is not the destination effect.",
+     "the flow went from Ireland to these cities.",
+     "Right: migrants built communities and later political power in US cities."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-13",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which is a political effect of migration in a destination country?",
+   "options": [
+    "Debates over how many people may enter",
+    "New restaurants serving food from the migrants’ home countries",
+    "Money sent home to families in the country of origin",
+    "A younger workforce in factories and hospitals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Political effects include debates and laws over immigration and services, and, over time, migrants and their children taking part in politics as voters and leaders.",
+    "options": [
+     "Right: migration often shapes elections and laws about who may enter.",
+     "that is a cultural effect.",
+     "that is an economic effect on the origin.",
+     "that is a demographic and economic effect."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-14",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.C",
+   "q": "Which are effects of emigration on a place of origin? Select all that apply.",
+   "options": [
+    "Remittances raise household incomes",
+    "Skilled workers are lost (brain drain)",
+    "The workforce at the origin grows younger",
+    "New languages spread in the origin’s schools",
+    "The origin gains many workers for its factories"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Emigration brings money (remittances) and can drain skills (brain drain). The origin also tends to grow older as young adults leave.",
+    "options": [
+     "Right: money flows back to families.",
+     "Right: the origin loses people it trained.",
+     "Young adults leave, so the origin grows older.",
+     "That is more often an effect at the destination.",
+     "The origin loses workers."
+    ]
+   }
+  },
+  {
+   "id": "hug-migration-effects-15",
+   "unit": "unit-2",
+   "topic": "migration-effects",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "5.B",
+   "q": "Build an explanation of an effect of migration at two scales.",
+   "specific": {
+    "frame": "At the ___ scale, ___. At the ___ scale, ___.",
+    "write": {
+     "scale": true,
+     "mechanism": true
+    },
+    "model": "At the local scale, remittances from Filipino workers abroad pay for school fees and new houses in their home villages, so more children stay in school. At the national scale, remittances bring the Philippines tens of billions of dollars a year (World Bank, 2024), so they are a major source of foreign money for the whole country.",
+    "slots": {
+     "scale": {
+      "label": "First scale",
+      "options": [
+       "local",
+       "big"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name a scale of analysis: local, national, regional or global."
+      }
+     },
+     "effect": {
+      "label": "Local effect",
+      "options": [
+       "remittances pay for school fees and new houses in home villages, so more children stay in school",
+       "people get money"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "say what the money does and the link to its result."
+      }
+     },
+     "outcome": {
+      "label": "National effect",
+      "options": [
+       "remittances are a major source of foreign money for the whole country",
+       "the country changes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "give a specific effect for the country as a whole."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Name each scale and give a specific effect at each, with its link."
+   }
+  }
+ ]
+}

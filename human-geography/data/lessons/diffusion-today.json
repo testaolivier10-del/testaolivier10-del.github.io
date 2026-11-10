@@ -1,0 +1,71 @@
+{
+ "topic": "diffusion-today",
+ "hook": "By the 1970s, few young Māori in New Zealand could speak te reo Māori fluently; school, radio and television ran in English. Then families opened \"language nests,\" and in 1987 te reo became an official language. The same fast links that spread English everywhere also helped a small language fight back. This topic is about both pulls at once.",
+ "prereq": [
+  {
+   "q": "Fast transport and the internet shrink the effect of distance between places. What is this called?",
+   "options": [
+    "Time-space compression",
+    "Distance decay",
+    "Sequent occupance",
+    "Possibilism"
+   ],
+   "correct": 0,
+   "why": "Time-space compression is the shrinking of the time and effort needed to connect distant places.",
+   "review": "spatial-concepts"
+  },
+  {
+   "q": "A trait spreads outward from its hearth while it stays strong at home. What kind of diffusion is this?",
+   "options": [
+    "Expansion diffusion",
+    "Relocation diffusion",
+    "Forced migration",
+    "Creolization"
+   ],
+   "correct": 0,
+   "why": "Expansion diffusion spreads a trait while it stays strong in its hearth.",
+   "review": "diffusion-types"
+  }
+ ],
+ "figure": {
+  "figure": "diffusion-today-paths",
+  "caption": "Globalization can make places more alike (convergence) and push them to stay different (divergence)."
+ },
+ "chain": [
+  {
+   "cause": "The internet, phones, flights and trade link places more closely (globalization)",
+   "effect": "traits spread farther and faster than ever (time-space compression)"
+  },
+  {
+   "cause": "The same brands, media and a few large languages reach many places",
+   "effect": "places grow more alike: cultural convergence"
+  },
+  {
+   "cause": "Young people use dominant languages for school, work and media",
+   "effect": "small and Indigenous languages lose speakers and are threatened"
+  },
+  {
+   "cause": "Groups use laws, schools and new media to protect their culture",
+   "effect": "places stay or become more distinct: cultural divergence"
+  }
+ ],
+ "ideas": [
+  "<b>Globalization</b> is the growing connection of places through trade, travel, media and the internet. It spreads culture through media, technology, politics, economics and social ties.",
+  "<b>Cultural convergence</b>: places grow more alike, with the same chain stores in Dubai and Toronto and English used for business and much of the internet.",
+  "<b>Cultural divergence</b>: places grow or stay different, as when France requires French songs on its radio (a 1994 law) or families revive te reo Māori.",
+  "Culture is made by people, so it changes. Growing cities mix people of many groups and spread popular culture, while video calls let migrants keep their culture from home."
+ ],
+ "misconception": {
+  "wrong": "Globalization only makes the world more alike.",
+  "right": "It does both. The internet spread English and global brands (convergence), and the same tools gave te reo Māori a television channel in 2004 (divergence)."
+ },
+ "check": [
+  "hug-diffusion-today-1",
+  "hug-diffusion-today-2",
+  "hug-diffusion-today-3",
+  "hug-diffusion-today-4",
+  "hug-diffusion-today-9",
+  "hug-diffusion-today-12"
+ ],
+ "summary": "Globalization links places through trade, travel, media and the internet, so traits now spread farther and faster than ever. Media, technology, politics, economics and social ties all carry culture, and growing cities mix people of many groups. The result is cultural convergence, as places share brands, media and English, and cultural divergence, as groups protect or revive their own culture. Indigenous languages are threatened when young people switch to dominant languages, yet laws, schools and new media can help them recover, as te reo Māori has in New Zealand."
+}

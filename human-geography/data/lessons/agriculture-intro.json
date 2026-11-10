@@ -1,0 +1,67 @@
+{
+ "topic": "agriculture-intro",
+ "hook": "A two-hectare greenhouse near Rotterdam can earn more each year than a cattle ranch of 2,000 hectares in Argentina. The difference is not luck. It is how much work, money and water goes into each piece of land, and what the local climate lets farmers grow.",
+ "prereq": [
+  {
+   "q": "Carrying capacity is best described as what?",
+   "options": [
+    "The number of people an area can support without damaging it",
+    "The number of people per square kilometer of land",
+    "The share of land that can be farmed",
+    "The number of farmers per square kilometer of farmland"
+   ],
+   "correct": 0,
+   "why": "Carrying capacity is how many people an environment can support sustainably. People per area is population density.",
+   "review": "distribution-consequences"
+  },
+  {
+   "q": "Farmers in a desert use canals to grow crops. Which idea does this example fit?",
+   "options": [
+    "Possibilism",
+    "Environmental determinism",
+    "Distance decay",
+    "Relocation diffusion"
+   ],
+   "correct": 0,
+   "why": "Possibilism says the environment sets limits, but people choose how to respond, for example with technology.",
+   "review": "human-environment"
+  }
+ ],
+ "figure": {
+  "figure": "agriculture-intro-two-kinds",
+  "caption": "Extensive farming spreads few inputs over large areas; intensive farming puts many inputs into each hectare."
+ },
+ "chain": [
+  {
+   "cause": "A place has a dry climate with too little rain for most crops",
+   "effect": "people raise animals that can graze its grass"
+  },
+  {
+   "cause": "The grass in one spot runs out in the dry season",
+   "effect": "herders move their animals to fresh pasture"
+  },
+  {
+   "cause": "Each herd needs a very large area and few other inputs",
+   "effect": "nomadic herding is a form of extensive agriculture"
+  }
+ ],
+ "ideas": [
+  "<b>Intensive agriculture</b> puts many inputs (labor, money, machines, water, fertilizer) into each hectare; <b>extensive agriculture</b> spreads few inputs over large areas. Judge by inputs per hectare, not farm size.",
+  "Extensive kinds: <b>shifting cultivation</b> (Amazon basin), <b>nomadic herding</b> (Mongolia, the Sahel), <b>ranching</b> (the Pampas of Argentina).",
+  "Intensive kinds: <b>market gardening</b> (near Rotterdam), <b>plantation agriculture</b> (oil palm in Malaysia), <b>mixed crop and livestock farming</b> (Iowa).",
+  "Climate shapes farming: rainforest plots and plantations in the tropics, herding in dry lands, olives and grapes in <b>Mediterranean</b> climates. <b>Irrigation</b> lets people farm dry places intensively."
+ ],
+ "misconception": {
+  "wrong": "Intensive agriculture means a very large farm.",
+  "right": "Intensive means many inputs on each hectare. A huge ranch is extensive; a small greenhouse is intensive."
+ },
+ "check": [
+  "hug-agriculture-intro-1",
+  "hug-agriculture-intro-2",
+  "hug-agriculture-intro-3",
+  "hug-agriculture-intro-9",
+  "hug-agriculture-intro-11",
+  "hug-agriculture-intro-15"
+ ],
+ "summary": "Agriculture is the purposeful raising of crops and animals. Intensive farming puts many inputs into each hectare; extensive farming spreads few inputs over large areas. Climate shapes which kind fits a place, and irrigation lets people farm beyond what rain allows."
+}

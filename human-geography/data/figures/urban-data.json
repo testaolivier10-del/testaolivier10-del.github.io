@@ -1,0 +1,12 @@
+{
+ "urban-data-kinds": {
+  "file": "figures/urban-data-kinds.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two columns. Quantitative data: a census table of counts, a survey bar chart and a line of rising rents, which answer how many and how much. Qualitative data: speech bubbles from interviews, a field notebook and a map a resident drew, which answer how people feel and why."
+ }
+}

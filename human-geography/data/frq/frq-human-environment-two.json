@@ -1,0 +1,178 @@
+{
+ "id": "frq-human-environment-two",
+ "type": "two",
+ "points": 7,
+ "title": "Land use in a river valley: determinism, possibilism and sustainability",
+ "units": [
+  "geo-skills",
+  "unit-1"
+ ],
+ "topics": [
+  "skills-reading",
+  "human-environment"
+ ],
+ "practices": [
+  "1.B",
+  "1.E",
+  "3.B",
+  "3.D",
+  "4.B",
+  "5.A"
+ ],
+ "stimuli": [
+  {
+   "kind": "text",
+   "title": "Green River Valley plan, Valley Council of Country A, 2024 (invented for practice)",
+   "text": "<p>The Green River valley has steep sides and a narrow, flat floor that floods most springs. For centuries, families farmed the valley floor in summer and grazed animals on the slopes. Since 1990, a new highway has brought factories and housing to the valley floor, and forest on the lower slopes has been cleared for new fields. After heavy rain, soil from the bare slopes now washes into the river. This plan will replant forest on the upper slopes, allow new homes only above the flood line, and help farmers cut the lower slopes into flat, walled steps so that rain no longer carries the soil away.</p>"
+  },
+  {
+   "kind": "data",
+   "title": "Land use in the Green River valley, 1990 and 2020",
+   "invented": true,
+   "table": {
+    "caption": "Share of the Green River valley's area in each land use (invented data for practice)",
+    "cols": [
+     "Land use",
+     "1990",
+     "2020"
+    ],
+    "rows": [
+     [
+      "Forest",
+      "60%",
+      "35%"
+     ],
+     [
+      "Farm fields",
+      "30%",
+      "40%"
+     ],
+     [
+      "Built-up (homes, factories, roads)",
+      "5%",
+      "20%"
+     ],
+     [
+      "Water and bare rock",
+      "5%",
+      "5%"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Using Source 2, identify the land use that grew the most between 1990 and 2020.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names built-up land.",
+     "accept": [
+      "built-up land",
+      "homes, factories and roads"
+     ]
+    }
+   ],
+   "sample": "Built-up land (homes, factories and roads), which grew from 5% to 20% of the valley."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Using Source 2, describe the change in the valley's forest between 1990 and 2020.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes the decline with values from Source 2.",
+     "accept": [
+      "forest fell from 60% to 35% of the valley",
+      "forest lost 25 percentage points, from more than half to about a third"
+     ]
+    }
+   ],
+   "sample": "Forest shrank from 60% of the valley in 1990 to 35% in 2020, a fall of 25 percentage points, so it went from more than half of the valley to about a third."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Using Source 1, explain how land use in the valley changed after the highway was built.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links the highway to the new land uses with a causal link.",
+     "accept": [
+      "the highway made the valley easier to reach, so factories and housing were built on the floor",
+      "better access brought people and businesses, so forest was cleared for fields and homes"
+     ]
+    }
+   ],
+   "sample": "The highway cut travel time to the valley, so factories and housing were built on the valley floor, and farmers cleared forest on the lower slopes to make new fields."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain how the change in forest shown in Source 2 could threaten sustainability in the valley.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links forest loss to a specific harm that limits future use, with its chain.",
+     "accept": [
+      "less forest leaves slopes bare, so rain washes soil into the river, which harms farms and the river",
+      "cleared slopes lose soil, so future harvests fall"
+     ]
+    }
+   ],
+   "sample": "With less forest, the slopes are bare, so heavy rain washes soil into the river, which makes the fields poorer and fills the river with mud, so future farmers would have less to work with."
+  },
+  {
+   "label": "E",
+   "verb": "compare",
+   "prompt": "Compare what Source 1 and Source 2 each tell you about the valley.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both sources: Source 1 gives reasons, history and plans in words; Source 2 gives measured amounts of change.",
+     "accept": [
+      "Source 1 explains causes and plans, whereas Source 2 measures how much land use changed",
+      "both show forest loss, but one in words and one in numbers"
+     ]
+    }
+   ],
+   "sample": "Source 1 explains why the valley changed and what the council plans, whereas Source 2 measures how much each land use changed, such as forest falling from 60% to 35%."
+  },
+  {
+   "label": "F",
+   "verb": "identify",
+   "prompt": "Identify the scale of analysis of the data in Source 2.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names the local scale.",
+     "accept": [
+      "local",
+      "subnational"
+     ]
+    }
+   ],
+   "sample": "The local scale: the data describe one valley inside Country A."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which the council's plan in Source 1 reflects possibilism rather than environmental determinism.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree first, then explains with evidence from the plan that people choose how to use the land within its limits.",
+     "accept": [
+      "high degree: the plan accepts limits (floods, steep slopes) but chooses ways around them, such as homes above the flood line and walled steps",
+      "great extent: people choose how to use the valley, rather than the environment deciding"
+     ]
+    }
+   ],
+   "sample": "To a high degree: the plan accepts the valley's limits, such as spring floods and steep slopes, but chooses ways to work within them, such as building homes above the flood line and cutting walled steps, so people, not the environment alone, decide how the land is used."
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "industrial-revolution-chain": {
+  "file": "figures/industrial-revolution-chain.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 516,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Flow diagram. New machines such as the steam engine, and coal and iron close at hand, lead to factories opening in towns. Factories lead to two effects: farmworkers move to factory towns, so cities grow fast and a working class forms; and mills need cotton, rubber and buyers, so colonies supply raw materials and markets."
+ }
+}

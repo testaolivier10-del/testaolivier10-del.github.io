@@ -30,7 +30,7 @@ export const THUMB_WIDTHS = [480, 960];
 export const COURSE_DIRS = {
   nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem',
   apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science',
-  appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics',
+  appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics', aphug: 'human-geography',
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -111,7 +111,7 @@ export function displayTitle(v) {
    not teach, so a chapter called "Next: the elements of life" is not a use
    of a later topic's term. NREMT and ochem have no such check. */
 const NAV_REF = { anp: 'anp-nav-ref', apbio: 'bio-nav-ref', apchem: 'chem-nav-ref', apphys: 'phys-nav-ref',
-  apcalc: 'calc-nav-ref', apcalcbc: 'calc-nav-ref', apstat: 'stat-nav-ref', apenv: 'env-nav-ref', appsych: 'psy-nav-ref', apprecalc: 'pcalc-nav-ref', apmacro: 'mac-nav-ref', apmicro: 'mic-nav-ref' };
+  apcalc: 'calc-nav-ref', apcalcbc: 'calc-nav-ref', apstat: 'stat-nav-ref', apenv: 'env-nav-ref', appsych: 'psy-nav-ref', apprecalc: 'pcalc-nav-ref', apmacro: 'mac-nav-ref', apmicro: 'mic-nav-ref', aphug: 'hug-nav-ref' };
 
 /* `strip` is the form at the top of a topic (notes pages and the textbooks; course redesign r4, decision 4): a
    small preview strip (thumbnail with play button and length, title, "Watch it here, or keep reading") that

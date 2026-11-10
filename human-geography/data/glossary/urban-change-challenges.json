@@ -1,0 +1,23 @@
+{
+ "redlining": {
+  "def": "Refusing loans, insurance or other services, or offering worse terms, based on a property's location; in US history it was aimed mostly at Black and immigrant neighborhoods."
+ },
+ "blockbusting": {
+  "def": "A practice in which real estate agents scared white owners into selling cheaply by claiming Black families were moving in, then resold the homes at higher prices; outlawed in the United States in 1968."
+ },
+ "gentrification": {
+  "def": "The movement of higher-income residents and investment into a lower-income neighborhood, raising property values and often displacing long-time renters."
+ },
+ "urban-renewal": {
+  "def": "A government program that buys, clears and rebuilds areas judged to be run-down, often displacing the people who lived there."
+ },
+ "disamenity-zone": {
+  "def": "One of the poorest, least-served parts of a city, such as an area of abandoned buildings or of unsafe land where the newest arrivals settle."
+ },
+ "inclusionary-zoning": {
+  "def": "A zoning policy that requires or rewards developers for including homes priced for lower- and middle-income households in new buildings."
+ },
+ "environmental-injustice": {
+  "def": "The unequal burden of pollution and environmental harm on poor and minority communities."
+ }
+}

@@ -27,7 +27,7 @@ export function progressBand(key, up = '../', o = {}) {
 }
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const DIR = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics', anp: 'anatomy-physiology' };
+const DIR = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics', aphug: 'human-geography', anp: 'anatomy-physiology' };
 
 export function dashboardPage(html, key = 'apbio', up = '../') {
   if (!/<h1>(?:Progress|Dashboard)<\/h1>/.test(html)) throw new Error('dashboard-page: no "<h1>Progress</h1>" to rebuild');

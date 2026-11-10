@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v121';
+const CACHE_NAME = 'levlprep-v122';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -394,6 +394,27 @@ COURSE_URLS['microeconomics'] = [
   'microeconomics/assets/mic-questions.js',
   'microeconomics/assets/mic-nav.js',
   'microeconomics/assets/glossary.json',
+];
+COURSE_URLS['human-geography'] = [
+  // The AP® Human Geography shell (key aphug, folder human-geography), as
+  // Psychology with the geography arithmetic, the map renderer and the model
+  // item in place of the statistics library.
+  'human-geography/index.html',
+  'human-geography/learn.html',
+  'human-geography/search.html',
+  'human-geography/tools.html',
+  'human-geography/dashboard.html',
+  'human-geography/manifest.json',
+  'human-geography/assets/hug.css',
+  'human-geography/assets/hug-curriculum.js',
+  'human-geography/assets/hug-core.js',
+  'human-geography/assets/hug-math.js',
+  'human-geography/assets/hug-calc.js',
+  'human-geography/assets/hug-model.js',
+  'human-geography/assets/hug-grade.js',
+  'human-geography/assets/hug-questions.js',
+  'human-geography/assets/hug-nav.js',
+  'human-geography/assets/glossary.json',
 ];
 COURSE_URLS['precalculus'] = [
   // The AP® Precalculus shell (key apprecalc, folder precalculus), as Calculus AB:

@@ -1,0 +1,469 @@
+{
+ "stimuli": {
+  "culture-intro-s1": {
+   "kind": "text",
+   "title": "Two visitors at a family dinner in Seoul",
+   "text": "<p><b>Two visitors at one dinner in Seoul, South Korea</b> (invented notes, written by LevlPrep for practice, 2026)</p><p><b>Visitor 1:</b> \"Small side dishes sat in the middle of the table, and everyone shared them. No one ate until the grandmother picked up her spoon. I asked my host why, and she said it shows respect for older people. By the second night, I waited too.\"</p><p><b>Visitor 2:</b> \"No one had their own plate, which seemed strange and messy to me. Back home we each get our own plate, and that is simply the correct way to eat. They should learn to do it properly.\"</p>"
+  },
+  "culture-intro-s2": {
+   "kind": "text",
+   "title": "Two kinds of culture in Lancaster County, Pennsylvania",
+   "text": "<p><b>Lancaster County, Pennsylvania</b> (LevlPrep summary, 2026)</p><p>Many Amish families in Lancaster County travel by horse and buggy, wear plain clothing in dark colors, and speak Pennsylvania Dutch, a language that grew from German, at home. Neighbors gather to raise a barn together in a day. These ways are taught by parents and church members and change slowly.</p><p>A few miles away, shopping centers hold chain stores and fast-food restaurants that look the same as ones in Texas or Ohio. Teenagers there stream the same songs and shows as teenagers across the country, and the most popular ones change every few months.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-culture-intro-1",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "culture-intro-s1",
+   "q": "Which visitor's notes show ethnocentrism?",
+   "options": [
+    "Visitor 2, who calls the home way of eating \"the correct way\"",
+    "Visitor 1, who changed a habit so as to wait for the grandmother to eat",
+    "Both visitors, because both describe a custom new to them",
+    "Neither visitor, because neither one lives in Seoul"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Visitor 2 judges the Korean meal by the standards of the visitor's own culture and calls the home custom the correct one. That is ethnocentrism.",
+    "options": [
+     "Right: Visitor 2 judges the Korean meal by the standards of the visitor's own culture and calls the home custom the correct one. That is ethnocentrism.",
+     "Visitor 1 asked why and adjusted. Trying to understand a custom on its own terms is cultural relativism, the opposite of ethnocentrism.",
+     "Describing a custom is not judging it. Only Visitor 2 ranks the home custom above the Korean one.",
+     "Where you live does not decide it. Ethnocentrism is judging another culture by your own culture's standards, which Visitor 2 does."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-2",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "culture-intro-s1",
+   "q": "Which detail in Visitor 1's notes best shows cultural relativism?",
+   "options": [
+    "Noticing that the side dishes sat in the middle",
+    "Asking the host why everyone waits",
+    "Staying in Seoul for more than one night",
+    "Writing the notes down for other people"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "asking what a custom means inside its own culture, before judging it, is the heart of cultural relativism.",
+    "options": [
+     "Noticing a custom only describes it. Relativism is about how you judge it: by its own culture's standards.",
+     "Right: asking what a custom means inside its own culture, before judging it, is the heart of cultural relativism.",
+     "Time in a place does not show an attitude. The question asks what shows understanding a custom by its own standards.",
+     "Keeping notes is not an attitude toward the culture. Asking why, and then respecting the answer, is."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-3",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "culture-intro-s1",
+   "q": "In the notes, waiting for the oldest person to start eating is best described as which of these?",
+   "options": [
+    "A physical feature of Seoul's landscape",
+    "An example of ethnocentrism by the family",
+    "A culture trait the family has learned",
+    "A popular culture trend that changes each year"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "a culture trait is one learned part of a culture, such as a food, a custom or a building style. Waiting for an elder is a shared, learned custom.",
+    "options": [
+     "A physical feature is part of nature, such as a river or a hill. A table custom is learned behavior, so it is part of culture.",
+     "The family is following its own custom, not judging another culture. Ethnocentrism needs a judgment of someone else's culture.",
+     "Right: a culture trait is one learned part of a culture, such as a food, a custom or a building style. Waiting for an elder is a shared, learned custom.",
+     "Respect shown to elders at meals is passed down through generations and changes slowly, so it is not a fast-changing trend."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-4",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "culture-intro-s2",
+   "q": "Based on the passage, travel by horse and buggy among Amish families is an example of which kind of culture?",
+   "options": [
+    "Popular culture, because many visitors see the buggies",
+    "Popular culture, because buggies are found in Pennsylvania",
+    "Ethnocentrism, because the Amish keep their own customs",
+    "Folk culture, kept by a small group and slow to change"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "folk culture belongs to a small, close group, is taught by family and community, and changes slowly, as the passage says of the buggies.",
+    "options": [
+     "Being seen by visitors does not make a trait popular culture. Popular culture is shared by large, mixed groups and changes quickly.",
+     "Being in one state says nothing about the kind of culture. The passage shows a small group keeping a slow-changing tradition.",
+     "Keeping your own customs is not ethnocentrism. Ethnocentrism is judging another culture by your own culture's standards.",
+     "Right: folk culture belongs to a small, close group, is taught by family and community, and changes slowly, as the passage says of the buggies."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-5",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "culture-intro-s2",
+   "q": "Which detail from the passage is the clearest example of popular culture?",
+   "options": [
+    "Songs and shows streamed by teens nationwide",
+    "Neighbors gathering to raise a barn together in one day",
+    "Plain clothing in dark colors worn by Amish families",
+    "Speaking Pennsylvania Dutch at home with family"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "songs shared by huge numbers of people in many places, spread by media and changing every few months, are popular culture.",
+    "options": [
+     "Right: songs shared by huge numbers of people in many places, spread by media and changing every few months, are popular culture.",
+     "A barn raising is a community tradition taught within a small group, so it is folk culture.",
+     "Plain dress is a slow-changing custom of one small group, so it is folk culture.",
+     "A home language kept by one close community is part of its folk culture."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-6",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "culture-intro-s2",
+   "q": "The passage says the chain stores \"look the same as ones in Texas or Ohio.\" What does this suggest about popular culture compared with folk culture?",
+   "options": [
+    "Popular culture is taught mainly by parents and elders",
+    "Popular culture makes distant places look more alike",
+    "Popular culture changes more slowly than folk culture",
+    "Popular culture is limited to one county in the state"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "popular culture is shared across large areas, so its stores, songs and styles repeat from place to place, while folk culture keeps places distinct.",
+    "options": [
+     "That describes folk culture. Popular culture reaches people mainly through media and business.",
+     "Right: popular culture is shared across large areas, so its stores, songs and styles repeat from place to place, while folk culture keeps places distinct.",
+     "The passage says popular songs change every few months, while Amish ways change slowly, so the reverse is true.",
+     "The passage says the same stores appear in Texas and Ohio, so popular culture is spread over a large area."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-7",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "stimulus": "culture-intro-s2",
+   "q": "The passage compares Amish farms with shopping centers \"a few miles away\" in one county. At what scale of analysis is this comparison made?",
+   "options": [
+    "National scale: the whole United States",
+    "Global scale: the whole world at once",
+    "Local scale: places within one county",
+    "Regional scale: several countries in one world region"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "both sides of the comparison sit inside Lancaster County, so the scale of analysis is local.",
+    "options": [
+     "The passage mentions Texas and Ohio only to say the stores look alike. The comparison itself is inside one county.",
+     "Nothing in the passage compares countries or the world. The places compared are a few miles apart.",
+     "Right: both sides of the comparison sit inside Lancaster County, so the scale of analysis is local.",
+     "A world region holds many countries. The passage compares places within one county of one state."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-8",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which of these is a culture trait?",
+   "options": [
+    "The height of Mount Fuji in Japan above the sea",
+    "The number of earthquakes Japan has in a year",
+    "The average temperature in Tokyo each January",
+    "How people in Japan bow to greet someone"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "a greeting is a learned, shared behavior, so it is a culture trait.",
+    "options": [
+     "A mountain's height is a physical fact, not something people learn and share.",
+     "Earthquakes are natural events. A culture trait is a learned behavior, belief, object or practice.",
+     "Temperature is climate, part of the physical environment, not culture.",
+     "Right: a greeting is a learned, shared behavior, so it is a culture trait."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-9",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A student in Ohio sees a video of a market in Bangkok, Thailand, where fried crickets are sold as a snack. The student says, \"Eating bugs is gross. People there should eat normal food.\" What does the student show?",
+   "options": [
+    "Ethnocentrism: judging Thai food by the student's own culture",
+    "Cultural relativism: understanding Thai food on its own terms",
+    "Folk culture: a custom passed down in Ohio families",
+    "Possibilism: the environment sets limits on what people eat"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "calling Ohio food \"normal\" and Thai food \"gross\" judges another culture by the standards of your own. That is ethnocentrism.",
+    "options": [
+     "Right: calling Ohio food \"normal\" and Thai food \"gross\" judges another culture by the standards of your own. That is ethnocentrism.",
+     "Relativism would ask why crickets are a snack in Thailand, not call them gross.",
+     "The student is making a judgment, not practicing a custom. The question is about the attitude shown.",
+     "Possibilism is about people choosing among options the environment allows, not about judging another culture."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-10",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A baby born to parents from Japan is adopted by a family in São Paulo, Brazil, and raised there. As an adult, she speaks Portuguese, cheers for a Brazilian soccer club and cooks Brazilian food. What does her story show about culture?",
+   "options": [
+    "Culture is set at birth by a person's family background",
+    "Culture is learned from the people around you, not inherited",
+    "Culture depends mostly on the climate of a person's birthplace",
+    "Culture is the same in Japan and in Brazil"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "culture is passed on by teaching and living in a group. She learned the culture she grew up in, whatever her parents' origin.",
+    "options": [
+     "Her story shows the opposite: she took on the culture of the place where she was raised.",
+     "Right: culture is passed on by teaching and living in a group. She learned the culture she grew up in, whatever her parents' origin.",
+     "She was raised in São Paulo and learned its culture. Where she was born did not decide it.",
+     "Japanese and Brazilian cultures differ in language, food and much more. Her story is about how culture is learned."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-11",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "At Taos Pueblo in New Mexico, Taos Pueblo people have lived for centuries in buildings made of adobe: bricks of earth mixed with straw and dried in the sun. Which statement best explains this culture trait?",
+   "options": [
+    "The dry climate left people in the area no choice but adobe",
+    "Adobe was copied from chain stores in nearby towns",
+    "Builders used a local material and passed the method down",
+    "Adobe shows ethnocentrism toward people who build with wood"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "adobe uses earth that is close at hand, and the way to build with it is taught from one generation to the next. Both the environment and culture shape the trait.",
+    "options": [
+     "That is environmental determinism. The environment offers choices; people chose adobe and kept the method as part of their culture.",
+     "Adobe building at Taos Pueblo is centuries older than any chain store. It is a traditional trait passed down locally.",
+     "Right: adobe uses earth that is close at hand, and the way to build with it is taught from one generation to the next. Both the environment and culture shape the trait.",
+     "Choosing a building material is not a judgment of another culture."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-12",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In Indonesia, many pig farms are found on the island of Bali, where most people are Hindu, but few are found on nearby Java, where most people are Muslim and follow food rules that forbid pork. What does this island-by-island pattern show?",
+   "options": [
+    "Java's climate is too wet for raising any animals",
+    "Pig farming depends mainly on the number of people living on each island",
+    "Farmers on Bali are ethnocentric toward farmers on Java",
+    "Religion, a culture trait, shapes food and land use in each place"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "food rules are part of religious culture. They change what farmers raise, so land use differs between islands with different main religions.",
+    "options": [
+     "Java raises many other animals, such as chickens and goats. The difference in pigs follows religion, not climate.",
+     "Java has far more people than Bali, yet fewer pig farms. Population size does not explain the pattern.",
+     "The pattern comes from each group following its own food customs, not from judging the other group.",
+     "Right: food rules are part of religious culture. They change what farmers raise, so land use differs between islands with different main religions."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-13",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement describes cultural relativism?",
+   "options": [
+    "Understanding a practice within its own culture before judging it",
+    "Ranking the cultures of the world from the most advanced to the least advanced",
+    "Judging other cultures by the standards of your own culture",
+    "Taking on the customs of any culture you happen to visit"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "cultural relativism means looking at a practice through the eyes of the culture it belongs to.",
+    "options": [
+     "Right: cultural relativism means looking at a practice through the eyes of the culture it belongs to.",
+     "Ranking cultures is the kind of judgment relativism tries to avoid.",
+     "That is the definition of ethnocentrism, the opposite of relativism.",
+     "Relativism asks you to understand a custom, not to take it on yourself."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-14",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which trait is more typical of popular culture than of folk culture?",
+   "options": [
+    "It is taught by elders and stays the same for generations",
+    "It reaches millions of people through media and changes quickly",
+    "It belongs to a small group living in one rural area",
+    "It is closely tied to the local climate and the building materials at hand"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "popular culture spreads to large, mixed groups through media and business, and its styles change fast.",
+    "options": [
+     "Slow change and teaching by elders describe folk culture.",
+     "Right: popular culture spreads to large, mixed groups through media and business, and its styles change fast.",
+     "A small, close, often rural group is typical of folk culture.",
+     "Folk traits, such as house styles, are often tied to local materials. Popular culture looks much the same in many places."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-15",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which of these are culture traits? Select all that apply.",
+   "options": [
+    "The depth of a lake beside the town",
+    "A holiday that a group celebrates each year",
+    "The height of a mountain near the town",
+    "The average yearly rainfall in the area",
+    "The age of the rocks under the town"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "Culture traits are learned and shared by a group, such as a holiday. Lakes, mountains, rainfall and rocks belong to the physical environment.",
+    "options": [
+     "Depth is a physical fact about the lake, not something people learn.",
+     "Right: holidays are shared customs passed on in a culture.",
+     "Height is a physical fact, not something people learn.",
+     "Rainfall is climate, part of the physical environment.",
+     "Rocks are physical geography, not culture."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-16",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "A national survey of invented Country A finds that most teenagers stream the same few shows. In one mountain province, though, most families still sing traditional work songs at harvest. What does comparing the two scales show?",
+   "options": [
+    "Folk culture has disappeared everywhere in Country A",
+    "The national survey proves the mountain province has no popular culture",
+    "Popular culture leads nationally; folk culture survives locally",
+    "Scale makes no difference to what the data show"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "national data hide local differences. At the national scale one pattern wins; at the local scale a folk tradition still stands out.",
+    "options": [
+     "The mountain province still sings traditional songs, so folk culture has not disappeared.",
+     "The survey describes the country as a whole. Families in the province may stream shows and also keep their songs.",
+     "Right: national data hide local differences. At the national scale one pattern wins; at the local scale a folk tradition still stands out.",
+     "The point of the example is that the local scale reveals a pattern the national scale hides."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-intro-17",
+   "unit": "unit-3",
+   "topic": "culture-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "An invented burger chain opens shops in Delhi, India, and finds that many customers do not eat beef because of their religion. The chain adds more chicken and vegetable burgers. What does the chain's change show?",
+   "options": [
+    "Ethnocentrism, because the chain keeps its own brand name",
+    "Folk culture, because burgers were first made in Delhi",
+    "Environmental determinism, because the climate rules out beef",
+    "Learning the local culture traits and adjusting to them"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "by finding out what local customers eat and why, the chain treats local food customs on their own terms and adapts.",
+    "options": [
+     "Keeping a brand name is not a judgment of another culture. The chain changed its menu to fit local customs.",
+     "Burgers did not begin in Delhi. The change is about a business adapting to local culture.",
+     "The reason in the stem is religion, a culture trait, not climate.",
+     "Right: by finding out what local customers eat and why, the chain treats local food customs on their own terms and adapts."
+    ]
+   }
+  }
+ ]
+}

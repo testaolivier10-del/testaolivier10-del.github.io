@@ -1011,6 +1011,9 @@ const PASSES = {
   // AP® Microeconomics mirrors AP® Macroeconomics (docs/apmicro-spec.md decision 3).
   // Not sold until "micro-2027" is in the POLAR_PRODUCTS setting (launch steps).
   'micro-2027':     { course: 'apmicro', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Human Geography mirrors AP® Psychology (docs/aphug-spec.md decision 3).
+  // Not sold until "hug-2027" is in the POLAR_PRODUCTS setting (launch steps).
+  'hug-2027':       { course: 'aphug', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -1052,7 +1055,7 @@ function isDuplicateFixedPass(passId, startsAt) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', apprecalc: 'precalculus', apmacro: 'macroeconomics', apmicro: 'microeconomics', aphug: 'human-geography' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1757,7 +1760,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus', apmacro: 'AP® Macroeconomics', apmicro: 'AP® Microeconomics' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology', apprecalc: 'AP® Precalculus', apmacro: 'AP® Macroeconomics', apmicro: 'AP® Microeconomics', aphug: 'AP® Human Geography' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -2507,6 +2510,33 @@ const CALIBRATION = {
                  B: [{ quote: '', reason: 'Total fixed cost is total cost at zero output, 40 dollars, not the largest total cost.', earned: false }] } },
     ],
   },
+  aphug: {
+    id: 'frq-population-policy-none',
+    question: 'A question with no stimulus, on population policies and fertility. Each part is worth one point.',
+    parts: [
+      { label: 'C', prompt: 'Explain why a country\u2019s population can keep growing for several decades after its TFR falls below replacement level.',
+        rubric: ['Explains that a large number of young people from earlier high fertility are now at childbearing age, so births still exceed deaths for a time.'] },
+      { label: 'G', prompt: 'Explain the degree to which a national TFR describes fertility in every region of a large country, such as India.',
+        rubric: ['States a degree and explains that a national average hides differences between regions at the subnational scale.'] },
+    ],
+    answers: [
+      { kind: 'full credit',
+        text: { C: 'Years of high fertility left a large young population. Now many of them are in their twenties and thirties having children, so births still outnumber deaths for decades even though each woman has fewer children (population momentum).',
+                G: 'Only to a limited degree. The national TFR is an average, and it hides big differences between states: Bihar has a much higher TFR than Kerala, so you need data at the subnational scale.' },
+        grade: { C: [{ quote: 'many of them are in their twenties and thirties having children, so births still outnumber deaths for decades', reason: 'Links the large young cohort from past high fertility to births exceeding deaths.', earned: true }],
+                 G: [{ quote: 'Only to a limited degree. The national TFR is an average, and it hides big differences between states', reason: 'States a degree and explains that the average hides subnational differences.', earned: true }] } },
+      { kind: 'partial',
+        text: { C: 'Because the age structure is young: lots of young couples still have children, so there are more births than deaths for a while.',
+                G: 'The national TFR hides differences between regions, because some states have high fertility and others low.' },
+        grade: { C: [{ quote: 'lots of young couples still have children, so there are more births than deaths for a while', reason: 'Young age structure keeps births above deaths, a form the rubric accepts.', earned: true }],
+                 G: [{ quote: '', reason: 'Explains the hidden differences but never states a degree, which an "explain the degree" point requires.', earned: false }] } },
+      { kind: 'no credit',
+        text: { C: 'Because the TFR is still above zero, so people are still being born.',
+                G: 'To a large degree, India is one country.' },
+        grade: { C: [{ quote: '', reason: 'Births above zero do not explain growth; no link to a large young cohort.', earned: false }],
+                 G: [{ quote: '', reason: 'States a degree but gives no reason about regional differences, and the degree contradicts the point.', earned: false }] } },
+    ],
+  },
 };
 
 function calibrationText(course) {
@@ -2571,7 +2601,7 @@ function calibrationText(course) {
 
 
 
-const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro'];
+const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro', 'aphug'];
 const DAILY_CAP = 10;
 const DEFAULT_MODEL = 'claude-haiku-5-5';
 // Bump when the instructions, the schema or the checks change in a way that
@@ -2657,6 +2687,11 @@ const COURSE_CONVENTIONS = {
 - Directions and classes matter: elastic or inelastic, increase or decrease, shut down or keep producing. A claim with no direction, or the wrong one, does not earn the point.
 - Keep commonly confused ideas apart: a shift of a curve versus a movement along it, total versus marginal versus average, accounting versus economic profit, and the market's quantity versus the efficient quantity.
 - Graph and payoff matrix parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
+  aphug: `COURSE CONVENTIONS: AP® Human Geography.
+- Each part is one point, and its task verb sets what earns it. "Identify" or "define" needs the term or a correct definition only. "Describe" needs more than a name: the pattern, place or feature in some detail. "Explain" needs the cause and the effect joined by a reason (a "because" or "so"); a description with no link does not earn it. "Compare" must speak of both sides (a difference or a similarity), not one. "Explain the degree" needs a stated degree (to a large, moderate or limited degree) and a reason that supports it; a reason with no degree, or a degree with no reason, does not earn it.
+- When the rubric asks for a real place or example, a vague answer ("some countries", "a city") does not earn it; a named place does. Accept any real example the rubric's wording allows, not only the ones listed.
+- Scale words: global, regional (a group of countries), national, local. Data for provinces, states or counties are at the local (subnational) scale; accept "subnational" for it.
+- Keep commonly confused ideas apart: carrying capacity versus population density, site versus situation, GMOs versus the Green Revolution's bred seeds, relocation versus expansion diffusion, devolution versus supranationalism.`,
 };
 
 function systemBlocks(course) {
@@ -5059,6 +5094,17 @@ const COURSE_RULES = {
     '- A perfectly competitive firm is a price taker: its demand is horizontal at the market price (d = MR = AR = P). Long-run adjustment runs profit, entry or exit, market supply, price back to minimum ATC.',
     '- Name areas precisely (consumer and producer surplus, tax revenue, subsidy cost, profit, deadweight loss between demand and MC or MSB and MSC). In game theory, give both comparisons from the matrix for a dominant strategy and check every cell for a Nash equilibrium.',
     '- Hiring follows MRP = MRC (MRP = MP times MR); a monopsonist pays the wage read from labor supply. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  aphug: [
+    '',
+    'This student is a high-school student, often in 9th grade and on a first AP® course, preparing for the AP® Human Geography exam (May 2027 format: 60 multiple-choice questions, then three 7-point free-response questions with no stimulus, one and two; no calculator). Additional guidance:',
+    '- Explain at a 9th-grade level, from the basics up: define each term before you use it, and apply every concept or model to a named real place.',
+    '- Name the scale of analysis (global, regional, national, local) and say that it is the scale of the data, not the size of the map. Tell it apart from map scale.',
+    '- Match the task verb: identify names, describe gives characteristics, explain gives a cause and its effect with every link, compare speaks of both sides, and explain the degree states high, moderate or low first.',
+    '- Models are models: give their assumptions and a limit, and never say a country is in a stage as a fact. Use only the models the course framework names; call any other one an aside.',
+    '- Be neutral and dated: give contested places both names or the UN usage, say who controls, claims and recognizes, describe peoples and religions in the terms their members use, and give a source and a year for any real figure. Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),

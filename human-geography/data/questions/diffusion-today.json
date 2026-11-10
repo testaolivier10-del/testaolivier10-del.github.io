@@ -1,0 +1,538 @@
+{
+ "stimuli": {
+  "diffusion-today-s1": {
+   "kind": "data",
+   "title": "Young people in Country A: the internet and an Indigenous language",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of invented Country A, 2000 to 2025: the share of people aged 15 to 24 who use the internet daily rises from 5% to 90%, while the share who speak the Indigenous Language C at home falls from 40% to 20% in 2020 and then rises to 23% in 2025",
+    "xLabel": "Year",
+    "yLabel": "Percent of people aged 15 to 24",
+    "series": [
+     {
+      "name": "Use the internet daily",
+      "points": [
+       [
+        2000,
+        5
+       ],
+       [
+        2005,
+        15
+       ],
+       [
+        2010,
+        35
+       ],
+       [
+        2015,
+        60
+       ],
+       [
+        2020,
+        80
+       ],
+       [
+        2025,
+        90
+       ]
+      ]
+     },
+     {
+      "name": "Speak Language C at home",
+      "points": [
+       [
+        2000,
+        40
+       ],
+       [
+        2005,
+        36
+       ],
+       [
+        2010,
+        30
+       ],
+       [
+        2015,
+        24
+       ],
+       [
+        2020,
+        20
+       ],
+       [
+        2025,
+        23
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "diffusion-today-s2": {
+   "kind": "text",
+   "title": "Reviving te reo Māori in New Zealand",
+   "text": "<p><b>Te reo Māori in New Zealand</b> (LevlPrep summary, 2026)</p><p>Te reo Māori is the language of the Māori, the Indigenous people of New Zealand. For much of the 1900s, schools taught in English and many Māori children were punished for speaking te reo. By the 1970s, studies found that few young Māori spoke it fluently. Māori leaders pushed back. Māori Language Week began in 1975. In 1982, families opened the first kōhanga reo, \"language nests\" where young children spend the day speaking only te reo. The Māori Language Act of 1987 made te reo an official language of New Zealand, and a Māori television channel began broadcasting in 2004.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-diffusion-today-1",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "diffusion-today-s1",
+   "q": "Which statement best describes the trends in the chart from 2000 to 2020?",
+   "options": [
+    "Internet use rose; Language C at home fell",
+    "Both daily internet use and Language C at home rose",
+    "Both daily internet use and Language C at home fell",
+    "Daily internet use fell while Language C at home rose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "internet use climbed from 5% to 80%, while the share speaking Language C at home fell from 40% to 20%.",
+    "options": [
+     "Right: internet use climbed from 5% to 80%, while the share speaking Language C at home fell from 40% to 20%.",
+     "Language C fell from 40% to 20% over those years.",
+     "Internet use rose steeply, from 5% to 80%.",
+     "This reverses both lines: internet use rose and Language C fell."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-2",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "diffusion-today-s1",
+   "q": "Which explanation of the 2000 to 2020 trends fits the idea of cultural convergence?",
+   "options": [
+    "Young people moved abroad, so Language C left the country",
+    "Media in larger languages drew youth from Language C",
+    "Language C speakers made new words for internet tools",
+    "The internet stopped working in places where Language C is spoken"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "when young people spend more time with media in widely used languages, they use their small home language less, and places grow more alike: convergence.",
+    "options": [
+     "The chart shows people living in Country A, not migration. It tracks what they speak at home.",
+     "Right: when young people spend more time with media in widely used languages, they use their small home language less, and places grow more alike: convergence.",
+     "That would keep the language alive and different, the opposite of the falling line.",
+     "Daily internet use rose steadily; nothing shows it stopped."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-3",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "stimulus": "diffusion-today-s1",
+   "q": "A student concludes, \"The internet caused Language C to decline in every village of Country A.\" What is the main limitation of this conclusion?",
+   "options": [
+    "The chart covers too many years to show any trend",
+    "The chart shows people of the wrong age for language",
+    "National data do not prove a cause or show each village",
+    "Percentages are not suited to comparing two trends"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "two lines moving together do not prove that one caused the other, and national data hide local differences, so some villages may have kept Language C strong.",
+    "options": [
+     "Twenty-five years is enough to show a trend. The problem is the claim about cause and about every village.",
+     "People aged 15 to 24 do speak languages at home; the age group is not the problem.",
+     "Right: two lines moving together do not prove that one caused the other, and national data hide local differences, so some villages may have kept Language C strong.",
+     "Percentages can be compared. The limit is about cause and scale."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-4",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "diffusion-today-s1",
+   "q": "From 2020 to 2025, the share speaking Language C at home rose from 20% to 23%, the same years a radio station and a phone app in Language C began. Which idea does this change best fit?",
+   "options": [
+    "Cultural convergence: the country growing more alike",
+    "Relocation diffusion: Language C speakers arriving from abroad",
+    "Colonialism: a foreign power ruling Country A",
+    "Cultural divergence: a group reviving its own language"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "using new media to keep a small language alive makes the place more distinct again, which is cultural divergence.",
+    "options": [
+     "The rise means more young people use their own language, which makes the place more different, not more alike.",
+     "The chart gives no evidence of migrants; the change came with new local media.",
+     "Nothing in the data or the stem points to foreign rule.",
+     "Right: using new media to keep a small language alive makes the place more distinct again, which is cultural divergence."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-5",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "diffusion-today-s2",
+   "q": "The language nests, the 1987 law and the television channel together are examples of which process?",
+   "options": [
+    "Cultural divergence: a group keeping its culture distinct",
+    "Cultural convergence: Māori culture becoming like others",
+    "Relocation diffusion: Māori speakers moving to new lands",
+    "Creolization: te reo mixing with English into a new language"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "these efforts push back against a dominant language and keep Māori culture distinct, which is cultural divergence.",
+    "options": [
+     "Right: these efforts push back against a dominant language and keep Māori culture distinct, which is cultural divergence.",
+     "The efforts aim to keep te reo alive and different, the opposite of convergence.",
+     "The revival happens in New Zealand, where the Māori live; no move is described.",
+     "The goal is to keep te reo itself, not to make a new mixed language."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-6",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "diffusion-today-s2",
+   "q": "According to the passage, what was the main cause of te reo Māori's decline in the 1900s?",
+   "options": [
+    "The 1987 law that made te reo an official language",
+    "English schooling that punished te reo",
+    "The language nests that opened in 1982",
+    "A Māori television channel that began in 2004"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the passage says schools taught in English and punished children for speaking te reo, so fewer children grew up fluent.",
+    "options": [
+     "The 1987 law helped revive the language; it came after the decline.",
+     "Right: the passage says schools taught in English and punished children for speaking te reo, so fewer children grew up fluent.",
+     "The language nests were part of the revival, not a cause of decline.",
+     "The channel supported te reo and came long after the decline."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-7",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "stimulus": "diffusion-today-s2",
+   "q": "Which detail from the passage shows politics, not only families, helping to revive te reo?",
+   "options": [
+    "Families opening the first language nests in 1982",
+    "Studies in the 1970s finding few fluent young speakers",
+    "The 1987 law making te reo an official language",
+    "Children speaking te reo for the whole day"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "a national law is a political act. It gave te reo official standing beside the efforts of families and leaders.",
+    "options": [
+     "Māori families and elders led the language nests (with government funding); the clearest political act is the law.",
+     "The studies measured the problem; they did not revive the language.",
+     "Right: a national law is a political act. It gave te reo official standing beside the efforts of families and leaders.",
+     "That describes how the nests work, not a political act."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-8",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement best describes globalization?",
+   "options": [
+    "A country ruling another place directly and sending settlers there",
+    "People moving from a rural village to a nearby large city",
+    "A small group keeping its customs the same for generations",
+    "Places growing more linked by trade, media and the internet"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "globalization is the growing connection of places around the world, so goods, money, people and ideas move faster and farther.",
+    "options": [
+     "That is colonialism, a historical cause of diffusion.",
+     "That is rural-to-urban migration, a move within one country.",
+     "That describes folk culture, which globalization often challenges.",
+     "Right: globalization is the growing connection of places around the world, so goods, money, people and ideas move faster and farther."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-9",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A traveler finds the same coffee chain, the same phone stores and the same hit songs in malls in Dubai, United Arab Emirates, and in Toronto, Canada. What does this show?",
+   "options": [
+    "Cultural convergence: distant places alike",
+    "Cultural divergence: places growing more different",
+    "Stimulus diffusion: each city inventing its own coffee",
+    "Sequent occupance: older buildings reused in each city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "shared brands and songs in cities far apart make those places look and sound more alike.",
+    "options": [
+     "Right: shared brands and songs in cities far apart make those places look and sound more alike.",
+     "The traveler finds the same things in both cities, so they are growing more alike.",
+     "The traveler finds the same chain, not new local versions.",
+     "Sequent occupance is about layers in one place, not about distant places matching."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-10",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "English is widely used for international business, science and much of the internet. Which explanation best links this to globalization?",
+   "options": [
+    "English is spoken at home by most people on Earth",
+    "Fast global links reward one shared language",
+    "English is a creole that formed on the internet",
+    "Globalization makes countries adopt one official language"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "when people across the world trade, study and post online together, a shared language is useful. English filled that role, helped by the earlier spread of British and United States influence.",
+    "options": [
+     "Most people speak another language at home; English is widely learned as a second language.",
+     "Right: when people across the world trade, study and post online together, a shared language is useful. English filled that role, helped by the earlier spread of British and United States influence.",
+     "English is not a creole of the internet; it spread through trade, empire, media and business.",
+     "Countries keep their own official languages; English is used beside them."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-11",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In many Indigenous communities, young people need a widely used language for school, jobs and online media. What is the most likely result for the community's own language if nothing is done?",
+   "options": [
+    "More young speakers, because the internet uses many languages",
+    "No change, because language is a physical trait",
+    "Fewer young speakers, so the language is threatened",
+    "A new creole, because the community is a trading port"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "when young people use a dominant language for school, work and media, they speak their own language less and pass less of it on. That threatens Indigenous languages.",
+    "options": [
+     "Most online content is in a few large languages, which pulls young people toward them.",
+     "Language is learned culture, so it changes when daily life changes.",
+     "Right: when young people use a dominant language for school, work and media, they speak their own language less and pass less of it on. That threatens Indigenous languages.",
+     "Nothing in the stem describes a trading port or a mixed language forming."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-12",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Under a French law passed in 1994, radio stations in France must play a large share of songs in French. Which idea does this policy best show?",
+   "options": [
+    "A government spreading English through radio",
+    "Relocation diffusion of French songs to Canada",
+    "Hierarchical diffusion from small towns to Paris",
+    "Politics used to resist cultural convergence"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "the law protects French-language music against songs in other languages, keeping French culture distinct.",
+    "options": [
+     "The law favors French, not English.",
+     "The law is about radio in France, not about people moving.",
+     "The law covers stations across France; it is not about a ladder of places.",
+     "Right: the law protects French-language music against songs in other languages, keeping French culture distinct."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-13",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A family that moved from the Philippines to Toronto, Canada, video-calls relatives every week, watches Filipino shows online and cooks Filipino food. How does technology affect their culture?",
+   "options": [
+    "It helps them keep culture from home",
+    "It forces them to stop speaking their home language",
+    "It ends their contact with the Philippines",
+    "It turns their culture into the physical landscape"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "fast, cheap links let migrants keep their language, food and ties alive across great distance.",
+    "options": [
+     "Right: fast, cheap links let migrants keep their language, food and ties alive across great distance.",
+     "The calls and shows give them more chances to use their language, not fewer.",
+     "Weekly calls show more contact, not less.",
+     "Culture is learned and shared; technology does not make it physical."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-14",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Young people move from small villages in Nigeria to Lagos, a very large city where people of many groups meet. What change to their culture is most likely?",
+   "options": [
+    "They give up contact with their home villages",
+    "They take up more popular culture shared across the city",
+    "They make their home village's folk culture the city's main culture",
+    "They stop using any shared language with other groups"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "growing cities mix people from many places, with media and shops that spread popular culture, so newcomers often adopt it.",
+    "options": [
+     "Most migrants keep ties to home; the stem gives no reason they would cut them.",
+     "Right: growing cities mix people from many places, with media and shops that spread popular culture, so newcomers often adopt it.",
+     "One village's culture is unlikely to become the main culture of a city of many groups.",
+     "In a city of many groups, people need shared languages more, not less."
+    ]
+   }
+  },
+  {
+   "id": "hug-diffusion-today-15",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explanation of how globalization leads to cultural convergence in a named place.",
+   "why": {
+    "correct": "Convergence means places growing more alike. Name the place, the evidence and the global link that causes it."
+   },
+   "specific": {
+    "frame": "In ___, ___ shows cultural convergence because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Dubai, United Arab Emirates, a mall full of global chain stores shows cultural convergence because trade and advertising bring the same brands to cities around the world, so Dubai's shopping looks more like that of Toronto or London.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Dubai, United Arab Emirates",
+       "cities in general"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A vague place earns no credit. Name the city and its country."
+      }
+     },
+     "evidence": {
+      "label": "Evidence",
+      "options": [
+       "a mall full of global chain stores",
+       "a new law protecting the local language"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Protecting a local language keeps places different: that is divergence."
+      }
+     },
+     "link": {
+      "label": "Because",
+      "options": [
+       "trade and advertising bring the same brands to cities around the world",
+       "the desert climate shapes what people buy"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Climate does not explain why the same brands appear worldwide; global links do."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-diffusion-today-16",
+   "unit": "unit-3",
+   "topic": "diffusion-today",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which of these are examples of cultural convergence? Select all that apply.",
+   "options": [
+    "Teenagers in Brazil and Japan streaming the same show",
+    "Schools in Wales teaching children in Welsh",
+    "A radio law in France requiring songs in French",
+    "Language nests reviving te reo Māori in New Zealand",
+    "A village bringing back a harvest festival it had dropped"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Convergence makes places more alike, as when teenagers in distant countries stream the same show. Welsh-language schools, a language law, language nests and a revived festival keep places distinct, which is divergence.",
+    "options": [
+     "Right: shared media make the two places more alike.",
+     "Keeping a small language alive makes a place more distinct: divergence.",
+     "This protects French culture, keeping it distinct: divergence.",
+     "Reviving an Indigenous language keeps a culture distinct: divergence.",
+     "Reviving a local tradition makes a place more distinct: divergence."
+    ]
+   }
+  }
+ ]
+}

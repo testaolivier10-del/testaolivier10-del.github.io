@@ -1,0 +1,12 @@
+{
+ "skills-reading-steps": {
+  "file": "figures/skills-reading-steps.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four numbered cards. 1, Title: what does it show, where and when? 2, Legend and units: what do the shades and numbers mean? 3, Source line: who made the data, and in what year? 4, Pattern: where is it high, where low, and by how much, naming a real place and a value."
+ }
+}

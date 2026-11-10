@@ -1,0 +1,23 @@
+{
+ "geographic-data": {
+  "def": "Information tied to a location, such as where something is or how much of it is found in a place."
+ },
+ "gis": {
+  "def": "A geographic information system: computer software that stores data tied to locations as layers, so they can be mapped and compared on one map."
+ },
+ "gps": {
+  "def": "A satellite navigation system, such as the United States' GPS, that uses signals from satellites to find the exact location of a receiver like a phone."
+ },
+ "remote-sensing": {
+  "def": "Gathering data about the Earth from a distance, usually with satellites or aircraft that record images or light."
+ },
+ "field-observation": {
+  "def": "Collecting data by going to a place to watch, count, sketch, photograph or interview people there."
+ },
+ "quantitative-data": {
+  "def": "Data that are numbers you can count or measure, such as the number of stalls on a street or the yearly rainfall of a city."
+ },
+ "qualitative-data": {
+  "def": "Data in the form of words, pictures and experiences, such as interviews, field notes, photos and travel accounts."
+ }
+}

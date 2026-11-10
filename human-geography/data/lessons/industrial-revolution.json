@@ -1,0 +1,84 @@
+{
+ "topic": "industrial-revolution",
+ "hook": "In 1750 a family near Manchester, England, might spin and weave wool by hand at home. By 1850 the same cloth poured out of steam-powered mills in town, run by people who had left their farms. Within a century, Britain went from a country of villages to the first country where more people lived in towns than in the countryside. What changed, and why did it start there?",
+ "prereq": [
+  {
+   "q": "What did the Second Agricultural Revolution do to the number of people needed on farms?",
+   "options": [
+    "It lowered it, because new methods grew more food with fewer workers",
+    "It raised it, because new crops needed more hands",
+    "It left it the same",
+    "It moved farmworkers into cities by law"
+   ],
+   "correct": 0,
+   "why": "New tools and methods grew more food with fewer workers, freeing people to move to towns.",
+   "review": "second-agricultural-revolution"
+  },
+  {
+   "q": "What is colonialism?",
+   "options": [
+    "One country ruling another territory and its people",
+    "Two countries trading as equals",
+    "People moving from farms to cities",
+    "A country splitting into smaller states"
+   ],
+   "correct": 0,
+   "why": "Colonialism is rule over another territory; industrial powers used colonies for raw materials and markets.",
+   "review": "diffusion-history"
+  },
+  {
+   "q": "People leaving the countryside to live in cities is called what?",
+   "options": [
+    "Rural-to-urban migration",
+    "Step migration",
+    "Transhumance",
+    "Forced migration"
+   ],
+   "correct": 0,
+   "why": "Rural-to-urban migration is the move from the countryside to cities, a key effect of factory jobs.",
+   "review": "forced-voluntary-migration"
+  }
+ ],
+ "figure": {
+  "figure": "industrial-revolution-chain",
+  "caption": "New machines and nearby coal and iron led to factories in towns, which pulled workers to cities and sent the search for raw materials overseas."
+ },
+ "chain": [
+  {
+   "cause": "New machines and the steam engine meet coal and iron in Britain",
+   "effect": "factories can run anywhere there is coal, so they cluster in towns"
+  },
+  {
+   "cause": "Factories in towns need many workers, and farms need fewer",
+   "effect": "farmworkers move to towns (rural-to-urban migration)"
+  },
+  {
+   "cause": "Workers pour into towns faster than housing is built",
+   "effect": "cities such as Manchester grow fast and crowd up, and a working class forms"
+  },
+  {
+   "cause": "Mills need cotton, rubber and buyers",
+   "effect": "industrial countries tighten control over colonies (colonialism and imperialism)"
+  }
+ ],
+ "ideas": [
+  "<b>Industrialization</b> is the spread of factories and machine work to a place. It needs new <b>technology</b> and the <b>resources</b> to run it.",
+  "The <b>steam engine</b> freed factories from rivers, so they clustered in towns near coal, workers and buyers.",
+  "More food from new farm methods fed the towns and freed farmworkers, so cities grew and the population rose.",
+  "Factories needed raw materials and markets, which fed <b>colonialism</b> and <b>imperialism</b> in Africa and Asia.",
+  "Industry spread from Britain to Belgium, the Ruhr, the US Northeast and, after 1868, Japan: at different times, by different routes."
+ ],
+ "misconception": {
+  "wrong": "The Industrial Revolution was one quick event that happened everywhere at once.",
+  "right": "It took more than a century and reached places at different times: Britain from the late 1700s, Germany's Ruhr in the mid-1800s, Japan after 1868. Name the place and the time."
+ },
+ "check": [
+  "hug-industrial-revolution-1",
+  "hug-industrial-revolution-2",
+  "hug-industrial-revolution-3",
+  "hug-industrial-revolution-8",
+  "hug-industrial-revolution-9",
+  "hug-industrial-revolution-14"
+ ],
+ "summary": "The Industrial Revolution began in Britain in the late 1700s, when new machines and steam power met coal and iron. Factories clustered in towns, farmworkers moved to cities, a working class formed, and the hunt for raw materials and markets fed colonialism."
+}

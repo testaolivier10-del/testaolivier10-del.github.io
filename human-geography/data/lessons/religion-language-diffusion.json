@@ -1,0 +1,71 @@
+{
+ "topic": "religion-language-diffusion",
+ "hook": "Spanish is spoken in Mexico City and Madrid, and so are its cousins French and Portuguese in Paris and São Paulo. English and Hindi, which sound nothing alike, belong to the same family too. Religions also traveled: Buddhism began in South Asia, yet most Buddhists live in East and Southeast Asia. Languages and religions each have a hearth and a path, and maps let you trace both.",
+ "prereq": [
+  {
+   "q": "People move and carry a trait to a new place. What kind of diffusion is this?",
+   "options": [
+    "Relocation diffusion",
+    "Contagious diffusion",
+    "Hierarchical diffusion",
+    "Stimulus diffusion"
+   ],
+   "correct": 0,
+   "why": "Relocation diffusion happens when people who hold a trait move and take it with them.",
+   "review": "diffusion-types"
+  },
+  {
+   "q": "Portuguese is spoken in Brazil mainly because of what?",
+   "options": [
+    "Colonialism",
+    "Cultural divergence",
+    "Placemaking",
+    "Distance decay"
+   ],
+   "correct": 0,
+   "why": "Portugal ruled Brazil from the 1500s until 1822 and made Portuguese its language of government and schools.",
+   "review": "diffusion-history"
+  }
+ ],
+ "figure": {
+  "figure": "religion-language-diffusion-tree",
+  "caption": "Part of the Indo-European language family: family, branch, language."
+ },
+ "chain": [
+  {
+   "cause": "A language or religion begins in a hearth",
+   "effect": "it can spread outward by expansion or travel with migrants by relocation"
+  },
+  {
+   "cause": "Speakers of one ancient language spread out and lost contact over centuries",
+   "effect": "their speech split into branches and languages that form one language family"
+  },
+  {
+   "cause": "A universalizing religion seeks followers from any group",
+   "effect": "it spreads by expansion and relocation, far from its hearth"
+  },
+  {
+   "cause": "An ethnic religion is tied to one people and homeland",
+   "effect": "it mostly stays near its hearth, or spreads by relocation when followers move"
+  }
+ ],
+ "ideas": [
+  "A <b>language family</b> is a group of languages that grew from one ancient ancestor. Indo-European is the largest by speakers and includes branches such as Germanic (English), Romance (Spanish) and Indo-Iranian (Hindi).",
+  "A <b>dialect</b> is a regional version of one language, such as the Spanish of Mexico City and of Madrid. A <b>toponym</b> is a place name, and names such as Santa Fe record who settled a place.",
+  "AP® Human Geography classes Christianity, Islam, Buddhism and Sikhism as <b>universalizing religions</b>: they seek followers anywhere and spread by expansion and relocation.",
+  "It classes Hinduism and Judaism as <b>ethnic religions</b>: tied to one people and place, they mostly stay near the hearth or spread by relocation. These are AP® Human Geography labels; followers may not use them."
+ ],
+ "misconception": {
+  "wrong": "Ethnic religions never spread beyond their hearth.",
+  "right": "They spread mainly by relocation. Hindu temples stand in London and Toronto, and Jewish communities live from New York to Buenos Aires, because followers moved and carried their religion with them."
+ },
+ "check": [
+  "hug-religion-language-diffusion-1",
+  "hug-religion-language-diffusion-2",
+  "hug-religion-language-diffusion-3",
+  "hug-religion-language-diffusion-8",
+  "hug-religion-language-diffusion-9",
+  "hug-religion-language-diffusion-13"
+ ],
+ "summary": "Languages and religions spread from hearths, and maps, charts and place names show their paths. Languages belong to families of related languages, such as Indo-European, split into branches, languages and dialects. AP® Human Geography classes Christianity, Islam, Buddhism and Sikhism as universalizing religions, which spread by expansion and relocation, and Hinduism and Judaism as ethnic religions, which mostly stay near the hearth or spread by relocation. Religion figures come with a source and a year: Pew Research Center, 2025 report on 2020 data."
+}

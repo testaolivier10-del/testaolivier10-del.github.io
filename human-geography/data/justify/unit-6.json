@@ -1,0 +1,535 @@
+{
+ "about": "\"Make it specific\" prompts for unit-6 (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "unit-6",
+   "id": "u6-describe-favelas",
+   "topic": "city-structure",
+   "practice": "2.A",
+   "skill": "describe",
+   "title": "Describing squatter settlements",
+   "context": "",
+   "prompt": "<b>Describe</b> the favelas on the hillsides of Rio de Janeiro.",
+   "checklist": [
+    "Names where they are, with a named favela",
+    "Says how homes were built and what services are like",
+    "Goes beyond the word \"poor\""
+   ],
+   "earns": {
+    "answer": "In Rio de Janeiro, favelas such as Rocinha climb the steep hillsides near wealthy beach neighborhoods; residents built the homes themselves without legal title, packed close together, often with weak access to sewers and roads.",
+    "why": "It names a place and describes where, how and with what services."
+   },
+   "misses": {
+    "answer": "Favelas are poor neighborhoods in Rio de Janeiro, Brazil.",
+    "why": "\"Poor\" alone is a label: describe where they are and what they are like."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "Where",
+      "options": [
+       "steep hillsides, as at Rocinha",
+       "the city's central business district",
+       "farmland far outside the city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The CBD holds offices and shops.",
+       "2": "Favelas are inside the city."
+      }
+     },
+     "pattern": {
+      "label": "How they were built",
+      "options": [
+       "by residents, without legal title",
+       "by the national government",
+       "by large developers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Residents built them without legal title.",
+       "2": "Developers build formal housing."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-explain-istanbul",
+   "topic": "urbanization-origins",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "How situation helped Istanbul grow",
+   "context": "",
+   "prompt": "<b>Explain</b> how its situation helped Istanbul grow into a great city.",
+   "checklist": [
+    "Names Istanbul's situation: on the Bosporus",
+    "Says what that position links",
+    "Links it to trade and growth"
+   ],
+   "earns": {
+    "answer": "Istanbul sits on the Bosporus, between Europe and Asia and between the Black Sea and the Mediterranean, so for centuries ships and traders passed through it, which brought wealth, people and power to the city.",
+    "why": "It names the situation and links it, step by step, to growth."
+   },
+   "misses": {
+    "answer": "Istanbul is on the Bosporus between Europe and Asia.",
+    "why": "That locates it but never says how the location helped it grow."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Situation",
+      "options": [
+       "on the Bosporus between two seas",
+       "on flat land",
+       "in a cool climate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Flat land is part of a site, not a situation.",
+       "2": "Climate is part of the site."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "trade passed through, bringing wealth",
+       "the city stayed a village",
+       "ships avoided it"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Istanbul grew into a great city.",
+       "2": "It was on the route, so ships came through."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-compare-burgess-hoyt",
+   "topic": "city-structure",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "Burgess and Hoyt",
+   "context": "",
+   "prompt": "<b>Compare</b> the concentric zone model and the sector model, using Chicago.",
+   "checklist": [
+    "Gives one similarity between the two models",
+    "Says how each arranges land use",
+    "Uses Chicago for at least one side"
+   ],
+   "earns": {
+    "answer": "Both models start from a CBD, but the concentric zone model draws rings of land use around it, whereas the sector model draws wedges along transport lines, as in Chicago, where high-rent housing ran north along the lakeshore.",
+    "why": "It gives a similarity and a difference, with Chicago as evidence."
+   },
+   "misses": {
+    "answer": "The concentric zone model has rings around the CBD.",
+    "why": "One side only: say how the sector model differs."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "Concentric zone",
+      "options": [
+       "rings around the CBD",
+       "wedges along roads",
+       "several separate centers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wedges are the sector model.",
+       "2": "Several centers is multiple nuclei."
+      }
+     },
+     "sideB": {
+      "label": "Sector",
+      "options": [
+       "wedges along transport lines",
+       "rings around the CBD",
+       "edge cities around a beltway"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rings are the concentric zone model.",
+       "2": "That is the galactic city."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-degree-atlanta",
+   "topic": "city-structure",
+   "practice": "1.D",
+   "skill": "degree",
+   "title": "How well Burgess fits Atlanta",
+   "context": "",
+   "prompt": "<b>Explain</b> the degree to which the concentric zone model fits metro Atlanta.",
+   "checklist": [
+    "States the degree first: to a low degree, for example",
+    "Gives evidence from Atlanta: growth along highways and edge cities",
+    "Names the model that fits better"
+   ],
+   "earns": {
+    "answer": "To a low degree: metro Atlanta grew along highways in the car era, with offices and malls in edge cities such as Perimeter Center rather than in even rings around downtown, so the galactic city model fits it better.",
+    "why": "It states the degree, gives evidence and names a better fit."
+   },
+   "misses": {
+    "answer": "Atlanta does not have perfect rings around its downtown.",
+    "why": "No degree stated, and no evidence of what Atlanta has instead."
+   },
+   "specific": {
+    "slots": {
+     "degree": {
+      "label": "Degree",
+      "options": [
+       "to a low degree",
+       "to a high degree",
+       "exactly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Atlanta grew along highways, not in rings.",
+       "2": "No real city fits a model exactly."
+      }
+     },
+     "model": {
+      "label": "Better fit",
+      "options": [
+       "the galactic city model",
+       "the Latin American city model",
+       "von Thünen's model"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That model is for Latin American cities.",
+       "2": "Von Thünen is about farm rings."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-place-curitiba",
+   "topic": "urban-sustainability",
+   "practice": "2.B",
+   "skill": "place",
+   "title": "Naming a place: smart growth",
+   "context": "<p>A student writes: \"Some cities use transit to cut car use.\"</p>",
+   "prompt": "<b>Rewrite</b> the claim with a real city, what it built and when.",
+   "checklist": [
+    "Names a real city and what it built",
+    "Gives the year the project opened",
+    "Says the result for how people travel"
+   ],
+   "earns": {
+    "answer": "Curitiba, Brazil, opened bus rapid transit lanes in 1974 and zoned dense housing along them, so many residents ride the bus instead of driving.",
+    "why": "It names the city, the project, the year and the result."
+   },
+   "misses": {
+    "answer": "Some cities in South America built buses to reduce traffic.",
+    "why": "No city, no year and no specific project."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "City",
+      "options": [
+       "Curitiba, Brazil",
+       "South America",
+       "a big city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A continent, not a city.",
+       "2": "That names no city."
+      }
+     },
+     "kind": {
+      "label": "What it built",
+      "options": [
+       "bus rapid transit lanes with dense housing",
+       "new highways",
+       "a larger airport"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Highways invite more car use.",
+       "2": "An airport does not cut city car trips."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-scale-washington",
+   "topic": "urban-data",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "Income at two scales in one city",
+   "context": "",
+   "prompt": "<b>Explain</b> how income data for Washington, D.C., change from the scale of the whole city to the local scale of census tracts.",
+   "checklist": [
+    "Says what the citywide figure shows",
+    "Names where tract data show lower incomes",
+    "Explains what the citywide figure hides"
+   ],
+   "earns": {
+    "answer": "For the city as a whole, Washington, D.C., has a high median household income, but at the local scale, census tracts east of the Anacostia River, in Wards 7 and 8, have much lower incomes, so the citywide figure hides deep differences between neighborhoods.",
+    "why": "It names both scales, a place and what the larger figure hides."
+   },
+   "misses": {
+    "answer": "Washington, D.C., has rich and poor neighborhoods.",
+    "why": "True, but no scale is named and no place is given."
+   },
+   "specific": {
+    "slots": {
+     "scale": {
+      "label": "Finer scale",
+      "options": [
+       "the local scale: census tracts",
+       "the global scale",
+       "the national scale"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Global data compare countries.",
+       "2": "National data are coarser than the city."
+      }
+     },
+     "place": {
+      "label": "Where incomes are lower",
+      "options": [
+       "east of the Anacostia River",
+       "on the National Mall",
+       "in every tract equally"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The Mall is parkland and museums.",
+       "2": "Tracts differ a great deal."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-limit-homeless-count",
+   "topic": "urban-data",
+   "practice": "4.F",
+   "skill": "limitation",
+   "title": "The limit of a one-night count",
+   "context": "<p>US cities count the people experiencing homelessness on one night in January each year (a point-in-time count).</p>",
+   "prompt": "<b>Explain</b> one limitation of this count.",
+   "checklist": [
+    "Names who the count misses",
+    "Says why one night misses them",
+    "Says which way the count is off"
+   ],
+   "earns": {
+    "answer": "A count on one night misses people staying with friends, in cars or in places counters do not reach, and people who are homeless at other times of year, so it likely understates how many people are homeless over a year.",
+    "why": "It names who is missed, why and which way the count errs."
+   },
+   "misses": {
+    "answer": "Counting people is hard, so the numbers in the count might be wrong.",
+    "why": "Too vague: it names no group the count misses and no reason why."
+   },
+   "specific": {
+    "slots": {
+     "limit": {
+      "label": "Who is missed",
+      "options": [
+       "people staying with friends or in cars",
+       "people in shelters",
+       "people counted twice"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Shelters are where the count is easiest.",
+       "2": "Double counts make totals too high, the opposite problem."
+      }
+     },
+     "effect": {
+      "label": "Which way",
+      "options": [
+       "it likely understates the total",
+       "it likely overstates the total",
+       "it is exact"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Missing people makes the count too low.",
+       "2": "One night cannot be exact for a year."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-model-lima",
+   "topic": "city-size-distribution",
+   "practice": "1.E",
+   "skill": "model",
+   "title": "Rank-size and Lima",
+   "context": "<p>In Peru's 2017 census, Lima had about 9.5 million people and Arequipa, the second city, about 1 million (INEI).</p>",
+   "prompt": "<b>Explain</b> how well the rank-size rule fits Peru, and give one limit of the rule.",
+   "checklist": [
+    "Says what the rule predicts for the second city",
+    "Compares it with Arequipa's real size",
+    "Names Lima's pattern and a limit of the rule"
+   ],
+   "earns": {
+    "answer": "The rule fits Peru poorly: it predicts a second city half Lima's size, about 4.75 million, but Arequipa had about 1 million in 2017 (INEI), so Lima is a primate city, far more than twice the second; the rule cannot explain why power and jobs concentrate in one city.",
+    "why": "It computes the prediction, compares it with the data and gives a limit."
+   },
+   "misses": {
+    "answer": "Lima is a primate city because it is the capital.",
+    "why": "It names the pattern but never tests the rule against the numbers."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "Rule's second city",
+      "options": [
+       "about 4.75 million, half of Lima",
+       "about 9.5 million, equal to Lima",
+       "about 1 million, a tenth"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rank 2 is half of rank 1.",
+       "2": "That is Arequipa's real size, not the rule's prediction."
+      }
+     },
+     "model": {
+      "label": "Lima's pattern",
+      "options": [
+       "a primate city",
+       "a rank-size pattern",
+       "a central place pattern"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Arequipa is far below the rule's prediction.",
+       "2": "Central place theory is about spacing, not this size gap."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-legend-rent-burden",
+   "topic": "urban-change-challenges",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading a rent-burden legend",
+   "context": "<p>A map of census tracts in invented Capital City shades each tract by the share of renter households that pay more than 30% of their income on rent: under 20%, 20% to 34%, 35% to 49%, and 50% or more (invented data for practice).</p>",
+   "prompt": "<b>Explain</b> what a tract in the darkest class tells you, and what it does not.",
+   "checklist": [
+    "Reads the class: half or more of renters pay over 30%",
+    "Says what that means for families there",
+    "Says the legend shows a share, not a count of people"
+   ],
+   "earns": {
+    "answer": "In a tract in the darkest class, half or more of renter households pay more than 30% of their income on rent, so housing costs press hard on many families there; the legend shows a share of renters, not how many people live in the tract.",
+    "why": "It reads the class, interprets it and says what it does not show."
+   },
+   "misses": {
+    "answer": "Rent is high in the darkest tracts on the map.",
+    "why": "The map is about the share of income spent on rent, not the rent itself, and no number is read."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "Darkest class",
+      "options": [
+       "half or more of renters pay over 30%",
+       "rent is over $30",
+       "30% of homes are rented"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The legend is a share of income, not a price.",
+       "2": "The legend is about rent burden, not renting."
+      }
+     },
+     "limit": {
+      "label": "What it does not show",
+      "options": [
+       "how many people live in the tract",
+       "which tracts have renters",
+       "the share of renters burdened"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Every tract is shaded, so all have data.",
+       "2": "That is what it shows."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-explain-redlining",
+   "topic": "urban-change-challenges",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "How redlining shaped neighborhoods",
+   "context": "",
+   "prompt": "<b>Explain</b> how redlining in US cities from the 1930s shaped neighborhoods.",
+   "checklist": [
+    "Says what redlining was: refusing or worsening loans by location",
+    "Names whom it fell on, historically",
+    "Links it to the effect on homes and values"
+   ],
+   "earns": {
+    "answer": "From the 1930s, maps graded neighborhoods for lending risk, and lenders refused loans or offered worse terms in areas marked red, which were often Black and immigrant neighborhoods, so owners there could not borrow to buy or repair homes, which held down home values for decades.",
+    "why": "It defines the mechanism, names the history and links it to the effect."
+   },
+   "misses": {
+    "answer": "Redlining was unfair to some neighborhoods.",
+    "why": "A judgment, not an explanation: no mechanism and no effect."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "What it was",
+      "options": [
+       "refusing loans or worse terms by location",
+       "building highways",
+       "drawing district lines for elections"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Highways are a different process.",
+       "2": "That is redistricting."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "owners could not borrow, so values stayed low",
+       "home values rose fastest there",
+       "more banks opened there"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Without loans, values were held down.",
+       "2": "Lenders avoided those areas."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

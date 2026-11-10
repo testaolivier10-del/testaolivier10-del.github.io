@@ -1,0 +1,36 @@
+{
+  "name": "LevlPrep Human Geography",
+  "short_name": "LevlPrep Geography",
+  "description": "Human geography on the course framework, in its order, for the May 2027 exam: every notes page is free forever and the skills chapter and Unit 1 are fully interactive; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#16332E",
+  "icons": [
+    {
+      "src": "../assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "../assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

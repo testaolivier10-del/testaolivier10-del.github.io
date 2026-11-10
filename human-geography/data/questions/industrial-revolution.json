@@ -1,0 +1,596 @@
+{
+ "stimuli": {
+  "industrial-revolution-s1": {
+   "kind": "map",
+   "title": "Three early industrial regions of Europe",
+   "map": {
+    "base": "europe",
+    "render": "reference",
+    "label": "Reference map of Europe marking three early industrial regions on coalfields: A, Manchester in England; B, the Ruhr in Germany; C, Upper Silesia in Poland",
+    "legendTitle": "Countries with a marked early industrial region of the 1800s. Each sits on a coalfield: A Manchester, B Ruhr, C Upper Silesia",
+    "focus": [
+     "united-kingdom",
+     "germany",
+     "poland"
+    ],
+    "marks": [
+     {
+      "at": [
+       -2.24,
+       53.48
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       7.4,
+       51.5
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       19.0,
+       50.26
+      ],
+      "text": "C"
+     }
+    ]
+   }
+  },
+  "industrial-revolution-s2": {
+   "kind": "data",
+   "title": "Workers in Country A by kind of work, 1800 to 1900",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of Country A, 1800 to 1900: the share of workers in farming falls from 75% to 20% while the share in factories and mines rises from 10% to 45%, passing farming between 1860 and 1880",
+    "xLabel": "Year",
+    "yLabel": "Percent of all workers",
+    "series": [
+     {
+      "name": "Farming",
+      "points": [
+       [
+        1800,
+        75
+       ],
+       [
+        1820,
+        68
+       ],
+       [
+        1840,
+        55
+       ],
+       [
+        1860,
+        42
+       ],
+       [
+        1880,
+        30
+       ],
+       [
+        1900,
+        20
+       ]
+      ]
+     },
+     {
+      "name": "Factories and mines",
+      "points": [
+       [
+        1800,
+        10
+       ],
+       [
+        1820,
+        15
+       ],
+       [
+        1840,
+        24
+       ],
+       [
+        1860,
+        33
+       ],
+       [
+        1880,
+        40
+       ],
+       [
+        1900,
+        45
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-industrial-revolution-1",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "The legend says each marked region sits on a coalfield. Why did early factories cluster in places like these?",
+   "options": [
+    "Coal fueled the steam engines",
+    "Coalfields were where the best farmland was found",
+    "Rulers kept factories away from the coast by law",
+    "Each was a capital"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Steam engines ran on coal, which was bulky and expensive to move by land in the 1800s, so factories located near the coalfields.",
+    "options": [
+     "Right: steam engines burned coal, and coal was heavy and costly to haul, so mills located on top of it.",
+     "Coal lies under many kinds of land; farmland was not what drew mills to these three regions.",
+     "No such ban existed; Upper Silesia and the Ruhr are far inland.",
+     "Manchester, the Ruhr towns and Upper Silesia are not capitals. Their pull was coal, not government."
+    ]
+   },
+   "stimulus": "industrial-revolution-s1"
+  },
+  {
+   "id": "hug-industrial-revolution-2",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis does this map show early industrial regions?",
+   "options": [
+    "Regional: places in several countries of Europe",
+    "Local: one neighborhood inside one single city",
+    "Global: the whole world shown at once on one map",
+    "National: one country and its many provinces"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The scale of analysis is the scale of the data shown: three places across several countries of Europe make a regional scale.",
+    "options": [
+     "Right: the data are three places across several European countries, so the scale is regional.",
+     "The marks are spread across three countries, not within one city.",
+     "Only Europe is shown, so the map works at a regional scale, not a global one.",
+     "Three countries are marked, so it is wider than one national scale."
+    ]
+   },
+   "stimulus": "industrial-revolution-s1"
+  },
+  {
+   "id": "hug-industrial-revolution-3",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Manchester, marked A on the map, grew from a market town into a large factory city in the early 1800s. Which explanation of that growth includes every link?",
+   "options": [
+    "Mills on the coalfield needed workers, so farmworkers moved in",
+    "Manchester grew larger because it was an industrial place in England",
+    "Farmworkers moved away from Manchester to farm land in colonies",
+    "Its birth rate rose sharply after its mills shut down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An explain answer gives every link: mills on the coalfield needed labor, so rural workers moved to Manchester for factory wages, so the city grew.",
+    "options": [
+     "Right: a cause (mills on the coal), a link (the need for workers) and an effect (migration into the city).",
+     "This restates the idea without the link: why industry made the city grow is missing.",
+     "That would shrink the city, not grow it.",
+     "The mills did not close in this period, and the growth came mostly from people moving in."
+    ]
+   },
+   "stimulus": "industrial-revolution-s1"
+  },
+  {
+   "id": "hug-industrial-revolution-4",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "q": "According to the chart, between which years did the share of workers in factories and mines first pass the share in farming?",
+   "options": [
+    "1860 and 1880",
+    "1800 and 1820",
+    "1840 and 1860",
+    "1880 and 1900"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read both lines at each year: the factory line crosses above the farming line between 1860 and 1880.",
+    "options": [
+     "Right: in 1860 farming (42%) was still ahead of factories (33%); by 1880 factories (40%) had passed farming (30%).",
+     "In 1820 farming was 68% and factories only 15%, so farming was far ahead.",
+     "In 1860 farming (42%) was still above factories (33%).",
+     "Factories had already passed farming by 1880 (40% to 30%)."
+    ]
+   },
+   "stimulus": "industrial-revolution-s2"
+  },
+  {
+   "id": "hug-industrial-revolution-5",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes the trend the chart shows for Country A over the whole century?",
+   "options": [
+    "Work shifted from farms to factories and mines",
+    "Farming and factory work both grew at the same pace",
+    "Factory work peaked in 1840 and then fell back again",
+    "Most workers in 1900 still farmed, just as in 1800"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A describe answer names what changed, the direction and how much: farming fell by about 55 points while factory work rose by 35.",
+    "options": [
+     "Right: farming fell from 75% to 20% while factory and mine work rose from 10% to 45%.",
+     "The two lines move in opposite directions: farming falls while factory work rises.",
+     "The factory line rises in every period, reaching 45% in 1900.",
+     "In 1900 only 20% farmed; 45% worked in factories and mines."
+    ]
+   },
+   "stimulus": "industrial-revolution-s2"
+  },
+  {
+   "id": "hug-industrial-revolution-6",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which outcome is most likely in Country A as the chart's trend goes on?",
+   "options": [
+    "Towns grow as rural people take factory jobs",
+    "Cities empty out as factory workers go back to farms",
+    "Farm output drops to zero as farmworkers leave",
+    "People spread evenly over the land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Factories are in towns, so a shift of workers into factories brings rural-to-urban migration and urban growth.",
+    "options": [
+     "Right: factory jobs are in towns, so rural-to-urban migration and growing cities follow.",
+     "The chart shows the opposite flow: workers leaving farming.",
+     "Fewer farmworkers can still grow plenty of food with new machines; 20% still farm in 1900.",
+     "Factories cluster in towns, so people concentrate rather than spread out."
+    ]
+   },
+   "stimulus": "industrial-revolution-s2"
+  },
+  {
+   "id": "hug-industrial-revolution-7",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which is a limitation of the chart for studying industrialization inside Country A?",
+   "options": [
+    "One national share hides which regions changed first",
+    "It uses invented data, so it shows no clear trend over time",
+    "It covers too many years for a reader to see a trend",
+    "It counts workers, so it hides change from year to year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A national share is one number for the whole country, so it hides the local (subnational) pattern of where factories opened.",
+    "options": [
+     "Right: national data hide differences between regions; a coalfield region may have changed decades before a farming region.",
+     "Invented data still show a trend; the limit is what the scale of the data can and cannot reveal.",
+     "Six points across a century is enough to read a trend.",
+     "The lines change across the years, so change over time is shown."
+    ]
+   },
+   "stimulus": "industrial-revolution-s2"
+  },
+  {
+   "id": "hug-industrial-revolution-8",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Great Britain was the first place to industrialize, in the late 1700s. Which combination best explains why?",
+   "options": [
+    "New machines plus coal, iron and trade wealth",
+    "The largest population of any country in the world then",
+    "A law against farming that pushed people into towns",
+    "A warm climate that suited factory work year-round"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Technology (spinning machines, the steam engine) and resources (coal, iron ore, capital from trade) came together in Britain first.",
+    "options": [
+     "Right: industrialization needs both new technology and the resources to run it, and Britain had both.",
+     "Britain was not the most populous country; China and India had far more people.",
+     "There was no ban; new farm methods simply needed fewer workers.",
+     "Climate was not the cause; technology and resources were."
+    ]
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-9",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "How did the steam engine change where factories could be built?",
+   "options": [
+    "Mills could leave rivers and cluster in towns near coal",
+    "Mills moved next to waterfalls so the engines stayed cool",
+    "Factories were allowed in capital cities and nowhere else",
+    "Factories spread evenly over the countryside"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Before steam, a water wheel needed a fast stream. Steam engines ran on coal anywhere, so factories moved to towns near coal, workers and buyers.",
+    "options": [
+     "Right: water wheels tied mills to streams; steam power let them move to towns.",
+     "This reverses the change: steam freed mills from rivers.",
+     "Steam power let factories locate in many towns, near coal and workers.",
+     "They clustered in towns and on coalfields rather than spreading out."
+    ]
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-10",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why did industrialization in the 1800s increase European control over colonies in Africa and Asia?",
+   "options": [
+    "Factories needed raw materials and new buyers",
+    "European factories ran short of workers and wanted farmland",
+    "Colonies had already built more factories than Europe",
+    "European governments wanted to slow their own factories"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Machines that make goods quickly need raw materials quickly and buyers for the goods, so industrial powers sought control of places that could supply both.",
+    "options": [
+     "Right: the search for raw materials (cotton, rubber, palm oil) and markets fed colonialism and imperialism.",
+     "The pull was raw materials and markets, not farmland for European factory workers.",
+     "Most colonies had few factories; they mainly supplied raw materials.",
+     "Governments backed factory growth; control of colonies helped it."
+    ]
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-11",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Britain industrialized in the late 1700s mainly through private mill owners. Japan began after 1868 with its government bringing in foreign machines and advisers. What does this difference show?",
+   "options": [
+    "Later places could industrialize by a state-led route",
+    "Japan copied British laws and policies one by one",
+    "Japanese industry started without machines or power",
+    "Later industrializers had little need for raw materials"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ingredients stayed the same, but a later industrializer such as Japan used government planning to catch up quickly.",
+    "options": [
+     "Right: the same mix of machines, power and resources arrived by a different route in a later place.",
+     "Japan adapted industry to its own goals rather than copying Britain law by law.",
+     "Japan imported machines and built power, the same ingredients Britain used.",
+     "Japan, too, needed raw materials such as coal and cotton."
+    ]
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-12",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which were effects of industrialization in Britain in the 1800s? Select all that apply.",
+   "options": [
+    "A large urban working class that earned wages in factories",
+    "Rapid growth of mill towns, with crowded housing",
+    "A move of most people back to farms in the countryside",
+    "A sharp drop in trade with other continents",
+    "Fewer goods made, at higher prices"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Industrialization created a working class and fast-growing, crowded cities, while trade and output grew.",
+    "options": [
+     "Right: factory jobs created a new class of wage workers in cities.",
+     "Right: towns such as Manchester grew fast, with crowding and disease.",
+     "The movement was from farms to towns, not the other way.",
+     "Trade grew: mills needed raw cotton from abroad and sold cloth worldwide.",
+     "Machines made more goods, more cheaply."
+    ]
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-13",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.B",
+   "q": "Put the steps of the Industrial Revolution in Britain in cause-and-effect order, first to last.",
+   "options": [
+    "New machines and steam power are invented",
+    "Factories open in towns near coal",
+    "Farmworkers move to towns for factory jobs",
+    "Cities grow quickly and crowd up"
+   ],
+   "why": {
+    "correct": "Technology came first, then factories in towns, then the migration of workers, then fast and crowded urban growth."
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-14",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "An invented mill town in Country A had 20,000 people in 1800 and 140,000 people in 1850. By what percent did its population grow? (Invented data for practice.)",
+   "why": {
+    "correct": "Percent change is (new minus old) divided by old, times 100: $\\frac{140{,}000 - 20{,}000}{20{,}000} \\times 100 = 600\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      20000,
+      140000
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          140000,
+          20000
+         ]
+        },
+        100
+       ]
+      },
+      "why": "That is the new size as a percent of the old (700%). Growth subtracts the old value first: (140,000 minus 20,000) over 20,000, times 100."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          120000,
+          140000
+         ]
+        },
+        100
+       ]
+      },
+      "why": "You divided by the new value. Percent change divides the change by the old value, 20,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-15",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how the Industrial Revolution changed one city, naming the place and the scale.",
+   "why": {
+    "correct": "A full explanation names a real place, its scale, and the link from mills to migration to growth."
+   },
+   "specific": {
+    "frame": "At the ___ scale, in ___, steam mills needed many workers, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "At the local scale, in Manchester, England, steam mills needed many workers, so farmworkers moved in for wages and the city grew quickly.",
+    "slots": {
+     "scale": {
+      "label": "Scale of analysis",
+      "options": [
+       "local",
+       "global"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "One city is the local scale; the global scale is the whole world."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "Manchester, England",
+       "many places in Europe"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name one real place: readers give no credit for a vague place."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "farmworkers moved in for wages and the city grew quickly",
+       "the city grew"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"The city grew\" leaves out the link: say who moved and why."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-industrial-revolution-16",
+   "unit": "unit-7",
+   "topic": "industrial-revolution",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "British cloth made in steam mills was sold cheaply in India in the 1800s. What was one effect on India?",
+   "options": [
+    "India's hand weavers lost buyers and work",
+    "India soon built more steam mills than Britain had",
+    "India stopped growing cotton",
+    "Indian weavers moved to Manchester to run its mills"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cheap machine-made imports undercut hand weavers, so industry in one place could shrink work in another.",
+    "options": [
+     "Right: cheap factory cloth undercut India's hand weaving, a cost of industrialization felt in a colony.",
+     "Britain led in mills in this period; India mainly supplied raw cotton.",
+     "India kept growing cotton, much of it for British mills.",
+     "There was no large migration of weavers from India to run British mills."
+    ]
+   }
+  }
+ ]
+}

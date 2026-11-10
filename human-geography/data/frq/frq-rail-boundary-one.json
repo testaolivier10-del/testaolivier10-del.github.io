@@ -1,0 +1,145 @@
+{
+ "id": "frq-rail-boundary-one",
+ "type": "one",
+ "points": 7,
+ "title": "A metro area map with rail lines and city limits: sprawl, transit and divided local government",
+ "units": [
+  "unit-1",
+  "unit-6"
+ ],
+ "topics": [
+  "regional-analysis",
+  "urban-sustainability"
+ ],
+ "practices": [
+  "1.E",
+  "2.C",
+  "4.B",
+  "5.A"
+ ],
+ "stimuli": [
+  {
+   "kind": "image",
+   "title": "Rail lines and city limits in an invented metro area",
+   "image": {
+    "figure": "urban-sustainability-rail-limits",
+    "alt": "An invented metro area. The central city has a solid outline, its city limits, and holds the downtown and an existing rail line with six stations, all inside the city limits. Around it, the built-up area extends far past the city limits into eight separate suburban cities, each outlined. A proposed rail extension, drawn dashed, would run from the end of the existing line through suburban cities to an edge city of office towers at a highway junction marked E. Letter H marks a large suburb, far from any station, where most homes are single-family houses on curving dead-end streets.",
+    "caption": "A LevlPrep drawing of an invented metro area for practice. Not to scale."
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "points": 1,
+   "prompt": "Identify the type of region that the whole metro area shown forms when it is defined by commuting to jobs.",
+   "rubric": [
+    {
+     "point": "Identifies a functional region (also called a nodal region).",
+     "accept": [
+      "functional region",
+      "nodal region"
+     ]
+    }
+   ],
+   "sample": "A functional region, organized around the jobs in downtown and the edge city."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "points": 1,
+   "prompt": "Describe the pattern of the built-up area shown in the map compared with the city limits of the central city.",
+   "rubric": [
+    {
+     "point": "Describes the built-up area extending well beyond the central city's limits in every direction, into many separate suburban cities.",
+     "accept": [
+      "most of the built-up area lies outside the city limits, split among eight suburban cities",
+      "the metro area spreads far past the central city on all sides"
+     ]
+    }
+   ],
+   "sample": "The built-up area spreads far past the central city's limits on every side, so most of the metro area lies in eight separate suburban cities around it."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "points": 1,
+   "prompt": "Explain why the existing rail line is of little use to most residents of suburb H.",
+   "rubric": [
+    {
+     "point": "Explains that the line and its stations are all inside the central city, far from H, and that H's low-density, car-based layout puts homes too far from any station, so residents drive.",
+     "accept": [
+      "the stations are all inside the city limits, far from H, so residents must drive",
+      "H is low-density with dead-end streets, so few homes are within walking distance of transit"
+     ]
+    }
+   ],
+   "sample": "The line's six stations are all inside the central city, far from H, and H's houses on dead-end streets are spread at low density, so almost no one in H can walk to a station and most residents drive instead."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "points": 1,
+   "prompt": "Explain one way the split between the central city and the eight suburban cities shown can strain the central city's budget.",
+   "rubric": [
+    {
+     "point": "Explains the fiscal link: many people who work or use services in the central city live and pay property taxes in separate suburban cities, so the central city pays for roads, transit, police and other services without collecting tax from them; or higher-income households moved past the city limits, taking their tax base with them.",
+     "accept": [
+      "commuters from the suburbs use the central city's roads, transit and services but pay property taxes to their own suburb, so the central city bears costs without the revenue",
+      "wealthier families moved to suburbs outside the city limits, so the central city lost tax revenue while still serving poorer residents"
+     ]
+    }
+   ],
+   "sample": "Most of the metro area's people live in the eight suburban cities, outside the central city's limits. Many of them drive into downtown to work and use its streets, transit and police, but they pay property taxes to their own suburb, so the central city carries the cost of those services without collecting the taxes that would pay for them."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "points": 1,
+   "prompt": "Explain one way the proposed extension could change land use near its new stations.",
+   "rubric": [
+    {
+     "point": "Explains the link from access to land use: the stations make nearby land easier to reach, so land values rise, so developers build denser or mixed-use buildings (apartments, offices, shops) near them.",
+     "accept": [
+      "land near the new stations becomes easier to reach, so its value rises and developers replace low-density uses with apartments, offices and shops",
+      "suburbs along the route may rezone land near stations for denser, mixed-use building, because riders can reach downtown and E by train"
+     ]
+    }
+   ],
+   "sample": "The new stations would make the land around them easy to reach from downtown and from edge city E, so that land would become more valuable, and developers would replace parking lots and single houses near the stations with apartments, offices and shops."
+  },
+  {
+   "label": "F",
+   "verb": "compare",
+   "points": 1,
+   "prompt": "Compare transit-oriented development at the new stations with continued growth like suburb H as ways to house the metro area's growing population.",
+   "rubric": [
+    {
+     "point": "Speaks of both: transit-oriented development puts dense, mixed-use housing near stations, whereas growth like H spreads low-density homes that need cars and use more land.",
+     "accept": [
+      "TOD uses less land and fewer car trips, whereas growth like H uses more land and needs cars for every trip",
+      "both add housing, but TOD is dense and near transit while H is spread out and car-dependent"
+     ]
+    }
+   ],
+   "sample": "Both add homes, but transit-oriented development packs apartments and shops within a walk of the new stations, so it uses little land and many trips can be made by train, whereas growth like suburb H spreads single houses over more land, so nearly every trip needs a car."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "points": 1,
+   "prompt": "Explain the degree to which smart growth policies could reduce sprawl in the metro area shown.",
+   "rubric": [
+    {
+     "point": "States a degree first, then supports it with a way smart growth helps and a limit shown by or reasonable for this metro area.",
+     "accept": [
+      "to a moderate degree: rail and TOD can steer new growth to stations, but existing low-density suburbs like H and divided local governments limit the change",
+      "to a limited degree: most of the metro area is already built at low density and many suburbs set their own zoning, so new policies change only new growth"
+     ]
+    }
+   ],
+   "sample": "To a moderate degree. Extending rail to E and building densely near the new stations could steer new homes and jobs inward instead of onto farmland. But most of the metro area, such as suburb H, is already built at low density for cars, and each of the eight suburban cities sets its own zoning, so smart growth can change where new growth goes but not quickly undo the sprawl that exists."
+  }
+ ]
+}

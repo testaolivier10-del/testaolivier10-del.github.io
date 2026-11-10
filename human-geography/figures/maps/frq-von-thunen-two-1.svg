@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Choropleth of Country A by province showing the main farm land use: market gardening and dairy in the Capital Region and on the South Coast, grain in the Central Valley, Eastern Plains and Lake District, and ranching in the Northern Hills, Western Uplands and Southern Forest">
+<title>Choropleth of Country A by province showing the main farm land use: market gardening and dairy in the Capital Region and on the South Coast, grain in the Central Valley, Eastern Plains and Lake District, and ranching in the Northern Hills, Western Uplands and Southern Forest</title>
+<defs><pattern id="nd" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#FFFFFF"/><line x1="0" y1="0" x2="0" y2="6" stroke="#9A958C" stroke-width="1.4"/></pattern></defs>
+<rect width="600" height="400" fill="#FFFFFF"/>
+<path d="M60 40L250 20L300 120L180 160L70 140Z" fill="#DCEBDF" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M250 20L470 30L520 110L400 150L300 120Z" fill="#7FBF9A" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M520 110L560 230L430 260L400 150Z" fill="#7FBF9A" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M300 120L400 150L430 260L320 270L260 200Z" fill="#1D5E3E" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M70 140L180 160L260 200L200 290L50 260Z" fill="#DCEBDF" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M180 160L300 120L260 200Z" fill="#7FBF9A" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M200 290L260 200L320 270L300 370L160 360Z" fill="#DCEBDF" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M320 270L430 260L560 230L540 340L300 370Z" fill="#1D5E3E" stroke="#6E6A63" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<circle cx="345.3" cy="200.5" r="2.7" fill="#1B1B1B"/>
+<circle cx="431.7" cy="304.4" r="2.7" fill="#1B1B1B"/>
+<circle cx="172.8" cy="89.4" r="2.7" fill="#1B1B1B"/>
+</svg>

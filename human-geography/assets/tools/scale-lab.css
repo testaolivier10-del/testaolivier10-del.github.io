@@ -1,0 +1,47 @@
+/* Scale lab (human-geography/assets/tools/scale-lab.js). OWNED BY THIS TOOL ONLY
+   (builder T2). Scoped to .hug-sl-*: the map card (the stage), the scale
+   switch and the map-scale ladder (the dock). Maps and drawings sit on white
+   cards with fixed colors in both themes (as every course map); the course
+   teal (--cink, --ctint) is the accent. */
+.hug-sl-fig{min-width:0;display:flex;flex-direction:column;gap:8px;}
+.ls-root .hug-ls-stage .hug-sl-fig{flex:1;min-height:0;overflow:auto;}
+.hug-sl-fig > *,.hug-sl-drill{max-width:760px;width:100%;margin-left:auto;margin-right:auto;box-sizing:border-box;}
+.hug-sl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;}
+.hug-sl-k{margin:0;font:900 12px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);}
+.hug-sl-t{margin:0;font:800 16px/1.3 var(--font-ui);color:var(--ink);}
+.hug-sl-map{margin:0;}
+.hug-sl-map .hug-map-pic{position:relative;}
+.hug-sl-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;padding:8px 18px;border-radius:14px;
+  background:#fff;border:2px solid #1B1B1B;line-height:1.1;box-shadow:0 6px 18px -10px rgba(0,0,0,.45);}
+.hug-sl-bk{font:800 12px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:#4A4741;}
+.hug-sl-bv{font:900 28px var(--font-ui);color:#1B1B1B;font-variant-numeric:tabular-nums;}
+.hug-sl-ctl{display:flex;flex-direction:column;gap:8px;min-width:0;}
+.hug-sl-lbl{margin:0;font:800 13px var(--font-ui);color:var(--muted);}
+.hug-sl-unit{margin:0;font:600 15px/1.45 var(--font-ui);color:var(--ink);}
+.hug-sl-scales > button{font-size:14px;padding:0 6px;}
+.hug-sl-view > button{font-size:14px;padding:0 8px;}
+.hug-sl-ladder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+.hug-sl-ladder > button{min-height:44px;padding:0 4px;border:1.5px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);
+  font:800 13.5px var(--font-ui);font-variant-numeric:tabular-nums;cursor:pointer;white-space:nowrap;}
+.hug-sl-ladder > button[aria-pressed=true]{border-color:var(--cink);background:var(--ctint);color:var(--cink);box-shadow:inset 0 0 0 1px var(--cink);}
+.hug-sl-ladder > button:focus-visible,.hug-sl-v:focus-visible,.hug-sl-s:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.hug-sl-ms{display:flex;flex-direction:column;gap:8px;}
+.hug-sl-frame{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;line-height:0;aspect-ratio:8/5;display:flex;align-items:center;justify-content:center;}
+.hug-sl-scene{display:block;width:100%;height:100%;object-fit:contain;}
+.hug-sl-bar{display:flex;align-items:center;gap:10px;font:700 13.5px/1.3 var(--font-ui);color:var(--ink);}
+.hug-sl-bar{flex-direction:column;align-items:stretch;gap:4px;}
+.hug-sl-bar-l{display:block;height:8px;border:2px solid var(--ink);border-top:0;}
+.hug-sl-read p{margin:0;}
+.hug-sl-ratio{font:900 26px/1.15 var(--font-ui);color:var(--ink);font-variant-numeric:tabular-nums;}
+.hug-sl-rk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:4px!important;font:700 15px var(--font-ui);color:var(--ink);}
+.hug-sl-tag{display:inline-block;padding:3px 10px;border-radius:999px;font:900 12px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;}
+.hug-sl-tag.is-large{background:var(--ctint);color:var(--cink);box-shadow:inset 0 0 0 1.5px var(--cink);}
+.hug-sl-tag.is-small{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+.hug-sl-shows{margin-top:6px!important;font:500 15px/1.5 var(--font-ui);color:var(--ink);}
+.hug-sl-gaps{margin:.2em 0 .4em;padding-left:1.1em;font:500 14.5px/1.55 var(--font-ui);}
+.hug-sl-tipslot{display:block;}
+@media (max-width:420px){
+  .hug-sl-bv{font-size:22px;}
+  .hug-sl-ratio{font-size:22px;}
+  .hug-sl-scales > button,.hug-sl-view > button{font-size:13px;padding:0 4px;}
+}

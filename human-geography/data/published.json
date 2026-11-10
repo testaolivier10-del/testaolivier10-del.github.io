@@ -1,0 +1,13 @@
+{
+ "about": "Chapters (the skills chapter and the units) live on the site. A topic is built only when its lesson, notes and question file exist AND its chapter is listed here. A chapter is added once it passes its independent accuracy check and every check (docs/aphug-spec.md). Publish in course order or all together (needs-author publish-order): an FRQ goes live only when every unit it lists is published.",
+ "chapters": [
+  "geo-skills",
+  "unit-1",
+  "unit-2",
+  "unit-3",
+  "unit-4",
+  "unit-5",
+  "unit-6",
+  "unit-7"
+ ]
+}

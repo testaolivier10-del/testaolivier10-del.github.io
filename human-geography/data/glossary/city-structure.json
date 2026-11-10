@@ -1,0 +1,29 @@
+{
+ "cbd": {
+  "def": "The central business district: the commercial core of a city, with offices, stores and the highest land values."
+ },
+ "concentric-zone-model": {
+  "def": "Burgess's 1925 model, based on Chicago, in which a city grows outward in rings around the CBD, from a zone in transition to a commuter zone."
+ },
+ "sector-model": {
+  "def": "Hoyt's 1939 model in which land uses form wedges that spread outward from the CBD along transport lines, with high-rent wedges continuing in one direction."
+ },
+ "multiple-nuclei-model": {
+  "def": "Harris and Ullman's 1945 model in which a city has several centers, such as a CBD, a port, a university and an industrial district, each drawing its own land uses."
+ },
+ "galactic-city-model": {
+  "def": "A model of car-based US metro areas in which an old downtown is ringed by suburbs and edge cities spaced along a beltway; also called the peripheral model."
+ },
+ "latin-american-city-model": {
+  "def": "A model of Latin American cities with a CBD by the main plaza, a wealthy commercial spine, rings that get poorer outward and squatter settlements at the edge."
+ },
+ "southeast-asian-city-model": {
+  "def": "A model of Southeast Asian cities centered on the old colonial port, with commercial, government and mixed zones, new suburbs and market gardens at the edge."
+ },
+ "african-city-model": {
+  "def": "A model of African cities with three CBDs (colonial, traditional and market), ethnic neighborhoods, a mining or factory zone and informal settlements at the edge."
+ },
+ "squatter-settlement": {
+  "def": "Housing built by residents on land they do not legally own or rent, often lacking piped water, sewers and secure title; also called an informal settlement."
+ }
+}

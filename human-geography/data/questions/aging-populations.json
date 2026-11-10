@@ -1,0 +1,557 @@
+{
+ "stimuli": {
+  "aging-populations-s1": {
+   "kind": "map",
+   "title": "People aged 65 and over in the provinces of Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "label": "Choropleth map of Country A by province: the share of people aged 65 and over is highest in the Northern Hills, the Southern Forest and the Lake District, and lowest in the Capital Region and on the South Coast",
+    "invented": true,
+    "legendTitle": "People aged 65 and over (percent of the province, invented data)",
+    "classes": [
+     "Under 12%",
+     "12% to 17%",
+     "18% to 23%",
+     "24% or more"
+    ],
+    "values": {
+     "north": 3,
+     "south": 3,
+     "northeast": 2,
+     "west": 2,
+     "east": 1,
+     "central": 1,
+     "capital": 0,
+     "coast": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     },
+     {
+      "at": "north",
+      "text": "Northern Hills"
+     },
+     {
+      "at": "south",
+      "text": "Forest"
+     }
+    ]
+   }
+  },
+  "aging-populations-s2": {
+   "kind": "data",
+   "title": "Population by age group in three countries",
+   "invented": true,
+   "table": {
+    "caption": "Population by broad age group, in millions, in Countries F, G and H (invented data for practice)",
+    "cols": [
+     "Country",
+     "Under 15",
+     "15 to 64",
+     "65 and over"
+    ],
+    "rows": [
+     [
+      "Country F",
+      "12",
+      "20",
+      "2"
+     ],
+     [
+      "Country G",
+      "6",
+      "30",
+      "12"
+     ],
+     [
+      "Country H",
+      "4",
+      "16",
+      "8"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-aging-populations-1",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "5.A",
+   "q": "At what scale of analysis are the data on this map?",
+   "stimulus": "aging-populations-s1",
+   "options": [
+    "Local (subnational): one value for each province",
+    "National: one value for the whole of Country A",
+    "Global: one value for each country in the world",
+    "Regional: one value for a group of several countries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The scale of analysis is the scale of the data. One value per province is local (subnational), even though the map shows the whole country.",
+    "options": [
+     "Right: the data describe parts of one country.",
+     "the map shows eight values, one for each province, not one for the country.",
+     "only one country appears on the map.",
+     "the map has one country, divided into provinces."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-2",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Which statement describes the pattern on the map?",
+   "stimulus": "aging-populations-s1",
+   "options": [
+    "The share of older people is highest in the Capital Region and lowest in the hills",
+    "Highest in the Northern Hills and Southern Forest; lowest in the Capital Region and South Coast",
+    "The share of older people is about the same across the eight provinces",
+    "Older people make up most of the population of the South Coast"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A pattern names where values are high and low: 24% or more in the Northern Hills and Southern Forest, under 12% in the Capital Region and on the South Coast.",
+    "options": [
+     "this reverses the map: the Capital Region is in the lowest class.",
+     "Right: the Northern Hills and Southern Forest are 24% or more.",
+     "the provinces fall into four different classes.",
+     "the South Coast is in the lowest class, under 12%."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-3",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Which process best explains why the Northern Hills have a higher share of older people than the Capital Region?",
+   "stimulus": "aging-populations-s1",
+   "options": [
+    "Older people move from the capital to the hills in larger numbers than young people do",
+    "Birth rates are higher in the Northern Hills than in the capital",
+    "Young adults leave rural provinces for jobs in the capital",
+    "People in the Capital Region live longer than people in the hills"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Migration changes age structure. When young adults move to cities for work, rural provinces lose young people and their children, so the share of older people rises there.",
+    "options": [
+     "the main flow in most countries is of young adults toward cities.",
+     "higher births would make a province younger, not older.",
+     "Right: when young people move out, the people who stay are older on average.",
+     "longer lives in the capital would make it older, not younger."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-4",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which service will the Northern Hills most likely need more of in the next ten years?",
+   "stimulus": "aging-populations-s1",
+   "options": [
+    "New primary schools for a rising number of children",
+    "More university places for young adults moving in",
+    "Larger maternity wards in its hospitals",
+    "Clinics and home care for older people"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Local planners use age data to decide what to build. A province with many older people needs clinics, home care and transport to hospitals.",
+    "options": [
+     "an older province usually has fewer children.",
+     "young adults are leaving the province, not arriving.",
+     "few young families live there.",
+     "Right: a province where a quarter or more are 65+ needs health and care services."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-5",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. What is Country F’s dependency ratio (dependents per 100 people aged 15 to 64)?",
+   "stimulus": "aging-populations-s2",
+   "numeric": {
+    "from": {
+     "fn": "dependency",
+     "args": [
+      12,
+      2,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          {
+           "fn": "div",
+           "args": [
+            14,
+            34
+           ]
+          },
+          100
+         ]
+        },
+        1
+       ]
+      },
+      "why": "You divided by the whole population. The dependency ratio divides dependents by people of working age (15 to 64) only."
+     },
+     {
+      "from": {
+       "fn": "elderlyDependency",
+       "args": [
+        2,
+        20
+       ]
+      },
+      "why": "You counted only people 65 and over. The total dependency ratio counts children under 15 too."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Dependency ratio = (under 15 + 65 and over) ÷ (15 to 64) × 100 = (12 + 2) ÷ 20 × 100 = 70."
+   }
+  },
+  {
+   "id": "hug-aging-populations-6",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the table. What is Country G’s elderly dependency ratio (people 65 and over per 100 people aged 15 to 64)?",
+   "stimulus": "aging-populations-s2",
+   "numeric": {
+    "from": {
+     "fn": "elderlyDependency",
+     "args": [
+      12,
+      30
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "dependency",
+       "args": [
+        6,
+        12,
+        30
+       ]
+      },
+      "why": "That is the total dependency ratio, which adds the children. The elderly ratio counts only people 65 and over."
+     },
+     {
+      "value": 25,
+      "why": "You divided by the whole population (48 million). Divide by the working-age population, 30 million."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Elderly dependency ratio = 65 and over ÷ (15 to 64) × 100 = 12 ÷ 30 × 100 = 40."
+   }
+  },
+  {
+   "id": "hug-aging-populations-7",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Countries F and H have similar total dependency ratios (70 and 75). Which statement compares their situations correctly?",
+   "stimulus": "aging-populations-s2",
+   "options": [
+    "Both countries mainly need more schools, because their dependents are children",
+    "F needs more pensions than H, because its total ratio is lower",
+    "F’s dependents are mostly children, while H’s are often older people",
+    "The two countries face the same problems, because their ratios are close"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A compare speaks of both sides. F’s dependency comes from children (youth ratio 60), so it needs schools; H’s comes largely from older people (elderly ratio 50), so it needs pensions and health care.",
+    "options": [
+     "H has twice as many people over 65 as children under 15.",
+     "pensions depend on older people, and H has a far larger share.",
+     "Right: F has 12 million children and 2 million older people; H has 4 million and 8 million.",
+     "a similar total can hide very different age groups."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-8",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which country in the table will most likely find it hardest to pay pensions with taxes from its workers?",
+   "stimulus": "aging-populations-s2",
+   "options": [
+    "Country F",
+    "Country G",
+    "The three would find it equally hard, because each has dependents",
+    "Country H"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Pensions for older people are paid largely from the taxes of people of working age. The higher the elderly dependency ratio, the fewer workers there are per retiree. H’s is 8 ÷ 16 × 100 = 50.",
+    "options": [
+     "F has only 10 older people per 100 workers.",
+     "G has 40 older people per 100 workers, fewer than H.",
+     "the elderly ratios are 10, 40 and 50, so the burden differs.",
+     "Right: it has 50 people over 65 for every 100 of working age, the most of the three."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-9",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does the dependency ratio compare?",
+   "options": [
+    "People under 15 and over 64 with people aged 15 to 64",
+    "Births with deaths in a population in one year",
+    "Males with females in each age group of a pyramid",
+    "People who move in with people who move out"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The dependency ratio is the number of people too young or too old to work (under 15 and 65 and over) for every 100 people aged 15 to 64.",
+    "options": [
+     "Right: it compares dependents with people of working age.",
+     "that comparison gives the rate of natural increase.",
+     "that is the sex ratio.",
+     "that is the net migration rate."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-10",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which pair of changes causes a population to age?",
+   "options": [
+    "More births and shorter lives",
+    "Fewer births and longer lives",
+    "More births and longer lives",
+    "Fewer deaths of children and more births per woman"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An aging population has a rising share of older people. It comes from low birth rates (fewer children) and rising life expectancy (people live longer).",
+    "options": [
+     "that makes a population younger.",
+     "Right: fewer young people and more older people raise the share of older people.",
+     "more births add young people, which works against aging.",
+     "both add young people."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-11",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "More than a quarter of Japan’s people were 65 or older in 2023 (Statistics Bureau of Japan, 2023). Which is a likely economic effect?",
+   "options": [
+    "A rising need for primary schools across Japan",
+    "Lower spending on health care, because older people need less",
+    "Too few workers, so firms use robots and hire workers from abroad",
+    "Rapid growth in the number of young people starting work each year"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An aging, shrinking workforce leaves jobs empty. Japan has turned to robots in factories and care homes and, since 2019, a new visa for skilled foreign workers.",
+    "options": [
+     "Japan has few children, so many schools have closed or merged.",
+     "older people usually need more health care.",
+     "Right: a shrinking workforce leads firms to replace or recruit workers.",
+     "Japan’s youngest cohorts are its smallest."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-12",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In 2023, France passed a law to raise its minimum pension age from 62 to 64 in steps, and many people protested; in late 2025 parliament paused the rise. Which effect of aging does this show?",
+   "options": [
+    "A social effect: more children for families to care for",
+    "A cultural effect: a new language spoken by older people",
+    "An environmental effect: more land needed for farms",
+    "A political effect: arguments over who pays for pensions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Aging has political effects. With more retirees and fewer workers, governments raise the retirement age, raise taxes or cut benefits, and each choice is debated. Older voters are also a growing share of voters.",
+    "options": [
+     "the debate was about older people and pensions.",
+     "the case is about pensions, not language.",
+     "the case is about pension rules.",
+     "Right: aging forces hard choices about taxes, benefits and retirement age."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-13",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Which is a social effect of an aging population?",
+   "options": [
+    "More adults caring for both their parents and their children",
+    "Higher taxes on workers to pay for pensions in the coming years",
+    "A new law raising the age at which people retire",
+    "Factories using robots because they are unable to hire enough workers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Social effects change family and community life: more care work in families, more older people living alone, and new demand for clubs, transport and housing for older people.",
+    "options": [
+     "Right: families take on more care work for older relatives.",
+     "taxes for pensions are an economic or political effect.",
+     "a law about pensions is a political effect.",
+     "that is an economic effect."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-14",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.C",
+   "q": "Which of these are likely effects of an aging population? Select all that apply.",
+   "options": [
+    "Higher spending on pensions and health care",
+    "Shortages of workers in some jobs",
+    "A rapid rise in the number of primary school pupils",
+    "A falling share of older people among voters",
+    "Lower demand for nurses and care workers"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Aging raises spending on pensions and health care and leaves some jobs unfilled. It brings fewer pupils and a larger share of older voters.",
+    "options": [
+     "Right: more retirees need pensions and care.",
+     "Right: fewer young people enter the workforce.",
+     "Aging comes with fewer children.",
+     "Older people become a larger share of voters.",
+     "Demand for care rises."
+    ]
+   }
+  },
+  {
+   "id": "hug-aging-populations-15",
+   "unit": "unit-2",
+   "topic": "aging-populations",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.C",
+   "q": "Build an explanation of one effect of an aging population in a named country.",
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Japan, more than a quarter of the people were 65 or older in 2023, so there were too few workers for some jobs and firms turned to robots and workers from abroad.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Japan",
+       "rich countries"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name one real country."
+      }
+     },
+     "cause": {
+      "label": "Age data",
+      "options": [
+       "more than a quarter of the people were 65 or older in 2023",
+       "the population is old"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "use the data, with its year."
+      }
+     },
+     "effect": {
+      "label": "Link and effect",
+      "options": [
+       "there were too few workers for some jobs and firms turned to robots and workers from abroad",
+       "there were problems"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name the effect and the link to it."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Name the place, give the dated data, then the link and the effect."
+   }
+  }
+ ]
+}

@@ -1,0 +1,548 @@
+{
+ "stimuli": {
+  "devolution-factors-s1": {
+   "kind": "data",
+   "title": "Three votes on independence",
+   "source": "Elections Québec (1980 and 1995 referendums); Electoral Commission, United Kingdom (2014 referendum)",
+   "table": {
+    "caption": "Results of three referendums on independence (official results, 1980, 1995 and 2014)",
+    "cols": [
+     "Region and year",
+     "Yes (leave)",
+     "No (stay)",
+     "Turnout"
+    ],
+    "rows": [
+     [
+      "Quebec, Canada, 1980",
+      "40.4%",
+      "59.6%",
+      "85.6%"
+     ],
+     [
+      "Quebec, Canada, 1995",
+      "49.4%",
+      "50.6%",
+      "93.5%"
+     ],
+     [
+      "Scotland, United Kingdom, 2014",
+      "44.7%",
+      "55.3%",
+      "84.6%"
+     ]
+    ]
+   }
+  },
+  "devolution-factors-s2": {
+   "kind": "map",
+   "title": "Speakers of the Lenn language in Country A",
+   "map": {
+    "base": "country-a",
+    "render": "choropleth",
+    "invented": true,
+    "label": "Choropleth map of invented Country A by province: the share of people whose first language is Lenn is highest in the Lake District and the Eastern Plains in the northeast and east, and low around the Capital Region and in the south and west",
+    "legendTitle": "People whose first language is Lenn (percent, invented)",
+    "classes": [
+     "Under 10%",
+     "10% to 39%",
+     "40% to 69%",
+     "70% or more"
+    ],
+    "values": {
+     "northeast": 3,
+     "east": 3,
+     "north": 2,
+     "central": 1,
+     "capital": 0,
+     "west": 0,
+     "south": 0,
+     "coast": 0
+    },
+    "marks": [
+     {
+      "at": "capital",
+      "text": "Capital Region"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-devolution-factors-1",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which vote in the table came closest to a majority for independence?",
+   "options": [
+    "Quebec, 1995",
+    "Quebec, 1980",
+    "Scotland, 2014",
+    "The three votes were about equally close"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare the Yes column: 49.4% in Quebec in 1995 is the highest, just short of 50%.",
+    "options": [
+     "Right: Yes got 49.4%, about one percentage point short of a majority.",
+     "Yes got 40.4% in 1980, much further from a majority.",
+     "Yes got 44.7% in Scotland.",
+     "The Yes shares differ by up to nine points."
+    ]
+   },
+   "stimulus": "devolution-factors-s1"
+  },
+  {
+   "id": "hug-devolution-factors-2",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "By how many percentage points did the Yes share in Quebec rise from 1980 to 1995? Give one decimal place.",
+   "why": {
+    "correct": "$49.4 - 40.4 = 9.0$ percentage points."
+   },
+   "numeric": {
+    "places": 1,
+    "from": {
+     "fn": "sub",
+     "args": [
+      49.4,
+      40.4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "round",
+       "args": [
+        {
+         "fn": "percentChange",
+         "args": [
+          40.4,
+          49.4
+         ]
+        },
+        1
+       ]
+      },
+      "why": "22.3 is the percent change. The question asks for the change in percentage points: subtract the two shares."
+     }
+    ]
+   },
+   "stimulus": "devolution-factors-s1"
+  },
+  {
+   "id": "hug-devolution-factors-3",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "What do all three results suggest about devolution in Quebec and Scotland?",
+   "options": [
+    "Almost nobody in either region wanted to leave the state",
+    "Both regions became independent states",
+    "Many wanted self-rule, but a majority chose to stay",
+    "Turnout was too low for the results to count"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The votes show deep division: large minorities wanted independence. Both regions still have strong regional governments: Quebec as a Canadian province, Scotland with its own parliament since 1999.",
+    "options": [
+     "Between 40% and 49% voted to leave.",
+     "No won all three votes.",
+     "Right: Large Yes shares show strong support, yet No won each time.",
+     "Turnout was above 84% in each vote."
+    ]
+   },
+   "stimulus": "devolution-factors-s1"
+  },
+  {
+   "id": "hug-devolution-factors-4",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Which question can the table NOT answer?",
+   "options": [
+    "Whether Yes won in Scotland in 2014",
+    "Which parts of Scotland voted Yes and which voted No",
+    "How many people turned out in Quebec in 1995, as a share",
+    "Whether support for Yes in Quebec grew from 1980 to 1995"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The data are at the scale of the whole region. To see the pattern inside Scotland, you would need results at the local scale, by council area.",
+    "options": [
+     "The table shows No won with 55.3%.",
+     "Right: The table gives one result for each whole region, not results for places inside it.",
+     "Turnout was 93.5%.",
+     "It grew from 40.4% to 49.4%."
+    ]
+   },
+   "stimulus": "devolution-factors-s1"
+  },
+  {
+   "id": "hug-devolution-factors-5",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which statement describes the pattern on the map?",
+   "options": [
+    "Lenn speakers cluster in the northeast and east",
+    "Lenn speakers are spread evenly across the country",
+    "Lenn speakers are concentrated around the Capital Region",
+    "Lenn speakers are concentrated along the South Coast"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A described pattern names where: the share is 70% or more in the Lake District and Eastern Plains, and under 10% around the capital and in the south and west.",
+    "options": [
+     "Right: The Lake District and Eastern Plains are in the highest class, 70% or more.",
+     "Shares range from under 10% to 70% or more.",
+     "The Capital Region is in the lowest class.",
+     "The South Coast is in the lowest class."
+    ]
+   },
+   "stimulus": "devolution-factors-s2"
+  },
+  {
+   "id": "hug-devolution-factors-6",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "What is the scale of analysis of the data on this map?",
+   "options": [
+    "National, because the map shows a whole country",
+    "Global, because languages spread around the world",
+    "Regional, because Country A is in a world region",
+    "Local (subnational): the data are given for provinces"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The scale of analysis is the scale of the data shown. These data are for provinces, so the scale is subnational (local), even though the map shows a whole country.",
+    "options": [
+     "The scale of analysis is the scale of the data, not the size of the area shown.",
+     "The map shows one country's provinces.",
+     "The data are not for a group of countries.",
+     "Right: Each value describes one province, a unit smaller than the country."
+    ]
+   },
+   "stimulus": "devolution-factors-s2"
+  },
+  {
+   "id": "hug-devolution-factors-7",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "If Lenn speakers in the northeast and east feel ignored by the national government, which devolutionary pressure does the map best support?",
+   "options": [
+    "A movement to move the capital to the South Coast",
+    "A push by a neighboring state to take the Capital Region",
+    "A push for self-rule where Lenn speakers cluster",
+    "A demand by the western provinces to leave Country A"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Ethnic separatism is strongest where a minority group is concentrated in its own homeland, as Lenn speakers are in the northeast and east.",
+    "options": [
+     "The South Coast has few Lenn speakers.",
+     "The map shows no Lenn speakers around the capital.",
+     "Right: A minority concentrated in one area can more easily press for regional powers.",
+     "Lenn shares are lowest in the west."
+    ]
+   },
+   "stimulus": "devolution-factors-s2"
+  },
+  {
+   "id": "hug-devolution-factors-8",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is devolution?",
+   "options": [
+    "Moving power from regional governments to the national government",
+    "Moving power from the national government to regional governments",
+    "A region joining a neighboring state",
+    "Redrawing voting districts after a census"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Devolution is the transfer of power from a central government to regional governments. At its furthest, a region breaks away as a new state.",
+    "options": [
+     "That is centralization, the opposite.",
+     "Right: Devolution shifts power downward, from the center to regions.",
+     "That would be a change of borders, not devolution.",
+     "That is redistricting."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-9",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.B",
+   "q": "Which are factors that can push a state toward devolution? Select all that apply.",
+   "options": [
+    "Physical division, such as a region cut off by distance or water",
+    "Ethnic separatism",
+    "Economic and social problems, such as one region feeling poorer or overtaxed",
+    "A shared national language spoken across the state",
+    "A national rail line linking each region to the capital",
+    "A national holiday that people across the state celebrate"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Devolutionary factors include physical division, ethnic separatism, ethnic cleansing, terrorism, economic and social problems, and irredentism. Shared language, transport and holidays work the other way.",
+    "options": [
+     "Right: Distance makes it harder to govern a region from the center.",
+     "Right: A group that wants its own state or self-rule pushes for devolution.",
+     "Right: Grievances about money and treatment feed demands for self-rule.",
+     "A shared language holds a state together.",
+     "Good transport links help hold a state together.",
+     "Shared celebrations build unity."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-10",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "From 1947 to 1971, Pakistan had two parts separated by about 1,600 km of Indian territory, and most people in the eastern part spoke Bengali. In 1971 the eastern part became Bangladesh. Which factors best explain this?",
+   "options": [
+    "Irredentism by Pakistan toward India",
+    "Redistricting of voting districts in the west",
+    "A shared language that united the two parts",
+    "Physical division and a different language and culture"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Physical division (two parts far apart) and ethnic difference (a Bengali-speaking majority in the east, which felt ruled from the west) led to Bangladesh's independence in 1971.",
+    "options": [
+     "Pakistan did not try to take Indian land here.",
+     "Redistricting does not split a state.",
+     "The two parts mostly spoke different languages.",
+     "Right: Distance from the capital and a separate identity both pushed the east away."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-11",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the 1990s, as Yugoslavia broke apart, a UN court later found that forces had driven people of other ethnic groups out of parts of Bosnia and Herzegovina by force and terror. What is this called?",
+   "options": [
+    "Ethnic separatism",
+    "Irredentism",
+    "Ethnic cleansing",
+    "Redistricting"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Ethnic cleansing is the forced removal of an ethnic group from an area, by killing, terror or expulsion. The International Criminal Tribunal for the former Yugoslavia found it took place in Bosnia and Herzegovina.",
+    "options": [
+     "Separatism is a group seeking its own state or self-rule.",
+     "Irredentism is a state seeking land where its people live.",
+     "Right: Removing an ethnic group from an area by force is ethnic cleansing.",
+     "Redistricting is redrawing voting districts."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-12",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "ETA, a group seeking independence for the Basque Country in Spain, carried out bombings and killings for decades before it ended its violence in 2011 and dissolved in 2018. Which devolutionary factor does ETA's campaign show?",
+   "options": [
+    "Physical division",
+    "Terrorism",
+    "Irredentism",
+    "Ethnic cleansing"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Terrorism is the use of violence, especially against civilians, to create fear and reach a political goal. Most Basque people never supported ETA's violence, and the Basque Country already had wide self-rule.",
+    "options": [
+     "The Basque Country is joined by land to the rest of Spain.",
+     "Right: Using violence against civilians to reach a political goal is terrorism.",
+     "ETA did not act for a neighboring state.",
+     "ETA's campaign targeted the Spanish state, not the removal of a whole group."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-13",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In 1938, Germany took the Sudetenland, a border area of Czechoslovakia where many German speakers lived, claiming it should belong to Germany. Which concept does this show?",
+   "options": [
+    "Irredentism",
+    "Ethnic separatism",
+    "Devolution",
+    "Terrorism"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Irredentism is a state's claim to territory in another state where people of its own nation live. It can split a state from outside.",
+    "options": [
+     "Right: A state claimed land in another state because people of its nation lived there.",
+     "Separatism comes from a group inside a state, not a neighbor taking land.",
+     "Devolution moves power to regions inside a state.",
+     "This was a state taking territory, not a group using fear."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-14",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Some people in Catalonia, a wealthy region of Spain, argue that it pays more in taxes to Spain's national government than it gets back. Which kind of devolutionary factor is this argument?",
+   "options": [
+    "Physical division",
+    "Irredentism",
+    "Ethnic cleansing",
+    "An economic factor"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Economic grievances, such as a richer region feeling it pays for poorer ones, can feed devolution. Catalans are divided: many want to stay in Spain.",
+    "options": [
+     "Catalonia is joined by land to the rest of Spain.",
+     "No neighboring state is claiming Catalonia.",
+     "No group is being removed by force.",
+     "Right: The argument is about money flowing from the region to the center."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-15",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "How does ethnic separatism differ from irredentism?",
+   "options": [
+    "Separatism uses violence; irredentism is peaceful by nature",
+    "Separatism happens at sea; irredentism happens on land",
+    "Separatism starts inside a state; irredentism starts next door",
+    "Separatism is a form of government; irredentism is a type of boundary line"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Ethnic separatism is a group inside a state seeking independence or self-rule. Irredentism is a state seeking to annex land in another state where people of its nation live.",
+    "options": [
+     "Either can be peaceful or violent.",
+     "Both are about land and people.",
+     "Right: Separatists want to leave; an irredentist state wants to take land in.",
+     "Neither is a form of government or a boundary type."
+    ]
+   }
+  },
+  {
+   "id": "hug-devolution-factors-16",
+   "unit": "unit-4",
+   "topic": "devolution-factors",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how one factor pushes a real region toward devolution.",
+   "why": {
+    "correct": "An explain names the place, the factor and how it leads to devolution."
+   },
+   "specific": {
+    "frame": "In ___, ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Scotland, many people see themselves as a separate nation with their own history and institutions, so they pushed for their own parliament, which opened in 1999, and some still seek independence.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Scotland",
+       "a region somewhere in Europe"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place: vague places earn no credit."
+      }
+     },
+     "cause": {
+      "label": "Factor",
+      "options": [
+       "many people see themselves as a separate nation with their own history and institutions",
+       "the region shares one language and history with the rest of the state"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A shared language and history hold a state together; they do not push devolution."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "they pushed for their own parliament, which opened in 1999, and some still seek independence",
+       "the national government took away the region's powers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Taking powers away is centralization, the opposite of devolution."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

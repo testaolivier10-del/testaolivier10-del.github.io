@@ -1,0 +1,14 @@
+{
+ "population-pyramid": {
+  "def": "Placeholder: the meaning of population pyramid in population composition, for the test fixture."
+ },
+ "age-structure": {
+  "def": "Placeholder: the meaning of age structure in population composition, for the test fixture."
+ },
+ "sex-ratio": {
+  "def": "Placeholder: the meaning of sex ratio in population composition, for the test fixture."
+ },
+ "cohort": {
+  "def": "Placeholder: the meaning of cohort in population composition, for the test fixture."
+ }
+}

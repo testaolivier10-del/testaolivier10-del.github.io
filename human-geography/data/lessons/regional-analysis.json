@@ -1,0 +1,83 @@
+{
+ "topic": "regional-analysis",
+ "hook": "Draw a line around \"the Midwest\" and compare it with a friend's. Yours may include Ohio; theirs may stop at the Great Plains. Neither is wrong. A region is a tool geographers use to group places that share something: a trait, a tie to a center, or a feeling. Its edges depend on what is being grouped and who is drawing.",
+ "prereq": [
+  {
+   "q": "Movements of goods, people and money between places are called what?",
+   "options": [
+    "Flows",
+    "Site",
+    "Absolute location",
+    "Elevation"
+   ],
+   "correct": 0,
+   "why": "Flows are movements between places.",
+   "review": "spatial-concepts"
+  },
+  {
+   "q": "Contact between places falls as the distance between them grows. What is this called?",
+   "options": [
+    "Distance decay",
+    "Time-space compression",
+    "Clustering",
+    "Dispersal"
+   ],
+   "correct": 0,
+   "why": "Distance decay is the fall in contact with distance.",
+   "review": "spatial-concepts"
+  },
+  {
+   "q": "Which scale of analysis looks at part of a country?",
+   "options": [
+    "Local",
+    "National",
+    "Regional",
+    "Global"
+   ],
+   "correct": 0,
+   "why": "The local scale covers a part of a country: a province, city or neighborhood.",
+   "review": "skills-scale"
+  }
+ ],
+ "figure": {
+  "figure": "regional-analysis-three-kinds",
+  "caption": "Formal, functional and perceptual regions."
+ },
+ "chain": [
+  {
+   "cause": "Places share a measurable trait, such as a language",
+   "effect": "geographers group them into a formal region"
+  },
+  {
+   "cause": "Places are tied to a center by flows, such as commuters",
+   "effect": "they form a functional region, strongest near the center"
+  },
+  {
+   "cause": "People believe places belong together",
+   "effect": "they form a perceptual region, whose edges differ from person to person"
+  },
+  {
+   "cause": "Traits, ties and beliefs fade out gradually",
+   "effect": "regions have transition zones and edges that can overlap and be contested"
+  }
+ ],
+ "ideas": [
+  "A <b>region</b> is an area grouped together because its places share something. Regions exist at every scale, from a neighborhood to a group of countries.",
+  "A <b>formal region</b> shares a measurable trait (language, climate, a main crop). A <b>functional region</b> is tied to a center by flows (commuters, deliveries). A <b>perceptual region</b> rests on beliefs (\"the South\").",
+  "Region edges are usually <b>transition zones</b>, where one region fades into another, like the Sahel between the Sahara and grassland.",
+  "Because people draw regions for different purposes, regions can overlap and their edges can be contested."
+ ],
+ "misconception": {
+  "wrong": "Regions have exact borders, like countries.",
+  "right": "Most regions fade out across transition zones, and their edges depend on the trait measured and on who draws them. \"The Middle East\" and \"the South\" have no single agreed edge."
+ },
+ "check": [
+  "hug-regional-analysis-1",
+  "hug-regional-analysis-2",
+  "hug-regional-analysis-3",
+  "hug-regional-analysis-8",
+  "hug-regional-analysis-9",
+  "hug-regional-analysis-11"
+ ],
+ "summary": "Regions group places that share something. Formal regions share a measurable trait, functional regions are tied to a center by flows, and perceptual regions rest on what people believe. Regions exist at local, national, regional and global scales, usually fade out across transition zones, and can overlap or be contested, because people draw them for different purposes."
+}

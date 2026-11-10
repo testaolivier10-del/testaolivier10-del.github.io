@@ -1,0 +1,535 @@
+{
+ "about": "\"Make it specific\" prompts for unit-2 (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "unit-2",
+   "id": "u2-describe-egypt",
+   "topic": "population-distribution",
+   "practice": "2.A",
+   "skill": "describe",
+   "title": "Describing where Egyptians live",
+   "context": "",
+   "prompt": "<b>Describe</b> the pattern of population distribution in Egypt.",
+   "checklist": [
+    "Says where people cluster, with named features",
+    "Says where few people live",
+    "Uses more than one word such as \"clustered\""
+   ],
+   "earns": {
+    "answer": "Egypt's people are clustered in a narrow strip along the Nile valley and in the Nile delta, around Cairo and Alexandria, while the deserts to the east and west, most of the country's land, are almost empty.",
+    "why": "It names where people are, where they are not and the features that mark the pattern."
+   },
+   "misses": {
+    "answer": "Egypt's population is clustered near the river.",
+    "why": "\"Clustered\" alone earns little: it does not say where or around what."
+   },
+   "specific": {
+    "slots": {
+     "pattern": {
+      "label": "Where people cluster",
+      "options": [
+       "along the Nile valley and delta",
+       "evenly across the country",
+       "in the Western Desert"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Egypt's people are far from even: most of the land is empty.",
+       "2": "The desert is the emptiest part."
+      }
+     },
+     "place": {
+      "label": "A named place",
+      "options": [
+       "Cairo",
+       "the Indian Ocean",
+       "the Sahara"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Egypt does not touch the Indian Ocean.",
+       "2": "The Sahara is the desert, almost empty."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-explain-physiological",
+   "topic": "distribution-consequences",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Why physiological density fits Egypt",
+   "context": "",
+   "prompt": "<b>Explain</b> why physiological density shows the pressure on Egypt's farmland better than arithmetic density.",
+   "checklist": [
+    "Says what each density divides by",
+    "Notes that most of Egypt cannot grow crops",
+    "Links that to what physiological density reveals"
+   ],
+   "earns": {
+    "answer": "Most of Egypt is desert that cannot grow crops, so arithmetic density spreads people over land where no one grows crops; physiological density divides people by arable land only, so it shows how many people each square kilometer of farmland must feed, which is very high along the Nile.",
+    "why": "It says what each measure divides by and links the desert to the gap between them."
+   },
+   "misses": {
+    "answer": "Physiological density is people per unit of farmland.",
+    "why": "A definition, not an explanation: it never says why the measure fits Egypt."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "What it divides by",
+      "options": [
+       "arable land only",
+       "all the land",
+       "the number of farmers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is arithmetic density.",
+       "2": "Farmers over farmland is agricultural density."
+      }
+     },
+     "cause": {
+      "label": "Why it fits Egypt",
+      "options": [
+       "most of Egypt is desert",
+       "Egypt has many rivers",
+       "Egypt's people live in the desert"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Egypt has one great river, the Nile.",
+       "2": "Almost no one lives in the desert."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-scale-aging-china",
+   "topic": "aging-populations",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "Aging at two scales in China",
+   "context": "<p>China's population is aging. Since the 1980s, many young adults have moved from rural villages to work in factories on the coast.</p>",
+   "prompt": "<b>Explain</b> how the age structure of China's population looks different at the national and local scales.",
+   "checklist": [
+    "Names both scales of analysis: national and local",
+    "Says what each scale shows about age",
+    "Explains the cause of the difference: young adults moving away for work"
+   ],
+   "earns": {
+    "answer": "At the national scale, China is aging, but at the local scale, many rural villages have a much older population than the coast, because young adults left to work in coastal factories and older people stayed behind, so the villages age faster than the country as a whole.",
+    "why": "It names both scales, says what each shows and gives the cause."
+   },
+   "misses": {
+    "answer": "China has an aging population because people have fewer children.",
+    "why": "True at the national scale, but it says nothing about the other scale the prompt asks for."
+   },
+   "specific": {
+    "slots": {
+     "scale": {
+      "label": "The finer scale",
+      "options": [
+       "the local scale: villages and towns",
+       "the global scale: all countries",
+       "the national scale"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Global data compare countries, not villages.",
+       "2": "That is the coarser scale."
+      }
+     },
+     "cause": {
+      "label": "Why villages are older",
+      "options": [
+       "young adults left for factory jobs",
+       "older people moved to the villages",
+       "villages have more babies"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Most moves ran from villages to the coast, by the young.",
+       "2": "More babies would make villages younger."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-compare-pyramids",
+   "topic": "population-composition",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "Comparing two pyramids",
+   "context": "<p>In the UN's 2024 estimates (World Population Prospects 2024), Niger's population pyramid is widest at the base, and Japan's is narrow at the base with its widest bands in middle and older age.</p>",
+   "prompt": "<b>Compare</b> the population pyramids of Niger and Japan and what each says about growth.",
+   "checklist": [
+    "Names the shape of both pyramids",
+    "Says what each shape means for growth",
+    "Speaks of both countries, not one alone"
+   ],
+   "earns": {
+    "answer": "Niger's pyramid is expansive, with a wide base of children and a narrow top, whereas Japan's is constrictive, with a narrow base and wide bands of older adults, so Niger's population is young and growing fast while Japan's is aging and shrinking.",
+    "why": "It names both shapes and what each means, side by side."
+   },
+   "misses": {
+    "answer": "Niger's pyramid has a wide base because it has many children.",
+    "why": "Only one side: a compare must also say what Japan's pyramid shows."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "Niger",
+      "options": [
+       "expansive: a wide base, growing fast",
+       "constrictive: a narrow base",
+       "stationary: straight sides"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Niger's base is wide, not narrow.",
+       "2": "Niger's sides narrow quickly toward the top."
+      }
+     },
+     "sideB": {
+      "label": "Japan",
+      "options": [
+       "constrictive: a narrow base, aging",
+       "expansive: a wide base",
+       "growing fastest of the two"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Japan's base is narrow.",
+       "2": "Japan's population is shrinking."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-degree-country-b",
+   "topic": "transition-model",
+   "practice": "1.D",
+   "skill": "degree",
+   "title": "How well Country B fits the model",
+   "context": "<p>Invented Country B's crude death rate fell from 25 to 8 per 1,000 between 1950 and 1990; its crude birth rate stayed near 45 until 1970, then fell to 15 by 2020 (invented data for practice).</p>",
+   "prompt": "<b>Explain</b> the degree to which Country B's data are consistent with the demographic transition model.",
+   "checklist": [
+    "States the degree first: to a high degree, for example",
+    "Uses the order of the changes: deaths fell first, then births",
+    "Says what the model does not explain"
+   ],
+   "earns": {
+    "answer": "To a high degree: Country B's death rate fell first, from 25 to 8 per 1,000, while its birth rate stayed near 45, and then births fell to 15, which is the order the model's stages 2 and 3 predict. The model says less about why births fell when they did.",
+    "why": "It states the degree, uses the data in order and names what the model leaves out."
+   },
+   "misses": {
+    "answer": "Country B is in stage 3 of the demographic transition.",
+    "why": "No degree, no data, and it states a stage as a fact: say the data are consistent with a stage."
+   },
+   "specific": {
+    "slots": {
+     "degree": {
+      "label": "Degree",
+      "options": [
+       "to a high degree",
+       "to a low degree",
+       "not at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The order of the changes matches the model closely.",
+       "2": "Deaths falling before births is the model's core pattern."
+      }
+     },
+     "evidence": {
+      "label": "Evidence",
+      "options": [
+       "deaths fell first, then births",
+       "births and deaths rose together",
+       "births fell before deaths"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Both fell in these data.",
+       "2": "Here deaths fell first."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-model-malthus",
+   "topic": "malthusian-theory",
+   "practice": "1.E",
+   "skill": "model",
+   "title": "A limit of Malthus",
+   "context": "<p>Malthus wrote in 1798 that population grows faster than food. World population grew from about 1 billion around 1800 to about 8.2 billion in 2024 (UN WPP 2024).</p>",
+   "prompt": "<b>Explain</b> one limit of Malthusian theory, using what happened after 1800.",
+   "checklist": [
+    "Says what Malthus predicted",
+    "Says what happened instead",
+    "Explains why: food output grew faster than he expected"
+   ],
+   "earns": {
+    "answer": "Malthus predicted that population would outgrow food and bring famine, but world population grew about eightfold after 1800 while food supply per person rose, because farmers learned to grow far more food on the same land, so his theory underestimated technology.",
+    "why": "It states the prediction, what happened and why the theory missed it."
+   },
+   "misses": {
+    "answer": "Malthus was wrong because there are more people now.",
+    "why": "More people alone does not show a limit: the point is that food kept up."
+   },
+   "specific": {
+    "slots": {
+     "model": {
+      "label": "What Malthus predicted",
+      "options": [
+       "population would outgrow food",
+       "food would outgrow population",
+       "population would stop growing by 1900"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the opposite of his claim.",
+       "2": "He made no such forecast."
+      }
+     },
+     "limit": {
+      "label": "What he missed",
+      "options": [
+       "farmers grew far more food on the same land",
+       "people stopped having children",
+       "the world ran out of land"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Population kept growing after 1800.",
+       "2": "Output rose without needing far more land."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-place-pronatalist",
+   "topic": "population-policies",
+   "practice": "2.B",
+   "skill": "place",
+   "title": "Naming a pronatalist policy",
+   "context": "<p>A student writes: \"Some governments reward families for having more children.\"</p>",
+   "prompt": "<b>Rewrite</b> the claim so it names a real country, the policy and the year it began.",
+   "checklist": [
+    "Names a real country, not a region or continent",
+    "Names the policy and when it began",
+    "Says what the policy is meant to do"
+   ],
+   "earns": {
+    "answer": "In Hungary, since 2020, mothers who have raised four or more children pay no personal income tax, a pronatalist policy meant to raise the birth rate; the government widened it to mothers of three in 2025 and to younger mothers of two in 2026.",
+    "why": "It names the country, the year, the policy and its aim."
+   },
+   "misses": {
+    "answer": "Some countries, like ones in Europe, pay families to have more children.",
+    "why": "\"Ones in Europe\" names no country, and no policy or year is given."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "Country",
+      "options": [
+       "Hungary",
+       "Europe",
+       "a rich country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Europe is a continent, not a country.",
+       "2": "That names no country."
+      }
+     },
+     "kind": {
+      "label": "Kind of policy",
+      "options": [
+       "pronatalist: it encourages births",
+       "antinatalist: it limits births",
+       "an immigration quota"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A tax break for mothers encourages births.",
+       "2": "The policy is about births, not migration."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-legend-fertility",
+   "topic": "aging-populations",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading a fertility legend",
+   "context": "<p>A world map shades countries by total fertility rate in four classes: under 1.5, 1.5 to under 2.1, 2.1 to under 3.0, and 3.0 or more children per woman (invented values for practice).</p>",
+   "prompt": "<b>Explain</b> what being in the 1.5 to under 2.1 class suggests about a country's future population.",
+   "checklist": [
+    "Reads the class: below about 2.1 children per woman",
+    "Ties it to replacement level",
+    "Explains the effect over time, without migration"
+   ],
+   "earns": {
+    "answer": "A country in the 1.5 to under 2.1 class has a total fertility rate below 2.1, about the replacement level where deaths are low, so each generation is smaller than the one before, and without migration its population will age and eventually shrink.",
+    "why": "It reads the class, links it to replacement level and explains the effect."
+   },
+   "misses": {
+    "answer": "Women in that country have about two children.",
+    "why": "It restates the class roughly but never explains what it means for the population."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "The class",
+      "options": [
+       "below the replacement level of about 2.1",
+       "above replacement level",
+       "exactly 2 children for every woman"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The class tops out at 2.0, below 2.1.",
+       "2": "A class is a range of averages, not each woman."
+      }
+     },
+     "effect": {
+      "label": "Effect over time",
+      "options": [
+       "aging and, without migration, decline",
+       "fast growth",
+       "no change at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fast growth needs fertility well above replacement.",
+       "2": "Below-replacement fertility changes the population over time."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-explain-venezuela",
+   "topic": "migration-causes",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "An economic push factor",
+   "context": "<p>Millions of people have left Venezuela since about 2015 (UNHCR, 2024).</p>",
+   "prompt": "<b>Explain</b> one economic push factor behind this migration.",
+   "checklist": [
+    "Names an economic condition in Venezuela",
+    "Links it to people's daily lives",
+    "Ends at the decision to leave"
+   ],
+   "earns": {
+    "answer": "Venezuela's economy collapsed after about 2014, with very high inflation and shortages of food and medicine, so wages could no longer buy enough food, and many families left to find work and goods elsewhere: an economic push factor.",
+    "why": "It names the condition and links it, step by step, to leaving."
+   },
+   "misses": {
+    "answer": "Venezuela has economic problems, which is a push factor.",
+    "why": "It names a push factor but never says how the problems made people leave."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Condition",
+      "options": [
+       "very high inflation and shortages",
+       "a cold climate",
+       "jobs abroad"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Climate did not change; the economy did.",
+       "2": "Jobs abroad are a pull factor, not a push."
+      }
+     },
+     "link": {
+      "label": "Link",
+      "options": [
+       "so wages could not buy enough food",
+       "so families earned more at home",
+       "so prices fell"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wages lost their value.",
+       "2": "Prices rose sharply."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-limit-remittances",
+   "topic": "migration-effects",
+   "practice": "4.F",
+   "skill": "limitation",
+   "title": "What remittance figures miss",
+   "context": "<p>The World Bank publishes yearly figures for remittances, the money migrants send home, counted through banks and money transfer firms.</p>",
+   "prompt": "<b>Explain</b> one limitation of these figures.",
+   "checklist": [
+    "Names what the figures leave out",
+    "Explains why it is left out",
+    "Says which way the figures are off"
+   ],
+   "earns": {
+    "answer": "The figures count only money sent through formal channels, such as banks and transfer companies, so cash carried home by travelers or sent informally is missed, and the true flow is likely larger than the figures show.",
+    "why": "It names what is missed, why, and the direction of the error."
+   },
+   "misses": {
+    "answer": "The data could be old or wrong, so they might not be accurate.",
+    "why": "Too vague: it names no specific gap in what the figures count."
+   },
+   "specific": {
+    "slots": {
+     "limit": {
+      "label": "What is missed",
+      "options": [
+       "money sent informally or carried as cash",
+       "money sent through banks",
+       "the countries migrants come from"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bank transfers are what the figures count.",
+       "2": "Countries of origin are in the data."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "the true flow is likely larger",
+       "the true flow is smaller",
+       "the figures are exact"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Missing money makes the count too low, not too high.",
+       "2": "Missing flows mean the figures are not exact."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

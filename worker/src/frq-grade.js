@@ -41,7 +41,7 @@ import { MODELS, extractText } from './ai.js';
 import { questionText, rubricText } from './frq-text.js';
 import { calibrationText } from './frq-calibration.js';
 
-export const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro'];
+export const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro', 'aphug'];
 export const DAILY_CAP = 10;
 export const DEFAULT_MODEL = 'claude-haiku-5-5';
 // Bump when the instructions, the schema or the checks change in a way that
@@ -127,6 +127,11 @@ const COURSE_CONVENTIONS = {
 - Directions and classes matter: elastic or inelastic, increase or decrease, shut down or keep producing. A claim with no direction, or the wrong one, does not earn the point.
 - Keep commonly confused ideas apart: a shift of a curve versus a movement along it, total versus marginal versus average, accounting versus economic profit, and the market's quantity versus the efficient quantity.
 - Graph and payoff matrix parts cannot be seen; grade only what the student wrote for them, as instruction 9 says.`,
+  aphug: `COURSE CONVENTIONS: AP® Human Geography.
+- Each part is one point, and its task verb sets what earns it. "Identify" or "define" needs the term or a correct definition only. "Describe" needs more than a name: the pattern, place or feature in some detail. "Explain" needs the cause and the effect joined by a reason (a "because" or "so"); a description with no link does not earn it. "Compare" must speak of both sides (a difference or a similarity), not one. "Explain the degree" needs a stated degree (to a large, moderate or limited degree) and a reason that supports it; a reason with no degree, or a degree with no reason, does not earn it.
+- When the rubric asks for a real place or example, a vague answer ("some countries", "a city") does not earn it; a named place does. Accept any real example the rubric's wording allows, not only the ones listed.
+- Scale words: global, regional (a group of countries), national, local. Data for provinces, states or counties are at the local (subnational) scale; accept "subnational" for it.
+- Keep commonly confused ideas apart: carrying capacity versus population density, site versus situation, GMOs versus the Green Revolution's bred seeds, relocation versus expansion diffusion, devolution versus supranationalism.`,
 };
 
 export function systemBlocks(course) {

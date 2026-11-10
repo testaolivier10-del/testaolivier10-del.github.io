@@ -1,0 +1,195 @@
+{
+ "id": "frq-migration-flows-two",
+ "type": "two",
+ "title": "Migration in Country A: flows, remittances and effects at two scales",
+ "points": 7,
+ "units": [
+  "unit-1",
+  "unit-2"
+ ],
+ "topics": [
+  "scales-of-analysis",
+  "migration-causes",
+  "migration-effects"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "2.C",
+  "2.D",
+  "3.E",
+  "5.B"
+ ],
+ "stimuli": [
+  {
+   "kind": "image",
+   "title": "Migration flows in Country A (invented data)",
+   "image": {
+    "figure": "migration-effects-country-a-flows",
+    "alt": "Flow map of Country A, an invented country, with migrants per year. Within the country, arrows run to the Capital Region from the Northern Hills (40,000, the widest), the Western Uplands (25,000) and the Lake District (10,000), and from the Southern Forest to the South Coast (15,000). Dashed arrows show moves abroad: 20,000 a year from the Northern Hills and 15,000 from the South Coast.",
+    "caption": "Invented data for practice. Migrants per year, shown by arrow width: Northern Hills to Capital Region 40,000; Western Uplands to Capital Region 25,000; Lake District to Capital Region 10,000; Southern Forest to South Coast 15,000; Northern Hills to abroad 20,000; South Coast to abroad 15,000."
+   }
+  },
+  {
+   "kind": "data",
+   "title": "Households and remittances in five provinces of Country A",
+   "invented": true,
+   "table": {
+    "caption": "Households and remittances by province of Country A (invented data for practice)",
+    "cols": [
+     "Province",
+     "Households with a migrant member",
+     "Households getting remittances",
+     "Remittances as share of their income"
+    ],
+    "rows": [
+     [
+      "Northern Hills",
+      "45%",
+      "40%",
+      "35%"
+     ],
+     [
+      "Western Uplands",
+      "30%",
+      "26%",
+      "25%"
+     ],
+     [
+      "South Coast",
+      "18%",
+      "16%",
+      "20%"
+     ],
+     [
+      "Lake District",
+      "15%",
+      "12%",
+      "15%"
+     ],
+     [
+      "Capital Region",
+      "5%",
+      "4%",
+      "5%"
+     ]
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the province that receives the most migrants from within Country A, according to Source 1.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies the Capital Region.",
+     "accept": [
+      "Capital Region"
+     ]
+    }
+   ],
+   "sample": "The Capital Region, which receives about 75,000 migrants a year from three provinces."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe the pattern of migration within Country A shown in Source 1.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes direction and size with places: most flows go from rural provinces in the north and west to the Capital Region, the largest from the Northern Hills.",
+     "accept": [
+      "Most moves go from the north and west toward the Capital Region, the largest from the Northern Hills (40,000)",
+      "Flows converge on the capital, with a smaller flow from the Southern Forest to the South Coast"
+     ]
+    }
+   ],
+   "sample": "Most moves within Country A run from rural provinces in the north and west toward the Capital Region in the center, the largest from the Northern Hills at 40,000 a year, with a smaller flow from the Southern Forest to the South Coast."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain one push factor that could cause the large flow of migrants out of the Northern Hills.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a push factor at the origin (the Northern Hills) and how it leads people to leave.",
+     "accept": [
+      "Few well-paid jobs, so young adults leave for work",
+      "Poor harvests or drought, so farm incomes fall and people leave",
+      "Few schools or services, so families move"
+     ]
+    }
+   ],
+   "sample": "Hill farming pays little and there are few other jobs in the Northern Hills, so young adults leave to look for better-paid work in the capital."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Using Source 2, explain one economic effect of migration on households in the Northern Hills.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains an effect on households with data from Source 2: remittances reach 40 percent of households and make up about 35 percent of their income, so they pay for spending at home.",
+     "accept": [
+      "40% of households get remittances worth about 35% of income, so families can pay for school, food or houses",
+      "Households depend on money from relatives elsewhere, so they are exposed if that work ends"
+     ]
+    }
+   ],
+   "sample": "In the Northern Hills, 40 percent of households receive remittances, which make up about 35 percent of their income, so families can pay for school fees, food and new houses."
+  },
+  {
+   "label": "E",
+   "verb": "compare",
+   "prompt": "Compare the demographic effect of migration on the Northern Hills with its effect on the Capital Region.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both: the Northern Hills lose young adults and grow older, while the Capital Region gains young workers and grows younger.",
+     "accept": [
+      "Origin ages and has fewer births, whereas the destination gains young adults",
+      "Northern Hills older population; Capital Region younger workforce"
+     ]
+    }
+   ],
+   "sample": "The Northern Hills lose many young adults, so their population grows older and has fewer births, whereas the Capital Region gains young workers, so its workforce grows younger."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain one way the loss of skilled workers who move abroad could affect Country A at the national scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a national effect of brain drain with its link, such as shortages of trained workers or lost spending on training.",
+     "accept": [
+      "Brain drain: hospitals and firms lose trained staff, so services suffer",
+      "The country loses what it spent on training, so it gets less return from schooling",
+      "Remittances and returning migrants can bring money and skills back (with the link)"
+     ]
+    }
+   ],
+   "sample": "If trained nurses and engineers move abroad, Country A loses skilled workers it paid to educate, so hospitals and firms across the country face staff shortages: a brain drain."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which Source 2 can show the effect of remittances on the whole of Country A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree and explains that the data are subnational shares of households, so they cannot give the national total or effect.",
+     "accept": [
+      "To a limited degree: the data are by province and in percents of households, so they do not give the national amount",
+      "To a small degree: national data on total remittances would be needed"
+     ]
+    }
+   ],
+   "sample": "To a limited degree. Source 2 gives data at the subnational scale, as percents of households in five provinces, so it shows where remittances matter most to families but not how much money the whole country receives or what share of the national income it is."
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "demarcation": {
+  "def": "Marking a boundary on the ground with posts, fences, walls or buoys. Before that, a boundary is defined (described in a treaty) and delimited (drawn on maps); after it, it is administered (run day to day)."
+ },
+ "demilitarized-zone": {
+  "def": "A strip of land along a boundary where armed forces are not allowed, set up by agreement, such as the zone between North Korea and South Korea since 1953 (the DMZ)."
+ },
+ "berlin-conference": {
+  "def": "A meeting of European powers in Berlin in 1884 and 1885 that set rules for claiming land in Africa. No African rulers took part, and the borders drawn afterward often ignored African peoples."
+ },
+ "unclos": {
+  "def": "The United Nations Convention on the Law of the Sea (UNCLOS), adopted in 1982: the treaty that sets the sea zones each coastal state may claim."
+ },
+ "territorial-sea": {
+  "def": "The sea up to 12 nautical miles from a state's coast, which the state rules much as it rules its land, though foreign ships may pass through peacefully."
+ },
+ "eez": {
+  "def": "An exclusive economic zone: the sea up to 200 nautical miles from a state's coast, where that state has the rights to fish, oil, gas and other resources."
+ },
+ "contiguous-zone": {
+  "def": "The sea from 12 to 24 nautical miles from a state's coast, where the state may enforce its customs, immigration, tax and health laws."
+ },
+ "international-waters": {
+  "def": "The sea beyond any state's exclusive economic zone, more than 200 nautical miles from the coast, open to ships of all states. Also called the high seas."
+ }
+}

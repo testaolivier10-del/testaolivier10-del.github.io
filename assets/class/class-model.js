@@ -28,7 +28,7 @@
   var DAY = 86400000, FULL = 12, HALF_LIFE = 45, FLOOR = 0.5, LEVEL_W = { r: 0.8, p: 1, a: 1.2 };
   var MAX_ITEMS = 1500;
 
-  // The courses a class can be for. The eleven AP® courses share one engine and one progress shape
+  // The courses a class can be for. The twelve AP® courses share one engine and one progress shape
   // (<course>_progress_v1 and friends); NREMT, organic chemistry and A&P keep progress their own way and have
   // their own reader (READ below) and curriculum adapter (curriculum()). Flags for the teacher's page:
   //   ap: false       no AP® skills, score band or AP® wording
@@ -51,6 +51,7 @@
     apmacro:   { dir: 'macroeconomics', name: 'AP® Macroeconomics', cur: 'macroeconomics/assets/mac-curriculum.js', g: 'ApMacroCurriculum' },
     // In ORDER since the launch (docs/apmicro-spec.md decision 12).
     apmicro:   { dir: 'microeconomics', name: 'AP® Microeconomics', cur: 'microeconomics/assets/mic-curriculum.js', g: 'ApMicroCurriculum' },
+    aphug:     { dir: 'human-geography', name: 'AP® Human Geography', cur: 'human-geography/assets/hug-curriculum.js', g: 'ApHugCurriculum' },
     nremt:     { dir: 'nremt', name: 'EMT (NREMT)', cur: 'assets/class/nremt-map.js', g: 'LevlClassNremt', ap: false, frq: false, unitExams: false,
                  unitWord: 'Area', need: 'assets/class/nremt-map.js', topicFilter: false, bank: 'nremt/assets/questions-core.json' },
     ochem:     { dir: 'ochem', name: 'Organic Chemistry', cur: 'ochem/assets/curriculum.js', g: 'OchemCurriculum', ap: false, frq: false,
@@ -58,7 +59,7 @@
     anp:       { dir: 'anatomy-physiology', name: 'Anatomy & Physiology', cur: 'anatomy-physiology/assets/anp-curriculum.js', g: 'AnpCurriculum', ap: false, frq: false,
                  unitWord: 'Chapter' }
   };
-  var ORDER = ['apbio', 'apchem', 'apphys', 'apcalc', 'apcalcbc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apmacro', 'apmicro', 'nremt', 'ochem', 'anp'];
+  var ORDER = ['apbio', 'apchem', 'apphys', 'apcalc', 'apcalcbc', 'apstat', 'apenv', 'appsych', 'apprecalc', 'apmacro', 'apmicro', 'aphug', 'nremt', 'ochem', 'anp'];
 
   function readJson(get, k){ try{ var v = JSON.parse(get(k) || 'null'); return v && typeof v === 'object' ? v : null; }catch(e){ return null; } }
   function isAp(course){ var C = COURSES[course]; return !!C && C.ap !== false; }

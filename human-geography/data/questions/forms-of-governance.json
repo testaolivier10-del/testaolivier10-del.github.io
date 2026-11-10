@@ -1,0 +1,516 @@
+{
+ "stimuli": {
+  "forms-of-governance-s1": {
+   "kind": "data",
+   "title": "Who decides? Two invented countries",
+   "invented": true,
+   "table": {
+    "caption": "Which level of government decides each matter in two invented countries (invented data for practice)",
+    "cols": [
+     "Matter",
+     "Country P",
+     "Country Q"
+    ],
+    "rows": [
+     [
+      "Army and money",
+      "National government",
+      "National government"
+     ],
+     [
+      "What schools teach",
+      "National government",
+      "Each province"
+     ],
+     [
+      "Police and courts",
+      "National government",
+      "Each province"
+     ],
+     [
+      "Income tax",
+      "National government",
+      "National government and each province"
+     ],
+     [
+      "Who can change these powers",
+      "The national parliament, by passing a law",
+      "The constitution, which needs the provinces to agree to change it"
+     ]
+    ]
+   }
+  },
+  "forms-of-governance-s2": {
+   "kind": "text",
+   "title": "The Tenth Amendment to the US Constitution (1791)",
+   "text": "<p>\"The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people.\"</p><p>Tenth Amendment to the Constitution of the United States, ratified 1791. \"Delegated\" means handed over; \"reserved\" means kept.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-forms-of-governance-1",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which form of government does Country Q have?",
+   "options": [
+    "Federal",
+    "Unitary, run from the capital",
+    "Autonomous",
+    "Stateless"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In Country Q, schools, police and some taxes belong to the provinces, and the constitution protects those powers: a federal state.",
+    "options": [
+     "Right: Its provinces have their own powers, set out in a constitution.",
+     "In a unitary state, the national government decides most matters, as in Country P.",
+     "An autonomous region is a part of a state, not a whole system of government.",
+     "Stateless describes a nation with no state."
+    ]
+   },
+   "stimulus": "forms-of-governance-s1"
+  },
+  {
+   "id": "hug-forms-of-governance-2",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which row of the table best shows that Country P is a unitary state?",
+   "options": [
+    "Army and money",
+    "Income tax and who collects it",
+    "Police and courts in each province",
+    "Who can change these powers"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In a unitary state, the national government holds final power and can give or take powers from regions by ordinary law. That is what the last row shows for Country P.",
+    "options": [
+     "Both countries give these to the national government.",
+     "This row shows that Country Q shares taxes; it does not show who holds final power in P.",
+     "This row matters, but the strongest sign is who can change the powers.",
+     "Right: The national parliament alone can change who decides what."
+    ]
+   },
+   "stimulus": "forms-of-governance-s1"
+  },
+  {
+   "id": "hug-forms-of-governance-3",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "A family moves from one province of Country Q to another. Based on the table, what is most likely to change for them?",
+   "options": [
+    "The money they use to buy food and pay rent",
+    "The army that defends them",
+    "What their children are taught at school",
+    "Whether they pay any national income tax"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In a federal state, laws differ from one subnational unit to the next for the matters that belong to them, such as schools in Country Q.",
+    "options": [
+     "Money is decided by the national government in both countries.",
+     "The army is national in both countries.",
+     "Right: Each province decides its own school lessons.",
+     "The national government taxes income in every province."
+    ]
+   },
+   "stimulus": "forms-of-governance-s1"
+  },
+  {
+   "id": "hug-forms-of-governance-4",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "What does the table show about both countries?",
+   "options": [
+    "Neither has a national government",
+    "Both have a national government that controls the army and money",
+    "Both let provinces decide what schools teach",
+    "Both need the provinces to agree before powers change"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Readers who score the exam report that students describe a federal state as if it had no national government. It does: power is shared between the national and the subnational levels.",
+    "options": [
+     "Both have one; the first row shows it.",
+     "Right: A federal state still has a strong national level.",
+     "In Country P, the national government decides.",
+     "That is true of Country Q alone."
+    ]
+   },
+   "stimulus": "forms-of-governance-s1"
+  },
+  {
+   "id": "hug-forms-of-governance-5",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "According to the passage, who keeps the powers that the Constitution does not give to the national government?",
+   "options": [
+    "The states, or the people",
+    "The national government",
+    "The Supreme Court",
+    "Other countries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Tenth Amendment reserves to the states, or the people, every power the Constitution does not delegate to the national government.",
+    "options": [
+     "Right: Powers not handed to the national government are kept by the states or the people.",
+     "The passage says these powers are reserved to the states.",
+     "The passage does not mention the courts.",
+     "The passage is about powers inside the United States."
+    ]
+   },
+   "stimulus": "forms-of-governance-s2"
+  },
+  {
+   "id": "hug-forms-of-governance-6",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "q": "Which form of government does the passage support?",
+   "options": [
+    "A unitary state",
+    "A stateless nation",
+    "A nation-state",
+    "A federal state"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Dividing powers by a constitution between the national level and the states is the mark of a federal state.",
+    "options": [
+     "A unitary state keeps final power at the national level.",
+     "A stateless nation has no state at all.",
+     "That term is about one nation in one state, not how power is shared.",
+     "Right: It divides powers between the national government and the states."
+    ]
+   },
+   "stimulus": "forms-of-governance-s2"
+  },
+  {
+   "id": "hug-forms-of-governance-7",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Because of the arrangement in the passage, which pattern would you expect to see across the United States?",
+   "options": [
+    "One speed limit set for roads across the country",
+    "One national police force running each town",
+    "Laws such as minimum wages differ by state",
+    "A different money in each state"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Federal systems produce variety at the subnational scale: minimum wages, speed limits and school rules differ from state to state, while money and defense stay national.",
+    "options": [
+     "States set most speed limits, so they differ.",
+     "Most policing is run by states and local governments.",
+     "Right: States use their reserved powers in different ways.",
+     "Money is a power the Constitution gives to the national government."
+    ]
+   },
+   "stimulus": "forms-of-governance-s2"
+  },
+  {
+   "id": "hug-forms-of-governance-8",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is a unitary state?",
+   "options": [
+    "A state that shares power between national and state governments",
+    "A state in which the national government holds most power",
+    "A state made of one nation",
+    "A state that belongs to a group of states"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a unitary state, power is concentrated in the national government, which can create, change or remove regional powers.",
+    "options": [
+     "That is a federal state.",
+     "Right: Regions carry out national decisions and have only the powers the center gives them.",
+     "That is a nation-state; a unitary state may hold many nations.",
+     "That describes membership in an organization, not a form of government."
+    ]
+   }
+  },
+  {
+   "id": "hug-forms-of-governance-9",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In France, the national government in Paris sets what is taught in schools across the country, and regions carry out national policies. What form of government does this suggest?",
+   "options": [
+    "Unitary",
+    "Federal",
+    "Autonomous",
+    "Multistate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "France is a common example of a unitary state: power is centered in Paris.",
+    "options": [
+     "Right: Power is concentrated at the national level, in the capital.",
+     "In a federal state, the regions would have their own protected powers over schools.",
+     "An autonomous region is a part of a state, not the state's system.",
+     "Multistate describes a nation spread across states."
+    ]
+   }
+  },
+  {
+   "id": "hug-forms-of-governance-10",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "India has hundreds of languages and is home to many peoples. Why might a federal system suit it?",
+   "options": [
+    "A federal system makes people across India speak one language",
+    "A federal system removes the national government",
+    "A federal system is needed by any country with a large population",
+    "States can set some rules, such as languages, to fit local cultures"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Federal systems often suit large or culturally diverse states. In India, states were redrawn largely along language lines after 1956 and run many of their own affairs.",
+    "options": [
+     "Indian states use many official languages.",
+     "India's national government stays in charge of defense and money.",
+     "China has a larger population and a unitary system.",
+     "Right: Sharing power lets different regions govern in their own ways inside one state."
+    ]
+   }
+  },
+  {
+   "id": "hug-forms-of-governance-11",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which statement correctly compares unitary and federal states?",
+   "options": [
+    "Unitary states have no regions of any kind; federal states are split into regions",
+    "Unitary states are large; federal states are small",
+    "Both have a national government; federal ones also protect regional powers",
+    "Federal states have no national government; unitary states have one"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A compare speaks of both sides. Both forms have a national government; in a federal state the constitution also protects powers for regional governments.",
+    "options": [
+     "Unitary states have regions too, but those carry out national decisions.",
+     "Small Switzerland is federal and large China is unitary.",
+     "Right: The difference is whether regional powers are protected by a constitution.",
+     "Federal states have a national government that runs defense and money."
+    ]
+   }
+  },
+  {
+   "id": "hug-forms-of-governance-12",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Finland is a unitary state, but its Åland Islands, where most people speak Swedish, make many of their own laws. What does this show?",
+   "options": [
+    "Finland is in fact a federal state",
+    "A unitary state can still have an autonomous region",
+    "The Åland Islands are an independent state",
+    "Swedish speakers form a stateless nation in Finland"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A unitary state can grant special powers to one region, often where a different nation or language group lives, without becoming federal.",
+    "options": [
+     "One autonomous region does not make the whole state federal.",
+     "Right: Finland gives Åland special powers while keeping national control elsewhere.",
+     "Åland is part of Finland.",
+     "Swedish speakers have their own state, Sweden, next door."
+    ]
+   }
+  },
+  {
+   "id": "hug-forms-of-governance-13",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which are features of a federal state? Select all that apply.",
+   "options": [
+    "A constitution divides powers between national and regional governments",
+    "Regional governments make some of their own laws",
+    "The national government can remove regional powers by passing an ordinary law",
+    "There is no national army"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "In a federal state, a constitution shares power between a national government and regional governments, each with its own protected powers.",
+    "options": [
+     "Right: This is the defining feature.",
+     "Right: For example, US states set their own minimum wages.",
+     "That describes a unitary state.",
+     "Federal states have national armies."
+    ]
+   }
+  },
+  {
+   "id": "hug-forms-of-governance-14",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 1,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Place the levels of government in the United States, a federal state, from the largest area at the top to the smallest at the bottom.",
+   "model": {
+    "layout": "tiers",
+    "title": "Levels of government in the United States",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "Top: largest area"
+     },
+     {
+      "id": "t2"
+     },
+     {
+      "id": "t3"
+     },
+     {
+      "id": "t4",
+      "name": "Bottom: smallest area"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "nat",
+      "text": "National government"
+     },
+     {
+      "id": "st",
+      "text": "State governments"
+     },
+     {
+      "id": "co",
+      "text": "County governments"
+     },
+     {
+      "id": "city",
+      "text": "City and town governments"
+     },
+     {
+      "id": "un",
+      "text": "United Nations"
+     }
+    ],
+    "key": {
+     "t1": "nat",
+     "t2": "st",
+     "t3": "co",
+     "t4": "city"
+    },
+    "slips": [
+     {
+      "piece": "un",
+      "slot": "t1",
+      "why": "The United Nations is an organization of states, not a level of US government."
+     },
+     {
+      "piece": "st",
+      "slot": "t1",
+      "why": "A federal state still has a national government above its states: the readers report this slip."
+     }
+    ]
+   },
+   "why": {
+    "correct": "National government (the whole country), then the 50 state governments, then county governments, then city and town governments."
+   }
+  },
+  {
+   "id": "hug-forms-of-governance-15",
+   "unit": "unit-4",
+   "topic": "forms-of-governance",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.C",
+   "q": "Build a comparison of a unitary state and a federal state, with a real example of each.",
+   "why": {
+    "correct": "A compare speaks of both sides, with an example for each."
+   },
+   "specific": {
+    "frame": "In ___, ___, whereas in ___, ___.",
+    "write": {
+     "both": true
+    },
+    "model": "In France, a unitary state, the national government in Paris decides most matters, whereas in Germany, a federal state, the states (Länder) run their own schools and police while the national government runs defense and money.",
+    "slots": {
+     "sideA": {
+      "label": "Unitary example",
+      "options": [
+       "France, a unitary state, the national government in Paris decides most matters",
+       "France, a federal state, the regions decide most matters"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "France is a common example of a unitary state."
+      }
+     },
+     "sideB": {
+      "label": "Federal example",
+      "options": [
+       "Germany, a federal state, the states run their own schools and police while the national government runs defense and money",
+       "Germany, a federal state, there is no national government"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A federal state still has a national government: say what it runs."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

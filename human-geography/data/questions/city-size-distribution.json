@@ -1,0 +1,618 @@
+{
+ "stimuli": {
+  "city-size-distribution-s1": {
+   "kind": "data",
+   "title": "The five largest cities in two countries",
+   "invented": true,
+   "table": {
+    "caption": "City populations in Country X and Country Y, in millions (invented data for practice)",
+    "cols": [
+     "Rank",
+     "Country X",
+     "Country Y"
+    ],
+    "rows": [
+     [
+      "1",
+      "8.0",
+      "9.0"
+     ],
+     [
+      "2",
+      "4.1",
+      "1.1"
+     ],
+     [
+      "3",
+      "2.6",
+      "0.9"
+     ],
+     [
+      "4",
+      "2.0",
+      "0.8"
+     ],
+     [
+      "5",
+      "1.6",
+      "0.6"
+     ]
+    ]
+   }
+  },
+  "city-size-distribution-s2": {
+   "kind": "map",
+   "title": "City sizes in Country A",
+   "map": {
+    "base": "country-a",
+    "render": "symbol",
+    "invented": true,
+    "label": "Graduated symbol map of the largest city in each province of Country A: one very large circle in the Capital Region, a medium circle on the South Coast and small circles in the other six provinces",
+    "legendTitle": "Population of the largest city in each province",
+    "symbols": {
+     "unit": "thousand people (invented)",
+     "items": [
+      {
+       "at": "capital",
+       "value": 900
+      },
+      {
+       "at": "coast",
+       "value": 220
+      },
+      {
+       "at": "central",
+       "value": 130
+      },
+      {
+       "at": "northeast",
+       "value": 120
+      },
+      {
+       "at": "east",
+       "value": 110
+      },
+      {
+       "at": "west",
+       "value": 100
+      },
+      {
+       "at": "south",
+       "value": 90
+      },
+      {
+       "at": "north",
+       "value": 60
+      }
+     ],
+     "legend": [
+      100,
+      400,
+      900
+     ]
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-city-size-distribution-1",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Using the rank-size rule and Country X's largest city, how many million people would the rule expect in Country X's 4th-ranked city?",
+   "stimulus": "city-size-distribution-s1",
+   "numeric": {
+    "from": {
+     "fn": "rankSize",
+     "args": [
+      8,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        8,
+        4
+       ]
+      },
+      "why": "You multiplied by the rank. The rule divides: largest city / rank = 8 / 4."
+     },
+     {
+      "from": {
+       "fn": "rankSize",
+       "args": [
+        8,
+        3
+       ]
+      },
+      "why": "That is the expected size of the 3rd city. Use rank 4: 8 / 4."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Expected population = largest / rank = $\\frac{8.0}{4} = 2.0$ million. Country X's 4th city has 2.0 million, a close fit."
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-2",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which country's data show a primate city?",
+   "stimulus": "city-size-distribution-s1",
+   "options": [
+    "Country X",
+    "Country Y",
+    "Both countries equally",
+    "Neither country"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In Country Y the largest city (9.0 million) is about eight times the second (1.1 million). In Country X it is about twice the second, close to the rank-size rule.",
+    "options": [
+     "Country X's cities fall in a smooth ladder close to the rank-size rule.",
+     "Right: one city far larger than the rest is a primate city.",
+     "The two countries differ sharply in how their cities compare.",
+     "Country Y's first city is about eight times its second."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-3",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Country Y was a colony until 1960, ruled from the port that is its largest city. Which best explains Country Y's pattern?",
+   "stimulus": "city-size-distribution-s1",
+   "options": [
+    "Power, trade and investment gathered in the old colonial port",
+    "Its people spread evenly across a flat plain",
+    "Its smaller cities grew faster than its largest city",
+    "Its border cuts its largest city off from trade"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The colonial government built offices, the railroad terminus and trading houses in one port. After independence it stayed the capital and kept drawing migrants and money, so it grew far larger than any other city.",
+    "options": [
+     "Right: history concentrated power and money in one city.",
+     "An even spread over a plain fits central place theory, not one giant city.",
+     "If smaller cities grew faster, the gap would shrink, not stay wide.",
+     "A cut-off city would grow slowly; this one dominates."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-4",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can the table NOT answer?",
+   "stimulus": "city-size-distribution-s1",
+   "options": [
+    "Which country's cities fit the rank-size rule",
+    "How much larger Country Y's first city is than its second",
+    "How many people live in Country X's 3rd city",
+    "Why people moved to each country's largest city"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The table gives sizes only. It holds no data on migration or its causes.",
+    "options": [
+     "Dividing the largest city by each rank tests the rule.",
+     "The table gives both values: 9.0 and 1.1 million.",
+     "The table gives it: 2.6 million.",
+     "Right: sizes alone cannot show the reasons for moves."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-5",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which statement best describes the pattern of city sizes on the map of Country A?",
+   "stimulus": "city-size-distribution-s2",
+   "options": [
+    "Cities of about the same size in each of the eight provinces",
+    "The largest cities lined up along the northern border",
+    "One very large city, in the Capital Region",
+    "City size rising steadily from the west coast to the east"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The Capital Region's circle (900 thousand) is about four times the next largest, on the South Coast (220 thousand). The rest are small.",
+    "options": [
+     "The capital's circle is far larger than any other.",
+     "The Northern Hills has the smallest circle.",
+     "Right: one dominant city, a primate pattern at the national scale.",
+     "Sizes do not rise from west to east; the Capital Region is the peak."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-6",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "According to the gravity model, which pair of cities on the map should interact the most?",
+   "stimulus": "city-size-distribution-s2",
+   "options": [
+    "The Northern Hills city and the Southern Forest city",
+    "The Capital Region city and the Central Valley city",
+    "The Western Uplands city and the Lake District city",
+    "The Northern Hills city and the South Coast city"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Interaction grows with population and falls with distance. The capital is the largest city on the map and the Central Valley city is a neighbor, so this pair scores highest.",
+    "options": [
+     "Both are small and they sit at opposite ends of the country.",
+     "Right: the largest city and a close neighbor.",
+     "Both are small and on opposite sides of the country.",
+     "One is the smallest city and they are far apart."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-7",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.F",
+   "q": "What is one limit of using this map to test the gravity model?",
+   "stimulus": "city-size-distribution-s2",
+   "options": [
+    "It shows no flows between the cities",
+    "It shows flows of people between cities but not their sizes",
+    "It uses real census data, so it may be out of date by now",
+    "It shows the cities at the global scale rather than in one country"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The gravity model predicts interaction. To test it you need data on flows (trips, calls, trade), and the map shows only sizes.",
+    "options": [
+     "Right: no flow data, so no test of the prediction.",
+     "The circles show sizes; no flows are drawn.",
+     "The map is invented data for practice.",
+     "The map shows one country by province, a national view."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-8",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Town 1 has 200 thousand people and Town 2 has 50 thousand. They are 10 units apart. Using the gravity model $\\frac{P_1 \\times P_2}{d^2}$ with populations in thousands, what is the interaction score?",
+   "numeric": {
+    "from": {
+     "fn": "gravity",
+     "args": [
+      200,
+      50,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          200,
+          50
+         ]
+        },
+        10
+       ]
+      },
+      "why": "You divided by the distance, not by its square. Square it first: $10^2 = 100$, then $\\frac{10000}{100}$."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        200,
+        50
+       ]
+      },
+      "why": "You left out the distance. Divide by the distance squared: $\\frac{10000}{100}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\frac{200 \\times 50}{10^2} = \\frac{10000}{100} = 100$."
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-9",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A new bookstore needs at least 5,000 regular customers to pay its rent. In central place theory, what is that number?",
+   "options": [
+    "Its range",
+    "Its rank",
+    "Its threshold",
+    "Its market area"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Threshold is the fewest customers a seller needs to stay open.",
+    "options": [
+     "Range is a distance people will travel, not a number of customers.",
+     "Rank is a city's place in a size order.",
+     "Right: the minimum number of buyers is the threshold.",
+     "The market area is the land around a place that it serves."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-10",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "People drive up to 150 km to see a play at a city's large theater, but only 5 km to buy bread. What does this show about the theater?",
+   "options": [
+    "It sells a good with a low threshold",
+    "It sells a good with a long range",
+    "It is a low-order service",
+    "It is found in most villages, close to homes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Range is how far people will travel for a good. A long trip for a play means a long range, a sign of a high-order service.",
+    "options": [
+     "A big theater needs many buyers: a high threshold, not a low one.",
+     "Right: 150 km is a long range.",
+     "Long range and a high threshold make it a high-order service.",
+     "High-order services sit in a few large places, not in villages."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-11",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In central place theory, why are large cities fewer and farther apart than villages?",
+   "options": [
+    "High-order goods need large market areas",
+    "Villages are built on better farmland, so they crowd close together",
+    "Large cities need to be built far from rivers and their floods",
+    "Governments set the distance between towns and cities by law"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "High-order goods have high thresholds and long ranges. Each large place needs a big market area, so they space out widely; low-order places with small market areas sit close together.",
+    "options": [
+     "Right: thresholds and ranges set the spacing.",
+     "The model assumes an even plain, so farmland quality does not explain it.",
+     "The model assumes a flat plain with no rivers.",
+     "The model explains spacing by markets, not laws."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-12",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.E",
+   "q": "Which change most weakens central place theory as a description of shopping in the 2020s?",
+   "options": [
+    "Most people in the region live on flat plains with even soil",
+    "Shoppers usually go to the nearest store that sells what they need",
+    "Small towns still sell everyday goods such as bread and gasoline",
+    "Online shopping replaces many trips"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The model assumes people travel to a central place to buy. Online shopping breaks the link between range and travel distance.",
+    "options": [
+     "A flat, even plain is the model's own assumption, so it would support it.",
+     "Shopping at the nearest store fits the model.",
+     "Everyday goods sold in small places fit the model.",
+     "Right: buying online ignores the model's travel assumption."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-13",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Bangkok is many times larger than any other city in Thailand and holds its government, main port and largest firms. Which term describes Bangkok?",
+   "options": [
+    "An edge city",
+    "A city that fits the rank-size rule",
+    "A primate city",
+    "A low-order central place"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A largest city far bigger than the next, dominating a country's government and economy, is a primate city.",
+    "options": [
+     "An edge city is a suburban job center inside a metro area.",
+     "Under the rank-size rule the second city would be about half as large.",
+     "Right: Bangkok dominates Thailand's urban system.",
+     "Bangkok offers the highest-order goods in Thailand."
+    ]
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-14",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build a central place hierarchy: place each service at the level where central place theory expects it, from the highest-order place at the top.",
+   "model": {
+    "layout": "tiers",
+    "title": "Central places, highest order at the top",
+    "slots": [
+     {
+      "id": "t1",
+      "name": "City (few, far apart)"
+     },
+     {
+      "id": "t2",
+      "name": "Town"
+     },
+     {
+      "id": "t3",
+      "name": "Village (many, close)"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "heart",
+      "text": "Heart surgery center"
+     },
+     {
+      "id": "super",
+      "text": "Supermarket"
+     },
+     {
+      "id": "gas",
+      "text": "Gas station"
+     },
+     {
+      "id": "farm",
+      "text": "A field of wheat"
+     }
+    ],
+    "key": {
+     "t1": "heart",
+     "t2": "super",
+     "t3": "gas"
+    },
+    "slips": [
+     {
+      "piece": "gas",
+      "slot": "t1",
+      "why": "A gas station needs few buyers (low threshold) and people will not drive far for it (short range), so it belongs in villages."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The higher the threshold and range, the fewer and larger the places that offer the service: heart surgery in cities, supermarkets in towns, gas stations in villages. A field is land use, not a central place service."
+   }
+  },
+  {
+   "id": "hug-city-size-distribution-15",
+   "unit": "unit-6",
+   "topic": "city-size-distribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "A country's largest city has 12 million people. Build the rank-size ladder: place the expected population at each rank.",
+   "model": {
+    "layout": "tiers",
+    "title": "Expected populations by rank",
+    "slots": [
+     {
+      "id": "r1",
+      "name": "Rank 1"
+     },
+     {
+      "id": "r2",
+      "name": "Rank 2"
+     },
+     {
+      "id": "r3",
+      "name": "Rank 3"
+     },
+     {
+      "id": "r4",
+      "name": "Rank 4"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p12",
+      "text": "12 million"
+     },
+     {
+      "id": "p6",
+      "text": "6 million"
+     },
+     {
+      "id": "p4",
+      "text": "4 million"
+     },
+     {
+      "id": "p3",
+      "text": "3 million"
+     },
+     {
+      "id": "p9",
+      "text": "9 million"
+     }
+    ],
+    "key": {
+     "r1": "p12",
+     "r2": "p6",
+     "r3": "p4",
+     "r4": "p3"
+    },
+    "slips": [
+     {
+      "piece": "p9",
+      "slot": "r2",
+      "why": "12 minus 3 is not the rule. The rule divides: rank 2 expects 12 / 2 = 6 million."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide the largest city by the rank: 12, 12/2 = 6, 12/3 = 4, 12/4 = 3 million."
+   }
+  }
+ ]
+}

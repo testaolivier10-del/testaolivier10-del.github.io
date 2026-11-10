@@ -1,0 +1,534 @@
+{
+ "stimuli": {
+  "political-intro-s1": {
+   "kind": "map",
+   "title": "Four places on a world map",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four places marked: A in the North Atlantic, B where four states meet in Southwest Asia, C in West Africa, D on a peninsula in East Asia",
+    "legendTitle": "Places in the questions",
+    "marks": [
+     {
+      "at": "iceland",
+      "text": "A"
+     },
+     {
+      "at": [
+       43.5,
+       37
+      ],
+      "text": "B"
+     },
+     {
+      "at": "nigeria",
+      "text": "C"
+     },
+     {
+      "at": [
+       127.6,
+       38.3
+      ],
+      "text": "D"
+     }
+    ]
+   }
+  },
+  "political-intro-s2": {
+   "kind": "data",
+   "title": "The peoples of four invented countries",
+   "invented": true,
+   "table": {
+    "caption": "Nations living in four invented countries (invented data for practice)",
+    "cols": [
+     "Country",
+     "Nations living there (share of people)",
+     "Note"
+    ],
+    "rows": [
+     [
+      "Country P",
+      "Pellan 95%, others 5%",
+      "Pellans have no other state"
+     ],
+     [
+      "Country Q",
+      "Qorin 45%, Tava 30%, Meru 25%",
+      "Each nation has its own language"
+     ],
+     [
+      "Country R",
+      "Sarn 70%, Liri 30%",
+      "Liri also live in Countries S and T, and have no state of their own"
+     ],
+     [
+      "Country S",
+      "Sarn 60%, Liri 40%",
+      "Sarn are the largest group in both R and S"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-political-intro-1",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which mark lies in the homeland of a large stateless nation, a people spread across several states with no state of their own?",
+   "options": [
+    "Mark B",
+    "Mark A",
+    "Mark C",
+    "Mark D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Kurds live mainly where Türkiye, Iraq, Iran and Syria meet (mark B). They are a nation with no independent state, so they are a stateless nation.",
+    "options": [
+     "Right: Mark B is where Türkiye, Iraq, Iran and Syria meet: the homeland of the Kurds, a nation with no state of its own.",
+     "Mark A is Iceland, where most people share one language and history and have their own state.",
+     "Mark C is Nigeria, a state that holds many nations, not a nation without a state.",
+     "Mark D is Korea: Koreans have two states of their own, so they are not stateless."
+    ]
+   },
+   "stimulus": "political-intro-s1"
+  },
+  {
+   "id": "hug-political-intro-2",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "4.A",
+   "q": "Which mark shows a state often described as close to a nation-state?",
+   "options": [
+    "Mark B",
+    "Mark C",
+    "Mark D",
+    "Mark A"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A nation-state is a state whose people are mostly one nation. Iceland is a common example, though no state is a perfect one.",
+    "options": [
+     "Mark B is a region split among four states, not one state.",
+     "Nigeria holds hundreds of ethnic groups, so it is a multinational state.",
+     "The Korean Peninsula holds two states, not one.",
+     "Right: Iceland (mark A) is a small island state where most people share the Icelandic language and history."
+    ]
+   },
+   "stimulus": "political-intro-s1"
+  },
+  {
+   "id": "hug-political-intro-3",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "One nation lives at mark D, yet the land there is split between two states. Which term describes that nation?",
+   "options": [
+    "A stateless nation",
+    "A multinational state",
+    "A multistate nation",
+    "An autonomous region"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At mark D, the Korean nation lives in two states, North Korea and South Korea. A nation that lives in two or more states is a multistate nation.",
+    "options": [
+     "Koreans have states of their own; a stateless nation has none.",
+     "That term is for one state holding many nations, the opposite case.",
+     "Right: Koreans form one nation divided between North Korea and South Korea.",
+     "That is a part of a state with its own powers, not a nation."
+    ]
+   },
+   "stimulus": "political-intro-s1"
+  },
+  {
+   "id": "hug-political-intro-4",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which term best describes the state at mark C?",
+   "options": [
+    "A nation-state",
+    "A multinational state",
+    "A stateless nation",
+    "A multistate nation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Mark C is Nigeria. Many nations (Hausa, Yoruba, Igbo and many more) share one state, so Nigeria is a multinational state.",
+    "options": [
+     "A nation-state is mostly one nation; Nigeria holds many.",
+     "Right: Nigeria is home to Hausa, Yoruba, Igbo and hundreds of other groups in one state.",
+     "Mark C is a state, not a nation without one.",
+     "That term describes a nation, not a state."
+    ]
+   },
+   "stimulus": "political-intro-s1"
+  },
+  {
+   "id": "hug-political-intro-5",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Which invented country in the table is closest to a nation-state?",
+   "options": [
+    "Country P",
+    "Country Q",
+    "Country R",
+    "Country S"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A nation-state is a state whose people are mostly one nation. Country P is 95% Pellan.",
+    "options": [
+     "Right: About 95% of the people of Country P are Pellan, one nation.",
+     "Country Q holds three nations, none of them a majority.",
+     "Country R holds two nations, Sarn and Liri.",
+     "Country S has a large Liri share (40%) beside the Sarn."
+    ]
+   },
+   "stimulus": "political-intro-s2"
+  },
+  {
+   "id": "hug-political-intro-6",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "According to the table, which nation is a stateless nation?",
+   "options": [
+    "The Sarn",
+    "The Pellans",
+    "The Qorin",
+    "The Liri"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The note for Country R says the Liri live in several countries and have no state of their own: a stateless nation.",
+    "options": [
+     "The Sarn are the largest group in two states, so they are not stateless.",
+     "The Pellans have their own state, Country P.",
+     "The Qorin are the largest group in Country Q.",
+     "Right: The Liri live in Countries R, S and T and have no state of their own."
+    ]
+   },
+   "stimulus": "political-intro-s2"
+  },
+  {
+   "id": "hug-political-intro-7",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.F",
+   "q": "Which question can the table NOT answer?",
+   "options": [
+    "Which country has the largest single nation by share",
+    "Whether the Sarn live in more than one country",
+    "Where inside Country Q each nation lives",
+    "How many nations live in Country Q"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Data at the national scale say nothing about the pattern inside a country. To see where each nation lives, you would need data at the local scale, such as a map by province.",
+    "options": [
+     "The shares answer that: Pellan 95% in Country P.",
+     "Rows R and S both list Sarn.",
+     "Right: The table gives national shares only; it shows nothing about where in the country each group lives.",
+     "Row Q lists three nations."
+    ]
+   },
+   "stimulus": "political-intro-s2"
+  },
+  {
+   "id": "hug-political-intro-8",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In geography, how is a nation different from a state?",
+   "options": [
+    "A nation is a large state; a state is a small nation",
+    "A nation is a people with a shared culture; a state is a country with a government and territory",
+    "A nation has a government; a state is a group of people",
+    "They mean the same thing in geography"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A nation is a group of people who share a culture and see themselves as one people. A state is a political unit: a country with a population, territory, a government and recognition by other states.",
+    "options": [
+     "Size has nothing to do with it.",
+     "Right: This is the core difference: people versus a political unit.",
+     "This swaps the two meanings.",
+     "In everyday speech they are often mixed up, but geographers keep them apart."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-9",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which features does a place need to count as a state? Select all that apply.",
+   "options": [
+    "A permanent population",
+    "A defined territory",
+    "A government that controls the territory",
+    "One shared language",
+    "A coastline",
+    "A population of over one million"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "A state has a permanent population, a defined territory and a government that controls it, and it is recognized by other states. Culture and size are not part of the test.",
+    "options": [
+     "Right: A state needs people who live there.",
+     "Right: A state controls an area of land.",
+     "Right: A state needs a government in charge.",
+     "Many states have several languages; a shared language marks a nation, not a state.",
+     "Landlocked countries such as Bolivia are states too.",
+     "Small states such as Iceland are states too."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-10",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Greenland has its own parliament and runs most of its own affairs, but it is part of the Kingdom of Denmark, which handles its defense and foreign policy. What is Greenland?",
+   "options": [
+    "An independent state",
+    "A stateless nation",
+    "A multistate nation",
+    "An autonomous region"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An autonomous region is a part of a state that governs many of its own affairs while the national government keeps powers such as defense. Greenland has had wide self-government since 2009.",
+    "options": [
+     "Denmark still handles Greenland's defense and foreign policy.",
+     "Greenland is a place with a government, not a people without one.",
+     "That term describes a people spread over states, not a territory.",
+     "Right: Greenland governs most of its own affairs inside a larger state."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-11",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "The Navajo Nation in the southwestern United States has its own government, courts and police, but it lies inside the United States. Which term from political geography fits it best?",
+   "options": [
+    "An independent state",
+    "A multinational state",
+    "A semiautonomous region",
+    "A nation-state"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Native American reservations are a classic example of semiautonomous regions: a nation governs many of its own affairs inside a larger state.",
+    "options": [
+     "The Navajo Nation is inside the United States and is not a separate country.",
+     "That is a whole state holding several nations.",
+     "Right: Native American reservations govern many of their own affairs inside the United States.",
+     "A nation-state is an independent state; the Navajo Nation is inside one."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-12",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Koreans and Kurds both live in more than one state. What is the key difference between them?",
+   "options": [
+    "Kurds live in more states than Koreans, so Kurds alone count as a nation",
+    "Koreans have states of their own; Kurds have none",
+    "Koreans are a nation-state and Kurds are a multinational state",
+    "Kurds live on a peninsula and Koreans do not"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both are multistate nations. Koreans form the majority in North Korea and South Korea, while the Kurds have no independent state, so the Kurds are also a stateless nation.",
+    "options": [
+     "Both groups are nations; the number of states does not decide it.",
+     "Right: Both are spread across states, but only the Kurds lack a state of their own.",
+     "Those terms describe states, not peoples spread across states.",
+     "The Kurds' homeland is inland, and location does not define these terms."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-13",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.A",
+   "q": "A student wants to show that the Kurds live across parts of Türkiye, Iraq, Iran and Syria. At which scale of analysis is this pattern best seen?",
+   "options": [
+    "Regional scale",
+    "Local scale",
+    "National scale",
+    "Global scale"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Kurdish homeland spans parts of four neighboring states in Southwest Asia, so the regional scale shows it best.",
+    "options": [
+     "Right: The pattern crosses four neighboring states in one world region.",
+     "A city or district map would miss the spread across four states.",
+     "Data for one country would show only one part of the homeland.",
+     "A world view hides the details of where the four states meet."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-14",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Belgium is home to Dutch-speaking Flemish people in the north and French-speaking Walloons in the south, under one national government. Which term fits Belgium?",
+   "options": [
+    "A nation-state",
+    "A stateless nation",
+    "A multistate nation",
+    "A multinational state"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "One state, several nations: Belgium is a multinational state.",
+    "options": [
+     "Belgium has two large language communities, not one nation.",
+     "Belgium is a state, not a nation without one.",
+     "That term is for a nation spread across states.",
+     "Right: Two main nations, with different languages, share one state."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-15",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.E",
+   "q": "The UN has 193 member states, yet some lists count more countries in the world. Why do counts differ?",
+   "options": [
+    "The UN counts nations, not states",
+    "New states form each year",
+    "States disagree about which places to recognize",
+    "Some lists leave out island countries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Recognition by other states is part of being a state, and states do not all agree. Taiwan and Kosovo, for example, govern themselves but are not UN members, and only some states recognize them.",
+    "options": [
+     "The UN's members are states.",
+     "New states are rare: South Sudan, admitted in 2011, is the newest UN member as of 2026.",
+     "Right: Some places govern themselves but are recognized by only some states.",
+     "Island states such as Iceland are counted everywhere."
+    ]
+   }
+  },
+  {
+   "id": "hug-political-intro-16",
+   "unit": "unit-4",
+   "topic": "political-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build a specific statement about an autonomous region, with its place and what makes it autonomous.",
+   "why": {
+    "correct": "A specific answer names the place, the state it belongs to, and the powers it holds and lacks."
+   },
+   "specific": {
+    "frame": "___ is an autonomous region of ___, because ___.",
+    "model": "The Kurdistan Region is an autonomous region of Iraq, because it has its own parliament and runs many of its own affairs while staying part of Iraq.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "The Kurdistan Region",
+       "Some region"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Name a real place; \"some region\" earns no credit."
+      }
+     },
+     "kind": {
+      "label": "State it belongs to",
+      "options": [
+       "Iraq",
+       "Türkiye",
+       "An independent Kurdistan"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The Kurdistan Region in the Iraqi constitution is part of Iraq, not Türkiye.",
+       "2": "An autonomous region is inside a state; there is no independent Kurdish state."
+      }
+     },
+     "cause": {
+      "label": "What makes it autonomous",
+      "options": [
+       "it has its own parliament and runs many of its own affairs",
+       "most people there speak Kurdish"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A shared language makes a nation; autonomy is about powers of government."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,486 @@
+{
+ "stimuli": {
+  "farm-organization-s1": {
+   "kind": "data",
+   "title": "US farms in 2017 and 2022",
+   "source": "USDA Census of Agriculture, 2017 and 2022, as summarized in Choices magazine, 2024",
+   "table": {
+    "caption": "US farms in two census years (USDA Census of Agriculture, 2017 and 2022)",
+    "cols": [
+     "Census year",
+     "Number of farms",
+     "Average farm size (acres)",
+     "Share of farms selling 1 million dollars or more",
+     "Their share of all farm sales"
+    ],
+    "rows": [
+     [
+      "2017",
+      "about 2.04 million",
+      "441",
+      "4%",
+      "69%"
+     ],
+     [
+      "2022",
+      "about 1.90 million",
+      "463",
+      "6%",
+      "78%"
+     ]
+    ]
+   }
+  },
+  "farm-organization-s2": {
+   "kind": "image",
+   "title": "A commodity chain from seed to plate",
+   "image": {
+    "figure": "farm-organization-chain",
+    "alt": "Six boxes joined by arrows, left to right: inputs (seed, fertilizer, machines), farm (grows the crop), processor (mills, packs, cooks), distributor (ships and stores), store (sells to shoppers) and consumer (buys and eats). A bracket under the first four boxes says one agribusiness may own or control several steps, which is called vertical integration.",
+    "caption": "A LevlPrep diagram of a commodity chain."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-farm-organization-1",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Which change from 2017 to 2022 does the table show?",
+   "options": [
+    "Fewer, larger farms, with sales more concentrated in big ones",
+    "More farms, smaller on average, with sales spread more evenly",
+    "Fewer farms, smaller on average, with big farms losing their share",
+    "About the same farms, with no change in size or sales"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read each column: number down, size up, and the share of sales from farms selling a million dollars or more up from 69% to 78%.",
+    "options": [
+     "Right: farm numbers fell, average size rose and the biggest farms took a larger share of sales.",
+     "Every part is reversed: farms fell in number and grew in size.",
+     "Average size rose from 441 to 463 acres, and the big farms' share rose.",
+     "The number fell by about 140,000 and size and concentration rose."
+    ]
+   },
+   "stimulus": "farm-organization-s1"
+  },
+  {
+   "id": "hug-farm-organization-2",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Using the table, by what percent did the number of US farms change from 2017 to 2022? Give your answer to the nearest whole percent (use a negative sign for a decrease).",
+   "why": {
+    "correct": "$\\frac{1.90 - 2.04}{2.04} \\times 100 \\approx -7\\%$: a fall of about 7%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "percentChange",
+       "args": [
+        2.04,
+        1.9
+       ]
+      },
+      0
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 93,
+      "why": "You divided the new value by the old one (1.90 / 2.04 × 100 ≈ 93). Percent change uses the change: (1.90 - 2.04) / 2.04 × 100."
+     }
+    ]
+   },
+   "stimulus": "farm-organization-s1"
+  },
+  {
+   "id": "hug-farm-organization-3",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.D",
+   "q": "Which concept best explains why the share of sales from the largest farms rose?",
+   "options": [
+    "Shifting cultivation moves farms to new land each few years",
+    "Subsistence agriculture grew as families ate more of their crops",
+    "Economies of scale lower the cost per unit for large operations",
+    "The Columbian Exchange brought new crops to US farms"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Economies of scale reward size: lower costs per bushel or per animal let large operations outcompete small ones and buy them out.",
+    "options": [
+     "Shifting cultivation is a tropical forest system, not a US trend.",
+     "US farms are commercial; the table is about sales.",
+     "Right: big farms spread the cost of machines and buy inputs in bulk, so they can sell more cheaply and grow.",
+     "That began in 1492; it does not explain a change from 2017 to 2022."
+    ]
+   },
+   "stimulus": "farm-organization-s1"
+  },
+  {
+   "id": "hug-farm-organization-4",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "5.B",
+   "q": "What can this national table NOT show?",
+   "options": [
+    "Whether the number of US farms fell from 2017 to 2022",
+    "The average size of a US farm in 2022",
+    "What share of sales came from the largest farms",
+    "Whether small farms grew in number in some states"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Data at the national scale summarize the whole country. A different, smaller scale of data is needed to see differences between states or counties.",
+    "options": [
+     "The table shows that directly.",
+     "The table gives it: 463 acres.",
+     "The table gives it: 69% in 2017 and 78% in 2022.",
+     "Right: national totals can hide local and regional trends, such as more small farms near some large cities."
+    ]
+   },
+   "stimulus": "farm-organization-s1"
+  },
+  {
+   "id": "hug-farm-organization-5",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "q": "A flour mill buys wheat from Kansas farms and grinds it into flour. Which step in the diagram is the mill?",
+   "options": [
+    "Inputs",
+    "Processor",
+    "Distributor",
+    "Consumer"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In the chain, the processor step changes a raw farm product into something people buy, such as flour.",
+    "options": [
+     "Inputs are what farms buy to grow crops: seed, fertilizer, machines.",
+     "Right: the mill turns the raw crop into a product, the processor step.",
+     "The distributor ships and stores finished goods.",
+     "The consumer buys and eats the food at the end of the chain."
+    ]
+   },
+   "stimulus": "farm-organization-s2"
+  },
+  {
+   "id": "hug-farm-organization-6",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "In the United States, many chicken companies supply the chicks and feed, contract farmers to raise the birds, then slaughter, pack and ship the meat. According to the diagram, what is this called?",
+   "options": [
+    "Subsistence agriculture by the contract farmers",
+    "Monocropping on a single field year after year",
+    "Vertical integration across several steps of the chain",
+    "Extensive agriculture spread over large, open areas of grassland"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The bracket in the diagram names it: when an agribusiness owns or controls several steps, the chain is vertically integrated.",
+    "options": [
+     "The chickens are raised for sale to the company, not for the farmers' own families.",
+     "Monocropping is about crops on fields, not control of a chain.",
+     "Right: one company controls the inputs, farm, processing and distribution steps.",
+     "Chicken houses are intensive: many animals on little land."
+    ]
+   },
+   "stimulus": "farm-organization-s2"
+  },
+  {
+   "id": "hug-farm-organization-7",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.B",
+   "q": "Based on the diagram, why does a farmer often earn only a small share of the price a shopper pays for a box of cereal?",
+   "options": [
+    "Later steps each add costs and take part of the price",
+    "The farmer is the last step before the consumer",
+    "Cereal grain is grown by the store itself, not by farmers",
+    "Inputs are paid for by the consumer, not the farmer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The farm is near the start of a long chain. Value is added, and money is taken, at each later step.",
+    "options": [
+     "Right: processing, shipping and selling all come after the farm, and each takes part of the final price.",
+     "The diagram shows the store, not the farm, just before the consumer.",
+     "The farm step grows the grain; the store sells the finished cereal.",
+     "Farmers buy their own inputs, at the start of the chain."
+    ]
+   },
+   "stimulus": "farm-organization-s2"
+  },
+  {
+   "id": "hug-farm-organization-8",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What is agribusiness?",
+   "options": [
+    "A small family farm whose household eats most of what it grows",
+    "Large firms that grow, process, ship and sell farm products",
+    "Moving herds to fresh grass with the seasons",
+    "Growing many different crops on one small plot"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Agribusiness is commercial agriculture run as a set of linked businesses: seed and machine makers, large farms, processors, shippers and food companies.",
+    "options": [
+     "That is subsistence agriculture.",
+     "Right: agribusiness links farming with the businesses that supply and buy from it.",
+     "That is nomadic herding.",
+     "That is a mixed, small-scale farm, often subsistence."
+    ]
+   }
+  },
+  {
+   "id": "hug-farm-organization-9",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A farmer with 2,000 hectares and a farmer with 200 hectares each buy the same 500,000-dollar combine harvester. Why does the larger farm gain an advantage?",
+   "options": [
+    "The larger farm pays less for the combine than the smaller one",
+    "The smaller farm can grow more grain on each hectare with the same machine",
+    "The larger farm needs no fuel or workers to run the machine",
+    "The machine's cost is spread over ten times as many hectares"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Economies of scale: the bigger the operation, the lower the cost of each unit produced, because fixed costs are spread more thinly.",
+    "options": [
+     "They pay the same price; the gain comes from using it on more land.",
+     "Yield per hectare does not depend on farm size here.",
+     "Both farms need fuel and operators.",
+     "Right: the cost per hectare is far lower on the large farm, an economy of scale."
+    ]
+   }
+  },
+  {
+   "id": "hug-farm-organization-10",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "How have new farm technologies affected the carrying capacity of farmland?",
+   "options": [
+    "Higher yields let the same land feed more people",
+    "Carrying capacity fell because farms grew larger",
+    "Carrying capacity stays fixed whatever the technology",
+    "More farmers per hectare were needed, so fewer people could be fed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Technology changes carrying capacity. Higher yields mean the same land supports more people, though water and soil limits remain.",
+    "options": [
+     "Right: better seed, machines and fertilizer raise output per hectare, so each hectare can support more people.",
+     "Bigger farms do not mean less food; output per hectare has risen.",
+     "Carrying capacity depends on technology and how land is used.",
+     "Technology cut the farmers needed per hectare."
+    ]
+   }
+  },
+  {
+   "id": "hug-farm-organization-11",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "What is the most likely effect on a rural town in Iowa when large operations buy out many neighboring family farms?",
+   "options": [
+    "More farm families move in to work on the larger, consolidated farms",
+    "The town switches to subsistence agriculture",
+    "Fewer farm families, so local stores and schools lose customers",
+    "The farms switch to shifting cultivation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Consolidation into large operations has positive effects (lower costs) and negative ones (fewer farm families, declining rural towns).",
+    "options": [
+     "Machines let large farms run with few workers.",
+     "Consolidated farms are commercial.",
+     "Right: consolidation means fewer people living on farms, which shrinks rural towns.",
+     "Iowa farms remain fixed, mechanized fields."
+    ]
+   }
+  },
+  {
+   "id": "hug-farm-organization-12",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A contract chicken farmer in Georgia can sell birds to just one company in the area. What is the main risk for the farmer?",
+   "options": [
+    "The farmer is required to grow the chicken feed on the farm",
+    "The farmer has to move the barns to fresh pasture each season",
+    "The chickens are eaten by the farm family, not sold",
+    "The company can set the price and terms the farmer is paid"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Vertical integration gives large firms control over the chain. A farmer with one possible buyer depends on that firm's prices and terms.",
+    "options": [
+     "Under these contracts the company usually supplies the feed.",
+     "Chicken barns stay in place; moving to pasture describes herding.",
+     "The birds belong to the company and are sold through its chain.",
+     "Right: with one buyer, the farmer has little power to bargain over pay or contract terms."
+    ]
+   }
+  },
+  {
+   "id": "hug-farm-organization-13",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "Which are steps in a commodity chain for coffee sold in the United States? Select all that apply.",
+   "options": [
+    "A farm in Colombia grows and picks the coffee cherries",
+    "A company in the United States roasts and packs the beans",
+    "Farmers in the Fertile Crescent first domesticate coffee",
+    "Herders move coffee plants to new pastures",
+    "The coffee is planted in square township sections"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A commodity chain links every step from inputs and growing through processing, shipping and selling to the consumer.",
+    "options": [
+     "Right: growing is the farm step.",
+     "Right: roasting is the processor step.",
+     "Coffee came from the highlands of Ethiopia, and its domestication is history, not a step in the chain.",
+     "Coffee grows on trees and bushes, not in pastures.",
+     "Township and range is a US survey method, not a step in a chain."
+    ]
+   }
+  },
+  {
+   "id": "hug-farm-organization-14",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "5.B",
+   "q": "Coffee grown on a small farm in Colombia is roasted in the United States and sold in a store in Japan. At what scale does this commodity chain operate?",
+   "options": [
+    "Local: its steps take place within one town",
+    "Global: its steps are spread across several continents",
+    "National: its steps take place inside one country",
+    "Subnational: it is limited to a single province of one country"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A commodity chain can run at many scales. One that links Colombia, the United States and Japan is global.",
+    "options": [
+     "Colombia, the United States and Japan are on different continents.",
+     "Right: the chain links places on different continents.",
+     "The steps cross three countries.",
+     "The chain crosses borders between countries."
+    ]
+   }
+  },
+  {
+   "id": "hug-farm-organization-15",
+   "unit": "unit-5",
+   "topic": "farm-organization",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Build an explanation of how economies of scale change farming in a named place.",
+   "why": {
+    "correct": "Concept, place and effect joined by \"so\"."
+   },
+   "specific": {
+    "frame": "In ___, large operations gain ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Iowa, large operations gain economies of scale, so they can produce corn at a lower cost per bushel and buy out smaller family farms.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Iowa",
+       "some places"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A vague place earns no credit; name one."
+      }
+     },
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "economies of scale",
+       "subsistence agriculture"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Large commercial operations are the opposite of subsistence farming."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "they can produce corn at a lower cost per bushel and buy out smaller family farms",
+       "they need more workers on each hectare"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Large mechanized farms need fewer workers per hectare."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

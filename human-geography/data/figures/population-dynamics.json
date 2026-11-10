@@ -1,0 +1,12 @@
+{
+ "population-dynamics-flows": {
+  "file": "figures/population-dynamics-flows.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 384,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram: a population box with four arrows. Births and people moving in add to it; deaths and people moving out take away. A dashed box around births and deaths is labeled natural increase. The rate of natural increase in percent is the crude birth rate minus the crude death rate, divided by 10; total growth adds net migration."
+ }
+}

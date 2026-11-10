@@ -1,0 +1,66 @@
+{
+ "topic": "global-agriculture",
+ "hook": "If the price of coffee halves, a café owner in Seattle may barely notice. In a country where coffee brings in most of the money from exports, the same change can cut farm incomes, government budgets and school spending all at once.",
+ "prereq": [
+  {
+   "q": "What is a commodity chain?",
+   "options": [
+    "Every step from inputs and growing through processing and sale to the consumer",
+    "The trucks and ships that carry food",
+    "A chain of farms along a river",
+    "The order of crops in a rotation"
+   ],
+   "correct": 0,
+   "why": "A commodity chain includes all the steps, not just transport.",
+   "review": "farm-organization"
+  },
+  {
+   "q": "Which idea describes places becoming closer in time and cost as transport improves?",
+   "options": [
+    "Time-space compression",
+    "Distance decay",
+    "Carrying capacity",
+    "Sequent occupance"
+   ],
+   "correct": 0,
+   "why": "Time-space compression is the shrinking effect of distance as travel and communication speed up.",
+   "review": "spatial-concepts"
+  }
+ ],
+ "figure": {
+  "figure": "global-agriculture-banana-chain",
+  "caption": "A global supply chain links farms, ports, ships, warehouses and stores in different countries."
+ },
+ "chain": [
+  {
+   "cause": "A country earns most of its export income from one crop, such as coffee",
+   "effect": "its income depends on that crop's world price"
+  },
+  {
+   "cause": "The world price of the crop falls sharply",
+   "effect": "export earnings and farm incomes drop"
+  },
+  {
+   "cause": "Export earnings drop",
+   "effect": "the government has less money for services such as schools and roads"
+  }
+ ],
+ "ideas": [
+  "A <b>global supply chain</b> links every step and place a product passes through, from farm to consumer across countries. It is more than transport.",
+  "<b>Commodity dependence</b> means relying on one or a few raw exports. It makes a country vulnerable to price swings; adding value and diversifying reduce it.",
+  "Food distribution is shaped by politics and conflict, trade rules, roads and storage, and income, so hunger can exist where enough food is grown."
+ ],
+ "misconception": {
+  "wrong": "A global supply chain is just the ships and trucks that carry food.",
+  "right": "Transport is one step. A supply chain includes growing, packing, storing, processing, ripening, marketing and selling, in different countries."
+ },
+ "check": [
+  "hug-global-agriculture-1",
+  "hug-global-agriculture-2",
+  "hug-global-agriculture-3",
+  "hug-global-agriculture-4",
+  "hug-global-agriculture-6",
+  "hug-global-agriculture-11"
+ ],
+ "summary": "Global supply chains link farms, processors, shippers and stores across countries, and they are more than transport. Countries that depend on one or a few raw farm exports face price swings, and food distribution depends on politics, trade, transport and income as well as on how much is grown."
+}

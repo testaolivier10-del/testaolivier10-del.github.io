@@ -1,0 +1,755 @@
+{
+ "about": "The two fixed practice exams in the May 2027 format (docs/aphug-architecture.md, \"Practice exams\"): Section I is 60 five-option questions in course order, one block a standalone question or a whole stimulus set; a bank question's fifth option is in the form's fifth map ({ text, why }, placed at fifthAt(id)); Section II is three FRQs in the order no stimulus, one, two, from different units. Checked by checkForms (scripts/lib/aphug-exams.mjs).",
+ "forms": [
+  {
+   "id": "form-1",
+   "title": "Practice exam 1",
+   "mcq": [
+    [
+     "hug-views-of-the-world-13"
+    ],
+    [
+     "hug-views-of-the-world-7",
+     "hug-views-of-the-world-8",
+     "hug-views-of-the-world-9"
+    ],
+    [
+     "hug-data-sources-9"
+    ],
+    [
+     "hug-exam-1-01"
+    ],
+    [
+     "hug-population-distribution-11"
+    ],
+    [
+     "hug-distribution-consequences-10"
+    ],
+    [
+     "hug-exam-1-05"
+    ],
+    [
+     "hug-exam-1-02"
+    ],
+    [
+     "hug-transition-model-5",
+     "hug-transition-model-6",
+     "hug-transition-model-7"
+    ],
+    [
+     "hug-forced-voluntary-migration-3",
+     "hug-forced-voluntary-migration-4"
+    ],
+    [
+     "hug-culture-intro-10"
+    ],
+    [
+     "hug-culture-on-the-land-11"
+    ],
+    [
+     "hug-cultural-patterns-10"
+    ],
+    [
+     "hug-diffusion-types-11"
+    ],
+    [
+     "hug-diffusion-types-5",
+     "hug-diffusion-types-6",
+     "hug-diffusion-types-7"
+    ],
+    [
+     "hug-diffusion-history-9"
+    ],
+    [
+     "hug-diffusion-today-10"
+    ],
+    [
+     "hug-political-intro-10"
+    ],
+    [
+     "hug-political-processes-9"
+    ],
+    [
+     "hug-power-territoriality-9"
+    ],
+    [
+     "hug-defining-boundaries-11"
+    ],
+    [
+     "hug-defining-boundaries-4",
+     "hug-defining-boundaries-5"
+    ],
+    [
+     "hug-boundary-functions-11"
+    ],
+    [
+     "hug-internal-boundaries-10"
+    ],
+    [
+     "hug-forms-of-governance-9"
+    ],
+    [
+     "hug-agriculture-intro-10"
+    ],
+    [
+     "hug-settlement-survey-10"
+    ],
+    [
+     "hug-agricultural-origins-9"
+    ],
+    [
+     "hug-second-agricultural-revolution-9"
+    ],
+    [
+     "hug-exam-1-06"
+    ],
+    [
+     "hug-green-revolution-9"
+    ],
+    [
+     "hug-von-thunen-5",
+     "hug-von-thunen-6",
+     "hug-von-thunen-7"
+    ],
+    [
+     "hug-urbanization-origins-11"
+    ],
+    [
+     "hug-cities-worldwide-11"
+    ],
+    [
+     "hug-cities-globalization-10"
+    ],
+    [
+     "hug-cities-globalization-5",
+     "hug-cities-globalization-6",
+     "hug-cities-globalization-7"
+    ],
+    [
+     "hug-city-size-distribution-12"
+    ],
+    [
+     "hug-exam-1-03",
+     "hug-exam-1-04"
+    ],
+    [
+     "hug-industrial-revolution-10"
+    ],
+    [
+     "hug-economic-sectors-11"
+    ],
+    [
+     "hug-development-measures-11"
+    ],
+    [
+     "hug-exam-1-08"
+    ],
+    [
+     "hug-women-development-10"
+    ],
+    [
+     "hug-development-theories-13"
+    ],
+    [
+     "hug-exam-1-07"
+    ],
+    [
+     "hug-trade-world-economy-9"
+    ],
+    [
+     "hug-world-economy-changes-13"
+    ]
+   ],
+   "frq": [
+    "frq-gentrification-none",
+    "frq-language-map-one",
+    "frq-human-environment-two"
+   ],
+   "fifth": {
+    "hug-views-of-the-world-7": {
+     "text": "Places with the same number of people per square kilometer",
+     "why": "Lines of equal population density would need population data; this map's values are heights in meters."
+    },
+    "hug-views-of-the-world-8": {
+     "text": "Along the South Coast, where the 100 meter line meets the sea",
+     "why": "The coast is the lowest, flattest land; steep land shows where the lines crowd together."
+    },
+    "hug-views-of-the-world-9": {
+     "text": "The east, above 1,000 meters, where the lines are far apart",
+     "why": "Land above 1,000 meters lies in the west, by the Western Uplands; a port needs low, flat land on the coast."
+    },
+    "hug-forced-voluntary-migration-3": {
+     "text": "Chain migration to join relatives in the city",
+     "why": "Chain migration is Path 2, where a brother and cousins follow the first migrant; this first step of Path 1 is a move from a village to a city inside Mexico."
+    },
+    "hug-forced-voluntary-migration-4": {
+     "text": "It leaves out the years in which the Path 2 migrants moved",
+     "why": "The map gives the years for Path 2 (1995, 2001, 2008). What it cannot show is why anyone moved."
+    },
+    "hug-transition-model-5": {
+     "text": "Country R and Country T equally",
+     "why": "R, with high births and low deaths, fits stage 2; T, with low and close rates, fits stage 4. Stage 3 is falling births with low deaths, as in S."
+    },
+    "hug-transition-model-6": {
+     "text": "Stage 1 is defined by migration, not by births and deaths",
+     "why": "The model's stages are set by birth and death rates; migration is not part of it."
+    },
+    "hug-transition-model-7": {
+     "text": "Reemergence of infectious and parasitic diseases",
+     "why": "In that stage infections come back as leading killers; Country T’s leading causes are heart disease, cancer and stroke."
+    },
+    "hug-diffusion-types-5": {
+     "text": "Reverse hierarchical diffusion from small towns up to large cities",
+     "why": "The passage gives no order of places by size; the idea of writing spread from English speakers to Sequoyah and was reworked on the way."
+    },
+    "hug-diffusion-types-6": {
+     "text": "Many Cherokee people learned to read within a few years",
+     "why": "Fast learning shows how quickly it spread, not that the trait changed as it spread."
+    },
+    "hug-diffusion-types-7": {
+     "text": "Reverse hierarchical diffusion, from small villages up to cities",
+     "why": "The passage describes learning from relatives and neighbors, person to person, with no order of places by size."
+    },
+    "hug-defining-boundaries-4": {
+     "text": "Mark C",
+     "why": "Mark C is on the line between Kenya and Tanzania near Kilimanjaro: mostly straight geometric segments, not the crest of a range."
+    },
+    "hug-defining-boundaries-5": {
+     "text": "Physical and superimposed",
+     "why": "The line follows a parallel of latitude, not a river or ridge, and it was drawn before most settlers arrived, so it is geometric and antecedent."
+    },
+    "hug-von-thunen-5": {
+     "text": "Wheat, dairy and wood lots, from nearest to farthest",
+     "why": "In the table dairy is nearest (6 km) and wheat farther out (40 km); this order reverses them."
+    },
+    "hug-von-thunen-6": {
+     "text": "Flowers grow better in the colder climate of the outer rings",
+     "why": "The table gives no climate for each ring; the reason in the table is how the flowers travel: refrigerated trucks and air freight."
+    },
+    "hug-von-thunen-7": {
+     "text": "The number of tractors sold in Country A each year",
+     "why": "Tractor sales say little about where each farm type sits; the model's isolated state assumes flat, even land, so soil, slope and rivers are the test."
+    },
+    "hug-cities-globalization-5": {
+     "text": "The factory workers live near the factory they work in",
+     "why": "Living near work is distance at the local scale; time-space compression is about far places linked in less time."
+    },
+    "hug-cities-globalization-6": {
+     "text": "Each world city makes its own decisions with no tie to others",
+     "why": "The passage shows decisions in linked cities shaping distant work, so the cities are connected, not apart."
+    },
+    "hug-cities-globalization-7": {
+     "text": "Local weather and the national price of phones",
+     "why": "The passage says nothing about weather; it ties decisions made in world cities, at the global scale, to work in one place, the local scale."
+    },
+    "hug-views-of-the-world-13": {
+     "text": "Absolute location: the latitude and longitude of the region",
+     "why": "Absolute location is a position on the grid; \"Middle East\" names a direction seen from Europe."
+    },
+    "hug-data-sources-9": {
+     "text": "It replaces maps, so planners can stop using them",
+     "why": "Satellite images are often turned into maps; remote sensing fits because it measures a huge, remote forest the same way each year."
+    },
+    "hug-population-distribution-11": {
+     "text": "A physical factor: the inland plateau had more ports",
+     "why": "An inland plateau has no seaports; the move came from a government choice, a human factor."
+    },
+    "hug-distribution-consequences-10": {
+     "text": "Egypt counts its desert as farmland in its arable totals",
+     "why": "Arable land is land that can grow crops; the desert is left out, which is why the farmland figure is small."
+    },
+    "hug-culture-intro-10": {
+     "text": "Culture spreads to a person through the food she eats as a baby",
+     "why": "Food is one trait among many; her story shows that she learned language, sport and food from the people who raised her."
+    },
+    "hug-culture-on-the-land-11": {
+     "text": "Separate entrances are a folk tradition found in each country",
+     "why": "The example is one country's rules about gender and space, and the 2019 change shows the rules were cultural and could change."
+    },
+    "hug-cultural-patterns-10": {
+     "text": "Tanzania's many languages became one creole by the 1970s",
+     "why": "Swahili was promoted alongside home languages; the many languages did not merge into one creole."
+    },
+    "hug-diffusion-types-11": {
+     "text": "Stimulus diffusion, because neighbors change the bean into rice",
+     "why": "The neighbors grow the same bean; stimulus diffusion would mean the idea is changed into something new."
+    },
+    "hug-diffusion-history-9": {
+     "text": "Language extinction: the trade language replaced the others",
+     "why": "Papua New Guinea still has hundreds of languages; Tok Pisin gaining native speakers is creolization."
+    },
+    "hug-diffusion-today-10": {
+     "text": "Globalization makes English the first language of each country",
+     "why": "English is widely used as a shared second language; most countries keep their own first languages."
+    },
+    "hug-political-intro-10": {
+     "text": "A nation-state",
+     "why": "Greenland is not an independent state; Denmark handles its defense and foreign policy."
+    },
+    "hug-political-processes-9": {
+     "text": "State N's devolution of power to State M",
+     "why": "Devolution is a state handing power to its own regions; here one state's soldiers entered another without permission."
+    },
+    "hug-power-territoriality-9": {
+     "text": "Global scale, because property laws exist worldwide",
+     "why": "The fence marks one farmer's land, so the territory claimed is local, whatever laws exist elsewhere."
+    },
+    "hug-defining-boundaries-11": {
+     "text": "Superimposed",
+     "why": "A superimposed boundary is forced on a landscape by an outside power and still works as a boundary; the wall pieces no longer divide anything."
+    },
+    "hug-boundary-functions-11": {
+     "text": "A territorial sea",
+     "why": "A territorial sea is the 12 nautical miles off a coast; this strip is on land, with armed forces kept out."
+    },
+    "hug-internal-boundaries-10": {
+     "text": "Redistricting, then gerrymandering",
+     "why": "Gaining and losing seats after the census is reapportionment; drawing new lines afterward is redistricting."
+    },
+    "hug-forms-of-governance-9": {
+     "text": "A confederation of regions",
+     "why": "In a confederation the regions hold most power; here Paris sets school content and the regions carry it out."
+    },
+    "hug-agriculture-intro-10": {
+     "text": "Long, cold winters with a short growing season",
+     "why": "Olives and citrus are damaged by long hard frosts; all three places have mild, rainy winters and hot, dry summers."
+    },
+    "hug-settlement-survey-10": {
+     "text": "Living in a village gives each family the largest possible farm",
+     "why": "Living in a village does not make a farm larger; families cluster to share wells, defense, a market and a place of worship."
+    },
+    "hug-agricultural-origins-9": {
+     "text": "Factories in towns offered steady wages to farm families",
+     "why": "Factories came with the Industrial Revolution, thousands of years after farming began."
+    },
+    "hug-second-agricultural-revolution-9": {
+     "text": "It was harvested by the new steam-powered machines",
+     "why": "Steam machines came later; clover was grown to feed animals and to put nitrogen back into the soil."
+    },
+    "hug-green-revolution-9": {
+     "text": "It grows best on poor soil with little water",
+     "why": "High-yield varieties give their large harvests when given water and fertilizer, which is why irrigation spread with them."
+    },
+    "hug-urbanization-origins-11": {
+     "text": "Gold was found in the hills around the town",
+     "why": "Chicago grew as a transport hub where rail met lake shipping, not from a gold rush."
+    },
+    "hug-cities-worldwide-11": {
+     "text": "A boomburb inside the central city",
+     "why": "A boomburb is a fast-growing suburb, and the family lives far outside the built-up metro area, among farms."
+    },
+    "hug-cities-globalization-10": {
+     "text": "Stimulus diffusion as each town invents its own payment system",
+     "why": "The same service spreads, and it moves from the largest cities down to small towns."
+    },
+    "hug-city-size-distribution-12": {
+     "text": "Towns in the region have grown closer together",
+     "why": "Closer towns still fit the theory's idea of market areas; it is online shopping that removes many trips to a central place."
+    },
+    "hug-industrial-revolution-10": {
+     "text": "Colonies in Africa and Asia had the newest factory machines",
+     "why": "The machines and factories were in Europe; colonies supplied raw materials and bought factory goods."
+    },
+    "hug-economic-sectors-11": {
+     "text": "Factories moved inland because ports closed to container ships",
+     "why": "Ports grew with container ships; cheaper shipping let factories sit far from their buyers."
+    },
+    "hug-development-measures-11": {
+     "text": "The formal service sector",
+     "why": "The formal sector is registered and taxed; unregistered cash work from street stalls is informal."
+    },
+    "hug-women-development-10": {
+     "text": "Factory work ended the gap between women's and men's wages",
+     "why": "Wages stayed low and a gap remained; the answer with both sides names income and the low pay and safety risks."
+    },
+    "hug-development-theories-13": {
+     "text": "It leaves out the stage of mass consumption",
+     "why": "Rostow's last stage is the age of high mass consumption, so the model includes it."
+    },
+    "hug-trade-world-economy-9": {
+     "text": "A single currency that Costa Rica and Canada both use",
+     "why": "Costa Rica uses the colón and Canada the Canadian dollar; each country supplying what the other needs is complementarity."
+    },
+    "hug-world-economy-changes-13": {
+     "text": "Outsourcing of parts to other countries",
+     "why": "Outsourcing is about who makes the parts; delivering them hours before use is just-in-time."
+    }
+   }
+  },
+  {
+   "id": "form-2",
+   "title": "Practice exam 2",
+   "mcq": [
+    [
+     "hug-views-of-the-world-16"
+    ],
+    [
+     "hug-data-sources-5",
+     "hug-data-sources-6",
+     "hug-data-sources-7"
+    ],
+    [
+     "hug-data-in-decisions-11"
+    ],
+    [
+     "hug-exam-2-01"
+    ],
+    [
+     "hug-population-distribution-16"
+    ],
+    [
+     "hug-distribution-consequences-13"
+    ],
+    [
+     "hug-population-composition-11"
+    ],
+    [
+     "hug-population-composition-6",
+     "hug-population-composition-7"
+    ],
+    [
+     "hug-exam-2-02"
+    ],
+    [
+     "hug-exam-2-03"
+    ],
+    [
+     "hug-migration-effects-7",
+     "hug-migration-effects-8"
+    ],
+    [
+     "hug-culture-intro-16"
+    ],
+    [
+     "hug-culture-on-the-land-14"
+    ],
+    [
+     "hug-culture-on-the-land-6",
+     "hug-culture-on-the-land-7"
+    ],
+    [
+     "hug-cultural-patterns-12"
+    ],
+    [
+     "hug-diffusion-types-13"
+    ],
+    [
+     "hug-diffusion-history-12"
+    ],
+    [
+     "hug-diffusion-today-13"
+    ],
+    [
+     "hug-exam-2-04"
+    ],
+    [
+     "hug-political-intro-12"
+    ],
+    [
+     "hug-political-processes-12"
+    ],
+    [
+     "hug-exam-2-05"
+    ],
+    [
+     "hug-power-territoriality-12"
+    ],
+    [
+     "hug-boundary-functions-13"
+    ],
+    [
+     "hug-internal-boundaries-12"
+    ],
+    [
+     "hug-centrifugal-centripetal-5",
+     "hug-centrifugal-centripetal-6",
+     "hug-centrifugal-centripetal-7"
+    ],
+    [
+     "hug-agriculture-intro-13"
+    ],
+    [
+     "hug-settlement-survey-14"
+    ],
+    [
+     "hug-agricultural-origins-14"
+    ],
+    [
+     "hug-agricultural-origins-5",
+     "hug-agricultural-origins-6",
+     "hug-agricultural-origins-7"
+    ],
+    [
+     "hug-second-agricultural-revolution-12"
+    ],
+    [
+     "hug-green-revolution-13"
+    ],
+    [
+     "hug-production-regions-10"
+    ],
+    [
+     "hug-urbanization-origins-13"
+    ],
+    [
+     "hug-exam-2-06"
+    ],
+    [
+     "hug-cities-globalization-12"
+    ],
+    [
+     "hug-city-size-distribution-5",
+     "hug-city-size-distribution-6",
+     "hug-city-size-distribution-7"
+    ],
+    [
+     "hug-city-structure-11"
+    ],
+    [
+     "hug-density-land-use-11"
+    ],
+    [
+     "hug-infrastructure-11"
+    ],
+    [
+     "hug-industrial-revolution-16"
+    ],
+    [
+     "hug-economic-sectors-14"
+    ],
+    [
+     "hug-economic-sectors-5",
+     "hug-economic-sectors-6",
+     "hug-economic-sectors-8"
+    ],
+    [
+     "hug-exam-2-07"
+    ],
+    [
+     "hug-development-measures-15"
+    ],
+    [
+     "hug-women-development-12"
+    ],
+    [
+     "hug-exam-2-08"
+    ]
+   ],
+   "frq": [
+    "frq-development-theory-none",
+    "frq-rail-boundary-one",
+    "frq-devolution-two"
+   ],
+   "fifth": {
+    "hug-data-sources-5": {
+     "text": "A census of each household",
+     "why": "A census counts people by asking them; these data were measured by satellite from far above."
+    },
+    "hug-data-sources-6": {
+     "text": "Spread in a line along the eastern border, with few in the center",
+     "why": "The lights cluster in the Capital Region and on the South Coast, not along one border."
+    },
+    "hug-data-sources-7": {
+     "text": "Lights are counted by province, so the map hides the capital",
+     "why": "The dots are placed where the lights are; the caution is that light shows power use, so unlit villages are missed."
+    },
+    "hug-population-composition-6": {
+     "text": "More men than women are counted in the 80 and over group",
+     "why": "The pyramid shows the reverse: the female bar is longer at 80 and over."
+    },
+    "hug-population-composition-7": {
+     "text": "Whether more people are aged 45 to 49 than 0 to 4",
+     "why": "The pyramid shows both bars, so it can answer this; it cannot show where in Country Q older people live."
+    },
+    "hug-migration-effects-7": {
+     "text": "Migration changes the borders of the town",
+     "why": "Migration changes who lives in the town, not its borders; the meeting shows debate over services and visas."
+    },
+    "hug-migration-effects-8": {
+     "text": "Most new workers in Riverton came from nearby farms",
+     "why": "Moves from nearby farms stay at the local scale; national visa rules link the town to the national scale."
+    },
+    "hug-culture-on-the-land-6": {
+     "text": "The river that flows past the mill",
+     "why": "The river is a physical feature, not a mark left by people; the brick mill and smokestack are left from the 1920 period."
+    },
+    "hug-culture-on-the-land-7": {
+     "text": "Placelessness: the riverbank looks like any other place",
+     "why": "Each period leaves a distinct mark that later groups reuse, so the panels show sequent occupance."
+    },
+    "hug-centrifugal-centripetal-5": {
+     "text": "The Capital region has the least electricity",
+     "why": "The Capital region has the most: 99% of homes. The Mareh-speaking Plateau and Desert have the least."
+    },
+    "hug-centrifugal-centripetal-6": {
+     "text": "Language differences fade where electricity reaches homes",
+     "why": "Nothing in the table shows language fading; poverty and language overlap, which can feed a sense of being left behind."
+    },
+    "hug-centrifugal-centripetal-7": {
+     "text": "Which region has the highest income per person",
+     "why": "The table gives income per person for each region, so it can answer this."
+    },
+    "hug-agricultural-origins-5": {
+     "text": "The Green Revolution of the 1960s",
+     "why": "The potato reached Ireland centuries before the Green Revolution, through the Columbian Exchange."
+    },
+    "hug-agricultural-origins-6": {
+     "text": "Irish farmers grew many kinds of potato, so the blight had many targets",
+     "why": "Families depended on one kind, which is why one disease could ruin most of the food supply."
+    },
+    "hug-agricultural-origins-7": {
+     "text": "A form of step migration inside Ireland",
+     "why": "Leaving Ireland is international migration, and the famine pushed people out: a push factor."
+    },
+    "hug-city-size-distribution-5": {
+     "text": "Two equal cities, one in the north and one in the south",
+     "why": "The map shows one city far larger than the rest, in the Capital Region."
+    },
+    "hug-city-size-distribution-6": {
+     "text": "The Northern Hills city and the Western Uplands city",
+     "why": "Both are small (60,000 and 100,000 people), so the model expects little interaction; it favors large cities close together."
+    },
+    "hug-city-size-distribution-7": {
+     "text": "It gives the distance between the cities in kilometers",
+     "why": "Distances can be measured from a map; the limit is that it shows no flows of people or goods to test against."
+    },
+    "hug-economic-sectors-5": {
+     "text": "1970 and 2020, at both ends of the chart",
+     "why": "The secondary share is 15% in 1970 and 21% in 2020, below its 30% peak in 1990 and 2000."
+    },
+    "hug-economic-sectors-6": {
+     "text": "Services gave way to factories, then to farm work",
+     "why": "The chart runs the other way: primary work fell, secondary rose then fell, and services grew."
+    },
+    "hug-economic-sectors-8": {
+     "text": "Farm prices rose so high that people stopped buying food",
+     "why": "Rising food prices would not cut farm jobs this way; machines let fewer farmers grow the food."
+    },
+    "hug-views-of-the-world-16": {
+     "text": "Clustering in both places",
+     "why": "Iowa's farmhouses are scattered evenly across the plains, which is dispersal."
+    },
+    "hug-data-in-decisions-11": {
+     "text": "Flood maps are useful at the global scale alone",
+     "why": "A flood map for one house is local data, used here for a family decision."
+    },
+    "hug-population-distribution-16": {
+     "text": "Most Australians live on farms spread across the interior",
+     "why": "Australia is highly urban, and its people cluster in east and southeast coastal cities."
+    },
+    "hug-distribution-consequences-13": {
+     "text": "The hospital would have too many staff for so few homes",
+     "why": "Staffing is a planning choice; the problem low density causes is the long distance patients travel."
+    },
+    "hug-population-composition-11": {
+     "text": "As a narrow band at ages 0 to 4",
+     "why": "People born from 1946 to 1964 were 56 to 74 in 2020, so they form a wide band in late middle age."
+    },
+    "hug-culture-intro-16": {
+     "text": "Folk culture leads nationally; popular culture survives locally",
+     "why": "This reverses the two scales: the national survey shows popular culture, and the province keeps a folk tradition."
+    },
+    "hug-culture-on-the-land-14": {
+     "text": "A building style set by the dry climate of the Southwest",
+     "why": "Climate alone does not explain the many sides or the east-facing door; those carry the beliefs of the Diné (Navajo) people."
+    },
+    "hug-cultural-patterns-12": {
+     "text": "Language divides people at the local scale alone",
+     "why": "Catalan unites many people within Catalonia, while debates about the region divide Spain: one trait works differently at each scale."
+    },
+    "hug-diffusion-types-13": {
+     "text": "Hierarchical diffusion: the style reached big cities first",
+     "why": "A style spreading by contagion goes to nearby places first, with no order of places by size."
+    },
+    "hug-diffusion-history-12": {
+     "text": "Relocation diffusion by Chinese settlers in Europe in the 700s",
+     "why": "Papermaking passed along trade routes through Central Asia and Southwest Asia, not by Chinese settlement in Europe."
+    },
+    "hug-diffusion-today-13": {
+     "text": "It replaces their culture with Canadian folk culture",
+     "why": "Weekly calls and Filipino shows keep ties to home; technology here helps them keep their culture."
+    },
+    "hug-political-intro-12": {
+     "text": "Koreans are a stateless nation; Kurds have two states",
+     "why": "It is the reverse: Koreans have two states on the peninsula, and Kurds have none."
+    },
+    "hug-political-processes-12": {
+     "text": "Each colonial power redrew the borders after leaving",
+     "why": "The 1964 agreement kept colonial-era borders in place; it did not redraw them."
+    },
+    "hug-power-territoriality-12": {
+     "text": "Neocolonialism and colonialism are two names for direct rule",
+     "why": "Neocolonialism is indirect control through money and influence, so the two are different."
+    },
+    "hug-boundary-functions-13": {
+     "text": "Delimited is a natural boundary; demarcated is a geometric one",
+     "why": "Natural and geometric are kinds of lines; delimiting and demarcating are steps in drawing and marking one."
+    },
+    "hug-internal-boundaries-12": {
+     "text": "Continental scale",
+     "why": "A city council's districts are inside one city: the local scale."
+    },
+    "hug-agriculture-intro-13": {
+     "text": "Fruit and vegetables need the larger fields found near cities",
+     "why": "Land near cities is costly, so fields there are small; market gardens sit close because the produce spoils."
+    },
+    "hug-settlement-survey-14": {
+     "text": "The farm is split into long lots that run back from the creek",
+     "why": "Long lots are a different survey system; the problem here is a boundary tied to a tree and a creek that can change."
+    },
+    "hug-agricultural-origins-14": {
+     "text": "Contagious diffusion by ship between Europe's large cities",
+     "why": "Farming moved over land, generation by generation, from place to place: expansion diffusion."
+    },
+    "hug-second-agricultural-revolution-12": {
+     "text": "Small farmers gained the commons as private land",
+     "why": "The commons were fenced into larger private farms, and many small farmers lost access to them."
+    },
+    "hug-green-revolution-13": {
+     "text": "It showed that population cannot grow without new seeds",
+     "why": "Population grew before and during the Green Revolution; what it challenged was Malthus's claim that food cannot keep up."
+    },
+    "hug-production-regions-10": {
+     "text": "The soybeans spoil before they reach a market",
+     "why": "Dry soybeans store well; the risk of one crop is that one pest or price drop hits everything."
+    },
+    "hug-urbanization-origins-13": {
+     "text": "A move of most factories from cities to rural villages",
+     "why": "Loosening the rules let rural people move to city jobs, raising the urban share."
+    },
+    "hug-cities-globalization-12": {
+     "text": "A decision at the regional scale has no effect elsewhere",
+     "why": "The London decision cut jobs in Dhaka, so it did have an effect, at the local scale."
+    },
+    "hug-city-structure-11": {
+     "text": "Central place theory",
+     "why": "Central place theory spaces towns and their market areas across a region; it is not a model of land use inside one city. Many separate specialized centers is multiple nuclei."
+    },
+    "hug-density-land-use-11": {
+     "text": "Redevelopment of the city's oldest blocks into towers",
+     "why": "Detroit lost people and houses were torn down: decline, not redevelopment."
+    },
+    "hug-infrastructure-11": {
+     "text": "Kenya's banks had branches in each village before 2007",
+     "why": "If banks had reached every village, M-Pesa would have filled little need; cell towers reached more people than banks did."
+    },
+    "hug-industrial-revolution-16": {
+     "text": "India became the main supplier of steam engines to Britain",
+     "why": "Britain built the steam engines; India's hand weavers lost buyers to cheap mill cloth."
+    },
+    "hug-economic-sectors-14": {
+     "text": "Periphery countries have fewer farms than core countries",
+     "why": "Periphery countries often have more people in farming; machines and service jobs shrink the primary share in the core."
+    },
+    "hug-development-measures-15": {
+     "text": "The HDI measures income alone in newer reports",
+     "why": "The HDI combines health, education and income in every report; values are revised between reports."
+    },
+    "hug-women-development-12": {
+     "text": "Iceland's wage gap closed as soon as it became wealthy",
+     "why": "Iceland passed a law in 2017 to enforce equal pay, which shows policy, not wealth alone, shapes opportunity."
+    }
+   }
+  }
+ ]
+}

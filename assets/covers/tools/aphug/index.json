@@ -1,0 +1,42 @@
+[
+ {
+  "slug": "model-studio",
+  "title": "Model Studio",
+  "file": "aphug/model-studio.svg"
+ },
+ {
+  "slug": "scale-lab",
+  "title": "Scale Lab",
+  "file": "aphug/scale-lab.svg"
+ },
+ {
+  "slug": "frq-coach",
+  "title": "FRQ Coach",
+  "file": "aphug/frq-coach.svg"
+ },
+ {
+  "slug": "map-reader",
+  "title": "Map Reader",
+  "file": "aphug/map-reader.svg"
+ },
+ {
+  "slug": "population-lab",
+  "title": "Population Lab",
+  "file": "aphug/population-lab.svg"
+ },
+ {
+  "slug": "diffusion-lab",
+  "title": "Diffusion Lab",
+  "file": "aphug/diffusion-lab.svg"
+ },
+ {
+  "slug": "borders-lab",
+  "title": "Borders Lab",
+  "file": "aphug/borders-lab.svg"
+ },
+ {
+  "slug": "city-lab",
+  "title": "City Lab",
+  "file": "aphug/city-lab.svg"
+ }
+]

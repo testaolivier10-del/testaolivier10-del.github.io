@@ -1,0 +1,311 @@
+{
+ "stimuli": {
+  "skills-frq-s1": {
+   "kind": "text",
+   "title": "A practice part and one student's answer (written for practice, LevlPrep 2026)",
+   "text": "<p><b>Part C (1 point).</b> Explain one reason why many people in rural Country A move to its capital city.</p><p><b>Student answer:</b> \"Jobs.\"</p>"
+  },
+  "skills-frq-s2": {
+   "kind": "text",
+   "title": "A second practice part and answer (written for practice, LevlPrep 2026)",
+   "text": "<p><b>Part G (1 point).</b> Explain the degree to which data for each province of Country A are more useful than one national figure for deciding where to build new clinics.</p><p><b>Student answer:</b> \"Province data show which provinces have the fewest clinics, so the government can build where the need is greatest.\"</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "hug-skills-frq-1",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Would this answer earn the point for Part C?",
+   "stimulus": "skills-frq-s1",
+   "options": [
+    "No: it names a reason but does not say how jobs in the capital lead people to move",
+    "Yes: \"jobs\" is a correct reason, and a correct reason earns the point whatever the verb asks",
+    "No: the answer needs a number from a data source",
+    "Yes: short answers are scored higher because they are clear"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An explain answer needs a cause, a link word (because, so) and an effect tied to the place asked about.",
+    "options": [
+     "Right: \"explain\" asks for the how or why. \"Jobs\" names a factor; the link to moving is missing.",
+     "A correct name earns an identify point. An explain needs the link: why jobs make people move.",
+     "This part has no stimulus and asks for no number; it asks for a reason with its link.",
+     "Readers score what the verb demands, not the length. Here the verb demands a link that is missing."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-2",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which rewrite of the student's answer would earn the point?",
+   "stimulus": "skills-frq-s1",
+   "options": [
+    "\"Jobs are a very important reason why people move to the capital city of Country A.\"",
+    "\"The capital has more paid jobs than rural areas, so people move there to earn higher wages.\"",
+    "\"There are jobs in the capital city of Country A, and there are also schools and hospitals there.\"",
+    "\"Rural people in Country A move to the capital city, which is a large and busy city.\""
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A full explain answer has every link: more paid jobs in the capital, so people move there to earn higher wages.",
+    "options": [
+     "This says jobs matter but never says how they cause people to move.",
+     "Right: it gives the cause (more paid jobs), the link (so) and the effect (people move to earn more).",
+     "This lists more factors but links none of them to moving.",
+     "This restates the question and adds a description; restating earns nothing."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-3",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which task verb would the student's one-word answer, \"Jobs\", fully satisfy?",
+   "stimulus": "skills-frq-s1",
+   "options": [
+    "Explain",
+    "Describe",
+    "Identify",
+    "Compare"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Identify is the only verb a single word can satisfy. Every other verb asks for more.",
+    "options": [
+     "Explain asks for the how or why, which a single word does not give.",
+     "Describe asks for features: what it is like, where and how much.",
+     "Right: identify asks you to name the thing; a word or phrase is enough.",
+     "Compare asks about two things and needs both sides."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-4",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "What does this answer still need to earn the point?",
+   "stimulus": "skills-frq-s2",
+   "options": [
+    "A second province named, to give the answer more places",
+    "A definition of a clinic, so the reader knows the term",
+    "A comparison with another country that has more clinics",
+    "A stated degree at the start, such as \"To a high degree\""
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For \"explain the degree\", open with the degree (high, moderate or low), then give the reasoning.",
+    "options": [
+     "Naming more places can help, but the missing piece is the degree the verb asks for.",
+     "The part does not ask for a definition.",
+     "No other country is part of the question.",
+     "Right: \"explain the degree\" asks you to state a degree first, then explain it. The explanation here is good; the degree is missing."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-5",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "5.A",
+   "q": "The answer says province data are more useful. At what scale of analysis are province data?",
+   "stimulus": "skills-frq-s2",
+   "options": [
+    "Local (subnational)",
+    "National (one value for the country)",
+    "Regional (a group of countries)",
+    "Global (the whole world)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Data for parts of a country are at the local (subnational) scale, even when the map shows the whole country.",
+    "options": [
+     "Right: each value is for a province, a part of the country.",
+     "National data would give one value for the whole of Country A.",
+     "The regional scale is a group of countries.",
+     "The global scale compares places across the world."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-6",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which opening would make the answer fully match its verb?",
+   "stimulus": "skills-frq-s2",
+   "options": [
+    "\"Province data are data for each province, which is part of a country...\"",
+    "\"To a high degree: province data show which provinces have the fewest clinics, so...\"",
+    "\"Clinics are places where people get health care, such as doctors...\"",
+    "\"National data and province data are two kinds of data that...\""
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "State the degree, then the because or so: \"To a high degree: ... so ...\".",
+    "options": [
+     "A definition of province data does not state a degree or explain it.",
+     "Right: it states the degree first and keeps the reasoning with its \"so\".",
+     "Defining a clinic answers a different verb, define, about a different term.",
+     "This starts a comparison without stating a degree."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-7",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which task verb asks you to speak about both of two things?",
+   "options": [
+    "Describe",
+    "Identify",
+    "Compare",
+    "Define"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare needs both sides: \"A is ..., whereas B is ...\".",
+    "options": [
+     "Describe gives the features of one thing or pattern.",
+     "Identify names one thing.",
+     "Right: a compare answer says how two things are alike or different, and speaks of both.",
+     "Define gives the meaning of one term."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-8",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A part asks: \"Describe the pattern of farming shown on the map.\" Which answer earns the point?",
+   "options": [
+    "\"The farms are spread out in some places and close together in others on this map.\"",
+    "\"Farming is important to Country A because many people there work on farms and sell crops in nearby towns.\"",
+    "\"Farms are found in Country A, as the map shows.\"",
+    "\"Most farms are along the river in the south of Country A, and few are in the dry hills of the north.\""
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A describe answer for a pattern says where, what and how much, with named places.",
+    "options": [
+     "This names no place, so it does not describe a pattern a reader can check.",
+     "This gives a reason (an explain) instead of the pattern (a describe), and names no place.",
+     "This says farms exist but gives no where, what or how much, so it does not describe a pattern.",
+     "Right: it says where (along the river, in the south), what (most farms) and the contrast with the north."
+    ]
+   }
+  },
+  {
+   "id": "hug-skills-frq-9",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.B",
+   "q": "Build an explain answer that would earn a point: why might a new highway change where people in a city shop?",
+   "specific": {
+    "frame": "In ___, the new highway ___, so ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Country A's capital, the new highway cuts the driving time to stores on the edge of the city, so more people shop there instead of downtown.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Country A's capital",
+       "some cities"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Too vague: name the place the answer is about."
+      }
+     },
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "cuts the driving time to stores on the edge of the city",
+       "is a large road"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes the highway but gives no cause that would change shopping."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "more people shop there instead of downtown",
+       "the highway is busy"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is not about where people shop, which is what the question asks."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "Place, cause, link word, effect: each link of the chain is written out."
+   }
+  },
+  {
+   "id": "hug-skills-frq-10",
+   "unit": "geo-skills",
+   "topic": "skills-frq",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Each free-response question on the AP® Human Geography exam has parts A to G. How are the parts scored?",
+   "options": [
+    "Each part is worth 1 point, judged against one rubric line",
+    "Each part is worth up to 3 points for longer answers",
+    "The whole question is scored once, for overall quality",
+    "Points go to answers that use the most key terms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Seven one-point parts, each checked against one rubric line: do exactly what each verb asks.",
+    "options": [
+     "Right: seven parts, one point each, so each question is worth 7 points.",
+     "Writing more does not earn more points; each part has one point.",
+     "Readers score part by part, so a strong Part A cannot make up for a missing Part B.",
+     "Terms help only when they do what the verb asks; listing terms earns nothing."
+    ]
+   }
+  }
+ ]
+}

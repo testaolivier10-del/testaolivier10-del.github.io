@@ -1,0 +1,17 @@
+{
+ "natural-resource": {
+  "def": "Something from nature that people use, such as water, soil, fish, forests, oil or sunlight. Renewable resources replace themselves; nonrenewable resources are used up."
+ },
+ "sustainability": {
+  "def": "Using land and resources so that people now meet their needs without harming the ability of future people to meet theirs."
+ },
+ "land-use": {
+  "def": "How people use an area of land, such as for forest, farms, homes, roads or factories."
+ },
+ "environmental-determinism": {
+  "def": "An old, rejected idea that the physical environment, especially climate, decides how people live and behave. It was used to justify European rule over other peoples."
+ },
+ "possibilism": {
+  "def": "The idea that the physical environment sets limits and offers options, and people choose how to live within them using their culture and technology."
+ }
+}

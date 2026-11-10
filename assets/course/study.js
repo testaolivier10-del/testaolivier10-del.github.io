@@ -310,7 +310,7 @@
      to watching the page. The lede moves to the top of the first panel, where
      the board puts it. */
   var COVER = { nremt: 'nremt', ochem: 'ochem', 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem',
-    physics: 'apphys', calculus: 'apcalc', 'calculus-bc': 'apcalcbc', statistics: 'apstat', 'environmental-science': 'apenv', psychology: 'appsych', precalculus: 'apprecalc', macroeconomics: 'apmacro', microeconomics: 'apmicro' };
+    physics: 'apphys', calculus: 'apcalc', 'calculus-bc': 'apcalcbc', statistics: 'apstat', 'environmental-science': 'apenv', psychology: 'appsych', precalculus: 'apprecalc', macroeconomics: 'apmacro', microeconomics: 'apmicro', 'human-geography': 'aphug' };
   var PAGE = { practice: 'Practice', review: 'Review', exams: 'Exams', flashcards: 'Flashcards' };
   var HAND = { practice: 'every answer comes with the why', review: 'a miss today, a solid answer days later',
     exams: 'on the clock, like test day', flashcards: 'grade yourself honestly' };

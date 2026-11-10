@@ -1,0 +1,71 @@
+{
+ "topic": "population-composition",
+ "hook": "Two countries can have the same number of people and very different futures. In Niger, nearly half of the people were under 15 (UN WPP 2024, 2023 estimates). In Japan, more than a quarter were 65 or older (Statistics Bureau of Japan, 2023). One country must build schools; the other needs care for older people. A single graph, the population pyramid, shows the difference at a glance.",
+ "prereq": [
+  {
+   "q": "Which density divides all people by arable land?",
+   "options": [
+    "Physiological density",
+    "Arithmetic density",
+    "Agricultural density",
+    "Carrying capacity"
+   ],
+   "correct": 0,
+   "why": "Physiological density compares people with the land that can grow crops.",
+   "review": "distribution-consequences"
+  },
+  {
+   "q": "A graph shows data for one whole country. What is its scale of analysis?",
+   "options": [
+    "National",
+    "Local",
+    "Global",
+    "Regional"
+   ],
+   "correct": 0,
+   "why": "One value for a whole country is the national scale.",
+   "review": "scales-of-analysis"
+  }
+ ],
+ "figure": {
+  "figure": "population-composition-shapes",
+  "caption": "Three pyramid shapes: expansive (wide base), stationary (straight sides) and constrictive (base narrower than the middle)."
+ },
+ "chain": [
+  {
+   "cause": "Many babies are born each year for decades",
+   "effect": "each new cohort is bigger than the last, so the pyramid has a wide base"
+  },
+  {
+   "cause": "Births fall and stay low",
+   "effect": "the youngest cohorts shrink, so the base narrows"
+  },
+  {
+   "cause": "The large cohorts born earlier grow older",
+   "effect": "the middle and top of the pyramid widen"
+  },
+  {
+   "cause": "The shape of the pyramid changes",
+   "effect": "a country’s needs change: from schools and jobs to health care and pensions"
+  }
+ ],
+ "ideas": [
+  "A <b>population pyramid</b> shows a population by age and sex: males on the left, females on the right, youngest at the bottom. Each bar is a <b>cohort</b>, a group born in the same years.",
+  "<b>Age structure</b> is how a population is split among age groups. <b>Sex ratio</b> is the number of males for every 100 females.",
+  "Shapes: <b>expansive</b> (wide base, a young, growing population), <b>stationary</b> (straight sides) and <b>constrictive</b> (a base narrower than the middle, falling births).",
+  "Bulges and dents tell stories: a baby boom, a war, or workers moving in. The pattern can differ at the local scale (a college town) from the national one."
+ ],
+ "misconception": {
+  "wrong": "A wide pyramid means a country has a large population.",
+  "right": "A pyramid shows shares by age and sex, not the total. A wide base means a young population with many children, whatever the country’s size."
+ },
+ "check": [
+  "hug-population-composition-1",
+  "hug-population-composition-3",
+  "hug-population-composition-4",
+  "hug-population-composition-5",
+  "hug-population-composition-9",
+  "hug-population-composition-14"
+ ],
+ "summary": "A population pyramid shows a population’s age structure and sex ratio, one cohort per bar. An expansive pyramid has a wide base and a young, growing population; a constrictive one has a narrow base and falling births. Reading the shape tells planners what a place will need next, from schools to health care, and local pyramids can look very different from national ones."
+}

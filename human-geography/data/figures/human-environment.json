@@ -1,0 +1,22 @@
+{
+ "human-environment-two-views": {
+  "file": "figures/human-environment-two-views.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 356,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: environmental determinism, an idea of the late 1800s and early 1900s: an arrow says the physical environment, climate and land, decides how people live and behave. Right: possibilism, the view that replaced it: the physical environment sets limits and offers options, and a two-way arrow says people choose, as culture and technology shape how they use it. A note says determinism was used to claim that people in hot climates could not govern themselves, an argument for colonial rule, and that geographers rejected it."
+ },
+ "human-environment-terraces": {
+  "file": "figures/human-environment-terraces.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A drawn scene of a steep, forested hillside cut into seven narrow, flat steps of green crops, each held up by a low stone wall. A small channel carries water down the slope beside the steps. Two houses stand near a river at the foot of the hill."
+ }
+}

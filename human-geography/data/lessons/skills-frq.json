@@ -1,0 +1,67 @@
+{
+ "topic": "skills-frq",
+ "hook": "Two students answer \"Explain one reason why people in rural areas move to a capital city.\" One writes \"Jobs.\" The other writes \"The capital has more paid jobs, so people move there to earn higher wages.\" Both know the same fact. Only the second earns the point, because \"explain\" asks for the link, and the first answer leaves it out.",
+ "prereq": [
+  {
+   "q": "A map of one country is shaded by province. What is the scale of analysis of its data?",
+   "options": [
+    "Local (subnational)",
+    "National",
+    "Global",
+    "Regional"
+   ],
+   "correct": 0,
+   "why": "Each value is for a province, a part of the country, so the data are local (subnational).",
+   "review": "skills-scale"
+  },
+  {
+   "q": "Which sentence describes a trend?",
+   "options": [
+    "River Town grew from about 20,000 to about 50,000 people between 1990 and 2020",
+    "River Town is a town",
+    "River Town has a river",
+    "River Town is in the data"
+   ],
+   "correct": 0,
+   "why": "A trend gives a direction, dates and the size of the change.",
+   "review": "skills-reading"
+  }
+ ],
+ "figure": {
+  "figure": "skills-frq-verbs",
+  "caption": "Each task verb asks for more than the one above it."
+ },
+ "chain": [
+  {
+   "cause": "Each part has one task verb",
+   "effect": "the verb tells you exactly what the answer must do"
+  },
+  {
+   "cause": "Each part is scored against one rubric line",
+   "effect": "an answer earns the point only if it does what that line checks"
+  },
+  {
+   "cause": "An answer names a fact but skips the link the verb asks for",
+   "effect": "it earns nothing, even if the fact is right"
+  }
+ ],
+ "ideas": [
+  "The exam has three free-response questions, each with seven parts (A to G) worth <b>1 point</b> each: Question 1 has no stimulus, Question 2 has one and Question 3 has two.",
+  "A <b>task verb</b> is the word that says what to do: identify, define, describe, explain, compare or explain the degree.",
+  "A <b>rubric</b> is the scoring guide readers use. Each part has one point and one line saying what earns it.",
+  "<b>Explain</b> needs a link word (because, so). <b>Compare</b> speaks of both sides. <b>Explain the degree</b> states the degree first."
+ ],
+ "misconception": {
+  "wrong": "If my answer has the right fact, I get the point.",
+  "right": "You get the point only if the answer does what the verb asks. A right fact with no link earns nothing on an explain part."
+ },
+ "check": [
+  "hug-skills-frq-1",
+  "hug-skills-frq-2",
+  "hug-skills-frq-3",
+  "hug-skills-frq-7",
+  "hug-skills-frq-8",
+  "hug-skills-frq-10"
+ ],
+ "summary": "Free-response answers are scored part by part, one point each, against one rubric line. The task verb tells you what to write: identify names, define gives a meaning, describe gives features, explain gives the how or why with a link word, compare speaks of both sides and explain the degree states the degree first. Name a place and its scale whenever you can, and never just restate the question."
+}

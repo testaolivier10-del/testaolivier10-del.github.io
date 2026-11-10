@@ -1,0 +1,66 @@
+{
+ "topic": "centrifugal-centripetal",
+ "hook": "In 1885, the last spike was driven on a railway that tied British Columbia to the rest of Canada; the province had joined Canada in 1871 on the promise of that line. In 1991, Somalia's government collapsed and did not return for many years. Some forces hold states together; others pull them apart. What happens to a state depends on which side is stronger.",
+ "prereq": [
+  {
+   "q": "What is a centripetal force?",
+   "options": [
+    "Something that unites a group or state",
+    "Something that divides a group or state",
+    "A narrow sea passage",
+    "The spread of a culture"
+   ],
+   "correct": 0,
+   "why": "Centripetal pulls together; centrifugal pulls apart.",
+   "review": "cultural-patterns"
+  },
+  {
+   "q": "What is devolution?",
+   "options": [
+    "Moving power from the national government to regions",
+    "Joining a group of states",
+    "Redrawing voting districts",
+    "A state taking land where its people live"
+   ],
+   "correct": 0,
+   "why": "Devolution moves power downward.",
+   "review": "devolution-factors"
+  }
+ ],
+ "figure": {
+  "figure": "centrifugal-centripetal-forces",
+  "caption": "Centripetal forces pull a state together; centrifugal forces pull it apart."
+ },
+ "chain": [
+  {
+   "cause": "Regions are unequal, or groups have rival identities",
+   "effect": "centrifugal forces grow: resentment, separatist and ethnic nationalist movements"
+  },
+  {
+   "cause": "Centrifugal forces overwhelm the national government",
+   "effect": "the state may break apart, or fail and lose control of its land"
+  },
+  {
+   "cause": "A state shares money fairly, links its regions and builds a shared identity",
+   "effect": "centripetal forces grow and cultural cohesion increases"
+  }
+ ],
+ "ideas": [
+  "<b>Centrifugal</b> forces can lead to <b>failed states</b> (Somalia after 1991), uneven development, stateless nations and ethnic nationalist movements.",
+  "<b>Centripetal</b> forces can lead to <b>ethnonationalism</b> that unites a nation-state, fairer spread of roads, rail and services, and cultural cohesion (Swahili in Tanzania).",
+  "One trait can do both at different scales: French unites Quebec but can divide Canada."
+ ],
+ "misconception": {
+  "wrong": "A trait such as language or religion is always either a centripetal or a centrifugal force.",
+  "right": "It depends on the scale and the state. A language shared by a whole state unites it; a language spoken by one region's majority can unite that region and divide the state."
+ },
+ "check": [
+  "hug-centrifugal-centripetal-1",
+  "hug-centrifugal-centripetal-2",
+  "hug-centrifugal-centripetal-3",
+  "hug-centrifugal-centripetal-4",
+  "hug-centrifugal-centripetal-9",
+  "hug-centrifugal-centripetal-14"
+ ],
+ "summary": "Centrifugal forces pull a state apart; centripetal forces hold it together. When centrifugal forces win, the results can include uneven development, ethnic nationalist movements, stateless nations and even failed states such as Somalia after 1991. When centripetal forces win, the results include a shared identity, fairer sharing of roads, services and money, and cultural cohesion. The same trait can pull in both directions at different scales."
+}

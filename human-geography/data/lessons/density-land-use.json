@@ -1,0 +1,71 @@
+{
+ "topic": "density-land-use",
+ "hook": "In Hong Kong, millions of people live in apartment towers 30 or more stories high. In Houston, Texas, most homes are houses with their own yards. In Detroit, whole blocks that were packed with homes in 1950 are grassy fields in the 2020s. Why do cities house people so differently, and why does the same land fill up, empty out and fill up again?",
+ "prereq": [
+  {
+   "q": "Why are land values highest in the CBD?",
+   "options": [
+    "It is the most accessible place, so users bid the most for it",
+    "It has the most parks",
+    "It is farthest from the river",
+    "The government sets prices there"
+   ],
+   "correct": 0,
+   "why": "Bid-rent: the most accessible land draws the highest bids.",
+   "review": "city-structure"
+  },
+  {
+   "q": "What does population density measure?",
+   "options": [
+    "People per unit of land area",
+    "The total number of people",
+    "Births per 1,000 people",
+    "The share of people in cities"
+   ],
+   "correct": 0,
+   "why": "Density divides people by area.",
+   "review": "distribution-consequences"
+  }
+ ],
+ "figure": {
+  "figure": "density-land-use-gradient",
+  "caption": "Residential density usually falls from downtown to the edge; infill adds homes on empty lots inside the built-up area."
+ },
+ "chain": [
+  {
+   "cause": "Land near the center costs the most",
+   "effect": "builders put more homes on each lot, so residential density is highest near downtown"
+  },
+  {
+   "cause": "New technology (elevators, streetcars, then cars) changes how people move and build",
+   "effect": "cities grow up in some eras and spread out in others"
+  },
+  {
+   "cause": "Local governments pass zoning rules about what can be built where",
+   "effect": "some areas allow apartments and stores, others allow only single houses, which locks in a density pattern"
+  },
+  {
+   "cause": "An area ages, loses jobs or residents, and leaves empty lots",
+   "effect": "later investors and cities may fill the gaps with new buildings: infilling"
+  }
+ ],
+ "ideas": [
+  "<b>Residential density</b> is the number of homes (or people) on a given area of land. High-density housing means apartments; low-density housing means detached houses on large lots.",
+  "Housing reflects <b>culture</b> (courtyard homes for family privacy in old Fez, Morocco; single-family houses with yards in many US suburbs) and <b>technology</b> (elevators and steel frames made towers possible; cars made low-density suburbs possible).",
+  "<b>Zoning</b> is a set of local laws that says what kind of building and land use is allowed on each piece of land. It shapes density for decades.",
+  "Land goes through <b>cycles of development</b>: building, aging, decline and rebuilding. <b>Infilling</b> is building on vacant or underused lots inside an area that is already built up."
+ ],
+ "misconception": {
+  "wrong": "A city with a large population must have a high residential density.",
+  "right": "Density compares homes or people with land area. A large city spread over a huge area, such as metro Atlanta, can have a low residential density, while a smaller city of apartment blocks can have a high one. Always ask \"per how much land?\""
+ },
+ "check": [
+  "hug-density-land-use-1",
+  "hug-density-land-use-2",
+  "hug-density-land-use-3",
+  "hug-density-land-use-5",
+  "hug-density-land-use-6",
+  "hug-density-land-use-9"
+ ],
+ "summary": "Housing and land use reflect culture, technology and the cycles of building and decline that every city goes through. Residential density is usually highest near the center and falls toward the edge. Zoning rules lock in density patterns, and infilling adds new buildings on empty lots inside the built-up area."
+}

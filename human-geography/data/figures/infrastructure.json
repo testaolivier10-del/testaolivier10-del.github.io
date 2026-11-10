@@ -1,0 +1,12 @@
+{
+ "infrastructure-networks": {
+  "file": "figures/infrastructure-networks.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A plan of a city. The older center is crossed by a grid of water mains, power lines and a rail line with stations. New homes and factories cluster near the stations. On the far edge, a newer settlement on a hillside has no water mains or rail, only a dirt road and a water tank truck."
+ }
+}

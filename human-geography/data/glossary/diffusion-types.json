@@ -1,0 +1,23 @@
+{
+ "diffusion": {
+  "def": "The spread of a culture trait, idea or invention from one place to other places over time."
+ },
+ "hearth": {
+  "def": "The place where a culture trait, idea or invention began, and from which it spread."
+ },
+ "relocation-diffusion": {
+  "def": "Spread of a trait when people who hold it move to a new place and take it with them."
+ },
+ "expansion-diffusion": {
+  "def": "Spread of a trait outward from its hearth while it stays strong where it began. It has three kinds: contagious, hierarchical and stimulus."
+ },
+ "contagious-diffusion": {
+  "def": "Expansion diffusion from person to person and from place to nearby place, like a ripple, regardless of size or power."
+ },
+ "hierarchical-diffusion": {
+  "def": "Expansion diffusion from larger or more powerful places or people to smaller or less powerful ones, skipping places in between. Reverse hierarchical diffusion runs from small places up to large ones."
+ },
+ "stimulus-diffusion": {
+  "def": "Expansion diffusion in which an idea spreads but people change it to fit their own culture, so the trait takes a new form."
+ }
+}

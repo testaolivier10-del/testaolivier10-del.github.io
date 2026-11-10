@@ -9,6 +9,7 @@ import vm from 'node:vm';
 const ctx = { window: {} };
 vm.runInNewContext(readFileSync('assets/class/class-model.js', 'utf8'), ctx);
 const M = ctx.window.LevlClassModel;
+const REGISTRY = readFileSync('assets/courses.js', 'utf8');
 const DAY = 86400000, NOW = Date.UTC(2026, 10, 4, 18);
 const CUR = { units: [{ id: 'unit-1', n: 1 }, { id: 'unit-2', n: 2 }], topics: [
   { id: 'a', unit: 'unit-1', qn: 12 }, { id: 'b', unit: 'unit-1', qn: 12 }, { id: 'c', unit: 'unit-2', qn: 12 }] };
@@ -86,7 +87,9 @@ test('every class course points at a curriculum file and a question folder that 
   for (const k of M.ORDER) {
     const c = M.COURSES[k];
     assert.match(readFileSync(c.cur, 'utf8'), new RegExp('window\\.' + c.g + '\\s*='), k);
-    if (c.frq !== false) assert.ok(readFileSync(c.dir + '/assets/frq/index.json', 'utf8').length > 2, k + ' FRQ index');
+    // A hidden course (assets/courses.js) may have published no FRQ yet: its index exists but is empty.
+    const hidden = new RegExp("key: '" + k + "'[^}]*status: 'hidden'").test(REGISTRY);
+    if (c.frq !== false) assert.ok(readFileSync(c.dir + '/assets/frq/index.json', 'utf8').length > (hidden ? 1 : 2), k + ' FRQ index');
     if (c.bank) assert.ok(existsSync(c.bank), k + ' bank file');
     assert.ok(existsSync(c.dir + '/index.html') && existsSync(c.dir + '/practice.html') && existsSync(c.dir + '/review.html') && existsSync(c.dir + '/exams.html'), k + ' pages');
     // No AP® on a course that is not AP.

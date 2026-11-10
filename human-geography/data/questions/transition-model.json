@@ -1,0 +1,730 @@
+{
+ "stimuli": {
+  "transition-model-s1": {
+   "kind": "data",
+   "title": "Birth and death rates in Country N, 1800 to 2020",
+   "invented": true,
+   "plot": {
+    "kind": "line",
+    "label": "Line chart of Country N from 1800 to 2020: the death rate falls first, from 38 to about 10 per 1,000 by 1960; the birth rate stays near 40 until 1880, then falls to 8 by 2020, below the death rate",
+    "xLabel": "Year",
+    "yLabel": "Rate per 1,000 people",
+    "series": [
+     {
+      "name": "Crude birth rate",
+      "points": [
+       [
+        1800,
+        40
+       ],
+       [
+        1840,
+        40
+       ],
+       [
+        1880,
+        39
+       ],
+       [
+        1900,
+        36
+       ],
+       [
+        1920,
+        30
+       ],
+       [
+        1940,
+        22
+       ],
+       [
+        1960,
+        17
+       ],
+       [
+        1980,
+        13
+       ],
+       [
+        2000,
+        10
+       ],
+       [
+        2020,
+        8
+       ]
+      ]
+     },
+     {
+      "name": "Crude death rate",
+      "points": [
+       [
+        1800,
+        38
+       ],
+       [
+        1840,
+        33
+       ],
+       [
+        1880,
+        24
+       ],
+       [
+        1900,
+        19
+       ],
+       [
+        1920,
+        15
+       ],
+       [
+        1940,
+        12
+       ],
+       [
+        1960,
+        10
+       ],
+       [
+        1980,
+        10
+       ],
+       [
+        2000,
+        10
+       ],
+       [
+        2020,
+        11
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "transition-model-s2": {
+   "kind": "data",
+   "title": "Rates and main causes of death in four countries",
+   "invented": true,
+   "table": {
+    "caption": "Crude birth and death rates (per 1,000 people a year) and the leading causes of death in Countries R, S, T and U (invented data for practice)",
+    "cols": [
+     "Country",
+     "Crude birth rate",
+     "Crude death rate",
+     "Leading causes of death"
+    ],
+    "rows": [
+     [
+      "Country R",
+      "44",
+      "9",
+      "Infections, illness in babies and young children"
+     ],
+     [
+      "Country S",
+      "23",
+      "6",
+      "Infections and heart disease about equal"
+     ],
+     [
+      "Country T",
+      "10",
+      "9",
+      "Heart disease, cancer, stroke"
+     ],
+     [
+      "Country U",
+      "7",
+      "12",
+      "Heart disease, cancer, dementia"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-transition-model-1",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "In which year on the chart is the gap between the birth rate and the death rate largest?",
+   "stimulus": "transition-model-s1",
+   "options": [
+    "About 1900",
+    "About 1800",
+    "About 1980",
+    "About 2020"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The gap is the rate of natural increase. It is widest when deaths have already fallen and births have not yet: around 1900 on this chart.",
+    "options": [
+     "Right: in 1900 the birth rate is 36 and the death rate 19, a gap of 17 per 1,000.",
+     "in 1800 both rates are high and close (40 and 38), a gap of 2.",
+     "by 1980 both rates are low (13 and 10), a gap of 3.",
+     "in 2020 the death rate is above the birth rate, so the gap is negative."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-2",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "The data for Country N around 1850 are consistent with which stage of the demographic transition model?",
+   "stimulus": "transition-model-s1",
+   "options": [
+    "Stage 1: both rates are high and close together",
+    "Stage 2: the death rate falls while the birth rate stays high",
+    "Stage 3: the birth rate falls and the gap narrows",
+    "Stage 4: both rates are low and close together"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Stage 2 starts when the death rate falls and the birth rate stays high, so the population grows fast. Country N’s data in about 1850 fit that pattern.",
+    "options": [
+     "that fits 1800, before the death rate fell.",
+     "Right: in 1840 to 1880 the death rate drops from 33 to 24 while births stay near 40.",
+     "the birth rate does not fall much until after 1880.",
+     "that fits about 1980 to 2000."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-3",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.D",
+   "q": "In 2020, Country N’s death rate is above its birth rate. Which stage are these data consistent with?",
+   "stimulus": "transition-model-s1",
+   "options": [
+    "Stage 1: high birth and death rates",
+    "Stage 2: rapid growth",
+    "Stage 5: natural decrease",
+    "Stage 3: falling birth rate with fast growth"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Stage 5 has very low birth rates that fall below death rates, so the population shrinks without migration. Low-growth data belong in stage 4 or 5, never in stage 1 or 2.",
+    "options": [
+     "both rates are low in 2020, not high.",
+     "the population is not growing from natural increase at all.",
+     "Right: more deaths than births means a negative rate of natural increase.",
+     "stage 3 still has births well above deaths."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-4",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.C",
+   "q": "Use the chart. What was Country N’s rate of natural increase in 1900, in percent?",
+   "stimulus": "transition-model-s1",
+   "numeric": {
+    "from": {
+     "fn": "rni",
+     "args": [
+      36,
+      19
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "rniPer1000",
+       "args": [
+        36,
+        19
+       ]
+      },
+      "why": "That is per 1,000. Divide by 10 for a percent: 17 per 1,000 is 1.7 percent."
+     },
+     {
+      "from": {
+       "fn": "rni",
+       "args": [
+        19,
+        36
+       ]
+      },
+      "why": "You subtracted the birth rate from the death rate. RNI is births minus deaths."
+     }
+    ]
+   },
+   "why": {
+    "correct": "RNI = (36 − 19) ÷ 10 = 1.7 percent."
+   }
+  },
+  {
+   "id": "hug-transition-model-5",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Which country’s rates are consistent with stage 3 of the demographic transition model?",
+   "stimulus": "transition-model-s2",
+   "options": [
+    "Country S",
+    "Country R",
+    "Country T",
+    "Country U"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In stage 3 the death rate is already low and the birth rate is falling, so growth slows. Country S fits: 23 births and 6 deaths per 1,000.",
+    "options": [
+     "Right: its death rate is low (6) and its birth rate has fallen to 23, still well above deaths.",
+     "R’s birth rate is still very high (44): that fits stage 2.",
+     "T’s rates are both low and close: that fits stage 4.",
+     "U has more deaths than births: that fits stage 5."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-6",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "A student writes, \"Country U is in stage 1, because its population is barely changing.\" What is wrong with this reasoning?",
+   "stimulus": "transition-model-s2",
+   "options": [
+    "Stage 1 countries have more births than deaths, so they grow fast",
+    "Stage 1 has high rates; U has low birth and death rates",
+    "Country U is growing fast, so its data fit stage 2",
+    "No country can have more deaths than births in a year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Slow or negative growth can come from high rates (stage 1) or low rates (stage 4 or 5). U’s rates are low, with deaths above births: consistent with stage 5. Readers in 2024 saw many answers place such countries in stage 1 or 2.",
+    "options": [
+     "stage 1 rates are both high and close, so growth is slow there too.",
+     "Right: both stage 1 and stage 5 can show little growth, but for opposite reasons.",
+     "U has more deaths than births, so it is shrinking.",
+     "U does, and some real countries do too, such as Japan."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-7",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "Country T’s leading causes of death are heart disease, cancer and stroke. Which stage of the epidemiological transition does this fit best?",
+   "stimulus": "transition-model-s2",
+   "options": [
+    "Pestilence and famine",
+    "Receding pandemics",
+    "Degenerative and human-created diseases",
+    "Infections and illness in young children"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The epidemiological transition says the main causes of death shift from infections and famine toward chronic diseases such as heart disease and cancer. T fits the degenerative stage.",
+    "options": [
+     "that stage is ruled by infections and hunger, with very high death rates.",
+     "in that stage infections are falling but still lead the causes of death.",
+     "Right: heart disease, cancer and stroke are chronic diseases of long lives and modern habits.",
+     "that is the pattern in Country R, not a stage name for T."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-8",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Build the demographic transition model: place each pattern of birth and death rates in its stage.",
+   "model": {
+    "layout": "stages",
+    "title": "The demographic transition model",
+    "unit": "Stage",
+    "slots": [
+     {
+      "id": "s1"
+     },
+     {
+      "id": "s2"
+     },
+     {
+      "id": "s3"
+     },
+     {
+      "id": "s4"
+     },
+     {
+      "id": "s5"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "a",
+      "text": "Both rates high and close"
+     },
+     {
+      "id": "b",
+      "text": "Deaths fall, births stay high"
+     },
+     {
+      "id": "c",
+      "text": "Births fall, deaths stay low"
+     },
+     {
+      "id": "d",
+      "text": "Both rates low and close"
+     },
+     {
+      "id": "e",
+      "text": "Births fall below deaths"
+     },
+     {
+      "id": "x",
+      "text": "Births rise above 50"
+     }
+    ],
+    "key": {
+     "s1": "a",
+     "s2": "b",
+     "s3": "c",
+     "s4": "d",
+     "s5": "e"
+    },
+    "slips": [
+     {
+      "piece": "c",
+      "slot": "s2",
+      "why": "In stage 2 the death rate falls first while births stay high. The birth rate falls in stage 3."
+     },
+     {
+      "piece": "b",
+      "slot": "s3",
+      "why": "Deaths fall first, in stage 2. Stage 3 is when births start to fall."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Stage 1: both high. Stage 2: deaths fall, births high (fast growth). Stage 3: births fall. Stage 4: both low. Stage 5: births below deaths (decline)."
+   }
+  },
+  {
+   "id": "hug-transition-model-9",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "Order the stages of the epidemiological transition, from first to last.",
+   "model": {
+    "layout": "stages",
+    "title": "The epidemiological transition",
+    "unit": "Stage",
+    "slots": [
+     {
+      "id": "e1"
+     },
+     {
+      "id": "e2"
+     },
+     {
+      "id": "e3"
+     },
+     {
+      "id": "e4"
+     },
+     {
+      "id": "e5"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "p",
+      "text": "Pestilence and famine"
+     },
+     {
+      "id": "r",
+      "text": "Receding pandemics"
+     },
+     {
+      "id": "d",
+      "text": "Degenerative and human-created"
+     },
+     {
+      "id": "l",
+      "text": "Delayed degenerative diseases"
+     },
+     {
+      "id": "n",
+      "text": "Reemerging infections"
+     }
+    ],
+    "key": {
+     "e1": "p",
+     "e2": "r",
+     "e3": "d",
+     "e4": "l",
+     "e5": "n"
+    },
+    "slips": [
+     {
+      "piece": "n",
+      "slot": "e2",
+      "why": "Receding pandemics come second: infections fall as water and medicine improve. Reemerging infections, such as new or drug-resistant diseases, are the last stage some geographers add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Infections and famine first; then pandemics recede; then chronic diseases (heart disease, cancer) lead; then they come later in life; some add a stage of reemerging infectious disease."
+   }
+  },
+  {
+   "id": "hug-transition-model-10",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does the demographic transition model describe?",
+   "options": [
+    "How people move from the countryside to cities in stages",
+    "How birth and death rates change over time as a society changes",
+    "How food supply grows more slowly than population over time",
+    "How the main causes of death shift from infection to chronic disease"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The demographic transition model describes a sequence: death rates fall first, then birth rates, so population growth speeds up and then slows. It is a model drawn from history, not a law.",
+    "options": [
+     "the model is about births and deaths, not moves.",
+     "Right: it traces a sequence of stages of births and deaths.",
+     "that is a different theory, about food.",
+     "that is the epidemiological transition."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-11",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Which change most often starts stage 2?",
+   "options": [
+    "Women having far fewer children than their mothers did",
+    "Older people becoming a larger share of the population",
+    "Better food, clean water and vaccines",
+    "More people moving away from the country to find work abroad"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Stage 2 begins when deaths fall: more reliable food, clean water, sewers and vaccines. Births stay high for a while, so growth is fast.",
+    "options": [
+     "falling births mark stage 3.",
+     "that comes much later, in stages 4 and 5.",
+     "Right: these lower the death rate while families still have many children.",
+     "migration is not part of the model’s stages."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-12",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Why does the birth rate fall in stage 3?",
+   "options": [
+    "The death rate rises again, so families plan fewer children",
+    "Governments ban large families once a country reaches stage 3",
+    "There is not enough food, so fewer babies are born",
+    "More children survive, and raising them costs more in cities"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In stage 3, families have fewer children because more children survive, children cost more to raise in cities, and girls stay in school longer and marry later.",
+    "options": [
+     "the death rate stays low in stage 3.",
+     "governments differ; the fall comes mostly from family choices.",
+     "stage 3 usually comes with more food, not less.",
+     "Right: parents need fewer births and each child costs more."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-13",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "In many countries of Asia and Africa, death rates fell much faster after 1950 than they did in Europe in the 1800s. What limitation of the model does this show?",
+   "options": [
+    "Its stage timing comes from European history",
+    "It says death rates rise in stage 2, which is not true in Asia",
+    "It has too few stages to show falling death rates",
+    "It includes migration, which changes death rates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The model was built from the history of Europe and North America. Later, medicine and public health arrived from abroad, so deaths fell faster and populations grew faster than the model’s timing suggests.",
+    "options": [
+     "Right: imported vaccines and medicine cut deaths in decades, not a century.",
+     "the model says death rates fall in stage 2.",
+     "stage 2 shows falling death rates.",
+     "the model leaves out migration."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-14",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.E",
+   "q": "The population of the United Arab Emirates grew very fast after 1980, mainly because workers moved in from other countries. What limitation of the demographic transition model does this show?",
+   "options": [
+    "The model shows death rates rising in later stages",
+    "The model leaves out migration, which can outweigh births and deaths",
+    "The model works for small countries such as this one, and not for large ones",
+    "The model counts births twice in its later stages"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The model tracks natural increase. Migration can transform a population, as in the Gulf states, and the model cannot show it.",
+    "options": [
+     "death rates stay low in the late stages.",
+     "Right: the stages track births and deaths only.",
+     "size is not the issue; migration is.",
+     "the model counts births once, as the crude birth rate."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-15",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.D",
+   "q": "In 2020, COVID-19 spread around the world and raised death rates in many countries for a time. Which idea fits this best?",
+   "options": [
+    "The demographic transition ends by going back to stage 1",
+    "Countries move back to the pestilence and famine stage for good",
+    "Infectious disease can reemerge in late stages",
+    "Birth rates rose sharply because of the virus"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Some geographers add a stage of reemerging infectious disease to the epidemiological transition: new diseases, such as COVID-19, and old ones that resist drugs.",
+    "options": [
+     "the model has no return to stage 1.",
+     "death rates fell again after the pandemic peaks.",
+     "Right: a new infection raised deaths in countries where chronic disease led.",
+     "the pandemic raised deaths for a time; it did not raise births sharply."
+    ]
+   }
+  },
+  {
+   "id": "hug-transition-model-16",
+   "unit": "unit-2",
+   "topic": "transition-model",
+   "level": "analyze",
+   "diff": 3,
+   "type": "specific",
+   "practice": "1.D",
+   "q": "Build a statement that places a real country’s data in the model the right way.",
+   "specific": {
+    "frame": "___ for ___ are consistent with ___, because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "Data for Japan, which has recorded more deaths than births every year since the late 2000s (Statistics Bureau of Japan), are consistent with stage 5, because the birth rate has fallen below the death rate.",
+    "slots": {
+     "data": {
+      "label": "Evidence",
+      "options": [
+       "Data, which show more deaths than births every year since the late 2000s,",
+       "Facts"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "give the evidence: which rates, from which years."
+      }
+     },
+     "place": {
+      "label": "Place",
+      "options": [
+       "Japan",
+       "rich countries"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "name one real country; a group of countries hides the differences."
+      }
+     },
+     "model": {
+      "label": "Model stage",
+      "options": [
+       "stage 5 of the demographic transition model",
+       "stage 1 of the demographic transition model"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "low rates with deaths above births fit stage 5, not stage 1."
+      }
+     },
+     "cause": {
+      "label": "Reason",
+      "options": [
+       "the birth rate has fallen below the death rate",
+       "Japan is developed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "the stage comes from the rates, not from a label for the country."
+      }
+     }
+    }
+   },
+   "why": {
+    "correct": "A country is never \"in\" a stage as a fact: its data are consistent with one. Name the data, the place, the stage and the reason from the rates."
+   }
+  }
+ ]
+}

@@ -1,0 +1,164 @@
+{
+ "about": "\"Make it specific\" prompts for geo-skills (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "geo-skills",
+   "id": "gs-scale-of-the-data",
+   "topic": "skills-scale",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "Naming the scale of province data",
+   "context": "<p>A table gives one value for each of the eight provinces of invented Country A: the share of adults who finished high school (invented data for practice).</p>",
+   "prompt": "<b>Identify</b> the scale of analysis of the data, and <b>explain</b> how you can tell.",
+   "checklist": [
+    "Names the local (subnational) scale of analysis",
+    "Ties it to the data: one value for each of the provinces",
+    "Does not use the size of the area covered as the reason"
+   ],
+   "earns": {
+    "answer": "The data are at the local scale (subnational), because each value in the table is for one province, not one number for the whole of Country A.",
+    "why": "It names the scale and gives the reason in the data: eight values, one per province."
+   },
+   "misses": {
+    "answer": "The national scale, because the table covers the whole of Country A.",
+    "why": "The table covers the country, but the scale of analysis is the level of the data, and these data are for provinces."
+   },
+   "specific": {
+    "slots": {
+     "scale": {
+      "label": "Scale of analysis",
+      "options": [
+       "the local (subnational) scale",
+       "the national scale",
+       "the global scale"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "National data would be one value for the whole country; this table has eight.",
+       "2": "Global data would compare countries of the world; this table is one country."
+      }
+     },
+     "evidence": {
+      "label": "How you can tell",
+      "options": [
+       "each value is for one province",
+       "the table covers the whole country",
+       "the table has eight rows"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the area covered, not the level of the data.",
+       "2": "Eight rows are the eight provinces; the point is that each is one province."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "geo-skills",
+   "id": "gs-read-the-classes",
+   "topic": "skills-reading",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading a chart's key",
+   "context": "<p>A bar chart shows the share of households with internet access at home in Province X of invented Country A. Its key says the dark bar is 2010 and the light bar is 2020. The dark bar reaches 30% and the light bar 75% (invented data for practice).</p>",
+   "prompt": "<b>Describe</b> the change the chart shows in Province X.",
+   "checklist": [
+    "Uses the key to say which bar is which year",
+    "Gives both values and the direction of change",
+    "Says how large the change is, in points or as a multiple"
+   ],
+   "earns": {
+    "answer": "Using the key, the dark bar is 2010 and the light bar 2020: the share of households with internet at home in Province X rose from 30% in 2010 to 75% in 2020, an increase of 45 percentage points, to two and a half times the share.",
+    "why": "It reads the key, gives both values in order and says how large the change is."
+   },
+   "misses": {
+    "answer": "The light bar is taller, so Province X has more internet now than it did before.",
+    "why": "It never reads the key or the values, so it cannot say when or how much the share changed."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "The dark bar",
+      "options": [
+       "2010, at 30%",
+       "2020, at 75%",
+       "2015, at 50%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The key says the light bar is 2020.",
+       "2": "The chart has no 2015 bar."
+      }
+     },
+     "trend": {
+      "label": "The change",
+      "options": [
+       "up 45 percentage points",
+       "down 45 percentage points",
+       "no change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The 2020 bar is taller, so the share rose.",
+       "2": "The two bars differ: 30% and 75%."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "geo-skills",
+   "id": "gs-explain-with-a-because",
+   "topic": "skills-frq",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Turning a fact into an explanation",
+   "context": "<p>A free-response part asks: \"Explain one reason a town might grow beside a large river.\"</p>",
+   "prompt": "<b>Write</b> an answer that would earn the point, with the link from the cause to the effect stated.",
+   "checklist": [
+    "Names a cause: what the river offers",
+    "States the link with because, so or which leads to",
+    "Ends at the effect asked for: the town grows bigger"
+   ],
+   "earns": {
+    "answer": "A large river is an easy route for boats, so goods can be shipped in and out cheaply, which brings trade and jobs to the town, and the town grows as people come for that work.",
+    "why": "It starts with what the river offers and links each step to the next until the town grows."
+   },
+   "misses": {
+    "answer": "Rivers give towns water and an easy route for boats and ships.",
+    "why": "It lists what rivers give but never says how that makes the town grow: the link is missing."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "the river is an easy route for boats",
+       "rivers are often beautiful",
+       "rivers flood in spring"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Beauty is not a reason the exam would credit for growth.",
+       "2": "Floods are a hazard that would slow growth, not a reason for it."
+      }
+     },
+     "link": {
+      "label": "Link",
+      "options": [
+       "so trade and jobs come to the town",
+       "rivers are found on most continents",
+       "the river has a name"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "True of rivers, but it does not tie the river to the town's growth.",
+       "2": "A name explains nothing about growth."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

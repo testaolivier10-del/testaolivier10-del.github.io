@@ -1,0 +1,84 @@
+{
+ "topic": "development-theories",
+ "hook": "In 1960, South Korea was one of the poorer countries in Asia, with most people farming. By the 2000s it built some of the world's ships, cars and phones. Over the same years, Zambia's earnings rose and fell with the price of copper. Is development a ladder every country can climb, or a system in which some places gain because others supply them? Three theories answer differently.",
+ "prereq": [
+  {
+   "q": "In world-system terms, what work is typical of the periphery?",
+   "options": [
+    "Raw materials and low-wage work",
+    "Research and head offices",
+    "Top government decisions",
+    "Software and finance"
+   ],
+   "correct": 0,
+   "why": "The periphery mostly supplies raw materials and low-wage labor.",
+   "review": "economic-sectors"
+  },
+  {
+   "q": "What is commodity dependence?",
+   "options": [
+    "Relying on one or a few raw exports",
+    "Buying goods from many countries",
+    "Growing food for your own family",
+    "Taxing goods that enter a country"
+   ],
+   "correct": 0,
+   "why": "Relying on one or a few raw exports ties earnings to world prices.",
+   "review": "global-agriculture"
+  },
+  {
+   "q": "Which model has stages of birth and death rates?",
+   "options": [
+    "The demographic transition model",
+    "Least cost theory",
+    "The gravity model",
+    "Bid-rent theory"
+   ],
+   "correct": 0,
+   "why": "The demographic transition model tracks birth and death rates; do not confuse it with Rostow's economic stages.",
+   "review": "transition-model"
+  }
+ ],
+ "figure": {
+  "figure": "development-theories-rostow",
+  "caption": "Rostow's five stages, climbed one at a time."
+ },
+ "chain": [
+  {
+   "cause": "Rostow assumes every country can invest and trade its way up",
+   "effect": "he sees five stages, from traditional society to high mass consumption"
+  },
+  {
+   "cause": "Colonial rule built economies that export raw materials to the core",
+   "effect": "dependency theory says the periphery stays poor because of those ties"
+  },
+  {
+   "cause": "The world forms one connected economy",
+   "effect": "world system theory sorts countries into core, semiperiphery and periphery, and lets them move"
+  },
+  {
+   "cause": "A country relies on one export, such as Zambia's copper",
+   "effect": "its earnings rise and fall with world prices (commodity dependence)"
+  }
+ ],
+ "ideas": [
+  "<b>Rostow's stages</b>: traditional society, preconditions for take-off, take-off, drive to maturity, high mass consumption. Limit: one Western path, no colonial history.",
+  "<b>World system theory</b> (Wallerstein): one world economy of <b>core</b>, <b>semiperiphery</b> and <b>periphery</b>; countries can move. Limit: tiers are hard to measure.",
+  "<b>Dependency theory</b>: the periphery is poor because of its dependence on the core, built by colonialism and unequal trade. Limit: East Asian growth through trade.",
+  "<b>Commodity dependence</b> ties a country to one export's price, as copper does for Zambia.",
+  "Never say a country \"is in\" a stage or tier as a fact: say its data are \"consistent with\" it."
+ ],
+ "misconception": {
+  "wrong": "Rostow's stages and the demographic transition model are the same thing.",
+  "right": "Both have stages, but Rostow's describe the economy (take-off, mass consumption) and the demographic transition model describes birth and death rates."
+ },
+ "check": [
+  "hug-development-theories-1",
+  "hug-development-theories-2",
+  "hug-development-theories-3",
+  "hug-development-theories-9",
+  "hug-development-theories-12",
+  "hug-development-theories-14"
+ ],
+ "summary": "Rostow's stages say every country can climb one path from traditional society to high mass consumption. World system theory sees one world economy of core, semiperiphery and periphery. Dependency theory blames the periphery's poverty on its ties to the core. Commodity dependence ties a country to one export's price. Each model has assumptions and limits."
+}

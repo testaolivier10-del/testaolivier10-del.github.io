@@ -1,0 +1,8 @@
+{
+ "aging-population": {
+  "def": "A population in which older people make up a rising share, caused by low birth rates and longer lives."
+ },
+ "dependency-ratio": {
+  "def": "The number of people under 15 and 65 and over for every 100 people aged 15 to 64. The youth and elderly ratios count each group alone."
+ }
+}

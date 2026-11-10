@@ -1,0 +1,1823 @@
+{
+ "about": "Topic map of the AP Human Geography Course and Exam Description (effective fall 2020, unchanged for 2026-27), written in LevlPrep's own words from docs/aphug-research/framework.md. Every topic title is official (Course at a Glance and its printable poster). Objectives and knowledge are our summaries; for 4.9 to 7.8 the essential knowledge was read through a paraphrasing tool and is marked in source. No CED text is reproduced.",
+ "ced": {
+  "title": "AP Human Geography Course and Exam Description",
+  "edition": "Effective Fall 2020 (V.1), 7 units, 68 topics; the June 2026 clarifications touch only front matter, resource links and Progress Check wording",
+  "effective": "Fall 2020; exam May 2027",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-and-exam-description-clarifications.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-human-geography-course-at-a-glance.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-human-geography/exam",
+   "https://apstudents.collegeboard.org/courses/ap-human-geography"
+  ],
+  "verification": "All 68 titles from the Course at a Glance and its printable poster (framework.md section 2); essential knowledge 1.1-4.8 from a direct text extract of the CED, 4.9-7.8 from a paraphrasing parse of the same PDF (needs-author ced-text)."
+ },
+ "bigIdeas": [
+  {
+   "id": "PSO",
+   "name": "Patterns and Spatial Organization",
+   "summary": "How things are arranged in space and why."
+  },
+  {
+   "id": "IMP",
+   "name": "Impacts and Interactions",
+   "summary": "How people and places affect one another."
+  },
+  {
+   "id": "SPS",
+   "name": "Spatial Processes and Societal Change",
+   "summary": "How processes unfold across space and change societies."
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Concepts and Processes",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C",
+    "1.D",
+    "1.E"
+   ],
+   "mcqWeight": [
+    25,
+    36
+   ],
+   "frqWeight": [
+    23,
+    29
+   ],
+   "skillNames": {
+    "1.A": "Describe geographic concepts, processes, models and theories",
+    "1.B": "Explain geographic concepts, processes, models and theories",
+    "1.C": "Compare geographic concepts, processes, models and theories",
+    "1.D": "Describe a concept, process, model or theory in a specified context",
+    "1.E": "Explain the strengths, weaknesses and limitations of models and theories"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Spatial Relationships",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E"
+   ],
+   "mcqWeight": [
+    16,
+    25
+   ],
+   "frqWeight": [
+    33,
+    43
+   ],
+   "skillNames": {
+    "2.A": "Describe spatial patterns, networks and relationships",
+    "2.B": "Explain spatial relationships in a specified context or region",
+    "2.C": "Explain the likely outcome of a geographic scenario",
+    "2.D": "Explain the significance of similarities and differences among places, times or regions",
+    "2.E": "Explain how well a model or theory fits different contexts"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Data Analysis",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E",
+    "3.F"
+   ],
+   "mcqWeight": [
+    13,
+    20
+   ],
+   "frqWeight": [
+    10,
+    19
+   ],
+   "skillNames": {
+    "3.A": "Identify the data in maps and in quantitative and geospatial sources",
+    "3.B": "Describe spatial patterns and trends in data",
+    "3.C": "Explain patterns and trends in data to draw conclusions",
+    "3.D": "Compare patterns and trends in data",
+    "3.E": "Explain what maps or data imply or illustrate",
+    "3.F": "Explain possible limitations of the data"
+   }
+  },
+  {
+   "id": 4,
+   "name": "Source Analysis",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E",
+    "4.F"
+   ],
+   "mcqWeight": [
+    13,
+    20
+   ],
+   "frqWeight": [
+    10,
+    19
+   ],
+   "skillNames": {
+    "4.A": "Identify the content of a visual source (map, image, landscape)",
+    "4.B": "Describe spatial patterns in a visual source",
+    "4.C": "Explain patterns in a visual source to draw conclusions",
+    "4.D": "Compare patterns in visual sources",
+    "4.E": "Explain what a visual source implies or illustrates",
+    "4.F": "Explain possible limitations of a visual source"
+   }
+  },
+  {
+   "id": 5,
+   "name": "Scale Analysis",
+   "skills": [
+    "5.A",
+    "5.B",
+    "5.C",
+    "5.D"
+   ],
+   "mcqWeight": [
+    13,
+    20
+   ],
+   "frqWeight": [
+    10,
+    14
+   ],
+   "skillNames": {
+    "5.A": "Identify the scale of analysis in a source",
+    "5.B": "Explain spatial relationships across scales",
+    "5.C": "Compare patterns and processes at different scales",
+    "5.D": "Explain how well a model works at different scales"
+   }
+  }
+ ],
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Thinking Geographically",
+   "weight": "8-10%",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "views-of-the-world",
+     "title": "Introduction to Maps",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.A",
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Describe the types of maps, the information they show and how every projection distorts the earth."
+     ],
+     "knowledge": [
+      "Reference maps show where things are; thematic maps show a pattern of one topic.",
+      "Maps show absolute and relative distance and direction, clustering, dispersal and elevation, and every map chooses what to show.",
+      "Every map projection distorts shape, area, distance or direction."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.2",
+     "slug": "data-sources",
+     "title": "Geographic Data",
+     "bigIdea": "IMP",
+     "skills": [
+      "3.A",
+      "4.A"
+     ],
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Identify the kinds of geographic data and the tools that gather and show them."
+     ],
+     "knowledge": [
+      "Field data come from organizations and individuals; geospatial tools include GIS, satellite navigation, remote sensing and online mapping.",
+      "Written and qualitative sources (field notes, media, travel accounts, policy documents, interviews, landscape analysis, photo interpretation) are data too."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.3",
+     "slug": "data-in-decisions",
+     "title": "The Power of Geographic Data",
+     "bigIdea": "IMP",
+     "skills": [
+      "3.B",
+      "3.E",
+      "3.F"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Explain how geographic data inform decisions at every scale."
+     ],
+     "knowledge": [
+      "Census data and satellite imagery inform personal, business and government decisions at every scale."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.4",
+     "slug": "spatial-concepts",
+     "title": "Spatial Concepts",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Define the spatial concepts geographers use to describe where things are and how they connect."
+     ],
+     "knowledge": [
+      "Absolute and relative location, space, place, flows, distance decay, time-space compression and pattern."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.5",
+     "slug": "human-environment",
+     "title": "Human-Environmental Interaction",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.B",
+      "1.C",
+      "1.E"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how people and the environment shape each other, and the shift from determinism to possibilism."
+     ],
+     "knowledge": [
+      "Sustainability, natural resources and land use.",
+      "Geographic thought moved from environmental determinism to possibilism."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.6",
+     "slug": "scales-of-analysis",
+     "title": "Scales of Analysis",
+     "bigIdea": "PSO",
+     "skills": [
+      "5.A",
+      "5.B",
+      "5.C"
+     ],
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Explain how a pattern looks and is read differently at global, regional, national and local scales."
+     ],
+     "knowledge": [
+      "Scales of analysis are global, regional, national and local.",
+      "A pattern can look different, and mean something different, at another scale."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "1.7",
+     "slug": "regional-analysis",
+     "title": "Regional Analysis",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.A",
+      "2.A",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      2,
+      5
+     ],
+     "objectives": [
+      "Describe the three kinds of region and why regional boundaries are often transitional and contested."
+     ],
+     "knowledge": [
+      "Regions rest on shared traits or patterns of activity: formal, functional and perceptual (vernacular).",
+      "Regional boundaries are transitional, often contested and overlapping, and regions are studied at local, national and global scales."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Population and Migration Patterns and Processes",
+   "weight": "12-17%",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "population-distribution",
+     "title": "Population Distribution",
+     "bigIdea": "PSO",
+     "skills": [
+      "2.A",
+      "2.B",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain the physical and human factors that shape where people live, and how they change with scale."
+     ],
+     "knowledge": [
+      "Physical and human factors shape population distribution, and which matter most depends on the scale."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.2",
+     "slug": "distribution-consequences",
+     "title": "Consequences of Population Distribution",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.A",
+      "3.C",
+      "3.D"
+     ],
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Compare arithmetic, physiological and agricultural density and explain what each says about pressure on the land."
+     ],
+     "knowledge": [
+      "Arithmetic, physiological and agricultural density measure population against land in different ways.",
+      "Distribution and density affect services, society and the environment.",
+      "Carrying capacity is how many people an area can support."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.3",
+     "slug": "population-composition",
+     "title": "Population Composition",
+     "bigIdea": "PSO",
+     "skills": [
+      "3.A",
+      "3.B",
+      "3.E"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Read a population pyramid and explain what it shows about growth, decline and future needs."
+     ],
+     "knowledge": [
+      "Age structure and sex ratio describe a population.",
+      "Population pyramids show growth, decline and future needs."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.4",
+     "slug": "population-dynamics",
+     "title": "Population Dynamics",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.B",
+      "3.C",
+      "3.E"
+     ],
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Explain how fertility, mortality and migration change a population, and compute RNI and doubling time."
+     ],
+     "knowledge": [
+      "Fertility, mortality and migration change a population.",
+      "The rate of natural increase and doubling time measure growth.",
+      "Social, cultural, political and economic forces shape fertility and mortality."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.5",
+     "slug": "transition-model",
+     "title": "The Demographic Transition Model",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.D",
+      "1.E",
+      "2.E"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the demographic and epidemiological transition models and how well they fit different places."
+     ],
+     "knowledge": [
+      "The demographic transition model describes birth and death rates falling in sequence as a society changes (five stages taught).",
+      "The epidemiological transition describes the main causes of death shifting from infectious disease to chronic and human-made causes."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.6",
+     "slug": "malthusian-theory",
+     "title": "Malthusian Theory",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.D",
+      "1.E"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain Malthus's theory of population and food and its critiques."
+     ],
+     "knowledge": [
+      "Malthus argued that population grows faster than food, so checks follow; critics point to technology, falling fertility and the distribution of food."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.7",
+     "slug": "population-policies",
+     "title": "Population Policies",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.D",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the intent and effects of pronatalist, antinatalist and immigration policies."
+     ],
+     "knowledge": [
+      "Pronatalist, antinatalist and immigration policies try to change a population, with intended and unintended effects."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.8",
+     "slug": "women-population-change",
+     "title": "Women and Demographic Change",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how changing roles for women affect fertility, mortality and migration."
+     ],
+     "knowledge": [
+      "More education, jobs, health care and contraception for women lower fertility in most places.",
+      "Changing roles for women also affect mortality and migration (Ravenstein's laws)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.9",
+     "slug": "aging-populations",
+     "title": "Aging Populations",
+     "bigIdea": "SPS",
+     "skills": [
+      "2.C",
+      "3.E"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain the causes of an aging population and its political, social and economic effects."
+     ],
+     "knowledge": [
+      "Aging comes from birth rates, death rates and life expectancy.",
+      "An aging population has political, social and economic effects, measured in part by the dependency ratio."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.10",
+     "slug": "migration-causes",
+     "title": "Causes of Migration",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain push and pull factors and the opportunities and obstacles between places."
+     ],
+     "knowledge": [
+      "Push and pull factors, and intervening opportunities and obstacles, shape migration.",
+      "Causes are cultural, demographic, economic, environmental and political."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.11",
+     "slug": "forced-voluntary-migration",
+     "title": "Forced and Voluntary Migration",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.A",
+      "1.C"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Compare forced and voluntary migration and name their types."
+     ],
+     "knowledge": [
+      "Forced migration includes slavery, refugees, internally displaced persons and asylum seekers.",
+      "Voluntary migration includes transnational, transhumance, internal, chain, step, guest worker and rural-to-urban moves."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "2.12",
+     "slug": "migration-effects",
+     "title": "Effects of Migration",
+     "bigIdea": "IMP",
+     "skills": [
+      "2.C",
+      "2.D"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Explain the political, economic and cultural effects of migration, past and present."
+     ],
+     "knowledge": [
+      "Migration has political, economic and cultural effects on places of origin and destination."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Cultural Patterns and Processes",
+   "weight": "12-17%",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "culture-intro",
+     "title": "Introduction to Culture",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Define culture and cultural traits, and compare cultural relativism with ethnocentrism."
+     ],
+     "knowledge": [
+      "Culture is the shared practices, technologies, attitudes and behaviors a group passes on.",
+      "Culture traits include food, architecture and land use.",
+      "Cultural relativism judges a culture by its own standards; ethnocentrism by one's own."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.2",
+     "slug": "culture-on-the-land",
+     "title": "Cultural Landscapes",
+     "bigIdea": "PSO",
+     "skills": [
+      "4.A",
+      "4.B",
+      "4.C"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Describe the cultural landscape and how attitudes to ethnicity and gender shape space."
+     ],
+     "knowledge": [
+      "The cultural landscape combines physical features with farming, industry, religious and linguistic marks, sequent occupance, traditional and postmodern architecture and land use.",
+      "Attitudes to ethnicity and gender, ethnic neighborhoods and Indigenous communities and lands shape places."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.3",
+     "slug": "cultural-patterns",
+     "title": "Cultural Patterns",
+     "bigIdea": "PSO",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Explain how regional patterns of language, religion and ethnicity create a sense of place and unite or divide."
+     ],
+     "knowledge": [
+      "Regional patterns of language, religion and ethnicity give a sense of place and placemaking.",
+      "These patterns act as centripetal and centrifugal forces."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.4",
+     "slug": "diffusion-types",
+     "title": "Types of Diffusion",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.A",
+      "1.D",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe relocation and expansion diffusion and the three kinds of expansion diffusion."
+     ],
+     "knowledge": [
+      "Relocation diffusion spreads a trait as people move; expansion diffusion spreads it while it stays in the hearth.",
+      "Expansion diffusion is contagious, hierarchical or stimulus."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.5",
+     "slug": "diffusion-history",
+     "title": "Historical Causes of Diffusion",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.D"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how colonialism, imperialism and trade spread culture and created new forms."
+     ],
+     "knowledge": [
+      "Local traits meeting global forces create new forms, such as creolization and a lingua franca.",
+      "Colonialism, imperialism and trade shaped cultural patterns."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.6",
+     "slug": "diffusion-today",
+     "title": "Contemporary Causes of Diffusion",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how globalization, media and technology spread culture and drive convergence and divergence."
+     ],
+     "knowledge": [
+      "Culture changes through urbanization and globalization, spread by media, technology, politics, economics and social ties.",
+      "Communication technology and time-space convergence spread English, threaten Indigenous languages and drive cultural convergence and divergence."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.7",
+     "slug": "religion-language-diffusion",
+     "title": "Diffusion of Religion and Language",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.C",
+      "3.B",
+      "4.B"
+     ],
+     "practices": [
+      1,
+      3,
+      4
+     ],
+     "objectives": [
+      "Explain how languages and religions spread from their hearths, and compare universalizing and ethnic religions."
+     ],
+     "knowledge": [
+      "Language families, languages, dialects, religions, ethnic cultures and gender roles spread from hearths, shown on maps, in charts and in toponyms.",
+      "Universalizing religions (Christianity, Islam, Buddhism, Sikhism) spread by expansion and relocation; ethnic religions (Hinduism, Judaism) mostly stay near the hearth or spread by relocation."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "3.8",
+     "slug": "diffusion-effects",
+     "title": "Effects of Diffusion",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.C",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Compare acculturation, assimilation, syncretism and multiculturalism."
+     ],
+     "knowledge": [
+      "Acculturation, assimilation, syncretism and multiculturalism are effects of diffusion."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Political Patterns and Processes",
+   "weight": "12-17%",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "political-intro",
+     "title": "Introduction to Political Geography",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.A",
+      "1.C"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Define states, nations and nation-states and compare multinational states, multistate nations and stateless nations."
+     ],
+     "knowledge": [
+      "Independent states are the basic unit of the political map.",
+      "Nations, nation-states, stateless nations, multinational states, multistate nations and autonomous and semiautonomous regions (such as American Indian reservations)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.2",
+     "slug": "political-processes",
+     "title": "Political Processes",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.B",
+      "2.D"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how sovereignty, self-determination, colonialism and independence movements shaped today's boundaries."
+     ],
+     "knowledge": [
+      "Sovereignty, nation-states and self-determination.",
+      "Colonialism, imperialism, independence movements and devolution shaped today's boundaries."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.3",
+     "slug": "power-territoriality",
+     "title": "Political Power and Territoriality",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how power over people, land and resources works, and define territoriality."
+     ],
+     "knowledge": [
+      "Power is control over people, land and resources: neocolonialism, shatterbelts, choke points.",
+      "Territoriality ties people, culture and economy to land."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.4",
+     "slug": "defining-boundaries",
+     "title": "Defining Political Boundaries",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.A",
+      "4.B"
+     ],
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Identify the six boundary types and the history each records."
+     ],
+     "knowledge": [
+      "Boundary types: relict, superimposed, subsequent, antecedent, geometric, consequent."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.5",
+     "slug": "boundary-functions",
+     "title": "The Function of Political Boundaries",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how boundaries are defined, delimited, demarcated and administered, and the zones of the law of the sea."
+     ],
+     "knowledge": [
+      "Boundaries are defined, delimited, demarcated and administered, and are often disputed.",
+      "Boundaries can follow cultural, national or economic lines, or be set by demilitarized zones or policy (the Berlin Conference).",
+      "UNCLOS sets territorial seas, exclusive economic zones and international waters."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.6",
+     "slug": "internal-boundaries",
+     "title": "Internal Boundaries",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.B",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Explain how voting districts, redistricting and gerrymandering affect elections at several scales."
+     ],
+     "knowledge": [
+      "Voting districts, redistricting and gerrymandering affect elections at several scales."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.7",
+     "slug": "forms-of-governance",
+     "title": "Forms of Governance",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.C",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Compare unitary and federal states and how each spreads or centralizes power."
+     ],
+     "knowledge": [
+      "Unitary states concentrate power in the national government; federal states share it with regional governments."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.8",
+     "slug": "devolution-factors",
+     "title": "Defining Devolutionary Factors",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the physical, cultural, economic and political factors that drive devolution."
+     ],
+     "knowledge": [
+      "Devolution factors: physical division, ethnic separatism, ethnic cleansing, terrorism, economic and social problems, irredentism."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills)"
+    },
+    {
+     "id": "4.9",
+     "slug": "sovereignty-challenges",
+     "title": "Challenges to Sovereignty",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Explain how devolution and supranational organizations challenge state sovereignty."
+     ],
+     "knowledge": [
+      "Devolution can create autonomous regions (Spain, Belgium, Canada, Nigeria named) or break a state up (Sudan, the former Soviet Union named).",
+      "Global problems, economies of scale, trade agreements and alliances drive supranationalism; the UN, NATO, EU, ASEAN, Arctic Council and African Union can limit members' sovereignty."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "4.10",
+     "slug": "centrifugal-centripetal",
+     "title": "Consequences of Centrifugal and Centripetal Forces",
+     "bigIdea": "SPS",
+     "skills": [
+      "2.C",
+      "2.D"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Explain the outcomes of centrifugal and centripetal forces for a state."
+     ],
+     "knowledge": [
+      "Centrifugal forces can lead to failed states, uneven development, stateless nations and ethnic nationalist movements.",
+      "Centripetal forces can lead to ethnonationalism, fairer infrastructure and cultural cohesion."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Agriculture and Rural Land-Use Patterns and Processes",
+   "weight": "12-17%",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "agriculture-intro",
+     "title": "Introduction to Agriculture",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how climate shapes farming and compare intensive and extensive agriculture."
+     ],
+     "knowledge": [
+      "Climate and environment shape farming practices (Mediterranean and tropical named).",
+      "Intensive farming (market gardening, plantation, mixed crop and livestock) and extensive farming (shifting cultivation, nomadic herding, ranching)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.2",
+     "slug": "settlement-survey",
+     "title": "Settlement Patterns and Survey Methods",
+     "bigIdea": "PSO",
+     "skills": [
+      "4.A",
+      "4.B"
+     ],
+     "practices": [
+      4
+     ],
+     "objectives": [
+      "Describe clustered, dispersed and linear settlement and the three land survey methods."
+     ],
+     "knowledge": [
+      "Farming shapes rural settlement: clustered, dispersed, linear.",
+      "Survey methods: metes and bounds, township and range, long lot."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.3",
+     "slug": "agricultural-origins",
+     "title": "Agricultural Origins and Diffusions",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.D"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain where farming began and how the Columbian Exchange spread plants and animals."
+     ],
+     "knowledge": [
+      "Hearths of domestication include the Fertile Crescent, the Indus River valley, Southeast Asia and Central America.",
+      "The Columbian Exchange and agricultural revolutions spread plants and animals."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.4",
+     "slug": "second-agricultural-revolution",
+     "title": "The Second Agricultural Revolution",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.D"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how the Second Agricultural Revolution changed food supply, diets and work."
+     ],
+     "knowledge": [
+      "New technology raised food output, improved diets and lengthened lives, and freed labor for factories."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.5",
+     "slug": "green-revolution",
+     "title": "The Green Revolution",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.E",
+      "2.D"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the Green Revolution's technologies and its positive and negative effects."
+     ],
+     "knowledge": [
+      "High-yield seeds, more chemical fertilizer and pesticide, and mechanization.",
+      "Positive and negative effects on people and the environment."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.6",
+     "slug": "production-regions",
+     "title": "Agricultural Production Regions",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.C",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Compare subsistence and commercial farming and explain bid-rent theory's role in land use."
+     ],
+     "knowledge": [
+      "Subsistence versus commercial agriculture (monocropping, monoculture).",
+      "Land cost and bid-rent theory help explain where farming is intensive or extensive."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.7",
+     "slug": "farm-organization",
+     "title": "Spatial Organization of Agriculture",
+     "bigIdea": "PSO",
+     "skills": [
+      "2.B",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain how large commercial operations, commodity chains and technology reorganize farming."
+     ],
+     "knowledge": [
+      "Large commercial operations are replacing family farms.",
+      "Commodity chains link production to consumption; technology raises economies of scale and carrying capacity."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.8",
+     "slug": "von-thunen",
+     "title": "Von Thünen Model",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.D",
+      "1.E",
+      "2.E"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the von Thünen model of rural land use and where real places break its rings."
+     ],
+     "knowledge": [
+      "The von Thünen model explains rural land use by the cost of transport to one market.",
+      "Specialty farming regions often break the rings."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.9",
+     "slug": "global-agriculture",
+     "title": "The Global System of Agriculture",
+     "bigIdea": "PSO",
+     "skills": [
+      "2.B",
+      "3.C"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain global supply chains, commodity dependence and what shapes food distribution."
+     ],
+     "knowledge": [
+      "Global supply chains; dependence on one or a few export commodities.",
+      "Food distribution is shaped by politics, infrastructure and trade."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.10",
+     "slug": "agriculture-consequences",
+     "title": "Consequences of Agricultural Practices",
+     "bigIdea": "IMP",
+     "skills": [
+      "2.C",
+      "4.B"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Explain the environmental and social effects of farming practices."
+     ],
+     "knowledge": [
+      "Environmental effects: pollution, land cover change, desertification, salinization, conservation.",
+      "Practices that change landscapes: slash and burn, terraces, irrigation, deforestation, draining wetlands, shifting cultivation, pastoral nomadism.",
+      "Social effects on diets, women's roles and economic purpose."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.11",
+     "slug": "agriculture-challenges",
+     "title": "Challenges of Contemporary Agriculture",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.E",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the debates over biotechnology, food choices and feeding the world."
+     ],
+     "knowledge": [
+      "Debates over biotechnology, GMOs and aquaculture.",
+      "Food-choice movements: urban farming, community-supported agriculture, organic, value-added specialty crops, fair trade, local food, dietary shifts.",
+      "Feeding the world: food insecurity, food deserts, distribution, weather, farmland lost to suburbs."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "5.12",
+     "slug": "women-in-agriculture",
+     "title": "Women in Agriculture",
+     "bigIdea": "IMP",
+     "skills": [
+      "2.B",
+      "3.D"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain how women's roles in food production, distribution and consumption vary by place."
+     ],
+     "knowledge": [
+      "Women's roles in producing, distributing and consuming food vary by place and type of farming."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "id": "unit-6",
+   "title": "Cities and Urban Land-Use Patterns and Processes",
+   "weight": "12-17%",
+   "topics": [
+    {
+     "id": "6.1",
+     "slug": "urbanization-origins",
+     "title": "The Origin and Influences of Urbanization",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how site and situation shape cities, and what drives urbanization."
+     ],
+     "knowledge": [
+      "Site and situation shape where cities start, what they do and how they grow.",
+      "Transport, communication, population growth, migration, development and policy drive urbanization."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.2",
+     "slug": "cities-worldwide",
+     "title": "Cities Across the World",
+     "bigIdea": "PSO",
+     "skills": [
+      "2.A",
+      "3.B"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe megacities and metacities and explain suburbanization, sprawl and edge cities."
+     ],
+     "knowledge": [
+      "Megacities and metacities, more and more in periphery and semiperiphery countries.",
+      "Suburbanization, sprawl and decentralization produce edge cities, exurbs and boomburbs."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.3",
+     "slug": "cities-globalization",
+     "title": "Cities and Globalization",
+     "bigIdea": "PSO",
+     "skills": [
+      "2.B",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain how world cities top the urban hierarchy and connect the world economy."
+     ],
+     "knowledge": [
+      "World cities top the urban hierarchy and drive globalization; networks of cities link global processes."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.4",
+     "slug": "city-size-distribution",
+     "title": "The Size and Distribution of Cities",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.D",
+      "1.E",
+      "3.C"
+     ],
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Explain the rank-size rule, primate cities, the gravity model and central place theory."
+     ],
+     "knowledge": [
+      "The rank-size rule, the primate city, the gravity model and Christaller's central place theory."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.5",
+     "slug": "city-structure",
+     "title": "The Internal Structure of Cities",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.D",
+      "2.E",
+      "4.C"
+     ],
+     "practices": [
+      1,
+      2,
+      4
+     ],
+     "objectives": [
+      "Compare the urban models and explain how well each fits a real city."
+     ],
+     "knowledge": [
+      "The Burgess concentric zone, Hoyt sector, Harris and Ullman multiple nuclei and galactic city models, bid-rent, and urban models drawn from Latin America, Southeast Asia and Africa."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.6",
+     "slug": "density-land-use",
+     "title": "Density and Land Use",
+     "bigIdea": "IMP",
+     "skills": [
+      "2.B",
+      "4.B"
+     ],
+     "practices": [
+      2,
+      4
+     ],
+     "objectives": [
+      "Explain how housing and land use reflect culture, technology and cycles of development."
+     ],
+     "knowledge": [
+      "Housing and land use reflect and shape culture, technology and cycles of development, including infilling."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.7",
+     "slug": "infrastructure",
+     "title": "Infrastructure",
+     "bigIdea": "IMP",
+     "skills": [
+      "2.B",
+      "2.C"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Explain how the location and quality of infrastructure shape development."
+     ],
+     "knowledge": [
+      "The location and quality of infrastructure shape patterns of economic and social development."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.8",
+     "slug": "urban-sustainability",
+     "title": "Urban Sustainability",
+     "bigIdea": "IMP",
+     "skills": [
+      "1.E",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain smart growth and the praise and criticism it draws."
+     ],
+     "knowledge": [
+      "Mixed use, walkability, transit-oriented development and smart growth (New Urbanism, greenbelts, slow-growth cities).",
+      "Praise (less sprawl, walkability, housing choice, livability) and criticism (higher housing costs, possible de facto segregation, loss of historic character)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.9",
+     "slug": "urban-data",
+     "title": "Urban Data",
+     "bigIdea": "IMP",
+     "skills": [
+      "3.A",
+      "3.F"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Compare what quantitative and qualitative data show about urban change."
+     ],
+     "knowledge": [
+      "Quantitative census and survey data on urban population; qualitative field studies and narratives on attitudes to change."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.10",
+     "slug": "urban-change-challenges",
+     "title": "Challenges of Urban Changes",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain housing discrimination, urban renewal and gentrification and their effects."
+     ],
+     "knowledge": [
+      "Housing problems (redlining, blockbusting, affordability), access to services, crime, environmental injustice, disamenity zones or zones of abandonment.",
+      "Squatter settlements and land tenure conflicts; responses such as inclusionary zoning and local food.",
+      "Urban renewal and gentrification help and harm; fragmented local government."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "6.11",
+     "slug": "sustainability-challenges",
+     "title": "Challenges of Urban Sustainability",
+     "bigIdea": "SPS",
+     "skills": [
+      "2.C",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain the environmental problems of cities and the responses to them."
+     ],
+     "knowledge": [
+      "Sprawl, sanitation, climate change, air and water quality, ecological footprint and energy use.",
+      "Responses: regional planning, brownfield cleanup, urban growth boundaries, farmland protection."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "id": "unit-7",
+   "title": "Industrial and Economic Development Patterns and Processes",
+   "weight": "12-17%",
+   "topics": [
+    {
+     "id": "7.1",
+     "slug": "industrial-revolution",
+     "title": "The Industrial Revolution",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.B",
+      "2.D"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how industrialization began and changed food supply, cities, classes and the search for resources."
+     ],
+     "knowledge": [
+      "Industrialization came from new technology plus resources; it raised food output and population and drew workers to urban factories, with new class structures.",
+      "The search for raw materials and markets fed colonialism and imperialism."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "7.2",
+     "slug": "economic-sectors",
+     "title": "Economic Sectors and Patterns",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe the economic sectors and explain what decides where factories locate."
+     ],
+     "knowledge": [
+      "Primary, secondary, tertiary, quaternary and quinary sectors.",
+      "Manufacturing location depends on labor, transport (shipping containers), break-of-bulk points, least cost theory, markets and resources; core, semiperiphery and periphery."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "7.3",
+     "slug": "development-measures",
+     "title": "Measures of Development",
+     "bigIdea": "SPS",
+     "skills": [
+      "3.A",
+      "3.C",
+      "3.F"
+     ],
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Explain the measures of development and what each shows and hides."
+     ],
+     "knowledge": [
+      "GDP, GNP and GNI per capita; the formal and informal sectors; income distribution; fertility, infant mortality, access to health care, energy use and literacy.",
+      "The Gender Inequality Index (reproductive health, empowerment, labor participation); the Human Development Index as a composite."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "7.4",
+     "slug": "women-development",
+     "title": "Women and Economic Development",
+     "bigIdea": "SPS",
+     "skills": [
+      "2.B",
+      "3.D"
+     ],
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain how women's roles change with development and why microloans matter."
+     ],
+     "knowledge": [
+      "Women's roles change with development; more women work, but without equal pay or opportunity.",
+      "Microloans and small businesses."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "7.5",
+     "slug": "development-theories",
+     "title": "Theories of Development",
+     "bigIdea": "SPS",
+     "skills": [
+      "1.C",
+      "1.E",
+      "2.E"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Compare Rostow, world system theory, dependency theory and commodity dependence, and their limits."
+     ],
+     "knowledge": [
+      "Rostow's stages of economic growth, Wallerstein's world system theory, dependency theory and commodity dependence."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "7.6",
+     "slug": "trade-world-economy",
+     "title": "Trade and the World Economy",
+     "bigIdea": "PSO",
+     "skills": [
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain complementarity, comparative advantage and how trade agreements and debt link the world economy."
+     ],
+     "knowledge": [
+      "Complementarity and comparative advantage.",
+      "Neoliberal policy and trading blocs (EU, WTO, Mercosur, OPEC named); tariffs and government initiatives at every scale; debt crises, the IMF and microlending show interdependence."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "7.7",
+     "slug": "world-economy-changes",
+     "title": "Changes as a Result of the World Economy",
+     "bigIdea": "PSO",
+     "skills": [
+      "2.B",
+      "2.C"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Explain outsourcing, special economic zones, post-Fordism and agglomeration."
+     ],
+     "knowledge": [
+      "Outsourcing and restructuring move jobs from the core to newly industrialized countries.",
+      "Special economic zones, free-trade zones and export-processing zones; the international division of labor.",
+      "Post-Fordism, multiplier effects, economies of scale, agglomeration, just-in-time delivery, growth of services and high tech, growth poles."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    },
+    {
+     "id": "7.8",
+     "slug": "sustainable-development",
+     "title": "Sustainable Development",
+     "bigIdea": "IMP",
+     "skills": [
+      "2.C",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain sustainable development, ecotourism and the UN Sustainable Development Goals."
+     ],
+     "knowledge": [
+      "Sustainable development faces resource depletion, mass consumption, pollution and climate change.",
+      "Ecotourism; the UN Sustainable Development Goals."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge in our words from docs/aphug-research/framework.md section 3; focus skills ours (needs-author topic-skills) Essential knowledge read through a paraphrasing tool (needs-author ced-text)."
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "skills-reading",
+   "title": "Reading Maps and Data",
+   "before": "views-of-the-world",
+   "skills": [
+    "3.A",
+    "3.B",
+    "4.A"
+   ],
+   "practices": [
+    3,
+    4
+   ],
+   "objectives": [
+    "Read a map's legend, scale and source, and a table or chart's units, before answering."
+   ],
+   "knowledge": [
+    "Read the title, legend, units and source of a map, table or chart first.",
+    "Name a pattern with a place: where it is high, where it is low.",
+    "Say what a source cannot show."
+   ]
+  },
+  {
+   "slug": "skills-scale",
+   "title": "Scale of Analysis and Map Scale",
+   "before": "views-of-the-world",
+   "skills": [
+    "5.A"
+   ],
+   "practices": [
+    5
+   ],
+   "objectives": [
+    "Tell scale of analysis apart from map scale and identify each in a source."
+   ],
+   "knowledge": [
+    "Map (cartographic) scale is the ratio of map distance to ground distance; a large-scale map shows a small area in detail.",
+    "Scale of analysis is the level of the data (global, regional, national, local), not the size of the area drawn."
+   ]
+  },
+  {
+   "slug": "skills-frq",
+   "title": "How FRQs Are Scored and What Each Task Verb Demands",
+   "before": "views-of-the-world",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "objectives": [
+    "Know what identify, define, describe, explain, compare and explain the degree each demand."
+   ],
+   "knowledge": [
+    "Each of the three free-response questions has seven one-point parts, A to G.",
+    "Identify names; describe gives characteristics; explain gives a cause and effect with every link; compare speaks of both sides; explain the degree states a degree, then justifies it."
+   ]
+  }
+ ],
+ "topicCount": 68,
+ "topicCountByUnit": {
+  "1": 7,
+  "2": 12,
+  "3": 8,
+  "4": 10,
+  "5": 12,
+  "6": 11,
+  "7": 8
+ },
+ "exam": {
+  "date2027": "2027-05-03",
+  "day": "Monday",
+  "session": "Session 1 (morning)",
+  "totalTime": "2 h 15 min",
+  "delivery": "Fully digital in Bluebook; free responses typed.",
+  "mcq": {
+   "questions": 60,
+   "minutes": 60,
+   "weight": "50%",
+   "options": 5,
+   "bankOptions": 4,
+   "optionsSource": "five (A-E) in the CED sample questions; not confirmed for the digital exam (needs-author mcq-options). Exam forms use five, the bank four (as AP Macroeconomics)",
+   "stimulusShare": "about 30-40% with a stimulus (maps, tables, charts, images, text), some in sets"
+  },
+  "frq": {
+   "questions": 3,
+   "minutes": 75,
+   "weight": "50%",
+   "pointsEach": 7,
+   "rawPoints": 21,
+   "partsEach": 7,
+   "order": [
+    "none",
+    "one",
+    "two"
+   ],
+   "types": {
+    "none": "Q1, no stimulus, parts A-G, one point each",
+    "one": "Q2, one stimulus (data, image or map), parts A-G",
+    "two": "Q3, two stimuli (data, images and/or maps), parts A-G"
+   },
+   "scale": "at least two of the three assess analysis across scales (CED; the exam page says at least one)"
+  },
+  "calculator": "None.",
+  "reference": "No formula sheet."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "forms-of-governance-power": {
+  "file": "figures/forms-of-governance-power.svg",
+  "ext": "svg",
+  "w": 480,
+  "h": 335,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two diagrams side by side. Unitary state (example France): the national government at the top sends arrows down to three regions, which carry out national decisions. Federal state (example Germany): a constitution divides the powers between the national government (army, money) and the state governments (schools, police), so each level has its own powers. A note says both have a national government; what differs is how power is shared across space."
+ }
+}

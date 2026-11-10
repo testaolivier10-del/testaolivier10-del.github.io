@@ -1,0 +1,67 @@
+{
+ "topic": "scales-of-analysis",
+ "hook": "On a world map shaded by country, India has one color. Yet incomes in the state of Goa are many times those in the state of Bihar, and within the city of Mumbai, high-rise towers stand beside crowded neighborhoods of small homes. Every one of these pictures is true. Each is the same country seen at a different scale, and each answers a different question.",
+ "prereq": [
+  {
+   "q": "A map of one country is shaded by province. What is the scale of analysis?",
+   "options": [
+    "Local (subnational)",
+    "National",
+    "Regional",
+    "Global"
+   ],
+   "correct": 0,
+   "why": "Each value describes a province, part of the country.",
+   "review": "skills-scale"
+  },
+  {
+   "q": "What is a limitation of one value for a whole city?",
+   "options": [
+    "It hides differences between neighborhoods",
+    "It cannot be mapped",
+    "It is qualitative",
+    "It has no year"
+   ],
+   "correct": 0,
+   "why": "A single value for a big area hides what happens inside it.",
+   "review": "data-in-decisions"
+  }
+ ],
+ "figure": {
+  "figure": "scales-of-analysis-nested",
+  "caption": "Global, regional, national and local scales, each inside the one above."
+ },
+ "chain": [
+  {
+   "cause": "Data for small units are combined into one value for a larger unit (aggregated data)",
+   "effect": "the differences between the small units disappear"
+  },
+  {
+   "cause": "A geographer changes the scale of analysis",
+   "effect": "a new pattern can appear, such as rich and poor states inside one country"
+  },
+  {
+   "cause": "A process works at one scale, such as world trade or rising seas",
+   "effect": "it changes places at another scale, such as one coast or one city"
+  }
+ ],
+ "ideas": [
+  "The four scales of analysis, <b>global</b>, <b>regional</b>, <b>national</b> and <b>local</b>, each fit inside the one above. Name the scale from the unit of the data.",
+  "<b>Aggregated data</b> combine smaller units into a larger one. They make comparison easy but hide variation inside.",
+  "A pattern at one scale can disappear or reverse at another: one shade for India hides rich and poor states.",
+  "Processes link scales: world demand for avocados changes hillsides in Michoacán, Mexico; rising seas change streets in Miami Beach, Florida."
+ ],
+ "misconception": {
+  "wrong": "The national figure is the real answer, and smaller-scale data just add detail.",
+  "right": "Each scale shows a real, different pattern. A national average can describe almost no actual place, so the right scale is the one that matches the question."
+ },
+ "check": [
+  "hug-scales-of-analysis-1",
+  "hug-scales-of-analysis-2",
+  "hug-scales-of-analysis-3",
+  "hug-scales-of-analysis-8",
+  "hug-scales-of-analysis-9",
+  "hug-scales-of-analysis-10"
+ ],
+ "summary": "Geographers study patterns at the global, regional, national and local scales, naming the scale from the unit of the data. Aggregated data combine small units into large ones and hide variation, so a pattern at one scale can look different at another. Processes connect scales: global demand, trade and climate change reshape local places, and local choices respond. Always state the scale of a claim and match it to the question."
+}

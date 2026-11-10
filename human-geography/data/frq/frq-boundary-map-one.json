@@ -1,0 +1,177 @@
+{
+ "id": "frq-boundary-map-one",
+ "type": "one",
+ "points": 7,
+ "title": "A boundary map: boundary types, disputes and the law of the sea zones",
+ "units": [
+  "unit-2",
+  "unit-4"
+ ],
+ "topics": [
+  "migration-causes",
+  "boundary-functions"
+ ],
+ "practices": [
+  "1.A",
+  "2.B",
+  "4.A",
+  "5.D"
+ ],
+ "stimuli": [
+  {
+   "kind": "map",
+   "title": "Three land boundaries and one sea",
+   "map": {
+    "base": "world",
+    "render": "reference",
+    "label": "Reference map of the world with four places marked: A on a boundary in central North America, B on a boundary across a peninsula in East Asia, C on a boundary in southern South America, D in a sea in Southeast Asia",
+    "legendTitle": "Places in the question",
+    "marks": [
+     {
+      "at": [
+       -100,
+       49
+      ],
+      "text": "A"
+     },
+     {
+      "at": [
+       127.8,
+       38.3
+      ],
+      "text": "B"
+     },
+     {
+      "at": [
+       -70.3,
+       -36
+      ],
+      "text": "C"
+     },
+     {
+      "at": [
+       114,
+       11
+      ],
+      "text": "D"
+     }
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify the type of boundary at A.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names geometric (or antecedent).",
+     "accept": [
+      "geometric",
+      "antecedent"
+     ]
+    }
+   ],
+   "sample": "The boundary at A is a geometric boundary: it follows the 49th parallel, a line of latitude, between the United States and Canada."
+  },
+  {
+   "label": "B",
+   "verb": "describe",
+   "prompt": "Describe how the boundary at B works.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes the Korean demilitarized zone as a closed boundary: a strip with no armed forces, fenced and guarded, that stops almost all crossing.",
+     "accept": [
+      "a demilitarized zone where armed forces are not allowed",
+      "fences, mines and guard posts",
+      "almost no people or goods cross"
+     ]
+    }
+   ],
+   "sample": "The boundary at B is the Korean Demilitarized Zone, a strip about 4 km wide with fences and guard posts on each side where no armed forces may enter, and it stops almost all people and goods from crossing between North Korea and South Korea."
+  },
+  {
+   "label": "C",
+   "verb": "explain",
+   "prompt": "Explain why the boundary at C is often classed as an antecedent boundary.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links the timing (drawn before large-scale settlement) to the type.",
+     "accept": [
+      "drawn in 1881 along the Andes before many settlers lived there, so settlement grew up later",
+      "remote high mountains had few settlers when the line was agreed"
+     ]
+    }
+   ],
+   "sample": "It is called antecedent because Chile and Argentina agreed in 1881 that it would follow the high peaks of the Andes, before many settlers lived in that remote land, so settlement grew up on each side after the line was drawn."
+  },
+  {
+   "label": "D",
+   "verb": "define",
+   "prompt": "Define an exclusive economic zone (EEZ).",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Says it is the sea up to 200 nautical miles from a state's coast where that state controls the resources.",
+     "accept": [
+      "sea up to 200 nautical miles from the coast",
+      "the coastal state has rights to fish, oil, gas and minerals"
+     ]
+    }
+   ],
+   "sample": "An exclusive economic zone is the sea up to 200 nautical miles from a state's coast, where that state has the rights to the fish, oil, gas and other resources, though other states' ships may still sail through it."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain one reason several states claim islands and reefs in the sea at D.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links control of the islands to rights over surrounding waters and their resources (or to control of shipping routes).",
+     "accept": [
+      "islands can bring rights to the waters around them, so fish, oil and gas",
+      "control of busy shipping lanes"
+     ]
+    }
+   ],
+   "sample": "Because control of land at sea can bring rights to the waters around it under the law of the sea, states claim the islands at D to gain fishing grounds and possible oil and gas, which is why China, Viet Nam, the Philippines and others make overlapping claims."
+  },
+  {
+   "label": "F",
+   "verb": "explain",
+   "prompt": "Explain how the boundary at B affects migration between the two states it separates.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links the closed boundary to blocked or rerouted migration (an intervening obstacle).",
+     "accept": [
+      "an intervening obstacle, so very few people cross directly",
+      "people who leave take long routes through other states"
+     ]
+    }
+   ],
+   "sample": "The boundary at B is an intervening obstacle: because guards, fences and mines block crossing, very few people can migrate directly from North Korea to South Korea, so most who leave take a long route through China instead."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which a world map like this one can show how a boundary affects daily life at the local scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree, then explains what the world map can and cannot show at the local scale.",
+     "accept": [
+      "to a small degree: it shows where boundaries are, not local crossings or daily life",
+      "local data such as fieldwork or a large-scale map would be needed"
+     ]
+    }
+   ],
+   "sample": "To a small degree: the map shows where each boundary lies at the global scale, but it cannot show local details such as crossing points, markets or families split by the line, so fieldwork or a large-scale map would be needed to see daily life."
+  }
+ ]
+}

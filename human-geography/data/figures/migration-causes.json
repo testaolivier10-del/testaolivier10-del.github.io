@@ -1,0 +1,12 @@
+{
+ "migration-causes-pushpull": {
+  "file": "figures/migration-causes-pushpull.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram: an origin box with push factors (low pay, drought, war) and a destination box with pull factors (jobs, safety, family), joined by an arrow. An obstacle sits on the arrow: intervening obstacles such as distance, cost, borders, seas and rough land. A dashed branch leaves the arrow and stops at an intervening opportunity, a job on the way."
+ }
+}

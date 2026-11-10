@@ -1,0 +1,536 @@
+{
+ "stimuli": {
+  "culture-on-the-land-s1": {
+   "kind": "image",
+   "title": "A street in a Vietnamese American neighborhood",
+   "image": {
+    "figure": "culture-on-the-land-street",
+    "alt": "A drawn street in a Vietnamese American neighborhood such as Little Saigon in Westminster, California. Signs in Vietnamese and English: a noodle house (Phở Saigon), an Asian market (Chợ), a Buddhist temple (Chùa) with a curved red tile roof, a tailor for áo dài (a long Vietnamese dress) and a bánh mì shop, and a community center. People walk on the sidewalk.",
+    "caption": "Drawn for practice, based on streets like those in Little Saigon, Westminster, California."
+   }
+  },
+  "culture-on-the-land-s2": {
+   "kind": "image",
+   "title": "One riverbank in three periods",
+   "image": {
+    "figure": "culture-on-the-land-sequent",
+    "alt": "Three drawings of one invented riverbank. About 1850: a fishing camp of wooden lodges, a drying rack and a canoe. About 1920: a brick mill with a smokestack, a rail line and small workers' houses. About 2020: the same mill, now lofts and a cafe, keeps its smokestack beside a glass tower and a riverside path.",
+    "caption": "An invented place, drawn for practice."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "hug-culture-on-the-land-1",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "culture-on-the-land-s1",
+   "q": "Which evidence in the scene best shows that this street is in an ethnic neighborhood?",
+   "options": [
+    "Shops and a temple with signs in Vietnamese",
+    "A painted center line on a two-lane street",
+    "Buildings of two and three stories in a row",
+    "People walking along the sidewalk past the shops"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "businesses, a place of worship and signs in Vietnamese all serve one ethnic group. Together they mark an ethnic neighborhood on the landscape.",
+    "options": [
+     "Right: businesses, a place of worship and signs in Vietnamese all serve one ethnic group. Together they mark an ethnic neighborhood on the landscape.",
+     "Road markings look the same in any neighborhood. They say nothing about the people who live there.",
+     "Building height alone does not show who lives on a street or which culture shaped it.",
+     "People walk on every busy street. The signs and the kinds of businesses are what show one ethnic group."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-2",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.A",
+   "stimulus": "culture-on-the-land-s1",
+   "q": "Which feature in the scene is a religious mark on the cultural landscape?",
+   "options": [
+    "The noodle house sign that reads Phở Saigon",
+    "The temple labeled Chùa",
+    "The tailor shop that sells áo dài dresses",
+    "The community center sign above the shops"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "a Buddhist temple, with a roof style brought from Viet Nam, is a religious mark people added to the landscape.",
+    "options": [
+     "A restaurant sign is a mark of food and language on the landscape, not of religion.",
+     "Right: a Buddhist temple, with a roof style brought from Viet Nam, is a religious mark people added to the landscape.",
+     "Clothing is a culture trait, but it is not a religious one here.",
+     "A community center serves the neighborhood, but nothing in the scene marks it as religious."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-3",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.F",
+   "stimulus": "culture-on-the-land-s1",
+   "q": "Which question can the drawn scene NOT answer?",
+   "options": [
+    "Whether any signs on the street use the Vietnamese language",
+    "Whether the street has a place of worship on it",
+    "What share of residents are Vietnamese American",
+    "Whether shops on the street sell Vietnamese food"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "a scene shows signs and buildings, not counts of people. To know the share of residents, you need census data for the neighborhood.",
+    "options": [
+     "You can read the signs in the scene: several use Vietnamese words.",
+     "The temple labeled Chùa is visible in the scene.",
+     "Right: a scene shows signs and buildings, not counts of people. To know the share of residents, you need census data for the neighborhood.",
+     "The noodle house and the bánh mì shop are visible, so the scene does answer this."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-4",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "culture-on-the-land-s1",
+   "q": "Most signs in the scene use both Vietnamese and English. What does this best suggest about the neighborhood?",
+   "options": [
+    "Vietnamese is the main language of most residents of the city",
+    "The shops were built before anyone in the area spoke English",
+    "The street belongs to the physical landscape, not the cultural one",
+    "It serves Vietnamese speakers while welcoming other customers"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Vietnamese words serve the ethnic group, and English words reach shoppers from the rest of the city. The signs show a group keeping its language inside a wider community.",
+    "options": [
+     "English on the signs shows that the shops expect customers who do not read Vietnamese.",
+     "The scene gives no dates, and English on every sign points the other way.",
+     "Signs are made by people, so they are part of the cultural landscape.",
+     "Right: Vietnamese words serve the ethnic group, and English words reach shoppers from the rest of the city. The signs show a group keeping its language inside a wider community."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-5",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 1,
+   "type": "order",
+   "practice": "4.C",
+   "stimulus": "culture-on-the-land-s2",
+   "q": "Put the uses of this riverbank in order, from the earliest to the latest, as the drawings show them.",
+   "options": [
+    "Fishing camp with wooden lodges and canoes",
+    "Brick mill, rail line and workers' houses",
+    "Lofts, a cafe and a glass tower"
+   ],
+   "why": {
+    "correct": "The panels are dated about 1850, about 1920 and about 2020. Each group that used the site left marks the next one built on: that layering is sequent occupance."
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-6",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "stimulus": "culture-on-the-land-s2",
+   "q": "Which feature in the 2020 panel is a mark left by an earlier group of people?",
+   "options": [
+    "The brick mill and its smokestack",
+    "The glass tower beside the old mill building",
+    "The riverside path along the water",
+    "The cafe sign on the front of the old mill"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "the mill was built in the mill-town period and is still standing, reused for a new purpose. Old marks staying on the land is what sequent occupance describes.",
+    "options": [
+     "Right: the mill was built in the mill-town period and is still standing, reused for a new purpose. Old marks staying on the land is what sequent occupance describes.",
+     "The tower appears only in the 2020 panel, so it is a new mark, not an earlier one.",
+     "The path appears only in the 2020 panel. It is a mark of the latest period.",
+     "The sign was added in the latest period, even though the building it hangs on is older."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-7",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.C",
+   "stimulus": "culture-on-the-land-s2",
+   "q": "What idea do the three panels show together?",
+   "options": [
+    "Environmental determinism: the river decides how people use the site",
+    "Sequent occupance: each group leaves marks that later groups reuse",
+    "Ethnocentrism: each new group judges the group before it",
+    "Folk culture: one small group keeps the same ways for centuries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the site carries layers from a fishing camp, a mill town and a modern city. Each period adds to, or reuses, what came before.",
+    "options": [
+     "The river stays the same in all three panels, yet the land use changes three times. People made different choices.",
+     "Right: the site carries layers from a fishing camp, a mill town and a modern city. Each period adds to, or reuses, what came before.",
+     "The panels show land use changing, not any group judging another culture.",
+     "The uses change completely between panels, so this is not one unchanging tradition."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-8",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In the Douro Valley of Portugal, steep hillsides are covered with rows of grapevines planted for wine. Which part of this view belongs to the cultural landscape?",
+   "options": [
+    "The Douro River flowing through the valley floor",
+    "The steepness of the hills around the valley",
+    "The rows of grapevines planted on the slopes",
+    "The rocky soil under the hillside vineyards"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "the cultural landscape is the land as people have changed it. Planted vineyards are a human mark.",
+    "options": [
+     "The river is a physical feature. It was there before people planted anything.",
+     "Slope is part of the physical landscape, not something people made.",
+     "Right: the cultural landscape is the land as people have changed it. Planted vineyards are a human mark.",
+     "Soil is physical geography. The cultural landscape is what people add or change."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-9",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "model",
+   "practice": "1.D",
+   "q": "St. Anthony Falls on the Mississippi River in Minneapolis, Minnesota, has been used in very different ways. Place each use of the site in order, from the earliest to the latest.",
+   "model": {
+    "layout": "stages",
+    "title": "Sequent occupance at St. Anthony Falls",
+    "slots": [
+     {
+      "id": "s1",
+      "name": "Earliest"
+     },
+     {
+      "id": "s2",
+      "name": "Middle"
+     },
+     {
+      "id": "s3",
+      "name": "Latest"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "dakota",
+      "text": "Dakota sacred site and gathering place"
+     },
+     {
+      "id": "mills",
+      "text": "Sawmills and flour mills on the falls"
+     },
+     {
+      "id": "museum",
+      "text": "Museum and condos in old mill buildings"
+     },
+     {
+      "id": "mall",
+      "text": "Car-based shopping mall on the island"
+     }
+    ],
+    "key": {
+     "s1": "dakota",
+     "s2": "mills",
+     "s3": "museum"
+    },
+    "slips": [
+     {
+      "piece": "mills",
+      "slot": "s1",
+      "why": "The Dakota people knew and used the falls long before the first mills were built in the 1800s."
+     },
+     {
+      "piece": "mall",
+      "slot": "s3",
+      "why": "No shopping mall marks this stage; the old mill buildings were turned into a museum and homes."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The falls were a sacred place to the Dakota people, then the center of a milling city from the 1800s, and, as the mills closed in the late 1900s and early 2000s, a place of museums, parks and homes in old mill buildings. Each layer is still visible."
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-10",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.C",
+   "q": "Which building is an example of postmodern architecture rather than traditional architecture?",
+   "options": [
+    "A thatched-roof cottage built of stone in rural western Ireland",
+    "An adobe home at Taos Pueblo in New Mexico",
+    "A Navajo hogan, a many-sided home with an east-facing door",
+    "550 Madison Avenue in New York, a 1984 tower with a notched top"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "postmodern buildings, from about the 1970s on, mix older styles with new ones on purpose. This tower borrows the top of an old wooden cabinet.",
+    "options": [
+     "Stone and thatch built in a long-standing local style is traditional architecture.",
+     "Adobe homes built in a centuries-old local style are traditional architecture.",
+     "A hogan follows a long-standing Navajo design, so it is traditional architecture.",
+     "Right: postmodern buildings, from about the 1970s on, mix older styles with new ones on purpose. This tower borrows the top of an old wooden cabinet."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-11",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.B",
+   "q": "For many years, many restaurants in Saudi Arabia had separate sections and entrances for families and for single men. In 2019 the government said separate entrances were no longer required. What does this example show about the cultural landscape?",
+   "options": [
+    "Ideas about gender shape how buildings divide space",
+    "The desert climate decides how restaurants are designed",
+    "Postmodern architecture usually calls for separate entrances",
+    "Restaurant layouts are part of the physical landscape"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "the separate entrances were a mark of attitudes about how men and women share space. When rules changed, the built landscape could change too.",
+    "options": [
+     "Right: the separate entrances were a mark of attitudes about how men and women share space. When rules changed, the built landscape could change too.",
+     "The rule was about who sits where, not about heat or dry air. Culture, not climate, drove the design.",
+     "Separate entrances follow social rules, not an architectural style.",
+     "Anything people build is part of the cultural landscape, not the physical one."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-12",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Chinatown in San Francisco, California, began in the 1800s. Chinese immigrants faced laws and hostility that limited where they could live and work, and later arrivals joined relatives there. Which statement best explains why the neighborhood formed?",
+   "options": [
+    "The hilly land was better for Chinese building styles",
+    "Shared support and outside limits drew people to one area",
+    "Chinese immigrants judged other cultures by their own standards",
+    "Popular culture in the 1800s made cities look alike"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ethnic neighborhoods often form both because newcomers want shared language, food and help, and because others restrict where they may live.",
+    "options": [
+     "Hills do not explain who lived there. The causes in the stem are social: limits from outside and support from within.",
+     "Right: ethnic neighborhoods often form both because newcomers want shared language, food and help, and because others restrict where they may live.",
+     "That would be ethnocentrism, and the stem gives no evidence of it. The neighborhood formed from support and from outside limits.",
+     "The stem describes a distinct neighborhood, which is the opposite of places looking the same."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-13",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement describes ethnicity as geographers use the term?",
+   "options": [
+    "A set of physical body traits a person inherits from parents",
+    "The citizenship a person holds in one country",
+    "Identity with a group sharing ancestry and traditions",
+    "The religion that most people in a region follow"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "ethnicity is a cultural identity, built on shared ancestry, history, language or customs, that members recognize in themselves.",
+    "options": [
+     "Ethnicity is a cultural identity, not a biological category.",
+     "Citizenship is a legal status. People of one ethnicity can hold many citizenships.",
+     "Right: ethnicity is a cultural identity, built on shared ancestry, history, language or customs, that members recognize in themselves.",
+     "Religion can be part of an ethnic identity, but ethnicity is broader than religion."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-14",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "4.B",
+   "q": "On the Navajo Nation, which spreads across parts of Arizona, New Mexico and Utah, some families still build hogans, many-sided homes (often six or eight sides) whose doors face east toward the rising sun. What does a hogan show on the cultural landscape?",
+   "options": [
+    "A popular culture trend copied from shopping malls",
+    "A physical feature shaped by wind and erosion",
+    "A postmodern style that mixes many building eras",
+    "A traditional design carrying the beliefs of a people"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "the shape and the east-facing door are choices made by Navajo culture, so the building marks Navajo beliefs and traditions on the land.",
+    "options": [
+     "Hogans follow a long-standing Navajo design, not a fast-changing trend.",
+     "People build hogans, so they are part of the cultural landscape, not the physical one.",
+     "A hogan keeps one long-standing design, so it is traditional architecture.",
+     "Right: the shape and the east-facing door are choices made by Navajo culture, so the building marks Navajo beliefs and traditions on the land."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-15",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "4.C",
+   "q": "Build an explanation of how one ethnic neighborhood marks the cultural landscape.",
+   "why": {
+    "correct": "A strong answer names a real place, points to something you could see there, and links it to the people who made it."
+   },
+   "specific": {
+    "frame": "In ___, ___ show the cultural landscape of an ethnic group because ___.",
+    "write": {
+     "mechanism": true
+    },
+    "model": "In Little Saigon in Westminster, California, signs in Vietnamese and a Buddhist temple show the cultural landscape of an ethnic group because Vietnamese Americans who settled there built businesses and places of worship for their own community.",
+    "slots": {
+     "place": {
+      "label": "Place",
+      "options": [
+       "Little Saigon in Westminster, California",
+       "many cities in many countries"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A vague place earns no credit on the exam. Name the neighborhood and its city."
+      }
+     },
+     "evidence": {
+      "label": "Visible evidence",
+      "options": [
+       "signs in Vietnamese and a Buddhist temple",
+       "warm weather and palm trees",
+       "wide streets and traffic lights"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Weather and palm trees are physical features, not marks of an ethnic group.",
+       "2": "Streets and traffic lights look the same in any neighborhood."
+      }
+     },
+     "link": {
+      "label": "How it got there",
+      "options": [
+       "Vietnamese Americans who settled there built them for their community",
+       "the climate of Southern California required them"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Climate did not require a temple or Vietnamese signs; people made those choices."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-16",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Many Pacific Coast towns in Canada have totem poles carved by First Nations artists, often standing near community buildings. At the local scale, what do these poles add to the landscape?",
+   "options": [
+    "A visible mark of Indigenous culture and history in the place",
+    "A sign that the climate along the coast is mild and wet",
+    "Evidence that popular culture has replaced local culture",
+    "A part of the physical landscape, like the forests nearby"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "carved poles record family and community stories in a style made by First Nations peoples, so they mark Indigenous culture on the land.",
+    "options": [
+     "Right: carved poles record family and community stories in a style made by First Nations peoples, so they mark Indigenous culture on the land.",
+     "Climate does not explain a carved pole. People carved them to tell their stories.",
+     "The poles keep a long-standing local tradition, the opposite of being replaced.",
+     "Trees are physical; a carved pole is a human creation, so it is cultural."
+    ]
+   }
+  },
+  {
+   "id": "hug-culture-on-the-land-17",
+   "unit": "unit-3",
+   "topic": "culture-on-the-land",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "4.D",
+   "q": "A student compares two photos of the same block in Brooklyn, New York: one from 1950 showing a garment factory, and one from 2020 showing the same building turned into apartments with a coffee shop. What does the comparison show?",
+   "options": [
+    "Traditional architecture replacing postmodern buildings",
+    "Sequent occupance: a new use reuses an older building",
+    "The physical landscape changing because of the climate",
+    "Ethnocentrism by the people who live in the apartments"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "the building is a mark of the factory period, and a later period gave it a new use. The layers are still visible.",
+    "options": [
+     "The building is the same in both photos. Only its use changed, so this is not a change of style.",
+     "Right: the building is a mark of the factory period, and a later period gave it a new use. The layers are still visible.",
+     "Nothing in the comparison is about climate. People changed how they use the building.",
+     "Living in a converted building is not a judgment of another culture."
+    ]
+   }
+  }
+ ]
+}

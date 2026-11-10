@@ -1,0 +1,71 @@
+{
+ "topic": "culture-intro",
+ "hook": "At a dinner in Seoul, South Korea, everyone shares the side dishes and waits for the grandmother to start eating. A visitor from somewhere else might call that strange, or might ask what it means. Which reaction you have says as much about your own culture as about theirs. This topic is about what culture is and how to look at a culture that is not yours.",
+ "prereq": [
+  {
+   "q": "People on a dry plain build houses from local earth because wood is scarce, even though they could import wood. Which idea from Unit 1 fits this choice best?",
+   "options": [
+    "Possibilism",
+    "Environmental determinism",
+    "Distance decay",
+    "Time-space compression"
+   ],
+   "correct": 0,
+   "why": "The environment offers options and people choose among them: that is possibilism. Determinism would say the environment decides for them.",
+   "review": "human-environment"
+  },
+  {
+   "q": "A map shows each province of one country. What is the scale of analysis of its data?",
+   "options": [
+    "Local (subnational)",
+    "Global",
+    "National",
+    "A large map scale"
+   ],
+   "correct": 0,
+   "why": "The data are for parts of one country, so the scale of analysis is local (subnational), whatever the size of the map.",
+   "review": "scales-of-analysis"
+  }
+ ],
+ "figure": {
+  "figure": "culture-intro-lenses",
+  "caption": "One custom, two ways to judge it: by the viewer's own culture (ethnocentrism) or by the culture it belongs to (cultural relativism)."
+ },
+ "chain": [
+  {
+   "cause": "A group shares ways of living: food, language, beliefs, buildings",
+   "effect": "those shared ways are its culture, made of many culture traits"
+  },
+  {
+   "cause": "Children learn their group's ways from family, school and neighbors",
+   "effect": "culture is passed on by teaching, not inherited at birth"
+  },
+  {
+   "cause": "People meet a culture that differs from their own",
+   "effect": "they may judge it by their own standards (ethnocentrism) or try to understand it on its own terms (cultural relativism)"
+  },
+  {
+   "cause": "Geographers practice cultural relativism",
+   "effect": "they can explain why a trait makes sense in its place instead of ranking cultures"
+  }
+ ],
+ "ideas": [
+  "<b>Culture</b> is the shared practices, beliefs, objects and behaviors that a group learns and passes on. Each separate part, such as a food, a greeting or a house style, is a <b>culture trait</b>.",
+  "<b>Folk culture</b> belongs to a small, close group, is taught by family and community, and changes slowly. <b>Popular culture</b> is shared by large, mixed groups through media and business, and changes quickly.",
+  "<b>Ethnocentrism</b> judges another culture by the standards of your own. <b>Cultural relativism</b> tries to understand a practice by the standards of the culture it belongs to.",
+  "Culture traits show up on the land: in food, in buildings such as the adobe homes of Taos Pueblo, and in land use, such as where pigs are raised in Indonesia."
+ ],
+ "misconception": {
+  "wrong": "Cultural relativism means you must agree with, or adopt, every custom you study.",
+  "right": "Cultural relativism means understanding a custom by its own culture's standards before judging it. You can explain why Seoul families wait for an elder to eat without adopting the custom yourself."
+ },
+ "check": [
+  "hug-culture-intro-1",
+  "hug-culture-intro-2",
+  "hug-culture-intro-3",
+  "hug-culture-intro-9",
+  "hug-culture-intro-14",
+  "hug-culture-intro-12"
+ ],
+ "summary": "Culture is what a group learns and shares: practices, beliefs, objects and behaviors passed from one generation to the next. Culture traits include food, architecture and land use. Folk culture is small-group and slow to change; popular culture is widespread and fast-changing. Ethnocentrism judges another culture by your own standards, while cultural relativism seeks to understand it on its own terms, the habit geographers use."
+}

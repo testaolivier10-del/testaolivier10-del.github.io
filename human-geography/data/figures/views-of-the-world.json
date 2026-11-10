@@ -1,0 +1,12 @@
+{
+ "views-of-the-world-types": {
+  "file": "figures/views-of-the-world-types.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 468,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The same invented island of four districts drawn six ways. A reference map shows where things are: a port, a mill, a river and a road. A choropleth map shades each district by a rate. A dot density map shows counts, one dot each. A graduated symbol map shows amounts by the size of circles. An isoline map joins points of equal value with lines labeled 10, 20 and 30. A cartogram resizes each district by a value."
+ }
+}

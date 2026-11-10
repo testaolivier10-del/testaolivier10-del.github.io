@@ -1,0 +1,70 @@
+{
+ "topic": "production-regions",
+ "hook": "A hectare of farmland just outside Rotterdam can cost many times what a hectare costs on the cattle lands of Patagonia. That price gap shapes what farmers grow: costly land near a market must earn a lot, so it is farmed intensively, while cheap, distant land is used for grazing.",
+ "prereq": [
+  {
+   "q": "Which kind of agriculture spreads few inputs over large areas?",
+   "options": [
+    "Extensive agriculture",
+    "Intensive agriculture",
+    "Market gardening",
+    "Plantation agriculture"
+   ],
+   "correct": 0,
+   "why": "Extensive agriculture uses few inputs per hectare, as in ranching.",
+   "review": "agriculture-intro"
+  },
+  {
+   "q": "A map shows data for each province of one country. What is its scale of analysis?",
+   "options": [
+    "Local (subnational)",
+    "National",
+    "Regional",
+    "Global"
+   ],
+   "correct": 0,
+   "why": "The scale of analysis is the scale of the data: provinces are parts of a country.",
+   "review": "scales-of-analysis"
+  }
+ ],
+ "figure": {
+  "figure": "production-regions-bid-rent",
+  "caption": "Near the market, market gardening can pay the most rent; grain wins the middle distances and ranching the farthest."
+ },
+ "chain": [
+  {
+   "cause": "Many land users want land with easy access to a market",
+   "effect": "land near the market costs more"
+  },
+  {
+   "cause": "Land near the market costs more",
+   "effect": "only uses that earn a lot per hectare can afford it"
+  },
+  {
+   "cause": "Market gardening earns the most per hectare but loses value fast with distance",
+   "effect": "market gardens take land closest to the market"
+  },
+  {
+   "cause": "Ranching earns little per hectare but ships cheaply",
+   "effect": "ranching takes the cheapest, most distant land"
+  }
+ ],
+ "ideas": [
+  "<b>Subsistence agriculture</b> feeds the farm family (rice plots in Bangladesh); <b>commercial agriculture</b> sells for profit (soybeans in Mato Grosso, Brazil).",
+  "<b>Monocropping</b> grows the same crop on a field year after year, and <b>monoculture</b> one crop over a large area: efficient, but risky if pests, drought or prices strike.",
+  "<b>Bid-rent theory</b>: land near a market costs more, so the use that can pay most wins it. Intensive uses take the center, extensive uses the edges. It assumes one market and equal transport."
+ ],
+ "misconception": {
+  "wrong": "Subsistence means extensive, and commercial means intensive.",
+  "right": "Subsistence and commercial describe purpose (eat or sell); intensive and extensive describe inputs per hectare. A Bangladesh rice paddy is subsistence and intensive; an Argentine ranch is commercial and extensive."
+ },
+ "check": [
+  "hug-production-regions-1",
+  "hug-production-regions-2",
+  "hug-production-regions-3",
+  "hug-production-regions-4",
+  "hug-production-regions-13",
+  "hug-production-regions-14"
+ ],
+ "summary": "Subsistence agriculture feeds the farm family; commercial agriculture sells for profit and often uses monocropping. Bid-rent theory explains why intensive uses take costly land near a market and extensive uses take cheap, distant land, though real regions with many markets and routes depart from it."
+}

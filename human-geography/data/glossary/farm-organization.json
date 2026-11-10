@@ -1,0 +1,11 @@
+{
+ "agribusiness": {
+  "def": "The system of large companies that supply farms, run farms and process, ship and sell farm products."
+ },
+ "commodity-chain": {
+  "def": "The series of steps that turns a farm product into something a consumer buys: inputs, growing, processing, distribution and sale."
+ },
+ "economies-of-scale": {
+  "def": "The lower cost of each unit produced that comes from producing more, because fixed costs such as machines are spread over more output."
+ }
+}

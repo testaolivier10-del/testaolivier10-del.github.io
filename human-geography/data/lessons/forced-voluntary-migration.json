@@ -1,0 +1,71 @@
+{
+ "topic": "forced-voluntary-migration",
+ "hook": "In April 2023, war broke out in Sudan. Within a year, millions had fled their homes (UNHCR, 2024). Some crossed into Chad and Egypt; most stayed inside Sudan, in camps and with relatives. Far away, a Filipino nurse boards a plane to take a job in Canada. All are migrants. What separates them?",
+ "prereq": [
+  {
+   "q": "Drought ruins a family’s crops at home. What is the drought?",
+   "options": [
+    "A push factor",
+    "A pull factor",
+    "An intervening opportunity",
+    "An intervening obstacle"
+   ],
+   "correct": 0,
+   "why": "Problems at the origin push people out.",
+   "review": "migration-causes"
+  },
+  {
+   "q": "Which of Ravenstein’s laws says many people move from village to town to city?",
+   "options": [
+    "Migration often happens in steps",
+    "Each flow has a counterflow",
+    "Most migrants are adults",
+    "Long-distance migrants go to big cities"
+   ],
+   "correct": 0,
+   "why": "Ravenstein found many migrants move in stages.",
+   "review": "women-population-change"
+  }
+ ],
+ "figure": {
+  "figure": "forced-voluntary-migration-types",
+  "caption": "Forced and voluntary migration and their main types."
+ },
+ "chain": [
+  {
+   "cause": "War, persecution, disaster or enslavement",
+   "effect": "people are forced to move"
+  },
+  {
+   "cause": "Forced migrants stay inside their country",
+   "effect": "they are internally displaced persons"
+  },
+  {
+   "cause": "Forced migrants cross a border and ask for protection",
+   "effect": "they are asylum seekers until a decision, and refugees if protection is granted"
+  },
+  {
+   "cause": "People choose to move for work, family or study",
+   "effect": "voluntary migration, often in steps or along chains of relatives"
+  }
+ ],
+ "ideas": [
+  "<b>Forced migration</b>: people are made to move (enslavement, war, persecution, disaster). <b>Voluntary migration</b>: people choose to move.",
+  "Forced types: <b>refugee</b> (crossed a border, granted protection), <b>asylum seeker</b> (asked, waiting), <b>internally displaced person</b> (stayed in the country).",
+  "Voluntary types: <b>internal</b> (interregional or intraregional), <b>rural-to-urban</b>, <b>step</b>, <b>chain</b>, <b>guest worker</b>, <b>transnational</b> and <b>transhumance</b>.",
+  "Real moves often mix choice and force, so explain the case instead of only naming a type."
+ ],
+ "misconception": {
+  "wrong": "Anyone who flees danger is a refugee.",
+  "right": "A refugee has crossed an international border and been recognized as needing protection. People who flee but stay in their own country are internally displaced persons; people who have asked for protection and are waiting are asylum seekers."
+ },
+ "check": [
+  "hug-forced-voluntary-migration-1",
+  "hug-forced-voluntary-migration-2",
+  "hug-forced-voluntary-migration-5",
+  "hug-forced-voluntary-migration-6",
+  "hug-forced-voluntary-migration-7",
+  "hug-forced-voluntary-migration-13"
+ ],
+ "summary": "Forced migrants are made to move, as refugees, asylum seekers, internally displaced persons or, in the past, enslaved people. Voluntary migrants choose to move, within a country (internal, rural-to-urban) or abroad, in steps or along chains of relatives, as guest workers, as transnational migrants who keep ties to two countries, or seasonally with herds (transhumance)."
+}

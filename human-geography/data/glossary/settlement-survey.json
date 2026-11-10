@@ -1,0 +1,20 @@
+{
+ "clustered-settlement": {
+  "def": "A rural settlement pattern in which homes are grouped together in a village, with farmland around it; also called nucleated settlement."
+ },
+ "dispersed-settlement": {
+  "def": "A rural settlement pattern in which homes are spread out, usually one farmhouse on each farm, as in the US Midwest."
+ },
+ "linear-settlement": {
+  "def": "A rural settlement pattern in which homes line up along a road, river, canal or coast, as along the Nile in Egypt."
+ },
+ "metes-and-bounds": {
+  "def": "A survey method that marks land by distances and by natural or human features such as streams, trees and walls, giving irregular parcels; used in the eastern United States."
+ },
+ "township-and-range": {
+  "def": "A survey method that divides land into a grid of townships 6 miles square, each with 36 sections of 1 square mile; set up by the US Land Ordinance of 1785."
+ },
+ "long-lot": {
+  "def": "A survey method that divides land into long, narrow strips running back from a river, so each owner has river frontage; used by French settlers in Quebec and Louisiana."
+ }
+}

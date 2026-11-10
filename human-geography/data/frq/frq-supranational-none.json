@@ -1,0 +1,140 @@
+{
+ "id": "frq-supranational-none",
+ "type": "none",
+ "points": 7,
+ "title": "Joining a customs union and a shared currency: what a member state gains and gives up",
+ "units": [
+  "unit-2",
+  "unit-4"
+ ],
+ "topics": [
+  "migration-causes",
+  "sovereignty-challenges"
+ ],
+ "practices": [
+  "1.A",
+  "1.B",
+  "2.B",
+  "5.B"
+ ],
+ "stimuli": [],
+ "parts": [
+  {
+   "label": "A",
+   "verb": "identify",
+   "prompt": "Identify ONE power over its own economy that a state gives up when it adopts a currency shared with other states.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a power such as printing its own money, setting its own interest rates or running its own monetary policy.",
+     "accept": [
+      "setting its own interest rates",
+      "printing its own money",
+      "control of its money supply or monetary policy",
+      "changing the value of its currency"
+     ]
+    }
+   ],
+   "sample": "A state that adopts a shared currency, as members of the euro area did, gives up the power to set its own interest rates, because a shared central bank sets them for every member."
+  },
+  {
+   "label": "B",
+   "verb": "define",
+   "prompt": "Define supranationalism.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Says that three or more states cooperate through an organization for shared goals, giving up some sovereignty.",
+     "accept": [
+      "states joining an organization for shared goals",
+      "states sharing some decisions or sovereignty with a body above them"
+     ]
+    }
+   ],
+   "sample": "Supranationalism is cooperation among three or more states through an organization for shared goals, in which each member gives up some of its sovereignty."
+  },
+  {
+   "label": "C",
+   "verb": "describe",
+   "prompt": "Describe ONE way a customs union changes trade between its member states.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes a real change: taxes and limits on goods traded between members are removed, or members charge one shared tax on imports from outside.",
+     "accept": [
+      "members stop taxing each other's goods at the border",
+      "goods cross members' borders without customs duties",
+      "members set one shared tax on imports from outside the union"
+     ]
+    }
+   ],
+   "sample": "In a customs union, member states remove the taxes they charged on each other's goods at the border, so a factory in one member can sell in the others without paying duties at the border."
+  },
+  {
+   "label": "D",
+   "verb": "explain",
+   "prompt": "Explain why farmers in a small state might oppose joining a customs union with larger, wealthier neighbors.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains a cost with its link: without import taxes, cheaper food from large commercial farms in the neighbors enters freely, so local farmers lose sales or income.",
+     "accept": [
+      "taxes on food imports end, so cheaper produce from big commercial farms undercuts small local farms",
+      "the state can no longer protect its farmers with import taxes, so they face more competition and may lose income"
+     ]
+    }
+   ],
+   "sample": "Joining would end the import taxes that protect the small state's farms. Food from the neighbors' large commercial farms, which produce more cheaply, could then be sold freely in the small state, so local farmers could lose sales and income, and some could be forced to give up farming."
+  },
+  {
+   "label": "E",
+   "verb": "explain",
+   "prompt": "Explain how free movement of people within the European Union can affect migration between member states.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Links free movement to more migration, through a removed obstacle or a pull factor such as wages or jobs.",
+     "accept": [
+      "removing visas and border checks lowers an intervening obstacle, so more people move",
+      "workers move toward higher wages or more jobs in richer members",
+      "example: many Poles moved to the United Kingdom after Poland joined in 2004"
+     ]
+    }
+   ],
+   "sample": "Because EU citizens can live and work in any member state without a visa, an intervening obstacle to migration is removed, so workers move toward pull factors such as higher wages. For example, many people from Poland moved to the United Kingdom after Poland joined the EU in 2004."
+  },
+  {
+   "label": "F",
+   "verb": "compare",
+   "prompt": "Compare how supranationalism affects sovereignty at the national scale with how devolution affects sovereignty at the subnational scale.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Speaks of both: supranationalism moves power up from the state; devolution moves power down to regions (both reduce what the national government decides alone).",
+     "accept": [
+      "supranationalism shares power upward, whereas devolution shares it downward",
+      "both reduce what the national government decides alone"
+     ]
+    }
+   ],
+   "sample": "Both reduce what a national government decides alone, but supranationalism moves power up from the national scale to a group of states, such as the EU, whereas devolution moves power down to regions at the subnational scale, such as the Scottish Parliament in the United Kingdom."
+  },
+  {
+   "label": "G",
+   "verb": "explain-degree",
+   "prompt": "Explain the degree to which a member state can protect its own language and culture while belonging to a supranational organization.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a degree, then supports it with a reason (for example, the organization deals with trade and law but leaves schooling, language and religion to members, while free movement and shared media still spread outside culture).",
+     "accept": [
+      "to a high degree: education, language and cultural policy usually stay national decisions",
+      "to a moderate degree: the state keeps control of schools and official languages, but open borders and a single market spread other cultures",
+      "to a low degree: shared rules on trade and media limit how much a state can protect its own culture"
+     ]
+    }
+   ],
+   "sample": "To a moderate degree. Most supranational organizations, such as the European Union, leave schooling, official languages and religion to each member, so a state can still require its own language in schools and public life. However, free movement of people and a single market for goods, films and online services bring other languages and cultures in, which the state cannot easily keep out."
+  }
+ ]
+}

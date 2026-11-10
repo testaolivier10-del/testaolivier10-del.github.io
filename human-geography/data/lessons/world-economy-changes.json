@@ -1,0 +1,72 @@
+{
+ "topic": "world-economy-changes",
+ "hook": "In 1980 Shenzhen was a small town across the river from Hong Kong. That year China made it a special economic zone, with low taxes for foreign firms. Factories poured in, and Shenzhen grew into one of China's largest cities. Over the same decades, Detroit lost much of its car industry and its population fell. One world economy, two very different outcomes. How did work move?",
+ "prereq": [
+  {
+   "q": "What are economies of scale?",
+   "options": [
+    "Lower cost per item when producing in large amounts",
+    "Taxes on imports",
+    "Small loans to women",
+    "Moving goods between ships and trains"
+   ],
+   "correct": 0,
+   "why": "Big production runs spread fixed costs, so each item costs less.",
+   "review": "farm-organization"
+  },
+  {
+   "q": "What does a trade bloc do?",
+   "options": [
+    "Lowers tariffs among its member countries",
+    "Lends to governments in debt",
+    "Sets the HDI",
+    "Moves factories to the periphery"
+   ],
+   "correct": 0,
+   "why": "A trade bloc cuts trade barriers among its members.",
+   "review": "trade-world-economy"
+  }
+ ],
+ "figure": {
+  "figure": "world-economy-changes-poles",
+  "caption": "An agglomeration is a cluster of many firms that help each other; a growth pole is one key project that spreads growth to the region around it."
+ },
+ "chain": [
+  {
+   "cause": "Shipping and communication get cheaper",
+   "effect": "firms outsource work to places with lower costs"
+  },
+  {
+   "cause": "Factories leave older industrial cities such as Detroit",
+   "effect": "those regions deindustrialize, and the multiplier effect costs more jobs"
+  },
+  {
+   "cause": "Governments open special economic zones such as Shenzhen",
+   "effect": "factories arrive, migrants follow, and newly industrialized countries grow"
+  },
+  {
+   "cause": "Firms split design, parts and assembly among countries",
+   "effect": "an international division of labor forms, run by flexible post-Fordist methods such as just-in-time"
+  }
+ ],
+ "ideas": [
+  "<b>Outsourcing</b> moves work to other firms, often abroad; <b>deindustrialization</b> is a region's loss of factory jobs.",
+  "<b>Newly industrialized countries</b> such as South Korea grew through export factories; <b>special economic zones</b> (China's Shenzhen, Mexico's maquiladoras) drew them.",
+  "<b>International division of labor</b>: stages of one product in different countries. <b>Post-Fordism</b>: flexible small batches and <b>just-in-time</b> delivery, unlike Fordism's mass production.",
+  "<b>Agglomeration</b>: many firms cluster for shared benefits (Silicon Valley). <b>Growth pole</b>: one key project spreads growth outward (BMW near Spartanburg).",
+  "The <b>multiplier effect</b> spreads gains when a plant opens and losses when it closes."
+ ],
+ "misconception": {
+  "wrong": "Agglomeration and a growth pole are the same thing.",
+  "right": "Agglomeration is many firms clustering because being close helps them. A growth pole is one key industry or project whose growth spreads out to the region around it. A growth pole can grow into an agglomeration."
+ },
+ "check": [
+  "hug-world-economy-changes-1",
+  "hug-world-economy-changes-2",
+  "hug-world-economy-changes-3",
+  "hug-world-economy-changes-4",
+  "hug-world-economy-changes-9",
+  "hug-world-economy-changes-10"
+ ],
+ "summary": "Cheaper transport and communication let firms outsource work, so older industrial regions deindustrialized while newly industrialized countries grew, often in special economic zones. Production split into an international division of labor run on post-Fordist, just-in-time methods. Agglomeration clusters firms; a growth pole spreads growth outward through the multiplier effect."
+}

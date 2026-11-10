@@ -1,0 +1,535 @@
+{
+ "about": "\"Make it specific\" prompts for unit-1 (docs/aphug-architecture.md, \"Make it specific\"); checked by checkJustify in scripts/lib/aphug-exams.mjs.",
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-describe-elevation",
+   "topic": "views-of-the-world",
+   "practice": "2.A",
+   "skill": "describe",
+   "title": "Describing an elevation pattern",
+   "context": "<p>An isoline map of invented Country A shows lines of equal height above sea level: 1,500 meters in the Western Uplands, then 1,000, 500 and 100 meters eastward toward the South Coast. The lines are close together in the west and far apart in the east (invented data for practice).</p>",
+   "prompt": "<b>Describe</b> the pattern of elevation the map shows.",
+   "checklist": [
+    "Says where the land is highest and where it is lowest, with values",
+    "Says which way the land slopes",
+    "Uses the spacing of the lines: close lines are steep land"
+   ],
+   "earns": {
+    "answer": "Elevation is highest in the Western Uplands, above 1,500 meters, and falls eastward to below 100 meters near the South Coast. The lines are closest together in the west, so the land is steepest there, and the east is low and gentle.",
+    "why": "It names where, how high and which way the land slopes, and reads the line spacing as steepness."
+   },
+   "misses": {
+    "answer": "The map shows the elevation of Country A with isolines.",
+    "why": "That names the map type but describes no pattern: no place, no values and no direction."
+   },
+   "specific": {
+    "slots": {
+     "pattern": {
+      "label": "Where the land is highest",
+      "options": [
+       "the Western Uplands, above 1,500 meters",
+       "the South Coast, below 100 meters",
+       "the east, where lines are far apart"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The South Coast is the lowest land on the map.",
+       "2": "Far-apart lines mean gentle, lower land."
+      }
+     },
+     "evidence": {
+      "label": "What close lines mean",
+      "options": [
+       "the land is steep there",
+       "the land is flat there",
+       "many people live there"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Flat land has lines far apart.",
+       "2": "Isolines of height say nothing about people."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-explain-satellites",
+   "topic": "data-sources",
+   "practice": "1.B",
+   "skill": "explain",
+   "title": "Why satellites suit the Amazon",
+   "context": "<p>Brazil's space research agency, INPE, has used satellite images since the 1980s to measure how much of the Amazon rainforest is cleared each year.</p>",
+   "prompt": "<b>Explain</b> why satellite images are a good source for tracking forest clearing in the Amazon.",
+   "checklist": [
+    "Names a strength of remote sensing: it covers a huge, remote area",
+    "Says it measures the same way each year, so years can be compared",
+    "Links that strength to tracking change in the forest"
+   ],
+   "earns": {
+    "answer": "Satellites photograph the whole forest in the same way every year, so analysts can compare one year's cleared area with the last, which lets them measure change across land too large and remote to measure on foot.",
+    "why": "It names what remote sensing does and links it, with so and which, to tracking change."
+   },
+   "misses": {
+    "answer": "Satellites can take pictures of the rainforest from far above the Earth.",
+    "why": "True, but it does not explain why that makes them a good source for tracking clearing year by year."
+   },
+   "specific": {
+    "slots": {
+     "cause": {
+      "label": "Strength",
+      "options": [
+       "they cover a huge, remote area the same way each year",
+       "they record why each farmer cleared land",
+       "they need no experts to read"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Images show where forest is cleared, not the reasons.",
+       "2": "Reading the images takes trained analysts."
+      }
+     },
+     "effect": {
+      "label": "So what",
+      "options": [
+       "so cleared area can be compared from year to year",
+       "so the forest stops being cleared",
+       "so maps are no longer needed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Measuring clearing does not stop it.",
+       "2": "The images are often turned into maps."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-compare-distance",
+   "topic": "spatial-concepts",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "Absolute and relative distance",
+   "context": "<p>Two towns in the Rocky Mountains are 30 km apart in a straight line, but the road between them climbs over a pass and the drive takes 90 minutes. Two towns on the Great Plains are 60 km apart, and the drive takes 40 minutes (invented times for practice).</p>",
+   "prompt": "<b>Compare</b> the two pairs of towns in absolute distance and in relative distance.",
+   "checklist": [
+    "Gives the absolute distance of both pairs",
+    "Gives the relative distance (travel time) of both pairs",
+    "Says which pair is closer by each measure"
+   ],
+   "earns": {
+    "answer": "The mountain towns are closer in absolute distance, 30 km against 60 km, but the plains towns are closer in relative distance, because the drive between them takes 40 minutes while the mountain drive takes 90.",
+    "why": "It speaks of both pairs for both measures and says which is closer in each."
+   },
+   "misses": {
+    "answer": "The mountain towns are closer together than the plains towns.",
+    "why": "That is only absolute distance; a compare of the two ideas needs the travel times too."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "Closer in absolute distance",
+      "options": [
+       "the mountain towns, 30 km apart",
+       "the plains towns, 60 km apart",
+       "both pairs equally"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "60 km is farther than 30 km.",
+       "2": "30 km and 60 km are not equal."
+      }
+     },
+     "sideB": {
+      "label": "Closer in relative distance",
+      "options": [
+       "the plains towns, 40 minutes apart",
+       "the mountain towns, 90 minutes apart",
+       "neither pair"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "90 minutes is the longer trip.",
+       "2": "Travel time differs, so one pair is closer."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-degree-polders",
+   "topic": "human-environment",
+   "practice": "1.D",
+   "skill": "degree",
+   "title": "Polders and possibilism",
+   "context": "<p>In the Netherlands, people have built dikes and pumped water off low land since the Middle Ages. The Flevoland polders, drained in the 1950s and 1960s, became a province with fields and towns in 1986.</p>",
+   "prompt": "<b>Explain</b> the degree to which the Flevoland polders support possibilism rather than environmental determinism.",
+   "checklist": [
+    "States the degree first (to a high degree, for example)",
+    "Says what the environment limited: low land and the sea",
+    "Shows people's choice and technology changing that limit"
+   ],
+   "earns": {
+    "answer": "To a high degree: the sea and the low land set limits, but the Dutch chose to build dikes and pumps and drained Flevoland in the 1950s and 1960s, so new fields and towns stand where there was water, which shows people working within the environment, not the land deciding for them.",
+    "why": "It states the degree first, then gives the limit and the choice that overcame it."
+   },
+   "misses": {
+    "answer": "The Netherlands has a lot of water, and the Dutch built dikes along the coast.",
+    "why": "No degree is stated, and it never ties the dikes to possibilism or determinism."
+   },
+   "specific": {
+    "slots": {
+     "degree": {
+      "label": "Degree",
+      "options": [
+       "to a high degree",
+       "to a low degree",
+       "not at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Draining the sea for fields is strong evidence of human choice.",
+       "2": "The polders are a clear case of people changing their options."
+      }
+     },
+     "evidence": {
+      "label": "Evidence",
+      "options": [
+       "dikes and pumps turned sea into fields",
+       "the climate decided where people live",
+       "the land stayed under water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is determinism, the view the polders argue against.",
+       "2": "Flevoland was drained and settled."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-place-census",
+   "topic": "data-in-decisions",
+   "practice": "2.B",
+   "skill": "place",
+   "title": "Naming a place: census data",
+   "context": "<p>A student writes: \"Governments use census data to make decisions.\"</p>",
+   "prompt": "<b>Rewrite</b> the claim so it names a real place, the data and the decision.",
+   "checklist": [
+    "Names a real place and its census, with a year",
+    "Names one decision the data drove",
+    "Is more than the general claim"
+   ],
+   "earns": {
+    "answer": "In the United States, the 2020 census counts set how many members each state sends to the House of Representatives, and Texas gained two seats after it.",
+    "why": "It names the country, the census year, the decision and a specific result."
+   },
+   "misses": {
+    "answer": "Governments use census data to decide things like how many seats different places get.",
+    "why": "No place and no year, so a reader cannot check it or see the data at work."
+   },
+   "specific": {
+    "slots": {
+     "place": {
+      "label": "Place and data",
+      "options": [
+       "the United States, 2020 census",
+       "some country, a recent count",
+       "the world, every year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"Some country\" names no place.",
+       "2": "There is no single world census."
+      }
+     },
+     "outcome": {
+      "label": "Decision",
+      "options": [
+       "seats each state has in the House",
+       "the weather in each state",
+       "the depth of the oceans"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A census counts people, not weather.",
+       "2": "Ocean depth is not measured by a census."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-scale-income",
+   "topic": "scales-of-analysis",
+   "practice": "5.A",
+   "skill": "scale",
+   "title": "Income at two scales",
+   "context": "<p>In the US Census Bureau's 2016-2020 five-year estimates, the median household income of McDowell County, West Virginia, was less than half the national median.</p>",
+   "prompt": "<b>Explain</b> how changing the scale of analysis changes what the income data show.",
+   "checklist": [
+    "Names both scales: national and local",
+    "Says what each scale shows",
+    "Explains what the national figure hides"
+   ],
+   "earns": {
+    "answer": "At the national scale, the United States looks wealthy, but at the local scale, McDowell County's median household income was less than half the national median (US Census Bureau, 2016-2020), so the national figure hides poorer places, and a planner choosing where to send help needs the local data.",
+    "why": "It names both scales and explains what the larger one hides."
+   },
+   "misses": {
+    "answer": "McDowell County is poorer than most of the rest of the country.",
+    "why": "It states one fact but never names a scale or says how the picture changes between them."
+   },
+   "specific": {
+    "slots": {
+     "scale": {
+      "label": "The finer scale",
+      "options": [
+       "the local scale: one county",
+       "the global scale: all countries",
+       "the national scale: one country"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Global data would compare countries.",
+       "2": "That is the coarser scale here."
+      }
+     },
+     "effect": {
+      "label": "What the national figure hides",
+      "options": [
+       "poorer places inside the country",
+       "the country's total area",
+       "the number of counties"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Income data say nothing about area.",
+       "2": "The count of counties is not what the income figure shows."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-limit-online-survey",
+   "topic": "data-sources",
+   "practice": "4.F",
+   "skill": "limitation",
+   "title": "The limit of an online questionnaire",
+   "context": "<p>The government of Port Ora, the invented capital of Country A, posts an online questionnaire about bus routes, and 2,000 residents answer it (invented for practice).</p>",
+   "prompt": "<b>Explain</b> one limitation of using this questionnaire to plan bus routes.",
+   "checklist": [
+    "Names who the online questionnaire misses",
+    "Explains why that matters for planning bus routes",
+    "Says which way the results may be off, and why"
+   ],
+   "earns": {
+    "answer": "The questionnaire reaches only people who go online, so households without internet, often older or poorer residents who may rely most on buses, are left out, and the results can understate their needs.",
+    "why": "It names who is missed, ties them to bus use and says how the results are biased."
+   },
+   "misses": {
+    "answer": "The questionnaire might be wrong because people make mistakes.",
+    "why": "Too vague: it does not say what the questionnaire misses or why that matters for buses."
+   },
+   "specific": {
+    "slots": {
+     "limit": {
+      "label": "Who is missed",
+      "options": [
+       "people without internet access",
+       "people who answer twice",
+       "people who live in Port Ora"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Duplicate answers can be removed; the bigger gap is who never sees it.",
+       "2": "Port Ora's residents are the ones it is for."
+      }
+     },
+     "effect": {
+      "label": "Why it matters",
+      "options": [
+       "they may rely most on buses",
+       "they never travel",
+       "they own the most cars"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Everyone travels somehow; the point is who depends on buses.",
+       "2": "Car owners rely less on buses."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-model-determinism",
+   "topic": "human-environment",
+   "practice": "1.E",
+   "skill": "model",
+   "title": "A limit of environmental determinism",
+   "context": "",
+   "prompt": "<b>Explain</b> one limit of environmental determinism, using two named countries.",
+   "checklist": [
+    "Says what environmental determinism claims",
+    "Names two real countries with very different climates",
+    "Explains why their similar ways of life weaken the claim"
+   ],
+   "earns": {
+    "answer": "Environmental determinism says climate decides how people live, but Norway, cold and dark in winter, and Singapore, hot and wet all year, are both wealthy, high-tech countries with similar ways of life, so technology and people's choices shape their lives more than climate does.",
+    "why": "It states the claim, names two places and explains why they contradict it."
+   },
+   "misses": {
+    "answer": "Environmental determinism is an old idea that is no longer accepted.",
+    "why": "True, but it gives no reason or example: a limit needs a case that the idea gets wrong."
+   },
+   "specific": {
+    "slots": {
+     "model": {
+      "label": "What it claims",
+      "options": [
+       "climate decides how people live",
+       "people choose within limits",
+       "places are linked by trade"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is possibilism, the view that replaced it.",
+       "2": "That is not a claim of either view."
+      }
+     },
+     "evidence": {
+      "label": "A case it gets wrong",
+      "options": [
+       "Norway and Singapore: different climates, similar lives",
+       "two hot countries with similar lives",
+       "one cold country with a cold climate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Similar climates and lives would fit determinism.",
+       "2": "One country cannot show a contrast."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-legend-commuters",
+   "topic": "views-of-the-world",
+   "practice": "3.A",
+   "skill": "legend",
+   "title": "Reading a graduated symbol legend",
+   "context": "<p>A graduated symbol map shows how many people commute each day into Port Ora, the capital, from each province of invented Country A. The legend shows circles for 10,000, 50,000 and 100,000 commuters, drawn so a circle's area matches its number (invented data for practice).</p>",
+   "prompt": "<b>Describe</b> what a circle the size of the middle legend circle in the Central Valley means.",
+   "checklist": [
+    "Reads the value from the legend: about 50,000",
+    "Says what is counted: daily commuters into Port Ora",
+    "Does not read it as everyone who lives in the province"
+   ],
+   "earns": {
+    "answer": "About 50,000 people commute each day from the Central Valley into Port Ora: the circle's area, matched to the legend, shows the count of commuters, not the share of residents and not the size of the province.",
+    "why": "It reads the value and the variable from the legend and says what the circle does not show."
+   },
+   "misses": {
+    "answer": "Lots of people live in the Central Valley, so its circle is big.",
+    "why": "The circle counts commuters, not residents, and the answer never reads a number from the legend."
+   },
+   "specific": {
+    "slots": {
+     "data": {
+      "label": "Value",
+      "options": [
+       "about 50,000 commuters",
+       "about 100,000 commuters",
+       "50% of residents"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the largest legend circle.",
+       "2": "The legend counts people, not a percent."
+      }
+     },
+     "kind": {
+      "label": "What is counted",
+      "options": [
+       "people commuting into Port Ora",
+       "everyone living in the province",
+       "the province's land area"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The map shows commuters only.",
+       "2": "Circle size is a count of commuters, not area."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-compare-regions",
+   "topic": "regional-analysis",
+   "practice": "1.C",
+   "skill": "compare",
+   "title": "Formal and functional regions",
+   "context": "<p>The Corn Belt of the US Midwest is known for wide fields of corn and soybeans. A newspaper delivers each morning to homes up to 80 km from its printing plant in Des Moines, Iowa (invented distance for practice).</p>",
+   "prompt": "<b>Compare</b> the Corn Belt and the newspaper's delivery area as kinds of regions.",
+   "checklist": [
+    "Names the kind of region for both",
+    "Says what defines each: a shared trait, or links to a center",
+    "Speaks of both regions, not one alone"
+   ],
+   "earns": {
+    "answer": "The Corn Belt is a formal region, defined by a shared trait across the whole area, wide fields of corn and soybeans, whereas the newspaper's delivery area is a functional region, defined by its links to one center, the printing plant in Des Moines.",
+    "why": "It names a kind for each and says what defines each one."
+   },
+   "misses": {
+    "answer": "The Corn Belt is a formal region because it grows a lot of corn.",
+    "why": "One side only: a compare also says what kind of region the delivery area is and why."
+   },
+   "specific": {
+    "slots": {
+     "sideA": {
+      "label": "Corn Belt",
+      "options": [
+       "formal: a shared trait",
+       "functional: links to a center",
+       "perceptual: a feeling people share"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nothing in the Corn Belt is tied to one center.",
+       "2": "It is defined by what grows there, not by feelings."
+      }
+     },
+     "sideB": {
+      "label": "Delivery area",
+      "options": [
+       "functional: links to a center",
+       "formal: a shared trait",
+       "perceptual: a feeling people share"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Homes in it share a link to the plant, not a trait.",
+       "2": "It is set by deliveries from one place."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "subsistence-agriculture": {
+  "def": "Farming mainly to feed the farmer's own family, with little left to sell, as on small rice plots in rural Bangladesh."
+ },
+ "commercial-agriculture": {
+  "def": "Farming mainly to sell crops and animals for profit, as on soybean farms in Mato Grosso, Brazil."
+ },
+ "monocropping": {
+  "def": "Growing the same crop on the same field year after year. Monoculture, a close term, means growing one crop over a large area."
+ },
+ "bid-rent-theory": {
+  "def": "The idea that land users bid for land with the best access to a market, so land costs more near the market and the use that can pay the most at each distance gets the land."
+ }
+}
