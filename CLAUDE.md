@@ -153,8 +153,8 @@ tab in `assets/site-chrome.js`. Rebuild both scripts after changing a course's t
 ## Question quality
 
 `docs/question-quality.md` is the status file: what the 2026-11 audit measured in every bank, what was fixed
-(NREMT reshuffle, honest "explained" wording, dealt choices on teacher printed tests, Env Sci length cues, tally
-fixes), live answer data and what is open. The analytics runs check question health (Project doc A3.9).
+(NREMT reshuffle, honest "explained" wording, NREMT per-option lines in `nremt/assets/option-whys.json`, dealt
+choices on teacher printed tests, Env Sci length cues, tally fixes), live answer data and what is open. The analytics runs check question health (Project doc A3.9).
 
 ## Analytics
 

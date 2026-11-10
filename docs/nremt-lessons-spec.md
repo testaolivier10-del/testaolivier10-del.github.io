@@ -46,7 +46,7 @@ the A&P question bank, so NREMT has its own small copy of the same behaviour:
 - page script: `nremt/assets/nremt-lesson.js`; styles: `nremt/assets/nremt-lesson.css`
 - the page shell is the NREMT chapter pages' (`scripts/build-nremt-notes-pages.mjs`)
 
-Links from the textbook: the builder writes `window.NREMT_LESSONS` (section id to `{ href, title, premium }`)
+Links from the textbook: the builder writes `window.NREMT_LESSONS` (section id to lesson id, with a leading `*` on a Premium lesson)
 between the `nremt-lessons` markers in `nremt/study-notes.html`. Each reader section carries `data-lesson` (empty when
 the section has no lesson yet) and `data-lesson-premium="1"` for a Premium lesson; the chapter pages
 (`nremt/notes/*.html`) get the same attributes at build time.

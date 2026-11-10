@@ -99,5 +99,6 @@
       "why": "The field impression is a working impression that names the affected body system and the probable cause. It guides your interventions and can change. It is not a final diagnosis."
     }
   ],
+  "description": "Reassessment turns a snapshot into a trend: its four components, how often to repeat it, and what a change in the vital signs is telling you.",
   "summary": "<p>Reassessment turns a snapshot into a trend. Its four components are repeating the primary assessment, reestablishing priority, reassessing and recording vital signs against the baseline, and repeating the pertinent history and exam while checking every intervention. Stable patients are reassessed at least every 15 minutes and unstable or potentially unstable patients at least every 5, and at once when anything changes. Care after the assessment follows FIRR: field impression, interventions, reassessments and a handoff report given in a set order.</p>"
 }

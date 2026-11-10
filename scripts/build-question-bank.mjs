@@ -117,6 +117,47 @@ if (core.length !== questions.length || explanations.length !== questions.length
   process.exit(1);
 }
 
+// ---- Per-option lines --------------------------------------------------------
+// nremt/assets/option-whys.json is written by hand (and by review), not generated: { "<id>": [line, ...] } with
+// one line per option in the STORED option order, each starting "Correct: " or "Not this: ". The page deals the
+// options afresh and maps the lines through the same deal, so everything rests on these three facts, checked on
+// every run: each key is the id of a single or select-all question, there is one line per option, and the
+// "Correct: " lines sit exactly on the keyed options. A choice question with no entry is reported too.
+const WHYS = 'nremt/assets/option-whys.json';
+function checkOptionWhys(whys, bank) {
+  const errors = [];
+  if (!whys || typeof whys !== 'object' || Array.isArray(whys)) return [`${WHYS}: not an object keyed by question id`];
+  const byId = new Map(bank.map((q) => [String(q.id), q]));
+  const isChoice = (q) => !q.type || q.type === 'single' || q.type === 'multi';
+  for (const [id, lines] of Object.entries(whys)) {
+    const q = byId.get(id);
+    if (!q) { errors.push(`${id}: no question has this id`); continue; }
+    if (!isChoice(q)) { errors.push(`${id}: a ${q.type} item, which takes no per-option lines`); continue; }
+    if (!Array.isArray(lines) || lines.length !== q.options.length) {
+      errors.push(`${id}: ${Array.isArray(lines) ? lines.length : 'no'} lines for ${q.options.length} options`);
+      continue;
+    }
+    const key = new Set([].concat(q.correct));
+    lines.forEach((line, i) => {
+      const m = typeof line === 'string' ? /^(Correct|Not this): \S/.exec(line) : null;
+      if (!m) errors.push(`${id}: line ${i} does not start "Correct: " or "Not this: "`);
+      else if ((m[1] === 'Correct') !== key.has(i)) errors.push(`${id}: line ${i} says "${m[1]}" but option ${i} is ${key.has(i) ? '' : 'not '}keyed`);
+    });
+  }
+  for (const q of bank) if (isChoice(q) && !(String(q.id) in whys)) errors.push(`${q.id}: a choice question with no per-option lines`);
+  return errors;
+}
+{
+  let whys = null;
+  try { whys = JSON.parse(readFileSync(WHYS, 'utf8')); } catch (e) { console.error(`${WHYS}: ${e.message}`); process.exit(1); }
+  const errors = checkOptionWhys(whys, ordered);
+  if (errors.length) {
+    console.error(`${WHYS}: ${errors.length} problem(s)`);
+    for (const e of errors.slice(0, 20)) console.error('  ' + e);
+    process.exit(1);
+  }
+}
+
 const coreText = JSON.stringify(core);
 const explainText = JSON.stringify(explanations);
 

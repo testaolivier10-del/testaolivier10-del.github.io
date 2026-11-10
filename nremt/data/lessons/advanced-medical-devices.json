@@ -104,5 +104,6 @@
       "why": "EMTs do not replace a feeding tube. The opening is covered and the patient is taken to the hospital, where the tube can be replaced properly. Pushing a tube back in can put it in the wrong place."
     }
   ],
+  "description": "Home ventilators, tracheostomies, pacemakers, VADs and feeding tubes: what each device changes in your assessment and what to do when one fails.",
   "summary": "<p>Each home device changes one or two things. Ventilator trouble: take the patient off the machine, ventilate by bag-valve mask and think DOPE; in a tracheostomy, a mucus blockage is the usual cause. Implanted pacemakers and defibrillators: offset the AED pad, and a shock from the implanted device will not harm you. A VAD patient may have no pulse, so judge by pump sound, mental status and skin. Do not replace a feeding tube, keep a catheter bag below the patient, never take a blood pressure on a fistula arm, hold direct pressure on a bleeding fistula, and bring cloudy peritoneal fluid with you. Leave central lines alone and suspect sepsis; a failed VP shunt needs airway care, oxygenation and transport.</p>"
 }
