@@ -42,3 +42,24 @@ Not fully tested: the two 3D tools (NREMT body map, A&P 3D anatomy) hang a headl
 hand. Bio tree-reading's Questions tab was not answered.
 
 Corrected from the first thumbnail pass: physics collision lab and rotation lab are real drawn scenes (leave).
+
+## Built (2026-11-10, branch `claude/tool-fixes`)
+
+Owner: "Go ahead and do all of this." Every FIX and REDESIGN above was built, one builder per course in its own
+worktree; what each changed, verified and left undone is in `done/<task>.md`. An independent A&P accuracy check
+(`done/anp-accuracy-check.md`) found wrong pins on the new pathway and prediction figures; they were repaired
+(`done/anp-pins.md`). The NREMT care drawings load on first use to keep the shell inside its weight budget
+(`done/nremt-weight.md`).
+
+### Left for the owner or a later round
+- NREMT: the 8 new station step lists were written from memory of the NREMT skill sheets (re-read them against
+  the sheets); AED pad placement shown for small children; the body figure is male in every case, the labor
+  scenario included (`docs/nremt-needs-author.md`).
+- A&P: 102 of 208 pathways and 170 of 377 predictions still have no figure (molecular and method topics need new
+  drawings); the 3D anatomy tool's body source is CC BY-SA, which the A&P spec does not allow
+  (`docs/anp-needs-author.md`).
+- Ochem: two reaction predictor outcomes are arguable (`docs/ochem-needs-author.md`). Env Sci: the cycles tool's
+  "Pave land" numbers (`docs/apenv-needs-author.md`).
+- Small: forces drill in the borders lab has no picture; multiplier lab drills use the old bars; a few phone
+  layouts need a short scroll (bio design drills and signal cascade, A&P feedback loops); micro externality drill
+  shades one area as a sliver (graph engine).

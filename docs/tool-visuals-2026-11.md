@@ -59,6 +59,9 @@ scales on the same outline (global and regional, national and local) fades one i
 
 ## Full review and build order
 
+Built 2026-11-10 on `claude/tool-fixes` (all 54 fixes and the redesigns): see "Built" and "Left for the owner" at the
+end of `docs/tool-review/README.md`.
+
 All 145 tools reviewed 2026-11-10: `docs/tool-review/README.md` (totals, redesign list, build order) and one file
 per course beside it. Human Geography left to do: Model Studio's five blank models and stage size (mockups first),
 the borders lab's three scenes.
