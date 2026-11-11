@@ -34,6 +34,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { countryA } from './aphug-country-a.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'human-geography', 'figures', 'base');
@@ -162,23 +163,10 @@ function makeBase(id, title, countries, { width, box, members, tol = 0.45 }) {
   return { id, title, width, height, projection: proj, box, source: SOURCE, features };
 }
 
-/* Country A: invented, eight provinces on a 600 x 400 plane (no projection). */
-export function countryA() {
-  const P = {
-    north: [[60, 40], [250, 20], [300, 120], [180, 160], [70, 140]],
-    northeast: [[250, 20], [470, 30], [520, 110], [400, 150], [300, 120]],
-    east: [[520, 110], [560, 230], [430, 260], [400, 150]],
-    capital: [[300, 120], [400, 150], [430, 260], [320, 270], [260, 200]],
-    west: [[70, 140], [180, 160], [260, 200], [200, 290], [50, 260]],
-    central: [[180, 160], [300, 120], [260, 200]],
-    south: [[200, 290], [260, 200], [320, 270], [300, 370], [160, 360]],
-    coast: [[320, 270], [430, 260], [560, 230], [540, 340], [300, 370]],
-  };
-  const NAMES_A = { north: 'Northern Hills', northeast: 'Lake District', east: 'Eastern Plains', capital: 'Capital Region', west: 'Western Uplands', central: 'Central Valley', south: 'Southern Forest', coast: 'South Coast' };
-  const CODE_A = { north: 'NH', northeast: 'LD', east: 'EP', capital: 'CR', west: 'WU', central: 'CV', south: 'SF', coast: 'SC' };
-  const features = Object.entries(P).map(([id, pts]) => ({ id, name: NAMES_A[id], code: CODE_A[id], d: 'M' + pts.map(p => p.join(' ')).join('L') + 'Z', c: centroid(pts).map(r1) }));
-  return { id: 'country-a', title: 'Country A (invented)', width: 600, height: 400, projection: { name: 'none' }, invented: true, source: 'Invented outline for practice', features };
-}
+/* Country A: invented, eight provinces on a 600 x 400 plane (no projection),
+   drawn with wandering borders, a coast, rivers and a lake by
+   scripts/aphug-country-a.mjs. */
+export { countryA };
 
 /* The metro: an invented metropolitan area on a 600 x 420 plane (no
    projection). Eight suburban cities are wedges between the central city's

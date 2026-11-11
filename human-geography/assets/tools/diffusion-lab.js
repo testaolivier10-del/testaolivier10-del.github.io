@@ -36,7 +36,22 @@
     var k = Math.min((W - 2 * pad) / 510, (H - 2 * pad) / 350), ox = (W - 510 * k) / 2 - 50 * k, oy = (H - 350 * k) / 2 - 20 * k;
     return { k: k, P: function(x, y){ return [n1(ox + x * k), n1(oy + y * k)]; } };
   }
+  /* The drawn Country A (figures/base/country-a.json: wandering borders, the
+     coast, rivers and the lake). The math keeps its own straight-edged POLY for
+     its point tests; until the drawing arrives the picture uses POLY too. */
+  var BASE = null, ONBASE = [];
+  fetch((window.ApHugBase || '../') + 'figures/base/country-a.json').then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(b){ BASE = b; ONBASE.forEach(function(fn){ try { fn(); } catch(e){} }); }).catch(function(){ /* the block outline stays */ });
   function country(F){
+    if(BASE && BASE.scenery){
+      var o = F.P(0, 0), SC = BASE.scenery, id = 'dl-land-' + (country.n = (country.n || 0) + 1);
+      var land = BASE.features.map(function(f){ return '<path d="' + f.d + '"/>'; }).join('');
+      return '<g transform="translate(' + o[0] + ' ' + o[1] + ') scale(' + F.k + ')">' +
+        '<clipPath id="' + id + '">' + land + '</clipPath>' +
+        '<path class="dl-sea" d="' + SC.sea + '"/><g class="dl-prov">' + land + '</g>' +
+        '<g clip-path="url(#' + id + ')">' + (SC.rivers || []).map(function(d){ return '<path class="dl-river" d="' + d + '"/>'; }).join('') +
+        (SC.lake ? '<path class="dl-lake" d="' + SC.lake + '"/>' : '') + '</g></g>';
+    }
     return Object.keys(D.POLY).map(function(id){
       return '<path class="dl-prov" d="M' + D.POLY[id].map(function(q){ var p = F.P(q[0], q[1]); return p[0] + ' ' + p[1]; }).join('L') + 'Z"/>';
     }).join('');
@@ -270,6 +285,7 @@
       var b = $('.dl-go'); if(b && !timer) b.textContent = upto >= last() ? 'Replay' : 'Play';
     }
     function size(){ var f = $('.dl-pic'), r = f ? f.getBoundingClientRect() : { width: 600, height: 420 }; return { W: Math.max(300, Math.round(r.width) || 600), H: Math.max(240, Math.round(r.height) || 420) }; }
+    ONBASE.push(function(){ draw(); });
     function draw(){
       var z = size(), svg = $('.dl-svg'), html, label;
       if(scene === 'diffusion'){
