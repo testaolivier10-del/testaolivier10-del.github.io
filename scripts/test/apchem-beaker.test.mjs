@@ -24,6 +24,24 @@ test('slots: enough distinct places inside the liquid, same for a seed', () => {
   assert.equal(new Set(s.map(p => p.x + ',' + p.y)).size, s.length);
 });
 
+test('slots: molecules never touch (no chains), even the widest, at the scale the beaker draws', () => {
+  const T = ctx.ApChemMath.particles.templ;
+  const atoms = (key, x, y, a, k) => T[key].map(t => { const c = Math.cos(a), s = Math.sin(a); return { x: x + k * (t.dx * c - t.dy * s), y: y + k * (t.dx * s + t.dy * c), r: k * (t.r || 9) }; });
+  const GAS = { x0: 40, x1: 260, y0: 56, y1: 252 };
+  for (const [sp, n] of [[['A2', 'B2', 'AB'], 42], [['A2', 'A'], 28], [['H2', 'I2', 'HI'], 22], [['CO', 'H2O', 'CO2', 'H2'], 22], [['PCl5', 'PCl3', 'Cl2'], 22], [['N2O4', 'NO2'], 22]]) {
+    const ext = P.extentOf(sp.map(m => ({ mol: m })));
+    for (const seed of [1, 3, 9, 77]) {
+      const s = P.slots(n, seed, GAS, ext);
+      assert.ok(s.length >= n);
+      assert.ok(s.k >= 0.5, `${sp} scale ${s.k}`);
+      let worst = Infinity;
+      for (let i = 0; i < s.length; i++) for (let j = i + 1; j < s.length; j++) for (const m1 of sp) for (const m2 of sp)
+        for (const p of atoms(m1, s[i].x, s[i].y, s[i].a, s.k)) for (const q of atoms(m2, s[j].x, s[j].y, s[j].a, s.k)) worst = Math.min(worst, Math.hypot(p.x - q.x, p.y - q.y) - p.r - q.r);
+      assert.ok(worst >= 4, `${sp} seed ${seed}: closest atoms of two molecules ${worst.toFixed(1)} apart`);
+    }
+  }
+});
+
 test('scale: keeps totals under max, ratios close, and every species seen', () => {
   assert.deepEqual({ ...P.scale({ A: 3, B: 0 }, 40).counts }, { A: 3, B: 0 });
   const r = P.scale({ A: 300, B: 100, C: 1 }, 40);
