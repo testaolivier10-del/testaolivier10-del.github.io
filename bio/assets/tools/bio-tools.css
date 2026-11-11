@@ -1442,3 +1442,20 @@
 @media (max-width:999px){ .ls-gb-stage:has(> .ls-gb-table[open]) > .gb-grid,.ls-gb-stage:has(> .ls-gb-table[open]) > .gb-note{display:none;}
   .ls-root .ls-gb-stage:has(> .ls-gb-table[open]) .table-wrap{max-height:none;}
   .ls-root .ls-gb-stage > .ls-gb-table[open]{max-height:none;flex:1 1 auto;} }
+/* Hardy-Weinberg drift (tool review 2026-11): small beads for big pools, Compare and Guess N on the stage */
+.hw-jarsvg .hw-bead.sm{stroke-width:.3;}
+.hw-jarsvg .hw-bead.a.sm{fill:var(--bio-deo2);fill-opacity:.55;}
+.ls-stage.hw-cmp-on .ls-stage-body > :not(.hw-cmp),.ls-stage.hw-guess-on .ls-stage-body > :not(.hw-gstage){display:none !important;}
+.hw-cmp,.hw-gstage{display:grid;gap:10px;align-content:center;width:100%;}
+.hw-cmp[hidden],.hw-gstage[hidden]{display:none;}
+.hw-cmphead{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.hw-cmphead p,.hw-gtitle{margin:0;font:600 15px/1.45 var(--font-ui);}
+.hw-cmpgrid{display:grid;grid-template-columns:repeat(2,minmax(0,300px));justify-content:center;gap:10px;}
+.hw-mini-plot{width:100%;height:auto;background:var(--paper);border-radius:12px;}
+.hw-mini-plot .hw-mt{font:900 14px var(--font-ui);fill:var(--ink);}
+.hw-mini-plot .hw-mf{font:700 11px var(--font-ui);fill:var(--muted);}
+.hw-mini-plot .hw-ma{font:700 10px var(--font-ui);fill:var(--muted);}
+.hw-mini-plot .hw-mg{stroke:var(--line);stroke-width:1;}
+.hw-mini-plot .hw-ml{fill:none;stroke:var(--cink);stroke-width:1.6;stroke-opacity:.75;stroke-linejoin:round;}
+.hw-guessplot{min-width:0;}
+@media (max-width:640px){.hw-cmpgrid{gap:6px;}.hw-cmphead p,.hw-gtitle{font-size:13.5px;}}
