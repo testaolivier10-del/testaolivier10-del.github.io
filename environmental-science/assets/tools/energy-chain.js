@@ -109,26 +109,27 @@
         g += '<rect class="ech-hit" x="2" y="' + n2(a - step / 2 + 2) + '" width="' + n2(mid - bandMax / 2 - 6) + '" height="' + n2(step - 4) + '" rx="10"/>';
         g += (ICON[l.k] || ICON.gen)(24, a, 0.66);
         g += txt(48, a - (isStage ? 2 : -4), esc(SHORT[l.name] || l.name), 'ech-t ech-name');
-        if(isStage) g += txt(48, a + 14, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s');
+        // pass 2: a stage's efficiency shows when it is tapped (the drill shows them all)
+        if(isStage && (on || o.static)) g += txt(48, a + 14, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s');
       } else {
         g += '<rect class="ech-hit" x="' + n2(a - step / 2 + 2) + '" y="8" width="' + n2(step - 4) + '" height="' + n2(mid + bandMax / 2 + 26) + '" rx="10"/>';
         g += (ICON[l.k] || ICON.gen)(a, icy, isz);
         g += txt(a, 18, esc(l.name), 'ech-t ech-name', 'middle');
         // the efficiency sits under the ground line, clear of the band and its waste heat
-        if(isStage) g += txt(a, gY + 22, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s', 'middle');
+        if(isStage && (on || o.static)) g += txt(a, gY + 22, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s', 'middle');
       }
       g += '</g>';
       out.push(g);
       // values never sit on a flow: on a phone inside the band itself, on a
       // wide screen in one row above the widest part of the band
       if(i === 0) out.push(vert ? txt(mid, (at(0) + at(1)) / 2 + 5, '100', 'ech-t ech-ev ech-on-band', 'middle') : txt((at(0) + at(1)) / 2, mid + 5, '100', 'ech-t ech-ev ech-on-band', 'middle'));
-      else if(!vert) out.push(txt(a, mid - bandMax / 2 - 8, f0(l.e), 'ech-t ech-ev', 'middle'));
+      else if(!vert){ if(i === n - 1 || on || o.static) out.push(txt(a, mid - bandMax / 2 - 8, f0(l.e), 'ech-t ech-ev', 'middle')); }
       // phone: halfway to the next stage, inside the band when it is wide enough, else just left of it
       else if(i === n - 1) out.push(txt(mid, a + 16, f0(l.e), 'ech-t ech-ev', 'middle'));
       else out.push(txt(mid - bandMax / 2 - 6, a + step / 2 + 5, f0(l.e), 'ech-t ech-ev', 'end'));
     });
     // where the 100 units end up (wide screens with room)
-    if(!vert && H - cEnd > 80){
+    if(!vert && H - cEnd > 80 && o.static){   // pass 2: the waste numbers under the band already say where the 100 go (Numbers & setup has the table)
       var by = cEnd + 50, bx = A0, bw = A1 - A0, x = bx, parts = [{ v: c.delivered, cls: 'ech-band', t: 'Reaches you ' + f0(c.delivered) }].concat(c.stages.filter(function(s){ return s.waste > 0.05; }).map(function(s){ return { v: s.waste, cls: 'ech-waste', t: (SHORT[s.name] || s.name) + (s.id === 'rotor' ? ': left in the wind ' : ' ') + f0(s.waste), sel: c.stages.indexOf(s) === sel, wind: s.id === 'rotor' }; }));
       out.push(txt(bx, by - 8, 'Where the 100 units end up', 'ech-t ech-b'));
       parts.forEach(function(p){ var ww = bw * p.v / 100; out.push('<rect class="' + p.cls + (p.wind ? ' is-wind' : '') + (p.sel ? ' is-sel' : '') + '" x="' + n2(x) + '" y="' + n2(by) + '" width="' + n2(Math.max(1, ww - 2)) + '" height="22" rx="4"/>'); if(ww > p.t.length * 6.6 + 8) out.push(txt(x + ww / 2, by + 15, p.t, 'ech-t ech-s ech-b ' + (p.cls === 'ech-band' ? 'ech-on-band' : 'ech-on-heat'), 'middle')); x += ww; });
@@ -206,7 +207,7 @@
       var c = E.chain(st.id, 100), S = E.SOURCES[st.id], head, why, pills = [], right = [];
       if(st.view === 'flow'){
         var s = st.sel != null ? c.stages[st.sel] : null;
-        head = s ? s.name + ': ' + Math.round(s.eff * 100) + '% efficient. Of ' + f1(s.ein) + ' units in, ' + f1(s.eout) + ' go on and ' + f1(s.waste) + ' leave as ' + s.lost + '.' : S.name + ': of 100 units of energy, ' + f1(c.delivered) + ' reach your outlet. ' + (st.id === 'wind' ? 'Of the other ' + f1(100 - c.delivered) + ', ' + f1(c.stages[0].waste) + ' stay in the wind that passes the blades and ' + f1(100 - c.delivered - c.stages[0].waste) + ' leave as heat.' : 'The other ' + f1(100 - c.delivered) + ' leave as heat along the way.');
+        head = s ? s.name + ': ' + Math.round(s.eff * 100) + '% efficient. Of ' + f1(s.ein) + ' units in, ' + f1(s.eout) + ' go on and ' + f1(s.waste) + ' leave as ' + s.lost + '.' : S.name + ': of 100 units of energy, ' + f1(c.delivered) + ' reach your outlet. ' + (st.id === 'wind' ? 'Of the other ' + f1(100 - c.delivered) + ', ' + f1(c.stages[0].waste) + ' stay in the wind that passes the blades and ' + f1(100 - c.delivered - c.stages[0].waste) + ' leave as heat.' : 'The other ' + f1(100 - c.delivered) + ' leave as heat along the way.') + ' Tap a machine to see its share.';
         pills = [{ k: 'To you', html: f1(c.total) + '%', tone: 'readout' }];
         right = [{ k: 'CO₂', html: S.co2 ? T.F(S.co2, 2) + ' lb/kWh' : 'none at plant', tone: S.co2 ? 'warn' : 'good' }];
         why = (s ? '<p><b>' + esc(s.name) + '.</b> ' + esc(WHY[s.id] || '') + '</p>' : '') +
