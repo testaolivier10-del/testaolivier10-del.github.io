@@ -13403,6 +13403,7 @@
   },
   {
    "id": "hematocrit-tubes",
+   "look": "tubes",
    "title": "Reading a hematocrit tube",
    "topic": "blood-composition",
    "core": [

@@ -2007,3 +2007,9 @@ Spec decision 91; data in anatomy-physiology/data/tools/anatomy-3d.json.
   teach either).
 - **3d-diaphragm-topic** (pending review). The diaphragm links to Body cavities and serous membranes, where it is
   first taught; Pulmonary ventilation teaches its breathing role in detail. Which should the tool link?
+
+## Tool review 2026-11 (anp-fix)
+- License: the NREMT body map and burn figures (and the A&P 3D anatomy model, decision 91) come from BodyParts3D,
+  CC BY-SA 2.1 Japan. Spec section 2 allows only CC BY or public domain sources in A&P. The rule of nines calculator
+  therefore draws its own body outline instead of reusing the NREMT figure. Owner to decide whether decision 91
+  stands as an exception.

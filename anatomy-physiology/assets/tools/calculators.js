@@ -184,6 +184,7 @@
         '<section class="calc-card" aria-live="off"></section>' +
       '</div>';
     if(ST) ST.add('dock', Q().querySelector('.calc-pickhost'));
+    if(!window.AnpCalcArt) loadArt(function(){});
     var want = (location.hash || '').replace(/^#/, '');
     var last = null; try{ last = localStorage.getItem(PREF); }catch(e){}
     var first = byId(want) ? want : byId(last) ? last : DATA.calculators[0].id;
@@ -401,6 +402,13 @@
     else if(pic.kind === 'balance') { var b = balance(c, env, pic); svg = b.svg; cap = b.cap; }
     else if(pic.kind === 'pump') { var u = pump(c, env, pic); svg = u.svg; cap = u.cap; }
     else if(pic.kind === 'stack') { var k = stack(c, env, pic); svg = k.svg; cap = k.cap; }
+    else {
+      // the families in calc-art.js (tool review 2026-11), loaded on first use
+      if(!window.AnpCalcArt){ var mk = MASK; loadArt(function(){ if(current !== c) return; var was = MASK; MASK = mk; try{ drawPicture(c, env); } finally { MASK = was; } }); return; }
+      var art = null;
+      try{ art = window.AnpCalcArt.draw(pic.kind, c, env, pic, artHelpers()); }catch(e){ art = null; }
+      if(art){ svg = art.svg; cap = art.cap; }
+    }
     if(!svg) return;
     if(MASK){
       // the unknowns stand out, and the caption (which states results) waits for the answer
@@ -412,6 +420,21 @@
     svg.setAttribute('class', 'calc-svg');
     host.appendChild(svg);
     var p = document.createElement('p'); p.className = 'calc-pic-cap'; p.innerHTML = cap; host.appendChild(p);
+  }
+  var artWait = null;
+  function loadArt(cb){
+    if(artWait){ artWait.push(cb); return; }
+    artWait = [cb];
+    var sc = document.createElement('script');
+    sc.src = (window.ANP_BASE || '../') + 'assets/tools/calc-art.js';
+    sc.onload = sc.onerror = function(){ var w = artWait; artWait = null; if(window.AnpCalcArt) w.forEach(function(f){ f(); }); };
+    document.head.appendChild(sc);
+    var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = sc.src.replace(/\.js$/, '.css'); document.head.appendChild(ln);
+  }
+  function artHelpers(){
+    var MK = MASK;
+    return { S: S, grad: grad, clipOf: clipOf, defsOf: defsOf, rbcFill: rbcFill, esc: esc, fmt: fmt, dpOf: dpOf, evaluate: evaluate, phone: phone, reduced: reducedMotion,
+      val: val, fk: fk, hid: hid, anim: function(){ return picAnim; }, alive: function(id){ return id === picAnim; }, mask: MK };
   }
   /* Shared illustration pieces (visual polish 2026-10): gradients are written
      per drawing with unique ids; colors come from the --cp-* tokens in

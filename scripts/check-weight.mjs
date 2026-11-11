@@ -413,6 +413,10 @@ const SHELL_BUDGETS = [
      history and picks exams.js writes for a class (docs/teacher-classes.md). Measured 56.1 KB. */
   /* 56.4 -> 57.5 (tool redesign 2026-11, docs/tool-review/done/anp-redesign.md): the pathway tracer and Predict the
      change load tools/scene.js and .css, the figure plates with numbered pins, route, token and callout. Measured 56.8 KB. */
+  /* 56.4 -> 57.5 (tool review 2026-11): the lab practical opens a tall figure fitted to the width and
+     puts the first-run ring on a label with room; the pixel work (leader lines, drawn extent) is in
+     tools/lab-fit.js, and the new calculator and loop pictures in calc-art.js and loop-scenes.js, all
+     loaded on first use. Lab practical measured 57.2 KB. */
   ['anatomy-physiology', 57.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script

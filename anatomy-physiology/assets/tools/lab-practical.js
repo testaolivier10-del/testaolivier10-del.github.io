@@ -241,6 +241,8 @@
     // being tested (quiz, practical and their review) but shown to study.
     var testing = mode === 'name' || mode === 'point' || mode === 'show';
     var covers = (st.covered || []).concat(testing ? st.hints || [] : []).map(function(c){ return '<span class="lp-cover" aria-hidden="true" style="' + at(c.box, f) + '"></span>'; }).join('');
+    // A covered label's leader line would point at a white box: lp-lines erases it (eraseLeaders).
+    if((st.covered || []).length) covers += '<canvas class="lp-lines" aria-hidden="true" width="' + f.w + '" height="' + f.h + '" data-src="' + esc(BASE + f.src) + '" data-boxes="' + esc(st.covered.map(function(c){ return c.box.join(','); }).join(';')) + '"></canvas>';
     // A label printed with a typo has "fix": the right spelling drawn over it.
     covers += f.fixSvg || '';   // generator-built SVG (scripts/lib/anp-build.mjs fixSvg)
     var boxes = st.labels.map(function(lab){
@@ -293,7 +295,7 @@
   }
   function phoneish(){ try{ return window.matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function scrollToBox(host, lab){
-    var sc = host.querySelector('.lp-scroll.is-zoomed');
+    var sc = host.querySelector('.lp-scroll.is-zoomed, .lp-scroll.lp-fitw');
     var el = host.querySelector('.lp-box[data-label="' + lab.id + '"]');
     if(!sc || !el) return;
     sc.scrollLeft = Math.max(0, el.offsetLeft - sc.clientWidth / 2 + el.offsetWidth / 2);
@@ -320,6 +322,7 @@
     app.innerHTML = '<div class="lp">' + html + '</div>';
     app.classList.add('is-ready');
     if(ST) studioPaint();
+    if(document.querySelector('canvas.lp-lines')) fitLoad(function(F){ F.eraseLeaders(Q()); });
   }
   /* Tool Studio: the figure (with its zoom and credit) is the stage, under
      the set's name; the prompt or first-step line is the caption; the
@@ -404,10 +407,55 @@
     ST.stage.scrollTop = 0;
     root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
     ST.root.classList.toggle('lp-ls-list', !ST.stage.querySelector('.lp-ls-fig'));
+    fitWidth();
     if(!studioPaint.hinted && ST.stage.querySelector('.lp-box')){
       studioPaint.hinted = true;
-      ST.hint({ target: '.ls-stage .lp-box', text: 'Tap a label on the figure' });
+      // The first-run ring goes on the label with the most room round it, so it covers no other label.
+      var bs = [].slice.call(ST.stage.querySelectorAll('.lp-box')), best = null;
+      bs.forEach(function(b){
+        var r = b.getBoundingClientRect(), gap = 1e9;
+        bs.forEach(function(o){ if(o === b) return; var q = o.getBoundingClientRect(); gap = Math.min(gap, Math.max(q.left - r.right, r.left - q.right, q.top - r.bottom, r.top - q.bottom)); });
+        if(!best || gap > best.gap) best = { b: b, gap: gap };
+      });
+      if(best) best.b.classList.add('lp-hint-t');
+      ST.hint({ target: '.ls-stage .lp-hint-t', text: 'Tap a label on the figure' });
     }
+  }
+
+  /* A tall figure in a wide stage (tool review 2026-11): fitted whole, it
+     used about 40% of the width and its printed labels drew at about 6 px.
+     It opens fitted to the width instead (at most 1.6 times the whole-figure
+     size) and the stage scrolls down it; zoom works from there. */
+  /* The leader-line eraser and the drawn-extent measure live in lab-fit.js,
+     loaded on first use (they read the figure's pixels). */
+  var fitWait = null;
+  function fitLoad(cb){
+    if(window.AnpLabFit) return cb(window.AnpLabFit);
+    if(fitWait){ fitWait.push(cb); return; }
+    fitWait = [cb];
+    var sc = document.createElement('script');
+    sc.src = (window.ANP_BASE || '../') + 'assets/tools/lab-fit.js';
+    sc.onload = sc.onerror = function(){ var w = fitWait; fitWait = null; if(window.AnpLabFit) w.forEach(function(f){ f(window.AnpLabFit); }); };
+    document.head.appendChild(sc);
+  }
+  function fitWidth(){
+    var sc = ST.stage.querySelector('.lp-ls-fig .lp-scroll'), fg = sc && sc.querySelector('.lp-fig'), im = fg && fg.querySelector('img');
+    if(!im) return;
+    var ratio = parseFloat(fg.style.getPropertyValue('--lp-ratio')) || 1;
+    fitLoad(function(F){ F.inkBox(im.getAttribute('src'), function(box){
+      if(!document.contains(sc)) return;
+      var cw = sc.clientWidth, ch = sc.clientHeight;
+      if(!cw || !ch) return;
+      var whole = Math.min(cw, ch * ratio), drawn = whole * (box[2] - box[0]);
+      if(drawn >= 0.8 * cw) return;
+      // the drawn part fills the width, up to 1.7 times the whole-figure size
+      var k = Math.min(1.7, cw / drawn);
+      if(k < 1.12) return;
+      sc.classList.add('lp-fitw');
+      sc.style.setProperty('--lp-fw', (whole * k).toFixed(1) + 'px');
+      var z = parseFloat(fg.style.getPropertyValue('--lp-z')) || 1;
+      if(z === 1 && !sc.scrollLeft) sc.scrollLeft = Math.max(0, box[0] * whole * k - (cw - drawn * k) / 2);
+    }); });
   }
 
   /* ---------------------------------------------------------------- routing
