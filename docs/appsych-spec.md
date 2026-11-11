@@ -258,6 +258,9 @@ with one rubric line per point and full-credit samples.
     is still open on phones, two rebuild candidates for the owner: development, social influence). One science
     change, the conditioning lab's spontaneous recovery model, is logged for review in needs-author
     `tool-audit-2026-11`.
+15. (2026-11-10, tool review build) **The four FIX tools of `docs/tool-review/psychology.md` rebuilt in place**
+    (conditioning lab, development, memory lab, neuron); nothing removed, no data or storage keys changed. What
+    changed and what was checked: `docs/tool-review/done/psych.md`.
 
 ## 9. Open items for the owner
 
