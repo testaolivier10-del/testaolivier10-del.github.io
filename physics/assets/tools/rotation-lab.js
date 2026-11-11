@@ -91,16 +91,17 @@
     function narrow(){ return (sceneEl.clientWidth || 600) < 520; }
 
     /* ======================== scene 1: the rolling race */
-    var R0 = { len: 1.6, theta: 25, m: 1, r: 0.05 }, lineup = ['hoop', 'disk', 'sphere'], rt = 0, rdone = false, slow = true;
+    var R0 = { len: 1.6, theta: 25, m: 1, r: 0.05 }, lineup = ['hoop', 'disk', 'sphere'], rt = 0, rdone = false, slow = true, raced = false;
     var rc = ctl('roll');
-    rc.innerHTML = '<div class="rl-chips" role="group" aria-label="Racers">' + ['hoop', 'disk', 'sphere', 'block'].map(function(k){ return '<button type="button" class="bt-btn" data-r="' + k + '" aria-pressed="' + (lineup.indexOf(k) > -1) + '">' + SHORT[k] + '</button>'; }).join('') + '</div>' +
-      '<div class="rl-row ls-act"><button type="button" class="ls-btn ls-pri rl-go">Race</button><button type="button" class="ls-btn rl-reset">Reset</button></div>';
+    // Pass 3: the racer toggles live under Settings; the dock opens on Race and Reset.
+    rc.innerHTML = '<div class="rl-row ls-act"><button type="button" class="ls-btn ls-pri rl-go">Race</button><button type="button" class="ls-btn rl-reset">Reset</button></div>';
     var thS = T.slider({ label: 'Ramp angle', min: 10, max: 40, step: 1, value: R0.theta, unit: '°', decimals: 0, onInput: function(v){ R0.theta = v; rollReset(); } });
+    setEl('roll').insertAdjacentHTML('beforeend', '<p class="bt-small"><b>Racers</b></p><div class="rl-chips" role="group" aria-label="Racers">' + ['hoop', 'disk', 'sphere', 'block'].map(function(k){ return '<button type="button" class="bt-btn" data-r="' + k + '" aria-pressed="' + (lineup.indexOf(k) > -1) + '">' + SHORT[k] + '</button>'; }).join('') + '</div>');
     setEl('roll').appendChild(thS.el);
     setEl('roll').insertAdjacentHTML('beforeend', '<label class="rl-check"><input type="checkbox" class="rl-slow" checked> <span>Slow motion (half speed; the times shown are real)</span></label>' +
       '<p class="bt-small">Every racer has mass ' + gv(R0.m) + ' kg; the round ones have radius ' + gv(R0.r) + ' m. Ramp length ' + gv(R0.len) + ' m. I = β m r²: hoop β = 1, solid disk ½, solid sphere ⅖ (given, not memorized). The block slides without friction (β = 0, nothing turns).</p>');
     setEl('roll').querySelector('.rl-slow').addEventListener('change', function(e){ slow = e.target.checked; });
-    rc.querySelectorAll('[data-r]').forEach(function(b){ b.addEventListener('click', function(){
+    setEl('roll').querySelectorAll('[data-r]').forEach(function(b){ b.addEventListener('click', function(){
       var k = b.getAttribute('data-r'), on = lineup.indexOf(k) > -1;
       if(on && lineup.length <= 2){ say('A race needs at least two racers.', true); return; }
       lineup = on ? lineup.filter(function(x){ return x !== k; }) : lineup.concat([k]);
@@ -108,7 +109,7 @@
       b.setAttribute('aria-pressed', String(!on)); cue.done(); rollReset();
     }); });
     var goR = rc.querySelector('.rl-go');
-    goR.addEventListener('click', function(){ if(rdone) rollReset(); cue.done(); rloop.reset(); rloop.start(); goR.disabled = true; });
+    goR.addEventListener('click', function(){ raced = true; if(rdone) rollReset(); cue.done(); rloop.reset(); rloop.start(); goR.disabled = true; });
     rc.querySelector('.rl-reset').addEventListener('click', rollReset);
     var rloop = S.loop(function(dt){
       rt += slow ? dt / 2 : dt;
@@ -148,7 +149,8 @@
       });
       sceneEl.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="phys-scene" role="img" aria-label="' + esc('A ramp at ' + R0.theta + ' degrees with ' + lineup.length + ' lanes: ' + lineup.map(function(k){ var st = RL.roll.at(k, rt, R0); return SHORT[k] + ' ' + (st.done && rt > 0 ? 'finished in ' + F(st.tEnd, 2) + ' s' : F(st.s, 2) + ' m down'); }).join(', ') + '.') + '">' + defs(did) + out + '</svg>';
       // Energy bars: K_trans, K_rot, and the U still to give up, as shares of m g h.
-      panel.innerHTML = '<div class="rl-bars" role="img" aria-label="' + esc('Energy of each racer as a share of m g h: ' + lineup.map(function(k){ var st = RL.roll.at(k, rt, R0), tot = R0.m * G * R0.len * Math.sin(th); return SHORT[k] + ' translational ' + Math.round(st.K / tot * 100) + '%, rotational ' + Math.round(st.Krot / tot * 100) + '%'; }).join('; ') + '.') + '">' +
+      // Pass 3: the energy bars appear with the first Race, not as gray bars at rest.
+      if(!raced) panel.innerHTML = ''; else panel.innerHTML = '<div class="rl-bars" role="img" aria-label="' + esc('Energy of each racer as a share of m g h: ' + lineup.map(function(k){ var st = RL.roll.at(k, rt, R0), tot = R0.m * G * R0.len * Math.sin(th); return SHORT[k] + ' translational ' + Math.round(st.K / tot * 100) + '%, rotational ' + Math.round(st.Krot / tot * 100) + '%'; }).join('; ') + '.') + '">' +
         lineup.map(function(k){ var st = RL.roll.at(k, rt, R0), tot = R0.m * G * R0.len * Math.sin(th);
           return '<div class="rl-brow"><span class="rl-bl">' + SHORT[k] + '</span><span class="rl-btrack"><i class="rl-kt" style="width:' + (st.K / tot * 100).toFixed(2) + '%"></i><i class="rl-kr" style="width:' + (st.Krot / tot * 100).toFixed(2) + '%"></i><i class="rl-u" style="width:' + (st.U / tot * 100).toFixed(2) + '%"></i></span><span class="rl-bv">' + (st.done && rt > 0 ? F(st.tEnd, 2) + ' s' : F(st.v, 2) + ' m/s') + '</span></div>'; }).join('') +
         '<p class="rl-key"><span><i class="rl-kt"></i><b>K<sub>trans</sub></b></span><span><i class="rl-kr"></i><b>K<sub>rot</sub></b></span><span><i class="rl-u"></i><b>U<sub>g</sub> still to go</b></span></p></div>';
