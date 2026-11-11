@@ -283,7 +283,7 @@
     }
     function whyHtml(curve){
       var X = cur.x, Y = cur.y;
-      return '<h3 class="rl-h">The least-squares line</h3><p>Of every possible line, ' + esc(eqText(F.a, F.b, sig(F.a), sig(F.b))) + ' makes the sum of the squared residuals smallest (' + esc(nf(M.round(F.sse, 2))) + '). Turn on Squares to see them, then Your line to try to beat it. It always passes through (x̄, ȳ) = (' + esc(fx(F.xbar, 2)) + ', ' + esc(fx(F.ybar, 2)) + ').</p>' +
+      return '<h3 class="rl-h">The least-squares line</h3><p>Of every possible line, ' + esc(eqText(F.a, F.b, sig(F.a), sig(F.b))) + ' makes the sum of the squared residuals smallest (' + esc(nf(M.round(F.sse, 2))) + '). Turn on Squares to see them: each square’s side is one residual, measured on the y-axis, so its area is that residual squared, in squared ' + esc(cur.y.unit) + '. Then try Your line to beat it. It always passes through (x̄, ȳ) = (' + esc(fx(F.xbar, 2)) + ', ' + esc(fx(F.ybar, 2)) + ').</p>' +
         '<h3 class="rl-h">Slope</h3><p>' + esc(X.per) + ', the predicted ' + esc(Y.name) + ' ' + (F.b >= 0 ? 'increases' : 'decreases') + ' by about ' + esc(M.fixed(Math.abs(F.b), sig(F.b))) + ' ' + esc(Y.unit) + '. Say “predicted”: individual points scatter around the line.</p>' +
         '<h3 class="rl-h">r and r²</h3><p>r = ' + esc(fx(F.r, 3)) + ' measures the direction and strength of the linear association (' + esc(R.strength(F.r)) + ', ' + esc(R.direction(F.r)) + '; ' + esc(R.RULES.strength) + ') r² = ' + esc(fx(F.r2, 3)) + ': about ' + Math.round(F.r2 * 100) + '% of the variation in ' + esc(Y.name) + ' is accounted for by the linear model using ' + esc(X.name) + '.</p>' +
         '<details class="rl-more"><summary>More: residuals, outliers and extrapolation</summary>' +

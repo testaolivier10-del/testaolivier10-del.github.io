@@ -14,6 +14,7 @@
 
 .uc-axis{stroke:var(--ink);stroke-width:1.4;opacity:.55;}
 .uc-grid{stroke:var(--line);stroke-width:1;}
+.uc-grid.is-soft{stroke-dasharray:2 5;}
 .uc-axl{fill:var(--muted);font-weight:800;font-style:italic;font-size:15px;}
 .uc-tk{fill:var(--muted);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;}
 .uc-circle{fill:none;stroke:var(--ink);stroke-width:2;opacity:.75;}

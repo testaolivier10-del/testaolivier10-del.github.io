@@ -30,6 +30,13 @@ body.stat{
 .sl-fig.is-wide .sl-side{justify-content:center;}
 .sl-fig.is-wide .sl-strip{flex-wrap:wrap;row-gap:4px;white-space:normal;mask-image:none;}
 .sl-fig.is-wide .sl-meansbox{height:min(62%,420px);}
+/* Design randomizer, wide: the bench on the left (its A and B key under it), the results on the right at full
+   height, before and after a run alike. The rows of estimates are the lesson, so each gets real room. */
+.dr-fig.is-wide{grid-template-columns:minmax(0,1.15fr) minmax(320px,1fr);grid-template-rows:minmax(0,1fr) auto;column-gap:22px;row-gap:6px;}
+.dr-fig.is-wide .dr-scenebox{grid-column:1;grid-row:1;}
+.dr-fig.is-wide .dr-trkey{grid-column:1;grid-row:2;}
+.dr-fig.is-wide .sl-side{grid-column:2;grid-row:1 / span 2;justify-content:flex-start;}
+.dr-fig.is-wide .dr-estbox{flex:1 1 auto;height:auto;min-height:240px;}
 .ls-root .stat-ls-stage .sl-fig{flex:1;}
 .ls-root.ls-phone .ls-stage:not(.is-big) .sl-meansbox{height:136px;}
 .sl-strip{flex:none;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;min-height:26px;font:700 calc(12.5px * var(--ls-scale, 1)) var(--font-ui);padding:0 2px;}

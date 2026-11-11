@@ -198,13 +198,19 @@
       var unit = isP ? '' : ' ' + (cur.wA.unit || '');
       /* --- panel 1: the population */
       g.push('<text class="sd-h sd-c-pop" x="' + L + '" y="' + (y1 - 6) + '">Population' + (cur.diff ? 's' : '') + '<tspan class="sd-hs"> ' + esc(popLine(A)) + '</tspan></text>');
+      // the 100 figures are a picture of the proportion, not the whole population: the Explanation's 10% condition
+      // needs a very large population, so the picture says so (review 2026-11-10)
+      // (on a phone it goes under the figures, which give up a line for it; a phone's two-group view has no room)
+      var pNote = base() === 'prop' ? (phone ? (cur.diff ? 0 : 1) : 2) : 0;
+      if(pNote === 2) g.push('<text class="sd-hs sd-ppl-note" x="' + (W - R) + '" y="' + (y1 - 6) + '" text-anchor="end">each figure = 1% of a very large population</text>');
       var rows = cur.diff ? [[A, cur.names[0]], [popB(), cur.names[1]]] : [[A, '']];
       var rh = popH / rows.length;
       rows.forEach(function(rw, ri){
         var pp = rw[0], ry = y1 + ri * rh, rb = ry + rh - (cur.diff ? 4 : 0);
         if(rw[1]) g.push('<text class="sd-tag" x="' + (W - R) + '" y="' + (ry + 13) + '" text-anchor="end">' + esc(rw[1]) + '</text>');
         if(pp.kind === 'prop'){
-          var cols = 20, rws = 5, s = Math.min(pw / cols, (rb - ry - 2) / rws), gx = L + (pw - cols * s) / 2, yes = pattern(Math.round(pp.p * 100));
+          var cols = 20, rws = 5, s = Math.min(pw / cols, (rb - ry - 2 - (pNote === 1 ? 16 : 0)) / rws), gx = L + (pw - cols * s) / 2, yes = pattern(Math.round(pp.p * 100));
+          if(pNote === 1) g.push('<text class="sd-hs sd-ppl-note" x="' + (L + pw / 2) + '" y="' + (ry + rws * s + 15).toFixed(1) + '" text-anchor="middle">each figure = 1% of a very large population</text>');
           for(var k = 0; k < 100; k++){ var c = k % cols, q = Math.floor(k / cols); g.push(ppl(gx + (c + 0.5) * s, ry + (q + 1) * s, s * 0.92, yes.indexOf(k) > -1 ? 'sd-ppl is-yes' : 'sd-ppl')); }
         } else {
           var mx = 0; pp.weights.forEach(function(w){ if(w > mx) mx = w; });
