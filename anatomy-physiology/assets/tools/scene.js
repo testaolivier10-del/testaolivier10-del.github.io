@@ -35,6 +35,25 @@
   function reduced(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
   var uid = 0;
 
+  /* Covered labels (pass 2, 2026-11-10): lab-fit.js (loaded on first use) gives each cover the colour of
+     the drawing around it and paints out its printed leader line. */
+  function blend(img, plate){
+    var pic = img && img.closest('.scn-pic');
+    if(!pic) return;
+    var cv = document.createElement('canvas');
+    cv.className = 'lp-lines scn-lines'; cv.setAttribute('aria-hidden', 'true');
+    cv.width = plate.w; cv.height = plate.h;
+    cv.setAttribute('data-src', img.getAttribute('src'));
+    cv.setAttribute('data-boxes', plate.covered.map(function(b){ return b.map(Math.round).join(','); }).join(';'));
+    pic.insertBefore(cv, pic.querySelector('.scn-cover'));
+    if(window.AnpLabFit) return go();
+    var sc = document.createElement('script');
+    sc.src = BASE() + 'assets/tools/lab-fit.js';
+    sc.onload = go;
+    document.head.appendChild(sc);
+    function go(){ var F = window.AnpLabFit; if(!F) return; F.blendCovers(img, plate); F.eraseLeaders(pic); }
+  }
+
   function make(plate, opt){
     opt = opt || {};
     var W = plate.w, H = plate.h, M = Math.max(W, H);
@@ -51,6 +70,7 @@
       (plate.covered || []).map(function(b){ return '<span class="scn-cover" aria-hidden="true" style="' + at(b) + '"></span>'; }).join('') +
       '</div>' + (plate.attribution && opt.credit !== false ? '<figcaption class="scn-cred">' + plate.attribution + '</figcaption>' : '');
     var pic = fig.querySelector('.scn-pic');
+    if(plate.covered && plate.covered.length) blend(pic.querySelector('img'), plate);
     var id = 'scn' + (++uid);
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, 'class': 'scn-ov', 'aria-hidden': 'true', focusable: 'false', preserveAspectRatio: 'none' });
     svg.style.setProperty('--scn-sw', SW);
