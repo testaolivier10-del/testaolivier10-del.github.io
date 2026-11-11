@@ -41,7 +41,8 @@
       '<div class="tr-chips" hidden></div>' +
       '<div class="tr-desc"></div>' +
       '<fieldset class="bt-ctl tr-rotate"><legend>Rotate a node (swap the branches that come out of it)</legend><div class="bt-buttons"></div></fieldset>' +
-      '<fieldset class="bt-ctl tr-tips"><legend>Select taxa, then ask a question about them</legend><div class="tr-checks"></div>' +
+      '<fieldset class="bt-ctl tr-tipchecks"><legend>Select taxa (or tap their names on the tree)</legend><div class="tr-checks"></div></fieldset>' +
+      '<fieldset class="bt-ctl tr-tips"><legend>Ask about the selected taxa</legend>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="mrca">Most recent common ancestor</button><button type="button" class="btn-press sm alt" data-a="clade">Is this group a clade?</button>' +
       '<button type="button" class="btn-press sm alt" data-a="sister">Find the sister group</button><button type="button" class="bt-btn" data-a="none">Clear the selection</button></div></fieldset>' +
       '<div class="tr-result bt-summary" role="status" aria-live="polite"></div>' +
@@ -166,7 +167,7 @@
       rot.innerHTML = P.internal(st.root).map(function(n){ return '<button type="button" class="bt-btn" data-n="' + n.id + '">Rotate node ' + n.id + '</button>'; }).join('') +
         '<button type="button" class="bt-btn" data-n="0">Restore the first drawing</button>';
       rot.querySelectorAll('[data-n]').forEach(function(b){ b.addEventListener('click', function(){ rotate(+b.getAttribute('data-n')); }); });
-      var box = rc.querySelector('.tr-tips .tr-checks');
+      var box = rc.querySelector('.tr-tipchecks .tr-checks');
       box.innerHTML = t.taxa.map(function(x){ var id = T.nid('tr-t'); return '<div class="bt-check-row"><input type="checkbox" id="' + id + '" value="' + esc(x.id) + '"><label for="' + id + '">' + esc(x.name) + '</label></div>'; }).join('');
       box.querySelectorAll('input').forEach(function(c){ c.addEventListener('change', function(){
         st.sel = Array.prototype.filter.call(box.querySelectorAll('input'), function(x){ return x.checked; }).map(function(x){ return x.value; });
@@ -184,7 +185,7 @@
     function fw0(){ return rc.querySelector('.tr-figwrap'); }
     function reducedM(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
     function toggleTip(id){
-      var box = rc.querySelector('.tr-tips .tr-checks'), cb = Array.prototype.filter.call(box.querySelectorAll('input'), function(x){ return x.value === id; })[0];
+      var box = rc.querySelector('.tr-tipchecks .tr-checks'), cb = Array.prototype.filter.call(box.querySelectorAll('input'), function(x){ return x.value === id; })[0];
       if(cb){ cb.checked = !cb.checked; }
       st.sel = Array.prototype.filter.call(box.querySelectorAll('input'), function(x){ return x.checked; }).map(function(x){ return x.value; });
       st.show = null; refocus = '[data-tip="' + id + '"]'; figure();
@@ -222,12 +223,17 @@
       var sel = rc.querySelectorAll('.tr-place select')[t.characters.indexOf(c)]; if(sel) sel.value = br;
       chips(); figure();
     }
+    var chipsOpen = false;
+    function openChips(e){ var b = e.target.closest && e.target.closest('.tr-chipsopen'); if(!b) return; chipsOpen = true; chips(); var f = rc.querySelector('.tr-chip'); if(f) f.focus(); }
     function chips(){
       var t = tree(), host = rc.querySelector('.tr-chips');
       if(!host) return;
+      if(!host.trOpen){ host.trOpen = true; host.addEventListener('click', openChips); }
       if(!t.characters || st.checked[t.id]){ host.innerHTML = ''; host.hidden = true; return; }
       host.hidden = false;
       var place = st.place[t.id] || {};
+      // pass 2 (2026-11-10): placing characters is its own task, one tap away, so the tree opens calm
+      if(!chipsOpen && !Object.keys(place).length){ host.innerHTML = '<button type="button" class="bt-btn tr-chipsopen">Place the characters on the tree (' + t.characters.length + ')</button>'; return; }
       host.innerHTML = '<span class="bt-small">Place the characters: drag one onto its branch in the tree above, or tap it and then tap a branch.</span>' + t.characters.map(function(c, i){ return '<button type="button" class="tr-chip' + (armed === c.id ? ' armed' : '') + (place[c.id] ? ' placed' : '') + '" data-ch="' + esc(c.id) + '" aria-pressed="' + (armed === c.id) + '"><b>' + (i + 1) + '</b> ' + esc(c.name) + '</button>'; }).join('');
     }
     rc.addEventListener('pointerdown', function(e){ var b = e.target.closest && e.target.closest('.tr-chip'); if(!b) return; drag = { id: b.getAttribute('data-ch'), x: e.clientX, y: e.clientY, moved: false, b: b }; });
@@ -261,7 +267,7 @@
     }
     function act(a){
       var t = tree(), sel = st.sel, names = tipNames(t, sel);
-      if(a === 'none'){ rc.querySelectorAll('.tr-tips input').forEach(function(x){ x.checked = false; }); st.sel = []; st.show = null; figure(); result.textContent = 'Selection cleared.'; return; }
+      if(a === 'none'){ rc.querySelectorAll('.tr-tipchecks input').forEach(function(x){ x.checked = false; }); st.sel = []; st.show = null; figure(); result.textContent = 'Selection cleared.'; return; }
       if(!sel.length){ result.textContent = 'Check at least one taxon first.'; return; }
       if(a === 'mrca'){
         if(sel.length < 2){ result.textContent = 'Check at least two taxa to find their most recent common ancestor.'; return; }
