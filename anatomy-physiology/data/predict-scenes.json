@@ -1,46 +1,14 @@
 {
  "about": "Which scene (data/scenes.json) each Predict the change scenario is drawn on: the place of the change itself (start) and of each variable. Set by hand and checked for accuracy (docs/tool-review/done/anp-redesign.md).",
  "scenarios": {
-  "acid-buffer": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "h-unbuffered": "ptc",
-    "ph-unbuffered": null,
-    "bicarbonate": "ptc",
-    "carbonic": null,
-    "ph-buffered": null
-   }
-  },
-  "pump-blocked": {
-   "scene": "nephron",
-   "start": "ptc",
-   "vars": {
-    "na-in": "ptc",
-    "k-in": "ptc",
-    "volume": null,
-    "atp-use": "ptc",
-    "glucose-uptake": "ptc"
-   }
-  },
   "pressure-dips": {
    "scene": "circulation",
    "start": "aorta",
    "vars": {
     "stretch-signals": null,
     "heart-rate": "heart",
-    "artery-diameter": "syscap",
+    "artery-diameter": "arterioles",
     "pressure-after": "aorta"
-   }
-  },
-  "potassium-rises": {
-   "scene": "nephron",
-   "start": "ptc",
-   "vars": {
-    "k-gradient": "ptc",
-    "k-leak": "ptc",
-    "k-equilibrium": "ptc",
-    "resting": null
    }
   },
   "pacemaker-slowed": {
@@ -66,20 +34,20 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "lv-pressure": "heart",
+    "lv-pressure": "lv",
     "pressure-difference": "heart",
     "velocity": null,
-    "wall": "heart"
+    "wall": "lv"
    }
   },
   "mitral-leak": {
    "scene": "circulation",
    "start": null,
    "vars": {
-    "la-pressure": "heart",
+    "la-pressure": "la",
     "forward": null,
-    "edv": "heart",
-    "pulmonary-veins": "lungcap"
+    "edv": "lv",
+    "pulmonary-veins": "pveins"
    }
   },
   "venous-return-up": {
@@ -116,17 +84,17 @@
   },
   "arterioles-dilate": {
    "scene": "circulation",
-   "start": "syscap",
+   "start": "arterioles",
    "vars": {
-    "radius": "syscap",
-    "tpr": "syscap",
+    "radius": "arterioles",
+    "tpr": "arterioles",
     "map": "aorta",
     "diastolic": "aorta"
    }
   },
   "one-organ-constricts": {
    "scene": "circulation",
-   "start": "syscap",
+   "start": "arterioles",
    "vars": {
     "resistance": null,
     "flow": null,
@@ -142,7 +110,7 @@
     "contractility": "heart",
     "venous-return": "veins",
     "sv": "heart",
-    "tpr": "syscap",
+    "tpr": "arterioles",
     "map": "aorta"
    }
   },
@@ -153,7 +121,7 @@
     "heart-rate": "heart",
     "pr": "heart",
     "contractility": "heart",
-    "tpr": "syscap",
+    "tpr": "arterioles",
     "co": "heart",
     "map": "aorta"
    }
@@ -162,7 +130,7 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "firing": "aorta",
+    "firing": null,
     "vagal": "heart",
     "sympathetic": "heart",
     "heart-rate": "heart",
@@ -171,14 +139,14 @@
   },
   "standing-up": {
    "scene": "circulation",
-   "start": "veins",
+   "start": "legveins",
    "vars": {
     "venous-return": "veins",
     "edv": "heart",
     "sv": "heart",
     "baroreceptor-firing": "aorta",
     "heart-rate": "heart",
-    "tpr": "syscap"
+    "tpr": "arterioles"
    }
   },
   "exercise": {
@@ -189,7 +157,7 @@
     "sv": "heart",
     "co": "heart",
     "muscle-flow": null,
-    "tpr": "syscap",
+    "tpr": "arterioles",
     "gut-flow": "syscap",
     "map": "aorta",
     "pulse-pressure": "aorta"
@@ -200,7 +168,7 @@
    "start": null,
    "vars": {
     "resistance": null,
-    "reserve": "syscap",
+    "reserve": "arterioles",
     "demand": "heart",
     "mismatch": null
    }
@@ -213,17 +181,17 @@
     "chp": "syscap",
     "nfp": null,
     "filtration": "syscap",
-    "interstitial": "syscap"
+    "interstitial": "legcap"
    }
   },
   "standing-still": {
    "scene": "circulation",
    "start": null,
    "vars": {
-    "venous-pressure": "veins",
-    "chp": "syscap",
-    "filtration": "syscap",
-    "ankle-fluid": "syscap",
+    "venous-pressure": "legveins",
+    "chp": "legcap",
+    "filtration": "legcap",
+    "ankle-fluid": "legcap",
     "bcop": "syscap"
    }
   },
@@ -249,7 +217,7 @@
     "baroreceptor-firing": "aorta",
     "heart-rate": "heart",
     "hematocrit": "aorta",
-    "tpr": "syscap",
+    "tpr": "arterioles",
     "chp": "syscap",
     "plasma-volume": "aorta",
     "adh": null,
@@ -262,7 +230,7 @@
    "start": "heart",
    "vars": {
     "ef": "heart",
-    "edv": "heart",
+    "edv": "lv",
     "pulmonary-chp": "lungcap",
     "lung-fluid": "lungcap",
     "heart-rate": "heart",
@@ -272,12 +240,12 @@
   },
   "right-heart-failure": {
    "scene": "circulation",
-   "start": "heart",
+   "start": "rv",
    "vars": {
     "venous-pressure": "veins",
-    "leg-edema": "syscap",
+    "leg-edema": "legcap",
     "lung-flow": "lungcap",
-    "lv-edv": "heart"
+    "lv-edv": "lv"
    }
   },
   "tamponade": {
@@ -297,10 +265,10 @@
    "vars": {
     "plasma-volume": "ptc",
     "osmolarity": "ptc",
-    "adh": "ptc",
-    "thirst": "ptc",
+    "adh": null,
+    "thirst": null,
     "urine-volume": "cd",
-    "renin": "md"
+    "renin": "aff"
    }
   },
   "saline-infusion": {
@@ -309,8 +277,8 @@
    "vars": {
     "blood-volume": "ptc",
     "anp": null,
-    "renin": "md",
-    "adh": "ptc",
+    "renin": "aff",
+    "adh": null,
     "urine": "cd",
     "osmolarity": "ptc",
     "bcop": null
@@ -323,8 +291,8 @@
     "angiotensin-ii": "ptc",
     "aldosterone": "ptc",
     "tpr": null,
-    "map": "ptc",
-    "renin": "md",
+    "map": null,
+    "renin": "aff",
     "potassium": "ptc"
    }
   },
@@ -353,12 +321,12 @@
    "scene": "airway",
    "start": null,
    "vars": {
-    "right-ipp": "diaphragm2",
+    "right-ipp": null,
     "right-tpp": null,
     "right-lung": "lungs",
     "right-air": "lungs",
-    "right-wall": "diaphragm2",
-    "left-lung": "lungs"
+    "right-wall": null,
+    "left-lung": null
    }
   },
   "asthma-attack": {
@@ -438,16 +406,6 @@
     "content": "aorta",
     "bpg": "aorta",
     "share-released": null
-   }
-  },
-  "breath-hold": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "pco2": "ptc",
-    "h": "ptc",
-    "ph": "ptc",
-    "hco3": "ptc"
    }
   },
   "hyperventilation": {
@@ -580,26 +538,6 @@
     "strength": null
    }
   },
-  "aqueduct-blocked": {
-   "scene": "circulation",
-   "start": null,
-   "vars": {
-    "production": null,
-    "lateral": "heart",
-    "fourth": "heart",
-    "pressure": null
-   }
-  },
-  "granulations-clogged": {
-   "scene": "circulation",
-   "start": null,
-   "vars": {
-    "return": "veins",
-    "fourth": "heart",
-    "production": null,
-    "pressure": null
-   }
-  },
   "beta-blocker-metoprolol": {
    "scene": "circulation",
    "start": "heart",
@@ -651,7 +589,7 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "diameter": "syscap",
+    "diameter": "arterioles",
     "pressure": "aorta",
     "sensors": null,
     "vagal": "heart",
@@ -743,7 +681,7 @@
    "vars": {
     "unconjugated": "aorta",
     "sclera": null,
-    "urine-bilirubin": "aorta",
+    "urine-bilirubin": null,
     "hemoglobin": "aorta",
     "reticulocytes": "aorta"
    }
@@ -861,7 +799,7 @@
   },
   "stalk-cut": {
    "scene": "glands",
-   "start": "pit",
+   "start": "stalk",
    "vars": {
     "tsh": "pit",
     "acth": "pit",
@@ -875,7 +813,7 @@
    "vars": {
     "osmo": null,
     "adh": "ptc",
-    "thirst": "ptc",
+    "thirst": null,
     "urine-vol": "cd"
    }
   },
@@ -902,7 +840,7 @@
   },
   "graves-disease": {
    "scene": "glands",
-   "start": "pit",
+   "start": "thyroid",
    "vars": {
     "t4": "thyroid",
     "tsh": "pit",
@@ -918,7 +856,7 @@
     "glucose": null,
     "glucagon": null,
     "urine": "cd",
-    "thirst": "ptc",
+    "thirst": null,
     "weight": null,
     "ph": "ptc",
     "breathing": null
@@ -967,7 +905,7 @@
     "aldo": "ptc",
     "potassium": "ptc",
     "volume": "ptc",
-    "renin": "md"
+    "renin": "aff"
    }
   },
   "steroid-cycle-l4": {
@@ -978,7 +916,7 @@
     "lh": "pit",
     "own-t": "testes",
     "testes": "testes",
-    "androgen": "testes",
+    "androgen": null,
     "brake": "pit"
    }
   },
@@ -1028,7 +966,7 @@
     "blood-flow": null,
     "fluid": "syscap",
     "complement": null,
-    "neutrophils-site": "aorta",
+    "neutrophils-site": "syscap",
     "wbc": null
    }
   },
@@ -1036,7 +974,7 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "tpr": "syscap",
+    "tpr": "arterioles",
     "plasma": "aorta",
     "venous-return": "veins",
     "map": "aorta",
@@ -1048,10 +986,10 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "tpr": "syscap",
+    "tpr": "arterioles",
     "co": "heart",
     "map": "aorta",
-    "leak": "aorta",
+    "leak": "syscap",
     "airways": null,
     "mediators": null
    }
@@ -1082,26 +1020,15 @@
    "vars": {
     "acid": "stomach",
     "gastrin": "stomach",
-    "b12": "si",
+    "b12": "ileum",
     "rbc": null
-   }
-  },
-  "gi-repeated-vomiting": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "ph": "ptc",
-    "chloride": "ptc",
-    "potassium": "ptc",
-    "volume": "ptc",
-    "hr": null
    }
   },
   "gi-daily-nsaid": {
    "scene": "gut",
    "start": "stomach",
    "vars": {
-    "bicarb": "pancreas",
+    "bicarb": "stomach",
     "flow": "stomach",
     "ulcer": null
    }
@@ -1134,7 +1061,7 @@
     "fecal-fat": "colon",
     "protein": "si",
     "duodenal-ph": null,
-    "secretin": "pancreas",
+    "secretin": "duod",
     "emulsify": null,
     "insulin": "pancreas"
    }
@@ -1143,9 +1070,9 @@
    "scene": "gut",
    "start": "stomach",
    "vars": {
-    "cck": "pancreas",
-    "bile-in": "liver",
-    "gallbladder": "liver",
+    "cck": "duod",
+    "bile-in": "duod",
+    "gallbladder": "gall",
     "enzymes": "pancreas",
     "emptying": "stomach"
    }
@@ -1154,7 +1081,7 @@
    "scene": "gut",
    "start": "stomach",
    "vars": {
-    "secretin": "pancreas",
+    "secretin": "duod",
     "juice": "pancreas",
     "venous-ph": "pancreas",
     "gastric-acid": "stomach"
@@ -1164,7 +1091,7 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "portal": "veins",
+    "portal": null,
     "varices": "veins",
     "ascites": null,
     "albumin": "aorta",
@@ -1197,23 +1124,10 @@
    "scene": "gut",
    "start": null,
    "vars": {
-    "b12": "si",
-    "fecal-salts": "liver",
+    "b12": "ileum",
+    "fecal-salts": "colon",
     "fecal-fat": "colon",
     "clotting": null
-   }
-  },
-  "gi-cholera-rehydration-l4": {
-   "scene": "nephron",
-   "start": "ptc",
-   "vars": {
-    "stool": null,
-    "volume": "ptc",
-    "hr": null,
-    "potassium": "ptc",
-    "ph": "ptc",
-    "sodium-in": "ptc",
-    "chloride": "ptc"
    }
   },
   "met-cyanide": {
@@ -1239,7 +1153,7 @@
     "liver-glycogen": "liver",
     "liver-size": "liver",
     "lactate": null,
-    "muscle": "liver"
+    "muscle": null
    }
   },
   "met-diabetes-ketones": {
@@ -1290,7 +1204,7 @@
     "gng": "liver",
     "muscle": null,
     "fatty-acids": null,
-    "brain": null
+    "brain": "head"
    }
   },
   "met-fast-day3": {
@@ -1311,9 +1225,9 @@
    "vars": {
     "muscle-protein": null,
     "glucose-from-aa": null,
-    "brain-glucose": null,
+    "brain-glucose": "head",
     "ketones": "liver",
-    "brain-ketones": "liver",
+    "brain-ketones": "head",
     "urea": "liver",
     "resting-energy": null
    }
@@ -1351,8 +1265,8 @@
     "gbhp": "glom",
     "gfr": "glom",
     "ff": "glom",
-    "ptc": null,
-    "renin": "md",
+    "ptc": "ptc",
+    "renin": "aff",
     "urine": "cd"
    }
   },
@@ -1365,15 +1279,15 @@
     "gfr": "glom",
     "ff": "glom",
     "bcop": "glom",
-    "ptc-p": null,
-    "ptc-cop": null
+    "ptc-p": "ptc",
+    "ptc-cop": "ptc"
    }
   },
   "ur-ureter-blocked": {
    "scene": "nephron",
-   "start": "cd",
+   "start": null,
    "vars": {
-    "chp": null,
+    "chp": "capsule",
     "nfp": "glom",
     "gfr-left": "glom",
     "gfr-right": "glom"
@@ -1387,7 +1301,7 @@
     "eff": null,
     "gbhp": "glom",
     "gfr": "glom",
-    "renin": "md",
+    "renin": "aff",
     "urine": "cd"
    }
   },
@@ -1419,7 +1333,7 @@
    "vars": {
     "excr": "cd",
     "pg": "ptc",
-    "md": "md",
+    "md": null,
     "aff": "aff",
     "gfr": "glom",
     "urine": "cd"
@@ -1427,7 +1341,7 @@
   },
   "ur-adh-blocked": {
    "scene": "nephron",
-   "start": "ptc",
+   "start": "cd",
    "vars": {
     "aqp": "cd",
     "urine-vol": "cd",
@@ -1435,7 +1349,7 @@
     "tal": "asc",
     "posm": "ptc",
     "adh": "ptc",
-    "thirst": "ptc"
+    "thirst": null
    }
   },
   "ur-loop-diuretic": {
@@ -1443,7 +1357,7 @@
    "start": "asc",
    "vars": {
     "tal-na": "asc",
-    "medulla": "ptc",
+    "medulla": "bottom",
     "max-osm": "cd",
     "urine": "cd",
     "vol": "ptc",
@@ -1453,7 +1367,7 @@
   },
   "ur-thiazide": {
    "scene": "nephron",
-   "start": "ptc",
+   "start": "dct",
    "vars": {
     "na": "cd",
     "urine": "cd",
@@ -1488,11 +1402,11 @@
   },
   "ur-hemorrhage-kidney": {
    "scene": "nephron",
-   "start": "ptc",
+   "start": "blood",
    "vars": {
     "rbf": "aff",
     "gfr": "glom",
-    "renin": "md",
+    "renin": "aff",
     "ald": "ptc",
     "adh": "ptc",
     "urine-na": "cd",
@@ -1502,7 +1416,7 @@
   },
   "ur-pressure-natriuresis": {
    "scene": "nephron",
-   "start": "ptc",
+   "start": "blood",
    "vars": {
     "gfr": "glom",
     "int": null,
@@ -1523,7 +1437,7 @@
   },
   "rp-anabolic-fertility": {
    "scene": "glands",
-   "start": "testes",
+   "start": null,
    "vars": {
     "lh": "pit",
     "fsh": "pit",
@@ -1564,7 +1478,7 @@
   },
   "rp-testosterone-therapy": {
    "scene": "glands",
-   "start": "testes",
+   "start": null,
    "vars": {
     "hct": null,
     "lh": "pit",
@@ -1574,7 +1488,7 @@
   },
   "rp-fsh-injections": {
    "scene": "glands",
-   "start": "pit",
+   "start": null,
    "vars": {
     "atresia": "ovaries",
     "mature": "ovaries",
@@ -1583,7 +1497,7 @@
   },
   "rp-nsaid-ovulation": {
    "scene": "glands",
-   "start": "pit",
+   "start": "ovaries",
    "vars": {
     "lh": "pit",
     "meiosis": null,
@@ -1593,7 +1507,7 @@
   },
   "rp-combined-pill": {
    "scene": "glands",
-   "start": "ovaries",
+   "start": null,
    "vars": {
     "fsh": "pit",
     "e2": "ovaries",
@@ -1642,30 +1556,10 @@
     "icf": null,
     "ecf": "ptc",
     "adh": "ptc",
-    "thirst": "ptc",
+    "thirst": null,
     "urine-osm": "cd",
     "urine-flow": "cd",
     "skull": null
-   }
-  },
-  "fab-iv-saline": {
-   "scene": "nephron",
-   "start": "ptc",
-   "vars": {
-    "ecf": "ptc",
-    "plasma": "ptc",
-    "isf": null,
-    "icf": null,
-    "posm": "ptc"
-   }
-  },
-  "fab-d5w": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "icf": null,
-    "posm": "ptc",
-    "plasma": "ptc"
    }
   },
   "fab-lost-hiker": {
@@ -1677,7 +1571,7 @@
     "ecf": "ptc",
     "adh": "ptc",
     "urine": "cd",
-    "thirst": "ptc",
+    "thirst": null,
     "brain": null
    }
   },
@@ -1702,16 +1596,6 @@
     "brain": null
    }
   },
-  "fab-insulin-potassium": {
-   "scene": "nephron",
-   "start": "ptc",
-   "vars": {
-    "pump": "ptc",
-    "plasma-k": "ptc",
-    "total-k": "ptc",
-    "gap": null
-   }
-  },
   "fab-crush-injury": {
    "scene": "circulation",
    "start": null,
@@ -1731,28 +1615,6 @@
     "aldo": "ptc",
     "k": "ptc",
     "mg": "ptc"
-   }
-  },
-  "fab-missed-dialysis": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "k": "ptc",
-    "phos": "ptc",
-    "ca": "ptc",
-    "pth": null,
-    "na": "ptc"
-   }
-  },
-  "fab-hyponatremia-l4": {
-   "scene": "nephron",
-   "start": "ptc",
-   "vars": {
-    "solute": null,
-    "brain": null,
-    "na": "ptc",
-    "posm": "ptc",
-    "damage": null
    }
   },
   "fab-acetazolamide": {
@@ -1778,22 +1640,9 @@
     "new": "ptc"
    }
   },
-  "fab-vomiting": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "hco3": "ptc",
-    "ph": "ptc",
-    "paco2": null,
-    "cl": "ptc",
-    "aldo": "ptc",
-    "k": "ptc",
-    "ica": null
-   }
-  },
   "fab-diarrhea": {
    "scene": "nephron",
-   "start": "ptc",
+   "start": null,
    "vars": {
     "hco3": "ptc",
     "cl": "ptc",
@@ -1839,41 +1688,9 @@
     "gap": "ptc",
     "paco2": null,
     "posm": "ptc",
-    "shift": "ptc",
-    "total-k": "ptc",
+    "shift": null,
+    "total-k": null,
     "urine": "cd"
-   }
-  },
-  "fab-dka-insulin": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "k": "ptc",
-    "glu": null,
-    "ket": null,
-    "gap": "ptc",
-    "ph": "ptc"
-   }
-  },
-  "fab-cardiac-arrest": {
-   "scene": "nephron",
-   "start": null,
-   "vars": {
-    "paco2": null,
-    "hco3": "ptc",
-    "lactate": null,
-    "gap": "ptc",
-    "ph": "ptc"
-   }
-  },
-  "dv-maternal-glucose": {
-   "scene": "glands",
-   "start": null,
-   "vars": {
-    "fglu": null,
-    "mins": "pancreas",
-    "fins": "pancreas",
-    "size": null
    }
   },
   "dv-ibuprofen-ductus": {
@@ -1881,9 +1698,9 @@
    "start": null,
    "vars": {
     "diam": null,
-    "shunt": "lungcap",
+    "shunt": null,
     "lung": "lungcap",
-    "pa": "lungcap"
+    "pa": null
    }
   },
   "dv-antenatal-steroid": {
@@ -1909,7 +1726,7 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "vr": "veins",
+    "vr": "legveins",
     "sv": "heart",
     "bp": "aorta",
     "hr": "heart",
@@ -1918,7 +1735,7 @@
   },
   "dv-blood-volume": {
    "scene": "circulation",
-   "start": "syscap",
+   "start": "arterioles",
    "vars": {
     "aldo": null,
     "plasma": "aorta",
@@ -1942,7 +1759,7 @@
    "scene": "circulation",
    "start": null,
    "vars": {
-    "tpr": "syscap",
+    "tpr": "arterioles",
     "bp": "aorta",
     "plasma": "aorta",
     "prot": null,
@@ -1967,8 +1784,8 @@
     "pvr": "lungcap",
     "lungflow": "lungcap",
     "svr": null,
-    "la": "heart",
-    "ra": "heart",
+    "la": "la",
+    "ra": "ra",
     "fo": null,
     "sao2": null,
     "da": null
@@ -1998,9 +1815,9 @@
   },
   "dv-retained-placenta": {
    "scene": "glands",
-   "start": "ovaries",
+   "start": null,
    "vars": {
-    "p4": "ovaries",
+    "p4": null,
     "milk": null,
     "prl": "pit"
    }
@@ -2058,7 +1875,7 @@
    "scene": "ec",
    "start": "cleft",
    "vars": {
-    "release": "nerve",
+    "release": "terminal",
     "epp": "endplate",
     "ap": "sarco",
     "force": null
@@ -2068,10 +1885,10 @@
    "scene": "ec",
    "start": "cleft",
    "vars": {
-    "release": "cleft",
+    "release": "terminal",
     "time": "cleft",
     "epp": "endplate",
-    "aps": "nerve",
+    "aps": "sarco",
     "choline": null
    }
   },
@@ -2133,26 +1950,6 @@
     "tension": "whole"
    }
   },
-  "mt-mlck-blocked": {
-   "scene": "ec",
-   "start": "myosin",
-   "vars": {
-    "ca": null,
-    "cam": null,
-    "phos": "myosin",
-    "force": "whole"
-   }
-  },
-  "mt-latch-state": {
-   "scene": "ec",
-   "start": null,
-   "vars": {
-    "mlck": null,
-    "cycling": "myosin",
-    "atp": null,
-    "tension": "whole"
-   }
-  },
   "bt-calcium-falls": {
    "scene": "nephron",
    "start": null,
@@ -2206,7 +2003,7 @@
    "start": null,
    "vars": {
     "sebum": "follicle",
-    "apocrine": "sweat",
+    "apocrine": null,
     "odor": null,
     "eccrine": "sweat"
    }
@@ -2249,17 +2046,17 @@
    "start": "epi",
    "vars": {
     "d3": "epi",
-    "blood": "epi",
+    "blood": null,
     "melanin": null
    }
   },
   "ig-kidney-vitamin-d": {
    "scene": "skin",
-   "start": "epi",
+   "start": null,
    "vars": {
     "d3": "epi",
-    "d25": "epi",
-    "active": "epi",
+    "d25": null,
+    "active": null,
     "calcium": null,
     "bone": null
    }
@@ -2275,7 +2072,7 @@
   },
   "ig-burn-depth": {
    "scene": "skin",
-   "start": "updermis",
+   "start": "deepdermis",
    "vars": {
     "pain": null,
     "blisters": "updermis",

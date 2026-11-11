@@ -238,15 +238,15 @@
     "secves": {
      "name": "Secretory vesicle",
      "pt": [
-      470,
-      470
+      522,
+      478
      ]
     },
     "exo": {
      "name": "Plasma membrane: exocytosis",
      "pt": [
-      521,
-      498
+      534,
+      506
      ]
     },
     "mito": {
@@ -259,8 +259,8 @@
     "cytosol": {
      "name": "Cytoplasm",
      "pt": [
-      300,
-      560
+      370,
+      520
      ]
     },
     "lysosome": {
@@ -397,36 +397,36 @@
     "glucose": {
      "name": "Glucose",
      "pt": [
-      457,
-      82
+      470,
+      55
      ]
     },
     "pfk": {
      "name": "Early glycolysis",
      "pt": [
-      470,
-      125
+      468,
+      85
      ]
     },
     "split": {
-     "name": "Two pyruvate molecules",
+     "name": "Six-carbon sugar splits in two",
      "pt": [
-      400,
-      190
+      500,
+      97
      ]
     },
     "glyco": {
      "name": "Glycolysis",
      "pt": [
-      300,
+      540,
       135
      ]
     },
     "gatp": {
      "name": "ATP from glycolysis",
      "pt": [
-      110,
-      140
+      90,
+      98
      ]
     },
     "pyr": {
@@ -467,15 +467,15 @@
     "carriers": {
      "name": "Electrons delivered to the chain",
      "pt": [
-      780,
-      800
+      795,
+      828
      ]
     },
     "chain": {
      "name": "Electron transport chain",
      "pt": [
-      535,
-      885
+      485,
+      962
      ]
     },
     "o2": {
@@ -488,8 +488,8 @@
     "atp": {
      "name": "ATP made by oxidative phosphorylation",
      "pt": [
-      125,
-      860
+      90,
+      893
      ]
     }
    }
@@ -1181,8 +1181,8 @@
     "softpal": {
      "name": "Soft palate",
      "pt": [
-      600,
-      378
+      460,
+      333
      ]
     },
     "oro": {
@@ -1237,8 +1237,8 @@
     "head": {
      "name": "Brainstem",
      "pt": [
-      285,
-      105
+      450,
+      205
      ]
     },
     "thorax": {
@@ -1272,15 +1272,15 @@
     "nose": {
      "name": "Air coming in",
      "pt": [
-      240,
-      195
+      280,
+      228
      ]
     },
     "diaphragm": {
      "name": "Diaphragm",
      "pt": [
-      300,
-      612
+      372,
+      562
      ]
     },
     "ribs": {
@@ -1293,15 +1293,15 @@
     "relax": {
      "name": "Muscles relaxing",
      "pt": [
-      800,
-      470
+      915,
+      440
      ]
     },
     "out": {
      "name": "Air going out",
      "pt": [
-      770,
-      195
+      812,
+      228
      ]
     }
    }
@@ -1475,6 +1475,27 @@
      "pt": [
       330,
       690
+     ]
+    },
+    "arterioles": {
+     "name": "Small arteries and arterioles",
+     "pt": [
+      420,
+      1067
+     ]
+    },
+    "legcap": {
+     "name": "Capillaries of the lower body",
+     "pt": [
+      352,
+      1150
+     ]
+    },
+    "legveins": {
+     "name": "Veins of the lower body",
+     "pt": [
+      290,
+      1033
      ]
     }
    }
@@ -1832,36 +1853,36 @@
     "drg": {
      "name": "Dorsal root ganglion",
      "pt": [
-      250,
-      830
+      352,
+      872
      ]
     },
     "droot": {
      "name": "Dorsal root",
      "pt": [
-      200,
-      842
+      290,
+      813
      ]
     },
     "dhorn": {
      "name": "Dorsal horn",
      "pt": [
-      130,
-      860
+      233,
+      808
      ]
     },
     "vhorn": {
      "name": "Ventral horn",
      "pt": [
-      190,
-      925
+      222,
+      878
      ]
     },
     "sroot": {
      "name": "Ventral root (somatic)",
      "pt": [
-      330,
-      925
+      300,
+      955
      ]
     },
     "muscle": {
@@ -1874,8 +1895,8 @@
     "nmj": {
      "name": "Axon ending at the muscle",
      "pt": [
-      840,
-      1230
+      880,
+      1300
      ]
     }
    }
@@ -2107,36 +2128,36 @@
     "brain": {
      "name": "Brain",
      "pt": [
-      330,
-      80
+      320,
+      140
      ]
     },
     "hypo": {
      "name": "Hypothalamus",
      "pt": [
-      640,
-      113
+      668,
+      108
      ]
     },
     "stalk": {
      "name": "Hypothalamus to pituitary",
      "pt": [
-      642,
-      127
+      682,
+      118
      ]
     },
     "pit": {
      "name": "Pituitary gland",
      "pt": [
-      645,
-      142
+      686,
+      131
      ]
     },
     "pineal": {
      "name": "Pineal gland",
      "pt": [
-      600,
-      95
+      625,
+      96
      ]
     },
     "neck": {
@@ -2149,15 +2170,15 @@
     "adrenal": {
      "name": "Adrenal glands",
      "pt": [
-      372,
-      555
+      410,
+      582
      ]
     },
     "thyroid": {
      "name": "Thyroid gland",
      "pt": [
-      760,
-      350
+      705,
+      370
      ]
     },
     "pancreas": {
@@ -2170,15 +2191,15 @@
     "testes": {
      "name": "Testes",
      "pt": [
-      417,
-      925
+      365,
+      885
      ]
     },
     "ovaries": {
      "name": "Ovaries",
      "pt": [
-      430,
-      800
+      405,
+      785
      ]
     }
    }
@@ -2278,25 +2299,18 @@
       985
      ]
     },
-    "lumbar": {
-     "name": "Lumbar trunk",
-     "pt": [
-      420,
-      800
-     ]
-    },
     "cisterna": {
      "name": "Cisterna chyli",
      "pt": [
-      402,
-      720
+      390,
+      745
      ]
     },
     "duct": {
      "name": "Thoracic duct",
      "pt": [
-      385,
-      560
+      397,
+      643
      ]
     },
     "junction": {
@@ -2511,8 +2525,8 @@
     "pancreas": {
      "name": "Pancreas",
      "pt": [
-      558,
-      870
+      520,
+      903
      ]
     }
    }
@@ -2682,15 +2696,15 @@
     "glom": {
      "name": "Glomerulus",
      "pt": [
-      335,
-      250
+      392,
+      192
      ]
     },
     "capsule": {
      "name": "Capsular space",
      "pt": [
-      432,
-      200
+      460,
+      215
      ]
     },
     "pct": {
@@ -2717,8 +2731,8 @@
     "bottom": {
      "name": "Bottom of the loop",
      "pt": [
-      730,
-      1150
+      755,
+      1218
      ]
     },
     "asc": {
@@ -2726,13 +2740,6 @@
      "pt": [
       785,
       800
-     ]
-    },
-    "md": {
-     "name": "Where the tubule passes its own glomerulus",
-     "pt": [
-      480,
-      330
      ]
     },
     "dct": {
@@ -2766,21 +2773,21 @@
     "ptc": {
      "name": "Capillaries around the tubule",
      "pt": [
-      870,
-      1000
+      822,
+      985
      ]
     },
     "aff": {
      "name": "Afferent arteriole",
      "pt": [
-      250,
-      235
+      280,
+      250
      ]
     },
     "blood": {
      "name": "Blood reaching the kidney",
      "pt": [
-      95,
+      228,
       650
      ]
     }
@@ -2979,8 +2986,8 @@
     "ampulla": {
      "name": "Behind the bladder",
      "pt": [
-      840,
-      140
+      866,
+      172
      ]
     },
     "ejac": {
@@ -3538,36 +3545,36 @@
     "fibrous": {
      "name": "Fibrous membrane of the capsule",
      "pt": [
-      735,
-      600
+      789,
+      720
      ]
     },
     "synovial": {
      "name": "Synovial membrane",
      "pt": [
-      712,
-      640
+      765,
+      655
      ]
     },
     "cavity": {
      "name": "Joint cavity",
      "pt": [
-      520,
-      655
+      600,
+      690
      ]
     },
     "cartilage": {
      "name": "Articular cartilage",
      "pt": [
       520,
-      718
+      724
      ]
     },
     "cartilage2": {
      "name": "Articular cartilage, upper bone",
      "pt": [
       520,
-      598
+      650
      ]
     },
     "bone": {
@@ -3796,28 +3803,28 @@
      "name": "Epidermis",
      "pt": [
       520,
-      235
+      335
      ]
     },
     "updermis": {
      "name": "Upper dermis",
      "pt": [
-      520,
-      330
+      505,
+      392
      ]
     },
     "deepdermis": {
      "name": "Deep dermis",
      "pt": [
-      520,
-      500
+      590,
+      560
      ]
     },
     "hypo": {
      "name": "Hypodermis",
      "pt": [
       520,
-      660
+      800
      ]
     },
     "sweat": {
@@ -3850,15 +3857,15 @@
     "carpals": {
      "name": "Wrist bones",
      "pt": [
-      418,
-      512
+      428,
+      535
      ]
     },
     "scaphoid": {
      "name": "Thumb side of the wrist",
      "pt": [
-      430,
-      500
+      442,
+      533
      ]
     },
     "radius": {
@@ -3871,15 +3878,15 @@
     "humerus": {
      "name": "Humerus",
      "pt": [
-      403,
-      365
+      392,
+      290
      ]
     },
     "glenoid": {
      "name": "Shoulder joint",
      "pt": [
       385,
-      280
+      210
      ]
     },
     "clavicle": {
@@ -3899,57 +3906,57 @@
     "sacrum": {
      "name": "Back of the pelvis",
      "pt": [
-      252,
-      420
+      278,
+      458
      ]
     },
     "ilium": {
      "name": "Ilium",
      "pt": [
-      310,
-      405
+      335,
+      425
      ]
     },
     "acetab": {
      "name": "Hip socket",
      "pt": [
-      318,
-      448
+      322,
+      474
      ]
     },
     "neck": {
      "name": "Femoral neck",
      "pt": [
-      322,
-      470
+      340,
+      486
      ]
     },
     "condyles": {
      "name": "Lower end of the femur",
      "pt": [
-      300,
-      735
+      312,
+      722
      ]
     },
     "tibia": {
      "name": "Tibia",
      "pt": [
-      300,
+      328,
       840
      ]
     },
     "talus": {
      "name": "Ankle",
      "pt": [
-      300,
-      1010
+      318,
+      966
      ]
     },
     "foot": {
-     "name": "Heel and ball of the foot",
+     "name": "Ball of the foot",
      "pt": [
-      300,
-      1050
+      326,
+      1003
      ]
     }
    }
@@ -4004,36 +4011,36 @@
     "sarco": {
      "name": "Sarcolemma",
      "pt": [
-      430,
-      320
+      370,
+      264
      ]
     },
     "ttub": {
      "name": "T tubule",
      "pt": [
-      482,
+      432,
       345
      ]
     },
     "junction": {
      "name": "Where the T tubule meets the SR",
      "pt": [
-      452,
-      382
+      425,
+      432
      ]
     },
     "sr": {
      "name": "Sarcoplasmic reticulum",
      "pt": [
-      300,
-      398
+      200,
+      462
      ]
     },
     "ca": {
      "name": "Calcium leaving the SR",
      "pt": [
       300,
-      470
+      545
      ]
     },
     "troponin": {
@@ -4101,29 +4108,29 @@
     "endo": {
      "name": "Endomysium",
      "pt": [
-      623,
-      497
+      480,
+      487
      ]
     },
     "peri": {
      "name": "Perimysium",
      "pt": [
-      600,
-      440
+      468,
+      452
      ]
     },
     "epi": {
      "name": "Epimysium",
      "pt": [
-      360,
-      83
+      347,
+      200
      ]
     },
     "tendon": {
      "name": "Tendon end of the muscle",
      "pt": [
-      90,
-      80
+      105,
+      140
      ]
     }
    }

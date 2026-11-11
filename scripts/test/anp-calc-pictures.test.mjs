@@ -15,7 +15,7 @@ const KINDS = { tube: ['flow'], wave: ['sbp', 'dbp'], balance: ['net'], pump: ['
 const ART = readFileSync(new URL('anatomy-physiology/assets/tools/calc-art.js', ROOT), 'utf8');
 for (const k of [...ART.matchAll(/^  F\.(\w+) = function/gm)].map(m => m[1])) KINDS[k] = [];
 // words in a picture, not value keys
-const WORDS = new Set(['kind', 'flowUnit', 'unit', 'where', 'mode', 'label', 'title', 'cap', 'name', 'end', 'tone', 'layout', 'foot', 'cls', 'levels']);
+const WORDS = new Set(['kind', 'flowUnit', 'unit', 'where', 'mode', 'label', 'title', 'cap', 'name', 'end', 'tone', 'layout', 'foot', 'cls', 'levels', 'legendTitle']);
 // every value key a picture names: top-level strings that are not words, any "key", "...Key", and nested lists
 function keysOf(pic, top = true) {
   const out = [];

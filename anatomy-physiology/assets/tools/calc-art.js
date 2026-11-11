@@ -51,12 +51,14 @@
       function y(v){ return B - (v + 80) / 120 * (B - T); }
       svg.appendChild(S('rect', { x: L, y: T, width: R - L, height: B - T, rx: 6, 'class': 'cp-plot' }));
       [-70, 0, 30].forEach(function(v){ svg.appendChild(S('line', { x1: L, x2: R, y1: y(v), y2: y(v), 'class': 'cp-grid' })); svg.appendChild(S('text', { x: L - 4, y: y(v) + 3.5, 'text-anchor': 'end', 'class': 'cp-tick' }, String(v))); });
-      var d = 'M' + L + ',' + y(-70);
+      var d = 'M' + L + ',' + y(-70), v0 = -70;
       for(var k = 0; k < n; k++){
         var t0 = k * arp, w = arp;
         svg.appendChild(S('rect', { x: x(t0), y: T, width: Math.max(1, x(t0 + w) - x(t0)), height: B - T, 'class': 'ca-arp' + (k % 2 ? ' alt' : '') }));
-        // a spike: up fast, down, a small undershoot, back to rest at the end of the refractory period
-        d += ' L' + x(t0 + w * 0.04).toFixed(1) + ',' + y(-70) + ' L' + x(t0 + w * 0.16).toFixed(1) + ',' + y(30) + ' L' + x(t0 + w * 0.34).toFixed(1) + ',' + y(-75) + ' L' + x(t0 + w * 0.6).toFixed(1) + ',' + y(-72) + ' L' + x(t0 + w).toFixed(1) + ',' + y(-70);
+        // a spike fills its absolute refractory period: up to the peak and down through repolarization. At the ceiling
+        // the next spike starts as soon as it ends, in the relative refractory period, so no undershoot is drawn.
+        d += ' L' + x(t0 + w * 0.05).toFixed(1) + ',' + y(v0) + ' L' + x(t0 + w * 0.3).toFixed(1) + ',' + y(30) + ' L' + x(t0 + w * 0.6).toFixed(1) + ',' + y(-48) + ' L' + x(t0 + w).toFixed(1) + ',' + y(-64);
+        v0 = -64;
       }
       svg.appendChild(S('path', { d: d, 'class': 'ca-mv' }));
       svg.appendChild(S('path', { d: 'M' + x(0) + ',' + (T - 6) + ' H' + x(arp), 'class': 'ca-span' }));
@@ -64,7 +66,7 @@
       svg.appendChild(S('text', { x: (L + R) / 2, y: B + 18, 'text-anchor': 'middle', 'class': 'cp-tick' }, 'time: ' + n + ' refractory periods, ' + H.fmt(span, span < 10 ? 1 : 0) + ' ms'));
       svg.appendChild(S('text', { x: 10, y: (T + B) / 2, 'text-anchor': 'middle', transform: 'rotate(-90 10 ' + (T + B) / 2 + ')', 'class': 'cp-tick' }, 'mV'));
       svg.appendChild(S('text', { x: (L + R) / 2, y: H0 - 8, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, 'at most ' + H.val(c, env, p.rate) + ' impulses per second'));
-      return { svg: svg, cap: 'Each impulse is followed by its absolute refractory period (shaded), when no new impulse can start. Back to back, they fit <b>' + H.val(c, env, p.rate) + '</b> into one second.' };
+      return { svg: svg, cap: 'Shaded: each impulse\'s absolute refractory period, from its rise through most of its fall, when no new impulse can start. Back to back, they fit <b>' + H.val(c, env, p.rate) + '</b> into one second. Each new impulse then starts in the relative refractory period (it needs a stronger stimulus), before any undershoot.' };
     }
     // summation at the trigger zone
     var rest = env[p.rest], thr = env[p.thr], ne = Math.round(env[p.ne]), ni = Math.round(env[p.ni]), e = env[p.e], ii = env[p.i], vm = env[p.vm], fire = vm >= thr;
@@ -143,10 +145,14 @@
     }
     var d = env[p.d], v = env[p.v], ms = env[p.t], Hh2 = 150; svg = S('svg', { viewBox: '0 0 ' + W + ' ' + Hh2 });
     var x0b = 30, full = 300, len = clamp(d / 2, 0.02, 1) * full, y = 70, my = v > 10;
-    svg.appendChild(S('circle', { cx: x0b - 6, cy: y, r: 14, 'class': 'ca-soma' }));
+    // the stretch of axon measured, start to arrival: no cell body, since the impulse may run either way along a
+    // sensory or a motor fiber (the touch preset runs foot to spinal cord)
     svg.appendChild(S('line', { x1: x0b, x2: x0b + len, y1: y, y2: y, 'class': 'ca-axon' }));
+    svg.appendChild(S('path', { d: 'M' + x0b + ',' + (y - 12) + ' V' + (y + 12), 'class': 'ca-pinl ca-p2' }));
+    svg.appendChild(S('text', { x: x0b, y: y - 18, 'text-anchor': 'middle', 'class': 'cp-tick' }, 'start'));
+    svg.appendChild(S('path', { d: 'M' + (x0b + len) + ',' + (y - 12) + ' V' + (y + 12), 'class': 'ca-pinl ca-p2' }));
+    if(len > 50) svg.appendChild(S('text', { x: x0b + len, y: y - 18, 'text-anchor': 'middle', 'class': 'cp-tick' }, 'arrives'));
     if(my) for(var s = x0b + 6; s < x0b + len - 10; s += 22) svg.appendChild(S('rect', { x: s, y: y - 6, width: 18, height: 12, rx: 6, 'class': 'ca-myelin' }));
-    svg.appendChild(S('path', { d: 'M' + (x0b + len) + ',' + y + ' l8,-8 M' + (x0b + len) + ',' + y + ' l8,0 M' + (x0b + len) + ',' + y + ' l8,8', 'class': 'ca-axon ca-term' }));
     var imp = S('circle', { cx: x0b, cy: y, r: 6, 'class': 'ca-imp' }); svg.appendChild(imp);
     svg.appendChild(S('path', { d: 'M' + x0b + ',' + (y + 26) + ' H' + (x0b + len), 'class': 'ca-span' }));
     svg.appendChild(S('text', { x: x0b + len / 2, y: y + 42, 'text-anchor': 'middle', 'class': 'cp-t' }, H.fmt(d, d < 0.1 ? 3 : 2) + ' m at ' + H.fmt(v, v < 10 ? 1 : 0) + ' m/s' + (my ? ' (myelinated)' : '')));
@@ -524,7 +530,7 @@
   /* ------------------------------------------------------------ scale */
   /* rows: [{ key, unit, min, max, bands:[{from,to,label,tone}], label, marks:[{key,label}] , dp }] */
   F.scale = function(c, env, p, H){
-    var S = H.S, W = 360, rows = p.rows, rh = 84, Hh = rows.length * rh + (p.title ? 22 : 8), svg = S('svg', { viewBox: '0 0 ' + W + ' ' + Hh }), L = 20, R = 340;
+    var S = H.S, W = 360, rows = p.rows, rh = 84, Hh = rows.length * rh + (p.title ? 22 : 8) + (p.legend ? 20 : 0), svg = S('svg', { viewBox: '0 0 ' + W + ' ' + Hh }), L = 20, R = 340;
     if(p.title) svg.appendChild(S('text', { x: W / 2, y: 14, 'text-anchor': 'middle', 'class': 'cp-v' }, p.title));
     rows.forEach(function(r, i){
       var y = (p.title ? 22 : 8) + i * rh + 38, lo = r.min, hi = r.max;
@@ -555,6 +561,16 @@
         svg.appendChild(S('text', { x: tx, y: ty, 'text-anchor': 'middle', 'class': 'cp-v ' + (m.cls || (j ? 'ca-p2' : 'ca-p1')) + '-t' }, txt));
       });
     });
+    // legend: [{ tone, label }], one swatch per band colour, for bands too narrow to carry their own words
+    if(p.legend){
+      var lw2 = p.legend.reduce(function(a, g){ return a + 30 + g.label.length * 5.6; }, (p.legendTitle ? p.legendTitle.length * 5.6 + 8 : 0)), lx = (W - lw2) / 2, ly = Hh - 10;
+      if(p.legendTitle){ svg.appendChild(S('text', { x: lx, y: ly, 'class': 'cp-tick' }, p.legendTitle)); lx += p.legendTitle.length * 5.6 + 8; }
+      p.legend.forEach(function(g){
+        svg.appendChild(S('rect', { x: lx, y: ly - 9, width: 12, height: 10, rx: 2, 'class': 'ca-band tone-' + g.tone }));
+        svg.appendChild(S('text', { x: lx + 16, y: ly, 'class': 'cp-tick' }, g.label));
+        lx += 30 + g.label.length * 5.6;
+      });
+    }
     var cap = p.cap ? fillCap(p.cap, c, env, H) : 'Where the value falls on its scale; the shaded band is the usual range.';
     return { svg: svg, cap: cap };
   };
