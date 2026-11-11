@@ -297,7 +297,7 @@
 
   /* ------------------------------------------------------- pictures */
   function graphSvg(s, w, h){
-    var M = window.ApChemMath, sp = s.rx.species, hist = s.hist, L = 44, R = 10, Tp = 12, B = 34, pw = w - L - R, ph = h - Tp - B;
+    var M = window.ApChemMath, sp = s.rx.species, hist = s.hist, L = 54, R = 10, Tp = 12, B = 34, pw = w - L - R, ph = h - Tp - B;
     if(!hist.length) return '';
     var t1 = Math.max(10, hist[hist.length - 1][0]), t0 = Math.max(0, t1 - 30);
     var vis = hist.filter(function(r){ return r[0] >= t0; });
@@ -460,7 +460,8 @@
       // On a phone the graph takes what is left of the stage, so nothing in
       // the stage scrolls; on a desktop it keeps a 2:1 shape.
       var stg = LS && narrow ? LS.root.querySelector('.ls-stage') : null, room = stg ? stg.getBoundingClientRect().bottom - bb.top - 26 : 0;
-      var w = Math.max(280, Math.round(bb.width || 520)), h = narrow ? Math.max(150, Math.min(240, Math.round(room || 170))) : Math.max(170, Math.min(280, Math.round(w * 0.5)));
+      // On the wide stage the graph fills the height its row has.
+      var w = Math.max(280, Math.round(bb.width || 520)), h = narrow ? Math.max(150, Math.min(240, Math.round(room || 170))) : LS && bb.height > 200 ? Math.min(Math.round(w * 1.1), Math.round(bb.height) - 4) : Math.max(170, Math.min(280, Math.round(w * 0.5)));
       if(tab === 'graph') box.innerHTML = graphSvg(sim, w, h);
       else if(tab === 'mb'){ var m = mbSvg(sim, w, h - 22, mag); box.innerHTML = '<p class="ek-share">At least E<sub>a</sub>: <b>' + M.fmt(m.share, 2) + '</b> of molecules' + (Math.abs(m.share / m.share0 - 1) > 0.02 ? ' (×' + M.fmt(m.share / m.share0, 2) + ' vs ' + rx.T[2] + ' K' + (sim.cat ? ' without catalyst' : '') + ')' : '') + '</p>' + m.svg; }
       else box.innerHTML = ratesHtml(r);
@@ -551,7 +552,7 @@
         host.innerHTML = '<figure class="cd-fig ek-qfig"><div class="ek-vessel"><canvas class="ek-canvas" role="img"></canvas></div><div class="ek-gaugebox"></div><div class="ek-plot"></div><figcaption class="bt-small ek-qcap">At equilibrium. The change is applied after your last answer.</figcaption></figure>';
         var sim = Sim(rx, {}); sims.push(sim);
         sim.attach(host.querySelector('canvas'));
-        var paint = function(){ host.querySelector('.ek-gaugebox').innerHTML = gaugeHtml(sim); var b = host.querySelector('.ek-plot').getBoundingClientRect(); host.querySelector('.ek-plot').innerHTML = graphSvg(sim, Math.max(280, Math.round(b.width || 480)), 170); host.querySelector('canvas').setAttribute('aria-label', sim.describe()); };
+        var paint = function(){ host.querySelector('.ek-gaugebox').innerHTML = gaugeHtml(sim); var b = host.querySelector('.ek-plot').getBoundingClientRect(); host.querySelector('.ek-plot').innerHTML = graphSvg(sim, Math.max(280, Math.round(b.width || 480)), Math.max(150, Math.min(240, Math.round(b.height || 170)))); host.querySelector('canvas').setAttribute('aria-label', sim.describe()); };
         sim.on(paint); sim.start(); paint();
         api.sim = sim;
       },
