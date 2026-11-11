@@ -305,10 +305,10 @@
 .ef-chain li{display:flex;align-items:center;gap:6px;}
 .ef-chain li+li::before{content:"→";font-weight:900;color:var(--muted);margin-right:2px;}
 .ef-chain li b{background:var(--paper);border-radius:10px;padding:4px 8px;}
-.bt-fig svg.ef-pyr{max-height:none;max-width:420px;margin:0 auto;}
+.bt-fig svg.ef-pyr{max-height:none;max-width:460px;margin:0 auto;}
 .ef-pyr text{fill:var(--ink);}
-.ef-pyr .ef-ttl{font:900 14px var(--font-ui);}
-.ef-pyr .ef-lab{font:700 12px var(--font-ui);}
+.ef-pyr .ef-ttl{font:900 16px var(--font-ui);}
+.ef-pyr .ef-lab{font:700 14px var(--font-ui);}
 .ef-pyr .ef-bar{stroke-width:1.6;}
 .ef-pyr .ba.ef-o.l0{color:#3FA34D;} .ef-pyr .ba.ef-o.l1{color:#9BC53D;} .ef-pyr .ba.ef-o.l2{color:#2E9C6A;} .ef-pyr .ba.ef-o.l3{color:#C9A227;} .ef-pyr .ba.ef-o.l4{color:#8A5A3B;}
 .ef-pyr .ef-bar.en{fill:var(--bio-para-fill);stroke:var(--bio-para);}
