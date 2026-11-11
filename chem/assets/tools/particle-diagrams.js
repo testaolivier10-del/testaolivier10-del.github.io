@@ -214,7 +214,8 @@
       var counts = {}; keys.forEach(function(k){ counts[k] = mine[k]; });
       var a0 = M.atomsOf(before), a1 = M.atomsOf(counts), off = Object.keys(a0).filter(function(el){ return a0[el] !== (a1[el] || 0); }).length;
       var any = keys.some(function(k){ return mine[k] > 0; });
-      LS.pills([!any ? { html: 'Your box is empty', tone: 'ghost' } : off ? { html: off + ' element' + (off === 1 ? '' : 's') + ' not balanced', tone: 'warn' } : { html: 'Every atom conserved ✓', tone: 'good' }], 'right', 'explore');
+      // An empty box says so inside itself; no pill repeats it (pass 2).
+      LS.pills([!any ? null : off ? { html: off + ' element' + (off === 1 ? '' : 's') + ' not balanced', tone: 'warn' } : { html: 'Every atom conserved ✓', tone: 'good' }].filter(Boolean), 'right', 'explore');
       SP.setup(TITLE[p.type]);
     }
     function check(){

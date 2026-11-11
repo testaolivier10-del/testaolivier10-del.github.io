@@ -1338,3 +1338,6 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .chem-ls-stage .ek-tabs{flex-wrap:nowrap;}
 .ls-root .chem-ls-stage .ek-tabs-k{display:none;}
 .ls-root .chem-ls-stage .ek-tab{white-space:nowrap;}
+/* Particle diagrams (pass 2): the pill row keeps its room while the box is
+   empty (no pill then), so the boxes do not jump on the first tap. */
+.ls-root:has(.chem-ls-stage .pb-boxes) .ls-pills{display:flex;min-height:44px;}
