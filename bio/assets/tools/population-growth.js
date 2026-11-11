@@ -244,7 +244,9 @@
       var fw = FW * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1), fh = FH * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1);
       var sl = slotList(), out = [];
       // one rabbit drawing (ApBioArt) reused for every individual; grass tufts on the field
-      var A = window.ApBioArt, sym = A ? '<defs><symbol id="pg-rab" viewBox="-12 -12 24 24" overflow="visible">' + A.icon('rabbit', 0, 0, 24, '') + '</symbol></defs>' : '';
+      var A = window.ApBioArt, sym = A ? '<defs><symbol id="pg-rab" viewBox="-12 -12 24 24" overflow="visible">' + A.icon('rabbit', 0, 0, 24, '').replace('<g class="ba ', '<g style="color:inherit" class="ba ') + '</symbol></defs>' : '';
+      // pass 3: the rabbits take the rabbit brown of .pg-ind (the icon's own green read as an unknown creature); births this year are a warmer tan
+      sym += '<style>svg.pg-fieldsvg use.pg-ind.new{color:#C9853F;fill:#C9853F}:root[data-theme="dark"] svg.pg-fieldsvg use.pg-ind.new{color:#E6A866;fill:#E6A866}svg.pg-fieldsvg .pg-tagbg{fill:var(--paper);opacity:.92}</style>';
       out.push(sym + '<clipPath id="pg-clip"><rect x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/></clipPath><rect class="pg-ground" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/>');
       if(A){ var tg = M.rng(77), tufts = ''; for(var tt = 0; tt < 26; tt++){ var tx = 8 + tg() * (FW - 16), ty = 10 + tg() * (FH - 20); tufts += 'M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l-2 -5M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l0 -6M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l2 -5'; } out.push('<path class="pg-tuft" d="' + tufts + '"/>'); }
       if(log) out.push('<rect class="pg-fence" x="' + ((FW - fw) / 2).toFixed(1) + '" y="' + ((FH - fh) / 2).toFixed(1) + '" width="' + fw.toFixed(1) + '" height="' + fh.toFixed(1) + '" rx="10"/><text class="pg-flab" x="' + ((FW + fw) / 2 - 6).toFixed(1) + '" y="' + ((FH - fh) / 2 > 18 ? (FH - fh) / 2 - 5 : (FH - fh) / 2 + 14).toFixed(1) + '" text-anchor="end">K = ' + n0(p.K) + '</text>');
@@ -269,7 +271,9 @@
       });
       if(hits.length) out.push('<text class="pg-flab pg-hit" x="' + (FW / 2) + '" y="' + (FH / 2 - 10) + '" text-anchor="middle">' + esc(hits.map(function(e){ return e.label + ': ' + pct(e.f) + ' lost'; }).join(' + ')) + '</text>');
       var lab = 'Year ' + F(t, 0) + ': N = ' + n0(p.N) + (log ? ' of K = ' + n0(p.K) + (p.N >= p.K * 0.95 ? ', the habitat is full' : p.N > p.K / 2 ? ', crowding slows growth' : ', plenty of room') : '') + (per > 1 ? '. One rabbit drawn is ' + per + ' individuals.' : '.') + (hits.length ? ' ' + hits.map(function(e){ return e.label + ' this year: ' + pct(e.f) + ' lost.'; }).join(' ') : '') + ' Below, the population size so far, year by year' + (log ? ', with K dashed' : '') + '.';
-      out.push('<text class="pg-flab" x="8" y="' + (FH - 8) + '">' + esc('Year ' + F(t, 0) + (per > 1 ? ' · 1 drawn = ' + n0(per) : '')) + '</text>');
+      // the year tag sits on its own paper chip so the rabbits never print over it
+      var tag = 'Year ' + F(p.t, 0) + (per > 1 ? ' · 1 rabbit = ' + n0(per) : '');
+      out.push('<rect class="pg-tagbg" x="4" y="' + (FH - 26) + '" width="' + (tag.length * 6.7 + 12).toFixed(0) + '" height="22" rx="8"/><text class="pg-flab" x="9" y="' + (FH - 10) + '">' + esc(tag) + '</text>');
       out.push(curveSvg(sim, t, FH + 8));
       field.innerHTML = '<svg class="pg-fieldsvg" viewBox="0 0 ' + FW + ' ' + (FH + 8 + GH) + '" role="img" aria-label="' + esc(lab) + '">' + out.join('') + '</svg>';
       card.querySelector('.pg-clock').textContent = '';
@@ -289,9 +293,10 @@
     card.querySelector('[data-a="play"]').addEventListener('click', function(){
       if(playT){ cancelAnimationFrame(playT); playT = 0; }
       if(reducedM()){ ctl.read.set(st.tEnd, true); return; }
-      var sim = Pop.simulate(cond()), t0 = null, D = 5000;
+      var t0 = null, D = 5000;
+      // pass 3: the run is simulated from the current settings each frame (a model switched mid-Play used to leave the old curve)
       var go = function(ts){ if(t0 == null) t0 = ts; var u = Math.min(1, (ts - t0) / D), t = Math.round(u * st.tEnd);
-        if(t !== st.readT){ ctl.read.set(t, true); } else drawField(sim, t);
+        if(t !== st.readT){ ctl.read.set(t, true); } else drawField(Pop.simulate(cond()), t);
         if(u < 1) playT = requestAnimationFrame(go); else playT = 0; };
       ctl.read.set(0, true);
       playT = requestAnimationFrame(go);
