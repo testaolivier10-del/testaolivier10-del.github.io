@@ -1424,3 +1424,21 @@
 .ez-ki{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;}
 .ls-root.ls-phone .ls-stage .ez-bar{flex-wrap:nowrap;gap:8px;}
 .ls-root.ls-phone .ls-stage .ez-key{flex:1 1 auto;min-width:0;font-size:12.5px;line-height:1.25;gap:2px 10px;}
+/* Graph builder (tool review 2026-11): in the studio dock the points table stacks like on a phone, so the
+   y and error-bar inputs are never cut off at the right; the data set choice sits at the top of the dock. */
+.ls-dock .gb-pts thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+.ls-dock .gb-pts tr{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);}
+.ls-dock .gb-pts th,.ls-dock .gb-pts td{border:0;padding:0;}
+.ls-dock .gb-pts th[scope=row]{flex:1 0 100%;}
+.ls-dock .gb-pts td{display:flex;align-items:center;gap:6px;}
+.ls-dock .gb-pts td::before{content:attr(data-col);font:800 13px var(--font-ui);color:var(--muted);min-width:1ch;}
+.ls-dock .gb-pts .gb-adj{gap:3px;}
+.ls-dock .gb-pts .gb-adj button{min-width:40px;}
+.ls-dock .gb-pts input{width:6ch;}
+.ls-dock .gb-pts .table-wrap,.ls-dock .table-wrap:has(.gb-pts){overflow-x:visible;}
+.ls-dock .gb-pick{margin:0 0 10px;}
+.ls-dock .gb-pick .bt-ctl{margin:0;}
+/* On a phone, while the data table is open (the first steps) it has the stage to itself; closing it shows the grid. */
+@media (max-width:999px){ .ls-gb-stage:has(> .ls-gb-table[open]) > .gb-grid,.ls-gb-stage:has(> .ls-gb-table[open]) > .gb-note{display:none;}
+  .ls-root .ls-gb-stage:has(> .ls-gb-table[open]) .table-wrap{max-height:none;}
+  .ls-root .ls-gb-stage > .ls-gb-table[open]{max-height:none;flex:1 1 auto;} }

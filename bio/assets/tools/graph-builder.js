@@ -317,7 +317,7 @@
      "Plot the data | Free plot" is the mode switch; the data table stays
      in sight on the stage under the grid (a disclosure that can be
      closed for a bigger grid); after Check, the feedback is under Why; the
-     data set choice is in Details. Every render of the steps (a new data set) is re-arranged. */
+     data set choice is at the top of the dock. Every render of the steps (a new data set) is re-arranged. */
   function studio(app, s, slug){
     var form = app.querySelector('form.gb-steps'), body = form.querySelector('.gb-body'), fb = app.querySelector('.gb-feedback');
     Array.prototype.slice.call(app.children).forEach(function(k){ if(k.matches('.bt-intro')) s.add('about', k); if(k.matches('details.bt-how')){ k.open = true; s.add('about', k); } });
@@ -328,7 +328,11 @@
     T.studioVirtual(app, function(){ return [fb]; });
     T.studioKeep(s);
     s.add('stage', stage); s.add('why', fb); s.add('details', data); s.add('details', det);
-    det.appendChild(form.querySelector('.gb-pick'));
+    // The data set choice stays at the top of the dock (tool review 2026-11: it was hidden in Details).
+    // On a phone the dock is short, so there it stays in Details.
+    var pk = form.querySelector('.gb-pick'), wide0 = false;
+    try{ wide0 = matchMedia('(min-width: 1000px)').matches; }catch(e){}
+    if(pk && !wide0) det.appendChild(pk);
     var h2 = form.querySelector(':scope > h2'); if(h2) h2.classList.add('sr-only');
     s.add('dock', form);
     s.modes({ items: [{ value: 'data', label: 'Plot the data' }, { value: 'free', label: 'Free plot' }], value: 'data', onChange: function(v){
