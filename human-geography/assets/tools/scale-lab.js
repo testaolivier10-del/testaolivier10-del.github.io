@@ -181,7 +181,7 @@
       }
       T.explain($('.hug-sl-say'), head, why);
       if(LS){
-        LS.caption(view === 'map' ? '<b>' + S.ratio(lad[step].denom) + '.</b> ' + esc(step < 3 ? 'Large scale: a small area in detail.' : 'Small scale: a large area with little detail.') : '<b>' + esc(S.SCALE_NAME[scale]) + ' scale.</b> ' + esc(cur().says), 'explore');
+        LS.caption(view === 'map' ? '<b>' + S.ratio(lad[step].denom) + '.</b> ' + esc(step < 3 ? 'Large scale: a small area in detail.' : 'Small scale: a large area with little detail.') : '<b>' + esc(S.SCALE_NAME[scale]) + ' scale.</b> ' + esc(cur().says.replace(/ A gap of .*$/, '')), 'explore'); // the gap is on the approved spread line (pass 3)
         if(LS.why) LS.why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });
       }
     }
