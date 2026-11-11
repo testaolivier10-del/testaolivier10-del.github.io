@@ -1378,9 +1378,9 @@
 .ci-whisk:focus{outline:none;}
 .ci-whisk:focus-visible,.sk-drag .ci-whisk:hover{stroke:var(--cink);stroke-width:3;}
 /* rates: the draggable tangent */
-.rt-tan{stroke:var(--bio-s4);stroke-width:2.5;stroke-linecap:round;}
+.rt-tan{stroke:var(--bio-s4);stroke-width:3.5;stroke-linecap:round;}
 .rt-tanv{stroke:var(--bio-s4);stroke-width:1;stroke-dasharray:3 3;}
-.rt-tanl{fill:var(--bio-s4);filter:brightness(.8);font:900 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.rt-tanl{fill:var(--ink);font:900 12px var(--font-ui);}
 .rt-tang{cursor:ew-resize;}
 .ls-root.ls-phone .ls-stage .rt-tanl{font-size:14px;}
 .sk-curve.sk-fam{stroke-opacity:.35;stroke-width:1.6;fill:none;}
@@ -1483,3 +1483,21 @@
 .ls-root.ls-phone .pg-fieldsvg .pg-gt{font-size:14px;} .ls-root.ls-phone .pg-fieldsvg .pg-at,.ls-root.ls-phone .pg-fieldsvg .pg-evt{font-size:12px;}
 .ls-root .os-play:has(.pg-evbtns){flex-wrap:wrap;}
 .ls-root .os-play .pg-evbtns{flex:1 1 100%;min-width:0;flex-wrap:wrap;}
+/* Rates (tool review 2026-11): tangent box and rise-over-run step; percent change explore */
+.rt-tanbox{fill:var(--white);stroke:var(--bio-s4);stroke-width:2;}
+.rt-step{fill:none;stroke:var(--bio-s4);stroke-width:1.6;stroke-dasharray:4 3;}
+.rt-stepl{fill:var(--ink);font:800 10.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.rt-views{display:flex;flex-wrap:wrap;gap:8px;}
+.rt-pinit{fill:var(--bio-s5);fill-opacity:.55;stroke:var(--bio-s5);stroke-width:1.5;}
+.rt-pfin{fill:var(--bio-s1);fill-opacity:.85;}
+.rt-tenth{stroke:var(--white);stroke-width:1.4;}
+.rt-tenth2{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;opacity:.7;}
+.rt-tenth2.ten{stroke:var(--ink);opacity:1;}
+.rt-pfin{pointer-events:none;}
+.rt-chg{fill:none;stroke-width:3;}
+.rt-chg.up{stroke:var(--bio-aff);} .rt-chg.dn{stroke:var(--bio-symp);}
+.rt-pc{fill:var(--ink);font:900 16px var(--font-ui);}
+.rt-pv{fill:var(--ink);font:800 12.5px var(--font-ui);}
+.rt-pgrip{fill:var(--white);stroke:var(--ink);stroke-width:2;cursor:ns-resize;}
+.rt-pgrip:focus{outline:none;} .rt-pgrip:focus-visible{stroke-width:3.5;}
+.ls-root.ls-phone .ls-stage .rt-stepl{font-size:13px;} .ls-root.ls-phone .ls-stage .rt-pv{font-size:14px;}
