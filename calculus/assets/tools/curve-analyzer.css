@@ -27,6 +27,9 @@
 .ca-pl.s1{fill:var(--ca-f);} .ca-pl.s2{fill:var(--ca-fp);} .ca-pl.s3{fill:var(--ca-fpp);}
 .ca-curve{fill:none;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
 .ca-curve.s1{stroke:var(--ca-f);} .ca-curve.s2{stroke:var(--ca-fp);} .ca-curve.s3{stroke:var(--ca-fpp);}
+/* where a curve leaves its panel it stops at the edge with a small arrow: it keeps going */
+.ca-more{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.ca-more.s1{stroke:var(--ca-f);} .ca-more.s2{stroke:var(--ca-fp);} .ca-more.s3{stroke:var(--ca-fpp);}
 .ca-end{fill:var(--ca-f);stroke:var(--white);stroke-width:1.5;}
 .ca-rowk{fill:var(--ink);font:900 12px var(--font-ui);font-style:italic;}
 .ca-sg.is-pos{fill:var(--ca-pos);} .ca-sg.is-neg{fill:var(--ca-neg);}
