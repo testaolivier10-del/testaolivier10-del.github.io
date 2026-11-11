@@ -461,8 +461,7 @@
       var o = obj(), rf = rhoF(), out = '';
       if(st.scene === 'float'){
         var y = sim ? sim.state.y : -0.1, f = FT.forces(o, rf, y, TK.depth), fbMax = rf * FT.volume(o) * G, nm = o.name.toLowerCase().replace(/^hollow /, '');
-        out = '<figure class="ft-fbdfig"><figcaption class="ft-cap">Forces on the ' + esc(nm) + ', to scale</figcaption>' + fbdSvg(fbdList(f, FT.FLUIDS[st.fluid].name.toLowerCase(), nm), nm, 'Arrows start on the object; the agent is named with each force. Fully under, F_b would be ' + F(fbMax, 2) + ' N (F_g = ' + F(f.Fg, 2) + ' N).') + '</figure>';
-        out = out.replace(/F_b would/, 'F<sub>b</sub> would').replace(/\(F_g =/, '(F<sub>g</sub> =');
+        out = '<figure class="ft-fbdfig"><figcaption class="ft-cap">Forces on the ' + esc(nm) + ', to scale</figcaption>' + fbdSvg(fbdList(f, FT.FLUIDS[st.fluid].name.toLowerCase(), nm), nm, '') + '</figure>';   // pass 2: no note under the picture; "F_b if fully under" is in Numbers
       } else if(st.scene === 'scale'){
         var pts = [], mx = scaleMax(o);
         for(var d = -0.05; d <= 0.25 + 1e-9; d += 0.0025) pts.push([d * 100, FT.scale(o, rf, d).reading]);

@@ -128,3 +128,11 @@
   .ls-phone .cl-build{padding-bottom:48px;}
 }
 @media (max-height:540px){ .ls-phone .cl-build{padding-right:48px;} }
+
+/* Pass 2: before contact only the track and the bars show; the force-time graph
+   joins them when the bumper first touches (.cl-pre, set by the script). */
+.cl-stage.cl-pre .cl-lower{grid-template-columns:minmax(0,1fr);}
+.cl-stage.cl-pre .cl-lower .cl-ft{display:none;}
+.cl-stage.cl-all.cl-pre .cl-lower{grid-template-rows:minmax(0,1fr);}
+.cl-stage.cl-pre .cl-tabs [data-p="ft"]{display:none;}
+.cl-stage.cl-pre .cl-lower[data-show="ft"] .cl-bars{display:flex;}

@@ -310,7 +310,7 @@
       var sp = T.studioPane(pane, s, { stage: [fig], dock: [ctl], setup: 'Function', moreLabel: 'Function, table or context', why: [$('.rs-say')], details: [$('.rs-nums'), $('.rs-cmp')] });
       sp.setup(cur.it.name);
       setup(); draw();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.rs-seg'), text: 'Pick a kind of sum' });
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.rs-n input[type=range]') || s.root.querySelector('.rs-seg'), text: 'Drag n: more strips' });   // pass 2: the bubble sat on the caption above the sum kinds
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe(fig); }
     }
     setup(); draw();

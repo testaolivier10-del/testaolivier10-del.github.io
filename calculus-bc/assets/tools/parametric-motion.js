@@ -69,7 +69,7 @@
         '<div class="pm-stage">' +
           '<div class="pm-plane-wrap" tabindex="0" role="slider" aria-label="Time: drag the particle or use the arrow keys" aria-valuemin="0"><svg class="pm-plane" aria-hidden="true"></svg><p class="pm-badge" aria-hidden="true"></p></div>' +
           '<div class="pm-speed-wrap"><svg class="pm-speed" aria-hidden="true"></svg></div>' +
-          '<p class="pm-legend" aria-hidden="true"><span class="pm-lg pm-lg-path">path</span><span class="pm-lg pm-lg-v">velocity</span><span class="pm-lg pm-lg-a">acceleration</span><span class="pm-lg pm-lg-tan">tangent</span><span class="pm-lg pm-lg-d">distance = area under speed</span></p>' +
+          '<p class="pm-legend" aria-hidden="true"><span class="pm-lg pm-lg-v">velocity</span><span class="pm-lg pm-lg-a">acceleration</span><span class="pm-lg pm-lg-tan">tangent</span><span class="pm-lg pm-lg-d">distance = area under speed</span></p>' +
         '</div>' +
         '<div class="pm-ctl">' +
           '<div class="pm-chips ls-scroll" role="group" aria-label="Path"></div>' +
@@ -90,7 +90,11 @@
     host.querySelector('.pm-slot').appendChild(slider.el);
     var loop = null, pl = null, sl = null;
 
-    function syncShow(){ showEl.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(!!st.show[b.getAttribute('data-k')])); }); }
+    function syncShow(){
+      showEl.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(!!st.show[b.getAttribute('data-k')])); });
+      // Pass 2: the key names only what is drawn now.
+      var lg = host.querySelector('.pm-legend') || document.querySelector('.pm-legend'); if(lg) [['v', '.pm-lg-v'], ['a', '.pm-lg-a'], ['tan', '.pm-lg-tan']].forEach(function(p){ var e = lg.querySelector(p[1]); if(e) e.hidden = !st.show[p[0]]; });
+    }
     syncShow();
     showEl.addEventListener('click', function(e){
       var b = e.target.closest('.bt-mode'); if(!b) return;

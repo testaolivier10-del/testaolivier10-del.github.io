@@ -325,6 +325,8 @@
     function labelsFor(c){ return liveLabels(st.id, c.q); }
     function draw(full){
       var S = scene(), c = now(), A = art();
+      // Pass 2: the small rate graph joins the scene once the student drags or plays (results appear when made).
+      var stg = $('.rr-stage'); if(stg) stg.classList.toggle('rr-moved', !!(st.touched || st.playing || st.t > 0));
       var st2 = { q: c.q, d: c.d, rate: st.rate, labels: labelsFor(c), given: S.rate.key === 'V' ? 'V' : S.rate.key, watch: S.watch, phase: st.phase };
       artG.innerHTML = A.art(geo, st2);
       var hp = A.handle(geo, st2);

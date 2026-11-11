@@ -297,8 +297,8 @@
     function drawGraphs(){
       if(!hist.length) return;
       var t1 = hist[hist.length - 1].t, w = gEls.x.w, t0 = Math.max(0, t1 - w);
-      var pre = hist.length < 2, gp = pre ? ghost() : null;
-      ['x', 'v', 'a'].forEach(function(k){ var G = gEls[k]; if(!G.ghost) return; G.ghost.setAttribute('points', pre ? gp[k].join(' ') : ''); G.ghostT.textContent = pre ? 'Press Play to trace it' : ''; });
+      var pre = hist.length < 2, gp = pre ? ghost() : null, gs = stage.querySelector('.ol-gsel'), oneG = !!(gs && gs.offsetParent);   // the hint once, unless one graph shows at a time
+      ['x', 'v', 'a'].forEach(function(k){ var G = gEls[k]; if(!G.ghost) return; G.ghost.setAttribute('points', pre ? gp[k].join(' ') : ''); G.ghostT.textContent = pre && (k === 'x' || oneG) ? 'Press Play to trace it' : ''; });
       ['x', 'v', 'a'].forEach(function(k){
         var G = gEls[k], pts = [];
         for(var i = 0; i < hist.length; i++){ var h = hist[i]; if(h.t < t0) continue; pts.push(n1(GL + (h.t - t0) / w * G.PW) + ',' + n1(GT + G.PH / 2 - h[k] / G.ym * G.PH / 2)); }
