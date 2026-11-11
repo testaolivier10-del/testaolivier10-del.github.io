@@ -1,0 +1,5 @@
+# w1110-01-dive-reflex (A&P), built 2026-11-10 in chat
+Files: build.py (timeline; shot list, colour script and sources in the docstring), diver.py (the freediver, side view: one skinned body, Pose, place() to pin a joint to a screen point), world.py (water, dive line, snow, bubbles, seal, whale, brain, face nerves, vagus, heart, vessels), mix.py (restrained mix; heartbeat laid on the picture's beat times), render2.py and full.sh (two process render), thumb.py, words.json.
+Paths point at /home/claude/dv; needs pipeline/w1109 (kit.py, lpk.py, art.py, hands.py) at /home/claude/mh and codechar/kit/layout.py at /home/claude/short.
+Voice: Jeremy, eleven_v4, one take (made through the ElevenLabs connector; word timings from Scribe). Music: music_v1, take B of 2.
+New in the people model: a woman, side view, swimming poses (free fall, flutter kick, tuck turn on a line), profile close shots with an eye that opens and looks. No front view of her is used (a front face was built and dropped after review).
