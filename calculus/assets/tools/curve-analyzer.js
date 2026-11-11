@@ -173,15 +173,33 @@
         ix: function(px){ return a + (px - L) / (w - L - R) * (b - a); },
         gy: function(k, v){ var r = rows[k]; return r.y0 + (r.hi - v) / (r.hi - r.lo) * r.h; } };
     }
-    function curvePath(g, k){
-      var r = g.rows[k], fn = r.fn, n = 360, out = [], run = [];
-      for(var i = 0; i <= n; i++){
-        var x = g.a + (g.b - g.a) * i / n, v = fn(x);
-        if(!isFinite(v) || v > r.hi + (r.hi - r.lo) * 2 || v < r.lo - (r.hi - r.lo) * 2){ if(run.length > 1) out.push(run); run = []; continue; }
-        run.push(r1(g.gx(x)) + ' ' + r1(g.gy(k, clamp(v, r.lo, r.hi))));
+    /* A curve cut at its panel's top and bottom edge: where it leaves the panel it stops on the edge (with a small
+       arrow there, "keeps going"), and it starts again where it comes back. It is never drawn flat along the edge,
+       which would read as the function levelling off (f′ and f″ at a cusp). xs, vs: samples; X(x), Y(v): to the
+       screen. Returns { d: path, arrows: svg }. */
+    function clipCurve(xs, vs, lo, hi, X, Y, cls){
+      var out = [], run = [], arrows = '', n = xs.length;
+      function edgeAt(i0, i1, b){ var t = (b - vs[i0]) / (vs[i1] - vs[i0]); return [xs[i0] + t * (xs[i1] - xs[i0]), b]; }
+      function pt(p){ return r1(X(p[0])) + ' ' + r1(Y(p[1])); }
+      function arrow(p, up){ var x = X(p[0]), y = Y(p[1]); arrows += '<path class="ca-more ' + cls + '" d="M' + r1(x - 4.5) + ' ' + r1(y + (up ? 6 : -6)) + 'L' + r1(x) + ' ' + r1(y) + 'L' + r1(x + 4.5) + ' ' + r1(y + (up ? 6 : -6)) + '"/>'; }
+      function end(){ if(run.length > 1) out.push(run); run = []; }
+      for(var i = 0; i < n; i++){
+        var v = vs[i], fin = isFinite(v), inside = fin && v >= lo && v <= hi;
+        if(!fin){ end(); continue; }
+        var j = i - 1, pv = j >= 0 ? vs[j] : NaN, pFin = isFinite(pv), pIn = pFin && pv >= lo && pv <= hi;
+        if(inside){
+          if(pFin && !pIn){ var e0 = edgeAt(j, i, pv > hi ? hi : lo); run.push(pt(e0)); arrow(e0, pv > hi); }
+          run.push(pt([xs[i], v]));
+        } else if(pIn){ var e1 = edgeAt(j, i, v > hi ? hi : lo); run.push(pt(e1)); arrow(e1, v > hi); end(); }
+        else end();
       }
-      if(run.length > 1) out.push(run);
-      return out.map(function(rn){ return 'M' + rn.join('L'); }).join('');
+      end();
+      return { d: out.map(function(rn){ return 'M' + rn.join('L'); }).join(''), arrows: arrows };
+    }
+    function curvePath(g, k, cls){
+      var r = g.rows[k], fn = r.fn, n = 360, xs = [], vs = [];
+      for(var i = 0; i <= n; i++){ var x = g.a + (g.b - g.a) * i / n; xs.push(x); vs.push(fn(x)); }
+      return clipCurve(xs, vs, r.lo, r.hi, g.gx, function(v){ return g.gy(k, v); }, cls);
     }
     function drawCurves(){
       if(!gl) gl = layout();
@@ -193,7 +211,8 @@
         o.push('<rect class="ca-panel" x="' + g.L + '" y="' + r1(r.y0) + '" width="' + g.pw + '" height="' + r1(r.h) + '" rx="6"/>');
         xt.forEach(function(v){ var px = r1(g.gx(v)); o.push('<line class="ca-grid" x1="' + px + '" y1="' + r1(r.y0) + '" x2="' + px + '" y2="' + r1(r.y0 + r.h) + '"/>'); });
         P.ticks(r.lo, r.hi, 3).forEach(function(v){ var py = r1(g.gy(k, v)); o.push('<line class="ca-grid' + (Math.abs(v) < 1e-12 ? ' ca-zero' : '') + '" x1="' + g.L + '" y1="' + py + '" x2="' + (g.L + g.pw) + '" y2="' + py + '"/><text class="ca-tk" x="' + (g.L - 5) + '" y="' + (+py + 3.5) + '" text-anchor="end">' + F(v, Math.abs(v) < 10 && Math.abs(v - Math.round(v)) > 1e-9 ? 1 : 0) + '</text>'); });
-        o.push('<path class="ca-curve ' + CLS[k] + '" d="' + curvePath(g, k) + '"/>');
+        var cp = curvePath(g, k, CLS[k]);
+        o.push('<path class="ca-curve ' + CLS[k] + '" d="' + cp.d + '"/>' + cp.arrows);
         o.push('<text class="ca-pl ' + CLS[k] + '" x="' + (g.L + 6) + '" y="' + r1(r.y0 + 15) + '">' + NAME[k] + '</text>');
       });
       // the closed interval's endpoints on f, and the candidates' winners
@@ -331,8 +350,9 @@
         var r = rows[k[0]];
         o.push('<rect class="ca-panel" x="' + L + '" y="' + r1(r.y0) + '" width="' + (w - L - R) + '" height="' + r1(ph) + '" rx="6"/>');
         P.ticks(r.lo, r.hi, 3).forEach(function(v){ var py = r1(gy(k[0], v)); o.push('<line class="ca-grid' + (Math.abs(v) < 1e-12 ? ' ca-zero' : '') + '" x1="' + L + '" y1="' + py + '" x2="' + (w - R) + '" y2="' + py + '"/><text class="ca-tk" x="' + (L - 5) + '" y="' + (+py + 3.5) + '" text-anchor="end">' + F(v, 0) + '</text>'); });
-        var pts = []; for(var j = 0; j <= 240; j++){ var x = a + (b - a) * j / 240; pts.push(r1(gx(x)) + ',' + r1(gy(k[0], r.fn(x)))); }
-        o.push('<polyline class="ca-curve ' + k[1] + '" points="' + pts.join(' ') + '"/>');
+        var xs = [], vs = []; for(var j = 0; j <= 240; j++){ var x = a + (b - a) * j / 240; xs.push(x); vs.push(r.fn(x)); }
+        var cp = clipCurve(xs, vs, r.lo, r.hi, gx, function(v){ return r.y0 + (r.hi - v) / (r.hi - r.lo) * ph; }, k[1]);
+        o.push('<path class="ca-curve ' + k[1] + '" d="' + cp.d + '"/>' + cp.arrows);
         o.push('<text class="ca-pl ' + k[1] + '" x="' + (L + 6) + '" y="' + r1(r.y0 + 15) + '">' + k[2] + '</text>');
       });
       var bx = r1(gx(s.best));
@@ -342,7 +362,7 @@
       o.push('<g class="ca-xaxis">' + xt.map(function(v){ return '<text x="' + r1(gx(v)) + '" y="' + (h - 5) + '" text-anchor="middle">' + F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1) + '</text>'; }).join('') + (phone() ? '<text class="ca-xl" x="' + (L - 8) + '" y="' + (h - 5) + '" text-anchor="end">' + s.var + ' (' + s.unit + ')</text>' : '<text class="ca-xl" x="' + (w - R) + '" y="' + (h - 5) + '" text-anchor="end">' + s.var + ' (' + s.unit + ')</text>') + '</g>');
       var cx = r1(gx(st.u));
       o.push('<line class="ca-cur" x1="' + cx + '" y1="' + T0 + '" x2="' + cx + '" y2="' + r1(T0 + 2 * ph + gap) + '"/>');
-      o.push('<circle class="ca-cur-pt s1" cx="' + cx + '" cy="' + r1(gy('obj', s.obj(st.u))) + '" r="5"/><circle class="ca-cur-pt s2" cx="' + cx + '" cy="' + r1(gy('d', s.dobj(st.u))) + '" r="5"/>');
+      o.push('<circle class="ca-cur-pt s1" cx="' + cx + '" cy="' + r1(gy('obj', s.obj(st.u))) + '" r="5"/>' + (s.dobj(st.u) >= rows.d.lo && s.dobj(st.u) <= rows.d.hi ? '<circle class="ca-cur-pt s2" cx="' + cx + '" cy="' + r1(gy('d', s.dobj(st.u))) + '" r="5"/>' : '') + '');
       osvg.innerHTML = o.join('');
     }
 

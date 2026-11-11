@@ -231,10 +231,18 @@
         label = 'A pendulum ' + F(sys.L, 2) + ' m long with a ' + kgTxt(sys.m) + ' bob, released from ' + F(sys.A, 0) + ' degrees, now at ' + F(M.deg(th), 1) + ' degrees.';
       }
       var pl = PL.filter(function(p){ return Math.abs(p.g - sys.g) < 1e-9; })[0];
-      if(sys.type !== 'spring' && !g.short) out += '<text class="ol-tm" x="' + (W - 10) + '" y="' + (H - 8) + '" text-anchor="end">' + (pl ? (pl.name === 'Earth' ? 'On Earth' : 'On ' + pl.name) : '') + ', g = ' + sys.g + ' m/s²</text>';
+      var plTxt = (pl ? (pl.name === 'Earth' ? 'On Earth' : 'On ' + pl.name) : '') + ', g = ' + sys.g + ' m/s²';
+      // A narrow pendulum stage is cropped round the swing (below), so its planet line goes under the swing, centered.
+      var pendNar = g.nar && sys.type === 'pendulum', Lq = 0, fsN = 24;
+      if(pendNar) Lq = sys.L * (H - 80) / Math.max(1, sys.L) * Math.min(1, 0.55 + 0.45 * sys.L / 2);
+      if(sys.type !== 'spring' && !g.short) out += pendNar ? '<text class="ol-tm" x="' + (W / 2) + '" y="' + n1(6 + Lq + 60 + 22) + '" text-anchor="middle">' + plTxt + '</text>' :
+        '<text class="ol-tm" x="' + (W - 10) + '" y="' + (H - 8) + '" text-anchor="end">' + plTxt + '</text>';
       // Phone: the scene is drawn small, so its labels are set larger (a style, which beats the class's size).
       if(g.nar) out = out.replace(/class="ol-tm"/g, 'class="ol-tm" style="font-size:' + (sys.type === 'spring' ? 19 : sys.type === 'vspring' ? (g.short ? 30 : 21) : 24) + 'px"').replace(/font-size="12" font-weight="900" fill="#2B2205"/g, 'font-size="' + (g.short ? 30 : 21) + '" font-weight="900" fill="#2B2205"');
-      if(g.nar && sys.type === 'pendulum'){ var Lq = sys.L * (H - 80) / Math.max(1, sys.L) * Math.min(1, 0.55 + 0.45 * sys.L / 2), hw = Math.max(120, Lq * Math.sin(M.rad(Math.max(sys.A, 8))) + 50); g.vb = n1(W / 2 - hw) + ' 6 ' + n1(2 * hw) + ' ' + n1(Lq + 60); }
+      // The crop is wide enough for the swing and for both labels at the larger size (about 0.56 em a character),
+      // so neither "ℓ = ..." on the left nor the planet line is cut at the edge of the stage.
+      if(pendNar){ var lW = ('ℓ = ' + F(sys.L, 2) + ' m').length * 0.56 * fsN + 10 + 8, pW = plTxt.length * 0.56 * fsN / 2 + 8,
+        hw = Math.max(120, Lq * Math.sin(M.rad(Math.max(sys.A, 8))) + 50, lW, pW); g.vb = n1(W / 2 - hw) + ' 6 ' + n1(2 * hw) + ' ' + n1(Lq + 60 + 32); }
       sceneEl.innerHTML = '<svg viewBox="' + (g.vb || '0 0 ' + W + ' ' + H) + '" class="phys-scene" role="group" aria-label="' + esc(NAMES[sysKey]) + '">' + defs(did) + '<title>' + esc(label) + '</title>' + out + '</svg>';
       dragWire();
     }

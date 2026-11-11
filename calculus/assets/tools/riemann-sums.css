@@ -9,7 +9,7 @@
 .ls-root .rs-fig{flex:1;min-height:0;}
 .ls-root .rs-plot{position:relative;min-height:120px;}
 .ls-root .rs-plot svg{position:absolute;inset:0;width:100%;height:100%;max-height:none;}
-.rs-tank{flex:0 0 150px;display:flex;align-items:center;}
+.rs-tank{flex:0 0 clamp(150px, 30%, 280px);display:flex;align-items:center;}
 .rs-tank[hidden]{display:none;}
 .rs-tank svg{display:block;width:100%;height:auto;max-height:100%;}
 @media (max-width:640px){.rs-tank{flex-basis:88px;}}
@@ -20,6 +20,12 @@
 .calc-plot .rs-strip.is-sel{stroke-width:2.6;fill-opacity:.9;}
 .calc-plot .rs-strip.is-pos.is-sel{fill:rgba(0,114,178,.34);}
 .calc-plot .rs-strip.is-neg.is-sel{fill:rgba(213,94,0,.36);}
+/* the error slivers between a strip's top and the curve: missed (amber) and counted extra (pink), Okabe-Ito */
+.calc-plot .rs-sliver{stroke:none;pointer-events:none;}
+.calc-plot .rs-sliver.is-miss{fill:#E69F00;fill-opacity:.45;}
+.calc-plot .rs-sliver.is-extra{fill:#CC79A7;fill-opacity:.5;}
+:root[data-theme="dark"] .calc-plot .rs-sliver.is-miss{fill:#F0B840;fill-opacity:.5;}
+:root[data-theme="dark"] .calc-plot .rs-sliver.is-extra{fill:#E08FC0;fill-opacity:.5;}
 .calc-plot .rs-dot{fill:var(--ink);stroke:var(--white);stroke-width:1;}
 .calc-plot .rs-at{stroke:var(--ink-3,#777);stroke-width:1;stroke-dasharray:2 3;}
 :root[data-theme="dark"] .calc-plot .rs-strip.is-pos{fill:rgba(107,180,232,.22);stroke:#6BB4E8;}

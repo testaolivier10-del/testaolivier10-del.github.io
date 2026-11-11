@@ -284,8 +284,10 @@
     /* ---------------------------------------------------- time */
     function draw(full){
       drawPlane(); drawSpeed();
+      // While playing, the caption and the speed and slope chips change together, four times a second, from the same
+      // frame (the chips used to run ahead of the caption's numbers); only the clock chip runs every frame.
       if(full || !st.playing || (st.t * 4 | 0) !== draw.q){ draw.q = st.t * 4 | 0; words(full); }
-      else pills();
+      else if(LS) LS.pills([{ html: 't = ' + F(st.t, 2), tone: 'accent' }], 'right', 'explore');
       if(Math.abs(slider.value() - st.t) > 1e-6) slider.set(st.t);
     }
     function play(){

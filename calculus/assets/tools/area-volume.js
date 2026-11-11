@@ -34,10 +34,19 @@
 
   /* ================================================== the 3D renderer */
   /* Solid(host): a canvas that draws a region's solid. set({ reg, setup, u })
-     then draw(). Drag (or arrow keys) turns it; the view survives a redraw. */
+     then draw(). Drag (or arrow keys) turns it; the view survives a redraw.
+     The view starts (and Home goes back to it) with the region's plane facing
+     you, a little from above, so the axis of rotation lies on screen the way it
+     lies on the 2D graph: horizontal for y = k, vertical for x = h. A solid of
+     known cross sections is seen more from above, so its base fills the panel.
+     sweep(phi) draws a solid of revolution only from 0 to phi (radians): the
+     region turned by phi, the surface it has swept, and the slice's washer
+     growing with it; phi = 2π (the default) is the whole solid. */
+  var TAU = 2 * Math.PI;
+  function homeView(setup){ return setup && setup.kind === 'cross' ? [-0.5, 0.62] : [-0.32, 0.3]; }
   function Solid(host, o){
     o = o || {};
-    var cv = document.createElement('canvas'), ctx = cv.getContext('2d'), yaw = o.yaw != null ? o.yaw : -0.75, pitch = o.pitch != null ? o.pitch : 0.36, st = null, meshC = null, key = '';
+    var cv = document.createElement('canvas'), ctx = cv.getContext('2d'), yaw = o.yaw != null ? o.yaw : -0.32, pitch = o.pitch != null ? o.pitch : 0.3, st = null, meshC = null, key = '', viewKey = '', phi = TAU;
     cv.className = 'av-canvas'; cv.setAttribute('tabindex', '0'); cv.setAttribute('role', 'img');
     host.appendChild(cv);
     var drag = null;
@@ -48,19 +57,26 @@
     cv.addEventListener('keydown', function(e){
       var k = e.key, s = e.shiftKey ? 0.35 : 0.12;
       if(k === 'ArrowLeft') yaw -= s; else if(k === 'ArrowRight') yaw += s; else if(k === 'ArrowUp') pitch = Math.min(1.35, pitch + s); else if(k === 'ArrowDown') pitch = Math.max(-1.35, pitch - s);
-      else if(k === 'Home'){ yaw = -0.75; pitch = 0.36; } else return;
+      else if(k === 'Home'){ var hv = homeView(st && st.setup); yaw = hv[0]; pitch = hv[1]; } else return;
       e.preventDefault(); draw(); if(o.onTouch) o.onTouch();
     });
     function set(next){
       st = next;
       var k2 = JSON.stringify([next.reg.id, next.reg.v, next.reg.f, next.reg.g, next.reg.a, next.reg.b, next.setup]);
-      if(k2 !== key){ key = k2; meshC = A.mesh(next.reg, next.setup, o.n || 56, o.m || 40); }
+      if(k2 !== key){
+        key = k2; meshC = A.mesh(next.reg, next.setup, o.n || 56, o.m || 40);
+        // each quad's angle about the axis (its middle), for the sweep
+        if(next.setup.kind === 'rev'){ var ax = next.setup.axis; meshC.th = meshC.quads.map(function(q){ var a = 0, b = 0; q.p.forEach(function(p){ a += ax.dir === 'h' ? p[1] - ax.at : p[0] - ax.at; b += p[2]; }); var t = Math.atan2(b, a); return t < -1e-9 ? t + TAU : Math.max(0, t); }); }
+      }
+      // a new kind of solid (or a new axis direction) starts from its home view
+      var vk = next.setup.kind + (next.setup.axis ? next.setup.axis.dir : '');
+      if(vk !== viewKey){ viewKey = vk; if(o.yaw == null){ var hv = homeView(next.setup); yaw = hv[0]; pitch = hv[1]; } }
       draw();
     }
     function colors(){
       var dk = dark();
       return { solid: dk ? [235, 120, 155] : [176, 18, 58], inner: dk ? [107, 180, 232] : [0, 114, 178], cap: dk ? [245, 160, 185] : [196, 60, 95],
-        cross: dk ? [242, 154, 92] : [213, 94, 0], slice: dk ? 'rgba(255,214,102,0.8)' : 'rgba(240,173,0,0.78)', sliceEdge: dk ? '#FFE08A' : '#7A5200',
+        cross: dk ? [242, 154, 92] : [213, 94, 0], region: dk ? 'rgba(245,144,172,0.42)' : 'rgba(176,18,58,0.24)', regionEdge: dk ? '#F590AC' : '#B0123A', slice: dk ? 'rgba(255,214,102,0.8)' : 'rgba(240,173,0,0.78)', sliceEdge: dk ? '#FFE08A' : '#7A5200',
         ink: dk ? '#ECECEC' : '#1E1E1E', faint: dk ? 'rgba(236,236,236,0.55)' : 'rgba(30,30,30,0.55)', axis: dk ? '#C3A3E0' : '#5B3A86', bg: dk ? '#1c1c1e' : '#ffffff' };
     }
     /* The scale that fits the solid (and the axis past its ends) in the
@@ -116,16 +132,17 @@
         return [w / 2 + x1 * sc * k, h / 2 - y2 * sc * k, z2];
       }
       var L = [0.35, 0.55, 0.76], ln = Math.sqrt(L[0] * L[0] + L[1] * L[1] + L[2] * L[2]); L = L.map(function(v){ return v / ln; });
-      var polys = qs.map(function(q){
+      var polys = qs.map(function(q, qi){
         var v = q.p.map(view), z = (v[0][2] + v[1][2] + v[2][2] + v[3][2]) / 4;
         // normal in view space from two edges (a degenerate quad uses the next one)
         var a = [v[2][0] - v[0][0], v[2][1] - v[0][1], v[2][2] - v[0][2]], b = [v[3][0] - v[1][0], v[3][1] - v[1][1], v[3][2] - v[1][2]];
         var n = [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]], nl = Math.sqrt(n[0] * n[0] + n[1] * n[1] + n[2] * n[2]) || 1;
         var lam = Math.abs((n[0] * L[0] - n[1] * L[1] + n[2] * L[2]) / nl);
-        return { v: v, z: z, t: q.t, lam: lam };
+        return { v: v, z: z, t: q.t, lam: lam, th: meshC.th ? meshC.th[qi] : 0 };
       }).sort(function(p, q){ return p.z - q.z; });
-      var base = setup.kind === 'rev' ? C.solid : C.cross;
+      var base = setup.kind === 'rev' ? C.solid : C.cross, part = setup.kind === 'rev' && phi < TAU - 1e-6;
       polys.forEach(function(p){
+        if(part && !(p.th <= phi)) return;
         var col = p.t === 'in' ? C.inner : p.t === 'cap' ? C.cap : base, f = 0.3 + 0.7 * p.lam;
         var fill = 'rgba(' + Math.round(col[0] * f + 255 * (1 - f) * 0.18) + ',' + Math.round(col[1] * f + 255 * (1 - f) * 0.18) + ',' + Math.round(col[2] * f + 255 * (1 - f) * 0.18) + ',0.86)';
         ctx.beginPath(); ctx.moveTo(p.v[0][0], p.v[0][1]); for(var i = 1; i < 4; i++) ctx.lineTo(p.v[i][0], p.v[i][1]); ctx.closePath();
@@ -137,6 +154,14 @@
       for(i = N; i >= 0; i--){ var u2 = reg.a + (reg.b - reg.a) * i / N; outline.push(reg.v === 'x' ? [u2, reg.Gf(u2), 0] : [reg.Gf(u2), u2, 0]); }
       ctx.beginPath(); outline.map(view).forEach(function(p, j){ if(j) ctx.lineTo(p[0], p[1]); else ctx.moveTo(p[0], p[1]); }); ctx.closePath();
       ctx.setLineDash([5, 4]); ctx.strokeStyle = C.faint; ctx.lineWidth = 1.4; ctx.stroke(); ctx.setLineDash([]);
+      // while it is being revolved: the region itself, turned by phi about the axis, filled
+      var turn = function(p){ return p; };
+      if(part){
+        var ka = setup.axis.at, cph = Math.cos(phi), sph = Math.sin(phi);
+        turn = setup.axis.dir === 'h' ? function(p){ return [p[0], ka + (p[1] - ka) * cph, (p[1] - ka) * sph]; } : function(p){ return [ka + (p[0] - ka) * cph, p[1], (p[0] - ka) * sph]; };
+        ctx.beginPath(); outline.map(function(p){ return view(turn(p)); }).forEach(function(p, j){ if(j) ctx.lineTo(p[0], p[1]); else ctx.moveTo(p[0], p[1]); }); ctx.closePath();
+        ctx.fillStyle = C.region; ctx.fill(); ctx.strokeStyle = C.regionEdge; ctx.lineWidth = 1.8; ctx.stroke();
+      }
       // the axis of rotation, past both ends
       if(setup.kind === 'rev'){
         var ex = (reg.b - reg.a) * 0.18, A0 = setup.axis.dir === 'h' ? [reg.a - ex, setup.axis.at, 0] : [setup.axis.at, reg.a - ex, 0], A1 = setup.axis.dir === 'h' ? [reg.b + ex, setup.axis.at, 0] : [setup.axis.at, reg.b + ex, 0];
@@ -145,7 +170,19 @@
         label(p1, 'axis', C.axis, 6, -6);
       }
       // the highlighted slice
-      if(st.u != null){
+      if(st.u != null && part){
+        // the slice on the turned region, and the part of its washer swept so far
+        var q0 = A.radii(reg, setup.axis, st.u), kk = setup.axis.at, putS = reg.v === 'x' ? function(wv, zv){ return [st.u, wv, zv]; } : function(wv, zv){ return [wv, st.u, zv]; };
+        if(phi > 0.02){
+          var nA = Math.max(2, Math.ceil(phi / TAU * 64)), arcO = [], arcI = [];
+          for(var ia = 0; ia <= nA; ia++){ var ta = phi * ia / nA; arcO.push(view(putS(kk + q0.R * Math.cos(ta), q0.R * Math.sin(ta)))); arcI.push(view(putS(kk + q0.r * Math.cos(ta), q0.r * Math.sin(ta)))); }
+          ctx.beginPath(); arcO.concat(arcI.reverse()).forEach(function(p, j){ if(j) ctx.lineTo(p[0], p[1]); else ctx.moveTo(p[0], p[1]); }); ctx.closePath();
+          ctx.fillStyle = C.slice; ctx.fill(); ctx.strokeStyle = C.sliceEdge; ctx.lineWidth = 1.2; ctx.stroke();
+        }
+        var sb = view(turn(reg.v === 'x' ? [st.u, A.lo(reg, st.u), 0] : [A.lo(reg, st.u), st.u, 0])), stp = view(turn(reg.v === 'x' ? [st.u, A.hi(reg, st.u), 0] : [A.hi(reg, st.u), st.u, 0]));
+        seg(sb, stp, C.sliceEdge, 4);
+        if(phi > 0.02) label([w - 10, 20], 'Turned ' + Math.round(phi * 180 / Math.PI) + '° of 360°', C.ink, 0, 0, 'right');
+      } else if(st.u != null){
         var sl = A.slice(reg, setup, st.u, 64);
         ctx.beginPath();
         sl.loops.forEach(function(lp){ lp.map(view).forEach(function(p, j){ if(j) ctx.lineTo(p[0], p[1]); else ctx.moveTo(p[0], p[1]); }); ctx.closePath(); });
@@ -172,7 +209,7 @@
         ctx.strokeText(t, x, y); ctx.fillStyle = col; ctx.fillText(t, x, y);
       }
     }
-    return { el: cv, set: set, draw: draw, label: function(t){ cv.setAttribute('aria-label', t); } };
+    return { el: cv, set: set, draw: draw, label: function(t){ cv.setAttribute('aria-label', t); }, sweep: function(v){ phi = Math.max(0, Math.min(TAU, v)); draw(); }, phi: function(){ return phi; } };
   }
 
   /* A draggable slice handle on the 2D plot (along u only). */
@@ -276,9 +313,9 @@
     function $$(q){ var a = Array.prototype.slice.call(host.querySelectorAll(q)); return LS ? a.concat(Array.prototype.slice.call(LS.root.querySelectorAll(q))) : a; }
     function seg(cls, items, label){ return '<div class="ls-seg av-seg ' + cls + '" role="group" aria-label="' + label + '">' + items.map(function(x){ return '<button type="button" data-k="' + x.k + '" aria-pressed="false">' + esc(x.t) + '</button>'; }).join('') + '</div>'; }
     host.innerHTML = '<section class="bt-problem av-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Area and volume explorer</h2>' +
-      '<div class="av-fig"><div class="av-2d"><div class="av-plot"></div></div><div class="av-3d"><div class="av-solid"></div><p class="av-turn">Drag to turn the solid</p></div></div>' +
+      '<div class="av-fig"><div class="av-2d"><div class="av-plot"></div></div><div class="av-3d"><div class="av-solid"></div><button type="button" class="bt-btn av-revolve av-revolve-3d">↻ Revolve it</button><p class="av-turn">Drag to turn the solid</p></div></div>' +
       '<div class="av-ctl">' + seg('av-mode', MODES, 'What to build') +
-        '<div class="av-sub av-axisrow"><div class="av-chips av-axes" role="group" aria-label="Axis of rotation">' + AXES.map(function(x){ return '<button type="button" class="av-chip" data-k="' + x.k + '" aria-pressed="false">' + esc(x.t) + '</button>'; }).join('') + '</div><div class="av-line"></div></div>' +
+        '<div class="av-sub av-axisrow"><div class="av-chips av-axes" role="group" aria-label="Axis of rotation">' + AXES.map(function(x){ return '<button type="button" class="av-chip" data-k="' + x.k + '" aria-pressed="false">' + esc(x.t) + '</button>'; }).join('') + '</div><div class="av-line"></div><button type="button" class="bt-btn av-revolve">↻ Revolve it</button></div>' +
         '<div class="av-sub av-shaperow"><div class="av-chips av-shapes" role="group" aria-label="Cross-section shape">' + SHAPES.map(function(x){ return '<button type="button" class="av-chip" data-k="' + x.k + '" aria-pressed="false">' + esc(x.t) + '</button>'; }).join('') + '</div></div>' +
         '<div class="av-sub av-sliceinrow"><div class="av-chips av-slicein" role="group" aria-label="Slice">' + '<button type="button" class="av-chip" data-k="x" aria-pressed="false">Slice in x (dx)</button><button type="button" class="av-chip" data-k="y" aria-pressed="false">Slice in y (dy)</button></div></div>' +
         '<p class="bt-small av-note" hidden></p></div>' +
@@ -286,6 +323,25 @@
       T.moreHtml('<div class="av-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn av-resetview">Reset the 3D view</button></div><p class="bt-small">Keyboard: the slice handle moves with the arrow keys (Home and End jump to the ends); the solid turns with the arrow keys when it has focus.</p>', 'region, 3D view') +
       '<div class="av-nums"></div><p class="sr-only av-live"></p></section>';
     var say = T.announcer($('.av-live'));
+    // Revolve starts from the flat region; "Revolve it" sweeps it about the axis from 0 to 360 degrees.
+    // Once a student has watched it (or with reduced motion), a new region or axis shows the whole solid.
+    var revolved = reduced(), sweepRaf = 0;
+    function stopSweep(){ if(sweepRaf){ (window.cancelAnimationFrame || clearTimeout)(sweepRaf); sweepRaf = 0; } }
+    function revolve(){
+      act(); stopSweep(); if(mode !== 'rev' || !solid) return;
+      if(reduced()){ revolved = true; solid.sweep(TAU); words(); syncRevolve(); say('The region revolved a full turn about the axis: the solid.'); return; }
+      var t0 = null, dur = 2600;
+      (function step(ts){
+        if(t0 == null) t0 = ts;
+        var f = Math.min(1, (ts - t0) / dur), e = f < 0.5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2;
+        solid.sweep(TAU * e);
+        if(f < 1) sweepRaf = (window.requestAnimationFrame || setTimeout)(step);
+        else { sweepRaf = 0; revolved = true; words(); syncRevolve(); say('The region revolved a full turn about the axis: the solid. The slice became a ' + (A.radii(reg, axis(), u).r > 1e-6 ? 'washer.' : 'disc.')); }
+      })(performance.now());
+    }
+    function syncRevolve(){ $$('.av-revolve').forEach(function(b){ b.textContent = revolved ? '↻ Revolve again' : '↻ Revolve it'; if(b.classList.contains('av-revolve-3d')) b.hidden = mode !== 'rev'; }); }
+    // one in the dock, one on the 3D panel (seen first on a phone); the dock's moves into the studio with its listener
+    host.querySelectorAll('.av-revolve').forEach(function(b){ b.addEventListener('click', revolve); });
     var cue = T.cue('Drag the orange slice across the region; then tap Revolve or Cross sections to build a solid.');
     // After the first slice in Area: point at Revolve (once), so the 3D solid is found.
     var nudged = false;
@@ -301,7 +357,7 @@
     var pick = T.choiceSelect({ label: 'Region', options: A.REGIONS.map(function(r){ return { value: r.id, label: r.name }; }), value: rid, onChange: function(v){ rid = v; act(); setRegion(); } });
     $('.av-pick').appendChild(pick.el);
     solid = Solid($('.av-solid'), { onTouch: act });
-    $('.av-resetview').addEventListener('click', function(){ solid = null; $('.av-solid').innerHTML = ''; solid = Solid($('.av-solid'), { onTouch: act }); draw(); });
+    $('.av-resetview').addEventListener('click', function(){ stopSweep(); solid = null; $('.av-solid').innerHTML = ''; solid = Solid($('.av-solid'), { onTouch: act }); draw(); });
     host.addEventListener('click', onClick);
     function onClick(e){
       var b = e.target.closest && e.target.closest('button[data-k]');
@@ -309,8 +365,8 @@
       var grp = b.parentNode, k = b.getAttribute('data-k');
       if(b.disabled) return;
       act();
-      if(grp.classList.contains('av-mode')){ mode = k; nudged = true; $$('.av-try').forEach(function(x){ x.classList.remove('av-try'); }); if(mode === 'rev') chooseAxis(axisK); setRegion(true); }
-      else if(grp.classList.contains('av-axes')) chooseAxis(k);
+      if(grp.classList.contains('av-mode')){ stopSweep(); mode = k; nudged = true; $$('.av-try').forEach(function(x){ x.classList.remove('av-try'); }); if(mode === 'rev') chooseAxis(axisK); setRegion(true); }
+      else if(grp.classList.contains('av-axes')){ stopSweep(); chooseAxis(k); }
       else if(grp.classList.contains('av-shapes')){ shape = k; draw(); }
       else if(grp.classList.contains('av-slicein')){ inY = k === 'y'; setRegion(true); }
     }
@@ -391,7 +447,8 @@
       var ax = axis();
       svg.querySelector('.av-dyn').innerHTML = stripSvg(reg, F, u, { axis: ax, cross: mode === 'cross' });
       if(svg.lastChild !== H.el) svg.appendChild(H.el); H.set(u);
-      if(mode !== 'area' && solid){ solid.set({ reg: reg, setup: setup(), u: u }); }
+      if(mode !== 'area' && solid){ if(!sweepRaf) solid.sweep(mode === 'rev' && !revolved ? 0 : TAU); solid.set({ reg: reg, setup: setup(), u: u }); }
+      syncRevolve();
       words();
       syncButtons();
     }
@@ -446,7 +503,7 @@
       if(nm) nm.innerHTML = '<h3 class="ls-title-l">The numbers</h3><table class="ls-tbl"><caption class="sr-only">The region, the slice and the result</caption><tbody>' + row('Region', esc(G().name) + (reg.v === 'y' ? ', in y' : '')) + nums.join('') + '</tbody></table>';
       if(solid) solid.label(mode === 'area' ? '' : 'The solid ' + (mode === 'rev' ? 'formed by revolving the region about ' + (axis().dir === 'h' ? 'y = ' : 'x = ') + clean(axis().at) : 'with ' + A.SHAPES[shape] + ' cross sections on the region') + '. The slice at ' + reg.v + ' = ' + clean(u) + ' is highlighted. Volume ' + d3(val) + '.');
       if(LS){
-        LS.caption(T.sayHead($('.av-say')) + (mode === 'area' && $$('.av-try').length ? ' <span class="av-next">Next: tap <b>Revolve</b> to spin this region into a solid.</span>' : ''), 'explore');
+        LS.caption(T.sayHead($('.av-say')) + (mode === 'area' && $$('.av-try').length ? ' <span class="av-next">Next: tap <b>Revolve</b> to spin this region into a solid.</span>' : mode === 'rev' && !revolved ? ' <span class="av-next">Tap <b>Revolve it</b> to turn the region about the axis and watch the solid form.</span>' : ''), 'explore');
         LS.pills([{ k: mode === 'area' ? 'A' : 'V', html: d3(val), tone: 'readout' }], 'left', 'explore');
         var q2 = mode === 'rev' ? A.radii(reg, axis(), u) : null;
         LS.pills([{ html: mode === 'rev' ? 'R ' + clean(q2.R) + (q2.r > 1e-6 ? ', r ' + clean(q2.r) : '') : mode === 'cross' ? 's ' + clean(top - bot) : (v === 'x' ? 'height ' : 'length ') + clean(top - bot), tone: 'ghost' }], 'right', 'explore');
