@@ -1436,7 +1436,7 @@
       pills.push({ html: 'No route', tone: 'warn' });
     } else {
       cap = '<b>' + esc(nodeName(r.nodes[0])) + ' to ' + esc(lc0(nodeName(r.nodes[r.nodes.length - 1]))) + ' in ' + res.length + ' step' + (res.length > 1 ? 's' : '') + '.</b> ' +
-        'The steps are on the map. Why? has every reagent card' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
+        'The reagents are on the arrows under the map. Why? has more' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
       pills.push({ html: res.length + ' step' + (res.length > 1 ? 's' : '') }, { html: S.skeleton ? 'Same skeleton' : 'C–C steps allowed', tone: 'ghost' });
     }
     studio.caption(cap, 'route');
