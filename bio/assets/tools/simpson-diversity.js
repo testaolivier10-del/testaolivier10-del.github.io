@@ -168,8 +168,9 @@
     T.skillTool(app, data, { slug: 'simpson-diversity', kind: 'simpson', stage: stage });
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
-    studio: { dock: ['.sd-rows'], stageAlso: ['.sd-plant'], hint: { target: '.sd-fig', text: 'Tap the quadrat to plant a tree' },
-      caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : '<b>D = ' + g.ro(3) + '.</b> Add or remove trees and watch how even the community is.'; },
+    // pass 2 (2026-11-10): the quadrat is the control (tap to plant, tap a tree to remove it); the six −/+ rows wait in Details
+    studio: { dock: [], stageAlso: ['.sd-plant'], hint: { target: '.sd-fig', text: 'Tap the quadrat to plant a tree' },
+      caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : '<b>D = ' + g.ro(3) + '.</b> Tap the quadrat to plant a tree; tap a tree to remove it.'; },
       pills: function(g){ return [{ k: 'D', html: g.ro(3), tone: 'readout' }]; },
       pillsR: function(g){ return [{ html: g.ro(0) + ' species · N ' + g.ro(1), tone: 'ghost' }]; } } });
 })();
