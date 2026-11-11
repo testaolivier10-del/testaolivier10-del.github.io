@@ -584,7 +584,26 @@
   "glucose-units": {
    "kind": "scale",
    "title": "One reading on two rulers",
-   "cap": "The same glucose on both rulers: {mm} mmol/L × 18 = {mg} mg/dL. The bands are the fasting ranges.",
+   "legendTitle": "fasting:",
+   "legend": [
+    {
+     "tone": "lo",
+     "label": "low"
+    },
+    {
+     "tone": "ok",
+     "label": "normal"
+    },
+    {
+     "tone": "mid",
+     "label": "prediabetes"
+    },
+    {
+     "tone": "hi",
+     "label": "diabetes"
+    }
+   ],
+   "cap": "The same glucose on both rulers: {mm} mmol/L × 18 = {mg} mg/dL. The bands are the fasting ranges: blue low (under 70 mg/dL), green normal (70 to 99), amber prediabetes (100 to 125), coral the diabetes range (126 and up).",
    "rows": [
     {
      "label": "mg/dL",
@@ -616,8 +635,8 @@
       {
        "from": 100,
        "to": 126,
-       "label": "raised",
-       "tone": "hi"
+       "label": "prediabetes",
+       "tone": "mid"
       },
       {
        "from": 126,
@@ -665,7 +684,7 @@
        "from": 5.6,
        "to": 7,
        "label": "",
-       "tone": "hi"
+       "tone": "mid"
       },
       {
        "from": 7,

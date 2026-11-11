@@ -75,7 +75,7 @@
 .calc-svg .ca-diss{fill:var(--ca-o2c);opacity:.6;} .calc-svg .ca-track2{fill:var(--paper);stroke:var(--line);}
 /* scale */
 .calc-svg .ca-track{fill:var(--paper);stroke:var(--line);}
-.calc-svg .ca-band{opacity:.55;} .calc-svg .ca-band.tone-ok{fill:#8CCB9E;} .calc-svg .ca-band.tone-lo{fill:#8FB8E0;} .calc-svg .ca-band.tone-hi{fill:#F0A88C;}
+.calc-svg .ca-band{opacity:.55;} .calc-svg .ca-band.tone-ok{fill:#8CCB9E;} .calc-svg .ca-band.tone-lo{fill:#8FB8E0;} .calc-svg .ca-band.tone-hi{fill:#F0A88C;} .calc-svg .ca-band.tone-mid{fill:#F2CC6B;}
 :root[data-theme="dark"] .calc-svg .ca-band{opacity:.45;}
 .calc-svg .ca-bandt{fill:var(--muted);}
 .calc-svg .ca-pin{stroke:var(--white);stroke-width:1;} .calc-svg .ca-pinl{stroke-width:2.4;}

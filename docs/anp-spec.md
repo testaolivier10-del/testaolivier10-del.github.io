@@ -455,3 +455,18 @@ Site audit follow-up (2026-10-02, workstream W6):
     name and was spot-checked, and a variable with no clear place keeps only its dial. Bug fixed: Missing step after Order
     drew its map into the old drill's slot and showed an empty stage. Item ids, scoring, recording and deep links unchanged.
 95. (2026-11-10) Tool review fixes (docs/tool-review/anatomy-physiology.md; done file docs/tool-review/done/anp-fix.md). Every calculator draws its formula: 24 new picture families in tools/calc-art.js, keyed in data/calc-pictures.json; oxygen content shows bound and dissolved O2 to one scale. Each feedback loop shows the place in the body that answers (tools/loop-scenes.js, 18 drawings for 49 loops); a positive loop stays at its far end. The graph reader draws stacks of three or more panels wide on a desktop, draws hematocrit tubes as tubes ("look": "tubes") and reads only curves at the cursor. The lab practical fits tall figures to the stage width and paints out covered labels' leader lines (tools/lab-fit.js). The new drawing code loads on first use. Presentation only: item ids, scoring, recording and deep links are unchanged.
+96. (2026-11-10) Pin and picture accuracy fixes (independent check docs/tool-review/done/anp-accuracy-check.md; done
+    file docs/tool-review/done/anp-pins.md). Scene places were re-set so each pin sits on its structure (synovial joint
+    layers, skeleton, somatic panel of the efferent figure, skin layers, soft palate, ampulla, SR, T tubule and
+    sarcolemma, endomysium and perimysium, glycolysis order, and the smaller misplacements); the nephron loses its
+    macula densa place (the figure does not draw the tubule at its own glomerulus) and the lymph figure its lumbar
+    trunk (hidden by the intestine); circulation gains "Small arteries and arterioles", "Capillaries of the lower body"
+    and "Veins of the lower body". Rule: a variable or step with no right place on its figure gets no pin, and a
+    scenario with no right place gets no figure (only its dials): a missing picture is acceptable, a wrong one is
+    not. So brain ventricles, thirst, ADH release, smooth muscle, the placenta, injected hormones, vitamin D in blood
+    and the portal vein are unpinned, non-kidney scenarios leave the nephron, and the dorsal column and
+    spinothalamic routes leave the motor pathway figure. Calculators: the glucose scale shows 100 to 125 mg/dL as
+    amber prediabetes with a legend; the firing-rate trace shades only the spike as the absolute refractory period;
+    the conduction picture has no cell body, so it reads for sensory and motor fibers alike. Loops: a positive loop
+    builds to its far end, then its ending comes and the variable falls back (replaces "stays at its far end" in 95);
+    the kidney tubule drawing has no brush border.
