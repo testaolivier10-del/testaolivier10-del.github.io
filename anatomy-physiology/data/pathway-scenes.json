@@ -1,0 +1,1233 @@
+{
+ "about": "Which scene (data/scenes.json) each pathway is drawn on, and the place of each step, in step order (null: the step has no single place on that figure, so it gets no pin). Set by hand and checked for accuracy (docs/tool-review/done/anp-redesign.md). Pathways not listed keep the step map only.",
+ "pathways": {
+  "action-potential": {
+   "scene": "ap-graph",
+   "at": [
+    "rest",
+    "stim",
+    "graded",
+    "threshold",
+    "rising",
+    "peak",
+    "falling",
+    "undershoot",
+    "back"
+   ]
+  },
+  "enzyme-cycle": {
+   "scene": "enzyme",
+   "at": [
+    "bind",
+    "hold",
+    "hold2",
+    "product",
+    "released",
+    "free"
+   ]
+  },
+  "protein-synthesis": {
+   "scene": "cell",
+   "at": [
+    "gene",
+    "nucleus",
+    "nucleus",
+    "pore",
+    "ribofree",
+    "rer",
+    "rerlumen",
+    "rerlumen",
+    "golgi",
+    "exo"
+   ]
+  },
+  "secretory-pathway": {
+   "scene": "cell",
+   "at": [
+    "ribofree",
+    "rer",
+    "rerlumen",
+    "rerlumen",
+    "tovesicle",
+    "golgi",
+    "secves",
+    "exo"
+   ]
+  },
+  "cell-cycle": {
+   "scene": "cell-cycle",
+   "at": [
+    "g1",
+    "g1cp",
+    "s",
+    "g2",
+    "m",
+    "cyto",
+    "daughters"
+   ]
+  },
+  "mitosis": {
+   "scene": "mitosis",
+   "at": [
+    "pro",
+    "prometa",
+    "meta",
+    "ana",
+    "telo",
+    "cyto"
+   ]
+  },
+  "cellular-respiration": {
+   "scene": "respiration",
+   "at": [
+    "glucose",
+    "glyco",
+    "pyr",
+    "krebs",
+    "chain",
+    "atp"
+   ]
+  },
+  "met-glucose-to-atp": {
+   "scene": "respiration",
+   "at": [
+    "glucose",
+    "pfk",
+    "split",
+    "glyco",
+    "gatp",
+    "acoa",
+    "krebs",
+    "kco2",
+    "krebs2",
+    "carriers",
+    "chain",
+    "o2",
+    "atp"
+   ]
+  },
+  "resting-potential": {
+   "scene": "membrane-rest",
+   "at": [
+    "pump",
+    "leak",
+    "out",
+    "inside",
+    "slow",
+    "meter"
+   ]
+  },
+  "second-messenger": {
+   "scene": "camp",
+   "at": [
+    "receptor",
+    "gprot",
+    "ac",
+    "camp",
+    "phos",
+    "act",
+    null
+   ]
+  },
+  "camp-cascade": {
+   "scene": "camp",
+   "at": [
+    "receptor",
+    "gprot",
+    "ac",
+    "camp",
+    "apk",
+    "phos",
+    "act",
+    null
+   ]
+  },
+  "met-glycogen-to-blood": {
+   "scene": "camp",
+   "at": [
+    "receptor",
+    "apk",
+    "phos",
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "lipid-hormone-protein": {
+   "scene": "steroid",
+   "at": [
+    "carrier",
+    "membrane",
+    "receptor",
+    "dna",
+    "transcription",
+    "translation",
+    "protein"
+   ]
+  },
+  "ig-acne": {
+   "scene": "acne",
+   "at": [
+    "gland",
+    "plug",
+    "bacteria",
+    "mild",
+    "burst",
+    null
+   ]
+  },
+  "coronary": {
+   "scene": "coronary",
+   "at": [
+    "aorta",
+    "origin",
+    null,
+    "lad",
+    "muscle",
+    "gcv",
+    "sinus"
+   ]
+  },
+  "cardiac-excitation": {
+   "scene": "cardiac-ap",
+   "at": [
+    "foot",
+    "up",
+    "notch",
+    "plateau",
+    "rise",
+    "contract",
+    "repol",
+    "relax"
+   ]
+  },
+  "cardiac-cycle": {
+   "scene": "cardiac-cycle",
+   "at": [
+    "atrial",
+    "s1",
+    "iso",
+    "open",
+    "eject",
+    "s2",
+    "isorelax",
+    "avopen",
+    "fill"
+   ]
+  },
+  "frank-starling": {
+   "scene": "heart",
+   "at": [
+    "ivc",
+    "lv",
+    "wall",
+    null,
+    "septum",
+    "aorta"
+   ]
+  },
+  "baroreceptor-reflex": {
+   "scene": "baro",
+   "at": [
+    "arch",
+    "arch",
+    "arch",
+    "medulla",
+    "symp",
+    "heart",
+    null,
+    "arch"
+   ]
+  },
+  "capillary-exchange": {
+   "scene": "capillary-bed",
+   "at": [
+    "art",
+    "cleft",
+    null,
+    null,
+    "venend",
+    "fluid",
+    "lymphcap"
+   ]
+  },
+  "air-route": {
+   "scene": "airway",
+   "at": [
+    "nares",
+    "nasal",
+    "naso",
+    "oro",
+    "laryngo",
+    "larynx",
+    "trachea",
+    "primary",
+    "secondary",
+    "tertiary",
+    "bronchiole",
+    "terminal",
+    "resp",
+    "duct",
+    "sac"
+   ]
+  },
+  "cough-reflex": {
+   "scene": "throat",
+   "at": [
+    "trachea",
+    null,
+    null,
+    "vocal",
+    "trachea",
+    "vocal"
+   ]
+  },
+  "airway-seal": {
+   "scene": "throat",
+   "at": [
+    "vocal",
+    "vest",
+    "epi",
+    "esoph",
+    "vocal"
+   ]
+  },
+  "gi-swallowing": {
+   "scene": "throat",
+   "at": [
+    "tongue",
+    null,
+    "softpal",
+    "epi",
+    "oro",
+    "esoph",
+    null
+   ]
+  },
+  "inspiration": {
+   "scene": "breathing",
+   "at": [
+    "head",
+    "thorax",
+    "pleura",
+    "lung",
+    "alv",
+    "nose",
+    null
+   ]
+  },
+  "ms-breath-rest": {
+   "scene": "breathing",
+   "at": [
+    "diaphragm",
+    "ribs",
+    "nose",
+    "relax",
+    "out"
+   ]
+  },
+  "central-chemoreceptor": {
+   "scene": "resp-centers",
+   "at": [
+    null,
+    "medsmall",
+    "surface",
+    "surface",
+    "chemo",
+    "centers",
+    "muscles",
+    "lungs"
+   ]
+  },
+  "chloride-shift": {
+   "scene": "rbc-co2",
+   "at": [
+    "co2in",
+    "ca",
+    "split",
+    "band3",
+    "cell"
+   ]
+  },
+  "oxygen-trip": {
+   "scene": "circulation",
+   "at": [
+    "lungcap",
+    "lungcap",
+    "pveins",
+    "la",
+    "aorta",
+    "syscap",
+    "syscap",
+    null
+   ]
+  },
+  "co2-trip": {
+   "scene": "circulation",
+   "at": [
+    null,
+    "syscap",
+    "syscap",
+    "syscap",
+    "syscap",
+    "ra",
+    "lungcap",
+    "lungcap",
+    "lungcap",
+    null
+   ]
+  },
+  "saltatory": {
+   "scene": "neuron",
+   "at": [
+    "n1",
+    "inside",
+    "myelin",
+    "n2",
+    "n2",
+    "n3"
+   ]
+  },
+  "nerve-regeneration": {
+   "scene": "neuron",
+   "at": [
+    "axon",
+    "distal",
+    "distal",
+    "sheath",
+    "sprout",
+    "synapse"
+   ]
+  },
+  "synaptic-transmission": {
+   "scene": "synapse",
+   "at": [
+    "axon",
+    "membrane",
+    "fuse",
+    "cleft",
+    "receptors",
+    "channels",
+    "post",
+    null,
+    "cleft2"
+   ]
+  },
+  "speech-repeat": {
+   "scene": "cortex",
+   "at": [
+    null,
+    "aud",
+    "wern",
+    "arc",
+    "broca",
+    "face"
+   ]
+  },
+  "corticospinal-route": {
+   "scene": "motor-path",
+   "at": [
+    "cortex",
+    "capsule",
+    "peduncle",
+    "pons",
+    "pyramid",
+    "decuss",
+    "lateral",
+    "ventral",
+    "muscle",
+    null
+   ]
+  },
+  "sympathetic-to-sweat": {
+   "scene": "efferent",
+   "at": [
+    "lateral",
+    "vroot",
+    "nerve",
+    "pre",
+    "ganglion",
+    "post",
+    "out",
+    "effector"
+   ]
+  },
+  "tack-to-cord": {
+   "scene": "efferent",
+   "at": [
+    null,
+    "drg",
+    "droot",
+    "dhorn",
+    "vhorn",
+    "sroot",
+    "muscle"
+   ]
+  },
+  "reflex-arc-knee": {
+   "scene": "efferent",
+   "at": [
+    "muscle",
+    "muscle",
+    "droot",
+    "vhorn",
+    "sroot",
+    "nmj",
+    "muscle"
+   ]
+  },
+  "light-to-cortex": {
+   "scene": "visual-path",
+   "at": [
+    "cornea",
+    "aqueous",
+    "pupil",
+    "lens",
+    "vitreous",
+    "retina",
+    "retina",
+    "retina",
+    "retina",
+    "onerve",
+    "chiasm",
+    "tract",
+    "lgn",
+    "cortex"
+   ]
+  },
+  "near-focus": {
+   "scene": "eye",
+   "at": [
+    "front",
+    null,
+    "ciliary",
+    "zonules",
+    "lens",
+    "cornea",
+    "fovea"
+   ]
+  },
+  "sound-to-cortex": {
+   "scene": "ear",
+   "at": [
+    "auricle",
+    "drum",
+    "ossicles",
+    "oval",
+    "cochlea",
+    "cochlea",
+    "cochlea",
+    "nerve",
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "adh-release": {
+   "scene": "posterior-pituitary",
+   "at": [
+    "body",
+    "axon",
+    "terminal",
+    null,
+    "terminal",
+    "terminal",
+    "blood"
+   ]
+  },
+  "hpa-axis": {
+   "scene": "glands",
+   "at": [
+    "brain",
+    "hypo",
+    "stalk",
+    "pit",
+    "adrenal",
+    null,
+    "hypo"
+   ]
+  },
+  "light-melatonin": {
+   "scene": "glands",
+   "at": [
+    null,
+    "hypo",
+    null,
+    "neck",
+    "pineal",
+    "pineal",
+    "pineal"
+   ]
+  },
+  "raas-steps": {
+   "scene": "raas",
+   "at": [
+    "kidney",
+    "kidney",
+    "angi",
+    "lungs",
+    "adrenal",
+    "nephron",
+    "na",
+    "water",
+    "kidney"
+   ]
+  },
+  "lymph-flow": {
+   "scene": "lymph",
+   "at": [
+    "legcap",
+    "legvessel",
+    "node",
+    "node",
+    "efferent",
+    null,
+    "cisterna",
+    "duct",
+    "junction"
+   ]
+  },
+  "thymus-selection": {
+   "scene": "lymph",
+   "at": [
+    "marrow",
+    "thymus",
+    "thymus",
+    "thymus",
+    "necknodes"
+   ]
+  },
+  "t-cell-activation": {
+   "scene": "t-cells",
+   "at": [
+    "apc",
+    "apc2",
+    null,
+    "sig1",
+    "sig2",
+    "cyto",
+    null,
+    "th",
+    null
+   ]
+  },
+  "cytotoxic-kill": {
+   "scene": "t-cells",
+   "at": [
+    "contact",
+    "aim",
+    "perforin",
+    "granzyme",
+    "dying",
+    null
+   ]
+  },
+  "gi-gastric-phases": {
+   "scene": "gut",
+   "at": [
+    "head",
+    "stomach",
+    "stomach",
+    "stomach",
+    "stomach",
+    "duod",
+    "duod"
+   ]
+  },
+  "gi-carbohydrate-digestion": {
+   "scene": "gut",
+   "at": [
+    "mouth",
+    "stomach",
+    "duod",
+    "si",
+    "si",
+    "si",
+    "liver"
+   ]
+  },
+  "gi-protein-digestion": {
+   "scene": "gut",
+   "at": [
+    "stomach",
+    "stomach",
+    "duod",
+    "duod",
+    "si",
+    "si",
+    "liver"
+   ]
+  },
+  "gi-b12-route": {
+   "scene": "gut",
+   "at": [
+    "stomach",
+    "stomach",
+    "duod",
+    "ileum",
+    "ileum",
+    "liver"
+   ]
+  },
+  "gi-enterohepatic": {
+   "scene": "gut",
+   "at": [
+    "liver",
+    "gall",
+    "si",
+    "ileum",
+    null,
+    "liver"
+   ]
+  },
+  "met-appetite-meal": {
+   "scene": "gut",
+   "at": [
+    "stomach",
+    "head",
+    "mouth",
+    "stomach",
+    "si",
+    "head"
+   ]
+  },
+  "met-vitamin-a-route": {
+   "scene": "gut",
+   "at": [
+    "si",
+    "si",
+    "si",
+    null,
+    "liver",
+    "liver",
+    "eyes"
+   ]
+  },
+  "gi-defecation-reflex": {
+   "scene": "gut",
+   "at": [
+    "stomach",
+    "colon",
+    "rectum",
+    null,
+    "rectum",
+    "anus",
+    "anus"
+   ]
+  },
+  "gi-bile-route": {
+   "scene": "bile",
+   "at": [
+    "canal",
+    "triad",
+    "hepatic",
+    "common",
+    "cystic",
+    "gb",
+    "cbd",
+    null
+   ]
+  },
+  "gi-trypsin-activation": {
+   "scene": "pancreas",
+   "at": [
+    "acini",
+    "smallduct",
+    "duod",
+    "duod",
+    "duod",
+    "duod"
+   ]
+  },
+  "ur-blood-kidney": {
+   "scene": "kidney-vessels",
+   "at": [
+    "renala",
+    "seg",
+    "interlobar",
+    "arcuate",
+    "radiate",
+    "glom",
+    "radiatev",
+    "arcuatev",
+    "interlobarv",
+    "renalv",
+    null
+   ]
+  },
+  "ur-filtrate-nephron": {
+   "scene": "nephron",
+   "at": [
+    "glom",
+    "capsule",
+    "pct",
+    "desc",
+    "asc",
+    null,
+    "dct",
+    "cd",
+    "papilla"
+   ]
+  },
+  "ur-countercurrent-build": {
+   "scene": "nephron",
+   "at": [
+    "pctend",
+    "asc",
+    "desc",
+    "bottom",
+    "asc",
+    "bottom",
+    "ptc"
+   ]
+  },
+  "ur-urea-recycling": {
+   "scene": "nephron",
+   "at": [
+    "capsule",
+    "pct",
+    "dct",
+    "cd",
+    "cdlow",
+    "bottom",
+    "asc"
+   ]
+  },
+  "ur-pct-glucose": {
+   "scene": "pct-cell",
+   "at": [
+    "pump",
+    "cell",
+    "apical",
+    "inside",
+    "baso",
+    "blood"
+   ]
+  },
+  "ur-adh-collecting-duct": {
+   "scene": "cd-cell",
+   "at": [
+    "blood",
+    "baso",
+    "cell",
+    "cell2",
+    "apical",
+    "across",
+    "fluid"
+   ]
+  },
+  "ur-urine-route": {
+   "scene": "kidney-cut",
+   "at": [
+    "papilla",
+    "minor",
+    "major",
+    "pelvis",
+    "ureter",
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "ur-micturition": {
+   "scene": "pelvis",
+   "at": [
+    "fbladder",
+    "fbladder",
+    null,
+    null,
+    "furethra",
+    "fbladder",
+    "fneck",
+    "furethra"
+   ]
+  },
+  "rp-sperm-route": {
+   "scene": "pelvis",
+   "at": [
+    "testis",
+    "testis",
+    "epi",
+    "epi",
+    "ductus",
+    "ampulla",
+    "ejac",
+    "prost",
+    "memb",
+    "spongy"
+   ]
+  },
+  "rp-milk-route": {
+   "scene": "breast",
+   "at": [
+    "alveoli",
+    "alveoli",
+    "ducts",
+    "lact",
+    "nipple"
+   ]
+  },
+  "dv-milk-ejection": {
+   "scene": "breast",
+   "at": [
+    "nipple",
+    "nipple",
+    null,
+    null,
+    null,
+    "alveoli",
+    "nipple"
+   ]
+  },
+  "rp-male-hpg": {
+   "scene": "male-hpg",
+   "at": [
+    "hypo",
+    "pit",
+    "leydig",
+    "sertoli",
+    "brake"
+   ]
+  },
+  "dv-zygote-implantation": {
+   "scene": "tube-to-uterus",
+   "at": [
+    "two",
+    "eight",
+    "morula",
+    "blasto",
+    "hatch",
+    "implant",
+    "implant",
+    null,
+    null
+   ]
+  },
+  "rp-oocyte-route": {
+   "scene": "tube-to-uterus",
+   "at": [
+    "ovary",
+    "fimbriae",
+    "ampulla",
+    "isthmus",
+    "wall",
+    "cavity"
+   ]
+  },
+  "dv-fertilization-steps": {
+   "scene": "fertilization",
+   "at": [
+    null,
+    null,
+    "corona",
+    "zona",
+    "fuse",
+    "oocyte",
+    "zona2",
+    null,
+    null,
+    null
+   ]
+  },
+  "dv-labor-stages": {
+   "scene": "labor",
+   "at": [
+    "cervix",
+    "uterus",
+    "cervix",
+    "dilating",
+    "full",
+    "push",
+    "born",
+    "placenta",
+    "afterbirth",
+    null,
+    null
+   ]
+  },
+  "dv-gastrulation": {
+   "scene": "neurulation",
+   "at": [
+    null,
+    null,
+    null,
+    "meso",
+    "ecto",
+    "noto",
+    "plate",
+    "somites",
+    "tube"
+   ]
+  },
+  "neural-tube": {
+   "scene": "neurulation",
+   "at": [
+    "plate",
+    "folds",
+    "tube",
+    null,
+    null,
+    null
+   ]
+  },
+  "dv-heart-development": {
+   "scene": "heart-dev",
+   "at": [
+    "area",
+    null,
+    "tubes",
+    "fused",
+    "beats",
+    "loop",
+    "cushions",
+    "septa"
+   ]
+  },
+  "dv-lung-development": {
+   "scene": "lung-dev",
+   "at": [
+    "bud",
+    "sep",
+    "two",
+    "lobes",
+    null,
+    null,
+    null
+   ]
+  },
+  "dv-birth-circulation": {
+   "scene": "birth-circ",
+   "at": [
+    null,
+    null,
+    "pa",
+    "la",
+    "fo",
+    "da",
+    "da",
+    "da"
+   ]
+  },
+  "jt-synovial-layers": {
+   "scene": "synovial",
+   "at": [
+    null,
+    "fibrous",
+    "synovial",
+    "cavity",
+    "cartilage",
+    "bone"
+   ]
+  },
+  "jt-cartilage-pump": {
+   "scene": "synovial",
+   "at": [
+    "bonetop",
+    "cartilage",
+    "cavity",
+    "bonetop",
+    "cartilage",
+    "cavity"
+   ]
+  },
+  "jt-osteoarthritis": {
+   "scene": "synovial",
+   "at": [
+    "cartilage2",
+    "cartilage",
+    "cavity",
+    "bone",
+    "synovial"
+   ]
+  },
+  "jt-acl-tear": {
+   "scene": "knee",
+   "at": [
+    null,
+    null,
+    "tibia",
+    "acl",
+    "slide",
+    "joint"
+   ]
+  },
+  "bt-endochondral": {
+   "scene": "endochondral",
+   "at": [
+    "model",
+    "collar",
+    "artery",
+    "primary",
+    "cavity",
+    "secondary",
+    "plates",
+    null
+   ]
+  },
+  "bt-fracture-repair": {
+   "scene": "fracture",
+   "at": [
+    "torn",
+    "hematoma",
+    "vessels",
+    "callus",
+    "bony",
+    "healed"
+   ]
+  },
+  "ig-keratinocyte-maturation": {
+   "scene": "epidermis",
+   "at": [
+    "basale",
+    "spinosum",
+    "granulosum",
+    "lucidum",
+    "corneum",
+    "shed"
+   ]
+  },
+  "ig-tanning": {
+   "scene": "epidermis",
+   "at": [
+    "kc",
+    null,
+    "melano",
+    "near",
+    "kc",
+    null
+   ]
+  },
+  "ig-burn-depth": {
+   "scene": "skin",
+   "at": [
+    "epi",
+    "updermis",
+    "deepdermis",
+    "hypo",
+    null
+   ]
+  },
+  "sk-arm-force": {
+   "scene": "skeleton",
+   "at": [
+    "carpals",
+    "scaphoid",
+    "radius",
+    "humerus",
+    "glenoid",
+    "clavicle",
+    "manubrium"
+   ]
+  },
+  "sk-weight-path": {
+   "scene": "skeleton",
+   "at": [
+    "sacrum",
+    "ilium",
+    "acetab",
+    "neck",
+    "condyles",
+    "tibia",
+    "talus",
+    "foot"
+   ]
+  },
+  "mt-ec-coupling": {
+   "scene": "ec",
+   "at": [
+    "sarco",
+    "ttub",
+    "junction",
+    "sr",
+    "ca",
+    "troponin",
+    "tropo",
+    "myosin"
+   ]
+  },
+  "mt-nmj-transmission": {
+   "scene": "ec",
+   "at": [
+    "nerve",
+    "terminal",
+    "vesicles",
+    "cleft",
+    "receptors",
+    "endplate",
+    "sarco",
+    null
+   ]
+  },
+  "mt-relaxation": {
+   "scene": "ec",
+   "at": [
+    "nerve",
+    "cleft",
+    "sr",
+    "sr",
+    "troponin",
+    "tropo",
+    "fiber"
+   ]
+  },
+  "mt-twitch-events": {
+   "scene": "ec",
+   "at": [
+    "vesicles",
+    "sarco",
+    "troponin",
+    "whole",
+    null
+   ]
+  },
+  "ms-fiber-to-bone": {
+   "scene": "muscle-org",
+   "at": [
+    "myofibril",
+    "fiberlow",
+    "endo",
+    "peri",
+    "epi",
+    "tendon",
+    null
+   ]
+  },
+  "mt-pull-to-bone": {
+   "scene": "muscle-org",
+   "at": [
+    "fiber",
+    "endo",
+    "peri",
+    "epi",
+    "tendon",
+    null
+   ]
+  },
+  "mt-cross-bridge-cycle": {
+   "scene": "crossbridge",
+   "at": [
+    "cocked",
+    "bind",
+    "stroke",
+    "adp",
+    "atp",
+    "recock"
+   ]
+  },
+  "sk-medial-arch": {
+   "scene": "foot",
+   "at": [
+    "calc",
+    "talus",
+    "nav",
+    "cun",
+    "met1"
+   ]
+  }
+ }
+}

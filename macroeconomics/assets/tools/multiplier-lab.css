@@ -31,10 +31,10 @@
 .ml-chip.is-total{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
 .ml-op{color:var(--muted);font-weight:800;}
 /* Close a gap: the graph beside its meter (stacked on a phone) */
-.ml-gapgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(220px,1fr);gap:14px;align-items:center;flex:1;min-height:0;}
+.ml-gapgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(220px,1fr);gap:14px;align-items:center;flex:1;min-height:0;}
 .ml-graph{min-height:0;display:flex;justify-content:center;}
-.ml-graph svg{width:100%;height:auto;max-height:100%;max-width:440px;}
-.ml-gapgrid .ml-graph svg{max-height:min(100%,62vh);}
+.ml-graph svg{width:100%;height:auto;max-height:100%;max-width:540px;}
+.ml-gapgrid .ml-graph svg{max-height:min(100%,76vh);}
 .ml-meter{font:600 14px var(--font-ui);color:var(--ink);}
 .ml-mh{margin:0 0 8px;font-weight:800;}
 .ml-track{position:relative;height:14px;border-radius:999px;background:var(--line);overflow:visible;}
@@ -93,14 +93,14 @@
 /* Definite heights for the bar charts that share the stage with a table,
    so the chart never collapses (phone and desktop). */
 .ml-qbars{flex:none;height:clamp(180px,36vh,420px);}
-.ml-fig[data-v="money"] .ml-barbox{flex:none;height:clamp(170px,34vh,380px);}
+.ml-fig[data-v="money"] .ml-barbox{flex:none;height:clamp(220px,46vh,460px);}
 @media (max-width:640px){
   .ml-qbars{height:30svh;min-height:170px;}
   /* A drill's stage is cut down to fit the answer box (the studio's --ls-sh): the chart takes the height that is
      left, so its column names are not cut off, and stops short of the Enlarge button, which sat on "Total". */
   .ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qfig{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;}
   .ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qbars{flex:1 1 0;height:auto;min-height:118px;margin:0 44px 0 0;}
-  .ml-fig[data-v="money"] .ml-barbox{height:24svh;min-height:150px;margin-bottom:0;}
+  .ml-fig[data-v="money"] .ml-barbox{height:34svh;min-height:220px;margin-bottom:0;}
   .ml-t td span{display:inline;}
   .ml-t td span::after{content:" ";}
   .ml-t td b{display:inline;margin:0 0 0 2px;}
@@ -113,3 +113,85 @@
   .ml-qfig-money .ml-t caption{margin-bottom:0;}
   .ml-qfig-money .ml-t td{padding:3px 6px;}
 }
+
+/* Multiplier: money passing hand to hand (cascade() in the JS). */
+.ml-card,.ls-root{--ml-save:#B54700;}
+:root[data-theme="dark"] .ml-card,:root[data-theme="dark"] .ls-root{--ml-save:#F29A5C;}
+.ml-casc{display:block;position:absolute;inset:0;width:100%;height:100%;font-family:var(--font-ui);}
+.ml-casc .ml-ch{fill:var(--ink);font-size:14px;font-weight:800;}
+.ml-casc .ml-cs{fill:var(--muted);font-size:11.5px;font-weight:600;}
+.ml-casc .ml-k-sp{fill:var(--cink);} .ml-casc .ml-k-sv{fill:var(--ml-save);}
+.ml-casc .ml-sp{fill:var(--cink);}
+.ml-casc .ml-sv{fill:var(--ml-save);}
+.ml-casc .ml-pass{fill:var(--cink);opacity:.14;}
+.ml-casc .ml-leak{stroke:var(--ml-save);stroke-width:1.4;stroke-dasharray:3 3;fill:none;opacity:.8;}
+.ml-casc .ml-ahead{fill:var(--ml-save);}
+.ml-casc .ml-rl{fill:var(--ink);font-size:12px;font-weight:700;}
+.ml-casc .ml-rl.is-tax{fill:var(--ml-save);}
+.ml-casc .is-taxrow .ml-sp{fill:none;stroke:var(--cink);stroke-width:2;stroke-dasharray:4 3;}
+.ml-casc .is-taxrow .ml-in:not(.is-sv){fill:var(--cink);}
+.ml-casc .ml-in{fill:var(--white);font-size:11.5px;font-weight:800;}
+.ml-casc .ml-rnote{fill:var(--muted);font-size:11.5px;font-weight:700;}
+.ml-casc .ml-tank{fill:none;stroke:var(--ml-save);stroke-width:2;}
+.ml-casc .ml-tseg{fill:var(--ml-save);opacity:.85;}
+.ml-casc .ml-tseg.is-alt{opacity:.62;}
+.ml-casc .ml-tseg.is-rest{opacity:.25;}
+.ml-casc .ml-th{fill:var(--ml-save);font-size:13px;font-weight:800;}
+.ml-casc .ml-tv{fill:var(--ink);font-size:12.5px;font-weight:800;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ml-casc .ml-tn{fill:var(--muted);font-size:10.5px;font-weight:700;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ml-casc .ml-more{fill:var(--muted);font-size:11.5px;font-weight:600;font-style:italic;}
+.ml-casc .ml-row{animation:ml-row .4s ease-out both;}
+.ml-casc.is-still .ml-row{animation:none;}
+@keyframes ml-row{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){.ml-casc .ml-row{animation:none;}}
+.ml-casc .ml-k-tx{fill:var(--cink);font-style:italic;}
+/* Close a gap: the gap band on the axis */
+.ml-graph .ml-gband{fill:none;stroke:var(--ml-tax);stroke-width:1.6;stroke-dasharray:4 3;}
+.ml-graph .ml-gfill{fill:var(--cink);opacity:.75;}
+.ml-graph .ml-gfill.is-closed{fill:var(--good,#1F6E3E);}
+.ml-graph .ml-gfill.is-over,.ml-graph .ml-gfill.is-wrong{fill:var(--ml-tax);}
+.ml-graph .ml-glab{fill:var(--ml-tax);font:800 10.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ml-graph .ml-yf{fill:var(--muted);font:700 11px var(--font-ui);}
+/* Money: banks in a row (banksSvg() in the JS) */
+.ml-banks{display:block;position:absolute;inset:0;width:100%;height:100%;font-family:var(--font-ui);}
+.ml-banks .ml-bk-roof,.ml-banks .ml-bk-col,.ml-banks .ml-bk-base{fill:var(--muted);opacity:.75;}
+.ml-banks .ml-bk-name{fill:var(--ink);font-size:12.5px;font-weight:800;}
+.ml-banks .ml-vault{fill:none;stroke:var(--line);stroke-width:1.5;}
+.ml-banks .ml-keep{fill:var(--ml-now);}
+.ml-banks .ml-lend{fill:var(--cink);}
+.ml-banks .ml-lend.is-neg{fill:none;stroke:var(--ml-tax);stroke-width:2;stroke-dasharray:4 3;}
+.ml-banks .ml-bk-v{fill:var(--ink);font-size:11.5px;font-weight:800;}
+.ml-banks .ml-bk-in{fill:var(--white);font-size:10.5px;font-weight:800;}
+.ml-banks .ml-lend.is-neg + .ml-bk-v{fill:var(--ml-tax);}
+.ml-banks .ml-loan{fill:none;stroke:var(--cink);stroke-width:2;}
+.ml-banks .ml-loan.is-neg{stroke:var(--ml-tax);stroke-dasharray:5 4;}
+.ml-banks .ml-bahead{fill:var(--cink);}
+.ml-banks .ml-bk-more{fill:var(--muted);font-size:11.5px;font-style:italic;font-weight:600;}
+.ml-banks .ml-tot-h{fill:var(--ink);font-size:12px;font-weight:700;}
+.ml-banks .ml-tot-o{fill:none;stroke:var(--cink);stroke-width:1.5;stroke-dasharray:5 4;}
+.ml-banks .ml-tot-now{fill:var(--ml-now);}
+.ml-banks .ml-tot-l{fill:var(--cink);} .ml-banks .ml-tot-l.is-alt{fill:var(--cink);opacity:.7;}
+.ml-banks .ml-tot-l.is-neg{fill:var(--ml-tax);}
+.ml-banks .ml-bank{animation:ml-row .4s ease-out both;}
+.ml-banks.is-still .ml-bank{animation:none;}
+@media (prefers-reduced-motion:reduce){.ml-banks .ml-bank{animation:none;}}
+.ml-banks .ml-bk-key{fill:var(--muted);font-size:11.5px;font-weight:600;}
+.ml-banks .ml-k-keep{fill:var(--ml-now);} .ml-banks .ml-k-lend{fill:var(--cink);}
+.ml-banks .ml-bk-in.is-neg{fill:var(--ml-tax);}
+
+/* Pass 2: the equation strip repeated the explanation line, so it is gone from the stage (Multiplier and
+   Money; the formulas are in Numbers & formulas). Bank 1's balance sheet moved to Numbers & formulas; the
+   money market graph stays beside the new-money total it follows. */
+.ml-fig[data-v="ripple"] .ml-read,.ml-fig[data-v="money"] .ml-read{display:none;}
+.ml-tacct:empty{display:none;}
+.ml-moneyrow:has(.ml-tacct:empty){grid-template-columns:minmax(0,1fr);justify-items:center;}
+.ml-moneyrow:has(.ml-tacct:empty) .ml-mm{width:min(100%,300px);}
+.ml-meter .ml-nums{grid-template-columns:minmax(0,1fr);margin-top:0;}
+.ml-meter .ml-nums dd{font-size:18px;}
+.ls-phone .ml-meter .ml-nums{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:6px;}
+.ls-phone .ml-meter .ml-nums dd{font-size:15px;}
+/* Pass 3: the drills draw the Explore pictures (spending rounds, banks); give them the stage height */
+.ml-qfig .ml-qcasc{height:clamp(240px,56vh,520px);margin-bottom:6px;}
+.ml-qfig-money .ml-qbars{height:clamp(220px,40vh,420px);margin-bottom:6px;}
+.ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qfig-money .ml-qbars{min-height:172px;}
+.ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qfig-money .ml-t caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}

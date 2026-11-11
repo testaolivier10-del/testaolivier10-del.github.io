@@ -8,7 +8,7 @@
    Every graph on this page is drawn by ApMacroGraph.mount / .svg and every
    graph step is graded by ApMacroGrade.graph (no second renderer or grader).
 
-   Explore: pick a graph (chips), pick what happens (a menu of scenarios, or
+   Explore: pick a graph (a select), pick what happens (a menu of scenarios, or
    free draw), drag the curve you think moves (or its button and the arrow
    keys). E2 follows where the curves cross, the result shows as pills on the
    stage and a caption, and a picked scenario says at once whether you moved
@@ -93,7 +93,8 @@
         '<div class="gs-views"><figure class="gs-pane gs-main"><div class="gs-host"></div></figure>' +
         '<figure class="gs-pane gs-link" hidden><figcaption class="gs-link-h"></figcaption><div class="gs-link-svg"></div></figure></div></div>' +
       '<div class="gs-ctl">' +
-        '<div class="gs-graphs ls-scroll" role="group" aria-label="Graph">' + graphs.map(function(x){ return '<button type="button" class="tchip gs-chip" data-g="' + x.id + '" aria-pressed="false">' + esc(GS.SHORT[x.id]) + '</button>'; }).join('') + '</div>' +
+        // Pass 3: the graph chooser is a select (as in AP Microeconomics), not a wall of eight chips.
+        '<div class="gs-row gs-grow"><label class="gs-scen-l" for="' + nid + '-g">Graph</label><select class="bt-select gs-gsel" id="' + nid + '-g">' + graphs.map(function(x){ return '<option value="' + x.id + '">' + esc(GS.SHORT[x.id]) + '</option>'; }).join('') + '</select></div>' +
         '<div class="gs-row" data-ls-primary><label class="gs-scen-l" for="' + nid + '-s">What happens</label><select class="bt-select gs-scen" id="' + nid + '-s"></select>' +
           '<button type="button" class="btn-press sm ls-btn ls-pri gs-show">Show me</button></div>' +
         '<div class="gs-hand"></div><p class="gs-cap" aria-live="polite"></p>' +
@@ -104,7 +105,7 @@
     var R = {
       fig: host.querySelector('.gs-fig'), sw: host.querySelector('.gs-sw'), main: host.querySelector('.gs-main'), mainHost: host.querySelector('.gs-host'),
       link: host.querySelector('.gs-link'), linkH: host.querySelector('.gs-link-h'), linkSvg: host.querySelector('.gs-link-svg'),
-      ctl: host.querySelector('.gs-ctl'), chips: host.querySelector('.gs-graphs'), scen: host.querySelector('.gs-scen'), show: host.querySelector('.gs-show'),
+      ctl: host.querySelector('.gs-ctl'), gsel: host.querySelector('.gs-gsel'), scen: host.querySelector('.gs-scen'), show: host.querySelector('.gs-show'),
       hand: host.querySelector('.gs-hand'), cap: host.querySelector('.gs-cap'), say: host.querySelector('.gs-say'), nums: host.querySelector('.gs-nums'),
       prac: host.querySelector('.gs-drill')
     };
@@ -119,7 +120,7 @@
     function pickGraph(id, keepScen){
       stopAnim();
       g = graphs.filter(function(x){ return x.id === id; })[0] || graphs[0];
-      R.chips.querySelectorAll('.gs-chip').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === g.id)); });
+      R.gsel.value = g.id;
       var list = scenarios();
       R.scen.innerHTML = '<option value="">Free draw: shift any curve</option>' +
         '<optgroup label="Shifts">' + list.filter(function(x){ return !x.along && !x.point; }).map(function(x){ return '<option value="' + x.id + '">' + esc(x.title) + '</option>'; }).join('') + '</optgroup>' +
@@ -287,13 +288,13 @@
     function onClick(e){
       var b = e.target.closest('button');
       if(!b) return;
-      if(b.classList.contains('gs-chip')){ act(); pickGraph(b.getAttribute('data-g')); }
-      else if(b.classList.contains('gs-show')) showMe();
+      if(b.classList.contains('gs-show')) showMe();
       else if(b.classList.contains('gs-drill')) practise(g.id);
       else if(b.parentNode === R.sw){ view = b.getAttribute('data-v'); layout(); }
     }
     host.addEventListener('click', onClick);
     R.scen.addEventListener('change', function(){ act(); pickScen(R.scen.value); });
+    R.gsel.addEventListener('change', function(){ act(); pickGraph(R.gsel.value); });
     function studio(pane, s){
       LS = s;
       var sp = T.studioPane(pane, s, { stage: [R.fig], dock: [R.ctl], setup: 'Options', moreLabel: 'More options', why: [R.say], details: [R.nums] });
@@ -304,7 +305,7 @@
       update();
       // The scenario row is the pinned primary control on a phone, so the tip's
       // target is in view at every width.
-      if(s.mode() === 'explore' && s.hint) s.hint({ target: R.scen, text: 'Start here: pick what happens, then drag the curve it moves' });
+      if(s.mode() === 'explore' && s.hint) s.hint({ target: R.scen, text: 'Pick what happens, then drag the curve' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(layout, 40); }).observe(R.fig); }
     }
     var g0 = graphs.filter(function(x){ return x.id === 'sd'; })[0] || graphs[0];

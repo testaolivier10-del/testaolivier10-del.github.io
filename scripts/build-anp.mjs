@@ -827,9 +827,9 @@ ${isTool ? `${toolBand({ key: 'anp', up: '../../', slug: entry.slug, title: entr
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}
-${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}${isTool ? `<link rel="stylesheet" href="${depth}assets/tools/tool-kit.css">\n` : ''}${isTool && entry.studio ? `<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
+${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}${isTool ? `<link rel="stylesheet" href="${depth}assets/tools/tool-kit.css">\n` : ''}${isTool && entry.studio ? `<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">\n` : ''}${(entry.extraCss || []).map(f => `<link rel="stylesheet" href="${depth}assets/${f}">\n`).join('')}<link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(entry.slug) ? ['course/flags.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), ...(isTool ? ['tools/tool-kit.js'] : []), entry.script], premium: true, site: isTool && entry.studio ? ['course/tool-studio.js'] : [] })}
+${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'dashboard'].includes(entry.slug) ? ['course/flags.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), ...(isTool ? ['tools/tool-kit.js'] : []), ...(entry.extraScripts || []), entry.script], premium: true, site: isTool && entry.studio ? ['course/tool-studio.js'] : [] })}
 </body>
 </html>
 `;
@@ -1189,6 +1189,42 @@ function publishedTool(file) {
       p.trace = { ...t, src: `figures/${t.figure}.${f.ext || 'jpg'}`, srcset: (f.ext || 'jpg') === 'jpg' ? avifSrcset(t.figure, f.w, '../') : '',
         w: f.w, h: f.h, alt: f.alt, attribution: attribution(f, { adapted: covered.length > 0 }).html,
         boxes: labs.filter(l => !covered.includes(l)).map(l => ({ id: l.id, name: l.name, box: l.box })), covered: covered.map(l => l.box) };
+    }
+  }
+  /* Scene plates (tool redesign 2026-11, data/scenes.json): a pathway with
+     an entry in data/pathway-scenes.json, and a Predict the change scenario
+     with one in data/predict-scenes.json, carries its figure and the picture
+     point of each step or variable. Printed labels for later concepts are
+     covered for good (decision 30), and so are the labels a scene lists in
+     hide (true: all) and its extra cover boxes: a process figure's stage
+     words and numbers would give the order away. */
+  if (file === 'pathways.json' || file === 'predict.json') {
+    const SC = JSON.parse(readFileSync(join(C.data, 'scenes.json'), 'utf8')).scenes;
+    const plate = (sid, topic) => {
+      const s = SC[sid], f = s && C.figures[s.figure];
+      if (!f) return null;
+      const labs = (f.labels || []).filter(l => l.box);
+      const hide = l => s.hide === true || (Array.isArray(s.hide) && s.hide.includes(l.id));
+      const covered = labs.filter(l => hide(l) || laterLabel(C, l, topic));
+      const boxes = covered.map(l => l.box).concat(s.cover || []);
+      return { scene: sid, src: `figures/${s.figure}.${f.ext || 'jpg'}`, srcset: (f.ext || 'jpg') === 'jpg' ? avifSrcset(s.figure, f.w, '../') : '',
+        w: f.w, h: f.h, alt: f.alt, attribution: attribution(f, { adapted: boxes.length > 0 }).html, covered: boxes };
+    };
+    const pt = (sid, pid) => (pid && SC[sid].places[pid] ? SC[sid].places[pid].pt : null);
+    const nm = (sid, pid) => (pid && SC[sid].places[pid] ? SC[sid].places[pid].name : null);
+    if (file === 'pathways.json') {
+      const PS = JSON.parse(readFileSync(join(C.data, 'pathway-scenes.json'), 'utf8')).pathways;
+      for (const p of d.pathways) {
+        const a = PS[p.id], pl = a && plate(a.scene, p.topic);
+        if (pl) p.scene = { ...pl, pts: a.at.map(x => pt(a.scene, x)), names: a.at.map(x => nm(a.scene, x)) };
+      }
+    } else {
+      const PS = JSON.parse(readFileSync(join(C.data, 'predict-scenes.json'), 'utf8')).scenarios;
+      for (const s of d.scenarios) {
+        const a = PS[s.id], pl = a && plate(a.scene, s.topic);
+        if (pl) s.scene = { ...pl, start: pt(a.scene, a.start), startName: nm(a.scene, a.start),
+          vars: Object.fromEntries(Object.entries(a.vars).map(([k, v]) => [k, { pt: pt(a.scene, v), name: nm(a.scene, v) }])) };
+      }
     }
   }
   if (file === 'calculators.json') {

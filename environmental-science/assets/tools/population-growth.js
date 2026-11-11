@@ -6,7 +6,9 @@
 
    Explore has three views, kept apart on purpose (the exam's r/K vs
    survivorship mix-up):
-     Growth        a deer herd on an island. Pick Exponential (J-curve),
+     Growth        a deer herd on an island (drawn in the corner of the graph:
+                   one deer per tenth of K, the grass browning when the herd
+                   passes K or has damaged the range). Pick Exponential (J-curve),
                    Logistic (S-curve) or Overshoot; set the growth rate r and
                    the carrying capacity K. The curve is the model's yearly
                    numbers, coloured by phase (lag, exponential, slowing, at K,
@@ -45,6 +47,32 @@
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
+  /* The herd itself: the island at the marked year, one drawn deer for each
+     tenth of K, its grass browning as the herd outgrows (or has damaged) the
+     range. x, y: top left; N deer, K0 the starting carrying capacity, Kc this
+     year's (lower after overgrazing). */
+  function island(x, y, w, h, N, K0, Kc, ph){
+    var out = [], cx = x + w / 2, cy = y + h * 0.58, rx = w * 0.42, ry = h * 0.3;
+    var load = N / Math.max(1, K0), dmg = Math.max(0, Math.min(1, Math.max(load - 1, 0) * 0.8 + (1 - Kc / K0) * 1.6));
+    var g0 = [96, 160, 72], g1 = [176, 150, 92], gc = 'rgb(' + [0, 1, 2].map(function(k){ return Math.round(g0[k] + (g1[k] - g0[k]) * dmg); }).join(',') + ')';
+    out.push('<rect class="pg-isl-card" x="' + r1(x) + '" y="' + r1(y) + '" width="' + r1(w) + '" height="' + r1(h) + '" rx="10"/>');
+    out.push('<rect class="pg-isl-sea" x="' + r1(x + 3) + '" y="' + r1(y + h * 0.24) + '" width="' + r1(w - 6) + '" height="' + r1(h * 0.76 - 3) + '" rx="8"/>');
+    out.push('<ellipse class="pg-isl-sand" cx="' + r1(cx) + '" cy="' + r1(cy) + '" rx="' + r1(rx + 4) + '" ry="' + r1(ry + 4) + '"/><ellipse style="fill:' + gc + '" cx="' + r1(cx) + '" cy="' + r1(cy) + '" rx="' + r1(rx) + '" ry="' + r1(ry) + '"/>');
+    // a few trees at the back
+    [[-0.7, -0.45], [0.62, -0.5], [-0.15, -0.72]].forEach(function(t){ var tx0 = cx + t[0] * rx, ty0 = cy + t[1] * ry; out.push('<rect class="pg-trunk" x="' + r1(tx0 - 1) + '" y="' + r1(ty0 - 2) + '" width="2" height="5"/><circle class="pg-tree" cx="' + r1(tx0) + '" cy="' + r1(ty0 - 5) + '" r="' + (ph ? 3.5 : 5) + '"/>'); });
+    var nd = N > 0 ? Math.max(1, Math.min(30, Math.round(load * 10))) : 0, sc = ph ? 0.75 : 1.25, cols = 10;
+    for(var i = 0; i < nd; i++){
+      var row = Math.floor(i / cols), col = i % cols, fx = -0.8 + (col + (row % 2) * 0.5) / (cols - 0.5) * 1.6, fy = -0.25 + row * 0.42;
+      var dx = cx + fx * rx * 0.92, dy = cy + fy * ry * 0.95;
+      out.push('<g transform="translate(' + r1(dx) + ' ' + r1(dy) + ') scale(' + sc + ')"><path class="pg-deer-l" d="M-3 1 L-3.6 6 M-1 1 L-1 6 M2.5 1 L2.5 6 M4 1 L4.5 6 M5 -3 L6 -7 M6 -6 L7.5 -7"/><ellipse class="pg-deer" cx="0.5" cy="-0.5" rx="5" ry="2.6"/><path class="pg-deer" d="M3.5 -2 L5.6 -5.6 L7.4 -4.6 L5.2 -1Z"/></g>');
+    }
+    var cap = load > 3 ? 'far over K: the island is overrun' : load > 1.02 ? 'over K: the grass is eaten faster than it grows' : Kc < K0 * 0.9 ? 'the range is damaged: K is lower' : 'one deer drawn = ' + nf(K0 / 10);
+    // A phone's inset is narrow: a short label, millions written as such (pass 3).
+    out.push(tx(x + 8, y + 15, ph ? (N >= 1e6 ? nf(N / 1e6, 1) + ' million deer' : nf(N) + ' deer') : nf(N) + ' deer on the island', 'pg-isl-t', 'start'));
+    if(!ph) out.push(tx(x + 8, y + h - 6, cap, 'pg-isl-s', 'start'));
+    return out.join('');
+  }
+
   /* ------------------------------------------------- the growth plot */
   /* sim from S.simulate; o: { W, H, upto (the last year drawn), marker,
      showK, Kline (the changing K' of overshoot), td (mark the doubling),
@@ -73,14 +101,24 @@
       }
     }
     // The curve in phase colours: one polyline per run of the same phase.
-    var runs = [], cur = null;
+    // A J-curve that leaves the chart ends at the top edge with an arrow
+    // (tool review 2026-11: a flat line along the top read as leveling off).
+    var runs = [], cur = null, offAt = null;
     for(var i = 0; i <= upto; i++){
       var phz = S.phase(sim, i), pt = [x(i), y(sim.n[i])];
+      if(sim.n[i] > yMax){
+        var tc = i > 0 ? i - 1 + (yMax - sim.n[i - 1]) / (sim.n[i] - sim.n[i - 1]) : 0;
+        offAt = [x(tc), y(yMax)]; pt = offAt;
+      }
       if(!cur || cur.ph !== phz){ if(cur) cur.pts.push(pt); cur = { ph: phz, pts: [pt], i0: i }; runs.push(cur); }
       else cur.pts.push(pt);
+      if(offAt) break;
     }
     runs.forEach(function(rn){ out.push('<polyline class="pg-curve ' + (o.mono ? 'ph-exp' : PHASE_CLS[rn.ph]) + '" points="' + rn.pts.map(function(p){ return r1(p[0]) + ',' + r1(p[1]); }).join(' ') + '"/>'); });
-    if(sim.model === 'exp' && sim.n[upto] > yMax) out.push('<path class="pg-off" d="M' + r1(x(upto) - 8) + ' ' + (T0 + 10) + 'l8 -10 8 10"/>' + tx(x(upto) - 12, T0 + 12, 'off the chart', 'pg-axl', 'end'));
+    if(offAt){
+      out.push('<path class="pg-offh ' + (o.mono ? 'ph-exp' : PHASE_CLS[cur.ph]) + '" d="M' + r1(offAt[0] - 8) + ' ' + r1(offAt[1] + 6) + ' L' + r1(offAt[0] + 2) + ' ' + r1(offAt[1] - 10) + ' L' + r1(offAt[0] + 9) + ' ' + r1(offAt[1] + 8) + 'Z"/>');
+      out.push(tx(offAt[0] + 14, offAt[1] + 4, 'off the chart: ' + nf(sim.n[upto]) + ' by ' + (o.tu || 'year') + ' ' + upto, 'pg-axl pg-offl', 'start'));
+    }
     // Phase names under the curve, only where a run is wide enough to hold one.
     if(o.labels !== false && !o.mono){
       runs.forEach(function(rn){
@@ -102,9 +140,13 @@
       out.push('<circle class="pg-dot" cx="' + r1(xd) + '" cy="' + r1(yd) + '" r="5"/>');
       out.push(tx(xd + 6, B - 8, o.tdLabel || 'doubled', 'pg-axl', 'start'));
     }
+    if(o.island && o.marker != null){
+      var iw = ph ? 140 : 236, ih = ph ? 78 : 128, mi0 = Math.max(0, Math.min(upto, o.marker));
+      out.push(island(R - iw - 8, B - ih - 8, iw, ih, sim.n[mi0], K0, sim.K[mi0], ph));
+    }
     if(o.marker != null){
       var mi = Math.max(0, Math.min(upto, o.marker)), mx = x(mi), my = y(sim.n[mi]);
-      out.push('<line class="pg-now" x1="' + r1(mx) + '" x2="' + r1(mx) + '" y1="' + T0 + '" y2="' + B + '"/><circle class="pg-mark" cx="' + r1(mx) + '" cy="' + r1(my) + '" r="7"/>');
+      out.push('<line class="pg-now" x1="' + r1(mx) + '" x2="' + r1(mx) + '" y1="' + T0 + '" y2="' + B + '"/>' + (offAt && sim.n[mi] > yMax ? '' : '<circle class="pg-mark" cx="' + r1(mx) + '" cy="' + r1(my) + '" r="7"/>'));
     }
     // a wrong reading of the graph (Test yourself): a dashed red line at the student's value
     if(o.tryV != null && isFinite(o.tryV) && o.tryV >= 0 && o.tryV <= yMax * 1.02){
@@ -179,7 +221,7 @@
 
   /* ------------------------------------------------------- explore */
   function explore(host, data){
-    var view = 'growth', model = 'log', r = 0.35, K = 2000, n0 = 100, years = 40, upto = 0, marker = 0, LS = null, touched = false, playing = null, sel = null, nid = T.nid('pg');
+    var view = 'growth', model = 'log', r = 0.35, K = 2000, n0 = 100, years = 40, upto = 0, marker = 0, LS = null, setupRow = null, touched = false, playing = null, sel = null, nid = T.nid('pg');
     var dist = disturbance(), distUpto = dist.Y, distLoop = null;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem pg-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Population growth</h2>' +
@@ -201,7 +243,7 @@
       T.moreHtml('<div class="pg-n0"></div>', 'start size') +
       '<div class="pg-nums"></div><p class="sr-only pg-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.pg-live'));
-    var cue = T.cue('Press Play, then switch to Exponential and Overshoot to compare the curves.');
+    var cue = T.cue('Press Play. Then open Model to try Exponential and Overshoot and compare the curves.');
     $('.pg-ctl').insertBefore(cue.el, $('.pg-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var slR = T.slider({ label: 'Growth rate r (per year)', min: 0.05, max: 0.6, step: 0.05, value: r, decimals: 2, onInput: function(v){ r = v; act(); stop(); upto = years; marker = years; draw(); } });
@@ -216,7 +258,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       if(view === 'growth'){
         var s = sim(), td = model === 'exp' ? S.doublingTime(r) : null;
-        svg.innerHTML = growthSvg(s, { W: W, H: H, enl: true, ghost: true, upto: upto, marker: marker, unit: 'deer', td: td && td <= upto ? td : null, tdLabel: td ? 'doubled in ' + nf(td, 1) + ' yr' : '' });
+        svg.innerHTML = growthSvg(s, { W: W, H: H, enl: true, ghost: true, island: true, upto: upto, marker: marker, unit: 'deer', td: td && td <= upto ? td : null, tdLabel: td ? 'doubled in ' + nf(td, 1) + ' yr' : '' });
         svg.setAttribute('aria-label', aria(s));
         gauge(s);
         words(s, td);
@@ -232,9 +274,11 @@
         rkWords();
       }
       (LS ? LS.root : host).querySelectorAll('.pg-m').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === model)); });
+      if(setupRow && setupRow.setup) setupRow.setup({ exp: 'Exponential', log: 'Logistic', over: 'Overshoot' }[model] + (model === 'exp' ? '' : ', K = ' + String(K).replace(/\B(?=(\d{3})+(?!\d))/g, ',')));
       (LS ? LS.root : host).querySelectorAll('.pg-view').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
       (LS ? LS.root : host).querySelectorAll('.pg-t').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-t') === sel)); });
       slK.disable(model === 'exp');
+      var kw = $('.pg-sl-k'); if(kw) kw.hidden = model === 'exp';   // pass 2: K has no part in exponential growth, so its slider steps away
     }
     function aria(s){
       var i = marker, N = s.n[i];
@@ -266,8 +310,9 @@
       say(head);
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>', 'explore');
-        LS.pills([{ k: 'Year ' + i, html: esc(nf(s.n[i])) + ' deer', tone: 'readout' }], 'left', 'explore');
-        LS.pills(model === 'exp' ? [{ k: 'Doubles', html: 'every ' + nf(td, 1) + ' yr', tone: 'accent' }] : [{ k: 'K', html: esc(nf(s.K[i])), tone: ph === 'overshoot' || ph === 'dieback' ? 'warn' : 'accent' }], 'right', 'explore');
+        var big = s.n[i] >= 1e6 && LS.root.classList.contains('ls-phone');   // pass 3: fits a phone's pill
+        LS.pills([{ k: 'Year ' + i, html: big ? esc(nf(s.n[i] / 1e6, 1)) + ' million' : esc(nf(s.n[i])) + ' deer', tone: 'readout' }], 'left', 'explore');
+        LS.pills(model === 'exp' ? [{ k: 'Doubles', html: 'every ' + nf(td, 1) + ' yr', tone: 'accent' }] : [], 'right', 'explore');   // pass 2: K is written on its dashed line
       }
     }
     function nums(s, td){
@@ -287,7 +332,7 @@
       $('.pg-nums').innerHTML = '<h3 class="ls-title-l">Survivors out of 1,000</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Survivorship values"><table class="ls-tbl"><thead><tr><th scope="col">Age</th><th scope="col">Type I</th><th scope="col">Type II</th><th scope="col">Type III</th></tr></thead><tbody>' +
         [0, 2, 4, 6, 8, 10].map(function(i){ return '<tr><th scope="row">' + (i * 10) + '%</th><td class="r">' + nf(S.CURVES.I[i]) + '</td><td class="r">' + nf(S.CURVES.II[i]) + '</td><td class="r">' + nf(S.CURVES.III[i], 1) + '</td></tr>'; }).join('') + '</tbody></table></div><p class="bt-small">Idealized shapes for teaching; real species fall between them.</p>';
       say(head);
-      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills(sel ? [{ k: 'Curve', html: 'Type ' + sel, tone: 'accent' }] : [], 'left', 'explore'); LS.pills([{ k: 'Scale', html: 'log', tone: 'readout' }], 'right', 'explore'); }
+      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills(sel ? [{ k: 'Curve', html: 'Type ' + sel, tone: 'accent' }] : [], 'left', 'explore'); LS.pills([], 'right', 'explore')   /* pass 2: the axis says log scale */; }
     }
     function rkWords(){
       var done = distUpto === dist.Y;
@@ -300,7 +345,7 @@
       $('.pg-nums').innerHTML = '<h3 class="ls-title-l">Traits side by side</h3><div class="table-wrap" tabindex="0" role="region" aria-label="r and K traits"><table class="ls-tbl"><thead><tr><th scope="col">Trait</th><th scope="col">r-selected</th><th scope="col">K-selected</th></tr></thead><tbody>' +
         S.TRAITS.map(function(t){ return '<tr><th scope="row">' + esc(t.trait) + '</th><td>' + esc(t.r) + '</td><td>' + esc(t.K) + '</td></tr>'; }).join('') + '</tbody></table></div>';
       say(head);
-      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills(done && touched ? [{ k: 'r back in', html: dist.rec.r + ' yr', tone: 'good' }] : [], 'left', 'explore'); LS.pills(done && touched ? [{ k: 'K back in', html: dist.rec.K + ' yr', tone: 'warn' }] : [], 'right', 'explore'); }
+      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore'); }   // pass 2: each recovery time is written over its own curve
     }
     function stop(){ if(playing){ playing.stop(); playing = null; } if(distLoop){ distLoop.stop(); distLoop = null; } var b = $('.pg-play'); if(b) b.textContent = 'Play ' + years + ' years'; }
     function play(){
@@ -325,7 +370,7 @@
     function onClick(e){
       var b = e.target.closest('button'); if(!b) return;
       if(b.classList.contains('pg-view')){ act(); setView(b.getAttribute('data-v')); return; }
-      if(b.classList.contains('pg-m')){ model = b.getAttribute('data-m'); act(); stop(); upto = years; marker = years; draw(); return; }
+      if(b.classList.contains('pg-m')){ model = b.getAttribute('data-m'); act(); stop(); upto = years; marker = years; draw(); if(LS) LS.close(); return; }
       if(b.classList.contains('pg-play')){ play(); return; }
       if(b.classList.contains('pg-t')){ var t = b.getAttribute('data-t'); sel = sel === t ? null : t; act(); draw(); return; }
       if(b.classList.contains('pg-hit')){ hit(); return; }
@@ -347,7 +392,15 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.pg-stage')], dock: [$('.pg-ctl')], primary: [slR.el, $('.pg-g .pg-act')], why: [$('.pg-say')], details: [$('.pg-nums')] });
+      // Pass 3: the growth model chips and the K slider wait in Details,
+      // behind a Setup row that names the model and K; the dock keeps r,
+      // Play and the three views.
+      var n0b = $('.pg-n0'), lab = document.createElement('p');
+      lab.className = 'ls-lbl'; lab.textContent = 'Growth model';
+      n0b.parentNode.insertBefore(lab, n0b); n0b.parentNode.insertBefore($('.pg-models'), n0b); n0b.parentNode.insertBefore($('.pg-sl-k'), n0b);
+      setupRow = T.studioPane(pane, s, { stage: [$('.pg-stage')], dock: [$('.pg-ctl')], primary: [slR.el, $('.pg-g .pg-act')], why: [$('.pg-say')], details: [$('.pg-nums')], setup: 'Model', moreLabel: 'Growth model, carrying capacity, start size' });
+      // The Setup row opens Details on these settings: they come first there.
+      var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
       host.removeEventListener('click', onClick); s.root.addEventListener('click', onClick);
       draw();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.pg-play'), text: 'Start here: press Play' });
@@ -366,7 +419,8 @@
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
       onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); },
       // a wrong reading of K or of the peak is drawn on the graph
-      onTry: function(s, att, api){ if(s.key === 'k' || s.key === 'read'){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); } }
+      onTry: function(s, att, api){ if(s.key === 'k' || s.key === 'read'){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); } },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   /* After the last step: say plainly that every answer is now right, and how
@@ -387,7 +441,7 @@
   }
 
   function figure(el, p, st){
-    var g = p.figure, ph = (window.innerWidth || 1280) <= 640, W = ph ? 360 : 640, H = ph ? 300 : 340, inner;
+    var g = p.figure, ph = (window.innerWidth || 1280) <= 640, W = ph ? 360 : 640, H = T.figSize(W, ph ? 300 : 340, { max: 0.8 })[1], inner;
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'sim'){
       var s = S.simulate(g), o = { W: W, H: H, unit: g.unit || g.noun, tu: g.tu, labels: false };

@@ -21,6 +21,9 @@
 .el-curve{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
 .el-curve.el-E{stroke:var(--el-E);} .el-curve.el-L,.el-curve.el-log{stroke:var(--el-L);}
 .el-curve.el-fit{stroke:var(--el-E);stroke-width:2.4;stroke-dasharray:8 5;}
+.el-curve.el-folded{stroke-dasharray:7 10;stroke-width:2.6;}
+.el-curve.el-src{opacity:.55;}
+.el-pt.el-moving{stroke:var(--el-bgp);stroke-width:2;}
 .el-curve.is-faint{opacity:.45;stroke-dasharray:6 5;}
 .el-pt{stroke:var(--el-bgp);stroke-width:2;}
 .el-pt.el-E{fill:var(--el-E);} .el-pt.el-L{fill:var(--el-L);} .el-pt.el-r{fill:var(--el-r);}
@@ -58,6 +61,11 @@
 .el-tbl tr.el-L td,.el-tbl tr.el-L th{color:var(--el-L);}
 .el-tbl tr.el-E td,.el-tbl tr.el-E th{color:var(--el-E);}
 .el-tbl .is-on{background:var(--ctint);border-radius:6px;}
+/* pass 3: one column in focus. The step tags (+3, x1.5) show only under the chosen step; the other
+   columns keep their values, dimmed, and a tap on one moves the focus there. */
+.el-tbl td{vertical-align:top;}
+.el-tbl td:not(.is-on) small{visibility:hidden;}
+.el-tbl td:not(.is-on),.el-tbl thead th:not(.is-on):not([scope=row]){opacity:.62;}
 .el-tbl math{color:inherit;}
 .el-swapline{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:center;font:700 14px var(--font-ui);}
 .el-chip-c{padding:4px 10px;border-radius:999px;border:2px solid currentColor;}
@@ -81,7 +89,7 @@
 .ls-root .ls-drill-stage .el-figwrap{flex:1 1 0;}
 .ls-root .ls-drill-stage .el-fig-plot{flex:1 1 0;}
 .el-figwrap:not(.ls-root *) .el-fig-plot{height:280px;flex:none;}
-.ls-root.ls-phone .el-tbl{font-size:12px;}
+.ls-root.ls-phone .el-tbl{font-size:13px;}
 .ls-root.ls-phone .el-tbl th,.ls-root.ls-phone .el-tbl td{padding:3px 3px;}
 .ls-root.ls-phone .el-ls-stage .el-stage{padding-bottom:36px;}
 .el-views .bt-mode{font-size:13.5px;}

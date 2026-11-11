@@ -1,16 +1,19 @@
 /* PPC and trade trainer page (simulator, free; docs/apmacro-spec.md section 6).
    OWNED BY THIS TOOL ONLY (builder T3, docs/apmacro-briefs/t3.md). Model:
    ApMacroMath.ppcTrade (macroeconomics/assets/tools/math/ppc-trade.js); the PPC
-   graph is ApMacroGraph's `ppc` kind, the two countries' straight-line PPCs
-   are data plotted with ApMacroPlot; frame: ApMacroTools.modes and drill.
+   graph is ApMacroGraph's `ppc` kind; the trade view draws each country on its
+   own PPC here (country()), and Test yourself's plots are ApMacroPlot; frame:
+   ApMacroTools.modes and drill.
 
    Explore, PPC: slide along the curve (each extra 10 robots costs more
    pizzas), tap the graph to put the economy anywhere (inside, on, outside),
    and apply events: the curve shifts (the old one stays faded) or the
    economy drops inside it. Explore, Trade: two countries' PPCs, who has the
    comparative advantage, and the terms of trade slider: with specializing
-   on, each country's consumption moves outside its own PPC only when the
-   terms lie between the two opportunity costs.
+   on, each country's production slides to its corner, the trade line runs
+   from there with slope = the terms of trade, what is shipped each way is
+   drawn between the two, and consumption lands on the trade line: outside
+   its own PPC only when the terms lie between the two opportunity costs.
    Test yourself: points and shifts, opportunity cost from a table,
    comparative advantage from output and from input data, terms of trade. */
 (function(){
@@ -72,8 +75,11 @@
     // The main control: on a phone the studio keeps it on screen (it sat under the fold, with the curve scrolled away once reached).
     xSl.el.setAttribute('data-ls-primary', '');
     groups.ppc.appendChild(xSl.el);
+    // Pass 3: one shift and one move inside come first; past four, the shared Tool Studio "More" chip folds the rest.
+    var FIRST_EV = { tech: 1, recession: 1 };
+    var evOrder = PT.PPC_EVENTS.filter(function(e){ return FIRST_EV[e.id]; }).concat(PT.PPC_EVENTS.filter(function(e){ return !FIRST_EV[e.id]; }));
     var evBox = document.createElement('div');
-    evBox.innerHTML = '<p class="pt-lbl">What happens</p><div class="pt-events">' + PT.PPC_EVENTS.map(function(e){ return '<button type="button" class="bt-btn pt-ev" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '<button type="button" class="bt-btn pt-ev" data-ev="reset">Start over</button></div>';
+    evBox.innerHTML = '<p class="pt-lbl">What happens</p><div class="pt-events">' + evOrder.map(function(e){ return '<button type="button" class="bt-btn pt-ev" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '<button type="button" class="bt-btn pt-ev" data-ev="reset">Start over</button></div>';
     groups.ppc.appendChild(evBox);
     evBox.addEventListener('click', function(e){
       var b = e.target.closest('[data-ev]'); if(!b) return;
@@ -91,7 +97,7 @@
     function mid(){ var R = PT.trade(PT.SCENARIOS[st.sc], 1, false); return Math.round((R.lo + R.hi) / 2 * 20) / 20; }
     function buildT(){
       var sc = PT.SCENARIOS[st.sc], R = PT.trade(sc, st.t, st.on);
-      var sl = T.slider({ label: 'Price of 1 ' + sc.goods[0].toLowerCase() + ' (in ' + sc.goods[1].toLowerCase() + ')', min: Math.floor(R.tMin * 20) / 20, max: Math.floor(R.tMax * 20) / 20, step: 0.05, value: st.t, onInput: function(v){ st.t = v; st.on = true; onSeg.set('on'); touch(); update(false); } });
+      var sl = T.slider({ label: 'Price of 1 ' + sc.goods[0].toLowerCase().replace(/s$/, '') + ' (in ' + sc.goods[1].toLowerCase() + ')', min: Math.floor(R.tMin * 20) / 20, max: Math.floor(R.tMax * 20) / 20, step: 0.05, value: st.t, onInput: function(v){ st.t = v; st.on = true; onSeg.set('on'); touch(); update(false); } });
       if(tSl) groups.trade.replaceChild(sl.el, tSl.el); else groups.trade.appendChild(sl.el);
       tSl = sl;
     }
@@ -126,9 +132,27 @@
         touch(); update(true);
       });
       var onCurve = !st.free && st.eff === 1, cost = x < r ? PT.marginal(x, st.shift) : null;
-      figs.ppc.querySelector('.pt-read').innerHTML = '<span class="pt-chip is-' + reg + '">' + (reg === 'on' ? 'On the PPC' : reg === 'inside' ? 'Inside the PPC' : 'Outside the PPC') + '</span>' +
-        '<span class="pt-chip">' + Math.round(pt[0] * 10) + ' robots, ' + Math.round(pt[1] * 10) + ' pizzas</span>' +
-        (onCurve && cost != null ? '<span class="pt-chip is-cost">Next 10 robots cost ' + n(Math.round(cost * 10) / 10, 1) + ' pizzas</span>' : '');
+      // Pass 3: the readout sits beside the point, inside the curve (the pills under the graph were far from it);
+      // on or off the curve is said by the caption.
+      figs.ppc.querySelector('.pt-read').innerHTML = '';
+      var qx = GF.L + pt[0] / 10 * GF.PW, qy = GF.T + GF.PH - pt[1] / 10 * GF.PH;
+      var l1 = Math.round(pt[0] * 10) + ' robots, ' + Math.round(pt[1] * 10) + ' pizzas', l2 = onCurve && cost != null ? 'next 10 robots cost ' + n(Math.round(cost * 10) / 10, 1) + ' pizzas' : '';
+      svg.insertAdjacentHTML('beforeend', '<g class="pt-ptread" aria-hidden="true"><text>' + l1 + '</text>' + (l2 ? '<text class="is-cost">' + l2 + '</text>' : '') + '</g>');
+      var tEls = svg.querySelectorAll('.pt-ptread text'), tw = 0;
+      tEls.forEach(function(t){ try{ tw = Math.max(tw, t.getComputedTextLength()); }catch(e){} });
+      if(!tw) tw = Math.max(l1.length, l2.length) * 5.6;
+      var yMax = GF.T + GF.PH - (l2 ? 20 : 6), y1, tx = null;
+      // the curve's x at a height, to keep the words off the line: inside it from the axis, as near the point as fits; else just outside it
+      function curveX(y){ var v = (GF.T + GF.PH - y) / GF.PH * 10, k = 0; for(var q = 0; q <= 10; q += 0.05){ var c = PT.ppcAt(q, 1, st.shift); if(c && c[1] >= v) k = q; else break; } return GF.L + k / 10 * GF.PW; }
+      function lowX(y){ return Math.min(curveX(y - 9), curveX(l2 ? y + 14 : y)); }
+      for(var dy = 22; dy <= 130 && tx === null; dy += 12){
+        y1 = Math.min(yMax, qy + dy);
+        var cIn = lowX(y1);
+        if(st.free || GF.L + 6 + tw < cIn - 6) tx = Math.max(GF.L + 6, Math.min(qx - tw / 2, cIn - 6 - tw));
+        if(y1 === yMax) break;
+      }
+      if(tx === null){ y1 = Math.min(yMax, qy + 22); var cOut = Math.max(curveX(y1 - 9), curveX(l2 ? y1 + 14 : y1)); tx = cOut + 8 + tw < GF.W - 2 ? cOut + 8 : GF.L + 6; }
+      tEls.forEach(function(t, i){ t.setAttribute('x', f1(tx)); t.setAttribute('y', f1(y1 + i * 14)); });
       var head = st.evSay && !st.free ? st.evSay : RWHY[reg].replace(/<[^>]+>/g, '');
       var c1 = PT.marginal(1, st.shift), c5 = PT.marginal(Math.min(5, r - 1), st.shift);
       var body = '<p>' + RWHY[reg] + '</p>' +
@@ -140,18 +164,110 @@
     }
 
     /* ---------------------------------------------------- trade */
+    /* Each country on its own PPC (one scale for both, so sizes compare).
+       Off: each makes and eats a mix (the open point). On: production slides
+       to its corner (specialization), the trade line runs from that corner
+       with slope = the terms of trade, the exchange is drawn between the two
+       countries, and consumption sits on the trade line: outside the PPC
+       (green wedge) when the terms lie between the two opportunity costs,
+       inside it (red wedge) when they do not. */
+    var tAnim = { p: 0, id: 0 };
+    function tween(to){
+      if(tAnim.id) cancelAnimationFrame(tAnim.id);
+      tAnim.id = 0;
+      if(T.reduced && T.reduced() || !window.requestAnimationFrame){ tAnim.p = to; return; }
+      var from = tAnim.p, t0 = null;
+      var f = function(ts){
+        if(t0 === null) t0 = ts;
+        var k = Math.min(1, (ts - t0) / 700), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        tAnim.p = from + (to - from) * e;
+        drawPanels();
+        if(k < 1) tAnim.id = requestAnimationFrame(f); else tAnim.id = 0;
+      };
+      tAnim.id = requestAnimationFrame(f);
+    }
+    function niceStep(m){ var c = [1, 2, 5, 10, 20, 25, 50, 100]; for(var i = 0; i < c.length; i++) if(m / c[i] <= 5) return c[i]; return 200; }
+    function f1(v){ return Math.round(v * 10) / 10; }
+    function country(k, w, h, sc, R, p){
+      var c = sc[k], X = sc.goods[0], Y = sc.goods[1], s = k === 'A' ? 's1' : 's2', ex = k === R.xer;
+      var mx = Math.max(sc.A.x, sc.B.x) * 1.08, my = Math.max(sc.A.y, sc.B.y, R.after.A[1], R.after.B[1]) * 1.12;
+      var L = 44, Tp = 46, Rt = 14, B = 40, PW = w - L - Rt, PH = h - Tp - B;
+      function sx(v){ return L + v / mx * PW; } function sy(v){ return Tp + PH - v / my * PH; }
+      var g = [], lab = [];
+      var stx = niceStep(mx), sty = niceStep(my);
+      for(var v = 0; v <= mx + 1e-9; v += stx){ g.push('<line class="pt-grid" x1="' + f1(sx(v)) + '" y1="' + Tp + '" x2="' + f1(sx(v)) + '" y2="' + (Tp + PH) + '"/><text class="pt-tick" x="' + f1(sx(v)) + '" y="' + (Tp + PH + 14) + '" text-anchor="middle">' + v + '</text>'); }
+      for(v = 0; v <= my + 1e-9; v += sty){ g.push('<line class="pt-grid" x1="' + L + '" y1="' + f1(sy(v)) + '" x2="' + (L + PW) + '" y2="' + f1(sy(v)) + '"/><text class="pt-tick" x="' + (L - 6) + '" y="' + f1(sy(v) + 4) + '" text-anchor="end">' + v + '</text>'); }
+      g.push('<line class="pt-axis" x1="' + L + '" y1="' + Tp + '" x2="' + L + '" y2="' + (Tp + PH) + '"/><line class="pt-axis" x1="' + L + '" y1="' + (Tp + PH) + '" x2="' + (L + PW) + '" y2="' + (Tp + PH) + '"/>');
+      g.push('<text class="pt-axl" x="' + (L + PW) + '" y="' + (Tp + PH + 30) + '" text-anchor="end">' + esc(X) + ' (' + esc(sc.unit) + ')</text><text class="pt-axl" x="' + (L - 6) + '" y="' + (Tp - 8) + '" text-anchor="start">' + esc(Y) + '</text>');
+      var on = st.on && p > 0, done = st.on && p >= 1 - 1e-6, t = st.t;
+      var corner = ex ? [c.x, 0] : [0, c.y], before = R.before[k], after = R.after[k];
+      // the trade line from the corner, slope -t, to the axes
+      var tl = ex ? [[c.x, 0], [0, t * c.x]] : [[0, c.y], [c.y / t, 0]];
+      var gain = ex ? t * c.x > c.y + 1e-9 : c.y / t > c.x + 1e-9, flat = ex ? Math.abs(t * c.x - c.y) < 1e-9 : Math.abs(c.y / t - c.x) < 1e-9;
+      function clip(pt){ return [Math.min(pt[0], mx), Math.min(pt[1], my)]; }
+      if(done){
+        // the wedge between the PPC and the trade line: what trade adds (or takes away)
+        var tip = ex ? [0, Math.min(t * c.x, my)] : [Math.min(c.y / t, mx), 0], ppcEnd = ex ? [0, c.y] : [c.x, 0];
+        var poly = [corner, ppcEnd, tip];
+        if(ex && t * c.x > my){ poly = [corner, ppcEnd, [0, my], [c.x - my / t, my]]; }
+        if(!ex && c.y / t > mx){ poly = [corner, ppcEnd, [mx, 0], [mx, c.y - t * mx]]; }
+        if(!flat) g.push('<polygon class="pt-wedge ' + (gain ? 'is-gain' : 'is-loss') + '" points="' + poly.map(function(q){ return f1(sx(q[0])) + ',' + f1(sy(q[1])); }).join(' ') + '"/>');
+        var e = ex ? clip([Math.max(0, c.x - my / t), Math.min(t * c.x, my)]) : clip([Math.min(c.y / t, mx), Math.max(0, c.y - t * mx)]);
+        g.push('<line class="pt-tline ' + s + '" x1="' + f1(sx(corner[0])) + '" y1="' + f1(sy(corner[1])) + '" x2="' + f1(sx(e[0])) + '" y2="' + f1(sy(e[1])) + '"/>');
+      }
+      g.push('<line class="pt-ppc ' + s + '" x1="' + f1(sx(0)) + '" y1="' + f1(sy(c.y)) + '" x2="' + f1(sx(c.x)) + '" y2="' + f1(sy(0)) + '"/>');
+      // PPC label near its top end
+      lab.push('<text class="pt-plab ' + s + '" x="' + f1(sx(0) + 6) + '" y="' + f1(sy(c.y) - 6) + '">PPC</text>');
+      if(done){
+        // "Trade line" beside the line, 80% of the way from the corner, on its outer side
+        var te = ex ? [Math.max(0, c.x - my / t), Math.min(t * c.x, my)] : [Math.min(c.y / t, mx), Math.max(0, c.y - t * mx)];
+        var tx = sx(corner[0] + (te[0] - corner[0]) * 0.8), ty = sy(corner[1] + (te[1] - corner[1]) * 0.8);
+        lab.push('<text class="pt-plab pt-tlab ' + s + '" x="' + f1(tx + 8) + '" y="' + f1(ty - 6) + '" text-anchor="start">Trade line</text>');
+      }
+      // before: makes and eats the same mix (faded once trade is on)
+      g.push('<circle class="pt-pt is-open ' + s + (on ? ' is-faded' : '') + '" cx="' + f1(sx(before[0])) + '" cy="' + f1(sy(before[1])) + '" r="5"/>');
+      if(!on) lab.push('<text class="pt-plab" x="' + f1(sx(before[0]) + 9) + '" y="' + f1(sy(before[1]) - 8) + '">Makes and eats</text>');
+      if(on){
+        var mk = [before[0] + (corner[0] - before[0]) * p, before[1] + (corner[1] - before[1]) * p];
+        g.push('<rect class="pt-make ' + s + '" x="' + f1(sx(mk[0]) - 6) + '" y="' + f1(sy(mk[1]) - 6) + '" width="12" height="12" rx="2"/>');
+        if(done){
+          lab.push('<text class="pt-plab" x="' + f1(sx(corner[0]) + (ex ? -8 : 10)) + '" y="' + f1(sy(corner[1]) + (ex ? -12 : 16)) + '" text-anchor="' + (ex ? 'end' : 'start') + '">Makes only ' + esc((ex ? X : Y).toLowerCase()) + '</text>');
+          // the exchange: from what it makes to what it eats, stopping short of the point
+          var ax = sx(after[0]) - sx(corner[0]), ay = sy(after[1]) - sy(corner[1]), al = Math.sqrt(ax * ax + ay * ay) || 1, sh0 = Math.min(12, al / 3);
+          g.push('<line class="pt-move" x1="' + f1(sx(corner[0]) + ax / al * 10) + '" y1="' + f1(sy(corner[1]) + ay / al * 10) + '" x2="' + f1(sx(after[0]) - ax / al * sh0) + '" y2="' + f1(sy(after[1]) - ay / al * sh0) + '" marker-end="url(#pt-ah-' + k + ')"/>');
+          g.push('<circle class="pt-pt ' + s + '" cx="' + f1(sx(after[0])) + '" cy="' + f1(sy(after[1])) + '" r="6"/>');
+          // above and right of the point: the space outside both lines
+          var lx = Math.max(L + 6, Math.min(sx(after[0]) + 10, L + PW - 150)), ly = Math.max(Tp + 12, sy(after[1]) - 24);
+          lab.push('<text class="pt-plab is-strong" x="' + f1(lx) + '" y="' + f1(ly) + '" text-anchor="start">Eats ' + n(after[0]) + ' ' + esc(X.toLowerCase()) + ', ' + n(after[1]) + ' ' + esc(Y.toLowerCase()) + '</text>');
+          lab.push('<text class="pt-plab ' + (flat ? 'is-flat' : gain ? 'is-gain' : 'is-loss') + '" x="' + f1(lx) + '" y="' + f1(ly + 14) + '" text-anchor="start">' + (flat ? 'on its PPC: no gain' : gain ? 'outside its PPC' : 'inside its PPC') + '</text>');
+        }
+      }
+      var head = '<text class="pt-ctitle ' + s + '" x="' + L + '" y="16">' + esc(c.name) + '</text><text class="pt-csub" x="' + (L + PW) + '" y="16" text-anchor="end">' + (st.on ? 'specializes in ' + esc((ex ? X : Y).toLowerCase()) : '1 ' + esc(X.toLowerCase().replace(/s$/, '')) + ' costs ' + n(k === 'A' ? R.ocA : R.ocB) + ' ' + esc(Y.toLowerCase())) + '</text>';
+      var defs = '<defs><marker id="pt-ah-' + k + '" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="pt-ahead"/></marker></defs>';
+      var aria = c.name + '’s straight-line PPC: at most ' + c.x + ' ' + X.toLowerCase() + ' or ' + c.y + ' ' + Y.toLowerCase() + '. ' + (!st.on ? 'It makes and eats ' + n(before[0]) + ' and ' + n(before[1]) + '.' : 'It makes only ' + (ex ? X : Y).toLowerCase() + ' and, after trade, eats ' + n(after[0]) + ' ' + X.toLowerCase() + ' and ' + n(after[1]) + ' ' + Y.toLowerCase() + ', ' + (flat ? 'on its PPC' : gain ? 'outside its PPC' : 'inside its PPC') + '.');
+      return '<svg class="pt-csvg" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" role="img" aria-label="' + esc(aria) + '">' + defs + head + g.join('') + lab.join('') + '</svg>';
+    }
+    function drawPanels(){
+      var sc = PT.SCENARIOS[st.sc], R = PT.trade(sc, st.t, st.on), box = figs.trade.querySelector('.pt-plot');
+      var two = box.querySelector('.pt-two');
+      if(!two){ box.innerHTML = '<div class="pt-two"><div class="pt-cty" data-k="A"></div><div class="pt-xch"></div><div class="pt-cty" data-k="B"></div></div>'; two = box.querySelector('.pt-two'); }
+      var narrow = (box.clientWidth || 520) < 560;
+      two.classList.toggle('is-narrow', narrow);
+      var cw = narrow ? Math.max(260, box.clientWidth || 340) : Math.max(220, ((box.clientWidth || 640) - 140) / 2);
+      var ch = narrow ? Math.max(190, Math.min(320, ((box.clientHeight || 520) - 64) / 2)) : Math.max(240, Math.min(cw * 1.2, (box.clientHeight || 360) - 4));
+      ['A', 'B'].forEach(function(k){ two.querySelector('.pt-cty[data-k=' + k + ']').innerHTML = country(k, Math.round(cw), Math.round(ch), sc, R, st.on ? tAnim.p : 0); });
+      var xer = sc[R.xer], yer = sc[R.yer], X = sc.goods[0].toLowerCase(), Y = sc.goods[1].toLowerCase(), done = st.on && tAnim.p >= 1 - 1e-6;
+      var xa = R.xer === 'A', got = R.q * st.t;
+      two.querySelector('.pt-xch').innerHTML = !done ? '<p class="pt-xnone">' + (st.on ? 'Specializing…' : 'No trade: each country makes everything it eats.') + '</p>' :
+        '<div class="pt-ship s' + (xa ? 1 : 2) + ' ' + (xa ? 'to-b' : 'to-a') + '"><b>' + esc(xer.name) + '</b> ships ' + n(R.q) + ' ' + esc(X) + '<i aria-hidden="true"></i></div>' +
+        '<div class="pt-ship s' + (xa ? 2 : 1) + ' ' + (xa ? 'to-a' : 'to-b') + '"><b>' + esc(yer.name) + '</b> pays ' + n(Math.round(got * 100) / 100) + ' ' + esc(Y) + '<i aria-hidden="true"></i></div>' +
+        '<p class="pt-xrate">' + n(st.t) + ' ' + esc(Y) + ' per ' + esc(X.replace(/s$/, '')) + '</p>';
+    }
     function drawTrade(){
       var sc = PT.SCENARIOS[st.sc], R = PT.trade(sc, st.t, st.on), X = sc.goods[0].toLowerCase(), Y = sc.goods[1].toLowerCase();
-      var A = sc.A, B = sc.B, box = figs.trade.querySelector('.pt-plot');
-      var w = Math.max(260, box.clientWidth || 520), h = Math.max(200, Math.min(460, box.clientHeight || 300));
-      var mx = Math.max(A.x, B.x, R.after.A[0], R.after.B[0]) * 1.12, my = Math.max(A.y, B.y, R.after.A[1], R.after.B[1]) * 1.18;
-      var pts = [{ at: R.before.A, cls: 's1', open: true, label: st.on ? '' : A.name }, { at: R.before.B, cls: 's2', open: true, label: st.on ? '' : B.name }];
-      if(st.on){ pts.push({ at: R.after.A, cls: 's1', label: A.name + ' after' }); pts.push({ at: R.after.B, cls: 's2', label: B.name + ' after' }); }
-      var spec = { label: 'Straight-line PPCs of ' + A.name + ' and ' + B.name + (st.on ? ', with each country\'s consumption before trade (open) and after trade (filled)' : ''), width: w, height: h - 38, x: [0, mx], y: [0, my], xLabel: sc.goods[0] + ' (' + sc.unit + ')', yLabel: sc.goods[1],
-        lines: [{ seg: true, through: [[0, A.y], [A.x, 0]], cls: 's1' }, { seg: true, through: [[0, B.y], [B.x, 0]], cls: 's2' }].concat(st.on ? [
-          { seg: true, through: [R.before[R.xer], R.after[R.xer]], cls: R.xer === 'A' ? 's1' : 's2', dashed: true }, { seg: true, through: [R.before[R.yer], R.after[R.yer]], cls: R.yer === 'A' ? 's1' : 's2', dashed: true }] : []),
-        points: pts, legend: [{ name: A.name + ' PPC', cls: 's1' }, { name: B.name + ' PPC', cls: 's2' }] };
-      box.innerHTML = P.svg(spec);
+      var A = sc.A, B = sc.B;
+      if(st.on !== tAnim.on){ tAnim.on = st.on; if(st.on){ tAnim.p = 0; tween(1); } else { if(tAnim.id) cancelAnimationFrame(tAnim.id); tAnim.id = 0; tAnim.p = 0; } }
+      drawPanels();
       var xer = sc[R.xer], yer = sc[R.yer], gx = R.gain[R.xer], gy = R.gain[R.yer];
       figs.trade.querySelector('.pt-oc').innerHTML = '<table class="pt-tbl"><thead><tr><th scope="col"></th><th scope="col" class="r">Most ' + esc(X) + '</th><th scope="col" class="r">Most ' + esc(Y) + '</th><th scope="col" class="r">1 ' + esc(X.replace(/s$/, '')) + ' costs</th></tr></thead><tbody>' +
         ['A', 'B'].map(function(k){ var c = sc[k], oc = k === 'A' ? R.ocA : R.ocB; return '<tr class="is-' + k + '"><th scope="row"><i class="pt-sw s' + (k === 'A' ? 1 : 2) + '"></i>' + esc(c.name) + '</th><td class="r">' + c.x + '</td><td class="r">' + c.y + '</td><td class="r"><b>' + n(oc) + ' ' + esc(Y) + '</b>' + (k === R.xer ? ' <span class="pt-ca">lower</span>' : '') + '</td></tr>'; }).join('') + '</tbody></table>';

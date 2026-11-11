@@ -20,11 +20,17 @@
                    cumulative record. Choose a schedule (FR, VR, FI, VI) and
                    Play: 10 simulated minutes run in about 8 seconds, the
                    rat presses, pellets drop, the record climbs one step per
-                   press with each reward ticked. The other three schedules
-                   can be shown faint for comparison (More options).
-     Consequences  operant conditioning's four quadrants (added or removed,
-                   behavior up or down). Tap an example: its quadrant lights
-                   and the two questions that name it are answered.
+                   press with each reward ticked. The record is scaled to
+                   the schedule, so its shape shows (FR stair steps, FI
+                   scallops), and a close-up magnifies the last two
+                   minutes with the mark named (pause and run, slow and
+                   fast, no pauses). The other three schedules can be shown
+                   faint for comparison (More options), all on one scale.
+     Consequences  the example drawn in three panels: the behavior, the
+                   consequence (it appears when added; it fades and is
+                   crossed out when removed; pleasant or unpleasant) and
+                   how often the behavior happens on the days after. Below,
+                   operant conditioning's four quadrants with the answer lit.
    Colors by role: the course cerulean for the learned (CS, CR, the record);
    vermillion for the unlearned (UCS, UCR, food) and the rewards; every label
    also written. Reduced motion: Play shows the whole record at once, no
@@ -116,6 +122,57 @@
     return g.join('');
   }
 
+
+  /* Consequences: what each example's behavior and consequence look like.
+     Keyed by the model's behavior text; nice = the consequence is pleasant. */
+  var CQ_ICONS = {
+    'buckles the seatbelt': { b: 'belt', c: 'beep', nice: false },
+    'cleans her room': { b: 'broom', c: 'screen', nice: true },
+    'texts during class': { b: 'texting', c: 'phone', nice: true },
+    'talks back': { b: 'talk', c: 'chores', nice: false },
+    'takes an aspirin for a headache': { b: 'pill', c: 'headache', nice: false },
+    'finishes homework early': { b: 'homework', c: 'nag', nice: false },
+    'touches the hot stove': { b: 'stove', c: 'burn', nice: false },
+    'comes home after curfew': { b: 'curfew', c: 'keys', nice: true },
+    'answers a question in class': { b: 'hand', c: 'praise', nice: true },
+    'leaves a dirty dish on the table': { b: 'dish', c: 'note', nice: false }
+  };
+  /* Each drawing fills about -50..50 around the origin. */
+  function bubble(x, y, w, h, tail, words, cls){
+    var t = tail === 'l' ? 'M' + (x + 12) + ' ' + (y + h) + ' l-8 12 l20 -12' : 'M' + (x + w - 22) + ' ' + (y + h) + ' l12 12 l-2 -12';
+    return '<g class="cl-ib ' + (cls || '') + '"><rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="10"/><path d="' + t + '"/>' + words.map(function(wd, i){ return '<text x="' + (x + w / 2) + '" y="' + (y + 16 + i * 14) + '" text-anchor="middle">' + esc(wd) + '</text>'; }).join('') + '</g>';
+  }
+  function phoneArt(chat){
+    return '<rect class="cl-i" x="-22" y="-44" width="44" height="86" rx="8"/><rect class="cl-i-scr" x="-17" y="-34" width="34" height="62" rx="3"/><circle class="cl-i-dk" cx="0" cy="36" r="3"/>' +
+      (chat ? '<rect class="cl-i-acc" x="-14" y="-28" width="22" height="10" rx="4"/><rect class="cl-i-lt" x="-6" y="-14" width="20" height="10" rx="4"/><rect class="cl-i-acc" x="-14" y="0" width="16" height="10" rx="4"/>' : '<rect class="cl-i-lt" x="-12" y="-24" width="24" height="5" rx="2"/><rect class="cl-i-lt" x="-12" y="-14" width="18" height="5" rx="2"/>');
+  }
+  function handArt(){
+    return '<g class="cl-i-skin"><rect x="-20" y="-6" width="40" height="44" rx="12"/><rect x="-20" y="-42" width="9" height="42" rx="4.5"/><rect x="-9" y="-50" width="9" height="50" rx="4.5"/><rect x="2" y="-46" width="9" height="46" rx="4.5"/><rect x="13" y="-36" width="8" height="38" rx="4"/><path d="M-20 18 C-34 10 -38 0 -32 -6 C-26 -10 -20 0 -16 6 Z"/></g>';
+  }
+  var ICON = {
+    none: function(){ return ''; },
+    belt: function(){ return '<path class="cl-i" d="M-30 -46 C-14 -50 -6 -44 -8 -30 L-14 22 L30 22 C38 22 40 30 38 38 L-30 38 C-38 38 -40 30 -38 22 Z"/><path class="cl-i-belt" d="M-4 -40 L26 18"/><path class="cl-i-belt" d="M-30 26 L20 26"/><rect class="cl-i-dk" x="18" y="16" width="16" height="16" rx="3"/><path class="cl-i-click" d="M40 6 l8 -6 M42 18 h10 M40 30 l8 6"/>'; },
+    broom: function(){ return '<line class="cl-i-stick" x1="-30" y1="-48" x2="12" y2="18"/><path class="cl-i-brm" d="M2 12 L24 0 L44 34 L20 46 Z"/><path class="cl-i-line" d="M10 20 L28 42 M18 14 L34 38"/><circle class="cl-i-dust" cx="-30" cy="40" r="3"/><circle class="cl-i-dust" cx="-20" cy="44" r="2.4"/><circle class="cl-i-dust" cx="-38" cy="44" r="2"/>'; },
+    texting: function(){ return phoneArt(true) + '<path class="cl-i-click" d="M28 -30 l8 -6 M30 -18 h10"/>'; },
+    phone: function(){ return phoneArt(false); },
+    talk: function(){ return '<circle class="cl-i-skin" cx="-16" cy="12" r="26"/><path class="cl-i-line" d="M-30 0 l10 4 M-2 0 l-10 4"/><path class="cl-i-line" d="M-26 24 Q-16 18 -6 24"/>' + bubble(4, -48, 46, 30, 'l', ['No!'], 'is-alt'); },
+    pill: function(){ return '<path class="cl-i-glass" d="M6 -36 L44 -36 L38 40 L12 40 Z"/><path class="cl-i-water" d="M9 -10 L41 -10 L38 37 L12 37 Z"/><g transform="rotate(-30 -22 10)"><rect class="cl-i" x="-40" y="0" width="36" height="18" rx="9"/><path class="cl-i-alt" d="M-22 0 h9 a9 9 0 0 1 0 18 h-9 Z"/></g>'; },
+    homework: function(){ return '<rect class="cl-i" x="-40" y="-34" width="56" height="74" rx="4"/><path class="cl-i-line" d="M-32 -16 h40 M-32 -4 h40 M-32 8 h40 M-32 20 h28"/><path class="cl-i-check" d="M-28 -28 l6 6 l12 -12"/><circle class="cl-i" cx="32" cy="-26" r="17"/><path class="cl-i-line" d="M32 -36 V-26 L39 -22"/>'; },
+    stove: function(){ return '<rect class="cl-i" x="-46" y="4" width="92" height="40" rx="5"/><ellipse class="cl-i-hot" cx="-18" cy="4" rx="22" ry="7"/><ellipse class="cl-i-dk" cx="22" cy="4" rx="18" ry="6"/><path class="cl-i-heat" d="M-28 -8 q-4 -8 0 -16 M-18 -8 q-4 -8 0 -16 M-8 -8 q-4 -8 0 -16"/><g transform="translate(-14 -36) rotate(150) scale(.5)">' + handArt() + '</g>'; },
+    curfew: function(){ return '<path class="cl-i" d="M-40 0 L-6 -28 L28 0 V40 H-40 Z"/><rect class="cl-i-lit" x="-30" y="8" width="14" height="12"/><rect class="cl-i-dk" x="-4" y="14" width="14" height="26"/><path class="cl-i-moon" d="M34 -46 a14 14 0 1 0 12 22 a11 11 0 1 1 -12 -22 Z"/><circle class="cl-i" cx="38" cy="18" r="13"/><path class="cl-i-line" d="M38 10 V18 L43 22"/>'; },
+    hand: function(){ return handArt() + '<path class="cl-i-click" d="M-34 -40 l-8 -6 M30 -46 l8 -6 M-2 -58 v-8"/>'; },
+    dish: function(){ return '<ellipse class="cl-i" cx="0" cy="10" rx="44" ry="18"/><ellipse class="cl-i-lt" cx="0" cy="8" rx="28" ry="10"/><circle class="cl-i-crumb" cx="-8" cy="6" r="3.5"/><circle class="cl-i-crumb" cx="8" cy="10" r="3"/><circle class="cl-i-crumb" cx="2" cy="2" r="2.4"/><path class="cl-i-smear" d="M-20 8 q8 -6 16 0"/><path class="cl-i-line" d="M-30 -38 L-12 -4 M-34 -36 l4 8 M-26 -40 l4 8"/>'; },
+    beep: function(){ return '<g transform="translate(-14 0) scale(1.6)"><rect class="cl-i-dk2" x="-18" y="-12" width="14" height="24" rx="3"/><path class="cl-i" d="M-4 -12 L14 -26 L14 26 L-4 12 Z"/></g><path class="cl-i-wave" d="M18 -22 Q28 0 18 22 M30 -32 Q44 0 30 32 M42 -42 Q60 0 42 42"/>'; },
+    screen: function(){ return '<rect class="cl-i" x="-44" y="-34" width="88" height="60" rx="6"/><rect class="cl-i-scr" x="-38" y="-28" width="76" height="48" rx="3"/><path class="cl-i-play" d="M-8 -16 L12 -4 L-8 8 Z"/><rect class="cl-i-dk" x="-10" y="26" width="20" height="10"/><text class="cl-i-word" x="0" y="50" text-anchor="middle">+30 min</text>'; },
+    chores: function(){ return '<rect class="cl-i" x="-40" y="-44" width="58" height="84" rx="5"/><rect class="cl-i-dk" x="-24" y="-50" width="26" height="12" rx="3"/><path class="cl-i-line" d="M-30 -24 h36 M-30 -8 h36 M-30 8 h36 M-30 24 h30"/><path class="cl-i-bucket" d="M20 0 h28 l-4 40 h-20 Z"/><path class="cl-i-line" d="M22 0 q12 -16 24 0"/>'; },
+    headache: function(){ return '<circle class="cl-i-skin" cx="-6" cy="8" r="32"/><path class="cl-i-line" d="M-20 2 l8 4 M8 2 l-8 4 M-16 24 q10 -6 20 0"/><path class="cl-i-bolt" d="M18 -46 L6 -22 L18 -22 L8 0 L32 -28 L20 -28 L30 -46 Z"/>'; },
+    nag: function(){ return bubble(-48, -40, 96, 44, 'r', ['Do your', 'homework!'], 'is-alt') + bubble(-36, 14, 70, 26, 'l', ['Now!'], 'is-alt'); },
+    burn: function(){ return '<g transform="scale(.95)">' + handArt() + '</g><ellipse class="cl-i-burn" cx="0" cy="8" rx="13" ry="10"/><path class="cl-i-pain" d="M-34 -10 l-12 -4 M-34 4 h-13 M30 -10 l12 -4 M30 4 h13"/>'; },
+    keys: function(){ return '<circle class="cl-i-ring" cx="-20" cy="-22" r="16"/><rect class="cl-i-dk" x="-12" y="-10" width="24" height="30" rx="8"/><rect class="cl-i-key" x="-4" y="18" width="8" height="34" rx="2"/><path class="cl-i-key" d="M4 30 h6 v6 h-6 Z M4 42 h8 v6 h-8 Z"/><circle class="cl-i-lt" cx="0" cy="2" r="4"/>'; },
+    praise: function(){ return bubble(-48, -38, 96, 44, 'l', ['Great', 'answer!'], 'is-acc') + '<path class="cl-i-star" d="M30 14 l5 10 l11 1.5 l-8 7.5 l2 11 l-10 -5.5 l-10 5.5 l2 -11 l-8 -7.5 l11 -1.5 Z"/>'; },
+    note: function(){ return '<path class="cl-i-paper" d="M-36 -44 H28 L40 -32 V44 H-36 Z"/><path class="cl-i-angry" d="M-24 -26 h44 M-24 -12 h36 M-24 2 h44"/><text class="cl-i-word is-alt" x="2" y="32" text-anchor="middle">Dishes!!</text>'; }
+  };
+
   /* The first-run tip sits just above its target; an empty slot is opened
      there while the tip shows, so it never covers another control. */
 
@@ -124,7 +181,8 @@
     var view = 'cc', LS = null, touched = false, nid = T.nid('cl');
     var trials = [], last = null;
     var sk = 'fr', seed = 7, sess = CL.session(sk, seed, MIN), tNow = MIN * 60, anim = null, compare = false;
-    var cq = 0;
+    var cq = 0, cqAnim = false, cqT = null;
+    function cqGo(){ cqAnim = true; clearTimeout(cqT); cqT = setTimeout(function(){ cqAnim = false; }, 1600); }
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem cl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Conditioning lab</h2>' +
       '<div class="cl-fig"><svg class="cl-svg" xmlns="http://www.w3.org/2000/svg" role="img"></svg></div>' +
@@ -143,7 +201,7 @@
     $('.cl-ctl').insertBefore(cue.el, $('.cl-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var svg = $('.cl-svg');
-    var selEx = T.choiceSelect({ label: 'Example', value: '0', options: CL.OPERANT.map(function(o, i){ return { value: String(i), label: o.who + ' ' + o.b }; }), onChange: function(v){ act(); cq = +v; sync(); redraw(); say(cqLine()); } });
+    var selEx = T.choiceSelect({ label: 'Example', value: '0', options: CL.OPERANT.map(function(o, i){ return { value: String(i), label: o.who + ' ' + o.b }; }), onChange: function(v){ act(); cq = +v; cqGo(); sync(); redraw(); say(cqLine()); } });
     $('.cl-exsel').appendChild(selEx.el);
 
     function onClick(e){
@@ -156,7 +214,7 @@
       var s = e.target.closest('.cl-scheds button'); if(s){ act(); stopAnim(); sk = s.getAttribute('data-k'); sess = CL.session(sk, seed, MIN); tNow = MIN * 60; sync(); redraw(); say(opLine()); return; }
       if(e.target.closest('.cl-play')){ act(); play(); return; }
       if(e.target.closest('.cl-newrat')){ act(); stopAnim(); seed = 1 + Math.floor(Math.random() * 99998); sess = CL.session(sk, seed, MIN); tNow = MIN * 60; redraw(); say(opLine()); return; }
-      var nx = e.target.closest('.cl-prev, .cl-next'); if(nx){ act(); cq = (cq + (nx.classList.contains('cl-next') ? 1 : CL.OPERANT.length - 1)) % CL.OPERANT.length; selEx.set(String(cq)); sync(); redraw(); say(cqLine()); return; }
+      var nx = e.target.closest('.cl-prev, .cl-next'); if(nx){ act(); cq = (cq + (nx.classList.contains('cl-next') ? 1 : CL.OPERANT.length - 1)) % CL.OPERANT.length; cqGo(); selEx.set(String(cq)); sync(); redraw(); say(cqLine()); return; }
     }
     host.addEventListener('click', onClick);
     $('.cl-cmp').addEventListener('change', function(e){ compare = e.target.checked; redraw(); });
@@ -262,6 +320,7 @@
           LS.pills([{ k: 'Rewards', html: String(d2.w), tone: 'accent' }], 'right', 'explore');
         } else {
           var o2 = CL.OPERANT[cq];
+          LS.pills([], 'left', 'explore');
           LS.pills([{ html: CL.OP_NAMES[o2.add + ',' + o2.up], tone: 'accent' }], 'right', 'explore');
         }
       }
@@ -286,13 +345,15 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', wh[0]); svg.setAttribute('height', wh[1]);
       var out = view === 'cc' ? ccScene(W, H) : view === 'op' ? opScene(W, H) : cqScene(W, H);
       svg.innerHTML = out.svg; svg.setAttribute('aria-label', out.label);
-      if(LS && LS.setupRow) LS.setupRow.setup(view === 'cc' ? trials.filter(function(t){ return t !== 'rest'; }).length + ' trials so far' : view === 'op' ? (compare ? 'Comparing all four' : CL.schedOf(sk).name) : 'Four quadrants');
+      if(LS && LS.setupRow) LS.setupRow.setup(view === 'cc' ? (function(c){ return c + (c === 1 ? ' trial' : ' trials') + ' so far'; })(trials.filter(function(t){ return t !== 'rest'; }).length) : view === 'op' ? (compare ? 'Comparing all four' : CL.schedOf(sk).name) : 'Four quadrants');
       words();
     }
 
     function ccScene(W, H){
       var phone = W < 560, g = [], st = ccState(), k = last ? last.kind : null, n = trials.length;
-      var sceneH = Math.round(H * (phone ? 0.42 : 0.46)), L = phone ? 12 : 30, R = W - (phone ? 12 : 30);
+      // Before the first trial the record is empty, so the scene takes the whole stage; the record appears
+      // with trial 1 (pass 3, judge b).
+      var sceneH = Math.round(H * (!trials.length ? (phone ? 0.86 : 0.9) : phone ? 0.42 : 0.46)), L = phone ? 12 : 30, R = W - (phone ? 12 : 30);
       // the scene: speaker, dog, dish, measuring tube
       var sc = Math.min(sceneH / 230, (R - L) / 560) * (phone ? 1.05 : 1), dx = L + (R - L) * (phone ? 0.42 : 0.42), dy = sceneH * 0.44;
       var tone = k === 'pair' || k === 'tone', food = k === 'pair', drops = k && k !== 'rest' ? Math.round(food ? CL.MAXCR : st.crNow) : 0;
@@ -303,7 +364,7 @@
       var fx = dx + 150 * sc, fy = dy + 110 * sc;
       g.push(dish(fx, fy, sc, food));
       // saliva drops from the mouth into a measuring tube
-      var mx = dx + 80 * sc, my = dy + 44 * sc, tx = R - (phone ? 30 : 50), tyT = Math.max(48, sceneH * 0.2), tyB = sceneH - 14, cap = CL.MAXCR;
+      var mx = dx + 92 * sc, my = dy + 33 * sc, tx = R - (phone ? 30 : 50), tyT = Math.max(48, Math.min(sceneH * 0.2, dy - 75 * sc)), tyB = Math.min(sceneH - 14, dy + 125 * sc), cap = CL.MAXCR;
       var tw2 = 22;
       // a thin tube from the cheek (as in Pavlov's setup) to the measuring tube
       g.push('<path class="cl-tubeline" d="M' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' C' + (mx + 40).toFixed(1) + ' ' + (my + 10).toFixed(1) + ' ' + (tx - tw2 / 2 - 50).toFixed(1) + ' ' + (tyT - 26).toFixed(1) + ' ' + tx.toFixed(1) + ' ' + (tyT - 2).toFixed(1) + '"/>');
@@ -320,6 +381,7 @@
       var dropLab = !k || k === 'rest' ? '' : food ? 'UCR: saliva to food' : drops >= 1 ? 'CR: saliva to the tone' : 'No saliva';
       if(dropLab) g.push(tag(R, 22, dropLab + (drops ? ' (' + drops + ')' : ''), food ? 'is-ucs' : drops >= 1 ? 'is-cs' : 'is-ns', 'end'));
       if(k === 'rest') g.push(tag(dx, dy - 80 * sc, 'Resting a day', 'is-ns'));
+      if(!n) return { svg: g.join(''), label: 'A dog, a speaker and a food dish. ' + ccLine() + ' No trials yet: the record of drops appears after the first trial.' };
       // the record
       var gT = sceneH + (phone ? 34 : 40), gB = H - (phone ? 46 + ENL : 48), gL = phone ? 34 : 50, gR = W - (phone ? 16 : 30);
       var shown = trials.filter(function(t){ return t !== 'rest'; }).length, X = Math.max(20, shown + 2);
@@ -343,83 +405,170 @@
       for(var tt = 5; tt <= X; tt += 5) g.push(txt(x(tt), gB + 16, String(tt), 'cl-tv'));
       g.push(txt((gL + gR) / 2, gB + (phone ? 34 : 36), 'Trial (filled: tone + food; open: tone alone)', 'cl-axn'));
       g.push('<text class="cl-axn" x="' + gL + '" y="' + (gT - 6) + '" text-anchor="start">Drops of saliva to the tone</text>');
-      if(!n) g.push(txt((gL + gR) / 2, (gT + gB) / 2, 'Press Tone + food to run the first trial', 'cl-empty'));
       var label = 'A dog, a speaker and a food dish. ' + ccLine() + ' Record of ' + shown + ' trials: drops of saliva to the tone ' + pts.map(function(p, ii){ return r0(st.cr[p.i]); }).join(', ') + '.';
       return { svg: g.join(''), label: label };
     }
 
+    /* Each schedule's record is drawn on its own scale, so its shape shows (FR's
+       stair steps, FI's scallops); the comparison option puts all four on one
+       scale, where the slopes compare rates. The close-up magnifies the last
+       two minutes, a few rewards, at a fixed scale per schedule. */
+    var WIN = 120;
+    function winMax(s){ var best = 0, j = 0; for(var i = 0; i < s.presses.length; i++){ while(s.presses[i] - s.presses[j] > WIN) j++; best = Math.max(best, i - j + 1); } return best; }
+    function niceStep(v){ return v > 2000 ? 500 : v > 800 ? 200 : v > 300 ? 100 : v > 120 ? 50 : 20; }
+    function rec(s, upTo, x, y, from){
+      from = from || 0;
+      var pts = [[x(from / 60), y(0)]], c = 0;
+      s.presses.forEach(function(t){ if(t > upTo || t <= from) return; c++; pts.push([x(t / 60), y(c - 1)], [x(t / 60), y(c)]); });
+      pts.push([x(upTo / 60), y(c)]);
+      var out = [pts[0]];
+      for(var i = 1; i < pts.length; i++){ var a = out[out.length - 1]; if(Math.abs(pts[i][0] - a[0]) > 0.4 || Math.abs(pts[i][1] - a[1]) > 0.4 || i === pts.length - 1) out.push(pts[i]); }
+      return out.map(function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
+    }
+    function hatches(s, upTo, x, y, from){
+      from = from || 0;
+      var c = 0, ri = 0, g = '';
+      s.presses.forEach(function(t){ if(t > upTo || t <= from) return; c++; while(ri < s.rewards.length && s.rewards[ri] < t - 1e-9) ri++; if(ri < s.rewards.length && Math.abs(s.rewards[ri] - t) < 1e-9){ var px = x(t / 60), py = y(c); g += '<line class="cl-tick" x1="' + px.toFixed(1) + '" x2="' + (px + 5).toFixed(1) + '" y1="' + py.toFixed(1) + '" y2="' + (py + 7).toFixed(1) + '"/>'; } });
+      return g;
+    }
     function opScene(W, H){
       var phone = W < 560, g = [], sc = CL.schedOf(sk), L = phone ? 44 : 60, R = W - (phone ? 16 : 30);
-      var boxW = phone ? Math.min(W - 24, 300) : Math.min(260, W * 0.32), boxH = phone ? Math.min(130, H * 0.26) : Math.min(170, H * 0.34);
-      var bx = phone ? (W - boxW) / 2 : R - boxW, by = phone ? 46 : 52;
+      var colW = phone ? (W - 34) / 2 : Math.min(260, W * 0.32);
+      var boxW = colW, boxH = phone ? Math.min(124, H * 0.24) : Math.min(150, H * 0.26);
+      var bx = phone ? 12 : R - boxW, by = phone ? 46 : 52;
       var near = function(list, w){ return list.some(function(t){ return t <= tNow && t > tNow - w; }); };
       var pressing = anim && near(sess.presses, 1.2 * (MIN * 60) / (PLAY_S * 60)), pellet = anim ? near(sess.rewards, 6) : false;
       g.push(skinner(bx, by, boxW, boxH, pressing, pellet, pellet));
-      g.push(txt(bx + boxW / 2, by + boxH + 18, 'Skinner box, ' + sc.name.toLowerCase() + ' (' + sc.short + ')', 'cl-axn'));
-      if(!phone){ var words2 = (sc.how.charAt(0).toUpperCase() + sc.how.slice(1) + '.').split(' '), ln = '', yy3 = by + boxH + 38; words2.forEach(function(wd){ if(tw(ln + ' ' + wd, 12, 700) > boxW && ln){ g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); yy3 += 16; ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); }
-      var gT = phone ? by + boxH + 50 : by + 8, gB = H - (phone ? 52 + ENL : 56), gR = phone ? R : bx - 30;
-      var maxN = Math.max.apply(null, CL.SCHEDULES.map(function(s){ return CL.session(s.k, seed, MIN).presses.length; }));
-      // One y scale for every schedule, so a steeper line really is faster responding.
-      var yMax = maxN, step = yMax > 2000 ? 500 : yMax > 800 ? 200 : yMax > 300 ? 100 : 50;
-      yMax = Math.ceil(yMax * 1.05 / step) * step;
+      // pass 2: the schedule is named in the side text and the pill, so the box carries only its name
+      g.push(txt(bx + boxW / 2, by + boxH + 18, 'Skinner box', 'cl-axn'));
+      var yy3 = by + boxH + 18;
+      var gT = phone ? by + boxH + 52 : by + 8, gB = H - (phone ? 52 + ENL : 56), gR = phone ? R : bx - 30;
+      // the y scale: this schedule's own, or one for all four when comparing
+      var all = CL.SCHEDULES.map(function(s){ return CL.session(s.k, seed, MIN); });
+      var yTop = compare ? Math.max.apply(null, all.map(function(q){ return q.presses.length; })) : Math.max(20, sess.presses.length);
+      var step = niceStep(yTop), yMax = Math.ceil(yTop * 1.04 / step) * step;
       var x = function(m){ return L + m / MIN * (gR - L); }, y = function(v){ return gB - v / yMax * (gB - gT); };
+      // the close-up window on the main record
+      var w1 = Math.max(WIN, tNow), w0 = w1 - WIN;
+      g.push('<rect class="cl-zoomband" x="' + x(w0 / 60).toFixed(1) + '" y="' + gT + '" width="' + (x(w1 / 60) - x(w0 / 60)).toFixed(1) + '" height="' + (gB - gT) + '"/>');
       for(var v = 0; v <= yMax; v += step) g.push('<line class="cl-grid" x1="' + L + '" x2="' + gR + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 7, y(v) + 4, String(v), 'cl-tv', 'end'));
       for(var m = 0; m <= MIN; m += 2) g.push(txt(x(m), gB + 16, String(m), 'cl-tv'));
       g.push(txt((L + gR) / 2, gB + 36, 'Minutes', 'cl-axn'));
-      g.push('<text class="cl-axn" x="' + L + '" y="' + (gT - 8) + '" text-anchor="start">Total lever presses (cumulative record)</text>');
-      function rec(s, upTo){
-        var pts = [[x(0), y(0)]], c = 0;
-        s.presses.forEach(function(t){ if(t > upTo) return; c++; pts.push([x(t / 60), y(c - 1)], [x(t / 60), y(c)]); });
-        pts.push([x(upTo / 60), y(c)]);
-        // thin the points for drawing: keep every corner but merge runs under a pixel
-        var out = [pts[0]];
-        for(var i = 1; i < pts.length; i++){ var a = out[out.length - 1]; if(Math.abs(pts[i][0] - a[0]) > 0.4 || Math.abs(pts[i][1] - a[1]) > 0.4 || i === pts.length - 1) out.push(pts[i]); }
-        return out.map(function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
-      }
-      if(compare) CL.SCHEDULES.forEach(function(s){
-        if(s.k === sk) return;
-        var q = CL.session(s.k, seed, MIN);
-        g.push('<polyline class="cl-rec is-faint" points="' + rec(q, MIN * 60) + '"/>');
+      g.push('<text class="cl-axn" x="' + (phone ? 12 : L) + '" y="' + (gT - 10) + '" text-anchor="start">' + esc(compare ? 'Total lever presses, all four on one scale' : phone ? 'Total presses (scale fits ' + sc.short + ')' : 'Total lever presses (the scale fits ' + sc.short + ')') + '</text>');
+      if(compare) all.forEach(function(q, i){
+        var s = CL.SCHEDULES[i]; if(s.k === sk) return;
+        g.push('<polyline class="cl-rec is-faint" points="' + rec(q, MIN * 60, x, y) + '"/>');
         g.push(txt(x(MIN) + 4, y(q.presses.length) + 4, s.short, 'cl-tv', 'start'));
       });
-      g.push('<polyline class="cl-rec" points="' + rec(sess, tNow) + '"/>');
-      // reward ticks: a short hatch on the record, as on Skinner's recorder
-      var c2 = 0, ri = 0, ticks = [];
-      sess.presses.forEach(function(t){ if(t > tNow) return; c2++; while(ri < sess.rewards.length && sess.rewards[ri] <= t){ if(Math.abs(sess.rewards[ri] - t) < 1e-9) ticks.push([x(t / 60), y(c2)]); ri++; } });
-      ticks.forEach(function(p){ g.push('<line class="cl-tick" x1="' + p[0].toFixed(1) + '" x2="' + (p[0] + 5).toFixed(1) + '" y1="' + p[1].toFixed(1) + '" y2="' + (p[1] + 7).toFixed(1) + '"/>'); });
+      g.push('<polyline class="cl-rec" points="' + rec(sess, tNow, x, y) + '"/>');
+      g.push(hatches(sess, tNow, x, y));
       g.push('<line class="cl-axis" x1="' + L + '" x2="' + gR + '" y1="' + gB + '" y2="' + gB + '"/><line class="cl-axis" x1="' + L + '" x2="' + L + '" y1="' + gT + '" y2="' + gB + '"/>');
-      var d = opDone(), endX = x(tNow / 60), endY = y(d.n), lab = d.n + ' presses', lw = tw(lab, 14, 900) + 18, lx = Math.min(gR - lw, Math.max(L + 4, endX - lw - 8));
-      g.push('<g class="cl-bub"><rect x="' + lx.toFixed(1) + '" y="' + Math.max(gT, endY - 36).toFixed(1) + '" width="' + lw.toFixed(1) + '" height="26" rx="8"/>' + txt(lx + lw / 2, Math.max(gT, endY - 36) + 18, lab, 'cl-bt') + '</g>');
+      // pass 2: no press-count bubble on the pen; the Presses readout above the stage already counts them
       if(!phone) g.push(txt(gR - 4, gB - 10, 'each hatch = a reward', 'cl-hint', 'end'));
-      var label = 'Skinner box with a rat and a lever, and the cumulative record of lever presses over ' + MIN + ' minutes on a ' + sc.name.toLowerCase() + ' schedule: ' + sc.shape.toLowerCase() + '. ' + opLine();
+      // the close-up panel
+      var zx = phone ? bx + boxW + 10 : bx, zw = colW, zt = phone ? by : yy3 + 34, zb = phone ? by + boxH : gB;
+      g.push(closeUp(zx, zt, zw, zb - zt, w0, w1, phone));
+      var label = 'Skinner box with a rat and a lever, and the cumulative record of lever presses over ' + MIN + ' minutes on a ' + sc.name.toLowerCase() + ' schedule: ' + sc.shape.toLowerCase() + '. A close-up shows the last two minutes. ' + opLine();
       return { svg: g.join(''), label: label };
     }
+    /* The last two minutes, magnified, with the schedule's mark named on it. */
+    function closeUp(zx, zt, zw, zh, w0, w1, phone){
+      var g = [], pad = phone ? 6 : 10, head = phone ? 18 : 22;
+      g.push('<rect class="cl-zoom" x="' + zx.toFixed(1) + '" y="' + zt.toFixed(1) + '" width="' + zw.toFixed(1) + '" height="' + zh.toFixed(1) + '" rx="10"/>');
+      g.push('<text class="cl-zoomt" x="' + (zx + pad).toFixed(1) + '" y="' + (zt + head - 4).toFixed(1) + '">' + esc(phone ? 'Close-up, 2 min' : 'Close-up: the last 2 minutes') + '</text>');
+      var x0 = zx + pad, x1 = zx + zw - pad, y0 = zt + head + 6, y1 = zt + zh - pad - (phone ? 2 : 14);
+      if(!sess.cmax) sess.cmax = Math.max(10, Math.ceil(winMax(sess) * 1.04 / 5) * 5);
+      var cm = sess.cmax;
+      var x = function(m){ return x0 + (m * 60 - w0) / WIN * (x1 - x0); }, y = function(v){ return y1 - v / cm * (y1 - y0); };
+      g.push('<line class="cl-axis" x1="' + x0.toFixed(1) + '" x2="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" y2="' + y1.toFixed(1) + '"/>');
+      var upTo = Math.min(tNow, w1);
+      g.push('<polyline class="cl-rec is-zoom" points="' + rec(sess, upTo, x, y, w0) + '"/>');
+      g.push(hatches(sess, upTo, x, y, w0));
+      // name the schedule's mark where it shows
+      var inW = sess.presses.filter(function(t){ return t > w0 && t <= upTo; }), cnt = function(t){ var c = 0; inW.forEach(function(p){ if(p <= t) c++; }); return c; };
+      var rw = sess.rewards.filter(function(t){ return t > w0 && t <= upTo; });
+      function note(px, py, s, up){ var ty = up ? py - 8 : py + 16; ty = Math.max(y0 + 10, Math.min(y1 - 4, ty)); return txt(Math.max(x0 + tw(s, 12, 800) / 2, Math.min(x1 - tw(s, 12, 800) / 2, px)), ty, s, 'cl-znote'); }
+      if(sk === 'fr' || sk === 'fi'){
+        // the reward whose pause (FR) or interval (FI) sits nearest the middle of the window
+        var best = null, mid0 = (w0 + upTo) / 2;
+        rw.forEach(function(r){
+          var nx = inW.filter(function(t){ return t > r; })[0], nr = sess.rewards.filter(function(t){ return t > r; })[0];
+          var ok = sk === 'fr' ? nx && nx - r > 5 && nr && nr <= upTo : nr && nr <= upTo;
+          if(!ok) return;
+          var c = sk === 'fr' ? (r + nx) / 2 : (r + nr) / 2;
+          if(!best || Math.abs(c - mid0) < Math.abs(best.c - mid0)) best = { r: r, nx: nx, nr: nr, c: c };
+        });
+        if(best && sk === 'fr'){
+          var cy = y(cnt(best.r)), a = x(best.r / 60), b2 = x(best.nx / 60), mr = (best.nx + best.nr) / 2;
+          g.push('<line class="cl-zpause" x1="' + a.toFixed(1) + '" x2="' + b2.toFixed(1) + '" y1="' + (cy + 5).toFixed(1) + '" y2="' + (cy + 5).toFixed(1) + '"/>', note((a + b2) / 2, cy + 5, 'pause', false));
+          g.push(note(x(mr / 60) - 20, y(cnt(mr)), 'run', true));
+        } else if(best){
+          var e1 = best.r + 0.3 * (best.nr - best.r), e2 = best.r + 0.85 * (best.nr - best.r);
+          g.push(note(x(e1 / 60), y(cnt(e1)), 'slow', false), note(x(e2 / 60) - 18, y(cnt(e2)), 'fast', true));
+        }
+      } else if(upTo - w0 > 30){
+        var mt = w0 + (upTo - w0) * 0.5;
+        g.push(note(x(mt / 60) + 18, y(cnt(mt)) + 6, 'no pauses', false));
+      }
+      return g.join('');
+    }
 
+    /* Consequences: the example drawn as three panels (the behavior, the
+       consequence appearing or vanishing, the behavior next time), with the
+       four-quadrant grid below as the answer. */
     function cqScene(W, H){
-      var phone = W < 560, g = [], o = CL.OPERANT[cq], L = phone ? 12 : 40, R = W - (phone ? 12 : 40);
-      var topH = phone ? 92 : 96, T0 = topH + (phone ? 40 : 46), B = H - (phone ? 16 : 30), hw = phone ? 0 : 120, hh = phone ? 0 : 0;
-      // the story card
-      var cw = R - L;
-      g.push('<rect class="cl-story" x="' + L + '" y="16" width="' + cw + '" height="' + (topH - 16) + '" rx="14"/>');
-      var s1 = o.who + ' ' + o.b + ',', s2 = 'and ' + o.c + '.', s3 = 'The behavior becomes ' + (o.up ? 'more' : 'less') + ' frequent.';
-      function fitLine(t, y, size, cls){ var sz = size; while(sz > 11 && tw(t, sz, 800) > cw - 24) sz -= 0.5; return '<text class="' + cls + '" style="font-size:' + sz + 'px" x="' + (L + cw / 2) + '" y="' + y + '" text-anchor="middle">' + esc(t) + '</text>'; }
-      g.push(fitLine(s1 + ' ' + s2, 44, phone ? 15 : 17, 'cl-st1'), fitLine(s3, 70, phone ? 14 : 15, 'cl-st2'));
-      // the 2 x 2 grid
-      var lw = phone ? 60 : 110, gx = L + lw, gw = R - gx, gh = B - T0, cwq = gw / 2, chq = gh / 2;
+      var phone = W < 560, g = [], o = CL.OPERANT[cq], ic = CQ_ICONS[o.b] || {}, L = phone ? 10 : 30, R = W - (phone ? 10 : 30);
+      var stripT = phone ? 8 : 14, stripH = phone ? Math.min(206, H * 0.42) : Math.min(290, H * 0.47), gap = phone ? 14 : 34;
+      var pw = (R - L - 2 * gap) / 3, ph = stripH, capH = phone ? 52 : 58, art = Math.min(pw * (phone ? 0.86 : 0.7), ph - capH - (phone ? 26 : 34));
+      var anim = cqAnim && !T.reduced();
+      function wrap(t, maxW, size){ var out = [], ln = ''; String(t).split(' ').forEach(function(wd){ if(ln && tw(ln + ' ' + wd, size, 800) > maxW){ out.push(ln); ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) out.push(ln); return out; }
+      function cap(cx, y, t, cls, size){ var ls = wrap(t, pw - 12, size).slice(0, 3); return ls.map(function(l, i){ return '<text class="' + cls + '" style="font-size:' + size + 'px" x="' + cx.toFixed(1) + '" y="' + (y + i * (size + 3)).toFixed(1) + '" text-anchor="middle">' + esc(l) + '</text>'; }).join(''); }
+      for(var i = 0; i < 3; i++){
+        var px = L + i * (pw + gap), cx = px + pw / 2;
+        g.push('<rect class="cl-pan' + (i === 2 ? (o.up ? ' is-up' : ' is-down') : '') + '" x="' + px.toFixed(1) + '" y="' + stripT + '" width="' + pw.toFixed(1) + '" height="' + ph.toFixed(1) + '" rx="14"/>');
+        if(i < 2){ var ax = px + pw + 3, ay = stripT + ph * 0.45; g.push('<path class="cl-panar" d="M' + ax.toFixed(1) + ' ' + ay.toFixed(1) + ' h' + (gap - 10) + ' m-6 -6 l6 6 l-6 6"/>'); }
+      }
+      var artY = stripT + (phone ? 16 : 24) + art / 2, capY = stripT + ph - capH + (phone ? 12 : 16), fs = phone ? 11.5 : 13.5;
+      // 1: the behavior
+      var c1 = L + pw / 2, sk1 = art / 118;
+      g.push('<g transform="translate(' + c1.toFixed(1) + ' ' + artY.toFixed(1) + ') scale(' + sk1.toFixed(3) + ')">' + (ICON[ic.b] || ICON.none)() + '</g>');
+      g.push(cap(c1, capY, o.who + ' ' + o.b, 'cl-st1', fs));
+      // 2: the consequence, added (it appears) or removed (it vanishes)
+      var c2 = L + pw + gap + pw / 2;
+      g.push('<g class="cl-cons ' + (o.add ? 'is-add' : 'is-rem') + (anim ? ' is-anim' : '') + '" transform="translate(' + c2.toFixed(1) + ' ' + artY.toFixed(1) + ') scale(' + sk1.toFixed(3) + ')"><g class="cl-cons-art">' + (ICON[ic.c] || ICON.none)() + '</g>' +
+        (o.add ? '' : '<g class="cl-cons-x"><circle cx="0" cy="0" r="50"/><line x1="-35" y1="35" x2="35" y2="-35"/></g>') + '</g>');
+      var badge = (o.add ? '+ Added: ' : '− Removed: ') + (ic.nice ? 'pleasant' : 'unpleasant'), bw = tw(badge, phone ? 11 : 12.5, 900) + 16, by2 = artY + art / 2 - (phone ? 6 : 4);
+      if(phone && bw > pw - 6){ badge = (o.add ? '+ Added' : '− Removed'); bw = tw(badge, 11, 900) + 16; }
+      g.push('<g class="cl-badge ' + (o.add ? 'is-add' : 'is-rem') + '"><rect x="' + (c2 - bw / 2).toFixed(1) + '" y="' + (by2 - 15).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="22" rx="11"/><text style="font-size:' + (phone ? 11 : 12.5) + 'px" x="' + c2.toFixed(1) + '" y="' + (by2 + 0.5).toFixed(1) + '" text-anchor="middle">' + esc(badge) + '</text></g>');
+      g.push(cap(c2, capY, o.c.charAt(0).toUpperCase() + o.c.slice(1), 'cl-st1', fs));
+      // 3: how often the behavior happens over the next days
+      var c3 = L + 2 * (pw + gap) + pw / 2, bw3 = Math.min(pw * 0.72, art * 1.1), bx3 = c3 - bw3 / 2, bb = artY + art / 2 - 6, bt = artY - art / 2 + 8, n = 5, sl = bw3 / n;
+      var hs = o.up ? [0.35, 0.5, 0.64, 0.8, 0.95] : [0.95, 0.7, 0.48, 0.3, 0.16];
+      for(var j = 0; j < n; j++){ var hh = hs[j] * (bb - bt); g.push('<rect class="cl-fbar ' + (o.up ? 'is-up' : 'is-down') + (anim ? ' is-anim' : '') + '" style="animation-delay:' + (0.5 + j * 0.08) + 's" x="' + (bx3 + j * sl + sl * 0.15).toFixed(1) + '" y="' + (bb - hh).toFixed(1) + '" width="' + (sl * 0.7).toFixed(1) + '" height="' + hh.toFixed(1) + '" rx="3"/>'); }
+      g.push('<line class="cl-axis" x1="' + bx3.toFixed(1) + '" x2="' + (bx3 + bw3).toFixed(1) + '" y1="' + bb.toFixed(1) + '" y2="' + bb.toFixed(1) + '"/>');
+      var ay0 = o.up ? bb - 0.3 * (bb - bt) : bt + 0.05 * (bb - bt), ay1 = o.up ? bt - 4 : bb - 0.2 * (bb - bt);
+      g.push('<path class="cl-farrow ' + (o.up ? 'is-up' : 'is-down') + '" d="M' + (bx3 + 4).toFixed(1) + ' ' + ay0.toFixed(1) + ' L' + (bx3 + bw3 - 4).toFixed(1) + ' ' + ay1.toFixed(1) + '"/>');
+      var tipx = bx3 + bw3 - 4, ang = Math.atan2(ay1 - ay0, bw3 - 8), hx = function(d){ return (tipx + 11 * Math.cos(ang + d)).toFixed(1) + ' ' + (ay1 + 11 * Math.sin(ang + d)).toFixed(1); };
+      g.push('<path class="cl-farrowh ' + (o.up ? 'is-up' : 'is-down') + '" d="M' + hx(Math.PI - 0.5) + ' L' + tipx.toFixed(1) + ' ' + ay1.toFixed(1) + ' L' + hx(Math.PI + 0.5) + '"/>');
+      g.push(cap(c3, capY, o.up ? 'Does it more often' : 'Does it less often', 'cl-st1 ' + (o.up ? 'is-up' : 'is-down'), fs));
+      // the 2 x 2 grid, the answer
+      var T0 = stripT + ph + (phone ? 40 : 44), B = H - (phone ? 10 + ENL : 16);
+      var lw = phone ? 30 : 110, gx = L + lw, gw = R - gx, gh = B - T0, cwq = gw / 2, chq = gh / 2;
       g.push(txt(gx + cwq / 2, T0 - 12, phone ? 'Behavior up' : 'Behavior increases', 'cl-axn'), txt(gx + cwq * 1.5, T0 - 12, phone ? 'Behavior down' : 'Behavior decreases', 'cl-axn'));
-      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 - 2) + ' ' + (T0 + chq / 2) + ') rotate(-90)" text-anchor="middle">' + (phone ? 'Added' : 'Something added') + '</text>');
-      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 - 2) + ' ' + (T0 + chq * 1.5) + ') rotate(-90)" text-anchor="middle">' + (phone ? 'Removed' : 'Something removed') + '</text>');
+      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 + 4) + ' ' + (T0 + chq / 2) + ') rotate(-90)" text-anchor="middle">' + 'Added' + '</text>');
+      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 + 4) + ' ' + (T0 + chq * 1.5) + ') rotate(-90)" text-anchor="middle">' + 'Removed' + '</text>');
       var Q = [[true, true, 'Positive reinforcement', 'add a pleasant thing'], [true, false, 'Positive punishment', 'add an unpleasant thing'], [false, true, 'Negative reinforcement', 'remove an unpleasant thing'], [false, false, 'Negative punishment', 'remove a pleasant thing']];
       Q.forEach(function(q){
         var cx = gx + (q[1] ? 0 : cwq), cy = T0 + (q[0] ? 0 : chq), on = q[0] === o.add && q[1] === o.up;
-        g.push('<rect class="cl-q' + (on ? ' is-on' : '') + (q[1] ? ' is-up' : ' is-down') + '" x="' + (cx + 4).toFixed(1) + '" y="' + (cy + 4).toFixed(1) + '" width="' + (cwq - 8).toFixed(1) + '" height="' + (chq - 8).toFixed(1) + '" rx="14"/>');
-        var nm = q[2].split(' '), sz = phone ? 15 : 19;
-        g.push(txt(cx + cwq / 2, cy + chq / 2 - (phone ? 10 : 12), nm[0], 'cl-qn' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + (phone ? 8 : 12), nm[1], 'cl-qn' + (on ? ' is-on' : '')));
-        if(phone){ var dw = q[3].split(' '); g.push(txt(cx + cwq / 2, cy + chq / 2 + 30, dw.slice(0, 2).join(' '), 'cl-qd' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + 46, dw.slice(2).join(' '), 'cl-qd' + (on ? ' is-on' : ''))); }
-        else g.push(txt(cx + cwq / 2, cy + chq / 2 + 38, q[3], 'cl-qd' + (on ? ' is-on' : '')));
-        if(on) g.push('<circle class="cl-qdot" cx="' + (cx + cwq - 22).toFixed(1) + '" cy="' + (cy + 22).toFixed(1) + '" r="8"/>');
+        g.push('<rect class="cl-q' + (on ? ' is-on' : '') + (q[1] ? ' is-up' : ' is-down') + '" x="' + (cx + 3).toFixed(1) + '" y="' + (cy + 3).toFixed(1) + '" width="' + (cwq - 6).toFixed(1) + '" height="' + (chq - 6).toFixed(1) + '" rx="12"/>');
+        var nm = q[2].split(' '), small = chq < 74;
+        if(small) g.push(txt(cx + cwq / 2, cy + chq / 2 - 3, nm[0], 'cl-qn is-sm' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + 13, nm[1], 'cl-qn is-sm' + (on ? ' is-on' : '')));
+        else {
+          g.push(txt(cx + cwq / 2, cy + chq / 2 - 4, nm[0], 'cl-qn' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + 18, nm[1], 'cl-qn' + (on ? ' is-on' : '')));
+        }
+        if(on) g.push('<circle class="cl-qdot" cx="' + (cx + cwq - 18).toFixed(1) + '" cy="' + (cy + 18).toFixed(1) + '" r="7"/>');
       });
-      var label = 'Four quadrants: something added or removed, behavior up or down. ' + cqLine();
+      var label = 'The example in three pictures: ' + o.who + ' ' + o.b + '; then ' + o.c + ' (something ' + (o.add ? 'added' : 'removed') + ', ' + (ic.nice ? 'pleasant' : 'unpleasant') + '); next time the behavior happens ' + (o.up ? 'more' : 'less') + ' often. Below, the four quadrants: something added or removed, behavior up or down. ' + cqLine();
       return { svg: g.join(''), label: label };
     }
 

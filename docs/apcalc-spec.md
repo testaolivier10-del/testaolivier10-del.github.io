@@ -222,6 +222,13 @@ a tool's data file exists and its topic is published.
       formula per string and read its annotation back (the Riemann sums drill's duplicate check broke). The
       site-search test now covers `?course=calculus`.
 13. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
+16. (2026-11-10, `docs/tool-review/calculus.md`) **Tool review fixes.** Area and volume: Revolve opens on the flat
+    region with the axis lying the way it does on the 2D graph, and "Revolve it" sweeps the region about the axis
+    from 0 to 360 degrees while the solid and the slice's washer grow (reduced motion shows the solid); cross
+    sections are seen more from above. Curve analyzer: curves stop at the panel edge with a small arrow instead of
+    running flat along it. Riemann sums: no smooth "trend" curve or chip on the table modes (its area stays in
+    Details as one possible f, not given), a larger tank, and the error slivers shaded (amber missed, pink extra).
+    Related rates: the caption and the readout chips change together during Play.
 15. (2026-10-27, `docs/tool-audit-2026-10.md`) **Test yourself is visual in all ten trainers.** The drill engine
     (`calc-tools.js` `drill`) draws each graded try on the stage through a tool's `onTry` (the student's answer
     dashed and warm, the right one solid green; `ApCalcTools.tries`/`markSvg`/`gauge`), gives one method hint per

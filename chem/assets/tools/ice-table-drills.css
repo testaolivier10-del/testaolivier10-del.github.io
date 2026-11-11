@@ -1,0 +1,24 @@
+/* ICE table drills, the tool's own sheet (pass 3 cleanup, docs/tool-review/pass3/chem.md).
+   The judge found the table and the jar small in a mostly empty stage: on a
+   wide stage the jar gets the larger column and the full height, and the
+   table's type grows to match; on a phone the table packs tighter so the jar
+   has the room. Loaded after chem-tools.css, so these win. */
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:0 28px;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker{display:flex;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker .lb-svg{max-height:100%;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt thead th{font-size:17px;padding-top:10px;padding-bottom:10px;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt th[scope=row]{font-size:24px;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt td{padding-top:12px;padding-bottom:12px;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt td b{font-size:21px;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt .ic-rc td b{font-size:17px;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt .ic-xe{font-size:14px;}
+/* Phone: the row names on one line and less padding, so the jar below can grow. */
+.ls-root.ls-phone .chem-ls-stage .ic-show{gap:4px;}
+.ls-root.ls-phone .chem-ls-stage .ic-xt th,.ls-root.ls-phone .chem-ls-stage .ic-xt td{padding-top:4px;padding-bottom:4px;}
+.ls-root.ls-phone .chem-ls-stage .ic-xt th[scope=row]{width:3.2em;font-size:17px;}
+.ls-root.ls-phone .chem-ls-stage .ic-xt th[scope=row] span{display:none;}
+.ls-root.ls-phone .chem-ls-stage .ic-xt td b{font-size:15px;}
+.ls-root.ls-phone .chem-ls-stage .ic-live{gap:0;}
+.ls-root.ls-phone .chem-ls-stage .ic-barsd > summary{padding:2px 10px;}
+/* Before x moves there is no gauge yet: the empty gauge row gives its room to the jar. */
+.ls-root .chem-ls-stage .ic-beaker .lb-side:has(> .lb-read:empty){display:none;}

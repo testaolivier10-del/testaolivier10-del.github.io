@@ -55,14 +55,16 @@
       '<figcaption class="hug-small">' + (src ? '<span class="hug-src">' + src + '</span> ' : '') + '<span class="hug-border-note">' + esc(MAP.note(B)) + '</span>' + (B.invented ? '' : ' <span class="hug-base-src">Base map: Natural Earth.</span>') + '</figcaption></figure>';
   }
   /* The cartogram of Country A: squares sized by the data, a letter in each. */
-  function cartoHtml(c, title){
+  function cartoHtml(c, title, explore){
     var L = R.LETTERS.concat(['G', 'H']);
     var sq = c.squares.map(function(q, i){ return '<rect class="hug-mr-sq" data-id="' + esc(q.id) + '" x="' + (q.x - q.s / 2).toFixed(1) + '" y="' + (q.y - q.s / 2).toFixed(1) + '" width="' + q.s.toFixed(1) + '" height="' + q.s.toFixed(1) + '" rx="4"/>'; }).join('');
     var over = c.squares.map(function(q, i){ return '<span class="hug-mr-sql" style="left:' + (100 * q.x / c.width).toFixed(2) + '%;top:' + (100 * q.y / c.height).toFixed(2) + '%">' + L[i] + '</span>'; }).join('');
     var key = c.squares.map(function(q, i){ return '<li><b>' + L[i] + '</b> ' + esc(q.name) + '</li>'; }).join('');
     return '<figure class="hug-map hug-mr-map hug-mr-carto" data-render="cartogram" style="--hug-mr-ar:1.5"><div class="hug-map-pic"><svg viewBox="0 0 ' + c.width + ' ' + c.height + '" role="img" aria-label="Cartogram of Country A: each province is a square sized by its number of people">' +
       '<rect width="' + c.width + '" height="' + c.height + '" fill="#FFFFFF"/>' + sq + '</svg><div class="hug-map-over" aria-hidden="true">' + over + '</div></div>' +
-      '<div class="hug-legend"><p class="hug-lg-title">' + esc(title || 'People in each province (invented)') + '</p><ul class="hug-mr-ckey">' + key + '</ul><p class="hug-small">Square area shows the number of people. Shapes and positions are not true.</p></div>' +
+            // Explore (second pass, 2026-11-10): the eight-letter key opens on tap; the caption already says what area means.
+      (explore ? '<div class="hug-legend"><p class="hug-lg-title">' + esc(title || 'People in each province (invented)') + '</p><details class="hug-mr-ckd"><summary>Which province is which letter</summary><ul class="hug-mr-ckey">' + key + '</ul></details><p class="hug-small">Shapes and positions are not true.</p></div>'
+        : '<div class="hug-legend"><p class="hug-lg-title">' + esc(title || 'People in each province (invented)') + '</p><ul class="hug-mr-ckey">' + key + '</ul><p class="hug-small">Square area shows the number of people. Shapes and positions are not true.</p></div>') +
       '<figcaption class="hug-small"><span class="hug-src">Invented data for practice.</span> <span class="hug-border-note">' + esc(window.ApHugMap.INVENTED_NOTE) + '</span></figcaption></figure>';
   }
 
@@ -85,7 +87,8 @@
     host.innerHTML = '<section class="bt-problem hug-mr-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Map reader</h2>' +
       '<div class="hug-mr-stage"><div class="hug-mr-fig"><p class="bt-loading">Loading the map…</p></div><p class="hug-mr-read" aria-live="polite"></p></div>' +
       '<div class="hug-mr-ctl">' +
-        '<div class="hug-mr-types" role="group" aria-label="Map type">' + TYPE_ORDER.map(function(k){ return '<button type="button" class="tchip hug-mr-type" data-t="' + k + '" aria-pressed="false">' + esc(R.KINDS[k].short) + '</button>'; }).join('') + '</div>' +
+        // Map type is a select (pass 3, judge b: six chips plus two segments).
+        '<div class="hug-mr-typeslot"></div>' +
         '<div class="hug-mr-reads tseg" role="group" aria-label="Read the map">' + [['legend', '1 Legend'], ['pattern', '2 Pattern'], ['limit', '3 Limit']].map(function(x){ return '<button type="button" class="hug-mr-rd" data-r="' + x[0] + '" aria-pressed="false">' + x[1] + '</button>'; }).join('') + '</div>' +
         '<div class="hug-mr-breaks tseg" role="group" aria-label="Class breaks" hidden>' + [['even', 'Even classes'], ['lumped', 'Uneven'], ['totals', 'Totals']].map(function(x){ return '<button type="button" class="hug-mr-br" data-b="' + x[0] + '" aria-pressed="false">' + x[1] + '</button>'; }).join('') + '</div>' +
       '</div>' +
@@ -95,6 +98,8 @@
     var cue = T.cue('Pick a map type, then read it: legend, pattern, limit.');
     $('.hug-mr-ctl').insertBefore(cue.el, $('.hug-mr-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
+    var tsel = T.choiceSelect({ label: 'Map type', options: TYPE_ORDER.map(function(k){ return { value: k, label: R.KINDS[k].short }; }), value: st.type, onChange: function(v){ act(); st.type = v; st.sel = null; draw(); } });
+    $('.hug-mr-typeslot').appendChild(tsel.el);
     var sel = T.choiceSelect({ label: 'Base map', options: exploreBases.map(function(b){ return { value: b, label: BASE_NAMES[b] }; }), value: st.base, onChange: function(v){ st.base = v; st.sel = null; act(); draw(); } });
     $('.hug-mr-basesel').appendChild(sel.el);
 
@@ -117,12 +122,12 @@
       }
       if(st.type === 'reference' && st.read !== 'legend'){ marks = R.legibleMarks(bid, R.markable(bid).slice().sort(function(a, b){ return R.geom(bid, b.id).area - R.geom(bid, a.id).area; }).slice(0, 6).map(function(f){ return f.id; }), 3).map(function(m){ return m.at; }); x = R.exploreSpec(bid, 'reference', { focus: marks, marks: marks }); }
       cur = { bid: bid, x: x, marks: marks };
-      html = st.type === 'cartogram' ? cartoHtml(x.cartogram) : mapHtml(x.spec, { hit: true });
+      html = st.type === 'cartogram' ? cartoHtml(x.cartogram, null, true) : mapHtml(x.spec, { hit: true });
       $('.hug-mr-fig').innerHTML = html;
       // A new map starts at its top, whatever the stage was scrolled to.
       for(var el = $('.hug-mr-fig'); el && el !== document.body; el = el.parentElement){ if(el.scrollTop) el.scrollTop = 0; }
       setTimeout(function(){ for(var el2 = $('.hug-mr-fig'); el2 && el2 !== document.body; el2 = el2.parentElement){ if(el2.scrollTop) el2.scrollTop = 0; } }, 60);
-      $$('.hug-mr-type').forEach(function(b){ var on = b.getAttribute('data-t') === st.type; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
+      tsel.set(st.type);
       $$('.hug-mr-rd').forEach(function(b){ var on = b.getAttribute('data-r') === st.read; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       $$('.hug-mr-br').forEach(function(b){ var on = b.getAttribute('data-b') === st.breaks; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       $$('.hug-mr-breaks').forEach(function(b){ b.hidden = st.type !== 'choropleth'; });

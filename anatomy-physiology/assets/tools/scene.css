@@ -1,0 +1,47 @@
+/* A&P scene plates (assets/tools/scene.js): a real figure with numbered pins
+   where things happen, the route between them, a token and a callout. The
+   figure is a white plate in both themes (OpenStax drawings are on white);
+   the pins carry their own white rims so they read on any part of it. */
+.scn{margin:0;position:relative;}
+.scn-pic{position:relative;width:100%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line, rgba(0,0,0,.08));}
+.scn-pic img{display:block;width:100%;height:auto;}
+.scn-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.scn-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.scn-ov{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;font-family:var(--font-ui, system-ui, sans-serif);}
+.scn-cred{margin:5px 2px 0;font-size:11px;line-height:1.35;color:var(--muted);}
+.scn-cred a{color:inherit;}
+:root[data-theme="dark"] .scn-pic{box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 6px 18px rgba(0,0,0,.35);}
+
+.scn-leg{fill:none;stroke:#2D3A35;stroke-width:calc(var(--scn-sw) * 1.25);stroke-linecap:round;opacity:.9;}
+.scn-leg.flows{stroke-dasharray:calc(var(--scn-sw) * 3.2) calc(var(--scn-sw) * 2.2);}
+.scn-leg.tone-o2{stroke:#C0392B;} .scn-leg.tone-deo2{stroke:#2B6CB0;}
+.scn-leg.is-no{stroke:#B4232A;opacity:.75;}
+.scn-leg.is-gap{stroke-dasharray:calc(var(--scn-sw) * 1.2) calc(var(--scn-sw) * 2.4);opacity:.7;}
+.scn-leg.is-dim{opacity:.18;}
+.scn-ah{fill:#2D3A35;} .scn-ah.tone-o2{fill:#C0392B;} .scn-ah.tone-deo2{fill:#2B6CB0;} .scn-ah.tone-no{fill:#B4232A;}
+.scn-q circle{fill:#FFF4E5;stroke:#A33B26;stroke-width:var(--scn-sw);stroke-dasharray:calc(var(--scn-sw) * 2) calc(var(--scn-sw) * 1.5);}
+.scn-q text{fill:#A33B26;font-weight:900;}
+
+.scn-pin .scn-halo{fill:rgba(163,59,38,.0);transition:fill .25s;}
+.scn-pin .scn-dot{fill:#A33B26;stroke:#fff;stroke-width:calc(var(--scn-sw) * 1.3);filter:drop-shadow(0 1px 2px rgba(0,0,0,.45));transition:fill .2s;}
+.scn-pin text{fill:#fff;font-weight:900;}
+.scn-pin.tone-o2 .scn-dot{fill:#C0392B;} .scn-pin.tone-deo2 .scn-dot{fill:#2B6CB0;}
+.scn-pin.is-ok .scn-dot{fill:#1F7A4D;}
+.scn-pin.is-no .scn-dot{fill:#B4232A;}
+.scn-pin.is-ghost .scn-dot{fill:#fff;stroke:#A33B26;stroke-dasharray:calc(var(--scn-sw) * 1.6) calc(var(--scn-sw) * 1.2);}
+.scn-pin.is-ghost text{fill:#A33B26;}
+.scn-pin.is-start .scn-dot{fill:#7A4E9C;}
+.scn-pin.is-dim{opacity:.3;}
+.scn-pin.is-focus .scn-halo{fill:rgba(255,196,61,.55);animation:scn-pulse 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center;}
+.scn-badge{stroke:#fff;stroke-width:var(--scn-sw);}
+.scn-badge.b-up{fill:#1F6FB2;} .scn-badge.b-down{fill:#C2410C;} .scn-badge.b-none{fill:#5B6763;} .scn-badge.b-ghost{fill:#fff;stroke:#5B6763;}
+.scn-badge-t{fill:#fff;font-weight:900;}
+.scn-pin .scn-badge.b-ghost + .scn-badge-t{fill:#2D3A35;}
+.scn-tag rect{fill:#18211E;opacity:.92;}
+.scn-tag text{fill:#fff;font-weight:800;}
+.scn-tok{fill:#FFC43D;stroke:#7a5200;stroke-width:var(--scn-sw);filter:drop-shadow(0 0 5px rgba(255,196,61,.9));}
+.scn-tok.tone-o2{fill:#E0503D;stroke:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.45));}
+.scn-tok.tone-deo2{fill:#3B7BD0;stroke:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.45));}
+@keyframes scn-pulse{0%,100%{transform:scale(.85);opacity:.75;}50%{transform:scale(1.15);opacity:1;}}
+@media (prefers-reduced-motion: reduce){.scn-pin.is-focus .scn-halo{animation:none;}}
+.scn-ghost{fill:rgba(255,255,255,.85);stroke:#A33B26;stroke-width:calc(var(--scn-sw) * 1.1);stroke-dasharray:calc(var(--scn-sw) * 1.4) calc(var(--scn-sw) * 1.1);}

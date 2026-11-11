@@ -160,6 +160,8 @@
       lastRegion = reg;
       paint(pH);
       if(v > 0 && start) start.done();
+      // Start over shows once there is something to undo (pass 2).
+      var rs = ctl.querySelector('[data-add="reset"]'); if(rs) rs.style.display = v > 0 ? '' : 'none';
       T.explain($('.tx-meaning'), '<b>' + m.head + '</b> <span class="tx-at">' + m.at + '</span>', '<p>' + m.text + '</p>');
       if(LS) studioDraw(pH, m);
     }
@@ -170,11 +172,13 @@
       var t = Math.max(0, Math.min(1, (pH - d.lo) / (d.hi - d.lo))), mix = c.a.map(function(x, i){ return x + (c.b[i] - x) * t; });
       var word = t <= 0 ? c.words[0] : t >= 1 ? c.words[2] : c.words[1];
       var where = Math.abs(v - last) <= tol ? { html: 'At equivalence', tone: 'accent' } : v > last ? { html: 'Past equivalence', tone: 'accent' }
-        : pH < 6.5 ? { html: 'Acidic', tone: 'warn' } : pH > 7.5 ? { html: 'Basic', tone: 'accent' } : { html: 'Neutral', tone: 'ghost' };
-      LS.pills([{ k: 'pH', html: F(pH, 2), tone: 'readout' }, where], 'left', 'explore');
+        : pH < 6.5 ? { html: 'Acidic', tone: 'warn' } : pH > 7.5 ? { html: 'Basic', tone: 'accent' } : { html: 'Near neutral', tone: 'ghost' };
+      // One live number (pH); where on the curve is the caption (pass 2).
+      void where;
+      LS.pills([{ k: 'pH', html: F(pH, 2), tone: 'readout' }], 'left', 'explore');
       LS.pills([{ html: '<span class="ls-pill-dot" style="background:rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + Math.max(0.15, mix[3]).toFixed(2) + ')"></span>' + '<span class="sr-only">' + esc(d.name) + ' is </span>' + '<span aria-hidden="true">Indicator </span>' + word, tone: 'ghost' }], 'right', 'explore');
       var fm = /^[\s\S]*?\.(?=\s|$)/.exec(m.text), first = fm ? fm[0] : m.text;
-      LS.caption('<b>' + m.head + '</b> ' + (first.replace(/<[^>]+>/g, '').length <= 80 ? first : 'pH ' + F(pH, 2) + '.'), 'explore');
+      LS.caption('<b>' + m.head + '</b> ' + (first.replace(/<[^>]+>/g, '').length <= 80 ? first : ''), 'explore');
       // The beaker's own pH meter and particle counts read best in Details.
       var side = LS.root.querySelector('.tx-ls-stage .lb-side'), parts = LS.root.querySelector('.tx-ls-parts');
       if(side && parts){ parts.innerHTML = '<h3 class="ls-h">Particles in the flask</h3>'; parts.appendChild(side); }
@@ -193,7 +197,8 @@
       }
     }
     /* Tool Studio arrangement (modes({ studio })): the flask and the curve on
-       the stage; the slider, Run, +1 drop, +1 mL and Start over in the dock;
+       the stage; the slider, Run, +1 drop and (once titrant is in) Start over
+       in the dock; +1 mL with the setup in Details;
        what is happening and the indicator in Why; the numbers, the kind of
        titration, the indicator and New numbers in Details. */
     function studio(pane, s){
@@ -204,7 +209,9 @@
       s.add('stage', stage, o);
       var dock = document.createElement('div'); dock.className = 'tx-ls-ctl';
       dock.appendChild(ctl);
-      dock.appendChild(q('.tx-steps [data-add="0.05"]')); dock.appendChild(q('.tx-steps [data-add="1"]'));
+      // Pass 2: +1 mL stays with the setup in Details; +1 drop (for the
+      // steep part) is the one step button in the dock.
+      dock.appendChild(q('.tx-steps [data-add="0.05"]'));
       var setup = document.createElement('button');
       setup.type = 'button'; setup.className = 'ls-linkrow tx-ls-setup';
       setup.innerHTML = '<span><span class="ls-k">Setup</span><span class="ls-v"></span></span>' + window.LevlStudio.icon('more');

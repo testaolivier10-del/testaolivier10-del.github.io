@@ -308,6 +308,15 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     the model's 930 GtC is used up), phone labels by name; energy flow opens to scale with the lost 90% drawn, the
     web redraws (sizes, empty ring, grey crossed-out species); water pollution shows fish leaving below 2 mg/L;
     population growth opens at year 0; dose-response 10 mice a row with a key and dead mice drawn on their backs.
+16. (2026-11-10, `docs/tool-review/environmental-science.md`, `docs/tool-review/done/env.md`) **Tool visuals round.**
+    Energy flow opens on log widths (the loss written beside each step; "to scale" still in More options) and never
+    prints exponent numbers; Earth and climate's Winds draws the three cells per hemisphere as loops of air in a thick
+    atmosphere at the globe's edge (cloud and rain at 0 and 60, sun at 30) with a drawn weather balloon; acid rain draws
+    each animal in the lake at the lowest pH it survives; sea level fills up the shore against 3 m houses; sewage
+    stages are drawn tanks; the energy chain draws the plant's machines and shows the wind a rotor misses as left in
+    the wind (Betz), not heat; the J-curve ends at the top edge with an arrow; the deer herd is drawn on its island;
+    Test yourself figures fill the stage (`ApEnvTools.figSize`, `o.refit`). Pave land and the nitrogen amounts in
+    Cycles now say they are an exaggerated case and a sketch (`docs/apenv-needs-author.md`).
 
 ## 9. Open items for the owner
 

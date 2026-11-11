@@ -36,7 +36,7 @@
       '<p class="bt-first">Press Next step to walk one cell through meiosis.</p><div class="os-chal mei-chal" hidden></div>' +
       '<div class="mei-stephead"><h3 class="mei-steptitle" tabindex="-1"></h3><p class="mei-steptext"></p></div>' +
       '<div class="bt-fig mei-stagefig bt-hero"></div><p class="bt-small mei-taphint"></p>' +
-      '<div class="mei-stepper"><button type="button" class="bt-btn" data-a="back">Back</button><button type="button" class="btn-press sm" data-a="next">Next step</button><button type="button" class="btn-press sm alt" data-a="play">Play to gametes</button><div class="mei-stepsel"></div></div>' +
+      '<div class="mei-stepper"><button type="button" class="bt-btn" data-a="back">Back</button><button type="button" class="btn-press sm" data-a="next">Next step</button><button type="button" class="btn-press sm alt" data-a="play">Play to gametes</button></div><div class="mei-stepsel"></div>' + /* pass 2: Go to step waits in Details */
       '<div class="bt-controls" data-primary="3"></div>' +
       '<div class="mei-lower bt-num"><div><div class="mei-words"></div></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="count" aria-pressed="true">Chromosomes per cell</button><button type="button" class="bt-btn" data-v="dna" aria-pressed="false">DNA per cell</button>' +

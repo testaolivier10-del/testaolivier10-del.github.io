@@ -40,3 +40,5 @@
 .ls-root .ls-drill-stage .hug-mr-qfig{display:block;flex:1;min-height:0;overflow:auto;}
 .ls-root .ls-drill-stage .hug-mr-qfig > *{flex:none;}
 .ls-root .cd-step.is-right.is-right input[type=text]{box-shadow:inset 0 0 0 2px var(--good-text);border-color:var(--good-text);}
+.hug-mr-ckd summary{cursor:pointer;font:700 13px/1.3 var(--font-ui);color:var(--muted);min-height:32px;display:flex;align-items:center;}
+.hug-mr-ckd[open] summary{margin-bottom:4px;}

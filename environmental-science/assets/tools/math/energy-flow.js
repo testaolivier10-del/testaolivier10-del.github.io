@@ -188,7 +188,8 @@
   /* ---------------------------------------------------------- drills */
   var TYPES = ['tenpct', 'reverse', 'npp', 'efficiency', 'pyramid', 'web'];
   var UNIT = 'kcal/m^2/yr', UNIT_T = 'kcal/m²/yr';
-  function big(x){ var s = String(M.fmt(x, 6)); if(/e/.test(s)) return s; var p = s.split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); return p.join('.'); }
+  // Commas, never "5.00000e+6" (tool review 2026-11): up to 10^15 a sig-6 value prints as plain digits.
+  function big(x){ var s = String(M.fmt(x, 6)); if(/e/.test(s)){ var v = M.sig(x, 6); if(Math.abs(v) >= 1 && Math.abs(v) < 1e15) s = String(v); else return s; } var p = s.split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); return p.join('.'); }
   function tenths(n){ var a = []; for(var i = 0; i < n; i++) a.push('0.1'); return a.join(' * '); }
   function tenthsT(n){ var a = []; for(var i = 0; i < n; i++) a.push('0.1'); return a.join(' × '); }
   function tens(n){ var a = []; for(var i = 0; i < n; i++) a.push('10'); return a.join(' * '); }
@@ -261,7 +262,7 @@
       ],
       solution: [
         'Each level holds only 10% of the level below, so each level below holds 10 times the level above.',
-        'Setup: ' + big(need) + ' ' + UNIT_T + ' × ' + tensT(n) + ' (or ' + big(need) + ' ÷ ' + M.fmt(Math.pow(0.1, n), 3) + ').',
+        'Setup: ' + big(need) + ' ' + UNIT_T + ' × ' + tensT(n) + ' (or ' + big(need) + ' ÷ ' + Math.pow(0.1, n).toFixed(n) + ').',
         '= ' + big(ans) + ' ' + UNIT_T + '.'
       ]
     };

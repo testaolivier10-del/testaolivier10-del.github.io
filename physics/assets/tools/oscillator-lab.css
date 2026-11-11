@@ -127,3 +127,16 @@
   .ls-root.ls-phone .ol-graphs .tseg.ol-gsel button{min-height:30px;height:30px;}
   .ls-root.ls-phone .ol-graph.is-on{flex:1 1 auto;min-width:0;}
 }
+/* Pass 3 (judge c): every size opens on the spring and ONE graph (x-t), with the x-t / v-t / a-t tabs
+   beside it; the energy bars join the picture once the student presses Play. */
+.ol-stage:not(.ol-e-on) .ol-bars{display:none;}
+@media (min-width:1000px){
+  .ol-stage{display:flex;flex-direction:column;gap:10px;}
+  .ol-top{flex:1 1 0;min-height:0;}
+  .ol-graphs{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px;}
+  .ls-root .ol-graphs .tseg.ol-gsel{display:flex;flex-direction:column;gap:2px;border-radius:14px;}
+  .ls-root .ol-graphs .tseg.ol-gsel button{min-height:36px;padding:0 14px;}
+  .ol-graphs .ol-graph{display:none;} .ol-graphs .ol-graph.is-on{display:block;}
+  .ol-graph .ol-g-tick{font-size:12px;} .ol-graph .ol-g-lbl{font-size:14px;} .ol-graph .ol-g-Tt{font-size:13px;}
+  .ol-graph .ol-g-ghost-t{font-size:13px;}
+}

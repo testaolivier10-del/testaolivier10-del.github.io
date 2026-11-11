@@ -208,6 +208,9 @@
       var z = size('.sl-zone', 21, 12.5);
       // the top label stays inside the picture
       all('.sl-zone').forEach(function(t, i){ if(sc.kind === 'plots' || i === 0) t.setAttribute('y', Math.max(sc.kind === 'plots' ? 30 : 27, z * 0.85).toFixed(1)); });
+      // pass 3: with the street names out in the gutter (a small picture), the area names move to the right
+      // edge, so "Hillside" no longer runs on from "Summit Rd"
+      if(sc.kind === 'houses') all('.sl-zone').forEach(function(t){ var on = gut > 0; t.setAttribute('x', on ? W - 10 : 14); t.setAttribute('text-anchor', on ? 'end' : 'start'); });
       size('.sl-vert', 15);
       size('.sl-room-t', 18, 12);
       size('.sl-hall-t, .sl-office-t', 17);
@@ -286,18 +289,18 @@
   /* --------------------------------------------------------- explore */
   function explore(host, data){
     var scenes = (data.explore && data.explore.scenes) || [];
-    var LS = null, nid = T.nid('sl'), sc = scenes[0], pop, L, method = 'srs', n = sc.n, values = false;
+    var LS = null, nid = T.nid('sl'), sc = scenes[0], pop, L, method = 'srs', n = sc.n, values = true;   // each unit's value shows as a color from the start: it is why a method is biased
     var rows = {}, cur = null, anim = null, touched = false, sel = -1, seed = 1000 + Math.floor(Math.random() * 9000), rng = M.rng(seed);
     function $(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); }
     function segBtn(m){ return '<button type="button" data-m="' + m + '" aria-pressed="false"' + (S.RANDOM[m] ? '' : ' aria-label="' + esc(S.SHORT[m]) + ' (not random)"') + '>' + esc(m === 'srs' ? 'Simple' : S.SHORT[m]) + '</button>'; }
     host.innerHTML = '<section class="bt-problem sl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Sampling lab</h2>' +
-      '<div class="sl-fig"><div class="sl-scenebox"></div><div class="sl-side"><div class="sl-strip" aria-hidden="true" hidden></div>' +
+      '<div class="sl-fig"><div class="sl-scenebox"></div><div class="sl-side"><div class="sl-vkey" aria-hidden="true"></div><div class="sl-strip" aria-hidden="true" hidden></div>' +
       '<p class="sl-legend" aria-hidden="true"><span class="sl-lg-mu">Population mean μ</span><span class="sl-lg-cur">This sample’s mean</span><span class="sl-lg-dot">Earlier samples</span></p><div class="sl-meansbox"></div></div></div>' +
       '<div class="sl-ctl"><div class="sl-seg" role="group" aria-label="Sampling method"><div class="ls-seg sl-seg-r">' + S.METHODS.filter(function(m){ return S.RANDOM[m]; }).map(segBtn).join('') + '</div>' +
         '<div class="sl-seg-b"><span class="sl-seg-k" aria-hidden="true">Not random</span><div class="ls-seg">' + S.METHODS.filter(function(m){ return !S.RANDOM[m]; }).map(segBtn).join('') + '</div></div></div>' +
       '<div class="sl-n"></div><div class="bt-buttons sl-btns"><button type="button" class="btn-press sl-draw ls-pri">Draw a sample</button><button type="button" class="bt-btn sl-draw100" aria-label="Draw 100 samples">Draw 100</button></div></div>' +
       '<div class="sl-say"></div>' +
-      T.moreHtml('<div class="sl-pick"></div><div class="bt-ctl sl-vals"><label class="sl-check"><input type="checkbox" class="sl-values"> Show each unit\'s value as a color</label></div><div class="bt-buttons"><button type="button" class="bt-btn sl-clear">Clear the dots</button></div>', 'population, colors, clear') +
+      T.moreHtml('<div class="sl-pick"></div><div class="bt-ctl sl-vals"><label class="sl-check"><input type="checkbox" class="sl-values" checked> Show each unit\'s value as a color</label></div><div class="bt-buttons"><button type="button" class="bt-btn sl-clear">Clear the dots</button></div>', 'population, colors, clear') +
       '<div class="sl-now"></div><div class="sl-table"></div><div class="sl-popinfo"></div><p class="sr-only sl-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.sl-live'));
     var cue = T.cue('Pick a method, then Draw a sample.');
@@ -335,8 +338,23 @@
         var g = e.target.closest('.sl-u'); if(!g) return;
         act(); sel = +g.getAttribute('data-i'); marks(); text();
       });
+      svg.classList.toggle('is-values', values);
+      // pass 3: house numbers sit in the gap after each house; lift them above every house so the next
+      // house does not cover them (the random integers in the strip name houses by these numbers)
+      if(sc.kind === 'houses'){ var top = document.createElementNS('http://www.w3.org/2000/svg', 'g'); top.setAttribute('class', 'sl-labs'); top.setAttribute('aria-hidden', 'true'); svg.querySelectorAll('.sl-u > .sl-lab').forEach(function(t){ top.appendChild(t); }); (svg.querySelector('.sl-u') ? svg.querySelector('.sl-u').parentNode : svg).appendChild(top); }
       bands(); marks();
       keepReadable(svg, sc);
+      vkey();
+    }
+    /* The color key for the values: five tones, low to high, with the range in the variable's units. */
+    function vkey(){
+      var el = $('.sl-vkey'); if(!el) return;
+      if(!values){ el.hidden = true; el.innerHTML = ''; return; }
+      var lo = Infinity, hi = -Infinity;
+      pop.units.forEach(function(u){ lo = Math.min(lo, u.value); hi = Math.max(hi, u.value); });
+      el.hidden = false;
+      el.innerHTML = '<span class="sl-vk-t">' + esc(cap(sc.variable)) + '</span><span class="sl-vk-n">' + fx(lo, sc.decimals) + '</span>' +
+        [0, 1, 2, 3, 4].map(function(k){ return '<i class="sl-vk-s sl-vk-' + k + '"></i>'; }).join('') + '<span class="sl-vk-n">' + fx(hi, sc.decimals) + ' ' + esc(sc.abbr) + '</span>';
     }
     function syncSeg(){
       [host, LS && LS.root].forEach(function(r){ if(!r) return; r.querySelectorAll('.sl-seg button').forEach(function(b){
@@ -376,9 +394,13 @@
     }
     function drawMeans(){
       var box = $('.sl-meansbox'); if(!box) return;
-      var r = box.getBoundingClientRect(), w = Math.round(r.width) || 600, h = Math.round(r.height) || 150;
       var list = S.METHODS.filter(function(m){ return rows[m]; }).map(function(m){ return { m: m, means: rows[m].means, last: rows[m].last }; });
-      var fig = $('.sl-fig'); if(fig){ var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
+      // pass 3: before the first sample the neighborhood is the whole picture (with its color key); the
+      // dotplot of sample means joins it when there is a mean to put on it
+      var fig = $('.sl-fig'); if(fig) fig.classList.toggle('is-empty', !list.length);
+      if(!list.length){ box.innerHTML = ''; if(LS){ LS.pills([], 'left', 'explore'); LS.pills([{ k: 'μ', html: fx(pop.mu), tone: 'ghost' }], 'right', 'explore'); } return; }
+      var r = box.getBoundingClientRect(), w = Math.round(r.width) || 600, h = Math.round(r.height) || 150;
+      if(fig){ var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
       r = box.getBoundingClientRect(); w = Math.round(r.width) || 600; h = Math.round(r.height) || 150;
       box.innerHTML = meansSvg(list, dom(), pop.mu, w, h, { cur: method, mu: fx(pop.mu), axis: 'Sample mean x̄ (' + sc.unitOf + ')', empty: 'Means land here', label: list.length ? 'Dotplot of sample means by method: ' + list.map(function(x){ return S.SHORT[x.m] + ' ' + x.means.length + ' samples, centered at ' + fx(S.mean(x.means)); }).join('; ') + '. Population mean ' + fx(pop.mu) + '.' : 'No samples yet. The population mean is ' + fx(pop.mu) + '.' });
       if(LS) LS.pills(cur ? [{ k: 'x̄', html: fx(cur.mean), tone: 'readout' }] : [], 'left', 'explore');

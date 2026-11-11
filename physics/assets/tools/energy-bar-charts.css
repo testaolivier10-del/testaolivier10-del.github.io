@@ -159,3 +159,7 @@
   .ls-phone .eb-build{padding-bottom:48px;}
 }
 @media (max-height:540px){ .ls-phone .eb-build{padding-right:48px;} }
+
+/* Pass 2: the system chips above already say what is in the system; the
+   sentence stays as the figure's caption for screen readers only. */
+.eb-sysname{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}

@@ -198,13 +198,19 @@
       var unit = isP ? '' : ' ' + (cur.wA.unit || '');
       /* --- panel 1: the population */
       g.push('<text class="sd-h sd-c-pop" x="' + L + '" y="' + (y1 - 6) + '">Population' + (cur.diff ? 's' : '') + '<tspan class="sd-hs"> ' + esc(popLine(A)) + '</tspan></text>');
+      // the 100 figures are a picture of the proportion, not the whole population: the Explanation's 10% condition
+      // needs a very large population, so the picture says so (review 2026-11-10)
+      // (on a phone it goes under the figures, which give up a line for it; a phone's two-group view has no room)
+      var pNote = base() === 'prop' ? (phone ? (cur.diff ? 0 : 1) : 2) : 0;
+      if(pNote === 2) g.push('<text class="sd-hs sd-ppl-note" x="' + (W - R) + '" y="' + (y1 - 6) + '" text-anchor="end">each figure = 1% of a very large population</text>');
       var rows = cur.diff ? [[A, cur.names[0]], [popB(), cur.names[1]]] : [[A, '']];
       var rh = popH / rows.length;
       rows.forEach(function(rw, ri){
         var pp = rw[0], ry = y1 + ri * rh, rb = ry + rh - (cur.diff ? 4 : 0);
         if(rw[1]) g.push('<text class="sd-tag" x="' + (W - R) + '" y="' + (ry + 13) + '" text-anchor="end">' + esc(rw[1]) + '</text>');
         if(pp.kind === 'prop'){
-          var cols = 20, rws = 5, s = Math.min(pw / cols, (rb - ry - 2) / rws), gx = L + (pw - cols * s) / 2, yes = pattern(Math.round(pp.p * 100));
+          var cols = 20, rws = 5, s = Math.min(pw / cols, (rb - ry - 2 - (pNote === 1 ? 16 : 0)) / rws), gx = L + (pw - cols * s) / 2, yes = pattern(Math.round(pp.p * 100));
+          if(pNote === 1) g.push('<text class="sd-hs sd-ppl-note" x="' + (L + pw / 2) + '" y="' + (ry + rws * s + 15).toFixed(1) + '" text-anchor="middle">each figure = 1% of a very large population</text>');
           for(var k = 0; k < 100; k++){ var c = k % cols, q = Math.floor(k / cols); g.push(ppl(gx + (c + 0.5) * s, ry + (q + 1) * s, s * 0.92, yes.indexOf(k) > -1 ? 'sd-ppl is-yes' : 'sd-ppl')); }
         } else {
           var mx = 0; pp.weights.forEach(function(w){ if(w > mx) mx = w; });
@@ -361,7 +367,8 @@
       else if(K < 20) head = 'This ' + (cur.diff ? 'difference' : 'sample ' + nm.what) + ' is ' + F(last ? last.stat : stats[stats.length - 1], d0) + '. Each new sample gives a different value: take more.';
       else {
         var mS = Dd().mean(stats), sS = Dd().sd(stats);
-        head = big(K) + ' values of ' + nm.sym + ': centered at ' + F(mS, d0) + ' (formula ' + F(th0.center, d0) + '), SD ' + F(sS, d0 + 1) + ' (formula ' + F(th0.sd, d0 + 1) + ').';
+        // pass 2: in the studio the plot already prints the center and SD beside the formula values
+        head = LS ? big(K) + ' values of ' + nm.sym + '.' : big(K) + ' values of ' + nm.sym + ': centered at ' + F(mS, d0) + ' (formula ' + F(th0.center, d0) + '), SD ' + F(sS, d0 + 1) + ' (formula ' + F(th0.sd, d0 + 1) + ').';
         sub = shapeWord(th0);
       }
       var why = whyHtml(th0, K);
@@ -459,9 +466,10 @@
     }
     var origReset = reset;
     reset = function(){ origReset(); drawMode(); };
-    /* The landing view: 100 sample means already stacked and the last
-       sample shown (audit: "starts with two empty panels"). */
-    function seedView(){ for(var i = 0; i < 100; i++){ last = sampleOnce(); stats.push(last.stat); } draw(); speak(); }
+    /* The landing view: one sample already drawn, so no panel is empty (audit:
+       "starts with two empty panels"), but the pile builds only when the student
+       takes more (pass 2, 2026-11-10: a finished pile of 100 gave the ending away). */
+    function seedView(){ for(var i = 0; i < 1; i++){ last = sampleOnce(); stats.push(last.stat); } draw(); speak(); }
     var firstStudio = true, origStudio = studio;
     studio = function(pane, s){ origStudio(pane, s); if(firstStudio){ firstStudio = false; seedView(); } };
     setRange(); syncChips(); drawMode(); draw();

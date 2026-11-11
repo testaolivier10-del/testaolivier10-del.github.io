@@ -184,6 +184,7 @@
         '<section class="calc-card" aria-live="off"></section>' +
       '</div>';
     if(ST) ST.add('dock', Q().querySelector('.calc-pickhost'));
+    if(!window.AnpCalcArt) loadArt(function(){});
     var want = (location.hash || '').replace(/^#/, '');
     var last = null; try{ last = localStorage.getItem(PREF); }catch(e){}
     var first = byId(want) ? want : byId(last) ? last : DATA.calculators[0].id;
@@ -280,11 +281,11 @@
       }).join('') + '</div>' : '';
     var K = window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit : null;
     body.innerHTML =
-      '<p class="kt-first calc-first">' + (c.picture ? 'Drag a slider or type a number, and watch the picture and the answer change.' : 'Type your numbers and the answer and every step update as you go.') + '</p>' +
+      '<p class="kt-first calc-first">' + (c.picture ? 'Drag a slider and watch the picture change.' : 'Type your numbers and the answer and every step update as you go.') + '</p>' +
       (c.picture ? '<figure class="calc-pic" aria-label="Live picture"></figure>' : '') +
       '<div class="calc-grid">' +
         '<form class="calc-inputs" novalidate onsubmit="return false">' + c.inputs.map(function(inp){
-          return '<div class="calc-field">' +
+          return '<div class="calc-field' + (c.picture ? ' calc-field-sl' : '') + '">' +
             '<label for="' + inputId(inp.key) + '"><span class="calc-label">' + esc(inp.label) + '</span> <span class="calc-sym">' + inp.sym + '</span></label>' +
             '<div class="calc-input-row"><input id="' + inputId(inp.key) + '" type="number" inputmode="decimal" data-key="' + inp.key + '" value="' + esc(values[inp.key]) + '" step="' + (inp.step || 'any') + '" min="' + inp.min + '" max="' + inp.max + '"' + (inp.hint ? ' aria-describedby="' + inputId(inp.key) + '-h"' : '') + '>' +
             (inp.unit ? '<span class="calc-unit">' + esc(inp.unit) + '</span>' : '') + '</div>' +
@@ -350,7 +351,7 @@
   function resultsHtml(c, env){
     return '<div class="calc-results">' + c.results.map(function(res){
       var band = bandOf(res, env);
-      return '<div class="calc-result">' +
+      return '<div class="calc-result' + (res.keep ? ' calc-keep' : '') + '">' +
         '<span class="calc-result-label">' + esc(res.label) + '</span>' +
         '<span class="calc-result-value">' + fmt(env[res.key], dpOf(c, res.key), res.signed ? '+' : '') + (res.unit ? ' <small>' + esc(res.unit) + '</small>' : '') + '</span>' +
         (band ? '<span class="calc-band tone-' + esc(band.tone || 'ok') + '">' + esc(band.label) + '</span>' : '') +
@@ -401,6 +402,13 @@
     else if(pic.kind === 'balance') { var b = balance(c, env, pic); svg = b.svg; cap = b.cap; }
     else if(pic.kind === 'pump') { var u = pump(c, env, pic); svg = u.svg; cap = u.cap; }
     else if(pic.kind === 'stack') { var k = stack(c, env, pic); svg = k.svg; cap = k.cap; }
+    else {
+      // the families in calc-art.js (tool review 2026-11), loaded on first use
+      if(!window.AnpCalcArt){ var mk = MASK; loadArt(function(){ if(current !== c) return; var was = MASK; MASK = mk; try{ drawPicture(c, env); } finally { MASK = was; } }); return; }
+      var art = null;
+      try{ art = window.AnpCalcArt.draw(pic.kind, c, env, pic, artHelpers()); }catch(e){ art = null; }
+      if(art){ svg = art.svg; cap = art.cap; }
+    }
     if(!svg) return;
     if(MASK){
       // the unknowns stand out, and the caption (which states results) waits for the answer
@@ -412,6 +420,21 @@
     svg.setAttribute('class', 'calc-svg');
     host.appendChild(svg);
     var p = document.createElement('p'); p.className = 'calc-pic-cap'; p.innerHTML = cap; host.appendChild(p);
+  }
+  var artWait = null;
+  function loadArt(cb){
+    if(artWait){ artWait.push(cb); return; }
+    artWait = [cb];
+    var sc = document.createElement('script');
+    sc.src = (window.ANP_BASE || '../') + 'assets/tools/calc-art.js';
+    sc.onload = sc.onerror = function(){ var w = artWait; artWait = null; if(window.AnpCalcArt) w.forEach(function(f){ f(); }); };
+    document.head.appendChild(sc);
+    var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = sc.src.replace(/\.js$/, '.css'); document.head.appendChild(ln);
+  }
+  function artHelpers(){
+    var MK = MASK;
+    return { S: S, grad: grad, clipOf: clipOf, defsOf: defsOf, rbcFill: rbcFill, esc: esc, fmt: fmt, dpOf: dpOf, evaluate: evaluate, phone: phone, reduced: reducedMotion,
+      val: val, fk: fk, hid: hid, anim: function(){ return picAnim; }, alive: function(id){ return id === picAnim; }, mask: MK };
   }
   /* Shared illustration pieces (visual polish 2026-10): gradients are written
      per drawing with unique ids; colors come from the --cp-* tokens in
@@ -502,7 +525,7 @@
     if(pic.pin) gauge(x0 + 34, pic.pin, 'in');
     if(pic.pout) gauge(x1 - 34, pic.pout, 'out');
     svg.appendChild(S('path', { d: 'M' + (x1 + 8) + ',' + cy + ' l20,0 m-8,-7 l8,7 l-8,7', 'class': 'cp-arrow' }));
-    svg.appendChild(S('text', { x: (x0 + x1) / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, 'Flow ' + val(c, env, pic.flow) + ' ' + pic.flowUnit));
+    svg.appendChild(S('text', { x: (x0 + x1) / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, (pic.baseFlow ? 'Flow after ' : 'Flow ') + val(c, env, pic.flow) + ' ' + pic.flowUnit));   // the card keeps "Flow before"
     var rtxt = pic.r ? 'radius ' + Math.round(rr * 100) + '% of before' : pic.rRes ? 'resistance ' + val(c, env, pic.rRes) : '';
     if(rtxt) svg.appendChild(S('text', { x: (x0 + x1) / 2, y: Math.min(cy + Math.max(rad, R0) + wt + 18, H - 26), 'text-anchor': 'middle', 'class': 'cp-t' }, rtxt));
     var cap = (pic.pin && pic.pout ? 'Pressure falls from ' + val(c, env, pic.pin) + ' to ' + val(c, env, pic.pout) + ' mm Hg along the vessel. ' : '') +
@@ -976,6 +999,42 @@
     var pic = body.querySelector('.calc-pic'), out = body.querySelector('.calc-out');
     if(pic){ pic.classList.add('ls-fit'); own('stage', pic); }
     own('stage', out);
+    /* Pass 2 (2026-11-10): the stage keeps each result, its unit and its band; the reference line under
+       it ("About 37 to 47% in women ...") is read under Explanation, kept current. */
+    var refs = document.createElement('div');
+    refs.className = 'ls-sec calc-ls-refs';
+    var syncRefs = function(){
+      var ns = [].slice.call(out.querySelectorAll('.calc-result')).filter(function(r){ return r.querySelector('.calc-normal'); });
+      refs.hidden = !ns.length;
+      refs.innerHTML = '<h3 class="ls-h">Usual values</h3>' + ns.map(function(r){ var lb = r.querySelector('.calc-result-label'); return '<p><b>' + (lb ? lb.innerHTML : '') + ':</b> ' + r.querySelector('.calc-normal').innerHTML.replace(/^<b>Reference:<\/b>\s*/, '') + '</p>'; }).join('');
+    };
+    syncRefs();
+    if(window.MutationObserver) new MutationObserver(syncRefs).observe(out, { childList: true });
+    out.classList.add('calc-out-norefs');
+    /* Pass 3: a result the picture already prints with its name or unit ("Flow 40.0 mL/min") is not said again
+       under it; a result with a band ("within the usual range") keeps its card, which carries the band. */
+    if(pic){
+      var syncOnPic = function(){
+        var texts = [].map.call(pic.querySelectorAll('svg text'), function(t){ return t.textContent.toLowerCase(); });
+        var rows = [].slice.call(out.querySelectorAll('.calc-result')), shown = 0;
+        rows.forEach(function(r){
+          var vEl = r.querySelector('.calc-result-value'), u = vEl && vEl.querySelector('small'), lb = r.querySelector('.calc-result-label');
+          var unit = u ? u.textContent.trim().toLowerCase() : '', val = vEl ? vEl.textContent.trim().toLowerCase().replace(unit, '').trim() : '';
+          var name = lb ? lb.textContent.trim().toLowerCase() : '';
+          var re = val ? new RegExp('(^|[^0-9.,])' + val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![0-9]|[.,][0-9])') : null;
+          /* Accuracy check 2 (2026-11-11): the unit counts only as a whole word ("L" must not match the l in
+             "intracellular"), and a result marked "keep" (a conditional chance the picture does not draw as
+             such, like the Punnett carrier share) always keeps its card. */
+          var ure = unit ? new RegExp('(^|[^a-z\u00b5])' + unit.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![a-z])') : null;
+          var said = !r.querySelector('.calc-band') && !r.classList.contains('calc-keep') && re && texts.some(function(t){ return re.test(t) && ((ure && ure.test(t)) || (name && t.indexOf(name) > -1)); });
+          r.hidden = !!said; if(!said) shown++;
+        });
+        var box = out.querySelector('.calc-results'); if(box) box.hidden = rows.length > 0 && !shown;
+      };
+      syncOnPic();
+      if(window.MutationObserver){ new MutationObserver(syncOnPic).observe(pic, { childList: true }); new MutationObserver(syncOnPic).observe(out, { childList: true }); }
+    }
+    own('why', refs);
     own('dock', body.querySelector('.calc-inputs'));
     keepPickerLast();
     var more = body.querySelector('.calc-more'), work = body.querySelector('.calc-workd');

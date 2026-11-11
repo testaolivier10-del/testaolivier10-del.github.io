@@ -7,6 +7,8 @@
    the wound or a mask on the face; a step left out, or done out of order,
    stays visible on the patient at the end (the wound still bleeding, bare
    hands in the blood, vomit in the airway that was ventilated through).
+   Since 2026-11 every station has its patient (the eight later ones are built
+   by station(), below).
 
    THE HONESTY RULES ARE station-run.js's (read its header): no points, no
    pass or fail, and the program's own sheet is the authority. Anything that
@@ -239,7 +241,7 @@
 
   var BLEEDING = {
     key:'bleeding', match:/bleeding/i,
-    intro:'Adult, lying on their back, a deep laceration on the front of the right thigh, above the knee, bleeding steadily. Tick each action as you say it; it happens on the patient.',
+    intro:'Adult, lying on their back, a deep laceration on the front of the right thigh, above the knee, bleeding steadily.',
     full:[-10, -10, 500, 1220],
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full',
@@ -273,7 +275,8 @@
       var s = P.svg, u = P.uid, w = L.wound;
       // under the figure: the pool on the floor beside the thigh
       // the pool spreads from under the outer thigh onto the floor
-      var pool = el('g', { class:'sp-pool', transform:'translate(132 836)' }, P.under);
+      // a flat puddle on the floor under the outer thigh (review 2026-11: a round blob beside the leg read as the wound)
+      var pool = el('g', { class:'sp-pool', transform:'translate(150 872) scale(1.45 0.62)', opacity:0.82 }, P.under);
       P.poolG = el('g', {}, pool);
       el('path', { d:'M-62 0 C-66 -34 -26 -60 10 -52 C36 -46 52 -20 48 10 C44 40 4 60 -28 52 C-50 46 -60 24 -62 0 Z', fill:'url(#' + u + 'Pool)', filter:'url(#' + u + 'Rag)', transform:'scale(1 1.25)' }, P.poolG);
       el('ellipse', { cx:-16, cy:-18, rx:16, ry:6, fill:'#fff', opacity:0.22, transform:'rotate(-18 -16 -18)' }, P.poolG);
@@ -441,7 +444,7 @@
 
   var BVM = {
     key:'bvm', match:/bvm|ventilation/i,
-    intro:'Adult, lying on their back, unresponsive. You are kneeling at the head. Tick each action as you say it; it happens on the patient.',
+    intro:'Adult, lying on their back, unresponsive. You are kneeling at the head.',
     full:[60, -250, 360, 760],
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'face',
@@ -674,7 +677,575 @@
     }
   };
 
-  var DEFS = [BLEEDING, BVM];
+  /* ---- The other eight stations (review 2026-11) ------------------------------
+     Before, only bleeding control and BVM had a patient; the other eight were a
+     stopwatch and a list. Each now has its patient, built from one pattern:
+     the sheet's actions in its order (paraphrased, never its points), a layer
+     on the body for each action, and at the end what was missed or done out
+     of order, marked where it shows. Critical actions left out are red;
+     the rest amber. Coordinates are adult-front pixels (see L above; the
+     patient's right is the viewer's left): right arm shoulder about (110,230),
+     elbow (88,460), wrist (56,620); right knee (183,874), ankle (178,1120).
+
+     station(spec) fills in update / chips / misses from:
+       steps[i].at      where a miss for that step is marked
+       steps[i].chip    the chip shown once it is ticked
+       steps[i].miss    the words for a miss (default from the step)
+       spec.order       [[a, b, text, sev]]: a must come before b
+       spec.draw(P)     builds the layers: P.lay[stepId] is shown once ticked
+       spec.paint(P,st) anything that depends on more than one step */
+  function badge(parent, x, y, text, kind){
+    var g = el('g', { class:'sp-badge sp-badge--' + (kind || 'ok'), transform:'translate(' + x + ' ' + y + ')' }, parent);
+    var w = 12 + text.length * 6.9;
+    el('rect', { x:-w / 2, y:-10, width:w, height:20, rx:10 }, g);
+    el('text', { x:0, y:4, 'text-anchor':'middle' }, g).textContent = text;
+    return g;
+  }
+  function band(parent, x, y, w, h, cls){ return el('rect', { x:x - w / 2, y:y - h / 2, width:w, height:h, rx:Math.min(w, h) * 0.3, class:cls || 'sp-strapx' }, parent); }
+  function pulseAt(parent, x, y){
+    var g = el('g', {}, parent);
+    el('circle', { cx:x, cy:y, r:8, class:'sp-pulse' }, g);
+    el('circle', { cx:x, cy:y, r:8, class:'sp-pulse sp-pulse2' }, g);
+    el('circle', { cx:x, cy:y, r:4, fill:'#0f5c50' }, g);
+    return g;
+  }
+  // a check of motor, sensation and circulation at a hand or foot: the pulse and a small tag
+  function pms(parent, x, y, label, side){
+    var g = el('g', {}, parent);
+    pulseAt(g, x, y);
+    badge(g, x + (side || 1) * 30, y + 30, label, 'ok');
+    return g;
+  }
+  function bruise(parent, uid, x, y, rx, ry){
+    el('ellipse', { cx:x, cy:y, rx:rx, ry:ry, fill:'#6d4a7a', opacity:0.42, filter:'url(#' + uid + 'Soft)' }, parent);
+    el('ellipse', { cx:x, cy:y, rx:rx * 0.55, ry:ry * 0.55, fill:'#4f3560', opacity:0.35, filter:'url(#' + uid + 'Soft)' }, parent);
+  }
+  function station(spec){
+    spec.build = function(P){
+      P.lay = {};
+      spec.steps.forEach(function(s){ P.lay[s.id] = el('g', { class:'sp-item' }, P.over); });
+      spec.draw(P);
+    };
+    spec.update = function(P, st){
+      var d = st.done, last = null, best = -1;
+      for(var k in d) if(d[k] > best){ best = d[k]; last = k; }
+      // a brief action (a tap, a check, a tag) shows while it is the latest tick
+      spec.steps.forEach(function(s){ P.show(P.lay[s.id], has(d, s.id) && (!s.brief || (last === s.id && !P.reviewing))); });
+      if(spec.paint) spec.paint(P, st);
+    };
+    spec.chips = function(st){
+      var d = st.done, out = [];
+      spec.steps.forEach(function(s){ if(s.chip && has(d, s.id)) out.push({ t:s.chip, k:s.go ? 'go' : 'ok' }); });
+      return out;
+    };
+    spec.misses = function(st){
+      var d = st.done, m = [], first = spec.steps.filter(function(s){ return s.at; })[0];
+      var bsiAt = (spec.steps.filter(function(s){ return s.id === 'bsi'; })[0] || {}).at || (first && first.at) || [240, 300];
+      if(spec.steps.some(function(s){ return s.id === 'bsi'; })){
+        // PPE is a critical criterion on some sheets only (not E211, E212, E216, E217): a scored step on the rest
+        var bsiCrit = spec.steps.filter(function(s){ return s.id === 'bsi'; })[0].critical;
+        if(!has(d, 'bsi')) m.push({ key:'bsi', x:bsiAt[0], y:bsiAt[1], sev:bsiCrit ? 'bad' : 'warn', text:'No gloves: BSI / PPE was never taken or voiced' + (bsiCrit ? ' (a critical criterion).' : ' (a scored step on this sheet).') });
+        else if(touchedBare(spec, d)) m.push({ key:'bsi', x:bsiAt[0], y:bsiAt[1], sev:bsiCrit ? 'bad' : 'warn', text:'BSI came after you had touched the patient: the first contact was bare-handed.' });
+      }
+      spec.steps.forEach(function(s){
+        if(s.id === 'bsi' || has(d, s.id) || !s.at) return;
+        m.push({ key:s.id, x:s.at[0], y:s.at[1], sev:s.critical ? 'bad' : 'warn', text:s.miss || ('Never done: ' + s.text.charAt(0).toLowerCase() + s.text.slice(1) + (s.critical ? ' (a critical criterion).' : '.')) });
+      });
+      (spec.order || []).forEach(function(o){
+        if(before(d, o[1], o[0])){
+          var s = spec.steps.filter(function(x){ return x.id === o[1]; })[0] || {};
+          var at = s.at || bsiAt;
+          m.push({ key:'order-' + o[0] + '-' + o[1], x:at[0] + 26, y:at[1] - 26, sev:o[3] || 'warn', text:o[2] });
+        }
+      });
+      return m;
+    };
+    return spec;
+  }
+  var COMMON_NOTE = 'Wording and order vary between program sheets, so practice with the one you will be tested on.';
+
+  /* ---- long bone immobilization (E217): a closed fracture of the right forearm */
+  var LONGBONE = station({
+    key:'longbone', match:/long bone/i,
+    intro:'Adult, lying on their back: a closed, deformed fracture of the middle of the right forearm.',
+    full:[-10, 80, 500, 820],
+    focus:{ full:[-10, 80, 500, 820], arm:[-20, 380, 240, 330], hand:[-20, 520, 200, 220] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[160, 300], did:'Gloves on, eye protection verbalized.' },
+      { id:'stab', touch:true, text:'Direct manual stabilization of the injury', critical:true, focus:'arm', at:[74, 540], chip:'Stabilized',
+        did:'Your partner holds the forearm above and below the break, still.', miss:'The arm was never stabilized: the break moves with every step (a critical criterion).' },
+      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in the hand', critical:true, focus:'hand', at:[50, 640], chip:'Distal check: present',
+        did:'Radial pulse present, fingers move, feels your touch.', cue:'Motor, sensory and circulatory function are present and normal.' },
+      { id:'measure', brief:true, text:'Measure the splint against the uninjured arm', critical:false, focus:'full', at:[420, 520], did:'Splint measured on the good arm, not on the broken one.' },
+      { id:'apply', touch:true, text:'Apply the padded splint', critical:false, focus:'arm', at:[100, 520], chip:'Splint on', did:'Padded board along the forearm, from above the elbow past the fingers.' },
+      { id:'above', touch:true, text:'Immobilize the joint above (the elbow)', critical:true, focus:'arm', at:[92, 455], did:'Cravat at the elbow: the joint above cannot bend.' },
+      { id:'below', touch:true, text:'Immobilize the joint below (the wrist)', critical:true, focus:'arm', at:[58, 610], did:'Cravat at the wrist: the joint below cannot bend.' },
+      { id:'secure', touch:true, text:'Secure the entire injured arm', critical:false, focus:'arm', at:[76, 540], did:'Arm bound to the splint along its length; a sling and swathe if your program uses one.' },
+      { id:'func', touch:true, text:'Place the hand in a position of function', critical:true, focus:'hand', at:[46, 660], chip:'Hand in function', did:'A roll of gauze in the palm: fingers gently curled.' },
+      { id:'pms2', touch:true, text:'Recheck motor, sensation and circulation in the hand', critical:true, focus:'hand', at:[64, 690], chip:'Rechecked after', did:'Pulse, movement and sensation present after splinting.', go:true }
+    ],
+    order:[['stab', 'apply', 'Splint applied before the arm was stabilized: the break was moved to do it.', 'bad'],
+           ['pms1', 'apply', 'Distal check after the splint was on: the first check has to come before splinting.', 'bad'],
+           ['apply', 'pms2', 'The recheck came before the splint was on: it has to follow splinting.', 'bad']],
+    notes:[
+      '<b>Which bone.</b> The examiner chooses the limb; this run uses the forearm (radius and ulna). On a lower leg the joints are the knee and ankle and the foot goes in a position of function.',
+      '<b>Sling and swathe.</b> Some programs expect a sling and swathe after an arm splint and score it under &ldquo;secures the entire injured extremity&rdquo;; others do not.',
+      '<b>Distal check.</b> The sheet checks motor, sensory and circulatory function before and after; many programs say &ldquo;PMS&rdquo; or &ldquo;CMS&rdquo; for the same three.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid;
+      // the deformity: swelling and a bruise at mid forearm, the forearm visibly angled
+      var inj = el('g', {}, P.over);
+      el('ellipse', { cx:74, cy:540, rx:20, ry:28, fill:'#fff2e6', opacity:0.5, filter:'url(#' + u + 'Soft)' }, inj);
+      bruise(inj, u, 72, 540, 14, 20);
+      el('path', { d:'M64 520 L80 540 L66 560', stroke:'#7a4a3a', 'stroke-width':2, fill:'none', opacity:0.55, 'stroke-linecap':'round' }, inj);
+      hand(P.lay.stab, { uid:u, x:120, y:500, rot:-120, s:0.62 });
+      hand(P.lay.stab, { uid:u, x:24, y:600, rot:60, s:0.62 });
+      pms(P.lay.pms1, 50, 650, 'Pulse, motor, sense', 2.6);
+      // the splint seen with the arm in a tape measure line
+      el('path', { d:'M382 430 L436 690', stroke:'#c99b2d', 'stroke-width':5, 'stroke-dasharray':'2 7', 'stroke-linecap':'round' }, P.lay.measure);
+      badge(P.lay.measure, 400, 410, 'Measured on the good arm', 'ok');
+      el('path', { d:'M98 430 L40 690', stroke:'#a08b4e', 'stroke-width':26, 'stroke-linecap':'round', opacity:0.95 }, P.lay.apply);
+      el('path', { d:'M98 430 L40 690', stroke:'#e8d9a8', 'stroke-width':22, 'stroke-linecap':'round' }, P.lay.apply);
+      el('path', { d:'M98 430 L40 690', stroke:'#fff', 'stroke-width':6, 'stroke-linecap':'round', opacity:0.35 }, P.lay.apply);
+      band(P.lay.above, 90, 455, 64, 14, 'sp-cravat');
+      band(P.lay.below, 58, 612, 60, 14, 'sp-cravat');
+      band(P.lay.secure, 80, 515, 62, 12, 'sp-cravat'); band(P.lay.secure, 70, 565, 62, 12, 'sp-cravat');
+      el('ellipse', { cx:46, cy:658, rx:11, ry:9, fill:'url(#' + u + 'Gauze)', stroke:'#cfcfc6' }, P.lay.func);
+      pms(P.lay.pms2, 50, 650, 'Rechecked', 1.8);
+    },
+    paint:function(P, st){
+      var d = st.done;
+      P.show(P.lay.pms1, has(d, 'pms1') && !has(d, 'pms2'));
+      P.show(P.lay.stab, has(d, 'stab') && !has(d, 'secure'));
+    }
+  });
+
+  /* ---- joint immobilization (E216): an injured right knee ---------------------- */
+  var JOINT = station({
+    key:'joint', match:/^joint|joint immob/i,
+    intro:'Adult, lying on their back: an injured right knee, swollen and painful, the leg lying straight as found.',
+    full:[20, 560, 440, 660],
+    focus:{ full:[20, 560, 440, 660], knee:[80, 760, 220, 240], foot:[90, 1040, 200, 170], leg:[60, 620, 260, 560] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[300, 700], did:'Gloves on, eye protection verbalized.' },
+      { id:'stab', touch:true, text:'Manually stabilize the knee in the position found', critical:true, focus:'knee', at:[183, 874], chip:'Knee supported',
+        did:'Hands above and below the knee, holding it as found: no weight on the joint.', miss:'The knee was never supported: it bears the weight of the leg below it (a critical criterion).' },
+      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in the foot', critical:true, focus:'foot', at:[176, 1150], chip:'Distal check: present',
+        did:'Pedal pulse present, toes move, feels your touch.', cue:'Motor, sensory and circulatory function are present and normal.' },
+      { id:'select', brief:true, text:'Select the splint (two padded boards)', critical:false, focus:'leg', at:[320, 870], did:'Two padded boards, long enough to reach from the hip to beyond the foot.' },
+      { id:'site', touch:true, text:'Immobilize the knee itself', critical:false, focus:'knee', at:[200, 874], chip:'Splinted', did:'Boards on both sides of the leg, padding in the hollows, a cravat beside the knee (not over it).' },
+      { id:'above', touch:true, text:'Immobilize the bone above (the thigh)', critical:true, focus:'leg', at:[183, 760], did:'Cravats around the thigh hold the femur to the boards.' },
+      { id:'below', touch:true, text:'Immobilize the bone below (the lower leg)', critical:true, focus:'leg', at:[180, 1010], did:'Cravats around the shin hold the tibia to the boards.' },
+      { id:'secure', touch:true, text:'Secure the entire injured leg', critical:false, focus:'leg', at:[181, 1110], did:'A last cravat at the ankle: the whole leg is held to the boards.' },
+      { id:'pms2', touch:true, text:'Recheck motor, sensation and circulation in the foot', critical:true, focus:'foot', at:[190, 1170], chip:'Rechecked after', did:'Pulse, movement and sensation present after splinting.', go:true }
+    ],
+    order:[['stab', 'site', 'Splinted before the knee was supported: the joint took the leg’s weight.', 'bad'],
+           ['pms1', 'site', 'Distal check after the splint was on: the first check has to come before splinting.', 'bad'],
+           ['site', 'pms2', 'The recheck came before the splint was on: it has to follow splinting.', 'bad']],
+    notes:[
+      '<b>Which joint.</b> The examiner chooses; the shoulder (sling and swathe) is the other common one. For a joint the rule is the bones above and below, as the long bone rule is the joints above and below.',
+      '<b>Position found.</b> A joint is splinted in the position found unless there is no distal pulse; what to do then (one attempt to realign, or not) differs between programs and medical direction.',
+      '<b>Distal check.</b> The sheet checks motor, sensory and circulatory function before and after; programs call it PMS or CMS.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid;
+      var inj = el('g', {}, P.over);
+      el('ellipse', { cx:183, cy:874, rx:30, ry:34, fill:'#fff2e6', opacity:0.55, filter:'url(#' + u + 'Soft)' }, inj);
+      bruise(inj, u, 186, 880, 16, 14);
+      hand(P.lay.stab, { uid:u, x:150, y:820, rot:70, s:0.62 });
+      hand(P.lay.stab, { uid:u, x:216, y:940, rot:-110, s:0.62 });
+      pms(P.lay.pms1, 176, 1150, 'Pulse, motor, sense', 1);
+      badge(P.lay.select, 330, 860, 'Two padded boards', 'ok');
+      [[128, 1], [234, -1]].forEach(function(b){
+        el('rect', { x:b[0] - 9, y:640, width:18, height:560, rx:6, fill:'#e8d9a8', stroke:'#a08b4e', 'stroke-width':1.4 }, P.lay.site);
+      });
+      band(P.lay.site, 181, 838, 120, 12, 'sp-cravat');
+      band(P.lay.above, 181, 720, 128, 13, 'sp-cravat'); band(P.lay.above, 181, 780, 124, 13, 'sp-cravat');
+      band(P.lay.below, 181, 960, 120, 13, 'sp-cravat'); band(P.lay.below, 181, 1060, 116, 13, 'sp-cravat');
+      band(P.lay.secure, 181, 1110, 112, 12, 'sp-cravat');
+      pms(P.lay.pms2, 176, 1150, 'Rechecked', 1);
+    },
+    paint:function(P, st){
+      var d = st.done;
+      P.show(P.lay.pms1, has(d, 'pms1') && !has(d, 'pms2'));
+      P.show(P.lay.stab, has(d, 'stab') && !has(d, 'above'));
+    }
+  });
+
+  /* ---- spinal immobilization, supine (E212): the long board from above --------- */
+  var SUPINE = station({
+    key:'supine', match:/supine/i,
+    intro:'Adult, lying on their back with a suspected spinal injury. You are the one directing; your partner is at the head.',
+    full:[-10, -40, 500, 1260],
+    focus:{ full:[-10, -40, 500, 1260], head:[110, -30, 260, 300], limbs:[-10, 500, 500, 720], torso:[40, 180, 400, 600], legs:[60, 600, 360, 600] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
+      { id:'manual', touch:true, text:'Direct your partner to hold the head in a neutral, in-line position', critical:true, focus:'head', at:[240, 60], chip:'Manual in-line',
+        did:'Hands on both sides of the head from the top, neutral and in line, held until the head is secured.', miss:'The head was never held in line by hand (a critical criterion).' },
+      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in all four limbs', critical:false, focus:'limbs', at:[60, 660], chip:'4 limbs checked', did:'Pulse, movement and sensation in both hands and both feet.' },
+      { id:'collar', touch:true, text:'Size and apply a cervical collar', critical:true, focus:'head', at:[240, 180], chip:'Collar on', did:'Collar sized and applied; your partner keeps holding the head.' },
+      { id:'board', text:'Position the long board beside the patient', critical:false, focus:'full', at:[420, 600], did:'Board alongside, straps ready.' },
+      { id:'roll', touch:true, text:'Log-roll onto the board on the head person’s count', critical:true, focus:'full', at:[240, 520], chip:'On the board',
+        did:'Rolled as one unit and back onto the board, on the count of the person at the head.' },
+      { id:'pad', touch:true, text:'Pad the voids (small of the back, behind the knees)', critical:false, focus:'legs', at:[240, 880], did:'Padding where the body does not touch the board.' },
+      { id:'torso', touch:true, text:'Secure the torso to the board', critical:true, focus:'torso', at:[300, 330], chip:'Torso strapped', did:'Straps across the chest and the pelvis, snug.' },
+      { id:'headpad', touch:true, text:'Pad behind the head as needed', critical:false, focus:'head', at:[300, 60], did:'Padding behind the head keeps it neutral, not tipped back.' },
+      { id:'head', touch:true, text:'Secure the head to the board', critical:true, focus:'head', at:[240, 40], chip:'Head secured', did:'Head blocks on both sides, tape across the forehead and the collar. Your partner can now let go.' },
+      { id:'legs', touch:true, text:'Secure the legs', critical:false, focus:'legs', at:[240, 960], did:'Straps above and below the knees.' },
+      { id:'arms', touch:true, text:'Secure the arms', critical:false, focus:'torso', at:[80, 600], did:'Arms secured at the sides.' },
+      { id:'pms2', touch:true, text:'Recheck motor, sensation and circulation in all four limbs', critical:true, focus:'limbs', at:[420, 660], chip:'Rechecked after', did:'Pulse, movement and sensation present in all four limbs.', go:true }
+    ],
+    order:[['manual', 'collar', 'Collar before the head was held in line: the neck was moved to put it on.', 'bad'],
+           ['collar', 'roll', 'Rolled before the collar was on.', 'bad'],
+           ['torso', 'head', 'Head secured before the torso: the body can still shift and lever the neck (a critical criterion).', 'bad'],
+           ['pms1', 'collar', 'Distal check after the collar: the first check comes before you immobilize.', 'warn']],
+    notes:[
+      '<b>Board or not.</b> Many systems now use spinal motion restriction (a collar and a stretcher, or a vacuum mattress) rather than a long board for most patients; the skills station still tests the board.',
+      '<b>Torso before head.</b> On every sheet: securing the head first leaves the body free to shift and lever the neck.',
+      '<b>Who directs.</b> The person holding the head calls the roll. Some programs have you voice the roll and positioning rather than act it out.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid;
+      // the board under the patient
+      var bd = el('g', { class:'sp-item' }, P.under); P.lay.boardUnder = bd;
+      el('rect', { x:120, y:-20, width:240, height:1240, rx:60, fill:'#e9b64a', stroke:'#a8781e', 'stroke-width':3 }, bd);
+      for(var i = 0; i < 7; i++) el('rect', { x:132, y:60 + i * 170, width:18, height:44, rx:8, fill:'#a8781e', opacity:0.55 }, bd), el('rect', { x:330, y:60 + i * 170, width:18, height:44, rx:8, fill:'#a8781e', opacity:0.55 }, bd);
+      // the board waiting beside the patient
+      el('rect', { x:400, y:120, width:70, height:1000, rx:28, fill:'#e9b64a', stroke:'#a8781e', 'stroke-width':2.5, opacity:0.9 }, P.lay.board);
+      // hands holding the head from the top
+      hand(P.lay.manual, { uid:u, x:196, y:40, rot:200, s:0.62 });
+      hand(P.lay.manual, { uid:u, x:284, y:40, rot:160, s:0.62, flip:true });
+      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms1, p[0], p[1]); });
+      badge(P.lay.pms1, 240, 1110, 'All four: present', 'ok');
+      el('path', { d:'M206 146 Q240 160 274 146 L282 204 Q240 218 198 204 Z', fill:'#e8c77a', stroke:'#9a7a2e', 'stroke-width':1.6 }, P.lay.collar);
+      el('rect', { x:231, y:168, width:18, height:18, rx:4, fill:'#5b4a2a', opacity:0.55 }, P.lay.collar);
+      el('ellipse', { cx:240, cy:560, rx:40, ry:16, fill:'#d5e6ee', opacity:0.85 }, P.lay.pad);
+      el('ellipse', { cx:182, cy:885, rx:30, ry:12, fill:'#d5e6ee', opacity:0.85 }, P.lay.pad); el('ellipse', { cx:298, cy:885, rx:30, ry:12, fill:'#d5e6ee', opacity:0.85 }, P.lay.pad);
+      band(P.lay.torso, 240, 300, 300, 18, 'sp-strapx'); band(P.lay.torso, 240, 580, 290, 18, 'sp-strapx');
+      el('path', { d:'M110 250 L370 420 M370 250 L110 420', stroke:'#2f4c6d', 'stroke-width':12, opacity:0.85, 'stroke-linecap':'round' }, P.lay.torso);
+      el('ellipse', { cx:240, cy:60, rx:52, ry:56, fill:'#d5e6ee', opacity:0.95 }, P.lay.headpad); P.under.appendChild(P.lay.headpad);
+      el('rect', { x:168, y:40, width:28, height:96, rx:8, fill:'#e05b4b', stroke:'#9b2f24', 'stroke-width':1.4 }, P.lay.head);
+      el('rect', { x:284, y:40, width:28, height:96, rx:8, fill:'#e05b4b', stroke:'#9b2f24', 'stroke-width':1.4 }, P.lay.head);
+      band(P.lay.head, 240, 56, 170, 12, 'sp-tape'); band(P.lay.head, 240, 170, 170, 12, 'sp-tape');
+      band(P.lay.legs, 240, 800, 210, 16, 'sp-strapx'); band(P.lay.legs, 240, 980, 190, 16, 'sp-strapx');
+      band(P.lay.arms, 240, 640, 420, 14, 'sp-strapx');
+      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms2, p[0], p[1]); });
+      badge(P.lay.pms2, 240, 1110, 'Rechecked: present', 'ok');
+    },
+    paint:function(P, st){
+      P.show(P.lay.boardUnder, has(st.done, 'roll'));
+      P.show(P.lay.board, has(st.done, 'board') && !has(st.done, 'roll'));
+      P.show(P.lay.pms1, has(st.done, 'pms1') && !has(st.done, 'pms2'));
+    }
+  });
+
+  /* ---- spinal immobilization, seated (E211): a vest-type device (KED) ---------- */
+  var SEATED = station({
+    key:'seated', match:/seated/i,
+    intro:'Adult, sitting in a car seat after a crash, suspected spinal injury; seen from the front. Your partner holds the head from behind.',
+    full:[-10, -40, 500, 900],
+    focus:{ full:[-10, -40, 500, 900], head:[110, -30, 260, 300], torso:[60, 160, 360, 520], limbs:[-10, 500, 500, 720] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
+      { id:'manual', touch:true, text:'Direct your partner to hold the head neutral and in line', critical:true, focus:'head', at:[240, 60], chip:'Manual in-line',
+        did:'Your partner, behind the patient, holds the head neutral and in line until it is secured.', miss:'The head was never held in line by hand (a critical criterion).' },
+      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in all four limbs', critical:false, focus:'limbs', at:[60, 660], chip:'4 limbs checked', did:'Pulse, movement and sensation in both hands and both feet.' },
+      { id:'collar', touch:true, text:'Size and apply a cervical collar', critical:true, focus:'head', at:[240, 180], chip:'Collar on', did:'Collar sized and applied; the head is still held.' },
+      { id:'device', touch:true, text:'Position the device behind the patient', critical:false, focus:'torso', at:[400, 400], did:'Vest slid down behind the back, centered, its top level with the head.' },
+      { id:'torso', touch:true, text:'Secure the device to the torso (many programs: middle, bottom, then top strap)', critical:true, focus:'torso', at:[300, 380], chip:'Torso strapped', did:'Middle, bottom and top chest straps fastened; the top one left a little loose until the end.' },
+      { id:'legs', touch:true, text:'Fasten the leg (groin) straps', critical:false, focus:'torso', at:[200, 640], did:'Both leg straps around the thighs and snug.' },
+      { id:'check', brief:true, text:'Check the torso fixation and adjust', critical:false, focus:'torso', at:[240, 460], did:'The device does not shift up, down or sideways; straps tightened.' },
+      { id:'headpad', touch:true, text:'Pad behind the head as needed', critical:false, focus:'head', at:[300, 60], did:'Padding keeps the head neutral against the device.' },
+      { id:'head', touch:true, text:'Secure the head to the device', critical:true, focus:'head', at:[240, 40], chip:'Head secured', did:'Head flaps and straps across the forehead and the collar.' },
+      { id:'move', text:'Verbalize moving the patient onto a long board', critical:false, focus:'full', at:[420, 800], chip:'Ready to move', did:'Pivot and lower onto the long board as one unit, then loosen the leg straps.', go:true },
+      { id:'pms2', touch:true, text:'Recheck motor, sensation and circulation in all four limbs', critical:true, focus:'limbs', at:[420, 660], chip:'Rechecked after', did:'Pulse, movement and sensation present in all four limbs.' }
+    ],
+    order:[['manual', 'collar', 'Collar before the head was held in line.', 'bad'],
+           ['torso', 'head', 'Head secured before the torso: the device can still move on the body and lever the neck (a critical criterion).', 'bad'],
+           ['device', 'torso', 'Torso straps before the device was behind the patient.', 'warn']],
+    notes:[
+      '<b>Strap order.</b> Many programs teach middle, bottom, then top (&ldquo;My Baby Looks Too Hot&rdquo;: middle, bottom, legs, top, head); others differ. The rule on every sheet: torso before head.',
+      '<b>Rapid extrication.</b> An unstable patient or an unsafe scene calls for rapid extrication instead of a vest device; this station tests the device.',
+      '<b>Moving.</b> The sheet has you verbalize moving to the long board; how far that is acted out depends on the program.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid;
+      // the vest behind the patient: its edges show beside the torso and above the shoulders
+      var v = P.lay.device;
+      el('path', { d:'M120 40 L360 40 L380 620 L100 620 Z', fill:'#2f6b5a', opacity:0.92 }, v);
+      for(var x = 140; x < 360; x += 26) el('path', { d:'M' + x + ' 60 L' + (x - 4) + ' 600', stroke:'#255648', 'stroke-width':3 }, v);
+      P.under.appendChild(v);
+      hand(P.lay.manual, { uid:u, x:196, y:40, rot:200, s:0.62 });
+      hand(P.lay.manual, { uid:u, x:284, y:40, rot:160, s:0.62, flip:true });
+      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms1, p[0], p[1]); });
+      el('path', { d:'M206 146 Q240 160 274 146 L282 204 Q240 218 198 204 Z', fill:'#e8c77a', stroke:'#9a7a2e', 'stroke-width':1.6 }, P.lay.collar);
+      // torso flaps wrapping the chest, three colored straps
+      el('path', { d:'M104 240 Q150 250 170 300 L176 600 L104 600 Z M376 240 Q330 250 310 300 L304 600 L376 600 Z', fill:'#2f6b5a', opacity:0.92 }, P.lay.torso);
+      [[300, '#c9342a'], [420, '#2a8f3a'], [530, '#e0b62d']].forEach(function(s){ band(P.lay.torso, 240, s[0], 280, 14, 'sp-kedstrap').setAttribute('fill', s[1]); });
+      el('path', { d:'M150 600 Q170 700 190 700 M330 600 Q310 700 290 700', stroke:'#1f2d3a', 'stroke-width':10, fill:'none', 'stroke-linecap':'round' }, P.lay.legs);
+      badge(P.lay.check, 240, 470, 'Snug, does not shift', 'ok');
+      el('ellipse', { cx:240, cy:60, rx:52, ry:56, fill:'#d5e6ee', opacity:0.95 }, P.lay.headpad); P.under.appendChild(P.lay.headpad);
+      el('path', { d:'M150 30 L196 40 L196 150 L150 160 Z M330 30 L284 40 L284 150 L330 160 Z', fill:'#2f6b5a' }, P.lay.head);
+      band(P.lay.head, 240, 56, 180, 12, 'sp-tape'); band(P.lay.head, 240, 170, 180, 12, 'sp-tape');
+      badge(P.lay.move, 240, 860, 'Pivot onto the long board', 'go');
+      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms2, p[0], p[1]); });
+    },
+    paint:function(P, st){ P.show(P.lay.pms1, has(st.done, 'pms1') && !has(st.done, 'pms2')); }
+  });
+
+  /* ---- oxygen by non-rebreather (E204): the tank, the regulator, the mask ------ */
+  var OXYGEN = station({
+    key:'oxygen', match:/rebreather|oxygen admin/i,
+    intro:'Adult, sitting up, short of breath; the oxygen cylinder is beside them.',
+    full:[60, -60, 460, 560],
+    focus:{ full:[60, -60, 460, 560], tank:[280, 40, 220, 420], face:[120, -20, 300, 320] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[160, 300], did:'Gloves on.' },
+      { id:'gather', brief:true, text:'Gather the equipment', critical:false, focus:'tank', at:[330, 100], did:'Cylinder, regulator with flowmeter, non-rebreather mask.' },
+      { id:'crack', brief:true, text:'Crack the cylinder valve to clear the outlet', critical:false, focus:'tank', at:[400, 150], did:'A quick hiss: dust blown out of the outlet, pointed away from everyone.' },
+      { id:'reg', text:'Assemble the regulator to the cylinder', critical:false, focus:'tank', at:[400, 170], chip:'Regulator on', did:'Washer in place, pins lined up, regulator hand-tight.' },
+      { id:'open', brief:true, text:'Open the cylinder', critical:false, focus:'tank', at:[400, 130], did:'Valve opened a full turn.' },
+      { id:'psi', brief:true, text:'Check the cylinder pressure', critical:false, focus:'tank', at:[430, 190], chip:'Pressure read', did:'Gauge read: enough oxygen for the call.' },
+      { id:'leaks', brief:true, text:'Check for leaks', critical:true, focus:'tank', at:[380, 190], chip:'No leaks', did:'No hiss at the seal.', miss:'Never checked for leaks: a leaking regulator is a critical criterion.' },
+      { id:'attach', text:'Attach the mask tubing to the regulator', critical:false, focus:'tank', at:[360, 230], did:'Tubing on the flowmeter outlet.' },
+      { id:'prefill', text:'Prefill the reservoir bag', critical:true, focus:'tank', at:[300, 300], chip:'Bag full', did:'Thumb over the valve inside the mask until the bag is full.', miss:'The reservoir was not prefilled: the first breaths come from an empty bag (a critical criterion).' },
+      { id:'flow', text:'Set the flow to at least 10 L/min (most programs: 12 to 15)', critical:true, focus:'tank', at:[430, 240], chip:'15 L/min', did:'Flow at 15 L/min: enough to keep the bag from collapsing on each breath.', miss:'No flow set: under 10 L/min the bag empties and the patient rebreathes (a critical criterion).' },
+      { id:'apply', touch:true, text:'Apply the mask and adjust it to the face', critical:true, focus:'face', at:[240, 120], chip:'Mask sealed', did:'Mask over nose and mouth, nose clip pinched, strap snug.', miss:'The mask was never put on and sealed (a critical criterion).', go:true }
+    ],
+    order:[['reg', 'open', 'Opened the cylinder before the regulator was on.', 'bad'],
+           ['prefill', 'apply', 'Mask on the face before the bag was filled: the first breaths come from an empty bag.', 'bad'],
+           ['flow', 'apply', 'Mask on before the flow was set.', 'warn']],
+    notes:[
+      '<b>Flow.</b> The sheet asks for at least 10 L/min, and a flow under 10 L/min is its critical criterion; most programs teach 12 to 15 L/min.',
+      '<b>Indication.</b> Many current guidelines titrate oxygen to the saturation; the station only tests the equipment and technique.',
+      '<b>The end of the station.</b> The current Registry sheet (E204) ends with the mask on the face; some program sheets go on to removing it, shutting off the cylinder and bleeding the regulator.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid, t = el('g', {}, P.under);
+      // the cylinder standing beside the patient's left shoulder
+      el('rect', { x:380, y:180, width:56, height:300, rx:24, fill:'url(#' + u + 'Cyl)', stroke:'#174d2f', 'stroke-width':1.5 }, t);
+      el('rect', { x:394, y:150, width:28, height:36, rx:6, fill:'#9aa3a8', stroke:'#5d666b' }, t);
+      P.valveSpin = el('rect', { x:398, y:132, width:20, height:20, rx:4, fill:'#5d666b' }, t);
+      el('path', { d:'M394 162 l-18 -8', stroke:'#cfd6da', 'stroke-width':3, 'stroke-linecap':'round' }, P.lay.crack);
+      badge(P.lay.crack, 408, 108, 'Hiss: outlet clear', 'ok');
+      badge(P.lay.gather, 408, 108, 'Tank, regulator, mask', 'ok');
+      var r = P.lay.reg;
+      el('rect', { x:392, y:160, width:56, height:30, rx:6, fill:'#c7d1d6', stroke:'#5d666b' }, r);
+      el('circle', { cx:438, cy:176, r:13, fill:'#fff', stroke:'#5d666b', 'stroke-width':2 }, r);
+      P.needle = el('path', { d:'M438 176 L438 166', stroke:'#c9342a', 'stroke-width':2.4, 'stroke-linecap':'round' }, r);
+      el('rect', { x:400, y:190, width:16, height:22, rx:4, fill:'#2f6b5a' }, r);
+      badge(P.lay.open, 408, 108, 'Cylinder open', 'ok');
+      badge(P.lay.leaks, 408, 108, 'No hiss: no leaks', 'ok');
+      badge(P.lay.psi, 408, 108, 'Pressure read: enough', 'ok');
+      el('path', { d:'M408 212 C380 260 320 230 300 250', stroke:'#7fbfa9', 'stroke-width':4, fill:'none', 'stroke-linecap':'round' }, P.lay.attach);
+      badge(P.lay.flow, 470, 236, '15 L/min', 'go');
+      // the mask: in the hand before it goes on (bag beside it), then on the face
+      P.maskHand = el('g', { class:'sp-item' }, P.over);
+      var mh = el('g', { transform:'translate(60 230)' }, P.maskHand); nrb(mh, u);
+      P.bag = mh.querySelector('.sp-res');
+      P.maskFace = el('g', { class:'sp-item' }, P.over); nrb(P.maskFace, u);
+      P.faceBag = P.maskFace.querySelector('.sp-res');
+    },
+    paint:function(P, st){
+      var d = st.done, on = has(d, 'apply');
+      P.show(P.maskHand, has(d, 'attach') && !on);
+      P.show(P.maskFace, on);
+      var full = has(d, 'prefill') || (has(d, 'flow') && has(d, 'attach'));
+      [P.bag, P.faceBag].forEach(function(b){ if(b) b.setAttribute('transform', full ? '' : 'translate(240 152) scale(1 0.45) translate(-240 -152)'); });
+      if(P.needle) P.needle.setAttribute('transform', has(d, 'open') ? 'rotate(50 438 176)' : '');
+      P.show(P.lay.attach, has(d, 'attach'));
+      P.show(P.lay.flow, has(d, 'flow'));
+    }
+  });
+
+  /* ---- cardiac arrest management / AED (E215) ------------------------------------ */
+  var AED = station({
+    key:'aed', match:/cardiac arrest|aed/i,
+    intro:'Adult, collapsed, lying on their back on the floor. A second rescuer is with you.',
+    full:[-10, -100, 560, 800],
+    focus:{ full:[-10, -100, 560, 800], chest:[90, 120, 330, 380], neck:[140, 40, 200, 230], face:[110, -40, 300, 300], aed:[180, 120, 380, 460] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[340, 480], did:'Gloves on.' },
+      { id:'scene', text:'Make sure the scene is safe', critical:false, focus:'full', at:[420, 560], did:'Scene safe.' },
+      { id:'resp', brief:true, touch:true, text:'Check responsiveness', critical:true, focus:'chest', at:[150, 220], did:'Shoulders tapped, shouted: no response.' },
+      { id:'help', text:'Request additional EMS assistance', critical:false, focus:'full', at:[420, 600], did:'Help and the AED requested.' },
+      { id:'check', brief:true, touch:true, text:'Check breathing and the carotid pulse together, no more than 10 seconds', critical:true, focus:'neck', at:[224, 176], chip:'No pulse', did:'No breathing, no pulse, in under 10 seconds.', cue:'Apneic and pulseless.' },
+      { id:'cpr', touch:true, text:'Begin chest compressions at once (2 to 2.4 inches, 100 to 120 a minute, full recoil)', critical:true, focus:'chest', at:[240, 300], chip:'Compressions', did:'Hands on the lower half of the sternum, compressing hard and fast, letting the chest recoil.', miss:'Compressions never started (a critical criterion).' },
+      { id:'twomin', touch:true, text:'Two minutes of one-rescuer CPR (30:2)', critical:true, focus:'chest', at:[300, 300], did:'Five cycles of 30 compressions and 2 breaths.' },
+      { id:'vent', touch:true, text:'Take over ventilation with the BVM; the second rescuer compresses', critical:false, focus:'face', at:[240, 110], chip:'BVM', did:'You ventilate; your partner compresses.' },
+      { id:'power', text:'Turn the AED on', critical:false, focus:'aed', at:[470, 320], chip:'AED on', did:'AED on, following its prompts.' },
+      { id:'pads', touch:true, text:'Attach the pads as the AED shows', critical:true, focus:'aed', at:[200, 260], chip:'Pads on', did:'Upper right chest and lower left side, cable plugged in. Compressions continue while you do it.', miss:'The pads were never attached (a critical criterion).' },
+      { id:'clear', text:'Stop CPR and make sure everyone is clear for the analysis', critical:true, focus:'aed', at:[300, 200], chip:'Clear', did:'“Everyone clear!” Nobody touching the patient.', cue:'Shock advised.' },
+      { id:'shock', text:'Make sure everyone is clear and deliver the shock', critical:true, focus:'aed', at:[470, 300], chip:'Shocked', did:'Clear, then the shock.' },
+      { id:'resume', touch:true, text:'Resume compressions immediately', critical:true, focus:'chest', at:[240, 330], chip:'CPR resumed', did:'Straight back to compressions, no pulse check.', go:true }
+    ],
+    order:[['check', 'cpr', 'Compressions before breathing and pulse were checked.', 'warn'],
+           ['clear', 'shock', 'Shocked before everyone was clear for the analysis (a critical criterion).', 'bad'],
+           ['pads', 'shock', 'Shock with no pads attached.', 'bad']],
+    notes:[
+      '<b>Pads.</b> Most adult pads go below the right collarbone and on the left side below the armpit; some programs and devices use front-and-back placement. Follow the pictures on the pads.',
+      '<b>Pauses.</b> The sheet fails an interruption of CPR of more than 10 seconds. Keep compressing while the pads go on; stop only for the analysis and the shock.',
+      '<b>After the shock.</b> Resume compressions at once; no pulse check until the AED or your protocol calls for one.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid;
+      hand(P.lay.resp, { uid:u, x:146, y:226, rot:120, s:0.6 }); hand(P.lay.resp, { uid:u, x:334, y:226, rot:-120, s:0.6, flip:true });
+      hand(P.lay.check, { uid:u, x:206, y:186, rot:100, s:0.5 }); pulseAt(P.lay.check, 224, 176);
+      P.cprHands = el('g', { class:'sp-item sp-cpr' }, P.over);
+      hand(P.cprHands, { uid:u, x:240, y:300, rot:180, s:0.75 }); hand(P.cprHands, { uid:u, x:240, y:294, rot:180, s:0.72, thumb:false });
+      badge(P.lay.twomin, 330, 300, '30:2 × 5', 'ok');
+      el('ellipse', { cx:240, cy:112, rx:30, ry:36, fill:'url(#' + u + 'Mask)', stroke:'#4f8c7a', 'stroke-width':1.6 }, P.lay.vent);
+      el('ellipse', { cx:240, cy:28, rx:26, ry:46, fill:'url(#' + u + 'Bag)', stroke:'#8a979e', 'stroke-width':1.4 }, P.lay.vent);
+      // the AED beside the patient's left side, the pads and the cable
+      var a = el('g', {}, P.lay.power);
+      el('rect', { x:420, y:250, width:110, height:130, rx:14, fill:'#e9a33a', stroke:'#9a5f12', 'stroke-width':2 }, a);
+      el('rect', { x:432, y:262, width:86, height:40, rx:6, fill:'#163a2f' }, a);
+      el('text', { x:475, y:288, 'text-anchor':'middle', class:'sp-aed-t' }, a).textContent = 'AED';
+      P.shockBtn = el('circle', { cx:475, cy:340, r:16, fill:'#c9342a', stroke:'#7a1b14', 'stroke-width':2 }, a);
+      var pd = P.lay.pads;
+      el('g', { transform:'rotate(-8 190 250)' }, pd).appendChild(padRect(190, 250));
+      el('g', { transform:'rotate(-65 318 380)' }, pd).appendChild(padRect(318, 380));
+      el('path', { d:'M200 230 C260 180 380 220 430 270 M330 370 C380 380 400 330 430 300', stroke:'#2d2d2d', 'stroke-width':3, fill:'none' }, pd);
+      badge(P.lay.clear, 240, 200, 'Everyone clear', 'warn');
+      P.flash = el('g', { class:'sp-item' }, P.over);
+      el('path', { d:'M250 270 L232 300 L248 300 L230 336 L268 292 L250 292 L266 270 Z', fill:'#ffd23f', stroke:'#b8860b', 'stroke-width':1.5 }, P.flash);
+      badge(P.lay.resume, 330, 340, 'Back on the chest', 'go');
+      function padRect(x, y){
+        var g = document.createElementNS(NS, 'g');
+        el('rect', { x:x - 34, y:y - 24, width:68, height:48, rx:9, fill:'#f4f1ea', stroke:'#7a7a72', 'stroke-width':1.3 }, g);
+        el('rect', { x:x - 24, y:y - 15, width:48, height:30, rx:6, fill:'#e3b04b', opacity:0.5 }, g);
+        return g;
+      }
+    },
+    paint:function(P, st){
+      var d = st.done, last = null, best = -1;
+      for(var k in d) if(d[k] > best){ best = d[k]; last = k; }
+      var hands = (has(d, 'cpr') || has(d, 'resume')) && !(last === 'clear' || last === 'shock' || (has(d, 'clear') && !has(d, 'resume')));
+      P.show(P.cprHands, hands);
+      P.show(P.lay.cpr, false);
+      P.show(P.flash, last === 'shock');
+      P.show(P.lay.clear, has(d, 'clear') && !has(d, 'resume'));
+      P.show(P.lay.twomin, has(d, 'twomin') && !has(d, 'power'));
+    }
+  });
+
+  /* ---- patient assessment: trauma and medical (E201, E202) ------------------------
+     The body is the exam: each phase ticked shows what it found, where it is.
+     The findings are this run's own case, not the Registry's. */
+  function finding(parent, x, y, text, side, sev){
+    var g = el('g', {}, parent);
+    el('circle', { cx:x, cy:y, r:7, class:'sp-find-dot' + (sev ? ' is-sev' : '') }, g);
+    var bx = x + side * 26;
+    el('path', { d:'M' + x + ' ' + y + ' L' + bx + ' ' + y, class:'sp-find-line' }, g);
+    var w = 14 + text.length * 8.2;
+    var gx = side > 0 ? bx : bx - w;
+    el('rect', { x:gx, y:y - 14, width:w, height:28, rx:8, class:'sp-find-box' + (sev ? ' is-sev' : '') }, g);
+    el('text', { x:gx + 7, y:y + 5, class:'sp-find-t' }, g).textContent = text;
+    return g;
+  }
+  var TRAUMA = station({
+    key:'trauma', match:/assessment.*trauma/i,
+    intro:'This run’s case: a 34-year-old who fell about 12 feet from a ladder, lying on their back.',
+    full:[-140, -40, 760, 1260],
+    focus:{ full:[-140, -40, 760, 1260], upper:[-80, -40, 640, 560], lower:[-80, 420, 640, 800] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[420, 400], did:'Gloves on, eye protection verbalized.' },
+      { id:'scene', text:'Scene size-up: safety, mechanism, number of patients, more help, spinal precautions', critical:true, focus:'full', at:[420, 460], chip:'Scene safe', did:'Scene safe; a 12-foot fall; one patient; help requested; manual stabilization of the head.' },
+      { id:'gi', touch:true, text:'General impression, responsiveness, chief complaint, life threats', critical:false, focus:'upper', at:[240, 40], did:'Responds to voice, groaning; complains of pain on the left side.' },
+      { id:'airway', touch:true, text:'Airway: open and assess', critical:true, focus:'upper', at:[240, 124], did:'Airway open and clear.' },
+      { id:'breath', touch:true, text:'Breathing: assess; give high-concentration oxygen', critical:true, focus:'upper', at:[240, 280], chip:'O₂ by NRB', did:'Breathing fast and shallow; non-rebreather at 15 L/min.', miss:'No high-concentration oxygen (a critical criterion).' },
+      { id:'circ', touch:true, text:'Circulation: bleeding, pulse, skin', critical:true, focus:'upper', at:[60, 640], did:'No major bleeding; radial pulse fast and weak; skin pale, cool and sweaty.' },
+      { id:'priority', text:'Identify a priority patient; call for transport', critical:true, focus:'upper', at:[420, 520], chip:'Priority: transport', did:'Signs of shock after a significant fall: priority patient, transport now.', go:true },
+      { id:'vitals', text:'Baseline vital signs', critical:false, focus:'upper', at:[420, 640], chip:'Vitals', did:'Pulse 124, BP 96/60, respirations 26.' },
+      { id:'history', text:'History: SAMPLE', critical:false, focus:'upper', at:[420, 580], did:'No allergies, no medications, healthy, ate at noon, fell reaching for a gutter.' },
+      { id:'head', touch:true, text:'Head: inspect and palpate (DCAP-BTLS)', critical:false, focus:'upper', at:[200, 60], did:'Scalp abrasion at the back of the head; pupils equal and reactive.' },
+      { id:'neck', touch:true, text:'Neck: trachea, veins, cervical spine; apply a collar', critical:false, focus:'upper', at:[240, 190], chip:'Collar', did:'Trachea midline, neck veins flat, tender at the back of the neck: collar on.' },
+      { id:'chest', touch:true, text:'Chest: inspect, palpate, listen', critical:false, focus:'upper', at:[320, 340], did:'Bruising and tenderness over the left lower ribs; breath sounds present and equal.' },
+      { id:'abd', touch:true, text:'Abdomen and pelvis: inspect, palpate', critical:false, focus:'lower', at:[290, 420], did:'Tender in the upper left; pelvis stable.' },
+      { id:'legs', touch:true, text:'Legs and arms: DCAP-BTLS, then motor, sensation, circulation', critical:false, focus:'lower', at:[300, 880], did:'Left wrist swollen and tender; all four limbs move and feel, pulses present.' },
+      { id:'back', touch:true, text:'Back and buttocks (on the log-roll)', critical:false, focus:'lower', at:[160, 520], did:'No findings on the back.' },
+      { id:'reassess', text:'Reassess on the way', critical:false, focus:'upper', at:[420, 700], chip:'Reassessing', did:'Every 5 minutes: unstable patient.' }
+    ],
+    order:[['breath', 'head', 'The head-to-toe exam began before oxygen: threats to breathing come first (a critical criterion).', 'bad'],
+           ['circ', 'head', 'The head-to-toe exam began before circulation was assessed.', 'bad']],
+    notes:[
+      '<b>Phases, not the sheet’s points.</b> The trauma sheet scores many separate items (each body region, each check); this run groups them by phase.',
+      '<b>Rapid or focused.</b> A significant mechanism gets a full rapid exam; an isolated injury gets a focused one. Programs differ on how much of the secondary is done on scene.',
+      '<b>Spinal precautions.</b> Many systems use selective spinal motion restriction now; the sheet still expects you to consider it in the size-up.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid;
+      finding(P.lay.gi, 240, 40, 'Responds to voice', 1);
+      finding(P.lay.airway, 240, 124, 'Airway clear', 1);
+      nrb(P.lay.breath, u); finding(P.lay.breath, 300, 290, 'RR 26, shallow', 1);
+      finding(P.lay.circ, 70, 640, 'Pale, cool, sweaty', -1, true);
+      finding(P.lay.circ, 60, 600, 'Radial fast, weak', -1, true);
+      el('ellipse', { cx:240, cy:22, rx:20, ry:10, fill:'#b3523f', opacity:0.55, filter:'url(#' + u + 'Soft)' }, P.lay.head);
+      finding(P.lay.head, 222, 30, 'Scalp abrasion', -1);
+      el('path', { d:'M206 146 Q240 160 274 146 L282 204 Q240 218 198 204 Z', fill:'#e8c77a', stroke:'#9a7a2e', 'stroke-width':1.6 }, P.lay.neck);
+      bruise(P.lay.chest, u, 312, 350, 34, 22);
+      finding(P.lay.chest, 330, 350, 'Bruised, tender ribs', 1, true);
+      finding(P.lay.abd, 300, 420, 'Tender, upper left', 1, true);
+      finding(P.lay.abd, 240, 560, 'Pelvis stable', -1);
+      el('ellipse', { cx:430, cy:618, rx:14, ry:18, fill:'#fff2e6', opacity:0.6, filter:'url(#' + u + 'Soft)' }, P.lay.legs);
+      finding(P.lay.legs, 432, 618, 'Wrist swollen', 1);
+      finding(P.lay.legs, 304, 1150, 'Pulses present', 1);
+      finding(P.lay.back, 150, 520, 'Back: nothing', -1);
+      badge(P.lay.vitals, 240, 470, 'P 124  BP 96/60  R 26', 'warn');
+    }
+  });
+  var MEDICAL = station({
+    key:'medical', match:/assessment.*medical/i,
+    intro:'This run’s case: a 62-year-old with chest pain for 30 minutes, sitting up.',
+    full:[-140, -40, 760, 900],
+    focus:{ full:[-140, -40, 760, 900], upper:[-80, -40, 640, 560] },
+    steps:[
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[420, 400], did:'Gloves on.' },
+      { id:'scene', text:'Scene size-up: safety, nature of illness, number of patients, more help', critical:true, focus:'full', at:[420, 460], chip:'Scene safe', did:'Scene safe; chest pain; one patient.' },
+      { id:'gi', touch:true, text:'General impression, responsiveness, chief complaint, life threats', critical:false, focus:'upper', at:[240, 40], did:'Alert, anxious, holding the chest.' },
+      { id:'airway', touch:true, text:'Airway and breathing: assess; oxygen if indicated', critical:true, focus:'upper', at:[240, 124], chip:'O₂', did:'Airway open; breathing fast, SpO₂ 91%: oxygen.', miss:'No oxygen for a hypoxic patient (a critical criterion).' },
+      { id:'circ', touch:true, text:'Circulation: pulse, skin, bleeding', critical:false, focus:'upper', at:[60, 640], did:'Radial pulse regular, 104; skin pale and sweaty.' },
+      { id:'priority', text:'Identify a priority patient; call for transport', critical:true, focus:'upper', at:[420, 520], chip:'Priority: transport', did:'Chest pain with pale, sweaty skin: priority, transport.', go:true },
+      { id:'opqrst', text:'History of the complaint: OPQRST', critical:false, focus:'upper', at:[420, 580], did:'Pressure, center of the chest, into the left arm, 8 of 10, came on at rest.' },
+      { id:'sample', text:'Past history: SAMPLE', critical:false, focus:'upper', at:[420, 620], did:'No allergies; takes blood pressure pills; no nitroglycerin of their own.' },
+      { id:'focused', touch:true, text:'Secondary: the body system involved (heart and lungs)', critical:false, focus:'upper', at:[300, 300], did:'Lungs clear on both sides; no leg swelling.' },
+      { id:'vitals', text:'Vital signs', critical:false, focus:'upper', at:[420, 660], chip:'Vitals', did:'Pulse 104, BP 152/94, respirations 22, SpO₂ 94% on oxygen.' },
+      { id:'treat', text:'Field impression, then interventions per protocol (aspirin)', critical:false, focus:'upper', at:[200, 124], chip:'Aspirin', did:'Possible heart attack. Aspirin chewed, per protocol, after checking for allergy and bleeding.', miss:'No field impression or interventions named (scored steps; giving a dangerous or wrong one is a critical criterion).' },
+      { id:'reassess', text:'Reassess', critical:false, focus:'upper', at:[420, 700], did:'Every 5 minutes.' },
+      { id:'report', text:'Verbal report to the arriving unit', critical:true, focus:'upper', at:[420, 740], chip:'Report given', did:'Age, complaint, findings, vitals, care given.', miss:'No report to the arriving unit (a critical criterion on the medical sheet).' }
+    ],
+    order:[['airway', 'focused', 'The secondary exam began before airway and breathing were treated (a critical criterion).', 'bad']],
+    notes:[
+      '<b>History or exam first.</b> For a responsive medical patient most programs take the history first; the sheet lets either come first. Verify yours.',
+      '<b>Oxygen.</b> Current practice gives oxygen to a hypoxic patient (SpO₂ under about 94%) or one in distress, not routinely; the sheet fails withholding it when it is needed.',
+      '<b>Aspirin and nitroglycerin.</b> What an EMT may give, and whether it needs online medical direction, depends on the protocol.',
+      COMMON_NOTE
+    ],
+    draw:function(P){
+      var u = P.uid;
+      finding(P.lay.gi, 240, 40, 'Alert, anxious', 1);
+      nrb(P.lay.airway, u); finding(P.lay.airway, 300, 250, 'SpO₂ 91%, fast', 1, true);
+      finding(P.lay.circ, 70, 640, 'Pale, sweaty', -1, true);
+      finding(P.lay.circ, 60, 600, 'Radial 104', -1);
+      el('ellipse', { cx:240, cy:290, rx:46, ry:30, fill:'#d1594a', opacity:0.25, filter:'url(#' + u + 'Soft)' }, P.lay.opqrst);
+      el('path', { d:'M260 300 C320 330 360 380 400 450', stroke:'#d1594a', 'stroke-width':6, opacity:0.35, fill:'none', 'stroke-linecap':'round', filter:'url(#' + u + 'Soft)' }, P.lay.opqrst);
+      finding(P.lay.opqrst, 240, 290, 'Pressure, into left arm', -1, true);
+      finding(P.lay.focused, 330, 340, 'Lungs clear', 1);
+      badge(P.lay.vitals, 240, 470, 'P 104  BP 152/94  R 22', 'warn');
+      finding(P.lay.treat, 222, 140, 'Aspirin chewed', -1);
+      badge(P.lay.report, 240, 500, 'Report handed over', 'go');
+    }
+  });
+
+  var DEFS = [BLEEDING, BVM, LONGBONE, JOINT, SUPINE, SEATED, OXYGEN, AED, TRAUMA, MEDICAL];
 
   /* ---- the patient ------------------------------------------------------- */
 

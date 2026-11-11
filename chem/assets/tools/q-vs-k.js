@@ -58,7 +58,7 @@
       $('.qk-eq').innerHTML = M.eqHtml(sp) + ' &nbsp; K<sub>c</sub> = ' + M.fmt(K, 2);
       $('.qk-setup').textContent = 'Gases in a sealed vessel at constant temperature. Each particle is ' + M.fmt(ctx.per, 2) + ' mol, so at 1.00 L each particle is ' + M.fmt(ctx.per, 2) + ' M.';
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount($('.qk-beaker'), { species: sp.map(function(s){ return { key: s.draw, label: s.html, mol: s.draw, name: s.html }; }), readout: 'qk', title: 'The vessel', max: 36, seed: seed, vessel: 'gas' });
+      beaker = window.ApChemBeaker.mount($('.qk-beaker'), { species: sp.map(function(s){ return { key: s.draw, label: s.html, mol: s.draw, name: s.html }; }), readout: 'qk', title: 'The vessel', max: 42, seed: seed, vessel: 'gas' });
       $('.qk-amts').innerHTML = sp.map(function(s, i){
         return '<div class="qk-amt"><span class="qk-n">' + s.html + '</span><button type="button" class="bt-step" data-i="' + i + '" data-d="-1" aria-label="Remove one ' + esc(s.html) + '">−</button><b class="qk-c" data-i="' + i + '"></b><button type="button" class="bt-step" data-i="' + i + '" data-d="1" aria-label="Add one ' + esc(s.html) + '">+</button></div>';
       }).join('');
@@ -106,7 +106,8 @@
         var prod = sp[i].nu > 0, up = (d > 0) === prod;
         body += (d > 0 ? 'Adding ' : 'Removing ') + (prod ? 'a product' : 'a reactant') + (up ? ' raised Q. ' : ' lowered Q. ') + toK;
       } else body += toK;
-      return { head: '<b>' + head + '</b> ' + (c.dir === 'fwd' ? 'Q = ' + M.fmt(q, 3) + ' is below K.' : c.dir === 'rev' ? 'Q = ' + M.fmt(q, 3) + ' is above K.' : ''), body: '<p>' + body + '</p><p class="bt-small qk-conc">' + conc + '.</p>' };
+      // The head is the verdict only: Q and K are the pills over the jar (pass 2).
+      return { head: '<b>' + head + '</b>', body: '<p>' + (c.dir === 'fwd' ? 'Q = ' + M.fmt(q, 3) + ' is below K. ' : c.dir === 'rev' ? 'Q = ' + M.fmt(q, 3) + ' is above K. ' : '') + body + '</p><p class="bt-small qk-conc">' + conc + '.</p>' };
     }
     function run(){
       if(busy) return;
@@ -130,12 +131,13 @@
       };
       tick();
     }
-    /* Tool Studio: Q and K as pills, the direction on the right, the log
+    /* Tool Studio: Q and K as pills, the log
        gauge under the vessel; the verdict as the caption. */
     function studioDraw(q, ok){
       var c = ok ? window.ApChemBeaker.pure.qk(q, K) : null;
       LS.pills([{ k: 'Q', html: ok ? M.fmt(q, 3) : sp.some(function(s, j){ return s.nu < 0 && M.inQ(s) && n[j] <= 0; }) ? '∞' : '0', tone: 'readout' }, { k: 'K', html: M.fmt(K, 2), tone: 'ghost' }], 'left', 'explore');
-      LS.pills([!c ? { html: 'Q undefined', tone: 'warn' } : c.dir === 'fwd' ? { html: 'Runs forward →', tone: 'accent' } : c.dir === 'rev' ? { html: '← Runs in reverse', tone: 'warn' } : { html: 'At equilibrium', tone: 'good' }], 'right', 'explore');
+      // No right pill: the direction is the caption and the gauge (pass 2).
+      LS.pills(!c ? [{ html: 'Q undefined', tone: 'warn' }] : [], 'right', 'explore');
       LS.caption(T.sayHead($('.qk-why')), 'explore');
       SP.setup(F(V, 2) + ' L vessel');
       SP.open();

@@ -303,3 +303,37 @@
 /* the hint's own buttons sit inside the amber box (the shared dock makes button rows sticky with a white back) */
 .pw-ls .ls-dock .pw-hint .pw-actions{position:static;box-shadow:none;background:none;}
 .ls-root.ls-phone.pw-ls .ls-dock .pw-bank{max-height:30vh;max-height:30dvh;}
+
+/* Scene plate beside the map (tool redesign 2026-11, assets/tools/scene.js):
+   the pathway on the real figure first, the step map after it; side by side
+   when the stage is wide. The figure keeps to the stage's height. */
+.pw-fig.has-scene{max-width:none;}
+.pw-duo{display:flex;flex-direction:column;gap:12px;}
+.pw-duo .pw-scn{width:min(100%, 52vh * var(--scn-r, 1));margin:0 auto;}
+.pw-mapbox{min-width:0;}
+.pw-mapbox .pw-map{width:100%;height:auto;}
+.scn-pin.is-marked .scn-halo{fill:rgba(255,196,61,.6);}
+@media (min-width:1000px){
+  .pw-duo{display:grid;grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr);align-items:start;gap:16px;}
+  .pw-duo .pw-scn{width:min(100%, 66vh * var(--scn-r, 1));}
+  .pw-ls .ls-stage-body > .pw-fig.has-scene{max-width:none;}
+}
+.pw-errfig .pw-scn{width:min(100%, 44vh * var(--scn-r, 1));margin:0 auto 10px;}
+
+/* Pass 2 (2026-11-10): beside a figure the map is a numbered list; the figure is the picture. */
+.pw-map.is-list .pw-box{filter:none;stroke-width:1.5;}
+.pw-map.is-list .is-empty .pw-box,.pw-map.is-list .is-gap .pw-box{stroke:var(--line);}
+.pw-map .pw-cnum{font-size:13px;}
+.pw-mapbox .pw-map.is-list{max-width:520px;display:block;margin:0 auto;}
+@media (min-width:1000px){
+  .pw-duo:has(.pw-map.is-list){grid-template-columns:minmax(0, 2.1fr) minmax(0, 1fr);}
+  .pw-mapbox .pw-map.is-list{max-width:270px;}
+}
+
+/* Pass 3 (docs/tool-review/pass3/anatomy-physiology.md): a wide figure (a row of panels) fills the stage's width;
+   the numbered list sits under it in rows of three. */
+@media (min-width:1000px){
+  .pw-duo.pw-flat,.pw-duo.pw-flat:has(.pw-map.is-list){display:flex;flex-direction:column;align-items:stretch;gap:14px;}
+  .pw-duo.pw-flat .pw-scn{width:min(100%, 50vh * var(--scn-r, 1));}
+  .pw-duo.pw-flat .pw-mapbox .pw-map.is-list{max-width:760px;width:100%;}
+}

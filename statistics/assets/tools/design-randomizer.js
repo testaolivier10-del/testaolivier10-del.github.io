@@ -207,7 +207,12 @@
     }
     function drawEst(){
       var box = $('.dr-estbox'); if(!box) return;
-      var fig = $('.dr-fig'); if(fig){ var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
+      var fig = $('.dr-fig'), empty = !Object.keys(rows).length;
+      // pass 3: before the first run the greenhouse (or room) is the whole picture; the plot of
+      // estimates joins it when there is an estimate to put on it
+      if(fig){ fig.classList.toggle('is-empty', empty); var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
+      if(empty){ box.innerHTML = ''; strip(); if(LS){ LS.pills([], 'left', 'explore'); LS.pills([{ k: 'True', html: fx(sc.effect, 1), tone: 'ghost' }], 'right', 'explore'); } return; }
+      box.innerHTML = '';   // measure the box empty, so the old plot does not hold its size
       var r = box.getBoundingClientRect(), w = Math.round(r.width) || 600, h = Math.round(r.height) || 150;
       var order = []; D.DESIGNS.forEach(function(d){ order.push(d); order.push(d + '-u'); });
       var list = order.filter(function(k){ return rows[k]; }).map(function(k){ return { key: k, name: rowName(k), vals: rows[k].vals, last: rows[k].last }; });

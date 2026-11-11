@@ -1,0 +1,4229 @@
+{
+ "about": "Scene plates for the pathway tracer and Predict the change (tool redesign 2026-11). Each scene is a registered figure (data/figures) and the places on it, in the figure's own pixels: where a step happens or a variable lives. Places were set by eye on a grid over the figure. hide lists printed labels to cover (true: all) and cover adds boxes, for process figures whose stage words or numbers would give the order away. Which steps and variables sit where: data/pathway-scenes.json and data/predict-scenes.json. Drawn by assets/tools/scene.js; checked by scripts/test/anp-scenes.test.mjs.",
+ "scenes": {
+  "ap-graph": {
+   "figure": "os-12-24",
+   "title": "Action potential trace",
+   "hide": [
+    "voltage-rises",
+    "voltage-falls",
+    "at-rest",
+    "stimulus-applied",
+    "end-of-action-potential",
+    "return-to-rest"
+   ],
+   "cover": [
+    [
+     90,
+     300,
+     34,
+     32
+    ],
+    [
+     140,
+     366,
+     34,
+     32
+    ],
+    [
+     135,
+     100,
+     34,
+     32
+    ],
+    [
+     369,
+     100,
+     34,
+     32
+    ],
+    [
+     488,
+     366,
+     34,
+     32
+    ],
+    [
+     571,
+     299,
+     34,
+     32
+    ]
+   ],
+   "places": {
+    "rest": {
+     "name": "Resting potential, about −70 mV",
+     "pt": [
+      158,
+      335
+     ]
+    },
+    "stim": {
+     "name": "Stimulus",
+     "pt": [
+      235,
+      335
+     ]
+    },
+    "graded": {
+     "name": "Graded depolarization",
+     "pt": [
+      251,
+      306
+     ]
+    },
+    "threshold": {
+     "name": "Threshold, about −55 mV",
+     "pt": [
+      262,
+      287
+     ]
+    },
+    "rising": {
+     "name": "Rising phase",
+     "pt": [
+      298,
+      158
+     ]
+    },
+    "peak": {
+     "name": "Peak, about +30 mV",
+     "pt": [
+      336,
+      30
+     ]
+    },
+    "falling": {
+     "name": "Falling phase",
+     "pt": [
+      372,
+      180
+     ]
+    },
+    "late-fall": {
+     "name": "End of the falling phase",
+     "pt": [
+      382,
+      318
+     ]
+    },
+    "undershoot": {
+     "name": "Hyperpolarization",
+     "pt": [
+      449,
+      373
+     ]
+    },
+    "back": {
+     "name": "Back to rest",
+     "pt": [
+      623,
+      335
+     ]
+    }
+   }
+  },
+  "enzyme": {
+   "figure": "os-2-27",
+   "title": "An enzyme reaction",
+   "hide": [
+    "product-bound",
+    "product-released"
+   ],
+   "places": {
+    "bind": {
+     "name": "Substrates meet the active sites",
+     "pt": [
+      95,
+      262
+     ]
+    },
+    "hold": {
+     "name": "Substrates held in the enzyme",
+     "pt": [
+      392,
+      215
+     ]
+    },
+    "hold2": {
+     "name": "Enzyme and substrates together",
+     "pt": [
+      392,
+      262
+     ]
+    },
+    "product": {
+     "name": "Product still bound",
+     "pt": [
+      640,
+      190
+     ]
+    },
+    "released": {
+     "name": "Product leaving",
+     "pt": [
+      930,
+      75
+     ]
+    },
+    "free": {
+     "name": "Enzyme free again",
+     "pt": [
+      930,
+      290
+     ]
+    }
+   }
+  },
+  "cell": {
+   "figure": "os-3-13",
+   "title": "A generalized cell",
+   "places": {
+    "gene": {
+     "name": "Chromatin: the gene",
+     "pt": [
+      243,
+      373
+     ]
+    },
+    "nucleus": {
+     "name": "Nucleus",
+     "pt": [
+      262,
+      300
+     ]
+    },
+    "pore": {
+     "name": "Nuclear envelope",
+     "pt": [
+      330,
+      262
+     ]
+    },
+    "ribofree": {
+     "name": "Free ribosome in the cytoplasm",
+     "pt": [
+      372,
+      172
+     ]
+    },
+    "rer": {
+     "name": "Rough endoplasmic reticulum",
+     "pt": [
+      300,
+      212
+     ]
+    },
+    "rerlumen": {
+     "name": "Inside the rough ER",
+     "pt": [
+      232,
+      238
+     ]
+    },
+    "tovesicle": {
+     "name": "Transport vesicle to the Golgi",
+     "pt": [
+      196,
+      405
+     ]
+    },
+    "golgi": {
+     "name": "Golgi apparatus",
+     "pt": [
+      171,
+      452
+     ]
+    },
+    "secves": {
+     "name": "Secretory vesicle",
+     "pt": [
+      522,
+      478
+     ]
+    },
+    "exo": {
+     "name": "Plasma membrane: exocytosis",
+     "pt": [
+      534,
+      506
+     ]
+    },
+    "mito": {
+     "name": "Mitochondrion",
+     "pt": [
+      442,
+      81
+     ]
+    },
+    "cytosol": {
+     "name": "Cytoplasm",
+     "pt": [
+      370,
+      520
+     ]
+    },
+    "lysosome": {
+     "name": "Lysosome",
+     "pt": [
+      597,
+      404
+     ]
+    }
+   }
+  },
+  "cell-cycle": {
+   "figure": "os-3-33",
+   "title": "The cell cycle and its checkpoints",
+   "places": {
+    "g1": {
+     "name": "G1 phase",
+     "pt": [
+      520,
+      330
+     ]
+    },
+    "g1cp": {
+     "name": "G1 checkpoint",
+     "pt": [
+      368,
+      468
+     ]
+    },
+    "s": {
+     "name": "S phase",
+     "pt": [
+      140,
+      310
+     ]
+    },
+    "g2": {
+     "name": "G2 phase",
+     "pt": [
+      267,
+      140
+     ]
+    },
+    "g2cp": {
+     "name": "G2 checkpoint",
+     "pt": [
+      349,
+      99
+     ]
+    },
+    "m": {
+     "name": "Mitosis",
+     "pt": [
+      405,
+      140
+     ]
+    },
+    "cyto": {
+     "name": "End of mitosis",
+     "pt": [
+      440,
+      165
+     ]
+    },
+    "daughters": {
+     "name": "A new G1",
+     "pt": [
+      480,
+      232
+     ]
+    }
+   }
+  },
+  "mitosis": {
+   "figure": "os-3-32",
+   "title": "The stages of mitosis",
+   "hide": [
+    "prophase",
+    "prometaphase",
+    "metaphase",
+    "anaphase",
+    "telophase",
+    "cytokinesis"
+   ],
+   "places": {
+    "pro": {
+     "name": "First panel",
+     "pt": [
+      75,
+      105
+     ]
+    },
+    "prometa": {
+     "name": "Second panel",
+     "pt": [
+      242,
+      105
+     ]
+    },
+    "meta": {
+     "name": "Third panel",
+     "pt": [
+      420,
+      105
+     ]
+    },
+    "ana": {
+     "name": "Fourth panel",
+     "pt": [
+      600,
+      105
+     ]
+    },
+    "telo": {
+     "name": "Fifth panel",
+     "pt": [
+      780,
+      105
+     ]
+    },
+    "cyto": {
+     "name": "Sixth panel",
+     "pt": [
+      960,
+      105
+     ]
+    }
+   }
+  },
+  "respiration": {
+   "figure": "os-24-4",
+   "title": "How a cell breaks down glucose",
+   "places": {
+    "glucose": {
+     "name": "Glucose",
+     "pt": [
+      470,
+      55
+     ]
+    },
+    "pfk": {
+     "name": "Early glycolysis",
+     "pt": [
+      468,
+      85
+     ]
+    },
+    "split": {
+     "name": "Six-carbon sugar splits in two",
+     "pt": [
+      500,
+      97
+     ]
+    },
+    "glyco": {
+     "name": "Glycolysis",
+     "pt": [
+      540,
+      135
+     ]
+    },
+    "gatp": {
+     "name": "ATP from glycolysis",
+     "pt": [
+      90,
+      98
+     ]
+    },
+    "pyr": {
+     "name": "Pyruvate into the mitochondrion",
+     "pt": [
+      507,
+      330
+     ]
+    },
+    "acoa": {
+     "name": "Acetyl CoA",
+     "pt": [
+      455,
+      505
+     ]
+    },
+    "krebs": {
+     "name": "Krebs (citric acid) cycle",
+     "pt": [
+      520,
+      630
+     ]
+    },
+    "kco2": {
+     "name": "CO2 from the cycle",
+     "pt": [
+      590,
+      600
+     ]
+    },
+    "krebs2": {
+     "name": "Back to the start of the cycle",
+     "pt": [
+      470,
+      670
+     ]
+    },
+    "carriers": {
+     "name": "Electrons delivered to the chain",
+     "pt": [
+      795,
+      828
+     ]
+    },
+    "chain": {
+     "name": "Electron transport chain",
+     "pt": [
+      485,
+      962
+     ]
+    },
+    "o2": {
+     "name": "Oxygen takes the electrons",
+     "pt": [
+      330,
+      1095
+     ]
+    },
+    "atp": {
+     "name": "ATP made by oxidative phosphorylation",
+     "pt": [
+      90,
+      893
+     ]
+    }
+   }
+  },
+  "membrane-rest": {
+   "figure": "os-12-22",
+   "title": "Measuring the resting membrane potential",
+   "places": {
+    "pump": {
+     "name": "The membrane",
+     "pt": [
+      220,
+      335
+     ]
+    },
+    "leak": {
+     "name": "Leak channels in the membrane",
+     "pt": [
+      480,
+      335
+     ]
+    },
+    "out": {
+     "name": "Just outside the membrane",
+     "pt": [
+      560,
+      245
+     ]
+    },
+    "inside": {
+     "name": "Just inside the membrane",
+     "pt": [
+      560,
+      425
+     ]
+    },
+    "slow": {
+     "name": "Across the membrane",
+     "pt": [
+      720,
+      335
+     ]
+    },
+    "meter": {
+     "name": "The voltmeter",
+     "pt": [
+      440,
+      75
+     ]
+    }
+   }
+  },
+  "camp": {
+   "figure": "os-17-5",
+   "title": "A water-soluble hormone and cAMP",
+   "cover": [
+    [
+     628,
+     60,
+     330,
+     640
+    ]
+   ],
+   "places": {
+    "hormone": {
+     "name": "Hormone in the blood",
+     "pt": [
+      394,
+      30
+     ]
+    },
+    "receptor": {
+     "name": "Receptor protein",
+     "pt": [
+      335,
+      185
+     ]
+    },
+    "gprot": {
+     "name": "G protein",
+     "pt": [
+      350,
+      205
+     ]
+    },
+    "ac": {
+     "name": "Adenylyl cyclase",
+     "pt": [
+      434,
+      238
+     ]
+    },
+    "camp": {
+     "name": "ATP to cAMP",
+     "pt": [
+      440,
+      335
+     ]
+    },
+    "pk": {
+     "name": "Protein kinase",
+     "pt": [
+      494,
+      427
+     ]
+    },
+    "apk": {
+     "name": "Activated protein kinase",
+     "pt": [
+      449,
+      494
+     ]
+    },
+    "phos": {
+     "name": "A protein gains a phosphate",
+     "pt": [
+      330,
+      613
+     ]
+    },
+    "act": {
+     "name": "Activated protein",
+     "pt": [
+      137,
+      577
+     ]
+    }
+   }
+  },
+  "steroid": {
+   "figure": "os-17-4",
+   "title": "A lipid-soluble hormone",
+   "cover": [
+    [
+     0,
+     60,
+     256,
+     600
+    ]
+   ],
+   "places": {
+    "carrier": {
+     "name": "Transport protein in the blood",
+     "pt": [
+      449,
+      101
+     ]
+    },
+    "membrane": {
+     "name": "Crossing the plasma membrane",
+     "pt": [
+      491,
+      170
+     ]
+    },
+    "receptor": {
+     "name": "Receptor protein",
+     "pt": [
+      504,
+      220
+     ]
+    },
+    "dna": {
+     "name": "DNA in the nucleus",
+     "pt": [
+      549,
+      330
+     ]
+    },
+    "transcription": {
+     "name": "Transcription",
+     "pt": [
+      582,
+      394
+     ]
+    },
+    "translation": {
+     "name": "Translation",
+     "pt": [
+      568,
+      531
+     ]
+    },
+    "protein": {
+     "name": "New protein",
+     "pt": [
+      683,
+      531
+     ]
+    }
+   }
+  },
+  "acne": {
+   "figure": "os-5-22",
+   "title": "Acne",
+   "places": {
+    "gland": {
+     "name": "Sebaceous gland",
+     "pt": [
+      232,
+      195
+     ]
+    },
+    "plug": {
+     "name": "Plugged follicle",
+     "pt": [
+      150,
+      155
+     ]
+    },
+    "bacteria": {
+     "name": "Bacteria in the plug",
+     "pt": [
+      445,
+      232
+     ]
+    },
+    "mild": {
+     "name": "Mild inflammation",
+     "pt": [
+      451,
+      141
+     ]
+    },
+    "burst": {
+     "name": "Burst follicle, marked inflammation",
+     "pt": [
+      729,
+      140
+     ]
+    }
+   }
+  },
+  "coronary": {
+   "figure": "os-19-15",
+   "title": "The heart's own vessels",
+   "places": {
+    "aorta": {
+     "name": "Ascending aorta",
+     "pt": [
+      283,
+      204
+     ]
+    },
+    "origin": {
+     "name": "Where the coronary arteries leave the aorta",
+     "pt": [
+      318,
+      232
+     ]
+    },
+    "lad": {
+     "name": "Anterior interventricular artery",
+     "pt": [
+      385,
+      330
+     ]
+    },
+    "muscle": {
+     "name": "Heart muscle",
+     "pt": [
+      330,
+      420
+     ]
+    },
+    "gcv": {
+     "name": "Great cardiac vein",
+     "pt": [
+      470,
+      292
+     ]
+    },
+    "sinus": {
+     "name": "Coronary sinus (back of the heart)",
+     "pt": [
+      860,
+      680
+     ]
+    }
+   }
+  },
+  "cardiac-ap": {
+   "figure": "os-19-21",
+   "title": "A heart muscle action potential and its contraction",
+   "hide": true,
+   "places": {
+    "foot": {
+     "name": "Resting membrane",
+     "pt": [
+      330,
+      376
+     ]
+    },
+    "up": {
+     "name": "Rapid depolarization",
+     "pt": [
+      367,
+      222
+     ]
+    },
+    "notch": {
+     "name": "Brief partial repolarization",
+     "pt": [
+      391,
+      73
+     ]
+    },
+    "plateau": {
+     "name": "The plateau",
+     "pt": [
+      550,
+      119
+     ]
+    },
+    "rise": {
+     "name": "Contraction starting (cardiac muscle)",
+     "pt": [
+      846,
+      1028
+     ]
+    },
+    "contract": {
+     "name": "Peak tension",
+     "pt": [
+      927,
+      958
+     ]
+    },
+    "repol": {
+     "name": "Repolarization",
+     "pt": [
+      807,
+      239
+     ]
+    },
+    "relax": {
+     "name": "Tension falling",
+     "pt": [
+      1028,
+      1028
+     ]
+    }
+   }
+  },
+  "cardiac-cycle": {
+   "figure": "os-19-27",
+   "title": "One heartbeat",
+   "hide": true,
+   "cover": [
+    [
+     298,
+     193,
+     114,
+     44
+    ]
+   ],
+   "places": {
+    "atrial": {
+     "name": "Atria contracting",
+     "pt": [
+      550,
+      275
+     ]
+    },
+    "s1": {
+     "name": "Ventricles start to contract",
+     "pt": [
+      697,
+      312
+     ]
+    },
+    "iso": {
+     "name": "Ventricles contracting, all valves shut",
+     "pt": [
+      826,
+      385
+     ]
+    },
+    "open": {
+     "name": "Pressure opens the semilunar valves",
+     "pt": [
+      880,
+      587
+     ]
+    },
+    "eject": {
+     "name": "Blood leaving the ventricles",
+     "pt": [
+      826,
+      734
+     ]
+    },
+    "s2": {
+     "name": "Ventricles start to relax",
+     "pt": [
+      660,
+      853
+     ]
+    },
+    "isorelax": {
+     "name": "Ventricles relaxing, all valves shut",
+     "pt": [
+      468,
+      826
+     ]
+    },
+    "avopen": {
+     "name": "AV valves open",
+     "pt": [
+      358,
+      706
+     ]
+    },
+    "fill": {
+     "name": "Ventricles filling",
+     "pt": [
+      284,
+      532
+     ]
+    }
+   }
+  },
+  "heart": {
+   "figure": "os-19-9",
+   "title": "Inside the heart",
+   "places": {
+    "ivc": {
+     "name": "Inferior vena cava",
+     "pt": [
+      395,
+      565
+     ]
+    },
+    "svc": {
+     "name": "Superior vena cava",
+     "pt": [
+      391,
+      105
+     ]
+    },
+    "lv": {
+     "name": "Left ventricle",
+     "pt": [
+      645,
+      450
+     ]
+    },
+    "wall": {
+     "name": "Ventricular wall",
+     "pt": [
+      712,
+      560
+     ]
+    },
+    "septum": {
+     "name": "Interventricular septum",
+     "pt": [
+      600,
+      540
+     ]
+    },
+    "aorta": {
+     "name": "Aorta",
+     "pt": [
+      470,
+      120
+     ]
+    }
+   }
+  },
+  "baro": {
+   "figure": "os-19-32",
+   "title": "Nerves to the heart",
+   "places": {
+    "arch": {
+     "name": "Aortic arch",
+     "pt": [
+      410,
+      1275
+     ]
+    },
+    "medulla": {
+     "name": "Medulla oblongata",
+     "pt": [
+      735,
+      490
+     ]
+    },
+    "symp": {
+     "name": "Sympathetic outflow from the spinal cord",
+     "pt": [
+      770,
+      800
+     ]
+    },
+    "heart": {
+     "name": "Heart",
+     "pt": [
+      520,
+      1650
+     ]
+    }
+   }
+  },
+  "capillary-bed": {
+   "figure": "os-21-3",
+   "title": "A capillary bed and its lymph capillaries",
+   "places": {
+    "art": {
+     "name": "Arteriole end of the capillary",
+     "pt": [
+      150,
+      228
+     ]
+    },
+    "cleft": {
+     "name": "Capillary wall",
+     "pt": [
+      205,
+      205
+     ]
+    },
+    "venend": {
+     "name": "Venule end",
+     "pt": [
+      430,
+      255
+     ]
+    },
+    "fluid": {
+     "name": "Interstitial fluid around the cells",
+     "pt": [
+      300,
+      268
+     ]
+    },
+    "lymphcap": {
+     "name": "Lymph capillary",
+     "pt": [
+      254,
+      166
+     ]
+    },
+    "lymphv": {
+     "name": "Lymphatic vessel",
+     "pt": [
+      370,
+      335
+     ]
+    }
+   }
+  },
+  "airway": {
+   "figure": "os-22-2",
+   "title": "The respiratory organs",
+   "places": {
+    "nares": {
+     "name": "Nostril",
+     "pt": [
+      366,
+      218
+     ]
+    },
+    "nasal": {
+     "name": "Nasal cavity",
+     "pt": [
+      385,
+      188
+     ]
+    },
+    "naso": {
+     "name": "Nasopharynx",
+     "pt": [
+      452,
+      212
+     ]
+    },
+    "oro": {
+     "name": "Oropharynx",
+     "pt": [
+      470,
+      262
+     ]
+    },
+    "laryngo": {
+     "name": "Laryngopharynx",
+     "pt": [
+      486,
+      306
+     ]
+    },
+    "larynx": {
+     "name": "Larynx",
+     "pt": [
+      493,
+      352
+     ]
+    },
+    "trachea": {
+     "name": "Trachea",
+     "pt": [
+      515,
+      432
+     ]
+    },
+    "primary": {
+     "name": "Right main bronchus",
+     "pt": [
+      472,
+      528
+     ]
+    },
+    "secondary": {
+     "name": "Lobar bronchus, inside the lung",
+     "pt": [
+      444,
+      560
+     ]
+    },
+    "tertiary": {
+     "name": "Segmental bronchus",
+     "pt": [
+      420,
+      598
+     ]
+    },
+    "bronchiole": {
+     "name": "Bronchiole",
+     "pt": [
+      400,
+      635
+     ]
+    },
+    "terminal": {
+     "name": "Terminal bronchiole",
+     "pt": [
+      382,
+      668
+     ]
+    },
+    "resp": {
+     "name": "Respiratory bronchiole",
+     "pt": [
+      366,
+      700
+     ]
+    },
+    "duct": {
+     "name": "Alveolar duct",
+     "pt": [
+      352,
+      728
+     ]
+    },
+    "sac": {
+     "name": "Alveolar sac",
+     "pt": [
+      338,
+      756
+     ]
+    },
+    "lungs": {
+     "name": "Lungs",
+     "pt": [
+      420,
+      640
+     ]
+    },
+    "diaphragm2": {
+     "name": "Diaphragm",
+     "pt": [
+      560,
+      795
+     ]
+    }
+   }
+  },
+  "throat": {
+   "figure": "os-22-4",
+   "title": "The nose, throat and larynx from the side",
+   "places": {
+    "tongue": {
+     "name": "Tongue",
+     "pt": [
+      600,
+      420
+     ]
+    },
+    "softpal": {
+     "name": "Soft palate",
+     "pt": [
+      460,
+      333
+     ]
+    },
+    "oro": {
+     "name": "Oropharynx",
+     "pt": [
+      398,
+      478
+     ]
+    },
+    "epi": {
+     "name": "Epiglottis",
+     "pt": [
+      448,
+      508
+     ]
+    },
+    "vocal": {
+     "name": "Vocal folds",
+     "pt": [
+      478,
+      624
+     ]
+    },
+    "vest": {
+     "name": "Vestibular folds",
+     "pt": [
+      455,
+      603
+     ]
+    },
+    "trachea": {
+     "name": "Below the vocal folds",
+     "pt": [
+      428,
+      700
+     ]
+    },
+    "esoph": {
+     "name": "Opening of the esophagus",
+     "pt": [
+      388,
+      660
+     ]
+    }
+   }
+  },
+  "breathing": {
+   "figure": "os-22-17",
+   "title": "Breathing in and breathing out",
+   "hide": true,
+   "places": {
+    "head": {
+     "name": "Brainstem",
+     "pt": [
+      450,
+      205
+     ]
+    },
+    "thorax": {
+     "name": "Thoracic cavity",
+     "pt": [
+      330,
+      400
+     ]
+    },
+    "pleura": {
+     "name": "Edge of the lung",
+     "pt": [
+      372,
+      452
+     ]
+    },
+    "lung": {
+     "name": "Lung",
+     "pt": [
+      395,
+      420
+     ]
+    },
+    "alv": {
+     "name": "Inside the lung",
+     "pt": [
+      400,
+      480
+     ]
+    },
+    "nose": {
+     "name": "Air coming in",
+     "pt": [
+      280,
+      228
+     ]
+    },
+    "diaphragm": {
+     "name": "Diaphragm",
+     "pt": [
+      372,
+      562
+     ]
+    },
+    "ribs": {
+     "name": "External intercostal muscles",
+     "pt": [
+      300,
+      470
+     ]
+    },
+    "relax": {
+     "name": "Muscles relaxing",
+     "pt": [
+      915,
+      440
+     ]
+    },
+    "out": {
+     "name": "Air going out",
+     "pt": [
+      812,
+      228
+     ]
+    }
+   }
+  },
+  "resp-centers": {
+   "figure": "os-22-20",
+   "title": "The brainstem breathing centers",
+   "places": {
+    "medsmall": {
+     "name": "Medulla oblongata",
+     "pt": [
+      518,
+      185
+     ]
+    },
+    "surface": {
+     "name": "Brain fluid by the medulla",
+     "pt": [
+      488,
+      625
+     ]
+    },
+    "chemo": {
+     "name": "Chemosensitive area of the medulla",
+     "pt": [
+      518,
+      640
+     ]
+    },
+    "centers": {
+     "name": "Breathing centers",
+     "pt": [
+      522,
+      578
+     ]
+    },
+    "muscles": {
+     "name": "Breathing muscles",
+     "pt": [
+      860,
+      1110
+     ]
+    },
+    "lungs": {
+     "name": "Lungs",
+     "pt": [
+      800,
+      1000
+     ]
+    }
+   }
+  },
+  "rbc-co2": {
+   "figure": "os-22-28",
+   "title": "Carbon dioxide in a red blood cell",
+   "hide": true,
+   "places": {
+    "co2in": {
+     "name": "CO2 entering",
+     "pt": [
+      430,
+      90
+     ]
+    },
+    "ca": {
+     "name": "Carbonic anhydrase reaction",
+     "pt": [
+      530,
+      180
+     ]
+    },
+    "split": {
+     "name": "H+ and bicarbonate",
+     "pt": [
+      655,
+      180
+     ]
+    },
+    "band3": {
+     "name": "Edge of the red blood cell",
+     "pt": [
+      735,
+      235
+     ]
+    },
+    "cell": {
+     "name": "Red blood cell",
+     "pt": [
+      600,
+      230
+     ]
+    }
+   }
+  },
+  "circulation": {
+   "figure": "os-19-4",
+   "title": "The heart and the circulation",
+   "places": {
+    "lungcap": {
+     "name": "Pulmonary capillaries",
+     "pt": [
+      268,
+      795
+     ]
+    },
+    "pveins": {
+     "name": "Blood leaving the lungs",
+     "pt": [
+      310,
+      768
+     ]
+    },
+    "la": {
+     "name": "Left atrium",
+     "pt": [
+      845,
+      185
+     ]
+    },
+    "lv": {
+     "name": "Left ventricle",
+     "pt": [
+      875,
+      350
+     ]
+    },
+    "aorta": {
+     "name": "Aorta",
+     "pt": [
+      785,
+      80
+     ]
+    },
+    "syscap": {
+     "name": "Systemic capillaries",
+     "pt": [
+      372,
+      642
+     ]
+    },
+    "ra": {
+     "name": "Right atrium",
+     "pt": [
+      640,
+      290
+     ]
+    },
+    "rv": {
+     "name": "Right ventricle",
+     "pt": [
+      770,
+      402
+     ]
+    },
+    "sysveins": {
+     "name": "Systemic veins",
+     "pt": [
+      330,
+      690
+     ]
+    },
+    "heart": {
+     "name": "Heart",
+     "pt": [
+      860,
+      330
+     ]
+    },
+    "veins": {
+     "name": "Systemic veins",
+     "pt": [
+      330,
+      690
+     ]
+    },
+    "arterioles": {
+     "name": "Small arteries and arterioles",
+     "pt": [
+      420,
+      1067
+     ]
+    },
+    "legcap": {
+     "name": "Capillaries of the lower body",
+     "pt": [
+      352,
+      1150
+     ]
+    },
+    "legveins": {
+     "name": "Veins of the lower body",
+     "pt": [
+      290,
+      1033
+     ]
+    }
+   }
+  },
+  "neuron": {
+   "figure": "os-12-8",
+   "title": "A neuron with a myelinated axon",
+   "places": {
+    "axon": {
+     "name": "Axon",
+     "pt": [
+      470,
+      205
+     ]
+    },
+    "n1": {
+     "name": "A node of Ranvier",
+     "pt": [
+      540,
+      212
+     ]
+    },
+    "inside": {
+     "name": "Inside the axon, under the myelin",
+     "pt": [
+      592,
+      226
+     ]
+    },
+    "myelin": {
+     "name": "Myelin sheath",
+     "pt": [
+      640,
+      226
+     ]
+    },
+    "n2": {
+     "name": "The next node",
+     "pt": [
+      690,
+      250
+     ]
+    },
+    "n3": {
+     "name": "A node further along",
+     "pt": [
+      700,
+      305
+     ]
+    },
+    "distal": {
+     "name": "The far part of the axon",
+     "pt": [
+      700,
+      335
+     ]
+    },
+    "sheath": {
+     "name": "Myelin sheath, far part",
+     "pt": [
+      694,
+      365
+     ]
+    },
+    "sprout": {
+     "name": "Toward the ending",
+     "pt": [
+      690,
+      425
+     ]
+    },
+    "synapse": {
+     "name": "Synapse",
+     "pt": [
+      675,
+      506
+     ]
+    }
+   }
+  },
+  "synapse": {
+   "figure": "os-12-27",
+   "title": "A chemical synapse",
+   "places": {
+    "axon": {
+     "name": "Axon of the presynaptic neuron",
+     "pt": [
+      640,
+      120
+     ]
+    },
+    "membrane": {
+     "name": "Membrane of the axon terminal",
+     "pt": [
+      585,
+      598
+     ]
+    },
+    "fuse": {
+     "name": "Vesicle fusing",
+     "pt": [
+      520,
+      612
+     ]
+    },
+    "cleft": {
+     "name": "Synaptic cleft",
+     "pt": [
+      610,
+      660
+     ]
+    },
+    "receptors": {
+     "name": "Receptor proteins on the postsynaptic membrane",
+     "pt": [
+      440,
+      690
+     ]
+    },
+    "channels": {
+     "name": "Channels in the postsynaptic membrane",
+     "pt": [
+      530,
+      708
+     ]
+    },
+    "post": {
+     "name": "Postsynaptic neuron",
+     "pt": [
+      560,
+      800
+     ]
+    },
+    "cleft2": {
+     "name": "Edge of the cleft",
+     "pt": [
+      760,
+      650
+     ]
+    }
+   }
+  },
+  "cortex": {
+   "figure": "os-16-5",
+   "title": "Functional areas of the left hemisphere",
+   "places": {
+    "aud": {
+     "name": "Primary auditory cortex",
+     "pt": [
+      493,
+      196
+     ]
+    },
+    "wern": {
+     "name": "Wernicke’s area",
+     "pt": [
+      626,
+      206
+     ]
+    },
+    "arc": {
+     "name": "Between Wernicke’s and Broca’s areas",
+     "pt": [
+      480,
+      150
+     ]
+    },
+    "broca": {
+     "name": "Broca’s area",
+     "pt": [
+      330,
+      209
+     ]
+    },
+    "face": {
+     "name": "Primary motor cortex, face area",
+     "pt": [
+      445,
+      175
+     ]
+    }
+   }
+  },
+  "motor-path": {
+   "figure": "os-14-28",
+   "title": "From the cortex to the spinal cord",
+   "places": {
+    "cortex": {
+     "name": "Cerebral cortex, precentral gyrus",
+     "pt": [
+      620,
+      200
+     ]
+    },
+    "capsule": {
+     "name": "Deep in the cerebrum",
+     "pt": [
+      560,
+      500
+     ]
+    },
+    "peduncle": {
+     "name": "Midbrain, cerebral peduncle",
+     "pt": [
+      650,
+      790
+     ]
+    },
+    "pons": {
+     "name": "Pons level",
+     "pt": [
+      560,
+      1050
+     ]
+    },
+    "pyramid": {
+     "name": "Medulla, pyramid",
+     "pt": [
+      470,
+      1390
+     ]
+    },
+    "decuss": {
+     "name": "Lower medulla, where tracts cross",
+     "pt": [
+      459,
+      1539
+     ]
+    },
+    "lateral": {
+     "name": "Spinal cord, lateral column",
+     "pt": [
+      380,
+      1760
+     ]
+    },
+    "ventral": {
+     "name": "Spinal cord, ventral horn",
+     "pt": [
+      430,
+      1960
+     ]
+    },
+    "muscle": {
+     "name": "Out to the muscle",
+     "pt": [
+      180,
+      1990
+     ]
+    },
+    "dorsal": {
+     "name": "Spinal cord, dorsal side",
+     "pt": [
+      520,
+      1880
+     ]
+    },
+    "medulla": {
+     "name": "Medulla",
+     "pt": [
+      560,
+      1250
+     ]
+    },
+    "cross": {
+     "name": "Medulla, midline",
+     "pt": [
+      540,
+      1500
+     ]
+    },
+    "upper": {
+     "name": "Brainstem, going up",
+     "pt": [
+      580,
+      1100
+     ]
+    },
+    "deep": {
+     "name": "Deep in the brain (thalamus level)",
+     "pt": [
+      560,
+      420
+     ]
+    },
+    "sensory": {
+     "name": "Cerebral cortex, just behind the precentral gyrus",
+     "pt": [
+      760,
+      170
+     ]
+    }
+   }
+  },
+  "efferent": {
+   "figure": "os-15-6",
+   "title": "Autonomic and somatic pathways out of the spinal cord",
+   "places": {
+    "lateral": {
+     "name": "Spinal cord, lateral horn",
+     "pt": [
+      220,
+      505
+     ]
+    },
+    "vroot": {
+     "name": "Ventral root",
+     "pt": [
+      300,
+      520
+     ]
+    },
+    "nerve": {
+     "name": "Spinal nerve",
+     "pt": [
+      360,
+      520
+     ]
+    },
+    "pre": {
+     "name": "Preganglionic axon",
+     "pt": [
+      468,
+      508
+     ]
+    },
+    "ganglion": {
+     "name": "Autonomic ganglion",
+     "pt": [
+      620,
+      515
+     ]
+    },
+    "post": {
+     "name": "Postganglionic axon",
+     "pt": [
+      762,
+      521
+     ]
+    },
+    "out": {
+     "name": "Out to the target",
+     "pt": [
+      840,
+      515
+     ]
+    },
+    "effector": {
+     "name": "Target effector",
+     "pt": [
+      900,
+      490
+     ]
+    },
+    "drg": {
+     "name": "Dorsal root ganglion",
+     "pt": [
+      352,
+      872
+     ]
+    },
+    "droot": {
+     "name": "Dorsal root",
+     "pt": [
+      290,
+      813
+     ]
+    },
+    "dhorn": {
+     "name": "Dorsal horn",
+     "pt": [
+      233,
+      808
+     ]
+    },
+    "vhorn": {
+     "name": "Ventral horn",
+     "pt": [
+      222,
+      878
+     ]
+    },
+    "sroot": {
+     "name": "Ventral root (somatic)",
+     "pt": [
+      300,
+      955
+     ]
+    },
+    "muscle": {
+     "name": "Skeletal muscle",
+     "pt": [
+      870,
+      900
+     ]
+    },
+    "nmj": {
+     "name": "Axon ending at the muscle",
+     "pt": [
+      880,
+      1300
+     ]
+    }
+   }
+  },
+  "visual-path": {
+   "figure": "os-14-22",
+   "title": "The eyes and the visual pathway, from below",
+   "places": {
+    "cornea": {
+     "name": "Front of the eye",
+     "pt": [
+      402,
+      408
+     ]
+    },
+    "aqueous": {
+     "name": "Behind the cornea",
+     "pt": [
+      402,
+      426
+     ]
+    },
+    "pupil": {
+     "name": "Pupil",
+     "pt": [
+      402,
+      440
+     ]
+    },
+    "lens": {
+     "name": "Lens",
+     "pt": [
+      402,
+      455
+     ]
+    },
+    "vitreous": {
+     "name": "Middle of the eye",
+     "pt": [
+      406,
+      482
+     ]
+    },
+    "retina": {
+     "name": "Retina, back of the eye",
+     "pt": [
+      420,
+      515
+     ]
+    },
+    "onerve": {
+     "name": "Optic nerve",
+     "pt": [
+      452,
+      597
+     ]
+    },
+    "chiasm": {
+     "name": "Optic chiasm",
+     "pt": [
+      548,
+      640
+     ]
+    },
+    "tract": {
+     "name": "Optic tract",
+     "pt": [
+      454,
+      728
+     ]
+    },
+    "lgn": {
+     "name": "Lateral geniculate nucleus",
+     "pt": [
+      454,
+      775
+     ]
+    },
+    "cortex": {
+     "name": "Visual cortex",
+     "pt": [
+      300,
+      980
+     ]
+    }
+   }
+  },
+  "eye": {
+   "figure": "os-14-15",
+   "title": "The eye cut open",
+   "places": {
+    "front": {
+     "name": "In front of the eye",
+     "pt": [
+      870,
+      280
+     ]
+    },
+    "ciliary": {
+     "name": "Ciliary muscle",
+     "pt": [
+      664,
+      461
+     ]
+    },
+    "zonules": {
+     "name": "Suspensory ligaments",
+     "pt": [
+      688,
+      405
+     ]
+    },
+    "lens": {
+     "name": "Lens",
+     "pt": [
+      742,
+      300
+     ]
+    },
+    "cornea": {
+     "name": "Cornea and lens",
+     "pt": [
+      760,
+      270
+     ]
+    },
+    "fovea": {
+     "name": "Retina at the fovea",
+     "pt": [
+      320,
+      354
+     ]
+    },
+    "retina": {
+     "name": "Retina",
+     "pt": [
+      325,
+      249
+     ]
+    }
+   }
+  },
+  "ear": {
+   "figure": "os-14-5",
+   "title": "The ear",
+   "places": {
+    "auricle": {
+     "name": "Auricle",
+     "pt": [
+      190,
+      316
+     ]
+    },
+    "drum": {
+     "name": "Tympanic membrane",
+     "pt": [
+      470,
+      410
+     ]
+    },
+    "ossicles": {
+     "name": "Ossicles",
+     "pt": [
+      530,
+      330
+     ]
+    },
+    "oval": {
+     "name": "Stapes at the oval window",
+     "pt": [
+      640,
+      322
+     ]
+    },
+    "cochlea": {
+     "name": "Cochlea",
+     "pt": [
+      760,
+      420
+     ]
+    },
+    "nerve": {
+     "name": "Cochlear nerve",
+     "pt": [
+      800,
+      370
+     ]
+    }
+   }
+  },
+  "posterior-pituitary": {
+   "figure": "os-17-9",
+   "title": "The hypothalamus and the pituitary gland",
+   "places": {
+    "body": {
+     "name": "Neurosecretory cell bodies in the hypothalamus",
+     "pt": [
+      560,
+      400
+     ]
+    },
+    "axon": {
+     "name": "Axons in the infundibulum",
+     "pt": [
+      560,
+      520
+     ]
+    },
+    "terminal": {
+     "name": "Axon endings in the posterior pituitary",
+     "pt": [
+      500,
+      700
+     ]
+    },
+    "blood": {
+     "name": "Capillaries of the posterior pituitary",
+     "pt": [
+      480,
+      745
+     ]
+    }
+   }
+  },
+  "glands": {
+   "figure": "os-17-2",
+   "title": "The endocrine glands",
+   "places": {
+    "brain": {
+     "name": "Brain",
+     "pt": [
+      320,
+      140
+     ]
+    },
+    "hypo": {
+     "name": "Hypothalamus",
+     "pt": [
+      668,
+      108
+     ]
+    },
+    "stalk": {
+     "name": "Hypothalamus to pituitary",
+     "pt": [
+      682,
+      118
+     ]
+    },
+    "pit": {
+     "name": "Pituitary gland",
+     "pt": [
+      686,
+      131
+     ]
+    },
+    "pineal": {
+     "name": "Pineal gland",
+     "pt": [
+      625,
+      96
+     ]
+    },
+    "neck": {
+     "name": "Neck",
+     "pt": [
+      335,
+      255
+     ]
+    },
+    "adrenal": {
+     "name": "Adrenal glands",
+     "pt": [
+      410,
+      582
+     ]
+    },
+    "thyroid": {
+     "name": "Thyroid gland",
+     "pt": [
+      705,
+      370
+     ]
+    },
+    "pancreas": {
+     "name": "Pancreas",
+     "pt": [
+      341,
+      640
+     ]
+    },
+    "testes": {
+     "name": "Testes",
+     "pt": [
+      365,
+      885
+     ]
+    },
+    "ovaries": {
+     "name": "Ovaries",
+     "pt": [
+      405,
+      785
+     ]
+    }
+   }
+  },
+  "raas": {
+   "figure": "os-25-14",
+   "title": "The renin-angiotensin-aldosterone pathway",
+   "hide": true,
+   "places": {
+    "kidney": {
+     "name": "Kidney, juxtaglomerular cells",
+     "pt": [
+      62,
+      85
+     ]
+    },
+    "angi": {
+     "name": "Angiotensin I in the blood",
+     "pt": [
+      235,
+      330
+     ]
+    },
+    "lungs": {
+     "name": "Lungs: ACE",
+     "pt": [
+      425,
+      250
+     ]
+    },
+    "angii": {
+     "name": "Angiotensin II",
+     "pt": [
+      480,
+      332
+     ]
+    },
+    "adrenal": {
+     "name": "Adrenal cortex",
+     "pt": [
+      720,
+      332
+     ]
+    },
+    "nephron": {
+     "name": "Kidney tubule cells",
+     "pt": [
+      790,
+      520
+     ]
+    },
+    "na": {
+     "name": "Sodium taken back",
+     "pt": [
+      850,
+      560
+     ]
+    },
+    "water": {
+     "name": "Water following",
+     "pt": [
+      600,
+      540
+     ]
+    }
+   }
+  },
+  "lymph": {
+   "figure": "os-21-2",
+   "title": "The lymphatic system",
+   "places": {
+    "legcap": {
+     "name": "Lymph vessels of the leg",
+     "pt": [
+      565,
+      1160
+     ]
+    },
+    "legvessel": {
+     "name": "Lymph vessel in the thigh",
+     "pt": [
+      545,
+      1010
+     ]
+    },
+    "node": {
+     "name": "Lymph node",
+     "pt": [
+      482,
+      1062
+     ]
+    },
+    "efferent": {
+     "name": "Leaving the node",
+     "pt": [
+      470,
+      985
+     ]
+    },
+    "cisterna": {
+     "name": "Cisterna chyli",
+     "pt": [
+      390,
+      745
+     ]
+    },
+    "duct": {
+     "name": "Thoracic duct",
+     "pt": [
+      397,
+      643
+     ]
+    },
+    "junction": {
+     "name": "Left subclavian and jugular veins",
+     "pt": [
+      412,
+      382
+     ]
+    },
+    "marrow": {
+     "name": "Bone marrow",
+     "pt": [
+      272,
+      1300
+     ]
+    },
+    "thymus": {
+     "name": "Thymus",
+     "pt": [
+      372,
+      440
+     ]
+    },
+    "necknodes": {
+     "name": "Lymph nodes",
+     "pt": [
+      539,
+      400
+     ]
+    }
+   }
+  },
+  "t-cells": {
+   "figure": "os-21-20",
+   "title": "Helper and cytotoxic T cells at work",
+   "hide": true,
+   "places": {
+    "apc": {
+     "name": "Dendritic cell",
+     "pt": [
+      62,
+      62
+     ]
+    },
+    "apc2": {
+     "name": "Inside the dendritic cell",
+     "pt": [
+      100,
+      90
+     ]
+    },
+    "sig1": {
+     "name": "T cell receptor meets MHC II",
+     "pt": [
+      352,
+      330
+     ]
+    },
+    "sig2": {
+     "name": "Second contact between the cells",
+     "pt": [
+      352,
+      352
+     ]
+    },
+    "cyto": {
+     "name": "Cytokines",
+     "pt": [
+      560,
+      400
+     ]
+    },
+    "th": {
+     "name": "Activated helper T cell",
+     "pt": [
+      470,
+      330
+     ]
+    },
+    "contact": {
+     "name": "Cytotoxic T cell meets the infected cell",
+     "pt": [
+      300,
+      640
+     ]
+    },
+    "aim": {
+     "name": "Granules aimed at the target",
+     "pt": [
+      330,
+      628
+     ]
+    },
+    "perforin": {
+     "name": "Perforins",
+     "pt": [
+      582,
+      690
+     ]
+    },
+    "granzyme": {
+     "name": "Granzymes",
+     "pt": [
+      586,
+      592
+     ]
+    },
+    "dying": {
+     "name": "Target cell breaking up",
+     "pt": [
+      520,
+      640
+     ]
+    }
+   }
+  },
+  "gut": {
+   "figure": "os-23-2",
+   "title": "The digestive system",
+   "places": {
+    "head": {
+     "name": "Head",
+     "pt": [
+      480,
+      110
+     ]
+    },
+    "eyes": {
+     "name": "Eyes",
+     "pt": [
+      475,
+      175
+     ]
+    },
+    "mouth": {
+     "name": "Mouth",
+     "pt": [
+      470,
+      245
+     ]
+    },
+    "esoph": {
+     "name": "Esophagus",
+     "pt": [
+      560,
+      550
+     ]
+    },
+    "stomach": {
+     "name": "Stomach",
+     "pt": [
+      650,
+      760
+     ]
+    },
+    "liver": {
+     "name": "Liver",
+     "pt": [
+      430,
+      730
+     ]
+    },
+    "gall": {
+     "name": "Gallbladder",
+     "pt": [
+      442,
+      815
+     ]
+    },
+    "duod": {
+     "name": "Duodenum",
+     "pt": [
+      492,
+      880
+     ]
+    },
+    "si": {
+     "name": "Small intestine",
+     "pt": [
+      450,
+      1000
+     ]
+    },
+    "ileum": {
+     "name": "Terminal ileum",
+     "pt": [
+      405,
+      1160
+     ]
+    },
+    "colon": {
+     "name": "Colon",
+     "pt": [
+      617,
+      944
+     ]
+    },
+    "rectum": {
+     "name": "Rectum",
+     "pt": [
+      545,
+      1285
+     ]
+    },
+    "anus": {
+     "name": "Anus",
+     "pt": [
+      536,
+      1322
+     ]
+    },
+    "pancreas": {
+     "name": "Pancreas",
+     "pt": [
+      520,
+      903
+     ]
+    }
+   }
+  },
+  "bile": {
+   "figure": "os-23-27",
+   "title": "The liver, gallbladder and bile ducts",
+   "places": {
+    "canal": {
+     "name": "Liver tissue",
+     "pt": [
+      300,
+      500
+     ]
+    },
+    "triad": {
+     "name": "Small bile ducts in the liver",
+     "pt": [
+      470,
+      420
+     ]
+    },
+    "hepatic": {
+     "name": "Right and left hepatic ducts",
+     "pt": [
+      590,
+      110
+     ]
+    },
+    "common": {
+     "name": "Common hepatic duct",
+     "pt": [
+      652,
+      240
+     ]
+    },
+    "cystic": {
+     "name": "Cystic duct",
+     "pt": [
+      520,
+      230
+     ]
+    },
+    "gb": {
+     "name": "Gallbladder",
+     "pt": [
+      300,
+      285
+     ]
+    },
+    "cbd": {
+     "name": "Common bile duct, toward the duodenum",
+     "pt": [
+      690,
+      555
+     ]
+    }
+   }
+  },
+  "pancreas": {
+   "figure": "os-23-26",
+   "title": "The pancreas and its acini",
+   "places": {
+    "acini": {
+     "name": "Acinar cells",
+     "pt": [
+      520,
+      460
+     ]
+    },
+    "smallduct": {
+     "name": "A small pancreatic duct",
+     "pt": [
+      380,
+      705
+     ]
+    },
+    "duod": {
+     "name": "Duodenum",
+     "pt": [
+      55,
+      240
+     ]
+    }
+   }
+  },
+  "kidney-vessels": {
+   "figure": "os-25-9",
+   "title": "The kidney's blood vessels",
+   "places": {
+    "renala": {
+     "name": "Renal artery",
+     "pt": [
+      210,
+      572
+     ]
+    },
+    "seg": {
+     "name": "Segmental artery",
+     "pt": [
+      275,
+      545
+     ]
+    },
+    "interlobar": {
+     "name": "Interlobar artery",
+     "pt": [
+      262,
+      478
+     ]
+    },
+    "arcuate": {
+     "name": "Arcuate artery",
+     "pt": [
+      284,
+      432
+     ]
+    },
+    "radiate": {
+     "name": "Cortical radiate artery",
+     "pt": [
+      301,
+      412
+     ]
+    },
+    "glom": {
+     "name": "Glomerulus and its arterioles",
+     "pt": [
+      741,
+      202
+     ]
+    },
+    "radiatev": {
+     "name": "Cortical radiate vein",
+     "pt": [
+      395,
+      452
+     ]
+    },
+    "arcuatev": {
+     "name": "Arcuate vein",
+     "pt": [
+      373,
+      468
+     ]
+    },
+    "interlobarv": {
+     "name": "Interlobar vein",
+     "pt": [
+      352,
+      512
+     ]
+    },
+    "renalv": {
+     "name": "Renal vein",
+     "pt": [
+      210,
+      595
+     ]
+    }
+   }
+  },
+  "nephron": {
+   "figure": "os-25-10",
+   "title": "A nephron and its blood vessels",
+   "places": {
+    "glom": {
+     "name": "Glomerulus",
+     "pt": [
+      392,
+      192
+     ]
+    },
+    "capsule": {
+     "name": "Capsular space",
+     "pt": [
+      460,
+      215
+     ]
+    },
+    "pct": {
+     "name": "Proximal convoluted tubule",
+     "pt": [
+      565,
+      300
+     ]
+    },
+    "pctend": {
+     "name": "End of the proximal tubule",
+     "pt": [
+      640,
+      520
+     ]
+    },
+    "desc": {
+     "name": "Descending limb of the loop",
+     "pt": [
+      680,
+      800
+     ]
+    },
+    "bottom": {
+     "name": "Bottom of the loop",
+     "pt": [
+      755,
+      1218
+     ]
+    },
+    "asc": {
+     "name": "Ascending limb of the loop",
+     "pt": [
+      785,
+      800
+     ]
+    },
+    "dct": {
+     "name": "Distal convoluted tubule",
+     "pt": [
+      880,
+      290
+     ]
+    },
+    "cd": {
+     "name": "Collecting duct",
+     "pt": [
+      1010,
+      800
+     ]
+    },
+    "cdlow": {
+     "name": "Collecting duct, deep in the medulla",
+     "pt": [
+      1010,
+      1300
+     ]
+    },
+    "papilla": {
+     "name": "Toward the renal papilla",
+     "pt": [
+      1010,
+      1465
+     ]
+    },
+    "ptc": {
+     "name": "Capillaries around the tubule",
+     "pt": [
+      822,
+      985
+     ]
+    },
+    "aff": {
+     "name": "Afferent arteriole",
+     "pt": [
+      280,
+      250
+     ]
+    },
+    "blood": {
+     "name": "Blood reaching the kidney",
+     "pt": [
+      228,
+      650
+     ]
+    }
+   }
+  },
+  "pct-cell": {
+   "figure": "os-25-18",
+   "title": "Across the wall of the proximal tubule",
+   "places": {
+    "pump": {
+     "name": "Sodium-potassium pump",
+     "pt": [
+      790,
+      135
+     ]
+    },
+    "cell": {
+     "name": "Inside the tubule cell",
+     "pt": [
+      500,
+      400
+     ]
+    },
+    "apical": {
+     "name": "Lumen side of the cell",
+     "pt": [
+      200,
+      555
+     ]
+    },
+    "inside": {
+     "name": "Inside the cell",
+     "pt": [
+      450,
+      555
+     ]
+    },
+    "baso": {
+     "name": "Blood side of the cell",
+     "pt": [
+      760,
+      555
+     ]
+    },
+    "blood": {
+     "name": "Bloodstream",
+     "pt": [
+      960,
+      555
+     ]
+    }
+   }
+  },
+  "cd-cell": {
+   "figure": "os-26-12",
+   "title": "A collecting duct cell and ADH",
+   "places": {
+    "blood": {
+     "name": "Bloodstream",
+     "pt": [
+      800,
+      300
+     ]
+    },
+    "baso": {
+     "name": "Blood side of the cell",
+     "pt": [
+      680,
+      262
+     ]
+    },
+    "cell": {
+     "name": "Inside the cell",
+     "pt": [
+      560,
+      300
+     ]
+    },
+    "cell2": {
+     "name": "Inside the cell, near the vesicles",
+     "pt": [
+      560,
+      350
+     ]
+    },
+    "apical": {
+     "name": "Lumen side of the cell",
+     "pt": [
+      425,
+      281
+     ]
+    },
+    "across": {
+     "name": "Water crossing the cell",
+     "pt": [
+      550,
+      480
+     ]
+    },
+    "fluid": {
+     "name": "Interstitial fluid",
+     "pt": [
+      650,
+      600
+     ]
+    }
+   }
+  },
+  "kidney-cut": {
+   "figure": "os-25-8",
+   "title": "A kidney cut open",
+   "places": {
+    "papilla": {
+     "name": "Renal papilla",
+     "pt": [
+      752,
+      366
+     ]
+    },
+    "minor": {
+     "name": "Minor calyx",
+     "pt": [
+      778,
+      161
+     ]
+    },
+    "major": {
+     "name": "Major calyx",
+     "pt": [
+      678,
+      222
+     ]
+    },
+    "pelvis": {
+     "name": "Renal pelvis",
+     "pt": [
+      659,
+      261
+     ]
+    },
+    "ureter": {
+     "name": "Ureter",
+     "pt": [
+      512,
+      460
+     ]
+    }
+   }
+  },
+  "pelvis": {
+   "figure": "os-25-3",
+   "title": "The female and male pelvis cut down the midline",
+   "places": {
+    "fbladder": {
+     "name": "Urinary bladder",
+     "pt": [
+      219,
+      220
+     ]
+    },
+    "fneck": {
+     "name": "Bladder neck",
+     "pt": [
+      226,
+      248
+     ]
+    },
+    "furethra": {
+     "name": "Urethra",
+     "pt": [
+      235,
+      271
+     ]
+    },
+    "testis": {
+     "name": "Testis",
+     "pt": [
+      743,
+      309
+     ]
+    },
+    "epi": {
+     "name": "Epididymis",
+     "pt": [
+      728,
+      290
+     ]
+    },
+    "ductus": {
+     "name": "Ductus deferens",
+     "pt": [
+      755,
+      195
+     ]
+    },
+    "ampulla": {
+     "name": "Behind the bladder",
+     "pt": [
+      866,
+      172
+     ]
+    },
+    "ejac": {
+     "name": "Ejaculatory duct, near the prostate",
+     "pt": [
+      852,
+      192
+     ]
+    },
+    "prost": {
+     "name": "Urethra in the prostate",
+     "pt": [
+      836,
+      206
+     ]
+    },
+    "memb": {
+     "name": "Urethra below the prostate",
+     "pt": [
+      815,
+      226
+     ]
+    },
+    "spongy": {
+     "name": "Urethra in the penis",
+     "pt": [
+      700,
+      242
+     ]
+    }
+   }
+  },
+  "breast": {
+   "figure": "os-27-17",
+   "title": "The breast",
+   "places": {
+    "alveoli": {
+     "name": "Alveoli",
+     "pt": [
+      240,
+      73
+     ]
+    },
+    "ducts": {
+     "name": "Small ducts",
+     "pt": [
+      195,
+      135
+     ]
+    },
+    "lact": {
+     "name": "Lactiferous duct",
+     "pt": [
+      165,
+      165
+     ]
+    },
+    "nipple": {
+     "name": "Nipple",
+     "pt": [
+      150,
+      182
+     ]
+    }
+   }
+  },
+  "male-hpg": {
+   "figure": "os-27-8",
+   "title": "Control of testosterone",
+   "hide": true,
+   "places": {
+    "hypo": {
+     "name": "Hypothalamus",
+     "pt": [
+      700,
+      150
+     ]
+    },
+    "pit": {
+     "name": "Anterior pituitary",
+     "pt": [
+      600,
+      330
+     ]
+    },
+    "leydig": {
+     "name": "Leydig cells",
+     "pt": [
+      750,
+      592
+     ]
+    },
+    "sertoli": {
+     "name": "Sertoli cells",
+     "pt": [
+      440,
+      572
+     ]
+    },
+    "brake": {
+     "name": "Back to the hypothalamus and pituitary",
+     "pt": [
+      560,
+      300
+     ]
+    }
+   }
+  },
+  "tube-to-uterus": {
+   "figure": "os-28-5",
+   "title": "From fertilization to implantation",
+   "hide": true,
+   "cover": [
+    [
+     0,
+     72,
+     44,
+     44
+    ],
+    [
+     0,
+     348,
+     44,
+     44
+    ],
+    [
+     0,
+     528,
+     44,
+     44
+    ],
+    [
+     0,
+     790,
+     44,
+     44
+    ],
+    [
+     243,
+     0,
+     44,
+     40
+    ],
+    [
+     453,
+     0,
+     44,
+     40
+    ],
+    [
+     703,
+     0,
+     44,
+     40
+    ],
+    [
+     340,
+     870,
+     720,
+     120
+    ]
+   ],
+   "places": {
+    "two": {
+     "name": "Two-cell stage",
+     "pt": [
+      100,
+      425
+     ]
+    },
+    "eight": {
+     "name": "Eight-cell stage",
+     "pt": [
+      338,
+      82
+     ]
+    },
+    "morula": {
+     "name": "Morula",
+     "pt": [
+      588,
+      82
+     ]
+    },
+    "blasto": {
+     "name": "Blastocyst",
+     "pt": [
+      830,
+      100
+     ]
+    },
+    "hatch": {
+     "name": "Near the uterine wall",
+     "pt": [
+      880,
+      562
+     ]
+    },
+    "implant": {
+     "name": "Uterine wall",
+     "pt": [
+      950,
+      602
+     ]
+    },
+    "ovary": {
+     "name": "Ovary",
+     "pt": [
+      575,
+      662
+     ]
+    },
+    "fimbriae": {
+     "name": "Fimbriae",
+     "pt": [
+      438,
+      600
+     ]
+    },
+    "ampulla": {
+     "name": "Ampulla of the uterine tube",
+     "pt": [
+      500,
+      475
+     ]
+    },
+    "isthmus": {
+     "name": "Isthmus of the uterine tube",
+     "pt": [
+      725,
+      488
+     ]
+    },
+    "wall": {
+     "name": "Where the tube meets the uterus",
+     "pt": [
+      875,
+      537
+     ]
+    },
+    "cavity": {
+     "name": "Uterine cavity",
+     "pt": [
+      975,
+      600
+     ]
+    }
+   }
+  },
+  "fertilization": {
+   "figure": "os-28-2",
+   "title": "Fertilization",
+   "hide": true,
+   "places": {
+    "corona": {
+     "name": "Corona radiata",
+     "pt": [
+      330,
+      170
+     ]
+    },
+    "zona": {
+     "name": "Zona pellucida",
+     "pt": [
+      905,
+      205
+     ]
+    },
+    "fuse": {
+     "name": "Sperm meeting the oocyte membrane",
+     "pt": [
+      700,
+      505
+     ]
+    },
+    "oocyte": {
+     "name": "Oocyte",
+     "pt": [
+      760,
+      450
+     ]
+    },
+    "zona2": {
+     "name": "Zona pellucida, close up",
+     "pt": [
+      840,
+      533
+     ]
+    }
+   }
+  },
+  "labor": {
+   "figure": "os-28-21",
+   "title": "The stages of labor",
+   "hide": true,
+   "places": {
+    "cervix": {
+     "name": "Cervix, not yet dilated",
+     "pt": [
+      281,
+      441
+     ]
+    },
+    "uterus": {
+     "name": "Uterus",
+     "pt": [
+      230,
+      250
+     ]
+    },
+    "dilating": {
+     "name": "Cervix dilating",
+     "pt": [
+      900,
+      450
+     ]
+    },
+    "full": {
+     "name": "Fully dilated cervix",
+     "pt": [
+      905,
+      520
+     ]
+    },
+    "push": {
+     "name": "Stage 2: the head",
+     "pt": [
+      250,
+      800
+     ]
+    },
+    "born": {
+     "name": "Stage 2: delivery",
+     "pt": [
+      900,
+      1150
+     ]
+    },
+    "placenta": {
+     "name": "Stage 3: placenta separating",
+     "pt": [
+      300,
+      1530
+     ]
+    },
+    "afterbirth": {
+     "name": "Afterbirth",
+     "pt": [
+      850,
+      1560
+     ]
+    }
+   }
+  },
+  "neurulation": {
+   "figure": "os-28-13",
+   "title": "The neural tube forming",
+   "hide": true,
+   "cover": [
+    [
+     575,
+     30,
+     525,
+     1010
+    ]
+   ],
+   "places": {
+    "plate": {
+     "name": "Neural plate",
+     "pt": [
+      365,
+      106
+     ]
+    },
+    "ecto": {
+     "name": "Ectoderm",
+     "pt": [
+      504,
+      120
+     ]
+    },
+    "meso": {
+     "name": "Mesoderm",
+     "pt": [
+      374,
+      173
+     ]
+    },
+    "noto": {
+     "name": "Notochord",
+     "pt": [
+      296,
+      189
+     ]
+    },
+    "folds": {
+     "name": "Neural folds",
+     "pt": [
+      330,
+      330
+     ]
+    },
+    "tube": {
+     "name": "Neural tube",
+     "pt": [
+      317,
+      795
+     ]
+    },
+    "somites": {
+     "name": "Somites",
+     "pt": [
+      370,
+      1161
+     ]
+    }
+   }
+  },
+  "heart-dev": {
+   "figure": "os-19-36",
+   "title": "How the heart develops",
+   "hide": true,
+   "places": {
+    "area": {
+     "name": "Cardiogenic area of the embryo",
+     "pt": [
+      170,
+      190
+     ]
+    },
+    "tubes": {
+     "name": "Endocardial tubes",
+     "pt": [
+      373,
+      150
+     ]
+    },
+    "fused": {
+     "name": "One heart tube",
+     "pt": [
+      605,
+      92
+     ]
+    },
+    "beats": {
+     "name": "The heart tube",
+     "pt": [
+      605,
+      150
+     ]
+    },
+    "loop": {
+     "name": "Looping heart tube",
+     "pt": [
+      400,
+      430
+     ]
+    },
+    "cushions": {
+     "name": "Endocardial cushions",
+     "pt": [
+      260,
+      780
+     ]
+    },
+    "septa": {
+     "name": "Four chambers",
+     "pt": [
+      790,
+      780
+     ]
+    }
+   }
+  },
+  "lung-dev": {
+   "figure": "os-22-29",
+   "title": "How the lungs develop",
+   "hide": true,
+   "places": {
+    "bud": {
+     "name": "Laryngotracheal bud",
+     "pt": [
+      260,
+      180
+     ]
+    },
+    "sep": {
+     "name": "Trachea separating",
+     "pt": [
+      399,
+      136
+     ]
+    },
+    "two": {
+     "name": "Two lung buds",
+     "pt": [
+      648,
+      115
+     ]
+    },
+    "lobes": {
+     "name": "Branching lungs at 8 weeks",
+     "pt": [
+      350,
+      620
+     ]
+    }
+   }
+  },
+  "birth-circ": {
+   "figure": "os-28-22",
+   "title": "The heart before and after birth",
+   "places": {
+    "pa": {
+     "name": "Pulmonary arteries, after birth",
+     "pt": [
+      700,
+      140
+     ]
+    },
+    "la": {
+     "name": "Left atrium, after birth",
+     "pt": [
+      760,
+      232
+     ]
+    },
+    "fo": {
+     "name": "Foramen ovale closing",
+     "pt": [
+      640,
+      230
+     ]
+    },
+    "da": {
+     "name": "Ductus arteriosus",
+     "pt": [
+      690,
+      142
+     ]
+    }
+   }
+  },
+  "synovial": {
+   "figure": "os-9-8",
+   "title": "A synovial joint",
+   "places": {
+    "bonetop": {
+     "name": "Upper bone",
+     "pt": [
+      380,
+      348
+     ]
+    },
+    "fibrous": {
+     "name": "Fibrous membrane of the capsule",
+     "pt": [
+      789,
+      720
+     ]
+    },
+    "synovial": {
+     "name": "Synovial membrane",
+     "pt": [
+      765,
+      655
+     ]
+    },
+    "cavity": {
+     "name": "Joint cavity",
+     "pt": [
+      600,
+      690
+     ]
+    },
+    "cartilage": {
+     "name": "Articular cartilage",
+     "pt": [
+      520,
+      724
+     ]
+    },
+    "cartilage2": {
+     "name": "Articular cartilage, upper bone",
+     "pt": [
+      520,
+      650
+     ]
+    },
+    "bone": {
+     "name": "Bone",
+     "pt": [
+      380,
+      927
+     ]
+    }
+   }
+  },
+  "knee": {
+   "figure": "os-9-19",
+   "title": "The knee",
+   "places": {
+    "tibia": {
+     "name": "Tibia",
+     "pt": [
+      208,
+      255
+     ]
+    },
+    "acl": {
+     "name": "Anterior cruciate ligament",
+     "pt": [
+      226,
+      188
+     ]
+    },
+    "slide": {
+     "name": "Top of the tibia",
+     "pt": [
+      215,
+      228
+     ]
+    },
+    "joint": {
+     "name": "Knee joint",
+     "pt": [
+      200,
+      165
+     ]
+    }
+   }
+  },
+  "endochondral": {
+   "figure": "os-6-17",
+   "title": "A long bone forming from cartilage",
+   "hide": true,
+   "places": {
+    "model": {
+     "name": "Cartilage model",
+     "pt": [
+      60,
+      180
+     ]
+    },
+    "collar": {
+     "name": "Middle of the model",
+     "pt": [
+      285,
+      150
+     ]
+    },
+    "artery": {
+     "name": "Nutrient artery entering",
+     "pt": [
+      560,
+      240
+     ]
+    },
+    "primary": {
+     "name": "Primary ossification center",
+     "pt": [
+      520,
+      200
+     ]
+    },
+    "cavity": {
+     "name": "Medullary cavity",
+     "pt": [
+      870,
+      560
+     ]
+    },
+    "secondary": {
+     "name": "Secondary ossification center",
+     "pt": [
+      860,
+      930
+     ]
+    },
+    "plates": {
+     "name": "Cartilage left at the ends",
+     "pt": [
+      450,
+      1000
+     ]
+    }
+   }
+  },
+  "fracture": {
+   "figure": "os-6-21",
+   "title": "A fracture healing",
+   "hide": true,
+   "places": {
+    "torn": {
+     "name": "Broken bone and torn vessels",
+     "pt": [
+      175,
+      150
+     ]
+    },
+    "hematoma": {
+     "name": "Fracture hematoma",
+     "pt": [
+      195,
+      120
+     ]
+    },
+    "vessels": {
+     "name": "New blood vessels",
+     "pt": [
+      399,
+      179
+     ]
+    },
+    "callus": {
+     "name": "Fibrocartilaginous callus",
+     "pt": [
+      447,
+      128
+     ]
+    },
+    "bony": {
+     "name": "Bony callus",
+     "pt": [
+      620,
+      150
+     ]
+    },
+    "healed": {
+     "name": "Remodeled bone",
+     "pt": [
+      864,
+      186
+     ]
+    }
+   }
+  },
+  "epidermis": {
+   "figure": "os-5-5",
+   "title": "The layers of the epidermis",
+   "hide": true,
+   "places": {
+    "basale": {
+     "name": "Deepest layer",
+     "pt": [
+      550,
+      640
+     ]
+    },
+    "spinosum": {
+     "name": "Second layer",
+     "pt": [
+      550,
+      480
+     ]
+    },
+    "granulosum": {
+     "name": "Third layer",
+     "pt": [
+      550,
+      300
+     ]
+    },
+    "lucidum": {
+     "name": "Fourth layer",
+     "pt": [
+      550,
+      192
+     ]
+    },
+    "corneum": {
+     "name": "Surface layer",
+     "pt": [
+      550,
+      95
+     ]
+    },
+    "shed": {
+     "name": "Skin surface",
+     "pt": [
+      550,
+      25
+     ]
+    },
+    "kc": {
+     "name": "A keratinocyte",
+     "pt": [
+      740,
+      471
+     ]
+    },
+    "melano": {
+     "name": "Melanocyte",
+     "pt": [
+      420,
+      742
+     ]
+    },
+    "near": {
+     "name": "Keratinocytes beside the melanocyte",
+     "pt": [
+      470,
+      680
+     ]
+    }
+   }
+  },
+  "skin": {
+   "figure": "os-5-2",
+   "title": "The layers of the skin",
+   "places": {
+    "epi": {
+     "name": "Epidermis",
+     "pt": [
+      520,
+      335
+     ]
+    },
+    "updermis": {
+     "name": "Upper dermis",
+     "pt": [
+      505,
+      392
+     ]
+    },
+    "deepdermis": {
+     "name": "Deep dermis",
+     "pt": [
+      590,
+      560
+     ]
+    },
+    "hypo": {
+     "name": "Hypodermis",
+     "pt": [
+      520,
+      800
+     ]
+    },
+    "sweat": {
+     "name": "Sweat gland",
+     "pt": [
+      690,
+      610
+     ]
+    },
+    "vessels": {
+     "name": "Blood vessels of the skin",
+     "pt": [
+      476,
+      598
+     ]
+    },
+    "follicle": {
+     "name": "Hair follicle",
+     "pt": [
+      353,
+      441
+     ]
+    }
+   }
+  },
+  "skeleton": {
+   "figure": "os-7-2",
+   "title": "The adult skeleton",
+   "places": {
+    "carpals": {
+     "name": "Wrist bones",
+     "pt": [
+      428,
+      535
+     ]
+    },
+    "scaphoid": {
+     "name": "Thumb side of the wrist",
+     "pt": [
+      442,
+      533
+     ]
+    },
+    "radius": {
+     "name": "Radius",
+     "pt": [
+      428,
+      455
+     ]
+    },
+    "humerus": {
+     "name": "Humerus",
+     "pt": [
+      392,
+      290
+     ]
+    },
+    "glenoid": {
+     "name": "Shoulder joint",
+     "pt": [
+      385,
+      210
+     ]
+    },
+    "clavicle": {
+     "name": "Clavicle",
+     "pt": [
+      330,
+      192
+     ]
+    },
+    "manubrium": {
+     "name": "Top of the sternum",
+     "pt": [
+      268,
+      238
+     ]
+    },
+    "sacrum": {
+     "name": "Back of the pelvis",
+     "pt": [
+      278,
+      458
+     ]
+    },
+    "ilium": {
+     "name": "Ilium",
+     "pt": [
+      335,
+      425
+     ]
+    },
+    "acetab": {
+     "name": "Hip socket",
+     "pt": [
+      322,
+      474
+     ]
+    },
+    "neck": {
+     "name": "Femoral neck",
+     "pt": [
+      340,
+      486
+     ]
+    },
+    "condyles": {
+     "name": "Lower end of the femur",
+     "pt": [
+      312,
+      722
+     ]
+    },
+    "tibia": {
+     "name": "Tibia",
+     "pt": [
+      328,
+      840
+     ]
+    },
+    "talus": {
+     "name": "Ankle",
+     "pt": [
+      318,
+      966
+     ]
+    },
+    "foot": {
+     "name": "Ball of the foot",
+     "pt": [
+      326,
+      1003
+     ]
+    }
+   }
+  },
+  "ec": {
+   "figure": "os-10-8",
+   "title": "From the nerve impulse to contraction",
+   "hide": true,
+   "places": {
+    "nerve": {
+     "name": "Motor neuron",
+     "pt": [
+      200,
+      30
+     ]
+    },
+    "terminal": {
+     "name": "Axon terminal",
+     "pt": [
+      150,
+      268
+     ]
+    },
+    "vesicles": {
+     "name": "Vesicles at the terminal",
+     "pt": [
+      170,
+      330
+     ]
+    },
+    "cleft": {
+     "name": "Synaptic cleft",
+     "pt": [
+      202,
+      348
+     ]
+    },
+    "receptors": {
+     "name": "Receptors on the muscle fiber",
+     "pt": [
+      232,
+      340
+     ]
+    },
+    "endplate": {
+     "name": "Motor end plate",
+     "pt": [
+      282,
+      330
+     ]
+    },
+    "sarco": {
+     "name": "Sarcolemma",
+     "pt": [
+      370,
+      264
+     ]
+    },
+    "ttub": {
+     "name": "T tubule",
+     "pt": [
+      432,
+      345
+     ]
+    },
+    "junction": {
+     "name": "Where the T tubule meets the SR",
+     "pt": [
+      425,
+      432
+     ]
+    },
+    "sr": {
+     "name": "Sarcoplasmic reticulum",
+     "pt": [
+      200,
+      462
+     ]
+    },
+    "ca": {
+     "name": "Calcium leaving the SR",
+     "pt": [
+      300,
+      545
+     ]
+    },
+    "troponin": {
+     "name": "Troponin",
+     "pt": [
+      288,
+      639
+     ]
+    },
+    "tropo": {
+     "name": "Thin filament",
+     "pt": [
+      335,
+      652
+     ]
+    },
+    "myosin": {
+     "name": "Myosin head",
+     "pt": [
+      330,
+      700
+     ]
+    },
+    "fiber": {
+     "name": "Muscle fiber",
+     "pt": [
+      330,
+      925
+     ]
+    },
+    "whole": {
+     "name": "Whole muscle",
+     "pt": [
+      330,
+      1040
+     ]
+    }
+   }
+  },
+  "muscle-org": {
+   "figure": "os-10-3",
+   "title": "From muscle fiber to whole muscle",
+   "places": {
+    "myofibril": {
+     "name": "Myofibril",
+     "pt": [
+      650,
+      975
+     ]
+    },
+    "fiberlow": {
+     "name": "Muscle fiber",
+     "pt": [
+      300,
+      950
+     ]
+    },
+    "fiber": {
+     "name": "Muscle fiber in a fascicle",
+     "pt": [
+      480,
+      600
+     ]
+    },
+    "endo": {
+     "name": "Endomysium",
+     "pt": [
+      480,
+      487
+     ]
+    },
+    "peri": {
+     "name": "Perimysium",
+     "pt": [
+      468,
+      452
+     ]
+    },
+    "epi": {
+     "name": "Epimysium",
+     "pt": [
+      347,
+      200
+     ]
+    },
+    "tendon": {
+     "name": "Tendon end of the muscle",
+     "pt": [
+      105,
+      140
+     ]
+    }
+   }
+  },
+  "crossbridge": {
+   "figure": "os-10-11",
+   "title": "The cross-bridge cycle",
+   "hide": true,
+   "places": {
+    "cocked": {
+     "name": "Myosin head, first panel",
+     "pt": [
+      400,
+      165
+     ]
+    },
+    "bind": {
+     "name": "Myosin head on actin",
+     "pt": [
+      335,
+      190
+     ]
+    },
+    "stroke": {
+     "name": "Power stroke",
+     "pt": [
+      420,
+      450
+     ]
+    },
+    "adp": {
+     "name": "ADP leaving",
+     "pt": [
+      455,
+      500
+     ]
+    },
+    "atp": {
+     "name": "ATP on the head",
+     "pt": [
+      480,
+      800
+     ]
+    },
+    "recock": {
+     "name": "Head recocked",
+     "pt": [
+      450,
+      1110
+     ]
+    }
+   }
+  },
+  "foot": {
+   "figure": "os-8-19",
+   "title": "The bones of the foot",
+   "places": {
+    "calc": {
+     "name": "Calcaneus",
+     "pt": [
+      850,
+      240
+     ]
+    },
+    "talus": {
+     "name": "Talus",
+     "pt": [
+      860,
+      150
+     ]
+    },
+    "nav": {
+     "name": "Navicular",
+     "pt": [
+      762,
+      180
+     ]
+    },
+    "cun": {
+     "name": "Cuneiforms",
+     "pt": [
+      722,
+      200
+     ]
+    },
+    "met1": {
+     "name": "First metatarsal",
+     "pt": [
+      640,
+      215
+     ]
+    }
+   }
+  }
+ }
+}

@@ -580,7 +580,18 @@
     if(kinds.length > 1){
       kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
-    var sd = studioDrill(app, area, o);
+    var sd = studioDrill(app, area, o), curApi = null;
+    /* o.refit(api): redraw the figure at the stage's new size (figSize), when
+       the stage first shows or changes size (tool review 2026-11: figures were
+       drawn at a third of the stage). */
+    if(sd && o.refit && window.ResizeObserver){
+      var lastSz = '', rt = null;
+      new ResizeObserver(function(){
+        var r = sd.stage.getBoundingClientRect(), k = Math.round(r.width / 8) + 'x' + Math.round(r.height / 8);
+        if(k === lastSz || r.width < 50) return; lastSz = k;
+        clearTimeout(rt); rt = setTimeout(function(){ if(curApi && curApi.fig) o.refit(curApi); }, 40);
+      }).observe(sd.stage);
+    }
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
     function draw(focus){
@@ -589,6 +600,7 @@
         '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
         '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
       var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra'), lastTry = null;
+      curApi = api;
       /* The try card on the stage, beside the figure: the student's answer
          against the right one (after Show the answer, or a later right try).
          A tool that marks the attempt on its own picture (o.onTry) still
@@ -1060,11 +1072,24 @@
     svg.addEventListener('pointerup', end); svg.addEventListener('pointercancel', end);
     if(o.cursor !== false) svg.style.touchAction = 'pan-y pinch-zoom';
   }
+  /* figSize(W, H, o): the viewBox for a Test yourself figure. On the Tool
+     Studio stage the figure fills the stage: the width stays W (text keeps
+     its size relative to the art) and the height grows to the stage's shape,
+     never below H and never past W × o.max (default 1.15). o.reserve: px kept
+     free under the figure for the try card (default 60). Off the stage, or
+     before the stage has a size, [W, H]. */
+  function figSize(W, H, o){
+    o = o || {};
+    var st = document.querySelector('.ls-drill-stage'), r = st && st.getBoundingClientRect();
+    if(!r || r.width < 200 || r.height < 160) return [W, H];
+    var h = Math.round(W * (r.height - (o.reserve == null ? 60 : o.reserve)) / r.width);
+    return [W, Math.max(H, Math.min(h, Math.round(W * (o.max || 1.15))))];
+  }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApEnvTools = {
-    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, dragOn: dragOn,
+    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, dragOn: dragOn, figSize: figSize,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

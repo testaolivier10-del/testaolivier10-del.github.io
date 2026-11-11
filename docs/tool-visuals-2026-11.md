@@ -15,6 +15,12 @@ not the job. A quick graph polish (graph paper, heavier curves) was tried on the
 |---|---|---|
 | AP Human Geography | Country A, the invented country behind the scale lab, map reader, diffusion lab and 24 built map figures, is drawn as a country: wandering borders, a coast with sea and shallows, neighbors' land, three rivers, a lake, hills and forest marks on reference maps. Same eight provinces, ids, names and label centers. Every border is still straight segments (point tests unchanged); the outer border only moved outward; authored points checked (the four that changed are isoline ends). | `scripts/aphug-country-a.mjs` (used by `build-aphug-basemaps.mjs --invented`), `base.scenery` drawn by `hug-map.js`, `diffusion-lab.js` draws the base when it arrives |
 
+- 2026-11-11, second pass on the same branch (PR #188). The owner said the first pass overcomplicated the tools:
+  "they should still be like simple and easy to use... should not be overcomplicated with too many things to look at
+  or too many words or peices of information... but again that does not mean stripping away its depth". Every tool
+  was redone against `docs/tool-review/SIMPLIFY.md`, judged by three independent reviewers and cleaned up. What is
+  still open and the two owner decisions are at the end of `docs/tool-review/README.md`.
+
 ## The question to ask of every tool (owner, 2026-11-10, second message)
 
 "Think about what a tool is meant to do and is it portraying it in the best way, or is it confusing, or not doing
@@ -58,6 +64,9 @@ scales on the same outline (global and regional, national and local) fades one i
 `scale-lab.js` (rangeHtml, the ghost image), `scale-lab.css`.
 
 ## Full review and build order
+
+Built 2026-11-10 on `claude/tool-fixes` (all 54 fixes and the redesigns): see "Built" and "Left for the owner" at the
+end of `docs/tool-review/README.md`.
 
 All 145 tools reviewed 2026-11-10: `docs/tool-review/README.md` (totals, redesign list, build order) and one file
 per course beside it. Human Geography left to do: Model Studio's five blank models and stage size (mockups first),

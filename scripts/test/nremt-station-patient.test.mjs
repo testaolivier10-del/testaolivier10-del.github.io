@@ -15,7 +15,41 @@ const run = ids => Object.fromEntries(ids.map((id, i) => [id, i + 1]));
 test('stations are found by the names the page uses', () => {
   assert.equal(SP.find('Bleeding Control / Shock Management').key, 'bleeding');
   assert.equal(SP.find('BVM Ventilation of an Apneic Adult').key, 'bvm');
-  assert.equal(SP.find('Patient Assessment — Trauma'), null);
+  // every station has its patient since 2026-11
+  const names = { 'Patient Assessment — Trauma': 'trauma', 'Patient Assessment — Medical': 'medical', 'Cardiac Arrest Management / AED': 'aed',
+    'Oxygen Administration by Non-Rebreather Mask': 'oxygen', 'Long Bone Immobilization': 'longbone', 'Joint Immobilization': 'joint',
+    'Spinal Immobilization — Supine Patient': 'supine', 'Spinal Immobilization — Seated Patient': 'seated' };
+  for (const [n, k] of Object.entries(names)) assert.equal(SP.find(n).key, k, n);
+  const page = readFileSync('nremt/skillsheets.html', 'utf8');
+  const h3 = [...page.matchAll(/<h3>([^<]+)<\/h3>\s*<div class="structure">/g)].map(m => m[1].replace(/&mdash;/g, '—'));
+  assert.equal(h3.length, 10);
+  for (const n of h3) assert.ok(SP.find(n), 'a patient for ' + n);
+});
+
+test('the later stations: a full run in order leaves nothing; misses and order show', () => {
+  for (const key of ['longbone', 'joint', 'supine', 'seated', 'oxygen', 'aed', 'trauma', 'medical']) {
+    const d = def(key);
+    const clean = d.misses({ done: run(d.steps.map(s => s.id)) });
+    assert.equal(clean.length, 0, key + ' ' + JSON.stringify(clean));
+    const m = d.misses({ done: {} });
+    // PPE is a critical criterion only where the sheet lists it (not E211, E212, E216, E217)
+    const bsiCrit = d.steps.find(s => s.id === 'bsi').critical;
+    assert.ok(m.some(x => x.key === 'bsi' && x.sev === (bsiCrit ? 'bad' : 'warn')), key + ' no BSI');
+    assert.equal(m.filter(x => x.sev === 'bad').length, d.steps.filter(s => s.critical).length, key + ' one red mark per critical step');
+  }
+  // the sheets' critical criteria (E201-E217, Registry PDFs read 2026-11-10)
+  const crit = k => def(k).steps.filter(s => s.critical).map(s => s.id).join(' ');
+  assert.equal(crit('longbone'), 'stab pms1 above below func pms2');
+  assert.equal(crit('joint'), 'stab pms1 above below pms2');
+  assert.equal(crit('supine'), 'manual collar roll torso head pms2');
+  assert.equal(crit('oxygen'), 'bsi leaks prefill flow apply');
+  assert.ok(/\bsecure\b/.test(def('joint').steps.map(s => s.id).join(' ')), 'joint: secure the entire extremity');
+  assert.ok(crit('medical').includes('report') && !crit('medical').includes('treat'), 'medical: the report is critical');
+  const tr = def('trauma').steps.map(s => s.id);
+  assert.ok(tr.indexOf('vitals') < tr.indexOf('head'), 'trauma: baseline vitals before the secondary exam');
+  const sp = def('supine'), ids = sp.steps.map(s => s.id);
+  const swapped = ids.slice(); const a = swapped.indexOf('torso'), b = swapped.indexOf('head'); [swapped[a], swapped[b]] = [swapped[b], swapped[a]];
+  assert.ok(sp.misses({ done: run(swapped) }).some(x => x.key === 'order-torso-head' && x.sev === 'bad'), 'head before torso');
 });
 
 test('tourniquet: 2 to 3 inches above the wound stops the bleed', () => {

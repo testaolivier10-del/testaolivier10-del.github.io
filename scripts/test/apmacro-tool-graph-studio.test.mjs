@@ -127,5 +127,7 @@ test('graph-studio: linked views', () => {
   const fx = GS.linked('forex', { D: 1 }, { currency: 'garv', other: 'nell' });
   assert.deepEqual(J(fx.spec.names), { currency: 'nell', other: 'garv' });
   assert.deepEqual(J(fx.state.shifts), { S: 1 }, 'demand for garvs is supply of nells');
+  assert.ok(fx.state.eq && fx.state.eq[1] < 5, 'the mirror market gets its own E2: more nells supplied, the nell depreciates');
+  assert.ok(!GS.linked('forex', {}, { currency: 'garv', other: 'nell' }).state.eq, 'no shift, no second equilibrium');
   assert.equal(GS.linked('sd', { D: 1 }), null);
 });

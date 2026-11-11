@@ -131,7 +131,7 @@
       var selV = sel > -1 && sh[sel] && !fx ? sh[sel] : null;
       if(selV) g.push('<text class="ci-h ci-c-samp" x="' + L + '" y="16">Interval ' + (sel + 1) + ': ' + (pop.kind === 'prop' ? 'p̂' : 'x̄') + ' = ' + F(selV.est, dP + 1) + ' ± ' + F(res.crit, 3) + ' × ' + F(selV.se, dP + 1) + '</text>');
       else g.push('<text class="ci-h" x="' + L + '" y="16">' + (sh.length ? big(sh.length) + ' intervals' : 'No intervals yet') + '<tspan class="ci-hs"> ' + pct(level, 0) + ' confidence, n = ' + n() + '</tspan></text>');
-      if(sh.length && !(selV && phone)) g.push('<text class="ci-h ' + (t0.sHits / t0.sh >= level - 0.03 ? 'ci-c-hit' : 'ci-c-miss') + '" x="' + (W - R) + '" y="16" text-anchor="end">' + (fx && fx.grow != null ? '' : t0.sHits + ' of ' + t0.sh + ' capture ' + parName()) + '</text>');
+      if(sh.length && !(selV && phone) && !LS) g.push('<text class="ci-h ' + (t0.sHits / t0.sh >= level - 0.03 ? 'ci-c-hit' : 'ci-c-miss') + '" x="' + (W - R) + '" y="16" text-anchor="end">' + (fx && fx.grow != null ? '' : t0.sHits + ' of ' + t0.sh + ' capture ' + parName()) + '</text>');
       // the truth
       g.push('<line class="ci-true" x1="' + tx.toFixed(1) + '" x2="' + tx.toFixed(1) + '" y1="' + (top - 6) + '" y2="' + bot.toFixed(1) + '"/>');
       g.push('<text class="ci-lab ci-c-pop" x="' + (tx + 5).toFixed(1) + '" y="' + (bot + 14).toFixed(1) + '">' + parName() + ' = ' + F(tv, pop.kind === 'prop' ? 2 : 1) + ', the true value</text>');
@@ -158,6 +158,7 @@
       (P ? P.ticks(d[0], d[1], Math.max(3, Math.min(8, Math.round(pw / 90)))) : [d[0], d[1]]).forEach(function(t){ var xx = x(t); if(xx < L - 1 || xx > W - R + 1) return; g.push('<line class="ci-tick" x1="' + xx.toFixed(1) + '" x2="' + xx.toFixed(1) + '" y1="' + (bot + 22).toFixed(1) + '" y2="' + (bot + 27).toFixed(1) + '"/><text class="ci-tk" x="' + xx.toFixed(1) + '" y="' + (bot + 40).toFixed(1) + '" text-anchor="middle">' + String(+t.toPrecision(6)).replace('-', '−') + '</text>'); });
       // the long run capture rate
       var ry0 = G0.ry0, ry1 = H - 6, rL = L + (phone ? 30 : 36), rW = W - R - rL;
+      if(rateOn()){
       g.push('<text class="ci-h ci-small" x="' + L + '" y="' + (ry0 - 8) + '">Capture rate, all intervals<tspan class="ci-hs">' + (t0.all ? ' ' + pct(t0.hits / t0.all) + ' of ' + big(t0.all) : '') + '</tspan></text>');
       var yr = function(q){ return ry1 - (q - 0.5) / 0.5 * (ry1 - ry0 - 8); };
       [0.5, 0.75, 1].forEach(function(q){ g.push('<line class="ci-grid" x1="' + rL + '" x2="' + (W - R) + '" y1="' + yr(q).toFixed(1) + '" y2="' + yr(q).toFixed(1) + '"/><text class="ci-tk" x="' + (rL - 4) + '" y="' + (yr(q) + 4).toFixed(1) + '" text-anchor="end">' + pct(q, 0) + '</text>'); });
@@ -168,11 +169,14 @@
         g.push('<polyline class="ci-rate" points="' + pts.join(' ') + '"/>');
         g.push('<text class="ci-tk" x="' + (W - R) + '" y="' + (yr(level) - 4).toFixed(1) + '" text-anchor="end">level ' + pct(level, 0) + '</text>');
       }
+      }
       svg.innerHTML = g.join('');
       if(!fx) svg.setAttribute('aria-label', 'Confidence intervals against the true value. ' + tallyText() + (sel > -1 && sh[sel] ? ' Selected: ' + ivText(sh[sel], sel) : ''));
     }
     /* rows from top to bot; the axis under them; then the capture rate strip */
-    function geo(W, H){ var phone = W < 520, rateH = phone ? 104 : 120, top = 32, bot = H - rateH - 70, rows = shown().length > 20 ? 100 : 20; return { top: top, bot: bot, rowH: (bot - top) / rows, rateH: rateH, ry0: bot + 72 }; }
+    /* pass 2: the long-run strip appears once there is a long run (more than the first 20 intervals) */
+    function rateOn(){ return !!(res && res.ivs.length > 20); }
+    function geo(W, H){ var phone = W < 520, rateH = rateOn() ? (phone ? 104 : 120) : 0, top = 32, bot = H - rateH - (rateH ? 70 : 48), rows = shown().length > 20 ? 100 : 20; return { top: top, bot: bot, rowH: (bot - top) / rows, rateH: rateH, ry0: bot + 72 }; }
     function ivText(v, i){ return 'Interval ' + (i + 1) + ': from ' + F(v.lo, 3) + ' to ' + F(v.hi, 3) + (v.hit ? ', captures ' : ', misses ') + parName() + '.'; }
 
     /* pick an interval: tap near its row, or arrow keys */
@@ -201,7 +205,7 @@
     function words(){
       var t0 = tally(), head, sub = '';
       if(!t0.all) head = 'Tap Build 100 intervals: 100 random samples, one interval from each.';
-      else if(t0.all === 20 && smps.length === 20) { head = t0.sHits + ' of these 20 intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.'; sub = 'Each row is one random sample and its ' + pct(level, 0) + ' interval. Build 100 more to see the long-run rate settle near ' + pct(level, 0) + '.'; }
+      else if(t0.all === 20 && smps.length === 20) { head = t0.sHits + ' of these 20 intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.'; sub = 'Each row is one sample and its interval. Build 100 more to watch the rate settle near ' + pct(level, 0) + '.'; }
       else if(!sub) {
         head = t0.sHits + ' of these ' + t0.sh + ' intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.';
         sub = 'All ' + big(t0.all) + ' so far: ' + pct(t0.hits / t0.all) + ' captured' + (t0.all >= 1000 ? ', close to the long run rate' : '') + '. ' + (condNote() || 'Tap an interval to read its parts.');
@@ -212,7 +216,7 @@
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
         LS.pills(t0.all ? [{ k: 'These ' + t0.sh, html: t0.sHits + ' capture', tone: 'readout' }] : [], 'left', 'explore');
-        LS.pills(t0.all ? [{ k: 'Long run', html: pct(t0.hits / t0.all), tone: Math.abs(t0.hits / t0.all - level) <= 0.015 || t0.all < 500 ? 'good' : 'warn' }] : [], 'right', 'explore');
+        LS.pills(t0.all > 20 ? [{ k: 'Long run', html: pct(t0.hits / t0.all), tone: Math.abs(t0.hits / t0.all - level) <= 0.015 || t0.all < 500 ? 'good' : 'warn' }] : [], 'right', 'explore');
       }
       var sd = $('.ci-seed'); if(sd) sd.textContent = 'Seed ' + seed + '.';
     }

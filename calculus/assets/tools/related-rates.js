@@ -325,6 +325,8 @@
     function labelsFor(c){ return liveLabels(st.id, c.q); }
     function draw(full){
       var S = scene(), c = now(), A = art();
+      // Pass 2: the small rate graph joins the scene once the student drags or plays (results appear when made).
+      var stg = $('.rr-stage'); if(stg) stg.classList.toggle('rr-moved', !!(st.touched || st.playing || st.t > 0));
       var st2 = { q: c.q, d: c.d, rate: st.rate, labels: labelsFor(c), given: S.rate.key === 'V' ? 'V' : S.rate.key, watch: S.watch, phase: st.phase };
       artG.innerHTML = A.art(geo, st2);
       var hp = A.handle(geo, st2);
@@ -335,7 +337,9 @@
       svg.setAttribute('aria-label', S.name + ': ' + S.qs.map(function(x){ return x.name + ' ' + fv(c.q[x.key], 2) + ' ' + x.unit + ', changing at ' + sig(c.d[x.key]) + ' ' + x.rate; }).join('; ') + '.');
       readouts(c);
       if(full || !st.playing || (st.t * 4 | 0) !== draw.q){ draw.q = st.t * 4 | 0; words(c, full); graphs(c); }
-      else pills(c);
+      // While playing, the caption and the readout chips change together, four times a second, from the same frame:
+      // the chips no longer run ahead of the caption's numbers. (The caption is a polite live region, so it is not
+      // rewritten every frame.)
     }
     function readouts(c){
       var S = scene();

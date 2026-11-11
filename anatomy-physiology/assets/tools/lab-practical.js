@@ -241,11 +241,14 @@
     // being tested (quiz, practical and their review) but shown to study.
     var testing = mode === 'name' || mode === 'point' || mode === 'show';
     var covers = (st.covered || []).concat(testing ? st.hints || [] : []).map(function(c){ return '<span class="lp-cover" aria-hidden="true" style="' + at(c.box, f) + '"></span>'; }).join('');
+    // A covered label's leader line would point at a white box: lp-lines erases it (eraseLeaders).
+    if((st.covered || []).length) covers += '<canvas class="lp-lines" aria-hidden="true" width="' + f.w + '" height="' + f.h + '" data-src="' + esc(BASE + f.src) + '" data-boxes="' + esc(st.covered.map(function(c){ return c.box.join(','); }).join(';')) + '"></canvas>';
     // A label printed with a typo has "fix": the right spelling drawn over it.
     covers += f.fixSvg || '';   // generator-built SVG (scripts/lib/anp-build.mjs fixSvg)
+    var vw = opts.view, F = window.AnpLabFit;   // pass 3: one view of a figure printing two or three (lab-fit.js)
     var boxes = st.labels.map(function(lab){
-      var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"';
-      if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
+      var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"' + (vw && F.off(vw, lab.box, f) ? ' tabindex="-1" aria-hidden="true" data-off="1"' : '');
+      if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + (studioPaint.hintId && studioPaint.hintId === lab.id ? ' lp-hint-t' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
       if(mode === 'study'){
         var shown = (opts.reveal || {})[lab.id];
         return '<button type="button" class="lp-box lp-mask' + (shown ? ' is-shown' : '') + '"' + dl + ' style="' + style + '" aria-pressed="' + (shown ? 'true' : 'false') + '" aria-label="' + (shown ? esc(lab.name) + '. Select to hide.' : 'Hidden label. Select to reveal.') + '"></button>';
@@ -274,8 +277,9 @@
       '<button type="button" class="lp-zbtn" data-z="-1" aria-label="Zoom out"' + (z <= 1 ? ' disabled' : '') + '>&minus;</button>' +
       '<span class="lp-zval" aria-live="polite">' + Math.round(z * 100) + '%</span>' +
       '<button type="button" class="lp-zbtn" data-z="1" aria-label="Zoom in"' + (z >= 3 ? ' disabled' : '') + '>+</button></div>';
+    if(vw) zoomBar = '<div class="lp-figbar">' + F.viewBar(vw) + zoomBar + '</div>';
     return '<figure class="lp-figure">' + zoomBar +
-      '<div class="lp-scroll' + (z > 1 ? ' is-zoomed' : '') + '"><div class="lp-fig" style="--lp-ratio:' + ratio + ';--lp-z:' + z + '">' +
+      '<div class="lp-scroll' + (z > 1 ? ' is-zoomed' : '') + (vw ? F.viewAttr(vw) : '"') + '><div class="lp-fig" style="--lp-ratio:' + ratio + ';--lp-z:' + z + '">' +
       '<img src="' + esc(BASE + f.src) + '" alt="' + esc(f.alt) + '" width="' + f.w + '" height="' + f.h + '" decoding="async">' +
       covers + boxes + '</div></div><figcaption>' + credit(f) + '</figcaption></figure>';
   }
@@ -293,7 +297,7 @@
   }
   function phoneish(){ try{ return window.matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function scrollToBox(host, lab){
-    var sc = host.querySelector('.lp-scroll.is-zoomed');
+    var sc = host.querySelector('.lp-scroll.is-zoomed, .lp-scroll.lp-fitw');
     var el = host.querySelector('.lp-box[data-label="' + lab.id + '"]');
     if(!sc || !el) return;
     sc.scrollLeft = Math.max(0, el.offsetLeft - sc.clientWidth / 2 + el.offsetWidth / 2);
@@ -320,6 +324,7 @@
     app.innerHTML = '<div class="lp">' + html + '</div>';
     app.classList.add('is-ready');
     if(ST) studioPaint();
+    if(document.querySelector('canvas.lp-lines')) fitLoad(function(F){ F.eraseLeaders(Q()); });
   }
   /* Tool Studio: the figure (with its zoom and credit) is the stage, under
      the set's name; the prompt or first-step line is the caption; the
@@ -404,10 +409,63 @@
     ST.stage.scrollTop = 0;
     root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
     ST.root.classList.toggle('lp-ls-list', !ST.stage.querySelector('.lp-ls-fig'));
-    if(!studioPaint.hinted && ST.stage.querySelector('.lp-box')){
+    fitWidth();
+    // Wait for the figure to load: before that the label boxes have no real place, and the box chosen
+    // for the ring could sit in the part of the figure the stage does not show.
+    var hImg = ST.stage.querySelector('.lp-fig img');
+    if(!studioPaint.hinted && ST.stage.querySelector('.lp-box') && (!hImg || (hImg.complete && hImg.naturalWidth))){
       studioPaint.hinted = true;
-      ST.hint({ target: '.ls-stage .lp-box', text: 'Tap a label on the figure' });
+      // The first-run ring goes on the label with the most room round it, so it covers no other label.
+      var bs = [].slice.call(ST.stage.querySelectorAll('.lp-box:not([data-off])')), best = null;
+      // Only a label in view (the figure scrolls inside the stage), so the ring shows.
+      var vc = ST.stage.querySelector('.lp-scroll') || ST.stage, vr = vc.getBoundingClientRect(), sr = ST.stage.getBoundingClientRect();
+      var inView = bs.filter(function(b){ var r = b.getBoundingClientRect(); return r.top >= Math.max(vr.top, sr.top) && r.bottom <= Math.min(vr.bottom, sr.bottom, window.innerHeight) && r.width > 0; });
+      if(inView.length) bs = inView;
+      bs.forEach(function(b){
+        var r = b.getBoundingClientRect(), gap = 1e9;
+        bs.forEach(function(o){ if(o === b) return; var q = o.getBoundingClientRect(); gap = Math.min(gap, Math.max(q.left - r.right, r.left - q.right, q.top - r.bottom, r.top - q.bottom)); });
+        if(!best || gap > best.gap) best = { b: b, gap: gap };
+      });
+      // A repaint (the figure loading) makes new label boxes: the box render keeps the class on the same label.
+      if(best){ best.b.classList.add('lp-hint-t'); studioPaint.hintId = best.b.getAttribute('data-label'); }
+      ST.hint({ target: '.ls-stage .lp-hint-t', text: 'Tap a label on the figure' });
     }
+  }
+
+  /* A tall figure in a wide stage (tool review 2026-11): fitted whole, it
+     used about 40% of the width and its printed labels drew at about 6 px.
+     It opens fitted to the width instead (at most 1.6 times the whole-figure
+     size) and the stage scrolls down it; zoom works from there. */
+  /* The leader-line eraser and the drawn-extent measure live in lab-fit.js,
+     loaded on first use (they read the figure's pixels). */
+  var fitWait = null, VIEWS = {};
+  function fitLoad(cb){
+    if(window.AnpLabFit) return cb(window.AnpLabFit);
+    if(fitWait){ fitWait.push(cb); return; }
+    fitWait = [cb];
+    var sc = document.createElement('script');
+    sc.src = (window.ANP_BASE || '../') + 'assets/tools/lab-fit.js';
+    sc.onload = sc.onerror = function(){ var w = fitWait; fitWait = null; if(window.AnpLabFit) w.forEach(function(f){ f(window.AnpLabFit); }); };
+    document.head.appendChild(sc);
+  }
+  function fitWidth(){
+    var sc = ST.stage.querySelector('.lp-ls-fig .lp-scroll'), fg = sc && sc.querySelector('.lp-fig'), im = fg && fg.querySelector('img');
+    if(!im || sc.classList.contains('lp-view')) return;
+    var ratio = parseFloat(fg.style.getPropertyValue('--lp-ratio')) || 1;
+    fitLoad(function(F){ F.inkBox(im.getAttribute('src'), function(box){
+      if(!document.contains(sc)) return;
+      var cw = sc.clientWidth, ch = sc.clientHeight;
+      if(!cw || !ch) return;
+      var whole = Math.min(cw, ch * ratio), drawn = whole * (box[2] - box[0]);
+      if(drawn >= 0.8 * cw) return;
+      // the drawn part fills the width, up to 1.7 times the whole-figure size
+      var k = Math.min(1.7, cw / drawn);
+      if(k < 1.12) return;
+      sc.classList.add('lp-fitw');
+      sc.style.setProperty('--lp-fw', (whole * k).toFixed(1) + 'px');
+      var z = parseFloat(fg.style.getPropertyValue('--lp-z')) || 1;
+      if(z === 1 && !sc.scrollLeft) sc.scrollLeft = Math.max(0, box[0] * whole * k - (cw - drawn * k) / 2);
+    }); });
   }
 
   /* ---------------------------------------------------------------- routing
@@ -547,7 +605,15 @@
 
   /* --------------------------------------------------------- explore, study */
   function showExplore(s, n, mode){
-    var st = s.stations[n], z = 1, reveal = {}, pick = null, studyOpen = false;
+    var st = s.stations[n], z = 1, reveal = {}, pick = null, studyOpen = false, vk = 0;
+    var VW = ST ? VIEWS[st.figure] : null;
+    function view(){ return VW && VW.length > 1 && window.AnpLabFit ? window.AnpLabFit.viewOf(st, VW, vk) : null; }
+    if(ST && VIEWS[st.figure] === undefined) fitLoad(function(F){
+      F.views(BASE + st.fig.src, st.fig, st.labels.map(function(l){ return l.box; }), function(v){
+        VIEWS[st.figure] = v;
+        if(v && v.length > 1 && document.contains(app) && Q().querySelector('.lp-box[data-label="' + st.labels[0].id + '"]')){ VW = v; draw(); }
+      });
+    });
     function draw(){
       var body = setHeader(s, mode) +
         '<p class="kt-first lp-lead">' + (mode === 'explore'
@@ -556,18 +622,20 @@
         stationTabs(s, n, mode) +
         (mode === 'study' && window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit.more('<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>', { open: !!studyOpen, cls: 'lp-studymore' })
           : mode === 'study' ? '<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>' : '') +
-        '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick }) +
+        '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick, view: view() }) +
         '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : mode === 'explore' ? '' : '<p class="anp-small">Revealed labels are explained here.</p>') + '</div></div>' +
         (n + 1 < s.stations.length ? '<p class="lp-next"><a class="btn-outline" href="#' + mode + '/' + s.id + '/' + (n + 2) + '">Next figure &rarr;</a></p>' : '');
       paint(body);
       setPicker(s, mode);
       if(pick) keepGoing(Q().querySelector('.lp-info'), pick, st);
       wireZoom(Q(), function(){ return z; }, function(v){ z = v; draw(); });
+      Q().querySelectorAll('.lp-vbtn').forEach(function(b){ b.addEventListener('click', function(){ vk = +b.getAttribute('data-v'); draw(); var nb = Q().querySelector('.lp-vbtn[data-v="' + vk + '"]'); if(nb) nb.focus(); }); });
       var sm = Q().querySelector('.lp-studymore'); if(sm) sm.addEventListener('toggle', function(){ studyOpen = sm.open; });
       Q().querySelectorAll('.lp-box').forEach(function(b){
         b.addEventListener('click', function(){
           var id = b.getAttribute('data-label');
           var lab = st.labels.filter(function(l){ return l.id === id; })[0];
+          if(view()) vk = window.AnpLabFit.viewAt(VW, lab.box, st.fig);
           if(mode === 'study'){ reveal[id] = !reveal[id]; pick = reveal[id] ? lab : pick === lab ? null : pick; }
           else pick = lab;
           draw();

@@ -103,14 +103,16 @@
       out.push('<g class="pg-alab">' + labs.join('') + '</g>');
       if(c){
         var tr = o.traced == null ? TAU : o.traced;
-        // band-colored glow under the traced curve, then the curve
-        bandsOf.forEach(function(pc){
-          var a = pc.a, b = Math.min(pc.b, tr); if(b <= a + 1e-9) return;
-          var pts = samples(c, a, b, Math.max(8, Math.round(240 * (b - a) / TAU)));
-          out.push('<path class="pg-glow is-' + pc.dist + '" d="M' + pts.map(function(p){ var z = xy(p[0], p[1]); return r1(z[0]) + ' ' + r1(z[1]); }).join('L') + '"/>');
-        });
+        // pass 3: one stroke, colored by its band (moving away / toward), not a glow under a blue line:
+        // where a curve retraces itself the glows of both passes showed as a doubled outline.
         if(o.ghost && tr < TAU){ var gp = splitPaths(samples(c, tr, TAU, 360), xy); out.push('<path class="pg-ghost" d="' + gp.pos + gp.neg + '"/>'); }
-        if(tr > 0){ var sp = splitPaths(samples(c, 0, tr, Math.max(12, Math.round(720 * tr / TAU))), xy); out.push('<path class="pg-curve" d="' + sp.pos + '"/><path class="pg-curve is-neg" d="' + sp.neg + '"/>'); }
+        if(tr > 0 && bandsOf.length){
+          bandsOf.forEach(function(pc){
+            var a = pc.a, b = Math.min(pc.b, tr); if(b <= a + 1e-9) return;
+            var sp1 = splitPaths(samples(c, a, b, Math.max(12, Math.round(720 * (b - a) / TAU))), xy);
+            out.push('<path class="pg-curve is-' + pc.dist + '" d="' + sp1.pos + '"/><path class="pg-curve is-neg is-' + pc.dist + '" d="' + sp1.neg + '"/>');
+          });
+        } else if(tr > 0){ var sp = splitPaths(samples(c, 0, tr, Math.max(12, Math.round(720 * tr / TAU))), xy); out.push('<path class="pg-curve" d="' + sp.pos + '"/><path class="pg-curve is-neg" d="' + sp.neg + '"/>'); }
         if(o.interval){
           var ia = o.interval[0], ib = o.interval[1], ip = splitPaths(samples(c, ia, ib, 160), xy);
           out.push('<path class="pg-arc" d="' + ip.pos + ip.neg + '"/>');
@@ -180,7 +182,7 @@
       '<section class="bt-problem pg-card" aria-label="Polar graphs explorer">' +
         '<div class="pg-stage">' +
           '<div class="pg-wrap" tabindex="0" role="slider" aria-label="Angle θ on the polar curve: arrow keys turn it"><svg class="pg-svg" aria-hidden="true"></svg></div>' +
-          '<p class="pg-legend" aria-hidden="true"><span class="pg-lg pg-lg-c">r = f(θ)</span><span class="pg-lg pg-lg-p">the point and r</span><span class="pg-lg pg-lg-a">moving away</span><span class="pg-lg pg-lg-t">moving toward</span><span class="pg-lg pg-lg-n">r &lt; 0</span></p>' +
+          '<p class="pg-legend" aria-hidden="true"><span class="pg-lg pg-lg-a">moving away</span><span class="pg-lg pg-lg-t">moving toward</span><span class="pg-lg pg-lg-n">r &lt; 0</span></p>' +
         '</div>' +
         '<div class="pg-ctl">' +
           '<div class="pg-chips ls-scroll" role="group" aria-label="Curve"></div>' +
@@ -307,8 +309,8 @@
       } else {
         if(Math.abs(rv) < 1e-9) head = esc('θ = ' + th + ': r = 0, so the curve passes through the origin here.');
         else if(Math.abs(c.slope(st.t)) < 1e-9 && c.spec.trig !== 'const') head = esc('θ = ' + th + ': r = ' + num(rv) + ' is a turning value of r, so the distance ' + num(Math.abs(rv)) + ' is ' + (Math.abs(rv) >= c.maxR - 1e-9 ? 'the greatest on the curve' : 'a turning point of the distance') + (rv < 0 ? ' (r < 0: the point is on the ray opposite θ).' : '.'));
-        else if(rv > 0) head = esc('θ = ' + th + ': r = ' + num(rv) + '. r > 0 and r is ' + dirR + ', so ' + move + '.');
-        else head = esc('θ = ' + th + ': r = ' + num(rv) + ' < 0, so the point is ' + num(-rv) + ' from the origin on the ray opposite θ. r is ' + dirR + ', so ' + move + '.');
+        else if(rv > 0) head = esc('r > 0 and r is ' + dirR + ', so ' + move + '.');
+        else head = esc('r < 0, so the point is ' + num(-rv) + ' from the origin on the ray opposite θ. r is ' + dirR + ', so ' + move + '.');
         body = '<ol class="pg-feats"><li>' + html('$x = r\\cos\\theta = ' + M.fixed(xy[0], 3) + '$ and $y = r\\sin\\theta = ' + M.fixed(xy[1], 3) + '$.') + '</li>' +
           '<li>' + html('The distance from the origin is $|r|$. It increases where $r > 0$ and $r$ is increasing, or $r < 0$ and $r$ is decreasing (green bands); it decreases in the other two cases (pink bands).') + '</li>' +
           '<li>' + html(shapeRule()) + '</li></ol>';
@@ -320,7 +322,7 @@
         var ph = phoneNow();
         LS.pills(st.view === 'interval' ? [{ k: 'Δr/Δθ', html: num(PG.avgRate(c, st.t, st.t + width()), 3), tone: 'readout' }] :
           ph ? [{ html: 'θ ' + esc(th) + ' · <span class="pg-pv">r ' + num(rv) + '</span>', tone: 'ghost' }] :
-          [{ k: 'θ', html: esc(th), tone: 'readout' }, { k: 'r', html: '<span class="pg-pv">' + num(rv) + '</span>', tone: 'readout' }, { k: '(x, y)', html: '(' + num(xy[0]) + ', ' + num(xy[1]) + ')', tone: 'readout' }], 'left', 'explore');
+          [{ k: 'θ', html: esc(th), tone: 'readout' }, { k: 'r', html: '<span class="pg-pv">' + num(rv) + '</span>', tone: 'readout' }] /* pass 2: (x, y) lives in the Explanation */, 'left', 'explore');
       }
       if(full) say(T.plainText(head));
     }

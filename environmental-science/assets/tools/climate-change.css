@@ -26,7 +26,11 @@
 .cc-ground{fill:var(--cc-ground);}
 .cc-tree rect{fill:#6B4F2E;} .cc-tree circle{fill:#3F7D3A;}
 .cc-house rect{fill:#E8E1D2;stroke:#6B5E4A;stroke-width:1.2;} .cc-house path{fill:#A3533A;}
-.cc-house.is-wet rect{fill:#9CC3DB;}
+.cc-house.is-wet rect{fill:#C9D9E2;}
+.cc-house .cc-door{fill:#6B5E4A;stroke:none;}
+.cc-sea-over{opacity:.72;}
+.cc-rise{fill:none;stroke:var(--cc-bad, #C2271A);stroke-width:2.2;}
+.cc-c-bad{fill:#C2271A;}
 .cc-sun{fill:#F3C04F;stroke:#E0A800;stroke-width:3;}
 .cc-o3 circle{fill:var(--cc-o3);stroke:var(--white);stroke-width:.8;}
 .cc-co2 .c{fill:var(--cc-c);} .cc-co2 .o{fill:var(--cc-o);} .cc-co2 circle{stroke:var(--white);stroke-width:.8;}
@@ -97,7 +101,10 @@
 .cc-rise{fill:none;stroke:var(--cc-ir);stroke-width:2.5;}
 /* dock */
 .cc-ctl{display:flex;flex-direction:column;gap:10px;}
-.cc-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.cc-views{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+/* Pass 3: the layer not in focus (greenhouse or ozone scene) sits behind a light veil. */
+.cc-veil{fill:var(--surface,#fff);opacity:.55;pointer-events:none;}
+[data-theme=dark] .cc-veil{fill:#0B1320;opacity:.5;}
 .cc-views button{min-height:44px;}
 .cc-grp{display:flex;flex-direction:column;gap:10px;}
 .cc-grp[hidden],.cc-pl[hidden],.cc-cfcs[hidden]{display:none !important;}
@@ -118,3 +125,14 @@ body.ls-on .env-crumb{display:none;}
 .cc-call,.cc-layer{stroke-width:0;}
 /* Room for the first-run tip while it shows (hintSlot). */
 .env-tipslot{height:58px;flex:none;}
+:root[data-theme="dark"] .cc-c-bad{fill:#FF8A7A;} :root[data-theme="dark"] .cc-rise{stroke:#FF8A7A;}
+/* Pass 2: the response curves sit in Numbers & setup; carbonate drawn as ions */
+.cc-curves{display:block;width:100%;max-width:560px;height:auto;margin-top:12px;}
+.cc-carbion .c{fill:#3A4744;} .cc-carbion .o{fill:#F6E7B8;} .cc-carbion circle{stroke:rgba(0,0,0,.25);stroke-width:.6;}
+:root[data-theme="dark"] .cc-carbion .c{fill:#C9D3D1;}
+/* Pass 3: four scenes, two by two, so every name reads whole. */
+.ls-root .ls-seg.cc-views{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-radius:18px;}
+.ls-root .ls-seg.cc-views button{min-height:40px;}
+/* A phone keeps one row (the CO₂ slider sits under it): smaller type so the names fit. */
+.ls-root.ls-phone .ls-seg.cc-views{grid-template-columns:repeat(4,minmax(0,1fr));border-radius:999px;}
+.ls-root.ls-phone .ls-seg.cc-views button{padding-left:2px;padding-right:2px;font-size:12px;letter-spacing:-.01em;}

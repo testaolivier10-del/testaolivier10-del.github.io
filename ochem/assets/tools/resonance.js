@@ -73,7 +73,7 @@
     '<div class="tpanel" id="resPickPanel">' +
       '<div class="tpanel__head"><span>Pick a molecule or ion</span></div>' +
       '<div class="tchips" id="resPicker"></div>' +
-      '<details class="tool-more" id="resMore"><summary>More species, or build your own</summary>' +
+      '<details class="tool-more" id="resMore"><summary>Other species, or build your own</summary>' +
         '<div class="tchips" id="resPicker2"></div>' +
         '<div class="trow" style="margin-top:12px;">' +
           '<button type="button" class="tchip tchip--ghost" id="resBuildToggle">Build your own &rarr;</button>' +
@@ -89,6 +89,8 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Move the electrons</span><span id="resName" class="tmuted"></span></div>' +
         '<div id="resEditor"></div>' +
+        '<div id="resHybrid" class="res-hybwrap" hidden></div>' +
+        '<button type="button" class="tchip tchip--mini" id="resHybridOn" hidden>See the hybrid</button>' +
         '<div aria-live="polite" id="resVerdict"></div>' +
       '</div>' +
       '<div class="tpanel">' +
@@ -142,6 +144,7 @@
     begin(start, elName.textContent);
   });
   document.getElementById('resReveal').addEventListener('click', reveal);
+  document.getElementById('resHybridOn').addEventListener('click', function(){ hybridOff = false; renderHybrid(); });
 
   function select(sp){
     current = sp;
@@ -170,6 +173,7 @@
     }
     found = {};
     arrows = [];
+    hybridOff = false;
     elName.textContent = name || '';
     start = st;
     target = R.contributors(start);
@@ -324,6 +328,7 @@
     document.getElementById('resReveal').disabled = remaining() === 0;
     renderCharge(got);
     renderSummary(got.length === target.length);
+    renderHybrid();
   }
 
   /* ---- The charge, spread over the forms found so far --------------------
@@ -387,6 +392,111 @@
         : 'Spread over <b>' + spread + '</b> atom' + (spread === 1 ? '' : 's') + '. ' +
           (got.length < target.length ? 'Each form you add spreads it further.' : 'That is every form: the real molecule shares the charge over these same atoms, though not in these exact fractions.')) +
       ' A plain average of the forms found; in reality the major contributors count for more.</p>';
+  }
+
+  /* ---- The resonance hybrid (tool review 2026-11) -----------------------
+
+     The real molecule is none of the forms: it is the hybrid. Once every
+     form is found it is drawn: a bond that is single in one form and double
+     in another is a solid line with a dashed one beside it, and an atom that
+     carries a charge in some forms but not all gets δ− or δ+. A δ on an atom
+     charged in a major form is drawn large; one only a minor form charges is
+     small, because the minor forms count for less. An atom charged the same
+     way in every form keeps its full charge (ozone's central O⁺). Lone pairs
+     are left off: which atom holds them is what differs between forms. */
+  function cropBox(mol, mx, my){
+    var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k], r = t.r || 14;
+      x0 = Math.min(x0, t.x - r - mx); x1 = Math.max(x1, t.x + r + mx); y0 = Math.min(y0, t.y - r - my); y1 = Math.max(y1, t.y + r + my); });
+    var w = Math.max(150, x1 - x0), h = Math.max(100, y1 - y0), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    mol.viewBox = Math.round(cx - w / 2) + ' ' + Math.round(cy - h / 2) + ' ' + Math.round(w) + ' ' + Math.round(h);
+    return mol;
+  }
+  // A structure drawn to fill its box (the 320 by 170 field left small species a quarter of their card).
+  function fitSvg(st, label){
+    return Mol.svg(cropBox(C.toMolecule(st), 12, 12), { caption:'', label: label });
+  }
+  function inRingBond(mol, a, b){
+    var seen = {}, q = [a]; seen[a] = 1;
+    while(q.length){
+      var k = q.shift();
+      for(var i = 0; i < mol.bonds.length; i++){
+        var x = mol.bonds[i], n = x.a === k ? x.b : (x.b === k ? x.a : null);
+        if(!n || seen[n] || (k === a && n === b) || (k === b && n === a)) continue;
+        if(n === b) return true;
+        seen[n] = 1; q.push(n);
+      }
+    }
+    return false;
+  }
+  function hybridSvg(forms, label){
+    if(!forms || !forms.length) return '';
+    var best = Math.max.apply(null, forms.map(function(f){ return R.score(f).total; }));
+    var mol = C.toMolecule(forms[0]);
+    var cx = 0, cy = 0, n = 0;
+    Object.keys(mol.atoms).forEach(function(k){ cx += mol.atoms[k].x; cy += mol.atoms[k].y; n++; });
+    cx /= n || 1; cy /= n || 1;
+    var dashes = '', partial = 0;
+    mol.bonds.forEach(function(b){
+      var os = forms.map(function(f){ var x = C.findBond(f, b.a, b.b); return x ? x.order : 0; });
+      var lo = Math.min.apply(null, os), hi = Math.max.apply(null, os);
+      b.order = lo;
+      if(hi <= lo) return;
+      partial++;
+      var A = mol.atoms[b.a], Z = mol.atoms[b.b], dx = Z.x - A.x, dy = Z.y - A.y, L = Math.sqrt(dx * dx + dy * dy) || 1;
+      var ox = -dy / L * 7, oy = dx / L * 7, mx = (A.x + Z.x) / 2, my = (A.y + Z.y) / 2;
+      var toward = (cx - mx) * ox + (cy - my) * oy > 0, ring = inRingBond(mol, b.a, b.b);
+      // Inside a ring, outside a chain: where a second line is drawn in a Kekulé structure.
+      if(ring !== toward){ ox = -ox; oy = -oy; }
+      if(lo >= 2){ ox *= 1.5; oy *= 1.5; }
+      dashes += '<line class="res-hyb__dash" x1="' + (A.x + dx * 0.22 + ox).toFixed(1) + '" y1="' + (A.y + dy * 0.22 + oy).toFixed(1) +
+        '" x2="' + (A.x + dx * 0.78 + ox).toFixed(1) + '" y2="' + (A.y + dy * 0.78 + oy).toFixed(1) + '"/>';
+    });
+    var deltas = '', said = [];
+    Object.keys(mol.atoms).forEach(function(k){
+      var a = mol.atoms[k];
+      a.lp = 0;
+      var qs = forms.map(function(f){ var t = f.atoms[k]; return t && t.el && !t.group ? C.formalCharge(f, k) : 0; });
+      var same = qs.every(function(q){ return q === qs[0]; });
+      if(same) return;   // keeps the charge toMolecule gave it (none, or the same in every form)
+      a.charge = '';
+      var neg = qs.some(function(q){ return q < 0; }), pos = qs.some(function(q){ return q > 0; });
+      var major = forms.some(function(f, i){ return qs[i] !== 0 && R.score(f).total === best; });
+      // Away from the atom's bonds, so the mark never sits on a line.
+      var vx = 0, vy = 0;
+      mol.bonds.forEach(function(b){ var o = b.a === k ? b.b : (b.b === k ? b.a : null); if(o){ vx += mol.atoms[o].x - a.x; vy += mol.atoms[o].y - a.y; } });
+      var vl = Math.sqrt(vx * vx + vy * vy), ux = vl ? -vx / vl : 0, uy = vl ? -vy / vl : -1;
+      var d = (a.r || 14) + (major ? 14 : 11);
+      [neg ? '−' : null, pos ? '+' : null].filter(Boolean).forEach(function(sg, j){
+        var tx = a.x + ux * d + (j ? -uy * 18 : 0), ty = a.y + uy * d + (j ? ux * 18 : 0);
+        deltas += '<circle class="res-hyb__halo res-hyb__halo--' + (sg === '−' ? 'neg' : 'pos') + '" cx="' + a.x + '" cy="' + a.y + '" r="' + ((a.r || 14) + (major ? 9 : 5)) + '"/>' +
+          '<text class="res-hyb__d res-hyb__d--' + (sg === '−' ? 'neg' : 'pos') + (major ? '' : ' is-minor') + '" x="' + tx.toFixed(1) + '" y="' + (ty + 6).toFixed(1) + '" text-anchor="middle">δ' + sg + '</text>';
+        said.push('δ' + sg + ' on ' + (a.label || k));
+      });
+    });
+    cropBox(mol, 34, 34);
+    mol.decor = dashes;
+    return Mol.svg(mol, { caption:'', label: (label || 'Resonance hybrid') + (said.length ? ': ' + said.join(', ') : '') +
+      (partial ? ', ' + partial + ' partial bond' + (partial === 1 ? '' : 's') : '') }).replace('</svg>', deltas + '</svg>');
+  }
+  var hybridOff = false;
+  function renderHybrid(){
+    var el = document.getElementById('resHybrid');
+    if(!el) return;
+    var done = target.length > 1 && remaining() === 0;
+    el.hidden = !done || hybridOff;
+    var ed = document.getElementById('resEditor');
+    if(ed) ed.hidden = done && !hybridOff;
+    var back = document.getElementById('resHybridOn');
+    if(back) back.hidden = !(done && hybridOff);
+    if(!done){ el.innerHTML = ''; return; }
+    var equal = R.compare(target[0], target[target.length - 1]).winner === 'tie';
+    el.innerHTML = '<p class="ls-pane-k res-hyb__k">The real molecule: the resonance hybrid</p>' +
+      '<div class="tstage res-hyb">' + hybridSvg(target, 'Resonance hybrid of ' + (elName.textContent || 'this species')) + '</div>' +
+      '<p class="res-hyb__key">Dashed line: a bond that is double in some forms. δ: a share of the charge' +
+      (equal ? ', split evenly because the forms are equally good.' : ': large where a major form puts the charge, small where only a minor form does.') + '</p>' +
+      '<button type="button" class="tchip tchip--mini" id="resHybridOff">Back to the board</button>';
+    el.querySelector('#resHybridOff').addEventListener('click', function(){ hybridOff = true; renderHybrid(); });
   }
 
   function reveal(){
@@ -636,7 +746,9 @@
     function side(which, pick, sta){
       if(!pick) return '<div class="tempty">Pick one.</div>';
       var revealed = cmpGuess !== null;
-      return '<div class="tstage">' + Mol.svg(C.toMolecule(sta.forms[0]), { caption:'' }) + '</div>' +
+      // After the call, each side becomes its hybrid: how far the charge is spread is then the picture itself.
+      return '<div class="tstage res-cmpmol">' + (revealed ? hybridSvg(sta.forms, 'Resonance hybrid of ' + pick.label) : fitSvg(sta.forms[0], pick.label)) + '</div>' +
+        (revealed ? '<p class="res-hyb__key">The hybrid' + (sta.count > 1 ? ': ' + sta.count + ' forms blended' : ': one form, nothing to blend') + '</p>' : '') +
         (revealed
           ? '<div class="tstat" style="margin-top:12px;">' +
               '<div><div class="k">Forms</div><div class="v">' + sta.count + '</div></div>' +
@@ -761,13 +873,14 @@
     edBox.classList.add('ls-ed');
     var foundPane = mk('ls-pane res-ls-found', '<p class="ls-pane-k">Forms found</p>');
     foundPane.appendChild(elFound);
-    pics.appendChild(edBox); pics.appendChild(foundPane);
+    pics.appendChild(edBox); pics.appendChild(byId('resHybrid')); pics.appendChild(foundPane);
     var act = mk('ap-ls-act res-ls-act');
     var cmpStage = mk('ls-pics res-ls-cmp'), cmpDock = mk('res-ls-cmpdock'), cmpWhy = mk('res-ls-cmpwhy'), cmpDet = mk('ls-sec res-ls-cmpdet');
     var prog = mk('ls-sec res-ls-prog');
     prog.appendChild(elProgress);
     // the reveal and start-over buttons are actions: they live in the dock, not under Why
     var tools = byId('resReveal').parentNode; tools.classList.add('ls-row');
+    tools.appendChild(byId('resHybridOn'));
     var formsWhy = mk('ls-sec res-ls-forms');
     var resMode = Kit.seg(byId('resMode'), 'data-mode');
     Kit.scrollChips(byId('resPickPanel'));

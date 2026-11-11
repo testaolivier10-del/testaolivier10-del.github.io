@@ -237,3 +237,14 @@ Reviewer notes from `docs/apenv-reviews/u1-math.md`.
   in the drills is now within 2x the tolerance and 25% of the key, with no 2% floor, and an authored slip that lands
   within 2.5x the tolerance of the key (10 x the pH difference vs 10 to that power when the difference is 0.9) is
   named instead of being called close. A teacher may want a wider "close" on graph reads.
+
+## Cycles: human changes act on the whole planet (tool review 2026-11-10)
+
+"Pave land (cities)" scales all of the world's infiltration by 0.3 and runoff by 1.6, so in 31 years lakes and rivers
+rise 40% and groundwater falls; "Add fertilizer" nearly doubles plants and animals in 26 years (the nitrogen stores are
+relative units, 100 each). Constructed impervious surface is about 0.43% of Earth's land (Elvidge et al. 2007, ORNL
+"Global distribution and density of constructed impervious surfaces"), so a believable global share would show almost
+nothing. Done for now: the model is unchanged and the tool says so (the change reads "an exaggerated case: as if all land
+were paved like a city", the explanation gives the 0.4% and that inside a paved watershed the change is this large; the
+fertilizer note says the nitrogen amounts are a relative sketch). Open for a teacher: keep the exaggerated case, or
+recast the water cycle's human changes as one paved watershed with its own reservoirs.

@@ -51,3 +51,49 @@
   .gl-mx .mic-mx-pl{font-size:13px;}
   .gl-story{font-size:15px;}
 }
+/* The matrix as the main thing, with each firm's switch drawn as an arrow (tools review 2026-11-10):
+   the row firm (first payoff) in the course color, the column firm (second payoff) in blue. */
+.gl-fig,.gl-qfig{--gl-a:var(--cink);--gl-b:#2563B8;}
+:root[data-theme="dark"] .gl-fig,:root[data-theme="dark"] .gl-qfig{--gl-b:#7FB2F5;}
+.gl-mx{position:relative;width:auto;max-width:100%;}
+.gl-mx .mic-mx-b,.gl-mx .mic-mx-st.is-b,.gl-mx .mic-mx-pl.is-b{color:var(--gl-b);}
+.gl-arrows{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;}
+.gl-arr{fill:none;stroke-width:4.5;stroke-linecap:round;opacity:.85;}
+.gl-arr0{stroke:var(--gl-a);} .gl-arr1{stroke:var(--gl-b);}
+.gl-arr.is-hot{stroke-width:6;opacity:1;}
+.gl-ah0{fill:var(--gl-a);} .gl-ah1{fill:var(--gl-b);}
+.gl-mx .gl-stay{box-shadow:inset 0 0 0 3px var(--good-text,#1F6E3E);}
+.gl-key{margin:0;max-width:100%;flex-shrink:0;display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font:700 13px var(--font-ui);color:var(--ink);min-height:1.2em;}
+.gl-key:empty{display:none;}
+.gl-k::before{content:"";display:inline-block;width:22px;height:4px;border-radius:2px;margin-right:6px;vertical-align:3px;background:currentColor;}
+.gl-k0{color:var(--gl-a);} .gl-k1{color:var(--gl-b);}
+.gl-kn{color:var(--good-text,#1F6E3E);}
+.gl-kn::before{width:12px;height:12px;border-radius:4px;background:transparent;box-shadow:inset 0 0 0 2.5px currentColor;vertical-align:-1px;}
+.gl-mx .gl-tag{bottom:6px;}
+/* size: the stage is the matrix */
+.ls-root .mic-ls-stage .gl-mx .mic-mx{font-size:30px;border-spacing:8px;}
+.ls-root .mic-ls-stage .gl-mx .mic-mx-cell{min-width:200px;}
+.ls-root .mic-ls-stage .gl-mx .mic-mx-btn{min-height:128px;padding:12px 10px 26px;}
+.ls-root .mic-ls-stage .gl-mx .mic-mx-st{font-size:17px;max-width:9em;}
+.ls-root .mic-ls-stage .gl-mx .mic-mx-pl{font-size:15px;}
+.ls-root .mic-ls-stage .gl-mx .mic-mx-cap{font-size:13.5px;}
+.ls-root .mic-ls-stage .gl-mx .gl-tag{font-size:12.5px;}
+.ls-root.ls-phone .mic-ls-stage .gl-mx .mic-mx{font-size:20px;border-spacing:4px;}
+.ls-root.ls-phone .gl-key{font-size:12px;gap:2px 12px;}
+.ls-root.ls-phone .gl-fig{gap:6px;}
+.ls-root.ls-phone .mic-ls-stage .gl-mx .mic-mx-cell{min-width:118px;}
+.ls-root.ls-phone .mic-ls-stage .gl-mx .mic-mx-btn{min-height:84px;padding:8px 20px 22px 2px;}
+.ls-root.ls-phone .mic-ls-stage .gl-mx .mic-mx-st{font-size:14px;max-width:5.5em;}
+.ls-root.ls-phone .mic-ls-stage .gl-mx .mic-mx-pl{font-size:13px;}
+.ls-root.ls-phone .mic-ls-stage .gl-mx .gl-tag{font-size:10.5px;}
+@media (prefers-reduced-motion:reduce){ .gl-arr{transition:none;} }
+.gl-mx .gl-tag.is-to{bottom:auto;top:6px;}
+.gl-show-l{margin:6px 0 -2px;font:700 12.5px var(--font-ui);color:var(--muted);}
+/* The first-run halo rings one cell, square like the cell (pass 2: a pill-shaped ring round the whole matrix cut through its labels). */
+.ls-halo{border-radius:16px !important;}
+
+/* Pass 3: Beta Jet in teal with no underline (blue and underlined, its payoffs and headers read as links).
+   Order still tells the players apart without colour: Alpha Air first, Beta Jet second, as the caption says. */
+.gl-fig,.gl-qfig{--gl-b:#0E7268;}
+:root[data-theme="dark"] .gl-fig,:root[data-theme="dark"] .gl-qfig{--gl-b:#5FCDBE;}
+.gl-mx .mic-mx-b,.gl-mx .mic-mx-st.is-b,.gl-mx .mic-mx-pl.is-b{text-decoration:none;}

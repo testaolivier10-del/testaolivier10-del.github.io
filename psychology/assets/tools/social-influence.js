@@ -285,20 +285,24 @@
 
   /* Social facilitation at the pool table, social loafing in a shouting
      study (blindfolds and headphones; pseudogroups). */
-  function groupScene(X, Y, W, H, watched, skill, shouters, phone){
-    var stack = phone || H > W * 0.7, g = [], half = stack ? H / 2 - 4 : H, w2 = stack ? W : W / 2 - 6;
+  function groupScene(X, Y, W, H, watched, skill, shouters, phone, only){
+    // only: 'pool' or 'shout' draws that one study filling the stage (Explore, pass 2); without it both
+    var stack = !only && (phone || H > W * 0.7), g = [], half = stack ? H / 2 - 4 : H, w2 = stack || only ? W : W / 2 - 6;
     var floor = Y + half * 0.86;
+    if(only !== 'shout'){
     g.push(floorRoom(X, Y, w2, half, floor));
-    var hh = Math.min(half * 0.56, w2 * 0.3), tx = X + w2 * 0.46;
+    var hh = Math.min(half * 0.56, w2 * (only ? 0.4 : 0.3)), tx = X + w2 * 0.46;
     g.push('<rect x="' + n1(tx - w2 * 0.28) + '" y="' + n1(floor - hh * 0.42) + '" width="' + n1(w2 * 0.56) + '" height="' + n1(hh * 0.1) + '" rx="5" class="si-felt"/><rect x="' + n1(tx - w2 * 0.26) + '" y="' + n1(floor - hh * 0.32) + '" width="' + n1(w2 * 0.06) + '" height="' + n1(hh * 0.32) + '" class="si-tableleg"/><rect x="' + n1(tx + w2 * 0.2) + '" y="' + n1(floor - hh * 0.32) + '" width="' + n1(w2 * 0.06) + '" height="' + n1(hh * 0.32) + '" class="si-tableleg"/>');
     [0.1, 0.16, 0.22].forEach(function(f, i){ g.push('<circle cx="' + n1(tx + w2 * f - w2 * 0.12) + '" cy="' + n1(floor - hh * 0.46) + '" r="' + n1(hh * 0.035) + '" class="si-ball b' + i + '"/>'); });
     g.push(person({ x: tx - w2 * 0.32, y: floor, h: hh, age: 30, skin: SKIN[2], hair: '#1E1A16', shirt: 'var(--cink)', pose: 'hold', facing: 1, face: skill === 'good' ? (watched ? 'smile' : 'neutral') : (watched ? 'worried' : 'neutral'), prop: function(p){ return '<line x1="' + n1(p.far[0]) + '" y1="' + n1(p.far[1]) + '" x2="' + n1(p.hand[0] + p.HH * 1.6) + '" y2="' + n1(floor - hh * 0.47) + '" class="si-cue"/>'; } }));
     if(watched) [0, 1, 2, 3].forEach(function(k){ var c = CREW[k + 4]; g.push(person({ x: X + w2 * (0.62 + k * 0.1), y: floor, h: hh * 0.92, age: 25 + k * 8, skin: c.skin, hair: c.hair, hairStyle: c.hairStyle || 'short', shirt: SHIRTS[k], pose: k % 2 ? 'cross' : 'stand', facing: -1, face: 'neutral' })); });
     g.push('<text class="si-ptitle" x="' + n1(X + 12) + '" y="' + n1(Y + 22) + '">Pool: ' + (skill === 'good' ? 'a good player' : 'a weaker player') + (watched ? ', 4 watching' : ', unobserved') + '</text>');
+    }
+    if(only === 'pool') return g.join('');
     // shouting
-    var X2 = stack ? X : X + W / 2 + 6, Y2 = stack ? Y + half + 8 : Y, f2 = Y2 + half * 0.86;
+    var X2 = stack || only ? X : X + W / 2 + 6, Y2 = stack ? Y + half + 8 : Y, f2 = Y2 + half * 0.86;
     g.push(floorRoom(X2, Y2, w2, half, f2));
-    var hh2 = Math.min(half * 0.5, w2 * 0.3), cols = shouters, sp = Math.min((w2 - 20) / Math.max(cols, 2), hh2 * 0.6), sx0 = X2 + (w2 - sp * cols) / 2;
+    var hh2 = Math.min(half * 0.5, w2 * (only ? 0.42 : 0.3)), cols = shouters, sp = Math.min((w2 - 20) / Math.max(cols, 2), hh2 * 0.6), sx0 = X2 + (w2 - sp * cols) / 2;
     for(var i = 0; i < cols; i++){
       var px = sx0 + sp * (i + 0.5), c2 = i === 0 ? { skin: SKIN[1], hair: '#3B2A20' } : CREW[i % 8];
       g.push(person({ x: px, y: f2, h: Math.min(hh2, sp * 2.4), age: 22, skin: c2.skin, hair: c2.hair, hairStyle: c2.hairStyle || 'short', shirt: i === 0 ? 'var(--cink)' : SHIRTS[i % 4], pose: 'stand', face: 'cry', prop: function(p){ return '<rect x="' + n1(p.hx - p.R * 0.95) + '" y="' + n1(p.shY - p.R * 1.95) + '" width="' + n1(p.R * 1.9) + '" height="' + n1(p.R * 0.36) + '" rx="' + n1(p.R * 0.16) + '" class="si-blind"/><path d="M' + n1(p.hx - p.R * 1.05) + ' ' + n1(p.shY - p.R * 1.4) + ' q' + n1(p.R * 1.05) + ' ' + n1(-p.R * 1.7) + ' ' + n1(p.R * 2.1) + ' 0" class="si-headset"/>'; } }));
@@ -339,13 +343,6 @@
     if(o.source) g.push('<text class="si-src" x="' + n1(X) + '" y="' + n1(Y + H - 2) + '">' + esc(o.source) + '</text>');
     return g.join('');
   }
-  /* 40 small people: how many of Milgram's 40 men went to the last switch. */
-  function forty(X, Y, W, H, k){
-    var g = [], cols = 10, rows = 4, cw = W / cols, rh = H / rows, s = Math.min(cw, rh) * 0.8;
-    for(var i = 0; i < 40; i++){ var c = i % cols, r = Math.floor(i / cols), cx = X + cw * (c + 0.5), cy = Y + rh * (r + 0.5), on = i < k;
-      g.push('<g class="si-dot' + (on ? ' is-on' : '') + '"><circle cx="' + n1(cx) + '" cy="' + n1(cy - s * 0.26) + '" r="' + n1(s * 0.18) + '"/><path d="M' + n1(cx - s * 0.26) + ' ' + n1(cy + s * 0.4) + ' q0 ' + n1(-s * 0.48) + ' ' + n1(s * 0.26) + ' ' + n1(-s * 0.48) + ' q' + n1(s * 0.26) + ' 0 ' + n1(s * 0.26) + ' ' + n1(s * 0.48) + ' Z"/></g>'); }
-    return g.join('');
-  }
 
   /* ---------------------------------------------------------- mount */
   T.mount('social-influence', function(app, data){
@@ -364,7 +361,7 @@
 
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
-    var sit = 'conform', sizeI = 5, partner = false, cond = 'remote', others = 4, watched = true, skill = 'good', shout = 6, touched = false, LS = null, nid = T.nid('si');
+    var sit = 'conform', sizeI = 5, partner = false, cond = 'remote', others = 4, watched = true, skill = 'good', shout = 6, gpart = 'pool', touched = false, LS = null, nid = T.nid('si');
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem si-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Social influence</h2>' +
       '<div class="si-fig"><svg class="si-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
@@ -373,7 +370,7 @@
         '<div class="si-grp si-grp-conform"><div class="si-size"></div>' + chips('si-partner', 'One person answers correctly first', [['no', 'No'], ['yes', 'Yes, a partner']]) + '</div>' +
         '<div class="si-grp si-grp-obey">' + chips('si-cond', 'Condition', D.MILGRAM.map(function(c){ return [c.id, c.short]; })) + '</div>' +
         '<div class="si-grp si-grp-bystand">' + chips('si-others', 'Others the participant thinks can hear', [['0', 'None (alone)'], ['1', '1 other'], ['4', '4 others']]) + '</div>' +
-        '<div class="si-grp si-grp-groups">' + chips('si-watch', 'Pool player', [['good-1', 'Good, watched'], ['good-0', 'Good, alone'], ['poor-1', 'Weaker, watched'], ['poor-0', 'Weaker, alone']]) + chips('si-shout', 'Shouting', [['1', 'Alone'], ['2', 'With 1 other'], ['6', 'With 5 others']]) + '</div>' +
+        '<div class="si-grp si-grp-groups">' + chips('si-gpart', 'Effect', [['pool', 'Being watched'], ['shout', 'Working in a group']]) + chips('si-watch', 'Pool player', [['good-1', 'Good, watched'], ['good-0', 'Good, alone'], ['poor-1', 'Weaker, watched'], ['poor-0', 'Weaker, alone']]) + chips('si-shout', 'Shouting', [['1', 'Alone'], ['2', 'With 1 other'], ['6', 'With 5 others']]) + '</div>' +
       '</div>' +
       '<div class="si-say"></div>' +
       T.moreHtml('<div class="si-opts"><label class="bt-radio"><input type="checkbox" class="si-show-graph" checked> Show the published results beside the scene</label></div>', 'graph') +
@@ -400,6 +397,7 @@
       else if(row.classList.contains('si-others')) others = +k;
       else if(row.classList.contains('si-watch')){ skill = k.split('-')[0]; watched = k.split('-')[1] === '1'; }
       else if(row.classList.contains('si-shout')) shout = +k;
+      else if(row.classList.contains('si-gpart')){ gpart = k; sync(); draw(); words(); if(LS && LS.fit) LS.fit(); say(line()); return; }
       sync(); draw(); words(); say(line());
     }
     host.addEventListener('click', onClick);
@@ -407,16 +405,17 @@
     function sync(){
       var root = LS ? LS.root : host;
       root.querySelectorAll('.si-sits button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === sit)); });
-      var on = { 'si-partner': partner ? 'yes' : 'no', 'si-cond': cond, 'si-others': String(others), 'si-watch': skill + '-' + (watched ? 1 : 0), 'si-shout': String(shout) };
+      var on = { 'si-partner': partner ? 'yes' : 'no', 'si-cond': cond, 'si-others': String(others), 'si-watch': skill + '-' + (watched ? 1 : 0), 'si-shout': String(shout), 'si-gpart': gpart };
       Object.keys(on).forEach(function(cls){ root.querySelectorAll('.' + cls + ' button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === on[cls])); }); });
       ['conform', 'obey', 'bystand', 'groups'].forEach(function(k){ var el = $('.si-grp-' + k); if(el) el.hidden = k !== sit; });
+      var rw = $('.si-watch'), rs = $('.si-shout'); if(rw) rw.hidden = gpart !== 'pool'; if(rs) rs.hidden = gpart !== 'shout';
       sSize.disable(false);
     }
     function size(){ var f = $('.si-fig'), r = f ? f.getBoundingClientRect() : { width: 600, height: 420 }; return { W: Math.max(300, Math.round(r.width)), H: Math.max(300, Math.round(r.height)) }; }
     function nNow(){ return SIZES[sizeI]; }
     function draw(){
       var z = size(), W = z.W, H = z.H, phone = W < 640, out = [], label = '';
-      var gW = showGraph ? (phone ? W - 16 : Math.min(360, W * 0.38)) : 0, gH = showGraph ? (phone ? Math.round(H * (sit === 'groups' ? 0.5 : 0.44)) : H - 16) : 0;
+      var gW = showGraph ? (phone ? W - 16 : Math.min(360, W * 0.38)) : 0, gH = showGraph ? (phone ? Math.round(H * 0.44) : H - 16) : 0;
       var sx = 8, sy = 8, sw = phone || !showGraph ? W - 16 : W - gW - 32, sh = phone && showGraph ? H - gH - 24 : H - 16;
       var gx = phone ? 8 : W - gW - 8, gy = phone ? sh + 18 : 8;
       if(sit === 'conform'){
@@ -432,10 +431,8 @@
         var c = D.byId(D.MILGRAM, cond);
         out.push(milgramScene(sx, sy, sw, sh, cond, phone));
         if(showGraph){
-          var fh = phone ? 0 : Math.min(gH * 0.3, gW * 0.32);
-          out.push('<text class="si-gt" x="' + n1(gx) + '" y="' + n1(gy + 14) + '">' + esc(c.short) + ': ' + Math.round(c.pct * 0.4) + ' of 40 men went to 450 V</text>');
-          if(!phone) out.push(forty(gx, gy + 22, gW, fh, Math.round(c.pct * 0.4)));
-          out.push(bars(gx, gy + (phone ? 18 : 30 + fh), gW, gH - fh - (phone ? 64 : 70), D.MILGRAM.map(function(m){ return { label: m.short, value: m.pct, on: m.id === cond }; }), { horizontal: true, source: 'Milgram (1963, 1974); 40 men per condition' }));
+          // pass 2: the bars alone (the 40-figure grid and its line repeated the selected bar and the side text)
+          out.push(bars(gx, gy, gW, gH - (phone ? 40 : 46), D.MILGRAM.map(function(m){ return { label: m.short, value: m.pct, on: m.id === cond }; }), { horizontal: true, title: phone ? '' : 'Went to the last switch (450 V)', source: 'Milgram (1963, 1974); 40 men per condition' }));
         }
         label = 'Milgram\'s obedience lab, condition: ' + c.name + '. ' + line();
       } else if(sit === 'bystand'){
@@ -443,13 +440,14 @@
         if(showGraph){ var di = D.DARLEY.others.indexOf(others); out.push(bars(gx, gy, gW, gH - 40, D.DARLEY.others.map(function(o, i){ return { label: o === 0 ? 'Alone' : o + (o === 1 ? ' other' : ' others'), value: D.DARLEY.beforeEnd[i], on: i === di }; }), { title: 'Reported the seizure before it ended', source: 'Darley and Latane (1968)' })); }
         label = 'Intercom study: the participant believes ' + (others ? others + ' other' + (others > 1 ? 's' : '') + ' can' : 'no one else can') + ' hear the seizure. ' + line();
       } else {
-        out.push(groupScene(sx, sy, sw, sh, watched, skill, shout, phone));
+        out.push(groupScene(sx, sy, sw, sh, watched, skill, shout, phone, gpart));
         if(showGraph){
-          var side = phone, h1 = side ? gH - 30 : (gH - 52) / 2, w1 = side ? (gW - 12) / 2 : gW;
-          out.push(bars(gx, gy, w1, h1, [{ label: phone ? 'Good\nalone' : 'Good,\nalone', value: D.FACIL.good[0], on: skill === 'good' && !watched }, { label: phone ? 'Good\n\nwatched' : 'Good,\nwatched', value: D.FACIL.good[1], on: skill === 'good' && watched }, { label: phone ? 'Weak\nalone' : 'Weaker,\nalone', value: D.FACIL.poor[0], on: skill === 'poor' && !watched, cls: 'is-alt' }, { label: phone ? 'Weak\n\nwatched' : 'Weaker,\nwatched', value: D.FACIL.poor[1], on: skill === 'poor' && watched, cls: 'is-alt' }], { title: 'Pool shots made', source: phone ? 'Michaels et al. (1982)' : 'Michaels and colleagues (1982)', lines3: phone }));
-          out.push(bars(side ? gx + w1 + 12 : gx, side ? gy : gy + h1 + 12, w1, h1, D.LOAF.others.map(function(o, i){ return { label: o === 0 ? 'Alone' : phone ? (o === 1 ? '+1' : '+5') : o === 1 ? '1 other' : '5 others', value: D.LOAF.effort[i], on: shout === o + 1 }; }), { title: phone ? 'Shouting effort' : 'Effort, % of shouting alone', source: phone ? 'Latane et al. (1979)' : 'Latane, Williams and Harkins (1979)' }));
+          // pass 2: one study at a time, its scene beside its own results
+          var h1 = gH - (phone ? 20 : 40), w1 = gW;
+          if(gpart === 'pool') out.push(bars(gx, gy, w1, h1, [{ label: phone ? 'Good\nalone' : 'Good,\nalone', value: D.FACIL.good[0], on: skill === 'good' && !watched }, { label: phone ? 'Good\n\nwatched' : 'Good,\nwatched', value: D.FACIL.good[1], on: skill === 'good' && watched }, { label: phone ? 'Weak\nalone' : 'Weaker,\nalone', value: D.FACIL.poor[0], on: skill === 'poor' && !watched, cls: 'is-alt' }, { label: phone ? 'Weak\n\nwatched' : 'Weaker,\nwatched', value: D.FACIL.poor[1], on: skill === 'poor' && watched, cls: 'is-alt' }], { title: 'Pool shots made', source: phone ? 'Michaels et al. (1982)' : 'Michaels and colleagues (1982)', lines3: phone }));
+          else out.push(bars(gx, gy, w1, h1, D.LOAF.others.map(function(o, i){ return { label: o === 0 ? 'Alone' : phone ? (o === 1 ? '+1' : '+5') : o === 1 ? '1 other' : '5 others', value: D.LOAF.effort[i], on: shout === o + 1 }; }), { title: phone ? 'Shouting effort' : 'Effort, % of shouting alone', source: phone ? 'Latane et al. (1979)' : 'Latane, Williams and Harkins (1979)' }));
         }
-        label = 'Pool player, ' + (skill === 'good' ? 'good' : 'weaker') + ', ' + (watched ? 'watched by four people' : 'unobserved') + '; shouting ' + (shout === 1 ? 'alone' : 'with ' + (shout - 1) + ' others') + '. ' + line();
+        label = gpart === 'pool' ? 'Pool player, ' + (skill === 'good' ? 'good' : 'weaker') + ', ' + (watched ? 'watched by four people' : 'unobserved') + '. ' + line() : 'Shouting ' + (shout === 1 ? 'alone' : 'with ' + (shout - 1) + ' others') + ', blindfolded with headphones on. ' + line();
       }
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       svg.innerHTML = out.join('');
@@ -460,6 +458,8 @@
       if(sit === 'obey'){ var c = D.byId(D.MILGRAM, cond); return c.pct + '% (' + Math.round(c.pct * 0.4) + ' of 40) went to the last switch.'; }
       if(sit === 'bystand'){ var i = D.DARLEY.others.indexOf(others); return D.DARLEY.beforeEnd[i] + '% reported it before the seizure ended.'; }
       var f = skill === 'good' ? D.FACIL.good : D.FACIL.poor, li = D.LOAF.others.indexOf(shout - 1);
+      if(gpart === 'pool') return (skill === 'good' ? 'The good player' : 'The weaker player') + ' made ' + f[watched ? 1 : 0] + '% of shots ' + (watched ? 'with four people watching' : 'unobserved') + ' (' + f[watched ? 0 : 1] + '% ' + (watched ? 'unobserved' : 'watched') + ').';
+      if(gpart === 'shout') return (shout === 1 ? 'Alone, each person shouts at full effort (100%).' : 'With ' + (shout - 1) + (shout === 2 ? ' other' : ' others') + ', each person shouted at ' + D.LOAF.effort[li] + '% of their solo effort.');
       return 'Pool: ' + f[watched ? 1 : 0] + '% of shots. Shouting: ' + D.LOAF.effort[li] + '% of solo effort.';
     }
     function words(){
@@ -467,7 +467,8 @@
       if(sit === 'conform'){
         var n = nNow(), v = D.aschPct(n, partner);
         head = n === 0 ? 'Alone, almost no one gets the lines wrong.' : partner ? 'One ally breaks the spell.' : n === 1 ? 'One other person barely matters.' : n <= 3 ? 'Each extra voice adds pressure, up to about three.' : 'More than three adds little.';
-        sub = line() + (n > 0 && !partner ? ' The answer is obvious, so this is mostly normative influence.' : '');
+        // The percent is on the pill and the bar already; the caption adds the why (pass 3: no repeats, under 40 words).
+        sub = n > 0 && !partner ? 'The answer is obvious, so this is mostly normative influence.' : '';
         pl = [{ k: 'Wrong answers first', html: n === 0 ? 'none' : SIZE_LAB[sizeI], tone: 'readout' }]; pr = [{ k: 'Went along', html: pct(v), tone: v > 20 ? 'warn' : 'good' }];
         why = conformWhy();
       } else if(sit === 'obey'){
@@ -478,14 +479,19 @@
       } else if(sit === 'bystand'){
         var i = D.DARLEY.others.indexOf(others);
         head = others === 0 ? 'Alone, the responsibility is all yours.' : 'The more people who might help, the slower each one acts.';
-        sub = line() + ' By the end of the study, ' + D.DARLEY.eventually[i] + '% had reported it.';
+        sub = 'By the end of the study, ' + D.DARLEY.eventually[i] + '% had reported it.';
         pl = [{ k: 'Others hearing', html: String(others), tone: 'readout' }]; pr = [{ k: 'Helped in time', html: D.DARLEY.beforeEnd[i] + '%', tone: D.DARLEY.beforeEnd[i] > 60 ? 'good' : 'warn' }];
         why = byWhy();
       } else {
         var f = skill === 'good' ? D.FACIL.good : D.FACIL.poor, li = D.LOAF.others.indexOf(shout - 1);
-        head = (watched ? (skill === 'good' ? 'Watched, the good player gets better.' : 'Watched, the weaker player gets worse.') : 'Unobserved: the baseline.') + ' ' + (shout > 1 ? 'In a group, each shouts less.' : '');
+        if(gpart === 'pool'){
+          head = watched ? (skill === 'good' ? 'Watched, the good player gets better: social facilitation.' : 'Watched, the weaker player gets worse.') : 'Unobserved: the baseline.';
+          pl = [{ k: 'Pool shots', html: f[watched ? 1 : 0] + '%', tone: 'readout' }]; pr = [];
+        } else {
+          head = shout > 1 ? 'In a group, each shouts less: social loafing.' : 'Alone: full effort, the baseline.';
+          pl = [{ k: 'Shout effort', html: D.LOAF.effort[li] + '%', tone: shout > 1 ? 'warn' : 'good' }]; pr = [];
+        }
         sub = line();
-        pl = [{ k: 'Pool shots', html: f[watched ? 1 : 0] + '%', tone: 'readout' }]; pr = [{ k: 'Shout effort', html: D.LOAF.effort[li] + '%', tone: shout > 1 ? 'warn' : 'good' }];
         why = groupsWhy();
       }
       T.explain($('.si-say'), '<b>' + esc(head) + '</b> ' + esc(sub), why);

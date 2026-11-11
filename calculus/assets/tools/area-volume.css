@@ -13,6 +13,8 @@
 .av-canvas{display:block;width:100%;height:100%;border-radius:12px;background:var(--paper);cursor:grab;touch-action:none;outline:none;}
 .av-canvas.is-drag{cursor:grabbing;}
 .av-canvas:focus-visible{box-shadow:0 0 0 3px var(--cink);}
+.av-revolve-3d{position:absolute;left:8px;top:8px;z-index:2;min-height:40px;}
+.av-revolve-3d[hidden]{display:none;}
 .av-turn{position:absolute;left:8px;bottom:6px;margin:0;font:700 12px var(--font-ui);color:var(--muted);pointer-events:none;}
 @media (max-width:640px){.av-fig{grid-template-columns:minmax(0,1fr);}}
 .ls-root .av-fig{flex:1;min-height:0;}

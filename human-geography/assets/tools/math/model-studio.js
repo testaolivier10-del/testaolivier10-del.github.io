@@ -257,12 +257,135 @@
       o.push('<path d="' + death + '" fill="none" stroke="#B5481F" stroke-width="4" stroke-dasharray="12 6"/>');
       var spots = []; for(var k = 0; k < 5; k++) spots.push([pct(X0 + w * (k + 0.5), 38)]);
       return { svg: frame(o.join(''), 'Demographic transition model: birth rate and death rate across five stages, with total population rising'),
-        spots: spots, labels: [], legend: [{ sw: 'birth', text: 'Birth rate' }, { sw: 'death', text: 'Death rate' }, { sw: 'pop', text: 'Total population' }] };
+        spots: spots, labels: [{ x: 50, y: 95, text: 'Time' }], legend: [{ sw: 'birth', text: 'Birth rate' }, { sw: 'death', text: 'Death rate' }, { sw: 'pop', text: 'Total population' }] };
+    },
+    /* Rostow: a staircase that rises stage by stage; each step is filled with
+       the mix of work at that stage (farming at the bottom, then factories,
+       then services), and a small drawing on top says what the stage looks
+       like. Each step is a part (data-n), so See it builds the staircase. */
+    rostow: function(){
+      var o = [], X0 = 50, w = 100, Yb = 368, mix = [[75, 10, 15], [60, 18, 22], [40, 32, 28], [20, 42, 38], [6, 26, 68]], cols = [WORK.farm, WORK.factory, WORK.service];
+      var icon = [
+        // 1 fields: rows of sprouts
+        function(x, y){ var s = ''; for(var i = 0; i < 4; i++){ var cx = x + 22 + 19 * i; s += '<path d="M' + cx + ' ' + y + 'V' + (y - 20) + 'M' + cx + ' ' + (y - 8) + 'l-7 -7M' + cx + ' ' + (y - 13) + 'l7 -7" stroke="#4F7A2E" stroke-width="3" stroke-linecap="round" fill="none"/>'; } return s; },
+        // 2 a road with a cart and a small bridge: transport and trade begin
+        function(x, y){ return '<path d="M' + (x + 8) + ' ' + (y - 3) + 'H' + (x + 92) + '" stroke="#7A6A3A" stroke-width="5" stroke-linecap="round"/><rect x="' + (x + 34) + '" y="' + (y - 26) + '" width="32" height="16" rx="3" fill="#C99A2E" stroke="#5B564E" stroke-width="1.5"/><circle cx="' + (x + 40) + '" cy="' + (y - 8) + '" r="5" fill="#3A3631"/><circle cx="' + (x + 60) + '" cy="' + (y - 8) + '" r="5" fill="#3A3631"/>'; },
+        // 3 one factory with smoke: a few industries take off
+        function(x, y){ return factory(x + 30, y, 1) + smoke(x + 68, y - 40); },
+        // 4 several factories: industry spreads
+        function(x, y){ return factory(x + 6, y, 0.8) + factory(x + 50, y, 1) + smoke(x + 88, y - 40); },
+        // 5 a shop and a car: mass consumption
+        function(x, y){ return '<rect x="' + (x + 14) + '" y="' + (y - 34) + '" width="44" height="34" fill="#FFFFFF" stroke="#5B564E" stroke-width="1.5"/><path d="M' + (x + 10) + ' ' + (y - 34) + 'h52l-4 -10h-44z" fill="#B5481F" stroke="#5B564E" stroke-width="1.2"/><rect x="' + (x + 30) + '" y="' + (y - 20) + '" width="12" height="20" fill="#8EC3E6" stroke="#5B564E" stroke-width="1"/>' +
+          '<path d="M' + (x + 62) + ' ' + (y - 6) + 'v-10l8 -9h16l8 9v10z" fill="#094953"/><circle cx="' + (x + 69) + '" cy="' + (y - 4) + '" r="4.5" fill="#1B1B1B"/><circle cx="' + (x + 87) + '" cy="' + (y - 4) + '" r="4.5" fill="#1B1B1B"/>'; }
+      ];
+      o.push('<path d="M30 ' + Yb + 'H580" stroke="' + COL.ink + '" stroke-width="2.5"/>');
+      var spots = [];
+      for(var i = 0; i < 5; i++){
+        var x = X0 + w * i, h = 60 + 62 * i, top = Yb - h, y = Yb, g = [];
+        mix[i].forEach(function(p, k){ var bh = h * p / 100; g.push('<rect x="' + x + '" y="' + r1(y - bh) + '" width="' + w + '" height="' + r1(bh) + '" fill="' + cols[k] + '"/>'); y -= bh; });
+        g.push('<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + h + '" fill="none" stroke="' + COL.line + '" stroke-width="1.5"/>');
+        g.push(icon[i](x, top - 2));
+        o.push('<g class="ms-part" data-n="' + (i + 1) + '">' + g.join('') + '</g>');
+        spots.push([pct(x + w / 2, top + 24)]);
+      }
+      return { svg: frame(o.join(''), 'Rostow: a staircase of five stages rising from left to right. Each step shows the share of work in farming, factories and services: farming shrinks and services grow as the steps rise.'),
+        spots: spots, labels: [], legend: [{ sw: 'farm', text: 'Farm work' }, { sw: 'factory', text: 'Factory work' }, { sw: 'service', text: 'Service work' }],
+        note: 'Each step is filled with the share of jobs at that stage (illustrative). Higher steps: more output and spending per person.' };
+    },
+    /* The epidemiological transition: what people die of, over four stages.
+       Deaths from infection and famine fall (with spikes in stage 1), deaths
+       from chronic diseases rise, and the typical age at death keeps rising
+       (stage 4 is the same diseases, later in life). */
+    epi: function(){
+      var o = [], X0 = 40, X1 = 580, Y0 = 360, T = 40, w = (X1 - X0) / 4;
+      for(var i = 0; i < 4; i++) o.push('<rect class="ms-col" data-n="' + (i + 1) + '" x="' + (X0 + w * i) + '" y="' + T + '" width="' + w + '" height="' + (Y0 - T) + '" fill="' + (i % 2 ? '#F6F3EC' : '#FFFFFF') + '"/>');
+      for(var j = 1; j < 4; j++) o.push('<path d="M' + (X0 + w * j) + ' ' + T + 'V' + Y0 + '" stroke="#B9B3A8" stroke-width="1.2" stroke-dasharray="4 4"/>');
+      o.push('<path d="M' + X0 + ' ' + T + 'V' + Y0 + 'H' + X1 + '" fill="none" stroke="' + COL.ink + '" stroke-width="2.5"/>');
+      var inf = 'M40 92 L62 78 L76 104 L96 70 L112 98 L132 84 L148 64 L160 96 L175 90 C210 100 240 150 260 210 C280 260 300 282 310 290 C360 304 400 310 445 314 C500 318 540 320 580 322';
+      var deg = 'M40 318 C100 316 150 314 175 312 C220 300 250 262 280 200 C300 160 310 120 330 104 C380 92 420 90 445 90 C500 90 540 92 580 92';
+      var age = 'M40 300 C100 300 150 298 175 296 C220 286 260 250 310 226 C360 206 410 196 445 190 C500 170 540 148 580 136';
+      o.push('<path d="' + age + '" fill="none" stroke="#7A4F9E" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>');
+      o.push('<path d="' + inf + '" fill="none" stroke="#B5481F" stroke-width="4" stroke-linejoin="round"/>');
+      o.push('<path d="' + deg + '" fill="none" stroke="' + COL.accent + '" stroke-width="4" stroke-dasharray="12 6"/>');
+      var spots = []; for(var k = 0; k < 4; k++) spots.push([pct(X0 + w * (k + 0.5), 38)]);
+      return { svg: frame(o.join(''), 'Epidemiological transition: across four stages, deaths from infection and famine fall, deaths from chronic diseases rise, and the typical age at death keeps rising'),
+        spots: spots, labels: [{ x: 50, y: 95, text: 'Time' }], legend: [{ sw: 'infect', text: 'Deaths from infection and famine' }, { sw: 'chronic', text: 'Deaths from chronic diseases' }, { sw: 'pop', text: 'Typical age at death' }] };
+    },
+    /* World system: core, semi-periphery and periphery as rings (not a world
+       map: which country is which is contested). Raw materials flow in to the
+       core; finished goods and profits flow out. */
+    worldsys: function(){
+      var cx = 300, cy = 205, o = [], RAW = '#8B5A2B', GOOD = COL.accent;
+      o.push('<g class="ms-part" data-n="3">' + circle(cx, cy, 190, '#F5E1D6') + mine(pt(cx, cy, 160, 145)) + tree(pt(cx, cy, 160, 215)) + crop(pt(cx, cy, 160, 35)) + mine(pt(cx, cy, 162, -35)) + '</g>');
+      o.push('<g class="ms-part" data-n="2">' + circle(cx, cy, 128, '#F2E3C9') + factory(pt(cx, cy, 96, 150)[0] - 18, pt(cx, cy, 96, 150)[1] + 14, 0.7) + crop(pt(cx, cy, 96, 210)) + factory(pt(cx, cy, 96, 28)[0] - 18, pt(cx, cy, 96, 28)[1] + 14, 0.7) + '</g>');
+      o.push('<g class="ms-part" data-n="1">' + circle(cx, cy, 64, '#CFE6EA') + towers(cx + 6, cy + 40) + '</g>');
+      [168, 192, 245].forEach(function(a){ var s = pt(cx, cy, 182, a), e = pt(cx, cy, 70, a); o.push(arrow(s[0], s[1], e[0], e[1], RAW, 5)); });
+      [-12, 12, 65].forEach(function(a){ var s = pt(cx, cy, 70, a), e = pt(cx, cy, 182, a); o.push(arrow(s[0], s[1], e[0], e[1], GOOD, 5)); });
+      return { svg: frame(o.join(''), 'World system: the core in the middle, the semi-periphery around it and the periphery outside. Brown arrows carry raw materials in to the core; teal arrows carry finished goods and profits out.'),
+        spots: [[pct(cx, cy - 18)], [pct(cx, cy - 96)], [pct(cx, cy - 160)]], labels: [],
+        legend: [{ sw: 'raw', text: 'Raw materials and cheap labor flow in' }, { sw: 'goods', text: 'Finished goods and profits flow out' }] };
+    },
+    /* Gravity: three pairs of towns. A town's circle has an area that grows
+       with its population; the gap is the distance; the band between them is
+       as wide as the interaction (P1 × P2 ÷ d²). The bands are the answer, so
+       Build it hides them (class ms-ans) until the student checks. */
+    gravity: function(model){
+      var pairs = (model && model.pairs) || [{ n: 'A', p1: 6, p2: 3, d: 2 }, { n: 'B', p1: 8, p2: 5, d: 1 }, { n: 'C', p1: 4, p2: 2, d: 4 }];
+      var key = model && model.key, o = [], labels = [], spots = [];
+      var v = pairs.map(function(p){ return p.p1 * p.p2 / (p.d * p.d); }), vmax = Math.max.apply(null, v);
+      var order = pairs.map(function(p, i){ return i; }).sort(function(a, b){ return v[b] - v[a]; });
+      if(key) order = ['t0', 't1', 't2'].map(function(t){ var id = key[t]; for(var i = 0; i < pairs.length; i++) if('p' + pairs[i].n === id) return i; return 0; });
+      var rad = function(p){ return r1(14 * Math.sqrt(p) + 4); };
+      pairs.forEach(function(p, i){
+        var y = 70 + 120 * i, c1 = 150, c2 = 150 + 100 * p.d, ra = rad(p.p1), rb = rad(p.p2), bw = Math.max(3, r1(40 * v[i] / vmax));
+        o.push('<path d="M' + c1 + ' ' + y + 'H' + c2 + '" stroke="#B9B3A8" stroke-width="1.5" stroke-dasharray="3 5"/>');
+        o.push('<rect class="ms-ans" x="' + c1 + '" y="' + r1(y - bw / 2) + '" width="' + (c2 - c1) + '" height="' + bw + '" fill="' + COL.accent + '" opacity=".85"/>');
+        o.push(circle(c1, y, ra, '#F2E3C9')); o.push(circle(c2, y, rb, '#F2E3C9'));
+        labels.push({ x: 14, y: pct(0, y)[1], text: p.n });
+        labels.push({ x: pct(c1, 0)[0], y: pct(0, y)[1], text: p.p1 + ' M' });
+        labels.push({ x: pct(c2, 0)[0], y: pct(0, y)[1], text: p.p2 + ' M' });
+        labels.push({ x: pct((c1 + c2) / 2, 0)[0], y: pct(0, y + 60)[1], text: (100 * p.d) + ' km' });
+      });
+      order.forEach(function(i){ spots.push([pct(30, 70 + 120 * i)]); });
+      return { svg: frame(o.join(''), 'Gravity model: three pairs of towns. Bigger circles are bigger towns; the gap is the distance; the band between them is as wide as the interaction.'),
+        spots: spots, labels: labels, hide: true,
+        legend: [{ sw: 'town', text: 'Circle: a town (bigger area, more people)' }, { sw: 'band', text: 'Band width: how much they interact' }],
+        note: 'Interaction grows with both populations and falls with the square of the distance: P1 × P2 ÷ distance². Twice as far: one quarter as much.' };
+    },
+    /* Rank-size: city bars by rank against the rule's curve (the city ranked
+       n has 1/n of the largest). The switch shows a primate city instead: the
+       largest city far more than twice the next, the rest far below the rule. */
+    ranksize: function(model){
+      var L = (model && model.L) || 2400, o = [], X0 = 60, Y0 = 350, Htop = 60, Hs = Y0 - Htop;
+      var bx = function(n){ return 110 + (n - 1) * 82; };
+      var bar = function(n, f, fill, cls){ var h = r1(Hs * f); return '<rect class="' + cls + '" x="' + (bx(n) - 26) + '" y="' + r1(Y0 - h) + '" width="52" height="' + h + '" fill="' + fill + '" stroke="' + COL.line + '" stroke-width="1.2"/>'; };
+      o.push('<path d="M' + X0 + ' 30V' + Y0 + 'H580" fill="none" stroke="' + COL.ink + '" stroke-width="2.5"/>');
+      var rule = [], prim = [], pf = [1, 0.3, 0.2, 0.15, 0.12, 0.1];
+      for(var n = 1; n <= 6; n++){ rule.push(bar(n, 1 / n, n <= 4 ? '#F2E3C9' : '#F6F1E6', 'ms-ans')); prim.push(bar(n, pf[n - 1], n === 1 ? '#F5D9CF' : '#F2E3C9', '')); }
+      o.push('<g class="ms-g-rule">' + rule.join('') + '</g><g class="ms-g-alt">' + prim.join('') + '</g>');
+      var c = []; for(var t = 0.8; t <= 6.41; t += 0.05) c.push(r1(bx(t)) + ' ' + r1(Math.max(Htop - 20, Y0 - Hs / t)));
+      o.push('<path d="M' + c.join('L') + '" fill="none" stroke="' + COL.accent + '" stroke-width="3.5" stroke-dasharray="10 6"/>');
+      var spots = []; for(var k = 1; k <= 4; k++) spots.push([pct(bx(k), Y0 + 20)]);
+      return { svg: frame(o.join(''), 'Rank-size rule: bars for the six largest cities by rank, and a dashed curve where the city ranked n has one nth of the largest city\'s people'),
+        spots: spots, hide: true,
+        labels: [{ x: 19, y: 6, text: 'People' }, { x: 86, y: 94, text: 'City rank' }, { x: 42, y: 18, text: 'Primate city', cls: 'ms-alt-only' }],
+        legend: [{ sw: 'ruleline', text: 'The rule: rank n has 1/n of the largest' }, { sw: 'cbar', text: 'A city' }],
+        alt: { off: 'Show a primate city', on: 'Back to the rank-size rule', note: 'Rank-size: the second city has half the people of the largest (' + thou(1000 * L / 2) + ' here), the third a third, and so on.', noteAlt: 'Primate city: the largest city is more than twice the size of the second (here more than three times), so every other city falls far below the rule\'s curve.' } };
     }
   };
+  var WORK = { farm: '#B9D99A', factory: '#A7ABB3', service: '#9CCBEB' };
+  function factory(x, y, s){ s = s || 1; var w = 44 * s, h = 26 * s; return '<path d="M' + x + ' ' + y + 'v' + (-h) + 'l' + (w / 3) + ' ' + (-h / 2.4) + 'v' + (h / 2.4) + 'l' + (w / 3) + ' ' + (-h / 2.4) + 'v' + (h / 2.4) + 'h' + (w / 3 - 8 * s) + 'v' + (-h * 0.9) + 'h' + (8 * s) + 'v' + (h * 1.9) + 'z" fill="#7C7F86" stroke="#3A3631" stroke-width="1.2"/>'; }
+  function smoke(x, y){ return '<circle cx="' + x + '" cy="' + y + '" r="5" fill="#CFCAC0"/><circle cx="' + (x + 7) + '" cy="' + (y - 9) + '" r="6.5" fill="#DDD8CF"/>'; }
+  function mine(p){ var x = p[0], y = p[1]; return '<path d="M' + (x - 14) + ' ' + (y + 10) + 'L' + x + ' ' + (y - 8) + 'L' + (x + 14) + ' ' + (y + 10) + 'Z" fill="#8C7B65" stroke="#3A3631" stroke-width="1.2"/><path d="M' + (x - 5) + ' ' + (y + 10) + 'l5 -7 5 7z" fill="#3A3631"/>'; }
+  function tree(p){ var x = p[0], y = p[1]; return '<path d="M' + x + ' ' + (y + 12) + 'V' + (y + 2) + '" stroke="#6B4A2B" stroke-width="3"/><path d="M' + x + ' ' + (y - 14) + 'L' + (x + 10) + ' ' + (y + 4) + 'H' + (x - 10) + 'Z" fill="#4F7A2E"/>'; }
+  function crop(p){ var x = p[0], y = p[1], s = ''; for(var i = -1; i <= 1; i++){ var cx = x + 9 * i; s += '<path d="M' + cx + ' ' + (y + 10) + 'V' + (y - 8) + 'M' + cx + ' ' + y + 'l-5 -5M' + cx + ' ' + (y - 4) + 'l5 -5" stroke="#4F7A2E" stroke-width="2.5" stroke-linecap="round" fill="none"/>'; } return s; }
+  function towers(x, y){ return '<g fill="#5E8FB0" stroke="#1B1B1B" stroke-width="1.2"><rect x="' + (x - 30) + '" y="' + (y - 26) + '" width="14" height="26"/><rect x="' + (x - 14) + '" y="' + (y - 40) + '" width="16" height="40"/><rect x="' + (x + 4) + '" y="' + (y - 32) + '" width="14" height="32"/></g>'; }
   var figCache = {};
-  function figure(id){
+  /* figure(id) is the figure on its own; figure(id, model) draws a figure
+     made from a generated model's numbers (gravity, rank-size). */
+  function figure(id, model){
     if(!FIGS[id]) return null;
+    if(model && FIGS[id].length) return FIGS[id](model);
     if(!figCache[id]) figCache[id] = FIGS[id]();
     return figCache[id];
   }

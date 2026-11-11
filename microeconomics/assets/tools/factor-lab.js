@@ -32,11 +32,11 @@
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
     var nid = T.nid('fl'), LS = null, touched = false, tip = null, anim = null;
-    var view = 'comp', tab = 'table', P = FL.P0, W = FL.W0, MW = 0, shown = FL.competitive(P, W).shifts;
+    var view = 'comp', tab = 'graph', P = FL.P0, W = FL.W0, MW = 0, shown = FL.competitive(P, W).shifts;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem fl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Factor market lab</h2>' +
-      '<div class="fl-fig" data-tab="table">' +
-        '<div class="ls-seg fl-tabs" role="group" aria-label="Show"><button type="button" data-t="table" aria-pressed="true">Hiring table</button><button type="button" data-t="graph" aria-pressed="false">Graph</button></div>' +
+      '<div class="fl-fig" data-tab="graph">' +
+        '<div class="ls-seg fl-tabs" role="group" aria-label="Show"><button type="button" data-t="graph" aria-pressed="true">Graph</button><button type="button" data-t="table" aria-pressed="false">Hiring table</button></div>' +
         '<div class="fl-body"><div class="fl-tbl"></div><div class="fl-g"></div></div>' +
       '</div>' +
       '<div class="fl-ctl"><div class="ls-seg fl-view" role="group" aria-label="Labor market"><button type="button" data-v="comp" aria-pressed="true">Competitive</button><button type="button" data-v="mono" aria-pressed="false">Monopsony</button></div><div class="fl-sl"></div></div>' +
@@ -71,19 +71,21 @@
         var c = FL.competitive(P, W);
         return T.wrapTables('<table class="ls-tbl fl-t"><caption>Rise Bakery: bread at ' + money(P) + ', wage ' + money(W) + ' a day</caption><thead><tr><th scope="col">Workers</th><th scope="col">Loaves</th><th scope="col">MP</th><th scope="col" class="fl-c-mrp">MRP = MP × P</th><th scope="col" class="fl-c-w">Wage</th></tr></thead><tbody>' +
           c.rows.map(function(r){ var on = r.L <= c.hire; return '<tr class="' + (on ? 'is-hired' : 'is-not') + (r.L === c.hire ? ' hl' : '') + '"><th scope="row">' + r.L + '</th><td>' + r.tp + '</td><td>' + r.mp + '</td><td class="fl-c-mrp">' + money(r.mrp) + '</td><td class="fl-c-w">' + money(W) + '</td></tr>'; }).join('') + '</tbody></table>') +
-          '<p class="fl-note"><b>Hire ' + c.hire + '.</b> Wage bill ' + money(W) + ' × ' + c.hire + ' = ' + money(c.bill) + '.</p>';
+          '<p class="fl-note">Wage bill: ' + money(W) + ' × ' + c.hire + ' = <b>' + money(c.bill) + '</b>.</p>';
       }
       var m = FL.monopsony(MW);
       return T.wrapTables('<table class="ls-tbl fl-t"><caption>Northwood Mill, the only employer in Pine Ridge' + (MW ? ', minimum wage ' + money(MW) : '') + '</caption><thead><tr><th scope="col">Workers</th><th scope="col" class="fl-c-w">Wage from supply</th><th scope="col">Labor cost</th><th scope="col" class="fl-c-mfc">MFC</th><th scope="col" class="fl-c-mrp">MRP</th></tr></thead><tbody>' +
         m.rows.map(function(r){ var on = r.L <= m.hire; return '<tr class="' + (on ? 'is-hired' : 'is-not') + (r.L === m.hire ? ' hl' : '') + '"><th scope="row">' + r.L + '</th><td class="fl-c-w">' + money(r.paid) + '</td><td>' + money(r.tlc) + '</td><td class="fl-c-mfc">' + money(r.mfc) + '</td><td class="fl-c-mrp">' + money(r.mrp) + '</td></tr>'; }).join('') + '</tbody></table>') +
-        '<p class="fl-note"><b>Hire ' + m.hire + ', pay ' + money(m.wage) + '.</b> Wage bill ' + money(m.bill) + '. Competitive: ' + m.comp + ' workers at ' + money(m.compWage) + '.</p>';
+        '<p class="fl-note">Wage bill: ' + money(m.wage) + ' × ' + m.hire + ' = <b>' + money(m.bill) + '</b>.</p>';
     }
     function graph(fast){
       if(view === 'comp'){
         var spec = { kind: 'labor', do: ['label'] }, sh = {};
         if(Math.abs(shown.MRP) > 1e-6) sh.MRP = shown.MRP; if(Math.abs(shown.SL) > 1e-6) sh.SL = shown.SL;
         var e1 = sh.SL ? G.eq(spec, sh) : null;
-        return G.svg(spec, { shifts: sh, eq: e1, labelsShown: true, curveN: '2', n0: '1', n1: '2' }, { label: 'Labor market and firm: ' + G.describe(spec, { shifts: round(sh) }) + ' ' + line() });
+        // Pass 3: the firm's wage line label on one line, above the line's right end (the engine broke it over the axis edge).
+        return G.svg(spec, { shifts: sh, eq: e1, labelsShown: true, curveN: '2', n0: '1', n1: '2' }, { label: 'Labor market and firm: ' + G.describe(spec, { shifts: round(sh) }) + ' ' + line() })
+          .replace(/x="([\d.]+)" y="([\d.]+)" text-anchor="start">S = MFC =<tspan x="[\d.]+" dy="13">W<\/tspan>/, function(_, x, y){ return 'x="' + (+x + 18) + '" y="' + (+y - 9) + '" text-anchor="end">S = MFC = W'; });
       }
       // The hiring point, labeled and marked on both axes (integration 12, T4-4).
       var ms = { kind: 'monopsony', do: ['shade'], key: { shade: 'wage-bill' }, pointLabel: 'Hire' }, bind = MW > 16;
@@ -121,7 +123,8 @@
         void m;
       }
       T.explain($('.fl-say'), head, body);
-      if(LS){ LS.caption(head, 'explore'); var c2 = view === 'comp' ? FL.competitive(P, W) : FL.monopsony(MW); LS.pills([{ html: 'Hire ' + c2.hire, tone: 'accent' }], 'left', 'explore'); }
+      // (pass 2: no "Hire n" pill: the caption and the lit table row already say it)
+      if(LS){ LS.caption(head, 'explore'); LS.pills([], 'left', 'explore'); }
     }
     function details(){
       var C = M.Calc(), lc = function(k){ return C.evaluate({ fn: 'leastCost', args: [60, 20, 100, 50], pick: k }); };

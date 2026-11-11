@@ -27,7 +27,8 @@
   T.mount(SLUG, function(app, data){
     var esc = T.esc, F = T.F, G = M.popgen;
     var st = JSON.parse(JSON.stringify(data.defaults));
-    st.readGen = st.gens; st.rep = 0;
+    // pass 3 (2026-11-11): open at generation 0; the populations' fates appear as Draw generations plays them
+    st.readGen = 0; st.rep = 0;
     var sim = null, runs = [], timer = null;
     var GENO = ['AA', 'Aa', 'aa'];
 
@@ -36,7 +37,7 @@
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="guess" aria-pressed="false">Guess N</button></div>' +
       '<p class="bt-first">Press Draw generations and watch chance change the allele mix.</p>' +
       '<div class="hw-jarrow"><div class="bt-fig hw-jar"></div><div class="hw-jarside"><div class="os-play"><button type="button" class="btn-press sm" data-a="play">Draw generations</button><p class="os-clock hw-clock" aria-hidden="true"></p></div><p class="bt-small hw-jarnote"></p><div class="hw-mini"></div></div></div>' +
-      '<div class="os-chal hw-chal" hidden></div>' +
+      '<div class="os-chal hw-chal" hidden></div><div class="hw-gstage" hidden></div><div class="hw-cmp" hidden></div>' +
       '<div class="hw-top"></div><div class="bt-controls hw-controls" data-primary="1"></div>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="new">Run with a new seed</button><button type="button" class="btn-press sm alt" data-a="record">Record this run</button>' +
       '<button type="button" class="btn-press sm alt" data-a="series">Compare population sizes</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
@@ -47,7 +48,7 @@
       '<dl class="bt-readout hw-readout"></dl><div class="hw-chi bt-num"></div><p class="bt-summary"></p>' +
       '<details class="bt-data"><summary>Data tables: your runs, each population\'s fate, and p by generation</summary><div class="bt-tables"></div></details></section>' +
       '<section class="bt-card" aria-labelledby="hw-q"><h2 id="hw-q">Questions about this model</h2><div class="bt-qs bio-qs"></div></section>');
-    var card = app.querySelector('.bt-card'), ctl = card.querySelector('.hw-controls'), readCtl = card.querySelector('.hw-read');
+    var card = app.querySelector('.bt-card'), ctl = card.querySelector('.hw-controls'), readCtl = card.querySelector('.hw-read'), playEl = card.querySelector('.os-play');
     var say = T.announcer(card.querySelector('.bt-summary'));
     var note = function(t){ card.querySelector('.bt-runnote').textContent = t; };
 
@@ -55,7 +56,8 @@
     card.querySelector('[data-a="record"]').addEventListener('click', function(){ record(cfg(), 'this run'); });
     card.querySelector('[data-a="series"]').addEventListener('click', function(){
       [10, 50, 200, 1000].forEach(function(n){ record(Object.assign(cfg(), { N: n }), 'series'); });
-      note('Recorded the current settings at N = 10, 50, 200 and 1000 (seed ' + st.seed + '). See the data table of runs.');
+      note('Recorded the current settings at N = 10, 50, 200 and 1000 (seed ' + st.seed + '). They are drawn side by side on the stage and listed in the data table of runs.');
+      compareFig();
     });
     card.querySelector('[data-a="clear"]').addEventListener('click', function(){ runs = []; note('Runs cleared.'); draw(true); });
 
@@ -147,6 +149,7 @@
 
     /* -------------------------------------------------------- running */
     function compute(now){
+      if(typeof closeCompare === 'function') closeCompare();
       var oldGens = sim ? sim.c.gens : null, oldReps = sim ? sim.c.reps : null;
       if(st.readGen > st.gens) st.readGen = st.gens;
       sim = G.simulate(cfg());
@@ -196,6 +199,16 @@
       var n = rep.n[t], total = n > 0 ? 2 * n : 100, nA = Math.round(p * total), W = 220, H = 230, out = [];
       if(!slots){ var g = M.rng(31337); slots = []; for(var i = 0; i < 400; i++) slots.push(g()); }
       var cols = total > 200 ? 20 : total > 100 ? 16 : total > 40 ? 12 : total > 12 ? 8 : 6, r = Math.min(9, (W - 40) / cols / 2 - 0.5), rows = Math.ceil(total / cols);
+      // A big pool (N of 100 and up) gets smaller beads packed to fit the glass, every allele still drawn
+      // (tool review 2026-11: at N = 500 and 1000 the beads overflowed the lid).
+      var GW = W - 68, GH = 168;
+      if(rows * (2 * r + 1.5) > GH){
+        var d = Math.sqrt(GW * GH / total);
+        cols = Math.max(1, Math.floor(GW / d)); rows = Math.ceil(total / cols);
+        while(rows * d > GH){ d *= 0.97; cols = Math.max(1, Math.floor(GW / d)); rows = Math.ceil(total / cols); }
+        r = d / 2 - 0.25;
+      }
+      var rowH = rows > 30 ? 2 * r + 0.5 : 2 * r + 1.5;
       out.push('<defs><pattern id="hw-str" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hw-bead-a" width="4" height="4"/><rect class="hw-bead-st" width="1.6" height="4"/></pattern>' +
         '<radialGradient id="hw-gloss" cx=".35" cy=".3" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></radialGradient>' +
         '<linearGradient id="hw-glassg" x1="0" x2="1"><stop offset="0" class="hw-g0"/><stop offset=".18" class="hw-g1"/><stop offset=".82" class="hw-g1"/><stop offset="1" class="hw-g0"/></linearGradient></defs>');
@@ -208,8 +221,8 @@
       idx.sort(function(a, b){ return key(a) - key(b); });
       var isA = {}; for(var j = 0; j < nA; j++) isA[idx[j]] = true;
       for(var b = 0; b < total; b++){
-        var row = Math.floor(b / cols), col = b % cols, x = 34 + r + col * ((W - 68 - 2 * r) / Math.max(1, cols - 1)), y = 216 - r - row * (2 * r + 1.5);
-        out.push('<circle class="hw-bead ' + (isA[b] ? 'A' : 'a') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"' + (isA[b] ? '' : ' fill="url(#hw-str)"') + '/>' + (r > 3 ? '<circle class="hw-gl" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>' : ''));
+        var row = Math.floor(b / cols), col = b % cols, x = 34 + r + col * ((W - 68 - 2 * r) / Math.max(1, cols - 1)), y = 216 - r - row * rowH;
+        out.push('<circle class="hw-bead ' + (isA[b] ? 'A' : 'a') + (r < 3 ? ' sm' : '') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(2) + '"' + (isA[b] || r < 3 ? '' : ' fill="url(#hw-str)"') + '/>' + (r > 3 ? '<circle class="hw-gl" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>' : ''));
       }
       out.push('<path class="hw-shine" d="M30 70 V196 M40 62 V90"/>');
       out.push('<text class="hw-jlab" x="110" y="10" text-anchor="middle">' + (n > 0 ? 2 * n + ' alleles (' + n + ' adults)' : 'very large: 100 beads in proportion') + '</text>');
@@ -262,6 +275,32 @@
       card.querySelector('.bt-tables').innerHTML = html;
     }
 
+    /* ------------------------------------- compare population sizes */
+    /* Tool review 2026-11: Compare used to write only a table. Now the four
+       sizes are drawn side by side on the stage, the same settings and seed,
+       one line per population, so the fan of lines narrows as N grows. */
+    var cmpEl = card.querySelector('.hw-cmp'), gstEl = card.querySelector('.hw-gstage');
+    function miniPlot(c, s2, title){
+      var W = 220, H = 170, L = 30, R = 10, Tp = 42, B = 22, pw = W - L - R, ph = H - Tp - B, out = [];
+      var X = function(k){ return L + pw * k / c.gens; }, Y = function(v){ return Tp + ph * (1 - v); };
+      out.push('<text class="hw-mt" x="8" y="16">' + esc(title) + '</text>');
+      [0, 0.5, 1].forEach(function(v){ out.push('<line class="hw-mg" x1="' + L + '" x2="' + (L + pw) + '" y1="' + Y(v) + '" y2="' + Y(v) + '"/><text class="hw-ma" x="' + (L - 4) + '" y="' + (Y(v) + 4) + '" text-anchor="end">' + v + '</text>'); });
+      out.push('<text class="hw-ma" x="' + L + '" y="' + (H - 6) + '">0</text><text class="hw-ma" x="' + (L + pw) + '" y="' + (H - 6) + '" text-anchor="end">' + c.gens + ' gen.</text>');
+      s2.reps.forEach(function(r){ out.push('<polyline class="hw-ml" points="' + r.p.map(function(v, k){ return X(k).toFixed(1) + ',' + Y(v).toFixed(1); }).join(' ') + '"/>'); });
+      var f = s2.fates;
+      out.push('<text class="hw-mf" x="8" y="30">' + (f.fixed + f.lost) + ' of ' + c.reps + ' lost an allele</text>');
+      return '<svg class="hw-mini-plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(title + ': p over ' + c.gens + ' generations in ' + c.reps + ' populations; final p ' + s2.reps.map(function(r){ return F(r.p[c.gens], 2); }).join(', ') + '; ' + (f.fixed + f.lost) + ' lost or fixed an allele.') + '">' + out.join('') + '</svg>';
+    }
+    function stageOf(){ var x = cmpEl.closest('.ls-stage') || cmpEl.parentNode; return x; }
+    function compareFig(){
+      var base = cfg(), cells = [10, 50, 200, 1000].map(function(n){ var c = Object.assign({}, base, { N: n }); return miniPlot(c, G.simulate(c), 'N = ' + n + ' adults'); });
+      cmpEl.innerHTML = '<div class="hw-cmphead"><p><b>Same start, same seed, four sizes.</b> Each line is one population. Small populations spread apart and lose alleles; big ones stay near p = ' + F(base.p0, 2) + '.</p><button type="button" class="bt-btn hw-cmpback">Back to the jar</button></div><div class="hw-cmpgrid">' + cells.join('') + '</div>';
+      cmpEl.hidden = false;
+      var stg = stageOf(); if(stg) stg.classList.add('hw-cmp-on');
+      cmpEl.querySelector('.hw-cmpback').addEventListener('click', closeCompare);
+    }
+    function closeCompare(){ if(cmpEl.hidden) return; cmpEl.hidden = true; var stg = stageOf(); if(stg) stg.classList.remove('hw-cmp-on'); }
+
     /* ----------------------------------------------------- guess N */
     var chal = card.querySelector('.hw-chal'), gN = 0, gSeed = 1 + Math.floor(Math.random() * 99999), saved = null, mode = 'explore';
     var CHOICES = [10, 100, 1000];
@@ -281,8 +320,9 @@
       var curves = s2.reps.map(function(r){ return { points: r.p.map(function(v, k){ return [k, v]; }), cls: 's1' }; });
       var id = 'hwg' + gN;
       chal.innerHTML = '<p class="os-chal-q" tabindex="-1"><b>Guess N (' + gN + ').</b> Eight populations all started at p = 0.50, with no selection, mutation or migration: only chance acts. How many adults does each population have?</p>' +
-        '<div class="hw-gplot">' + T.plot({ h: 260, title: 'Line graph of p over 60 generations in 8 populations of a hidden size, all starting at 0.50. Final p values: ' + s2.reps.map(function(r){ return F(r.p[60], 2); }).join(', ') + '.', x: { label: 'Generation', unit: '', min: 0, max: 60, step: 10 }, y: { label: 'Frequency of A (p)', unit: '', min: 0, max: 1, step: 0.2 }, curves: curves }) + '</div>' +
-        '<fieldset class="os-ask"><legend>Each population has…</legend>' + CHOICES.map(function(n, i){ return '<div class="bt-radio"><input type="radio" name="' + id + '" id="' + id + i + '" value="' + n + '"><label for="' + id + i + '">' + n + ' adults</label></div>'; }).join('') + '</fieldset>' +
+        '<p class="bt-small hw-gsee">The eight populations are drawn on the stage.</p>';
+      gstEl.innerHTML = '<p class="hw-gtitle"><b>Mystery population size.</b> Eight populations, each starting at p = 0.50. Only chance acts.</p><div class="hw-guessplot">' + T.plot({ h: 320, title: 'Line graph of p over 60 generations in 8 populations of a hidden size, all starting at 0.50. Final p values: ' + s2.reps.map(function(r){ return F(r.p[60], 2); }).join(', ') + '.', x: { label: 'Generation', unit: '', min: 0, max: 60, step: 10 }, y: { label: 'Frequency of A (p)', unit: '', min: 0, max: 1, step: 0.2 }, curves: curves }) + '</div>';
+      chal.innerHTML += '<fieldset class="os-ask"><legend>Each population has…</legend>' + CHOICES.map(function(n, i){ return '<div class="bt-radio"><input type="radio" name="' + id + '" id="' + id + i + '" value="' + n + '"><label for="' + id + i + '">' + n + ' adults</label></div>'; }).join('') + '</fieldset>' +
         '<div class="bt-actions"><button type="button" class="btn-press sm hw-gcheck">Check</button></div><div class="os-chal-fb" role="status" aria-live="polite"></div>';
       chal.querySelector('.hw-gcheck').addEventListener('click', function(){
         var a = chal.querySelector('input:checked'), fb = chal.querySelector('.os-chal-fb');
@@ -299,7 +339,9 @@
       if(m === mode) return; mode = m;
       card.querySelectorAll('[data-m]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === m)); });
       var gq = m === 'guess';
-      chal.hidden = !gq;
+      chal.hidden = !gq; gstEl.hidden = !gq; closeCompare(); playEl.hidden = gq;
+      var prim = document.querySelector('.ls-root .ls-primary'); if(prim) prim.hidden = gq;
+      var stg = gstEl.closest('.ls-stage'); if(stg) stg.classList.toggle('hw-guess-on', gq);
       ['.hw-jarrow', '.hw-top', '.hw-controls', '.bt-buttons', '.bt-runnote', '.bt-stage', '.hw-read', '.hw-readout', '.hw-chi', '.bt-summary', '.bt-data'].forEach(function(sel){ card.querySelectorAll(sel).forEach(function(el){ if(!chal.contains(el)) el.hidden = gq; }); });
       if(gq) newGuess();
     }
@@ -312,10 +354,11 @@
     if(/^#guess/.test(location.hash)) setMode('guess');
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
-    studio: { sim: true, stage: ['.hw-jar'], stageAlso: ['.hw-mini'], why: ['.hw-jarnote'], live: '.bt-summary', views: [{ sel: '.hw-pplot', label: 'p over generations' }, { sel: '.hw-gplot', label: 'Genotypes' }],
+    studio: { sim: true, stage: ['.hw-jar'], stageAlso: ['.hw-mini', '.hw-gstage', '.hw-cmp'], why: ['.hw-jarnote'], live: '.bt-summary', views: [{ sel: '.hw-pplot', label: 'p over generations' }, { sel: '.hw-gplot', label: 'Genotypes' }],
       dock: ['.os-chal', '.os-play', '@primary'], primarySel: '.hw-group:first-child > .bt-ctl:nth-of-type(-n+2)',
       hint: { target: '.os-play .btn-press', text: 'Press Draw generations' },
-      caption: function(g){ return '<b>Generation ' + T.esc(g.ro(0)) + ':</b> p = ' + T.esc(g.ro(2).split(' / ')[0]) + ' in population 1. Across all populations: ' + T.esc(g.ro(6)) + '.'; },
-      pills: function(g){ return [{ k: 'p', html: g.ro(2).split(' / ')[0], tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'Generation ' + g.ro(0), tone: 'ghost' }]; } } });
+      caption: function(g){ if(guessOn()) return '<b>How big is each population?</b> The wider the lines spread, the stronger drift is.'; if(/^0 of/.test(g.ro(0))) return '<b>Generation 0:</b> every population starts at p = ' + T.esc(g.ro(2).split(' / ')[0]) + '. Press Draw generations.'; return '<b>Generation ' + T.esc(g.ro(0)) + ':</b> p = ' + T.esc(g.ro(2).split(' / ')[0]) + ' in population 1. Across all populations: ' + T.esc(g.ro(6)) + '.'; },
+      pills: function(g){ if(guessOn()) return []; return [{ k: 'p', html: g.ro(2).split(' / ')[0], tone: 'readout' }]; },
+      pillsR: function(g){ if(guessOn()) return []; return [{ html: 'Generation ' + g.ro(0), tone: 'ghost' }]; } } });
+  function guessOn(){ var gs = document.querySelector('.hw-gstage'); return !!(gs && !gs.hidden); }
 })();

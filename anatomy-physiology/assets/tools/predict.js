@@ -232,7 +232,7 @@
       (two ? '<h3 class="pc-stage-h" id="' + sid + '-h" tabindex="-1"><span class="pc-stage-n">Stage ' + (k + 1) + ' of 2</span> ' + esc(st.label) + '</h3><p class="pc-prompt">' + esc(st.prompt) + '</p>'
            : '<h3 class="pc-stage-h pc-sr" id="' + sid + '-h">Your predictions</h3>') +
       (k === 0 ? '<p class="kt-first pc-first">Call each one: up, down or no change. Then press Run it.</p>' : '') +
-      dashHtml(s, st, sid) +
+      dashHtml(s, st, sid, !!(s.scene && window.AnpScene)) +
       '<div class="pc-vars">' + st.variables.map(function(v, i){
         var nid = sid + '-v' + i;
         return '<div class="pc-var" data-k="' + i + '">' +
@@ -246,6 +246,8 @@
       '<div class="pc-actions"><button type="button" class="btn-press sm pc-check" disabled>Run it</button><span class="anp-small pc-left" aria-live="polite"></span></div>' +
       '<div class="pc-after" hidden></div>';
     Q().querySelector('.pc-stages').appendChild(box);
+    var scene = sceneView(s, st, box);
+    box._scene = scene;
     var steps = S ? studioStage(s, k, box) : null;
     var check = box.querySelector('.pc-check'), left = box.querySelector('.pc-left');
     function updateLeft(){
@@ -352,6 +354,9 @@
       show.addEventListener('click', function(){
         var open = tree.hidden;
         tree.hidden = !open;
+        // pass 3: the diagram and the run's feed tell the same chain: one at a time
+        var fd = S ? (dashOf(box) || document).querySelector('.pc-feed') : null;
+        if(fd && fd.innerHTML){ fd.hidden = open; var dsh = fd.closest('.pc-dash'); if(dsh && !dsh.classList.contains('has-scene')) dsh.classList.toggle('pc-big', open); }
         show.setAttribute('aria-expanded', String(open));
         show.textContent = open ? 'Hide the chain' : 'Show the chain';
         if(S && open && tree.scrollIntoView) tree.scrollIntoView({ block: 'start', behavior: 'smooth' });
@@ -407,19 +412,67 @@
       '<text x="6" y="49" class="pc-dial-t">↓</text><text x="78" y="49" text-anchor="end" class="pc-dial-t">↑</text>' +
       '</svg>';
   }
-  function dashHtml(s, st, sid){
-    return '<div class="pc-dash" aria-labelledby="' + sid + '-dh">' +
+  function dashHtml(s, st, sid, withScene){
+    var placed = function(v){ return withScene && s.scene.vars[v.id] && s.scene.vars[v.id].pt; };
+    return '<div class="pc-dash' + (withScene ? ' has-scene' : ' pc-big') + '" aria-labelledby="' + sid + '-dh">' +
       '<div class="pc-dash-top"><span class="pc-dash-h" id="' + sid + '-dh">The body</span><span class="pc-pert"><span class="pc-pert-k">Change:</span> ' + esc(st.start) + '</span></div>' +
+      (withScene ? '<div class="pc-scene"></div>' : '') +
       '<div class="pc-dash-grid">' + st.variables.map(function(v, i){
         return '<button type="button" class="pc-gauge" data-k="' + i + '" title="' + esc(v.name) + '" aria-label="' + esc(v.name) + ': no call yet. Tap to cycle increases, decreases, no change.">' + dialSvg() +
-          '<span class="pc-gauge-n">' + esc(shortName(v.name)) + '</span><span class="pc-gauge-s">Tap to call</span></button>';
+          '<span class="pc-gauge-n">' + (placed(v) ? '<span class="pc-gauge-k" aria-hidden="true">' + (i + 1) + '</span>' : '') + esc(shortName(v.name)) + '</span><span class="pc-gauge-s"></span></button>';
       }).join('') + '</div>' +
       '<ol class="pc-feed" aria-label="The chain, step by step" hidden></ol>' +
       '<p class="pc-sr pc-feed-live" role="status" aria-live="polite"></p>' +
       '</div>';
   }
+  /* ------------------------------------------------------------ the scene
+     (tool redesign 2026-11, assets/tools/scene.js). The situation itself, on
+     a real figure: a purple "!" where the change happens and a numbered pin
+     where each variable lives (the dials carry the same numbers). A call puts
+     an open badge on the pin; Run draws the chain on the picture, an arrow
+     from each variable's cause (the change, or the variable whose chain leads
+     into its own) to the variable, and the badge shows the real direction. */
+  var GLYPH = { up: '↑', down: '↓', none: '=' };
+  function sceneView(s, st, box){
+    var host = box.querySelector('.pc-scene');
+    if(!host || !s.scene || !window.AnpScene) return null;
+    var sc = s.scene, v = window.AnpScene.make(sc, { kind: 'causes', route: false, cls: 'pc-scn' });
+    host.appendChild(v.el);
+    var calls = {}, done = {}, arrows = [];
+    function at(i){ var e = sc.vars[st.variables[i].id]; return e && e.pt ? e : null; }
+    // the variable whose chain leads into variable i's (longest prefix), else the change itself
+    function causeOf(i){
+      var ch = st.variables[i].chain, best = -1, len = 0;
+      st.variables.forEach(function(w, j){
+        if(j === i || !at(j) || w.chain.length >= ch.length || w.chain.length <= len) return;
+        if(w.chain.every(function(key, n){ return ch[n] === key; })){ best = j; len = w.chain.length; }
+      });
+      return best;
+    }
+    function draw(){
+      var items = [sc.start ? { pt: sc.start, n: '!', state: 'start', title: 'The change: ' + st.start + (sc.startName ? ' (' + sc.startName + ')' : '') } : null];
+      st.variables.forEach(function(w, i){
+        var e = at(i);
+        if(!e){ items.push(null); return; }
+        var d = done[i], c = calls[i];
+        items.push({ pt: e.pt, n: i + 1, state: d ? (d.ok ? 'ok' : 'no') : '', glyph: d ? GLYPH[d.dir] : c ? GLYPH[c] : null, glyphTone: d ? d.dir : 'ghost', title: (i + 1) + '. ' + w.name + (e.name ? ' (' + e.name + ')' : '') });
+      });
+      v.pins(items);
+      arrows.forEach(function(a){ var p0 = v.pos(a[0]), p1 = v.pos(a[1]); if(p0 && p1){ var el = v.arrow(p0, p1, 'is-free'); if(el) el.setAttribute('data-k', a[1]); } });
+    }
+    draw();
+    return {
+      call: function(i, dir){ calls[i] = dir; draw(); },
+      reveal: function(i, dir, ok){
+        done[i] = { dir: dir, ok: ok };
+        if(at(i)){ var c = causeOf(i); var from = c > -1 ? c + 1 : (sc.start ? 0 : -1); if(from > -1) arrows.push([from, i + 1]); }
+        draw();
+      }
+    };
+  }
   var ANG = { up: 52, down: -52, none: 0 };
   function setGauge(box, i, dir, ghost, ok){
+    if(box._scene){ if(ghost) box._scene.call(i, dir); else box._scene.reveal(i, dir, ok); }
     var g = dashOf(box).querySelector('.pc-gauge[data-k="' + i + '"]');
     if(!g) return;
     var d = dirOf(dir);
@@ -454,7 +507,7 @@
   function runChain(box, st, picks, reveals, done){
     var feed = dashOf(box).querySelector('.pc-feed'), live = dashOf(box).querySelector('.pc-feed-live');
     var co = chainOrder(st), order = co.keys, seen = {}, resolved = {}, quick = motionOff(), t = 0, gap = 750;
-    feed.hidden = false;
+    feed.hidden = false; feed.parentNode.classList.remove('pc-big');
     feed.innerHTML = '<li class="pc-f-root"><span class="pc-f-node pc-root">' + esc(st.start) + '</span></li>';
     box.classList.add('is-running');
     function settle(){

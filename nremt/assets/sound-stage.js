@@ -225,13 +225,14 @@
       L.mclX.forEach(function(x){ el('line', { x1:x, y1:L.mclTop, x2:x, y2:L.mclBottom, class:'st-guide' }, g); });
       var ex = L.sternumX - L.sternalHalfPx - 66;
       [2, 3, 4, 5].forEach(function(n){
-        var t = el('text', { x: ex, y: L.icsY[n], class:'st-ics', dy:'0.35em' }, g); t.textContent = n;
+        var t = el('text', { x: ex, y: L.icsY[n], class:'st-ics', 'data-ics': n, dy:'0.35em' }, g); t.textContent = n;
       });
-      var cap = el('text', { x: ex, y: L.icsY[5] + 36, class:'st-cap' }, g); cap.textContent = 'ICS';
-      L.mclX.forEach(function(x){ var c = el('text', { x:x, y:L.mclBottom + 22, class:'st-cap' }, g); c.textContent = 'MCL'; });
-      lab(g, 30, 40, 'R'); lab(g, 570, 40, 'L');
+      var cap = el('text', { x: ex, y: L.icsY[5] + 36, class:'st-cap st-cap-ics' }, g); cap.textContent = 'ICS';
+      L.mclX.forEach(function(x){ var c = el('text', { x:x, y:L.mclBottom + 22, class:'st-cap st-cap-mcl' }, g); c.textContent = 'MCL'; });
+      // Pass 3: R and L sit below the stage's Front / Back switch (at y 40 the R ran under it).
+      lab(g, 30, 118, 'R'); lab(g, 570, 118, 'L');
     } else {
-      lab(g, 30, 40, 'L'); lab(g, 570, 40, 'R');
+      lab(g, 30, 118, 'L'); lab(g, 570, 118, 'R');
     }
   }
   function lab(g, x, y, t){ var n = el('text', { x:x, y:y, class:'st-rl' }, g); n.textContent = t; }
@@ -665,6 +666,17 @@
         }
         g.classList.remove('is-right', 'is-wrong');
       });
+      landmarks();
+    }
+    /* Pass 2 (calm): the rib-space numbers and the MCL tags name only the place
+       in focus (the site lit now, from its "where"); the rest stay hidden. */
+    function landmarks(){
+      var on = Object.keys(siteEls).filter(function(id){ return siteEls[id].classList.contains('is-on'); })[0];
+      var w = on && SITE[on] ? SITE[on].where : '', m = w.match(/(\d)\w\w(?: to (\d)\w\w)? intercostal/), ics = [];
+      if(m) for(var n = +m[1]; n <= +(m[2] || m[1]); n++) ics.push(String(n));
+      $$('.st-ics').forEach(function(t){ t.classList.toggle('is-dim', ics.indexOf(t.getAttribute('data-ics')) < 0); });
+      $$('.st-cap-ics').forEach(function(t){ t.classList.toggle('is-dim', !ics.length); });
+      $$('.st-cap-mcl').forEach(function(t){ t.classList.toggle('is-dim', !/midclavicular/.test(w)); });
     }
 
     /* ---- explore ---- */

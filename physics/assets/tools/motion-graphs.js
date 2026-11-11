@@ -78,7 +78,7 @@
             '<button type="button" class="bt-mode" data-d="match" aria-pressed="false">Match</button>' +
           '</div>' +
           '<div class="mg-panel mg-p-drag"></div><div class="mg-panel mg-p-set" hidden></div><div class="mg-panel mg-p-match" hidden></div>' +
-          '<div class="bt-buttons mg-btns"><button type="button" class="bt-btn mg-run" hidden>▶ Run</button><button type="button" class="bt-btn mg-reset">Start over</button></div>' +
+          '<div class="bt-buttons mg-btns"><button type="button" class="bt-btn mg-run" hidden>▶ Run</button><button type="button" class="bt-btn mg-reset">Start over</button><button type="button" class="bt-btn mg-ex" aria-pressed="false">Example run</button></div>' +
         '</div>' +
         '<div class="mg-say"></div><div class="mg-cur"></div>' +
         '<div class="mg-read"></div>' +
@@ -89,7 +89,7 @@
     var say = T.announcer(document.createElement('p'));
 
     /* ---- controls */
-    var start = T.cue('Drag the cart along the track. The graphs record for ' + WIN + ' s.');
+    var start = T.cue('The graphs record ' + WIN + ' s of your motion.');   // pass 3: the "drag" instruction is said once, on the track
     $('.mg-p-drag').appendChild(start.el);
     var sv0 = T.slider({ label: 'Starting velocity, v₀', min: -3, max: 3, step: 0.1, value: st.v0, unit: 'm/s', decimals: 1, onInput: function(v){ st.v0 = v; if(!st.running) previewSet(); } });
     var sa = T.slider({ label: 'Acceleration, a', min: -2, max: 2, step: 0.1, value: st.a, unit: 'm/s²', decimals: 1, onInput: function(v){ st.a = v; if(st.running && st.drive === 'set') newSegment(); else if(!st.running) previewSet(); } });
@@ -104,6 +104,8 @@
     driveBtns.forEach(function(b){ b.addEventListener('click', function(){ setDrive(b.getAttribute('data-d')); }); });
     runBtn.addEventListener('click', function(){ if(st.running) pause(); else runSet(); });
     $('.mg-reset').addEventListener('click', function(){ reset(); });
+    var exBtn = $('.mg-ex');
+    exBtn.addEventListener('click', function(){ st.showEx = !st.showEx; exBtn.setAttribute('aria-pressed', String(st.showEx)); draw(true); });
     matchBox.querySelector('.mg-next').addEventListener('click', function(){ st.target = (st.target + 1) % targets.length; reset(); });
 
     function setDrive(d){
@@ -112,7 +114,7 @@
       st.drive = d;
       driveBtns.forEach(function(b){ var on = b.getAttribute('data-d') === d; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       ['drag', 'set', 'match'].forEach(function(k){ $('.mg-p-' + k).hidden = k !== d; });
-      runBtn.hidden = d !== 'set';
+      runBtn.hidden = d !== 'set'; if(exBtn) exBtn.hidden = d !== 'drag';
       reset();
       T.event('apphys-tool-drive', { tool: 'motion-graphs', drive: d });
     }
@@ -378,7 +380,8 @@
       p.push(gl.phone ? '<text class="lbl" x="2" y="' + (gl.h - 2) + '">t (s)</text>' : '<text class="lbl" x="' + (gl.L + gl.pw) + '" y="' + (gl.h - 2) + '" text-anchor="end">t (s)</text>');
       // Before any motion: a faint example run and a hint, so the first screen
       // shows what the graphs will do (Drag), or the run that Run will make (Set).
-      var ghost = !m.t.length && !st.running ? ghostRun() : null;
+      // Pass 3: the Drag example is shown on tap (Example run), so it does not compete with the student's own run.
+      var ghost = !m.t.length && !st.running && (st.drive !== 'drag' || st.showEx) ? ghostRun() : null;
       if(ghost){
         var gcls = { x: 's1', v: 's2', a: 's3' };
         ['x', 'v', 'a'].forEach(function(k){ p.push('<polyline class="series mg-ghost ' + gcls[k] + '" points="' + ghost.m.t.map(function(t, i){ return gx(t).toFixed(1) + ',' + gy(k, ghost.m[k][i]).toFixed(1); }).join(' ') + '"/>'); });
@@ -388,6 +391,7 @@
         var hasSub = ghost.sub && gl.pw > 300 && gl.ph >= 44, hx = gl.L + gl.pw - 8, hy = gl.top.x + gl.ph - (hasSub ? 24 : 8);
         p.push('<g class="mg-ghost-hint"><text x="' + hx + '" y="' + hy.toFixed(1) + '" text-anchor="end">' + ghost.title + '</text>' + (hasSub ? '<text class="sub" x="' + hx + '" y="' + (hy + 16).toFixed(1) + '" text-anchor="end">' + ghost.sub + '</text>' : '') + '</g>');
       }
+      else if(!m.t.length && !st.running && st.drive === 'drag') p.push('<g class="mg-ghost-hint"><text x="' + (gl.L + gl.pw / 2) + '" y="' + (gl.top.x + gl.ph / 2 - 8).toFixed(1) + '" text-anchor="middle">Your run draws here</text></g>');
       // Target (Match).
       if(tg) p.push('<polyline class="mg-target-l" points="' + tg.pts.map(function(q){ return gx(q[0]).toFixed(1) + ',' + gy(tg.kind, q[1]).toFixed(1); }).join(' ') + '"/>');
       // The cursor's area and tangents go under the curves.
@@ -420,7 +424,7 @@
       if(st.drive === 'drag'){
         var mo = MG.motion(-1.5, 0, [{ dur: 2, a: 0.6 }, { dur: 2, a: 0 }, { dur: 2, a: -0.6 }, { dur: 2, a: -0.6 }, { dur: 2, a: 0 }]);
         var w = gl.pw > 300;
-        return { m: MG.sample(mo, WIN, 0.05), title: 'Example run (faint)', sub: 'Drag the cart: your own run draws here',
+        return { m: MG.sample(mo, WIN, 0.05), title: 'Example run (faint)', sub: '',
           notes: w ? [[1, 'v', 0.6, -10, 'speeds up'], [3, 'v', 1.2, -10, 'steady'], [6, 'v', 0.0, -10, 'turns around'], [9, 'v', -1.2, 18, 'steady back']] : null };
       }
       if(st.drive === 'set'){

@@ -271,3 +271,50 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
 .pc-ls .ls-stage-body > .pc-setup-text.pc-clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .pc-ls .ls-stage-body > .pc-more{flex:none;align-self:flex-start;min-height:36px;padding:0;margin:0 0 6px;font:800 14px var(--font-ui);color:var(--cink);text-decoration:underline;background:none;border:0;cursor:pointer;}
 @media (max-width:599.98px){ .pc-ls .ls-stage-body > .pc-setup-text{font-size:15px;color:var(--ink);} }
+
+/* The scene (tool redesign 2026-11, assets/tools/scene.js): the situation on
+   a real figure, the dials beside it as the answer layer and the feed under
+   them while the chain runs. */
+.pc-scene{min-width:0;}
+.pc-scn{width:min(100%, 48vh * var(--scn-r, 1));margin:0 auto;}
+.pc-gauge-k{display:inline-grid;place-items:center;min-width:17px;height:17px;margin-right:4px;padding:0 4px;border-radius:9px;background:#A33B26;color:#fff;font:900 11px/1 var(--font-ui);vertical-align:1px;}
+.pc-gauge.is-ok .pc-gauge-k{background:#1F7A4D;} .pc-gauge.is-no .pc-gauge-k{background:#B4232A;}
+.scn-leg.is-free{stroke:#7A4E9C;}
+@media (min-width: 760px) and (max-width: 899px){
+  .pc-dash.has-scene .pc-scene{grid-column:1 / -1;grid-row:2;}
+  .pc-dash.has-scene .pc-dash-grid,.pc-dash.has-scene .pc-feed{grid-row:3;}
+}
+@media (min-width: 900px){
+  .pc-dash.has-scene{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);}
+  .pc-dash.has-scene .pc-scene{grid-column:1;grid-row:2 / span 2;}
+  .pc-dash.has-scene .pc-dash-grid{grid-column:2;grid-row:2;}
+  .pc-dash.has-scene .pc-feed{grid-column:2;grid-row:3;}
+  .pc-dash.has-scene:not(:has(.pc-feed:not([hidden]))) .pc-dash-grid{grid-column:2;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-dash-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
+}
+
+/* Pass 2 (2026-11-10): the figure is the picture. Beside it the dials are a
+   numbered list (a small dial, the number of its pin, the name); a dial's
+   call line stays empty until there is a call. */
+.pc-gauge-s:empty{display:none;}
+@media (min-width: 900px){
+  .pc-dash.has-scene{grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-dash-grid{grid-template-columns:1fr;gap:6px;align-content:start;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-gauge{display:grid;grid-template-columns:62px minmax(0,1fr);grid-template-rows:auto auto;column-gap:8px;align-items:center;justify-items:start;padding:6px 8px;text-align:left;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-dial{width:62px;height:37px;grid-row:1 / span 2;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-gauge-n{font-size:14px;text-align:left;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-gauge-s{font-size:12.5px;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-scn{width:min(100%, 62vh * var(--scn-r, 1));}
+}
+
+/* Pass 3: whole dial names; larger dials when there is no figure (docs/tool-review/pass3) */
+.pc-ls .pc-gauge-n{-webkit-line-clamp:3;line-clamp:3;}
+.pc-ls .ls-stage-body > .pc-dash .pc-gauge-n{display:block;overflow:visible;-webkit-line-clamp:unset;line-clamp:none;overflow-wrap:anywhere;}
+@media (min-width:1000px){
+  .pc-ls .ls-stage-body > .pc-big .pc-dash-grid{grid-template-columns:repeat(auto-fit,minmax(180px,250px));justify-content:center;gap:14px;}
+  .pc-ls .ls-stage-body > .pc-big .pc-dash-grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(2,minmax(180px,250px));}
+  .pc-ls .ls-stage-body > .pc-big .pc-gauge{padding:14px 12px 12px;gap:4px;}
+  .pc-ls .ls-stage-body > .pc-big .pc-dial{width:min(100%,180px);height:auto;}
+  .pc-ls .ls-stage-body > .pc-big .pc-gauge-n{font-size:15px;line-height:1.25;}
+  .pc-ls .ls-stage-body > .pc-big .pc-gauge-s{font-size:13px;}
+}

@@ -4,14 +4,21 @@
    frame: ApMacroTools.modes and drill on the Tool Studio; plots ApMacroPlot.
 
    Explore, four views (each once its topic is published):
-     GDP       add an economy's transactions one at a time: each lands in C, I,
-               G, X or M (an import is counted, then subtracted) or in "Not
-               counted", with the reason; the columns and GDP follow.
-     Prices    a basket's cost, the CPI (choose the base year) and inflation by
-               year, and a wage in base-year dollars.
-     Real GDP  nominal GDP and real GDP (nominal ÷ deflator × 100) by year.
-     Jobs      100 adults; events move them between employed, the three kinds
-               of unemployment and out of the labor force; the rates follow.
+     GDP       add an economy's transactions one at a time: each is a token
+               sized by its dollars that drops into C, I, G or X (an import
+               lands in C or I and its twin hangs under −M) or into Not
+               counted with its reason; GDP is the sum (gdpTokens()).
+     Prices    the basket itself as two receipts (base-year prices and this
+               year's, the same quantities), the CPI as the ratio of their
+               totals (choose the base year), then CPI and inflation by year,
+               and a wage in base-year dollars.
+     Real GDP  the same year's goods at this year's prices and at base-year
+               prices (the gap is only price), then nominal and real GDP
+               (nominal ÷ deflator × 100) by year.
+     Jobs      100 adults as people standing in three places (employed,
+               unemployed with its three kinds, not in the labor force),
+               with the labor force bracket over the first two; events walk
+               people between places and the bracket and rates follow.
    Test yourself: what counts in GDP, GDP by expenditure, CPI and inflation,
    real versus nominal, the labor force rates, the kinds of unemployment. */
 (function(){
@@ -48,20 +55,185 @@
   // Dot colors for the jobs view, in GROUPS order.
   var JOB_CLS = { E: 'is-emp', uF: 'is-uf', uS: 'is-us', uC: 'is-uc', nDis: 'is-dis', nRet: 'is-out', nStu: 'is-out', nOth: 'is-out' };
 
+  /* ------------------------------------------------ jobs: people in places
+     The 100 adults are people standing in three places: Employed,
+     Unemployed (looking; frictional, structural, cyclical) and Not in the
+     labor force (discouraged, retired, students, others). A bracket over the
+     first two is the labor force; it stretches and shrinks as people walk
+     between places (each person keeps its own figure, so an event is seen as
+     people walking). */
+  var JOB_ORDER = ['E', 'uF', 'uS', 'uC', 'nDis', 'nRet', 'nStu', 'nOth'];
+  var JOB_NAME = { E: 'Employed', uF: 'Frictional', uS: 'Structural', uC: 'Cyclical', nDis: 'Discouraged', nRet: 'Retired', nStu: 'Students', nOth: 'Others' };
+  function peopleFrom(J){ var out = []; JOB_ORDER.forEach(function(g){ for(var k = 0; k < J[g]; k++) out.push(g); }); return out; }
+  // Who walks: people leave the groups that shrank (the last to arrive first) and join the groups that grew.
+  function movePeople(people, from, to){
+    var leave = [], need = [];
+    JOB_ORDER.forEach(function(g){ var d = (to[g] || 0) - (from[g] || 0); if(d < 0){ var idx = []; people.forEach(function(x, i){ if(x === g) idx.push(i); }); leave = leave.concat(idx.slice(d)); } else for(var k = 0; k < d; k++) need.push(g); });
+    need.forEach(function(g, i){ if(leave[i] != null) people[leave[i]] = g; });
+  }
+  function jobLayout(J, W, H){
+    var top = 58, A = Math.max(120, H - top - 6), gap = 12, R = Math.max(5, Math.round(Math.sqrt(66 * 0.62 * A / (0.4 * W)))), L;
+    for(var tries = 0; tries < 14; tries++, R++){
+      var ch = A / R, cw = ch * 0.62, pad = 6;
+      var E = { x: 4, w: Math.max(84, Math.ceil(J.E / R) * cw + 2 * pad) };
+      // a sub-group: a block of A / n height with a label line, people in rows that fill left to right
+      // block heights follow the head counts (a bigger group gets more rows)
+      var sub = function(ids, x){
+        var wt = ids.map(function(g){ return Math.max(J[g], 1) + 3; }), tot = wt.reduce(function(a, b){ return a + b; }, 0), w = 0, hs = [], rows = [], base = 15 + ch + 2, spare = Math.max(0, A - base * ids.length);
+        ids.forEach(function(g, j){ var bh = base + spare * wt[j] / tot, rr = Math.max(1, Math.floor((bh - 15) / ch)); hs.push(bh); rows.push(rr); w = Math.max(w, Math.ceil(Math.max(J[g], 1) / rr) * cw); });
+        return { x: x, w: Math.max(W < 480 ? 66 : 92, w + 2 * pad), rows: rows, hs: hs, ids: ids };
+      };
+      var U = sub(['uF', 'uS', 'uC'], E.x + E.w + gap), N = sub(['nDis', 'nRet', 'nStu', 'nOth'], 0);
+      N.x = U.x + U.w + gap * 1.6;
+      L = { R: R, ch: ch, cw: cw, pad: pad, top: top, A: A, E: E, U: U, N: N };
+      if(N.x + N.w <= W - 4) break;
+    }
+    return L;
+  }
+  function jobsScene(box, J, r, people, changed){
+    changed = changed || {};
+    var W = Math.max(300, box.clientWidth || 600), H = Math.max(230, Math.min(520, box.clientHeight || 340)), L = jobLayout(J, W, H), narrow = W < 480;
+    var key = W + 'x' + H, svg = box.querySelector('svg.ind-jsvg');
+    if(!svg || box.getAttribute('data-k') !== key){
+      box.setAttribute('data-k', key);
+      var figs = people.map(function(_, i){ return '<g class="ind-p" data-i="' + i + '"><use href="#ind-person"/></g>'; }).join('');
+      box.innerHTML = '<svg class="ind-jsvg is-fresh" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img"><defs><g id="ind-person"><circle cx="0" cy="-0.83" r="0.15"/><path d="M-0.21 -0.02V-0.45Q-0.21 -0.64 0 -0.64Q0.21 -0.64 0.21 -0.45V-0.02Z"/></g></defs><g class="ind-zones"></g><g class="ind-people">' + figs + '</g></svg>';
+      svg = box.querySelector('svg.ind-jsvg');
+      svg.addEventListener('click', function(){ svg.classList.toggle('is-named'); });
+      requestAnimationFrame(function(){ svg.classList.remove('is-fresh'); });
+    }
+    var z = [], f1x = f1, y0 = L.top, A = L.A;
+    // zones
+    function zone(x, w, cls, title){ z.push('<rect class="ind-zone ' + cls + '" x="' + f1x(x) + '" y="' + f1x(y0 - 4) + '" width="' + f1x(w) + '" height="' + f1x(A + 8) + '" rx="10"/>'); if(title) z.push('<text class="ind-zt ' + cls + '" x="' + f1x(x + 8) + '" y="' + f1x(y0 + 12) + '">' + title + '</text>'); }
+    zone(L.E.x, L.E.w, 'is-e', '');
+    zone(L.U.x, L.U.w, 'is-u', '');
+    zone(L.N.x, L.N.w, 'is-n', '');
+    // the labor force bracket over Employed and Unemployed
+    var bx0 = L.E.x, bx1 = L.U.x + L.U.w, by = 16;
+    z.push('<path class="ind-brk" d="M' + f1x(bx0) + ' ' + (by + 8) + 'V' + by + 'H' + f1x(bx1) + 'V' + (by + 8) + '"/>');
+    z.push('<text class="ind-brt" x="' + f1x((bx0 + bx1) / 2) + '" y="' + (by - 4) + '" text-anchor="middle">Labor force ' + r.lf + '</text>');
+    z.push('<text class="ind-brt is-n" x="' + f1x(L.N.x + L.N.w / 2) + '" y="' + (by - 4) + '" text-anchor="middle">' + (narrow ? 'Not in it ' : 'Not in the labor force ') + r.nilf + '</text>');
+    z.push('<text class="ind-zh is-e" x="' + f1x(L.E.x + L.E.w / 2) + '" y="' + (y0 - 12) + '" text-anchor="middle">Employed ' + J.E + '</text>');
+    z.push('<text class="ind-zh is-u" x="' + f1x(L.U.x + L.U.w / 2) + '" y="' + (y0 - 12) + '" text-anchor="middle">' + (narrow ? 'Looking ' : 'Unemployed ') + r.U + '</text>');
+    // where each person stands
+    var spot = {}, pos = {};
+    spot.E = function(k){ return [L.E.x + L.pad + L.cw * (Math.floor(k / L.R) + 0.5), y0 + L.ch * (k % L.R + 1) - 2]; };
+    [L.U, L.N].forEach(function(S){
+      var acc = 0;
+      S.ids.forEach(function(g, j){
+        var by0 = y0 + acc, rows = S.rows[j]; acc += S.hs[j];
+        // Pass 2: a kind is named when the last event moved people into or out of it; a tap on the picture names every kind.
+        z.push('<text class="ind-sub is-' + g + (changed[g] ? '' : ' is-quiet') + '" x="' + f1x(S.x + 6) + '" y="' + f1x(by0 + 11) + '">' + JOB_NAME[g] + ' ' + J[g] + '</text>');
+        if(j) z.push('<line class="ind-subl" x1="' + f1x(S.x + 4) + '" x2="' + f1x(S.x + S.w - 4) + '" y1="' + f1x(by0) + '" y2="' + f1x(by0) + '"/>');
+        spot[g] = function(k){ return [S.x + L.pad + L.cw * (Math.floor(k / rows) + 0.5), by0 + 15 + L.ch * (k % rows + 1) - 2]; };
+      });
+    });
+    var count = {};
+    people.forEach(function(g, i){ var k = count[g] = (count[g] || 0) + 1; pos[i] = spot[g](k - 1); });
+    svg.querySelector('.ind-zones').innerHTML = z.join('');
+    var s = L.ch * 0.92;
+    svg.querySelectorAll('.ind-p').forEach(function(el){
+      var i = +el.getAttribute('data-i'), p = pos[i], g = people[i];
+      if(!p) return;
+      el.setAttribute('class', 'ind-p ' + JOB_CLS[g]);
+      el.style.transform = 'translate(' + f1x(p[0]) + 'px,' + f1x(p[1]) + 'px) scale(' + f1x(s * 10) / 10 + ')';
+    });
+    svg.setAttribute('aria-label', '100 adults standing in three places: ' + J.E + ' employed; ' + r.U + ' unemployed and looking (' + J.uF + ' frictional, ' + J.uS + ' structural, ' + J.uC + ' cyclical); ' + r.nilf + ' not in the labor force (' + J.nDis + ' discouraged, ' + J.nRet + ' retired, ' + J.nStu + ' students, ' + J.nOth + ' others). The labor force is ' + r.lf + ', so the unemployment rate is ' + n(r.u, 1) + '%.');
+  }
+
+  /* ------------------------------------------------ GDP: transactions as tokens
+     Each transaction is a token sized by its dollars that lands in its
+     column, so C, I, G and X are stacks of the purchases that made them; an
+     import lands in C (or I) and its twin hangs under −M; a transfer, a used
+     good or a stock falls into Not counted with its reason. GDP is the sum. */
+  var WHY_OUT = { socsec: 'transfer', ubenefit: 'transfer', stock: 'financial asset', bond: 'financial asset', usedcar: 'used good', flour: 'intermediate good', cooking: 'unpaid work', mexico: 'made abroad' };
+  function gdpTokens(box, items, s, last){
+    var w = Math.max(300, box.clientWidth || 600), h = Math.max(220, Math.min(520, box.clientHeight || 320)), narrow = w < 480;
+    var cols = [{ id: 'C', t: 'C', l: 'Consumption' }, { id: 'I', t: 'I', l: 'Investment' }, { id: 'G', t: 'G', l: 'Government' }, { id: 'X', t: 'X', l: 'Exports' }, { id: 'M', t: '−M', l: 'Imports' }, { id: 'gdp', t: 'GDP', l: '= GDP' }, { id: 'none', t: 'Out', l: 'Not counted' }];
+    var stacks = { C: [], I: [], G: [], X: [], M: [], none: [] };
+    items.forEach(function(t){
+      if(t.cat === 'CM'){ stacks.C.push({ t: t, im: true }); stacks.M.push({ t: t }); }
+      else if(t.cat === 'IM'){ stacks.I.push({ t: t, im: true }); stacks.M.push({ t: t }); }
+      else stacks[t.cat].push({ t: t });
+    });
+    var top = 38, bot = 30, hi = Math.max(160, s.C, s.I, s.G, s.X, s.gdp, s.none), lo = s.M ? Math.max(30, s.M) : 0;
+    var ph = h - top - bot, y0 = top + ph * hi / (hi + lo), k = ph / (hi + lo), gapX = narrow ? 4 : 8, cw = (w - 8) / cols.length, tw = cw - gapX;
+    var g = ['<line class="ind-zero" x1="4" x2="' + f1(w - 4 - cw) + '" y1="' + f1(y0) + '" y2="' + f1(y0) + '"/>'];
+    cols.forEach(function(c, i){
+      var x = 4 + cw * i + gapX / 2, cx = x + tw / 2, total = c.id === 'gdp' ? s.gdp : c.id === 'M' ? -s.M : c.id === 'none' ? s.none : s[c.id];
+      if(c.id === 'none') g.push('<rect class="ind-bin" x="' + f1(x - 2) + '" y="' + f1(top - 4) + '" width="' + f1(tw + 4) + '" height="' + f1(h - top - bot + 8) + '" rx="8"/>');
+      else if(c.id !== 'gdp') g.push('<rect class="ind-slot" x="' + f1(x) + '" y="' + f1(top) + '" width="' + f1(tw) + '" height="' + f1(y0 - top) + '" rx="6"/>');
+      g.push('<text class="ind-ct' + (c.id === 'gdp' ? ' is-gdp' : '') + '" x="' + f1(cx) + '" y="' + (h - 12) + '" text-anchor="middle">' + (narrow ? c.t : c.l) + '</text>');
+      // Pass 2: two totals at a time, GDP and the column the last transaction landed in (Details has every one).
+      var hit = last && (c.id === 'gdp' || c.id === ({ CM: 'C', IM: 'I' }[last.cat] || last.cat) || (c.id === 'M' && (last.cat === 'CM' || last.cat === 'IM')));
+      g.push('<text class="ind-ctot' + (c.id === 'gdp' ? ' is-gdp' : '') + '" x="' + f1(cx) + '" y="16" text-anchor="middle">' + (hit ? usd(total) : '') + '</text>');
+      if(c.id === 'gdp'){
+        if(s.gdp > 0) g.push('<rect class="ind-gdpbar" x="' + f1(x) + '" y="' + f1(y0 - s.gdp * k) + '" width="' + f1(tw) + '" height="' + f1(s.gdp * k) + '" rx="6"/>');
+        return;
+      }
+      var acc = 0;
+      stacks[c.id].forEach(function(o){
+        var t = o.t, hh = Math.max(2, t.amt * k - 2), down = c.id === 'M', yy = down ? y0 + acc * k + 1 : y0 - (acc + t.amt) * k + 1, isNew = t === last;
+        acc += t.amt;
+        var cls = 'ind-tok is-' + (c.id === 'none' ? 'out' : c.id) + (o.im || down ? ' is-im' : '') + (isNew ? ' is-new' : '');
+        var fits = hh >= 15 && !narrow, two = hh >= 32 && !narrow, room = Math.floor((tw - 10) / 6.1);
+        var name = (down ? '−' : '') + (SHORT[t.id] || t.id) + (two ? '' : ' ' + usd(t.amt));
+        if(name.length > room) name = name.slice(0, Math.max(3, room - 1)) + '…';
+        g.push('<g class="' + cls + '"><rect x="' + f1(x) + '" y="' + f1(yy) + '" width="' + f1(tw) + '" height="' + f1(hh) + '" rx="4"/>' +
+          (fits ? '<text x="' + f1(x + 5) + '" y="' + f1(yy + Math.min(hh / 2, 11) + 4) + '"><tspan class="ind-tn">' + esc(name) + '</tspan></text>' : '') +
+          (two ? '<text class="ind-ta" x="' + f1(x + 5) + '" y="' + f1(yy + 28) + '">' + esc((function(l){ return l.length > room ? (c.id === 'none' ? (WHY_OUT[t.id] || '').slice(0, room) : l.slice(0, room)) : l; })((c.id === 'none' ? (WHY_OUT[t.id] || 'not counted') + ' · ' : '') + usd(t.amt))) + '</text>' : '') +
+          (hh >= 13 && narrow ? '<text class="ind-ta" x="' + f1(cx) + '" y="' + f1(yy + hh / 2 + 4) + '" text-anchor="middle">' + usd(t.amt) + '</text>' : '') + '</g>');
+      });
+    });
+    if(!items.length) g.push('<text class="ind-hint" x="' + f1(w / 2) + '" y="' + f1(top + (y0 - top) / 2) + '" text-anchor="middle">Each purchase lands in its column here</text>');
+    box.innerHTML = '<svg class="ind-svg ind-tsvg" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" role="img" aria-label="' + esc('GDP by expenditure so far, each transaction a block in its column: consumption ' + usd(s.C) + ', investment ' + usd(s.I) + ', government purchases ' + usd(s.G) + ', exports ' + usd(s.X) + ', imports ' + usd(s.M) + ' subtracted, not counted ' + usd(s.none) + '; GDP ' + usd(s.gdp) + ' billion.') + '">' + g.join('') + '</svg>';
+  }
+
+  /* ------------------------------------------------ prices: the basket itself
+     Two receipts for the same basket: base-year prices and this year's. The
+     CPI is the ratio of the two totals (the chips under them). */
+  var ICON = {
+    pizza: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4Q10 1 17 4L10 18Z" class="ind-ic-a"/><path d="M3 4Q10 1 17 4" class="ind-ic-b"/><circle cx="8" cy="7" r="1.3" class="ind-ic-c"/><circle cx="12" cy="9" r="1.3" class="ind-ic-c"/><circle cx="10" cy="12.5" r="1.1" class="ind-ic-c"/></svg>',
+    movie: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 6h16v3a1.5 1.5 0 0 0 0 3v3H2v-3a1.5 1.5 0 0 0 0-3Z" class="ind-ic-a"/><path d="M7 6v9" class="ind-ic-d"/></svg>',
+    gas: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3h8v15H4Z" class="ind-ic-a"/><path d="M5.5 5h5v4h-5Z" class="ind-ic-e"/><path d="M12 7l3 2v6a1.2 1.2 0 0 0 2.4 0V8L15 5" class="ind-ic-b"/></svg>'
+  };
+  function basketHtml(Pr, i, b){
+    var Y = IL.YEARS;
+    function receipt(k, label, cls){
+      return '<div class="ind-rcp ' + cls + '"><p class="ind-rh">' + label + '</p><ul>' + IL.BASKET.map(function(g){
+        var up = k !== b && g.p[k] > g.p[b] + 1e-9, dn = k !== b && g.p[k] < g.p[b] - 1e-9;
+        return '<li><span class="ind-ic">' + (ICON[g.id] || '') + '</span><span class="ind-q">' + g.q + '<span class="ind-qw"> ' + esc(g.name.toLowerCase()) + '</span></span><span class="ind-pp' + (up ? ' is-up' : dn ? ' is-dn' : '') + '">× ' + IL.money2(g.p[k]) + '</span><b>' + IL.money2(g.q * g.p[k]) + '</b></li>';
+      }).join('') + '</ul><p class="ind-rt"><span>Basket cost</span><b>' + IL.money2(Pr.cost[k]) + '</b></p></div>';
+    }
+    return receipt(b, 'Base year ' + Y[b] + ' prices', 'is-base') + '<div class="ind-same-b" aria-hidden="true"><span>same basket</span></div>' + receipt(i, Y[i] + ' prices' + (i === b ? ' (the base year)' : ''), 'is-now');
+  }
+  /* Real: the same year's goods at this year's prices (nominal) and at
+     base-year prices (real); the difference is only the price change. */
+  // Pass 2: the two totals are written once, in the formula under the bars (not also at the bar ends).
+  function sameGoods(box, R, i){
+    var Y = IL.YEARS, nom = R.nominal[i], real = R.real[i], mx = Math.max.apply(null, R.nominal), wN = nom / mx * 100, wR = real / mx * 100;
+    return '<p class="ind-sgh">The goods made in ' + Y[i] + ', counted two ways</p>' +
+      '<div class="ind-sgrow"><span class="ind-sgl">At ' + Y[i] + ' prices <em>nominal</em></span><div class="ind-sgbar"><i class="is-goods" style="width:' + wR.toFixed(1) + '%"></i><i class="is-price" style="width:' + Math.max(0, wN - wR).toFixed(1) + '%"></i></div></div>' +
+      '<div class="ind-sgrow"><span class="ind-sgl">At ' + Y[0] + ' prices <em>real</em></span><div class="ind-sgbar"><i class="is-goods" style="width:' + wR.toFixed(1) + '%"></i></div></div>' +
+      '<p class="ind-sgk"><i class="is-goods"></i> the goods themselves <i class="is-price"></i> only higher prices' + (i ? ' (' + usd(f1(nom - real)) + 'B)' : '') + '</p>';
+  }
+
   /* ============================================================ explore */
   function explore(host, data){
     var LS = null, live = {};
     (data.contexts || []).forEach(function(c){ live[c.id] = 1; });
     var views = [{ value: 'gdp', label: 'GDP' }, { value: 'prices', label: 'Prices' }, { value: 'real', label: 'Real' }, { value: 'jobs', label: 'Jobs' }].filter(function(v){ return live[v.value]; });
     if(!views.length) views = [{ value: 'prices', label: 'Prices' }];
-    var st = { view: views[0].value, seed: 1 + Math.floor(Math.random() * 9999), econ: null, added: 0, year: 4, base: 0, ryear: 3, jobs: IL.JOBS0, jobSay: '', touched: false };
+    // Pass 3: the GDP view opens with the first transaction already placed, so the columns are never empty.
+    var st = { view: views[0].value, seed: 1 + Math.floor(Math.random() * 9999), econ: null, added: 3, year: 4, base: 0, ryear: 3, jobs: IL.JOBS0, jobSay: '', touched: false };
     st.econ = IL.economy(M.rng(st.seed));
+    st.people = peopleFrom(IL.JOBS0);
     var cue = T.cue('Tap Next transaction and watch where it goes.');
     host.innerHTML = '<section class="bt-problem ind-card" aria-label="Indicators explorer"><div class="ind-stage">' +
       '<div class="ind-fig" data-v="gdp"><div class="ind-tx"></div><div class="ind-gdpbox"></div><div class="ind-tray"></div></div>' +
-      '<div class="ind-fig" data-v="prices" hidden><div class="ind-read"></div><div class="ind-plot ind-p1"></div><div class="ind-plot ind-p2"></div></div>' +
-      '<div class="ind-fig" data-v="real" hidden><div class="ind-read"></div><div class="ind-plot ind-p3"></div></div>' +
-      '<div class="ind-fig" data-v="jobs" hidden><div class="ind-jobgrid"><div class="ind-waffle"></div><div class="ind-legend"></div></div><div class="ind-rates"></div></div>' +
+      '<div class="ind-fig" data-v="prices" hidden><div class="ind-basket"></div><div class="ind-read"></div><button type="button" class="ind-yrs" aria-expanded="false">See every year</button><div class="ind-plots" hidden><div class="ind-plot ind-p1"></div><div class="ind-plot ind-p2"></div></div></div>' +
+      '<div class="ind-fig" data-v="real" hidden><div class="ind-same"></div><div class="ind-read"></div><div class="ind-plot ind-p3"></div></div>' +
+      '<div class="ind-fig" data-v="jobs" hidden><div class="ind-scene"></div><div class="ind-rates"></div></div>' +
       '</div><div class="ind-ctl"></div><div class="ind-say"></div><div class="ind-det"></div><p class="sr-only ind-live"></p></section>';
     var card = host.querySelector('.ind-card'), ctl = host.querySelector('.ind-ctl'), det = host.querySelector('.ind-det'), sayEl = host.querySelector('.ind-say'), stageEl = host.querySelector('.ind-stage');
     card.insertBefore(cue.el, sayEl);
@@ -76,7 +248,7 @@
     groups.gdp.innerHTML = '<div class="ind-row"><button type="button" class="btn-press sm ind-next">Next transaction</button><button type="button" class="bt-btn ind-new">New economy</button></div>';
     var nextBtn = groups.gdp.querySelector('.ind-next');
     nextBtn.addEventListener('click', function(){ touch(); if(st.added < st.econ.length) st.added++; update(true); });
-    groups.gdp.querySelector('.ind-new').addEventListener('click', function(){ touch(); st.seed++; st.econ = IL.economy(M.rng(st.seed)); st.added = 0; update(true); });
+    groups.gdp.querySelector('.ind-new').addEventListener('click', function(){ touch(); st.seed++; st.econ = IL.economy(M.rng(st.seed)); st.added = 1; update(true); });
     // Prices
     var yearSl = T.slider({ label: 'Year', min: IL.YEARS[0], max: IL.YEARS[IL.YEARS.length - 1], step: 1, value: IL.YEARS[st.year], decimals: 0, onInput: function(v){ st.year = v - IL.YEARS[0]; touch(); update(false); } });
     groups.prices.appendChild(yearSl.el);
@@ -86,12 +258,24 @@
     var ryearSl = T.slider({ label: 'Year', min: IL.YEARS[0], max: IL.YEARS[IL.YEARS.length - 1], step: 1, value: IL.YEARS[st.ryear], decimals: 0, onInput: function(v){ st.ryear = v - IL.YEARS[0]; touch(); update(false); } });
     groups.real.appendChild(ryearSl.el);
     // Jobs: the events
-    groups.jobs.innerHTML = '<p class="ind-lbl">What happens</p><div class="ind-events">' + IL.EVENTS.map(function(e){ return '<button type="button" class="bt-btn ind-ev" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '</div><button type="button" class="bt-btn ind-reset">Start over</button>';
-    groups.jobs.addEventListener('click', function(e){
+    // Pass 2: four events in view (a pair for each kind of change), the other four behind More events.
+    var FIRST = { recession: 1, recovery: 1, grads: 1, giveup: 1 };
+    var evs = IL.EVENTS.filter(function(e){ return FIRST[e.id]; }).concat(IL.EVENTS.filter(function(e){ return !FIRST[e.id]; }));
+    groups.jobs.innerHTML = '<p class="ind-lbl">What happens</p><div class="ind-events" data-ls-primary>' + evs.map(function(e){ return '<button type="button" class="bt-btn ind-ev' + (FIRST[e.id] ? '' : ' is-more') + '" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') +
+      '<button type="button" class="bt-btn ind-evmore" aria-expanded="false">More events</button></div><button type="button" class="bt-btn ind-reset">Start over</button>';
+    // On a phone the events ride in the studio's sticky band (data-ls-primary), so listen on them, not on their home.
+    function onJobs(e){
       var b = e.target.closest('[data-ev]');
-      if(b){ touch(); var out = IL.jobEvent(st.jobs, b.getAttribute('data-ev')); st.jobSay = out.moved ? out.say : 'Nothing to move: no one is in that group right now.'; st.jobs = out.st; update(true); }
-      if(e.target.closest('.ind-reset')){ st.jobs = IL.JOBS0; st.jobSay = ''; update(true); }
-    });
+      var mb = e.target.closest('.ind-evmore');
+      if(mb){ var box = mb.parentNode, open = !box.classList.contains('is-open'); box.classList.toggle('is-open', open); mb.setAttribute('aria-expanded', String(open)); mb.textContent = open ? 'Fewer events' : 'More events'; return; }
+      if(b){ touch(); st.jobPrev = st.jobs; var out = IL.jobEvent(st.jobs, b.getAttribute('data-ev')); st.jobSay = out.moved ? out.say : 'Nothing to move: no one is in that group right now.'; movePeople(st.people, st.jobs, out.st); st.jobs = out.st; update(true); }
+      if(e.target.closest('.ind-reset')){ movePeople(st.people, st.jobs, IL.JOBS0); st.jobs = IL.JOBS0; st.jobPrev = null; st.jobSay = ''; update(true); }
+    }
+    groups.jobs.querySelector('.ind-events').addEventListener('click', onJobs);
+    // Prices: the CPI and inflation charts by year open on a tap (the basket is the picture).
+    var yrsBtn = figs.prices.querySelector('.ind-yrs');
+    yrsBtn.addEventListener('click', function(){ var pl = figs.prices.querySelector('.ind-plots'), open = pl.hidden; pl.hidden = !open; yrsBtn.setAttribute('aria-expanded', String(open)); yrsBtn.textContent = open ? 'Hide the years' : 'See every year'; figs.prices.classList.toggle('is-yrs', open); touch(); update(false); });
+    groups.jobs.querySelector('.ind-reset').addEventListener('click', onJobs);
 
     var lastCap = '';
     function update(full){
@@ -113,24 +297,8 @@
       var tx = figs.gdp.querySelector('.ind-tx');
       tx.innerHTML = last ? '<p class="ind-txk">Transaction ' + st.added + ' of ' + st.econ.length + ' · ' + usd(last.amt, 'billion') + '</p><p class="ind-txt">' + esc(last.text) + '</p><p class="ind-txp is-' + (last.cat === 'none' ? 'none' : 'in') + '">' + esc(PLACE[last.cat]) + '</p>'
         : '<p class="ind-txk">' + st.econ.length + ' transactions this year</p><p class="ind-txt">Add them one at a time. Each lands in C, I, G or net exports, or is left out of GDP.</p>';
-      // columns
-      var box = figs.gdp.querySelector('.ind-gdpbox'), w = Math.max(280, box.clientWidth || 520), h = Math.max(170, Math.min(420, box.clientHeight || 240));
-      var cols = COMP.map(function(c){ return { id: c.id, name: c.name, v: c.id === 'M' ? -s.M : s[c.id] }; }).concat([{ id: 'gdp', name: 'GDP', v: s.gdp }]);
-      var hi = Math.max(100, s.C + s.I + s.G + s.X, s.gdp), lo = Math.min(0, -s.M), L = 34, R = 8, Tp = 22, B = s.M ? 50 : 30, pw = w - L - R, ph = h - Tp - B;
-      var sy = function(v){ return Tp + (hi - v) / (hi - lo) * ph; }, cw = pw / cols.length, bw = Math.min(56, cw * 0.62);
-      var g = ['<line class="ml-zero ind-zero" x1="' + L + '" x2="' + (w - R) + '" y1="' + f1(sy(0)) + '" y2="' + f1(sy(0)) + '"/>'];
-      cols.forEach(function(c, i){
-        var cx = L + cw * (i + 0.5), top = Math.min(sy(0), sy(c.v)), hh = Math.abs(sy(c.v) - sy(0));
-        var hit = last && (c.id === last.cat || (last.cat === 'CM' && (c.id === 'C' || c.id === 'M')) || (last.cat === 'IM' && (c.id === 'I' || c.id === 'M')));
-        g.push('<rect class="ind-col is-' + c.id + (hit ? ' is-hit' : '') + '" x="' + f1(cx - bw / 2) + '" y="' + f1(top) + '" width="' + f1(bw) + '" height="' + f1(Math.max(hh, 0.5)) + '" rx="4"/>');
-        g.push('<text class="ind-cv" x="' + f1(cx) + '" y="' + f1(c.v >= 0 ? sy(c.v) - 6 : sy(c.v) + 14) + '" text-anchor="middle">' + esc(usd(c.v)) + '</text>');
-        g.push('<text class="ind-cn' + (c.id === 'gdp' ? ' is-gdp' : '') + '" x="' + f1(cx) + '" y="' + (h - 10) + '" text-anchor="middle">' + esc(c.name) + '</text>');
-        if(i === cols.length - 2) g.push('<text class="ind-cn" x="' + f1(cx + cw / 2) + '" y="' + f1(sy(0) - 4) + '" text-anchor="middle">=</text>');
-      });
-      g.push('<text class="ind-axn" x="4" y="13">$ billion this year</text>');
-      box.innerHTML = '<svg class="ind-svg" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" role="img" aria-label="GDP by expenditure so far: consumption ' + usd(s.C) + ', investment ' + usd(s.I) + ', government purchases ' + usd(s.G) + ', exports ' + usd(s.X) + ', imports ' + usd(s.M) + ' subtracted; GDP ' + usd(s.gdp) + ' billion.">' + g.join('') + '</svg>';
-      var outs = items.filter(function(t){ return t.cat === 'none'; });
-      figs.gdp.querySelector('.ind-tray').innerHTML = '<p class="ind-trayh">Not counted in GDP</p>' + (outs.length ? '<ul>' + outs.map(function(t){ return '<li' + (t === last ? ' class="is-hit"' : '') + '>' + esc(SHORT[t.id] || t.id) + ' <span>' + usd(t.amt) + '</span></li>'; }).join('') + '</ul>' : '<p class="ind-empty">Nothing yet</p>');
+      gdpTokens(figs.gdp.querySelector('.ind-gdpbox'), items, s, last);
+      figs.gdp.querySelector('.ind-tray').innerHTML = '';
       var head = last ? (last.cat === 'none' ? '<b>Not counted:</b> ' : '<b>' + esc(PLACE[last.cat]) + ':</b> ') + esc(last.why) : 'GDP adds spending on new final goods and services made in the country this year. Tap Next transaction.';
       var body = '<p>GDP = C + I + G + (X − M) = ' + usd(s.C) + ' + ' + usd(s.I) + ' + ' + usd(s.G) + ' + (' + usd(s.X) + ' − ' + usd(s.M) + ') = <b>' + usd(s.gdp, 'billion') + '</b>.</p>' +
         '<p>An import is part of what households or firms buy, so it shows up in C or I; it was made abroad, so it is subtracted as M and adds nothing to US GDP.</p>' +
@@ -157,6 +325,7 @@
       plotBox(figs.prices.querySelector('.ind-p2'), { label: 'Inflation rate each year, percent', x: [Y[0] - 0.4, Y[4] + 0.4], y: [0, ih], xStep: 1, yLabel: 'Inflation (%)',
         rects: infl.map(function(v, k){ return { x0: Y[k + 1] - 0.28, x1: Y[k + 1] + 0.28, y0: 0, y1: v, cls: k + 1 === i ? 's2' : 's1' }; }),
         labels: infl.map(function(v, k){ return { at: [Y[k + 1], v + ih * 0.06], text: n(v, 1) + '%' }; }) });
+      figs.prices.querySelector('.ind-basket').innerHTML = basketHtml(Pr, i, b);
       figs.prices.querySelector('.ind-read').innerHTML = '<span class="ml-chip">' + Y[i] + ' basket ' + IL.money2(Pr.cost[i]) + '</span><span class="ml-op">÷</span><span class="ml-chip">' + Y[b] + ' basket ' + IL.money2(Pr.cost[b]) + '</span><span class="ml-op">× 100 =</span><span class="ml-chip is-total">CPI ' + n(Pr.cpi[i], 1) + '</span>';
       var head = i === b ? Y[i] + ' is the base year: its CPI is 100 by definition.' : 'In ' + Y[i] + ' the basket costs ' + IL.money2(Pr.cost[i]) + ': CPI <b>' + n(Pr.cpi[i], 1) + '</b>' + (i ? ', inflation <b>' + n(Pr.infl[i], 1) + '%</b> since ' + Y[i - 1] + '.' : '.');
       var body = '<p>The CPI compares the cost of the same basket each year with its cost in the base year. Change the base year: every CPI changes, but the <b>inflation rates do not</b>, because inflation compares two years with each other.</p>' +
@@ -175,8 +344,9 @@
       var nom = Y.map(function(y, k){ return [y, R.nominal[k]]; }), real = Y.map(function(y, k){ return [y, R.real[k]]; });
       var seg2 = function(pts, cls, dashed){ return pts.slice(1).map(function(p, k){ return { seg: true, through: [pts[k], p], cls: cls, dashed: dashed }; }); };
       plotBox(figs.real.querySelector('.ind-p3'), { label: 'Nominal and real GDP by year, in base-year dollars for real GDP', x: [Y[0] - 0.4, Y[4] + 0.4], y: [900, 1350], xStep: 1, xLabel: 'Year', yLabel: '$ billion',
-        lines: seg2(nom, 's2', true).concat(seg2(real, 's1')), points: nom.map(function(p, k){ return { at: p, cls: 's2', label: k === i ? usd(p[1]) : '' }; }).concat(real.map(function(p, k){ return { at: p, cls: 's1', label: k === i ? usd(f1(p[1])) : '' }; })),
+        lines: seg2(nom, 's2', true).concat(seg2(real, 's1')), points: nom.map(function(p){ return { at: p, cls: 's2', label: '' }; }).concat(real.map(function(p){ return { at: p, cls: 's1', label: '' }; })),
         legend: [{ name: 'Nominal GDP', cls: 's2' }, { name: 'Real GDP (' + Y[0] + ' prices)', cls: 's1' }] });
+      figs.real.querySelector('.ind-same').innerHTML = sameGoods(figs.real.querySelector('.ind-same'), R, i);
       figs.real.querySelector('.ind-read').innerHTML = '<span class="ml-chip">Nominal ' + usd(R.nominal[i]) + '</span><span class="ml-op">÷</span><span class="ml-chip">deflator ' + n(R.deflator[i]) + '</span><span class="ml-op">× 100 =</span><span class="ml-chip is-total">Real ' + usd(f1(R.real[i]), 'billion') + '</span>';
       var head = i === 0 ? Y[0] + ' is the base year: real and nominal GDP are equal.' : 'In ' + Y[i] + ' nominal GDP grew ' + n(R.gNom[i], 1) + '% but real GDP ' + (R.gReal[i] < 0 ? '<b>fell ' + n(-R.gReal[i], 1) + '%</b>' : 'grew <b>' + n(R.gReal[i], 1) + '%</b>') + '.';
       var body = '<p>Nominal GDP counts output at this year\'s prices, so it rises when prices rise even if output does not. Real GDP divides out the price level: real = nominal ÷ deflator × 100 (divide, never multiply).</p>' +
@@ -189,16 +359,16 @@
 
     /* ---------------------------------------------------- jobs */
     function drawJobs(){
-      var J = st.jobs, r = IL.rates(J), dots = [];
-      IL.GROUPS.forEach(function(g){ for(var k = 0; k < J[g.id]; k++) dots.push(g.id); });
-      var c = [];
-      dots.forEach(function(id, k){ var x = k % 10, y = Math.floor(k / 10); c.push('<circle class="ind-dot ' + JOB_CLS[id] + '" cx="' + (14 + x * 26) + '" cy="' + (14 + y * 26) + '" r="10"/>'); });
-      figs.jobs.querySelector('.ind-waffle').innerHTML = '<svg class="ind-wsvg" viewBox="0 0 262 262" role="img" aria-label="100 adults: ' + J.E + ' employed, ' + r.U + ' unemployed (' + J.uF + ' frictional, ' + J.uS + ' structural, ' + J.uC + ' cyclical), ' + n(r.nilf) + ' not in the labor force, ' + J.nDis + ' of them discouraged workers.">' + c.join('') + '</svg>';
-      var leg = [['is-emp', 'Employed', J.E], ['is-uf', 'Frictional', J.uF], ['is-us', 'Structural', J.uS], ['is-uc', 'Cyclical', J.uC], ['is-dis', 'Discouraged (out)', J.nDis], ['is-out', 'Retired, students, others (out)', J.nRet + J.nStu + J.nOth]];
-      figs.jobs.querySelector('.ind-legend').innerHTML = '<ul>' + leg.map(function(l){ return '<li><i class="ind-sw ' + l[0] + '"></i>' + esc(l[1]) + ' <b>' + l[2] + '</b></li>'; }).join('') + '</ul><p class="ind-small">Each dot is one in 100 adults. Unemployed means without a job and looking.</p>';
-      var cards = [['Unemployment rate', r.u, 'unemployed ÷ labor force'], ['Participation rate', r.lfpr, 'labor force ÷ adults'], ['Natural rate', r.natural, 'frictional + structural'], ['Cyclical', r.cyclical, 'actual − natural']];
-      figs.jobs.querySelector('.ind-rates').innerHTML = cards.map(function(k){ return '<div class="ind-rate"><span>' + k[0] + '</span><b>' + n(k[1], 1) + '%</b><em>' + k[2] + '</em></div>'; }).join('');
-      var head = st.jobSay || 'Unemployment ' + n(r.u, 1) + '%, participation ' + n(r.lfpr, 1) + '%. Tap an event to move people.';
+      var J = st.jobs, r = IL.rates(J);
+      var P = st.jobPrev, r0 = P ? IL.rates(P) : null, changed = {};
+      if(P) JOB_ORDER.forEach(function(g){ if(P[g] !== J[g]) changed[g] = 1; });
+      jobsScene(figs.jobs.querySelector('.ind-scene'), J, r, st.people, changed);
+      // Pass 2: the unemployment rate always; another rate shows only when the last event changed it (was then now).
+      var cards = [['Unemployment rate', 'u', 'unemployed ÷ labor force'], ['Participation rate', 'lfpr', 'labor force ÷ adults'], ['Natural rate', 'natural', 'frictional + structural'], ['Cyclical', 'cyclical', 'actual − natural']];
+      figs.jobs.querySelector('.ind-rates').innerHTML = cards.filter(function(k, i){ return !i || (r0 && n(r0[k[1]], 1) !== n(r[k[1]], 1)); }).map(function(k){
+        var was = r0 && n(r0[k[1]], 1) !== n(r[k[1]], 1) ? '<i>' + n(r0[k[1]], 1) + '% → </i>' : '';
+        return '<div class="ind-rate"><span>' + k[0] + '</span><b>' + was + n(r[k[1]], 1) + '%</b><em>' + k[2] + '</em></div>'; }).join('');
+      var head = st.jobSay || 'Unemployment ' + n(r.u, 1) + '%, participation ' + n(r.lfpr, 1) + '%. Tap an event to move people; tap the people to name each group.';
       var body = '<p>Labor force = employed + unemployed = ' + J.E + ' + ' + r.U + ' = ' + r.lf + '. Unemployment rate = ' + r.U + ' ÷ ' + r.lf + ' × 100 = ' + n(r.u, 1) + '%. Participation = ' + r.lf + ' ÷ 100 × 100 = ' + n(r.lfpr, 1) + '%.</p>' +
         '<p>The natural rate (' + n(r.natural, 1) + '%) is frictional plus structural unemployment; cyclical unemployment (' + n(r.cyclical, 1) + '%) is what a downturn adds on top.</p>' +
         '<p class="mac-slip">Discouraged workers have stopped looking, so they are not counted as unemployed: when they give up, the unemployment rate falls even though no one found a job.</p>';

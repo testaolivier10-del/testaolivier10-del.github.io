@@ -98,11 +98,13 @@
   function stepLegend(last, o){
     o = o || {};
     var items = [];
-    for(var s = 1; s <= last; s++) items.push('<li><span class="dl-sw dl-s' + s + '" aria-hidden="true"></span>Step ' + s + (s === 1 ? ' (hearth)' : '') + '</li>');
+    // Second pass (2026-11-10): the steps are one legend item (a row of shades), and the place sizes another.
+    var sw = ''; for(var s = 1; s <= last; s++) sw += '<span class="dl-sw dl-s' + s + '" aria-hidden="true"></span>';
+    items.push('<li class="dl-steps">' + sw + (last > 1 ? 'Reached (darker is earlier)' : 'The hearth') + '</li>');
     items.push('<li><span class="dl-sw dl-off" aria-hidden="true"></span>Not yet</li>');
     if(o.changed) items.push('<li><span class="dl-sw dl-diam" aria-hidden="true"></span>Took the idea, changed it</li>');
     if(o.arrows) items.push('<li><span class="dl-sw dl-ln" aria-hidden="true"></span>People moving</li>');
-    return '<ul class="dl-legend" aria-label="Legend">' + items.join('') + '<li class="dl-sizes"><span class="dl-sz r1" aria-hidden="true"></span>Capital <span class="dl-sz r2" aria-hidden="true"></span>Large city <span class="dl-sz r3" aria-hidden="true"></span>Town <span class="dl-sz r4" aria-hidden="true"></span>Village</li></ul>';
+    return '<ul class="dl-legend" aria-label="Legend">' + items.join('') + '<li class="dl-sizes"><span class="dl-sz r1" aria-hidden="true"></span><span class="dl-sz r2" aria-hidden="true"></span><span class="dl-sz r3" aria-hidden="true"></span><span class="dl-sz r4" aria-hidden="true"></span>Bigger dot, bigger place</li></ul>';
   }
 
   /* A spread on the map, shown up to step `upto`. */
@@ -233,8 +235,9 @@
     host.innerHTML = '<section class="bt-problem dl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Diffusion and migration on a map</h2>' +
       '<div class="dl-fig"><div class="dl-pic"><svg class="dl-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="dl-leg"></div></div>' +
       '<div class="dl-ctl">' + chips('dl-scene', 'Show', [['diffusion', 'Diffusion'], ['migration', 'Migration']]) +
-        '<div class="dl-grp dl-grp-diffusion">' + chips('dl-kind', 'Type of diffusion', KIND_KEYS.map(function(k){ return [k, KIND_LABEL[k]]; })) + '</div>' +
-        '<div class="dl-grp dl-grp-migration">' + chips('dl-mig', 'Migration idea', SCENE_IDS.map(function(k){ return [k, SCENES[k].label]; })) + '</div>' +
+        // Type and migration idea are selects (pass 3, judge b: chip walls).
+        '<div class="dl-grp dl-grp-diffusion"><div class="dl-kindslot"></div></div>' +
+        '<div class="dl-grp dl-grp-migration"><div class="dl-migslot"></div></div>' +
         '<div class="dl-play"><div class="dl-stepslot"></div><button type="button" class="btn-press sm dl-go">Play</button></div>' +
       '</div>' +
       '<div class="dl-say"></div>' +
@@ -243,6 +246,11 @@
     var cue = T.cue('Pick a type, then press Play and watch where the trait goes next.');
     $('.dl-ctl').insertBefore(cue.el, $('.dl-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
+    function pickTo(fn){ return function(v){ act(); stop(); fn(v); upto = 1; setMax(); sync(); draw(); words(); say(capLine()); }; }
+    var sKind = T.choiceSelect({ label: 'Type of diffusion', options: KIND_KEYS.map(function(k){ return { value: k, label: KIND_LABEL[k] }; }), value: kind, onChange: pickTo(function(v){ kind = v; }) });
+    $('.dl-kindslot').appendChild(sKind.el);
+    var sMig = T.choiceSelect({ label: 'Migration idea', options: SCENE_IDS.map(function(k){ return { value: k, label: SCENES[k].label }; }), value: mig, onChange: pickTo(function(v){ mig = v; }) });
+    $('.dl-migslot').appendChild(sMig.el);
     var sStep = T.slider({ label: 'Step', min: 1, max: 4, step: 1, value: 1, onInput: function(v){ act(); stop(); if(v > last()){ v = last(); sStep.set(v); } upto = v; frac = 0; draw(); words(); say(capLine()); } });
     $('.dl-stepslot').appendChild(sStep.el);
     function last(){ return scene === 'diffusion' ? spreadNow().last : SCENES[mig].last; }
@@ -279,7 +287,8 @@
     }
     host.addEventListener('click', onClick);
     function sync(){
-      var root = LS ? LS.root : host, on = { 'dl-scene': scene, 'dl-kind': kind, 'dl-mig': mig };
+      var root = LS ? LS.root : host, on = { 'dl-scene': scene };
+      sKind.set(kind); sMig.set(mig);
       Object.keys(on).forEach(function(cls){ root.querySelectorAll('.' + cls + ' button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === on[cls])); }); });
       ['diffusion', 'migration'].forEach(function(k){ var el = $('.dl-grp-' + k); if(el) el.hidden = k !== scene; });
       var b = $('.dl-go'); if(b && !timer) b.textContent = upto >= last() ? 'Replay' : 'Play';

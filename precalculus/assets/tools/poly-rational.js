@@ -229,7 +229,8 @@
     function load(id){
       st.spec = PR.clone(PR.PRESETS[id].spec); st.next = 0;
       st.spec.factors.forEach(function(f){ f.c = st.next++; });
-      st.sel = 0; aSl.set(st.spec.a);
+      // pass 3: nothing chosen on open, so the Zero / Asymptote / Hole row appears only after a tap
+      st.sel = -1; aSl.set(st.spec.a);
       presetsEl.querySelectorAll('.pr-pre').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === id)); });
       buildPins(); draw(true);
     }
@@ -320,7 +321,7 @@
       return z ? PR.zeroText(z) : v ? PR.vaText(v) : h ? PR.holeText(h) : '';
     }
     function words2(R){
-      var f = sel(), head = f ? featureOf(f, R) : PR.endText(R);
+      var f = sel(), head = f ? featureOf(f, R) : st.sel < 0 ? '<b>Tap a factor</b> below, or drag its pin on the x-axis, to see what it does to the graph.' : PR.endText(R);
       var items = [PR.endText(R)].concat(st.spec.factors.slice().sort(function(p, q){ return p.r - q.r; }).map(function(g){ return '<span class="pr-dot ' + cls(g) + '" aria-hidden="true"></span>' + featureOf(g, R); }));
       if(R.slant) items.push('Slant asymptote $y = ' + PR.n(R.slant.m) + 'x ' + (R.slant.b < 0 ? '- ' + PR.n(-R.slant.b) : '+ ' + PR.n(R.slant.b)) + '$: the quotient when the numerator is divided by the denominator.');
       var body = '<ol class="pr-feats">' + items.map(function(t){ return '<li>' + tx(t) + '</li>'; }).join('') + '</ol>' +
@@ -330,7 +331,7 @@
       var pills = [{ k: 'degree', html: R.rational ? R.degN + ' over ' + R.degD : String(R.degN), tone: 'readout' }];
       if(R.end.kind === 'ha') pills.push({ k: R.rational ? 'HA' : 'f', html: 'y = ' + mn(PR.typed(R.end.ha)), tone: 'readout' });
       else pills.push({ k: 'ends', html: (R.end.left > 0 ? '↖' : '↙') + ' ' + (R.end.right > 0 ? '↗' : '↘'), tone: 'readout' });
-      if(R.yint != null && isFinite(R.yint) && !(G && G.phone)) pills.push({ k: 'f(0)', html: mn(PR.typed(R.yint)), tone: 'readout' });
+      // pass 2: two readouts on the picture; f(0) moved to Formulas & tables
       if(LS){ if(head !== lastCap){ LS.caption(tx(head), 'explore'); lastCap = head; } LS.pills(pills, 'left', 'explore'); }
       // Details
       var A = PR.analyze(st.spec);
@@ -342,6 +343,7 @@
       }).join('');
       var signRows = A.signs.map(function(sg){ return '<tr><td>' + tm('(' + (isFinite(sg.a) ? PR.n(sg.a) : '-\\infty') + ', ' + (isFinite(sg.b) ? PR.n(sg.b) : '\\infty') + ')') + '</td><td class="r">' + mn(PR.n(sg.at)) + '</td><td class="r">' + mn(M.fixed(PR.simple(st.spec)(sg.at), 3)) + '</td><td>' + (sg.s > 0 ? '+' : '−') + '</td></tr>'; }).join('');
       $('.pr-det').innerHTML = '<h3 class="ls-title-l">The function</h3><p class="pr-dform">' + tm(PR.tex(st.spec), true) + '</p><p class="pr-dform">' + tm(PR.expanded(st.spec), true) + '</p>' +
+        (R.yint != null && isFinite(R.yint) ? '<p>y-intercept: ' + tm('f(0) = ' + PR.frac(R.yint)) + '</p>' : '') +
         (rows ? '<h3 class="ls-title-l">Each factor</h3>' + T.wrapTables('<table class="ls-tbl pr-tbl"><caption class="sr-only">Each factor</caption><thead><tr><th scope="col">Factor</th><th scope="col">Where</th><th scope="col">Feature</th><th scope="col">Limits</th></tr></thead><tbody>' + rows + '</tbody></table>') : '') +
         '<h3 class="ls-title-l">Sign chart</h3>' + T.wrapTables('<table class="ls-tbl"><caption class="sr-only">Sign chart</caption><thead><tr><th scope="col">Interval</th><th scope="col" class="r">Test x</th><th scope="col" class="r">f(test x)</th><th scope="col">Sign</th></tr></thead><tbody>' + signRows + '</tbody></table>') +
         '<p class="bt-small">The sign can change only at a zero of odd multiplicity or an asymptote of odd power. A hole never changes it.</p>';

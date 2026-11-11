@@ -64,7 +64,17 @@
         out.push('<rect class="sb-cab' + (k ? '' : ' is-me') + '" x="' + r1(ex - 7) + '" y="' + r1(ey - 3) + '" width="14" height="12" rx="3"/>');
       }
       out.push('<circle class="sb-hub" cx="' + r1(xm) + '" cy="' + r1(cy) + '" r="5"/>');
-      return { svg: out.join(''), mx: xm + rw * Math.cos(phi), my: o.sy(o.val) };
+      if(o.p && o.share){
+        // the student's model as a wheel: rim radius a around a hub at height d (dashed, clipped to the panel)
+        var gcy = o.sy(o.p.d), grw = Math.abs(o.sy(o.p.d + o.p.a) - gcy), same = Math.abs(o.p.a - tr.A) < 1e-9 && Math.abs(o.p.d - tr.D) < 1e-9;
+        if(!same){
+          out.push('<g clip-path="url(#' + o.clip + ')"><circle class="sb-ghost" cx="' + r1(xm) + '" cy="' + r1(gcy) + '" r="' + r1(Math.max(1, grw)) + '"/>' +
+            '<line class="sb-ghost-hub" x1="' + r1(xm - 9) + '" y1="' + r1(gcy) + '" x2="' + r1(xm + 9) + '" y2="' + r1(gcy) + '"/></g>');
+          var gl = gcy - grw - 8 < o.top + 4 ? Math.min(gcy + grw + 20, o.bot - 6) : gcy - grw - 8;
+          out.push(txt(xm, gl, 'your wheel', 'sb-lab sb-ghost-l'));
+        }
+      }
+      return { svg: out.join(''), mx: xm + rw * Math.cos(phi) + 7, my: o.sy(o.val) };
     }
     if(sc.id === 'tide'){
       var px = o.x0 + 34, wy = o.sy(o.val), bed = o.sy(0);
@@ -102,7 +112,7 @@
 
   /* ============================================================ explore */
   function explore(host){
-    var id = T.nid('sb');
+    var id = T.nid('sb'), clipId = id + '-clip';
     var st = { sid: SB.SORDER[0], sel: 'a', form: 'sin', t: 0, touched: false, p: null };
     var LS = null, L = null, lastCap = '';
     var cue = T.cue('Pick <b>a</b>, <b>d</b>, <b>Period</b> or <b>Shift</b> and move the slider, or drag a handle on the graph, until your curve passes through every point.');
@@ -110,7 +120,7 @@
       '<section class="bt-problem sb-card" aria-label="Sinusoid builder">' +
         '<div class="sb-stage"><div class="sb-wrap"><svg class="sb-svg" role="group" aria-label="A periodic scene beside the graph of its data and your model"><g class="sb-dyn" aria-hidden="true"></g></svg></div></div>' +
         '<div class="sb-ctl">' +
-          '<div class="ls-scroll sb-scenes" role="group" aria-label="Situation"></div>' +
+          '<div class="sb-scenes"></div>' +
           '<div class="ls-seg sb-params" role="group" aria-label="Parameter to set"></div>' +
           '<div class="bt-ctl bt-slider sb-sl"><label for="' + id + '-s"></label><div class="bt-slider-row">' +
             '<button type="button" class="bt-step" data-d="-1">−</button><input type="range" id="' + id + '-s"><button type="button" class="bt-step" data-d="1">+</button>' +
@@ -134,24 +144,37 @@
     /* ---------------------------------------------------- layout */
     function layout(){
       var w = wrap.clientWidth || 900, h = wrap.clientHeight || 480, wide = w / Math.max(1, h) > 1.05, H;
+      if(sc().id === 'ferris') return wheelLayout(wide, w, h);
       if(wide){ H = Math.round(clamp(1000 * h / Math.max(1, w), 470, 760)); return { wide: true, W: 1000, H: H, sx0: 24, sx1: 330, gx0: 400, gx1: 972, top: 100, bot: H - 46, f1: 34, f2: 66, fs: 22 }; }
       H = Math.round(clamp(400 * h / Math.max(1, w), 560, 900));
       var sh = Math.round(H * 0.3);
       return { wide: false, W: 400, H: H, sx0: 20, sx1: 380, sTop: 62, sBot: 62 + sh, gx0: 44, gx1: 386, top: 62 + sh + 26, bot: H - 92, f1: 22, f2: 46, fs: 16 };
+    }
+    /* The Ferris wheel always shares the graph's vertical scale: the wheel stands
+       to the left of the h axis, its hub on the true midline and its rim on the
+       highest and lowest seats, so a horizontal dashed line joins the rider's
+       cabin to the point it draws on the graph. The plot is only as tall as lets
+       the wheel take about 40% of the width (a phone gets a short, wide-enough graph). */
+    function wheelLayout(wide, w, h){
+      var y = sc().y, k = 2 * tr().A / (y[1] - y[0]), W = wide ? 1000 : 400;
+      var top = wide ? 100 : 74, dMax = wide ? 440 : 156, H0 = wide ? Math.round(clamp(1000 * h / Math.max(1, w), 470, 760)) : Math.round(clamp(400 * h / Math.max(1, w), 420, 900));
+      var P = (H0 - (wide ? 46 : 64)) - top, D = Math.min(P * k, dMax);
+      P = D / k;
+      var bot = Math.round(top + P), sx0 = wide ? 22 : 6, sx1 = sx0 + D + (wide ? 16 : 6);
+      return { wide: wide, wheel: true, W: W, H: bot + (wide ? 46 : 64), sx0: sx0, sx1: sx1, gx0: sx1 + (wide ? 44 : 30), gx1: W - (wide ? 28 : 12), top: top, bot: bot, f1: wide ? 34 : 22, f2: wide ? 66 : 46, fs: wide ? 22 : 16 };
     }
     function win(){ return 2 * sc().s.T; }
     function gx(t){ return L.gx0 + t / win() * (L.gx1 - L.gx0); }
     function gy(v){ var y = sc().y; return L.bot - (v - y[0]) / (y[1] - y[0]) * (L.bot - L.top); }
     function iy(py){ var y = sc().y; return y[0] + (L.bot - py) / (L.bot - L.top) * (y[1] - y[0]); }
     function it(px){ return (px - L.gx0) / (L.gx1 - L.gx0) * win(); }
-    /* The scene shares the graph's vertical scale when it fits its panel (then a
-       dashed line links the scene to the graph); a wheel too wide gets its own scale. */
-    function shared(){ var S = sc(); if(!L.wide) return false; if(S.id !== 'ferris') return true; var A = tr().A; return Math.abs(gy(S.s.min + 2 * A) - gy(S.s.min)) <= L.sx1 - L.sx0 - 16; }
+    /* The scene shares the graph's vertical scale (then a dashed line links the
+       scene to the graph); on a phone the stacked scenes get their own scale. */
+    function shared(){ return !!L.wheel || (L.wide && sc().id !== 'ferris'); }
     function syScene(v){
       var y = sc().y;
       if(shared()) return gy(v);
       var top = L.wide ? L.top : L.sTop, bot = L.wide ? L.bot : L.sBot - (sc().id === 'temp' ? 34 : 8), /* a phone's thermometer keeps its bulb above the graph */ h = bot - top - (L.wide ? 0 : 8);
-      if(sc().id === 'ferris') h = Math.min(h, (L.sx1 - L.sx0 - 16) * (y[1] - y[0]) / (2 * tr().A));
       return bot - (v - y[0]) / (y[1] - y[0]) * h;
     }
     /* ---------------------------------------------------- handles */
@@ -178,10 +201,11 @@
 
     /* ---------------------------------------------------- draw */
     function draw(){
-      if(!L){ L = layout(); svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H); svg.classList.toggle('is-tall', !L.wide); }
+      if(!L){ L = layout(); svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H); svg.classList.toggle('is-tall', !L.wide); svg.classList.toggle('is-wheel', !!L.wheel); }
       var S = sc(), TR = tr(), p = st.p, f = SB.model(p), o = [], dpts = data(), ok = SB.fit(p, dpts, tol()), y = S.y;
       // scene
-      var art = sceneArt(S, { x0: L.sx0, x1: L.sx1, sy: syScene, val: TR.f(st.t), tr: TR, t: st.t });
+      var art = sceneArt(S, { x0: L.sx0, x1: L.sx1, sy: syScene, val: TR.f(st.t), tr: TR, t: st.t, p: p, share: shared(), clip: clipId, top: L.top, bot: L.bot });
+      o.push('<defs><clipPath id="' + clipId + '"><rect x="' + (L.sx0 - 4) + '" y="' + (L.top - 4) + '" width="' + (L.sx1 - L.sx0 + 8) + '" height="' + (L.bot - L.top + 8) + '"/></clipPath></defs>');
       o.push('<g class="sb-scene">' + art.svg + '</g>');
       // graph grid
       var ys = niceStep(y[1] - y[0], L.wide ? 6 : 5), xs = S.s.T / 4;
@@ -191,29 +215,35 @@
       o.push('<line class="sb-axis" x1="' + L.gx0 + '" y1="' + L.bot + '" x2="' + L.gx1 + '" y2="' + L.bot + '"/><line class="sb-axis" x1="' + L.gx0 + '" y1="' + L.top + '" x2="' + L.gx0 + '" y2="' + L.bot + '"/>');
       o.push(txt(L.gx1, L.bot + 38, S.tName + ' (' + S.tUnit + ')', 'sb-axl', 'end'), txt(L.gx0 + 6, L.top - 8, S.yName + ' (' + S.yUnit + ')', 'sb-axl', 'start'));
       // the student's midline, amplitude and period
-      var pk = peak1(), pk2 = pk + p.T, mid = gy(p.d);
+      var pk = peak1(), pk2 = pk + p.T, mid = gy(p.d), labs = [];   // labels go on top of the curve (pass 3)
       o.push('<line class="sb-midline" x1="' + L.gx0 + '" y1="' + r1(mid) + '" x2="' + L.gx1 + '" y2="' + r1(mid) + '"/>');
-      o.push(txt(L.gx1 - 4, mid + 20 > L.bot - 2 ? Math.min(mid, L.bot) - 8 : mid + 20, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));   // above the line when the line is on the t-axis
+      labs.push(txt(L.gx1 - 4, mid + 20 > L.bot - 2 ? Math.min(mid, L.bot) - 8 : mid + 20, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));   // above the line when the line is on the t-axis
       // the curve, clipped to the plot
       var d = '', on = false;
       for(var i = 0; i <= 320; i++){ var tt = win() * i / 320, vv = f(tt); var py = gy(vv); if(py < L.top - 30 || py > L.bot + 30){ on = false; continue; } d += (on ? 'L' : 'M') + r1(gx(tt)) + ' ' + r1(py); on = true; }
+      if(st.t > 0){
+        // what the scene has drawn so far: its true value from t = 0 to now
+        var tdz = '';
+        for(var j = 0; j <= 240; j++){ var tj = st.t * j / 240; tdz += (j ? 'L' : 'M') + r1(gx(tj)) + ' ' + r1(gy(TR.f(tj))); }
+        o.push('<path class="sb-trace" d="' + tdz + '"/>');
+      }
       o.push('<path class="sb-curve" d="' + d + '"/>');
       // a model slid below the graph's window (a temperature midline of 0 on a 6 to 30 scale) keeps its marks off the axis numbers
       var inWin = mid <= L.bot + 1;
       if(pk <= win() && inWin){
         o.push('<line class="sb-amp" x1="' + r1(gx(pk)) + '" y1="' + r1(mid) + '" x2="' + r1(gx(pk)) + '" y2="' + r1(gy(p.d + p.a)) + '"/>');
-        var left = gx(pk) - L.gx0 > 70; o.push(txt(gx(pk) + (left ? -10 : 26), (mid + gy(p.d + p.a)) / 2 + 5, 'a = ' + nt(p.a), 'sb-lab sb-c-a', left ? 'end' : 'start'));
+        var left = gx(pk) - L.gx0 > 70; labs.push(txt(gx(pk) + (left ? -10 : 26), (mid + gy(p.d + p.a)) / 2 + 5, 'a = ' + nt(p.a), 'sb-lab sb-c-a', left ? 'end' : 'start'));
       }
       var by = Math.max(L.top - 2, gy(p.d + p.a) - 16), px0 = gx(pk), px1 = gx(Math.min(pk2, win()));
       if(pk2 <= win() + 1e-9 && gy(p.d + p.a) <= L.bot){
         o.push('<path class="sb-per" d="M' + r1(px0) + ' ' + r1(by + 6) + ' V' + r1(by) + ' H' + r1(px1) + ' V' + r1(by + 6) + '"/>');
-        o.push(txt((px0 + px1) / 2, by - 6, 'period ' + nt(p.T), 'sb-lab sb-c-T'));
+        labs.push(txt((px0 + px1) / 2, by - 6, 'period ' + nt(p.T), 'sb-lab sb-c-T'));
       }
       // where a cycle starts: t = −c (rising midline crossing for sin, peak for cos)
       var s0 = -p.c; s0 = s0 - Math.floor(s0 / p.T) * p.T;
       if(s0 <= win() && inWin){
         var sY = p.form === 'cos' ? gy(p.d + p.a) : mid;
-        o.push('<path class="sb-shift" d="M' + r1(gx(s0)) + ' ' + r1(sY + 4) + ' l-7 12 h14 z"/>', txt(gx(s0) + (gx(s0) - L.gx0 < 30 ? 3 : 0), sY + 32, 't = ' + nt(s0), 'sb-lab sb-c-c', gx(s0) - L.gx0 < 30 ? 'start' : L.gx1 - gx(s0) < 30 ? 'end' : 'middle'));   // beside the axis, clear of its tick numbers
+        o.push('<path class="sb-shift" d="M' + r1(gx(s0)) + ' ' + r1(sY + 4) + ' l-7 12 h14 z"/>'); labs.push(txt(gx(s0) + (gx(s0) - L.gx0 < 30 ? 3 : 0), sY + 32, 't = ' + nt(s0), 'sb-lab sb-c-c', gx(s0) - L.gx0 < 30 ? 'start' : L.gx1 - gx(s0) < 30 ? 'end' : 'middle'));   // beside the axis, clear of its tick numbers
       }
       // data points: green once the curve passes through
       dpts.forEach(function(q, k){
@@ -225,11 +255,13 @@
       o.push('<line class="sb-cur" x1="' + r1(tc) + '" y1="' + L.top + '" x2="' + r1(tc) + '" y2="' + L.bot + '"/>');
       o.push('<circle class="sb-now" cx="' + r1(tc) + '" cy="' + r1(gy(now)) + '" r="6"/>');
       if(shared()) o.push('<line class="sb-link" x1="' + r1(art.mx) + '" y1="' + r1(art.my) + '" x2="' + r1(tc) + '" y2="' + r1(gy(now)) + '"/>');
+      o.push(labs.join(''));
       // the formula, colored part by part, and the period line
       var b = TAU / p.T, bT = SB.piText(b), cT = p.c === 0 ? '' : ' ' + (p.c > 0 ? '+ ' : '− ') + nt(Math.abs(p.c));
       var fx = L.wide ? L.gx0 : L.W / 2, an = L.wide ? 'start' : 'middle';
       o.push(txt(fx, L.f1, '<tspan class="sb-c-y">' + S.yName + '(t) = </tspan><tspan class="sb-c-a">' + nt(p.a) + '</tspan> ' + p.form + '(<tspan class="sb-c-T">' + esc(bT) + '</tspan>(t<tspan class="sb-c-c">' + esc(cT) + '</tspan>)) <tspan class="sb-c-d">+ ' + nt(p.d) + '</tspan>', 'sb-formula', an));
-      o.push(txt(fx, L.f2, 'period ' + nt(p.T) + ' ' + S.tUnit + ' · b = 2π/' + nt(p.T) + ' = ' + esc(bT) + ' · frequency ' + esc(SB.n(1 / p.T)) + ' per ' + S.tUnit, 'sb-sub', an));
+      // pass 2: the period, b and frequency line moved off the picture into Key points & form
+      var perl = det && det.querySelector('.sb-perline'); if(perl) perl.textContent = 'Period ' + nt(p.T) + ' ' + S.tUnit + ', so b = 2π/' + nt(p.T) + ' = ' + bT + ' and the frequency is ' + SB.n(1 / p.T) + ' per ' + S.tUnit + '.';
       gD.innerHTML = o.join('');
       // handles
       place('pk', gx(pk <= win() ? pk : pk - p.T), gy(p.d + p.a), pk <= win() || pk - p.T >= 0);
@@ -245,14 +277,11 @@
 
     /* ---------------------------------------------------- dock */
     var chips = host.querySelector('.sb-scenes'), seg = host.querySelector('.sb-params');
-    chips.innerHTML = SB.SORDER.map(function(k){ return '<button type="button" class="tchip" data-s="' + k + '" aria-pressed="' + (k === st.sid) + '">' + esc(SB.SCENES[k].name) + '</button>'; }).join('');
+    /* the situation: one menu (pass 3), not four chips */
+    var sitSel = T.choiceSelect({ label: 'Situation', value: st.sid, options: SB.SORDER.map(function(k){ return { value: k, label: SB.SCENES[k].name }; }),
+      onChange: function(v){ stopT(); st.sid = v; reset(); L = null; draw(); announce(sc().name + '. ' + sc().story); } });
+    sitSel.el.classList.add('sb-sit'); chips.innerHTML = ''; chips.appendChild(sitSel.el);
     seg.innerHTML = ['a', 'd', 'T', 'c'].map(function(k){ return '<button type="button" class="bt-mode" data-k="' + k + '" aria-pressed="' + (k === st.sel) + '"><span class="sb-pk sb-c-' + k + '">' + { a: 'a', d: 'd', T: 'period', c: 'shift c' }[k] + '</span><span class="sb-pv"></span></button>'; }).join('');
-    chips.addEventListener('click', function(e){
-      var b = e.target.closest('[data-s]'); if(!b) return;
-      stopT(); st.sid = b.getAttribute('data-s'); reset(); L = null;
-      chips.querySelectorAll('[data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
-      draw(); announce(sc().name + '. ' + sc().story);
-    });
     seg.addEventListener('click', function(e){ var b = e.target.closest('[data-k]'); if(!b) return; st.sel = b.getAttribute('data-k'); draw(); });
     function syncCtl(){
       var sl = sc().sl[st.sel], p = st.p;
@@ -293,7 +322,7 @@
 
     /* ---------------------------------------------------- Details */
     function buildDetails(){
-      det.innerHTML = '<h3 class="ls-title-l">The five key points of your model</h3><p class="bt-small">One cycle from where it starts, a quarter period apart. On the exam these are the labeled points of Q3.</p><div class="sb-keys"></div>' +
+      det.innerHTML = '<h3 class="ls-title-l">Period, b and frequency</h3><p class="sb-perline"></p><h3 class="ls-title-l">The five key points of your model</h3><p class="bt-small">One cycle from where it starts, a quarter period apart. On the exam these are the labeled points of Q3.</p><div class="sb-keys"></div>' +
         '<h3 class="ls-title-l">Sine or cosine</h3><div class="ls-seg sb-form" role="group" aria-label="Form of the model"><button type="button" class="bt-mode" data-f="sin" aria-pressed="true">a sin(b(t + c)) + d</button><button type="button" class="bt-mode" data-f="cos" aria-pressed="false">a cos(b(t + c)) + d</button></div>' +
         '<p class="bt-small">Both forms can fit; only the shift changes. Cosine is sine shifted left a quarter period.</p>' +
         '<div class="sb-tbl"></div>' +
@@ -381,7 +410,7 @@
       s.add('why', div('ls-sec pcalc-ls-why', [cue.el, say]), o);
       s.add('details', div('ls-sec pcalc-ls-det', [det]), o);
       lastCap = ''; L = null; draw();
-      if(s.mode() === 'explore') s.hint({ target: range, text: 'Move the slider until your curve meets the points', key: 'apprecalc-sinusoid-builder-fit' });
+      if(s.mode() === 'explore') s.hint({ target: range, text: 'Slide until the curve meets the points', key: 'apprecalc-sinusoid-builder-fit' });
     }
     reset(); buildDetails(); draw();
     return { pause: stopT, studio: studio };

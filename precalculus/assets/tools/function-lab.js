@@ -54,7 +54,7 @@
     var LS = null;
     var fams = (data.families || []).map(function(f){ return f.id; }).filter(function(id){ return FL.FAMILIES[id]; });
     if(!fams.length) fams = ['quadratic'];
-    var st = { fam: fams.indexOf('quadratic') > -1 ? 'quadratic' : fams[0], p: { a: 1, b: 1, h: 2, k: -1 }, key: 'a', touched: false, anim: null, play: null };
+    var st = { fam: fams.indexOf('quadratic') > -1 ? 'quadratic' : fams[0], p: { a: 1, b: 1, h: 2, k: -1 }, key: 'a', focus: 'sh', touched: false, anim: null, play: null };
     var cue = T.cue('Drag the round handle on the graph, or pick a parameter and slide it.');
     host.innerHTML =
       '<section class="bt-problem fl-card" aria-label="Function lab">' +
@@ -67,7 +67,7 @@
           '<div class="fl-side"></div>' +
         '</div>' +
         '<div class="fl-ctl">' +
-          '<div class="fl-chips ls-scroll" role="group" aria-label="Parent function"></div>' +
+          '<div class="fl-chips"></div>' +
           '<div class="fl-prow"><div class="fl-pseg ls-seg" role="group" aria-label="Parameter to move">' + ['a', 'b', 'h', 'k'].map(function(k){ return '<button type="button" class="bt-mode fl-pk" data-k="' + k + '" aria-pressed="false"><i>' + k + '</i></button>'; }).join('') + '</div><div class="fl-slot"></div></div>' +
           '<div class="fl-acts"><button type="button" class="bt-btn fl-play">Play the steps</button><button type="button" class="bt-btn fl-reset">Reset to f</button></div>' +
         '</div>' +
@@ -154,13 +154,15 @@
       if(mirror == null){
         var Z = FL.zeros(fam, p, V.x);
         Z.forEach(function(z){ o.push('<circle class="fl-zero" cx="' + r1(V.sx(z)) + '" cy="' + ax + '" r="5.5"/>'); });
-        // key points: the parent's (hollow) and their images (filled), same color, joined by a faint line
+        // one mapping at a time (pass 3): the key point in focus (the one under the round handle, or the
+        // (h, k) corner while that is dragged) shows its parent point and the dotted line to its image.
+        // Every key point's mapping stays in the table in Numbers & details.
+        var fi = st.focus === 'hk' ? hkIndex(Fa) : Fa.shape;
         Fa.keys.forEach(function(kp, i){
-          var q3 = FL.image(p, kp), cls = PCOL[i % PCOL.length], open = Fa.open && Fa.open.indexOf(i) > -1;
-          if(!inView(V, kp) && !inView(V, q3)) return;
+          if(i !== fi) return;
+          var q3 = FL.image(p, kp), cls = PCOL[i % PCOL.length];
           if(inView(V, kp) && inView(V, q3) && Math.hypot(V.sx(q3[0]) - V.sx(kp[0]), V.sy(q3[1]) - V.sy(kp[1])) > 14) o.push('<line class="fl-link ' + cls + '" x1="' + r1(V.sx(kp[0])) + '" y1="' + r1(V.sy(kp[1])) + '" x2="' + r1(V.sx(q3[0])) + '" y2="' + r1(V.sy(q3[1])) + '"/>');
-          if(inView(V, kp)) o.push('<circle class="fl-kp0 ' + cls + '" cx="' + r1(V.sx(kp[0])) + '" cy="' + r1(V.sy(kp[1])) + '" r="4"/>');
-          if(inView(V, q3) && i !== Fa.shape) o.push('<circle class="fl-kp ' + cls + (open ? ' is-open' : '') + '" cx="' + r1(V.sx(q3[0])) + '" cy="' + r1(V.sy(q3[1])) + '" r="5.5"/>');
+          if(inView(V, kp)) o.push('<circle class="fl-kp0 ' + cls + '" cx="' + r1(V.sx(kp[0])) + '" cy="' + r1(V.sy(kp[1])) + '" r="4.5"/>');
         });
       }
       plot.innerHTML = o.join('');
@@ -172,6 +174,8 @@
       // the jump is at x = h; each side drawn on its own
       return path(f, V, V.x[0], p.h - 1e-9) + path(f, V, p.h, V.x[1]);
     }
+    /* the key point that lands on (h, k), if the parent has one at the origin */
+    function hkIndex(Fa){ for(var i = 0; i < Fa.keys.length; i++) if(!Fa.keys[i][0] && !Fa.keys[i][1]) return i; return -1; }
     function inView(V, q){ return q[0] > V.x[0] + 0.05 && q[0] < V.x[1] - 0.05 && q[1] > V.y[0] + 0.05 && q[1] < V.y[1] - 0.05; }
     function dot(V, x, y, cls, open){ if(!inView(V, [x, y])) return ''; return '<circle class="' + cls + (open ? ' is-open' : '') + '" cx="' + r1(V.sx(x)) + '" cy="' + r1(V.sy(y)) + '" r="5"/>'; }
 
@@ -184,14 +188,14 @@
       hg.appendChild(g);
       var dragging = false;
       function local(e){ var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; var m = svg.getScreenCTM(); var q = m ? pt.matrixTransform(m.inverse()) : pt; return [view.ix(q.x), view.iy(q.y)]; }
-      g.addEventListener('pointerdown', function(e){ stopPlay(); dragging = true; try{ g.setPointerCapture(e.pointerId); }catch(er){} g.classList.add('is-drag'); e.preventDefault(); touch(); });
+      g.addEventListener('pointerdown', function(e){ stopPlay(); st.focus = kind; dragging = true; try{ g.setPointerCapture(e.pointerId); }catch(er){} g.classList.add('is-drag'); e.preventDefault(); touch(); });
       g.addEventListener('pointermove', function(e){ if(!dragging) return; var q = local(e); moveTo(kind, q[0], q[1]); });
       function up(){ if(!dragging) return; dragging = false; g.classList.remove('is-drag'); update(true); }
       g.addEventListener('pointerup', up); g.addEventListener('pointercancel', up);
       g.addEventListener('keydown', function(e){
         var k = e.key, s = e.shiftKey ? 1 : 0.1, dx = 0, dy = 0;
         if(k === 'ArrowRight') dx = s; else if(k === 'ArrowLeft') dx = -s; else if(k === 'ArrowUp') dy = s; else if(k === 'ArrowDown') dy = -s; else return;
-        e.preventDefault(); stopPlay(); touch();
+        e.preventDefault(); stopPlay(); touch(); st.focus = kind;
         if(kind === 'hk'){ setP({ h: st.p.h + dx, k: st.p.k + dy }); }
         else {
           // a step of the key point: dy moves its height (a), dx its distance from h (b)
@@ -225,6 +229,7 @@
       H.hk.setAttribute('aria-valuetext', 'h = ' + num(p.h) + ', k = ' + num(p.k));
       H.sh.setAttribute('aria-valuetext', 'key point at (' + num(q[0]) + ', ' + num(q[1]) + '): a = ' + num(p.a) + ', b = ' + num(p.b));
       H.sh.querySelector('.fl-hdot').setAttribute('class', 'fl-hdot ' + PCOL[Fm().shape % PCOL.length]);
+      var lg = host.querySelector('.fl-lg-sh') || (LS && LS.root.querySelector('.fl-lg-sh')); if(lg) lg.setAttribute('data-c', PCOL[Fm().shape % PCOL.length]);
     }
 
     /* ---------------------------------------------- parameters */
@@ -244,15 +249,13 @@
     }
     function obj(k, v){ var o = {}; o[k] = v; return o; }
     seg.addEventListener('click', function(e){ var b = e.target.closest('.fl-pk'); if(!b) return; touch(); st.key = b.getAttribute('data-k'); buildSlider(); update(false); });
-    function buildChips(){
-      chips.innerHTML = fams.map(function(id){ return '<button type="button" class="bt-btn fl-chip" data-id="' + id + '" aria-pressed="' + (id === st.fam) + '">' + esc(FL.FAMILIES[id].name) + '</button>'; }).join('');
-    }
-    chips.addEventListener('click', function(e){
-      var b = e.target.closest('.fl-chip'); if(!b) return; touch(); stopPlay();
-      st.fam = b.getAttribute('data-id'); buildChips();
-      // keep the parameters: the same transformation on a new parent
-      update(true);
-    });
+    /* the parent function: one menu (pass 3), not ten chips */
+    var famSel = T.choiceSelect({ label: 'Parent function', value: st.fam, options: fams.map(function(id){ return { value: id, label: FL.FAMILIES[id].name }; }),
+      onChange: function(v){ touch(); stopPlay(); st.fam = v;
+        // keep the parameters: the same transformation on a new parent
+        update(true); } });
+    famSel.el.classList.add('fl-fam');
+    function buildChips(){ chips.innerHTML = ''; chips.appendChild(famSel.el); famSel.set(st.fam); }
     host.querySelector('.fl-reset').addEventListener('click', function(){ touch(); stopPlay(); setP({ a: 1, b: 1, h: 0, k: 0 }); update(true); });
     host.querySelector('.fl-play').addEventListener('click', function(){ touch(); play(); });
 
@@ -369,7 +372,7 @@
       s.add('details', dd, o);
       lastCap = '';
       update(true);
-      if(s.mode() === 'explore') s.hint({ target: H.sh, text: 'Drag this point: up and down for a, sideways for b', key: 'apprecalc-function-lab-drag' });
+      if(s.mode() === 'explore') s.hint({ target: H.sh, text: 'Drag: up and down for a, sideways for b', key: 'apprecalc-function-lab-drag' });
     }
     buildChips(); buildSlider(); update(true);
     return { pause: stopPlay, studio: studio };

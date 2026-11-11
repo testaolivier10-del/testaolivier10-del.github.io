@@ -155,6 +155,7 @@
   },
   {
    "id": "epidemiological",
+   "figure": "epi",
    "topic": "transition-model",
    "types": [
     "epidemiological"
@@ -1467,6 +1468,7 @@
   },
   {
    "id": "rank-size",
+   "figure": "ranksize",
    "topic": "city-size-distribution",
    "types": [
     "rank-size"
@@ -1545,6 +1547,7 @@
   },
   {
    "id": "gravity",
+   "figure": "gravity",
    "topic": "city-size-distribution",
    "types": [
     "gravity"
@@ -3255,6 +3258,7 @@
   },
   {
    "id": "rostow",
+   "figure": "rostow",
    "topic": "development-theories",
    "types": [
     "rostow"
@@ -3450,6 +3454,7 @@
   },
   {
    "id": "world-system",
+   "figure": "worldsys",
    "topic": "development-theories",
    "types": [
     "world-system"

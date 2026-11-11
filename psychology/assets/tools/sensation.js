@@ -257,7 +257,11 @@
         '<div class="sn-grp sn-grp-detect"></div>' +
         '<div class="sn-grp sn-grp-weber" hidden></div>' +
         '<div class="sn-grp sn-grp-color" hidden></div>' +
-        '<div class="sn-grp sn-grp-perceive" hidden><div class="ls-scroll sn-figs" role="group" aria-label="Figure">' + FIGS.map(function(k){ return '<button type="button" class="bt-btn" data-f="' + k + '" aria-pressed="' + (k === fig) + '">' + figName(k) + '</button>'; }).join('') + '</div></div>' +
+        // pass 2: eleven chips became one picker (depth cues and Gestalt grouped) with previous and next
+        '<div class="sn-grp sn-grp-perceive" hidden><div class="sn-exrow"><button type="button" class="bt-btn sn-prev" aria-label="Previous figure">‹</button>' +
+        '<div class="bt-ctl bt-select sn-exsel"><label for="' + nid + '-fig">Figure</label><select id="' + nid + '-fig" class="sn-figsel">' +
+        [['Depth cues', FIGS.filter(function(k){ return X.DEPTH[k]; })], ['Gestalt grouping', FIGS.filter(function(k){ return X.GESTALT[k]; })]].map(function(gp){ return '<optgroup label="' + gp[0] + '">' + gp[1].map(function(k){ return '<option value="' + k + '"' + (k === fig ? ' selected' : '') + '>' + esc(figName(k)) + '</option>'; }).join('') + '</optgroup>'; }).join('') +
+        '</select></div><button type="button" class="bt-btn sn-next" aria-label="Next figure">›</button></div></div>' +
         '<div class="sn-go"><button type="button" class="btn-press sm ls-btn ls-pri sn-act">Run 20 trials</button></div>' +
       '</div><div class="sn-say"></div>' +
       T.moreHtml('<div class="sn-more"></div>', 'signal strength, starting brightness, stare time') +
@@ -284,10 +288,11 @@
     function onClick(e){
       var b;
       if((b = e.target.closest('.sn-scenes button'))){ act(); stop(); scene = b.getAttribute('data-s'); sync(); draw(); words(); say(SCENES.filter(function(x){ return x.v === scene; })[0].label + ' scene.'); return; }
-      if((b = e.target.closest('.sn-figs button'))){ act(); fig = b.getAttribute('data-f'); show = false; sync(); draw(); words(); say(figName(fig) + '.'); return; }
+      if((b = e.target.closest('.sn-prev, .sn-next'))){ act(); fig = FIGS[(FIGS.indexOf(fig) + (b.classList.contains('sn-next') ? 1 : FIGS.length - 1)) % FIGS.length]; show = false; sync(); draw(); words(); say(figName(fig) + '.'); return; }
       if(e.target.closest('.sn-act')){ act(); action(); return; }
     }
     host.addEventListener('click', onClick);
+    host.querySelector('.sn-figsel').addEventListener('change', function(e){ act(); fig = e.target.value; show = false; sync(); draw(); words(); say(figName(fig) + '.'); });
     // drag the criterion on the picture
     var dragging = false;
     function critFrom(ev){ var rc = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal, x = (ev.clientX - rc.left) / rc.width * vb.width; if(!geo) return; var v = geo.lo + (x - geo.L) / (geo.R - geo.L) * (geo.hi - geo.lo); sC.set(Math.max(-1.5, Math.min(3, Math.round(v * 4) / 4)), true); }
@@ -299,7 +304,7 @@
     function sync(){
       var root = LS ? LS.root : host;
       root.querySelectorAll('.sn-scenes button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-s') === scene)); });
-      root.querySelectorAll('.sn-figs button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === fig)); });
+      var fsel = root.querySelector('.sn-figsel'); if(fsel) fsel.value = fig;
       SCENES.forEach(function(x){ var el = $('.sn-grp-' + x.v); if(el) el.hidden = x.v !== scene; });
       sD.el.hidden = scene !== 'detect'; sI.el.hidden = scene !== 'weber'; sSecs.el.hidden = scene !== 'color';
       var more = $('.psy-ls-more') || $('.bt-more'), go = $('.sn-go');

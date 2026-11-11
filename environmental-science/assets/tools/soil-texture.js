@@ -93,7 +93,10 @@
     out.push('<text class="st-axis silt" transform="translate(' + (sm[0] + (phone ? 46 : 34)).toFixed(1) + ' ' + (sm[1] - 6).toFixed(1) + ') rotate(60)" text-anchor="middle">← Silt %</text>');
     out.push('<text class="st-axis sand" x="' + bm[0].toFixed(1) + '" y="' + (bm[1] + (phone ? 38 : 42)).toFixed(1) + '" text-anchor="middle">← Sand %</text>');
     // class names
+    // o.nameOnly (Explore, pass 3): only the class the point is in is named;
+    // the colors still show the others, and moving the point names them.
     if(!o.hideClasses) Object.keys(LAB).forEach(function(id){
+      if(o.nameOnly && id !== o.cls) return;
       var q = LAB[id], p = G.xy(q[0], q[1], q[2]), lines = wrapName(SHORT[id]), lf = phone ? 10.5 : 12.5;
       if(phone && (id === 'sand' || id === 'loamy-sand')) lines = [id === 'sand' ? 'S' : 'LS'];
       // The point covers a name: move it off (Loam sideways, since Clay loam
@@ -184,8 +187,8 @@
     var lx = x0 + w + 14, lw = W - lx - 8;
     labels.forEach(function(L){
       var nm = L.ask ? '?' : L.H0.name, ds = L.ask ? '' : L.H0.what.split(':')[0];
-      var show = !L.ask && (!o.sel || o.sel === L.z.id || !phone), full = !phone && !L.ask ? L.H0.what.split(': ')[1] || '' : '';
-      out.push('<text class="st-hz-n' + (o.sel === L.z.id ? ' is-sel' : '') + '" x="' + lx + '" y="' + (L.y - (full ? 8 : 2)).toFixed(1) + '">' + esc(nm) + '</text>' + (show ? '<text class="st-hz-d" x="' + lx + '" y="' + (L.y + (phone ? 13 : 9)).toFixed(1) + '">' + esc(phone && ds.length > 22 ? ds.slice(0, 22) + '…' : ds) + '</text>' : '') +
+      var show = !L.ask && (!o.sel || o.sel === L.z.id || !phone), full = !phone && !L.ask && o.sel === L.z.id ? L.H0.what.split(': ')[1] || '' : '';   // pass 2: the long line only for the horizon tapped
+      out.push('<text class="st-hz-n' + (o.sel === L.z.id ? ' is-sel' : '') + '" x="' + lx + '" y="' + (L.y - (full ? 8 : phone ? 2 : 5)).toFixed(1) + '">' + esc(nm) + '</text>' + (show ? '<text class="st-hz-d" x="' + lx + '" y="' + (L.y + (phone ? 13 : full ? 9 : 12)).toFixed(1) + '">' + esc(phone && ds.length > 22 ? ds.slice(0, 22) + '…' : ds) + '</text>' : '') +
         (full ? '<text class="st-hz-f" x="' + lx + '" y="' + (L.y + 26).toFixed(1) + '">' + esc(full.length > 58 ? full.slice(0, 57) + '…' : full) + '</text>' : ''));
       out.push('<path class="st-hz-tick" d="M' + (x0 + w) + ' ' + L.y.toFixed(1) + ' h10"/>');
     });
@@ -213,10 +216,10 @@
       '<div class="st-ctl">' +
         '<div class="st-views ls-scroll" role="group" aria-label="View"><button type="button" class="tchip st-view" data-v="triangle" aria-pressed="true">Texture triangle</button><button type="button" class="tchip st-view" data-v="profile" aria-pressed="false">Soil horizons</button></div>' +
         '<div class="st-sl"></div>' +
-        '<div class="st-presets ls-scroll" role="group" aria-label="Example soils"><button type="button" class="tchip st-pre" data-p="90,5,5">Beach sand</button><button type="button" class="tchip st-pre" data-p="40,40,20">Garden loam</button><button type="button" class="tchip st-pre" data-p="10,30,60">Pottery clay</button><button type="button" class="tchip st-pre" data-p="15,75,10">River silt</button></div>' +
       '</div>' +
       '<div class="st-say"></div>' +
-      T.moreHtml('<p class="bt-small">Particle sizes: sand 0.05 to 2 mm, silt 0.002 to 0.05 mm, clay under 0.002 mm. Gravel (over 2 mm) and organic matter are left out: the percents are of the mineral fine earth only.</p>', 'particle sizes') +
+      // pass 2: the example soils wait under More; dragging the point and the three sliders are the main way in
+      T.moreHtml('<div class="st-lbl ls-lbl">Example soils</div><div class="st-presets ls-scroll" role="group" aria-label="Example soils"><button type="button" class="tchip st-pre" data-p="90,5,5">Beach sand</button><button type="button" class="tchip st-pre" data-p="40,40,20">Garden loam</button><button type="button" class="tchip st-pre" data-p="10,30,60">Pottery clay</button><button type="button" class="tchip st-pre" data-p="15,75,10">River silt</button></div><p class="bt-small">Particle sizes: sand 0.05 to 2 mm, silt 0.002 to 0.05 mm, clay under 0.002 mm. Gravel (over 2 mm) and organic matter are left out: the percents are of the mineral fine earth only.</p>', 'particle sizes') +
       '<div class="st-nums"></div><p class="sr-only st-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.st-live'));
     var cue = T.cue('Drag the point on the triangle, or use the sliders.');
@@ -313,15 +316,18 @@
       var phone = sz.W < 600;
       if(st.view === 'triangle'){
         var side = phone ? 0 : 270, triW = sz.W - side;
-        var t = triangleSvg({ W: triW, H: phone ? sz.H - 160 : sz.H, pt: st.pt, cls: w.id, phone: phone });
+        var t = triangleSvg({ W: triW, H: phone ? sz.H - 160 : sz.H, pt: st.pt, cls: w.id, phone: phone, nameOnly: true });
+        // pass 3: the four property bars appear once the point has moved
+        // (cause, then effect); the magnified sample shows from the start.
+        var bars = function(){ return touched ? barsSvg.apply(null, arguments) : ''; };
         geo = t;
         var panel = '';
         if(phone){
           var py = sz.H - 150;
-          panel = '<g class="st-panel">' + sampleSvg(st.pt, 10, py, 112, 112) + '<text class="st-cap" x="66" y="' + (py - 6) + '" text-anchor="middle">Magnified</text>' + barsSvg(w.P, 136, py - 4, sz.W - 136 - 52, true).replace(/Porosity \(pore space\)/, 'Porosity').replace('Permeability (drainage)', 'Drainage').replace('Water-holding capacity', 'Water held') + '</g>';
+          panel = '<g class="st-panel">' + sampleSvg(st.pt, 10, py, 112, 112) + '<text class="st-cap" x="66" y="' + (py - 6) + '" text-anchor="middle">Magnified</text><text class="st-class st-class-p" x="136" y="' + (py + 8) + '">' + esc(S.nameOf(w.id)) + '</text>' + bars(w.P, 136, py + 18, sz.W - 136 - 52, true).replace(/Porosity \(pore space\)/, 'Porosity').replace('Permeability (drainage)', 'Drainage').replace('Water-holding capacity', 'Water held') + '</g>';
         } else {
           var px = triW + 6, top0 = Math.max(20, t.G.bottom - t.G.h - 20);
-          panel = '<g class="st-panel" transform="translate(0 ' + top0.toFixed(1) + ')"><text class="st-class" x="' + px + '" y="24">' + esc(S.nameOf(w.id)) + '</text><text class="st-cap" x="' + px + '" y="48">Magnified sample</text>' + sampleSvg(st.pt, px, 58, 250, 170) + '<text class="st-legend" x="' + px + '" y="248"><tspan class="st-k-sand">◆ sand</tspan>  <tspan class="st-k-silt">● silt</tspan>  <tspan class="st-k-clay">▬ clay</tspan></text>' + barsSvg(w.P, px, 270, 250, false) + '</g>';
+          panel = '<g class="st-panel" transform="translate(0 ' + top0.toFixed(1) + ')"><text class="st-class" x="' + px + '" y="24">' + esc(S.nameOf(w.id)) + '</text><text class="st-cap" x="' + px + '" y="48">Magnified sample</text>' + sampleSvg(st.pt, px, 58, 250, 170) + '<text class="st-legend" x="' + px + '" y="248"><tspan class="st-k-sand">◆ sand</tspan>  <tspan class="st-k-silt">● silt</tspan>  <tspan class="st-k-clay">▬ clay</tspan></text>' + bars(w.P, px, 270, 250, false) + '</g>';
         }
         svg.innerHTML = '<defs><marker id="st-arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" class="st-arr-h"/></marker></defs>' + t.svg + panel;
         svg.setAttribute('role', 'application');
@@ -338,15 +344,15 @@
       nums(w);
       if(LS){
         LS.caption('<b>' + esc(w.head) + '</b>', 'explore');
-        LS.pills(st.view === 'triangle' ? [{ k: 'Class', html: esc(S.nameOf(w.id)), tone: 'accent' }] : [], 'left', 'explore');
-        LS.pills(st.view === 'triangle' ? [{ k: 'Sum', html: (st.pt[0] + st.pt[1] + st.pt[2]) + '%', tone: 'good' }] : [], 'right', 'explore');
+        // pass 2: the class is named beside its sample on the picture; the sum is always 100%
+        LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
         LS.root.querySelectorAll('.env-ls-why details.bt-why').forEach(function(d){ d.open = true; });
       }
       if(announce) say(w.head);
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.st-fig')], dock: [$('.st-ctl')], primary: [sl.sand.el, sl.silt.el, sl.clay.el], primaryLoose: true, why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Particle sizes' });
+      T.studioPane(pane, s, { stage: [$('.st-fig')], dock: [$('.st-ctl')], primary: [sl.sand.el, sl.silt.el, sl.clay.el], primaryLoose: true, why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Example soils and particle sizes' });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       render();
@@ -381,7 +387,8 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { classify: 'Read the texture triangle', missing: 'Find the missing percent', porosity: 'Water in soil', horizons: 'Soil horizons', erosion: 'Erosion and conservation', percolation: 'A percolation test' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; figure(el, p, {}); },
-      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); }
+      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); },
+      refit: function(api){ figure(api.fig, api.problem, api.done || {}); }
     });
   }
   function figure(el, p, done){
@@ -394,15 +401,16 @@
       inner = triangleSvg({ W: W, H: H, pt: pt, cls: done && done['class'] ? g.cls : null, readouts: !!pt }).svg;
       label = 'Soil texture triangle' + (pt ? ' with a point at ' + pt[0] + '% sand, ' + pt[1] + '% silt, ' + pt[2] + '% clay' : '');
     } else if(f.kind === 'profile'){
-      H = phone ? 420 : 400;
+      H = phone ? 420 : T.figSize(W, 400, { max: 0.8 })[1];
       inner = profileSvg({ W: W, H: H, ask: (f.ask || []).filter(function(id){ var k = f.ask.indexOf(id); return !(done && done['h' + (k + 1)]); }), interactive: false });
       label = 'A soil profile from the O horizon down to bedrock';
     } else if(f.kind === 'ring'){
-      H = phone ? 240 : 220;
+      if(!phone) W = 440;   // drawn narrower, so the ring fills the stage
+      H = phone ? 240 : 230;
       inner = ringSvg(W, H, f, done && done.ans);
       label = 'A percolation test: water in a ring dropping ' + f.drop + ' cm in ' + f.mins + ' minutes';
     } else {
-      H = phone ? 400 : 270;
+      H = phone ? 400 : T.figSize(W, 270, { max: 0.72 })[1];
       inner = columnsSvg(W, H);
       label = 'Water poured through columns of sand, loam and clay';
     }
@@ -412,7 +420,7 @@
      beaker under each (sand most, clay least), the water held in between. */
   function columnsSvg(W, H){
     var out = ['<text class="st-title" x="12" y="22">Same water poured on each</text>'], kinds = [['Sand', [92, 4, 4]], ['Loam', [40, 40, 20]], ['Clay', [15, 25, 60]]];
-    var cw = Math.min(110, (W - 60) / 3 - 20), gap = (W - 3 * cw) / 4;
+    var cw = Math.min(160, (W - 60) / 3 - 20), gap = (W - 3 * cw) / 4;
     kinds.forEach(function(k, i){
       var x = gap + i * (cw + gap), y = 46, ch = H * 0.42, P = S.props(k[1][0], k[1][1], k[1][2]);
       out.push('<rect class="st-col-w" x="' + x + '" y="' + y + '" width="' + cw + '" height="' + ch + '" rx="6"/>');

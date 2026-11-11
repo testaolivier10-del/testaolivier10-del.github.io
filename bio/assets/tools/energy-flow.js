@@ -25,7 +25,7 @@
   if(!T) return;
   T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, E = M.energyFlow, D = data.defaults, RG = data.ranges, NAMES = data.levelNames;
-    var st = { mode: 'energy', eco: data.ecosystems[0].id, gpp: D.gpp, prodResp: D.prodResp, eff: D.eff, resp: D.resp, levels: D.levels, c0: D.c0, retain: D.retain, scale: 'log' };
+    var st = { mode: 'energy', eco: data.ecosystems[0].id, gpp: D.gpp, prodResp: D.prodResp, eff: D.eff, resp: D.resp, levels: D.levels, c0: D.c0, retain: D.retain, scale: 'linear' };
     var runs = [], ctl = {};
     var MODES = [['energy', 'Energy and biomass'], ['toxin', 'Biomagnification of a persistent toxin (from Topic 8.7)']];
 
@@ -39,7 +39,7 @@
       '<div class="bt-controls ef-ctl" data-primary="2"></div>' +
       '<div class="ef-levels bt-more"><div class="bt-buttons"><button type="button" class="bt-btn" data-a="less">Remove the top level</button><button type="button" class="bt-btn" data-a="more">Add a level</button></div><p class="bt-small ef-lvnote" role="status" aria-live="polite"></p></div>' +
       '<div class="bt-num"><h3 class="ef-sub">Food chain (each arrow: is eaten by)</h3><ol class="ef-chain"></ol></div>' +
-      '<div class="ef-pyr bt-num"><div class="bt-tabs" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div>' +
+      '<div class="ef-pyr bt-num"><div class="bt-tabs" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="linear" aria-pressed="true">Widths to scale</button><button type="button" class="bt-btn" data-s="log" aria-pressed="false">Widths on a log scale</button></div>' +
       '<div class="bt-stage two ef-stage"><div class="bt-fig ef-fig1"></div><div class="bt-fig ef-fig2"></div></div><p class="bt-small ef-key"></p></div>' +
       '<dl class="bt-readout ef-out"></dl><div class="ef-explain bt-num"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run a series of fractions passed on</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
@@ -126,13 +126,13 @@
       return W * (0.12 + 0.88 * (span > 0 ? (Math.log10(v) - Math.log10(lo)) / span : 1));
     }
     function pyramid(title, unit, cls, vals, labels, extra, inverted){
-      var row = 46, h = 34 + row * vals.length, p = ['<text class="ef-ttl" x="160" y="18" text-anchor="middle">' + esc(title) + '</text>'], A = window.ApBioArt;
+      var row = 52, h = 36 + row * vals.length, p = ['<text class="ef-ttl" x="160" y="20" text-anchor="middle">' + esc(title) + '</text>'], A = window.ApBioArt;
       // producers at the bottom; tiers touch, like a textbook pyramid
       vals.forEach(function(v, i){
         var y = h - row * (i + 1), w = widthOf(v, vals), nm = eco().organisms[i];
-        p.push('<rect class="ef-bar ' + cls + '" x="' + (160 - w / 2).toFixed(1) + '" y="' + (y + 20) + '" width="' + w.toFixed(1) + '" height="26" rx="4"/>');
-        if(A && A.has(nm)) p.push(A.icon(nm, 160 - Math.max(w, 30) / 2 - 16, y + 33, 22, 'ef-o l' + i));
-        p.push('<text class="ef-lab" x="160" y="' + (y + 14) + '" text-anchor="middle">' + esc(labels[i] + ': ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : '')) + '</text>');
+        p.push('<rect class="ef-bar ' + cls + '" x="' + (160 - w / 2).toFixed(1) + '" y="' + (y + 22) + '" width="' + w.toFixed(1) + '" height="30" rx="' + Math.min(4, w / 2).toFixed(1) + '"/>');
+        if(A && A.has(nm)) p.push(A.icon(nm, 160 - Math.max(w, 30) / 2 - 16, y + 37, 24, 'ef-o l' + i));
+        p.push('<text class="ef-lab" x="160" y="' + (y + 16) + '" text-anchor="middle">' + esc(labels[i] + ': ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : '')) + '</text>');
       });
       var desc = title + (st.scale === 'log' ? ' (bar widths on a log scale)' : ' (bar widths to scale)') + ', producers at the bottom: ' + vals.map(function(v, i){ return labels[i] + ' ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : ''); }).join('; ') + '.' + (inverted ? ' ' + inverted : '');
       return '<svg class="ef-pyr" viewBox="-10 0 340 ' + h + '" role="img" aria-label="' + esc(desc) + '">' + p.join('') + '</svg>';
@@ -142,30 +142,41 @@
     var pickLevel = null;
     function flow(s){
       // On a phone the labels are larger, so the levels move right to leave the heat labels room.
-      var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = 400, cx = document.querySelector('.ls-root.ls-phone') ? 188 : 170, p = [];
+      // pass 3: on a phone the picture is drawn narrower (shorter heat arrows, narrower boxes) so its words read at full size
+      var PH = !!document.querySelector('.ls-root.ls-phone');
+      var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = PH ? 340 : 400, cx = PH ? 152 : 170, p = [];
       var lmax = Math.log10(Math.max.apply(null, L.map(function(x){ return x.inE; }))), lmin = Math.log10(Math.max(1e-3, Math.min.apply(null, L.map(function(x){ return x.inE; }))));
-      var bw = function(v){ var span = Math.max(1, lmax - lmin); return 112 + 92 * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
+      var bw = function(v){ var span = Math.max(1, lmax - lmin); return (PH ? 100 : 112) + (PH ? 58 : 92) * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
       var aw = function(v){ return Math.max(1.5, Math.min(18, 2 + 3 * Math.log10(Math.max(1, v)))); };
       var A = window.ApBioArt, art = function(nm, x, y, sz, cls){ return A ? A.icon(nm, x, y, sz, cls) : ''; };
-      p.push('<rect class="ef-dec" x="' + (Wd - 100) + '" y="' + (H - 76) + '" width="96" height="68" rx="12"/>' + art('mushroom', Wd - 52, H - 56, 24, 'ef-o dec') + '<text class="ef-lab" x="' + (Wd - 52) + '" y="' + (H - 30) + '" text-anchor="middle">decomposers</text><text class="ef-num" x="' + (Wd - 52) + '" y="' + (H - 15) + '" text-anchor="middle">' + num(s.decomp) + '</text>');
-      p.push(art('sun', cx - 92, H - 10, 18, 'ef-o sun') + '<text class="ef-lab ef-sun" x="' + cx + '" y="' + (H - 6) + '" text-anchor="middle">GPP ' + num(s.gpp) + ' kcal/m²/yr</text>');
+      var DW = PH ? 100 : 96, DX = Wd - DW / 2 - 4;
+      p.push('<style>svg.ef-flow .ef-heat3{fill:none;stroke:var(--bio-symp);stroke-linecap:round;stroke-linejoin:round;opacity:.8}svg.ef-flow .ef-heathead{fill:var(--bio-symp);opacity:.8}svg.ef-flow .ef-heatword{font:700 11px var(--font-ui);fill:var(--bio-symp)}.ls-root.ls-phone svg.ef-flow .ef-heatword{font-size:13px}</style>');
+      p.push('<rect class="ef-dec" x="' + (Wd - DW - 4) + '" y="' + (H - 76) + '" width="' + DW + '" height="68" rx="12"/>' + art('mushroom', DX, H - 56, 24, 'ef-o dec') + '<text class="ef-lab" x="' + DX + '" y="' + (H - 30) + '" text-anchor="middle">decomposers</text>' + (pickLevel != null ? '<text class="ef-num" x="' + DX + '" y="' + (H - 15) + '" text-anchor="middle">' + num(s.decomp) + '</text>' : ''));
+      // pass 3: GPP sits in the producer box (it was said twice); the sun line now names the light and the unit
+      p.push(art('sun', cx - 70, H - 10, 18, 'ef-o sun') + '<text class="ef-lab ef-sun" x="' + (cx - 56) + '" y="' + (H - 6) + '">sunlight · kcal/m²/yr</text>');
       L.forEach(function(x, i){
         var y = H - 26 - (i + 1) * rowH + 14, w = bw(x.inE), sel = pickLevel === i;
         // heat to the left, decomposers to the right-down, passed on upward
         var hw = aw(x.heat);
-        p.push('<path class="ef-heat" stroke-width="' + hw.toFixed(1) + '" d="M' + (cx - w / 2) + ' ' + (y + 26) + ' c-10 -8 -14 8 -24 0 s-14 -8 -24 0 s-14 -8 -24 0"/>');
-        p.push('<text class="ef-heatlab" x="4" y="' + (y + 10) + '">heat ' + sig(x.heat) + '</text>');
+        // pass 3: heat is a wavy arrow leaving the box (its thickness grows with the heat), not a fat squiggle
+        var hx = cx - w / 2 - 3, hy = y + 20, seg = PH ? 9 : 12, nw = PH ? 3 : 4, hd = 'M' + hx + ' ' + hy;
+        for(var q = 0; q < nw; q++) hd += ' q' + (-seg / 2) + ' ' + (q % 2 ? 6 : -6) + ' ' + (-seg) + ' 0';
+        var hs = Math.max(1.6, Math.min(5, hw / 3)), ex = hx - seg * nw;
+        p.push('<path class="ef-heat3" stroke-width="' + hs.toFixed(1) + '" d="' + hd + '"/><path class="ef-heathead" d="M' + (ex - 7 - hs) + ' ' + hy + ' l' + (8 + hs) + ' ' + (-4 - hs / 2) + ' v' + (8 + hs) + 'Z"/>');
+        if(i === n - 1 && pickLevel == null) p.push('<text class="ef-heatword" x="' + (ex - 8) + '" y="' + (hy - 12) + '">heat</text>');
+        // pass 2 (2026-11-10): the heat and eaten numbers show for the level the student taps
+        if(sel) p.push('<text class="ef-heatlab" x="4" y="' + (y + 10) + '">heat ' + sig(x.heat) + '</text>');
         if(x.decomp > 0){ var dw = aw(x.decomp); p.push('<path class="ef-down" stroke-width="' + dw.toFixed(1) + '" d="M' + (cx + w / 2) + ' ' + (y + 24) + ' L' + (Wd - 64) + ' ' + (H - 74) + '"/>'); }
         if(i < n - 1){
           var uw = aw(x.passed), y2 = y - rowH + 40;
           p.push('<path class="ef-up" stroke-width="' + uw.toFixed(1) + '" d="M' + cx + ' ' + y + ' V' + (y2 + 2) + '"/>');
           var nb = Math.max(1, Math.min(4, Math.round(1 + Math.log10(Math.max(1, x.passed)) / 1.5)));
           for(var b = 0; b < nb; b++) p.push('<rect class="ef-block" x="' + (cx - 4) + '" y="' + (y - 8) + '" width="8" height="8" rx="2" style="--rise:' + (y2 - y + 8) + 'px;animation-delay:-' + (b * 1.6 / nb).toFixed(2) + 's"/>');
-          p.push('<text class="ef-heatlab ef-uplab" x="' + (cx + 10) + '" y="' + ((y + y2) / 2 + 4) + '">' + sig(x.passed) + ' eaten</text>');
+          if(sel) p.push('<text class="ef-heatlab ef-uplab" x="' + (cx + 10) + '" y="' + ((y + y2) / 2 + 4) + '">' + sig(x.passed) + ' eaten</text>');
         }
         p.push('<g class="ef-lvl' + (sel ? ' sel' : '') + '" data-lv="' + i + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(lname(i) + ': absorbs ' + sig(x.inE) + ' kcal/m²/yr. Tap to see where it went.') + '"><rect class="ef-box" x="' + (cx - w / 2).toFixed(1) + '" y="' + y + '" width="' + w.toFixed(1) + '" height="40" rx="10"/>' +
           (A && A.has(eco().organisms[i]) ? art(eco().organisms[i], cx - w / 2 + 19, y + 20, 28, 'ef-o l' + i) : '') +
-          '<text class="ef-lab" x="' + (cx + 12) + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + (cx + 12) + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' captured') + '</text></g>');
+          '<text class="ef-lab" x="' + (cx + (PH ? 17 : 12)) + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + (cx + (PH ? 17 : 12)) + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' GPP') + '</text></g>');
       });
       var desc = 'Energy flow, producers at the bottom: ' + L.map(function(x, i){ return eco().organisms[i] + ' take in ' + sig(x.inE) + ', lose ' + sig(x.heat) + ' as heat' + (i < n - 1 ? ', pass ' + sig(x.passed) + ' up' : '') + ', ' + sig(x.decomp) + ' to decomposers'; }).join('; ') + ' (kcal/m²/yr).';
       var host = card.querySelector('.ef-flowfig');
@@ -252,5 +263,5 @@
     studio: { sim: true, live: '.ef-where', why: ['.ef-explain'], views: [{ sel: '.ef-pyr', label: 'Pyramids' }],
       hint: { target: '.ef-lvl', text: 'Tap a level' },
       pills: function(g){ return [{ k: 'NPP', html: g.ro(2).split(' (')[0], tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'Top level stores ' + g.ro(3).split(' (')[0], tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } });
 })();

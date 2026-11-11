@@ -804,7 +804,8 @@
       document.getElementById(id).innerHTML =
         '<div class="cf-pair__share' + (wins && gap >= 0.005 ? ' is-win' : '') + '">' +
           share.toFixed(gap > 2 ? 2 : (gap < 0.005 ? 0 : 1)) + '%</div>' +
-        '<div class="cf-pair__kcal">' + kcal.toFixed(2) + ' kcal/mol</div>' +
+        // Pass 2: the strain bars under the pair give each chair's kcal/mol; here only the share.
+        '<span class="sr-only">' + kcal.toFixed(2) + ' kcal/mol</span>' +
         '<div class="cf-pair__tag">' + tag + '</div>';
     }
     var hide = chal.on && !chal.done;
@@ -941,7 +942,7 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head">' +
           '<span>Pick a bond to rotate</span>' +
-          '<button type="button" class="tchip tchip--ghost" id="cfTorBuildToggle">Build your own &rarr;</button>' +
+          '<button type="button" class="tchip tchip--ghost" id="cfTorBuildToggle">Make your own &rarr;</button>' +
         '</div>' +
         '<div class="tseg cf-ntask" id="cfNewTask" role="group" aria-label="Newman mode">' +
           '<button type="button" data-ntask="explore" class="on" aria-pressed="true">Explore</button>' +
@@ -1120,7 +1121,7 @@
     var open = box.hidden;
     box.hidden = !open;
     this.classList.toggle('on', open);
-    this.textContent = open ? 'Hide the builder' : 'Build your own →';
+    this.textContent = open ? 'Hide the builder' : 'Make your own →';
     if(open){
       renderTorBuild();
       tor = customTorsion(custFront, custBack);
@@ -1239,8 +1240,23 @@
     angleBox.appendChild(slider);
     var snaps = root.querySelector('[data-snap]').parentNode; snaps.classList.add('cf-ls-snaps');
     angleBox.appendChild(snaps);
-    var torPick = byId('cfTorPicker'); torPick.classList.add('ls-scroll');
-    var torToggle = byId('cfTorBuildToggle'); torPick.appendChild(torToggle);
+    /* Pass 3 (cleanup 2026-11-11): the nine molecules are one select; the
+       chips stay (hidden) and the select clicks them, so every path the chips
+       had is the same. "Build your own" sits beside it. */
+    var torChips = byId('cfTorPicker'); torChips.classList.add('cf-chips-off');
+    var torToggle = byId('cfTorBuildToggle');
+    var torPick = mk('cf-ls-mol', '<p class="ls-lbl"><label for="cfTorSel">Molecule</label></p>');
+    var torSel = document.createElement('select'); torSel.id = 'cfTorSel'; torSel.className = 'tselect';
+    torSel.innerHTML = TORSIONALS.map(function(t){ return '<option value="' + esc(t.id) + '">' + esc(t.name) + '</option>'; }).join('') +
+      '<option value="" hidden>Your own</option>';
+    torSel.addEventListener('change', function(){
+      var b = torChips.querySelector('.tchip[data-id="' + torSel.value + '"]');
+      if(!b) return;
+      if(!byId('cfTorBuild').hidden) torToggle.click();
+      b.click();
+    });
+    var torRow = mk('cf-ls-molrow'); torRow.appendChild(torSel); torRow.appendChild(torToggle);
+    torPick.appendChild(torRow); torPick.appendChild(torChips);
     var chairPics = mk('cf-ls-chairs');
     chairPics.appendChild(root.querySelector('.cf-pair')); chairPics.appendChild(byId('cfMeter')); chairPics.appendChild(byId('cfFlipSay'));
     var chairTask = byId('cfChairTask'); var taskBox = mk('cf-ls-task'); taskBox.appendChild(chairTask);
@@ -1272,6 +1288,9 @@
     // Predict first: the question and its buttons replace the slider until answered.
     if(lsAngle) lsAngle.hidden = nq.on && !nq.done;
     var tp = document.getElementById('cfTorPicker'); if(tp) tp.hidden = nq.on;
+    var tw = tp && tp.closest('.cf-ls-mol'); if(tw) tw.hidden = nq.on;
+    var tsel = document.getElementById('cfTorSel');
+    if(tsel){ var onChip = tp.querySelector('.tchip.on'); tsel.value = onChip ? onChip.getAttribute('data-id') : ''; }
     if(nq.on){
       var okq = nq.done && nq.pick !== null && nqSame(nq.pick);
       studio.caption(nq.done ? '<b>' + (nq.pick === null ? 'The answer is on the curve.' : okq ? 'Right.' : 'Not that one.') + '</b> Green is where it sits' + (nq.pick !== null && !okq ? ', red is your pick' : '') + '. Why? has the reasoning.'
@@ -1298,7 +1317,7 @@
     var subs = ring.filter(Boolean).length;
     var w = document.querySelector('#cfChairReadout details'); if(w){ w.open = true; w.classList.add('cf-ls-open'); }
     // "detailed below" meant the panel under it; that reading is in Why now.
-    var tag = document.querySelector('#cfCapA .cf-pair__tag'); if(tag && /detailed below/.test(tag.textContent)) tag.textContent = 'this chair, detailed in Why';
+    var tag = document.querySelector('#cfCapA .cf-pair__tag'); if(tag && /detailed below/.test(tag.textContent)) tag.textContent = 'this chair';
     var el = document.getElementById('cfChal');
     ls.verdict.innerHTML = '';
     var pills = [], cap;

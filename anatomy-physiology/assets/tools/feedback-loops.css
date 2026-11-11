@@ -386,3 +386,16 @@ a.fl-tag:hover{text-decoration:underline;}
 @media (max-width:999.98px){ .fl-ls .fl-slots{--gx:20px;--gy:14px;} .fl-ls .fl-r-response::after{height:calc(var(--gy) + 27px);} .fl-ls .fl-r-response::before{bottom:calc(100% + var(--gy) + 27px - 6px);} }
 /* the phone ring has 12px gaps: a thinner stroke keeps the arrowheads inside them */
 .anp-fig .fl-ring.fl-ph .causes,.anp-fig .fl-ring.fl-ph [data-from].is-lit .causes{stroke-width:1.3;}
+
+/* Pass 2 (2026-11-10): on landing the ring shows the seven part names only; a part's words appear when the
+   signal first reaches it (or it is cut) and stay until Reset. */
+.fl-ring .fl-node .fl-svg-t{transition:opacity .3s;}
+.fl-ring .fl-node:not(.is-seen):not(.is-cut) .fl-svg-t{opacity:0;}
+@media (prefers-reduced-motion: reduce){ .fl-ring .fl-node .fl-svg-t{transition:none;} }
+/* Pass 3 (docs/tool-review/pass3/anatomy-physiology.md): the stimulus box is ready, the rest wait dimmed until the
+   signal reaches them; "acts on the variable" appears once the response has acted. */
+.fl-ring [data-k]{opacity:.6;}
+.fl-ring [data-k="stimulus"],.fl-ring [data-k].is-seen{opacity:1;}
+.fl-ring [data-k="stimulus"]:not(.is-seen) .fl-card-bg{stroke-width:3;fill:color-mix(in srgb, var(--ink) 7%, var(--paper));}
+.fl-ring .fl-actson{opacity:0;transition:opacity .3s;}
+.fl-ring [data-k="response"].is-seen ~ .fl-actson{opacity:1;}

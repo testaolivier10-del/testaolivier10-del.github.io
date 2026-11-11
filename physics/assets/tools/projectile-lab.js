@@ -357,6 +357,7 @@
       var Lb = Ls[Ls.length - 1].L, ax = X(0) + Math.cos(M.rad(Lb.angle)) * cs * 1.2, ay = Y(Lb.h) - Math.sin(M.rad(Lb.angle)) * cs * 1.2;
       p.push('<circle class="pl-grab pl-aim" cx="' + ax.toFixed(1) + '" cy="' + ay.toFixed(1) + '" r="22" tabindex="0" role="slider" aria-label="Aim: drag to set the launch angle, or use the arrow keys" aria-valuemin="-30" aria-valuemax="90" aria-valuenow="' + st.angle + '" aria-valuetext="' + st.angle + ' degrees"/>');
       if(st.view === 'launch' || st.view === 'compare') p.push('<rect class="pl-grab pl-hgt" x="' + Math.max(2, X(0) - cs * 0.6 - 44).toFixed(1) + '" y="' + (Y(Lb.h) - 6).toFixed(1) + '" width="40" height="16" rx="6" tabindex="0" role="slider" aria-label="Cliff height: drag up or down, or use the arrow keys" aria-valuemin="0" aria-valuemax="50" aria-valuenow="' + st.h + '" aria-valuetext="' + st.h + ' meters"/>' +
+        '<text class="pl-hgt-t" x="' + (X(0) - cs * 0.6 - 24).toFixed(1) + '" y="' + (Y(Lb.h) - 12).toFixed(1) + '" text-anchor="middle">height</text>' +
         '<path class="pl-hgt-i" d="M' + (X(0) - cs * 0.6 - 30).toFixed(1) + ' ' + (Y(Lb.h) - 1).toFixed(1) + 'l6 -5 6 5M' + (X(0) - cs * 0.6 - 30).toFixed(1) + ' ' + (Y(Lb.h) + 5).toFixed(1) + 'l6 5 6 -5"/>' +
         // An invisible 48 x 44 touch target over the 40 x 16 cliff handle (docs/tools-phone-pass.md).
         '<rect class="pl-hgt-hit" x="' + Math.max(0, X(0) - cs * 0.6 - 48).toFixed(1) + '" y="' + (Y(Lb.h) - 20).toFixed(1) + '" width="48" height="44" aria-hidden="true"/>');
@@ -483,7 +484,8 @@
       else {
         var Ls = launches(), L = Ls[Ls.length - 1].L, tq = clamp(st.t, 0, L.T), q2 = L.at(tq);
         left.push({ k: 't', html: F(st.t, 2) + ' s', tone: 'readout' });
-        if(Ls.length === 1) left.push({ k: 'v<sub>x</sub>', html: F(q2.vx, 1), tone: 'readout' }, { k: 'v<sub>y</sub>', html: F(q2.vy, 1) + ' m/s', tone: 'readout' });
+        // Pass 3: two numbers, t and the speed (vx and vy stay as the arrows on the ball and in Numbers).
+        if(Ls.length === 1) left.push({ k: 'speed', html: F(Math.sqrt(q2.vx * q2.vx + q2.vy * q2.vy), 1) + ' m/s', tone: 'readout' });
         if(st.flown && st.rate < 0.99) right.push({ html: 'Slow motion ×' + F(st.rate, 2), tone: 'ghost' });
       }
       var narrow = false; try{ narrow = matchMedia('(max-width: 599.98px)').matches; }catch(e){}

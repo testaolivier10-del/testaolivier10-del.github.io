@@ -136,5 +136,5 @@
     studio: { dock: ['.hw-sl'], stageAlso: ['.hw-key'], hint: { target: '.sk-grip', text: 'Drag the corner' },
       caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : '<b>p = ' + g.ro(0) + ', q = ' + g.ro(1) + '.</b> Each square’s area is a genotype’s frequency.'; },
       pills: function(g){ return [{ k: 'p', html: g.ro(0), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'AA ' + g.ro(2) + ' · Aa ' + g.ro(3) + ' · aa ' + g.ro(4), tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } }); // pass 2: the square already shows AA, Aa and aa (the frequencies stay in Details)
 })();

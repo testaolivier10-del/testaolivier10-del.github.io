@@ -1,6 +1,7 @@
 /* Cost Curve Lab page (docs/apmicro-spec.md section 6). OWNED BY THIS TOOL ONLY
    (builder T2). The model is ApMicroMath.costLab (tools/math/cost-lab.js);
-   every curve is drawn by ApMicroGraph (the `costs` kind, mic-graph.js), every
+   every curve comes from ApMicroGraph's `costs` model (G.curves and G.y,
+   mic-graph.js), drawn here on a dollar scale that grows with the sliders, every
    table cell is computed by ApMicroCalc, and every graph step of Test
    yourself is graded by ApMicroGrade.graph.
 
@@ -25,7 +26,7 @@
   var app = document.getElementById('app');
   if(!T || !CL || !G || !app) return;
   if(CL.stub){ app.innerHTML = '<p class="mic-soon">This trainer is being built. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>'; return; }
-  var esc = T.esc, px = G.px, py = G.py, money = CL.money, m0 = CL.m0;
+  var esc = T.esc, money = CL.money, m0 = CL.m0, clipN = 0;
   function f1(v){ return Math.round(v * 10) / 10; }
   function reduced(){ return T.reduced ? T.reduced() : false; }
   function ease(t){ return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
@@ -58,10 +59,10 @@
     var st = { rows: 1, sel: 0, tfc: CL.EXPLORE.tfc, mats: 0, prev: null, from: null, k: 1, anim: null, afc: true, mins: true };
     var LS = null, sp = null;
     host.innerHTML =
-      '<figure class="cl-fig"><div class="cl-gwrap"><div class="cl-svg"></div><p class="cl-key" aria-hidden="true"><span class="cl-k cl-c-MC">MC</span><span class="cl-k cl-c-ATC">ATC</span><span class="cl-k cl-c-AVC">AVC</span><span class="cl-k cl-c-AFC">AFC</span><span class="cl-k cl-k-dot">dots: the table’s rows</span></p></div>' +
+      '<figure class="cl-fig"><div class="cl-gwrap"><div class="cl-svg"></div></div>' +
         '<div class="cl-side"><div class="cl-tablewrap" tabindex="-1"></div><div class="cl-card"></div></div>' +
         '<figcaption class="sr-only cl-live"></figcaption></figure>' +
-      '<div class="cl-ctl"><div class="cl-hire-row"><button type="button" class="btn-press sm cl-hire">Hire worker 1</button><button type="button" class="bt-btn cl-all">Fill every row</button></div><div class="cl-sliders"></div></div>' +
+      '<div class="cl-ctl"><div class="cl-hire-row"><button type="button" class="btn-press sm cl-hire">Hire worker 1</button><button type="button" class="bt-btn cl-all">Fill every row</button></div><div class="cl-sliders" hidden></div></div>' +
       '<div class="cl-say"></div><div class="cl-nums"></div>' +
       T.moreHtml('<div class="bt-radio"><input type="checkbox" id="cl-afc" checked><label for="cl-afc">Draw AFC (average fixed cost)</label></div>' +
         '<div class="bt-radio"><input type="checkbox" id="cl-min" checked><label for="cl-min">Mark the lowest points of AVC and ATC</label></div>' +
@@ -69,7 +70,7 @@
         '<p class="bt-small">Tap a row of the table (or use the up and down arrow keys on it) to see its arithmetic and its points on the graph.</p>', 'curves to draw, start over');
     var fig = host.querySelector('.cl-fig'), svgEl = host.querySelector('.cl-svg'), tw = host.querySelector('.cl-tablewrap'), card = host.querySelector('.cl-card');
     var say = T.announcer(host.querySelector('.cl-live')), sayEl = host.querySelector('.cl-say'), numsEl = host.querySelector('.cl-nums');
-    var hire = host.querySelector('.cl-hire'), all = host.querySelector('.cl-all');
+    var hire = host.querySelector('.cl-hire'), all = host.querySelector('.cl-all'), sliders = host.querySelector('.cl-sliders');
     var sF = T.slider({ label: 'Fixed cost (rent, a day)', min: 40, max: 160, step: 10, value: st.tfc, unit: '', decimals: 0, onInput: function(v){ change(v, st.mats); } });
     var sM = T.slider({ label: 'Materials per unit of output', min: 0, max: 3, step: 0.5, value: 0, decimals: 2, onInput: function(v){ change(st.tfc, v); } });
     [sF, sM].forEach(function(s){ s.el.querySelector('output').classList.add('cl-out'); });
@@ -86,57 +87,113 @@
     function tbl(){ return CL.table({ tfc: st.tfc, mats: st.mats }); }
     function offs(){ return CL.offsets(st.tfc, st.mats); }
 
-    /* -------- the graph: ApMicroGraph's costs curves, plus the table's points */
+    /* -------- the graph: ApMicroGraph's cost curves (the `costs` model, G.curves
+       and G.y, so the table's rows land on them), drawn here at a size of their own
+       with a dollar scale: the price axis grows with the sliders, so a costly firm's
+       MC and ATC stay on the graph (tools review 2026-11-10). One graph unit is $1
+       of cost a unit and 10 units of output. */
+    function topOf(tfc, mats){
+      // the highest point of any row of the whole table (all 8 workers), so the scale never jumps while hiring
+      var t = CL.table({ tfc: tfc, mats: mats }), hi = 10;
+      for(var i = 1; i < t.tp.length; i++) ['mc', 'atc', 'avc'].forEach(function(k){ if(t[k][i] != null) hi = Math.max(hi, t[k][i]); });
+      return 2 * Math.ceil((hi + 0.8) / 2);
+    }
+    function dims(){
+      // a phone (the figure is one column): a shorter, wider graph; else a tall one beside the table
+      var narrow = fig && fig.clientWidth > 0 && fig.clientWidth < 760;
+      return narrow ? { W: 400, H: 352, L: 88, R: 44, T: 26, B: 52, fs: 13, narrow: true } : { W: 470, H: 520, L: 78, R: 54, T: 30, B: 46, fs: 13, narrow: false };
+    }
     function graphSvg(t){
       var now = offs(), base = st.prev || now, k = st.anim ? st.k : 1;
-      var shifts = {}, start = {};
-      ['MC', 'ATC'].forEach(function(c){ start[c] = base[c]; var d = (now[c] - base[c]) * k; if(Math.abs(d) > 1e-6) shifts[c] = d; });
+      var shifts = {}, start = {}, moved = false;
+      ['MC', 'ATC'].forEach(function(c){ start[c] = base[c]; var d = (now[c] - base[c]) * k; if(Math.abs(d) > 1e-6){ shifts[c] = d; moved = true; } });
       var spec = { kind: 'costs', afc: st.afc, start: start };
-      var label = 'Cost curves of the firm: ' + G.describe(spec, { shifts: shifts }) + ' ' + st.rows + ' of 8 workers hired.' + (st.mins ? ' Marginal cost crosses AVC and ATC at their lowest points.' : '');
-      // On a phone the faded curves go unlabeled: six labels crowd the top right (launch review).
-      var narrow = svgEl && svgEl.clientWidth > 0 && svgEl.clientWidth < 480;
-      var svg = G.svg(spec, { shifts: shifts, focus: st.focus, oldLabels: !narrow, curveN: narrow ? '' : null }, { label: label });
-      svg = svg.replace(/<g class="mic-gr-c" data-curve="(\w+)">/g, '<g class="mic-gr-c cl-g-$1" data-curve="$1">').replace(/(<text class="mic-gr-clabel )(?!is-old)/g, '$1');
-      // tag each live curve label with its curve's color, in drawing order
-      var order = []; svg.replace(/data-curve="(\w+)"/g, function(_, c){ order.push(c); return _; });
-      var n = 0; svg = svg.replace(/<\/g><text class="mic-gr-clabel /g, function(m){ var c = order[n++]; return '</g><text class="mic-gr-clabel cl-t-' + c + ' '; });
-      var x = [], xmax = t.tp[st.rows - 1] / 10, live = G.curves(spec, shifts);
-      // the stretch the table has reached, solid; the rest of each curve stays faint
-      if(xmax > 0){
-        x.push('<defs><clipPath id="cl-reach"><rect x="' + px(0) + '" y="0" width="' + f1(px(xmax) - px(0)) + '" height="300"/></clipPath></defs>');
-        live.forEach(function(c){ var m = new RegExp('<g class="mic-gr-c cl-g-' + c.id + '" data-curve="' + c.id + '"><path class="mic-gr-curve[^"]*" d="([^"]+)"').exec(svg); if(m) x.push('<path class="cl-reach cl-s-' + c.id + '" clip-path="url(#cl-reach)" d="' + m[1] + '"/>'); });
-        x.push('<path class="cl-front" d="M' + f1(px(xmax)) + ' ' + py(10) + 'V' + py(0) + '"/>');
+      var D = dims(), PWd = D.W - D.L - D.R, PHd = D.H - D.T - D.B;
+      var yTop = st.top0 != null && st.anim ? st.top0 + (topOf(st.tfc, st.mats) - st.top0) * k : topOf(st.tfc, st.mats);
+      var X = function(x){ return D.L + x / 10 * PWd; }, Y = function(v){ return D.T + (yTop - v) / yTop * PHd; };
+      var live = G.curves(spec, shifts), old = moved ? G.curves(spec, {}) : [];
+      var out = [], uid = 'cl' + (++clipN);
+      var label = 'Cost curves of the firm, cost per unit in dollars from $0 to $' + Math.round(yTop) + ' against output from 0 to 100 units: ' + G.describe(spec, { shifts: shifts }) + ' ' + st.rows + ' of 8 workers hired.' + (st.mins ? ' Marginal cost crosses AVC and ATC at their lowest points.' : '');
+      function path(c, x0, x1){
+        var pts = [];
+        for(var x = Math.max(0, x0); x <= x1 + 1e-9; x += 0.04){ var v = G.y(c, x); if(v == null || !isFinite(v)) continue; pts.push(f1(X(x)) + ' ' + f1(Y(Math.min(v, yTop * 1.6)))); }
+        return pts.length > 1 ? 'M' + pts.join('L') : '';
       }
+      // grid and dollar ticks
+      var step = yTop > 16 ? 4 : 2, g = [], lab = [];
+      for(var v = 0; v <= yTop + 1e-9; v += step) g.push('<path class="cl-grid" d="M' + D.L + ' ' + f1(Y(v)) + 'H' + (D.L + PWd) + '"/>');
+      for(var q = 10; q <= 100; q += 10) g.push('<path class="cl-grid" d="M' + f1(X(q / 10)) + ' ' + D.T + 'V' + (D.T + PHd) + '"/>');
+      out.push(g.join(''));
+      // P_SD and P_BE: the two key prices, as tags on the price axis
+      var tags = [], A = G.named(spec, shifts, 'min-avc'), B = G.named(spec, shifts, 'min-atc');
+      var reach = t.tp[st.rows - 1] / 10 + 0.05;
       if(st.mins){
-        var A = G.named(spec, shifts, 'min-avc'), B = G.named(spec, shifts, 'min-atc');
-        [[A, 'AVC', 'Shutdown: min AVC'], [B, 'ATC', 'Break-even: min ATC']].forEach(function(q){
-          if(!q[0] || q[0][1] > 9.8) return;
-          var X = px(q[0][0]), Y = py(q[0][1]);
-          x.push('<circle class="cl-min cl-s-' + q[1] + '" cx="' + f1(X) + '" cy="' + f1(Y) + '" r="7"/>');
-          x.push('<path class="cl-minguide" d="M' + px(0) + ' ' + f1(Y) + 'H' + f1(X) + '"/>');
-        });
-        if(A && B){
-          // the two key prices on the price axis, kept apart
-          var ya = py(A[1]), yb = py(B[1]); if(ya - yb < 12){ var mid = (ya + yb) / 2; ya = mid + 6; yb = mid - 6; }
-          x.push('<text class="cl-amark cl-t-AVC" x="' + (G.BOX.L - 4) + '" y="' + f1(ya + 4) + '" text-anchor="end">P<tspan dy="3" class="mic-gr-sub">SD</tspan></text>');
-          x.push('<text class="cl-amark cl-t-ATC" x="' + (G.BOX.L - 4) + '" y="' + f1(yb + 4) + '" text-anchor="end">P<tspan dy="3" class="mic-gr-sub">BE</tspan></text>');
-          // P_BE high on the axis would touch the axis title at its top: the title moves to the foot of the axis.
-          var Bx = G.BOX; if(yb < Bx.T + 48 && ya < Bx.T + Bx.PH - 44) svg = svg.replace('transform="translate(' + (Bx.L - 34) + ' ' + Bx.T + ') rotate(-90)" text-anchor="end"', 'transform="translate(' + (Bx.L - 34) + ' ' + (Bx.T + Bx.PH) + ') rotate(-90)" text-anchor="start"');
-        }
+        if(A && reach >= A[0]) tags.push({ y: Y(A[1]), v: A[1], c: 'AVC', s: 'SD', p: A });
+        if(B && reach >= B[0]) tags.push({ y: Y(B[1]), v: B[1], c: 'ATC', s: 'BE', p: B });
+        if(tags.length === 2 && tags[0].y - tags[1].y < 17){ var mid = (tags[0].y + tags[1].y) / 2; tags[0].ty = mid + 8.5; tags[1].ty = mid - 8.5; }
       }
+      for(v = 0; v <= yTop + 1e-9; v += step){
+        var yv = Y(v); if(tags.some(function(tg){ return Math.abs((tg.ty || tg.y) - yv) < 14; })) continue;
+        lab.push('<text class="cl-tick" x="' + (D.L - 7) + '" y="' + f1(yv + 4) + '" text-anchor="end">$' + v + '</text>');
+      }
+      var qSel = st.sel > 0 ? X(t.tp[st.sel] / 10) : null;
+      for(q = 0; q <= 100; q += D.narrow ? 20 : 10) if(qSel == null || Math.abs(X(q / 10) - qSel) > (D.narrow ? 34 : 30)) lab.push('<text class="cl-tick" x="' + f1(X(q / 10)) + '" y="' + (D.T + PHd + 17) + '" text-anchor="middle">' + q + '</text>');
+      lab.push('<text class="cl-axt" x="' + (D.L + PWd / 2) + '" y="' + (D.H - 6) + '" text-anchor="middle">Output (units a day)</text>');
+      lab.push('<text class="cl-axt" x="6" y="' + (D.T - 12) + '" text-anchor="start">Cost per unit ($)</text>');
+      out.push('<defs><clipPath id="' + uid + '"><rect x="' + D.L + '" y="' + (D.T - 2) + '" width="' + PWd + '" height="' + (PHd + 2) + '"/></clipPath>' +
+        '<clipPath id="' + uid + 'r"><rect x="' + D.L + '" y="' + (D.T - 2) + '" width="' + f1(Math.max(0, t.tp[st.rows - 1] / 100 * PWd)) + '" height="' + (PHd + 2) + '"/></clipPath>' +
+        '<marker id="' + uid + 'a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="cl-arrowhead"/></marker></defs>');
+      // the old curves (before a slider moved them), faded, with an arrow to the new ones
+      var plot = [];
+      old.forEach(function(c){
+        var n = G.find(live, c.id); if(!n) return;
+        var d = path(c, 0, 10); if(d) plot.push('<path class="cl-old" d="' + d + '"/>');
+        var ax = c.id === 'AFC' ? 3.2 : c.id === 'MC' ? 6.4 : 7.6, y0 = G.y(c, ax), y1 = G.y(n, ax);
+        if(y0 != null && y1 != null && Math.abs(Y(y0) - Y(y1)) > 14 && Math.max(y0, y1) < yTop) plot.push('<path class="cl-shift cl-s-' + c.id + '" marker-end="url(#' + uid + 'a)" d="M' + f1(X(ax)) + ' ' + f1(Y(y0) + (y1 > y0 ? -3 : 3)) + 'V' + f1(Y(y1) + (y1 > y0 ? 6 : -6)) + '"/>');
+      });
+      // each curve: faint over its whole length, solid over the stretch the table has reached
+      var xmax = t.tp[st.rows - 1] / 10;
+      live.forEach(function(c){
+        var d = path(c, 0, 10); if(!d) return;
+        plot.push('<path class="cl-faint cl-s-' + c.id + '" d="' + d + '"/>');
+        if(xmax > 0) plot.push('<path class="cl-reach cl-s-' + c.id + '" clip-path="url(#' + uid + 'r)" d="' + d + '"/>');
+      });
+      if(xmax > 0) plot.push('<path class="cl-front" d="M' + f1(X(xmax)) + ' ' + D.T + 'V' + (D.T + PHd) + '"/>');
+      tags.forEach(function(tg){
+        plot.push('<path class="cl-minguide" d="M' + D.L + ' ' + f1(tg.y) + 'H' + f1(X(tg.p[0])) + '"/><circle class="cl-min cl-s-' + tg.c + '" cx="' + f1(X(tg.p[0])) + '" cy="' + f1(tg.y) + '" r="8"/>');
+      });
       // the table's rows as points (MC between two rows, at the middle of the step)
       for(var i = 1; i < st.rows; i++){
-        var q = t.tp[i] / 10, on = i === st.sel;
-        [['ATC', t.atc[i], q], ['AVC', t.avc[i], q], ['AFC', st.afc ? t.afc[i] : null, q], ['MC', t.mc[i], (t.tp[i - 1] + t.tp[i]) / 20]].forEach(function(d){
-          if(d[1] == null || d[1] > 10) return;
-          x.push('<circle class="cl-dot cl-f-' + d[0] + (on ? ' is-sel' : '') + '" cx="' + f1(px(d[2])) + '" cy="' + f1(py(d[1])) + '" r="' + (on ? 5.5 : 3.6) + '"/>');
+        var qq = t.tp[i] / 10, on = i === st.sel;
+        [['ATC', t.atc[i], qq], ['AVC', t.avc[i], qq], ['AFC', st.afc ? t.afc[i] : null, qq], ['MC', t.mc[i], (t.tp[i - 1] + t.tp[i]) / 20]].forEach(function(dd){
+          if(dd[1] == null || dd[1] > yTop) return;
+          plot.push('<circle class="cl-dot cl-f-' + dd[0] + (on ? ' is-sel' : '') + '" cx="' + f1(X(dd[2])) + '" cy="' + f1(Y(dd[1])) + '" r="' + (on ? 6.5 : 4.2) + '"/>');
         });
       }
+      out.push('<g clip-path="url(#' + uid + ')">' + plot.join('') + '</g>');
+      out.push('<path class="cl-axis" d="M' + D.L + ' ' + D.T + 'V' + (D.T + PHd) + 'H' + (D.L + PWd) + '"/>');
+      out.push(lab.join(''));
+      tags.forEach(function(tg){
+        out.push('<text class="cl-amark cl-t-' + tg.c + '" x="' + (D.L - 7) + '" y="' + f1((tg.ty || tg.y) + 4) + '" text-anchor="end">P<tspan dy="3" class="cl-sub">' + tg.s + '</tspan><tspan dy="-3"> ' + money(tg.v) + '</tspan></text>');
+      });
       if(st.sel > 0){
-        var qs = t.tp[st.sel] / 10;
-        x.push('<path class="cl-selq" d="M' + f1(px(qs)) + ' ' + py(10) + 'V' + py(0) + '"/><text class="cl-qmark" x="' + f1(px(qs)) + '" y="' + (G.BOX.T + G.BOX.PH + 13) + '" text-anchor="middle">' + t.tp[st.sel] + '</text>');
+        var qs = t.tp[st.sel] / 10, xs = X(qs);
+        out.push('<path class="cl-selq" d="M' + f1(xs) + ' ' + D.T + 'V' + (D.T + PHd) + '"/>');
+        var tw0 = String(t.tp[st.sel]).length * 8 + 42;
+        out.push('<g class="cl-qtag"><rect x="' + f1(xs - tw0 / 2) + '" y="' + (D.T + PHd + 4) + '" width="' + tw0 + '" height="19" rx="9.5"/><text x="' + f1(xs) + '" y="' + (D.T + PHd + 18) + '" text-anchor="middle">Q = ' + t.tp[st.sel] + '</text></g>');
       }
-      return svg.replace('</svg>', x.join('') + '</svg>');
+      // curve names at the right end of what is drawn, kept apart
+      var names = live.map(function(c){
+        var px0 = null;
+        for(var x = 10; x >= 0.3; x -= 0.02){ var vv = G.y(c, x); if(vv != null && vv <= yTop * 0.985 && vv >= 0){ px0 = [x, vv]; break; } }
+        return px0 && { id: c.id, x: X(px0[0]), y: Y(px0[1]) };
+      }).filter(Boolean).sort(function(a, b){ return a.y - b.y; });
+      for(var n = 1; n < names.length; n++) if(names[n].y - names[n - 1].y < 16) names[n].y = names[n - 1].y + 16;
+      names.forEach(function(nm){
+        var right = nm.x > D.L + PWd - 30;
+        out.push('<text class="cl-cname cl-t-' + nm.id + '" x="' + f1(right ? D.L + PWd + 5 : nm.x + 6) + '" y="' + f1(Math.max(D.T + 10, nm.y + 4)) + '">' + nm.id + '</text>');
+      });
+      return '<svg class="cl-graph" viewBox="0 0 ' + D.W + ' ' + D.H + '" role="img" aria-label="' + esc(label) + '" style="font-size:' + D.fs + 'px">' + out.join('') + '</svg>';
     }
     function tableHtml(t){
       return '<table class="cl-table"><caption>The firm’s cost table (wage $' + t.wage + ' a day' + (st.mats ? ', materials ' + money(st.mats) + ' a unit' : '') + ')</caption><thead><tr>' +
@@ -149,7 +206,7 @@
     }
     function cardHtml(t){
       var i = st.sel;
-      var order = ['mc', 'avc', 'atc', 'afc', 'mp', 'tvc', 'tc', 'tfc'];
+      var order = ['mc', 'avc', 'atc', 'afc'];
       var cells = order.map(function(k){ return COLS.filter(function(c){ return c.k === k; })[0]; }).map(function(c){ var v = cellText(t, c, i); return '<div class="cl-cc ' + (c.curve ? 'cl-c-' + c.curve : '') + '"><span class="cl-cc-k">' + c.h + '</span><span class="cl-cc-v">' + (v || '·') + '</span></div>'; }).join('');
       return '<div class="cl-card-head"><button type="button" class="bt-btn cl-prev" aria-label="Previous row"' + (i <= 0 ? ' disabled' : '') + '>‹</button><p class="cl-card-t"><b>' + t.labor[i] + (t.labor[i] === 1 ? ' worker' : ' workers') + '</b>, Q = ' + t.tp[i] + '</p><button type="button" class="bt-btn cl-next" aria-label="Next row"' + (i >= st.rows - 1 ? ' disabled' : '') + '>›</button></div><div class="cl-cards">' + cells + '</div>';
     }
@@ -157,6 +214,13 @@
       if(i === 0) return 'With no workers the firm makes nothing, but it still pays its fixed cost of ' + m0(t.tfc) + ': TC = TFC.';
       var dq = t.tp[i] - t.tp[i - 1], dtc = t.tc[i] - t.tc[i - 1];
       return '<b>Worker ' + i + '</b> adds ' + dq + ' units (MP). MC = ΔTC ÷ ΔQ = ' + m0(dtc) + ' ÷ ' + dq + ' = <b>' + money(t.mc[i]) + '</b>. AVC = ' + m0(t.tvc[i]) + ' ÷ ' + t.tp[i] + ' = ' + money(t.avc[i]) + ', ATC = ' + m0(t.tc[i]) + ' ÷ ' + t.tp[i] + ' = ' + money(t.atc[i]) + '.';
+    }
+    /* The caption under the tabs: one short line (the arithmetic of AVC and ATC is in Explanation). */
+    function shortWords(t, i){
+      if(st.note) return st.note;
+      if(i === 0) return 'No workers, no output, but the fixed cost of ' + m0(t.tfc) + ' is still paid.';
+      var dq = t.tp[i] - t.tp[i - 1], dtc = t.tc[i] - t.tc[i - 1], up = i > 1 && t.mc[i] >= t.atc[i - 1];
+      return '<b>Worker ' + i + '</b> adds ' + dq + ' units: MC = ' + m0(dtc) + ' ÷ ' + dq + ' = <b>' + money(t.mc[i]) + '</b>.' + (i > 1 ? ' MC is ' + (up ? 'above ATC, so ATC rises.' : 'below ATC, so ATC falls.') : '');
     }
     function draw(){
       var t = tbl();
@@ -166,6 +230,9 @@
         card.innerHTML = cardHtml(t);
         hire.textContent = st.rows >= t.labor.length ? 'All 8 workers hired' : 'Hire worker ' + st.rows;
         hire.disabled = all.disabled = st.rows >= t.labor.length;
+        // One question at a time: hire first; once every row is on the graph, the two cost sliders take the buttons' place.
+        hire.parentNode.hidden = st.rows >= t.labor.length;
+        sliders.hidden = st.rows < t.labor.length;
         words(t);
       }
     }
@@ -184,7 +251,7 @@
       body.push('A fixed cost (the rent slider) moves ATC and AFC only. A cost on every unit (the materials slider) moves MC, AVC and ATC up by that amount.');
       T.explain(sayEl, head, '<ol class="ls-steps">' + body.map(function(b){ return '<li><span>' + b + '</span></li>'; }).join('') + '</ol>');
       nums(t);
-      if(LS){ LS.caption(head, 'explore'); if(sp) sp.open(); }
+      if(LS){ LS.caption(shortWords(t, i), 'explore'); if(sp) sp.open(); }
       say(String(head).replace(/<[^>]+>/g, ''));
     }
     function nums(t){
@@ -202,13 +269,14 @@
       if(st.rows >= t.labor.length) return;
       cue.done(); st.note = '';
       st.rows = Math.min(t.labor.length, st.rows + (n || 1)); st.sel = st.rows - 1; st.fresh = true;
+      if(st.rows >= t.labor.length) st.note = 'Every row is on the graph. Now change a cost: which curves move?';
       draw(); st.fresh = false;
       if(st.rows >= t.labor.length && LS) LS.pills([{ html: 'MC crosses AVC and ATC at their minimums', tone: 'good' }], 'left', 'explore');
     }
     function change(tfc, mats){
       cue.done(); stop();
       var before = offs(), wasF = st.tfc, wasM = st.mats;
-      st.prev = before; st.tfc = tfc; st.mats = mats;
+      st.top0 = topOf(st.tfc, st.mats); st.prev = before; st.tfc = tfc; st.mats = mats;
       var moved = tfc !== wasF ? 'fixed' : mats !== wasM ? 'mats' : '';
       st.note = moved === 'fixed' ? '<b>Fixed cost ' + (tfc > wasF ? 'up' : 'down') + ' to $' + tfc + ':</b> ATC and AFC shift ' + (tfc > wasF ? 'up' : 'down') + '. MC and AVC do not move: a fixed cost adds nothing to the cost of one more unit.'
         : moved === 'mats' ? '<b>Materials ' + money(mats) + ' a unit:</b> every unit costs ' + money(Math.abs(mats - wasM)) + (mats > wasM ? ' more' : ' less') + ', so MC, AVC and ATC all shift ' + (mats > wasM ? 'up' : 'down') + '. AFC does not move.' : '';
@@ -238,7 +306,8 @@
       if(d){ e.preventDefault(); select(i + d, true); }
     });
     card.addEventListener('click', function(e){ if(e.target.closest('.cl-prev')) select(st.sel - 1); if(e.target.closest('.cl-next')) select(st.sel + 1); });
-    function fit(){ fig.classList.toggle('is-narrow', fig.clientWidth > 0 && fig.clientWidth < 760); }
+    var wasNarrow = null;
+    function fit(){ var n = fig.clientWidth > 0 && fig.clientWidth < 760; fig.classList.toggle('is-narrow', n); if(wasNarrow !== null && n !== wasNarrow && !st.anim) svgEl.innerHTML = graphSvg(tbl()); wasNarrow = n; }
     if(window.ResizeObserver) new ResizeObserver(fit).observe(fig);
     window.addEventListener('resize', fit);
 

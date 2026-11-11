@@ -51,7 +51,10 @@
 .ml-zone{fill:var(--ml-acc-fill);}
 :root[data-theme="dark"] .ml-zone{fill:rgba(140,200,232,.07);}
 .ml-zt{fill:var(--ml-acc);font-weight:900;font-size:12.5px;letter-spacing:.02em;}
-.ml-now{fill:var(--ml-acc);fill-opacity:.12;stroke:var(--ml-acc);stroke-width:1.5;}
+.ml-now{fill:var(--ml-acc);}
+.ml-you.is-now{stroke:var(--ml-acc);stroke-width:3;}
+.ml-you.is-seen{stroke:var(--ml-acc);stroke-opacity:.45;}
+.ml-word.is-ready{fill:var(--muted);}
 .ml-imm{fill:none;stroke:var(--ml-acc);stroke-width:3;stroke-linejoin:round;}
 .ml-imm-pt{fill:var(--ml-acc);stroke:var(--white);stroke-width:1.5;}
 .ml-del{fill:none;stroke:var(--ml-alt);stroke-width:3;stroke-dasharray:7 5;stroke-linejoin:round;}
@@ -102,3 +105,23 @@
 /* Room for the first-run tip while it shows (hintSlot). */
 /* The primary row sits in the dock's flow (not stuck to the screen's foot), so the first-run tip above it never covers the scene switch. */
 .ls-dock .ml-go{position:static !important;box-shadow:none !important;}
+/* list: before the result */
+.ml-empty{fill:var(--ink);font-weight:800;font-size:15px;}
+/* interference: the recall going wrong */
+.ml-recbg{fill:color-mix(in srgb, var(--ml-alt) 3%, var(--white));stroke:var(--line);stroke-width:1.5;}
+.ml-ask{fill:var(--ink);font-weight:800;font-size:14px;}
+.ml-person .ml-p-shirt{fill:var(--ml-acc);stroke:var(--ink);stroke-width:2.5;}
+.ml-person .ml-p-skin{fill:#D9A37A;stroke:#5B3A1E;stroke-width:2.5;}
+.ml-person .ml-p-hair{fill:#3B2A20;}
+.ml-person .ml-p-eye{fill:#2B1D14;}
+.ml-person .ml-p-brow{fill:none;stroke:#3B2A20;stroke-width:4;stroke-linecap:round;}
+.ml-person .ml-p-mouth{fill:#6B2424;}
+.ml-think rect,.ml-think circle{fill:var(--ml-acc-tint);stroke:var(--ml-acc);stroke-width:2;stroke-dasharray:6 4;}
+.ml-said rect,.ml-said path{fill:var(--ml-alt-tint);stroke:var(--ml-alt);stroke-width:2.5;stroke-linejoin:round;}
+.ml-bk{fill:var(--ml-acc);font-weight:900;font-size:12px;}
+.ml-bk.is-intr{fill:var(--ml-alt-ink);}
+.ml-bwant{fill:var(--ml-acc);font-weight:900;}
+.ml-bintr{fill:var(--ml-alt-ink);font-weight:900;}
+@keyframes ml-fly{0%{transform:translate(var(--dx),var(--dy));opacity:.4}100%{transform:translate(0,0);opacity:1}}
+.ml-intrw.is-anim{animation:ml-fly .9s cubic-bezier(.3,.7,.3,1) both;}
+@media (prefers-reduced-motion: reduce){ .ml-intrw.is-anim{animation:none;} }

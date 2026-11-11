@@ -8,9 +8,12 @@
    units of the other per unit of it). Pick what changes: the curve it moves
    shifts in the first market and the other curve shifts the same way in the
    mirror, one currency appreciates while the other depreciates (the rates on
-   the axes are 1 / each other), and the strip under the graphs follows the
-   change to net exports and, for interest rates and policy, to financial
-   capital flows. Curves can be dragged, or moved with the arrow keys from
+   the axes are 1 / each other), and the panel under the graphs names who is
+   trading and why, then draws what the new rate does: each country's exports
+   and imports as crates (more or fewer), financial capital as notes flowing
+   toward the higher real return (interest rates and policy), and each
+   country's net exports (and AD) and capital flow. On a narrow stage the
+   panel is a third tab, Trade. Curves can be dragged, or moved with the arrow keys from
    their handles. Colors link the views: demand for X and supply of Y (the
    same trades) share one color, supply of X and demand for Y the other.
 
@@ -51,11 +54,12 @@
     var LS = null, sp = null;
     host.innerHTML =
       '<figure class="fxl-fig">' +
-        '<div class="fxl-tabs" role="group" aria-label="Which market"><button type="button" class="tchip fxl-tab on" data-p="x" aria-pressed="true"></button><button type="button" class="tchip fxl-tab" data-p="y" aria-pressed="false"></button></div>' +
+        '<div class="fxl-tabs" role="group" aria-label="Which market"><button type="button" class="tchip fxl-tab on" data-p="x" aria-pressed="true"></button><button type="button" class="tchip fxl-tab" data-p="y" aria-pressed="false"></button><button type="button" class="tchip fxl-tab" data-p="z" aria-pressed="false">Trade</button></div>' +
         '<div class="fxl-panels"><div class="fxl-panel fxl-p-x"><p class="fxl-ph"></p><div class="fxl-svg fxl-sx"></div>' +
           '<div class="fxl-handles"><button type="button" class="fxl-h" data-c="D"></button><button type="button" class="fxl-h" data-c="S"></button></div></div>' +
         '<div class="fxl-panel fxl-p-y"><p class="fxl-ph"></p><div class="fxl-svg fxl-sy"></div><p class="fxl-mirror">The mirror market: it follows the first one.</p></div></div>' +
         '<div class="fxl-strip" aria-hidden="true"></div>' +
+        '<div class="fxl-so" aria-hidden="true"></div>' +
         '<figcaption class="sr-only fxl-live"></figcaption></figure>' +
       '<div class="fxl-ctl"><div class="fxl-shockrow"></div><div class="fxl-btns"><button type="button" class="bt-btn fxl-reset">Start over</button></div></div>' +
       '<div class="fxl-say"></div><div class="fxl-nums"></div>' +
@@ -64,6 +68,7 @@
         '<p class="bt-small">You can also drag demand or supply in the first market, or tab to its handle and use the arrow keys.</p>', 'currencies, rates as numbers');
     var $ = function(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); };
     var fig = host.querySelector('.fxl-fig'), sx = host.querySelector('.fxl-sx'), sy = host.querySelector('.fxl-sy'), strip = host.querySelector('.fxl-strip');
+    var el = { so: host.querySelector('.fxl-so') };
     var say = T.announcer(host.querySelector('.fxl-live'));
     var sel = document.createElement('div');
     sel.className = 'bt-ctl bt-select fxl-shock';
@@ -127,7 +132,7 @@
       sx.innerHTML = a.svg; sy.innerHTML = b.svg;
       fig.querySelectorAll('.fxl-h').forEach(function(h){ h.classList.toggle('is-moved', Math.abs(h.getAttribute('data-c') === 'D' ? st.d : st.s) > 1e-6); });
       stripHtml(a, b);
-      if(!st.anim) words(a, b);
+      if(!st.anim){ soHtml(a, b); words(a, b); }
     }
     function valueWord(e){ return e[1] > 5 + 1e-6 ? 'up' : e[1] < 5 - 1e-6 ? 'down' : 'same'; }
     function stripHtml(a, b){
@@ -136,6 +141,61 @@
       var up = v === 'up';
       strip.innerHTML = '<span class="fxl-chip ' + (up ? 'is-up' : 'is-down') + '"><b>' + cap(n.X) + ' ' + (up ? 'appreciates ↑' : 'depreciates ↓') + '</b>' + (st.nums ? ' ' + fmtRate(a.r0) + ' → ' + fmtRate(a.r1) + '<span class="fxl-unit"> ' + pl(n.Y) + ' per ' + n.X + '</span>' : '') + '</span>' +
         '<span class="fxl-chip ' + (up ? 'is-down' : 'is-up') + '"><b>' + cap(n.Y) + ' ' + (up ? 'depreciates ↓' : 'appreciates ↑') + '</b>' + (st.nums ? ' ' + fmtRate(b.r0) + ' → ' + fmtRate(b.r1) + '<span class="fxl-unit"> ' + pl(n.X) + ' per ' + n.Y + '</span>' : '') + '</span>';
+    }
+    /* -------- so what: who trades, and what the new rate does to each
+       country's trade and to financial capital. Crates are goods, notes are
+       financial capital; the starting flow is 3 crates (2 notes), an extra
+       one is lit and a lost one is left as a dashed outline. */
+    var CRATE = '<svg class="fxl-ic" viewBox="0 0 18 16" aria-hidden="true"><rect x="1.5" y="3" width="15" height="11.5" rx="1.5"/><path d="M1.5 7.5h15M7 3v4.5M11 3v4.5"/></svg>';
+    var NOTE = '<svg class="fxl-ic" viewBox="0 0 22 14" aria-hidden="true"><rect x="1" y="1.5" width="20" height="11" rx="2"/><circle cx="11" cy="7" r="2.8"/></svg>';
+    function icons(ic, base, now, cls){
+      var h = '';
+      for(var i = 0; i < Math.max(base, now); i++) h += '<span class="fxl-i ' + cls + (i >= base ? ' is-extra' : i >= now ? ' is-gone' : '') + '">' + ic + '</span>';
+      return h;
+    }
+    function lane(dir, label, body, tone){
+      return '<div class="fxl-lane' + (tone ? ' is-' + tone : '') + '"><span class="fxl-lt">' + label + '</span><div class="fxl-track ' + dir + '">' + body + '</div></div>';
+    }
+    function soHtml(a, b){
+      var n = names(), v = valueWord(a.e), sh = st.shock && F.shock(st.shock), cp = sh ? F.capital(sh.id) : null, up = v === 'up', same = v === 'same';
+      var who;
+      if(sh) who = '<b>Who trades:</b> ' + esc(sh.t(n.H, n.Fo, n.X, n.Y)) + ' <b>' + (sh.curve === 'D' ? 'Demand for ' : 'Supply of ') + pl(n.X) + ' shifts ' + (sh.dir > 0 ? 'right' : 'left') + '.</b>' + (sh.also ? ' ' + esc(sh.also(n.H, n.Fo, n.X, n.Y)) : '');
+      else if(st.d || st.s){
+        var bits = [];
+        if(st.d) bits.push((st.d > 0 ? 'More' : 'Less') + ' buying of ' + n.H.adj + ' goods and assets: demand for ' + pl(n.X) + ' shifts ' + (st.d > 0 ? 'right' : 'left') + '.');
+        if(st.s) bits.push(cap(n.H.people) + ' buy ' + (st.s > 0 ? 'more' : 'less') + ' abroad: supply of ' + pl(n.X) + ' shifts ' + (st.s > 0 ? 'right' : 'left') + '.');
+        who = '<b>Who trades:</b> ' + esc(bits.join(' '));
+      } else who = '<b>Who trades ' + pl(n.X) + '?</b> Anyone buying ' + esc(n.H.adj) + ' goods or assets demands ' + pl(n.X) + '; ' + esc(n.H.people) + ' buying ' + esc(n.Fo.adj) + ' goods or assets supply them.';
+      var ex = same ? esc(n.H.adj) + ' exports to ' + esc(n.Fo.place) : esc(n.H.adj) + ' goods get ' + (up ? '<b>pricier</b>' : '<b>cheaper</b>') + ' for ' + esc(n.Fo.people) + ': ' + (up ? 'fewer' : 'more') + ' sold';
+      var im = same ? esc(n.Fo.adj) + ' exports to ' + esc(n.H.place) : esc(n.Fo.adj) + ' goods get ' + (up ? '<b>cheaper</b>' : '<b>pricier</b>') + ' for ' + esc(n.H.people) + ': ' + (up ? 'more' : 'fewer') + ' bought';
+      var exN = same ? 3 : up ? 2 : 4, imN = same ? 3 : up ? 4 : 2;
+      var cl, cb;
+      if(cp === 'in'){ cl = 'Financial capital flows <b>into ' + esc(n.H.place) + '</b><span class="fxl-why">: a higher real return there</span>'; cb = lane('to-l', cl, icons(NOTE, 2, 4, 'is-cash'), 'cash'); }
+      else if(cp === 'less'){ cl = '<b>Less</b> financial capital flows into ' + esc(n.H.place) + '<span class="fxl-why">: a lower real return there</span>'; cb = lane('to-l', cl, icons(NOTE, 2, 1, 'is-cash'), 'cash'); }
+      else if(cp === 'out'){ cl = 'Financial capital flows <b>out of ' + esc(n.H.place) + '</b> into ' + esc(n.Fo.place) + '<span class="fxl-why">: a higher real return there</span>'; cb = lane('to-r', cl, icons(NOTE, 2, 4, 'is-cash'), 'cash'); }
+      else { cl = 'Financial capital (bonds and other assets)' + (sh || st.d || st.s ? ': no direct change from this' : ''); cb = lane('to-n', cl, icons(NOTE, 2, 2, 'is-cash'), 'idle'); }
+      function res(home){
+        var out = [];
+        if(!same){ var fall = home ? up : !up; out.push('<span class="fxl-r ' + (fall ? 'is-down' : 'is-up') + '">Net exports ' + (fall ? 'fall ↓' : 'rise ↑') + '<small>AD shifts ' + (fall ? 'left' : 'right') + '</small></span>'); }
+        if(cp){ var w = home ? { in: 'Capital inflow', less: 'Smaller capital inflow', out: 'Capital outflow' }[cp] : { in: 'Capital outflow', less: 'Smaller capital outflow', out: 'Capital inflow' }[cp]; out.push('<span class="fxl-r is-cap">' + w + '</span>'); }
+        return out.join('');
+      }
+      // Each country: its currency's new value, then its net exports and capital flow.
+      var land = function(c, side){
+        var home = side === 'h', m = home ? a : b, cur = home ? n.X : n.Y, val = same ? '' : (home ? up : !up) ? 'up' : 'down';
+        // Pass 2: the rates already sit on the graphs' axes, so the box names only the direction.
+        return '<div class="fxl-land is-' + side + '"><b>' + esc(cap(c.place)) + '</b>' +
+          (val ? '<span class="fxl-r is-' + val + '">' + cap(cur) + (val === 'up' ? ' appreciates ↑' : ' depreciates ↓') + '</span>' : '') + res(home) + '</div>';
+      };
+      // Pass 2: on a wide stage the trade picture appears once something changes (nothing to show before).
+      fig.classList.toggle('is-idle', same && !cp && !sh && !st.d && !st.s);
+      var tz = fig.querySelector('.fxl-tab[data-p=z]');
+      if(tz) tz.classList.toggle('is-new', !same && st.panel !== 'z');
+      el.so.innerHTML = '<p class="fxl-who">' + who + '</p>' +
+        '<p class="fxl-soh">' + (same ? 'Trade and capital between them' : 'What the new exchange rate does, other things equal') + '</p>' +
+        '<div class="fxl-trade' + (same && !cp ? ' is-calm' : '') + '">' + land(n.H, 'h') +
+          '<div class="fxl-lanes">' + lane('to-r', ex, icons(CRATE, 3, exN, 'is-good'), same ? '' : up ? 'down' : 'up') + lane('to-l', im, icons(CRATE, 3, imN, 'is-good'), same ? '' : up ? 'up' : 'down') + cb + '</div>' +
+          land(n.Fo, 'f') + '</div>';
     }
     function words(a, b){
       var n = names(), sh = st.shock && F.shock(st.shock), v = valueWord(a.e), head, body = [], up = v === 'up';
@@ -147,7 +207,7 @@
       } else {
         var lead = sh ? '<b>' + esc(label(sh, n)) + ':</b> ' + (sh.curve === 'D' ? 'demand for ' : 'supply of ') + pl(n.X) + ' shifts ' + (sh.dir > 0 ? 'right' : 'left') + '. ' : '';
         head = lead + (v === 'same' ? 'The value of the ' + n.X + ' is unchanged.' : 'The ' + n.X + ' ' + (up ? 'appreciates' : 'depreciates') + ' and the ' + n.Y + ' ' + (up ? 'depreciates' : 'appreciates') + '.');
-        if(sh) body.push(esc(sh.t(n.H, n.Fo, n.X, n.Y)) + ' ' + esc(sh.l(n.H, n.Fo, n.X, n.Y)));
+        if(sh) body.push(esc(sh.t(n.H, n.Fo, n.X, n.Y)) + ' ' + esc(sh.l(n.H, n.Fo, n.X, n.Y)) + (sh.also ? ' ' + esc(sh.also(n.H, n.Fo, n.X, n.Y)) : ''));
         if(sh) body.push('In the mirror market, ' + (sh.curve === 'D' ? 'the supply of ' : 'the demand for ') + pl(n.Y) + ' shifts ' + (sh.dir > 0 ? 'right' : 'left') + ': ' + (sh.curve === 'D' ? 'to get ' + pl(n.X) + ', buyers sell ' + pl(n.Y) + '.' : 'selling ' + pl(n.X) + ' is buying ' + pl(n.Y) + '.'));
         if(v !== 'same'){
           body.push('The price of the ' + n.X + ' ' + (up ? 'rises' : 'falls') + (st.nums ? ' (from ' + fmtRate(a.r0) + ' to ' + fmtRate(a.r1) + ' ' + pl(n.Y) + ' per ' + n.X + ')' : '') + ', so the price of the ' + n.Y + ', its inverse, ' + (up ? 'falls' : 'rises') + (st.nums ? ' (from ' + fmtRate(b.r0) + ' to ' + fmtRate(b.r1) + ')' : '') + '.');
@@ -238,6 +298,7 @@
     /* -------- narrow stage: one market at a time */
     function setPanel(p){
       st.panel = p; fig.setAttribute('data-panel', p);
+      if(p === 'z'){ var tz = fig.querySelector('.fxl-tab[data-p=z]'); if(tz) tz.classList.remove('is-new'); }
       fig.querySelectorAll('.fxl-tab').forEach(function(t){ var on = t.getAttribute('data-p') === p; t.classList.toggle('on', on); t.setAttribute('aria-pressed', String(on)); });
     }
     fig.addEventListener('click', function(e){ var t = e.target.closest('.fxl-tab'); if(t) setPanel(t.getAttribute('data-p')); });

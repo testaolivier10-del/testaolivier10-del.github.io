@@ -139,7 +139,7 @@
 
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
-    var ctxs = data.contexts || [], ctx = ctxs[0], variant = 'support', seed = 11, part = 'A', view = 'earn', touched = false, LS = null, nid = T.nid('as');
+    var ctxs = data.contexts || [], ctx = ctxs[0], variant = 'support', seed = 11, part = 'A', view = '', touched = false, LS = null, nid = T.nid('as');
     var st = A.study(ctx, variant, M.rng(seed));
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem as-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Article analysis studio</h2>' +
@@ -173,7 +173,7 @@
     }
     host.addEventListener('click', onClick);
     function setPart(k, scroll){
-      part = k; view = 'earn';
+      part = k; view = '';
       sync(); card();
       var first = $('.as-paper .as-hl[data-part="' + k + '"]');
       if(scroll !== false) reveal(first);
@@ -195,7 +195,9 @@
       el.innerHTML = '<p class="as-ph"><span class="as-pl">Part ' + part + '</span> ' + esc(pp.name) + ' <span class="as-pts">' + pp.pts + (pp.pts > 1 ? ' points' : ' point') + '</span></p>' +
         '<p class="as-ask"><b>' + a.verb + '</b> ' + a.ask + '</p>' +
         '<div class="ls-seg as-flip" role="group" aria-label="Show"><button type="button" data-v="earn" aria-pressed="' + (view === 'earn') + '">Earns the point</button><button type="button" data-v="miss" aria-pressed="' + (view === 'miss') + '">A typical miss</button></div>' +
-        (view === 'earn' ? '<p class="as-ans is-earn"><span class="psy-mark ok">Earns</span> ' + P.earns + '</p>'
+        // The answer waits for a tap, so a student can try the part first (pass 3, judge b).
+        (!view ? '<p class="as-ans is-wait">Answer it in your head first, then check.</p>'
+          : view === 'earn' ? '<p class="as-ans is-earn"><span class="psy-mark ok">Earns</span> ' + P.earns + '</p>'
           : '<p class="as-ans is-miss"><span class="psy-mark no">Misses</span> ' + P.misses + '</p><p class="as-slip"><b>The slip:</b> ' + esc(P.slip) + '</p>');
       words();
     }

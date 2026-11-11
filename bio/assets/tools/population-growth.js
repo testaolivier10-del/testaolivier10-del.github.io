@@ -35,13 +35,13 @@
       '<section class="bt-card pg-card" aria-labelledby="pg-h"><h2 id="pg-h">The model</h2>' +
       '<p class="bt-first">Press Play the years and watch the population fill its space.</p>' +
       '<div class="bt-fig pg-field bt-hero"></div>' +
-      '<div class="os-play pg-play"><button type="button" class="btn-press sm" data-a="play">Play the years</button><span class="pg-evbtns"></span><p class="os-clock pg-clock" aria-hidden="true"></p></div>' +
+      '<div class="os-play pg-play"><button type="button" class="btn-press sm" data-a="play">Play the years</button><p class="os-clock pg-clock" aria-hidden="true"></p></div>' +
       '<fieldset class="bt-modes bt-more"><legend>Growth model</legend>' + MODELS.map(function(m){
         var id = 'pg-model-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="pg-model" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.model ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '<span class="pg-eq">: ' + esc(m[2]) + '</span></label></div>';
       }).join('') + '</fieldset>' +
       '<div class="bt-controls pg-main" data-primary="2"></div>' +
-      '<fieldset class="bt-ctl pg-events bt-more"><legend>Events (optional)</legend><div class="bt-controls pg-ev"></div></fieldset>' +
+      '<fieldset class="bt-ctl pg-events bt-more"><legend>Events (optional)</legend><span class="pg-evbtns"></span><div class="bt-controls pg-ev"></div></fieldset>' /* pass 2: the flood and frost buttons left the Play bar for Data & settings */ +
       '<div class="bt-controls pg-read bt-num"></div>' +
       '<div class="bt-stage two bt-num pg-graphs"><div><h3 class="pg-gh">Population size over time</h3><p class="bt-small">Drag across the graph to move the year.</p><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
       '<div><div class="bt-tabs" role="group" aria-label="Second graph">' +
@@ -193,35 +193,89 @@
       for(var i = 0; i < 600; i++) out.push([g(), g(), g()]);
       return (slots = out);
     }
+    /* Tool review 2026-11. The meadow keeps an honest density: one drawn
+       rabbit stands for the same number of individuals for the whole run
+       (logistic: the meadow is the largest K the slider allows, about 400
+       rabbits, and the fence for K is a patch of it in proportion, so a
+       full fence is equally crowded and a bigger N is always more rabbits;
+       exponential: set by the end of the run), and the rabbit size does not
+       change with N. Under the meadow a live N(t) curve grows as the
+       years play, with K dashed and the flood and frost marked where they
+       strike; a strike floods or frosts the meadow for a year. */
+    var GH = 118;
+    function perFor(sim){
+      var top = isLog() ? habitatTop() : Math.max.apply(null, sim.points.map(function(z){ return z.N; }));
+      var per = 1, steps = [1, 2, 5], k = 0, mag = 1;
+      while(top / per > (isLog() ? 400 : 300)){ k++; if(k === 3){ k = 0; mag *= 10; } per = steps[k] * mag; }
+      return per;
+    }
+    // The whole meadow is the largest K the slider allows, so a fence for a smaller K is a smaller
+    // patch at the same crowding: a bigger population is always more rabbits.
+    function habitatTop(){ return Math.max(RG.K.max, st.K, st.kc.on ? st.kc.K : 0); }
+    function evKind(e){ return /frost|cold|freeze/i.test(e.label) ? 'frost' : /flood|water|storm/i.test(e.label) ? 'flood' : 'other'; }
+    function strikes(t){ return st.events.filter(function(e){ return e.on && e.t <= t + 1e-9 && e.t > t - 1.5; }); }
+    function curveSvg(sim, t, y0){
+      var L = 44, R = 12, top = y0 + 22, bot = y0 + GH - 22, pw = FW - L - R, log = isLog();
+      var maxN = Math.max.apply(null, sim.points.map(function(z){ return Math.max(z.N, log ? z.K : 0); }));
+      var ym = axisMax(maxN), X = function(v){ return L + pw * v / st.tEnd; }, Y = function(v){ return bot - (bot - top) * Math.min(1, v / ym); }, o = [];
+      o.push('<rect class="pg-gbg" x="0" y="' + y0 + '" width="' + FW + '" height="' + GH + '" rx="12"/>');
+      o.push('<text class="pg-gt" x="10" y="' + (y0 + 15) + '">Population size N over the years</text>');
+      o.push('<line class="pg-ax" x1="' + L + '" x2="' + L + '" y1="' + top + '" y2="' + bot + '"/><line class="pg-ax" x1="' + L + '" x2="' + (L + pw) + '" y1="' + bot + '" y2="' + bot + '"/>');
+      o.push('<text class="pg-at" x="' + (L - 4) + '" y="' + (top + 4) + '" text-anchor="end">' + n0(ym) + '</text><text class="pg-at" x="' + (L - 4) + '" y="' + (bot + 3) + '" text-anchor="end">0</text>');
+      o.push('<text class="pg-at" x="' + L + '" y="' + (bot + 14) + '">year 0</text><text class="pg-at" x="' + (L + pw) + '" y="' + (bot + 14) + '" text-anchor="end">' + st.tEnd + '</text>');
+      if(log){
+        var kd = sim.points.map(function(z, i){ return (i ? 'L' : 'M') + X(z.t).toFixed(1) + ' ' + Y(z.K).toFixed(1); }).join('');
+        o.push('<path class="pg-kline" d="' + kd + '"/><text class="pg-kl" x="' + (L + pw - 2) + '" y="' + (Y(sim.points[sim.points.length - 1].K) - 4).toFixed(1) + '" text-anchor="end">K</text>');
+      }
+      st.events.forEach(function(e){ if(!e.on || e.t > st.tEnd) return; var x = X(e.t), k = evKind(e);
+        o.push('<line class="pg-evl ' + k + '" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + top + '" y2="' + bot + '"/><text class="pg-evt ' + k + '" x="' + (x + 3).toFixed(1) + '" y="' + (top + 9) + '">' + esc(e.label) + '</text>'); });
+      var pts = sim.points.filter(function(z){ return z.t <= t + 1e-9; });
+      if(pts.length){
+        o.push('<path class="pg-ncurve" d="' + pts.map(function(z, i){ return (i ? 'L' : 'M') + X(z.t).toFixed(1) + ' ' + Y(z.N).toFixed(1); }).join('') + '"/>');
+        var lp = pts[pts.length - 1]; o.push('<circle class="pg-ndot" cx="' + X(lp.t).toFixed(1) + '" cy="' + Y(lp.N).toFixed(1) + '" r="4"/>');
+      }
+      return o.join('');
+    }
     function drawField(sim, t){
       var p = Pop.at(sim, t), prev = Pop.at(sim, Math.max(0, t - 1)), log = isLog();
-      var Kmax = log ? Math.max(st.K, st.kc.on ? st.kc.K : 0) : 0;
-      var big = Math.max(p.N, Kmax, 1), per = 1;
-      while(big / per > 600) per *= 10;
-      var nDots = Math.round(p.N / per), nPrev = Math.round(prev.N / per);
-      // the habitat: K takes the whole field when K is the larger capacity; N fills a share of it
-      var area = log ? Math.min(1, p.K / per / 600 * (600 / Math.max(1, Kmax / per))) : 1;
+      var Kmax = log ? habitatTop() : 0;
+      var per = perFor(sim);
+      var nDots = Math.min(600, p.N > 0 ? Math.max(1, Math.round(p.N / per)) : 0), nPrev = Math.round(prev.N / per);
       var fw = FW * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1), fh = FH * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1);
-      var spanDots = log ? Math.max(1, Kmax / per) : Math.max(nDots, 1), cap = log ? Math.round(p.K / per) : 600;
       var sl = slotList(), out = [];
       // one rabbit drawing (ApBioArt) reused for every individual; grass tufts on the field
-      var A = window.ApBioArt, sym = A ? '<defs><symbol id="pg-rab" viewBox="-12 -12 24 24" overflow="visible">' + A.icon('rabbit', 0, 0, 24, '') + '</symbol></defs>' : '';
-      out.push(sym + '<rect class="pg-ground" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/>');
+      var A = window.ApBioArt, sym = A ? '<defs><symbol id="pg-rab" viewBox="-12 -12 24 24" overflow="visible">' + A.icon('rabbit', 0, 0, 24, '').replace('<g class="ba ', '<g style="color:inherit" class="ba ') + '</symbol></defs>' : '';
+      // pass 3: the rabbits take the rabbit brown of .pg-ind (the icon's own green read as an unknown creature); births this year are a warmer tan
+      sym += '<style>svg.pg-fieldsvg use.pg-ind.new{color:#C9853F;fill:#C9853F}:root[data-theme="dark"] svg.pg-fieldsvg use.pg-ind.new{color:#E6A866;fill:#E6A866}svg.pg-fieldsvg .pg-tagbg{fill:var(--paper);opacity:.92}</style>';
+      out.push(sym + '<clipPath id="pg-clip"><rect x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/></clipPath><rect class="pg-ground" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/>');
       if(A){ var tg = M.rng(77), tufts = ''; for(var tt = 0; tt < 26; tt++){ var tx = 8 + tg() * (FW - 16), ty = 10 + tg() * (FH - 20); tufts += 'M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l-2 -5M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l0 -6M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l2 -5'; } out.push('<path class="pg-tuft" d="' + tufts + '"/>'); }
-      if(log) out.push('<rect class="pg-fence" x="' + ((FW - fw) / 2).toFixed(1) + '" y="' + ((FH - fh) / 2).toFixed(1) + '" width="' + fw.toFixed(1) + '" height="' + fh.toFixed(1) + '" rx="10"/><text class="pg-flab" x="' + ((FW + fw) / 2 - 6).toFixed(1) + '" y="' + ((FH - fh) / 2 + 14).toFixed(1) + '" text-anchor="end">K = ' + n0(p.K) + '</text>');
-      // dots: first nDots slots, placed inside the fence (or the whole field for exponential, scaled to what is drawn)
-      var bw = log ? fw : FW, bh = log ? fh : FH;
-      for(var i = 0; i < Math.min(600, nDots); i++){
-        var q = sl[i], x = (FW - bw) / 2 + 6 + q[0] * (bw - 12), y = (FH - bh) / 2 + 6 + q[1] * (bh - 12);
-        var rs = nDots > 300 ? 8 : nDots > 120 ? 10 : 13, flip = q[2] > 0.5;
+      if(log) out.push('<rect class="pg-fence" x="' + ((FW - fw) / 2).toFixed(1) + '" y="' + ((FH - fh) / 2).toFixed(1) + '" width="' + fw.toFixed(1) + '" height="' + fh.toFixed(1) + '" rx="10"/><text class="pg-flab" x="' + ((FW + fw) / 2 - 6).toFixed(1) + '" y="' + ((FH - fh) / 2 > 18 ? (FH - fh) / 2 - 5 : (FH - fh) / 2 + 14).toFixed(1) + '" text-anchor="end">K = ' + n0(p.K) + '</text>');
+      // rabbits: the first nDots slots, inside the fence (logistic) or across the field (exponential)
+      var bw = log ? fw : FW, bh = log ? fh : FH, rs = log ? 10 : 11;
+      for(var i = 0; i < nDots; i++){
+        var q = sl[i], x = (FW - bw) / 2 + 6 + q[0] * (bw - 12), y = (FH - bh) / 2 + 6 + q[1] * (bh - 12), flip = q[2] > 0.5;
         out.push(A ? '<use href="#pg-rab" class="pg-ind' + (i >= nPrev ? ' new' : '') + '" x="' + (x - rs / 2).toFixed(1) + '" y="' + (y - rs / 2).toFixed(1) + '" width="' + rs + '" height="' + rs + '"' + (flip ? ' transform="translate(' + (2 * x).toFixed(1) + ' 0) scale(-1 1)"' : '') + '/>'
-          : '<circle class="pg-ind' + (i >= nPrev ? ' new' : '') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (per > 1 ? 3.4 : 2.8) + '"/>');
+          : '<circle class="pg-ind' + (i >= nPrev ? ' new' : '') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3"/>');
       }
-      var hit = sim.points.filter(function(z){ return z.pre != null && z.t <= t + 1e-9 && z.t > t - 1.5; })[0];
-      if(hit) out.push('<rect class="pg-floodfx" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/><text class="pg-flab pg-hit" x="' + (FW / 2) + '" y="' + (FH / 2) + '" text-anchor="middle">' + esc(hit.hit.map(pct).join(' + ')) + ' lost</text>');
-      var lab = 'Year ' + F(t, 0) + ': N = ' + n0(p.N) + (log ? ' of K = ' + n0(p.K) + (p.N >= p.K * 0.95 ? ', the habitat is full' : p.N > p.K / 2 ? ', crowding slows growth' : ', plenty of room') : '') + (per > 1 ? '. One rabbit drawn is ' + per + ' individuals.' : '.');
-      out.push('<text class="pg-flab" x="8" y="' + (FH - 8) + '">' + esc('Year ' + F(t, 0) + ' · N = ' + n0(p.N) + (per > 1 ? ' · 1 drawn = ' + per : '')) + '</text>');
-      field.innerHTML = '<svg class="pg-fieldsvg" viewBox="0 0 ' + FW + ' ' + FH + '" role="img" aria-label="' + esc(lab) + '">' + out.join('') + '</svg>';
+      // a flood or frost striking this year: drawn on the meadow
+      var hits = strikes(t);
+      hits.forEach(function(e){
+        var k = evKind(e);
+        if(k === 'flood'){
+          var wv = ''; for(var wx = 0; wx < FW; wx += 20) wv += (wx ? ' ' : 'M0 ' + (FH * 0.45) + ' ') + 'q10 -8 20 0';
+          out.push('<g clip-path="url(#pg-clip)"><path class="pg-water" d="' + wv + ' V' + FH + ' H0Z"/><path class="pg-wave" d="' + wv + '"/></g>');
+        } else {
+          out.push('<rect class="pg-frost" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/>');
+          var fg = M.rng(5); for(var f = 0; f < 14; f++){ var sx = 20 + fg() * (FW - 40), sy = 16 + fg() * (FH - 32); out.push('<path class="pg-flake" d="M' + (sx - 6) + ' ' + sy + 'h12M' + sx + ' ' + (sy - 6) + 'v12M' + (sx - 4.2) + ' ' + (sy - 4.2) + 'l8.4 8.4M' + (sx - 4.2) + ' ' + (sy + 4.2) + 'l8.4 -8.4"/>'); }
+        }
+      });
+      if(hits.length) out.push('<text class="pg-flab pg-hit" x="' + (FW / 2) + '" y="' + (FH / 2 - 10) + '" text-anchor="middle">' + esc(hits.map(function(e){ return e.label + ': ' + pct(e.f) + ' lost'; }).join(' + ')) + '</text>');
+      var lab = 'Year ' + F(t, 0) + ': N = ' + n0(p.N) + (log ? ' of K = ' + n0(p.K) + (p.N >= p.K * 0.95 ? ', the habitat is full' : p.N > p.K / 2 ? ', crowding slows growth' : ', plenty of room') : '') + (per > 1 ? '. One rabbit drawn is ' + per + ' individuals.' : '.') + (hits.length ? ' ' + hits.map(function(e){ return e.label + ' this year: ' + pct(e.f) + ' lost.'; }).join(' ') : '') + ' Below, the population size so far, year by year' + (log ? ', with K dashed' : '') + '.';
+      // the year tag sits on its own paper chip so the rabbits never print over it
+      var tag = 'Year ' + F(p.t, 0) + (per > 1 ? ' · 1 rabbit = ' + n0(per) : '');
+      out.push('<rect class="pg-tagbg" x="4" y="' + (FH - 26) + '" width="' + (tag.length * 6.7 + 12).toFixed(0) + '" height="22" rx="8"/><text class="pg-flab" x="9" y="' + (FH - 10) + '">' + esc(tag) + '</text>');
+      out.push(curveSvg(sim, t, FH + 8));
+      field.innerHTML = '<svg class="pg-fieldsvg" viewBox="0 0 ' + FW + ' ' + (FH + 8 + GH) + '" role="img" aria-label="' + esc(lab) + '">' + out.join('') + '</svg>';
       card.querySelector('.pg-clock').textContent = '';
     }
     function evButtons(){
@@ -239,9 +293,10 @@
     card.querySelector('[data-a="play"]').addEventListener('click', function(){
       if(playT){ cancelAnimationFrame(playT); playT = 0; }
       if(reducedM()){ ctl.read.set(st.tEnd, true); return; }
-      var sim = Pop.simulate(cond()), t0 = null, D = 5000;
+      var t0 = null, D = 5000;
+      // pass 3: the run is simulated from the current settings each frame (a model switched mid-Play used to leave the old curve)
       var go = function(ts){ if(t0 == null) t0 = ts; var u = Math.min(1, (ts - t0) / D), t = Math.round(u * st.tEnd);
-        if(t !== st.readT){ ctl.read.set(t, true); } else drawField(sim, t);
+        if(t !== st.readT){ ctl.read.set(t, true); } else drawField(Pop.simulate(cond()), t);
         if(u < 1) playT = requestAnimationFrame(go); else playT = 0; };
       ctl.read.set(0, true);
       playT = requestAnimationFrame(go);
@@ -337,5 +392,5 @@
       },
       pills: function(g){ return [{ k: 'N', html: g.ro(1), tone: 'readout' }]; },
       // dN/dt is readout row 3 with a K row (logistic), row 2 without (exponential).
-      pillsR: function(g){ var log = g.$('#pg-model-log') && g.$('#pg-model-log').checked; return [{ html: 'dN/dt ' + g.ro(log ? 3 : 2), tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } }); // pass 2: dN/dt is in Details; N is the pill
 })();

@@ -25,14 +25,18 @@
 .sb-pt.is-ok{fill:var(--sb-curve);stroke:var(--sb-paper);stroke-width:2.4;}
 .sb-cur{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 4;opacity:.45;}
 .sb-now{fill:var(--ink);stroke:var(--sb-paper);stroke-width:2;}
-.sb-link{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 5;opacity:.45;}
+.sb-link{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:5 5;opacity:.7;}
+.sb-trace{fill:none;stroke:var(--muted);stroke-width:2.2;stroke-dasharray:2 5;stroke-linecap:round;opacity:.9;}
+.sb-ghost{fill:none;stroke:var(--sb-curve);stroke-width:2.4;stroke-dasharray:9 6;opacity:.85;}
+.sb-ghost-hub{stroke:var(--sb-d);stroke-width:3;stroke-linecap:round;}
+.sb-ghost-l{fill:var(--sb-curve);font-size:14px;}
 .sb-lab{font-weight:800;font-size:15px;fill:var(--ink);paint-order:stroke;stroke:var(--sb-paper);stroke-width:4px;}
 .sb-c-a{fill:var(--sb-a);color:var(--sb-a);} .sb-c-d{fill:var(--sb-d);color:var(--sb-d);} .sb-c-T{fill:var(--sb-T);color:var(--sb-T);} .sb-c-c{fill:var(--sb-c);color:var(--sb-c);} .sb-c-y{fill:var(--ink);}
 .sb-formula{font-weight:900;font-size:24px;fill:var(--ink);font-variant-numeric:tabular-nums;}
 .sb-sub{font-weight:700;font-size:16px;fill:var(--muted);}
 .sb-svg.is-tall .sb-formula{font-size:17px;}
 .sb-svg.is-tall .sb-sub{font-size:12.5px;}
-.sb-svg.is-tall .sb-lab{font-size:13px;}
+.sb-svg.is-tall .sb-lab{font-size:14px;}
 .sb-svg.is-tall .sb-tk,.sb-svg.is-tall .sb-axl{font-size:12.5px;}
 
 .sb-handle{cursor:grab;outline:none;}
@@ -95,3 +99,6 @@
 .sb-dtable table{font-size:14px;}
 .sb-params .sb-c-T{color:#005A8C;} .sb-params .sb-c-a{color:#A84500;}
 :root[data-theme="dark"] .sb-params .sb-c-T{color:var(--sb-T);} :root[data-theme="dark"] .sb-params .sb-c-a{color:var(--sb-a);}
+/* a phone's Ferris wheel graph is narrow: smaller handle halos */
+.sb-svg.is-tall.is-wheel .sb-halo{r:14px;}
+.sb-svg.is-tall.is-wheel .sb-hdot{r:7px;}

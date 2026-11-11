@@ -157,7 +157,7 @@
 
   /* ============================================================ acid rain */
   function acidScene(W, H, st){
-    var out = [], phone = W < 560, f = st.load, rain = A.rainPH(f), lake = A.lakePH(rain, st.lime), gy = H * 0.52;
+    var out = [], phone = W < 560, f = st.load, rain = A.rainPH(f), lake = A.lakePH(rain, st.lime), gy = H * (phone ? 0.44 : 0.52);
     out.push('<rect class="ap-acidsky" x="0" y="0" width="' + W + '" height="' + n2(gy) + '"/>');
     // the power plant and its plume
     var px = W * 0.08, pw = W * 0.14;
@@ -166,7 +166,6 @@
     for(var i = 0; i < 9; i++){ var t = i / 8, qx = sx + (cx - 70 - sx) * t, qy = sy - Math.sin(t * Math.PI * 0.5) * (sy - cy - 10); out.push('<circle class="ap-plume" cx="' + n2(qx) + '" cy="' + n2(qy) + '" r="' + n2(6 + t * 16) + '" opacity="' + (0.1 + 0.55 * f).toFixed(2) + '"/>'); }
     out.push(txt(px + pw / 2, gy + 16, 'Power plant', 'ap-t ap-s', 'middle'));
     out.push(txt(sx + 10, sy + 4, phone ? 'SO₂, NOx' : 'SO₂ and NOx', 'ap-t ap-s ap-b ap-halo', 'start'));
-    if(!phone) out.push(txt((sx + cx) / 2, (sy + cy) / 2 + 34, '+ water: sulfuric and nitric acid', 'ap-t ap-s ap-halo', 'middle'));
     // cloud and rain
     out.push('<path class="ap-raincloud" d="M' + n2(cx - 70) + ' ' + n2(cy + 16) + 'a22 22 0 0 1 18 -34a32 32 0 0 1 58 -10a26 26 0 0 1 48 16a18 18 0 0 1 0 28z"/>');
     for(var r = 0; r < 12; r++){ var rx = cx - 60 + r * 11, ry = cy + 24 + (r % 3) * 10; out.push('<line class="ap-drop" x1="' + n2(rx) + '" y1="' + n2(ry) + '" x2="' + n2(rx - 4) + '" y2="' + n2(ry + 14) + '" style="stroke:' + phColor(rain) + '"/>'); }
@@ -174,21 +173,55 @@
     // ground, bedrock, lake
     out.push('<rect class="' + (st.lime ? 'ap-lime' : 'ap-granite') + '" x="0" y="' + n2(gy) + '" width="' + W + '" height="' + n2(H - gy) + '"/>');
     out.push(txt(8, H - 8, st.lime ? 'Limestone bedrock (buffers acid)' : 'Granite bedrock (no buffer)', 'ap-t ap-s ap-on-rock'));
-    var lx = W * 0.4, lw = W * 0.52, ly = gy + 2, lh = (H - gy) * 0.4;
-    out.push('<path class="ap-lake" style="fill:' + phColor(lake) + '" d="M' + n2(lx) + ' ' + n2(ly) + 'Q' + n2(lx + lw / 2) + ' ' + n2(ly + lh * 1.6) + ' ' + n2(lx + lw) + ' ' + n2(ly) + 'Z"/>');
-    out.push('<g class="ap-tag"><rect x="' + n2(lx + lw / 2 - 52) + '" y="' + n2(ly + 4) + '" width="104" height="24" rx="12"/>' + txt(lx + lw / 2, ly + 21, 'Lake pH ' + f1(lake), 'ap-t ap-b ap-tag-t', 'middle') + '</g>');
-    // the tolerance strip
-    // On a phone the strip wraps to two rows, so every name is whole and
-    // readable (tool-audit: tiny species labels).
-    var n = A.TOLERANCE.length, rows = phone ? 2 : 1, per = Math.ceil(n / rows), rh = phone ? 44 : 40;
-    var tx0 = phone ? 6 : W * 0.3, sw = W - tx0 - 6, ty = Math.min(ly + lh * 0.8 + 14, H - rows * (rh + 4) - 22), cw = sw / per;
-    out.push(txt(tx0, ty - 6, 'Lowest pH each animal survives (EPA)', 'ap-t ap-s ap-b ap-on-rock'));
-    A.TOLERANCE.forEach(function(a, k){
-      var ok = lake >= a.ph, row = Math.floor(k / per), col = k % per, x = tx0 + col * cw, y = ty + row * (rh + 4);
-      out.push('<g class="ap-animal' + (ok ? '' : ' is-gone') + '"><rect x="' + n2(x + 1) + '" y="' + n2(y) + '" width="' + n2(cw - 2) + '" height="' + rh + '" rx="6"/>' + txt(x + cw / 2, y + (phone ? 18 : 16), a.name, 'ap-t ap-b' + (phone ? '' : ' ap-s'), 'middle') + txt(x + cw / 2, y + (phone ? 36 : 32), (ok ? 'pH ' : '✕ pH ') + a.ph.toFixed(1), 'ap-t ap-tk', 'middle') + '</g>');
-    });
+    // the lake: wide and deep, its animals drawn in it at the lowest pH each survives
+    var lx = phone ? W * 0.03 : W * 0.3, lw = phone ? W * 0.94 : W * 0.67, ly = gy + 1, D = Math.min((H - gy) * 0.66, H - gy - (phone ? 66 : 54));
+    out.push(lakeAnimals(lx, ly, lw, D, lake, phone, true));
     return out.join('');
   }
+  /* The lake with its animals (EPA tolerance chart): each at the x of the
+     lowest pH it survives, faded and crossed out when the lake is more acidic
+     than that; the lake's pH is a line across the same scale, the ruler under
+     the lake. Rows keep neighbors' names apart at 390 px. */
+  var ANIMAL_ROW = { Snails: 0, Clams: 1, Bass: 0, Mayfly: 1, Crayfish: 2, Salamanders: 0, Trout: 1, Perch: 1, Frogs: 0 };
+  function lakeAnimals(lx, ly, lw, D, lake, phone, ruler){
+    var out = [], c = lx + lw / 2;
+    function X(ph){ return lx + lw * (0.09 + (6.5 - ph) / 2.5 * 0.82); }
+    out.push('<path class="ap-lake" style="fill:' + phColor(lake) + '" d="M' + n2(lx) + ' ' + n2(ly) + ' C' + n2(lx + lw * 0.05) + ' ' + n2(ly + D * 0.9) + ' ' + n2(lx + lw * 0.12) + ' ' + n2(ly + D) + ' ' + n2(c) + ' ' + n2(ly + D) + ' C' + n2(lx + lw * 0.88) + ' ' + n2(ly + D) + ' ' + n2(lx + lw * 0.95) + ' ' + n2(ly + D * 0.9) + ' ' + n2(lx + lw) + ' ' + n2(ly) + 'Z"/>');
+    out.push('<path class="ap-lakesurf" d="M' + n2(lx + 4) + ' ' + n2(ly + 1) + ' L' + n2(lx + lw - 4) + ' ' + n2(ly + 1) + '"/>');
+    var sc = phone ? 1 : 1.45, rowH = Math.min(62, (D - 30 * sc) / 3), xl = Math.max(lx + 6, Math.min(lx + lw - 6, X(lake)));
+    // the lake's pH across the scale
+    out.push(line(xl, ly + 3, xl, ly + D + (ruler ? 12 : 0), 'ap-phline'));
+    var edgeOk = null, edgeGone = null;
+    A.TOLERANCE.forEach(function(a){ if(lake >= a.ph){ if(!edgeOk || a.ph > edgeOk.ph) edgeOk = a; } else if(!edgeGone || a.ph < edgeGone.ph) edgeGone = a; });
+    A.TOLERANCE.forEach(function(a){
+      var named = (edgeOk && a.ph === edgeOk.ph) || (edgeGone && a.ph === edgeGone.ph);   // the animals at the lake's edge: the next to go, the last lost
+      var ok = lake >= a.ph, x = X(a.ph), y = ly + 12 * sc + 6 + (ANIMAL_ROW[a.name] || 0) * rowH;
+      out.push('<g class="ap-ani' + (ok ? '' : ' is-gone') + '"><title>' + esc(a.name) + ': lives down to pH ' + a.ph.toFixed(1) + '</title><g transform="translate(' + n2(x) + ' ' + n2(y) + ') scale(' + sc + ')">' + (ANIMAL_ART[a.name] || '') + '</g>' +
+        (named ? txt(x, y + 12 * sc + 9, esc(a.name), 'ap-t ap-ani-t' + (phone ? ' is-sm' : '') + ' ap-halo', 'middle') : '') +
+        (ok ? '' : line(x - 9 * sc, y - 7 * sc, x + 9 * sc, y + 7 * sc, 'ap-ani-x') + line(x - 9 * sc, y + 7 * sc, x + 9 * sc, y - 7 * sc, 'ap-ani-x')) + '</g>');
+    });
+    out.push('<g class="ap-tag"><rect x="' + n2(Math.min(lx + lw - 106, Math.max(lx, xl - 52))) + '" y="' + n2(ly - 30) + '" width="104" height="24" rx="12"/>' + txt(Math.min(lx + lw - 54, Math.max(lx + 52, xl)), ly - 13, 'Lake pH ' + f1(lake), 'ap-t ap-b ap-tag-t', 'middle') + '</g>');
+    if(ruler){
+      var ry = ly + D + 14;
+      out.push(line(X(6.5), ry, X(4), ry, 'ap-ruler'));
+      [6.5, 6, 5.5, 5, 4.5, 4].forEach(function(v){ out.push(line(X(v), ry - 4, X(v), ry + 4, 'ap-ruler') + (false ? '' : txt(X(v), ry + 17, String(v), 'ap-t ap-tk ap-on-rock', 'middle'))); });
+      out.push(txt(X(4) + 10, ry + 4, phone ? 'pH' : 'pH', 'ap-t ap-s ap-b ap-on-rock'));
+    }
+    return out.join('');
+  }
+  /* Small animals, each about 30 × 18, centered on 0,0. */
+  function fishArt(body, fin, mark){ return '<path d="M-15 0 C-9 -9 7 -9 11 0 C7 9 -9 9 -15 0Z" style="fill:' + body + '"/><path d="M10 0 L18 -7 L16 0 L18 7Z" style="fill:' + fin + '"/><path d="M-4 -6 L2 -11 L5 -6Z" style="fill:' + fin + '"/>' + (mark || '') + '<circle cx="-10" cy="-1.5" r="1.4" class="ap-eye"/>'; }
+  var ANIMAL_ART = {
+    Snails: '<path d="M-14 7 C-14 3 -6 2 4 3 L13 5 L14 8 L-14 8Z" style="fill:#C9A27A"/><circle cx="-1" cy="-1" r="8" style="fill:#B5652E"/><path d="M-1 -1 m-5 0 a5 5 0 1 0 5 -5 a3 3 0 1 0 3 4" style="fill:none;stroke:#F2D3B0;stroke-width:1.4"/><path d="M12 4 L15 -3 M10 4 L12 -3" style="stroke:#8A6A48;stroke-width:1.2"/>',
+    Clams: '<path d="M-13 5 C-13 -10 13 -10 13 5Z" style="fill:#D8CBB0;stroke:#8F7E5E;stroke-width:1"/><path d="M-13 5 L13 5 C9 9 -9 9 -13 5Z" style="fill:#BBA982"/><path d="M0 -6 L0 5 M-6 -4 L-4 5 M6 -4 L4 5" style="stroke:#8F7E5E;stroke-width:.9"/>',
+    Bass: fishArt('#5E8C3A', '#3F6A22', '<path d="M-12 0 L9 0" style="stroke:#2E4F18;stroke-width:1.6;stroke-dasharray:3 2"/>'),
+    Trout: fishArt('#9DB0A0', '#7A8E7D', '<path d="M-12 1 L9 1" style="stroke:#E07A7A;stroke-width:2"/><circle cx="-3" cy="-4" r=".9" style="fill:#3D3D3D"/><circle cx="3" cy="-3" r=".9" style="fill:#3D3D3D"/><circle cx="0" cy="4" r=".9" style="fill:#3D3D3D"/>'),
+    Perch: fishArt('#E2B53B', '#D2683A', '<path d="M-6 -6 L-6 6 M-1 -7 L-1 7 M4 -6 L4 6" style="stroke:#55612A;stroke-width:1.8"/>'),
+    Crayfish: '<path d="M-6 -2 C-6 -6 8 -6 9 -2 C8 2 -6 2 -6 -2Z" style="fill:#B8432E"/><path d="M9 -3 L15 -5 L15 1 L9 -1Z" style="fill:#9A3424"/><path d="M-6 -3 L-12 -9 L-16 -6 L-12 -5Z M-6 -1 L-12 4 L-16 2 L-12 0Z" style="fill:#B8432E"/><path d="M-2 1 L-4 6 M2 1 L1 6 M5 1 L5 6" style="stroke:#8A2E1E;stroke-width:1.2"/>',
+    Mayfly: '<path d="M-8 0 C-8 -3 6 -3 8 0 C6 3 -8 3 -8 0Z" style="fill:#7D6A4A"/><circle cx="-9" cy="0" r="2.6" style="fill:#6A583A"/><path d="M8 0 L16 -4 M8 0 L17 0 M8 0 L16 4 M-4 2 L-6 6 M0 2 L0 6 M3 2 L5 6 M-4 -2 L-6 -6 M0 -2 L0 -6" style="stroke:#5A4A30;stroke-width:1"/>',
+    Salamanders: '<path d="M-14 0 C-12 -4 -6 -3 0 -3 C6 -3 10 -1 16 2 C10 1 6 3 0 3 C-6 3 -12 4 -14 0Z" style="fill:#2F2F35"/><circle cx="-6" cy="-1" r="1.3" style="fill:#F2C230"/><circle cx="2" cy="0" r="1.3" style="fill:#F2C230"/><circle cx="8" cy="0" r="1.1" style="fill:#F2C230"/><path d="M-8 2 L-10 7 M-8 -2 L-10 -7 M4 2 L6 7 M4 -2 L6 -7" style="stroke:#2F2F35;stroke-width:1.6;stroke-linecap:round"/>',
+    Frogs: '<path d="M-10 3 C-10 -6 10 -6 10 3 C6 7 -6 7 -10 3Z" style="fill:#4E9A3C"/><circle cx="-5" cy="-5" r="3" style="fill:#4E9A3C"/><circle cx="5" cy="-5" r="3" style="fill:#4E9A3C"/><circle cx="-5" cy="-5.5" r="1.3" class="ap-eye"/><circle cx="5" cy="-5.5" r="1.3" class="ap-eye"/><path d="M-10 4 L-15 8 L-11 8 M10 4 L15 8 L11 8" style="stroke:#3A7A2C;stroke-width:1.8;fill:none;stroke-linejoin:round"/>'
+  };
   function phColor(ph){ var t = Math.max(0, Math.min(1, (ph - 4) / 3.6)); return rgb(mix([214, 120, 60], [70, 140, 200], t)); }
 
   /* ======================================================= explore */
@@ -249,11 +282,12 @@
       if(st.view === 'smog'){
         var d = day();
         if(!phone){
-          var sw = W * 0.64, sh = H * 0.52;
-          inner = cityScene(0, 0, sw, sh, st, d) + profile(sw + 10, 0, W - sw - 10, sh, st.inversion) + curves(0, sh + 6, W, H - sh - 6, d, st.hour, { voc: st.voc });
+          // pass 2: the temperature profile appears when the inversion is switched on, to show the lid
+          var sw = st.inversion ? W * 0.64 : W, sh = H * 0.52;
+          inner = cityScene(0, 0, sw, sh, st, d, { noRead: true }) + (st.inversion ? profile(sw + 10, 0, W - sw - 10, sh, true) : '') + curves(0, sh + 6, W, H - sh - 6, d, st.hour, { voc: st.voc });
         } else {
           var sh2 = H * 0.46;
-          inner = cityScene(0, 0, W, sh2, st, d) + curves(0, sh2 + 4, W, H - sh2 - 4, d, st.hour, { voc: st.voc });
+          inner = cityScene(0, 0, W, sh2, st, d, { noRead: true }) + curves(0, sh2 + 4, W, H - sh2 - 4, d, st.hour, { voc: st.voc });
         }
         label = A.clock(st.hour) + (st.inversion ? ', inversion on' : '') + (st.cloudy ? ', cloudy' : '') + ': NO ' + f0(d.at('NO', st.hour)) + ', NO₂ ' + f0(d.at('NO2', st.hour)) + ', ozone ' + f0(d.at('O3', st.hour)) + ' ppb. Today NO peaks at ' + A.clock(d.peaks.NO.hour) + ', NO₂ at ' + A.clock(d.peaks.NO2.hour) + ' and ozone at ' + A.clock(d.peaks.O3.hour) + ' (' + f0(d.peaks.O3.value) + ' ppb).';
       } else {
@@ -271,28 +305,28 @@
         var d = day(), h = st.hour, no = d.at('NO', h), no2 = d.at('NO2', h), o3 = d.at('O3', h), pk = d.peaks;
         var phase = h < 6 ? 'Night: no sunlight, so no new ozone; NO from late traffic has used most of it up.' : h < 9.5 ? 'Morning rush: engines pour out NO (and VOCs). Not much ozone yet.' : h < 12 ? 'Late morning: NO is being turned into NO₂, the brown haze, and sunlight starts splitting NO₂ to make ozone.' : h < 16.5 ? 'Afternoon: strong sunlight and the morning’s NO₂ and VOCs make ozone peak.' : h < 19.5 ? 'Evening: the sun is lower and the evening rush adds NO, which destroys ozone.' : 'After sunset: ozone falls; no light, and NO reacts with it.';
         head = A.clock(h) + ': ' + phase.charAt(0).toLowerCase() + phase.slice(1);
-        pills = [{ k: 'NO', html: f0(no), tone: 'readout' }, { k: 'NO₂', html: f0(no2), tone: 'readout' }, { k: 'O₃', html: f0(o3) + ' ppb', tone: 'accent' }];
+        // pass 2: ozone is the readout; NO and NO2 now are in Numbers & setup and on the curves
+        pills = [{ k: 'O₃', html: f0(o3) + ' ppb', tone: 'accent' }];
         right = st.inversion ? [{ html: 'Inversion: trapped', tone: 'warn' }] : [];
         why = '<p><b>Primary, then secondary.</b> Car engines and power plants emit NO (a primary pollutant) and VOCs (from gasoline and solvents). In the air NO becomes NO₂, the reddish-brown gas in the haze. Sunlight splits NO₂: NO₂ + light → NO + O, and O + O₂ → O₃. Ozone is a secondary pollutant: no one emits it.</p>' +
           '<p><b>Why ozone waits until afternoon.</b> NO destroys ozone (NO + O₃ → NO₂ + O₂), so in the morning rush any ozone is used up. As the sunny morning goes on, VOCs make radicals that turn NO into NO₂ without using ozone, so ozone piles up, peaking in the early afternoon (today at ' + A.clock(pk.O3.hour) + '). At night there is no light to make it and fresh NO removes it.</p>' +
           '<p><b>What makes it worse.</b> Sunny, hot, still days; heavy traffic; and a thermal inversion, which traps the pollutants near the ground. Fewer cars, cleaner engines (catalytic converters cut NOx and CO), and vapor recovery for VOCs make it better.</p>' +
           '<p><b>Thermal inversion.</b> Normally air cools with height, so warm polluted air near the ground rises and mixes away. In an inversion a layer of warm air sits on top of cooler, denser air, which cannot rise through it: the warm layer is a lid. Valleys and basins on calm, clear nights are most at risk.</p>' +
           '<p><b>Not the ozone layer.</b> Ground-level ozone is harmful to breathe and to plants. The ozone layer, 15 to 35 km up in the stratosphere, protects us from UV light and is thinned by CFCs, a different problem.</p>';
-        nums = '<h3 class="ls-title-l">Today’s peaks</h3><table class="ls-tbl"><thead><tr><th scope="col">Pollutant</th><th scope="col">Kind</th><th scope="col">Peak</th><th scope="col">At</th></tr></thead><tbody>' +
+        nums = '<h3 class="ls-title-l">At ' + A.clock(h) + '</h3><p>NO ' + f0(no) + ' ppb, NO₂ ' + f0(no2) + ' ppb, O₃ ' + f0(o3) + ' ppb</p><h3 class="ls-title-l">Today’s peaks</h3><table class="ls-tbl"><thead><tr><th scope="col">Pollutant</th><th scope="col">Kind</th><th scope="col">Peak</th><th scope="col">At</th></tr></thead><tbody>' +
           '<tr><th scope="row">NO</th><td>Primary</td><td class="r">' + f0(pk.NO.value) + ' ppb</td><td>' + A.clock(pk.NO.hour) + '</td></tr><tr><th scope="row">NO₂</th><td>Primary and secondary</td><td class="r">' + f0(pk.NO2.value) + ' ppb</td><td>' + A.clock(pk.NO2.hour) + '</td></tr><tr><th scope="row">O₃</th><td>Secondary</td><td class="r">' + f0(pk.O3.value) + ' ppb</td><td>' + A.clock(pk.O3.hour) + '</td></tr><tr><th scope="row">VOCs</th><td>Primary</td><td class="r">' + f0(pk.VOC.value) + ' ppb</td><td>' + A.clock(pk.VOC.hour) + '</td></tr></tbody></table>' +
           '<p class="bt-small">The U.S. ozone standard is 70 ppb (8-hour average, EPA). Concentrations here come from a simple model and are illustrative.</p>' +
           '<h3 class="ls-title-l">Fixes, matched to the pollutant</h3><table class="ls-tbl"><tbody>' + ['NOx', 'SO2', 'PM', 'VOC', 'CO'].map(function(k){ var P = A.POLL[k]; return '<tr><th scope="row">' + esc(P.name) + '</th><td>' + esc(P.fix) + '</td></tr>'; }).join('') + '</tbody></table>';
       } else {
         var rain = A.rainPH(st.load), lake = A.lakePH(rain, st.lime), gone = A.TOLERANCE.filter(function(a){ return lake < a.ph; });
-        head = 'Rain pH ' + f1(rain) + (rain < 5.55 ? ' (acid rain)' : ' (normal rain)') + '; the lake on ' + (st.lime ? 'limestone' : 'granite') + ' is at pH ' + f1(lake) + '. ' + (gone.length ? gone.length + ' of ' + A.TOLERANCE.length + ' animals cannot live here.' : 'Every animal in the chart can live here.');
-        pills = [{ k: 'Rain', html: 'pH ' + f1(rain), tone: rain < 5.55 ? 'warn' : 'good' }, { k: 'Lake', html: 'pH ' + f1(lake), tone: 'readout' }];
-        right = [{ html: rain < 5.55 ? T.F(Math.pow(10, 5.6 - rain), 0) + '× clean rain' : 'normal rain', tone: 'readout' }];
+        // pass 2: the rain's and the lake's pH are on the picture, at the cloud and the lake
+        head = (gone.length ? gone.length + ' of ' + A.TOLERANCE.length + ' animals cannot live in this lake.' : 'Every animal can live in this lake.') + (rain < 5.55 ? ' The rain is ' + T.F(Math.pow(10, 5.6 - rain), 0) + '× as acidic as clean rain.' : ' The rain is normal.');
         why = '<p><b>Clean rain is already slightly acidic</b> (pH about 5.6): CO₂ dissolves to make weak carbonic acid. Acid rain is rain below that.</p>' +
           '<p><b>SO₂ and NOx make it.</b> Burning coal releases sulfur dioxide; hot combustion in engines and power plants makes nitrogen oxides. In the air they form sulfuric and nitric acid, which fall in rain, snow and fog, often far downwind of the smokestacks. VOCs, particulates and CO₂ are not acid-rain gases.</p>' +
           '<p><b>The log scale.</b> Each pH unit is ten times the hydrogen ions: rain at pH 4.6 is 10 times more acidic than rain at 5.6, and pH 3.6 is 100 times more.</p>' +
           '<p><b>Damage.</b> Lakes and streams acidify (fish eggs fail below about pH 5), aluminum leaches from soil and poisons fish, calcium and magnesium wash out of forest soils, and limestone and marble buildings dissolve. Limestone bedrock (calcium carbonate) neutralizes acid, so its lakes resist; granite has no buffer.</p>' +
           '<p><b>Fixes.</b> Scrubbers and low-sulfur coal cut SO₂; catalytic converters and low-NOx burners cut NOx; the Clean Air Act’s cap-and-trade for SO₂ cut power plant emissions by more than 90%. Adding limestone to a lake treats the symptom, not the cause.</p>';
-        nums = '<h3 class="ls-title-l">The lowest pH each animal tolerates</h3><table class="ls-tbl"><tbody>' + A.TOLERANCE.map(function(a){ return '<tr><th scope="row">' + esc(a.name) + '</th><td class="r">' + a.ph.toFixed(1) + '</td><td>' + (lake >= a.ph ? 'lives here' : 'cannot live here') + '</td></tr>'; }).join('') + '</tbody></table><p class="bt-small">EPA, “Effects of Acid Rain: Surface Waters.” The lake’s response is a sketch.</p>';
+        nums = '<h3 class="ls-title-l">The lowest pH each animal tolerates</h3><p class="bt-small">In the lake each animal sits at that pH (EPA); left of the lake’s line, it dies out.</p><table class="ls-tbl"><tbody>' + A.TOLERANCE.map(function(a){ return '<tr><th scope="row">' + esc(a.name) + '</th><td class="r">' + a.ph.toFixed(1) + '</td><td>' + (lake >= a.ph ? 'lives here' : 'cannot live here') + '</td></tr>'; }).join('') + '</tbody></table><p class="bt-small">EPA, “Effects of Acid Rain: Surface Waters.” The lake’s response is a sketch.</p>';
       }
       T.explain($('.ap-say'), '<b>' + esc(head) + '</b>', why);
       $('.ap-nums').innerHTML = nums;
@@ -342,12 +376,14 @@
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
       onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); },
       // a wrong 'how many times' is drawn on the pH scale: where that factor would put the rain
-      onTry: function(s, att, api){ if(s.key === 'times'){ api.st.try = att.value; figure(api.fig, api.problem, api.st); } }
+      onTry: function(s, att, api){ if(s.key === 'times'){ api.st.try = att.value; figure(api.fig, api.problem, api.st); } },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   function figure(el, p, st){
     var g = p.figure, phone = (window.innerWidth || 1280) <= 640, W = phone ? 360 : 640, H = phone ? 280 : 300, inner = '', label = '';
     if(!g){ el.innerHTML = ''; return; }
+    if(g.kind === 'smog' || g.kind === 'inversion' || g.kind === 'pct') H = T.figSize(W, H, { max: 0.72 })[1];
     if(g.kind === 'smog'){
       var d = A.smogDay({ cars: g.cars }), labs = {}, sp = SP.filter(function(s){ return s.k !== 'VOC'; });
       g.order.forEach(function(k, i){ labs[k] = st.o3 ? (k === 'O3' ? 'O₃' : k === 'NO' && st.first ? 'NO' : k === 'NO2' && st.first ? 'NO₂' : 'Curve ' + (i + 1)) : 'Curve ' + (i + 1); });
@@ -355,10 +391,12 @@
       inner = curves(0, 0, W, H, d, null, { labels: labs, species: st.o3 ? ordered : ordered.map(function(s, i){ return { k: s.k, label: s.label, cls: 'ap-neutral ap-n' + i }; }) });
       label = 'Three pollutant curves through a day, labeled curve 1, 2 and 3; they peak at ' + g.order.map(function(k, i){ return 'curve ' + (i + 1) + ' ' + A.clock(d.peaks[k].hour); }).join(', ') + '.';
     } else if(g.kind === 'inversion'){
-      inner = profile(0, 0, W / 2 - 6, H, false) + profile(W / 2 + 6, 0, W / 2 - 6, H, true) + txt(W / 4, H - 2, 'Graph A', 'ap-t ap-s ap-b', 'middle') + txt(W * 0.75, H - 2, 'Graph B', 'ap-t ap-s ap-b', 'middle');
+      inner = profile(0, 0, W / 2 - 6, H - 18, false) + profile(W / 2 + 6, 0, W / 2 - 6, H - 18, true) + txt(W / 4, H - 2, 'Graph A', 'ap-t ap-s ap-b', 'middle') + txt(W * 0.75, H - 2, 'Graph B', 'ap-t ap-s ap-b', 'middle');
       label = 'Two temperature profiles: A cools steadily with height; B has a layer where temperature rises with height, from 150 m to 450 m.';
     } else if(g.kind === 'ph'){
-      var L = 20, R = W - 20, y = H * 0.45, X = function(v){ return L + v / 14 * (R - L); }, o = [];
+      var hasBuf = p.steps.some(function(x){ return x.key === 'buffer'; });
+      H = hasBuf ? 380 : 200;
+      var L = 20, R = W - 20, y = hasBuf ? 64 : H * 0.45, X = function(v){ return L + v / 14 * (R - L); }, o = [];
       for(var v = 0; v < 14; v++) o.push('<rect x="' + n2(X(v)) + '" y="' + n2(y - 14) + '" width="' + n2(X(1) - X(0)) + '" height="28" style="fill:' + phColor(v + 0.5) + '"/>' + txt(X(v + 0.5), y + 30, String(v + (v ? 0 : 0)), 'ap-t ap-tk', 'middle'));
       o.push(txt(X(14), y + 30, '14', 'ap-t ap-tk', 'middle'));
       [[p.given.a, 'Rain here'], [p.given.b, p.given.b === 5.6 ? 'Clean rain' : 'Cleaner rain']].forEach(function(m, k){ o.push(line(X(m[0]), y - 26, X(m[0]), y + 16, 'ap-cursor')); o.push(txt(X(m[0]), y - 32 - k * 16, m[1] + ' ' + m[0].toFixed(1), 'ap-t ap-b', 'middle')); });
@@ -369,8 +407,20 @@
         o.push(line(X(tp), y - 26, X(tp), y + 16, 'ap-trym') + txt(X(tp), y + 70, 'Your ' + T.F(st.try, 0) + '× puts it at pH ' + T.F(tp, 1), 'ap-t ap-b ap-try-t', 'middle'));
       }
       if(st.times) o.push(txt((X(p.given.a) + X(p.given.b)) / 2, y + 78, '10^' + T.F(p.given.b - p.given.a, 1) + ' = ' + T.F(p.given.times, 0) + ' times', 'ap-t ap-b ap-c-o3', 'middle'));
-      inner = o.join(''); label = 'A pH scale from 0 to 14 with the rain at pH ' + p.given.a.toFixed(1) + ' and the comparison at ' + p.given.b.toFixed(1) + '.';
-      H = 200;
+      if(hasBuf){
+        // the same rain on two lakes: granite (no buffer) and limestone; their pH shows once the buffer step is done
+        var gy2 = y + 128, lw2 = (W - 60) / 2;
+        [[false, 'Granite'], [true, 'Limestone']].forEach(function(b, k){
+          var x0 = 20 + k * (lw2 + 20), lp = A.lakePH(p.given.a, b[0]), shown = st.buffer;
+          o.push('<rect class="' + (b[0] ? 'ap-lime' : 'ap-granite') + '" x="' + n2(x0) + '" y="' + n2(gy2) + '" width="' + n2(lw2) + '" height="' + n2(H - gy2 - 8) + '" rx="8"/>');
+          for(var r2 = 0; r2 < 8; r2++){ var rx2 = x0 + lw2 * 0.2 + r2 * lw2 * 0.085; o.push('<line class="ap-drop" x1="' + n2(rx2) + '" y1="' + n2(gy2 - 34 + (r2 % 2) * 8) + '" x2="' + n2(rx2 - 4) + '" y2="' + n2(gy2 - 20 + (r2 % 2) * 8) + '" style="stroke:' + phColor(p.given.a) + '"/>'); }
+          o.push(txt(x0 + lw2 / 2, gy2 - 42, 'Rain pH ' + p.given.a.toFixed(1), 'ap-t ap-s ap-b', 'middle'));
+          o.push('<path class="ap-lake" style="fill:' + (shown ? phColor(lp) : 'var(--paper)') + '" d="M' + n2(x0 + 14) + ' ' + n2(gy2) + ' C' + n2(x0 + 24) + ' ' + n2(gy2 + 90) + ' ' + n2(x0 + lw2 - 24) + ' ' + n2(gy2 + 90) + ' ' + n2(x0 + lw2 - 14) + ' ' + n2(gy2) + 'Z"/>');
+          o.push('<g class="ap-tag"><rect x="' + n2(x0 + lw2 / 2 - 50) + '" y="' + n2(gy2 + 20) + '" width="100" height="24" rx="12"/>' + txt(x0 + lw2 / 2, gy2 + 37, shown ? 'Lake pH ' + f1(lp) : 'Lake pH ?', 'ap-t ap-b ap-tag-t', 'middle') + '</g>');
+          o.push(txt(x0 + 10, H - 18, b[1] + ' bedrock', 'ap-t ap-s ap-on-rock'));
+        });
+      }
+      inner = o.join(''); label = 'A pH scale from 0 to 14 with the rain at pH ' + p.given.a.toFixed(1) + ' and the comparison at ' + p.given.b.toFixed(1) + '.' + (hasBuf ? ' Below it the same rain falls on a lake on granite and a lake on limestone' + (st.buffer ? ': the granite lake reaches pH ' + f1(A.lakePH(p.given.a, false)) + ', the limestone lake ' + f1(A.lakePH(p.given.a, true)) + '.' : '.') : '');
     } else if(g.kind === 'reduce'){
       // the pollutant's real source, drawn; its fix appears on it once answered
       var P = A.POLL[g.id], o2 = [], stack = g.id === 'SO2' || g.id === 'PM', pump = g.id === 'VOC', gy = 150;

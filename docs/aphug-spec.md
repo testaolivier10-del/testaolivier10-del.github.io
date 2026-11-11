@@ -291,6 +291,15 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
     `2026-11i-apmicro.sql`) and grants owner access at merge. AP® Microeconomics' own pass is left as it is on this
     branch (its branch handles it).
 
+13. (2026-11-10, tool visuals) **Model Studio and Borders lab drawn as the ideas.** Model Studio: the five models that
+    were numbered boxes now have figures in `math/model-studio.js` (`rostow` staircase with the work mix, `epi`,
+    `worldsys` rings with flows, and two drawn from the generated model's numbers, `gravity` and `ranksize`, via
+    `figure(id, model)`; their answer parts carry `ms-ans` and stay hidden in Build it and drills until checked;
+    rank-size has a primate-city switch). Every drawing fills the stage (the slot is a size container; the list of
+    places sits under it). Borders lab: boundary types on drawn land (hills, rivers, where each people lives, towns as
+    houses), forces drawn on the base Country A (`figures/base/country-a.json`, as the diffusion lab), state shapes
+    with a capital, 300 km rings and the far edge's distance. Notes: `docs/tool-review/done/hug.md`.
+
 ## 9. Open items for the owner
 
 - Confirm the identity (decision 11: teal accent `#094953`, the clay cover with an Earth and a migration path, the

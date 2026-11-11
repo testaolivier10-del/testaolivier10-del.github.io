@@ -86,9 +86,12 @@
     var s = ctx.sources[k];
     return '<article class="eb-src" data-src="' + k + '" aria-label="Source ' + (k + 1) + ': ' + esc(s.title) + '">' +
       '<header class="eb-head"><p class="eb-kicker">Source ' + (k + 1) + ' · invented study for practice</p><h3 class="eb-title">' + esc(s.title) + '</h3></header>' +
+      // Explore folds a source the student has already read, so its Results and chart come first (pass 3).
+      (o && o.fold ? '<details class="eb-fold"' + (o.open ? ' open' : '') + '><summary>Introduction, participants and method</summary>' : '') +
       '<section class="eb-sec"><h4>Introduction</h4><p>' + s.intro + '</p></section>' +
       '<section class="eb-sec"><h4>Participants</h4><p><span class="eb-det">' + s.participants + '</span></p></section>' +
       '<section class="eb-sec"><h4>Method</h4><p>' + s.method + '</p></section>' +
+      (o && o.fold ? '</details>' : '') +
       '<section class="eb-sec"><h4>Results</h4><p><span class="eb-res">' + E.result(ctx, nums, k) + '</span></p><figure class="eb-figure">' + graphSvg(s, nums[k], o && o.phone) + '</figure></section></article>';
   }
 
@@ -135,13 +138,17 @@
       var s = sc(), pk = part;
       say('Part ' + PART[pk].label + ': ' + s[pk] + ' of ' + PART[pk].pts + '. ' + s.notes[pk] + ' Score ' + s.total + ' of 7.');
     }
+    var seenSrc = {}, lastSrc = null, seenCtx = null;
     function drawStage(){
       var fig = $('.eb-fig'), ev = evOf(part), s = sc(), used = {};
+      if(seenCtx !== ctx.id){ seenSrc = {}; lastSrc = null; seenCtx = ctx.id; }
+      if(lastSrc != null && lastSrc !== src) seenSrc[lastSrc] = true;
+      lastSrc = src;
       if(b.b.src != null) used[b.b.src] = (used[b.b.src] || []).concat('B');
       if(b.c.src != null) used[b.c.src] = (used[b.c.src] || []).concat('C');
       fig.innerHTML = '<div class="eb-q"><p class="eb-qk">Question</p><p class="eb-qt">' + esc(ctx.question) + '</p>' + (b.claim ? '<p class="eb-claimline"><span class="eb-ck">Your claim</span> ' + esc(E.claimOf(ctx, b.claim).text) + '</p>' : '') + '</div>' +
         '<div class="ls-seg eb-tabs" role="group" aria-label="Sources">' + ctx.sources.map(function(x, k){ return '<button type="button" class="eb-tab" data-src="' + k + '" aria-pressed="' + (k === src) + '">Source ' + (k + 1) + (used[k] ? used[k].map(function(x){ return '<span class="eb-used" aria-label="used in ' + x + '">' + x + '</span>'; }).join('') : '') + '</button>'; }).join('') + '</div>' +
-        sourceHtml(ctx, nums, src, { phone: phone() });
+        sourceHtml(ctx, nums, src, { phone: phone(), fold: !!seenSrc[src], open: !!(ev && ev.src === src && ev.what === 'detail') });
       if(ev && ev.src === src){ var el = fig.querySelector(ev.what === 'detail' ? '.eb-det' : '.eb-res'); if(el) el.classList.add('is-on', ev.what === 'detail' || s.bad[part === 'Bi' || part === 'Bii' ? 'Bi' : 'Ci'] ? 'is-bad' : 'is-good'); }
       if(LS) LS.pills([{ html: 'Score ' + s.total + ' / 7', tone: s.total === 7 ? 'good' : s.total ? 'accent' : 'ghost' }], 'left', 'explore');
     }
@@ -210,7 +217,7 @@
       LS.setupRow = sp;
       sp.setup(ctx.title);
       drawAll();
-      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.eb-parts'), 'Start here: pick a claim', { cls: 'eb-tipslot' });
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.eb-claim') || s.root.querySelector('.eb-parts'), 'Start here: pick a claim', { cls: 'eb-tipslot' });
       var w = window.innerWidth, t = null;
       window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(function(){ if((window.innerWidth <= 640) !== (w <= 640)){ w = window.innerWidth; drawStage(); } }, 120); });
     }

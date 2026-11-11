@@ -14,8 +14,11 @@
                  bands the person is in light up. Play runs a life from birth
                  to 90 (reduced motion: the end state).
      Attachment  the strange situation in three panels (the parent leaves,
-                 alone, the parent returns); pick a pattern and the child's
-                 reunion changes.
+                 alone, the parent returns); pick a pattern and the child is
+                 drawn doing what that pattern does: secure cries, reaches
+                 up and calms; avoidant keeps playing, back to the door;
+                 anxious screams, then clings and pushes away; disorganized
+                 freezes and comes near with the head turned away.
      Parenting   warmth and demands on two sliders (or drag the dot on the
                  grid); the quadrant names the style and the scene says a
                  line in its voice.
@@ -73,14 +76,18 @@
     write: [[0.22, 0.44, 0.66, 0.5], [0.16, 0.46, 0.58, 0.54]],
     sit: [[0.18, 0.46, 0.46, 0.64], [0.12, 0.48, 0.4, 0.68]],
     freeze: [[0.34, 0.36, 0.56, 0.66], [-0.3, 0.38, -0.52, 0.66]],
-    away: [[-0.16, 0.48, -0.1, 0.96], [0.16, 0.48, 0.22, 0.92]]
+    away: [[-0.16, 0.48, -0.1, 0.96], [0.16, 0.48, 0.22, 0.92]],
+    up: [[0.2, -0.32, 0.34, -0.86], [0.08, -0.34, 0.16, -0.9]],
+    push: [[0.46, 0.18, 0.96, 0.08], [0.4, 0.22, 0.9, 0.16]],
+    play: [[0.24, 0.42, 0.62, 0.78], [0.16, 0.46, 0.5, 0.84]],
+    cry: [[0.3, 0.12, 0.2, -0.22], [0.24, 0.16, 0.14, -0.2]]
   };
   function n1(v){ return Math.round(v * 10) / 10; }
   function person(o){
     var a = o.age == null ? 30 : o.age, h = o.h, x = o.x, y = o.y, fc = o.facing || 1, pose = o.pose || 'stand';
     if(pose === 'baby') return baby(o);
     var heads = a < 3 ? 4.4 : a < 7 ? 5.1 : a < 12 ? 5.9 : a < 16 ? 6.8 : 7.4;
-    var seated = pose === 'sit' || pose === 'write';
+    var onFloor = !!o.floor, seated = pose === 'sit' || pose === 'write' || onFloor;
     var HH = h / heads, R = HH * 0.54, fem = o.build === 'f';
     var skin = o.skin || SKIN[1], shirt = o.shirt || 'var(--dv-shirt)', pants = o.pants || 'var(--dv-pants)';
     var hair = o.gray ? (a >= 75 ? '#E6E2DA' : '#B3ACA2') : (o.hair || '#3B2A20');
@@ -89,7 +96,7 @@
     var legFrac = a < 3 ? 0.36 : a < 7 ? 0.42 : a < 12 ? 0.45 : 0.47;
     var stoop = a >= 75 ? HH * 0.28 * fc : 0, g = [];
     var top = y - h, crotch = y - h * legFrac, shY = top + HH * 1.18, tl = crotch - shY;
-    var seatY = y - h * 0.27;
+    var seatY = onFloor ? y - legW * 0.55 : y - h * 0.27;
     if(seated){ crotch = seatY; shY = seatY - tl; top = shY - HH * 1.18; }
     var hx = x + stoop, hcY = top + R + HH * 0.02, waist = shY + tl * 0.62;
     // far arm first (behind the body)
@@ -98,7 +105,14 @@
     var far = arm(shF, P[1]), near = arm(shN, P[0]);
     g.push(limb(far, armW, shirt, skin, true));
     // legs
-    if(seated){
+    if(onFloor){
+      // sitting on the floor, legs out in front
+      [-1, 1].forEach(function(s){
+        var ox = s * hw * 0.3, kx = x + fc * h * 0.3 + ox * 0.3;
+        g.push('<line x1="' + n1(x + ox) + '" y1="' + n1(crotch) + '" x2="' + n1(kx) + '" y2="' + n1(crotch) + '" stroke="' + pants + '" stroke-width="' + n1(legW) + '" stroke-linecap="round"' + (s < 0 ? ' class="dv-far"' : '') + '/>');
+        g.push('<g transform="rotate(' + (-fc * 90) + ' ' + n1(kx) + ' ' + n1(crotch) + ')">' + shoe(kx, crotch + HH * 0.22, HH, fc) + '</g>');
+      });
+    } else if(seated){
       var thigh = h * 0.24, shinY = y - legW * 0.3;
       [-1, 1].forEach(function(s){
         var ox = s * hw * 0.32, kx = x + fc * thigh + ox * 0.4;
@@ -245,7 +259,9 @@
   /* timeline(X, Y, W, H, age, o) -> svg: four lanes of bands on a log age
      axis, the current bands filled, a marker at the age. o.hide: lanes whose
      bands are drawn without labels or highlight (a drill before its step);
-     o.only: one lane. Returns { svg, x(age) } so a drag can invert it. */
+     o.only: one lane; o.focus: name only the band the marker is in (the
+     rest carry their name as a tooltip and get named as the marker reaches
+     them). Returns { svg, x(age) } so a drag can invert it. */
   function timeline(X, Y, W, H, age, o){
     o = o || {};
     var phone = W < 520, lanes = o.only ? D.LANES.filter(function(l){ return l.id === o.only; }) : D.LANES;
@@ -258,14 +274,26 @@
       var cls = LANE_CLS[L.id], hide = o.hide && o.hide.indexOf(L.id) > -1;
       var cur = !hide && age != null ? D.bandAt(L, age) : null;
       if(phone) g.push('<text class="dv-lane-h ' + cls + '-t" x="' + x0 + '" y="' + (y - 5) + '">' + esc(L.name) + (cur ? '<tspan class="dv-lane-v">: ' + esc(cur[2].length > 34 ? cur[3] : cur[2]) + '</tspan>' : '') + '</text>');
+      else if(o.focus) g.push('<text class="dv-lane-h ' + cls + '-t" x="' + X + '" y="' + (y + lh / 2 + 4) + '">' + esc(L.name) + '<title>' + esc(LANE_SUB[L.id]) + '</title></text>');
       else g.push('<text class="dv-lane-h ' + cls + '-t" x="' + X + '" y="' + (y + lh / 2 - 2) + '">' + esc(L.name) + '</text><text class="dv-lane-s" x="' + X + '" y="' + (y + lh / 2 + 12) + '">' + esc(LANE_SUB[L.id]) + '</text>');
+      var late = [];
       L.bands.forEach(function(b, i){
         var bx0 = xa(b[0]) + 1, bx1 = xa(b[1]) - 1, on = !hide && age != null && age >= b[0] && (age < b[1] || (b[1] === 90 && age >= 90));
-        g.push('<rect x="' + bx0.toFixed(1) + '" y="' + y + '" width="' + Math.max(1, bx1 - bx0).toFixed(1) + '" height="' + lh + '" rx="7" class="dv-band ' + cls + (on ? ' is-on' : (i % 2 ? ' is-alt' : '')) + '"/>');
+        g.push('<rect x="' + bx0.toFixed(1) + '" y="' + y + '" width="' + Math.max(1, bx1 - bx0).toFixed(1) + '" height="' + lh + '" rx="7" class="dv-band ' + cls + (on ? ' is-on' : (i % 2 ? ' is-alt' : '')) + '">' + (o.focus ? '<title>' + esc(b[2]) + '</title>' : '') + '</rect>');
         if(hide) return;
         var size = phone ? 10.5 : 12, full = b[2], short = b[3], room = bx1 - bx0 - 8, txt = textW(full, size, 800) <= room ? full : textW(short, size, 800) <= room ? short : '';
+        if(o.focus){
+          if(!on || phone) return; // on a phone the lane heading above names it
+          if(!txt){
+            // too narrow for its name: write it beside the band, on the side with room
+            var nw = textW(full, size, 800), right = bx1 + 8 + nw <= x1, tx = right ? bx1 + 8 : bx0 - 8;
+            late.push('<text class="dv-band-t is-out" x="' + tx.toFixed(1) + '" y="' + (y + lh / 2 + size * 0.36).toFixed(1) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="' + size + '">' + esc(full) + '</text>');
+            return;
+          }
+        }
         if(txt) g.push('<text class="dv-band-t' + (on ? ' is-on' : '') + '" x="' + ((bx0 + bx1) / 2).toFixed(1) + '" y="' + (y + lh / 2 + size * 0.36).toFixed(1) + '" text-anchor="middle" font-size="' + size + '">' + esc(txt) + '</text>');
       });
+      g.push(late.join(''));
       y += lh + laneGap;
     });
     var by = y - laneGap + 6;
@@ -286,33 +314,51 @@
   }
 
   /* ------------------------------------------------- attachment */
+  /* The strange situation, drawn as the child's behavior in each pattern
+     (Ainsworth's descriptions, with Main and Solomon's disorganized):
+     secure cries when the parent leaves, reaches up and calms on return,
+     then plays; avoidant keeps playing with the blocks, back to the door,
+     and ignores the return; anxious is very upset, then clings and pushes
+     away; disorganized freezes and approaches with the head turned away.
+     k: [face, pose, on the floor, facing the door, playing] per panel. */
   var REUNION = {
-    secure: { leave: 'cry', leavePose: 'reach', back: 'smile', backPose: 'reach', note: ['Upset, protests', 'Distressed, not fully soothed', 'Seeks comfort, calms, plays'] },
-    avoidant: { leave: 'neutral', leavePose: 'hold', back: 'neutral', backPose: 'away', note: ['Little distress', 'Keeps playing', 'Looks away, ignores parent'] },
-    anxious: { leave: 'cry', leavePose: 'reach', back: 'angry', backPose: 'cross', note: ['Very distressed', 'Very upset, hard to soothe', 'Reaches, then pushes away'] },
-    disorganized: { leave: 'worried', leavePose: 'freeze', back: 'worried', backPose: 'freeze', note: ['Confused reaction', 'Dazed, still', 'Approaches, looks away, freezes'] }
+    secure: { note: ['Cries, reaches for the door', 'Upset, stops playing', 'Reaches up, calms, then plays'], k: [['cry', 'up', 0, 1], ['sad', 'stand', 1, 1], ['smile', 'up', 0, 1]] },
+    avoidant: { note: ['Little distress, keeps playing', 'Keeps playing', 'Back turned, ignores parent'], k: [['neutral', 'play', 1, 0, 1], ['neutral', 'play', 1, 0, 1], ['neutral', 'play', 1, 0, 1]] },
+    anxious: { note: ['Very upset, screams', 'Cries, cannot settle', 'Clings, then pushes away'], k: [['cry', 'up', 0, 1], ['cry', 'cry', 1, 1], ['angry', 'push', 0, 1]] },
+    disorganized: { note: ['Freezes, confused', 'Dazed, still', 'Comes near, head turned, freezes'], k: [['worried', 'freeze', 0, 1], ['neutral', 'freeze', 0, 1], ['worried', 'freeze', 0, 1]] }
   };
   function attachScene(style, W, H){
     var phone = W < 560, n = 3, g = [], gap = 10, A = REUNION[style];
-    var cols = phone ? 1 : 3, pw = phone ? W - 16 : (W - 16 - gap * 2) / 3, ph = phone ? (H - 16 - gap * 2) / 3 : Math.min(H - 16, pw * 1.7);
+    var pw = phone ? W - 16 : (W - 16 - gap * 2) / 3, ph = phone ? (H - 16 - gap * 2) / 3 : Math.min(H - 16, pw * 1.75);
     var titles = ['1. Parent leaves', '2. Alone in the room', '3. Parent returns'];
     for(var i = 0; i < n; i++){
       var px = 8 + (phone ? 0 : i * (pw + gap)), py = 8 + (phone ? i * (ph + gap) : (H - 16 - ph) / 2), floor = py + ph - 12;
       g.push('<rect x="' + px + '" y="' + py + '" width="' + pw + '" height="' + ph + '" rx="12" class="dv-room' + (i === 2 ? ' is-key' : '') + '"/><rect x="' + px + '" y="' + floor + '" width="' + pw + '" height="12" class="dv-floor"/>');
-      // door on the left
-      var dw = Math.min(pw * 0.18, ph * 0.28), dh = Math.min(ph * 0.7, dw * 2.3);
-      g.push('<rect x="' + (px + 10) + '" y="' + (floor - dh) + '" width="' + dw + '" height="' + dh + '" rx="3" class="dv-door' + (i === 1 ? '' : ' is-open') + '"/><circle cx="' + (px + 10 + dw * 0.8) + '" cy="' + (floor - dh * 0.48) + '" r="2" class="dv-knob"/>');
-      var kidH = phone ? ph * 0.5 : Math.min(ph * 0.36, pw * 0.5), kidX = px + pw * (phone ? 0.66 : 0.64);
-      g.push(toyBlocks(kidX + kidH * 0.6, floor, Math.max(8, kidH * 0.17), 2));
-      var adultH = phone ? ph * 0.74 : Math.min(ph * 0.72, kidH * 2.05);
-      if(i === 0) g.push(person({ x: px + 10 + dw * 0.5, y: floor, h: adultH, age: 32, skin: SKIN[2], hair: '#2A1C14', hairStyle: 'long', shirt: 'var(--dv-shirt2)', pose: 'away', facing: -1, look: 'away' }));
-      if(i === 2) g.push(person({ x: px + 10 + dw + adultH * 0.18, y: floor, h: adultH, age: 32, skin: SKIN[2], hair: '#2A1C14', hairStyle: 'long', shirt: 'var(--dv-shirt2)', pose: style === 'secure' ? 'reach' : 'stand', facing: 1, face: 'smile' }));
-      var face = i === 0 ? A.leave : i === 1 ? (style === 'avoidant' ? 'neutral' : style === 'secure' ? 'sad' : style === 'anxious' ? 'cry' : 'worried') : A.back;
-      var pose = i === 0 ? A.leavePose : i === 1 ? (style === 'avoidant' ? 'hold' : style === 'disorganized' ? 'freeze' : 'stand') : A.backPose;
-      var look = (i === 2 && (style === 'avoidant' || style === 'disorganized')) ? 'away' : null;
-      var fc = i === 2 && style === 'avoidant' ? 1 : -1;
-      g.push(person({ x: kidX, y: floor, h: kidH, age: 1.6, skin: SKIN[2], hair: '#2A1C14', shirt: 'var(--dv-kid)', pants: 'var(--dv-kidpants)', pose: pose, face: face, facing: fc, look: look }));
-      if(style === 'disorganized' && i > 0) g.push('<text class="dv-q" x="' + (kidX + kidH * 0.32) + '" y="' + (floor - kidH * 1.05) + '">?</text>');
+      var head = phone ? 26 : 50, room = floor - py - head;
+      var adultH = phone ? room * 0.96 : room * 0.78, kidH = adultH * (phone ? 0.6 : 0.5);
+      // door on the left: open when the parent goes or comes
+      var dw = Math.min(pw * 0.16, adultH * 0.3), dh = Math.min(room * 0.95, adultH * 1.08), dx = px + 10;
+      g.push('<rect x="' + n1(dx) + '" y="' + n1(floor - dh) + '" width="' + n1(dw) + '" height="' + n1(dh) + '" rx="3" class="dv-door' + (i === 1 ? '' : ' is-open') + '"/><circle cx="' + n1(dx + dw * 0.8) + '" cy="' + n1(floor - dh * 0.48) + '" r="2" class="dv-knob"/>');
+      var K = A.k[i], face = K[0], pose = K[1], sitting = !!K[2], toDoor = !!K[3], playing = !!K[4];
+      var parX = dx + dw + adultH * 0.12, fc = toDoor ? -1 : 1;
+      var kidX = i === 2 && (style === 'secure' || style === 'anxious') ? parX + adultH * 0.3 : i === 2 && style === 'disorganized' ? parX + adultH * 0.42 : px + pw * (phone ? 0.6 : 0.62);
+      if(sitting) kidX = Math.min(kidX, px + pw - kidH * 0.9);
+      // the blocks: in front of the child when playing, else off to the side
+      var bs = Math.max(8, kidH * 0.17);
+      if(playing) g.push(toyBlocks(kidX + fc * kidH * 0.55, floor, bs, 2), toyBlocks(kidX + fc * kidH * 0.8, floor, bs, 1));
+      else g.push(toyBlocks(px + pw - bs - 8, floor, bs, i === 1 && style === 'secure' ? 1 : 2));
+      if(i === 0) g.push(person({ x: Math.max(dx + dw * 0.5, px + adultH * 0.2), y: floor, h: adultH, age: 32, skin: SKIN[2], hair: '#2A1C14', hairStyle: 'long', shirt: 'var(--dv-shirt2)', pose: 'away', facing: -1, look: 'away' }));
+      if(i === 2) g.push(person({ x: parX, y: floor, h: adultH, age: 32, skin: SKIN[2], hair: '#2A1C14', hairStyle: 'long', shirt: 'var(--dv-shirt2)', pose: style === 'disorganized' ? 'stand' : 'hold', facing: 1, face: 'smile' }));
+      var look = i === 2 && style === 'disorganized' ? 'away' : null;
+      g.push(person({ x: kidX, y: floor, h: kidH, age: 1.6, skin: SKIN[2], hair: '#2A1C14', shirt: 'var(--dv-kid)', pants: 'var(--dv-kidpants)', pose: pose, face: face, facing: fc, look: look, floor: sitting }));
+      var topK = floor - (sitting ? kidH * 0.62 : kidH) - 6;
+      // what the child is doing, drawn on top
+      if(face === 'cry'){ var big = style === 'anxious'; g.push('<g class="dv-sob">' + [0, 1, 2].slice(0, big ? 3 : 2).map(function(j){ return '<path d="M' + n1(kidX - kidH * 0.32 - j * 6) + ' ' + n1(topK - 4 - j * 5) + ' l-6 -5 M' + n1(kidX + kidH * 0.32 + j * 6) + ' ' + n1(topK - 4 - j * 5) + ' l6 -5"/>'; }).join('') + '</g>'); }
+      if(style === 'disorganized') g.push('<text class="dv-q" x="' + n1(kidX + kidH * 0.3) + '" y="' + n1(topK - 4) + '">?</text>');
+      if(i === 2 && style === 'secure') g.push('<path class="dv-heart" transform="translate(' + n1((kidX + parX) / 2 + kidH * 0.05) + ' ' + n1(floor - adultH * 0.68) + ') scale(' + n1(kidH / 90) + ')" d="M0 6 C-14 -6 -8 -16 0 -9 C8 -16 14 -6 0 6 Z"/>');
+      if(i === 2 && style === 'anxious') g.push('<path class="dv-motion" d="M' + n1(Math.min(kidX + kidH * 0.45, px + pw - 18)) + ' ' + n1(floor - kidH * 0.75) + ' q8 4 0 10 M' + n1(Math.min(kidX + kidH * 0.55, px + pw - 12)) + ' ' + n1(floor - kidH * 0.6) + ' q8 4 0 10"/>');
+      if(i === 2 && style === 'avoidant') g.push('<path class="dv-gaze" d="M' + n1(kidX + kidH * 0.2) + ' ' + n1(floor - kidH * 0.5) + ' l' + n1(kidH * 0.32) + ' ' + n1(kidH * 0.22) + '"/>');
+      if(i === 2 && style === 'disorganized') g.push('<path class="dv-gaze" d="M' + n1(kidX + kidH * 0.05) + ' ' + n1(floor - kidH * 0.86) + ' l' + n1(kidH * 0.4) + ' ' + n1(-kidH * 0.1) + '"/>');
       g.push('<text class="dv-ptitle" x="' + (px + 10) + '" y="' + (py + 20) + '">' + titles[i] + '</text>');
       g.push('<text class="dv-pnote' + (i === 2 ? ' is-key' : '') + '" x="' + (phone ? px + pw - 10 : px + 10) + '" y="' + (phone ? py + 20 : py + 38) + '"' + (phone ? ' text-anchor="end"' : '') + '>' + esc(A.note[i]) + '</text>');
     }
@@ -488,7 +534,7 @@
         out += lifeScene(age(), 8, 8, sceneW, sceneH, phone);
         out += '<text class="dv-now-h" x="' + (phone ? 16 : 24) + '" y="' + (phone ? 30 : 38) + '">Age ' + esc(ageWords(age())) + '</text>';
         var ty = sceneH + 22;
-        tl = timeline(8, ty, W - 12, H - ty - (phone ? 52 : 34), age(), { only: allLanes ? null : 'think' });
+        tl = timeline(8, ty, W - 12, H - ty - (phone ? 52 : 34), age(), { only: allLanes ? null : 'think', focus: true });
         out += tl.svg;
         label = 'Lifespan timeline at age ' + ageWords(age()) + '. ' + lifeLine();
       } else if(lens === 'attach'){
@@ -539,9 +585,9 @@
       if(lens === 'life'){
         var a = age(), pg = D.stageAt(D.PIAGET, a), er = D.stageAt(D.ERIKSON, a);
         head = 'Age ' + ageWords(a) + ': ' + (a < 20 ? pg.name.toLowerCase() + ' thinking' : 'adult thinking') + ', ' + er.name.toLowerCase() + '.';
-        sub = a < 20 ? pg.hallmark + ' Erikson\'s question: "' + er.q + '"' : 'Erikson\'s question: "' + er.q + '"';
+        // One line on the stage; what this age can do and Erikson's question open in Explanation (pass 3).
         pills = [{ k: a < 20 ? 'Piaget' : 'Thinking', html: a < 20 ? pg.short : 'Adult', tone: 'readout' }]; pillsR = [{ k: 'Erikson', html: er.short, tone: 'accent' }];
-        why = lifeWhy(a);
+        why = '<p><b>At ' + esc(ageWords(a)) + '.</b> ' + (a < 20 ? esc(pg.hallmark) + ' ' : '') + 'Erikson\'s question: "' + esc(er.q) + '"</p>' + lifeWhy(a);
       } else if(lens === 'attach'){
         var A = D.byId(D.ATTACH, style);
         head = A.name + ' attachment.'; sub = 'When the parent returns, the child ' + A.back + '.';
@@ -623,11 +669,13 @@
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
     var phone = (window.innerWidth || 1280) <= 640, W = phone ? 360 : 640, H = phone ? 330 : 300, out = '', label = '';
     if(g.kind === 'life'){
-      var sw = phone ? W - 16 : 230, sh = phone ? 150 : H - 16;
+      // Desktop: the person's scene full width with their lane below, so the figure fills the stage (tool review 2026-11).
+      if(!phone) H = 450;
+      var sw = phone ? W - 16 : W - 16, sh = phone ? 150 : 290;
       out += lifeScene(g.age, 8, 8, sw, sh, phone);
       var lane = g.lane, open = lane === 'think' ? st.stage : lane === 'self' ? st.stage : lane === 'grow' ? st.period : st.style;
-      var tx = phone ? 8 : sw + 20, ty = phone ? sh + 20 : 30;
-      var t = timeline(tx, ty, W - tx - 4, phone ? H - ty - 6 : H - 60, g.age, { only: lane, hide: open ? [] : [lane] });
+      var tx = 8, ty = phone ? sh + 20 : sh + 50;
+      var t = timeline(tx, ty, W - tx - 4, phone ? H - ty - 6 : H - ty - 10, g.age, { only: lane, hide: open ? [] : [lane] });
       // On a phone the name and age go at the right end of the row, clear of the lane's own label at its left
       // ("Maya, age 13 months" sat on "Relationships"; consistency audit 2026-11, C3).
       out += t.svg + '<text class="dv-now-h" x="' + (phone ? W - 4 : tx + 124) + '" y="' + (ty - (phone ? 2 : 10)) + '"' + (phone ? ' text-anchor="end"' : '') + '>' + esc(g.name) + ', age ' + esc(ageWords(g.age)) + '</text>';

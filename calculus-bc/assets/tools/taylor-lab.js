@@ -95,7 +95,9 @@
     var cSl = T.slider({ label: 'Center c', min: -2, max: 2, step: 0.1, value: c, decimals: 1, onInput: function(v){ act(); c = v; draw(); speak(); } });
     var xSl = T.slider({ label: 'Error measured at x', min: -3, max: 3, step: 0.05, value: xe, decimals: 2, onInput: function(v){ act(); xe = v; draw(); speak(); } });
     nSl.el.setAttribute('data-ls-primary', '');
-    $('.tl-sl').appendChild(nSl.el); $('.tl-sl').appendChild(cSl.el); $('.tl-more-b').appendChild(xSl.el);
+    // Pass 3 (judge c): the dock opens on the degree; the center slider joins the error-point slider under More
+    // (the center can still be dragged on the curve).
+    $('.tl-sl').appendChild(nSl.el); $('.tl-more-b').appendChild(cSl.el); $('.tl-more-b').appendChild(xSl.el);
     host.querySelectorAll('.tl-chip').forEach(function(b){ b.addEventListener('click', function(){ act(); pick(b.getAttribute('data-id')); }); });
     host.querySelectorAll('.tl-bb').forEach(function(b){ b.addEventListener('click', function(){ act(); band = b.getAttribute('data-b'); syncBand(); draw(); speak(); }); });
     function syncBand(){ [host, LS && LS.root].forEach(function(r){ if(r) r.querySelectorAll('.tl-bb').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-b') === band)); }); }); }

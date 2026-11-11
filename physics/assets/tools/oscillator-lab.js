@@ -146,7 +146,7 @@
     }
     function play(on){
       playing = on; playBtn.setAttribute('aria-pressed', String(on)); playBtn.textContent = on ? 'Pause' : 'Play';
-      if(on){ cue.done(); loop.start(); if(S.reduced()){ playing = false; playBtn.setAttribute('aria-pressed', 'false'); playBtn.textContent = 'Play'; } } else loop.stop();
+      if(on){ cue.done(); stage.classList.add('ol-e-on'); loop.start(); if(S.reduced()){ playing = false; playBtn.setAttribute('aria-pressed', 'false'); playBtn.textContent = 'Play'; } } else loop.stop();
     }
     playBtn.addEventListener('click', function(){ play(!playing); });
     dock.querySelector('.ol-reset').addEventListener('click', function(){ loop.stop(); release(); if(playing || S.reduced()) { playing = false; play(true); } else draw(); });
@@ -231,10 +231,18 @@
         label = 'A pendulum ' + F(sys.L, 2) + ' m long with a ' + kgTxt(sys.m) + ' bob, released from ' + F(sys.A, 0) + ' degrees, now at ' + F(M.deg(th), 1) + ' degrees.';
       }
       var pl = PL.filter(function(p){ return Math.abs(p.g - sys.g) < 1e-9; })[0];
-      if(sys.type !== 'spring' && !g.short) out += '<text class="ol-tm" x="' + (W - 10) + '" y="' + (H - 8) + '" text-anchor="end">' + (pl ? (pl.name === 'Earth' ? 'On Earth' : 'On ' + pl.name) : '') + ', g = ' + sys.g + ' m/s²</text>';
+      var plTxt = (pl ? (pl.name === 'Earth' ? 'On Earth' : 'On ' + pl.name) : '') + ', g = ' + sys.g + ' m/s²';
+      // A narrow pendulum stage is cropped round the swing (below), so its planet line goes under the swing, centered.
+      var pendNar = g.nar && sys.type === 'pendulum', Lq = 0, fsN = 24;
+      if(pendNar) Lq = sys.L * (H - 80) / Math.max(1, sys.L) * Math.min(1, 0.55 + 0.45 * sys.L / 2);
+      if(sys.type !== 'spring' && !g.short) out += pendNar ? '<text class="ol-tm" x="' + (W / 2) + '" y="' + n1(6 + Lq + 60 + 22) + '" text-anchor="middle">' + plTxt + '</text>' :
+        '<text class="ol-tm" x="' + (W - 10) + '" y="' + (H - 8) + '" text-anchor="end">' + plTxt + '</text>';
       // Phone: the scene is drawn small, so its labels are set larger (a style, which beats the class's size).
       if(g.nar) out = out.replace(/class="ol-tm"/g, 'class="ol-tm" style="font-size:' + (sys.type === 'spring' ? 19 : sys.type === 'vspring' ? (g.short ? 30 : 21) : 24) + 'px"').replace(/font-size="12" font-weight="900" fill="#2B2205"/g, 'font-size="' + (g.short ? 30 : 21) + '" font-weight="900" fill="#2B2205"');
-      if(g.nar && sys.type === 'pendulum'){ var Lq = sys.L * (H - 80) / Math.max(1, sys.L) * Math.min(1, 0.55 + 0.45 * sys.L / 2), hw = Math.max(120, Lq * Math.sin(M.rad(Math.max(sys.A, 8))) + 50); g.vb = n1(W / 2 - hw) + ' 6 ' + n1(2 * hw) + ' ' + n1(Lq + 60); }
+      // The crop is wide enough for the swing and for both labels at the larger size (about 0.56 em a character),
+      // so neither "ℓ = ..." on the left nor the planet line is cut at the edge of the stage.
+      if(pendNar){ var lW = ('ℓ = ' + F(sys.L, 2) + ' m').length * 0.56 * fsN + 10 + 8, pW = plTxt.length * 0.56 * fsN / 2 + 8,
+        hw = Math.max(120, Lq * Math.sin(M.rad(Math.max(sys.A, 8))) + 50, lW, pW); g.vb = n1(W / 2 - hw) + ' 6 ' + n1(2 * hw) + ' ' + n1(Lq + 60 + 32); }
       sceneEl.innerHTML = '<svg viewBox="' + (g.vb || '0 0 ' + W + ' ' + H) + '" class="phys-scene" role="group" aria-label="' + esc(NAMES[sysKey]) + '">' + defs(did) + '<title>' + esc(label) + '</title>' + out + '</svg>';
       dragWire();
     }
@@ -253,9 +261,9 @@
        left of the zero line, clear of the tick numbers. Desktop: the fixed 360 x 104 frame. */
     function graphGeom(){
       var on = stage.querySelector('.ol-graph.is-on'), gw = (on && on.clientWidth) || stage.querySelector('.ol-graphs').clientWidth || 0;
-      gPh = phoneNow() && gw > 200;
+      gPh = gw > 200;   // one graph at a time on every size (pass 3), drawn one unit per CSS px
       var low = window.innerHeight <= 540;   // phone on its side: a shorter graph, the scene keeps its share
-      if(gPh){ GW = Math.round(Math.min(640, gw)); GH = low ? 100 : 124; GL = 58; GR = 10; GT = 8; GB = 22; }
+      if(gPh){ GW = Math.round(Math.min(phoneNow() ? 640 : 900, gw)); GH = low ? 100 : phoneNow() ? 124 : 150; GL = 58; GR = 10; GT = 8; GB = 22; }
       else { GW = 360; GH = 104; GL = 46; GR = 10; GT = 8; GB = 22; }
     }
     function buildGraphs(){
@@ -289,8 +297,8 @@
     function drawGraphs(){
       if(!hist.length) return;
       var t1 = hist[hist.length - 1].t, w = gEls.x.w, t0 = Math.max(0, t1 - w);
-      var pre = hist.length < 2, gp = pre ? ghost() : null;
-      ['x', 'v', 'a'].forEach(function(k){ var G = gEls[k]; if(!G.ghost) return; G.ghost.setAttribute('points', pre ? gp[k].join(' ') : ''); G.ghostT.textContent = pre ? 'Press Play to trace it' : ''; });
+      var pre = hist.length < 2, gp = pre ? ghost() : null, gs = stage.querySelector('.ol-gsel'), oneG = !!(gs && gs.offsetParent);   // the hint once, unless one graph shows at a time
+      ['x', 'v', 'a'].forEach(function(k){ var G = gEls[k]; if(!G.ghost) return; G.ghost.setAttribute('points', pre ? gp[k].join(' ') : ''); G.ghostT.textContent = pre && (k === 'x' || oneG) ? 'Press Play to trace it' : ''; });
       ['x', 'v', 'a'].forEach(function(k){
         var G = gEls[k], pts = [];
         for(var i = 0; i < hist.length; i++){ var h = hist[i]; if(h.t < t0) continue; pts.push(n1(GL + (h.t - t0) / w * G.PW) + ',' + n1(GT + G.PH / 2 - h[k] / G.ym * G.PH / 2)); }
@@ -323,7 +331,8 @@
         (sys.type === 'pendulum' ? ' For the pendulum the graphs show s = ℓ θ, the distance along the arc from the bottom (positive to the right), and the bob\'s speed and acceleration along the arc.' : sys.type === 'vspring' ? ' Here x is measured downward from the equilibrium position, where the spring is already stretched m g / k.' : '') + '</p>';
       T.explain(why, head, body);
       if(s){
-        s.caption(head, 'explore');
+        // The T pill shows the period, so the caption does not repeat it (pass 3).
+        s.caption(head.indexOf('<b>T = ') === 0 ? head.replace(/^<b>T = [^<]*<\/b> /, '') : head, 'explore');
         s.pills([{ k: 'T', html: F(tMeas || Tl, 2) + ' s', tone: 'readout' }], 'left', 'explore');
         s.pills([{ html: tMeas ? 'measured' : 'from the formula', tone: 'ghost' }], 'right', 'explore');
       }
@@ -387,7 +396,7 @@
     buildVars(); release(); draw();
     if(window.ResizeObserver){ var lastW = 0; new ResizeObserver(function(){ var w = sceneEl.clientWidth; if(Math.abs(w - lastW) > 40){ lastW = w; built = false; draw(); } }).observe(sceneEl);
       // Phone graphs are drawn one unit per CSS px: redraw when their box changes width.
-      var gBox = stage.querySelector('.ol-graphs'), lastG = 0; new ResizeObserver(function(){ var w = gBox.clientWidth; if(phoneNow() && Math.abs(w - lastG) > 2){ lastG = w; built = false; draw(); } }).observe(gBox); }
+      var gBox = stage.querySelector('.ol-graphs'), lastG = 0; new ResizeObserver(function(){ var w = gBox.clientWidth; if(Math.abs(w - lastG) > 2){ lastG = w; built = false; draw(); } }).observe(gBox); }
     return {
       stop: function(){ loop.stop(); playing = false; playBtn.textContent = 'Play'; playBtn.setAttribute('aria-pressed', 'false'); },
       studio: function(pane, studio){

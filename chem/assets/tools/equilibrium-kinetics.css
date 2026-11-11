@@ -1,0 +1,12 @@
+/* Equilibrium and kinetics, the tool's own sheet (pass 3 cleanup, docs/tool-review/pass3/chem.md).
+   The graph chooser moved to Details, so on a wide stage the right column is
+   the gauge and the graph, the graph taking the rest of the height. */
+@media (min-width:1000px){
+  .ls-root .chem-ls-stage .ek-stage{grid-template-rows:auto minmax(0,1fr);}
+  .ls-root .chem-ls-stage .ek-stage .ek-vessel{grid-row:1 / span 2;}
+}
+/* In Details: the catalyst and the challenge side by side, then the graph chooser. */
+.ls-root .chem-ls-det .ek-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.ls-root .chem-ls-det .ek-acts h3{flex:1 0 100%;margin:0;}
+.ls-root .chem-ls-det .ek-acts .bt-btn{flex:1 1 auto;}
+.ls-root .chem-ls-det .ek-tabs{margin-top:4px;}

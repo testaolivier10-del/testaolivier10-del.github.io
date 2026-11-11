@@ -117,8 +117,8 @@
       if(Math.abs(P.s - P.s0) > 1e-6) shifts.S = P.s - P.s0;
       var S = FM.pcState(P.d, P.s), x = [];
       var label = 'Market and firm graphs. ' + G.describe(spec, { shifts: shifts }) + ' ' + pcWords(S);
-      // Long run: the points go E2 to E3, supply S1 to S2 (curveN0, integration T2-3).
-      var svg = G.svg(spec, { shifts: shifts, showEq: true, n1: P.phase === 'long' ? '3' : '2', n0: P.phase === 'long' ? '2' : '1', curveN0: '1' }, { label: label });
+      // Long run: the points go E2 to E3, supply S1 to S2 (curveN0, integration T2-3). Before any change: plain E (pass 2).
+      var svg = G.svg(spec, { shifts: shifts, showEq: true, n1: P.phase === 'long' ? '3' : P.phase === 'start' ? '' : '2', n0: P.phase === 'long' ? '2' : '1', curveN0: '1' }, { label: label });
       if(P.phase === 'long'){
         // Demand already moved in the short run and is drawn unshifted here; the engine has no
         // number for an unshifted curve, so it is labeled D2 by hand.
@@ -179,6 +179,8 @@
       svgEl.innerHTML = tag(st.kind === 'pc' ? pcSvg() : monoSvg(st.kind));
       if(!st.anim) words();
       longBtn.disabled = !!st.anim || Math.abs(FM.pcState(st.pc.d, st.pc.s).P - 5) < 0.05;
+      // Reveal in time (pass 2): Run the long run and Start over appear once a change has been made.
+      longBtn.parentNode.hidden = st.pc.phase === 'start' && !st.pc.d && !st.pc.s;
       ctl.querySelector('.fm-mlong').disabled = !!st.anim || st.mcomp.phase === 'long';
     }
     function words(){

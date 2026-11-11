@@ -6,7 +6,9 @@
    (Explore, then Test yourself) on the Tool Studio.
 
    Explore, three scenes (the Scene switch):
-     Atmosphere  one cross-section with the two systems in their own layers,
+     Greenhouse and Ozone layer (pass 3: two scenes of one picture, the
+                 other layer dimmed, one slider each)
+                 one cross-section with the two systems in their own layers,
                  never mixed: the troposphere below, where CO2 molecules
                  catch the infrared (long red waves) rising from the ground and
                  send some back down; the stratosphere above, where ozone
@@ -32,7 +34,9 @@
   var K = M.climateChange, esc = T.esc;
   function F(x, d){ return T.F(x, d == null ? 1 : d); }
   function big(x){ return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-  var VIEWS = [{ v: 'air', label: 'Atmosphere' }, { v: 'ocean', label: 'Ocean pH' }, { v: 'sea', label: 'Sea level' }];
+  // Pass 3: the greenhouse effect and the ozone layer are two scenes (one idea
+  // each), the same cross-section with the other layer dimmed.
+  var VIEWS = [{ v: 'air', label: 'Greenhouse' }, { v: 'ozone', label: 'Ozone layer' }, { v: 'ocean', label: 'Ocean pH' }, { v: 'sea', label: 'Sea level' }];
   /* Label placement. Each label tries its candidate spots in order and takes
      the first that clears the lines drawn (rays, curves), the boxes already
      taken (labels, art), the picture's edges, an optional area it must stay
@@ -117,12 +121,17 @@
   function ray(cls, x0, y0, x1, y1, amp, len, w){ return '<polyline class="cc-ray ' + cls + '" style="stroke-width:' + (w || 2.4).toFixed(1) + '" points="' + wave(x0, y0, x1, y1, amp, len) + '"/>' + head(x1, y1, Math.atan2(y1 - y0, x1 - x0), cls); }
   function co2(x, y, s){ s = s || 1; return '<g class="cc-co2" transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s + ')"><circle class="o" cx="-6" cy="0" r="3.4"/><circle class="c" cx="0" cy="0" r="3.4"/><circle class="o" cx="6" cy="0" r="3.4"/></g>'; }
   function o3(x, y, s){ s = s || 1; return '<g class="cc-o3" transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s + ')"><circle cx="-5" cy="2" r="3.2"/><circle cx="0" cy="-2.4" r="3.2"/><circle cx="5" cy="2" r="3.2"/></g>'; }
+  function carb(x, y, s){ s = s || 1; return '<g class="cc-carbion" transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s + ')"><circle class="c" cx="0" cy="0" r="3.2"/><circle class="o" cx="0" cy="-6" r="2.6"/><circle class="o" cx="5.2" cy="3" r="2.6"/><circle class="o" cx="-5.2" cy="3" r="2.6"/></g>'; }
   function cl(x, y){ return '<circle class="cc-cl" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3.6"/>'; }
   function spots(seed, n){ var r = M.rng(seed), a = []; for(var i = 0; i < n; i++) a.push([r(), r()]); return a; }
   var CO2P = spots(5, 60), O3P = spots(9, 70), CLP = spots(13, 20);
 
-  /* The atmosphere cross-section, from a state { ppm, cfc }. */
-  function atmos(Wd, H, st, phone, simple){
+  /* The atmosphere cross-section, from a state { ppm, cfc }. focus 'ir'
+     draws the greenhouse effect (the stratosphere dimmed, no UV), 'uv' the
+     ozone layer (the troposphere dimmed, no CO2 or infrared); no focus draws
+     both (Test yourself). */
+  function atmos(Wd, H, st, phone, simple, focus){
+    var IR = focus !== 'uv', UV = focus !== 'ir';
     var g = [], du = K.ozone(st.cfc), uv = K.uvb(du), fo = K.forcing(st.ppm), dT = K.warming(st.ppm);
     var ground = Math.round(H * 0.86), strTop = Math.round(H * 0.08), strBot = Math.round(H * 0.34), tropTop = Math.round(H * 0.42);
     var L = phone ? 6 : 12, R = Wd - (phone ? 6 : 12), labX = phone ? L + 6 : L + 12;
@@ -136,25 +145,32 @@
     g.push('<path class="cc-ground" d="M0 ' + ground + ' Q' + (Wd * 0.25) + ' ' + (ground - 10) + ' ' + (Wd * 0.5) + ' ' + (ground - 2) + ' T' + Wd + ' ' + (ground - 6) + ' V' + H + ' H0 Z"/>');
     for(var t = 0; t < (phone ? 4 : 7); t++){ var tx = Wd * (0.56 + t * (phone ? 0.1 : 0.06)), ty = ground - 4; g.push('<g class="cc-tree"><rect x="' + (tx - 1.5).toFixed(1) + '" y="' + (ty - 8) + '" width="3" height="10"/><circle cx="' + tx.toFixed(1) + '" cy="' + (ty - 13) + '" r="7"/></g>'); Lo.rect(tx - 8, ty - 21, tx + 8, ty + 2); }
     var hx = Wd * 0.18; g.push('<g class="cc-house"><rect x="' + hx.toFixed(1) + '" y="' + (ground - 18) + '" width="22" height="16"/><path d="M' + (hx - 3).toFixed(1) + ' ' + (ground - 18) + ' l14 -11 l14 11 z"/></g>'); Lo.rect(hx - 4, ground - 30, hx + 26, ground);
+    // the layer not in focus is veiled (under the sun and the rays), so the eye goes to the one that changes
+    if(focus === 'ir') g.push('<rect class="cc-veil" x="0" y="0" width="' + Wd + '" height="' + tropTop + '"/>');
+    if(focus === 'uv') g.push('<rect class="cc-veil" x="0" y="' + tropTop + '" width="' + Wd + '" height="' + (H - tropTop) + '"/>');
     // the sun
     var sx = phone ? 34 : 54, sy = strTop + (phone ? -2 : 4), sr = phone ? 20 : 26;
     g.push('<circle class="cc-sun" cx="' + sx + '" cy="' + sy + '" r="' + sr + '"/>'); Lo.rect(sx - sr - 3, sy - sr - 3, sx + sr + 3, sy + sr + 3);
     // molecules: ozone in its layer (fewer with CFCs), chlorine, CO2 in the troposphere
     var nO3 = Math.round((phone ? 18 : 46) * (du - 60) / 240), nCl = Math.round((phone ? 6 : 14) * st.cfc), nCO2 = Math.round((phone ? 7 : 18) * Math.min(4.3, st.ppm / 280));
-    O3P.slice(0, nO3).forEach(function(p){ g.push(o3(L + 70 + p[0] * (R - L - 80), strTop + 12 + p[1] * (strBot - strTop - 20), phone ? 0.85 : 1)); });
+    if(!UV) nCl = 0;
+    if(!IR) nCO2 = 0;
+    O3P.slice(0, UV ? nO3 : 0).forEach(function(p){ g.push(o3(L + 70 + p[0] * (R - L - 80), strTop + 12 + p[1] * (strBot - strTop - 20), phone ? 0.85 : 1)); });
     CLP.slice(0, nCl).forEach(function(p){ g.push(cl(L + 80 + p[0] * (R - L - 90), strTop + 14 + p[1] * (strBot - strTop - 24))); });
     CO2P.slice(0, nCO2).forEach(function(p){ g.push(co2(L + 50 + p[0] * (R - L - 60), tropTop + 14 + p[1] * (ground - tropTop - 50), phone ? 0.8 : 1)); });
     // visible sunlight: passes straight through to the ground
-    [0.32, 0.5].forEach(function(f){ var x1 = Wd * f; g.push('<line class="cc-vis" x1="' + (sx + 18) + '" y1="' + (sy + 12) + '" x2="' + x1.toFixed(1) + '" y2="' + (ground - 6) + '"/>' + head(x1, ground - 6, Math.atan2(ground - 6 - sy - 12, x1 - sx - 18), 'cc-h-vis')); Lo.line([[sx + 18, sy + 12], [x1, ground - 6]], 3); });
+    (IR ? [0.32, 0.5] : []).forEach(function(f){ var x1 = Wd * f; g.push('<line class="cc-vis" x1="' + (sx + 18) + '" y1="' + (sy + 12) + '" x2="' + x1.toFixed(1) + '" y2="' + (ground - 6) + '"/>' + head(x1, ground - 6, Math.atan2(ground - 6 - sy - 12, x1 - sx - 18), 'cc-h-vis')); Lo.line([[sx + 18, sy + 12], [x1, ground - 6]], 3); });
     // ultraviolet: stopped in the ozone layer; UV-B through, stronger as ozone thins
     var uvs = phone ? [0.3, 0.46] : [0.24, 0.36, 0.48], yStop = strTop + (strBot - strTop) * 0.55;
-    uvs.forEach(function(f){ var x1 = Wd * f; g.push(ray('cc-uv', sx + 22, sy + 4, x1, yStop, 3, 7, 2.2) + '<circle class="cc-stop" cx="' + x1.toFixed(1) + '" cy="' + yStop.toFixed(1) + '" r="5"/>'); Lo.line([[sx + 22, sy + 4], [x1, yStop]], 6); Lo.rect(x1 - 7, yStop - 7, x1 + 7, yStop + 7); });
+    (UV ? uvs : []).forEach(function(f){ var x1 = Wd * f; g.push(ray('cc-uv', sx + 22, sy + 4, x1, yStop, 3, 7, 2.2) + '<circle class="cc-stop" cx="' + x1.toFixed(1) + '" cy="' + yStop.toFixed(1) + '" r="5"/>'); Lo.line([[sx + 22, sy + 4], [x1, yStop]], 6); Lo.rect(x1 - 7, yStop - 7, x1 + 7, yStop + 7); });
     var uvw = Math.min(6, 1 + 2.4 * (uv - 1) + 0.6), ux = Wd * (phone ? 0.58 : 0.6);
-    g.push('<g style="opacity:' + Math.min(1, 0.35 + 0.65 * (uv - 1) / 1.5 + 0.25).toFixed(2) + '">' + ray('cc-uv', sx + 22, sy + 8, ux, ground - 8, 3, 7, uvw) + '</g>');
-    Lo.line([[sx + 22, sy + 8], [ux, ground - 8]], 4 + uvw / 2);
+    if(UV){
+      g.push('<g style="opacity:' + Math.min(1, 0.35 + 0.65 * (uv - 1) / 1.5 + 0.25).toFixed(2) + '">' + ray('cc-uv', sx + 22, sy + 8, ux, ground - 8, 3, 7, uvw) + '</g>');
+      Lo.line([[sx + 22, sy + 8], [ux, ground - 8]], 4 + uvw / 2);
+    }
     // infrared: from the ground; some escapes, some is absorbed by CO2 and sent back down
     var share = Math.min(4, 1 + Math.round(3 * fo / K.forcing(1200))), irX = phone ? [0.68, 0.78, 0.88, 0.95] : [0.7, 0.77, 0.84, 0.91], hits = [];
-    irX.forEach(function(f, i){
+    (IR ? irX : []).forEach(function(f, i){
       var x0 = Wd * f, y0 = ground - 6;
       if(i < share){ var ya = tropTop + (ground - tropTop) * (0.35 + 0.1 * (i % 2)); hits.push([x0 - 8, ya]); g.push(ray('cc-ir', x0, y0, x0 - 8, ya, 4, 16, 2.6) + '<circle class="cc-hit" cx="' + (x0 - 8).toFixed(1) + '" cy="' + ya.toFixed(1) + '" r="6"/>' + '<path class="cc-back" d="M' + (x0 - 12).toFixed(1) + ' ' + (ya + 6).toFixed(1) + ' q-18 ' + ((y0 - ya) * 0.4).toFixed(1) + ' -10 ' + (y0 - ya - 14).toFixed(1) + '"/>' + head(x0 - 22, y0 - 8, Math.PI / 2 + 0.2, 'cc-h-ir'));
         Lo.line([[x0, y0], [x0 - 8, ya]], 7); Lo.rect(x0 - 15, ya - 8, x0 - 1, ya + 8); Lo.line([[x0 - 12, ya + 6], [x0 - 26, ya + (y0 - ya) * 0.45], [x0 - 22, y0 - 8]], 4); }
@@ -162,11 +178,11 @@
     });
     if(simple) return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT };
     // the thermometer, on the ground clear of the rays
-    var thx = Lo.box(16, 54, steps(Wd * 0.36, Wd * 0.54, 12).concat(steps(Wd * 0.08, Wd * 0.3, 8)).map(function(x){ return [x, ground - 60]; }), { within: { x0: 0, y0: tropTop, x1: Wd, y1: ground + 2 } }).x0 + 8;
+    var thx = !IR ? 0 : Lo.box(16, 54, steps(Wd * 0.36, Wd * 0.54, 12).concat(steps(Wd * 0.08, Wd * 0.3, 8)).map(function(x){ return [x, ground - 60]; }), { within: { x0: 0, y0: tropTop, x1: Wd, y1: ground + 2 } }).x0 + 8;
     var fill = 36 * Math.min(1, 0.25 + dT / 7);
-    g.push('<g class="cc-thermo"><rect x="' + (thx - 4).toFixed(1) + '" y="' + (ground - 58) + '" width="8" height="46" rx="4"/><rect class="cc-merc" x="' + (thx - 2).toFixed(1) + '" y="' + (ground - 14 - fill).toFixed(1) + '" width="4" height="' + fill.toFixed(1) + '"/><circle cx="' + thx.toFixed(1) + '" cy="' + (ground - 12) + '" r="6"/></g>');
+    if(IR) g.push('<g class="cc-thermo"><rect x="' + (thx - 4).toFixed(1) + '" y="' + (ground - 58) + '" width="8" height="46" rx="4"/><rect class="cc-merc" x="' + (thx - 2).toFixed(1) + '" y="' + (ground - 14 - fill).toFixed(1) + '" width="4" height="' + fill.toFixed(1) + '"/><circle cx="' + thx.toFixed(1) + '" cy="' + (ground - 12) + '" r="6"/></g>');
     // the key (desktop): a box in the clearest part of the sky
-    if(!phone){
+    if(false){   // pass 2: the rays are named where they act (Ozone absorbs UV, CO2 absorbs infrared), so no key
       var kb = Lo.box(222, 60, grid(steps(R - 222, Wd * 0.5, 10), [strTop + 4, tropTop + 6, tropTop + 70], [R, strTop]).map(function(p){ return [p[0], p[1]]; }), { within: { x0: 0, y0: 0, x1: Wd, y1: ground - 30 } }), kx = kb.x0 + 8, ky = kb.y0 + 2;
       g.push('<g class="cc-key"><rect x="' + kb.x0.toFixed(1) + '" y="' + kb.y0.toFixed(1) + '" width="222" height="60" rx="8"/>' +
         '<polyline class="cc-ray cc-uv" points="' + wave(kx, ky + 10, kx + 34, ky + 10, 3, 7) + '"/><text class="cc-keyt" x="' + (kx + 42) + '" y="' + (ky + 14) + '">Ultraviolet (from the Sun)</text>' +
@@ -183,16 +199,17 @@
     }
     // every spot with each anchor, nearest the thing named first
     var near = function(x, y, ys){ var c = []; ['middle', 'start', 'end'].forEach(function(a){ c = c.concat(grid(xs, ys, null, a)); }); c.sort(function(p, q){ return Math.hypot(p[0] - x, p[1] - y) - Math.hypot(q[0] - x, q[1] - y); }); return c; };
-    lab(phone ? 'O₃ absorbs UV' : 'Ozone absorbs UV', 'cc-call cc-c-uv', 12.5, near(Wd * 0.36, yStop - 16, steps(strTop + 16, strBot - 4, 6)), STRAT);
-    if(nCl) lab(phone ? 'Cl breaks O₃' : 'Cl + O₃ → ClO + O₂, and Cl is freed again', 'cc-call cc-c-cl', 12.5, near(Wd * 0.66, strBot + 12, steps(strTop + 16, tropTop - 4, 8)), STRAT);
-    lab(phone ? 'Stratosphere' : 'Stratosphere, 15 to 35 km: the ozone layer', 'cc-layer', 13, [[labX, strBot - 8, 'start'], [labX, tropTop - 6, 'start']].concat(grid(xs, steps(strTop + 16, tropTop - 4, 6), [0, tropTop], 'start')), STRAT);
+    if(UV) lab(phone ? 'O₃ absorbs UV' : 'Ozone absorbs UV', 'cc-call cc-c-uv', 12.5, near(Wd * 0.36, yStop - 16, steps(strTop + 16, strBot - 4, 6)), STRAT);
+    if(nCl) lab(phone ? 'Cl breaks O₃' : 'Chlorine from CFCs breaks O₃', 'cc-call cc-c-cl', 12.5, near(Wd * 0.66, strBot + 12, steps(strTop + 16, tropTop - 4, 8)), STRAT);
+    lab(phone || !UV ? 'Stratosphere' : 'Stratosphere: the ozone layer', 'cc-layer', 13, [[labX, strBot - 8, 'start'], [labX, tropTop - 6, 'start']].concat(grid(xs, steps(strTop + 16, tropTop - 4, 6), [0, tropTop], 'start')), STRAT);
     var hx0 = hits.length ? hits[0][0] : Wd * 0.78, hy0 = hits.length ? hits[0][1] : tropTop + 20;
-    lab(phone ? 'CO₂ traps IR' : 'CO₂ absorbs infrared', 'cc-call cc-c-ir', 12.5, near(hx0, hy0 - 22, steps(tropTop + 16, ground - 40, 10)), TROP);
+    if(IR) lab(phone ? 'CO₂ traps IR' : 'CO₂ absorbs infrared', 'cc-call cc-c-ir', 12.5, near(hx0, hy0 - 22, steps(tropTop + 16, ground - 40, 10)), TROP);
     // phones: the UV-B and warming numbers are in the pills and the two mini
     // charts already, so the scene keeps only the processes (tool-audit: busy on phones)
-    if(!phone) lab('UV-B ×' + F(uv, 2), 'cc-call cc-c-uv', 12.5, near(ux + 30, ground - 24, steps(tropTop + 16, ground - 6, 14)), TROP);
-    if(!phone) lab('+' + F(dT, 1) + ' °C', 'cc-call cc-c-ir', 13, [[thx + 9, ground - 46, 'start'], [thx - 9, ground - 46, 'end'], [thx + 9, ground - 30, 'start'], [thx - 9, ground - 30, 'end'], [thx, ground - 64, 'middle']].concat(near(thx, ground - 40, steps(tropTop + 20, ground - 6, 10))), TROP);
-    lab(phone ? 'Troposphere' : 'Troposphere, 0 to 12 km: greenhouse gases', 'cc-layer', 13, [[labX, ground - 30, 'start'], [labX, ground - 48, 'start']].concat(grid(xs, steps(tropTop + 16, ground - 6, 10), [0, ground], 'start')), TROP, phone);
+    // pass 2: UV-B and warming are the two readouts above the picture, on every screen size
+    if(false) lab('UV-B ×' + F(uv, 2), 'cc-call cc-c-uv', 12.5, near(ux + 30, ground - 24, steps(tropTop + 16, ground - 6, 14)), TROP);
+    if(false) lab('+' + F(dT, 1) + ' °C', 'cc-call cc-c-ir', 13, [[thx + 9, ground - 46, 'start'], [thx - 9, ground - 46, 'end'], [thx + 9, ground - 30, 'start'], [thx - 9, ground - 30, 'end'], [thx, ground - 64, 'middle']].concat(near(thx, ground - 40, steps(tropTop + 20, ground - 6, 10))), TROP);
+    lab(phone || !IR ? 'Troposphere' : 'Troposphere: greenhouse gases', 'cc-layer', 13, [[labX, ground - 30, 'start'], [labX, ground - 48, 'start']].concat(grid(xs, steps(tropTop + 16, ground - 6, 10), [0, ground], 'start')), TROP, phone);
     return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT, clash: Lo.clash(), misses: Lo.misses() };
   }
 
@@ -220,21 +237,21 @@
       '<div class="cc-fig"><svg class="cc-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
       '<div class="cc-ctl">' +
         '<div class="ls-seg cc-views" role="group" aria-label="Scene">' + VIEWS.map(function(x){ return '<button type="button" data-v="' + x.v + '" aria-pressed="false">' + x.label + '</button>'; }).join('') + '</div>' +
-        '<div class="cc-grp cc-grp-air"></div><div class="cc-grp cc-grp-ocean"></div><div class="cc-grp cc-grp-sea"><button type="button" class="bt-btn cc-meltbtn" aria-pressed="false">Melt the floating sea ice</button></div>' +
+        '<div class="cc-grp cc-grp-air"></div><div class="cc-grp cc-grp-ozone"></div><div class="cc-grp cc-grp-ocean"></div><div class="cc-grp cc-grp-sea"><button type="button" class="bt-btn cc-meltbtn" aria-pressed="false">Melt the floating sea ice</button></div>' +
       '</div>' +
       '<div class="cc-say"></div>' +
-      T.moreHtml('<p class="ls-lbl cc-pl">CO₂ in a given year (NOAA)</p><div class="cc-years ls-scroll" role="group" aria-label="CO2 in a given year">' + YRS.map(function(y){ return '<button type="button" class="tchip cc-year" data-ppm="' + y[1] + '">' + y[0] + ': ' + y[1] + ' ppm</button>'; }).join('') + '<button type="button" class="tchip cc-year" data-ppm="560">Doubled: 560 ppm</button></div>' +
-        '<p class="ls-lbl cc-pl">CFCs</p><div class="cc-cfcs ls-scroll" role="group" aria-label="CFC history"><button type="button" class="tchip cc-cfcp" data-c="0">Before 1930: none</button><button type="button" class="tchip cc-cfcp" data-c="0.9">1990s peak</button><button type="button" class="tchip cc-cfcp" data-c="0.5">Today: recovering</button></div>', 'years, CFC history') +
+      T.moreHtml('<p class="ls-lbl cc-pl cc-pl-y">CO₂ in a given year (NOAA)</p><div class="cc-years ls-scroll" role="group" aria-label="CO2 in a given year">' + YRS.map(function(y){ return '<button type="button" class="tchip cc-year" data-ppm="' + y[1] + '">' + y[0] + ': ' + y[1] + ' ppm</button>'; }).join('') + '<button type="button" class="tchip cc-year" data-ppm="560">Doubled: 560 ppm</button></div>' +
+        '<p class="ls-lbl cc-pl cc-pl-c">CFCs</p><div class="cc-cfcs ls-scroll" role="group" aria-label="CFC history"><button type="button" class="tchip cc-cfcp" data-c="0">Before 1930: none</button><button type="button" class="tchip cc-cfcp" data-c="0.9">1990s peak</button><button type="button" class="tchip cc-cfcp" data-c="0.5">Today: recovering</button></div>', 'years, CFC history') +
       '<div class="cc-nums"></div><p class="sr-only cc-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.cc-live'));
-    var cue = T.cue('Raise CO₂, then add CFCs. Watch which layer each one changes.');
+    var cue = T.cue('Raise CO₂ and watch the infrared. Then open Ozone layer and add CFCs.');
     $('.cc-ctl').insertBefore(cue.el, $('.cc-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var svg = $('.cc-svg');
     var sCO2 = T.slider({ label: 'CO₂ in the air', min: 280, max: 1200, step: 5, value: ppm, unit: 'ppm', onInput: function(v){ act(); ppm = v; ocean = v; sOc.set(v); draw(); words(); say(airLine()); } });
-    var sCFC = T.slider({ label: 'CFC use', min: 0, max: 1, step: 0.05, value: cfc, onInput: function(v){ act(); cfc = v; draw(); words(); say(airLine()); } });
+    var sCFC = T.slider({ label: 'CFC use', min: 0, max: 1, step: 0.05, value: cfc, onInput: function(v){ act(); cfc = v; draw(); words(); say(ozoneLine()); } });
     relabel(sCFC, function(v){ return CFC_LABEL(v); });
-    $('.cc-grp-air').appendChild(sCO2.el); $('.cc-grp-air').appendChild(sCFC.el);
+    $('.cc-grp-air').appendChild(sCO2.el); $('.cc-grp-ozone').appendChild(sCFC.el);
     var sOc = T.slider({ label: 'CO₂ in the air', min: 280, max: 1200, step: 5, value: ocean, unit: 'ppm', onInput: function(v){ act(); ocean = v; ppm = v; sCO2.set(v); draw(); words(); say(oceanLine()); } });
     $('.cc-grp-ocean').appendChild(sOc.el);
     var sW = T.slider({ label: 'Ocean warming (top 700 m)', min: 0, max: 3, step: 0.1, value: warmC, unit: '°C', onInput: function(v){ act(); warmC = v; draw(); words(); say(seaLine()); } });
@@ -249,22 +266,24 @@
     function onClick(e){
       var b = e.target.closest('.cc-views button'); if(b){ setView(b.getAttribute('data-v')); return; }
       var y = e.target.closest('.cc-year'); if(y){ act(); ppm = ocean = +y.getAttribute('data-ppm'); sCO2.set(ppm); sOc.set(ppm); draw(); words(); say(view === 'ocean' ? oceanLine() : airLine()); return; }
-      var c = e.target.closest('.cc-cfcp'); if(c){ act(); cfc = +c.getAttribute('data-c'); sCFC.set(cfc); draw(); words(); say(airLine()); return; }
+      var c = e.target.closest('.cc-cfcp'); if(c){ act(); cfc = +c.getAttribute('data-c'); sCFC.set(cfc); draw(); words(); say(ozoneLine()); return; }
       if(e.target.closest('.cc-meltbtn')){ act(); seaIce = !seaIce; sync(); draw(); words(); say(seaIce ? 'The floating sea ice melted. Sea level did not change.' : 'Sea ice back.'); }
     }
     host.addEventListener('click', onClick);
-    function setView(v){ if(v === view) return; act(); view = v; sync(); draw(); words(); say(v === 'air' ? airLine() : v === 'ocean' ? oceanLine() : seaLine()); }
+    function setView(v){ if(v === view) return; act(); view = v; sync(); draw(); words(); say(v === 'air' ? airLine() : v === 'ozone' ? ozoneLine() : v === 'ocean' ? oceanLine() : seaLine()); }
     function sync(){
       var root = LS ? LS.root : host;
       root.querySelectorAll('.cc-views button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
-      ['air', 'ocean', 'sea'].forEach(function(k){ var el = $('.cc-grp-' + k); if(el) el.hidden = k !== view; });
+      ['air', 'ozone', 'ocean', 'sea'].forEach(function(k){ var el = $('.cc-grp-' + k); if(el) el.hidden = k !== view; });
       var si = $('.cc-meltbtn'); if(si){ si.setAttribute('aria-pressed', String(seaIce)); si.textContent = seaIce ? 'Bring the sea ice back' : 'Melt the floating sea ice'; }
-      root.querySelectorAll('.cc-cfcs, .cc-pl:nth-of-type(2)').forEach(function(x){ x.hidden = view !== 'air'; });
-      if(LS && LS.setupRow) LS.setupRow.setup(view === 'sea' ? 'Model values' : 'Choose a year');
+      root.querySelectorAll('.cc-cfcs, .cc-pl-c').forEach(function(x){ x.hidden = view !== 'ozone'; });
+      root.querySelectorAll('.cc-years, .cc-pl-y').forEach(function(x){ x.hidden = view === 'ozone'; });
+      if(LS && LS.setupRow) LS.setupRow.setup(view === 'sea' ? 'Model values' : view === 'ozone' ? 'CFC history' : 'Choose a year');
     }
 
     /* ------------------------------------------------- numbers and words */
-    function airLine(){ var du = K.ozone(cfc); return 'CO₂ ' + ppm + ' ppm: long-run warming +' + F(K.warming(ppm), 1) + ' °C. CFCs ' + CFC_LABEL(cfc).toLowerCase() + ': ozone ' + Math.round(du) + ' DU, UV-B at the ground ×' + F(K.uvb(du), 2) + '.'; }
+    function airLine(){ return 'CO₂ ' + ppm + ' ppm: long-run warming +' + F(K.warming(ppm), 1) + ' °C.'; }
+    function ozoneLine(){ var du = K.ozone(cfc); return 'CFCs ' + CFC_LABEL(cfc).toLowerCase() + ': ozone ' + Math.round(du) + ' DU, UV-B at the ground ×' + F(K.uvb(du), 2) + '.'; }
     function phNow(){ return K.ph(ocean); }
     function oceanLine(){ var p = phNow(); return 'CO₂ ' + ocean + ' ppm: ocean pH ' + F(p, 2) + ', ' + F(K.hFactor(8.2, p), 2) + ' times the hydrogen ions of 1850.'; }
     function seaParts(){ var th = K.expansion(K.BETA, 700, warmC), li = landPct / 100 * K.GREENLAND; return { th: th, li: li, si: 0, tot: th + li }; }
@@ -272,18 +291,23 @@
     function words(){
       var head, sub = '', why;
       if(view === 'air'){
+        head = 'More CO₂ traps more infrared low down: the surface warms.';
+        sub = 'The ground gives off infrared; CO₂ catches it and sends some back down.';
+        why = airWhy();
+      } else if(view === 'ozone'){
         var du = K.ozone(cfc);
-        head = 'CO₂ ' + ppm + ' ppm: more infrared trapped, long-run warming +' + F(K.warming(ppm), 1) + ' °C.';
-        sub = cfc ? 'CFCs: chlorine thins the ozone layer to ' + Math.round(du) + ' DU' + (du < 220 ? ' (an ozone hole)' : '') + ', so more UV-B reaches the ground. A separate problem from warming.' : 'No CFCs: the ozone layer is whole at 300 DU.';
+        head = cfc ? 'CFCs thin the ozone high up' + (du < 220 ? ' (an ozone hole)' : '') + ': more UV-B reaches the ground.' : 'No CFCs: the ozone layer is whole.';
+        sub = 'Ozone absorbs the Sun\'s ultraviolet. This is not the greenhouse effect.';
         why = airWhy();
       } else if(view === 'ocean'){
         var p = phNow();
-        head = 'Ocean pH ' + F(p, 2) + ' at ' + ocean + ' ppm CO₂: ' + F(K.hFactor(8.2, p), 2) + ' times the H⁺ of 1850.';
+        head = 'CO₂ dissolves into the sea and makes acid: pH falls.';
         sub = 'The extra H⁺ uses up carbonate, the building block of shells and coral. The ocean is still basic (above 7), but less so.';
         why = oceanWhy();
       } else {
         var s = seaParts();
-        head = 'Sea level +' + F(s.tot, 2) + ' m.';
+        var wet = [0.6, 2.2, 3.8, 5.6, 8].filter(function(e){ return s.tot > e; }).length;
+        head = wet ? wet + ' of 5 houses flooded.' : 'Every house is still dry.';
         sub = seaIce ? 'The floating sea ice melted and sea level did not change: it already displaced its own weight of water.' : 'From warming water expanding and land ice melting into the sea. Try melting the floating sea ice.';
         why = seaWhy();
       }
@@ -294,16 +318,19 @@
         var narrow = (window.innerWidth || 1280) <= 640;
         LS.caption('<b>' + esc(head) + '</b>' + (sub && !narrow ? ' ' + esc(sub) : ''), 'explore');
         if(view === 'air'){
+          LS.pills([{ k: 'Warming', html: '+' + F(K.warming(ppm), 1) + ' °C', tone: K.warming(ppm) > 2 ? 'bad' : K.warming(ppm) > 0.5 ? 'warn' : 'good' }], 'left', 'explore');
+          LS.pills([], 'right', 'explore');
+        } else if(view === 'ozone'){
           var d2 = K.ozone(cfc);
-          LS.pills([{ k: 'Greenhouse', html: '+' + F(K.warming(ppm), 1) + ' °C', tone: K.warming(ppm) > 2 ? 'bad' : K.warming(ppm) > 0.5 ? 'warn' : 'good' }], 'left', 'explore');
-          LS.pills([{ k: 'Ozone', html: Math.round(d2) + ' DU', tone: d2 < 220 ? 'bad' : d2 < 280 ? 'warn' : 'good' }], 'right', 'explore');
+          LS.pills([{ k: 'Ozone', html: Math.round(d2) + ' DU', tone: d2 < 220 ? 'bad' : d2 < 280 ? 'warn' : 'good' }], 'left', 'explore');
+          LS.pills([{ k: 'UV-B', html: '×' + F(K.uvb(d2), 2), tone: 'readout' }], 'right', 'explore');
         } else if(view === 'ocean'){
           LS.pills([{ k: 'pH', html: F(phNow(), 2), tone: phNow() < 8 ? 'bad' : phNow() < 8.15 ? 'warn' : 'good' }], 'left', 'explore');
           LS.pills([{ k: 'H⁺', html: '×' + F(K.hFactor(8.2, phNow()), 2), tone: 'readout' }], 'right', 'explore');
         } else {
           var sp = seaParts();
           LS.pills([{ k: 'Sea level', html: '+' + F(sp.tot, 2) + ' m', tone: sp.tot > 1 ? 'bad' : sp.tot > 0.2 ? 'warn' : 'good' }], 'left', 'explore');
-          LS.pills(seaIce ? [{ k: 'Sea ice', html: '+0 m', tone: 'readout' }] : [], 'right', 'explore');
+          LS.pills([], 'right', 'explore');   // the melted sea ice says +0 m on the picture
         }
       }
     }
@@ -325,10 +352,10 @@
     }
     function nums(){
       var box = $('.cc-nums'), h = '';
-      if(view === 'air'){
+      if(view === 'air' || view === 'ozone'){
         h = '<h3 class="ls-title-l">Two systems, side by side</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Greenhouse effect and ozone layer compared"><table class="ls-tbl"><caption class="sr-only">Greenhouse effect and ozone layer</caption><thead><tr><th scope="col"></th><th scope="col">Greenhouse effect</th><th scope="col">Ozone layer</th></tr></thead><tbody>' +
           '<tr><th scope="row">Where</th><td>Troposphere</td><td>Stratosphere</td></tr><tr><th scope="row">Radiation</th><td>Infrared, from the ground</td><td>Ultraviolet, from the Sun</td></tr><tr><th scope="row">Gases</th><td>H₂O, CO₂, CH₄, N₂O, CFCs</td><td>O₃, destroyed by Cl from CFCs</td></tr><tr><th scope="row">Problem</th><td>Global warming</td><td>More UV-B at the ground</td></tr><tr><th scope="row">Policy</th><td>Kyoto Protocol, Paris Agreement</td><td>Montreal Protocol</td></tr>' +
-          '<tr><th scope="row">Now</th><td>' + ppm + ' ppm: ' + F(K.forcing(ppm), 2) + ' W/m², +' + F(K.warming(ppm), 1) + ' °C long run</td><td>' + Math.round(K.ozone(cfc)) + ' DU: UV-B ×' + F(K.uvb(K.ozone(cfc)), 2) + '</td></tr></tbody></table></div>';
+          '<tr><th scope="row">Now</th><td>' + ppm + ' ppm: ' + F(K.forcing(ppm), 2) + ' W/m², +' + F(K.warming(ppm), 1) + ' °C long run</td><td>' + Math.round(K.ozone(cfc)) + ' DU: UV-B ×' + F(K.uvb(K.ozone(cfc)), 2) + '</td></tr></tbody></table></div>' + curves();
       } else if(view === 'ocean'){
         h = '<h3 class="ls-title-l">pH by CO₂ (simple model)</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Ocean pH by CO2"><table class="ls-tbl"><caption class="sr-only">pH and H+ by CO2</caption><thead><tr><th scope="col">CO₂ (ppm)</th><th scope="col">pH</th><th scope="col">H⁺ vs 1850</th></tr></thead><tbody>' +
           [280, 350, 425, 560, 800, 1000, 1200].map(function(c){ var p = K.ph(c); return '<tr' + (c === ocean ? ' class="hl"' : '') + '><th scope="row">' + c + '</th><td class="r">' + F(p, 2) + '</td><td class="r">×' + F(K.hFactor(8.2, p), 2) + '</td></tr>'; }).join('') + '</tbody></table></div><p class="bt-small">pH = 8.2 − 0.6 × log₁₀(CO₂ / 280), a fit to about 8.1 at today\'s 420 ppm; not a forecast.</p>';
@@ -344,17 +371,21 @@
     function draw(){
       var wh = size(), Wd = wh[0], H = wh[1], phone = Wd < 640;
       svg.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); svg.setAttribute('width', Wd); svg.setAttribute('height', H);
-      var o = view === 'air' ? airScene(Wd, H, phone) : view === 'ocean' ? oceanScene(Wd, H, phone) : seaScene(Wd, H, phone);
+      var o = view === 'air' || view === 'ozone' ? airScene(Wd, H, phone) : view === 'ocean' ? oceanScene(Wd, H, phone) : seaScene(Wd, H, phone);
       svg.innerHTML = o.svg; svg.setAttribute('aria-label', o.label);
     }
     function airScene(Wd, H, phone){
-      var top = Math.round(H * (phone ? 0.64 : 0.68)), a = atmos(Wd, top, { ppm: ppm, cfc: cfc }, phone), g = [a.svg];
-      // the two readouts, side by side; the right one ends short of the Enlarge button
-      var gap = phone ? 8 : 24, y0 = top + (phone ? 40 : 36), y1 = H - 52, Lo = layout(Wd, H), pw = (Wd - 3 * gap) / 2;
+      // pass 2: the atmosphere is the picture; the two response curves are in Numbers & setup (curves())
+      var a = atmos(Wd, H, { ppm: ppm, cfc: cfc }, phone, false, view === 'ozone' ? 'uv' : 'ir'), g = [a.svg], Lo = layout(Wd, H);
+      svg.setAttribute('data-clash', String((a.clash || 0) + Lo.clash())); svg.setAttribute('data-miss', (a.misses || []).concat(Lo.misses()).join(' | '));
+      return { svg: g.join(''), label: view === 'ozone' ? 'Atmosphere cross-section, the ozone layer. Stratosphere: ozone at ' + Math.round(a.du) + ' Dobson units absorbs ultraviolet' + (cfc ? '; chlorine from CFCs is breaking it down' : '') + '; UV-B at the ground ' + F(a.uv, 2) + ' times normal.' : 'Atmosphere cross-section, the greenhouse effect. Troposphere: CO₂ at ' + ppm + ' ppm absorbs infrared from the ground and sends some back down; long-run warming +' + F(a.dT, 1) + ' °C.' };
+    }
+    function curves(){
+      var Wd = 560, H = 210, gap = 12, y0 = 44, y1 = H - 20, Lo = layout(Wd, H, { enl: false }), pw = (Wd - 3 * gap) / 2, phone = false, g = [];
+      var a = { dT: K.warming(ppm), du: K.ozone(cfc) }; a.uv = K.uvb(a.du);
       g.push(mini(Lo, gap, y0, pw, y1, phone ? ['Greenhouse', 'warming vs CO₂'] : ['Greenhouse: warming vs CO₂'], 'cc-c-ir', 280, 1200, 0, 6, function(c){ return K.warming(c); }, ppm, '+' + F(a.dT, 1) + ' °C', phone ? ['280', '1,200 ppm'] : ['280 ppm', '1,200 ppm'], phone));
       g.push(mini(Lo, 2 * gap + pw, y0, pw, y1, phone ? ['Ozone', 'UV-B at the ground'] : ['Ozone: UV-B at the ground'], 'cc-c-uv', 0, 1, 0.8, 3.2, function(c){ return K.uvb(K.ozone(c)); }, cfc, '×' + F(a.uv, 2) + (phone ? '' : ' (' + Math.round(a.du) + ' DU)'), phone ? ['no CFCs', 'most'] : ['no CFCs', 'most CFCs'], phone));
-      svg.setAttribute('data-clash', String((a.clash || 0) + Lo.clash())); svg.setAttribute('data-miss', (a.misses || []).concat(Lo.misses()).join(' | '));
-      return { svg: g.join(''), label: 'Atmosphere cross-section. Troposphere: CO₂ at ' + ppm + ' ppm absorbs infrared from the ground and sends some back down; long-run warming +' + F(a.dT, 1) + ' °C. Stratosphere: ozone at ' + Math.round(a.du) + ' Dobson units absorbs ultraviolet' + (cfc ? '; chlorine from CFCs is breaking it down' : '') + '; UV-B at the ground ' + F(a.uv, 2) + ' times normal.' };
+      return '<svg class="cc-svg cc-curves" viewBox="0 0 ' + Wd + ' ' + H + '" role="img" aria-label="Long-run warming rises with CO2; UV-B at the ground rises with CFC use" xmlns="http://www.w3.org/2000/svg">' + g.join('') + '</svg>';
     }
     /* A readout panel: a title on one or two lines that fits its width, the
        curve, today's point and its value placed clear of the curve, and the
@@ -387,18 +418,19 @@
       for(var i = 0; i < 3; i++){ var ax = Wd * (0.12 + i * 0.12); g.push('<path class="cc-diss" d="M' + ax + ' ' + (sea - 26) + ' v40 m-5 -6 l5 6 l5 -6"/>'); }
       // the reactions
       var rx = phone ? L + 6 : Wd * 0.06, ry = sea + (phone ? 34 : 44), lh = phone ? 22 : 28;
-      [['CO₂ + H₂O → H₂CO₃', 'carbonic acid'], ['H₂CO₃ → H⁺ + HCO₃⁻', 'hydrogen ions: pH falls'], ['H⁺ + CO₃²⁻ → HCO₃⁻', 'carbonate used up']].forEach(function(r, k){ g.push('<text class="cc-eq" x="' + rx + '" y="' + (ry + k * lh) + '">' + r[0] + '</text>' + (phone ? '' : '<text class="cc-eqn" x="' + (rx + 190) + '" y="' + (ry + k * lh) + '">' + r[1] + '</text>')); });
+      [['CO₂ + H₂O → H₂CO₃', 'carbonic acid'], ['H₂CO₃ → H⁺ + HCO₃⁻', 'hydrogen ions: pH falls'], ['H⁺ + CO₃²⁻ → HCO₃⁻', 'carbonate used up']].forEach(function(r, k){ g.push('<text class="cc-eq" x="' + rx + '" y="' + (ry + k * lh) + '">' + r[0] + '</text>' + ''); });
       // pH scale
       var sx0 = phone ? L + 10 : Wd * 0.06, sx1 = phone ? R - 10 : Wd * 0.55, sy = phone ? ry + 3 * lh + 30 : bot - 60, lo = 7.6, hi = 8.3, X = function(v){ return sx0 + (v - lo) / (hi - lo) * (sx1 - sx0); };
       g.push('<defs><linearGradient id="ccPh" x1="0" x2="1"><stop offset="0" class="cc-ph0"/><stop offset="1" class="cc-ph1"/></linearGradient></defs><rect x="' + sx0 + '" y="' + sy + '" width="' + (sx1 - sx0) + '" height="14" rx="7" fill="url(#ccPh)"/>');
       [7.6, 7.8, 8.0, 8.2].forEach(function(v){ g.push('<text class="cc-tk cc-on" x="' + X(v).toFixed(1) + '" y="' + (sy + 30) + '" text-anchor="middle">' + v.toFixed(1) + '</text>'); });
       g.push('<text class="cc-tk cc-on" x="' + sx0 + '" y="' + (sy + 46) + '">← more acidic</text><text class="cc-tk cc-on" x="' + sx1 + '" y="' + (sy + 46) + '" text-anchor="end">more basic →</text>');
-      g.push('<path class="cc-phmark" d="M' + X(8.2).toFixed(1) + ' ' + (sy - 2) + ' v18"/><path class="cc-phnow" d="M' + X(p).toFixed(1) + ' ' + (sy - 6) + ' l-7 -10 h14 z"/><text class="cc-read cc-on" x="' + X(p).toFixed(1) + '" y="' + (sy - 20) + '" text-anchor="middle">pH ' + F(p, 2) + '</text>');
+      g.push('<path class="cc-phmark" d="M' + X(8.2).toFixed(1) + ' ' + (sy - 2) + ' v18"/><path class="cc-phnow" d="M' + X(p).toFixed(1) + ' ' + (sy - 6) + ' l-7 -10 h14 z"/>');
       // the shell and the carbonate around it
       var shx = phone ? Wd * 0.72 : Wd * 0.78, shy = phone ? sea + 40 : sea + (bot - sea) * 0.42, ss = phone ? 0.8 : 1.3, eat = Math.max(0, Math.min(1, (8.2 - p) / 0.5));
       var nC = Math.round((phone ? 10 : 16) * (1 - 0.75 * eat)), Lc = layout(Wd, H);
       Lc.rect(shx - 54 * ss, shy - 44 * ss, shx + 54 * ss, shy + 30 * ss); if(!phone) Lc.rect(shx - 110, shy + 78 * ss - 16, shx + 110, shy + 78 * ss + 6);
-      spots(41, 40).forEach(function(q){ if(nC <= 0) return; var a = q[0] * Math.PI * 2, d = (62 + q[1] * 54) * ss; var pl = Lc.place('CO₃²⁻', 11, 800, [[shx + Math.cos(a) * d, shy + Math.sin(a) * d * 0.7, 'middle']], { optional: true, within: { x0: Wd * 0.58, y0: sea + 8, x1: R, y1: bot - 30 } }); if(pl){ nC--; g.push('<text class="cc-carb" ' + at(pl) + '>CO₃²⁻</text>'); } });
+      spots(41, 40).forEach(function(q){ if(nC <= 0) return; var a = q[0] * Math.PI * 2, d = (62 + q[1] * 54) * ss; var pl = Lc.place('CO₃²⁻', 11, 800, [[shx + Math.cos(a) * d, shy + Math.sin(a) * d * 0.7, 'middle']], { optional: true, within: { x0: Wd * 0.58, y0: sea + 8, x1: R, y1: bot - 30 } }); if(pl){ nC--; g.push(carb(pl.x, pl.y - 4, phone ? 0.85 : 1)); } });
+      if(!phone) g.push('<text class="cc-carb" x="' + shx + '" y="' + (shy - 64 * ss - 50) + '" text-anchor="middle">carbonate ions (CO₃²⁻)</text>');
       g.push(shell(shx, shy, ss, eat));
       if(!phone) g.push('<text class="cc-lab cc-on" x="' + shx + '" y="' + (shy + 78 * ss) + '" text-anchor="middle">' + (eat < 0.15 ? 'A healthy shell' : eat < 0.6 ? 'Thinner shell: less carbonate' : 'Shell dissolving') + '</text>');
       return { svg: g.join(''), label: 'CO₂ at ' + ocean + ' ppm dissolving into the ocean. pH ' + F(p, 2) + ' on a scale from 7.6 to 8.3; ' + F(K.hFactor(8.2, p), 2) + ' times the hydrogen ions of 1850. Fewer carbonate ions around a ' + (eat < 0.15 ? 'healthy' : eat < 0.6 ? 'thinning' : 'dissolving') + ' shell.' };
@@ -412,41 +444,58 @@
     }
     function seaScene(Wd, H, phone){
       var g = [], s = seaParts(), L = phone ? 6 : 14, R = Wd - (phone ? 6 : 14);
-      var base = Math.round(H * (phone ? 0.5 : 0.56)), scale = (phone ? 0.24 : 0.3) * H / 8, lvl = base - s.tot * scale;
-      var shore = Wd * 0.44;
+      /* The coast to one vertical scale (tool review 2026-11): ground
+         elevation e(x) in meters, a town of 3 m houses at 0.5 to 8 m up the
+         slope, and the sea filling up the slope to the new level, so 0.4 m
+         wets the lowest doorsteps and 7 m drowns most of the town. */
+      var pm = H * (phone ? 0.03 : 0.028), base = Math.round(H * (phone ? 0.58 : 0.6)), lvl = base - s.tot * pm;
+      var shore = Wd * (phone ? 0.6 : 0.58), xh = Wd * (phone ? 0.12 : 0.15), k = (shore - xh) / 9;
+      function elev(x){ return x >= shore ? -Math.min(6, (x - shore) / (k * 0.6)) : x >= xh ? (shore - x) / k : 9 + (xh - x) / xh * 4; }
+      function Y(e){ return base - e * pm; }
       g.push('<rect class="cc-sky" x="0" y="0" width="' + Wd + '" height="' + H + '"/>');
-      // the sea and the old level
-      g.push('<rect class="cc-sea" x="' + (shore - 60) + '" y="' + lvl.toFixed(1) + '" width="' + (Wd - shore + 60) + '" height="' + (H - lvl).toFixed(1) + '"/>');
-      g.push('<line class="cc-oldlvl" x1="' + (shore - 40) + '" x2="' + R + '" y1="' + base + '" y2="' + base + '"/><text class="cc-tk" x="' + (R - 4) + '" y="' + (base + 14) + '" text-anchor="end">today\'s sea level</text>');
-      // land with the ice sheet
-      var land = 'M0 ' + (base - 70) + ' L' + (shore - 120) + ' ' + (base - 50) + ' Q' + (shore - 50) + ' ' + (base - 30) + ' ' + shore + ' ' + (base + 30) + ' L' + shore + ' ' + H + ' L0 ' + H + ' Z';
-      g.push('<path class="cc-land" d="' + land + '"/>');
-      var iceH = 60 * (1 - landPct / 100);
-      if(iceH > 1) g.push('<path class="cc-icesheet" d="M' + (L + 4) + ' ' + (base - 70) + ' Q' + (L + 60) + ' ' + (base - 70 - iceH * 1.6) + ' ' + (shore - 150) + ' ' + (base - 54) + ' Z"/>');
-      if(!phone || Wd > 360) g.push('<text class="cc-lab" x="' + (L + 10) + '" y="' + (base - 80 - iceH * 1.2) + '">' + (phone ? 'Land ice' : 'Land ice (an ice sheet)') + '</text>');
-      if(landPct > 0) for(var m = 0; m < 3; m++){ var mx = shore - 140 + m * 30; g.push('<path class="cc-melt" d="M' + mx + ' ' + (base - 50 + m * 6) + ' q12 10 ' + (40 - m * 6) + ' ' + (30 - m * 4) + '"/>'); }
-      // houses on the coast
-      for(var hI = 0; hI < 3; hI++){ var hx = shore - 100 + hI * 30, hy = base - 34 + hI * 12, wet = lvl < hy + 4; g.push('<g class="cc-house' + (wet ? ' is-wet' : '') + '"><rect x="' + hx + '" y="' + (hy - 14) + '" width="18" height="14"/><path d="M' + (hx - 2) + ' ' + (hy - 14) + ' l11 -9 l11 9 z"/></g>'); }
+      var gp = []; for(var gx = 0; gx <= Wd; gx += 4) gp.push(gx.toFixed(1) + ' ' + Y(elev(gx)).toFixed(1));
+      g.push('<path class="cc-land" d="M' + gp.join(' L') + ' L' + Wd + ' ' + H + ' L0 ' + H + 'Z"/>');
+      // the sea: up to the new level, over everything lower than it
+      var xc = Math.max(xh, shore - s.tot * k), wp = [];
+      for(var wx = Wd; wx >= xc; wx -= 4) wp.push(wx.toFixed(1) + ' ' + Math.max(lvl, Y(elev(wx))).toFixed(1));
+      g.push('<path class="cc-sea" d="M' + xc.toFixed(1) + ' ' + lvl.toFixed(1) + ' L' + Wd + ' ' + lvl.toFixed(1) + ' L' + wp.join(' L') + 'Z"/>');
+      g.push('<line class="cc-oldlvl" x1="' + (shore - 30) + '" x2="' + R + '" y1="' + base + '" y2="' + base + '"/><text class="cc-tk" x="' + (R - 4) + '" y="' + (base + 14) + '" text-anchor="end">today\'s sea level</text>');
+      if(s.tot > 0.05){ var rx0 = R - (phone ? 10 : 16); g.push('<path class="cc-rise" d="M' + (rx0 - 5) + ' ' + base + ' H' + (rx0 + 5) + ' M' + rx0 + ' ' + base + ' V' + lvl.toFixed(1) + ' M' + (rx0 - 5) + ' ' + lvl.toFixed(1) + ' H' + (rx0 + 5) + '"/>'); if(false) g.push('<text class="cc-lab cc-c-bad" x="' + (rx0 - 8) + '" y="' + ((base + lvl) / 2 + 4).toFixed(1) + '" text-anchor="end">+' + F(s.tot, 2) + ' m</text>'); }
+      // land with the ice sheet on the high ground
+      var iceH = (phone ? 34 : 60) * (1 - landPct / 100);
+      if(iceH > 1){ var xe = xh * 1.35, ip = [], ib = []; for(var ix0 = 0; ix0 <= xe; ix0 += 3){ var f = ix0 / xe; ip.push(ix0.toFixed(1) + ' ' + (Y(elev(ix0)) - iceH * Math.sqrt(Math.max(0, 1 - f * f))).toFixed(1)); ib.unshift(ix0.toFixed(1) + ' ' + Y(elev(ix0)).toFixed(1)); } g.push('<path class="cc-icesheet" d="M' + ip.join(' L') + ' L' + ib.join(' L') + 'Z"/>'); }
+      g.push('<text class="cc-lab" x="' + (L + 6) + '" y="' + (Y(13) - Math.max(iceH, 4) - 8).toFixed(1) + '">' + (phone ? 'Land ice' : 'Land ice (an ice sheet)') + '</text>');
+      if(landPct > 0) for(var m = 0; m < 3; m++){ var mx = xh + 6 + m * 10, my = Y(elev(mx)) - 2; g.push('<path class="cc-melt" d="M' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' q' + (k * 2) + ' ' + (pm * 1.4) + ' ' + (k * (5 - m)) + ' ' + (pm * (5 - m) * 0.98) + '"/>'); }
+      // the town: 3 m houses on the slope
+      var hw = Math.min(phone ? 22 : 40, k * 1.15), hh = 3 * pm, wetN = 0;
+      [0.6, 2.2, 3.8, 5.6, 8].forEach(function(e){
+        var hx = shore - e * k - hw / 2, hy = Y(e), wet = lvl < hy - 1, under = lvl <= hy - hh;
+        if(wet) wetN++;
+        g.push('<g class="cc-house' + (wet ? ' is-wet' : '') + (under ? ' is-under' : '') + '"><rect x="' + hx.toFixed(1) + '" y="' + (hy - hh).toFixed(1) + '" width="' + hw.toFixed(1) + '" height="' + hh.toFixed(1) + '"/><path d="M' + (hx - 2).toFixed(1) + ' ' + (hy - hh).toFixed(1) + ' l' + (hw / 2 + 2).toFixed(1) + ' ' + (-hh * 0.55).toFixed(1) + ' l' + (hw / 2 + 2).toFixed(1) + ' ' + (hh * 0.55).toFixed(1) + 'z"/><rect class="cc-door" x="' + (hx + hw * 0.4).toFixed(1) + '" y="' + (hy - hh * 0.45).toFixed(1) + '" width="' + (hw * 0.2).toFixed(1) + '" height="' + (hh * 0.45).toFixed(1) + '"/></g>');
+      });
+      // the water over the town is drawn again, see-through, so flooded houses show under it
+      if(s.tot > 0.05) g.push('<path class="cc-sea cc-sea-over" d="M' + xc.toFixed(1) + ' ' + lvl.toFixed(1) + ' L' + shore.toFixed(1) + ' ' + lvl.toFixed(1) + ' L' + shore.toFixed(1) + ' ' + base + ' ' + wp.filter(function(q){ return +q.split(' ')[0] <= shore; }).map(function(q){ return 'L' + q; }).join(' ') + 'Z"/>');
+      // pass 2: how many houses are flooded is the caption's first line
       // warm water band
       if(warmC > 0){ var wh2 = 30 + warmC * 10; g.push('<rect class="cc-warm" x="' + shore + '" y="' + lvl.toFixed(1) + '" width="' + (R - shore) + '" height="' + wh2.toFixed(1) + '" style="opacity:' + Math.min(0.9, 0.3 + warmC * 0.2).toFixed(2) + '"/><text class="cc-lab" x="' + (shore + 10) + '" y="' + (lvl + wh2 / 2 + 4).toFixed(1) + '">' + (phone ? 'warmer water' : 'warmer water expands') + '</text>'); }
       // floating sea ice
       if(!seaIce){ var ix = shore + (R - shore) * 0.45; g.push('<path class="cc-seaice" d="M' + ix + ' ' + (lvl - 9).toFixed(1) + ' h90 l10 9 l-8 14 h-96 l-6 -14 z"/><text class="cc-lab" x="' + (ix + 45) + '" y="' + (lvl - 16).toFixed(1) + '" text-anchor="middle">' + (phone ? 'Sea ice' : 'Floating sea ice') + '</text>'); }
       else { var ix2 = shore + (R - shore) * 0.45; g.push('<text class="cc-lab cc-c-good" x="' + (ix2 + 45) + '" y="' + (lvl - 12).toFixed(1) + '" text-anchor="middle">sea ice melted: +0 m</text>'); }
       // the stacked bar of contributions
-      var by = H - (phone ? 84 : 80), bx0 = L + 8, bx1 = R - (phone ? 52 : 60), bs = (bx1 - bx0) / 8, segs = [['Thermal expansion', s.th, 'cc-b-th'], ['Land ice', s.li, 'cc-b-li']], at = bx0;
+      if(false){ var by = H - (phone ? 84 : 80), bx0 = L + 8, bx1 = R - (phone ? 52 : 60), bs = (bx1 - bx0) / 8, segs = [['Thermal expansion', s.th, 'cc-b-th'], ['Land ice', s.li, 'cc-b-li']], at = bx0;
       g.push('<rect class="cc-panel" x="' + L + '" y="' + (by - 34) + '" width="' + (R - L) + '" height="' + (H - by + 28) + '" rx="12"/><text class="cc-mh" x="' + (L + 10) + '" y="' + (by - 14) + '">Sea level rise: +' + F(s.tot, 2) + ' m</text>');
       g.push('<rect class="cc-track" x="' + bx0 + '" y="' + by + '" width="' + (bx1 - bx0) + '" height="16" rx="5"/>');
       segs.forEach(function(q){ var w = q[1] * bs; if(w > 0.5) g.push('<rect class="' + q[2] + '" x="' + at.toFixed(1) + '" y="' + by + '" width="' + w.toFixed(1) + '" height="16"/>'); at += w; });
       for(var t = 0; t <= 8; t += (phone ? 2 : 1)) g.push('<text class="cc-tk" x="' + (bx0 + t * bs).toFixed(1) + '" y="' + (by + 30) + '" text-anchor="middle">' + t + ' m</text>');
-      g.push('<text class="cc-tk cc-c-th" x="' + bx0 + '" y="' + (by + 46) + '">■ expansion ' + F(s.th, 2) + ' m</text><text class="cc-tk cc-c-li" x="' + ((bx0 + bx1) / 2) + '" y="' + (by + 46) + '" text-anchor="middle">■ land ice ' + F(s.li, 2) + ' m</text><text class="cc-tk" x="' + bx1 + '" y="' + (by + 46) + '" text-anchor="end">' + (phone ? '' : 'sea ice: 0 m') + '</text>' + (phone ? '<text class="cc-tk" x="' + bx0 + '" y="' + (by + 61) + '">floating sea ice: 0 m</text>' : ''));
+      g.push('<text class="cc-tk cc-c-th" x="' + bx0 + '" y="' + (by + 46) + '">■ expansion ' + F(s.th, 2) + ' m</text><text class="cc-tk cc-c-li" x="' + ((bx0 + bx1) / 2) + '" y="' + (by + 46) + '" text-anchor="middle">■ land ice ' + F(s.li, 2) + ' m</text><text class="cc-tk" x="' + bx1 + '" y="' + (by + 46) + '" text-anchor="end">' + (phone ? '' : 'sea ice: 0 m') + '</text>' + (phone ? '<text class="cc-tk" x="' + bx0 + '" y="' + (by + 61) + '">floating sea ice: 0 m</text>' : '')); }
       // glass of water inset
       if(seaIce && !phone){ var gx = R - 110, gy = 24; g.push('<g class="cc-glass"><rect class="cc-panel" x="' + (gx - 10) + '" y="' + (gy - 10) + '" width="112" height="112" rx="10"/><path class="cc-glassw" d="M' + (gx + 16) + ' ' + (gy + 40) + ' h60 l-4 46 h-52 z"/><path class="cc-glasso" d="M' + (gx + 12) + ' ' + (gy + 8) + ' l8 82 h52 l8 -82"/><line class="cc-oldlvl" x1="' + (gx + 10) + '" x2="' + (gx + 82) + '" y1="' + (gy + 40) + '" y2="' + (gy + 40) + '"/><text class="cc-tk" x="' + (gx + 46) + '" y="' + (gy + 4) + '" text-anchor="middle">ice cube melted:</text><text class="cc-tk" x="' + (gx + 46) + '" y="' + (gy + 100) + '" text-anchor="middle">same level</text></g>'); }
-      return { svg: g.join(''), label: 'Coast with land ice, a town and floating sea ice. Sea level up ' + F(s.tot, 2) + ' m: thermal expansion ' + F(s.th, 2) + ' m, land ice ' + F(s.li, 2) + ' m' + (seaIce ? '; the floating sea ice melted and added 0 m.' : '.') };
+      return { svg: g.join(''), label: 'Coast with land ice, a town of five houses on the slope and floating sea ice. Sea level up ' + F(s.tot, 2) + ' m, flooding ' + wetN + ' of the 5 houses: thermal expansion ' + F(s.th, 2) + ' m, land ice ' + F(s.li, 2) + ' m' + (seaIce ? '; the floating sea ice melted and added 0 m.' : '.') };
     }
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.cc-fig')], dock: [$('.cc-ctl')], primary: [sCO2.el, sOc.el, sW.el], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.cc-fig')], dock: [$('.cc-ctl')], primary: [sCO2.el, sCFC.el, sOc.el, sW.el], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
@@ -467,12 +516,13 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { gases: 'Two systems, never mixed', co2: 'The Keeling Curve', ph: 'Ocean acidification', sealevel: 'Sea level rise', gwp: 'Global warming potential' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st, data); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st, data); }
+      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st, data); },
+      refit: function(api){ figure(api.fig, api.problem, api.st, data); }
     });
   }
   function figure(el, p, st, data){
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
-    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = phone ? 320 : 330, out = [], label = '', L = 52, R = Wd - 18, top = 34, bot = H - 46;
+    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : g.kind === 'ph' ? 500 : 600, H = T.figSize(Wd, phone ? 320 : 330, { max: g.kind === 'ph' ? 0.6 : 0.72 })[1], out = [], label = '', L = 52, R = Wd - 18, top = 34, bot = H - 46;
     if(g.kind === 'atmos'){
       var a = atmos(Wd, H, { ppm: 425, cfc: 0.3 }, phone, false);
       out.push(a.svg); label = 'Atmosphere: ozone in the stratosphere absorbs ultraviolet from the Sun; greenhouse gases in the troposphere absorb infrared from the ground.';

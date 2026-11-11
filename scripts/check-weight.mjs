@@ -285,7 +285,12 @@ const SHELL_BUDGETS = [
      chips and icons, the drawn flowchart shapes, the skill station flags, the formulary end summary) and the
      scenario monitor says "probe not on yet". Measured 27.2 KB on scenario-sim.html. The new reference-cards and
      search scripts load only on their own pages. */
-  ['nremt', 28],
+  /* Held at 28 (tool fixes 2026-11-10, task nremt-weight): the simulator's care layer (care rules, pins that change,
+     the pregnancy and the drawn gear, with their styles) is nremt/assets/scenario-care.js, fetched by the monitor when
+     the first patient is shown, so it is not counted here. Measured 28.0 KB on scenario-sim.html. */
+  /* 28 -> 28.3 (tool cleanup pass 3, 2026-11-11): scenario-sim.css styles "Check vitals" (the monitor waits at a
+     call's opening) and the six-call picker's "All calls" button. Measured 28.2 KB on scenario-sim.html. */
+  ['nremt', 28.3],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -411,7 +416,16 @@ const SHELL_BUDGETS = [
      The 3D anatomy tool (same day) measured 54.1 KB, inside this. */
   /* 56 -> 56.4 (teacher classes, other courses, 2026-11-04): the answer-pick line in anp-questions.js and the exam
      history and picks exams.js writes for a class (docs/teacher-classes.md). Measured 56.1 KB. */
-  ['anatomy-physiology', 56.4],
+  /* 56.4 -> 57.5 (tool redesign 2026-11, docs/tool-review/done/anp-redesign.md): the pathway tracer and Predict the
+     change load tools/scene.js and .css, the figure plates with numbered pins, route, token and callout. Measured 56.8 KB. */
+  /* 56.4 -> 57.5 (tool review 2026-11): the lab practical opens a tall figure fitted to the width and
+     puts the first-run ring on a label with room; the pixel work (leader lines, drawn extent) is in
+     tools/lab-fit.js, and the new calculator and loop pictures in calc-art.js and loop-scenes.js, all
+     loaded on first use. Lab practical measured 57.2 KB. */
+  /* 57.5 -> 58 (tools pass 3, docs/tool-review/pass3/anatomy-physiology.md): Predict's whole dial names and larger
+     dials without a figure, the chain diagram taking the run feed's place. The lab practical's view split and the
+     leader-line work sit in tools/lab-fit.js (first use). Predict measured 57.7 KB. */
+  ['anatomy-physiology', 58],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -671,7 +685,9 @@ const BUDGETS = [
   /* 55 -> 57 (tool audit fixes 2026-10-27): the picker's category chips with seven drawn icons, the end screen's
      Try again / Next call pair and the unclamped opening call; measured 56.3 KB. The case data is unchanged. */
   /* 57 -> 57.2 (score card at the end of a call, 2026-11-07): the scoring and card call in the page; measured 57.1 KB, a hair over a 57.1 budget. */
-  ['nremt/scenario-sim.html', 57.2],
+  /* 57.2 -> 57.6 (tool cleanup pass 3, 2026-11-11): the picker opens on six calls and the monitor waits behind
+     "Check vitals" at a call's opening; measured 57.5 KB. */
+  ['nremt/scenario-sim.html', 57.6],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
@@ -871,7 +887,10 @@ const BUDGETS = [
   ['human-geography/tools.html', 5],
   ['human-geography/formula-sheet.html', 15],
   // 26: "Models you must know", 26 models each drawn as inline SVG with its key, claim, limit and example (measured 22.7 at Phase 3).
-  ['human-geography/models.html', 26],
+  /* 26 -> 27.5 (tool visuals 2026-11, docs/tool-review/done/hug.md): Rostow, the epidemiological transition, the
+     world system, gravity and rank-size are drawn as the models themselves instead of numbered boxes, and the page
+     carries those figures. Measured 26.1 KB. */
+  ['human-geography/models.html', 27.5],
   ['human-geography/justify.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has

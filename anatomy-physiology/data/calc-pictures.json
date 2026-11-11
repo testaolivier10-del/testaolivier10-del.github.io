@@ -1,41 +1,2063 @@
 {
-  "about": "Live pictures for the worked-example calculators (tools upgrade 2026-10, docs/tools-upgrade-notes/anp-rest.md). One family per kind of formula, drawn by assets/tools/calculators.js from the calculator's own computed values: every key below is an input or derived key of that calculator (checked by scripts/test/anp-calc-pictures.test.mjs). Nothing here adds a number; the picture only shows what the formula already computed. tube: a vessel with an inlet and outlet gauge; its width follows radius r (a fraction of normal) or, failing that, resistance rRes as r = (default R / R)^(1/4); particles move at a speed proportional to flow / r^2 (velocity = flow / area). wave: an arterial pressure trace between diastolic and systolic, with MAP and the plain average as lines (the trace shape is schematic). balance: the pressures that push fluid out of and pull it into a capillary as arrows, and the net. pump: a ventricle filling to EDV and emptying to ESV (sv-ef), or beating at HR with SV per beat filling one minute's output (cardiac-output). stack: bars split into parts on one scale.",
-  "pictures": {
-    "flow": { "kind": "tube", "pin": "P1", "pout": "P2", "flow": "F", "flowUnit": "mL/min", "rRes": "R" },
-    "radius": { "kind": "tube", "flow": "F1", "flowUnit": "mL/min", "r": "f", "baseFlow": "F0" },
-    "organ-flow": { "kind": "tube", "pin": "MAP", "pout": "Pv", "flow": "F1", "flowUnit": "L/min", "flowScale": 1, "r": "f", "baseFlow": "F0" },
-    "tpr": { "kind": "tube", "pin": "MAP", "flow": "CO", "flowUnit": "L/min", "rRes": "TPR" },
-    "map": { "kind": "wave", "sbp": "SBP", "dbp": "DBP", "map": "MAPx", "avg": "avg" },
-    "pulse-pressure": { "kind": "wave", "sbp": "SBP", "dbp": "DBP", "pp": "PP" },
-    "nfp": { "kind": "balance", "net": "NFP", "where": "capillary",
-      "out": [{ "key": "CHP", "label": "CHP pushes out" }, { "key": "IFCOP", "label": "IFCOP pulls out" }],
-      "in": [{ "key": "BCOP", "label": "BCOP pulls in" }, { "key": "IFHP", "label": "IFHP pushes in" }] },
-    "ur-glomerular-nfp": { "kind": "balance", "net": "NFP", "where": "glomerulus",
-      "out": [{ "key": "GBHP", "label": "GBHP pushes out" }],
-      "in": [{ "key": "CHP", "label": "CHP pushes back" }, { "key": "BCOP", "label": "BCOP pulls back" }] },
-    "sv-ef": { "kind": "pump", "edv": "EDV", "esv": "ESV", "sv": "SV", "ef": "EF" },
-    "cardiac-output": { "kind": "pump", "hr": "HR", "sv": "SV", "co": "CO" },
-    "capacities": { "kind": "stack", "unit": "mL", "bars": [
-      { "label": "Total lung capacity", "segs": [{ "key": "IRV", "label": "IRV", "tone": "lo" }, { "key": "TV", "label": "TV", "tone": "accent" }, { "key": "ERV", "label": "ERV", "tone": "o2" }, { "key": "RV", "label": "RV", "tone": "shape" }] },
-      { "label": "Vital capacity", "segs": [{ "key": "VC", "label": "VC", "tone": "lo" }] },
-      { "label": "Functional residual capacity", "segs": [{ "key": "FRC", "label": "FRC", "tone": "shape" }] } ] },
-    "ventilation": { "kind": "stack", "unit": "mL", "bars": [
-      { "label": "One breath", "segs": [{ "key": "VD", "label": "dead space", "tone": "shape" }, { "key": "fresh", "label": "reaches alveoli", "tone": "o2" }] } ] },
-    "fev1-fvc": { "kind": "stack", "unit": "L", "bars": [
-      { "label": "Forced vital capacity", "segs": [{ "key": "FEV1", "label": "first second", "tone": "accent" }, { "key": "rest", "expr": "FVC - FEV1", "label": "after that", "tone": "lo" }] } ] },
-    "ur-filtration-fraction": { "kind": "stack", "unit": "mL/min", "bars": [
-      { "label": "Renal plasma flow", "segs": [{ "key": "GFR", "label": "filtered", "tone": "accent" }, { "key": "left", "label": "stays in the blood", "tone": "o2" }] } ] },
-    "ur-renal-clearance": { "kind": "stack", "unit": "mL/min", "bars": [
-      { "label": "Clearance", "segs": [{ "key": "C", "label": "plasma cleared per minute", "tone": "accent" }] },
-      { "label": "GFR", "segs": [{ "key": "GFR", "label": "filtered per minute", "tone": "lo" }] } ] },
-    "ur-filtered-load-tm": { "kind": "stack", "unit": "mg/min", "bars": [
-      { "label": "Filtered load", "segs": [{ "key": "reab", "label": "reabsorbed", "tone": "lo" }, { "key": "excr", "label": "excreted", "tone": "hi" }] },
-      { "label": "Transport maximum", "segs": [{ "key": "Tm", "label": "Tm", "tone": "shape" }] } ] },
-    "fab-compartments": { "kind": "stack", "unit": "L", "bars": [
-      { "label": "Total body water", "segs": [{ "key": "ICF", "label": "intracellular", "tone": "lo" }, { "key": "ISF", "label": "interstitial", "tone": "o2" }, { "key": "PL", "label": "plasma", "tone": "hi" }] } ] },
-    "oxygen-content": { "kind": "stack", "unit": "mL O2/100 mL", "bars": [
-      { "label": "Oxygen content", "segs": [{ "key": "bound", "label": "on hemoglobin", "tone": "o2" }, { "key": "diss", "label": "dissolved", "tone": "lo" }] } ] },
-    "met-meal-energy": { "kind": "stack", "unit": "kcal", "bars": [
-      { "label": "Energy", "segs": [{ "key": "kc", "label": "carbohydrate", "tone": "lo" }, { "key": "kp", "label": "protein", "tone": "accent" }, { "key": "kf", "label": "fat", "tone": "o2" }, { "key": "ka", "label": "alcohol", "tone": "shape" }] } ] }
+ "about": "Live pictures for the worked-example calculators (tools upgrade 2026-10, docs/tools-upgrade-notes/anp-rest.md). One family per kind of formula, drawn by assets/tools/calculators.js from the calculator's own computed values: every key below is an input or derived key of that calculator (checked by scripts/test/anp-calc-pictures.test.mjs). Nothing here adds a number; the picture only shows what the formula already computed. tube: a vessel with an inlet and outlet gauge; its width follows radius r (a fraction of normal) or, failing that, resistance rRes as r = (default R / R)^(1/4); particles move at a speed proportional to flow / r^2 (velocity = flow / area). wave: an arterial pressure trace between diastolic and systolic, with MAP and the plain average as lines (the trace shape is schematic). balance: the pressures that push fluid out of and pull it into a capillary as arrows, and the net. pump: a ventricle filling to EDV and emptying to ESV (sv-ef), or beating at HR with SV per beat filling one minute's output (cardiac-output). stack: bars split into parts on one scale. Tool review 2026-11 added families drawn by assets/tools/calc-art.js (loaded on first use; its header lists them): trace, axon, regrow, burns, spun, smear, pool, score, snellen, ear, loud, gas, scale, calendar, surface, membrane, channel, sarcomere, lever, punnett, meiosis, count, sweat, bulb. Text fields (mode, label, title, cap, name, end, unit, tone, layout, foot, cls) are words, not keys; a cap's {key} prints that value.",
+ "pictures": {
+  "flow": {
+   "kind": "tube",
+   "pin": "P1",
+   "pout": "P2",
+   "flow": "F",
+   "flowUnit": "mL/min",
+   "rRes": "R"
+  },
+  "radius": {
+   "kind": "tube",
+   "flow": "F1",
+   "flowUnit": "mL/min",
+   "r": "f",
+   "baseFlow": "F0"
+  },
+  "organ-flow": {
+   "kind": "tube",
+   "pin": "MAP",
+   "pout": "Pv",
+   "flow": "F1",
+   "flowUnit": "L/min",
+   "flowScale": 1,
+   "r": "f",
+   "baseFlow": "F0"
+  },
+  "tpr": {
+   "kind": "tube",
+   "pin": "MAP",
+   "flow": "CO",
+   "flowUnit": "L/min",
+   "rRes": "TPR"
+  },
+  "map": {
+   "kind": "wave",
+   "sbp": "SBP",
+   "dbp": "DBP",
+   "map": "MAPx",
+   "avg": "avg"
+  },
+  "pulse-pressure": {
+   "kind": "wave",
+   "sbp": "SBP",
+   "dbp": "DBP",
+   "pp": "PP"
+  },
+  "nfp": {
+   "kind": "balance",
+   "net": "NFP",
+   "where": "capillary",
+   "out": [
+    {
+     "key": "CHP",
+     "label": "CHP pushes out"
+    },
+    {
+     "key": "IFCOP",
+     "label": "IFCOP pulls out"
+    }
+   ],
+   "in": [
+    {
+     "key": "BCOP",
+     "label": "BCOP pulls in"
+    },
+    {
+     "key": "IFHP",
+     "label": "IFHP pushes in"
+    }
+   ]
+  },
+  "ur-glomerular-nfp": {
+   "kind": "balance",
+   "net": "NFP",
+   "where": "glomerulus",
+   "out": [
+    {
+     "key": "GBHP",
+     "label": "GBHP pushes out"
+    }
+   ],
+   "in": [
+    {
+     "key": "CHP",
+     "label": "CHP pushes back"
+    },
+    {
+     "key": "BCOP",
+     "label": "BCOP pulls back"
+    }
+   ]
+  },
+  "sv-ef": {
+   "kind": "pump",
+   "edv": "EDV",
+   "esv": "ESV",
+   "sv": "SV",
+   "ef": "EF"
+  },
+  "cardiac-output": {
+   "kind": "pump",
+   "hr": "HR",
+   "sv": "SV",
+   "co": "CO"
+  },
+  "capacities": {
+   "kind": "stack",
+   "unit": "mL",
+   "bars": [
+    {
+     "label": "Total lung capacity",
+     "segs": [
+      {
+       "key": "IRV",
+       "label": "IRV",
+       "tone": "lo"
+      },
+      {
+       "key": "TV",
+       "label": "TV",
+       "tone": "accent"
+      },
+      {
+       "key": "ERV",
+       "label": "ERV",
+       "tone": "o2"
+      },
+      {
+       "key": "RV",
+       "label": "RV",
+       "tone": "shape"
+      }
+     ]
+    },
+    {
+     "label": "Vital capacity",
+     "segs": [
+      {
+       "key": "VC",
+       "label": "VC",
+       "tone": "lo"
+      }
+     ]
+    },
+    {
+     "label": "Functional residual capacity",
+     "segs": [
+      {
+       "key": "FRC",
+       "label": "FRC",
+       "tone": "shape"
+      }
+     ]
+    }
+   ]
+  },
+  "ventilation": {
+   "kind": "stack",
+   "unit": "mL",
+   "bars": [
+    {
+     "label": "One breath",
+     "segs": [
+      {
+       "key": "VD",
+       "label": "dead space",
+       "tone": "shape"
+      },
+      {
+       "key": "fresh",
+       "label": "reaches alveoli",
+       "tone": "o2"
+      }
+     ]
+    }
+   ]
+  },
+  "fev1-fvc": {
+   "kind": "stack",
+   "unit": "L",
+   "bars": [
+    {
+     "label": "Forced vital capacity",
+     "segs": [
+      {
+       "key": "FEV1",
+       "label": "first second",
+       "tone": "accent"
+      },
+      {
+       "key": "rest",
+       "expr": "FVC - FEV1",
+       "label": "after that",
+       "tone": "lo"
+      }
+     ]
+    }
+   ]
+  },
+  "ur-filtration-fraction": {
+   "kind": "stack",
+   "unit": "mL/min",
+   "bars": [
+    {
+     "label": "Renal plasma flow",
+     "segs": [
+      {
+       "key": "GFR",
+       "label": "filtered",
+       "tone": "accent"
+      },
+      {
+       "key": "left",
+       "label": "stays in the blood",
+       "tone": "o2"
+      }
+     ]
+    }
+   ]
+  },
+  "ur-renal-clearance": {
+   "kind": "stack",
+   "unit": "mL/min",
+   "bars": [
+    {
+     "label": "Clearance",
+     "segs": [
+      {
+       "key": "C",
+       "label": "plasma cleared per minute",
+       "tone": "accent"
+      }
+     ]
+    },
+    {
+     "label": "GFR",
+     "segs": [
+      {
+       "key": "GFR",
+       "label": "filtered per minute",
+       "tone": "lo"
+      }
+     ]
+    }
+   ]
+  },
+  "ur-filtered-load-tm": {
+   "kind": "stack",
+   "unit": "mg/min",
+   "bars": [
+    {
+     "label": "Filtered load",
+     "segs": [
+      {
+       "key": "reab",
+       "label": "reabsorbed",
+       "tone": "lo"
+      },
+      {
+       "key": "excr",
+       "label": "excreted",
+       "tone": "hi"
+      }
+     ]
+    },
+    {
+     "label": "Transport maximum",
+     "segs": [
+      {
+       "key": "Tm",
+       "label": "Tm",
+       "tone": "shape"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-compartments": {
+   "kind": "stack",
+   "unit": "L",
+   "bars": [
+    {
+     "label": "Total body water",
+     "segs": [
+      {
+       "key": "ICF",
+       "label": "intracellular",
+       "tone": "lo"
+      },
+      {
+       "key": "ISF",
+       "label": "interstitial",
+       "tone": "o2"
+      },
+      {
+       "key": "PL",
+       "label": "plasma",
+       "tone": "hi"
+      }
+     ]
+    }
+   ]
+  },
+  "oxygen-content": {
+   "kind": "gas",
+   "mode": "o2content",
+   "bound": "bound",
+   "diss": "diss",
+   "total": "total",
+   "share": "share"
+  },
+  "met-meal-energy": {
+   "kind": "stack",
+   "unit": "kcal",
+   "bars": [
+    {
+     "label": "Energy",
+     "segs": [
+      {
+       "key": "kc",
+       "label": "carbohydrate",
+       "tone": "lo"
+      },
+      {
+       "key": "kp",
+       "label": "protein",
+       "tone": "accent"
+      },
+      {
+       "key": "kf",
+       "label": "fat",
+       "tone": "o2"
+      },
+      {
+       "key": "ka",
+       "label": "alcohol",
+       "tone": "shape"
+      }
+     ]
+    }
+   ]
+  },
+  "epsp-summation": {
+   "kind": "trace",
+   "rest": "rest",
+   "thr": "thr",
+   "ne": "ne",
+   "e": "e",
+   "ni": "ni",
+   "i": "i",
+   "vm": "vm"
+  },
+  "max-firing-rate": {
+   "kind": "trace",
+   "mode": "spikes",
+   "arp": "arp",
+   "rate": "rate"
+  },
+  "conduction-time": {
+   "kind": "axon",
+   "d": "d",
+   "v": "v",
+   "t": "ms"
+  },
+  "reflex-delay": {
+   "kind": "axon",
+   "mode": "reflex",
+   "ls": "ls",
+   "vs": "vs",
+   "lm": "lm",
+   "vm": "vm",
+   "n": "n",
+   "ts": "ts",
+   "tm": "tm",
+   "total": "total"
+  },
+  "nerve-regrowth-time": {
+   "kind": "regrow",
+   "d": "d",
+   "r": "r",
+   "days": "days",
+   "months": "months"
+  },
+  "ig-rule-of-nines": {
+   "kind": "burns",
+   "inf": "inf",
+   "head": "head",
+   "ra": "ra",
+   "la": "la",
+   "ft": "ft",
+   "bt": "bt",
+   "rl": "rl",
+   "ll": "ll",
+   "gen": "gen",
+   "hv": "hv",
+   "lv": "lv",
+   "tbsa": "tbsa"
+  },
+  "ig-palm-method": {
+   "kind": "burns",
+   "mode": "palm",
+   "p1": "p1",
+   "p2": "p2",
+   "p3": "p3",
+   "palms": "palms",
+   "tbsa": "tbsa"
+  },
+  "hematocrit": {
+   "kind": "spun",
+   "r": "R",
+   "t": "T",
+   "h": "H"
+  },
+  "plasma-volume": {
+   "kind": "spun",
+   "mode": "volume",
+   "h": "H",
+   "bv": "BV",
+   "rcv": "RCV",
+   "pv": "PV"
+  },
+  "absolute-neutrophils": {
+   "kind": "smear",
+   "w": "W",
+   "p": "P",
+   "a": "A"
+  },
+  "rbc-production": {
+   "kind": "pool",
+   "n": "N",
+   "l": "L",
+   "d": "D",
+   "s": "S"
+  },
+  "gcs-total": {
+   "kind": "score",
+   "name": "GCS",
+   "total": "total",
+   "cols": [
+    {
+     "key": "e",
+     "name": "Eyes E",
+     "levels": [
+      "None",
+      "To pressure",
+      "To sound",
+      "Spontaneous"
+     ]
+    },
+    {
+     "key": "v",
+     "name": "Verbal V",
+     "levels": [
+      "None",
+      "Sounds",
+      "Words",
+      "Confused",
+      "Oriented"
+     ]
+    },
+    {
+     "key": "m",
+     "name": "Motor M",
+     "levels": [
+      "None",
+      "Extension",
+      "Abnormal flexion",
+      "Normal flexion",
+      "Localizes",
+      "Obeys"
+     ]
+    }
+   ]
+  },
+  "dv-apgar": {
+   "kind": "score",
+   "layout": "rows",
+   "name": "Apgar",
+   "total": "total",
+   "max": 10,
+   "cols": [
+    {
+     "key": "ap",
+     "name": "Appearance",
+     "levels": [
+      "blue or pale",
+      "body pink",
+      "pink all over"
+     ]
+    },
+    {
+     "key": "pu",
+     "name": "Pulse",
+     "levels": [
+      "absent",
+      "below 100",
+      "100 or more"
+     ]
+    },
+    {
+     "key": "gr",
+     "name": "Grimace",
+     "levels": [
+      "none",
+      "grimace",
+      "cry, cough"
+     ]
+    },
+    {
+     "key": "ac",
+     "name": "Activity",
+     "levels": [
+      "limp",
+      "some flexion",
+      "active"
+     ]
+    },
+    {
+     "key": "re",
+     "name": "Respiration",
+     "levels": [
+      "absent",
+      "slow, weak cry",
+      "strong cry"
+     ]
+    }
+   ]
+  },
+  "snellen-acuity": {
+   "kind": "snellen",
+   "d": "d",
+   "r": "r",
+   "f": "f"
+  },
+  "middle-ear-boost": {
+   "kind": "ear",
+   "ad": "ad",
+   "af": "af",
+   "lv": "lv",
+   "area": "area",
+   "gain": "gain"
+  },
+  "decibel-ratio": {
+   "kind": "loud",
+   "l1": "l1",
+   "l2": "l2",
+   "ratio": "ratio"
+  },
+  "boyle": {
+   "kind": "gas",
+   "mode": "syringe",
+   "p1": "P1",
+   "v1": "V1",
+   "v2": "V2",
+   "p2": "P2"
+  },
+  "compliance": {
+   "kind": "gas",
+   "mode": "balloon",
+   "dv": "dV",
+   "pa": "Pa",
+   "pb": "Pb",
+   "c": "C"
+  },
+  "pco2-ventilation": {
+   "kind": "gas",
+   "mode": "alveolus",
+   "p1": "P1",
+   "p2": "P2",
+   "va1": "VA1",
+   "va2": "VA2",
+   "fold": "fold"
+  },
+  "partial-pressure": {
+   "kind": "gas",
+   "mode": "air",
+   "p": "P",
+   "w": "W",
+   "f": "F",
+   "po2": "PO2"
+  },
+  "glucose-units": {
+   "kind": "scale",
+   "title": "One reading on two rulers",
+   "legendTitle": "fasting:",
+   "legend": [
+    {
+     "tone": "lo",
+     "label": "low"
+    },
+    {
+     "tone": "ok",
+     "label": "normal"
+    },
+    {
+     "tone": "mid",
+     "label": "prediabetes"
+    },
+    {
+     "tone": "hi",
+     "label": "diabetes"
+    }
+   ],
+   "cap": "The same glucose on both rulers: {mm} mmol/L × 18 = {mg} mg/dL. The bands are the fasting ranges: blue low (under 70 mg/dL), green normal (70 to 99), amber prediabetes (100 to 125), coral the diabetes range (126 and up).",
+   "rows": [
+    {
+     "label": "mg/dL",
+     "unit": "mg/dL",
+     "min": 0,
+     "max": 400,
+     "ticks": [
+      0,
+      70,
+      100,
+      126,
+      200,
+      300,
+      400
+     ],
+     "bands": [
+      {
+       "from": 0,
+       "to": 70,
+       "label": "low",
+       "tone": "lo"
+      },
+      {
+       "from": 70,
+       "to": 100,
+       "label": "fasting normal",
+       "tone": "ok"
+      },
+      {
+       "from": 100,
+       "to": 126,
+       "label": "prediabetes",
+       "tone": "mid"
+      },
+      {
+       "from": 126,
+       "to": 400,
+       "label": "diabetes range if fasting",
+       "tone": "hi"
+      }
+     ],
+     "marks": [
+      {
+       "key": "mg",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "label": "mmol/L",
+     "unit": "mmol/L",
+     "min": 0,
+     "max": 22.2,
+     "tdp": 1,
+     "ticks": [
+      0,
+      3.9,
+      5.6,
+      7,
+      11.1,
+      16.7,
+      22.2
+     ],
+     "bands": [
+      {
+       "from": 0,
+       "to": 3.9,
+       "label": "",
+       "tone": "lo"
+      },
+      {
+       "from": 3.9,
+       "to": 5.6,
+       "label": "",
+       "tone": "ok"
+      },
+      {
+       "from": 5.6,
+       "to": 7,
+       "label": "",
+       "tone": "mid"
+      },
+      {
+       "from": 7,
+       "to": 22.2,
+       "label": "",
+       "tone": "hi"
+      }
+     ],
+     "marks": [
+      {
+       "key": "mm",
+       "label": ""
+      }
+     ]
+    }
+   ]
+  },
+  "fab-calcium-units": {
+   "kind": "scale",
+   "title": "One result in three units",
+   "cap": "mg/dL × 10 gives mg per liter; ÷ the atomic mass gives {MM} mmol/L; × the charge gives {ME} mEq/L. The band is the usual range for calcium.",
+   "rows": [
+    {
+     "label": "mg/dL",
+     "unit": "mg/dL",
+     "min": 0,
+     "max": 16,
+     "ticks": [
+      0,
+      4,
+      8.5,
+      10.5,
+      16
+     ],
+     "tdp": 1,
+     "bands": [
+      {
+       "from": 8.5,
+       "to": 10.5,
+       "label": "normal for calcium",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "C",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "label": "mmol/L",
+     "unit": "mmol/L",
+     "min": 0,
+     "max": 4,
+     "ticks": [
+      0,
+      1,
+      2.1,
+      2.6,
+      4
+     ],
+     "tdp": 1,
+     "bands": [
+      {
+       "from": 2.12,
+       "to": 2.62,
+       "label": "",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "MM",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "label": "mEq/L",
+     "unit": "mEq/L",
+     "min": 0,
+     "max": 8,
+     "ticks": [
+      0,
+      2,
+      4.2,
+      5.2,
+      8
+     ],
+     "tdp": 1,
+     "bands": [
+      {
+       "from": 4.25,
+       "to": 5.25,
+       "label": "",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "ME",
+       "label": ""
+      }
+     ]
+    }
+   ]
+  },
+  "met-bmi": {
+   "kind": "scale",
+   "cap": "BMI is weight ÷ height²: {bmi}. At this height a BMI of 18.5 to 24.9 is {lo} to {hi} kg (the band on the weight ruler). BMI is a screening number; it does not measure body fat.",
+   "rows": [
+    {
+     "label": "BMI (kg/m²)",
+     "unit": "",
+     "min": 10,
+     "max": 45,
+     "ticks": [
+      10,
+      18.5,
+      25,
+      30,
+      45
+     ],
+     "tdp": 1,
+     "bands": [
+      {
+       "from": 10,
+       "to": 18.5,
+       "label": "under",
+       "tone": "lo"
+      },
+      {
+       "from": 18.5,
+       "to": 25,
+       "label": "healthy",
+       "tone": "ok"
+      },
+      {
+       "from": 25,
+       "to": 30,
+       "label": "over",
+       "tone": "hi"
+      },
+      {
+       "from": 30,
+       "to": 45,
+       "label": "obesity",
+       "tone": "hi"
+      }
+     ],
+     "marks": [
+      {
+       "key": "bmi",
+       "label": "BMI"
+      }
+     ]
+    },
+    {
+     "label": "weight at this height (kg)",
+     "unit": "kg",
+     "min": 30,
+     "max": 160,
+     "ticks": [
+      30,
+      60,
+      90,
+      120,
+      160
+     ],
+     "bands": [
+      {
+       "fromKey": "lo",
+       "toKey": "hi",
+       "label": "BMI 18.5 to 24.9",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "kg",
+       "label": "you"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-adjusted-calcium": {
+   "kind": "scale",
+   "cap": "Low albumin means less calcium is bound, so total calcium reads low even when the free calcium may be fine. Adding 0.8 for each g/dL of albumin below 4 gives {ADJ} mg/dL (an estimate; measuring ionized calcium is better).",
+   "rows": [
+    {
+     "label": "total calcium (mg/dL)",
+     "unit": "",
+     "min": 4,
+     "max": 14,
+     "ticks": [
+      4,
+      6,
+      8.5,
+      10.5,
+      14
+     ],
+     "tdp": 1,
+     "bands": [
+      {
+       "from": 8.5,
+       "to": 10.5,
+       "label": "normal",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "CA",
+       "label": "measured",
+       "cls": "ca-p2"
+      },
+      {
+       "key": "ADJ",
+       "label": "adjusted",
+       "cls": "ca-p1"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-sodium-correction": {
+   "kind": "scale",
+   "cap": "Sodium went from {N0} to {N1} mmol/L in the hours given: a pace of {AR} mmol/L per 24 h. In a chronic low sodium, faster than about 8 to 10 a day risks brain injury (osmotic demyelination).",
+   "rows": [
+    {
+     "label": "pace of change (mmol/L per 24 h)",
+     "unit": "",
+     "min": 0,
+     "max": 24,
+     "ticks": [
+      0,
+      8,
+      10,
+      16,
+      24
+     ],
+     "bands": [
+      {
+       "from": 0,
+       "to": 8,
+       "label": "about 8 a day or less",
+       "tone": "ok"
+      },
+      {
+       "from": 8,
+       "to": 10,
+       "label": "limit",
+       "tone": "hi"
+      },
+      {
+       "from": 10,
+       "to": 24,
+       "label": "too fast if chronic",
+       "tone": "hi"
+      }
+     ],
+     "marks": [
+      {
+       "key": "AR",
+       "label": "pace"
+      }
+     ]
+    },
+    {
+     "label": "plasma sodium (mmol/L)",
+     "unit": "",
+     "min": 100,
+     "max": 180,
+     "ticks": [
+      100,
+      120,
+      135,
+      145,
+      160,
+      180
+     ],
+     "bands": [
+      {
+       "from": 135,
+       "to": 145,
+       "label": "normal",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "N0",
+       "label": "start",
+       "cls": "ca-p2"
+      },
+      {
+       "key": "N1",
+       "label": "now",
+       "cls": "ca-p1"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-henderson": {
+   "kind": "scale",
+   "cap": "pH follows the ratio of bicarbonate to dissolved CO2 (0.03 × PCO2), not either one alone: {R} to 1 gives pH {PH}. Normal is about 20 to 1, pH 7.4.",
+   "rows": [
+    {
+     "label": "HCO3− : dissolved CO2",
+     "unit": "",
+     "min": 0,
+     "max": 40,
+     "ticks": [
+      0,
+      10,
+      20,
+      30,
+      40
+     ],
+     "bands": [
+      {
+       "from": 18,
+       "to": 22,
+       "label": "about 20 : 1",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "R",
+       "label": "ratio"
+      }
+     ]
+    },
+    {
+     "label": "blood pH",
+     "unit": "",
+     "min": 6.8,
+     "max": 7.8,
+     "tdp": 2,
+     "ticks": [
+      6.8,
+      7.0,
+      7.2,
+      7.35,
+      7.45,
+      7.6,
+      7.8
+     ],
+     "bands": [
+      {
+       "from": 6.8,
+       "to": 7.35,
+       "label": "acidemia",
+       "tone": "lo"
+      },
+      {
+       "from": 7.35,
+       "to": 7.45,
+       "label": "normal",
+       "tone": "ok"
+      },
+      {
+       "from": 7.45,
+       "to": 7.8,
+       "label": "alkalemia",
+       "tone": "hi"
+      }
+     ],
+     "marks": [
+      {
+       "key": "PH",
+       "label": "pH"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-winters": {
+   "kind": "scale",
+   "cap": "For this bicarbonate, breathing that compensates fully would bring PaCO2 to about {EX} ± 2 mm Hg (the band). The measured value shows whether the lungs are keeping up.",
+   "rows": [
+    {
+     "label": "PaCO2 (mm Hg)",
+     "unit": "",
+     "min": 5,
+     "max": 90,
+     "ticks": [
+      10,
+      20,
+      30,
+      40,
+      60,
+      90
+     ],
+     "bands": [
+      {
+       "fromKey": "LO",
+       "toKey": "HI",
+       "label": "expected",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "P",
+       "label": "measured"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-abg": {
+   "kind": "scale",
+   "cap": "Read in order: pH first (acid or base side), then which of PaCO2 (the lungs) and HCO3− (the kidneys) explains it, then whether the other has moved to compensate. Here the pH is {PHR}.",
+   "rows": [
+    {
+     "label": "pH",
+     "unit": "",
+     "min": 6.8,
+     "max": 7.8,
+     "tdp": 2,
+     "ticks": [
+      6.8,
+      7.0,
+      7.2,
+      7.35,
+      7.45,
+      7.6,
+      7.8
+     ],
+     "bands": [
+      {
+       "from": 6.8,
+       "to": 7.35,
+       "label": "acid side",
+       "tone": "lo"
+      },
+      {
+       "from": 7.35,
+       "to": 7.45,
+       "label": "normal",
+       "tone": "ok"
+      },
+      {
+       "from": 7.45,
+       "to": 7.8,
+       "label": "base side",
+       "tone": "hi"
+      }
+     ],
+     "marks": [
+      {
+       "key": "PHR",
+       "label": "pH"
+      }
+     ]
+    },
+    {
+     "label": "PaCO2 (mm Hg): high is acid",
+     "unit": "",
+     "min": 10,
+     "max": 120,
+     "ticks": [
+      10,
+      35,
+      45,
+      80,
+      120
+     ],
+     "bands": [
+      {
+       "from": 35,
+       "to": 45,
+       "label": "normal",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "P",
+       "label": "PaCO2"
+      }
+     ]
+    },
+    {
+     "label": "HCO3− (mmol/L): low is acid",
+     "unit": "",
+     "min": 2,
+     "max": 60,
+     "ticks": [
+      2,
+      22,
+      26,
+      40,
+      60
+     ],
+     "bands": [
+      {
+       "from": 22,
+       "to": 26,
+       "label": "normal",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "H",
+       "label": "HCO3−"
+      }
+     ]
+    }
+   ]
+  },
+  "dv-max-heart-rate": {
+   "kind": "scale",
+   "cap": "The usual estimate of maximum heart rate falls with age: about {tan} beats/min here. The band from resting to maximum is the room the heart has to speed up in exercise: {room} beats/min.",
+   "rows": [
+    {
+     "label": "heart rate (beats/min)",
+     "unit": "",
+     "min": 40,
+     "max": 220,
+     "ticks": [
+      40,
+      60,
+      100,
+      140,
+      180,
+      220
+     ],
+     "bands": [
+      {
+       "fromKey": "rest",
+       "toKey": "tan",
+       "label": "room to speed up",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "rest",
+       "label": "rest",
+       "cls": "ca-p2"
+      },
+      {
+       "key": "tan",
+       "label": "max",
+       "cls": "ca-p1"
+      }
+     ]
+    }
+   ]
+  },
+  "ur-creatinine-gfr": {
+   "kind": "scale",
+   "cap": "Muscle makes creatinine at a steady rate, and filtration is how it leaves; at steady state plasma creatinine rises until what is filtered matches what is made. Halve the GFR and the creatinine doubles: {Pdl} mg/dL.",
+   "rows": [
+    {
+     "label": "GFR (mL/min)",
+     "unit": "",
+     "min": 0,
+     "max": 200,
+     "ticks": [
+      0,
+      30,
+      60,
+      90,
+      120,
+      200
+     ],
+     "bands": [
+      {
+       "from": 90,
+       "to": 140,
+       "label": "normal",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "GFR",
+       "label": "GFR",
+       "cls": "ca-p2"
+      }
+     ]
+    },
+    {
+     "label": "plasma creatinine (mg/dL), log scale",
+     "unit": "",
+     "min": 0.2,
+     "max": 30,
+     "log": true,
+     "tdp": 1,
+     "ticks": [
+      0.3,
+      0.6,
+      1.2,
+      3,
+      10,
+      30
+     ],
+     "bands": [
+      {
+       "from": 0.6,
+       "to": 1.2,
+       "label": "normal",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "Pdl",
+       "label": "creatinine"
+      }
+     ]
+    }
+   ]
+  },
+  "ur-gfr-kf": {
+   "kind": "scale",
+   "cap": "Filtration is the filter's leakiness (Kf) times the net pressure pushing fluid out (NFP): {GFR} mL/min, {perDay} L a day.",
+   "rows": [
+    {
+     "label": "net filtration pressure (mm Hg)",
+     "unit": "",
+     "min": 0,
+     "max": 30,
+     "ticks": [
+      0,
+      10,
+      20,
+      30
+     ],
+     "marks": [
+      {
+       "key": "NFP",
+       "label": "NFP",
+       "cls": "ca-p2"
+      }
+     ]
+    },
+    {
+     "label": "GFR (mL/min)",
+     "unit": "",
+     "min": 0,
+     "max": 300,
+     "ticks": [
+      0,
+      60,
+      125,
+      200,
+      300
+     ],
+     "bands": [
+      {
+       "from": 90,
+       "to": 140,
+       "label": "normal",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "GFR",
+       "label": "GFR"
+      }
+     ]
+    }
+   ]
+  },
+  "dv-pregnancy-map": {
+   "kind": "scale",
+   "cap": "In pregnancy cardiac output rises (here to {CO1} L/min) while the resistance of the vessels falls, so mean arterial pressure changes little: {M1} mm Hg.",
+   "rows": [
+    {
+     "label": "cardiac output (L/min)",
+     "unit": "L/min",
+     "min": 2,
+     "max": 12,
+     "tdp": 0,
+     "ticks": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12
+     ],
+     "marks": [
+      {
+       "key": "CO0",
+       "label": "before",
+       "cls": "ca-p2"
+      },
+      {
+       "key": "CO1",
+       "label": "pregnant",
+       "cls": "ca-p1"
+      }
+     ]
+    },
+    {
+     "label": "mean arterial pressure (mm Hg)",
+     "unit": "",
+     "min": 50,
+     "max": 130,
+     "ticks": [
+      50,
+      70,
+      90,
+      110,
+      130
+     ],
+     "bands": [
+      {
+       "from": 70,
+       "to": 100,
+       "label": "usual",
+       "tone": "ok"
+      }
+     ],
+     "marks": [
+      {
+       "key": "M0",
+       "label": "before",
+       "cls": "ca-p2"
+      },
+      {
+       "key": "M1",
+       "label": "pregnant",
+       "cls": "ca-p1"
+      }
+     ]
+    }
+   ]
+  },
+  "rp-ovulation-day": {
+   "kind": "calendar",
+   "l": "L",
+   "lut": "lut",
+   "ov": "ov",
+   "fol": "fol"
+  },
+  "dv-gestational-age": {
+   "kind": "calendar",
+   "mode": "pregnancy",
+   "d": "D",
+   "wk": "wk",
+   "dd": "dd",
+   "tri": "tri",
+   "fwk": "fwk"
+  },
+  "surface-amplification": {
+   "kind": "surface",
+   "f": "f",
+   "v": "v",
+   "m": "m",
+   "total": "total"
+  },
+  "emulsification-surface": {
+   "kind": "surface",
+   "mode": "drops",
+   "D": "D",
+   "r": "r",
+   "n": "n",
+   "gain": "gain"
+  },
+  "sglt1-gradients": {
+   "kind": "membrane",
+   "mode": "sglt",
+   "nao": "nao",
+   "nai": "nai",
+   "go": "go",
+   "gi": "gi",
+   "nar": "naRatio",
+   "gr": "gRatio"
+  },
+  "dv-placental-transfer": {
+   "kind": "membrane",
+   "mode": "placenta",
+   "a": "A",
+   "g": "G",
+   "t": "T",
+   "rate": "rate"
+  },
+  "free-hormone": {
+   "kind": "membrane",
+   "mode": "bound",
+   "t": "T",
+   "b1": "b1",
+   "b2": "b2",
+   "f1": "f1",
+   "f2": "f2",
+   "ratio": "ratio"
+  },
+  "fab-potassium-shift": {
+   "kind": "membrane",
+   "mode": "kshift",
+   "kc": "KC",
+   "v": "V",
+   "k0": "K0",
+   "f": "F",
+   "mov": "MOV",
+   "dk": "DK",
+   "k1": "K1"
+  },
+  "fab-water-load": {
+   "kind": "membrane",
+   "mode": "water",
+   "w": "W",
+   "o": "O",
+   "d": "D",
+   "o2": "O2",
+   "inc": "INC",
+   "ine": "INE"
+  },
+  "gut-water-balance": {
+   "kind": "channel",
+   "unit": "mL",
+   "end": "feces",
+   "endKey": "feces",
+   "cap": "Each day {total} mL enters the gut, most of it the gut's own secretions. The small intestine takes back {si} mL and the colon {col} mL, leaving {feces} mL in the feces: {pct}% is reabsorbed.",
+   "steps": [
+    {
+     "name": "",
+     "in": [
+      {
+       "key": "diet",
+       "label": "food, drink"
+      },
+      {
+       "key": "sal",
+       "label": "saliva"
+      },
+      {
+       "key": "gas",
+       "label": "gastric"
+      },
+      {
+       "key": "bile",
+       "label": "bile"
+      },
+      {
+       "key": "panc",
+       "label": "pancreatic"
+      },
+      {
+       "key": "int",
+       "label": "intestinal"
+      }
+     ]
+    },
+    {
+     "name": "small intestine",
+     "out": [
+      {
+       "key": "si",
+       "label": "absorbed"
+      }
+     ]
+    },
+    {
+     "name": "colon",
+     "in": [
+      {
+       "key": "cs",
+       "label": "colon mucus"
+      }
+     ],
+     "out": [
+      {
+       "key": "col",
+       "label": "absorbed"
+      }
+     ]
+    }
+   ]
+  },
+  "ur-water-reabsorption": {
+   "kind": "channel",
+   "unit": "L/day",
+   "end": "urine",
+   "endKey": "V",
+   "cap": "Of {F} L filtered, {obL} L is reabsorbed whatever happens (obligatory, mostly in the proximal tubule); ADH decides how much of the rest the collecting ducts take back ({fac} L, facultative), leaving the urine.",
+   "steps": [
+    {
+     "name": "filtered",
+     "in": [
+      {
+       "key": "F",
+       "label": "filtrate"
+      }
+     ]
+    },
+    {
+     "name": "proximal tubule, loop",
+     "out": [
+      {
+       "key": "obL",
+       "label": "obligatory"
+      }
+     ]
+    },
+    {
+     "name": "collecting duct (ADH)",
+     "out": [
+      {
+       "key": "fac",
+       "label": "facultative"
+      }
+     ]
+    }
+   ]
+  },
+  "ur-reabsorbed-percent": {
+   "kind": "channel",
+   "unit": "mmol/day",
+   "end": "excreted",
+   "endKey": "E",
+   "cap": "The filtered load is GFR × plasma concentration: {load} mmol a day. The tubules return all but what is excreted: {pct}% reabsorbed.",
+   "steps": [
+    {
+     "name": "filtered load",
+     "in": [
+      {
+       "key": "load",
+       "label": "filtered"
+      }
+     ]
+    },
+    {
+     "name": "tubules",
+     "out": [
+      {
+       "key": "reab",
+       "label": "reabsorbed"
+      }
+     ]
+    }
+   ]
+  },
+  "bt-calcium-balance": {
+   "kind": "channel",
+   "unit": "mg/day",
+   "end": "left for bone",
+   "endKey": "bal",
+   "cap": "Of {I} mg eaten, {abs} mg is absorbed. Calcium released back into the gut ({S} mg) and lost in the urine ({U} mg) come out of that, leaving a balance of {bal} mg a day for the skeleton. A negative balance is made up from bone.",
+   "steps": [
+    {
+     "name": "eaten",
+     "in": [
+      {
+       "key": "I",
+       "label": "eaten"
+      }
+     ]
+    },
+    {
+     "name": "gut",
+     "out": [
+      {
+       "key": "rest",
+       "expr": "I - abs",
+       "label": "not absorbed",
+       "dp": 0
+      }
+     ]
+    },
+    {
+     "name": "blood",
+     "out": [
+      {
+       "key": "S",
+       "label": "back into gut"
+      },
+      {
+       "key": "U",
+       "label": "urine"
+      }
+     ]
+    }
+   ]
+  },
+  "mt-band-widths": {
+   "kind": "sarcomere",
+   "mode": "bands",
+   "thick": "thick",
+   "thin": "thin",
+   "s1": "s1",
+   "s2": "s2",
+   "i1": "I1",
+   "i2": "I2"
+  },
+  "mt-sarcomeres-in-series": {
+   "kind": "sarcomere",
+   "mode": "series",
+   "l": "L",
+   "s": "s",
+   "n": "n"
+  },
+  "mt-fiber-shortening": {
+   "kind": "sarcomere",
+   "mode": "fiber",
+   "l": "L",
+   "s1": "s1",
+   "s2": "s2",
+   "n": "n",
+   "d": "d",
+   "cm": "cm",
+   "pct": "pct"
+  },
+  "ms-lever-effort": {
+   "kind": "lever",
+   "de": "dE",
+   "dl": "dL",
+   "l": "L",
+   "e": "E",
+   "times": "times"
+  },
+  "ms-lever-range": {
+   "kind": "lever",
+   "mode": "range",
+   "s": "s",
+   "de": "dE",
+   "dl": "dL",
+   "k": "k",
+   "h": "h"
+  },
+  "dv-punnett": {
+   "kind": "punnett",
+   "a1": "a1",
+   "a2": "a2",
+   "lines": [
+    {
+     "label": "AA",
+     "key": "AA"
+    },
+    {
+     "label": "Aa",
+     "key": "Aa"
+    },
+    {
+     "label": "aa",
+     "key": "aa"
+    },
+    {
+     "label": "shows the dominant trait",
+     "key": "dom"
+    }
+   ]
+  },
+  "dv-x-linked": {
+   "kind": "punnett",
+   "mode": "x",
+   "m": "m",
+   "f": "f",
+   "lines": [
+    {
+     "label": "a son is affected",
+     "key": "son"
+    },
+    {
+     "label": "a daughter is affected",
+     "key": "dAff"
+    },
+    {
+     "label": "a daughter is a carrier",
+     "key": "dCar"
+    }
+   ]
+  },
+  "rp-gamete-combinations": {
+   "kind": "meiosis",
+   "twoN": "twoN",
+   "n": "n",
+   "g": "gametes"
+  },
+  "rp-spermatogenesis-count": {
+   "kind": "meiosis",
+   "mode": "tree",
+   "p": "P",
+   "t": "T"
+  },
+  "hormone-half-life": {
+   "kind": "count",
+   "mode": "halflife",
+   "n": "n",
+   "l0": "L0",
+   "l": "L",
+   "pct": "pct",
+   "t": "t"
+  },
+  "mt-glucose-per-atp": {
+   "kind": "count",
+   "mode": "glucose",
+   "ga": "gA",
+   "go": "gO",
+   "aer": "aer",
+   "need": "need",
+   "ratio": "ratio"
+  },
+  "met-fatty-acid-atp": {
+   "kind": "count",
+   "mode": "chain",
+   "c": "C",
+   "turns": "turns",
+   "ac": "ac",
+   "total": "total"
+  },
+  "met-label-grams": {
+   "kind": "count",
+   "mode": "spoons",
+   "tsp": "tsp",
+   "kcal": "kcal",
+   "per": "per",
+   "g": "g"
+  },
+  "met-energy-balance": {
+   "kind": "count",
+   "mode": "fat",
+   "kg": "kg",
+   "bal": "bal",
+   "days": "days",
+   "tot": "tot",
+   "kpk": "kpk"
+  },
+  "ur-urine-volume": {
+   "kind": "count",
+   "mode": "jugs",
+   "v": "Vol",
+   "title": "urine:",
+   "foot": "each bottle 1 L; least possible {Vmin} L, most about {Vmax} L",
+   "cap": "The kidneys must excrete the day's solute; the more concentrated the urine, the less water carries it: {S} mOsm at {U} mOsm/L needs {Vol} L."
+  },
+  "fab-urine-free-h": {
+   "kind": "count",
+   "mode": "jugs",
+   "v": "VOL",
+   "title": "urine needed as free H+:",
+   "foot": "each bottle 1 L; real urine is about 1.5 L a day",
+   "cap": "At pH {PH} urine holds only {HM} mmol of free H+ per liter, so carrying the day's acid as free H+ would take {VOL} L. Buffers (phosphate) and ammonium carry it instead."
+  },
+  "met-sweat-rate": {
+   "kind": "sweat",
+   "mode": "rate",
+   "heat": "heat",
+   "share": "share",
+   "ev": "ev",
+   "sec": "sec",
+   "drip": "drip"
+  },
+  "ig-sweat-heat": {
+   "kind": "sweat",
+   "mode": "heat",
+   "v": "V",
+   "share": "share",
+   "ev": "ev",
+   "heat": "heat",
+   "drip": "drip"
+  },
+  "met-bmr-oxygen": {
+   "kind": "bulb",
+   "vo2": "vo2",
+   "eq": "eq",
+   "l": "L",
+   "day": "day",
+   "w": "W"
+  },
+  "fab-osmolality": {
+   "kind": "stack",
+   "unit": "mOsm/kg",
+   "bars": [
+    {
+     "label": "Estimated plasma osmolality",
+     "segs": [
+      {
+       "key": "NA2",
+       "label": "2 × sodium",
+       "tone": "lo"
+      },
+      {
+       "key": "GM",
+       "label": "glucose",
+       "tone": "accent"
+      },
+      {
+       "key": "UM",
+       "label": "urea",
+       "tone": "o2"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-anion-gap": {
+   "kind": "stack",
+   "unit": "mmol/L",
+   "bars": [
+    {
+     "label": "Measured cations",
+     "segs": [
+      {
+       "key": "NA",
+       "label": "Na+",
+       "tone": "hi"
+      }
+     ]
+    },
+    {
+     "label": "Measured anions and the gap",
+     "segs": [
+      {
+       "key": "CL",
+       "label": "Cl−",
+       "tone": "lo"
+      },
+      {
+       "key": "H",
+       "label": "HCO3−",
+       "tone": "o2"
+      },
+      {
+       "key": "AG",
+       "label": "gap",
+       "tone": "shape"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-net-acid": {
+   "kind": "stack",
+   "unit": "mmol/day",
+   "bars": [
+    {
+     "label": "Acid excreted in urine",
+     "segs": [
+      {
+       "key": "TA",
+       "label": "titratable acid",
+       "tone": "lo"
+      },
+      {
+       "key": "NH",
+       "label": "ammonium",
+       "tone": "o2"
+      }
+     ]
+    },
+    {
+     "label": "Bicarbonate lost (subtracts)",
+     "segs": [
+      {
+       "key": "B",
+       "label": "HCO3−",
+       "tone": "shape"
+      }
+     ]
+    },
+    {
+     "label": "Fixed acid made",
+     "segs": [
+      {
+       "key": "F",
+       "label": "made",
+       "tone": "hi"
+      }
+     ]
+    }
+   ]
+  },
+  "mt-atp-cp-duration": {
+   "kind": "stack",
+   "unit": "s",
+   "bars": [
+    {
+     "label": "Seconds of all-out effort",
+     "segs": [
+      {
+       "key": "tATP",
+       "label": "stored ATP",
+       "tone": "accent"
+      },
+      {
+       "key": "rest",
+       "expr": "tAll - tATP",
+       "label": "creatine phosphate",
+       "tone": "lo"
+      }
+     ]
+    }
+   ]
+  },
+  "fab-water-balance": {
+   "kind": "stack",
+   "unit": "L/day",
+   "bars": [
+    {
+     "label": "Water in",
+     "segs": [
+      {
+       "key": "DR",
+       "label": "drinks",
+       "tone": "lo"
+      },
+      {
+       "key": "FO",
+       "label": "food",
+       "tone": "o2"
+      },
+      {
+       "key": "ME",
+       "label": "metabolic",
+       "tone": "accent"
+      }
+     ]
+    },
+    {
+     "label": "Water out",
+     "segs": [
+      {
+       "key": "UR",
+       "label": "urine",
+       "tone": "hi"
+      },
+      {
+       "key": "IN",
+       "label": "skin, breath",
+       "tone": "shape"
+      },
+      {
+       "key": "SW",
+       "label": "sweat",
+       "tone": "o2"
+      },
+      {
+       "key": "FE",
+       "label": "feces",
+       "tone": "accent"
+      }
+     ]
+    }
+   ]
+  },
+  "met-atp-count": {
+   "kind": "stack",
+   "unit": "ATP",
+   "bars": [
+    {
+     "label": "ATP from one glucose",
+     "segs": [
+      {
+       "key": "gly",
+       "label": "glycolysis",
+       "tone": "lo"
+      },
+      {
+       "key": "pyr",
+       "label": "pyruvate to acetyl",
+       "tone": "o2"
+      },
+      {
+       "key": "cac",
+       "label": "citric acid cycle",
+       "tone": "accent"
+      }
+     ]
+    }
+   ]
   }
+ }
 }

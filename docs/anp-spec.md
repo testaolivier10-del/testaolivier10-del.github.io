@@ -440,3 +440,59 @@ Site audit follow-up (2026-10-02, workstream W6):
 91. (2026-10-27) **3D anatomy tool** (docs/tools-upgrade.md, "3D anatomy"). An eighth tool, anatomy-physiology/tools/anatomy-3d.html, puts section 8.1's four lab practical modes (explore, study, quiz with "name it" and "point to it", timed stations) on the NREMT body map's real 3D model, with A&P content in data/tools/anatomy-3d.json: 86 structures, each tied to the topic that teaches it and held to the ordering rule by its validator. Mesh names come only from the model's own FMA ids, each checked against BodyParts3D and the FMA; nothing is guessed. The engine and model moved to assets/body3d/ so both courses share them. Premium like the lab practical. It says plainly what the model lacks (most muscles, nerves, cortex, bone markings); the lab practical's figures still cover those.
 92. (2026-10-27) Tool audit fixes (docs/tool-audit-2026-10.md, A&P section). Pathway tracer: every pathway is drawn as a map from its own step data (pathways.js pathMap: one numbered node per step with an icon for the kind of step, chosen from its label and text or from an optional step "icon", family colors, oxygen colors for blood, flows/causes arrows), and every drill works on it: placing a step lights its node, a gap is a dashed "?", and the answer is marked on the map. 208 hand-drawn diagrams were not feasible; the generated map is the diagram spec 8.4 asks for, and the five OpenStax figure traces stay. Feedback loop builder: the ring is drawn at full strength, Test yourself lays the seven slots out as the loop with a picture of each slot's role, the card bank sits at the top of the bottom sheet, and cards show short labels (distractors gained a "short", required by the loop validator). Every Practice and Test drill in the calculators, pathways and loops gives one method hint with Try again or Show the answer after a first miss; only the first check is recorded, so scoring and review are unchanged.
 93. (2026-10-27) **"See it in 3D" opens the A&P 3D anatomy tool.** The lab practical's and word roots' button now opens `tools/anatomy-3d.html?focus=<structure id>` (it opened the NREMT body map). `AnpToolKit.A3D` maps exact label names and terms (case aside, plus same-structure spellings such as "Gall bladder", "Bladder", "Arch of aorta", left/right "common carotid") to the 3D tool's ids; a whole organ never links to a part (no "Heart", "Lung", "Left ventricle": the model has the heart wall and lung lobes), and a name with no structure gets no button. `scripts/test/anp-tool-kit.test.mjs` fails when an id is not in `data/tools/anatomy-3d.json`. Arriving with `?focus=` shows that structure without the first-run coach. The Keep going strip's body map link (NREMT) is unchanged. Quiz modes on phones: the pathway drills count as quiz modes and the tap-to-answer groups (card bank, choices, up/down/no change) carry `data-ls-answer`, so the shell keeps them above the sticky row.
+94. (2026-11-10) **Pathways and predictions drawn on real figures** (tool redesign, docs/tool-review/anatomy-physiology.md,
+    report in docs/tool-review/done/anp-redesign.md). A scene is a registered figure with named places on it
+    (`data/scenes.json`, places set by eye on a grid, `hide`/`cover` blank printed labels or stage numbers that would give
+    an order away). `data/pathway-scenes.json` gives a pathway its scene and each step's place (null: no single place);
+    `data/predict-scenes.json` gives a scenario its scene, the place of the change and of each variable. The build
+    publishes them on the items (`p.scene`, `s.scene`); `assets/tools/scene.js` draws them (numbered pins, route, token,
+    callout). Pathway tracer: the step map sits beside the figure; placing a step puts its pin where it happens and the
+    route follows the student's order; Missing step shows a dashed "?" leg between its neighbours, never its true place;
+    Spot the error shows numbered pins only. The five figure traces also serve as their drills' scene. Predict the change:
+    the change is a "!" pin, each variable a numbered pin (the dials carry the numbers), a call puts an open badge on
+    the pin, and Run draws the chain on the figure, each arrow from the variable's cause (the change, or the variable
+    whose chain leads into its own). Placement was checked figure by figure; predict placement is rule-based by variable
+    name and was spot-checked, and a variable with no clear place keeps only its dial. Bug fixed: Missing step after Order
+    drew its map into the old drill's slot and showed an empty stage. Item ids, scoring, recording and deep links unchanged.
+95. (2026-11-10) Tool review fixes (docs/tool-review/anatomy-physiology.md; done file docs/tool-review/done/anp-fix.md). Every calculator draws its formula: 24 new picture families in tools/calc-art.js, keyed in data/calc-pictures.json; oxygen content shows bound and dissolved O2 to one scale. Each feedback loop shows the place in the body that answers (tools/loop-scenes.js, 18 drawings for 49 loops); a positive loop stays at its far end. The graph reader draws stacks of three or more panels wide on a desktop, draws hematocrit tubes as tubes ("look": "tubes") and reads only curves at the cursor. The lab practical fits tall figures to the stage width and paints out covered labels' leader lines (tools/lab-fit.js). The new drawing code loads on first use. Presentation only: item ids, scoring, recording and deep links are unchanged.
+96. (2026-11-10) Pin and picture accuracy fixes (independent check docs/tool-review/done/anp-accuracy-check.md; done
+    file docs/tool-review/done/anp-pins.md). Scene places were re-set so each pin sits on its structure (synovial joint
+    layers, skeleton, somatic panel of the efferent figure, skin layers, soft palate, ampulla, SR, T tubule and
+    sarcolemma, endomysium and perimysium, glycolysis order, and the smaller misplacements); the nephron loses its
+    macula densa place (the figure does not draw the tubule at its own glomerulus) and the lymph figure its lumbar
+    trunk (hidden by the intestine); circulation gains "Small arteries and arterioles", "Capillaries of the lower body"
+    and "Veins of the lower body". Rule: a variable or step with no right place on its figure gets no pin, and a
+    scenario with no right place gets no figure (only its dials): a missing picture is acceptable, a wrong one is
+    not. So brain ventricles, thirst, ADH release, smooth muscle, the placenta, injected hormones, vitamin D in blood
+    and the portal vein are unpinned, non-kidney scenarios leave the nephron, and the dorsal column and
+    spinothalamic routes leave the motor pathway figure. Calculators: the glucose scale shows 100 to 125 mg/dL as
+    amber prediabetes with a legend; the firing-rate trace shades only the spike as the absolute refractory period;
+    the conduction picture has no cell body, so it reads for sensory and motor fibers alike. Loops: a positive loop
+    builds to its far end, then its ending comes and the variable falls back (replaces "stays at its far end" in 95);
+    the kidney tubule drawing has no brush border.
+97. (2026-11-10) Tools pass 2, simple and clear (docs/tool-review/SIMPLIFY.md; report docs/tool-review/pass2/anatomy-physiology.md).
+    The figure is the picture: beside a scene plate the pathway map is a slim numbered list and Predict's dials a
+    numbered list, so the figure takes about two thirds of the stage. Covered labels on scene plates take the colour of
+    the drawing around them and their leader lines are painted out over white (lab-fit.js blendCovers / eraseLeaders,
+    loaded on first use). Predict's dials say nothing until a call. Feedback loops open with the seven part names only;
+    a part's words appear when the signal first reaches it and stay until Reset, and the drawing's action labels appear
+    with the action. The graph reader puts at most two value pills on a graph (more are read in the list). Calculators
+    move each result's reference line to Explanation ("Usual values") and draw the ossicles as three bones.
+    Presentation only: pins, places, item ids, scoring, recording and deep links are unchanged.
+98. (2026-11-11) Tools pass 3, cleanup after the fresh-eyes judge (docs/tool-review/CLEANUP.md; report
+    docs/tool-review/pass3/anatomy-physiology.md). Feedback loops: on landing the stimulus box is ready and the six
+    other parts wait dimmed until the signal reaches them; the gauge drops "lower/higher" and says its state only off
+    the set point; "acts on the variable" appears once the response has acted; the skin scene's arteriole is a tube
+    in the dermis that narrows or widens (the arch read as a magnet). Calculators: a result the picture already prints
+    with its name or unit is not repeated under it (a result with a band keeps its card); with a slider the number
+    reads as the slider's value, tap to type. Graph reader: a marked point's label moves clear of the cursor's value
+    pill (and waits when the cursor is on that point); a region's name slides off the cursor line. Lab practical: a
+    figure that prints two or three views one above the other (found from the blank band between them, at least
+    three labels each side) shows one view at a time in Explore and Study, fitted to the stage (Upper view / Lower
+    view); quiz modes keep the whole figure. Pathway tracer: a wide figure (width at least 1.5 times height) fills
+    the stage width with the numbered list under it in rows of three. Predict: dial names show whole; without a
+    figure the dials are larger; "Show the chain" hides the run's step feed while the diagram is open. Leader lines of
+    hidden labels (lab-fit.js) are followed straight on past where the white thins, over crossing strokes (never
+    painted) and round one bend, to the drawing's colour; a straight upright run passing a label's side is an
+    outline and is no longer erased (it had cut the elbow's skin line, a gland figure's bracket and a leg's edge).
+    Presentation only: pins, places, labels, item ids, scoring, recording and deep links are unchanged.

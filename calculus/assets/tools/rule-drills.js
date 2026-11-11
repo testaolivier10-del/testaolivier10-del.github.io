@@ -47,7 +47,9 @@
     if(node.rule === 'quotient') return colored(L + ' \\frac{\\text{QQA}}{\\text{QQB}}', { QQA: { tex: k[0].node.tex, cls: 'rd-ca' }, QQB: { tex: k[1].node.tex, cls: 'rd-cb' } }, L + ' ' + node.tex);
     if(node.rule === 'chain'){
       var o = node.outer.tex.replace(/(^|[^a-zA-Z\\])u(?![a-zA-Z])/g, '$1\\text{QQB}');
-      return colored(L + ' \\text{QQA}', { QQA: { tex: o, cls: 'rd-ca' } }, L + ' ' + node.tex).replace('<mtext>QQB</mtext>', '<mrow class="rd-cb">' + inner(k[1].node.tex) + '</mrow>');
+      // A sum raised to a power keeps its parentheses: (3x − 1)⁵, not 3x − 1⁵ (pass 3 fix).
+      var itx = k[1].node.tex, needP = /(^|[^a-zA-Z\\])u\s*\^/.test(node.outer.tex) && (k[1].node.rule === 'sum' || /^-/.test(itx));
+      return colored(L + ' \\text{QQA}', { QQA: { tex: o, cls: 'rd-ca' } }, L + ' ' + node.tex).replace('<mtext>QQB</mtext>', '<mrow class="rd-cb">' + inner(needP ? '\\left(' + itx + '\\right)' : itx) + '</mrow>');
     }
     return tm(L + ' ' + node.tex);
   }
@@ -377,19 +379,23 @@
       el.field = el.input.querySelector('input'); el.read = el.input.querySelector('.rd-read');
       el.chips = document.createElement('div');
       el.chips.className = 'rd-examples';
-      el.chips.innerHTML = '<p class="rd-lbl" id="rd-ex-l">Or try</p><div class="ls-scroll rd-chips" role="group" aria-labelledby="rd-ex-l">' + RD.EXAMPLES.map(function(s){ var t = RD.analyze(s).tex; return '<button type="button" class="ls-chip rd-chip" data-f="' + esc(s) + '" aria-label="' + esc(X() ? X().text(t) : s) + '"><span aria-hidden="true">' + tm(t) + '</span></button>'; }).join('') + '</div>';
+      el.chips.innerHTML = '<p class="rd-lbl" id="rd-ex-l">Or try</p><div class="ls-scroll rd-chips" role="group" aria-labelledby="rd-ex-l">' + RD.EXAMPLES.map(function(s, i){ var t = RD.analyze(s).tex; return '<button type="button" class="ls-chip rd-chip" data-f="' + esc(s) + '" aria-label="' + esc(X() ? X().text(t) : s) + '"><span aria-hidden="true">' + tm(t) + '</span></button>'; }).join('') + '</div>';
       el.cue = T.cue('Type a function, or tap an example. The tree shows which rule comes first and what is inside what.');
       el.why = document.createElement('div'); el.why.className = 'rd-why';
       el.det = document.createElement('div'); el.det.className = 'rd-det';
       [el.cue.el, el.stage, el.input, el.chips, el.why, el.det].forEach(function(x){ pane.appendChild(x); });
       var t = null;
       el.field.addEventListener('input', function(){ clearTimeout(t); t = setTimeout(function(){ show(el.field.value, true); }, 160); el.cue.done(); });
-      el.chips.addEventListener('click', function(e){ var b = e.target.closest('.rd-chip'); if(!b) return; el.field.value = b.getAttribute('data-f'); show(el.field.value); el.cue.done(); });
+      // A long list folds behind the shared Tool Studio "More" chip (tool-studio.js, chip overflow).
+      el.chips.addEventListener('click', function(e){
+        var b = e.target.closest('.rd-chip'); if(!b) return; el.field.value = b.getAttribute('data-f'); show(el.field.value); el.cue.done(); });
       function fitStage(){
         var w = el.stage.getBoundingClientRect().width;
         if(!w) return;
         var narrow = w < 520;
-        el.stage.classList.toggle('rd-wide', w >= 720);
+        // Pass 2: one picture, the tree. The graphs of f and f′ moved off the stage (they stay in Details, "f and f′"),
+        // so a wide stage no longer splits into tree and side panel.
+        el.stage.classList.toggle('rd-wide', false);
         el.stage.classList.toggle('rd-narrow', narrow);
         if(cur) drawTree();
       }
@@ -444,6 +450,13 @@
         el.tree.innerHTML = treeHtml(cur.node, { showD: true, showDAll: true, noRootD: true, slimRoot: true, depth: dp });
         if(!nw || dp === 1 || fits()) break;
       }
+      // Pass 2: with the tree the only picture, a wide stage draws it larger, if it still fits across.
+      el.tree.style.zoom = '';
+      if(el.stage.getBoundingClientRect().width >= 720){
+        el.tree.style.zoom = '1.3';
+        var tb = el.tree.getBoundingClientRect(), wide = [].some.call(el.tree.querySelectorAll('.rd-node'), function(n){ var r = n.getBoundingClientRect(); return r.right > tb.right + 0.5 || r.left < tb.left - 0.5; });
+        if(wide || el.tree.scrollWidth > el.tree.clientWidth + 1) el.tree.style.zoom = '';
+      }
       fitRoom();
     }
     // Nothing scrolls sideways or is cut: the tree, and every card in it.
@@ -456,7 +469,7 @@
     }
     function fitRoom(){
       var wide = el.stage.classList.contains('rd-wide'), main = el.stage.querySelector('.rd-main');
-      var used = el.tree.getBoundingClientRect().bottom - main.getBoundingClientRect().top, room = wide ? 0 : el.stage.clientHeight - used - 12, on = !wide && room >= 170, was = el.stage.classList.contains('rd-room');
+      var used = el.tree.getBoundingClientRect().bottom - main.getBoundingClientRect().top, room = wide ? 0 : el.stage.clientHeight - used - 12, on = false && !wide && room >= 170, was = el.stage.classList.contains('rd-room');
       el.stage.classList.toggle('rd-room', on);
       if(on && !was) requestAnimationFrame(drawPlot);
     }

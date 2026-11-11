@@ -42,6 +42,9 @@
   var ODD_R = [49, 50, 81, 82, 83];
   var ODD_R_WHY = 'Indium, tin, thallium, lead and bismuth are grayed out on the radius table. Their radii are measured in the solid metal, where the atoms bond and pack in different ways from one metal to the next, so the numbers do not fall smoothly across the period (indium comes out smaller than tin, thallium smaller than lead). Test yourself never asks you to compare two elements where the data break the rule. Ionization energy still rises across from indium to tin to antimony and from thallium to lead; the heaviest elements have other exceptions too (bismuth comes out just below lead).';
   var LABEL = { r: 'Atomic radius', ie: 'Ionization energy', en: 'Electronegativity', ea: 'Electron affinity' };
+  // The caption names the trend itself (the selected value is the pill).
+  var TREND = { r: 'Atomic radius: larger down a group, smaller across a period.', ie: 'Ionization energy: higher across a period, lower down a group.',
+    en: 'Electronegativity: higher across a period, lower down a group.', ea: 'Electron affinity: most energy released by the halogens; the least regular trend.' };
   var SHORT = { r: 'Radius', ie: 'Ionization', en: 'Electroneg.', ea: 'Electron aff.' };
   function valText(el, key, unit){
     var v = el[key];
@@ -61,7 +64,9 @@
     // Under 1000 px the table and the spectrum take turns on the stage (a
     // phone cannot show both at a readable size); wider, they sit side by side.
     var mqN = null; try{ mqN = matchMedia('(max-width: 999.98px)'); }catch(e){}
-    function narrow(){ return !!(mqN && mqN.matches); }
+    // Pass 2: one picture at a time at every width (the table, the
+    // spectrum, or across and down), switched by the tabs over the stage.
+    function narrow(){ return true; }
     if(mqN && mqN.addEventListener) mqN.addEventListener('change', function(){ draw(); });
     try{ full = matchMedia('(min-width: 700px)').matches; }catch(e){}
     host.innerHTML = '<section class="bt-problem ptx-card" aria-labelledby="ptx-h"><h2 id="ptx-h" class="sr-only">Periodic table colored by a trend</h2>' +
@@ -78,7 +83,7 @@
     host.querySelector('.ptx-ctl').insertBefore(start.el, host.querySelector('.ptx-keys'));
     var showVals = true;
     host.querySelectorAll('.ptx-key').forEach(function(b){ b.addEventListener('click', function(){ key = b.getAttribute('data-k'); start.done(); draw(); }); });
-    host.querySelector('.ptx-cmp').addEventListener('click', function(){ comparing = !comparing; if(!comparing) other = null; else if(narrow()){ narrowView = 'table'; } draw(); });
+    host.querySelector('.ptx-cmp').addEventListener('click', function(){ comparing = !comparing; if(!comparing) other = null; else if(narrow()){ narrowView = 'table'; } draw(); if(comparing && LS) LS.close(); });
     host.querySelector('.ptx-full').addEventListener('change', function(e){ full = e.target.checked; if(!full && !TR.mainGroup(sel) && sel.z !== 1) sel = byZ[11]; draw(); });
     host.querySelector('.ptx-vals').addEventListener('change', function(e){ showVals = e.target.checked; draw(); });
     function setView(v){ if(v !== 'table') view = v; narrowView = v; draw(); }
@@ -193,12 +198,15 @@
         : key === 'en' ? 'Electronegativity follows the same pull: a large effective nuclear charge acting at a short distance attracts bonding electrons strongly (fluorine), a small one at a long distance weakly (cesium).'
         : 'An added electron is attracted by the effective nuclear charge; more energy is released where that pull is strong and close (the halogens). Atoms whose next electron must start a new subshell or pair up release little or none, so this trend is the least regular.';
       if(key === 'r' && ODD_R.indexOf(e.z) > -1) cause = ODD_R_WHY + ' ' + cause;
-      return { head: '<b>' + esc(e.n) + ': ' + LABEL[key].toLowerCase() + ' ' + v + '.</b>', body: '<p>' + (row.length > 1 ? 'Across period ' + e.p + ': ' + span(row) + '. ' : '') + (col.length > 1 ? 'Down group ' + e.g + ': ' + span(col) + '. ' : '') + '</p><p>' + cause + '</p>' +
+      return { head: '<b>' + esc(TREND[key]) + '</b>', body: '<p><b>' + esc(e.n) + ': ' + LABEL[key].toLowerCase() + ' ' + v + '.</b> ' + (row.length > 1 ? 'Across period ' + e.p + ': ' + span(row) + '. ' : '') + (col.length > 1 ? 'Down group ' + e.g + ': ' + span(col) + '. ' : '') + '</p><p>' + cause + '</p>' +
         (e.pes ? '<p>Its spectrum has ' + e.pes.length + ' peak' + (e.pes.length === 1 ? '' : 's') + ', one per occupied subshell. The left-most (' + e.pes[0][0] + ', ' + e.pes[0][1] + ' MJ/mol) is the most tightly held; the right-most (' + e.pes[e.pes.length - 1][0] + ', ' + e.pes[e.pes.length - 1][1] + ' MJ/mol) is the first ionization energy, ' + e.ie + ' kJ/mol. Heights count electrons: ' + e.pes.map(function(p){ return p[2]; }).join(', ') + '.</p>' : '') };
     }
     function draw(){
       $$('.ptx-key').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === key)); });
-      var cmp = $('.ptx-cmp'); cmp.setAttribute('aria-pressed', String(comparing)); cmp.textContent = comparing ? (other ? 'Done comparing' : 'Cancel compare') : 'Compare two elements';
+      var cmp = $('.ptx-cmp'); cmp.setAttribute('aria-pressed', String(comparing));
+      // Pass 3: Compare waits in Details; while a comparison runs, its Done
+      // button sits in the dock, under the trend buttons.
+      if(cmpHome && cmpSlot){ var to = comparing ? cmpSlot : cmpHome; if(cmp.parentNode !== to) to.appendChild(cmp); cmpSlot.hidden = !comparing; } cmp.textContent = comparing ? (other ? 'Done comparing' : 'Cancel compare') : 'Compare two elements';
       $('.ptx-table').innerHTML = tableSvg();
       $('.ptx-stage').classList.toggle('is-full', full);
       $('.ptx-legend').innerHTML = legend();
@@ -209,9 +217,9 @@
       // The spectrum fills its box on a phone (T.fitBox), so its labels keep
       // their size; the shell picture sits beside or under it.
       var head = '<figcaption class="ptx-pesh"><b>' + esc(sel.n) + '</b> ' + TR.confHtml(sel.conf) + '</figcaption>';
-      var fb = T.fitBox(pv, 560, 236, { w: 300, h: 200 }), ph = fb.fit ? Math.max(200, Math.min(fb.h * 0.62, 340)) : full ? 200 : 300;
+      var fb = T.fitBox(pv, 560, 236, { w: 300, h: 200 }), ph = fb.fit ? Math.max(200, Math.min(fb.h * 0.62, 340)) : 320;
       pv.innerHTML = view === 'bars' ? barsSvg() : sel.pes ? '<figure class="ptx-pes">' + head + TR.pesSvg(sel, { w: fb.fit ? fb.w : 560, h: ph }) + '</figure>' +
-          '<div class="ptx-shellrow">' + TR.shellSvg(sel, { size: 180 }) + '<p class="bt-small">Tap a peak or an electron to match a subshell in both pictures. Shell picture: schematic, not to scale. ' + (sel.pes.length > 1 ? 'Each peak is one subshell; its height is the number of electrons in it.' : '') + '</p></div>'
+          '<div class="ptx-shellrow">' + TR.shellSvg(sel, { size: 180 }) + '<p class="bt-small">Tap a peak or an electron: the same subshell lights up in both. Shell picture not to scale.</p></div>'
         : '<p class="ptx-nopes"><b>' + esc(sel.n) + '</b> ' + TR.confHtml(sel.conf) + '<br>Spectra are drawn for hydrogen to krypton, the atoms the exam uses. Pick one of those to see its peaks.</p>';
       var w = sayText();
       T.explain($('.ptx-why'), w.head, w.body);
@@ -255,16 +263,21 @@
        as the caption; the element card in Details. */
     function studioDraw(w){
       LS.pills([{ k: sel.s, html: valText(sel, key), tone: 'readout' }].concat(other ? [{ k: other.s, html: valText(other, key), tone: 'ghost' }] : []), 'left', 'explore');
-      LS.pills([{ html: comparing ? (other ? 'Comparing' : 'Pick a second') : LABEL[key], tone: comparing ? 'accent' : 'ghost' }], 'right', 'explore');
+      // No right pill: the trend is the pressed button, the compare step the caption.
+      LS.pills([], 'right', 'explore');
       LS.caption(T.sayHead($('.ptx-why')), 'explore');
-      SP.setup(full ? 'Whole table' : 'Main groups');
+      SP.setup((full ? 'Whole table' : 'Main groups') + ', compare two');
       SP.open();
     }
+    var cmpHome = null, cmpSlot = null;
     function studio(pane, s){
       LS = s;
       $('.ptx-cmp').classList.add('ls-btn');
-      SP = T.studioPane(pane, s, { stage: [$('.ptx-stage')], dock: [$('.ptx-keys'), $('.ptx-cmp')], setup: 'Table', moreLabel: 'More of the table, values on the cells, sources',
-        why: [$('.ptx-why')], details: [$('.ptx-el')] });
+      cmpSlot = document.createElement('div'); cmpSlot.className = 'ptx-cmpslot'; cmpSlot.hidden = true;
+      cmpHome = document.createElement('div'); cmpHome.className = 'ptx-cmphome';
+      cmpHome.appendChild($('.ptx-cmp'));
+      SP = T.studioPane(pane, s, { stage: [$('.ptx-stage')], dock: [$('.ptx-keys'), cmpSlot], setup: 'Table', moreLabel: 'More of the table, values on the cells, sources',
+        why: [$('.ptx-why')], details: [cmpHome, $('.ptx-el')] });
       draw();
       T.watchBox($('.ptx-view'), draw);
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ptx-cell.is-sel'), text: 'Tap any element' });
@@ -287,7 +300,7 @@
       extra: function(host, p){
         if(p.type === 'pes-id'){
           // No subshell labels: naming the peaks is the second step.
-          host.innerHTML = '<figure class="cd-fig ptx-qfig">' + TR.pesSvg(byZ[p.el], { w: phoneW() ? 380 : 560, h: phoneW() ? 380 : 240, labels: false, noSub: true, label: 'Photoelectron spectrum of an unknown atom: ' + byZ[p.el].pes.map(function(k){ return 'a peak at ' + k[1] + ' MJ/mol with relative height ' + k[2]; }).join('; ') + '.' }) + '<figcaption class="bt-small">Binding energy on a log scale, decreasing to the right. Peak heights are relative numbers of electrons.</figcaption></figure>';
+          host.innerHTML = '<figure class="cd-fig ptx-qfig">' + TR.pesSvg(byZ[p.el], { w: phoneW() ? 380 : 560, h: phoneW() ? 380 : 240, labels: false, noSub: true, label: 'Photoelectron spectrum of an unknown atom: ' + byZ[p.el].pes.map(function(k){ return 'a peak at ' + k[1] + ' MJ/mol with relative height ' + k[2]; }).join('; ') + '.' }) + '</figure>';   // the axis title and the problem say the rest (pass 2)
           return;
         }
         if(p.type === 'pes-cmp'){

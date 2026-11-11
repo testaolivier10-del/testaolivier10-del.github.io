@@ -220,6 +220,7 @@
   .st-guide{stroke:#fff;stroke-width:1.4;stroke-dasharray:5 6;opacity:.8;vector-effect:non-scaling-stroke;}
   .st-ics{font:800 19px var(--font-mono);fill:#5B3A2A;text-anchor:middle;paint-order:stroke;stroke:rgba(255,246,238,.85);stroke-width:5px;stroke-linejoin:round;}
   .st-cap{font:700 16px var(--font-mono);fill:#5B3A2A;text-anchor:middle;letter-spacing:.04em;paint-order:stroke;stroke:rgba(255,246,238,.85);stroke-width:5px;stroke-linejoin:round;}
+  .st-ics,.st-cap{transition:opacity .2s;} .st-ics.is-dim,.st-cap.is-dim{opacity:0;}
   .st-rl{font:800 26px var(--font-ui);fill:var(--muted);text-anchor:middle;}
   .st-credit{font-size:10.5px;color:var(--muted);text-align:center;margin:4px 0 2px;line-height:1.4;}
   .st-credit a{color:var(--muted);}
@@ -957,6 +958,9 @@ if (studio) (function(){
   const cards = document.getElementById('listenSection'), sndMore = document.getElementById('sndMore');
   studio.add('details', [settings, cards]);
   studio.add('dock', live);
+  /* Pass 3 (cleanup 2026-11-11): the beat strip under Play appears with the
+     first Play, next to the sound it draws, not before. */
+  side.addEventListener('click', e => { if (e.target.closest('[data-play-which]')) side.classList.add('st-played'); });
   // The fig and the side live and hide with the module's .st-main.
   const sync = () => { fig.hidden = side.hidden = main.hidden; };
   new MutationObserver(sync).observe(main, { attributes: true, attributeFilter: ['hidden'] }); sync();

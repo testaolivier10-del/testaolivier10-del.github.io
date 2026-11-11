@@ -17,7 +17,7 @@
 .pg-lg-c{color:var(--pg-c);} .pg-lg-p{color:var(--pg-p);}
 .pg-lg-a::before{height:12px;width:14px;background:var(--pg-a);box-shadow:inset 0 0 0 1.5px var(--pg-a2);}
 .pg-lg-t::before{height:12px;width:14px;background:var(--pg-t);box-shadow:inset 0 0 0 1.5px var(--pg-t2);}
-.pg-lg-n::before{background:repeating-linear-gradient(90deg,var(--pg-c) 0 5px,transparent 5px 8px);}
+.pg-lg-n::before{background:repeating-linear-gradient(90deg,var(--muted) 0 5px,transparent 5px 8px);}
 
 /* polar grid */
 .pg-grid circle{fill:none;stroke:var(--line);stroke-width:1;}
@@ -28,6 +28,7 @@
 .pg-alab text.pg-rn{font-size:10.5px;}
 .pg-curve{fill:none;stroke:var(--pg-c);stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round;}
 .pg-curve.is-neg{stroke-dasharray:7 5;}
+.pg-curve.is-away{stroke:var(--pg-a2);} .pg-curve.is-toward{stroke:var(--pg-t2);}
 .pg-ghost{fill:none;stroke:var(--pg-c);stroke-opacity:.22;stroke-width:1.6;stroke-dasharray:3 4;}
 .pg-glow{fill:none;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
 .pg-glow.is-away{stroke:var(--pg-a);} .pg-glow.is-toward{stroke:var(--pg-t);} .pg-glow.is-steady{stroke:none;}

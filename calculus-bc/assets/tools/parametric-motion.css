@@ -104,3 +104,8 @@
 .ls-root.ls-phone .pm-lg-a{font-size:0;} .ls-root.ls-phone .pm-lg-a::after{content:"accel.";font-size:12px;}
 .ls-root.ls-phone .pm-show > .bt-mode{padding:0 4px;font-size:13.5px;}
 .ls-root.ls-phone .pm-speed-wrap{height:84px;}
+.pm-lg[hidden]{display:none;}
+/* Pass 3 (judge c): the point's coordinates are in Formulas & numbers, not a third number on the plane;
+   "Acceleration" fits its button on a desktop dock. */
+.pm-badge{display:none;}
+.pm-show > .bt-mode{padding:0 6px;white-space:nowrap;font-size:13px;}

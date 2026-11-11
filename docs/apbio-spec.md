@@ -189,6 +189,30 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    the variables drill). Operons and signal transduction re-lay for a portrait phone (DNA on two lines, the ladder in
    two columns). Enzyme "% of best Vmax" divides by the enzyme's Vmax at its optimum, so a denatured enzyme reads 0%.
    The snapdragon Hardy-Weinberg context names its phenotypes (`phen`), so no "carrier" for incomplete dominance.
+   (2026-11-10, tool review redesign, branch `claude/tv-bio-redesign`, `docs/tool-review/done/bio-redesign.md`)
+   Design drills draw each scenario's own setup (`SCENES` in `design-drills.js`, keyed by scenario id; a new
+   scenario without a scene falls back to plain flasks): the organism or apparatus per group, the level under it,
+   and the equipment for what is measured and kept the same. Drawn parts are `.dr-part[data-part=i]`, tied to
+   variables option i: tapping one answers the drill like its tag, and after Check both show the role. The data
+   are a plain bar chart beside the scene (zero line, negative bars point down, ± error bars).
+   Signal transduction draws the cascade inside a liver cell (`drawFig`): epinephrine outside, receptors in the
+   membrane, then one row of drawn molecules per step on a powers-of-ten scale (3 drawings per factor of 10, the
+   key says so), faint rings for a fixed pool, a shaded funnel joining the rows, counts and gains as labels; rows
+   with a drug are the tap targets; a G protein locked off or a PKA inhibitor draws a stop line. The tool opens at
+   0 s (`readTime.value` 0). The PKA step's note no longer calls 1 PKA per 200 cAMP binding: four cAMP bind each
+   PKA (two per regulatory subunit), freeing two catalytic subunits; the 200 is a count ratio (most cAMP is free),
+   said in "How this model works". The two-column phone ladder (`ladder2`) is gone: one column fits a phone.
+   (2026-11-10, tool review fixes, branch `claude/tv-bio-fix`, `docs/tool-review/bio.md`, notes in
+   `docs/tool-review/done/bio-fix.md`) Operons: the Mutant quiz stage draws strain X in every medium (switch parts
+   behind "?", mRNA and enzyme made), Explore draws the enzyme band, gene choices sit in the dock. Cell cycle: DNA
+   damage is on the main panel at 2% per hour (`damage.value`), damaged cells are red (`popCount` adds `dam` per
+   phase). Energy flow pyramids open to scale. Enzyme: pH, inhibitor and enzyme in the dock. Graph builder: points
+   table stacks in the dock, data set choice in the dock (Details on a phone). Hardy-Weinberg drift: beads fit the
+   jar at any N, Guess N and Compare population sizes draw on the stage. Population growth: live N(t) curve under
+   the meadow, fixed habitat scale (the meadow is the largest K the slider allows), flood and frost drawn. Rates:
+   bold tangent with a rise-over-run step and a Hide/Show switch, a percent change Explore picture. Questions
+   mode keeps the stimulus on the stage for the FRQ (every FRQ says "Use Table 1 above"); tree reading draws its
+   Drawing 1 and 2. No item id, hash, data key or recording changed.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;

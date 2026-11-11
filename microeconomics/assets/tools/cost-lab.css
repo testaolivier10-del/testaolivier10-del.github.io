@@ -6,53 +6,57 @@
    points, the reached part of each curve and the drill's figure. */
 .cl-fig,.cl-qfig,.ls-root{--cl-MC:var(--cink);--cl-ATC:#0B5F9E;--cl-AVC:#2B6A1E;--cl-AFC:#7A5A12;}
 :root[data-theme="dark"] .cl-fig,:root[data-theme="dark"] .cl-qfig,:root[data-theme="dark"] .ls-root{--cl-ATC:#86C5F2;--cl-AVC:#A6DB8E;--cl-AFC:#E2C27A;}
-.cl-fig{margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:8px 22px;align-items:center;width:100%;max-width:1180px;margin:0 auto;}
+.cl-fig{margin:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 18px;align-items:center;width:100%;max-width:1180px;margin:0 auto;}
 .cl-fig.is-narrow{grid-template-columns:minmax(0,1fr);gap:4px;align-items:start;}
 .mic-ls-stage>.cl-fig{flex:1 1 auto;min-height:0;}
 .cl-gwrap{min-width:0;display:flex;flex-direction:column;align-items:center;}
-.cl-svg{width:100%;max-width:560px;}
-.cl-svg svg{display:block;width:100%;height:auto;}
+.cl-svg{width:100%;max-width:640px;}
+.cl-svg svg{display:block;width:100%;height:auto;max-height:calc(100svh - 230px);margin:0 auto;}
 .cl-fig.is-narrow .cl-svg{max-width:460px;}
 /* A phone: the graph takes what the stage has left after the row card. */
 .mic-ls-stage>.cl-fig.is-narrow{display:flex;flex-direction:column;}
 .mic-ls-stage>.cl-fig.is-narrow .cl-svg svg{max-height:max(190px,calc(62svh - 230px));}
 .cl-fig.is-narrow .cl-side{width:100%;}
 .cl-fig.is-narrow .cl-cards{padding-right:48px;}
-.cl-key{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:center;margin:2px 0 0;font:800 12px var(--font-ui);}
-.cl-k{display:inline-flex;align-items:center;gap:5px;}
-.cl-k::before{content:"";width:16px;height:3px;border-radius:2px;background:currentColor;}
-.cl-k-dot{color:var(--muted);font-weight:700;}
-.cl-k-dot::before{width:7px;height:7px;border-radius:50%;}
-.cl-fig.is-narrow .cl-key{display:none;}
 .cl-c-MC{color:var(--cl-MC);} .cl-c-ATC{color:var(--cl-ATC);} .cl-c-AVC{color:var(--cl-AVC);} .cl-c-AFC{color:var(--cl-AFC);}
 
-/* curves: color by curve; the part the table has reached is solid, the rest faint */
-.cl-svg .mic-gr-c .mic-gr-curve{stroke-opacity:.45;stroke-dasharray:5 4;stroke-width:2;}
-.cl-svg .cl-g-MC .mic-gr-curve,.cl-s-MC{stroke:var(--cl-MC);}
-.cl-svg .cl-g-ATC .mic-gr-curve,.cl-s-ATC{stroke:var(--cl-ATC);}
-.cl-svg .cl-g-AVC .mic-gr-curve,.cl-s-AVC{stroke:var(--cl-AVC);}
-.cl-svg .cl-g-AFC .mic-gr-curve,.cl-s-AFC{stroke:var(--cl-AFC);}
-.cl-reach{fill:none;stroke-width:3;stroke-linecap:round;}
+/* the graph (drawn by cost-lab.js on a dollar scale): color by curve; the part
+   the table has reached is solid, the rest faint */
+.cl-graph{font-family:var(--font-ui);overflow:visible;}
+.cl-grid{stroke:var(--line);stroke-width:1;fill:none;}
+.cl-axis{fill:none;stroke:var(--ink);stroke-width:1.8;}
+.cl-tick{fill:var(--muted);font-weight:700;font-size:12px;font-variant-numeric:tabular-nums;}
+.cl-axt{fill:var(--ink);font-weight:800;font-size:12.5px;}
+.cl-faint{fill:none;stroke-width:2;stroke-opacity:.45;stroke-dasharray:5 4;}
+.cl-reach{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;}
+.cl-old{fill:none;stroke:var(--muted);stroke-width:1.8;stroke-dasharray:2 5;opacity:.8;}
+.cl-shift{fill:none;stroke-width:2;}
+.cl-arrowhead{fill:var(--muted);}
+.cl-s-MC{stroke:var(--cl-MC);} .cl-s-ATC{stroke:var(--cl-ATC);} .cl-s-AVC{stroke:var(--cl-AVC);} .cl-s-AFC{stroke:var(--cl-AFC);}
 .cl-svg .cl-t-MC{fill:var(--cl-MC);} .cl-svg .cl-t-ATC{fill:var(--cl-ATC);} .cl-svg .cl-t-AVC{fill:var(--cl-AVC);} .cl-svg .cl-t-AFC{fill:var(--cl-AFC);}
+.cl-cname{font-weight:900;font-size:14px;}
 .cl-front{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 4;opacity:.6;}
-.cl-dot{stroke:var(--white,#fff);stroke-width:1.5;}
-.cl-dot.is-sel{stroke-width:2;}
+.cl-dot{stroke:var(--white,#fff);stroke-width:1.6;}
+.cl-dot.is-sel{stroke-width:2.2;}
 .cl-f-MC{fill:var(--cl-MC);} .cl-f-ATC{fill:var(--cl-ATC);} .cl-f-AVC{fill:var(--cl-AVC);} .cl-f-AFC{fill:var(--cl-AFC);}
-.cl-min{fill:none;stroke-width:2;stroke-dasharray:3 2;}
-.cl-minguide{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;fill:none;}
-.cl-amark{font:800 11.5px var(--font-ui);}
+.cl-min{fill:none;stroke-width:2.2;stroke-dasharray:3 2;}
+.cl-minguide{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 3;fill:none;}
+.cl-amark{font-weight:900;font-size:12.5px;}
+.cl-sub{font-size:9.5px;}
 .cl-selq{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;opacity:.55;}
-.cl-qmark{fill:var(--ink);font:800 11px var(--font-ui);}
+.cl-qtag rect{fill:var(--ink);}
+.cl-qtag text{fill:var(--white,#fff);font-weight:800;font-size:12px;}
 
 /* the table */
-.cl-side{min-width:0;}
+.cl-side{min-width:0;max-width:420px;}
+.cl-fig.is-narrow .cl-side{max-width:none;}
 .cl-tablewrap{overflow-x:auto;}
 .cl-fig.is-narrow .cl-tablewrap{display:none;}
 .cl-card{display:none;}
 .cl-fig.is-narrow .cl-card{display:block;}
-.cl-table{border-collapse:collapse;width:100%;font:700 12.5px/1.25 var(--font-ui);font-variant-numeric:tabular-nums;}
+.cl-table{border-collapse:collapse;width:100%;font:700 12.5px/1.3 var(--font-ui);font-variant-numeric:tabular-nums;}
 .cl-table caption{text-align:left;font:800 12.5px var(--font-ui);color:var(--muted);padding:0 0 6px;}
-.cl-table th,.cl-table td{padding:5px 4px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;}
+.cl-table th,.cl-table td{padding:6px 3px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;}
 .cl-table thead th{font-weight:900;border-bottom:2px solid var(--line);}
 .cl-table abbr{text-decoration:none;}
 .cl-table tbody th{text-align:center;}
@@ -97,3 +101,4 @@
 .ls-root:not(.ls-phone) .cl-qtable th,.ls-root:not(.ls-phone) .cl-qtable td{padding:7px 14px;}
 /* On a phone the graph and the table stack (see firm-market.css; tools review 2026-11-10). */
 @media (max-width:640px){.cl-qfig{flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;}.cl-qgraph{flex:0 0 auto;width:100%;max-width:100%;}.cl-qfig .cl-qtw{align-self:center;}}
+.cl-hire-row[hidden],.cl-sliders[hidden]{display:none;}

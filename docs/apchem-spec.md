@@ -368,6 +368,22 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
     student's own Q dashed. Particle diagrams: forgiving drop zone; larger Pick the picture boxes. ICE test: an empty
     Check names and flashes the row. Equilibrium and kinetics: tabs as one switch, volume in Details.
 
+27. (2026-11-10, tool review fixes; `docs/tool-review/chem.md`, `docs/tool-review/done/chem.md`) **Countable jars,
+    ICE table on stage.** Live beaker (`live-beaker.js`): particles sit on a grid shaped to the widest molecule, with
+    a clear gap (tested: no two molecules within 4 units), so A₂, B₂ and AB never chain; `state.incoming` drops a
+    strong acid or base particle that reacts with one particle and leaves as water. Q vs K's jar holds 42 (no
+    scaling); ICE uses one particle per ninth of the top value (max 22); buffer max 36, volume numbers outside the
+    glass, beaker beside the graph. ICE Explore shows the live ICE table on the stage (E row "at this x" until
+    Q = K). Equilibrium and kinetics: readable Test yourself graph; Explore fills the stage.
+28. (2026-11-10, simplicity pass; `docs/tool-review/SIMPLIFY.md`, `docs/tool-review/pass2/chem.md`) **One picture,
+    said once, revealed in time.** ICE: table and jar first, Q-K gauge once x moves, bar chart on tap; the drill's
+    jar appears once the I row has a value (typing now updates it). Equilibrium: pills Q and K only, Pause in
+    Details, graph in the drill after the change. Periodic trends: one view at a time at every width (table,
+    spectrum, across and down). Titration: +1 mL in Details, Start over after the first addition, no region pill.
+    Buffer: no count pill, Start over after the first addition. Units: the fraction on the stage is the action;
+    the per-quantity cards are in Details. Shared drill: a first step that repeats the question is not repeated
+    as the caption.
+
 ## 8. Open items for the owner
 
 - **Launch checklist (only you can do).** The course is published (free parts live, Premium shows

@@ -298,9 +298,14 @@
       var p = e.p, i = e.i, cv = cvs[p.id], sel = o.sel === p.id, dim = o.sel && !sel, ask = o.ask === p.id;
       if(o.hideLabels && !sel && !ask) return;
       var label = ask && o.hideName ? '?' : p.n ? p.n + '. ' + p.name : p.name;
+      // pass 3 (Explore): the arrows carry a dot to tap, not their names; the
+      // name shows on the one tapped. The nitrogen order keeps its numbers,
+      // and a change the student switched on keeps its name.
+      var dot = o.quiet && !sel && !ask && !p.human;
+      if(dot) label = p.n ? String(p.n) : '';
       // on a phone a short name, not a bare number (tool-audit: process
       // markers were 20 px numbers with their names in a list below)
-      if(phone && !sel && !ask) label = p.human ? (PHONE_HUMAN[p.id] || p.name.split(' ')[0]) : o.interactive ? ((PHONE_NAME[cy] || {})[p.id] || p.name) : String(NUM[p.id]);
+      if(phone && !sel && !ask && !dot) label = p.human ? (PHONE_HUMAN[p.id] || p.name.split(' ')[0]) : o.interactive ? ((PHONE_NAME[cy] || {})[p.id] || p.name) : String(NUM[p.id]);
       var fs = phone ? 12 : 12.5, tw = Math.max(textW(label, fs, 800) + 14, fs + 9), th = fs + 9;
       var pref = (LABEL_T[cy] || {})[p.id], tries = pref ? [pref].concat(TRY) : TRY, best = null;
       tries.forEach(function(tt){
@@ -316,7 +321,7 @@
       });
       placed.push(best.r);
       var m = best.m;
-      out.push('<g class="cy-plabel' + (sel ? ' is-sel' : '') + (dim ? ' is-dim' : '') + (p.human ? ' human' : '') + (ask ? ' is-ask' : '') + '" data-p="' + p.id + '"' + (o.interactive ? ' role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(p.name + ': ' + rName(cy, p.from) + ' to ' + rName(cy, p.to)) + '"' : '') + '>' +
+      out.push('<g class="cy-plabel' + (dot ? ' is-dot' : '') + (sel ? ' is-sel' : '') + (dim ? ' is-dim' : '') + (p.human ? ' human' : '') + (ask ? ' is-ask' : '') + '" data-p="' + p.id + '"' + (o.interactive ? ' role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(p.name + ': ' + rName(cy, p.from) + ' to ' + rName(cy, p.to)) + '"' : '') + '>' +
         '<rect x="' + (m[0] - tw / 2).toFixed(1) + '" y="' + (m[1] - th / 2).toFixed(1) + '" width="' + tw.toFixed(1) + '" height="' + th + '" rx="' + (th / 2) + '"/>' +
         '<text x="' + m[0].toFixed(1) + '" y="' + (m[1] + fs * 0.36).toFixed(1) + '" text-anchor="middle">' + esc(label) + '</text></g>');
     });
@@ -374,6 +379,7 @@
     var LS = null, touched = false, nid = T.nid('cy'), mk = 'cym' + (++mkN), live = true, sim = null, geo = null;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     function root(){ return LS ? LS.root : host; }
+    var setupRow = null;
     host.innerHTML = '<section class="bt-problem cy-cardx" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Biogeochemical cycles</h2>' +
       '<div class="cy-fig"><svg class="cy-svg" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="' + nid + '-d"></svg><p class="sr-only" id="' + nid + '-d"></p></div>' +
       '<div class="cy-trend" hidden><svg class="cy-tsvg" xmlns="http://www.w3.org/2000/svg" role="img"></svg></div>' +
@@ -381,13 +387,13 @@
         '<div class="cy-cycles ls-scroll" role="group" aria-label="Cycle">' + CY.CYCLE_IDS.map(function(id){ return '<button type="button" class="tchip cy-cy" data-c="' + id + '" aria-pressed="false">' + esc(CY.CYCLES[id].name.replace(' cycle', '')) + '</button>'; }).join('') + '</div>' +
         '<div class="cy-lbl ls-lbl">What people change</div><div class="cy-changes" role="group" aria-label="Human changes"></div>' +
         '<div class="cy-run" data-off="" hidden><div class="cy-yrs"></div><div class="cy-go"><button type="button" class="btn-press sm ls-btn ls-pri cy-play">Pause</button><button type="button" class="bt-btn cy-reset">Undo every change</button></div></div>' +
-        '<div class="cy-lbl ls-lbl">Tap a process</div><div class="cy-procs ls-scroll" role="group" aria-label="Processes"></div>' +
       '</div>' +
       '<div class="cy-say"></div>' +
-      T.moreHtml('<p class="bt-small">The years run forward when you switch a change on: press Pause to stop, or drag the years. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'units') +
+      // pass 2: the processes are named and tapped on the picture; the same list, in order, waits under More
+      T.moreHtml('<div class="cy-lbl ls-lbl">Every process, in order</div><div class="cy-procs ls-scroll" role="group" aria-label="Processes"></div><p class="bt-small">The years run forward when you switch a change on: press Pause to stop, or drag the years. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'units') +
       '<div class="cy-nums"></div><p class="sr-only cy-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.cy-live'));
-    var cue = T.cue('Tap a process to see what moves where.');
+    var cue = T.cue('Tap a dot on an arrow to see what moves where.');
     $('.cy-ctl').insertBefore(cue.el, $('.cy-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var yrs = T.slider({ label: 'Years since the change', min: 0, max: 100, step: 5, value: 0, unit: 'years', onInput: function(v){ stopRun(); st.years = v; st.target = v; act(); render(); } });
@@ -402,7 +408,7 @@
     function onClick(e){
       var b = e.target.closest('.cy-cy'); if(b){ var c = b.getAttribute('data-c'); if(c !== st.cy){ st.cy = c; st.sel = null; st.on = {}; st.years = 0; stopRun(); yrs.set(0); chips(); act(); render(true); } return; }
       b = e.target.closest('.cy-p'); if(b){ pickProc(b.getAttribute('data-p')); return; }
-      b = e.target.closest('.cy-c'); if(b){ var id = b.getAttribute('data-ch'); st.on[id] = !st.on[id]; if(!st.on[id]) delete st.on[id]; act(); runYears(); return; }
+      b = e.target.closest('.cy-c'); if(b){ var id = b.getAttribute('data-ch'); st.on[id] = !st.on[id]; if(!st.on[id]) delete st.on[id]; act(); runYears(); if(LS) LS.close(); return; }
       if(e.target.closest('.cy-reset')){ st.on = {}; stopRun(); st.years = 0; yrs.set(0); render(true); return; }
       if(e.target.closest('.cy-play')){ if(run) stopRun(); else { if(st.years >= 100) st.years = 0; st.target = 100; runYears(true); } return; }
     }
@@ -454,16 +460,16 @@
         if(st.cy === 'carbon' && st.on.fuel && sm.fossil < 1) head += ' In this model the 930 GtC of fossil fuel reserves is used up, so burning stops (more carbon lies in deposits not yet worth mining).';
         why = effectWhy(st.cy, ids);
       } else {
-        head = { carbon: 'Carbon moves between air, living things, soil, ocean and rock. Tap a process to see what moves where.', nitrogen: 'Bacteria do most of the nitrogen cycle\'s work. Tap the numbered processes in order, 1 to 5.', phosphorus: 'Phosphorus has no gas phase: it moves from rock to soil, life and water, slowly.', water: 'The sun drives the water cycle: evaporation, then precipitation, runoff and infiltration.' }[st.cy];
+        head = { carbon: 'Carbon moves between air, living things, soil, ocean and rock. Tap a dot on an arrow to see what moves where.', nitrogen: 'Bacteria do most of the nitrogen cycle\'s work. Tap the numbered processes in order, 1 to 5.', phosphorus: 'Phosphorus has no gas phase: it moves from rock to soil, life and water, slowly.', water: 'The sun drives the water cycle: evaporation, then precipitation, runoff and infiltration.' }[st.cy];
         why = '<p>' + { carbon: 'The fast cycle (photosynthesis, respiration, decomposition, ocean exchange) moves about 300 GtC a year in nearly balanced pairs. The slow cycle (burial into fossil fuels and limestone, volcanoes) takes millions of years. Burning fossil fuels moves slow-cycle carbon into the fast cycle in years.', nitrogen: 'N₂ is 78% of the air, but plants cannot use it. Nitrogen-fixing bacteria (and lightning, and fertilizer factories) turn it into ammonium; nitrifying bacteria turn that into nitrate; plants assimilate it; decomposers return it as ammonium; denitrifying bacteria return it to the air.', phosphorus: 'Weathering of rock releases phosphate slowly, so it often limits growth. Plants assimilate it for DNA and ATP; runoff carries it to water, where it settles into sediments that become rock again over millions of years.', water: 'The ocean holds about 97% of the water. Of the fresh water, most is ice and groundwater; lakes, rivers and the air hold very little at any moment, but it moves through them fast.' }[st.cy] + '</p>';
       }
       return { head: head, why: why };
     }
     function effectWhy(cy, ids){
       var t = { fuel: 'Fossil carbon, stored for millions of years, is released as CO₂ in a few years. About 45% stays in the air, about 25% dissolves in the ocean (acidifying it) and about 30% is taken up by land plants and soils.', forest: 'Clearing releases the trees\' carbon as CO₂ and removes a carbon sink.', trees: 'Growing trees take CO₂ out of the air by photosynthesis and store it in wood.',
-        fert: 'Fertilizer adds fixed nitrogen faster than plants use it; the extra nitrate leaches into streams (eutrophication), and some leaves as N₂O, a greenhouse gas.', legume: 'Bacteria in legume root nodules fix more N₂, adding usable nitrogen to the soil.', flood: 'Waterlogged soil has little oxygen: denitrifying bacteria speed up and turn nitrate back into N₂, while nitrification (which needs oxygen) slows.',
+        fert: 'Fertilizer adds fixed nitrogen faster than plants use it; the extra nitrate leaches into streams (eutrophication), and some leaves as N₂O, a greenhouse gas. The nitrogen amounts here are relative (each store starts at 100), a sketch of the direction of change, not measured global amounts.', legume: 'Bacteria in legume root nodules fix more N₂, adding usable nitrogen to the soil.', flood: 'Waterlogged soil has little oxygen: denitrifying bacteria speed up and turn nitrate back into N₂, while nitrification (which needs oxygen) slows.',
         mine: 'Mining moves phosphate from rock to fields far faster than weathering; runoff carries the extra to lakes, where it feeds algal blooms.', erode: 'Bare soil erodes, and runoff carries soil phosphate into lakes and the ocean.', sewage: 'Wastewater carries phosphate straight into lakes and rivers, a common cause of algal blooms.',
-        pave: 'Water cannot soak through pavement: runoff rises (flooding, polluted streams) and infiltration falls, so less recharges groundwater.', pump: 'Pumping takes groundwater out faster than infiltration refills it, so the aquifer shrinks and the water table falls.', warm: 'Warmer air holds more water, so evaporation and precipitation speed up; land ice melts into the ocean and raises sea level (melting sea ice would not).' };
+        pave: 'Water cannot soak through pavement: runoff rises (flooding, polluted streams) and infiltration falls, so less recharges groundwater. The picture is an exaggerated case, as if all land were paved: pavement and buildings really cover about 0.4% of Earth\'s land, so the global change is far smaller, but inside a paved city watershed it is this large.', pump: 'Pumping takes groundwater out faster than infiltration refills it, so the aquifer shrinks and the water table falls.', warm: 'Warmer air holds more water, so evaporation and precipitation speed up; land ice melts into the ocean and raises sea level (melting sea ice would not).' };
       return '<ul class="cy-why-l">' + ids.map(function(id){ return '<li>' + esc(t[id] || '') + '</li>'; }).join('') + '</ul>';
     }
     function describe(){
@@ -483,12 +489,13 @@
     function render(announce){
       sim = CY.simulate(st.cy, onIds(), 100);
       var sz = size(), sm = sim.pools[st.years];
-      geo = draw(st.cy, { W: sz.W, H: sz.H, on: st.on, sel: st.sel, pools: sm, flux: sim.flux, interactive: true, mk: mk });
+      geo = draw(st.cy, { W: sz.W, H: sz.H, on: st.on, sel: st.sel, pools: sm, flux: sim.flux, interactive: true, quiet: true, mk: mk });
       svg.setAttribute('viewBox', '0 0 ' + sz.W + ' ' + sz.H);
       svg.innerHTML = defs(mk) + geo.svg;
       root().querySelectorAll('.cy-cy').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-c') === st.cy)); });
       root().querySelectorAll('.cy-p').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-p') === st.sel)); });
       root().querySelectorAll('.cy-c').forEach(function(b){ b.setAttribute('aria-pressed', String(!!st.on[b.getAttribute('data-ch')])); });
+      if(setupRow && setupRow.setup){ var YC = CY.CYCLES[st.cy], onN = YC.changes.filter(function(c){ return st.on[c.id]; }).map(function(c){ return c.name; }); setupRow.setup(onN.length ? 'On: ' + onN.join(', ') : YC.changes.map(function(c){ return c.name; }).join(', ')); }
       var w = words();
       T.explain($('.cy-say'), '<b>' + esc(w.head) + '</b>', w.why);
       $('#' + nid + '-d').textContent = describe();
@@ -564,11 +571,16 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.cy-fig'), $('.cy-trend')], dock: [$('.cy-ctl')], primary: [$('.cy-run')], why: [$('.cy-say')], details: [$('.cy-nums')], moreLabel: 'Units' });
+      // Pass 3: what people change waits in Details, first, behind a Setup
+      // row that says which changes are on; the dock keeps the four cycles.
+      var pl = $('.cy-procs').previousElementSibling, ppl = $('.cy-changes').previousElementSibling;
+      pl.parentNode.insertBefore(ppl, pl); pl.parentNode.insertBefore($('.cy-changes'), pl);
+      setupRow = T.studioPane(pane, s, { stage: [$('.cy-fig'), $('.cy-trend')], dock: [$('.cy-ctl')], primary: [$('.cy-run')], why: [$('.cy-say')], details: [$('.cy-nums')], setup: 'People', moreLabel: 'What people change, every process, units' });
+      var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       render();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.cy-p') || svg, text: 'Start here: tap a process' });
+      if(s.mode() === 'explore') s.hint({ target: svg.querySelector('.cy-plabel') || svg, text: 'Start here: tap a process' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ render(); }, 60); }).observe($('.cy-fig')); }
     }
     chips(); render();
@@ -600,11 +612,12 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { process: 'Which process moves it?', nitrogen: 'Follow a nitrogen atom', reservoir: 'Where is it stored?', human: 'What people change', budget: 'The carbon budget', residence: 'How long does it stay?' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; figure(el, p, {}); },
-      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); }
+      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); },
+      refit: function(api){ figure(api.fig, api.problem, api.done || {}); }
     });
   }
   function figure(el, p, done){
-    var f = p.figure || {}, phone = (window.innerWidth || 1280) <= 640, W = phone ? 400 : 760, H = phone ? 480 : 470, cy = f.cycle || 'carbon', on = {};
+    var f = p.figure || {}, phone = (window.innerWidth || 1280) <= 640, W = phone ? 400 : 760, H = phone ? 480 : T.figSize(760, 470, { max: 0.8 })[1], cy = f.cycle || 'carbon', on = {};
     (f.changes || []).forEach(function(c){ on[c] = true; });
     var mk = 'cyq' + (++mkN);
     var o = { W: W, H: H, on: on, mk: mk, interactive: false };

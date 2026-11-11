@@ -504,7 +504,7 @@
     S.modeBar(true);
     S.pills([], 'right', 'live'); S.pills([], 'right', 'test');
     S.put('stage', $('.fl-title'));
-    S.put('stage', box('fl-ls-stage', [$('.fl-gaugefig'), $('.fl-ringfig')]), { mode: 'live' });
+    S.put('stage', box('fl-ls-stage', [$('.fl-gaugefig'), $('.fl-scenefig'), $('.fl-ringfig')]), { mode: 'live' });
     var how = $('.fl-live-how');
     S.mirror($('.fl-now'), 'live', how ? how.innerHTML : '');
     S.put('dock', [$('.fl-live-btns'), $('.fl-cut'), $('.fl-sr')], { mode: 'live' });
@@ -528,7 +528,7 @@
     S.put('details', box('ls-sec fl-ls-det', [$('.fl-meta'), $('.fl-progress')]));
     if(!studioLoop.hinted){
       studioLoop.hinted = true;
-      S.hint(startTab === 'test' ? { target: '.fl-pool .fl-tile', text: 'Tap a card to fill the highlighted slot' } : { target: '.fl-g-mk .fl-g-dot', text: 'Drag the marker off the set point' });
+      S.hint(startTab === 'test' ? { target: '.fl-pool .fl-tile', text: 'Tap a card to fill the highlighted slot' } : { target: '.ls-dock .fl-push', text: 'Push the variable off, or drag the marker' });
     }
   }
   function partsEl(){
@@ -571,6 +571,17 @@
      signal stops there and nothing pushes the variable back (a positive loop
      cannot build). A part the loop does not have ("None: same cells") cannot
      be cut, and says why. */
+  var sceneWait = null;
+  function loadScenes(cb){
+    if(window.AnpLoopScenes) return cb();
+    if(sceneWait){ sceneWait.push(cb); return; }
+    sceneWait = [cb];
+    var sc = document.createElement('script');
+    sc.src = base() + 'assets/tools/loop-scenes.js';
+    sc.onload = sc.onerror = function(){ var w = sceneWait; sceneWait = null; if(!window.AnpLoopScenes) sceneWait = null; w.forEach(function(f){ f(); }); };
+    document.head.appendChild(sc);
+    var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = sc.src.replace(/\.js$/, '.css'); document.head.appendChild(ln);
+  }
   function reduced(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
   function lowFirst(t){ t = String(t); return /^[A-Z][a-z]/.test(t) ? t.charAt(0).toLowerCase() + t.slice(1) : t; }
   function noPart(l, k){ return /^none\b/i.test(l.slots[k].short); }
@@ -590,6 +601,7 @@
     if(cuts.indexOf(l.failure.part) < 0) cuts = (l.failure.part === 'stimulus' ? [l.failure.part] : []).concat(cuts).concat(l.failure.part === 'response' ? [l.failure.part] : []);
     return '<p class="fl-live-how kt-first">' + (lv.shift ? esc(lv.shift.label) + ', or drag' : 'Drag') + ' the marker off the ' + (pos ? 'starting level' : 'set point') + ', or press Stimulus, and watch each part answer.</p>' +
       '<figure class="anp-fig fl-gaugefig">' + gaugeSvg(l, p) + '</figure>' +
+      '<figure class="anp-fig fl-scenefig" hidden></figure>' +
       '<div class="fl-live-btns">' +
         (lv.shift ? '<button type="button" class="btn-press sm fl-shift">' + esc(lv.shift.label) + '</button>' : '') +
         '<button type="button" class="' + (lv.shift ? 'btn-outline' : 'btn-press sm') + ' fl-push"><span class="fl-push-k">Stimulus:</span> ' + esc(l.slots.stimulus.short) + '</button>' +
@@ -626,8 +638,6 @@
       '<rect class="fl-g-live ' + (up ? 'hi' : 'lo') + '" x="' + liveX + '" y="' + (GY - 8) + '" width="' + liveW + '" height="16" rx="8" fill="url(#' + gid + ')"/>' +
       '<rect class="fl-g-gloss" x="' + (GX0 + 6) + '" y="' + (GY - 6) + '" width="' + (GX1 - GX0 - 12) + '" height="4" rx="2"/>' +
       ticks +
-      '<text class="lbl-sm" x="' + GX0 + '" y="' + (GY + 34) + '">' + (pos ? 'less' : 'lower') + '</text>' +
-      '<text class="lbl-sm" x="' + GX1 + '" y="' + (GY + 34) + '" text-anchor="end">' + (pos ? 'more' : 'higher') + '</text>' +
       '<g class="fl-g-sp"><path class="fl-g-spline" d="M' + GC + ' ' + (GY - 16) + ' V' + (GY + 20) + '"/><path class="fl-g-sptri" d="M' + (GC - 6) + ' ' + (GY - 22) + ' H' + (GC + 6) + ' L' + GC + ' ' + (GY - 14) + ' Z"/><text class="fl-g-spt" x="' + GC + '" y="' + (GY + 36) + '" text-anchor="middle">' + esc(sp) + '</text></g>' +
       (lv.shift ? '<g class="fl-g-sp0" opacity="0"><path class="fl-g-spline ghost" d="M' + GC + ' ' + (GY - 14) + ' V' + (GY + 14) + '"/><text class="lbl-sm" x="' + GC + '" y="' + (GY + 34) + '" text-anchor="middle">was ' + esc(lv.setPoint) + '</text></g>' : '') +
       '<g class="fl-g-mk" tabindex="0" role="slider" aria-label="' + esc(lv.variable) + '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
@@ -643,6 +653,18 @@
     var spG = panel.querySelector('.fl-g-sp'), spT = panel.querySelector('.fl-g-spt'), sp0 = panel.querySelector('.fl-g-sp0');
     var ring = panel.querySelector('.fl-ringfig svg'), now = panel.querySelector('.fl-now'), sr = panel.querySelector('.fl-sr');
     var cutfb = panel.querySelector('.fl-cutfb'), band = panel.querySelector('.fl-g-live'), cutbs = [].slice.call(panel.querySelectorAll('.fl-cutb'));
+    /* The place in the body (loop-scenes.js, loaded on first use): is-on while the variable is off,
+       is-act once the signal reaches the effector, --fs-v how far off. */
+    var sceneFig = panel.querySelector('.fl-scenefig'), scene = null;
+    function sceneSet(on, act){ if(!scene) return; if(on != null) scene.classList.toggle('is-on', !!on); if(act != null) scene.classList.toggle('is-act', !!act); }
+    loadScenes(function(){
+      var A = window.AnpLoopScenes;
+      if(!A || !A.has(l) || !document.contains(sceneFig)) return;
+      sceneFig.innerHTML = A.svg(l);   // the effector is named on the ring, not again under the drawing (pass 2)
+      sceneFig.hidden = false; scene = sceneFig.querySelector('svg');
+      panel.classList.add('has-scene'); var st = panel.closest('.fl-ls-stage') || (sceneFig.parentNode && sceneFig.parentNode.classList.contains('fl-ls-stage') ? sceneFig.parentNode : null); if(st) st.classList.add('has-scene');
+      draw();
+    });
     var v = 0;          // how far the variable is off its set point, 0..1, on this loop's side
     var spOff = 0;      // how far the set point itself has moved, 0..1, on this loop's side (fever, reset)
     var cut = '';       // the part cut, or ''
@@ -659,12 +681,14 @@
       mk.setAttribute('transform', 'translate(' + xOf(v).toFixed(1) + ' 0)');
       spG.setAttribute('transform', 'translate(' + (xOf(spOff) - GC).toFixed(1) + ' 0)');
       var w = word();
-      state.textContent = w.charAt(0).toUpperCase() + w.slice(1);
+      // pass 3: the state line speaks only when there is something to say (off the set point, or a moved set point)
+      state.textContent = Math.abs(v - spOff) < 0.04 && !spOff ? '' : w.charAt(0).toUpperCase() + w.slice(1);
       mk.setAttribute('aria-valuenow', String(Math.round(Math.max(0, v) * 100)));
       mk.setAttribute('aria-valuetext', lv.variable + ': ' + w);
       svg.classList.toggle('is-off', Math.abs(v - spOff) >= 0.04);
+      if(scene){ scene.style.setProperty('--fs-v', Math.max(0, Math.min(1, v - spOff)).toFixed(3)); sceneSet(Math.abs(v - spOff) >= 0.04); }
     }
-    function clearRing(){ svg.classList.remove('is-na'); ring.querySelectorAll('.is-lit,.is-stop').forEach(function(x){ x.classList.remove('is-lit'); x.classList.remove('is-stop'); }); }
+    function clearRing(keepAct){ svg.classList.remove('is-na'); ring.querySelectorAll('.is-lit,.is-stop').forEach(function(x){ x.classList.remove('is-lit'); x.classList.remove('is-stop'); }); if(!pos && !keepAct) sceneSet(null, false); }
     function stop(){ timers.forEach(clearTimeout); timers = []; clearTimeout(keyT); if(raf) cancelAnimationFrame(raf); raf = 0; running = false; panel.classList.remove('is-running'); }
     function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
     function tween(to, ms, done, which){
@@ -685,8 +709,9 @@
     }
     function light(k){
       var g = ring.querySelector('[data-k="' + k + '"]'), a = ring.querySelector('[data-from="' + k + '"]');
-      if(g) g.classList.add('is-lit');
+      if(g){ g.classList.add('is-lit'); g.classList.add('is-seen'); }
       if(a) a.classList.add('is-lit');
+      if(k === 'effector' && stopsAt() !== 'effector') sceneSet(null, true);
     }
     function brokenMode(){ return cut && cut === f.part ? lv.broken : cut ? 'cut' : ''; }
     function stopsAt(){ var m = brokenMode(); return m === 'cut' || (m && BROKEN_CUT[m]) ? cut : ''; }
@@ -694,7 +719,9 @@
 
     /* One trip round the ring. fast: a quick pulse (later cycles). */
     function cycle(fast, done){
-      clearRing();
+      /* Accuracy check 2 (2026-11-11): between the pulses of a negative loop the effector keeps working (the
+         vessels stay narrowed, shivering goes on) until the variable is back; finish() turns it off. */
+      clearRing(fast);
       var halt = stopsAt(), dt = fast ? 170 : 520, i = 0;
       if(reduced()){
         var end = halt ? SLOTS.indexOf(halt) : SLOTS.length - 1;
@@ -775,8 +802,18 @@
       } else if(pos){
         msg = 'Each cycle the response made the stimulus stronger: positive feedback. ' + (lv.end || '');
         now.innerHTML = '<b class="ok">Positive feedback.</b> ' + esc(msg);
-        if(lv.end && !reduced()) later(function(){ tween(0, 1400); }, 2200);
+        // Nothing in the loop brings it back: only the outside event (lv.end) stops it. That event comes after a
+        // pause, and then the variable falls back, as the ending says (stretch removed, estradiol falls, flow stops).
+        later(function(){
+          tween(0, 1400, function(){
+            clearRing(); sceneSet(false, false);
+            var m2 = 'Each cycle the response made the stimulus stronger: positive feedback. ' + lv.end + ' ' + (lv.after || lv.variable + ' falls back to where it started.');
+            now.innerHTML = '<b class="ok">Positive feedback, then the end.</b> ' + esc(m2);
+            say(m2);
+          });
+        }, reduced() ? 600 : 2600);
       } else {
+        later(function(){ sceneSet(null, false); }, reduced() ? 0 : 900);
         msg = 'The response opposed the stimulus and pulled ' + lowFirst(lv.variable) + ' back to the ' + (spOff ? 'new ' : '') + 'set point: negative feedback. As the gap closed, the stimulus faded and the loop went quiet.';
         now.innerHTML = '<b class="ok">Back at the ' + (spOff ? 'new ' : '') + 'set point.</b> ' + esc(msg);
       }
@@ -810,8 +847,8 @@
       clearTimeout(keyT); keyT = setTimeout(run, 700);
     });
     function unshift(){ spOff = 0; if(lv.shift){ spT.textContent = lv.setPoint; sp0.setAttribute('opacity', '0'); } band.removeAttribute('opacity'); }
-    panel.querySelector('.fl-push').addEventListener('click', function(){ stop(); clearRing(); v = spOff + (pos ? 0.22 : 0.7); draw(); run(); });
-    panel.querySelector('.fl-lreset').addEventListener('click', function(){ stop(); clearRing(); v = 0; unshift(); draw(); now.textContent = ''; say(lv.variable + ' is back at the ' + (pos ? 'starting level' : 'set point') + '.'); });
+    panel.querySelector('.fl-push').addEventListener('click', function(){ stop(); clearRing(); sceneSet(null, false); v = spOff + (pos ? 0.22 : 0.7); draw(); run(); });
+    panel.querySelector('.fl-lreset').addEventListener('click', function(){ stop(); clearRing(); ring.querySelectorAll('.is-seen').forEach(function(x){ x.classList.remove('is-seen'); }); sceneSet(false, false); v = 0; unshift(); draw(); now.textContent = ''; say(lv.variable + ' is back at the ' + (pos ? 'starting level' : 'set point') + '.'); });
     var sh = panel.querySelector('.fl-shift');
     if(sh) sh.addEventListener('click', function(){
       // The set point itself moves away (fever): the variable has not changed,
@@ -954,7 +991,8 @@
     s += link('response', 'M' + fx + ' ' + (y(1) - 2) + ' V' + (fy + 10) + ' Q' + fx + ' ' + fy + ' ' + (fx - 10) + ' ' + fy + ' H' + (X[0] + BW + 5), ' fl-return');
     var neg = l.kind === 'negative';
     if(live){
-      s += '<text class="lbl-sm" x="' + (X[1] + BW / 2 - 8) + '" y="' + (fy - 9) + '" text-anchor="middle">acts on the variable</text>';
+      // shown while the response's link is lit (pass 3), so the landing ring carries only the part names
+      s += '<text class="lbl-sm fl-actson" x="' + (X[1] + BW / 2 - 8) + '" y="' + (fy - 9) + '" text-anchor="middle">acts on the variable</text>';
       var la = 'The loop as a ring of seven parts. ' + SLOTS.map(function(k){ return LABELS[k] + ': ' + l.slots[k].short; }).join('. ') + '. The response acts back on the variable.';
       return '<svg class="fl-svg fl-ring' + (ph ? ' fl-ph' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(la) + '">' + s + '</svg>';
     }

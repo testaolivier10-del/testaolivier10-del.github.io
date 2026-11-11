@@ -818,6 +818,10 @@
           var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
           text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
         }
+        // An item whose first step repeats the question: the question is
+        // said once, in the step (pass 2), and the caption says what to do.
+        var lab1 = nSteps && p.steps[0].label ? String(p.steps[0].label).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
+        if(!onStage && lab1.length > 20 && text.indexOf(lab1) > -1) text = nSteps > 1 ? 'Answer one step at a time.' : 'Answer in the step, then Check.';
         s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : esc(text), m); s.pills([], 'left', m);
       },
       done: function(right, total){

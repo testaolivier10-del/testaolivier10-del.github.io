@@ -62,7 +62,7 @@
         '</div>' +
         '<div class="rc-ctl">' +
           '<div class="rc-views ls-seg" role="group" aria-label="View"><button type="button" class="bt-mode" data-v="sec" aria-pressed="true">Secants</button><button type="button" class="bt-mode" data-v="est" aria-pressed="false">Estimate</button></div>' +
-          '<div class="rc-chips ls-scroll" role="group" aria-label="Context"></div>' +
+          '<div class="rc-chips"></div>' +
           '<div class="rc-slot"></div>' +
           '<div class="rc-nseg ls-seg" role="group" aria-label="Number of intervals"><span class="rc-nlab" aria-hidden="true">Intervals</span>' + [2, 3, 4].map(function(k){ return '<button type="button" class="bt-mode rc-n" data-k="' + k + '" aria-pressed="false" aria-label="' + k + ' intervals">' + k + '</button>'; }).join('') + '</div>' +
         '</div>' +
@@ -122,18 +122,7 @@
         var c = COLS[i], x1 = V.sx(s.a), y1 = V.sy(s.fa), x2 = V.sx(s.b), y2 = V.sy(s.fb);
         o.push('<line class="rc-sec ' + c + '" x1="' + r1(x1) + '" y1="' + r1(y1) + '" x2="' + r1(x2) + '" y2="' + r1(y2) + '"/>');
       });
-      // slope labels on the side of each secant away from the curve, pushed out
-      // square to the line far enough that a steep secant clears the label's
-      // width (straight up or down it ran through it); alternately a step further, clamped inside
-      S.forEach(function(s, i){
-        var x1 = V.sx(s.a), y1 = V.sy(s.fa), x2 = V.sx(s.b), y2 = V.sy(s.fb), conc = F.conc((s.a + s.b) / 2);
-        var len = Math.hypot(x2 - x1, y2 - y1) || 1, nx = (y2 - y1) / len, ny = -(x2 - x1) / len, sg = conc >= 0 ? 1 : -1;
-        var t = sgnNum(s.m), hw = String(t).length * 4.6 + 4, hh = 9;
-        var D = hw * Math.abs(nx) + hh * Math.abs(ny) + (i % 2 ? 14 : 5);
-        var cx = clamp((x1 + x2) / 2 + sg * nx * D, V.L + hw, V.w - V.R - hw), cy = (y1 + y2) / 2 + sg * ny * D;
-        var ly = clamp(cy + 4.5, V.T + 14, V.h - V.B - 6);
-        o.push('<text class="rc-slab ' + COLS[i] + '" x="' + r1(cx) + '" y="' + r1(ly) + '" text-anchor="middle">' + t + '</text>');
-      });
+      // pass 2: no slope numbers on the secants; each secant's rate is the bar of its color right under the graph
       S.forEach(function(s, i){ o.push('<circle class="rc-pt ' + COLS[i] + '" cx="' + r1(V.sx(s.a)) + '" cy="' + r1(V.sy(s.fa)) + '" r="4.5"/>'); });
       var lst = S[S.length - 1]; o.push('<circle class="rc-pt ' + COLS[S.length - 1] + '" cx="' + r1(V.sx(lst.b)) + '" cy="' + r1(V.sy(lst.fb)) + '" r="4.5"/>');
       plot.innerHTML = o.join('');
@@ -148,6 +137,7 @@
       var sy = function(v){ return Tp + (hi - v) / (hi - lo) * (h - Tp - B); }, o = [];
       bars.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       o.push('<text class="rc-blab" x="' + (L - 6) + '" y="' + (Tp - 4) + '" text-anchor="end">rate</text>');
+      if(S.length > 1) o.push('<text class="rc-blab" x="' + (L - 6) + '" y="' + (h - 4) + '" text-anchor="end">change</text>');
       o.push('<line class="rc-bzero" x1="' + L + '" y1="' + r1(sy(0)) + '" x2="' + (w - R) + '" y2="' + r1(sy(0)) + '"/>');
       S.forEach(function(s, i){
         var cx = L + gw * (i + 0.5), y0 = sy(0), y1 = sy(s.m), top = Math.min(y0, y1);
@@ -232,8 +222,11 @@
     }
 
     /* ---------------------------------------------- controls */
-    function buildChips(){ chips.innerHTML = ids.map(function(id){ return '<button type="button" class="bt-btn rc-chip" data-id="' + id + '" aria-pressed="' + (id === st.id) + '">' + esc(RC.FUNCS[id].name) + '</button>'; }).join(''); }
-    chips.addEventListener('click', function(e){ var b = e.target.closest('.rc-chip'); if(!b) return; touch(); st.id = b.getAttribute('data-id'); reset(); buildChips(); buildSlider(); update(true); });
+    /* the context: one menu (pass 3), not six chips */
+    var ctxSel = T.choiceSelect({ label: 'Situation', value: st.id, options: ids.map(function(id){ return { value: id, label: RC.FUNCS[id].name }; }),
+      onChange: function(v){ touch(); st.id = v; reset(); buildChips(); buildSlider(); update(true); } });
+    ctxSel.el.classList.add('rc-sit');
+    function buildChips(){ if(ctxSel.el.parentNode !== chips){ chips.innerHTML = ''; chips.appendChild(ctxSel.el); } ctxSel.set(st.id); }
     views.addEventListener('click', function(e){
       var b = e.target.closest('.bt-mode'); if(!b) return; touch(); st.view = b.getAttribute('data-v');
       views.querySelectorAll('.bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
@@ -263,9 +256,9 @@
       if(st.view === 'sec'){
         var S = secs(), ms = S.map(function(s){ return s.m; }), tr = RC.trend(ms, 1e-6), a = S[0].a, b = S[S.length - 1].b;
         head = tr === 'same' ? 'Equal rates on every interval: the rate of change of ' + F.fn + ' is constant, a line.'
-          : tr === 'up' ? '<b>The rates increase</b> (' + ms.map(function(m){ return num(m); }).join(', ') + '): the rate of change of ' + F.fn + ' is increasing, so ' + F.fn + ' is <b>concave up</b> here.'
-          : tr === 'down' ? '<b>The rates decrease</b> (' + ms.map(function(m){ return num(m); }).join(', ') + '): the rate of change of ' + F.fn + ' is decreasing, so ' + F.fn + ' is <b>concave down</b> here.'
-          : '<b>The rates go up and down</b> (' + ms.map(function(m){ return num(m); }).join(', ') + '): the concavity of ' + F.fn + ' changes inside this stretch.';
+          : tr === 'up' ? '<b>The rates increase</b>: the rate of change of ' + F.fn + ' is increasing, so ' + F.fn + ' is <b>concave up</b> here.'
+          : tr === 'down' ? '<b>The rates decrease</b>: the rate of change of ' + F.fn + ' is decreasing, so ' + F.fn + ' is <b>concave down</b> here.'
+          : '<b>The rates go up and down</b>: the concavity of ' + F.fn + ' changes inside this stretch.';
         body = '<p>' + html(RC.arocSentence(F, S[0].a, S[0].b)) + '</p><p>' + html(RC.trendSentence(F, tr, a, b)) + '</p>' +
           '<p class="rc-rule"><b>Compare like with like:</b> only rates over intervals of the same length show the concavity. Whether ' + esc(F.fn) + ' itself goes up or down is a different question: look at the sign of the rates for that.</p>';
         dt = '<h3 class="ls-title-l">Secants over equal intervals of ' + num(st.d) + ' ' + esc(st.d === 1 ? F.xu : F.xus) + '</h3><table class="ls-tbl rc-tbl"><thead><tr><th scope="col"><span class="sr-only">Color</span></th><th scope="col">Interval</th><th scope="col" class="r">' + esc(F.fn) + ' at the ends</th><th scope="col" class="r">Rate (' + esc(F.rate) + ')</th></tr></thead><tbody>' +

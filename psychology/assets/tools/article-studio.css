@@ -98,3 +98,4 @@ button.as-tag::after{content:"";position:absolute;inset:-11px;}
 .ls-root .psy-ls-setup{min-height:44px;height:auto;padding-top:8px;padding-bottom:8px;}
 .ls-root .psy-ls-setup > span{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.3;}
 @media (max-width:640px){ .ls-root .psy-ls-stage .as-fig{padding:0 12px;} }
+.as-ans.is-wait{color:var(--muted);font-weight:600;}

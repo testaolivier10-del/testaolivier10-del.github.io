@@ -73,6 +73,7 @@
     function title(y, t){ out.push('<text class="dx-ptitle" x="' + padL + '" y="' + (y + 12) + '" style="font-size:' + (fs - 0.5) + 'px" aria-hidden="true">' + esc(t) + '</text>'); }
 
     // ---- histogram
+    var histLabs = '';   // pass 3: bar counts are drawn over the mean and median lines, not under them
     if(hist){
       var start = X.binStart(lo, o.bin), B = X.bins(vals, start, o.bin), mx = Math.max.apply(null, B.counts.concat([1]));
       var hy = function(c){ return hist.y1 - c / mx * (hist.y1 - hist.y0 - 34); };
@@ -81,8 +82,8 @@
         B.counts.map(function(c, j){
           if(!c) return '';
           var x0 = sx(B.edges[j][0]), x1 = sx(B.edges[j][1]), y = hy(c), wpx = x1 - x0;
-          return '<rect class="dx-bar" x="' + x0.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + Math.max(0.5, wpx).toFixed(1) + '" height="' + Math.max(0, hist.y1 - y).toFixed(1) + '"/>' +
-            (wpx >= 13 ? '<text class="dx-blab" x="' + ((x0 + x1) / 2).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle" style="font-size:' + (fs - 1) + 'px">' + c + '</text>' : '');
+          if(wpx >= 13) histLabs += '<text class="dx-blab" x="' + ((x0 + x1) / 2).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle" style="font-size:' + (fs - 1) + 'px">' + c + '</text>';
+          return '<rect class="dx-bar" x="' + x0.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + Math.max(0.5, wpx).toFixed(1) + '" height="' + Math.max(0, hist.y1 - y).toFixed(1) + '"/>';
         }).join('') + '<line class="dx-base" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + hist.y1 + '" y2="' + hist.y1 + '"/></g>');
       title(hist.y0, 'Histogram, bins of ' + M.fmt(o.bin, 4) + ' ' + (o.short || o.unit));
     }
@@ -169,6 +170,7 @@
       var oi = o.changedIndex, ov = o.values[oi], nv = o.after[oi], gy = dot.y1 - r - 1;
       ghost = '<g class="dx-move" aria-hidden="true"><path d="M' + (sx(ov) + r + 2).toFixed(1) + ' ' + gy.toFixed(1) + ' H' + (sx(Math.min(hi, nv)) - r - 4).toFixed(1) + '"/><path class="dx-arrow" d="M' + (sx(Math.min(hi, nv)) - r - 10).toFixed(1) + ' ' + (gy - 4).toFixed(1) + ' l6 4 l-6 4"/></g>';
     }
+    if(histLabs) out.push('<g class="dx-blabs">' + histLabs + '</g>');
     var dg = '<g class="dx-dots">';
     vals.forEach(function(v, i){
       var cx = sx(keyOf(o.after && i === o.changedIndex ? Math.min(hi, o.after[i]) : v)), cyy = dot.y1 - r - 1 - L2.lv[i] * 2 * r;
@@ -180,6 +182,12 @@
         : '<circle class="' + cls + '" cx="' + cx.toFixed(1) + '" cy="' + cyy.toFixed(1) + '" r="' + r.toFixed(1) + '"/>';
       if(o.after && i === o.changedIndex) ghost = '<circle class="dx-ghost" cx="' + sx(keyOf(v)).toFixed(1) + '" cy="' + (dot.y1 - r - 1 - (seenK[keyOf(v)] || 0) * 2 * r).toFixed(1) + '" r="' + r.toFixed(1) + '"/>' + ghost;
     });
+    // pass 3: until the first drag, the dot to drag wears a ring and side arrows, so it reads as draggable
+    if(o.grab != null && o.grab > -1 && dots[o.grab]){
+      var gd = dots[o.grab], gr = gd.r + 6, gx2 = gd.cx, gy2 = gd.cy;
+      dg += '<g class="dx-grab" aria-hidden="true"><circle cx="' + gx2.toFixed(1) + '" cy="' + gy2.toFixed(1) + '" r="' + gr.toFixed(1) + '"/>' +
+        '<path d="M' + (gx2 - gr - 4).toFixed(1) + ' ' + (gy2 - 4).toFixed(1) + 'l-5 4l5 4M' + (gx2 + gr + 4).toFixed(1) + ' ' + (gy2 - 4).toFixed(1) + 'l5 4l-5 4"/></g>';
+    }
     out.push(ghost + dg + '</g><line class="dx-base" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + dot.y1.toFixed(1) + '" y2="' + dot.y1.toFixed(1) + '"/>');
     title(dot.y0, 'Dotplot' + (o.title ? ', ' + o.title : ''));
     // the selected (or marked) value's label
@@ -263,7 +271,8 @@
 
     var svg = $('.dx-svg'), fig = $('.dx-fig'), geo = null;
     function opts(){ return { values: vals, lo: cur.x[0], hi: cur.x[1], unit: cur.unit, short: cur.short, label: cur.what, noun: cur.noun, step: cur.step, bin: bin,
-      show: { hist: true, mean: true, median: true, sd: show.sd, fences: show.fences }, sel: sel, drag: true }; }
+      show: { hist: true, mean: true, median: true, sd: show.sd, fences: show.fences }, sel: sel, drag: true, grab: touched ? -1 : farthest() }; }
+    function farthest(){ var m = X.stats(vals).mean, b = -1, bd = -1; vals.forEach(function(v, i){ var d = Math.abs(v - m); if(d > bd){ bd = d; b = i; } }); return b; }
     function draw(){
       var wh = sizeOf(fig, phone() ? 420 : 460), o = opts();
       svg.setAttribute('viewBox', '0 0 ' + wh[0] + ' ' + wh[1]);
@@ -288,14 +297,16 @@
       else if(sel > -1){
         var v = vals[sel], zz = S.sd > 0 ? (v - S.mean) / S.sd : 0, out = v < S.fences[0] || v > S.fences[1];
         head = '<b>' + esc(nf(v) + ' ' + u) + ': z = ' + esc(fx(zz, 2)) + '.</b> ' + esc(fx(Math.abs(zz), 2) + ' SD ' + (zz >= 0 ? 'above' : 'below') + ' the mean; ' + (out ? 'an outlier by the 1.5 × IQR rule.' : 'inside the fences, so not an outlier.'));
-      } else head = '<b>Mean ' + esc(fx(S.mean, 1)) + ', median ' + esc(nf(S.med)) + ' ' + esc(u) + '.</b> ' + (touched ? esc(cap(sh.word) + ': the mean sits ' + (Math.abs(dM) < 0.05 * S.sd ? 'right at' : dM > 0 ? 'to the right of' : 'to the left of') + ' the median.') : 'Drag a dot far to one side: which line follows it?');
+      } else head = (LS ? '' /* pass 2: the Mean and Median chips already carry the numbers */ : '<b>Mean ' + esc(fx(S.mean, 1)) + ', median ' + esc(nf(S.med)) + ' ' + esc(u) + '.</b> ') + (touched ? esc(cap(sh.word) + ': the mean sits ' + (Math.abs(dM) < 0.05 * S.sd ? 'right at' : dM > 0 ? 'to the right of' : 'to the left of') + ' the median.') : 'Drag a dot far to one side: which line follows it?');
       sub = whyHtml(S);
       T.explain($('.dx-say'), head, sub);
       nums(S);
       if(LS){
         LS.caption(head, 'explore');
         LS.pills([{ k: 'Mean', html: esc(fx(S.mean, 1)), tone: 'readout' }, { k: 'Median', html: esc(nf(S.med)), tone: 'readout' }], 'left', 'explore');
-        LS.pills(phone() ? [{ k: 'SD', html: esc(fx(S.sd, 1)) + ' · IQR ' + esc(nf(S.iqr)), tone: 'ghost' }] : [{ k: 'SD', html: esc(fx(S.sd, 1)), tone: 'ghost' }, { k: 'IQR', html: esc(nf(S.iqr)), tone: 'ghost' }], 'right', 'explore');
+        // pass 2: SD and IQR show when the student turns on what they measure (Mean ± 1 SD, Outlier fences); all summaries stay in Data & numbers
+        var sp = []; if(show.sd) sp.push({ k: 'SD', html: esc(fx(S.sd, 1)), tone: 'ghost' }); if(show.fences) sp.push({ k: 'IQR', html: esc(nf(S.iqr)), tone: 'ghost' });
+        LS.pills(phone() && sp.length > 1 ? [{ k: 'SD', html: esc(fx(S.sd, 1)) + ' · IQR ' + esc(nf(S.iqr)), tone: 'ghost' }] : sp, 'right', 'explore');
       }
     }
     function whyHtml(S){

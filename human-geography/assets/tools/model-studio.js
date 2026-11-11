@@ -49,20 +49,34 @@
   /* The build figure: a drawn figure with its numbered spots (and short
      labels) in HTML over it, or the model's own numbered drawing. */
   function modelFig(ctx, model){
-    var f = ctx.figure ? MS.figure(ctx.figure) : null;
+    // Gravity and rank-size are drawn from the generated model's own numbers.
+    var f = ctx.figure ? MS.figure(ctx.figure, ctx.build ? model : null) : null;
     if(!f){
       return '<figure class="ms-fig ms-fig-art" data-layout="' + esc(model.layout) + '"><div class="ms-card"><div class="hug-model-art">' + Mdl.artSvg(model) + '</div></div>' + '</figure>';
     }
     var over = [];
     f.spots.forEach(function(list, i){ list.forEach(function(p){ over.push('<span class="ms-badge" data-n="' + (i + 1) + '" style="left:' + p[0] + '%;top:' + p[1] + '%">' + (i + 1) + '</span>'); }); });
-    (f.labels || []).forEach(function(l){ over.push('<span class="ms-tag" style="left:' + l.x + '%;top:' + l.y + '%">' + esc(l.text) + '</span>'); });
+    (f.labels || []).forEach(function(l){ over.push('<span class="ms-tag' + (l.cls ? ' ' + esc(l.cls) : '') + '" style="left:' + l.x + '%;top:' + l.y + '%">' + esc(l.text) + '</span>'); });
     // Its width/height ratio, so on a short stage the box shrinks with the drawing and the badges stay on it.
     var vb = /viewBox="\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)/.exec(f.svg), ar = vb && +vb[2] ? (+vb[1] / +vb[2]).toFixed(3) : '';
-    return '<figure class="ms-fig"><div class="ms-card"><div class="ms-pic"' + (ar ? ' style="--ms-ar:' + ar + '"' : '') + '>' + f.svg + '<div class="ms-over" aria-hidden="true">' + over.join('') + '</div></div>' + legendHtml(f.legend) + '</div></figure>';
+    /* A figure whose drawing is the answer (gravity's bands, rank-size's bars)
+       is marked data-hide: Build it and the drills hide those parts and the
+       numbered places until the student has checked. A figure with a second
+       picture (rank-size's primate city) gets its switch under the drawing. */
+    var alt = f.alt ? '<div class="ms-alt"><button type="button" class="bt-btn ms-altbtn" aria-pressed="false" data-on="' + esc(f.alt.on) + '" data-off="' + esc(f.alt.off) + '">' + esc(f.alt.off) + '</button><p class="ms-note ms-alt-note" data-on="' + esc(f.alt.noteAlt) + '" data-off="' + esc(f.alt.note) + '">' + esc(f.alt.note) + '</p></div>' : '';
+    return '<figure class="ms-fig"' + (f.hide ? ' data-hide' : '') + '><div class="ms-card"><div class="ms-pic"' + (ar ? ' style="--ms-ar:' + ar + '"' : '') + '>' + f.svg + '<div class="ms-over" aria-hidden="true">' + over.join('') + '</div></div>' + legendHtml(f.legend) + (f.note ? '<p class="ms-note">' + esc(f.note) + '</p>' : '') + alt + '</div></figure>';
   }
+  /* The primate-city switch (any figure with an alt picture, on the stage
+     in Explore or in a drill). */
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('.ms-altbtn'); if(!b) return;
+    var fig = b.closest('.ms-fig'), on = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', String(on)); b.textContent = b.getAttribute(on ? 'data-on' : 'data-off');
+    if(fig){ fig.classList.toggle('is-alt', on); var n = fig.querySelector('.ms-alt-note'); if(n) n.textContent = n.getAttribute(on ? 'data-on' : 'data-off'); }
+  });
   function mark(figEl, n, state){
     if(!figEl) return;
-    figEl.querySelectorAll('.ms-badge, .hug-model-band, .hug-model-num').forEach(function(b){
+    figEl.querySelectorAll('.ms-badge, .hug-model-band, .hug-model-num, .ms-part, .ms-col').forEach(function(b){
       var k = +(b.getAttribute('data-n') || (b.classList.contains('hug-model-num') ? b.textContent : 0));
       b.classList.toggle('is-cur', k === n);
       b.classList.toggle('is-dim', state && state.upto != null && k > state.upto);
@@ -141,7 +155,7 @@
   /* ============================================================ explore */
   function explore(host, data, practise){
     var list = data.contexts || [], nid = T.nid('msx'), LS = null, touched = false;
-    var ctx = list[0], model = null, view = 'see', upto = 0, mctl = null, graded = false;
+    var ctx = list[0], model = null, view = 'see', upto = 0, mctl = null, graded = false, focus = 0, figNote = '';
     host.innerHTML = '<section class="bt-problem ms-x" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Model Studio</h2>' +
       '<div class="ms-stage"><div class="ms-figslot"></div><ol class="ms-skey" aria-hidden="true"></ol></div>' +
       '<div class="ms-ctl">' +
@@ -157,7 +171,7 @@
     var R = { stage: host.querySelector('.ms-stage'), fig: host.querySelector('.ms-figslot'), skey: host.querySelector('.ms-skey'), ctl: host.querySelector('.ms-ctl'), pick: host.querySelector('.ms-pick'), views: host.querySelector('.ms-views'),
       see: host.querySelector('.ms-see'), key: host.querySelector('.ms-key'), build: host.querySelector('.ms-build'), mhost: host.querySelector('.ms-mhost'), fb: host.querySelector('.ms-fb'),
       cap: host.querySelector('.ms-cap'), say: host.querySelector('.ms-say'), nums: host.querySelector('.ms-nums'), gate: host.querySelector('.ms-gate'),
-      back: host.querySelector('.ms-back'), next: host.querySelector('.ms-next') };
+      back: host.querySelector('.ms-back'), next: host.querySelector('.ms-next'), go: host.querySelector('.ms-go') };
     var cue = T.cue('Press Next place to see the model built one piece at a time, or switch to Build it.');
     R.ctl.insertBefore(cue.el, R.ctl.firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
@@ -165,35 +179,67 @@
     function piece(i){ return Mdl.pieceText(model, model.key[slotKey(i)]); }
     function why(i){ return (ctx.explain || {})[slotKey(i)] || ''; }
     function caption(html){ R.cap.innerHTML = html; if(LS) LS.caption(html, 'explore'); }
+    /* The drawing fills the stage: the slot is a size container, and the
+       picture is as large as fits once the legend and notes under it are
+       counted (--ms-below, measured; it settles in a pass or two). */
+    var sizeT = 0;
+    function sizeFig(){ if(!sizeT) sizeT = requestAnimationFrame(function(){ sizeT = 0; for(var i = 0; i < 3; i++){ var card = R.fig.querySelector('.ms-card'), pic = card && card.querySelector('.ms-pic, .hug-model-art'); if(!pic) return; var below = Math.ceil(card.getBoundingClientRect().height - pic.getBoundingClientRect().height) + 4, was = parseFloat(R.fig.style.getPropertyValue('--ms-below')) || 0; if(Math.abs(below - was) < 2) return; R.fig.style.setProperty('--ms-below', below + 'px'); } }); }
+    if(window.ResizeObserver) new ResizeObserver(sizeFig).observe(R.fig);
+    R.fig.addEventListener('click', function(e){ if(e.target.closest('.ms-altbtn')) setTimeout(sizeFig, 0); });
 
     function pickModel(id){
       ctx = list.filter(function(c){ return c.id === id; })[0] || list[0];
       R.pick.value = ctx.id;
-      // A generated model (rank-size, gravity) is drawn from one fixed seed.
-      model = MS.buildModel(M.rng(1), ctx);
+      // A generated model (rank-size, gravity) is drawn from one fixed seed, the
+      // one Build it uses, so the drawing's numbers match the pieces.
+      model = MS.buildModel(M.rng(ctx.build ? 7 + list.indexOf(ctx) : 1), ctx);
       upto = 0; R.gate.innerHTML = '';
-      R.fig.innerHTML = modelFig(ctx, model);
+      R.fig.innerHTML = modelFig(ctx, model); liftNote(); R.fig.setAttribute('data-view', view); sizeFig();
       if(LS && LS.fit) setTimeout(function(){ LS.fit(); }, 0);
       buildPane(); paintSee(); whyBox(); details();
     }
+    /* Second pass (2026-11-10): the long numbered key under the drawing is
+       gone. One line under the drawing names the place in focus (the newest,
+       or the one the student taps on the drawing); every place is listed in
+       Details, and the caption gives the reason. A note about how the drawing
+       is made moves into Explanation (liftNote). */
+    // The opening caption keeps the claim's first sentence; the whole claim heads Explanation.
+    function firstSentence(t){ var m = /^.+?[.!?](?=\s+[A-Z]|$)/.exec(t || ''); return m ? m[0] : (t || ''); }
+    function liftNote(){
+      var n = R.fig.querySelector('.ms-card > .ms-note');
+      figNote = n ? n.textContent : '';
+      if(n) n.parentNode.removeChild(n);
+    }
     function paintSee(){
       var n = model.slots.length, figEl = R.fig.querySelector('.ms-fig');
-      R.skey.innerHTML = view === 'see' ? model.slots.map(function(s, i){ return i < upto ? '<li class="' + (i === upto - 1 ? 'is-cur' : '') + '"><span class="ms-n">' + (i + 1) + '</span><span>' + piece(i) + '</span></li>' : ''; }).join('') : '';
+      if(!focus || focus > upto) focus = upto;
+      var c = focus;
+      R.skey.innerHTML = view === 'see' && c ? '<li class="is-cur"><span class="ms-n">' + c + '</span><span>' + piece(c - 1) + '</span>' + (upto > 1 ? '<span class="ms-tapn">Tap a number to name it</span>' : '') + '</li>' : '';
       R.key.innerHTML = model.slots.map(function(s, i){
         if(i >= upto) return '';
         return '<li class="' + (i === upto - 1 ? 'is-cur' : '') + '"><span class="ms-n" aria-hidden="true">' + (i + 1) + '</span><span><b>' + esc(Mdl.slotName(model, i)) + ':</b> ' + piece(i) + (i === upto - 1 && why(i) ? '<span class="ms-why">' + esc(why(i)) + '</span>' : '') + '</span></li>';
       }).join('');
       R.back.disabled = upto === 0; R.next.disabled = upto >= n;
-      R.next.textContent = upto === 0 ? 'Start: the first place' : upto >= n ? 'All places shown' : 'Next place';
-      mark(figEl, upto, view === 'see' && upto ? { upto: upto } : null);
-      if(view === 'see') caption(upto ? '<b>' + esc(Mdl.slotName(model, upto - 1)) + ': ' + piece(upto - 1) + '.</b> ' + esc(why(upto - 1)) : '<b>' + esc(ctx.name) + '.</b> ' + esc(ctx.claim));
-      if(LS) LS.pills(upto ? [{ html: upto + ' of ' + n + ' places', tone: 'readout' }] : [{ html: esc(ctx.unit), tone: 'ghost' }], 'left', 'explore');
+      // Stage models count stages, not places (pass 3, judge b).
+      var noun = /^(dtm|epidemiological|rostow)$/.test(ctx.id) ? 'stage' : 'place';
+      R.next.textContent = upto === 0 ? 'Start: the first ' + noun : upto >= n ? 'All ' + noun + 's shown' : 'Next ' + noun;
+      // Malthus: the figure's legend says only "Solid line" and "Dashed line" (Build it must not name them); in
+      // See it, a line is named once its place is shown.
+      if(ctx.id === 'malthus' && figEl) figEl.querySelectorAll('.ms-legend li').forEach(function(li){
+        var t = li.lastChild, base = t && t.nodeType === 3 ? t.nodeValue.replace(/:.*$/, '') : '', i = base === 'Solid line' ? 0 : base === 'Dashed line' ? 1 : -1;
+        if(i > -1) t.nodeValue = base + (view === 'see' && upto > i ? ': ' + piece(i).replace(/<[^>]+>/g, '') : '');
+      });
+      mark(figEl, c, view === 'see' && upto ? { upto: upto } : null);
+      if(view === 'see') caption(c ? '<b>' + esc(Mdl.slotName(model, c - 1)) + ': ' + piece(c - 1) + '.</b> ' + esc(why(c - 1)) : '<b>' + esc(ctx.name) + '.</b> ' + esc(firstSentence(ctx.claim)));
+      // The drill offer appears once the whole model has been seen (or built and checked).
+      R.go.hidden = view === 'see' ? upto < n : !graded;
+      if(LS) LS.pills(upto ? [{ html: upto + ' of ' + n + ' ' + noun + 's', tone: 'readout' }] : [{ html: esc(ctx.unit), tone: 'ghost' }], 'left', 'explore');
     }
     function buildPane(){
       var bm = MS.buildModel(M.rng(7 + list.indexOf(ctx)), ctx);
       R.mhost.innerHTML = Mdl.html(bm, nid + '-b');
-      graded = false; R.fb.innerHTML = '';
-      var ck = host.querySelector('.ms-check'); if(ck) ck.disabled = false;
+      graded = false; R.fb.innerHTML = ''; R.fig.classList.remove('is-graded');
+      var ck = R.ctl.querySelector('.ms-check'); if(ck) ck.disabled = false;
       R.fig.querySelectorAll('.ms-badge').forEach(function(b){ b.classList.remove('is-ok', 'is-no'); });
       mctl = Mdl.mount(R.mhost.querySelector('.hug-model'), bm, { onChange: function(){ act(); if(!graded) R.fb.innerHTML = ''; } });
       mctl.model = bm;
@@ -201,19 +247,21 @@
     function check(){
       var g = Mdl.grade(mctl.model, mctl.get());
       if(!g.valid){ R.fb.innerHTML = '<span class="bt-small">Fill every place first.</span>'; return; }
-      graded = true; mctl.lock(g);
+      graded = true; mctl.lock(g); R.fig.classList.add('is-graded');
       var fe = R.fig.querySelector('.ms-fig');
       if(fe) g.results.forEach(function(x, i){ fe.querySelectorAll('.ms-badge[data-n="' + (i + 1) + '"]').forEach(function(b){ b.classList.add(x.ok ? 'is-ok' : 'is-no'); }); });
-      host.querySelector('.ms-check').disabled = true;
+      R.ctl.querySelector('.ms-check').disabled = true; R.go.hidden = false;
       R.fb.innerHTML = g.correct ? '<span class="hug-mark ok">Correct</span> Every piece is in its place.' : '<span class="hug-mark no">Not yet</span> ' + esc(g.slip) + ' (' + g.right + ' of ' + g.total + ' in place.) Press Start over to try again.';
       caption(g.correct ? '<b>Built.</b> ' + esc(ctx.claim) : '<b>' + g.right + ' of ' + g.total + ' in place.</b> ' + esc(g.slip));
       if(LS) LS.pills([{ html: g.right + ' of ' + g.total + ' in place', tone: g.correct ? 'good' : 'warn' }], 'left', 'explore');
     }
     function setView(v){
-      view = v;
+      view = v; R.fig.setAttribute('data-view', v);
+      // A drawing made from numbers starts again as the rule (not the primate-city switch).
+      if(ctx.build){ R.fig.innerHTML = modelFig(ctx, model); liftNote(); sizeFig(); if(LS && LS.fit) setTimeout(function(){ LS.fit(); }, 0); }
       R.views.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
       R.see.hidden = v !== 'see'; R.build.hidden = v !== 'build';
-      if(v === 'build'){ mark(R.fig.querySelector('.ms-fig'), 0, null); R.skey.innerHTML = ''; caption('Tap a piece, then the place it belongs: the numbers match the drawing. Then press Check.'); if(LS) LS.pills([{ html: 'Build it', tone: 'ghost' }], 'left', 'explore'); }
+      if(v === 'build'){ mark(R.fig.querySelector('.ms-fig'), 0, null); R.skey.innerHTML = ''; R.go.hidden = !graded; caption('Tap a piece, then the place it belongs: the numbers match the drawing. Then press Check.'); if(LS) LS.pills([{ html: 'Build it', tone: 'ghost' }], 'left', 'explore'); }
       else paintSee();
     }
     function whyBox(){
@@ -221,7 +269,8 @@
       var body = '<p>' + esc(ctx.origin) + (ctx.aside ? ' <span class="hug-aside">' + esc(ctx.aside) + '</span>' : '') + '</p>' +
         '<h4 class="ms-h4">What it assumes</h4><ul>' + (ctx.assumes || []).map(function(a){ return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>' +
         '<h4 class="ms-h4">Where it fails</h4><ul>' + (L.right || []).map(function(x){ return '<li><b>' + esc(x.t) + '.</b> ' + esc(x.why) + '</li>'; }).join('') + '</ul>' +
-        '<p class="bt-small">A model is a simplified idea, not a fact. On the exam, say what it assumes and where it fits poorly.</p>';
+        '<p class="bt-small">A model is a simplified idea, not a fact. On the exam, say what it assumes and where it fits poorly.</p>' +
+        (figNote ? '<h4 class="ms-h4">About the drawing</h4><p class="bt-small">' + esc(figNote) + '</p>' : '');
       T.explain(R.say, '<b>' + esc(ctx.name) + '.</b> ' + esc(ctx.claim), body);
       if(LS && LS.setupRow) LS.setupRow.open();
     }
@@ -240,15 +289,23 @@
     function onClick(e){
       var b = e.target.closest('button'); if(!b) return;
       if(b.parentNode === R.views){ act(); setView(b.getAttribute('data-v')); }
-      else if(b.classList.contains('ms-next')){ act(); if(upto < model.slots.length){ upto++; paintSee(); } }
-      else if(b.classList.contains('ms-back')){ act(); if(upto > 0){ upto--; paintSee(); } }
-      else if(b.classList.contains('ms-all')){ act(); upto = model.slots.length; paintSee(); }
+      else if(b.classList.contains('ms-next')){ act(); if(upto < model.slots.length){ upto++; focus = upto; paintSee(); } }
+      else if(b.classList.contains('ms-back')){ act(); if(upto > 0){ upto--; focus = upto; paintSee(); } }
+      else if(b.classList.contains('ms-all')){ act(); upto = model.slots.length; focus = upto; paintSee(); }
       else if(b.classList.contains('ms-check')) check();
       else if(b.classList.contains('ms-again')){ buildPane(); setView('build'); }
       else if(b.classList.contains('ms-drill')) drill();
     }
     host.addEventListener('click', onClick);
-    R.pick.addEventListener('change', function(){ act(); pickModel(R.pick.value); setView(view); });
+    // Name a part on tap: a shown number on the drawing puts that place in focus.
+    function onTapNum(e){
+      if(view !== 'see' || !upto) return;
+      var t = e.target.closest && e.target.closest('.ms-badge, .hug-model-num, .hug-model-band'); if(!t || !R.fig.contains(t)) return;
+      var k = +(t.getAttribute('data-n') || (t.classList.contains('hug-model-num') ? t.textContent : 0));
+      if(k >= 1 && k <= upto){ act(); focus = k; paintSee(); }
+    }
+    R.fig.addEventListener('click', onTapNum);
+    R.pick.addEventListener('change', function(){ act(); focus = 0; pickModel(R.pick.value); setView(view); });
     function studio(pane, s){
       LS = s;
       R.cap.classList.add('sr-only'); R.cap.removeAttribute('aria-live');
@@ -257,7 +314,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       paintSee();
-      if(s.mode() === 'explore') T.hintSlot(s, R.next, 'Start here: see the model built one place at a time');
+      if(s.mode() === 'explore') T.hintSlot(s, R.next, 'Start here: see the model built one part at a time');
     }
     pickModel(ctx.id);
     return { studio: studio };

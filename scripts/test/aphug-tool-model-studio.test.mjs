@@ -93,3 +93,21 @@ test('model-studio: figure labels never touch, and the check bites', () => {
   assert.ok(MS.overlaps({ spots: [[[50, 50]], [[51, 51]]], labels: [] }, 330).length);
   assert.ok(MS.overlaps({ spots: [], labels: [{ x: 1, y: 50, text: 'A long label' }] }, 330).some(e => /leaves/.test(e)));
 });
+
+test('model-studio: the drawings made from numbers (gravity, rank-size) never touch, for any seed', () => {
+  const d = data();
+  for (const [id, fig] of [['gravity', 'gravity'], ['rank-size', 'ranksize']]) {
+    const c = ctxOf(d, id);
+    assert.equal(c.figure, fig);
+    for (let s = 1; s <= 200; s++) {
+      const m = MS.buildModel(M.rng(s), c), f = MS.figure(fig, m);
+      assert.equal(f.spots.length, m.slots.length, `${id} seed ${s}`);
+      for (const px of [330, 360, 600, 900]) assert.deepEqual([...MS.overlaps(f, px)], [], `${id} seed ${s} at ${px}`);
+    }
+  }
+  // Gravity: the band of the pair placed first (most interaction) is the widest.
+  const g = MS.buildModel(M.rng(3), ctxOf(d, 'gravity')), svg = MS.figure('gravity', g).svg;
+  const widths = [...svg.matchAll(/class="ms-ans"[^>]*height="([\d.]+)"/g)].map(x => +x[1]);
+  const top = g.pairs.findIndex(p => 'p' + p.n === g.key.t0);
+  assert.equal(Math.max(...widths), widths[top]);
+});

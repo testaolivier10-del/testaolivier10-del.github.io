@@ -150,7 +150,7 @@
 
   /* ---- Findings from the case text ----------------------------------------- */
   var REGIONS = [
-    { key: 'head',    label: 'Head and face', re: /\b(head|face|facial|pupils?|eyes?|lips?|mouth|jaw|fontanelle|speech|slurr|nose|drool|forehead|grimace)/i },
+    { key: 'head',    label: 'Head and face', re: /\b(head|face|facial|pupils?|eyes?(?! protection)|lips?|mouth|jaw|fontanelle|speech|slurr|nose|drool|forehead|grimace)/i },
     { key: 'neck',    label: 'Neck and airway', re: /\b(neck|throat|airway|chok|cough|stridor|swallow|voice|noise on the way in|gurgl|bark)/i },
     { key: 'chest',   label: 'Chest and breathing', re: /\b(chest|ribs?|lungs?|wheez|crackles|breath|breathing|retraction|flaring|apneic|respirat)/i },
     { key: 'abdomen', label: 'Abdomen and pelvis', re: /\b(abdom|belly|uterus|pelvi|vagina|groin|contraction|crowning|cord)/i },
@@ -179,27 +179,31 @@
     ['S', 'Swelling', /\bswell/i]
   ];
 
+  function everyRegion(C){ return REGIONS.concat(SURVEY, [BACK], C ? [C.BIRTH] : []); }
   function sentences(text){
     return String(text || '').replace(/\s+/g, ' ').split(/(?<=[.!?]["”']?)\s+(?=[A-Z"“'])/).map(function(s){ return s.trim(); }).filter(Boolean);
   }
 
   /* Pure: findings for each region / survey item from a list of seen nodes,
      newest first. [{ text, vitals, now }] -> { head: [{ text, now, dcap }] } */
-  function findings(seen){
-    var out = {};
-    REGIONS.concat(SURVEY, [BACK]).forEach(function(r){ out[r.key] = []; });
-    var dupe = {};
+  function findings(seen, opt){
+    var out = { birth: [] }, C = opt && opt.preg && window.NremtSim.care, all = everyRegion(C);
+    all.forEach(function(r){ out[r.key] = []; });
+    var dupe = {}, at = 0;
     seen.forEach(function(n){
-      var bits = sentences(n.text);
+      var bits = sentences(n.text), first = at + 1, nText = bits.length;
+      at += nText;
       parseVitals(n.vitals).notes.forEach(function(x){ bits.push(x.replace(/^Observed:\s*/i, '')); });
-      bits.forEach(function(s){
-        REGIONS.concat(SURVEY, [BACK]).forEach(function(r){
-          if(!r.re.test(s)) return;
+      bits.forEach(function(s, bi){
+        var pos = bi < nText ? first + bi : at;
+        var keep = C ? C.keep(s) : null;
+        all.forEach(function(r){
+          if(keep ? !keep(r) : !r.re.test(s)) return;
           var k = r.key + '|' + s;
           if(dupe[k]) return;
           dupe[k] = true;
           var tags = DCAP.filter(function(d){ return d[2].test(s); }).map(function(d){ return d[0]; });
-          out[r.key].push({ text: s, now: !!n.now, dcap: tags });
+          out[r.key].push({ text: s, now: !!n.now, dcap: tags, at: pos });
         });
       });
     });
@@ -482,7 +486,7 @@
             ['arms', ['armL', 'armR']], ['legs', ['simLegL', 'simLegR']]],
     back:  [['head', ['simHead']], ['neck', ['simNeck']], ['back', ['simBack']], ['arms', ['armL', 'armR']], ['legs', ['legL', 'legR']]]
   };
-  var SHORT = { head:'Head', neck:'Neck', chest:'Chest', abdomen:'Abdomen', arms:'Arms', legs:'Legs', back:'Back', ms:'Head' };
+  var SHORT = { head:'Head', neck:'Neck', chest:'Chest', abdomen:'Abdomen', arms:'Arms', legs:'Legs', back:'Back', ms:'Head', birth:'Perineum' };
   /* Callout words: the first one or two of these the case's sentences contain,
      most urgent first. `sev` marks the ones drawn in red. */
   var WORDS = [
@@ -499,9 +503,10 @@
     [/\b(drowsy|sleepy|hard to wake)/i, 'Drowsy'], [/\bseiz/i, 'Seizure'], [/\bagitated/i, 'Agitated'], [/\balert/i, 'Alert'],
     [/\b(tender|winces|cries when)/i, 'Tender'], [/\bpain/i, 'In pain'], [/\bcontraction/i, 'Contractions'], [/\bcrowning/i, 'Crowning']
   ];
-  function words(list){
+  function words(list, res){
     var txt = list.map(function(x){ return x.text; }).join(' ');
     var hits = WORDS.filter(function(w){ return w[0].test(txt); });
+    if(res && window.NremtSim.care) hits = window.NremtSim.care.settle(hits, list, res);
     if(!hits.length) return { text: list.length + ' finding' + (list.length === 1 ? '' : 's'), sev: false };
     var t = hits[0][1];
     if(hits[1] && (t + ', ' + hits[1][1]).length <= 22) t += ', ' + hits[1][1].toLowerCase();
@@ -533,6 +538,10 @@
     var self = this;
     this.months = opts.months;
     this.kid = this.months != null && this.months < 144;
+    /* The figure for the age: an infant under 1, a toddler under 5 (both in the
+       'case' figure set), the 5-to-12 child, or the adult. */
+    this.kind = this.months == null || this.months >= 144 ? 'adult' : this.months < 12 ? 'infant' : this.months < 60 ? 'toddler' : 'child';
+    this.he = !!opts.he;
     this.seen = [];
     this.view = 'front';
     this.open = opts.open || null;
@@ -581,7 +590,15 @@
     }
     // The case's findings can arrive before the figure does (the first step of
     // every call): draw, then lay the callouts out for what has been seen.
-    if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(F){ self.F = F; self.draw(); self.update(self.seen); });
+    loadCare(function(){
+      if(window.NremtSim.care) self.preg = window.NremtSim.care.pregnancy(self.open, self);
+      if(self.F) self.update(self.seen);
+    });
+    if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(F){
+      var go = function(){ self.F = F; self.draw(); self.update(self.seen); };
+      if(self.kind === 'infant' || self.kind === 'toddler') window.LevlBodyFigs.load('case', function(G){ if(!G || !G.figs[self.kind + '-front']) self.kind = 'child'; go(); });
+      else go();
+    });
   }
 
   Patient.prototype.setView = function(v){
@@ -598,7 +615,7 @@
   Patient.prototype.draw = function(){
     var F = this.F, svg = this.svg;
     if(!F) return;
-    var f = F.figs[(this.kid ? 'child' : 'adult') + '-' + this.view];
+    var f = F.figs[this.kind + '-' + this.view] || F.figs[(this.kid ? 'child' : 'adult') + '-' + this.view];
     if(!f) return;
     this.fig = f;
     while(svg.firstChild) svg.removeChild(svg.firstChild);
@@ -624,6 +641,8 @@
       g.setAttribute('aria-label', lab);
       self.parts[key] = { g: g, tint: t, at: anchorOf(f, key, r[1]), paths: r[1] };
     });
+    this.uid = uid;
+    this.paintGear();
     this.layout();
   };
 
@@ -653,12 +672,24 @@
         // a thigh finding points at the thigh, not the knee
         if(key === 'legs' && /\bthigh/i.test(txt) && f.lines && f.lines.groinY) at = [at[0], f.lines.groinY + (at[1] - f.lines.groinY) * 0.55];
       }
-      var w = words(list);
+      var w = words(list, this.res);
       items.push({ key: k, where: where(k, list), what: w.text, sev: w.sev,
         fresh: list.some(function(x){ return x.now; }), x: at[0], y: at[1] });
     }
+    if(window.NremtSim.care) window.NremtSim.care.pins(this, items);
     return items;
   };
+
+  /* The care given and the pregnancy: scenario-care.js, fetched with the first patient. */
+  Patient.prototype.paintGear = function(){};
+  var careSrc = (document.currentScript && document.currentScript.src ? document.currentScript.src.replace(/[^\/]*$/, '') : 'assets/') + 'scenario-care.js';
+  function loadCare(cb){
+    if(window.NremtSim.care) return cb();
+    var t = document.createElement('script');
+    t.src = careSrc;
+    t.onload = t.onerror = cb;
+    document.head.appendChild(t);
+  }
 
   Patient.prototype.layout = function(){
     var f = this.fig, st = this.stage, self = this;
@@ -709,7 +740,11 @@
 
   Patient.prototype.update = function(seen){
     this.seen = seen;
-    this.f = findings(seen);
+    this.f = findings(seen, { preg: this.preg });
+    var C = window.NremtSim.care;
+    this.careNow = C ? C.care(seen, { preg: this.preg, he: this.he }) : null;
+    this.res = C ? C.resolutions(seen) : null;
+    this.paintGear();
     var f = this.f;
     Array.prototype.forEach.call(this.el.querySelectorAll('[data-r], [data-tint]'), function(b){
       var key = b.getAttribute('data-r') || b.getAttribute('data-tint');
@@ -717,7 +752,7 @@
       var fresh = list.some(function(x){ return x.now; });
       b.classList.toggle('has', list.length > 0);
       b.classList.toggle('fresh', fresh);
-      var base = (REGIONS.concat(SURVEY, [BACK]).filter(function(r){ return r.key === key; })[0] || {}).label;
+      var base = (everyRegion(window.NremtSim.care).filter(function(r){ return r.key === key; })[0] || {}).label;
       if(b.tagName.toLowerCase() === 'g' && b.hasAttribute('data-r')) b.setAttribute('aria-label', base + (list.length ? ', ' + list.length + ' finding' + (list.length === 1 ? '' : 's') : ', nothing reported'));
     });
     // the Back button says when the back has something to show
@@ -731,7 +766,7 @@
 
   Patient.prototype.pick = function(key, quiet){
     this.current = key;
-    var all = REGIONS.concat(SURVEY, [BACK]);
+    var all = everyRegion(window.NremtSim.care);
     var def = all.filter(function(r){ return r.key === key; })[0];
     if(!def) return;
     Array.prototype.forEach.call(this.el.querySelectorAll('[data-r], [data-tint]'), function(b){
@@ -755,7 +790,7 @@
   };
 
   window.NremtSim = {
-    Monitor: Monitor, Patient: Patient, HESITATE: HESITATE,
+    Monitor: Monitor, Patient: Patient, HESITATE: HESITATE, util: { svgEl: svgEl, esc: esc },
     pure: { parseVitals: parseVitals, ageMonths: ageMonths, refFor: refFor, sbpLow: sbpLow, judge: judge,
             driftAt: driftAt, findings: findings, words: words, where: where, sentences: sentences, REF: REF, SPO2_LOW: SPO2_LOW,
             GRACE_MS: GRACE_MS, DRIFT_MS: DRIFT_MS }

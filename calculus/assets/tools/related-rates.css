@@ -218,3 +218,11 @@
 .rr-gauge[hidden]{display:none;}
 .rr-gk{margin:0;font:800 13px var(--font-ui);color:var(--muted);text-align:center;}
 .ls-root .ls-drill-stage .cd-extra:has(.rr-gauge:not([hidden])) .rr-figwrap{height:auto;flex:1;min-height:0;}
+
+/* Pass 2 (calm landing): in the studio the readout pills carry the given and the
+   watched rate and the scene labels the lengths, so the table under the scene is
+   kept for screen readers only (every number is in Details); the small graph of
+   the watched rate appears once the student drags or presses Play. */
+.ls-root .rr-read{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.ls-root .rr-stage:not(.rr-moved) .rr-graph-stage{display:none;}
+@media (min-width:1000px){ .ls-root .rr-side{justify-content:center;} }

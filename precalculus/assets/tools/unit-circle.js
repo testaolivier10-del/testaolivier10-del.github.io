@@ -98,7 +98,10 @@
       return { wide: false, W: 400, H: Math.max(H, gy + R + 82), cx: 200, cy: cy, R: R, gx0: 46, gx1: 386, gy: gy, fs: 16, tk: 13, read: read };
     }
     function sx(t){ return L.gx0 + t / TAU * (L.gx1 - L.gx0); }
-    function gyv(v){ return L.gy - L.R * v; }
+    /* The tan graph gets its own vertical range, -4 to 4, so the climb to the asymptotes shows;
+       sine and cosine share the circle's scale. */
+    function gk(){ return st.view === 'tan' ? 4 : 1; }
+    function gyv(v){ return L.gy - L.R * v / gk(); }
     function px(c){ return L.cx + L.R * c; } function py(s){ return L.cy - L.R * s; }
 
     /* ---------------------------------------------------- the handle (P) */
@@ -143,7 +146,7 @@
       // the graph frame: y = ±1 on the same scale as the circle, the θ-axis with π/2 ticks
       var g0 = L.gx0, g1 = L.gx1, gy = L.gy;
       o.push('<g class="uc-graph">');
-      [1, -1].forEach(function(v){ o.push('<line class="uc-grid" x1="' + g0 + '" y1="' + r1(gyv(v)) + '" x2="' + g1 + '" y2="' + r1(gyv(v)) + '"/>', txt(g0 - 8, gyv(v) + L.tk * 0.35, v > 0 ? '1' : '−1', 'uc-tk', 'end')); });
+      (gk() > 1 ? [1, 2, 3, 4, -1, -2, -3, -4] : [1, -1]).forEach(function(v){ o.push('<line class="uc-grid' + (Math.abs(v) === 1 || gk() === 1 ? '' : ' is-soft') + '" x1="' + g0 + '" y1="' + r1(gyv(v)) + '" x2="' + g1 + '" y2="' + r1(gyv(v)) + '"/>'); if(gk() === 1 || v % 2 === 0) o.push(txt(g0 - 8, gyv(v) + L.tk * 0.35, v > 0 ? String(v) : '−' + (-v), 'uc-tk', 'end')); });
       for(var k = 1; k <= 4; k++) o.push('<line class="uc-grid" x1="' + r1(sx(k * PI / 2)) + '" y1="' + r1(gy - R - 8) + '" x2="' + r1(sx(k * PI / 2)) + '" y2="' + r1(gy + R + 8) + '"/>');
       o.push('<line class="uc-axis" x1="' + g0 + '" y1="' + gy + '" x2="' + (g1 + 8) + '" y2="' + gy + '"/>');
       o.push('<line class="uc-axis" x1="' + g0 + '" y1="' + r1(gy - R - 14) + '" x2="' + g0 + '" y2="' + r1(gy + R + 14) + '"/>');
@@ -249,8 +252,8 @@
         }
       } else {
         [PI / 2, 3 * PI / 2].forEach(function(z){ g.push('<line class="uc-asym" x1="' + r1(sx(z)) + '" y1="' + r1(L.gy - R * 1.12) + '" x2="' + r1(sx(z)) + '" y2="' + r1(L.gy + R * 1.12) + '"/>'); });
-        g.push('<path class="uc-ghost uc-tan-c" d="' + curve(tanF, 0, TAU, 400, 1.12) + '"/>');
-        if(th > 1e-6) g.push('<path class="uc-trace uc-tan-c" d="' + curve(tanF, 0, th, Math.max(2, Math.round(400 * th / TAU)), 1.12) + '"/>');
+        g.push('<path class="uc-ghost uc-tan-c" d="' + curve(tanF, 0, TAU, 800, 4.48) + '"/>');
+        if(th > 1e-6) g.push('<path class="uc-trace uc-tan-c" d="' + curve(tanF, 0, th, Math.max(2, Math.round(800 * th / TAU)), 4.48) + '"/>');
       }
       // the arc laid flat on the θ-axis: the input of the graph is the arc length
       if(th > 1e-6) g.push('<line class="uc-flat" x1="' + L.gx0 + '" y1="' + L.gy + '" x2="' + r1(sx(th)) + '" y2="' + L.gy + '"/>');
@@ -262,7 +265,7 @@
         if(L.wide) o.push('<line class="uc-link" x1="' + r1(Px) + '" y1="' + r1(Py) + '" x2="' + r1(gx) + '" y2="' + r1(gyv(a.sin)) + '"/>');
         // curve names at the right end
         g.push(txt(L.gx1 + 2, gyv(Math.sin(TAU)) - 10, 'sin θ', 'uc-lab uc-c-sin', 'end'), txt(L.gx1 + 2, gyv(1) - 8, 'cos θ', 'uc-lab uc-c-cos', 'end'));
-      } else if(isFinite(a.tan) && Math.abs(a.tan) <= 1.12){
+      } else if(isFinite(a.tan) && Math.abs(a.tan) <= 4.48){
         g.push('<circle class="uc-gpt uc-tan-f" cx="' + r1(gx) + '" cy="' + r1(gyv(a.tan)) + '" r="6.5"/>');
       }
       o.push('<g class="uc-gdyn">' + g.join('') + '</g>');
@@ -307,7 +310,7 @@
       var body = '<p><b>Radians are arc length.</b> P has moved along an arc of length ' + (sp ? '$' + sp.tex + (sp.m ? ' \\approx ' + M.fixed(a.theta, 3) : '') + '$' : '$' + M.fixed(a.theta, 3) + '$') + ' from $(1, 0)$. The radius is 1, so the arc length is the angle; the green bar on the θ-axis is that arc, laid flat. A full turn is $2\\pi \\approx 6.283$.</p>' +
         (ref ? '<p><b>Reference angle $' + ref.tex + '$.</b> The triangle under $OP$ has hypotenuse 1 and the angle $' + ref.tex + '$ at $O$, so its legs are $' + ref.cos.tex + '$ and $' + ref.sin.tex + '$. ' + UC.QNAME[a.quadrant] + ' gives the signs: $x$ ' + (a.cos > 0 ? 'positive' : 'negative') + ', $y$ ' + (a.sin > 0 ? 'positive' : 'negative') + '.</p>'
           : a.quadrant ? '<p><b>Reference angle.</b> The acute angle between $OP$ and the $x$-axis is about $' + M.fixed(a.ref, 3) + '$. Drag to a special angle (the dots) for exact values.</p>' : '') +
-        (tan ? '<p><b>Tangent is a slope.</b> $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ is rise over run along $OP$. Extend the line through $O$ and $P$ to the line $x = 1$: it meets it at height $\\tan\\theta$. Where $\\cos\\theta = 0$ the line is vertical and has no slope, so the graph has a vertical asymptote there. The tangent graph repeats every $\\pi$.</p>'
+        (tan ? '<p><b>Tangent is a slope.</b> $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ is rise over run along $OP$. Extend the line through $O$ and $P$ to the line $x = 1$: it meets it at height $\\tan\\theta$. Where $\\cos\\theta = 0$ the line is vertical and has no slope, so the graph has a vertical asymptote there. The tangent graph repeats every $\\pi$.</p><p>The graph uses a smaller vertical scale than the circle (from $-4$ to $4$), so you can watch $\\tan\\theta$ climb toward the asymptotes at $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$.</p>'
           : '<p><b>The graphs unroll from the circle.</b> The height of P is $\\sin\\theta$ (red); its $x$-coordinate is $\\cos\\theta$ (blue). Both stay between $-1$ and $1$ and repeat every $2\\pi$, the length of one turn.</p>');
       var box = T.explain(say, html(head), html(body));
       if(box) box.querySelectorAll('details.bt-why').forEach(function(d){ if(LS) d.open = true; });
@@ -401,7 +404,7 @@
       st.view = b.getAttribute('data-v');
       ctl.querySelectorAll('.uc-view .bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
       svg.setAttribute('aria-label', st.view === 'tan' ? 'The unit circle with tan θ as the slope of OP, beside the graph of tangent' : 'The unit circle beside the graphs of sine and cosine');
-      draw(); announce(srText(UC.at(st.th)));
+      L = null; draw(); announce(srText(UC.at(st.th)));
     });
 
     /* ---------------------------------------------------- Play: unroll one turn */

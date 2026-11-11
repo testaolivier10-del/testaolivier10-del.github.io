@@ -9,7 +9,8 @@
    Explore (Tool Studio): the stage is one ecosystem drawn as a pyramid of
    illustrated organisms. Its bars are the model's numbers (energy, biomass
    or numbers per level, widths on a log scale by default, so every factor
-   of 10 is the same step; "to scale" in Details); gold sparks rise one
+   of 10 is the same step and the loss is written beside each step; "to
+   scale" in More options shows the 90% lost as a ghost around each bar); gold sparks rise one
    level for every nine heat sparks that leave (the ratio follows the
    transfer efficiency), and the producers' sunlight budget (GPP, respiration,
    NPP) sits under the base. Tap a level for where its energy went. The
@@ -188,7 +189,8 @@
       if(k + 1 < G.length){
         var u = G[k + 1], y1 = g.y - 2, y2 = u.y + u.h + 2;
         out.push('<path class="ef-up" d="M' + g.cx + ' ' + y1.toFixed(1) + ' L' + g.cx + ' ' + (y2 + 7).toFixed(1) + '" marker-end="url(#' + MK + '-up)"/>');
-        if(o.key === 'energy') out.push('<text class="ef-up-t" x="' + (g.cx + 7) + '" y="' + ((y1 + y2) / 2 + 4).toFixed(1) + '">' + esc(M.fmt(P.eff * 100, 3)) + '%</text>');
+        // pass 2 (Explore): the first step up carries the numbers; the steps above repeat it, so only their arrows show
+        if(o.key === 'energy' && (!o.interactive || k === 0)) out.push('<text class="ef-up-t" x="' + (g.cx + 7) + '" y="' + ((y1 + y2) / 2 + 4).toFixed(1) + '">' + esc(M.fmt(P.eff * 100, 3)) + '%</text>');
       }
       if(o.key === 'energy'){
         var hx = g.x + 6, hy = g.y - 1;
@@ -217,6 +219,12 @@
         var lt = esc(M.fmt((1 - P.eff) * 100, 3)) + '% not passed up (mostly heat)', lw = lt.length * 6.6 + 10;
         if(g.x - gb.x > lw) out.push('<text class="ef-lost-t" x="' + (gb.x + 6).toFixed(1) + '" y="' + (g.yc + 4).toFixed(1) + '">' + lt + '</text>');
         else if(g.x - gb.x > 40) out.push('<text class="ef-lost-t" x="' + (gb.x + 5).toFixed(1) + '" y="' + (g.yc + 4).toFixed(1) + '">' + esc(M.fmt((1 - P.eff) * 100, 3)) + '%</text>');
+      }
+      // on the log scale the loss cannot be drawn as width, so it is said beside the step up
+      if(o.key === 'energy' && o.scale !== 'linear' && k > 0 && o.flows !== false && (!o.interactive || k === 1)){
+        var lt2 = '−' + M.fmt((1 - P.eff) * 100, 3) + '% as heat', lx = g.x - 10;
+        if(lx - g.colW < lt2.length * 6.4 + 6) lt2 = lx - g.colW > 64 ? '−' + M.fmt((1 - P.eff) * 100, 3) + '% heat' : lx - g.colW > 36 ? '−' + M.fmt((1 - P.eff) * 100, 3) + '%' : '';
+        if(lt2) out.push('<text class="ef-lost-t" x="' + lx.toFixed(1) + '" y="' + (g.yc + 4).toFixed(1) + '" text-anchor="end">' + esc(lt2) + '</text>');
       }
       out.push('<rect class="' + cls + '" x="' + g.x.toFixed(1) + '" y="' + g.y.toFixed(1) + '" width="' + g.w.toFixed(1) + '" height="' + g.h.toFixed(1) + '" rx="' + Math.min(8, g.h / 4).toFixed(1) + '"/>');
       if(o.sel === k && o.key === 'energy' && k + 1 < G.length){
@@ -320,8 +328,8 @@
 
   /* ------------------------------------------------------- explore */
   function explore(host, data){
-    var X = data.explore || {}, st = { view: 'energy', eco: X.eco || 'grassland', gpp: X.gpp || 20000, rPct: X.rPct || 50, eff: X.eff || 10, scale: X.scale || 'linear', sel: null, removed: null };
-    var LS = null, touched = false, nid = T.nid('ef'), P = null, live = true, myMk = newMk();
+    var X = data.explore || {}, st = { view: 'energy', eco: X.eco || 'grassland', gpp: X.gpp || 20000, rPct: X.rPct || 50, eff: X.eff || 10, scale: X.scale || 'log', sel: null, removed: null };
+    var LS = null, setupRow = null, touched = false, nid = T.nid('ef'), P = null, live = true, myMk = newMk();
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     var VIEWS = [['energy', 'Energy'], ['biomass', 'Biomass'], ['number', 'Numbers'], ['web', 'Food web']];
     host.innerHTML = '<section class="bt-problem ef-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Energy flow through an ecosystem</h2>' +
@@ -332,7 +340,7 @@
         '<div class="ef-gpp"></div><div class="ef-webctl" hidden><button type="button" class="bt-btn ef-reset">Bring every species back</button></div>' +
       '</div>' +
       '<div class="ef-say"></div>' +
-      T.moreHtml('<div class="ef-more-sl"></div><div class="bt-tabs ef-scale" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="linear" aria-pressed="true">Widths to scale</button><button type="button" class="bt-btn" data-s="log" aria-pressed="false">Widths on a log scale</button></div><p class="bt-small">To scale, each bar is 10% of the one below, so you see the 90% lost at every step; the top of a five-level chain is a sliver, 1/10,000 of the base. On a log scale every factor of 10 is the same step, so the top levels are easier to see.</p>', 'efficiency, respiration, scale') +
+      T.moreHtml('<div class="ef-more-sl"></div><div class="bt-tabs ef-scale" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div><p class="bt-small">On a log scale every factor of 10 is the same step, so every level is easy to see. To scale, each bar is 10% of the one below, so you see the 90% lost at every step; the top of a five-level chain is a sliver, 1/10,000 of the base.</p>', 'efficiency, respiration, scale') +
       '<div class="ef-nums"></div><p class="sr-only ef-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.ef-live'));
     var cue = T.cue('Tap a level of the pyramid to see where its energy goes.');
@@ -347,7 +355,7 @@
 
     function onClick(e){
       var b = e.target.closest('.ef-view'); if(b){ st.view = b.getAttribute('data-v'); st.sel = null; act(); draw(true); return; }
-      b = e.target.closest('.ef-eco'); if(b){ st.eco = b.getAttribute('data-e'); st.sel = null; st.removed = null; act(); draw(true); return; }
+      b = e.target.closest('.ef-eco'); if(b){ st.eco = b.getAttribute('data-e'); st.sel = null; st.removed = null; act(); draw(true); if(LS) LS.close(); return; }
       b = e.target.closest('.ef-scale [data-s]'); if(b){ st.scale = b.getAttribute('data-s'); (LS ? LS.root : host).querySelectorAll('.ef-scale [data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); draw(); return; }
       if(e.target.closest('.ef-reset')){ st.removed = null; draw(true); return; }
     }
@@ -415,6 +423,7 @@
       // controls
       (LS ? LS.root : host).querySelectorAll('.ef-view').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === st.view)); });
       (LS ? LS.root : host).querySelectorAll('.ef-eco').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-e') === st.eco)); });
+      if(setupRow && setupRow.setup) setupRow.setup(EF.ECOS[st.eco].title);
       $('.ef-gpp').hidden = st.view === 'web'; $('.ef-webctl').hidden = st.view !== 'web'; $('.ef-reset').disabled = !st.removed;
       cue.el.querySelector('.bt-cue-t').textContent = st.view === 'web' ? 'Tap a species to remove it.' : 'Tap a level of the pyramid to see where its energy goes.';
       var w = words();
@@ -424,7 +433,7 @@
       if(LS){
         LS.caption('<b>' + esc(w.head) + '</b>', 'explore');
         if(st.view === 'web') LS.pills(st.removed ? [{ k: 'Removed', html: esc(EF.webOf(st.eco).filter(function(s){ return s.id === st.removed; })[0].name), tone: 'warn' }] : [], 'left', 'explore');
-        else LS.pills([{ k: 'NPP', html: num(P.npp), tone: 'readout' }], 'left', 'explore');
+        else LS.pills(st.view === 'energy' ? [] : [{ k: 'NPP', html: num(P.npp), tone: 'readout' }], 'left', 'explore');   // energy: NPP is written under the producers' bar
         LS.pills(st.view === 'web' ? [] : st.view === 'energy' ? [{ k: 'Top gets', html: M.fmt(P.levels[P.levels.length - 1].share, 2) + '%', tone: 'accent' }] : [{ k: 'Pyramid', html: EF.inverted(P, st.view) ? 'inverted' : 'upright', tone: EF.inverted(P, st.view) ? 'warn' : 'good' }], 'right', 'explore');
         if(LS.why) LS.why.querySelectorAll && LS.root.querySelectorAll('.env-ls-why details.bt-why').forEach(function(d){ d.open = true; });
       }
@@ -466,7 +475,14 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], moreLabel: 'Efficiency, respiration and scale' });
+      // Pass 3: the ecosystem chips wait in Details (a Setup row names the one
+      // showing); the dock keeps the four views and the GPP slider.
+      var ecos = $('.ef-ecos'), lab = document.createElement('p');
+      lab.className = 'ls-lbl'; lab.textContent = 'Ecosystem';
+      var ms = $('.ef-more-sl'); ms.parentNode.insertBefore(lab, ms); ms.parentNode.insertBefore(ecos, ms);
+      setupRow = T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], setup: 'Ecosystem', moreLabel: 'Ecosystem, efficiency, respiration and scale' });
+      // The Setup row opens Details on these settings: they come first there.
+      var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       draw();
@@ -502,6 +518,7 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { tenpct: 'Energy up the chain', reverse: 'How much must the producers store?', npp: 'GPP, respiration and NPP', efficiency: 'Transfer efficiency', pyramid: 'An inverted pyramid', web: 'Remove a species' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; figure(el, p, {}); },
+      refit: function(api){ figure(api.fig, api.problem, api.st || {}); },
       onStep: function(s, right, api){ keepFocus(api); if(api.problem.type === 'web' || api.problem.type === 'tenpct' || api.problem.type === 'reverse' || api.problem.type === 'npp'){ api.st = api.st || {}; api.st[s.key] = true; figure(api.fig, api.problem, api.st); } }
     });
   }
@@ -512,14 +529,15 @@
     if(!f){ el.innerHTML = ''; return; }
     var E = EF.ECOS[f.eco], mk = newMk();
     if(f.kind === 'web'){
-      H = phone ? 440 : 400;
+      H = T.figSize(W, phone ? 440 : 400, { max: 0.95 })[1];
       var res = done && done.w1 && done.w2 ? f.removed : null;
       inner = drawWeb(f.eco, { W: W, H: H, removed: res || null, mark: f.removed, ask: res ? null : f.ask, interactive: false });
       label = 'Food web of the ' + E.name + ' with the ' + f.removed + ' removed';
     } else if(f.kind === 'budget'){
-      H = phone ? 200 : 180;
+      W = phone ? 400 : 440; H = phone ? 200 : 180;   // drawn narrower, so on the stage it shows larger
       var P0 = { gpp: f.gpp || (f.npp + f.r), r: f.r, npp: f.npp || (f.gpp - f.r), levels: [] };
-      inner = budgetSvg(P0, W, H, { hideG: f.gpp == null && !(done && done.ans), hideN: f.npp == null && !(done && done.ans) });
+      var Hb = H; H = T.figSize(W, H, { max: 0.62 })[1];
+      inner = '<g transform="translate(0 ' + Math.round((H - Hb) / 2) + ')">' + budgetSvg(P0, W, Hb, { hideG: f.gpp == null && !(done && done.ans), hideN: f.npp == null && !(done && done.ans) }) + '</g>';
       label = 'The producers\' sunlight budget: GPP split into respiration and NPP';
     } else {
       var P = EF.pyramid(f.eco, 20000, 50, 0.1), key = f.kind === 'pyramid' ? f.key : 'energy', o = { W: W, key: key, scale: 'log', flows: f.kind !== 'pyramid' };
@@ -535,7 +553,7 @@
         P.levels = P.levels.slice(f.k, f.k + 2); P.levels.forEach(function(l, i){ l.energy = i ? f.eb : f.ea; l.levelShort = EF.LEVEL_SHORT[f.k + i]; });
         o.flows = false;
       }
-      H = phone ? 80 + 78 * P.levels.length : 70 + 80 * P.levels.length;
+      H = T.figSize(W, phone ? 80 + 78 * P.levels.length : 70 + 80 * P.levels.length, { max: P.levels.length < 3 ? 0.5 : 0.3 + 0.2 * P.levels.length })[1];
       o.H = H;
       inner = drawPyramid(P, o);
       label = KEY[key].title + ' for a ' + E.name;

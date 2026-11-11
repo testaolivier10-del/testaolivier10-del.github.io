@@ -22,7 +22,11 @@
                    learned second, and now a recall. Choose which one you
                    are trying to remember: the arrow from the memory that
                    gets in the way shows the direction (forward: proactive;
-                   backward: retroactive).
+                   backward: retroactive). Below, the recall going wrong: a
+                   person means to say one memory and the other comes out,
+                   the intruder moving from its card into what is said.
+     List          (the class curves appear only after your recall is
+                   scored, so the result is not given away in advance.)
    Colors by role: the course cerulean for you and the memory you want,
    vermillion for what interferes, the delayed condition and the reviews.
    Every value is also written. Reduced motion: no fades; the study list
@@ -72,7 +76,8 @@
     // Forgetting scene state
     var preset = 2, reviews = ML.PRESETS[2].reviews.slice();
     // Interference scene state
-    var story = 0, wantOld = false;
+    var story = 0, wantOld = false, intrAnim = false, intrT = null;
+    function intrGo(){ intrAnim = true; clearTimeout(intrT); intrT = setTimeout(function(){ intrAnim = false; }, 1500); }
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem ml-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Memory lab</h2>' +
       '<div class="ml-fig"><svg class="ml-svg" xmlns="http://www.w3.org/2000/svg" role="img"></svg></div>' +
@@ -99,7 +104,7 @@
     var sDay = T.slider({ label: 'Review on day', min: 1, max: 29, step: 1, value: 10 });
     $('.ml-o-forget').appendChild(sDay.el);
     $('.ml-o-forget').insertAdjacentHTML('beforeend', '<div class="ml-rv-act"><button type="button" class="bt-btn ml-add">Add this review</button><button type="button" class="bt-btn ml-clear">Clear reviews</button></div><p class="bt-small">Or tap the day axis on the graph to add a review, and tap a review to remove it.</p>');
-    var selStory = T.choiceSelect({ label: 'Story', value: '0', options: ML.SCENES.map(function(s, i){ return { value: String(i), label: s.what.charAt(0).toUpperCase() + s.what.slice(1) }; }), onChange: function(v){ act(); story = +v; redraw(); say(interfLine()); } });
+    var selStory = T.choiceSelect({ label: 'Story', value: '0', options: ML.SCENES.map(function(s, i){ return { value: String(i), label: s.what.charAt(0).toUpperCase() + s.what.slice(1) }; }), onChange: function(v){ act(); story = +v; intrGo(); redraw(); say(interfLine()); } });
     $('.ml-o-interf').appendChild(selStory.el);
 
     function onClick(e){
@@ -110,7 +115,7 @@
       var pr = e.target.closest('.ml-pre'); if(pr){ act(); preset = +pr.getAttribute('data-i'); reviews = ML.PRESETS[preset].reviews.slice(); sync(); redraw(); say(forgetLine()); return; }
       if(e.target.closest('.ml-add')){ act(); toggleReview(sDay.value(), true); return; }
       if(e.target.closest('.ml-clear')){ act(); reviews = []; preset = 0; sync(); redraw(); say(forgetLine()); return; }
-      var o = e.target.closest('.ml-want button'); if(o){ act(); wantOld = o.getAttribute('data-o') === '1'; sync(); redraw(); say(interfLine()); return; }
+      var o = e.target.closest('.ml-want button'); if(o){ act(); wantOld = o.getAttribute('data-o') === '1'; intrGo(); sync(); redraw(); say(interfLine()); return; }
     }
     host.addEventListener('click', onClick);
     $('.ml-recall').addEventListener('submit', function(e){
@@ -193,8 +198,8 @@
     function words_(){
       var head, sub = '', why = '';
       if(view === 'list'){
-        if(phase === 'ready'){ head = 'Study ten words, then recall them.'; sub = 'Choose when you recall, then press Start. The curves show the typical pattern.'; }
-        else if(phase === 'study'){ head = 'Word ' + (at + 1) + ' of ' + N + '.'; sub = 'Just read each word once.'; }
+        if(phase === 'ready'){ head = 'Study ten words, then recall them.'; sub = 'Choose when you recall, then press Start.'; }
+        else if(phase === 'study'){ head = 'Just read each word once.'; sub = ''; }
         else if(phase === 'delay'){ head = 'Count backward by threes from ' + countFrom + ', out loud.'; sub = left + ' seconds left. This keeps the last words from being rehearsed.'; }
         else if(phase === 'recall'){ head = 'Type every word you remember, in any order.'; sub = ML.score(words, typed).n + ' so far. Press Done when you are out of words.'; }
         else { var p = parts(result.hits); head = 'You recalled ' + result.n + ' of ' + N + '.'; sub = 'First 3: ' + p.f + ', middle 4: ' + p.m + ', last 3: ' + p.l + '. ' + (delayed ? 'After counting, the end of the list usually loses its advantage.' : 'Most people recall the ends best.'); }
@@ -223,14 +228,14 @@
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
         if(view === 'list'){
-          LS.pills(phase === 'study' ? [{ k: 'Word', html: (at + 1) + ' of ' + N, tone: 'readout' }] : phase === 'delay' ? [{ k: 'Counting', html: left + ' s', tone: 'warn' }] : result ? [{ k: 'You', html: result.n + ' of ' + N, tone: 'accent' }] : [], 'left', 'explore');
+          LS.pills(phase === 'delay' ? [{ k: 'Counting', html: left + ' s', tone: 'warn' }] : result ? [{ k: 'You', html: result.n + ' of ' + N, tone: 'accent' }] : [], 'left', 'explore');
           LS.pills([{ k: 'Recall', html: delayed ? 'after 30 s' : 'at once', tone: 'readout' }], 'right', 'explore');
         } else if(view === 'forget'){
           LS.pills([{ k: 'Reviews', html: String(reviews.length), tone: 'readout' }], 'left', 'explore');
           LS.pills([{ k: 'Day 30', html: r0(d30()) + '% kept', tone: d30() >= 60 ? 'good' : d30() >= 40 ? 'warn' : 'bad' }], 'right', 'explore');
         } else {
           LS.pills([{ k: 'Recalling', html: wantOld ? 'older' : 'newer', tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ html: wantOld ? 'Retroactive' : 'Proactive', tone: 'accent' }], 'right', 'explore');
+          LS.pills([], 'right', 'explore'); // pass 2: the arrow's label names the kind
         }
       }
     }
@@ -268,14 +273,20 @@
 
     function listScene(W, H){
       var phone = W < 560, g = [], L = phone ? 46 : 56, R = W - (phone ? 36 : 26); // 46: room for "100%" at 12 px (audit 2026-11, C3)
-      var cardH = phase === 'ready' || phase === 'done' ? 0 : Math.min(150, H * 0.3), T0 = (phone ? 54 : 60) + (cardH ? cardH + 18 : 0);
-      var you = phase === 'done' && result ? 58 : 0, B = H - (phone ? 52 + ENL : 58) - you;
+      // The word card shows from the start (ready: what is about to happen), so the opening screen is the
+      // experiment, not an empty chart (pass 3, judge b). The "You" row of ten slots is always drawn: it is
+      // where your recall lands, and during study the current slot is the pointer.
+      var cardH = phase === 'done' ? 0 : Math.min(phone ? 116 : 150, H * 0.3), T0 = (phone ? 54 : 60) + (cardH ? cardH + 18 : 0);
+      var you = 58, B = H - (phone ? 52 + ENL : 58) - you;
       var x = function(i){ return L + (i + 0.5) / N * (R - L); }, y = function(v){ return B - v / 100 * (B - T0); };
       // the card: a word, the countdown or the typed words
       if(cardH){
         var cy = phone ? 50 : 56, cw = Math.min(R - L, 520), cx = (W - cw) / 2;
         g.push('<rect class="ml-cardbg" x="' + cx.toFixed(1) + '" y="' + cy + '" width="' + cw.toFixed(1) + '" height="' + cardH.toFixed(1) + '" rx="16"/>');
-        if(phase === 'study'){
+        if(phase === 'ready'){
+          g.push(txt(W / 2, cy + 26, 'Ten words, one at a time', 'ml-cardk'));
+          g.push('<text class="ml-word is-ready" x="' + (W / 2).toFixed(1) + '" y="' + (cy + cardH / 2 + 20).toFixed(1) + '" text-anchor="middle">Ready?</text>');
+        } else if(phase === 'study'){
           g.push(txt(W / 2, cy + 26, 'Word ' + (at + 1) + ' of ' + N, 'ml-cardk'));
           g.push('<text class="ml-word" x="' + (W / 2).toFixed(1) + '" y="' + (cy + cardH / 2 + 20).toFixed(1) + '" text-anchor="middle">' + esc(words[at]) + '</text>');
         } else if(phase === 'delay'){
@@ -288,30 +299,39 @@
           g.push(txt(W / 2, cy + 26, 'Type what you remember: ' + sc0.n + ' so far', 'ml-cardk'));
           var chips = typed.slice(-12), xx = cx + 18, yy = cy + 46, ch = 28;
           chips.forEach(function(t){ var w = tw(t, 14) + 18; if(xx + w > cx + cw - 14){ xx = cx + 18; yy += ch + 6; } if(yy + ch > cy + cardH - 6) return; g.push('<rect class="ml-chip" x="' + xx.toFixed(1) + '" y="' + yy.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + ch + '" rx="8"/>' + txt(xx + w / 2, yy + 19, t, 'ml-chipt')); xx += w + 6; });
-          if(!typed.length) g.push(txt(W / 2, cy + cardH / 2 + 18, 'Use the box below the picture.', 'ml-cardh'));
+          // The box is in the dock: at the right of the stage on a wide screen, below it on a phone.
+          var dockRight = LS && !LS.root.classList.contains('ls-phone');
+          if(!typed.length) g.push(txt(W / 2, cy + cardH / 2 + 18, dockRight ? 'Type in the box at the right, then press Done.' : 'Use the box below the picture.', 'ml-cardh'));
         }
       }
-      // primacy and recency zones
-      g.push('<rect class="ml-zone" x="' + (x(0) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
-      g.push('<rect class="ml-zone" x="' + (x(7) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
-      g.push(txt(x(1), T0 + 16, 'Primacy', 'ml-zt'), txt(x(8), T0 + 16, 'Recency', 'ml-zt'));
+      // The class curves are the result: they appear only once your own recall is scored, so the
+      // experiment is not given away before it runs on you (tool review 2026-11).
+      var reveal = !!result;
       [0, 25, 50, 75, 100].forEach(function(v){ g.push('<line class="ml-grid" x1="' + L + '" x2="' + R + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 8, y(v) + 4, v + '%', 'ml-tv', 'end')); });
-      if(phase === 'study' && at >= 0) g.push('<rect class="ml-now" x="' + (x(at) - (R - L) / N / 2 + 2).toFixed(1) + '" y="' + (T0 + 24) + '" width="' + ((R - L) / N - 4).toFixed(1) + '" height="' + (B - T0 - 24).toFixed(1) + '" rx="6"/>');
-      // the two class curves; the chosen condition is drawn strong
-      function poly(a, c2, dim){ var d = dim ? ' is-dim' : ''; return '<polyline class="' + c2 + d + '" points="' + a.map(function(v, i){ return x(i).toFixed(1) + ',' + y(v).toFixed(1); }).join(' ') + '"/>' + a.map(function(v, i){ return '<circle class="' + c2 + '-pt' + d + '" cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="4.5"/>'; }).join(''); }
-      // The dimmed condition first, so the chosen one is drawn on top.
-      if(delayed) g.push(poly(cls.imm, 'ml-imm', true), poly(cls.del, 'ml-del', false)); else g.push(poly(cls.del, 'ml-del', true), poly(cls.imm, 'ml-imm', false));
-      var li = txt(x(4.5), y(cls.imm[4]) - 14, 'recall at once', 'ml-lab ml-c-imm'), ld = txt(x(4.5), y(cls.del[4]) + 24, 'after 30 s of counting', 'ml-lab ml-c-del');
-      g.push(li, ld);
+      // The current word: a pointer at its position on the axis (not a tall bar, which read as a score).
+      if(phase === 'study' && at >= 0) g.push('<path class="ml-now" d="M' + x(at).toFixed(1) + ' ' + (B + 4) + ' l-7 -11 h14 z"/>');
+      if(reveal){
+        g.push('<rect class="ml-zone" x="' + (x(0) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
+        g.push('<rect class="ml-zone" x="' + (x(7) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
+        g.push(txt(x(1), T0 + 16, 'Primacy', 'ml-zt'), txt(x(8), T0 + 16, 'Recency', 'ml-zt'));
+        var poly = function(a, c2, dim){ var d = dim ? ' is-dim' : ''; return '<polyline class="' + c2 + d + '" points="' + a.map(function(v, i){ return x(i).toFixed(1) + ',' + y(v).toFixed(1); }).join(' ') + '"/>' + a.map(function(v, i){ return '<circle class="' + c2 + '-pt' + d + '" cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="4.5"/>'; }).join(''); };
+        // The dimmed condition first, so the chosen one is drawn on top.
+        if(delayed) g.push(poly(cls.imm, 'ml-imm', true), poly(cls.del, 'ml-del', false)); else g.push(poly(cls.del, 'ml-del', true), poly(cls.imm, 'ml-imm', false));
+        g.push(txt(x(4.5), y(cls.imm[4]) - 14, 'recall at once', 'ml-lab ml-c-imm'), txt(x(4.5), y(cls.del[4]) + 24, 'after 30 s of counting', 'ml-lab ml-c-del'));
+      } else if(phase === 'ready' || phase === 'recall' || phase === 'delay'){
+        var my = (T0 + B) / 2 + 10;
+        g.push(txt((L + R) / 2, my - 10, 'Which positions will you remember?', 'ml-empty'));
+        if(!phone) g.push(txt((L + R) / 2, my + 14, 'The class curve appears here once you score your recall.', 'ml-hint'));
+      }
       g.push('<line class="ml-axis" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/>');
       for(var i = 0; i < N; i++) g.push(txt(x(i), B + 18, String(i + 1), 'ml-tv'));
       g.push(txt((L + R) / 2, B + 38, 'Position in the list', 'ml-axn'));
       if(you){
         var yy2 = B + 52;
         g.push(txt(L - 8, yy2 + 20, 'You', 'ml-axn', 'end'));
-        result.hits.forEach(function(h, j){ var cx2 = x(j); g.push('<circle class="ml-you' + (h ? ' is-hit' : '') + '" cx="' + cx2.toFixed(1) + '" cy="' + (yy2 + 15) + '" r="' + (phone ? 10 : 12) + '"/>' + (h ? '<path class="ml-tick" d="M' + (cx2 - 5).toFixed(1) + ' ' + (yy2 + 15) + ' l3.5 4 l7 -8"/>' : '')); });
+        (result && phase === 'done' ? result.hits : words.map(function(){ return false; })).forEach(function(h, j){ var cx2 = x(j); g.push('<circle class="ml-you' + (h ? ' is-hit' : '') + (phase === 'study' && j === at ? ' is-now' : phase === 'study' && j < at ? ' is-seen' : '') + '" cx="' + cx2.toFixed(1) + '" cy="' + (yy2 + 15) + '" r="' + (phone ? 10 : 12) + '"/>' + (h ? '<path class="ml-tick" d="M' + (cx2 - 5).toFixed(1) + ' ' + (yy2 + 15) + ' l3.5 4 l7 -8"/>' : '')); });
       }
-      var label = 'Typical serial position curves (a teaching model): recall at once ' + cls.imm.map(r0).join(', ') + ' percent by position; after 30 seconds of counting ' + cls.del.map(r0).join(', ') + ' percent. ' + (result ? listLine() : phaseLine());
+      var label = !result ? 'Serial position chart, empty until you study and recall the list. ' + phaseLine() : 'Typical serial position curves (a teaching model): recall at once ' + cls.imm.map(r0).join(', ') + ' percent by position; after 30 seconds of counting ' + cls.del.map(r0).join(', ') + ' percent. ' + (result ? listLine() : phaseLine());
       return { svg: g.join(''), label: label };
     }
 
@@ -332,7 +352,7 @@
       var v30 = d30(), v0 = ML.retention([], 30);
       g.push('<circle class="ml-f1-pt" cx="' + x(30).toFixed(1) + '" cy="' + y(v30).toFixed(1) + '" r="6"/>');
       var t30 = r0(v30) + '% on day 30', w30 = tw(t30, 14, 900) + 18, by = Math.max(T0 - 30, y(v30) - 44);
-      g.push('<g class="ml-bub"><rect x="' + (R - w30).toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + w30.toFixed(1) + '" height="28" rx="8"/>' + txt(R - w30 / 2, by + 19, t30, 'ml-bt') + '</g>');
+      // pass 2: the Day 30 readout above the stage carries this number; no second bubble on the curve
       if(Math.abs(v30 - v0) > 6) g.push(txt(R - 4, y(v0) - 8, 'no review: ' + r0(v0) + '%', 'ml-lab ml-c-f0', 'end'));
       if(reviews.length) g.push(txt(x(reviews[0]) + 6, T0 - 12, reviews.length === 1 ? 'review' : 'reviews', 'ml-lab ml-c-rv', 'start'));
       g.push(txt(L + 4, B + 56, phone ? 'Tap the day axis to add a review' : 'Tap the graph to add a review on that day; tap a review to remove it', 'ml-hint', 'start'));
@@ -340,47 +360,70 @@
       return { svg: g.join(''), label: label };
     }
 
+    /* Interference: the timeline of the two learnings above, and below it
+       the recall going wrong: the person means to say one memory and the
+       other comes out, the intruder (vermillion) moving from its card into
+       what they say. */
     function interfScene(W, H){
       hit = null;
-      var phone = W < 560, g = [], s = sc(), want = wantOld ? s.old : s.nw;
+      var phone = W < 560, g = [], s = sc(), want = wantOld ? s.old : s.nw, intr = wantOld ? s.nw : s.old;
       var oldCls = wantOld ? 'is-want' : 'is-intr', newCls = wantOld ? 'is-intr' : 'is-want';
-      function fit(cx, cy, t, maxW, c2){ var size = 22; while(size > 12 && tw(t, size, 900) > maxW) size -= 1; return '<text class="' + c2 + '" style="font-size:' + size + 'px" x="' + cx.toFixed(1) + '" y="' + cy.toFixed(1) + '" text-anchor="middle">' + esc(t) + '</text>'; }
+      function fit(cx, cy, t, maxW, c2, size0){ var size = size0 || 22; while(size > 11 && tw(t, size, 900) > maxW) size -= 1; return '<text class="' + c2 + '" style="font-size:' + size + 'px" x="' + cx.toFixed(1) + '" y="' + cy.toFixed(1) + '" text-anchor="middle">' + esc(t) + '</text>'; }
       function card(x, y, w, h, k, v, when, cls2){
-        return '<rect class="ml-tc ' + cls2 + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h + '" rx="14"/>' +
-          txt(x + w / 2, y + 24, k, 'ml-tck') + fit(x + w / 2, y + h / 2 + 10, v, w - 24, 'ml-tcv') + txt(x + w / 2, y + h - 14, when, 'ml-tcw');
+        return '<rect class="ml-tc ' + cls2 + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h + '" rx="12"/>' +
+          txt(x + w / 2, y + (phone ? 17 : 22), k, 'ml-tck') + fit(x + w / 2, y + h / 2 + (phone ? 8 : 9), v, w - 14, 'ml-tcv', phone ? 16 : 21) + (when ? txt(x + w / 2, y + h - (phone ? 9 : 12), when, 'ml-tcw') : '');
       }
-      var lab = wantOld ? 'Retroactive: new blocks old' : 'Proactive: old blocks new', lw = tw(lab, 14, 900) + 22, label;
-      if(phone){
-        // A vertical timeline: time runs down the left edge, three cards in order.
-        var L = 46, R = W - 10, cw = R - L - 40, ch = Math.max(84, Math.min(110, (H - 120) / 3 - 18)), gap = Math.max(22, (H - 3 * ch - 40) / 3), y1 = 26, y2 = y1 + ch + gap, y3 = y2 + ch + gap, tx = 22;
-        g.push('<line class="ml-time" x1="' + tx + '" x2="' + tx + '" y1="' + (y1 - 6) + '" y2="' + (y3 + ch + 4) + '"/><path class="ml-timeh" d="M' + tx + ' ' + (y3 + ch + 16) + ' l-6 -12 h12 Z"/>');
-        g.push('<text class="ml-tv" transform="translate(' + (tx - 8) + ' ' + (y1 + 22) + ') rotate(-90)" text-anchor="end">time</text>');
-        [y1, y2, y3].forEach(function(yy, i){ g.push('<circle class="ml-tdot' + (i === 2 ? ' is-test' : '') + '" cx="' + tx + '" cy="' + (yy + ch / 2).toFixed(1) + '" r="6"/>'); });
-        g.push(card(L, y1, cw, ch, 'Learned first', s.old, 'older memory', oldCls));
-        g.push(card(L, y2, cw, ch, 'Learned second', s.nw, 'newer memory', newCls));
-        g.push(card(L, y3, cw, ch, 'Now: trying to recall', want, wantOld ? 'the older one' : 'the newer one', 'is-test'));
-        // the arrow on the right edge, from the intruder to the wanted card
-        var fy = (wantOld ? y2 : y1) + ch / 2, ty2 = (wantOld ? y1 : y2) + ch / 2, ax = L + cw + 4, bend = R + 4;
-        g.push('<path class="ml-arr" d="M' + ax + ' ' + fy.toFixed(1) + ' C' + bend + ' ' + fy.toFixed(1) + ' ' + bend + ' ' + ty2.toFixed(1) + ' ' + (ax + 10) + ' ' + ty2.toFixed(1) + '"/>');
-        g.push('<path class="ml-arrh" d="M' + ax + ' ' + ty2.toFixed(1) + ' l12 -7 v14 Z"/>');
-        var my = (y1 + ch + y2) / 2 + 5, mx = Math.min(L + cw / 2, R - lw / 2);
-        g.push('<g class="ml-bub ml-bub-intr"><rect x="' + (mx - lw / 2).toFixed(1) + '" y="' + (my - 19).toFixed(1) + '" width="' + lw.toFixed(1) + '" height="28" rx="9"/>' + txt(mx, my, lab, 'ml-bt') + '</g>');
-      } else {
-        var L2 = 40, R2 = W - 40, cw2 = Math.min(220, (R2 - L2 - 80) / 3), ch2 = 132, step = (R2 - L2 - cw2) / 2, ty = H * 0.5 - ch2 / 2 + 10, ay = ty + ch2 + 46;
-        var xs = [L2, L2 + step, L2 + 2 * step];
-        g.push('<line class="ml-time" x1="' + L2 + '" x2="' + (R2 - 6) + '" y1="' + ay + '" y2="' + ay + '"/><path class="ml-timeh" d="M' + R2 + ' ' + ay + ' l-12 -6 v12 Z"/>' + txt(R2 - 4, ay + 22, 'time', 'ml-tv', 'end'));
-        xs.forEach(function(x, i){ g.push('<line class="ml-tstem" x1="' + (x + cw2 / 2).toFixed(1) + '" x2="' + (x + cw2 / 2).toFixed(1) + '" y1="' + (ty + ch2) + '" y2="' + ay + '"/><circle class="ml-tdot' + (i === 2 ? ' is-test' : '') + '" cx="' + (x + cw2 / 2).toFixed(1) + '" cy="' + ay + '" r="6"/>'); });
-        g.push(card(xs[0], ty, cw2, ch2, 'Learned first', s.old, 'older memory', oldCls));
-        g.push(card(xs[1], ty, cw2, ch2, 'Learned second', s.nw, 'newer memory', newCls));
-        g.push(card(xs[2], ty, cw2, ch2, 'Now: trying to recall', want, wantOld ? 'the older one' : 'the newer one', 'is-test'));
-        var fromX = (wantOld ? xs[1] : xs[0]) + cw2 / 2, toX = (wantOld ? xs[0] : xs[1]) + cw2 / 2, topY = ty - 8, peak = topY - 74;
-        g.push('<path class="ml-arr" d="M' + fromX.toFixed(1) + ' ' + topY + ' C' + fromX.toFixed(1) + ' ' + peak + ' ' + toX.toFixed(1) + ' ' + peak + ' ' + toX.toFixed(1) + ' ' + (topY - 6) + '"/>');
-        g.push('<path class="ml-arrh" d="M' + toX.toFixed(1) + ' ' + (topY + 2) + ' l-7 -13 h14 Z"/>');
-        var lx = (fromX + toX) / 2, ly = peak + 8;
-        g.push('<g class="ml-bub ml-bub-intr"><rect x="' + (lx - lw / 2).toFixed(1) + '" y="' + (ly - 19).toFixed(1) + '" width="' + lw.toFixed(1) + '" height="28" rx="9"/>' + txt(lx, ly, lab, 'ml-bt') + '</g>');
-      }
-      label = 'Timeline: ' + s.old + ' learned first, ' + s.nw + ' learned second, now trying to recall ' + want + '. An arrow from ' + (wantOld ? s.nw + ' back to ' + s.old : s.old + ' forward to ' + s.nw) + ': ' + (wantOld ? 'retroactive' : 'proactive') + ' interference.';
+      var lab = wantOld ? 'Retroactive: new blocks old' : 'Proactive: old blocks new', lw = tw(lab, phone ? 12.5 : 14, 900) + 22;
+      // the timeline row
+      var L = phone ? 10 : 40, R = W - (phone ? 10 : 40), gapC = phone ? 8 : 40, cw = Math.min(220, (R - L - 2 * gapC) / 3), ch = phone ? 74 : 104;
+      // pass 2: two cards (what was learned); "now" is a dot on the timeline, since the recall below is the now
+      var step = (R - L - cw) / 2, ty = phone ? 70 : 100, ay = ty + ch + (phone ? 16 : 26), xs = [L, L + step, R - 40 - cw / 2];
+      g.push('<line class="ml-time" x1="' + L + '" x2="' + (R - 6) + '" y1="' + ay + '" y2="' + ay + '"/><path class="ml-timeh" d="M' + R + ' ' + ay + ' l-12 -6 v12 Z"/>' + '');
+      xs.forEach(function(x, i){ g.push((i === 2 ? txt(x + cw / 2, ay - (phone ? 10 : 12), 'Now', 'ml-tck') : '<line class="ml-tstem" x1="' + (x + cw / 2).toFixed(1) + '" x2="' + (x + cw / 2).toFixed(1) + '" y1="' + (ty + ch) + '" y2="' + ay + '"/>') + '<circle class="ml-tdot' + (i === 2 ? ' is-test' : '') + '" cx="' + (x + cw / 2).toFixed(1) + '" cy="' + ay + '" r="' + (phone ? 5 : 6) + '"/>'); });
+      g.push(card(xs[0], ty, cw, ch, 'Learned first', s.old, '', oldCls));
+      g.push(card(xs[1], ty, cw, ch, 'Learned second', s.nw, '', newCls));
+      var fromX = (wantOld ? xs[1] : xs[0]) + cw / 2, toX = (wantOld ? xs[0] : xs[1]) + cw / 2, topY = ty - 6, peak = topY - (phone ? 52 : 70);
+      g.push('<path class="ml-arr" d="M' + fromX.toFixed(1) + ' ' + topY + ' C' + fromX.toFixed(1) + ' ' + peak + ' ' + toX.toFixed(1) + ' ' + peak + ' ' + toX.toFixed(1) + ' ' + (topY - 6) + '"/>');
+      g.push('<path class="ml-arrh" d="M' + toX.toFixed(1) + ' ' + (topY + 2) + ' l-7 -13 h14 Z"/>');
+      var lx = Math.max(L + lw / 2, Math.min(R - lw / 2, (fromX + toX) / 2)), ly = peak + (phone ? 12 : 8);
+      g.push('<g class="ml-bub ml-bub-intr"><rect x="' + (lx - lw / 2).toFixed(1) + '" y="' + (ly - 19).toFixed(1) + '" width="' + lw.toFixed(1) + '" height="28" rx="9"/>' + txt(lx, ly, lab, 'ml-bt') + '</g>');
+      // the recall, going wrong
+      var sT = ay + (phone ? 22 : 36), sB = H - (phone ? 12 + ENL : 18), sH = sB - sT;
+      g.push('<rect class="ml-recbg" x="' + L + '" y="' + sT.toFixed(1) + '" width="' + (R - L) + '" height="' + sH.toFixed(1) + '" rx="16"/>');
+      g.push('<line class="ml-tstem" x1="' + (xs[2] + cw / 2).toFixed(1) + '" x2="' + (xs[2] + cw / 2).toFixed(1) + '" y1="' + ay + '" y2="' + sT.toFixed(1) + '"/>'); // the recall below happens now
+      var ask = wantOld ? s.askOld : s.askNew;
+      var askLines = (function(t, maxW, size){ var out = [], ln = ''; t.split(' ').forEach(function(wd){ if(ln && tw(ln + ' ' + wd, size, 800) > maxW){ out.push(ln); ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) out.push(ln); return out; })(ask + '.', R - L - 24, phone ? 12.5 : 14);
+      askLines.slice(0, 2).forEach(function(t, i){ g.push(txt((L + R) / 2, sT + (phone ? 20 : 26) + i * (phone ? 16 : 18), t, 'ml-ask')); });
+      var top2 = sT + (phone ? 24 : 32) + Math.min(2, askLines.length) * (phone ? 16 : 18);
+      var pH = Math.max(60, Math.min(sB - top2 - 8, phone ? 150 : 210)), pcx = L + (R - L) * (phone ? 0.2 : 0.2), pBase = sB - 2;
+      g.push(bust(pcx, pBase, pH));
+      // what they mean to say (a thought, dashed, cerulean) and what comes out (said, vermillion)
+      var headY = pBase - pH * 0.66, mouthX = pcx + pH * 0.2, mouthY = pBase - pH * 0.56;
+      var bx0 = pcx + pH * 0.42, bW = Math.min(R - 10 - bx0, phone ? 220 : 340), bH = phone ? 46 : 62;
+      var thY = Math.max(top2 + 2, headY - pH * 0.42 - bH * 0.4), sayY = Math.min(sB - bH - 8, mouthY - bH * 0.15 + (phone ? 16 : 22));
+      if(sayY < thY + bH + 10) sayY = thY + bH + 10;
+      g.push('<g class="ml-think"><rect x="' + bx0.toFixed(1) + '" y="' + thY.toFixed(1) + '" width="' + bW.toFixed(1) + '" height="' + bH + '" rx="' + (bH / 2) + '"/><circle cx="' + (bx0 - 6).toFixed(1) + '" cy="' + (thY + bH + 4).toFixed(1) + '" r="5"/><circle cx="' + (bx0 - 16).toFixed(1) + '" cy="' + (thY + bH + 14).toFixed(1) + '" r="3.2"/></g>');
+      g.push(txt(bx0 + 16, thY + (phone ? 15 : 19), 'Means to say', 'ml-bk', 'start'), fit(bx0 + bW / 2 + 30, thY + bH / 2 + (phone ? 11 : 14), want, bW - 120, 'ml-bwant', phone ? 16 : 22));
+      var anim = intrAnim && !T.reduced(), srcX = (wantOld ? xs[1] : xs[0]) + cw / 2 - (bx0 + bW / 2), srcY = ty + ch / 2 - (sayY + bH / 2);
+      g.push('<g class="ml-said"><path d="M' + (mouthX + 4).toFixed(1) + ' ' + mouthY.toFixed(1) + ' L' + (bx0 + 6).toFixed(1) + ' ' + (sayY + bH * 0.45).toFixed(1) + ' L' + (bx0 + 6).toFixed(1) + ' ' + (sayY + bH * 0.8).toFixed(1) + ' Z"/><rect x="' + bx0.toFixed(1) + '" y="' + sayY.toFixed(1) + '" width="' + bW.toFixed(1) + '" height="' + bH + '" rx="12"/></g>');
+      g.push(txt(bx0 + 16, sayY + (phone ? 15 : 19), 'What comes out', 'ml-bk is-intr', 'start'));
+      g.push('<g class="ml-intrw' + (anim ? ' is-anim' : '') + '" style="--dx:' + srcX.toFixed(1) + 'px;--dy:' + srcY.toFixed(1) + 'px">' + fit(bx0 + bW / 2 + 30, sayY + bH / 2 + (phone ? 11 : 14), intr, bW - 120, 'ml-bintr', phone ? 16 : 22) + '</g>');
+      var label = 'Timeline: ' + s.old + ' learned first, ' + s.nw + ' learned second, now trying to recall ' + want + '. An arrow from ' + (wantOld ? s.nw + ' back to ' + s.old : s.old + ' forward to ' + s.nw) + ': ' + (wantOld ? 'retroactive' : 'proactive') + ' interference. Below, a person ' + ask.charAt(0).toLowerCase() + ask.slice(1) + ' means to say ' + want + ', but ' + intr + ' comes out.';
       return { svg: g.join(''), label: label };
+    }
+    /* A person from the chest up, facing right, mouth open mid-word, brow puzzled. */
+    function bust(cx, base, h){
+      var k = h / 200;
+      return '<g class="ml-person" transform="translate(' + cx.toFixed(1) + ' ' + base.toFixed(1) + ') scale(' + k.toFixed(3) + ')">' +
+        '<path class="ml-p-shirt" d="M-78 0 C-78 -50 -54 -70 -20 -76 L22 -76 C56 -70 80 -50 80 0 Z"/>' +
+        '<path class="ml-p-skin" d="M-14 -96 L14 -96 L16 -72 Q0 -60 -16 -72 Z"/>' +
+        '<ellipse class="ml-p-skin" cx="0" cy="-140" rx="44" ry="50"/>' +
+        '<path class="ml-p-hair" d="M-46 -142 C-50 -186 -10 -200 18 -192 C44 -184 54 -164 46 -146 C34 -160 10 -170 -14 -166 C-30 -164 -40 -156 -46 -142 Z"/>' +
+        '<ellipse class="ml-p-skin" cx="-40" cy="-134" rx="8" ry="11"/>' +
+        '<circle class="ml-p-eye" cx="14" cy="-142" r="4.5"/><circle class="ml-p-eye" cx="32" cy="-142" r="4.5"/>' +
+        '<path class="ml-p-brow" d="M6 -156 L22 -160 M28 -160 L42 -154"/>' +
+        '<ellipse class="ml-p-mouth" cx="28" cy="-112" rx="8" ry="6"/>' +
+        '</g>';
     }
 
     function studio(pane, s){

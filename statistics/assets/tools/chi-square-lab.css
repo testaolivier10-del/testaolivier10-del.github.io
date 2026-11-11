@@ -31,6 +31,7 @@
 .cs-axis{stroke:var(--ink);stroke-width:1.4;}
 .cs-tick{stroke:var(--muted);stroke-width:1.2;}
 .cs-tl{fill:var(--ink);font-size:12px;font-weight:600;}
+.cs-stripl{fill:var(--muted);font-size:12px;font-weight:700;}
 .cs-seg{stroke:var(--white);stroke-width:1;}
 .cs-seg.is-up{fill:var(--stat-s2);} .cs-seg.is-down{fill:var(--stat-s1);}
 .cs-seg.is-sel{stroke:var(--ink);stroke-width:2;}

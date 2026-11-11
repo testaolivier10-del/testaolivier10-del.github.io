@@ -18,6 +18,8 @@ function sandbox(){
 function loadSim(){
   const s = sandbox();
   vm.runInContext(read('nremt/assets/scenario-monitor.js'), s);
+  // the care layer the monitor loads when the first patient is shown
+  vm.runInContext(read('nremt/assets/scenario-care.js'), s);
   return s.NremtSim;
 }
 function loadScenarios(){
@@ -204,4 +206,37 @@ test('flowchart build reasons handle a box that sits in several places', () => {
   const why = reason('IMMEDIATE (red)', slots[5], d, [d]);
   assert.match(why, /if no, not if yes/, 'explained against the same question\'s arm');
   assert.match(why, /ends 2 different arms/);
+});
+
+/* Review 2026-11: in an OB call the crowning head is the baby's, not the mother's. */
+test('OB call: the baby’s head goes to the birth, not the mother’s head', () => {
+  const sim = loadSim().pure, S = loadScenarios(), c = S.find((x) => x.id === 's15');
+  const open = c.nodes[c.startNode].text;
+  assert.equal(sim.pregnancy(open), 40);
+  assert.equal(sim.pregnancy('A 31-year-old woman at 34 weeks is pale.'), 34);
+  assert.equal(sim.pregnancy(S.find((x) => x.id === 's1').nodes.s1_start.text), null);
+  const f = sim.findings([{ text: open, vitals: c.nodes[c.startNode].vitals, now: true }], { preg: 40 });
+  assert.equal(f.head.length, 0, 'nothing on the mother’s head');
+  assert.ok(f.birth.some((x) => /vaginal opening/.test(x.text)), 'crowning is at the birth');
+  assert.ok(f.abdomen.some((x) => /contractions/i.test(x.text)), 'contractions stay on the uterus');
+  assert.equal(sim.birthWords(f.birth).text, 'Crowning');
+});
+
+/* The care the student chose is what the body shows, and a fixed bleed stops reading as spurting. */
+test('care and resolved findings follow the choices taken', () => {
+  const sim = loadSim().pure, S = loadScenarios(), c = S.find((x) => x.id === 's1');
+  const seen = [
+    { text: c.nodes.s1_tourniquet_first.text, vitals: c.nodes.s1_tourniquet_first.vitals, now: true },
+    { text: c.nodes.s1_start.text, vitals: c.nodes.s1_start.vitals, now: false, did: c.nodes.s1_start.choices[0].text }
+  ];
+  const care = sim.care(seen, {});
+  assert.ok(care.on.tq, 'tourniquet drawn');
+  const f = sim.findings(seen, {});
+  assert.equal(sim.words(f.legs, sim.resolutions(seen)).text.startsWith('Bleeding controlled'), true);
+  assert.equal(sim.words(f.legs, []).text, 'Spurting bleed', 'without the newer step it still spurts');
+  // a choice that only plans the AED puts nothing on yet; stopping compressions takes the hands off
+  const s6 = sim.care([{ text: '', now: true }, { text: '', did: 'Begin high-quality chest compressions immediately and apply the AED as soon as it arrives' }], {});
+  assert.ok(s6.on.cpr && !s6.on.pads);
+  const s18 = sim.care([{ text: '', now: true }, { text: '', did: 'Stop compressions, continue ventilation until his own breathing is adequate, keep him warm, and transport with the mother' }, { text: '', did: 'Add chest compressions, coordinated with ventilation at 3 compressions to 1 breath' }], {});
+  assert.ok(!s18.on.cpr && s18.on.bvm && s18.on.warm);
 });

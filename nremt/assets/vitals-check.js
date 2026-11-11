@@ -45,8 +45,8 @@
     /* Over 10 the formula has already reached 90, the figure PALS uses from
        then on; a row that gives a range (school age, 82–90) means its top
        figure at that end, not its bottom one. */
-    if(mo > 120 && r.sbp.length > 1 && r.from < 216) return { v: r.sbp[r.sbp.length - 1], how: 'over 10 years, the top of the table’s ' + r.sbpText };
-    return { v: r.sbp[0], how: 'the table, ' + r.sbpText };
+    if(mo > 120 && r.sbp.length > 1 && r.from < 216) return { v: r.sbp[r.sbp.length - 1], how: 'over 10 years, the top of the row’s ' + r.sbp[0] + ' to ' + r.sbp[r.sbp.length - 1] };
+    return { v: r.sbp[0], how: 'the table' };
   }
 
   /* Age pictograms (visual polish 2026-10), one per stage of the table, drawn
@@ -84,9 +84,9 @@
       '<div class="vc-row" id="vcRowName"></div>' +
       '<div class="vc-check">' +
         '<div class="vc-kind" role="group" aria-label="Which vital">' +
-          '<button type="button" data-k="hr" aria-pressed="true" class="on">Heart rate</button>' +
-          '<button type="button" data-k="rr" aria-pressed="false">Resp. rate</button>' +
-          '<button type="button" data-k="sbp" aria-pressed="false">Systolic BP</button>' +
+          '<button type="button" data-k="hr" aria-pressed="true" class="on"><span class="vc-k-n">Heart rate</span><span class="vc-k-v" data-v="hr"></span></button>' +
+          '<button type="button" data-k="rr" aria-pressed="false"><span class="vc-k-n">Resp. rate</span><span class="vc-k-v" data-v="rr"></span></button>' +
+          '<button type="button" data-k="sbp" aria-pressed="false"><span class="vc-k-n">Systolic BP</span><span class="vc-k-v" data-v="sbp"></span></button>' +
         '</div>' +
         '<label class="vc-in"><span class="sr-only">Value</span><input id="vcVal" type="number" inputmode="numeric" min="0" max="300" placeholder="Type a number"><span id="vcUnit">/min</span></label>' +
         '<div class="vc-gauge" id="vcGauge" aria-hidden="true"></div>' +
@@ -111,8 +111,14 @@
     mount.querySelectorAll('.vc-fig').forEach(function(f){ var a = +f.getAttribute('data-at'); if(a <= Math.max(mo, 0)) near = f; });
     mount.querySelectorAll('.vc-fig').forEach(function(f){ f.classList.toggle('on', f === near); });
     age.style.setProperty('--vc-pos', (+age.value / (STOPS.length - 1) * 100).toFixed(2) + '%');
-    document.getElementById('vcRowName').innerHTML = '<b>' + esc(r.label) + '</b> row: HR ' + r.hr.join('–') + ' · RR ' + r.rr.join('–') + ' · SBP ' + esc(r.sbpText) +
+    // pass 2 (calm): the row's name only; its three ranges are on the buttons below, said once
+    document.getElementById('vcRowName').innerHTML = '<b>' + esc(r.label) + '</b> row' +
       (kind === 'sbp' ? ' · lowest acceptable here: <b>' + sbpLow(mo, r).v + '</b> (' + esc(sbpLow(mo, r).how) + ')' : '');
+    // each vital's button carries this row's range, so the three read at a glance
+    var lo = sbpLow(mo, r).v;
+    mount.querySelector('[data-v="hr"]').textContent = r.hr.join('–') + ' /min';
+    mount.querySelector('[data-v="rr"]').textContent = r.rr.join('–') + ' /min';
+    mount.querySelector('[data-v="sbp"]').textContent = /Adult/.test(r.label) ? r.sbp.join('–') + ' mmHg' : 'lowest ' + lo + ' mmHg';
     document.getElementById('vcUnit').textContent = kind === 'sbp' ? 'mmHg' : '/min';
 
     var b = band(r, mo), v = val.value === '' ? null : +val.value;
@@ -126,7 +132,7 @@
       (b.hi ? '<span class="vc-lab" style="left:' + pct(b.hi) + '">' + b.hi + '</span>' : '') +
       (v != null && !isNaN(v) ? '<div class="vc-pin" style="left:' + pct(v) + '"><span class="vc-bub">' + v + '</span></div>' : '');
     var out = document.getElementById('vcOut');
-    if(v == null || isNaN(v)){ out.className = 'vc-out'; out.textContent = 'Type a ' + (kind === 'hr' ? 'heart rate' : kind === 'rr' ? 'respiratory rate' : 'systolic pressure') + ' to check it against this row.'; g.classList.remove('low', 'high', 'ok'); return; }
+    if(v == null || isNaN(v)){ out.className = 'vc-out'; out.textContent = ''; g.classList.remove('low', 'high', 'ok'); return; }
     var verdict = v < b.lo ? 'low' : (b.hi && v > b.hi) ? 'high' : 'ok';
     g.className = 'vc-gauge ' + verdict;
     out.className = 'vc-out ' + verdict;

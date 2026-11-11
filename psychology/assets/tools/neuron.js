@@ -13,14 +13,16 @@
               charges toward threshold, and if it gets there the action
               potential runs down the axon, jumping node to node, while the
               trace draws the spike (the model's own numbers), the
-              refractory period shaded after it. Below threshold the bump
+              refractory period shaded after it. The clock slows while a
+              spike crosses the axon (about 1.7 s), and a time cursor on the
+              trace, tied to the signal by a dashed line, moves with it. Below threshold the bump
               fades and nothing travels. More options: two pulses (the gap
               decides whether the refractory period blocks the second) or a
               held stimulus (stronger fires more often, never bigger). Tap a
               part of the neuron to see what it does.
      Synapse  a close-up of one synapse: the axon terminal with its vesicles
               and reuptake transporters, the cleft, the receiving neuron's
-              receptors. Choose one of the eight neurotransmitters the CED
+              receptors, drawn large (the parts scale with the stage). Choose one of the eight neurotransmitters the CED
               lists and a drug (none, agonist, antagonist, reuptake
               inhibitor) and press Release: molecules cross, bind and are
               taken back up; the graph under it is the share of receptors
@@ -41,6 +43,7 @@
   var T = window.ApPsychTools, M = window.ApPsychMath, P = window.ApPsychPlot;
   if(!T || !M || !M.neuron || M.neuron.stub) return;
   var N = M.neuron, esc = T.esc, uidN = 0;
+  var TRAVEL = 3.2; // ms for the action potential to cross the drawn axon
   function f1(x){ return M.minus(M.fixed(x, 1)); }
   function mv(x){ return M.minus(String(Math.round(x))) + ' mV'; }
   function r1(v){ return Math.round(v * 10) / 10; }
@@ -148,6 +151,7 @@
     var ser = o.series || [], pts = [];
     for(var i = 0; i < ser.length; i++){ if(o.upto != null && ser[i][0] > o.upto + 1e-9) break; pts.push(r1(X(ser[i][0])) + ',' + r1(Y(ser[i][1]))); }
     if(pts.length > 1) g.push('<polyline class="nr-trace" points="' + pts.join(' ') + '"/>');
+    if(o.upto != null && o.upto < dur) g.push('<line class="nr-now" x1="' + r1(X(o.upto)) + '" x2="' + r1(X(o.upto)) + '" y1="' + r1(top) + '" y2="' + r1(bot) + '"/>');
     if(o.upto != null && o.upto < dur && pts.length){ var last = ser[pts.length - 1]; g.push('<circle class="nr-head" cx="' + r1(X(last[0])) + '" cy="' + r1(Y(last[1])) + '" r="4"/>'); }
     // label the first spike's peak and refractory period once there is room
     var roomy = spikes.length && (spikes.length === 1 || X(spikes[1]) - X(spikes[0]) > 150);
@@ -165,19 +169,21 @@
   var ANTAG = [0, 1, 3, 4, 6, 7].slice(0, Math.round(REC * 0.7)), AGON = [1, 4, 6];
   function synapseArt(x0, y0, w, h, o){
     var g = [], id = o.id || ('sy' + (++uidN)), cx = x0 + w / 2, cls = o.cls || 'none';
-    var tw = Math.min(w * 0.82, 520), tl = cx - tw / 2, tr = cx + tw / 2, tBot = y0 + h * 0.5, cleft = Math.max(26, h * 0.15), rTop = tBot + cleft;
+    // z: how much bigger than the base drawing the parts are, so the molecules read in a large stage (tool review 2026-11)
+    var z = o.z || Math.max(1, Math.min(2.2, Math.min(w / 420, h / 210)));
+    var tw = Math.min(w * 0.86, 520 * Math.min(z, 1.35)), tl = cx - tw / 2, tr = cx + tw / 2, tBot = y0 + h * 0.46, cleft = Math.max(26 * z, h * 0.17), rTop = tBot + cleft;
     // the sending terminal: a rounded bulb from the top
     g.push('<defs><linearGradient id="' + id + 'T" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="nr-soma1"/><stop offset="1" class="nr-soma0"/></linearGradient><linearGradient id="' + id + 'R" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="nr-rcv0"/><stop offset="1" class="nr-rcv1"/></linearGradient></defs>');
     g.push('<path class="nr-sterm" d="M' + pt(cx - tw * 0.16, y0) + ' C' + pt(cx - tw * 0.18, y0 + h * 0.12) + ' ' + pt(tl, y0 + h * 0.14) + ' ' + pt(tl, tBot - 24) + ' Q' + pt(tl, tBot) + ' ' + pt(tl + 26, tBot) + ' L' + pt(tr - 26, tBot) + ' Q' + pt(tr, tBot) + ' ' + pt(tr, tBot - 24) + ' C' + pt(tr, y0 + h * 0.14) + ' ' + pt(cx + tw * 0.18, y0 + h * 0.12) + ' ' + pt(cx + tw * 0.16, y0) + 'Z" fill="url(#' + id + 'T)"/>');
     // the receiving neuron: a dendrite seen side on, a band under the synapse
-    var rBot = Math.min(y0 + h, rTop + Math.max(56, h * 0.3));
+    var rBot = Math.min(y0 + h, rTop + Math.max(56, h * 0.26));
     g.push('<path class="nr-rcv" d="M' + pt(x0, rTop + 10) + ' Q' + pt(cx, rTop - 10) + ' ' + pt(x0 + w, rTop + 10) + ' L' + pt(x0 + w, rBot - 14) + ' Q' + pt(x0 + w, rBot) + ' ' + pt(x0 + w - 14, rBot) + ' L' + pt(x0 + 14, rBot) + ' Q' + pt(x0, rBot) + ' ' + pt(x0, rBot - 14) + 'Z" fill="url(#' + id + 'R)"/>');
     var fs = w < 520 ? 11.5 : 13;
     g.push('<text class="nr-lab" x="' + r1(cx + tw * 0.2) + '" y="' + r1(y0 + fs + 2) + '" font-size="' + fs + '">Sending neuron</text>');
     g.push('<text class="nr-lab" x="' + r1(cx) + '" y="' + r1(rBot - 10) + '" text-anchor="middle" font-size="' + fs + '">Receiving neuron</text>');
     g.push('<text class="nr-tk nr-cleft-t" x="' + r1(x0 + 4) + '" y="' + r1(tBot + cleft / 2 + 4) + '" font-size="' + (fs - 0.5) + '">synapse</text>');
     // receptors along the receiving membrane
-    var rx = function(i){ return tl + 30 + i * (tw - 60) / (REC - 1); }, ry = function(x){ var u = (x - x0) / w; return rTop + 10 - 20 * 4 * u * (1 - u); };
+    var rx = function(i){ return tl + 30 * z + i * (tw - 60 * z) / (REC - 1); }, ry = function(x){ var u = (x - x0) / w; return rTop + 10 - 20 * 4 * u * (1 - u); };
     var t = o.t, S = t == null ? null : N.synapse(cls), idx = S ? Math.min(S.t.length - 1, Math.round(t / N.SYN.dt)) : 0;
     var cleftAmt = S ? S.cleft[idx] : 0, active = S ? S.act[idx] : (cls === 'agonist' ? N.SYN.agonist : 0);
     // each receptor: blocked by an antagonist, held by an agonist, bound by
@@ -192,37 +198,37 @@
     }
     for(var r = 0; r < REC; r++){
       var x = rx(r), y = ry(x), hd = holder[r], on = hd === 'nt' || hd === 'drug';
-      g.push('<g class="nr-rec' + (on ? ' is-on' : '') + (hd === 'block' ? ' is-blocked' : '') + '" transform="translate(' + pt(x, y) + ')"><path d="M-9 -3 L-9 9 Q-9 14 -4 14 L4 14 Q9 14 9 9 L9 -3 L5 -3 L5 7 L-5 7 L-5 -3 Z"/></g>');
-      if(hd === 'block') g.push('<rect class="nr-drug" x="' + r1(x - 4.5) + '" y="' + r1(y - 4) + '" width="9" height="9" rx="1.5"/>');
-      else if(hd === 'drug') g.push('<path class="nr-drug" d="M' + pt(x, y - 6) + ' l5.5 6 l-5.5 6 l-5.5 -6 z"/>');
-      else if(hd === 'nt') g.push('<circle class="nr-nt" cx="' + r1(x) + '" cy="' + r1(y + 1) + '" r="4.2"/>');
+      g.push('<g class="nr-rec' + (on ? ' is-on' : '') + (hd === 'block' ? ' is-blocked' : '') + '" transform="translate(' + pt(x, y) + ') scale(' + r1(z) + ')"><path d="M-9 -3 L-9 9 Q-9 14 -4 14 L4 14 Q9 14 9 9 L9 -3 L5 -3 L5 7 L-5 7 L-5 -3 Z"/></g>');
+      if(hd === 'block') g.push('<rect class="nr-drug" x="' + r1(x - 4.5 * z) + '" y="' + r1(y - 4 * z) + '" width="' + r1(9 * z) + '" height="' + r1(9 * z) + '" rx="1.5"/>');
+      else if(hd === 'drug') g.push('<path class="nr-drug" d="M' + pt(x, y - 6 * z) + ' l' + r1(5.5 * z) + ' ' + r1(6 * z) + ' l' + r1(-5.5 * z) + ' ' + r1(6 * z) + ' l' + r1(-5.5 * z) + ' ' + r1(-6 * z) + ' z"/>');
+      else if(hd === 'nt') g.push('<circle class="nr-nt" cx="' + r1(x) + '" cy="' + r1(y + z) + '" r="' + r1(4.2 * z) + '"/>');
     }
     // reuptake transporters at both sides of the terminal's lower edge
-    var trs = [tl + 14, tr - 14];
+    var trs = [tl + 14 * z, tr - 14 * z];
     trs.forEach(function(x){
-      g.push('<g class="nr-trans" transform="translate(' + pt(x, tBot - 4) + ')"><rect x="-7" y="-10" width="14" height="18" rx="4"/><path d="M0 -6 v10 m-3 -7 l3 -3 l3 3"/></g>');
-      if(cls === 'reuptake') g.push('<path class="nr-drug" d="M' + pt(x - 6, tBot + 10) + ' l6 -10 l6 10 z"/>');
+      g.push('<g class="nr-trans" transform="translate(' + pt(x, tBot - 4 * z) + ') scale(' + r1(z) + ')"><rect x="-7" y="-10" width="14" height="18" rx="4"/><path d="M0 -6 v10 m-3 -7 l3 -3 l3 3"/></g>');
+      if(cls === 'reuptake') g.push('<path class="nr-drug" d="M' + pt(x - 6 * z, tBot + 10 * z) + ' l' + r1(6 * z) + ' ' + r1(-10 * z) + ' l' + r1(6 * z) + ' ' + r1(10 * z) + ' z"/>');
     });
     // vesicles and the molecules in the cleft
     var vr = M.rng(9), vN = 5;
     for(var v = 0; v < vN; v++){
-      var vx = cx + (v - (vN - 1) / 2) * Math.min(46, tw / 7), vy = tBot - 30 - (v % 2) * 22, open = S && v === 2 && t < 1.5;
-      g.push('<circle class="nr-ves" cx="' + r1(vx) + '" cy="' + r1(vy) + '" r="13"/>');
+      var vx = cx + (v - (vN - 1) / 2) * Math.min(46 * z, tw / 6), vy = tBot - 30 * z - (v % 2) * 22 * z, open = S && v === 2 && t < 1.5;
+      g.push('<circle class="nr-ves" cx="' + r1(vx) + '" cy="' + r1(vy) + '" r="' + r1(13 * z) + '"/>');
       var inside = S && v === 2 ? 0 : 5;
-      for(var d = 0; d < inside; d++) g.push('<circle class="nr-nt" cx="' + r1(vx + (vr() - 0.5) * 12) + '" cy="' + r1(vy + (vr() - 0.5) * 12) + '" r="2.6"/>');
-      if(open) g.push('<path class="nr-fuse" d="M' + pt(vx - 9, tBot - 2) + ' q9 8 18 0"/>');
+      for(var d = 0; d < inside; d++) g.push('<circle class="nr-nt" cx="' + r1(vx + (vr() - 0.5) * 12 * z) + '" cy="' + r1(vy + (vr() - 0.5) * 12 * z) + '" r="' + r1(2.6 * z) + '"/>');
+      if(open) g.push('<path class="nr-fuse" d="M' + pt(vx - 9 * z, tBot - 2) + ' q' + r1(9 * z) + ' ' + r1(8 * z) + ' ' + r1(18 * z) + ' 0"/>');
     }
     if(S){
       var MOL = 22, inCleft = Math.round(MOL * cleftAmt), mr = M.rng(23);
       for(var m = 0; m < MOL; m++){
-        var tx = tl + 34 + mr() * (tw - 68), ty = tBot + 6 + mr() * (cleft - 4), sx0 = cx + (mr() - 0.5) * 16;
+        var tx = tl + 34 * z + mr() * (tw - 68 * z), ty = tBot + 6 * z + mr() * (cleft - 12 * z), sx0 = cx + (mr() - 0.5) * 16 * z;
         var u = Math.min(1, t / 0.6);
         if(m < inCleft){
           var px = sx0 + (tx - sx0) * u, py = tBot + (ty - tBot) * u;
-          g.push('<circle class="nr-nt" cx="' + r1(px) + '" cy="' + r1(py) + '" r="3.2"/>');
+          g.push('<circle class="nr-nt" cx="' + r1(px) + '" cy="' + r1(py) + '" r="' + r1(3.4 * z) + '"/>');
         } else if(t > 0.4 && m < inCleft + 4 && cls !== 'reuptake'){
           var side = trs[m % 2], k2 = 0.6;
-          g.push('<circle class="nr-nt is-back" cx="' + r1(tx + (side - tx) * k2) + '" cy="' + r1(ty + (tBot - 6 - ty) * k2) + '" r="3"/>');
+          g.push('<circle class="nr-nt is-back" cx="' + r1(tx + (side - tx) * k2) + '" cy="' + r1(ty + (tBot - 6 - ty) * k2) + '" r="' + r1(3 * z) + '"/>');
         }
       }
     }
@@ -239,6 +245,8 @@
     g.push('<text class="nr-axl" x="' + r1(x0 + 2) + '" y="' + r1(top - 12) + '" font-size="' + fs + '">receptors activated</text>');
     var base = N.synapse('none'), cur = N.synapse(o.cls), upto = o.t == null ? D : o.t;
     var line = function(S, lim){ var p = []; for(var i = 0; i < S.t.length && S.t[i] <= lim + 1e-9; i++) p.push(r1(X(S.t[i])) + ',' + r1(Y(S.act[i]))); return p; };
+    // pass 2: before the first Release (or after a new drug) the graph waits for the student's action
+    if(o.empty){ g.push('<text class="nr-axl" x="' + r1((L + R) / 2) + '" y="' + r1((top + bot) / 2 + 4) + '" text-anchor="middle" font-size="' + (fs + 1) + '">Press Release to see the receptors respond</text>'); return { svg: g.join('') }; }
     if(o.cls !== 'none'){ g.push('<polyline class="nr-base" points="' + line(base, D).join(' ') + '"/>'); }
     var pc = line(cur, upto);
     if(pc.length > 1){ g.push('<polygon class="nr-actarea" points="' + r1(X(0)) + ',' + r1(Y(0)) + ' ' + pc.join(' ') + ' ' + pc[pc.length - 1].split(',')[0] + ',' + r1(Y(0)) + '"/><polyline class="nr-act" points="' + pc.join(' ') + '"/>'); }
@@ -265,7 +273,7 @@
   function explore(host, data){
     var X = data.explore || {};
     var view = 'fire', S = X.strength || 22, mode = 'pulse', gap = 6, run = null, upto = null, anim = null, part = null;
-    var nt = X.nt || 'dopamine', cls = 'none', synT = null, touched = false, LS = null, nid = T.nid('nr');
+    var nt = X.nt || 'dopamine', cls = 'none', synT = null, synRan = false, touched = false, LS = null, nid = T.nid('nr');
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem nr-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">The neuron</h2>' +
       '<div class="nr-fig"><svg class="nr-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
@@ -288,14 +296,14 @@
     var sPat = T.choiceSelect({ label: 'Stimulus pattern', options: PATTERNS, value: mode, onChange: function(v){ act(); stop(); mode = v; run = null; upto = null; syncView(); draw(); words(); } });
     var sGap = T.slider({ label: 'Time between the two pulses', min: 1, max: 10, step: 0.5, value: gap, unit: 'ms', onInput: function(v){ act(); stop(); gap = v; run = null; upto = null; draw(); words(); } });
     $('.nr-more-fire').appendChild(sPat.el); $('.nr-more-fire').appendChild(sGap.el);
-    var sNt = T.choiceSelect({ label: 'Neurotransmitter', options: N.NT_KEYS.map(function(k){ return { value: k, label: ntName(k) }; }), value: nt, onChange: function(v){ act(); stop(); nt = v; synT = null; draw(); words(); say(ntName(v) + '. ' + N.NT[v].does); } });
+    var sNt = T.choiceSelect({ label: 'Neurotransmitter', options: N.NT_KEYS.map(function(k){ return { value: k, label: ntName(k) }; }), value: nt, onChange: function(v){ act(); stop(); nt = v; synT = null; synRan = false; draw(); words(); say(ntName(v) + '. ' + N.NT[v].does); } });
     $('.nr-more-syn').appendChild(sNt.el);
 
     function onClick(e){
       var b = e.target.closest('.nr-views button');
       if(b){ setView(b.getAttribute('data-v')); return; }
       var d = e.target.closest('.nr-drugs button');
-      if(d){ act(); stop(); cls = d.getAttribute('data-d'); synT = null; syncView(); draw(); words(); say(drugLine()); return; }
+      if(d){ act(); stop(); cls = d.getAttribute('data-d'); synT = null; synRan = false; syncView(); draw(); words(); say(drugLine()); return; }
       if(e.target.closest('.nr-play')){ act(); play(); return; }
       var p = e.target.closest('[data-part]');
       if(p){ act(); pickPart(p.getAttribute('data-part')); }
@@ -324,12 +332,15 @@
       if(anim){ stop(); return; }
       if(view === 'fire'){
         run = N.simulate({ mode: mode, S: S, gap: gap });
-        var dur = run.dur, secs = 4.2;
+        var dur = run.dur, fast = dur / 4.2, slow = TRAVEL / 1.7;
+        // The clock slows while a spike crosses the axon (about 1.7 s node to node), so the eye sees the
+        // signal travel and the trace's cursor moves with it; a held stimulus slows only for its first spike.
+        var slowed = mode === 'held' ? run.spikes.slice(0, 1) : run.spikes;
         upto = 0;
-        anim = P.loop(function(dt, t){ upto = Math.min(dur, t / secs * dur); draw(); return upto < dur; }, { duration: secs, still: function(){ upto = dur; draw(); }, onEnd: function(){ upto = dur; anim = null; stop(); draw(); words(); say(fireLine()); } });
+        anim = P.loop(function(dt){ var sl = slowed.some(function(sp){ return upto >= sp - 0.4 && upto <= sp + TRAVEL + 0.5; }); upto = Math.min(dur, upto + dt * (sl ? slow : fast)); draw(); return upto < dur; }, { still: function(){ upto = dur; draw(); }, onEnd: function(){ upto = dur; anim = null; stop(); draw(); words(); say(fireLine()); } });
       } else {
         var D = N.SYN.dur, secs2 = 3.4;
-        synT = 0;
+        synT = 0; synRan = true;
         anim = P.loop(function(dt, t){ synT = Math.min(D, t / secs2 * D); draw(); return synT < D; }, { duration: secs2, still: function(){ synT = 2.2; draw(); }, onEnd: function(){ if(P.reduced()) synT = 2.2; anim = null; stop(); draw(); words(); say(drugLine()); } });
       }
       var b = $('.nr-play'); if(b) b.textContent = 'Pause';
@@ -376,7 +387,7 @@
           LS.pills(res == null ? [] : [{ html: res ? (res === 1 ? 'Fired: 1 spike' : 'Fired: ' + res + ' spikes') : 'No spike', tone: res ? 'good' : 'warn' }], 'right', 'explore');
         } else {
           LS.pills([{ html: DRUGS.filter(function(d){ return d.v === cls; })[0].label, tone: 'readout' }], 'left', 'explore');
-          LS.pills(cls === 'none' ? [] : [{ k: 'Signal', html: N.signalPct(cls) + '%', tone: N.signalPct(cls) > 100 ? 'good' : 'warn' }], 'right', 'explore');
+          LS.pills(cls === 'none' || !synRan ? [] : [{ k: 'Signal', html: N.signalPct(cls) + '%', tone: N.signalPct(cls) > 100 ? 'good' : 'warn' }], 'right', 'explore');
         }
       }
     }
@@ -427,31 +438,32 @@
       var art = neuronArt(pad, 6, Wd - pad * 2, nh - 12, { part: part, parts: true, id: 'nrx' });
       var g = [art.svg], geo = art.geo, ends = run && upto != null;
       // where the run is: charge in the cell body, travelling signals
+      var tr = traceArt(pad, nh, Wd - pad * 2, H - nh, { series: run ? N.series(run, 0.1) : [[0, N.REST], [25, N.REST]], upto: ends ? upto : null, rest: N.REST, thresh: N.THRESH, spikes: run && ends ? run.spikes : [], pulses: run && ends && mode !== 'held' ? run.events.map(function(e){ return e.t; }) : [], held: run && ends && mode === 'held' ? 2 : null, small: phone, enl: true });
       if(ends){
         var i = Math.min(run.v.length - 1, Math.round(upto / N.DT)), V = run.v[i];
         var charge = Math.max(0, Math.min(1, (V - N.REST) / (N.THRESH - N.REST)));
         if(charge > 0.02) g.push('<circle class="nr-charge" cx="' + r1(geo.sx) + '" cy="' + r1(geo.sy) + '" r="' + r1(geo.rs * (0.9 + 0.5 * charge)) + '" opacity="' + r1(Math.min(0.9, charge) * 10) / 10 + '" fill="url(#nrxGlow)"/>');
         run.events.forEach(function(e){ var a = upto - e.t; if(a >= 0 && a < 1.2) geo.tips.forEach(function(tp, k){ if(k % 2 === 0) g.push('<circle class="nr-in" cx="' + r1(tp[0]) + '" cy="' + r1(tp[1]) + '" r="' + r1(3 + a * 4) + '" opacity="' + r1((1.2 - a) / 1.2 * 10) / 10 + '"/>'); }); });
         if(mode === 'held' && upto >= 2) geo.tips.forEach(function(tp, k){ if(k % 3 === 0) g.push('<circle class="nr-in is-held" cx="' + r1(tp[0]) + '" cy="' + r1(tp[1]) + '" r="3.5"/>'); });
-        var TRAVEL = 3.2;
         run.spikes.forEach(function(sp){
           var a = upto - sp; if(a < 0 || a > TRAVEL + 0.8) return;
           if(a <= TRAVEL){
             // saltatory: the signal sits at a node, then jumps to the next
             var nodes = geo.nodes, k = Math.min(nodes.length - 1, Math.floor(a / TRAVEL * nodes.length)), x = nodes[k];
             g.push('<circle class="nr-ap" cx="' + r1(x) + '" cy="' + r1(geo.sy) + '" r="' + r1(geo.axR * 3.4) + '" fill="url(#nrxGlow)"/><circle class="nr-apc" cx="' + r1(x) + '" cy="' + r1(geo.sy) + '" r="' + r1(geo.axR * 1.4) + '"/>');
+            // tie the signal to the moment on the trace: a dashed line down to the time cursor
+            if(upto < run.dur) g.push('<path class="nr-tie" d="M' + pt(x, geo.sy + geo.axR * 3.6) + ' L' + pt(tr.X(upto), tr.top) + '"/>');
           } else geo.fan.forEach(function(fb){ g.push('<circle class="nr-ap" cx="' + r1(fb.end[0]) + '" cy="' + r1(fb.end[1]) + '" r="' + r1(geo.axR * 3) + '" fill="url(#nrxGlow)"/>'); });
         });
       }
-      var tr = traceArt(pad, nh, Wd - pad * 2, H - nh, { series: run ? N.series(run, 0.1) : [[0, N.REST], [25, N.REST]], upto: ends ? upto : null, rest: N.REST, thresh: N.THRESH, spikes: run && ends ? run.spikes : [], pulses: run && ends && mode !== 'held' ? run.events.map(function(e){ return e.t; }) : [], held: run && ends && mode === 'held' ? 2 : null, small: phone, enl: true });
       g.push(tr.svg);
       var label = 'A neuron: dendrites on the left, the cell body, a myelinated axon and the axon terminals on the right. Below, its membrane potential over 25 ms: resting at ' + mv(N.REST) + ', threshold ' + mv(N.THRESH) + '. ' + (ends ? fireLine() : 'No stimulus yet.') + (part ? ' Selected: ' + N.PARTS[part].name + '.' : '') + ' Tap a part of the neuron to see what it does.';
       return { svg: g.join(''), label: label };
     }
     function synScene(Wd, H){
-      var phone = Wd < 560, pad = phone ? 6 : 16, sh = Math.round(H * 0.56);
+      var phone = Wd < 560, pad = phone ? 6 : 16, sh = Math.round(H * (phone ? 0.58 : 0.64));
       var art = synapseArt(pad, 6, Wd - pad * 2, sh - 10, { nt: nt, cls: cls, t: synT, id: 'syx' });
-      var gr = activationArt(pad, sh, Wd - pad * 2, H - sh, { cls: cls, t: anim ? synT : null, enl: true });
+      var gr = activationArt(pad, sh, Wd - pad * 2, H - sh, { cls: cls, t: anim ? synT : null, enl: true, empty: !synRan });
       return { svg: art.svg + gr.svg, label: 'A synapse: the axon terminal above releases ' + ntLower(nt) + ' into the synapse; receptors on the receiving neuron below; reuptake transporters at the terminal’s edges. Drug: ' + DRUGS.filter(function(d){ return d.v === cls; })[0].label + '. ' + drugLine() + ' The graph below shows the share of receptors activated over 12 ms' + (cls === 'none' ? '.' : ', with no drug dashed.') };
     }
 

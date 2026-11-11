@@ -187,7 +187,8 @@
       var root = LS ? LS.root : host;
       root.querySelectorAll('.wp-views button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
       ['nutrients', 'heat', 'sewage'].forEach(function(k){ var el = $('.wp-grp-' + k); if(el) el.hidden = k !== view; });
-      var go = $('.wp-grp-act'); if(go) go.hidden = view !== 'nutrients';
+      // data-off: the studio's primary group follows it (hidden alone was undone there, so Heat and Sewage showed Play and Day 0)
+      var go = $('.wp-grp-act'); if(go){ go.hidden = view !== 'nutrients'; if(view !== 'nutrients') go.setAttribute('data-off', ''); else go.removeAttribute('data-off'); }
       var tl = $('.wp-tl'), ao = $('.wp-opt'), rv = $('.wp-rv');
       if(tl) tl.hidden = view !== 'nutrients'; if(ao) ao.hidden = view !== 'nutrients'; if(rv) rv.hidden = view !== 'heat';
       if(LS && LS.setupRow) LS.setupRow.setup(view === 'nutrients' ? 'Lake at ' + tLake + ' °C' : view === 'heat' ? 'River at ' + river + ' °C' : 'Typical plant');
@@ -223,7 +224,7 @@
         why = chainWhy();
       } else if(view === 'heat'){
         var h = heatPts();
-        head = 'Warm water holds less oxygen: ' + F(h.d0) + ' mg/L at ' + h.t0 + ' °C, ' + F(h.d1) + ' mg/L at ' + h.t1 + ' °C.';
+        head = 'Warm water holds less oxygen' + (h.t1 > h.t0 ? ': ' + F(h.d0 - h.d1) + ' mg/L less below the plant.' : '.');   // the two values are on the graph
         sub = 'Thermal pollution is the heat itself. No chemical is added.';
         why = heatWhy();
       } else {
@@ -238,16 +239,17 @@
         LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
         if(view === 'nutrients'){
           var o2 = doNow();
-          LS.pills([{ k: 'Day', html: String(day), tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'Bottom DO', html: F(o2) + ' mg/L', tone: o2 < W.HYPOXIC ? 'bad' : o2 < 5 ? 'warn' : 'good' }], 'right', 'explore');
+          LS.pills([], 'left', 'explore');   // pass 2: the day is the Day slider's readout (the pill went stale while playing)
+          var rz = $('.wp-reset'); if(rz) rz.style.display = day > 0 ? '' : 'none';   // pass 2: Day 0 shows once there is a day to go back from
+          LS.pills([], 'right', 'explore');   // pass 2: the bottom-water gauge on the lake is the oxygen readout
         } else if(view === 'heat'){
           var hp = heatPts();
-          LS.pills([{ k: 'Below the plant', html: hp.t1 + ' °C', tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'Holds', html: F(hp.d1) + ' mg/L', tone: hp.d1 < 8 ? 'warn' : 'good' }], 'right', 'explore');
+          // pass 2: the thermometers and the graph's two points carry the numbers
+          LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
         } else {
           var lf = W.SEWAGE.stages[stages].left;
-          LS.pills([{ k: 'BOD left', html: pctTxt(lf.bod), tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'N and P left', html: pctTxt(lf.nutrients), tone: lf.nutrients > 50 ? 'warn' : 'good' }], 'right', 'explore');
+          // pass 2: the bars under the plant carry what is left
+          LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
         }
       }
     }
@@ -440,8 +442,9 @@
       var g = [], n = W.CHAIN.length, gap = 4, w = (R - L - gap * (n - 1)) / n;
       W.CHAIN.forEach(function(c, i){
         var x = L + i * (w + gap), on = s >= i && level > 0, cur = s === i && level > 0 && day > 0 && !recovering();
+        var named = cur || (i === 0 && !(s > 0 && level > 0 && day > 0 && !recovering()));   // pass 2: one link named at a time
         g.push('<g class="wp-link' + (on ? ' is-on' : '') + (cur ? ' is-cur' : '') + (i === 5 ? ' is-end' : '') + '"><path d="M' + x + ' ' + y0 + ' h' + (w - 6) + ' l6 ' + (h / 2) + ' l-6 ' + (h / 2) + ' h' + (-(w - 6)) + (i ? ' l6 ' + (-h / 2) : '') + ' z"/>' +
-          (phone && !cur ? '<text x="' + (x + w / 2 + 2) + '" y="' + (y0 + h / 2 + 4) + '" text-anchor="middle">' + (i + 1) + '</text>' : '<text x="' + (x + w / 2 + 2) + '" y="' + (y0 + h / 2 + 4) + '" text-anchor="middle">' + esc(phone ? shortName(c.name) : c.name) + '</text>') + '</g>');
+          (!named ? '<text x="' + (x + w / 2 + 2) + '" y="' + (y0 + h / 2 + 4) + '" text-anchor="middle">' + (i + 1) + '</text>' : '<text x="' + (x + w / 2 + 2) + '" y="' + (y0 + h / 2 + 4) + '" text-anchor="middle">' + esc(phone ? shortName(c.name) : c.name) + '</text>') + '</g>');
       });
       return g.join('');
     }
@@ -519,19 +522,21 @@
 
     function sewScene(Wd, H){
       var phone = Wd < 560, g = [], L = phone ? 6 : 16, R = Wd - (phone ? 6 : 16), S = W.SEWAGE, st = S.stages[stages];
-      var n = 5, gap = phone ? 6 : 14, rw = phone ? 40 : 70, tw = (R - L - rw - gap * n) / n, ty = phone ? 62 : 66, th = Math.round(H * (phone ? 0.2 : 0.24));
+      var n = 5, gap = phone ? 6 : 14, rw = phone ? 40 : 70, tw = (R - L - rw - gap * n) / n, ty = phone ? 62 : 66, th = Math.round(H * (phone ? 0.22 : 0.3));
       var NAMES = phone ? ['Raw', 'Primary', 'Second.', 'Tertiary', 'Disinfect'] : ['Raw sewage', 'Primary', 'Secondary', 'Tertiary', 'Disinfection'];
       g.push(phone ? '<text class="wp-axl" x="' + L + '" y="16">Water flows left to right.</text><text class="wp-tk" x="' + L + '" y="31">' + (stages < 4 ? 'Stages after ' + esc(st.name.toLowerCase()) + ' are skipped.' : 'Every stage is used.') + '</text>' : '<text class="wp-axl" x="' + L + '" y="18">Water flows left to right; ' + (stages < 4 ? 'stages after ' + esc(st.name.toLowerCase()) + ' are skipped' : 'every stage is used') + '</text>');
       for(var i = 0; i < n; i++){
         var x = L + i * (tw + gap), on = i <= stages, cur = i === stages;
-        g.push('<g class="wp-tank' + (on ? ' is-on' : ' is-off') + (cur ? ' is-cur' : '') + '"><rect x="' + x.toFixed(1) + '" y="' + ty + '" width="' + tw.toFixed(1) + '" height="' + th + '" rx="8"/>' + tankArt(i, x, ty, tw, th, on) +
+        g.push('<g class="wp-stage' + (cur ? ' is-cur' : '') + (on ? '' : ' is-off') + '">' + tank(i, x, ty, tw, th, on, null, !cur) + (cur ? '<rect class="wp-curbox" x="' + (x - 3).toFixed(1) + '" y="' + (ty - 3) + '" width="' + (tw + 6).toFixed(1) + '" height="' + (th + 6) + '" rx="6"/>' : '') +
           '<text class="wp-tname" x="' + (x + tw / 2).toFixed(1) + '" y="' + (ty - 8) + '" text-anchor="middle">' + NAMES[i] + '</text></g>');
-        if(i < n) g.push('<path class="wp-pipe2' + (i < stages ? '' : ' is-skip') + '" d="M' + (x + tw).toFixed(1) + ' ' + (ty + th * 0.5) + ' h' + gap + '"/>');
+        if(i < n) g.push('<path class="wp-pipe2' + (i < stages ? '' : ' is-skip') + '" d="M' + (x + tw).toFixed(1) + ' ' + (ty + th * 0.3) + ' h' + gap + '"/>');
       }
       if(stages < 4){ var sx = L + (stages + 1) * (tw + gap) - gap; g.push('<path class="wp-bypass" d="M' + (sx + gap / 2).toFixed(1) + ' ' + (ty + th + 6) + ' V' + (ty + th + 16) + ' H' + (R - rw / 2).toFixed(1) + ' V' + (ty + th * 0.8) + '"/><text class="wp-tk wp-c-bad" x="' + Math.min(R - 4, Math.max(L + 70, (sx + R - rw / 2) / 2)).toFixed(1) + '" y="' + (ty + th + 30) + '" text-anchor="middle">' + (phone ? 'skipped' : 'skipped: straight to the river') + '</text>'); }
       // the river below the outfall
       var rx = R - rw, lf = st.left, bloom = lf.nutrients > 50, germs = lf.pathogens >= 1;
       g.push('<rect class="wp-river' + (bloom ? ' is-bloom' : '') + '" x="' + rx + '" y="' + ty + '" width="' + rw + '" height="' + th + '" rx="8"/><text class="wp-tname" x="' + (rx + rw / 2) + '" y="' + (ty - 8) + '" text-anchor="middle">River</text>');
+      g.push('<path class="wp-wave" d="M' + (rx + 4) + ' ' + (ty + 10) + ' q' + (rw / 8) + ' -3 ' + (rw / 4) + ' 0 t' + (rw / 4) + ' 0 t' + (rw / 4) + ' 0"/>');
+      if(!bloom && !germs) g.push(fish(rx + rw * 0.45, ty + th * 0.5, false, false) + fish(rx + rw * 0.6, ty + th * 0.75, false, true));
       if(bloom) for(var b = 0; b < 8; b++) g.push('<circle class="wp-alga" cx="' + (rx + 8 + (b * 37 % (rw - 14))) + '" cy="' + (ty + 8 + (b * 13 % 18)) + '" r="3"/>');
       if(germs) g.push(phone ? '<g class="wp-germs">' + [0, 1, 2].map(function(k){ return '<circle cx="' + (rx + 10 + k * 10) + '" cy="' + (ty + th - 12 - (k % 2) * 6) + '" r="3"/>'; }).join('') + '</g>' : '<text class="wp-tk wp-c-bad" x="' + (rx + rw / 2) + '" y="' + (ty + th - 8) + '" text-anchor="middle">pathogens</text>');
       // bars: what is left after the chosen stage
@@ -565,14 +570,50 @@
     return { stop: stop, studio: studio };
   }
 
-  function tankArt(i, x, y, w, h, on){
-    var g = [], cx = x + w / 2;
-    if(i === 0){ for(var k = 0; k < 6; k++) g.push('<circle class="wp-solid" cx="' + (x + 8 + (k * 23 % (w - 16))).toFixed(1) + '" cy="' + (y + 12 + (k * 17 % (h - 24))).toFixed(1) + '" r="' + (2 + k % 3) + '"/>'); }
-    if(i === 1){ g.push('<rect class="wp-sludge" x="' + (x + 4) + '" y="' + (y + h - 16) + '" width="' + (w - 8) + '" height="12" rx="4"/>'); for(var a = 0; a < 3; a++) g.push('<path class="wp-arrowdn" d="M' + (x + w * (0.3 + a * 0.2)).toFixed(1) + ' ' + (y + 12) + ' v' + (h - 40) + ' m-4 -6 l4 6 l4 -6"/>'); if(w > 60) g.push('<text class="wp-tk" x="' + cx.toFixed(1) + '" y="' + (y + h - 20) + '" text-anchor="middle">sludge</text>'); }
-    if(i === 2){ for(var b = 0; b < 9; b++) g.push('<circle class="wp-bubble" cx="' + (x + 8 + (b * 19 % (w - 16))).toFixed(1) + '" cy="' + (y + h - 10 - (b * 23 % (h - 22))).toFixed(1) + '" r="' + (2 + b % 3) + '"/>'); for(var c = 0; c < 5; c++) g.push('<rect class="wp-bac" x="' + (x + 10 + (c * 29 % (w - 20))).toFixed(1) + '" y="' + (y + 14 + (c * 31 % (h - 30))).toFixed(1) + '" width="6" height="2.6" rx="1.3"/>'); }
-    if(i === 3){ for(var p = 0; p < 4; p++){ var px = x + 10 + p * (w - 20) / 3; g.push('<path class="wp-reed" d="M' + px.toFixed(1) + ' ' + (y + h - 6) + ' q-3 -' + (h * 0.45).toFixed(0) + ' 2 -' + (h * 0.7).toFixed(0) + ' M' + px.toFixed(1) + ' ' + (y + h - 6) + ' q5 -' + (h * 0.35).toFixed(0) + ' 8 -' + (h * 0.5).toFixed(0) + '"/>'); } }
-    if(i === 4){ g.push('<rect class="wp-uv" x="' + (cx - 5).toFixed(1) + '" y="' + (y + 10) + '" width="10" height="' + (h - 20) + '" rx="5"/>'); for(var u = 0; u < 4; u++) g.push('<line class="wp-uvr" x1="' + (cx + 8).toFixed(1) + '" x2="' + (cx + 16).toFixed(1) + '" y1="' + (y + 18 + u * (h - 36) / 3).toFixed(1) + '" y2="' + (y + 18 + u * (h - 36) / 3).toFixed(1) + '"/>'); }
-    return g.join('');
+  /* One stage of the plant drawn as a real open tank seen in cutaway:
+     concrete walls, water whose color is that stage's outflow (brown with
+     solids and organic matter, clear once treated), and its working part:
+     0 a bar screen catching trash, 1 a settling tank with sludge in its
+     hopper, 2 an aeration tank with air diffusers and bacteria, 3 a sand and
+     gravel filter, 4 a UV channel with lamps. q: what is left (% of raw). */
+  function tank(i, x, y, w, h, on, q, quiet){   // quiet (pass 2): no inner name, only the tank in focus is named
+    q = q || W.SEWAGE.stages[i].left;
+    var g = [], cx = x + w / 2, wl = y + h * 0.2, x0 = x + 4, x1 = x + w - 4, yb = y + h - 4, dirt = Math.min(1, (q.solids * 0.5 + q.bod * 0.5) / 100);
+    var dk = document.documentElement.getAttribute('data-theme') === 'dark';
+    var c0 = dk ? [40, 96, 130] : [150, 202, 230], c1 = dk ? [92, 72, 48] : [150, 116, 72];
+    var col = 'rgb(' + [0, 1, 2].map(function(k){ return Math.round(c0[k] + (c1[k] - c0[k]) * dirt); }).join(',') + ')';
+    function n(v){ return (+v).toFixed(1); }
+    g.push('<rect class="wp-tankair" x="' + n(x0) + '" y="' + n(y) + '" width="' + n(x1 - x0) + '" height="' + n(yb - y) + '"/>');
+    g.push('<rect class="wp-water" style="fill:' + col + '" x="' + n(x0) + '" y="' + n(wl) + '" width="' + n(x1 - x0) + '" height="' + n(yb - wl) + '"/>');
+    g.push('<path class="wp-wave" d="M' + n(x0) + ' ' + n(wl) + ' q' + n((x1 - x0) / 8) + ' -3 ' + n((x1 - x0) / 4) + ' 0 t' + n((x1 - x0) / 4) + ' 0 t' + n((x1 - x0) / 4) + ' 0 t' + n((x1 - x0) / 4) + ' 0"/>');
+    if(i === 0){
+      var sx = x0 + (x1 - x0) * 0.62;
+      for(var k = 0; k < 6; k++) g.push('<line class="wp-bar-s" x1="' + n(sx + k * 3.2) + '" y1="' + n(y + 2) + '" x2="' + n(sx + k * 3.2 - 6) + '" y2="' + n(yb) + '"/>');
+      for(var t = 0; t < 7; t++) g.push('<rect class="wp-trash" x="' + n(sx - 8 - (t * 7 % 26)) + '" y="' + n(wl + 6 + (t * 11 % (yb - wl - 14))) + '" width="' + (5 + t % 3 * 2) + '" height="' + (3 + t % 2 * 2) + '" rx="1" transform="rotate(' + (t * 37 % 60 - 30) + ' ' + n(sx - 6 - (t * 7 % 26)) + ' ' + n(wl + 8 + (t * 11 % (yb - wl - 14))) + ')"/>');
+      for(var k2 = 0; k2 < 5; k2++) g.push('<circle class="wp-solid" cx="' + n(x0 + 6 + (k2 * 13 % Math.max(8, sx - x0 - 30))) + '" cy="' + n(wl + 10 + (k2 * 17 % (yb - wl - 16))) + '" r="' + (1.6 + k2 % 3) + '"/>');
+      if(w > 60 && !quiet) g.push('<text class="wp-tk wp-in2" x="' + n(sx - 4) + '" y="' + n(y + 12) + '" text-anchor="end">screen</text>');
+    } else if(i === 1){
+      g.push('<path class="wp-sludge" d="M' + n(x0) + ' ' + n(yb - h * 0.16) + ' L' + n(cx) + ' ' + n(yb) + ' L' + n(x1) + ' ' + n(yb - h * 0.16) + ' L' + n(x1) + ' ' + n(yb) + ' L' + n(x0) + ' ' + n(yb) + 'Z"/>');
+      g.push('<path class="wp-sludge2" d="M' + n(x0 + 6) + ' ' + n(yb - h * 0.12) + ' Q' + n(cx) + ' ' + n(yb - h * 0.2) + ' ' + n(x1 - 6) + ' ' + n(yb - h * 0.12) + ' L' + n(cx) + ' ' + n(yb - 2) + 'Z"/>');
+      for(var a2 = 0; a2 < 3; a2++){ var ax = x0 + (x1 - x0) * (0.25 + a2 * 0.25); g.push('<circle class="wp-solid" cx="' + n(ax) + '" cy="' + n(wl + 10 + a2 * 6) + '" r="2.4"/><path class="wp-arrowdn" d="M' + n(ax) + ' ' + n(wl + 16 + a2 * 6) + ' v' + n(Math.max(8, h * 0.3)) + ' m-3.5 -5 l3.5 5 l3.5 -5"/>'); }
+      if(w > 60 && !quiet) g.push('<text class="wp-tk wp-in2" x="' + n(cx) + '" y="' + n(yb - h * 0.2 - 4) + '" text-anchor="middle">sludge</text>');
+    } else if(i === 2){
+      g.push('<line class="wp-diffuser" x1="' + n(x0 + 4) + '" y1="' + n(yb - 6) + '" x2="' + n(x1 - 4) + '" y2="' + n(yb - 6) + '"/>');
+      for(var c = 0; c < 4; c++){ var bx = x0 + (x1 - x0) * (0.15 + c * 0.23); for(var b = 0; b < 5; b++) g.push('<circle class="wp-bubble" cx="' + n(bx + (b % 2 ? 2.5 : -2.5)) + '" cy="' + n(yb - 12 - b * (yb - wl - 16) / 5) + '" r="' + (1.6 + (b + c) % 3 * 0.8) + '"/>'); }
+      for(var r = 0; r < 5; r++) g.push('<rect class="wp-bac" x="' + n(x0 + 8 + (r * 29 % Math.max(10, x1 - x0 - 18))) + '" y="' + n(wl + 10 + (r * 23 % Math.max(10, yb - wl - 26))) + '" width="6" height="2.6" rx="1.3"/>');
+      if(w > 60 && !quiet) g.push('<text class="wp-tk wp-in2" x="' + n(cx) + '" y="' + n(yb - 12) + '" text-anchor="middle">air in</text>');
+    } else if(i === 3){
+      var fT = wl + (yb - wl) * 0.4, fM = wl + (yb - wl) * 0.72;
+      g.push('<rect class="wp-sand" x="' + n(x0) + '" y="' + n(fT) + '" width="' + n(x1 - x0) + '" height="' + n(fM - fT) + '"/><rect class="wp-gravel" x="' + n(x0) + '" y="' + n(fM) + '" width="' + n(x1 - x0) + '" height="' + n(yb - fM) + '"/>');
+      for(var d = 0; d < 14; d++) g.push('<circle class="wp-grain" cx="' + n(x0 + 4 + (d * 17 % Math.max(8, x1 - x0 - 8))) + '" cy="' + n(fM + 4 + (d * 7 % Math.max(4, yb - fM - 7))) + '" r="' + (1.8 + d % 3 * 0.7) + '"/>');
+      for(var e = 0; e < 3; e++){ var ex = x0 + (x1 - x0) * (0.25 + e * 0.25); g.push('<path class="wp-drip" d="M' + n(ex) + ' ' + n(wl + 6) + ' v' + n(fT - wl - 10) + ' m-3 -4 l3 4 l3 -4"/>'); }
+      if(w > 60 && !quiet) g.push('<text class="wp-tk wp-in2" x="' + n(cx) + '" y="' + n(fT + 12) + '" text-anchor="middle">sand filter</text>');
+    } else if(i === 4){
+      for(var u = 0; u < 3; u++){ var uy = wl + (yb - wl) * (0.25 + u * 0.27); g.push('<rect class="wp-uv" x="' + n(x0 + 6) + '" y="' + n(uy - 3) + '" width="' + n(x1 - x0 - 12) + '" height="6" rx="3"/>'); for(var v = 0; v < 4; v++){ var vx = x0 + 12 + v * (x1 - x0 - 24) / 3; g.push('<line class="wp-uvr" x1="' + n(vx) + '" x2="' + n(vx) + '" y1="' + n(uy - 5) + '" y2="' + n(uy - 10) + '"/><line class="wp-uvr" x1="' + n(vx) + '" x2="' + n(vx) + '" y1="' + n(uy + 5) + '" y2="' + n(uy + 10) + '"/>'); } }
+      if(w > 60 && !quiet) g.push('<text class="wp-tk wp-in2" x="' + n(cx) + '" y="' + n(y + 12) + '" text-anchor="middle">UV lamps</text>');
+    }
+    g.push('<path class="wp-wall" d="M' + n(x + 2) + ' ' + n(y) + ' V' + n(y + h - 2) + ' H' + n(x + w - 2) + ' V' + n(y) + '"/>');
+    return '<g class="wp-tank' + (on ? ' is-on' : ' is-off') + '">' + g.join('') + '</g>';
   }
 
   /* ------------------------------------------------------ test yourself */
@@ -585,7 +626,8 @@
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
       onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); },
       // a wrong reading is drawn on the graph as a red line at the student's value
-      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); }
+      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   /* The student's wrong reading: a dashed red line across the graph. */
@@ -598,7 +640,7 @@
   function figure(el, p, st){
     st = st || {};
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
-    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = phone ? 280 : 300, out = [], label = '';
+    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = T.figSize(Wd, phone ? 280 : 300, { max: g.kind === 'load' ? 0.6 : 0.72 })[1], out = [], label = '';
     var L = 40, R = Wd - 14, top = 30, bot = H - 40;
     if(g.kind === 'lake'){
       var yMax = Math.ceil(g.osat + 1), x = function(d){ return L + d / 60 * (R - L); }, y = function(v){ return bot - v / yMax * (bot - top); }, aMax = 45, ya = function(v){ return bot - Math.min(v, aMax) / aMax * (bot - top) * 0.92; };
@@ -632,9 +674,9 @@
       var names = ['Raw sewage', 'Primary', 'Secondary'], vals = [g.bod, st.after1 ? g.a1 : null, st.after2a ? g.a2 : null], gap = phone ? 30 : 60, tw = (Wd - 28 - 2 * gap) / 3, ty = top + 40, th = H * 0.42;
       names.forEach(function(nm, i){
         var x = 14 + i * (tw + gap);
-        out.push('<g class="wp-tank is-on"><rect x="' + x.toFixed(1) + '" y="' + ty + '" width="' + tw.toFixed(1) + '" height="' + th.toFixed(0) + '" rx="8"/>' + tankArt(i, x, ty, tw, th, true) + '</g><text class="wp-tname" x="' + (x + tw / 2).toFixed(1) + '" y="' + (ty - 10) + '" text-anchor="middle">' + nm + '</text>');
+        out.push(tank(i, x, ty, tw, th, true) + '<text class="wp-tname" x="' + (x + tw / 2).toFixed(1) + '" y="' + (ty - 10) + '" text-anchor="middle">' + nm + '</text>');
         out.push('<text class="wp-lab' + (vals[i] == null ? ' wp-muted' : '') + '" x="' + (x + tw / 2).toFixed(1) + '" y="' + (ty + th + 24).toFixed(1) + '" text-anchor="middle">' + (vals[i] != null ? 'BOD ' + F(vals[i]) + ' mg/L' : 'BOD ?') + '</text>');
-        if(i < 2){ var ax = x + tw, ay = ty + th / 2; out.push('<path class="wp-pipe2" d="M' + ax.toFixed(1) + ' ' + ay.toFixed(1) + ' h' + gap + '"/><text class="wp-tk wp-c-bad" x="' + (ax + gap / 2).toFixed(1) + '" y="' + (ay - 10).toFixed(1) + '" text-anchor="middle">−' + (i ? g.p2 : g.p1) + '%</text>'); }
+        if(i < 2){ var ax = x + tw, ay = ty + th * 0.3; out.push('<path class="wp-pipe2" d="M' + ax.toFixed(1) + ' ' + ay.toFixed(1) + ' h' + gap + '"/><text class="wp-tk wp-c-bad" x="' + (ax + gap / 2).toFixed(1) + '" y="' + (ay - 10).toFixed(1) + '" text-anchor="middle">−' + (i ? g.p2 : g.p1) + '%</text>'); }
       });
       label = 'Treatment plant: raw sewage with BOD ' + g.bod + ' mg/L; primary removes ' + g.p1 + '%, secondary removes ' + g.p2 + '% of what is left.' + (st.after1 ? ' After primary ' + F(g.a1) + ' mg/L.' : '') + (st.after2a ? ' After secondary ' + F(g.a2) + ' mg/L.' : '');
     } else if(g.kind === 'load'){

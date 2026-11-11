@@ -61,6 +61,9 @@
     }
     return html.replace('<svg class="mac-graph-svg"', '<svg class="mac-graph-svg" preserveAspectRatio="xMidYMin meet"').replace('</svg>', extra.join('') + '</svg>');
   }
+  var TAB_SHORT = { reserves: 'Reserves', money: 'Money', adas: 'AD-AS' };
+  var NEXT = { reserves: 'money', money: 'adas', adas: 'reserves' };
+  var NEXT_LABEL = { reserves: 'Next: the money market', money: 'Next: AD-AS', adas: 'Back to the reserve market' };
   var TITLE = { reserves: 'Reserve market', money: 'Money market', adas: 'AD-AS' };
   var SUBT = { reserves: 'sets the policy rate', money: 'the nominal interest rate', adas: 'real output and the price level' };
 
@@ -71,8 +74,9 @@
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem rl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Bank reserves lab</h2>' +
       '<div class="rl-fig">' +
-        '<div class="ls-seg rl-tabs" role="group" aria-label="Graph">' + ['reserves', 'money', 'adas'].map(function(k){ return '<button type="button" data-g="' + k + '" aria-pressed="false">' + TITLE[k] + '</button>'; }).join('') + '</div>' +
+        '<div class="ls-seg rl-tabs" role="group" aria-label="Graph">' + ['reserves', 'money', 'adas'].map(function(k, i){ return '<button type="button" data-g="' + k + '" aria-pressed="false"><span class="rl-tn" aria-hidden="true">' + (i + 1) + '</span> <span class="rl-long">' + TITLE[k] + '</span><span class="rl-short">' + TAB_SHORT[k] + '</span></button>'; }).join('') + '</div>' +
         '<div class="rl-panels">' + ['reserves', 'money', 'adas'].map(function(k){ return '<figure class="rl-panel" data-g="' + k + '"><figcaption><b>' + TITLE[k] + '</b> <span>' + SUBT[k] + '</span></figcaption><div class="rl-g"></div></figure>'; }).join('') + '<ol class="rl-chain" aria-label="What follows"></ol></div>' +
+        '<div class="rl-step"><button type="button" class="ls-btn rl-next" hidden></button></div>' +
       '</div>' +
       '<div class="rl-ctl">' +
         '<div class="ls-seg rl-fw" role="group" aria-label="Framework">' + RL.FRAMEWORKS.map(function(f){ return '<button type="button" data-fw="' + f.id + '" aria-pressed="false">' + f.name + '</button>'; }).join('') + '</div>' +
@@ -90,11 +94,13 @@
 
     function onClick(e){
       var b;
-      if((b = e.target.closest('.rl-fw button'))){ act(); fw = b.getAttribute('data-fw'); stance = 0; if(RL.toolOf(tool).fw !== fw) tool = fw === 'ample' ? 'iorb' : 'omo'; snap(); sync(); redraw(); say(line()); return; }
-      if((b = e.target.closest('.rl-tool'))){ act(); tool = b.getAttribute('data-t'); stance = 0; glide(); sync(); say(line()); return; }
-      if((b = e.target.closest('.rl-act'))){ act(); stance = +b.getAttribute('data-s'); glide(); sync(); say(line()); return; }
+      if((b = e.target.closest('.rl-fw button'))){ act(); fw = b.getAttribute('data-fw'); stance = 0; if(RL.toolOf(tool).fw !== fw) tool = fw === 'ample' ? 'iorb' : 'omo'; view = 'reserves'; snap(); sync(); redraw(); say(line()); return; }
+      if((b = e.target.closest('.rl-tool'))){ act(); tool = b.getAttribute('data-t'); stance = 0; view = 'reserves'; glide(); sync(); say(line()); return; }
+      if((b = e.target.closest('.rl-act'))){ act(); stance = +b.getAttribute('data-s'); view = 'reserves'; glide(); sync(); say(line()); return; }
       if((b = e.target.closest('.rl-tabs button'))){ view = b.getAttribute('data-g'); sync(); return; }
-      if(e.target.closest('.rl-reset')){ act(); stance = 0; glide(); sync(); say('Start over: every curve is back where it began.'); }
+      // Pass 3: one graph at a time; Next walks the chain (reserve market, money market, AD-AS), then starts over.
+      if(e.target.closest('.rl-next')){ view = NEXT[view]; sync(); say(TITLE[view] + '.'); return; }
+      if(e.target.closest('.rl-reset')){ act(); stance = 0; view = 'reserves'; glide(); sync(); say('Start over: every curve is back where it began.'); }
     }
     host.addEventListener('click', onClick);
 
@@ -169,6 +175,9 @@
       acts[0].textContent = t.acts[0]; acts[1].textContent = t.acts[1];
       acts.forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-s') === stance)); b.classList.toggle('ls-pri', +b.getAttribute('data-s') === stance); });
       $('.rl-fig').setAttribute('data-view', view);
+      var nx = $('.rl-next'); if(nx){ nx.hidden = !stance; nx.textContent = NEXT_LABEL[view]; nx.classList.toggle('ls-pri', view !== 'adas'); }
+      // Until an action, only the reserve market shows; after one, the step tabs and Next walk the other two graphs.
+      $('.rl-fig').classList.toggle('is-rest', !stance);
       ($('.rl-tabs') ? $('.rl-tabs').querySelectorAll('button') : []).forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === view)); });
       // Why: what the action does, then the chain in words.
       var whyHead = e ? (e.works ? '<b>' + esc(e.act) + '.</b> ' : '<b>' + esc(e.act) + ': the policy rate does not move.</b> ') : '<b>' + esc(RL.fwOf(fw).name) + '.</b> ' + esc(RL.fwOf(fw).line);

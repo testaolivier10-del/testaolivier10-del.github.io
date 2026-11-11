@@ -36,7 +36,8 @@
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="find" aria-pressed="false">Find the broken checkpoint</button></div>' +
       '<div class="bt-fig cc-ringfig bt-hero"></div><p class="bt-first cc-tip">Tap a checkpoint on the ring to see what it checks.</p><div class="cc-gate os-why" role="status" aria-live="polite"></div>' +
       '<div class="os-chal cc-chal" hidden></div>' +
-      '<div class="bt-controls" data-primary="2"></div>' +
+      '<div class="bt-controls" data-primary="3"></div>' +
+      '<figure class="cc-stripfig"><figcaption class="bt-small">What a cell looks like in each phase</figcaption><div class="cc-strip"></div></figure>' +
       '<div class="cc-plots bt-num"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Over time</button><button type="button" class="bt-btn" data-v="hist" aria-pressed="false">DNA content</button><button type="button" class="bt-btn" data-v="gf" aria-pressed="false">Against growth factor</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
@@ -54,7 +55,8 @@
     var sDam = T.slider({ label: 'DNA damage', min: data.damage.min, max: data.damage.max, step: data.damage.step, value: st.damage, unit: data.damage.unit, decimals: 1, hint: 'The share of undamaged cells that get damaged DNA each hour.', onInput: function(v){ st.damage = v; update(); } });
     var sRead = T.slider({ label: 'Read the dish at', min: data.readTime.min, max: data.readTime.max, step: data.readTime.step, value: st.readT, unit: 'h', decimals: 0, onInput: function(v){ st.readT = v; update(); } });
     var outSel = T.choiceSelect({ label: 'Output to plot', value: st.out, options: data.outputs.map(function(o){ return { value: o.id, label: o.name }; }), onChange: function(v){ st.out = v; update(true); } });
-    ctl.appendChild(sGF.el);
+    // DNA damage sits with growth factor on the main panel (tool review 2026-11): at 0 damage p53 had nothing to do.
+    ctl.appendChild(sGF.el); ctl.appendChild(sDam.el);
     function checks(legend, list){
       var fs = document.createElement('fieldset');
       fs.className = 'bt-ctl bt-checks';
@@ -64,9 +66,17 @@
       }).join('');
       fs.querySelectorAll('input').forEach(function(b){ b.addEventListener('change', function(){ st[b.getAttribute('data-k')] = b.checked; update(true); }); });
       ctl.appendChild(fs);
+      return fs;
     }
-    checks('Mutations (from 0 h)', data.mutations);
-    [sDam, sRead].forEach(function(c){ ctl.appendChild(c.el); });
+    /* pass 3 (2026-11-11): the four mutations fold under one "Mutations" row; it opens by itself after the
+       first checkpoint tap, when breaking a checkpoint means something. */
+    var mutFs = checks('Mutations (from 0 h)', data.mutations), mutBox = document.createElement('details');
+    mutBox.className = 'bt-ctl cc-mut';
+    mutBox.innerHTML = '<summary style="cursor:pointer;font:800 14px var(--font-ui);padding:6px 0">Mutations: break a checkpoint</summary>';
+    ctl.insertBefore(mutBox, mutFs); mutBox.appendChild(mutFs); mutFs.querySelector('legend').className = 'sr-only';
+    var mutAuto = true;
+    mutBox.addEventListener('toggle', function(){ if(!mutBox.open) mutAuto = false; });
+    ctl.appendChild(sRead.el);
     checks('Drug (from 0 h)', data.drugs);
     ctl.appendChild(outSel.el);
 
@@ -172,21 +182,29 @@
       }
       return s.join('');
     }
+    function drawStrip(){
+      var el = card.querySelector('.cc-strip'); if(!el || el.firstChild) return;
+      var p = [], y = 46;
+      ['G0', 'G1', 'S', 'G2', 'M'].forEach(function(q, i){ var x = 40 + i * 80; p.push('<g class="cc-pc"><g transform="translate(' + x + ' ' + y + ') scale(1.22) translate(' + (-x) + ' ' + (-y) + ')">' + phaseCell(q, x, y) + '</g><text class="cc-pcl" x="' + x + '" y="' + (y + 44) + '" text-anchor="middle">' + q + '</text></g>'); });
+      el.innerHTML = '<svg class="cc-fig cc-ring" viewBox="0 0 400 100" role="img" aria-label="A cell in G0, G1, S, G2 and M">' + p.join('') + '</svg>';
+    }
     function figure(a, o, hide){
+      drawStrip();
       o = o || st; last = { a: a, o: o, hide: hide };
       var parts = [];
       SEG.forEach(function(sg, i){ parts.push('<path class="ph ' + ['g1', 's', 'g2', 'm'][i] + '" d="' + arc(CX, CY, R, sg[1] + 1, sg[2] - 1) + '"/>'); });
       var pct = function(x){ return F(100 * x / a.N, 0) + '%'; };
       var lab = function(ang, rr, txt, cls){ var q = pol(ang, rr); return '<text' + (cls ? ' class="' + cls + '"' : '') + ' x="' + q[0].toFixed(1) + '" y="' + (q[1] + 4).toFixed(1) + '" text-anchor="middle">' + txt + '</text>'; };
-      parts.push(lab(A1 / 2, R + 30, 'G1 ' + pct(a.G1), 'cc-ph'), lab((A1 + AS) / 2, R + 30, 'S ' + pct(a.S), 'cc-ph'), lab((AS + A2) / 2, R + 34, 'G2 ' + pct(a.G2), 'cc-ph'), lab(344, R - 30, 'M ' + pct(a.M), 'cc-ph'));
+      // pass 2 (2026-11-10): phase names only on the ring; the shares are in Details and the label
+      parts.push(lab(A1 / 2, R + 30, 'G1', 'cc-ph'), lab((A1 + AS) / 2, R + 30, 'S', 'cc-ph'), lab((AS + A2) / 2, R + 34, 'G2', 'cc-ph'), lab(344, R - 30, 'M', 'cc-ph'));
       parts.push('<g class="cc-dots"></g>');
       // G0 pool: resting cells gather in the middle
-      parts.push('<circle class="g0" cx="' + CX + '" cy="' + CY + '" r="52"/>' + phaseCell('G0', CX, CY - 22) + '<text x="' + CX + '" y="' + (CY + 6) + '" text-anchor="middle">G0 ' + pct(a.G0) + '</text><g class="cc-g0"></g>');
+      parts.push('<circle class="g0" cx="' + CX + '" cy="' + CY + '" r="52"/>' + phaseCell('G0', CX, CY - 22) + '<text x="' + CX + '" y="' + (CY + 6) + '" text-anchor="middle">G0</text><g class="cc-g0"></g>');
       // what a cell looks like in each phase
-      var strip = [['G0', 'G0'], ['G1', 'G1'], ['S', 'S'], ['G2', 'G2'], ['M', 'M']];
-      parts.push('<line class="cc-sep" x1="20" x2="380" y1="' + (CY + R + 46) + '" y2="' + (CY + R + 46) + '"/>');
-      strip.forEach(function(q, i){ var x = 40 + i * 80, y = CY + R + 84; parts.push('<g class="cc-pc"><g transform="translate(' + x + ' ' + y + ') scale(1.22) translate(' + (-x) + ' ' + (-y) + ')">' + phaseCell(q[0], x, y) + '</g><text class="cc-pcl" x="' + x + '" y="' + (y + 44) + '" text-anchor="middle">' + q[1] + '</text></g>'); });
-      parts.push('<text class="note" x="' + CX + '" y="16" text-anchor="middle">' + grp(a.N) + ' cells' + (hide ? '' : ' · ' + F(a.divRate, 2) + ' divisions per 100 cells per h') + '</text>');
+      // (pass 2) the strip of what a cell looks like in each phase moved to Details (drawStrip); the cell count is the pill
+      if(hide) parts.push('<text class="note" x="' + CX + '" y="16" text-anchor="middle">' + grp(a.N) + ' cells</text>');
+      if(!hide && a.damaged >= 0.5) parts.push('<text class="note cc-damnote" x="' + CX + '" y="22" text-anchor="middle">Red = damaged DNA: ' + F(100 * a.damaged / a.N, 0) + '% of cells' + (o.p53 ? ' (none held at G1)' : '') + '</text>');
+      if(!hide && (o.rb || o.cycd || o.ras) && o.gf >= 100) parts.push('<text class="note cc-damnote" x="' + CX + '" y="' + (a.damaged >= 0.5 ? 40 : 22) + '" text-anchor="middle">Full growth factor: lower it to see this mutation</text>');
       // gates as buttons
       Object.keys(GATES).forEach(function(k){
         var gt = GATES[k], held = k === 'g1' ? a.held1 : k === 'g2' ? a.held2 : a.heldM, p1 = pol(gt.ang, R - 18), p2 = pol(gt.ang, R + 18), lb = k === 'g1' ? pol(gt.ang + 4, R + 40) : pol(gt.ang + (k === 'm' ? 6 : -6), R + 30);
@@ -194,10 +212,10 @@
         parts.push('<g class="cc-gatebtn' + (sel ? ' sel' : '') + '" data-g="' + k + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(gt.name + (on ? ', holding ' + F(held, 0) + ' cells' : '')) + '">' +
           '<circle class="cc-hit" cx="' + pol(gt.ang, R)[0].toFixed(1) + '" cy="' + pol(gt.ang, R)[1].toFixed(1) + '" r="24"/>' +
           '<line class="ckp' + (on ? ' hold' : '') + '" x1="' + p1[0].toFixed(1) + '" y1="' + p1[1].toFixed(1) + '" x2="' + p2[0].toFixed(1) + '" y2="' + p2[1].toFixed(1) + '"/>' +
-          '<text class="cc-glab" x="' + lb[0].toFixed(1) + '" y="' + (lb[1] + 4).toFixed(1) + '" text-anchor="' + (k === 'g1' ? 'middle' : k === 'g2' ? 'end' : 'start') + '">' + gt.name.replace(' checkpoint', '') + ' check' + (on ? ': ' + F(held, 0) + ' held' : '') + '</text></g>');
+          '<text class="cc-glab" x="' + lb[0].toFixed(1) + '" y="' + (lb[1] + 4).toFixed(1) + '" text-anchor="' + (k === 'g1' ? 'middle' : k === 'g2' ? 'end' : 'start') + '">' + gt.name.replace(' checkpoint', '') + ' check' + (on && sel ? ': ' + F(held, 0) + ' held' : '') + '</text></g>');
       });
       var desc = (hide ? 'Mystery dish: ' : 'The cell cycle at ' + st.readT + ' h, ' + setText(o) + ': ') + pct(a.G0) + ' of cells in G0, ' + pct(a.G1) + ' in G1, ' + pct(a.S) + ' in S, ' + pct(a.G2) + ' in G2 and ' + pct(a.M) + ' in M, out of ' + grp(a.N) + ' cells. Held: ' + F(a.held1, 0) + ' at G1, ' + F(a.held2, 0) + ' at G2, ' + F(a.heldM, 0) + ' at M.';
-      fig.innerHTML = '<svg class="cc-fig cc-ring" viewBox="0 0 400 488" role="group" aria-label="' + esc(desc) + '">' + parts.join('') + '</svg>';
+      fig.innerHTML = '<svg class="cc-fig cc-ring" viewBox="0 0 400 ' + (CY + R + 50) + '" role="group" aria-label="' + esc(desc) + '">' + parts.join('') + '</svg>';
       fig.querySelectorAll('.cc-gatebtn').forEach(function(g){
         var go = function(){ pickGate(g.getAttribute('data-g')); };
         g.addEventListener('click', go);
@@ -214,7 +232,13 @@
       var h1 = Math.min(10, share(a.held1)), h2 = Math.min(10, share(a.held2)), hm = Math.min(16, share(a.heldM));
       var nG = { G1: share(a.G1 - a.held1), S: share(a.S), G2: share(a.G2 - a.held2), M: share(a.M - a.heldM) };
       dots = [];
-      SEG.forEach(function(sg){ var n = nG[sg[0]]; for(var i = 0; i < n; i++) dots.push({ seg: sg, u: (i + 0.5) / n }); });
+      // Cells with damaged DNA are drawn red, spread evenly through each phase; held cells are all damaged.
+      var dm = a.dam || { G0: 0, G1: 0, S: 0, G2: 0, M: 0 }, held = { G1: a.held1, G2: a.held2, M: a.heldM };
+      SEG.forEach(function(sg){
+        var n = nG[sg[0]], free = Math.max(0, (dm[sg[0]] || 0) - (held[sg[0]] || 0)), tot = a[sg[0]] - (held[sg[0]] || 0);
+        var md = tot > 0 ? Math.round(n * free / tot) : 0;
+        for(var i = 0; i < n; i++) dots.push({ seg: sg, u: (i + 0.5) / n, dam: Math.floor((i + 1) * md / n) > Math.floor(i * md / n) });
+      });
       var pile = function(k, n){ for(var i = 0; i < n; i++) dots.push({ gate: k, i: i }); };
       pile('g1', h1); pile('g2', h2); pile('m', hm);
       var g0 = Math.min(14, share(a.G0)); for(var j = 0; j < g0; j++) dots.push({ g0: j });
@@ -231,7 +255,7 @@
         if(d.seg){ var u = (d.u + tm * spin) % 1, ang = d.seg[1] + 2 + (d.seg[2] - d.seg[1] - 4) * u, q = pol(ang, R); x = q[0]; y = q[1]; }
         else if(d.gate){ var gt = GATES[d.gate], row = Math.floor(d.i / 4), col = d.i % 4, q2 = pol(d.gate === 'm' ? 10 : d.gate === 'g2' ? gt.ang - 16 : gt.ang - 5, R - 30 - row * 9); x = q2[0] + (col - 1.5) * 9; y = q2[1]; }
         else { x = CX - 30 + (d.g0 % 7) * 10; y = CY + 20 + Math.floor(d.g0 / 7) * 10; }
-        var c = '<g class="cc-cell' + (d.gate ? ' held' : '') + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (d.g0 != null ? 3.6 : 4.4) + '"/><circle class="n" cx="' + (x + 0.6).toFixed(1) + '" cy="' + (y - 0.4).toFixed(1) + '" r="' + (d.g0 != null ? 1.4 : 1.8) + '"/></g>';
+        var c = '<g class="cc-cell' + (d.gate ? ' held' : d.dam ? ' dam' : '') + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (d.g0 != null ? 3.6 : 4.4) + '"/><circle class="n" cx="' + (x + 0.6).toFixed(1) + '" cy="' + (y - 0.4).toFixed(1) + '" r="' + (d.g0 != null ? 1.4 : 1.8) + '"/></g>';
         if(d.g0 != null) out0.push(c); else out.push(c);
       });
       g.innerHTML = out.join(''); g0.innerHTML = out0.join('');
@@ -248,6 +272,7 @@
       gateSel = gateSel === k && mode === 'explore' ? null : k;
       if(mode === 'find'){ findPick(k); return; }
       gateBox.textContent = gateSel ? gateText(gateSel, last.a, last.o) : '';
+      if(gateSel && mutAuto && !mutBox.open){ mutAuto = false; mutBox.open = true; }
       fig.querySelectorAll('.cc-gatebtn').forEach(function(g){ var on = g.getAttribute('data-g') === gateSel; g.classList.toggle('sel', on); g.setAttribute('aria-pressed', String(on)); });
     }
 
@@ -374,5 +399,5 @@
     studio: { sim: true, modeLabels: { find: 'Diagnose' }, live: '.cc-gate', why: ['.cc-tip', '.bt-summary'], views: [{ sel: '.cc-plots', label: 'Graphs' }],
       hint: { target: '.cc-gatebtn', text: 'Tap a checkpoint on the ring' },
       pills: function(g){ return [{ k: 'Cells', html: g.ro(0), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'G1 / S / G2-M ' + g.ro(1), tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } });
 })();

@@ -61,3 +61,16 @@
 .cl-ruledot{fill:var(--hug-s2,#D55E00);stroke:var(--cl-tag);stroke-width:1.5;}
 .cl-sw.is-bar{background:var(--cl-z5);border-color:var(--cl-on);} .cl-sw.is-rule{border-radius:50%;background:var(--hug-s2,#D55E00);}
 .cl-lead{stroke:var(--cl-ink);stroke-width:1.2;fill:none;} .cl-leaddot{fill:var(--cl-ink);}
+/* City models, second pass (2026-11-10): numbers name their zone on tap;
+   one line under the drawing, the full key behind All zones. */
+.cl-num.is-tap{cursor:pointer;}
+.cl-num.is-cur circle{fill:#094953;stroke:var(--cl-tag);}
+.cl-z.is-cur{stroke:var(--cl-ink);stroke-width:3px !important;}
+.cl-zline{margin:0;display:flex;align-items:center;justify-content:center;gap:8px;font:700 15px/1.35 var(--font-ui);color:var(--cink);}
+.cl-zline.is-hint{font-weight:600;color:var(--muted);}
+.cl-zn{display:inline-block;width:26px;height:26px;border-radius:50%;background:#094953;color:#fff;font:800 13px/26px var(--font-ui);text-align:center;}
+.cl-zm{font-weight:600;color:var(--muted);}
+.cl-allz summary{cursor:pointer;font:700 13px/1.3 var(--font-ui);color:var(--muted);min-height:32px;display:flex;align-items:center;}
+.cl-allz[open] summary{margin-bottom:6px;}
+.cl-num.is-cur text{fill:#fff;}
+.cl-allz{text-align:center;} .cl-allz summary{justify-content:center;} .cl-allz .cl-keys{text-align:left;}

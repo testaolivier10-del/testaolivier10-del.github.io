@@ -203,16 +203,8 @@
       nums();
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
-        if(view === 'dose'){
-          LS.pills([{ k: 'Dose', html: dose + ' mg/kg', tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'Died', html: Math.round(resp(chem)) + '%', tone: resp(chem) >= 50 ? 'bad' : resp(chem) > 0 ? 'warn' : 'good' }], 'right', 'explore');
-        } else if(view === 'chain'){
-          LS.pills([{ k: 'Each step', html: '× ' + factor, tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'Bird', html: ppm(levels()[4]), tone: 'warn' }], 'right', 'explore');
-        } else {
-          LS.pills([{ k: 'Age', html: age + ' yr', tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'In its tissue', html: F(fishC(age), 2) + ' ppm', tone: fishC(age) > 0.3 ? 'warn' : 'good' }], 'right', 'explore');
-        }
+        // pass 2: every number a pill repeated is already on the picture (mice header, curve point, chain labels) or the slider
+        LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
       }
     }
     function doseWhy(){
@@ -422,13 +414,14 @@
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
       onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); },
       // a wrong reading is drawn on the curve beside where the answer lies
-      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); }
+      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   function figure(el, p, st){
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
     st = st || {};
-    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = phone ? 300 : 320, out = [], label = '';
+    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = phone ? 300 : T.figSize(600, 320, { max: 0.72 })[1], out = [], label = '';
     var L = 48, R = Wd - 16, top = 30, bot = H - 44;
     if(g.kind === 'curve'){
       var mx = g.points[g.points.length - 1][0], X = function(d){ return L + d / mx * (R - L); }, Y = function(v){ return bot - v / 100 * (bot - top); };

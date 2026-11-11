@@ -338,26 +338,38 @@
     var units = g.panels.reduce(function(a, p){ return a + (p.h || 1); }, 0);
     return { W: w, panel: total / units, key: w + 'x' + (side ? 's' : 'u') };
   }
+  /* A tall stack of panels on a wide screen (tool review 2026-11): drawn
+     420 wide with 210 px per panel, the Wiggers diagram fitted the stage
+     height at about a third of its width, with text near 6 px. A graph with
+     three or more panels (or as much height) is drawn wide and short instead,
+     about the stage's own shape, so it fills the width at its CSS text size. */
+  function wideShape(g, cats){
+    var units = g.panels.reduce(function(a, p){ return a + (p.h || 1); }, 0);
+    if(g.panels.length < 3 && units < 2.4) return null;
+    if(window.innerWidth < 1000) return null;
+    var w = 760, total = Math.round(w * 0.6) - MT - (cats ? 78 : 44) - GAP * (g.panels.length - 1);
+    return { W: w, panel: Math.max(60, total / units) };
+  }
   /* Build the chart. Returns { svg, layers, sx, sy(panel, y) }. */
   function chart(g){
     var X = g.x, cats = X.cats;
     var xmin = cats ? -0.5 : X.min, xmax = cats ? cats.length - 0.5 : X.max;
-    var ps = phoneShape(g, cats), panel = ps ? ps.panel : PANEL;
-    W = ps ? ps.W : 420; shapeKey = ps ? ps.key : '';
+    var ps = phoneShape(g, cats), wd = ps ? null : wideShape(g, cats), panel = ps ? ps.panel : wd ? wd.panel : PANEL;
+    W = ps ? ps.W : wd ? wd.W : 420; shapeKey = ps ? ps.key : '';
     // Phone: each y-axis title sits level above its panel (rotated, it ran
     // past a short panel), so the left margin only holds the tick numbers.
-    ML = ps ? 44 : 60; MT = ps ? 26 : 16;
+    ML = ps || wd ? 44 : 60; MT = ps || wd ? 26 : 16;
     var PW = W - ML - MR;
     var tops = [], hs = [], y = MT;
     // A phone panel keeps 16 px between its tick labels (and at least 36 px), even if the chart then runs taller than the stage.
-    g.panels.forEach(function(p, k){ var h = Math.round(panel * (p.h || 1)); if(ps) h = Math.max(h, 16 * Math.max(0, (p.y.ticks || []).length - 1) + 8, 36); tops.push(y); hs.push(h); y += h + GAP; });
+    g.panels.forEach(function(p, k){ var h = Math.round(panel * (p.h || 1)); if(ps || wd) h = Math.max(h, 16 * Math.max(0, (p.y.ticks || []).length - 1) + 8, 36); tops.push(y); hs.push(h); y += h + GAP; });
     var plotBottom = y - GAP;
     var MB = cats ? 78 : 44;
     var H = plotBottom + MB;
     function sx(x){ return ML + (x - xmin) / (xmax - xmin) * PW; }
     // y.reverse draws the axis top-down (min at the top), as on a clinical audiogram.
     function sy(k, v){ var p = g.panels[k].y; return p.reverse ? tops[k] + (v - p.min) / (p.max - p.min) * hs[k] : tops[k] + hs[k] - (v - p.min) / (p.max - p.min) * hs[k]; }
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'aria-label': g.alt, 'class': 'gr-svg' + (ps ? ' gr-ph' : '') });
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'aria-label': g.alt, 'class': 'gr-svg' + (ps ? ' gr-ph' : '') + (wd ? ' gr-wide' : '') });
     var L = {};
     ['bg', 'regions', 'hl', 'axes', 'series', 'overlay', 'labels', 'marks', 'cursor'].forEach(function(n){ L[n] = el('g', { 'class': 'gr-' + n }); svg.appendChild(L[n]); });
     var clipId = 'grclip-' + g.id;
@@ -398,7 +410,7 @@
         L.axes.appendChild(el('text', { x: ML - 7, y: sy(k, t) + 4, 'text-anchor': 'end', 'class': 'gr-tick' }, yf(t)));
       });
       var yt = ya.label + (ya.unit ? ' (' + ya.unit + ')' : '');
-      if(ps) L.axes.appendChild(el('text', { x: 4, y: top - (k ? 6 : 10), 'class': 'gr-axis-title' }, yt));
+      if(ps || wd) L.axes.appendChild(el('text', { x: 4, y: top - (k ? 6 : 10), 'class': 'gr-axis-title' }, yt));
       else L.axes.appendChild(el('text', { x: 14, y: top + h / 2, 'text-anchor': 'middle', transform: 'rotate(-90 14 ' + (top + h / 2) + ')', 'class': 'gr-axis-title' }, yt));
       (p.hlines || []).forEach(function(l){ hline(L.series, L.labels, k, l); });
       (p.bursts || []).forEach(function(b){
@@ -410,6 +422,7 @@
         L.series.appendChild(el('path', { d: d, 'class': 'accent line gr-line gr-burst' }));
         L.labels.appendChild(el('text', { x: sx(b.x1) + 5, y: sy(k, mid) + 4, 'class': 'gr-lbl gr-c-accent' }, b.label));
       });
+      if(g.look === 'tubes') tubes(k, p);
       (p.series || []).forEach(function(s){ series(L.series, L.labels, k, s); });
       (p.marks || []).forEach(function(m){ mark(L.marks, k, m, 'gr-mark'); });
       (p.notes || []).forEach(function(t){ L.labels.appendChild(el('text', { x: sx(t.x), y: sy(k, t.y), 'text-anchor': t.anchor || 'start', 'class': 'gr-note' }, t.text)); });
@@ -441,9 +454,38 @@
       L.labels.appendChild(el('text', { x: x - 4, y: MT + 4, 'text-anchor': 'end', transform: 'rotate(-90 ' + (x - 4) + ' ' + (MT + 4) + ')', 'class': 'gr-vlabel' }, v.label));
     });
 
+    /* look "tubes" (tool review 2026-11): each closed outline is a spun
+       capillary tube drawn as one, with the red-cell column inside it packed
+       at the bottom, a thin pale buffy coat on top of it and straw-yellow
+       plasma up to the blood line (the panel's first hline). The data's
+       outline and column lines still carry every reading; they are drawn
+       as the glass edge and the top of the red cells. */
+    function tubes(k, p){
+      var top = (p.hlines || [])[0], all = p.series || [];
+      all.forEach(function(s, i){
+        var q = s.pts, closed = q.length > 4 && q[0][0] === q[q.length - 1][0] && q[0][1] === q[q.length - 1][1];
+        if(!closed) return;
+        var xs = q.map(function(v){ return v[0]; }), ys = q.map(function(v){ return v[1]; });
+        var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y1 = Math.max.apply(null, ys);
+        var red = all.filter(function(r){ return r !== s && r.pts.every(function(v){ return v[0] >= x0 && v[0] <= x1; }); })[0];
+        var rTop = red ? Math.max.apply(null, red.pts.map(function(v){ return v[1]; })) : 0, blood = top ? top.y : y1;
+        var L0 = sx(x0), R0 = sx(x1), w = R0 - L0, bot = sy(k, 0), rad = Math.min(8, w / 2);
+        var tid = 'grtube-' + g.id + '-' + k + '-' + i, cl = el('clipPath', { id: tid });
+        cl.appendChild(el('path', { d: 'M' + L0 + ',' + sy(k, y1) + ' V' + (bot - rad) + ' Q' + L0 + ',' + bot + ' ' + (L0 + rad) + ',' + bot + ' H' + (R0 - rad) + ' Q' + R0 + ',' + bot + ' ' + R0 + ',' + (bot - rad) + ' V' + sy(k, y1) + ' Z' }));
+        defs.appendChild(cl);
+        var gT = el('g', { 'clip-path': 'url(#' + tid + ')', 'class': 'gr-tube' });
+        gT.appendChild(el('rect', { x: L0, y: sy(k, y1), width: w, height: bot - sy(k, y1), 'class': 'gr-tube-air' }));
+        gT.appendChild(el('rect', { x: L0, y: sy(k, blood), width: w, height: Math.max(0, sy(k, rTop) - sy(k, blood)), 'class': 'gr-tube-plasma' }));
+        gT.appendChild(el('rect', { x: L0, y: sy(k, rTop), width: w, height: Math.max(0, bot - sy(k, rTop)), 'class': 'gr-tube-red' }));
+        if(rTop > 0) gT.appendChild(el('rect', { x: L0, y: sy(k, rTop) - 1.6, width: w, height: 2.4, 'class': 'gr-tube-buffy' }));
+        gT.appendChild(el('rect', { x: L0 + w * 0.16, y: sy(k, y1) + 3, width: Math.max(2, w * 0.1), height: bot - sy(k, y1) - 8, rx: 2, 'class': 'gr-tube-shine' }));
+        L.bg.appendChild(gT);
+        s.glass = true; if(red) red.cells = true;
+      });
+    }
     function series(into, labels, k, s){
       var pts = s.pts.map(function(p){ return [sx(p[0]), sy(k, p[1])]; });
-      var path = el('path', { d: pathD(pts, s.curve === 'smooth'), 'class': s.cls + ' line gr-line' + (s.dash ? ' gr-dash' : ''), 'clip-path': 'url(#' + clipId + '-' + k + ')', 'data-sid': k + ':' + s.id });
+      var path = el('path', { d: pathD(pts, s.curve === 'smooth'), 'class': s.cls + ' line gr-line' + (s.dash ? ' gr-dash' : '') + (s.glass ? ' gr-glass' : '') + (s.cells ? ' gr-cells' : ''), 'clip-path': 'url(#' + clipId + '-' + k + ')', 'data-sid': k + ':' + s.id });
       into.appendChild(path);
       var lbl = null;
       if(s.label && s.labelAt) labels.appendChild(lbl = el('text', { x: sx(s.labelAt[0]), y: sy(k, s.labelAt[1]), 'text-anchor': s.anchor || 'start', 'class': 'gr-lbl gr-c-' + s.cls, 'data-sid': k + ':' + s.id }, s.label));
@@ -457,12 +499,12 @@
     }
     function mark(into, k, m, cls){
       into.appendChild(el('circle', { cx: sx(m.x), cy: sy(k, m.y), r: 5, 'class': cls }));
-      if(m.label) into.appendChild(el('text', { x: sx(m.x) + 8, y: sy(k, m.y) - 7, 'class': 'gr-lbl gr-c-accent' }, m.label));
+      if(m.label) into.appendChild(el('text', { x: sx(m.x) + 8, y: sy(k, m.y) - 7, 'class': 'gr-lbl gr-c-accent gr-mlabel', 'data-px': sx(m.x), 'data-py': sy(k, m.y) }, m.label));
     }
     function region(into, labels, r, cls){
       var x0 = sx(r.x0), x1 = sx(r.x1);
       into.appendChild(el('rect', { x: x0, y: MT, width: Math.max(2, x1 - x0), height: plotBottom - MT, 'class': cls }));
-      if(r.label) labels.appendChild(el('text', { x: (x0 + x1) / 2, y: plotBottom - 6, 'text-anchor': 'middle', 'class': 'gr-rlabel' }, r.label));
+      if(r.label) labels.appendChild(el('text', { x: (x0 + x1) / 2, y: plotBottom - 6, 'text-anchor': 'middle', 'class': 'gr-rlabel', 'data-x0': x0, 'data-x1': x1 }, r.label));
     }
     return {
       svg: svg, L: L, sx: sx, sy: sy, tops: tops, hs: hs, plotBottom: plotBottom, H: H, xmin: xmin, xmax: xmax,
@@ -557,7 +599,7 @@
     function drawCursor(){
       var L = c.L.cursor;
       while(L.firstChild) L.removeChild(L.firstChild);
-      if(!cursorOn || cursorX == null) return;
+      if(!cursorOn || cursorX == null){ c.svg.querySelectorAll('text.gr-lbl.gr-under[data-sid]').forEach(function(t){ t.classList.remove('gr-under'); }); return; }
       var px = c.sx(cursorX);
       /* Cursor (visual polish 2026-10): a hairline with a drag handle on top,
          a guide from each reading to the y axis, and a value pill per reading;
@@ -568,6 +610,7 @@
         var shiftedOf = {};
         if(active) (active.overlay.series || []).forEach(function(os){ var b = GM.pairOf(g, os); if((os.panel || 0) === k && b) shiftedOf[b.id] = os; });
         visibleSeries(k).forEach(function(s){
+          if(s.glass) return;
           readAt(s, cursorX).forEach(function(y){
             if(y < Math.min(p.y.min, p.y.max) - 1e-9 || y > Math.max(p.y.min, p.y.max) + 1e-9) return;
             var cy = c.sy(k, y);
@@ -586,6 +629,14 @@
       var right = px < ML + (W - ML - MR) * 0.62, boxes = [];
       pts.sort(function(a, b){ return a.cy - b.cy; });
       var lastY = -1e9;
+      /* A phone's short panels: when the pills would have to stack away from their points (onto the axis
+         titles and the next panel), the dots stay and the values are read in the list under the chart. */
+      var crowd = false;
+      if(shapeKey){ var ly = -1e9; pts.forEach(function(q){ var yy = Math.max(q.cy, ly + 20); if(yy - q.cy > 6) crowd = true; ly = yy; }); }
+      /* Pass 2 (2026-11-10): at most two numbers on the picture. With three or more readings (the Wiggers
+         diagram, the cycle hormones) the dots stay and the values are read in the list under the chart. */
+      if(pts.length > 2) crowd = true;
+      if(crowd) pts = [];
       pts.forEach(function(q){
         var txt = fmt(q.y) + unitText(unitY(q.k)), w = txt.length * (shapeKey ? 7.3 : 6.6) + 12, y = Math.max(q.cy, lastY + 20); lastY = y;
         var x = right ? px + 12 : px - 12 - w;
@@ -597,11 +648,54 @@
          line so both stay readable. (This used to measure an
          x readout tag that no longer exists, so it never ran.) */
       try{
+        // a valve or event label under a pill steps back (it is still on the line, faint)
+        c.svg.querySelectorAll('.gr-vlabel').forEach(function(t){
+          var b = t.getBBox(), m = t.getCTM && t.getCTM(), r = b;
+          if(t.getAttribute('transform')){ var cx = +t.getAttribute('x'), cy = +t.getAttribute('y'); r = { x: cx - b.height, y: cy, width: b.height + 2, height: b.width }; }
+          var hit = boxes.some(function(tb){ return r.x < tb.x + tb.width && tb.x < r.x + r.width && r.y < tb.y + tb.height && tb.y < r.y + r.height; });
+          t.classList.toggle('gr-under', hit);
+        });
+        /* Accuracy check 2 (2026-11-11): a curve's name under a value pill steps back (faint), like a valve
+           label; the pill wears the curve's colour, so which curve it reads stays clear. */
+        c.svg.querySelectorAll('text.gr-lbl[data-sid]').forEach(function(t){
+          var b = t.getBBox();
+          t.classList.toggle('gr-under', boxes.some(function(tb){ return b.x < tb.x + tb.width && tb.x < b.x + b.width && b.y < tb.y + tb.height && tb.y < b.y + b.height; }));
+        });
         c.svg.querySelectorAll('.gr-rlabel').forEach(function(t){
           t.removeAttribute('transform');
-          var b = t.getBBox();
-          var hit = boxes.some(function(tb){ return b.x < tb.x + tb.width + 2 && tb.x < b.x + b.width + 2 && b.y < tb.y + tb.height && tb.y < b.y + b.height; });
-          if(hit) t.setAttribute('transform', 'translate(0 -16)');
+          var b = t.getBBox(), rx0 = +t.getAttribute('data-x0'), rx1 = +t.getAttribute('data-x1');
+          var hitAt = function(dx, dy){ return boxes.some(function(tb){ return b.x + dx < tb.x + tb.width + 2 && tb.x < b.x + dx + b.width + 2 && b.y + dy < tb.y + tb.height && tb.y < b.y + dy + b.height; }); };
+          /* Pass 3: a region's name the cursor line runs through slides to the side with more room.
+             Accuracy check 2 (2026-11-11): only while the name stays over its own region (a narrow band like
+             "normal blood pH" keeps its name where it is), and the pill check runs after the slide: a name
+             under a value pill steps up a line, or two. */
+          var dx = 0;
+          if(b.x - 3 < px && px < b.x + b.width + 3){
+            var toR = px + 6 - b.x, toL = px - 6 - (b.x + b.width);
+            var fits = function(d){ return b.x + d >= rx0 - 2 && b.x + b.width + d <= rx1 + 2 && b.x + d >= ML && b.x + b.width + d <= W - MR; };
+            var first = (px + 6 + b.width <= W - MR) && (px - 6 - b.width < ML || (W - MR - px) >= (px - ML)) ? toR : toL, second = first === toR ? toL : toR;
+            dx = fits(first) ? first : fits(second) ? second : 0;
+          }
+          var dy = 0;
+          while(dy > -48 && hitAt(dx, dy)) dy -= 16;
+          if(dx || dy) t.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + dy + ')');
+        });
+        /* Pass 3: a marked point's label ("7.4: 40") under the cursor's value pill or dot moves to the left of
+           its point, then below it; if both are covered it steps back (faint), like a valve label. */
+        var dots = pts.map(function(q){ return { x: px - 10, y: q.cy - 10, width: 20, height: 20 }; });
+        var obst = boxes.concat(dots);
+        var hits = function(r){ return obst.some(function(tb){ return r.x < tb.x + tb.width + 2 && tb.x < r.x + r.width + 2 && r.y < tb.y + tb.height + 1 && tb.y < r.y + r.height + 1; }); };
+        c.svg.querySelectorAll('.gr-mlabel').forEach(function(t){
+          var mx = +t.getAttribute('data-px'), my = +t.getAttribute('data-py');
+          t.setAttribute('x', mx + 8); t.setAttribute('y', my - 7); t.removeAttribute('text-anchor'); t.classList.remove('gr-under'); t.classList.remove('gr-gone');
+          // the cursor on the marked point itself: its pill reads the same place, so the mark's label waits
+          if(Math.abs(mx - px) < 4 && pts.some(function(q){ return Math.abs(q.cy - my) < 6; })){ t.classList.add('gr-gone'); return; }
+          if(!hits(t.getBBox())) return;
+          t.setAttribute('x', mx - 14); t.setAttribute('text-anchor', 'end');
+          if(!hits(t.getBBox())) return;
+          t.setAttribute('x', mx); t.setAttribute('y', my + 24); t.setAttribute('text-anchor', 'middle');
+          if(!hits(t.getBBox())) return;
+          t.setAttribute('x', mx + 8); t.setAttribute('y', my - 7); t.removeAttribute('text-anchor'); t.classList.add('gr-under');
         });
       }catch(e){}
     }
@@ -736,10 +830,15 @@
           var u = unitY(k);
           visibleSeries(k).forEach(function(s){
             if(active && (active.overlay.series || []).indexOf(s) > -1) return;
+            if(s.glass) return;   // a tube's outline is not a reading
             var ys = readAt(s, x), shifted = null;
             if(active) (active.overlay.series || []).forEach(function(os){ if((os.panel || 0) === k && GM.pairOf(g, os) === s) shifted = os; });
+            /* A curve that does not reach the cursor gets no row (tool review 2026-11: eight rows, most
+               "not on the graph here"), unless a What if moved it; one row says so if nothing is here. */
+            if(!ys.length && !shifted) return;
             var v = ys.length ? ys.map(function(y){ return fmt(y); }).join(' and ') + unitText(u) : '<span class="gr-na">not on the graph here</span>';
-            var row = '<li><span class="gr-sw gr-sw-' + esc(s.cls) + '" aria-hidden="true"></span><span class="gr-rl">' + esc(s.label || p.y.label) + '</span><b class="gr-rv">' + v + '</b>';
+            var name = s.label || ((p.series || []).filter(function(o){ return o.label && o.cls === s.cls; })[0] || {}).label || p.y.label;
+            var row = '<li><span class="gr-sw gr-sw-' + esc(s.cls) + '" aria-hidden="true"></span><span class="gr-rl">' + esc(name) + '</span><b class="gr-rv">' + v + '</b>';
             if(shifted){
               var ns = readAt(shifted, x);
               var nv = ns.length ? ns.map(function(y){ return fmt(y); }).join(' and ') + unitText(u) : '—';
@@ -755,6 +854,7 @@
             rows.push('<li><span class="gr-sw gr-sw-dash gr-sw-' + esc(os.cls) + '" aria-hidden="true"></span><span class="gr-rl">' + esc(os.label) + '</span><b class="gr-rv">' + (ns.length ? ns.map(function(y){ return fmt(y); }).join(' and ') + unitText(u) : '—') + '</b></li>');
           });
         });
+        if(!rows.length) rows.push('<li class="gr-none"><span class="gr-na">No curve here: move along to read one.</span></li>');
         var where = (g.regions || []).filter(function(r){ return r.label && x >= r.x0 - 1e-9 && x <= r.x1 + 1e-9; }).map(function(r){ return r.label; });
         readEl.innerHTML = '<p class="gr-at"><span class="anp-small">At ' + esc(g.x.label) + '</span> <b>' + esc(xText(x)) + '</b>' +
           (where.length ? ' <span class="gr-where">' + esc(where.join(' · ')) + '</span>' : '') + '</p><ul class="gr-rows">' + rows.join('') + '</ul>';
@@ -773,7 +873,7 @@
             var at = keyX(q);
             if(at != null) setCursor(at); else readout(cursorX);
             whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p>' + (K() ? K().why('<p>' + html(q.why.correct) + '</p>', { open: !!S }) : '<p>' + html(q.why.correct) + '</p>');
-            if(S) S.caption('<b>' + esc(condLabel(q)) + ':</b> the dashed curve is where it goes. Tap Why? for the reason.', 'explore');
+            if(S) S.caption('<b>' + esc(condLabel(q)) + ':</b> ' + ((q.overlay.series || []).length ? 'the dashed curve is where it goes' : 'the marked point shows where it goes') + '. Tap Explanation for the reason.', 'explore');
           } else { clearCond(); readout(cursorX); whyEl.innerHTML = ''; if(S) S.caption(Q().querySelector('.gr-first').innerHTML, 'explore'); }
         });
       });

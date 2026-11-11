@@ -385,7 +385,7 @@
       // A scene too small for its readout (a phone on its side) moves it to the caption.
       var tiny = sk > 2.4;
       var rd = tiny ? '' : '<g class="eb-read' + (big ? ' is-big' : '') + '" aria-hidden="true">' + lines.map(function(t, k){ return '<text x="' + rx + '" y="' + n(y1 + k * lh) + '" text-anchor="' + an + '">' + t + '</text>'; }).join('') +
-        (big ? '' : '<text class="eb-read-t" x="' + rx + '" y="' + (24 + lines.length * lh) + '" text-anchor="' + an + '">t = ' + F1(st.t, 1) + ' s</text>') + '</g>';
+        '</g>';   // pass 2: two live numbers on the picture (v and h); the time is in the scene's label and Numbers
       $('.eb-scene').innerHTML = S.svg(VW, SIZE[scene], sceneLabel(st), '<g class="eb-static">' + staticHtml + '</g>' + dynamicScene(st) + rd);
       $('.eb-bars').innerHTML = drawBars(idx);
       kfit($('.eb-stage'));

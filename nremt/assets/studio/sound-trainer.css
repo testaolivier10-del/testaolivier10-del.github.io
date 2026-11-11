@@ -116,3 +116,6 @@
 .nx-sound-trainer .st-qgroup button[aria-pressed=true]{background:var(--cink);color:var(--white);box-shadow:none;}
 .nx-sound-trainer .st-qgroup button span{opacity:.7;margin-left:3px;}
 .nx-sound-trainer .st-qchest{display:block;width:84px;height:84px;margin:0 auto -6px;opacity:.9;}
+
+/* Pass 3: the beat strip waits for the first Play. */
+.nx-sound-trainer .st-side:not(.st-played) .st-strip[data-strip="a"]{display:none;}

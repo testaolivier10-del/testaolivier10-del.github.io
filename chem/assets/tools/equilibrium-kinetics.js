@@ -276,6 +276,10 @@
       log(); draw();
     };
     s.setCat = function(on){ s.cat = !!on; };
+    /* The record of a mixture that has sat at equilibrium for sec seconds, so
+       the graph opens on flat lines across time, not two stubs (pass 3). Only
+       the time axis is filled in: the amounts are the ones the vessel holds. */
+    s.warm = function(sec){ hist.length = 0; for(var j = 0; j <= sec * 10; j++){ s.t = j / 10; log(); } };
     s.reset = function(){ s.T = rx.T[2]; s.V = rx.V[2]; s.cat = false; settle(); s.t = 0; hist.length = 0; marks.length = 0; seed(); log(); draw(); };
     /* A stress as the quiz and the challenges name it. */
     s.apply = function(stress){
@@ -297,7 +301,7 @@
 
   /* ------------------------------------------------------- pictures */
   function graphSvg(s, w, h){
-    var M = window.ApChemMath, sp = s.rx.species, hist = s.hist, L = 44, R = 10, Tp = 12, B = 34, pw = w - L - R, ph = h - Tp - B;
+    var M = window.ApChemMath, sp = s.rx.species, hist = s.hist, L = 54, R = 10, Tp = 12, B = 34, pw = w - L - R, ph = h - Tp - B;
     if(!hist.length) return '';
     var t1 = Math.max(10, hist[hist.length - 1][0]), t0 = Math.max(0, t1 - 30);
     var vis = hist.filter(function(r){ return r[0] >= t0; });
@@ -359,9 +363,10 @@
     var span = 3, pos = function(l){ return Math.max(0, Math.min(100, 50 + (l - lk) / span * 50)); };
     var qp = lq == null ? (q === Infinity ? 100 : 0) : pos(lq), close = lq != null && Math.abs(lq - lk) < 0.0022;
     var dir = close ? 'At equilibrium: Q = K' : lq != null && lq < lk ? 'Q < K: net forward →' : '← Q > K: net reverse';
+    // The verdict is not repeated under the gauge: the caption says it.
     return '<div class="ek-gauge" role="img" aria-label="' + T.esc('Q = ' + (isFinite(q) ? M.fmt(q, 3) : 'infinite') + ', K = ' + M.fmt(K, 3) + '. ' + dir) + '">' +
       '<div class="ek-gtrack"><span class="ek-gk" style="left:50%"><b>K</b></span><span class="ek-gq' + (close ? ' is-eq' : '') + '" style="left:' + qp.toFixed(1) + '%"><b>Q</b></span></div>' +
-      '<p class="ek-gdir">' + dir + '</p></div>';
+      '</div>';
   }
 
   /* ------------------------------------------------------------ explore */
@@ -397,6 +402,7 @@
       sim = Sim(rx, {}); sim.speed = +spd.value();
       host.__sim = sim;   // for the browser checks (events at equilibrium)
       sim.attach(cnv);
+      sim.warm(6);
       // The tail magnification: the power of ten that makes the tail above
       // Ea at the starting temperature about a quarter of the peak height.
       var T0 = rx.T[2], pk = E.mb(8.314 * T0 / 2000, T0), tl = E.mb(rx.Ea * 1.02, T0);
@@ -415,10 +421,10 @@
       ch = null; $('.ek-chalbox').hidden = true;
       paint(); explainNow('');
     }
-    $('.ek-cat').addEventListener('click', function(){ sim.setCat(!sim.cat); this.setAttribute('aria-pressed', String(sim.cat)); this.textContent = sim.cat ? 'Remove the catalyst' : 'Add a catalyst'; if(sim.cat) sim.mark('catalyst'); after('cat'); });
+    $('.ek-cat').addEventListener('click', function(){ sim.setCat(!sim.cat); this.setAttribute('aria-pressed', String(sim.cat)); this.textContent = sim.cat ? 'Remove the catalyst' : 'Add a catalyst'; if(sim.cat) sim.mark('catalyst'); after('cat'); if(LS) LS.close(); });
     $('.ek-play').addEventListener('click', function(){ sim.play = !sim.play; this.setAttribute('aria-pressed', String(sim.play)); this.textContent = sim.play ? '❚❚ Pause' : '▶ Play'; });
-    $('.ek-reset').addEventListener('click', function(){ sim.reset(); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst'; explainNow(''); paint(); });
-    $$('.ek-tab').forEach(function(b){ b.addEventListener('click', function(){ tab = b.getAttribute('data-v'); paint(); }); });
+    $('.ek-reset').addEventListener('click', function(){ sim.reset(); sim.warm(6); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst'; explainNow(''); paint(); });
+    $$('.ek-tab').forEach(function(b){ b.addEventListener('click', function(){ tab = b.getAttribute('data-v'); paint(); if(LS) LS.close(); }); });
     $('.ek-chal').addEventListener('click', challenge);
 
     var lastNote = '';
@@ -460,7 +466,8 @@
       // On a phone the graph takes what is left of the stage, so nothing in
       // the stage scrolls; on a desktop it keeps a 2:1 shape.
       var stg = LS && narrow ? LS.root.querySelector('.ls-stage') : null, room = stg ? stg.getBoundingClientRect().bottom - bb.top - 26 : 0;
-      var w = Math.max(280, Math.round(bb.width || 520)), h = narrow ? Math.max(150, Math.min(240, Math.round(room || 170))) : Math.max(170, Math.min(280, Math.round(w * 0.5)));
+      // On the wide stage the graph fills the height its row has.
+      var w = Math.max(280, Math.round(bb.width || 520)), h = narrow ? Math.max(150, Math.min(240, Math.round(room || 170))) : LS && bb.height > 200 ? Math.min(Math.round(w * 1.1), Math.round(bb.height) - 4) : Math.max(170, Math.min(280, Math.round(w * 0.5)));
       if(tab === 'graph') box.innerHTML = graphSvg(sim, w, h);
       else if(tab === 'mb'){ var m = mbSvg(sim, w, h - 22, mag); box.innerHTML = '<p class="ek-share">At least E<sub>a</sub>: <b>' + M.fmt(m.share, 2) + '</b> of molecules' + (Math.abs(m.share / m.share0 - 1) > 0.02 ? ' (×' + M.fmt(m.share / m.share0, 2) + ' vs ' + rx.T[2] + ' K' + (sim.cat ? ' without catalyst' : '') + ')' : '') + '</p>' + m.svg; }
       else box.innerHTML = ratesHtml(r);
@@ -488,7 +495,8 @@
     /* Challenge me: a random stress; predict the shift first, then it runs. */
     function challenge(){
       var ctx = data.contexts.filter(function(c){ return c.reaction === rx.id; })[0], r = M.rng(Date.now() % 100000);
-      sim.reset(); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst';
+      if(LS) LS.close();
+      sim.reset(); sim.warm(6); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst';
       var p = E.generate(r, ctx, rx), dirStep = p.steps[1];
       ch = { p: p, running: false };
       var box = $('.ek-chalbox'); box.hidden = false;
@@ -518,16 +526,29 @@
       box.querySelector('.ek-again').addEventListener('click', challenge);
     }
     function studioDraw(q, K, dir){
-      var wide = (window.innerWidth || 1000) >= 1000;
-      LS.pills([{ k: 'Q', html: isFinite(q) ? M.fmt(q, 3) : '∞', tone: 'readout' }, { k: 'K', html: M.fmt(K, 3), tone: 'ghost' }].concat(wide ? [{ k: 'T', html: Math.round(sim.T) + ' K', tone: 'ghost' }] : []), 'left', 'explore');
-      LS.pills([dir === 'eq' ? { html: 'Q = K', tone: 'good' } : dir === 'f' ? { html: 'Forward →', tone: 'accent' } : { html: '← Reverse', tone: 'warn' }], 'right', 'explore');
-      SP.setup(rx.id === 'n2o4' ? 'N₂O₄ ⇌ 2 NO₂' : 'H₂ + I₂ ⇌ 2 HI');
+      // Pass 2: two live numbers on the picture, Q and K (the gauge shows
+      // which is bigger; the caption says what that means; T is on its slider).
+      LS.pills([{ k: 'Q', html: isFinite(q) ? M.fmt(q, 3) : '∞', tone: 'readout' }, { k: 'K', html: M.fmt(K, 3), tone: 'ghost' }], 'left', 'explore');
+      LS.pills([], 'right', 'explore');
+      SP.setup('Catalyst, challenge, graphs');
     }
     function studio(pane, s){
       LS = s;
-      var chal = $('.ek-chal'); chal.classList.add('ls-btn', 'ls-pri');
-      SP = T.studioPane(pane, s, { stage: [$('.ek-eq'), $('.ek-stage')], dock: [$('.ek-temp'), $('.ek-amts'), $('.ek-btns'), chal, $('.ek-chalbox')], setup: 'Volume, reaction', moreLabel: 'Volume, another reaction, speed of time, start over, sources',
-        why: [$('.ek-why')], details: [$('.ek-vol'), $('.ek-nums')] });
+      // Pass 2: the dock is the temperature, the amounts, the catalyst and
+      // the challenge (one primary control, the slider); Pause moves to
+      // Details beside the speed of time.
+      var chal = $('.ek-chal'); chal.classList.add('ls-btn'); chal.classList.remove('btn-press', 'sm'); chal.classList.add('bt-btn');
+      $('.ek-speed').appendChild($('.ek-play'));
+      /* Pass 3: the dock is the temperature and the amounts (and a running
+         challenge's question); the catalyst, Challenge me and the graph
+         chooser (concentrations, collision energies, rates) are one tap away
+         in Details, above the volume. Picking one closes the sheet so the
+         change is seen on the stage. */
+      var acts = document.createElement('div'); acts.className = 'ek-acts';
+      var ah = document.createElement('h3'); ah.className = 'ls-title-l'; ah.textContent = 'Try';
+      acts.appendChild(ah); acts.appendChild($('.ek-cat')); acts.appendChild(chal);
+      SP = T.studioPane(pane, s, { stage: [$('.ek-eq'), $('.ek-stage')], dock: [$('.ek-temp'), $('.ek-amts'), $('.ek-chalbox')], setup: 'More', moreLabel: 'Another reaction, speed of time, pause, start over, sources',
+        why: [$('.ek-why')], details: [acts, $('.ek-tabs'), $('.ek-vol'), $('.ek-nums')] });
       explainNow('');
       paint();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ek-temp input[type=range]'), text: 'Drag to heat or cool' });
@@ -548,16 +569,20 @@
       extra: function(host, p, api){
         sims.forEach(function(s){ s.stop(); }); sims = [];
         var rx = data.reactions.filter(function(x){ return x.id === p.reaction; })[0];
-        host.innerHTML = '<figure class="cd-fig ek-qfig"><div class="ek-vessel"><canvas class="ek-canvas" role="img"></canvas></div><div class="ek-gaugebox"></div><div class="ek-plot"></div><figcaption class="bt-small ek-qcap">At equilibrium. The change is applied after your last answer.</figcaption></figure>';
+        host.innerHTML = '<figure class="cd-fig ek-qfig"><div class="ek-vessel"><canvas class="ek-canvas" role="img"></canvas></div><div class="ek-gaugebox"></div><div class="ek-plot" hidden></div><figcaption class="bt-small ek-qcap">At equilibrium. The change is applied after your last answer.</figcaption></figure>';
         var sim = Sim(rx, {}); sims.push(sim);
         sim.attach(host.querySelector('canvas'));
-        var paint = function(){ host.querySelector('.ek-gaugebox').innerHTML = gaugeHtml(sim); var b = host.querySelector('.ek-plot').getBoundingClientRect(); host.querySelector('.ek-plot').innerHTML = graphSvg(sim, Math.max(280, Math.round(b.width || 480)), 170); host.querySelector('canvas').setAttribute('aria-label', sim.describe()); };
+        var paint = function(){ host.querySelector('.ek-gaugebox').innerHTML = gaugeHtml(sim); var b = host.querySelector('.ek-plot').getBoundingClientRect(); host.querySelector('.ek-plot').innerHTML = graphSvg(sim, Math.max(280, Math.round(b.width || 480)), Math.max(150, Math.min(240, Math.round(b.height || 170)))); host.querySelector('canvas').setAttribute('aria-label', sim.describe()); };
         sim.on(paint); sim.start(); paint();
         api.sim = sim;
       },
       onStep: function(s, right, api){
         if(s.key !== 'rate' || !api.sim) return;
         api.sim.apply(api.problem.stress);
+        // The graph joins the vessel once the change is applied: before it,
+        // flat lines at equilibrium answer nothing (pass 2).
+        var plot = (api.area.closest('.ls-root') ? document : api.area).querySelector('.ek-qfig .ek-plot');
+        if(plot) plot.hidden = false;
         var cap = api.area.closest('.ls-root') ? document.querySelector('.ek-qcap') : api.area.querySelector('.ek-qcap');
         if(cap) cap.textContent = E.STRESS[api.problem.stress] + ': watch the mixture ' + (api.problem.dir === 'f' ? 'shift forward.' : api.problem.dir === 'r' ? 'shift in reverse.' : 'stay where it is.');
       }

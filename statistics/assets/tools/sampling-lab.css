@@ -13,7 +13,7 @@ body.stat{
   --sl-shirt0:#5A8CB8;--sl-shirt1:#C4694A;--sl-shirt2:#6E9D69;--sl-shirt3:#977AB0;
   --sl-skin0:#F2CBA8;--sl-skin1:#D9A47B;--sl-skin2:#A86F4A;--sl-skin3:#6D452F;
   --sl-hair0:#2D2420;--sl-hair1:#5A3A22;--sl-hair2:#8B6139;--sl-hair3:#1E1E23;
-  --sl-t0:#E3EEF7;--sl-t1:#BAD5EC;--sl-t2:#86B5DD;--sl-t3:#4A8FC6;--sl-t4:#1C5D97;
+  --sl-t0:#E3EEF7;--sl-t1:#BAD5EC;--sl-t2:#86B5DD;--sl-t3:#4A8FC6;--sl-t4:#1C5D97;--sl-roofv:#8C8A84;
   --sl-ink:#2A2D2C;
 }
 :root[data-theme="dark"] body.stat{
@@ -24,7 +24,7 @@ body.stat{
   --sl-grass:#1D281B;--sl-road:#383733;--sl-canal:#28567A;--sl-soil0:#8C7650;--sl-soil1:#4E3A2A;--sl-leaf:#6DB458;--sl-fruit:#F07858;
   --sl-floor:#202328;--sl-hall:#2A2E34;--sl-room:#1A1D21;--sl-roomk:#4C525B;--sl-board:#4E7A69;--sl-desk:#5B4B36;--sl-office:#283845;
   --sl-shirt0:#5C8DBA;--sl-shirt1:#C0704F;--sl-shirt2:#6B9B67;--sl-shirt3:#9A80B2;
-  --sl-t0:#1E3243;--sl-t1:#244868;--sl-t2:#2C6593;--sl-t3:#3F87C0;--sl-t4:#77BDEF;
+  --sl-t0:#1E3243;--sl-t1:#244868;--sl-t2:#2C6593;--sl-t3:#3F87C0;--sl-t4:#77BDEF;--sl-roofv:#5F6266;
   --sl-ink:#E6E8E7;--sl-halo:rgba(20,22,24,.75);
 }
 
@@ -40,6 +40,9 @@ body.stat{
 .sl-fig.is-wide .sl-side{justify-content:center;}
 .sl-fig.is-wide .sl-strip{flex-wrap:wrap;row-gap:4px;white-space:normal;mask-image:none;}
 .sl-fig.is-wide .sl-meansbox{height:min(62%,420px);}
+/* pass 3: no samples yet, so no empty dotplot: the neighborhood and its color key take the stage */
+.sl-fig.is-empty .sl-legend,.sl-fig.is-empty .sl-meansbox,.sl-fig.is-empty .sl-strip{display:none;}
+.sl-fig.is-empty.is-wide{display:flex;}
 .sl-legend{margin:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:700 calc(12px * var(--ls-scale, 1)) var(--font-ui);color:var(--muted);}
 .sl-legend span{display:inline-flex;align-items:center;gap:6px;}
 .sl-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;}
@@ -101,6 +104,20 @@ body.stat{
 .sl-tone-0 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t0);} .sl-tone-1 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t1);}
 .sl-tone-2 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t2);} .sl-tone-3 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t3);}
 .sl-tone-4 :is(.sl-wall,.sl-soil,.sl-shirt){fill:var(--sl-t4);}
+
+/* With the values shown the roofs go neutral, so the wall tone is the one color that carries meaning. */
+.sl-scene.is-values .sl-roof{fill:var(--sl-roofv);}
+.sl-scene.is-values.has-sample .sl-u:not(.is-pick){opacity:.55;}
+.sl-scene.is-values .sl-wall{stroke:var(--sl-ink);stroke-opacity:.45;}
+.sl-vkey{display:flex;align-items:center;flex-wrap:wrap;gap:4px 6px;font:700 13px var(--font-ui);color:var(--muted);}
+.sl-vkey[hidden]{display:none;}
+.sl-vk-t{color:var(--ink);font-weight:800;margin-right:2px;}
+.sl-fig.is-wide .sl-vk-t{flex-basis:100%;}
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-vkey{font-size:12px;gap:3px;flex-wrap:nowrap;white-space:nowrap;}
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-vk-s{width:14px;height:11px;}
+.sl-vk-n{font-variant-numeric:tabular-nums;}
+.sl-vk-s{display:inline-block;width:22px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,.18);}
+.sl-vk-0{background:var(--sl-t0);} .sl-vk-1{background:var(--sl-t1);} .sl-vk-2{background:var(--sl-t2);} .sl-vk-3{background:var(--sl-t3);} .sl-vk-4{background:var(--sl-t4);}
 
 /* Labels: on desktop and in Enlarge; a phone shows them only when enlarged. */
 .sl-lab{fill:var(--muted);font:800 12px var(--font-mono);}
@@ -214,3 +231,7 @@ body.stat{
 .sl-rk.sl-rg2::before{background:color-mix(in srgb,var(--stat-s4) 45%,var(--white));} .sl-rk.sl-rg3::before{background:color-mix(in srgb,var(--stat-s5) 40%,var(--white));}
 .sl-roster figcaption{padding:0 48px;}
 .sl-rh{font-size:17px;}
+
+/* pass 3: on a phone the dot colors are named by the plot itself (mu line, the orange dot is this sample),
+   so the three-item legend gives its row back to the neighborhood */
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-legend{display:none;}

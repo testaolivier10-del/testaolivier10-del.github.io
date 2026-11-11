@@ -184,7 +184,7 @@ export function modelEntries(dataDir, map) {
     const lim = c ? (c.limits.right || [])[0] : null;
     return { id, topic, chapter: t.chapter, name: c ? c.name : x.name, origin: c ? c.origin : x.origin || '', aside: c ? c.aside || '' : '', claim: c ? c.claim : x.claim,
       assumes: c ? c.assumes : x.assumes, limit: lim ? `${lim.t}. ${lim.why}` : x.limit, example: x.example, confuse: x.confuse || [],
-      model, figure: c && c.figure ? MS.figure(c.figure) : null, studio: !!c,
+      model, figure: c && c.figure ? MS.figure(c.figure, c.build ? model : null) : null, studio: !!c,
       key: model.slots.map((sl, i) => ({ n: i + 1, slot: R.Model.slotName(model, i), piece: (model.pieces.find(q => q.id === model.key[sl.id]) || {}).text })) };
   });
 }
@@ -192,9 +192,9 @@ function modelPicture(e, esc, artSvg) {
   if (!e.figure) return `<figure class="ms-fig ms-fig-art" data-layout="${esc(e.model.layout)}"><div class="ms-card"><div class="hug-model-art">${artSvg(e.model)}</div></div></figure>`;
   const f = e.figure, over = [];
   f.spots.forEach((list, i) => list.forEach(p => over.push(`<span class="ms-badge" style="left:${p[0]}%;top:${p[1]}%">${i + 1}</span>`)));
-  for (const l of f.labels || []) over.push(`<span class="ms-tag" style="left:${l.x}%;top:${l.y}%">${esc(l.text)}</span>`);
+  for (const l of f.labels || []) over.push(`<span class="ms-tag${l.cls ? ' ' + esc(l.cls) : ''}" style="left:${l.x}%;top:${l.y}%">${esc(l.text)}</span>`);
   const legend = (f.legend || []).length ? `<ul class="ms-legend">${f.legend.map(l => `<li><span class="ms-sw ms-sw-${esc(l.sw)}" aria-hidden="true"></span>${esc(l.text)}</li>`).join('')}</ul>` : '';
-  return `<figure class="ms-fig"><div class="ms-card"><div class="ms-pic">${f.svg}<div class="ms-over" aria-hidden="true">${over.join('')}</div></div>${legend}</div></figure>`;
+  return `<figure class="ms-fig"><div class="ms-card"><div class="ms-pic">${f.svg}<div class="ms-over" aria-hidden="true">${over.join('')}</div></div>${legend}${f.note ? `<p class="ms-note">${esc(f.note)}</p>` : ''}${f.alt ? `<p class="ms-note">${esc(f.alt.note)} ${esc(f.alt.noteAlt)}</p>` : ''}</div></figure>`;
 }
 
 export function entryPages(ctx) {
