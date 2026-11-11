@@ -47,6 +47,15 @@
 :root[data-theme="dark"] .calc-plot .sl-curlab,:root[data-theme="dark"] .calc-plot .sl-minelab{fill:#F590AC;}
 :root[data-theme="dark"] .calc-plot .sl-mine{stroke:#F590AC;}
 :root[data-theme="dark"] .calc-plot .sl-bound{stroke:#F29A5C;}
+/* many terms: S_N against N on a log axis, with the slow-growth guide (ln N or ln(ln n)) dashed in grey */
+.calc-plot .sl-path.is-log{stroke-width:2.2;stroke-opacity:.8;}
+.calc-plot .sl-guide{fill:none;stroke:#5B6472;stroke-width:1.8;stroke-dasharray:7 5;}
+.calc-plot .sl-guidelab{fill:#4A5361;font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.calc-plot .sl-p10{fill:#B0123A;font:700 11.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+:root[data-theme="dark"] .calc-plot .sl-guide{stroke:#AEB6C2;}
+:root[data-theme="dark"] .calc-plot .sl-guidelab{fill:#C9CFD8;}
+:root[data-theme="dark"] .calc-plot .sl-p10{fill:#F590AC;}
+.sl-x10{align-self:flex-start;}
 
 /* the number line */
 .sl-line .sl-nl{stroke:var(--ink);stroke-width:1.6;}

@@ -214,6 +214,10 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
     BC copies of AB free-response questions name the AB page as canonical and leave the sitemap (as BC's AB topics).
     `onSale: false` stays until the owner checklist below. The "not yet reviewed by an AP® Calculus BC teacher" note
     stays; no score calculator, readiness band or Beta label. AB's build byte-identical.
+- (2026-11-10, tool review fix) Series lab: the Terms slider goes past 40 by powers of ten (10², 10³ ... 10⁶,
+    plus a "×10 terms" button); past 40 the chart is S_N against N on a log axis, each power of ten labeled, with
+    ln N + γ (1/n) or ln(ln n) + C (1/(n ln n), C fitted at 10⁶) dashed as a guide, so a slow divergence is seen to
+    keep climbing and a convergent series to stay at its sum. Up to 40 the bars view is unchanged.
 
 ## 9. Open items for the owner
 
