@@ -60,6 +60,13 @@ test('forex-lab: numbers are their recipes; the axis and the mirror market are r
     assert.ok(Math.abs((eX[1] - 5) + (eY[1] - 5)) < 1e-9, `${s.id}: mirror price`);
     assert.equal(Math.sign(eX[1] - 5), model.value(s.curve, s.dir), `${s.id}: value`);
   }
+  // The stage's capital lane: capital follows the higher real return; goods changes move none.
+  assert.equal(model.capital('rate-h'), 'in'); assert.equal(model.capital('mp-h-tight'), 'in'); assert.equal(model.capital('deficit-h'), 'in');
+  assert.equal(model.capital('rate-h-down'), 'less'); assert.equal(model.capital('mp-h-easy'), 'less');
+  assert.equal(model.capital('rate-f'), 'out'); assert.equal(model.capital('mp-f-tight'), 'out');
+  for (const s of model.SHOCKS) if (s.set === 'goods') assert.equal(model.capital(s.id), null, s.id);
+  // A price-level change: the other curve pushes the same way (both in the caption).
+  for (const id of ['prices-h', 'prices-f']) assert.match(model.shock(id).also(model.CUR.euro, model.CUR.dollar, 'euro', 'dollar'), id === 'prices-h' ? /depreciates/ : /appreciates/);
   for (const p of model.PAIRS) assert.ok(p[2].length >= 3 && p[3].length >= 3 && model.CUR[p[0]] && model.CUR[p[1]], p.join(' '));
   // The drills use invented countries and currencies (authoring guide, "Invented countries").
   for (const p of model.DRILL_PAIRS) assert.ok(p[2].length >= 3 && p[3].length >= 3 && model.DRILL_CUR[p[0]] && model.DRILL_CUR[p[1]], p.join(' '));

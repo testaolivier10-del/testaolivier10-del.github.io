@@ -13,7 +13,10 @@
    Xs is more supply of Ys), so X appreciates exactly when Y depreciates.
 
      CUR, PAIRS                the currencies and the pairs drills use
-     SHOCKS                    { id, set, curve, dir, group, label, text(H,F,X,Y), because, link }
+     SHOCKS                    { id, set, curve, dir, group, label, text(H,F,X,Y), because, link,
+                               also (the price-level changes: the other curve's push the same way) }
+     capital(id)               policy changes: 'in' (more capital into H), 'less' (less into H),
+                               'out' (out of H into F); goods changes: null
      mirror(curve)             D <-> S
      value(curve, dir)         +1 X appreciates, -1 depreciates
      rate(base, y)             the price of X shown at height y (display only)
@@ -94,10 +97,12 @@
       l: function(H, F, X, Y){ return H.people + ' sell ' + pl(X) + ' to buy the ' + pl(Y) + ' they pay with, so the supply of ' + pl(X) + ' shifts right.'; } },
     { id: 'prices-h', set: 'goods', curve: 'D', dir: -1, group: 'Price levels', label: 'Its price level rises faster',
       t: function(H, F){ return 'The price level in ' + H.place + ' rises faster than in ' + F.place + ', so ' + F.people + ' buy fewer of the now pricier ' + H.adj + ' goods.'; }, because: 'relatively higher prices at home',
-      l: function(H, F, X){ return F.people + ' need fewer ' + pl(X) + ', so the demand for ' + pl(X) + ' shifts left.'; } },
+      l: function(H, F, X){ return F.people + ' need fewer ' + pl(X) + ', so the demand for ' + pl(X) + ' shifts left.'; },
+      also: function(H, F, X){ return 'At the same time ' + H.people + ' buy more of the now relatively cheaper ' + F.adj + ' goods, which shifts the supply of ' + pl(X) + ' right. Either way the ' + X + ' depreciates.'; } },
     { id: 'prices-f', set: 'goods', curve: 'S', dir: -1, group: 'Price levels', label: 'Prices rise faster abroad',
       t: function(H, F){ return 'The price level in ' + F.place + ' rises faster than in ' + H.place + ', so ' + H.people + ' buy fewer of the now pricier ' + F.adj + ' goods.'; }, because: 'relatively higher prices abroad',
-      l: function(H, F, X){ return H.people + ' sell fewer ' + pl(X) + ', so the supply of ' + pl(X) + ' shifts left.'; } },
+      l: function(H, F, X){ return H.people + ' sell fewer ' + pl(X) + ', so the supply of ' + pl(X) + ' shifts left.'; },
+      also: function(H, F, X){ return 'At the same time ' + F.people + ' buy more of the now relatively cheaper ' + H.adj + ' goods, which shifts the demand for ' + pl(X) + ' right. Either way the ' + X + ' appreciates.'; } },
     { id: 'tourism', set: 'goods', curve: 'D', dir: 1, group: 'Tastes', label: 'More foreign tourists visit',
       t: function(H, F){ return 'More tourists from ' + F.place + ' spend their holidays in ' + H.place + '.'; }, because: 'more foreign tourists',
       l: function(H, F, X){ return 'Tourists pay in ' + pl(X) + ', so the demand for ' + pl(X) + ' shifts right.'; } },
@@ -124,6 +129,11 @@
       l: function(H, F, X, Y){ return H.adj + ' investors sell ' + pl(X) + ' for ' + pl(Y) + ', so the supply of ' + pl(X) + ' shifts right.'; } }
   ];
   function shock(id){ for(var i = 0; i < SHOCKS.length; i++) if(SHOCKS[i].id === id) return SHOCKS[i]; return null; }
+  function capital(id){
+    var s = shock(id);
+    if(!s || s.set !== 'policy') return null;
+    return s.curve === 'D' ? (s.dir > 0 ? 'in' : 'less') : 'out';
+  }
   function mirror(curve){ return curve === 'D' ? 'S' : 'D'; }
   function value(curve, dir){ return curve === 'D' ? dir : -dir; }
   /* The price of X drawn at height y (5 is the starting rate). The mirror market
@@ -327,5 +337,5 @@
     return GEN[t](r, ctx || {});
   }
 
-  M.register('forexLab', { CUR: CUR, PAIRS: PAIRS, DRILL_CUR: DRILL_CUR, DRILL_PAIRS: DRILL_PAIRS, SHOCKS: SHOCKS, shock: shock, mirror: mirror, value: value, rate: rate, K: K, plural: pl, cap: cap, pairOf: pairOf, TYPES: TYPES, generate: generate });
+  M.register('forexLab', { CUR: CUR, PAIRS: PAIRS, DRILL_CUR: DRILL_CUR, DRILL_PAIRS: DRILL_PAIRS, SHOCKS: SHOCKS, shock: shock, capital: capital, mirror: mirror, value: value, rate: rate, K: K, plural: pl, cap: cap, pairOf: pairOf, TYPES: TYPES, generate: generate });
 })(typeof window !== 'undefined' ? window : globalThis);
