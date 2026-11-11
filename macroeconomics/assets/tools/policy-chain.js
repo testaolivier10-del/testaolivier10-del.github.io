@@ -75,7 +75,7 @@
     }).join('') + (opts.more ? '<li class="pc-link is-next" aria-hidden="true"><span class="pc-n">' + (n + 2) + '</span><span class="pc-t">?</span></li>' : '');
   }
   function stageHtml(){
-    return '<div class="pc-fig"><p class="pc-title"></p><div class="pc-row" role="list" aria-label="The chain so far"></div><div class="pc-focus" aria-hidden="true"></div>' +
+    return '<div class="pc-fig"><p class="pc-title"></p><div class="pc-row" role="list" aria-label="The chain so far"></div><ol class="pc-dots" aria-hidden="true"></ol><div class="pc-focus" aria-hidden="true"></div>' +
       '<ol class="pc-chain" aria-hidden="true"></ol></div>';
   }
   function linkLi(ch, k, n, opts){
@@ -105,6 +105,8 @@
     row.innerHTML = html.join('');
     row.setAttribute('data-n', String(st.length));
     row.style.setProperty('--pc-g', String(st.filter(function(S){ return S.kind; }).length || 1));
+    // Pass 3: where you are in the chain as numbered dots (the stage's small thumbnails were unreadable); Enlarge shows every station
+    fig.querySelector('.pc-dots').innerHTML = ch.links.map(function(l, k){ return '<li class="pc-dot' + (k === n ? ' is-now' : k < n ? ' is-done' : '') + (opts.missed && opts.missed[l.id] ? ' is-miss' : '') + '">' + (k + 1) + '</li>'; }).join('');
     // the list form of the chain, kept for the phone's newest-link line
     fig.querySelector('.pc-chain').innerHTML = chainHtml(ch, n, { more: false, missed: opts.missed });
     fig.classList.toggle('no-g', !graphAt(ch, ch.links.length - 1));
@@ -122,7 +124,8 @@
     if(!fams.some(function(f){ return f.id === fam; })){ fam = fams[0].id; variant = fams[0].variants[0].id; }
     host.innerHTML = '<section class="bt-problem pc-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Policy chain builder</h2>' + stageHtml() +
       '<div class="pc-ctl">' +
-        '<div class="pc-fams ls-scroll" role="group" aria-label="Chain">' + fams.map(function(f){ return '<button type="button" class="ls-btn pc-fam" data-f="' + f.id + '" aria-pressed="false">' + esc(f.short) + '</button>'; }).join('') + '</div>' +
+        // Pass 3: the chain chooser is a select, not five chips
+        '<div class="pc-fams"><label class="pc-fam-l" for="' + nid + '-f">Chain</label><select class="bt-select pc-fsel" id="' + nid + '-f">' + fams.map(function(f){ return '<option value="' + f.id + '">' + esc(f.short) + '</option>'; }).join('') + '</select></div>' +
         '<div class="ls-seg pc-vars" role="group" aria-label="Version"></div>' +
         '<div class="ls-seg pc-dirs" role="group" aria-label="Direction"></div>' +
         '<div class="pc-go"><button type="button" class="ls-btn pc-back">Back</button><button type="button" class="ls-btn ls-pri pc-next">Next link</button></div>' +
@@ -137,7 +140,6 @@
     function ch(){ return PC.chain(fam, variant, dir); }
     function onClick(e){
       var b;
-      if((b = e.target.closest('.pc-fam'))){ act(); fam = b.getAttribute('data-f'); variant = PC.familyOf(fam).variants[0].id; dir = 1; n = 0; sync(); return; }
       if((b = e.target.closest('.pc-vars button'))){ act(); variant = b.getAttribute('data-v'); n = 0; sync(); return; }
       if((b = e.target.closest('.pc-dirs button'))){ act(); dir = +b.getAttribute('data-d'); n = 0; sync(); return; }
       if(e.target.closest('.pc-next')){ act(); var c = ch(); if(n < c.links.length - 1){ n++; sync(); say('Link ' + (n + 1) + ' of ' + c.links.length + ': ' + c.links[n].say + '.'); } else { n = 0; sync(); say('Back to the start: ' + c.links[0].say + '.'); } return; }
@@ -147,9 +149,10 @@
       if(e.target.closest('.pc-bnew')){ builderState = null; writePanel(); }
     }
     host.addEventListener('click', onClick);
+    $('.pc-fsel').addEventListener('change', function(e){ act(); fam = e.target.value; variant = PC.familyOf(fam).variants[0].id; dir = 1; n = 0; sync(); });
     function sync(){
       var F = PC.familyOf(fam), c = ch(), last = n >= c.links.length - 1;
-      $('.pc-fams').querySelectorAll('.pc-fam').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === fam)); });
+      $('.pc-fsel').value = fam;
       var vars = $('.pc-vars');
       vars.hidden = F.variants.length < 2;
       vars.innerHTML = F.variants.map(function(v){ return '<button type="button" data-v="' + v.id + '" aria-pressed="' + (v.id === variant) + '">' + esc(v.name) + '</button>'; }).join('');
@@ -165,7 +168,7 @@
       T.explain($('.pc-say'), head, body);
       if(LS){
         LS.caption(n === 0 ? '<b>' + esc(c.title) + ':</b> ' + esc(c.intro) + ' Press Next link.' : '<b>Link ' + (n + 1) + ' of ' + c.links.length + ':</b> ' + esc(cap(l.say)) + '.', 'explore');
-        LS.pills(LS.root.classList.contains('ls-phone') ? [] : [{ html: (n + 1) + ' of ' + c.links.length + ' links', tone: last ? 'good' : 'ghost' }], 'left', 'explore');
+        LS.pills([], 'left', 'explore');   // the numbered dots on the stage say where you are
       }
       builderState = null; writePanel();
     }
