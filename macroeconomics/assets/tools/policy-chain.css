@@ -63,29 +63,38 @@
 .pc-hints li.is-ok::before{content:"\2713";position:absolute;left:2px;color:var(--good-text,#1F6E3E);font-weight:900;}
 .pc-hints li.is-no::before{content:"\2022";position:absolute;left:5px;color:var(--muted);font-weight:900;}
 
-/* phones: the whole chain as a small map on top (every station drawn, the
-   current one marked), the current station large under it. */
+/* Pass 2, every width: the whole chain as a small map on top (every station drawn small, the current one
+   marked) and the current station large under it: one picture at a time. The expanded stage (is-big) shows
+   the full row of stations side by side. */
 .pc-focus{display:none;}
 .ls-phone .pc-title{display:none;}
-.ls-phone .pc-row{flex:0 0 auto;overflow:visible;padding:0 50px 0 0;}
-.ls-phone .pc-row .pc-st{padding:4px;border-radius:10px;gap:2px;}
-.ls-phone .pc-row .pc-st.is-g,.ls-phone .pc-row .pc-st.is-g.is-now{flex:1 1 0;min-width:0;}
-.ls-phone .pc-row .pc-st.is-t{flex:0 0 auto;width:auto;min-width:0;}
-.ls-phone .pc-row .pc-sth,.ls-phone .pc-row .pc-sl .pc-t,.ls-phone .pc-row .pc-ghost{display:none;}
-.ls-phone .pc-row .pc-g{min-height:0;max-height:72px;aspect-ratio:320/300;width:auto;height:72px;}
-.ls-phone .pc-row .pc-sls{flex-direction:row;justify-content:center;gap:3px;}
-.ls-phone .pc-row .pc-sl{display:block;}
-.ls-phone .pc-row .pc-n{width:18px;height:18px;font-size:10.5px;}
-.ls-phone .pc-row .pc-st.is-g .pc-sl:not(.is-now){display:none;}
-.ls-phone .pc-row .pc-st.is-g .pc-sls:not(:has(.is-now)){display:none;}
-.ls-phone .pc-arr{flex-basis:12px;}
-.ls-phone .pc-arr i{width:6px;}
-.ls-phone .pc-focus{display:flex;flex:1 1 auto;min-height:0;}
-.ls-phone .pc-focus .pc-st{flex:1 1 auto;min-height:0;}
-.ls-phone .pc-focus .pc-g{max-height:calc(100% - 70px);}
-.ls-phone .pc-focus .pc-sl .pc-t{font-size:13.5px;}
+.ls-stage:not(.is-big) .pc-row{flex:0 0 auto;overflow:visible;padding:0;}
+.ls-phone .ls-stage:not(.is-big) .pc-row{padding:0 50px 0 0;}
+.ls-stage:not(.is-big) .pc-row .pc-st{padding:4px;border-radius:10px;gap:2px;}
+.ls-stage:not(.is-big) .pc-row .pc-st.is-g,.ls-stage:not(.is-big) .pc-row .pc-st.is-g.is-now{flex:1 1 0;min-width:0;}
+.ls-stage:not(.is-big) .pc-row .pc-st.is-t{flex:0 0 auto;width:auto;min-width:0;}
+.ls-stage:not(.is-big) .pc-row .pc-sth,.ls-stage:not(.is-big) .pc-row .pc-sl .pc-t,.ls-stage:not(.is-big) .pc-row .pc-ghost{display:none;}
+.ls-stage:not(.is-big) .pc-row .pc-g{min-height:0;max-height:72px;aspect-ratio:320/300;width:auto;height:72px;}
+.ls-stage:not(.is-big) .pc-row .pc-sls{flex-direction:row;justify-content:center;gap:3px;}
+.ls-stage:not(.is-big) .pc-row .pc-sl{display:block;}
+.ls-stage:not(.is-big) .pc-row .pc-n{width:18px;height:18px;font-size:10.5px;}
+.ls-stage:not(.is-big) .pc-row .pc-st.is-g .pc-sl:not(.is-now){display:none;}
+.ls-stage:not(.is-big) .pc-row .pc-st.is-g .pc-sls:not(:has(.is-now)){display:none;}
+.ls-stage:not(.is-big) .pc-arr{flex-basis:12px;}
+.ls-stage:not(.is-big) .pc-arr i{width:6px;}
+.ls-stage:not(.is-big) .pc-focus{display:flex;flex:1 1 auto;min-height:0;}
+.ls-stage:not(.is-big) .pc-focus .pc-st{flex:1 1 auto;min-height:0;}
+.ls-stage:not(.is-big) .pc-focus .pc-g{max-height:calc(100% - 70px);}
+.ls-stage:not(.is-big) .pc-focus .pc-sl .pc-t{font-size:13.5px;}
+/* wide: a map a little larger, centered, with room between the stops; the focus graph capped so it stays crisp */
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row{max-width:760px;width:100%;margin:0 auto;}
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row .pc-g{height:84px;max-height:84px;}
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-arr{flex-basis:22px;}
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-arr i{width:12px;}
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-focus .pc-st{max-width:640px;margin:0 auto;width:100%;}
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-focus .pc-sl .pc-t{font-size:14.5px;}
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-focus .pc-sth{font-size:14.5px;}
 .ls-stage.is-big .pc-row{flex:1 1 auto;}
-.ls-stage.is-big .pc-focus{display:none;}
 
 /* test yourself: the same stage */
 .ls-drill-stage .pc-fig{flex:1 1 auto;min-height:300px;}
@@ -98,3 +107,11 @@
 .pc-st.is-t.is-now{flex-basis:170px;}
 .pc-st.is-g.is-todo{flex-grow:.8;}
 .pc-ghost{font-size:26px;}
+/* a link with no graph (the central bank sells bonds, investment rises): a short card in the middle, not a big empty box */
+.ls-stage:not(.is-big) .pc-focus{justify-content:center;}
+.ls-stage:not(.is-big) .pc-focus .pc-st.is-t{align-self:center;}
+.ls-stage:not(.is-big) .pc-focus .pc-st.is-t{flex:0 1 auto;width:auto;max-width:440px;min-height:0;padding:18px 20px;}
+.ls-stage:not(.is-big) .pc-focus .pc-st.is-t .pc-sl .pc-t{font-size:15.5px;}
+/* wide: the map's stops keep their own size, centered as one strip */
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row{justify-content:center;}
+.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row .pc-st.is-g,.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row .pc-st.is-g.is-now{flex:0 0 auto;min-width:96px;align-items:center;}
