@@ -146,7 +146,7 @@
       var PH = !!document.querySelector('.ls-root.ls-phone');
       var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = PH ? 340 : 400, cx = PH ? 152 : 170, p = [];
       var lmax = Math.log10(Math.max.apply(null, L.map(function(x){ return x.inE; }))), lmin = Math.log10(Math.max(1e-3, Math.min.apply(null, L.map(function(x){ return x.inE; }))));
-      var bw = function(v){ var span = Math.max(1, lmax - lmin); return (PH ? 98 : 112) + (PH ? 54 : 92) * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
+      var bw = function(v){ var span = Math.max(1, lmax - lmin); return (PH ? 100 : 112) + (PH ? 58 : 92) * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
       var aw = function(v){ return Math.max(1.5, Math.min(18, 2 + 3 * Math.log10(Math.max(1, v)))); };
       var A = window.ApBioArt, art = function(nm, x, y, sz, cls){ return A ? A.icon(nm, x, y, sz, cls) : ''; };
       var DW = PH ? 100 : 96, DX = Wd - DW / 2 - 4;
@@ -176,7 +176,7 @@
         }
         p.push('<g class="ef-lvl' + (sel ? ' sel' : '') + '" data-lv="' + i + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(lname(i) + ': absorbs ' + sig(x.inE) + ' kcal/m²/yr. Tap to see where it went.') + '"><rect class="ef-box" x="' + (cx - w / 2).toFixed(1) + '" y="' + y + '" width="' + w.toFixed(1) + '" height="40" rx="10"/>' +
           (A && A.has(eco().organisms[i]) ? art(eco().organisms[i], cx - w / 2 + 19, y + 20, 28, 'ef-o l' + i) : '') +
-          '<text class="ef-lab" x="' + (cx + 12) + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + (cx + 12) + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' GPP') + '</text></g>');
+          '<text class="ef-lab" x="' + (cx + (PH ? 17 : 12)) + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + (cx + (PH ? 17 : 12)) + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' GPP') + '</text></g>');
       });
       var desc = 'Energy flow, producers at the bottom: ' + L.map(function(x, i){ return eco().organisms[i] + ' take in ' + sig(x.inE) + ', lose ' + sig(x.heat) + ' as heat' + (i < n - 1 ? ', pass ' + sig(x.passed) + ' up' : '') + ', ' + sig(x.decomp) + ' to decomposers'; }).join('; ') + ' (kcal/m²/yr).';
       var host = card.querySelector('.ef-flowfig');
