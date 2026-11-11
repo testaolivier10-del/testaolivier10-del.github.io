@@ -36,7 +36,7 @@
 .sb-sub{font-weight:700;font-size:16px;fill:var(--muted);}
 .sb-svg.is-tall .sb-formula{font-size:17px;}
 .sb-svg.is-tall .sb-sub{font-size:12.5px;}
-.sb-svg.is-tall .sb-lab{font-size:13px;}
+.sb-svg.is-tall .sb-lab{font-size:14px;}
 .sb-svg.is-tall .sb-tk,.sb-svg.is-tall .sb-axl{font-size:12.5px;}
 
 .sb-handle{cursor:grab;outline:none;}

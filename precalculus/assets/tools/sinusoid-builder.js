@@ -120,7 +120,7 @@
       '<section class="bt-problem sb-card" aria-label="Sinusoid builder">' +
         '<div class="sb-stage"><div class="sb-wrap"><svg class="sb-svg" role="group" aria-label="A periodic scene beside the graph of its data and your model"><g class="sb-dyn" aria-hidden="true"></g></svg></div></div>' +
         '<div class="sb-ctl">' +
-          '<div class="ls-scroll sb-scenes" role="group" aria-label="Situation"></div>' +
+          '<div class="sb-scenes"></div>' +
           '<div class="ls-seg sb-params" role="group" aria-label="Parameter to set"></div>' +
           '<div class="bt-ctl bt-slider sb-sl"><label for="' + id + '-s"></label><div class="bt-slider-row">' +
             '<button type="button" class="bt-step" data-d="-1">−</button><input type="range" id="' + id + '-s"><button type="button" class="bt-step" data-d="1">+</button>' +
@@ -215,9 +215,9 @@
       o.push('<line class="sb-axis" x1="' + L.gx0 + '" y1="' + L.bot + '" x2="' + L.gx1 + '" y2="' + L.bot + '"/><line class="sb-axis" x1="' + L.gx0 + '" y1="' + L.top + '" x2="' + L.gx0 + '" y2="' + L.bot + '"/>');
       o.push(txt(L.gx1, L.bot + 38, S.tName + ' (' + S.tUnit + ')', 'sb-axl', 'end'), txt(L.gx0 + 6, L.top - 8, S.yName + ' (' + S.yUnit + ')', 'sb-axl', 'start'));
       // the student's midline, amplitude and period
-      var pk = peak1(), pk2 = pk + p.T, mid = gy(p.d);
+      var pk = peak1(), pk2 = pk + p.T, mid = gy(p.d), labs = [];   // labels go on top of the curve (pass 3)
       o.push('<line class="sb-midline" x1="' + L.gx0 + '" y1="' + r1(mid) + '" x2="' + L.gx1 + '" y2="' + r1(mid) + '"/>');
-      o.push(txt(L.gx1 - 4, mid + 20 > L.bot - 2 ? Math.min(mid, L.bot) - 8 : mid + 20, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));   // above the line when the line is on the t-axis
+      labs.push(txt(L.gx1 - 4, mid + 20 > L.bot - 2 ? Math.min(mid, L.bot) - 8 : mid + 20, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));   // above the line when the line is on the t-axis
       // the curve, clipped to the plot
       var d = '', on = false;
       for(var i = 0; i <= 320; i++){ var tt = win() * i / 320, vv = f(tt); var py = gy(vv); if(py < L.top - 30 || py > L.bot + 30){ on = false; continue; } d += (on ? 'L' : 'M') + r1(gx(tt)) + ' ' + r1(py); on = true; }
@@ -232,18 +232,18 @@
       var inWin = mid <= L.bot + 1;
       if(pk <= win() && inWin){
         o.push('<line class="sb-amp" x1="' + r1(gx(pk)) + '" y1="' + r1(mid) + '" x2="' + r1(gx(pk)) + '" y2="' + r1(gy(p.d + p.a)) + '"/>');
-        var left = gx(pk) - L.gx0 > 70; o.push(txt(gx(pk) + (left ? -10 : 26), (mid + gy(p.d + p.a)) / 2 + 5, 'a = ' + nt(p.a), 'sb-lab sb-c-a', left ? 'end' : 'start'));
+        var left = gx(pk) - L.gx0 > 70; labs.push(txt(gx(pk) + (left ? -10 : 26), (mid + gy(p.d + p.a)) / 2 + 5, 'a = ' + nt(p.a), 'sb-lab sb-c-a', left ? 'end' : 'start'));
       }
       var by = Math.max(L.top - 2, gy(p.d + p.a) - 16), px0 = gx(pk), px1 = gx(Math.min(pk2, win()));
       if(pk2 <= win() + 1e-9 && gy(p.d + p.a) <= L.bot){
         o.push('<path class="sb-per" d="M' + r1(px0) + ' ' + r1(by + 6) + ' V' + r1(by) + ' H' + r1(px1) + ' V' + r1(by + 6) + '"/>');
-        o.push(txt((px0 + px1) / 2, by - 6, 'period ' + nt(p.T), 'sb-lab sb-c-T'));
+        labs.push(txt((px0 + px1) / 2, by - 6, 'period ' + nt(p.T), 'sb-lab sb-c-T'));
       }
       // where a cycle starts: t = −c (rising midline crossing for sin, peak for cos)
       var s0 = -p.c; s0 = s0 - Math.floor(s0 / p.T) * p.T;
       if(s0 <= win() && inWin){
         var sY = p.form === 'cos' ? gy(p.d + p.a) : mid;
-        o.push('<path class="sb-shift" d="M' + r1(gx(s0)) + ' ' + r1(sY + 4) + ' l-7 12 h14 z"/>', txt(gx(s0) + (gx(s0) - L.gx0 < 30 ? 3 : 0), sY + 32, 't = ' + nt(s0), 'sb-lab sb-c-c', gx(s0) - L.gx0 < 30 ? 'start' : L.gx1 - gx(s0) < 30 ? 'end' : 'middle'));   // beside the axis, clear of its tick numbers
+        o.push('<path class="sb-shift" d="M' + r1(gx(s0)) + ' ' + r1(sY + 4) + ' l-7 12 h14 z"/>'); labs.push(txt(gx(s0) + (gx(s0) - L.gx0 < 30 ? 3 : 0), sY + 32, 't = ' + nt(s0), 'sb-lab sb-c-c', gx(s0) - L.gx0 < 30 ? 'start' : L.gx1 - gx(s0) < 30 ? 'end' : 'middle'));   // beside the axis, clear of its tick numbers
       }
       // data points: green once the curve passes through
       dpts.forEach(function(q, k){
@@ -255,6 +255,7 @@
       o.push('<line class="sb-cur" x1="' + r1(tc) + '" y1="' + L.top + '" x2="' + r1(tc) + '" y2="' + L.bot + '"/>');
       o.push('<circle class="sb-now" cx="' + r1(tc) + '" cy="' + r1(gy(now)) + '" r="6"/>');
       if(shared()) o.push('<line class="sb-link" x1="' + r1(art.mx) + '" y1="' + r1(art.my) + '" x2="' + r1(tc) + '" y2="' + r1(gy(now)) + '"/>');
+      o.push(labs.join(''));
       // the formula, colored part by part, and the period line
       var b = TAU / p.T, bT = SB.piText(b), cT = p.c === 0 ? '' : ' ' + (p.c > 0 ? '+ ' : '− ') + nt(Math.abs(p.c));
       var fx = L.wide ? L.gx0 : L.W / 2, an = L.wide ? 'start' : 'middle';
@@ -276,14 +277,11 @@
 
     /* ---------------------------------------------------- dock */
     var chips = host.querySelector('.sb-scenes'), seg = host.querySelector('.sb-params');
-    chips.innerHTML = SB.SORDER.map(function(k){ return '<button type="button" class="tchip" data-s="' + k + '" aria-pressed="' + (k === st.sid) + '">' + esc(SB.SCENES[k].name) + '</button>'; }).join('');
+    /* the situation: one menu (pass 3), not four chips */
+    var sitSel = T.choiceSelect({ label: 'Situation', value: st.sid, options: SB.SORDER.map(function(k){ return { value: k, label: SB.SCENES[k].name }; }),
+      onChange: function(v){ stopT(); st.sid = v; reset(); L = null; draw(); announce(sc().name + '. ' + sc().story); } });
+    sitSel.el.classList.add('sb-sit'); chips.innerHTML = ''; chips.appendChild(sitSel.el);
     seg.innerHTML = ['a', 'd', 'T', 'c'].map(function(k){ return '<button type="button" class="bt-mode" data-k="' + k + '" aria-pressed="' + (k === st.sel) + '"><span class="sb-pk sb-c-' + k + '">' + { a: 'a', d: 'd', T: 'period', c: 'shift c' }[k] + '</span><span class="sb-pv"></span></button>'; }).join('');
-    chips.addEventListener('click', function(e){
-      var b = e.target.closest('[data-s]'); if(!b) return;
-      stopT(); st.sid = b.getAttribute('data-s'); reset(); L = null;
-      chips.querySelectorAll('[data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
-      draw(); announce(sc().name + '. ' + sc().story);
-    });
     seg.addEventListener('click', function(e){ var b = e.target.closest('[data-k]'); if(!b) return; st.sel = b.getAttribute('data-k'); draw(); });
     function syncCtl(){
       var sl = sc().sl[st.sel], p = st.p;
