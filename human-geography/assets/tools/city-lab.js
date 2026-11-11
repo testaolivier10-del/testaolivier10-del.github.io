@@ -120,18 +120,25 @@
       [[30, 30], [210, 210], [30, 210], [210, 40]].forEach(function(p){ o.push(['c', p[0], p[1], 15, 6]); });
       n.push([92, 106, 1], [138, 98, 2], [121, 145, 3], [70, 170, 4], [182, 106, 5], [30, 30, 6]); return { shapes: o, nums: n }; }
   };
-  function cityModelSvg(k, X, Y, S){
+  function cityModelSvg(k, X, Y, S, cur){
     var d = DRAW[k](), out = [], P = function(x, y){ return [n1(X + x * S), n1(Y + y * S)]; };
     d.shapes.forEach(function(s){
-      if(s[0] === 'c'){ var c = P(s[1], s[2]); out.push('<circle class="cl-z z' + s[4] + '" cx="' + c[0] + '" cy="' + c[1] + '" r="' + n1(s[3] * S) + '"/>'); }
-      else if(s[0] === 'r'){ var a = P(s[1], s[2]); out.push('<rect class="cl-z z' + s[5] + '" x="' + a[0] + '" y="' + a[1] + '" width="' + n1(s[3] * S) + '" height="' + n1(s[4] * S) + '" rx="3"/>'); }
-      else if(s[0] === 'p') out.push('<path class="cl-z z' + s[2] + '" transform="translate(' + n1(X) + ' ' + n1(Y) + ') scale(' + n1(S * 100) / 100 + ')" d="' + s[1] + '" style="stroke-width:' + n1(1.2 / S) + 'px"/>');
+      if(s[0] === 'c'){ var c = P(s[1], s[2]); out.push('<circle class="cl-z z' + s[4] + (cur === s[4] ? ' is-cur' : '') + '" cx="' + c[0] + '" cy="' + c[1] + '" r="' + n1(s[3] * S) + '"/>'); }
+      else if(s[0] === 'r'){ var a = P(s[1], s[2]); out.push('<rect class="cl-z z' + s[5] + (cur === s[5] ? ' is-cur' : '') + '" x="' + a[0] + '" y="' + a[1] + '" width="' + n1(s[3] * S) + '" height="' + n1(s[4] * S) + '" rx="3"/>'); }
+      else if(s[0] === 'p') out.push('<path class="cl-z z' + s[2] + (cur === s[2] ? ' is-cur' : '') + '" transform="translate(' + n1(X) + ' ' + n1(Y) + ') scale(' + n1(S * 100) / 100 + ')" d="' + s[1] + '" style="stroke-width:' + n1(1.2 / S) + 'px"/>');
       else if(s[0] === 'road') out.push('<path class="cl-road" transform="translate(' + n1(X) + ' ' + n1(Y) + ') scale(' + n1(S * 100) / 100 + ')" d="' + s[1] + '" style="stroke-width:' + n1(4 / S) + 'px"/>');
       else if(s[0] === 'ring'){ var rc = P(s[1], s[2]); out.push('<circle class="cl-ringroad" cx="' + rc[0] + '" cy="' + rc[1] + '" r="' + n1(s[3] * S) + '"/>'); }
       else if(s[0] === 'sea'){ var sa = P(s[1], s[2]); out.push('<rect class="cl-sea" x="' + sa[0] + '" y="' + sa[1] + '" width="' + n1(s[3] * S) + '" height="' + n1(s[4] * S) + '"/>'); }
     });
-    d.nums.forEach(function(q){ var p = P(q[0], q[1]); out.push(numBadge(p[0], p[1], q[2])); });
+    // Each number names its zone on tap (second pass, 2026-11-10).
+    d.nums.forEach(function(q){ var p = P(q[0], q[1]); out.push(numBadge(p[0], p[1], q[2], 'is-tap' + (cur === q[2] ? ' is-cur' : '')).replace('<g ', '<g data-m="' + k + '" data-n="' + q[2] + '" ')); });
     return out.join('');
+  }
+  /* The zones are named one at a time: a line under the drawing names the
+     zone whose number was tapped; the whole key opens on tap (All zones). */
+  function zoneLine(z, two){
+    if(!z || !z.n) return '<p class="cl-zline is-hint">Tap a number to name its zone.</p>';
+    var C = CL.CITY[z.m]; return '<p class="cl-zline"><span class="cl-zn" aria-hidden="true">' + z.n + '</span>' + esc(C.zones[z.n - 1]) + (two ? ' <span class="cl-zm">(' + esc(C.name) + ')</span>' : '') + '</p>';
   }
   function modelKey(k){ var C = CL.CITY[k]; return '<div class="cl-key"><p class="cl-key-h">' + esc(C.full) + '</p><ol>' + C.zones.map(function(z){ return '<li>' + esc(z) + '</li>'; }).join('') + '</ol></div>'; }
 
@@ -186,7 +193,7 @@
 
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
-    var scene = 'bid', place = 'farm', tc = 1, price = 1, fridge = false, river = false, model = 'concentric', vs = 'none', good = 'clothes', rk = 'rule', LS = null, nid = T.nid('cl'), touched = false;
+    var scene = 'bid', place = 'farm', tc = 1, price = 1, fridge = false, river = false, model = 'concentric', vs = 'none', good = 'clothes', rk = 'rule', zf = { m: '', n: 0 }, LS = null, nid = T.nid('cl'), touched = false;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem cl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">City lab</h2>' +
       '<div class="cl-fig"><div class="cl-pic"></div><div class="cl-leg"></div></div>' +
@@ -211,13 +218,15 @@
     $('.cl-tc').appendChild(sTc.el); $('.cl-pr').appendChild(sPr.el);
     function opts(){ return { transport: tc, price: place === 'farm' ? price : 1, fridge: place === 'farm' && fridge, river: place === 'farm' && river }; }
     function onClick(e){
+      var zn = e.target.closest && e.target.closest('.cl-num[data-n]');
+      if(zn && scene === 'models'){ act(); zf = { m: zn.getAttribute('data-m'), n: +zn.getAttribute('data-n') }; draw(); say(CL.CITY[zf.m].zones[zf.n - 1]); return; }
       var b = e.target.closest('.cl-row button'); if(!b || !(LS ? LS.root : host).contains(b)) return;
       var row = b.closest('.cl-row'), k = b.getAttribute('data-k');
       act();
       if(row.classList.contains('cl-scene')) scene = k;
       else if(row.classList.contains('cl-place')) place = k;
       else if(row.classList.contains('cl-opt')){ if(k === 'fridge') fridge = !fridge; else river = !river; }
-      else if(row.classList.contains('cl-model')){ model = k; if(vs === k) vs = 'none'; }
+      else if(row.classList.contains('cl-model')){ model = k; if(vs === k) vs = 'none'; zf = { m: '', n: 0 }; }
       else if(row.classList.contains('cl-vs')) vs = k === model ? 'none' : k;
       else if(row.classList.contains('cl-good')) good = k;
       else if(row.classList.contains('cl-rk')) rk = k;
@@ -246,11 +255,11 @@
       } else if(scene === 'models'){
         var two = vs !== 'none', boxes = two ? 2 : 1, S, html = '';
         if(two && narrow){ S = (W - 20) / 240; pic.classList.add('is-scroll');
-          html = '<svg class="cl-svg" viewBox="0 0 ' + W + ' ' + n1(2 * 240 * S + 40) + '" style="height:' + n1(2 * 240 * S + 40) + 'px" role="img" aria-label="' + esc(CL.CITY[model].full + ' above, ' + CL.CITY[vs].full + ' below') + '">' + cityModelSvg(model, 10, 10, S) + cityModelSvg(vs, 10, 30 + 240 * S, S) + '</svg>';
+          html = '<svg class="cl-svg" viewBox="0 0 ' + W + ' ' + n1(2 * 240 * S + 40) + '" style="height:' + n1(2 * 240 * S + 40) + 'px" role="img" aria-label="' + esc(CL.CITY[model].full + ' above, ' + CL.CITY[vs].full + ' below') + '">' + cityModelSvg(model, 10, 10, S, zf.m === model ? zf.n : 0) + cityModelSvg(vs, 10, 30 + 240 * S, S, zf.m === vs ? zf.n : 0) + '</svg>';
         } else { S = Math.min((W - 20 - (boxes - 1) * 24) / (240 * boxes), (H - 20) / 240); var ox = (W - (240 * S * boxes + (boxes - 1) * 24)) / 2;
-          html = '<svg class="cl-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(CL.CITY[model].full + (two ? ' beside the ' + CL.CITY[vs].full : '') + ': numbered zones, named in the key') + '">' + cityModelSvg(model, ox, (H - 240 * S) / 2, S) + (two ? cityModelSvg(vs, ox + 240 * S + 24, (H - 240 * S) / 2, S) : '') + '</svg>'; }
+          html = '<svg class="cl-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(CL.CITY[model].full + (two ? ' beside the ' + CL.CITY[vs].full : '') + ': numbered zones, named in the key') + '">' + cityModelSvg(model, ox, (H - 240 * S) / 2, S, zf.m === model ? zf.n : 0) + (two ? cityModelSvg(vs, ox + 240 * S + 24, (H - 240 * S) / 2, S, zf.m === vs ? zf.n : 0) : '') + '</svg>'; }
         pic.innerHTML = html;
-        leg = '<div class="cl-keys' + (two ? ' is-two' : '') + '">' + modelKey(model) + (two ? modelKey(vs) : '') + '</div>';
+        leg = zoneLine(zf, two) + '<details class="cl-allz"><summary>All zones</summary><div class="cl-keys' + (two ? ' is-two' : '') + '">' + modelKey(model) + (two ? modelKey(vs) : '') + '</div></details>';
       } else if(scene === 'central'){
         var g = CL.GOODS.filter(function(x){ return x.id === good; })[0];
         pic.innerHTML = '<svg class="cl-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('Central places: ' + g.name.toLowerCase() + ' is offered in the places marked dark, each serving the market area around it.') + '">' + centralSvg(W, H, g) + '</svg>';
