@@ -108,3 +108,6 @@
 }
 .ls-root.ls-phone .pl-tk text,.ls-root.ls-phone .pl-taxis text,.ls-root.ls-phone .pl-tk2{font-size:12px;}
 .ls-root.ls-phone .pl-modes > .bt-mode,.ls-root.ls-phone .pl-regs > .bt-mode,.ls-root.ls-phone .pl-show > .bt-mode{padding:0 4px;font-size:13.5px;}
+
+/* Pass 2: with one curve the purple curve needs no key; the inner/outer pair keeps both names. */
+.pl-legend:not(.is-two) .pl-lg-r{display:none;}

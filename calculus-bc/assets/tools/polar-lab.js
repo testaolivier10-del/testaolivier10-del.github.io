@@ -296,7 +296,7 @@
       var c = cur(), th = st.th, s = PL.at(c, th), A = areaTo(th), narrow = false;
       try{ narrow = LS.root.classList.contains('ls-phone') || matchMedia('(max-width: 599.98px)').matches; }catch(e){}
       LS.pills(narrow ? [{ html: '<span class="pl-pk">r</span> ' + F(s.r, 2) + ' · <span class="pl-pk">dr/dθ</span> ' + F(s.dr, 2), tone: 'ghost' }]
-        : [{ k: 'r', html: F(s.r, 2), tone: 'readout' }, { k: 'dr/dθ', html: F(s.dr, 2), tone: 'readout' }, { k: 'area', html: F(A, 3), tone: 'readout' }], 'left', 'explore');
+        : [{ k: 'r', html: F(s.r, 2), tone: 'readout' }, { k: 'dr/dθ', html: F(s.dr, 2), tone: 'readout' }], 'left', 'explore');   // pass 2: the area is in the set-up on the picture
       LS.pills([{ html: 'θ = ' + thTxt(th), tone: st.playing ? 'accent' : 'ghost' }], 'right', 'explore');
     }
     function details(c, th, s, A, Lm){
