@@ -68,7 +68,7 @@
             return '<input type="radio" name="' + nm + '" id="' + nm + o[0] + '" value="' + o[0] + '"' + (o[0] === 0 ? ' checked' : '') + '><label for="' + nm + o[0] + '">' + o[1] + '</label>';
           }).join('') + '</div></fieldset>';
       }).join('') + '</div>';
-      $('.us-build').insertAdjacentHTML('afterbegin', '<div class="us-sticky"><div class="us-frac" aria-hidden="true"></div><div class="us-live" role="status" aria-live="polite"></div></div>');
+      $('.us-build').insertAdjacentHTML('afterbegin', '<div class="us-sticky"><div class="us-frac"></div><div class="us-live" role="status" aria-live="polite"></div></div>');
       $$('.us-tile input').forEach(function(inp){ inp.addEventListener('change', function(){ place[+inp.closest('.us-tile').getAttribute('data-i')] = +inp.value; $('.us-how').classList.add('is-done'); draw(); }); });
       // The fraction on the stage is live too: tap a quantity to move it
       // from the tray to the top, the bottom and back (the dock follows).
@@ -112,7 +112,7 @@
       $('.us-frac').innerHTML = '<div class="us-eqn"><div class="us-fr"><div class="us-num"><span class="us-vals">' + slot(topQ, '× top') + '</span>' +
         (top.length ? '<span class="us-chips">' + top.map(chip).join('') + '</span>' : '') + '</div>' +
         '<div class="us-bar"></div><div class="us-den"><span class="us-vals">' + slot(botQ, '÷ bottom') + '</span>' + (bot.length ? '<span class="us-chips">' + bot.map(chip).join('') + '</span>' : '') + '</div></div>' + goal + '</div>' +
-        (trayQ.length ? '<div class="us-tray"><span class="us-tray-k">' + (used.length ? 'Not used' : 'Given: tap one to put it on top') + '</span>' + trayQ.map(qb).join('') + '</div>' : '');
+        (trayQ.length ? '<div class="us-tray"><span class="us-tray-k">' + (used.length ? 'Not used' : 'Given') + '</span>' + trayQ.map(qb).join('') + '</div>' : '');
       var left = M.unitText(M.unitMul(used.map(function(x){ return { u: x.f.u, p: x.p }; })));
       var val = used.reduce(function(v, x){ var n = x.f.u === 'kJ/J' ? 1 / 1000 : +x.f.v; return x.p > 0 ? v * n : v / n; }, 1);
       var bad = used.filter(function(x){ return !x.f.place || x.f.place !== x.p; });
@@ -141,16 +141,20 @@
       var b = slot.build;
       slot.stage.innerHTML = '';
       [].slice.call(b.querySelectorAll('.us-sticky, .us-col')).forEach(function(el){ slot.stage.appendChild(el); });
+      // Pass 2: the quantities are tapped on the stage (tray, top, bottom,
+      // out); the same choices by name, with each quantity's label and note,
+      // are in Details.
       var tiles = b.querySelector('.us-tiles');
-      slot.dock.innerHTML = ''; if(tiles){ tiles.classList.add('ls-scroll'); slot.dock.appendChild(tiles); }
+      slot.alt.innerHTML = ''; if(tiles){ slot.alt.innerHTML = '<h3 class="ls-h">Place each quantity by name</h3>'; slot.alt.appendChild(tiles); }
       slot.why.innerHTML = ''; [].slice.call(b.querySelectorAll('.us-how, .us-live')).concat([].slice.call(slot.stage.querySelectorAll('.us-live'))).forEach(function(el){ el.removeAttribute('aria-live'); el.removeAttribute('role'); slot.why.appendChild(el); });
     }
     function studioDraw(r){
       if(!LS || !SP) return;
       var t = p.setup.target || 'g';
       LS.pills([{ k: 'Goal', html: esc(t), tone: 'ghost' }], 'left', 'explore');
-      LS.pills([r.ok ? { html: 'Report ' + esc(r.rep), tone: 'good' } : r.used ? { html: 'Left over: ' + esc(r.left || 'no units'), tone: 'warn' } : null].filter(Boolean), 'right', 'explore');
-      LS.caption(r.ok ? '<b>Units cancel to ' + esc(t) + '.</b> Report ' + esc(r.rep) + '.' : r.used ? '<b>Left over: ' + esc(r.left || 'no units') + '.</b> ' + (r.msg || 'Goal: ' + esc(t) + '.') : 'Put each quantity on top (×) or on the bottom (÷), or leave it out.', 'explore');
+      // Pass 2: the result is said once, in the caption (the goal is the pill).
+      LS.pills([], 'right', 'explore');
+      LS.caption(r.ok ? '<b>Units cancel to ' + esc(t) + '.</b> Report ' + esc(r.rep) + '.' : r.used ? '<b>Left over: ' + esc(r.left || 'no units') + '.</b> ' + String(r.msg || '').replace(/\s*Goal: [^.]*\.\s*$/, '') : 'Tap a quantity to move it: top, then bottom, then out.', 'explore');
       SP.setup(KIND[ctxs[ci].kind]);
       SP.open();
     }
@@ -164,7 +168,7 @@
         '<div class="us-row us-sum"><span class="us-lab">= sample</span><span class="us-int">' + res[0] + '</span><span class="us-dot">' + (res[1] ? '.' : '') + '</span><span class="us-dec">' + (res[1] || '') + '</span></div></div><div class="us-live" role="status" aria-live="polite"></div>';
       var res0 = p.setup.result;
       $('.us-live').innerHTML = '<p class="tx-where us-ok"><b>' + p.setup.result + ' g, to ' + dp + ' decimal place' + (dp === 1 ? '' : 's') + '.</b> Adding and subtracting keeps the fewest decimal places (' + pl[0] + ' and ' + pl[1] + '), not the fewest significant figures; the answer has ' + M.units.sigFigsOf(p.setup.result) + ' significant figures.</p>';
-      if(LS){ placeParts(); LS.pills([{ k: 'Goal', html: 'g', tone: 'ghost' }], 'left', 'explore'); LS.pills([{ html: 'Report ' + esc(res0) + ' g', tone: 'good' }], 'right', 'explore');
+      if(LS){ placeParts(); LS.pills([{ k: 'Goal', html: 'g', tone: 'ghost' }], 'left', 'explore'); LS.pills([], 'right', 'explore');
         LS.caption('<b>' + esc(res0) + ' g, to ' + dp + ' decimal place' + (dp === 1 ? '' : 's') + '.</b> Adding and subtracting keeps the fewest decimal places.', 'explore'); SP.setup(KIND[ctxs[ci].kind]); }
     }
     /* Tool Studio arrangement: the question and the fraction on the stage;
@@ -174,12 +178,13 @@
       LS = s;
       slot.build = $('.us-build'); slot.stem = $('.us-stem');
       slot.stage = document.createElement('div'); slot.stage.className = 'us-ls-stage';
-      slot.dock = document.createElement('div'); slot.dock.className = 'us-ls-dock';
       slot.why = document.createElement('div'); slot.why.className = 'us-ls-why';
+      slot.alt = document.createElement('div'); slot.alt.className = 'us-ls-alt';
+      var go = $('.us-go'); go.classList.remove('btn-press', 'sm'); go.classList.add('bt-btn', 'ls-btn');
       var keep = document.createElement('div'); keep.className = 'us-ls-keep'; keep.hidden = true; keep.appendChild(slot.build);
-      SP = T.studioPane(pane, s, { stage: [slot.stem, slot.stage], dock: [slot.dock], setup: 'Habit', moreLabel: 'Another habit, new numbers', why: [slot.why], details: [$('.us-go'), keep] });
+      SP = T.studioPane(pane, s, { stage: [slot.stem, slot.stage], dock: [go], setup: 'Habit', moreLabel: 'Another habit, new numbers', why: [slot.why], details: [slot.alt, keep] });
       fresh();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.us-tile'), text: 'Put each quantity on top, on the bottom, or leave it out', round: 16 });
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.us-frac .us-qty'), text: 'Tap a quantity to put it on top', round: 16 });
     }
     fresh();
     return { studio: studio };
