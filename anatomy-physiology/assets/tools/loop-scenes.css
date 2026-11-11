@@ -156,3 +156,6 @@
 .ls-root.ls-phone .fl-ls-stage.has-scene{flex:none;}
 .ls-root.ls-phone .fl-ls-stage.has-scene .fl-ringfig{flex:none;height:auto;min-height:0;}
 .ls-root.ls-phone .fl-ls-stage.has-scene .fl-ringfig .fl-ring.fl-ph{width:100%;height:auto;max-height:none;}
+
+/* pass 3: the skin's arteriole is a tube that runs off the drawing's edge, so its ends are cut square */
+.fl-scene .fs-tube .fs-vwall,.fl-scene .fs-tube .fs-vlum{stroke-linecap:butt;}

@@ -638,8 +638,6 @@
       '<rect class="fl-g-live ' + (up ? 'hi' : 'lo') + '" x="' + liveX + '" y="' + (GY - 8) + '" width="' + liveW + '" height="16" rx="8" fill="url(#' + gid + ')"/>' +
       '<rect class="fl-g-gloss" x="' + (GX0 + 6) + '" y="' + (GY - 6) + '" width="' + (GX1 - GX0 - 12) + '" height="4" rx="2"/>' +
       ticks +
-      '<text class="lbl-sm" x="' + GX0 + '" y="' + (GY + 34) + '">' + (pos ? 'less' : 'lower') + '</text>' +
-      '<text class="lbl-sm" x="' + GX1 + '" y="' + (GY + 34) + '" text-anchor="end">' + (pos ? 'more' : 'higher') + '</text>' +
       '<g class="fl-g-sp"><path class="fl-g-spline" d="M' + GC + ' ' + (GY - 16) + ' V' + (GY + 20) + '"/><path class="fl-g-sptri" d="M' + (GC - 6) + ' ' + (GY - 22) + ' H' + (GC + 6) + ' L' + GC + ' ' + (GY - 14) + ' Z"/><text class="fl-g-spt" x="' + GC + '" y="' + (GY + 36) + '" text-anchor="middle">' + esc(sp) + '</text></g>' +
       (lv.shift ? '<g class="fl-g-sp0" opacity="0"><path class="fl-g-spline ghost" d="M' + GC + ' ' + (GY - 14) + ' V' + (GY + 14) + '"/><text class="lbl-sm" x="' + GC + '" y="' + (GY + 34) + '" text-anchor="middle">was ' + esc(lv.setPoint) + '</text></g>' : '') +
       '<g class="fl-g-mk" tabindex="0" role="slider" aria-label="' + esc(lv.variable) + '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
@@ -683,7 +681,8 @@
       mk.setAttribute('transform', 'translate(' + xOf(v).toFixed(1) + ' 0)');
       spG.setAttribute('transform', 'translate(' + (xOf(spOff) - GC).toFixed(1) + ' 0)');
       var w = word();
-      state.textContent = w.charAt(0).toUpperCase() + w.slice(1);
+      // pass 3: the state line speaks only when there is something to say (off the set point, or a moved set point)
+      state.textContent = Math.abs(v - spOff) < 0.04 && !spOff ? '' : w.charAt(0).toUpperCase() + w.slice(1);
       mk.setAttribute('aria-valuenow', String(Math.round(Math.max(0, v) * 100)));
       mk.setAttribute('aria-valuetext', lv.variable + ': ' + w);
       svg.classList.toggle('is-off', Math.abs(v - spOff) >= 0.04);
@@ -990,7 +989,8 @@
     s += link('response', 'M' + fx + ' ' + (y(1) - 2) + ' V' + (fy + 10) + ' Q' + fx + ' ' + fy + ' ' + (fx - 10) + ' ' + fy + ' H' + (X[0] + BW + 5), ' fl-return');
     var neg = l.kind === 'negative';
     if(live){
-      s += '<text class="lbl-sm" x="' + (X[1] + BW / 2 - 8) + '" y="' + (fy - 9) + '" text-anchor="middle">acts on the variable</text>';
+      // shown while the response's link is lit (pass 3), so the landing ring carries only the part names
+      s += '<text class="lbl-sm fl-actson" x="' + (X[1] + BW / 2 - 8) + '" y="' + (fy - 9) + '" text-anchor="middle">acts on the variable</text>';
       var la = 'The loop as a ring of seven parts. ' + SLOTS.map(function(k){ return LABELS[k] + ': ' + l.slots[k].short; }).join('. ') + '. The response acts back on the variable.';
       return '<svg class="fl-svg fl-ring' + (ph ? ' fl-ph' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(la) + '">' + s + '</svg>';
     }
