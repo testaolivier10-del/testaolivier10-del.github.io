@@ -258,13 +258,16 @@
     function layout(w, h){
       var narrow = w < 520, pl = narrow ? 34 : 42, pr = 12, pt = 8, gap = narrow ? 20 : 24;
       var avail = h - pt - 16 - gap - 16, topH = Math.round(avail * 0.6), botH = avail - topH;
+      // Pass 3 (judge c): until f′ has something to show (Tangent, Trace f′, a traced stretch), f has the whole stage.
+      if(!fpVis()) topH = avail + 16 + gap - 6;
       var W = Math.max(40, w - pl - pr), V = windows(), F = S.F;
       var top = frameOf(V.x, V.y, pl, pt, W, topH);
       var dy = F.dy || [-5, 5];
       var bot = frameOf(V.x, dy, pl, pt + topH + 16 + gap, W, botH);
       return { w: w, h: h, top: top, bot: bot, narrow: narrow };
     }
-    var sized = null;
+    function fpVis(){ return !!(S.fpOn || S.all || S.trace.some(function(iv){ return iv[1] - iv[0] > 1e-6; })); }
+    var sized = null, lastVis = null;
     function draw(){
       if(!S.F || !sized) return;
       var dims = sized.size(); if(!dims[0]) return;
@@ -311,7 +314,7 @@
       }
       o.push('</g>');
       // guide from P down to f′
-      var gx = r1(A.sx(a));
+      var fpCut = o.length, gx = r1(A.sx(a));
       if(gx >= A.L && gx <= A.R) o.push('<line class="tt-guide-v" x1="' + gx + '" y1="' + r1(Math.min(A.B, Math.max(A.T, A.sy(fa)))) + '" x2="' + gx + '" y2="' + B.B + '"/>');
       // Bottom: f′
       o.push(axesOf(B, { piX: F.piX }));
@@ -329,6 +332,7 @@
       if(c.kind === 'smooth' && isFinite(slope)) o.push(dot(B, a, slope, 's2 tt-now', 5.5));
       else if(c.kind === 'corner'){ if(isFinite(c.L)) o.push(dot(B, a, c.L, 's2', 5, true)); if(isFinite(c.R)) o.push(dot(B, a, c.R, 's2', 5, true)); }
       o.push('</g>');
+      if(!fpVis()) o.length = fpCut;
       bg.innerHTML = o.join('');
       // handles
       var pIn = isFinite(fa) && fa >= A.y[0] && fa <= A.y[1] && a >= A.x[0] && a <= A.x[1];
@@ -540,7 +544,7 @@
     });
 
     /* --- buttons --- */
-    tanB.addEventListener('click', function(){ act(); S.tan = !S.tan; tanB.setAttribute('aria-pressed', String(S.tan)); draw(); });
+    tanB.addEventListener('click', function(){ act(); S.fpOn = true; S.tan = !S.tan; tanB.setAttribute('aria-pressed', String(S.tan)); draw(); });
     shrinkB.addEventListener('click', function(){
       act();
       if(S.anim && S.anim.kind === 'shrink'){ stopAnim(); return; }
@@ -551,7 +555,7 @@
       shrinkB.textContent = 'Stop';
       S.anim.loop.start();
     });
-    traceB.addEventListener('click', function(){
+    traceB.addEventListener('click', function(){ S.fpOn = true;
       act();
       if(S.anim && S.anim.kind === 'trace'){ stopAnim(); return; }
       stopAnim();

@@ -236,7 +236,7 @@
       o.push('<g class="pm-taxis">' + tt.map(function(v){ return '<text x="' + r1(g.gx(v)) + '" y="' + (g.h - 5) + '" text-anchor="middle">' + (p.piT ? piLab(v) : F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1)) + '</text>'; }).join('') + '</g>');
       o.push('<text class="pm-sl" x="' + (g.L + 6) + '" y="' + (g.top + 13) + '">speed</text>');
       var d = tb.d[i], cx = r1(g.gx(t));
-      o.push('<text class="pm-dl" x="' + (g.L + g.pw - 6) + '" y="' + (g.top + 13) + '" text-anchor="end">distance so far ' + F(d, 2) + '</text>');
+      // (pass 3: the distance number lives in Formulas & numbers; the shaded area is the distance)
       o.push('<line class="pm-cur" x1="' + cx + '" y1="' + g.top + '" x2="' + cx + '" y2="' + (g.top + g.ph) + '"/><circle class="pm-cur-pt" cx="' + cx + '" cy="' + r1(g.gy(tb.sp[i])) + '" r="4.5"/>');
       speed.innerHTML = o.join('');
     }
@@ -267,8 +267,9 @@
       try{ narrow = LS.root.classList.contains('ls-phone') || matchMedia('(max-width: 599.98px)').matches; }catch(e){}
       // a slope in the thousands is the slider one step from a vertical tangent: say so instead of printing −1883.65
       var slope = isFinite(s.slope) && s.speed > 1e-6 ? (Math.abs(s.slope) > 500 ? 'near vertical' : F(s.slope, 2)) : '—';
-      LS.pills(narrow ? [{ html: '<span class="pm-pk pv">speed</span> ' + F(s.speed, 2) + ' · <span class="pm-pk pt">dy/dx</span> ' + slope, tone: 'ghost' }]
-        : [{ k: 'speed', html: F(s.speed, 2), tone: 'readout' }, { k: 'dy/dx', html: slope, tone: 'readout' }], 'left', 'explore');
+      // Pass 3 (judge c): two numbers, speed and t; dy/dx, the point and the distance are in Formulas & numbers.
+      LS.pills(narrow ? [{ html: '<span class="pm-pk pv">speed</span> ' + F(s.speed, 2), tone: 'ghost' }]
+        : [{ k: 'speed', html: F(s.speed, 2), tone: 'readout' }], 'left', 'explore');
       LS.pills([{ html: 't = ' + F(st.t, 2), tone: st.playing ? 'accent' : 'ghost' }], 'right', 'explore');
     }
     function details(p, t, s, dist){

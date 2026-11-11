@@ -297,7 +297,7 @@
     host.classList.add('ft-root');
     host.innerHTML = '<section class="bt-problem ft-card">' +
       '<div class="ft-dock"><div class="ft-pair"><div class="ft-scenesel"></div><div class="ft-fluidsel"></div></div>' +
-      '<div class="ft-grp" data-g="obj"><div class="ft-chips ls-scroll" role="group" aria-label="Object">' + Object.keys(FT.OBJECTS).map(function(k){ return '<button type="button" class="bt-btn" data-obj="' + k + '" aria-pressed="false">' + esc(FT.OBJECTS[k].name) + '</button>'; }).join('') + '</div></div>' +
+      '<div class="ft-grp" data-g="obj"></div>' +   // pass 3: the object is one select, not four chips
       '<div class="ft-grp" data-g="float"><div class="bt-buttons"><button type="button" class="btn-press sm ft-drop">Drop it in</button><button type="button" class="bt-btn ft-push">Push it under</button></div></div>' +
       '<div class="ft-grp" data-g="scale"></div><div class="ft-grp" data-g="pressure"></div><div class="ft-grp" data-g="pipe"></div><div class="ft-grp" data-g="hole"></div></div>' +
       '<div class="ft-view show-scene"><div class="ft-vtoggle tseg" role="group" aria-label="Show"><button type="button" data-v="scene" aria-pressed="true" class="on">Tank</button><button type="button" data-v="fbd" aria-pressed="false" class="ft-v-fbd" hidden>Forces</button><button type="button" data-v="panel" aria-pressed="false">Graph</button></div><div class="ft-scene"></div><div class="ft-panel"></div></div>' +
@@ -350,7 +350,9 @@
     host.querySelector('.ft-scenesel').appendChild(sceneSel.el);
     var fluidSel = T.choiceSelect({ label: 'Fluid', options: Object.keys(FT.FLUIDS).map(function(k){ return { value: k, label: FT.FLUIDS[k].name }; }), value: st.fluid, onChange: function(v){ touched(); st.fluid = v; if(st.scene === 'float') drop(); else draw(); } });
     host.querySelector('.ft-fluidsel').appendChild(fluidSel.el);
-    $$('[data-obj]').forEach(function(b){ b.addEventListener('click', function(){ st.obj = b.getAttribute('data-obj'); if(st.scene === 'float') drop(); else { touched(); draw(); } }); });
+    var objSel = T.choiceSelect({ label: 'Object', value: st.obj, options: Object.keys(FT.OBJECTS).map(function(k){ return { value: k, label: FT.OBJECTS[k].name }; }),
+      onChange: function(v){ st.obj = v; if(st.scene === 'float') drop(); else { touched(); draw(); } } });
+    objSel.el.classList.add('ft-objsel'); grp('obj').appendChild(objSel.el);
     host.querySelector('.ft-drop').addEventListener('click', function(){ drop(); });
     view.querySelectorAll('.ft-vtoggle button').forEach(function(b){ b.addEventListener('click', function(){
       // Phone, Spring scale: "Forces" and "Graph" each give the stage to one of the panel's two figures.
@@ -556,7 +558,7 @@
     var lastHead = '';
     function draw(){
       drawScene(); plotPanel();
-      $$('[data-obj]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-obj') === st.obj)); });
+      if(objSel && objSel.value() !== st.obj) objSel.set(st.obj);
       if(st.scene === 'hole' && st.yh > st.H - 0.05 && sl.yh){ /* allowed: a hole above the water gives no jet */ }
       var r = readouts();
       T.explain(host.querySelector('.ft-say') || $('.ft-say'), r.head, r.body);

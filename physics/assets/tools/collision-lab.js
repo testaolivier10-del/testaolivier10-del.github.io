@@ -95,7 +95,7 @@
     seg.innerHTML = '<button type="button" class="bt-btn" data-mode="collide" aria-pressed="true">Collision</button><button type="button" class="bt-btn" data-mode="explode" aria-pressed="false">Explosion</button>';
     var top = document.createElement('div'); top.className = 'cl-top'; top.appendChild(seg); top.appendChild(pane.querySelector('.cl-tabs'));
     $('.cl-stage').insertBefore(top, $('.cl-stage').firstChild);
-    var eS = T.slider({ label: 'Bumper: Velcro (sticky) to spring (elastic)', min: 0, max: 1, step: 0.05, value: st.e, decimals: 2, onInput: function(v){ st.e = v; rebuild(); } });
+    var eS = T.slider({ label: 'Bounce e: 0 sticky Velcro, 1 elastic spring', min: 0, max: 1, step: 0.05, value: st.e, decimals: 2, onInput: function(v){ st.e = v; rebuild(); } });
     eS.el.classList.add('cl-e');
     ctl.appendChild(eS.el);
     var btns = document.createElement('div'); btns.className = 'bt-buttons cl-btns';
@@ -152,7 +152,7 @@
       // row higher, each starting over its own cart; the CM marker on top.
       var ay = y - 88;
       // 30 px per m/s; an arrow that would leave the picture starts further in.
-      var va = function(x, v, yy, lab){ var len = v * 30, x0 = Math.max(12 - Math.min(0, len) + 18, Math.min(W - (tph ? 30 + 24 * (H / Math.max(1, ($('.cl-track').getBoundingClientRect().height || H))) : 30) - Math.max(0, len), x)); return S.arrow(x0, yy, len, 0, { cls: 'vel', label: Math.abs(v) > 0.2 ? lab : '' }); };
+      var va = function(x, v, yy, lab){ var len = v * 30, x0 = Math.max(12 - Math.min(0, len) + 18, Math.min(W - (tph ? 30 + 24 * (H / Math.max(1, ($('.cl-track').getBoundingClientRect().height || H))) : 30) - Math.max(0, len), x)); return Math.abs(v) < 0.2 ? '' : S.arrow(x0, yy, len, 0, { cls: 'vel', label: lab }); };   // pass 3: no stray stub when a cart is (nearly) at rest
       out += va(x1, s.v1, ay, 'v_A') + va(x2, s.v2, ay - rowv, 'v_B');
       // Center of mass: a marker over the rail that glides at constant velocity.
       var cx = px(s.xcm), cy = ay - 2 * rowv;
@@ -175,7 +175,8 @@
         out += '<rect class="cl-ghost" x="' + n(x - 3) + '" y="' + n(h0 >= 0 ? zero - h0 : zero) + '" width="' + n(bw2 + 6) + '" height="' + n(Math.abs(h0)) + '"/>';
       };
       // Momentum, a signed axis.
-      var half2 = BW / 2, gap = (half2 - 20) / 3, bw2 = Math.min(34, gap * 0.6);
+      // Pass 3: before the crash only momentum shows (across the whole panel); kinetic energy joins at contact.
+      var pOnly = !R.Tc || t < R.T0, half2 = pOnly ? BW + 8 : BW / 2, gap = (half2 - 20) / 3, bw2 = Math.min(34, gap * 0.6);
       var tight = BW < 460;
       out += '<text class="cl-h" x="10" y="16">' + (tight ? 'p (kg·m/s)' : 'Momentum (kg·m/s)') + '</text><line class="cl-zero" x1="10" x2="' + n(half2 - 8) + '" y1="' + n(mid) + '" y2="' + n(mid) + '"/>';
       [['A', p[0], p0[0], 'cl-a'], ['B', p[1], p0[1], 'cl-b'], ['Total', p[0] + p[1], p0[0] + p0[1], 'cl-tot']].forEach(function(b, i){
@@ -183,8 +184,8 @@
         out += '<text class="cl-bl" x="' + (x + bw2 / 2) + '" y="' + (BH - 6) + '" text-anchor="middle">' + b[0] + '</text><text class="cl-bv" x="' + (x + bw2 / 2) + '" y="' + n(b[1] >= 0 ? mid - b[1] / pmax * half - 5 : mid - b[1] / pmax * half + 13) + '" text-anchor="middle">' + F(b[1], 2) + '</text>';
       });
       // Kinetic energy, from zero.
-      out += '<text class="cl-h" x="' + n(half2 + 10) + '" y="16">' + (tight ? 'K (J)' : 'Kinetic energy (J)') + '</text><line class="cl-zero" x1="' + n(half2 + 4) + '" x2="' + (BW - 6) + '" y1="' + bot + '" y2="' + bot + '"/><line class="cl-div" x1="' + n(half2) + '" x2="' + n(half2) + '" y1="24" y2="' + (BH - 4) + '"/>';
-      [['A', K[0], K0[0], 'cl-a'], ['B', K[1], K0[1], 'cl-b'], ['Total', K[0] + K[1], K0[0] + K0[1], 'cl-tot']].forEach(function(b, i){
+      if(!pOnly) out += '<text class="cl-h" x="' + n(half2 + 10) + '" y="16">' + (tight ? 'K (J)' : 'Kinetic energy (J)') + '</text><line class="cl-zero" x1="' + n(half2 + 4) + '" x2="' + (BW - 6) + '" y1="' + bot + '" y2="' + bot + '"/><line class="cl-div" x1="' + n(half2) + '" x2="' + n(half2) + '" y1="24" y2="' + (BH - 4) + '"/>';
+      if(!pOnly) [['A', K[0], K0[0], 'cl-a'], ['B', K[1], K0[1], 'cl-b'], ['Total', K[0] + K[1], K0[0] + K0[1], 'cl-tot']].forEach(function(b, i){
         var x = half2 + 10 + gap * (i + 0.5) - bw2 / 2; col(i, x, b[1], b[2], Kmax, b[3], bot, bot - top);
         out += '<text class="cl-bl" x="' + (x + bw2 / 2) + '" y="' + (BH - 6) + '" text-anchor="middle">' + b[0] + '</text><text class="cl-bv" x="' + (x + bw2 / 2) + '" y="' + n(bot - b[1] / Kmax * (bot - top) - 5) + '" text-anchor="middle">' + F(b[1], 2) + '</text>';
       });

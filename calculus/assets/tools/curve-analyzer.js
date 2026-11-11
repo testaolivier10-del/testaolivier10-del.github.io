@@ -67,7 +67,7 @@
         '<div class="ca-ctl">' +
           (scenes.length ? '<div class="ca-views ls-seg" role="group" aria-label="View"><button type="button" class="bt-mode" data-v="curves" aria-pressed="true">Curves</button><button type="button" class="bt-mode" data-v="opt" aria-pressed="false">Optimize</button></div>' : '') +
           '<div class="ca-chips ls-scroll" role="group" aria-label="Function"></div>' +
-          '<div class="ca-gview ls-seg" role="group" aria-label="Graphs shown"><button type="button" class="bt-mode" data-k="all" aria-pressed="true">All three</button><button type="button" class="bt-mode" data-k="f" aria-pressed="false">f only</button><button type="button" class="bt-mode" data-k="fp" aria-pressed="false">f′ only</button><button type="button" class="bt-mode" data-k="fpp" aria-pressed="false">f″ only</button></div>' +
+          '<div class="ca-gview ls-seg" role="group" aria-label="Graphs shown"><button type="button" class="bt-mode" data-k="f" aria-pressed="false">f only</button><button type="button" class="bt-mode" data-k="ffp" aria-pressed="true">f and f′</button><button type="button" class="bt-mode" data-k="all" aria-pressed="false">Add f″</button></div>' +
           '<div class="ca-slot"></div>' +
         '</div>' +
         '<div class="ca-say"></div>' +
@@ -90,7 +90,10 @@
     function buildChips(){
       var list = st.view === 'curves' ? curves.map(function(id){ return [id, CA.CURVES[id].name]; }) : scenes.map(function(id){ return [id, CA.SCENES[id].name]; });
       var cur = st.view === 'curves' ? st.id : st.sid;
-      chips.innerHTML = list.map(function(c){ return '<button type="button" class="bt-btn ca-chip" data-id="' + c[0] + '" aria-pressed="' + (c[0] === cur) + '">' + esc(c[1]) + '</button>'; }).join('');
+      // Pass 3: three functions show; the rest sit behind More (opened for good once used, or when one of them is on).
+      var few = st.view === 'curves' && list.length > 4 && !st.moreFns && list.slice(0, 3).some(function(c){ return c[0] === cur; });
+      chips.innerHTML = (few ? list.slice(0, 3) : list).map(function(c){ return '<button type="button" class="bt-btn ca-chip" data-id="' + c[0] + '" aria-pressed="' + (c[0] === cur) + '">' + esc(c[1]) + '</button>'; }).join('') +
+        (few ? '<button type="button" class="bt-btn ca-chip ca-more-fns" aria-expanded="false">More</button>' : '');
       chips.setAttribute('aria-label', st.view === 'curves' ? 'Function' : 'Scene');
     }
     function buildSlider(){
@@ -112,17 +115,23 @@
       buildChips(); buildSlider(); gl = null; ol = null; draw(true);
     }
     function setCurve(id){
-      pause(); st.id = id; var c = cv(); st.x = c.dom[0] + (c.dom[1] - c.dom[0]) * 0.18;
+      pause(); st.id = id; var c = cv(), span = c.dom[1] - c.dom[0], fx = info().feats.map(function(f){ return f.x; });
+      // Pass 3: the cursor starts clear of every marked feature, so its dot never sits on a label.
+      // (a label beside a point runs to its right, so the clear gap on that side is wider).
+      var bestD = -1; st.x = c.dom[0] + span * 0.18;
+      for(var q = 0.12; q <= 0.88; q += 0.01){ var x = c.dom[0] + span * q, d = fx.reduce(function(m, z){ return Math.min(m, x < z ? z - x : (x - z) * 0.55); }, Infinity); if(d > bestD + 1e-9){ bestD = d; st.x = Math.round(x * 100) / 100; } }
       buildChips(); buildSlider(); gl = null;
       // the sign charts build themselves, left to right
-      st.reveal = 0;
-      anim = P.loop(function(dt, t){ st.reveal = Math.min(1, t / 1.4); drawCurves(); if(st.reveal >= 1) return false; }, { duration: 1.4, still: function(){ st.reveal = 1; }, onEnd: function(){ st.reveal = 1; draw(true); } });
+      // Pass 3: drawn whole on the first open (a half-drawn strip read as wrong); a quick sweep on a new function.
+      st.reveal = st.opened ? 0 : 1; st.opened = true;
+      anim = P.loop(function(dt, t){ st.reveal = Math.min(1, t / 0.6); drawCurves(); if(st.reveal >= 1) return false; }, { duration: 0.6, still: function(){ st.reveal = 1; }, onEnd: function(){ st.reveal = 1; draw(true); } });
       anim.start();
       draw(true);
     }
     function pause(){ if(anim) anim.stop(); if(st.reveal < 1){ st.reveal = 1; } }
     chips.addEventListener('click', function(e){
       var b = e.target.closest('.ca-chip'); if(!b) return; touch();
+      if(b.classList.contains('ca-more-fns')){ st.moreFns = true; buildChips(); var nb = chips.querySelectorAll('.ca-chip')[3]; if(nb) nb.focus(); return; }
       if(st.view === 'curves'){ if(b.getAttribute('data-id') !== st.id) setCurve(b.getAttribute('data-id')); }
       else { st.sid = b.getAttribute('data-id'); st.u = sc().start; buildChips(); buildSlider(); ol = null; draw(true); }
     });
@@ -141,19 +150,20 @@
     function phone(){ return !!(LS && LS.root && LS.root.classList.contains('ls-phone')); }
     /* Not chosen yet: all three, except on a phone on its side, where three
        graphs would be slivers: f with both sign charts. */
-    function gview(){ return st.gv || (phone() && window.innerWidth > window.innerHeight ? 'f' : 'all'); }
+    /* Pass 3 (judge c): every size opens on f with f′ and its sign chart; f″ and its sign chart join on "Add f″". */
+    function gview(){ return st.gv || (phone() && window.innerWidth > window.innerHeight ? 'f' : 'ffp'); }
     function rowKeys(){
-      var v = phone() ? gview() : 'all';
+      var v = gview();
       var gx = host.querySelector('.ca-gview') || (LS && LS.root.querySelector('.ca-gview'));
       if(gx) gx.querySelectorAll('.bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x.getAttribute('data-k') === gview())); });
-      return v === 'f' ? ['f', 'sfp', 'sfpp'] : v === 'fp' ? ['fp', 'sfp'] : v === 'fpp' ? ['fpp', 'sfpp'] : ['f', 'fp', 'sfp', 'fpp', 'sfpp'];
+      return v === 'f' ? ['f', 'sfp', 'sfpp'] : v === 'ffp' ? ['f', 'fp', 'sfp'] : v === 'fp' ? ['fp', 'sfp'] : v === 'fpp' ? ['fpp', 'sfpp'] : ['f', 'fp', 'sfp', 'fpp', 'sfpp'];
     }
     function layout(){
       var c = cv(), w = Math.max(280, Math.round(gwrap.clientWidth || 600)), h = Math.max(200, Math.round(gwrap.clientHeight || 420));
       // On a phone the sign rows and the gaps are slimmer, so the three graph
       // panels get the height (they were about 130 px each; audit 2026-10).
       var ph = phone(), L = w < 420 ? 40 : 46, R = 12, T0 = ph ? 2 : 6, row = ph ? 18 : w < 420 ? 20 : 22, gap = ph ? 4 : 8, axis = ph ? 22 : 20;
-      var ks = rowKeys(), WT = { f: 0.38, fp: 0.31, fpp: 0.31 }, nS = ks.filter(function(k){ return k.charAt(0) === 's'; }).length;
+      var ks = rowKeys(), WT = { f: 0.38, fp: ks.indexOf('fpp') < 0 ? 0.38 : 0.31, fpp: 0.31 }, nS = ks.filter(function(k){ return k.charAt(0) === 's'; }).length;
       var wsum = ks.reduce(function(t, k){ return t + (WT[k] || 0); }, 0), avail = h - T0 - axis - nS * row - (ks.length - 1) * gap;
       var FN = { f: c.f, fp: c.fp, fpp: c.fpp };
       var a = c.dom[0], b = c.dom[1], rows = {}, y = T0;
@@ -203,7 +213,7 @@
     }
     function drawCurves(){
       if(!gl) gl = layout();
-      var g = gl, c = cv(), I = info(), A = I.A, o = [], NAME = { f: 'f', fp: 'f′', fpp: 'f″' }, CLS = { f: 's1', fp: 's2', fpp: 's3' };
+      var fNameRight = false, g = gl, c = cv(), I = info(), A = I.A, o = [], NAME = { f: 'f', fp: 'f′', fpp: 'f″' }, CLS = { f: 's1', fp: 's2', fpp: 's3' };
       gsvg.setAttribute('viewBox', '0 0 ' + g.w + ' ' + g.h);
       var xt = c.piX ? P.piTicks(g.a, g.b) : P.ticks(g.a, g.b, Math.max(4, Math.round(g.pw / 70)));
       ['f', 'fp', 'fpp'].filter(function(k){ return g.rows[k]; }).forEach(function(k){
@@ -213,7 +223,7 @@
         P.ticks(r.lo, r.hi, 3).forEach(function(v){ var py = r1(g.gy(k, v)); o.push('<line class="ca-grid' + (Math.abs(v) < 1e-12 ? ' ca-zero' : '') + '" x1="' + g.L + '" y1="' + py + '" x2="' + (g.L + g.pw) + '" y2="' + py + '"/><text class="ca-tk" x="' + (g.L - 5) + '" y="' + (+py + 3.5) + '" text-anchor="end">' + F(v, Math.abs(v) < 10 && Math.abs(v - Math.round(v)) > 1e-9 ? 1 : 0) + '</text>'); });
         var cp = curvePath(g, k, CLS[k]);
         o.push('<path class="ca-curve ' + CLS[k] + '" d="' + cp.d + '"/>' + cp.arrows);
-        o.push('<text class="ca-pl ' + CLS[k] + '" x="' + (g.L + 6) + '" y="' + r1(r.y0 + 15) + '">' + NAME[k] + '</text>');
+        o.push('<text class="ca-pl ' + CLS[k] + '"' + (k === 'f' ? ' data-fname="1"' : '') + ' x="' + (g.L + 6) + '" y="' + r1(r.y0 + 15) + '">' + NAME[k] + '</text>');
       });
       // the closed interval's endpoints on f, and the candidates' winners
       if(g.rows.f) [g.a, g.b].forEach(function(x){ o.push('<circle class="ca-end" cx="' + r1(g.gx(x)) + '" cy="' + r1(g.gy('f', c.f(x))) + '" r="4.5"/>'); });
@@ -241,7 +251,7 @@
           if(A.infl.some(function(z){ return Math.abs(z - ft.x) < 1e-9; })) absTag += ' · inflection';
           // above a maximum (below a minimum); beside it when the panel's edge is too close
           var ly = ft.kind === 'min' ? +py + 17 : +py - 9, fr = g.rows.f, side = ly < fr.y0 + 12 || ly > fr.y0 + fr.h - 2, lx = +px, la = 'middle';
-          if(side){ ly = +py + 4; la = px > g.L + g.pw * 0.6 ? 'end' : 'start'; lx = +px + (la === 'start' ? 10 : -10); }
+          if(side){ ly = +py + 4; la = px > g.L + g.pw * 0.6 ? 'end' : 'start'; lx = +px + (la === 'start' ? 12 : -12); }
           o.push('<text class="ca-flab" x="' + r1(lx) + '" y="' + r1(ly) + '" text-anchor="' + la + '">' + (ft.kind === 'max' ? 'rel max' : ft.kind === 'min' ? 'rel min' : 'neither') + absTag + '</text>');
         } else {
           if(g.rows.fpp) o.push('<circle class="ca-z s3" cx="' + px + '" cy="' + r1(g.gy('fpp', 0)) + '" r="4"/>');
@@ -254,9 +264,12 @@
       // absolute extrema on the closed interval
       [['abs max', A.absMax], ['abs min', A.absMin]].filter(function(p){ return g.rows.f && p[1].role === 'endpoint'; }).forEach(function(p){
         var px = g.gx(p[1].x), py = g.gy('f', p[1].y), right = px < g.L + g.pw * 0.8, top = g.rows.f.y0, bot = top + g.rows.f.h;
-        var ty = p[0] === 'abs max' ? (py < top + 24 ? py + 16 : py - 8) : (py > bot - 14 ? py - 10 : py + 16);
+        var ty = p[0] === 'abs max' ? (py < top + 24 ? (py - 7 > top + 11 ? py - 7 : py + 16) : py - 8) : (py > bot - 14 ? py - 10 : py + 16);
+        // Pass 3: an end label in the panel's top left corner would sit on the name "f": the name moves to the right.
+        if(right && px < g.L + 50 && ty < top + 26) fNameRight = true;
         o.push('<text class="ca-abs" x="' + r1(px + (right ? 8 : -8)) + '" y="' + r1(ty) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + p[0] + '</text>');
       });
+      if(fNameRight){ var ix = o.findIndex(function(t){ return t.indexOf('data-fname') > 0; }); if(ix >= 0) o[ix] = o[ix].replace('x="' + (g.L + 6) + '"', 'x="' + (g.L + g.pw - 8) + '" text-anchor="end"'); }
       // x-axis labels
       xt = xt.filter(function(v){ return g.gx(v) < g.L + g.pw - 18 || v === g.a; });
       o.push('<g class="ca-xaxis">' + xt.map(function(v){ return '<text x="' + r1(g.gx(v)) + '" y="' + r1(g.h - 5) + '" text-anchor="middle">' + (c.piX ? piLab(v) : F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1)) + '</text>'; }).join('') + '<text class="ca-xl" x="' + (g.L + g.pw) + '" y="' + r1(g.h - 5) + '" text-anchor="end">x</text></g>');
@@ -374,13 +387,16 @@
         var c = cv(), I = info(), A = I.A, ft = near(), fp = c.fp(st.x), fpp = c.fpp(st.x), v = vals3();
         var inc = !isFinite(fp) ? 'f′ is undefined here' : Math.abs(fp) < 1e-9 ? 'f′ = 0 here' : fp > 0 ? 'f′ > 0, so f is increasing' : 'f′ < 0, so f is decreasing';
         var cc = !isFinite(fpp) ? 'f″ is undefined' : Math.abs(fpp) < 1e-9 ? 'f″ = 0' : fpp > 0 ? 'f″ > 0, so f is concave up' : 'f″ < 0, so f is concave down';
-        head = ft ? html(ft.text) : esc('At x = ' + xlabel(st.x, c) + ': ' + inc + '; ' + cc + '.');
+        var showPP = !!(gl && gl.rows.fpp) || gview() === 'all' || gview() === 'fpp';
+        head = ft ? html(ft.text) : esc('At x = ' + xlabel(st.x, c) + ': ' + (showPP ? inc + '; ' + cc : inc) + '.');
         // Why, kept short (audit 2026-10: it ran to 200 words): the features
         // and one rule; the candidates test is a table under Formulas & numbers.
         body = '<ol class="ca-feats">' + I.feats.map(function(f2){ return '<li' + (ft === f2 ? ' class="is-on"' : '') + '>' + html(f2.text) + '</li>'; }).join('') + '</ol>' +
           '<p class="ca-rule"><b>Justify in words:</b> name the function that changes sign, from what to what, and where. No sign change, no extremum (or inflection). Absolute extrema: the candidates test, under Formulas & numbers.</p>';
-        pills = narrow() || phone() ? [{ html: '<span class="ca-pk s1">f</span> ' + v.f + ' · <span class="ca-pk s2">f′</span> ' + v.fp + ' · <span class="ca-pk s3">f″</span> ' + v.fpp, tone: 'ghost' }]
-          : [{ k: 'f', html: v.f, tone: 'readout' }, { k: 'f′', html: '<span class="ca-pv s2">' + v.fp + '</span>', tone: 'readout' }, { k: 'f″', html: '<span class="ca-pv s3">' + v.fpp + '</span>', tone: 'readout' }];
+        // Pass 3: two numbers at most, the ones for the graphs on screen (f and f′; f′ and f″ once f″ is added).
+        var pk = showPP ? [['f′', 's2', v.fp], ['f″', 's3', v.fpp]] : [['f', 's1', v.f], ['f′', 's2', v.fp]];
+        pills = narrow() || phone() ? [{ html: pk.map(function(q){ return '<span class="ca-pk ' + q[1] + '">' + q[0] + '</span> ' + q[2]; }).join(' · '), tone: 'ghost' }]
+          : pk.map(function(q){ return { k: q[0], html: q[1] === 's1' ? q[2] : '<span class="ca-pv ' + q[1] + '">' + q[2] + '</span>', tone: 'readout' }; });
         det = '<h3 class="ls-title-l">' + esc(c.name) + ' on [' + xlabel(c.dom[0], c) + ', ' + xlabel(c.dom[1], c) + ']</h3><table class="ls-tbl ca-ftbl"><tbody>' +
           [['f(x)', c.tex.f], ['f′(x)', c.tex.fp], ['f″(x)', c.tex.fpp]].map(function(r){ return '<tr><th scope="row">' + r[0] + '</th><td>' + tex(r[1]) + '</td></tr>'; }).join('') + '</tbody></table>' +
           '<h3 class="ls-title-l">Candidates test</h3><table class="ls-tbl"><thead><tr><th scope="col">x</th><th scope="col">Why a candidate</th><th scope="col" class="r">f(x)</th></tr></thead><tbody>' +

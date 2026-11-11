@@ -71,7 +71,7 @@
         '<div class="ml-ctl">' +
           (hasV ? '<div class="ml-modes ls-seg" role="group" aria-label="What is given"><button type="button" class="bt-mode" data-g="x" aria-pressed="true">Position given</button><button type="button" class="bt-mode" data-g="v" aria-pressed="false">Velocity given</button></div>' : '') +
           '<div class="ml-chips ls-scroll" role="group" aria-label="Motion"></div>' +
-          '<div class="ml-view ls-seg" role="group" aria-label="Graphs shown"><button type="button" class="bt-mode" data-k="all" aria-pressed="true">x, v, a</button><button type="button" class="bt-mode" data-k="x" aria-pressed="false">x only</button><button type="button" class="bt-mode" data-k="v" aria-pressed="false">v only</button><button type="button" class="bt-mode" data-k="a" aria-pressed="false">a only</button></div>' +
+          '<div class="ml-view ls-seg" role="group" aria-label="Graphs shown"><button type="button" class="bt-mode" data-k="x" aria-pressed="false">x only</button><button type="button" class="bt-mode" data-k="xv" aria-pressed="true">x and v</button><button type="button" class="bt-mode" data-k="all" aria-pressed="false">Add a</button></div>' +
           '<div class="ml-time"><button type="button" class="bt-btn ls-btn ls-pri ml-play">Play</button><div class="ml-slot"></div></div>' +
         '</div>' +
         '<div class="ml-say"></div>' +
@@ -93,8 +93,9 @@
     function phone(){ return !!(LS && LS.root && LS.root.classList.contains('ls-phone')); }
     /* Not chosen yet: all three, except on a phone on its side, where three
        graphs would be slivers: v alone (its sign and the bands tell most). */
-    function view(){ return st.view || (phone() && window.innerWidth > window.innerHeight ? 'v' : 'all'); }
-    function keys(){ var v = view(); return v === 'all' || !phone() ? ['x', 'v', 'a'] : [v]; }
+    /* Pass 3 (judge c): every size opens on x and v; a joins on "Add a" (the switch shows on every size). */
+    function view(){ return st.view || (phone() && window.innerWidth > window.innerHeight ? 'v' : 'xv'); }
+    function keys(){ var v = view(); return v === 'all' ? ['x', 'v', 'a'] : v === 'xv' ? ['x', 'v'] : [v]; }
     function chipsFor(g){
       // On a phone one row holds every motion (no room for the switch above it).
       chips.innerHTML = ids.filter(function(id){ return narrow() || ML.MOTIONS[id].mode === g; }).map(function(id){
@@ -271,8 +272,10 @@
       var m = mo(), t = st.t, x = ML.xAt(m, t), v = m.v(t), a = m.a(t), disp = x - ML.xAt(m, 0), dist = m.mode === 'v' ? ML.distTo(m, t) : 0;
       if(LS){
         var narrow = phone(); try{ narrow = narrow || matchMedia('(max-width: 599.98px)').matches; }catch(e){}
-        var pills = narrow ? [{ html: '<span class="ml-pk s1">x</span> ' + F(x, 2) + ' · <span class="ml-pk s2">v</span> ' + F(v, 2) + ' · <span class="ml-pk s3">a</span> ' + F(a, 2), tone: 'ghost' }]
-          : [{ k: 'x', html: F(x, 2) + ' m', tone: 'readout' }, { k: 'v', html: F(v, 2) + ' m/s', tone: 'readout' }, { k: 'a', html: F(a, 2) + ' m/s²', tone: 'readout' }];
+        // Pass 3: two numbers at most, for the graphs on screen.
+        var ks = keys(), shown = ks.length > 2 ? ['v', 'a'] : ks.length === 1 && ks[0] === 'x' ? ['x', 'v'] : ks, VAL = { x: [x, ' m', 's1'], v: [v, ' m/s', 's2'], a: [a, ' m/s²', 's3'] };
+        var pills = narrow ? [{ html: shown.map(function(k){ return '<span class="ml-pk ' + VAL[k][2] + '">' + k + '</span> ' + F(VAL[k][0], 2); }).join(' · '), tone: 'ghost' }]
+          : shown.map(function(k){ return { k: k, html: F(VAL[k][0], 2) + VAL[k][1], tone: 'readout' }; });
         LS.pills(pills, 'left', 'explore');
         var right = [{ html: 't = ' + F(t, 2) + ' s', tone: st.playing ? 'accent' : 'ghost' }];
         if(m.mode === 'v') right = [{ html: 'Δx ' + F(disp, 2) + ' · distance ' + F(dist, 2), tone: 'ghost' }].concat(narrow ? [] : right);

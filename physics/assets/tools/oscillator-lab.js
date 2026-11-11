@@ -146,7 +146,7 @@
     }
     function play(on){
       playing = on; playBtn.setAttribute('aria-pressed', String(on)); playBtn.textContent = on ? 'Pause' : 'Play';
-      if(on){ cue.done(); loop.start(); if(S.reduced()){ playing = false; playBtn.setAttribute('aria-pressed', 'false'); playBtn.textContent = 'Play'; } } else loop.stop();
+      if(on){ cue.done(); stage.classList.add('ol-e-on'); loop.start(); if(S.reduced()){ playing = false; playBtn.setAttribute('aria-pressed', 'false'); playBtn.textContent = 'Play'; } } else loop.stop();
     }
     playBtn.addEventListener('click', function(){ play(!playing); });
     dock.querySelector('.ol-reset').addEventListener('click', function(){ loop.stop(); release(); if(playing || S.reduced()) { playing = false; play(true); } else draw(); });
@@ -261,9 +261,9 @@
        left of the zero line, clear of the tick numbers. Desktop: the fixed 360 x 104 frame. */
     function graphGeom(){
       var on = stage.querySelector('.ol-graph.is-on'), gw = (on && on.clientWidth) || stage.querySelector('.ol-graphs').clientWidth || 0;
-      gPh = phoneNow() && gw > 200;
+      gPh = gw > 200;   // one graph at a time on every size (pass 3), drawn one unit per CSS px
       var low = window.innerHeight <= 540;   // phone on its side: a shorter graph, the scene keeps its share
-      if(gPh){ GW = Math.round(Math.min(640, gw)); GH = low ? 100 : 124; GL = 58; GR = 10; GT = 8; GB = 22; }
+      if(gPh){ GW = Math.round(Math.min(phoneNow() ? 640 : 900, gw)); GH = low ? 100 : phoneNow() ? 124 : 150; GL = 58; GR = 10; GT = 8; GB = 22; }
       else { GW = 360; GH = 104; GL = 46; GR = 10; GT = 8; GB = 22; }
     }
     function buildGraphs(){
@@ -331,7 +331,8 @@
         (sys.type === 'pendulum' ? ' For the pendulum the graphs show s = ℓ θ, the distance along the arc from the bottom (positive to the right), and the bob\'s speed and acceleration along the arc.' : sys.type === 'vspring' ? ' Here x is measured downward from the equilibrium position, where the spring is already stretched m g / k.' : '') + '</p>';
       T.explain(why, head, body);
       if(s){
-        s.caption(head, 'explore');
+        // The T pill shows the period, so the caption does not repeat it (pass 3).
+        s.caption(head.indexOf('<b>T = ') === 0 ? head.replace(/^<b>T = [^<]*<\/b> /, '') : head, 'explore');
         s.pills([{ k: 'T', html: F(tMeas || Tl, 2) + ' s', tone: 'readout' }], 'left', 'explore');
         s.pills([{ html: tMeas ? 'measured' : 'from the formula', tone: 'ghost' }], 'right', 'explore');
       }
@@ -395,7 +396,7 @@
     buildVars(); release(); draw();
     if(window.ResizeObserver){ var lastW = 0; new ResizeObserver(function(){ var w = sceneEl.clientWidth; if(Math.abs(w - lastW) > 40){ lastW = w; built = false; draw(); } }).observe(sceneEl);
       // Phone graphs are drawn one unit per CSS px: redraw when their box changes width.
-      var gBox = stage.querySelector('.ol-graphs'), lastG = 0; new ResizeObserver(function(){ var w = gBox.clientWidth; if(phoneNow() && Math.abs(w - lastG) > 2){ lastG = w; built = false; draw(); } }).observe(gBox); }
+      var gBox = stage.querySelector('.ol-graphs'), lastG = 0; new ResizeObserver(function(){ var w = gBox.clientWidth; if(Math.abs(w - lastG) > 2){ lastG = w; built = false; draw(); } }).observe(gBox); }
     return {
       stop: function(){ loop.stop(); playing = false; playBtn.textContent = 'Play'; playBtn.setAttribute('aria-pressed', 'false'); },
       studio: function(pane, studio){
