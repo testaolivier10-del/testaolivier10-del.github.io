@@ -376,7 +376,7 @@
   }
   /* Labels carry their hydrogens (OH, CH₂, NH₃⁺): the hydrogen is the thing
      being asked about, and a skeletal C with no H on it hides it. */
-  function drawing(st){
+  function drawing(st, minW){
     var mol = ChemC.toMolecule(st);
     Object.keys(st.atoms).forEach(function(k){
       var a = st.atoms[k], m = mol.atoms[k];
@@ -398,7 +398,7 @@
     var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k], pd = t.r + (t.lp ? 11 : 4);
       x0 = Math.min(x0, t.x - pd); x1 = Math.max(x1, t.x + pd); y0 = Math.min(y0, t.y - pd); y1 = Math.max(y1, t.y + pd); });
-    var w = Math.max(220, x1 - x0), hgt = Math.max(110, y1 - y0), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    var w = Math.max(minW || 220, x1 - x0), hgt = Math.max(minW ? minW * 0.6 : 110, y1 - y0), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
     mol.viewBox = Math.round(cx - w / 2) + ' ' + Math.round(cy - hgt / 2) + ' ' + Math.round(w) + ' ' + Math.round(hgt);
     return mol;
   }
@@ -408,7 +408,154 @@
     opts = opts || {};
     opts.caption = '';
     opts.label = label;
-    return MolR.svg(drawing(st), opts);
+    return MolR.svg(drawing(st, opts.minW), opts);
+  }
+
+  /* ---- The conjugate base, drawn (tool review 2026-11) -------------------
+
+     The idea is that the stronger acid has the more stable conjugate base,
+     so once the call is made each card loses its proton and shows the base:
+       at     the atom the proton leaves (atom keys from the DRAWN formula)
+       share  every atom that carries the charge in some resonance form; a
+              red glow on each, fainter the thinner the charge is spread
+       main   where most of it sits when the sharing is uneven (phenoxide's
+              oxygen, an enolate's oxygen); absent means an even split
+       pull   [from, to] bonds along which an electronegative group pulls
+              density away (induction), drawn as a blue arrow beside the bond
+       partial bonds drawn as the hybrid (a solid line and a dashed one), for
+              the bases whose sharing is between equivalent oxygens or an enolate
+       say    one short line under the picture
+     When the charge is shared, the picture is the hybrid: δ− on each sharing
+     atom and no single "−" badge or lone pairs pinning it to one of them.
+     Amines from ammonium ions are neutral bases: the glow is the lone pair,
+     not a charge. */
+  var CB = {
+    ethane:{ at:'a1', say:'The charge sits on one sp³ carbon, with nothing to help it.' },
+    ethene:{ at:'a1', say:'Charge on one sp² carbon: a little more s character holds it closer.' },
+    ethyne:{ at:'a1', say:'Charge in an sp orbital, 50% s: held close to the carbon nucleus.' },
+    ammonia:{ at:'a1', say:'Charge on one nitrogen, held alone.' },
+    methylamine:{ at:'a2', say:'Charge on one nitrogen, and the CH₃ pushes a little more density onto it.' },
+    water:{ at:'a1', say:'Charge on one oxygen, small and well surrounded by water.' },
+    ethanol:{ at:'a3', say:'Charge on one oxygen, held alone.' },
+    tbuoh:{ at:'a5', say:'Charge on one oxygen, crowded by three methyls that keep solvent away.' },
+    phenol:{ at:'a7', share:['a7','r2','r6','r4'], main:['a7'], say:'Charge spread from the O onto three ring carbons, mostly on the O.' },
+    pnitrophenol:{ at:'a7', share:['a7','r2','r6','r4','a9','a10'], main:['a7','a9','a10'], pull:[['r4','a8']], say:'Charge spread through the ring onto the nitro oxygens, which also pull.' },
+    acetic:{ at:'a4', share:['a3','a4'], partial:[['a2','a3'],['a2','a4']], say:'Charge split evenly over two oxygens.' },
+    formic:{ at:'a3', share:['a2','a3'], partial:[['a1','a2'],['a1','a3']], say:'Charge split evenly over two oxygens, with no CH₃ pushing back.' },
+    benzoic:{ at:'a9', share:['a8','a9'], partial:[['a7','a8'],['a7','a9']], say:'Charge split evenly over two oxygens.' },
+    chloroacetic:{ at:'a5', share:['a4','a5'], partial:[['a3','a4'],['a3','a5']], pull:[['a2','a1']], say:'Two oxygens share the charge, and the Cl pulls density away.' },
+    dichloroacetic:{ at:'a6', share:['a5','a6'], partial:[['a4','a5'],['a4','a6']], pull:[['a2','a1'],['a2','a3']], say:'Two oxygens share it, and two Cl atoms pull.' },
+    trichloroacetic:{ at:'a7', share:['a6','a7'], partial:[['a5','a6'],['a5','a7']], pull:[['a2','a1'],['a2','a3'],['a2','a4']], say:'Two oxygens share it, and three Cl atoms pull.' },
+    tfa:{ at:'a7', share:['a6','a7'], partial:[['a5','a6'],['a5','a7']], pull:[['a2','a1'],['a2','a3'],['a2','a4']], say:'Two oxygens share it, and three F atoms pull hard.' },
+    chloropropanoic:{ at:'a6', share:['a5','a6'], partial:[['a4','a5'],['a4','a6']], pull:[['a2','a1']], say:'Two oxygens share it; the Cl is one carbon further away, so its pull is weak here.' },
+    hf:{ at:'a1', say:'F⁻: a small ion holding the whole charge tightly.' },
+    hcl:{ at:'a1', say:'Cl⁻: a big ion, so the charge is spread over a large volume.' },
+    hbr:{ at:'a1', say:'Br⁻: bigger again, the charge spread thinner still.' },
+    h2s:{ at:'a1', say:'Charge on one large sulfur atom, spread over a big volume.' },
+    ethanethiol:{ at:'a3', say:'Charge on one large sulfur atom, spread over a big volume.' },
+    hcn:{ at:'a1', pull:[['a1','a2']], say:'Charge in an sp orbital on carbon, with the nitrogen pulling.' },
+    acetone:{ at:'a1', share:['a1','a3'], partial:[['a1','a2'],['a2','a3']], main:['a3'], say:'The charge moves from the carbon onto the oxygen (an enolate).' },
+    malonate:{ at:'a6', share:['a6','a5','a8'], main:['a5','a8'], say:'Charge shared by the carbon and two carbonyl oxygens.' },
+    pentanedione:{ at:'a4', share:['a4','a3','a6'], main:['a3','a6'], say:'Charge shared by the carbon and two carbonyl oxygens.' },
+    phenylacetic:{ at:'a10', share:['a9','a10'], partial:[['a8','a9'],['a8','a10']], say:'Charge split evenly over two oxygens; the ring is too far away to share it.' },
+    cyanoacetic:{ at:'a6', share:['a5','a6'], partial:[['a4','a5'],['a4','a6']], pull:[['a3','a2']], say:'Two oxygens share it, and the C≡N group pulls.' },
+    fluoroacetic:{ at:'a5', share:['a4','a5'], partial:[['a3','a4'],['a3','a5']], pull:[['a2','a1']], say:'Two oxygens share it, and the F pulls.' },
+    oxalic:{ at:'a1', share:['a1','a3'], partial:[['a2','a1'],['a2','a3']], pull:[['a2','a4']], say:'Two oxygens share it, and the second COOH pulls.' },
+    benzenesulfonic:{ at:'a10', share:['a8','a9','a10'], partial:[['a7','a8'],['a7','a9'],['a7','a10']], say:'Charge split evenly over three oxygens.' },
+    phenylammonium:{ at:'a7', share:['a7','r2','r6','r4'], main:['a7'], neutral:true, say:'Losing H⁺ gives aniline, whose lone pair spreads into the ring.' },
+    ethylammonium:{ at:'a3', neutral:true, say:'Losing H⁺ gives a neutral amine; its lone pair stays on the N.' },
+    cyclopentadiene:{ at:'r5', share:['r1','r2','r3','r4','r5'], say:'Charge shared equally by all five carbons: the ring becomes aromatic.' },
+    'nitromethane-ab':{ at:'a1', share:['a1','a3','a4'], main:['a3','a4'], say:'Charge moves from the carbon onto the nitro oxygens.' },
+    phenylacetylene:{ at:'a8', say:'Charge in an sp orbital on the end carbon.' },
+    tfe:{ at:'a6', pull:[['a2','a1'],['a2','a3'],['a2','a4']], say:'Charge on one oxygen, but three F atoms pull density away.' },
+    'hydrogen-peroxide':{ at:'a1', pull:[['a1','a2']], say:'Charge on one oxygen, with the second O pulling on it.' }
+  };
+
+  /* The drawn acid with its proton taken off: one H fewer on `at`, a lone
+     pair more, and the charge one lower (an ammonium goes neutral). */
+  function deprotonated(st, key){
+    var a = st.atoms[key];
+    if(!a) return false;
+    if(a.hFixed !== undefined && a.hFixed > 0) a.hFixed--;
+    else if(a.hImplicit > 0) a.hImplicit--;
+    else return false;
+    a.lp = (a.lp || 0) + 1;
+    a.charge = (a.charge || 0) - 1;
+    return true;
+  }
+
+  function cbSvg(acid, opts){
+    var cb = CB[acid.id], st = parseDrawn(DRAWN[acid.id]);
+    if(!cb || !st || !MolR || !deprotonated(st, cb.at)) return '';
+    opts = opts || {};
+    var mol = drawing(st, opts.minW);
+    var share = cb.share || [cb.at], main = cb.main || share;
+    var weight = {};
+    share.forEach(function(k){
+      weight[k] = share.length === 1 ? 1 : (main.length === share.length ? 1 / share.length :
+        (main.indexOf(k) >= 0 ? 0.7 / main.length : 0.3 / (share.length - main.length)));
+    });
+    if(share.length > 1){
+      share.forEach(function(k){ if(mol.atoms[k]){ mol.atoms[k].charge = ''; mol.atoms[k].lp = 0; } });
+      if(cb.neutral && mol.atoms[cb.at]) mol.atoms[cb.at].lp = 1;
+    }
+    var cxm = 0, cym = 0, nat = 0;
+    Object.keys(mol.atoms).forEach(function(k){ cxm += mol.atoms[k].x; cym += mol.atoms[k].y; nat++; });
+    cxm /= nat || 1; cym /= nat || 1;
+    var dashes = (cb.partial || []).map(function(p){
+      var b = mol.bonds.filter(function(x){ return (x.a === p[0] && x.b === p[1]) || (x.a === p[1] && x.b === p[0]); })[0];
+      var A = mol.atoms[p[0]], Z = mol.atoms[p[1]];
+      if(!b || !A || !Z) return '';
+      b.order = 1;
+      var dx = Z.x - A.x, dy = Z.y - A.y, L = Math.sqrt(dx * dx + dy * dy) || 1, ox = -dy / L * 6, oy = dx / L * 6;
+      var mx = (A.x + Z.x) / 2, my = (A.y + Z.y) / 2;
+      if((mx + ox - cxm) * ox + (my + oy - cym) * oy < 0){ ox = -ox; oy = -oy; }
+      return '<line class="ab-partial" x1="' + (A.x + dx * 0.3 + ox).toFixed(1) + '" y1="' + (A.y + dy * 0.3 + oy).toFixed(1) +
+        '" x2="' + (A.x + dx * 0.7 + ox).toFixed(1) + '" y2="' + (A.y + dy * 0.7 + oy).toFixed(1) + '"/>';
+    }).join('');
+    var top = Math.max.apply(null, share.map(function(k){ return weight[k]; }));
+    var halos = '', marks = '';
+    share.forEach(function(k){
+      var t = mol.atoms[k]; if(!t) return;
+      var w = weight[k] / top, r = 15 + 13 * Math.sqrt(weight[k]);
+      halos += '<circle class="ab-q' + (cb.neutral ? ' ab-q--lp' : '') + '" cx="' + t.x.toFixed(1) + '" cy="' + t.y.toFixed(1) + '" r="' + r.toFixed(1) +
+        '" style="opacity:' + (0.28 + 0.6 * w).toFixed(2) + '"/>';
+      if(share.length > 1 && !cb.neutral) marks += '<text class="ab-q__t" x="' + (t.x + r * 0.72).toFixed(1) + '" y="' + (t.y - r * 0.72).toFixed(1) +
+        '" text-anchor="middle"' + (w < 0.9 ? ' style="font-size:12px"' : '') + '>δ−</text>';
+    });
+    // Induction: a blue arrow beside each pulling bond, pointing at the atom that pulls.
+    var pulls = (cb.pull || []).map(function(p){
+      var A = mol.atoms[p[0]], Z = mol.atoms[p[1]]; if(!A || !Z) return '';
+      var dx = Z.x - A.x, dy = Z.y - A.y, L = Math.sqrt(dx * dx + dy * dy) || 1, ux = dx / L, uy = dy / L;
+      var ox = -uy * 11, oy = ux * 11;
+      // the side away from the molecule's center, so it never sits on another bond
+      var mx = (A.x + Z.x) / 2, my = (A.y + Z.y) / 2;
+      if(((mx + ox) - cxm) * ox + ((my + oy) - cym) * oy < 0){ ox = -ox; oy = -oy; }
+      var x1 = A.x + dx * 0.3 + ox, y1 = A.y + dy * 0.3 + oy, x2 = A.x + dx * 0.72 + ox, y2 = A.y + dy * 0.72 + oy;
+      return '<g class="ab-pull"><line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>' +
+        '<path d="M ' + (x2 + ux * 5).toFixed(1) + ' ' + (y2 + uy * 5).toFixed(1) + ' L ' + (x2 - ux * 3 - uy * 5).toFixed(1) + ' ' + (y2 - uy * 3 + ux * 5).toFixed(1) +
+        ' L ' + (x2 - ux * 3 + uy * 5).toFixed(1) + ' ' + (y2 - uy * 3 - ux * 5).toFixed(1) + ' Z"/></g>';
+    }).join('');
+    // The proton that left, drifting away from the atom it came off.
+    var at = mol.atoms[cb.at], vx = 0, vy = 0;
+    mol.bonds.forEach(function(b){
+      var o = b.a === cb.at ? b.b : (b.b === cb.at ? b.a : null);
+      if(o && mol.atoms[o]){ vx += mol.atoms[o].x - at.x; vy += mol.atoms[o].y - at.y; }
+    });
+    var vl = Math.sqrt(vx * vx + vy * vy);
+    var ang = vl ? Math.atan2(-vy, -vx) : -Math.PI / 4;
+    ang += 0.6;   // off the line of the lone pairs and the charge badge
+    var hx = at.x + Math.cos(ang) * 52, hy = at.y + Math.sin(ang) * 52;
+    var hplus = '<g class="ab-hplus" style="--hx:' + (at.x - hx).toFixed(1) + 'px;--hy:' + (at.y - hy).toFixed(1) + 'px">' +
+      '<text x="' + hx.toFixed(1) + '" y="' + (hy + 5).toFixed(1) + '" text-anchor="middle">H⁺</text></g>';
+    mol.decor = halos + dashes;
+    // Room for the glow, the δ marks and the departing H⁺.
+    var vb = mol.viewBox.split(' ').map(Number), x0 = Math.min(vb[0], hx - 20), y0 = Math.min(vb[1], hy - 20);
+    var x1 = Math.max(vb[0] + vb[2], hx + 20), y1 = Math.max(vb[1] + vb[3], hy + 20);
+    share.forEach(function(k){ var t = mol.atoms[k]; if(!t) return; x0 = Math.min(x0, t.x - 34); x1 = Math.max(x1, t.x + 40); y0 = Math.min(y0, t.y - 40); y1 = Math.max(y1, t.y + 34); });
+    mol.viewBox = Math.round(x0) + ' ' + Math.round(y0) + ' ' + Math.round(x1 - x0) + ' ' + Math.round(y1 - y0);
+    var label = 'Conjugate base of ' + acid.name + ': ' + acid.cbase + '. ' + cb.say;
+    return MolR.svg(mol, { caption: '', label: label }).replace('</svg>', pulls + marks + hplus + '</svg>');
   }
 
   /* ---- State ------------------------------------------------------------ */
@@ -558,7 +705,10 @@
     document.getElementById('abCards').innerHTML = [left, right].map(function(a){
       return '<div class="ab-card' + (revealed && a === analyse(left, right).truth ? ' ab-card--win' : '') + '">' +
         '<div class="ab-card__name">' + esc(a.name) + '</div>' +
-        (structSvg(DRAWN[a.id], a.name) || '') +
+        (revealed && CB[a.id]
+          ? '<div class="ab-card__k">Its conjugate base (H⁺ gone)</div>' + (cbSvg(a) || structSvg(DRAWN[a.id], a.name) || '') +
+            '<div class="ab-card__say">' + esc(CB[a.id].say) + '</div>'
+          : (structSvg(DRAWN[a.id], a.name) || '')) +
         '<div class="ab-card__formula">' + esc(a.formula) + '</div>' +
         '<div class="ab-card__row"><span>Acidic proton</span><b>' + esc(a.site) + '</b></div>' +
         '<div class="ab-card__row"><span>Conjugate base</span><b>' + esc(a.cbase) + '</b></div>' +
@@ -750,7 +900,7 @@
         '<button type="button" class="ab-rcard__body" aria-label="' + esc((i + 1) + ': ' + a.name + (rankChecked ? ', pKa ' + a.pKa : '') +
           (rankChecked ? '' : '. Tap, then tap another card to swap; or use the arrow buttons')) + '"' + (rankChecked ? ' disabled' : '') + '>' +
           '<span class="ab-rcard__n">' + (i + 1) + '</span>' +
-          (structSvg(DRAWN[a.id], a.name) || '<span class="tformula">' + esc(a.formula) + '</span>') +
+          (structSvg(DRAWN[a.id], a.name, { minW: 90 }) || '<span class="tformula">' + esc(a.formula) + '</span>') +
           '<span class="ab-rcard__name">' + esc(a.name) + '</span>' +
           (rankChecked ? '<span class="ab-rcard__pka">pK<sub>a</sub> ' + a.pKa + '</span>' : '') +
         '</button>' +
