@@ -381,10 +381,10 @@
         '<div class="cy-cycles ls-scroll" role="group" aria-label="Cycle">' + CY.CYCLE_IDS.map(function(id){ return '<button type="button" class="tchip cy-cy" data-c="' + id + '" aria-pressed="false">' + esc(CY.CYCLES[id].name.replace(' cycle', '')) + '</button>'; }).join('') + '</div>' +
         '<div class="cy-lbl ls-lbl">What people change</div><div class="cy-changes" role="group" aria-label="Human changes"></div>' +
         '<div class="cy-run" data-off="" hidden><div class="cy-yrs"></div><div class="cy-go"><button type="button" class="btn-press sm ls-btn ls-pri cy-play">Pause</button><button type="button" class="bt-btn cy-reset">Undo every change</button></div></div>' +
-        '<div class="cy-lbl ls-lbl">Tap a process</div><div class="cy-procs ls-scroll" role="group" aria-label="Processes"></div>' +
       '</div>' +
       '<div class="cy-say"></div>' +
-      T.moreHtml('<p class="bt-small">The years run forward when you switch a change on: press Pause to stop, or drag the years. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'units') +
+      // pass 2: the processes are named and tapped on the picture; the same list, in order, waits under More
+      T.moreHtml('<div class="cy-lbl ls-lbl">Every process, in order</div><div class="cy-procs ls-scroll" role="group" aria-label="Processes"></div><p class="bt-small">The years run forward when you switch a change on: press Pause to stop, or drag the years. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'units') +
       '<div class="cy-nums"></div><p class="sr-only cy-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.cy-live'));
     var cue = T.cue('Tap a process to see what moves where.');
@@ -564,11 +564,11 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.cy-fig'), $('.cy-trend')], dock: [$('.cy-ctl')], primary: [$('.cy-run')], why: [$('.cy-say')], details: [$('.cy-nums')], moreLabel: 'Units' });
+      T.studioPane(pane, s, { stage: [$('.cy-fig'), $('.cy-trend')], dock: [$('.cy-ctl')], primary: [$('.cy-run')], why: [$('.cy-say')], details: [$('.cy-nums')], moreLabel: 'Process list and units' });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       render();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.cy-p') || svg, text: 'Start here: tap a process' });
+      if(s.mode() === 'explore') s.hint({ target: svg.querySelector('.cy-plabel') || svg, text: 'Start here: tap a process' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ render(); }, 60); }).observe($('.cy-fig')); }
     }
     chips(); render();
