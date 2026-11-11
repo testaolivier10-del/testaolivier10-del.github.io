@@ -303,3 +303,19 @@
 /* the hint's own buttons sit inside the amber box (the shared dock makes button rows sticky with a white back) */
 .pw-ls .ls-dock .pw-hint .pw-actions{position:static;box-shadow:none;background:none;}
 .ls-root.ls-phone.pw-ls .ls-dock .pw-bank{max-height:30vh;max-height:30dvh;}
+
+/* Scene plate beside the map (tool redesign 2026-11, assets/tools/scene.js):
+   the pathway on the real figure first, the step map after it; side by side
+   when the stage is wide. The figure keeps to the stage's height. */
+.pw-fig.has-scene{max-width:none;}
+.pw-duo{display:flex;flex-direction:column;gap:12px;}
+.pw-duo .pw-scn{width:min(100%, 52vh * var(--scn-r, 1));margin:0 auto;}
+.pw-mapbox{min-width:0;}
+.pw-mapbox .pw-map{width:100%;height:auto;}
+.scn-pin.is-marked .scn-halo{fill:rgba(255,196,61,.6);}
+@media (min-width:1000px){
+  .pw-duo{display:grid;grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr);align-items:start;gap:16px;}
+  .pw-duo .pw-scn{width:min(100%, 66vh * var(--scn-r, 1));}
+  .pw-ls .ls-stage-body > .pw-fig.has-scene{max-width:none;}
+}
+.pw-errfig .pw-scn{width:min(100%, 44vh * var(--scn-r, 1));margin:0 auto 10px;}

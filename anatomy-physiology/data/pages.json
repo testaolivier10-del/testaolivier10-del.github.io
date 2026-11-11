@@ -112,6 +112,8 @@
       "script": "tools/predict.js",
       "css": "tools/predict.css",
       "data": "predict.json",
+      "extraScripts": ["tools/scene.js"],
+      "extraCss": ["tools/scene.css"],
       "studio": true
     },
     {
@@ -139,6 +141,8 @@
       "script": "tools/pathways.js",
       "css": "tools/pathways.css",
       "data": "pathways.json",
+      "extraScripts": ["tools/scene.js"],
+      "extraCss": ["tools/scene.css"],
       "studio": true
     },
     {
