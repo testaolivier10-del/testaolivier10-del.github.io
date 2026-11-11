@@ -70,3 +70,12 @@
 .dl-table th[scope=row],.cl-table th[scope=row]{text-align:left;}
 @media (max-width:640px){ .dl-qfig figcaption{display:none;} .dl-legend{gap:4px 10px;font-size:12.5px;} }
 .ls-root .dl-legend{padding-right:46px;}
+
+/* The drawn country (2026-11): sea with shallows, rivers and the lake. Strokes keep their width when the map is scaled. */
+.dl-prov path{vector-effect:non-scaling-stroke;}
+.dl-sea{fill:#DCEAF4;stroke:#C3DAEA;stroke-width:7;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+.dl-river{fill:none;stroke:#7FB2D8;stroke-width:2.2;stroke-linecap:round;vector-effect:non-scaling-stroke;}
+.dl-lake{fill:#C7DEEF;stroke:#7FB2D8;stroke-width:1.2;vector-effect:non-scaling-stroke;}
+:root[data-theme="dark"] .dl-sea{fill:#17324A;stroke:#1F4160;}
+:root[data-theme="dark"] .dl-river{stroke:#3F7FB0;}
+:root[data-theme="dark"] .dl-lake{fill:#1F4160;stroke:#3F7FB0;}

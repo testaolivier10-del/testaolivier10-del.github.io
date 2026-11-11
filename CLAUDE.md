@@ -212,6 +212,11 @@ the fixes for it, and three builds (NREMT exam item types and adaptive exam, och
 banks, precalculus figures, the tool audit of the four newer courses in `docs/tool-audit-2026-11.md`) and what is
 next (audit of the other banks, ochem per-option lines, tool rebuild mockups).
 
+## Tool visuals (2026-11)
+
+`docs/tool-visuals-2026-11.md` is the status file: what the owner means by better tool visuals (the picture shows
+the concept; no blocks or bare charts), what is done (Country A drawn as a country) and the order for the rest.
+
 ## Database backups
 
 `docs/backups.md` is the status file: the nightly copy the Worker makes itself (`worker/src/backup.js`, its own

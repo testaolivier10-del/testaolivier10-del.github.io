@@ -229,7 +229,15 @@
     out.push('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' + esc(spec.label) + '">');
     out.push('<title>' + esc(spec.label) + '</title>');
     out.push('<defs><pattern id="nd" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#FFFFFF"/><line x1="0" y1="0" x2="0" y2="6" stroke="#9A958C" stroke-width="1.4"/></pattern></defs>');
-    out.push('<rect width="' + W + '" height="' + H + '" fill="' + (real(base) ? SEA : '#FFFFFF') + '"/>');
+    var SC = base.scenery;
+    out.push('<rect width="' + W + '" height="' + H + '" fill="' + (real(base) ? SEA : SC ? CONTEXT : '#FFFFFF') + '"/>');
+    // An invented country with scenery sits in a place: neighbors' land, then the sea and its shallows.
+    if(SC){
+      (SC.borders || []).forEach(function(d){ out.push('<path d="' + d + '" fill="none" stroke="' + LINE + '" stroke-width="0.8" stroke-dasharray="5 4" stroke-opacity="0.7"/>'); });
+      out.push('<path d="' + SC.sea + '" fill="' + SEA + '" stroke="#C3DAEA" stroke-width="9" stroke-linejoin="round"/>');
+      out.push('<path d="' + SC.sea + '" fill="' + SEA + '" stroke="#AFCDE2" stroke-width="2.5" stroke-linejoin="round"/>');
+      out.push('<clipPath id="land">' + base.features.filter(isArea).map(function(f){ return '<path d="' + f.d + '"/>'; }).join('') + '</clipPath>');
+    }
     base.features.forEach(function(f){
       if(!isArea(f)) return;
       var fill = f.context ? CONTEXT : LAND;
@@ -237,6 +245,17 @@
       if(spec.render === 'reference' && focus.indexOf(f.id) > -1) fill = FOCUS;
       out.push('<path d="' + f.d + '" fill="' + fill + '"' + (f.evenodd ? ' fill-rule="evenodd"' : '') + ' stroke="' + LINE + '" stroke-width="0.7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>');
     });
+    if(SC){
+      // Water over the provinces (a thin pale line reads on every shade), then, on a reference map only, the lay of the land.
+      var water = '';
+      (SC.rivers || []).forEach(function(d){ water += '<path d="' + d + '" fill="none" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="4.2" stroke-linecap="round"/><path d="' + d + '" fill="none" stroke="#5C9CCB" stroke-width="2.2" stroke-linecap="round"/>'; });
+      if(SC.lake) water += '<path d="' + SC.lake + '" fill="#BFD9EC" stroke="#5C9CCB" stroke-width="1.4"/>';
+      out.push('<g clip-path="url(#land)">' + water + '</g>');
+      if(spec.render === 'reference' && !(spec.focus || []).length){
+        (SC.hills || []).forEach(function(q){ out.push('<path d="M' + (q[0] - 11) + ' ' + (q[1] + 5) + 'l7 -11l5 7l3 -4l7 8" fill="none" stroke="#A08C6B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>'); });
+        (SC.trees || []).forEach(function(q){ out.push('<path d="M' + q[0] + ' ' + (q[1] - 8) + 'l5.5 9h-11z" fill="#6E9A6B"/><path d="M' + (q[0] + 9) + ' ' + (q[1] - 3) + 'l4.5 7.5h-9z" fill="#86AD82"/>'); });
+      }
+    }
     // Metro: the central city's limit in bold, then rivers, highways, rail, stations.
     base.features.forEach(function(f){ if(f.limit) out.push('<path d="' + f.d + '" fill="none" stroke="' + LIMIT + '" stroke-width="3" stroke-linejoin="round"/>'); });
     ['river', 'highway', 'rail'].forEach(function(k){
