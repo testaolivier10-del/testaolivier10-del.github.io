@@ -37,9 +37,10 @@
       var lo = Math.max(iv[0].lo, iv[1].lo), hi = Math.min(iv[0].hi, iv[1].hi);
       var a = sy(Math.max(lo, hi)), b = sy(Math.min(lo, hi));
       p.push('<rect class="ci-band ' + (ov ? 'ov' : 'gap') + '" x="' + L + '" y="' + a.toFixed(1) + '" width="' + pw + '" height="' + Math.max(1.5, b - a).toFixed(1) + '"/>');
-      // On a phone (larger labels) the word sits between the two bars, clear of the right bar's interval values.
-      var mid = !!document.querySelector('.ls-root.ls-phone');
-      p.push('<text class="ci-bl ' + (ov ? 'ov' : 'gap') + '" x="' + (mid ? L + pw / 2 : W - R - 4) + '" y="' + (a - 5).toFixed(1) + '" text-anchor="' + (mid ? 'middle' : 'end') + '">' + (ov ? 'overlap' : 'gap') + '</text>');
+      // pass 3 (2026-11-11): the word sits inside the band, halfway between the two bars, so it never stacks with
+      // the interval values beside the caps (a thin band gets the word just above it)
+      var bx = g.length > 1 ? (cx(0) + bw / 2 + 42 + cx(1) - bw / 2) / 2 : L + pw / 2, by = b - a >= 16 ? (a + b) / 2 + 4 : a - 5;
+      p.push('<text class="ci-bl ' + (ov ? 'ov' : 'gap') + '" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" text-anchor="middle">' + (ov ? 'overlap' : 'gap') + '</text>');
     }
     g.forEach(function(x, i){
       var c = cx(i), y = sy(x.mean), e = iv[i];
