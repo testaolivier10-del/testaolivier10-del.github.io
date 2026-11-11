@@ -742,8 +742,10 @@
       var d = st.done, m = [], first = spec.steps.filter(function(s){ return s.at; })[0];
       var bsiAt = (spec.steps.filter(function(s){ return s.id === 'bsi'; })[0] || {}).at || (first && first.at) || [240, 300];
       if(spec.steps.some(function(s){ return s.id === 'bsi'; })){
-        if(!has(d, 'bsi')) m.push({ key:'bsi', x:bsiAt[0], y:bsiAt[1], sev:'bad', text:'No gloves: BSI / PPE was never taken or voiced (a critical criterion).' });
-        else if(touchedBare(spec, d)) m.push({ key:'bsi', x:bsiAt[0], y:bsiAt[1], sev:'bad', text:'BSI came after you had touched the patient: the first contact was bare-handed.' });
+        // PPE is a critical criterion on some sheets only (not E211, E212, E216, E217): a scored step on the rest
+        var bsiCrit = spec.steps.filter(function(s){ return s.id === 'bsi'; })[0].critical;
+        if(!has(d, 'bsi')) m.push({ key:'bsi', x:bsiAt[0], y:bsiAt[1], sev:bsiCrit ? 'bad' : 'warn', text:'No gloves: BSI / PPE was never taken or voiced' + (bsiCrit ? ' (a critical criterion).' : ' (a scored step on this sheet).') });
+        else if(touchedBare(spec, d)) m.push({ key:'bsi', x:bsiAt[0], y:bsiAt[1], sev:bsiCrit ? 'bad' : 'warn', text:'BSI came after you had touched the patient: the first contact was bare-handed.' });
       }
       spec.steps.forEach(function(s){
         if(s.id === 'bsi' || has(d, s.id) || !s.at) return;
@@ -769,7 +771,7 @@
     full:[-10, 80, 500, 820],
     focus:{ full:[-10, 80, 500, 820], arm:[-20, 380, 240, 330], hand:[-20, 520, 200, 220] },
     steps:[
-      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[160, 300], did:'Gloves on, eye protection verbalized.' },
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[160, 300], did:'Gloves on, eye protection verbalized.' },
       { id:'stab', touch:true, text:'Direct manual stabilization of the injury', critical:true, focus:'arm', at:[74, 540], chip:'Stabilized',
         did:'Your partner holds the forearm above and below the break, still.', miss:'The arm was never stabilized: the break moves with every step (a critical criterion).' },
       { id:'pms1', touch:true, text:'Check motor, sensation and circulation in the hand', critical:true, focus:'hand', at:[50, 640], chip:'Distal check: present',
@@ -827,7 +829,7 @@
     full:[20, 560, 440, 660],
     focus:{ full:[20, 560, 440, 660], knee:[80, 760, 220, 240], foot:[90, 1040, 200, 170], leg:[60, 620, 260, 560] },
     steps:[
-      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[300, 700], did:'Gloves on, eye protection verbalized.' },
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[300, 700], did:'Gloves on, eye protection verbalized.' },
       { id:'stab', touch:true, text:'Manually stabilize the knee in the position found', critical:true, focus:'knee', at:[183, 874], chip:'Knee supported',
         did:'Hands above and below the knee, holding it as found: no weight on the joint.', miss:'The knee was never supported: it bears the weight of the leg below it (a critical criterion).' },
       { id:'pms1', touch:true, text:'Check motor, sensation and circulation in the foot', critical:true, focus:'foot', at:[176, 1150], chip:'Distal check: present',
@@ -836,6 +838,7 @@
       { id:'site', touch:true, text:'Immobilize the knee itself', critical:false, focus:'knee', at:[200, 874], chip:'Splinted', did:'Boards on both sides of the leg, padding in the hollows, a cravat beside the knee (not over it).' },
       { id:'above', touch:true, text:'Immobilize the bone above (the thigh)', critical:true, focus:'leg', at:[183, 760], did:'Cravats around the thigh hold the femur to the boards.' },
       { id:'below', touch:true, text:'Immobilize the bone below (the lower leg)', critical:true, focus:'leg', at:[180, 1010], did:'Cravats around the shin hold the tibia to the boards.' },
+      { id:'secure', touch:true, text:'Secure the entire injured leg', critical:false, focus:'leg', at:[181, 1110], did:'A last cravat at the ankle: the whole leg is held to the boards.' },
       { id:'pms2', touch:true, text:'Recheck motor, sensation and circulation in the foot', critical:true, focus:'foot', at:[190, 1170], chip:'Rechecked after', did:'Pulse, movement and sensation present after splinting.', go:true }
     ],
     order:[['stab', 'site', 'Splinted before the knee was supported: the joint took the leg’s weight.', 'bad'],
@@ -862,6 +865,7 @@
       band(P.lay.site, 181, 838, 120, 12, 'sp-cravat');
       band(P.lay.above, 181, 720, 128, 13, 'sp-cravat'); band(P.lay.above, 181, 780, 124, 13, 'sp-cravat');
       band(P.lay.below, 181, 960, 120, 13, 'sp-cravat'); band(P.lay.below, 181, 1060, 116, 13, 'sp-cravat');
+      band(P.lay.secure, 181, 1110, 112, 12, 'sp-cravat');
       pms(P.lay.pms2, 176, 1150, 'Rechecked', 1);
     },
     paint:function(P, st){
@@ -878,10 +882,10 @@
     full:[-10, -40, 500, 1260],
     focus:{ full:[-10, -40, 500, 1260], head:[110, -30, 260, 300], limbs:[-10, 500, 500, 720], torso:[40, 180, 400, 600], legs:[60, 600, 360, 600] },
     steps:[
-      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
       { id:'manual', touch:true, text:'Direct your partner to hold the head in a neutral, in-line position', critical:true, focus:'head', at:[240, 60], chip:'Manual in-line',
         did:'Hands on both sides of the head from the top, neutral and in line, held until the head is secured.', miss:'The head was never held in line by hand (a critical criterion).' },
-      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in all four limbs', critical:true, focus:'limbs', at:[60, 660], chip:'4 limbs checked', did:'Pulse, movement and sensation in both hands and both feet.' },
+      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in all four limbs', critical:false, focus:'limbs', at:[60, 660], chip:'4 limbs checked', did:'Pulse, movement and sensation in both hands and both feet.' },
       { id:'collar', touch:true, text:'Size and apply a cervical collar', critical:true, focus:'head', at:[240, 180], chip:'Collar on', did:'Collar sized and applied; your partner keeps holding the head.' },
       { id:'board', text:'Position the long board beside the patient', critical:false, focus:'full', at:[420, 600], did:'Board alongside, straps ready.' },
       { id:'roll', touch:true, text:'Log-roll onto the board on the head person’s count', critical:true, focus:'full', at:[240, 520], chip:'On the board',
@@ -946,13 +950,13 @@
     full:[-10, -40, 500, 900],
     focus:{ full:[-10, -40, 500, 900], head:[110, -30, 260, 300], torso:[60, 160, 360, 520], limbs:[-10, 500, 500, 720] },
     steps:[
-      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
+      { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
       { id:'manual', touch:true, text:'Direct your partner to hold the head neutral and in line', critical:true, focus:'head', at:[240, 60], chip:'Manual in-line',
         did:'Your partner, behind the patient, holds the head neutral and in line until it is secured.', miss:'The head was never held in line by hand (a critical criterion).' },
-      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in all four limbs', critical:true, focus:'limbs', at:[60, 660], chip:'4 limbs checked', did:'Pulse, movement and sensation in both hands and both feet.' },
+      { id:'pms1', touch:true, text:'Check motor, sensation and circulation in all four limbs', critical:false, focus:'limbs', at:[60, 660], chip:'4 limbs checked', did:'Pulse, movement and sensation in both hands and both feet.' },
       { id:'collar', touch:true, text:'Size and apply a cervical collar', critical:true, focus:'head', at:[240, 180], chip:'Collar on', did:'Collar sized and applied; the head is still held.' },
       { id:'device', touch:true, text:'Position the device behind the patient', critical:false, focus:'torso', at:[400, 400], did:'Vest slid down behind the back, centered, its top level with the head.' },
-      { id:'torso', touch:true, text:'Secure the device to the torso (middle, then bottom, then top strap)', critical:true, focus:'torso', at:[300, 380], chip:'Torso strapped', did:'Middle, bottom and top chest straps fastened; the top one left a little loose until the end.' },
+      { id:'torso', touch:true, text:'Secure the device to the torso (many programs: middle, bottom, then top strap)', critical:true, focus:'torso', at:[300, 380], chip:'Torso strapped', did:'Middle, bottom and top chest straps fastened; the top one left a little loose until the end.' },
       { id:'legs', touch:true, text:'Fasten the leg (groin) straps', critical:false, focus:'torso', at:[200, 640], did:'Both leg straps around the thighs and snug.' },
       { id:'check', brief:true, text:'Check the torso fixation and adjust', critical:false, focus:'torso', at:[240, 460], did:'The device does not shift up, down or sideways; straps tightened.' },
       { id:'headpad', touch:true, text:'Pad behind the head as needed', critical:false, focus:'head', at:[300, 60], did:'Padding keeps the head neutral against the device.' },
@@ -1002,26 +1006,24 @@
     focus:{ full:[60, -60, 460, 560], tank:[280, 40, 220, 420], face:[120, -20, 300, 320] },
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[160, 300], did:'Gloves on.' },
+      { id:'gather', brief:true, text:'Gather the equipment', critical:false, focus:'tank', at:[330, 100], did:'Cylinder, regulator with flowmeter, non-rebreather mask.' },
       { id:'crack', brief:true, text:'Crack the cylinder valve to clear the outlet', critical:false, focus:'tank', at:[400, 150], did:'A quick hiss: dust blown out of the outlet, pointed away from everyone.' },
       { id:'reg', text:'Assemble the regulator to the cylinder', critical:false, focus:'tank', at:[400, 170], chip:'Regulator on', did:'Washer in place, pins lined up, regulator hand-tight.' },
       { id:'open', brief:true, text:'Open the cylinder', critical:false, focus:'tank', at:[400, 130], did:'Valve opened a full turn.' },
-      { id:'leaks', brief:true, text:'Check for leaks', critical:true, focus:'tank', at:[380, 190], chip:'No leaks', did:'No hiss at the seal.', miss:'Never checked for leaks: a leaking regulator is a critical criterion.' },
       { id:'psi', brief:true, text:'Check the cylinder pressure', critical:false, focus:'tank', at:[430, 190], chip:'Pressure read', did:'Gauge read: enough oxygen for the call.' },
+      { id:'leaks', brief:true, text:'Check for leaks', critical:true, focus:'tank', at:[380, 190], chip:'No leaks', did:'No hiss at the seal.', miss:'Never checked for leaks: a leaking regulator is a critical criterion.' },
       { id:'attach', text:'Attach the mask tubing to the regulator', critical:false, focus:'tank', at:[360, 230], did:'Tubing on the flowmeter outlet.' },
       { id:'prefill', text:'Prefill the reservoir bag', critical:true, focus:'tank', at:[300, 300], chip:'Bag full', did:'Thumb over the valve inside the mask until the bag is full.', miss:'The reservoir was not prefilled: the first breaths come from an empty bag (a critical criterion).' },
-      { id:'flow', text:'Set the flow at 12 to 15 L/min', critical:true, focus:'tank', at:[430, 240], chip:'15 L/min', did:'Flow at 15 L/min: enough to keep the bag from collapsing on each breath.', miss:'No flow set: under 10 L/min the bag empties and the patient rebreathes (a critical criterion).' },
-      { id:'apply', touch:true, text:'Apply the mask and adjust it to the face', critical:true, focus:'face', at:[240, 120], chip:'Mask sealed', did:'Mask over nose and mouth, nose clip pinched, strap snug.', miss:'The mask was never put on and sealed (a critical criterion).', go:true },
-      { id:'remove', touch:true, text:'When told to stop: remove the mask', critical:false, focus:'face', at:[200, 120], did:'Mask off the face.', cue:'Discontinue the oxygen.' },
-      { id:'off', text:'Shut off the regulator and the cylinder', critical:false, focus:'tank', at:[400, 130], did:'Cylinder closed, flow turned off.' },
-      { id:'bleed', text:'Relieve the pressure in the regulator', critical:false, focus:'tank', at:[430, 210], did:'Gauge bled down to zero.' }
+      { id:'flow', text:'Set the flow to at least 10 L/min (most programs: 12 to 15)', critical:true, focus:'tank', at:[430, 240], chip:'15 L/min', did:'Flow at 15 L/min: enough to keep the bag from collapsing on each breath.', miss:'No flow set: under 10 L/min the bag empties and the patient rebreathes (a critical criterion).' },
+      { id:'apply', touch:true, text:'Apply the mask and adjust it to the face', critical:true, focus:'face', at:[240, 120], chip:'Mask sealed', did:'Mask over nose and mouth, nose clip pinched, strap snug.', miss:'The mask was never put on and sealed (a critical criterion).', go:true }
     ],
     order:[['reg', 'open', 'Opened the cylinder before the regulator was on.', 'bad'],
            ['prefill', 'apply', 'Mask on the face before the bag was filled: the first breaths come from an empty bag.', 'bad'],
            ['flow', 'apply', 'Mask on before the flow was set.', 'warn']],
     notes:[
-      '<b>Flow.</b> The sheet asks for 12 L/min or more; most programs teach 12 to 15 L/min. Its critical criterion is a flow under 10 L/min.',
+      '<b>Flow.</b> The sheet asks for at least 10 L/min, and a flow under 10 L/min is its critical criterion; most programs teach 12 to 15 L/min.',
       '<b>Indication.</b> Many current guidelines titrate oxygen to the saturation; the station only tests the equipment and technique.',
-      '<b>Cracking the valve.</b> Some sheets list it, some do not; it does no harm to say it.',
+      '<b>The end of the station.</b> The current Registry sheet (E204) ends with the mask on the face; some program sheets go on to removing it, shutting off the cylinder and bleeding the regulator.',
       COMMON_NOTE
     ],
     draw:function(P){
@@ -1032,6 +1034,7 @@
       P.valveSpin = el('rect', { x:398, y:132, width:20, height:20, rx:4, fill:'#5d666b' }, t);
       el('path', { d:'M394 162 l-18 -8', stroke:'#cfd6da', 'stroke-width':3, 'stroke-linecap':'round' }, P.lay.crack);
       badge(P.lay.crack, 408, 108, 'Hiss: outlet clear', 'ok');
+      badge(P.lay.gather, 408, 108, 'Tank, regulator, mask', 'ok');
       var r = P.lay.reg;
       el('rect', { x:392, y:160, width:56, height:30, rx:6, fill:'#c7d1d6', stroke:'#5d666b' }, r);
       el('circle', { cx:438, cy:176, r:13, fill:'#fff', stroke:'#5d666b', 'stroke-width':2 }, r);
@@ -1050,14 +1053,14 @@
       P.faceBag = P.maskFace.querySelector('.sp-res');
     },
     paint:function(P, st){
-      var d = st.done, on = has(d, 'apply') && !has(d, 'remove');
-      P.show(P.maskHand, has(d, 'attach') && !on && !has(d, 'remove'));
+      var d = st.done, on = has(d, 'apply');
+      P.show(P.maskHand, has(d, 'attach') && !on);
       P.show(P.maskFace, on);
       var full = has(d, 'prefill') || (has(d, 'flow') && has(d, 'attach'));
       [P.bag, P.faceBag].forEach(function(b){ if(b) b.setAttribute('transform', full ? '' : 'translate(240 152) scale(1 0.45) translate(-240 -152)'); });
-      if(P.needle) P.needle.setAttribute('transform', has(d, 'open') && !has(d, 'bleed') ? 'rotate(50 438 176)' : '');
+      if(P.needle) P.needle.setAttribute('transform', has(d, 'open') ? 'rotate(50 438 176)' : '');
       P.show(P.lay.attach, has(d, 'attach'));
-      P.show(P.lay.flow, has(d, 'flow') && !has(d, 'off'));
+      P.show(P.lay.flow, has(d, 'flow'));
     }
   });
 
@@ -1160,6 +1163,7 @@
       { id:'breath', touch:true, text:'Breathing: assess; give high-concentration oxygen', critical:true, focus:'upper', at:[240, 280], chip:'O₂ by NRB', did:'Breathing fast and shallow; non-rebreather at 15 L/min.', miss:'No high-concentration oxygen (a critical criterion).' },
       { id:'circ', touch:true, text:'Circulation: bleeding, pulse, skin', critical:true, focus:'upper', at:[60, 640], did:'No major bleeding; radial pulse fast and weak; skin pale, cool and sweaty.' },
       { id:'priority', text:'Identify a priority patient; call for transport', critical:true, focus:'upper', at:[420, 520], chip:'Priority: transport', did:'Signs of shock after a significant fall: priority patient, transport now.', go:true },
+      { id:'vitals', text:'Baseline vital signs', critical:false, focus:'upper', at:[420, 640], chip:'Vitals', did:'Pulse 124, BP 96/60, respirations 26.' },
       { id:'history', text:'History: SAMPLE', critical:false, focus:'upper', at:[420, 580], did:'No allergies, no medications, healthy, ate at noon, fell reaching for a gutter.' },
       { id:'head', touch:true, text:'Head: inspect and palpate (DCAP-BTLS)', critical:false, focus:'upper', at:[200, 60], did:'Scalp abrasion at the back of the head; pupils equal and reactive.' },
       { id:'neck', touch:true, text:'Neck: trachea, veins, cervical spine; apply a collar', critical:false, focus:'upper', at:[240, 190], chip:'Collar', did:'Trachea midline, neck veins flat, tender at the back of the neck: collar on.' },
@@ -1167,7 +1171,6 @@
       { id:'abd', touch:true, text:'Abdomen and pelvis: inspect, palpate', critical:false, focus:'lower', at:[290, 420], did:'Tender in the upper left; pelvis stable.' },
       { id:'legs', touch:true, text:'Legs and arms: DCAP-BTLS, then motor, sensation, circulation', critical:false, focus:'lower', at:[300, 880], did:'Left wrist swollen and tender; all four limbs move and feel, pulses present.' },
       { id:'back', touch:true, text:'Back and buttocks (on the log-roll)', critical:false, focus:'lower', at:[160, 520], did:'No findings on the back.' },
-      { id:'vitals', text:'Vital signs', critical:false, focus:'upper', at:[420, 640], chip:'Vitals', did:'Pulse 124, BP 96/60, respirations 26.' },
       { id:'reassess', text:'Reassess on the way', critical:false, focus:'upper', at:[420, 700], chip:'Reassessing', did:'Every 5 minutes: unstable patient.' }
     ],
     order:[['breath', 'head', 'The head-to-toe exam began before oxygen: threats to breathing come first (a critical criterion).', 'bad'],
@@ -1215,9 +1218,9 @@
       { id:'sample', text:'Past history: SAMPLE', critical:false, focus:'upper', at:[420, 620], did:'No allergies; takes blood pressure pills; no nitroglycerin of their own.' },
       { id:'focused', touch:true, text:'Secondary: the body system involved (heart and lungs)', critical:false, focus:'upper', at:[300, 300], did:'Lungs clear on both sides; no leg swelling.' },
       { id:'vitals', text:'Vital signs', critical:false, focus:'upper', at:[420, 660], chip:'Vitals', did:'Pulse 104, BP 152/94, respirations 22, SpO₂ 94% on oxygen.' },
-      { id:'treat', text:'Interventions per protocol or medical direction (aspirin)', critical:true, focus:'upper', at:[200, 124], chip:'Aspirin', did:'Aspirin chewed, per protocol, after checking for allergy and bleeding.', miss:'No interventions named: a medication needs a protocol or medical direction (a critical criterion when one is given without).' },
+      { id:'treat', text:'Field impression, then interventions per protocol (aspirin)', critical:false, focus:'upper', at:[200, 124], chip:'Aspirin', did:'Possible heart attack. Aspirin chewed, per protocol, after checking for allergy and bleeding.', miss:'No field impression or interventions named (scored steps; giving a dangerous or wrong one is a critical criterion).' },
       { id:'reassess', text:'Reassess', critical:false, focus:'upper', at:[420, 700], did:'Every 5 minutes.' },
-      { id:'report', text:'Verbal report to the arriving unit', critical:false, focus:'upper', at:[420, 740], chip:'Report given', did:'Age, complaint, findings, vitals, care given.' }
+      { id:'report', text:'Verbal report to the arriving unit', critical:true, focus:'upper', at:[420, 740], chip:'Report given', did:'Age, complaint, findings, vitals, care given.', miss:'No report to the arriving unit (a critical criterion on the medical sheet).' }
     ],
     order:[['airway', 'focused', 'The secondary exam began before airway and breathing were treated (a critical criterion).', 'bad']],
     notes:[
