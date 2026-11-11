@@ -422,13 +422,14 @@
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
       onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); },
       // a wrong reading is drawn on the curve beside where the answer lies
-      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); }
+      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   function figure(el, p, st){
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
     st = st || {};
-    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = phone ? 300 : 320, out = [], label = '';
+    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = phone ? 300 : T.figSize(600, 320, { max: 0.72 })[1], out = [], label = '';
     var L = 48, R = Wd - 16, top = 30, bot = H - 44;
     if(g.kind === 'curve'){
       var mx = g.points[g.points.length - 1][0], X = function(d){ return L + d / mx * (R - L); }, Y = function(v){ return bot - v / 100 * (bot - top); };

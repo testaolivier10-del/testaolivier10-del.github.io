@@ -230,7 +230,8 @@
       types: A.TYPES, typeLabel: 'Kind of problem',
       title: function(p){ var t = A.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); }
+      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   /* After the last step: say plainly that every answer is now right, and how
@@ -251,7 +252,7 @@
   }
 
   function figure(el, p, st){
-    var g = p.figure, ph = (window.innerWidth || 1280) <= 640, W = ph ? 360 : 640, H = ph ? 340 : 360, inner = '', aria = '';
+    var g = p.figure, ph = (window.innerWidth || 1280) <= 640, W = ph ? 360 : 640, H = ph ? 340 : T.figSize(640, 360, { max: 0.78 })[1], inner = '', aria = '';
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'pyr'){
       var pyr = A.pyramid(g.tfr, g.e0), b = A.broad(pyr), big = Math.max.apply(null, pyr.male.concat(pyr.female)) * 1.12, max = [5, 8, 12, 16, 20].filter(function(v){ return v >= big; })[0] || 26;

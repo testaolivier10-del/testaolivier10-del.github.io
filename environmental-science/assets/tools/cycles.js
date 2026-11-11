@@ -461,9 +461,9 @@
     }
     function effectWhy(cy, ids){
       var t = { fuel: 'Fossil carbon, stored for millions of years, is released as CO₂ in a few years. About 45% stays in the air, about 25% dissolves in the ocean (acidifying it) and about 30% is taken up by land plants and soils.', forest: 'Clearing releases the trees\' carbon as CO₂ and removes a carbon sink.', trees: 'Growing trees take CO₂ out of the air by photosynthesis and store it in wood.',
-        fert: 'Fertilizer adds fixed nitrogen faster than plants use it; the extra nitrate leaches into streams (eutrophication), and some leaves as N₂O, a greenhouse gas.', legume: 'Bacteria in legume root nodules fix more N₂, adding usable nitrogen to the soil.', flood: 'Waterlogged soil has little oxygen: denitrifying bacteria speed up and turn nitrate back into N₂, while nitrification (which needs oxygen) slows.',
+        fert: 'Fertilizer adds fixed nitrogen faster than plants use it; the extra nitrate leaches into streams (eutrophication), and some leaves as N₂O, a greenhouse gas. The nitrogen amounts here are relative (each store starts at 100), a sketch of the direction of change, not measured global amounts.', legume: 'Bacteria in legume root nodules fix more N₂, adding usable nitrogen to the soil.', flood: 'Waterlogged soil has little oxygen: denitrifying bacteria speed up and turn nitrate back into N₂, while nitrification (which needs oxygen) slows.',
         mine: 'Mining moves phosphate from rock to fields far faster than weathering; runoff carries the extra to lakes, where it feeds algal blooms.', erode: 'Bare soil erodes, and runoff carries soil phosphate into lakes and the ocean.', sewage: 'Wastewater carries phosphate straight into lakes and rivers, a common cause of algal blooms.',
-        pave: 'Water cannot soak through pavement: runoff rises (flooding, polluted streams) and infiltration falls, so less recharges groundwater.', pump: 'Pumping takes groundwater out faster than infiltration refills it, so the aquifer shrinks and the water table falls.', warm: 'Warmer air holds more water, so evaporation and precipitation speed up; land ice melts into the ocean and raises sea level (melting sea ice would not).' };
+        pave: 'Water cannot soak through pavement: runoff rises (flooding, polluted streams) and infiltration falls, so less recharges groundwater. The picture is an exaggerated case, as if all land were paved: pavement and buildings really cover about 0.4% of Earth\'s land, so the global change is far smaller, but inside a paved city watershed it is this large.', pump: 'Pumping takes groundwater out faster than infiltration refills it, so the aquifer shrinks and the water table falls.', warm: 'Warmer air holds more water, so evaporation and precipitation speed up; land ice melts into the ocean and raises sea level (melting sea ice would not).' };
       return '<ul class="cy-why-l">' + ids.map(function(id){ return '<li>' + esc(t[id] || '') + '</li>'; }).join('') + '</ul>';
     }
     function describe(){
@@ -600,11 +600,12 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { process: 'Which process moves it?', nitrogen: 'Follow a nitrogen atom', reservoir: 'Where is it stored?', human: 'What people change', budget: 'The carbon budget', residence: 'How long does it stay?' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; figure(el, p, {}); },
-      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); }
+      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); },
+      refit: function(api){ figure(api.fig, api.problem, api.done || {}); }
     });
   }
   function figure(el, p, done){
-    var f = p.figure || {}, phone = (window.innerWidth || 1280) <= 640, W = phone ? 400 : 760, H = phone ? 480 : 470, cy = f.cycle || 'carbon', on = {};
+    var f = p.figure || {}, phone = (window.innerWidth || 1280) <= 640, W = phone ? 400 : 760, H = phone ? 480 : T.figSize(760, 470, { max: 0.8 })[1], cy = f.cycle || 'carbon', on = {};
     (f.changes || []).forEach(function(c){ on[c] = true; });
     var mk = 'cyq' + (++mkN);
     var o = { W: W, H: H, on: on, mk: mk, interactive: false };

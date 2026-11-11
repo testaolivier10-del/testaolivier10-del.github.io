@@ -412,21 +412,38 @@
     }
     function seaScene(Wd, H, phone){
       var g = [], s = seaParts(), L = phone ? 6 : 14, R = Wd - (phone ? 6 : 14);
-      var base = Math.round(H * (phone ? 0.5 : 0.56)), scale = (phone ? 0.24 : 0.3) * H / 8, lvl = base - s.tot * scale;
-      var shore = Wd * 0.44;
+      /* The coast to one vertical scale (tool review 2026-11): ground
+         elevation e(x) in meters, a town of 3 m houses at 0.5 to 8 m up the
+         slope, and the sea filling up the slope to the new level, so 0.4 m
+         wets the lowest doorsteps and 7 m drowns most of the town. */
+      var pm = H * (phone ? 0.03 : 0.028), base = Math.round(H * (phone ? 0.5 : 0.52)), lvl = base - s.tot * pm;
+      var shore = Wd * (phone ? 0.6 : 0.58), xh = Wd * (phone ? 0.12 : 0.15), k = (shore - xh) / 9;
+      function elev(x){ return x >= shore ? -Math.min(6, (x - shore) / (k * 0.6)) : x >= xh ? (shore - x) / k : 9 + (xh - x) / xh * 4; }
+      function Y(e){ return base - e * pm; }
       g.push('<rect class="cc-sky" x="0" y="0" width="' + Wd + '" height="' + H + '"/>');
-      // the sea and the old level
-      g.push('<rect class="cc-sea" x="' + (shore - 60) + '" y="' + lvl.toFixed(1) + '" width="' + (Wd - shore + 60) + '" height="' + (H - lvl).toFixed(1) + '"/>');
-      g.push('<line class="cc-oldlvl" x1="' + (shore - 40) + '" x2="' + R + '" y1="' + base + '" y2="' + base + '"/><text class="cc-tk" x="' + (R - 4) + '" y="' + (base + 14) + '" text-anchor="end">today\'s sea level</text>');
-      // land with the ice sheet
-      var land = 'M0 ' + (base - 70) + ' L' + (shore - 120) + ' ' + (base - 50) + ' Q' + (shore - 50) + ' ' + (base - 30) + ' ' + shore + ' ' + (base + 30) + ' L' + shore + ' ' + H + ' L0 ' + H + ' Z';
-      g.push('<path class="cc-land" d="' + land + '"/>');
-      var iceH = 60 * (1 - landPct / 100);
-      if(iceH > 1) g.push('<path class="cc-icesheet" d="M' + (L + 4) + ' ' + (base - 70) + ' Q' + (L + 60) + ' ' + (base - 70 - iceH * 1.6) + ' ' + (shore - 150) + ' ' + (base - 54) + ' Z"/>');
-      if(!phone || Wd > 360) g.push('<text class="cc-lab" x="' + (L + 10) + '" y="' + (base - 80 - iceH * 1.2) + '">' + (phone ? 'Land ice' : 'Land ice (an ice sheet)') + '</text>');
-      if(landPct > 0) for(var m = 0; m < 3; m++){ var mx = shore - 140 + m * 30; g.push('<path class="cc-melt" d="M' + mx + ' ' + (base - 50 + m * 6) + ' q12 10 ' + (40 - m * 6) + ' ' + (30 - m * 4) + '"/>'); }
-      // houses on the coast
-      for(var hI = 0; hI < 3; hI++){ var hx = shore - 100 + hI * 30, hy = base - 34 + hI * 12, wet = lvl < hy + 4; g.push('<g class="cc-house' + (wet ? ' is-wet' : '') + '"><rect x="' + hx + '" y="' + (hy - 14) + '" width="18" height="14"/><path d="M' + (hx - 2) + ' ' + (hy - 14) + ' l11 -9 l11 9 z"/></g>'); }
+      var gp = []; for(var gx = 0; gx <= Wd; gx += 4) gp.push(gx.toFixed(1) + ' ' + Y(elev(gx)).toFixed(1));
+      g.push('<path class="cc-land" d="M' + gp.join(' L') + ' L' + Wd + ' ' + H + ' L0 ' + H + 'Z"/>');
+      // the sea: up to the new level, over everything lower than it
+      var xc = Math.max(xh, shore - s.tot * k), wp = [];
+      for(var wx = Wd; wx >= xc; wx -= 4) wp.push(wx.toFixed(1) + ' ' + Math.max(lvl, Y(elev(wx))).toFixed(1));
+      g.push('<path class="cc-sea" d="M' + xc.toFixed(1) + ' ' + lvl.toFixed(1) + ' L' + Wd + ' ' + lvl.toFixed(1) + ' L' + wp.join(' L') + 'Z"/>');
+      g.push('<line class="cc-oldlvl" x1="' + (shore - 30) + '" x2="' + R + '" y1="' + base + '" y2="' + base + '"/><text class="cc-tk" x="' + (R - 4) + '" y="' + (base + 14) + '" text-anchor="end">today\'s sea level</text>');
+      if(s.tot > 0.05){ var rx0 = R - (phone ? 10 : 16); g.push('<path class="cc-rise" d="M' + (rx0 - 5) + ' ' + base + ' H' + (rx0 + 5) + ' M' + rx0 + ' ' + base + ' V' + lvl.toFixed(1) + ' M' + (rx0 - 5) + ' ' + lvl.toFixed(1) + ' H' + (rx0 + 5) + '"/>'); if(s.tot * pm > 14) g.push('<text class="cc-lab cc-c-bad" x="' + (rx0 - 8) + '" y="' + ((base + lvl) / 2 + 4).toFixed(1) + '" text-anchor="end">+' + F(s.tot, 2) + ' m</text>'); }
+      // land with the ice sheet on the high ground
+      var iceH = (phone ? 34 : 60) * (1 - landPct / 100);
+      if(iceH > 1){ var xe = xh * 1.35, ip = [], ib = []; for(var ix0 = 0; ix0 <= xe; ix0 += 3){ var f = ix0 / xe; ip.push(ix0.toFixed(1) + ' ' + (Y(elev(ix0)) - iceH * Math.sqrt(Math.max(0, 1 - f * f))).toFixed(1)); ib.unshift(ix0.toFixed(1) + ' ' + Y(elev(ix0)).toFixed(1)); } g.push('<path class="cc-icesheet" d="M' + ip.join(' L') + ' L' + ib.join(' L') + 'Z"/>'); }
+      g.push('<text class="cc-lab" x="' + (L + 6) + '" y="' + (Y(13) - Math.max(iceH, 4) - 8).toFixed(1) + '">' + (phone ? 'Land ice' : 'Land ice (an ice sheet)') + '</text>');
+      if(landPct > 0) for(var m = 0; m < 3; m++){ var mx = xh + 6 + m * 10, my = Y(elev(mx)) - 2; g.push('<path class="cc-melt" d="M' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' q' + (k * 2) + ' ' + (pm * 1.4) + ' ' + (k * (5 - m)) + ' ' + (pm * (5 - m) * 0.98) + '"/>'); }
+      // the town: 3 m houses on the slope
+      var hw = Math.min(phone ? 22 : 40, k * 1.15), hh = 3 * pm, wetN = 0;
+      [0.6, 2.2, 3.8, 5.6, 8].forEach(function(e){
+        var hx = shore - e * k - hw / 2, hy = Y(e), wet = lvl < hy - 1, under = lvl <= hy - hh;
+        if(wet) wetN++;
+        g.push('<g class="cc-house' + (wet ? ' is-wet' : '') + (under ? ' is-under' : '') + '"><rect x="' + hx.toFixed(1) + '" y="' + (hy - hh).toFixed(1) + '" width="' + hw.toFixed(1) + '" height="' + hh.toFixed(1) + '"/><path d="M' + (hx - 2).toFixed(1) + ' ' + (hy - hh).toFixed(1) + ' l' + (hw / 2 + 2).toFixed(1) + ' ' + (-hh * 0.55).toFixed(1) + ' l' + (hw / 2 + 2).toFixed(1) + ' ' + (hh * 0.55).toFixed(1) + 'z"/><rect class="cc-door" x="' + (hx + hw * 0.4).toFixed(1) + '" y="' + (hy - hh * 0.45).toFixed(1) + '" width="' + (hw * 0.2).toFixed(1) + '" height="' + (hh * 0.45).toFixed(1) + '"/></g>');
+      });
+      // the water over the town is drawn again, see-through, so flooded houses show under it
+      if(s.tot > 0.05) g.push('<path class="cc-sea cc-sea-over" d="M' + xc.toFixed(1) + ' ' + lvl.toFixed(1) + ' L' + shore.toFixed(1) + ' ' + lvl.toFixed(1) + ' L' + shore.toFixed(1) + ' ' + base + ' ' + wp.filter(function(q){ return +q.split(' ')[0] <= shore; }).map(function(q){ return 'L' + q; }).join(' ') + 'Z"/>');
+      if(!phone) g.push('<text class="cc-lab' + (wetN ? ' cc-c-bad' : '') + '" x="' + (R - 6) + '" y="22" text-anchor="end">' + (wetN ? wetN + ' of 5 houses flooded' : 'every house is still dry') + '</text>');
       // warm water band
       if(warmC > 0){ var wh2 = 30 + warmC * 10; g.push('<rect class="cc-warm" x="' + shore + '" y="' + lvl.toFixed(1) + '" width="' + (R - shore) + '" height="' + wh2.toFixed(1) + '" style="opacity:' + Math.min(0.9, 0.3 + warmC * 0.2).toFixed(2) + '"/><text class="cc-lab" x="' + (shore + 10) + '" y="' + (lvl + wh2 / 2 + 4).toFixed(1) + '">' + (phone ? 'warmer water' : 'warmer water expands') + '</text>'); }
       // floating sea ice
@@ -441,7 +458,7 @@
       g.push('<text class="cc-tk cc-c-th" x="' + bx0 + '" y="' + (by + 46) + '">■ expansion ' + F(s.th, 2) + ' m</text><text class="cc-tk cc-c-li" x="' + ((bx0 + bx1) / 2) + '" y="' + (by + 46) + '" text-anchor="middle">■ land ice ' + F(s.li, 2) + ' m</text><text class="cc-tk" x="' + bx1 + '" y="' + (by + 46) + '" text-anchor="end">' + (phone ? '' : 'sea ice: 0 m') + '</text>' + (phone ? '<text class="cc-tk" x="' + bx0 + '" y="' + (by + 61) + '">floating sea ice: 0 m</text>' : ''));
       // glass of water inset
       if(seaIce && !phone){ var gx = R - 110, gy = 24; g.push('<g class="cc-glass"><rect class="cc-panel" x="' + (gx - 10) + '" y="' + (gy - 10) + '" width="112" height="112" rx="10"/><path class="cc-glassw" d="M' + (gx + 16) + ' ' + (gy + 40) + ' h60 l-4 46 h-52 z"/><path class="cc-glasso" d="M' + (gx + 12) + ' ' + (gy + 8) + ' l8 82 h52 l8 -82"/><line class="cc-oldlvl" x1="' + (gx + 10) + '" x2="' + (gx + 82) + '" y1="' + (gy + 40) + '" y2="' + (gy + 40) + '"/><text class="cc-tk" x="' + (gx + 46) + '" y="' + (gy + 4) + '" text-anchor="middle">ice cube melted:</text><text class="cc-tk" x="' + (gx + 46) + '" y="' + (gy + 100) + '" text-anchor="middle">same level</text></g>'); }
-      return { svg: g.join(''), label: 'Coast with land ice, a town and floating sea ice. Sea level up ' + F(s.tot, 2) + ' m: thermal expansion ' + F(s.th, 2) + ' m, land ice ' + F(s.li, 2) + ' m' + (seaIce ? '; the floating sea ice melted and added 0 m.' : '.') };
+      return { svg: g.join(''), label: 'Coast with land ice, a town of five houses on the slope and floating sea ice. Sea level up ' + F(s.tot, 2) + ' m, flooding ' + wetN + ' of the 5 houses: thermal expansion ' + F(s.th, 2) + ' m, land ice ' + F(s.li, 2) + ' m' + (seaIce ? '; the floating sea ice melted and added 0 m.' : '.') };
     }
 
     function studio(pane, s){
@@ -467,12 +484,13 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { gases: 'Two systems, never mixed', co2: 'The Keeling Curve', ph: 'Ocean acidification', sealevel: 'Sea level rise', gwp: 'Global warming potential' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st, data); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st, data); }
+      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st, data); },
+      refit: function(api){ figure(api.fig, api.problem, api.st, data); }
     });
   }
   function figure(el, p, st, data){
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
-    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : 600, H = phone ? 320 : 330, out = [], label = '', L = 52, R = Wd - 18, top = 34, bot = H - 46;
+    var phone = (window.innerWidth || 1280) <= 640, Wd = phone ? 340 : g.kind === 'ph' ? 500 : 600, H = T.figSize(Wd, phone ? 320 : 330, { max: g.kind === 'ph' ? 0.6 : 0.72 })[1], out = [], label = '', L = 52, R = Wd - 18, top = 34, bot = H - 46;
     if(g.kind === 'atmos'){
       var a = atmos(Wd, H, { ppm: 425, cfc: 0.3 }, phone, false);
       out.push(a.svg); label = 'Atmosphere: ozone in the stratosphere absorbs ultraviolet from the Sun; greenhouse gases in the troposphere absorb infrared from the ground.';

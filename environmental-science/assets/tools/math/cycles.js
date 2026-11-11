@@ -145,7 +145,7 @@
         { id: 'pump', from: 'ground', to: 'soil', name: 'Pumping for irrigation', flux: 0, human: true, agent: 'Wells', what: 'pump groundwater faster than infiltration refills it, so the water table drops.' }
       ],
       changes: [
-        { id: 'pave', name: 'Pave land (cities)', scale: { infil: 0.3, runoff: 1.6, et: 0.85 }, did: 'Paving land' },
+        { id: 'pave', name: 'Pave land (cities)', scale: { infil: 0.3, runoff: 1.6, et: 0.85 }, did: 'Paving land (an exaggerated case: as if all land were paved like a city)' },
         { id: 'pump', name: 'Pump groundwater', proc: 'pump', rate: 3000, did: 'Pumping groundwater' },
         { id: 'warm', name: 'Warm the climate', proc: 'melt', rate: 500, scale: { evap: 1.04, oprecip: 1.04, lprecip: 1.04, et: 1.04 }, did: 'Warming the climate' }
       ]

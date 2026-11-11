@@ -79,7 +79,7 @@
       '<rect class="cs-desk" x="20" y="92" width="160" height="7" rx="2"/><path class="cs-leg" d="M30 99v14M170 99v14"/>'
   };
   function sceneSvg(id, title){
-    return '<svg class="cs-scene-svg" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><title>' + esc(title) + '</title>' + (SCENE[id] || '') + '</svg>';
+    return '<svg class="cs-scene-svg" viewBox="0 0 200 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false"><title>' + esc(title) + '</title>' + (SCENE[id] || '') + '</svg>';
   }
 
   /* ----------------------------------------------------- explore: chain */
@@ -246,6 +246,7 @@
       title: function(p){ var t = S.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice calculation'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
       onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); },
+      refit: function(api){ figure(api.fig, api.problem, api.st); },
       newLabel: 'New calculation'
     });
   }
@@ -268,7 +269,7 @@
   }
 
   /* -------------------------------------------------- drill figures */
-  function box(){ var ph = phone(); return { W: ph ? 360 : 640, H: ph ? 320 : 340, ph: ph }; }
+  function box(){ var ph = phone(), W = ph ? 360 : 640; return { W: W, H: T.figSize(W, ph ? 320 : 340, { max: 0.72 })[1], ph: ph }; }
   function svgOpen(W, H, label){ return '<svg class="cs-fig-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '" preserveAspectRatio="xMidYMid meet">'; }
   function tx(x, y, s, cls, anchor){ return '<text x="' + r1(x) + '" y="' + r1(y) + '"' + (cls ? ' class="' + cls + '"' : '') + (anchor ? ' text-anchor="' + anchor + '"' : '') + '>' + esc(s) + '</text>'; }
   function r1(v){ return Math.round(v * 10) / 10; }
