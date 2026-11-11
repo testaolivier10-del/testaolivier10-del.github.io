@@ -133,3 +133,7 @@
 .dv-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--white);}
 .ls-root .dv-chips .tchip[aria-pressed=true],.ls-root .dv-chips .tchip[aria-pressed=true]:hover,.dv-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--paper);}
 .dv-grp .bt-out{min-width:5.6em;white-space:nowrap;}
+/* attachment: what the child does, drawn */
+.dv-sob path,.dv-motion{fill:none;stroke:var(--dv-c2);stroke-width:2.4;stroke-linecap:round;}
+.dv-heart{fill:#E0607A;stroke:var(--dv-outline);stroke-width:1;}
+.dv-gaze{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:3 3;stroke-linecap:round;}
