@@ -202,21 +202,22 @@
     function rowSvg(s, c, ci, y0){
       var p = [], B = [], y = y0 + 112, trp = c.mode === 'trp', k = c.copies[ci], x = s.copies[ci];
       var box = function(x1, x2, cls, label, dashed, gene){
-        var b = '<rect class="op-box ' + cls + (dashed ? ' mut' : '') + '" x="' + (x1 + 1) + '" y="' + (y - 13) + '" width="' + (x2 - x1 - 2) + '" height="26" rx="6"/><text class="op-blab" x="' + ((x1 + x2) / 2) + '" y="' + (y + 4.5) + '" text-anchor="middle">' + label + '</text>';
+        var b = '<rect class="op-box ' + cls + (dashed ? ' mut' : '') + '" x="' + (x1 + 1) + '" y="' + (y - 13) + '" width="' + (x2 - x1 - 2) + '" height="26" rx="6"/><text class="op-blab" x="' + ((x1 + x2) / 2) + '" y="' + (y + 4.5) + '" text-anchor="middle"' + (/\bdim\b/.test(cls) && !dashed ? ' style="opacity:.45"' : '') + '>' + label + '</text>';
         if(!gene || qmode === 'quiz') return b;
         return '<g class="op-tapg" data-gene="' + gene + '" data-ci="' + ci + '" role="button" tabindex="0" aria-label="' + esc(geneTapLabel(gene, k)) + '"><rect class="op-hit" x="' + (x1 - 2) + '" y="' + (y - 20) + '" width="' + (x2 - x1 + 4) + '" height="40" rx="6"/>' + b + '</g>';
       };
       var title = trp ? 'trp operon' : st.mode === 'mero' ? COPY_NAMES[ci] : 'lac operon';
       if(st.mode === 'mero') p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + '</text>'); // pass 2: the mRNA number is the pill; one operon needs no title (the Operon choice names it)
       var reg = trp ? (k.R === '-' ? 'trpR⁻' : 'trpR') : (k.I === '-' ? 'lacI⁻' : k.I === 's' ? 'lacIˢ' : 'lacI');
-      p.push(box(8, 84, 'gene reg', reg, trp ? k.R === '-' : k.I !== '+', trp ? 'R' : 'I'));
+      // pass 3 (2026-11-11): the genes that are not the story right now are dimmed: lacI (its repressor is drawn), lacY and lacA
+      p.push(box(8, 84, 'gene reg' + (trp ? '' : ' dim'), reg, trp ? k.R === '-' : k.I !== '+', trp ? 'R' : 'I'));
       p.push('<text class="op-note" x="46" y="' + (y + 32) + '" text-anchor="middle">' + (trp ? (k.R === '-' ? 'no repressor' : '') : (k.I === '-' ? 'no repressor' : k.I === 's' ? 'super-repressor' : '')) + '</text>');
       var pr0 = trp ? 100 : 160, pr1 = trp ? 190 : 225, op1 = pr1 + 56, genes = trp ? ['trpE', 'trpD', 'trpC', 'trpB', 'trpA'] : ['lacZ', 'lacY', 'lacA'];
       if(!trp) p.push(box(100, 160, 'cap', 'CAP site'));
       p.push(box(pr0, pr1, 'prom', 'Promoter'));
       p.push(box(pr1, op1, 'oper', k.O === 'c' ? 'Oᶜ' : 'Operator', k.O === 'c', 'O'));
       var gx = op1, gw = trp ? 60 : [110, 90, 80];
-      genes.forEach(function(g, i){ var w = trp ? gw : gw[i]; var mut = !trp && g === 'lacZ' && k.Z === '-'; B.push(box(gx, gx + w, 'gene', mut ? 'lacZ⁻' : g, mut, !trp && g === 'lacZ' ? 'Z' : '')); gx += w; });
+      genes.forEach(function(g, i){ var w = trp ? gw : gw[i]; var mut = !trp && g === 'lacZ' && k.Z === '-'; B.push(box(gx, gx + w, 'gene' + (g === 'lacY' || g === 'lacA' ? ' dim' : ''), mut ? 'lacZ⁻' : g, mut, !trp && g === 'lacZ' ? 'Z' : '')); gx += w; });
       var narrow = narrowFig();
       // the backbone under the boxes (drawn first)
       p.unshift(helix(6, narrow ? op1 + 4 : 594, y));
