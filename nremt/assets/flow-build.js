@@ -101,24 +101,48 @@
   /* ---- The board ------------------------------------------------------------ */
   function mount(el, diagrams){
     if(!diagrams.length){ el.innerHTML = ''; return; }
-    var d = null, placed = {}, tiles = [], picked = null, misses = 0, missed = {};
+    var d = null, placed = {}, tiles = [], picked = null, misses = 0, missed = {}, secs = [], sec = 0;
 
+    /* Pass 3 (cleanup 2026-11-11): the protocols are one select, and a chart
+       is built one part at a time (about five slots: a question stays with its
+       arms). Placed parts stay drawn above; the next part opens when this one
+       is full. The tray holds only this part's steps (and, in the first two
+       parts, one tile from another protocol each). */
     function pickerHtml(){
-      return '<div class="bd-pick" role="group" aria-label="Choose a protocol">' + diagrams.map(function(x, i){
-        return '<button type="button" class="bd-proto' + (x === d ? ' on' : '') + '" data-proto="' + i + '" aria-pressed="' + (x === d) + '">' + esc(x.title) + '</button>';
-      }).join('') + '</div>';
+      return '<label class="bd-pick"><span class="bd-pick__k">Protocol</span><select class="bd-picksel" aria-label="Choose a protocol">' + diagrams.map(function(x, i){
+        return '<option class="bd-proto" value="' + i + '"' + (x === d ? ' selected' : '') + '>' + esc(x.title) + '</option>';
+      }).join('') + '</select></label>';
     }
+    function sections(dd){
+      var units = [], out = [], cur = null, n = 0;
+      dd.items.forEach(function(it, k){
+        var nx = dd.items[k + 1];
+        if(it.type === 'branch' && units.length && units[units.length - 1].join){ var u = units[units.length - 1]; u.items.push(it); u.n += it.arms.length; u.join = false; return; }
+        units.push({ items: [it], n: it.type === 'step' ? 1 : it.arms.length, join: it.type === 'step' && it.slot.kind === 'decision' && nx && nx.type === 'branch' });
+      });
+      units.forEach(function(u){
+        if(!cur || (n > 0 && n + u.n > 6)){ cur = []; out.push(cur); n = 0; }
+        u.items.forEach(function(it){ cur.push(it); }); n += u.n;
+      });
+      // A last part of one or two slots joins the part before it.
+      if(out.length > 1 && n <= 2) out[out.length - 2] = out[out.length - 2].concat(out.pop());
+      return out;
+    }
+    function secOf(slot){ for(var i = 0; i < secs.length; i++) if(secs[i].indexOf(slot.item) >= 0) return i; return 0; }
+    function secDone(i){ return secs[i].every(done); }
 
     function start(i){
       d = diagrams[i];
-      placed = {}; picked = null; misses = 0; missed = {};
+      placed = {}; picked = null; misses = 0; missed = {}; secs = sections(d); sec = 0;
       var own = d.slots.map(function(s){ return s.text; });
       var uniq = own.filter(function(t, k){ return own.indexOf(t) === k; });
       // Two decoys from other protocols, so "does this belong here at all" is part of it.
       var pool = [];
       diagrams.forEach(function(x){ if(x !== d) x.slots.forEach(function(s){ if(uniq.indexOf(s.text) < 0 && s.text.length > 14) pool.push(s.text); }); });
       var decoys = shuffle(pool).slice(0, 2);
-      tiles = shuffle(own.concat(decoys)).map(function(t, k){ return { id: 't' + k, text: t, decoy: uniq.indexOf(t) < 0, used: false }; });
+      tiles = shuffle(d.slots.map(function(sl){ return { text: sl.text, sec: secOf(sl), decoy: false }; })
+        .concat(decoys.map(function(t, k){ return { text: t, sec: Math.min(k, secs.length - 1), decoy: true }; })))
+        .map(function(t, k){ t.id = 't' + k; t.used = false; return t; });
       render();
       try{ history.replaceState(null, '', '#build-' + d.anchor); }catch(e){}
     }
@@ -137,7 +161,10 @@
 
     function chartHtml(){
       var h = '';
+      var shown = [];
+      secs.forEach(function(list, i){ if(i <= sec) shown = shown.concat(list); });
       d.items.forEach(function(it, k){
+        if(shown.indexOf(it) < 0) return;
         if(it.type === 'step'){
           if(k > 0 && d.items[k - 1].type === 'step') h += '<div class="bd-arrow" aria-hidden="true"></div>';
           else if(k > 0) h += '<div class="bd-arrow bd-arrow-in" aria-hidden="true"></div>';
@@ -150,11 +177,12 @@
         }
         if(it.notes.length && done(it)) h += it.notes.map(function(n){ return '<div class="bd-note">' + n + '</div>'; }).join('');
       });
+      if(sec < secs.length - 1) h += '<div class="bd-arrow" aria-hidden="true"></div><div class="bd-later">Part ' + (sec + 2) + ' of ' + secs.length + ' opens when this part is full</div>';
       return h;
     }
 
     function trayHtml(){
-      var left = tiles.filter(function(t){ return !t.used; });
+      var left = tiles.filter(function(t){ return !t.used && t.sec === sec; });
       return left.map(function(t){
         return '<button type="button" class="bd-tile' + (picked === t.id ? ' is-picked' : '') + '" data-tile="' + t.id + '" aria-pressed="' + (picked === t.id) + '">' + esc(t.text) + '</button>';
       }).join('');
@@ -169,7 +197,7 @@
           '<div class="bd-board">' +
             '<div class="bd-chart" aria-label="' + esc(d.title) + ' chart">' + chartHtml() + '</div>' +
             '<div class="bd-side">' +
-              '<div class="bd-status"><span class="bd-count">' + n + ' / ' + total + ' placed</span>' +
+              '<div class="bd-status"><span class="bd-count">' + countText() + '</span>' +
                 '<span class="bd-miss">' + (misses ? misses + ' bounced' : '') + '</span></div>' +
               '<div class="bd-fb" id="bdFb" role="status" aria-live="polite"></div>' +
               '<div class="bd-tray" role="group" aria-label="Steps to place">' + trayHtml() + '</div>' +
@@ -179,6 +207,11 @@
       if(n === total) finish();
     }
 
+    function countText(){
+      var mine = 0, got = 0;
+      secs[sec].forEach(function(it){ (it.type === 'step' ? [it.slot] : it.arms.map(function(a){ return a.slot; })).forEach(function(sl){ mine++; if(placed[sl.id]) got++; }); });
+      return (secs.length > 1 ? 'Part ' + (sec + 1) + ' of ' + secs.length + ': ' : '') + got + ' / ' + mine + ' placed';
+    }
     function feedback(html, kind){
       var fb = el.querySelector('#bdFb');
       if(!fb) return;
@@ -190,7 +223,7 @@
       var chart = el.querySelector('.bd-chart'), tray = el.querySelector('.bd-tray');
       if(chart) chart.innerHTML = chartHtml();
       if(tray) tray.innerHTML = trayHtml();
-      var c = el.querySelector('.bd-count'); if(c) c.textContent = Object.keys(placed).length + ' / ' + d.slots.length + ' placed';
+      var c = el.querySelector('.bd-count'); if(c) c.textContent = countText();
       var m = el.querySelector('.bd-miss'); if(m) m.textContent = misses ? misses + ' bounced' : '';
       el.querySelector('.bd-card').classList.toggle('has-pick', !!picked);
     }
@@ -201,6 +234,11 @@
       if(!t || !s || placed[s.id]) return;
       if(t.text === s.text){
         placed[s.id] = true; t.used = true; picked = null;
+        // This part full: drop its leftover decoy and open the next part.
+        if(sec < secs.length - 1 && secDone(sec)){
+          tiles.forEach(function(x){ if(x.sec === sec && x.decoy) x.used = true; });
+          sec++;
+        }
         refresh();
         var it = s.item, extra = '';
         if(done(it) && it.notes.length) extra = ' <span class="bd-why">Why: see the note under it.</span>';
@@ -250,8 +288,7 @@
 
     /* ---- Input: tap, keyboard ---- */
     el.onclick = function(e){
-      var p = e.target.closest('[data-proto]');
-      if(p){ start(+p.getAttribute('data-proto')); return; }
+      if(e.target.closest('.bd-pick')) return;
       if(e.target.closest('[data-again]')){ start(diagrams.indexOf(d)); return; }
       var t = e.target.closest('[data-tile]');
       if(t){
@@ -268,6 +305,10 @@
       var s = e.target.closest('[data-slot]');
       if(s && picked) place(picked, s.getAttribute('data-slot'));
       else if(s) feedback('Pick a step from the tray first.', '');
+    };
+
+    el.onchange = function(e){
+      if(e.target.classList && e.target.classList.contains('bd-picksel')) start(+e.target.value);
     };
 
     /* ---- Input: drag (pointer) ---- */
