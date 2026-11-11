@@ -1051,7 +1051,8 @@
      arrows under it step through every reaction the reagent does. */
   var rxAt = { r: '', i: 0 };
   function rxPic(e){
-    var a = fragSvg(e.from), b = fragSvg(e.to), maxW = 0;
+    // Alkylating an alkyne starts from a terminal one (R-C≡CH), not the internal alkyne it makes.
+    var a = baseId(e.id) === 'yne-alkylate' ? molSvg('CH3C#C', nodeName(e.from), { a1: 'R' }) : fragSvg(e.from), b = fragSvg(e.to), maxW = 0;
     // Both groups at one scale (their own size), so a small group is not blown up beside a big one.
     function sized(pic){
       return pic ? pic.replace(/<svg([^>]*?)viewBox="(-?[\d.]+) (-?[\d.]+) ([\d.]+) ([\d.]+)"/, function(all, at, x, y, w, h){
