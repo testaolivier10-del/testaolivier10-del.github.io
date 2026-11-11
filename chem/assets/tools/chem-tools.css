@@ -1333,3 +1333,9 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-stage .ic-live{align-self:stretch;}
 .ls-root .ls-drill-stage .ic-live .ic-beaker .lb-fig{align-items:center;}
 .ls-root .ls-drill-stage .ic-live .ic-cap{text-align:center;}
+/* Equilibrium drill (pass 2): the graph appears once the change is applied. */
+.ek-qfig .ek-plot[hidden]{display:none !important;}
+/* Equilibrium (pass 2): the graph switch on one line (its group label is for screen readers). */
+.ls-root .chem-ls-stage .ek-tabs{flex-wrap:nowrap;}
+.ls-root .chem-ls-stage .ek-tabs-k{display:none;}
+.ls-root .chem-ls-stage .ek-tab{white-space:nowrap;}
