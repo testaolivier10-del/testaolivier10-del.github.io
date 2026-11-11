@@ -591,7 +591,7 @@
     // The case's findings can arrive before the figure does (the first step of
     // every call): draw, then lay the callouts out for what has been seen.
     loadCare(function(){
-      if(window.NremtSim.care) self.preg = window.NremtSim.care.pregnancy(self.open);
+      if(window.NremtSim.care) self.preg = window.NremtSim.care.pregnancy(self.open, self);
       if(self.F) self.update(self.seen);
     });
     if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(F){

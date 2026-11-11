@@ -144,12 +144,27 @@
   var UTERUS = /\b(abdom|belly|uterus|uterine|pelvi|groin|contraction|fundus)/i;
   /* Weeks of pregnancy from the opening sentence: "at 34 weeks", "at full
      term" (taken as 40). null when the case does not say she is pregnant. */
-  function pregnancy(text){
+  function pregnancy(text, pt){
+    female(text, pt);
     var t = String(text || ''), m = t.match(/\bat (\d{2}) weeks\b/i);
     if(m) return +m[1];
     if(/\b(at|is) (full )?term\b|\bfull[- ]term\b/i.test(t) && !/\bnewborn\b/i.test(t)) return 40;
     if(/\bpregnan/i.test(t)) return 30;
     return null;
+  }
+  /* A woman or a teenage girl is drawn on the female figure (body-figs/case.js),
+     not the male one, and gets "her" in the care strip. The patient is the
+     first person the opening names ("a 29-year-old woman ... her husband"). */
+  function female(text, pt){
+    var who = String(text || '').match(/\b(woman|girl|man|boy|she|her|he|his|him)\b/i);
+    if(!pt || !who || !/^(woman|girl|she|her)$/i.test(who[1])) return;
+    pt.he = false;
+    if(pt.kind !== 'adult' || !window.LevlBodyFigs) return;
+    window.LevlBodyFigs.load('case', function(G){
+      if(!G || !G.figs['female-front'] || pt.kind !== 'adult') return;
+      pt.kind = 'female';
+      if(pt.F){ pt.draw(); pt.update(pt.seen); }
+    });
   }
   // which places a sentence of a pregnant patient's call goes to
   function keep(s){
@@ -298,7 +313,7 @@
       }
     }
     if(!front){
-      if(on.pads && this.kind !== 'adult' && this.kind !== 'child' && lm.sternalAngle) padAt(E, cx, lm.sternalAngle[1] + r * 0.9, r * 0.9, r * 0.75, 0);
+      if(on.pads && (this.kind === 'infant' || this.kind === 'toddler') && lm.sternalAngle) padAt(E, cx, lm.sternalAngle[1] + r * 0.9, r * 0.9, r * 0.75, 0);
       return;
     }
     // the limb with the wound: gauze on it, the tourniquet above it
@@ -361,7 +376,7 @@
       }
     }
     if(on.pads && lm.clavicleMidR && lm.midaxL){
-      if(this.kind === 'adult' || this.kind === 'child'){
+      if(this.kind !== 'infant' && this.kind !== 'toddler'){
         padAt(E, lm.clavicleMidR[0] + r * 0.15, lm.clavicleMidR[1] + r * 0.95, r * 1.0, r * 0.75, -8);
         padAt(E, lm.midaxL[0] - r * 0.35, (lm.heartApex || lm.midaxL)[1] + r * 0.55, r * 1.0, r * 0.75, -65);
       } else padAt(E, cx, lm.sternalAngle ? lm.sternalAngle[1] + r * 0.55 : chin + r * 2, r * 0.8, r * 0.68, 0);
