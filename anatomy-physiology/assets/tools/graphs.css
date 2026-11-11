@@ -271,3 +271,21 @@
 .gr-qbtn.is-skipped{border-style:dashed;}
 .gr-qbtn.is-skipped::after{content:"skipped";display:block;font:800 8.5px/1 var(--font-ui);color:var(--muted);margin-top:-2px;}
 .gr-skip{min-height:44px;font:800 13.5px var(--font-ui);color:var(--cink);text-decoration:underline;background:none;border:0;cursor:pointer;}
+
+/* Tool review 2026-11: a hematocrit tube drawn as a spun capillary tube (graphs.js tubes(), look "tubes"). */
+.gr-fig .gr-tube-air{fill:rgba(220,236,240,.35);}
+.gr-fig .gr-tube-plasma{fill:#F6DE8D;}
+.gr-fig .gr-tube-red{fill:#A3231C;}
+.gr-fig .gr-tube-buffy{fill:#FBF6EC;}
+.gr-fig .gr-tube-shine{fill:#fff;opacity:.35;}
+.gr-fig .gr-line.gr-glass{stroke:#8FA4A8;stroke-width:2.2;}
+.gr-fig .gr-line.gr-cells{stroke:#7A1712;stroke-width:1.6;}
+:root[data-theme="dark"] .gr-fig .gr-tube-air{fill:rgba(150,190,200,.08);}
+:root[data-theme="dark"] .gr-fig .gr-tube-plasma{fill:#B89A45;}
+:root[data-theme="dark"] .gr-fig .gr-tube-red{fill:#B3352C;}
+:root[data-theme="dark"] .gr-fig .gr-tube-buffy{fill:#E9E2D3;}
+:root[data-theme="dark"] .gr-fig .gr-tube-shine{opacity:.12;}
+:root[data-theme="dark"] .gr-fig .gr-line.gr-glass{stroke:#7E9497;}
+:root[data-theme="dark"] .gr-fig .gr-line.gr-cells{stroke:#E3786C;}
+.gr-rows .gr-none{display:block;}
+.gr-fig .gr-vlabel.gr-under{opacity:.18;}
