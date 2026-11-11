@@ -411,7 +411,11 @@ const SHELL_BUDGETS = [
      The 3D anatomy tool (same day) measured 54.1 KB, inside this. */
   /* 56 -> 56.4 (teacher classes, other courses, 2026-11-04): the answer-pick line in anp-questions.js and the exam
      history and picks exams.js writes for a class (docs/teacher-classes.md). Measured 56.1 KB. */
-  ['anatomy-physiology', 56.4],
+  /* 56.4 -> 57.5 (tool review 2026-11): the lab practical opens a tall figure fitted to the width and
+     puts the first-run ring on a label with room; the pixel work (leader lines, drawn extent) is in
+     tools/lab-fit.js, and the new calculator and loop pictures in calc-art.js and loop-scenes.js, all
+     loaded on first use. Lab practical measured 57.2 KB. */
+  ['anatomy-physiology', 57.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

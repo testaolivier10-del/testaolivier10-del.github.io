@@ -580,6 +580,7 @@
     sc.src = base() + 'assets/tools/loop-scenes.js';
     sc.onload = sc.onerror = function(){ var w = sceneWait; sceneWait = null; if(!window.AnpLoopScenes) sceneWait = null; w.forEach(function(f){ f(); }); };
     document.head.appendChild(sc);
+    var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = sc.src.replace(/\.js$/, '.css'); document.head.appendChild(ln);
   }
   function reduced(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
   function lowFirst(t){ t = String(t); return /^[A-Z][a-z]/.test(t) ? t.charAt(0).toLowerCase() + t.slice(1) : t; }
