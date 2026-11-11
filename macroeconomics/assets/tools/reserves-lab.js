@@ -169,6 +169,8 @@
       acts[0].textContent = t.acts[0]; acts[1].textContent = t.acts[1];
       acts.forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-s') === stance)); b.classList.toggle('ls-pri', +b.getAttribute('data-s') === stance); });
       $('.rl-fig').setAttribute('data-view', view);
+      // Until an action, only the reserve market has something to say: the rest wait, dimmed (wide stage).
+      $('.rl-fig').classList.toggle('is-rest', !stance);
       ($('.rl-tabs') ? $('.rl-tabs').querySelectorAll('button') : []).forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === view)); });
       // Why: what the action does, then the chain in words.
       var whyHead = e ? (e.works ? '<b>' + esc(e.act) + '.</b> ' : '<b>' + esc(e.act) + ': the policy rate does not move.</b> ') : '<b>' + esc(RL.fwOf(fw).name) + '.</b> ' + esc(RL.fwOf(fw).line);

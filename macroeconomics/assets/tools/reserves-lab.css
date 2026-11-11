@@ -102,3 +102,11 @@
 .ls-phone .rl-link-n{font-size:12.5px;}
 .ls-phone .rl-g{min-height:150px;}
 .mac-graph-svg.is-forex .mac-gr-alabel{font-size:10.5px;}
+
+/* Pass 2: before an action the reserve market is the one picture; the money market, AD-AS and the chain
+   wait dimmed and light up when an action moves them (wide stage only; a phone shows one graph at a time). */
+.rl-panel,.rl-panels > .rl-chain{transition:opacity .3s ease;}
+.ls-root:not(.ls-phone) .rl-fig.is-rest .rl-panel[data-g="money"],
+.ls-root:not(.ls-phone) .rl-fig.is-rest .rl-panel[data-g="adas"],
+.ls-root:not(.ls-phone) .rl-fig.is-rest .rl-panels > .rl-chain{opacity:.32;}
+@media (prefers-reduced-motion: reduce){ .rl-panel,.rl-panels > .rl-chain{transition:none;} }
