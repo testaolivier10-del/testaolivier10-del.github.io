@@ -360,7 +360,7 @@
       var g1 = sum(o.g1[d]) + o.lg1[d] + o.h1[d], s = sum(o.s[d]), g2 = sum(o.g2[d]) + o.h2[d], m = sum(o.m[d]) + o.hm[d];
       n.G0 += o.g0[d]; n.G1 += g1; n.S += s; n.G2 += g2; n.M += m;
       n.held1 += o.h1[d]; n.held2 += o.h2[d]; n.heldM += o.hm[d];
-      if(d) n.damaged = o.g0[d] + g1 + s + g2 + m;
+      if(d){ n.damaged = o.g0[d] + g1 + s + g2 + m; n.dam = { G0: o.g0[d], G1: g1, S: s, G2: g2, M: m }; }
       n.hist[0] += o.g0[d] + g1; n.hist[5] += g2 + m;
       var q = o.s[d].length / 4;
       o.s[d].forEach(function(x, i){ n.hist[1 + Math.min(3, Math.floor(i / q))] += x; });

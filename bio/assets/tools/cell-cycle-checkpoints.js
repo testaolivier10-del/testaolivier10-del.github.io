@@ -36,7 +36,7 @@
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="find" aria-pressed="false">Find the broken checkpoint</button></div>' +
       '<div class="bt-fig cc-ringfig bt-hero"></div><p class="bt-first cc-tip">Tap a checkpoint on the ring to see what it checks.</p><div class="cc-gate os-why" role="status" aria-live="polite"></div>' +
       '<div class="os-chal cc-chal" hidden></div>' +
-      '<div class="bt-controls" data-primary="2"></div>' +
+      '<div class="bt-controls" data-primary="3"></div>' +
       '<div class="cc-plots bt-num"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Over time</button><button type="button" class="bt-btn" data-v="hist" aria-pressed="false">DNA content</button><button type="button" class="bt-btn" data-v="gf" aria-pressed="false">Against growth factor</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
@@ -54,7 +54,8 @@
     var sDam = T.slider({ label: 'DNA damage', min: data.damage.min, max: data.damage.max, step: data.damage.step, value: st.damage, unit: data.damage.unit, decimals: 1, hint: 'The share of undamaged cells that get damaged DNA each hour.', onInput: function(v){ st.damage = v; update(); } });
     var sRead = T.slider({ label: 'Read the dish at', min: data.readTime.min, max: data.readTime.max, step: data.readTime.step, value: st.readT, unit: 'h', decimals: 0, onInput: function(v){ st.readT = v; update(); } });
     var outSel = T.choiceSelect({ label: 'Output to plot', value: st.out, options: data.outputs.map(function(o){ return { value: o.id, label: o.name }; }), onChange: function(v){ st.out = v; update(true); } });
-    ctl.appendChild(sGF.el);
+    // DNA damage sits with growth factor on the main panel (tool review 2026-11): at 0 damage p53 had nothing to do.
+    ctl.appendChild(sGF.el); ctl.appendChild(sDam.el);
     function checks(legend, list){
       var fs = document.createElement('fieldset');
       fs.className = 'bt-ctl bt-checks';
@@ -66,7 +67,7 @@
       ctl.appendChild(fs);
     }
     checks('Mutations (from 0 h)', data.mutations);
-    [sDam, sRead].forEach(function(c){ ctl.appendChild(c.el); });
+    ctl.appendChild(sRead.el);
     checks('Drug (from 0 h)', data.drugs);
     ctl.appendChild(outSel.el);
 
@@ -187,6 +188,8 @@
       parts.push('<line class="cc-sep" x1="20" x2="380" y1="' + (CY + R + 46) + '" y2="' + (CY + R + 46) + '"/>');
       strip.forEach(function(q, i){ var x = 40 + i * 80, y = CY + R + 84; parts.push('<g class="cc-pc"><g transform="translate(' + x + ' ' + y + ') scale(1.22) translate(' + (-x) + ' ' + (-y) + ')">' + phaseCell(q[0], x, y) + '</g><text class="cc-pcl" x="' + x + '" y="' + (y + 44) + '" text-anchor="middle">' + q[1] + '</text></g>'); });
       parts.push('<text class="note" x="' + CX + '" y="16" text-anchor="middle">' + grp(a.N) + ' cells' + (hide ? '' : ' · ' + F(a.divRate, 2) + ' divisions per 100 cells per h') + '</text>');
+      if(!hide && a.damaged >= 0.5) parts.push('<text class="note cc-damnote" x="' + CX + '" y="34" text-anchor="middle">Red: ' + F(100 * a.damaged / a.N, 0) + '% of cells have damaged DNA' + (o.p53 ? ' (p53 lost: none held at G1)' : '') + '</text>');
+      if(!hide && (o.rb || o.cycd || o.ras) && o.gf >= 100) parts.push('<text class="note cc-damnote" x="' + CX + '" y="' + (a.damaged >= 0.5 ? 50 : 34) + '" text-anchor="middle">At full growth factor every cell passes G1 anyway: lower it to see this mutation</text>');
       // gates as buttons
       Object.keys(GATES).forEach(function(k){
         var gt = GATES[k], held = k === 'g1' ? a.held1 : k === 'g2' ? a.held2 : a.heldM, p1 = pol(gt.ang, R - 18), p2 = pol(gt.ang, R + 18), lb = k === 'g1' ? pol(gt.ang + 4, R + 40) : pol(gt.ang + (k === 'm' ? 6 : -6), R + 30);
@@ -214,7 +217,13 @@
       var h1 = Math.min(10, share(a.held1)), h2 = Math.min(10, share(a.held2)), hm = Math.min(16, share(a.heldM));
       var nG = { G1: share(a.G1 - a.held1), S: share(a.S), G2: share(a.G2 - a.held2), M: share(a.M - a.heldM) };
       dots = [];
-      SEG.forEach(function(sg){ var n = nG[sg[0]]; for(var i = 0; i < n; i++) dots.push({ seg: sg, u: (i + 0.5) / n }); });
+      // Cells with damaged DNA are drawn red, spread evenly through each phase; held cells are all damaged.
+      var dm = a.dam || { G0: 0, G1: 0, S: 0, G2: 0, M: 0 }, held = { G1: a.held1, G2: a.held2, M: a.heldM };
+      SEG.forEach(function(sg){
+        var n = nG[sg[0]], free = Math.max(0, (dm[sg[0]] || 0) - (held[sg[0]] || 0)), tot = a[sg[0]] - (held[sg[0]] || 0);
+        var md = tot > 0 ? Math.round(n * free / tot) : 0;
+        for(var i = 0; i < n; i++) dots.push({ seg: sg, u: (i + 0.5) / n, dam: Math.floor((i + 1) * md / n) > Math.floor(i * md / n) });
+      });
       var pile = function(k, n){ for(var i = 0; i < n; i++) dots.push({ gate: k, i: i }); };
       pile('g1', h1); pile('g2', h2); pile('m', hm);
       var g0 = Math.min(14, share(a.G0)); for(var j = 0; j < g0; j++) dots.push({ g0: j });
@@ -231,7 +240,7 @@
         if(d.seg){ var u = (d.u + tm * spin) % 1, ang = d.seg[1] + 2 + (d.seg[2] - d.seg[1] - 4) * u, q = pol(ang, R); x = q[0]; y = q[1]; }
         else if(d.gate){ var gt = GATES[d.gate], row = Math.floor(d.i / 4), col = d.i % 4, q2 = pol(d.gate === 'm' ? 10 : d.gate === 'g2' ? gt.ang - 16 : gt.ang - 5, R - 30 - row * 9); x = q2[0] + (col - 1.5) * 9; y = q2[1]; }
         else { x = CX - 30 + (d.g0 % 7) * 10; y = CY + 20 + Math.floor(d.g0 / 7) * 10; }
-        var c = '<g class="cc-cell' + (d.gate ? ' held' : '') + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (d.g0 != null ? 3.6 : 4.4) + '"/><circle class="n" cx="' + (x + 0.6).toFixed(1) + '" cy="' + (y - 0.4).toFixed(1) + '" r="' + (d.g0 != null ? 1.4 : 1.8) + '"/></g>';
+        var c = '<g class="cc-cell' + (d.gate ? ' held' : d.dam ? ' dam' : '') + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (d.g0 != null ? 3.6 : 4.4) + '"/><circle class="n" cx="' + (x + 0.6).toFixed(1) + '" cy="' + (y - 0.4).toFixed(1) + '" r="' + (d.g0 != null ? 1.4 : 1.8) + '"/></g>';
         if(d.g0 != null) out0.push(c); else out.push(c);
       });
       g.innerHTML = out.join(''); g0.innerHTML = out0.join('');

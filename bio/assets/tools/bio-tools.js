@@ -1163,7 +1163,8 @@
       var key = review ? 'r' : inFrq ? 'f' : 'q';
       if(key === last) return;
       last = key;
-      stims.forEach(function(x){ x.hidden = !!inFrq; });
+      // The FRQs say "Use Table 1 above": the stimulus stays on the stage under the FRQ heading (tool review 2026-11).
+      stims.forEach(function(x){ x.hidden = false; });
       if(head) head.hidden = !inFrq;
       s.caption(review ? 'Tick each rubric point your answer earns, then save your score.'
         : inFrq ? 'Write your answer in your own words; the rubric and a sample answer come after the last part.'

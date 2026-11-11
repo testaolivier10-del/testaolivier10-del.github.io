@@ -41,7 +41,7 @@
       '<div class="op-further" hidden>' + data.goingFurther + '</div>' +
       '<p class="bt-first">Tap Lactose or Glucose to change what the cell has, then watch the operon switch.</p>' +
       '<div class="op-tray" role="group" aria-label="In the medium"></div>' +
-      '<div class="bt-fig op-stagefig"></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it. Drag a chip into the cell, or tap it, to change the medium.</p>' +
+      '<div class="bt-fig op-stagefig"></div><div class="op-quizfig" hidden></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it. Drag a chip into the cell, or tap it, to change the medium.</p>' +
       '<fieldset class="bt-modes bt-more"><legend>Operon</legend>' + MODES.map(function(m){
         var id = 'op-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="op-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
@@ -119,6 +119,7 @@
       copies().forEach(function(k, ci){
         var g = document.createElement('fieldset');
         g.className = 'bt-ctl op-genes';
+        g.hidden = qmode === 'quiz';
         g.innerHTML = '<legend>' + (st.mode === 'mero' ? esc(COPY_NAMES[ci]) + ' genes' : 'Genes') + '</legend>';
         genes.forEach(function(def){
           var s = T.choiceSelect({ label: (st.mode === 'mero' ? COPY_NAMES[ci] + ': ' : '') + def.label, value: k[def.id], options: def.options,
@@ -265,9 +266,32 @@
       if(narrow) return p.join('') + '<g transform="translate(' + (10 - op1) + ' ' + NARROW_DY + ')">' + B.join('') + '</g>';
       return p.join('') + B.join('');
     }
+    /* Ribosomes read the mRNA into protein: the enzyme band under the DNA
+       (tool review 2026-11). One drawn cluster = 10 units at steady state.
+       lacZ⁻ copies make the protein, but it does not work: drawn gray and
+       dashed. beta-galactosidase is a tetramer, so each is four subunits. */
+    var ENZ_H = 70;
+    function enzCluster(cx, cy, bad){
+      var r = 6.2, o = 5.4, d = [[-o, -o], [o, -o], [-o, o], [o, o]];
+      return '<g class="op-enz' + (bad ? ' bad' : '') + '">' + d.map(function(p){ return '<circle cx="' + (cx + p[0]).toFixed(1) + '" cy="' + (cy + p[1]).toFixed(1) + '" r="' + r + '"/>'; }).join('') + '</g>';
+    }
+    function enzBand(s, c, y0, W){
+      var trp = c.mode === 'trp', good = Math.min(10, Math.round(s.e / 10)), bad = 0;
+      if(!trp) s.copies.forEach(function(x, i){ if(c.copies[i].Z === '-') bad += Math.round(x.rate / 10); });
+      bad = Math.min(10 - good, bad);
+      var name = trp ? 'Enzymes that build tryptophan' : 'β-galactosidase', out = '<line class="op-sep" x1="16" x2="' + (W - 16) + '" y1="' + (y0 + 4) + '" y2="' + (y0 + 4) + '"/>';
+      out += '<text class="op-ttl" x="16" y="' + (y0 + 24) + '">' + name + (W < 400 ? '' : ', made by ribosomes from the mRNA') + ': ' + F(s.e, 0) + '</text>';
+      var x = 30, y = y0 + 48, step = W < 400 ? 28 : 34;
+      for(var i = 0; i < good; i++){ out += enzCluster(x, y, false); x += step; }
+      for(var j = 0; j < bad; j++){ out += enzCluster(x, y, true); x += step; }
+      var note = good + bad === 0 ? (s.e > 0 ? 'almost none (a few molecules)' : 'none') : bad && !good ? 'made, but not working (lacZ⁻)' : bad ? 'gray: made, but not working (lacZ⁻)' : 'each = 10';
+      out += W < 400 && good + bad > 6 ? '<text class="op-note" x="18" y="' + (y + 30) + '">' + note + '</text>' : '<text class="op-note" x="' + (good + bad ? x + 4 : 18) + '" y="' + (y + 4) + '">' + note + '</text>';
+      return out;
+    }
     function figure(s, c){
-      var rh = rowH(), narrow = rh !== 180, W = narrow ? NARROW_W : 600, h = rh * c.copies.length + 6, svg = '';
+      var rh = rowH(), narrow = rh !== 180, W = narrow ? NARROW_W : 600, h = rh * c.copies.length + 6 + ENZ_H + (narrow ? 22 : 0), svg = '';
       c.copies.forEach(function(k, i){ svg += rowSvg(s, c, i, i * rh); });
+      svg += enzBand(s, c, rh * c.copies.length, W);
       var desc = 'Diagram of the ' + (c.mode === 'trp' ? 'trp' : 'lac') + ' operon, ' + genoText() + ', in ' + mediumText(c) + '. ' +
         s.copies.map(function(x, i){ return (c.copies.length > 1 ? COPY_NAMES[i] + ': ' : '') + 'repressor ' + repWords(x.rep, c) + '; ' + (c.mode === 'lac' ? (x.cap ? 'CAP–cAMP bound; ' : 'no CAP bound; ') : '') + 'RNA polymerase ' + polWords(x.rnap) + '; mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')'; }).join('. ') + '.';
       card.querySelector('.op-stagefig').innerHTML = '<svg class="op-fig' + (narrow ? ' op-narrow' : '') + '" viewBox="0 0 ' + W + ' ' + h + '" role="group" aria-label="' + esc(desc) + '"><rect class="op-cellbg" x="1" y="1" width="' + (W - 2) + '" height="' + (h - 2) + '" rx="22"/>' + svg + '</svg>';
@@ -400,7 +424,8 @@
       quizBox.innerHTML = '<p class="os-chal-q" tabindex="-1"><b>Strain X (' + qN + ').</b> Each medium was kept until the levels stopped changing. Which strain is it?</p>' + tbl +
         '<fieldset class="os-ask"><legend>Strain X is…</legend>' + list.map(function(x, i){ return '<div class="bt-radio"><input type="radio" name="' + id + '" id="' + id + i + '" value="' + x[0] + '"><label for="' + id + i + '">' + esc(x[1]) + '</label></div>'; }).join('') + '</fieldset>' +
         '<div class="bt-actions"><button type="button" class="btn-press sm op-qcheck">Check</button></div><div class="os-chal-fb" role="status" aria-live="polite"></div>';
-      // the stage is hidden until the answer, then shows strain X
+      quizFig(pick, media, vals);
+      // the operon figure is hidden until the answer; strain X's output in every medium shows instead
       quizBox.querySelector('.op-qcheck').addEventListener('click', function(){
         var a = quizBox.querySelector('input:checked'), fb = quizBox.querySelector('.os-chal-fb');
         if(!a){ fb.textContent = 'Pick a strain first.'; return; }
@@ -423,14 +448,73 @@
       });
       copies()[0] = Object.assign({}, isTrp() ? WT_TRP : WT_LAC); qmodeShow(false);
     }
-    function qmodeShow(reveal){ qmode = reveal ? 'reveal' : 'quiz'; figEl.hidden = !reveal; controls(); update(true); if(reveal) tray(); }
+    function qmodeShow(reveal){ qmode = reveal ? 'reveal' : 'quiz'; figEl.hidden = !reveal; qfigEl.hidden = reveal; controls(); update(true); if(reveal) tray(); }
+    /* Strain X on the stage (tool review 2026-11: the stage was blank). One
+       cell per medium: the sugars (or tryptophan) around it, the operon with
+       its switch parts hidden behind "?", and what the cell makes there:
+       mRNA ribbons and enzyme clusters (each = 10). The table in the panel
+       holds the same numbers. */
+    var qfigEl = card.querySelector('.op-quizfig');
+    function qmol(kind, x, y){
+      if(kind === 'trp') return '<path class="op-small" d="' + trpD(x, y) + '"/>';
+      if(kind === 'lactose') return '<path class="op-small lac" d="' + hexD(x - 6, y, 6.5) + hexD(x + 6, y + 5, 6.5) + '"/>';
+      return '<path class="op-small glc" d="' + hexD(x, y, 7) + '"/>';
+    }
+    // Phone: one compact row per medium, so all of them fit the short quiz stage.
+    function quizFigPhone(media, vals){
+      var trp = isTrp(), RH = 48, W = 360, H = 4 + media.length * RH, o = '';
+      media.forEach(function(m, i){
+        var v = vals[i], y = 2 + i * RH;
+        o += '<text class="op-ttl" x="4" y="' + (y + 20) + '">' + esc(m.short) + '</text>';
+        o += '<text class="op-note" x="4" y="' + (y + 38) + '">mRNA ' + F(v.m, 0) + (trp ? '' : ' · enz ' + F(v.e, 0)) + '</text>';
+        o += '<rect class="op-cellwall" x="136" y="' + (y + 4) + '" width="222" height="' + (RH - 8) + '" rx="20"/>';
+        var nm = v.m >= 50 ? 3 : v.m >= 5 ? 1 : 0;
+        for(var r = 0; r < nm; r++) o += '<path class="op-mrna' + (v.m >= 50 ? ' hi' : '') + '" d="M' + (146 + r * 3) + ' ' + (y + 17 + r * 7) + ' q4 -4 8 0 t8 0 t8 0 t8 0"/>';
+        if(!nm) o += '<line class="op-mrna trickle" x1="146" y1="' + (y + 24) + '" x2="172" y2="' + (y + 24) + '"/>';
+        var ne = Math.min(10, Math.round(v.e / 10));
+        for(var e = 0; e < ne; e++){
+          var cx = 192 + e * 16, cy = y + 24;
+          o += '<g class="op-enz">' + [[-3.3, -3.3], [3.3, -3.3], [-3.3, 3.3], [3.3, 3.3]].map(function(d){ return '<circle cx="' + (cx + d[0]) + '" cy="' + (cy + d[1]) + '" r="3.8"/>'; }).join('') + '</g>';
+        }
+        if(!ne) o += '<text class="op-note" x="192" y="' + (y + 28) + '">' + (v.e > 0 ? 'almost no enzyme' : 'no working enzyme') + '</text>';
+      });
+      return '<svg class="op-fig op-qpanel op-qphone" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('Strain X: ' + media.map(function(m, i){ return m.label + ', mRNA ' + F(vals[i].m, 0) + (trp ? '' : ' and working β-galactosidase ' + F(vals[i].e, 0)); }).join('; ') + '.') + '">' + o + '</svg>';
+    }
+    function quizFig(pick, media, vals){
+      if(phoneFig()){
+        qfigEl.innerHTML = '<p class="op-qhead"><b>Strain X</b>, switch parts hidden. Wavy lines: mRNA; clusters: enzyme, each = 10.</p>' + quizFigPhone(media, vals);
+        return;
+      }
+      var trp = isTrp(), panels = media.map(function(m, i){
+        var v = vals[i], W = 200, H = 214, o = '';
+        o += '<text class="op-ttl" x="10" y="20">' + esc(m.label) + '</text>';
+        var mols = trp ? (m.trp ? ['trp', 'trp', 'trp'] : []) : [].concat(m.glucose ? ['glucose', 'glucose'] : [], m.lactose ? ['lactose', 'lactose'] : []);
+        mols.forEach(function(k, j){ o += qmol(k, 18 + j * 26, 40); });
+        if(!mols.length) o += '<text class="op-note" x="10" y="44">' + (trp ? 'no tryptophan' : 'no sugar') + '</text>';
+        o += '<rect class="op-cellwall" x="6" y="58" width="188" height="134" rx="44"/>';
+        o += helix(20, 180, 86);
+        o += '<rect class="op-box qx" x="22" y="73" width="66" height="26" rx="6"/><text class="op-blab" x="55" y="90.5" text-anchor="middle">switch ?</text>';
+        o += '<rect class="op-box gene qx" x="92" y="73" width="86" height="26" rx="6"/><text class="op-blab" x="135" y="90.5" text-anchor="middle">' + (trp ? 'trpEDCBA' : 'lacZYA ?') + '</text>';
+        var nm = v.m >= 50 ? 3 : v.m >= 5 ? 1 : 0;
+        for(var r = 0; r < nm; r++) o += '<path class="op-mrna' + (v.m >= 50 ? ' hi' : '') + '" d="M' + (96 + r * 6) + ' ' + (110 + r * 7) + ' q5 -5 10 0 t10 0 t10 0 t10 0 t10 0 t10 0"/>';
+        if(!nm) o += '<line class="op-mrna trickle" x1="96" y1="112" x2="126" y2="112"/>';
+        o += '<text class="op-note" x="22" y="' + (114) + '">mRNA</text>';
+        var ne = Math.min(10, Math.round(v.e / 10));
+        for(var e = 0; e < ne; e++) o += enzCluster(30 + (e % 5) * 28, 146 + Math.floor(e / 5) * 26, false);
+        if(!ne) o += '<text class="op-note" x="22" y="152">' + (v.e > 0 ? 'almost no enzyme' : trp ? 'no enzyme' : 'no working enzyme') + '</text>';
+        o += '<text class="op-num" x="10" y="208">mRNA ' + F(v.m, 0) + (trp ? '' : ' · enzyme ' + F(v.e, 0)) + '</text>';
+        return '<svg class="op-fig op-qpanel" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('Strain X in ' + m.label + ': mRNA ' + F(v.m, 0) + (trp ? '' : ', working β-galactosidase ' + F(v.e, 0)) + '.') + '">' + o + '</svg>';
+      });
+      qfigEl.innerHTML = '<p class="op-qhead"><b>Strain X</b>: what it makes in each medium. Its switch parts are hidden.</p><div class="op-qgrid' + (trp ? ' two' : '') + '">' + panels.join('') + '</div>' +
+        '<p class="bt-small op-qkey">Wavy lines: mRNA. Clusters: ' + (trp ? 'enzymes that build tryptophan' : 'working β-galactosidase') + ', each = 10. Wild type fully on = 100.</p>';
+    }
     function setQ(m){
       card.querySelectorAll('[data-q]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-q') === m)); });
       var q = m === 'quiz';
       quizBox.hidden = !q;
       ['.bt-controls', '.op-lower', '.bt-readout', '.op-explain', '.bt-summary', '.bt-buttons', '.bt-data', '.bt-runnote', '.op-taphint'].forEach(function(sel){ var el = card.querySelector(sel); if(el) el.hidden = q; });
       if(q){ saveCopies = { lac: st.lac.map(function(k){ return Object.assign({}, k); }), trpG: st.trpG.map(function(k){ return Object.assign({}, k); }) }; qmode = 'quiz'; newQuiz(); }
-      else { qmode = 'explore'; figEl.hidden = false; if(saveCopies){ st.lac = saveCopies.lac; st.trpG = saveCopies.trpG; } controls(); update(true); }
+      else { qmode = 'explore'; figEl.hidden = false; qfigEl.hidden = true; if(saveCopies){ st.lac = saveCopies.lac; st.trpG = saveCopies.trpG; } controls(); update(true); }
     }
     card.querySelectorAll('[data-q]').forEach(function(b){ b.addEventListener('click', function(){ if(b.getAttribute('aria-pressed') !== 'true') setQ(b.getAttribute('data-q')); }); });
 
@@ -441,12 +525,13 @@
     if(/^#mutant/.test(location.hash)) setQ('quiz');
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
-    studio: { sim: true, modeLabels: { quiz: 'Mutant quiz' }, primary: 0, dock: ['.os-chal', '.bt-modes'], stage: ['.op-stagefig'], stageAlso: ['.op-tray'], live: '.op-explain', why: ['.op-taphint', '.op-further'],
+    studio: { sim: true, modeLabels: { quiz: 'Mutant quiz' }, primary: 0, primarySel: '.op-genes', dock: ['.os-chal', '.bt-modes', '@primary'], stage: ['.op-stagefig'], stageAlso: ['.op-quizfig', '.op-tray'], live: '.op-explain', why: ['.op-taphint', '.op-further'],
       hint: { target: '.op-chip', text: 'Tap a sugar to change the medium' },
       // Readout rows by label: the trp operon has no CAP row, so row numbers shift.
-      caption: function(g){ return '<b>Repressor ' + T.esc(roBy(g, 'Repressor')) + '.</b> RNA polymerase ' + T.esc(roBy(g, 'RNA polymerase')) + '.'; },
-      pills: function(g){ return [{ k: 'mRNA', html: roBy(g, 'mRNA at'), tone: 'readout' }]; },
-      pillsR: function(g){ var cap = roBy(g, 'CAP'); return cap ? [{ html: 'CAP–cAMP ' + cap.split(' (')[0], tone: 'ghost' }] : [{ html: 'Repressible: Trp turns it off', tone: 'ghost' }]; } } });
+      caption: function(g){ if(quizOn()) return '<b>Which strain is X?</b> Compare what it makes in each medium with what a normal cell would make.'; return '<b>Repressor ' + T.esc(roBy(g, 'Repressor')) + '.</b> RNA polymerase ' + T.esc(roBy(g, 'RNA polymerase')) + '.'; },
+      pills: function(g){ if(quizOn()) return []; return [{ k: 'mRNA', html: roBy(g, 'mRNA at'), tone: 'readout' }]; },
+      pillsR: function(g){ if(quizOn()) return []; var cap = roBy(g, 'CAP'); return cap ? [{ html: 'CAP–cAMP ' + cap.split(' (')[0], tone: 'ghost' }] : [{ html: 'Repressible: Trp turns it off', tone: 'ghost' }]; } } });
+  function quizOn(){ var q = document.querySelector('.op-quizfig'); return !!(q && !q.hidden); }
   function roBy(g, label){
     var rows = g.$ ? Array.prototype.slice.call(document.querySelectorAll('.op-read > div')) : [];
     for(var i = 0; i < rows.length; i++){ var dt = rows[i].querySelector('dt'); if(dt && dt.textContent.indexOf(label) === 0) return rows[i].querySelector('dd').textContent.replace(/\s+/g, ' ').trim(); }

@@ -25,7 +25,7 @@
   if(!T) return;
   T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, E = M.energyFlow, D = data.defaults, RG = data.ranges, NAMES = data.levelNames;
-    var st = { mode: 'energy', eco: data.ecosystems[0].id, gpp: D.gpp, prodResp: D.prodResp, eff: D.eff, resp: D.resp, levels: D.levels, c0: D.c0, retain: D.retain, scale: 'log' };
+    var st = { mode: 'energy', eco: data.ecosystems[0].id, gpp: D.gpp, prodResp: D.prodResp, eff: D.eff, resp: D.resp, levels: D.levels, c0: D.c0, retain: D.retain, scale: 'linear' };
     var runs = [], ctl = {};
     var MODES = [['energy', 'Energy and biomass'], ['toxin', 'Biomagnification of a persistent toxin (from Topic 8.7)']];
 
@@ -39,7 +39,7 @@
       '<div class="bt-controls ef-ctl" data-primary="2"></div>' +
       '<div class="ef-levels bt-more"><div class="bt-buttons"><button type="button" class="bt-btn" data-a="less">Remove the top level</button><button type="button" class="bt-btn" data-a="more">Add a level</button></div><p class="bt-small ef-lvnote" role="status" aria-live="polite"></p></div>' +
       '<div class="bt-num"><h3 class="ef-sub">Food chain (each arrow: is eaten by)</h3><ol class="ef-chain"></ol></div>' +
-      '<div class="ef-pyr bt-num"><div class="bt-tabs" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div>' +
+      '<div class="ef-pyr bt-num"><div class="bt-tabs" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="linear" aria-pressed="true">Widths to scale</button><button type="button" class="bt-btn" data-s="log" aria-pressed="false">Widths on a log scale</button></div>' +
       '<div class="bt-stage two ef-stage"><div class="bt-fig ef-fig1"></div><div class="bt-fig ef-fig2"></div></div><p class="bt-small ef-key"></p></div>' +
       '<dl class="bt-readout ef-out"></dl><div class="ef-explain bt-num"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run a series of fractions passed on</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
@@ -126,13 +126,13 @@
       return W * (0.12 + 0.88 * (span > 0 ? (Math.log10(v) - Math.log10(lo)) / span : 1));
     }
     function pyramid(title, unit, cls, vals, labels, extra, inverted){
-      var row = 46, h = 34 + row * vals.length, p = ['<text class="ef-ttl" x="160" y="18" text-anchor="middle">' + esc(title) + '</text>'], A = window.ApBioArt;
+      var row = 52, h = 36 + row * vals.length, p = ['<text class="ef-ttl" x="160" y="20" text-anchor="middle">' + esc(title) + '</text>'], A = window.ApBioArt;
       // producers at the bottom; tiers touch, like a textbook pyramid
       vals.forEach(function(v, i){
         var y = h - row * (i + 1), w = widthOf(v, vals), nm = eco().organisms[i];
-        p.push('<rect class="ef-bar ' + cls + '" x="' + (160 - w / 2).toFixed(1) + '" y="' + (y + 20) + '" width="' + w.toFixed(1) + '" height="26" rx="4"/>');
-        if(A && A.has(nm)) p.push(A.icon(nm, 160 - Math.max(w, 30) / 2 - 16, y + 33, 22, 'ef-o l' + i));
-        p.push('<text class="ef-lab" x="160" y="' + (y + 14) + '" text-anchor="middle">' + esc(labels[i] + ': ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : '')) + '</text>');
+        p.push('<rect class="ef-bar ' + cls + '" x="' + (160 - w / 2).toFixed(1) + '" y="' + (y + 22) + '" width="' + w.toFixed(1) + '" height="30" rx="' + Math.min(4, w / 2).toFixed(1) + '"/>');
+        if(A && A.has(nm)) p.push(A.icon(nm, 160 - Math.max(w, 30) / 2 - 16, y + 37, 24, 'ef-o l' + i));
+        p.push('<text class="ef-lab" x="160" y="' + (y + 16) + '" text-anchor="middle">' + esc(labels[i] + ': ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : '')) + '</text>');
       });
       var desc = title + (st.scale === 'log' ? ' (bar widths on a log scale)' : ' (bar widths to scale)') + ', producers at the bottom: ' + vals.map(function(v, i){ return labels[i] + ' ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : ''); }).join('; ') + '.' + (inverted ? ' ' + inverted : '');
       return '<svg class="ef-pyr" viewBox="-10 0 340 ' + h + '" role="img" aria-label="' + esc(desc) + '">' + p.join('') + '</svg>';

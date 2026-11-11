@@ -202,6 +202,17 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    0 s (`readTime.value` 0). The PKA step's note no longer calls 1 PKA per 200 cAMP binding: four cAMP bind each
    PKA (two per regulatory subunit), freeing two catalytic subunits; the 200 is a count ratio (most cAMP is free),
    said in "How this model works". The two-column phone ladder (`ladder2`) is gone: one column fits a phone.
+   (2026-11-10, tool review fixes, branch `claude/tv-bio-fix`, `docs/tool-review/bio.md`, notes in
+   `docs/tool-review/done/bio-fix.md`) Operons: the Mutant quiz stage draws strain X in every medium (switch parts
+   behind "?", mRNA and enzyme made), Explore draws the enzyme band, gene choices sit in the dock. Cell cycle: DNA
+   damage is on the main panel at 2% per hour (`damage.value`), damaged cells are red (`popCount` adds `dam` per
+   phase). Energy flow pyramids open to scale. Enzyme: pH, inhibitor and enzyme in the dock. Graph builder: points
+   table stacks in the dock, data set choice in the dock (Details on a phone). Hardy-Weinberg drift: beads fit the
+   jar at any N, Guess N and Compare population sizes draw on the stage. Population growth: live N(t) curve under
+   the meadow, fixed habitat scale (the meadow is the largest K the slider allows), flood and frost drawn. Rates:
+   bold tangent with a rise-over-run step and a Hide/Show switch, a percent change Explore picture. Questions
+   mode keeps the stimulus on the stage for the FRQ (every FRQ says "Use Table 1 above"); tree reading draws its
+   Drawing 1 and 2. No item id, hash, data key or recording changed.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;

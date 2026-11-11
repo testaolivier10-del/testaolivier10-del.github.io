@@ -41,19 +41,23 @@
       p.push('<line class="rt-mine ' + (l.cls || '') + '" x1="' + sx(t0).toFixed(1) + '" y1="' + sy(y0).toFixed(1) + '" x2="' + sx(t1).toFixed(1) + '" y2="' + sy(y1).toFixed(1) + '"/>');
     });
     if(o.tan){
-      // the tangent at time tt: position on the polyline, slope from the neighbouring points
+      // The tangent at time tt (tool review 2026-11: it was a short faint stroke through its own label):
+      // a bold line across the whole plot, a rise-over-run step on it (one time step along, the slope up),
+      // and the value in a box in the empty corner of the plot.
       var tt = o.tan.t, k = 0; while(k < t.length - 2 && t[k + 1] < tt) k++;
-      var f = (tt - t[k]) / (t[k + 1] - t[k]), yy = y[k] + f * (y[k + 1] - y[k]), sl = o.tan.slope, half = tmax * 0.18;
-      var ta = Math.max(0, tt - half), tb = Math.min(tmax, tt + half);
-      p.push('<line class="rt-tan" x1="' + sx(ta).toFixed(1) + '" y1="' + sy(yy + sl * (ta - tt)).toFixed(1) + '" x2="' + sx(tb).toFixed(1) + '" y2="' + sy(yy + sl * (tb - tt)).toFixed(1) + '"/>');
+      var f = (tt - t[k]) / (t[k + 1] - t[k]), yy = y[k] + f * (y[k + 1] - y[k]), sl = o.tan.slope;
+      var cid = 'rtclip' + (lineGraph.n = (lineGraph.n || 0) + 1);
+      p.push('<clipPath id="' + cid + '"><rect x="' + L + '" y="' + TP + '" width="' + pw + '" height="' + ph + '"/></clipPath>');
+      p.push('<g clip-path="url(#' + cid + ')"><line class="rt-tan" x1="' + sx(0).toFixed(1) + '" y1="' + sy(yy - sl * tt).toFixed(1) + '" x2="' + sx(tmax).toFixed(1) + '" y2="' + sy(yy + sl * (tmax - tt)).toFixed(1) + '"/></g>');
       p.push('<line class="rt-tanv" x1="' + sx(tt).toFixed(1) + '" x2="' + sx(tt).toFixed(1) + '" y1="' + (TP + ph) + '" y2="' + sy(yy).toFixed(1) + '"/>');
-      // The label goes on the side of the point the curve bends away from (below
-      // where the curve climbs over it, above where it falls away), so neither the
-      // curve nor the tangent runs through it; with no room below, the empty top corner.
-      var toRight = tt <= tmax * 0.6, below = toRight === (sl > 0);
-      var lx = sx(tt) + (toRight ? 10 : -10), anchor = toRight ? 'start' : 'end', ly = below ? sy(yy) + 24 : sy(yy) - 16;
-      if(below && ly > TP + ph - 6){ ly = TP + 14; lx = sl > 0 ? L + 8 : W - R - 8; anchor = sl > 0 ? 'start' : 'end'; }
-      p.push('<text class="rt-tanl" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + anchor + '">' + esc(o.tan.label) + '</text>');
+      var run = xs, back = tt + run > tmax, t2 = back ? tt - run : tt + run, y2v = yy + sl * (t2 - tt);
+      if(y2v >= 0 && y2v <= ymax){
+        p.push('<path class="rt-step" d="M' + sx(tt).toFixed(1) + ' ' + sy(yy).toFixed(1) + ' H' + sx(t2).toFixed(1) + ' V' + sy(y2v).toFixed(1) + '"/>');
+        p.push('<text class="rt-stepl" x="' + ((sx(tt) + sx(t2)) / 2).toFixed(1) + '" y="' + (sy(yy) + (sl > 0 ? 14 : -6)).toFixed(1) + '" text-anchor="middle">' + M.round(run, 6) + ' ' + esc(x.unitT) + '</text>');
+        p.push('<text class="rt-stepl" x="' + (sx(t2) + (back ? -5 : 5)).toFixed(1) + '" y="' + ((sy(yy) + sy(y2v)) / 2 + 4).toFixed(1) + '" text-anchor="' + (back ? 'end' : 'start') + '">' + F(Math.abs(sl * run), 2) + ' ' + esc(x.unitY) + '</text>');
+      }
+      var bw2 = Math.min(pw - 16, 9 + o.tan.label.length * 6.6), bx = L + 8, by = sl >= 0 ? TP + 4 : TP + ph - 34;
+      p.push('<rect class="rt-tanbox" x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + bw2.toFixed(1) + '" height="26" rx="8"/><text class="rt-tanl" x="' + (bx + bw2 / 2).toFixed(1) + '" y="' + (by + 17.5).toFixed(1) + '" text-anchor="middle">' + esc(o.tan.label) + '</text>');
       p.push('<circle class="sk-grip rt-tang" data-k="tan" tabindex="0" role="slider" aria-label="Tangent point (time)" aria-valuemin="0" aria-valuemax="' + tmax + '" aria-valuenow="' + M.round(tt, 2) + '" aria-valuetext="' + esc(o.tan.label) + '" cx="' + sx(tt).toFixed(1) + '" cy="' + sy(yy).toFixed(1) + '" r="10"/>');
     }
     (o.tris || []).forEach(function(tr){
@@ -78,9 +82,13 @@
     if(!ctx) return;
     var x = P.generate.rates(M.rng(2024), ctx);
     var sec = S.card(app, { title: 'Tap two points: the slope is the rate', lead: esc(ctx.label || 'Amount') + ' over time, from a catalase run. Tap any two points to draw the triangle between them: the rate is its height over its width, Δy / Δt.' });
-    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sk-drag rt-xfig"></div><p class="sk-say" role="status" aria-live="polite"></p><div class="rt-log"></div><div class="bt-buttons"><button type="button" class="bt-btn rt-clear">Clear the triangles</button></div><div class="sk-goalhost"></div>');
+    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sk-drag rt-xfig"></div><p class="sk-say" role="status" aria-live="polite"></p><div class="rt-log"></div>' +
+      '<div class="bt-controls rt-views" role="group" aria-label="Explore"><button type="button" class="bt-btn" data-view="rate" aria-pressed="true">Rate: a slope</button><button type="button" class="bt-btn" data-view="pct" aria-pressed="false">Percent change</button></div>' +
+      '<div class="bt-buttons rt-ratebtns"><button type="button" class="bt-btn rt-clear">Clear the triangles</button><button type="button" class="bt-btn rt-tantog" aria-pressed="true">Hide the tangent</button></div><div class="sk-goalhost"></div>');
     var fig = sec.querySelector('.rt-xfig'), sayEl = sec.querySelector('.sk-say'), log = sec.querySelector('.rt-log');
-    var pick = null, tris = [], CL = ['a', 'b', 'c'], tanT = x.times[1] / 2, tmax = x.times[x.times.length - 1];
+    var pick = null, tris = [], CL = ['a', 'b', 'c'], tanT = x.times[1] / 2, tmax = x.times[x.times.length - 1], tanOn = true, view = 'rate';
+    var pctCtx = (data.contexts || []).filter(function(c){ return c.mode === 'pct'; })[0], px = pctCtx ? P.generate.rates(M.rng(7), pctCtx) : null;
+    var pItem = px ? px.items[0] : null, pEnd = pItem ? pItem.final : 0;
     // the rate at time tt: the slope between the two data points either side (a centered difference)
     function tanSlope(tt){
       var t = x.times, v = x.values, k = 0; while(k < t.length - 2 && t[k + 1] < tt) k++;
@@ -94,8 +102,9 @@
       { id: 'whole', text: 'Take the rate over the <b>whole run</b>: an average hides how the rate changed.' }
     ]);
     function render(){
+      if(view === 'pct'){ renderPct(); return; }
       var sl = tanSlope(tanT);
-      S.redraw(fig, lineGraph(x, { tap: true, pick: pick, tan: { t: tanT, slope: sl, label: 'rate ≈ ' + F(sl, 2) + ' ' + x.unitY + '/' + x.unitT + ' at ' + F(tanT, 1) + ' ' + x.unitT }, tris: tris.map(function(tr, k){ return { i: tr[0], j: tr[1], cls: CL[k % 3], label: F(M.rate(x.values[tr[0]], x.values[tr[1]], x.times[tr[0]], x.times[tr[1]]), 2) }; }),
+      S.redraw(fig, lineGraph(x, { tap: true, pick: pick, tan: !tanOn ? null : { t: tanT, slope: sl, label: 'rate ≈ ' + F(sl, 2) + ' ' + x.unitY + '/' + x.unitT + ' at ' + F(tanT, 1) + ' ' + x.unitT }, tris: tris.map(function(tr, k){ return { i: tr[0], j: tr[1], cls: CL[k % 3], label: F(M.rate(x.values[tr[0]], x.values[tr[1]], x.times[tr[0]], x.times[tr[1]]), 2) }; }),
         aria: 'Line graph of ' + (ctx.label || 'amount') + ' against time. Points are buttons: choose two to draw a slope triangle.' }));
       log.innerHTML = tris.length ? '<ul class="rt-list">' + tris.map(function(tr, k){ var a = tr[0], b = tr[1], r = M.rate(x.values[a], x.values[b], x.times[a], x.times[b]); return '<li class="' + CL[k % 3] + '"><span class="rt-sw" aria-hidden="true"></span>' + x.times[a] + ' to ' + x.times[b] + ' ' + esc(x.unitT) + ': (' + F(x.values[b], x.dp) + ' − ' + F(x.values[a], x.dp) + ') / (' + x.times[b] + ' − ' + x.times[a] + ') = <b>' + F(r, 2) + ' ' + esc(x.unitY + '/' + x.unitT) + '</b></li>'; }).join('') + '</ul>' : '';
     }
@@ -124,7 +133,58 @@
     S.drag(fig, '[data-k="tan"]', { move: function(k, pt){ moveTan((pt.x - L) / pw * tmax); } });
     S.keys(fig, '.rt-tang', function(k, d, big){ moveTan(tanT + d * tmax * (big ? 0.1 : 0.02)); });
     fig.addEventListener('keydown', function(e){ if(e.key !== 'Enter' && e.key !== ' ') return; var t = e.target.closest('[data-k]'); if(!t) return; e.preventDefault(); tap(+t.getAttribute('data-k')); });
-    sec.querySelector('.rt-clear').addEventListener('click', function(){ tris = []; pick = null; render(); sayEl.textContent = 'Cleared. Tap two points.'; });
+    sec.querySelector('.rt-clear').addEventListener('click', function(){ tris = []; pick = null; render(); sayEl.textContent = 'Triangles cleared. Tap two points.' + (tanOn ? ' The tangent stays until you hide it.' : ''); });
+    var tog = sec.querySelector('.rt-tantog');
+    tog.addEventListener('click', function(){
+      tanOn = !tanOn; tog.setAttribute('aria-pressed', String(tanOn)); tog.textContent = tanOn ? 'Hide the tangent' : 'Show the tangent';
+      render(); sayEl.textContent = tanOn ? 'Tangent shown: drag its round handle along the curve.' : 'Tangent hidden.';
+    });
+
+    /* Percent change (tool review 2026-11: half the title had no Explore
+       picture). One potato core from the course's own generator: the start
+       bar is cut into tenths of itself; drag the end bar and the change is
+       counted in those tenths, so the base of a percent change is always the
+       start. */
+    var PW = 420, PH = 270, PB = 40, PT = 30, base = PH - PB;
+    function renderPct(){
+      var st0 = pItem.initial, ymax = T.niceMax(st0 * 1.6), sy = function(v){ return base - (base - PT) * Math.max(0, Math.min(1, v / ymax)); };
+      var xs0 = 90, xs1 = 250, bw = 90, o = [], u = px.dp != null ? px.dp : 2, ch = pEnd - st0, pc = M.percentChange(st0, pEnd);
+      o.push('<line class="axis" x1="40" x2="' + (PW - 14) + '" y1="' + base + '" y2="' + base + '"/>');
+      // the start bar in tenths
+      o.push('<rect class="rt-pinit" x="' + xs0 + '" y="' + sy(st0).toFixed(1) + '" width="' + bw + '" height="' + (base - sy(st0)).toFixed(1) + '" rx="4"/>');
+      for(var i = 1; i < 10; i++) o.push('<line class="rt-tenth" x1="' + xs0 + '" x2="' + (xs0 + bw) + '" y1="' + sy(st0 * i / 10).toFixed(1) + '" y2="' + sy(st0 * i / 10).toFixed(1) + '"/>');
+      o.push('<text class="rt-pv" x="' + (xs0 + bw / 2) + '" y="' + (sy(st0) - 8).toFixed(1) + '" text-anchor="middle">start ' + F(st0, u) + ' ' + esc(px.unit) + '</text>');
+      // the end bar, draggable, with the start's tenths carried across beside it
+      o.push('<rect class="rt-pfin" x="' + xs1 + '" y="' + sy(pEnd).toFixed(1) + '" width="' + bw + '" height="' + (base - sy(pEnd)).toFixed(1) + '" rx="4"/>');
+      o.push('<line class="rt-base" x1="' + (xs0 - 6) + '" x2="' + (xs1 + bw + 40) + '" y1="' + sy(st0).toFixed(1) + '" y2="' + sy(st0).toFixed(1) + '"/>');
+      var rx = xs1 + bw + 12;
+      // the start's tenths carried across the end bar, so the change reads in tenths of the start
+      for(var j = 1; j <= 15; j++){ var v = st0 * j / 10; if(v > ymax) break; o.push('<line class="rt-tenth2' + (j === 10 ? ' ten' : '') + '" x1="' + (xs1 - 4) + '" x2="' + (xs1 + bw + 4) + '" y1="' + sy(v).toFixed(1) + '" y2="' + sy(v).toFixed(1) + '"/>'); }
+      if(Math.abs(ch) > 1e-9) o.push('<path class="rt-chg ' + (ch > 0 ? 'up' : 'dn') + '" d="M' + rx + ' ' + sy(st0).toFixed(1) + ' V' + sy(pEnd).toFixed(1) + '"/>' +
+        '<text class="rt-pc" x="' + (rx + 10) + '" y="' + ((sy(st0) + sy(pEnd)) / 2 + 5).toFixed(1) + '">' + (pc > 0 ? '+' : '') + F(pc, 1) + '%</text>');
+      o.push('<text class="rt-pv" x="' + (xs1 + bw / 2) + '" y="' + (sy(pEnd) - 14).toFixed(1) + '" text-anchor="middle">end ' + F(pEnd, u) + ' ' + esc(px.unit) + '</text>');
+      o.push('<rect class="sk-grip rt-pgrip" data-k="end" tabindex="0" role="slider" aria-label="End mass" aria-valuemin="0" aria-valuemax="' + M.round(ymax, 6) + '" aria-valuenow="' + M.round(pEnd, 4) + '" aria-valuetext="' + esc(F(pEnd, u) + ' ' + px.unit + ', ' + F(pc, 1) + '% change') + '" x="' + (xs1 + 15) + '" y="' + (sy(pEnd) - 6).toFixed(1) + '" width="' + (bw - 30) + '" height="12" rx="6"/>');
+      o.push('<text class="tick" x="' + (xs0 + bw / 2) + '" y="' + (base + 16) + '" text-anchor="middle">before</text><text class="tick" x="' + (xs1 + bw / 2) + '" y="' + (base + 16) + '" text-anchor="middle">after</text>');
+      o.push('<text class="lbl" x="' + (PW / 2) + '" y="' + (PH - 6) + '" text-anchor="middle">' + esc(pItem.name) + '</text>');
+      o.push('<text class="rt-d" x="40" y="16">Each band is 10% of the start. Drag the top of the after bar.</text>');
+      S.redraw(fig, '<svg class="bio-svg rt-fig rt-pfig" viewBox="0 0 ' + PW + ' ' + PH + '" role="group" aria-label="' + esc(pItem.name + ': start ' + F(st0, u) + ' ' + px.unit + ', end ' + F(pEnd, u) + ' ' + px.unit + ', a ' + F(pc, 1) + '% change. Drag the top of the end bar.') + '">' + o.join('') + '</svg>');
+      sayEl.textContent = 'Percent change = (end − start) / start × 100 = (' + F(pEnd, u) + ' − ' + F(st0, u) + ') / ' + F(st0, u) + ' × 100 = ' + (pc > 0 ? '+' : '') + F(pc, 1) + '%.' +
+        (Math.abs(ch) > 1e-9 ? ' Dividing by the end (' + F(pEnd, u) + ') instead would give ' + F(100 * ch / pEnd, 1) + '%: always divide by the start.' : '');
+      log.innerHTML = '';
+    }
+    function movePct(v){ var st0 = pItem.initial; pEnd = Math.max(st0 * 0.05, Math.min(st0 * 1.55, M.round(v, px.dp))); render(); }
+    S.drag(fig, '[data-k="end"]', { move: function(k, pt){ if(view !== 'pct') return; var ymax = T.niceMax(pItem.initial * 2); movePct((base - pt.y) / (base - PT) * ymax); } });
+    S.keys(fig, '.rt-pgrip', function(k, d, big){ movePct(pEnd + d * pItem.initial * (big ? 0.1 : 0.01)); });
+    var vbtns = sec.querySelectorAll('.rt-views [data-view]'), rateBtns = sec.querySelector('.rt-ratebtns');
+    vbtns.forEach(function(b){ b.addEventListener('click', function(){
+      view = b.getAttribute('data-view');
+      vbtns.forEach(function(c){ c.setAttribute('aria-pressed', String(c === b)); });
+      rateBtns.hidden = view !== 'rate';
+      var gl = sec.querySelector('.sk-goals') || sec.querySelector('.sk-goalhost'); if(gl) gl.hidden = view !== 'rate';
+      render();
+      if(view === 'rate') sayEl.textContent = 'Tap any two points to draw the slope triangle: the rate is Δy / Δt.';
+    }); });
+    if(!pItem) sec.querySelector('.rt-views').hidden = true;
     render();
   }
 
