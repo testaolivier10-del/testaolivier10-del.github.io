@@ -504,7 +504,7 @@
     function region(into, labels, r, cls){
       var x0 = sx(r.x0), x1 = sx(r.x1);
       into.appendChild(el('rect', { x: x0, y: MT, width: Math.max(2, x1 - x0), height: plotBottom - MT, 'class': cls }));
-      if(r.label) labels.appendChild(el('text', { x: (x0 + x1) / 2, y: plotBottom - 6, 'text-anchor': 'middle', 'class': 'gr-rlabel' }, r.label));
+      if(r.label) labels.appendChild(el('text', { x: (x0 + x1) / 2, y: plotBottom - 6, 'text-anchor': 'middle', 'class': 'gr-rlabel', 'data-x0': x0, 'data-x1': x1 }, r.label));
     }
     return {
       svg: svg, L: L, sx: sx, sy: sy, tops: tops, hs: hs, plotBottom: plotBottom, H: H, xmin: xmin, xmax: xmax,
@@ -657,15 +657,22 @@
         });
         c.svg.querySelectorAll('.gr-rlabel').forEach(function(t){
           t.removeAttribute('transform');
-          var b = t.getBBox();
-          var hit = boxes.some(function(tb){ return b.x < tb.x + tb.width + 2 && tb.x < b.x + b.width + 2 && b.y < tb.y + tb.height && tb.y < b.y + b.height; });
-          /* Pass 3: a region's name the cursor line runs through slides to the side with more room */
+          var b = t.getBBox(), rx0 = +t.getAttribute('data-x0'), rx1 = +t.getAttribute('data-x1');
+          var hitAt = function(dx, dy){ return boxes.some(function(tb){ return b.x + dx < tb.x + tb.width + 2 && tb.x < b.x + dx + b.width + 2 && b.y + dy < tb.y + tb.height && tb.y < b.y + dy + b.height; }); };
+          /* Pass 3: a region's name the cursor line runs through slides to the side with more room.
+             Accuracy check 2 (2026-11-11): only while the name stays over its own region (a narrow band like
+             "normal blood pH" keeps its name where it is), and the pill check runs after the slide: a name
+             under a value pill steps up a line, or two. */
           var dx = 0;
           if(b.x - 3 < px && px < b.x + b.width + 3){
             var toR = px + 6 - b.x, toL = px - 6 - (b.x + b.width);
-            dx = (px + 6 + b.width <= W - MR) && (px - 6 - b.width < ML || (W - MR - px) >= (px - ML)) ? toR : toL;
+            var fits = function(d){ return b.x + d >= rx0 - 2 && b.x + b.width + d <= rx1 + 2 && b.x + d >= ML && b.x + b.width + d <= W - MR; };
+            var first = (px + 6 + b.width <= W - MR) && (px - 6 - b.width < ML || (W - MR - px) >= (px - ML)) ? toR : toL, second = first === toR ? toL : toR;
+            dx = fits(first) ? first : fits(second) ? second : 0;
           }
-          if(hit || dx) t.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + (hit ? -16 : 0) + ')');
+          var dy = 0;
+          while(dy > -48 && hitAt(dx, dy)) dy -= 16;
+          if(dx || dy) t.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + dy + ')');
         });
         /* Pass 3: a marked point's label ("7.4: 40") under the cursor's value pill or dot moves to the left of
            its point, then below it; if both are covered it steps back (faint), like a valve label. */
