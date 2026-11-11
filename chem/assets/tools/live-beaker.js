@@ -211,7 +211,8 @@
     var grads = '', labs = ['250', '200', '150', '100', '50'];
     for(var i = 0; i < (gas ? 0 : 5); i++){
       var y = 70 + i * 38;
-      grads += '<path d="M' + (x1 - 4) + ' ' + y + 'h-18' + (i < 4 ? 'M' + (x1 - 4) + ' ' + (y + 19) + 'h-9' : '') + '"/><text x="' + (x1 - 26) + '" y="' + (y + 3.5) + '" text-anchor="end">' + labs[i] + '</text>';
+      // Marks on the wall and numbers outside the glass, clear of the particles.
+      grads += '<path d="M' + (x1 + 1) + ' ' + y + 'h-11' + (i < 4 ? 'M' + (x1 + 1) + ' ' + (y + 19) + 'h-6' : '') + '"/><text x="' + (x1 + 7) + '" y="' + (y + 3.5) + '" text-anchor="start">' + labs[i] + '</text>';
     }
     var stopper = gas ? '<path class="lb-stopper" d="M' + (150 - 34) + ' 46 h68 l-6 -16 h-56 Z"/><rect class="lb-stopper" x="' + (150 - 40) + '" y="22" width="80" height="10" rx="4"/>' +
       '<path class="lb-glass-edge" d="M' + (x0 - 2) + ' ' + top + ' H' + (150 - 34) + ' M' + (150 + 34) + ' ' + top + ' H' + (x1 + 2) + '"/>' : '';
@@ -274,7 +275,7 @@
     /* On a phone (docs/tools-phone-pass.md) the beaker's viewBox is cropped
        to the glass, so the same scale already reads larger. */
     var KP = K;
-    var VB = flask ? '0 0 486 376' : '0 0 ' + W + ' ' + H, VBP = flask ? '0 0 486 376' : '20 16 260 256';
+    var VB = flask ? '0 0 486 376' : '0 0 ' + W + ' ' + H, VBP = flask ? '0 0 486 376' : o.vessel === 'gas' ? '20 16 260 256' : '20 16 278 256';
     function phone(){ var r = el.closest ? el.closest('.ls-root') : null; return !!(r && r.classList.contains('ls-phone')); }
     var art = flask ? glassFlask(id) : glassBeaker(o.vessel === 'gas');
     el.classList.add('lb');
@@ -315,9 +316,60 @@
       }
       return '';
     }
+    /* state.incoming = { species: {label, mol, tone}, target: key, to: key }:
+       one strong acid or base particle drops into the liquid and reacts with
+       one particle of target, which becomes a particle of to; the strong
+       particle leaves as a water molecule that floats off. The new state is
+       drawn when it lands (about a second); a newer update finishes it at once. */
+    var fly = null;
+    function endFly(){ if(!fly) return; fly.timers.forEach(clearTimeout); if(fly.node.parentNode) fly.node.remove(); fly = null; }
+    function flyIn(state, sc){
+      var inc = state.incoming, mine = placed.filter(function(p){ return p.key === inc.target; });
+      var cur = {}; placed.forEach(function(p){ cur[p.key] = (cur[p.key] || 0) + 1; });
+      var want = sc.counts;
+      // Only the one-for-one swap the reaction is: target one fewer, to one more.
+      if(!mine.length || sc.factor !== 1 || (want[inc.target] || 0) !== mine.length - 1 || (want[inc.to] || 0) !== (cur[inc.to] || 0) + 1) return false;
+      var tgt = mine[mine.length - 1], s = SL[tgt.slot], k = phone() ? KP : K;
+      var at = { x: s.x + 15 * k, y: s.y - 13 * k }, top = o.vessel === 'gas' ? 20 : 26;
+      var n = document.createElementNS(NS, 'g');
+      n.setAttribute('class', 'lb-p lb-fly');
+      var tag = function(t){ return '<text class="lb-fly-t" y="-21" text-anchor="middle">' + esc(t) + '</text>'; };
+      n.innerHTML = particleSvg(inc.species, 0) + tag(inc.species.label || inc.species.key);
+      k = (k * 1.2).toFixed(3);
+      n.style.transition = 'none';
+      n.style.transform = 'translate(' + at.x + 'px,' + top + 'px) scale(' + k + ')';
+      g.appendChild(n);
+      n.getBoundingClientRect();
+      n.style.transition = 'transform .9s cubic-bezier(.45,.05,.55,.95)';
+      n.style.transform = 'translate(' + at.x + 'px,' + at.y + 'px) scale(' + k + ')';
+      var ring = el.querySelector('[data-id="' + tgt.id + '"]');
+      if(ring) ring.classList.add('is-hit');
+      fly = { node: n, timers: [] };
+      var f = fly;
+      f.timers.push(setTimeout(function(){
+        // Landed: the H moves across (one particle becomes the other) and
+        // the strong particle is now water, which drifts up and fades.
+        n.innerHTML = particleSvg({ mol: 'H2O' }, 0) + tag('H₂O');
+        n.classList.add('is-water');
+        draw(Object.assign({}, state, { incoming: null }));
+        f.timers.push(setTimeout(function(){
+          n.style.transition = 'transform 1.1s ease-out, opacity 1.1s ease-in';
+          n.style.transform = 'translate(' + (at.x + 8) + 'px,' + (at.y - 34) + 'px) scale(' + k + ')';
+          n.style.opacity = '0';
+        }, 350));
+        f.timers.push(setTimeout(function(){ if(fly === f) endFly(); }, 1600));
+      }, 900));
+      return true;
+    }
     function update(state){
       if(!alive) return;
       state = state || {};
+      endFly();
+      el.querySelectorAll('.is-hit').forEach(function(x){ x.classList.remove('is-hit'); });
+      if(state.incoming && !first && !reduced() && flyIn(state, scale(state.counts || {}, o.max))) return;
+      draw(state);
+    }
+    function draw(state){
       var sc = scale(state.counts || {}, o.max), counts = sc.counts, quick = first || reduced();
       var ph = lastPhone = phone(), k = ph ? KP : K, svg = el.querySelector('.lb-svg');
       lastState = state;
@@ -370,6 +422,7 @@
     }
     function destroy(){
       alive = false;
+      endFly();
       timers.forEach(clearTimeout);
       window.removeEventListener('resize', recheck);
       el.classList.remove('lb', 'lb-is-flask');

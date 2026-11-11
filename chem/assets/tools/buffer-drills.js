@@ -4,7 +4,8 @@
    Explore: a beaker of HA and A⁻ (10 particles of each; 1 particle = a
    tenth of each form's starting amount) in 100 mL with a pH meter. "+ OH⁻"
    and "+ H₃O⁺" add one particle's worth of NaOH or HCl (no volume change): the strong species reacts completely, so one HA turns into A⁻
-   (or back) where it sits, and the pH barely moves until one form runs out;
+   (or back) where it sits: the added particle is drawn dropping in, reacting
+   and leaving as water, and the pH barely moves until one form runs out;
    past capacity the leftover strong acid or base sets the pH and it jumps.
    Every number is ApChemMath.bufferState: the meter is the exact pH (charge
    balance with water), the worked line is the exam's method
@@ -45,7 +46,7 @@
     // Lookups reach the Tool Studio too, where these parts move (studio()).
     var LS = null, SP = null;
     function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
-    var V = 0.100, ci = 0, size = 10, b = 0, hist = [], beaker = null, n;
+    var V = 0.100, ci = 0, size = 10, b = 0, hist = [], beaker = null, n, tap = 0;
     host.innerHTML = '<section class="bt-problem bf-card" aria-labelledby="bf-h"><div class="tx-head"><h2 id="bf-h" class="bf-title"></h2><p class="bt-small bf-setup"></p></div>' +
       '<div class="bf-stage"><div class="bf-beaker"></div>' +
       '<div class="bf-side"><div class="bf-btns"><button type="button" class="bf-add bf-oh" data-d="1">+ OH⁻<span class="bf-u">NaOH</span></button><button type="button" class="bf-add bf-h" data-d="-1">+ H₃O⁺<span class="bf-u">HCl</span></button></div>' +
@@ -60,7 +61,7 @@
     pick.insertAdjacentHTML('beforeend', '<button type="button" class="bt-btn bf-reset">Start over</button>');
     resetBtn = pick.querySelector('.bf-reset');
     resetBtn.addEventListener('click', reset);
-    [].slice.call(host.querySelectorAll('.bf-add')).forEach(function(btn){ btn.addEventListener('click', function(){ b = M.round(b + (+btn.getAttribute('data-d')) * step(), 7); hist.push(b); draw(true); }); });
+    [].slice.call(host.querySelectorAll('.bf-add')).forEach(function(btn){ btn.addEventListener('click', function(){ tap = +btn.getAttribute('data-d'); b = M.round(b + tap * step(), 7); hist.push(b); draw(true); }); });
 
     function step(){ return size / 10 / 1000; }
     function reset(){
@@ -71,7 +72,7 @@
       $('.bf-title').textContent = n.name + ' buffer';
       $('.bf-setup').innerHTML = '100 mL with ' + size + ' mmol ' + esc(n.HA) + ' and ' + size + ' mmol ' + esc(n.A) + '. pK<sub>a</sub> of ' + esc(n.HA) + ' = ' + F(-Math.log10(n.Ka), 2) + '.';
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount($('.bf-beaker'), { species: species(n).concat([{ key: 'OH', label: 'OH⁻', name: 'leftover OH⁻', tone: 5 }, { key: 'H3O', label: 'H₃O⁺', mol: 'H3O+', name: 'leftover H₃O⁺' }]), readout: 'pH', title: 'The buffer', max: 28, seed: 11 + ci });
+      beaker = window.ApChemBeaker.mount($('.bf-beaker'), { species: species(n).concat([{ key: 'OH', label: 'OH⁻', name: 'leftover OH⁻', tone: 5 }, { key: 'H3O', label: 'H₃O⁺', mol: 'H3O+', name: 'leftover H₃O⁺' }]), readout: 'pH', title: 'The buffer', max: 36, seed: 11 + ci });
       draw(false);
     }
     function st(x){ return M.bufferState({ Ka: n.Ka, nHA: size / 1000, nA: size / 1000, V: V, b: x }); }
@@ -80,7 +81,10 @@
       var s = st(b), k = 1 / step(), counts = { HA: Math.round(s.nHA * k), A: Math.round(s.nA * k), OH: Math.round(s.exOH * k), H3O: Math.round(s.exH * k) };
       var prev = hist.length > 1 ? st(hist[hist.length - 2]) : null, d = prev ? s.pH - prev.pH : 0;
       var added = mm(Math.abs(b)), what = b > 0 ? added + ' mmol OH⁻' : b < 0 ? added + ' mmol H₃O⁺' : '';
-      beaker.update({ counts: counts, pH: s.pH, note: acted ? (d >= 0 ? 'pH rose by ' : 'pH fell by ') + F(Math.abs(d), 2) + '.' : '' });
+      // The added OH⁻ (or H₃O⁺) is drawn dropping in and taking the H off one
+      // HA (or giving one to an A⁻); it leaves as water (live-beaker incoming).
+      var inc = !acted ? null : tap > 0 ? { species: { key: 'OH', label: 'OH⁻', tone: 5 }, target: 'HA', to: 'A' } : { species: { key: 'H3O', label: 'H₃O⁺', mol: 'H3O+' }, target: 'A', to: 'HA' };
+      beaker.update({ counts: counts, pH: s.pH, incoming: inc, note: acted ? (d >= 0 ? 'pH rose by ' : 'pH fell by ') + F(Math.abs(d), 2) + '.' : '' });
       if(acted) start.done();
       var w = why(s, d, acted, what);
       T.explain($('.bf-why'), w.head, w.body);
@@ -120,7 +124,8 @@
       for(var k = lo * 4; k <= hi * 4; k++){ var q = st(k * step() / 4); path.push([k * u / 4, q.pH]); water.push([k * u / 4, q.water]); }
       var now = b * 1000, box = $('.bf-plot'), key = box.querySelector('.bf-key');
       // On a phone the graph is drawn at the size of its box (T.fitBox), less the key line under it.
-      var kh = key ? key.getBoundingClientRect().height + 2 : 22, gs = T.fitBox(box, 420, 250, { w: 180, h: 140 });
+      // On a wide stage it sits beside the beaker, so it is drawn taller.
+      var kh = key ? key.getBoundingClientRect().height + 2 : 22, gs = T.fitBox(box, 420, LS ? 380 : 250, { w: 180, h: 140 });
       if(gs.fit) gs.h = Math.max(140, Math.round(gs.h - kh));
       var svg = T.plot({ w: gs.w, h: gs.h, title: 'pH against mmol of strong base added (negative: strong acid). Buffer pH now ' + F(s.pH, 2) + '; pure water with the same additions ' + F(s.water, 2) + '.',
         x: { label: 'mmol added (− acid, + base)', min: -lim, max: lim, step: T.niceStep(2 * lim, 5) },
@@ -165,6 +170,7 @@
       resetBtn.classList.add('bf-ls-reset');
       SP = T.studioPane(pane, s, { stage: [$('.bf-beaker'), $('.bf-plot')], dock: [$('.bf-btns'), resetBtn], setup: 'Buffer', moreLabel: 'Another buffer, amounts',
         why: [$('.bf-why')], details: [nums, parts] });
+      $('.bf-beaker').parentNode.classList.add('bf-ls-stage');
       draw(false);
       T.watchBox($('.bf-plot'), function(){ plot(st(b)); });
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.bf-oh'), text: 'Tap to add a little strong base' });

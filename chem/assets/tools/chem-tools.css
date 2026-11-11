@@ -474,6 +474,9 @@
 .lb-lens-cap{font:800 13px var(--font-ui);fill:var(--muted);}
 .lb-p{transition:transform .6s cubic-bezier(.3,.7,.2,1),opacity .45s ease;}
 .lb-p.is-in,.lb-p.is-out{opacity:0;}
+.lb-p.is-hit .pt-atom circle,.lb-p.is-hit circle{stroke:var(--ink);stroke-width:2.2;}
+.lb-fly{pointer-events:none;}
+.lb-fly-t{font:900 10px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
 .lb-disc circle{stroke:rgba(20,28,30,.55);stroke-width:.9;}
 .lb-disc .lb-shade{fill:#0b1a24;opacity:.2;}
 .lb-disc .lb-hi{fill:#fff;opacity:.75;}
@@ -832,6 +835,10 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 
 /* Buffer: the beaker over the graph; + OH⁻ and + H₃O⁺ side by side, Start over under them. */
 .ls-root .chem-ls-stage .bf-beaker{flex:1.1 1 0;display:flex;}
+/* Wide stage: the beaker and the graph side by side, each the full height. */
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage{flex-direction:row;align-items:center;gap:20px;}
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage > *{min-width:0;}
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage .lb-svg{max-width:440px;}
 .ls-root .chem-ls-stage .bf-plot{flex:1 1 0;display:flex;flex-direction:column;}
 .ls-root .chem-ls-stage .bf-plot svg{flex:1;min-height:0;}
 .ls-root .chem-ls-stage .bf-key{margin:0;justify-content:center;font-size:var(--ls-s);}
