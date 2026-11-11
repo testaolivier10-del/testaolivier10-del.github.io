@@ -63,3 +63,35 @@ worktree; what each changed, verified and left undone is in `done/<task>.md`. An
 - Small: forces drill in the borders lab has no picture; multiplier lab drills use the old bars; a few phone
   layouts need a short scroll (bio design drills and signal cascade, A&P feedback loops); micro externality drill
   shades one area as a sliver (graph engine).
+
+## Second pass: simplicity (2026-11-11, same branch)
+
+The owner looked at the first pass and said it overcomplicated the tools: too many things to look at, too many words.
+Tools must stay simple and easy to use without losing depth. The standard is `SIMPLIFY.md` (one hero picture, one
+obvious first action, few labels, at most two live numbers, about 40 words on the opening screen, depth revealed in
+time, nothing removed).
+
+- Pass 2: every course redone against `SIMPLIFY.md` (`pass2/<course>.md`). Three independent judges looked at the
+  result (`pass2/judge-a.md`, `judge-b.md`, `judge-c.md`); their findings became `CLEANUP.md`.
+- Shared fix (`pass2/shared.md`): the hint is an inline line and never covers the picture, the halo stays inside its
+  control, and chip rows longer than five fold behind "More (n)".
+- Pass 3: eight cleanup groups (`pass3/*.md`), a second A&P accuracy check with repairs (`done/anp-accuracy-check-2.md`,
+  `done/anp4.md`), and one integration builder that measured all 145 opening screens again (`pass3/final.md`).
+- Final opening screens: desktop and phone for every tool were captured at the end of pass 3.
+
+Still open (from `pass3/final.md` and the reports):
+
+- Phone: the sticky control bar covers the tabs or chip row on landing in soil texture, the Taylor lab, the series
+  lab and Model Studio. Pathway tracer step slots are cut off. Graph builder opens on its data table. Unit circle,
+  sampling lab and buffer particles are cramped or small. A&P lab practical labels are about 8 px.
+- First action not obvious: macro graph studio (a 14 option list), NREMT call and station pickers (a grid).
+- A&P: 102 of 208 pathways and about 189 of 377 predictions have no figure; the female figure's skeleton is still
+  male; some body figure leader lines are left over; the last repairs (`anp4`) were not checked a second time.
+- Science to confirm: two arguable outcomes in the ochem predictor; the "Pave land" numbers in Env Sci.
+- Dark mode was not rechecked in the later passes. The A&P 3D anatomy needs its CC BY-SA licence note.
+
+Owner decisions waiting:
+
+- Scenario simulator: the monitor is hidden until "Check vitals" (except time critical calls). Alternative: show it
+  from the start.
+- NREMT spinal sheets: the two head steps were merged into one, and the assessment runs are grouped into phases.
