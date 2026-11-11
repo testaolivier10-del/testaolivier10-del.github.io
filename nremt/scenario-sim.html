@@ -2268,9 +2268,14 @@ function renderPicker(){
   const list = pickCat === 'all' ? SCENARIOS : SCENARIOS.filter(s => catOf(s) === pickCat);
   const counts = {}; SCENARIOS.forEach(s => { const c = catOf(s); counts[c] = (counts[c] || 0) + 1; });
   const chips = document.getElementById('pickerCats');
+  /* Pass 3 (cleanup 2026-11-11): the picker opens on six calls; "All N calls"
+     shows every call and the kinds to filter by. */
+  const few = !pickAll && pickCat === 'all';
+  if (chips) chips.hidden = few;
+  const shown = few ? list.slice(0, 6) : list;
   if (chips) chips.innerHTML = [['all', 'All calls', SCENARIOS.length]].concat(CATS.filter(c => counts[c.k]).map(c => [c.k, c.label, counts[c.k]]))
     .map(([k, l, n]) => `<button type="button" data-cat="${k}" aria-pressed="${pickCat === k}">${k === 'all' ? '' : catIcon(k)}${l}<span>${n}</span></button>`).join('');
-  grid.innerHTML = list.map(s => `
+  grid.innerHTML = shown.map(s => `
     <button type="button" class="scenario-card" data-scenario="${s.id}">
       <span class="scenario-ico" data-cat="${catOf(s)}" aria-hidden="true">${catIcon(catOf(s))}</span>
       <span class="scenario-txt">
@@ -2279,7 +2284,9 @@ function renderPicker(){
       <p>${s.blurb}</p>
       </span>
     </button>
-  `).join('');
+  `).join('') + (few ? `<button type="button" class="picker-all" id="pickerAll">All ${SCENARIOS.length} calls, by kind</button>` : '');
+  const pa = document.getElementById('pickerAll');
+  if (pa) pa.addEventListener('click', () => { pickAll = true; renderPicker(); const c = document.querySelector('#pickerCats [data-cat="all"]'); if (c) c.focus(); });
   grid.querySelectorAll('[data-scenario]').forEach(btn => {
     btn.addEventListener('click', () => startScenario(btn.dataset.scenario));
   });
@@ -2307,7 +2314,7 @@ const CAT_ICON = {
 };
 function catOf(s){ return (CATS.find(c => c.re.test(s.domain)) || CATS[CATS.length - 1]).k; }
 function catIcon(k){ return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + (CAT_ICON[k] || CAT_ICON.med) + '</svg>'; }
-let pickCat = 'all';
+let pickCat = 'all', pickAll = false;
 (function(){
   const grid = document.getElementById('pickerGrid');
   const chips = document.createElement('div'); chips.id = 'pickerCats'; chips.className = 'picker-cats';
@@ -2440,7 +2447,7 @@ function scoreCard(host, deb, ending, nxt){
 /* The live patient (assets/scenario-monitor.js): a monitor fed by each node's
    own vitals line, and a body to tap for what the case has said about it.
    Both persist through a call so the numbers move rather than jump. */
-let monitor = null, patient = null, shownAt = 0;
+let monitor = null, patient = null, shownAt = 0, monOpened = false;
 const SIM = window.NremtSim || null;
 
 function buildCallView(){
@@ -2450,17 +2457,23 @@ function buildCallView(){
   if (studio) {
     box.innerHTML = `
       <div class="sim-ls-views ls-seg" role="group" aria-label="Show">
-        <button type="button" data-simview="mon" aria-pressed="true">Monitor</button><button type="button" data-simview="pt" aria-pressed="false">Patient</button>
+        <button type="button" data-simview="mon" aria-pressed="false">Monitor</button><button type="button" data-simview="pt" aria-pressed="true">Patient</button>
       </div>
       <p class="sim-ls-what" role="status" hidden></p>
-      <div class="sim-grid" data-show="mon"><div id="monHost"></div><div class="sim-side" id="ptHost"></div></div>`;
+      <div class="sim-grid" data-show="pt"><button type="button" class="sim-mon-open" id="monOpen">Check vitals: open the monitor</button><div id="monHost"></div><div class="sim-side" id="ptHost"></div></div>`;
     simDock.innerHTML = `
       <div class="sim-header">
         <span class="sim-domain">${currentScenario.domain}</span>
         <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
       </div>
       <div id="nodeHost"></div>`;
+    monOpened = false;
+    document.getElementById('monOpen').addEventListener('click', () => {
+      monOpened = true; studio.root.removeAttribute('data-mon-wait');
+      const mv = box.querySelector('[data-simview="mon"]'); if (mv) mv.click();
+    });
     box.querySelectorAll('[data-simview]').forEach(b => b.addEventListener('click', () => {
+      if (b.dataset.simview === 'mon') { monOpened = true; studio.root.removeAttribute('data-mon-wait'); }
       box.querySelectorAll('[data-simview]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
       box.querySelector('.sim-grid').setAttribute('data-show', b.dataset.simview);
     }));
@@ -2646,6 +2659,13 @@ function renderNode(consequenceText){
     // The opening call is never clamped: its details are the case (audit 2026-10).
     studio.caption(node.text);
     studio.root.toggleAttribute('data-sim-first', !pathLog.length);
+    /* Pass 3 (cleanup 2026-11-11): the story comes first. At the opening of a
+       call the monitor waits behind "Check vitals" (an EMT has no numbers on
+       arrival); it opens on that tap or with the first choice. A time-critical
+       opening keeps it, since the numbers moving while you wait are the point. */
+    studio.root.toggleAttribute('data-mon-wait', !pathLog.length && !hesitateTo && !monOpened);
+    // After the first choice (or at a time-critical opening) the numbers are live: show them.
+    if (!monOpened && (pathLog.length || hesitateTo)) { const mv = box.querySelector('[data-simview="mon"]'); if (mv) mv.click(); }
     const what = box.querySelector('.sim-ls-what');
     if (what) { what.hidden = !consequenceText; what.innerHTML = consequenceText ? '<b>What happened.</b> ' + consequenceText : ''; }
     studioWhy();
