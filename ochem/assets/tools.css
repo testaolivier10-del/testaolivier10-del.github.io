@@ -1268,6 +1268,25 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root.ls-phone.ab-ls .ab-line__num,.ls-root.ls-phone.ab-ls .ab-line__end,.ls-root.ls-phone.ab-ls .ab-line__n{font-size:13.8px;}
 @media (orientation:landscape){ .ls-root.ls-phone.ab-ls .ab-rorder{grid-template-columns:repeat(2,minmax(0,1fr));} .ls-root.ls-phone.ab-ls .ab-cards{flex:none;} .ls-root.ls-phone.ab-ls .ab-card{height:300px;} }
 .ab-ls .ab-card__formula{font-size:var(--ls-s);margin:2px 0 4px;}
+/* Conjugate base (tool review 2026-11): the charge as a red glow on each atom that shares it (fainter where it is
+   spread thinner), δ− marks, blue arrows for induction, and the H⁺ drifting off the atom it left. */
+.ab-card__k{font:800 var(--ls-s,12.5px) var(--font-ui);color:var(--muted);margin-top:2px;}
+.ab-card__say{font:700 var(--ls-s,13px)/1.4 var(--font-ui);color:var(--ink);margin:2px 0 4px;}
+.ab-q{fill:var(--bad-text);fill-opacity:.32;stroke:var(--bad-text);stroke-opacity:.5;stroke-width:1.5;}
+.ab-q--lp{fill:var(--accent);stroke:var(--accent);}
+.ab-q__t{font:900 15px var(--font-ui);fill:var(--bad-text);}
+.ab-partial{stroke:var(--line);stroke-width:2.4;stroke-dasharray:4 4;stroke-linecap:round;}
+.ab-pull line{stroke:var(--accent);stroke-width:3;stroke-linecap:round;}
+.ab-pull path{fill:var(--accent);}
+.ab-hplus text{font:900 17px var(--font-ui);fill:var(--muted);}
+.ab-hplus{animation:ab-hoff 1.1s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes ab-hoff{from{transform:translate(var(--hx),var(--hy));opacity:1;}to{transform:none;opacity:.75;}}
+@media(prefers-reduced-motion:reduce){.ab-hplus{animation:none;}}
+/* Rank four: each structure fills its card instead of a 120 px strip. */
+.ab-ls .ab-rorder{flex:1;min-height:0;}
+.ab-ls .ab-rcard__body{flex:1;min-height:0;}
+.ab-ls .ab-rcard .scene{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;}
+.ab-ls .ab-rcard .omol svg{width:100%;height:100%;max-height:220px;}
 .ab-ls .ab-card__row{font-size:var(--ls-s);padding:3px 0;}
 .ab-ls .ab-vs{gap:8px;}
 .ab-ls .ab-vs label{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted);}
