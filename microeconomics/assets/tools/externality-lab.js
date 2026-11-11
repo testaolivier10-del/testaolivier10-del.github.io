@@ -58,7 +58,8 @@
     var sGap = T.slider({ label: 'External cost per unit ($)', min: 2, max: 6, step: 2, value: gap * PK, decimals: 0, onInput: function(v){ act(); gap = v / PK; if(pol > gap + 1) pol = gap + 1; polRange(); redraw(); say(line()); } });
     var sPol = T.slider({ label: 'Tax on sellers ($ per unit)', min: 0, max: (gap + 1) * PK, step: PK, value: 0, decimals: 0, onInput: function(v){ act(); pol = v / PK; redraw(); say(line()); } });
     var sMc = T.slider({ label: 'Cost of each streetlight ($)', min: 20, max: 80, step: 10, value: mc, decimals: 0, onInput: function(v){ act(); mc = v; redraw(); say(line()); } });
-    [sGap, sPol, sMc].forEach(function(s){ $('.xl-sl').appendChild(s.el); });
+    // The tax (or subsidy) is the one slider in the dock; the size of the externality is a second experiment, in Details (pass 2).
+    [sPol, sMc].forEach(function(s){ $('.xl-sl').appendChild(s.el); });
     function act(){ if(!touched){ touched = true; cue.done(); if(tip && tip.dismiss) tip.dismiss(); } }
     function polRange(){ var inp = sPol.input; inp.max = String((gap + 1) * PK); sPol.set(pol * PK); }
     function K(){ return XL.KINDS[type]; }
@@ -70,6 +71,11 @@
       var q = function(x){ return M.fmt(x * QK, 3); };
       if(Math.abs(s.market - s.efficient) < 1e-9) return polName() + ' of ' + money(pol * PK) + ' equals the external ' + (k.cost ? 'cost' : 'benefit') + ': the market makes the efficient ' + q(s.efficient) + ' ' + EX[type].unit + '. No deadweight loss.';
       return 'Market ' + q(s.market) + ', efficient ' + q(s.efficient) + ' ' + EX[type].unit + ': the market makes too ' + (s.market > s.efficient ? 'much' : 'little') + '. Deadweight loss ' + money(s.dwl * QK * PK) + ' thousand.';
+    }
+    function capLine(){
+      var s = XL.state(type, gap, pol), k = K(), q = function(x){ return M.fmt(x * QK, 3); };
+      if(Math.abs(s.market - s.efficient) < 1e-9) return polName() + ' of ' + money(pol * PK) + ' equals the external ' + (k.cost ? 'cost' : 'benefit') + ': the market now makes the efficient amount.';
+      return 'The market makes ' + q(s.market) + ' ' + EX[type].unit + '; the efficient amount (E*) is ' + q(s.efficient) + '. Too ' + (s.market > s.efficient ? 'much' : 'little') + '.';
     }
     function graphs(){
       var A = XL.specA(type, gap, pol), B = XL.specB(type, gap, pol), st = XL.state(type, gap, pol);
@@ -119,8 +125,8 @@
         var base = 0, x0 = X(ui) + (o.small ? 2 : 4), x1 = X(ui + 1) - (o.small ? 2 : 4), keep = o.lit(r.unit);
         o.people.forEach(function(pi){
           var val = r.mbs[pi];
-          out.push('<rect class="xl-step ' + PC[pi] + (keep ? '' : ' is-off') + '" x="' + f1(x0) + '" y="' + f1(Y(base + val)) + '" width="' + f1(x1 - x0) + '" height="' + f1(Y(base) - Y(base + val)) + '"/>');
-          if(!o.small && Y(base) - Y(base + val) > 17) out.push('<text class="xl-sv' + (keep ? '' : ' is-off') + '" x="' + f1((x0 + x1) / 2) + '" y="' + f1((Y(base) + Y(base + val)) / 2 + 4) + '" text-anchor="middle">$' + val + '</text>');
+          out.push('<rect class="xl-step ' + PC[pi] + (keep ? '' : ' is-off') + '" x="' + f1(x0) + '" y="' + f1(Y(base + val)) + '" width="' + f1(x1 - x0) + '" height="' + f1(Y(base) - Y(base + val)) + '"><title>' + esc(XL.PEOPLE[pi].name) + ': $' + val + '</title></rect>');
+          if(o.blockValues && !o.small && Y(base) - Y(base + val) > 17) out.push('<text class="xl-sv' + (keep ? '' : ' is-off') + '" x="' + f1((x0 + x1) / 2) + '" y="' + f1((Y(base) + Y(base + val)) / 2 + 4) + '" text-anchor="middle">$' + val + '</text>');
           base += val;
         });
         tops.push(base);
@@ -188,30 +194,33 @@
       $('.xl-types').querySelectorAll('.xl-type').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-x') === type)); });
       $('.xl-who').querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-w') === (alone ? 1 : 0))); });
       $('.xl-types').hidden = sGap.el.hidden = sPol.el.hidden = view !== 'ext';
+      $('.xl-det-sl').hidden = view !== 'ext';
       $('.xl-who').hidden = sMc.el.hidden = view === 'ext';
       var k = K(), st = XL.state(type, gap, pol), head = esc(line()), body, rows = [];
       sGap.el.querySelector('label').textContent = 'External ' + (k.cost ? 'cost' : 'benefit') + ' per unit ($)';
       sPol.el.querySelector('label').textContent = polName() + ' ($ per unit)';
       cue.el.querySelector('.bt-cue-t').textContent = view === 'ext' ? 'Add the corrective ' + (k.cost ? 'tax' : 'subsidy') + ' and watch the deadweight loss shrink.' : 'Switch to Each alone: who pays for the lights?';
       if(view === 'ext'){
-        $('.xl-story').innerHTML = '<b>' + esc(EX[type].short) + '.</b> ' + esc(EX[type].story) + ' Each step on the graph is ' + QK + ' thousand units and ' + money(PK) + '.';
-        rows.push('<li><span class="xl-rk">Market</span> ' + M.fmt(st.market * QK, 3) + '</li>', '<li><span class="xl-rk">Efficient (E*)</span> ' + M.fmt(st.efficient * QK, 3) + '</li>', '<li class="' + (st.dwl ? 'is-dwl' : 'is-zero') + '"><span class="xl-rk">Deadweight loss</span> ' + (st.dwl ? money(st.dwl * QK * PK) + 'K' : 'none') + '</li>');
+        $('.xl-story').innerHTML = '<b>' + esc(EX[type].short) + '.</b> ' + esc(EX[type].story);
+        $('.xl-scale').textContent = 'Graph scale: each step on the externality graph is ' + QK + ' thousand units and ' + money(PK) + '.';
+        // One live number on the picture, the one the tax changes; the quantities are in the caption.
+        rows.push('<li class="' + (st.dwl ? 'is-dwl' : 'is-zero') + '"><span class="xl-rk">Deadweight loss</span> ' + (st.dwl ? money(st.dwl * QK * PK) + 'K' : 'none') + '</li>');
         body = '<p>A <b>' + esc(k.name) + '</b>: ' + (k.curve === 'S' ? 'producing' : 'using') + ' ' + esc(EX[type].good) + ' ' + (k.cost ? 'harms' : 'helps') + ' people outside the sale, so ' + k.social + ' lies ' + (k.social === 'MSC' ? (k.cost ? 'above' : 'below') + ' supply (MPC)' : (k.cost ? 'below' : 'above') + ' demand (MPB)') + ' by ' + money(gap * PK) + ' a unit.</p>' +
           '<p>The market stops where MPB = MPC; the efficient quantity is where <b>MSB = MSC</b> (E*). The market makes too ' + (k.more ? 'much' : 'little') + '. The deadweight loss is the triangle between the social and private curves from the market quantity to the efficient one; its tip points toward E*.</p>' +
           '<p><b>The fix:</b> ' + esc(k.policy) + ' equal to the external ' + (k.cost ? 'cost' : 'benefit') + ', ' + money(gap * PK) + ' a unit (a Pigouvian ' + (k.cost ? 'tax' : 'subsidy') + '). It shifts ' + (k.curve === 'S' ? 'supply' : 'demand') + ' ' + (k.dir < 0 ? 'left' : 'right') + ' onto ' + k.social + '. Too ' + (k.cost ? 'big a tax' : 'big a subsidy') + ' overshoots and makes a new loss.</p>';
       } else {
         var t = XL.publicTable(XL.PEOPLE, mc);
-        $('.xl-story').innerHTML = '<b>Public goods.</b> Three neighbors share a street. A streetlight is <b>nonrival</b> (one person’s light is everyone’s) and <b>nonexcludable</b> (no one can be kept from it).';
-        rows.push('<li><span class="xl-rk">Efficient</span> ' + t.efficient + ' lights</li>', '<li><span class="xl-rk">Bought alone</span> ' + Math.max.apply(null, t.alone) + ' at most</li>');
-        body = '<p>Because everyone enjoys the same light, its marginal social benefit is the <b>sum</b> of everyone’s marginal benefit (stack them). Provide lights while that sum is at least the cost: ' + t.efficient + ' here.</p>' +
+        $('.xl-story').innerHTML = '<b>Public goods.</b> Three neighbors share a street. A streetlight is <b>nonrival</b> and <b>nonexcludable</b>.';
+        body = '<p>A streetlight is <b>nonrival</b> (one person’s light is everyone’s) and <b>nonexcludable</b> (no one can be kept from it).</p><p>Because everyone enjoys the same light, its marginal social benefit is the <b>sum</b> of everyone’s marginal benefit (stack them). Provide lights while that sum is at least the cost: ' + t.efficient + ' here.</p>' +
           '<p>Alone, each person compares only their own benefit with the whole cost and buys ' + (Math.max.apply(null, t.alone) ? 'few' : 'none') + '; each also hopes the others pay, since no one can be kept from the light (the <b>free-rider problem</b>). So a private market underprovides public goods, and they are usually paid for with taxes.</p>';
       }
       $('.xl-read').innerHTML = rows.join('');
       T.explain($('.xl-say'), head, body);
-      if(LS){ LS.caption(head, 'explore'); LS.pills(view === 'ext' ? [{ html: st.dwl ? 'DWL ' + money(st.dwl * QK * PK) + 'K' : 'No DWL', tone: st.dwl ? 'accent' : 'good' }] : [], 'left', 'explore'); }
+      // The caption does not repeat the deadweight loss under the graph (pass 2).
+      if(LS){ LS.caption(view === 'ext' ? esc(capLine()) : head, 'explore'); LS.pills([], 'left', 'explore'); }
     }
     function details(){
-      $('.xl-det').innerHTML = '<div class="xl-det-pub"></div><h3 class="ls-title-l">The four externalities</h3>' + T.wrapTables('<table class="ls-tbl"><caption class="sr-only">Externalities</caption><thead><tr><th scope="col">Kind</th><th scope="col">Social curve</th><th scope="col">Market makes</th><th scope="col">Fix</th></tr></thead><tbody>' +
+      $('.xl-det').innerHTML = '<div class="xl-det-pub"></div><div class="xl-det-sl"><h3 class="ls-title-l">Size of the externality</h3></div><p class="bt-small xl-scale"></p><h3 class="ls-title-l">The four externalities</h3>' + T.wrapTables('<table class="ls-tbl"><caption class="sr-only">Externalities</caption><thead><tr><th scope="col">Kind</th><th scope="col">Social curve</th><th scope="col">Market makes</th><th scope="col">Fix</th></tr></thead><tbody>' +
         ORDER.map(function(t){ var k = XL.KINDS[t]; return '<tr><th scope="row">' + esc(k.name) + ' (' + esc(EX[t].short.toLowerCase()) + ')</th><td>' + k.social + (k.social === 'MSC' ? (k.cost ? ' above S' : ' below S') : (k.cost ? ' below D' : ' above D')) + '</td><td>too ' + (k.more ? 'much' : 'little') + '</td><td>' + esc(k.policy) + '</td></tr>'; }).join('') + '</tbody></table>') +
         '<h3 class="ls-title-l">Goods by rivalry and excludability</h3>' + T.wrapTables('<table class="ls-tbl"><caption class="sr-only">Kinds of goods</caption><thead><tr><th scope="col"></th><th scope="col">Excludable</th><th scope="col">Nonexcludable</th></tr></thead><tbody><tr><th scope="row">Rival</th><td>Private goods: a sandwich</td><td>Common resources: fish in the ocean</td></tr><tr><th scope="row">Nonrival</th><td>Club goods: a streaming service</td><td>Public goods: national defense, a streetlight</td></tr></tbody></table>') +
         '<p class="bt-small">The deadweight loss in Explore is ½ × (market quantity − efficient quantity) × the external cost or benefit per unit left after the policy, from ApMicroCalc.</p>';
@@ -231,7 +240,7 @@
       if(s.mode() === 'explore' && !touched) tip = T.hintSlot(s, sPol.el, 'Start here: add the tax', { before: sPol.el });
       try{ new MutationObserver(function(){ redraw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }
-    details(); redraw();
+    details(); $('.xl-det-sl').appendChild(sGap.el); redraw();
     var wasN = null;
     if(window.ResizeObserver) new ResizeObserver(function(){ var nn = narrowPub(); if(wasN !== null && nn !== wasN && view === 'pub') pub(); wasN = nn; }).observe($('.xl-fig'));
     return { studio: studio };
