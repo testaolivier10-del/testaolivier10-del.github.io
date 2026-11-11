@@ -276,6 +276,10 @@
       log(); draw();
     };
     s.setCat = function(on){ s.cat = !!on; };
+    /* The record of a mixture that has sat at equilibrium for sec seconds, so
+       the graph opens on flat lines across time, not two stubs (pass 3). Only
+       the time axis is filled in: the amounts are the ones the vessel holds. */
+    s.warm = function(sec){ hist.length = 0; for(var j = 0; j <= sec * 10; j++){ s.t = j / 10; log(); } };
     s.reset = function(){ s.T = rx.T[2]; s.V = rx.V[2]; s.cat = false; settle(); s.t = 0; hist.length = 0; marks.length = 0; seed(); log(); draw(); };
     /* A stress as the quiz and the challenges name it. */
     s.apply = function(stress){
@@ -398,6 +402,7 @@
       sim = Sim(rx, {}); sim.speed = +spd.value();
       host.__sim = sim;   // for the browser checks (events at equilibrium)
       sim.attach(cnv);
+      sim.warm(6);
       // The tail magnification: the power of ten that makes the tail above
       // Ea at the starting temperature about a quarter of the peak height.
       var T0 = rx.T[2], pk = E.mb(8.314 * T0 / 2000, T0), tl = E.mb(rx.Ea * 1.02, T0);
@@ -416,10 +421,10 @@
       ch = null; $('.ek-chalbox').hidden = true;
       paint(); explainNow('');
     }
-    $('.ek-cat').addEventListener('click', function(){ sim.setCat(!sim.cat); this.setAttribute('aria-pressed', String(sim.cat)); this.textContent = sim.cat ? 'Remove the catalyst' : 'Add a catalyst'; if(sim.cat) sim.mark('catalyst'); after('cat'); });
+    $('.ek-cat').addEventListener('click', function(){ sim.setCat(!sim.cat); this.setAttribute('aria-pressed', String(sim.cat)); this.textContent = sim.cat ? 'Remove the catalyst' : 'Add a catalyst'; if(sim.cat) sim.mark('catalyst'); after('cat'); if(LS) LS.close(); });
     $('.ek-play').addEventListener('click', function(){ sim.play = !sim.play; this.setAttribute('aria-pressed', String(sim.play)); this.textContent = sim.play ? '❚❚ Pause' : '▶ Play'; });
-    $('.ek-reset').addEventListener('click', function(){ sim.reset(); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst'; explainNow(''); paint(); });
-    $$('.ek-tab').forEach(function(b){ b.addEventListener('click', function(){ tab = b.getAttribute('data-v'); paint(); }); });
+    $('.ek-reset').addEventListener('click', function(){ sim.reset(); sim.warm(6); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst'; explainNow(''); paint(); });
+    $$('.ek-tab').forEach(function(b){ b.addEventListener('click', function(){ tab = b.getAttribute('data-v'); paint(); if(LS) LS.close(); }); });
     $('.ek-chal').addEventListener('click', challenge);
 
     var lastNote = '';
@@ -490,7 +495,8 @@
     /* Challenge me: a random stress; predict the shift first, then it runs. */
     function challenge(){
       var ctx = data.contexts.filter(function(c){ return c.reaction === rx.id; })[0], r = M.rng(Date.now() % 100000);
-      sim.reset(); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst';
+      if(LS) LS.close();
+      sim.reset(); sim.warm(6); tS.set(rx.T[2]); vS.set(rx.V[2]); $('.ek-cat').setAttribute('aria-pressed', 'false'); $('.ek-cat').textContent = 'Add a catalyst';
       var p = E.generate(r, ctx, rx), dirStep = p.steps[1];
       ch = { p: p, running: false };
       var box = $('.ek-chalbox'); box.hidden = false;
@@ -524,7 +530,7 @@
       // which is bigger; the caption says what that means; T is on its slider).
       LS.pills([{ k: 'Q', html: isFinite(q) ? M.fmt(q, 3) : '∞', tone: 'readout' }, { k: 'K', html: M.fmt(K, 3), tone: 'ghost' }], 'left', 'explore');
       LS.pills([], 'right', 'explore');
-      SP.setup(rx.id === 'n2o4' ? 'N₂O₄ ⇌ 2 NO₂' : 'H₂ + I₂ ⇌ 2 HI');
+      SP.setup('Catalyst, challenge, graphs');
     }
     function studio(pane, s){
       LS = s;
@@ -533,8 +539,16 @@
       // Details beside the speed of time.
       var chal = $('.ek-chal'); chal.classList.add('ls-btn'); chal.classList.remove('btn-press', 'sm'); chal.classList.add('bt-btn');
       $('.ek-speed').appendChild($('.ek-play'));
-      SP = T.studioPane(pane, s, { stage: [$('.ek-eq'), $('.ek-stage')], dock: [$('.ek-temp'), $('.ek-amts'), $('.ek-btns'), chal, $('.ek-chalbox')], setup: 'Volume, reaction', moreLabel: 'Volume, another reaction, speed of time, pause, start over, sources',
-        why: [$('.ek-why')], details: [$('.ek-vol'), $('.ek-nums')] });
+      /* Pass 3: the dock is the temperature and the amounts (and a running
+         challenge's question); the catalyst, Challenge me and the graph
+         chooser (concentrations, collision energies, rates) are one tap away
+         in Details, above the volume. Picking one closes the sheet so the
+         change is seen on the stage. */
+      var acts = document.createElement('div'); acts.className = 'ek-acts';
+      var ah = document.createElement('h3'); ah.className = 'ls-title-l'; ah.textContent = 'Try';
+      acts.appendChild(ah); acts.appendChild($('.ek-cat')); acts.appendChild(chal);
+      SP = T.studioPane(pane, s, { stage: [$('.ek-eq'), $('.ek-stage')], dock: [$('.ek-temp'), $('.ek-amts'), $('.ek-chalbox')], setup: 'More', moreLabel: 'Another reaction, speed of time, pause, start over, sources',
+        why: [$('.ek-why')], details: [acts, $('.ek-tabs'), $('.ek-vol'), $('.ek-nums')] });
       explainNow('');
       paint();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ek-temp input[type=range]'), text: 'Drag to heat or cool' });
