@@ -335,7 +335,9 @@
       svg.setAttribute('aria-label', S.name + ': ' + S.qs.map(function(x){ return x.name + ' ' + fv(c.q[x.key], 2) + ' ' + x.unit + ', changing at ' + sig(c.d[x.key]) + ' ' + x.rate; }).join('; ') + '.');
       readouts(c);
       if(full || !st.playing || (st.t * 4 | 0) !== draw.q){ draw.q = st.t * 4 | 0; words(c, full); graphs(c); }
-      else pills(c);
+      // While playing, the caption and the readout chips change together, four times a second, from the same frame:
+      // the chips no longer run ahead of the caption's numbers. (The caption is a polite live region, so it is not
+      // rewritten every frame.)
     }
     function readouts(c){
       var S = scene();
