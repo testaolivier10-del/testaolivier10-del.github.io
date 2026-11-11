@@ -265,11 +265,12 @@
         var top = 0, bot = h - 1;
         while(top < h && !ink[top]) top++;
         while(bot > 0 && !ink[bot]) bot--;
-        var runs = [];
+        var runs = [], gaps = [];
         for(y = top; y <= bot; y++){
           if(ink[y] > 1) continue;
           var s0 = y; while(y <= bot && ink[y] <= 1) y++;
-          if(y - s0 >= Math.max(4, 0.012 * h)) runs.push({ c: (s0 + y) / 2 / h, n: y - s0 });
+          if(y - s0 >= 3) gaps.push({ c: (s0 + y) / 2 / h, n: y - s0, s: s0 / h, e: y / h });
+          if(y - s0 >= Math.max(4, 0.012 * h)) runs.push({ c: (s0 + y) / 2 / h, n: y - s0, s: s0 / h, e: y / h });
         }
         var cy = boxes.map(function(b){ return (b[1] + b[3] / 2) / fig.h; });
         var across = function(t){ return boxes.some(function(b){ return b[1] / fig.h < t && (b[1] + b[3]) / fig.h > t; }); };
@@ -281,6 +282,15 @@
             if(up < 3 || dn < 3) return;
             if(!best || r.n > best.n) best = r;
           });
+          /* Accuracy check 2 (2026-11-11): a caption printed just under a drawing (one short block of text,
+             then a narrower gap) stays with its drawing: cut in the gap below the caption instead. */
+          if(best){
+            var nx = gaps.filter(function(g){ return g.s >= best.e; })[0];
+            if(nx && nx.s - best.e < 0.06 && nx.c < b - 0.25 * (b - a) && !across(nx.c)){
+              var up2 = cy.filter(function(v){ return v >= a && v < nx.c; }).length, dn2 = cy.filter(function(v){ return v >= nx.c && v < b; }).length;
+              if(up2 >= 3 && dn2 >= 3) best = nx;
+            }
+          }
           return best;
         };
         var parts = [[0, 1]], again = true;
@@ -293,6 +303,13 @@
             if(r){ parts.splice(k, 1, [p[0], r.c], [r.c, p[1]]); again = true; break; }
           }
         }
+        /* Accuracy check 2 (2026-11-11): each view also keeps the side extent of its own ink, so the crop
+           holds the whole drawing (a panel beyond the last label column, a caption) and not only the labels. */
+        if(parts.length > 1) parts.forEach(function(p){
+          var ya = Math.max(0, Math.floor(p[0] * h)), yb = Math.min(h, Math.ceil(p[1] * h)), xa = w, xb = -1;
+          for(var x = 0; x < w; x++){ var m = 0; for(var y = ya; y < yb; y++){ var i = (y * w + x) * 4; if(Math.min(d[i], d[i + 1], d[i + 2]) < 225 && ++m >= 2) break; } if(m >= 2){ if(x < xa) xa = x; xb = x; } }
+          if(xb >= xa){ p.push(Math.max(0, xa / w - 0.015), Math.min(1, (xb + 1) / w + 0.015)); }
+        });
         out = parts.length > 1 ? parts : null;
       }catch(e){ out = null; }
       VIEWS[src].v = out; VIEWS[src].done = true;
@@ -301,11 +318,12 @@
     img.onerror = function(){ VIEWS[src].done = true; VIEWS[src].v = null; VIEWS[src].wait.forEach(function(fn){ fn(null); }); VIEWS[src].wait = []; };
     img.src = src;
   }
-  // one view of a station: its band, and its labels' and covers' columns, so the printed words reach the stage's edges
+  // one view of a station: its band, its labels' and covers' columns and the ink of the band, so the whole drawing shows
   function viewOf(st, VW, k){
     var y0 = VW[k][0], y1 = VW[k][1], f = st.fig, x0 = 1, x1 = 0;
     st.labels.concat(st.covered || []).forEach(function(l){ var b = l.box, cy = (b[1] + b[3] / 2) / f.h; if(cy >= y0 && cy < y1){ x0 = Math.min(x0, b[0] / f.w); x1 = Math.max(x1, (b[0] + b[2]) / f.w); } });
     x0 = Math.max(0, x0 - 0.02); x1 = Math.min(1, x1 + 0.02);
+    if(VW[k].length > 3){ x0 = Math.min(x0, VW[k][2]); x1 = Math.max(x1, VW[k][3]); }   // the drawing's own ink too
     if(x1 - x0 < 0.5){ x0 = 0; x1 = 1; }
     return { k: k, n: VW.length, y0: y0, y1: y1, x0: x0, x1: x1 };
   }
