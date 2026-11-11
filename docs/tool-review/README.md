@@ -55,7 +55,7 @@ worktree; what each changed, verified and left undone is in `done/<task>.md`. An
 - NREMT: the 8 new station step lists were written from memory of the NREMT skill sheets (re-read them against
   the sheets); AED pad placement shown for small children; the body figure is male in every case, the labor
   scenario included (`docs/nremt-needs-author.md`).
-- A&P: 102 of 208 pathways and 170 of 377 predictions still have no figure (molecular and method topics need new
+- A&P: 102 of 208 pathways and 189 of 377 predictions have no figure (19 predictions lost theirs in the pin repair: no right place on any figure) (molecular and method topics need new
   drawings); the 3D anatomy tool's body source is CC BY-SA, which the A&P spec does not allow
   (`docs/anp-needs-author.md`).
 - Ochem: two reaction predictor outcomes are arguable (`docs/ochem-needs-author.md`). Env Sci: the cycles tool's
