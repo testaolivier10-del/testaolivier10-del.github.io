@@ -26,7 +26,11 @@
 .cc-ground{fill:var(--cc-ground);}
 .cc-tree rect{fill:#6B4F2E;} .cc-tree circle{fill:#3F7D3A;}
 .cc-house rect{fill:#E8E1D2;stroke:#6B5E4A;stroke-width:1.2;} .cc-house path{fill:#A3533A;}
-.cc-house.is-wet rect{fill:#9CC3DB;}
+.cc-house.is-wet rect{fill:#C9D9E2;}
+.cc-house .cc-door{fill:#6B5E4A;stroke:none;}
+.cc-sea-over{opacity:.72;}
+.cc-rise{fill:none;stroke:var(--cc-bad, #C2271A);stroke-width:2.2;}
+.cc-c-bad{fill:#C2271A;}
 .cc-sun{fill:#F3C04F;stroke:#E0A800;stroke-width:3;}
 .cc-o3 circle{fill:var(--cc-o3);stroke:var(--white);stroke-width:.8;}
 .cc-co2 .c{fill:var(--cc-c);} .cc-co2 .o{fill:var(--cc-o);} .cc-co2 circle{stroke:var(--white);stroke-width:.8;}
@@ -118,3 +122,4 @@ body.ls-on .env-crumb{display:none;}
 .cc-call,.cc-layer{stroke-width:0;}
 /* Room for the first-run tip while it shows (hintSlot). */
 .env-tipslot{height:58px;flex:none;}
+:root[data-theme="dark"] .cc-c-bad{fill:#FF8A7A;} :root[data-theme="dark"] .cc-rise{stroke:#FF8A7A;}
