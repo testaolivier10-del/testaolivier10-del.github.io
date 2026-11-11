@@ -259,7 +259,9 @@
   /* timeline(X, Y, W, H, age, o) -> svg: four lanes of bands on a log age
      axis, the current bands filled, a marker at the age. o.hide: lanes whose
      bands are drawn without labels or highlight (a drill before its step);
-     o.only: one lane. Returns { svg, x(age) } so a drag can invert it. */
+     o.only: one lane; o.focus: name only the band the marker is in (the
+     rest carry their name as a tooltip and get named as the marker reaches
+     them). Returns { svg, x(age) } so a drag can invert it. */
   function timeline(X, Y, W, H, age, o){
     o = o || {};
     var phone = W < 520, lanes = o.only ? D.LANES.filter(function(l){ return l.id === o.only; }) : D.LANES;
@@ -272,14 +274,26 @@
       var cls = LANE_CLS[L.id], hide = o.hide && o.hide.indexOf(L.id) > -1;
       var cur = !hide && age != null ? D.bandAt(L, age) : null;
       if(phone) g.push('<text class="dv-lane-h ' + cls + '-t" x="' + x0 + '" y="' + (y - 5) + '">' + esc(L.name) + (cur ? '<tspan class="dv-lane-v">: ' + esc(cur[2].length > 34 ? cur[3] : cur[2]) + '</tspan>' : '') + '</text>');
+      else if(o.focus) g.push('<text class="dv-lane-h ' + cls + '-t" x="' + X + '" y="' + (y + lh / 2 + 4) + '">' + esc(L.name) + '<title>' + esc(LANE_SUB[L.id]) + '</title></text>');
       else g.push('<text class="dv-lane-h ' + cls + '-t" x="' + X + '" y="' + (y + lh / 2 - 2) + '">' + esc(L.name) + '</text><text class="dv-lane-s" x="' + X + '" y="' + (y + lh / 2 + 12) + '">' + esc(LANE_SUB[L.id]) + '</text>');
+      var late = [];
       L.bands.forEach(function(b, i){
         var bx0 = xa(b[0]) + 1, bx1 = xa(b[1]) - 1, on = !hide && age != null && age >= b[0] && (age < b[1] || (b[1] === 90 && age >= 90));
-        g.push('<rect x="' + bx0.toFixed(1) + '" y="' + y + '" width="' + Math.max(1, bx1 - bx0).toFixed(1) + '" height="' + lh + '" rx="7" class="dv-band ' + cls + (on ? ' is-on' : (i % 2 ? ' is-alt' : '')) + '"/>');
+        g.push('<rect x="' + bx0.toFixed(1) + '" y="' + y + '" width="' + Math.max(1, bx1 - bx0).toFixed(1) + '" height="' + lh + '" rx="7" class="dv-band ' + cls + (on ? ' is-on' : (i % 2 ? ' is-alt' : '')) + '">' + (o.focus ? '<title>' + esc(b[2]) + '</title>' : '') + '</rect>');
         if(hide) return;
         var size = phone ? 10.5 : 12, full = b[2], short = b[3], room = bx1 - bx0 - 8, txt = textW(full, size, 800) <= room ? full : textW(short, size, 800) <= room ? short : '';
+        if(o.focus){
+          if(!on || phone) return; // on a phone the lane heading above names it
+          if(!txt){
+            // too narrow for its name: write it beside the band, on the side with room
+            var nw = textW(full, size, 800), right = bx1 + 8 + nw <= x1, tx = right ? bx1 + 8 : bx0 - 8;
+            late.push('<text class="dv-band-t is-out" x="' + tx.toFixed(1) + '" y="' + (y + lh / 2 + size * 0.36).toFixed(1) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="' + size + '">' + esc(full) + '</text>');
+            return;
+          }
+        }
         if(txt) g.push('<text class="dv-band-t' + (on ? ' is-on' : '') + '" x="' + ((bx0 + bx1) / 2).toFixed(1) + '" y="' + (y + lh / 2 + size * 0.36).toFixed(1) + '" text-anchor="middle" font-size="' + size + '">' + esc(txt) + '</text>');
       });
+      g.push(late.join(''));
       y += lh + laneGap;
     });
     var by = y - laneGap + 6;
@@ -520,7 +534,7 @@
         out += lifeScene(age(), 8, 8, sceneW, sceneH, phone);
         out += '<text class="dv-now-h" x="' + (phone ? 16 : 24) + '" y="' + (phone ? 30 : 38) + '">Age ' + esc(ageWords(age())) + '</text>';
         var ty = sceneH + 22;
-        tl = timeline(8, ty, W - 12, H - ty - (phone ? 52 : 34), age(), { only: allLanes ? null : 'think' });
+        tl = timeline(8, ty, W - 12, H - ty - (phone ? 52 : 34), age(), { only: allLanes ? null : 'think', focus: true });
         out += tl.svg;
         label = 'Lifespan timeline at age ' + ageWords(age()) + '. ' + lifeLine();
       } else if(lens === 'attach'){

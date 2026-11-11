@@ -72,6 +72,7 @@
 .dv-c1.is-on{fill:var(--dv-c1-on);} .dv-c2.is-on{fill:var(--dv-c2-on);} .dv-c3.is-on{fill:var(--dv-c3-on);} .dv-c4.is-on{fill:var(--dv-c4-on);}
 .dv-band-t{font-weight:800;fill:var(--ink);pointer-events:none;}
 .dv-band-t.is-on{fill:#FFFFFF;}
+.dv-band-t.is-out{fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
 .dv-c1-t{fill:var(--dv-c1);} .dv-c2-t{fill:var(--dv-c2);} .dv-c3-t{fill:var(--dv-c3);} .dv-c4-t{fill:var(--dv-c4);}
 .dv-lane-h{font-weight:900;font-size:13px;}
 .dv-lane-s{font-weight:700;font-size:10.5px;fill:var(--muted);}
