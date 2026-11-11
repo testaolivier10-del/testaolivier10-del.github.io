@@ -457,7 +457,7 @@ a.gl{cursor:pointer;}
 .hug-hero{padding-top:22px;}
 
 /* Answer marks: a word as well as a colour (A&P decision 81). */
-.hug-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;}
+.hug-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;white-space:nowrap;}
 .hug-mark.ok{background:var(--good-text,#1B7B5B);color:var(--white,#fff);}
 .hug-mark.no{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
 .hug-mark.miss{background:var(--amber-text,#8A5A00);color:var(--white,#fff);}

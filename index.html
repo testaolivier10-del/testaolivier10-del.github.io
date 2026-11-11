@@ -98,6 +98,8 @@
   .cv-t{position:absolute;left:6%;top:50%;transform:translateY(-50%);max-width:48%;color:#fff;}
   .cv-t b{display:block;font-weight:900;font-size:clamp(17px,1.9vw,24px);line-height:.98;letter-spacing:-.03em;}
   .cv-t b span{display:block;}
+  /* One long word (Macroeconomics, Environmental) must fit the 48% the title gets on its cover. */
+  @supports (font-size:1cqw){.cover{container-type:inline-size}[data-cover="apmacro"] .cv-t b,[data-cover="apmicro"] .cv-t b,[data-cover="apenv"] .cv-t b{font-size:min(clamp(17px,1.9vw,24px),5.7cqw)}}
   .cv-t em{display:block;margin-top:6px;font:700 14px/1.15 'Kalam','Nunito',cursive;color:#FFD23F;}
   [data-cover="nremt"] .cv-t span{color:#2EE6D6;}[data-cover="ochem"] .cv-t span{color:#A18FFF;}[data-cover="anp"] .cv-t span{color:#FF8A6B;}
   [data-cover="apbio"] .cv-t span{color:#7CCB6B;}[data-cover="apchem"] .cv-t span{color:#8FAEFF;}[data-cover="apphys"] .cv-t span{color:#FFB21E;}
