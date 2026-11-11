@@ -354,6 +354,10 @@
       show.addEventListener('click', function(){
         var open = tree.hidden;
         tree.hidden = !open;
+        /* Pass 3: the chain diagram and the run's step-by-step feed tell the same chain; while the diagram is
+           open the feed steps aside, so the two never sit together on the stage */
+        var fd = S ? (dashOf(box) || document).querySelector('.pc-feed') : null;
+        if(fd && fd.innerHTML){ fd.hidden = open; var dsh = fd.closest('.pc-dash'); if(dsh) dsh.classList.toggle('pc-chain-open', open); }
         show.setAttribute('aria-expanded', String(open));
         show.textContent = open ? 'Hide the chain' : 'Show the chain';
         if(S && open && tree.scrollIntoView) tree.scrollIntoView({ block: 'start', behavior: 'smooth' });
