@@ -159,7 +159,7 @@
       '<input type="range" id="' + id + '-hs" class="tt-hs" min="-1000" max="1000" step="1" value="1000">' +
       '<div class="tt-ruler" aria-hidden="true"></div></div>' +
       '<div class="tt-btns"><button type="button" class="bt-btn tt-shrink">h → 0</button><button type="button" class="bt-btn tt-tan" aria-pressed="false">Tangent</button><button type="button" class="bt-btn tt-trace" aria-pressed="false">Trace f′</button></div>' +
-      '<details class="tt-dqd" open><summary>Secant slopes as h → 0</summary><div class="tt-dqw"></div></details></div>' +
+      '<details class="tt-dqd"><summary>Secant slopes as h → 0</summary><div class="tt-dqw"></div></details></div>' +
       '<div class="tt-why"></div><div class="tt-det"></div></section>';
     var LS = null;
     var q = function(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); };
@@ -348,7 +348,7 @@
 
     /* --- words: caption, pills, live region, the table --- */
     var say = function(sec, slope, fa, fq){
-      var F = S.F, a = S.a, c = S.cls || { kind: 'smooth' }, A = sv(a), head, right = [], left = [{ k: 'h', html: sv(S.h), tone: 'readout' }];
+      var F = S.F, a = S.a, c = S.cls || { kind: 'smooth' }, A = sv(a), head, right = [], left = [];   // pass 2: h shows beside its slider, not again on the picture
       var tanEq = c.kind === 'smooth' && isFinite(slope) ? TT.line(+M.round(a, 6), +M.round(fa, 6), +M.round(slope, 3)) : null;
       if(S.anim && S.anim.kind === 'trace'){
         head = 'Tracing f′: P sweeps across, and the slope of f at each x is plotted below as the height of f′.';
@@ -357,7 +357,7 @@
         // First visit: the one thing to do first.
         if(S.fresh && isFinite(sec)) head = '<b>Start here:</b> slide h toward 0. The secant slope, now <b>' + F3(sec) + '</b>, closes in on f′(' + A + ').';
         if(S.tan && tanEq) head = 'Tangent line at x = ' + A + ': <b>' + tx('$' + tanEq.tex + '$') + '</b>. Its slope is f′(' + A + ') = ' + F3(slope) + '.';
-        right.push({ html: 'f′(' + A + ') = ' + F3(slope), tone: 'good' });
+        if(!S.fresh || S.tan) right.push({ html: 'f′(' + A + ') = ' + F3(slope), tone: 'good' });   // pass 2: the limit shows once the student acts, not before
       } else if(c.kind === 'corner'){
         head = 'At x = ' + A + ' the slope from the left is <b>' + F3(c.L) + '</b> and from the right <b>' + F3(c.R) + '</b>. They disagree, so f′(' + A + ') does not exist: a corner.';
         right.push({ html: 'f′(' + A + ') does not exist', tone: 'warn' });
@@ -595,7 +595,7 @@
     }
     function boot(){
       // On a phone the stage needs the room: the table starts folded.
-      try{ if(window.innerWidth < 600) q('.tt-dqd').open = false; }catch(e){}
+      // Pass 2: the secant-slope table starts closed at every width (one tap opens it).
       q('.tt-dqd').addEventListener('toggle', function(){ if(sized) setTimeout(sized.redraw, 30); });
       sized = fit(q('.tt-stage'), function(){ draw(); });
       setF(TT.FUNCS.quad);
