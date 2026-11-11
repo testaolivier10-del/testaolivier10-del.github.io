@@ -109,7 +109,7 @@
     }
     // the overhead sun: always the left-most point
     out.push('<circle class="ec-sub" cx="' + n2(cx - R) + '" cy="' + n2(cy) + '" r="5"/>');
-    if(!o.hideOverhead) out.push(tag(cx - R - 8, cy + 24, 'Sun overhead ' + E.latText(M.round(decl, 1)), 'ec-tag-sun', 'end'));
+    if(!o.hideOverhead) out.push(tag(cx - R - 8, cy + 24, o.calm ? 'Sun overhead' : 'Sun overhead ' + E.latText(M.round(decl, 1)), 'ec-tag-sun', 'end'));
     // you
     var ang = E.noonAngle(lat, decl), up = ang > 0;
     if(up){
@@ -158,10 +158,9 @@
       var g1 = px - foot / 2, g2 = px + foot / 2;
       out.push('<polygon class="ec-beam" points="' + [sx + nx, sy - ny, sx - nx, sy + ny, g2, gy, g1, gy].map(n2).join(' ').replace(/(\S+) (\S+)( |$)/g, '$1,$2$3') + '"/>');
       out.push('<path class="ec-arc" d="M' + n2(px - 30) + ' ' + n2(gy) + 'A30 30 0 0 1 ' + n2(px - 30 * Math.cos(a)) + ' ' + n2(gy - 30 * Math.sin(a)) + '"/>');
-      out.push(txt(px - 38, gy - 8, f1(ang) + '°', 'ec-t ec-b ec-c-you', 'end'));
+      // the angle's value is the Noon sun readout above the picture; the arc alone shows it
       out.push(sunIcon(sx, sy, 9));
       out.push(line(g1, gy + 6, g2, gy + 6, 'ec-foot'));
-      out.push(txt(x0 + w - 6, gy - 8, 'Beam covers ' + T.F(1 / Math.sin(a), 2) + '× the ground', 'ec-t ec-s ec-halo', 'end'));
     } else {
       out.push(txt(x0 + w / 2, gy - 20, 'The sun does not rise today', 'ec-t ec-b', 'middle'));
     }
@@ -169,8 +168,7 @@
     var by = gy + 50, bx = x0 + 6, bwid = w - 12, d0 = 12 - dl / 2;
     out.push('<rect class="ec-dbar-n" x="' + n2(bx) + '" y="' + n2(by - 8) + '" width="' + n2(bwid) + '" height="10" rx="5"/>');
     if(dl > 0) out.push('<rect class="ec-dbar-d" x="' + n2(bx + bwid * d0 / 24) + '" y="' + n2(by - 8) + '" width="' + n2(bwid * dl / 24) + '" height="10" rx="5"/>');
-    out.push(txt(bx, by - 14, 'Daylight ' + f1(dl) + ' h of 24', 'ec-t ec-s ec-b'));
-    out.push(txt(bx + 150, by - 14, 'Sunlight ' + f0(ins) + ' W/m²', 'ec-t ec-s ec-b ec-c-sun'));
+    out.push(txt(bx, by - 14, 'Daylight (of 24 h)', 'ec-t ec-s ec-b'));
     return out.join('');
   }
   /* Daily sunlight at the top of the atmosphere by latitude, for the date
@@ -223,7 +221,14 @@
     out.push('</g>');
     [0, 30, -30, 60, -60].forEach(function(l){ var hw = R * Math.cos(l * RAD); out.push(line(cx - hw, GY(l), cx + hw, GY(l), 'ec-lat' + (l ? '' : ' ec-lat-eq'))); });
     out.push('<circle class="ec-globe-edge" cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/>');
+    /* Pass 2 (calm): only the cell in focus is named, and only its two edges carry
+       words (the belt on the globe, "Air rises" / "Air sinks" outside). The other
+       loops, clouds and suns stay drawn but dimmed. */
+    var focus = null;
+    [[0, 30], [30, 60], [60, 90], [-30, 0], [-60, -30], [-90, -60]].forEach(function(c){ if((lat >= c[0] && lat < c[1]) || (c[1] === 90 && lat >= 90)) focus = c; });
+    function edge(l){ return !focus || l === focus[0] || l === focus[1]; }
     if(show.belts && !phone) [[0, 'Rainy'], [30, 'Deserts'], [-30, 'Deserts'], [60, 'Wet, stormy'], [-60, 'Wet, stormy']].forEach(function(b){
+      if(!edge(b[0])) return;
       out.push(txt(cx - R * Math.cos(b[0] * RAD) * 0.62, GY(b[0]) + (b[0] ? 4 : -5), b[1], 'ec-t ec-s ec-b ec-halo ' + (b[1] === 'Deserts' ? 'ec-c-dry' : 'ec-c-wet'), 'middle'));
     });
     // surface winds: trades toward the equator from the east, westerlies, polar easterlies
@@ -254,7 +259,7 @@
         if(motion) for(var j = 0; j < 3; j++) g += '<circle class="ec-parcel" r="' + (phone ? 2.2 : 2.8) + '"><animateMotion dur="9s" repeatCount="indefinite" begin="' + (-j * 3) + 's" path="' + d + '"/></circle>';
       }
       var nb = sel ? Math.max(a0 + 1, Math.min(a1 - 1, lat)) : am, pm = P(sel ? (nb > am ? am - ha * 0.45 : am + ha * 0.45) : am, rm + hr * 0.1), fs = phone ? 10 : 12;
-      if(show.names) g += txt(pm[0], pm[1] + fs * 0.36, c[2], 'ec-t ec-b ec-celln ec-halo', 'middle', ' style="font-size:' + fs + 'px"');
+      if(show.names && sel) g += txt(pm[0], pm[1] + fs * 0.36, c[2], 'ec-t ec-b ec-celln ec-halo', 'middle', ' style="font-size:' + fs + 'px"');
       else if(sel) g += txt(pm[0], pm[1] + 4, '?', 'ec-t ec-b ec-celln', 'middle');
       g += '</g>';
       if(sel) selCell = { a0: a0, a1: a1, r: r1 + pad };
@@ -265,15 +270,18 @@
       var l = r[0], tk = P(l, R + 1), tk2 = P(l, R - 6);
       if(Math.abs(l) < 90){ out.push(line(tk2[0], tk2[1], tk[0], tk[1], 'ec-lat')); var tl = P(l, R - 16); out.push(txt(tl[0], tl[1] + 4, Math.abs(l) + '°', 'ec-t ec-tk ec-halo', 'middle')); }
       if(!show.rise) return;
-      var wet = show.belts, rise = r[1] === 'rise', cs = phone ? 6 : 9;
+      var wet = show.belts, rise = r[1] === 'rise', cs = phone ? 6 : 9, on = edge(l);
+      if(!on) out.push('<g class="ec-dimmed">');
       if(wet && rise){
         var cp = P(l, r2 + cs * 0.4), rb = P(l, r1 + 2);
         out.push(cloud(cp[0] + cs * 0.2, cp[1] + cs * 0.2, cs, 'ec-cloud'));
         for(var k = -1; k <= 1; k++){ var q0 = P(l + k * mDeg * 0.45, r2 - 2), q1 = P(l + k * mDeg * 0.45, r1 + (r2 - r1) * 0.55); out.push(line(q0[0], q0[1], q1[0], q1[1], 'ec-rain ec-rain-d')); }
         void rb;
       } else if(wet && Math.abs(l) < 90){ var sp = P(l, r2 + cs * 1.1); out.push(sunIcon(sp[0], sp[1], phone ? 3.5 : 5)); }
+      if(!on){ out.push('</g>'); return; }
       if(!phone){
-        var lp = P(l, r2 + (wet && (rise || Math.abs(l) < 90) ? 34 : 12)), word = rise ? 'Air rises' + (wet ? ': rain' : '') : 'Air sinks' + (wet ? ': dry' : '');
+        // the belt on the globe already says rainy or desert, so the edge word names only the air's motion
+        var lp = P(l, r2 + (wet && (rise || Math.abs(l) < 90) ? 34 : 12)), word = (rise ? 'Air rises' : 'Air sinks') + (wet && Math.abs(l) === 90 ? ': cold, dry' : '');
         if(Math.abs(l) === 90) lp = [cx + 10, cy - (l > 0 ? 1 : -1) * (r2 + 8) + (l > 0 ? 0 : 8)];
         out.push(txt(lp[0] + (Math.abs(l) < 90 ? 4 : 0), lp[1] + 4, word, 'ec-t ec-s ec-b ec-halo ' + (rise ? 'ec-c-wet' : 'ec-c-dry')));
       }
@@ -286,7 +294,6 @@
       '<ellipse class="ec-benv" cx="' + n2(bp[0]) + '" cy="' + n2(bp[1]) + '" rx="' + n2(8 * bs) + '" ry="' + n2(9 * bs) + '" transform="rotate(' + n2(90 - ba) + ' ' + n2(bp[0]) + ' ' + n2(bp[1]) + ')"/>' +
       '<circle class="ec-bhi" cx="' + n2(bp[0] - 2.5 * bs) + '" cy="' + n2(bp[1] - 3 * bs) + '" r="' + n2(2.2 * bs) + '"/></g>');
     out.push('<circle class="ec-bdot" cx="' + n2(gnd[0]) + '" cy="' + n2(gnd[1]) + '" r="3"/>');
-    if(!o.noLabels) out.push(txt(cx, H - 4, phone ? 'Surface winds on the globe; the air’s loops at its edge' : 'Surface winds (arrows) on the globe; the atmosphere, drawn thick at its edge, turns in three loops each side', 'ec-t ec-s ec-muted', 'middle'));
     return out.join('');
   }
   function shadowScene(W, H, S, at, o){
@@ -328,6 +335,15 @@
     if(S.cloud){ var ul = 0.52 - 0.17 * Math.sqrt(Math.log(S.H / Math.max(0.01, S.lcl)) / 0.9); if(isFinite(ul)) pts.push({ u: ul, s: 'Cloud base ' + f1(S.lcl) + ' km, ' + f1(S.Tc) + ' °C', a: 'end', cb: true }); }
     pts.push({ u: 0.52, s: 'Summit ' + f1(S.Ttop) + ' °C', a: 'middle', top: true });
     pts.push({ u: 0.95, s: 'Far side ' + f1(S.Tlee) + ' °C', a: 'end' });
+    /* Pass 2 (Explore): each temperature sits where it happens on the air's path,
+       and only the two that make the point (start, far side) carry a number; the
+       summit and cloud base are in Numbers & setup. The drill keeps its column. */
+    if(!o.hide){
+      if(S.cloud) out.push(txt(L + 6, Y(S.lcl) - 6, 'Cloud base', 'ec-t ec-s ec-b ec-c-wet ec-halo'));
+      out.push(tag(X(0.03), Y(pz(0.05)) - 24, pts[0].s, '', 'start'));
+      out.push(tag(X(0.97), Y(pz(0.95)) - 22, pts[pts.length - 1].s, 'ec-tag-you', 'end'));
+      pts = [];
+    }
     pts.forEach(function(p){
       var hide = o.hide && ((p.top && o.hide.top) || (p.u > 0.9 && o.hide.lee));
       var y = Y(pz(p.u)) - (p.top ? 14 : 10);
@@ -396,7 +412,8 @@
     // what it means on land
     if(P.state === 'nino'){ out.push(tag(x0 + 4, sea - h * 0.13, 'Drought', 'ec-tag-dry')); out.push(tag(x0 + w - 4, sea - h * 0.3, 'Floods', 'ec-tag-wet', 'end')); }
     if(P.state === 'nina'){ out.push(tag(x0 + 4, sea - h * 0.13, 'Heavy rain', 'ec-tag-wet')); out.push(tag(x0 + w - 4, sea - h * 0.3, 'Dry', 'ec-tag-dry', 'end')); }
-    out.push(tag(x0 + 6, y0 + 20, o.title || (P.name + ' (Niño 3.4 ' + (a > 0 ? '+' : a < 0 ? '−' : '') + f1(Math.abs(a)) + ' °C)'), P.state === 'nino' ? 'ec-tag-nino' : P.state === 'nina' ? 'ec-tag-nina' : ''));
+    // single panel: the name and anomaly are the readouts above the picture (pass 2)
+    if(o.title || o.quiz) out.push(tag(x0 + 6, y0 + 20, o.title || (P.name + ' (Niño 3.4 ' + (a > 0 ? '+' : a < 0 ? '−' : '') + f1(Math.abs(a)) + ' °C)'), P.state === 'nino' ? 'ec-tag-nino' : P.state === 'nina' ? 'ec-tag-nina' : ''));
     if(!o.compact) out.push(txt(X(0.5), bot - 8, 'Cold deep water', 'ec-t ec-s ec-on-deep', 'middle'));
     return out.join('');
   }
@@ -511,10 +528,11 @@
         var d = E.declination(st.day), ang = E.noonAngle(st.lat, d), dl = E.dayLength(st.lat, d), ins = E.insolation(st.lat, d);
         if(!phone){
           var ew = W * 0.56;
-          var es = earthSide(0, 0, ew, H, d, st.lat);
-          inner = es.svg + orbit(ew - 70, 54, 46, st.day, false, true) + sky(ew + 12, 6, W - ew - 16, H * 0.5, ang, dl, ins) + insChart(ew + 6, H * 0.55, W - ew - 10, H * 0.45 - 4, d, st.lat);
+          var es = earthSide(0, 0, ew, H, d, st.lat, { hideAngle: true, calm: true });
+          // Pass 2: the sunlight-by-latitude chart lives in Numbers & setup (as on a phone), so the globe and its noon sky are the picture
+          inner = es.svg + orbit(ew - 70, 54, 46, st.day, false, true) + sky(ew + 12, H * 0.16, W - ew - 16, H * 0.6, ang, dl, ins);
         } else {
-          var eh = H * 0.56, es2 = earthSide(0, 0, W, eh, d, st.lat, { avoid: [0, 0, 64 + 28 + 26, 36 + 28 * 0.62 + 14] });
+          var eh = H * 0.56, es2 = earthSide(0, 0, W, eh, d, st.lat, { hideAngle: true, calm: true, avoid: [0, 0, 64 + 28 + 26, 36 + 28 * 0.62 + 14] });
           inner = es2.svg + orbit(64, 36, 28, st.day, true, true) + sky(4, eh + 4, W - 8, H - eh - 8, ang, dl, ins);
         }
         label = dateText(st.day) + ': the sun is overhead at ' + E.latText(M.round(d, 1)) + '. At ' + E.latText(st.lat) + ' the noon sun is ' + (ang > 0 ? f1(ang) + '° above the horizon' : 'below the horizon') + ', daylight lasts ' + f1(dl) + ' hours, and daily sunlight at the top of the atmosphere averages ' + f0(ins) + ' W/m².';
@@ -551,7 +569,7 @@
       if(st.scene === 'sun'){
         var d = E.declination(st.day), ang = E.noonAngle(st.lat, d), dl = E.dayLength(st.lat, d), ins = E.insolation(st.lat, d);
         var NH = d > 0.5 ? 'north' : d < -0.5 ? 'south' : '';
-        head = dateText(st.day) + ': ' + (NH ? 'the ' + (NH === 'north' ? 'Northern' : 'Southern') + ' Hemisphere leans toward the sun.' : 'neither hemisphere leans toward the sun (near an equinox).') + ' At ' + E.latText(st.lat) + ' the noon sun is ' + (ang > 0 ? f1(ang) + '° up' : 'below the horizon') + ' and the day lasts ' + f1(dl) + ' h.';
+        head = dateText(st.day) + ': ' + (NH ? 'the ' + (NH === 'north' ? 'Northern' : 'Southern') + ' Hemisphere leans toward the sun.' : 'neither hemisphere leans toward the sun (near an equinox).') + (ang > 0 ? '' : ' At ' + E.latText(st.lat) + ' the sun does not rise.');   // the angle and day length are the two readouts above the picture
         pills = [{ k: 'Noon sun', html: ang > 0 ? f1(ang) + '°' : 'below', tone: 'readout' }];
         right = [{ k: 'Day', html: f1(dl) + ' h', tone: 'readout' }];
         why = '<p><b>The tilt makes the seasons.</b> Earth’s axis is tilted 23.5° and keeps pointing the same way (toward Polaris) all year, as the small orbit shows. In June the Northern Hemisphere leans toward the sun; in December the Southern Hemisphere does.</p>' +
@@ -567,8 +585,8 @@
           '<div class="ec-detchart"></div>';
       } else if(st.scene === 'winds'){
         var b = E.band(st.wlat), v = E.verticalAt(st.wlat), A = Math.abs(st.wlat);
-        head = E.latText(st.wlat) + ': ' + b.cell + ' cell, surface wind the ' + b.wind.toLowerCase() + '. ' + (v === 'rise' ? 'Air rises here: clouds and rain.' : v === 'sink' ? 'Air sinks here: dry' + (A > 80 ? ' and cold.' : ', a desert belt.') : 'Air flows along the surface here.');
-        pills = [{ k: 'Cell', html: b.cell, tone: 'readout' }, { k: 'Wind', html: b.wind.replace(' winds', ''), tone: 'readout' }];
+        head = E.latText(st.wlat) + ' rides the ' + b.cell + ' cell. ' + (v === 'rise' ? 'Air rises here: clouds and rain.' : v === 'sink' ? 'Air sinks here: dry' + (A > 80 ? ' and cold.' : ', a desert belt.') : 'Drag the balloon to where its air rises or sinks.');
+        pills = [{ k: 'Wind', html: b.wind.replace(' winds', ''), tone: 'readout' }];
         right = v ? [{ k: 'Air', html: v === 'rise' ? 'rises: wet' : 'sinks: dry', tone: v === 'rise' ? 'good' : 'warn' }] : [];
         why = '<p><b>Uneven heating starts it.</b> The equator gets the most direct sunlight, so air there warms, rises, cools and drops its water as rain (the rainforest belt). High up it spreads toward the poles.</p>' +
           '<p><b>It sinks near 30°.</b> That air, now dry, sinks near 30°N and 30°S, warming as it is compressed: most of the great deserts (Sahara, Arabian, Australian, Kalahari) lie there. At the surface it flows back toward the equator: one loop is the <b>Hadley cell</b>.</p>' +
@@ -578,9 +596,9 @@
           '<tr><td>0° to 30°</td><td>Hadley</td><td>Trade winds (NE north, SE south)</td><td>Rises at 0°, sinks at 30°</td></tr><tr><td>30° to 60°</td><td>Ferrel</td><td>Westerlies</td><td>Sinks at 30°, rises at 60°</td></tr><tr><td>60° to 90°</td><td>Polar</td><td>Polar easterlies</td><td>Rises at 60°, sinks at the pole</td></tr></tbody></table>';
       } else if(st.scene === 'shadow'){
         var s = S(), run = st.at != null && st.at < 1 ? parcelT(s, st.at) : null;
-        head = s.cloud ? (run != null ? 'The air is at ' + f1(run) + ' °C. ' : '') + 'Clouds form at ' + f1(s.lcl) + ' km; the summit is ' + f1(s.Ttop) + ' °C and the far side ' + f1(s.Tlee) + ' °C, ' + f1(s.warmer) + ' °C warmer and drier: a rain shadow.' : 'The cloud base (' + f1(s.lcl) + ' km) is above the summit: no cloud forms, no rain falls, and the air returns at ' + f0(s.T0) + ' °C.';
-        pills = [{ k: 'Summit', html: f1(s.Ttop) + ' °C', tone: 'readout' }, { k: 'Far side', html: f1(s.Tlee) + ' °C', tone: 'readout' }];
-        right = [{ k: 'Far side RH', html: f0(s.rhLee) + '%', tone: s.cloud ? 'warn' : 'ghost' }];
+        head = s.cloud ? (run != null ? 'The air is at ' + f1(run) + ' °C. ' : '') + 'It rains on the ocean side; the air lands ' + f1(s.warmer) + ' °C warmer and far drier: a rain shadow.' : 'The cloud base (' + f1(s.lcl) + ' km) is above the summit: no cloud forms, no rain falls, and the air returns at ' + f0(s.T0) + ' °C.';
+        // the start and far-side temperatures are on the picture, at the ends of the air's path
+        pills = []; right = [];
         why = '<p><b>Rising air cools.</b> Ocean air pushed up a mountain expands and cools about 10 °C per km while it is dry. Moister air reaches its dew point sooner, so a higher humidity gives a lower cloud base.</p>' +
           '<p><b>In the cloud it cools more slowly.</b> Water vapor condenses and releases heat, so the air cools only about 6 °C per km. The water falls as rain or snow on the ocean (windward) side, which grows forests.</p>' +
           '<p><b>Sinking air warms.</b> Past the summit the air, now dry, sinks and warms 10 °C per km all the way down. It arrives warmer and much drier than it started, so the far (leeward) side is a <b>rain shadow</b> desert: Death Valley and the Great Basin behind the Sierra Nevada, the Atacama, Patagonia.</p>';
