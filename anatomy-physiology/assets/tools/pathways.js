@@ -496,6 +496,16 @@
       S.hint(p.trace && first !== 'drills' ? { target: '.ls-dock .pt-play', text: 'Press Play to follow it' } : { target: '.ls-dock .pw-bank .pw-bcard, .ls-stage .pw-pick, .ls-dock .pw-choices .anp-opt', text: 'Start here' });
     }
   }
+  /* A drill's parts live on the stage, outside its panel, so the next drill
+     must take the last one's away before it builds: the lookups below go
+     through the document and would otherwise find the old map's slot (the
+     Missing step tab showed an empty stage after Order). */
+  function clearDrill(){
+    if(!S) return;
+    drillParts.forEach(function(x){ if(x.parentNode) x.parentNode.removeChild(x); });
+    drillParts = [];
+    S.stage.querySelectorAll('.pw-fig').forEach(function(f){ f.parentNode.removeChild(f); });
+  }
   function studioDrill(p, panel){
     var dm = p.trace ? 'drills' : null;
     drillParts.forEach(function(x){ if(x.parentNode) x.parentNode.removeChild(x); });
@@ -647,7 +657,7 @@
   }
   function pathMap(p, opt){
     opt = opt || {};
-    var n = p.steps.length, cols = opt.cols || colsFor(n), rows = Math.ceil(n / cols);
+    var n = p.steps.length, cols = opt.cols || (sceneOf(p) && !opt.noScene ? 2 : colsFor(n)), rows = Math.ceil(n / cols);
     var W = PAD * 2 + NW * cols + GX * (cols - 1);
     var H = PAD * 2 + 8 + rows * NH + (rows - 1) * GY + (p.cycle ? 30 : 0);
     function pos(k){
@@ -684,7 +694,7 @@
        state: '' | 'empty' | 'next' | 'gap' | 'ok' | 'no' | 'marked' | 'picked'. */
     function fill(k, i, state, extra){
       var s = slot[k], g = s.g, a = s.a, st = i != null ? p.steps[i] : null;
-      s.i = i;
+      s.i = i; s.state = state || '';
       while(g.firstChild) g.removeChild(g.firstChild);
       var kind = st ? stepKind(p, st) : null;
       var fam = st ? (st.blood === 'o2' || st.blood === 'deo2' ? st.blood : FAM[kind]) : 'none';
@@ -739,17 +749,64 @@
       });
     }
     function fitAll(){ slot.forEach(function(s){ fitNode(s.g, s.a); }); }
+    /* The scene plate (tool redesign 2026-11): the same slots drawn on the
+       real figure, each placed step a numbered pin where it happens, joined
+       in the order of the slots. In Put in order the route follows the
+       student's order, so a wrong order shows as a route that doubles back. */
+    var plate = opt.noScene ? null : sceneOf(p), sc = null;
+    if(plate && window.AnpScene) sc = window.AnpScene.make(plate, { kind: p.kind === 'flow' ? 'flows' : 'causes', cls: 'pw-scn' });
+    function sync(){
+      if(!sc) return;
+      sc.pins(slot.map(function(s, k){
+        if(s.state === 'gap') return { gap: true };
+        if(s.i == null) return { hole: true };
+        var at = plate.pts[s.i], st = p.steps[s.i];
+        if(!at) return null;
+        var state = s.state === 'ok' || s.state === 'no' ? s.state : s.state === 'marked' ? 'marked' : '';
+        return { pt: at, n: k + 1, state: state, tone: st.blood === 'o2' || st.blood === 'deo2' ? st.blood : '', title: (k + 1) + '. ' + plain(st.label) + (plate.names && plate.names[s.i] ? ' (' + plate.names[s.i] + ')' : '') };
+      }));
+      // Put in order: the places of the steps not yet placed show as open rings
+      var used = {}, waiting = slot.some(function(s){ return s.i == null && s.state !== 'gap'; });
+      slot.forEach(function(s){ if(s.i != null) used[s.i] = 1; });
+      sc.ghosts(waiting ? plate.pts.filter(function(pt, i){ return pt && !used[i]; }) : []);
+    }
     function label(){
       var parts = slot.map(function(s, k){ return (k + 1) + '. ' + (s.i != null ? plain(p.steps[s.i].label) : '?'); });
       svg.setAttribute('aria-label', p.title + ', step by step: ' + parts.join('; ') + (p.cycle ? '; then back to step 1.' : '.'));
     }
-    return { svg: svg, n: n, slot: slot, fit: fitAll, fill: function(k, i, st, ex){ fill(k, i, st, ex); label(); }, fillAll: function(fn){ for(var k = 0; k < n; k++){ var r = fn(k) || {}; fill(k, r.i, r.state, r.extra); } label(); } };
+    return { svg: svg, n: n, slot: slot, scene: sc, fit: fitAll,
+      fill: function(k, i, st, ex){ fill(k, i, st, ex); label(); sync(); },
+      fillAll: function(fn){ for(var k = 0; k < n; k++){ var r = fn(k) || {}; fill(k, r.i, r.state, r.extra); } label(); sync(); },
+      // the player: slot k in focus on the figure, its words beside its pin, the token arriving from the pin before
+      focus: function(k){
+        if(!sc) return;
+        sc.stage(k);
+        if(k < 0){ sc.focus(-1); sc.move(-1, -1); return; }
+        var s = slot[k], st = s.i != null ? p.steps[s.i] : null;
+        if(!st || !plate.pts[s.i]){ sc.focus(-1); return; }
+        var prev = -1; for(var j = k - 1; j >= 0; j--) if(slot[j].i != null && plate.pts[slot[j].i]){ prev = j; break; }
+        sc.focus(k, (k + 1) + '. ' + plain(st.label));
+        sc.move(prev, k, st.blood === 'o2' || st.blood === 'deo2' ? st.blood : '');
+      } };
   }
   function mapFig(map){
     var fig = document.createElement('figure');
-    fig.className = 'anp-fig pw-fig';
-    fig.appendChild(map.svg);
+    fig.className = 'anp-fig pw-fig' + (map.scene ? ' has-scene' : '');
+    if(map.scene){
+      var duo = document.createElement('div'), box = document.createElement('div');
+      duo.className = 'pw-duo'; box.className = 'pw-mapbox';
+      box.appendChild(map.svg);
+      duo.appendChild(map.scene.el); duo.appendChild(box);
+      fig.appendChild(duo);
+    } else fig.appendChild(map.svg);
     return fig;
+  }
+  /* The figure a pathway is drawn on: its scene (data/pathway-scenes.json),
+     or for a traced pathway its trace figure, whose points are its steps. */
+  function sceneOf(p){
+    if(p.scene) return p.scene;
+    if(p.trace){ var T = p.trace; return { src: T.src, srcset: T.srcset, w: T.w, h: T.h, alt: T.alt, attribution: T.attribution, covered: T.covered, pts: T.pts, names: T.labels.map(function(){ return null; }) }; }
+    return null;
   }
 
   /* Record the first check of each variant on this visit. */
@@ -788,7 +845,7 @@
   function p0mode(){ return curP && curP.trace ? 'drills' : undefined; }
   // scroll the studio stage so map slot k is on screen
   function slotInView(map, k){
-    if(!S || !map.slot[k]) return;
+    if(!S || !map.slot[k] || map.scene) return;  // with a scene plate the figure stays in view
     var g = map.slot[k].g, body = S.stage;
     try{ var r = g.getBoundingClientRect(), b = body.getBoundingClientRect(); if(r.top < b.top + 8 || r.bottom > b.bottom - 8) body.scrollTop += r.top - b.top - (b.height - r.height) / 2; }catch(e){}
   }
@@ -801,6 +858,7 @@
      to take it back. "Use a list" switches to the drag-and-arrows list. */
   function orderVariant(p, panel, asList){
     curP = p;
+    clearDrill();
     var n = p.steps.length;
     var bank = shuffle(p.steps.map(function(s, i){ return i; }));
     if(bank.every(function(v, k){ return v === k; })) bank.reverse();
@@ -979,6 +1037,7 @@
   /* Variant 2: one step is blanked on the map; choose what fills it. */
   function missingVariant(p, panel){
     curP = p;
+    clearDrill();
     var m = p.missing, at = m.at, tries = 0, done = false, first = false;
     var choices = shuffle([{ text: p.steps[at].text, why: p.steps[at].why, right: true }].concat(m.distractors.map(function(d){ return { text: d.text, why: d.why, right: false }; })));
     var map = pathMap(p);
@@ -1040,6 +1099,7 @@
   /* Variant 3: one step has been replaced by a wrong one; find it. */
   function errorVariant(p, panel){
     curP = p;
+    clearDrill();
     var e = p.error, at = e.at, pick = -1, tries = 0, first = false;
     panel.innerHTML = '<p class="kt-first pw-task">One step is wrong. Tap it, then check.</p>' +
       '<div class="pw-figslot"></div>' +
@@ -1051,6 +1111,20 @@
       '<div class="pw-actions"><button type="button" class="btn-press sm pw-check" disabled>Check</button></div>' +
       '<div class="pw-hint" role="status" hidden></div>' +
       '<div class="pw-result" aria-live="polite"></div>';
+    /* The steps as numbered pins on the figure (no labels on it, so the
+       picture cannot give the wrong one away): the step picked in the list
+       lights up where it happens. */
+    var plate = sceneOf(p), esc_ = null;
+    if(plate && window.AnpScene){
+      esc_ = window.AnpScene.make(plate, { kind: p.kind === 'flow' ? 'flows' : 'causes', cls: 'pw-scn' });
+      var ef = document.createElement('figure'); ef.className = 'anp-fig pw-fig has-scene pw-errfig'; ef.appendChild(esc_.el);
+      panel.querySelector('.pw-figslot').appendChild(ef);
+    }
+    function errPins(){
+      if(!esc_) return;
+      esc_.pins(p.steps.map(function(st, k){ var at0 = plate.pts[k]; return at0 ? { pt: at0, n: k + 1, state: k === pick ? 'marked' : '', tone: st.blood === 'o2' || st.blood === 'deo2' ? st.blood : '' } : null; }));
+    }
+    errPins();
     var btns = (S ? document : panel).querySelectorAll('.pw-pick');
     var check = pq(panel, '.pw-check');
     if(S) studioDrill(p, panel);
@@ -1060,6 +1134,7 @@
         pick = +b.getAttribute('data-k');
         btns.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
         check.disabled = false;
+        errPins();
       });
     });
     function finish(ok){
@@ -1121,6 +1196,8 @@
       map.fillAll(function(k){ return { i: k, state: k === mark ? 'marked' : '', extra: k === mark && variant === 'error' ? { yours: p.error.text, pre: 'was: ' } : null }; });
       fig = mapFig(map);
       var slotEl = pq(panel, '.pw-figslot');
+      // Spot the error's pin-only figure gives way to the answered map
+      if(slotEl) [].forEach.call(slotEl.querySelectorAll('.pw-errfig'), function(x){ x.parentNode.removeChild(x); });
       if(slotEl) slotEl.appendChild(fig); else box.insertBefore(fig, box.querySelector('.pw-player'));
       if(S){
         S.put('stage', fig, { mode: p.trace ? 'drills' : null, first: true });
@@ -1129,7 +1206,7 @@
       }
       map.fit();
     }
-    player = makePlayer(p, map.svg, box);
+    player = makePlayer(p, map.svg, box, map);
     if(S){
       S.stage.scrollTop = 0;
       var h3 = box.querySelector('h3'); if(h3) h3.parentNode.removeChild(h3);
@@ -1137,7 +1214,7 @@
     }
   }
 
-  function makePlayer(p, svg, box){
+  function makePlayer(p, svg, box, map){
     var n = p.steps.length, k = -1, timer = null;
     var cap = box.querySelector('.pw-caption');
     var play = box.querySelector('.pw-play');
@@ -1153,12 +1230,13 @@
         var j = +a.getAttribute('data-k');
         a.classList.toggle('is-dim', k >= 0 && j >= k);
       });
+      if(map && map.focus) map.focus(k);
       var s = p.steps[k];
       cap.innerHTML = s ? '<b>Step ' + (k + 1) + ' of ' + n + ':</b> ' + html(s.text) + ' <span class="pw-cap-why">' + html(s.why) + '</span>' : '';
-      var cur = svg.querySelector('.pw-node.is-cur');
+      var cur = map && map.scene ? map.scene.el.querySelector('.scn-pin.is-focus') : svg.querySelector('.pw-node.is-cur');
       if(cur && S && cur.scrollIntoView){ try{ cur.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); }catch(e){} }
     }
-    function stop(){ if(timer){ clearInterval(timer); timer = null; } play.textContent = '▶ Play'; play.setAttribute('aria-pressed', 'false'); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } play.textContent = '▶ Play'; play.setAttribute('aria-pressed', 'false'); if(map && map.scene) map.scene.stop(); }
     function start(){
       if(k >= n - 1) show(-1);
       play.textContent = '❚❚ Pause'; play.setAttribute('aria-pressed', 'true');
