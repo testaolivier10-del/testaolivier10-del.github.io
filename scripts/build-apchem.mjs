@@ -938,6 +938,8 @@ ${tail({ depth, section: '' })}
   function toolShell(t) {
     const depth = '../', path = `tools/${t.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = existsSync(join(ROOT, 'chem', 'assets', 'tools', `${t.slug}.js`));
+    // A tool's own sheet (pass 3 cleanup), loaded after the shared one so it can override it.
+    const cssOk = existsSync(join(ROOT, 'chem', 'assets', 'tools', `${t.slug}.css`));
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebApplication', '@id': `${url}#tool`, name: t.name, url, description: t.desc, applicationCategory: 'EducationalApplication', operatingSystem: 'Any',
         ...(t.premium ? lockedLd('.chem-app-mount') : { isAccessibleForFree: true }), isPartOf: { '@id': COURSE_ID } },
@@ -959,7 +961,7 @@ ${toolBand({ key: 'apchem', up: '../../', slug: t.slug, title: t.name, hand: esc
     : `<p class="chem-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `tool:${t.slug}`)}
-<link rel="stylesheet" href="${depth}assets/tools/chem-tools.css">${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
+<link rel="stylesheet" href="${depth}assets/tools/chem-tools.css">${cssOk ? `\n<link rel="stylesheet" href="${depth}assets/tools/${t.slug}.css">` : ''}${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
 ${tail({ depth, section: 'tools', extra, premium: true, site: t.studio ? ['course/tool-studio.js'] : [] })}
 </body>
 </html>
