@@ -13,9 +13,12 @@
                   latitude (sun height, the beam spread over the ground, day
                   length) and, on wide screens, daily sunlight by latitude.
                   Controls: date, latitude.
-     Winds        The globe with its belts and surface winds, and beside it
-                  the six circulation cells (Hadley, Ferrel, polar) on a
-                  latitude strip. Control: a weather balloon's latitude.
+     Winds        The globe with its belts and surface winds; its atmosphere
+                  is drawn thick along the right edge, where the six cells
+                  (Hadley, Ferrel, polar) turn as loops of air, rising with
+                  cloud and rain at 0° and 60°, sinking dry at 30° and the
+                  poles. Control: a weather balloon's latitude (it rides the
+                  surface leg of its cell; drag it on the globe or the air).
      Rain shadow  Ocean air over a mountain: dry rate to the cloud base, wet
                   rate in the cloud, dry rate down the far side; rain and
                   forest on one side, desert on the other. Controls: height,
@@ -191,74 +194,101 @@
     return out.join('');
   }
 
-  /* Winds: a globe (latitude by sphere projection) and the cells on a strip
-     beside it (latitude even), joined at 0°, 30° and 60°. */
+  /* Winds: the globe seen side-on (latitude by sphere projection), with its
+     atmosphere drawn thick along the right edge so the six cells show as loops
+     of air: rising with cloud and rain at 0° and 60°, sinking dry at 30° and
+     the poles, the loop bottoms running on as the surface winds on the globe.
+     A weather balloon rides the surface leg of the cell at its latitude. */
   function windScene(W, H, lat, o){
     o = o || {};
-    var phone = W < 560, out = [], R = Math.min(H * 0.44, W * (phone ? 0.3 : 0.26)), cx = R + 14, cy = H / 2;
-    var sx0 = cx + R + (phone ? 22 : 40), sx1 = W - (phone ? 6 : 150), st = 22, sb = H - 22;
+    var phone = W < 560, out = [], G0 = 0.035, TH = 0.36, labW = phone ? 26 : 118, padV = phone ? 24 : 26;
+    var R = Math.min((H / 2 - padV) / (1 + G0 + TH + 0.06), (W - labW - 20) / (2 + G0 + TH + 0.06));
+    var r1 = R * (1 + G0), r2 = R * (1 + G0 + TH), total = R + r2 + labW;
+    var cx = Math.max(10, (W - total) / 2) + R, cy = H / 2;
     /* Drill mode (o.quiz = the steps answered so far): an unlabelled globe with
        only the asked latitude marked; each answer appears once its step is done. */
     var q = o.quiz, end = q && q.cell, show = q ? { rise: q.air || end, belts: q.climate || end, winds: q.wind || end, names: q.cell } : { rise: 1, belts: 1, winds: 1, names: 1 };
-    function SY(l){ return st + (90 - l) / 180 * (sb - st); }
     function GY(l){ return cy - R * Math.sin(l * RAD); }
-    if(!o.quiz) LAST.wind = { cx: cx, cy: cy, R: R, sx0: sx0, sx1: sx1, st: st, sb: sb };
+    function P(l, r){ return [cx + r * Math.cos(l * RAD), cy - r * Math.sin(l * RAD)]; }
+    if(!o.quiz) LAST.wind = { cx: cx, cy: cy, R: R, r2: r2 };
+    // the atmosphere along the lit edge
+    out.push('<path class="ec-air" d="M' + n2(cx) + ' ' + n2(cy - r2) + ' A' + n2(r2) + ' ' + n2(r2) + ' 0 0 1 ' + n2(cx) + ' ' + n2(cy + r2) + ' L' + n2(cx) + ' ' + n2(cy + R) + ' A' + n2(R) + ' ' + n2(R) + ' 0 0 0 ' + n2(cx) + ' ' + n2(cy - R) + 'Z"/>');
     // belts on the globe
     out.push('<circle class="ec-globe" cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/>');
-    out.push('<clipPath id="ec-gclip"><circle cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/></clipPath><g clip-path="url(#ec-gclip)">');
+    var cid = 'ec-gclip' + (o.quiz ? 'q' : '');
+    out.push('<clipPath id="' + cid + '"><circle cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/></clipPath><g clip-path="url(#' + cid + ')">');
     if(show.belts) [[-8, 8, 'wet'], [22, 38, 'dry'], [-38, -22, 'dry'], [52, 68, 'wet'], [-68, -52, 'wet']].forEach(function(b){
       out.push('<rect class="ec-belt-' + b[2] + '" x="' + n2(cx - R) + '" y="' + n2(GY(b[1])) + '" width="' + n2(2 * R) + '" height="' + n2(GY(b[0]) - GY(b[1])) + '"/>');
     });
     out.push('</g>');
     [0, 30, -30, 60, -60].forEach(function(l){ var hw = R * Math.cos(l * RAD); out.push(line(cx - hw, GY(l), cx + hw, GY(l), 'ec-lat' + (l ? '' : ' ec-lat-eq'))); });
     out.push('<circle class="ec-globe-edge" cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/>');
+    if(show.belts && !phone) [[0, 'Rainy'], [30, 'Deserts'], [-30, 'Deserts'], [60, 'Wet, stormy'], [-60, 'Wet, stormy']].forEach(function(b){
+      out.push(txt(cx - R * Math.cos(b[0] * RAD) * 0.62, GY(b[0]) + (b[0] ? 4 : -5), b[1], 'ec-t ec-s ec-b ec-halo ' + (b[1] === 'Deserts' ? 'ec-c-dry' : 'ec-c-wet'), 'middle'));
+    });
     // surface winds: trades toward the equator from the east, westerlies, polar easterlies
     if(show.winds) [[15, -1, 1], [45, 1, -1], [75, -1, 1], [-15, -1, -1], [-45, 1, 1], [-75, -1, -1]].forEach(function(b){
       var l = b[0], y = GY(l), hw = R * Math.cos(l * RAD), n = Math.abs(l) > 70 ? 1 : 2, dx = b[1] * Math.min(36, hw * 0.4), dy = b[2] * Math.min(12, (GY(Math.abs(l) - 10) - GY(Math.abs(l) + 10)) * 0.22);
-      for(var i = 0; i < n; i++){ var xx = cx + (n === 1 ? 0 : (i ? 0.4 : -0.4) * hw); out.push(arrow(xx - dx / 2, y - dy / 2, xx + dx / 2, y + dy / 2, 'ec-wind', 10, 5.5)); }
+      for(var i = 0; i < n; i++){ var xx = cx + (n === 1 ? 0 : (i ? 0.25 : -0.45) * hw); out.push(arrow(xx - dx / 2, y - dy / 2, xx + dx / 2, y + dy / 2, 'ec-wind', 10, 5.5)); }
     });
-    // the cells on the strip
-    var mid = (sx0 + sx1) / 2, cw = sx1 - sx0;
-    out.push('<rect class="ec-strip" x="' + n2(sx0) + '" y="' + n2(st) + '" width="' + n2(cw) + '" height="' + n2(sb - st) + '" rx="10"/>');
-    out.push(txt(sx0 + 6, st - 6, 'Surface', 'ec-t ec-s ec-muted')); out.push(txt(sx1 - 6, st - 6, 'High up', 'ec-t ec-s ec-muted', 'end'));
-    // the probe first, so the cells' labels sit on top of it
-    out.push(line(sx0 - 8, SY(lat), sx0 + 12, SY(lat), 'ec-probe') + line(sx1 - 12, SY(lat), sx1 + 8, SY(lat), 'ec-probe'));
-    /* Each cell is a loop: up (to the right, "high up") along its rising
-       edge, poleward or equatorward aloft, down at its sinking edge, back
-       along the surface. rise: the latitude where its air rises. */
-    [[0, 30, 'Hadley', 0], [30, 60, 'Ferrel', 60], [60, 90, 'Polar', 60], [-30, 0, 'Hadley', 0], [-60, -30, 'Ferrel', -60], [-90, -60, 'Polar', -60]].forEach(function(c){
-      var ytop = SY(c[1]) + 7, ybot = SY(c[0]) - 7, xl = sx0 + 12, xr = sx1 - 12, sel = (lat >= c[0] && lat < c[1]) || (c[1] === 90 && lat >= 90);
-      var riseY = SY(c[3]) === SY(c[1]) ? ytop : ybot, sinkY = riseY === ytop ? ybot : ytop, mx = (xl + xr) / 2, my = (ytop + ybot) / 2, aw = Math.min((xr - xl) * 0.18, 30), ah = Math.min((ybot - ytop) * 0.18, 16);
-      var dirAloft = sinkY < riseY ? -1 : 1;    // screen direction from the rising edge to the sinking edge
-      var g = '<g class="ec-cell' + (sel ? ' is-on' : '') + '"><rect class="ec-cellbox" x="' + n2(xl) + '" y="' + n2(ytop) + '" width="' + n2(xr - xl) + '" height="' + n2(Math.max(4, ybot - ytop)) + '" rx="' + n2(Math.min(14, (ybot - ytop) / 2)) + '"/>';
+    /* The cells: [from, to, name, latitude where its air rises]. Each loop is a
+       rounded box in (latitude, height) bent around the globe; its air goes up
+       at the rising edge, along the top toward the sinking edge, down, and
+       back along the surface. */
+    var mDeg = phone ? 3.2 : 2.6, pad = (r2 - r1) * 0.09, motion = !o.quiz && !T.reduced();
+    var cells = [[0, 30, 'Hadley', 0], [30, 60, 'Ferrel', 60], [60, 90, 'Polar', 60], [-30, 0, 'Hadley', 0], [-60, -30, 'Ferrel', -60], [-90, -60, 'Polar', -60]];
+    var selCell = null;
+    cells.forEach(function(c){
+      var a0 = c[0] + mDeg, a1 = c[1] - mDeg, am = (a0 + a1) / 2, ha = (a1 - a0) / 2, rm = (r1 + r2) / 2, hr = (r2 - r1) / 2 - pad;
+      var sel = (lat >= c[0] && lat < c[1]) || (c[1] === 90 && lat >= 90), dir = c[3] === c[0] ? -1 : 1, e = 0.28;
+      function at(t){ var ct = Math.cos(t), stt = Math.sin(t); return P(am + ha * (ct < 0 ? -1 : 1) * Math.pow(Math.abs(ct), e), rm + hr * (stt < 0 ? -1 : 1) * Math.pow(Math.abs(stt), e)); }
+      var pts = [];
+      for(var i = 0; i <= 96; i++){ pts.push(at(dir * i / 96 * 2 * Math.PI)); }
+      var d = 'M' + pts.map(function(p){ return n2(p[0]) + ' ' + n2(p[1]); }).join(' L') + 'Z';
+      var g = '<g class="ec-cell' + (sel ? ' is-on' : '') + '"><path class="ec-loop" d="' + d + '"/>';
       if(show.rise){
-        g += arrow(mx - aw, riseY, mx + aw, riseY, 'ec-cellarrow', 7);                        // rises: surface to aloft
-        g += arrow(xr, my - dirAloft * ah, xr, my + dirAloft * ah, 'ec-cellarrow', 7);        // aloft: toward the sinking edge
-        g += arrow(mx + aw, sinkY, mx - aw, sinkY, 'ec-cellarrow', 7);                        // sinks: aloft to surface
-        g += arrow(xl, my + dirAloft * ah, xl, my - dirAloft * ah, 'ec-cellarrow', 7);        // surface: back to the rising edge
+        [0, 0.5, 1, 1.5].forEach(function(k){
+          var t = k * Math.PI, p0 = at(t), p1 = at(t + dir * 0.06), dx = p1[0] - p0[0], dy = p1[1] - p0[1], L = Math.hypot(dx, dy) || 1, hh = phone ? 6 : 8;
+          g += arrow(p0[0] - dx / L * hh, p0[1] - dy / L * hh, p0[0] + dx / L * hh * 0.4, p0[1] + dy / L * hh * 0.4, 'ec-cellarrow', hh);
+        });
+        if(motion) for(var j = 0; j < 3; j++) g += '<circle class="ec-parcel" r="' + (phone ? 2.2 : 2.8) + '"><animateMotion dur="9s" repeatCount="indefinite" begin="' + (-j * 3) + 's" path="' + d + '"/></circle>';
       }
-      g += (show.names ? txt(mx, my + 4, c[2], 'ec-t ec-b ec-celln ec-halo', 'middle') : sel ? txt(mx, my + 4, '?', 'ec-t ec-b ec-celln', 'middle') : '') + '</g>';
+      var nb = sel ? Math.max(a0 + 1, Math.min(a1 - 1, lat)) : am, pm = P(sel ? (nb > am ? am - ha * 0.45 : am + ha * 0.45) : am, rm + hr * 0.1), fs = phone ? 10 : 12;
+      if(show.names) g += txt(pm[0], pm[1] + fs * 0.36, c[2], 'ec-t ec-b ec-celln ec-halo', 'middle', ' style="font-size:' + fs + 'px"');
+      else if(sel) g += txt(pm[0], pm[1] + 4, '?', 'ec-t ec-b ec-celln', 'middle');
+      g += '</g>';
+      if(sel) selCell = { a0: a0, a1: a1, r: r1 + pad };
       out.push(g);
     });
-    // rising and sinking marks, joined to the globe
+    // rising and sinking columns: cloud and rain where air rises, sun and dry air where it sinks
     [[90, 'sink'], [60, 'rise'], [30, 'sink'], [0, 'rise'], [-30, 'sink'], [-60, 'rise'], [-90, 'sink']].forEach(function(r){
-      var y = SY(r[0]);
-      if(Math.abs(r[0]) < 90) out.push(line(cx + R * Math.cos(r[0] * RAD), GY(r[0]), sx0, y, 'ec-lead'));
-      out.push(txt(sx0 - 4, y + 4, Math.abs(r[0]) + '°', 'ec-t ec-tk', 'end'));
+      var l = r[0], tk = P(l, R + 1), tk2 = P(l, R - 6);
+      if(Math.abs(l) < 90){ out.push(line(tk2[0], tk2[1], tk[0], tk[1], 'ec-lat')); var tl = P(l, R - 16); out.push(txt(tl[0], tl[1] + 4, Math.abs(l) + '°', 'ec-t ec-tk ec-halo', 'middle')); }
       if(!show.rise) return;
-      // "rises"/"sinks" once the air step is done; "rain"/"dry" (and the phone's cloud and sun) once the climate step is
-      var wet = show.belts, word = r[1] === 'rise' ? 'Air rises' + (wet ? ': rain' : '') : 'Air sinks' + (wet ? ': dry' : '');
-      if(!phone) out.push(txt(sx1 + 10, y + 4, word, 'ec-t ec-s ' + (r[1] === 'rise' ? 'ec-c-wet' : 'ec-c-dry')));
-      else if(wet && Math.abs(r[0]) < 90) out.push(r[1] === 'rise' ? cloud(sx1 - 14, y - 2, 5, 'ec-cloud ec-cloud-sm') : sunIcon(sx1 - 12, y, 3.5));
+      var wet = show.belts, rise = r[1] === 'rise', cs = phone ? 6 : 9;
+      if(wet && rise){
+        var cp = P(l, r2 + cs * 0.4), rb = P(l, r1 + 2);
+        out.push(cloud(cp[0] + cs * 0.2, cp[1] + cs * 0.2, cs, 'ec-cloud'));
+        for(var k = -1; k <= 1; k++){ var q0 = P(l + k * mDeg * 0.45, r2 - 2), q1 = P(l + k * mDeg * 0.45, r1 + (r2 - r1) * 0.55); out.push(line(q0[0], q0[1], q1[0], q1[1], 'ec-rain ec-rain-d')); }
+        void rb;
+      } else if(wet && Math.abs(l) < 90){ var sp = P(l, r2 + cs * 1.1); out.push(sunIcon(sp[0], sp[1], phone ? 3.5 : 5)); }
+      if(!phone){
+        var lp = P(l, r2 + (wet && (rise || Math.abs(l) < 90) ? 34 : 12)), word = rise ? 'Air rises' + (wet ? ': rain' : '') : 'Air sinks' + (wet ? ': dry' : '');
+        if(Math.abs(l) === 90) lp = [cx + 10, cy - (l > 0 ? 1 : -1) * (r2 + 8) + (l > 0 ? 0 : 8)];
+        out.push(txt(lp[0] + (Math.abs(l) < 90 ? 4 : 0), lp[1] + 4, word, 'ec-t ec-s ec-b ec-halo ' + (rise ? 'ec-c-wet' : 'ec-c-dry')));
+      }
     });
-    // the balloon
-    var by = GY(lat), bx = cx - R * Math.cos(lat * RAD) - 2;
-    out.push('<g class="ec-balloon"><line x1="' + n2(bx) + '" y1="' + n2(by) + '" x2="' + n2(bx - 10) + '" y2="' + n2(by - 12) + '"/><circle cx="' + n2(bx - 13) + '" cy="' + n2(by - 18) + '" r="7"/></g>');
-    if(!o.noLabels) out.push(txt(cx, H - 4, 'Surface winds (arrows), wet and dry belts', 'ec-t ec-s ec-muted', 'middle'));
+    // the balloon: on the surface leg of its cell, its string to the ground
+    var ba = selCell ? Math.max(selCell.a0 + 1, Math.min(selCell.a1 - 1, lat)) : lat, bs = phone ? 0.75 : 1;
+    var gnd = P(lat, R), bp = P(ba, (selCell ? selCell.r : r1) + 10 * bs), u = [Math.cos(ba * RAD), -Math.sin(ba * RAD)];
+    out.push('<g class="ec-balloon">' + line(gnd[0], gnd[1], bp[0] - u[0] * 9 * bs, bp[1] - u[1] * 9 * bs, 'ec-bstring') +
+      '<rect class="ec-bbox" x="' + n2(bp[0] - u[0] * 11 * bs - 3) + '" y="' + n2(bp[1] - u[1] * 11 * bs - 3) + '" width="6" height="6" rx="1"/>' +
+      '<ellipse class="ec-benv" cx="' + n2(bp[0]) + '" cy="' + n2(bp[1]) + '" rx="' + n2(8 * bs) + '" ry="' + n2(9 * bs) + '" transform="rotate(' + n2(90 - ba) + ' ' + n2(bp[0]) + ' ' + n2(bp[1]) + ')"/>' +
+      '<circle class="ec-bhi" cx="' + n2(bp[0] - 2.5 * bs) + '" cy="' + n2(bp[1] - 3 * bs) + '" r="' + n2(2.2 * bs) + '"/></g>');
+    out.push('<circle class="ec-bdot" cx="' + n2(gnd[0]) + '" cy="' + n2(gnd[1]) + '" r="3"/>');
+    if(!o.noLabels) out.push(txt(cx, H - 4, phone ? 'Surface winds on the globe; the air’s loops at its edge' : 'Surface winds (arrows) on the globe; the atmosphere, drawn thick at its edge, turns in three loops each side', 'ec-t ec-s ec-muted', 'middle'));
     return out.join('');
   }
-
-  /* Rain shadow: a cross-section; altitude in km on the left. */
   function shadowScene(W, H, S, at, o){
     o = o || {};
     var out = [], L = 40, Rt = W - 10, Tp = 12, B = H - 16, zmax = Math.max(4.5, S.H + 1.8), phone = W < 560;
@@ -444,8 +474,9 @@
         }
       } else if(st.scene === 'winds'){
         var w = g.wind; if(!w) return false;
-        if(ph === 'start' && x > w.cx + w.R + 8 && !(x > w.sx0 && x < w.sx1)) return false;
-        var wl = x > w.sx0 ? Math.round(90 - (y - w.st) / (w.sb - w.st) * 180) : Math.round(Math.asin(Math.max(-1, Math.min(1, (w.cy - y) / w.R))) * 180 / Math.PI);
+        var dd = Math.hypot(x - w.cx, y - w.cy);
+        if(ph === 'start' && dd > w.r2 + 24) return false;
+        var wl = dd > w.R && x > w.cx ? Math.round(Math.atan2(w.cy - y, x - w.cx) * 180 / Math.PI) : Math.round(Math.asin(Math.max(-1, Math.min(1, (w.cy - y) / w.R))) * 180 / Math.PI);
         wl = Math.max(-88, Math.min(88, wl));
         if(wl !== st.wlat){ st.wlat = wl; sW.set(wl); sW.relabel(); act(); draw(); }
       } else if(st.scene === 'shadow'){
@@ -624,13 +655,14 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { sun: 'How high is the noon sun?', seasons: 'What makes the season?', cells: 'Which cell, which wind?', shadow: 'Over the mountain', enso: 'El Niño, La Niña or neutral?' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); }
+      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   /* The drill's figure, from the problem's own numbers; an answer appears
      only after its step is done. */
   function figure(el, p, st){
-    var g = p.figure, phone = (window.innerWidth || 1280) <= 640, W = phone ? 360 : 620, H = phone ? 330 : 330, inner = '', label = '';
+    var g = p.figure, phone = (window.innerWidth || 1280) <= 640, W = phone ? 360 : 620, H = T.figSize(W, 330, { max: g && g.kind === 'enso' ? 0.75 : 1.15 })[1], inner = '', label = '';
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'sun'){
       var es = earthSide(0, 0, W, H, g.decl, g.lat, { hideAngle: !st.angle, small: phone });
