@@ -166,7 +166,6 @@
     for(var i = 0; i < 9; i++){ var t = i / 8, qx = sx + (cx - 70 - sx) * t, qy = sy - Math.sin(t * Math.PI * 0.5) * (sy - cy - 10); out.push('<circle class="ap-plume" cx="' + n2(qx) + '" cy="' + n2(qy) + '" r="' + n2(6 + t * 16) + '" opacity="' + (0.1 + 0.55 * f).toFixed(2) + '"/>'); }
     out.push(txt(px + pw / 2, gy + 16, 'Power plant', 'ap-t ap-s', 'middle'));
     out.push(txt(sx + 10, sy + 4, phone ? 'SO₂, NOx' : 'SO₂ and NOx', 'ap-t ap-s ap-b ap-halo', 'start'));
-    if(!phone) out.push(txt((sx + cx) / 2, (sy + cy) / 2 + 34, '+ water: sulfuric and nitric acid', 'ap-t ap-s ap-halo', 'middle'));
     // cloud and rain
     out.push('<path class="ap-raincloud" d="M' + n2(cx - 70) + ' ' + n2(cy + 16) + 'a22 22 0 0 1 18 -34a32 32 0 0 1 58 -10a26 26 0 0 1 48 16a18 18 0 0 1 0 28z"/>');
     for(var r = 0; r < 12; r++){ var rx = cx - 60 + r * 11, ry = cy + 24 + (r % 3) * 10; out.push('<line class="ap-drop" x1="' + n2(rx) + '" y1="' + n2(ry) + '" x2="' + n2(rx - 4) + '" y2="' + n2(ry + 14) + '" style="stroke:' + phColor(rain) + '"/>'); }
@@ -192,10 +191,13 @@
     var sc = phone ? 1 : 1.45, rowH = Math.min(62, (D - 30 * sc) / 3), xl = Math.max(lx + 6, Math.min(lx + lw - 6, X(lake)));
     // the lake's pH across the scale
     out.push(line(xl, ly + 3, xl, ly + D + (ruler ? 12 : 0), 'ap-phline'));
+    var edgeOk = null, edgeGone = null;
+    A.TOLERANCE.forEach(function(a){ if(lake >= a.ph){ if(!edgeOk || a.ph > edgeOk.ph) edgeOk = a; } else if(!edgeGone || a.ph < edgeGone.ph) edgeGone = a; });
     A.TOLERANCE.forEach(function(a){
+      var named = (edgeOk && a.ph === edgeOk.ph) || (edgeGone && a.ph === edgeGone.ph);   // the animals at the lake's edge: the next to go, the last lost
       var ok = lake >= a.ph, x = X(a.ph), y = ly + 12 * sc + 6 + (ANIMAL_ROW[a.name] || 0) * rowH;
-      out.push('<g class="ap-ani' + (ok ? '' : ' is-gone') + '"><g transform="translate(' + n2(x) + ' ' + n2(y) + ') scale(' + sc + ')">' + (ANIMAL_ART[a.name] || '') + '</g>' +
-        txt(x, y + 12 * sc + 9, esc(a.name), 'ap-t ap-ani-t' + (phone ? ' is-sm' : '') + ' ap-halo', 'middle') +
+      out.push('<g class="ap-ani' + (ok ? '' : ' is-gone') + '"><title>' + esc(a.name) + ': lives down to pH ' + a.ph.toFixed(1) + '</title><g transform="translate(' + n2(x) + ' ' + n2(y) + ') scale(' + sc + ')">' + (ANIMAL_ART[a.name] || '') + '</g>' +
+        (named ? txt(x, y + 12 * sc + 9, esc(a.name), 'ap-t ap-ani-t' + (phone ? ' is-sm' : '') + ' ap-halo', 'middle') : '') +
         (ok ? '' : line(x - 9 * sc, y - 7 * sc, x + 9 * sc, y + 7 * sc, 'ap-ani-x') + line(x - 9 * sc, y + 7 * sc, x + 9 * sc, y - 7 * sc, 'ap-ani-x')) + '</g>');
     });
     out.push('<g class="ap-tag"><rect x="' + n2(Math.min(lx + lw - 106, Math.max(lx, xl - 52))) + '" y="' + n2(ly - 30) + '" width="104" height="24" rx="12"/>' + txt(Math.min(lx + lw - 54, Math.max(lx + 52, xl)), ly - 13, 'Lake pH ' + f1(lake), 'ap-t ap-b ap-tag-t', 'middle') + '</g>');
@@ -204,7 +206,6 @@
       out.push(line(X(6.5), ry, X(4), ry, 'ap-ruler'));
       [6.5, 6, 5.5, 5, 4.5, 4].forEach(function(v){ out.push(line(X(v), ry - 4, X(v), ry + 4, 'ap-ruler') + (false ? '' : txt(X(v), ry + 17, String(v), 'ap-t ap-tk ap-on-rock', 'middle'))); });
       out.push(txt(X(4) + 10, ry + 4, phone ? 'pH' : 'pH', 'ap-t ap-s ap-b ap-on-rock'));
-      if(!phone) out.push(txt(lx + lw / 2, ry + 34, 'Each animal sits at the lowest pH it survives (EPA); left of the lake’s line, it dies out', 'ap-t ap-s ap-on-rock', 'middle'));
     }
     return out.join('');
   }
@@ -281,11 +282,12 @@
       if(st.view === 'smog'){
         var d = day();
         if(!phone){
-          var sw = W * 0.64, sh = H * 0.52;
-          inner = cityScene(0, 0, sw, sh, st, d) + profile(sw + 10, 0, W - sw - 10, sh, st.inversion) + curves(0, sh + 6, W, H - sh - 6, d, st.hour, { voc: st.voc });
+          // pass 2: the temperature profile appears when the inversion is switched on, to show the lid
+          var sw = st.inversion ? W * 0.64 : W, sh = H * 0.52;
+          inner = cityScene(0, 0, sw, sh, st, d, { noRead: true }) + (st.inversion ? profile(sw + 10, 0, W - sw - 10, sh, true) : '') + curves(0, sh + 6, W, H - sh - 6, d, st.hour, { voc: st.voc });
         } else {
           var sh2 = H * 0.46;
-          inner = cityScene(0, 0, W, sh2, st, d) + curves(0, sh2 + 4, W, H - sh2 - 4, d, st.hour, { voc: st.voc });
+          inner = cityScene(0, 0, W, sh2, st, d, { noRead: true }) + curves(0, sh2 + 4, W, H - sh2 - 4, d, st.hour, { voc: st.voc });
         }
         label = A.clock(st.hour) + (st.inversion ? ', inversion on' : '') + (st.cloudy ? ', cloudy' : '') + ': NO ' + f0(d.at('NO', st.hour)) + ', NO₂ ' + f0(d.at('NO2', st.hour)) + ', ozone ' + f0(d.at('O3', st.hour)) + ' ppb. Today NO peaks at ' + A.clock(d.peaks.NO.hour) + ', NO₂ at ' + A.clock(d.peaks.NO2.hour) + ' and ozone at ' + A.clock(d.peaks.O3.hour) + ' (' + f0(d.peaks.O3.value) + ' ppb).';
       } else {
@@ -303,28 +305,28 @@
         var d = day(), h = st.hour, no = d.at('NO', h), no2 = d.at('NO2', h), o3 = d.at('O3', h), pk = d.peaks;
         var phase = h < 6 ? 'Night: no sunlight, so no new ozone; NO from late traffic has used most of it up.' : h < 9.5 ? 'Morning rush: engines pour out NO (and VOCs). Not much ozone yet.' : h < 12 ? 'Late morning: NO is being turned into NO₂, the brown haze, and sunlight starts splitting NO₂ to make ozone.' : h < 16.5 ? 'Afternoon: strong sunlight and the morning’s NO₂ and VOCs make ozone peak.' : h < 19.5 ? 'Evening: the sun is lower and the evening rush adds NO, which destroys ozone.' : 'After sunset: ozone falls; no light, and NO reacts with it.';
         head = A.clock(h) + ': ' + phase.charAt(0).toLowerCase() + phase.slice(1);
-        pills = [{ k: 'NO', html: f0(no), tone: 'readout' }, { k: 'NO₂', html: f0(no2), tone: 'readout' }, { k: 'O₃', html: f0(o3) + ' ppb', tone: 'accent' }];
+        // pass 2: ozone is the readout; NO and NO2 now are in Numbers & setup and on the curves
+        pills = [{ k: 'O₃', html: f0(o3) + ' ppb', tone: 'accent' }];
         right = st.inversion ? [{ html: 'Inversion: trapped', tone: 'warn' }] : [];
         why = '<p><b>Primary, then secondary.</b> Car engines and power plants emit NO (a primary pollutant) and VOCs (from gasoline and solvents). In the air NO becomes NO₂, the reddish-brown gas in the haze. Sunlight splits NO₂: NO₂ + light → NO + O, and O + O₂ → O₃. Ozone is a secondary pollutant: no one emits it.</p>' +
           '<p><b>Why ozone waits until afternoon.</b> NO destroys ozone (NO + O₃ → NO₂ + O₂), so in the morning rush any ozone is used up. As the sunny morning goes on, VOCs make radicals that turn NO into NO₂ without using ozone, so ozone piles up, peaking in the early afternoon (today at ' + A.clock(pk.O3.hour) + '). At night there is no light to make it and fresh NO removes it.</p>' +
           '<p><b>What makes it worse.</b> Sunny, hot, still days; heavy traffic; and a thermal inversion, which traps the pollutants near the ground. Fewer cars, cleaner engines (catalytic converters cut NOx and CO), and vapor recovery for VOCs make it better.</p>' +
           '<p><b>Thermal inversion.</b> Normally air cools with height, so warm polluted air near the ground rises and mixes away. In an inversion a layer of warm air sits on top of cooler, denser air, which cannot rise through it: the warm layer is a lid. Valleys and basins on calm, clear nights are most at risk.</p>' +
           '<p><b>Not the ozone layer.</b> Ground-level ozone is harmful to breathe and to plants. The ozone layer, 15 to 35 km up in the stratosphere, protects us from UV light and is thinned by CFCs, a different problem.</p>';
-        nums = '<h3 class="ls-title-l">Today’s peaks</h3><table class="ls-tbl"><thead><tr><th scope="col">Pollutant</th><th scope="col">Kind</th><th scope="col">Peak</th><th scope="col">At</th></tr></thead><tbody>' +
+        nums = '<h3 class="ls-title-l">At ' + A.clock(h) + '</h3><p>NO ' + f0(no) + ' ppb, NO₂ ' + f0(no2) + ' ppb, O₃ ' + f0(o3) + ' ppb</p><h3 class="ls-title-l">Today’s peaks</h3><table class="ls-tbl"><thead><tr><th scope="col">Pollutant</th><th scope="col">Kind</th><th scope="col">Peak</th><th scope="col">At</th></tr></thead><tbody>' +
           '<tr><th scope="row">NO</th><td>Primary</td><td class="r">' + f0(pk.NO.value) + ' ppb</td><td>' + A.clock(pk.NO.hour) + '</td></tr><tr><th scope="row">NO₂</th><td>Primary and secondary</td><td class="r">' + f0(pk.NO2.value) + ' ppb</td><td>' + A.clock(pk.NO2.hour) + '</td></tr><tr><th scope="row">O₃</th><td>Secondary</td><td class="r">' + f0(pk.O3.value) + ' ppb</td><td>' + A.clock(pk.O3.hour) + '</td></tr><tr><th scope="row">VOCs</th><td>Primary</td><td class="r">' + f0(pk.VOC.value) + ' ppb</td><td>' + A.clock(pk.VOC.hour) + '</td></tr></tbody></table>' +
           '<p class="bt-small">The U.S. ozone standard is 70 ppb (8-hour average, EPA). Concentrations here come from a simple model and are illustrative.</p>' +
           '<h3 class="ls-title-l">Fixes, matched to the pollutant</h3><table class="ls-tbl"><tbody>' + ['NOx', 'SO2', 'PM', 'VOC', 'CO'].map(function(k){ var P = A.POLL[k]; return '<tr><th scope="row">' + esc(P.name) + '</th><td>' + esc(P.fix) + '</td></tr>'; }).join('') + '</tbody></table>';
       } else {
         var rain = A.rainPH(st.load), lake = A.lakePH(rain, st.lime), gone = A.TOLERANCE.filter(function(a){ return lake < a.ph; });
-        head = 'Rain pH ' + f1(rain) + (rain < 5.55 ? ' (acid rain)' : ' (normal rain)') + '; the lake on ' + (st.lime ? 'limestone' : 'granite') + ' is at pH ' + f1(lake) + '. ' + (gone.length ? gone.length + ' of ' + A.TOLERANCE.length + ' animals cannot live here.' : 'Every animal in the chart can live here.');
-        pills = [{ k: 'Rain', html: 'pH ' + f1(rain), tone: rain < 5.55 ? 'warn' : 'good' }, { k: 'Lake', html: 'pH ' + f1(lake), tone: 'readout' }];
-        right = [{ html: rain < 5.55 ? T.F(Math.pow(10, 5.6 - rain), 0) + '× clean rain' : 'normal rain', tone: 'readout' }];
+        // pass 2: the rain's and the lake's pH are on the picture, at the cloud and the lake
+        head = (gone.length ? gone.length + ' of ' + A.TOLERANCE.length + ' animals cannot live in this lake.' : 'Every animal can live in this lake.') + (rain < 5.55 ? ' The rain is ' + T.F(Math.pow(10, 5.6 - rain), 0) + '× as acidic as clean rain.' : ' The rain is normal.');
         why = '<p><b>Clean rain is already slightly acidic</b> (pH about 5.6): CO₂ dissolves to make weak carbonic acid. Acid rain is rain below that.</p>' +
           '<p><b>SO₂ and NOx make it.</b> Burning coal releases sulfur dioxide; hot combustion in engines and power plants makes nitrogen oxides. In the air they form sulfuric and nitric acid, which fall in rain, snow and fog, often far downwind of the smokestacks. VOCs, particulates and CO₂ are not acid-rain gases.</p>' +
           '<p><b>The log scale.</b> Each pH unit is ten times the hydrogen ions: rain at pH 4.6 is 10 times more acidic than rain at 5.6, and pH 3.6 is 100 times more.</p>' +
           '<p><b>Damage.</b> Lakes and streams acidify (fish eggs fail below about pH 5), aluminum leaches from soil and poisons fish, calcium and magnesium wash out of forest soils, and limestone and marble buildings dissolve. Limestone bedrock (calcium carbonate) neutralizes acid, so its lakes resist; granite has no buffer.</p>' +
           '<p><b>Fixes.</b> Scrubbers and low-sulfur coal cut SO₂; catalytic converters and low-NOx burners cut NOx; the Clean Air Act’s cap-and-trade for SO₂ cut power plant emissions by more than 90%. Adding limestone to a lake treats the symptom, not the cause.</p>';
-        nums = '<h3 class="ls-title-l">The lowest pH each animal tolerates</h3><table class="ls-tbl"><tbody>' + A.TOLERANCE.map(function(a){ return '<tr><th scope="row">' + esc(a.name) + '</th><td class="r">' + a.ph.toFixed(1) + '</td><td>' + (lake >= a.ph ? 'lives here' : 'cannot live here') + '</td></tr>'; }).join('') + '</tbody></table><p class="bt-small">EPA, “Effects of Acid Rain: Surface Waters.” The lake’s response is a sketch.</p>';
+        nums = '<h3 class="ls-title-l">The lowest pH each animal tolerates</h3><p class="bt-small">In the lake each animal sits at that pH (EPA); left of the lake’s line, it dies out.</p><table class="ls-tbl"><tbody>' + A.TOLERANCE.map(function(a){ return '<tr><th scope="row">' + esc(a.name) + '</th><td class="r">' + a.ph.toFixed(1) + '</td><td>' + (lake >= a.ph ? 'lives here' : 'cannot live here') + '</td></tr>'; }).join('') + '</tbody></table><p class="bt-small">EPA, “Effects of Acid Rain: Surface Waters.” The lake’s response is a sketch.</p>';
       }
       T.explain($('.ap-say'), '<b>' + esc(head) + '</b>', why);
       $('.ap-nums').innerHTML = nums;
