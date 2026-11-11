@@ -78,6 +78,8 @@
     function st(x){ return M.bufferState({ Ka: n.Ka, nHA: size / 1000, nA: size / 1000, V: V, b: x }); }
     function mm(x){ return Math.round(x * 1e6) / 1e3; }
     function draw(acted){
+      // Start over shows once something has been added (pass 2).
+      if(resetBtn) resetBtn.style.display = hist.length > 1 || b !== 0 ? '' : 'none';
       var s = st(b), k = 1 / step(), counts = { HA: Math.round(s.nHA * k), A: Math.round(s.nA * k), OH: Math.round(s.exOH * k), H3O: Math.round(s.exH * k) };
       var prev = hist.length > 1 ? st(hist[hist.length - 2]) : null, d = prev ? s.pH - prev.pH : 0;
       var added = mm(Math.abs(b)), what = b > 0 ? added + ' mmol OH⁻' : b < 0 ? added + ' mmol H₃O⁺' : '';
@@ -141,7 +143,10 @@
         : s.method === 'weak-base' || s.method === 'weak-acid' ? { html: 'Capacity reached', tone: 'warn' } : { html: 'Past capacity', tone: 'bad' };
       var k = 1 / step(), sp = species(n);
       LS.pills([{ k: 'pH', html: F(s.pH, 2), tone: 'readout' }, tone], 'left', 'explore');
-      LS.pills([{ html: sp[0].label + ' ' + Math.round(s.nHA * k) + ' · ' + sp[1].label + ' ' + Math.round(s.nA * k), tone: 'ghost' }], 'right', 'explore');
+      // The particle counts are in Details (Particles in the beaker); the
+      // picture carries one live number, the pH (pass 2).
+      void sp;
+      LS.pills([], 'right', 'explore');
       LS.caption(w.head, 'explore');
       SP.setup(n.name + ' buffer');
       SP.open();

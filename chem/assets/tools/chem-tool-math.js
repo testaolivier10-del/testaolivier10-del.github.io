@@ -1338,7 +1338,7 @@
         solution: ['Ionic radii: ' + a.s + ' ' + a.r + ' pm, ' + b.s + ' ' + b.r + ' pm (six-coordinate).', good] };
     }
     var ion = r.pick(ions), at = Z[ion.el], cat = ion.q > 0;
-    Q = 'Which is larger, a ' + at.n.toLowerCase() + ' atom (' + at.s + ') or the ' + ion.s + ' ion?';
+    Q = 'Which is larger, ' + (/^[aeiou]/i.test(at.n) ? 'an ' : 'a ') + at.n.toLowerCase() + ' atom (' + at.s + ') or the ' + ion.s + ' ion?';
     big = cat ? at : ion;
     good = cat ? at.s + ' loses ' + (ion.q === 1 ? 'its outer electron' : 'its ' + ion.q + ' outer electrons') + ', so ' + ion.s + ' has no electrons left in shell ' + outerShell(at) + ': its outermost electrons are in a shell closer to the nucleus, attracted by the same ' + at.z + ' protons.'
       : ion.s + ' has ' + (-ion.q === 1 ? 'one more electron' : (-ion.q) + ' more electrons') + ' than ' + at.s + ' but the same ' + at.z + ' protons, so the electron-electron repulsion is greater and each electron is held less strongly: the electron cloud spreads out.';
