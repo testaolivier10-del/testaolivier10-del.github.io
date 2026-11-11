@@ -66,7 +66,7 @@
         '<div class="ml-stage">' +
           '<div class="ml-track-wrap"><svg class="ml-track" role="img"></svg></div>' +
           '<div class="ml-graphs-wrap" tabindex="0" role="slider" aria-label="Time on the graphs: arrow keys move it" aria-valuemin="0"><svg class="ml-graphs" aria-hidden="true"></svg></div>' +
-          '<p class="ml-legend" aria-hidden="true"><span class="ml-lg ml-lg-x">x</span><span class="ml-lg ml-lg-v">v</span><span class="ml-lg ml-lg-a">a</span><span class="ml-lg ml-lg-up">speeding up</span><span class="ml-lg ml-lg-dn">slowing down</span><span class="ml-lg ml-lg-turn">turns</span></p>' +
+          '<p class="ml-legend" aria-hidden="true"><span class="ml-lg ml-lg-up">speeding up</span><span class="ml-lg ml-lg-dn">slowing down</span><span class="ml-lg ml-lg-turn">turns</span></p>' +
         '</div>' +
         '<div class="ml-ctl">' +
           (hasV ? '<div class="ml-modes ls-seg" role="group" aria-label="What is given"><button type="button" class="bt-mode" data-g="x" aria-pressed="true">Position given</button><button type="button" class="bt-mode" data-g="v" aria-pressed="false">Velocity given</button></div>' : '') +
