@@ -217,7 +217,7 @@
       LS.setupRow = sp;
       sp.setup(ctx.title);
       drawAll();
-      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.eb-parts'), 'Start here: pick a claim', { cls: 'eb-tipslot' });
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.eb-claim') || s.root.querySelector('.eb-parts'), 'Start here: pick a claim', { cls: 'eb-tipslot' });
       var w = window.innerWidth, t = null;
       window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(function(){ if((window.innerWidth <= 640) !== (w <= 640)){ w = window.innerWidth; drawStage(); } }, 120); });
     }

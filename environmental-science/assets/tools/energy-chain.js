@@ -265,8 +265,8 @@
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       draw();
       if(s.mode() === 'explore'){
-        $('.ech-fig').insertAdjacentHTML('beforeend', '<span class="ech-hintspot" aria-hidden="true"></span>');
-        s.hint({ target: $('.ech-hintspot'), text: 'Start here: pick a source below, then tap a step' });
+        // The six sources became one select (pass 3): the hint points at it, the true first action.
+        s.hint({ target: srcSel.el.querySelector('select'), text: 'Pick a source, then tap a step' });
       }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.ech-fig')); }
     }

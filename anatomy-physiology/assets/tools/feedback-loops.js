@@ -528,7 +528,7 @@
     S.put('details', box('ls-sec fl-ls-det', [$('.fl-meta'), $('.fl-progress')]));
     if(!studioLoop.hinted){
       studioLoop.hinted = true;
-      S.hint(startTab === 'test' ? { target: '.fl-pool .fl-tile', text: 'Tap a card to fill the highlighted slot' } : { target: '.ls-dock .fl-push', text: 'Press to push the variable off, or drag the marker' });
+      S.hint(startTab === 'test' ? { target: '.fl-pool .fl-tile', text: 'Tap a card to fill the highlighted slot' } : { target: '.ls-dock .fl-push', text: 'Push the variable off, or drag the marker' });
     }
   }
   function partsEl(){

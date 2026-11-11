@@ -75,14 +75,13 @@
     // The main control: on a phone the studio keeps it on screen (it sat under the fold, with the curve scrolled away once reached).
     xSl.el.setAttribute('data-ls-primary', '');
     groups.ppc.appendChild(xSl.el);
-    // Pass 3: two events in view (one shift, one move inside), the rest and Start over behind More.
+    // Pass 3: one shift and one move inside come first; past four, the shared Tool Studio "More" chip folds the rest.
     var FIRST_EV = { tech: 1, recession: 1 };
+    var evOrder = PT.PPC_EVENTS.filter(function(e){ return FIRST_EV[e.id]; }).concat(PT.PPC_EVENTS.filter(function(e){ return !FIRST_EV[e.id]; }));
     var evBox = document.createElement('div');
-    evBox.innerHTML = '<p class="pt-lbl">What happens</p><div class="pt-events">' + PT.PPC_EVENTS.map(function(e){ return '<button type="button" class="bt-btn pt-ev' + (FIRST_EV[e.id] ? '' : ' is-more') + '" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '<button type="button" class="bt-btn pt-ev is-more" data-ev="reset">Start over</button><button type="button" class="bt-btn pt-evmore" aria-expanded="false">More</button></div>';
+    evBox.innerHTML = '<p class="pt-lbl">What happens</p><div class="pt-events">' + evOrder.map(function(e){ return '<button type="button" class="bt-btn pt-ev" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '<button type="button" class="bt-btn pt-ev" data-ev="reset">Start over</button></div>';
     groups.ppc.appendChild(evBox);
     evBox.addEventListener('click', function(e){
-      var mb = e.target.closest('.pt-evmore');
-      if(mb){ var bx = mb.parentNode, open = !bx.classList.contains('is-open'); bx.classList.toggle('is-open', open); mb.setAttribute('aria-expanded', String(open)); mb.textContent = open ? 'Fewer' : 'More'; return; }
       var b = e.target.closest('[data-ev]'); if(!b) return;
       touch();
       var id = b.getAttribute('data-ev');

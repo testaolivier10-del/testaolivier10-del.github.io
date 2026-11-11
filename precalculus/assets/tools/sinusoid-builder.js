@@ -410,7 +410,7 @@
       s.add('why', div('ls-sec pcalc-ls-why', [cue.el, say]), o);
       s.add('details', div('ls-sec pcalc-ls-det', [det]), o);
       lastCap = ''; L = null; draw();
-      if(s.mode() === 'explore') s.hint({ target: range, text: 'Move the slider until your curve meets the points', key: 'apprecalc-sinusoid-builder-fit' });
+      if(s.mode() === 'explore') s.hint({ target: range, text: 'Slide until the curve meets the points', key: 'apprecalc-sinusoid-builder-fit' });
     }
     reset(); buildDetails(); draw();
     return { pause: stopT, studio: studio };

@@ -212,7 +212,7 @@
       var dd = document.createElement('div'); dd.className = 'ls-sec pcalc-ls-det rl-ls-det'; dd.appendChild(det);
       s.add('details', dd, o);
       lastCap = ''; update(true);
-      if(s.mode() === 'explore') s.hint({ target: models, text: 'Try each model and watch the residual plot', key: 'apprecalc-regression-lab-models' });
+      if(s.mode() === 'explore') s.hint({ target: models, text: 'Tap a model and watch the residual plot', key: 'apprecalc-regression-lab-models' });
     }
     var d0 = dat(); st.x = d0.xs[Math.floor(d0.xs.length * 0.6)];
     buildChips(); buildSlider(); update(true);

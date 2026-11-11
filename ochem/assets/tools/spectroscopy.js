@@ -762,7 +762,7 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Pick a compound</span></div>' +
         '<div class="tchips" id="spPicker"></div>' +
-        '<details class="tool-more" id="spMore"><summary>More compounds, or draw your own</summary>' +
+        '<details class="tool-more" id="spMore"><summary>Other compounds, or draw your own</summary>' +
           '<div class="tchips" id="spPicker2"></div>' +
           '<div class="trow" style="margin-top:12px;">' +
             '<button type="button" class="tchip tchip--ghost" id="spBuildToggle">Predict your own &rarr;</button>' +

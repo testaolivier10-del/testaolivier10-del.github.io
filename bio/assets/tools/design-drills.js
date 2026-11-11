@@ -755,6 +755,6 @@
     if(window.MutationObserver) new MutationObserver(arrange).observe(host, { childList: true });
     arrange();
     app.hidden = true;
-    s.hint({ target: '.ls-dr-steps .bt-radio', text: 'Read the setup, then pick an answer' });
+    s.hint({ target: '.ls-dr-steps .bt-radio', text: 'Read the setup, then pick an answer', above: true });
   }
 })();

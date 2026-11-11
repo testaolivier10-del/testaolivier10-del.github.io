@@ -73,7 +73,7 @@
     '<div class="tpanel" id="resPickPanel">' +
       '<div class="tpanel__head"><span>Pick a molecule or ion</span></div>' +
       '<div class="tchips" id="resPicker"></div>' +
-      '<details class="tool-more" id="resMore"><summary>More species, or build your own</summary>' +
+      '<details class="tool-more" id="resMore"><summary>Other species, or build your own</summary>' +
         '<div class="tchips" id="resPicker2"></div>' +
         '<div class="trow" style="margin-top:12px;">' +
           '<button type="button" class="tchip tchip--ghost" id="resBuildToggle">Build your own &rarr;</button>' +

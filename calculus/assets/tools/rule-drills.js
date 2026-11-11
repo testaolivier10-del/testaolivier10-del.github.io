@@ -379,16 +379,15 @@
       el.field = el.input.querySelector('input'); el.read = el.input.querySelector('.rd-read');
       el.chips = document.createElement('div');
       el.chips.className = 'rd-examples';
-      el.chips.innerHTML = '<p class="rd-lbl" id="rd-ex-l">Or try</p><div class="ls-scroll rd-chips" role="group" aria-labelledby="rd-ex-l">' + RD.EXAMPLES.map(function(s, i){ var t = RD.analyze(s).tex; return '<button type="button" class="ls-chip rd-chip' + (i >= 3 ? ' rd-xtra' : '') + '" data-f="' + esc(s) + '" aria-label="' + esc(X() ? X().text(t) : s) + '"><span aria-hidden="true">' + tm(t) + '</span></button>'; }).join('') + '</div>';
+      el.chips.innerHTML = '<p class="rd-lbl" id="rd-ex-l">Or try</p><div class="ls-scroll rd-chips" role="group" aria-labelledby="rd-ex-l">' + RD.EXAMPLES.map(function(s, i){ var t = RD.analyze(s).tex; return '<button type="button" class="ls-chip rd-chip" data-f="' + esc(s) + '" aria-label="' + esc(X() ? X().text(t) : s) + '"><span aria-hidden="true">' + tm(t) + '</span></button>'; }).join('') + '</div>';
       el.cue = T.cue('Type a function, or tap an example. The tree shows which rule comes first and what is inside what.');
       el.why = document.createElement('div'); el.why.className = 'rd-why';
       el.det = document.createElement('div'); el.det.className = 'rd-det';
       [el.cue.el, el.stage, el.input, el.chips, el.why, el.det].forEach(function(x){ pane.appendChild(x); });
       var t = null;
       el.field.addEventListener('input', function(){ clearTimeout(t); t = setTimeout(function(){ show(el.field.value, true); }, 160); el.cue.done(); });
-      // Pass 3: three examples show; the rest behind More.
-      if(RD.EXAMPLES.length > 3){ el.chips.querySelector('.rd-chips').insertAdjacentHTML('beforeend', '<button type="button" class="ls-chip rd-more" aria-expanded="false">More</button>'); el.chips.classList.add('rd-few'); }
-      el.chips.addEventListener('click', function(e){ var mb = e.target.closest('.rd-more'); if(mb){ el.chips.classList.remove('rd-few'); mb.remove(); var nx = el.chips.querySelector('.rd-xtra'); if(nx) nx.focus(); return; }
+      // A long list folds behind the shared Tool Studio "More" chip (tool-studio.js, chip overflow).
+      el.chips.addEventListener('click', function(e){
         var b = e.target.closest('.rd-chip'); if(!b) return; el.field.value = b.getAttribute('data-f'); show(el.field.value); el.cue.done(); });
       function fitStage(){
         var w = el.stage.getBoundingClientRect().width;

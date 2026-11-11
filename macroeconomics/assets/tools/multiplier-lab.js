@@ -367,8 +367,9 @@
       LS = s;
       pane = T.studioPane(p, s, { stage: [stageEl], dock: [ctl], setup: live.gap ? 'Gap' : null, moreLabel: 'The gap', why: [sayEl], details: [det] });
       lastCap = ''; update(true);
-      var first = mpcA.el.querySelector('button[aria-pressed="true"]');
-      if(s.mode() === 'explore' && first && st.view === 'ripple') T.hintSlot(s, first, 'Tap an MPC to see every round change', { before: polSel.el });
+      // The ring goes on an MPC that is not on yet, so the tap it asks for changes the rounds.
+      var first = mpcA.el.querySelector('button[aria-pressed="false"]');
+      if(s.mode() === 'explore' && first && st.view === 'ripple') T.hintSlot(s, first, 'Tap another MPC: every round changes', { before: polSel.el });
     }
     update(true);
     return { studio: studio };

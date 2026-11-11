@@ -372,7 +372,7 @@
       s.add('details', dd, o);
       lastCap = '';
       update(true);
-      if(s.mode() === 'explore') s.hint({ target: H.sh, text: 'Drag this point: up and down for a, sideways for b', key: 'apprecalc-function-lab-drag' });
+      if(s.mode() === 'explore') s.hint({ target: H.sh, text: 'Drag: up and down for a, sideways for b', key: 'apprecalc-function-lab-drag' });
     }
     buildChips(); buildSlider(); update(true);
     return { pause: stopPlay, studio: studio };

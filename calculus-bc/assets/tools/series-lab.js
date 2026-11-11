@@ -243,16 +243,12 @@
     var mN = 30, mSl = T.slider({ label: 'Partial sums drawn (power series)', min: 5, max: 60, step: 1, value: mN, decimals: 0, onInput: function(v){ mN = v; draw(); } });
     $('.sl-more-b').appendChild(mSl.el);
     host.querySelectorAll('.sl-view').forEach(function(b){ b.addEventListener('click', function(){ act(); setView(b.getAttribute('data-v')); }); });
-    var moreOpen = false, capHead = '';
+    var capHead = '';
     function chips(){
       var list = view === 'num' ? S.GALLERY : S.POWER, cur = view === 'num' ? g.id : Pw.id, box = $('.sl-chips');
-      // Pass 3 (judge c): three series show (always including the one on), the rest behind More.
-      var few = list.length > 4 && !moreOpen, shown = few ? list.slice(0, 3) : list;
-      if(few && shown.every(function(it){ return it.id !== cur; })) shown = shown.slice(0, 2).concat(list.filter(function(it){ return it.id === cur; }));
-      box.innerHTML = shown.map(function(it){ return '<button type="button" class="tchip sl-chip" data-id="' + it.id + '" aria-pressed="' + (it.id === cur) + '" aria-label="' + esc(plainTex(it.tex)) + '">' + esc(it.chip) + '</button>'; }).join('') +
-        (few ? '<button type="button" class="tchip sl-more" aria-expanded="false">More</button>' : '');
+      // A long list folds behind the shared Tool Studio "More" chip (tool-studio.js, chip overflow).
+      box.innerHTML = list.map(function(it){ return '<button type="button" class="tchip sl-chip" data-id="' + it.id + '" aria-pressed="' + (it.id === cur) + '" aria-label="' + esc(plainTex(it.tex)) + '">' + esc(it.chip) + '</button>'; }).join('');
       box.querySelectorAll('.sl-chip').forEach(function(b){ b.addEventListener('click', function(){ act(); pick(b.getAttribute('data-id')); }); });
-      var mb = box.querySelector('.sl-more'); if(mb) mb.addEventListener('click', function(){ moreOpen = true; chips(); var c = box.querySelectorAll('.sl-chip')[3]; if(c) c.focus(); });
     }
     function setView(v){
       view = v;

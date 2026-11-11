@@ -41,7 +41,7 @@
      below the fold. Narrow screens still stack them (viewer-3d.html). */
   /* Landing (owner brief 2026-10-09): the Explore | Predict shape switch and
      one plain first step above the tool; the model gets the wide column. The
-     molecule list shows its first group with the rest behind More molecules,
+     molecule list shows its first group with the rest behind Other molecules,
      and the display settings (style, view, spin, labels, zoom) sit behind
      one View options disclosure under the model. */
   root.innerHTML =
@@ -126,7 +126,7 @@
   }
   var GROUPS3 = LIB.groups();
   elPicker.innerHTML = groupHtml(GROUPS3[0]) +
-    '<details class="tool-more" id="v3More"><summary>More molecules <span class="tool-more__now">· ' +
+    '<details class="tool-more" id="v3More"><summary>Other molecules <span class="tool-more__now">· ' +
       esc(GROUPS3.slice(1).map(function(g){ return g.label.toLowerCase(); }).join(', ')) + '</span></summary>' +
       GROUPS3.slice(1).map(groupHtml).join('') + '</details>';
 

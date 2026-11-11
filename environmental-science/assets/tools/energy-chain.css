@@ -78,7 +78,6 @@
 @media (max-width:640px){.ls-root .ech-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-12px;padding-right:12px;}.ls-root .ech-chips::-webkit-scrollbar{display:none;}.ls-root .ech-chips .tchip{flex:none;white-space:nowrap;}}
 .ech-chips[hidden]{display:none;}
 /* the first-run hint points here: a small spot near the top of the picture */
-.ech-hintspot{position:absolute;left:50%;top:6px;width:24px;height:24px;margin-left:-12px;pointer-events:none;}
 
 /* the plant scene and the wind a rotor does not catch (tool review 2026-11) */
 .ech-sky{fill:#EEF6FB;} :root[data-theme="dark"] .ech-sky{fill:#17262E;}
