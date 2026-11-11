@@ -223,7 +223,7 @@
       }
       if(LS){
         LS.caption(T.sayHead($('.el-say')), 'explore');
-        LS.pills([{ k: 'Euler', html: n3(yE), tone: 'readout' }, { k: 'True', html: isFinite(yT) ? n3(yT) : '—', tone: 'ghost' }], 'left', 'explore');
+        LS.pills([], 'left', 'explore');   // pass 2: the Euler and true values are labeled on the graph; only the error shows here
         LS.pills(isFinite(yT) && Math.abs(err) >= 5e-4 ? [{ k: under ? 'Under' : 'Over', html: n3(Math.abs(err)), tone: under ? 'accent' : 'warn' }] : [], 'right', 'explore');
       }
     }
