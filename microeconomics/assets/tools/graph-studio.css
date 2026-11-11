@@ -71,3 +71,5 @@
   body[data-app="tool-graph-studio"] .ls-stage:has(.mic-graph.is-two){min-height:min(78svh,640px);}
 }
 @media (prefers-reduced-motion: reduce){ .gs-rubric li{transition:none;} }
+/* On a phone the scenario row is the sticky band at the foot of the sheet: a tip slot there grew the band over the caption (pass 2). */
+.ls-pbar .gs-tipslot{display:none !important;}

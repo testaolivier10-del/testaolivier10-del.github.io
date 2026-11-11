@@ -314,7 +314,7 @@
       LS.setupRow = sp;
       sp.setup('Practice this graph');
       update();
-      if(s.mode() === 'explore') T.hintSlot(s, R.scen, 'Start here: pick what happens, then act on the graph', { before: R.scen.parentNode });
+      if(s.mode() === 'explore') T.hintSlot(s, R.scen, 'Start here: pick what happens, then act on the graph', { before: R.scen.parentNode, cls: 'mic-tipslot gs-tipslot' });
     }
     var g0 = graphs.filter(function(x){ return x.id === 'sd'; })[0] || graphs[0];
     g = g0; sc = scenarios().filter(function(x){ return x.shifts; })[0] || null;
