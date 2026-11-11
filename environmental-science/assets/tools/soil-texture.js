@@ -381,7 +381,8 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { classify: 'Read the texture triangle', missing: 'Find the missing percent', porosity: 'Water in soil', horizons: 'Soil horizons', erosion: 'Erosion and conservation', percolation: 'A percolation test' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; figure(el, p, {}); },
-      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); }
+      onStep: function(s, right, api){ keepFocus(api); api.done = api.done || {}; api.done[s.key] = true; figure(api.fig, api.problem, api.done); },
+      refit: function(api){ figure(api.fig, api.problem, api.done || {}); }
     });
   }
   function figure(el, p, done){
@@ -394,15 +395,16 @@
       inner = triangleSvg({ W: W, H: H, pt: pt, cls: done && done['class'] ? g.cls : null, readouts: !!pt }).svg;
       label = 'Soil texture triangle' + (pt ? ' with a point at ' + pt[0] + '% sand, ' + pt[1] + '% silt, ' + pt[2] + '% clay' : '');
     } else if(f.kind === 'profile'){
-      H = phone ? 420 : 400;
+      H = phone ? 420 : T.figSize(W, 400, { max: 0.8 })[1];
       inner = profileSvg({ W: W, H: H, ask: (f.ask || []).filter(function(id){ var k = f.ask.indexOf(id); return !(done && done['h' + (k + 1)]); }), interactive: false });
       label = 'A soil profile from the O horizon down to bedrock';
     } else if(f.kind === 'ring'){
-      H = phone ? 240 : 220;
+      if(!phone) W = 440;   // drawn narrower, so the ring fills the stage
+      H = phone ? 240 : 230;
       inner = ringSvg(W, H, f, done && done.ans);
       label = 'A percolation test: water in a ring dropping ' + f.drop + ' cm in ' + f.mins + ' minutes';
     } else {
-      H = phone ? 400 : 270;
+      H = phone ? 400 : T.figSize(W, 270, { max: 0.72 })[1];
       inner = columnsSvg(W, H);
       label = 'Water poured through columns of sand, loam and clay';
     }
@@ -412,7 +414,7 @@
      beaker under each (sand most, clay least), the water held in between. */
   function columnsSvg(W, H){
     var out = ['<text class="st-title" x="12" y="22">Same water poured on each</text>'], kinds = [['Sand', [92, 4, 4]], ['Loam', [40, 40, 20]], ['Clay', [15, 25, 60]]];
-    var cw = Math.min(110, (W - 60) / 3 - 20), gap = (W - 3 * cw) / 4;
+    var cw = Math.min(160, (W - 60) / 3 - 20), gap = (W - 3 * cw) / 4;
     kinds.forEach(function(k, i){
       var x = gap + i * (cw + gap), y = 46, ch = H * 0.42, P = S.props(k[1][0], k[1][1], k[1][2]);
       out.push('<rect class="st-col-w" x="' + x + '" y="' + y + '" width="' + cw + '" height="' + ch + '" rx="6"/>');
