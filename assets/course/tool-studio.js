@@ -73,9 +73,10 @@
                                     opts.enlarge false hides the button. Hooks for tool
                                     CSS: .ls-phone (root), --ls-scale / --ls-zoom and
                                     .is-big (stage); docs/tools-calm.md "Phones"
-     s.hint({ target, text, key, inside })  pulse + tooltip on target, once per tool
-                                     (inside: true puts it inside a big target)
-                                    per device; gone on first interaction
+     s.hint({ target, text, key })  first-run hint, once per tool per device: one
+                                    short line in the layout next to the target (never
+                                    over anything) and a ring inside the target's box;
+                                    gone after the first action
      s.suspend(on)                  hide the studio and give the page its
                                     chrome back (an error)
      s.lock(html | el | false)      a Premium tool for someone without the pass: the bar
@@ -120,8 +121,9 @@
      data-ls-answer: the fit and the reveal treat it like the current box.
    - In Explore the stage gives up height (down to 45% of the screen) so the dock fits
      down to its sticky action row on load; nothing is left under the row.
-   - A clamped caption gets a "More" button. Coach bubbles sit below their
-     target (above it only when there is no room), never over it.
+   - A clamped caption gets a "More" button. The first-run hint is a line in
+     the layout (under its target's row, under the caption for a stage target,
+     at the top of a sticky band), so it never covers anything.
    - On-stage text under 12 px is raised to 12 px (svg text by at most 2.2x;
      data-ls-text="keep" on an svg or text opts out). Sideways scrollers in
      the stage and dock get an edge fade while more is hidden that way. The
@@ -804,6 +806,108 @@
     // A quiz stage follows its content (a new problem with or without a figure).
     if(window.MutationObserver) new MutationObserver(function(){ if(isQuiz() || root.classList.contains('ls-quiz')) queueFit(120); }).observe(stageBody, { childList: true, subtree: true });
 
+    /* Chip overflow (tool review pass 3, shared fix 3). A row of more than five chips (examples, scenes,
+       presets) shows the first four, the one that is on, and a "More" chip that opens the rest in place;
+       "Fewer" folds them again. Nothing is removed (the chips are only hidden, with their listeners and
+       state), the selected chip always shows, and a chip that becomes selected while folded shows too.
+       Never in a quiz mode, never on an answer set: data-ls-answer, data-ls-allchips (opt out) and the
+       groups in NOCHIPS keep every chip visible. Chips are short in-flow buttons; figure hotspots
+       (positioned buttons) and long cards are not chips. */
+    var NOCHIPS = '[data-ls-allchips], [data-ls-answer], .ls-sheet, .ls-bar, .ls-modes, .ls-zbar, .ls-tabs, [role=tablist], [role=radiogroup], [role=listbox], [role=menu], ' +
+      // Answer sets and task structure (docs/tool-review/pass2/shared.md, "Opted out"):
+      '.pw-bank, .us-tray, .eb-chips, .eb-parts, .as-parts, .lp-fig, .pb-palette, .run-pick, .picker-grid, .sl-marks, .pt-qs';
+    var CHIP_ON = '.on, .is-on, .active, .is-active, .sel, .is-sel, .selected, [aria-pressed="true"], [aria-checked="true"], [aria-selected="true"], [aria-current="true"]';
+    var chipState = {}, chipT = 0, chipBusy = false;
+    function quizOnly(el){
+      var m = el.closest('[data-ls-only]');
+      if(QUIZ === true) return true;
+      if(m && m.getAttribute('data-ls-only').split(/\s+/).some(function(x){ return QUIZ.indexOf(x) >= 0; })) return true;
+      return !!el.closest('.ls-stepper, form');
+    }
+    function chipish(b){
+      if(b.classList.contains('ls-more-chip')) return false;
+      var r = b.getAttribute('role');
+      if(r === 'tab' || r === 'radio' || r === 'option' || r === 'menuitem' || b.closest('svg')) return false;
+      var cs = getComputedStyle(b);
+      if(cs.position === 'absolute' || cs.position === 'fixed') return false;
+      var t = (b.textContent || '').replace(/\s+/g, ' ').trim();
+      return t.length > 0 && t.length <= 32 && !b.querySelector('p, div, h2, h3, h4, ul');
+    }
+    function chipKids(g){
+      var out = [];
+      Array.prototype.forEach.call(g.children, function(k){
+        var b = k.tagName === 'BUTTON' ? k : (k.children.length === 1 && /^(LI|SPAN)$/.test(k.tagName) && k.firstElementChild.tagName === 'BUTTON' ? k.firstElementChild : null);
+        if(b && !b.classList.contains('ls-more-chip')) out.push({ b: b, box: k });
+      });
+      return out;
+    }
+    function chipKey(g){ return (g.id || '') + '|' + String(g.className).replace(/\s*ls-chips-(folded|open)/g, '') + '|' + (g.getAttribute('aria-label') || ''); }
+    function chips(){
+      chipT = 0;
+      if(chipBusy) return;
+      chipBusy = true;
+      var seen = [];
+      Array.prototype.forEach.call(root.querySelectorAll('.ls-stage-body button, .ls-dock button, .ls-pbar button'), function(b){
+        var g = b.parentElement; if(g && g.tagName !== 'DIV' && g.children.length === 1 && /^(LI|SPAN)$/.test(g.tagName)) g = g.parentElement;
+        if(g && seen.indexOf(g) < 0) seen.push(g);
+      });
+      seen.forEach(function(g){
+        var kids = chipKids(g).filter(function(k){ return !k.box.hidden && !k.b.hidden; });
+        var more = g.querySelector(':scope > .ls-more-chip');
+        var mine = kids.filter(function(k){ return k.box.classList.contains('ls-chip-off') || k.box.getClientRects().length; });
+        var ok = mine.length > 5 && !g.closest(NOCHIPS) && !quizOnly(g) && mine.every(function(k){ return chipish(k.b); });
+        if(!ok){
+          if(more){ more.remove(); g.classList.remove('ls-chips-folded', 'ls-chips-open'); mine.forEach(function(k){ k.box.classList.remove('ls-chip-off'); }); }
+          return;
+        }
+        var key = chipKey(g), open = !!chipState[key];
+        var onI = -1;
+        mine.forEach(function(k, i){ if(onI < 0 && (k.b.matches(CHIP_ON) || k.box.matches(CHIP_ON))) onI = i; });
+        var show = 4, hidden = 0;
+        mine.forEach(function(k, i){ var off = !open && i >= show && i !== onI; if(off) hidden++; });
+        if(!open && hidden < 2){ show = mine.length; hidden = 0; }
+        mine.forEach(function(k, i){
+          var off = !open && i >= show && i !== onI;
+          if(k.box.classList.contains('ls-chip-off') !== off) k.box.classList.toggle('ls-chip-off', off);
+        });
+        if(hidden === 0 && !open){ if(more){ more.remove(); g.classList.remove('ls-chips-folded'); } return; }
+        if(!g.id) g.id = nid('chips');
+        if(!more){
+          more = document.createElement('button');
+          more.type = 'button';
+          more.className = 'ls-more-chip ' + (mine[0].b.classList.contains('tchip') ? 'tchip' : String(mine[0].b.className).split(/\s+/).filter(function(c){ return c && !/^(on|is-on|active|is-active|sel|is-sel|selected)$/.test(c); }).join(' '));
+          more.setAttribute('aria-controls', g.id);
+          more.addEventListener('click', function(e){
+            e.stopPropagation();
+            var gk = chipKey(g), was = !!chipState[gk];
+            chipState[gk] = !was;
+            var first = !was ? chipKids(g).filter(function(k){ return k.box.classList.contains('ls-chip-off'); })[0] : null;
+            chips();
+            if(first) first.b.focus(); else more.focus();
+          });
+        }
+        if(more.parentNode !== g || more !== g.lastElementChild) g.appendChild(more);
+        var n = open ? 0 : hidden, lab = open ? 'Fewer' : 'More (' + n + ')';
+        if(more.textContent !== lab) more.textContent = lab;
+        var aria = open ? 'Show fewer options' : 'Show ' + n + ' more option' + (n === 1 ? '' : 's');
+        if(more.getAttribute('aria-label') !== aria) more.setAttribute('aria-label', aria);
+        if(more.getAttribute('aria-expanded') !== String(open)) more.setAttribute('aria-expanded', String(open));
+        g.classList.toggle('ls-chips-folded', !open); g.classList.toggle('ls-chips-open', open);
+      });
+      chipBusy = false;
+    }
+    function queueChips(d){ if(!chipT) chipT = setTimeout(function(){ requestAnimationFrame(chips); }, d == null ? 30 : d); }
+    s.chips = function(){ queueChips(0); return s; };
+    if(window.MutationObserver) new MutationObserver(function(recs){
+      if(chipBusy) return;
+      // Our own More chip going in or out is not a change to react to.
+      if(recs.every(function(r){ return Array.prototype.every.call(r.addedNodes, function(n){ return n.classList && n.classList.contains('ls-more-chip'); }) && Array.prototype.every.call(r.removedNodes, function(n){ return n.classList && n.classList.contains('ls-more-chip'); }); })) return;
+      queueChips();
+    }).observe(q('.ls-main'), { childList: true, subtree: true });
+    // A selection made by a tap or a key (aria-pressed, .on) can change which chip must show.
+    ['click', 'change', 'keyup'].forEach(function(t){ root.addEventListener(t, function(){ queueChips(); }, true); });
+    [0, 400, 1200].forEach(function(t){ setTimeout(function(){ queueChips(0); }, t); });
+
     /* data-ls-primary: the tool's main control rides in a sticky band above
        the action row on a phone (portrait), and goes home everywhere else. */
     var pbar = document.createElement('div');
@@ -1128,32 +1232,98 @@
     return s;
   }
 
-  /* ---------------- first-run hint */
+  /* ---------------- first-run hint
+     One quiet line IN THE LAYOUT, never a bubble over the page (tool review pass 3, shared fix 1): under its
+     target's row in the dock; for a target on the stage, under the caption; for a target in a sticky band at the
+     foot of a phone (the primary slider, the action row), at the top of that band. It covers nothing because it
+     takes its own room, and it goes on the first action (after the finger lifts, so a drag never jumps). The
+     ring is drawn inside the target's own box (shared fix 2): it never reaches a neighbor's label or value, and
+     reduced motion shows it still. "Start here:" is dropped: the tap icon already says it. */
+  var COACH_ROW = /^(LABEL|BUTTON|A|P|SPAN|SUMMARY|LEGEND|OUTPUT|H[1-6]|LI|TD|TH)$/;
   function hint(s, o, slug){
     if(!o || !o.target) return null;
     var key = 'levl_hint_' + (o.key || slug || location.pathname);
     if(store(key)) return null;
-    function find(){ return typeof o.target === 'string' ? s.root.querySelector(o.target) || document.querySelector(o.target) : o.target; }
+    // A target the tool redraws (an svg handle) is found again by its tag and classes.
+    var again = null;
+    function find(){
+      if(typeof o.target === 'string') return s.root.querySelector(o.target) || document.querySelector(o.target);
+      if(again && !document.contains(o.target)){ try{ return s.root.querySelector(again) || o.target; }catch(e){} }
+      return o.target;
+    }
     var target = find();
     if(!target) return null;
+    if(typeof o.target !== 'string'){
+      var cls = String(target.className && target.className.baseVal != null ? target.className.baseVal : target.className || '').trim().split(/\s+/).filter(function(c){ return c && /^[\w-]+$/.test(c); });
+      if(cls.length) again = target.tagName.toLowerCase() + '.' + cls[0];
+    }
     var ring = document.createElement('div'), tip = document.createElement('div');
     ring.className = 'ls-halo' + (reduced() ? ' is-static' : '');
     ring.setAttribute('aria-hidden', 'true');
     tip.className = 'ls-coach';
     tip.setAttribute('role', 'note');
-    tip.innerHTML = icon('tap') + '<span>' + esc(o.text) + '</span>';
-    document.body.appendChild(ring); document.body.appendChild(tip);
-    // Screen readers: the tip describes the target, and only while it shows.
+    var text = String(o.text || '').replace(/^\s*start here\s*:\s*/i, '');
+    text = text.charAt(0).toUpperCase() + text.slice(1);
+    tip.innerHTML = icon('tap') + '<span>' + esc(text) + '</span>';
     tip.id = nid('hint');
+    document.body.appendChild(ring);
+    // Screen readers: the line describes the target, and only while it shows.
     function describe(el, on){
       var ids = (el.getAttribute('aria-describedby') || '').split(/\s+/).filter(function(x){ return x && x !== tip.id; });
       if(on) ids.push(tip.id);
       if(ids.length) el.setAttribute('aria-describedby', ids.join(' ')); else el.removeAttribute('aria-describedby');
     }
     describe(target, true);
-    var gone = false, raf = 0, away = false;
-    function box(sel){ var e = s.root.querySelector(sel); if(!e || !e.offsetParent) return null; var b = e.getBoundingClientRect(); return b.width && b.height ? b : null; }
-    function over(a, b){ return b ? Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) * Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top)) : 0; }
+    var gone = false, raf = 0, host = null;
+    function stickyBand(t){
+      var b = t.closest('.ls-pbar');
+      if(b) return b;
+      var a = t.closest('.ls-act, .bt-actions');
+      if(!a){ try{ a = t.closest(':is(div,p):has(> .btn-press,> .ls-pri):not(:has(input,select,textarea,fieldset,.ls-stepper,.ls-act))'); }catch(e){ a = null; } }
+      return a && a.closest('.ls-dock') && getComputedStyle(a).position === 'sticky' ? a : null;
+    }
+    // Where the line goes: { parent, before }.
+    function spot(){
+      var band = stickyBand(target);
+      if(band) return { parent: band, before: band.firstChild, band: true };
+      var cap = s.root.querySelector('.ls-cap');
+      if(target.closest('.ls-stage') && !target.closest('.ls-dock')){
+        // Under the caption; on a phone whose sticky band covers the caption, at the top of that band.
+        var bands = Array.prototype.filter.call(s.root.querySelectorAll('.ls-pbar, .ls-dock .ls-act, .ls-dock .bt-actions'), function(a){
+          return a.getClientRects().length && !a.hidden && getComputedStyle(a).position === 'sticky';
+        });
+        var cr = cap && cap.getClientRects().length ? cap.getBoundingClientRect() : null;
+        var hid = !cr || bands.some(function(a){ var b = a.getBoundingClientRect(); return b.top < cr.bottom + 30 && b.bottom > cr.top; });
+        if(!hid) return { parent: cap.parentNode, before: cap.nextSibling };
+        if(bands.length) return { parent: bands[0], before: bands[0].firstChild, band: true };
+        if(cr) return { parent: cap.parentNode, before: cap.nextSibling };
+      }
+      var node = target.ownerSVGElement ? target.ownerSVGElement : target;
+      while(node.ownerSVGElement) node = node.ownerSVGElement;
+      var stop = target.closest('.ls-dock-body, .ls-stage-body, .ls-dock, .ls-stage') || document.body;
+      while(node.parentElement && node.parentElement !== stop){
+        var p = node.parentElement, cs = getComputedStyle(p), d = cs.display;
+        var block = d === 'block' || d === 'flow-root' || d === 'list-item' || (/flex/.test(d) && /column/.test(cs.flexDirection)) ||
+          (/grid/.test(d) && cs.gridTemplateColumns.split(' ').length < 2);
+        if(block && !COACH_ROW.test(p.tagName) && !p.closest('svg')) break;
+        node = p;
+      }
+      return { parent: node.parentElement || stop, before: node.nextSibling };
+    }
+    function put(){
+      var at = spot();
+      if(host && host !== at.parent) host.classList.remove('ls-coach-host');
+      host = at.band ? at.parent : null;
+      if(host) host.classList.add('ls-coach-host');
+      tip.classList.toggle('is-band', !!at.band);
+      if(tip.parentNode !== at.parent || (at.before !== tip && tip.nextSibling !== at.before)) at.parent.insertBefore(tip, at.before === tip ? tip.nextSibling : at.before);
+    }
+    function radius(r, el){
+      if(o.round != null) return o.round;
+      if(target.ownerSVGElement) return /^(circle|ellipse)$/.test(target.tagName) ? Math.min(r.width, r.height) / 2 : Math.min(10, Math.min(r.width, r.height) / 2);
+      var br = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
+      return Math.min(br || 8, Math.min(r.width, r.height) / 2);
+    }
     function place(){
       raf = 0;
       if(gone) return;
@@ -1162,115 +1332,74 @@
         var t = find();
         if(t && t !== target){ describe(target, false); target = t; describe(target, true); }
       }
-      var r = target.getBoundingClientRect();
-      if(!r.width && !r.height){ ring.style.display = tip.style.display = 'none'; return; }
-      /* A target still below the fold (below the sticky action row on a phone):
-         wait for it rather than clamp the tip over the controls above it. */
-      away = r.top >= window.innerHeight - 8;
-      if(away){ ring.style.display = tip.style.display = 'none'; return; }
-      ring.style.display = tip.style.display = '';
-      var sx = window.scrollX, sy = window.scrollY, pad = 4, vw0 = document.documentElement.clientWidth;
-      // The ring never reaches past the viewport's sides: a full-width target
-      // (a row, a figure) would otherwise push it out by the padding and make
-      // the page scroll sideways on a phone. Its outer glow is a shadow, which
-      // never adds scroll.
-      var rl = Math.max(0, r.left - pad), rr2 = Math.min(vw0, r.right + pad);
-      /* Nor past the bottom of the stage that scrolls it: a tall answer box half under the fold of a
-         phone's stage drew its ring over the dock below (Make it specific, AP® Psychology launch). */
-      var clip = target.closest('.ls-stage'), cb = clip && !target.closest('.ls-dock') ? clip.getBoundingClientRect() : null;
-      var rt = r.top - pad, rb = r.bottom + pad;
-      if(cb){ rt = Math.max(rt, cb.top); rb = Math.min(rb, cb.bottom); }
-      if(rb - rt < 12){ ring.style.display = tip.style.display = 'none'; return; }
-      ring.style.left = (rl + sx) + 'px'; ring.style.top = (rt + sy) + 'px';
-      ring.style.width = Math.max(0, rr2 - rl) + 'px'; ring.style.height = (rb - rt) + 'px';
-      var round = Math.min(r.width, r.height) / 2 + pad;
-      ring.style.borderRadius = (o.round != null ? o.round : round) + 'px';
-      var tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth, vh = window.innerHeight;
-      // Below the target (above it only when there is no room below), never
-      // over it: the bubble points at the thing and leaves its text readable.
-      var reg = target.closest('.ls-stage, .ls-dock'), rr = reg ? reg.getBoundingClientRect() : null;
-      var lo = Math.max(8, rr ? rr.left + 4 : 8), hi = Math.min(vw - 8, rr ? rr.right - 4 : vw - 8);
-      var left = Math.max(lo, Math.min(hi - tw, r.left + r.width / 2 - 28));
-      if(left < 8) left = 8;
-      // The sticky action row and the primary band at the foot of the screen
-      // count as off-screen for a bubble pointing at something else.
-      var foot = vh - 8;
-      Array.prototype.forEach.call(s.root.querySelectorAll('.ls-pbar, .ls-dock .ls-act, .ls-dock .bt-actions'), function(a){
-        if(!a.offsetParent || a.contains(target) || target.contains(a)) return;
-        var b = a.getBoundingClientRect();
-        if(b.height && b.bottom >= vh - 4 && b.top < foot) foot = b.top - 4;
-      });
-      var keep = [box('.ls-bar'), box('.ls-cap')], best = null;
-      /* Never over another control either (consistency audit 2026-11, C7: the bubble sat on Run, on a slider's
-         +, on a link): every visible button, link and field near the target counts, so the bubble takes the side,
-         or the horizontal place, that leaves them all clear. */
-      var ctl = [];
-      Array.prototype.forEach.call(s.root.querySelectorAll('button, a[href], input:not([type=hidden]), select, textarea, [role=slider], [tabindex="0"]'), function(el){
-        // (A big target the tip sits inside: its own buttons count too.)
-        if(el === target || (!o.inside && target.contains(el)) || el.contains(target) || el.closest('.ls-bar, .ls-menu, .ls-sheet, [hidden]')) return;
-        var b = el.getBoundingClientRect();
-        if(b.width && b.height && b.bottom > 0 && b.top < vh) ctl.push(b);
-      });
-      function overCtl(c){ var n = 0; for(var k = 0; k < ctl.length; k++) n += over(c, ctl[k]); return n; }
-      var lefts = [left, Math.max(lo, Math.min(hi - tw, r.left)), Math.max(lo, Math.min(hi - tw, r.right - tw)), Math.max(8, lo), Math.max(8, hi - tw)];
-      // Right below or above it first; when both sit on other controls, a little further off (the arrow goes).
-      var tops = [[r.bottom + 12, 0], [r.top - th - 12, 1]];
-      for(var d = 8; d <= 240; d += 8){ tops.push([r.bottom + 12 + d, 0]); tops.push([r.top - th - 12 - d, 1]); }
-      tops.forEach(function(tp){
-        var top = tp[0], i = tp[1];
-        var t0 = Math.max(8, Math.min(top, vh - 8 - th));
-        var near = i ? r.top - 12 - (t0 + th) : t0 - r.bottom - 12;
-        lefts.forEach(function(l0, j){
-          var c = { left: l0, right: l0 + tw, top: t0, bottom: t0 + th };
-          var cost = over(c, r) * 50 + overCtl(c) * 20 + over(c, keep[0]) * 4 + over(c, keep[1]) * 2 + (t0 + th > foot ? 1e5 + (t0 + th - foot) * 100 : 0) + Math.abs(t0 - top) * 10 + Math.max(0, near) * 8 + (i ? 1 : 0) + j * 2;
-          if(!best || cost < best.cost) best = { cost: cost, top: t0, below: i === 0, left: l0 };
-        });
-      });
-      left = best.left;
-      // A large text box: sit inside it, top left, so the tip never covers the
-      // question written just above it (justification trainers).
-      if(o.inside && r.height > th + 40){
-        // Inside, at its top or its foot, whichever leaves the target's own buttons (a view switch on it) clear.
-        left = Math.max(8, r.left + 14);
-        best = null;
-        [Math.max(8, r.top + 14), Math.min(vh - 8 - th, r.bottom - th - 14), Math.max(8, r.top + (r.height - th) / 2)].forEach(function(t0, i){
-          var cst = overCtl({ left: left, right: left + tw, top: t0, bottom: t0 + th }) + i;
-          if(!best || cst < best.cost) best = { cost: cst, top: t0, below: true, inside: true };
-        });
+      if(!document.contains(target)){ ring.style.display = 'none'; return; }
+      if(!tip.isConnected || tip.parentNode !== spot().parent) put();
+      // A control's wrapper (label, slider, value) rings only its slider or field, so the label and value stay clear.
+      var rt0 = target;
+      if(!target.ownerSVGElement && !target.matches('input, select, textarea, button, [role=slider]')){
+        var inner = target.querySelectorAll('input:not([type=hidden]), select, textarea, [role=slider]');
+        if(inner.length === 1 && inner[0].getClientRects().length) rt0 = inner[0];
       }
-      // Wider than the room left: pull it back so its right edge stays inside.
-      if(left + tw > vw - 8) left = Math.max(8, vw - 8 - tw);
-      tip.style.left = (left + sx) + 'px';
-      tip.style.top = (best.top + sy) + 'px';
-      tip.classList.toggle('is-below', best.below);
-      tip.classList.toggle('no-arrow', best.inside || (best.below ? best.top > r.bottom + 14 : best.top + th < r.top - 14));
-      tip.style.setProperty('--ax', Math.max(14, Math.min(tw - 26, r.left + r.width / 2 - left - 6)) + 'px');
+      var r = rt0.getBoundingClientRect();
+      if(!r.width && !r.height){ ring.style.display = 'none'; return; }
+      // Inside the target's own box, clipped to the stage that scrolls it.
+      var rt = r.top, rb = r.bottom, rl = r.left, rr = r.right;
+      var clip = target.closest('.ls-stage'), cb = clip && !target.closest('.ls-dock') ? clip.getBoundingClientRect() : null;
+      if(cb){ rt = Math.max(rt, cb.top); rb = Math.min(rb, cb.bottom); rl = Math.max(rl, cb.left); rr = Math.min(rr, cb.right); }
+      // Nor over a sticky band at the foot of a phone (the primary slider, the action row) that the target
+      // has scrolled under: the ring stops at the band's top edge.
+      Array.prototype.forEach.call(s.root.querySelectorAll('.ls-pbar, .ls-dock .ls-act, .ls-dock .bt-actions, .ls-coach-host'), function(a){
+        if(a.contains(rt0) || !a.getClientRects().length || getComputedStyle(a).position !== 'sticky') return;
+        var b = a.getBoundingClientRect();
+        if(b.top < rb && b.bottom > rt && b.left < rr && b.right > rl) rb = Math.min(rb, b.top);
+      });
+      if(rb - rt < 8 || rr - rl < 8){ ring.style.display = 'none'; return; }
+      ring.style.display = '';
+      ring.style.left = (rl + window.scrollX) + 'px'; ring.style.top = (rt + window.scrollY) + 'px';
+      ring.style.width = (rr - rl) + 'px'; ring.style.height = (rb - rt) + 'px';
+      ring.style.borderRadius = radius(r, rt0) + 'px';
     }
     function queue(){ if(!raf) raf = requestAnimationFrame(place); }
+    var ro = window.ResizeObserver ? new ResizeObserver(queue) : null;
     function dismiss(){
       if(gone) return;
       gone = true;
       store(key, '1');
       ring.remove(); tip.remove();
+      if(host) host.classList.remove('ls-coach-host');
       describe(target, false);
       Array.prototype.forEach.call(document.querySelectorAll('[aria-describedby]'), function(el){ if((' ' + el.getAttribute('aria-describedby') + ' ').indexOf(' ' + tip.id + ' ') >= 0) describe(el, false); });
       window.removeEventListener('resize', queue); window.removeEventListener('scroll', queue, true);
       ['pointerdown', 'click', 'keydown', 'input', 'change'].forEach(function(t){ s.root.removeEventListener(t, onUse, true); });
+      if(ro) ro.disconnect();
       clearInterval(iv);
+      if(s.fit) s.fit();
+    }
+    var pressed = false;
+    function lift(e){
+      window.removeEventListener('pointerup', lift, true); window.removeEventListener('pointercancel', lift, true);
+      pressed = false;
+      // A finger that only scrolled the page (the browser cancels the pointer) is not use.
+      if(e.type === 'pointerup') dismiss();
     }
     function onUse(e){
+      if(gone || pressed) return;
       if(e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return;
-      // While the tip waits below the fold, a finger that only scrolls the page does not count as use.
-      if(away && e.type === 'pointerdown') return;
       if(e.target.closest && e.target.closest('.ls-bar')) return;
+      // A drag keeps the line until the finger lifts, so nothing moves under it.
+      if(e.type === 'pointerdown'){ pressed = true; window.addEventListener('pointerup', lift, true); window.addEventListener('pointercancel', lift, true); return; }
       dismiss();
     }
     window.addEventListener('resize', queue); window.addEventListener('scroll', queue, true);
     ['pointerdown', 'click', 'keydown', 'input', 'change'].forEach(function(t){ s.root.addEventListener(t, onUse, true); });
-    // The layout can still be settling (fonts, a late redraw): follow it briefly.
-    var n = 0, iv = setInterval(function(){ queue(); if(++n > 20) clearInterval(iv); }, 150);
+    put();
+    if(ro){ ro.observe(s.root); ro.observe(document.documentElement); }
+    // The layout can still be settling (fonts, a late redraw) and a handle can move by itself: follow it
+    // until the hint goes (cheap: one box read a frame at most).
+    var iv = setInterval(queue, 200);
     queue();
-    return { dismiss: dismiss, place: queue };
+    if(s.fit) s.fit();
+    return { dismiss: dismiss, place: queue, el: tip };
   }
 
   /* ---------------- practice stepper */
