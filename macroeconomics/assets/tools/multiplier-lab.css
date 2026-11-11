@@ -178,3 +178,15 @@
 .ml-banks .ml-bk-key{fill:var(--muted);font-size:11.5px;font-weight:600;}
 .ml-banks .ml-k-keep{fill:var(--ml-now);} .ml-banks .ml-k-lend{fill:var(--cink);}
 .ml-banks .ml-bk-in.is-neg{fill:var(--ml-tax);}
+
+/* Pass 2: the equation strip repeated the explanation line, so it is gone from the stage (Multiplier and
+   Money; the formulas are in Numbers & formulas). Bank 1's balance sheet moved to Numbers & formulas; the
+   money market graph stays beside the new-money total it follows. */
+.ml-fig[data-v="ripple"] .ml-read,.ml-fig[data-v="money"] .ml-read{display:none;}
+.ml-tacct:empty{display:none;}
+.ml-moneyrow:has(.ml-tacct:empty){grid-template-columns:minmax(0,1fr);justify-items:center;}
+.ml-moneyrow:has(.ml-tacct:empty) .ml-mm{width:min(100%,300px);}
+.ml-meter .ml-nums{grid-template-columns:minmax(0,1fr);margin-top:0;}
+.ml-meter .ml-nums dd{font-size:18px;}
+.ls-phone .ml-meter .ml-nums{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:6px;}
+.ls-phone .ml-meter .ml-nums dd{font-size:15px;}

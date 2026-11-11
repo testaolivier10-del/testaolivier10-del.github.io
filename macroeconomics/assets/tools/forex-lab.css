@@ -133,3 +133,8 @@
 .fxl-fig.is-narrow .fxl-tab{padding:0 11px;font-size:13px;}
 .fxl-fig.is-narrow .fxl-h{min-width:52px;padding:4px 8px;}
 .fxl-fig.is-narrow .fxl-handles{gap:6px;}
+
+/* Pass 2: "Who trades" said what the explanation line already says, so it is gone from the stage (the
+   explanation keeps it); on a wide stage the trade picture waits until something changes. */
+.fxl-who{display:none;}
+.fxl-fig.is-idle:not(.is-narrow) .fxl-so{display:none;}

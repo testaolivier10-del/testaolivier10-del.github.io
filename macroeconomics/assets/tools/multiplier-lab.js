@@ -118,11 +118,12 @@
       r.push('<rect class="ml-sv" x="' + f1(xa + wSp) + '" y="' + f1(y) + '" width="' + f1(Math.max(0.5, wSv)) + '" height="' + f1(rh) + '" rx="3"/>');
       // the leak: from the saved part to the tank
       r.push('<path class="ml-leak" d="M' + f1(xa + wInc + 3) + ' ' + f1(y + rh / 2) + 'H' + f1(xt - 6) + '" marker-end="url(#' + o.id + '-ah)"/>');
-      var lab = o.tax && i === 0 ? 'Tax ' + (o.sign < 0 ? 'rise' : 'cut') : 'Round ' + (o.tax ? i : i + 1);
+      // Pass 2: "Round" written on the first two rows, then the number alone (an axis, not a label each).
+      var rn = o.tax ? i : i + 1, lab = o.tax && i === 0 ? 'Tax ' + (o.sign < 0 ? 'rise' : 'cut') : rn <= 2 ? 'Round ' + rn : String(rn);
       r.push('<text class="ml-rl' + (o.tax && i === 0 ? ' is-tax' : '') + '" x="' + f1(xa - 6) + '" y="' + f1(y + rh / 2 + 4) + '" text-anchor="end">' + lab + '</text>');
-      // amounts: income on the first two rows, in the bar when it fits
-      if(wSp > 46) r.push('<text class="ml-in" x="' + f1(xa + 6) + '" y="' + f1(y + rh / 2 + 4) + '">' + fm(sp) + '</text>');
-      if(wSv > 40 && i < 3) r.push('<text class="ml-in is-sv" x="' + f1(xa + wSp + 5) + '" y="' + f1(y + rh / 2 + 4) + '">' + fm(sv) + '</text>');
+      // amounts (pass 2): the first round's split only; the bars show the rest shrinking, the table has every number
+      if(wSp > 46 && i === (o.tax ? 1 : 0)) r.push('<text class="ml-in" x="' + f1(xa + 6) + '" y="' + f1(y + rh / 2 + 4) + '">' + fm(sp) + '</text>');
+      if(wSv > 40 && i === (o.tax ? 1 : 0)) r.push('<text class="ml-in is-sv" x="' + f1(xa + wSp + 5) + '" y="' + f1(y + rh / 2 + 4) + '">' + fm(sv) + '</text>');
       r.push('</g>');
       rowsSvg.push(r.join(''));
       tankSegs.push(sv); savedSoFar += sv;
@@ -173,9 +174,10 @@
       if(hk > 0.5) g.push('<rect class="ml-keep" x="' + f1(x) + '" y="' + f1(vBot - hk) + '" width="' + f1(bw) + '" height="' + f1(hk) + '" rx="3"/>');
       g.push('<rect class="ml-lend' + (neg ? ' is-neg' : '') + '" x="' + f1(x) + '" y="' + f1(y0) + '" width="' + f1(bw) + '" height="' + f1(Math.max(1, hl)) + '" rx="3"/>');
       var top1 = k === 0 && scn === 'buyBank' ? '+' + fm(X) + ' reserves' : k === 0 && scn === 'sellBank' ? '−$' + n(X) + ' reserves' : (k === 0 && scn === 'cash' ? 'cash ' : '') + 'deposit ' + fm(dep);
-      g.push('<text class="ml-bk-v" x="' + f1(cx) + '" y="' + f1(y0 - 5) + '" text-anchor="middle">' + top1 + '</text>');
-      if(hk > 13 && !narrow) g.push('<text class="ml-bk-in" x="' + f1(cx) + '" y="' + f1(vBot - hk / 2 + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'keeps ' : '') + fm(keep) + '</text>');
-      if(hl > 13 && !narrow) g.push('<text class="ml-bk-in is-l' + (neg ? ' is-neg' : '') + '" x="' + f1(cx) + '" y="' + f1(y0 + Math.min(hl / 2, 18) + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'lends ' : '') + fm(lend) + '</text>');
+      if(k < 2) g.push('<text class="ml-bk-v" x="' + f1(cx) + '" y="' + f1(y0 - 5) + '" text-anchor="middle">' + top1 + '</text>');
+      // pass 2: the split written on the first bank that keeps and lends; the next banks repeat it smaller
+      if(k < 2 && hk > 13 && !narrow) g.push('<text class="ml-bk-in" x="' + f1(cx) + '" y="' + f1(vBot - hk / 2 + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'keeps ' : '') + fm(keep) + '</text>');
+      if(k < 2 && hl > 13 && !narrow) g.push('<text class="ml-bk-in is-l' + (neg ? ' is-neg' : '') + '" x="' + f1(cx) + '" y="' + f1(y0 + Math.min(hl / 2, 18) + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'lends ' : '') + fm(lend) + '</text>');
       // the loan travels to the next bank as its deposit
       if(k < nb - 1){
         var nx = cx + slot - bw / 2, ly = y0 + Math.min(hl / 2, 18), ny = vBot - vH * Math.abs(m.rounds[k]) / big;
@@ -350,9 +352,9 @@
       if(Math.abs(y2 - yf) > 0.35) ann.push('<text class="ml-yf" x="' + f1(G.px(yf)) + '" y="' + f1(G.py(0) + 13) + '" text-anchor="middle">Y<tspan dy="3" font-size="8">F</tspan></text>');
       figs.gap.querySelector('.ml-graph').innerHTML = gsvg.replace('</svg>', ann.join('') + '</svg>');
       var pctClosed = Math.max(-100, Math.min(200, g.frac * 100));
-      figs.gap.querySelector('.ml-meter').innerHTML = '<p class="ml-mh">Gap: ' + usd(st.gsize, 'billion') + ' ' + (rec ? 'below' : 'above') + ' full employment</p>' +
-        '<div class="ml-track" aria-hidden="true"><span class="ml-fill is-' + state + '" style="width:' + Math.max(0, Math.min(100, pctClosed / 2)) + '%"></span><i class="ml-goal"></i></div>' +
-        '<dl class="ml-nums"><div><dt>Your change</dt><dd>' + usd(st.change, 'billion') + '</dd></div><div><dt>× multiplier</dt><dd>' + n(g.mult) + '</dd></div><div><dt>= change in real GDP</dt><dd>' + usd(g.effect, 'billion') + '</dd></div><div><dt>Gap left</dt><dd>' + usd(Math.round((g.gapNeeded - g.effect) * 100) / 100, 'billion') + '</dd></div></dl>';
+      // Pass 2: two numbers beside the graph (the band under the axis already shows how much is closed).
+      void pctClosed;
+      figs.gap.querySelector('.ml-meter').innerHTML = '<dl class="ml-nums"><div><dt>' + usd(st.change) + 'B × ' + n(g.mult) + ' = change in real GDP</dt><dd>' + usd(g.effect, 'billion') + '</dd></div><div><dt>Gap left</dt><dd>' + usd(Math.round((g.gapNeeded - g.effect) * 100) / 100, 'billion') + '</dd></div></dl>';
       var dirWord = st.tool === 'G' ? (rec ? 'raise purchases' : 'cut purchases') : (rec ? 'cut taxes' : 'raise taxes');
       var head = st.change === 0 ? 'A ' + st.gkind + ' gap of ' + usd(st.gsize, 'billion') + '. Direction first: ' + dirWord + '. Then move the slider.'
         : closed ? '<b>Gap closed.</b> ' + usd(need) + ' billion × ' + n(mSize) + ' = ' + usd(st.gsize) + ' billion: the gap divided by the multiplier.'
@@ -378,8 +380,9 @@
       figs.money.querySelector('.ml-read').innerHTML = '<span class="ml-chip">Excess reserves ' + usd(m.ex, 'million') + '</span><span class="ml-op">×</span><span class="ml-chip">1 ÷ ' + n(st.rr) + ' = ' + n(m.mm) + '</span>' + (m.now ? '<span class="ml-op">+</span><span class="ml-chip">deposit ' + usd(m.now) + '</span>' : '') + '<span class="ml-op">=</span><span class="ml-chip is-total">ΔM up to ' + usd(m.dm, 'million') + '</span>';
       // Bank 1's balance sheet: the change this event makes.
       var dep = m.deposit, res = sell ? -st.X : st.scn === 'buyBank' ? st.X : st.X, bonds = st.scn === 'buyBank' ? -st.X : sell ? st.X : 0;
-      figs.money.querySelector('.ml-tacct').innerHTML = '<table class="ml-t"><caption>Bank 1: what changes</caption><thead><tr><th scope="col">Assets</th><th scope="col">Liabilities</th></tr></thead><tbody><tr><td>' +
+      var tacct = '<table class="ml-t"><caption>Bank 1: what changes</caption><thead><tr><th scope="col">Assets</th><th scope="col">Liabilities</th></tr></thead><tbody><tr><td>' +
         '<span>Required reserves</span><b>' + usd(m.req) + '</b><span>Excess reserves</span><b class="is-ex">' + usd(m.ex) + '</b>' + (bonds ? '<span>Bonds</span><b>' + usd(bonds) + '</b>' : '') + '</td><td><span>Checking deposits</span><b>' + usd(dep) + '</b></td></tr></tbody></table>';
+      figs.money.querySelector('.ml-tacct').innerHTML = '';
       void res;
       // A shift of 2 keeps M1/M2 and i1/i2 apart in this small graph (it shows direction, not size).
       var mspec = { kind: 'money', do: [] }, msh = m.dm ? { MS: m.dm > 0 ? 2 : -2 } : {};
@@ -392,7 +395,7 @@
         '<p><b>Money multiplier</b> = 1 ÷ ' + n(st.rr) + ' = ' + n(m.mm) + '. Largest change = excess reserves × ' + n(m.mm) + (m.now ? ', plus the ' + usd(m.now) + ' million of new deposits themselves' : '') + '.</p>' +
         (st.scn === 'cash' ? '<p class="mac-slip ml-rule"><b>Watch out:</b> the cash deposit itself is not new money: cash in a wallet and cash in a checking account are both money. Only the loans add to the money supply.</p>' : '') +
         '<p class="ml-rule">This is the <b>limited-reserves</b> model. The Fed now runs an <b>ample-reserves</b> framework: it sets its policy rate with administered rates (interest on reserves), and the money multiplier does not describe what banks do. The exam asks about both.</p>';
-      var detH = '<h3 class="ls-title-l">This change</h3><table class="ls-tbl"><tbody><tr><th scope="row">Required reserves</th><td class="r">' + usd(m.req) + ' million</td></tr><tr><th scope="row">Excess reserves</th><td class="r">' + usd(m.ex) + ' million</td></tr><tr><th scope="row">Money multiplier</th><td class="r">' + n(m.mm) + '</td></tr><tr><th scope="row">New money right away</th><td class="r">' + usd(m.now) + ' million</td></tr><tr><th scope="row">Largest change in the money supply</th><td class="r"><b>' + usd(m.dm) + ' million</b></td></tr></tbody></table>' + data.howItWorks;
+      var detH = tacct + '<h3 class="ls-title-l">This change</h3><table class="ls-tbl"><tbody><tr><th scope="row">Required reserves</th><td class="r">' + usd(m.req) + ' million</td></tr><tr><th scope="row">Excess reserves</th><td class="r">' + usd(m.ex) + ' million</td></tr><tr><th scope="row">Money multiplier</th><td class="r">' + n(m.mm) + '</td></tr><tr><th scope="row">New money right away</th><td class="r">' + usd(m.now) + ' million</td></tr><tr><th scope="row">Largest change in the money supply</th><td class="r"><b>' + usd(m.dm) + ' million</b></td></tr></tbody></table>' + data.howItWorks;
       return { head: head, body: body, det: detH, pills: [] };
     }
     var stageEl = host.querySelector('.ml-stage');
