@@ -207,7 +207,9 @@
       for(var f = 0; f <= fmax + 1e-9; f += fst){ out += '<line class="cl-grid" x1="' + l + '" x2="' + (l + pw) + '" y1="' + n(Y(f)) + '" y2="' + n(Y(f)) + '"/><text class="cl-tickt" x="' + (l - 5) + '" y="' + n(Y(f) + 4) + '" text-anchor="end">' + M.fmt(f, 3) + '</text>'; }
       out += '<text class="cl-ax" x="' + (l + pw / 2) + '" y="' + (FH - 4) + '" text-anchor="middle">time since contact (ms)</text><text class="cl-ax" x="' + (fph ? 14 : 12) + '" y="' + (tp + ph / 2) + '" transform="rotate(-90 ' + (fph ? 14 : 12) + ' ' + (tp + ph / 2) + ')" text-anchor="middle">F (N)</text>';
       var N = 120, pts = [], now = s.contact || t >= R.T1 ? Math.min(R.Tc, t - R.T0) : t >= R.T0 ? 0 : -1;
-      for(var i = 0; i <= N; i++){ var u = R.Tc * i / N; pts.push(n(X(u)) + ',' + n(Y(R.pulse(u)))); }
+      // The pulse draws itself as contact runs: only the part that has happened is shown.
+      var upto = now > 0 ? now : 0;
+      for(var i = 0; i <= N; i++){ var u = upto * i / N; pts.push(n(X(u)) + ',' + n(Y(R.pulse(u)))); }
       var shade = [];
       if(now > 0){ for(i = 0; i <= N; i++){ var u2 = now * i / N; shade.push(n(X(u2)) + ',' + n(Y(R.pulse(u2)))); } out += '<polygon class="cl-area" points="' + n(X(0)) + ',' + (tp + ph) + ' ' + shade.join(' ') + ' ' + n(X(now)) + ',' + (tp + ph) + '"/>'; }
       out += '<polyline class="cl-curve" points="' + pts.join(' ') + '"/>';
@@ -221,6 +223,8 @@
        keeps the switch between bars and the graph. */
     function layout(){
       var stg = $('.cl-stage'), lw = $('.cl-lower'), tabs = $('.cl-tabs'); if(!stg || !lw) return;
+      // The force-time graph appears when contact begins (pass 2: results appear when the action makes them).
+      stg.classList.toggle('cl-pre', !R.Tc || t < R.T0);
       var all = narrow() && phoneOf(stg) && stg.getBoundingClientRect().height >= 400;
       stg.classList.toggle('cl-all', all);
       if(tabs) tabs.hidden = all;
@@ -260,7 +264,7 @@
         row('Now', 'p = ' + F(p, 3) + ' kg·m/s, K = ' + F(K, 3) + ' J') + '</tbody></table>';
       if(LS){
         LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
-        LS.caption('<b>' + head + '</b> ' + short + ' <span class="cl-cap-r">p = ' + F(p, 2) + ' kg·m/s, K = ' + F(K, 2) + ' J</span>', 'explore');
+        LS.caption('<b>' + head + '</b> ' + short, 'explore');
       }
     }
     var loop = S.loop(function(dt){
