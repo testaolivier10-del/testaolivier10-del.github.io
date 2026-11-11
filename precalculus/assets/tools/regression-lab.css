@@ -43,8 +43,9 @@
 .rl-harr{fill:none;stroke:var(--rl-bg);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 
 .rl-ctl{display:flex;flex-direction:column;gap:10px;}
-.rl-sets,.rl-models{display:flex;gap:6px;flex-wrap:wrap;}
-.ls-phone .rl-sets,.ls-phone .rl-models{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+.rl-models{display:flex;gap:6px;flex-wrap:wrap;}
+.ls-phone .rl-models{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+.rl-sets{display:block;}
 .rl-chip,.rl-mchip{min-height:40px;}
 .rl-chip[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:800;}
 .rl-mchip[aria-pressed="true"]{border-color:var(--rl-g);color:var(--rl-g);box-shadow:inset 0 0 0 1.5px var(--rl-g);background:var(--rl-tint);}
