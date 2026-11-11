@@ -237,22 +237,3 @@ button.lp-box::after{inset:auto;left:50%;top:50%;width:max(100% + 12px, 44px);he
 .lp-ls .lp-ls-fig figcaption .lp-credit-s{font-size:11px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ls-root.ls-phone.lp-ls .lp-ls-fig figcaption .lp-credit-s{font-size:11px;}
 .lp-ls-credit .lp-credit{font-size:var(--ls-s);}
-
-/* Pass 3 (docs/tool-review/pass3/anatomy-physiology.md): a figure with two or three views shows one at a time
-   (Upper view / Lower view), fitted to the stage; the rest of the figure is clipped and its labels are inert. */
-.lp-figbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 4px;}
-.lp-figbar .lp-zoom{margin:0;}
-.lp-views{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--tint, #EEF2F1);}
-.lp-vbtn{border:0;background:transparent;font:800 13px var(--font-ui);color:var(--muted);padding:7px 14px;border-radius:999px;min-height:36px;cursor:pointer;}
-.lp-vbtn[aria-pressed="true"]{background:var(--white, #fff);color:var(--cink);box-shadow:0 1px 3px rgba(20,40,35,.15);}
-.lp-vbtn:focus-visible{outline:3px solid var(--accent);outline-offset:1px;}
-.lp-ls .lp-ls-fig .lp-figbar{flex:none;}
-.lp-scroll.lp-view .lp-fig{--lp-W:calc(var(--lp-z, 1) * min(100% / var(--lp-vw, 1), 76vh * var(--lp-ratio, 1) / var(--lp-vh, 1)));}
-.lp-ls .lp-ls-fig .lp-scroll.lp-view .lp-fig{--lp-W:calc(var(--lp-z, 1) * min(100cqw / var(--lp-vw, 1), 100cqh * var(--lp-ratio, 1) / var(--lp-vh, 1)));}
-.lp-scroll.lp-view .lp-fig,.lp-ls .lp-ls-fig .lp-scroll.lp-view .lp-fig,.lp-ls .lp-ls-fig .lp-scroll.lp-view.is-zoomed .lp-fig{width:var(--lp-W);max-width:none;flex:none;
-  margin:calc(-1 * var(--lp-vy, 0) * var(--lp-W) / var(--lp-ratio, 1)) calc(-1 * (1 - var(--lp-vx, 0) - var(--lp-vw, 1)) * var(--lp-W))
-    calc(-1 * (1 - var(--lp-vy, 0) - var(--lp-vh, 1)) * var(--lp-W) / var(--lp-ratio, 1)) calc(-1 * var(--lp-vx, 0) * var(--lp-W));
-  clip-path:inset(calc(var(--lp-vy, 0) * 100%) calc((1 - var(--lp-vx, 0) - var(--lp-vw, 1)) * 100%) calc((1 - var(--lp-vy, 0) - var(--lp-vh, 1)) * 100%) calc(var(--lp-vx, 0) * 100%));}
-.lp-ls .lp-ls-fig .lp-scroll.lp-view{overflow:hidden;}
-.lp-ls .lp-ls-fig .lp-scroll.lp-view.is-zoomed{overflow:auto;}
-.lp-box[data-off]{pointer-events:none;}

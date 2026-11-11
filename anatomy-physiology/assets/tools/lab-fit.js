@@ -248,8 +248,9 @@
      front, then from behind) splits at the blank band between them, so Explore and Study can show one
      view at a time. A split needs a band with no ink right across the figure, at least three labels on
      each side and no label box across it. cb(null) when the figure is one view. */
-  var VIEWS = {};
+  var VIEWS = {}, VCSS = '.lp-figbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 4px;} .lp-figbar .lp-zoom{margin:0;} .lp-views{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--tint, #EEF2F1);} .lp-vbtn{border:0;background:transparent;font:800 13px var(--font-ui);color:var(--muted);padding:7px 14px;border-radius:999px;min-height:36px;cursor:pointer;} .lp-vbtn[aria-pressed="true"]{background:var(--white, #fff);color:var(--cink);box-shadow:0 1px 3px rgba(20,40,35,.15);} .lp-vbtn:focus-visible{outline:3px solid var(--accent);outline-offset:1px;} .lp-ls .lp-ls-fig .lp-figbar{flex:none;} .lp-scroll.lp-view .lp-fig{--lp-W:calc(var(--lp-z, 1) * min(100% / var(--lp-vw, 1), 76vh * var(--lp-ratio, 1) / var(--lp-vh, 1)));} .lp-ls .lp-ls-fig .lp-scroll.lp-view .lp-fig{--lp-W:calc(var(--lp-z, 1) * min(100cqw / var(--lp-vw, 1), 100cqh * var(--lp-ratio, 1) / var(--lp-vh, 1)));} .lp-scroll.lp-view .lp-fig,.lp-ls .lp-ls-fig .lp-scroll.lp-view.lp-view .lp-fig{width:var(--lp-W);max-width:none;flex:none; margin:calc(-1 * var(--lp-vy, 0) * var(--lp-W) / var(--lp-ratio, 1)) calc(-1 * (1 - var(--lp-vx, 0) - var(--lp-vw, 1)) * var(--lp-W)) calc(-1 * (1 - var(--lp-vy, 0) - var(--lp-vh, 1)) * var(--lp-W) / var(--lp-ratio, 1)) calc(-1 * var(--lp-vx, 0) * var(--lp-W)); clip-path:inset(calc(var(--lp-vy, 0) * 100%) calc((1 - var(--lp-vx, 0) - var(--lp-vw, 1)) * 100%) calc((1 - var(--lp-vy, 0) - var(--lp-vh, 1)) * 100%) calc(var(--lp-vx, 0) * 100%));} .lp-ls .lp-ls-fig .lp-scroll.lp-view{overflow:hidden;} .lp-ls .lp-ls-fig .lp-scroll.lp-view.is-zoomed{overflow:auto;} .lp-box[data-off]{pointer-events:none;}';
   function views(src, fig, boxes, cb){
+    if(!document.getElementById('lp-view-css')){ var st = document.createElement('style'); st.id = 'lp-view-css'; st.textContent = VCSS; document.head.appendChild(st); }
     if(!fig || fig.h / fig.w < 0.8){ cb(null); return; }
     if(VIEWS[src]){ if(VIEWS[src].done) cb(VIEWS[src].v); else VIEWS[src].wait.push(cb); return; }
     VIEWS[src] = { wait: [cb] };
@@ -300,5 +301,22 @@
     img.onerror = function(){ VIEWS[src].done = true; VIEWS[src].v = null; VIEWS[src].wait.forEach(function(fn){ fn(null); }); VIEWS[src].wait = []; };
     img.src = src;
   }
-  window.AnpLabFit = { eraseLeaders: eraseLeaders, inkBox: inkBox, blendCovers: blendCovers, views: views };
+  // one view of a station: its band, and its labels' and covers' columns, so the printed words reach the stage's edges
+  function viewOf(st, VW, k){
+    var y0 = VW[k][0], y1 = VW[k][1], f = st.fig, x0 = 1, x1 = 0;
+    st.labels.concat(st.covered || []).forEach(function(l){ var b = l.box, cy = (b[1] + b[3] / 2) / f.h; if(cy >= y0 && cy < y1){ x0 = Math.min(x0, b[0] / f.w); x1 = Math.max(x1, (b[0] + b[2]) / f.w); } });
+    x0 = Math.max(0, x0 - 0.02); x1 = Math.min(1, x1 + 0.02);
+    if(x1 - x0 < 0.5){ x0 = 0; x1 = 1; }
+    return { k: k, n: VW.length, y0: y0, y1: y1, x0: x0, x1: x1 };
+  }
+  function viewBar(vw){
+    var N = vw.n === 2 ? ['Upper view', 'Lower view'] : ['Upper view', 'Middle view', 'Lower view'];
+    return '<div class="lp-views kt-seg" role="group" aria-label="Which view of the figure">' + N.map(function(nm, i){
+      return '<button type="button" class="lp-vbtn" data-v="' + i + '" aria-pressed="' + (i === vw.k ? 'true' : 'false') + '">' + nm + '</button>'; }).join('') + '</div>';
+  }
+  function cyOf(b, f){ return (b[1] + b[3] / 2) / f.h; }
+  function off(vw, b, f){ var c = cyOf(b, f); return c < vw.y0 || c >= vw.y1; }
+  function viewAt(VW, b, f){ var c = cyOf(b, f), k = 0; VW.forEach(function(r, i){ if(c >= r[0] && c < r[1]) k = i; }); return k; }
+  function viewAttr(vw){ return ' lp-view" style="--lp-vy:' + vw.y0.toFixed(4) + ';--lp-vh:' + (vw.y1 - vw.y0).toFixed(4) + ';--lp-vx:' + vw.x0.toFixed(4) + ';--lp-vw:' + (vw.x1 - vw.x0).toFixed(4) + '"'; }
+  window.AnpLabFit = { eraseLeaders: eraseLeaders, inkBox: inkBox, blendCovers: blendCovers, views: views, viewOf: viewOf, viewBar: viewBar, off: off, viewAt: viewAt, viewAttr: viewAttr };
 })();

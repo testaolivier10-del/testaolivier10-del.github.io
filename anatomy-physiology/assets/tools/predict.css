@@ -307,15 +307,14 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
   .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-scn{width:min(100%, 62vh * var(--scn-r, 1));}
 }
 
-/* Pass 3 (docs/tool-review/pass3/anatomy-physiology.md): a dial's name shows whole (up to three lines, never cut);
-   with no figure the dials share the stage's width at a larger size. */
+/* Pass 3: whole dial names; larger dials when there is no figure (docs/tool-review/pass3) */
 .pc-ls .pc-gauge-n{-webkit-line-clamp:3;line-clamp:3;}
 .pc-ls .ls-stage-body > .pc-dash .pc-gauge-n{display:block;overflow:visible;-webkit-line-clamp:unset;line-clamp:none;overflow-wrap:anywhere;}
 @media (min-width:1000px){
-  .pc-ls .ls-stage-body > .pc-dash:not(.has-scene):not(:has(.pc-feed:not([hidden]))) .pc-dash-grid{grid-template-columns:repeat(auto-fit,minmax(180px,250px));justify-content:center;gap:14px;}
-  .pc-ls .ls-stage-body > .pc-dash:not(.has-scene):not(:has(.pc-feed:not([hidden]))) .pc-dash-grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(2,minmax(180px,250px));}
-  .pc-ls .ls-stage-body > .pc-dash:not(.has-scene):not(:has(.pc-feed:not([hidden]))) .pc-gauge{padding:14px 12px 12px;gap:4px;}
-  .pc-ls .ls-stage-body > .pc-dash:not(.has-scene):not(:has(.pc-feed:not([hidden]))) .pc-dial{width:min(100%,180px);height:auto;}
-  .pc-ls .ls-stage-body > .pc-dash:not(.has-scene):not(:has(.pc-feed:not([hidden]))) .pc-gauge-n{font-size:15px;line-height:1.25;}
-  .pc-ls .ls-stage-body > .pc-dash:not(.has-scene):not(:has(.pc-feed:not([hidden]))) .pc-gauge-s{font-size:13px;}
+  .pc-ls .ls-stage-body > .pc-big .pc-dash-grid{grid-template-columns:repeat(auto-fit,minmax(180px,250px));justify-content:center;gap:14px;}
+  .pc-ls .ls-stage-body > .pc-big .pc-dash-grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(2,minmax(180px,250px));}
+  .pc-ls .ls-stage-body > .pc-big .pc-gauge{padding:14px 12px 12px;gap:4px;}
+  .pc-ls .ls-stage-body > .pc-big .pc-dial{width:min(100%,180px);height:auto;}
+  .pc-ls .ls-stage-body > .pc-big .pc-gauge-n{font-size:15px;line-height:1.25;}
+  .pc-ls .ls-stage-body > .pc-big .pc-gauge-s{font-size:13px;}
 }
