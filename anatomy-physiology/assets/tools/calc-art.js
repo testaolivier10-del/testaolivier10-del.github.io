@@ -421,12 +421,16 @@
     svg.appendChild(S('path', { d: 'M147,46 L162,40', 'class': 'ca-oss ca-bone' }));
     svg.appendChild(S('path', { d: 'M138,60 C146,80 176,88 206,87', 'class': 'ca-oss ca-bone' }));
     svg.appendChild(S('circle', { cx: 211, cy: 87, r: 4.5, 'class': 'ca-bonefill' }));
-    svg.appendChild(S('path', { d: 'M214,84 L250,76 M214,90 L250,100', 'class': 'ca-oss ca-crus' }));
-    svg.appendChild(S('path', { d: 'M248,72 l10,0 l0,32 l-10,0 Z', 'class': 'ca-stapes' }));
+    /* Accuracy check 2 (2026-11-11): the footplate sits IN the oval window and is drawn as the area the label
+       gives, with the same shape factor as the eardrum, so the two drawn areas keep the ratio ad : af. The blue
+       rim around it is the edge of the window (the annular ligament holds the plate in it). */
+    var fx = 262, fy = 88, frx = rf * 0.85, fry = rf;
+    svg.appendChild(S('ellipse', { cx: fx, cy: fy, rx: frx + 3, ry: fry + 3, 'class': 'ca-window' }));
+    svg.appendChild(S('path', { d: 'M214,84 L' + (fx - frx * 0.3).toFixed(1) + ',' + (fy - fry * 0.45).toFixed(1) + ' M214,90 L' + (fx - frx * 0.3).toFixed(1) + ',' + (fy + fry * 0.45).toFixed(1), 'class': 'ca-oss ca-crus' }));
+    svg.appendChild(S('ellipse', { cx: fx, cy: fy, rx: frx, ry: fry, 'class': 'ca-stapes' }));
     [['malleus', 104, 44, 'end'], ['incus', 160, 66, 'start'], ['stapes', 232, 68, 'middle']].forEach(function(b){ svg.appendChild(S('text', { x: b[1], y: b[2], 'text-anchor': b[3], 'class': 'cp-tick' }, b[0])); });
     svg.appendChild(S('text', { x: 150, y: 34, 'text-anchor': 'middle', 'class': 'cp-t' }, 'ossicles: lever × ' + H.fmt(env[p.lv], 1)));
-    svg.appendChild(S('ellipse', { cx: 276, cy: 88, rx: rf * 0.6, ry: rf, 'class': 'ca-window' }));
-    svg.appendChild(S('text', { x: 276, y: 88 + Math.max(rf, 10) + 16, 'text-anchor': 'middle', 'class': 'cp-t' }, 'oval window ' + H.fmt(af, 1) + ' mm²'));
+    svg.appendChild(S('text', { x: fx, y: fy + fry + 18, 'text-anchor': 'middle', 'class': 'cp-t' }, 'footplate in oval window ' + H.fmt(af, 1) + ' mm²'));
     svg.appendChild(S('text', { x: 180, y: 18, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, 'pressure × ' + H.val(c, env, p.gain)));
     svg.appendChild(S('text', { x: 180, y: Hh - 6, 'text-anchor': 'middle', 'class': 'cp-tick' }, 'areas drawn to scale with each other'));
     return { svg: svg, cap: 'The force collected over the large eardrum is delivered to the small stapes footplate in the oval window, so pressure rises by the area ratio (' + H.val(c, env, p.area) + '×), and the ossicle lever adds × ' + H.fmt(env[p.lv], 1) + ': <b>about ' + H.val(c, env, p.gain) + ' times</b> the pressure, enough to move the fluid of the inner ear.' };
