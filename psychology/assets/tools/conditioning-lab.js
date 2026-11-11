@@ -345,13 +345,15 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', wh[0]); svg.setAttribute('height', wh[1]);
       var out = view === 'cc' ? ccScene(W, H) : view === 'op' ? opScene(W, H) : cqScene(W, H);
       svg.innerHTML = out.svg; svg.setAttribute('aria-label', out.label);
-      if(LS && LS.setupRow) LS.setupRow.setup(view === 'cc' ? trials.filter(function(t){ return t !== 'rest'; }).length + ' trials so far' : view === 'op' ? (compare ? 'Comparing all four' : CL.schedOf(sk).name) : 'Four quadrants');
+      if(LS && LS.setupRow) LS.setupRow.setup(view === 'cc' ? (function(c){ return c + (c === 1 ? ' trial' : ' trials') + ' so far'; })(trials.filter(function(t){ return t !== 'rest'; }).length) : view === 'op' ? (compare ? 'Comparing all four' : CL.schedOf(sk).name) : 'Four quadrants');
       words();
     }
 
     function ccScene(W, H){
       var phone = W < 560, g = [], st = ccState(), k = last ? last.kind : null, n = trials.length;
-      var sceneH = Math.round(H * (phone ? 0.42 : 0.46)), L = phone ? 12 : 30, R = W - (phone ? 12 : 30);
+      // Before the first trial the record is empty, so the scene takes the whole stage; the record appears
+      // with trial 1 (pass 3, judge b).
+      var sceneH = Math.round(H * (!trials.length ? (phone ? 0.86 : 0.9) : phone ? 0.42 : 0.46)), L = phone ? 12 : 30, R = W - (phone ? 12 : 30);
       // the scene: speaker, dog, dish, measuring tube
       var sc = Math.min(sceneH / 230, (R - L) / 560) * (phone ? 1.05 : 1), dx = L + (R - L) * (phone ? 0.42 : 0.42), dy = sceneH * 0.44;
       var tone = k === 'pair' || k === 'tone', food = k === 'pair', drops = k && k !== 'rest' ? Math.round(food ? CL.MAXCR : st.crNow) : 0;
@@ -362,7 +364,7 @@
       var fx = dx + 150 * sc, fy = dy + 110 * sc;
       g.push(dish(fx, fy, sc, food));
       // saliva drops from the mouth into a measuring tube
-      var mx = dx + 80 * sc, my = dy + 44 * sc, tx = R - (phone ? 30 : 50), tyT = Math.max(48, sceneH * 0.2), tyB = sceneH - 14, cap = CL.MAXCR;
+      var mx = dx + 92 * sc, my = dy + 33 * sc, tx = R - (phone ? 30 : 50), tyT = Math.max(48, Math.min(sceneH * 0.2, dy - 75 * sc)), tyB = Math.min(sceneH - 14, dy + 125 * sc), cap = CL.MAXCR;
       var tw2 = 22;
       // a thin tube from the cheek (as in Pavlov's setup) to the measuring tube
       g.push('<path class="cl-tubeline" d="M' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' C' + (mx + 40).toFixed(1) + ' ' + (my + 10).toFixed(1) + ' ' + (tx - tw2 / 2 - 50).toFixed(1) + ' ' + (tyT - 26).toFixed(1) + ' ' + tx.toFixed(1) + ' ' + (tyT - 2).toFixed(1) + '"/>');
@@ -379,6 +381,7 @@
       var dropLab = !k || k === 'rest' ? '' : food ? 'UCR: saliva to food' : drops >= 1 ? 'CR: saliva to the tone' : 'No saliva';
       if(dropLab) g.push(tag(R, 22, dropLab + (drops ? ' (' + drops + ')' : ''), food ? 'is-ucs' : drops >= 1 ? 'is-cs' : 'is-ns', 'end'));
       if(k === 'rest') g.push(tag(dx, dy - 80 * sc, 'Resting a day', 'is-ns'));
+      if(!n) return { svg: g.join(''), label: 'A dog, a speaker and a food dish. ' + ccLine() + ' No trials yet: the record of drops appears after the first trial.' };
       // the record
       var gT = sceneH + (phone ? 34 : 40), gB = H - (phone ? 46 + ENL : 48), gL = phone ? 34 : 50, gR = W - (phone ? 16 : 30);
       var shown = trials.filter(function(t){ return t !== 'rest'; }).length, X = Math.max(20, shown + 2);
@@ -402,7 +405,6 @@
       for(var tt = 5; tt <= X; tt += 5) g.push(txt(x(tt), gB + 16, String(tt), 'cl-tv'));
       g.push(txt((gL + gR) / 2, gB + (phone ? 34 : 36), 'Trial (filled: tone + food; open: tone alone)', 'cl-axn'));
       g.push('<text class="cl-axn" x="' + gL + '" y="' + (gT - 6) + '" text-anchor="start">Drops of saliva to the tone</text>');
-      if(!n) g.push(txt((gL + gR) / 2, (gT + gB) / 2, 'Press Tone + food to run the first trial', 'cl-empty'));
       var label = 'A dog, a speaker and a food dish. ' + ccLine() + ' Record of ' + shown + ' trials: drops of saliva to the tone ' + pts.map(function(p, ii){ return r0(st.cr[p.i]); }).join(', ') + '.';
       return { svg: g.join(''), label: label };
     }
