@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v124';
+const CACHE_NAME = 'levlprep-v125';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -140,6 +140,7 @@ COURSE_URLS.nremt = [
   'nremt/assets/flow-drill.js',
   'nremt/assets/flow-build.js',
   'nremt/assets/scenario-monitor.js',
+  'nremt/assets/scenario-care.js',
   'nremt/assets/station-run.js',
   'nremt/assets/station-patient.js',
   'nremt/assets/body-figures.js',
