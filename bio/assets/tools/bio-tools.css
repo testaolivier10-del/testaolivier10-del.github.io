@@ -1651,3 +1651,6 @@
 .ls-dr-stage .dr-pics{grid-template-columns:minmax(0,1fr);}
 .ls-dr-stage:not(.dr-show-data) .dr-scene{max-width:560px;width:100%;margin:0 auto;}
 .ls-dr-stage.dr-show-data .dr-charts{max-width:470px;width:100%;margin:0 auto;}
+/* Pass 2: osmosis specimen chips wrap instead of scrolling out of view ("Di..." was cut off). */
+.ls-root .os-pick-row{flex-wrap:wrap;overflow:visible;}
+.ls-root .os-play{flex-wrap:wrap;}
