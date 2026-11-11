@@ -275,6 +275,9 @@
       var sp = { kind: 'forex', do: [], names: { currency: n.other, other: n.currency } }, s2 = { shifts: {} };
       if(sh.D) s2.shifts.S = sh.D;
       if(sh.S) s2.shifts.D = sh.S;
+      // The mirror market gets its own new equilibrium (XR2 and E2), so a
+      // shift there reads like the first market's shift.
+      if(Object.keys(s2.shifts).some(function(c){ return Math.abs(s2.shifts[c]) > 1e-9; })) s2.eq = G.eq(sp, s2.shifts);
       return { spec: sp, state: s2 };
     }
     return null;
