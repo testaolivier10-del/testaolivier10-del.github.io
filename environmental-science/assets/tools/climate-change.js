@@ -6,7 +6,9 @@
    (Explore, then Test yourself) on the Tool Studio.
 
    Explore, three scenes (the Scene switch):
-     Atmosphere  one cross-section with the two systems in their own layers,
+     Greenhouse and Ozone layer (pass 3: two scenes of one picture, the
+                 other layer dimmed, one slider each)
+                 one cross-section with the two systems in their own layers,
                  never mixed: the troposphere below, where CO2 molecules
                  catch the infrared (long red waves) rising from the ground and
                  send some back down; the stratosphere above, where ozone
@@ -32,7 +34,9 @@
   var K = M.climateChange, esc = T.esc;
   function F(x, d){ return T.F(x, d == null ? 1 : d); }
   function big(x){ return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-  var VIEWS = [{ v: 'air', label: 'Atmosphere' }, { v: 'ocean', label: 'Ocean pH' }, { v: 'sea', label: 'Sea level' }];
+  // Pass 3: the greenhouse effect and the ozone layer are two scenes (one idea
+  // each), the same cross-section with the other layer dimmed.
+  var VIEWS = [{ v: 'air', label: 'Greenhouse' }, { v: 'ozone', label: 'Ozone layer' }, { v: 'ocean', label: 'Ocean pH' }, { v: 'sea', label: 'Sea level' }];
   /* Label placement. Each label tries its candidate spots in order and takes
      the first that clears the lines drawn (rays, curves), the boxes already
      taken (labels, art), the picture's edges, an optional area it must stay
@@ -122,8 +126,12 @@
   function spots(seed, n){ var r = M.rng(seed), a = []; for(var i = 0; i < n; i++) a.push([r(), r()]); return a; }
   var CO2P = spots(5, 60), O3P = spots(9, 70), CLP = spots(13, 20);
 
-  /* The atmosphere cross-section, from a state { ppm, cfc }. */
-  function atmos(Wd, H, st, phone, simple){
+  /* The atmosphere cross-section, from a state { ppm, cfc }. focus 'ir'
+     draws the greenhouse effect (the stratosphere dimmed, no UV), 'uv' the
+     ozone layer (the troposphere dimmed, no CO2 or infrared); no focus draws
+     both (Test yourself). */
+  function atmos(Wd, H, st, phone, simple, focus){
+    var IR = focus !== 'uv', UV = focus !== 'ir';
     var g = [], du = K.ozone(st.cfc), uv = K.uvb(du), fo = K.forcing(st.ppm), dT = K.warming(st.ppm);
     var ground = Math.round(H * 0.86), strTop = Math.round(H * 0.08), strBot = Math.round(H * 0.34), tropTop = Math.round(H * 0.42);
     var L = phone ? 6 : 12, R = Wd - (phone ? 6 : 12), labX = phone ? L + 6 : L + 12;
@@ -137,25 +145,32 @@
     g.push('<path class="cc-ground" d="M0 ' + ground + ' Q' + (Wd * 0.25) + ' ' + (ground - 10) + ' ' + (Wd * 0.5) + ' ' + (ground - 2) + ' T' + Wd + ' ' + (ground - 6) + ' V' + H + ' H0 Z"/>');
     for(var t = 0; t < (phone ? 4 : 7); t++){ var tx = Wd * (0.56 + t * (phone ? 0.1 : 0.06)), ty = ground - 4; g.push('<g class="cc-tree"><rect x="' + (tx - 1.5).toFixed(1) + '" y="' + (ty - 8) + '" width="3" height="10"/><circle cx="' + tx.toFixed(1) + '" cy="' + (ty - 13) + '" r="7"/></g>'); Lo.rect(tx - 8, ty - 21, tx + 8, ty + 2); }
     var hx = Wd * 0.18; g.push('<g class="cc-house"><rect x="' + hx.toFixed(1) + '" y="' + (ground - 18) + '" width="22" height="16"/><path d="M' + (hx - 3).toFixed(1) + ' ' + (ground - 18) + ' l14 -11 l14 11 z"/></g>'); Lo.rect(hx - 4, ground - 30, hx + 26, ground);
+    // the layer not in focus is veiled (under the sun and the rays), so the eye goes to the one that changes
+    if(focus === 'ir') g.push('<rect class="cc-veil" x="0" y="0" width="' + Wd + '" height="' + tropTop + '"/>');
+    if(focus === 'uv') g.push('<rect class="cc-veil" x="0" y="' + tropTop + '" width="' + Wd + '" height="' + (H - tropTop) + '"/>');
     // the sun
     var sx = phone ? 34 : 54, sy = strTop + (phone ? -2 : 4), sr = phone ? 20 : 26;
     g.push('<circle class="cc-sun" cx="' + sx + '" cy="' + sy + '" r="' + sr + '"/>'); Lo.rect(sx - sr - 3, sy - sr - 3, sx + sr + 3, sy + sr + 3);
     // molecules: ozone in its layer (fewer with CFCs), chlorine, CO2 in the troposphere
     var nO3 = Math.round((phone ? 18 : 46) * (du - 60) / 240), nCl = Math.round((phone ? 6 : 14) * st.cfc), nCO2 = Math.round((phone ? 7 : 18) * Math.min(4.3, st.ppm / 280));
-    O3P.slice(0, nO3).forEach(function(p){ g.push(o3(L + 70 + p[0] * (R - L - 80), strTop + 12 + p[1] * (strBot - strTop - 20), phone ? 0.85 : 1)); });
+    if(!UV) nCl = 0;
+    if(!IR) nCO2 = 0;
+    O3P.slice(0, UV ? nO3 : 0).forEach(function(p){ g.push(o3(L + 70 + p[0] * (R - L - 80), strTop + 12 + p[1] * (strBot - strTop - 20), phone ? 0.85 : 1)); });
     CLP.slice(0, nCl).forEach(function(p){ g.push(cl(L + 80 + p[0] * (R - L - 90), strTop + 14 + p[1] * (strBot - strTop - 24))); });
     CO2P.slice(0, nCO2).forEach(function(p){ g.push(co2(L + 50 + p[0] * (R - L - 60), tropTop + 14 + p[1] * (ground - tropTop - 50), phone ? 0.8 : 1)); });
     // visible sunlight: passes straight through to the ground
-    [0.32, 0.5].forEach(function(f){ var x1 = Wd * f; g.push('<line class="cc-vis" x1="' + (sx + 18) + '" y1="' + (sy + 12) + '" x2="' + x1.toFixed(1) + '" y2="' + (ground - 6) + '"/>' + head(x1, ground - 6, Math.atan2(ground - 6 - sy - 12, x1 - sx - 18), 'cc-h-vis')); Lo.line([[sx + 18, sy + 12], [x1, ground - 6]], 3); });
+    (IR ? [0.32, 0.5] : []).forEach(function(f){ var x1 = Wd * f; g.push('<line class="cc-vis" x1="' + (sx + 18) + '" y1="' + (sy + 12) + '" x2="' + x1.toFixed(1) + '" y2="' + (ground - 6) + '"/>' + head(x1, ground - 6, Math.atan2(ground - 6 - sy - 12, x1 - sx - 18), 'cc-h-vis')); Lo.line([[sx + 18, sy + 12], [x1, ground - 6]], 3); });
     // ultraviolet: stopped in the ozone layer; UV-B through, stronger as ozone thins
     var uvs = phone ? [0.3, 0.46] : [0.24, 0.36, 0.48], yStop = strTop + (strBot - strTop) * 0.55;
-    uvs.forEach(function(f){ var x1 = Wd * f; g.push(ray('cc-uv', sx + 22, sy + 4, x1, yStop, 3, 7, 2.2) + '<circle class="cc-stop" cx="' + x1.toFixed(1) + '" cy="' + yStop.toFixed(1) + '" r="5"/>'); Lo.line([[sx + 22, sy + 4], [x1, yStop]], 6); Lo.rect(x1 - 7, yStop - 7, x1 + 7, yStop + 7); });
+    (UV ? uvs : []).forEach(function(f){ var x1 = Wd * f; g.push(ray('cc-uv', sx + 22, sy + 4, x1, yStop, 3, 7, 2.2) + '<circle class="cc-stop" cx="' + x1.toFixed(1) + '" cy="' + yStop.toFixed(1) + '" r="5"/>'); Lo.line([[sx + 22, sy + 4], [x1, yStop]], 6); Lo.rect(x1 - 7, yStop - 7, x1 + 7, yStop + 7); });
     var uvw = Math.min(6, 1 + 2.4 * (uv - 1) + 0.6), ux = Wd * (phone ? 0.58 : 0.6);
-    g.push('<g style="opacity:' + Math.min(1, 0.35 + 0.65 * (uv - 1) / 1.5 + 0.25).toFixed(2) + '">' + ray('cc-uv', sx + 22, sy + 8, ux, ground - 8, 3, 7, uvw) + '</g>');
-    Lo.line([[sx + 22, sy + 8], [ux, ground - 8]], 4 + uvw / 2);
+    if(UV){
+      g.push('<g style="opacity:' + Math.min(1, 0.35 + 0.65 * (uv - 1) / 1.5 + 0.25).toFixed(2) + '">' + ray('cc-uv', sx + 22, sy + 8, ux, ground - 8, 3, 7, uvw) + '</g>');
+      Lo.line([[sx + 22, sy + 8], [ux, ground - 8]], 4 + uvw / 2);
+    }
     // infrared: from the ground; some escapes, some is absorbed by CO2 and sent back down
     var share = Math.min(4, 1 + Math.round(3 * fo / K.forcing(1200))), irX = phone ? [0.68, 0.78, 0.88, 0.95] : [0.7, 0.77, 0.84, 0.91], hits = [];
-    irX.forEach(function(f, i){
+    (IR ? irX : []).forEach(function(f, i){
       var x0 = Wd * f, y0 = ground - 6;
       if(i < share){ var ya = tropTop + (ground - tropTop) * (0.35 + 0.1 * (i % 2)); hits.push([x0 - 8, ya]); g.push(ray('cc-ir', x0, y0, x0 - 8, ya, 4, 16, 2.6) + '<circle class="cc-hit" cx="' + (x0 - 8).toFixed(1) + '" cy="' + ya.toFixed(1) + '" r="6"/>' + '<path class="cc-back" d="M' + (x0 - 12).toFixed(1) + ' ' + (ya + 6).toFixed(1) + ' q-18 ' + ((y0 - ya) * 0.4).toFixed(1) + ' -10 ' + (y0 - ya - 14).toFixed(1) + '"/>' + head(x0 - 22, y0 - 8, Math.PI / 2 + 0.2, 'cc-h-ir'));
         Lo.line([[x0, y0], [x0 - 8, ya]], 7); Lo.rect(x0 - 15, ya - 8, x0 - 1, ya + 8); Lo.line([[x0 - 12, ya + 6], [x0 - 26, ya + (y0 - ya) * 0.45], [x0 - 22, y0 - 8]], 4); }
@@ -163,9 +178,9 @@
     });
     if(simple) return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT };
     // the thermometer, on the ground clear of the rays
-    var thx = Lo.box(16, 54, steps(Wd * 0.36, Wd * 0.54, 12).concat(steps(Wd * 0.08, Wd * 0.3, 8)).map(function(x){ return [x, ground - 60]; }), { within: { x0: 0, y0: tropTop, x1: Wd, y1: ground + 2 } }).x0 + 8;
+    var thx = !IR ? 0 : Lo.box(16, 54, steps(Wd * 0.36, Wd * 0.54, 12).concat(steps(Wd * 0.08, Wd * 0.3, 8)).map(function(x){ return [x, ground - 60]; }), { within: { x0: 0, y0: tropTop, x1: Wd, y1: ground + 2 } }).x0 + 8;
     var fill = 36 * Math.min(1, 0.25 + dT / 7);
-    g.push('<g class="cc-thermo"><rect x="' + (thx - 4).toFixed(1) + '" y="' + (ground - 58) + '" width="8" height="46" rx="4"/><rect class="cc-merc" x="' + (thx - 2).toFixed(1) + '" y="' + (ground - 14 - fill).toFixed(1) + '" width="4" height="' + fill.toFixed(1) + '"/><circle cx="' + thx.toFixed(1) + '" cy="' + (ground - 12) + '" r="6"/></g>');
+    if(IR) g.push('<g class="cc-thermo"><rect x="' + (thx - 4).toFixed(1) + '" y="' + (ground - 58) + '" width="8" height="46" rx="4"/><rect class="cc-merc" x="' + (thx - 2).toFixed(1) + '" y="' + (ground - 14 - fill).toFixed(1) + '" width="4" height="' + fill.toFixed(1) + '"/><circle cx="' + thx.toFixed(1) + '" cy="' + (ground - 12) + '" r="6"/></g>');
     // the key (desktop): a box in the clearest part of the sky
     if(false){   // pass 2: the rays are named where they act (Ozone absorbs UV, CO2 absorbs infrared), so no key
       var kb = Lo.box(222, 60, grid(steps(R - 222, Wd * 0.5, 10), [strTop + 4, tropTop + 6, tropTop + 70], [R, strTop]).map(function(p){ return [p[0], p[1]]; }), { within: { x0: 0, y0: 0, x1: Wd, y1: ground - 30 } }), kx = kb.x0 + 8, ky = kb.y0 + 2;
@@ -184,17 +199,17 @@
     }
     // every spot with each anchor, nearest the thing named first
     var near = function(x, y, ys){ var c = []; ['middle', 'start', 'end'].forEach(function(a){ c = c.concat(grid(xs, ys, null, a)); }); c.sort(function(p, q){ return Math.hypot(p[0] - x, p[1] - y) - Math.hypot(q[0] - x, q[1] - y); }); return c; };
-    lab(phone ? 'O₃ absorbs UV' : 'Ozone absorbs UV', 'cc-call cc-c-uv', 12.5, near(Wd * 0.36, yStop - 16, steps(strTop + 16, strBot - 4, 6)), STRAT);
+    if(UV) lab(phone ? 'O₃ absorbs UV' : 'Ozone absorbs UV', 'cc-call cc-c-uv', 12.5, near(Wd * 0.36, yStop - 16, steps(strTop + 16, strBot - 4, 6)), STRAT);
     if(nCl) lab(phone ? 'Cl breaks O₃' : 'Chlorine from CFCs breaks O₃', 'cc-call cc-c-cl', 12.5, near(Wd * 0.66, strBot + 12, steps(strTop + 16, tropTop - 4, 8)), STRAT);
-    lab(phone ? 'Stratosphere' : 'Stratosphere: the ozone layer', 'cc-layer', 13, [[labX, strBot - 8, 'start'], [labX, tropTop - 6, 'start']].concat(grid(xs, steps(strTop + 16, tropTop - 4, 6), [0, tropTop], 'start')), STRAT);
+    lab(phone || !UV ? 'Stratosphere' : 'Stratosphere: the ozone layer', 'cc-layer', 13, [[labX, strBot - 8, 'start'], [labX, tropTop - 6, 'start']].concat(grid(xs, steps(strTop + 16, tropTop - 4, 6), [0, tropTop], 'start')), STRAT);
     var hx0 = hits.length ? hits[0][0] : Wd * 0.78, hy0 = hits.length ? hits[0][1] : tropTop + 20;
-    lab(phone ? 'CO₂ traps IR' : 'CO₂ absorbs infrared', 'cc-call cc-c-ir', 12.5, near(hx0, hy0 - 22, steps(tropTop + 16, ground - 40, 10)), TROP);
+    if(IR) lab(phone ? 'CO₂ traps IR' : 'CO₂ absorbs infrared', 'cc-call cc-c-ir', 12.5, near(hx0, hy0 - 22, steps(tropTop + 16, ground - 40, 10)), TROP);
     // phones: the UV-B and warming numbers are in the pills and the two mini
     // charts already, so the scene keeps only the processes (tool-audit: busy on phones)
     // pass 2: UV-B and warming are the two readouts above the picture, on every screen size
     if(false) lab('UV-B ×' + F(uv, 2), 'cc-call cc-c-uv', 12.5, near(ux + 30, ground - 24, steps(tropTop + 16, ground - 6, 14)), TROP);
     if(false) lab('+' + F(dT, 1) + ' °C', 'cc-call cc-c-ir', 13, [[thx + 9, ground - 46, 'start'], [thx - 9, ground - 46, 'end'], [thx + 9, ground - 30, 'start'], [thx - 9, ground - 30, 'end'], [thx, ground - 64, 'middle']].concat(near(thx, ground - 40, steps(tropTop + 20, ground - 6, 10))), TROP);
-    lab(phone ? 'Troposphere' : 'Troposphere: greenhouse gases', 'cc-layer', 13, [[labX, ground - 30, 'start'], [labX, ground - 48, 'start']].concat(grid(xs, steps(tropTop + 16, ground - 6, 10), [0, ground], 'start')), TROP, phone);
+    lab(phone || !IR ? 'Troposphere' : 'Troposphere: greenhouse gases', 'cc-layer', 13, [[labX, ground - 30, 'start'], [labX, ground - 48, 'start']].concat(grid(xs, steps(tropTop + 16, ground - 6, 10), [0, ground], 'start')), TROP, phone);
     return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT, clash: Lo.clash(), misses: Lo.misses() };
   }
 
@@ -222,21 +237,21 @@
       '<div class="cc-fig"><svg class="cc-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
       '<div class="cc-ctl">' +
         '<div class="ls-seg cc-views" role="group" aria-label="Scene">' + VIEWS.map(function(x){ return '<button type="button" data-v="' + x.v + '" aria-pressed="false">' + x.label + '</button>'; }).join('') + '</div>' +
-        '<div class="cc-grp cc-grp-air"></div><div class="cc-grp cc-grp-ocean"></div><div class="cc-grp cc-grp-sea"><button type="button" class="bt-btn cc-meltbtn" aria-pressed="false">Melt the floating sea ice</button></div>' +
+        '<div class="cc-grp cc-grp-air"></div><div class="cc-grp cc-grp-ozone"></div><div class="cc-grp cc-grp-ocean"></div><div class="cc-grp cc-grp-sea"><button type="button" class="bt-btn cc-meltbtn" aria-pressed="false">Melt the floating sea ice</button></div>' +
       '</div>' +
       '<div class="cc-say"></div>' +
-      T.moreHtml('<p class="ls-lbl cc-pl">CO₂ in a given year (NOAA)</p><div class="cc-years ls-scroll" role="group" aria-label="CO2 in a given year">' + YRS.map(function(y){ return '<button type="button" class="tchip cc-year" data-ppm="' + y[1] + '">' + y[0] + ': ' + y[1] + ' ppm</button>'; }).join('') + '<button type="button" class="tchip cc-year" data-ppm="560">Doubled: 560 ppm</button></div>' +
-        '<p class="ls-lbl cc-pl">CFCs</p><div class="cc-cfcs ls-scroll" role="group" aria-label="CFC history"><button type="button" class="tchip cc-cfcp" data-c="0">Before 1930: none</button><button type="button" class="tchip cc-cfcp" data-c="0.9">1990s peak</button><button type="button" class="tchip cc-cfcp" data-c="0.5">Today: recovering</button></div>', 'years, CFC history') +
+      T.moreHtml('<p class="ls-lbl cc-pl cc-pl-y">CO₂ in a given year (NOAA)</p><div class="cc-years ls-scroll" role="group" aria-label="CO2 in a given year">' + YRS.map(function(y){ return '<button type="button" class="tchip cc-year" data-ppm="' + y[1] + '">' + y[0] + ': ' + y[1] + ' ppm</button>'; }).join('') + '<button type="button" class="tchip cc-year" data-ppm="560">Doubled: 560 ppm</button></div>' +
+        '<p class="ls-lbl cc-pl cc-pl-c">CFCs</p><div class="cc-cfcs ls-scroll" role="group" aria-label="CFC history"><button type="button" class="tchip cc-cfcp" data-c="0">Before 1930: none</button><button type="button" class="tchip cc-cfcp" data-c="0.9">1990s peak</button><button type="button" class="tchip cc-cfcp" data-c="0.5">Today: recovering</button></div>', 'years, CFC history') +
       '<div class="cc-nums"></div><p class="sr-only cc-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.cc-live'));
-    var cue = T.cue('Raise CO₂, then add CFCs. Watch which layer each one changes.');
+    var cue = T.cue('Raise CO₂ and watch the infrared. Then open Ozone layer and add CFCs.');
     $('.cc-ctl').insertBefore(cue.el, $('.cc-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var svg = $('.cc-svg');
     var sCO2 = T.slider({ label: 'CO₂ in the air', min: 280, max: 1200, step: 5, value: ppm, unit: 'ppm', onInput: function(v){ act(); ppm = v; ocean = v; sOc.set(v); draw(); words(); say(airLine()); } });
-    var sCFC = T.slider({ label: 'CFC use', min: 0, max: 1, step: 0.05, value: cfc, onInput: function(v){ act(); cfc = v; draw(); words(); say(airLine()); } });
+    var sCFC = T.slider({ label: 'CFC use', min: 0, max: 1, step: 0.05, value: cfc, onInput: function(v){ act(); cfc = v; draw(); words(); say(ozoneLine()); } });
     relabel(sCFC, function(v){ return CFC_LABEL(v); });
-    $('.cc-grp-air').appendChild(sCO2.el); $('.cc-grp-air').appendChild(sCFC.el);
+    $('.cc-grp-air').appendChild(sCO2.el); $('.cc-grp-ozone').appendChild(sCFC.el);
     var sOc = T.slider({ label: 'CO₂ in the air', min: 280, max: 1200, step: 5, value: ocean, unit: 'ppm', onInput: function(v){ act(); ocean = v; ppm = v; sCO2.set(v); draw(); words(); say(oceanLine()); } });
     $('.cc-grp-ocean').appendChild(sOc.el);
     var sW = T.slider({ label: 'Ocean warming (top 700 m)', min: 0, max: 3, step: 0.1, value: warmC, unit: '°C', onInput: function(v){ act(); warmC = v; draw(); words(); say(seaLine()); } });
@@ -251,22 +266,24 @@
     function onClick(e){
       var b = e.target.closest('.cc-views button'); if(b){ setView(b.getAttribute('data-v')); return; }
       var y = e.target.closest('.cc-year'); if(y){ act(); ppm = ocean = +y.getAttribute('data-ppm'); sCO2.set(ppm); sOc.set(ppm); draw(); words(); say(view === 'ocean' ? oceanLine() : airLine()); return; }
-      var c = e.target.closest('.cc-cfcp'); if(c){ act(); cfc = +c.getAttribute('data-c'); sCFC.set(cfc); draw(); words(); say(airLine()); return; }
+      var c = e.target.closest('.cc-cfcp'); if(c){ act(); cfc = +c.getAttribute('data-c'); sCFC.set(cfc); draw(); words(); say(ozoneLine()); return; }
       if(e.target.closest('.cc-meltbtn')){ act(); seaIce = !seaIce; sync(); draw(); words(); say(seaIce ? 'The floating sea ice melted. Sea level did not change.' : 'Sea ice back.'); }
     }
     host.addEventListener('click', onClick);
-    function setView(v){ if(v === view) return; act(); view = v; sync(); draw(); words(); say(v === 'air' ? airLine() : v === 'ocean' ? oceanLine() : seaLine()); }
+    function setView(v){ if(v === view) return; act(); view = v; sync(); draw(); words(); say(v === 'air' ? airLine() : v === 'ozone' ? ozoneLine() : v === 'ocean' ? oceanLine() : seaLine()); }
     function sync(){
       var root = LS ? LS.root : host;
       root.querySelectorAll('.cc-views button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
-      ['air', 'ocean', 'sea'].forEach(function(k){ var el = $('.cc-grp-' + k); if(el) el.hidden = k !== view; });
+      ['air', 'ozone', 'ocean', 'sea'].forEach(function(k){ var el = $('.cc-grp-' + k); if(el) el.hidden = k !== view; });
       var si = $('.cc-meltbtn'); if(si){ si.setAttribute('aria-pressed', String(seaIce)); si.textContent = seaIce ? 'Bring the sea ice back' : 'Melt the floating sea ice'; }
-      root.querySelectorAll('.cc-cfcs, .cc-pl:nth-of-type(2)').forEach(function(x){ x.hidden = view !== 'air'; });
-      if(LS && LS.setupRow) LS.setupRow.setup(view === 'sea' ? 'Model values' : 'Choose a year');
+      root.querySelectorAll('.cc-cfcs, .cc-pl-c').forEach(function(x){ x.hidden = view !== 'ozone'; });
+      root.querySelectorAll('.cc-years, .cc-pl-y').forEach(function(x){ x.hidden = view === 'ozone'; });
+      if(LS && LS.setupRow) LS.setupRow.setup(view === 'sea' ? 'Model values' : view === 'ozone' ? 'CFC history' : 'Choose a year');
     }
 
     /* ------------------------------------------------- numbers and words */
-    function airLine(){ var du = K.ozone(cfc); return 'CO₂ ' + ppm + ' ppm: long-run warming +' + F(K.warming(ppm), 1) + ' °C. CFCs ' + CFC_LABEL(cfc).toLowerCase() + ': ozone ' + Math.round(du) + ' DU, UV-B at the ground ×' + F(K.uvb(du), 2) + '.'; }
+    function airLine(){ return 'CO₂ ' + ppm + ' ppm: long-run warming +' + F(K.warming(ppm), 1) + ' °C.'; }
+    function ozoneLine(){ var du = K.ozone(cfc); return 'CFCs ' + CFC_LABEL(cfc).toLowerCase() + ': ozone ' + Math.round(du) + ' DU, UV-B at the ground ×' + F(K.uvb(du), 2) + '.'; }
     function phNow(){ return K.ph(ocean); }
     function oceanLine(){ var p = phNow(); return 'CO₂ ' + ocean + ' ppm: ocean pH ' + F(p, 2) + ', ' + F(K.hFactor(8.2, p), 2) + ' times the hydrogen ions of 1850.'; }
     function seaParts(){ var th = K.expansion(K.BETA, 700, warmC), li = landPct / 100 * K.GREENLAND; return { th: th, li: li, si: 0, tot: th + li }; }
@@ -274,9 +291,13 @@
     function words(){
       var head, sub = '', why;
       if(view === 'air'){
-        var du = K.ozone(cfc);
         head = 'More CO₂ traps more infrared low down: the surface warms.';
-        sub = cfc ? 'CFCs thin the ozone high up' + (du < 220 ? ' (an ozone hole)' : '') + ', so more UV-B gets through. A separate problem.' : 'No CFCs: the ozone layer is whole.';
+        sub = 'The ground gives off infrared; CO₂ catches it and sends some back down.';
+        why = airWhy();
+      } else if(view === 'ozone'){
+        var du = K.ozone(cfc);
+        head = cfc ? 'CFCs thin the ozone high up' + (du < 220 ? ' (an ozone hole)' : '') + ': more UV-B reaches the ground.' : 'No CFCs: the ozone layer is whole.';
+        sub = 'Ozone absorbs the Sun\'s ultraviolet. This is not the greenhouse effect.';
         why = airWhy();
       } else if(view === 'ocean'){
         var p = phNow();
@@ -297,9 +318,12 @@
         var narrow = (window.innerWidth || 1280) <= 640;
         LS.caption('<b>' + esc(head) + '</b>' + (sub && !narrow ? ' ' + esc(sub) : ''), 'explore');
         if(view === 'air'){
+          LS.pills([{ k: 'Warming', html: '+' + F(K.warming(ppm), 1) + ' °C', tone: K.warming(ppm) > 2 ? 'bad' : K.warming(ppm) > 0.5 ? 'warn' : 'good' }], 'left', 'explore');
+          LS.pills([], 'right', 'explore');
+        } else if(view === 'ozone'){
           var d2 = K.ozone(cfc);
-          LS.pills([{ k: 'Greenhouse', html: '+' + F(K.warming(ppm), 1) + ' °C', tone: K.warming(ppm) > 2 ? 'bad' : K.warming(ppm) > 0.5 ? 'warn' : 'good' }], 'left', 'explore');
-          LS.pills([{ k: 'Ozone', html: Math.round(d2) + ' DU', tone: d2 < 220 ? 'bad' : d2 < 280 ? 'warn' : 'good' }], 'right', 'explore');
+          LS.pills([{ k: 'Ozone', html: Math.round(d2) + ' DU', tone: d2 < 220 ? 'bad' : d2 < 280 ? 'warn' : 'good' }], 'left', 'explore');
+          LS.pills([{ k: 'UV-B', html: '×' + F(K.uvb(d2), 2), tone: 'readout' }], 'right', 'explore');
         } else if(view === 'ocean'){
           LS.pills([{ k: 'pH', html: F(phNow(), 2), tone: phNow() < 8 ? 'bad' : phNow() < 8.15 ? 'warn' : 'good' }], 'left', 'explore');
           LS.pills([{ k: 'H⁺', html: '×' + F(K.hFactor(8.2, phNow()), 2), tone: 'readout' }], 'right', 'explore');
@@ -328,7 +352,7 @@
     }
     function nums(){
       var box = $('.cc-nums'), h = '';
-      if(view === 'air'){
+      if(view === 'air' || view === 'ozone'){
         h = '<h3 class="ls-title-l">Two systems, side by side</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Greenhouse effect and ozone layer compared"><table class="ls-tbl"><caption class="sr-only">Greenhouse effect and ozone layer</caption><thead><tr><th scope="col"></th><th scope="col">Greenhouse effect</th><th scope="col">Ozone layer</th></tr></thead><tbody>' +
           '<tr><th scope="row">Where</th><td>Troposphere</td><td>Stratosphere</td></tr><tr><th scope="row">Radiation</th><td>Infrared, from the ground</td><td>Ultraviolet, from the Sun</td></tr><tr><th scope="row">Gases</th><td>H₂O, CO₂, CH₄, N₂O, CFCs</td><td>O₃, destroyed by Cl from CFCs</td></tr><tr><th scope="row">Problem</th><td>Global warming</td><td>More UV-B at the ground</td></tr><tr><th scope="row">Policy</th><td>Kyoto Protocol, Paris Agreement</td><td>Montreal Protocol</td></tr>' +
           '<tr><th scope="row">Now</th><td>' + ppm + ' ppm: ' + F(K.forcing(ppm), 2) + ' W/m², +' + F(K.warming(ppm), 1) + ' °C long run</td><td>' + Math.round(K.ozone(cfc)) + ' DU: UV-B ×' + F(K.uvb(K.ozone(cfc)), 2) + '</td></tr></tbody></table></div>' + curves();
@@ -347,14 +371,14 @@
     function draw(){
       var wh = size(), Wd = wh[0], H = wh[1], phone = Wd < 640;
       svg.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); svg.setAttribute('width', Wd); svg.setAttribute('height', H);
-      var o = view === 'air' ? airScene(Wd, H, phone) : view === 'ocean' ? oceanScene(Wd, H, phone) : seaScene(Wd, H, phone);
+      var o = view === 'air' || view === 'ozone' ? airScene(Wd, H, phone) : view === 'ocean' ? oceanScene(Wd, H, phone) : seaScene(Wd, H, phone);
       svg.innerHTML = o.svg; svg.setAttribute('aria-label', o.label);
     }
     function airScene(Wd, H, phone){
       // pass 2: the atmosphere is the picture; the two response curves are in Numbers & setup (curves())
-      var a = atmos(Wd, H, { ppm: ppm, cfc: cfc }, phone), g = [a.svg], Lo = layout(Wd, H);
+      var a = atmos(Wd, H, { ppm: ppm, cfc: cfc }, phone, false, view === 'ozone' ? 'uv' : 'ir'), g = [a.svg], Lo = layout(Wd, H);
       svg.setAttribute('data-clash', String((a.clash || 0) + Lo.clash())); svg.setAttribute('data-miss', (a.misses || []).concat(Lo.misses()).join(' | '));
-      return { svg: g.join(''), label: 'Atmosphere cross-section. Troposphere: CO₂ at ' + ppm + ' ppm absorbs infrared from the ground and sends some back down; long-run warming +' + F(a.dT, 1) + ' °C. Stratosphere: ozone at ' + Math.round(a.du) + ' Dobson units absorbs ultraviolet' + (cfc ? '; chlorine from CFCs is breaking it down' : '') + '; UV-B at the ground ' + F(a.uv, 2) + ' times normal.' };
+      return { svg: g.join(''), label: view === 'ozone' ? 'Atmosphere cross-section, the ozone layer. Stratosphere: ozone at ' + Math.round(a.du) + ' Dobson units absorbs ultraviolet' + (cfc ? '; chlorine from CFCs is breaking it down' : '') + '; UV-B at the ground ' + F(a.uv, 2) + ' times normal.' : 'Atmosphere cross-section, the greenhouse effect. Troposphere: CO₂ at ' + ppm + ' ppm absorbs infrared from the ground and sends some back down; long-run warming +' + F(a.dT, 1) + ' °C.' };
     }
     function curves(){
       var Wd = 560, H = 210, gap = 12, y0 = 44, y1 = H - 20, Lo = layout(Wd, H, { enl: false }), pw = (Wd - 3 * gap) / 2, phone = false, g = [];
@@ -471,7 +495,7 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.cc-fig')], dock: [$('.cc-ctl')], primary: [sCO2.el, sOc.el, sW.el], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.cc-fig')], dock: [$('.cc-ctl')], primary: [sCO2.el, sCFC.el, sOc.el, sW.el], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
