@@ -138,7 +138,10 @@
     regs.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b){ touch(); setPick('one', st.id, b.getAttribute('data-r')); } });
     if(modesEl) modesEl.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(!b) return; var m = b.getAttribute('data-m'); if(m === st.mode) return; touch(); setPick(m, (m === 'two' ? twos : ones)[0]); });
     function touch(){ if(!st.touched){ st.touched = true; cue.done(); } }
-    function setTh(v){ var L = lims(); st.th = clamp(v, L[0], L[1]); touch(); draw(true); }
+    // Pass 3 (judge c): the area set-up and its two legend keys appear once theta moves (Play, the slider or a drag).
+    function swept(){ if(st.swept) return; st.swept = true; setupEl.classList.remove('pl-pre'); legend.classList.remove('pl-pre'); }
+    setupEl.classList.add('pl-pre'); legend.classList.add('pl-pre');
+    function setTh(v){ var L = lims(); st.th = clamp(v, L[0], L[1]); touch(); swept(); draw(true); }
     function idx(th){ var L = lims(), n = info().tb.th.length - 1; return clamp(Math.round((th - L[0]) / (L[1] - L[0]) * n), 0, n); }
 
     /* ------------------------------------------------ the polar plane */
@@ -321,7 +324,7 @@
     function play(){
       var L = lims();
       if(st.th >= L[1] - 1e-6) st.th = L[0];
-      st.playing = true; touch(); playBtn.textContent = 'Pause';
+      st.playing = true; touch(); swept(); playBtn.textContent = 'Pause';
       var rate = (L[1] - L[0]) / 6;
       loop = P.loop(function(dt){ var Q = lims(); st.th = Math.min(Q[1], st.th + dt * rate); draw(false); if(st.th >= Q[1]) return false; },
         { still: function(){ st.th = lims()[1]; }, onEnd: function(){ st.playing = false; playBtn.textContent = 'Play'; draw(true); } });

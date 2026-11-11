@@ -111,3 +111,5 @@
 
 /* Pass 2: with one curve the purple curve needs no key; the inner/outer pair keeps both names. */
 .pl-legend:not(.is-two) .pl-lg-r{display:none;}
+/* Pass 3 (judge c): before theta moves, no area box on the picture and a two-item key (away / toward). */
+.pl-setup.pl-pre,.pl-legend.pl-pre .pl-lg-A,.pl-legend.pl-pre .pl-lg-s{display:none !important;}
