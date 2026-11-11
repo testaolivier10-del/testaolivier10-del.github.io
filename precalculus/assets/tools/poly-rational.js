@@ -229,7 +229,8 @@
     function load(id){
       st.spec = PR.clone(PR.PRESETS[id].spec); st.next = 0;
       st.spec.factors.forEach(function(f){ f.c = st.next++; });
-      st.sel = 0; aSl.set(st.spec.a);
+      // pass 3: nothing chosen on open, so the Zero / Asymptote / Hole row appears only after a tap
+      st.sel = -1; aSl.set(st.spec.a);
       presetsEl.querySelectorAll('.pr-pre').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === id)); });
       buildPins(); draw(true);
     }
@@ -320,7 +321,7 @@
       return z ? PR.zeroText(z) : v ? PR.vaText(v) : h ? PR.holeText(h) : '';
     }
     function words2(R){
-      var f = sel(), head = f ? featureOf(f, R) : PR.endText(R);
+      var f = sel(), head = f ? featureOf(f, R) : st.sel < 0 ? '<b>Tap a factor</b> below, or drag its pin on the x-axis, to see what it does to the graph.' : PR.endText(R);
       var items = [PR.endText(R)].concat(st.spec.factors.slice().sort(function(p, q){ return p.r - q.r; }).map(function(g){ return '<span class="pr-dot ' + cls(g) + '" aria-hidden="true"></span>' + featureOf(g, R); }));
       if(R.slant) items.push('Slant asymptote $y = ' + PR.n(R.slant.m) + 'x ' + (R.slant.b < 0 ? '- ' + PR.n(-R.slant.b) : '+ ' + PR.n(R.slant.b)) + '$: the quotient when the numerator is divided by the denominator.');
       var body = '<ol class="pr-feats">' + items.map(function(t){ return '<li>' + tx(t) + '</li>'; }).join('') + '</ol>' +

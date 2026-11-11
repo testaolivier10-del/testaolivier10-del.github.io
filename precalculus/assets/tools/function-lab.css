@@ -65,6 +65,7 @@
 .fl-lg-g::before{content:"";width:18px;height:3.4px;border-radius:2px;background:var(--fl-g);}
 .fl-lg-hk::before{content:"";width:10px;height:10px;border-radius:3px;border:2.5px solid var(--fl-g);box-sizing:border-box;}
 .fl-lg-sh::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--fl-p2);}
+.fl-lg-sh[data-c="p1"]::before{background:var(--fl-p1);} .fl-lg-sh[data-c="p3"]::before{background:var(--fl-p3);} .fl-lg-sh[data-c="p4"]::before{background:var(--fl-p4);} .fl-lg-sh[data-c="p5"]::before{background:var(--fl-p5);}
 .ls-phone .fl-legend{display:none;}
 
 /* formula, words, table, features */

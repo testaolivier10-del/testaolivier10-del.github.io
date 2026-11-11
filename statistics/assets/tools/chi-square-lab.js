@@ -114,9 +114,10 @@
     var tableH = yT + ch;
     // the chi-square curve
     if(v.curve && H - tableH > 110){
-      var top = tableH + 14, cb = H - (small ? 30 : 34), lft = pad + 6, rgt = W - (v.noEnl ? pad + 6 : 52);
-      var df = t.df, crit = D().invChi2(1 - (v.alpha || 0.05), df), xmax = Math.max(crit * 1.45, Math.min(t.chi2 * 1.12, crit * 3), df + 3 * Math.sqrt(2 * df));
       var full = v.showComp && v.showE >= all && !v.hideObs, chi = t.chi2;
+      // pass 3: the strip along the axis gets its own name under the axis numbers, so room is kept for it
+      var top = tableH + 14, cb = H - (small ? 30 : 34) - (full ? 16 : 0), lft = pad + 6, rgt = W - (v.noEnl ? pad + 6 : 52);
+      var df = t.df, crit = D().invChi2(1 - (v.alpha || 0.05), df), xmax = Math.max(crit * 1.45, Math.min(t.chi2 * 1.12, crit * 3), df + 3 * Math.sqrt(2 * df));
       var f = function(x){ return D().chi2Pdf(x, df); }, peak = 0, k;
       for(k = 1; k <= 200; k++){ var fx = f(xmax * k / 200); if(isFinite(fx) && fx > peak) peak = fx; }
       if(df <= 2) peak = Math.min(peak, f(xmax * 0.05));
@@ -142,6 +143,7 @@
           out.push('<rect class="cs-seg ' + (t.signs[i][j] > 0 ? 'is-up' : 'is-down') + (isSel ? ' is-sel' : '') + '" x="' + f2(sx(a0)) + '" y="' + f2(my - mh) + '" width="' + f2(Math.max(0.5, sx(a1) - sx(a0))) + '" height="' + mh + '"/>');
         }
       }
+      if(full && acc > 0) out.push(txt(sx(0), my + 36, 'Strip on the axis: each cell\'s share of χ², end to end', 'cs-stripl', 'start'));
       out.push('<line class="cs-axis" x1="' + f2(lft) + '" y1="' + f2(my) + '" x2="' + f2(rgt) + '" y2="' + f2(my) + '"/>');
       var st = xmax > 40 ? 10 : xmax > 16 ? 5 : xmax > 7 ? 2 : 1;
       for(k = 0; k <= xmax + 1e-9; k += st){ var tx0 = sx(k); out.push('<line class="cs-tick" x1="' + f2(tx0) + '" y1="' + f2(my) + '" x2="' + f2(tx0) + '" y2="' + f2(my + 5) + '"/>' + txt(tx0, my + 18, String(k), 'cs-tl')); }

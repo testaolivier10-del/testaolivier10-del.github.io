@@ -103,14 +103,16 @@
       out.push('<g class="pg-alab">' + labs.join('') + '</g>');
       if(c){
         var tr = o.traced == null ? TAU : o.traced;
-        // band-colored glow under the traced curve, then the curve
-        bandsOf.forEach(function(pc){
-          var a = pc.a, b = Math.min(pc.b, tr); if(b <= a + 1e-9) return;
-          var pts = samples(c, a, b, Math.max(8, Math.round(240 * (b - a) / TAU)));
-          out.push('<path class="pg-glow is-' + pc.dist + '" d="M' + pts.map(function(p){ var z = xy(p[0], p[1]); return r1(z[0]) + ' ' + r1(z[1]); }).join('L') + '"/>');
-        });
+        // pass 3: one stroke, colored by its band (moving away / toward), not a glow under a blue line:
+        // where a curve retraces itself the glows of both passes showed as a doubled outline.
         if(o.ghost && tr < TAU){ var gp = splitPaths(samples(c, tr, TAU, 360), xy); out.push('<path class="pg-ghost" d="' + gp.pos + gp.neg + '"/>'); }
-        if(tr > 0){ var sp = splitPaths(samples(c, 0, tr, Math.max(12, Math.round(720 * tr / TAU))), xy); out.push('<path class="pg-curve" d="' + sp.pos + '"/><path class="pg-curve is-neg" d="' + sp.neg + '"/>'); }
+        if(tr > 0 && bandsOf.length){
+          bandsOf.forEach(function(pc){
+            var a = pc.a, b = Math.min(pc.b, tr); if(b <= a + 1e-9) return;
+            var sp1 = splitPaths(samples(c, a, b, Math.max(12, Math.round(720 * (b - a) / TAU))), xy);
+            out.push('<path class="pg-curve is-' + pc.dist + '" d="' + sp1.pos + '"/><path class="pg-curve is-neg is-' + pc.dist + '" d="' + sp1.neg + '"/>');
+          });
+        } else if(tr > 0){ var sp = splitPaths(samples(c, 0, tr, Math.max(12, Math.round(720 * tr / TAU))), xy); out.push('<path class="pg-curve" d="' + sp.pos + '"/><path class="pg-curve is-neg" d="' + sp.neg + '"/>'); }
         if(o.interval){
           var ia = o.interval[0], ib = o.interval[1], ip = splitPaths(samples(c, ia, ib, 160), xy);
           out.push('<path class="pg-arc" d="' + ip.pos + ip.neg + '"/>');

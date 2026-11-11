@@ -57,7 +57,7 @@
           '<div class="rl-res-wrap"><svg class="rl-res" role="img"></svg></div>' +
         '</div>' +
         '<div class="rl-ctl">' +
-          '<div class="rl-sets ls-scroll" role="group" aria-label="Data set"></div>' +
+          '<div class="rl-sets"></div>' +
           '<div class="rl-models ls-scroll" role="group" aria-label="Model"></div>' +
           '<div class="rl-slot"></div>' +
         '</div>' +
@@ -159,12 +159,16 @@
       slider = T.slider({ label: 'Predict at x (' + D().x + ')', min: Math.ceil(r[0] / k) * k, max: Math.floor(r[1] / k) * k, step: k, value: st.x, onInput: function(v){ touch(); setX(v, true); } });
       slot.innerHTML = ''; slot.appendChild(slider.el);
     }
+    /* the data set: one menu (pass 3), not seven chips; the models stay chips, the main action */
+    var setSel = T.choiceSelect({ label: 'Data', value: st.id, options: ids.map(function(id){ return { value: id, label: RL.DATASETS[id].name }; }),
+      onChange: function(v){ touch(); st.id = v; st.kind = 'linear'; var d = dat(); st.x = d.xs[Math.floor(d.xs.length * 0.6)]; buildChips(); buildSlider(); update(true); } });
+    setSel.el.classList.add('rl-set');
     function buildChips(){
-      sets.innerHTML = ids.map(function(id){ return '<button type="button" class="bt-btn rl-chip" data-id="' + id + '" aria-pressed="' + (id === st.id) + '">' + esc(RL.DATASETS[id].name) + '</button>'; }).join('');
+      if(setSel.el.parentNode !== sets){ sets.innerHTML = ''; sets.appendChild(setSel.el); }
+      setSel.set(st.id);
       var d = dat();
       models.innerHTML = RL.MORDER.map(function(k){ var ok = RL.allowed(k, d.xs, d.ys); return '<button type="button" class="bt-btn rl-mchip" data-k="' + k + '" aria-pressed="' + (k === st.kind) + '"' + (ok ? '' : ' disabled title="Needs every ' + (k === 'logarithmic' ? 'x' : 'y') + ' > 0"') + '>' + esc(RL.MODELS[k].name) + '</button>'; }).join('');
     }
-    sets.addEventListener('click', function(e){ var b = e.target.closest('.rl-chip'); if(!b) return; touch(); st.id = b.getAttribute('data-id'); st.kind = 'linear'; var d = dat(); st.x = d.xs[Math.floor(d.xs.length * 0.6)]; buildChips(); buildSlider(); update(true); });
     models.addEventListener('click', function(e){ var b = e.target.closest('.rl-mchip'); if(!b || b.disabled) return; touch(); st.kind = b.getAttribute('data-k'); buildChips(); update(true); });
 
     var lastCap = '';

@@ -40,6 +40,9 @@ body.stat{
 .sl-fig.is-wide .sl-side{justify-content:center;}
 .sl-fig.is-wide .sl-strip{flex-wrap:wrap;row-gap:4px;white-space:normal;mask-image:none;}
 .sl-fig.is-wide .sl-meansbox{height:min(62%,420px);}
+/* pass 3: no samples yet, so no empty dotplot: the neighborhood and its color key take the stage */
+.sl-fig.is-empty .sl-legend,.sl-fig.is-empty .sl-meansbox,.sl-fig.is-empty .sl-strip{display:none;}
+.sl-fig.is-empty.is-wide{display:flex;}
 .sl-legend{margin:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:700 calc(12px * var(--ls-scale, 1)) var(--font-ui);color:var(--muted);}
 .sl-legend span{display:inline-flex;align-items:center;gap:6px;}
 .sl-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;}
@@ -228,3 +231,7 @@ body.stat{
 .sl-rk.sl-rg2::before{background:color-mix(in srgb,var(--stat-s4) 45%,var(--white));} .sl-rk.sl-rg3::before{background:color-mix(in srgb,var(--stat-s5) 40%,var(--white));}
 .sl-roster figcaption{padding:0 48px;}
 .sl-rh{font-size:17px;}
+
+/* pass 3: on a phone the dot colors are named by the plot itself (mu line, the orange dot is this sample),
+   so the three-item legend gives its row back to the neighborhood */
+.ls-root.ls-phone .ls-stage:not(.is-big) .sl-legend{display:none;}

@@ -208,6 +208,9 @@
       var z = size('.sl-zone', 21, 12.5);
       // the top label stays inside the picture
       all('.sl-zone').forEach(function(t, i){ if(sc.kind === 'plots' || i === 0) t.setAttribute('y', Math.max(sc.kind === 'plots' ? 30 : 27, z * 0.85).toFixed(1)); });
+      // pass 3: with the street names out in the gutter (a small picture), the area names move to the right
+      // edge, so "Hillside" no longer runs on from "Summit Rd"
+      if(sc.kind === 'houses') all('.sl-zone').forEach(function(t){ var on = gut > 0; t.setAttribute('x', on ? W - 10 : 14); t.setAttribute('text-anchor', on ? 'end' : 'start'); });
       size('.sl-vert', 15);
       size('.sl-room-t', 18, 12);
       size('.sl-hall-t, .sl-office-t', 17);
@@ -336,6 +339,9 @@
         act(); sel = +g.getAttribute('data-i'); marks(); text();
       });
       svg.classList.toggle('is-values', values);
+      // pass 3: house numbers sit in the gap after each house; lift them above every house so the next
+      // house does not cover them (the random integers in the strip name houses by these numbers)
+      if(sc.kind === 'houses'){ var top = document.createElementNS('http://www.w3.org/2000/svg', 'g'); top.setAttribute('class', 'sl-labs'); top.setAttribute('aria-hidden', 'true'); svg.querySelectorAll('.sl-u > .sl-lab').forEach(function(t){ top.appendChild(t); }); (svg.querySelector('.sl-u') ? svg.querySelector('.sl-u').parentNode : svg).appendChild(top); }
       bands(); marks();
       keepReadable(svg, sc);
       vkey();
@@ -388,9 +394,13 @@
     }
     function drawMeans(){
       var box = $('.sl-meansbox'); if(!box) return;
-      var r = box.getBoundingClientRect(), w = Math.round(r.width) || 600, h = Math.round(r.height) || 150;
       var list = S.METHODS.filter(function(m){ return rows[m]; }).map(function(m){ return { m: m, means: rows[m].means, last: rows[m].last }; });
-      var fig = $('.sl-fig'); if(fig){ var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
+      // pass 3: before the first sample the neighborhood is the whole picture (with its color key); the
+      // dotplot of sample means joins it when there is a mean to put on it
+      var fig = $('.sl-fig'); if(fig) fig.classList.toggle('is-empty', !list.length);
+      if(!list.length){ box.innerHTML = ''; if(LS){ LS.pills([], 'left', 'explore'); LS.pills([{ k: 'μ', html: fx(pop.mu), tone: 'ghost' }], 'right', 'explore'); } return; }
+      var r = box.getBoundingClientRect(), w = Math.round(r.width) || 600, h = Math.round(r.height) || 150;
+      if(fig){ var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
       r = box.getBoundingClientRect(); w = Math.round(r.width) || 600; h = Math.round(r.height) || 150;
       box.innerHTML = meansSvg(list, dom(), pop.mu, w, h, { cur: method, mu: fx(pop.mu), axis: 'Sample mean x̄ (' + sc.unitOf + ')', empty: 'Means land here', label: list.length ? 'Dotplot of sample means by method: ' + list.map(function(x){ return S.SHORT[x.m] + ' ' + x.means.length + ' samples, centered at ' + fx(S.mean(x.means)); }).join('; ') + '. Population mean ' + fx(pop.mu) + '.' : 'No samples yet. The population mean is ' + fx(pop.mu) + '.' });
       if(LS) LS.pills(cur ? [{ k: 'x̄', html: fx(cur.mean), tone: 'readout' }] : [], 'left', 'explore');

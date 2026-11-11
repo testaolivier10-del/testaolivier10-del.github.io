@@ -93,3 +93,11 @@
 .ls-root.ls-phone .vm-tk text{font-size:12px;}
 .ls-root.ls-phone .vm-wrap{min-height:200px;}
 .ls-root.ls-phone .vm-views > .bt-mode{font-size:13.5px;padding:0 4px;}
+
+/* pass 3: x(t) and y(t) on tap; the toggle leads the legend row under the stage */
+.vm-lrow{display:flex;align-items:center;gap:6px 14px;flex-wrap:wrap;}
+.vm-comp{min-height:36px;padding:4px 14px;font-size:13px;border-radius:999px;flex:none;}
+.vm-comp[aria-pressed="true"]{background:var(--ctint,#E3F3E8);color:var(--cink,#11592F);border-color:var(--cink,#11592F);}
+.vm-comp[hidden]{display:none;}
+.ls-root.ls-phone .vm-lrow{padding-right:56px;}
+.ls-root.ls-phone .vm-lrow .vm-legend{padding-right:0;}

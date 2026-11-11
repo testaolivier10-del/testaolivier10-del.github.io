@@ -62,7 +62,7 @@
         '</div>' +
         '<div class="rc-ctl">' +
           '<div class="rc-views ls-seg" role="group" aria-label="View"><button type="button" class="bt-mode" data-v="sec" aria-pressed="true">Secants</button><button type="button" class="bt-mode" data-v="est" aria-pressed="false">Estimate</button></div>' +
-          '<div class="rc-chips ls-scroll" role="group" aria-label="Context"></div>' +
+          '<div class="rc-chips"></div>' +
           '<div class="rc-slot"></div>' +
           '<div class="rc-nseg ls-seg" role="group" aria-label="Number of intervals"><span class="rc-nlab" aria-hidden="true">Intervals</span>' + [2, 3, 4].map(function(k){ return '<button type="button" class="bt-mode rc-n" data-k="' + k + '" aria-pressed="false" aria-label="' + k + ' intervals">' + k + '</button>'; }).join('') + '</div>' +
         '</div>' +
@@ -221,8 +221,11 @@
     }
 
     /* ---------------------------------------------- controls */
-    function buildChips(){ chips.innerHTML = ids.map(function(id){ return '<button type="button" class="bt-btn rc-chip" data-id="' + id + '" aria-pressed="' + (id === st.id) + '">' + esc(RC.FUNCS[id].name) + '</button>'; }).join(''); }
-    chips.addEventListener('click', function(e){ var b = e.target.closest('.rc-chip'); if(!b) return; touch(); st.id = b.getAttribute('data-id'); reset(); buildChips(); buildSlider(); update(true); });
+    /* the context: one menu (pass 3), not six chips */
+    var ctxSel = T.choiceSelect({ label: 'Situation', value: st.id, options: ids.map(function(id){ return { value: id, label: RC.FUNCS[id].name }; }),
+      onChange: function(v){ touch(); st.id = v; reset(); buildChips(); buildSlider(); update(true); } });
+    ctxSel.el.classList.add('rc-sit');
+    function buildChips(){ if(ctxSel.el.parentNode !== chips){ chips.innerHTML = ''; chips.appendChild(ctxSel.el); } ctxSel.set(st.id); }
     views.addEventListener('click', function(e){
       var b = e.target.closest('.bt-mode'); if(!b) return; touch(); st.view = b.getAttribute('data-v');
       views.querySelectorAll('.bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });

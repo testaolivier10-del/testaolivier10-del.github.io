@@ -151,13 +151,13 @@
     var LS = null;
     var paths = (data.paths || VM.PORDER).filter(function(id){ return VM.PATHS[id]; });
     var mats = (data.matrices || VM.MORDER).filter(function(id){ return VM.MATRICES[id]; });
-    var st = { view: 'motion', pid: paths[0], t: 1, iv: false, u: [3, 1], v: [1, 3], op: 'add', k: 2, mid: mats[0], A: VM.MATRICES[mats[0]].A.map(function(r){ return r.slice(); }), s: 1, undo: false, p: [2, 1], touched: false };
+    var st = { view: 'motion', pid: paths[0], t: 1, iv: false, comp: false, u: [3, 1], v: [1, 3], op: 'add', k: 2, mid: mats[0], A: VM.MATRICES[mats[0]].A.map(function(r){ return r.slice(); }), s: 1, undo: false, p: [2, 1], touched: false };
     var cue = T.cue('Press Play to send the point along its path; switch to Vectors or Matrices above.');
     host.innerHTML =
       '<section class="bt-problem vm-card" aria-label="Vectors and matrices explorer">' +
         '<div class="vm-stage">' +
           '<div class="vm-wrap" tabindex="0" role="slider" aria-label="Time t on the path: arrow keys change it"><svg class="vm-svg" aria-hidden="true"><g class="vm-scene"></g><g class="vm-handles"></g></svg></div>' +
-          '<p class="vm-legend" aria-hidden="true"></p>' +
+          '<div class="vm-lrow"><button type="button" class="bt-btn vm-comp" aria-pressed="false">Show x(t) and y(t)</button><p class="vm-legend" aria-hidden="true"></p></div>' +
         '</div>' +
         '<div class="vm-ctl">' +
           '<div class="vm-views ls-seg" role="group" aria-label="View"><button type="button" class="bt-mode" data-v="motion" aria-pressed="true">Motion</button><button type="button" class="bt-mode" data-v="vectors" aria-pressed="false">Vectors</button><button type="button" class="bt-mode" data-v="matrix" aria-pressed="false">Matrices</button></div>' +
@@ -215,6 +215,7 @@
         : st.view === 'vectors' ? '<span class="vm-lg c-u">u</span><span class="vm-lg c-v">v</span><span class="vm-lg c-w">result</span>'
         : '<span class="vm-lg c-u">image of (1, 0): column 1</span><span class="vm-lg c-v">image of (0, 1): column 2</span><span class="vm-lg c-p">p and its image</span>';
       buildParams();
+      syncComp();
     }
     function buildParams(){
       var out = [];
@@ -251,6 +252,8 @@
       if(st.view === 'motion'){ st.iv = k === 'iv'; if(st.iv) st.t = Math.min(st.t, tMax()); build(); draw(true); return; }
       st.undo = k === 'U'; st.s = 0; build(); play();
     });
+    host.querySelector('.vm-comp').addEventListener('click', function(){ touch(); st.comp = !st.comp; syncComp(); draw(true); });
+    function syncComp(){ var compBtn = host.querySelector('.vm-comp') || (LS && LS.root.querySelector('.vm-comp')); if(!compBtn) return; compBtn.hidden = st.view !== 'motion' || st.iv; compBtn.setAttribute('aria-pressed', String(st.comp)); compBtn.textContent = st.comp ? 'Hide x(t) and y(t)' : 'Show x(t) and y(t)'; }
     /* Play: the point runs along the path, or the plane moves to its image. */
     function play(){
       pause();
@@ -288,8 +291,10 @@
       words(full);
     }
     function drawMotion(w, h){
-      var Pp = path(), wide = w >= h * 1.15, out = [];
-      var pb = wide ? { x0: 6, y0: 6, w: w * 0.6 - 12, h: h - 12 } : { x0: 6, y0: 4, w: w - 12, h: h * 0.6 - 8 };
+      var Pp = path(), wide = w >= h * 1.15, out = [], comp = st.comp || st.iv;
+      // pass 3: the path alone fills the stage; the graphs of x(t) and y(t) join it on "Show x(t) and y(t)"
+      // (and always in Interval, whose secants are drawn on them)
+      var pb = !comp ? { x0: 6, y0: 6, w: w - 12, h: h - 12 } : wide ? { x0: 6, y0: 6, w: w * 0.6 - 12, h: h - 12 } : { x0: 6, y0: 4, w: w - 12, h: h * 0.6 - 8 };
       var xs = [], ys = [], i; for(i = 0; i <= 120; i++){ var tt = Pp.dom[0] + (Pp.dom[1] - Pp.dom[0]) * i / 120; xs.push(Pp.x(tt)); ys.push(Pp.y(tt)); }
       var xa = Math.min(-1, Math.floor(Math.min.apply(null, xs)) - 1), xb = Math.max(1, Math.ceil(Math.max.apply(null, xs)) + 1), ya = Math.min(-1, Math.floor(Math.min.apply(null, ys)) - 1), yb = Math.max(1, Math.ceil(Math.max.apply(null, ys)) + 1);
       var g = plane(pb, xa, xb, ya, yb);
@@ -306,8 +311,8 @@
       var gb1, gb2;
       if(wide){ gb1 = { x0: w * 0.6, y0: 4, w: w * 0.4 - 4, h: h / 2 - 4 }; gb2 = { x0: w * 0.6, y0: h / 2, w: w * 0.4 - 4, h: h / 2 - 4 }; }
       else { gb1 = { x0: 0, y0: h * 0.6, w: w / 2, h: h * 0.4 }; gb2 = { x0: w / 2, y0: h * 0.6, w: w / 2, h: h * 0.4 }; }
-      var gx = tGraph(gb1, Pp.x, Pp.dom, 'c-x', 'x(t)', Pp.pi), gy = tGraph(gb2, Pp.y, Pp.dom, 'c-y', 'y(t)', Pp.pi);
-      out.push(gx.svg, gy.svg);
+      var gx = comp ? tGraph(gb1, Pp.x, Pp.dom, 'c-x', 'x(t)', Pp.pi) : null, gy = comp ? tGraph(gb2, Pp.y, Pp.dom, 'c-y', 'y(t)', Pp.pi) : null;
+      if(comp) out.push(gx.svg, gy.svg);
       if(st.iv){
         var t1 = st.t, t2 = st.t + dt(), p1 = [Pp.x(t1), Pp.y(t1)], p2 = [Pp.x(t2), Pp.y(t2)];
         out.push('<line class="vm-leg c-x" x1="' + r1(g.sx(p1[0])) + '" y1="' + r1(g.sy(p1[1])) + '" x2="' + r1(g.sx(p2[0])) + '" y2="' + r1(g.sy(p1[1])) + '"/>');
@@ -324,7 +329,7 @@
         var px = Pp.x(st.t), py = Pp.y(st.t);
         out.push('<line class="vm-proj c-x" x1="' + r1(g.sx(px)) + '" y1="' + r1(g.sy(py)) + '" x2="' + r1(g.sx(px)) + '" y2="' + r1(g.sy(0)) + '"/><line class="vm-proj c-y" x1="' + r1(g.sx(px)) + '" y1="' + r1(g.sy(py)) + '" x2="' + r1(g.sx(0)) + '" y2="' + r1(g.sy(py)) + '"/>');
         out.push('<circle class="vm-pt" cx="' + r1(g.sx(px)) + '" cy="' + r1(g.sy(py)) + '" r="7"/>');
-        [[gx, Pp.x], [gy, Pp.y]].forEach(function(G2){ var gg = G2[0], v = G2[1](st.t); out.push('<line class="vm-cur" x1="' + r1(gg.gx(st.t)) + '" y1="' + r1(gg.T) + '" x2="' + r1(gg.gx(st.t)) + '" y2="' + r1(gg.B) + '"/><circle class="vm-pt" cx="' + r1(gg.gx(st.t)) + '" cy="' + r1(gg.gy(v)) + '" r="5.5"/>'); });
+        if(comp) [[gx, Pp.x], [gy, Pp.y]].forEach(function(G2){ var gg = G2[0], v = G2[1](st.t); out.push('<line class="vm-cur" x1="' + r1(gg.gx(st.t)) + '" y1="' + r1(gg.T) + '" x2="' + r1(gg.gx(st.t)) + '" y2="' + r1(gg.B) + '"/><circle class="vm-pt" cx="' + r1(gg.gx(st.t)) + '" cy="' + r1(gg.gy(v)) + '" r="5.5"/>'); });
       }
       wrap.setAttribute('aria-valuemin', M.fixed(Pp.dom[0], 2)); wrap.setAttribute('aria-valuemax', M.fixed(tMax(), 2)); wrap.setAttribute('aria-valuenow', M.fixed(st.t, 2));
       wrap.setAttribute('aria-valuetext', 't = ' + tText(st.t, Pp.pi) + ', x = ' + num(Pp.x(st.t)) + ', y = ' + num(Pp.y(st.t)));
