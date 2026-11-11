@@ -257,7 +257,7 @@
       o.push('<path d="' + death + '" fill="none" stroke="#B5481F" stroke-width="4" stroke-dasharray="12 6"/>');
       var spots = []; for(var k = 0; k < 5; k++) spots.push([pct(X0 + w * (k + 0.5), 38)]);
       return { svg: frame(o.join(''), 'Demographic transition model: birth rate and death rate across five stages, with total population rising'),
-        spots: spots, labels: [], legend: [{ sw: 'birth', text: 'Birth rate' }, { sw: 'death', text: 'Death rate' }, { sw: 'pop', text: 'Total population' }] };
+        spots: spots, labels: [{ x: 50, y: 95, text: 'Time' }, { x: 7, y: 5, text: 'Rate' }], legend: [{ sw: 'birth', text: 'Birth rate' }, { sw: 'death', text: 'Death rate' }, { sw: 'pop', text: 'Total population' }] };
     },
     /* Rostow: a staircase that rises stage by stage; each step is filled with
        the mix of work at that stage (farming at the bottom, then factories,
