@@ -88,3 +88,6 @@
 .ls-root.ls-phone .mic-ls-stage .gl-mx .gl-tag{font-size:10.5px;}
 @media (prefers-reduced-motion:reduce){ .gl-arr{transition:none;} }
 .gl-mx .gl-tag.is-to{bottom:auto;top:6px;}
+.gl-show-l{margin:6px 0 -2px;font:700 12.5px var(--font-ui);color:var(--muted);}
+/* The first-run halo rings one cell, square like the cell (pass 2: a pill-shaped ring round the whole matrix cut through its labels). */
+.ls-halo{border-radius:16px !important;}
