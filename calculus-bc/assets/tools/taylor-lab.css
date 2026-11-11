@@ -86,3 +86,6 @@
 .tl-dtab td{text-align:center;font:700 16px var(--font-ui);}
 .cd-opt-t .calc-m{font-size:1.12em;}
 @media (max-width:640px){.tl-qfig .tl-key{padding-right:48px;}}
+/* Pass 3 (judge c): the error band is a light wash with a dashed edge, so f and P_n stay the picture. */
+.calc-plot .tl-bandp{fill-opacity:.08;stroke-opacity:.55;stroke-dasharray:4 3;}
+:root[data-theme="dark"] .calc-plot .tl-bandp{fill-opacity:.1;}
