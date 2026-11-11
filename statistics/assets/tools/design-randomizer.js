@@ -208,6 +208,7 @@
     function drawEst(){
       var box = $('.dr-estbox'); if(!box) return;
       var fig = $('.dr-fig'); if(fig){ var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
+      box.innerHTML = '';   // measure the box empty, so the old plot does not hold its size
       var r = box.getBoundingClientRect(), w = Math.round(r.width) || 600, h = Math.round(r.height) || 150;
       var order = []; D.DESIGNS.forEach(function(d){ order.push(d); order.push(d + '-u'); });
       var list = order.filter(function(k){ return rows[k]; }).map(function(k){ return { key: k, name: rowName(k), vals: rows[k].vals, last: rows[k].last }; });
