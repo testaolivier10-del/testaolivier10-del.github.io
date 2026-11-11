@@ -877,7 +877,10 @@ const BUDGETS = [
   ['human-geography/tools.html', 5],
   ['human-geography/formula-sheet.html', 15],
   // 26: "Models you must know", 26 models each drawn as inline SVG with its key, claim, limit and example (measured 22.7 at Phase 3).
-  ['human-geography/models.html', 26],
+  /* 26 -> 27.5 (tool visuals 2026-11, docs/tool-review/done/hug.md): Rostow, the epidemiological transition, the
+     world system, gravity and rank-size are drawn as the models themselves instead of numbered boxes, and the page
+     carries those figures. Measured 26.1 KB. */
+  ['human-geography/models.html', 27.5],
   ['human-geography/justify.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
