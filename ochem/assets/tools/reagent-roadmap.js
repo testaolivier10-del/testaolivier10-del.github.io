@@ -812,15 +812,21 @@
     var t = names.length ? names.join(', ') : (e.rx[0] || '');
     return t.length > 22 ? t.slice(0, 21) + '…' : t;
   }
-  function molStrip(r){
-    var walk = molWalk(r), cells = [];
+  function molStrip(r, hero){
+    var walk = molWalk(r), cells = [], maxW = 0;
     r.nodes.forEach(function(id, i){
       var m = walk && walk.mols[i];
       var pic = m && m.f ? molSvg(m.f, m.name) : fragSvg(id);
+      // Hero (pass 3): every molecule at one scale, so a small one is not blown up beside a big one.
+      if(hero && pic) pic = pic.replace(/viewBox="-?[\d.]+ -?[\d.]+ ([\d.]+) /, function(all, w){ maxW = Math.max(maxW, +w); return all; });
+      if(hero && pic) pic = pic.replace(/<svg([^>]*?)viewBox="(-?[\d.]+) (-?[\d.]+) ([\d.]+) ([\d.]+)"/, function(all, a, x, y, w, h){
+        return '<svg' + a + 'viewBox="' + x + ' ' + y + ' ' + w + ' ' + h + '" style="--mw:' + Math.round(w) + 'px;--mh:' + Math.round(h) + 'px"';
+      });
       if(i){
         var e = walk ? walk.edges[i - 1] : r.hops[i - 1][0];
         cells.push('<li class="rr-ms__step"><span class="rr-ms__n">' + i + '</span><span class="rr-ms__rx">' + rxHtml(e) + '</span>' +
-          '<svg class="rr-ms__arrow" viewBox="0 0 60 14" aria-hidden="true"><path d="M2 7 H52"/><path class="rr-ms__head" d="M58 7 L49 2 L49 12 Z"/></svg></li>');
+          '<svg class="rr-ms__arrow" viewBox="0 0 60 14" aria-hidden="true"><path d="M2 7 H52"/><path class="rr-ms__head" d="M58 7 L49 2 L49 12 Z"/></svg>' +
+          (hero ? '<svg class="rr-ms__down" viewBox="0 0 14 34" aria-hidden="true"><path d="M7 2 V25"/><path class="rr-ms__head" d="M7 32 L2 23 L12 23 Z"/></svg>' : '') + '</li>');
       }
       cells.push('<li class="rr-ms__mol' + (i === 0 ? ' is-start' : (i === r.nodes.length - 1 ? ' is-end' : '')) + '">' +
         '<span class="rr-ms__k">' + (i === 0 ? 'Start' : (i === r.nodes.length - 1 ? 'Target' : 'Step ' + i)) + '</span>' +
@@ -828,7 +834,7 @@
         '<span class="rr-ms__name">' + esc(m ? m.name : nodeName(id)) + '</span>' +
         (m ? '<span class="rr-ms__g">' + esc(nodeName(id)) + '</span>' : '') + '</li>');
     });
-    return '<div class="rr-stepcards rr-ms">' +
+    return '<div class="rr-stepcards rr-ms' + (hero ? ' is-hero" style="--ms-fit:' + (maxW ? Math.min(1, 168 / maxW).toFixed(3) : 1) : '') + '">' +
       '<p class="rr-ms__head">' + (walk ? 'The route on one molecule, ' + esc(walk.fam.name) : 'The route, group by group (a C–C step changes the skeleton)') + '</p>' +
       '<ol class="rr-ms__row" aria-label="The route, step by step">' + cells.join('') + '</ol></div>';
   }
@@ -906,11 +912,14 @@
       '<g aria-hidden="true">' + arcs + '</g>' + middle + cards + '</svg></div>';
   }
 
-  var sameOpen = false;
+  /* Pass 3 (cleanup 2026-11-11): the route on one molecule is the hero; the
+     map of every group waits behind "Show on the map". A search with no route
+     shows the map, since then there is no molecule to draw. */
+  var sameOpen = false, mapOpen = false;
   function renderRoute(){
     var res = routes(S.from, S.to, { skeleton: S.skeleton });
     if(S.pick >= res.shortest.length) S.pick = 0;
-    var picked = res.shortest[S.pick];
+    var picked = res.shortest[S.pick], showMap = mapOpen || !picked;
 
     var marks = null;
     if(picked){
@@ -973,11 +982,12 @@
         '</div>' +
       '</div>' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head rr-maphead"><span>The map</span><span class="rr-legend"><span class="rr-dot rr-dot--a">A</span> start <span class="rr-dot rr-dot--b">B</span> target. Tap a group to make it the target.</span></div>' +
+        (showMap ? '<div class="tpanel__head rr-maphead"><span>The map</span><span class="rr-legend"><span class="rr-dot rr-dot--a">A</span> start <span class="rr-dot rr-dot--b">B</span> target. Tap a group to make it the target.</span></div>' +
         mapHtml(marks, undefined, {
           edges: picked ? picked.nodes.slice(1).map(function(id, i){ return { from: picked.nodes[i], to: id, n: i + 1 }; }) : [],  // reagents: on the arrows of the strip below (pass 2: not twice)
-          fit: picked ? picked.nodes : [S.from, S.to] }) +
-        (picked ? molStrip(picked) : '') +
+          fit: picked ? picked.nodes : [S.from, S.to] }) : '') +
+        (picked ? molStrip(picked, !showMap) : '') +
+        (picked ? '<button type="button" class="tchip rr-mapbtn" id="rrMapBtn" aria-pressed="' + mapOpen + '">' + (mapOpen ? 'Hide the map' : 'Show on the map') + '</button>' : '') +
       '</div>' +
       '<div aria-live="polite" id="rrRoutes">' + body + '</div>';
 
@@ -1002,6 +1012,11 @@
         var again = elRoute.querySelector('.rr-node[data-node="' + id + '"]');
         if(again) again.focus();
       });
+    });
+    var mb = document.getElementById('rrMapBtn');
+    if(mb) mb.addEventListener('click', function(){
+      mapOpen = !mapOpen; renderRoute();
+      var again = document.getElementById('rrMapBtn'); if(again) again.focus({ preventScroll: true });
     });
     var same = document.getElementById('rrSame');
     if(same) same.addEventListener('toggle', function(){ sameOpen = same.open; });
@@ -1031,17 +1046,59 @@
     }).join('');
   }
 
+  /* Pass 3 (cleanup 2026-11-11): one reaction at a time, drawn: the group it
+     starts from, an arrow carrying the reagents, the group it gives. The
+     arrows under it step through every reaction the reagent does. */
+  var rxAt = { r: '', i: 0 };
+  function rxPic(e){
+    var a = fragSvg(e.from), b = fragSvg(e.to), maxW = 0;
+    // Both groups at one scale (their own size), so a small group is not blown up beside a big one.
+    function sized(pic){
+      return pic ? pic.replace(/<svg([^>]*?)viewBox="(-?[\d.]+) (-?[\d.]+) ([\d.]+) ([\d.]+)"/, function(all, at, x, y, w, h){
+        maxW = Math.max(maxW, +w);
+        return '<svg' + at + 'viewBox="' + x + ' ' + y + ' ' + w + ' ' + h + '" style="--mw:' + Math.round(w) + 'px;--mh:' + Math.round(h) + 'px"';
+      }) : pic;
+    }
+    a = sized(a); b = sized(b);
+    function side(id, pic, k){
+      return '<div class="rr-rxpic__mol"><span class="rr-rxpic__k">' + k + '</span><div class="rr-rxpic__pic">' + (pic || '<span class="tformula">' + esc(D.node(id).short) + '</span>') + '</div>' +
+        '<span class="rr-rxpic__name">' + esc(id === e.to && e.spec ? nodeName(id) + ' (' + e.spec + ')' : nodeName(id)) + '</span></div>';
+    }
+    return '<div class="rr-rxpic" style="--ms-fit:' + (maxW ? Math.min(1, 220 / maxW).toFixed(3) : 1) + '">' + side(e.from, a, 'From') +
+      '<div class="rr-rxpic__step"><span class="rr-rxpic__rx">' + rxHtml(e) + '</span>' +
+        '<svg class="rr-rxpic__arrow" viewBox="0 0 90 14" aria-hidden="true"><path d="M2 7 H80"/><path class="rr-rxpic__head" d="M88 7 L78 1.5 L78 12.5 Z"/></svg></div>' +
+      side(e.to, b, 'Gives') + '</div>';
+  }
   function reagentDetail(){
     var r = D.reagent(S.reagent);
     if(!r) return '';
     var es = edgesForReagent(r.id);
-    return '<div class="tpanel">' +
+    if(rxAt.r !== r.id){ rxAt.r = r.id; rxAt.i = 0; }
+    if(rxAt.i >= es.length) rxAt.i = 0;
+    var e = es[rxAt.i], more = e ? example(e) + notes(e) : '';
+    return '<div class="tpanel rr-one">' +
       '<div class="rr-reagent__head"><h2 class="rr-reagent__name">' + esc(r.name) + '</h2><span class="tmuted">' + esc(r.full) + '</span></div>' +
       '<p class="rr-reagent__does">' + esc(r.does) + '</p>' +
-      '<div class="tpanel__head"><span>In this course (' + es.length + ')</span></div>' +
-      '<div class="rr-cards">' + es.map(function(e){ return card(e, true, true); }).join('') + '</div>' +
+      (es.length > 1 ? '<div class="rr-rxnav" role="group" aria-label="Reactions of ' + esc(r.name) + '">' +
+        '<button type="button" class="tchip" data-rxstep="-1" aria-label="Previous reaction">&larr;</button>' +
+        '<span class="rr-rxnav__n">' + (rxAt.i + 1) + ' of ' + es.length + ' reactions</span>' +
+        '<button type="button" class="tchip" data-rxstep="1" aria-label="Next reaction">&rarr;</button></div>' : '') +
+      (e ? '<article class="rr-card rr-card--one" aria-label="Reaction ' + (rxAt.i + 1) + ' of ' + es.length + '">' +
+        '<div class="rr-card__top"><span class="rr-card__name">' + esc(e.name) + '</span>' + tags(e) + '</div>' +
+        rxPic(e) +
+        (more ? '<details class="rr-card__more"><summary>Example and notes</summary>' + more + '</details>' : '') +
+        topicLink(e.topic) + '</article>' : '') +
     '</div>';
   }
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest && ev.target.closest('.rr-rxnav [data-rxstep]');
+    var out = document.getElementById('rrReagentOut');
+    if(!b || !out) return;
+    var n = edgesForReagent(S.reagent).length;
+    rxAt.i = (rxAt.i + parseInt(b.getAttribute('data-rxstep'), 10) + n) % n;
+    out.innerHTML = reagentDetail();
+    var again = out.querySelector('[data-rxstep="' + b.getAttribute('data-rxstep') + '"]'); if(again) again.focus({ preventScroll: true });
+  });
 
   function bindReagentChips(){
     elReagent.querySelectorAll('.rr-reagent').forEach(function(b){
@@ -1425,7 +1482,7 @@
   function put(key, els){ els.forEach(function(el){ if(el) ls.box[key].appendChild(el); }); }
 
   function studioRoute(){
-    put('route-stage', [elRoute.querySelector('.rr-maphead'), elRoute.querySelector('.rr-map'), elRoute.querySelector('.rr-stepcards')]);
+    put('route-stage', [elRoute.querySelector('.rr-maphead'), elRoute.querySelector('.rr-map'), elRoute.querySelector('.rr-stepcards'), elRoute.querySelector('.rr-mapbtn')]);
     put('route-dock', [elRoute.querySelector('.rr-pick'), elRoute.querySelector('#rrCC')]);
     put('route-why', [elRoute.querySelector('#rrRoutes')]);
     // (the map zooms to the route itself)
@@ -1435,9 +1492,9 @@
       cap = '<b>No route from ' + esc(lc0(nodeName(S.from))) + ' to ' + esc(lc0(nodeName(S.to))) + (S.skeleton ? ' keeping the skeleton' : '') + '.</b> Why? says what would.';
       pills.push({ html: 'No route', tone: 'warn' });
     } else {
+      // Pass 3: the step count is said once (here), the skeleton once (the switch in the dock).
       cap = '<b>' + esc(nodeName(r.nodes[0])) + ' to ' + esc(lc0(nodeName(r.nodes[r.nodes.length - 1]))) + ' in ' + res.length + ' step' + (res.length > 1 ? 's' : '') + '.</b> ' +
-        'The reagents are on the arrows under the map. Why? has more' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
-      pills.push({ html: res.length + ' step' + (res.length > 1 ? 's' : '') }, { html: S.skeleton ? 'Same skeleton' : 'C–C steps allowed', tone: 'ghost' });
+        'The reagents ride the arrows. Why? has more' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
     }
     studio.caption(cap, 'route');
     studio.pills(pills, 'left', 'route');
@@ -1452,7 +1509,7 @@
   function reagentCaption(){
     var r = D.reagent(S.reagent);
     var nr = r ? edgesForReagent(r.id).length : 0;
-    studio.caption(r ? '<b>' + esc(r.name) + ':</b> ' + 'every reaction it does in this course is on the stage. Tap another reagent, or search.' : '<b>Pick a reagent</b> to see everything it does in this course.', 'reagent');
+    studio.caption(r ? '<b>' + esc(r.name) + '</b> does ' + nr + ' reaction' + (nr === 1 ? '' : 's') + ' in this course. Step through them on the stage, or pick another reagent.' : '<b>Pick a reagent</b> to see everything it does in this course.', 'reagent');
     // The stage heading names the reagent and the panel head counts its reactions.
     studio.pills([], 'left', 'reagent');
   }
