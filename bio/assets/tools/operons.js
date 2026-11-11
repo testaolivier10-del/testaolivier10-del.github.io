@@ -207,7 +207,7 @@
         return '<g class="op-tapg" data-gene="' + gene + '" data-ci="' + ci + '" role="button" tabindex="0" aria-label="' + esc(geneTapLabel(gene, k)) + '"><rect class="op-hit" x="' + (x1 - 2) + '" y="' + (y - 20) + '" width="' + (x2 - x1 + 4) + '" height="40" rx="6"/>' + b + '</g>';
       };
       var title = trp ? 'trp operon' : st.mode === 'mero' ? COPY_NAMES[ci] : 'lac operon';
-      p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + '</text>'); // pass 2: the mRNA number is the pill
+      if(st.mode === 'mero') p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + '</text>'); // pass 2: the mRNA number is the pill; one operon needs no title (the Operon choice names it)
       var reg = trp ? (k.R === '-' ? 'trpR⁻' : 'trpR') : (k.I === '-' ? 'lacI⁻' : k.I === 's' ? 'lacIˢ' : 'lacI');
       p.push(box(8, 84, 'gene reg', reg, trp ? k.R === '-' : k.I !== '+', trp ? 'R' : 'I'));
       p.push('<text class="op-note" x="46" y="' + (y + 32) + '" text-anchor="middle">' + (trp ? (k.R === '-' ? 'no repressor' : '') : (k.I === '-' ? 'no repressor' : k.I === 's' ? 'super-repressor' : '')) + '</text>');
