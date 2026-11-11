@@ -88,7 +88,8 @@
   function panels(rel, k, f, foot0, foot1){
     return '<line x1="240" x2="240" y1="16" y2="262" class="sd-div"/>' + chip(120, 18, 'Before') + chip(360, 18, 'After', true) +
       txt(120, 258, foot0 || 'the original', 'sd-cap', 'middle') + txt(360, 258, changes(rel, k), 'sd-cap', 'middle') +
-      txt(360, 274, (foot1 ? foot1 + ' · ' : '') + yres(rel, f), 'sd-cap2', 'middle');
+      // Pass 3: in Explore the factor shows once (the pill); the picture keeps it only as the question in Test yourself.
+      txt(360, 274, hideY ? (foot1 ? foot1 + ' · ' : '') + yres(rel, f) : (foot1 || ''), 'sd-cap2', 'middle');
   }
   // Two rows (before on top) for scenes that run left to right.
   function rows(rel, k, f){
@@ -614,7 +615,7 @@
       $('.sd-bar').innerHTML = bars(rel, st.k, f);
       var changed = rel.vars.filter(function(v){ return Math.abs(st.k[v.sym] - 1) > 1e-9; });
       var parts = changed.map(function(v){ return '(' + nice(st.k[v.sym]) + ')' + pw(v.p); });
-      var eq = sub(rel.Y.sym) + ' × ' + (changed.length ? parts.join(' × ') + ' = <b>× ' + nice(f) + '</b>' : '<b>1</b>');
+      var eq = changed.length ? sub(rel.Y.sym) + ' × ' + parts.join(' × ') + ' = <b>× ' + nice(f) + '</b>' : '';   // pass 3: nothing to multiply yet
       $('.sd-eq').innerHTML = eq;
       var hd;
       if(!changed.length) hd = 'Drag a slider: how does ' + sub(rel.Y.sym) + ' change?';
