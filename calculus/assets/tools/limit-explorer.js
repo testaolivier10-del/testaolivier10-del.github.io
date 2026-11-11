@@ -287,9 +287,10 @@
       // The dock: gallery, zoom, actions.
       el.chips = document.createElement('div');
       el.chips.className = 'le-gallery';
-      el.chips.innerHTML = '<p class="le-lbl" id="le-gal-l">Function</p><div class="ls-scroll le-chips" role="group" aria-labelledby="le-gal-l">' + LE.GALLERY.map(function(g){
-        return '<button type="button" class="ls-chip le-chip" data-id="' + g.id + '" aria-pressed="false">' + esc(g.short) + '</button>';
-      }).join('') + '</div>';
+      // Pass 3: the seven functions are one select, not a wall of chips.
+      el.chips.innerHTML = '<label class="le-lbl" for="le-fsel">Function</label><select id="le-fsel" class="le-fsel">' + LE.GALLERY.map(function(g){
+        return '<option value="' + g.id + '">' + esc(g.short) + '</option>';
+      }).join('') + '</select>';
       el.zoom = document.createElement('div');
       el.zoom.className = 'le-zoom';
       el.zoom.innerHTML = '<label class="le-lbl" for="le-z"><span class="le-zl">Zoom in on x = 1</span> <output class="le-zv" for="le-z">1×</output></label>' +
@@ -330,7 +331,7 @@
     }
 
     function wire(){
-      el.chips.addEventListener('click', function(e){ var b = e.target.closest('.le-chip'); if(b) select(b.getAttribute('data-id')); });
+      el.chips.querySelector('.le-fsel').addEventListener('change', function(e){ select(e.target.value); });
       el.range.addEventListener('input', function(){ stopPlay(); setZ(+el.range.value); });
       el.zoom.querySelectorAll('.le-zb').forEach(function(b){
         b.addEventListener('click', function(){ stopPlay(); setZ(Math.round((z + (+b.getAttribute('data-d')) * 0.5) * 2) / 2); });
@@ -382,7 +383,7 @@
     function select(id, quiet){
       stopPlay();
       cur = LE.entry(id) || LE.GALLERY[0]; filled = false; z = 0; el.range.value = '0';
-      el.chips.querySelectorAll('.le-chip').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === cur.id)); });
+      el.chips.querySelector('.le-fsel').value = cur.id;
       var fill = el.fill;
       fill.hidden = cur.fill == null;
       fill.setAttribute('aria-pressed', 'false');
@@ -428,6 +429,8 @@
 
     function render(fresh){
       var st = state();
+      // Pass 3: the table and the checklist join the graph at the first zoom.
+      if(z > 0.001) el.zoomed = true; el.stage.classList.toggle('le-pre', !el.zoomed);
       el.zoom.querySelector('.le-zv').textContent = LE.zoomLabel(z);
       el.range.setAttribute('aria-valuetext', LE.zoomLabel(z));
       draw(st);
@@ -594,8 +597,8 @@
     function checklist(st){
       if(st.inf){
         el.check.innerHTML = '<p class="le-ch-h">End behavior</p><ul class="le-check">' +
-          '<li class="' + (st.deep ? 'yes' : 'wait') + '"><span class="le-tk" aria-hidden="true"></span><span>lim<sub>x→∞</sub> f(x)</span><b>' + (st.deep ? limText(cur.right) : 'zoom out') + '</b></li>' +
-          '<li class="' + (st.deep ? 'yes' : 'wait') + '"><span class="le-tk" aria-hidden="true"></span><span>lim<sub>x→−∞</sub> f(x)</span><b>' + (st.deep ? limText(cur.left) : 'zoom out') + '</b></li></ul>' +
+          '<li class="' + (st.deep ? 'yes' : 'wait') + '"><span class="le-tk" aria-hidden="true"></span><span>lim<sub>x→∞</sub> f(x)</span><b>' + (st.deep ? limText(cur.right) : '…') + '</b></li>' +
+          '<li class="' + (st.deep ? 'yes' : 'wait') + '"><span class="le-tk" aria-hidden="true"></span><span>lim<sub>x→−∞</sub> f(x)</span><b>' + (st.deep ? limText(cur.left) : '…') + '</b></li></ul>' +
           '<p class="le-verdict' + (st.deep ? ' is-on' : '') + '">' + (st.deep ? 'Horizontal asymptote y = ' + cur.hasym : 'Zoom out to 100× to decide') + '</p>';
         return;
       }
@@ -604,8 +607,8 @@
       var s1 = ck.defined ? 'yes' : 'no', s2 = !deep ? 'wait' : ck.exists ? 'yes' : 'no', s3 = !deep || !ck.defined || !ck.exists ? (deep && (!ck.defined || !ck.exists) ? 'skip' : 'wait') : ck.equal ? 'yes' : 'no';
       el.check.innerHTML = '<p class="le-ch-h">Continuous at x = ' + a + '?</p><ol class="le-check">' +
         item(s1, 'f(' + a + ') is defined', ck.defined ? '= ' + limText(ck.value) : 'no', 'defined') +
-        item(s2, 'the limit exists', !deep ? 'zoom in' : ck.exists ? '= ' + limText(ck.limit.two) : 'no', 'limit') +
-        item(s3, 'they are equal', s3 === 'wait' ? 'zoom in' : s3 === 'skip' ? '—' : ck.equal ? 'yes' : 'no', 'equal') + '</ol>' +
+        item(s2, 'the limit exists', !deep ? '…' : ck.exists ? '= ' + limText(ck.limit.two) : 'no', 'limit') +
+        item(s3, 'they are equal', s3 === 'wait' ? '…' : s3 === 'skip' ? '—' : ck.equal ? 'yes' : 'no', 'equal') + '</ol>' +
         '<p class="le-verdict' + (deep ? ' is-on ' + (ck.continuous ? 'good' : 'bad') : '') + '">' + (deep ? TYPE_WORD[ck.type] + (filled ? ' (filled)' : '') : 'Zoom in to 100× to decide') + '</p>';
     }
 
