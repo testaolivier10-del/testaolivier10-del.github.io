@@ -268,7 +268,7 @@
     }
     /* Ribosomes read the mRNA into protein: the enzyme band under the DNA
        (tool review 2026-11). One drawn cluster = 10 units at steady state.
-       lacZ⁻ copies make the protein, but it does not work: drawn grey and
+       lacZ⁻ copies make the protein, but it does not work: drawn gray and
        dashed. beta-galactosidase is a tetramer, so each is four subunits. */
     var ENZ_H = 70;
     function enzCluster(cx, cy, bad){
@@ -284,7 +284,7 @@
       var x = 30, y = y0 + 48, step = W < 400 ? 28 : 34;
       for(var i = 0; i < good; i++){ out += enzCluster(x, y, false); x += step; }
       for(var j = 0; j < bad; j++){ out += enzCluster(x, y, true); x += step; }
-      var note = good + bad === 0 ? (s.e > 0 ? 'almost none (a few molecules)' : 'none') : bad && !good ? 'made, but not working (lacZ⁻)' : bad ? 'grey: made, but not working (lacZ⁻)' : 'each = 10';
+      var note = good + bad === 0 ? (s.e > 0 ? 'almost none (a few molecules)' : 'none') : bad && !good ? 'made, but not working (lacZ⁻)' : bad ? 'gray: made, but not working (lacZ⁻)' : 'each = 10';
       out += W < 400 && good + bad > 6 ? '<text class="op-note" x="18" y="' + (y + 30) + '">' + note + '</text>' : '<text class="op-note" x="' + (good + bad ? x + 4 : 18) + '" y="' + (y + 4) + '">' + note + '</text>';
       return out;
     }
