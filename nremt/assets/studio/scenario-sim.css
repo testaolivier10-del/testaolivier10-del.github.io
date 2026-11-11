@@ -117,13 +117,11 @@
 .nx-scenario-sim .sim-ls-dock .levl-next{position:static !important;box-shadow:none !important;}
 .nx-scenario-sim .sim-end-acts{position:relative;z-index:3;}
 
-/* Pass 3 (cleanup 2026-11-11): at the opening of a call the monitor waits behind "Check vitals". */
-.nx-scenario-sim .sim-mon-open{display:none;}
+/* Pass 3: "Check vitals" stands in for the monitor at a call's opening; six calls, then All calls. */
+.nx-scenario-sim .sim-mon-open{display:none}
 @media (min-width:1000px){
-  .nx-scenario-sim[data-mon-wait] .sim-grid > #monHost{display:none !important;}
-  .nx-scenario-sim[data-mon-wait] .sim-mon-open{display:flex;align-items:center;justify-content:center;gap:8px;flex:none;min-height:48px;padding:0 18px;border:0;border-radius:16px;
-    background:#11201c;color:#7CF0B0;font:800 var(--ls-m) var(--font-ui);cursor:pointer;box-shadow:inset 0 0 0 1.5px #2a3d37;}
-  .nx-scenario-sim[data-mon-wait] .sim-mon-open::before{content:"";width:9px;height:9px;border-radius:50%;background:#3DF08B;}
+.nx-scenario-sim[data-mon-wait] .sim-grid>#monHost{display:none!important}
+.nx-scenario-sim[data-mon-wait] .sim-mon-open{display:block;min-height:48px;border:0;border-radius:16px;background:#11201c;color:#7CF0B0;font:800 var(--ls-m) var(--font-ui);cursor:pointer}
 }
-.nx-scenario-sim .picker-cats[hidden]{display:none;}
-.nx-scenario-sim .picker-all{grid-column:1 / -1;justify-self:center;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--cink);font:800 var(--ls-m) var(--font-ui);cursor:pointer;}
+.nx-scenario-sim .picker-cats[hidden]{display:none}
+.nx-scenario-sim .picker-all{grid-column:1/-1;justify-self:center;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--surface2);color:var(--cink);font:800 var(--ls-m) var(--font-ui)}
