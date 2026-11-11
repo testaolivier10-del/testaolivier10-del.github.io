@@ -1063,6 +1063,38 @@ confirm it.
   explorer pulses conjugated bonds and the electronegative end of a pi bond (`resTargets()` in
   `resonance.js`). It is a nudge, never grading: every tap still works.
 
+### tools-review-2026-11-sn1-e1-split: 2-bromobutane in hot water called "mostly E1"
+- **Status:** open (the reaction predictor was marked LEAVE in `docs/tool-review/ochem.md`, so it is unchanged).
+- **What the tool says:** 2-bromobutane + H₂O, heat: "mostly E1, about 70%, some SN1".
+- **Why it is arguable:** heat raises the elimination share, but in the measured solvolyses substitution stays
+  the major product: t-butyl chloride in aqueous ethanol goes from 17% to 36% alkene between room temperature and
+  65 °C, and 2-chloro-2-methylbutane in 80% ethanol from 33% to 40% (Hughes and Ingold data, summarized at
+  masterorganicchemistry.com, "SN1/SN2/E1/E2: the temperature"). Water is a better nucleophile-solvent for SN1
+  than aqueous ethanol, so a secondary bromide in water should give mostly 2-butanol. Many course flowcharts do
+  teach "weak base plus heat means E1".
+- **Options:** say "a mixture; heat raises E1, but SN1 (2-butanol) is usually still the larger part"; or keep the
+  flowchart answer and add that sentence as the caveat.
+
+### tools-review-2026-11-neopentyl: neopentyl bromide in hot water called "No reaction"
+- **Status:** open (reaction predictor unchanged, as above).
+- **Why it is arguable:** SN2 is blocked by the tert-butyl group and a 1° cation does not form, so it is very
+  slow, but with enough heat and time in a nucleophilic solvent it ionizes with a concerted methyl shift and gives
+  rearranged tertiary products (LibreTexts, Organic Chemistry I (Cortes) 14.6, "SN1 reactions and rearrangements
+  involving primary substrates").
+- **Suggested wording:** "Very slow. If forced, it rearranges (a methyl shift) to tert-amyl products."
+
+### tools-review-2026-11-oh-band: alcohol O–H band redrawn (decided)
+- **Status:** decided and applied (`irBands()` in `ochem/assets/tools/spectroscopy.js`). A hydrogen-bonded
+  alcohol O–H is drawn broad and rounded, about 3200 to 3550 cm⁻¹ with a flat floor, not as a V (OpenStax
+  Organic Chemistry 17.11: hydrogen-bonded alcohols give "a broader absorption in the 3300 to 3400 cm–1 range";
+  free O–H is sharp near 3600). The acid O–H stays broader still (2500 to 3300).
+
+### tools-review-2026-11-hybrid-weights: the drawn hybrids and conjugate bases are qualitative
+- **Status:** pending review. The resonance explorer's hybrid gives a large δ to an atom a major form charges
+  and a small δ to one only a minor form charges; the acid/base comparator's conjugate bases glow more strongly
+  where most of the charge sits (phenoxide and enolate oxygens 70%, shared over the rest). These are pictures of
+  "mostly here, some there", not computed charges, and the screens say so in words.
+
 ## Synthesis Trainer (2026-10-27)
 
 The trainer (`ochem/tools/synthesis.html`) walks the Reagent Roadmap's graph, so its verdicts inherit the roadmap's
