@@ -141,6 +141,8 @@
       T(70, 60, 'afferent arteriole', 'fs-lbl', 'middle') + T(70, 106, 'narrows: less inflow', 'fs-lbl fs-acts', 'middle') + T(14, 128, 'efferent arteriole', 'fs-small') +
       T(180, 146, 'glomerulus', 'fs-small', 'middle') + T(180, 158, 'lower pressure, lower GFR', 'fs-lbl fs-acts', 'middle');
   };
+  /* Accuracy check 2 (2026-11-11): a hormone's name (PTH, insulin or glucagon, EPO) shows once the signal
+     reaches the effector, not with the stimulus: the gland has not yet answered at step 1. */
   // Calcium: the parathyroid glands on the thyroid, and bone, kidney and gut around the blood.
   D.calcium = function(o){
     var low = o.mode === 'low';
@@ -148,7 +150,7 @@
       // thyroid with four parathyroids on its back
       '<path d="M102,10 C92,10 88,30 100,36 C110,40 118,30 130,30 C142,30 150,40 160,36 C172,30 168,10 158,10 C148,10 144,22 130,22 C116,22 112,10 102,10 Z" class="fs-thy"/>' +
       '<circle cx="100" cy="16" r="4" class="fs-para"/><circle cx="104" cy="31" r="4" class="fs-para"/><circle cx="160" cy="16" r="4" class="fs-para"/><circle cx="156" cy="31" r="4" class="fs-para"/>' +
-      T(176, 14, low ? 'PTH up' : 'PTH down', 'fs-lbl fs-on') +
+      T(176, 14, low ? 'PTH up' : 'PTH down', 'fs-lbl fs-acts') +
       // bone (left), kidney (right), gut (bottom)
       '<path d="M8,48 C2,42 6,34 14,36 C18,30 26,34 24,42 L50,108 C56,112 54,122 46,122 C42,128 34,126 34,118 Z" class="fs-bone"/>' + T(30, 140, 'bone', 'fs-lbl', 'middle') +
       '<path d="M236,50 C256,56 258,100 238,112 C226,118 214,108 222,96 C228,88 226,72 220,66 C214,56 224,46 236,50 Z" class="fs-kidney"/>' + T(236, 128, 'kidney', 'fs-lbl', 'middle') +
@@ -167,7 +169,7 @@
     var s = '<rect x="0" y="60" width="260" height="40" class="fs-blood"/>' + T(6, 74, 'blood', 'fs-small fs-on-blood') +
       '<path d="M8,10 C40,0 96,6 112,20 C120,30 104,44 80,46 C50,48 14,40 8,28 Z" class="fs-liver"/>' + T(56, 30, 'liver', 'fs-lbl', 'middle') +
       '<rect x="160" y="122" width="92" height="30" rx="14" class="fs-muscle"/><path d="M168,131 H244 M168,137 H244 M168,143 H244" class="fs-stri"/>' + T(206, 140, high ? 'muscle, fat' : 'muscle', 'fs-lbl fs-on-dark', 'middle') +
-      '<path d="M150,12 C170,4 214,8 248,18 C252,30 236,36 212,34 C190,32 166,34 150,26 Z" class="fs-panc"/><circle cx="196" cy="22" r="8" class="fs-islet"/>' + T(196, 52, high ? 'islet: insulin' : 'islet: glucagon', 'fs-lbl fs-on', 'middle');
+      '<path d="M150,12 C170,4 214,8 248,18 C252,30 236,36 212,34 C190,32 166,34 150,26 Z" class="fs-panc"/><circle cx="196" cy="22" r="8" class="fs-islet"/>' + T(196, 52, high ? 'islet: insulin' : 'islet: glucagon', 'fs-lbl fs-acts', 'middle');
     if(high) s += movers([[70, 76], [96, 86]], 'fs-glu', -4, -40, 3.2) + movers([[190, 80], [214, 90]], 'fs-glu', 0, 44, 3.2) + T(80, 116, 'glucose taken into cells', 'fs-lbl fs-acts', 'middle');
     else s += movers([[56, 44], [76, 44], [96, 40]], 'fs-glu', 4, 34, 3.2) + T(80, 116, 'liver releases glucose', 'fs-lbl fs-acts', 'middle');
     return s;
@@ -186,7 +188,7 @@
   // Low oxygen: the kidney releases EPO; red marrow in a bone sends out more red cells.
   D.marrow = function(){
     return '<path d="M200,20 C226,26 230,70 210,82 C198,88 186,78 194,66 C200,58 198,42 192,36 C186,26 194,16 200,20 Z" class="fs-kidney"/>' + T(210, 100, 'kidney', 'fs-lbl', 'middle') +
-      movers([[192, 50], [192, 54]], 'fs-hormone', -104, 20, 3) + T(140, 46, 'EPO', 'fs-lbl fs-on', 'middle') +
+      movers([[192, 50], [192, 54]], 'fs-hormone', -104, 20, 3) + T(140, 46, 'EPO', 'fs-lbl fs-acts', 'middle') +
       '<rect x="20" y="40" width="70" height="96" rx="30" class="fs-bone"/><rect x="32" y="52" width="46" height="72" rx="20" class="fs-marrow"/>' + T(55, 152, 'red marrow', 'fs-lbl', 'middle') +
       '<path d="M90,120 C140,120 160,140 256,140" class="fs-art fs-mid"/>' +
       movers([[84, 120], [84, 120], [84, 120]], 'fs-rbc', 150, 18, 4) + T(176, 128, 'more red cells', 'fs-lbl fs-acts', 'middle');

@@ -3710,6 +3710,7 @@
         "variable": "Estradiol",
         "dir": "up",
         "end": "The LH turns the follicle into a corpus luteum, estradiol falls, and the loop ends.",
+        "after": "The dip is short: the corpus luteum soon makes estradiol again, along with progesterone.",
         "broken": "never"
       },
       "scenario": "Around day 12 of a 28-day cycle, the dominant follicle’s estradiol has stayed high for about two days. LH begins to shoot up, reaching many times its usual level about a day later, and ovulation follows about 34 to 36 hours after the rise began.",

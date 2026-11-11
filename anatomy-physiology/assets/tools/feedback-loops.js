@@ -688,7 +688,7 @@
       svg.classList.toggle('is-off', Math.abs(v - spOff) >= 0.04);
       if(scene){ scene.style.setProperty('--fs-v', Math.max(0, Math.min(1, v - spOff)).toFixed(3)); sceneSet(Math.abs(v - spOff) >= 0.04); }
     }
-    function clearRing(){ svg.classList.remove('is-na'); ring.querySelectorAll('.is-lit,.is-stop').forEach(function(x){ x.classList.remove('is-lit'); x.classList.remove('is-stop'); }); if(!pos) sceneSet(null, false); }
+    function clearRing(keepAct){ svg.classList.remove('is-na'); ring.querySelectorAll('.is-lit,.is-stop').forEach(function(x){ x.classList.remove('is-lit'); x.classList.remove('is-stop'); }); if(!pos && !keepAct) sceneSet(null, false); }
     function stop(){ timers.forEach(clearTimeout); timers = []; clearTimeout(keyT); if(raf) cancelAnimationFrame(raf); raf = 0; running = false; panel.classList.remove('is-running'); }
     function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
     function tween(to, ms, done, which){
@@ -719,7 +719,9 @@
 
     /* One trip round the ring. fast: a quick pulse (later cycles). */
     function cycle(fast, done){
-      clearRing();
+      /* Accuracy check 2 (2026-11-11): between the pulses of a negative loop the effector keeps working (the
+         vessels stay narrowed, shivering goes on) until the variable is back; finish() turns it off. */
+      clearRing(fast);
       var halt = stopsAt(), dt = fast ? 170 : 520, i = 0;
       if(reduced()){
         var end = halt ? SLOTS.indexOf(halt) : SLOTS.length - 1;
@@ -805,7 +807,7 @@
         later(function(){
           tween(0, 1400, function(){
             clearRing(); sceneSet(false, false);
-            var m2 = 'Each cycle the response made the stimulus stronger: positive feedback. ' + lv.end + ' ' + lv.variable + ' falls back to where it started.';
+            var m2 = 'Each cycle the response made the stimulus stronger: positive feedback. ' + lv.end + ' ' + (lv.after || lv.variable + ' falls back to where it started.');
             now.innerHTML = '<b class="ok">Positive feedback, then the end.</b> ' + esc(m2);
             say(m2);
           });
