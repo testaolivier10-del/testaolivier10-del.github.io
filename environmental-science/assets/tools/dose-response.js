@@ -203,16 +203,8 @@
       nums();
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
-        if(view === 'dose'){
-          LS.pills([{ k: 'Dose', html: dose + ' mg/kg', tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'Died', html: Math.round(resp(chem)) + '%', tone: resp(chem) >= 50 ? 'bad' : resp(chem) > 0 ? 'warn' : 'good' }], 'right', 'explore');
-        } else if(view === 'chain'){
-          LS.pills([{ k: 'Each step', html: '× ' + factor, tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'Bird', html: ppm(levels()[4]), tone: 'warn' }], 'right', 'explore');
-        } else {
-          LS.pills([{ k: 'Age', html: age + ' yr', tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'In its tissue', html: F(fishC(age), 2) + ' ppm', tone: fishC(age) > 0.3 ? 'warn' : 'good' }], 'right', 'explore');
-        }
+        // pass 2: every number a pill repeated is already on the picture (mice header, curve point, chain labels) or the slider
+        LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
       }
     }
     function doseWhy(){
