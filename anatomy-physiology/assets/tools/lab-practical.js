@@ -241,6 +241,8 @@
     // being tested (quiz, practical and their review) but shown to study.
     var testing = mode === 'name' || mode === 'point' || mode === 'show';
     var covers = (st.covered || []).concat(testing ? st.hints || [] : []).map(function(c){ return '<span class="lp-cover" aria-hidden="true" style="' + at(c.box, f) + '"></span>'; }).join('');
+    // A covered label's leader line would point at a white box: lp-lines erases it (eraseLeaders).
+    if((st.covered || []).length) covers += '<canvas class="lp-lines" aria-hidden="true" width="' + f.w + '" height="' + f.h + '" data-src="' + esc(BASE + f.src) + '" data-boxes="' + esc(st.covered.map(function(c){ return c.box.join(','); }).join(';')) + '"></canvas>';
     // A label printed with a typo has "fix": the right spelling drawn over it.
     covers += f.fixSvg || '';   // generator-built SVG (scripts/lib/anp-build.mjs fixSvg)
     var boxes = st.labels.map(function(lab){
@@ -293,7 +295,7 @@
   }
   function phoneish(){ try{ return window.matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function scrollToBox(host, lab){
-    var sc = host.querySelector('.lp-scroll.is-zoomed');
+    var sc = host.querySelector('.lp-scroll.is-zoomed, .lp-scroll.lp-fitw');
     var el = host.querySelector('.lp-box[data-label="' + lab.id + '"]');
     if(!sc || !el) return;
     sc.scrollLeft = Math.max(0, el.offsetLeft - sc.clientWidth / 2 + el.offsetWidth / 2);
@@ -320,6 +322,82 @@
     app.innerHTML = '<div class="lp">' + html + '</div>';
     app.classList.add('is-ready');
     if(ST) studioPaint();
+    eraseLeaders(Q());
+  }
+  /* Leader lines of covered labels (tool review 2026-11). A label covered
+     because it names a later topic left its printed leader line pointing at
+     a white box. From the figure's own pixels, each line is followed from the
+     cover's edge across the white background (dark, grey, thin pixels with
+     white around them) and painted white; it stops where the line meets the
+     drawing, so at most a short stub stays on the structure. Worked out once
+     per figure and cover set. */
+  var LEAD = {};
+  function eraseLeaders(root){
+    [].forEach.call(root.querySelectorAll('canvas.lp-lines'), function(cv){
+      var src = cv.getAttribute('data-src'), key = src + '|' + cv.getAttribute('data-boxes');
+      function draw(px){
+        var g = cv.getContext('2d'); g.fillStyle = '#fff';
+        for(var i = 0; i < px.length; i += 2) g.fillRect(px[i] - 2, px[i + 1] - 2, 4, 4);
+      }
+      if(LEAD[key]){ if(LEAD[key].px) draw(LEAD[key].px); else LEAD[key].wait.push(draw); return; }
+      LEAD[key] = { wait: [draw] };
+      var img = new Image();
+      img.onload = function(){
+        var px = [];
+        try{ px = traceLeaders(img, +cv.width, +cv.height, cv.getAttribute('data-boxes').split(';').map(function(b){ return b.split(',').map(Number); })); }catch(e){ px = []; }
+        LEAD[key].px = px;
+        LEAD[key].wait.forEach(function(fn){ fn(px); });
+        LEAD[key].wait = [];
+      };
+      img.src = src;
+    });
+  }
+  function traceLeaders(img, W, H, boxes){
+    var c = document.createElement('canvas'); c.width = W; c.height = H;
+    var g = c.getContext('2d'); g.drawImage(img, 0, 0, W, H);
+    var d = g.getImageData(0, 0, W, H).data, n = W * H;
+    var white = new Uint8Array(n), ink = new Uint8Array(n);
+    for(var i = 0; i < n; i++){
+      var r = d[i * 4], gg = d[i * 4 + 1], b = d[i * 4 + 2], mx = Math.max(r, gg, b), mn = Math.min(r, gg, b);
+      if(mn > 232) white[i] = 1;
+      else if(mx - mn < 40) ink[i] = 1;     // a grey or black line pixel, its soft edge too
+    }
+    // white share in a 7 x 7 window, from a summed-area table
+    var sat = new Int32Array((W + 1) * (H + 1));
+    for(var y = 0; y < H; y++){ var row = 0; for(var x = 0; x < W; x++){ row += white[y * W + x]; sat[(y + 1) * (W + 1) + x + 1] = sat[y * (W + 1) + x + 1] + row; } }
+    function wshare(x, y){
+      var x0 = Math.max(0, x - 3), y0 = Math.max(0, y - 3), x1 = Math.min(W, x + 4), y1 = Math.min(H, y + 4);
+      var s = sat[y1 * (W + 1) + x1] - sat[y0 * (W + 1) + x1] - sat[y1 * (W + 1) + x0] + sat[y0 * (W + 1) + x0];
+      return s / ((x1 - x0) * (y1 - y0));
+    }
+    function inBox(x, y){ for(var k = 0; k < boxes.length; k++){ var b = boxes[k]; if(x >= b[0] - 1 && x < b[0] + b[2] + 1 && y >= b[1] - 1 && y < b[1] + b[3] + 1) return true; } return false; }
+    var seen = new Uint8Array(n), out = [];
+    boxes.forEach(function(b){
+      // seeds: line pixels within 12 px of the cover's left or right edge, at its height
+      var seeds = [];
+      for(var y = Math.max(0, b[1] - 2); y < Math.min(H, b[1] + b[3] + 2); y++){
+        for(var dx = 1; dx <= 12; dx++){
+          [b[0] - dx, b[0] + b[2] - 1 + dx].forEach(function(x){ if(x >= 0 && x < W && ink[y * W + x] && !inBox(x, y) && wshare(x, y) > 0.55) seeds.push(y * W + x); });
+        }
+      }
+      var stack = seeds.slice(), got = [], cap = 6000;
+      seeds.forEach(function(p){ seen[p] = 1; });
+      while(stack.length && got.length < cap){
+        var p = stack.pop(), px = p % W, py = (p - px) / W;
+        got.push(px, py);
+        for(var oy = -1; oy <= 1; oy++) for(var ox = -1; ox <= 1; ox++){
+          var qx = px + ox, qy = py + oy;
+          if(qx < 0 || qy < 0 || qx >= W || qy >= H) continue;
+          var q = qy * W + qx;
+          if(seen[q] || !ink[q] || inBox(qx, qy)) continue;
+          seen[q] = 1;
+          if(wshare(qx, qy) > 0.55) stack.push(q);
+        }
+      }
+      // a run that big is not a leader line (it reached text or the drawing): leave it
+      if(got.length < cap) out = out.concat(got);
+    });
+    return out;
   }
   /* Tool Studio: the figure (with its zoom and credit) is the stage, under
      the set's name; the prompt or first-step line is the caption; the
@@ -404,10 +482,62 @@
     ST.stage.scrollTop = 0;
     root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
     ST.root.classList.toggle('lp-ls-list', !ST.stage.querySelector('.lp-ls-fig'));
+    fitWidth();
     if(!studioPaint.hinted && ST.stage.querySelector('.lp-box')){
       studioPaint.hinted = true;
-      ST.hint({ target: '.ls-stage .lp-box', text: 'Tap a label on the figure' });
+      // The first-run ring goes on the label with the most room round it, so it covers no other label.
+      var bs = [].slice.call(ST.stage.querySelectorAll('.lp-box')), best = null;
+      bs.forEach(function(b){
+        var r = b.getBoundingClientRect(), gap = 1e9;
+        bs.forEach(function(o){ if(o === b) return; var q = o.getBoundingClientRect(); gap = Math.min(gap, Math.max(q.left - r.right, r.left - q.right, q.top - r.bottom, r.top - q.bottom)); });
+        if(!best || gap > best.gap) best = { b: b, gap: gap };
+      });
+      if(best) best.b.classList.add('lp-hint-t');
+      ST.hint({ target: '.ls-stage .lp-hint-t', text: 'Tap a label on the figure' });
     }
+  }
+
+  /* A tall figure in a wide stage (tool review 2026-11): fitted whole, it
+     used about 40% of the width and its printed labels drew at about 6 px.
+     It opens fitted to the width instead (at most 1.6 times the whole-figure
+     size) and the stage scrolls down it; zoom works from there. */
+  var INK = {};
+  function inkBox(src, cb){
+    // the figure's drawn extent (non-white pixels) as fractions of its size, once per figure
+    if(INK[src]){ if(INK[src].box) cb(INK[src].box); else INK[src].wait.push(cb); return; }
+    INK[src] = { wait: [cb] };
+    var img = new Image();
+    img.onload = function(){
+      var box = [0, 0, 1, 1];
+      try{
+        var w = 400, h = Math.max(1, Math.round(400 * img.naturalHeight / img.naturalWidth)), c = document.createElement('canvas'); c.width = w; c.height = h;
+        var g = c.getContext('2d'); g.drawImage(img, 0, 0, w, h);
+        var d = g.getImageData(0, 0, w, h).data, x0 = w, y0 = h, x1 = -1, y1 = -1;
+        for(var y = 0; y < h; y++) for(var x = 0; x < w; x++){ var i = (y * w + x) * 4; if(Math.min(d[i], d[i + 1], d[i + 2]) < 225){ if(x < x0) x0 = x; if(x > x1) x1 = x; if(y < y0) y0 = y; if(y > y1) y1 = y; } }
+        if(x1 > x0 && y1 > y0) box = [Math.max(0, x0 / w - 0.015), Math.max(0, y0 / h - 0.015), Math.min(1, (x1 + 1) / w + 0.015), Math.min(1, (y1 + 1) / h + 0.015)];
+      }catch(e){}
+      INK[src].box = box; INK[src].wait.forEach(function(fn){ fn(box); }); INK[src].wait = [];
+    };
+    img.src = src;
+  }
+  function fitWidth(){
+    var sc = ST.stage.querySelector('.lp-ls-fig .lp-scroll'), fg = sc && sc.querySelector('.lp-fig'), im = fg && fg.querySelector('img');
+    if(!im) return;
+    var ratio = parseFloat(fg.style.getPropertyValue('--lp-ratio')) || 1;
+    inkBox(im.getAttribute('src'), function(box){
+      if(!document.contains(sc)) return;
+      var cw = sc.clientWidth, ch = sc.clientHeight;
+      if(!cw || !ch) return;
+      var whole = Math.min(cw, ch * ratio), drawn = whole * (box[2] - box[0]);
+      if(drawn >= 0.8 * cw) return;
+      // the drawn part fills the width, up to 1.7 times the whole-figure size
+      var k = Math.min(1.7, cw / drawn);
+      if(k < 1.12) return;
+      sc.classList.add('lp-fitw');
+      sc.style.setProperty('--lp-fw', (whole * k).toFixed(1) + 'px');
+      var z = parseFloat(fg.style.getPropertyValue('--lp-z')) || 1;
+      if(z === 1 && !sc.scrollLeft) sc.scrollLeft = Math.max(0, box[0] * whole * k - (cw - drawn * k) / 2);
+    });
   }
 
   /* ---------------------------------------------------------------- routing
