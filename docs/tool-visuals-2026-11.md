@@ -15,10 +15,34 @@ not the job. A quick graph polish (graph paper, heavier curves) was tried on the
 |---|---|---|
 | AP Human Geography | Country A, the invented country behind the scale lab, map reader, diffusion lab and 24 built map figures, is drawn as a country: wandering borders, a coast with sea and shallows, neighbors' land, three rivers, a lake, hills and forest marks on reference maps. Same eight provinces, ids, names and label centers. Every border is still straight segments (point tests unchanged); the outer border only moved outward; authored points checked (the four that changed are isoline ends). | `scripts/aphug-country-a.mjs` (used by `build-aphug-basemaps.mjs --invented`), `base.scenery` drawn by `hug-map.js`, `diffusion-lab.js` draws the base when it arrives |
 
+## The question to ask of every tool (owner, 2026-11-10, second message)
+
+"Think about what a tool is meant to do and is it portraying it in the best way, or is it confusing, or not doing
+its job entirely, or not showing what it should be." Not everything needs changing: change a tool only where the
+answer is no. He also offered a second opinion from ChatGPT or Gemini in his browser (needs his computer on with
+Chrome open; it was not reachable on 2026-11-10).
+
+For each tool, write down: (1) the one idea a student should leave with, (2) what the picture shows at the moment
+it opens and after each control, (3) whether the picture IS that idea or only sits beside a caption that states it,
+(4) verdict: leave, fix, or redesign (redesigns get a mockup first).
+
+## Purpose review: AP Human Geography (2026-11-10, every scene opened)
+
+| Tool | The idea | Verdict |
+|---|---|---|
+| Map reader | One data set looks different on six map types | Leave. Does its job. |
+| Diffusion lab | How a trait spreads: step by step outward, or jumping between big places | Leave. The animation is the idea. |
+| Population lab | The pyramid's shape follows from birth and death rates | Leave. |
+| FRQ coach | What each task verb demands | Leave. A writing tool; the question is the right picture. |
+| City lab | Rings come from bid rent; central places; rank-size | Leave (small: ring colors could carry land-use marks). |
+| Scale lab | The same data tell a different story as the units get smaller | Redesign. Four separate maps with nothing joining them; the world and Country A are not connected. Should be one zoom in which a single average splits apart, with a locator showing where you are. Map scale tab is fine. |
+| Borders lab | Why a border is where it is; what pulls a state together or apart | Fix. Boundary types: towns are dots in a box, so nothing shows why the line runs there (needs the land: river, hills, where each people lives). Forces: still the old straight-edged blocks with bare arrows. State shapes: one blob with no capital, no distances, nothing to show why the shape matters. Sea zones and real cases are fine. |
+| Model Studio | What each of 21 models looks like and where its parts go | Redesign in part. Five models are blank numbered boxes that show nothing of the model: Rostow, epidemiological transition, world system, gravity, rank-size. Every model is drawn in a quarter of the stage with the rest empty. The maps and curves (Hoyt, galactic, least cost, Malthus, DTM, boundaries) are right and stay. |
+
 ## Next (in this order unless the owner says otherwise)
 
-1. Human Geography, rest: borders lab (towns are dots in a beige box: put it on Country A's land with the river as
-   the border), scale lab (show the four scales as one zoom: where Country A sits in the world), model studio.
+1. Human Geography, from the purpose review above: Model Studio's five blank models and stage size, borders lab
+   (three scenes), scale lab zoom. Mockups first for Model Studio and the scale lab.
 2. Every other course, one at a time. From the 2026-11-10 screenshots (all 145 tools, phone and desktop), the
    pictures that are blocks, boxes or bare charts: macro indicators lab and multiplier lab; bio Hardy-Weinberg;
    chem ICE table and particle diagrams; physics collision lab and rotation lab; A&P pathways, predict, feedback
