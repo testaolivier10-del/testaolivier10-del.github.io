@@ -481,6 +481,8 @@
       lab.className = 'ls-lbl'; lab.textContent = 'Ecosystem';
       var ms = $('.ef-more-sl'); ms.parentNode.insertBefore(lab, ms); ms.parentNode.insertBefore(ecos, ms);
       setupRow = T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], setup: 'Ecosystem', moreLabel: 'Ecosystem, efficiency, respiration and scale' });
+      // The Setup row opens Details on these settings: they come first there.
+      var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       draw();
