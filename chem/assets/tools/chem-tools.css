@@ -861,26 +861,31 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .qk-amt .bt-step{background:var(--white);}
 .ls-root .qk-run{width:100%;}
 
-/* ICE tables: the equation, the live ICE table, then the bars beside the
-   mixture (side by side on a phone too); in the drill the table is typed
-   into and the bars and mixture sit under it. */
+/* ICE tables (pass 2): the equation, the live ICE table and the jar beside
+   it (under it on a phone); the bar chart opens on tap under the table; in
+   the drill the table is typed into and the jar joins it once the I row has
+   a value. */
 .ls-root .chem-ls-stage .ic-eqn{flex:none;margin:0;text-align:center;font:800 var(--ls-m)/1.3 var(--font-ui);}
 .ls-root .chem-ls-stage .ic-show{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
 .ls-root .chem-ls-stage .ic-tab{flex:none;}
 .ls-root .chem-ls-stage .ic-tab .table-wrap{margin:0;}
-.ls-root .chem-ls-stage .ic-live{flex:1;min-height:0;display:flex;flex-direction:row;align-items:stretch;gap:10px;}
-/* Wide stage: the table over the bars on the left, the jar the full height on the right. */
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-show{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:12px 22px;}
+.ls-root .chem-ls-stage .ic-live{flex:1;min-height:0;display:flex;flex-direction:column;align-items:stretch;gap:6px;}
+/* Wide stage: the table (and the bar chart, when open) on the left, the jar the full height on the right. */
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto auto minmax(0,1fr);gap:0 22px;}
 .ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-live{display:contents;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-tab{grid-column:1;grid-row:1;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-bars{grid-column:1;grid-row:2;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker{grid-column:2;grid-row:1/span 2;}
-/* Phone: the bars and the jar side by side, the Q-K gauge across both under them. */
-.ls-root.ls-phone .chem-ls-stage .ic-live{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:minmax(0,1fr) auto;gap:2px 6px;}
-.ls-root.ls-phone .chem-ls-stage .ic-live .ic-beaker,.ls-root.ls-phone .chem-ls-stage .ic-live .ic-beaker .lb-fig{display:contents;}
-.ls-root.ls-phone .chem-ls-stage .ic-live .ic-bars{grid-column:1;grid-row:1;min-width:0;}
-.ls-root.ls-phone .chem-ls-stage .ic-live .lb-svg{grid-column:2;grid-row:1;min-height:0;}
-.ls-root.ls-phone .chem-ls-stage .ic-live .lb-side{grid-column:1/-1;grid-row:2;max-width:none;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-tab{grid-column:1;grid-row:2;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-barsd{grid-column:1;grid-row:3;margin-top:8px;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker{grid-column:2;grid-row:1/-1;}
+/* The gauge sits right under the jar, so cause and effect stay together. */
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker .lb-fig{justify-content:center;}
+.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker .lb-svg{flex:0 1 auto;height:auto;max-height:calc(100% - 64px);}
+.ic-live[hidden]{display:none !important;}
+.ic-barsd{flex:none;margin:0;}
+.ic-barsd > summary{cursor:pointer;width:max-content;padding:6px 10px;border-radius:999px;font:700 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
+.ic-barsd > summary:hover{color:var(--ink);}
+.ic-barsd[open] > summary{color:var(--ink);}
+.ls-root .ic-barsd .ic-bars{height:180px;}
+.ls-root.ls-phone .ic-barsd .ic-bars{height:140px;}
 .ic-xt{table-layout:fixed;}
 .ic-xt .ic-xk{font:800 13px var(--font-ui);color:var(--muted);white-space:nowrap;}
 .ic-xt .ic-xk b{font-family:var(--font-mono);color:var(--ink);}
@@ -896,7 +901,7 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ic-xt.is-eq .ic-re{background:color-mix(in srgb,var(--chem-s3, #2f9e6f) 16%,transparent);}
 .ic-xt.is-eq .ic-re th span{color:var(--ink);}
 @media (max-width:520px){.ic-xt th,.ic-xt td,.ls-root .cd-ice.ic-xt th,.ls-root .cd-ice.ic-xt td{padding:3px 2px;line-height:1.2;}.ic-xt .ic-xk{font-size:11px;}.ic-xt thead small{display:none;}.ic-xt th[scope=row]{width:4.4em;font-size:16px;}.ic-xt th[scope=row] span{font-size:9.5px;}.ic-xt thead th{font-size:13px;}.ic-xt td{padding:4px 2px;}.ic-xt td b{font-size:14px;}.ic-xt .ic-xe{font-size:11px;}.ic-xt .ic-rc td b{font-size:12px;}}
-.ls-root .ic-live .ic-bars{flex:1 1 0;min-height:0;display:flex;flex-direction:column;margin:0;}
+.ls-root .ic-live .ic-bars{min-height:0;display:flex;flex-direction:column;margin:0;}
 .ls-root .ic-live .ic-chart{flex:1;min-height:0;display:flex;}
 .ls-root .ic-live .ic-svg{width:100%;height:100%;max-height:100%;}
 .ls-root .ic-live .ic-cap{flex:none;margin:0;font-size:var(--ls-s);text-align:center;}
@@ -912,7 +917,7 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-text .bt-eq{margin:0 0 6px;font-weight:800;}
 .ls-root .ls-drill-stage .ic-wrap{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
 .ls-root .ls-drill-stage .ic-wrap > .table-wrap{flex:none;margin:0;}
-.ls-root .ls-drill-stage .ic-live{flex:1 0 180px;min-height:180px;display:flex;flex-direction:row;align-items:stretch;gap:8px;}
+.ls-root .ls-drill-stage .ic-live{flex:1 0 180px;min-height:180px;display:flex;flex-direction:column;align-items:stretch;gap:6px;}
 .ls-root .ls-drill-stage .ic-live .ic-beaker .lb-side{display:none;}
 .ls-root .cd-ice{font-size:var(--ls-s);}
 .ls-root .cd-ice th,.ls-root .cd-ice td{padding:6px 4px;}
@@ -1317,3 +1322,14 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .bt-radio input[type=radio]:focus{outline:none;}
 .bt-radio input[type=radio]:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
 .bt-radio:has(input[type=radio]:focus-visible){box-shadow:inset 0 0 0 2px var(--cink);}
+/* ICE (pass 2), phone: room for the Q-K gauge is kept from the start, so the
+   jar does not shrink when the gauge appears. */
+.ls-root.ls-phone .chem-ls-stage .ic-show .ic-beaker .lb-side{min-height:58px;}
+/* Phone, bar chart open: the bars beside the jar instead of under it. */
+.ls-root.ls-phone .chem-ls-stage .ic-live:has(.ic-barsd[open]){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;}
+.ls-root.ls-phone .chem-ls-stage .ic-live:has(.ic-barsd[open]) .ic-beaker{grid-column:2;grid-row:1;}
+.ls-root.ls-phone .chem-ls-stage .ic-live:has(.ic-barsd[open]) .ic-barsd{grid-column:1;grid-row:1;}
+.ls-root.ls-phone .chem-ls-stage .ic-live:has(.ic-barsd[open]) .ic-bars{height:auto;aspect-ratio:1/1.1;}
+.ls-root .ls-drill-stage .ic-live{align-self:stretch;}
+.ls-root .ls-drill-stage .ic-live .ic-beaker .lb-fig{align-items:center;}
+.ls-root .ls-drill-stage .ic-live .ic-cap{text-align:center;}

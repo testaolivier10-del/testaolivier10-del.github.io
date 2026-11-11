@@ -19,7 +19,8 @@
    Every Q is ApChemMath.Q of the typed or checked numbers.
 
    Explore (the first tab): the same reaction and starting amounts, with x
-   on a slider. The ICE table is on the stage above the bars and the jar:
+   on a slider. The ICE table is on the stage beside the jar (the bar chart
+   opens on tap; Q against K appears once x moves):
    the C row in x with this x worked out, the E row in x and as numbers
    (labelled "at this x" until Q = K). The bars and the jar follow, and Q
    slides toward K; "Solve for x" jumps to the exact
@@ -32,6 +33,9 @@
   var TITLE = { findK: 'Find K from equilibrium data', smallx: 'Equilibrium amounts when K is small', square: 'Equilibrium amounts: a perfect square' };
   var ROWS = [['I', 'Initial'], ['C', 'Change'], ['E', 'Equilibrium']];
   var plain = function(h){ return String(h).replace(/<[^>]+>/g, ''); };
+  // The bar chart (start against now) is depth: it opens on tap, under the
+  // table, so the landing shows the table and the jar only.
+  var BARS = '<details class="ic-barsd"><summary>Bar chart</summary><figure class="ic-bars"><div class="ic-chart"></div></figure></details>';
   T.mount('ice-table-drills', function(app, data){
     var M = window.ApChemMath;
     var ex = null;
@@ -40,9 +44,9 @@
   });
 
   function explore(host, data, M){
-    var F = T.F, esc = T.esc, ctxs = data.contexts || [], ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, sp, x = 0, xlo, xhi, xs, beaker, slider;
+    var F = T.F, esc = T.esc, ctxs = data.contexts || [], ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, sp, x = 0, xlo, xhi, xs, beaker, slider, moved = false;
     host.innerHTML = '<section class="bt-problem ic-ex" aria-labelledby="icx-h"><div class="tx-head"><h2 id="icx-h" class="bt-eq ic-eqn"></h2><p class="bt-small ic-setup"></p></div>' +
-      '<div class="ic-wrap"><div class="ic-show"><div class="ic-tab"></div><div class="ic-live"><figure class="ic-bars"><div class="ic-chart"></div></figure><div class="ic-beaker"></div></div></div>' +
+      '<div class="ic-wrap"><div class="ic-show"><div class="ic-tab"></div><div class="ic-live"><div class="ic-beaker"></div>' + BARS + '</div></div>' +
       '<div class="ic-ctl"><div class="ic-x"></div><div class="bt-buttons"><button type="button" class="btn-press sm ic-solve">Solve for x</button></div>' +
       '<div class="ic-why"></div></div></div>' + T.moreHtml('<div class="bt-pick ic-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn ic-new">New numbers</button></div>', 'another reaction, new numbers') + '</section>';
     // Lookups reach the Tool Studio too, where these parts move (studio()).
@@ -52,7 +56,8 @@
     var sel = T.choiceSelect({ label: 'Reaction', options: ctxs.map(function(c, i){ return { value: i, label: M.eqHtml(c.species).replace(/<[^>]+>/g, '') }; }), value: 0, onChange: function(v){ ci = +v; build(); } });
     sel.el.classList.add('bt-inline'); pick.appendChild(sel.el);
     $('.ic-new').addEventListener('click', function(){ seed++; build(); });
-    $('.ic-solve').addEventListener('click', function(){ setX(xs); });
+    $('.ic-solve').addEventListener('click', function(){ moved = true; setX(xs); });
+    $('.ic-barsd').addEventListener('toggle', function(){ draw(); });
     function build(){
       var c = ctxs[ci], type = c.types.indexOf('findK') > -1 ? 'findK' : c.types[0];
       p = M.ice.generate(M.rng(seed), c, type); sp = p.species;
@@ -61,14 +66,14 @@
       xlo = 0; xhi = Infinity;
       sp.forEach(function(s, i){ if(s.nu < 0) xhi = Math.min(xhi, p.c0[i] / -s.nu); else xlo = Math.max(xlo, -p.c0[i] / s.nu); });
       xhi = M.sig(xhi * 0.999, 3);
-      x = 0;
+      x = 0; moved = false;
       $('.ic-eqn').innerHTML = p.equation + ' &nbsp; ' + (p.Kp ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + M.fmt(p.K, 3);
       $('.ic-setup').innerHTML = 'Start: ' + sp.map(function(s, i){ return (p.Kp ? 'P<sub>' + s.html + '</sub>' : '[' + s.html + ']') + ' = ' + M.fmt(p.c0[i], 3) + ' ' + p.unit; }).join(', ') + '. Move x and watch Q.';
       var xh = $('.ic-x'); xh.innerHTML = '';
       start = T.cue('Drag the x slider and watch Q move toward K.');
       xh.appendChild(start.el);
       var step = M.sig(xhi / 200, 1);
-      slider = T.slider({ label: 'x, the extent of reaction (' + p.unit + ')', min: 0, max: M.round(Math.floor(xhi / step) * step, 6), step: step, value: 0, decimals: Math.max(2, -Math.floor(Math.log10(step))), onInput: function(v){ x = v; draw(); } });
+      slider = T.slider({ label: 'x, the extent of reaction (' + p.unit + ')', min: 0, max: M.round(Math.floor(xhi / step) * step, 6), step: step, value: 0, decimals: Math.max(2, -Math.floor(Math.log10(step))), onInput: function(v){ x = v; moved = true; draw(); } });
       xh.appendChild(slider.el);
       if(beaker) beaker.destroy();
       beaker = window.ApChemBeaker.mount($('.ic-beaker'), { species: sp.map(function(s, i){ return { key: 's' + i, label: plain(s.html), name: plain(s.html), tone: i + 1 }; }), readout: 'qk', title: 'The mixture', max: 22, seed: 9, vessel: 'gas' });
@@ -112,25 +117,30 @@
       g.push('<rect class="ic-bi" x="' + L + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + 14) + '" y="11">start</text><rect class="ic-be" x="' + (L + (fb.fit ? 62 : 52)) + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + (fb.fit ? 76 : 66)) + '" y="11">at this x (M)</text>');
       $('.ic-chart').innerHTML = '<svg class="chem-svg ic-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Bars: initial (faint) and at this x (solid): ' + esc(sp.map(function(s, i){ return plain(s.html) + ' ' + M.fmt(p.c0[i], 3) + ' to ' + M.fmt(E[i], 3); }).join('; ')) + '.">' + g.join('') + '</svg>';
       var counts = {}; E.forEach(function(v, i){ counts['s' + i] = Math.round(Math.max(0, v) / perP); });
-      beaker.update(q > 0 ? { counts: counts, Q: q, K: p.K } : { counts: counts });
+      // Q against K appears once the student moves x (cause, then effect).
+      beaker.update(q > 0 && moved ? { counts: counts, Q: q, K: p.K } : { counts: counts });
       var r = q / p.K, cl = Math.abs(r - 1) <= 0.01;
       if(x > 0 && start) start.done();
-      T.explain($('.ic-why'), '<b>' + (q === 0 ? 'x = 0: no products, Q = 0.' : cl ? 'Q = K: this x is the equilibrium.' : r < 1 ? 'Q < K: more x.' : 'Q > K: too far; less x.') + '</b>',
+      T.explain($('.ic-why'), '<b>' + (!moved ? 'Start: the I row. Move x to react some of it.' : q === 0 ? 'x = 0: no products, Q = 0.' : cl ? 'Q = K: this x is the equilibrium.' : r < 1 ? 'Q < K: more x.' : 'Q > K: too far; less x.') + '</b>',
         '<p>' + (q === 0 ? 'Nothing has reacted yet, so the forward reaction runs.' : 'Q = ' + p.expr + ' = ' + M.fmt(q, 3) + ' at x = ' + M.fmt(x, 3) + ' ' + p.unit + '. ' + (cl ? 'Every E entry is initial + change with this x; putting them back into the K expression returns K.' : r < 1 ? 'Products are still too low for K: the reaction keeps going forward.' : 'Too much product for K: the real mixture would stop before this x.')) +
         ' K is fixed at this temperature; only Q moves.</p>');
       if(LS) studioDraw(q, r, cl);
     }
-    /* Tool Studio: Q and K as pills, the verdict on the right, the bars and
-       the mixture on the stage; the one-line verdict as the caption. */
+    /* Tool Studio: Q as the one pill (K is in the equation; the gauge
+       comparing them appears once x moves);
+       the one-line verdict as the caption. */
     function studioDraw(q, r, cl){
-      LS.pills([{ k: 'Q', html: q === 0 ? '0' : M.fmt(q, 3), tone: 'readout' }, { k: 'K', html: M.fmt(p.K, 3), tone: 'ghost' }], 'left', 'explore');
-      LS.pills([q === 0 ? { html: 'Nothing reacted yet', tone: 'ghost' } : cl ? { html: 'At equilibrium', tone: 'good' } : r < 1 ? { html: 'More x →', tone: 'accent' } : { html: '← Too far: less x', tone: 'warn' }], 'right', 'explore');
+      // One live number on the picture (Q); K is in the equation above it,
+      // and the verdict is the caption.
+      LS.pills([{ k: 'Q', html: q === 0 ? '0' : M.fmt(q, 3), tone: 'readout' }], 'left', 'explore');
+      LS.pills([], 'right', 'explore');
       LS.caption(T.sayHead($('.ic-why')), 'explore');
       SP.setup($('.ic-eqn').textContent.replace(/\s+K[cp]\s*=.*$/, '').trim() || 'Reaction');
       SP.open();
     }
-    /* Tool Studio arrangement: the equation, the live ICE table, the bars and
-       the mixture with its Q-K gauge on the stage; the x slider and Solve for x in the dock;
+    /* Tool Studio arrangement: the equation, the live ICE table and the
+       mixture on the stage (its Q-K gauge appears once x moves; the bar chart
+       opens on tap under the table); the x slider and Solve for x in the dock;
        what this x means in Why; another reaction and new numbers in
        Details. */
     function studio(pane, s){
@@ -163,9 +173,13 @@
               return '<td data-i="' + i + '" data-label="' + rw[1] + ' ' + (p.Kp ? 'P ' : '') + plain(s.html) + (rw[0] === 'C' ? ' (in terms of x)' : ' (' + unit + ')') + '"><span class="cd-blank" aria-hidden="true">·</span></td>';
             }).join('') + '</tr>';
           }).join('') + '</tbody></table></div>' +
-          '<div class="ic-live"><figure class="ic-bars"><div class="ic-chart"></div><figcaption class="bt-small ic-cap"></figcaption></figure><div class="ic-beaker"></div></div></div>';
+          '<div class="ic-live" hidden><div class="ic-beaker"></div><p class="bt-small ic-cap"></p>' + BARS + '</div></div>';
         live = view(host, p, M, Q);
-        api.area.addEventListener('input', function(e){ if(e.target.classList.contains('cd-cell')) live.read(); });
+        // The table moves to the Tool Studio's stage with this host, so the
+        // typing is heard here (api.area stays in the dock).
+        var onType = function(e){ if(e.target.classList && e.target.classList.contains('cd-cell')) live.read(); };
+        host.addEventListener('input', onType);
+        if(!api.area.contains(host)) api.area.addEventListener('input', onType);
         live.draw();
       },
       onStep: function(s){ if(live) live.checked(s); },
@@ -182,7 +196,8 @@
     var top = Math.max.apply(null, p.c0.concat(p.E)) * 1.15;
     var perP = top / 9;
     // References kept: the live view may move to the Tool Studio's stage.
-    var chart = host.querySelector('.ic-chart'), capEl = host.querySelector('.ic-cap');
+    var chart = host.querySelector('.ic-chart'), capEl = host.querySelector('.ic-cap'), live = host.querySelector('.ic-live');
+    host.querySelector('.ic-barsd').addEventListener('toggle', function(){ draw(); });
     var beaker = window.ApChemBeaker.mount(host.querySelector('.ic-beaker'), {
       species: p.species.map(function(s, i){ return { key: 's' + i, label: plain(s.html), name: plain(s.html), tone: i + 1 }; }),
       readout: 'qk', title: 'The mixture', max: 22, seed: 3, vessel: 'gas' });
@@ -222,6 +237,9 @@
       chart.innerHTML = '<svg class="chem-svg ic-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + g.join('') + '</svg>';
       // The beaker and the gauge: E row once it is complete, else the I row.
       var useE = rows.E.every(function(v){ return v != null; }), src = useE ? rows.E : rows.I, full = src.every(function(v){ return v != null; });
+      // The jar joins the table once the first amount is typed: an empty
+      // jar on the opening screen says nothing.
+      live.hidden = !rows.I.some(function(v){ return v != null; });
       var counts = {}; src.forEach(function(v, i){ counts['s' + i] = v != null ? Math.round(Math.max(0, v) / perP) : 0; });
       var q = full && src.every(function(v){ return v >= 0; }) ? M.Q(sp, src) : NaN;
       var showK = kDone && isFinite(q) && q > 0;
