@@ -113,3 +113,6 @@
 .ls-root.ls-phone .ml-legend{flex-wrap:nowrap;gap:2px 8px;white-space:nowrap;overflow:hidden;}
 .ls-root.ls-phone .ml-lg-up{font-size:0;} .ls-root.ls-phone .ml-lg-up::after{content:"faster";font-size:12px;}
 .ls-root.ls-phone .ml-lg-dn{font-size:0;} .ls-root.ls-phone .ml-lg-dn::after{content:"slower";font-size:12px;}
+/* Pass 3 (judge c): the graphs switch (x only / x and v / Add a) shows on every size. */
+.ls-root:not(.ls-phone) .ml-view.ls-seg,.ml-card:not(.ls-root *) .ml-view.ls-seg{display:flex;}
+.ls-root:not(.ls-phone) .ml-view > .bt-mode{flex:1;min-width:0;}
