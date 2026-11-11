@@ -499,7 +499,7 @@
     }
     function mark(into, k, m, cls){
       into.appendChild(el('circle', { cx: sx(m.x), cy: sy(k, m.y), r: 5, 'class': cls }));
-      if(m.label) into.appendChild(el('text', { x: sx(m.x) + 8, y: sy(k, m.y) - 7, 'class': 'gr-lbl gr-c-accent' }, m.label));
+      if(m.label) into.appendChild(el('text', { x: sx(m.x) + 8, y: sy(k, m.y) - 7, 'class': 'gr-lbl gr-c-accent gr-mlabel', 'data-px': sx(m.x), 'data-py': sy(k, m.y) }, m.label));
     }
     function region(into, labels, r, cls){
       var x0 = sx(r.x0), x1 = sx(r.x1);
@@ -659,7 +659,30 @@
           t.removeAttribute('transform');
           var b = t.getBBox();
           var hit = boxes.some(function(tb){ return b.x < tb.x + tb.width + 2 && tb.x < b.x + b.width + 2 && b.y < tb.y + tb.height && tb.y < b.y + b.height; });
-          if(hit) t.setAttribute('transform', 'translate(0 -16)');
+          /* Pass 3: a region's name the cursor line runs through slides to the side with more room */
+          var dx = 0;
+          if(b.x - 3 < px && px < b.x + b.width + 3){
+            var toR = px + 6 - b.x, toL = px - 6 - (b.x + b.width);
+            dx = (px + 6 + b.width <= W - MR) && (px - 6 - b.width < ML || (W - MR - px) >= (px - ML)) ? toR : toL;
+          }
+          if(hit || dx) t.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + (hit ? -16 : 0) + ')');
+        });
+        /* Pass 3: a marked point's label ("7.4: 40") under the cursor's value pill or dot moves to the left of
+           its point, then below it; if both are covered it steps back (faint), like a valve label. */
+        var dots = pts.map(function(q){ return { x: px - 10, y: q.cy - 10, width: 20, height: 20 }; });
+        var obst = boxes.concat(dots);
+        var hits = function(r){ return obst.some(function(tb){ return r.x < tb.x + tb.width + 2 && tb.x < r.x + r.width + 2 && r.y < tb.y + tb.height + 1 && tb.y < r.y + r.height + 1; }); };
+        c.svg.querySelectorAll('.gr-mlabel').forEach(function(t){
+          var mx = +t.getAttribute('data-px'), my = +t.getAttribute('data-py');
+          t.setAttribute('x', mx + 8); t.setAttribute('y', my - 7); t.removeAttribute('text-anchor'); t.classList.remove('gr-under'); t.classList.remove('gr-gone');
+          // the cursor on the marked point itself: its pill reads the same place, so the mark's label waits
+          if(Math.abs(mx - px) < 4 && pts.some(function(q){ return Math.abs(q.cy - my) < 6; })){ t.classList.add('gr-gone'); return; }
+          if(!hits(t.getBBox())) return;
+          t.setAttribute('x', mx - 14); t.setAttribute('text-anchor', 'end');
+          if(!hits(t.getBBox())) return;
+          t.setAttribute('x', mx); t.setAttribute('y', my + 24); t.setAttribute('text-anchor', 'middle');
+          if(!hits(t.getBBox())) return;
+          t.setAttribute('x', mx + 8); t.setAttribute('y', my - 7); t.removeAttribute('text-anchor'); t.classList.add('gr-under');
         });
       }catch(e){}
     }
@@ -837,7 +860,7 @@
             var at = keyX(q);
             if(at != null) setCursor(at); else readout(cursorX);
             whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p>' + (K() ? K().why('<p>' + html(q.why.correct) + '</p>', { open: !!S }) : '<p>' + html(q.why.correct) + '</p>');
-            if(S) S.caption('<b>' + esc(condLabel(q)) + ':</b> the dashed curve is where it goes. Tap Why? for the reason.', 'explore');
+            if(S) S.caption('<b>' + esc(condLabel(q)) + ':</b> ' + ((q.overlay.series || []).length ? 'the dashed curve is where it goes' : 'the marked point shows where it goes') + '. Tap Explanation for the reason.', 'explore');
           } else { clearCond(); readout(cursorX); whyEl.innerHTML = ''; if(S) S.caption(Q().querySelector('.gr-first').innerHTML, 'explore'); }
         });
       });

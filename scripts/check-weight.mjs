@@ -420,7 +420,10 @@ const SHELL_BUDGETS = [
      puts the first-run ring on a label with room; the pixel work (leader lines, drawn extent) is in
      tools/lab-fit.js, and the new calculator and loop pictures in calc-art.js and loop-scenes.js, all
      loaded on first use. Lab practical measured 57.2 KB. */
-  ['anatomy-physiology', 57.5],
+  /* 57.5 -> 58 (tools pass 3, docs/tool-review/pass3/anatomy-physiology.md): Predict's whole dial names and larger
+     dials without a figure, the chain diagram taking the run feed's place. The lab practical's view split and the
+     leader-line work sit in tools/lab-fit.js (first use). Predict measured 57.7 KB. */
+  ['anatomy-physiology', 58],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

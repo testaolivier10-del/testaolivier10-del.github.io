@@ -292,3 +292,11 @@
 
 /* Pass 2 (2026-11-10): reference lines are read under Explanation ("Usual values"), not on the stage. */
 .calc-out-norefs .calc-normal{display:none;}
+
+/* Pass 3 (docs/tool-review/pass3/anatomy-physiology.md): with a slider, the number reads as the slider's value; tap it to
+   type (a dashed underline says it is editable). A result the picture prints is not repeated under it (calculators.js). */
+.calc-ls .ls-dock .calc-field-sl .calc-input-row input{width:4.6em;min-height:40px;padding:4px 2px;text-align:right;background:transparent;border:0;border-radius:0;box-shadow:none;border-bottom:1.5px dashed var(--line, #C9D2CF);}
+.calc-ls .ls-dock .calc-field-sl .calc-input-row input:focus{background:var(--paper, #fff);border-bottom:2px solid var(--cink);outline:none;}
+.calc-ls .ls-dock .calc-field-sl .calc-input-row input:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.calc-ls .ls-dock .calc-field-sl.is-bad .calc-input-row input{box-shadow:none;border-bottom:2px solid var(--bad);}
+.calc-results[hidden],.calc-result[hidden]{display:none !important;}

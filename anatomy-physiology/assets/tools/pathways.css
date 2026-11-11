@@ -329,3 +329,11 @@
   .pw-duo:has(.pw-map.is-list){grid-template-columns:minmax(0, 2.1fr) minmax(0, 1fr);}
   .pw-mapbox .pw-map.is-list{max-width:270px;}
 }
+
+/* Pass 3 (docs/tool-review/pass3/anatomy-physiology.md): a wide figure (a row of panels) fills the stage's width;
+   the numbered list sits under it in rows of three. */
+@media (min-width:1000px){
+  .pw-duo.pw-flat,.pw-duo.pw-flat:has(.pw-map.is-list){display:flex;flex-direction:column;align-items:stretch;gap:14px;}
+  .pw-duo.pw-flat .pw-scn{width:min(100%, 50vh * var(--scn-r, 1));}
+  .pw-duo.pw-flat .pw-mapbox .pw-map.is-list{max-width:760px;width:100%;}
+}

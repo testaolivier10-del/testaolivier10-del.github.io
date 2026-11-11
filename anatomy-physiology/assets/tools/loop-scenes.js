@@ -36,6 +36,7 @@
      Each returns the inside of a 260 x 160 drawing. o = the loop's options. */
   var D = {};
 
+  var SKIN_VES = 'M60,129 C60,100 66,76 92,72 L260,72';
   // Skin in section: epidermis, dermis with an arteriole loop and a hair, fat, a skeletal muscle under it.
   D.skin = function(o){
     var hot = o.mode === 'hot', fev = o.mode === 'fever';
@@ -49,8 +50,10 @@
       [[30, 116], [70, 114], [110, 117], [150, 115], [190, 117], [230, 114]].map(function(c){ return '<ellipse cx="' + c[0] + '" cy="' + c[1] + '" rx="16" ry="8" class="fs-fatc"/>'; }).join('') +
       '<g class="fs-musc' + (hot ? '' : ' fs-shiver') + '"><rect x="0" y="128" width="260" height="32" class="fs-muscle"/>' +
         [134, 140, 146, 152].map(function(y){ return '<path d="M4,' + y + ' H256" class="fs-stri"/>'; }).join('') + '</g>' +
-      // the arteriole loop under the surface: wall and lumen; its width changes when its smooth muscle acts
-      '<g class="fs-ves ' + (hot ? 'fs-dilate' : 'fs-constrict') + '"><path d="M70,104 C74,78 86,54 110,54 C134,54 146,78 150,104" class="fs-vwall"/><path d="M70,104 C74,78 86,54 110,54 C134,54 146,78 150,104" class="fs-vlum"/></g>';
+      // an arteriole rising from the hypodermis and running under the surface (the dermal plexus): wall and
+      // lumen as one tube; its width changes when its smooth muscle acts (pass 3: the old arch read as a magnet)
+      '<g class="fs-ves fs-tube ' + (hot ? 'fs-dilate' : 'fs-constrict') + '"><path d="' + SKIN_VES + '" class="fs-vwall"/><path d="' + SKIN_VES + '" class="fs-vlum"/></g>' +
+      T(112, 58, 'arteriole', 'fs-lbl');
     if(hot){
       s += '<path d="M240,100 C232,92 248,88 240,80 C232,72 248,68 240,60 C234,52 240,44 238,34" class="fs-duct"/><ellipse cx="240" cy="104" rx="12" ry="6" class="fs-gland"/>' +
         movers([[238, 32], [238, 32], [238, 32]], 'fs-sweat', 0, -14, 2.8) +
@@ -58,8 +61,8 @@
     } else {
       s += wavy(90, 26, 18, 'fs-loss') + wavy(120, 26, 18, 'fs-loss') + wavy(150, 26, 18, 'fs-loss') + wavy(196, 26, 18, 'fs-loss');
     }
-    s += T(44, 14, fev ? 'set point raised: the body acts as if cold' : 'heat lost from the skin', 'fs-small') +
-      T(hot ? 160 : 172, 62, hot ? 'arteriole widens:' : 'arteriole narrows:', 'fs-lbl fs-acts') + T(hot ? 160 : 172, 74, hot ? 'more warm blood' : 'less warm blood', 'fs-small fs-acts') + T(hot ? 160 : 172, 85, 'near the surface', 'fs-small fs-acts') +
+    s += T(44, 14, fev ? 'set point raised: the body acts as if cold' : 'heat lost from the skin', 'fs-small fs-on') +
+      T(138, 95, hot ? 'widens: more warm blood near the surface' : 'narrows: less warm blood near the surface', 'fs-small fs-acts', 'middle') +
       (hot ? T(254, 46, 'sweat', 'fs-lbl fs-acts', 'end') : '') +
       T(130, 149, hot ? 'skeletal muscle' : 'muscle shivers: heat made', 'fs-lbl fs-on-dark' + (hot ? '' : ' fs-acts'), 'middle');
     return s;

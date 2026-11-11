@@ -665,12 +665,14 @@
     var compact = !!(sceneOf(p) && !opt.noScene && window.AnpScene);
     var NW = compact ? 230 : 168, NH = compact ? 46 : 58, GX = compact ? 16 : 30, GY = compact ? 10 : 30, LX = compact ? 40 : 47;
     var wide = window.matchMedia && window.matchMedia('(min-width: 1000px)').matches;
-    var n = p.steps.length, cols = opt.cols || (compact ? (wide || n < 4 ? 1 : 2) : colsFor(n)), rows = Math.ceil(n / cols);
+    /* Pass 3: a wide figure (a row of panels) takes the stage's width with the list under it, in rows of three */
+    var pl = compact ? sceneOf(p) : null, flat = !!(pl && wide && pl.w / pl.h >= 1.5);
+    var n = p.steps.length, cols = opt.cols || (flat ? Math.min(3, n) : compact ? (wide || n < 4 ? 1 : 2) : colsFor(n)), rows = Math.ceil(n / cols);
     var W = PAD * 2 + NW * cols + GX * (cols - 1);
     var H = PAD * 2 + 8 + rows * NH + (rows - 1) * GY + (p.cycle ? 30 : 0);
     function pos(k){
       var row = Math.floor(k / cols), col = k % cols;
-      if(compact){ row = k % rows; col = Math.floor(k / rows); }
+      if(compact){ if(!flat){ row = k % rows; col = Math.floor(k / rows); } }
       else if(row % 2 === 1) col = cols - 1 - col;
       return { x: PAD + col * (NW + GX), y: PAD + 8 + row * (NH + GY), col: col, row: row };
     }
@@ -788,7 +790,7 @@
       var parts = slot.map(function(s, k){ return (k + 1) + '. ' + (s.i != null ? plain(p.steps[s.i].label) : '?'); });
       svg.setAttribute('aria-label', p.title + ', step by step: ' + parts.join('; ') + (p.cycle ? '; then back to step 1.' : '.'));
     }
-    return { svg: svg, n: n, slot: slot, scene: sc, fit: fitAll,
+    return { svg: svg, n: n, slot: slot, scene: sc, fit: fitAll, flat: flat,
       fill: function(k, i, st, ex){ fill(k, i, st, ex); label(); sync(); },
       fillAll: function(fn){ for(var k = 0; k < n; k++){ var r = fn(k) || {}; fill(k, r.i, r.state, r.extra); } label(); sync(); },
       // the player: slot k in focus on the figure, its words beside its pin, the token arriving from the pin before
@@ -808,7 +810,7 @@
     fig.className = 'anp-fig pw-fig' + (map.scene ? ' has-scene' : '');
     if(map.scene){
       var duo = document.createElement('div'), box = document.createElement('div');
-      duo.className = 'pw-duo'; box.className = 'pw-mapbox';
+      duo.className = 'pw-duo' + (map.flat ? ' pw-flat' : ''); box.className = 'pw-mapbox';
       box.appendChild(map.svg);
       duo.appendChild(map.scene.el); duo.appendChild(box);
       fig.appendChild(duo);

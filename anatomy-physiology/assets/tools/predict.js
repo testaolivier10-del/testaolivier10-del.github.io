@@ -354,6 +354,9 @@
       show.addEventListener('click', function(){
         var open = tree.hidden;
         tree.hidden = !open;
+        // pass 3: the diagram and the run's feed tell the same chain: one at a time
+        var fd = S ? (dashOf(box) || document).querySelector('.pc-feed') : null;
+        if(fd && fd.innerHTML){ fd.hidden = open; var dsh = fd.closest('.pc-dash'); if(dsh && !dsh.classList.contains('has-scene')) dsh.classList.toggle('pc-big', open); }
         show.setAttribute('aria-expanded', String(open));
         show.textContent = open ? 'Hide the chain' : 'Show the chain';
         if(S && open && tree.scrollIntoView) tree.scrollIntoView({ block: 'start', behavior: 'smooth' });
@@ -411,7 +414,7 @@
   }
   function dashHtml(s, st, sid, withScene){
     var placed = function(v){ return withScene && s.scene.vars[v.id] && s.scene.vars[v.id].pt; };
-    return '<div class="pc-dash' + (withScene ? ' has-scene' : '') + '" aria-labelledby="' + sid + '-dh">' +
+    return '<div class="pc-dash' + (withScene ? ' has-scene' : ' pc-big') + '" aria-labelledby="' + sid + '-dh">' +
       '<div class="pc-dash-top"><span class="pc-dash-h" id="' + sid + '-dh">The body</span><span class="pc-pert"><span class="pc-pert-k">Change:</span> ' + esc(st.start) + '</span></div>' +
       (withScene ? '<div class="pc-scene"></div>' : '') +
       '<div class="pc-dash-grid">' + st.variables.map(function(v, i){
@@ -504,7 +507,7 @@
   function runChain(box, st, picks, reveals, done){
     var feed = dashOf(box).querySelector('.pc-feed'), live = dashOf(box).querySelector('.pc-feed-live');
     var co = chainOrder(st), order = co.keys, seen = {}, resolved = {}, quick = motionOff(), t = 0, gap = 750;
-    feed.hidden = false;
+    feed.hidden = false; feed.parentNode.classList.remove('pc-big');
     feed.innerHTML = '<li class="pc-f-root"><span class="pc-f-node pc-root">' + esc(st.start) + '</span></li>';
     box.classList.add('is-running');
     function settle(){

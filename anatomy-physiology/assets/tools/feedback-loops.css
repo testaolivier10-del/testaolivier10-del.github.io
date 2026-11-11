@@ -392,3 +392,10 @@ a.fl-tag:hover{text-decoration:underline;}
 .fl-ring .fl-node .fl-svg-t{transition:opacity .3s;}
 .fl-ring .fl-node:not(.is-seen):not(.is-cut) .fl-svg-t{opacity:0;}
 @media (prefers-reduced-motion: reduce){ .fl-ring .fl-node .fl-svg-t{transition:none;} }
+/* Pass 3 (docs/tool-review/pass3/anatomy-physiology.md): the stimulus box is ready, the rest wait dimmed until the
+   signal reaches them; "acts on the variable" appears once the response has acted. */
+.fl-ring [data-k]{opacity:.3;}
+.fl-ring [data-k="stimulus"],.fl-ring [data-k].is-seen{opacity:1;}
+.fl-ring [data-k="stimulus"]:not(.is-seen) .fl-card-bg{stroke-width:3;fill:color-mix(in srgb, var(--ink) 7%, var(--paper));}
+.fl-ring .fl-actson{opacity:0;transition:opacity .3s;}
+.fl-ring [data-k="response"].is-seen ~ .fl-actson{opacity:1;}
