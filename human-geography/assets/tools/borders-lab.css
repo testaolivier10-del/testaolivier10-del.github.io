@@ -49,6 +49,9 @@
 .bl-span{fill:var(--bl-town);opacity:.35;}
 .bl-ev{stroke:var(--bl-tag);stroke-width:2;} .bl-ev.is-town{fill:var(--bl-town);} .bl-ev.is-line{fill:var(--bl-border);} .bl-ev.is-join{fill:var(--bl-relict);}
 .bl-yr{font:700 12px var(--font-ui);fill:var(--bl-ink);}
+.bl-feat{font:italic 700 12px var(--font-ui);fill:var(--bl-river);stroke:var(--bl-land);stroke-width:3px;paint-order:stroke;}
+.bl-feat.is-post{fill:var(--bl-relict);font-style:normal;}
+.bl-svg .bl-feat:not([x]){display:none;}
 .bl-now{stroke:var(--bl-ink);stroke-width:2;}
 .bl-shape{fill:var(--bl-town);fill-opacity:.85;stroke:var(--bl-ink);stroke-width:1.2;vector-effect:non-scaling-stroke;}
 .bl-shape.is-inner{fill:var(--bl-land);fill-opacity:1;}
@@ -123,3 +126,6 @@
 .bl-sw.is-route{width:22px;height:0;border-radius:0;border-top:3px solid var(--bl-out);}
 .bl-svg,.bl-qfig,.bl-leg{--bl-r1:#CFE4E1;--bl-r2:#DCEBE4;--bl-r3:#E9F0E2;--bl-r4:#F3EEDB;--bl-r5:#F6E4D2;}
 :root[data-theme="dark"] .bl-svg,:root[data-theme="dark"] .bl-qfig,:root[data-theme="dark"] .bl-leg{--bl-r1:#1F4A4F;--bl-r2:#25433F;--bl-r3:#2C3F36;--bl-r4:#3A3A2E;--bl-r5:#46352A;}
+
+/* Second pass: earlier forces dimmed, the last one tapped in full. */
+.bl-fx.is-dim{opacity:.38;}

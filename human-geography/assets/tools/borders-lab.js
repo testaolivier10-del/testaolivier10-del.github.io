@@ -34,8 +34,11 @@
 
   /* ----------------------------------------------------- the borderland */
   /* Design space 600 x 300: Country A north of the border, Country B south. */
-  var TOWNS = [[60, 60], [150, 40], [250, 70], [350, 45], [450, 75], [540, 50], [100, 110], [200, 115], [300, 100], [410, 118], [520, 110],
-    [70, 195], [170, 185], [270, 200], [380, 190], [480, 200], [560, 185], [120, 250], [230, 255], [330, 245], [440, 255], [540, 248]];
+  /* Fourteen towns (second pass, 2026-11-10: fewer marks, the same story),
+     placed so the Ardic homeland holds towns on both sides of Corvia's line
+     and the consequent line has towns of each people on its own side. */
+  var TOWNS = [[70, 55], [200, 45], [330, 60], [470, 50], [560, 95], [130, 115], [400, 112],
+    [80, 205], [300, 200], [540, 205], [150, 262], [230, 250], [370, 255], [470, 262]];
   function lineY(kind, x){
     if(kind === 'geometric') return 150;
     if(kind === 'consequent') return 150 + 30 * Math.sin(x / 55) + 12 * Math.sin(x / 19);
@@ -54,11 +57,12 @@
   function drawn(f){ return f.drawn; }
   function isRiver(f){ return f.extra !== 'geometric' && f.extra !== 'consequent' && f.extra !== 'superimposed'; }
   /* The land is drawn first (2026-11 tool visuals: "why the line runs
-     there"): hills and woods, the Tarn where the border follows a river,
-     where each people lives once they have settled, and towns as small
-     clusters of houses. Design space 600 x 300. */
-  var HILLS = [[22, 88], [44, 82], [66, 90], [384, 88], [404, 82], [560, 222], [582, 228], [292, 228], [314, 222]];
-  var WOODS = [[128, 226], [146, 232], [138, 214], [470, 90], [488, 86], [300, 282], [318, 286], [582, 150]];
+     there"): the Tarn where the border follows a river, where each people
+     lives once they have settled, and towns as small clusters of houses.
+     Second pass (2026-11-10): the scattered hills and woods that taught
+     nothing are gone; only the geometric scene keeps its ridge and river,
+     because the straight line ignoring them IS the point there. Design
+     space 600 x 300. */
   // The Ardic homeland, which Corvia's line of 1885 cuts in two.
   var HOMELAND = [[180, 34], [250, 22], [330, 28], [410, 30], [446, 70], [436, 130], [448, 190], [430, 262], [350, 280], [260, 276], [196, 262], [172, 200], [184, 140], [168, 82]];
   function smooth(pts, P){
@@ -69,7 +73,6 @@
     return d + 'Z';
   }
   function hill(P, x, y, k){ var p = P(x, y), s = Math.max(7, 11 * k); return '<path class="bl-hill" d="M' + n1(p[0] - s) + ' ' + n1(p[1] + s * 0.6) + 'L' + p[0] + ' ' + n1(p[1] - s * 0.8) + 'L' + n1(p[0] + s) + ' ' + n1(p[1] + s * 0.6) + 'Z"/>'; }
-  function wood(P, x, y, k){ var p = P(x, y), s = Math.max(4, 6 * k); return '<circle class="bl-wood" cx="' + p[0] + '" cy="' + p[1] + '" r="' + n1(s) + '"/>'; }
   // A town: two or three small houses.
   function town(P, t, i, k, cls){
     var p = P(t[0], t[1]), s = Math.max(4.2, 6 * k), o = '';
@@ -97,24 +100,30 @@
       g.push('<rect class="bl-area is-be" x="' + x0[0] + '" y="' + x0[1] + '" width="' + n1(x1[0] - x0[0]) + '" height="' + n1(x1[1] - x0[1]) + '"/>');
       g.push('<path class="bl-area is-ar bl-home" d="' + smooth(HOMELAND, P) + '"/>');
     }
-    // Hills and woods; where the border is geometric, a ridge and a river that the straight line ignores.
-    HILLS.forEach(function(h){ g.push(hill(P, h[0], h[1], k)); });
-    WOODS.forEach(function(w){ g.push(wood(P, w[0], w[1], k)); });
+    // Where the border is geometric, a ridge and a river that the straight line ignores.
+    var lab = [];
     if(f.extra === 'geometric'){
       [[300, 128], [318, 140], [306, 156], [326, 166], [312, 178]].forEach(function(h){ g.push(hill(P, h[0], h[1], k * 1.15)); });
       var rn = []; for(var y = 0; y <= 300; y += 10) rn.push(P(500 + 9 * Math.sin(y / 40), y).join(' '));
       g.push('<path class="bl-river" d="M' + rn.join('L') + '"/>');
+      var rq = P(512, 40), hq = P(318, 112);
+      lab.push('<text class="bl-feat" x="' + rq[0] + '" y="' + rq[1] + '">River</text>', '<text class="bl-feat" x="' + hq[0] + '" y="' + hq[1] + '" text-anchor="middle">Ridge</text>');
     }
     if(isRiver(f)){
       var rv = []; for(var x3 = 0; x3 <= 600; x3 += 10) rv.push(P(x3, lineY('river', x3) + 9).join(' '));
       g.push('<path class="bl-river is-wide" d="M' + rv.join('L') + '"/>');
+      var tq = P(486, lineY('river', 486) + 30);
+      lab.push('<text class="bl-feat" x="' + tq[0] + '" y="' + tq[1] + '">Tarn River</text>');
     }
     out.push('<g clip-path="url(#' + cid + ')">' + g.join('') + '</g>');
     var joined = f.extra === 'relict' ? f.drawn + 50 : Infinity, isLine = year >= f.drawn;
     if(isLine){
       var pts = []; for(var x2 = 0; x2 <= 600; x2 += 6) pts.push(P(x2, lineY(f.extra, x2)).join(' '));
       out.push('<path class="bl-border' + (year >= joined ? ' is-relict' : '') + '" d="M' + pts.join('L') + '"/>');
-      if(f.extra === 'relict' && year >= joined) [120, 300, 480].forEach(function(xx){ var q = P(xx, lineY('relict', xx)); out.push('<rect class="bl-post" x="' + n1(q[0] - 5) + '" y="' + n1(q[1] - 5) + '" width="10" height="10" rx="1.5"/>'); });
+      if(f.extra === 'relict' && year >= joined){
+        [120, 300, 480].forEach(function(xx){ var q = P(xx, lineY('relict', xx)); out.push('<rect class="bl-post" x="' + n1(q[0] - 5) + '" y="' + n1(q[1] - 5) + '" width="10" height="10" rx="1.5"/>'); });
+        var pq = P(300, lineY('relict', 300) - 16); lab.push('<text class="bl-feat is-post" x="' + pq[0] + '" y="' + pq[1] + '" text-anchor="middle">Old customs post</text>');
+      }
       if(f.extra === 'geometric'){ var gq = P(600, 150); out.push(tag(gq[0] - 28, gq[1] - 16, '41°N', 'is-line', W)); }
       if(f.extra === 'superimposed' && o.name !== false){ var sq = P(600, 150); out.push(tag(sq[0] - 60, sq[1] - 18, 'Corvia\'s line', 'is-line', W)); }
     }
@@ -123,6 +132,7 @@
       var L = lang(f.extra, i);
       out.push(town(P, t, i, k, L ? ' is-' + L : ''));
     });
+    out.push(lab.join(''));
     var na = P(10, 18), nb = P(10, 290), one = year >= joined;
     out.push('<text class="bl-cname" x="' + n1(na[0] + 8) + '" y="' + n1(na[1] + 8) + '">' + (one ? 'One country since ' + joined : 'Country A') + '</text>');
     if(!one) out.push('<text class="bl-cname" x="' + n1(nb[0] + 8) + '" y="' + n1(nb[1] - 4) + '">Country B</text>');
@@ -135,25 +145,24 @@
     var L = 24, R = W - 24, X = function(y){ return n1(L + (R - L) * (Math.max(Y0, Math.min(Y1, y)) - Y0) / (Y1 - Y0)); }, o = [], yA = top + 26;
     o.push('<line class="bl-axis" x1="' + L + '" y1="' + yA + '" x2="' + R + '" y2="' + yA + '"/>');
     o.push('<rect class="bl-span" x="' + X(f.settled) + '" y="' + (yA - 6) + '" width="' + n1(X(f.settled + 60) - X(f.settled)) + '" height="12" rx="6"/>');
-    var ev = [{ y: f.settled, t: String(f.settled), c: 'is-town' }, { y: f.drawn, t: String(f.drawn), c: 'is-line' }];
-    if(isFinite(joined)) ev.push({ y: joined, t: String(joined), c: 'is-join' });
+    // Each event names itself ("Towns 1820"), so the dates need no legend.
+    var ev = [{ y: f.settled, t: 'Towns ' + f.settled, c: 'is-town' }, { y: f.drawn, t: 'Border ' + f.drawn, c: 'is-line' }];
+    if(isFinite(joined)) ev.push({ y: joined, t: 'Joined ' + joined, c: 'is-join' });
     ev.sort(function(a, b){ return a.y - b.y; });
     var lastX = -99, row = 0;
     ev.forEach(function(e){
-      var x = +X(e.y); row = x - lastX < 48 ? 1 - row : 0; lastX = x;
-      o.push('<circle class="bl-ev ' + e.c + '" cx="' + x + '" cy="' + yA + '" r="6"/><text class="bl-yr" x="' + x + '" y="' + (row ? yA + 24 : yA - 12) + '" text-anchor="middle">' + e.t + '</text>');
+      var x = +X(e.y); row = x - lastX < 96 ? 1 - row : 0; lastX = x;
+      o.push('<circle class="bl-ev ' + e.c + '" cx="' + x + '" cy="' + yA + '" r="6"/><text class="bl-yr" x="' + x + '" y="' + (row ? yA + 24 : yA - 12) + '" text-anchor="' + (x < L + 40 ? 'start' : x > R - 40 ? 'end' : 'middle') + '">' + e.t + '</text>');
     });
     if(year != null) o.push('<path class="bl-now" d="M' + X(year) + ' ' + (yA - 16) + 'V' + (yA + 10) + '"/>');
     return o.join('');
   }
+  /* The timeline names the towns, the border and the joining, the river,
+     ridge and customs post are named on the land, so the legend holds only
+     the two peoples, and only where they matter. */
   function landLegend(f){
-    var it = ['<li><span class="bl-sw is-town is-house" aria-hidden="true"></span>Towns settled (from ' + f.settled + ')</li>', '<li><span class="bl-sw is-line" aria-hidden="true"></span>Border drawn (' + f.drawn + ')</li>'];
-    if(f.extra === 'relict') it.push('<li><span class="bl-sw is-join" aria-hidden="true"></span>Countries join (' + (f.drawn + 50) + ')</li><li><span class="bl-sw is-post" aria-hidden="true"></span>Old customs post</li>');
-    if(f.extra === 'consequent' || f.extra === 'superimposed') it.push('<li><span class="bl-sw is-ar" aria-hidden="true"></span>Ardic-speaking town' + (f.extra === 'superimposed' ? ' (shaded: the Ardic homeland)' : '') + '</li><li><span class="bl-sw is-be" aria-hidden="true"></span>Bessan-speaking town</li>');
-    if(isRiver(f)) it.push('<li><span class="bl-sw is-river" aria-hidden="true"></span>Tarn River</li>');
-    if(f.extra === 'geometric') it.push('<li><span class="bl-sw is-river" aria-hidden="true"></span>River</li>');
-    it.push('<li><span class="bl-sw is-hill" aria-hidden="true"></span>Hills</li>');
-    return '<ul class="bl-legend" aria-label="Legend">' + it.join('') + '</ul>';
+    if(f.extra !== 'consequent' && f.extra !== 'superimposed') return '';
+    return '<ul class="bl-legend" aria-label="Legend"><li><span class="bl-sw is-ar" aria-hidden="true"></span>Ardic-speaking town' + (f.extra === 'superimposed' ? ' (shaded: the Ardic homeland)' : '') + '</li><li><span class="bl-sw is-be" aria-hidden="true"></span>Bessan-speaking town</li></ul>';
   }
 
   /* --------------------------------------------------------- the shapes */
@@ -207,8 +216,9 @@
     return out;
   }
   function shapeLegend(id){
-    var r = reach(id);
-    return '<ul class="bl-legend" aria-label="Legend"><li>' + ico('star') + 'Capital</li><li><span class="bl-sw is-ring" aria-hidden="true"></span>Each ring: 300 km farther from the capital</li><li><span class="bl-sw is-route" aria-hidden="true"></span>To the farthest edge: ' + thouS(r.km) + ' km' + (id === 'fragmented' ? ' (dashed: across the sea)' : id === 'perforated' ? ' (around the state inside)' : '') + '</li></ul>';
+    var r = reach(id); void r;
+    // The capital and the distance are named on the drawing; the legend says only what the rings and the line mean.
+    return '<ul class="bl-legend" aria-label="Legend"><li><span class="bl-sw is-ring" aria-hidden="true"></span>Each ring: 300 km farther from the capital</li><li><span class="bl-sw is-route" aria-hidden="true"></span>Capital to the farthest edge' + (id === 'fragmented' ? ' (dashed: across the sea)' : id === 'perforated' ? ' (around the state inside)' : '') + '</li></ul>';
   }
 
   /* --------------------------------------------------------- the forces */
@@ -268,18 +278,19 @@
     else { var parts = kind.split(' '); body = ICON[parts[0]](p, s, parts[1] || ''); }
     return '<svg class="bl-ico" viewBox="0 0 24 18" aria-hidden="true">' + body + '</svg>';
   }
+  /* The legend names only what the last tapped force added (the earlier
+     ones are dimmed on the map), plus the color key: at most four items. */
   function forcesLegend(on){
-    var it = [['star', 'Capital, the rail hub']], has = function(i){ return on.indexOf(i) > -1; };
-    if(has(0)) it.push(['rail', 'National railway']);
-    if(has(1)) it.push(['flag is-in', 'Same history taught everywhere']);
-    if(has(2)) it.push(['ball is-in', 'Crowds cheer the national team']);
-    if(has(3)) it.push(['clinic is-in', 'New clinic']);
-    if(has(4)) it.push(['sep', 'Bessan-speaking region']);
-    if(has(5)) it.push([has(0) ? 'railcut' : 'mtn', 'Mountains, snowed in five months a year']);
-    if(has(6)) it.push(['factory is-out', 'New factory'], ['down is-out', 'Incomes falling']);
-    if(has(7)) it.push(['claim', 'Land Country B claims']);
-    if(has(8)) it.push(['blast is-out', 'Rail line bombed']);
-    if(on.some(function(i){ return B.SCENES[i].force === 'centrifugal'; })) it.push(['hot', 'A region pulled away']);
+    var it = [], i = on.length ? on[on.length - 1] : -1;
+    if(i === 0) it.push(['rail', 'National railway']);
+    if(i === 1) it.push(['flag is-in', 'Same history taught everywhere']);
+    if(i === 2) it.push(['ball is-in', 'Crowds cheer the national team']);
+    if(i === 3) it.push(['clinic is-in', 'New clinic']);
+    if(i === 4) it.push(['sep', 'Bessan-speaking region']);
+    if(i === 5) it.push([on.indexOf(0) > -1 ? 'railcut' : 'mtn', 'Mountains, snowed in five months a year']);
+    if(i === 6) it.push(['factory is-out', 'New factory'], ['down is-out', 'Incomes falling']);
+    if(i === 7) it.push(['claim', 'Land Country B claims']);
+    if(i === 8) it.push(['blast is-out', 'Rail line bombed']);
     return '<ul class="bl-legend" aria-label="Legend">' + it.map(function(x){ return '<li>' + ico(x[0]) + esc(x[1]) + '</li>'; }).join('') + '<li class="bl-key-c"><span class="bl-sw is-in" aria-hidden="true"></span>Green: pulls together <span class="bl-sw is-out" aria-hidden="true"></span>Orange: pulls apart</li></ul>';
   }
   function forcesSvg(W, H, on){
@@ -302,28 +313,35 @@
       Object.keys(CA).forEach(function(id){ out.push('<path class="bl-prov' + (hot[id] ? ' is-hot' : '') + '" d="M' + CA[id].map(function(q){ return P(q).join(' '); }).join('L') + 'Z"/>'); });
     }
     var C = centers(), cap = P(C.capital), at = function(id, dx, dy){ var q = P(C[id]); return [n1(q[0] + (dx || 0) * s), n1(q[1] + (dy || 0) * s)]; };
+    /* Second pass (2026-11-10): the force tapped last is drawn in full and the
+       earlier ones are dimmed, so the eye goes to the one just added. */
+    var last = on.length ? on[on.length - 1] : -1, g = {};
+    function put(i, html){ g[i] = (g[i] || '') + html; }
     // The range meets the line from the capital to the Western Uplands here.
     var cut = P([197, 214]);
-    if(has(5)) RANGE.forEach(function(r, i){ out.push(ICON.mtn(P(r), s * (i % 2 ? 0.9 : 1.1))); });
+    if(has(5)) RANGE.forEach(function(r, i){ put(5, ICON.mtn(P(r), s * (i % 2 ? 0.9 : 1.1))); });
     if(has(0)) FSC[0].where.forEach(function(w){
       var end = at(w);
-      if(w === 'west' && has(5)){ out.push(rail(cap, cut)); out.push('<path class="bl-rail-cut" d="' + railD(cut, end) + '"/>'); }
-      else out.push(rail(cap, end, has(8) && w === 'coast' ? 'is-hit' : ''));
-      out.push('<circle class="bl-stn" cx="' + end[0] + '" cy="' + end[1] + '" r="' + n1(4 * s) + '"/>');
+      if(w === 'west' && has(5)){ put(0, rail(cap, cut)); put(0, '<path class="bl-rail-cut" d="' + railD(cut, end) + '"/>'); }
+      else put(0, rail(cap, end, has(8) && w === 'coast' ? 'is-hit' : ''));
+      put(0, '<circle class="bl-stn" cx="' + end[0] + '" cy="' + end[1] + '" r="' + n1(4 * s) + '"/>');
     });
-    if(has(8)){ var c0 = at('coast'); if(!has(0)) out.push(rail(cap, c0, 'is-hit')); var m = [n1((cap[0] + c0[0]) / 2), n1((cap[1] + c0[1]) / 2)]; out.push(ICON.blast(m, s, 'is-out')); out.push(ICON.blast([n1(m[0] + (c0[0] - m[0]) * 0.55), n1(m[1] + (c0[1] - m[1]) * 0.55)], s * 0.8, 'is-out')); }
-    if(has(1)) FSC[1].where.forEach(function(w){ out.push(ICON.flag(at(w, -14, -10), s, 'is-in')); });
-    if(has(2)) FSC[2].where.forEach(function(w){ out.push(ICON.ball(at(w, 14, -10), s, 'is-in')); });
-    if(has(3)) FSC[3].where.forEach(function(w){ out.push(ICON.clinic(at(w, 16, 12), s, 'is-in')); });
-    if(has(4)) out.push(ICON.flag(at('east', 0, -22), s * 1.2, 'is-out'));
-    if(has(6)){ [[-30, -16], [-34, 8], [26, 18]].forEach(function(d){ out.push(ICON.factory(at('capital', d[0], d[1]), s, 'is-out')); }); out.push(ICON.down(at('south', 18, -4), s * 1.1, 'is-out')); }
+    if(has(8)){ var c0 = at('coast'); if(!has(0)) put(8, rail(cap, c0, 'is-hit')); var m = [n1((cap[0] + c0[0]) / 2), n1((cap[1] + c0[1]) / 2)]; put(8, ICON.blast(m, s, 'is-out')); put(8, ICON.blast([n1(m[0] + (c0[0] - m[0]) * 0.55), n1(m[1] + (c0[1] - m[1]) * 0.55)], s * 0.8, 'is-out')); }
+    if(has(1)) FSC[1].where.forEach(function(w){ put(1, ICON.flag(at(w, -14, -10), s, 'is-in')); });
+    if(has(2)) FSC[2].where.forEach(function(w){ put(2, ICON.ball(at(w, 14, -10), s, 'is-in')); });
+    if(has(3)) FSC[3].where.forEach(function(w){ put(3, ICON.clinic(at(w, 16, 12), s, 'is-in')); });
+    if(has(4)) put(4, ICON.flag(at('east', 0, -22), s * 1.2, 'is-out'));
+    if(has(6)){ [[-30, -16], [-34, 8], [26, 18]].forEach(function(d){ put(6, ICON.factory(at('capital', d[0], d[1]), s, 'is-out')); }); put(6, ICON.down(at('south', 18, -4), s * 1.1, 'is-out')); }
     if(has(7)){ var ne = at('northeast'), tip = [ne[0], n1(Math.max(4, ne[1] - 22 * s))], from = [ne[0] + 4, n1(Math.max(2, oy + 2))];
-      out.push('<path class="bl-claim-a" d="M' + from.join(' ') + 'L' + tip.join(' ') + '"/><path class="bl-claim-h" d="M' + tip.join(' ') + 'l-6 -9h12z"/>'); }
+      put(7, '<path class="bl-claim-a" d="M' + from.join(' ') + 'L' + tip.join(' ') + '"/><path class="bl-claim-h" d="M' + tip.join(' ') + 'l-6 -9h12z"/>'); }
+    // Drawing order as before (mountains, rail, blasts, then the marks); the last one tapped on top.
+    [5, 0, 8, 1, 2, 3, 4, 6, 7].forEach(function(i){ if(g[i] && i !== last) out.push('<g class="bl-fx is-dim">' + g[i] + '</g>'); });
+    if(g[last]) out.push('<g class="bl-fx">' + g[last] + '</g>');
     out.push(ICON.star(cap, s * 1.15));
     out.push(tag(cap[0], n1(cap[1] + 24 * s), 'Capital', 'is-line', W));
-    // Name the regions pulled away, so the scene's words find their place on the map.
-    var named = {};
-    Object.keys(hot).forEach(function(w){ if(named[w] || !BASEA) return; named[w] = 1; var f = BASEA.features.filter(function(x){ return x.id === w; })[0], q = at(w, 0, w === 'east' ? 18 : w === 'south' ? -26 : 22); if(f) out.push(tag(q[0], q[1], f.name, 'is-out', W)); });
+    // Name the region the last force pulls away, so the scene's words find their place on the map.
+    var named = {}, lastHot = last > -1 && B.SCENES[last].force === 'centrifugal' ? FSC[last].where : [];
+    lastHot.forEach(function(w){ if(named[w] || !BASEA) return; named[w] = 1; var f = BASEA.features.filter(function(x){ return x.id === w; })[0], q = at(w, 0, w === 'east' ? 18 : w === 'south' ? -26 : 22); if(f) out.push(tag(q[0], q[1], f.name, 'is-out', W)); });
     return out.join('');
   }
 
@@ -465,7 +483,7 @@
       } else if(scene === 'shapes'){
         html = shapeSvg(z.W, z.H, shape, { labels: true });
         label = 'Outline of an invented ' + B.SHAPES[shape].name.toLowerCase() + ' state, with its capital and rings every 300 km: its farthest edge is ' + thouS(reach(shape).km) + ' km from the capital.';
-        leg = shapeLegend(shape) + '<p class="bt-small">An invented state. State shapes are an older classification; the current course framework does not list them, but many classes still use them.</p>';
+        leg = shapeLegend(shape);
       } else if(scene === 'forces'){
         if(!BASEA){ needBaseA(); if(ONBASEA.indexOf(draw) < 0) ONBASEA.push(draw); }
         html = forcesSvg(z.W, z.H, on);
@@ -496,7 +514,7 @@
         void f;
       } else if(scene === 'shapes'){
         var S = B.SHAPES[shape]; head = S.name + '.'; sub = S.def;
-        why = '<p><b>Its usual challenge:</b> ' + esc(S.challenge) + '</p><p>' + esc(S.real) + '</p><p>Shape is only one influence. Roads, technology and a shared identity often matter more than outline.</p>';
+        why = '<p><b>Its usual challenge:</b> ' + esc(S.challenge) + '</p><p>' + esc(S.real) + '</p><p>Shape is only one influence. Roads, technology and a shared identity often matter more than outline.</p><p class="bt-small">An invented state. State shapes are an older classification; the current course framework does not list them, but many classes still use them.</p>';
       } else if(scene === 'forces'){
         var cp = on.filter(function(i){ return B.SCENES[i].force === 'centripetal'; }).length, cf = on.length - cp;
         head = on.length ? cp + ' pulling together, ' + cf + ' pulling apart.' : 'Tap a scene to add its force.';
