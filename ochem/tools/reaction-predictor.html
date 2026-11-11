@@ -122,6 +122,11 @@
 <script src="../../assets/course/tool-studio.js" defer></script>
 <!-- tool-studio:end -->
 <style>
+/* Pass 3: substrate and reagent pickers match "Solvent and heat". */
+.rp-ls .rp-picker > summary{flex-wrap:nowrap;white-space:nowrap;font-size:var(--ls-s);font-weight:800;color:var(--muted);}
+.rp-ls .rp-picker .tool-more__now{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:var(--ls-m);}
+.rp-ls .rp-picker .rp-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
+.rp-ls .rp-picker .rp-rgtnote{margin-top:10px;}
 .rp-setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
   /* Two wide columns on a desktop: four narrow ones cut the reagent and substrate
      names off mid-word at 1440 px (site audit 2026-10). */

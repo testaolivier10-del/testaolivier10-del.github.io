@@ -881,6 +881,46 @@ document.addEventListener('DOMContentLoaded', function(){
     b.addEventListener('click', function(){ n.hidden = !n.hidden; b.setAttribute('aria-expanded', String(!n.hidden)); });
     n.parentNode.insertBefore(b, n);
   });
+  /* Pass 3 (cleanup 2026-11-11): the protocols are one select (the chips
+     stay, hidden, and the select presses them), and Read opens a chart a part
+     at a time: down to the first fork, then "Next" adds the next part under
+     it. "Whole chart" shows it all; Show all and print show every box. */
+  var sel = document.createElement('select'); sel.id = 'flowSel'; sel.className = 'fl-sel'; sel.setAttribute('aria-label', 'Pick a protocol');
+  sel.innerHTML = [].map.call(chips.querySelectorAll('button'), function(b){ return '<option value="' + b.dataset.i + '">' + b.textContent + '</option>'; }).join('');
+  sel.addEventListener('change', function(){ var b = chips.querySelector('[data-i="' + sel.value + '"]'); if(b) b.click(); });
+  $('flowPick').insertBefore(sel, chips);
+  var rv = {};
+  host.querySelectorAll('.diagram-card').forEach(function(card, ci){
+    var seg = 0, afterFork = false;
+    [].forEach.call(card.children, function(c){
+      if(c.classList.contains('flow-box') && afterFork){ seg++; afterFork = false; }
+      if(c.classList.contains('flow-branch')) afterFork = true;
+      c.setAttribute('data-seg', seg);
+    });
+    card.setAttribute('data-segs', seg + 1);
+    if(seg > 0){
+      var bar = document.createElement('div'); bar.className = 'fc-more';
+      bar.innerHTML = '<button type="button" class="fc-next">Next part of the chart</button><button type="button" class="fc-whole">Whole chart</button>';
+      card.appendChild(bar);
+      bar.addEventListener('click', function(e){
+        var b = e.target.closest('button'); if(!b) return;
+        rv[ci] = b.classList.contains('fc-whole') ? seg : (rv[ci] || 0) + 1;
+        reveal();
+        var last = card.querySelector('[data-seg="' + rv[ci] + '"]');
+        if(last && last.scrollIntoView && !b.classList.contains('fc-whole')) last.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    }
+  });
+  function reveal(){
+    var all = [].filter.call(host.querySelectorAll('h2'), function(x){ return !x.hidden; }).length > 1;
+    host.querySelectorAll('.diagram-card').forEach(function(card, ci){
+      var n = +card.getAttribute('data-segs'), at = all ? n : (rv[ci] || 0);
+      card.querySelectorAll('[data-seg]').forEach(function(c){ c.classList.toggle('fc-later', +c.getAttribute('data-seg') > at); });
+      var bar = card.querySelector('.fc-more'); if(bar) bar.hidden = at >= n - 1;
+    });
+  }
+  chips.addEventListener('click', function(e){ var b = e.target.closest('button'); if(!b) return; rv = {}; sel.value = b.dataset.i; setTimeout(reveal, 0); });
+  reveal();
   // The diagram scrolls inside the stage: reachable by keyboard.
   window.NremtStudio.scrollable(host, 'Diagram');
   window.NremtStudio.scrollable([$('flowBuild'), $('flowDrill')], 'Board');
@@ -899,7 +939,8 @@ document.addEventListener('DOMContentLoaded', function(){
     studio.mode(m);
     if(m === 'read'){
       var h = shown();
-      studio.caption(h ? '<b>' + h.textContent + '.</b> Read it top to bottom; the shaded boxes are what you check.' : 'Every sequence, one after another.', 'read');
+      studio.caption(h ? '<b>' + h.textContent + '.</b> Read down to the first fork, then tap Next to follow the chart.' : 'Every sequence, one after another.', 'read');
+      var onB = chips.querySelector('[aria-pressed="true"]'); if(onB) sel.value = onB.dataset.i;
       var on = chips.querySelector('[aria-pressed="true"]');
       if(on && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = Math.max(0, on.offsetLeft - 16);
       var card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];

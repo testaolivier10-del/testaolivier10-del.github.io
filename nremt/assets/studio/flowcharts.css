@@ -179,3 +179,16 @@
 }
 .nx-flowcharts .fc-why{display:block;margin:8px auto 2px;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--tint-amber);color:var(--ink);font-family:inherit;font-weight:700;font-size:var(--ls-s);line-height:1.3;cursor:pointer;}
 .nx-flowcharts .fc-why[aria-expanded="true"]{border-color:var(--accent);}
+
+/* Pass 3 (cleanup 2026-11-11): protocols in one select; Read opens a chart a part at a time; Build works one part at a time. */
+.nx-flowcharts .flow-chips{display:none;}
+.nx-flowcharts .fl-sel,.nx-flowcharts .bd-picksel{width:100%;min-height:48px;padding:0 14px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font:700 var(--ls-m) var(--font-ui);}
+.nx-flowcharts .fc-later{display:none !important;}
+.nx-flowcharts .fc-more{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin:14px 0 4px;}
+.nx-flowcharts .fc-more[hidden]{display:none;}
+.nx-flowcharts .fc-next{min-height:44px;padding:0 20px;border:0;border-radius:999px;background:var(--cink);color:var(--white);font:800 var(--ls-m) var(--font-ui);cursor:pointer;}
+.nx-flowcharts .fc-whole{min-height:44px;padding:0 14px;border:0;background:none;color:var(--cink);font:800 var(--ls-s) var(--font-ui);cursor:pointer;}
+.nx-flowcharts .bd-pick{display:flex;flex-direction:column;gap:6px;overflow:visible;margin:0 0 12px;}
+.nx-flowcharts .bd-pick__k{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.nx-flowcharts .bd-later{margin:2px 0 0;padding:12px;border:1.5px dashed var(--line);border-radius:14px;text-align:center;font:700 var(--ls-s) var(--font-ui);color:var(--muted);}
+@media print{.nx-flowcharts .fc-later{display:revert !important;}.nx-flowcharts .fc-more{display:none;}}

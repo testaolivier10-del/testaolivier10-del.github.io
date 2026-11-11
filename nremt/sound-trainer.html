@@ -958,6 +958,9 @@ if (studio) (function(){
   const cards = document.getElementById('listenSection'), sndMore = document.getElementById('sndMore');
   studio.add('details', [settings, cards]);
   studio.add('dock', live);
+  /* Pass 3 (cleanup 2026-11-11): the beat strip under Play appears with the
+     first Play, next to the sound it draws, not before. */
+  side.addEventListener('click', e => { if (e.target.closest('[data-play-which]')) side.classList.add('st-played'); });
   // The fig and the side live and hide with the module's .st-main.
   const sync = () => { fig.hidden = side.hidden = main.hidden; };
   new MutationObserver(sync).observe(main, { attributes: true, attributeFilter: ['hidden'] }); sync();

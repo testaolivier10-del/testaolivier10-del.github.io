@@ -288,7 +288,9 @@ const SHELL_BUDGETS = [
   /* Held at 28 (tool fixes 2026-11-10, task nremt-weight): the simulator's care layer (care rules, pins that change,
      the pregnancy and the drawn gear, with their styles) is nremt/assets/scenario-care.js, fetched by the monitor when
      the first patient is shown, so it is not counted here. Measured 28.0 KB on scenario-sim.html. */
-  ['nremt', 28],
+  /* 28 -> 28.3 (tool cleanup pass 3, 2026-11-11): scenario-sim.css styles "Check vitals" (the monitor waits at a
+     call's opening) and the six-call picker's "All calls" button. Measured 28.2 KB on scenario-sim.html. */
+  ['nremt', 28.3],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -683,7 +685,9 @@ const BUDGETS = [
   /* 55 -> 57 (tool audit fixes 2026-10-27): the picker's category chips with seven drawn icons, the end screen's
      Try again / Next call pair and the unclamped opening call; measured 56.3 KB. The case data is unchanged. */
   /* 57 -> 57.2 (score card at the end of a call, 2026-11-07): the scoring and card call in the page; measured 57.1 KB, a hair over a 57.1 budget. */
-  ['nremt/scenario-sim.html', 57.2],
+  /* 57.2 -> 57.6 (tool cleanup pass 3, 2026-11-11): the picker opens on six calls and the monitor waits behind
+     "Check vitals" at a call's opening; measured 57.5 KB. */
+  ['nremt/scenario-sim.html', 57.6],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
