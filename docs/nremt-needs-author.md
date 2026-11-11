@@ -63,3 +63,22 @@ Open (2026-11-10, all 80 lessons and the bank audit):
   the ch27 headings (body text updated to "hyperactive delirium with severe agitation").
 - 137 notes fixes were applied so the textbook agrees with the reviewed lessons. Those the reviewer could not open a
   primary source for are marked "not fetched" in the review logs; a clinician spot check should start there.
+
+Open (2026-11-10, tool fixes: scenario simulator and station run, task nremt):
+
+- **Crowning pin (fixed, confirm the wording).** "Crowning in the Driveway" pinned "Contractions" on the mother's head,
+  because "the top of the head at the vaginal opening" (the baby's head, crowning) matched the head region. For a
+  pregnant patient, birth and baby sentences now go to a Perineum pin (Crowning, Head delivered, Cord at the neck, Baby
+  born, Waters broken, Vaginal bleeding) and contractions stay on the uterus. Not contested; listed so the owner sees it.
+- **Pregnant figure.** The uterus is drawn at its height for the weeks (about the xiphoid from 36 weeks, the umbilicus at
+  20, lower again after the birth) with the baby head down. The figure under it is the body map's model, which is male:
+  a female figure would need a new render. The third-trimester bleeding case (abruption) shows no placenta, on purpose.
+- **AED pads in the scenario simulator.** Adults and children over 5 get front pads (below the right collarbone, left side);
+  toddlers and infants get one front pad mid chest and one on the back (front-to-back). Pediatric pad placement follows the
+  pads' own pictures and the device; confirm this is how the course wants it shown.
+- **Station run, the eight new patients.** Step lists are paraphrased from the Registry sheets E201, E202, E204, E211,
+  E212, E215, E216 and E217 as remembered, not re-read line by line against the PDFs (not fetched in this session).
+  Worth a check against the current sheets: the oxygen station's opening steps (crack the valve, BSI), the seated
+  station's strap order (middle, bottom, top, as most programs teach), the joint station run on a knee (bones above and
+  below), the long bone station run on a forearm. The trauma and medical assessments group the sheet's many items into
+  phases and use their own invented cases (a 12-foot fall; chest pain treated with aspirin per protocol).

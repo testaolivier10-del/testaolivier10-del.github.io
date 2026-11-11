@@ -69,19 +69,37 @@
         prev = prev.previousElementSibling;
       }
 
-      var steps = [], branches = [], lastStep = null;
+      /* The spine (top-level boxes) and each fork with the path that reaches
+         it. A fork can hang off a question inside the previous fork's arm (the
+         stroke chart's "Low" arm asks whether the patient can swallow, and the
+         next fork answers it): an arm that ends on a question with no end box
+         is where the next fork, straight after it, comes from. Its path then
+         runs through that arm's label (review 2026-11: the drill used to show
+         the spine's question above the inner fork's answer). */
+      var steps = [], branches = [], lastStep = null, open = null;
+      function box(el, label){ return { text: text(el), decision: el.classList.contains('decision'), terminal: el.classList.contains('terminal'), action: el.classList.contains('action'), label: label || '' }; }
+      var via = '';  // the arm(s) of the fork just passed that rejoin the spine
       Array.prototype.forEach.call(card.children, function(child){
         if(child.classList.contains('flow-box')){
           lastStep = text(child);
-          steps.push({ text: lastStep, decision: child.classList.contains('decision') });
+          steps.push(box(child, via));
+          open = null; via = '';
         } else if(child.classList.contains('flow-branch')){
-          var arms = [];
+          var arms = [], nextOpen = null;
           Array.prototype.forEach.call(child.children, function(col){
             var label = col.querySelector('.branch-label');
-            var box   = col.querySelector('.flow-box');
-            if(label && box) arms.push({ label: text(label), text: text(box) });
+            var boxes = col.querySelectorAll('.flow-box');
+            var first = boxes[0], last = boxes[boxes.length - 1];
+            if(label && first) arms.push({ label: text(label), text: text(first) });
+            if(label && last && last.classList.contains('decision') && boxes.length === 1) nextOpen = { label: text(label), box: box(last, text(label)) };
           });
-          if(arms.length > 1 && lastStep) branches.push({ from: lastStep, arms: arms });
+          var path = steps.slice(), from = lastStep;
+          if(open){ path = open.path.concat([open.box]); from = open.box.text; }
+          if(arms.length > 1 && from) branches.push({ from: from, path: path, arms: arms });
+          open = nextOpen ? { path: path, box: nextOpen.box } : null;
+          var back = Array.prototype.filter.call(child.children, function(col){ return col.querySelector('.flow-rejoin') && col.querySelector('.branch-label'); });
+          // every arm comes back: the next step follows either way, so no tab
+          via = back.length && back.length < child.children.length ? back.map(function(col){ return text(col.querySelector('.branch-label')); }).join(' or ') : '';
         }
       });
 
@@ -128,7 +146,7 @@
     // no context to reason from, it is pure recall of an opening line.
     var i = 1 + Math.floor(Math.random() * (d.steps.length - 1));
     var correct = d.steps[i].text;
-    var before = d.steps.slice(Math.max(0, i - 3), i);
+    var before = d.steps.slice(Math.max(0, i - 4), i);
 
     return {
       kind: 'next',
@@ -136,6 +154,7 @@
       anchor: d.anchor,
       lead: 'What comes next?',
       context: before.map(function(s){ return s.text; }),
+      path: before, more: i > before.length,
       correct: correct,
       options: shuffle([correct].concat(distractors(correct, d, 3))),
       note: i === d.steps.length - 1 ? 'That is the last step of this sequence.' : ''
@@ -159,6 +178,7 @@
       anchor: d.anchor,
       lead: 'The decision goes this way — now what?',
       context: [b.from],
+      path: b.path.slice(-4), more: b.path.length > 4,
       branchLabel: arm.label,
       correct: arm.text,
       options: shuffle([arm.text].concat(others, fill)),
@@ -212,14 +232,16 @@
           '<span class="drill-proto">' + esc(current.title) + '</span>' +
           '<span class="drill-tally">' + (tally.total ? tally.right + ' / ' + tally.total : '') + '</span>' +
         '</div>' +
-        '<div class="drill-context">' +
-          current.context.map(function(t, i){
-            return '<div class="drill-step">' + esc(t) + '</div>' +
-                   (i < current.context.length - 1 ? '<div class="drill-arrow" aria-hidden="true">&darr;</div>' : '');
+        /* The path walked so far, drawn in the chart's own shapes: each box,
+           the answer tab where the path went through a fork, then the gap. */
+        '<div class="drill-context drill-path">' +
+          (current.more ? '<div class="drill-more" aria-hidden="true">&hellip;</div>' : '') +
+          (current.path || []).map(function(st, i){
+            return (st.label ? '<div class="drill-branchlabel"><span>' + esc(st.label) + '</span></div>' : (i || current.more ? '<div class="drill-arrow" aria-hidden="true">&darr;</div>' : '')) +
+                   '<div class="drill-step flow-box' + (st.decision ? ' decision' : st.terminal ? ' terminal' : st.action ? ' action' : '') + '">' + esc(st.text) + '</div>';
           }).join('') +
           (current.branchLabel
-            ? '<div class="drill-arrow" aria-hidden="true">&darr;</div>' +
-              '<div class="drill-branchlabel">' + esc(current.branchLabel) + '</div>'
+            ? '<div class="drill-branchlabel"><span>' + esc(current.branchLabel) + '</span></div>'
             : '<div class="drill-arrow" aria-hidden="true">&darr;</div>') +
           '<div class="drill-step drill-step--blank">?</div>' +
         '</div>' +

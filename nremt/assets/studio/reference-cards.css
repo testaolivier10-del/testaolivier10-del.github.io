@@ -60,7 +60,7 @@
 .nx-reference-cards .rc-side.on .rc-side-line{stroke:var(--bad-text);stroke-dasharray:14 9;}
 .nx-reference-cards .rc-side:hover .rc-side-line,.nx-reference-cards .rc-side:focus-visible .rc-side-line{stroke-width:12;}
 .nx-reference-cards .rc-side:focus-visible .rc-side-hit{stroke:color-mix(in srgb,var(--cink) 18%,transparent);}
-.nx-reference-cards .rc-side-t{font:900 14px var(--font-ui);fill:var(--ink);}
+.nx-reference-cards .rc-side-t{font:900 15px var(--font-ui);fill:var(--ink);}
 .nx-reference-cards .rc-side-s{font:800 12px var(--font-ui);fill:var(--good-text);}
 .nx-reference-cards .rc-side.on .rc-side-s{fill:var(--bad-text);}
 .nx-reference-cards .rc-side.is-right .rc-side-line{stroke:var(--good-text);stroke-dasharray:none;stroke-width:12;}
@@ -68,11 +68,57 @@
 .nx-reference-cards .rc-side.is-wrong .rc-side-s{fill:var(--bad-text);}
 .nx-reference-cards .rc-side.is-key .rc-side-line{stroke:var(--bad-text);stroke-dasharray:14 9;stroke-width:12;}
 .nx-reference-cards .rc-mid-h{font:900 16px var(--font-ui);fill:var(--ink);}
+/* the side icons: face, chest, hand; abnormal swaps the look */
+.nx-reference-cards .rc-ic{pointer-events:none;}
+.nx-reference-cards .rc-ic *{vector-effect:non-scaling-stroke;}
+.nx-reference-cards .rc-ic-skin{fill:#F3D2B8;stroke:#B07A5E;stroke-width:1.6;transition:fill .25s;}
+.nx-reference-cards .rc-ic-hair{fill:#6B4A36;}
+.nx-reference-cards .rc-ic-ok,.nx-reference-cards .rc-ic-bad{fill:none;stroke:#4A2F22;stroke-width:2;stroke-linecap:round;}
+.nx-reference-cards .rc-ic-ok circle{fill:#4A2F22;stroke:none;}
+.nx-reference-cards .rc-ic-lung{fill:#E9A3A0;stroke:#B0605B;stroke-width:1.4;}
+.nx-reference-cards .rc-ic-line{stroke:#B0605B;stroke-width:2.2;fill:none;}
+.nx-reference-cards .rc-ic-bad{opacity:0;transition:opacity .25s;}
+.nx-reference-cards [data-side=B] .rc-ic-bad,.nx-reference-cards [data-side=A] .rc-ic-bad{stroke:var(--bad-text);}
+.nx-reference-cards [data-side=A] .rc-ic-bad{stroke:#4A2F22;}
+.nx-reference-cards [data-side=C] .rc-ic-bad{fill:#8E86B8;stroke:none;}
+.nx-reference-cards .rc-side.on .rc-ic-bad{opacity:1;}
+.nx-reference-cards .rc-side.on .rc-ic-ok{opacity:0;}
+.nx-reference-cards .rc-side[data-side=A].on .rc-ic-skin{fill:#E6D3C6;}
+.nx-reference-cards .rc-side[data-side=C].on .rc-ic-skin{fill:#D9CCD3;}
+.nx-reference-cards .rc-side[data-side=B].on .rc-ic-lung{fill:#D8B3B6;}
 .nx-reference-cards .rc-pat-read{width:100%;max-width:520px;font-size:var(--ls-s);line-height:1.45;}
+@media (min-width:1000px){
+  .nx-reference-cards .rc-stage[data-mode=pat] > .rc-pat{flex:1;justify-content:center;max-width:860px;}
+  .nx-reference-cards .rc-tri{max-width:none;max-height:min(52vh,430px);}
+  .nx-reference-cards .rc-pat-read{font-size:var(--ls-m);}
+}
 .nx-reference-cards .rc-pat-read ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;}
 .nx-reference-cards .rc-pat-read p{margin:0;text-align:center;}
-/* the vitals check, now the stage */
+/* the vitals check, now the stage: on a wide stage it scales up and sits in the middle (review 2026-11) */
 .nx-reference-cards .rc-vitals .vc{margin:0;border:0;padding:0;background:none;}
+.nx-reference-cards .rc-vitals .vc-kind{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.nx-reference-cards .rc-vitals .vc-kind button{width:100%;min-height:56px;padding:8px 12px;}
+@media (min-width:1000px){
+  .nx-reference-cards .rc-stage[data-mode=vitals] > .rc-vitals{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:820px;}
+  .nx-reference-cards .rc-vitals .vc-age{font-size:12px;}
+  .nx-reference-cards .rc-vitals .vc-age output{font-size:30px;}
+  .nx-reference-cards .rc-vitals .vc-figs{height:118px;margin:14px 22px 4px;}
+  .nx-reference-cards .rc-vitals .vc-fig{width:58px;height:100px;}
+  .nx-reference-cards .rc-vitals #vcAge{height:44px;}
+  .nx-reference-cards .rc-vitals #vcAge::-webkit-slider-runnable-track{height:16px;border-radius:8px;}
+  .nx-reference-cards .rc-vitals #vcAge::-webkit-slider-thumb{width:32px;height:32px;margin-top:-8px;}
+  .nx-reference-cards .rc-vitals .vc-ticks{font-size:12px;height:18px;margin-top:2px;}
+  .nx-reference-cards .rc-vitals .vc-row{font-size:15px;margin:14px 0 18px;}
+  .nx-reference-cards .rc-vitals .vc-kind button{min-height:72px;padding:10px 16px;font-size:15px;}
+  .nx-reference-cards .rc-vitals .vc-k-v{font-size:16px;margin-top:4px;}
+  .nx-reference-cards .rc-vitals .vc-in input{width:200px;font-size:26px;}
+  .nx-reference-cards .rc-vitals .vc-gauge{height:30px;border-radius:15px;margin:52px 0 34px;}
+  .nx-reference-cards .rc-vitals .vc-zone,.nx-reference-cards .rc-vitals .vc-band{border-radius:15px;}
+  .nx-reference-cards .rc-vitals .vc-lab{top:34px;font-size:13px;}
+  .nx-reference-cards .rc-vitals .vc-pin{top:-9px;height:48px;width:4px;}
+  .nx-reference-cards .rc-vitals .vc-bub{font-size:14px;padding:3px 9px;}
+  .nx-reference-cards .rc-vitals .vc-out{font-size:16px;}
+}
 /* dock: actions and practice */
 .nx-reference-cards .rc-dock{display:flex;flex-direction:column;gap:12px;}
 .nx-reference-cards .rc-acts[hidden],.nx-reference-cards .rc-prac[hidden],.nx-reference-cards .rc-prac [hidden]{display:none !important;}

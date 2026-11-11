@@ -28,7 +28,7 @@
    the warning box has been telling them to do all along.
 
    ON A PATIENT (2026-10, docs/nremt-skills-visual.md). Where station-patient.js
-   has an illustrated script for a station (bleeding control, BVM so far), the
+   has an illustrated script for a station (all ten since 2026-11), the
    run uses that script's actions instead of the card's phases, in the order the
    Registry's sheet lists them, and draws each tick happening on the patient.
    The text checklist stays: it is the same list, and it is still what you

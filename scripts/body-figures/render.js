@@ -96,6 +96,35 @@ function childWarp(x, y, z){
   return [x, y, z];
 }
 
+/* Younger children for the scenario simulator's cases (review 2026-11: a
+   2-year-old drawn with the 5-to-12 figure read as an adult). The same method
+   pushed further: the head larger again, the legs shorter, the body a little
+   broader, the hanging arms shorter (the hands at the hips). A toddler (1 to
+   5) has a head about a fifth of the height; an infant's is about a quarter,
+   with short legs. These go only in the 'case'
+   data set (body-figs/case.js), so the body map's figures do not change. */
+function youngWarp(s, legs, wide, arm){
+  return function(x, y, z){
+    const base = 1440, blend = 34;
+    // shorter arms: the hanging arm (out past the hip) is drawn up toward the shoulder
+    const sh = 1380, ax = Math.abs(x);
+    if(z < sh && ax > 178){
+      const t = Math.min(1, (ax - 178) / 22), w = t * t * (3 - 2 * t);
+      z = z + w * (sh - z) * (1 - arm);
+    }
+    if(z > base - blend){
+      const t = Math.min(1, (z - (base - blend)) / blend), k = 1 + (s - 1) * t * t * (3 - 2 * t);
+      const cy = -20;
+      x = x * k; y = cy + (y - cy) * k; z = (base - blend) + (z - (base - blend)) * k;
+    }
+    const hip = 880;
+    x *= wide;
+    if(z < hip) z = hip - (hip - z) * legs;
+    return [x, y, z];
+  };
+}
+const WARPS = { child: childWarp, toddler: youngWarp(1.62, 0.6, 1.1, 0.82), infant: youngWarp(1.85, 0.5, 1.16, 0.72) };
+
 function skinGeometry(mesh, warp){
   let geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(worldPositions(mesh), 3));
@@ -462,14 +491,14 @@ window.renderFigures = async function(){
   const skinMesh = M.FMA7163;
   const skinMat = () => new THREE.MeshPhysicalMaterial({ color:0xeec4a6, roughness:0.72, sheen:0.5, sheenColor:new THREE.Color(0xffdcc8), sheenRoughness:0.6, specularIntensity:0.25 });
   const geoCache = {};
-  const skinFor = variant => geoCache[variant] || (geoCache[variant] = skinGeometry(skinMesh, variant === 'child' ? childWarp : null));
+  const skinFor = variant => geoCache[variant] || (geoCache[variant] = skinGeometry(skinMesh, WARPS[variant] || null));
 
   const out = {};
   const content = await viewerContent();
 
   /* ---- full figures (burns, scenario) ----------------------------------- */
-  for(const variant of ['adult', 'child']){
-    const warp = variant === 'child' ? childWarp : (x, y, z) => [x, y, z];
+  for(const variant of ['adult', 'child', 'toddler', 'infant']){
+    const warp = WARPS[variant] || ((x, y, z) => [x, y, z]);
     const wp = (x, z) => { const r = warp(x, -60, z); return [r[0], r[2]]; };
     const geo = skinFor(variant);
     geo.computeBoundingBox();
@@ -479,7 +508,7 @@ window.renderFigures = async function(){
     for(const side of ['front', 'back']){
       const view = makeView(frame, side, pxPerMm);
       const raw = renderMeshes(view, [new THREE.Mesh(geo, skinMat())], {});
-      const anat = renderAnatomy(view, anatomyMeshes(gltf, content, geo, variant === 'child' ? childWarp : null));
+      const anat = renderAnatomy(view, anatomyMeshes(gltf, content, geo, WARPS[variant] || null));
       const zones = {
         head: view.P(0, warp(0, 0, 1452)[2])[1],
         feet: view.P(0, warp(0, 0, 120)[2])[1],

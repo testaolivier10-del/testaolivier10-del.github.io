@@ -91,6 +91,23 @@
 .sp-gleam{animation:sp-gleam 2.4s ease-in-out infinite;}
 @keyframes sp-gleam{50%{opacity:.15;}}
 .sp-tag{font:800 9.5px var(--font-mono,monospace);fill:#3b2f1c;}
+/* the eight later stations (review 2026-11): tags, straps, findings */
+.sp-badge rect{fill:#fffdf4;stroke:#b9b39a;stroke-width:1.2;}
+.sp-badge text{font:800 11px var(--font-ui,sans-serif);fill:#1f5e3c;}
+.sp-badge{transition:none;}
+.sp-badge--warn rect{fill:#fff4dc;stroke:#c99b2d;} .sp-badge--warn text{fill:#7a5208;}
+.sp-badge--go rect{fill:#1f6b52;stroke:#0f4c3a;} .sp-badge--go text{fill:#fff;}
+.sp-strapx{fill:#2f4c6d;opacity:.9;}
+.sp-cravat{fill:#f4efe2;stroke:#b9ad8c;stroke-width:1.2;}
+.sp-tape{fill:#f2f2ee;stroke:#bdbdb4;stroke-width:1;opacity:.95;}
+.sp-kedstrap{opacity:.95;}
+.sp-aed-t{font:900 16px var(--font-mono,monospace);fill:#7fe0b5;}
+.sp-find-dot{fill:#127264;stroke:#fff;stroke-width:2;}
+.sp-find-dot.is-sev{fill:#d1594a;}
+.sp-find-line{stroke:#127264;stroke-width:1.6;}
+.sp-find-box{fill:#fff;stroke:#127264;stroke-width:1.4;}
+.sp-find-box.is-sev{stroke:#d1594a;}
+.sp-find-t{font:800 15px var(--font-ui,sans-serif);fill:#14201c;}
 .sp-wrongring{fill:none;stroke:#e0412f;stroke-width:3;stroke-dasharray:5 4;}
 /* BVM: the chest rising, the bag squeezing, a pulse at the carotid */
 .sp-rise{opacity:0;}

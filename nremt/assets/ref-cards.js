@@ -128,17 +128,42 @@
     var pat = document.createElement('div'); pat.className = 'rc-pat'; pat.setAttribute('data-rc', 'pat');
     var psel = { A: false, B: false, C: false };
     var SIDES = [
-      { k: 'A', d: 'M160 28 L52 216', lx: 92, ly: 104, anchor: 'end', name: PAT[0] ? PAT[0].side : 'Appearance' },
-      { k: 'B', d: 'M160 28 L268 216', lx: 228, ly: 104, anchor: 'start', name: PAT[1] ? PAT[1].side : 'Work of breathing' },
-      { k: 'C', d: 'M52 216 L268 216', lx: 160, ly: 246, anchor: 'middle', one: true, name: PAT[2] ? PAT[2].side : 'Circulation to skin' }
+      { k: 'A', d: 'M160 28 L52 216', lx: 88, ly: 112, anchor: 'end', ix: 50, iy: 74, name: PAT[0] ? PAT[0].side : 'Appearance' },
+      { k: 'B', d: 'M160 28 L268 216', lx: 232, ly: 112, anchor: 'start', ix: 270, iy: 74, name: PAT[1] ? PAT[1].side : 'Work of breathing' },
+      { k: 'C', d: 'M52 216 L268 216', lx: 172, ly: 248, anchor: 'middle', ix: 70, iy: 254, one: true, name: PAT[2] ? PAT[2].side : 'Circulation to skin' }
     ];
-    pat.innerHTML = '<svg class="rc-tri" viewBox="-36 0 392 272" role="group" aria-label="The pediatric assessment triangle: tap a side to mark it abnormal">' +
+    /* What each side is about, drawn small beside its name (review 2026-11): the
+       child's face (appearance), the chest and lungs (work of breathing), a hand
+       (circulation to skin). Each has a normal and an abnormal look, swapped by
+       the side's .on class: a limp, unfocused face; the chest pulled in under
+       the ribs; mottled, bluish skin. Drawn in a 48 x 48 box about the center. */
+    var ICONS = {
+      A: '<circle class="rc-ic-skin" cx="0" cy="0" r="19"/><path class="rc-ic-hair" d="M-18 -6 C-16 -20 -4 -22 4 -19 C12 -22 20 -12 18 -4 C12 -10 2 -12 -6 -10 C-10 -9 -15 -8 -18 -6 Z"/>' +
+         '<g class="rc-ic-ok"><circle cx="-7" cy="1" r="2.6"/><circle cx="7" cy="1" r="2.6"/><path d="M-7 9 Q0 14 7 9"/></g>' +
+         '<g class="rc-ic-bad"><path d="M-10 2 Q-7 4 -4 2 M4 2 Q7 4 10 2"/><path d="M-6 12 Q0 9 6 12"/></g>',
+      B: '<path class="rc-ic-skin" d="M-20 -14 Q-20 -22 -10 -22 L10 -22 Q20 -22 20 -14 L22 18 Q22 22 16 22 L-16 22 Q-22 22 -22 18 Z"/>' +
+         '<path class="rc-ic-lung" d="M-3 -16 C-12 -16 -16 -4 -16 8 C-16 14 -12 16 -6 14 C-3 13 -3 10 -3 6 Z M3 -16 C12 -16 16 -4 16 8 C16 14 12 16 6 14 C3 13 3 10 3 6 Z"/>' +
+         '<path class="rc-ic-line" d="M0 -22 L0 -6"/>' +
+         '<g class="rc-ic-bad"><path d="M-21 16 Q-14 11 -7 16 M7 16 Q14 11 21 16"/><path d="M-26 -4 l-6 -2 M-26 4 l-7 0 M26 -4 l6 -2 M26 4 l7 0"/></g>',
+      C: '<path class="rc-ic-skin rc-ic-hand" d="M-10 22 L-10 4 L-17 -4 Q-20 -8 -16 -10 Q-13 -11 -10 -7 L-8 -5 L-8 -18 Q-8 -22 -5 -22 Q-2 -22 -2 -18 L-2 -8 L-2 -21 Q-2 -25 1 -25 Q4 -25 4 -21 L4 -8 L4 -19 Q4 -23 7 -23 Q10 -23 10 -19 L10 -7 L10 -14 Q10 -18 13 -18 Q16 -18 16 -14 L16 6 Q16 16 8 22 Z"/>' +
+         '<g class="rc-ic-bad"><circle cx="-2" cy="4" r="3.2"/><circle cx="7" cy="-2" r="2.6"/><circle cx="5" cy="11" r="3"/><circle cx="-5" cy="14" r="2.2"/><circle cx="12" cy="6" r="2"/></g>'
+    };
+    function lines(s){
+      if(s.one) return [s.name];
+      var w = s.name.split(' ');
+      if(w.length < 3) return w;
+      var h = Math.ceil(w.length / 2);
+      return [w.slice(0, h).join(' '), w.slice(h).join(' ')];
+    }
+    pat.innerHTML = '<svg class="rc-tri" viewBox="-48 0 416 282" role="group" aria-label="The pediatric assessment triangle: tap a side to mark it abnormal">' +
       '<path class="rc-tri-fill" d="M160 28 L268 216 L52 216 Z"/>' +
       SIDES.map(function(s){
+        var ln = lines(s);
         return '<g class="rc-side" data-side="' + s.k + '" role="button" tabindex="0" aria-pressed="false" aria-label="' + esc(s.name) + ': normal. Tap to mark it abnormal">' +
           '<path class="rc-side-hit" d="' + s.d + '"/><path class="rc-side-line" d="' + s.d + '"/>' +
-          '<text class="rc-side-t" x="' + s.lx + '" y="' + s.ly + '" text-anchor="' + s.anchor + '">' + (s.one ? [s.name] : s.name.split(' ')).map(function(w, j){ return '<tspan x="' + s.lx + '" dy="' + (j ? 15 : 0) + '">' + esc(w) + '</tspan>'; }).join('') + '</text>' +
-          '<text class="rc-side-s" x="' + s.lx + '" y="' + (s.ly + (s.one ? 1 : s.name.split(' ').length) * 15 + 2) + '" text-anchor="' + s.anchor + '">normal</text></g>';
+          '<g class="rc-ic" transform="translate(' + s.ix + ' ' + s.iy + ')" aria-hidden="true">' + ICONS[s.k] + '</g>' +
+          '<text class="rc-side-t" x="' + s.lx + '" y="' + s.ly + '" text-anchor="' + s.anchor + '">' + ln.map(function(w, j){ return '<tspan x="' + s.lx + '" dy="' + (j ? 16 : 0) + '">' + esc(w) + '</tspan>'; }).join('') + '</text>' +
+          '<text class="rc-side-s" x="' + s.lx + '" y="' + (s.ly + ln.length * 16 + 1) + '" text-anchor="' + s.anchor + '">normal</text></g>';
       }).join('') +
       '<g class="rc-tri-mid"><text class="rc-mid-h" x="160" y="150" text-anchor="middle">Stable</text></g>' +
       '</svg>' +
