@@ -229,9 +229,10 @@
       });
       var cap = el('text', { x: ex, y: L.icsY[5] + 36, class:'st-cap st-cap-ics' }, g); cap.textContent = 'ICS';
       L.mclX.forEach(function(x){ var c = el('text', { x:x, y:L.mclBottom + 22, class:'st-cap st-cap-mcl' }, g); c.textContent = 'MCL'; });
-      lab(g, 30, 40, 'R'); lab(g, 570, 40, 'L');
+      // Pass 3: R and L sit below the stage's Front / Back switch (at y 40 the R ran under it).
+      lab(g, 30, 118, 'R'); lab(g, 570, 118, 'L');
     } else {
-      lab(g, 30, 40, 'L'); lab(g, 570, 40, 'R');
+      lab(g, 30, 118, 'L'); lab(g, 570, 118, 'R');
     }
   }
   function lab(g, x, y, t){ var n = el('text', { x:x, y:y, class:'st-rl' }, g); n.textContent = t; }
