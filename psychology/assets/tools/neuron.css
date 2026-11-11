@@ -94,3 +94,6 @@
 .nr-go{flex-wrap:wrap;}
 .nr-tipslot{height:58px;flex:1 0 100%;}
 .nr-plist{margin:0 0 10px;padding-left:18px;display:grid;gap:4px;font:600 14px/1.45 var(--font-ui);}
+/* the moment now: a cursor on the trace, tied to the travelling signal */
+.nr-now{stroke:var(--nr-sig);stroke-width:1.6;stroke-opacity:.55;}
+.nr-tie{fill:none;stroke:var(--nr-sig);stroke-width:1.6;stroke-dasharray:4 4;stroke-opacity:.8;}
