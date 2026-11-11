@@ -32,7 +32,7 @@
 (function(){
   'use strict';
   var M = window.ApChemMath;
-  var W = 300, H = 280, IN = { x0: 40, x1: 260, y0: 76, y1: 250 };
+  var W = 300, H = 280, IN = { x0: 40, x1: 260, y0: 76, y1: 250 }, GAS = { x0: 40, x1: 260, y0: 56, y1: 252 };
 
   /* ------------------------------------------------------- pure parts */
   function rng(seed){
@@ -40,21 +40,52 @@
     var s = (seed >>> 0) || 1;
     return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
   }
-  /* Particle places inside the liquid: a jittered grid in a seeded order. */
-  function slots(n, seed, box){
-    box = box || IN;
-    var w = box.x1 - box.x0, h = box.y1 - box.y0;
-    var cols = Math.max(2, Math.round(Math.sqrt(n * w / h / 1.5))), rows = Math.max(2, Math.ceil(n / cols));
-    while(cols * rows < n) rows++;
-    var cw = w / cols, ch = h / rows, r = rng(seed || 1), out = [];
+  /* Particle places inside the liquid: a staggered grid in a seeded order.
+     ext is the largest molecule drawn (template units, { w, h }); the grid's
+     cells take its shape, so each molecule gets its own space and two never
+     touch end to end (a row of A2 next to AB would read as one chain and
+     could not be counted). Odd rows sit half a cell over, jitter and tilt are
+     small, and out.k is the molecule scale that keeps a clear gap. */
+  var EXT = { w: 36, h: 22 };
+  // Molecule scale that fits a cell: at least a quarter of the widest
+  // molecule free across a row and a clear band between rows (tilt included).
+  function fitK(cw, ch, ext){ return Math.min(1.25, (cw * 0.92) / (ext.w * 1.25), (ch * 0.92) / (ext.h * 1.1 + ext.w * 0.15)); }
+  function slots(n, seed, box, ext){
+    box = box || IN; ext = ext || EXT;
+    var w = box.x1 - box.x0, h = box.y1 - box.y0, best = null;
+    // Every grid that holds n, staggered (odd rows half a cell over, which
+    // costs half a cell of width) or straight; the largest molecules win,
+    // and a staggered grid wins a near tie because it looks less like rows.
+    for(var c = 2; c <= Math.max(2, n); c++){
+      var rws = Math.max(2, Math.ceil(n / c));
+      [true, false].forEach(function(st){
+        var cw = (w - (st ? w / c / 2 : 0)) / c, ch = h / rws, k = fitK(cw, ch, ext) * (st ? 1 : 0.94);
+        if(!best || k > best.score) best = { score: k, cols: c, rows: rws, st: st, cw: cw, ch: ch };
+      });
+    }
+    var cols = best.cols, rows = best.rows, cw = best.cw, ch = best.ch, r = rng(seed || 1), out = [];
     for(var i = 0; i < cols * rows; i++){
-      out.push({ x: +(box.x0 + cw * (i % cols + 0.5) + (r() - 0.5) * cw * 0.16).toFixed(1),
-                 y: +(box.y0 + ch * (Math.floor(i / cols) + 0.5) + (r() - 0.5) * ch * 0.16).toFixed(1),
-                 a: +((r() - 0.5) * 0.9).toFixed(2) });
+      var row = Math.floor(i / cols), col = i % cols;
+      out.push({ x: +(box.x0 + cw * (col + 0.5) + (best.st && row % 2 ? cw / 2 : 0) + (r() - 0.5) * cw * 0.08).toFixed(1),
+                 y: +(box.y0 + ch * (row + 0.5) + (r() - 0.5) * ch * 0.08).toFixed(1),
+                 a: +((r() - 0.5) * 0.3).toFixed(2) });
     }
     out.cell = Math.min(cw, ch); out.cw = cw; out.ch = ch;
+    out.k = fitK(cw, ch, ext);
     for(var j = out.length - 1; j > 0; j--){ var k = Math.floor(r() * (j + 1)), t = out[j]; out[j] = out[k]; out[k] = t; }
     return out;
+  }
+  /* The extent of the largest species a beaker draws, in template units. */
+  function extentOf(species){
+    var e = { w: 22, h: 22 };
+    (species || []).forEach(function(s){
+      var t = M && M.particles && M.particles.templ ? M.particles.templ[s.mol || molKey(s)] : null;
+      if(!t){ return; }
+      var x0 = 0, x1 = 0, y0 = 0, y1 = 0;
+      t.forEach(function(a){ var rr = a.r || 9; x0 = Math.min(x0, a.dx - rr); x1 = Math.max(x1, a.dx + rr); y0 = Math.min(y0, a.dy - rr); y1 = Math.max(y1, a.dy + rr); });
+      e.w = Math.max(e.w, x1 - x0); e.h = Math.max(e.h, y1 - y0);
+    });
+    return e;
   }
   /* Counts above max are scaled down together (each nonzero species keeps at
      least one), so a picture always fits. Returns { counts, factor }. */
@@ -233,16 +264,16 @@
     var o = Object.assign({ readout: 'pH', max: 30, seed: 7, species: [], vessel: 'beaker' }, opts || {});
     var id = 'lb' + (++uid), spByKey = {}, flask = o.vessel === 'flask';
     o.species.forEach(function(s, i){ if(!s.tone) s.tone = (i % 6) + 1; spByKey[s.key] = s; });
-    var L = FL.lens, SL = flask ? regionSlots(o.max, o.seed, function(x, y){ var dx = x - L.x, dy = y - L.y; return dx * dx + dy * dy <= (L.r - 19) * (L.r - 19); }, { x0: L.x - L.r, x1: L.x + L.r, y0: L.y - L.r, y1: L.y + L.r }) : slots(o.max, o.seed);
+    // A gas jar has no liquid surface, so its particles use the room up to the stopper.
+    var L = FL.lens, SL = flask ? regionSlots(o.max, o.seed, function(x, y){ var dx = x - L.x, dy = y - L.y; return dx * dx + dy * dy <= (L.r - 19) * (L.r - 19); }, { x0: L.x - L.r, x1: L.x + L.r, y0: L.y - L.r, y1: L.y + L.r })
+      : slots(o.max, o.seed, o.vessel === 'gas' ? GAS : IN, extentOf(o.species));
     var placed = [], timers = [], alive = true;
-    // Size particles to the cell so the widest (about 32 units) never overlap.
-    // Molecules are wider than tall (a diatomic is about 36 x 20 units), so
-    // the cell's width and height limit the size separately.
-    var K = (flask ? Math.min(1.3, (SL.cell - 1) / 32) : Math.min(1.05, (SL.cw - 3) / 36, (SL.ch - 3) / 22)).toFixed(3);
+    // Size particles so the widest molecule keeps a clear gap to its
+    // neighbours (slots().k); the flask lens packs round cells instead.
+    var K = (flask ? Math.min(1.3, (SL.cell - 1) / 32) : SL.k).toFixed(3);
     /* On a phone (docs/tools-phone-pass.md) the beaker's viewBox is cropped
-       to the glass and particles grow to what their cell holds without
-       overlapping (up to 1.25), so the atoms read at a phone's picture size. */
-    var KP = flask ? K : Math.max(+K, Math.min(1.25, (SL.cw - 8) / 36, (SL.ch - 6) / 22)).toFixed(3);
+       to the glass, so the same scale already reads larger. */
+    var KP = K;
     var VB = flask ? '0 0 486 376' : '0 0 ' + W + ' ' + H, VBP = flask ? '0 0 486 376' : '20 16 260 256';
     function phone(){ var r = el.closest ? el.closest('.ls-root') : null; return !!(r && r.classList.contains('ls-phone')); }
     var art = flask ? glassFlask(id) : glassBeaker(o.vessel === 'gas');
@@ -358,5 +389,5 @@
     return b;
   }
 
-  window.ApChemBeaker = { mount: mount, demo: demo, pure: { slots: slots, regionSlots: regionSlots, scale: scale, assign: assign, phWord: phWord, qk: qk, describe: describe } };
+  window.ApChemBeaker = { mount: mount, demo: demo, pure: { slots: slots, extentOf: extentOf, regionSlots: regionSlots, scale: scale, assign: assign, phWord: phWord, qk: qk, describe: describe } };
 })();
