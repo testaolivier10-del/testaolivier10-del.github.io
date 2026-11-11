@@ -292,3 +292,17 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
   .pc-dash.has-scene:not(:has(.pc-feed:not([hidden]))) .pc-dash-grid{grid-column:2;}
   .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-dash-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
 }
+
+/* Pass 2 (2026-11-10): the figure is the picture. Beside it the dials are a
+   numbered list (a small dial, the number of its pin, the name); a dial's
+   call line stays empty until there is a call. */
+.pc-gauge-s:empty{display:none;}
+@media (min-width: 900px){
+  .pc-dash.has-scene{grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-dash-grid{grid-template-columns:1fr;gap:6px;align-content:start;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-gauge{display:grid;grid-template-columns:62px minmax(0,1fr);grid-template-rows:auto auto;column-gap:8px;align-items:center;justify-items:start;padding:6px 8px;text-align:left;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-dial{width:62px;height:37px;grid-row:1 / span 2;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-gauge-n{font-size:14px;text-align:left;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-gauge-s{font-size:12.5px;}
+  .pc-ls .ls-stage-body > .pc-dash.has-scene .pc-scn{width:min(100%, 62vh * var(--scn-r, 1));}
+}
