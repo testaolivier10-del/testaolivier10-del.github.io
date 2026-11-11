@@ -137,3 +137,8 @@
 }
 .ls-phone .ft-view.show-scene .ft-scene{padding-right:40px;}   /* the tank's scale and the stands clear of Enlarge */
 .ls-phone .ft-fig .ft-svg .ft-mut{font-size:14.5px;}
+/* Pass 3 (judge c): on a wide stage the force diagram sits right beside the tank, not far right in an empty box. */
+@media (min-width:700.02px){
+  .ft-view:has(.ft-panel > .ft-fbdfig:only-child) .ft-scene{justify-content:flex-end;}
+  .ft-view:has(.ft-panel > .ft-fbdfig:only-child) .ft-panel{flex:0.7 1 0;}
+}
