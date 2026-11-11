@@ -55,14 +55,16 @@
       '<figcaption class="hug-small">' + (src ? '<span class="hug-src">' + src + '</span> ' : '') + '<span class="hug-border-note">' + esc(MAP.note(B)) + '</span>' + (B.invented ? '' : ' <span class="hug-base-src">Base map: Natural Earth.</span>') + '</figcaption></figure>';
   }
   /* The cartogram of Country A: squares sized by the data, a letter in each. */
-  function cartoHtml(c, title){
+  function cartoHtml(c, title, explore){
     var L = R.LETTERS.concat(['G', 'H']);
     var sq = c.squares.map(function(q, i){ return '<rect class="hug-mr-sq" data-id="' + esc(q.id) + '" x="' + (q.x - q.s / 2).toFixed(1) + '" y="' + (q.y - q.s / 2).toFixed(1) + '" width="' + q.s.toFixed(1) + '" height="' + q.s.toFixed(1) + '" rx="4"/>'; }).join('');
     var over = c.squares.map(function(q, i){ return '<span class="hug-mr-sql" style="left:' + (100 * q.x / c.width).toFixed(2) + '%;top:' + (100 * q.y / c.height).toFixed(2) + '%">' + L[i] + '</span>'; }).join('');
     var key = c.squares.map(function(q, i){ return '<li><b>' + L[i] + '</b> ' + esc(q.name) + '</li>'; }).join('');
     return '<figure class="hug-map hug-mr-map hug-mr-carto" data-render="cartogram" style="--hug-mr-ar:1.5"><div class="hug-map-pic"><svg viewBox="0 0 ' + c.width + ' ' + c.height + '" role="img" aria-label="Cartogram of Country A: each province is a square sized by its number of people">' +
       '<rect width="' + c.width + '" height="' + c.height + '" fill="#FFFFFF"/>' + sq + '</svg><div class="hug-map-over" aria-hidden="true">' + over + '</div></div>' +
-      '<div class="hug-legend"><p class="hug-lg-title">' + esc(title || 'People in each province (invented)') + '</p><ul class="hug-mr-ckey">' + key + '</ul><p class="hug-small">Square area shows the number of people. Shapes and positions are not true.</p></div>' +
+            // Explore (second pass, 2026-11-10): the eight-letter key opens on tap; the caption already says what area means.
+      (explore ? '<div class="hug-legend"><p class="hug-lg-title">' + esc(title || 'People in each province (invented)') + '</p><details class="hug-mr-ckd"><summary>Which province is which letter</summary><ul class="hug-mr-ckey">' + key + '</ul></details><p class="hug-small">Shapes and positions are not true.</p></div>'
+        : '<div class="hug-legend"><p class="hug-lg-title">' + esc(title || 'People in each province (invented)') + '</p><ul class="hug-mr-ckey">' + key + '</ul><p class="hug-small">Square area shows the number of people. Shapes and positions are not true.</p></div>') +
       '<figcaption class="hug-small"><span class="hug-src">Invented data for practice.</span> <span class="hug-border-note">' + esc(window.ApHugMap.INVENTED_NOTE) + '</span></figcaption></figure>';
   }
 
@@ -117,7 +119,7 @@
       }
       if(st.type === 'reference' && st.read !== 'legend'){ marks = R.legibleMarks(bid, R.markable(bid).slice().sort(function(a, b){ return R.geom(bid, b.id).area - R.geom(bid, a.id).area; }).slice(0, 6).map(function(f){ return f.id; }), 3).map(function(m){ return m.at; }); x = R.exploreSpec(bid, 'reference', { focus: marks, marks: marks }); }
       cur = { bid: bid, x: x, marks: marks };
-      html = st.type === 'cartogram' ? cartoHtml(x.cartogram) : mapHtml(x.spec, { hit: true });
+      html = st.type === 'cartogram' ? cartoHtml(x.cartogram, null, true) : mapHtml(x.spec, { hit: true });
       $('.hug-mr-fig').innerHTML = html;
       // A new map starts at its top, whatever the stage was scrolled to.
       for(var el = $('.hug-mr-fig'); el && el !== document.body; el = el.parentElement){ if(el.scrollTop) el.scrollTop = 0; }
