@@ -53,3 +53,58 @@
 /* A phone stage holds the table; the plot of the same numbers waits for a wider screen. */
 .ls-root.ls-phone .pt-qfig-output .pt-qplot,.ls-root.ls-phone .pt-qfig-terms .pt-qplot{display:none;}
 @media (min-width:1000px){.ppc-tbl{font-size:17px;}}
+
+/* Trade view: each country on its own PPC, the exchange between them. */
+.pt-fig[data-v="trade"]{--pt-s1:#084F78;--pt-s2:#C24E00;--pt-gain:#1B6E35;--pt-loss:#B3261E;}
+:root[data-theme="dark"] .pt-fig[data-v="trade"]{--pt-s1:#8CC8E8;--pt-s2:#F29A5C;--pt-gain:#8FD6A2;--pt-loss:#F4A58A;}
+.pt-two{display:grid;grid-template-columns:minmax(0,1fr) 120px minmax(0,1fr);gap:10px;align-items:center;width:100%;}
+.pt-two.is-narrow{grid-template-columns:minmax(0,1fr);gap:4px;}
+.pt-cty{min-width:0;display:flex;justify-content:center;}
+.pt-csvg{display:block;max-width:100%;height:auto;font-family:var(--font-ui);}
+.pt-csvg .pt-grid{stroke:var(--line);stroke-width:1;}
+.pt-csvg .pt-axis{stroke:var(--ink);stroke-width:1.6;}
+.pt-csvg .pt-tick{fill:var(--muted);font-size:11px;font-weight:600;}
+.pt-csvg .pt-axl{fill:var(--ink);font-size:12px;font-weight:700;}
+.pt-csvg .s1{--c:var(--pt-s1);} .pt-csvg .s2{--c:var(--pt-s2);}
+.pt-csvg .pt-ppc{stroke:var(--c);stroke-width:3;stroke-linecap:round;}
+.pt-csvg .pt-tline{stroke:var(--c);stroke-width:2.2;stroke-dasharray:7 5;}
+.pt-csvg .pt-wedge.is-gain{fill:var(--pt-gain);opacity:.16;}
+.pt-csvg .pt-wedge.is-loss{fill:var(--pt-loss);opacity:.16;}
+.pt-csvg .pt-pt{fill:var(--c);stroke:var(--white);stroke-width:2;}
+.pt-csvg .pt-pt.is-open{fill:var(--white);stroke:var(--c);stroke-width:2.2;}
+.pt-csvg .pt-pt.is-faded{opacity:.45;}
+.pt-csvg .pt-make{fill:var(--c);stroke:var(--white);stroke-width:1.5;}
+.pt-csvg .pt-move{stroke:var(--ink);stroke-width:1.6;}
+.pt-csvg .pt-ahead{fill:var(--ink);}
+.pt-csvg .pt-plab{fill:var(--ink);font-size:12px;font-weight:600;paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.pt-csvg .pt-plab.s1,.pt-csvg .pt-plab.s2{fill:var(--c);font-weight:800;}
+.pt-csvg .pt-plab.is-strong{font-weight:800;}
+.pt-csvg .pt-plab.is-gain{fill:var(--pt-gain);font-weight:800;}
+.pt-csvg .pt-plab.is-loss{fill:var(--pt-loss);font-weight:800;}
+.pt-csvg .pt-ctitle{fill:var(--c);font-size:15px;font-weight:800;}
+.pt-csvg .pt-csub{fill:var(--muted);font-size:12px;font-weight:700;}
+.pt-xch{display:flex;flex-direction:column;gap:10px;align-items:stretch;justify-content:center;}
+.pt-two.is-narrow .pt-xch{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:6px 10px;}
+.pt-xnone{margin:0;font:600 12.5px/1.35 var(--font-ui);color:var(--muted);text-align:center;}
+.pt-ship{position:relative;font:600 12.5px/1.3 var(--font-ui);color:var(--ink);text-align:center;padding:6px 8px 14px;}
+.pt-ship b{color:var(--c);} .pt-ship.s1{--c:var(--pt-s1);} .pt-ship.s2{--c:var(--pt-s2);}
+.pt-ship i{position:absolute;left:8px;right:8px;bottom:4px;height:0;border-top:2.5px solid var(--c);}
+.pt-ship i::after{content:"";position:absolute;top:-7.5px;border:6px solid transparent;}
+.pt-ship.to-b i::after{right:-6px;border-left:9px solid var(--c);}
+.pt-ship.to-a i::after{left:-6px;border-right:9px solid var(--c);}
+.pt-xrate{margin:0;text-align:center;font:800 12px var(--font-ui);color:var(--muted);}
+.pt-two.is-narrow .pt-ship{flex:1 1 150px;padding:4px 8px 12px;}
+.pt-two.is-narrow .pt-xrate{flex-basis:100%;}
+/* stacked: A is above B, so A to B points down */
+.pt-two.is-narrow .pt-ship.to-b i::after{right:-6px;}
+@media (prefers-reduced-motion: reduce){ .pt-csvg *{transition:none;} }
+.pt-csvg .pt-plab.is-flat{fill:var(--muted);font-weight:800;}
+/* A phone stage holds the two countries and the exchange; the cost table is in Numbers & rules. */
+.ls-root.ls-phone .pt-fig[data-v="trade"] .pt-oc{display:none;}
+/* stacked countries: the exchange runs down (A to B) and up (B to A) */
+.pt-two.is-narrow .pt-ship{padding:4px 8px;}
+.pt-two.is-narrow .pt-ship i{display:none;}
+.pt-two.is-narrow .pt-ship::before{font-weight:900;color:var(--c);margin-right:4px;}
+.pt-two.is-narrow .pt-ship.to-b::before{content:"\2193";}
+.pt-two.is-narrow .pt-ship.to-a::before{content:"\2191";}
+.pt-csvg .pt-plab{stroke-width:4px;}
