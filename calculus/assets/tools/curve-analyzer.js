@@ -90,10 +90,8 @@
     function buildChips(){
       var list = st.view === 'curves' ? curves.map(function(id){ return [id, CA.CURVES[id].name]; }) : scenes.map(function(id){ return [id, CA.SCENES[id].name]; });
       var cur = st.view === 'curves' ? st.id : st.sid;
-      // Pass 3: three functions show; the rest sit behind More (opened for good once used, or when one of them is on).
-      var few = st.view === 'curves' && list.length > 4 && !st.moreFns && list.slice(0, 3).some(function(c){ return c[0] === cur; });
-      chips.innerHTML = (few ? list.slice(0, 3) : list).map(function(c){ return '<button type="button" class="bt-btn ca-chip" data-id="' + c[0] + '" aria-pressed="' + (c[0] === cur) + '">' + esc(c[1]) + '</button>'; }).join('') +
-        (few ? '<button type="button" class="bt-btn ca-chip ca-more-fns" aria-expanded="false">More</button>' : '');
+      // A long list folds behind the shared Tool Studio "More" chip (tool-studio.js, chip overflow).
+      chips.innerHTML = list.map(function(c){ return '<button type="button" class="bt-btn ca-chip" data-id="' + c[0] + '" aria-pressed="' + (c[0] === cur) + '">' + esc(c[1]) + '</button>'; }).join('');
       chips.setAttribute('aria-label', st.view === 'curves' ? 'Function' : 'Scene');
     }
     function buildSlider(){
@@ -131,7 +129,6 @@
     function pause(){ if(anim) anim.stop(); if(st.reveal < 1){ st.reveal = 1; } }
     chips.addEventListener('click', function(e){
       var b = e.target.closest('.ca-chip'); if(!b) return; touch();
-      if(b.classList.contains('ca-more-fns')){ st.moreFns = true; buildChips(); var nb = chips.querySelectorAll('.ca-chip')[3]; if(nb) nb.focus(); return; }
       if(st.view === 'curves'){ if(b.getAttribute('data-id') !== st.id) setCurve(b.getAttribute('data-id')); }
       else { st.sid = b.getAttribute('data-id'); st.u = sc().start; buildChips(); buildSlider(); ol = null; draw(true); }
     });
