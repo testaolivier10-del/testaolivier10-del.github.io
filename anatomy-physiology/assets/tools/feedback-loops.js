@@ -801,7 +801,16 @@
       } else if(pos){
         msg = 'Each cycle the response made the stimulus stronger: positive feedback. ' + (lv.end || '');
         now.innerHTML = '<b class="ok">Positive feedback.</b> ' + esc(msg);
-        // It stays at the far end: nothing in the loop brings it back. Only the outside event (lv.end) stops it; Reset starts over.
+        // Nothing in the loop brings it back: only the outside event (lv.end) stops it. That event comes after a
+        // pause, and then the variable falls back, as the ending says (stretch removed, estradiol falls, flow stops).
+        later(function(){
+          tween(0, 1400, function(){
+            clearRing(); sceneSet(false, false);
+            var m2 = 'Each cycle the response made the stimulus stronger: positive feedback. ' + lv.end + ' ' + lv.variable + ' falls back to where it started.';
+            now.innerHTML = '<b class="ok">Positive feedback, then the end.</b> ' + esc(m2);
+            say(m2);
+          });
+        }, reduced() ? 600 : 2600);
       } else {
         later(function(){ sceneSet(null, false); }, reduced() ? 0 : 900);
         msg = 'The response opposed the stimulus and pulled ' + lowFirst(lv.variable) + ' back to the ' + (spOff ? 'new ' : '') + 'set point: negative feedback. As the gap closed, the stimulus faded and the loop went quiet.';

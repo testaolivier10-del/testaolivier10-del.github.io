@@ -114,13 +114,13 @@
   // A kidney tubule beside a capillary: what the tubule keeps or lets go into the urine.
   D.tubule = function(o){
     var keep = o.mode === 'keep', s = '';
-    // the peritubular capillary with red cells, the tubule's cells (brush border toward the lumen), the tubule fluid
+    // the peritubular capillary with red cells, the tubule's cells, the tubule fluid. No brush border: most of these
+    // loops act in the distal tubule and collecting duct, whose cells have none (only the proximal tubule's do)
     s += '<rect x="0" y="10" width="260" height="34" class="fs-blood"/><path d="M0,10 H260 M0,44 H260" class="fs-capw"/>' +
       [24, 70, 118, 164, 212].map(function(x, i){ return '<ellipse cx="' + x + '" cy="' + (27 + (i % 2 ? 4 : -4)) + '" rx="9" ry="6" class="fs-rbcs"/>'; }).join('') +
       T(256, 8, 'capillary blood', 'fs-small', 'end') +
       '<rect x="0" y="62" width="260" height="58" class="fs-wall"/>' +
-      [0, 52, 104, 156, 208].map(function(x){ return '<rect x="' + (x + 1) + '" y="62" width="50" height="58" rx="5" class="fs-tcell"/><circle cx="' + (x + 26) + '" cy="88" r="6" class="fs-nuc"/>' +
-        [6, 14, 22, 30, 38, 46].map(function(d){ return '<path d="M' + (x + d) + ',120 V126" class="fs-brush"/>'; }).join(''); }).join('') +
+      [0, 52, 104, 156, 208].map(function(x){ return '<rect x="' + (x + 1) + '" y="62" width="50" height="58" rx="5" class="fs-tcell"/><circle cx="' + (x + 26) + '" cy="88" r="6" class="fs-nuc"/>'; }).join('') +
       '<rect x="0" y="126" width="260" height="34" class="fs-urine"/>' + T(4, 156, 'tubule fluid, becoming urine', 'fs-small fs-on-urine');
     if(keep) s += movers([[40, 142], [130, 142], [220, 142]], 'fs-' + (o.dot || 'water'), 0, -114, 3.6);
     else s += movers([[40, 28], [130, 28], [220, 28]], 'fs-' + (o.dot || 'water'), 0, 114, 3.6);
