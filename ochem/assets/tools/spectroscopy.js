@@ -478,8 +478,11 @@
     // Where the fingerprint region starts, marked and named on the chart.
     var fpBand = '<rect x="' + irX(1500).toFixed(1) + '" y="' + IR_T + '" width="' + (irX(IR_MIN) - irX(1500)).toFixed(1) + '" height="' + (IR_H - IR_T - IR_B) + '" class="sp-fp"/>' +
       // Two short lines, right-aligned in the region, so the label fits a phone chart.
-      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 22) + '" text-anchor="end">fingerprint region</text>' +
-      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 8) + '" text-anchor="end">(illustrative pattern)</text>';
+      // A fixed-size chart (Identify it, drills) keeps one line; Explanation says the pattern is illustrative.
+      (!px ? '' :
+      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 22) + '" text-anchor="end">fingerprint region</text>') +
+      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 8) + '" text-anchor="end">' +
+        (!px ? 'fingerprint region' : '(illustrative pattern)') + '</text>';
 
     var grid = [4000, 3500, 3000, 2500, 2000, 1500, 1000, 500].map(function(cm){
       return '<line x1="' + irX(cm).toFixed(1) + '" y1="' + IR_T + '" x2="' + irX(cm).toFixed(1) + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line-soft)" stroke-width="1"/>' +
@@ -1434,7 +1437,7 @@
     var d = degreesOfUnsaturation(parseFormula(c.formula));
     var left = [{ html: esc(c.formula), tone: 'ghost' }, { html: 'DoU ' + d, tone: 'ghost' }, { html: c.nmr.length + ' NMR signals', tone: 'ghost' }], cap;
     if(!puzzleGuess){
-      cap = '<b>What is it?</b> Work from the largest clues down: the formula and degrees of unsaturation, the carbonyl region, any O–H or N–H, then the integrations.';
+      cap = '<b>What is it?</b> Formula and degrees of unsaturation first, then C=O and O–H or N–H, then the NMR. Pick an answer.';
     } else {
       var ok = puzzleGuess === c.id;
       left.unshift({ html: ok ? 'Correct' : 'It was ' + esc(c.name), tone: ok ? 'good' : 'bad' });
