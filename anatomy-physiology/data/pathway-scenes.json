@@ -440,31 +440,6 @@
     null
    ]
   },
-  "dorsal-column-route": {
-   "scene": "motor-path",
-   "at": [
-    null,
-    "dorsal",
-    "dorsal",
-    "medulla",
-    "cross",
-    "upper",
-    "deep",
-    "sensory"
-   ]
-  },
-  "spinothalamic-route": {
-   "scene": "motor-path",
-   "at": [
-    null,
-    "dorsal",
-    "dorsal",
-    "dorsal",
-    "lateral",
-    "deep",
-    "sensory"
-   ]
-  },
   "sympathetic-to-sweat": {
    "scene": "efferent",
    "at": [
@@ -609,7 +584,7 @@
     "node",
     "node",
     "efferent",
-    "lumbar",
+    null,
     "cisterna",
     "duct",
     "junction"
@@ -791,7 +766,7 @@
     "pct",
     "desc",
     "asc",
-    "md",
+    null,
     "dct",
     "cd",
     "papilla"
