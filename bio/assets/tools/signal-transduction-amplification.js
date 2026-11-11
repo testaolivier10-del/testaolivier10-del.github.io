@@ -213,7 +213,6 @@
         // one step in focus (pass 2, 2026-11-10): only it carries its name and count; a blocked step keeps its tag
         if(on) body += '<text class="sg-n" x="12" y="' + lab + '">' + esc(SHORT[id]) + '<tspan class="sg-v" dx="8">' + fmt(a[id]) + '</tspan></text>';
         else if(tags[id]) body += '<text class="sg-n sg-tapmark" x="12" y="' + lab + '">⊘ ' + esc(tags[id]) + '</text>';
-        else if(tap) body += '<text class="sg-n sg-tapmark sg-mark" x="12" y="' + lab + '">⊘</text>';
         // the antagonist sits on the receptors that epinephrine cannot reach (the faint ones)
         if(id === 'R' && st.antagonist){ var nb = Math.ceil(kOf(a.R) - 1e-6), mt = Math.max(nb, Math.ceil(kOf(P.Rtot))); for(var q = nb; q < mt; q++) body += '<rect class="sgs-ant" x="' + f1(CX + (q - (mt - 1) / 2) * SP - 5) + '" y="' + (YR - 18) + '" width="10" height="6" rx="2"/>'; }
         if(id === 'PKA' && st.pka) body += '<path class="sgs-ant" d="' + hexP(CX + rows[id].hw + 4, rowY(id), 5, 0) + '"/>';
