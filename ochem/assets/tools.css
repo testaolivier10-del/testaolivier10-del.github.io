@@ -536,6 +536,11 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rr-graph .rr-node__f{font:600 10px var(--font-mono);fill:var(--muted);}
 .rr-graph .rr-node.is-dim .rr-node__box{stroke:var(--line-soft);}
 .rr-graph .rr-node.is-dim text{opacity:.62;}
+/* Pass 2: a group off the route shows its name only; its formula is on it when it is in focus. */
+.rr-graph .rr-node.is-dim .rr-node__f{display:none;}
+.rr-fandir{margin:0 0 10px;max-width:460px;}
+.rr-card__more{margin:6px 0 4px;}
+.rr-card__more > summary{cursor:pointer;font:700 var(--ls-s,12.5px) var(--font-ui);color:var(--muted);}
 .rr-graph .rr-node.is-on .rr-node__box{stroke:var(--accent);fill:var(--tint-accent);stroke-width:2.2;}
 .rr-graph .rr-node.is-start .rr-node__box,.rr-graph .rr-node.is-end .rr-node__box,.rr-graph .rr-node[aria-pressed="true"] .rr-node__box{fill:var(--navy);stroke:var(--navy);}
 .rr-graph .rr-node.is-start text,.rr-graph .rr-node.is-end text,.rr-graph .rr-node[aria-pressed="true"] text{fill:var(--on-accent,#fff);}
