@@ -74,3 +74,5 @@
   body[data-app="tool-graph-studio"] .ls-root.ls-quiz .ls-stage{min-height:min(50svh,420px);}
 }
 @media (prefers-reduced-motion: reduce){ .gs-rubric li{transition:none;} }
+/* Pass 3: the graph chooser is a select */
+.gs-gsel{flex:1 1 100%;min-width:0;min-height:44px;max-width:100%;}
