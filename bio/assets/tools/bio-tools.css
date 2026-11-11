@@ -1459,3 +1459,27 @@
 .hw-mini-plot .hw-ml{fill:none;stroke:var(--cink);stroke-width:1.6;stroke-opacity:.75;stroke-linejoin:round;}
 .hw-guessplot{min-width:0;}
 @media (max-width:640px){.hw-cmpgrid{gap:6px;}.hw-cmphead p,.hw-gtitle{font-size:13.5px;}}
+/* Population growth (tool review 2026-11): live N(t) curve under the meadow, flood and frost drawn, event chips wrap */
+.pg-fieldsvg .pg-gbg{fill:var(--white);stroke:var(--line);stroke-width:1.2;}
+.pg-fieldsvg .pg-gt{font:900 12.5px var(--font-ui);fill:var(--ink);}
+.pg-fieldsvg .pg-ax{stroke:var(--muted);stroke-width:1.2;}
+.pg-fieldsvg .pg-at{font:700 10.5px var(--font-ui);fill:var(--muted);}
+.pg-fieldsvg .pg-kline{fill:none;stroke:#8A6A3E;stroke-width:2;stroke-dasharray:5 4;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-kline{stroke:#C9A36A;}
+.pg-fieldsvg .pg-kl{font:900 12px var(--font-ui);fill:#8A6A3E;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-kl{fill:#C9A36A;}
+.pg-fieldsvg .pg-ncurve{fill:none;stroke:var(--cink);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.pg-fieldsvg .pg-ndot{fill:var(--cink);stroke:var(--white);stroke-width:1.5;}
+.pg-fieldsvg .pg-evl{stroke-width:1.5;stroke-dasharray:3 3;}
+.pg-fieldsvg .pg-evl.flood{stroke:#2E7FB8;} .pg-fieldsvg .pg-evl.frost{stroke:#6B8FB0;} .pg-fieldsvg .pg-evl.other{stroke:var(--muted);}
+.pg-fieldsvg .pg-evt{font:800 10.5px var(--font-ui);fill:#2E7FB8;}
+.pg-fieldsvg .pg-evt.frost{fill:#5A7FA0;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-evt,:root[data-theme="dark"] .pg-fieldsvg .pg-evl.flood{fill:#7FC0EA;stroke:#7FC0EA;}
+.pg-fieldsvg .pg-water{fill:#4A9BD1;fill-opacity:.45;}
+.pg-fieldsvg .pg-wave{fill:none;stroke:#2E7FB8;stroke-width:2;}
+.pg-fieldsvg .pg-frost{fill:#EEF6FC;fill-opacity:.55;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-frost{fill:#B7D3EA;fill-opacity:.25;}
+.pg-fieldsvg .pg-flake{fill:none;stroke:#5A86B5;stroke-width:1.6;stroke-linecap:round;}
+.ls-root.ls-phone .pg-fieldsvg .pg-gt{font-size:14px;} .ls-root.ls-phone .pg-fieldsvg .pg-at,.ls-root.ls-phone .pg-fieldsvg .pg-evt{font-size:12px;}
+.ls-root .os-play:has(.pg-evbtns){flex-wrap:wrap;}
+.ls-root .os-play .pg-evbtns{flex:1 1 100%;min-width:0;flex-wrap:wrap;}
