@@ -104,9 +104,10 @@
           r._input.hidden = true;
           var ok = r._input.classList.contains('ok'), v = r._input.value.trim();
           var mark = r._mark || (r._mark = document.createElement('span'));
-          mark.className = 'mn-mark ' + (ok ? 'ok' : 'no');
-          mark.textContent = (ok ? '\u2713' : '\u2715') + (v ? ' ' + v : ' blank');
-          mark.setAttribute('aria-label', (ok ? 'Recalled: ' : 'Missed: ') + (v || 'left blank'));
+          // Pass 3: a row left empty reads "not tried" in a neutral tone, not a red miss.
+          mark.className = 'mn-mark ' + (ok ? 'ok' : v ? 'no' : 'skip');
+          mark.textContent = ok || v ? (ok ? '\u2713' : '\u2715') + ' ' + v : 'not tried';
+          mark.setAttribute('aria-label', ok ? 'Recalled: ' + v : v ? 'Missed: ' + v : 'Not tried');
           mark.hidden = false;
           r.appendChild(mark);
         });
