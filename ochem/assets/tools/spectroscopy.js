@@ -402,9 +402,24 @@
       } else if(/sp² C–H/.test(p.label)){
         out.push({ cm:p.cm, w:9, a:A, eta:0.4, src:i });
         out.push({ cm:p.cm + 30, w:9, a:A * 0.7, eta:0.4 });   // sp² C–H stays above 3000
+      } else if(p.w >= 300){
+        // A carboxylic acid O–H: the widest band there is, lopsided toward low wavenumber.
+        out.push({ cm:p.cm, w:p.w * 0.85, a:A, eta:0, skew:0.35, src:i });
       } else if(p.w >= 120){
-        // A hydrogen-bonded O–H: broad, and lopsided toward low wavenumber.
-        out.push({ cm:p.cm, w:p.w * (p.w >= 300 ? 0.85 : 0.62), a:A, eta:0, skew:0.35, src:i });
+        /* A hydrogen-bonded alcohol O–H (accuracy check 2026-11, OpenStax 17.11:
+           "hydrogen-bonded alcohols show a broader absorption in the 3300 to 3400
+           cm–1 range", the band running from about 3200 to 3550). It is a crowd of
+           O–H···O stretches at slightly different strengths, so it is drawn as
+           that: overlapping bands, which give a broad, rounded trough with a flat
+           floor and a longer tail to low wavenumber, not a V. Strong in a neat
+           sample, so never shallower than 68%. */
+        var parts = [[-115, 0.75], [-45, 1], [35, 0.95], [100, 0.6]], peak = 0;
+        for(var z = -150; z <= 150; z += 5){
+          var v = 0; parts.forEach(function(q){ var u = (z - q[0]) / 72; v += q[1] * Math.exp(-u * u * 0.6931); });
+          peak = Math.max(peak, v);
+        }
+        var Aoh = toA(Math.max(p.d, 68));
+        parts.forEach(function(q, k){ out.push({ cm:p.cm + q[0], w:72, a:Aoh * q[1] / peak, eta:0, src: k === 1 ? i : undefined }); });
       } else {
         out.push({ cm:p.cm, w:Math.max(6, p.w * 0.55), a:A, eta:0.45, src:i });
       }
@@ -448,8 +463,14 @@
     return base * Math.pow(10, -irAbsAt(bands, cm));
   }
 
+  /* Read a spectrum draws each chart at the pixel size of its box (tool
+     review 2026-11: the NMR filled a third of its panel with 5 px labels), so
+     the studio sets this before it renders; null keeps the fixed shapes. */
+  var chartPx = null;
   function irSpectrum(c, highlight, fit){
     var nw = !!fit && narrowChart(); IR_W = nw ? 440 : 640; IR_H = nw ? 250 : 220;
+    var px = fit && chartPx ? chartPx : null;
+    if(px){ IR_W = px.w; IR_H = px.h; IR_B = 40; } else IR_B = 30;
     var pts = [], bands = irBands(c);
     for(var cm = IR_MAX; cm >= IR_MIN; cm -= 2){
       pts.push(irX(cm).toFixed(1) + ' ' + irY(Math.max(1, irTAt(bands, cm))).toFixed(1));
@@ -478,7 +499,7 @@
       '</g>';
     }).join('');
 
-    return '<svg viewBox="0 0 ' + IR_W + ' ' + IR_H + '" role="group" aria-label="Infrared spectrum of ' + esc(c.name) + '">' +
+    return '<svg viewBox="0 0 ' + IR_W + ' ' + IR_H + '"' + (px ? ' class="sp-px"' : '') + ' role="group" aria-label="Infrared spectrum of ' + esc(c.name) + '">' +
       fpBand + grid +
       '<line x1="' + IR_L + '" y1="' + (IR_H - IR_B) + '" x2="' + (IR_W - 10) + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<line x1="' + IR_L + '" y1="' + IR_T + '" x2="' + IR_L + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
@@ -505,21 +526,27 @@
 
   function nmrSpectrum(c, highlight, fit){
     var nw = !!fit && narrowChart(); NM_W = nw ? 440 : 640; NM_H = nw ? 280 : 250;
+    var px = fit && chartPx ? chartPx : null;
+    if(px){ NM_W = px.w; NM_H = px.h; }
     var base = NM_H - NM_B;
+    // Peak heights grow with a taller box; at the fixed shapes this is 1.
+    var kH = Math.max(1, (base - NM_T - 64) / 150), kJ = Math.max(1, NM_W / 640);
     var maxH = Math.max.apply(null, c.nmr.map(function(s){ return s.h; }));
 
     /* Each label (integration over multiplicity) is lifted clear of a
        neighbour's when two signals sit close together. */
-    var lab = {}, placed = [];
+    var lab = {}, labX = {}, placed = [];
     c.nmr.map(function(s, i){ return i; }).sort(function(a, b){ return c.nmr[b].ppm - c.nmr[a].ppm; }).forEach(function(i){
-      var s = c.nmr[i], x = nmX(s.ppm), y = base - (30 + (s.h / maxH) * 110) - 14;
+      var s = c.nmr[i], x = nmX(s.ppm), y = base - (30 + (s.h / maxH) * 110) * kH - 14;
       for(var g = 0; g < 8; g++){
         var hit = placed.some(function(q){ return Math.abs(q.x - x) < 46 && Math.abs(q.y - y) < 36; });
         if(!hit) break;
         y -= 36;
       }
       y = Math.max(NM_T + 44, y);   // below the key row
-      placed.push({ x:x, y:y }); lab[i] = y;
+      // Pinned under the key row and still on a neighbour's label: step sideways instead.
+      for(var g2 = 0; g2 < 6 && placed.some(function(q){ return Math.abs(q.x - x) < 30 && Math.abs(q.y - y) < 30; }); g2++) x += 30;
+      placed.push({ x:x, y:y }); lab[i] = y; labX[i] = x;
     });
 
     var sticks = c.nmr.map(function(s, i){
@@ -529,13 +556,13 @@
       if(dd) n = 4;
       // Height is integration, so tall means "more hydrogens" the way it does
       // on a real spectrum, and the multiplet's lines share that total.
-      var h = 30 + (s.h / maxH) * 110;
-      var spacing = s.mult === 'm' ? 3.4 : (s.j ? s.j * 0.55 : 3);
+      var h = (30 + (s.h / maxH) * 110) * kH;
+      var spacing = (s.mult === 'm' ? 3.4 : (s.j ? s.j * 0.55 : 3)) * kJ;
       var lines = '';
       for(var k = 0; k < n; k++){
         var off = (k - (n - 1) / 2) * spacing;
         // A doublet of doublets: two couplings, four equal lines.
-        if(dd){ var J1 = (s.j2 || s.j || 7) * 0.55, J2 = (s.j || 7) * 0.55; off = ((k & 2) ? 0.5 : -0.5) * J1 + ((k & 1) ? 0.5 : -0.5) * J2; }
+        if(dd){ var J1 = (s.j2 || s.j || 7) * 0.55 * kJ, J2 = (s.j || 7) * 0.55 * kJ; off = ((k & 2) ? 0.5 : -0.5) * J1 + ((k & 1) ? 0.5 : -0.5) * J2; }
         /* Binomial intensities, and the AREA is what integration fixes — so a
            singlet of three hydrogens stands taller than a triplet of three,
            whose intensity is split 1:2:1 across its lines. Scaling height by
@@ -552,9 +579,9 @@
         ' aria-label="' + esc(s.ppm.toFixed(2) + ' ppm, ' + s.h + ' H, ' + (MULT_NAME[s.mult] || s.mult) + ', ' + s.label) + '">' +
         '<rect x="' + (nmX(s.ppm) - 26) + '" y="' + (lab[i] - 28).toFixed(1) + '" width="52" height="' + (base - lab[i] + 32).toFixed(1) + '" rx="6" fill="transparent"/>' +
         lines +
-        '<text class="sp-int" x="' + nmX(s.ppm).toFixed(1) + '" y="' + (lab[i] - 13).toFixed(1) + '" text-anchor="middle">' + s.h + 'H</text>' +
-        '<text class="sp-mult" x="' + nmX(s.ppm).toFixed(1) + '" y="' + (lab[i] + 2).toFixed(1) + '" text-anchor="middle">' + esc(MULT_ABBR[s.mult] || s.mult) + '</text>' +
-        (lab[i] < base - h - 18 ? '<line class="sp-lead" x1="' + nmX(s.ppm).toFixed(1) + '" y1="' + (lab[i] + 6).toFixed(1) + '" x2="' + nmX(s.ppm).toFixed(1) + '" y2="' + (base - h + 4).toFixed(1) + '"/>' : '') +
+        '<text class="sp-int" x="' + labX[i].toFixed(1) + '" y="' + (lab[i] - 13).toFixed(1) + '" text-anchor="middle">' + s.h + 'H</text>' +
+        '<text class="sp-mult" x="' + labX[i].toFixed(1) + '" y="' + (lab[i] + 2).toFixed(1) + '" text-anchor="middle">' + esc(MULT_ABBR[s.mult] || s.mult) + '</text>' +
+        (lab[i] < base - h - 18 ? '<line class="sp-lead" x1="' + labX[i].toFixed(1) + '" y1="' + (lab[i] + 6).toFixed(1) + '" x2="' + nmX(s.ppm).toFixed(1) + '" y2="' + (base - h + 4).toFixed(1) + '"/>' : '') +
         '<title>' + esc(s.label) + '</title>' +
       '</g>';
     }).join('');
@@ -564,7 +591,7 @@
         '<text class="sp-axis" x="' + nmX(p).toFixed(1) + '" y="' + (base + 18) + '" text-anchor="middle">' + p + '</text>';
     }).join('');
 
-    return '<svg viewBox="0 0 ' + NM_W + ' ' + NM_H + '" role="group" aria-label="Proton NMR spectrum of ' + esc(c.name) + '">' +
+    return '<svg viewBox="0 0 ' + NM_W + ' ' + NM_H + '"' + (px ? ' class="sp-px"' : '') + ' role="group" aria-label="Proton NMR spectrum of ' + esc(c.name) + '">' +
       grid +
       '<line x1="' + NM_L + '" y1="' + base + '" x2="' + (NM_W - 14) + '" y2="' + base + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<text class="sp-axis sp-axis-t" x="' + (NM_W / 2) + '" y="' + (NM_H - 4) + '" text-anchor="middle">chemical shift (ppm)</text>' +
@@ -658,7 +685,57 @@
     mol.viewBox = Math.round((x0 + x1 - w) / 2) + ' ' + Math.round((y0 + y1 - hh) / 2) + ' ' + Math.round(w) + ' ' + Math.round(hh);
     var bySig = {};
     sig.forEach(function(keys, i){ keys.forEach(function(k){ (bySig[k] = bySig[k] || []).push(i); }); });
-    return { mol: mol, sig: sig, bySig: bySig };
+    return { mol: mol, sig: sig, bySig: bySig, st: st };
+  }
+
+  /* ---- Which bond an IR band is (tool review 2026-11) ---------------------
+
+     NMR already lights the hydrogens of a tapped signal; IR now draws the
+     molecule too and lights the bond a tapped band comes from. Read from the
+     band's label and the structure itself, so it works for a molecule the
+     student drew as well as for the listed ones:
+       X–H stretches   the atom carrying that H (its label reads OH, NH₂, CH₃)
+       C=O, C–O, C≡N, C≡C, C=C, N–O   those bonds
+       ring bands      the ring
+     Returns { atoms, bonds } (bond = [a, b]); empty when nothing fits. */
+  function irLit(map, band){
+    var out = { atoms: [], bonds: [] };
+    if(!map || !map.st || !band) return out;
+    var st = map.st, Ch = window.OchemChem, L = band.label;
+    var keys = Object.keys(st.atoms).filter(function(k){ var a = st.atoms[k]; return a.el && !a.group; });
+    function H(k){ var a = st.atoms[k]; return a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0); }
+    function el(k){ return st.atoms[k].el; }
+    function bonds(k){ return Ch.bondsAt(st, k); }
+    function other(b, k){ return b.a === k ? b.b : b.a; }
+    function ring(k){ return /^r\d/.test(k); }
+    function bondsWhere(fn){ st.bonds.forEach(function(b){ if(b.order > 0 && fn(b)) out.bonds.push([b.a, b.b]); }); }
+    function pair(b, x, y){ return (el(b.a) === x && el(b.b) === y) || (el(b.a) === y && el(b.b) === x); }
+    if(/O–H/.test(L)) out.atoms = keys.filter(function(k){ return el(k) === 'O' && H(k) > 0; });
+    else if(/N–H/.test(L)) out.atoms = keys.filter(function(k){ return el(k) === 'N' && H(k) > 0; });
+    else if(/≡C–H/.test(L)) out.atoms = keys.filter(function(k){ return el(k) === 'C' && H(k) > 0 && bonds(k).some(function(b){ return b.order === 3; }); });
+    else if(/aldehyde C–H/.test(L)) out.atoms = keys.filter(function(k){ return el(k) === 'C' && H(k) > 0 && bonds(k).some(function(b){ return b.order === 2 && el(other(b, k)) === 'O'; }); });
+    else if(/sp² C–H|Ar–H/.test(L)) out.atoms = keys.filter(function(k){ return el(k) === 'C' && H(k) > 0 && bonds(k).some(function(b){ return b.order === 2 && el(other(b, k)) === 'C'; }); });
+    else if(/sp³ C–H|alkyl C–H/.test(L)) out.atoms = keys.filter(function(k){ return el(k) === 'C' && H(k) > 0 && bonds(k).every(function(b){ return b.order === 1; }); });
+    else if(/C=O/.test(L)) bondsWhere(function(b){ return b.order === 2 && pair(b, 'C', 'O'); });
+    else if(/C–O/.test(L)) bondsWhere(function(b){ return b.order === 1 && pair(b, 'C', 'O'); });
+    else if(/C≡N/.test(L)) bondsWhere(function(b){ return b.order === 3 && pair(b, 'C', 'N'); });
+    else if(/C≡C/.test(L)) bondsWhere(function(b){ return b.order === 3 && pair(b, 'C', 'C'); });
+    else if(/N–O/.test(L)) bondsWhere(function(b){ return pair(b, 'N', 'O'); });
+    else if(/aromatic C=C/.test(L)) bondsWhere(function(b){ return ring(b.a) && ring(b.b); });
+    else if(/C=C/.test(L)) bondsWhere(function(b){ return b.order === 2 && pair(b, 'C', 'C') && !(ring(b.a) && ring(b.b)); });
+    else if(/ring|substitut/.test(L)) out.atoms = keys.filter(ring);
+    return out;
+  }
+  /* The molecule beside the IR spectrum, the tapped band's bond lit: a wide
+     soft line under each bond, the atom ringed for an X–H stretch. */
+  function irMolSvg(map, lit, label){
+    var mol = Object.assign({}, map.mol, { atoms: map.mol.atoms, bonds: map.mol.bonds });
+    mol.decor = lit.bonds.map(function(b){
+      var A = mol.atoms[b[0]], Z = mol.atoms[b[1]]; if(!A || !Z) return '';
+      return '<line class="sp-bondlit" x1="' + A.x + '" y1="' + A.y + '" x2="' + Z.x + '" y2="' + Z.y + '"/>';
+    }).join('');
+    var tappable = Object.keys(map.irBy || {});
+    return window.OchemMolecules.svg(mol, { clickable: tappable.length ? tappable : null, highlight: lit.atoms, caption: '', label: label });
   }
 
   var score = { right:0, total:0 };
@@ -695,12 +772,15 @@
       '<div id="spPredicted"></div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Infrared</span><span class="tmuted" id="spName"></span></div>' +
-        '<div class="sp-chart" id="spIR"></div>' +
+        '<div class="sp-link sp-irlink">' +
+          '<div class="sp-link__mol" id="spIRMol"></div>' +
+          '<div class="sp-chart" id="spIR"></div>' +
+        '</div>' +
         '<div id="spIRNote"></div>' +
       '</div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>¹H NMR</span><span class="tmuted">tap a signal or an atom</span></div>' +
-        '<div class="sp-link">' +
+        '<div class="sp-link sp-nmrlink">' +
           '<div class="sp-link__mol" id="spMol"></div>' +
           '<div class="sp-chart" id="spNMR"></div>' +
         '</div>' +
@@ -839,6 +919,37 @@
       g.addEventListener('click', pick);
       g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(); } });
     });
+
+    var irMap = nmrMap(compound), elIRMol = document.getElementById('spIRMol');
+    if(irMap && window.OchemMolecules){
+      // Which band each atom answers to: the first band that lights it.
+      irMap.irBy = {};
+      compound.ir.forEach(function(p, i){
+        var l = irLit(irMap, p);
+        l.atoms.concat(l.bonds.reduce(function(a, b){ return a.concat(b); }, [])).forEach(function(k){ if(irMap.irBy[k] === undefined) irMap.irBy[k] = i; });
+      });
+      var litNow = hlIR !== null ? irLit(irMap, compound.ir[hlIR]) : { atoms: [], bonds: [] };
+      elIRMol.innerHTML = irMolSvg(irMap, litNow, compound.name + ', structure' + (hlIR !== null ? ', ' + compound.ir[hlIR].label + ' lit' : ''));
+      elIRMol.hidden = false;
+      elIRMol.querySelectorAll('.atom[data-key]').forEach(function(g){
+        var k = g.getAttribute('data-key'), bi = irMap.irBy[k];
+        if(bi === undefined) return;
+        g.setAttribute('aria-label', irMap.mol.atoms[k].label + ': band at ' + compound.ir[bi].cm + ' per centimetre, ' + compound.ir[bi].label);
+        var pick = function(){
+          // An atom in several bands (C–O and O–H) steps through them.
+          var mine = compound.ir.map(function(p, i){ return i; }).filter(function(i){
+            var l = irLit(irMap, compound.ir[i]);
+            return l.atoms.indexOf(k) >= 0 || l.bonds.some(function(b){ return b.indexOf(k) >= 0; });
+          });
+          var at = mine.indexOf(hlIR);
+          hlIR = mine[(at + 1) % mine.length];
+          renderPredict();
+          var again = document.querySelector('#spIRMol .atom[data-key="' + k + '"]'); if(again) again.focus();
+        };
+        g.addEventListener('click', pick);
+        g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(); } });
+      });
+    } else { elIRMol.innerHTML = ''; elIRMol.hidden = true; }
 
     var irPeak = hlIR !== null && compound.ir[hlIR];
     document.getElementById('spIRNote').innerHTML =
@@ -1218,7 +1329,7 @@
       studioPredict();
     });
     var spPick = $('spPicker'); spPick.classList.add('ls-scroll');
-    var predStage = mk('sp-ls-pred'); predStage.appendChild($('spIR')); predStage.appendChild(root.querySelector('.sp-link'));
+    var predStage = mk('sp-ls-pred'); predStage.appendChild(root.querySelector('.sp-irlink')); predStage.appendChild(root.querySelector('.sp-nmrlink'));
     var whyPeak = mk('sp-ls-peak');
     whyPeak.appendChild($('spLinkNote'));
     var puzStage = mk('sp-ls-puz'), puzDet = mk('ls-sec sp-ls-puzdet');
@@ -1253,7 +1364,24 @@
     $('spMode').addEventListener('click', function(){ if(spMode() === 'ref') redrawRef(); });
     ls = { mode: spMode, view: 'ir', whyPeak: whyPeak, puzStage: puzStage, puzDet: puzDet };
     var basePredict = renderPredict, basePuzzle = renderPuzzle;
-    renderPredict = function(){ basePredict(); studioPredict(); };
+    /* Each chart is drawn at its box's size in pixels: the box of whichever
+       spectrum is showing (IR and NMR share one layout, so the other's box is
+       the same size). Redrawn when the stage is resized. */
+    var measure = function(){
+      var box = $(ls.view === 'nmr' ? 'spNMR' : 'spIR');
+      var w = box ? box.clientWidth - 8 : 0, h = box ? box.clientHeight - 12 : 0;
+      chartPx = w > 200 && h > 140 ? { w: Math.round(w), h: Math.round(h) } : null;
+    };
+    renderPredict = function(){ measure(); basePredict(); studioPredict(); };
+    if(window.ResizeObserver){
+      var lastPx = '';
+      new ResizeObserver(function(){
+        if(spMode() !== 'predict') return;
+        measure();
+        var k = chartPx ? chartPx.w + 'x' + chartPx.h : '';
+        if(k !== lastPx){ lastPx = k; renderPredict(); }
+      }).observe(predStage);
+    }
     renderPuzzle = function(){ basePuzzle(); studioPuzzle(); };
   }
 
