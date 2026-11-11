@@ -416,7 +416,7 @@
       (withScene ? '<div class="pc-scene"></div>' : '') +
       '<div class="pc-dash-grid">' + st.variables.map(function(v, i){
         return '<button type="button" class="pc-gauge" data-k="' + i + '" title="' + esc(v.name) + '" aria-label="' + esc(v.name) + ': no call yet. Tap to cycle increases, decreases, no change.">' + dialSvg() +
-          '<span class="pc-gauge-n">' + (placed(v) ? '<span class="pc-gauge-k" aria-hidden="true">' + (i + 1) + '</span>' : '') + esc(shortName(v.name)) + '</span><span class="pc-gauge-s">Tap to call</span></button>';
+          '<span class="pc-gauge-n">' + (placed(v) ? '<span class="pc-gauge-k" aria-hidden="true">' + (i + 1) + '</span>' : '') + esc(shortName(v.name)) + '</span><span class="pc-gauge-s"></span></button>';
       }).join('') + '</div>' +
       '<ol class="pc-feed" aria-label="The chain, step by step" hidden></ol>' +
       '<p class="pc-sr pc-feed-live" role="status" aria-live="polite"></p>' +

@@ -319,3 +319,13 @@
   .pw-ls .ls-stage-body > .pw-fig.has-scene{max-width:none;}
 }
 .pw-errfig .pw-scn{width:min(100%, 44vh * var(--scn-r, 1));margin:0 auto 10px;}
+
+/* Pass 2 (2026-11-10): beside a figure the map is a numbered list; the figure is the picture. */
+.pw-map.is-list .pw-box{filter:none;stroke-width:1.5;}
+.pw-map.is-list .is-empty .pw-box,.pw-map.is-list .is-gap .pw-box{stroke:var(--line);}
+.pw-map .pw-cnum{font-size:13px;}
+.pw-mapbox .pw-map.is-list{max-width:520px;display:block;margin:0 auto;}
+@media (min-width:1000px){
+  .pw-duo:has(.pw-map.is-list){grid-template-columns:minmax(0, 2.1fr) minmax(0, 1fr);}
+  .pw-mapbox .pw-map.is-list{max-width:270px;}
+}

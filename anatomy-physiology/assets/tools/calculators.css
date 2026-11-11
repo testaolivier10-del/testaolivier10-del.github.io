@@ -289,3 +289,6 @@
 .calc-ls .ls-stage-body > .calc-pic-q{min-height:130px;}
 .ls-root.ls-phone.calc-ls .ls-stage-body > .calc-pic-q{margin-bottom:44px;}
 .calc-ls .ls-dock .calc-hintbox .calc-actions{position:static;box-shadow:none;background:none;}
+
+/* Pass 2 (2026-11-10): reference lines are read under Explanation ("Usual values"), not on the stage. */
+.calc-out-norefs .calc-normal{display:none;}

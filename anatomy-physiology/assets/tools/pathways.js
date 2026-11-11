@@ -657,21 +657,30 @@
   }
   function pathMap(p, opt){
     opt = opt || {};
-    var n = p.steps.length, cols = opt.cols || (sceneOf(p) && !opt.noScene ? 2 : colsFor(n)), rows = Math.ceil(n / cols);
+    /* Beside a figure the map is a plain numbered list (pass 2, 2026-11-10):
+       a numbered dot and the step's words, the same numbers as the pins on
+       the figure, one column on a wide stage and two (top to bottom, then
+       the next column) on a phone. The figure is the picture; the list only
+       names what the pins mean. */
+    var compact = !!(sceneOf(p) && !opt.noScene && window.AnpScene);
+    var NW = compact ? 230 : 168, NH = compact ? 46 : 58, GX = compact ? 16 : 30, GY = compact ? 10 : 30, LX = compact ? 40 : 47;
+    var wide = window.matchMedia && window.matchMedia('(min-width: 1000px)').matches;
+    var n = p.steps.length, cols = opt.cols || (compact ? (wide || n < 4 ? 1 : 2) : colsFor(n)), rows = Math.ceil(n / cols);
     var W = PAD * 2 + NW * cols + GX * (cols - 1);
     var H = PAD * 2 + 8 + rows * NH + (rows - 1) * GY + (p.cycle ? 30 : 0);
     function pos(k){
       var row = Math.floor(k / cols), col = k % cols;
-      if(row % 2 === 1) col = cols - 1 - col;
+      if(compact){ row = k % rows; col = Math.floor(k / rows); }
+      else if(row % 2 === 1) col = cols - 1 - col;
       return { x: PAD + col * (NW + GX), y: PAD + 8 + row * (NH + GY), col: col, row: row };
     }
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'class': 'pw-svg pw-map cols-' + cols });
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'class': 'pw-svg pw-map cols-' + cols + (compact ? ' is-list' : '') });
     var arrows = el('g', { 'class': 'pw-arrows' }), nodes = el('g', { 'class': 'pw-nodes' });
     svg.appendChild(arrows); svg.appendChild(nodes);
     var slot = [];
     for(var k = 0; k < n; k++){
       var a = pos(k);
-      if(k < n - 1){
+      if(k < n - 1 && !compact){
         var b = pos(k + 1), d;
         if(a.row === b.row){
           var y = a.y + NH / 2;
@@ -688,7 +697,8 @@
     }
     if(p.cycle){
       var last = pos(n - 1);
-      svg.appendChild(el('text', { x: last.x + NW / 2, y: last.y + NH + 24, 'text-anchor': 'middle', 'class': 'pw-cyc' }, '↻ then back to step 1'));
+      if(compact) last = { x: PAD, y: PAD + 8 + (rows - 1) * (NH + GY) };
+      svg.appendChild(el('text', { x: compact ? PAD + 4 : last.x + NW / 2, y: last.y + NH + 24, 'text-anchor': compact ? 'start' : 'middle', 'class': 'pw-cyc' }, '↻ then back to step 1'));
     }
     /* fill(k, i, state, extra): slot k shows step i (null: empty or gap).
        state: '' | 'empty' | 'next' | 'gap' | 'ok' | 'no' | 'marked' | 'picked'. */
@@ -700,7 +710,11 @@
       var fam = st ? (st.blood === 'o2' || st.blood === 'deo2' ? st.blood : FAM[kind]) : 'none';
       g.setAttribute('class', 'pw-node fam-' + fam + (state ? ' is-' + state : '') + (st ? ' is-lit' : ''));
       g.appendChild(el('rect', { x: a.x, y: a.y, width: NW, height: NH, rx: 13, 'class': 'pw-box' }));
-      if(st){
+      if(compact){
+        // the step's number in the dot, as on its pin
+        g.appendChild(el('circle', { cx: a.x + 20, cy: a.y + NH / 2, r: 13, 'class': 'pw-ibg' + (st ? '' : ' pw-ibg-empty') }));
+        g.appendChild(el('text', { x: a.x + 20, y: a.y + NH / 2 + 4.5, 'text-anchor': 'middle', 'class': st ? 'pw-num pw-cnum' : 'pw-q pw-cnum' }, state === 'gap' ? '?' : String(k + 1)));
+      } else if(st){
         g.appendChild(el('circle', { cx: a.x + 24, cy: a.y + NH / 2, r: 17, 'class': 'pw-ibg' }));
         g.appendChild(iconSvg(kind, a.x + 13, a.y + NH / 2 - 11, 22));
       } else {
@@ -708,18 +722,18 @@
         g.appendChild(el('text', { x: a.x + 24, y: a.y + NH / 2 + 6, 'text-anchor': 'middle', 'class': 'pw-q' }, state === 'gap' ? '?' : ''));
       }
       var label = st ? st.label : state === 'gap' ? 'Missing step' : state === 'next' ? 'Place the next step' : '';
-      var max = 15, lines = wrap(label, max);
-      if(lines.length > 2){ max = 18; lines = wrap(label, max); }
+      var max = compact ? 24 : 15, lines = wrap(label, max);
+      if(lines.length > 2){ max = compact ? 28 : 18; lines = wrap(label, max); }
       var small = lines.length > 2 || (extra && extra.yours);
-      lines = lines.slice(0, extra && extra.yours ? 2 : 3);
+      lines = lines.slice(0, compact ? (extra && extra.yours ? 1 : 2) : extra && extra.yours ? 2 : 3);
       var lh = small ? 12.5 : 15, top = a.y + NH / 2 - (lines.length - 1) * lh / 2 + 4.5 - (extra && extra.yours ? 7 : 0);
-      lines.forEach(function(line, j){ g.appendChild(el('text', { x: a.x + 47, y: top + j * lh, 'class': 'pw-lbl' + (small ? ' is-sm' : '') + (st ? '' : ' is-ph') }, line)); });
+      lines.forEach(function(line, j){ g.appendChild(el('text', { x: a.x + LX, y: top + j * lh, 'class': 'pw-lbl' + (small ? ' is-sm' : '') + (st ? '' : ' is-ph') }, line)); });
       if(extra && extra.yours){
-        g.appendChild(el('text', { x: a.x + 47, y: a.y + NH - 9, 'class': 'pw-yours' }, (extra.pre || 'yours: ') + cut(extra.yours, 24)));
+        g.appendChild(el('text', { x: a.x + LX, y: a.y + NH - (compact ? 6 : 9), 'class': 'pw-yours' }, (extra.pre || 'yours: ') + cut(extra.yours, 24)));
       }
-      // the step number, a tab on the node's top-left corner
-      g.appendChild(el('rect', { x: a.x + 8, y: a.y - 9, width: 22, height: 18, rx: 9, 'class': 'pw-num-bg' }));
-      g.appendChild(el('text', { x: a.x + 19, y: a.y + 4.5, 'text-anchor': 'middle', 'class': 'pw-num' }, String(k + 1)));
+      // the step number, a tab on the node's top-left corner (the list carries it in its dot)
+      if(!compact) g.appendChild(el('rect', { x: a.x + 8, y: a.y - 9, width: 22, height: 18, rx: 9, 'class': 'pw-num-bg' }));
+      if(!compact) g.appendChild(el('text', { x: a.x + 19, y: a.y + 4.5, 'text-anchor': 'middle', 'class': 'pw-num' }, String(k + 1)));
       if(state === 'ok' || state === 'no'){
         g.appendChild(el('circle', { cx: a.x + NW - 4, cy: a.y + 4, r: 10, 'class': 'pw-mk' }));
         g.appendChild(el('path', { d: state === 'ok' ? 'M' + (a.x + NW - 9) + ',' + (a.y + 4) + ' l3.5,3.5 l6.5,-7' : 'M' + (a.x + NW - 8) + ',' + a.y + ' l8,8 m0,-8 l-8,8', 'class': 'pw-mk-t' }));
@@ -739,7 +753,7 @@
        word by word. */
     function fitNode(g, a){
       if(!svg.isConnected) return;
-      var avail = NW - 47 - 9;
+      var avail = NW - LX - (compact ? 12 : 9);
       [].forEach.call(g.querySelectorAll('.pw-yours'), function(t){
         var tries = 0;
         try{ while(t.getComputedTextLength() > avail && tries++ < 12){ var s2 = t.textContent.replace(/…$/, '').replace(/\s*\S+$/, ''); if(s2 === t.textContent || s2.length < 6) break; t.textContent = s2 + '…'; } }catch(e){}

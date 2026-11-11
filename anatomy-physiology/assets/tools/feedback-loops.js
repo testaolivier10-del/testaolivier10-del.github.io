@@ -662,7 +662,7 @@
     loadScenes(function(){
       var A = window.AnpLoopScenes;
       if(!A || !A.has(l) || !document.contains(sceneFig)) return;
-      sceneFig.innerHTML = A.svg(l) + '<figcaption class="fl-scene-cap"><b>' + esc(LABELS.effector) + ':</b> ' + esc(l.slots.effector.short) + '</figcaption>';
+      sceneFig.innerHTML = A.svg(l);   // the effector is named on the ring, not again under the drawing (pass 2)
       sceneFig.hidden = false; scene = sceneFig.querySelector('svg');
       panel.classList.add('has-scene'); var st = panel.closest('.fl-ls-stage') || (sceneFig.parentNode && sceneFig.parentNode.classList.contains('fl-ls-stage') ? sceneFig.parentNode : null); if(st) st.classList.add('has-scene');
       draw();
@@ -710,7 +710,7 @@
     }
     function light(k){
       var g = ring.querySelector('[data-k="' + k + '"]'), a = ring.querySelector('[data-from="' + k + '"]');
-      if(g) g.classList.add('is-lit');
+      if(g){ g.classList.add('is-lit'); g.classList.add('is-seen'); }
       if(a) a.classList.add('is-lit');
       if(k === 'effector' && stopsAt() !== 'effector') sceneSet(null, true);
     }
@@ -847,7 +847,7 @@
     });
     function unshift(){ spOff = 0; if(lv.shift){ spT.textContent = lv.setPoint; sp0.setAttribute('opacity', '0'); } band.removeAttribute('opacity'); }
     panel.querySelector('.fl-push').addEventListener('click', function(){ stop(); clearRing(); sceneSet(null, false); v = spOff + (pos ? 0.22 : 0.7); draw(); run(); });
-    panel.querySelector('.fl-lreset').addEventListener('click', function(){ stop(); clearRing(); sceneSet(false, false); v = 0; unshift(); draw(); now.textContent = ''; say(lv.variable + ' is back at the ' + (pos ? 'starting level' : 'set point') + '.'); });
+    panel.querySelector('.fl-lreset').addEventListener('click', function(){ stop(); clearRing(); ring.querySelectorAll('.is-seen').forEach(function(x){ x.classList.remove('is-seen'); }); sceneSet(false, false); v = 0; unshift(); draw(); now.textContent = ''; say(lv.variable + ' is back at the ' + (pos ? 'starting level' : 'set point') + '.'); });
     var sh = panel.querySelector('.fl-shift');
     if(sh) sh.addEventListener('click', function(){
       // The set point itself moves away (fever): the variable has not changed,

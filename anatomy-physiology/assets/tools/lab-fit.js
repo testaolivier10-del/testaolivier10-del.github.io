@@ -98,5 +98,38 @@
     };
     img.src = src;
   }
-  window.AnpLabFit = { eraseLeaders: eraseLeaders, inkBox: inkBox };
+  /* Scene plates (pass 2, 2026-11-10): a covered label takes the colour of the drawing around it, so a
+     hidden word reads as background, not as a blank white box: the most common colour on a thin ring just
+     outside the cover. */
+  function blendCovers(img, plate){
+    if(!img) return;
+    function run(){
+      try{
+        var W = plate.w, H = plate.h, c = document.createElement('canvas');
+        c.width = W; c.height = H;
+        var x = c.getContext('2d', { willReadFrequently: true });
+        x.drawImage(img, 0, 0, W, H);
+        var spans = img.closest('.scn-pic').querySelectorAll('.scn-cover');
+        plate.covered.forEach(function(b, k){
+          if(!spans[k]) return;
+          var x0 = Math.max(0, Math.floor(b[0]) - 4), y0 = Math.max(0, Math.floor(b[1]) - 4);
+          var x1 = Math.min(W, Math.ceil(b[0] + b[2]) + 4), y1 = Math.min(H, Math.ceil(b[1] + b[3]) + 4);
+          if(x1 <= x0 || y1 <= y0) return;
+          var d = x.getImageData(x0, y0, x1 - x0, y1 - y0).data, w = x1 - x0, h = y1 - y0, count = {}, best = null, bestN = 0;
+          for(var yy = 0; yy < h; yy++) for(var xx = 0; xx < w; xx++){
+            if(xx > 2 && xx < w - 3 && yy > 2 && yy < h - 3) continue;   // the ring only
+            var i = (yy * w + xx) * 4;
+            if(d[i + 3] < 128) continue;
+            var key = (d[i] >> 3) + ',' + (d[i + 1] >> 3) + ',' + (d[i + 2] >> 3);
+            var n = count[key] = (count[key] || 0) + 1;
+            if(n > bestN){ bestN = n; best = [d[i], d[i + 1], d[i + 2]]; }
+          }
+          if(best) spans[k].style.background = 'rgb(' + best.join(',') + ')';
+          spans[k].classList.add('is-blended');
+        });
+      }catch(e){}
+    }
+    if(img.complete && img.naturalWidth) run(); else img.addEventListener('load', run, { once: true });
+  }
+  window.AnpLabFit = { eraseLeaders: eraseLeaders, inkBox: inkBox, blendCovers: blendCovers };
 })();

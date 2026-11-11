@@ -5,6 +5,7 @@
 .scn{margin:0;position:relative;}
 .scn-pic{position:relative;width:100%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line, rgba(0,0,0,.08));}
 .scn-pic img{display:block;width:100%;height:auto;}
+.scn-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .scn-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
 .scn-ov{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;font-family:var(--font-ui, system-ui, sans-serif);}
 .scn-cred{margin:5px 2px 0;font-size:11px;line-height:1.35;color:var(--muted);}

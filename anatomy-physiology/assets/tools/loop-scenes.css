@@ -15,7 +15,7 @@
 .fl-scene .fs-t{fill:var(--fs-label);font:800 10.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
 .fl-scene .fs-small{font-size:9.5px;fill:var(--fs-mut);}
 .fl-scene .fs-acts,.fl-scene .fs-on{transition:opacity .35s;}
-.fl-scene text.fs-acts,.fl-scene text.fs-on{opacity:.28;}
+.fl-scene text.fs-acts,.fl-scene text.fs-on{opacity:0;transition:opacity .3s;}
 .fl-scene.is-act text.fs-acts,.fl-scene.is-on text.fs-on{opacity:1;}
 .fl-scene.is-act text.fs-acts{fill:var(--cink);}
 .fl-scene .fs-air{fill:var(--fs-air);} .fl-scene .fs-epi{fill:var(--fs-epi);} .fl-scene .fs-derm{fill:var(--fs-derm);} .fl-scene .fs-fat{fill:var(--fs-fat);}

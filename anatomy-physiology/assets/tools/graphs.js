@@ -633,6 +633,9 @@
          titles and the next panel), the dots stay and the values are read in the list under the chart. */
       var crowd = false;
       if(shapeKey){ var ly = -1e9; pts.forEach(function(q){ var yy = Math.max(q.cy, ly + 20); if(yy - q.cy > 6) crowd = true; ly = yy; }); }
+      /* Pass 2 (2026-11-10): at most two numbers on the picture. With three or more readings (the Wiggers
+         diagram, the cycle hormones) the dots stay and the values are read in the list under the chart. */
+      if(pts.length > 2) crowd = true;
       if(crowd) pts = [];
       pts.forEach(function(q){
         var txt = fmt(q.y) + unitText(unitY(q.k)), w = txt.length * (shapeKey ? 7.3 : 6.6) + 12, y = Math.max(q.cy, lastY + 20); lastY = y;
