@@ -82,16 +82,11 @@
 .ms-skey{display:none;}
 @media (min-width:900px){
   .ms-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;}
-  .ms-skey:not(:empty){display:grid;list-style:none;margin:0;padding:0;gap:8px;align-content:start;}
+  .ms-skey:not(:empty){display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));list-style:none;margin:0;padding:0;gap:6px 18px;align-content:start;}
   .ms-skey li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:center;font:700 15px/1.35 var(--font-ui);}
   .ms-skey li.is-cur{color:var(--cink);}
   .ms-skey li.is-cur .ms-n{background:var(--cink);}
-  .ms-fig-art .hug-model-art{max-width:400px;}
-  .ms-fig-art[data-layout="stages"] .hug-model-art{max-width:560px;}
   .ms-key li:not(.is-cur){display:none;}
-}
-@media (min-width:1100px){
-  .ms-stage:has(.ms-skey:not(:empty)){grid-template-columns:minmax(0,1.6fr) minmax(220px,1fr);align-items:center;}
 }
 .ms-go{display:flex;flex-wrap:wrap;gap:8px;}.ms-go button{min-height:44px;}
 .ms-badge.is-ok{background:#1E7B4F;}
@@ -115,6 +110,18 @@
    the badges stay on it (the DTM figure overflowed a 1280 x 720 stage by its
    legend's height, which made the stage a scroll region with nothing to focus). */
 .ms-page .ls-stage-body .ms-pic{max-width:calc((100cqh - 80px) * var(--ms-ar, 100));margin:0 auto;}
+/* Explore: the drawing uses the whole stage (it sat in a quarter of it,
+   review 2026-11-10). The stage is a column: the drawing's slot takes the
+   height the list of places leaves, and is itself the size container, so the
+   picture grows to the slot's height less what sits under it (--ms-below,
+   measured by the page). */
+.ms-page .ls-stage-body .ms-stage{flex:1 1 auto;align-self:stretch;width:100%;min-height:0;display:flex;flex-direction:column;gap:12px;}
+.ms-page .ls-stage-body .ms-figslot{flex:1 1 auto;min-height:180px;container-type:size;display:flex;align-items:center;justify-content:center;}
+.ms-page .ls-stage-body .ms-figslot > .ms-fig{width:100%;max-height:100%;}
+.ms-page .ls-stage-body .ms-figslot .ms-card{max-width:none;}
+.ms-page .ls-stage-body .ms-figslot .ms-pic{max-width:calc((100cqh - var(--ms-below, 80px)) * var(--ms-ar, 100));}
+.ms-page .ls-stage-body .ms-figslot .ms-fig-art .hug-model-art{max-width:min(100%, calc(100cqh - var(--ms-below, 30px)));}
+.ms-page .ls-stage-body .ms-skey{flex:none;}
 /* Plots use the page's own colors (hug-plot.js themes them), not the white card. */
 .ms-plotfig .ms-card{background:transparent;border:0;padding:0;color:inherit;}
 .ms-plotfig .ms-src{color:inherit;opacity:.85;}
@@ -123,3 +130,35 @@
 .ms-sw-dotbig{width:14px;height:14px;border-radius:50%;background:#1B1B1B;}
 .ms-sw-darrow{height:0;border-top:3px dashed #B5481F;border-radius:0;}
 
+
+/* The five drawn models (2026-11 tool visuals): Rostow's staircase, the
+   epidemiological transition, the world system, gravity and rank-size. */
+.ms-part{transition:opacity .2s;}
+.ms-part.is-dim{opacity:.18;}
+.ms-col.is-cur{fill:#E3EEF0;}
+.ms-note{margin:6px 2px 0;font:500 13px/1.4 var(--font-ui);color:#3F3B35;line-height:1.4;}
+.ms-alt{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:6px;line-height:1.3;}
+.ms-alt .ms-altbtn{min-height:40px;}
+.ms-alt .ms-note{margin:0;flex:1 1 220px;}
+.ms-g-alt,.ms-alt-only{display:none;}
+.ms-fig.is-alt .ms-g-alt{display:inline;}
+.ms-fig.is-alt .ms-g-rule{display:none;}
+.ms-fig.is-alt .ms-alt-only{display:block;}
+.ms-tag.ms-alt-only{border-color:#B5481F;color:#8A3414;}
+/* A drawing that is the answer stays hidden while the student builds it (and in drills). */
+.ms-figslot[data-view="build"]:not(.is-graded) .ms-fig[data-hide] .ms-ans,
+.ms-figslot[data-view="build"]:not(.is-graded) .ms-fig[data-hide] .ms-badge,
+.ms-qfig .ms-fig[data-hide] .ms-ans,.ms-qfig .ms-fig[data-hide] .ms-badge{visibility:hidden;}
+.ms-figslot[data-view="build"] .ms-fig[data-hide] .ms-alt,.ms-qfig .ms-fig[data-hide] .ms-alt{display:none;}
+.ms-sw-farm{background:#B9D99A;border:1px solid #5B564E;}
+.ms-sw-factory{background:#A7ABB3;border:1px solid #5B564E;}
+.ms-sw-service{background:#9CCBEB;border:1px solid #5B564E;}
+.ms-sw-infect{height:0;border-top:4px solid #B5481F;border-radius:0;}
+.ms-sw-chronic{height:0;border-top:4px dashed #094953;border-radius:0;}
+.ms-sw-raw{height:0;border-top:5px solid #8B5A2B;border-radius:0;}
+.ms-sw-goods{height:0;border-top:5px solid #094953;border-radius:0;}
+.ms-sw-town{width:16px;height:16px;border-radius:50%;background:#F2E3C9;border:1.2px solid #5B564E;}
+.ms-sw-band{height:9px;background:#094953;opacity:.85;}
+.ms-sw-ruleline{height:0;border-top:3.5px dashed #094953;border-radius:0;}
+.ms-sw-cbar{width:14px;height:16px;border-radius:0;background:#F2E3C9;border:1.2px solid #5B564E;}
+@media (prefers-reduced-motion:reduce){.ms-part{transition:none;}}
