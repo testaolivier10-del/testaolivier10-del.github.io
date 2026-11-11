@@ -599,7 +599,7 @@
     function drawCursor(){
       var L = c.L.cursor;
       while(L.firstChild) L.removeChild(L.firstChild);
-      if(!cursorOn || cursorX == null) return;
+      if(!cursorOn || cursorX == null){ c.svg.querySelectorAll('text.gr-lbl.gr-under[data-sid]').forEach(function(t){ t.classList.remove('gr-under'); }); return; }
       var px = c.sx(cursorX);
       /* Cursor (visual polish 2026-10): a hairline with a drag handle on top,
          a guide from each reading to the y axis, and a value pill per reading;
@@ -654,6 +654,12 @@
           if(t.getAttribute('transform')){ var cx = +t.getAttribute('x'), cy = +t.getAttribute('y'); r = { x: cx - b.height, y: cy, width: b.height + 2, height: b.width }; }
           var hit = boxes.some(function(tb){ return r.x < tb.x + tb.width && tb.x < r.x + r.width && r.y < tb.y + tb.height && tb.y < r.y + r.height; });
           t.classList.toggle('gr-under', hit);
+        });
+        /* Accuracy check 2 (2026-11-11): a curve's name under a value pill steps back (faint), like a valve
+           label; the pill wears the curve's colour, so which curve it reads stays clear. */
+        c.svg.querySelectorAll('text.gr-lbl[data-sid]').forEach(function(t){
+          var b = t.getBBox();
+          t.classList.toggle('gr-under', boxes.some(function(tb){ return b.x < tb.x + tb.width && tb.x < b.x + b.width && b.y < tb.y + tb.height && tb.y < b.y + b.height; }));
         });
         c.svg.querySelectorAll('.gr-rlabel').forEach(function(t){
           t.removeAttribute('transform');

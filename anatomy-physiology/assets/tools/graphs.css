@@ -289,6 +289,6 @@
 :root[data-theme="dark"] .gr-fig .gr-line.gr-cells{stroke:#E3786C;}
 .gr-rows .gr-none{display:block;}
 .gr-fig .gr-vlabel.gr-under{opacity:.18;}
-.gr-fig .gr-mlabel.gr-under{opacity:.18;}
+.gr-fig .gr-mlabel.gr-under{opacity:.18;} .gr-fig text.gr-lbl[data-sid].gr-under{opacity:.18;}
 .gr-fig .gr-mlabel.gr-gone{opacity:0;}
 .gr-fig .gr-mlabel{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
