@@ -187,3 +187,25 @@
   .ind-plots .ind-plot{min-height:120px;}
   .ind-sgrow{grid-template-columns:96px minmax(0,1fr) 62px;font-size:12px;}
 }
+
+/* Pass 2: the unemployment rate always; another rate card only when the last event changed it. */
+.ind-rates{grid-template-columns:repeat(auto-fit,minmax(150px,220px));justify-content:center;}
+.ind-rate b i{font-style:normal;font-weight:700;font-size:.72em;color:var(--muted);}
+/* four events in view, four behind More events (a phone's band scrolls, so it shows them all) */
+.ind-ev.is-more{display:none;}
+.ind-events.is-open .ind-ev.is-more{display:inline-flex;}
+.ind-evmore{border-style:dashed;color:var(--muted);}
+.ls-phone .ind-ev.is-more{display:inline-flex;}
+.ls-phone .ind-evmore{display:none;}
+/* Prices: the basket is the picture; the charts by year open on a tap */
+.ind-plots[hidden]{display:none !important;}
+.ind-yrs{align-self:center;margin:2px auto 0;min-height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.ind-yrs[aria-expanded="true"]{border-color:var(--cink);color:var(--cink);}
+.ind-yrs:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+/* Jobs: the kinds (frictional, retired ...) are named when an event moves them; a tap names them all */
+.ind-jsvg{cursor:pointer;}
+.ind-sub.is-quiet{display:none;}
+.ind-jsvg.is-named .ind-sub.is-quiet{display:inline;}
+/* Real: no total at the bar ends (the formula under them carries it) */
+.ind-sgrow{grid-template-columns:150px minmax(0,1fr);}
+.ls-phone .ind-sgrow{grid-template-columns:96px minmax(0,1fr);padding-right:8px;}
