@@ -184,8 +184,8 @@
     var lx = x0 + w + 14, lw = W - lx - 8;
     labels.forEach(function(L){
       var nm = L.ask ? '?' : L.H0.name, ds = L.ask ? '' : L.H0.what.split(':')[0];
-      var show = !L.ask && (!o.sel || o.sel === L.z.id || !phone), full = !phone && !L.ask ? L.H0.what.split(': ')[1] || '' : '';
-      out.push('<text class="st-hz-n' + (o.sel === L.z.id ? ' is-sel' : '') + '" x="' + lx + '" y="' + (L.y - (full ? 8 : 2)).toFixed(1) + '">' + esc(nm) + '</text>' + (show ? '<text class="st-hz-d" x="' + lx + '" y="' + (L.y + (phone ? 13 : 9)).toFixed(1) + '">' + esc(phone && ds.length > 22 ? ds.slice(0, 22) + '…' : ds) + '</text>' : '') +
+      var show = !L.ask && (!o.sel || o.sel === L.z.id || !phone), full = !phone && !L.ask && o.sel === L.z.id ? L.H0.what.split(': ')[1] || '' : '';   // pass 2: the long line only for the horizon tapped
+      out.push('<text class="st-hz-n' + (o.sel === L.z.id ? ' is-sel' : '') + '" x="' + lx + '" y="' + (L.y - (full ? 8 : phone ? 2 : 5)).toFixed(1) + '">' + esc(nm) + '</text>' + (show ? '<text class="st-hz-d" x="' + lx + '" y="' + (L.y + (phone ? 13 : full ? 9 : 12)).toFixed(1) + '">' + esc(phone && ds.length > 22 ? ds.slice(0, 22) + '…' : ds) + '</text>' : '') +
         (full ? '<text class="st-hz-f" x="' + lx + '" y="' + (L.y + 26).toFixed(1) + '">' + esc(full.length > 58 ? full.slice(0, 57) + '…' : full) + '</text>' : ''));
       out.push('<path class="st-hz-tick" d="M' + (x0 + w) + ' ' + L.y.toFixed(1) + ' h10"/>');
     });
@@ -213,10 +213,10 @@
       '<div class="st-ctl">' +
         '<div class="st-views ls-scroll" role="group" aria-label="View"><button type="button" class="tchip st-view" data-v="triangle" aria-pressed="true">Texture triangle</button><button type="button" class="tchip st-view" data-v="profile" aria-pressed="false">Soil horizons</button></div>' +
         '<div class="st-sl"></div>' +
-        '<div class="st-presets ls-scroll" role="group" aria-label="Example soils"><button type="button" class="tchip st-pre" data-p="90,5,5">Beach sand</button><button type="button" class="tchip st-pre" data-p="40,40,20">Garden loam</button><button type="button" class="tchip st-pre" data-p="10,30,60">Pottery clay</button><button type="button" class="tchip st-pre" data-p="15,75,10">River silt</button></div>' +
       '</div>' +
       '<div class="st-say"></div>' +
-      T.moreHtml('<p class="bt-small">Particle sizes: sand 0.05 to 2 mm, silt 0.002 to 0.05 mm, clay under 0.002 mm. Gravel (over 2 mm) and organic matter are left out: the percents are of the mineral fine earth only.</p>', 'particle sizes') +
+      // pass 2: the example soils wait under More; dragging the point and the three sliders are the main way in
+      T.moreHtml('<div class="st-lbl ls-lbl">Example soils</div><div class="st-presets ls-scroll" role="group" aria-label="Example soils"><button type="button" class="tchip st-pre" data-p="90,5,5">Beach sand</button><button type="button" class="tchip st-pre" data-p="40,40,20">Garden loam</button><button type="button" class="tchip st-pre" data-p="10,30,60">Pottery clay</button><button type="button" class="tchip st-pre" data-p="15,75,10">River silt</button></div><p class="bt-small">Particle sizes: sand 0.05 to 2 mm, silt 0.002 to 0.05 mm, clay under 0.002 mm. Gravel (over 2 mm) and organic matter are left out: the percents are of the mineral fine earth only.</p>', 'particle sizes') +
       '<div class="st-nums"></div><p class="sr-only st-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.st-live'));
     var cue = T.cue('Drag the point on the triangle, or use the sliders.');
@@ -338,15 +338,15 @@
       nums(w);
       if(LS){
         LS.caption('<b>' + esc(w.head) + '</b>', 'explore');
-        LS.pills(st.view === 'triangle' ? [{ k: 'Class', html: esc(S.nameOf(w.id)), tone: 'accent' }] : [], 'left', 'explore');
-        LS.pills(st.view === 'triangle' ? [{ k: 'Sum', html: (st.pt[0] + st.pt[1] + st.pt[2]) + '%', tone: 'good' }] : [], 'right', 'explore');
+        // pass 2: the class is named beside its sample on the picture; the sum is always 100%
+        LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
         LS.root.querySelectorAll('.env-ls-why details.bt-why').forEach(function(d){ d.open = true; });
       }
       if(announce) say(w.head);
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.st-fig')], dock: [$('.st-ctl')], primary: [sl.sand.el, sl.silt.el, sl.clay.el], primaryLoose: true, why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Particle sizes' });
+      T.studioPane(pane, s, { stage: [$('.st-fig')], dock: [$('.st-ctl')], primary: [sl.sand.el, sl.silt.el, sl.clay.el], primaryLoose: true, why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Example soils and particle sizes' });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       render();
