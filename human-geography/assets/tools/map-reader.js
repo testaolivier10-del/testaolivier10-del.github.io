@@ -87,7 +87,8 @@
     host.innerHTML = '<section class="bt-problem hug-mr-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Map reader</h2>' +
       '<div class="hug-mr-stage"><div class="hug-mr-fig"><p class="bt-loading">Loading the map…</p></div><p class="hug-mr-read" aria-live="polite"></p></div>' +
       '<div class="hug-mr-ctl">' +
-        '<div class="hug-mr-types" role="group" aria-label="Map type">' + TYPE_ORDER.map(function(k){ return '<button type="button" class="tchip hug-mr-type" data-t="' + k + '" aria-pressed="false">' + esc(R.KINDS[k].short) + '</button>'; }).join('') + '</div>' +
+        // Map type is a select (pass 3, judge b: six chips plus two segments).
+        '<div class="hug-mr-typeslot"></div>' +
         '<div class="hug-mr-reads tseg" role="group" aria-label="Read the map">' + [['legend', '1 Legend'], ['pattern', '2 Pattern'], ['limit', '3 Limit']].map(function(x){ return '<button type="button" class="hug-mr-rd" data-r="' + x[0] + '" aria-pressed="false">' + x[1] + '</button>'; }).join('') + '</div>' +
         '<div class="hug-mr-breaks tseg" role="group" aria-label="Class breaks" hidden>' + [['even', 'Even classes'], ['lumped', 'Uneven'], ['totals', 'Totals']].map(function(x){ return '<button type="button" class="hug-mr-br" data-b="' + x[0] + '" aria-pressed="false">' + x[1] + '</button>'; }).join('') + '</div>' +
       '</div>' +
@@ -97,6 +98,8 @@
     var cue = T.cue('Pick a map type, then read it: legend, pattern, limit.');
     $('.hug-mr-ctl').insertBefore(cue.el, $('.hug-mr-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
+    var tsel = T.choiceSelect({ label: 'Map type', options: TYPE_ORDER.map(function(k){ return { value: k, label: R.KINDS[k].short }; }), value: st.type, onChange: function(v){ act(); st.type = v; st.sel = null; draw(); } });
+    $('.hug-mr-typeslot').appendChild(tsel.el);
     var sel = T.choiceSelect({ label: 'Base map', options: exploreBases.map(function(b){ return { value: b, label: BASE_NAMES[b] }; }), value: st.base, onChange: function(v){ st.base = v; st.sel = null; act(); draw(); } });
     $('.hug-mr-basesel').appendChild(sel.el);
 
@@ -124,7 +127,7 @@
       // A new map starts at its top, whatever the stage was scrolled to.
       for(var el = $('.hug-mr-fig'); el && el !== document.body; el = el.parentElement){ if(el.scrollTop) el.scrollTop = 0; }
       setTimeout(function(){ for(var el2 = $('.hug-mr-fig'); el2 && el2 !== document.body; el2 = el2.parentElement){ if(el2.scrollTop) el2.scrollTop = 0; } }, 60);
-      $$('.hug-mr-type').forEach(function(b){ var on = b.getAttribute('data-t') === st.type; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
+      tsel.set(st.type);
       $$('.hug-mr-rd').forEach(function(b){ var on = b.getAttribute('data-r') === st.read; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       $$('.hug-mr-br').forEach(function(b){ var on = b.getAttribute('data-b') === st.breaks; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       $$('.hug-mr-breaks').forEach(function(b){ b.hidden = st.type !== 'choropleth'; });

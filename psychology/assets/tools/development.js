@@ -585,9 +585,9 @@
       if(lens === 'life'){
         var a = age(), pg = D.stageAt(D.PIAGET, a), er = D.stageAt(D.ERIKSON, a);
         head = 'Age ' + ageWords(a) + ': ' + (a < 20 ? pg.name.toLowerCase() + ' thinking' : 'adult thinking') + ', ' + er.name.toLowerCase() + '.';
-        sub = a < 20 ? pg.hallmark + ' Erikson\'s question: "' + er.q + '"' : 'Erikson\'s question: "' + er.q + '"';
+        // One line on the stage; what this age can do and Erikson's question open in Explanation (pass 3).
         pills = [{ k: a < 20 ? 'Piaget' : 'Thinking', html: a < 20 ? pg.short : 'Adult', tone: 'readout' }]; pillsR = [{ k: 'Erikson', html: er.short, tone: 'accent' }];
-        why = lifeWhy(a);
+        why = '<p><b>At ' + esc(ageWords(a)) + '.</b> ' + (a < 20 ? esc(pg.hallmark) + ' ' : '') + 'Erikson\'s question: "' + esc(er.q) + '"</p>' + lifeWhy(a);
       } else if(lens === 'attach'){
         var A = D.byId(D.ATTACH, style);
         head = A.name + ' attachment.'; sub = 'When the parent returns, the child ' + A.back + '.';

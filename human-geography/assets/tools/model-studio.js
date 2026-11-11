@@ -220,12 +220,20 @@
         return '<li class="' + (i === upto - 1 ? 'is-cur' : '') + '"><span class="ms-n" aria-hidden="true">' + (i + 1) + '</span><span><b>' + esc(Mdl.slotName(model, i)) + ':</b> ' + piece(i) + (i === upto - 1 && why(i) ? '<span class="ms-why">' + esc(why(i)) + '</span>' : '') + '</span></li>';
       }).join('');
       R.back.disabled = upto === 0; R.next.disabled = upto >= n;
-      R.next.textContent = upto === 0 ? 'Start: the first place' : upto >= n ? 'All places shown' : 'Next place';
+      // Stage models count stages, not places (pass 3, judge b).
+      var noun = /^(dtm|epidemiological|rostow)$/.test(ctx.id) ? 'stage' : 'place';
+      R.next.textContent = upto === 0 ? 'Start: the first ' + noun : upto >= n ? 'All ' + noun + 's shown' : 'Next ' + noun;
+      // Malthus: the figure's legend says only "Solid line" and "Dashed line" (Build it must not name them); in
+      // See it, a line is named once its place is shown.
+      if(ctx.id === 'malthus' && figEl) figEl.querySelectorAll('.ms-legend li').forEach(function(li){
+        var t = li.lastChild, base = t && t.nodeType === 3 ? t.nodeValue.replace(/:.*$/, '') : '', i = base === 'Solid line' ? 0 : base === 'Dashed line' ? 1 : -1;
+        if(i > -1) t.nodeValue = base + (view === 'see' && upto > i ? ': ' + piece(i).replace(/<[^>]+>/g, '') : '');
+      });
       mark(figEl, c, view === 'see' && upto ? { upto: upto } : null);
       if(view === 'see') caption(c ? '<b>' + esc(Mdl.slotName(model, c - 1)) + ': ' + piece(c - 1) + '.</b> ' + esc(why(c - 1)) : '<b>' + esc(ctx.name) + '.</b> ' + esc(firstSentence(ctx.claim)));
       // The drill offer appears once the whole model has been seen (or built and checked).
       R.go.hidden = view === 'see' ? upto < n : !graded;
-      if(LS) LS.pills(upto ? [{ html: upto + ' of ' + n + ' places', tone: 'readout' }] : [{ html: esc(ctx.unit), tone: 'ghost' }], 'left', 'explore');
+      if(LS) LS.pills(upto ? [{ html: upto + ' of ' + n + ' ' + noun + 's', tone: 'readout' }] : [{ html: esc(ctx.unit), tone: 'ghost' }], 'left', 'explore');
     }
     function buildPane(){
       var bm = MS.buildModel(M.rng(7 + list.indexOf(ctx)), ctx);
@@ -306,7 +314,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       paintSee();
-      if(s.mode() === 'explore') T.hintSlot(s, R.next, 'Start here: see the model built one place at a time');
+      if(s.mode() === 'explore') T.hintSlot(s, R.next, 'Start here: see the model built one part at a time');
     }
     pickModel(ctx.id);
     return { studio: studio };

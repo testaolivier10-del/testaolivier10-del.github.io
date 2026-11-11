@@ -21,8 +21,9 @@
 .dl-chips{display:flex;gap:8px;flex-wrap:wrap;}
 .dl-lbl{margin:0 0 6px;font:700 var(--ls-s,14px)/1.3 var(--font-ui);color:var(--muted);}
 .ls-root .dl-chips .tchip[aria-pressed=true],.dl-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--paper);}
-.dl-play{display:flex;flex-direction:column;gap:10px;align-items:stretch;}
-.dl-play .dl-go{align-self:flex-start;min-width:110px;min-height:44px;}
+.dl-play{position:relative;}
+.dl-play .bt-slider>label{display:flex;align-items:center;min-height:44px;}
+.dl-play .dl-go{position:absolute;top:0;right:0;min-width:110px;min-height:44px;}
 .dl-stepslot{width:100%;}
 .dl-tipslot{height:52px;}
 .dl-prov{fill:var(--dl-land);stroke:var(--dl-line);stroke-width:1.2;stroke-linejoin:round;}

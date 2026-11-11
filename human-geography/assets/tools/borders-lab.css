@@ -22,7 +22,9 @@
 .bl-qfig{margin:0;} .bl-qfig .bl-svg{height:auto;}
 .bl-grp[hidden]{display:none;}
 .bl-grp{display:flex;flex-direction:column;gap:10px;}
-.bl-grp .bl-go{align-self:flex-start;min-height:44px;}
+.bl-yearrow{position:relative;}
+.bl-yearrow .bt-slider>label{display:flex;align-items:center;min-height:44px;}
+.bl-grp .bl-go{position:absolute;top:0;right:0;min-height:44px;padding-left:20px;padding-right:20px;}
 .bl-ctl{display:flex;flex-direction:column;gap:12px;}
 .bl-chips{display:flex;gap:8px;flex-wrap:wrap;}
 .bl-lbl{margin:0 0 6px;font:700 var(--ls-s,14px)/1.3 var(--font-ui);color:var(--muted);}

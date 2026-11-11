@@ -73,6 +73,15 @@
     return d + 'Z';
   }
   function hill(P, x, y, k){ var p = P(x, y), s = Math.max(7, 11 * k); return '<path class="bl-hill" d="M' + n1(p[0] - s) + ' ' + n1(p[1] + s * 0.6) + 'L' + p[0] + ' ' + n1(p[1] - s * 0.8) + 'L' + n1(p[0] + s) + ' ' + n1(p[1] + s * 0.6) + 'Z"/>'; }
+  // The ground away from the border: a few woods and low hills, so the borderland reads as land (pass 3,
+  // judge b). Placed clear of the towns and of the border band (y 110 to 190), so no type seems to follow them.
+  var WOODS = [[262, 98], [432, 208], [584, 262], [300, 286], [264, 20]], HILLS = [[572, 24], [588, 36], [556, 36], [16, 92], [32, 104]];
+  function ground(P, k){
+    var o = '', r = Math.max(3.2, 4.6 * k);
+    WOODS.forEach(function(w){ [[0, 0], [-1.6, 0.9], [1.5, 1], [0.1, 1.9], [-0.4, -1.4]].forEach(function(d){ var p = P(w[0] + d[0] * 6, w[1] + d[1] * 5); o += '<circle class="bl-wood" cx="' + p[0] + '" cy="' + p[1] + '" r="' + n1(r) + '"/>'; }); });
+    HILLS.forEach(function(h){ o += hill(P, h[0], h[1], k * 0.9); });
+    return '<g class="bl-ground" aria-hidden="true">' + o + '</g>';
+  }
   // A town: two or three small houses.
   function town(P, t, i, k, cls){
     var p = P(t[0], t[1]), s = Math.max(4.2, 6 * k), o = '';
@@ -87,7 +96,7 @@
     var x0 = P(0, 0), x1 = P(600, 300), cid = 'bl-clip-' + (landSvg.n = (landSvg.n || 0) + 1);
     out.push('<clipPath id="' + cid + '"><rect x="' + x0[0] + '" y="' + x0[1] + '" width="' + n1(x1[0] - x0[0]) + '" height="' + n1(x1[1] - x0[1]) + '" rx="10"/></clipPath>');
     out.push('<rect class="bl-land" x="' + x0[0] + '" y="' + x0[1] + '" width="' + n1(x1[0] - x0[0]) + '" height="' + n1(x1[1] - x0[1]) + '" rx="10"/>');
-    var g = [], settled = year >= f.settled;
+    var g = [ground(P, k)], settled = year >= f.settled;
     // Where each people lives, once they are there.
     if(f.extra === 'consequent' && settled){
       var top = [], bot = [];
@@ -427,8 +436,9 @@
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem bl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Borders lab</h2>' +
       '<div class="bl-fig"><div class="bl-pic"><svg class="bl-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg><div class="bl-realbox" hidden></div></div><div class="bl-leg"></div></div>' +
-      '<div class="bl-ctl">' + chips('bl-scene', 'Show', SCENE_LABEL) +
-        '<div class="bl-grp bl-grp-types">' + chips('bl-bt', 'Boundary type', BT_ORDER.map(function(k){ return [k, B.BTYPES[k].name.replace(' boundary', '')]; })) + '<div class="bl-yearslot"></div><button type="button" class="btn-press sm bl-go">Play the years</button></div>' +
+      // Scene and boundary type are selects, and Play sits on the year row (pass 3, judge b: 13 controls, Play below the fold).
+      '<div class="bl-ctl"><div class="bl-sceneslot"></div>' +
+        '<div class="bl-grp bl-grp-types"><div class="bl-btslot"></div><div class="bl-yearrow"><div class="bl-yearslot"></div><button type="button" class="btn-press sm bl-go">Play</button></div></div>' +
         '<div class="bl-grp bl-grp-shapes">' + chips('bl-sh', 'Shape', B.SHAPE_IDS.map(function(k){ return [k, B.SHAPES[k].name]; })) + '</div>' +
         '<div class="bl-grp bl-grp-forces">' + chips('bl-fo', 'Tap to add a force', FSC.map(function(x, i){ return [String(i), x.short]; })) + '</div>' +
         '<div class="bl-grp bl-grp-sea"><div class="bl-nmslot"></div></div>' +
@@ -438,26 +448,30 @@
     var cue = T.cue('Pick a boundary type, then play the years: does the border come before the towns or after?');
     $('.bl-ctl').insertBefore(cue.el, $('.bl-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
+    var sScene = T.choiceSelect({ label: 'Show', options: SCENE_LABEL.map(function(x){ return { value: x[0], label: x[1] }; }), value: scene, onChange: function(v){ act(); scene = v; stopT(); sync(); draw(); words(); say(T.sayHead($('.bl-say')).replace(/<[^>]+>/g, '')); } });
+    sScene.el.classList.add('bl-scene');
+    $('.bl-sceneslot').appendChild(sScene.el);
+    var sBt = T.choiceSelect({ label: 'Boundary type', options: BT_ORDER.map(function(k){ return { value: k, label: B.BTYPES[k].name.replace(' boundary', '') }; }), value: bt, onChange: function(v){ act(); bt = v; stopT(); year = 1950; sYear.set(year); sync(); draw(); words(); say(T.sayHead($('.bl-say')).replace(/<[^>]+>/g, '')); } });
+    sBt.el.classList.add('bl-bt');
+    $('.bl-btslot').appendChild(sBt.el);
     var sYear = T.slider({ label: 'Year', min: Y0, max: Y1, step: 10, value: year, onInput: function(v){ act(); stopT(); year = v; draw(); words(); } });
     $('.bl-yearslot').appendChild(sYear.el);
     var sNm = T.slider({ label: 'Ship\'s distance from the baseline', min: 0, max: 260, step: 2, value: nm, unit: 'nautical miles', onInput: function(v){ act(); nm = v; draw(); words(); say(B.zoneAt(nm).name); } });
     $('.bl-nmslot').appendChild(sNm.el);
-    function stopT(){ if(timer){ clearInterval(timer); timer = null; } var b = $('.bl-go'); if(b) b.textContent = 'Play the years'; }
+    function stopT(){ if(timer){ clearInterval(timer); timer = null; } var b = $('.bl-go'); if(b) b.textContent = 'Play'; }
     $('.bl-go').addEventListener('click', function(){
       act();
       if(timer){ stopT(); return; }
       if(T.reduced()){ year = 1950; sYear.set(year); draw(); words(); return; }
       if(year >= 1950) year = Y0;
       $('.bl-go').textContent = 'Pause';
-      timer = setInterval(function(){ year += 5; if(year >= 1950){ year = 1950; stopT(); } sYear.set(year); draw(); if(year % 50 === 0 || !timer) words(); }, 70);
+      timer = setInterval(function(){ year += 5; if(year >= 1950){ year = 1950; stopT(); } sYear.set(year); draw(); if(year % 50 === 0 || !timer) words(); else if(LS) LS.pills([{ k: 'Year', html: String(year), tone: 'readout' }], 'left', 'explore'); }, 70);
     });
     function onClick(e){
       var b = e.target.closest('.bl-row button'); if(!b || !(LS ? LS.root : host).contains(b)) return;
       var row = b.closest('.bl-row'), k = b.getAttribute('data-k');
       act();
-      if(row.classList.contains('bl-scene')){ scene = k; stopT(); }
-      else if(row.classList.contains('bl-bt')){ bt = k; stopT(); year = 1950; sYear.set(year); }
-      else if(row.classList.contains('bl-sh')) shape = k;
+      if(row.classList.contains('bl-sh')) shape = k;
       else if(row.classList.contains('bl-fo')){ var i = +k, at = on.indexOf(i); if(at > -1) on.splice(at, 1); else on.push(i); }
       else if(row.classList.contains('bl-re')) real = k;
       sync(); draw(); words(); say(T.sayHead($('.bl-say')).replace(/<[^>]+>/g, ''));
@@ -465,7 +479,8 @@
     host.addEventListener('click', onClick);
     function sync(){
       var root = LS ? LS.root : host;
-      var single = { 'bl-scene': scene, 'bl-bt': bt, 'bl-sh': shape, 'bl-re': real };
+      var single = { 'bl-sh': shape, 'bl-re': real };
+      sScene.set(scene); sBt.set(bt);
       Object.keys(single).forEach(function(cls){ root.querySelectorAll('.' + cls + ' button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === single[cls])); }); });
       root.querySelectorAll('.bl-fo button').forEach(function(b){ b.setAttribute('aria-pressed', String(on.indexOf(+b.getAttribute('data-k')) > -1)); });
       ['types', 'shapes', 'forces', 'sea', 'real'].forEach(function(k){ var el = $('.bl-grp-' + k); if(el) el.hidden = k !== scene; });

@@ -467,7 +467,8 @@
       if(sit === 'conform'){
         var n = nNow(), v = D.aschPct(n, partner);
         head = n === 0 ? 'Alone, almost no one gets the lines wrong.' : partner ? 'One ally breaks the spell.' : n === 1 ? 'One other person barely matters.' : n <= 3 ? 'Each extra voice adds pressure, up to about three.' : 'More than three adds little.';
-        sub = line() + (n > 0 && !partner ? ' The answer is obvious, so this is mostly normative influence.' : '');
+        // The percent is on the pill and the bar already; the caption adds the why (pass 3: no repeats, under 40 words).
+        sub = n > 0 && !partner ? 'The answer is obvious, so this is mostly normative influence.' : '';
         pl = [{ k: 'Wrong answers first', html: n === 0 ? 'none' : SIZE_LAB[sizeI], tone: 'readout' }]; pr = [{ k: 'Went along', html: pct(v), tone: v > 20 ? 'warn' : 'good' }];
         why = conformWhy();
       } else if(sit === 'obey'){
@@ -478,7 +479,7 @@
       } else if(sit === 'bystand'){
         var i = D.DARLEY.others.indexOf(others);
         head = others === 0 ? 'Alone, the responsibility is all yours.' : 'The more people who might help, the slower each one acts.';
-        sub = line() + ' By the end of the study, ' + D.DARLEY.eventually[i] + '% had reported it.';
+        sub = 'By the end of the study, ' + D.DARLEY.eventually[i] + '% had reported it.';
         pl = [{ k: 'Others hearing', html: String(others), tone: 'readout' }]; pr = [{ k: 'Helped in time', html: D.DARLEY.beforeEnd[i] + '%', tone: D.DARLEY.beforeEnd[i] > 60 ? 'good' : 'warn' }];
         why = byWhy();
       } else {
