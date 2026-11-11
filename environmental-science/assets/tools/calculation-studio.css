@@ -15,7 +15,17 @@
 
 /* ------------------------------------------------------------- stage */
 .cs-stage{display:flex;flex-direction:column;gap:clamp(10px,2.4vh,22px);min-height:0;}
-.ls-root .cs-stage{flex:1;justify-content:center;max-width:980px;width:100%;margin:0 auto;}
+.ls-root .cs-stage{flex:1;justify-content:safe center;max-width:980px;width:100%;margin:0 auto;container-type:inline-size;}
+/* Nothing in the stage shrinks below its content: a long chain pushes the tray down (the stage scrolls), never
+   over it (tool review 2026-11: with Explanation open the chain overlapped the question and the tray). */
+.cs-stage > *{flex-shrink:0;}
+/* A narrow stage (Explanation open beside it, a tablet): the picture goes above the question. */
+@container (max-width:560px){
+  .ls-root .cs-head{flex-direction:column;align-items:stretch;gap:8px;}
+  .ls-root .cs-scene{width:100%;}
+  .ls-root .cs-scene-svg{height:130px;}
+  .ls-root .cs-q{font-size:19px;}
+}
 /* In the studio the pills say Left and Goal: no second copy on the stage. */
 .ls-root .cs-goal{display:none;}
 @media (min-width:1000px){
@@ -30,7 +40,7 @@
 }
 .cs-head{display:flex;align-items:center;gap:16px;}
 .cs-scene{flex:0 0 auto;width:clamp(120px,22vw,220px);}
-.cs-scene-svg{display:block;width:100%;height:auto;border-radius:14px;}
+.cs-scene-svg{display:block;width:100%;height:auto;border-radius:14px;background:var(--cs-sky);}
 .cs-ask{min-width:0;display:grid;gap:4px;}
 .cs-title{margin:0;font:800 calc(13px * var(--ls-scale,1)) var(--font-ui);color:var(--muted);letter-spacing:.02em;}
 .cs-q{margin:0;font:800 calc(19px * var(--ls-scale,1))/1.3 var(--font-ui);color:var(--ink);}
@@ -196,7 +206,7 @@
   /* the scene is a picture, not a thumbnail: full width above the question */
   .cs-head{flex-direction:column;align-items:stretch;gap:6px;}
   .cs-scene{width:100%;}
-  .cs-scene-svg{width:100%;height:96px;}
+  .cs-scene-svg{width:100%;height:120px;}
   .cs-stage{gap:10px;}
   .cs-tray-h{font-size:12.5px;margin-bottom:6px;}
   .cs-tile .cs-frac{font-size:13px;}
