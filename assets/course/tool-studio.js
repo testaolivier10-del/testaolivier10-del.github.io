@@ -76,7 +76,8 @@
      s.hint({ target, text, key })  first-run hint, once per tool per device: one
                                     short line in the layout next to the target (never
                                     over anything) and a ring inside the target's box;
-                                    gone after the first action
+                                    gone after the first action; above: true puts
+                                    the line just before the target's row
      s.suspend(on)                  hide the studio and give the page its
                                     chrome back (an error)
      s.lock(html | el | false)      a Premium tool for someone without the pass: the bar
@@ -1308,7 +1309,8 @@
         if(block && !COACH_ROW.test(p.tagName) && !p.closest('svg')) break;
         node = p;
       }
-      return { parent: node.parentElement || stop, before: node.nextSibling };
+      // o.above: the line goes just before the target's row (a target low in a list, under a sticky band).
+      return { parent: node.parentElement || stop, before: o.above ? node : node.nextSibling };
     }
     function put(){
       var at = spot();

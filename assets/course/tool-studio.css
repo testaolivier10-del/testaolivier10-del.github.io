@@ -234,6 +234,8 @@ html.ls-lock{overflow:hidden;}
 
 /* chip overflow: the first few chips, the one that is on, and More (tool-studio.js "Chip overflow") */
 .ls-chip-off{display:none !important;}
+/* A folded row is short now: it wraps instead of scrolling sideways, so More is never cut off at a phone's edge. */
+.ls-root .ls-chips-folded,.ls-root .ls-chips-open{flex-wrap:wrap !important;overflow-x:visible !important;margin-right:0;-webkit-mask-image:none !important;mask-image:none !important;}
 .ls-root .ls-more-chip{background:transparent;box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent);color:var(--cink);font-weight:800;}
 .ls-root .ls-more-chip[aria-expanded="true"]{box-shadow:inset 0 0 0 1.5px var(--line, color-mix(in srgb, var(--ink) 20%, transparent));color:var(--ink-soft, var(--ink));}
 
