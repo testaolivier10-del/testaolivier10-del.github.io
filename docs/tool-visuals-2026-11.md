@@ -57,16 +57,11 @@ span filled in (one dot at the global and national scales, "the spread inside it
 scales on the same outline (global and regional, national and local) fades one into the other in place.
 `scale-lab.js` (rangeHtml, the ghost image), `scale-lab.css`.
 
-## Next (in this order unless the owner says otherwise)
+## Full review and build order
 
-1. Human Geography, from the purpose review above: Model Studio's five blank models and stage size (mockups
-   first), then the borders lab's three scenes. The scale lab is done.
-2. Every other course, one at a time. From the 2026-11-10 screenshots (all 145 tools, phone and desktop), the
-   pictures that are blocks, boxes or bare charts: macro indicators lab and multiplier lab; bio Hardy-Weinberg;
-   chem ICE table and particle diagrams; physics collision lab and rotation lab; A&P pathways, predict, feedback
-   loops, calculators; ochem reagent roadmap and reaction predictor; NREMT flowcharts and skill sheets. Psychology,
-   precalculus, calculus BC, microeconomics and half of statistics were screenshotted but not yet judged.
-3. Rebuild candidates already written up in `docs/tool-audit-2026-11.md` fit here.
+All 145 tools reviewed 2026-11-10: `docs/tool-review/README.md` (totals, redesign list, build order) and one file
+per course beside it. Human Geography left to do: Model Studio's five blank models and stage size (mockups first),
+the borders lab's three scenes.
 
 ## How to look at every tool
 
