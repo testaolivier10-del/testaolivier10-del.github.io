@@ -204,8 +204,7 @@
       }
       if(LS){
         LS.caption(T.sayHead($('.im-say')), 'explore');
-        LS.pills([{ k: '∫u dv', html: n3(Pp.udv), tone: 'readout' }, { k: '∫v du', html: n3(Pp.vdu), tone: 'ghost' }], 'left', 'explore');
-        LS.pills([{ k: 'uv', html: n3(Pp.uvb - Pp.uva), tone: 'accent' }], 'right', 'explore');
+        LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');   // pass 2: the three areas are labeled inside the uv picture
       }
     }
     /* ----- partial fractions */
