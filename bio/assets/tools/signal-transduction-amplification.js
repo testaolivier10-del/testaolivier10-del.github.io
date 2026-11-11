@@ -34,8 +34,8 @@
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card sg-card" aria-labelledby="sg-h"><h2 id="sg-h">The model</h2>' +
-      '<p class="bt-first">Press Play to send epinephrine down the cascade, then tap a row with a ⊘ to block that step.</p>' +
-      '<div class="bt-fig sg-stagefig bt-hero"></div><p class="bt-small">Tap a row with a ⊘ to block that step (tap the G proteins to cycle normal, locked on, locked off). Each row draws 3 more molecules for every 10 times as many.</p>' +
+      '<p class="bt-first">Press Play, then tap any step to see its count or block it.</p>' +
+      '<div class="bt-fig sg-stagefig bt-hero"></div><p class="bt-small">Tap a step to bring it into focus: its name, its count and how much it multiplies the step above. Steps marked ⊘ can be blocked with a drug from the focused step (the G proteins cycle normal, locked on, locked off). Each row draws 3 more molecules for every 10 times as many.</p>' +
       '<div class="os-play"><button type="button" class="btn-press sm" data-a="sweep">Play 0 to 300 s</button><p class="os-clock sg-clock" aria-hidden="true"></p></div>' +
       '<p class="os-why sg-why" role="status" aria-live="polite"></p>' +
       '<div class="bt-controls" data-primary="2"></div>' +
@@ -206,34 +206,44 @@
       // rows
       ids.forEach(function(id, i){
         var top = id === 'R' ? 26 : ROWS[id], tap = TAP[id], lab = id === 'R' ? 34 : top + 12, body = '';
+        var on = id === focus;
         if(id !== 'R') body += '<rect class="sg-row" x="4" y="' + top + '" width="' + (W - 8) + '" height="44" rx="8"/>';
         else body += '<rect class="sg-row" x="4" y="22" width="' + (W - 8) + '" height="44" rx="8"/>';
-        body += rows[id].svg;
-        body += '<text class="sg-n" x="12" y="' + lab + '">' + esc(SHORT[id]) + (tap ? ' <tspan class="sg-tapmark">' + (tags[id] ? '⊘ ' + esc(tags[id]) : '⊘') + '</tspan>' : '') + '</text>';
-        body += '<text class="sg-v" x="' + (W - 12) + '" y="' + lab + '" text-anchor="end">' + fmt(a[id]) + '</text>';
+        body += '<g class="sg-mols">' + rows[id].svg + '</g>';
+        // one step in focus (pass 2, 2026-11-10): only it carries its name and count; a blocked step keeps its tag
+        if(on) body += '<text class="sg-n" x="12" y="' + lab + '">' + esc(SHORT[id]) + '<tspan class="sg-v" dx="8">' + fmt(a[id]) + '</tspan></text>';
+        else if(tags[id]) body += '<text class="sg-n sg-tapmark" x="12" y="' + lab + '">⊘ ' + esc(tags[id]) + '</text>';
         // the antagonist sits on the receptors that epinephrine cannot reach (the faint ones)
         if(id === 'R' && st.antagonist){ var nb = Math.ceil(kOf(a.R) - 1e-6), mt = Math.max(nb, Math.ceil(kOf(P.Rtot))); for(var q = nb; q < mt; q++) body += '<rect class="sgs-ant" x="' + f1(CX + (q - (mt - 1) / 2) * SP - 5) + '" y="' + (YR - 18) + '" width="10" height="6" rx="2"/>'; }
         if(id === 'PKA' && st.pka) body += '<path class="sgs-ant" d="' + hexP(CX + rows[id].hw + 4, rowY(id), 5, 0) + '"/>';
         if(stopAt === id) body += '<path class="sg-stop" d="M20 ' + (rowY(id) + (id === 'R' ? 18 : 15)) + 'H' + (W - 20) + '"/>';
-        if(tap) s.push('<g class="sg-tap" data-tap="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(stageOf(id).short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Tap to change the G protein.' : tags[id] ? 'Tap to remove the drug.' : 'Tap to block this step.')) + '">' + body + '</g>');
-        else s.push('<g>' + body + '</g>');
+        if(on && tap){
+          var bl = id === 'G' ? (st.gprotein === 'normal' ? '⊘ Lock' : st.gprotein === 'on' ? 'Locked on ▸' : 'Locked off ▸') : tags[id] ? 'Remove drug' : '⊘ Block', bw = bl.length * 6.6 + 18;
+          body += '<g class="sg-blk" data-blk="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(stageOf(id).short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Change the G protein.' : tags[id] ? 'Remove the drug.' : 'Block this step.')) + '"><rect x="' + f1(W - 10 - bw) + '" y="' + (lab - 13) + '" width="' + f1(bw) + '" height="19" rx="9.5"/><text x="' + f1(W - 10 - bw / 2) + '" y="' + (lab + 1) + '" text-anchor="middle">' + esc(bl) + '</text></g>';
+        }
+        s.push('<g class="sg-tap' + (on ? ' on' : '') + (tags[id] ? ' blocked' : '') + '" data-tap="' + id + '" role="button" tabindex="0" aria-current="' + on + '" aria-label="' + esc(stageOf(id).short + ': ' + fmt(a[id]) + (tags[id] ? ' (' + tags[id] + ')' : '') + (on ? '. In focus.' : '. Tap to focus this step.')) + '">' + body + '</g>');
         if(i < ids.length - 1){
           var g = gainText(a, i), gy = ROWS[ids[i + 1]] - 4;
           s.push('<path class="sg-chev' + (g.amp ? ' amp' : '') + '" d="M' + 17 + ' ' + (gy - 5) + 'l5 4 5-4"/>');
-          if(g.t) s.push('<text class="sg-gain' + (g.amp ? ' amp' : '') + '" x="32" y="' + gy + '">' + esc(g.t) + '</text>');
+          if(g.t && ids[i + 1] === focus) s.push('<text class="sg-gain' + (g.amp ? ' amp' : '') + '" x="32" y="' + gy + '">' + esc(g.t) + '</text>');
         }
       });
       // glycogen: the granule the glucose comes off
       var br = '', gy2 = 504;
       [[0, 0], [-9, -5], [9, -5], [-14, 4], [14, 5], [-5, 9], [6, 10], [0, -10], [-18, -3], [19, -3], [-22, 6], [22, 7]].forEach(function(q){ br += '<circle cx="' + (CX + q[0]) + '" cy="' + (gy2 + q[1]) + '" r="4.6"/>'; });
-      s.push('<path class="sg-chev" d="M' + (CX - 5) + ' 486l5 -4 5 4"/><g class="sgs-gly">' + br + '</g><text class="sgs-name" x="' + (CX + 34) + '" y="' + (gy2 + 4) + '">glycogen (glucose units come off it)</text>');
-      s.push('<text class="sg-key" x="12" y="' + (FH - 10) + '">Drawn on a powers-of-ten scale: 3 more molecules in a row = 10 times as many.</text>');
+      s.push('<path class="sg-chev" d="M' + (CX - 5) + ' 486l5 -4 5 4"/><g class="sgs-gly">' + br + '</g><text class="sgs-name" x="' + (CX + 34) + '" y="' + (gy2 + 4) + '">glycogen</text>');
+      s.push('<text class="sg-key" x="12" y="' + (FH - 10) + '">3 more drawn in a row = 10 times as many</text>');
       var fin = target || a;
       var lab2 = 'The cascade in a liver cell at ' + nowT + ' s, from the receptor in the membrane to glucose release. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(fin[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
       figEl.innerHTML = '<svg class="sg-fig sg-cell" viewBox="0 0 ' + W + ' ' + FH + '" role="group" aria-label="' + esc(lab2) + '">' + s.join('') + '</svg>';
-      var f2 = target ? null : figEl.querySelector('[data-tap="' + lastTap + '"]'); if(f2 && refocus){ refocus = false; f2.focus(); }
+      var f2 = target ? null : figEl.querySelector(lastSel); if(f2 && refocus){ refocus = false; f2.focus(); }
     }
-    var lastTap = null, refocus = false;
+    var lastTap = null, lastSel = null, refocus = false, focus = 'R';
+    /* Focus a step: it lights up, the rest dim; Play walks the focus down. */
+    function setFocus(id, keyFocus){
+      focus = id; lastSel = '[data-tap="' + id + '"]'; refocus = !!keyFocus;
+      if(shownA) drawFig(shownA, null);
+    }
     function tapRung(id){
       var what;
       if(id === 'G'){ var order = ['normal', 'on', 'off'], n = order[(order.indexOf(st.gprotein) + 1) % 3]; st.gprotein = n; gSel.set(n); what = n === 'on' ? 'G protein locked on: it keeps activating adenylyl cyclase even with no hormone (like cholera toxin), so the signal never ends.' : n === 'off' ? 'G protein locked off: it cannot pick up GTP, so nothing after the receptor turns on, however much epinephrine there is.' : 'G protein back to normal.'; }
@@ -241,21 +251,33 @@
         what = k === 'antagonist' ? (st[k] ? 'Receptor antagonist: it sits in the binding site, so epinephrine cannot bind and every step after drains.' : 'Antagonist removed.')
           : k === 'pde' ? (st[k] ? 'Phosphodiesterase inhibitor: cAMP is no longer broken down, so it piles up and the signal lasts after washout.' : 'PDE inhibitor removed.')
           : (st[k] ? 'PKA inhibitor: cAMP still rises, but PKA cannot act, so everything after PKA drains.' : 'PKA inhibitor removed.'); }
-      lastTap = id; refocus = true;
+      lastTap = id; lastSel = '[data-blk="' + id + '"]'; refocus = true;
       card.querySelector('.sg-why').textContent = what;
       update(true);
     }
-    figEl.addEventListener('click', function(e){ var g = e.target.closest && e.target.closest('.sg-tap'); if(g) tapRung(g.getAttribute('data-tap')); });
-    figEl.addEventListener('keydown', function(e){ var g = e.target.closest && e.target.closest('.sg-tap'); if(g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); tapRung(g.getAttribute('data-tap')); } });
+    function onTap(e, key){
+      var b = e.target.closest && e.target.closest('.sg-blk');
+      if(b){ e.stopPropagation(); tapRung(b.getAttribute('data-blk')); return true; }
+      var g = e.target.closest && e.target.closest('.sg-tap');
+      if(g){ setFocus(g.getAttribute('data-tap'), key); return true; }
+      return false;
+    }
+    figEl.addEventListener('click', function(e){ onTap(e, false); });
+    figEl.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ if(onTap(e, true)) e.preventDefault(); return; }
+      var g = e.target.closest && e.target.closest('.sg-tap'), ids = S.STAGES;
+      if(g && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){ e.preventDefault(); var i = ids.indexOf(g.getAttribute('data-tap')) + (e.key === 'ArrowDown' ? 1 : -1); if(i >= 0 && i < ids.length) setFocus(ids[i], true); }
+    });
     var sweepT = 0;
     card.querySelector('[data-a="sweep"]').addEventListener('click', function(){
       if(sweepT){ cancelAnimationFrame(sweepT); sweepT = 0; }
-      if(reducedM()){ sRead.set(P.tEnd, true); return; }
-      var sim = S.simulate(P, cond({})), t0 = null, D = 5000, clock = card.querySelector('.sg-clock');
+      if(reducedM()){ focus = 'rate'; sRead.set(P.tEnd, true); return; }
+      var sim = S.simulate(P, cond({})), t0 = null, D = 7000, clock = card.querySelector('.sg-clock');
       var go = function(ts){
         if(t0 == null) t0 = ts;
         var u = Math.min(1, (ts - t0) / D), t = Math.round(u * P.tEnd / 5) * 5, a = S.at(sim, t);
         if(tw){ cancelAnimationFrame(tw); tw = 0; }
+        focus = S.STAGES[Math.min(S.STAGES.length - 1, Math.floor(u / 0.33 * S.STAGES.length))];
         nowT = t; drawFig(a, null); shownA = a;
         clock.textContent = 't = ' + t + ' s';
         if(u < 1) sweepT = requestAnimationFrame(go); else { sweepT = 0; sRead.set(t, true); }
@@ -319,5 +341,5 @@
     studio: { sim: true, live: '.sg-why', primary: 1, why: ['.sg-stagefig + p.bt-small'],
       hint: { target: '.os-play .btn-press', text: 'Press Play to start the cascade' },
       pills: function(g){ return [{ k: 'Glucose out', html: g.ro(0).replace(/ per s$/, '/s'), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'cAMP ' + g.ro(1), tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } });
 })();

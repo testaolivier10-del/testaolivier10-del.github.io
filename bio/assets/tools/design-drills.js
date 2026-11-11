@@ -65,7 +65,7 @@
       opts = opts || {};
       var sid = gid + '-' + s.id + '-' + d.id + (opts.sub ? '-' + opts.sub : '');
       var sec = document.createElement('div');
-      sec.className = 'dr-sec';
+      sec.className = 'dr-sec'; sec.setAttribute('data-drill', d.id);
       sec.innerHTML = '<h3 id="' + sid + '-h">' + esc(title) + '</h3>' + (opts.lead || '') + '<form class="dr-rows" novalidate aria-labelledby="' + sid + '-h">' + rows.map(function(r, i){ return rowHtml(r, sid + '-r' + i); }).join('') +
         '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div></form><p class="bt-result" role="status" aria-live="polite"></p>';
       host.appendChild(sec);
@@ -599,6 +599,7 @@
       function sync(){
         var picks = [0, 1].map(function(i){ var c = form.querySelectorAll('fieldset')[i].querySelector('input:checked'); return c ? +c.value : -1; });
         var graded = !!form.querySelector('fieldset.is-right, fieldset.is-wrong');
+        box.classList.toggle('is-graded', graded);
         tags.forEach(function(t){
           var i = +t.getAttribute('data-i'), role = picks[0] === i ? 0 : picks[1] === i ? 1 : -1, r = t.querySelector('.dr-vrole');
           t.classList.toggle('is-iv', role === 0); t.classList.toggle('is-dv', role === 1);
@@ -626,6 +627,7 @@
           t.classList.remove('is-iv', 'is-dv'); t.classList.add(role[0]);
           r.textContent = role[1]; t.disabled = true; });
         box.querySelector('.dr-vtags-h').textContent = 'Parts of this setup';
+        box.classList.add('is-graded');
         mirror();
       }, 0); });
       sync();
@@ -643,7 +645,7 @@
         if(d.id === 'variables') section(s, d, 'Name the variables', [
           { key: 'iv', legend: 'Independent variable: what the investigators change on purpose', options: s.variables.options, correct: s.variables.iv, why: whyVar(s, 'iv'), practice: '3.C' },
           { key: 'dv', legend: 'Dependent variable: what they measure in response', options: s.variables.options, correct: s.variables.dv, why: whyVar(s, 'dv'), practice: '3.C' }],
-          { lead: '<p class="bt-small dr-taplead">Tap a part in the picture or under it, or pick below.</p>' }).setAttribute('data-drill', 'variables');
+          { lead: '<p class="bt-small dr-taplead">Tap a part in the picture, or pick below.</p>' }).setAttribute('data-drill', 'variables');
         if(d.id === 'controls') section(s, d, 'Choose a control, then justify it', [
           { key: 'control', legend: s.control.q, options: s.control.options, correct: s.control.correct, why: s.control.why, practice: '3.C' },
           { key: 'control-why', legend: s.controlWhy.q, options: s.controlWhy.options, correct: s.controlWhy.correct, why: s.controlWhy.why, practice: '3.C', level: 'analyze' }]);
@@ -701,17 +703,42 @@
     var sels = pick.querySelectorAll(':scope > .bt-ctl');
     if(sels[1]) det.appendChild(sels[1]);
     s.add('dock', pick); s.add('dock', dock);
-    var wrap = null;
+    var wrap = null, view = 'setup', auto = true;
+    /* Pass 2 (2026-11-10): one picture at a time. Setup (the drawn experiment
+       and its text) or Results (the charts and the data table); the drills
+       that read the data (claim and evidence, predict, the written answers)
+       switch to Results, the others to Setup, until the student picks. */
+    var DATA_DRILLS = { cer: 1, predict: 1 };
+    function setView(v, byHand){
+      if(byHand) auto = false;
+      view = v; stage.classList.toggle('dr-show-data', v === 'data');
+      stage.querySelectorAll('.dr-view button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
+    }
+    function follow(){
+      if(!auto || !wrap) return;
+      var cur = wrap.querySelector(':scope > .dr-sec:not(.ls-step-off), :scope > .bt-frq:not(.ls-step-off)');
+      if(!cur || wrap.classList.contains('is-review')) return;
+      var d = cur.classList.contains('bt-frq') ? 'cer' : cur.getAttribute('data-drill');
+      setView(DATA_DRILLS[d] ? 'data' : 'setup');
+    }
     function arrange(){
       if(!host.children.length) return;
       stage.innerHTML = '';
       Array.prototype.slice.call(host.querySelectorAll(':scope > h2, :scope > .dr-schem, :scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ stage.appendChild(x); });
       var h2 = stage.querySelector('h2'); if(h2) h2.classList.add('ls-title-l');
+      if(stage.querySelector('.dr-charts') || stage.querySelector('.table-wrap')){
+        var vw = document.createElement('div'); vw.className = 'dr-view'; vw.setAttribute('role', 'group'); vw.setAttribute('aria-label', 'Show');
+        vw.innerHTML = '<button type="button" class="bt-btn" data-v="setup" aria-pressed="true">The setup</button><button type="button" class="bt-btn" data-v="data" aria-pressed="false">The results</button>';
+        vw.addEventListener('click', function(e){ var b = e.target.closest('button'); if(b) setView(b.getAttribute('data-v'), true); });
+        if(h2) h2.after(vw); else stage.insertBefore(vw, stage.firstChild);
+      }
+      auto = true; setView('setup');
       var w = document.createElement('div'); w.className = 'ls-dr-steps';
       Array.prototype.slice.call(host.children).forEach(function(x){ w.appendChild(x); });
       if(wrap) wrap.remove();
       wrap = w; dock.appendChild(w);
       window.LevlStudio.stepper(w, { items: ':scope > .dr-sec, :scope > .bt-frq', label: 'Drill' });
+      if(window.MutationObserver) new MutationObserver(follow).observe(w, { subtree: true, attributes: true, attributeFilter: ['class'] });
       s.caption('Read the experiment, then answer one drill at a time. Each drill has its own Check.');
       s.pills([]);
     }

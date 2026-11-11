@@ -234,8 +234,9 @@
       g.fillStyle = col['--line']; roundRect(16, y, mw, 14, 7); g.fill();
       g.fillStyle = col['--bio-s1']; if(f > 0.004) { roundRect(16, y, Math.max(10, mw * f), 14, 7); g.fill(); }
       g.fillStyle = col['--ink']; g.font = '800 13px ' + col.font; g.textAlign = 'left';
-      g.fillText('Rate ' + M.fixed(cfg.rate, 1) + ' ' + cfg.unit + (W >= 480 ? ' · ' + Math.round(f * 100) + '% of top speed' : ''), 16, y - 7);
-      g.textAlign = 'right'; g.fillStyle = col['--muted']; g.font = '700 12px ' + col.font; g.fillText(reduced() ? 'still (reduced motion)' : 'products: ' + made, W - 16, y - 7);
+      // pass 2: the rate itself is the pill; the bar says how close to top speed
+      g.fillText(Math.round(f * 100) + '% of top speed', 16, y - 7);
+      if(reduced()){ g.textAlign = 'right'; g.fillStyle = col['--muted']; g.font = '700 12px ' + col.font; g.fillText('still (reduced motion)', W - 16, y - 7); }
     }
     function roundRect(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
     if(window.IntersectionObserver) new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if(visible && cfg && !reduced()) start(); else stop(); }).observe(wrap);
@@ -264,7 +265,7 @@
       '<div class="ez-bar"><button type="button" class="bt-btn ez-pause" aria-pressed="false">Pause</button><p class="bt-small ez-key"><span class="ez-ki"><span class="ez-k sub"></span>substrate</span> <span class="ez-ki"><span class="ez-k prod"></span><span class="ez-k prod b"></span>products</span> <span class="ez-ki"><span class="ez-k inh c"></span>competitive inhibitor</span> <span class="ez-ki"><span class="ez-k inh"></span>allosteric inhibitor</span></p></div>' +
       '<p class="bt-first">Slide the substrate concentration and watch the active sites fill.</p><div class="os-chal ez-chal" hidden></div>' +
       '<p class="os-why ez-why"></p>' +
-      '<div class="bt-controls" data-primary="7"></div>' +
+      '<div class="bt-controls" data-primary="5"></div>' +
       '<div class="ez-plots bt-num"><div><div class="bt-tabs" role="group" aria-label="Plot the rate against">' +
       Object.keys(VIEWS).map(function(k){ return '<button type="button" class="bt-btn" data-v="' + k + '" aria-pressed="' + (k === view) + '">Rate vs ' + esc(k === 'ph' ? 'pH' : VIEWS[k].label.toLowerCase()) + '</button>'; }).join('') +
       '</div><div class="bt-plotwrap"></div></div></div>' +
@@ -286,14 +287,16 @@
       prof = data.profiles.filter(function(p){ return p.id === v; })[0];
       sT.set(prof.defaults.T); sPH.set(prof.defaults.pH); st.T = prof.defaults.T; st.pH = prof.defaults.pH; update(true);
     } });
-    var inhSel = T.choiceSelect({ label: 'Inhibitor', value: 'none', options: data.inhibitors.map(function(x){ return { value: x.id, label: x.name }; }), onChange: function(v){ st.inhibitor = v; sI.disable(v === 'none'); update(true); } });
+    var inhSel = T.choiceSelect({ label: 'Inhibitor', value: 'none', options: data.inhibitors.map(function(x){ return { value: x.id, label: x.name }; }), onChange: function(v){ st.inhibitor = v; inhOn(v); update(true); } });
     var sS = T.slider({ label: 'Substrate concentration', min: 0, max: data.substrate.max, step: data.substrate.step, value: st.S, unit: data.substrate.unit, decimals: 1, onInput: function(v){ st.S = v; update(); } });
     var sT = T.slider({ label: 'Temperature', min: 0, max: data.temperature.max, step: 1, value: st.T, unit: '°C', decimals: 0, onInput: function(v){ st.T = v; update(); } });
     var sPH = T.slider({ label: 'pH', min: 1, max: 13, step: 0.5, value: st.pH, decimals: 1, onInput: function(v){ st.pH = v; update(); } });
     var sI = T.slider({ label: 'Inhibitor concentration', min: 0, max: data.inhibitor.max, step: data.inhibitor.step, value: st.I, unit: data.inhibitor.unit, decimals: 2, onInput: function(v){ st.I = v; update(); } });
     // Every model control on the main panel (tool review 2026-11): pH, the inhibitor and the enzyme had waited in Data & settings.
     [sS, sT, sPH, inhSel, sI, enzymeSel].forEach(function(c){ ctl.appendChild(c.el); });
-    sI.disable(true);
+    // pass 2 (2026-11-10): the inhibitor amount shows once an inhibitor is chosen; the enzyme choice is in Data & settings
+    function inhOn(v){ sI.disable(v === 'none'); sI.el.hidden = v === 'none'; }
+    inhOn('none');
     var desc = document.createElement('p'); desc.className = 'bt-hint bt-prof'; ctl.appendChild(desc);
 
     card.querySelectorAll('.bt-tabs .bt-btn').forEach(function(b){
@@ -409,7 +412,7 @@
     }
     function applyCond(p, c){
       prof = p; enzymeSel.set(p.id); st.S = c.S; st.T = c.T; st.pH = c.pH; st.inhibitor = c.inhibitor; st.I = c.I;
-      sS.set(c.S); sT.set(c.T); sPH.set(c.pH); inhSel.set(c.inhibitor); sI.set(c.I); sI.disable(c.inhibitor === 'none');
+      sS.set(c.S); sT.set(c.T); sPH.set(c.pH); inhSel.set(c.inhibitor); sI.set(c.I); inhOn(c.inhibitor);
       update(true);
     }
     function showChallenge(){
@@ -454,5 +457,5 @@
       // In Predict the challenge reads in the dock: the caption only says what to do.
       caption: function(g){ var st = window.LevlStudio.get(); return st && st.mode() === 'predict' ? 'Predict first, then make the change and watch the scene.' : T.esc(T.firstSentence(g.live)); },
       pills: function(g){ return [{ k: 'Rate', html: g.ro(0), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: g.ro(3) + ' of best Vmax', tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } });
 })();

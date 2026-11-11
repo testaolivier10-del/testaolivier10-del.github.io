@@ -41,7 +41,7 @@
       '<div class="op-further" hidden>' + data.goingFurther + '</div>' +
       '<p class="bt-first">Tap Lactose or Glucose to change what the cell has, then watch the operon switch.</p>' +
       '<div class="op-tray" role="group" aria-label="In the medium"></div>' +
-      '<div class="bt-fig op-stagefig"></div><div class="op-quizfig" hidden></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it. Drag a chip into the cell, or tap it, to change the medium.</p>' +
+      '<div class="bt-fig op-stagefig"></div><div class="op-quizfig" hidden></div><p class="bt-small op-taphint">Tap a gene or the operator on the DNA to mutate it.</p>' +
       '<fieldset class="bt-modes bt-more"><legend>Operon</legend>' + MODES.map(function(m){
         var id = 'op-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="op-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
@@ -207,10 +207,10 @@
         return '<g class="op-tapg" data-gene="' + gene + '" data-ci="' + ci + '" role="button" tabindex="0" aria-label="' + esc(geneTapLabel(gene, k)) + '"><rect class="op-hit" x="' + (x1 - 2) + '" y="' + (y - 20) + '" width="' + (x2 - x1 + 4) + '" height="40" rx="6"/>' + b + '</g>';
       };
       var title = trp ? 'trp operon' : st.mode === 'mero' ? COPY_NAMES[ci] : 'lac operon';
-      p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + ': mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')</text>');
+      if(st.mode === 'mero') p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + '</text>'); // pass 2: the mRNA number is the pill; one operon needs no title (the Operon choice names it)
       var reg = trp ? (k.R === '-' ? 'trpR⁻' : 'trpR') : (k.I === '-' ? 'lacI⁻' : k.I === 's' ? 'lacIˢ' : 'lacI');
       p.push(box(8, 84, 'gene reg', reg, trp ? k.R === '-' : k.I !== '+', trp ? 'R' : 'I'));
-      p.push('<text class="op-note" x="46" y="' + (y + 32) + '" text-anchor="middle">' + (trp ? (k.R === '-' ? 'no repressor' : 'repressor gene') : (k.I === '-' ? 'no repressor' : k.I === 's' ? 'super-repressor' : 'repressor gene')) + '</text>');
+      p.push('<text class="op-note" x="46" y="' + (y + 32) + '" text-anchor="middle">' + (trp ? (k.R === '-' ? 'no repressor' : '') : (k.I === '-' ? 'no repressor' : k.I === 's' ? 'super-repressor' : '')) + '</text>');
       var pr0 = trp ? 100 : 160, pr1 = trp ? 190 : 225, op1 = pr1 + 56, genes = trp ? ['trpE', 'trpD', 'trpC', 'trpB', 'trpA'] : ['lacZ', 'lacY', 'lacA'];
       if(!trp) p.push(box(100, 160, 'cap', 'CAP site'));
       p.push(box(pr0, pr1, 'prom', 'Promoter'));
@@ -262,7 +262,7 @@
         var nr = x.rate >= 50 ? 4 : 1, dur = x.rate >= 50 ? 2.4 : 4.8;
         for(var j = 0; j < nr; j++) B.push('<path class="op-ribbon" style="animation-duration:' + dur + 's;animation-delay:-' + (j * dur / nr).toFixed(2) + 's" d="M' + (mx0 + 6) + ' ' + (y + 26) + ' q8 -6 16 0 t16 0 t16 0 t16 0"/>');
       } else B.push('<line class="op-mrna trickle" x1="' + mx0 + '" y1="' + (y + 30) + '" x2="' + (mx0 + 40) + '" y2="' + (y + 30) + '"/>');
-      B.push('<text class="op-note" x="' + mx0 + '" y="' + (y + 52) + '">mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')' + (trp ? '' : k.Z === '-' ? ', no working enzyme' : '') + '</text>');
+      B.push('<text class="op-note" x="' + mx0 + '" y="' + (y + 52) + '">mRNA (' + lvl(x.rate) + ')' + (trp ? '' : k.Z === '-' ? ', no working enzyme' : '') + '</text>');
       if(narrow) return p.join('') + '<g transform="translate(' + (10 - op1) + ' ' + NARROW_DY + ')">' + B.join('') + '</g>';
       return p.join('') + B.join('');
     }
@@ -280,7 +280,7 @@
       if(!trp) s.copies.forEach(function(x, i){ if(c.copies[i].Z === '-') bad += Math.round(x.rate / 10); });
       bad = Math.min(10 - good, bad);
       var name = trp ? 'Enzymes that build tryptophan' : 'β-galactosidase', out = '<line class="op-sep" x1="16" x2="' + (W - 16) + '" y1="' + (y0 + 4) + '" y2="' + (y0 + 4) + '"/>';
-      out += '<text class="op-ttl" x="16" y="' + (y0 + 24) + '">' + name + (W < 400 ? '' : ', made by ribosomes from the mRNA') + ': ' + F(s.e, 0) + '</text>';
+      out += '<text class="op-ttl" x="16" y="' + (y0 + 24) + '">' + name + (W < 400 ? '' : ', made from the mRNA') + '</text>';
       var x = 30, y = y0 + 48, step = W < 400 ? 28 : 34;
       for(var i = 0; i < good; i++){ out += enzCluster(x, y, false); x += step; }
       for(var j = 0; j < bad; j++){ out += enzCluster(x, y, true); x += step; }
@@ -502,7 +502,7 @@
         var ne = Math.min(10, Math.round(v.e / 10));
         for(var e = 0; e < ne; e++) o += enzCluster(30 + (e % 5) * 28, 146 + Math.floor(e / 5) * 26, false);
         if(!ne) o += '<text class="op-note" x="22" y="152">' + (v.e > 0 ? 'almost no enzyme' : trp ? 'no enzyme' : 'no working enzyme') + '</text>';
-        o += '<text class="op-num" x="10" y="208">mRNA ' + F(v.m, 0) + (trp ? '' : ' · enzyme ' + F(v.e, 0)) + '</text>';
+        // pass 2: the numbers are in the table beside the picture (and in the label)
         return '<svg class="op-fig op-qpanel" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('Strain X in ' + m.label + ': mRNA ' + F(v.m, 0) + (trp ? '' : ', working β-galactosidase ' + F(v.e, 0)) + '.') + '">' + o + '</svg>';
       });
       qfigEl.innerHTML = '<p class="op-qhead"><b>Strain X</b>: what it makes in each medium. Its switch parts are hidden.</p><div class="op-qgrid' + (trp ? ' two' : '') + '">' + panels.join('') + '</div>' +
@@ -525,12 +525,12 @@
     if(/^#mutant/.test(location.hash)) setQ('quiz');
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
-    studio: { sim: true, modeLabels: { quiz: 'Mutant quiz' }, primary: 0, primarySel: '.op-genes', dock: ['.os-chal', '.bt-modes', '@primary'], stage: ['.op-stagefig'], stageAlso: ['.op-quizfig', '.op-tray'], live: '.op-explain', why: ['.op-taphint', '.op-further'],
+    studio: { sim: true, modeLabels: { quiz: 'Mutant quiz' }, primary: 0, dock: ['.os-chal', '.bt-modes', '.op-taphint'], stage: ['.op-stagefig'], stageAlso: ['.op-quizfig', '.op-tray'], live: '.op-explain', why: ['.op-further'],
       hint: { target: '.op-chip', text: 'Tap a sugar to change the medium' },
       // Readout rows by label: the trp operon has no CAP row, so row numbers shift.
       caption: function(g){ if(quizOn()) return '<b>Which strain is X?</b> Compare what it makes in each medium with what a normal cell would make.'; return '<b>Repressor ' + T.esc(roBy(g, 'Repressor')) + '.</b> RNA polymerase ' + T.esc(roBy(g, 'RNA polymerase')) + '.'; },
       pills: function(g){ if(quizOn()) return []; return [{ k: 'mRNA', html: roBy(g, 'mRNA at'), tone: 'readout' }]; },
-      pillsR: function(g){ if(quizOn()) return []; var cap = roBy(g, 'CAP'); return cap ? [{ html: 'CAP–cAMP ' + cap.split(' (')[0], tone: 'ghost' }] : [{ html: 'Repressible: Trp turns it off', tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } });
   function quizOn(){ var q = document.querySelector('.op-quizfig'); return !!(q && !q.hidden); }
   function roBy(g, label){
     var rows = g.$ ? Array.prototype.slice.call(document.querySelectorAll('.op-read > div')) : [];
