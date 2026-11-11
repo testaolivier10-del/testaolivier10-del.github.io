@@ -93,7 +93,10 @@
     out.push('<text class="st-axis silt" transform="translate(' + (sm[0] + (phone ? 46 : 34)).toFixed(1) + ' ' + (sm[1] - 6).toFixed(1) + ') rotate(60)" text-anchor="middle">← Silt %</text>');
     out.push('<text class="st-axis sand" x="' + bm[0].toFixed(1) + '" y="' + (bm[1] + (phone ? 38 : 42)).toFixed(1) + '" text-anchor="middle">← Sand %</text>');
     // class names
+    // o.nameOnly (Explore, pass 3): only the class the point is in is named;
+    // the colors still show the others, and moving the point names them.
     if(!o.hideClasses) Object.keys(LAB).forEach(function(id){
+      if(o.nameOnly && id !== o.cls) return;
       var q = LAB[id], p = G.xy(q[0], q[1], q[2]), lines = wrapName(SHORT[id]), lf = phone ? 10.5 : 12.5;
       if(phone && (id === 'sand' || id === 'loamy-sand')) lines = [id === 'sand' ? 'S' : 'LS'];
       // The point covers a name: move it off (Loam sideways, since Clay loam
@@ -313,15 +316,18 @@
       var phone = sz.W < 600;
       if(st.view === 'triangle'){
         var side = phone ? 0 : 270, triW = sz.W - side;
-        var t = triangleSvg({ W: triW, H: phone ? sz.H - 160 : sz.H, pt: st.pt, cls: w.id, phone: phone });
+        var t = triangleSvg({ W: triW, H: phone ? sz.H - 160 : sz.H, pt: st.pt, cls: w.id, phone: phone, nameOnly: true });
+        // pass 3: the four property bars appear once the point has moved
+        // (cause, then effect); the magnified sample shows from the start.
+        var bars = function(){ return touched ? barsSvg.apply(null, arguments) : ''; };
         geo = t;
         var panel = '';
         if(phone){
           var py = sz.H - 150;
-          panel = '<g class="st-panel">' + sampleSvg(st.pt, 10, py, 112, 112) + '<text class="st-cap" x="66" y="' + (py - 6) + '" text-anchor="middle">Magnified</text>' + barsSvg(w.P, 136, py - 4, sz.W - 136 - 52, true).replace(/Porosity \(pore space\)/, 'Porosity').replace('Permeability (drainage)', 'Drainage').replace('Water-holding capacity', 'Water held') + '</g>';
+          panel = '<g class="st-panel">' + sampleSvg(st.pt, 10, py, 112, 112) + '<text class="st-cap" x="66" y="' + (py - 6) + '" text-anchor="middle">Magnified</text><text class="st-class st-class-p" x="136" y="' + (py + 8) + '">' + esc(S.nameOf(w.id)) + '</text>' + bars(w.P, 136, py + 18, sz.W - 136 - 52, true).replace(/Porosity \(pore space\)/, 'Porosity').replace('Permeability (drainage)', 'Drainage').replace('Water-holding capacity', 'Water held') + '</g>';
         } else {
           var px = triW + 6, top0 = Math.max(20, t.G.bottom - t.G.h - 20);
-          panel = '<g class="st-panel" transform="translate(0 ' + top0.toFixed(1) + ')"><text class="st-class" x="' + px + '" y="24">' + esc(S.nameOf(w.id)) + '</text><text class="st-cap" x="' + px + '" y="48">Magnified sample</text>' + sampleSvg(st.pt, px, 58, 250, 170) + '<text class="st-legend" x="' + px + '" y="248"><tspan class="st-k-sand">◆ sand</tspan>  <tspan class="st-k-silt">● silt</tspan>  <tspan class="st-k-clay">▬ clay</tspan></text>' + barsSvg(w.P, px, 270, 250, false) + '</g>';
+          panel = '<g class="st-panel" transform="translate(0 ' + top0.toFixed(1) + ')"><text class="st-class" x="' + px + '" y="24">' + esc(S.nameOf(w.id)) + '</text><text class="st-cap" x="' + px + '" y="48">Magnified sample</text>' + sampleSvg(st.pt, px, 58, 250, 170) + '<text class="st-legend" x="' + px + '" y="248"><tspan class="st-k-sand">◆ sand</tspan>  <tspan class="st-k-silt">● silt</tspan>  <tspan class="st-k-clay">▬ clay</tspan></text>' + bars(w.P, px, 270, 250, false) + '</g>';
         }
         svg.innerHTML = '<defs><marker id="st-arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" class="st-arr-h"/></marker></defs>' + t.svg + panel;
         svg.setAttribute('role', 'application');
