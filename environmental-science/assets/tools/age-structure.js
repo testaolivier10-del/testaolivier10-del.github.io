@@ -64,8 +64,11 @@
     // The dependency groups as brackets at the left edge: under 15 and 65 and over.
     if(o.bands){
       var yb = function(i){ return H - bot - i * bh; }, bx = x0 + 6;
-      out.push('<path class="ap-br is-young" d="M' + (bx + 6) + ' ' + r1(yb(0) - 1) + 'H' + bx + 'V' + r1(yb(3) + 1) + 'H' + (bx + 6) + '"/>' + tx(bx + 10, (yb(0) + yb(3)) / 2 + 4, ph ? '<15' : 'under 15', 'ap-brl is-young', 'start'));
-      out.push('<path class="ap-br is-old" d="M' + (bx + 6) + ' ' + r1(yb(13) - 1) + 'H' + bx + 'V' + r1(yb(17) + 1) + 'H' + (bx + 6) + '"/>' + tx(bx + 10, (yb(13) + yb(17)) / 2 + 4, '65+', 'ap-brl is-old', 'start'));
+      // Pass 3: each bracket carries its own share (the two chips above the
+      // picture are gone), so the number sits on the group it counts.
+      var sh1 = o.shares ? [o.shares.young, o.shares.old] : null;
+      out.push('<path class="ap-br is-young" d="M' + (bx + 6) + ' ' + r1(yb(0) - 1) + 'H' + bx + 'V' + r1(yb(3) + 1) + 'H' + (bx + 6) + '"/>' + tx(bx + 10, (yb(0) + yb(3)) / 2 + (sh1 ? -3 : 4), ph ? '<15' : 'under 15', 'ap-brl is-young', 'start') + (sh1 ? tx(bx + 10, (yb(0) + yb(3)) / 2 + 13, Math.round(sh1[0]) + '%', 'ap-brl ap-brn is-young', 'start') : ''));
+      out.push('<path class="ap-br is-old" d="M' + (bx + 6) + ' ' + r1(yb(13) - 1) + 'H' + bx + 'V' + r1(yb(17) + 1) + 'H' + (bx + 6) + '"/>' + tx(bx + 10, (yb(13) + yb(17)) / 2 + (sh1 ? -3 : 4), '65+', 'ap-brl is-old', 'start') + (sh1 ? tx(bx + 10, (yb(13) + yb(17)) / 2 + 13, Math.round(sh1[1]) + '%', 'ap-brl ap-brn is-old', 'start') : ''));
     }
     out.push(tx(cx, H - 4, '% of the population', 'ap-axl', 'middle'));
     if(o.sel != null){
@@ -166,7 +169,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       var pyrH = side ? H : Math.round(H * 0.64);
       var big = Math.max.apply(null, pyr.male.concat(pyr.female)) * 1.12, mx = [5, 8, 12, 16, 20].filter(function(v){ return v >= big; })[0] || 26;
-      var out = pyrSvg(pyr, { W: W, w: pw, H: pyrH, sel: sel, max: mx, bands: true });
+      var out = pyrSvg(pyr, { W: W, w: pw, H: pyrH, sel: sel, max: mx, bands: true, shares: A.broad(pyr) });
       out += '<g transform="translate(' + (side ? pw + 24 : 0) + ' ' + (side ? 0 : pyrH + 6) + ')">' + transSvg({ w: tw, enl: !side, H: side ? H : H - pyrH - 6, stage: stage, cbr: cbr, cdr: cdr, pos: posOf(cbr, cdr, stage), top: side ? 26 : 22 }) + '</g>';
       svg.innerHTML = out;
     }
@@ -174,7 +177,8 @@
       var sh = A.shape(pyr), b = A.broad(pyr), g = A.growth(cbr, cdr), S0 = A.STAGES[stage];
       var head = !touched ? 'A stage 2 country: deaths have fallen but births are still high, so the base is wide. Try stage 3 and 4.' :
         SHAPE_NAME[sh] + ' pyramid, ' + S0.name.toLowerCase().replace(/^stage (\d)/, 'stage $1') + '. Growth ' + nf(g, 1) + '% a year' + (g > 0.05 ? ' (doubling in about ' + nf(70 / g, 0) + ' years).' : g < -0.05 ? ' (shrinking).' : ' (about zero).');
-      $('.ap-strip').innerHTML = '<span class="ap-chip is-young"><b>' + nf(b.young, 0) + '%</b> under 15</span><span class="ap-chip is-old"><b>' + nf(b.old, 0) + '%</b> 65 and over</span>';
+      $('.ap-strip').hidden = true;   // pass 3: the shares are on the brackets
+      if(false) $('.ap-strip').innerHTML = '<span class="ap-chip is-young"><b>' + nf(b.young, 0) + '%</b> under 15</span><span class="ap-chip is-old"><b>' + nf(b.old, 0) + '%</b> 65 and over</span>';
       var why = '<p><b>' + esc(S0.name) + '.</b> ' + esc(S0.what) + ' ' + esc(S0.why) + '</p>' +
         '<p><b>Reading the shape.</b> Expansive (a triangle): many children, high births, fast growth ahead. Stable (a column): births near replacement. Constrictive (a vase): fewer children than young adults, so the population ages and will shrink without immigration.</p>' +
         '<p><b>Total fertility rate</b> ' + nf(tfr, 1) + ' against replacement level, about 2.1 children per woman (2 to replace the parents, a little more because some children die young). Above 2.1 the base widens; below, it narrows.</p>' +
