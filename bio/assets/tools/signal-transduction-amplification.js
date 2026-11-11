@@ -168,6 +168,9 @@
       }
       return { svg: o, hw: Math.max(m, 1) * SP / 2 + 6 };
     }
+    /* Row names (pass 3, 2026-11-11): every row carries a short name so a student can read the cascade at a
+       glance; the step in focus adds its full name, its count and its gain. */
+    var NAME = { R: 'receptor', G: 'G protein', AC: 'adenylyl cyclase', cAMP: 'cAMP', PKA: 'PKA', PhK: 'phosphorylase kinase', GP: 'glycogen phosphorylase', rate: 'glucose out' };
     var SHORT = { R: 'Bound receptors', G: 'Active G proteins', AC: 'Active adenylyl cyclase', cAMP: 'cAMP', PKA: 'Active PKA', PhK: 'Active phosphorylase kinase', GP: 'Active glycogen phosphorylase', rate: 'Glucose released per second' };
     function gainText(a, i){
       var ids = S.STAGES, prev = a[ids[i]], next = a[ids[i + 1]], ratio = prev >= 1 ? next / prev : 0, amp = stageOf(ids[i + 1]).amplifies, to = ids[i + 1];
@@ -180,6 +183,9 @@
       return { t: r + (ratio >= 1 ? ': each one activates or makes many' : ': blocked'), amp: ratio >= 1 };
     }
     var nowT = 0;
+    // no receptor bound yet: the little glucose made is the cell's resting rate (basal G protein activity)
+    function resting(a){ return a.R < 1 && a.rate >= 1 && (nowT === 0 || st.L <= 0); }
+    function rateTxt(a){ return fmt(a.rate) + ' per s' + (resting(a) ? ' (resting)' : ''); }
     function drawFig(a, target){
       // a phone draws 400 wide (readable at 390 px); wider stages get room for bigger text
       W = document.querySelector('.ls-root.ls-phone') ? 400 : 520; CX = W / 2;
@@ -191,7 +197,7 @@
       var heads = '', tails = '';
       for(var x = 3; x < W; x += 7){ heads += '<circle cx="' + x + '" cy="43" r="3.2"/><circle cx="' + x + '" cy="60" r="3.2"/>'; tails += 'M' + (x - 1) + ' 46v5M' + (x + 1) + ' 46v5M' + (x - 1) + ' 57v-5M' + (x + 1) + ' 57v-5'; }
       s.push('<path class="sgs-tail" d="' + tails + '"/><g class="sgs-head">' + heads + '</g>');
-      s.push('<text class="sgs-lab" x="8" y="13">outside the liver cell</text><text class="sgs-lab" x="' + (W - 8) + '" y="76" text-anchor="end">inside the cell</text>');
+      s.push('<text class="sgs-lab" x="8" y="13">outside the liver cell</text>');
       // epinephrine in the fluid: more drawn at higher concentration; gone after washout
       var nE = washed || st.L <= 0 ? 0 : Math.max(1, Math.min(7, Math.round(1 + Math.log(st.L) / Math.LN10 * 2.4)));
       [[30, 20], [72, 27], [114, 19], [52, 30], [94, 30], [136, 27], [12, 28]].slice(0, nE).forEach(function(q){ s.push(epi(CX + q[0], q[1])); });
@@ -211,8 +217,10 @@
         else body += '<rect class="sg-row" x="4" y="22" width="' + (W - 8) + '" height="44" rx="8"/>';
         body += '<g class="sg-mols">' + rows[id].svg + '</g>';
         // one step in focus (pass 2, 2026-11-10): only it carries its name and count; a blocked step keeps its tag
-        if(on) body += '<text class="sg-n" x="12" y="' + lab + '">' + esc(SHORT[id]) + '<tspan class="sg-v" dx="8">' + fmt(a[id]) + '</tspan></text>';
-        else if(tags[id]) body += '<text class="sg-n sg-tapmark" x="12" y="' + lab + '">⊘ ' + esc(tags[id]) + '</text>';
+        // with no receptor bound the cell still makes a little glucose (basal G protein activity): say so
+        var nm = id === 'rate' && resting(a) ? SHORT[id] + ' (resting)' : SHORT[id];
+        if(on) body += '<text class="sg-n" x="12" y="' + lab + '">' + esc(nm) + '<tspan class="sg-v" dx="8">' + fmt(a[id]) + '</tspan>' + (tags[id] ? '<tspan class="sg-tapmark" dx="8">⊘ ' + esc(tags[id]) + '</tspan>' : '') + '</text>';
+        else body += '<text class="sg-n sg-nm" x="12" y="' + lab + '">' + esc(NAME[id]) + (tags[id] ? '<tspan class="sg-tapmark" dx="6">⊘ ' + esc(tags[id]) + '</tspan>' : '') + '</text>';
         // the antagonist sits on the receptors that epinephrine cannot reach (the faint ones)
         if(id === 'R' && st.antagonist){ var nb = Math.ceil(kOf(a.R) - 1e-6), mt = Math.max(nb, Math.ceil(kOf(P.Rtot))); for(var q = nb; q < mt; q++) body += '<rect class="sgs-ant" x="' + f1(CX + (q - (mt - 1) / 2) * SP - 5) + '" y="' + (YR - 18) + '" width="10" height="6" rx="2"/>'; }
         if(id === 'PKA' && st.pka) body += '<path class="sgs-ant" d="' + hexP(CX + rows[id].hw + 4, rowY(id), 5, 0) + '"/>';
@@ -235,7 +243,11 @@
       s.push('<text class="sg-key" x="12" y="' + (FH - 10) + '">3 more drawn in a row = 10 times as many</text>');
       var fin = target || a;
       var lab2 = 'The cascade in a liver cell at ' + nowT + ' s, from the receptor in the membrane to glucose release. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(fin[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
-      figEl.innerHTML = '<svg class="sg-fig sg-cell" viewBox="0 0 ' + W + ' ' + FH + '" role="group" aria-label="' + esc(lab2) + '">' + s.join('') + '</svg>';
+      figEl.innerHTML = '<svg class="sg-fig sg-cell" viewBox="0 0 ' + W + ' ' + FH + '" role="group" aria-label="' + esc(lab2) + '"><style>svg.sg-fig text.sg-nm{fill:var(--muted);font-weight:650}svg.sg-fig text.sg-nm .sg-tapmark{fill:var(--bio-symp)}</style>' + s.join('') + '</svg>';
+      // the stage pill reads the first readout row: keep it on the moment the picture shows (also while Play runs)
+      var r0 = card.querySelector('.bt-readout > div'), fin0 = target || a;
+      if(r0){ var dt0 = r0.querySelector('dt'), dd0 = r0.querySelector('dd'), w0 = 'Glucose release at ' + nowT + ' s', v0 = rateTxt(fin0);
+        if(dt0.textContent !== w0) dt0.textContent = w0; if(dd0.textContent !== v0) dd0.textContent = v0; }
       var f2 = target ? null : figEl.querySelector(lastSel); if(f2 && refocus){ refocus = false; f2.focus(); }
     }
     var lastTap = null, lastSel = null, refocus = false, focus = 'R';
@@ -315,7 +327,7 @@
       card.querySelector('.bt-plotwrap').innerHTML = T.plot(spec);
       var perR = a.R >= 1 ? a.rate / a.R : 0;
       card.querySelector('.bt-readout').innerHTML = [
-        ['Glucose release at ' + st.readT + ' s', fmt(a.rate) + ' per s'], ['cAMP at ' + st.readT + ' s', fmt(a.cAMP)], ['Glucose released by ' + st.readT + ' s', fmt(a.glucose)], ['Glucose per second per bound receptor', a.R >= 1 ? fmt(perR) : '—']
+        ['Glucose release at ' + st.readT + ' s', rateTxt(a)], ['cAMP at ' + st.readT + ' s', fmt(a.cAMP)], ['Glucose released by ' + st.readT + ' s', fmt(a.glucose)], ['Glucose per second per bound receptor', a.R >= 1 ? fmt(perR) : '—']
       ].map(function(x){ return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>'; }).join('');
       var ended = st.tOff < st.readT;
       var words = 'At ' + st.readT + ' s, with ' + F(st.L, 0) + ' nM epinephrine' + (ended ? ' washed out at ' + st.tOff + ' s' : '') + ' and ' + drugText(st) + ': ' +
@@ -340,6 +352,6 @@
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
     studio: { sim: true, live: '.sg-why', primary: 1, why: ['.sg-stagefig + p.bt-small'],
       hint: { target: '.os-play .btn-press', text: 'Press Play to start the cascade' },
-      pills: function(g){ return [{ k: 'Glucose out', html: g.ro(0).replace(/ per s$/, '/s'), tone: 'readout' }]; },
+      pills: function(g){ return [{ k: 'Glucose out', html: g.ro(0).replace(/ per s/, '/s'), tone: 'readout' }]; },
       pillsR: function(){ return []; } } });
 })();
