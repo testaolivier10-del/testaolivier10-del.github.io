@@ -479,3 +479,20 @@ Site audit follow-up (2026-10-02, workstream W6):
     with the action. The graph reader puts at most two value pills on a graph (more are read in the list). Calculators
     move each result's reference line to Explanation ("Usual values") and draw the ossicles as three bones.
     Presentation only: pins, places, item ids, scoring, recording and deep links are unchanged.
+98. (2026-11-11) Tools pass 3, cleanup after the fresh-eyes judge (docs/tool-review/CLEANUP.md; report
+    docs/tool-review/pass3/anatomy-physiology.md). Feedback loops: on landing the stimulus box is ready and the six
+    other parts wait dimmed until the signal reaches them; the gauge drops "lower/higher" and says its state only off
+    the set point; "acts on the variable" appears once the response has acted; the skin scene's arteriole is a tube
+    in the dermis that narrows or widens (the arch read as a magnet). Calculators: a result the picture already prints
+    with its name or unit is not repeated under it (a result with a band keeps its card); with a slider the number
+    reads as the slider's value, tap to type. Graph reader: a marked point's label moves clear of the cursor's value
+    pill (and waits when the cursor is on that point); a region's name slides off the cursor line. Lab practical: a
+    figure that prints two or three views one above the other (found from the blank band between them, at least
+    three labels each side) shows one view at a time in Explore and Study, fitted to the stage (Upper view / Lower
+    view); quiz modes keep the whole figure. Pathway tracer: a wide figure (width at least 1.5 times height) fills
+    the stage width with the numbered list under it in rows of three. Predict: dial names show whole; without a
+    figure the dials are larger; "Show the chain" hides the run's step feed while the diagram is open. Leader lines of
+    hidden labels (lab-fit.js) are followed straight on past where the white thins, over crossing strokes (never
+    painted) and round one bend, to the drawing's colour; a straight upright run passing a label's side is an
+    outline and is no longer erased (it had cut the elbow's skin line, a gland figure's bracket and a leg's edge).
+    Presentation only: pins, places, labels, item ids, scoring, recording and deep links are unchanged.
