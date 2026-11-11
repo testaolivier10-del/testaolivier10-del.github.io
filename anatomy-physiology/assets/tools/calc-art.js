@@ -412,9 +412,19 @@
     // eardrum (an oval seen face on), the chain of three ossicles, the oval window
     svg.appendChild(S('ellipse', { cx: 70, cy: 86, rx: rd * 0.85, ry: rd, 'class': 'ca-drum' }));
     svg.appendChild(S('text', { x: 70, y: 86 + rd + 16, 'text-anchor': 'middle', 'class': 'cp-t' }, 'eardrum ' + H.fmt(ad, 0) + ' mm²'));
-    svg.appendChild(S('path', { d: 'M76,80 C96,60 120,52 140,60 C150,66 156,70 170,70 L196,78 C210,84 214,92 226,92 L250,88', 'class': 'ca-oss' }));
-    svg.appendChild(S('path', { d: 'M248,76 l14,0 l0,24 l-14,0 Z', 'class': 'ca-stapes' }));
-    svg.appendChild(S('text', { x: 150, y: 44, 'text-anchor': 'middle', 'class': 'cp-t' }, 'ossicles: lever × ' + H.fmt(env[p.lv], 1)));
+    /* Pass 2 (2026-11-10): the three bones drawn as bones (it was one rope). Malleus: its handle on the
+       eardrum, its head up in the middle ear; incus: body against the malleus head, long process down to the
+       stapes; stapes: head, two arms, footplate in the oval window. */
+    svg.appendChild(S('path', { d: 'M74,92 L110,58', 'class': 'ca-oss ca-bone' }));
+    svg.appendChild(S('circle', { cx: 116, cy: 51, r: 9, 'class': 'ca-bonefill' }));
+    svg.appendChild(S('ellipse', { cx: 137, cy: 52, rx: 12, ry: 9, 'class': 'ca-bonefill' }));
+    svg.appendChild(S('path', { d: 'M147,46 L162,40', 'class': 'ca-oss ca-bone' }));
+    svg.appendChild(S('path', { d: 'M138,60 C146,80 176,88 206,87', 'class': 'ca-oss ca-bone' }));
+    svg.appendChild(S('circle', { cx: 211, cy: 87, r: 4.5, 'class': 'ca-bonefill' }));
+    svg.appendChild(S('path', { d: 'M214,84 L250,76 M214,90 L250,100', 'class': 'ca-oss ca-crus' }));
+    svg.appendChild(S('path', { d: 'M248,72 l10,0 l0,32 l-10,0 Z', 'class': 'ca-stapes' }));
+    [['malleus', 104, 44, 'end'], ['incus', 160, 66, 'start'], ['stapes', 232, 68, 'middle']].forEach(function(b){ svg.appendChild(S('text', { x: b[1], y: b[2], 'text-anchor': b[3], 'class': 'cp-tick' }, b[0])); });
+    svg.appendChild(S('text', { x: 150, y: 34, 'text-anchor': 'middle', 'class': 'cp-t' }, 'ossicles: lever × ' + H.fmt(env[p.lv], 1)));
     svg.appendChild(S('ellipse', { cx: 276, cy: 88, rx: rf * 0.6, ry: rf, 'class': 'ca-window' }));
     svg.appendChild(S('text', { x: 276, y: 88 + Math.max(rf, 10) + 16, 'text-anchor': 'middle', 'class': 'cp-t' }, 'oval window ' + H.fmt(af, 1) + ' mm²'));
     svg.appendChild(S('text', { x: 180, y: 18, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, 'pressure × ' + H.val(c, env, p.gain)));
@@ -989,7 +999,7 @@
     var rate = p.mode === 'rate', u = rate ? ' L/h' : ' L';
     svg.appendChild(S('text', { x: 6, y: 14, 'class': 'cp-v' }, 'evaporates: ' + H.val(c, env, p.ev) + u + ', carries ' + H.val(c, env, p.heat) + ' kcal' + (rate ? '/h' : '')));
     svg.appendChild(S('text', { x: 6, y: 30, 'class': 'cp-t' }, 'drips off: ' + H.val(c, env, p.drip) + u + ', carries no heat away'));
-    svg.appendChild(S('text', { x: W - 6, y: 172, 'text-anchor': 'end', 'class': 'ca-in' }, 'glands secrete ' + (rate ? H.val(c, env, p.sec) : H.fmt(env[p.v], 2)) + u));
+    svg.appendChild(S('text', { x: W - 6, y: 172, 'text-anchor': 'end', 'class': 'cp-t ca-in2' }, 'glands secrete ' + (rate ? H.val(c, env, p.sec) : H.fmt(env[p.v], 2)) + u));
     return { svg: svg, cap: 'Only sweat that evaporates takes heat with it, about 580 kcal per liter; sweat that drips off is lost water without cooling. ' + (rate ? 'To shed ' + H.fmt(env[p.heat], 0) + ' kcal an hour, ' + H.val(c, env, p.ev) + ' L/h must evaporate; with ' + H.fmt(env[p.share], 0) + '% evaporating, the glands must secrete <b>' + H.val(c, env, p.sec) + ' L/h</b>.' : 'Here ' + H.val(c, env, p.ev) + ' L evaporates: <b>' + H.val(c, env, p.heat) + ' kcal</b>.') };
   };
 

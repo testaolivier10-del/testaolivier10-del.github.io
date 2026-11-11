@@ -150,3 +150,6 @@
 .calc-svg .ca-tank{fill:none;stroke:var(--line);stroke-width:2;}
 .calc-svg .ca-halo2{paint-order:stroke;stroke:var(--white);stroke-width:3px;}
 .calc-svg .ca-sugar{fill:#fff;stroke:#9AA6A4;stroke-width:.8;}
+/* Pass 2 (2026-11-10): the ossicles as three bones */
+.calc-svg .ca-oss.ca-bone{stroke-width:6;} .calc-svg .ca-oss.ca-crus{stroke-width:3.5;}
+.calc-svg .ca-bonefill{fill:var(--ca-bone-l);}

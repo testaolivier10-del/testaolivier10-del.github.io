@@ -281,7 +281,7 @@
       }).join('') + '</div>' : '';
     var K = window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit : null;
     body.innerHTML =
-      '<p class="kt-first calc-first">' + (c.picture ? 'Drag a slider or type a number, and watch the picture and the answer change.' : 'Type your numbers and the answer and every step update as you go.') + '</p>' +
+      '<p class="kt-first calc-first">' + (c.picture ? 'Drag a slider and watch the picture change.' : 'Type your numbers and the answer and every step update as you go.') + '</p>' +
       (c.picture ? '<figure class="calc-pic" aria-label="Live picture"></figure>' : '') +
       '<div class="calc-grid">' +
         '<form class="calc-inputs" novalidate onsubmit="return false">' + c.inputs.map(function(inp){
@@ -999,6 +999,19 @@
     var pic = body.querySelector('.calc-pic'), out = body.querySelector('.calc-out');
     if(pic){ pic.classList.add('ls-fit'); own('stage', pic); }
     own('stage', out);
+    /* Pass 2 (2026-11-10): the stage keeps each result, its unit and its band; the reference line under
+       it ("About 37 to 47% in women ...") is read under Explanation, kept current. */
+    var refs = document.createElement('div');
+    refs.className = 'ls-sec calc-ls-refs';
+    var syncRefs = function(){
+      var ns = [].slice.call(out.querySelectorAll('.calc-result')).filter(function(r){ return r.querySelector('.calc-normal'); });
+      refs.hidden = !ns.length;
+      refs.innerHTML = '<h3 class="ls-h">Usual values</h3>' + ns.map(function(r){ var lb = r.querySelector('.calc-result-label'); return '<p><b>' + (lb ? lb.innerHTML : '') + ':</b> ' + r.querySelector('.calc-normal').innerHTML.replace(/^<b>Reference:<\/b>\s*/, '') + '</p>'; }).join('');
+    };
+    syncRefs();
+    if(window.MutationObserver) new MutationObserver(syncRefs).observe(out, { childList: true });
+    out.classList.add('calc-out-norefs');
+    own('why', refs);
     own('dock', body.querySelector('.calc-inputs'));
     keepPickerLast();
     var more = body.querySelector('.calc-more'), work = body.querySelector('.calc-workd');
