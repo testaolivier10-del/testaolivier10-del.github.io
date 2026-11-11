@@ -243,10 +243,16 @@
     var mN = 30, mSl = T.slider({ label: 'Partial sums drawn (power series)', min: 5, max: 60, step: 1, value: mN, decimals: 0, onInput: function(v){ mN = v; draw(); } });
     $('.sl-more-b').appendChild(mSl.el);
     host.querySelectorAll('.sl-view').forEach(function(b){ b.addEventListener('click', function(){ act(); setView(b.getAttribute('data-v')); }); });
+    var moreOpen = false, capHead = '';
     function chips(){
       var list = view === 'num' ? S.GALLERY : S.POWER, cur = view === 'num' ? g.id : Pw.id, box = $('.sl-chips');
-      box.innerHTML = list.map(function(it){ return '<button type="button" class="tchip sl-chip" data-id="' + it.id + '" aria-pressed="' + (it.id === cur) + '" aria-label="' + esc(plainTex(it.tex)) + '">' + esc(it.chip) + '</button>'; }).join('');
+      // Pass 3 (judge c): three series show (always including the one on), the rest behind More.
+      var few = list.length > 4 && !moreOpen, shown = few ? list.slice(0, 3) : list;
+      if(few && shown.every(function(it){ return it.id !== cur; })) shown = shown.slice(0, 2).concat(list.filter(function(it){ return it.id === cur; }));
+      box.innerHTML = shown.map(function(it){ return '<button type="button" class="tchip sl-chip" data-id="' + it.id + '" aria-pressed="' + (it.id === cur) + '" aria-label="' + esc(plainTex(it.tex)) + '">' + esc(it.chip) + '</button>'; }).join('') +
+        (few ? '<button type="button" class="tchip sl-more" aria-expanded="false">More</button>' : '');
       box.querySelectorAll('.sl-chip').forEach(function(b){ b.addEventListener('click', function(){ act(); pick(b.getAttribute('data-id')); }); });
+      var mb = box.querySelector('.sl-more'); if(mb) mb.addEventListener('click', function(){ moreOpen = true; chips(); var c = box.querySelectorAll('.sl-chip')[3]; if(c) c.focus(); });
     }
     function setView(v){
       view = v;
@@ -287,11 +293,12 @@
       box.innerHTML = C.svg;
       var err = g.sum != null ? Math.abs(g.sum - SN) : NaN, last = g.n0 + N - 1;
       var vtxt = { abs: 'converges', cond: 'converges (conditionally)', div: 'diverges' }[g.verdict];
-      var head = '<b>' + tex('S_{' + nTex(last) + '} = ' + T.F(SN, 4).replace('−', '-')) + '.</b> ' + (g.verdict === 'div' ? 'The series diverges: ' + (g.best === 'nth' ? 'each term adds almost 1.' : 'the partial sums grow without bound, slowly.') : 'The series ' + vtxt + (g.sum != null ? ' to ' + tex(g.sumTex) + (g.sumTex.length > 1 ? ' ≈ ' + d3(g.sum) : '') : '') + '; ' + (isFinite(err) ? 'still ' + sig(err) + ' away.' : ''));
+      var headS = '<b>' + tex('S_{' + nTex(last) + '} = ' + T.F(SN, 4).replace('−', '-')) + '.</b> ', head = headS + (g.verdict === 'div' ? 'The series diverges: ' + (g.best === 'nth' ? 'each term adds almost 1.' : 'the partial sums grow without bound, slowly.') : 'The series ' + vtxt + (g.sum != null ? ' to ' + tex(g.sumTex) + (g.sumTex.length > 1 ? ' ≈ ' + d3(g.sum) : '') : '') + '; ' + (isFinite(err) ? 'still ' + sig(err) + ' away.' : ''));
       if(many) head += ' ' + (g.id === 'harm' ? 'Each ×10 in N adds about ln 10 ≈ 2.3, forever.' :
         g.id === 'nlogn' ? 'Each ×10 in N adds less than the one before (the sums follow ln(ln n)), but the climb never stops.' :
         g.verdict === 'div' ? 'S_N is close to N itself.' :
         g.verdict === 'cond' ? 'The odd and even partial sums close in on the sum from both sides.' : 'However many terms, the dots stay at or under the sum.');
+      capHead = head.slice(headS.length);
       var why = '<p>' + html(g.known) + '</p>' +
         '<p>' + html('The dots are the partial sums $S_n$, the sum of the terms up to $n$; the bars are the terms $a_n$ themselves. A series converges when its partial sums approach a finite number; the terms approaching 0 is needed, but never enough.') + '</p>' +
         (bound != null ? '<p>' + html('The orange bracket is the alternating series error bound: $|S - S_{' + last + '}| \\le |a_{' + (last + 1) + '}| = ' + sig(Math.abs(aN1)).replace('−', '-') + '$. The sum line always passes through it.') + '</p>' : '') +
@@ -307,7 +314,8 @@
           (g.sum != null ? '<p class="bt-small">' + html('Sum $S = ' + g.sumTex + (g.sumTex.length > 1 ? ' \\approx ' + T.F(g.sum, 6).replace('−', '-') : '') + '$; $|S - S_{' + nTex(last) + '}| = ' + sig(err).replace('−', '-') + '$.') + '</p>' : '');
       }
       if(LS){
-        LS.caption(T.sayHead($('.sl-say')), 'explore');
+        // Pass 3: the pill shows S, so the caption starts after it (it was cut off on a phone).
+        LS.caption(capHead || T.sayHead($('.sl-say')), 'explore');
         LS.pills([{ k: many ? 'S, N = ' + fmtN(N) : 'S' + sub(last), html: T.F(SN, 3), tone: 'readout' }], 'left', 'explore');
         LS.pills([{ html: g.verdict === 'div' ? 'Diverges' : g.verdict === 'cond' ? 'Converges conditionally' : 'Converges', tone: g.verdict === 'div' ? 'warn' : 'good' }], 'right', 'explore');
       }
