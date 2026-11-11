@@ -183,9 +183,12 @@
       // Each country: its currency's new value, then its net exports and capital flow.
       var land = function(c, side){
         var home = side === 'h', m = home ? a : b, cur = home ? n.X : n.Y, val = same ? '' : (home ? up : !up) ? 'up' : 'down';
-        return '<div class="fxl-land is-' + side + '"><b>' + esc(cap(c.place)) + '</b><small>pays in ' + pl(cur) + '</small>' +
-          (val ? '<span class="fxl-r is-' + val + '">' + cap(cur) + (val === 'up' ? ' appreciates ↑' : ' depreciates ↓') + (st.nums ? '<small>' + fmtRate(m.r0) + ' → ' + fmtRate(m.r1) + '</small>' : '') + '</span>' : '') + res(home) + '</div>';
+        // Pass 2: the rates already sit on the graphs' axes, so the box names only the direction.
+        return '<div class="fxl-land is-' + side + '"><b>' + esc(cap(c.place)) + '</b>' +
+          (val ? '<span class="fxl-r is-' + val + '">' + cap(cur) + (val === 'up' ? ' appreciates ↑' : ' depreciates ↓') + '</span>' : '') + res(home) + '</div>';
       };
+      // Pass 2: on a wide stage the trade picture appears once something changes (nothing to show before).
+      fig.classList.toggle('is-idle', same && !cp && !sh && !st.d && !st.s);
       var tz = fig.querySelector('.fxl-tab[data-p=z]');
       if(tz) tz.classList.toggle('is-new', !same && st.panel !== 'z');
       el.so.innerHTML = '<p class="fxl-who">' + who + '</p>' +
