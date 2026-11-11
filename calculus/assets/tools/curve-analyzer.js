@@ -57,7 +57,7 @@
         '<div class="ca-stage">' +
           '<div class="ca-curves">' +
             '<div class="ca-graphs-wrap" tabindex="0" role="slider" aria-label="Cursor on the graphs of f, f′ and f″: arrow keys move it"><svg class="ca-graphs" aria-hidden="true"></svg></div>' +
-            '<p class="ca-legend" aria-hidden="true"><span class="ca-lg s1">f</span><span class="ca-lg s2">f′</span><span class="ca-lg s3">f″</span><span class="ca-lg ca-lg-crit">critical point</span><span class="ca-lg ca-lg-poi">inflection</span></p>' +
+            '<p class="ca-legend" aria-hidden="true"><span class="ca-lg ca-lg-crit">critical point</span><span class="ca-lg ca-lg-poi">inflection</span></p>' +
           '</div>' +
           '<div class="ca-opt" hidden>' +
             '<div class="ca-scene-wrap"><svg class="ca-scene" viewBox="0 0 420 230" preserveAspectRatio="xMidYMid meet" role="img"></svg></div>' +
