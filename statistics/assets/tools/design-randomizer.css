@@ -32,11 +32,15 @@ body.stat{
 .sl-fig.is-wide .sl-meansbox{height:min(62%,420px);}
 /* Design randomizer, wide: the bench on the left (its A and B key under it), the results on the right at full
    height, before and after a run alike. The rows of estimates are the lesson, so each gets real room. */
-.dr-fig.is-wide{grid-template-columns:minmax(0,1.15fr) minmax(320px,1fr);grid-template-rows:minmax(0,1fr) auto;column-gap:22px;row-gap:6px;}
+.dr-fig.is-wide{grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);grid-template-rows:minmax(0,1fr) auto;column-gap:22px;row-gap:6px;}
 .dr-fig.is-wide .dr-scenebox{grid-column:1;grid-row:1;}
 .dr-fig.is-wide .dr-trkey{grid-column:1;grid-row:2;}
 .dr-fig.is-wide .sl-side{grid-column:2;grid-row:1 / span 2;justify-content:flex-start;}
 .dr-fig.is-wide .dr-estbox{flex:1 1 auto;height:auto;min-height:240px;}
+/* pass 3: no runs yet, so no empty plot: the scene takes the stage */
+.dr-fig.is-empty .sl-side{display:none;}
+.dr-fig.is-empty.is-wide{grid-template-columns:minmax(0,1fr);}
+.dr-fig.is-empty .dr-scenebox{flex:1 1 auto;}
 .ls-root .stat-ls-stage .sl-fig{flex:1;}
 .ls-root.ls-phone .ls-stage:not(.is-big) .sl-meansbox{height:136px;}
 .sl-strip{flex:none;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;min-height:26px;font:700 calc(12.5px * var(--ls-scale, 1)) var(--font-ui);padding:0 2px;}
@@ -66,7 +70,7 @@ body.stat{
 .dr-stem{stroke:var(--dr-stem);stroke-width:4;stroke-linecap:round;fill:none;}
 .dr-leaf{fill:var(--dr-leaf);}
 .dr-fruit{fill:var(--dr-fruit);}
-.dr-val{fill:#fff;font:900 15px var(--font-mono);}
+.dr-val{fill:#fff;font:900 21px var(--font-mono);}
 /* the memory study */
 .dr-room{fill:var(--dr-room);}
 .dr-chair{fill:var(--dr-chair);}
@@ -86,7 +90,7 @@ body.stat{
 .dr-stake{stroke:var(--dr-stake);stroke-width:3;}
 .dr-score rect{fill:var(--white);stroke:var(--line);stroke-width:2;}
 .dr-score text{fill:var(--ink);font:900 16px var(--font-mono);}
-.dr-lab{fill:var(--muted);font:800 12px var(--font-mono);}
+.dr-lab{fill:var(--muted);font:800 17px var(--font-mono);}
 .ls-root.ls-phone .ls-stage:not(.is-big) .dr-lab{display:none;}
 .dr-hit{fill:transparent;cursor:pointer;}
 .dr-sel{fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:7 5;}
