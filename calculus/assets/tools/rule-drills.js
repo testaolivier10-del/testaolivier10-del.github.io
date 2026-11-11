@@ -389,7 +389,9 @@
         var w = el.stage.getBoundingClientRect().width;
         if(!w) return;
         var narrow = w < 520;
-        el.stage.classList.toggle('rd-wide', w >= 720);
+        // Pass 2: one picture, the tree. The graphs of f and f′ moved off the stage (they stay in Details, "f and f′"),
+        // so a wide stage no longer splits into tree and side panel.
+        el.stage.classList.toggle('rd-wide', false);
         el.stage.classList.toggle('rd-narrow', narrow);
         if(cur) drawTree();
       }
@@ -444,6 +446,13 @@
         el.tree.innerHTML = treeHtml(cur.node, { showD: true, showDAll: true, noRootD: true, slimRoot: true, depth: dp });
         if(!nw || dp === 1 || fits()) break;
       }
+      // Pass 2: with the tree the only picture, a wide stage draws it larger, if it still fits across.
+      el.tree.style.zoom = '';
+      if(el.stage.getBoundingClientRect().width >= 720){
+        el.tree.style.zoom = '1.3';
+        var tb = el.tree.getBoundingClientRect(), wide = [].some.call(el.tree.querySelectorAll('.rd-node'), function(n){ var r = n.getBoundingClientRect(); return r.right > tb.right + 0.5 || r.left < tb.left - 0.5; });
+        if(wide || el.tree.scrollWidth > el.tree.clientWidth + 1) el.tree.style.zoom = '';
+      }
       fitRoom();
     }
     // Nothing scrolls sideways or is cut: the tree, and every card in it.
@@ -456,7 +465,7 @@
     }
     function fitRoom(){
       var wide = el.stage.classList.contains('rd-wide'), main = el.stage.querySelector('.rd-main');
-      var used = el.tree.getBoundingClientRect().bottom - main.getBoundingClientRect().top, room = wide ? 0 : el.stage.clientHeight - used - 12, on = !wide && room >= 170, was = el.stage.classList.contains('rd-room');
+      var used = el.tree.getBoundingClientRect().bottom - main.getBoundingClientRect().top, room = wide ? 0 : el.stage.clientHeight - used - 12, on = false && !wide && room >= 170, was = el.stage.classList.contains('rd-room');
       el.stage.classList.toggle('rd-room', on);
       if(on && !was) requestAnimationFrame(drawPlot);
     }
