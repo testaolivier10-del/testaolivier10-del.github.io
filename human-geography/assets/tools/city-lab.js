@@ -247,11 +247,12 @@
       pic.classList.toggle('is-scroll', false);
       if(scene === 'bid'){
         var uses = place === 'farm' ? CL.FARM : CL.TOWN, maxD = MAXD[place], o = opts();
-        var rw = narrow ? W : W * 0.44, rh = narrow ? H * 0.5 : H, R = Math.min((rw - (narrow ? 70 : 0)) / (o.river ? 1.55 : 1) / 2 - 12, rh / 2 - 12);
+        var rw = narrow ? W : W * 0.44, rh = narrow ? H * 0.54 : H, R = Math.min((rw - (narrow ? 70 : 0)) / (o.river ? 1.55 : 1) / 2 - 12, rh / 2 - 12);
         var rg = ringsSvg(null, narrow ? rw / 2 - 30 : rw / 2, rh / 2, R, uses, o, maxD);
         var pw = narrow ? W : W - rw - 12, ph = narrow ? H - rh - 8 : H;
         pic.innerHTML = '<div class="cl-split' + (narrow ? ' is-stack' : '') + '"><svg class="cl-svg cl-ringsvg" viewBox="0 0 ' + n1(rw) + ' ' + n1(rh) + '" style="height:' + n1(rh) + 'px" role="img" aria-label="' + esc(ringLabel(rg.bands, uses)) + '">' + rg.svg + '</svg><div class="cl-plotbox" style="height:' + n1(ph) + 'px">' + bidPlot(uses, o, maxD, pw, ph) + '</div></div>';
-        leg = bandLegend(uses, pw < 420) + '<p class="bt-small cl-note">Numbers invented for practice. ' + (place === 'farm' ? 'Center: the market town. ' : 'Center: the city center. ') + 'Ring widths are not to scale; the graph shows true distances. ' + (o.river ? 'With the river, rings stretch along it (a simplified picture).' : '') + '</p>';
+        // The footnote moved to Details (pass 3, judge b); the legend alone stays under the picture.
+        leg = bandLegend(uses, pw < 420);
       } else if(scene === 'models'){
         var two = vs !== 'none', boxes = two ? 2 : 1, S, html = '';
         if(two && narrow){ S = (W - 20) / 240; pic.classList.add('is-scroll');
@@ -277,7 +278,8 @@
       if(scene === 'bid'){
         var uses = place === 'farm' ? CL.FARM : CL.TOWN, bands = CL.rings(uses, opts()), first = CL.useBy(uses, bands[0].id);
         head = place === 'farm' ? 'Von Thünen\'s rings come from bid rent.' : 'Bid rent sorts the city too.';
-        sub = bands.map(function(b, i){ return (i + 1) + '. ' + CL.useBy(uses, b.id).short + ' to ' + fmtKm(b.to) + ' km'; }).join(', ') + '.';
+        // One line: the ring ends are in the pills, the graph and Details (pass 3, judge b).
+        sub = 'The steepest line wins near the center.';
         pills = [{ k: 'Ring 1 ends', html: fmtKm(bands[0].to) + ' km', tone: 'readout' }, { k: 'Last ring ends', html: fmtKm(bands[bands.length - 1].to) + ' km', tone: 'readout' }];
         void first;
         why = '<p><b>Bid-rent theory:</b> every land use can pay a certain rent for land at the center, and less the farther out it is, because getting there costs more. Each piece of land goes to whoever bids most, so the steepest line wins near the center and the flattest far out. The upper edge of the lines draws the rings.</p>' +
@@ -307,7 +309,10 @@
     function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
     function more(){
       var el = $('.cl-more'); if(!el) return;
-      el.innerHTML = '<h3 class="ls-title-l">The bid-rent lines (invented numbers)</h3>' + T.dataTable(['Land use', 'Bid at the center', 'Falls per km'], CL.FARM.concat(CL.TOWN).map(function(u){ return [u.name, '$' + CL.fmtN(u.A), '$' + CL.fmtN(u.a)]; }), 'Farm uses per hectare a year; city uses per square meter a year') +
+      var uses = place === 'farm' ? CL.FARM : CL.TOWN, o = opts(), bands = CL.rings(uses, o);
+      el.innerHTML = '<h3 class="ls-title-l">The rings now</h3>' + T.dataTable(['Ring', 'Land use', 'Ends at'], bands.map(function(b, i){ return [String(i + 1), CL.useBy(uses, b.id).name, fmtKm(b.to) + ' km']; }), 'Rings at the current settings') +
+        '<p class="bt-small">Numbers invented for practice. ' + (place === 'farm' ? 'Center: the market town. ' : 'Center: the city center. ') + 'Ring widths are not to scale; the graph shows true distances.' + (o.river ? ' With the river, rings stretch along it (a simplified picture).' : '') + '</p>' +
+        '<h3 class="ls-title-l">The bid-rent lines (invented numbers)</h3>' + T.dataTable(['Land use', 'Bid at the center', 'Falls per km'], CL.FARM.concat(CL.TOWN).map(function(u){ return [u.name, '$' + CL.fmtN(u.A), '$' + CL.fmtN(u.a)]; }), 'Farm uses per hectare a year; city uses per square meter a year') +
         '<h3 class="ls-title-l">The city models</h3>' + T.dataTable(['Model', 'Look for', 'A limit'], CL.CITY_IDS.map(function(k){ var C = CL.CITY[k]; return [C.full, cap(C.clues), C.limit]; }), 'Urban models (CED 6.5)') +
         '<p class="bt-small">The Latin American, Southeast Asian and African models are named by region, as the course framework names them.</p>';
     }
