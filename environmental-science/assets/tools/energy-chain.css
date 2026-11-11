@@ -79,3 +79,12 @@
 .ech-chips[hidden]{display:none;}
 /* the first-run hint points here: a small spot near the top of the picture */
 .ech-hintspot{position:absolute;left:50%;top:6px;width:24px;height:24px;margin-left:-12px;pointer-events:none;}
+
+/* the plant scene and the wind a rotor does not catch (tool review 2026-11) */
+.ech-sky{fill:#EEF6FB;} :root[data-theme="dark"] .ech-sky{fill:#17262E;}
+.ech-ground{fill:#9DBB7A;} :root[data-theme="dark"] .ech-ground{fill:#3F5A33;}
+.ech-link{stroke:var(--ech-metal-e);stroke-width:5;stroke-linecap:round;opacity:.75;}
+.ech-link.is-res{stroke-dasharray:2 7;stroke-width:4;}
+.ech-link.is-wire{stroke-width:2;}
+.ech-waste.is-wind,.ech-wastehead.is-wind{fill:#56B4E9;}
+.ech-wv.is-wind{fill:#1F6FA3;} :root[data-theme="dark"] .ech-wv.is-wind{fill:#8FCBF2;}

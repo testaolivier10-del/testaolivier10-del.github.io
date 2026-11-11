@@ -7,9 +7,11 @@
    Explore, two views:
      Follow the energy  100 units of energy from the resource to the outlet:
                         a flow band (its width is the energy left) through
-                        illustrated stages (fuel, boiler or reactor or rotor,
-                        turbine, generator, power lines, home), with each
-                        step's waste heat peeling off below it. Tap a stage
+                        the plant drawn as its machines standing in a row
+                        (fuel, boiler or reactor or rotor, turbine,
+                        generator, pylons, home), with each step's loss
+                        peeling off below it: waste heat, except the wind a
+                        rotor does not catch, which stays in the wind (Betz). Tap a stage
                         (or Tab to it) for what it loses and why. Control: the
                         source chips. Details: a month of a home's
                         electricity traced back to its fuel and CO2.
@@ -70,8 +72,16 @@
     var c = E.chain(id, 100), S = E.SOURCES[id], n = c.stages.length + 2, out = [], vert = W < 560;
     var A0, A1, mid, bandMax, cEnd;
     if(vert){ A0 = 22; A1 = H - 30; bandMax = Math.min(W * 0.26, 100); mid = W * 0.5; cEnd = W - 34; }
-    else { A0 = 20; A1 = W - 20; bandMax = Math.min(H * 0.3, 150); mid = 112 + bandMax / 2; cEnd = H - 92; }
+    var step0 = vert ? 0 : (W - 40) / n, isz = vert ? 0.66 : Math.max(0.9, Math.min(2.1, step0 / 50, (H - 300) / 150)), icy = 34 + 22 * isz, gY = icy + 22 * isz + 4;
+    if(!vert){ A0 = 20; A1 = W - 20; bandMax = Math.min(H * 0.24, 130); mid = gY + 54 + bandMax / 2; cEnd = H - 92; }
     var step = (A1 - A0) / n;
+    // Wind the rotor does not catch stays in the wind (Betz), it is not heat (tool review 2026-11).
+    function lostCls(st){ return st.id === 'rotor' ? ' is-wind' : ''; }
+    // the plant itself, wide screens: each machine drawn standing on the ground, joined by its pipe, shaft or wire
+    if(!vert){
+      out.push('<rect class="ech-sky" x="' + n2(A0) + '" y="26" width="' + n2(A1 - A0) + '" height="' + n2(gY - 26) + '" rx="10"/><rect class="ech-ground" x="' + n2(A0) + '" y="' + n2(gY - 6) + '" width="' + n2(A1 - A0) + '" height="10" rx="3"/>');
+      for(var li = 0; li < n - 1; li++){ var la = A0 + step * (li + 0.5), lb = A0 + step * (li + 1.5); out.push('<line class="ech-link' + (li === 0 ? ' is-res' : li >= n - 3 ? ' is-wire' : '') + '" x1="' + n2(la + 18 * isz) + '" y1="' + n2(icy) + '" x2="' + n2(lb - 18 * isz) + '" y2="' + n2(icy) + '"/>'); }
+    }
     function at(i){ return A0 + step * (i + 0.5); }
     function P(a, cc){ return vert ? n2(cc) + ' ' + n2(a) : n2(a) + ' ' + n2(cc); }
     function hOf(e){ return Math.max(2.5, bandMax * e / 100); }
@@ -82,14 +92,14 @@
       var xa = at(i + 1), xb = at(i + 2), xm = (xa + xb) / 2, h0 = hOf(s.ein), h1 = hOf(s.eout), w = hOf(s.waste);
       if(s.waste > 0.05){
         var y0 = mid - h0 / 2 + h1, wx = xa + Math.min(step * 0.42, 34), aw = Math.max(5, w * 0.6), tip = wx - w / 2;
-        out.push('<path class="ech-waste' + (sel === i ? ' is-sel' : '') + '" d="M' + P(xa, y0) + 'C' + P(xa + step * 0.3, y0) + ' ' + P(wx, y0 + 10) + ' ' + P(wx, Math.max(y0 + 12, cEnd - 10)) + 'L' + P(wx - w, Math.max(y0 + 12, cEnd - 10)) + 'C' + P(wx - w, y0 + w + 6) + ' ' + P(xa + step * 0.15, mid + h0 / 2) + ' ' + P(xa, mid + h0 / 2) + 'Z"/>');
-        out.push('<path class="ech-wastehead" d="M' + P(tip - aw, cEnd - 10) + 'L' + P(tip + aw, cEnd - 10) + 'L' + P(tip, cEnd) + 'Z"/>');
-        out.push(vert ? txt(cEnd + 4, tip + 4, f0(s.waste), 'ech-t ech-wv', 'start') : txt(tip, cEnd + 14, f0(s.waste), 'ech-t ech-wv', 'middle'));
+        out.push('<path class="ech-waste' + lostCls(s) + (sel === i ? ' is-sel' : '') + '" d="M' + P(xa, y0) + 'C' + P(xa + step * 0.3, y0) + ' ' + P(wx, y0 + 10) + ' ' + P(wx, Math.max(y0 + 12, cEnd - 10)) + 'L' + P(wx - w, Math.max(y0 + 12, cEnd - 10)) + 'C' + P(wx - w, y0 + w + 6) + ' ' + P(xa + step * 0.15, mid + h0 / 2) + ' ' + P(xa, mid + h0 / 2) + 'Z"/>');
+        out.push('<path class="ech-wastehead' + lostCls(s) + '" d="M' + P(tip - aw, cEnd - 10) + 'L' + P(tip + aw, cEnd - 10) + 'L' + P(tip, cEnd) + 'Z"/>');
+        out.push(vert ? txt(cEnd + 4, tip + 4, f0(s.waste), 'ech-t ech-wv' + lostCls(s), 'start') : txt(tip, cEnd + 14, f0(s.waste) + (s.id === 'rotor' ? ' left in the wind' : ''), 'ech-t ech-wv' + lostCls(s), 'middle'));
       }
       out.push('<path class="ech-band" d="M' + P(xa, mid - h0 / 2) + 'C' + P(xm, mid - h0 / 2) + ' ' + P(xm, mid - h1 / 2) + ' ' + P(xb, mid - h1 / 2) + 'L' + P(xb, mid + h1 / 2) + 'C' + P(xm, mid + h1 / 2) + ' ' + P(xm, mid - h0 / 2 + h1) + ' ' + P(xa, mid - h0 / 2 + h1) + 'Z"/>');
     });
     // every number is in units of energy out of the 100 the fuel holds (= % of the fuel's energy)
-    out.push(vert ? txt(W - 4, A0 + 2, 'Heat lost', 'ech-t ech-s ech-c-heat', 'end') + txt(W - 4, A0 + 16, '(units)', 'ech-t ech-s ech-c-heat', 'end') : txt(A0, cEnd + 14, 'Waste heat (units of the 100)', 'ech-t ech-s ech-c-heat'));
+    out.push(vert ? txt(W - 4, A0 + 2, id === 'wind' ? 'Lost' : 'Heat lost', 'ech-t ech-s ech-c-heat', 'end') + txt(W - 4, A0 + 16, '(units)', 'ech-t ech-s ech-c-heat', 'end') : txt(A0, cEnd + 14, id === 'wind' ? 'Lost (units of the 100)' : 'Waste heat (units of the 100)', 'ech-t ech-s ech-c-heat'));
     // the stage labels and tap targets
     var labels = [{ name: S.name, k: S.icon, e: 100 }].concat(c.stages.map(function(s){ return { name: s.name, k: s.id === 'grid' ? 'grid' : s.id, e: s.eout, eff: s.eff }; })).concat([{ name: 'Your outlet', k: 'home', e: c.delivered }]);
     labels.forEach(function(l, i){
@@ -102,10 +112,10 @@
         if(isStage) g += txt(48, a + 14, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s');
       } else {
         g += '<rect class="ech-hit" x="' + n2(a - step / 2 + 2) + '" y="8" width="' + n2(step - 4) + '" height="' + n2(mid + bandMax / 2 + 26) + '" rx="10"/>';
-        g += (ICON[l.k] || ICON.gen)(a, 46, 0.72);
+        g += (ICON[l.k] || ICON.gen)(a, icy, isz);
         g += txt(a, 18, esc(l.name), 'ech-t ech-name', 'middle');
-        // the efficiency sits under the icon, clear of the band and its waste heat
-        if(isStage) g += txt(a, 84, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s', 'middle');
+        // the efficiency sits under the ground line, clear of the band and its waste heat
+        if(isStage) g += txt(a, gY + 22, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s', 'middle');
       }
       g += '</g>';
       out.push(g);
@@ -119,11 +129,11 @@
     });
     // where the 100 units end up (wide screens with room)
     if(!vert && H - cEnd > 80){
-      var by = cEnd + 50, bx = A0, bw = A1 - A0, x = bx, parts = [{ v: c.delivered, cls: 'ech-band', t: 'Reaches you ' + f0(c.delivered) }].concat(c.stages.filter(function(s){ return s.waste > 0.05; }).map(function(s){ return { v: s.waste, cls: 'ech-waste', t: (SHORT[s.name] || s.name) + ' ' + f0(s.waste), sel: c.stages.indexOf(s) === sel }; }));
+      var by = cEnd + 50, bx = A0, bw = A1 - A0, x = bx, parts = [{ v: c.delivered, cls: 'ech-band', t: 'Reaches you ' + f0(c.delivered) }].concat(c.stages.filter(function(s){ return s.waste > 0.05; }).map(function(s){ return { v: s.waste, cls: 'ech-waste', t: (SHORT[s.name] || s.name) + (s.id === 'rotor' ? ': left in the wind ' : ' ') + f0(s.waste), sel: c.stages.indexOf(s) === sel, wind: s.id === 'rotor' }; }));
       out.push(txt(bx, by - 8, 'Where the 100 units end up', 'ech-t ech-b'));
-      parts.forEach(function(p){ var ww = bw * p.v / 100; out.push('<rect class="' + p.cls + (p.sel ? ' is-sel' : '') + '" x="' + n2(x) + '" y="' + n2(by) + '" width="' + n2(Math.max(1, ww - 2)) + '" height="22" rx="4"/>'); if(ww > p.t.length * 6.6 + 8) out.push(txt(x + ww / 2, by + 15, p.t, 'ech-t ech-s ech-b ' + (p.cls === 'ech-band' ? 'ech-on-band' : 'ech-on-heat'), 'middle')); x += ww; });
+      parts.forEach(function(p){ var ww = bw * p.v / 100; out.push('<rect class="' + p.cls + (p.wind ? ' is-wind' : '') + (p.sel ? ' is-sel' : '') + '" x="' + n2(x) + '" y="' + n2(by) + '" width="' + n2(Math.max(1, ww - 2)) + '" height="22" rx="4"/>'); if(ww > p.t.length * 6.6 + 8) out.push(txt(x + ww / 2, by + 15, p.t, 'ech-t ech-s ech-b ' + (p.cls === 'ech-band' ? 'ech-on-band' : 'ech-on-heat'), 'middle')); x += ww; });
     }
-    return '<svg class="ech-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="' + esc('Energy chain for ' + S.name.toLowerCase() + ': of 100 units of energy, ' + c.stages.map(function(s){ return s.name.toLowerCase() + ' passes ' + f1(s.eout); }).join(', ') + '; ' + f1(c.delivered) + ' reach the outlet, ' + f1(100 - c.delivered) + ' leave as heat.') + '" xmlns="http://www.w3.org/2000/svg">' + out.join('') + '</svg>';
+    return '<svg class="ech-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="' + esc('Energy chain for ' + S.name.toLowerCase() + ': of 100 units of energy, ' + c.stages.map(function(s){ return s.name.toLowerCase() + ' passes ' + f1(s.eout); }).join(', ') + '; ' + f1(c.delivered) + ' reach the outlet, ' + f1(100 - c.delivered) + (id === 'wind' ? ' do not (most of it stays in the wind that passes the blades, the rest is heat).' : ' leave as heat.')) + '" xmlns="http://www.w3.org/2000/svg">' + out.join('') + '</svg>';
   }
 
   var MEASURES = [
@@ -196,7 +206,7 @@
       var c = E.chain(st.id, 100), S = E.SOURCES[st.id], head, why, pills = [], right = [];
       if(st.view === 'flow'){
         var s = st.sel != null ? c.stages[st.sel] : null;
-        head = s ? s.name + ': ' + Math.round(s.eff * 100) + '% efficient. Of ' + f1(s.ein) + ' units in, ' + f1(s.eout) + ' go on and ' + f1(s.waste) + ' leave as ' + s.lost + '.' : S.name + ': of 100 units of energy, ' + f1(c.delivered) + ' reach your outlet. The other ' + f1(100 - c.delivered) + ' leave as heat along the way.';
+        head = s ? s.name + ': ' + Math.round(s.eff * 100) + '% efficient. Of ' + f1(s.ein) + ' units in, ' + f1(s.eout) + ' go on and ' + f1(s.waste) + ' leave as ' + s.lost + '.' : S.name + ': of 100 units of energy, ' + f1(c.delivered) + ' reach your outlet. ' + (st.id === 'wind' ? 'Of the other ' + f1(100 - c.delivered) + ', ' + f1(c.stages[0].waste) + ' stay in the wind that passes the blades and ' + f1(100 - c.delivered - c.stages[0].waste) + ' leave as heat.' : 'The other ' + f1(100 - c.delivered) + ' leave as heat along the way.');
         pills = [{ k: 'To you', html: f1(c.total) + '%', tone: 'readout' }];
         right = [{ k: 'CO₂', html: S.co2 ? T.F(S.co2, 2) + ' lb/kWh' : 'none at plant', tone: S.co2 ? 'warn' : 'good' }];
         why = (s ? '<p><b>' + esc(s.name) + '.</b> ' + esc(WHY[s.id] || '') + '</p>' : '') +
@@ -218,7 +228,7 @@
       var fuelLine = S.fuelPer ? '<li>About <b>' + f0(st.kwh / E.LOSS * S.fuelPer.v) + ' ' + esc(S.fuelPer.unit) + '</b> burned (EIA: ' + S.fuelPer.v + ' per kWh generated)</li>' : '';
       var ho = $('.ech-homeout');
       if(ho) ho.innerHTML = '<ul class="ech-homelist"><li>The plant must make ' + big(f0(st.kwh / E.LOSS)) + ' kWh (5% is lost in the lines)</li><li>That takes <b>' + big(f0(fuelE)) + ' kWh</b> = <b>' + big(f0(fuelE * E.BTU_KWH / 1e6)) + ' million BTU</b> of ' + esc(S.fuel) + '</li>' + fuelLine + '<li>CO₂ at the plant: <b>' + (S.co2 ? big(f0(lbCO2)) + ' lb' : 'none') + '</b></li></ul>';
-      $('.ech-nums').innerHTML = '<h3 class="ls-title-l">Step by step (100 units in)</h3><table class="ls-tbl"><thead><tr><th scope="col">Step</th><th scope="col">Efficiency</th><th scope="col">Passes on</th><th scope="col">Waste heat</th></tr></thead><tbody>' +
+      $('.ech-nums').innerHTML = '<h3 class="ls-title-l">Step by step (100 units in)</h3><table class="ls-tbl"><thead><tr><th scope="col">Step</th><th scope="col">Efficiency</th><th scope="col">Passes on</th><th scope="col">Lost</th></tr></thead><tbody>' +
         c.stages.map(function(s){ return '<tr><th scope="row">' + esc(s.name) + '</th><td class="r">' + Math.round(s.eff * 1000) / 10 + '%</td><td class="r">' + f1(s.eout) + '</td><td class="r">' + f1(s.waste) + '</td></tr>'; }).join('') +
         '<tr><th scope="row">Whole chain</th><td class="r">' + f1(c.total) + '%</td><td class="r">' + f1(c.delivered) + '</td><td class="r">' + f1(100 - c.delivered) + '</td></tr></tbody></table>' +
         '<h3 class="ls-title-l">Units that come up</h3><table class="ls-tbl"><tbody><tr><th scope="row">1 kWh</th><td>3,412 BTU = 3.6 million J</td></tr><tr><th scope="row">1 W</th><td>1 J per second (power is a rate)</td></tr><tr><th scope="row">kW × hours</th><td>kWh (energy is an amount)</td></tr><tr><th scope="row">1 short ton</th><td>2,000 lb</td></tr><tr><th scope="row">1 metric ton</th><td>1,000 kg</td></tr></tbody></table>';
@@ -272,21 +282,22 @@
         var ul = api.area.querySelector('.bt-context ul.ech-list');
         if(ul){ var items = Array.prototype.map.call(ul.querySelectorAll('li'), function(li){ return li.textContent.replace(': ', ' '); }); var para = document.createElement('p'); para.textContent = 'The steps, in order: ' + items.join('; ') + '.'; ul.parentNode.replaceChild(para, ul); }
       },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); }
+      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); },
+      refit: function(api){ figure(api.fig, api.problem, api.st); }
     });
   }
   function figure(el, p, st){
-    var g = p.figure, phone = (window.innerWidth || 1280) <= 640, W = phone ? 360 : 640, H = phone ? 300 : 300, svg = '';
+    var g = p.figure, phone = (window.innerWidth || 1280) <= 640, W = phone ? 360 : g && g.kind === 'chain' ? 640 : 480, H = T.figSize(W, 300, { max: g && g.kind === 'chain' ? 0.62 : 0.5 })[1], svg = '';
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'chain'){
       // the problem's own efficiencies as a band; values appear once found
-      var e = 100, L = 16, R = W - 16, n = g.effs.length, cw = (R - L) / (n + 1), mid = 120, bm = phone ? 64 : 80, o = [];
+      var e = 100, L = 16, R = W - 16, n = g.effs.length, cw = (R - L) / (n + 1), bm = phone ? 64 : Math.min(130, 80 + (H - 300) * 0.3), mid = Math.max(120, H * 0.36), o = [];
       var names = E.SOURCES[g.source].stages.map(function(s){ return s.name; }).concat(['Power lines']);
       for(var i = 0; i < n; i++){
         var x0 = L + cw * i, x1 = x0 + cw, e1 = e * g.effs[i], h0 = bm * e / 100, h1 = bm * e1 / 100;
         o.push('<path class="ech-band" d="M' + n2(x0) + ' ' + n2(mid - h0 / 2) + 'L' + n2(x1) + ' ' + n2(mid - h0 / 2) + 'L' + n2(x1) + ' ' + n2(mid - h0 / 2 + h1) + 'L' + n2(x0) + ' ' + n2(mid - h0 / 2 + h1) + 'Z"/>');
-        o.push('<path class="ech-waste" d="M' + n2(x1) + ' ' + n2(mid - h0 / 2 + h1) + 'L' + n2(x1) + ' ' + n2(mid + h0 / 2) + 'L' + n2(x1 - 4) + ' ' + n2(H - 40) + 'L' + n2(x1 - 4 - (h0 - h1) * 0.6) + ' ' + n2(H - 40) + 'Z" opacity=".75"/>');
-        o.push(txt(x0 + cw / 2, mid - bm / 2 - 30, esc(phone ? names[i].split(' ').slice(-1)[0] : names[i]), 'ech-t ech-name', 'middle'));
+        o.push('<path class="ech-waste" d="M' + n2(x1) + ' ' + n2(mid - h0 / 2 + h1) + 'L' + n2(x1) + ' ' + n2(mid + h0 / 2) + 'L' + n2(x1 - 4) + ' ' + n2(Math.min(H - 40, mid + bm / 2 + 110)) + 'L' + n2(x1 - 4 - (h0 - h1) * 0.6) + ' ' + n2(Math.min(H - 40, mid + bm / 2 + 110)) + 'Z" opacity=".75"/>');
+        o.push(txt(x0 + cw / 2, mid - bm / 2 - 30, esc(phone ? names[i].split(' ').slice(-1)[0] : SHORT[names[i]] || names[i]), 'ech-t ech-name', 'middle'));
         o.push(txt(x0 + cw / 2, mid - bm / 2 - 12, Math.round(g.effs[i] * 1000) / 10 + '%', 'ech-t ech-eff', 'middle'));
         e = e1;
       }
