@@ -198,8 +198,8 @@
     function words_(){
       var head, sub = '', why = '';
       if(view === 'list'){
-        if(phase === 'ready'){ head = 'Study ten words, then recall them.'; sub = 'Choose when you recall, then press Start. The curves show the typical pattern.'; }
-        else if(phase === 'study'){ head = 'Word ' + (at + 1) + ' of ' + N + '.'; sub = 'Just read each word once.'; }
+        if(phase === 'ready'){ head = 'Study ten words, then recall them.'; sub = 'Choose when you recall, then press Start.'; }
+        else if(phase === 'study'){ head = 'Just read each word once.'; sub = ''; }
         else if(phase === 'delay'){ head = 'Count backward by threes from ' + countFrom + ', out loud.'; sub = left + ' seconds left. This keeps the last words from being rehearsed.'; }
         else if(phase === 'recall'){ head = 'Type every word you remember, in any order.'; sub = ML.score(words, typed).n + ' so far. Press Done when you are out of words.'; }
         else { var p = parts(result.hits); head = 'You recalled ' + result.n + ' of ' + N + '.'; sub = 'First 3: ' + p.f + ', middle 4: ' + p.m + ', last 3: ' + p.l + '. ' + (delayed ? 'After counting, the end of the list usually loses its advantage.' : 'Most people recall the ends best.'); }
@@ -228,7 +228,7 @@
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
         if(view === 'list'){
-          LS.pills(phase === 'study' ? [{ k: 'Word', html: (at + 1) + ' of ' + N, tone: 'readout' }] : phase === 'delay' ? [{ k: 'Counting', html: left + ' s', tone: 'warn' }] : result ? [{ k: 'You', html: result.n + ' of ' + N, tone: 'accent' }] : [], 'left', 'explore');
+          LS.pills(phase === 'delay' ? [{ k: 'Counting', html: left + ' s', tone: 'warn' }] : result ? [{ k: 'You', html: result.n + ' of ' + N, tone: 'accent' }] : [], 'left', 'explore');
           LS.pills([{ k: 'Recall', html: delayed ? 'after 30 s' : 'at once', tone: 'readout' }], 'right', 'explore');
         } else if(view === 'forget'){
           LS.pills([{ k: 'Reviews', html: String(reviews.length), tone: 'readout' }], 'left', 'explore');
@@ -273,14 +273,20 @@
 
     function listScene(W, H){
       var phone = W < 560, g = [], L = phone ? 46 : 56, R = W - (phone ? 36 : 26); // 46: room for "100%" at 12 px (audit 2026-11, C3)
-      var cardH = phase === 'ready' || phase === 'done' ? 0 : Math.min(150, H * 0.3), T0 = (phone ? 54 : 60) + (cardH ? cardH + 18 : 0);
-      var you = phase === 'done' && result ? 58 : 0, B = H - (phone ? 52 + ENL : 58) - you;
+      // The word card shows from the start (ready: what is about to happen), so the opening screen is the
+      // experiment, not an empty chart (pass 3, judge b). The "You" row of ten slots is always drawn: it is
+      // where your recall lands, and during study the current slot is the pointer.
+      var cardH = phase === 'done' ? 0 : Math.min(phone ? 116 : 150, H * 0.3), T0 = (phone ? 54 : 60) + (cardH ? cardH + 18 : 0);
+      var you = 58, B = H - (phone ? 52 + ENL : 58) - you;
       var x = function(i){ return L + (i + 0.5) / N * (R - L); }, y = function(v){ return B - v / 100 * (B - T0); };
       // the card: a word, the countdown or the typed words
       if(cardH){
         var cy = phone ? 50 : 56, cw = Math.min(R - L, 520), cx = (W - cw) / 2;
         g.push('<rect class="ml-cardbg" x="' + cx.toFixed(1) + '" y="' + cy + '" width="' + cw.toFixed(1) + '" height="' + cardH.toFixed(1) + '" rx="16"/>');
-        if(phase === 'study'){
+        if(phase === 'ready'){
+          g.push(txt(W / 2, cy + 26, 'Ten words, one at a time', 'ml-cardk'));
+          g.push('<text class="ml-word is-ready" x="' + (W / 2).toFixed(1) + '" y="' + (cy + cardH / 2 + 20).toFixed(1) + '" text-anchor="middle">Ready?</text>');
+        } else if(phase === 'study'){
           g.push(txt(W / 2, cy + 26, 'Word ' + (at + 1) + ' of ' + N, 'ml-cardk'));
           g.push('<text class="ml-word" x="' + (W / 2).toFixed(1) + '" y="' + (cy + cardH / 2 + 20).toFixed(1) + '" text-anchor="middle">' + esc(words[at]) + '</text>');
         } else if(phase === 'delay'){
@@ -302,7 +308,8 @@
       // experiment is not given away before it runs on you (tool review 2026-11).
       var reveal = !!result;
       [0, 25, 50, 75, 100].forEach(function(v){ g.push('<line class="ml-grid" x1="' + L + '" x2="' + R + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 8, y(v) + 4, v + '%', 'ml-tv', 'end')); });
-      if(phase === 'study' && at >= 0) g.push('<rect class="ml-now" x="' + (x(at) - (R - L) / N / 2 + 2).toFixed(1) + '" y="' + (T0 + 24) + '" width="' + ((R - L) / N - 4).toFixed(1) + '" height="' + (B - T0 - 24).toFixed(1) + '" rx="6"/>');
+      // The current word: a pointer at its position on the axis (not a tall bar, which read as a score).
+      if(phase === 'study' && at >= 0) g.push('<path class="ml-now" d="M' + x(at).toFixed(1) + ' ' + (B + 4) + ' l-7 -11 h14 z"/>');
       if(reveal){
         g.push('<rect class="ml-zone" x="' + (x(0) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
         g.push('<rect class="ml-zone" x="' + (x(7) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
@@ -312,9 +319,9 @@
         if(delayed) g.push(poly(cls.imm, 'ml-imm', true), poly(cls.del, 'ml-del', false)); else g.push(poly(cls.del, 'ml-del', true), poly(cls.imm, 'ml-imm', false));
         g.push(txt(x(4.5), y(cls.imm[4]) - 14, 'recall at once', 'ml-lab ml-c-imm'), txt(x(4.5), y(cls.del[4]) + 24, 'after 30 s of counting', 'ml-lab ml-c-del'));
       } else if(phase === 'ready' || phase === 'recall' || phase === 'delay'){
-        var my = (T0 + B) / 2 + (phase === 'ready' ? 0 : 10);
-        g.push(txt((L + R) / 2, my - 10, phase === 'ready' ? 'Press Start: ten words, one at a time.' : 'Which positions will you remember?', 'ml-empty'));
-        g.push(txt((L + R) / 2, my + 14, phone ? 'The curve appears once you score your recall.' : 'Your recall and the class curve appear here once you score it.', 'ml-hint'));
+        var my = (T0 + B) / 2 + 10;
+        g.push(txt((L + R) / 2, my - 10, 'Which positions will you remember?', 'ml-empty'));
+        if(!phone) g.push(txt((L + R) / 2, my + 14, 'The class curve appears here once you score your recall.', 'ml-hint'));
       }
       g.push('<line class="ml-axis" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/>');
       for(var i = 0; i < N; i++) g.push(txt(x(i), B + 18, String(i + 1), 'ml-tv'));
@@ -322,7 +329,7 @@
       if(you){
         var yy2 = B + 52;
         g.push(txt(L - 8, yy2 + 20, 'You', 'ml-axn', 'end'));
-        result.hits.forEach(function(h, j){ var cx2 = x(j); g.push('<circle class="ml-you' + (h ? ' is-hit' : '') + '" cx="' + cx2.toFixed(1) + '" cy="' + (yy2 + 15) + '" r="' + (phone ? 10 : 12) + '"/>' + (h ? '<path class="ml-tick" d="M' + (cx2 - 5).toFixed(1) + ' ' + (yy2 + 15) + ' l3.5 4 l7 -8"/>' : '')); });
+        (result && phase === 'done' ? result.hits : words.map(function(){ return false; })).forEach(function(h, j){ var cx2 = x(j); g.push('<circle class="ml-you' + (h ? ' is-hit' : '') + (phase === 'study' && j === at ? ' is-now' : phase === 'study' && j < at ? ' is-seen' : '') + '" cx="' + cx2.toFixed(1) + '" cy="' + (yy2 + 15) + '" r="' + (phone ? 10 : 12) + '"/>' + (h ? '<path class="ml-tick" d="M' + (cx2 - 5).toFixed(1) + ' ' + (yy2 + 15) + ' l3.5 4 l7 -8"/>' : '')); });
       }
       var label = !result ? 'Serial position chart, empty until you study and recall the list. ' + phaseLine() : 'Typical serial position curves (a teaching model): recall at once ' + cls.imm.map(r0).join(', ') + ' percent by position; after 30 seconds of counting ' + cls.del.map(r0).join(', ') + ' percent. ' + (result ? listLine() : phaseLine());
       return { svg: g.join(''), label: label };
