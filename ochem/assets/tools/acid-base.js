@@ -528,7 +528,7 @@
       var A = mol.atoms[p[0]], Z = mol.atoms[p[1]]; if(!A || !Z) return '';
       var dx = Z.x - A.x, dy = Z.y - A.y, L = Math.sqrt(dx * dx + dy * dy) || 1, ux = dx / L, uy = dy / L;
       var ox = -uy * 11, oy = ux * 11;
-      // the side away from the molecule's centre, so it never sits on another bond
+      // the side away from the molecule's center, so it never sits on another bond
       var mx = (A.x + Z.x) / 2, my = (A.y + Z.y) / 2;
       if(((mx + ox) - cxm) * ox + ((my + oy) - cym) * oy < 0){ ox = -ox; oy = -oy; }
       var x1 = A.x + dx * 0.3 + ox, y1 = A.y + dy * 0.3 + oy, x2 = A.x + dx * 0.72 + ox, y2 = A.y + dy * 0.72 + oy;

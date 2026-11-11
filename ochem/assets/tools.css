@@ -561,6 +561,48 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rr-ls .rr-ls-box > .rr-graph{flex:1 1 auto;min-height:260px;display:flex;}
 .rr-ls .rr-ls-box > .rr-graph svg{flex:1;width:100%;height:100%;max-height:none;}
 .rr-ls .rr-ls-box > .rr-stepcards{flex:none;margin:0;}
+/* Reagent roadmap (tool review 2026-11): the reagents ride the route's arrows; the route is played on one molecule
+   under the map; Groups is the picked group's own arrows, fanned in from above and out below. */
+.rr-graph .rr-edge__tag rect{fill:var(--white);stroke:var(--accent);stroke-width:1.5;}
+.rr-graph .rr-edge__tag text{font:800 11.5px var(--font-ui);fill:var(--accent-text,var(--accent));}
+.rr-ms{display:flex;flex-direction:column;gap:4px;}
+.rr-ms__head{margin:0;font:800 12.5px var(--font-ui);color:var(--muted);}
+.rr-ms__row{list-style:none;margin:0;padding:0 0 4px;display:flex;align-items:stretch;gap:4px;overflow-x:auto;scrollbar-width:thin;}
+.rr-ms__mol{flex:0 0 auto;width:150px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 8px;border-radius:14px;background:var(--surface2,var(--paper));--mol-bg:var(--surface2,var(--paper));}
+.rr-ms__mol.is-start,.rr-ms__mol.is-end{box-shadow:inset 0 0 0 2px var(--navy);}
+.rr-ms__k{align-self:flex-start;font:900 11px var(--font-ui);color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.rr-ms__pic{width:100%;height:84px;display:flex;align-items:center;justify-content:center;}
+.rr-ms__pic .scene{width:100%;height:100%;margin:0;padding:0;border:0;background:transparent;display:flex;align-items:center;justify-content:center;}
+.rr-ms__pic .omol svg{width:100%;height:100%;max-height:100%;}
+.rr-ms__name{font:800 13px/1.25 var(--font-ui);color:var(--ink);text-align:center;}
+.rr-ms__g{font:600 11.5px var(--font-ui);color:var(--muted);}
+.rr-ms__step{flex:0 0 auto;width:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;}
+.rr-ms__n{width:22px;height:22px;border-radius:11px;background:var(--accent);color:var(--on-accent-fill,#fff);display:inline-flex;align-items:center;justify-content:center;font:900 11.5px var(--font-mono);}
+.rr-ms__rx{font:700 12.5px/1.3 var(--font-ui);color:var(--ink);}
+.rr-ms__arrow{width:60px;height:14px;}
+.rr-ms__arrow path{stroke:var(--accent);stroke-width:2.5;fill:none;}
+.rr-ms__arrow .rr-ms__head{fill:var(--accent);stroke:none;}
+.rr-fan svg{display:block;width:100%;height:auto;}
+.rr-ls .rr-ls-box > .rr-fan{flex:1 1 auto;min-height:0;overflow:auto;}
+.rr-ls .rr-ls-box > .rr-fan svg{max-height:100%;}
+.rr-ls .rr-ls-box > .rr-fan.is-tall svg{max-height:none;}
+.rr-fan__card{cursor:pointer;}
+.rr-fan__card rect{fill:var(--white);stroke:var(--line);stroke-width:1.5;}
+.rr-fan__card.is-in rect{stroke:#C27A12;}
+.rr-fan__card.is-out rect{stroke:#1F8A6B;}
+.rr-fan__card:hover rect,.rr-fan__card:focus-visible rect{stroke-width:3;}
+.rr-fan__card:focus{outline:none;}
+.rr-fan__name{font:800 15px var(--font-ui);fill:var(--ink);}
+.rr-fan__rx{font:700 13px var(--font-ui);fill:var(--muted);}
+.rr-fan__arc path{fill:none;stroke-width:2.4;}
+.rr-fan__arc.is-in path{stroke:#C27A12;stroke-dasharray:6 4;} .rr-fan__arc.is-in .rr-fan__head{fill:#C27A12;stroke:none;}
+.rr-fan__arc.is-out path{stroke:#1F8A6B;} .rr-fan__arc.is-out .rr-fan__head{fill:#1F8A6B;stroke:none;}
+.rr-fan__center rect{fill:var(--surface2,var(--paper));stroke:var(--navy);stroke-width:2.5;}
+.rr-fan__cname{font:900 15px var(--font-ui);fill:var(--ink);}
+.rr-fan__cf{font:700 18px var(--font-mono);fill:var(--ink);}
+.rr-fan__k{font:900 12px var(--font-ui);text-transform:uppercase;letter-spacing:.04em;}
+.rr-fan__k.is-in{fill:#C27A12;} .rr-fan__k.is-out{fill:#1F8A6B;}
+.rr-gpick{min-width:200px;}
 .ls-root.ls-phone .rr-graph .rr-node__name{font-size:13px;}
 .ls-root.ls-phone .rr-graph .rr-node__f{font-size:11px;}
 /* A phone's whole ladder is as wide as the stage and scrolls, so its words keep their size (squeezed into the
