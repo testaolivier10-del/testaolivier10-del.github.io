@@ -1416,3 +1416,7 @@
 .op-quizfig svg.op-qphone{width:100%;flex:1 1 auto;min-height:0;height:auto;max-height:100%;}
 .op-quizfig:has(svg.op-qphone) .op-qhead{font-size:13.5px;}
 .ls-root .ls-primary .op-genes{grid-template-columns:1fr;gap:8px;}
+/* Cell cycle (tool review 2026-11): cells with damaged DNA in red */
+.cc-ring .cc-cell.dam circle{fill:var(--bio-hi-fill);stroke:var(--bio-hi);stroke-width:1.4;}
+.cc-ring .cc-cell.dam .n{fill:var(--bio-hi);}
+.cc-ring text.cc-damnote{fill:var(--bio-hi);font-weight:800;}
