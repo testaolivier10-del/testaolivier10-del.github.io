@@ -403,6 +403,19 @@
     readAll();
     bstart();
     buildAll();
+    /* The stimulus describes "Drawing 1" and "Drawing 2" of the plant tree
+       (one rotated at two nodes); question 3 compares them, so draw them
+       (tool review 2026-11: they were only words). Same drawing code as the
+       Read tab, made still: no buttons, nothing to tap. */
+    var dr = data.stimuli && data.stimuli['tr-s1'] && data.stimuli['tr-s1'].drawings, dt = dr && byId(dr.tree);
+    if(dt && !/tr-draw2/.test(data.stimuli['tr-s1'].text || '')){
+      var keep = lastPos, r1 = P.parse(dt.newick), r2 = P.parse(dt.newick);
+      dr.rotate.forEach(function(set){ var n = P.find(r2, set); if(n) P.rotate(n); });
+      var still = function(svg){ return svg.replace(/ role="button" tabindex="0"/g, '').replace(/ data-(rot|tip)="[^"]*"/g, '').replace(/ aria-pressed="[^"]*"/g, '').replace(/<g class="tr-node([^"]*)" aria-label="[^"]*"/g, '<g class="tr-node$1"').replace(/<svg class="tr-fig"/, '<svg class="tr-fig tr-still"'); };
+      // right after the paragraph that describes them, before the tables
+      data.stimuli['tr-s1'].text = (data.stimuli['tr-s1'].text || '') + '<div class="tr-draw2">' + [[r1, 'Drawing 1'], [r2, 'Drawing 2 (two nodes rotated)']].map(function(d){ return '<figure><figcaption>' + d[1] + '</figcaption>' + still(drawTree(dt, d[0], { w: 440 })) + '</figure>'; }).join('') + '</div>';
+      lastPos = keep;
+    }
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
   }, {

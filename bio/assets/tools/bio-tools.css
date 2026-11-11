@@ -1501,3 +1501,11 @@
 .rt-pgrip{fill:var(--white);stroke:var(--ink);stroke-width:2;cursor:ns-resize;}
 .rt-pgrip:focus{outline:none;} .rt-pgrip:focus-visible{stroke-width:3.5;}
 .ls-root.ls-phone .ls-stage .rt-stepl{font-size:13px;} .ls-root.ls-phone .ls-stage .rt-pv{font-size:14px;}
+/* Tree reading (tool review 2026-11): the two drawings in the questions' stimulus */
+.tr-draw2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px;}
+.tr-draw2 figure{margin:0;background:var(--paper);border-radius:12px;padding:6px 8px;min-width:0;}
+.tr-draw2 figcaption{font:900 14px var(--font-ui);margin:2px 0 4px;}
+.tr-draw2 svg.tr-fig{width:100%;height:auto;min-width:0;max-width:none;}
+.tr-still .tr-nhit,.tr-still .tr-thit{display:none;}
+.tr-still *{cursor:default;}
+@media (max-width:640px){.tr-draw2{grid-template-columns:1fr;}}
