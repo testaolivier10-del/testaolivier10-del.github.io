@@ -68,7 +68,7 @@
       var cxp = x0 + along * Math.cos(rad), cyp = y0 + along * Math.sin(rad);
       inner += detector(x0 + 4, y0 - 4, th, Math.max(10, along - 50)) + cart(cxp, cyp, th, p);
       inner += '<text x="' + (x0 + 6) + '" y="' + (y0 - 30) + '" class="ld-lab">motion detector</text>';
-      inner += '<text x="250" y="60" class="ld-big">t = ' + F(ts, 2) + ' s</text><text x="250" y="80" class="ld-mut">x = ' + (o.reading != null ? F(o.reading, 3) + ' m' : '…') + '</text>';
+      inner += '<text x="250" y="60" class="ld-big">t = ' + F(ts, 2) + ' s</text><text x="250" y="86" class="ld-big ld-big2">x = ' + (o.reading != null ? F(o.reading, 3) + ' m' : '…') + '</text>';
       lab = 'A cart rolling down a ramp from rest with a motion detector at the top. At t = ' + F(ts, 2) + ' s.';
       return svgOut(400, 330, lab, inner, '0 36 400 250');
     }
@@ -351,6 +351,8 @@
       T.explain(host.querySelector('.ld-say') || $('.ld-say'), m.head, m.body);
       var fit = st.fitOn ? fitNow() : null;
       var fb = $('.ld-fit'); if(fb) fb.setAttribute('aria-pressed', String(st.fitOn));
+      // Pass 3: the graph choice and Best-fit line wait until there are three readings to plot.
+      var pr = $('.ld-plotrow'); if(pr) pr.hidden = st.rows.length < 3 && !st.fitOn;
       if(LS){
         var pills = [];
         if(lastReading == null) pills.push({ k: 'Readings', html: String(st.rows.length), tone: 'readout' });

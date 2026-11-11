@@ -128,3 +128,6 @@
   .ls-phone .ld-graph .bt-plot .lbl{font-size:21px;}
 }
 @media (max-width:700px){ .ls-phone .ld-qbench .ld-qsmall{max-height:300px;} }   /* drill bench: full width (was 240 px tall, 0.72 scale) */
+/* Pass 3 (judge c): graph choice and Best-fit line appear after three readings; the ramp's x reading is as large as t. */
+.ld-plotrow[hidden]{display:none;}
+.ld-big2{font-size:.82em;}
