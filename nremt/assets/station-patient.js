@@ -241,7 +241,7 @@
 
   var BLEEDING = {
     key:'bleeding', match:/bleeding/i,
-    intro:'Adult, lying on their back, a deep laceration on the front of the right thigh, above the knee, bleeding steadily. Tick each action as you say it; it happens on the patient.',
+    intro:'Adult, lying on their back, a deep laceration on the front of the right thigh, above the knee, bleeding steadily.',
     full:[-10, -10, 500, 1220],
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full',
@@ -444,7 +444,7 @@
 
   var BVM = {
     key:'bvm', match:/bvm|ventilation/i,
-    intro:'Adult, lying on their back, unresponsive. You are kneeling at the head. Tick each action as you say it; it happens on the patient.',
+    intro:'Adult, lying on their back, unresponsive. You are kneeling at the head.',
     full:[60, -250, 360, 760],
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'face',
@@ -767,7 +767,7 @@
   /* ---- long bone immobilization (E217): a closed fracture of the right forearm */
   var LONGBONE = station({
     key:'longbone', match:/long bone/i,
-    intro:'Adult, lying on their back: a closed, deformed fracture of the middle of the right forearm. Tick each action as you say it; it happens on the arm.',
+    intro:'Adult, lying on their back: a closed, deformed fracture of the middle of the right forearm.',
     full:[-10, 80, 500, 820],
     focus:{ full:[-10, 80, 500, 820], arm:[-20, 380, 240, 330], hand:[-20, 520, 200, 220] },
     steps:[
@@ -825,7 +825,7 @@
   /* ---- joint immobilization (E216): an injured right knee ---------------------- */
   var JOINT = station({
     key:'joint', match:/^joint|joint immob/i,
-    intro:'Adult, lying on their back: an injured right knee, swollen and painful, the leg lying straight as found. Tick each action as you say it; it happens on the leg.',
+    intro:'Adult, lying on their back: an injured right knee, swollen and painful, the leg lying straight as found.',
     full:[20, 560, 440, 660],
     focus:{ full:[20, 560, 440, 660], knee:[80, 760, 220, 240], foot:[90, 1040, 200, 170], leg:[60, 620, 260, 560] },
     steps:[
@@ -878,7 +878,7 @@
   /* ---- spinal immobilization, supine (E212): the long board from above --------- */
   var SUPINE = station({
     key:'supine', match:/supine/i,
-    intro:'Adult, lying on their back with a suspected spinal injury. You are the one directing; your partner is at the head. Tick each action as you say it; it happens on the patient.',
+    intro:'Adult, lying on their back with a suspected spinal injury. You are the one directing; your partner is at the head.',
     full:[-10, -40, 500, 1260],
     focus:{ full:[-10, -40, 500, 1260], head:[110, -30, 260, 300], limbs:[-10, 500, 500, 720], torso:[40, 180, 400, 600], legs:[60, 600, 360, 600] },
     steps:[
@@ -946,7 +946,7 @@
   /* ---- spinal immobilization, seated (E211): a vest-type device (KED) ---------- */
   var SEATED = station({
     key:'seated', match:/seated/i,
-    intro:'Adult, sitting in a car seat after a crash, suspected spinal injury; seen from the front. Your partner holds the head from behind. Tick each action as you say it; the device goes on the patient.',
+    intro:'Adult, sitting in a car seat after a crash, suspected spinal injury; seen from the front. Your partner holds the head from behind.',
     full:[-10, -40, 500, 900],
     focus:{ full:[-10, -40, 500, 900], head:[110, -30, 260, 300], torso:[60, 160, 360, 520], limbs:[-10, 500, 500, 720] },
     steps:[
@@ -1001,7 +1001,7 @@
   /* ---- oxygen by non-rebreather (E204): the tank, the regulator, the mask ------ */
   var OXYGEN = station({
     key:'oxygen', match:/rebreather|oxygen admin/i,
-    intro:'Adult, sitting up, short of breath; the oxygen cylinder is beside them. Tick each action as you say it; it happens to the tank and the mask.',
+    intro:'Adult, sitting up, short of breath; the oxygen cylinder is beside them.',
     full:[60, -60, 460, 560],
     focus:{ full:[60, -60, 460, 560], tank:[280, 40, 220, 420], face:[120, -20, 300, 320] },
     steps:[
@@ -1067,7 +1067,7 @@
   /* ---- cardiac arrest management / AED (E215) ------------------------------------ */
   var AED = station({
     key:'aed', match:/cardiac arrest|aed/i,
-    intro:'Adult, collapsed, lying on their back on the floor. A second rescuer is with you. Tick each action as you say it; it happens on the patient.',
+    intro:'Adult, collapsed, lying on their back on the floor. A second rescuer is with you.',
     full:[-10, -100, 560, 800],
     focus:{ full:[-10, -100, 560, 800], chest:[90, 120, 330, 380], neck:[140, 40, 200, 230], face:[110, -40, 300, 300], aed:[180, 120, 380, 460] },
     steps:[
@@ -1152,7 +1152,7 @@
   }
   var TRAUMA = station({
     key:'trauma', match:/assessment.*trauma/i,
-    intro:'This run’s case: a 34-year-old who fell about 12 feet from a ladder, lying on their back. Tick each phase as you say it; what it finds appears on the body.',
+    intro:'This run’s case: a 34-year-old who fell about 12 feet from a ladder, lying on their back.',
     full:[-140, -40, 760, 1260],
     focus:{ full:[-140, -40, 760, 1260], upper:[-80, -40, 640, 560], lower:[-80, 420, 640, 800] },
     steps:[
@@ -1204,7 +1204,7 @@
   });
   var MEDICAL = station({
     key:'medical', match:/assessment.*medical/i,
-    intro:'This run’s case: a 62-year-old with chest pain for 30 minutes, sitting up. Tick each phase as you say it; what it finds and what you do appear on the patient.',
+    intro:'This run’s case: a 62-year-old with chest pain for 30 minutes, sitting up.',
     full:[-140, -40, 760, 900],
     focus:{ full:[-140, -40, 760, 900], upper:[-80, -40, 640, 560] },
     steps:[
