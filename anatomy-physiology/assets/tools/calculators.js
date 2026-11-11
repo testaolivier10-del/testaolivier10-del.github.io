@@ -285,7 +285,7 @@
       (c.picture ? '<figure class="calc-pic" aria-label="Live picture"></figure>' : '') +
       '<div class="calc-grid">' +
         '<form class="calc-inputs" novalidate onsubmit="return false">' + c.inputs.map(function(inp){
-          return '<div class="calc-field">' +
+          return '<div class="calc-field' + (c.picture ? ' calc-field-sl' : '') + '">' +
             '<label for="' + inputId(inp.key) + '"><span class="calc-label">' + esc(inp.label) + '</span> <span class="calc-sym">' + inp.sym + '</span></label>' +
             '<div class="calc-input-row"><input id="' + inputId(inp.key) + '" type="number" inputmode="decimal" data-key="' + inp.key + '" value="' + esc(values[inp.key]) + '" step="' + (inp.step || 'any') + '" min="' + inp.min + '" max="' + inp.max + '"' + (inp.hint ? ' aria-describedby="' + inputId(inp.key) + '-h"' : '') + '>' +
             (inp.unit ? '<span class="calc-unit">' + esc(inp.unit) + '</span>' : '') + '</div>' +
@@ -1011,6 +1011,25 @@
     syncRefs();
     if(window.MutationObserver) new MutationObserver(syncRefs).observe(out, { childList: true });
     out.classList.add('calc-out-norefs');
+    /* Pass 3: a result the picture already prints with its name or unit ("Flow 40.0 mL/min") is not said again
+       under it; a result with a band ("within the usual range") keeps its card, which carries the band. */
+    if(pic){
+      var syncOnPic = function(){
+        var texts = [].map.call(pic.querySelectorAll('svg text'), function(t){ return t.textContent.toLowerCase(); });
+        var rows = [].slice.call(out.querySelectorAll('.calc-result')), shown = 0;
+        rows.forEach(function(r){
+          var vEl = r.querySelector('.calc-result-value'), u = vEl && vEl.querySelector('small'), lb = r.querySelector('.calc-result-label');
+          var unit = u ? u.textContent.trim().toLowerCase() : '', val = vEl ? vEl.textContent.trim().toLowerCase().replace(unit, '').trim() : '';
+          var name = lb ? lb.textContent.trim().toLowerCase() : '';
+          var re = val ? new RegExp('(^|[^0-9.,])' + val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![0-9]|[.,][0-9])') : null;
+          var said = !r.querySelector('.calc-band') && re && texts.some(function(t){ return re.test(t) && ((unit && t.indexOf(unit) > -1) || (name && t.indexOf(name) > -1)); });
+          r.hidden = !!said; if(!said) shown++;
+        });
+        var box = out.querySelector('.calc-results'); if(box) box.hidden = rows.length > 0 && !shown;
+      };
+      syncOnPic();
+      if(window.MutationObserver){ new MutationObserver(syncOnPic).observe(pic, { childList: true }); new MutationObserver(syncOnPic).observe(out, { childList: true }); }
+    }
     own('why', refs);
     own('dock', body.querySelector('.calc-inputs'));
     keepPickerLast();
