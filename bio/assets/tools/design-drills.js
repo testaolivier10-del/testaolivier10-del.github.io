@@ -712,6 +712,7 @@
     function setView(v, byHand){
       if(byHand) auto = false;
       view = v; stage.classList.toggle('dr-show-data', v === 'data');
+      var rs = stage.querySelector('.dr-readsetup'); if(rs) rs.hidden = v === 'data';
       stage.querySelectorAll('.dr-view button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
     }
     function follow(){
@@ -726,6 +727,9 @@
       stage.innerHTML = '';
       Array.prototype.slice.call(host.querySelectorAll(':scope > h2, :scope > .dr-schem, :scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ stage.appendChild(x); });
       var h2 = stage.querySelector('h2'); if(h2) h2.classList.add('ls-title-l');
+      // pass 3 (2026-11-11): the picture carries the setup; its full paragraph opens on tap
+      var ctxEl = stage.querySelector(':scope > .bt-context');
+      if(ctxEl){ var rd = document.createElement('details'); rd.className = 'bt-data dr-readsetup'; rd.innerHTML = '<summary>Read the setup</summary>'; ctxEl.parentNode.insertBefore(rd, ctxEl); rd.appendChild(ctxEl); }
       if(stage.querySelector('.dr-charts') || stage.querySelector('.table-wrap')){
         var vw = document.createElement('div'); vw.className = 'dr-view'; vw.setAttribute('role', 'group'); vw.setAttribute('aria-label', 'Show');
         vw.innerHTML = '<button type="button" class="bt-btn" data-v="setup" aria-pressed="true">The setup</button><button type="button" class="bt-btn" data-v="data" aria-pressed="false">The results</button>';
@@ -739,7 +743,7 @@
       wrap = w; dock.appendChild(w);
       window.LevlStudio.stepper(w, { items: ':scope > .dr-sec, :scope > .bt-frq', label: 'Drill' });
       if(window.MutationObserver) new MutationObserver(follow).observe(w, { subtree: true, attributes: true, attributeFilter: ['class'] });
-      s.caption('Read the experiment, then answer one drill at a time. Each drill has its own Check.');
+      s.caption('Look at the experiment, then answer one drill at a time.');
       s.pills([]);
     }
     // Feedback lands on the stage: the last checked drill's score as a pill.
