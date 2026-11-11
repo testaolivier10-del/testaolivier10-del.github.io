@@ -265,13 +265,13 @@
       } else if(at != null && (at < mn || at > mx) && touched){
         head = '<b>Extrapolation: x = ' + esc(nf(at)) + ' is outside the data (' + esc(nf(mn)) + ' to ' + esc(nf(mx)) + ').</b> ŷ = ' + esc(nf(M.round(F.a + F.b * at, sig(F.a + F.b * at)))) + ' assumes the pattern continues, which the data cannot show.';
       } else if(sel > -1){ head = pointText(sel); }
-      else head = '<b>' + esc(eqText(F.a, F.b, dA, dB)) + ', r = ' + esc(fx(F.r, 2)) + '.</b> ' + esc(cap(st) + ', ' + dir + (Math.abs(curve) > 0.6 ? ', but the residuals curve' : ', linear') + '. ') + (touched ? '' : 'Drag a point and watch the line and r respond.');
+      else head = (LS ? '' /* pass 2: the chips carry the equation and r */ : '<b>' + esc(eqText(F.a, F.b, dA, dB)) + ', r = ' + esc(fx(F.r, 2)) + '.</b> ') + esc(cap(st) + ', ' + dir + (Math.abs(curve) > 0.6 ? ', but the residuals curve' : ', linear') + '. ') + (touched ? '' : 'Drag a point and watch the line and r respond.');
       T.explain($('.rl-say'), head, whyHtml(curve));
       nums(curve);
       if(LS){
         LS.caption(head, 'explore');
         LS.pills([{ html: esc(eqText(F.a, F.b, dA, dB)), tone: 'readout' }], 'left', 'explore');
-        LS.pills([{ k: 'r', html: esc(fx(F.r, 2)), tone: 'ghost' }, { k: 'r²', html: esc(fx(F.r2, 2)), tone: 'ghost' }], 'right', 'explore');
+        LS.pills([{ k: 'r', html: esc(fx(F.r, 2)), tone: 'ghost' }], 'right', 'explore'); // pass 2: r² is in Data & numbers
       }
     }
     function pointText(i){
