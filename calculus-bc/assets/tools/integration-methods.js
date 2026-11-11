@@ -175,22 +175,23 @@
         '<path class="im-uv" d="' + pathOf(pts, F2) + '"/>' +
         // a rectangle too small to hold its three labels lists them beside it instead, one per line
         (sx(Pp.vb) - sx(0) < 170 || sy(0) - sy(Pp.ub) < 52 ?
-          '<text class="im-lab" x="' + r2(sx(Pp.vb) + 10) + '" y="' + r2(sy(0) - 42) + '" text-anchor="start">uv = ' + n3(Pp.uvb) + '</text>' +
+          '<text class="im-lab" x="' + r2(sx(Pp.vb) + 10) + '" y="' + r2(sy(0) - 42) + '" text-anchor="start">uv</text>' +
           '<text class="im-lab im-lab-v" x="' + r2(sx(Pp.vb) + 10) + '" y="' + r2(sy(0) - 25) + '" text-anchor="start">∫v du = ' + n3(Pp.vdu) + '</text>' +
           '<text class="im-lab im-lab-u" x="' + r2(sx(Pp.vb) + 10) + '" y="' + r2(sy(0) - 8) + '" text-anchor="start">∫u dv = ' + n3(Pp.udv) + '</text>' :
         '<text class="im-lab im-lab-u" x="' + r2((sx(Pp.va) + sx(Pp.vb)) / 2 + 6) + '" y="' + r2(sy(0) - 8) + '" text-anchor="middle">∫u dv = ' + n3(Pp.udv) + '</text>' +
         '<text class="im-lab im-lab-v" x="' + r2(sx(0) + 8) + '" y="' + r2(sy(Pp.ub) + 18) + '" text-anchor="start">∫v du = ' + n3(Pp.vdu) + '</text>' +
-        '<text class="im-lab" x="' + r2(sx(Pp.vb) - 4) + '" y="' + r2(sy(Pp.ub) - 6) + '" text-anchor="end">uv = ' + n3(Pp.uvb) + '</text>') + '</svg>');
+        '<text class="im-lab" x="' + r2(sx(Pp.vb) - 4) + '" y="' + r2(sy(Pp.ub) - 6) + '" text-anchor="end">uv</text>') + '</svg>');
       b2.querySelector('svg').setAttribute('aria-label', 'u against v from x = ' + clean(g.a) + ' to ' + clean(b) + ': the integral of u dv is ' + n3(Pp.udv) + ', the integral of v du is ' + n3(Pp.vdu) + ', together uv = ' + n3(Pp.uvb) + (Pp.uva ? ' minus ' + n3(Pp.uva) : '') + '.');
       var u = swap ? null : g;
-      $('.im-head').innerHTML = '<div class="im-uv-card">' + [['u', g.uTex], ['dv', g.dvTex], ['du', g.duTex], ['v', g.vTex]].map(function(c){ return '<div class="im-cell"><span class="im-k">' + c[0] + '</span>' + tex(c[1]) + '</div>'; }).join('') + '</div>' +
-        '<p class="im-eq">' + tex('\\int_{' + clean(g.a) + '}^{' + clean(b) + '} ' + g.tex + '\\,dx = \\left[' + g.Ftex + '\\right]_{' + clean(g.a) + '}^{' + clean(b) + '} = ' + n3(val)) + '</p>';
+      // Pass 3 (judge c): the u, dv, du, v card read as dead buttons above the graphs; it now opens the explanation.
+      $('.im-head').innerHTML = '<p class="im-eq">' + tex('\\int_{' + clean(g.a) + '}^{' + clean(b) + '} ' + g.tex + '\\,dx = \\left[' + g.Ftex + '\\right]_{' + clean(g.a) + '}^{' + clean(b) + '} = ' + n3(val)) + '</p>';
       wordsParts(Pp, b);
     }
     function plain(t){ return window.ApCalcTex ? window.ApCalcTex.text(t) : t; }
     function wordsParts(Pp, b){
       var g = pg, head = '<b>' + n3(Pp.udv) + ' + ' + n3(Pp.vdu) + ' = ' + n3(Pp.uvb - Pp.uva) + ':</b> the two areas fill the rectangle uv' + (Pp.uva > 1e-9 ? ' minus the small one at x = ' + clean(g.a) : '') + '.';
       var why = (swap ? '<p class="im-warn">' + html(g.bad) + '</p>' : '') +
+        '<div class="im-uv-card">' + [['u', g.uTex], ['dv', g.dvTex], ['du', g.duTex], ['v', g.vTex]].map(function(c){ return '<div class="im-cell"><span class="im-k">' + c[0] + '</span>' + tex(c[1]) + '</div>'; }).join('') + '</div>' +
         '<p>Parts is the product rule run backward: ' + tex('(uv)\' = u\'v + uv\'') + ', so ' + tex('\\int u\\,dv = uv - \\int v\\,du') + '. In the picture, ' + tex('u') + ' is plotted against ' + tex('v') + ' as ' + tex('x') + ' runs from ' + clean(g.a) + ' to ' + clean(b) + ': the area under that curve is ' + tex('\\int u\\,dv') + ' (blue, the integral you want), the area beside it is ' + tex('\\int v\\,du') + ' (orange), and together they make the rectangle ' + tex('uv') + '.</p>' +
         '<p>Choose ' + tex('u = ' + g.uTex) + ' because its derivative ' + tex(g.duTex) + ' is simpler, and ' + tex('dv = ' + g.dvTex) + ' because you can integrate it. LIATE (logarithmic, inverse trig, algebraic, trigonometric, exponential) lists good choices of ' + tex('u') + ' first.</p>' +
         (g.tab ? '<p>Here ' + tex('\\int v\\,du = \\int 2xe^x\\,dx') + ' needs parts again; the tabular table in Details does both at once.</p>' : '');
