@@ -7,12 +7,15 @@
 
    Explore: pick a chain (fiscal, monetary, open economy, crowding out,
    self-adjustment), its version and its direction, then step through it
-   with Next link. The stage holds the chain so far (each link a card, the
-   newest one marked) beside the graph for the newest link that has one,
-   drawn by ApMacroGraph.svg (arrows and axis marks included): the reserve market for an administered rate, the money
-   market for bonds, loanable funds for crowding out, the market for
-   dollars for capital flows, AD-AS for output and prices. The old curve
-   stays faded and dashed with subscript 1.
+   with Next link. The stage is the whole chain as a row of stations: one
+   graph per market the chain touches (the reserve market for an
+   administered rate, the money market for bonds, loanable funds for
+   crowding out, the market for dollars for capital flows, AD-AS for output
+   and prices), drawn by ApMacroGraph.svg, with the links with no graph as
+   arrows between them. Each station lights and shifts when its link
+   arrives and stays drawn after, so the last link shows every shift at
+   once; stations not reached yet are a "?". The old curve stays faded and
+   dashed with subscript 1.
    Details ("Write it out"): the "Make it specific" sentence, one blank per
    link, graded by ApMacroGrade.specific; then the chain in the student's own
    words with ApMacroGrade.flags hints (directional, mechanism) and the links
@@ -52,6 +55,17 @@
   }
   /* The graph that goes with link i: the newest link up to i that has one. */
   function graphAt(ch, i){ for(var k = Math.min(i, ch.links.length - 1); k >= 0; k--) if(ch.links[k].graph) return { g: ch.links[k].graph, k: k }; return null; }
+  /* The chain as stations, left to right: one per market touched (its links
+     in a row share one graph) and, between them, the links with no graph
+     (investment rises, net exports fall) as arrows with words. */
+  function stations(ch){
+    var out = [];
+    ch.links.forEach(function(l, i){
+      var key = l.graph ? 'g:' + l.graph.kind : 't', last = out[out.length - 1];
+      if(last && last.key === key) last.idx.push(i); else out.push({ key: key, kind: l.graph ? l.graph.kind : null, idx: [i] });
+    });
+    return out;
+  }
   function chainHtml(ch, n, opts){
     opts = opts || {};
     return ch.links.slice(0, n + 1).map(function(l, k){
@@ -61,25 +75,42 @@
     }).join('') + (opts.more ? '<li class="pc-link is-next" aria-hidden="true"><span class="pc-n">' + (n + 2) + '</span><span class="pc-t">?</span></li>' : '');
   }
   function stageHtml(){
-    return '<div class="pc-fig"><div class="pc-chainbox"><p class="pc-title"></p><ol class="pc-chain" aria-label="The chain so far"></ol></div>' +
-      '<figure class="pc-graph"><figcaption class="pc-gcap"></figcaption><div class="pc-g"></div></figure></div>';
+    return '<div class="pc-fig"><p class="pc-title"></p><div class="pc-row" role="list" aria-label="The chain so far"></div><div class="pc-focus" aria-hidden="true"></div>' +
+      '<ol class="pc-chain" aria-hidden="true"></ol></div>';
+  }
+  function linkLi(ch, k, n, opts){
+    var l = ch.links[k], miss = opts.missed && opts.missed[l.id];
+    return '<li class="pc-sl' + (k === n ? ' is-now' : '') + (miss ? ' is-miss' : '') + '"' + (k === n ? ' aria-current="step"' : '') + '><span class="pc-n" aria-hidden="true">' + (k + 1) + '</span><span class="pc-t">' + esc(cap(l.say)) + '</span></li>';
   }
   function paint(fig, ch, n, opts){
     opts = opts || {};
     fig.querySelector('.pc-title').innerHTML = '<b>' + esc(ch.title) + '</b> <span>' + esc(PC.familyOf(ch.family).name) + '</span>';
-    var list = fig.querySelector('.pc-chain');
-    list.innerHTML = chainHtml(ch, n, { more: n < ch.links.length - 1 && opts.more !== false, missed: opts.missed });
-    // The newest link in view (the list scrolls; the page does not).
-    var now = list.querySelector('.is-now');
-    function show(){ if(now) list.scrollTop = Math.max(0, now.offsetTop - list.offsetTop + now.offsetHeight - list.clientHeight + 4); }
-    show(); if(window.requestAnimationFrame) requestAnimationFrame(show);
-    var ga = graphAt(ch, n), box = fig.querySelector('.pc-graph');
-    box.hidden = !ga;
-    if(ga){
-      fig.querySelector('.pc-gcap').innerHTML = '<b>' + esc(TITLE[ga.g.kind]) + '</b> <span>' + (ga.k === n ? 'this link' : 'from link ' + (ga.k + 1)) + '</span>';
-      fig.querySelector('.pc-g').innerHTML = graphSvg(ga.g);
-    }
-    fig.classList.toggle('no-g', !ga);
+    var st = stations(ch), html = [];
+    st.forEach(function(S, j){
+      var reached = S.idx[0] <= n, now = S.idx.indexOf(n) > -1, seen = S.idx.filter(function(k){ return k <= n; });
+      var cls = 'pc-st ' + (S.kind ? 'is-g' : 'is-t') + (now ? ' is-now' : reached ? ' is-done' : ' is-todo') + (S.idx.length > 1 ? ' is-many' : '');
+      if(j) html.push('<div class="pc-arr' + (reached ? ' is-on' : '') + '" aria-hidden="true"><i></i></div>');
+      var body = '';
+      if(S.kind){
+        var last = seen.length ? seen[seen.length - 1] : null;
+        body = (reached ? '<p class="pc-sth"><b>' + esc(TITLE[S.kind].replace(' market', '').replace('Foreign exchange for dollars', 'Market for dollars')) + '</b></p>' : '') +
+          '<div class="pc-g">' + (last !== null ? graphSvg(ch.links[last].graph) : '<span class="pc-ghost" aria-hidden="true">?</span>') + '</div>';
+      }
+      body += '<ol class="pc-sls">' + seen.map(function(k){ return linkLi(ch, k, n, opts); }).join('') +
+        (S.idx.length > seen.length ? '<li class="pc-sl is-todo" aria-hidden="true"><span class="pc-n">' + (S.idx[seen.length] + 1) + '</span><span class="pc-t">?</span></li>' : '') + '</ol>';
+      html.push('<div class="' + cls + '" role="listitem"' + (reached ? '' : ' aria-hidden="true"') + '>' + body + '</div>');
+      if(now) fig.querySelector('.pc-focus').innerHTML = '<div class="' + cls + '">' + body + '</div>';
+    });
+    var row = fig.querySelector('.pc-row');
+    row.innerHTML = html.join('');
+    row.setAttribute('data-n', String(st.length));
+    row.style.setProperty('--pc-g', String(st.filter(function(S){ return S.kind; }).length || 1));
+    // the list form of the chain, kept for the phone's newest-link line
+    fig.querySelector('.pc-chain').innerHTML = chainHtml(ch, n, { more: false, missed: opts.missed });
+    fig.classList.toggle('no-g', !graphAt(ch, ch.links.length - 1));
+    // a phone shows the current station large and the rest small: keep it in view
+    var cur = row.querySelector('.pc-st.is-now');
+    if(cur && row.scrollWidth > row.clientWidth + 2) row.scrollLeft = Math.max(0, cur.offsetLeft - row.offsetLeft - 12);
   }
 
   /* ------------------------------------------------------------ explore */
