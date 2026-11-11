@@ -683,7 +683,7 @@
     var g = p.figure, phone = (window.innerWidth || 1280) <= 640, W = phone ? 360 : 620, H = T.figSize(W, 330, { max: g && g.kind === 'enso' ? 0.75 : 1.15 })[1], inner = '', label = '';
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'sun'){
-      var es = earthSide(0, 0, W, H, g.decl, g.lat, { hideAngle: !st.angle, small: phone });
+      var es = earthSide(0, 0, W, H, g.decl, g.lat, { hideAngle: !st.angle, small: phone, calm: true });
       inner = es.svg; label = 'Earth side-on with sunlight from the left: the sun is overhead at ' + E.latText(g.decl) + ', and the place is marked at ' + E.latText(g.lat) + (st.angle ? '; its noon sun is ' + f1(g.angle) + '° up.' : '.');
     } else if(g.kind === 'seasons'){
       var day = g.month === 6 ? 196 : 15;
