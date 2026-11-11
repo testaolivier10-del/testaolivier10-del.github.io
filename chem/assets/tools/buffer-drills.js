@@ -72,8 +72,18 @@
       $('.bf-title').textContent = n.name + ' buffer';
       $('.bf-setup').innerHTML = '100 mL with ' + size + ' mmol ' + esc(n.HA) + ' and ' + size + ' mmol ' + esc(n.A) + '. pK<sub>a</sub> of ' + esc(n.HA) + ' = ' + F(-Math.log10(n.Ka), 2) + '.';
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount($('.bf-beaker'), { species: species(n).concat([{ key: 'OH', label: 'OH⁻', name: 'leftover OH⁻', tone: 5 }, { key: 'H3O', label: 'H₃O⁺', mol: 'H3O+', name: 'leftover H₃O⁺' }]), readout: 'pH', title: 'The buffer', max: 36, seed: 11 + ci });
+      beaker = window.ApChemBeaker.mount($('.bf-beaker'), { species: species(n).concat([{ key: 'OH', label: 'OH⁻', name: 'leftover OH⁻', tone: 5 }, { key: 'H3O', label: 'H₃O⁺', mol: 'H3O+', name: 'leftover H₃O⁺' }]), readout: 'pH', title: 'The buffer', max: 27, seed: 11 + ci });
       draw(false);
+      pkey();
+    }
+    /* A two-item key under the beaker on the stage: which particle is the
+       acid form and which the base form (pass 3; the full legend with counts
+       stays in Details). The particle drawings come from the beaker's own legend. */
+    function pkey(){
+      var k = (LS ? LS.root.querySelector('.chem-ls-stage .bf-pkey') : null) || $('.bf-pkey');
+      if(!k){ k = document.createElement('p'); k.className = 'bf-pkey'; k.setAttribute('aria-hidden', 'true'); var bk = $('.bf-beaker'); bk.parentNode.insertBefore(k, bk.nextSibling); }
+      var leg = $('.bf-beaker .lb-legend') || $('.bf-ls-parts .lb-legend'), li = leg ? [].slice.call(leg.querySelectorAll('li')) : [], sp = species(n);
+      k.innerHTML = sp.map(function(x, i){ var svg = li[i] ? li[i].querySelector('svg') : null; return '<span>' + (svg ? svg.outerHTML : '') + '<b>' + esc(x.label) + '</b> ' + esc(i ? n.A : n.HA) + '</span>'; }).join('');
     }
     function st(x){ return M.bufferState({ Ka: n.Ka, nHA: size / 1000, nA: size / 1000, V: V, b: x }); }
     function mm(x){ return Math.round(x * 1e6) / 1e3; }
@@ -124,6 +134,10 @@
       var u = size / 10, lim = 16 * u, seen = hist.map(function(h){ return Math.round(h / step()); });
       var lo = Math.min.apply(null, seen), hi = Math.max.apply(null, seen), path = [], water = [];
       for(var k = lo * 4; k <= hi * 4; k++){ var q = st(k * step() / 4); path.push([k * u / 4, q.pH]); water.push([k * u / 4, q.water]); }
+      // The whole buffer curve, faint, so the graph is not empty before the
+      // first tap; each tap traces the solid line over it (pass 3).
+      var ghost = [];
+      for(var g = -64; g <= 64; g++){ ghost.push([g * u / 4, st(g * step() / 4).pH]); }
       var now = b * 1000, box = $('.bf-plot'), key = box.querySelector('.bf-key');
       // On a phone the graph is drawn at the size of its box (T.fitBox), less the key line under it.
       // On a wide stage it sits beside the beaker, so it is drawn taller.
@@ -132,7 +146,7 @@
       var svg = T.plot({ w: gs.w, h: gs.h, title: 'pH against mmol of strong base added (negative: strong acid). Buffer pH now ' + F(s.pH, 2) + '; pure water with the same additions ' + F(s.water, 2) + '.',
         x: { label: 'mmol added (− acid, + base)', min: -lim, max: lim, step: T.niceStep(2 * lim, 5) },
         y: { label: 'pH', min: 0, max: 14, step: gs.h - 72 < 140 && gs.fit ? 4 : 2 },
-        curves: [{ cls: 's3', points: water, dashed: true }, { cls: 's1', points: path }],
+        curves: [{ cls: 's1 bf-ghost', points: ghost }, { cls: 's3', points: water, dashed: true }, { cls: 's1', points: path }],
         points: [{ x: now, y: s.pH, cls: 's2' }], vline: { x: 0 } });
       $('.bf-plot').innerHTML = svg + '<p class="bt-small bf-key"><span class="bf-k1"></span>this buffer <span class="bf-k2"></span>pure water, same additions</p>';
     }
@@ -176,7 +190,10 @@
       SP = T.studioPane(pane, s, { stage: [$('.bf-beaker'), $('.bf-plot')], dock: [$('.bf-btns'), resetBtn], setup: 'Buffer', moreLabel: 'Another buffer, amounts',
         why: [$('.bf-why')], details: [nums, parts] });
       $('.bf-beaker').parentNode.classList.add('bf-ls-stage');
+      var pk = $('.chem-ls-det .bf-pkey') || $('.bf-pkey'), bk = $('.bf-beaker');
+      if(pk) bk.parentNode.insertBefore(pk, bk.nextSibling);
       draw(false);
+      pkey();
       T.watchBox($('.bf-plot'), function(){ plot(st(b)); });
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.bf-oh'), text: 'Tap to add a little strong base' });
     }
