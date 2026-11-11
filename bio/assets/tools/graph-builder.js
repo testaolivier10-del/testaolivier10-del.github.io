@@ -178,12 +178,21 @@
       var p = [], my = minor(ys), mx = minor(xs);
       for(var v = ys.min; v <= ys.max + 1e-9; v += my) p.push('<line class="minor" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(v).toFixed(1) + '" y2="' + sy(v).toFixed(1) + '"/>');
       if(!bar()) for(var u = xs.min; u <= xs.max + 1e-9; u += mx) p.push('<line class="minor" y1="' + TOP + '" y2="' + (TOP + ph) + '" x1="' + sx(u).toFixed(1) + '" x2="' + sx(u).toFixed(1) + '"/>');
-      for(var w = ys.min; w <= ys.max + 1e-9; w += ys.interval) p.push('<line class="grid" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(w).toFixed(1) + '" y2="' + sy(w).toFixed(1) + '"/><text class="tick" x="' + (L - 6) + '" y="' + (sy(w) + 4).toFixed(1) + '" text-anchor="end">' + M.round(w, 6) + '</text>');
-      if(!bar()) for(var z = xs.min; z <= xs.max + 1e-9; z += xs.interval) p.push('<line class="grid" y1="' + TOP + '" y2="' + (TOP + ph) + '" x1="' + sx(z).toFixed(1) + '" x2="' + sx(z).toFixed(1) + '"/><text class="tick" x="' + sx(z).toFixed(1) + '" y="' + (TOP + ph + 17) + '" text-anchor="middle">' + M.round(z, 6) + '</text>');
+      for(var w = ys.min; w <= ys.max + 1e-9; w += ys.interval) p.push('<line class="grid" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(w).toFixed(1) + '" y2="' + sy(w).toFixed(1) + '"/>' + (ghostY && !st.free ? '' : '<text class="tick" x="' + (L - 6) + '" y="' + (sy(w) + 4).toFixed(1) + '" text-anchor="end">' + M.round(w, 6) + '</text>'));
+      if(!bar()) for(var z = xs.min; z <= xs.max + 1e-9; z += xs.interval) p.push('<line class="grid" y1="' + TOP + '" y2="' + (TOP + ph) + '" x1="' + sx(z).toFixed(1) + '" x2="' + sx(z).toFixed(1) + '"/>' + (ghostX && !st.free ? '' : '<text class="tick" x="' + sx(z).toFixed(1) + '" y="' + (TOP + ph + 17) + '" text-anchor="middle">' + M.round(z, 6) + '</text>'));
       else { var xi = colIndex(st.x || ds.iv); ds.rows.forEach(function(r, k){ p.push('<text class="tick" x="' + sx(k).toFixed(1) + '" y="' + (TOP + ph + 17) + '" text-anchor="middle">' + esc(r[xi]) + '</text>'); }); }
       var zeroY = ys.min <= 0 && ys.max >= 0 ? sy(0) : TOP + ph;
       p.push('<line class="axis" x1="' + L + '" x2="' + (L + pw) + '" y1="' + zeroY.toFixed(1) + '" y2="' + zeroY.toFixed(1) + '"/><line class="axis" x1="' + L + '" x2="' + L + '" y1="' + TOP + '" y2="' + (TOP + ph) + '"/>');
       p.push('<rect class="hit" x="' + L + '" y="' + TOP + '" width="' + pw + '" height="' + ph + '"/>');
+      /* pass 3 (2026-11-11): until the axes are set, the data show as faint dots on the practice grid (their own
+         scale; the practice grid drops its placeholder numbers so the dots are read as a shape only), so the empty grid already shows the shape the student is about to build. */
+      if(ghostY && (ghostX || bar()) && !st.free){
+        var gxi = colIndex(ds.iv), gyi = colIndex(ds.dv), gnum = isNum(ds.iv), gys = ds.rows.map(function(r){ return +r[gyi]; }), gxs = ds.rows.map(function(r, k){ return gnum ? +r[gxi] : k; });
+        var gy1 = Math.max.apply(null, gys) * 1.15 || 1, gx0 = Math.min.apply(null, gxs), gx1 = Math.max.apply(null, gxs), gsp = gx1 - gx0 || 1, gd = [];
+        gys.forEach(function(v, k){ if(!isFinite(v)) return; var X = L + pw * (0.08 + 0.84 * (gxs[k] - gx0) / gsp), Y = TOP + ph - ph * Math.max(0, v) / gy1;
+          gd.push('<circle cx="' + X.toFixed(1) + '" cy="' + Y.toFixed(1) + '" r="6"/>'); });
+        p.push('<g class="gb-ghostpts" aria-hidden="true" style="fill:var(--muted);opacity:.3">' + gd.join('') + '</g>');
+      }
       var placed = [];
       if(!ghost && !st.free) st.pts.forEach(function(q, k){ if(q.y != null && (bar() || q.x != null)) placed.push(k); });
       if(st.free) st.sketch.forEach(function(q, k){ var X = bar() ? L + pw * (Math.min(n - 1, Math.max(0, q.k)) + 0.5) / n : sx(q.x); p.push('<circle class="gpt gsk" data-s="' + k + '" tabindex="0" role="button" aria-label="' + esc('Sketch point ' + (k + 1) + ': ' + (bar() ? '' : 'x ' + q.x + ', ') + 'y ' + q.y + '. Press Delete to remove it.') + '" cx="' + X.toFixed(1) + '" cy="' + sy(q.y).toFixed(1) + '" r="7"/>'); });
