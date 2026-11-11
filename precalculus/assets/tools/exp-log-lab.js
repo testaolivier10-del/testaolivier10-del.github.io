@@ -222,20 +222,29 @@
       o.push('<line class="el-mirror" x1="' + r1(G.sx(lo)) + '" y1="' + r1(G.sy(lo)) + '" x2="' + r1(G.sx(hi)) + '" y2="' + r1(G.sy(hi)) + '"/>');
       o.push(label(G, hi - 0.2, hi - 0.2, 'y = x', 'el-muted', 'end', -2, 14));
       o.push(path(G, function(x){ return Math.log(x) / Math.log(b); }, 1e-4, hi, 'el-curve el-L', 400));
-      // y = b^x, folded part of the way onto its mirror image when s > 0
-      var pts = [];
-      for(var i = 0; i <= 260; i++){ var x = lo + (hi - lo) * i / 260, y = Math.pow(b, x); if(y > hi + 3) continue; pts.push([(1 - s) * x + s * y, (1 - s) * y + s * x]); }
-      o.push('<path class="el-curve el-E" d="M' + pts.filter(function(p){ return p[0] >= lo - 1 && p[1] >= lo - 1; }).map(function(p){ return r1(G.sx(Math.min(hi + 0.5, p[0]))) + ' ' + r1(G.sy(Math.min(hi + 0.5, p[1]))); }).join('L') + '"/>');
-      var t = st.t, q = Math.pow(b, t), inP = q <= hi && q >= lo;
-      if(s < 0.02 && inP){
-        o.push('<line class="el-swap" x1="' + r1(G.sx(t)) + '" y1="' + r1(G.sy(q)) + '" x2="' + r1(G.sx(q)) + '" y2="' + r1(G.sy(t)) + '"/>');
-        o.push(dot(G, q, t, 'el-pt el-L', 6));
-        o.push(label(G, q, t, '(' + f2(q) + ', ' + f2(t) + ')', 'el-L', 'start', 9, 16));
-        o.push(label(G, t, q, '(' + f2(t) + ', ' + f2(q) + ')', 'el-E', 'end', -9, -8));
+      // y = b^x stays put; when s > 0 a dashed copy of it folds over y = x and lands on the log curve.
+      // Everything is clipped to the plot, so the part of b^x above the frame never folds into view as a stub.
+      var cid = 'el-clip-' + (G.L | 0) + '-' + (G.T | 0);
+      o.push('<defs><clipPath id="' + cid + '"><rect x="' + r1(G.L) + '" y="' + r1(G.T) + '" width="' + r1(G.R - G.L) + '" height="' + r1(G.B - G.T) + '"/></clipPath></defs>');
+      function expPath(sf, cls){
+        var d = '';
+        for(var i = 0; i <= 260; i++){ var x = lo - 0.5 + (hi - lo + 1) * i / 260, y = Math.pow(b, x); if(y > hi + 8){ continue; } var px = (1 - sf) * x + sf * y, py = (1 - sf) * y + sf * x; d += (d ? 'L' : 'M') + r1(G.sx(px)) + ' ' + r1(G.sy(py)); }
+        return '<path class="' + cls + '" clip-path="url(#' + cid + ')" d="' + d + '"/>';
+      }
+      o.push(expPath(0, 'el-curve el-E' + (s > 0.02 ? ' el-src' : '')));
+      if(s > 0.02) o.push(expPath(s, 'el-curve el-E el-folded'));
+      var t = st.t, q = Math.pow(b, t), inP = q <= hi && q >= lo, still = s < 0.02 || s > 0.98;
+      if(inP){
+        if(still){
+          o.push('<line class="el-swap" x1="' + r1(G.sx(t)) + '" y1="' + r1(G.sy(q)) + '" x2="' + r1(G.sx(q)) + '" y2="' + r1(G.sy(t)) + '"/>');
+          o.push(dot(G, q, t, 'el-pt el-L', 6));
+          o.push(label(G, q, t, '(' + f2(q) + ', ' + f2(t) + ')', 'el-L', 'start', 9, 16));
+          o.push(label(G, t, q, '(' + f2(t) + ', ' + f2(q) + ')', 'el-E', 'end', -9, -8));
+        } else o.push(dot(G, (1 - s) * t + s * q, (1 - s) * q + s * t, 'el-pt el-E el-moving', 6));   // the point riding on the folding copy
       }
       o.push(label(G, hi - 0.15, Math.log(hi - 0.15) / Math.log(b), 'y = ' + logName(b) + ' x', 'el-L el-name', 'end', 0, b > 1 ? -8 : 16));
       var ex = Math.min(hi - 0.3, Math.log(hi * 0.85) / Math.log(b));
-      if(s < 0.02) o.push(label(G, b > 1 ? ex : -ex, Math.pow(b, b > 1 ? ex : -ex), 'y = ' + g3(b) + 'ˣ', 'el-E el-name', b > 1 ? 'end' : 'start', b > 1 ? -8 : 8, 0));
+      if(still) o.push(label(G, b > 1 ? ex : -ex, Math.pow(b, b > 1 ? ex : -ex), 'y = ' + g3(b) + 'ˣ', 'el-E el-name', b > 1 ? 'end' : 'start', b > 1 ? -8 : 8, 0));
       svg.innerHTML = o.join('');
       svg.setAttribute('role', 'group');
       if(!handle || !handle.el.isConnected){
@@ -244,7 +253,7 @@
           onMove: function(nx){ st.t = nx; touch(); draw(false); }, onEnd: function(){ draw(true); } });
         handle.el.classList.add('el-handle');
       } else svg.appendChild(handle.el);
-      handle.el.style.display = s < 0.02 && inP ? '' : 'none';
+      handle.el.style.display = still && inP ? '' : 'none';
       handle.set(t, q, true);
       handle.el.setAttribute('aria-valuemin', '-2'); handle.el.setAttribute('aria-valuemax', '2.5'); handle.el.setAttribute('aria-valuetext', 'point (' + f2(t) + ', ' + f2(q) + '); its mirror is (' + f2(q) + ', ' + f2(t) + ')');
       svg.setAttribute('aria-label', 'Graphs of y = ' + g3(b) + ' to the x and y = log base ' + g3(b) + ' of x, mirror images in y = x.');

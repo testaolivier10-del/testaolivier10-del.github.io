@@ -21,6 +21,9 @@
 .el-curve{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
 .el-curve.el-E{stroke:var(--el-E);} .el-curve.el-L,.el-curve.el-log{stroke:var(--el-L);}
 .el-curve.el-fit{stroke:var(--el-E);stroke-width:2.4;stroke-dasharray:8 5;}
+.el-curve.el-folded{stroke-dasharray:7 10;stroke-width:2.6;}
+.el-curve.el-src{opacity:.55;}
+.el-pt.el-moving{stroke:var(--el-bgp);stroke-width:2;}
 .el-curve.is-faint{opacity:.45;stroke-dasharray:6 5;}
 .el-pt{stroke:var(--el-bgp);stroke-width:2;}
 .el-pt.el-E{fill:var(--el-E);} .el-pt.el-L{fill:var(--el-L);} .el-pt.el-r{fill:var(--el-r);}
