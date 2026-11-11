@@ -95,3 +95,12 @@ Owner decisions waiting:
 - Scenario simulator: the monitor is hidden until "Check vitals" (except time critical calls). Alternative: show it
   from the start.
 - NREMT spinal sheets: the two head steps were merged into one, and the assessment runs are grouped into phases.
+
+## Last look and merge (2026-11-11)
+
+The lead opened the final desktop screen of all 145 tools. Fixed after that look: bio graph builder (hint split the
+option list), city lab and polar lab (extra controls fold behind one line), indicators lab (opens with three
+transactions placed), particle diagrams and units (picture sits under the question), feedback loops (waiting boxes
+readable), rate of change (the row of changes is labeled). Left as they are after a full size look: earth and climate,
+sinusoid builder, A&P predict. Not done: the lead did not open the 145 phone screens or every tab inside each tool.
+The owner said to make PR #188 live after these fixes; the two owner decisions above are still open.

@@ -1341,3 +1341,8 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 /* Particle diagrams (pass 2): the pill row keeps its room while the box is
    empty (no pill then), so the boxes do not jump on the first tap. */
 .ls-root:has(.chem-ls-stage .pb-boxes) .ls-pills{display:flex;min-height:44px;}
+
+/* 2026-11-11: the picture sits right under the question, not low in a tall empty stage. */
+.ls-root .chem-ls-stage .pb-boxes{align-content:start;margin-top:14px;}
+.ls-root .chem-ls-stage .pb-fig{grid-template-rows:auto auto;align-items:start;}
+.ls-root .us-ls-stage{justify-content:flex-start;padding-top:18px;}

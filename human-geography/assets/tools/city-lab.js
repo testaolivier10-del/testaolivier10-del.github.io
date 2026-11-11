@@ -198,7 +198,7 @@
     host.innerHTML = '<section class="bt-problem cl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">City lab</h2>' +
       '<div class="cl-fig"><div class="cl-pic"></div><div class="cl-leg"></div></div>' +
       '<div class="cl-ctl">' + chips('cl-scene', 'Show', SCENES) +
-        '<div class="cl-grp cl-grp-bid">' + chips('cl-place', 'Land around', [['farm', 'A market town (von Thünen)'], ['city', 'A city center']]) + '<div class="cl-tc"></div><div class="cl-pr"></div>' + chips('cl-opt', 'Add', [['fridge', 'Refrigerated trucks'], ['river', 'A river']]) + '</div>' +
+        '<div class="cl-grp cl-grp-bid">' + chips('cl-place', 'Land around', [['farm', 'A market town (von Thünen)'], ['city', 'A city center']]) + '<div class="cl-tc"></div><details class="bt-more cl-try"><summary>More to try: prices, trucks, a river</summary><div class="cl-pr"></div>' + chips('cl-opt', 'Add', [['fridge', 'Refrigerated trucks'], ['river', 'A river']]) + '</details></div>' +
         '<div class="cl-grp cl-grp-models">' + chips('cl-model', 'Model', CL.CITY_IDS.map(function(k){ return [k, CL.CITY[k].name.replace(' model', '')]; })) + chips('cl-vs', 'Side by side with', [['none', 'None']].concat(CL.CITY_IDS.map(function(k){ return [k, CL.CITY[k].name.replace(' model', '')]; }))) + '</div>' +
         '<div class="cl-grp cl-grp-central">' + chips('cl-good', 'Good or service', CL.GOODS.map(function(g){ var t = g.name.replace(/^A /, ''); return [g.id, t.charAt(0).toUpperCase() + t.slice(1)]; })) + '</div>' +
         '<div class="cl-grp cl-grp-rank">' + chips('cl-rk', 'Country', [['rule', 'Follows the rule'], ['primate', 'A primate city']]) + '</div>' +
@@ -238,7 +238,7 @@
       Object.keys(single).forEach(function(cls){ root.querySelectorAll('.' + cls + ' button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === single[cls])); }); });
       root.querySelectorAll('.cl-opt button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === 'fridge' ? fridge : river)); });
       ['bid', 'models', 'central', 'rank'].forEach(function(k){ var el = $('.cl-grp-' + k); if(el) el.hidden = k !== scene; });
-      var farmOnly = place === 'farm'; sPr.el.hidden = !farmOnly; var ro = $('.cl-opt'); if(ro) ro.hidden = !farmOnly;
+      var farmOnly = place === 'farm'; sPr.el.hidden = !farmOnly; var ro = $('.cl-opt'); if(ro) ro.hidden = !farmOnly; var tr = $('.cl-try'); if(tr) tr.hidden = !farmOnly;
       var pv = $('.cl-vs'); if(pv) pv.querySelectorAll('button').forEach(function(b){ b.hidden = b.getAttribute('data-k') === model; });
     }
     function size(){ var f = $('.cl-pic'), r = f ? f.getBoundingClientRect() : { width: 600, height: 420 }; return { W: Math.max(300, Math.round(r.width) || 600), H: Math.max(260, Math.round(r.height) || 420) }; }

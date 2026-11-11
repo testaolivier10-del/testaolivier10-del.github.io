@@ -95,7 +95,7 @@
         '</div>' +
         '<div class="pl-ctl">' +
           (twos.length ? '<div class="pl-modes ls-seg" role="group" aria-label="Curves"><button type="button" class="bt-mode" data-m="one">One curve</button><button type="button" class="bt-mode" data-m="two">Between two</button></div>' : '') +
-          '<div class="pl-chips ls-scroll" role="group" aria-label="Curve"></div>' +
+          '<details class="bt-more pl-pick"><summary><span class="pl-pick-l">Curve</span> <b class="pl-pick-v"></b></summary><div class="pl-chips ls-scroll" role="group" aria-label="Curve"></div></details>' +
           '<div class="pl-regs ls-seg" role="group" aria-label="Region"></div>' +
           '<div class="pl-time"><button type="button" class="bt-btn ls-btn ls-pri pl-play">Play</button><div class="pl-slot"></div></div>' +
           '<div class="pl-show ls-seg" role="group" aria-label="Show"><button type="button" class="bt-mode" data-k="slice">Slice</button><button type="button" class="bt-mode" data-k="tan">Tangent line</button></div>' +
@@ -120,6 +120,7 @@
       if(modesEl) modesEl.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === st.mode)); });
       var list = st.mode === 'two' ? twos : ones, src = st.mode === 'two' ? PL.PAIRS : PL.CURVES;
       chips.innerHTML = list.map(function(id){ return '<button type="button" class="bt-btn pl-chip" data-id="' + id + '" aria-pressed="' + (id === st.id) + '">' + esc(src[id].name) + '</button>'; }).join('');
+      var pv = host.querySelector('.pl-pick-v') || document.querySelector('.pl-pick-v'); if(pv && src[st.id]) pv.textContent = src[st.id].name;
       var on = chips.querySelector('[aria-pressed="true"]'); if(on) chips.scrollLeft = Math.max(0, on.offsetLeft - chips.offsetLeft - 16);
       var rs = st.mode === 'one' ? cur().regions : [];
       regs.hidden = rs.length < 2;
@@ -134,7 +135,7 @@
       pwrap.setAttribute('aria-valuemin', M.fixed(L[0], 2)); pwrap.setAttribute('aria-valuemax', M.fixed(L[1], 2));
       controls(); pl = null; gl = null; draw(true);
     }
-    chips.addEventListener('click', function(e){ var b = e.target.closest('.pl-chip'); if(b){ touch(); setPick(st.mode, b.getAttribute('data-id')); } });
+    chips.addEventListener('click', function(e){ var b = e.target.closest('.pl-chip'); if(b){ touch(); setPick(st.mode, b.getAttribute('data-id')); var d = chips.closest('details'); if(d) d.open = false; } });
     regs.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b){ touch(); setPick('one', st.id, b.getAttribute('data-r')); } });
     if(modesEl) modesEl.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(!b) return; var m = b.getAttribute('data-m'); if(m === st.mode) return; touch(); setPick(m, (m === 'two' ? twos : ones)[0]); });
     function touch(){ if(!st.touched){ st.touched = true; cue.done(); } }

@@ -225,7 +225,7 @@
     var views = [{ value: 'gdp', label: 'GDP' }, { value: 'prices', label: 'Prices' }, { value: 'real', label: 'Real' }, { value: 'jobs', label: 'Jobs' }].filter(function(v){ return live[v.value]; });
     if(!views.length) views = [{ value: 'prices', label: 'Prices' }];
     // Pass 3: the GDP view opens with the first transaction already placed, so the columns are never empty.
-    var st = { view: views[0].value, seed: 1 + Math.floor(Math.random() * 9999), econ: null, added: 1, year: 4, base: 0, ryear: 3, jobs: IL.JOBS0, jobSay: '', touched: false };
+    var st = { view: views[0].value, seed: 1 + Math.floor(Math.random() * 9999), econ: null, added: 3, year: 4, base: 0, ryear: 3, jobs: IL.JOBS0, jobSay: '', touched: false };
     st.econ = IL.economy(M.rng(st.seed));
     st.people = peopleFrom(IL.JOBS0);
     var cue = T.cue('Tap Next transaction and watch where it goes.');
