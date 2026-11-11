@@ -1643,3 +1643,11 @@
 @media (prefers-reduced-motion:reduce){.sg-fig .sg-tap .sg-mols{transition:none;}}
 .ls-root.ls-phone .sg-fig .sg-blk text{font-size:12px;}
 .sg-fig .sg-tap.on .sg-row{fill-opacity:.55;}
+/* Pass 2: design drills show the setup or the results, one at a time; the part tags appear after Check. */
+.dr-view{display:flex;gap:6px;flex-wrap:wrap;}
+.dr-schem:not(.is-graded) .dr-vtags{display:none;}
+.ls-dr-stage:not(.dr-show-data) .dr-charts,.ls-dr-stage:not(.dr-show-data) > .table-wrap{display:none;}
+.ls-dr-stage.dr-show-data .dr-scene,.ls-dr-stage.dr-show-data > .bt-context,.ls-dr-stage.dr-show-data .dr-vtags{display:none;}
+.ls-dr-stage .dr-pics{grid-template-columns:minmax(0,1fr);}
+.ls-dr-stage:not(.dr-show-data) .dr-scene{max-width:560px;width:100%;margin:0 auto;}
+.ls-dr-stage.dr-show-data .dr-charts{max-width:470px;width:100%;margin:0 auto;}
