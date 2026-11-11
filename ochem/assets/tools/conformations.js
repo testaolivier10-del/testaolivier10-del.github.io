@@ -804,7 +804,8 @@
       document.getElementById(id).innerHTML =
         '<div class="cf-pair__share' + (wins && gap >= 0.005 ? ' is-win' : '') + '">' +
           share.toFixed(gap > 2 ? 2 : (gap < 0.005 ? 0 : 1)) + '%</div>' +
-        '<div class="cf-pair__kcal">' + kcal.toFixed(2) + ' kcal/mol</div>' +
+        // Pass 2: the strain bars under the pair give each chair's kcal/mol; here only the share.
+        '<span class="sr-only">' + kcal.toFixed(2) + ' kcal/mol</span>' +
         '<div class="cf-pair__tag">' + tag + '</div>';
     }
     var hide = chal.on && !chal.done;
@@ -1298,7 +1299,7 @@
     var subs = ring.filter(Boolean).length;
     var w = document.querySelector('#cfChairReadout details'); if(w){ w.open = true; w.classList.add('cf-ls-open'); }
     // "detailed below" meant the panel under it; that reading is in Why now.
-    var tag = document.querySelector('#cfCapA .cf-pair__tag'); if(tag && /detailed below/.test(tag.textContent)) tag.textContent = 'this chair, detailed in Why';
+    var tag = document.querySelector('#cfCapA .cf-pair__tag'); if(tag && /detailed below/.test(tag.textContent)) tag.textContent = 'this chair';
     var el = document.getElementById('cfChal');
     ls.verdict.innerHTML = '';
     var pills = [], cap;

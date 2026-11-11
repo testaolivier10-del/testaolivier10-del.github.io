@@ -300,13 +300,16 @@
 
   /* One reaction. `head` says whether to show "from → to" (the lists that
      are not already organized by group need it). */
-  function card(e, head){
+  function card(e, head, fold){
+    // fold (Reagent mode, pass 2): the example and the notes wait behind a tap.
+    var more = example(e) + notes(e);
+    if(fold && more) more = '<details class="rr-card__more"><summary>Example and notes</summary>' + more + '</details>';
     return '<article class="rr-card">' +
       (head ? '<div class="rr-card__route">' + esc(nodeName(e.from)) + ' <span aria-hidden="true">&rarr;</span><span class="sr-only"> to </span> ' +
         esc(e.spec ? nodeName(e.to) + ' — ' + e.spec : nodeName(e.to)) + '</div>' : '') +
       '<div class="rr-card__top"><span class="rr-card__name">' + esc(e.name) + '</span>' + tags(e) + '</div>' +
       '<div class="rr-rx">' + rxHtml(e) + '</div>' +
-      example(e) + notes(e) + topicLink(e.topic) +
+      more + topicLink(e.topic) +
     '</article>';
   }
 
@@ -443,7 +446,11 @@
       return '<rect class="rr-lane' + (b.id === 'ar' ? ' rr-lane--ring' : '') + '" x="2" y="' + b.top + '" width="' + (L.w - 4) + '" height="' + (b.bot - b.top) + '" rx="12"/>' +
         (L === LAYOUT.tall
           ? '<text class="rr-lane__k" x="8" y="' + b.y + '">' + t + '</text>'
-          : '<text class="rr-lane__k" x="14" y="' + ((b.top + b.bot) / 2 + 4) + '">' + t + '<title>' + esc(band ? band.sub : '') + '</title></text>');
+          // A long title ("On a benzene ring") takes two lines so it stays clear of the first node.
+          : (t.length > 15 && t.indexOf(' ', 8) > 0
+            ? '<text class="rr-lane__k" x="14" y="' + ((b.top + b.bot) / 2 - 3) + '">' + t.slice(0, t.indexOf(' ', 8)) +
+                '<tspan x="14" dy="14">' + t.slice(t.indexOf(' ', 8) + 1) + '</tspan><title>' + esc(band ? band.sub : '') + '</title></text>'
+            : '<text class="rr-lane__k" x="14" y="' + ((b.top + b.bot) / 2 + 4) + '">' + t + '<title>' + esc(band ? band.sub : '') + '</title></text>'));
     }).join('');
     var bold = opts.edges || [], boldKey = {};
     bold.forEach(function(e){ boldKey[e.from + '>' + e.to] = 1; });
@@ -487,6 +494,12 @@
       if(x0 < 0){ x1 -= x0; x0 = 0; } if(x1 > L.w){ x0 -= x1 - L.w; x1 = L.w; }
       if(y0 < 0){ y1 -= y0; y0 = 0; } if(y1 > L.h){ y0 -= y1 - L.h; y1 = L.h; }
       x0 = Math.max(0, x0); y0 = Math.max(0, y0); x1 = Math.min(L.w, x1); y1 = Math.min(L.h, y1);
+      // Pass 2: the wide map keeps its left gutter, where the level names sit; moved in, they ran under the first column.
+      if(L !== LAYOUT.tall){
+        x0 = 0;
+        // ...and shows whole levels: a band cut across showed half boxes and half a level name.
+        L.bands.forEach(function(bd){ if(y0 > bd.top && y0 < bd.bot) y0 = Math.max(0, bd.top - 2); if(y1 > bd.top && y1 < bd.bot) y1 = Math.min(L.h, bd.bot + 2); });
+      }
       // Never cut a group's box in half at the edge of the view: a box the edge would cut is left out whole.
       D.NODES.forEach(function(nd){ var c = pos(L, nd.id); if(!c || c.y < y0 || c.y > y1 || fitIds.indexOf(nd.id) >= 0) return;
         var a = c.x - L.nw / 2 - 4, b = c.x + L.nw / 2 + 4;
@@ -826,17 +839,23 @@
      arrow ending in a card that names the group and the reagent. The full
      ladder with every arrow was a tangle; this is the one group's slice of
      it. Cards are buttons (rr-node, data-node), so tapping one moves there. */
+  /* Pass 2: one direction at a time (What it becomes, or What makes it), so
+     the fan is one question; the switch above it carries the two counts. */
+  var fanDir = 'out';
   function fanHtml(n){
-    var tall = tallMap(), W = tall ? 400 : 1000, cols = tall ? 2 : 4, cw = (W - 20 - (cols - 1) * 10) / cols, ch = 50, gap = 10;
+    var tall = tallMap(), W = tall ? 400 : 900, cols = tall ? 2 : 4, cw = (W - 20 - (cols - 1) * 10) / cols, ch = 50, gap = 10;
     function byOther(list, key){
       var seen = {}, out = [];
       list.forEach(function(e){ var o = e[key]; if(o === n.id) return; if(!seen[o]){ seen[o] = { id: o, es: [] }; out.push(seen[o]); } seen[o].es.push(e); });
       return out;
     }
-    var ins = byOther(IN[n.id], 'from'), outs = byOther(OUT[n.id], 'to');
+    var allIn = byOther(IN[n.id], 'from'), allOut = byOther(OUT[n.id], 'to');
+    if(fanDir === 'in' && !allIn.length) fanDir = 'out';
+    if(fanDir === 'out' && !allOut.length && allIn.length) fanDir = 'in';
+    var ins = fanDir === 'in' ? allIn : [], outs = fanDir === 'out' ? allOut : [];
     var rowsIn = Math.ceil(ins.length / cols), rowsOut = Math.ceil(outs.length / cols);
-    var top = 26, cH = tall ? 150 : 170, cW = tall ? 260 : 340;
-    var inH = rowsIn ? rowsIn * (ch + gap) : 0, mid = 70;
+    var top = 10, cH = tall ? 150 : 120, cW = tall ? 260 : 300;
+    var inH = rowsIn ? rowsIn * (ch + gap) : 0, mid = 56;
     var cy0 = top + inH + (rowsIn ? mid : 0), outY = cy0 + cH + (rowsOut ? mid : 0);
     var H = outY + rowsOut * (ch + gap) + (rowsOut ? 26 : 10);
     var cx0 = (W - cW) / 2;
@@ -862,11 +881,14 @@
     ins.forEach(function(o, i){
       // Each arrow meets the center card at the same left-to-right place as its card, so they never cross.
       var p = cardXY(i, ins.length, top), ex = cx0 + cW * (0.12 + 0.76 * (p.x + cw / 2) / W);
-      arcs += curve(p.x + cw / 2, p.y + ch, ex, cy0, 'is-in'); cards += card(o, p.x, p.y, 'is-in');
+      // Pass 2: one arrow per column, from the row nearest the center; an arrow under the cards read as clutter.
+      if(i + cols >= ins.length) arcs += curve(p.x + cw / 2, p.y + ch, ex, cy0, 'is-in');
+      cards += card(o, p.x, p.y, 'is-in');
     });
     outs.forEach(function(o, i){
       var p = cardXY(i, outs.length, outY), sx = cx0 + cW * (0.12 + 0.76 * (p.x + cw / 2) / W);
-      arcs += curve(sx, cy0 + cH, p.x + cw / 2, p.y, 'is-out'); cards += card(o, p.x, p.y, 'is-out');
+      if(i < cols) arcs += curve(sx, cy0 + cH, p.x + cw / 2, p.y, 'is-out');
+      cards += card(o, p.x, p.y, 'is-out');
     });
     // The picked group in the middle, drawn as its fragment.
     var frag = fragSvg(n.id, n.name), inner = '';
@@ -876,11 +898,12 @@
       '<rect x="' + cx0 + '" y="' + cy0 + '" width="' + cW + '" height="' + cH + '" rx="16"/>' +
       '<text class="rr-fan__cname" x="' + (W / 2) + '" y="' + (cy0 + 20) + '" text-anchor="middle">' + esc(n.name) + '</text>' +
       (inner || '<text class="rr-fan__cf" x="' + (W / 2) + '" y="' + (cy0 + 76) + '" text-anchor="middle">' + esc(GF[n.id] || n.short) + '</text>') + '</g>';
-    var heads = (rowsIn ? '<text class="rr-fan__k is-in" x="10" y="16">What makes it (' + ins.length + ')</text>' : '') +
-      (rowsOut ? '<text class="rr-fan__k is-out" x="10" y="' + (outY - 10) + '">What it becomes (' + outs.length + ')</text>' : '');
-    return '<div class="rr-fan' + (tall ? ' is-tall' : '') + '"><svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMin meet" role="group" aria-label="' +
-      esc(n.name + ': ' + ins.length + ' groups make it, it becomes ' + outs.length + '. Tap one to move there.') + '">' +
-      heads + '<g aria-hidden="true">' + arcs + '</g>' + middle + cards + '</svg></div>';
+    var sw = '<div class="tseg rr-fandir" role="group" aria-label="Which arrows">' +
+      '<button type="button" data-dir="out" aria-pressed="' + (fanDir === 'out') + '"' + (fanDir === 'out' ? ' class="on"' : '') + (allOut.length ? '' : ' disabled') + '>What it becomes (' + allOut.length + ')</button>' +
+      '<button type="button" data-dir="in" aria-pressed="' + (fanDir === 'in') + '"' + (fanDir === 'in' ? ' class="on"' : '') + (allIn.length ? '' : ' disabled') + '>What makes it (' + allIn.length + ')</button></div>';
+    return '<div class="rr-fan' + (tall ? ' is-tall' : '') + '">' + sw + '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMin meet" role="group" aria-label="' +
+      esc(n.name + (fanDir === 'in' ? ': ' + ins.length + ' groups make it' : ': it becomes ' + outs.length + ' groups') + '. Tap one to move there.') + '">' +
+      '<g aria-hidden="true">' + arcs + '</g>' + middle + cards + '</svg></div>';
   }
 
   var sameOpen = false;
@@ -950,9 +973,9 @@
         '</div>' +
       '</div>' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head rr-maphead"><span>The map</span><span class="rr-legend"><span class="rr-dot rr-dot--a">A</span> start <span class="rr-dot rr-dot--b">B</span> target — tap a group to make it the target</span></div>' +
+        '<div class="tpanel__head rr-maphead"><span>The map</span><span class="rr-legend"><span class="rr-dot rr-dot--a">A</span> start <span class="rr-dot rr-dot--b">B</span> target. Tap a group to make it the target.</span></div>' +
         mapHtml(marks, undefined, {
-          edges: picked ? picked.nodes.slice(1).map(function(id, i){ return { from: picked.nodes[i], to: id, n: i + 1, tag: edgeTag(picked.hops[i][0]) }; }) : [],
+          edges: picked ? picked.nodes.slice(1).map(function(id, i){ return { from: picked.nodes[i], to: id, n: i + 1 }; }) : [],  // reagents: on the arrows of the strip below (pass 2: not twice)
           fit: picked ? picked.nodes : [S.from, S.to] }) +
         (picked ? molStrip(picked) : '') +
       '</div>' +
@@ -1016,7 +1039,7 @@
       '<div class="rr-reagent__head"><h2 class="rr-reagent__name">' + esc(r.name) + '</h2><span class="tmuted">' + esc(r.full) + '</span></div>' +
       '<p class="rr-reagent__does">' + esc(r.does) + '</p>' +
       '<div class="tpanel__head"><span>In this course (' + es.length + ')</span></div>' +
-      '<div class="rr-cards">' + es.map(function(e){ return card(e, true); }).join('') + '</div>' +
+      '<div class="rr-cards">' + es.map(function(e){ return card(e, true, true); }).join('') + '</div>' +
     '</div>';
   }
 
@@ -1076,7 +1099,6 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Pick a group</span></div>' +
         fanHtml(n) +
-        '<p class="rr-glegend"><span class="rr-gk rr-gk--in"></span>what makes it <span class="rr-gk rr-gk--out"></span>what it becomes</p>' +
       '</div>' +
       '<div aria-live="polite" id="rrGroupOut">' +
         '<div class="tpanel rr-group">' +
@@ -1106,6 +1128,12 @@
     document.getElementById('rrGroupSel').addEventListener('change', function(){
       S.group = this.value; renderGroups(); sync();
       var again = document.getElementById('rrGroupSel'); if(again) again.focus();
+    });
+    elGroups.querySelectorAll('.rr-fandir button').forEach(function(b){
+      b.addEventListener('click', function(){
+        fanDir = b.getAttribute('data-dir'); renderGroups();
+        var again = elGroups.querySelector('.rr-fandir [data-dir="' + fanDir + '"]'); if(again) again.focus();
+      });
     });
     elGroups.querySelectorAll('.rr-fan .rr-node').forEach(function(b){
       b.addEventListener('click', function(){
@@ -1408,7 +1436,7 @@
       pills.push({ html: 'No route', tone: 'warn' });
     } else {
       cap = '<b>' + esc(nodeName(r.nodes[0])) + ' to ' + esc(lc0(nodeName(r.nodes[r.nodes.length - 1]))) + ' in ' + res.length + ' step' + (res.length > 1 ? 's' : '') + '.</b> ' +
-        'The steps are on the map. Why? has every reagent card' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
+        'The reagents are on the arrows under the map. Why? has more' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
       pills.push({ html: res.length + ' step' + (res.length > 1 ? 's' : '') }, { html: S.skeleton ? 'Same skeleton' : 'C–C steps allowed', tone: 'ghost' });
     }
     studio.caption(cap, 'route');
@@ -1424,8 +1452,9 @@
   function reagentCaption(){
     var r = D.reagent(S.reagent);
     var nr = r ? edgesForReagent(r.id).length : 0;
-    studio.caption(r ? '<b>' + esc(r.name) + ':</b> ' + nr + ' reaction' + (nr === 1 ? '' : 's') + ' in this course, each one on the stage. Tap another reagent, or search.' : '<b>Pick a reagent</b> to see everything it does in this course.', 'reagent');
-    studio.pills(r ? [{ html: esc(r.name) }, { html: nr + ' reaction' + (nr === 1 ? '' : 's'), tone: 'ghost' }] : [], 'left', 'reagent');
+    studio.caption(r ? '<b>' + esc(r.name) + ':</b> ' + 'every reaction it does in this course is on the stage. Tap another reagent, or search.' : '<b>Pick a reagent</b> to see everything it does in this course.', 'reagent');
+    // The stage heading names the reagent and the panel head counts its reactions.
+    studio.pills([], 'left', 'reagent');
   }
 
   function studioGroups(){
@@ -1435,8 +1464,9 @@
     put('groups-dock', g ? [g.querySelector('.trow')] : []);
     put('groups-why', [elGroups.querySelector('#rrGroupOut')]);
     var out = OUT[n.id].length, into = IN[n.id].filter(function(e){ return e.from !== e.to; }).length;
-    studio.caption('<b>' + esc(n.name) + ' (' + esc(n.short) + '):</b> becomes ' + out + ' thing' + (out === 1 ? '' : 's') + ', made ' + into + ' way' + (into === 1 ? '' : 's') +
-      (n.dead && n.dead.length ? ', and ' + n.dead.length + ' trap' + (n.dead.length > 1 ? 's' : '') + ' to avoid' : '') + '. Tap a card to move there, or pick any group; Why? lists every reaction.', 'groups');
+    // Pass 2: the switch on the stage carries the counts of groups; the caption says what to do.
+    studio.caption('<b>' + esc(n.name) + ' (' + esc(n.short) + ').</b> Tap a card to move there. Why? lists all ' + (out + into) + ' reactions' +
+      (n.dead && n.dead.length ? ' and ' + n.dead.length + ' trap' + (n.dead.length > 1 ? 's' : '') + ' to avoid' : '') + '.', 'groups');
     studio.pills([{ html: esc(n.name) }], 'left', 'groups');
   }
 

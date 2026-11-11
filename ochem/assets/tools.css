@@ -536,6 +536,11 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rr-graph .rr-node__f{font:600 10px var(--font-mono);fill:var(--muted);}
 .rr-graph .rr-node.is-dim .rr-node__box{stroke:var(--line-soft);}
 .rr-graph .rr-node.is-dim text{opacity:.62;}
+/* Pass 2: a group off the route shows its name only; its formula is on it when it is in focus. */
+.rr-graph .rr-node.is-dim .rr-node__f{display:none;}
+.rr-fandir{margin:0 0 10px;max-width:460px;}
+.rr-card__more{margin:6px 0 4px;}
+.rr-card__more > summary{cursor:pointer;font:700 var(--ls-s,12.5px) var(--font-ui);color:var(--muted);}
 .rr-graph .rr-node.is-on .rr-node__box{stroke:var(--accent);fill:var(--tint-accent);stroke-width:2.2;}
 .rr-graph .rr-node.is-start .rr-node__box,.rr-graph .rr-node.is-end .rr-node__box,.rr-graph .rr-node[aria-pressed="true"] .rr-node__box{fill:var(--navy);stroke:var(--navy);}
 .rr-graph .rr-node.is-start text,.rr-graph .rr-node.is-end text,.rr-graph .rr-node[aria-pressed="true"] text{fill:var(--on-accent,#fff);}
@@ -655,11 +660,14 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 /* ---- Resonance: the averaged charge overlay ------------------------------ */
 .res-charge .omol svg{max-width:340px;max-height:260px;}
 .res-q{transition:r .4s cubic-bezier(.2,.8,.2,1);}
-.res-q--neg{fill:var(--tint-accent);stroke:var(--accent);stroke-width:1.5;stroke-dasharray:3 3;}
-.res-q--pos{fill:var(--tint-coral);stroke:var(--coral-text);stroke-width:1.5;stroke-dasharray:3 3;}
+.res-q--neg{fill:color-mix(in srgb,var(--q-neg) 14%,transparent);stroke:var(--q-neg);stroke-width:1.5;stroke-dasharray:3 3;}
+.res-q--pos{fill:color-mix(in srgb,var(--q-pos) 14%,transparent);stroke:var(--q-pos);stroke-width:1.5;stroke-dasharray:3 3;}
 .res-q__t{font:900 12px var(--font-mono);}
-.res-q__t--neg{fill:var(--accent-text);}
-.res-q__t--pos{fill:var(--coral-text);}
+.res-q__t--neg{fill:var(--q-neg);}
+.res-q__t--pos{fill:var(--q-pos);}
+/* Pass 2: δ− red and δ+ blue, the same colors as the − and + badges on the forms (red was on δ+ before). */
+.tool-root{--q-neg:#C62828;--q-pos:#1F4FBF;}
+:root[data-theme="dark"] .tool-root{--q-neg:#FF8A80;--q-pos:#8FB0FF;}
 @media(prefers-reduced-motion:reduce){ .res-q{transition:none;} }
 
 /* ---- Arrow Pusher: mechanism challenge ------------------------------------ */
@@ -1184,15 +1192,15 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .res-hyb__key{margin:0;font:700 var(--ls-s,13px)/1.4 var(--font-ui);color:var(--muted);}
 .res-hybwrap .tchip{align-self:flex-start;}
 .res-hyb__dash{stroke:var(--line);stroke-width:2.4;stroke-dasharray:5 4;stroke-linecap:round;}
-.res-hyb__halo--neg{fill:var(--accent);fill-opacity:.16;}
-.res-hyb__halo--pos{fill:var(--coral-text);fill-opacity:.16;}
+.res-hyb__halo--neg{fill:var(--q-neg);fill-opacity:.16;}
+.res-hyb__halo--pos{fill:var(--q-pos);fill-opacity:.16;}
 .res-hyb__d{font:900 19px var(--font-ui);}
 .res-hyb__d.is-minor{font-size:13px;opacity:.85;}
 .ls-root.ls-phone.res-ls .res-hybwrap{flex:none;height:300px;}
 .ls-root.ls-phone.res-ls .res-hyb__d{font-size:22px;}
 .ls-root.ls-phone.res-ls .res-hyb__d.is-minor{font-size:16px;}
-.res-hyb__d--neg{fill:var(--accent-text);}
-.res-hyb__d--pos{fill:var(--coral-text);}
+.res-hyb__d--neg{fill:var(--q-neg);}
+.res-hyb__d--pos{fill:var(--q-pos);}
 .res-ls .res-ls-cmp .ls-pane{display:flex;flex-direction:column;min-height:0;}
 .res-ls .res-cmpmol{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
 .res-ls #resMore{margin:0;border:0;padding:0;}

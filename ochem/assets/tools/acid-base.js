@@ -706,13 +706,13 @@
       return '<div class="ab-card' + (revealed && a === analyse(left, right).truth ? ' ab-card--win' : '') + '">' +
         '<div class="ab-card__name">' + esc(a.name) + '</div>' +
         (revealed && CB[a.id]
-          ? '<div class="ab-card__k">Its conjugate base (H⁺ gone)</div>' + (cbSvg(a) || structSvg(DRAWN[a.id], a.name) || '') +
+          ? '<div class="ab-card__k">Conjugate base (H⁺ gone)</div>' + (cbSvg(a) || structSvg(DRAWN[a.id], a.name) || '') +
             '<div class="ab-card__say">' + esc(CB[a.id].say) + '</div>'
           : (structSvg(DRAWN[a.id], a.name) || '')) +
-        '<div class="ab-card__formula">' + esc(a.formula) + '</div>' +
-        '<div class="ab-card__row"><span>Acidic proton</span><b>' + esc(a.site) + '</b></div>' +
-        '<div class="ab-card__row"><span>Conjugate base</span><b>' + esc(a.cbase) + '</b></div>' +
-        '<div class="ab-card__row"><span>pK<sub>a</sub></span><b>' + (revealed ? a.pKa : '?') + '</b></div>' +
+        /* Pass 2: the card is the picture. The pKa arrives with the answer;
+           formula, acidic proton and conjugate base sit in the table under
+           the hint and the reasoning (pairTable). */
+        (revealed ? '<div class="ab-card__row"><span>pK<sub>a</sub></span><b>' + a.pKa + '</b></div>' : '') +
       '</div>';
     }).join('<div class="ab-cards__vs">vs</div>');
 
@@ -745,7 +745,8 @@
       elV.innerHTML = '';
       elF.innerHTML = '<details class="tool-more tool-more--why"><summary>Need a hint?</summary>' +
         '<p>Which atom carries the charge in each conjugate base? ' +
-        'Can either one spread it? Is anything pulling on it through the bonds? What orbital is it sitting in?</p></details>';
+        'Can either one spread it? Is anything pulling on it through the bonds? What orbital is it sitting in?</p>' +
+        pairTable(false) + '</details>';
       return;
     }
 
@@ -807,7 +808,17 @@
       '</tbody></table></div>' +
       '<p class="tmuted" style="margin-top:12px;">The order matters as much as the list. Atom first, because which element ' +
       'holds the charge outweighs everything else; then resonance; then induction; then hybridization. A factor only gets ' +
-      'consulted when the ones above it tie.</p></details>';
+      'consulted when the ones above it tie.</p>' + pairTable(true) + '</details>';
+  }
+
+  // The two acids side by side: formula, the proton that leaves, what is left.
+  function pairTable(withPka){
+    return '<div class="ttable-scroll"><table class="ttable" style="margin-top:10px;"><thead><tr><th></th>' +
+      [left, right].map(function(a){ return '<th>' + esc(a.name) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      [['Formula', 'formula'], ['Acidic proton', 'site'], ['Conjugate base', 'cbase']].concat(withPka ? [['pK<sub>a</sub>', 'pKa']] : [])
+        .map(function(r){ return '<tr><td>' + r[0] + '</td>' + [left, right].map(function(a){
+          return '<td style="font-family:var(--font-mono);">' + esc(String(a[r[1]])) + '</td>'; }).join('') + '</tr>'; }).join('') +
+      '</tbody></table></div>';
   }
 
   function formatRatio(r){
@@ -886,7 +897,8 @@
         '<circle cx="0" cy="74" r="10"/>' +
         '<text x="' + (anchor === 'start' ? -8 : anchor === 'end' ? 8 : 0) + '" y="' + ((rankChecked ? truth.indexOf(a) : i) % 2 ? 36 : 14) + '" text-anchor="' + anchor + '" class="ab-line__lab">' +
           // Once placed, the cards carry the names: the line shows just the pKa, which never collides.
-          (rankChecked ? 'pKa ' + a.pKa : esc(a.name.length > 18 ? a.name.slice(0, 17) + '…' : a.name)) + '</text>' +
+          // Before the check the numbers match the cards; names would only repeat them.
+          (rankChecked ? 'pKa ' + a.pKa : '') + '</text>' +
         '<text x="0" y="78" text-anchor="middle" class="ab-line__n">' + (i + 1) + '</text></g>';
     });
     line += '</svg>';
@@ -1054,11 +1066,11 @@
     var cap, pills = [];
     if(left.id === right.id){ cap = '<b>Same compound.</b> Pick two different acids.'; }
     else if(!revealed){
-      cap = '<b>' + esc(left.name) + ' or ' + esc(right.name) + '?</b> Tap the one that gives up its proton more easily. Why? has a hint.';
+      cap = '<b>' + esc(left.name) + ' or ' + esc(right.name) + '?</b> Pick the stronger acid below. Why? has a hint.';
       pills.push({ html: 'Your call', tone: 'ghost' });
     } else {
       var res = analyse(left, right), other = res.truth === left ? right : left, ok = guess === res.truth.id;
-      cap = '<b>' + (ok ? 'Right.' : 'Not this time.') + '</b> ' + esc(res.truth.name) + ' is the stronger acid: pK<sub>a</sub> ' + res.truth.pKa + ' against ' + other.pKa + '. Why? walks the factors.';
+      cap = '<b>' + (ok ? 'Right.' : 'Not this time.') + '</b> ' + esc(res.truth.name) + ': its conjugate base holds the charge better. Why? walks the factors.';
       pills.push({ html: ok ? 'Right' : 'Not this time', tone: ok ? 'good' : 'bad' });
       if(res.deciding && !res.agrees) pills.push({ html: 'The rules disagree here', tone: 'warn' });
     }
@@ -1073,7 +1085,7 @@
     var truth = rankPool.slice().sort(function(x, y){ return x.pKa - y.pKa; });
     var placed = rankOrder.filter(function(a, i){ return truth[i] === a; }).length, cap, pills = [];
     if(!rankChecked){
-      cap = '<b>Most acidic first.</b> Drag the cards into order, or tap one and then another to swap them. Then put them on the pK<sub>a</sub> line.';
+      cap = '<b>Most acidic first.</b> Drag the cards, or tap two to swap them. Then put them on the pK<sub>a</sub> line.';
       pills.push({ html: 'Your order', tone: 'ghost' });
     } else {
       cap = '<b>' + (placed === 4 ? 'All four in order.' : placed + ' of 4 in the right place.') + '</b> Most acidic to least: ' + truth.map(function(a){ return esc(a.name); }).join(', ') + '. Why? explains each gap.';
