@@ -130,3 +130,7 @@ body.ls-on .phys-crumb{display:none;}
 .ls-phone .pl-tl,.ls-phone .pl-note,.ls-phone .pl-scale-t{font-size:12.5px;}
 .ls-phone .pl-qfig .pl-mk{font-size:13.5px;}
 .ls-phone .pl-qfig .phys-arrow text{font-size:13px;}
+/* Pass 3 (judge c): the cliff-height handle reads as a handle (solid, filled, named), not a stray dashed box. */
+.pl-grab.pl-hgt{fill:var(--ctint);stroke-dasharray:none;stroke-width:1.6;}
+.pl-hgt-t{fill:var(--cink);font:800 10.5px var(--font-ui);pointer-events:none;}
+.ls-phone .pl-hgt-t{font-size:12px;}
