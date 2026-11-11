@@ -104,3 +104,4 @@
 .ls-root.ls-phone .pm-lg-a{font-size:0;} .ls-root.ls-phone .pm-lg-a::after{content:"accel.";font-size:12px;}
 .ls-root.ls-phone .pm-show > .bt-mode{padding:0 4px;font-size:13.5px;}
 .ls-root.ls-phone .pm-speed-wrap{height:84px;}
+.pm-lg[hidden]{display:none;}
