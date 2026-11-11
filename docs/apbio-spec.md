@@ -189,7 +189,12 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    the variables drill). Operons and signal transduction re-lay for a portrait phone (DNA on two lines, the ladder in
    two columns). Enzyme "% of best Vmax" divides by the enzyme's Vmax at its optimum, so a denatured enzyme reads 0%.
    The snapdragon Hardy-Weinberg context names its phenotypes (`phen`), so no "carrier" for incomplete dominance.
-10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
+   (2026-11-10, tool review redesign, branch `claude/tv-bio-redesign`, `docs/tool-review/done/bio-redesign.md`)
+   Design drills draw each scenario's own setup (`SCENES` in `design-drills.js`, keyed by scenario id; a new
+   scenario without a scene falls back to plain flasks): the organism or apparatus per group, the level under it,
+   and the equipment for what is measured and kept the same. Drawn parts are `.dr-part[data-part=i]`, tied to
+   variables option i: tapping one answers the drill like its tag, and after Check both show the role. The data
+   are a plain bar chart beside the scene (zero line, negative bars point down, ± error bars). (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;
    `topic.free` in the curriculum carries it to `ApBioCore.locked`, the lesson gate and the

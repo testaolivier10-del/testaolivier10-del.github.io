@@ -1329,19 +1329,121 @@
 .wp-work{margin:0;font:600 14px/1.55 var(--font-ui);}
 .ls-root .ls-stage .wp-key{flex:none;justify-content:center;padding-right:48px;font-size:var(--ls-s);}
 .wp-more{display:grid;gap:12px;}
-/* Design drills: the setup sketch drawn from the scenario's data (design-drills.js schematic) and the setup's parts as tags */
-.dr-schem{display:grid;gap:6px;}
-.dr-sfig{width:100%;height:auto;max-width:520px;margin:0 auto;display:block;}
-.dr-vessel{fill:var(--white);stroke:var(--bio-shape,#5E7A74);stroke-width:2;stroke-linejoin:round;}
-.dr-liq{fill:var(--bio-aff-fill,#DCEFF7);}
-.dr-gauge.g0{fill:var(--bio-s1);} .dr-gauge.g1{fill:var(--bio-s2);}
-.dr-gv{font:800 11px var(--font-mono);} .dr-gv.g0{fill:var(--bio-s1);} .dr-gv.g1{fill:var(--bio-s2);}
-.dr-lv{fill:var(--ink);font:900 12px var(--font-ui);}
-.dr-ax{fill:var(--muted);font:800 11.5px var(--font-ui);}
-.dr-glegend{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:0;font:700 12.5px var(--font-ui);color:var(--muted);}
-.dr-glegend span{display:inline-flex;align-items:center;gap:5px;}
-.dr-gk{display:inline-block;width:10px;height:10px;border-radius:2px;}
-.dr-gk.g0{background:var(--bio-s1);} .dr-gk.g1{background:var(--bio-s2);}
+.dr-schem{display:grid;gap:8px;}
+/* Design drills: each scenario's own setup scene and a plain chart of its data (design-drills.js SCENES, chartSvg) */
+.dr-pics{display:grid;gap:10px;margin:0;}
+@media (min-width:700px){ .dr-pics{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start;} }
+.dr-pics figure{margin:0;}
+.dr-scene{background:var(--paper);border-radius:14px;padding:4px;}
+.dr-sfig{width:100%;height:auto;max-width:560px;margin:0 auto;display:block;}
+.dr-charts{display:grid;gap:4px;}
+.dr-chart{width:100%;height:auto;max-width:400px;margin:0 auto;display:block;}
+.dr-sfig{--dk-line:#4F6A64;--dk-glass:#FFFFFF;--dk-water:#D6ECF7;--dk-watere:#7FB3CF;--dk-green:#5DAA4A;--dk-greene:#2F6E22;--dk-red:#D9534F;--dk-metal:#9AA7A4;--dk-metale:#5E6B68;--dk-bulb:#FFE28A;--dk-face:#FFFFFF;--dk-salt:#8A93A6;--dk-drug:#B4458C;--dk-nitrate:#3B7DC4;--dk-cell:#F6E7C1;--dk-celle:#9C7A2E;--dk-rbc:#D9534F;--dk-pea:#9CCB5A;--dk-fur:#FBFAF6;--dk-dark:#3A302C;--dk-skin:#F3C9B5;--dk-fly:#B07A3A;--dk-wing:#E4EEF6;--dk-louse:#8E8A84;--dk-brown:#A86A3C;--dk-black:#2C2A28;--dk-flour:#F1E3C4;--dk-damp:#CFE6F4;--dk-dry:#F2E4C6;--dk-broth:#F3E7B8;--dk-cond:#C7E59A;--dk-bact:#8A7A3A;--dk-sol:#EBD9F2;--dk-onion:#E9C9A0;--dk-algae:#4E9A3E;--dk-phos:#E08A2E;--dk-pondw:#CDE7D2;--dk-dna:#3B7DC4;--dk-dna2:#D9534F;--dk-luc:#FFD65A;--dk-saline:#F2F0E6;--dk-bath:#CFE3F2;--dk-dye:#2E7DD7;--dk-chain:#384B47;--dk-fat:#F3E3A8;--dk-sun:#F7C531;--dk-glow:#B9F27A;}
+:root[data-theme="dark"] .dr-sfig{--dk-line:#A9C2BC;--dk-glass:#1E2A2D;--dk-water:#1F3E52;--dk-watere:#5E9CBF;--dk-green:#5DAA4A;--dk-greene:#A6E39A;--dk-red:#F07B76;--dk-metal:#56625F;--dk-metale:#B5C2BF;--dk-bulb:#E9C55A;--dk-face:#26302F;--dk-salt:#B6BFD1;--dk-drug:#E07ABD;--dk-nitrate:#78B4F0;--dk-cell:#4A3F26;--dk-celle:#E2C27A;--dk-rbc:#E06A66;--dk-pea:#7FB04A;--dk-fur:#E9E6DD;--dk-dark:#1B1614;--dk-skin:#C99886;--dk-fly:#C9924F;--dk-wing:#3B4A57;--dk-louse:#A7A39C;--dk-brown:#C27E4C;--dk-black:#0F0E0D;--dk-flour:#4F4634;--dk-damp:#1F3A4D;--dk-dry:#4A3F2A;--dk-broth:#4A4428;--dk-cond:#3E5A22;--dk-bact:#D8C67A;--dk-sol:#3E2E47;--dk-onion:#9E7E58;--dk-algae:#7CCB69;--dk-phos:#F2A65A;--dk-pondw:#24402C;--dk-dna:#78B4F0;--dk-dna2:#F07B76;--dk-luc:#C9A42E;--dk-saline:#2E2C24;--dk-bath:#1D3446;--dk-dye:#6AAEF5;--dk-chain:#D0DDD9;--dk-fat:#6E6436;--dk-sun:#E9B724;--dk-glow:#7FBF3E;}
+.dr-sfig .dk-hit{fill:transparent;}
+.dr-sfig .dk-glass{fill:var(--dk-glass);fill-opacity:.55;stroke:var(--dk-line);stroke-width:1.8;stroke-linejoin:round;}
+.dr-sfig .dk-water{fill:var(--dk-water);stroke:var(--dk-watere);stroke-width:.8;}
+.dr-sfig .dk-saline{fill:var(--dk-saline);} .dr-sfig .dk-broth{fill:var(--dk-broth);} .dr-sfig .dk-cond{fill:var(--dk-cond);} .dr-sfig .dk-sol{fill:var(--dk-sol);}
+.dr-sfig .dk-bath{fill:var(--dk-bath);stroke:var(--dk-watere);stroke-width:1.5;}
+.dr-sfig .dk-pondw{fill:var(--dk-pondw);}
+.dr-sfig .dk-tank{fill:none;stroke:var(--dk-line);stroke-width:2.2;stroke-linejoin:round;}
+.dr-sfig .dk-metal{fill:var(--dk-metal);stroke:var(--dk-metale);stroke-width:1.2;stroke-linejoin:round;}
+.dr-sfig .dk-metal.thick{stroke-width:4;stroke-linecap:round;}
+.dr-sfig .dk-face{fill:var(--dk-face);stroke:var(--dk-line);stroke-width:1.6;}
+.dr-sfig .dk-screen{fill:#9FD7B5;stroke:var(--dk-metale);stroke-width:.8;}
+.dr-sfig .dk-hand{fill:none;stroke:var(--dk-line);stroke-width:1.8;stroke-linecap:round;}
+.dr-sfig .dk-hand.thin{stroke-width:1;}
+.dr-sfig .dk-red{fill:var(--dk-red);} .dr-sfig .dk-redb{fill:var(--dk-red);}
+.dr-sfig .dk-bulb{fill:var(--dk-bulb);stroke:var(--dk-metale);stroke-width:1;}
+.dr-sfig .dk-ray,.dr-sfig .dk-sunray{fill:none;stroke:var(--dk-sun);stroke-width:2;stroke-linecap:round;}
+.dr-sfig .dk-sun{fill:var(--dk-sun);}
+.dr-sfig .dk-moon{fill:#C9CCE8;stroke:#6E73A8;stroke-width:1;}
+.dr-sfig .dk-ruler{fill:#F6D98B;stroke:#A88A2E;stroke-width:1;}
+.dr-sfig .dk-green,.dr-sfig .dk-leaf{fill:var(--dk-green);stroke:var(--dk-greene);stroke-width:.9;}
+.dr-sfig .dk-root{fill:none;stroke:#C8B48A;stroke-width:1.2;stroke-linecap:round;}
+.dr-sfig .dk-root.thick{stroke-width:4;}
+.dr-sfig .dk-band{fill:none;stroke:var(--dk-drug);stroke-width:2;}
+.dr-sfig .dk-stem{fill:none;stroke:var(--dk-greene);stroke-width:1.8;stroke-linecap:round;}
+.dr-sfig .dk-bub{fill:var(--dk-glass);stroke:var(--dk-watere);stroke-width:1;}
+.dr-sfig .dk-nitrate{fill:var(--dk-nitrate);} .dr-sfig .dk-salt{fill:var(--dk-salt);} .dr-sfig .dk-drug{fill:var(--dk-drug);}
+.dr-sfig .dk-bact{fill:var(--dk-bact);} .dr-sfig .dk-algae{fill:var(--dk-algae);} .dr-sfig .dk-phos{fill:var(--dk-phos);}
+.dr-sfig .dk-cell{fill:var(--dk-cell);stroke:var(--dk-celle);stroke-width:1.2;}
+.dr-sfig .dk-cil{fill:none;stroke:var(--dk-celle);stroke-width:.8;}
+.dr-sfig .dk-nuc{fill:#B9A3E3;stroke:#6B4FA8;stroke-width:.8;}
+.dr-sfig .dk-vac{fill:#D6ECF7;stroke:#2E7DD7;stroke-width:1;} .dr-sfig .dk-vacr{fill:none;stroke:#2E7DD7;stroke-width:.8;}
+.dr-sfig .dk-dish{fill:var(--dk-glass);stroke:var(--dk-line);stroke-width:1.6;}
+.dr-sfig .dk-rbc{fill:var(--dk-rbc);stroke:#8E2B28;stroke-width:.6;} .dr-sfig .dk-rbcc{fill:#F0A3A0;}
+.dr-sfig .dk-pea{fill:var(--dk-pea);stroke:#4F7A23;stroke-width:.7;}
+.dr-sfig .dk-cotton{fill:#FFFFFF;stroke:#B7B7B7;stroke-width:1;}
+.dr-sfig .dk-pipe{fill:none;stroke:var(--dk-line);stroke-width:3.2;stroke-linejoin:round;}
+.dr-sfig .dk-dye{fill:var(--dk-dye);}
+.dr-sfig .dk-fblue{fill:#3B6FE0;} .dr-sfig .dk-fgreen{fill:#2FA35A;} .dr-sfig .dk-fred{fill:#E0453B;} .dr-sfig .dk-fgrey{fill:#9AA7A4;}
+.dr-sfig .beam{opacity:.16;}
+.dr-sfig .dk-glowh{fill:var(--dk-glow);opacity:.45;} .dr-sfig .dk-glowl{fill:var(--dk-glow);}
+.dr-sfig .dk-onion{fill:var(--dk-onion);stroke:#9C6B32;stroke-width:1.2;} .dr-sfig .dk-onionl{fill:none;stroke:#9C6B32;stroke-width:.8;}
+.dr-sfig .dk-fur{fill:var(--dk-fur);stroke:var(--dk-line);stroke-width:1.3;}
+.dr-sfig .dk-darkfur{fill:var(--dk-dark);}
+.dr-sfig .dk-eye{fill:#C0392B;}
+.dr-sfig .dk-skin{fill:var(--dk-skin);}
+.dr-sfig .dk-none{display:none;}
+.dr-sfig .dk-pad{stroke:var(--dk-line);stroke-width:1;}
+.dr-sfig .dk-incub{fill:var(--dk-metal);fill-opacity:.35;stroke:var(--dk-line);stroke-width:1.8;}
+.dr-sfig .dk-food{fill:#C79A5B;} .dr-sfig .dk-plug{fill:#F4EEE0;stroke:#B7AA8A;stroke-width:1;}
+.dr-sfig .dk-fly{fill:var(--dk-fly);stroke:#5E3E17;stroke-width:.6;} .dr-sfig .dk-flyh{fill:var(--dk-fly);}
+.dr-sfig .dk-wing{fill:var(--dk-wing);stroke:#7E93A6;stroke-width:.6;opacity:.95;}
+.dr-sfig .dk-cage{fill:var(--dk-glass);fill-opacity:.4;stroke:var(--dk-line);stroke-width:1.6;}
+.dr-sfig .dk-mesh{fill:none;stroke:var(--dk-line);stroke-width:.6;opacity:.5;}
+.dr-sfig .dk-louse{fill:var(--dk-louse);stroke:#4B4842;stroke-width:.8;} .dr-sfig .dk-seg{fill:none;stroke:#4B4842;stroke-width:.6;} .dr-sfig .dk-ant{fill:none;stroke:#4B4842;stroke-width:.8;}
+.dr-sfig .dk-damp{fill:var(--dk-damp);stroke:var(--dk-line);stroke-width:1.5;} .dr-sfig .dk-dry{fill:var(--dk-dry);stroke:var(--dk-line);stroke-width:1.5;}
+.dr-sfig .dk-mid{fill:none;stroke:var(--dk-line);stroke-width:1.2;stroke-dasharray:4 4;}
+.dr-sfig .dk-lid{fill:#2C2A28;fill-opacity:.07;stroke:var(--dk-line);stroke-width:1.5;stroke-dasharray:7 4;}
+.dr-sfig .dk-cover{fill:#2C2A28;fill-opacity:.55;stroke:var(--dk-line);stroke-width:1.2;}
+.dr-sfig .dk-black{fill:var(--dk-black);} .dr-sfig .dk-brown{fill:var(--dk-brown);}
+.dr-sfig .dk-flour{fill:var(--dk-flour);}
+.dr-sfig .dk-bar{fill:var(--bio-s1);}
+.dr-sfig .dk-reed{fill:none;stroke:var(--dk-greene);stroke-width:1.5;stroke-linecap:round;}
+.dr-sfig .dk-cellp{fill:#F3C9B5;stroke:#9C6B52;stroke-width:.7;}
+.dr-sfig .dk-sym{fill:none;stroke:#C0397A;stroke-width:2;stroke-linecap:round;}
+.dr-sfig .dk-heat{fill:none;stroke:var(--dk-red);stroke-width:1.6;stroke-linecap:round;}
+.dr-sfig .dk-lens{fill:#D6ECF7;fill-opacity:.7;stroke:var(--dk-metale);stroke-width:2.2;}
+.dr-sfig .dk-scope{fill:var(--dk-metal);stroke:var(--dk-metale);stroke-width:1.2;}
+.dr-sfig .dk-rad{fill:#F7C531;stroke:#A88A2E;stroke-width:.8;}
+.dr-sfig .dk-dna{fill:none;stroke:var(--dk-dna);stroke-width:1.8;} .dr-sfig .dk-dna.b{stroke:var(--dk-dna2);}
+.dr-sfig .dk-dnab{fill:var(--dk-dna);}
+.dr-sfig .dk-gap{fill:none;stroke:var(--dk-line);stroke-width:1.2;stroke-dasharray:2 3;}
+.dr-sfig .dk-luc{fill:var(--dk-luc);stroke:#A88A2E;stroke-width:1;}
+.dr-sfig .dk-tick{stroke:var(--dk-line);stroke-width:1.2;}
+.dr-sfig .dk-arrow{fill:none;stroke:var(--dk-line);stroke-width:1.8;} .dr-sfig .dk-arrowh{fill:var(--dk-line);}
+.dr-sfig .dk-chain{fill:none;stroke:var(--dk-chain);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;}
+.dr-sfig .dk-chain.dbl{stroke:var(--dk-red);stroke-width:2;}
+.dr-sfig .dk-head{fill:var(--dk-fat);stroke:var(--dk-chain);stroke-width:1.2;}
+.dr-sfig .dk-pan{fill:var(--dk-metal);stroke:var(--dk-metale);stroke-width:1.2;} .dr-sfig .dk-fat{fill:var(--dk-fat);}
+.dr-sfig text{paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round;}
+.dr-sfig .dk-t{fill:var(--ink);font:700 10.5px var(--font-ui);}
+.dr-sfig .dk-ts{fill:var(--muted);font:700 9.5px var(--font-ui);}
+.dr-sfig .dk-lv{fill:var(--ink);font:900 12px var(--font-ui);}
+.dr-sfig .dk-ax{fill:var(--muted);font:800 11px var(--font-ui);}
+.dr-sfig .dk-ic{fill:var(--ink);font:900 8px var(--font-ui);stroke:none;}
+.dr-sfig .dk-ic.big{font-size:10px;}
+/* the drawn parts of the variables drill: tappable while the drill is open, and colored by role after Check */
+.dr-sfig .dr-part.is-live{cursor:pointer;}
+.dr-sfig .dr-part.is-hot,.dr-sfig .dr-part.is-live:hover{filter:drop-shadow(0 0 2.5px var(--cink));}
+.dr-sfig .dr-part.is-iv{filter:drop-shadow(0 0 2.5px var(--bio-eff)) drop-shadow(0 0 1px var(--bio-eff));}
+.dr-sfig .dr-part.is-dv{filter:drop-shadow(0 0 2.5px var(--bio-aff)) drop-shadow(0 0 1px var(--bio-aff));}
+.dr-sfig .dr-part.is-conf{filter:drop-shadow(0 0 2.5px var(--bio-symp)) drop-shadow(0 0 1px var(--bio-symp));}
+.dr-vtag.is-hot{box-shadow:inset 0 0 0 2px var(--cink);}
+.dr-chart text{font-family:var(--font-ui);}
+.dr-chart .dc-title{fill:var(--ink);font-weight:800;font-size:11.5px;}
+.dr-chart .dc-key.c0{fill:var(--bio-s1);} .dr-chart .dc-key.c1{fill:var(--bio-s2);}
+.dr-chart .dc-grid{stroke:var(--line);stroke-width:1;}
+.dr-chart .dc-zero,.dr-chart .dc-axis{stroke:var(--ink);stroke-width:1.4;}
+.dr-chart .dc-bar.c0{fill:var(--bio-s1);} .dr-chart .dc-bar.c1{fill:var(--bio-s2);}
+.dr-chart .dc-err{fill:none;stroke:var(--ink);stroke-width:1.2;}
+.dr-chart .dc-tick{fill:var(--muted);font-size:10px;font-weight:700;}
+.dr-chart .dc-val{fill:var(--ink);font-size:9.5px;font-weight:800;font-family:var(--font-mono);}
+.dr-chart .dc-x{fill:var(--ink);font-size:10.5px;font-weight:800;}
+.dr-chart .dc-x.sm{font-size:9.5px;}
+.dr-chart .dc-xt{fill:var(--muted);font-size:10.5px;font-weight:800;}
 .dr-vtags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
 .dr-vtags-h{flex:1 0 100%;margin:0;font:900 12.5px var(--font-ui);color:var(--cink);}
 .dr-vtag{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:4px 12px;border-radius:999px;border:0;background:var(--surface2,var(--paper));box-shadow:inset 0 0 0 1.5px var(--line);
