@@ -170,7 +170,7 @@
       var t = Math.max(0, Math.min(1, (pH - d.lo) / (d.hi - d.lo))), mix = c.a.map(function(x, i){ return x + (c.b[i] - x) * t; });
       var word = t <= 0 ? c.words[0] : t >= 1 ? c.words[2] : c.words[1];
       var where = Math.abs(v - last) <= tol ? { html: 'At equivalence', tone: 'accent' } : v > last ? { html: 'Past equivalence', tone: 'accent' }
-        : pH < 6.5 ? { html: 'Acidic', tone: 'warn' } : pH > 7.5 ? { html: 'Basic', tone: 'accent' } : { html: 'Neutral', tone: 'ghost' };
+        : pH < 6.5 ? { html: 'Acidic', tone: 'warn' } : pH > 7.5 ? { html: 'Basic', tone: 'accent' } : { html: 'Near neutral', tone: 'ghost' };
       LS.pills([{ k: 'pH', html: F(pH, 2), tone: 'readout' }, where], 'left', 'explore');
       LS.pills([{ html: '<span class="ls-pill-dot" style="background:rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + Math.max(0.15, mix[3]).toFixed(2) + ')"></span>' + '<span class="sr-only">' + esc(d.name) + ' is </span>' + '<span aria-hidden="true">Indicator </span>' + word, tone: 'ghost' }], 'right', 'explore');
       var fm = /^[\s\S]*?\.(?=\s|$)/.exec(m.text), first = fm ? fm[0] : m.text;
