@@ -245,8 +245,10 @@
     if((st.covered || []).length) covers += '<canvas class="lp-lines" aria-hidden="true" width="' + f.w + '" height="' + f.h + '" data-src="' + esc(BASE + f.src) + '" data-boxes="' + esc(st.covered.map(function(c){ return c.box.join(','); }).join(';')) + '"></canvas>';
     // A label printed with a typo has "fix": the right spelling drawn over it.
     covers += f.fixSvg || '';   // generator-built SVG (scripts/lib/anp-build.mjs fixSvg)
+    var vw = opts.view;   // pass 3: one view of a figure that prints two or more (anterior, then posterior)
+    function offView(b){ if(!vw) return false; var cy = (b[1] + b[3] / 2) / f.h; return cy < vw.y0 || cy >= vw.y1; }
     var boxes = st.labels.map(function(lab){
-      var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"';
+      var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"' + (offView(lab.box) ? ' tabindex="-1" aria-hidden="true" data-off="1"' : '');
       if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
       if(mode === 'study'){
         var shown = (opts.reveal || {})[lab.id];
@@ -276,8 +278,12 @@
       '<button type="button" class="lp-zbtn" data-z="-1" aria-label="Zoom out"' + (z <= 1 ? ' disabled' : '') + '>&minus;</button>' +
       '<span class="lp-zval" aria-live="polite">' + Math.round(z * 100) + '%</span>' +
       '<button type="button" class="lp-zbtn" data-z="1" aria-label="Zoom in"' + (z >= 3 ? ' disabled' : '') + '>+</button></div>';
+    var NAMES = vw && vw.n === 2 ? ['Upper view', 'Lower view'] : ['Upper view', 'Middle view', 'Lower view'];
+    var views = vw ? '<div class="lp-views kt-seg" role="group" aria-label="Which view of the figure">' + NAMES.slice(0, vw.n).map(function(nm, i){
+      return '<button type="button" class="lp-vbtn" data-v="' + i + '" aria-pressed="' + (i === vw.k ? 'true' : 'false') + '">' + nm + '</button>'; }).join('') + '</div>' : '';
+    if(views) zoomBar = '<div class="lp-figbar">' + views + zoomBar + '</div>';
     return '<figure class="lp-figure">' + zoomBar +
-      '<div class="lp-scroll' + (z > 1 ? ' is-zoomed' : '') + '"><div class="lp-fig" style="--lp-ratio:' + ratio + ';--lp-z:' + z + '">' +
+      '<div class="lp-scroll' + (z > 1 ? ' is-zoomed' : '') + (vw ? ' lp-view' : '') + '"' + (vw ? ' style="--lp-vy:' + vw.y0.toFixed(4) + ';--lp-vh:' + (vw.y1 - vw.y0).toFixed(4) + ';--lp-vx:' + vw.x0.toFixed(4) + ';--lp-vw:' + (vw.x1 - vw.x0).toFixed(4) + '"' : '') + '><div class="lp-fig" style="--lp-ratio:' + ratio + ';--lp-z:' + z + '">' +
       '<img src="' + esc(BASE + f.src) + '" alt="' + esc(f.alt) + '" width="' + f.w + '" height="' + f.h + '" decoding="async">' +
       covers + boxes + '</div></div><figcaption>' + credit(f) + '</figcaption></figure>';
   }
@@ -411,7 +417,7 @@
     if(!studioPaint.hinted && ST.stage.querySelector('.lp-box')){
       studioPaint.hinted = true;
       // The first-run ring goes on the label with the most room round it, so it covers no other label.
-      var bs = [].slice.call(ST.stage.querySelectorAll('.lp-box')), best = null;
+      var bs = [].slice.call(ST.stage.querySelectorAll('.lp-box:not([data-off])')), best = null;
       bs.forEach(function(b){
         var r = b.getBoundingClientRect(), gap = 1e9;
         bs.forEach(function(o){ if(o === b) return; var q = o.getBoundingClientRect(); gap = Math.min(gap, Math.max(q.left - r.right, r.left - q.right, q.top - r.bottom, r.top - q.bottom)); });
@@ -428,7 +434,7 @@
      size) and the stage scrolls down it; zoom works from there. */
   /* The leader-line eraser and the drawn-extent measure live in lab-fit.js,
      loaded on first use (they read the figure's pixels). */
-  var fitWait = null;
+  var fitWait = null, VIEWS = {};
   function fitLoad(cb){
     if(window.AnpLabFit) return cb(window.AnpLabFit);
     if(fitWait){ fitWait.push(cb); return; }
@@ -440,7 +446,7 @@
   }
   function fitWidth(){
     var sc = ST.stage.querySelector('.lp-ls-fig .lp-scroll'), fg = sc && sc.querySelector('.lp-fig'), im = fg && fg.querySelector('img');
-    if(!im) return;
+    if(!im || sc.classList.contains('lp-view')) return;
     var ratio = parseFloat(fg.style.getPropertyValue('--lp-ratio')) || 1;
     fitLoad(function(F){ F.inkBox(im.getAttribute('src'), function(box){
       if(!document.contains(sc)) return;
@@ -595,7 +601,26 @@
 
   /* --------------------------------------------------------- explore, study */
   function showExplore(s, n, mode){
-    var st = s.stations[n], z = 1, reveal = {}, pick = null, studyOpen = false;
+    var st = s.stations[n], z = 1, reveal = {}, pick = null, studyOpen = false, vk = 0;
+    /* Pass 3: a figure that prints two or three views one above the other (lab-fit.js views) shows one view
+       at a time, fitted to the stage, with Upper view / Lower view above it. */
+    var VW = ST ? VIEWS[st.figure] : null;
+    function view(){
+      if(!(VW && VW.length > 1)) return null;
+      var y0 = VW[vk][0], y1 = VW[vk][1], f = st.fig, x0 = 1, x1 = 0;
+      // the view's width: its labels' and covers' columns, so the printed words reach the stage's edges
+      st.labels.concat(st.covered || []).forEach(function(l){ var b = l.box, cy = (b[1] + b[3] / 2) / f.h; if(cy >= y0 && cy < y1){ x0 = Math.min(x0, b[0] / f.w); x1 = Math.max(x1, (b[0] + b[2]) / f.w); } });
+      x0 = Math.max(0, x0 - 0.02); x1 = Math.min(1, x1 + 0.02);
+      if(x1 - x0 < 0.5){ x0 = 0; x1 = 1; }
+      return { k: vk, n: VW.length, y0: y0, y1: y1, x0: x0, x1: x1 };
+    }
+    if(ST && VIEWS[st.figure] === undefined) fitLoad(function(F){
+      if(!F.views) return;
+      F.views(BASE + st.fig.src, st.fig, st.labels.map(function(l){ return l.box; }), function(v){
+        VIEWS[st.figure] = v;
+        if(v && v.length > 1 && document.contains(app) && Q().querySelector('.lp-box[data-label="' + st.labels[0].id + '"]')){ VW = v; draw(); }
+      });
+    });
     function draw(){
       var body = setHeader(s, mode) +
         '<p class="kt-first lp-lead">' + (mode === 'explore'
@@ -604,18 +629,20 @@
         stationTabs(s, n, mode) +
         (mode === 'study' && window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit.more('<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>', { open: !!studyOpen, cls: 'lp-studymore' })
           : mode === 'study' ? '<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>' : '') +
-        '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick }) +
+        '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick, view: view() }) +
         '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : mode === 'explore' ? '' : '<p class="anp-small">Revealed labels are explained here.</p>') + '</div></div>' +
         (n + 1 < s.stations.length ? '<p class="lp-next"><a class="btn-outline" href="#' + mode + '/' + s.id + '/' + (n + 2) + '">Next figure &rarr;</a></p>' : '');
       paint(body);
       setPicker(s, mode);
       if(pick) keepGoing(Q().querySelector('.lp-info'), pick, st);
       wireZoom(Q(), function(){ return z; }, function(v){ z = v; draw(); });
+      Q().querySelectorAll('.lp-vbtn').forEach(function(b){ b.addEventListener('click', function(){ vk = +b.getAttribute('data-v'); draw(); var nb = Q().querySelector('.lp-vbtn[data-v="' + vk + '"]'); if(nb) nb.focus(); }); });
       var sm = Q().querySelector('.lp-studymore'); if(sm) sm.addEventListener('toggle', function(){ studyOpen = sm.open; });
       Q().querySelectorAll('.lp-box').forEach(function(b){
         b.addEventListener('click', function(){
           var id = b.getAttribute('data-label');
           var lab = st.labels.filter(function(l){ return l.id === id; })[0];
+          if(VW && VW.length > 1) VW.forEach(function(r, i){ var cy = (lab.box[1] + lab.box[3] / 2) / st.fig.h; if(cy >= r[0] && cy < r[1]) vk = i; });
           if(mode === 'study'){ reveal[id] = !reveal[id]; pick = reveal[id] ? lab : pick === lab ? null : pick; }
           else pick = lab;
           draw();

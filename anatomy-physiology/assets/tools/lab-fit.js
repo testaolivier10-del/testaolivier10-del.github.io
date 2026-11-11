@@ -131,5 +131,61 @@
     }
     if(img.complete && img.naturalWidth) run(); else img.addEventListener('load', run, { once: true });
   }
-  window.AnpLabFit = { eraseLeaders: eraseLeaders, inkBox: inkBox, blendCovers: blendCovers };
+  /* Views (pass 3): a figure that prints two or three drawings one above the other (the heart from the
+     front, then from behind) splits at the blank band between them, so Explore and Study can show one
+     view at a time. A split needs a band with no ink right across the figure, at least three labels on
+     each side and no label box across it. cb(null) when the figure is one view. */
+  var VIEWS = {};
+  function views(src, fig, boxes, cb){
+    if(!fig || fig.h / fig.w < 0.8){ cb(null); return; }
+    if(VIEWS[src]){ if(VIEWS[src].done) cb(VIEWS[src].v); else VIEWS[src].wait.push(cb); return; }
+    VIEWS[src] = { wait: [cb] };
+    var img = new Image();
+    img.onload = function(){
+      var out = null;
+      try{
+        var w = 400, h = Math.max(1, Math.round(400 * img.naturalHeight / img.naturalWidth)), c = document.createElement('canvas'); c.width = w; c.height = h;
+        var g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(img, 0, 0, w, h);
+        var d = g.getImageData(0, 0, w, h).data, ink = [];
+        for(var y = 0; y < h; y++){ var n = 0; for(var x = 0; x < w; x++){ var i = (y * w + x) * 4; if(Math.min(d[i], d[i + 1], d[i + 2]) < 225) n++; } ink.push(n); }
+        var top = 0, bot = h - 1;
+        while(top < h && !ink[top]) top++;
+        while(bot > 0 && !ink[bot]) bot--;
+        var runs = [];
+        for(y = top; y <= bot; y++){
+          if(ink[y] > 1) continue;
+          var s0 = y; while(y <= bot && ink[y] <= 1) y++;
+          if(y - s0 >= Math.max(4, 0.012 * h)) runs.push({ c: (s0 + y) / 2 / h, n: y - s0 });
+        }
+        var cy = boxes.map(function(b){ return (b[1] + b[3] / 2) / fig.h; });
+        var across = function(t){ return boxes.some(function(b){ return b[1] / fig.h < t && (b[1] + b[3]) / fig.h > t; }); };
+        var cut = function(a, b){
+          var best = null;
+          runs.forEach(function(r){
+            if(r.c < a + 0.25 * (b - a) || r.c > b - 0.25 * (b - a) || across(r.c)) return;
+            var up = cy.filter(function(v){ return v >= a && v < r.c; }).length, dn = cy.filter(function(v){ return v >= r.c && v < b; }).length;
+            if(up < 3 || dn < 3) return;
+            if(!best || r.n > best.n) best = r;
+          });
+          return best;
+        };
+        var parts = [[0, 1]], again = true;
+        while(again && parts.length < 3){
+          again = false;
+          for(var k = 0; k < parts.length && parts.length < 3; k++){
+            var p = parts[k];
+            if((p[1] - p[0]) * fig.h / fig.w < 0.8) continue;
+            var r = cut(p[0], p[1]);
+            if(r){ parts.splice(k, 1, [p[0], r.c], [r.c, p[1]]); again = true; break; }
+          }
+        }
+        out = parts.length > 1 ? parts : null;
+      }catch(e){ out = null; }
+      VIEWS[src].v = out; VIEWS[src].done = true;
+      VIEWS[src].wait.forEach(function(fn){ fn(out); }); VIEWS[src].wait = [];
+    };
+    img.onerror = function(){ VIEWS[src].done = true; VIEWS[src].v = null; VIEWS[src].wait.forEach(function(fn){ fn(null); }); VIEWS[src].wait = []; };
+    img.src = src;
+  }
+  window.AnpLabFit = { eraseLeaders: eraseLeaders, inkBox: inkBox, blendCovers: blendCovers, views: views };
 })();
