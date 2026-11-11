@@ -35,13 +35,13 @@
       '<section class="bt-card pg-card" aria-labelledby="pg-h"><h2 id="pg-h">The model</h2>' +
       '<p class="bt-first">Press Play the years and watch the population fill its space.</p>' +
       '<div class="bt-fig pg-field bt-hero"></div>' +
-      '<div class="os-play pg-play"><button type="button" class="btn-press sm" data-a="play">Play the years</button><span class="pg-evbtns"></span><p class="os-clock pg-clock" aria-hidden="true"></p></div>' +
+      '<div class="os-play pg-play"><button type="button" class="btn-press sm" data-a="play">Play the years</button><p class="os-clock pg-clock" aria-hidden="true"></p></div>' +
       '<fieldset class="bt-modes bt-more"><legend>Growth model</legend>' + MODELS.map(function(m){
         var id = 'pg-model-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="pg-model" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.model ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '<span class="pg-eq">: ' + esc(m[2]) + '</span></label></div>';
       }).join('') + '</fieldset>' +
       '<div class="bt-controls pg-main" data-primary="2"></div>' +
-      '<fieldset class="bt-ctl pg-events bt-more"><legend>Events (optional)</legend><div class="bt-controls pg-ev"></div></fieldset>' +
+      '<fieldset class="bt-ctl pg-events bt-more"><legend>Events (optional)</legend><span class="pg-evbtns"></span><div class="bt-controls pg-ev"></div></fieldset>' /* pass 2: the flood and frost buttons left the Play bar for Data & settings */ +
       '<div class="bt-controls pg-read bt-num"></div>' +
       '<div class="bt-stage two bt-num pg-graphs"><div><h3 class="pg-gh">Population size over time</h3><p class="bt-small">Drag across the graph to move the year.</p><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
       '<div><div class="bt-tabs" role="group" aria-label="Second graph">' +
@@ -269,7 +269,7 @@
       });
       if(hits.length) out.push('<text class="pg-flab pg-hit" x="' + (FW / 2) + '" y="' + (FH / 2 - 10) + '" text-anchor="middle">' + esc(hits.map(function(e){ return e.label + ': ' + pct(e.f) + ' lost'; }).join(' + ')) + '</text>');
       var lab = 'Year ' + F(t, 0) + ': N = ' + n0(p.N) + (log ? ' of K = ' + n0(p.K) + (p.N >= p.K * 0.95 ? ', the habitat is full' : p.N > p.K / 2 ? ', crowding slows growth' : ', plenty of room') : '') + (per > 1 ? '. One rabbit drawn is ' + per + ' individuals.' : '.') + (hits.length ? ' ' + hits.map(function(e){ return e.label + ' this year: ' + pct(e.f) + ' lost.'; }).join(' ') : '') + ' Below, the population size so far, year by year' + (log ? ', with K dashed' : '') + '.';
-      out.push('<text class="pg-flab" x="8" y="' + (FH - 8) + '">' + esc('Year ' + F(t, 0) + ' · N = ' + n0(p.N) + (per > 1 ? ' · 1 drawn = ' + n0(per) : '')) + '</text>');
+      out.push('<text class="pg-flab" x="8" y="' + (FH - 8) + '">' + esc('Year ' + F(t, 0) + (per > 1 ? ' · 1 drawn = ' + n0(per) : '')) + '</text>');
       out.push(curveSvg(sim, t, FH + 8));
       field.innerHTML = '<svg class="pg-fieldsvg" viewBox="0 0 ' + FW + ' ' + (FH + 8 + GH) + '" role="img" aria-label="' + esc(lab) + '">' + out.join('') + '</svg>';
       card.querySelector('.pg-clock').textContent = '';
@@ -387,5 +387,5 @@
       },
       pills: function(g){ return [{ k: 'N', html: g.ro(1), tone: 'readout' }]; },
       // dN/dt is readout row 3 with a K row (logistic), row 2 without (exponential).
-      pillsR: function(g){ var log = g.$('#pg-model-log') && g.$('#pg-model-log').checked; return [{ html: 'dN/dt ' + g.ro(log ? 3 : 2), tone: 'ghost' }]; } } });
+      pillsR: function(){ return []; } } }); // pass 2: dN/dt is in Details; N is the pill
 })();
