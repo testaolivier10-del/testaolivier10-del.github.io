@@ -18,6 +18,8 @@ function sandbox(){
 function loadSim(){
   const s = sandbox();
   vm.runInContext(read('nremt/assets/scenario-monitor.js'), s);
+  // the care layer the monitor loads when the first patient is shown
+  vm.runInContext(read('nremt/assets/scenario-care.js'), s);
   return s.NremtSim;
 }
 function loadScenarios(){

@@ -285,6 +285,9 @@ const SHELL_BUDGETS = [
      chips and icons, the drawn flowchart shapes, the skill station flags, the formulary end summary) and the
      scenario monitor says "probe not on yet". Measured 27.2 KB on scenario-sim.html. The new reference-cards and
      search scripts load only on their own pages. */
+  /* Held at 28 (tool fixes 2026-11-10, task nremt-weight): the simulator's care layer (care rules, pins that change,
+     the pregnancy and the drawn gear, with their styles) is nremt/assets/scenario-care.js, fetched by the monitor when
+     the first patient is shown, so it is not counted here. Measured 28.0 KB on scenario-sim.html. */
   ['nremt', 28],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
