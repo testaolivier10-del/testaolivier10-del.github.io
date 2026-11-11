@@ -66,8 +66,16 @@
       }).join('');
       fs.querySelectorAll('input').forEach(function(b){ b.addEventListener('change', function(){ st[b.getAttribute('data-k')] = b.checked; update(true); }); });
       ctl.appendChild(fs);
+      return fs;
     }
-    checks('Mutations (from 0 h)', data.mutations);
+    /* pass 3 (2026-11-11): the four mutations fold under one "Mutations" row; it opens by itself after the
+       first checkpoint tap, when breaking a checkpoint means something. */
+    var mutFs = checks('Mutations (from 0 h)', data.mutations), mutBox = document.createElement('details');
+    mutBox.className = 'bt-ctl cc-mut';
+    mutBox.innerHTML = '<summary style="cursor:pointer;font:800 14px var(--font-ui);padding:6px 0">Mutations: break a checkpoint</summary>';
+    ctl.insertBefore(mutBox, mutFs); mutBox.appendChild(mutFs); mutFs.querySelector('legend').className = 'sr-only';
+    var mutAuto = true;
+    mutBox.addEventListener('toggle', function(){ if(!mutBox.open) mutAuto = false; });
     ctl.appendChild(sRead.el);
     checks('Drug (from 0 h)', data.drugs);
     ctl.appendChild(outSel.el);
@@ -264,6 +272,7 @@
       gateSel = gateSel === k && mode === 'explore' ? null : k;
       if(mode === 'find'){ findPick(k); return; }
       gateBox.textContent = gateSel ? gateText(gateSel, last.a, last.o) : '';
+      if(gateSel && mutAuto && !mutBox.open){ mutAuto = false; mutBox.open = true; }
       fig.querySelectorAll('.cc-gatebtn').forEach(function(g){ var on = g.getAttribute('data-g') === gateSel; g.classList.toggle('sel', on); g.setAttribute('aria-pressed', String(on)); });
     }
 
