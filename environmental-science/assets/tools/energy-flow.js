@@ -509,6 +509,7 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { tenpct: 'Energy up the chain', reverse: 'How much must the producers store?', npp: 'GPP, respiration and NPP', efficiency: 'Transfer efficiency', pyramid: 'An inverted pyramid', web: 'Remove a species' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; figure(el, p, {}); },
+      refit: function(api){ figure(api.fig, api.problem, api.st || {}); },
       onStep: function(s, right, api){ keepFocus(api); if(api.problem.type === 'web' || api.problem.type === 'tenpct' || api.problem.type === 'reverse' || api.problem.type === 'npp'){ api.st = api.st || {}; api.st[s.key] = true; figure(api.fig, api.problem, api.st); } }
     });
   }
@@ -519,14 +520,15 @@
     if(!f){ el.innerHTML = ''; return; }
     var E = EF.ECOS[f.eco], mk = newMk();
     if(f.kind === 'web'){
-      H = phone ? 440 : 400;
+      H = T.figSize(W, phone ? 440 : 400, { max: 0.95 })[1];
       var res = done && done.w1 && done.w2 ? f.removed : null;
       inner = drawWeb(f.eco, { W: W, H: H, removed: res || null, mark: f.removed, ask: res ? null : f.ask, interactive: false });
       label = 'Food web of the ' + E.name + ' with the ' + f.removed + ' removed';
     } else if(f.kind === 'budget'){
-      H = phone ? 200 : 180;
+      W = phone ? 400 : 440; H = phone ? 200 : 180;   // drawn narrower, so on the stage it shows larger
       var P0 = { gpp: f.gpp || (f.npp + f.r), r: f.r, npp: f.npp || (f.gpp - f.r), levels: [] };
-      inner = budgetSvg(P0, W, H, { hideG: f.gpp == null && !(done && done.ans), hideN: f.npp == null && !(done && done.ans) });
+      var Hb = H; H = T.figSize(W, H, { max: 0.62 })[1];
+      inner = '<g transform="translate(0 ' + Math.round((H - Hb) / 2) + ')">' + budgetSvg(P0, W, Hb, { hideG: f.gpp == null && !(done && done.ans), hideN: f.npp == null && !(done && done.ans) }) + '</g>';
       label = 'The producers\' sunlight budget: GPP split into respiration and NPP';
     } else {
       var P = EF.pyramid(f.eco, 20000, 50, 0.1), key = f.kind === 'pyramid' ? f.key : 'energy', o = { W: W, key: key, scale: 'log', flows: f.kind !== 'pyramid' };
@@ -542,7 +544,7 @@
         P.levels = P.levels.slice(f.k, f.k + 2); P.levels.forEach(function(l, i){ l.energy = i ? f.eb : f.ea; l.levelShort = EF.LEVEL_SHORT[f.k + i]; });
         o.flows = false;
       }
-      H = phone ? 80 + 78 * P.levels.length : 70 + 80 * P.levels.length;
+      H = T.figSize(W, phone ? 80 + 78 * P.levels.length : 70 + 80 * P.levels.length, { max: P.levels.length < 3 ? 0.5 : 0.3 + 0.2 * P.levels.length })[1];
       o.H = H;
       inner = drawPyramid(P, o);
       label = KEY[key].title + ' for a ' + E.name;
