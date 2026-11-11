@@ -305,7 +305,7 @@
       update();
       // The scenario row is the pinned primary control on a phone, so the tip's
       // target is in view at every width.
-      if(s.mode() === 'explore' && s.hint) s.hint({ target: R.scen, text: 'Start here: pick what happens, then drag the curve it moves' });
+      if(s.mode() === 'explore' && s.hint) s.hint({ target: R.scen, text: 'Pick what happens, then drag the curve' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(layout, 40); }).observe(R.fig); }
     }
     var g0 = graphs.filter(function(x){ return x.id === 'sd'; })[0] || graphs[0];
