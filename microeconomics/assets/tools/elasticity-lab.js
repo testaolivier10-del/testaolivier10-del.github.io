@@ -4,14 +4,12 @@
    by ApMicroGrade.graph, every number from ApMicroCalc.
 
    Explore, three views on one switch:
-     Price        a straight demand curve (ApMicroGraph's sd graph with supply
-                  taken out: the engine has no demand-only kind yet, see
-                  docs/apmicro-reviews/self-t3.md) with its elastic and
-                  inelastic halves marked, point A on it (drag it, use the
-                  slider or the arrow keys) and B one $2 step lower; the TR
-                  rectangle at A, and beside it the total revenue curve
-                  (ApMicroPlot, a data figure) with A and B on it, in the same
-                  colors. The arc elasticity from A to B (starting values, or
+     Price        one figure drawn here (tools review 2026-11-10): a straight
+                  demand curve with its elastic and inelastic halves marked,
+                  point A on it (drag it, use the slider or the arrow keys)
+                  and B one $2 step lower, the TR rectangle at A; under it, on
+                  the same quantity axis, the total revenue hill, with A and B
+                  dropped straight down onto it, in the same colors. The arc elasticity from A to B (starting values, or
                   the midpoint method from More options) and the total revenue
                   test in the caption.
      Income       pick a kind of good and change income: demand shifts
@@ -130,27 +128,93 @@
       slot.appendChild(slider.el);
     }
 
-    /* -------- the price view */
+    /* -------- the price view: one figure, demand above and total revenue below
+       on the same quantity axis (tools review 2026-11-10), so the elastic half of D
+       sits over the rising side of the TR hill, the midpoint over its top, and A and
+       B drop straight down from the demand curve to their revenue. */
+    var geo = null;
+    function priceGeo(){
+      var narrow = fig.clientWidth > 0 && fig.clientWidth < 620;
+      return narrow ? { W: 380, L: 54, R: 40, T1: 30, H1: 200, gap: 66, H2: 150, B: 44, narrow: true } : { W: 760, L: 72, R: 96, T1: 30, H1: 250, gap: 72, H2: 200, B: 46, narrow: false };
+    }
+    function stackSvg(A, label){
+      var g = geo = priceGeo(), PW = g.W - g.L - g.R, T2 = g.T1 + g.H1 + g.gap, H = T2 + g.H2 + g.B, TRMAX = 560;
+      var X = function(q){ return g.L + q / 100 * PW; }, Y1 = function(p){ return g.T1 + (20 - p) / 20 * g.H1; }, Y2 = function(r){ return T2 + (TRMAX - r) / TRMAX * g.H2; };
+      var o = [], q, k;
+      // the two halves, tinted in both panels
+      [[0, 50, 'el-band-el'], [50, 100, 'el-band-in']].forEach(function(h){
+        o.push('<rect class="el-band ' + h[2] + '" x="' + f1(X(h[0])) + '" y="' + g.T1 + '" width="' + f1(X(h[1]) - X(h[0])) + '" height="' + g.H1 + '"/>');
+        o.push('<rect class="el-band ' + h[2] + '" x="' + f1(X(h[0])) + '" y="' + T2 + '" width="' + f1(X(h[1]) - X(h[0])) + '" height="' + g.H2 + '"/>');
+      });
+      // grid
+      for(q = 25; q < 100; q += 25) o.push('<path class="el-grid" d="M' + f1(X(q)) + ' ' + g.T1 + 'v' + g.H1 + 'M' + f1(X(q)) + ' ' + T2 + 'v' + g.H2 + '"/>');
+      for(k = 5; k <= 20; k += 5) o.push('<path class="el-grid" d="M' + g.L + ' ' + f1(Y1(k)) + 'h' + PW + '"/>');
+      for(k = 100; k <= 500; k += 100) o.push('<path class="el-grid" d="M' + g.L + ' ' + f1(Y2(k)) + 'h' + PW + '"/>');
+      // the unit-elastic line through both panels
+      o.push('<path class="el-unit" d="M' + f1(X(50)) + ' ' + (g.T1 - 4) + 'V' + (T2 + g.H2) + '"/>');
+      // demand: the TR rectangle at A, B's outline, the halves, the line
+      o.push('<path class="el-tr" d="M' + f1(X(0)) + ' ' + f1(Y1(0)) + 'H' + f1(X(A.a.q)) + 'V' + f1(Y1(A.a.p)) + 'H' + f1(X(0)) + 'Z"/>');
+      o.push('<path class="el-tr2" d="M' + f1(X(0)) + ' ' + f1(Y1(A.b.p)) + 'H' + f1(X(A.b.q)) + 'V' + f1(Y1(0)) + '"/>');
+      o.push('<path class="el-half el-elastic" d="M' + f1(X(0)) + ' ' + f1(Y1(20)) + 'L' + f1(X(50)) + ' ' + f1(Y1(10)) + '"/><path class="el-half el-inelastic" d="M' + f1(X(50)) + ' ' + f1(Y1(10)) + 'L' + f1(X(100)) + ' ' + f1(Y1(0)) + '"/>');
+      o.push('<path class="el-dline" d="M' + f1(X(0)) + ' ' + f1(Y1(20)) + 'L' + f1(X(100)) + ' ' + f1(Y1(0)) + '"/>');
+      // the TR hill, its rising (elastic) and falling (inelastic) sides
+      var hill = function(q0, q1){ var pts = []; for(var qq = q0; qq <= q1 + 1e-9; qq += 1) pts.push(f1(X(qq)) + ' ' + f1(Y2((20 - qq / 5) * qq))); return 'M' + pts.join('L'); };
+      o.push('<path class="el-trc" d="' + hill(0, 100) + '"/>');
+      // the areas' words
+      var big = !g.narrow;
+      o.push('<text class="el-rlab el-elastic-t" x="' + f1(X(big ? 27 : 22)) + '" y="' + f1(Y1(big ? 17.2 : 17.6)) + '">Elastic</text><text class="el-rsub" x="' + f1(X(big ? 27 : 22)) + '" y="' + f1(Y1(big ? 17.2 : 17.6) + 16) + '">|Ed| &gt; 1</text>');
+      o.push('<text class="el-rlab el-inelastic-t" x="' + f1(X(big ? 74 : 73)) + '" y="' + f1(Y1(big ? 8.2 : 7.6)) + '">Inelastic</text><text class="el-rsub" x="' + f1(X(big ? 74 : 73)) + '" y="' + f1(Y1(big ? 8.2 : 7.6) + 16) + '">|Ed| &lt; 1</text>');
+      if(big){
+        o.push('<text class="el-hint el-elastic-t" x="' + f1(X(25)) + '" y="' + f1(T2 + g.H2 - 12) + '" text-anchor="middle">P down, TR up</text>');
+        o.push('<text class="el-hint el-inelastic-t" x="' + f1(X(75)) + '" y="' + f1(T2 + g.H2 - 12) + '" text-anchor="middle">P down, TR down</text>');
+      }
+      o.push('<circle class="el-mid" cx="' + f1(X(50)) + '" cy="' + f1(Y1(10)) + '" r="5"/><text class="el-rlab el-mid-t" x="' + f1(X(50) + 9) + '" y="' + f1(Y1(10) - 9) + '">Unit elastic</text>');
+      o.push('<circle class="el-mid" cx="' + f1(X(50)) + '" cy="' + f1(Y2(500)) + '" r="5"/><text class="el-rlab el-mid-t" x="' + f1(X(50) + 7) + '" y="' + f1(T2 - 10) + '">Largest TR: $500</text>');
+      // A and B: on D, straight down to the hill
+      [['b', A.b, 'el-g2', 'is-b', 'B'], ['a', A.a, 'el-g1', '', 'A']].forEach(function(r){
+        var pt = r[1], xq = X(pt.q), y1 = Y1(pt.p), y2 = Y2(pt.tr);
+        o.push('<path class="el-guide ' + r[2] + '" d="M' + g.L + ' ' + f1(y1) + 'H' + f1(xq) + 'V' + f1(g.T1 + g.H1) + '"/>');
+        o.push('<path class="el-drop ' + r[2] + '" d="M' + f1(xq) + ' ' + f1(g.T1 + g.H1) + 'V' + f1(y2) + 'M' + g.L + ' ' + f1(y2) + 'H' + f1(xq) + '"/>');
+        o.push('<circle class="el-pt ' + r[3] + '" cx="' + f1(xq) + '" cy="' + f1(y1) + '" r="' + (r[4] === 'A' ? 8 : 6.5) + '"/>');
+        o.push('<circle class="el-pt ' + r[3] + '" cx="' + f1(xq) + '" cy="' + f1(y2) + '" r="' + (r[4] === 'A' ? 7 : 6) + '"/>');
+        var right = r[4] === 'B';
+        o.push('<text class="el-plab ' + (right ? 'el-m2' : 'el-m1') + '" x="' + f1(xq + (right ? 10 : -10)) + '" y="' + f1(y1 - 9) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + r[4] + '</text>');
+        o.push('<text class="el-plab ' + (right ? 'el-m2' : 'el-m1') + '" x="' + f1(xq + (right ? 10 : -10)) + '" y="' + f1(y2 - 9) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + r[4] + '</text>');
+      });
+      // axes, ticks and values: A's and B's values on the axes in their colors, plain ticks kept clear of them
+      o.push('<path class="el-axis" d="M' + g.L + ' ' + g.T1 + 'V' + (g.T1 + g.H1) + 'H' + (g.L + PW) + 'M' + g.L + ' ' + T2 + 'V' + (T2 + g.H2) + 'H' + (g.L + PW) + '"/>');
+      var marks = [], ys = [], xs = [];
+      function ym(y, t, cls){ ys.push(y); marks.push('<text class="el-tick ' + cls + '" x="' + (g.L - 7) + '" y="' + f1(y + 4) + '" text-anchor="end">' + t + '</text>'); }
+      function xm(x, y, t, cls){ xs.push([x, y]); marks.push('<text class="el-tick ' + cls + '" x="' + f1(x) + '" y="' + f1(y) + '" text-anchor="middle">' + t + '</text>'); }
+      ym(Y1(A.a.p), money(A.a.p), 'is-a'); ym(Math.max(Y1(A.b.p), Y1(A.a.p) + 15), money(A.b.p), 'is-b');
+      var ra = Y2(A.a.tr), rb = Y2(A.b.tr); if(Math.abs(ra - rb) < 15){ if(ra <= rb) rb = ra + 15; else ra = rb + 15; }
+      if(Math.abs(A.a.tr - A.b.tr) < 1e-9) ym(Y2(A.a.tr), money(A.a.tr), 'is-a'); else { ym(ra, money(A.a.tr), 'is-a'); ym(rb, money(A.b.tr), 'is-b'); }
+      var xa = X(A.a.q), xb = X(A.b.q); if(xb - xa < 24){ var mid = (xa + xb) / 2; xa = mid - 12; xb = mid + 12; }
+      [g.T1 + g.H1 + 17, T2 + g.H2 + 17].forEach(function(yy){ xm(xa, yy, n(A.a.q), 'is-a'); xm(xb, yy, n(A.b.q), 'is-b'); });
+      var plain = [];
+      for(k = 0; k <= 20; k += 5) if(!ys.some(function(y){ return Math.abs(y - Y1(k)) < 13; })) plain.push('<text class="el-tick" x="' + (g.L - 7) + '" y="' + f1(Y1(k) + 4) + '" text-anchor="end">$' + k + '</text>');
+      for(k = 0; k <= 500; k += g.narrow ? 250 : 100) if(!ys.some(function(y){ return Math.abs(y - Y2(k)) < 13; })) plain.push('<text class="el-tick" x="' + (g.L - 7) + '" y="' + f1(Y2(k) + 4) + '" text-anchor="end">$' + k + '</text>');
+      [g.T1 + g.H1 + 17, T2 + g.H2 + 17].forEach(function(yy){ for(var qq = 0; qq <= 100; qq += 25) if(!xs.some(function(p2){ return p2[1] === yy && Math.abs(p2[0] - X(qq)) < 30; })) plain.push('<text class="el-tick" x="' + f1(X(qq)) + '" y="' + yy + '" text-anchor="middle">' + qq + '</text>'); });
+      o.push(plain.join('') + marks.join(''));
+      o.push('<text class="el-axt" x="' + (g.L - 4) + '" y="' + (g.T1 - 12) + '">Price</text><text class="el-axt" x="' + (g.L - 4) + '" y="' + (T2 - 12) + '">' + (g.narrow ? 'Total revenue' : 'Total revenue = P × Q') + '</text>');
+      o.push('<text class="el-axt" x="' + (g.L + PW + 8) + '" y="' + f1(g.T1 + g.H1 + 4) + '">Quantity</text><text class="el-axt" x="' + (g.L + PW + 8) + '" y="' + f1(T2 + g.H2 + 4) + '">Quantity</text>');
+      o.push('<text class="el-cname" x="' + f1(X(97)) + '" y="' + f1(Y1(3) - 6) + '">D</text><text class="el-cname el-trn" x="' + f1(X(90) + 6) + '" y="' + f1(Y2((20 - 18) * 90) - 8) + '">TR</text>');
+      return '<svg class="el-stack" viewBox="0 0 ' + g.W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + o.join('') + '</svg>';
+    }
     function priceState(){ return E.arc(S, st.pA, st.pA - 2, st.mid ? 'midpoint' : 'start'); }
     function drawPrice(){
       var A = priceState(), w = E.word(A.e);
-      var label = 'Demand curve from $20 to 100 units, elastic above the midpoint ($10) and inelastic below it. Point A at ' + money(A.a.p) + ' and ' + n(A.a.q) + ' units, B at ' + money(A.b.p) + ' and ' + n(A.b.q) + ' units.';
-      dEl.innerHTML = inject(demandSvg({}, label), rangesLayer() + pointsLayer(S, [{ p: A.a.p, q: A.a.q, label: 'A' }, { p: A.b.p, q: A.b.q, label: 'B' }], { tr: true }));
-      // the TR curve: TR(Q) = P(Q) x Q along this demand
-      var spec = { label: 'Total revenue against quantity along this demand curve: a hill, largest at 50 units ($500), where demand is unit elastic. A at ' + n(A.a.q) + ' units (' + money(A.a.tr) + '), B at ' + n(A.b.q) + ' units (' + money(A.b.tr) + ').',
-        width: 360, height: 300, x: [0, 100], y: [0, 560], xStep: 25, yStep: 100, xLabel: 'Quantity', yLabel: 'Total revenue ($)', grid: true,
-        curves: [{ fn: function(q){ return (20 - q / 5) * q; }, domain: [0, 100], cls: 'el-trc' }],
-        points: [{ at: [A.a.q, A.a.tr], label: 'A', cls: 'el-tra' }, { at: [A.b.q, A.b.tr], label: 'B', cls: 'el-trb' }, { at: [50, 500], open: true, label: 'Largest', cls: 'el-trm' }] };
-      trEl.innerHTML = P ? P.svg(spec) : '';
+      var label = 'Demand curve from $20 to 100 units, elastic above the midpoint ($10) and inelastic below it, with the total revenue curve under it on the same quantity axis: a hill, largest at 50 units ($500), where demand is unit elastic. Point A at ' + money(A.a.p) + ' and ' + n(A.a.q) + ' units (total revenue ' + money(A.a.tr) + '), B at ' + money(A.b.p) + ' and ' + n(A.b.q) + ' units (' + money(A.b.tr) + ').';
+      dEl.innerHTML = stackSvg(A, label);
+      trEl.innerHTML = '';
       var trUp = A.b.tr > A.a.tr + 1e-9, trSame = Math.abs(A.b.tr - A.a.tr) < 1e-9;
-      spreadMarks(dEl);
       read.innerHTML = '<span class="el-chip el-c-e">|Ed| <b>' + M.fixed(A.e, 2) + '</b> ' + w + '</span><span class="el-chip el-c-tr">TR <b>' + money(A.a.tr) + '</b> → <b>' + money(A.b.tr) + '</b></span>';
       var head = 'Price ' + money(A.a.p) + ' → ' + money(A.b.p) + ': quantity ' + n(A.a.q) + ' → ' + n(A.b.q) + '. |Ed| = ' + M.fixed(A.e, 2) + ', ' + w + '; total revenue ' + (trSame ? 'stays at ' + money(A.a.tr) : (trUp ? 'rises to ' : 'falls to ') + money(A.b.tr)) + '.';
       var body = [
         '%ΔQ = ' + E.signed(A.pq, 1) + '% and %ΔP = ' + E.signed(A.pp, 1) + '% (' + (st.mid ? 'midpoint method: each change over the average of the two values' : 'from the starting values at A') + '), so |Ed| = ' + M.fixed(Math.abs(A.pq), 1) + ' ÷ ' + M.fixed(Math.abs(A.pp), 1) + ' = ' + M.fixed(A.e, 2) + '.',
         w === 'elastic' ? 'Elastic: quantity responds by a bigger percent than price. A price cut raises total revenue: price and revenue move in opposite directions.' : w === 'inelastic' ? 'Inelastic: quantity responds by a smaller percent than price. A price cut lowers total revenue: price and revenue move in the same direction.' : 'Unit elastic: the two percent changes are the same size, so total revenue does not change.',
         'The slope of this line is the same everywhere, but elasticity is not: high up, a $2 change is a small percent of the price and a big percent of the small quantity. Above the midpoint ($10, 50 units) demand is elastic, below it inelastic.',
-        'Total revenue (the shaded rectangle, P × Q) is largest at the midpoint, the top of the hill on the total revenue graph.'
+        'Total revenue (the shaded rectangle, P × Q) is largest at the midpoint, the top of the hill on the total revenue graph right under it. Over the elastic half the hill rises as price falls; over the inelastic half it falls.'
       ];
       if(A.a.p > 10 && A.b.p < 10) body.splice(2, 0, 'A and B sit on either side of the midpoint, so the arc mixes an elastic and an inelastic stretch.');
       return { head: head, body: body };
@@ -201,7 +265,12 @@
     }
 
     /* -------- dragging A along D, the keyboard */
-    function toData(ev2){ var svg = dEl.querySelector('svg'), r = svg.getBoundingClientRect(), B = G.BOX; return [((ev2.clientX - r.left) * B.W / r.width - B.L) / B.PW * 10, 10 - ((ev2.clientY - r.top) * B.H / r.height - B.T) / B.PH * 10]; }
+    function toData(ev2){
+      var svg = dEl.querySelector('svg'), r = svg.getBoundingClientRect(), B = G.BOX;
+      if(st.view === 'price' && geo){ var vb = svg.viewBox.baseVal, sc = Math.min(r.width / vb.width, r.height / vb.height), ox = r.left + (r.width - vb.width * sc) / 2, oy = r.top + (r.height - vb.height * sc) / 2;
+        var sx = (ev2.clientX - ox) / sc, sy = (ev2.clientY - oy) / sc, PW = geo.W - geo.L - geo.R;
+        return [(sx - geo.L) / PW * 10, (geo.T1 + geo.H1 - sy) / geo.H1 * 10]; }
+      return [((ev2.clientX - r.left) * B.W / r.width - B.L) / B.PW * 10, 10 - ((ev2.clientY - r.top) * B.H / r.height - B.T) / B.PH * 10]; }
     var drag = false;
     dEl.addEventListener('pointerdown', function(e){
       if(st.view !== 'price') return;
@@ -221,7 +290,8 @@
     host.querySelector('#el-mid').addEventListener('change', function(e){ st.mid = e.target.checked; draw(); if(sp) sp.setup(st.mid ? 'Midpoint method' : 'Starting values'); });
     function setPanel(p){ st.panel = p; fig.setAttribute('data-panel', p); fig.querySelectorAll('.el-tab').forEach(function(t){ var on = t.getAttribute('data-p') === p; t.classList.toggle('on', on); t.setAttribute('aria-pressed', String(on)); }); }
     fig.addEventListener('click', function(e){ var t = e.target.closest('.el-tab'); if(t) setPanel(t.getAttribute('data-p')); });
-    function fit(){ fig.classList.toggle('is-narrow', fig.clientWidth > 0 && fig.clientWidth < 620); }
+    var wasNarrow = null;
+    function fit(){ var nn = fig.clientWidth > 0 && fig.clientWidth < 620; fig.classList.toggle('is-narrow', nn); if(wasNarrow !== null && nn !== wasNarrow && st.view === 'price') draw(); wasNarrow = nn; }
     if(window.ResizeObserver) new ResizeObserver(fit).observe(fig);
     setPanel('d');
 

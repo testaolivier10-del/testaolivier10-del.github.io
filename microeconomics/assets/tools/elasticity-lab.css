@@ -43,6 +43,37 @@
 .mic-gr-mark.el-m2,.mic-gr-mark.el-m0{fill:var(--el-b);}
 .el-plab{font-size:13px;}
 
+/* the price view: demand over total revenue on one quantity axis (drawn by elasticity-lab.js) */
+.el-fig[data-view="price"] .el-panels{grid-template-columns:minmax(0,1fr);max-width:900px;}
+.el-fig[data-view="price"] .el-p-tr,.el-fig[data-view="price"] .el-tabs{display:none !important;}
+.el-fig[data-view="price"] .el-d{max-width:none;}
+.el-stack{display:block;width:100%;height:auto;max-height:calc(100svh - 250px);margin:0 auto;font-family:var(--font-ui);overflow:visible;}
+.el-band-el{fill:color-mix(in srgb,var(--el-el) 7%,transparent);}
+.el-band-in{fill:color-mix(in srgb,var(--el-in) 7%,transparent);}
+.el-grid{stroke:var(--line);stroke-width:1;fill:none;}
+.el-axis{fill:none;stroke:var(--ink);stroke-width:1.8;}
+.el-unit{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 4;opacity:.45;fill:none;}
+.el-dline{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;}
+.el-stack .el-half{stroke-width:12;opacity:.32;}
+.el-stack .el-trc{fill:none;stroke:var(--el-tr);stroke-width:3;}
+.el-guide{fill:none;stroke-width:1.3;stroke-dasharray:4 3;}
+.el-drop{fill:none;stroke-width:1.3;stroke-dasharray:2 4;}
+.el-guide.el-g1,.el-drop.el-g1{stroke:var(--el-a);}
+.el-guide.el-g2,.el-drop.el-g2{stroke:var(--el-b);}
+.el-tick{fill:var(--muted);font-weight:700;font-size:12.5px;font-variant-numeric:tabular-nums;}
+.el-tick.is-a{fill:var(--el-a);font-weight:900;}
+.el-tick.is-b{fill:var(--el-b);font-weight:900;}
+.el-axt{fill:var(--ink);font-weight:800;font-size:13px;}
+.el-cname{fill:var(--ink);font-weight:900;font-size:15px;}
+.el-cname.el-trn{fill:var(--el-tr);}
+.el-hint{font-weight:800;font-size:12.5px;opacity:.9;}
+.el-stack .el-rlab{font-size:14.5px;}
+.el-stack .el-rsub{font-size:12px;}
+.el-stack .el-mid-t{font-size:12.5px;}
+.el-stack .el-plab{font-weight:900;font-size:16px;}
+.el-plab.el-m1{fill:var(--el-a);} .el-plab.el-m2{fill:var(--el-b);}
+.ls-root.ls-phone .el-fig[data-view="price"] .el-d svg{width:100%;height:auto;max-height:100%;}
+
 /* the total revenue curve (ApMicroPlot) */
 .el-trp .el-trc{stroke:var(--el-tr);stroke-width:2.6;fill:none;}
 .el-trp .el-tra{fill:var(--el-a);}

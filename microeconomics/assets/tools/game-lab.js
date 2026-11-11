@@ -6,10 +6,13 @@
 
    Explore: one payoff matrix, drawn by ApMicroMatrix.html (no second
    renderer: this file only adds classes and small tags to its cells). Tap a
-   cell to test it: would either firm switch alone, and to what. "Best
+   cell to test it: would either firm switch alone, and to what (an arrow
+   to that cell, one color per firm). "Best
    responses" lights one firm's two comparisons column by column (or row by
    row), marking the payoff it picks; with both firms marked, the cells
-   marked twice are the Nash equilibria. A tax or subsidy slider changes one
+   marked twice are the Nash equilibria; every cell where a firm is not at
+   its best response gets that firm's arrow, so a cell with no arrow
+   leaving it is a Nash equilibrium. A tax or subsidy slider changes one
    firm's payoffs on one strategy (ApMicroMatrix change) and the matrix,
    the verdicts and the equilibria follow. Details: edit any payoff, choose
    whose strategy the policy hits, every comparison in words.
@@ -39,7 +42,7 @@
     var pol = { player: 0, strategy: 0, amount: 0 }, cur = null;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem gl-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Game theory lab</h2>' +
-      '<div class="gl-fig"><p class="gl-story"></p><div class="gl-mx"></div><ul class="gl-read" aria-label="What the matrix shows"></ul></div>' +
+      '<div class="gl-fig"><p class="gl-story"></p><div class="gl-mx"></div><p class="gl-key" aria-hidden="true"></p><ul class="gl-read" aria-label="What the matrix shows"></ul></div>' +
       '<div class="gl-ctl">' +
         '<div class="gl-games ls-scroll" role="group" aria-label="Game">' + GL.GAMES.map(function(g){ return '<button type="button" class="ls-btn gl-game" data-g="' + g.id + '" aria-pressed="false">' + esc(g.short) + '</button>'; }).join('') + '</div>' +
         '<div class="ls-seg gl-show" role="group" aria-label="Show best responses"><button type="button" data-s="0" aria-pressed="false"></button><button type="button" data-s="1" aria-pressed="false"></button><button type="button" data-s="both" aria-pressed="false">Both</button></div>' +
@@ -96,13 +99,29 @@
         if(nash && ((lit[0] > 0 && lit[1] > 0) || (sel && sel[0] === ij[0] && sel[1] === ij[1]))){ td.classList.add('gl-nash'); b.insertAdjacentHTML('beforeend', '<span class="gl-tag">Nash</span>'); }
         if(cmpCol && (cmpCol.p === 0 ? ij[1] === cmpCol.o : ij[0] === cmpCol.o)) td.classList.add('gl-cmp');
       });
+      var moves = [];
       if(sel){
         var t = GL.test(s, sel[0], sel[1]);
         t.moves.forEach(function(m){
           var to = m.player === 0 ? [m.to, sel[1]] : [sel[0], m.to], b = box.querySelector('[data-cell="' + to.join(',') + '"]');
           if(b){ b.parentNode.classList.add('gl-to'); b.insertAdjacentHTML('beforeend', '<span class="gl-tag is-to">' + esc(names(m.player)) + ' moves here</span>'); }
+          moves.push({ p: m.player, from: sel, to: to, hot: true });
+        });
+        if(t.nash) box.querySelector('[data-cell="' + sel.join(',') + '"]').parentNode.classList.add('gl-stay');
+      } else {
+        // Best responses: from every cell where a firm is not at its best response, an arrow to the cell it would switch to.
+        [0, 1].forEach(function(p){
+          for(var o = 0; o <= lit[p]; o++){
+            var best = A.best[p][o]; if(!best.length) continue;
+            [0, 1].forEach(function(k){
+              if(best.indexOf(k) > -1) return;
+              moves.push({ p: p, from: p === 0 ? [k, o] : [o, k], to: p === 0 ? [best[0], o] : [o, best[0]], hot: cur && cur.p === p && cur.o === o });
+            });
+          }
         });
       }
+      st.moves = moves; arrows();
+      $('.gl-key').innerHTML = moves.length ? [0, 1].filter(function(p){ return moves.some(function(m){ return m.p === p; }); }).map(function(p){ return '<span class="gl-k gl-k' + p + '">' + esc(names(p)) + ' would switch</span>'; }).join('') + (sel ? '' : '<span class="gl-k gl-kn">No arrow out: Nash</span>') : '';
       // Readout: each verdict appears once the student has looked for it.
       var rows = [];
       [0, 1].forEach(function(p){
@@ -118,6 +137,31 @@
       $('.gl-read').innerHTML = rows.join('');
       $('.gl-read').hidden = !rows.length;
       return { s: s, A: A };
+    }
+    /* Each switch drawn as an arrow from the cell to the cell the firm moves to, one color per firm
+       (tools review 2026-11-10): a cell with no arrow leaving it is a Nash equilibrium, and a game
+       with none shows its arrows chasing round in a circle. */
+    var st = { moves: [] };
+    function arrows(){
+      var box = $('.gl-mx'); if(!box) return;
+      var old = box.querySelector('.gl-arrows'); if(old) old.remove();
+      if(!st.moves.length) return;
+      var R = box.getBoundingClientRect(); if(!R.width) return;
+      function rect(c){ var b = box.querySelector('[data-cell="' + c.join(',') + '"]'); if(!b) return null; var r = b.getBoundingClientRect(); return { l: r.left - R.left, t: r.top - R.top, w: r.width, h: r.height }; }
+      var out = [];
+      st.moves.forEach(function(m){
+        var a = rect(m.from), b = rect(m.to); if(!a || !b) return;
+        var x1, y1, x2, y2;
+        if(m.p === 0){ // the row firm switches rows: a vertical arrow on the cell's right side
+          var x = a.l + a.w - Math.max(11, a.w * 0.07); x1 = x2 = x;
+          var down = b.t > a.t; y1 = down ? a.t + a.h * 0.62 : a.t + a.h * 0.38; y2 = down ? b.t + b.h * 0.3 : b.t + b.h * 0.7;
+        } else { // the column firm switches columns: a horizontal arrow low in the cell
+          var y = a.t + a.h * 0.8; y1 = y2 = y;
+          var right = b.l > a.l; x1 = right ? a.l + a.w * 0.62 : a.l + a.w * 0.38; x2 = right ? b.l + b.w * 0.3 : b.l + b.w * 0.7;
+        }
+        out.push('<path class="gl-arr gl-arr' + m.p + (m.hot ? ' is-hot' : '') + '" d="M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + 'L' + x2.toFixed(1) + ' ' + y2.toFixed(1) + '" marker-end="url(#gl-ah' + m.p + ')"/>');
+      });
+      box.insertAdjacentHTML('beforeend', '<svg class="gl-arrows" aria-hidden="true" width="' + box.scrollWidth + '" height="' + box.scrollHeight + '"><defs>' + [0, 1].map(function(p){ return '<marker id="gl-ah' + p + '" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto"><path class="gl-ah gl-ah' + p + '" d="M0 0L10 5L0 10z"/></marker>'; }).join('') + '</defs>' + out.join('') + '</svg>');
     }
     function why(r){
       var s = r.s, A = r.A, head, body = '', short = null;
@@ -187,6 +231,7 @@
       if(e.target.closest('.gl-reset')){ act(); load(game.id); redraw(); say('The game is back as it was.'); }
     }
     host.addEventListener('click', onClick);
+    if(window.ResizeObserver) new ResizeObserver(function(){ arrows(); }).observe($('.gl-mx'));
 
     function target(){
       var el = $('.gl-target');
