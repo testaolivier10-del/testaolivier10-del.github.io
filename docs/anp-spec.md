@@ -470,3 +470,12 @@ Site audit follow-up (2026-10-02, workstream W6):
     the conduction picture has no cell body, so it reads for sensory and motor fibers alike. Loops: a positive loop
     builds to its far end, then its ending comes and the variable falls back (replaces "stays at its far end" in 95);
     the kidney tubule drawing has no brush border.
+97. (2026-11-10) Tools pass 2, simple and clear (docs/tool-review/SIMPLIFY.md; report docs/tool-review/pass2/anatomy-physiology.md).
+    The figure is the picture: beside a scene plate the pathway map is a slim numbered list and Predict's dials a
+    numbered list, so the figure takes about two thirds of the stage. Covered labels on scene plates take the colour of
+    the drawing around them and their leader lines are painted out over white (lab-fit.js blendCovers / eraseLeaders,
+    loaded on first use). Predict's dials say nothing until a call. Feedback loops open with the seven part names only;
+    a part's words appear when the signal first reaches it and stay until Reset, and the drawing's action labels appear
+    with the action. The graph reader puts at most two value pills on a graph (more are read in the list). Calculators
+    move each result's reference line to Explanation ("Usual values") and draw the ossicles as three bones.
+    Presentation only: pins, places, item ids, scoring, recording and deep links are unchanged.
