@@ -263,3 +263,20 @@ and every fix those checks asked for was applied before its merge. The `sw.js` c
 - 2026-10-02: wave 1 merged, full CI green; wave 2 (W2, W7) started, W8 follows them.
 - 2026-10-02: wave 1 (W1, W3, W4, W5, W6) started; helpers write per-finding notes to `docs/site-audit-notes/wN.md`; local CI mirror is `scripts/ci-local.sh`.
 - 2026-10-02: status file, rule hook in check-site, audit copied to `docs/site-audit-2026-10.md`.
+
+## Text overflow sweep (2026-11-11)
+
+The owner found "Microeconomics" running under the cover art on the course home at a wide screen, after asking for
+formatting sweeps more than once. Why the sweeps missed it: `scripts/check-overlap.mjs` rendered two widths (390 and
+1280) and compared text only with other text and with bordered boxes. A title whose box fits its column while the
+letters leave it, drawn over a picture, matched nothing.
+
+- Fixed: long course titles on the course home size from their own column (`.mast-long`, container units in
+  `assets/course/r3.css`); long cover titles on the homepage and course cards are capped to their share of the cover
+  (`r3.css` and the inline styles in `index.html`); the ochem resonance "forms found" card no longer shrinks under
+  its label at tablet width; the Human Geography answer mark stays on one line.
+- The check now renders four widths (390, 768, 1280, 1700) and has two more kinds: `text-on-picture` (confirmed by
+  asking the browser what is drawn at that point) and `out-of-block`. Practice scans wait for the page to stop
+  moving. A full run is 2,636 renders and about 40 minutes, so it is not in CI: run it after layout changes with
+  `CHROME=... node scripts/check-overlap.mjs` (or `COURSE=` / page arguments for a part).
+- Left: the breadcrumb is cut by 16 px while the practice band folds away during a session (a moving state).

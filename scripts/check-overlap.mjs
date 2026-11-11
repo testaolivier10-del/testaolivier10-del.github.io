@@ -8,6 +8,8 @@
      spill          text spilling out of the bordered/backgrounded box it is in
      clipped        text cut off by an ancestor with overflow hidden/clip
      too-wide       something wider than the viewport (the page scrolls sideways)
+     text-on-picture  text drawn over a picture it does not belong to
+     out-of-block   text running out of the block it sits in
    Skipped by design: anything inside a position:fixed or sticky ancestor (header,
    tab bar, sticky bars overlap content on purpose), hidden or aria-hidden content,
    screen-reader-only text, SVG figures (check-legibility.mjs covers those),
@@ -36,7 +38,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
-const WIDTHS = (process.env.WIDTHS || '390,1280').split(',').map(Number);
+const WIDTHS = (process.env.WIDTHS || '390,768,1280,1700').split(',').map(Number);
 const STATES = (process.env.STATES || 'empty,progress').split(',');
 const CONC = Number(process.env.CONC || 4);
 const HEIGHT = { 390: 844, 1280: 900 };
@@ -318,6 +320,61 @@ function scan() {
     }
   }
 
+  /* (f) text drawn over a picture it does not belong to (a course title running under the cover art),
+     and (g) text running out of the block it sits in. Both escaped the checks above: the block's own
+     box fits, only the letters leave it, and a picture has no text and no border to collide with. */
+  const media = [];
+  for (const m of document.body.querySelectorAll('img,svg,canvas,video')) {
+    /* Pictures are often aria-hidden decoration, which skip() ignores: test what is drawn, not what is announced. */
+    let gone = m.tagName.toLowerCase() !== 'svg' && !!m.closest('svg');
+    for (let e = m; e && e !== document.documentElement && !gone; e = e.parentElement) {
+      const q = st(e);
+      gone = q.display === 'none' || q.visibility === 'hidden' || +q.opacity === 0 || q.position === 'fixed' || q.position === 'sticky' || e.hasAttribute('data-overlap-ok');
+    }
+    if (gone || m.checkVisibility && !m.checkVisibility()) continue;
+    const r = m.getBoundingClientRect();
+    if (r.width < 40 || r.height < 40) continue;              // icons sit inside lines of text on purpose
+    if (st(m).opacity < 0.2) continue;
+    media.push({ el: m, r: cut(R(r), visBox(m.parentElement)) });
+  }
+  const seenP = new Set();
+  for (const T of texts) {
+    if (T.el.closest('svg') || T.el.closest('.ls-pill')) continue;   // a tool's status pill is laid over its picture on purpose
+    for (const M of media) {
+      const box = M.el.parentElement;
+      if (!box || box.contains(T.el) || T.el.contains(M.el)) continue;   // a caption laid over its own picture
+      const ox = Math.min(T.r.r, M.r.r) - Math.max(T.r.l, M.r.l), oy = Math.min(T.r.b, M.r.b) - Math.max(T.r.t, M.r.t);
+      if (ox < 6 || oy < 4) continue;
+      const key = desc(T.el) + '|' + desc(M.el);
+      if (seenP.has(key)) continue; seenP.add(key);
+      /* Ask the browser itself: at the middle of the overlap, are the picture and the text both there? */
+      const cx = (Math.max(T.r.l, M.r.l) + Math.min(T.r.r, M.r.r)) / 2, cy = (Math.max(T.r.t, M.r.t) + Math.min(T.r.b, M.r.b)) / 2;
+      const y0 = scrollY; scrollTo({ left: scrollX, top: Math.max(0, cy - innerHeight / 2), behavior: 'instant' });
+      const hit = document.elementsFromPoint(cx - scrollX, cy - scrollY);
+      scrollTo({ left: scrollX, top: y0, behavior: 'instant' });
+      if (!hit.some(e => e === M.el || M.el.contains(e))) continue;   // overflowing letters are not hit-testable, the picture is
+      found.push({ kind: 'text-on-picture', a: desc(T.el), b: desc(M.el), text: txt(T.el), by: Math.round(ox) });
+    }
+  }
+  const seenO = new Set();
+  for (const T of texts) {
+    if (T.el.closest('svg')) continue;
+    let blk = T.el;
+    while (blk && blk !== document.body && /^inline/.test(st(blk).display)) blk = blk.parentElement;
+    if (!blk || blk === document.body) continue;
+    let clips = false;
+    for (let e = blk; e && e !== document.body; e = e.parentElement) { if (/auto|scroll/.test(st(e).overflowX)) { clips = true; break; } }
+    if (clips) continue;                                       // text past the edge of a scrolling box is reachable
+    { const q = st(blk);                                       // a block that cuts its own text on purpose is (d)'s business
+      if (q.overflowX === 'hidden' || q.overflowX === 'clip' || q.textOverflow === 'ellipsis' || +q.webkitLineClamp > 0) continue; }
+    const br = R(blk.getBoundingClientRect());
+    const by = Math.max(T.full.r - br.r, br.l - T.full.l);
+    if (by <= 3) continue;
+    const key = desc(blk);
+    if (seenO.has(key)) continue; seenO.add(key);
+    found.push({ kind: 'out-of-block', a: desc(T.el), b: desc(blk), text: txt(T.el), by: Math.round(by) });
+  }
+
   /* (e) wider than the viewport */
   const sw = document.documentElement.scrollWidth;
   if (sw > W + 1) {
@@ -418,6 +475,16 @@ async function runJob(j) {
     const page = await ctx.newPage();
     if (j.state === 'progress') {
       const onScan = async label => {
+        /* A scan 250 ms after Check or Next caught the card mid-change (feedback opening, the next question
+           sliding in): wait until the page has stopped moving. */
+        await page.evaluate(async () => {
+          let last = '', same = 0;
+          for (let i = 0; i < 20 && same < 3; i++) {
+            const k = document.documentElement.scrollHeight + '|' + Math.round(scrollY) + '|' + document.body.querySelectorAll('*').length;
+            same = k === last ? same + 1 : 0; last = k;
+            await new Promise(r => setTimeout(r, 150));
+          }
+        }).catch(() => {});
         if (process.env.SHOTS) await page.screenshot({ path: `${process.env.SHOTS}/${j.course}-${j.w}-${label.replace(/\W+/g, '-')}.png`, fullPage: true }).catch(() => {});
         try { for (const x of await page.evaluate(scan)) report.push({ file: `${j.course}/practice.html`, width: j.w, state: label, ...x }); } catch {}
       };
