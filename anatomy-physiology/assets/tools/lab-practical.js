@@ -248,7 +248,7 @@
     var vw = opts.view, F = window.AnpLabFit;   // pass 3: one view of a figure printing two or three (lab-fit.js)
     var boxes = st.labels.map(function(lab){
       var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"' + (vw && F.off(vw, lab.box, f) ? ' tabindex="-1" aria-hidden="true" data-off="1"' : '');
-      if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
+      if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + (studioPaint.hintId && studioPaint.hintId === lab.id ? ' lp-hint-t' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';
       if(mode === 'study'){
         var shown = (opts.reveal || {})[lab.id];
         return '<button type="button" class="lp-box lp-mask' + (shown ? ' is-shown' : '') + '"' + dl + ' style="' + style + '" aria-pressed="' + (shown ? 'true' : 'false') + '" aria-label="' + (shown ? esc(lab.name) + '. Select to hide.' : 'Hidden label. Select to reveal.') + '"></button>';
@@ -410,16 +410,24 @@
     root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
     ST.root.classList.toggle('lp-ls-list', !ST.stage.querySelector('.lp-ls-fig'));
     fitWidth();
-    if(!studioPaint.hinted && ST.stage.querySelector('.lp-box')){
+    // Wait for the figure to load: before that the label boxes have no real place, and the box chosen
+    // for the ring could sit in the part of the figure the stage does not show.
+    var hImg = ST.stage.querySelector('.lp-fig img');
+    if(!studioPaint.hinted && ST.stage.querySelector('.lp-box') && (!hImg || (hImg.complete && hImg.naturalWidth))){
       studioPaint.hinted = true;
       // The first-run ring goes on the label with the most room round it, so it covers no other label.
       var bs = [].slice.call(ST.stage.querySelectorAll('.lp-box:not([data-off])')), best = null;
+      // Only a label in view (the figure scrolls inside the stage), so the ring shows.
+      var vc = ST.stage.querySelector('.lp-scroll') || ST.stage, vr = vc.getBoundingClientRect(), sr = ST.stage.getBoundingClientRect();
+      var inView = bs.filter(function(b){ var r = b.getBoundingClientRect(); return r.top >= Math.max(vr.top, sr.top) && r.bottom <= Math.min(vr.bottom, sr.bottom, window.innerHeight) && r.width > 0; });
+      if(inView.length) bs = inView;
       bs.forEach(function(b){
         var r = b.getBoundingClientRect(), gap = 1e9;
         bs.forEach(function(o){ if(o === b) return; var q = o.getBoundingClientRect(); gap = Math.min(gap, Math.max(q.left - r.right, r.left - q.right, q.top - r.bottom, r.top - q.bottom)); });
         if(!best || gap > best.gap) best = { b: b, gap: gap };
       });
-      if(best) best.b.classList.add('lp-hint-t');
+      // A repaint (the figure loading) makes new label boxes: the box render keeps the class on the same label.
+      if(best){ best.b.classList.add('lp-hint-t'); studioPaint.hintId = best.b.getAttribute('data-label'); }
       ST.hint({ target: '.ls-stage .lp-hint-t', text: 'Tap a label on the figure' });
     }
   }
