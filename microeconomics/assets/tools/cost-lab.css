@@ -18,12 +18,6 @@
 .mic-ls-stage>.cl-fig.is-narrow .cl-svg svg{max-height:max(190px,calc(62svh - 230px));}
 .cl-fig.is-narrow .cl-side{width:100%;}
 .cl-fig.is-narrow .cl-cards{padding-right:48px;}
-.cl-key{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:center;margin:2px 0 0;font:800 12px var(--font-ui);}
-.cl-k{display:inline-flex;align-items:center;gap:5px;}
-.cl-k::before{content:"";width:16px;height:3px;border-radius:2px;background:currentColor;}
-.cl-k-dot{color:var(--muted);font-weight:700;}
-.cl-k-dot::before{width:7px;height:7px;border-radius:50%;}
-.cl-fig.is-narrow .cl-key{display:none;}
 .cl-c-MC{color:var(--cl-MC);} .cl-c-ATC{color:var(--cl-ATC);} .cl-c-AVC{color:var(--cl-AVC);} .cl-c-AFC{color:var(--cl-AFC);}
 
 /* the graph (drawn by cost-lab.js on a dollar scale): color by curve; the part
@@ -107,3 +101,4 @@
 .ls-root:not(.ls-phone) .cl-qtable th,.ls-root:not(.ls-phone) .cl-qtable td{padding:7px 14px;}
 /* On a phone the graph and the table stack (see firm-market.css; tools review 2026-11-10). */
 @media (max-width:640px){.cl-qfig{flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;}.cl-qgraph{flex:0 0 auto;width:100%;max-width:100%;}.cl-qfig .cl-qtw{align-self:center;}}
+.cl-hire-row[hidden],.cl-sliders[hidden]{display:none;}
