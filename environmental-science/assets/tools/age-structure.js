@@ -174,7 +174,7 @@
       var sh = A.shape(pyr), b = A.broad(pyr), g = A.growth(cbr, cdr), S0 = A.STAGES[stage];
       var head = !touched ? 'A stage 2 country: deaths have fallen but births are still high, so the base is wide. Try stage 3 and 4.' :
         SHAPE_NAME[sh] + ' pyramid, ' + S0.name.toLowerCase().replace(/^stage (\d)/, 'stage $1') + '. Growth ' + nf(g, 1) + '% a year' + (g > 0.05 ? ' (doubling in about ' + nf(70 / g, 0) + ' years).' : g < -0.05 ? ' (shrinking).' : ' (about zero).');
-      $('.ap-strip').innerHTML = '<span class="ap-chip is-young"><b>' + nf(b.young, 0) + '%</b> under 15</span><span class="ap-chip is-work"><b>' + nf(b.work, 0) + '%</b> 15 to 64</span><span class="ap-chip is-old"><b>' + nf(b.old, 0) + '%</b> 65 and over</span>';
+      $('.ap-strip').innerHTML = '<span class="ap-chip is-young"><b>' + nf(b.young, 0) + '%</b> under 15</span><span class="ap-chip is-old"><b>' + nf(b.old, 0) + '%</b> 65 and over</span>';
       var why = '<p><b>' + esc(S0.name) + '.</b> ' + esc(S0.what) + ' ' + esc(S0.why) + '</p>' +
         '<p><b>Reading the shape.</b> Expansive (a triangle): many children, high births, fast growth ahead. Stable (a column): births near replacement. Constrictive (a vase): fewer children than young adults, so the population ages and will shrink without immigration.</p>' +
         '<p><b>Total fertility rate</b> ' + nf(tfr, 1) + ' against replacement level, about 2.1 children per woman (2 to replace the parents, a little more because some children die young). Above 2.1 the base widens; below, it narrows.</p>' +
@@ -186,12 +186,13 @@
       say(head);
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>', 'explore');
-        LS.pills([{ k: 'TFR', html: nf(tfr, 1), tone: tfr > 2.25 ? 'warn' : tfr < 1.95 ? 'accent' : 'good' }], 'left', 'explore');
+        LS.pills([], 'left', 'explore');   // pass 2: the fertility rate is the slider's readout
         LS.pills([{ k: 'Growth', html: nf(g, 1) + '%', tone: 'readout' }], 'right', 'explore');
       }
     }
     function nums(pyr, g){
-      $('.ap-nums').innerHTML = '<h3 class="ls-title-l">This country</h3><dl class="ap-dl"><div><dt>Crude birth rate</dt><dd>' + cbr + ' per 1,000</dd></div><div><dt>Crude death rate</dt><dd>' + cdr + ' per 1,000</dd></div><div><dt>Growth rate</dt><dd>' + nf(g, 1) + '%</dd></div><div><dt>Doubling time</dt><dd>' + (g > 0.05 ? nf(70 / g, 0) + ' yr' : '·') + '</dd></div></dl>' +
+      var bb = A.broad(pyr);
+      $('.ap-nums').innerHTML = '<h3 class="ls-title-l">This country</h3><dl class="ap-dl"><div><dt>Ages 15 to 64</dt><dd>' + nf(bb.work, 0) + '%</dd></div><div><dt>Crude birth rate</dt><dd>' + cbr + ' per 1,000</dd></div><div><dt>Crude death rate</dt><dd>' + cdr + ' per 1,000</dd></div><div><dt>Growth rate</dt><dd>' + nf(g, 1) + '%</dd></div><div><dt>Doubling time</dt><dd>' + (g > 0.05 ? nf(70 / g, 0) + ' yr' : '·') + '</dd></div></dl>' +
         '<h3 class="ls-title-l">The pyramid’s bars</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Pyramid values"><table class="ls-tbl"><caption class="sr-only">Percent of the population in each age band</caption><thead><tr><th scope="col">Age</th><th scope="col">Male %</th><th scope="col">Female %</th></tr></thead><tbody>' +
         pyr.groups.map(function(gp, i){ return '<tr><th scope="row">' + gp + '</th><td class="r">' + nf(pyr.male[i], 1) + '</td><td class="r">' + nf(pyr.female[i], 1) + '</td></tr>'; }).reverse().join('') + '</tbody></table></div>';
     }

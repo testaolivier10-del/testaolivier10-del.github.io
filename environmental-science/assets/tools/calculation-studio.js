@@ -182,7 +182,8 @@
         // Never an ellipsis on a unit: short symbols (t for metric ton), and while units are
         // still to cancel the left pill counts them (the stage lists them in full).
         var short = function(t){ return t.replace(/metric ton/g, 't'); };
-        LS.pills([st.done ? { k: 'Left', html: esc(short(st.leftText)), tone: 'good' } : { k: 'To cancel', html: String(extra.length), tone: 'warn' }], 'left', 'explore');
+        // pass 2: what is still to cancel is written under the chain, so the pill appears only with the answer
+        LS.pills(st.done ? [{ k: 'Left', html: esc(short(st.leftText)), tone: 'good' }] : [], 'left', 'explore');
         LS.pills([{ k: 'Goal', html: esc(short(st.targetText)), tone: 'readout' }], 'right', 'explore');
       }
     }

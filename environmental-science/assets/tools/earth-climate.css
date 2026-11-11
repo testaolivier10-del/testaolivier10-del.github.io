@@ -140,3 +140,8 @@
   .ls-root .ec-enso{flex-wrap:nowrap;gap:6px;}
   .ls-root .ec-enso .tchip{flex:1 1 auto;padding-left:8px;padding-right:8px;white-space:nowrap;min-width:0;}
 }
+/* Pass 2: the cells out of focus stay drawn but step back */
+.ec-cell:not(.is-on){opacity:.42;}
+.ec-dimmed{opacity:.35;}
+:root[data-theme="dark"] .ec-cell:not(.is-on){opacity:.6;}
+:root[data-theme="dark"] .ec-dimmed{opacity:.5;}

@@ -276,6 +276,7 @@
       (LS ? LS.root : host).querySelectorAll('.pg-view').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
       (LS ? LS.root : host).querySelectorAll('.pg-t').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-t') === sel)); });
       slK.disable(model === 'exp');
+      var kw = $('.pg-sl-k'); if(kw) kw.hidden = model === 'exp';   // pass 2: K has no part in exponential growth, so its slider steps away
     }
     function aria(s){
       var i = marker, N = s.n[i];
@@ -308,7 +309,7 @@
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>', 'explore');
         LS.pills([{ k: 'Year ' + i, html: esc(nf(s.n[i])) + ' deer', tone: 'readout' }], 'left', 'explore');
-        LS.pills(model === 'exp' ? [{ k: 'Doubles', html: 'every ' + nf(td, 1) + ' yr', tone: 'accent' }] : [{ k: 'K', html: esc(nf(s.K[i])), tone: ph === 'overshoot' || ph === 'dieback' ? 'warn' : 'accent' }], 'right', 'explore');
+        LS.pills(model === 'exp' ? [{ k: 'Doubles', html: 'every ' + nf(td, 1) + ' yr', tone: 'accent' }] : [], 'right', 'explore');   // pass 2: K is written on its dashed line
       }
     }
     function nums(s, td){
@@ -328,7 +329,7 @@
       $('.pg-nums').innerHTML = '<h3 class="ls-title-l">Survivors out of 1,000</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Survivorship values"><table class="ls-tbl"><thead><tr><th scope="col">Age</th><th scope="col">Type I</th><th scope="col">Type II</th><th scope="col">Type III</th></tr></thead><tbody>' +
         [0, 2, 4, 6, 8, 10].map(function(i){ return '<tr><th scope="row">' + (i * 10) + '%</th><td class="r">' + nf(S.CURVES.I[i]) + '</td><td class="r">' + nf(S.CURVES.II[i]) + '</td><td class="r">' + nf(S.CURVES.III[i], 1) + '</td></tr>'; }).join('') + '</tbody></table></div><p class="bt-small">Idealized shapes for teaching; real species fall between them.</p>';
       say(head);
-      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills(sel ? [{ k: 'Curve', html: 'Type ' + sel, tone: 'accent' }] : [], 'left', 'explore'); LS.pills([{ k: 'Scale', html: 'log', tone: 'readout' }], 'right', 'explore'); }
+      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills(sel ? [{ k: 'Curve', html: 'Type ' + sel, tone: 'accent' }] : [], 'left', 'explore'); LS.pills([], 'right', 'explore')   /* pass 2: the axis says log scale */; }
     }
     function rkWords(){
       var done = distUpto === dist.Y;
@@ -341,7 +342,7 @@
       $('.pg-nums').innerHTML = '<h3 class="ls-title-l">Traits side by side</h3><div class="table-wrap" tabindex="0" role="region" aria-label="r and K traits"><table class="ls-tbl"><thead><tr><th scope="col">Trait</th><th scope="col">r-selected</th><th scope="col">K-selected</th></tr></thead><tbody>' +
         S.TRAITS.map(function(t){ return '<tr><th scope="row">' + esc(t.trait) + '</th><td>' + esc(t.r) + '</td><td>' + esc(t.K) + '</td></tr>'; }).join('') + '</tbody></table></div>';
       say(head);
-      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills(done && touched ? [{ k: 'r back in', html: dist.rec.r + ' yr', tone: 'good' }] : [], 'left', 'explore'); LS.pills(done && touched ? [{ k: 'K back in', html: dist.rec.K + ' yr', tone: 'warn' }] : [], 'right', 'explore'); }
+      if(LS){ LS.caption('<b>' + esc(head) + '</b>', 'explore'); LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore'); }   // pass 2: each recovery time is written over its own curve
     }
     function stop(){ if(playing){ playing.stop(); playing = null; } if(distLoop){ distLoop.stop(); distLoop = null; } var b = $('.pg-play'); if(b) b.textContent = 'Play ' + years + ' years'; }
     function play(){

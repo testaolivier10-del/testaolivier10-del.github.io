@@ -189,7 +189,8 @@
       if(k + 1 < G.length){
         var u = G[k + 1], y1 = g.y - 2, y2 = u.y + u.h + 2;
         out.push('<path class="ef-up" d="M' + g.cx + ' ' + y1.toFixed(1) + ' L' + g.cx + ' ' + (y2 + 7).toFixed(1) + '" marker-end="url(#' + MK + '-up)"/>');
-        if(o.key === 'energy') out.push('<text class="ef-up-t" x="' + (g.cx + 7) + '" y="' + ((y1 + y2) / 2 + 4).toFixed(1) + '">' + esc(M.fmt(P.eff * 100, 3)) + '%</text>');
+        // pass 2 (Explore): the first step up carries the numbers; the steps above repeat it, so only their arrows show
+        if(o.key === 'energy' && (!o.interactive || k === 0)) out.push('<text class="ef-up-t" x="' + (g.cx + 7) + '" y="' + ((y1 + y2) / 2 + 4).toFixed(1) + '">' + esc(M.fmt(P.eff * 100, 3)) + '%</text>');
       }
       if(o.key === 'energy'){
         var hx = g.x + 6, hy = g.y - 1;
@@ -220,7 +221,7 @@
         else if(g.x - gb.x > 40) out.push('<text class="ef-lost-t" x="' + (gb.x + 5).toFixed(1) + '" y="' + (g.yc + 4).toFixed(1) + '">' + esc(M.fmt((1 - P.eff) * 100, 3)) + '%</text>');
       }
       // on the log scale the loss cannot be drawn as width, so it is said beside the step up
-      if(o.key === 'energy' && o.scale !== 'linear' && k > 0 && o.flows !== false){
+      if(o.key === 'energy' && o.scale !== 'linear' && k > 0 && o.flows !== false && (!o.interactive || k === 1)){
         var lt2 = '−' + M.fmt((1 - P.eff) * 100, 3) + '% as heat', lx = g.x - 10;
         if(lx - g.colW < lt2.length * 6.4 + 6) lt2 = lx - g.colW > 64 ? '−' + M.fmt((1 - P.eff) * 100, 3) + '% heat' : lx - g.colW > 36 ? '−' + M.fmt((1 - P.eff) * 100, 3) + '%' : '';
         if(lt2) out.push('<text class="ef-lost-t" x="' + lx.toFixed(1) + '" y="' + (g.yc + 4).toFixed(1) + '" text-anchor="end">' + esc(lt2) + '</text>');
@@ -431,7 +432,7 @@
       if(LS){
         LS.caption('<b>' + esc(w.head) + '</b>', 'explore');
         if(st.view === 'web') LS.pills(st.removed ? [{ k: 'Removed', html: esc(EF.webOf(st.eco).filter(function(s){ return s.id === st.removed; })[0].name), tone: 'warn' }] : [], 'left', 'explore');
-        else LS.pills([{ k: 'NPP', html: num(P.npp), tone: 'readout' }], 'left', 'explore');
+        else LS.pills(st.view === 'energy' ? [] : [{ k: 'NPP', html: num(P.npp), tone: 'readout' }], 'left', 'explore');   // energy: NPP is written under the producers' bar
         LS.pills(st.view === 'web' ? [] : st.view === 'energy' ? [{ k: 'Top gets', html: M.fmt(P.levels[P.levels.length - 1].share, 2) + '%', tone: 'accent' }] : [{ k: 'Pyramid', html: EF.inverted(P, st.view) ? 'inverted' : 'upright', tone: EF.inverted(P, st.view) ? 'warn' : 'good' }], 'right', 'explore');
         if(LS.why) LS.why.querySelectorAll && LS.root.querySelectorAll('.env-ls-why details.bt-why').forEach(function(d){ d.open = true; });
       }
