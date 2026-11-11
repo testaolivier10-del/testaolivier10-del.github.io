@@ -117,6 +117,18 @@
     function ratioLine(){ var l = lad[step]; return S.ratio(l.denom) + ': 1 cm on the map is ' + S.km(l.kmPerCm) + ' km on the ground. ' + (step < 3 ? 'A large-scale map.' : 'A small-scale map.'); }
     function specOf(v){ return v.spec || S.regionalSpec(BASES.world, ds); }
 
+    /* The spread at this scale on one 0 to 100% line: a dot per unit, the span from lowest to highest
+       filled in. One unit is one dot and no span: the picture of what an average hides. */
+    var last = null;
+    function rangeHtml(sc){
+      var units = sc === 'global' ? [{ name: 'The world', value: ds.world }] : sc === 'regional' ? ds.regions : sc === 'national' ? [{ name: 'Country A', value: M.round(ds.national, 0) }] : ds.provinces;
+      var vals = units.map(function(u){ return u.value; }), lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), one = units.length === 1;
+      var dots = units.map(function(u){ return '<span class="hug-sl-rd" style="left:' + u.value + '%"></span>'; }).join('');
+      return '<div class="hug-sl-range' + (one ? ' is-one' : '') + '" role="img" aria-label="' + esc(one ? 'One value, ' + S.pct(lo) + ': no spread to see at this scale' : units.length + ' values from ' + S.pct(lo) + ' to ' + S.pct(hi) + ', a gap of ' + M.round(hi - lo, 0) + ' points') + '">' +
+        '<p class="hug-sl-rt">' + (one ? '<b>1 value.</b> An average: the spread inside it is hidden.' : '<b>' + units.length + ' values.</b> Lowest ' + S.pct(lo) + ', highest ' + S.pct(hi) + ': a gap of <b>' + M.round(hi - lo, 0) + ' points</b>.') + '</p>' +
+        '<div class="hug-sl-rtrack"><span class="hug-sl-rspan" style="left:' + lo + '%;width:' + (hi - lo) + '%"></span>' + dots + '</div>' +
+        '<div class="hug-sl-rax" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div></div>';
+    }
     function drawStage(){
       var fig = $('.hug-sl-fig');
       if(view === 'map'){
@@ -128,7 +140,18 @@
       } else {
         var v = cur(), spec = specOf(v);
         var badge = v.scale === 'global' ? '<div class="hug-sl-badge"><span class="hug-sl-bk">World</span><span class="hug-sl-bv">' + S.pct(ds.world) + '</span></div>' : '';
-        fig.innerHTML = '<div class="hug-sl-head"><p class="hug-sl-k">' + esc(S.SCALE_NAME[v.scale]) + ' scale</p><p class="hug-sl-t">' + esc(ds.name) + '</p></div>' + mapFig(spec, badge);
+        fig.innerHTML = '<div class="hug-sl-head"><p class="hug-sl-k">' + esc(S.SCALE_NAME[v.scale]) + ' scale</p><p class="hug-sl-t">' + esc(ds.name) + '</p></div>' + rangeHtml(v.scale) + mapFig(spec, badge);
+        // Same outline, smaller units: the one shade breaks apart in place (or merges back), so the
+        // change of scale is seen as a change of units, not as a different map.
+        var pic = fig.querySelector('.hug-map-pic'), img = pic && pic.querySelector('img');
+        if(img){
+          if(last && last.base === spec.base && last.scale !== v.scale && last.src !== img.src){
+            var g = document.createElement('img'); g.className = 'hug-sl-ghost'; g.alt = ''; g.setAttribute('aria-hidden', 'true'); g.src = last.src;
+            pic.insertBefore(g, img.nextSibling); pic.classList.add('is-split');
+            g.addEventListener('animationend', function(){ if(g.parentNode) g.parentNode.removeChild(g); pic.classList.remove('is-split'); });
+          }
+          last = { base: spec.base, scale: v.scale, src: img.src };
+        }
       }
     }
     function drawCtl(){

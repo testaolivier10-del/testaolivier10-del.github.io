@@ -45,3 +45,21 @@
   .hug-sl-ratio{font-size:22px;}
   .hug-sl-scales > button,.hug-sl-view > button{font-size:13px;padding:0 4px;}
 }
+
+/* 2026-11: the spread at this scale, and the split in place when the units change on the same outline. */
+.hug-sl-range{margin:6px 0 10px;}
+.hug-sl-rt{margin:0 0 6px;font:600 14px/1.35 var(--font-ui);color:var(--ink);}
+.hug-sl-rtrack{position:relative;height:14px;border-radius:999px;background:var(--ctint);}
+.hug-sl-rspan{position:absolute;top:0;bottom:0;border-radius:999px;background:var(--cink);opacity:.28;transition:left .6s ease,width .6s ease;}
+.hug-sl-rd{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--cink);border:2px solid var(--surface,#fff);box-sizing:border-box;}
+.hug-sl-range.is-one .hug-sl-rd{width:16px;height:16px;margin:-8px 0 0 -8px;}
+.hug-sl-rax{display:flex;justify-content:space-between;margin-top:3px;font:700 11px var(--font-ui);color:var(--muted);}
+.hug-sl-ghost{position:absolute;inset:0;width:100%;height:100%;animation:hug-sl-split .8s ease forwards;pointer-events:none;}
+.hug-map-pic.is-split .hug-map-over{animation:hug-sl-in .8s ease;}
+@keyframes hug-sl-split{from{opacity:1;}to{opacity:0;}}
+@keyframes hug-sl-in{0%,45%{opacity:0;}100%{opacity:1;}}
+@media (prefers-reduced-motion: reduce){.hug-sl-ghost{display:none;}.hug-map-pic.is-split .hug-map-over{animation:none;}.hug-sl-rspan{transition:none;}}
+/* Phone: the legend's title repeats the heading above the map; without it the whole legend fits under the map. */
+.ls-root.ls-phone .hug-sl-map .hug-lg-title{display:none;}
+.ls-root.ls-phone .hug-sl-rax{display:none;}
+.ls-root.ls-phone .hug-sl-range{margin:4px 0 8px;}

@@ -39,10 +39,28 @@ it opens and after each control, (3) whether the picture IS that idea or only si
 | Borders lab | Why a border is where it is; what pulls a state together or apart | Fix. Boundary types: towns are dots in a box, so nothing shows why the line runs there (needs the land: river, hills, where each people lives). Forces: still the old straight-edged blocks with bare arrows. State shapes: one blob with no capital, no distances, nothing to show why the shape matters. Sea zones and real cases are fine. |
 | Model Studio | What each of 21 models looks like and where its parts go | Redesign in part. Five models are blank numbered boxes that show nothing of the model: Rostow, epidemiological transition, world system, gravity, rank-size. Every model is drawn in a quarter of the stage with the rest empty. The maps and curves (Hoyt, galactic, least cost, Malthus, DTM, boundaries) are right and stay. |
 
+## Second opinion (Gemini, in the owner's browser, 2026-11-10) and what was taken from it
+
+Asked to push back on the three verdicts above. Taken: (1) scale of analysis is a change of units, not a camera
+move, so no continuous zoom and no locator inset: the same outline breaks into smaller units in place, with a
+lowest-to-highest bar; (2) forces should be shown on real geography (a rail hub tying regions to the capital, a
+mountain range cutting one off), not arrows on an outline; (3) state shapes need the capital and the reach from it
+to the far edge. Its pictures for the five blank models: Rostow as a rising staircase with the mix of farm, factory
+and service work changing; epidemiological transition as two lines (infectious falling, degenerative rising) over
+the stages; world system as core, semi-periphery and periphery rings with raw materials flowing in and finished
+goods out (rings, not a world map, since which country is which is contested); gravity as two city circles joined
+by a band whose width is the interaction (change size and distance); rank-size as city bars against the 1/n curve
+with a primate city switch.
+
+Built from it: scale lab, scale of analysis. A line above the map shows every unit's value from 0 to 100% with the
+span filled in (one dot at the global and national scales, "the spread inside it is hidden"); switching between
+scales on the same outline (global and regional, national and local) fades one into the other in place.
+`scale-lab.js` (rangeHtml, the ghost image), `scale-lab.css`.
+
 ## Next (in this order unless the owner says otherwise)
 
-1. Human Geography, from the purpose review above: Model Studio's five blank models and stage size, borders lab
-   (three scenes), scale lab zoom. Mockups first for Model Studio and the scale lab.
+1. Human Geography, from the purpose review above: Model Studio's five blank models and stage size (mockups
+   first), then the borders lab's three scenes. The scale lab is done.
 2. Every other course, one at a time. From the 2026-11-10 screenshots (all 145 tools, phone and desktop), the
    pictures that are blocks, boxes or bare charts: macro indicators lab and multiplier lab; bio Hardy-Weinberg;
    chem ICE table and particle diagrams; physics collision lab and rotation lab; A&P pathways, predict, feedback
