@@ -27,7 +27,8 @@
   T.mount(SLUG, function(app, data){
     var esc = T.esc, F = T.F, G = M.popgen;
     var st = JSON.parse(JSON.stringify(data.defaults));
-    st.readGen = st.gens; st.rep = 0;
+    // pass 3 (2026-11-11): open at generation 0; the populations' fates appear as Draw generations plays them
+    st.readGen = 0; st.rep = 0;
     var sim = null, runs = [], timer = null;
     var GENO = ['AA', 'Aa', 'aa'];
 
@@ -356,7 +357,7 @@
     studio: { sim: true, stage: ['.hw-jar'], stageAlso: ['.hw-mini', '.hw-gstage', '.hw-cmp'], why: ['.hw-jarnote'], live: '.bt-summary', views: [{ sel: '.hw-pplot', label: 'p over generations' }, { sel: '.hw-gplot', label: 'Genotypes' }],
       dock: ['.os-chal', '.os-play', '@primary'], primarySel: '.hw-group:first-child > .bt-ctl:nth-of-type(-n+2)',
       hint: { target: '.os-play .btn-press', text: 'Press Draw generations' },
-      caption: function(g){ if(guessOn()) return '<b>How big is each population?</b> The wider the lines spread, the stronger drift is.'; return '<b>Generation ' + T.esc(g.ro(0)) + ':</b> p = ' + T.esc(g.ro(2).split(' / ')[0]) + ' in population 1. Across all populations: ' + T.esc(g.ro(6)) + '.'; },
+      caption: function(g){ if(guessOn()) return '<b>How big is each population?</b> The wider the lines spread, the stronger drift is.'; if(/^0 of/.test(g.ro(0))) return '<b>Generation 0:</b> every population starts at p = ' + T.esc(g.ro(2).split(' / ')[0]) + '. Press Draw generations.'; return '<b>Generation ' + T.esc(g.ro(0)) + ':</b> p = ' + T.esc(g.ro(2).split(' / ')[0]) + ' in population 1. Across all populations: ' + T.esc(g.ro(6)) + '.'; },
       pills: function(g){ if(guessOn()) return []; return [{ k: 'p', html: g.ro(2).split(' / ')[0], tone: 'readout' }]; },
       pillsR: function(g){ if(guessOn()) return []; return [{ html: 'Generation ' + g.ro(0), tone: 'ghost' }]; } } });
   function guessOn(){ var gs = document.querySelector('.hw-gstage'); return !!(gs && !gs.hidden); }
