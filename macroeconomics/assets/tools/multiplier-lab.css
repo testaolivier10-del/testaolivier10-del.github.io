@@ -190,3 +190,8 @@
 .ml-meter .ml-nums dd{font-size:18px;}
 .ls-phone .ml-meter .ml-nums{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:6px;}
 .ls-phone .ml-meter .ml-nums dd{font-size:15px;}
+/* Pass 3: the drills draw the Explore pictures (spending rounds, banks); give them the stage height */
+.ml-qfig .ml-qcasc{height:clamp(240px,56vh,520px);margin-bottom:6px;}
+.ml-qfig-money .ml-qbars{height:clamp(220px,40vh,420px);margin-bottom:6px;}
+.ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qfig-money .ml-qbars{min-height:172px;}
+.ls-root.ls-phone.ls-quiz .ls-stage:not(.is-big) .ml-qfig-money .ml-t caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
