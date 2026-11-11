@@ -163,7 +163,7 @@
       var nar = !!document.querySelector('.ls-root.ls-phone');
       W = nar ? 400 : 560; H = nar ? 330 : 380; L = nar ? 58 : 70; pw = W - L - R; ph = H - TOP - B;
       var host = body.querySelector('.gb-grid'), ys = scaleOf('ys'), xs = scaleOf('xs');
-      var why = !st.y ? (st.type ? 'Choose the y-axis variable (step 2).' : 'Your graph builds here as you answer each step. Start with the graph type.') : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
+      var why = !st.y ? (st.type ? 'Choose the y-axis variable (step 2).' : 'Your graph builds here as you answer each step.') : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
         !ys.ok ? 'Enter a y-axis minimum, maximum and interval: the grid redraws as you type.' :
         !bar() && (!st.x || !isNum(st.x)) ? (st.x ? 'This x-axis variable has categories, not numbers, so it cannot go on a number scale. A bar graph shows categories.' : 'Choose the x-axis variable.') :
         !bar() && !xs.ok ? 'Enter an x-axis minimum, maximum and interval: the grid redraws as you type.' : '';
