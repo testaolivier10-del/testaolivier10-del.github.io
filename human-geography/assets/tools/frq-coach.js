@@ -100,7 +100,8 @@
       var G = window.ApHugGrade, ul = $('.hug-fc-flags'), p = part();
       if(!G || !ul) return;
       var spec = F.flagsFor(p), rules = Object.keys(spec.write);
-      if(!rules.length){ ul.innerHTML = '<li class="is-note">' + esc(p.verb === 'identify' ? 'Identify: a specific name is enough. No reasons needed.' : p.verb === 'define' ? 'Define: the meaning in a full sentence, not an example.' : 'Describe: say what it is like, where and how much. More than a name.') + '</li>'; return; }
+      // The verb card above already says what the verb asks (pass 3, judge b: said three times).
+      if(!rules.length){ ul.innerHTML = ''; return; }
       if(!text.trim()){ ul.innerHTML = rules.map(function(r){ return '<li class="is-todo"><span class="hug-mark">' + CHECK_NAME[r] + '</span> ' + esc(hintOf(r)) + '</li>'; }).join(''); return; }
       var out = G.flags(spec, text);
       // explain the degree: the degree must come FIRST, so only the opening is read for it.
@@ -158,7 +159,7 @@
         '<p class="hug-fc-wk">How a part is scored</p><p>Each part earns one point or none. Readers score what you wrote against the rubric line, so the verb decides what counts: a name earns an identify point, but not a describe or an explain point.</p>';
       T.explain($('.hug-fc-say'), head, why);
       if(LS){
-        LS.caption('<b>Part ' + esc(p.label) + ': ' + esc(v.name) + '.</b> Watch for: ' + esc(v.slip.charAt(0).toLowerCase() + v.slip.slice(1)), 'explore');
+        LS.caption('<b>Part ' + esc(p.label) + ': ' + esc(v.name) + '.</b> Write your answer, then check it.', 'explore');
         if(LS.why) LS.why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });
       }
     }
