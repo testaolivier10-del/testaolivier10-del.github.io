@@ -11914,6 +11914,7 @@
         {
           "key": "carrier",
           "label": "Chance a child with the dominant phenotype is a carrier (Aa)",
+          "keep": true,
           "unit": "%",
           "normal": "Two in three (67%) from two carriers."
         }

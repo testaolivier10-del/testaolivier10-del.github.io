@@ -351,7 +351,7 @@
   function resultsHtml(c, env){
     return '<div class="calc-results">' + c.results.map(function(res){
       var band = bandOf(res, env);
-      return '<div class="calc-result">' +
+      return '<div class="calc-result' + (res.keep ? ' calc-keep' : '') + '">' +
         '<span class="calc-result-label">' + esc(res.label) + '</span>' +
         '<span class="calc-result-value">' + fmt(env[res.key], dpOf(c, res.key), res.signed ? '+' : '') + (res.unit ? ' <small>' + esc(res.unit) + '</small>' : '') + '</span>' +
         (band ? '<span class="calc-band tone-' + esc(band.tone || 'ok') + '">' + esc(band.label) + '</span>' : '') +
@@ -525,7 +525,7 @@
     if(pic.pin) gauge(x0 + 34, pic.pin, 'in');
     if(pic.pout) gauge(x1 - 34, pic.pout, 'out');
     svg.appendChild(S('path', { d: 'M' + (x1 + 8) + ',' + cy + ' l20,0 m-8,-7 l8,7 l-8,7', 'class': 'cp-arrow' }));
-    svg.appendChild(S('text', { x: (x0 + x1) / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, 'Flow ' + val(c, env, pic.flow) + ' ' + pic.flowUnit));
+    svg.appendChild(S('text', { x: (x0 + x1) / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, (pic.baseFlow ? 'Flow after ' : 'Flow ') + val(c, env, pic.flow) + ' ' + pic.flowUnit));   // the card keeps "Flow before"
     var rtxt = pic.r ? 'radius ' + Math.round(rr * 100) + '% of before' : pic.rRes ? 'resistance ' + val(c, env, pic.rRes) : '';
     if(rtxt) svg.appendChild(S('text', { x: (x0 + x1) / 2, y: Math.min(cy + Math.max(rad, R0) + wt + 18, H - 26), 'text-anchor': 'middle', 'class': 'cp-t' }, rtxt));
     var cap = (pic.pin && pic.pout ? 'Pressure falls from ' + val(c, env, pic.pin) + ' to ' + val(c, env, pic.pout) + ' mm Hg along the vessel. ' : '') +
@@ -1022,7 +1022,11 @@
           var unit = u ? u.textContent.trim().toLowerCase() : '', val = vEl ? vEl.textContent.trim().toLowerCase().replace(unit, '').trim() : '';
           var name = lb ? lb.textContent.trim().toLowerCase() : '';
           var re = val ? new RegExp('(^|[^0-9.,])' + val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![0-9]|[.,][0-9])') : null;
-          var said = !r.querySelector('.calc-band') && re && texts.some(function(t){ return re.test(t) && ((unit && t.indexOf(unit) > -1) || (name && t.indexOf(name) > -1)); });
+          /* Accuracy check 2 (2026-11-11): the unit counts only as a whole word ("L" must not match the l in
+             "intracellular"), and a result marked "keep" (a conditional chance the picture does not draw as
+             such, like the Punnett carrier share) always keeps its card. */
+          var ure = unit ? new RegExp('(^|[^a-z\u00b5])' + unit.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![a-z])') : null;
+          var said = !r.querySelector('.calc-band') && !r.classList.contains('calc-keep') && re && texts.some(function(t){ return re.test(t) && ((ure && ure.test(t)) || (name && t.indexOf(name) > -1)); });
           r.hidden = !!said; if(!said) shown++;
         });
         var box = out.querySelector('.calc-results'); if(box) box.hidden = rows.length > 0 && !shown;
