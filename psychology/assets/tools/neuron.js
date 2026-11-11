@@ -245,6 +245,8 @@
     g.push('<text class="nr-axl" x="' + r1(x0 + 2) + '" y="' + r1(top - 12) + '" font-size="' + fs + '">receptors activated</text>');
     var base = N.synapse('none'), cur = N.synapse(o.cls), upto = o.t == null ? D : o.t;
     var line = function(S, lim){ var p = []; for(var i = 0; i < S.t.length && S.t[i] <= lim + 1e-9; i++) p.push(r1(X(S.t[i])) + ',' + r1(Y(S.act[i]))); return p; };
+    // pass 2: before the first Release (or after a new drug) the graph waits for the student's action
+    if(o.empty){ g.push('<text class="nr-axl" x="' + r1((L + R) / 2) + '" y="' + r1((top + bot) / 2 + 4) + '" text-anchor="middle" font-size="' + (fs + 1) + '">Press Release to see the receptors respond</text>'); return { svg: g.join('') }; }
     if(o.cls !== 'none'){ g.push('<polyline class="nr-base" points="' + line(base, D).join(' ') + '"/>'); }
     var pc = line(cur, upto);
     if(pc.length > 1){ g.push('<polygon class="nr-actarea" points="' + r1(X(0)) + ',' + r1(Y(0)) + ' ' + pc.join(' ') + ' ' + pc[pc.length - 1].split(',')[0] + ',' + r1(Y(0)) + '"/><polyline class="nr-act" points="' + pc.join(' ') + '"/>'); }
@@ -271,7 +273,7 @@
   function explore(host, data){
     var X = data.explore || {};
     var view = 'fire', S = X.strength || 22, mode = 'pulse', gap = 6, run = null, upto = null, anim = null, part = null;
-    var nt = X.nt || 'dopamine', cls = 'none', synT = null, touched = false, LS = null, nid = T.nid('nr');
+    var nt = X.nt || 'dopamine', cls = 'none', synT = null, synRan = false, touched = false, LS = null, nid = T.nid('nr');
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem nr-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">The neuron</h2>' +
       '<div class="nr-fig"><svg class="nr-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
@@ -294,14 +296,14 @@
     var sPat = T.choiceSelect({ label: 'Stimulus pattern', options: PATTERNS, value: mode, onChange: function(v){ act(); stop(); mode = v; run = null; upto = null; syncView(); draw(); words(); } });
     var sGap = T.slider({ label: 'Time between the two pulses', min: 1, max: 10, step: 0.5, value: gap, unit: 'ms', onInput: function(v){ act(); stop(); gap = v; run = null; upto = null; draw(); words(); } });
     $('.nr-more-fire').appendChild(sPat.el); $('.nr-more-fire').appendChild(sGap.el);
-    var sNt = T.choiceSelect({ label: 'Neurotransmitter', options: N.NT_KEYS.map(function(k){ return { value: k, label: ntName(k) }; }), value: nt, onChange: function(v){ act(); stop(); nt = v; synT = null; draw(); words(); say(ntName(v) + '. ' + N.NT[v].does); } });
+    var sNt = T.choiceSelect({ label: 'Neurotransmitter', options: N.NT_KEYS.map(function(k){ return { value: k, label: ntName(k) }; }), value: nt, onChange: function(v){ act(); stop(); nt = v; synT = null; synRan = false; draw(); words(); say(ntName(v) + '. ' + N.NT[v].does); } });
     $('.nr-more-syn').appendChild(sNt.el);
 
     function onClick(e){
       var b = e.target.closest('.nr-views button');
       if(b){ setView(b.getAttribute('data-v')); return; }
       var d = e.target.closest('.nr-drugs button');
-      if(d){ act(); stop(); cls = d.getAttribute('data-d'); synT = null; syncView(); draw(); words(); say(drugLine()); return; }
+      if(d){ act(); stop(); cls = d.getAttribute('data-d'); synT = null; synRan = false; syncView(); draw(); words(); say(drugLine()); return; }
       if(e.target.closest('.nr-play')){ act(); play(); return; }
       var p = e.target.closest('[data-part]');
       if(p){ act(); pickPart(p.getAttribute('data-part')); }
@@ -338,7 +340,7 @@
         anim = P.loop(function(dt){ var sl = slowed.some(function(sp){ return upto >= sp - 0.4 && upto <= sp + TRAVEL + 0.5; }); upto = Math.min(dur, upto + dt * (sl ? slow : fast)); draw(); return upto < dur; }, { still: function(){ upto = dur; draw(); }, onEnd: function(){ upto = dur; anim = null; stop(); draw(); words(); say(fireLine()); } });
       } else {
         var D = N.SYN.dur, secs2 = 3.4;
-        synT = 0;
+        synT = 0; synRan = true;
         anim = P.loop(function(dt, t){ synT = Math.min(D, t / secs2 * D); draw(); return synT < D; }, { duration: secs2, still: function(){ synT = 2.2; draw(); }, onEnd: function(){ if(P.reduced()) synT = 2.2; anim = null; stop(); draw(); words(); say(drugLine()); } });
       }
       var b = $('.nr-play'); if(b) b.textContent = 'Pause';
@@ -385,7 +387,7 @@
           LS.pills(res == null ? [] : [{ html: res ? (res === 1 ? 'Fired: 1 spike' : 'Fired: ' + res + ' spikes') : 'No spike', tone: res ? 'good' : 'warn' }], 'right', 'explore');
         } else {
           LS.pills([{ html: DRUGS.filter(function(d){ return d.v === cls; })[0].label, tone: 'readout' }], 'left', 'explore');
-          LS.pills(cls === 'none' ? [] : [{ k: 'Signal', html: N.signalPct(cls) + '%', tone: N.signalPct(cls) > 100 ? 'good' : 'warn' }], 'right', 'explore');
+          LS.pills(cls === 'none' || !synRan ? [] : [{ k: 'Signal', html: N.signalPct(cls) + '%', tone: N.signalPct(cls) > 100 ? 'good' : 'warn' }], 'right', 'explore');
         }
       }
     }
@@ -461,7 +463,7 @@
     function synScene(Wd, H){
       var phone = Wd < 560, pad = phone ? 6 : 16, sh = Math.round(H * (phone ? 0.58 : 0.64));
       var art = synapseArt(pad, 6, Wd - pad * 2, sh - 10, { nt: nt, cls: cls, t: synT, id: 'syx' });
-      var gr = activationArt(pad, sh, Wd - pad * 2, H - sh, { cls: cls, t: anim ? synT : null, enl: true });
+      var gr = activationArt(pad, sh, Wd - pad * 2, H - sh, { cls: cls, t: anim ? synT : null, enl: true, empty: !synRan });
       return { svg: art.svg + gr.svg, label: 'A synapse: the axon terminal above releases ' + ntLower(nt) + ' into the synapse; receptors on the receiving neuron below; reuptake transporters at the terminal’s edges. Drug: ' + DRUGS.filter(function(d){ return d.v === cls; })[0].label + '. ' + drugLine() + ' The graph below shows the share of receptors activated over 12 ms' + (cls === 'none' ? '.' : ', with no drug dashed.') };
     }
 

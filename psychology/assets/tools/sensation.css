@@ -99,9 +99,6 @@
 .sn-grp{display:grid;gap:10px;}
 .sn-grp[hidden],.sn-go[hidden],.bt-ctl[hidden]{display:none;}
 .sn-scenes button{padding:0 8px;}
-.sn-figs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;}
-.sn-figs .bt-btn{flex:none;white-space:nowrap;min-height:44px;}
-.sn-figs .bt-btn[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
 .sn-go{display:flex;gap:10px;}
 .sn-go > *{flex:1;}
 /* The first-run tip's slot sits inside the (sticky) primary row, above the button, so the tip
@@ -109,3 +106,9 @@
 .sn-go{flex-wrap:wrap;}
 .sn-tipslot{height:58px;flex:1 0 100%;}
 .sn-list{margin:0 0 10px;padding-left:18px;display:grid;gap:4px;font:600 14px/1.45 var(--font-ui);}
+/* pass 2: the figure picker (one select with previous and next) */
+.sn-exrow{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:6px;align-items:end;}
+.sn-exrow > .bt-btn{min-height:44px;padding:0;font:900 22px var(--font-ui);}
+.sn-exsel{display:block;}
+.sn-exsel label{display:block;margin:0 0 6px;}
+.sn-exsel select{width:100%;min-width:0;}

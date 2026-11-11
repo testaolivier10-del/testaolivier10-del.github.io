@@ -16,7 +16,7 @@
 .si-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 .si-fig .si-svg{position:absolute;inset:0;}
 .si-qfig{margin:0;} .si-qfig .si-svg{height:auto;}
-.si-grp[hidden]{display:none;}
+.si-grp[hidden],.si-grp-row[hidden]{display:none;}
 .si-grp{display:flex;flex-direction:column;gap:10px;}
 .si-tipslot{height:52px;}
 .si-chips{display:flex;gap:8px;flex-wrap:wrap;}
@@ -82,7 +82,6 @@
 .si-bl{font-weight:700;font-size:11.5px;fill:var(--muted);} .si-bl.is-on{fill:var(--ink);font-weight:900;}
 .si-bv{font-weight:800;font-size:11.5px;fill:var(--muted);font-variant-numeric:tabular-nums;} .si-bv.is-on{fill:var(--cink);font-weight:900;}
 .si-src{font-weight:700;font-size:10.5px;fill:var(--muted);font-style:italic;}
-.si-dot{fill:var(--si-bar);} .si-dot.is-on{fill:var(--si-bar-on);}
 .si-bl.is-s{font-size:10px;}
 
 /* "8 people" stays on one line beside its slider (it wrapped under itself at desktop width). */

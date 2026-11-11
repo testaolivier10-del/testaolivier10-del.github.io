@@ -162,7 +162,7 @@
     curfew: function(){ return '<path class="cl-i" d="M-40 0 L-6 -28 L28 0 V40 H-40 Z"/><rect class="cl-i-lit" x="-30" y="8" width="14" height="12"/><rect class="cl-i-dk" x="-4" y="14" width="14" height="26"/><path class="cl-i-moon" d="M34 -46 a14 14 0 1 0 12 22 a11 11 0 1 1 -12 -22 Z"/><circle class="cl-i" cx="38" cy="18" r="13"/><path class="cl-i-line" d="M38 10 V18 L43 22"/>'; },
     hand: function(){ return handArt() + '<path class="cl-i-click" d="M-34 -40 l-8 -6 M30 -46 l8 -6 M-2 -58 v-8"/>'; },
     dish: function(){ return '<ellipse class="cl-i" cx="0" cy="10" rx="44" ry="18"/><ellipse class="cl-i-lt" cx="0" cy="8" rx="28" ry="10"/><circle class="cl-i-crumb" cx="-8" cy="6" r="3.5"/><circle class="cl-i-crumb" cx="8" cy="10" r="3"/><circle class="cl-i-crumb" cx="2" cy="2" r="2.4"/><path class="cl-i-smear" d="M-20 8 q8 -6 16 0"/><path class="cl-i-line" d="M-30 -38 L-12 -4 M-34 -36 l4 8 M-26 -40 l4 8"/>'; },
-    beep: function(){ return '<g transform="translate(-14 0) scale(1.6)"><rect class="cl-i-dk2" x="-18" y="-12" width="14" height="24" rx="3"/><path class="cl-i" d="M-4 -12 L14 -26 L14 26 L-4 12 Z"/></g><path class="cl-i-wave" d="M18 -22 Q28 0 18 22 M30 -32 Q44 0 30 32 M42 -42 Q60 0 42 42"/><text class="cl-i-word" x="-10" y="-40" text-anchor="middle">BEEP</text>'; },
+    beep: function(){ return '<g transform="translate(-14 0) scale(1.6)"><rect class="cl-i-dk2" x="-18" y="-12" width="14" height="24" rx="3"/><path class="cl-i" d="M-4 -12 L14 -26 L14 26 L-4 12 Z"/></g><path class="cl-i-wave" d="M18 -22 Q28 0 18 22 M30 -32 Q44 0 30 32 M42 -42 Q60 0 42 42"/>'; },
     screen: function(){ return '<rect class="cl-i" x="-44" y="-34" width="88" height="60" rx="6"/><rect class="cl-i-scr" x="-38" y="-28" width="76" height="48" rx="3"/><path class="cl-i-play" d="M-8 -16 L12 -4 L-8 8 Z"/><rect class="cl-i-dk" x="-10" y="26" width="20" height="10"/><text class="cl-i-word" x="0" y="50" text-anchor="middle">+30 min</text>'; },
     chores: function(){ return '<rect class="cl-i" x="-40" y="-44" width="58" height="84" rx="5"/><rect class="cl-i-dk" x="-24" y="-50" width="26" height="12" rx="3"/><path class="cl-i-line" d="M-30 -24 h36 M-30 -8 h36 M-30 8 h36 M-30 24 h30"/><path class="cl-i-bucket" d="M20 0 h28 l-4 40 h-20 Z"/><path class="cl-i-line" d="M22 0 q12 -16 24 0"/>'; },
     headache: function(){ return '<circle class="cl-i-skin" cx="-6" cy="8" r="32"/><path class="cl-i-line" d="M-20 2 l8 4 M8 2 l-8 4 M-16 24 q10 -6 20 0"/><path class="cl-i-bolt" d="M18 -46 L6 -22 L18 -22 L8 0 L32 -28 L20 -28 L30 -46 Z"/>'; },
@@ -437,9 +437,9 @@
       var near = function(list, w){ return list.some(function(t){ return t <= tNow && t > tNow - w; }); };
       var pressing = anim && near(sess.presses, 1.2 * (MIN * 60) / (PLAY_S * 60)), pellet = anim ? near(sess.rewards, 6) : false;
       g.push(skinner(bx, by, boxW, boxH, pressing, pellet, pellet));
-      g.push(txt(bx + boxW / 2, by + boxH + 18, phone ? 'Skinner box, ' + sc.short : 'Skinner box, ' + sc.name.toLowerCase() + ' (' + sc.short + ')', 'cl-axn'));
+      // pass 2: the schedule is named in the side text and the pill, so the box carries only its name
+      g.push(txt(bx + boxW / 2, by + boxH + 18, 'Skinner box', 'cl-axn'));
       var yy3 = by + boxH + 18;
-      if(!phone){ var words2 = (sc.how.charAt(0).toUpperCase() + sc.how.slice(1) + '.').split(' '), ln = ''; yy3 += 18; words2.forEach(function(wd){ if(tw(ln + ' ' + wd, 12, 700) > boxW && ln){ g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); yy3 += 16; ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); }
       var gT = phone ? by + boxH + 52 : by + 8, gB = H - (phone ? 52 + ENL : 56), gR = phone ? R : bx - 30;
       // the y scale: this schedule's own, or one for all four when comparing
       var all = CL.SCHEDULES.map(function(s){ return CL.session(s.k, seed, MIN); });
@@ -461,9 +461,7 @@
       g.push('<polyline class="cl-rec" points="' + rec(sess, tNow, x, y) + '"/>');
       g.push(hatches(sess, tNow, x, y));
       g.push('<line class="cl-axis" x1="' + L + '" x2="' + gR + '" y1="' + gB + '" y2="' + gB + '"/><line class="cl-axis" x1="' + L + '" x2="' + L + '" y1="' + gT + '" y2="' + gB + '"/>');
-      var d = opDone(), endX = x(tNow / 60), endY = y(d.n), lab = d.n + ' presses', lw = tw(lab, 14, 900) + 18, lx = Math.min(gR - lw, Math.max(L + 4, endX - lw - 8)), ly = Math.max(gT + 2, endY - 36);
-      if(ly + 26 > gB - 4) ly = gB - 30;
-      g.push('<g class="cl-bub"><rect x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" width="' + lw.toFixed(1) + '" height="26" rx="8"/>' + txt(lx + lw / 2, ly + 18, lab, 'cl-bt') + '</g>');
+      // pass 2: no press-count bubble on the pen; the Presses readout above the stage already counts them
       if(!phone) g.push(txt(gR - 4, gB - 10, 'each hatch = a reward', 'cl-hint', 'end'));
       // the close-up panel
       var zx = phone ? bx + boxW + 10 : bx, zw = colW, zt = phone ? by : yy3 + 34, zb = phone ? by + boxH : gB;
@@ -475,7 +473,7 @@
     function closeUp(zx, zt, zw, zh, w0, w1, phone){
       var g = [], pad = phone ? 6 : 10, head = phone ? 18 : 22;
       g.push('<rect class="cl-zoom" x="' + zx.toFixed(1) + '" y="' + zt.toFixed(1) + '" width="' + zw.toFixed(1) + '" height="' + zh.toFixed(1) + '" rx="10"/>');
-      g.push('<text class="cl-zoomt" x="' + (zx + pad).toFixed(1) + '" y="' + (zt + head - 4).toFixed(1) + '">' + esc(phone ? 'Close-up, 2 min' : 'Close-up: minutes ' + M.round(w0 / 60, 1) + ' to ' + M.round(w1 / 60, 1)) + '</text>');
+      g.push('<text class="cl-zoomt" x="' + (zx + pad).toFixed(1) + '" y="' + (zt + head - 4).toFixed(1) + '">' + esc(phone ? 'Close-up, 2 min' : 'Close-up: the last 2 minutes') + '</text>');
       var x0 = zx + pad, x1 = zx + zw - pad, y0 = zt + head + 6, y1 = zt + zh - pad - (phone ? 2 : 14);
       if(!sess.cmax) sess.cmax = Math.max(10, Math.ceil(winMax(sess) * 1.04 / 5) * 5);
       var cm = sess.cmax;
@@ -484,7 +482,6 @@
       var upTo = Math.min(tNow, w1);
       g.push('<polyline class="cl-rec is-zoom" points="' + rec(sess, upTo, x, y, w0) + '"/>');
       g.push(hatches(sess, upTo, x, y, w0));
-      if(!phone) g.push(txt(x0, y1 + 13, M.round(w0 / 60, 1) + ' min', 'cl-tv', 'start'), txt(x1, y1 + 13, M.round(w1 / 60, 1) + ' min', 'cl-tv', 'end'));
       // name the schedule's mark where it shows
       var inW = sess.presses.filter(function(t){ return t > w0 && t <= upTo; }), cnt = function(t){ var c = 0; inW.forEach(function(p){ if(p <= t) c++; }); return c; };
       var rw = sess.rewards.filter(function(t){ return t > w0 && t <= upTo; });
@@ -521,17 +518,15 @@
       var phone = W < 560, g = [], o = CL.OPERANT[cq], ic = CQ_ICONS[o.b] || {}, L = phone ? 10 : 30, R = W - (phone ? 10 : 30);
       var stripT = phone ? 8 : 14, stripH = phone ? Math.min(206, H * 0.42) : Math.min(290, H * 0.47), gap = phone ? 14 : 34;
       var pw = (R - L - 2 * gap) / 3, ph = stripH, capH = phone ? 52 : 58, art = Math.min(pw * (phone ? 0.86 : 0.7), ph - capH - (phone ? 26 : 34));
-      var heads = phone ? ['Behavior', 'Then', 'Next time'] : ['1. The behavior', '2. What happens', '3. Next time'];
       var anim = cqAnim && !T.reduced();
       function wrap(t, maxW, size){ var out = [], ln = ''; String(t).split(' ').forEach(function(wd){ if(ln && tw(ln + ' ' + wd, size, 800) > maxW){ out.push(ln); ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) out.push(ln); return out; }
       function cap(cx, y, t, cls, size){ var ls = wrap(t, pw - 12, size).slice(0, 3); return ls.map(function(l, i){ return '<text class="' + cls + '" style="font-size:' + size + 'px" x="' + cx.toFixed(1) + '" y="' + (y + i * (size + 3)).toFixed(1) + '" text-anchor="middle">' + esc(l) + '</text>'; }).join(''); }
       for(var i = 0; i < 3; i++){
         var px = L + i * (pw + gap), cx = px + pw / 2;
         g.push('<rect class="cl-pan' + (i === 2 ? (o.up ? ' is-up' : ' is-down') : '') + '" x="' + px.toFixed(1) + '" y="' + stripT + '" width="' + pw.toFixed(1) + '" height="' + ph.toFixed(1) + '" rx="14"/>');
-        g.push(txt(cx, stripT + (phone ? 17 : 22), heads[i], 'cl-panh'));
         if(i < 2){ var ax = px + pw + 3, ay = stripT + ph * 0.45; g.push('<path class="cl-panar" d="M' + ax.toFixed(1) + ' ' + ay.toFixed(1) + ' h' + (gap - 10) + ' m-6 -6 l6 6 l-6 6"/>'); }
       }
-      var artY = stripT + (phone ? 28 : 38) + art / 2, capY = stripT + ph - capH + (phone ? 12 : 16), fs = phone ? 11.5 : 13.5;
+      var artY = stripT + (phone ? 16 : 24) + art / 2, capY = stripT + ph - capH + (phone ? 12 : 16), fs = phone ? 11.5 : 13.5;
       // 1: the behavior
       var c1 = L + pw / 2, sk1 = art / 118;
       g.push('<g transform="translate(' + c1.toFixed(1) + ' ' + artY.toFixed(1) + ') scale(' + sk1.toFixed(3) + ')">' + (ICON[ic.b] || ICON.none)() + '</g>');
@@ -553,14 +548,13 @@
       g.push('<path class="cl-farrow ' + (o.up ? 'is-up' : 'is-down') + '" d="M' + (bx3 + 4).toFixed(1) + ' ' + ay0.toFixed(1) + ' L' + (bx3 + bw3 - 4).toFixed(1) + ' ' + ay1.toFixed(1) + '"/>');
       var tipx = bx3 + bw3 - 4, ang = Math.atan2(ay1 - ay0, bw3 - 8), hx = function(d){ return (tipx + 11 * Math.cos(ang + d)).toFixed(1) + ' ' + (ay1 + 11 * Math.sin(ang + d)).toFixed(1); };
       g.push('<path class="cl-farrowh ' + (o.up ? 'is-up' : 'is-down') + '" d="M' + hx(Math.PI - 0.5) + ' L' + tipx.toFixed(1) + ' ' + ay1.toFixed(1) + ' L' + hx(Math.PI + 0.5) + '"/>');
-      g.push(txt(bx3 + bw3 / 2, bb + (phone ? 12 : 15), phone ? 'days after' : 'times a day, days after', 'cl-tv'));
       g.push(cap(c3, capY, o.up ? 'Does it more often' : 'Does it less often', 'cl-st1 ' + (o.up ? 'is-up' : 'is-down'), fs));
       // the 2 x 2 grid, the answer
       var T0 = stripT + ph + (phone ? 40 : 44), B = H - (phone ? 10 + ENL : 16);
       var lw = phone ? 30 : 110, gx = L + lw, gw = R - gx, gh = B - T0, cwq = gw / 2, chq = gh / 2;
       g.push(txt(gx + cwq / 2, T0 - 12, phone ? 'Behavior up' : 'Behavior increases', 'cl-axn'), txt(gx + cwq * 1.5, T0 - 12, phone ? 'Behavior down' : 'Behavior decreases', 'cl-axn'));
-      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 + 4) + ' ' + (T0 + chq / 2) + ') rotate(-90)" text-anchor="middle">' + (phone || chq < 150 ? 'Added' : 'Something added') + '</text>');
-      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 + 4) + ' ' + (T0 + chq * 1.5) + ') rotate(-90)" text-anchor="middle">' + (phone || chq < 150 ? 'Removed' : 'Something removed') + '</text>');
+      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 + 4) + ' ' + (T0 + chq / 2) + ') rotate(-90)" text-anchor="middle">' + 'Added' + '</text>');
+      g.push('<text class="cl-axn" transform="translate(' + (L + lw / 2 + 4) + ' ' + (T0 + chq * 1.5) + ') rotate(-90)" text-anchor="middle">' + 'Removed' + '</text>');
       var Q = [[true, true, 'Positive reinforcement', 'add a pleasant thing'], [true, false, 'Positive punishment', 'add an unpleasant thing'], [false, true, 'Negative reinforcement', 'remove an unpleasant thing'], [false, false, 'Negative punishment', 'remove a pleasant thing']];
       Q.forEach(function(q){
         var cx = gx + (q[1] ? 0 : cwq), cy = T0 + (q[0] ? 0 : chq), on = q[0] === o.add && q[1] === o.up;
@@ -568,8 +562,7 @@
         var nm = q[2].split(' '), small = chq < 74;
         if(small) g.push(txt(cx + cwq / 2, cy + chq / 2 - 3, nm[0], 'cl-qn is-sm' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + 13, nm[1], 'cl-qn is-sm' + (on ? ' is-on' : '')));
         else {
-          g.push(txt(cx + cwq / 2, cy + chq / 2 - 14, nm[0], 'cl-qn' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + 8, nm[1], 'cl-qn' + (on ? ' is-on' : '')));
-          if(!phone) g.push(txt(cx + cwq / 2, cy + chq / 2 + 30, q[3], 'cl-qd' + (on ? ' is-on' : '')));
+          g.push(txt(cx + cwq / 2, cy + chq / 2 - 4, nm[0], 'cl-qn' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + 18, nm[1], 'cl-qn' + (on ? ' is-on' : '')));
         }
         if(on) g.push('<circle class="cl-qdot" cx="' + (cx + cwq - 18).toFixed(1) + '" cy="' + (cy + 18).toFixed(1) + '" r="7"/>');
       });

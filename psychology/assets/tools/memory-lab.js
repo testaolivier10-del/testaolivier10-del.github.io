@@ -235,7 +235,7 @@
           LS.pills([{ k: 'Day 30', html: r0(d30()) + '% kept', tone: d30() >= 60 ? 'good' : d30() >= 40 ? 'warn' : 'bad' }], 'right', 'explore');
         } else {
           LS.pills([{ k: 'Recalling', html: wantOld ? 'older' : 'newer', tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ html: wantOld ? 'Retroactive' : 'Proactive', tone: 'accent' }], 'right', 'explore');
+          LS.pills([], 'right', 'explore'); // pass 2: the arrow's label names the kind
         }
       }
     }
@@ -345,7 +345,7 @@
       var v30 = d30(), v0 = ML.retention([], 30);
       g.push('<circle class="ml-f1-pt" cx="' + x(30).toFixed(1) + '" cy="' + y(v30).toFixed(1) + '" r="6"/>');
       var t30 = r0(v30) + '% on day 30', w30 = tw(t30, 14, 900) + 18, by = Math.max(T0 - 30, y(v30) - 44);
-      g.push('<g class="ml-bub"><rect x="' + (R - w30).toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + w30.toFixed(1) + '" height="28" rx="8"/>' + txt(R - w30 / 2, by + 19, t30, 'ml-bt') + '</g>');
+      // pass 2: the Day 30 readout above the stage carries this number; no second bubble on the curve
       if(Math.abs(v30 - v0) > 6) g.push(txt(R - 4, y(v0) - 8, 'no review: ' + r0(v0) + '%', 'ml-lab ml-c-f0', 'end'));
       if(reviews.length) g.push(txt(x(reviews[0]) + 6, T0 - 12, reviews.length === 1 ? 'review' : 'reviews', 'ml-lab ml-c-rv', 'start'));
       g.push(txt(L + 4, B + 56, phone ? 'Tap the day axis to add a review' : 'Tap the graph to add a review on that day; tap a review to remove it', 'ml-hint', 'start'));
@@ -369,12 +369,12 @@
       var lab = wantOld ? 'Retroactive: new blocks old' : 'Proactive: old blocks new', lw = tw(lab, phone ? 12.5 : 14, 900) + 22;
       // the timeline row
       var L = phone ? 10 : 40, R = W - (phone ? 10 : 40), gapC = phone ? 8 : 40, cw = Math.min(220, (R - L - 2 * gapC) / 3), ch = phone ? 74 : 104;
-      var step = (R - L - cw) / 2, ty = phone ? 70 : 100, ay = ty + ch + (phone ? 16 : 26), xs = [L, L + step, L + 2 * step];
-      g.push('<line class="ml-time" x1="' + L + '" x2="' + (R - 6) + '" y1="' + ay + '" y2="' + ay + '"/><path class="ml-timeh" d="M' + R + ' ' + ay + ' l-12 -6 v12 Z"/>' + (phone ? '' : txt(R - 4, ay + 20, 'time', 'ml-tv', 'end')));
-      xs.forEach(function(x, i){ g.push('<line class="ml-tstem" x1="' + (x + cw / 2).toFixed(1) + '" x2="' + (x + cw / 2).toFixed(1) + '" y1="' + (ty + ch) + '" y2="' + ay + '"/><circle class="ml-tdot' + (i === 2 ? ' is-test' : '') + '" cx="' + (x + cw / 2).toFixed(1) + '" cy="' + ay + '" r="' + (phone ? 5 : 6) + '"/>'); });
-      g.push(card(xs[0], ty, cw, ch, 'Learned first', s.old, phone ? '' : 'older memory', oldCls));
-      g.push(card(xs[1], ty, cw, ch, 'Learned second', s.nw, phone ? '' : 'newer memory', newCls));
-      g.push(card(xs[2], ty, cw, ch, phone ? 'Now: recall' : 'Now: trying to recall', want, phone ? '' : wantOld ? 'the older one' : 'the newer one', 'is-test'));
+      // pass 2: two cards (what was learned); "now" is a dot on the timeline, since the recall below is the now
+      var step = (R - L - cw) / 2, ty = phone ? 70 : 100, ay = ty + ch + (phone ? 16 : 26), xs = [L, L + step, R - 40 - cw / 2];
+      g.push('<line class="ml-time" x1="' + L + '" x2="' + (R - 6) + '" y1="' + ay + '" y2="' + ay + '"/><path class="ml-timeh" d="M' + R + ' ' + ay + ' l-12 -6 v12 Z"/>' + '');
+      xs.forEach(function(x, i){ g.push((i === 2 ? txt(x + cw / 2, ay - (phone ? 10 : 12), 'Now', 'ml-tck') : '<line class="ml-tstem" x1="' + (x + cw / 2).toFixed(1) + '" x2="' + (x + cw / 2).toFixed(1) + '" y1="' + (ty + ch) + '" y2="' + ay + '"/>') + '<circle class="ml-tdot' + (i === 2 ? ' is-test' : '') + '" cx="' + (x + cw / 2).toFixed(1) + '" cy="' + ay + '" r="' + (phone ? 5 : 6) + '"/>'); });
+      g.push(card(xs[0], ty, cw, ch, 'Learned first', s.old, '', oldCls));
+      g.push(card(xs[1], ty, cw, ch, 'Learned second', s.nw, '', newCls));
       var fromX = (wantOld ? xs[1] : xs[0]) + cw / 2, toX = (wantOld ? xs[0] : xs[1]) + cw / 2, topY = ty - 6, peak = topY - (phone ? 52 : 70);
       g.push('<path class="ml-arr" d="M' + fromX.toFixed(1) + ' ' + topY + ' C' + fromX.toFixed(1) + ' ' + peak + ' ' + toX.toFixed(1) + ' ' + peak + ' ' + toX.toFixed(1) + ' ' + (topY - 6) + '"/>');
       g.push('<path class="ml-arrh" d="M' + toX.toFixed(1) + ' ' + (topY + 2) + ' l-7 -13 h14 Z"/>');
@@ -383,6 +383,7 @@
       // the recall, going wrong
       var sT = ay + (phone ? 22 : 36), sB = H - (phone ? 12 + ENL : 18), sH = sB - sT;
       g.push('<rect class="ml-recbg" x="' + L + '" y="' + sT.toFixed(1) + '" width="' + (R - L) + '" height="' + sH.toFixed(1) + '" rx="16"/>');
+      g.push('<line class="ml-tstem" x1="' + (xs[2] + cw / 2).toFixed(1) + '" x2="' + (xs[2] + cw / 2).toFixed(1) + '" y1="' + ay + '" y2="' + sT.toFixed(1) + '"/>'); // the recall below happens now
       var ask = wantOld ? s.askOld : s.askNew;
       var askLines = (function(t, maxW, size){ var out = [], ln = ''; t.split(' ').forEach(function(wd){ if(ln && tw(ln + ' ' + wd, size, 800) > maxW){ out.push(ln); ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) out.push(ln); return out; })(ask + '.', R - L - 24, phone ? 12.5 : 14);
       askLines.slice(0, 2).forEach(function(t, i){ g.push(txt((L + R) / 2, sT + (phone ? 20 : 26) + i * (phone ? 16 : 18), t, 'ml-ask')); });
@@ -400,7 +401,6 @@
       g.push('<g class="ml-said"><path d="M' + (mouthX + 4).toFixed(1) + ' ' + mouthY.toFixed(1) + ' L' + (bx0 + 6).toFixed(1) + ' ' + (sayY + bH * 0.45).toFixed(1) + ' L' + (bx0 + 6).toFixed(1) + ' ' + (sayY + bH * 0.8).toFixed(1) + ' Z"/><rect x="' + bx0.toFixed(1) + '" y="' + sayY.toFixed(1) + '" width="' + bW.toFixed(1) + '" height="' + bH + '" rx="12"/></g>');
       g.push(txt(bx0 + 16, sayY + (phone ? 15 : 19), 'What comes out', 'ml-bk is-intr', 'start'));
       g.push('<g class="ml-intrw' + (anim ? ' is-anim' : '') + '" style="--dx:' + srcX.toFixed(1) + 'px;--dy:' + srcY.toFixed(1) + 'px">' + fit(bx0 + bW / 2 + 30, sayY + bH / 2 + (phone ? 11 : 14), intr, bW - 120, 'ml-bintr', phone ? 16 : 22) + '</g>');
-      g.push(txt(bx0 + bW - 12, sayY + bH + (phone ? 15 : 19), wantOld ? 'the newer memory got in' : 'the older memory got in', 'ml-bk is-intr', 'end'));
       var label = 'Timeline: ' + s.old + ' learned first, ' + s.nw + ' learned second, now trying to recall ' + want + '. An arrow from ' + (wantOld ? s.nw + ' back to ' + s.old : s.old + ' forward to ' + s.nw) + ': ' + (wantOld ? 'retroactive' : 'proactive') + ' interference. Below, a person ' + ask.charAt(0).toLowerCase() + ask.slice(1) + ' means to say ' + want + ', but ' + intr + ' comes out.';
       return { svg: g.join(''), label: label };
     }
