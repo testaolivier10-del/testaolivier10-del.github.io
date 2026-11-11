@@ -79,3 +79,4 @@
 :root[data-theme="dark"] .dl-sea{fill:#17324A;stroke:#1F4160;}
 :root[data-theme="dark"] .dl-river{stroke:#3F7FB0;}
 :root[data-theme="dark"] .dl-lake{fill:#1F4160;stroke:#3F7FB0;}
+.dl-legend .dl-steps{gap:3px;} .dl-legend .dl-steps .dl-sw:last-of-type{margin-right:4px;}

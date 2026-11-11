@@ -98,11 +98,13 @@
   function stepLegend(last, o){
     o = o || {};
     var items = [];
-    for(var s = 1; s <= last; s++) items.push('<li><span class="dl-sw dl-s' + s + '" aria-hidden="true"></span>Step ' + s + (s === 1 ? ' (hearth)' : '') + '</li>');
+    // Second pass (2026-11-10): the steps are one legend item (a row of shades), and the place sizes another.
+    var sw = ''; for(var s = 1; s <= last; s++) sw += '<span class="dl-sw dl-s' + s + '" aria-hidden="true"></span>';
+    items.push('<li class="dl-steps">' + sw + (last > 1 ? 'Reached at step 1 (hearth) to ' + last : 'The hearth') + '</li>');
     items.push('<li><span class="dl-sw dl-off" aria-hidden="true"></span>Not yet</li>');
     if(o.changed) items.push('<li><span class="dl-sw dl-diam" aria-hidden="true"></span>Took the idea, changed it</li>');
     if(o.arrows) items.push('<li><span class="dl-sw dl-ln" aria-hidden="true"></span>People moving</li>');
-    return '<ul class="dl-legend" aria-label="Legend">' + items.join('') + '<li class="dl-sizes"><span class="dl-sz r1" aria-hidden="true"></span>Capital <span class="dl-sz r2" aria-hidden="true"></span>Large city <span class="dl-sz r3" aria-hidden="true"></span>Town <span class="dl-sz r4" aria-hidden="true"></span>Village</li></ul>';
+    return '<ul class="dl-legend" aria-label="Legend">' + items.join('') + '<li class="dl-sizes"><span class="dl-sz r1" aria-hidden="true"></span><span class="dl-sz r2" aria-hidden="true"></span><span class="dl-sz r3" aria-hidden="true"></span><span class="dl-sz r4" aria-hidden="true"></span>Capital, city, town, village</li></ul>';
   }
 
   /* A spread on the map, shown up to step `upto`. */
