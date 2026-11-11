@@ -115,3 +115,25 @@
 /* wide: the map's stops keep their own size, centered as one strip */
 .ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row{justify-content:center;}
 .ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row .pc-st.is-g,.ls-root:not(.ls-phone) .ls-stage:not(.is-big) .pc-row .pc-st.is-g.is-now{flex:0 0 auto;min-width:96px;align-items:center;}
+
+/* Pass 3: numbered dots replace the thumbnail strip on the stage (Enlarge still shows every station) */
+.pc-dots{display:none;list-style:none;margin:0 auto;padding:0;gap:0;align-items:center;justify-content:center;}
+.ls-stage:not(.is-big) .pc-row{display:none;}
+.ls-stage:not(.is-big) .pc-dots{display:flex;}
+.pc-dot{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);background:var(--white);font:800 12.5px var(--font-ui);color:var(--muted);position:relative;}
+.pc-dot + .pc-dot{margin-left:22px;}
+.pc-dot + .pc-dot::before{content:"";position:absolute;right:100%;top:50%;width:22px;height:2px;margin-right:1.5px;background:var(--line);}
+.pc-dot.is-done{background:var(--cink);border-color:var(--cink);color:var(--white);}
+.pc-dot.is-done + .pc-dot::before,.pc-dot.is-done + .pc-dot.is-now::before{background:var(--cink);}
+.pc-dot.is-now{width:32px;height:32px;border-color:var(--cink);color:var(--cink);box-shadow:0 0 0 3px color-mix(in srgb,var(--cink) 18%,transparent);font-size:14px;}
+.pc-dot.is-miss{border-color:#B3261E;}
+.pc-fams{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.pc-fam-l{font:800 13px var(--font-ui);flex:0 0 100%;}
+.pc-fsel{flex:1 1 100%;min-width:0;min-height:44px;max-width:100%;}
+/* phone: keep the dots, the graph and the link lines inside the stage */
+.ls-phone .ls-stage:not(.is-big) .pc-focus .pc-sl:not(.is-now){display:none;}
+.ls-phone .ls-stage:not(.is-big) .pc-title{display:none;}
+.ls-phone .ls-stage:not(.is-big) .pc-dot{width:24px;height:24px;font-size:11.5px;}
+.ls-phone .ls-stage:not(.is-big) .pc-dot.is-now{width:28px;height:28px;}
+.ls-phone .ls-stage:not(.is-big) .pc-dot + .pc-dot{margin-left:16px;}
+.ls-phone .ls-stage:not(.is-big) .pc-dot + .pc-dot::before{width:16px;}

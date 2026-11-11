@@ -50,46 +50,7 @@
     return { el: el, set: set };
   }
   function f1(v){ return Math.round(v * 10) / 10; }
-  /* Signed bars with a zero line: cols [{ label, parts: [{ v, cls }], dot?, note? }].
-     Drawn at the box's pixel size so the text stays readable at 360 px. */
-  function bars(box, cols, o){
-    var w = Math.max(280, box.clientWidth || 560), h = Math.max(170, Math.min(520, box.clientHeight || 260));
-    var L = 46, R = 10, Tp = 28, B = 34, pw, ph;
-    var hi = 0, lo = 0;
-    cols.forEach(function(c){ var pos = 0, neg = 0; c.parts.forEach(function(p){ if(p.v > 0) pos += p.v; else neg += p.v; }); if(c.outline != null){ pos = Math.max(pos, c.outline); neg = Math.min(neg, c.outline); } hi = Math.max(hi, pos); lo = Math.min(lo, neg); });
-    if(o.scale){ if(hi > 0 || lo === 0) hi = Math.max(hi, o.scale); else lo = Math.min(lo, -o.scale); }
-    if(hi === 0 && lo === 0) hi = 1;
-    // Room on the left for the longest axis number ($10,000 was cut off at 46 px), and under the axis name for the top one.
-    L = Math.max(L, 14 + 7.6 * Math.max(String(o.fmt(hi)).length, lo < 0 ? String(o.fmt(lo)).length : 0));
-    // Bars that go down: room under the longest one for its number, above the column names.
-    pw = w - L - R; ph = h - Tp - B - (lo < 0 ? 16 : 0);
-    var span = hi - lo, sy = function(v){ return Tp + (hi - v) / span * ph; }, cw = pw / cols.length, bw = Math.min(46, cw * 0.62);
-    // Narrow: value labels only where they fit (the first and the strong columns).
-    var tight = cw < 44;
-    var g = ['<line class="ml-zero" x1="' + L + '" x2="' + (w - R) + '" y1="' + f1(sy(0)) + '" y2="' + f1(sy(0)) + '"/>'];
-    if(hi > 0) g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(hi) + 4) + '" text-anchor="end">' + esc(o.fmt(hi)) + '</text>');
-    if(lo < 0) g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(lo) + 4) + '" text-anchor="end">' + esc(o.fmt(lo)) + '</text>');
-    g.push('<text class="ml-ax" x="' + (L - 6) + '" y="' + f1(sy(0) + 4) + '" text-anchor="end">0</text>');
-    cols.forEach(function(c, i){
-      var cx = L + cw * (i + 0.5), x = cx - bw / 2, up = 0, dn = 0;
-      if(c.outline != null){ var oy = Math.min(sy(0), sy(c.outline)), oh = Math.abs(sy(c.outline) - sy(0)); g.push('<rect class="ml-outline" x="' + f1(x - 3) + '" y="' + f1(oy) + '" width="' + f1(bw + 6) + '" height="' + f1(Math.max(1, oh)) + '" rx="4"/>'); }
-      c.parts.forEach(function(p){
-        if(!p.v) return;
-        var y0 = p.v > 0 ? up : dn, y1 = y0 + p.v;
-        if(p.v > 0) up = y1; else dn = y1;
-        var top = Math.min(sy(y0), sy(y1)), hh = Math.max(0.5, Math.abs(sy(y1) - sy(y0)));
-        g.push('<rect class="ml-bar ' + (p.cls || '') + '" x="' + f1(x) + '" y="' + f1(top) + '" width="' + f1(bw) + '" height="' + f1(hh) + '" rx="3"' + (p.op != null ? ' style="opacity:' + p.op + '"' : '') + '/>');
-      });
-      var labV = c.value != null ? c.value : up + dn, labY = labV >= 0 ? sy(Math.max(up, c.outline || 0)) - 6 : sy(Math.min(dn, c.outline || 0)) + 14;
-      if(c.q) g.push('<text class="ml-val is-strong ml-q" x="' + f1(cx) + '" y="' + f1(sy(0) - 8) + '" text-anchor="middle">?</text>');
-      else if(c.show !== false && (!tight || i === 0 || c.strong)) g.push('<text class="ml-val' + (c.strong ? ' is-strong' : '') + '" x="' + f1(cx) + '" y="' + f1(labY) + '" text-anchor="middle">' + esc(o.fmt(labV)) + '</text>');
-      if(c.dot != null) g.push('<circle class="ml-dot" cx="' + f1(cx) + '" cy="' + f1(sy(c.dot)) + '" r="4.5"/>');
-      g.push('<text class="ml-xl' + (c.strong ? ' is-strong' : '') + '" x="' + f1(cx) + '" y="' + (h - B + 16) + '" text-anchor="middle">' + esc(tight && c.short != null ? c.short : c.label) + '</text>');
-    });
-    g.push('<text class="ml-axname" x="' + f1(L + pw / 2) + '" y="' + (h - 4) + '" text-anchor="middle">' + esc(o.xName) + '</text>');
-    g.push('<text class="ml-axname" x="4" y="13">' + esc(o.yName) + '</text>');
-    box.innerHTML = '<svg class="ml-bars" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" role="img" aria-label="' + esc(o.label) + '">' + g.join('') + '</svg>';
-  }
+
 
   /* The multiplier as money passing hand to hand. Each row is one round of
      income; the spent part (MPC) drops straight down to become the next
@@ -104,7 +65,7 @@
     var xa = o.x + labW, W = o.w - labW - gapW - tankW, xt = o.x + o.w - tankW;
     var head = 34, foot = 6, rowsN = o.rows, avail = o.h - head - foot, rh = Math.max(16, Math.min(40, avail / (rowsN + 0.9) * 0.62)), gap = (avail - rh * rowsN) / Math.max(1, rowsN);
     gap = Math.max(8, Math.min(gap, 22));
-    var g = [], fm = function(v){ return sgn + '$' + n(Math.round(v * 10) / 10); };
+    var dq = Math.pow(10, o.dp == null ? 1 : o.dp), g = [], fm = function(v){ return sgn + '$' + n(Math.round(v * dq) / dq); };
     g.push('<text class="ml-ch" x="' + o.x + '" y="' + (o.y + 13) + '">' + esc(o.w < 560 && o.short ? o.short : o.title) + '</text>');
     g.push('<text class="ml-cs" x="' + f1(xa) + '" y="' + (o.y + 28) + '"><tspan class="ml-k-sp">■</tspan> ' + (o.sign < 0 ? 'spending lost, passed on' : 'spent, passed on') + '  <tspan class="ml-k-sv">■</tspan> ' + (o.sign < 0 ? 'saving lost' : 'saved, leaks out') + (o.tax && o.w >= 520 ? '  <tspan class="ml-k-tx">dashed: disposable income, not spending yet</tspan>' : '') + '</text>');
     var savedSoFar = 0, inc = inj, y = o.y + head, rowsSvg = [], tankSegs = [];
@@ -154,7 +115,8 @@
     r.push('<rect class="ml-bk-base ' + cls + '" x="' + f1(x) + '" y="' + f1(y + h * 0.86) + '" width="' + f1(w) + '" height="' + f1(h * 0.14) + '"/>');
     return r.join('');
   }
-  function banksSvg(box, m, scn, rr, X){
+  function banksSvg(box, m, scn, rr, X, hide){
+    hide = hide || {};   // drills: { ex: true } hides the amounts kept and lent, { dm: true } the total, until they are found
     var w = Math.max(300, box.clientWidth || 600), h = Math.max(190, Math.min(420, box.clientHeight || 260));
     var nb = w >= 720 ? 5 : w >= 480 ? 4 : 3, neg = m.ex < 0, sg = neg ? '−' : '';
     var slot = (w - 60) / nb, bw = Math.min(64, slot * 0.42), top = 4, iconH = bw * 0.62, labY = top + iconH + 14;
@@ -174,10 +136,10 @@
       if(hk > 0.5) g.push('<rect class="ml-keep" x="' + f1(x) + '" y="' + f1(vBot - hk) + '" width="' + f1(bw) + '" height="' + f1(hk) + '" rx="3"/>');
       g.push('<rect class="ml-lend' + (neg ? ' is-neg' : '') + '" x="' + f1(x) + '" y="' + f1(y0) + '" width="' + f1(bw) + '" height="' + f1(Math.max(1, hl)) + '" rx="3"/>');
       var top1 = k === 0 && scn === 'buyBank' ? '+' + fm(X) + ' reserves' : k === 0 && scn === 'sellBank' ? '−$' + n(X) + ' reserves' : (k === 0 && scn === 'cash' ? 'cash ' : '') + 'deposit ' + fm(dep);
-      if(k < 2) g.push('<text class="ml-bk-v" x="' + f1(cx) + '" y="' + f1(y0 - 5) + '" text-anchor="middle">' + top1 + '</text>');
+      if(k < 2 && !(hide.ex && k > 0)) g.push('<text class="ml-bk-v" x="' + f1(cx) + '" y="' + f1(y0 - 5) + '" text-anchor="middle">' + top1 + '</text>');
       // pass 2: the split written on the first bank that keeps and lends; the next banks repeat it smaller
-      if(k < 2 && hk > 13 && !narrow) g.push('<text class="ml-bk-in" x="' + f1(cx) + '" y="' + f1(vBot - hk / 2 + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'keeps ' : '') + fm(keep) + '</text>');
-      if(k < 2 && hl > 13 && !narrow) g.push('<text class="ml-bk-in is-l' + (neg ? ' is-neg' : '') + '" x="' + f1(cx) + '" y="' + f1(y0 + Math.min(hl / 2, 18) + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'lends ' : '') + fm(lend) + '</text>');
+      if(k < 2 && hk > 13 && !narrow && !hide.ex) g.push('<text class="ml-bk-in" x="' + f1(cx) + '" y="' + f1(vBot - hk / 2 + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'keeps ' : '') + fm(keep) + '</text>');
+      if(k < 2 && hl > 13 && !narrow && !hide.ex) g.push('<text class="ml-bk-in is-l' + (neg ? ' is-neg' : '') + '" x="' + f1(cx) + '" y="' + f1(y0 + Math.min(hl / 2, 18) + 4) + '" text-anchor="middle">' + (bw >= 70 && !neg ? 'lends ' : '') + fm(lend) + '</text>');
       // the loan travels to the next bank as its deposit
       if(k < nb - 1){
         var nx = cx + slot - bw / 2, ly = y0 + Math.min(hl / 2, 18), ny = vBot - vH * Math.abs(m.rounds[k]) / big;
@@ -189,7 +151,8 @@
     g.push('<text class="ml-bk-more" x="' + f1(w - 10) + '" y="' + f1(vBot - 8) + '" text-anchor="end">… more banks</text>');
     g.push('<text class="ml-bk-key" x="8" y="' + f1(vBot + 16) + '"><tspan class="ml-k-keep">■</tspan> ' + (narrow ? 'kept (' + n(rr * 100) + '%)' : 'kept as required reserves (' + n(rr * 100) + '%)') + '   <tspan class="ml-k-lend">■</tspan> ' + (neg ? 'lending cut' : narrow ? 'lent, then redeposited' : 'lent, spent, and deposited at the next bank') + '   ($ million)</text>');
     var tY = h - 30, tX = 8, tW = w - 16, shown = m.now + m.rounds.slice(0, nb).reduce(function(a, v){ return a + v; }, 0), sc = Math.abs(m.dm) || 1;
-    g.push('<text class="ml-tot-h" x="' + tX + '" y="' + f1(tY - 6) + '">' + (narrow ? 'New money so far: ' : 'New money from these ' + nb + ' banks: ') + sg + '$' + n(Math.round(Math.abs(shown))) + ' of up to ' + sg + '$' + n(Math.abs(m.dm)) + (scn === 'cash' && !narrow ? ' (the cash deposit itself is not new money)' : '') + '</text>');
+    if(hide.dm) g.push('<text class="ml-tot-h" x="' + tX + '" y="' + f1(tY - 6) + '">New money: up to ?</text>');
+    else g.push('<text class="ml-tot-h" x="' + tX + '" y="' + f1(tY - 6) + '">' + (narrow ? 'New money so far: ' : 'New money from these ' + nb + ' banks: ') + sg + '$' + n(Math.round(Math.abs(shown))) + ' of up to ' + sg + '$' + n(Math.abs(m.dm)) + (scn === 'cash' && !narrow ? ' (the cash deposit itself is not new money)' : '') + '</text>');
     g.push('<rect class="ml-tot-o" x="' + tX + '" y="' + f1(tY) + '" width="' + f1(tW) + '" height="14" rx="7"/>');
     var off = 0;
     if(m.now){ var wn = tW * Math.abs(m.now) / sc; g.push('<rect class="ml-tot-now" x="' + f1(tX) + '" y="' + f1(tY) + '" width="' + f1(wn) + '" height="14" rx="7"/>'); off = wn; }
@@ -450,21 +413,26 @@
       fig.innerHTML = '<table class="ml-t"><caption>Bank 1: what changes</caption><thead><tr><th scope="col">Assets</th><th scope="col">Liabilities</th></tr></thead><tbody><tr><td>' +
         '<span>Required reserves</span><b>' + (showEx ? usd(m.req) : '?') + '</b><span>Excess reserves</span><b class="is-ex">' + (showEx ? usd(m.ex) : '?') + '</b>' + (bonds ? '<span>Bonds</span><b>' + usd(bonds) + '</b>' : '') + '</td><td><span>Checking deposits</span><b>' + usd(m.deposit) + '</b></td></tr></tbody></table>' +
         '<div class="ml-qbars"></div>';
-      var cols = m.rounds.map(function(x, i){ return { label: 'Bank ' + (i + 1), short: String(i + 1), parts: showEx ? [{ v: x, cls: 'is-g' }] : [], show: showEx }; });
-      if(m.now) cols.unshift({ label: 'Deposit', short: 'D', parts: [{ v: m.now, cls: 'is-now' }] });
-      cols.push(showDm ? { label: 'Total', strong: true, parts: (m.now ? [{ v: m.now, cls: 'is-now' }] : []).concat(m.rounds.map(function(x, i){ return { v: x, cls: 'is-sum', op: Math.max(0.35, 1 - i * 0.08) }; })), outline: m.dm, value: m.dm } : { label: 'Total', strong: true, parts: [], q: true });
-      bars(fig.querySelector('.ml-qbars'), cols, { fmt: function(x){ return usd(Math.round(x)); }, xName: 'Loans, bank by bank', yName: 'New money ($ million)',
-        label: showDm ? 'Loan rounds adding up to ' + usd(m.dm, 'million') + '.' : 'Loan rounds, to be found.', scale: showEx ? null : Math.abs(v.X / v.rr) });
+      // Pass 3: the same banks as Explore (the old bar chart is gone); amounts appear as they are found.
+      var qb = fig.querySelector('.ml-qbars');
+      qb.innerHTML = banksSvg(qb, m, v.scn, v.rr, v.X, { ex: !showEx, dm: !showDm });
       return;
     }
     // multiplier and total: the spending rounds
     var kind = p.type === 'total' ? (v.tool === 'T' ? 'T' : 'G') : 'G', amt = p.type === 'total' ? v.change : 1;
     var R = ML.ripple(kind, v.mpc, amt, 8), shown = p.type === 'total' ? !!done.dy : !!done.k;
-    var cols2 = R.rounds.map(function(rd, i){ return { label: String(i + 1), parts: [{ v: rd.net, cls: kind === 'T' ? 'is-t' : 'is-g' }] }; });
-    cols2.push({ label: '…', parts: [], show: false });
-    cols2.push(shown ? { label: 'Total', strong: true, parts: R.rounds.map(function(rd, i){ return { v: rd.net, cls: 'is-sum', op: Math.max(0.35, 1 - i * 0.08) }; }), outline: R.total, value: R.total } : { label: 'Total', strong: true, parts: [], q: true });
-    fig.innerHTML = '<p class="ml-qcap">' + (p.type === 'total' ? 'The rounds of spending from this change' : 'One extra dollar of spending, round by round') + '</p><div class="ml-qbars"></div>';
-    bars(fig.querySelector('.ml-qbars'), cols2, { fmt: function(x){ return p.type === 'total' ? usd(Math.round(x * 10) / 10) : '$' + n(x); }, xName: 'Round of spending', yName: p.type === 'total' ? 'Change in spending ($ billion)' : 'Dollars',
-      label: 'Spending rounds: each is ' + n(v.mpc) + ' of the one before' + (shown ? ', adding up to ' + (p.type === 'total' ? usd(R.total, 'billion') : '$' + n(R.total)) + '.' : '; the total is to be found.'), scale: shown ? null : Math.abs(R.total) });
+    // Pass 3: the same spending rounds as Explore (spent falls to the next round, saved leaks to the tank).
+    fig.innerHTML = '<div class="ml-qbars ml-qcasc"></div>';
+    var qb2 = fig.querySelector('.ml-qcasc'), bw = Math.max(300, qb2.clientWidth || 600), bh = Math.max(220, Math.min(460, qb2.clientHeight || 300));
+    var sg = kind === 'T' ? (amt > 0 ? -1 : 1) : (amt > 0 ? 1 : -1), inj = Math.abs(amt), tot = p.type === 'total' ? usd(Math.abs(R.total)) + ' billion' : '$' + n(Math.abs(R.total));
+    var ttl = p.type === 'total'
+      ? (kind === 'T' ? (amt < 0 ? 'A tax cut of ' : 'A tax rise of ') : (amt > 0 ? 'Spending rises ' : 'Spending falls ')) + usd(inj) + ' billion' + (shown ? ': real GDP ' + (R.total > 0 ? 'up ' : 'down ') + tot : ', round by round')
+      : 'One extra dollar of spending' + (shown ? ': $1 becomes ' + tot : ', round by round');
+    var sttl = p.type === 'total' ? (kind === 'T' ? (amt < 0 ? 'Tax cut ' : 'Tax rise ') : (amt > 0 ? 'Spending up ' : 'Spending down ')) + usd(inj) + 'B' + (shown ? ': GDP ' + (R.total > 0 ? '+' : '−') + usd(Math.abs(R.total)) + 'B' : '')
+      : (shown ? '$1 becomes ' + tot : '$1 of new spending');
+    qb2.innerHTML = '<svg class="ml-casc" viewBox="0 0 ' + bw + ' ' + bh + '" width="' + bw + '" height="' + bh + '" role="img" aria-label="' + esc('Spending rounds: each is ' + n(v.mpc) + ' of the one before' + (shown ? ', adding up to ' + tot + '.' : '; the total is to be found.')) + '">' +
+      cascade({ id: 'mlq', x: 4, y: 2, w: bw - 8, h: bh - 4, inj: inj, mpc: v.mpc, tax: kind === 'T', sign: sg, rows: (bh < 300 ? 5 : 6) + (kind === 'T' ? 1 : 0), title: ttl, short: sttl, dp: 2 }) + '</svg>';
+    if(reduced() || fig.done.painted) qb2.querySelector('svg').classList.add('is-still');
+    fig.done.painted = 1;
   }
 })();

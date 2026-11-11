@@ -75,10 +75,14 @@
     // The main control: on a phone the studio keeps it on screen (it sat under the fold, with the curve scrolled away once reached).
     xSl.el.setAttribute('data-ls-primary', '');
     groups.ppc.appendChild(xSl.el);
+    // Pass 3: two events in view (one shift, one move inside), the rest and Start over behind More.
+    var FIRST_EV = { tech: 1, recession: 1 };
     var evBox = document.createElement('div');
-    evBox.innerHTML = '<p class="pt-lbl">What happens</p><div class="pt-events">' + PT.PPC_EVENTS.map(function(e){ return '<button type="button" class="bt-btn pt-ev" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '<button type="button" class="bt-btn pt-ev" data-ev="reset">Start over</button></div>';
+    evBox.innerHTML = '<p class="pt-lbl">What happens</p><div class="pt-events">' + PT.PPC_EVENTS.map(function(e){ return '<button type="button" class="bt-btn pt-ev' + (FIRST_EV[e.id] ? '' : ' is-more') + '" data-ev="' + e.id + '">' + esc(e.name) + '</button>'; }).join('') + '<button type="button" class="bt-btn pt-ev is-more" data-ev="reset">Start over</button><button type="button" class="bt-btn pt-evmore" aria-expanded="false">More</button></div>';
     groups.ppc.appendChild(evBox);
     evBox.addEventListener('click', function(e){
+      var mb = e.target.closest('.pt-evmore');
+      if(mb){ var bx = mb.parentNode, open = !bx.classList.contains('is-open'); bx.classList.toggle('is-open', open); mb.setAttribute('aria-expanded', String(open)); mb.textContent = open ? 'Fewer' : 'More'; return; }
       var b = e.target.closest('[data-ev]'); if(!b) return;
       touch();
       var id = b.getAttribute('data-ev');
@@ -129,9 +133,27 @@
         touch(); update(true);
       });
       var onCurve = !st.free && st.eff === 1, cost = x < r ? PT.marginal(x, st.shift) : null;
-      figs.ppc.querySelector('.pt-read').innerHTML = '<span class="pt-chip is-' + reg + '">' + (reg === 'on' ? 'On the PPC' : reg === 'inside' ? 'Inside the PPC' : 'Outside the PPC') + '</span>' +
-        '<span class="pt-chip">' + Math.round(pt[0] * 10) + ' robots, ' + Math.round(pt[1] * 10) + ' pizzas</span>' +
-        (onCurve && cost != null ? '<span class="pt-chip is-cost">Next 10 robots cost ' + n(Math.round(cost * 10) / 10, 1) + ' pizzas</span>' : '');
+      // Pass 3: the readout sits beside the point, inside the curve (the pills under the graph were far from it);
+      // on or off the curve is said by the caption.
+      figs.ppc.querySelector('.pt-read').innerHTML = '';
+      var qx = GF.L + pt[0] / 10 * GF.PW, qy = GF.T + GF.PH - pt[1] / 10 * GF.PH;
+      var l1 = Math.round(pt[0] * 10) + ' robots, ' + Math.round(pt[1] * 10) + ' pizzas', l2 = onCurve && cost != null ? 'next 10 robots cost ' + n(Math.round(cost * 10) / 10, 1) + ' pizzas' : '';
+      svg.insertAdjacentHTML('beforeend', '<g class="pt-ptread" aria-hidden="true"><text>' + l1 + '</text>' + (l2 ? '<text class="is-cost">' + l2 + '</text>' : '') + '</g>');
+      var tEls = svg.querySelectorAll('.pt-ptread text'), tw = 0;
+      tEls.forEach(function(t){ try{ tw = Math.max(tw, t.getComputedTextLength()); }catch(e){} });
+      if(!tw) tw = Math.max(l1.length, l2.length) * 5.6;
+      var yMax = GF.T + GF.PH - (l2 ? 20 : 6), y1, tx = null;
+      // the curve's x at a height, to keep the words off the line: inside it from the axis, as near the point as fits; else just outside it
+      function curveX(y){ var v = (GF.T + GF.PH - y) / GF.PH * 10, k = 0; for(var q = 0; q <= 10; q += 0.05){ var c = PT.ppcAt(q, 1, st.shift); if(c && c[1] >= v) k = q; else break; } return GF.L + k / 10 * GF.PW; }
+      function lowX(y){ return Math.min(curveX(y - 9), curveX(l2 ? y + 14 : y)); }
+      for(var dy = 22; dy <= 130 && tx === null; dy += 12){
+        y1 = Math.min(yMax, qy + dy);
+        var cIn = lowX(y1);
+        if(st.free || GF.L + 6 + tw < cIn - 6) tx = Math.max(GF.L + 6, Math.min(qx - tw / 2, cIn - 6 - tw));
+        if(y1 === yMax) break;
+      }
+      if(tx === null){ y1 = Math.min(yMax, qy + 22); var cOut = Math.max(curveX(y1 - 9), curveX(l2 ? y1 + 14 : y1)); tx = cOut + 8 + tw < GF.W - 2 ? cOut + 8 : GF.L + 6; }
+      tEls.forEach(function(t, i){ t.setAttribute('x', f1(tx)); t.setAttribute('y', f1(y1 + i * 14)); });
       var head = st.evSay && !st.free ? st.evSay : RWHY[reg].replace(/<[^>]+>/g, '');
       var c1 = PT.marginal(1, st.shift), c5 = PT.marginal(Math.min(5, r - 1), st.shift);
       var body = '<p>' + RWHY[reg] + '</p>' +

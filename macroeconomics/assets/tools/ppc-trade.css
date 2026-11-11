@@ -108,3 +108,16 @@
 .pt-two.is-narrow .pt-ship.to-b::before{content:"\2193";}
 .pt-two.is-narrow .pt-ship.to-a::before{content:"\2191";}
 .pt-csvg .pt-plab{stroke-width:4px;}
+
+/* Pass 3: the point's readout beside the point; events past the first two behind More */
+.pt-ptread text{font:700 10.5px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.pt-ptread text.is-cost{font-weight:600;fill:var(--muted);}
+.pt-read:empty{display:none;}
+.pt-ev.is-more{display:none;}
+.pt-events.is-open .pt-ev.is-more{display:inline-flex;}
+.pt-evmore{min-height:44px;border-style:dashed;color:var(--muted);}
+/* phone: every event in one scrolling row (as in the indicators lab), no More */
+.ls-phone .pt-events{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px;}
+.ls-phone .pt-ev{flex:none;white-space:nowrap;}
+.ls-phone .pt-ev.is-more{display:inline-flex;}
+.ls-phone .pt-evmore{display:none;}

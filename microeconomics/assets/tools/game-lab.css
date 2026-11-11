@@ -91,3 +91,9 @@
 .gl-show-l{margin:6px 0 -2px;font:700 12.5px var(--font-ui);color:var(--muted);}
 /* The first-run halo rings one cell, square like the cell (pass 2: a pill-shaped ring round the whole matrix cut through its labels). */
 .ls-halo{border-radius:16px !important;}
+
+/* Pass 3: Beta Jet in teal with no underline (blue and underlined, its payoffs and headers read as links).
+   Order still tells the players apart without colour: Alpha Air first, Beta Jet second, as the caption says. */
+.gl-fig,.gl-qfig{--gl-b:#0E7268;}
+:root[data-theme="dark"] .gl-fig,:root[data-theme="dark"] .gl-qfig{--gl-b:#5FCDBE;}
+.gl-mx .mic-mx-b,.gl-mx .mic-mx-st.is-b,.gl-mx .mic-mx-pl.is-b{text-decoration:none;}

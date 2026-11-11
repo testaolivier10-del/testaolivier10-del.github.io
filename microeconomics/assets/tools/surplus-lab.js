@@ -98,7 +98,7 @@
     function buildSlider(){
       slot.innerHTML = '';
       var P = POL[st.t];
-      if(!P.set){ slot.innerHTML = '<p class="bt-small sl-none">No policy: the market clears where demand meets supply. Pick a policy to change it.</p>'; slider = null; return; }
+      if(!P.set){ slider = null; return; }   // pass 3: no line here, the caption already says what no policy means
       if(P.index){
         var idx = P.index.indexOf(st.v[st.t]);
         slider = T.slider({ id: 'sl-level', label: P.set, min: 0, max: P.index.length - 1, step: 1, value: idx < 0 ? 0 : idx, decimals: 0, onInput: function(i){ setLevel(P.index[Math.round(i)]); } });
@@ -138,8 +138,10 @@
       gEl.classList.toggle('sl-noletters', !st.letters);
       var chips = chipsFor(st.t, v);
       vals.innerHTML = chips.map(function(c){
-        var name = c[0] === 'rev' ? revName(st.t) : AREA[c[0]], on = st.focus === c[0];
-        return '<button type="button" class="sl-val sl-v-' + c[0] + (on ? ' is-on' : '') + (st.focus && !on ? ' is-dim' : '') + '" data-a="' + c[0] + '" aria-pressed="' + on + '"><span class="sl-sw" aria-hidden="true"></span><span class="sl-vn">' + esc(name) + '</span><b class="sl-vv">' + money(c[1]) + '</b></button>';
+        // Pass 3: with a policy on, the two areas it creates (revenue or cost, deadweight loss, or the gain from trade) carry
+        // their dollars; consumer and producer surplus show their dollars when tapped (Details has every area, before and now).
+        var name = c[0] === 'rev' ? revName(st.t) : AREA[c[0]], on = st.focus === c[0], val = st.t === 'none' || on || (c[0] !== 'cs' && c[0] !== 'ps');
+        return '<button type="button" class="sl-val sl-v-' + c[0] + (on ? ' is-on' : '') + (st.focus && !on ? ' is-dim' : '') + '" data-a="' + c[0] + '" aria-pressed="' + on + '"><span class="sl-sw" aria-hidden="true"></span><span class="sl-vn">' + esc(name) + '</span>' + (val ? '<b class="sl-vv">' + money(c[1]) + '</b>' : '<span class="sr-only"> ' + money(c[1]) + '</span>') + '</button>';
       }).join(''); // (pass 2: total surplus, before and after, is in Details)
       [].slice.call(host.querySelectorAll('.sl-pol')).concat(LS ? [].slice.call(LS.root.querySelectorAll('.sl-pol')) : []).forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-p') === st.t)); b.classList.toggle('on', b.getAttribute('data-p') === st.t); });
       return v;
