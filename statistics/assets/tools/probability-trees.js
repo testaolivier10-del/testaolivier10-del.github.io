@@ -189,7 +189,10 @@
       draw();
     }
     function ask(k){ if(!PT.QS[k]) return; q = k; draw(); var narrow = !$('.pt-fig').classList.contains('is-wide'); if(narrow && view === 'sim' && !outs.length) setView('tree'); }
-    function setView(v){ view = v; $$('.pt-tabs button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); }); $$('.pt-view').forEach(function(el){ el.classList.toggle('is-on', el.getAttribute('data-v') === v); }); if(v === 'sim') drawSim(); }
+    function setView(v){ view = v; $$('.pt-tabs button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); }); $$('.pt-view').forEach(function(el){ el.classList.toggle('is-on', el.getAttribute('data-v') === v); });
+      // pass 3: Simulate 100 / 1,000 belong to the Simulation view, so they show there and not beside the tree
+      $$('.pt-btns').forEach(function(el){ el.hidden = v !== 'sim'; });
+      if(v === 'sim') drawSim(); }
     function formula(){
       var v = PT.value(J, q), Q = PT.QS[q];
       var parts = {
@@ -237,7 +240,7 @@
         '<p><b>Independent?</b> P(B | A) = ' + F4(J.BgA) + ' and P(B) = ' + F4(J.B) + (J.indep ? ': equal, so knowing A does not change the chance of B. A and B are independent.' : ': not equal, so A and B are not independent.') + ' Mutually exclusive would mean P(A and B) = 0' + (J.AB > 0 ? ', which is not the case here.' : ', as here.') + '</p>' +
         '<p>' + esc(sc.note) + '</p>';
       T.explain($('.pt-say'), '<b>' + esc(head) + '</b> ' + esc(tail), why);
-      if(LS){ LS.caption('<b>' + esc(head) + '</b> ' + esc(tail), 'explore'); LS.pills([{ k: QNAME[q], html: F4(f.v), tone: 'readout' }], 'left', 'explore'); }
+      if(LS){ LS.caption('<b>' + esc(head) + '</b> ' + esc(cap(words()) + '.'), 'explore'); /* the simulated share is in its own pill, not said again here */ LS.pills([{ k: QNAME[q], html: F4(f.v), tone: 'readout' }], 'left', 'explore'); }
       say(QNAME[q] + ' = ' + F4(f.v) + '. ' + tail);
     }
     function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
