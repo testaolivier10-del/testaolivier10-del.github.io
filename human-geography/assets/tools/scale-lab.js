@@ -161,7 +161,7 @@
         pick.innerHTML = '<p class="hug-sl-lbl" id="' + nid + '-r">Map scale (the ratio)</p><div class="hug-sl-ladder" role="group" aria-labelledby="' + nid + '-r">' + lad.map(function(l, k){ return '<button type="button" class="hug-sl-l" data-k="' + k + '" aria-pressed="' + (k === step) + '">' + S.ratio(l.denom) + '</button>'; }).join('') + '</div>';
         unit.innerHTML = 'Left: <b>large scale</b>, a small area in detail. Right: <b>small scale</b>, a large area with little detail.';
       } else {
-        pick.innerHTML = '<p class="hug-sl-lbl" id="' + nid + '-s">Scale of analysis</p><div class="ls-seg hug-sl-scales" role="group" aria-labelledby="' + nid + '-s">' + S.SCALES.map(function(s){ return '<button type="button" class="hug-sl-s" data-s="' + s + '" aria-pressed="' + (s === scale) + '">' + esc(s === 'local' ? 'Local' : S.SCALE_NAME[s]) + '</button>'; }).join('') + '</div>';
+        pick.innerHTML = '<p class="hug-sl-lbl" id="' + nid + '-s">Scale of analysis</p><div class="hug-sl-scales ls-seg" role="group" aria-labelledby="' + nid + '-s">' + S.SCALES.map(function(s){ return '<button type="button" class="hug-sl-s" data-s="' + s + '" aria-pressed="' + (s === scale) + '">' + esc(s === 'local' ? 'Local' : S.SCALE_NAME[s]) + '</button>'; }).join('') + '</div>';
         unit.innerHTML = 'Each value describes <b>' + esc(S.UNIT[scale]) + '</b>.';
       }
     }
@@ -203,7 +203,7 @@
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       drawAll();
-      if(s.mode() === 'explore') T.hintSlot(s, s.root.querySelector('.hug-sl-pick'), 'Start here: pick a scale', { cls: 'hug-sl-tipslot', before: s.root.querySelector('.hug-sl-unit') });
+      if(s.mode() === 'explore') T.hintSlot(s, s.root.querySelector('.hug-sl-scales') || s.root.querySelector('.hug-sl-pick'), 'Start here: pick a scale', { cls: 'hug-sl-tipslot', before: s.root.querySelector('.hug-sl-unit') });
     }
     drawAll();
     ready.then(function(){ drawStage(); }).catch(function(){ var f = $('.hug-sl-fig'); if(f) f.innerHTML = '<p class="hug-soon" role="alert">The map could not load. Check your connection and reload the page.</p>'; });
