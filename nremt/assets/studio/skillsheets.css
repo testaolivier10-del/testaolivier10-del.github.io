@@ -171,7 +171,7 @@
 @media (min-width:1000px){
   .nx-skillsheets .run-live.has-vis .run-clockwrap{width:120px;height:120px;}
   .nx-skillsheets .run-live.has-vis .run-clock{font-size:28px;}
-  .sp-stage{height:clamp(420px,64vh,680px);}
+  .sp-stage{height:clamp(360px,calc(100vh - 340px),680px);} /* pass 2: the clock stays on screen under the patient */
 }
 .nx-skillsheets .run-step.is-hold label,.run-step.is-hold label{box-shadow:inset 0 0 0 2px var(--bad-text);background:var(--tint-bad);}
 

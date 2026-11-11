@@ -871,6 +871,16 @@ document.addEventListener('DOMContentLoaded', function(){
     br.querySelectorAll(':scope > div > .branch-label').forEach(function(l){ var t = document.createElement('span'); t.className = 'fc-tab'; while(l.firstChild) t.appendChild(l.firstChild); l.appendChild(t); });
     if(br.children.length > 3) br.classList.add('is-many');
   });
+  /* Pass 2 (calm): a chart's "why" note is a small "Why?" under its step, opened
+     on tap, so the chart reads as a chart. flow-build.js reads the same notes. */
+  host.querySelectorAll('.flow-note').forEach(function(n, i){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'fc-why'; b.textContent = 'Why?';
+    n.id = n.id || 'fcNote' + i; n.hidden = true;
+    b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', n.id);
+    b.addEventListener('click', function(){ n.hidden = !n.hidden; b.setAttribute('aria-expanded', String(!n.hidden)); });
+    n.parentNode.insertBefore(b, n);
+  });
   // The diagram scrolls inside the stage: reachable by keyboard.
   window.NremtStudio.scrollable(host, 'Diagram');
   window.NremtStudio.scrollable([$('flowBuild'), $('flowDrill')], 'Board');

@@ -123,7 +123,42 @@ function youngWarp(s, legs, wide, arm){
     return [x, y, z];
   };
 }
-const WARPS = { child: childWarp, toddler: youngWarp(1.62, 0.6, 1.1, 0.82), infant: youngWarp(1.85, 0.5, 1.16, 0.72) };
+/* An adult woman for the scenario simulator's obstetric and other female
+   patients (review 2026-11: a woman in labor was drawn on the male figure).
+   BodyParts3D is one male body, so this is a warp of its skin, not a second
+   scan: breasts over the 4th to 6th ribs at the midclavicular lines, a
+   slightly narrower waist, slightly wider hips, and the genital bulge
+   flattened to a smooth pubic contour. The arms, head and landmarks are
+   untouched, so every overlay and region placed by landmark still fits. The
+   anatomy view leaves out the prostate as well as the testes. Model space:
+   +x patient's left, -y front, +z up, mm. */
+function femaleWarp(x, y, z, skin){
+  const ss = t => { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); };
+  const ax = Math.abs(x);
+  if(ax < 168){
+    // waist in a little at the lower ribs, hips out a little at the pelvis
+    const waist = 1 - 0.045 * ss(1 - Math.abs(z - 1065) / 90);
+    const hips = 1 + 0.07 * ss(1 - Math.abs(z - 880) / 130);
+    const k = 1 + (waist * hips - 1) * ss((168 - ax) / 30);
+    x *= k;
+  }
+  if(!skin) return [x, y, z];   // the bones and organs only follow the waist and hips
+  if(y < -55){
+    // breasts: a soft mound each side, fuller below the centre than above
+    const front = ss((-55 - y) / 40);
+    for(const cx of [-92, 92]){
+      const dx = x - cx, dz = z - 1185, sz = dz > 0 ? 58 : 36;
+      y -= 78 * front * Math.exp(-(dx * dx) / (2 * 42 * 42) - (dz * dz) / (2 * sz * sz));
+    }
+  }
+  // the genital bulge: pressed back to a smooth mound between the thighs
+  if(Math.abs(x) < 70 && z > 690 && z < 860 && y < -70){
+    const w = ss((70 - Math.abs(x)) / 30) * ss((z - 690) / 40) * ss((860 - z) / 50);
+    y = y + (-70 - y) * w * 0.9;
+  }
+  return [x, y, z];
+}
+const WARPS = { child: childWarp, toddler: youngWarp(1.62, 0.6, 1.1, 0.82), infant: youngWarp(1.85, 0.5, 1.16, 0.72), female: femaleWarp };
 
 function skinGeometry(mesh, warp){
   let geo = new THREE.BufferGeometry();
@@ -146,7 +181,7 @@ function skinGeometry(mesh, warp){
     : (Math.abs(x) < 70 && y < 0 && z > 700 && z < 860) ? 0.6 : 0;
   P = taubin(P, J, 30, ext);
   P = taubin(P, J, 3);
-  if(warp) for(let i = 0; i < P.length; i += 3){ const w = warp(P[i], P[i+1], P[i+2]); P[i] = w[0]; P[i+1] = w[1]; P[i+2] = w[2]; }
+  if(warp) for(let i = 0; i < P.length; i += 3){ const w = warp(P[i], P[i+1], P[i+2], true); P[i] = w[0]; P[i+1] = w[1]; P[i+2] = w[2]; }
   [P, J] = subdivide(P, J); P = taubin(P, J, 6);
   [P, J] = subdivide(P, J); P = taubin(P, J, 4);
   const g = new THREE.BufferGeometry();
@@ -186,12 +221,14 @@ const KIND_ROUGH = { bone:0.75, organ:0.32, vessel:0.25, skin:0.55 };
 // left out: the eyeballs (white spheres in an open skull read as goggles at
 // this size) and the testes (they float below the pelvis once the skin is see-through)
 const ANAT_SKIP = new Set(['skin', 'eyeball', 'testis']);
-function anatomyMeshes(gltf, content, skinGeo, warp){
+const ANAT_SKIP_FEMALE = new Set(['skin', 'eyeball', 'testis', 'prostate']);
+function anatomyMeshes(gltf, content, skinGeo, warp, skip){
+  skip = skip || ANAT_SKIP;
   const { CONTENT, MAP } = content, meshes = [];
   gltf.scene.traverse(o => {
     if(!o.isMesh) return;
     const pn = o.parent && o.parent.name, id = (pn && MAP[pn]) ? pn : o.name, gk = MAP[id];
-    if(!gk || ANAT_SKIP.has(gk) || !CONTENT[gk]) return;
+    if(!gk || skip.has(gk) || !CONTENT[gk]) return;
     const c = CONTENT[gk], color = c.color ?? KIND_COLORS[c.kind] ?? 0xbfbfbf;
     const mat = new THREE.MeshStandardMaterial({ color, roughness: KIND_ROUGH[c.kind] ?? 0.6, metalness: 0.03, side: THREE.DoubleSide });
     if(c.emissiveFactor){ mat.emissive = new THREE.Color(color); mat.emissiveIntensity = c.emissiveFactor; }
@@ -497,7 +534,7 @@ window.renderFigures = async function(){
   const content = await viewerContent();
 
   /* ---- full figures (burns, scenario) ----------------------------------- */
-  for(const variant of ['adult', 'child', 'toddler', 'infant']){
+  for(const variant of ['adult', 'child', 'toddler', 'infant', 'female']){
     const warp = WARPS[variant] || ((x, y, z) => [x, y, z]);
     const wp = (x, z) => { const r = warp(x, -60, z); return [r[0], r[2]]; };
     const geo = skinFor(variant);
@@ -508,14 +545,16 @@ window.renderFigures = async function(){
     for(const side of ['front', 'back']){
       const view = makeView(frame, side, pxPerMm);
       const raw = renderMeshes(view, [new THREE.Mesh(geo, skinMat())], {});
-      const anat = renderAnatomy(view, anatomyMeshes(gltf, content, geo, WARPS[variant] || null));
+      const anat = renderAnatomy(view, anatomyMeshes(gltf, content, geo, WARPS[variant] || null, variant === 'female' ? ANAT_SKIP_FEMALE : null));
       const zones = {
         head: view.P(0, warp(0, 0, 1452)[2])[1],
         feet: view.P(0, warp(0, 0, 120)[2])[1],
         wrist: view.P(0, warp(0, 0, 905)[2])[1],
         chin: view.P(0, warp(0, 0, L3D.chin[1])[2])[1],
         top: view.P(0, bb.max.z)[1],
-        handX: [view.P(side === 'front' ? -200 : 200, 0)[0], view.P(side === 'front' ? 200 : -200, 0)[0]]
+        handX: [view.P(side === 'front' ? -200 : 200, 0)[0], view.P(side === 'front' ? 200 : -200, 0)[0]],
+        // the female figure's breasts, shaded in 2D (the flat stylized shading below hides a mesh bump seen face on)
+        breasts: variant === 'female' && side === 'front' ? [-92, 92].map(bx => { const q = wp(bx, 1180), p = view.P(q[0], q[1]); return [p[0], p[1], 50 * pxPerMm]; }) : null
       };
       const { canvas: cv, mask } = stylize(raw, view, zones);
       const outline = trace(mask, view.w, view.h, 1.0);
@@ -785,6 +824,17 @@ function stylize(raw, view, Z){
     const wMesh = (1 - ext[i]) * (1 - smooth(Z.head + 30, Z.head - 10, y)) * (d[i*4+3] > 200 ? 1 : 0);
     const meshL = Math.min(1.25, Math.max(0.55, LmS[i] / lmMean));
     let s = inf * (1 + (meshL - 1) * 0.55 * wMesh);
+    // breasts (female figure): a dome lit like the body, and a soft fold beneath
+    if(Z.breasts) for(const [bx, by, R] of Z.breasts){
+      const u = (x - bx) / R, v = (y - by) / (R * 0.9), r = Math.hypot(u, v);
+      if(r < 1.25){
+        const nz = Math.sqrt(Math.max(0, 1 - Math.min(1, r) ** 2));
+        const lam = Math.max(0, (u * Ld[0] + v * Ld[1]) * 0.8 + nz * Ld[2]);
+        const wgt = smooth(1.1, 0.5, r);
+        s *= 1 + (lam - 0.6) * 0.75 * wgt;
+        if(v > 0.2) s *= 1 - 0.2 * smooth(0.7, 0.95, r) * smooth(1.25, 1.0, r) * smooth(0.2, 0.7, v);
+      }
+    }
     // soft edge shadow just inside the outline
     s *= 0.86 + 0.14 * smooth(0, 7, dist[i]);
     s = Math.min(1.08, Math.max(0, s));

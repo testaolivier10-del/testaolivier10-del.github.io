@@ -71,14 +71,48 @@ Open (2026-11-10, tool fixes: scenario simulator and station run, task nremt):
   pregnant patient, birth and baby sentences now go to a Perineum pin (Crowning, Head delivered, Cord at the neck, Baby
   born, Waters broken, Vaginal bleeding) and contractions stay on the uterus. Not contested; listed so the owner sees it.
 - **Pregnant figure.** The uterus is drawn at its height for the weeks (about the xiphoid from 36 weeks, the umbilicus at
-  20, lower again after the birth) with the baby head down. The figure under it is the body map's model, which is male:
-  a female figure would need a new render. The third-trimester bleeding case (abruption) shows no placenta, on purpose.
+  20, lower again after the birth) with the baby head down. Since pass 2 (2026-11-10) the figure under it is a woman (see
+  "Female figure" below). The third-trimester bleeding case (abruption) shows no placenta, on purpose.
 - **AED pads in the scenario simulator.** Adults and children over 5 get front pads (below the right collarbone, left side);
   toddlers and infants get one front pad mid chest and one on the back (front-to-back). Pediatric pad placement follows the
   pads' own pictures and the device; confirm this is how the course wants it shown.
-- **Station run, the eight new patients.** Step lists are paraphrased from the Registry sheets E201, E202, E204, E211,
-  E212, E215, E216 and E217 as remembered, not re-read line by line against the PDFs (not fetched in this session).
-  Worth a check against the current sheets: the oxygen station's opening steps (crack the valve, BSI), the seated
-  station's strap order (middle, bottom, top, as most programs teach), the joint station run on a knee (bones above and
-  below), the long bone station run on a forearm. The trauma and medical assessments group the sheet's many items into
-  phases and use their own invented cases (a 12-foot fall; chest pain treated with aspirin per protocol).
+- **Station run, the eight new patients.** Checked in pass 2 against the current Registry PDFs (below).
+
+## Pass 2 checks (2026-11-10, task nremt pass 2)
+
+**Station step lists against the Registry sheets.** Each of E201, E202, E204, E211, E212, E215, E216 and E217 was read
+from content.nremt.org (the E202 form is dated 10-16) and compared step by step and criterion by criterion. Changed:
+
+- Which steps are critical. PPE is a scored step but **not** a critical criterion on E211, E212, E216 or E217 (it is on
+  E201, E202, E203, E204, E213 and E215); the run now marks a missed BSI there as a lost point (amber), not a fail (red).
+  The first distal check on both spinal sheets (E211, E212) is scored but not critical; only the recheck after
+  immobilization is. On E216 and E217 both checks stay critical ("before and after splinting").
+- Joint (E216): the sheet's step "Secures the entire injured extremity" was missing; added (a cravat at the ankle).
+- Oxygen (E204): added "Gathers appropriate equipment"; the pressure check now comes before the leak check, as on the
+  sheet; the flow step says "at least 10 L/min" (the sheet's floor and critical criterion; the old note wrongly said the
+  sheet asks for 12); the three closing steps (remove the mask, shut off, bleed the regulator) are not on the current
+  11-point sheet and were removed (a note says some program sheets still have them).
+- Trauma (E201): baseline vital signs moved to before the secondary exam (the sheet's History Taking section).
+- Medical (E202): "Fails to provide accurate report to arriving EMS unit" is a critical criterion: the report step is now
+  critical. The old "no medical direction or standing order for a medication" criterion is not on the current sheet: the
+  interventions step is now "Field impression, then interventions per protocol", scored, not critical, and the
+  skillsheets.html summary row was corrected the same way.
+- Seated (E211): the strap order is not on the sheet; the step now says "many programs: middle, bottom, then top".
+- Matched with no change: long bone (E217) steps and criteria, cardiac arrest/AED (E215), supine (E212) order.
+- Left as is, for you: the run merges the spinal sheets' two head steps ("place in neutral, in line" and "maintain manual
+  stabilization") into one, and the trauma and medical runs group the sheets' 42 points into phases (said on the page).
+  Confirm both are fine for practice.
+
+**AED pads for small children.** 2025 AHA/AAP Pediatric BLS (Part 6): use the largest pads that fit with good separation
+(COR 1, LOE C-EO); anteroposterior or anterolateral placement "may be reasonable" (COR 2b, LOE C-LD), neither preferred.
+The simulator's front-to-back pads for toddlers and infants and front pads from age 5 are consistent with it. Not
+changed. (The figure fix below also stops the adult woman being drawn with infant pads.)
+
+**Female figure.** The model (BodyParts3D) is one male body; there is no female scan in the repo. The builder now makes
+a woman from it (`femaleWarp` in `scripts/body-figures/render.js`: breasts, waist and hips on the skin only; landmarks,
+bones and organs unchanged; prostate left out of the anatomy view), in the scenario-only `case` set, so the body map's
+`body.js` and `chest.js` are byte-identical (`build-body-figures.mjs --check` passes). Every adult case whose opening
+names a woman uses it (s2, s7, s15, s16, s17, s20, s24), and those patients get "her" in the care strip (s17 said
+"his" because of "her husband"). Limits: the skeleton is still the male pelvis and the face is a mannequin; a true
+female model would need a second CC BY-SA or similar female mesh, rendered
+through the same pipeline.

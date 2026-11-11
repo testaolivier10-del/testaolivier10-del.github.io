@@ -49,15 +49,6 @@
     return { v: r.sbp[0], how: 'the table' };
   }
 
-  /* The table's systolic cell ("> 76–82") in words: for a child it is the
-     lowest acceptable pressure, and a range there is the 70 + 2 x age rule
-     across the row's ages. */
-  function sbpWords(r){
-    if(/Adult/.test(r.label)) return r.sbpText;
-    if(r.sbp.length > 1) return 'lowest acceptable about ' + r.sbp[0] + ' to ' + r.sbp[r.sbp.length - 1] + (r.from >= 12 && r.to <= 144 ? ' (70 + 2 × age)' : '');
-    return 'lowest acceptable ' + r.sbp[0];
-  }
-
   /* Age pictograms (visual polish 2026-10), one per stage of the table, drawn
      as single-path figures on a 24 x 40 grid; head size against height shrinks
      with age, as it does in life. */
@@ -120,7 +111,8 @@
     mount.querySelectorAll('.vc-fig').forEach(function(f){ var a = +f.getAttribute('data-at'); if(a <= Math.max(mo, 0)) near = f; });
     mount.querySelectorAll('.vc-fig').forEach(function(f){ f.classList.toggle('on', f === near); });
     age.style.setProperty('--vc-pos', (+age.value / (STOPS.length - 1) * 100).toFixed(2) + '%');
-    document.getElementById('vcRowName').innerHTML = '<b>' + esc(r.label) + '</b> row: HR ' + r.hr.join('–') + ' · RR ' + r.rr.join('–') + ' · SBP ' + esc(sbpWords(r)) +
+    // pass 2 (calm): the row's name only; its three ranges are on the buttons below, said once
+    document.getElementById('vcRowName').innerHTML = '<b>' + esc(r.label) + '</b> row' +
       (kind === 'sbp' ? ' · lowest acceptable here: <b>' + sbpLow(mo, r).v + '</b> (' + esc(sbpLow(mo, r).how) + ')' : '');
     // each vital's button carries this row's range, so the three read at a glance
     var lo = sbpLow(mo, r).v;
@@ -140,7 +132,7 @@
       (b.hi ? '<span class="vc-lab" style="left:' + pct(b.hi) + '">' + b.hi + '</span>' : '') +
       (v != null && !isNaN(v) ? '<div class="vc-pin" style="left:' + pct(v) + '"><span class="vc-bub">' + v + '</span></div>' : '');
     var out = document.getElementById('vcOut');
-    if(v == null || isNaN(v)){ out.className = 'vc-out'; out.textContent = 'Type a ' + (kind === 'hr' ? 'heart rate' : kind === 'rr' ? 'respiratory rate' : 'systolic pressure') + ' to check it against this row.'; g.classList.remove('low', 'high', 'ok'); return; }
+    if(v == null || isNaN(v)){ out.className = 'vc-out'; out.textContent = ''; g.classList.remove('low', 'high', 'ok'); return; }
     var verdict = v < b.lo ? 'low' : (b.hi && v > b.hi) ? 'high' : 'ok';
     g.className = 'vc-gauge ' + verdict;
     out.className = 'vc-out ' + verdict;
