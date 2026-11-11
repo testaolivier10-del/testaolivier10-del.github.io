@@ -162,14 +162,11 @@
       o.push('<path class="el-trc" d="' + hill(0, 100) + '"/>');
       // the areas' words
       var big = !g.narrow;
-      o.push('<text class="el-rlab el-elastic-t" x="' + f1(X(big ? 27 : 22)) + '" y="' + f1(Y1(big ? 17.2 : 17.6)) + '">Elastic</text><text class="el-rsub" x="' + f1(X(big ? 27 : 22)) + '" y="' + f1(Y1(big ? 17.2 : 17.6) + 16) + '">|Ed| &gt; 1</text>');
-      o.push('<text class="el-rlab el-inelastic-t" x="' + f1(X(big ? 74 : 73)) + '" y="' + f1(Y1(big ? 8.2 : 7.6)) + '">Inelastic</text><text class="el-rsub" x="' + f1(X(big ? 74 : 73)) + '" y="' + f1(Y1(big ? 8.2 : 7.6) + 16) + '">|Ed| &lt; 1</text>');
-      if(big){
-        o.push('<text class="el-hint el-elastic-t" x="' + f1(X(25)) + '" y="' + f1(T2 + g.H2 - 12) + '" text-anchor="middle">P down, TR up</text>');
-        o.push('<text class="el-hint el-inelastic-t" x="' + f1(X(75)) + '" y="' + f1(T2 + g.H2 - 12) + '" text-anchor="middle">P down, TR down</text>');
-      }
+      // (pass 2: the |Ed| > 1 and < 1 sublabels and the "P down, TR up/down" words are in Explanation; the tints carry the halves)
+      o.push('<text class="el-rlab el-elastic-t" x="' + f1(X(big ? 27 : 22)) + '" y="' + f1(Y1(big ? 17.2 : 17.6)) + '">Elastic</text>');
+      o.push('<text class="el-rlab el-inelastic-t" x="' + f1(X(big ? 74 : 73)) + '" y="' + f1(Y1(big ? 8.2 : 7.6)) + '">Inelastic</text>');
       o.push('<circle class="el-mid" cx="' + f1(X(50)) + '" cy="' + f1(Y1(10)) + '" r="5"/><text class="el-rlab el-mid-t" x="' + f1(X(50) + 9) + '" y="' + f1(Y1(10) - 9) + '">Unit elastic</text>');
-      o.push('<circle class="el-mid" cx="' + f1(X(50)) + '" cy="' + f1(Y2(500)) + '" r="5"/><text class="el-rlab el-mid-t" x="' + f1(X(50) + 7) + '" y="' + f1(T2 - 10) + '">Largest TR: $500</text>');
+      o.push('<circle class="el-mid" cx="' + f1(X(50)) + '" cy="' + f1(Y2(500)) + '" r="5"><title>Largest total revenue: $500</title></circle>');
       // A and B: on D, straight down to the hill
       [['b', A.b, 'el-g2', 'is-b', 'B'], ['a', A.a, 'el-g1', '', 'A']].forEach(function(r){
         var pt = r[1], xq = X(pt.q), y1 = Y1(pt.p), y2 = Y2(pt.tr);
@@ -216,9 +213,11 @@
         'The slope of this line is the same everywhere, but elasticity is not: high up, a $2 change is a small percent of the price and a big percent of the small quantity. Above the midpoint ($10, 50 units) demand is elastic, below it inelastic.',
         'Total revenue (the shaded rectangle, P × Q) is largest at the midpoint, the top of the hill on the total revenue graph right under it. Over the elastic half the hill rises as price falls; over the inelastic half it falls.'
       ];
+      var cap = (w === 'unit elastic' ? 'Unit elastic here' : cap1(w) + ' here') + ': cutting the price from ' + money(A.a.p) + ' to ' + money(A.b.p) + ' ' + (trSame ? 'leaves total revenue the same.' : (trUp ? 'raises' : 'lowers') + ' total revenue.');
       if(A.a.p > 10 && A.b.p < 10) body.splice(2, 0, 'A and B sit on either side of the midpoint, so the arc mixes an elastic and an inelastic stretch.');
-      return { head: head, body: body };
+      return { head: head, body: body, cap: cap };
     }
+    function cap1(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
     /* -------- the income and cross-price views */
     function drawShift(){
       var v = st.view, k = KINDS[v].filter(function(x){ return x.id === st.kind[v]; })[0], pct = st.pct[v];
@@ -238,13 +237,14 @@
       var cause = v === 'income' ? 'Income ' + (pct > 0 ? 'rises' : pct < 0 ? 'falls' : 'does not change') + (pct ? ' ' + Math.abs(pct) + '%' : '') : 'The price of ' + k.other + ' ' + (pct > 0 ? 'rises' : pct < 0 ? 'falls' : 'does not change') + (pct ? ' ' + Math.abs(pct) + '%' : '');
       var name = v === 'income' ? 'Income elasticity' : 'Cross-price elasticity';
       read.innerHTML = '<span class="el-chip el-c-e">' + name + ' <b>' + (e == null ? E.signed(k.e, 1) : E.signed(e, 2)) + '</b></span><span class="el-chip el-c-tr">Q at $10 <b>' + n(q1) + '</b> → <b>' + n(q2) + '</b></span>';
+      var cap = cause + ': ' + (pct === 0 ? 'move the slider.' : 'demand shifts ' + (dx > 0 ? 'right' : dx < 0 ? 'left' : 'nowhere') + '. ' + cap1(what) + '.');
       var head = cause + ': ' + (pct === 0 ? 'move the slider to see demand for ' + k.good + ' shift.' : 'demand for ' + k.good + ' shifts ' + (dx > 0 ? 'right' : dx < 0 ? 'left' : 'nowhere') + '. ' + name + ' = ' + E.signed(e, 2) + ': ' + what + '.');
       var body = [
         name + ' = %ΔQ ÷ %Δ' + (v === 'income' ? 'income' : 'P of ' + k.other) + (pct ? ' = ' + E.signed(ev('pctChange', [q1, q2]), 1) + ' ÷ ' + E.signed(pct, 0) + ' = ' + E.signed(e, 2) : '') + '. Keep the sign: here the sign is the answer.',
         v === 'income' ? 'Positive: a normal good (above 1 a luxury, between 0 and 1 a necessity). Negative: an inferior good, bought less as income rises.' : 'Positive: substitutes (one gets more expensive, buyers switch to the other). Negative: complements (used together). Zero: unrelated.',
         'This is a shift of the whole demand curve, not a move along it: at every price, including $10, buyers want ' + (dx > 0 ? 'more' : dx < 0 ? 'less' : 'the same') + '.'
       ];
-      return { head: head, body: body };
+      return { head: head, body: body, cap: cap };
     }
     function draw(){
       fig.setAttribute('data-view', st.view);
@@ -252,7 +252,10 @@
       var r = st.view === 'price' ? drawPrice() : drawShift();
       T.explain($('.el-say'), esc(r.head), '<ol class="ls-steps">' + r.body.map(function(b){ return '<li><span>' + esc(b) + '</span></li>'; }).join('') + '</ol>');
       nums();
-      if(LS){ LS.caption(esc(r.head), 'explore'); if(sp) sp.open(); }
+      // The caption is one short line; the numbers are the two chips under the figure, the arithmetic in Explanation.
+      if(LS){ LS.caption(esc(r.cap || r.head), 'explore'); if(sp) sp.open(); }
+      // The Method row (midpoint or starting values) only changes the price view's arc: hidden in the other two.
+      var mrow = LS && LS.root.querySelector('.mic-ls-setup'); if(mrow) mrow.hidden = st.view !== 'price';
       say(r.head);
     }
     function nums(){

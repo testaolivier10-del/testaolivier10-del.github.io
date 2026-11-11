@@ -140,7 +140,7 @@
       vals.innerHTML = chips.map(function(c){
         var name = c[0] === 'rev' ? revName(st.t) : AREA[c[0]], on = st.focus === c[0];
         return '<button type="button" class="sl-val sl-v-' + c[0] + (on ? ' is-on' : '') + (st.focus && !on ? ' is-dim' : '') + '" data-a="' + c[0] + '" aria-pressed="' + on + '"><span class="sl-sw" aria-hidden="true"></span><span class="sl-vn">' + esc(name) + '</span><b class="sl-vv">' + money(c[1]) + '</b></button>';
-      }).join('') + '<p class="sl-ts"><span>Total surplus</span> <b>' + money(v.ts) + '</b>' + (st.t !== 'none' ? ' <span class="sl-was">(' + money(v.ts0) + ' with no policy)</span>' : '') + '</p>';
+      }).join(''); // (pass 2: total surplus, before and after, is in Details)
       [].slice.call(host.querySelectorAll('.sl-pol')).concat(LS ? [].slice.call(LS.root.querySelectorAll('.sl-pol')) : []).forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-p') === st.t)); b.classList.toggle('on', b.getAttribute('data-p') === st.t); });
       return v;
     }
@@ -154,6 +154,11 @@
       if(t === 'world') return 'World price ' + money(v.at) + ': ' + (v.imports != null ? 'imports of ' + units(v.imports) : 'exports of ' + units(v.exports)) + '. Total surplus rises by ' + money(v.gain) + ', the gain from trade.';
       return 'Tariff of ' + money(v.amount) + ': the price rises to ' + money(v.pt) + ', imports fall from ' + units(v.imports1) + ' to ' + units(v.imports) + '. Revenue ' + money(v.rev) + ', deadweight loss ' + money(v.dwl) + '.';
     }
+    /* The caption under the tabs does not repeat the area values on the chips (pass 2); Explanation keeps the whole line. */
+    function shortCap(v, head){
+      if(v.type === 'none') return 'No policy: 50 bottles sell at $10, and total surplus is as large as it can be. Pick a policy.';
+      return head.replace(/\s*(Revenue \$[\d.,]+, deadweight loss \$[\d.,]+|Deadweight loss \$[\d.,]+|It costs \$[\d.,]+; deadweight loss \$[\d.,]+)\.$/, '').replace(/([^.])$/, '$1.');
+    }
     function words(){
       var v = S.values(MKT, cur()), t = v.type, body = [], head = caption(v);
       if(t === 'none'){ body.push('Consumer surplus is the area under demand and above the price: what buyers would have paid, minus what they pay.'); body.push('Producer surplus is the area above supply and below the price: what sellers receive, minus the least they would accept.'); body.push('At the equilibrium every bottle worth more to a buyer than it costs to make is sold, so total surplus is as large as it can be.'); }
@@ -165,7 +170,7 @@
       if(t === 'tariff'){ body.push('A tariff raises the domestic price from the world price to the world price plus the tariff.'); body.push('Domestic sellers offer more, buyers want less, so imports shrink to ' + units(v.imports) + '. Tariff revenue is the tariff times those imports.'); body.push('Two deadweight loss triangles: on the left, bottles now made at home at a cost above the world price; on the right, purchases buyers give up.'); }
       T.explain(host.querySelector('.sl-say') || (LS && LS.root.querySelector('.sl-say')), head, '<ol class="ls-steps">' + body.map(function(b){ return '<li><span>' + b + '</span></li>'; }).join('') + '</ol>');
       nums(v);
-      if(LS){ LS.caption(esc(head), 'explore'); if(sp) sp.open(); }
+      if(LS){ LS.caption(esc(shortCap(v, head)), 'explore'); if(sp) sp.open(); }
       say(head);
     }
     function nums(v){

@@ -59,10 +59,10 @@
     var st = { rows: 1, sel: 0, tfc: CL.EXPLORE.tfc, mats: 0, prev: null, from: null, k: 1, anim: null, afc: true, mins: true };
     var LS = null, sp = null;
     host.innerHTML =
-      '<figure class="cl-fig"><div class="cl-gwrap"><div class="cl-svg"></div><p class="cl-key" aria-hidden="true"><span class="cl-k cl-c-MC">MC</span><span class="cl-k cl-c-ATC">ATC</span><span class="cl-k cl-c-AVC">AVC</span><span class="cl-k cl-c-AFC">AFC</span><span class="cl-k cl-k-dot">dots: the table’s rows</span></p></div>' +
+      '<figure class="cl-fig"><div class="cl-gwrap"><div class="cl-svg"></div></div>' +
         '<div class="cl-side"><div class="cl-tablewrap" tabindex="-1"></div><div class="cl-card"></div></div>' +
         '<figcaption class="sr-only cl-live"></figcaption></figure>' +
-      '<div class="cl-ctl"><div class="cl-hire-row"><button type="button" class="btn-press sm cl-hire">Hire worker 1</button><button type="button" class="bt-btn cl-all">Fill every row</button></div><div class="cl-sliders"></div></div>' +
+      '<div class="cl-ctl"><div class="cl-hire-row"><button type="button" class="btn-press sm cl-hire">Hire worker 1</button><button type="button" class="bt-btn cl-all">Fill every row</button></div><div class="cl-sliders" hidden></div></div>' +
       '<div class="cl-say"></div><div class="cl-nums"></div>' +
       T.moreHtml('<div class="bt-radio"><input type="checkbox" id="cl-afc" checked><label for="cl-afc">Draw AFC (average fixed cost)</label></div>' +
         '<div class="bt-radio"><input type="checkbox" id="cl-min" checked><label for="cl-min">Mark the lowest points of AVC and ATC</label></div>' +
@@ -70,7 +70,7 @@
         '<p class="bt-small">Tap a row of the table (or use the up and down arrow keys on it) to see its arithmetic and its points on the graph.</p>', 'curves to draw, start over');
     var fig = host.querySelector('.cl-fig'), svgEl = host.querySelector('.cl-svg'), tw = host.querySelector('.cl-tablewrap'), card = host.querySelector('.cl-card');
     var say = T.announcer(host.querySelector('.cl-live')), sayEl = host.querySelector('.cl-say'), numsEl = host.querySelector('.cl-nums');
-    var hire = host.querySelector('.cl-hire'), all = host.querySelector('.cl-all');
+    var hire = host.querySelector('.cl-hire'), all = host.querySelector('.cl-all'), sliders = host.querySelector('.cl-sliders');
     var sF = T.slider({ label: 'Fixed cost (rent, a day)', min: 40, max: 160, step: 10, value: st.tfc, unit: '', decimals: 0, onInput: function(v){ change(v, st.mats); } });
     var sM = T.slider({ label: 'Materials per unit of output', min: 0, max: 3, step: 0.5, value: 0, decimals: 2, onInput: function(v){ change(st.tfc, v); } });
     [sF, sM].forEach(function(s){ s.el.querySelector('output').classList.add('cl-out'); });
@@ -126,9 +126,10 @@
       out.push(g.join(''));
       // P_SD and P_BE: the two key prices, as tags on the price axis
       var tags = [], A = G.named(spec, shifts, 'min-avc'), B = G.named(spec, shifts, 'min-atc');
+      var reach = t.tp[st.rows - 1] / 10 + 0.05;
       if(st.mins){
-        if(A) tags.push({ y: Y(A[1]), v: A[1], c: 'AVC', s: 'SD', p: A });
-        if(B) tags.push({ y: Y(B[1]), v: B[1], c: 'ATC', s: 'BE', p: B });
+        if(A && reach >= A[0]) tags.push({ y: Y(A[1]), v: A[1], c: 'AVC', s: 'SD', p: A });
+        if(B && reach >= B[0]) tags.push({ y: Y(B[1]), v: B[1], c: 'ATC', s: 'BE', p: B });
         if(tags.length === 2 && tags[0].y - tags[1].y < 17){ var mid = (tags[0].y + tags[1].y) / 2; tags[0].ty = mid + 8.5; tags[1].ty = mid - 8.5; }
       }
       for(v = 0; v <= yTop + 1e-9; v += step){
@@ -205,7 +206,7 @@
     }
     function cardHtml(t){
       var i = st.sel;
-      var order = ['mc', 'avc', 'atc', 'afc', 'mp', 'tvc', 'tc', 'tfc'];
+      var order = ['mc', 'avc', 'atc', 'afc'];
       var cells = order.map(function(k){ return COLS.filter(function(c){ return c.k === k; })[0]; }).map(function(c){ var v = cellText(t, c, i); return '<div class="cl-cc ' + (c.curve ? 'cl-c-' + c.curve : '') + '"><span class="cl-cc-k">' + c.h + '</span><span class="cl-cc-v">' + (v || '·') + '</span></div>'; }).join('');
       return '<div class="cl-card-head"><button type="button" class="bt-btn cl-prev" aria-label="Previous row"' + (i <= 0 ? ' disabled' : '') + '>‹</button><p class="cl-card-t"><b>' + t.labor[i] + (t.labor[i] === 1 ? ' worker' : ' workers') + '</b>, Q = ' + t.tp[i] + '</p><button type="button" class="bt-btn cl-next" aria-label="Next row"' + (i >= st.rows - 1 ? ' disabled' : '') + '>›</button></div><div class="cl-cards">' + cells + '</div>';
     }
@@ -213,6 +214,13 @@
       if(i === 0) return 'With no workers the firm makes nothing, but it still pays its fixed cost of ' + m0(t.tfc) + ': TC = TFC.';
       var dq = t.tp[i] - t.tp[i - 1], dtc = t.tc[i] - t.tc[i - 1];
       return '<b>Worker ' + i + '</b> adds ' + dq + ' units (MP). MC = ΔTC ÷ ΔQ = ' + m0(dtc) + ' ÷ ' + dq + ' = <b>' + money(t.mc[i]) + '</b>. AVC = ' + m0(t.tvc[i]) + ' ÷ ' + t.tp[i] + ' = ' + money(t.avc[i]) + ', ATC = ' + m0(t.tc[i]) + ' ÷ ' + t.tp[i] + ' = ' + money(t.atc[i]) + '.';
+    }
+    /* The caption under the tabs: one short line (the arithmetic of AVC and ATC is in Explanation). */
+    function shortWords(t, i){
+      if(st.note) return st.note;
+      if(i === 0) return 'No workers, no output, but the fixed cost of ' + m0(t.tfc) + ' is still paid.';
+      var dq = t.tp[i] - t.tp[i - 1], dtc = t.tc[i] - t.tc[i - 1], up = i > 1 && t.mc[i] >= t.atc[i - 1];
+      return '<b>Worker ' + i + '</b> adds ' + dq + ' units: MC = ' + m0(dtc) + ' ÷ ' + dq + ' = <b>' + money(t.mc[i]) + '</b>.' + (i > 1 ? ' MC is ' + (up ? 'above ATC, so ATC rises.' : 'below ATC, so ATC falls.') : '');
     }
     function draw(){
       var t = tbl();
@@ -222,6 +230,9 @@
         card.innerHTML = cardHtml(t);
         hire.textContent = st.rows >= t.labor.length ? 'All 8 workers hired' : 'Hire worker ' + st.rows;
         hire.disabled = all.disabled = st.rows >= t.labor.length;
+        // One question at a time: hire first; once every row is on the graph, the two cost sliders take the buttons' place.
+        hire.parentNode.hidden = st.rows >= t.labor.length;
+        sliders.hidden = st.rows < t.labor.length;
         words(t);
       }
     }
@@ -240,7 +251,7 @@
       body.push('A fixed cost (the rent slider) moves ATC and AFC only. A cost on every unit (the materials slider) moves MC, AVC and ATC up by that amount.');
       T.explain(sayEl, head, '<ol class="ls-steps">' + body.map(function(b){ return '<li><span>' + b + '</span></li>'; }).join('') + '</ol>');
       nums(t);
-      if(LS){ LS.caption(head, 'explore'); if(sp) sp.open(); }
+      if(LS){ LS.caption(shortWords(t, i), 'explore'); if(sp) sp.open(); }
       say(String(head).replace(/<[^>]+>/g, ''));
     }
     function nums(t){
@@ -258,6 +269,7 @@
       if(st.rows >= t.labor.length) return;
       cue.done(); st.note = '';
       st.rows = Math.min(t.labor.length, st.rows + (n || 1)); st.sel = st.rows - 1; st.fresh = true;
+      if(st.rows >= t.labor.length) st.note = 'Every row is on the graph. Now change a cost: which curves move?';
       draw(); st.fresh = false;
       if(st.rows >= t.labor.length && LS) LS.pills([{ html: 'MC crosses AVC and ATC at their minimums', tone: 'good' }], 'left', 'explore');
     }
