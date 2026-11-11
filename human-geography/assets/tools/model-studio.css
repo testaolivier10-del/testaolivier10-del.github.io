@@ -77,17 +77,18 @@
   .ms-badge{width:clamp(16px,8.5cqw,28px);height:clamp(16px,8.5cqw,28px);font-size:clamp(10px,4.2cqw,14px);line-height:calc(clamp(16px,8.5cqw,28px) - 4px);border-width:1.5px;}
   .ms-tag{font-size:clamp(10px,4cqw,13px);padding:0 clamp(3px,1.6cqw,6px);}
 }
-/* See it: on a wide screen the places revealed so far are listed on the
-   stage, beside the drawing; on a phone they are in the panel below. */
+/* See it (second pass, 2026-11-10): one line under the drawing names the
+   place in focus; the caption beside or below gives its reason, and the full
+   list of places is in Details, so the panel's own list is not shown. */
+.ms-key{display:none !important;}
 .ms-skey{display:none;}
-@media (min-width:900px){
-  .ms-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;}
-  .ms-skey:not(:empty){display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));list-style:none;margin:0;padding:0;gap:6px 18px;align-content:start;}
-  .ms-skey li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:center;font:700 15px/1.35 var(--font-ui);}
-  .ms-skey li.is-cur{color:var(--cink);}
-  .ms-skey li.is-cur .ms-n{background:var(--cink);}
-  .ms-key li:not(.is-cur){display:none;}
-}
+.ms-skey:not(:empty){display:block;list-style:none;margin:0;padding:0;}
+.ms-skey li{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;justify-content:center;font:700 15px/1.35 var(--font-ui);color:var(--cink);}
+.ms-skey li .ms-n{background:var(--cink);}
+.ms-tapn{font:500 13px/1.3 var(--font-ui);color:var(--muted);}
+.ms-figslot[data-view="see"] .ms-badge{pointer-events:auto;cursor:pointer;}
+.ms-figslot[data-view="see"] .hug-model-num,.ms-figslot[data-view="see"] .hug-model-band{cursor:pointer;}
+.ms-go[hidden]{display:none;}
 .ms-go{display:flex;flex-wrap:wrap;gap:8px;}.ms-go button{min-height:44px;}
 .ms-badge.is-ok{background:#1E7B4F;}
 .ms-badge.is-no{background:#B3261E;}

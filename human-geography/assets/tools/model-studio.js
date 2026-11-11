@@ -155,7 +155,7 @@
   /* ============================================================ explore */
   function explore(host, data, practise){
     var list = data.contexts || [], nid = T.nid('msx'), LS = null, touched = false;
-    var ctx = list[0], model = null, view = 'see', upto = 0, mctl = null, graded = false;
+    var ctx = list[0], model = null, view = 'see', upto = 0, mctl = null, graded = false, focus = 0, figNote = '';
     host.innerHTML = '<section class="bt-problem ms-x" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Model Studio</h2>' +
       '<div class="ms-stage"><div class="ms-figslot"></div><ol class="ms-skey" aria-hidden="true"></ol></div>' +
       '<div class="ms-ctl">' +
@@ -171,7 +171,7 @@
     var R = { stage: host.querySelector('.ms-stage'), fig: host.querySelector('.ms-figslot'), skey: host.querySelector('.ms-skey'), ctl: host.querySelector('.ms-ctl'), pick: host.querySelector('.ms-pick'), views: host.querySelector('.ms-views'),
       see: host.querySelector('.ms-see'), key: host.querySelector('.ms-key'), build: host.querySelector('.ms-build'), mhost: host.querySelector('.ms-mhost'), fb: host.querySelector('.ms-fb'),
       cap: host.querySelector('.ms-cap'), say: host.querySelector('.ms-say'), nums: host.querySelector('.ms-nums'), gate: host.querySelector('.ms-gate'),
-      back: host.querySelector('.ms-back'), next: host.querySelector('.ms-next') };
+      back: host.querySelector('.ms-back'), next: host.querySelector('.ms-next'), go: host.querySelector('.ms-go') };
     var cue = T.cue('Press Next place to see the model built one piece at a time, or switch to Build it.');
     R.ctl.insertBefore(cue.el, R.ctl.firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
@@ -194,21 +194,37 @@
       // one Build it uses, so the drawing's numbers match the pieces.
       model = MS.buildModel(M.rng(ctx.build ? 7 + list.indexOf(ctx) : 1), ctx);
       upto = 0; R.gate.innerHTML = '';
-      R.fig.innerHTML = modelFig(ctx, model); R.fig.setAttribute('data-view', view); sizeFig();
+      R.fig.innerHTML = modelFig(ctx, model); liftNote(); R.fig.setAttribute('data-view', view); sizeFig();
       if(LS && LS.fit) setTimeout(function(){ LS.fit(); }, 0);
       buildPane(); paintSee(); whyBox(); details();
     }
+    /* Second pass (2026-11-10): the long numbered key under the drawing is
+       gone. One line under the drawing names the place in focus (the newest,
+       or the one the student taps on the drawing); every place is listed in
+       Details, and the caption gives the reason. A note about how the drawing
+       is made moves into Explanation (liftNote). */
+    // The opening caption keeps the claim's first sentence; the whole claim heads Explanation.
+    function firstSentence(t){ var m = /^.+?[.!?](?=\s+[A-Z]|$)/.exec(t || ''); return m ? m[0] : (t || ''); }
+    function liftNote(){
+      var n = R.fig.querySelector('.ms-card > .ms-note');
+      figNote = n ? n.textContent : '';
+      if(n) n.parentNode.removeChild(n);
+    }
     function paintSee(){
       var n = model.slots.length, figEl = R.fig.querySelector('.ms-fig');
-      R.skey.innerHTML = view === 'see' ? model.slots.map(function(s, i){ return i < upto ? '<li class="' + (i === upto - 1 ? 'is-cur' : '') + '"><span class="ms-n">' + (i + 1) + '</span><span>' + piece(i) + '</span></li>' : ''; }).join('') : '';
+      if(!focus || focus > upto) focus = upto;
+      var c = focus;
+      R.skey.innerHTML = view === 'see' && c ? '<li class="is-cur"><span class="ms-n">' + c + '</span><span>' + piece(c - 1) + '</span>' + (upto > 1 ? '<span class="ms-tapn">Tap a number to name it</span>' : '') + '</li>' : '';
       R.key.innerHTML = model.slots.map(function(s, i){
         if(i >= upto) return '';
         return '<li class="' + (i === upto - 1 ? 'is-cur' : '') + '"><span class="ms-n" aria-hidden="true">' + (i + 1) + '</span><span><b>' + esc(Mdl.slotName(model, i)) + ':</b> ' + piece(i) + (i === upto - 1 && why(i) ? '<span class="ms-why">' + esc(why(i)) + '</span>' : '') + '</span></li>';
       }).join('');
       R.back.disabled = upto === 0; R.next.disabled = upto >= n;
       R.next.textContent = upto === 0 ? 'Start: the first place' : upto >= n ? 'All places shown' : 'Next place';
-      mark(figEl, upto, view === 'see' && upto ? { upto: upto } : null);
-      if(view === 'see') caption(upto ? '<b>' + esc(Mdl.slotName(model, upto - 1)) + ': ' + piece(upto - 1) + '.</b> ' + esc(why(upto - 1)) : '<b>' + esc(ctx.name) + '.</b> ' + esc(ctx.claim));
+      mark(figEl, c, view === 'see' && upto ? { upto: upto } : null);
+      if(view === 'see') caption(c ? '<b>' + esc(Mdl.slotName(model, c - 1)) + ': ' + piece(c - 1) + '.</b> ' + esc(why(c - 1)) : '<b>' + esc(ctx.name) + '.</b> ' + esc(firstSentence(ctx.claim)));
+      // The drill offer appears once the whole model has been seen (or built and checked).
+      R.go.hidden = view === 'see' ? upto < n : !graded;
       if(LS) LS.pills(upto ? [{ html: upto + ' of ' + n + ' places', tone: 'readout' }] : [{ html: esc(ctx.unit), tone: 'ghost' }], 'left', 'explore');
     }
     function buildPane(){
@@ -226,7 +242,7 @@
       graded = true; mctl.lock(g); R.fig.classList.add('is-graded');
       var fe = R.fig.querySelector('.ms-fig');
       if(fe) g.results.forEach(function(x, i){ fe.querySelectorAll('.ms-badge[data-n="' + (i + 1) + '"]').forEach(function(b){ b.classList.add(x.ok ? 'is-ok' : 'is-no'); }); });
-      R.ctl.querySelector('.ms-check').disabled = true;
+      R.ctl.querySelector('.ms-check').disabled = true; R.go.hidden = false;
       R.fb.innerHTML = g.correct ? '<span class="hug-mark ok">Correct</span> Every piece is in its place.' : '<span class="hug-mark no">Not yet</span> ' + esc(g.slip) + ' (' + g.right + ' of ' + g.total + ' in place.) Press Start over to try again.';
       caption(g.correct ? '<b>Built.</b> ' + esc(ctx.claim) : '<b>' + g.right + ' of ' + g.total + ' in place.</b> ' + esc(g.slip));
       if(LS) LS.pills([{ html: g.right + ' of ' + g.total + ' in place', tone: g.correct ? 'good' : 'warn' }], 'left', 'explore');
@@ -234,10 +250,10 @@
     function setView(v){
       view = v; R.fig.setAttribute('data-view', v);
       // A drawing made from numbers starts again as the rule (not the primate-city switch).
-      if(ctx.build){ R.fig.innerHTML = modelFig(ctx, model); sizeFig(); if(LS && LS.fit) setTimeout(function(){ LS.fit(); }, 0); }
+      if(ctx.build){ R.fig.innerHTML = modelFig(ctx, model); liftNote(); sizeFig(); if(LS && LS.fit) setTimeout(function(){ LS.fit(); }, 0); }
       R.views.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
       R.see.hidden = v !== 'see'; R.build.hidden = v !== 'build';
-      if(v === 'build'){ mark(R.fig.querySelector('.ms-fig'), 0, null); R.skey.innerHTML = ''; caption('Tap a piece, then the place it belongs: the numbers match the drawing. Then press Check.'); if(LS) LS.pills([{ html: 'Build it', tone: 'ghost' }], 'left', 'explore'); }
+      if(v === 'build'){ mark(R.fig.querySelector('.ms-fig'), 0, null); R.skey.innerHTML = ''; R.go.hidden = !graded; caption('Tap a piece, then the place it belongs: the numbers match the drawing. Then press Check.'); if(LS) LS.pills([{ html: 'Build it', tone: 'ghost' }], 'left', 'explore'); }
       else paintSee();
     }
     function whyBox(){
@@ -245,7 +261,8 @@
       var body = '<p>' + esc(ctx.origin) + (ctx.aside ? ' <span class="hug-aside">' + esc(ctx.aside) + '</span>' : '') + '</p>' +
         '<h4 class="ms-h4">What it assumes</h4><ul>' + (ctx.assumes || []).map(function(a){ return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>' +
         '<h4 class="ms-h4">Where it fails</h4><ul>' + (L.right || []).map(function(x){ return '<li><b>' + esc(x.t) + '.</b> ' + esc(x.why) + '</li>'; }).join('') + '</ul>' +
-        '<p class="bt-small">A model is a simplified idea, not a fact. On the exam, say what it assumes and where it fits poorly.</p>';
+        '<p class="bt-small">A model is a simplified idea, not a fact. On the exam, say what it assumes and where it fits poorly.</p>' +
+        (figNote ? '<h4 class="ms-h4">About the drawing</h4><p class="bt-small">' + esc(figNote) + '</p>' : '');
       T.explain(R.say, '<b>' + esc(ctx.name) + '.</b> ' + esc(ctx.claim), body);
       if(LS && LS.setupRow) LS.setupRow.open();
     }
@@ -264,15 +281,23 @@
     function onClick(e){
       var b = e.target.closest('button'); if(!b) return;
       if(b.parentNode === R.views){ act(); setView(b.getAttribute('data-v')); }
-      else if(b.classList.contains('ms-next')){ act(); if(upto < model.slots.length){ upto++; paintSee(); } }
-      else if(b.classList.contains('ms-back')){ act(); if(upto > 0){ upto--; paintSee(); } }
-      else if(b.classList.contains('ms-all')){ act(); upto = model.slots.length; paintSee(); }
+      else if(b.classList.contains('ms-next')){ act(); if(upto < model.slots.length){ upto++; focus = upto; paintSee(); } }
+      else if(b.classList.contains('ms-back')){ act(); if(upto > 0){ upto--; focus = upto; paintSee(); } }
+      else if(b.classList.contains('ms-all')){ act(); upto = model.slots.length; focus = upto; paintSee(); }
       else if(b.classList.contains('ms-check')) check();
       else if(b.classList.contains('ms-again')){ buildPane(); setView('build'); }
       else if(b.classList.contains('ms-drill')) drill();
     }
     host.addEventListener('click', onClick);
-    R.pick.addEventListener('change', function(){ act(); pickModel(R.pick.value); setView(view); });
+    // Name a part on tap: a shown number on the drawing puts that place in focus.
+    function onTapNum(e){
+      if(view !== 'see' || !upto) return;
+      var t = e.target.closest && e.target.closest('.ms-badge, .hug-model-num, .hug-model-band'); if(!t || !R.fig.contains(t)) return;
+      var k = +(t.getAttribute('data-n') || (t.classList.contains('hug-model-num') ? t.textContent : 0));
+      if(k >= 1 && k <= upto){ act(); focus = k; paintSee(); }
+    }
+    R.fig.addEventListener('click', onTapNum);
+    R.pick.addEventListener('change', function(){ act(); focus = 0; pickModel(R.pick.value); setView(view); });
     function studio(pane, s){
       LS = s;
       R.cap.classList.add('sr-only'); R.cap.removeAttribute('aria-live');
