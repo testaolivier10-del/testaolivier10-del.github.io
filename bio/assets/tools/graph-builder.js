@@ -404,6 +404,6 @@
     arrange();
     dataFit();
     app.hidden = true;
-    s.hint({ target: '.gb-step .bt-radio', text: 'Start here: pick the graph type' });
+    s.hint({ target: '.gb-step fieldset', text: 'Start here: pick the graph type' });
   }
 })();
