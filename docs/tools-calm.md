@@ -15,8 +15,8 @@ approved ("do that for all"): the "Calmer tools redesign" canvas (reaction predi
    it); (3) "Details" tab in the same sheet: numbers, equations, tables, references, extra settings.
 4. Explore | Practice (or the tool's existing mode names) as one segmented control at the top of the dock. Practice
    shows one step at a time ("Step 2 of 5", one input or choice), never a wall of inputs.
-5. Point, don't explain: a soft pulsing hint on the first thing to touch, shown until the first interaction (once
-   per tool per device), respecting reduced motion.
+5. Point, don't explain: one short hint line beside the first thing to touch and a ring inside it, shown until the
+   first interaction (once per tool per device), respecting reduced motion; it never covers anything.
 6. Feedback lands on the stage: a result pill or highlight on the visual, not a text block below.
 7. One calm visual system: about three text sizes, sentence case labels (no caps kickers), no cards inside cards,
    generous whitespace, the shared controls (segmented, chips, slider, stepper), course color as the only accent.
@@ -41,8 +41,15 @@ tool-studio.js; the short version:
 - `s.modes({ items, value, onChange })` draws the segmented switch, or `s.modes({ el, value })` adopts the tool's own;
   calling it again replaces the set (one click listener, the latest `onChange`); `s.mode(v)` switches. `s.caption(html, mode?)` and `s.pills([{ html, tone, k }], 'left'|'right', mode?)` are kept per
   mode (tones: accent, good, bad, warn, ghost, readout). `s.open('why'|'details'|'about')`, `s.close()`.
-- `s.hint({ target, text })`: pulse ring + tooltip, once per tool per device (localStorage, try/catch), static ring
-  with reduced motion, gone on the first pointer/key/input in the studio.
+- `s.hint({ target, text })`: once per tool per device (localStorage, try/catch). Since tool review pass 3
+  (docs/tool-review/pass2/shared.md) it is one quiet line IN THE LAYOUT, never a bubble over the page: under the
+  target's row in the dock, under the caption for a stage target, at the top of a sticky band on a phone ("Start
+  here:" dropped). The ring is drawn inside the target's own box (a slider's wrapper rings only its slider), pulses
+  softly, holds still with reduced motion, and stops at a sticky band's edge. Both go after the first action (a drag
+  keeps them until the finger lifts; a finger that only scrolls does not count).
+- Chip overflow (pass 3): a row of more than five short in-flow chips shows four, the selected one and "More (n)",
+  which opens the rest in place ("Fewer" folds them; focus goes to the first revealed chip). Never in a quiz mode,
+  on `[data-ls-answer]`, `[data-ls-allchips]` (opt out) or the answer sets listed in `NOCHIPS` in tool-studio.js.
 - `LevlStudio.stepper(container, { items, submit, total, done })`: one step at a time over existing graded inputs
   ("Step 2 of 5", dots, Back/Next; Next only to steps that exist, so a drill's own Check moves on; `done()` shows all
   steps for review; optional). `s.suspend(on)` hides the studio for a Premium gate.

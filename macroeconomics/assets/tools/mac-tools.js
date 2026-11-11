@@ -37,10 +37,9 @@
      Page frame (phone first): frame(app, data, { noun, howTitle }) -> { pick,
        area }: the problem, then the picker row behind "More options", then
        "About this <noun>" (intro and how it works), both closed.
-     hintSlot(s, target, text, { before, cls }) -> the Tool Studio's first-run
-       tip (s.hint) in an empty slot opened just above its target (or above
-       `before`), so the tip never covers another control; the slot goes on the
-       first action. Default slot class mac-tipslot (mac-tools.css).
+     hintSlot(s, target, text) -> the Tool Studio's first-run tip (s.hint), once its
+       target is fully in view on a phone; the studio puts it in the layout under the
+       target's row. (`before` and `cls` are accepted and ignored.)
      keepGoing(host, { topic, also }) -> the "Keep going" strip after a graded
        problem: the topic's lesson and notes, its glossary terms (from
        assets/glossary.json), and lessons for any other topic missed. */
@@ -969,25 +968,9 @@
       return { dismiss: stopWait, place: function(){} };
     }
     return now();
-    function now(){
-      var at = opts.before || target, slot = document.createElement('div');
-      slot.className = opts.cls || 'mac-tipslot'; slot.setAttribute('aria-hidden', 'true');
-      at.parentNode.insertBefore(slot, at);
-      var h = s.hint({ target: target, text: text });
-      if(!h){ slot.remove(); return null; }
-      // The slot is as tall as the tip, so the tip sits in it and covers no control or label.
-      var tipEl = document.querySelector('.ls-coach');
-      if(tipEl && tipEl.offsetHeight) slot.style.height = (tipEl.offsetHeight + 16) + 'px';
-      var EV = ['pointerdown', 'click', 'keydown', 'input', 'change'];
-      function done(e){
-        if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return;
-        EV.forEach(function(t){ s.root.removeEventListener(t, done, true); });
-        setTimeout(function(){ slot.remove(); if(h.place) h.place(); }, 0);
-      }
-      EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-      if(h.place) h.place();
-      return h;
-    }
+    // The Tool Studio puts the tip in the layout itself now (a line under its target's row), so no slot is
+    // opened for it any more; `before` and `cls` are kept for callers and ignored (tool review pass 3).
+    function now(){ return s.hint({ target: target, text: text }); }
   }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }

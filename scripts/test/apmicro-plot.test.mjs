@@ -46,9 +46,12 @@ test('the statistics and environmental science kinds are gone', () => {
 
 /* The Tool Studio hint on a full-width target never widens the page at 390 px
    (the shared assets/course/tool-studio.*). */
-test('Tool Studio hint: ring clamped to the viewport, tip kept inside it', () => {
+test('Tool Studio hint: ring inside its target, tip a line in the layout', () => {
   const js = readFileSync('assets/course/tool-studio.js', 'utf8'), css = readFileSync('assets/course/tool-studio.css', 'utf8');
-  assert.match(js, /var rl = Math\.max\(0, r\.left - pad\), rr2 = Math\.min\(vw0, r\.right \+ pad\);/);
+  // Pass 3: the ring sits inside its target's own box (inset shadows only) and the tip is a line in the layout.
+  assert.match(js, /ring\.style\.width = \(rr - rl\) \+ 'px'/);
+  assert.match(css, /\.ls-halo\{[^}]*box-shadow:inset 0 0 0 2px var\(--cink\),inset /);
+  assert.match(css, /\.ls-coach\{display:flex;[^}]*width:fit-content;max-width:100%;/);
   assert.match(css, /\.ls-halo\{[^}]*box-sizing:border-box;max-width:100vw;/);
 });
 
