@@ -305,8 +305,9 @@
       var big = [0, 0], bv = -1;
       for(var i = 0; i < S.obs.length; i++) for(var j = 0; j < S.obs[0].length; j++) if(t.components[i][j] > bv){ bv = t.components[i][j]; big = [i, j]; }
       var rej = t.p < S.alpha, bi = big[0], bj = big[1];
-      LS.caption('χ² = <b>' + F(t.chi2, 2) + '</b> with df = ' + t.df + ': p-value <b>' + P4(t.p) + '</b>. The largest share, ' + F(bv, 2) + ', comes from ' + esc(S.st.rows[bi] + ', ' + S.st.cols[bj]) + ' (observed ' + S.obs[bi][bj] + ', expected ' + F(t.expected[bi][bj], 1) + ').', 'explore');
-      var pills = [{ k: 'χ²', html: F(t.chi2, 2), tone: 'readout' }, { k: 'df', html: String(t.df), tone: 'ghost' }, { k: 'p-value', html: P4(t.p), tone: rej ? 'good' : 'warn' }];
+      // pass 2: the chips carry χ² and the p-value, the curve carries df; the caption says only what the table shows
+      LS.caption('The largest share of χ², ' + F(bv, 2) + ', comes from ' + esc(S.st.rows[bi] + ', ' + S.st.cols[bj]) + ' (observed ' + S.obs[bi][bj] + ', expected ' + F(t.expected[bi][bj], 1) + ').', 'explore');
+      var pills = [{ k: 'χ²', html: F(t.chi2, 2), tone: 'readout' }, { k: 'p-value', html: P4(t.p), tone: rej ? 'good' : 'warn' }];
       if(!t.ok) pills.push({ html: 'An expected count is below 5', tone: 'bad' });
       else if(S.test !== S.st.design) pills.push({ html: 'Check the test', tone: 'bad' });
       LS.pills(pills, 'left', 'explore');

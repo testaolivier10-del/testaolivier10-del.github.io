@@ -288,14 +288,16 @@
       else if(sel > -1){
         var v = vals[sel], zz = S.sd > 0 ? (v - S.mean) / S.sd : 0, out = v < S.fences[0] || v > S.fences[1];
         head = '<b>' + esc(nf(v) + ' ' + u) + ': z = ' + esc(fx(zz, 2)) + '.</b> ' + esc(fx(Math.abs(zz), 2) + ' SD ' + (zz >= 0 ? 'above' : 'below') + ' the mean; ' + (out ? 'an outlier by the 1.5 × IQR rule.' : 'inside the fences, so not an outlier.'));
-      } else head = '<b>Mean ' + esc(fx(S.mean, 1)) + ', median ' + esc(nf(S.med)) + ' ' + esc(u) + '.</b> ' + (touched ? esc(cap(sh.word) + ': the mean sits ' + (Math.abs(dM) < 0.05 * S.sd ? 'right at' : dM > 0 ? 'to the right of' : 'to the left of') + ' the median.') : 'Drag a dot far to one side: which line follows it?');
+      } else head = (LS ? '' /* pass 2: the Mean and Median chips already carry the numbers */ : '<b>Mean ' + esc(fx(S.mean, 1)) + ', median ' + esc(nf(S.med)) + ' ' + esc(u) + '.</b> ') + (touched ? esc(cap(sh.word) + ': the mean sits ' + (Math.abs(dM) < 0.05 * S.sd ? 'right at' : dM > 0 ? 'to the right of' : 'to the left of') + ' the median.') : 'Drag a dot far to one side: which line follows it?');
       sub = whyHtml(S);
       T.explain($('.dx-say'), head, sub);
       nums(S);
       if(LS){
         LS.caption(head, 'explore');
         LS.pills([{ k: 'Mean', html: esc(fx(S.mean, 1)), tone: 'readout' }, { k: 'Median', html: esc(nf(S.med)), tone: 'readout' }], 'left', 'explore');
-        LS.pills(phone() ? [{ k: 'SD', html: esc(fx(S.sd, 1)) + ' · IQR ' + esc(nf(S.iqr)), tone: 'ghost' }] : [{ k: 'SD', html: esc(fx(S.sd, 1)), tone: 'ghost' }, { k: 'IQR', html: esc(nf(S.iqr)), tone: 'ghost' }], 'right', 'explore');
+        // pass 2: SD and IQR show when the student turns on what they measure (Mean ± 1 SD, Outlier fences); all summaries stay in Data & numbers
+        var sp = []; if(show.sd) sp.push({ k: 'SD', html: esc(fx(S.sd, 1)), tone: 'ghost' }); if(show.fences) sp.push({ k: 'IQR', html: esc(nf(S.iqr)), tone: 'ghost' });
+        LS.pills(phone() && sp.length > 1 ? [{ k: 'SD', html: esc(fx(S.sd, 1)) + ' · IQR ' + esc(nf(S.iqr)), tone: 'ghost' }] : sp, 'right', 'explore');
       }
     }
     function whyHtml(S){

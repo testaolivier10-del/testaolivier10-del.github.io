@@ -367,7 +367,8 @@
       else if(K < 20) head = 'This ' + (cur.diff ? 'difference' : 'sample ' + nm.what) + ' is ' + F(last ? last.stat : stats[stats.length - 1], d0) + '. Each new sample gives a different value: take more.';
       else {
         var mS = Dd().mean(stats), sS = Dd().sd(stats);
-        head = big(K) + ' values of ' + nm.sym + ': centered at ' + F(mS, d0) + ' (formula ' + F(th0.center, d0) + '), SD ' + F(sS, d0 + 1) + ' (formula ' + F(th0.sd, d0 + 1) + ').';
+        // pass 2: in the studio the plot already prints the center and SD beside the formula values
+        head = LS ? big(K) + ' values of ' + nm.sym + '.' : big(K) + ' values of ' + nm.sym + ': centered at ' + F(mS, d0) + ' (formula ' + F(th0.center, d0) + '), SD ' + F(sS, d0 + 1) + ' (formula ' + F(th0.sd, d0 + 1) + ').';
         sub = shapeWord(th0);
       }
       var why = whyHtml(th0, K);
@@ -465,9 +466,10 @@
     }
     var origReset = reset;
     reset = function(){ origReset(); drawMode(); };
-    /* The landing view: 100 sample means already stacked and the last
-       sample shown (audit: "starts with two empty panels"). */
-    function seedView(){ for(var i = 0; i < 100; i++){ last = sampleOnce(); stats.push(last.stat); } draw(); speak(); }
+    /* The landing view: one sample already drawn, so no panel is empty (audit:
+       "starts with two empty panels"), but the pile builds only when the student
+       takes more (pass 2, 2026-11-10: a finished pile of 100 gave the ending away). */
+    function seedView(){ for(var i = 0; i < 1; i++){ last = sampleOnce(); stats.push(last.stat); } draw(); speak(); }
     var firstStudio = true, origStudio = studio;
     studio = function(pane, s){ origStudio(pane, s); if(firstStudio){ firstStudio = false; seedView(); } };
     setRange(); syncChips(); drawMode(); draw();

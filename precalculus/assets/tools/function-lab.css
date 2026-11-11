@@ -18,6 +18,10 @@
 .fl-eqline{display:none;margin:0;font:600 15px/1.3 var(--font-ui);color:var(--ink);white-space:nowrap;overflow-x:auto;scrollbar-width:none;}
 @container (max-width: 760px){ .fl-side{display:none;} .fl-eqline{display:block;} }
 .ls-phone .fl-side{display:none;} .ls-phone .fl-eqline{display:block;}
+/* In the studio the graph is the one picture: the formula line sits on it, and the
+   key-point table and features live in Numbers & details (pass 2, 2026-11-10). */
+.ls-root .fl-side{display:none;} .ls-root .fl-eqline{display:block;}
+.ls-root:not(.ls-phone) .fl-eqline{font-size:19px;padding:2px 4px;}
 
 .fl-bg{fill:var(--fl-bg);stroke:var(--line);stroke-width:1;}
 .fl-grid{stroke:var(--fl-grid);stroke-width:1;} .fl-grid.is-minor{stroke:var(--fl-grid2);}

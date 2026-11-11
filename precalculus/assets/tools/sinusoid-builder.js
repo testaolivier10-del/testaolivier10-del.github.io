@@ -259,7 +259,8 @@
       var b = TAU / p.T, bT = SB.piText(b), cT = p.c === 0 ? '' : ' ' + (p.c > 0 ? '+ ' : '− ') + nt(Math.abs(p.c));
       var fx = L.wide ? L.gx0 : L.W / 2, an = L.wide ? 'start' : 'middle';
       o.push(txt(fx, L.f1, '<tspan class="sb-c-y">' + S.yName + '(t) = </tspan><tspan class="sb-c-a">' + nt(p.a) + '</tspan> ' + p.form + '(<tspan class="sb-c-T">' + esc(bT) + '</tspan>(t<tspan class="sb-c-c">' + esc(cT) + '</tspan>)) <tspan class="sb-c-d">+ ' + nt(p.d) + '</tspan>', 'sb-formula', an));
-      o.push(txt(fx, L.f2, 'period ' + nt(p.T) + ' ' + S.tUnit + ' · b = 2π/' + nt(p.T) + ' = ' + esc(bT) + ' · frequency ' + esc(SB.n(1 / p.T)) + ' per ' + S.tUnit, 'sb-sub', an));
+      // pass 2: the period, b and frequency line moved off the picture into Key points & form
+      var perl = det && det.querySelector('.sb-perline'); if(perl) perl.textContent = 'Period ' + nt(p.T) + ' ' + S.tUnit + ', so b = 2π/' + nt(p.T) + ' = ' + bT + ' and the frequency is ' + SB.n(1 / p.T) + ' per ' + S.tUnit + '.';
       gD.innerHTML = o.join('');
       // handles
       place('pk', gx(pk <= win() ? pk : pk - p.T), gy(p.d + p.a), pk <= win() || pk - p.T >= 0);
@@ -323,7 +324,7 @@
 
     /* ---------------------------------------------------- Details */
     function buildDetails(){
-      det.innerHTML = '<h3 class="ls-title-l">The five key points of your model</h3><p class="bt-small">One cycle from where it starts, a quarter period apart. On the exam these are the labeled points of Q3.</p><div class="sb-keys"></div>' +
+      det.innerHTML = '<h3 class="ls-title-l">Period, b and frequency</h3><p class="sb-perline"></p><h3 class="ls-title-l">The five key points of your model</h3><p class="bt-small">One cycle from where it starts, a quarter period apart. On the exam these are the labeled points of Q3.</p><div class="sb-keys"></div>' +
         '<h3 class="ls-title-l">Sine or cosine</h3><div class="ls-seg sb-form" role="group" aria-label="Form of the model"><button type="button" class="bt-mode" data-f="sin" aria-pressed="true">a sin(b(t + c)) + d</button><button type="button" class="bt-mode" data-f="cos" aria-pressed="false">a cos(b(t + c)) + d</button></div>' +
         '<p class="bt-small">Both forms can fit; only the shift changes. Cosine is sine shifted left a quarter period.</p>' +
         '<div class="sb-tbl"></div>' +
