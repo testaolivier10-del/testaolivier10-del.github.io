@@ -808,6 +808,9 @@
     });
   }
   function paintChips(){
+    var sn = document.querySelector('#rpSubPick .tool-more__now'), rn = document.querySelector('#rpRgtPick .tool-more__now');
+    if(sn) sn.textContent = state.sub.generic ? state.sub.name : (state.sub.name || SHORT[state.sub.id]);
+    if(rn) rn.textContent = state.rgt.name;
     press(elSub, 'data-sub', state.sub.generic ? '' : state.sub.id);
     press(elRgt, 'data-rgt', state.rgt.id);
     press(elSolv, 'data-solv', state.solvent.id);
@@ -847,15 +850,29 @@
   if(studio){
     var byId = function(id){ return document.getElementById(id); };
     var box = function(cls, kids){ var d = document.createElement('div'); d.className = cls; kids.forEach(function(k){ if(k) d.appendChild(k); }); return d; };
-    byId('rpSub').classList.add('ls-scroll'); byId('rpRgt').classList.add('ls-scroll');
-    ['rpSubK', 'rpRgtK'].forEach(function(id){ byId(id).classList.add('ls-lbl'); });
+    /* Pass 3 (cleanup 2026-11-11): substrate and reagent are two pickers that
+       open on tap, like "Solvent and heat" under them; the reagent's
+       nucleophile and base bars show once its picker is open. One picker
+       open at a time. */
+    var picker = function(id, n, label, kids){
+      var d = document.createElement('details'); d.className = 'tool-more rp-picker'; d.id = id;
+      d.innerHTML = '<summary><span class="rp-n">' + n + '</span>' + label + ' <span class="tool-more__now"></span></summary>';
+      kids.forEach(function(k){ if(k) d.appendChild(k); });
+      return d;
+    };
+    byId('rpSubK').hidden = true; byId('rpRgtK').hidden = true;
+    var subPick = picker('rpSubPick', 1, 'Substrate', [byId('rpSub')]);
+    var rgtPick = picker('rpRgtPick', 2, 'Reagent', [byId('rpRgt'), byId('rpRgtNote')]);
+    [subPick, rgtPick, byId('rpOpts')].forEach(function(d, i, all){
+      d.addEventListener('toggle', function(){ if(d.open) all.forEach(function(o){ if(o !== d) o.open = false; }); });
+    });
     var next = document.createElement('button');
     next.type = 'button'; next.className = 'ls-btn ls-pri rp-ls-next'; next.textContent = 'Next flask'; next.hidden = true;
     next.addEventListener('click', shuffle);
     var det = document.createElement('div'); det.id = 'rpDetails'; det.className = 'ls-sec';
     studio.root.classList.add('rp-ls');
     studio.add('stage', [byId('rpStage'), box('rp-ls-meter', [root.querySelector('.rp-cols'), byId('rpMeter')])]);
-    studio.add('dock', [next, box('rp-ls-pick', [byId('rpSubK'), byId('rpSub')]), box('rp-ls-pick', [byId('rpRgtK'), byId('rpRgt'), byId('rpRgtNote')]), byId('rpOpts')]);
+    studio.add('dock', [next, byId('rpSubK'), byId('rpRgtK'), subPick, rgtPick, byId('rpOpts')]);
     studio.add('why', [byId('rpVerdict'), byId('rpRead'), byId('rpDelta'), byId('rpLive')]);
     studio.details.insertBefore(det, studio.details.firstChild);
     // The tool's own mode switch goes to the top of the dock.
