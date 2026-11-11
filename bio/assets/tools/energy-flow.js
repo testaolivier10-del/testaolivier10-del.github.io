@@ -142,18 +142,28 @@
     var pickLevel = null;
     function flow(s){
       // On a phone the labels are larger, so the levels move right to leave the heat labels room.
-      var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = 400, cx = document.querySelector('.ls-root.ls-phone') ? 188 : 170, p = [];
+      // pass 3: on a phone the picture is drawn narrower (shorter heat arrows, narrower boxes) so its words read at full size
+      var PH = !!document.querySelector('.ls-root.ls-phone');
+      var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = PH ? 340 : 400, cx = PH ? 152 : 170, p = [];
       var lmax = Math.log10(Math.max.apply(null, L.map(function(x){ return x.inE; }))), lmin = Math.log10(Math.max(1e-3, Math.min.apply(null, L.map(function(x){ return x.inE; }))));
-      var bw = function(v){ var span = Math.max(1, lmax - lmin); return 112 + 92 * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
+      var bw = function(v){ var span = Math.max(1, lmax - lmin); return (PH ? 98 : 112) + (PH ? 54 : 92) * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
       var aw = function(v){ return Math.max(1.5, Math.min(18, 2 + 3 * Math.log10(Math.max(1, v)))); };
       var A = window.ApBioArt, art = function(nm, x, y, sz, cls){ return A ? A.icon(nm, x, y, sz, cls) : ''; };
-      p.push('<rect class="ef-dec" x="' + (Wd - 100) + '" y="' + (H - 76) + '" width="96" height="68" rx="12"/>' + art('mushroom', Wd - 52, H - 56, 24, 'ef-o dec') + '<text class="ef-lab" x="' + (Wd - 52) + '" y="' + (H - 30) + '" text-anchor="middle">decomposers</text>' + (pickLevel != null ? '<text class="ef-num" x="' + (Wd - 52) + '" y="' + (H - 15) + '" text-anchor="middle">' + num(s.decomp) + '</text>' : ''));
-      p.push(art('sun', cx - 92, H - 10, 18, 'ef-o sun') + '<text class="ef-lab ef-sun" x="' + cx + '" y="' + (H - 6) + '" text-anchor="middle">GPP ' + num(s.gpp) + ' kcal/m²/yr</text>');
+      var DW = PH ? 100 : 96, DX = Wd - DW / 2 - 4;
+      p.push('<style>svg.ef-flow .ef-heat3{fill:none;stroke:var(--bio-symp);stroke-linecap:round;stroke-linejoin:round;opacity:.8}svg.ef-flow .ef-heathead{fill:var(--bio-symp);opacity:.8}svg.ef-flow .ef-heatword{font:700 11px var(--font-ui);fill:var(--bio-symp)}.ls-root.ls-phone svg.ef-flow .ef-heatword{font-size:13px}</style>');
+      p.push('<rect class="ef-dec" x="' + (Wd - DW - 4) + '" y="' + (H - 76) + '" width="' + DW + '" height="68" rx="12"/>' + art('mushroom', DX, H - 56, 24, 'ef-o dec') + '<text class="ef-lab" x="' + DX + '" y="' + (H - 30) + '" text-anchor="middle">decomposers</text>' + (pickLevel != null ? '<text class="ef-num" x="' + DX + '" y="' + (H - 15) + '" text-anchor="middle">' + num(s.decomp) + '</text>' : ''));
+      // pass 3: GPP sits in the producer box (it was said twice); the sun line now names the light and the unit
+      p.push(art('sun', cx - 70, H - 10, 18, 'ef-o sun') + '<text class="ef-lab ef-sun" x="' + (cx - 56) + '" y="' + (H - 6) + '">sunlight · kcal/m²/yr</text>');
       L.forEach(function(x, i){
         var y = H - 26 - (i + 1) * rowH + 14, w = bw(x.inE), sel = pickLevel === i;
         // heat to the left, decomposers to the right-down, passed on upward
         var hw = aw(x.heat);
-        p.push('<path class="ef-heat" stroke-width="' + hw.toFixed(1) + '" d="M' + (cx - w / 2) + ' ' + (y + 26) + ' c-10 -8 -14 8 -24 0 s-14 -8 -24 0 s-14 -8 -24 0"/>');
+        // pass 3: heat is a wavy arrow leaving the box (its thickness grows with the heat), not a fat squiggle
+        var hx = cx - w / 2 - 3, hy = y + 20, seg = PH ? 9 : 12, nw = PH ? 3 : 4, hd = 'M' + hx + ' ' + hy;
+        for(var q = 0; q < nw; q++) hd += ' q' + (-seg / 2) + ' ' + (q % 2 ? 6 : -6) + ' ' + (-seg) + ' 0';
+        var hs = Math.max(1.6, Math.min(5, hw / 3)), ex = hx - seg * nw;
+        p.push('<path class="ef-heat3" stroke-width="' + hs.toFixed(1) + '" d="' + hd + '"/><path class="ef-heathead" d="M' + (ex - 7 - hs) + ' ' + hy + ' l' + (8 + hs) + ' ' + (-4 - hs / 2) + ' v' + (8 + hs) + 'Z"/>');
+        if(i === n - 1 && pickLevel == null) p.push('<text class="ef-heatword" x="' + (ex - 8) + '" y="' + (hy - 12) + '">heat</text>');
         // pass 2 (2026-11-10): the heat and eaten numbers show for the level the student taps
         if(sel) p.push('<text class="ef-heatlab" x="4" y="' + (y + 10) + '">heat ' + sig(x.heat) + '</text>');
         if(x.decomp > 0){ var dw = aw(x.decomp); p.push('<path class="ef-down" stroke-width="' + dw.toFixed(1) + '" d="M' + (cx + w / 2) + ' ' + (y + 24) + ' L' + (Wd - 64) + ' ' + (H - 74) + '"/>'); }
@@ -166,7 +176,7 @@
         }
         p.push('<g class="ef-lvl' + (sel ? ' sel' : '') + '" data-lv="' + i + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(lname(i) + ': absorbs ' + sig(x.inE) + ' kcal/m²/yr. Tap to see where it went.') + '"><rect class="ef-box" x="' + (cx - w / 2).toFixed(1) + '" y="' + y + '" width="' + w.toFixed(1) + '" height="40" rx="10"/>' +
           (A && A.has(eco().organisms[i]) ? art(eco().organisms[i], cx - w / 2 + 19, y + 20, 28, 'ef-o l' + i) : '') +
-          '<text class="ef-lab" x="' + (cx + 12) + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + (cx + 12) + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' captured') + '</text></g>');
+          '<text class="ef-lab" x="' + (cx + 12) + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + (cx + 12) + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' GPP') + '</text></g>');
       });
       var desc = 'Energy flow, producers at the bottom: ' + L.map(function(x, i){ return eco().organisms[i] + ' take in ' + sig(x.inE) + ', lose ' + sig(x.heat) + ' as heat' + (i < n - 1 ? ', pass ' + sig(x.passed) + ' up' : '') + ', ' + sig(x.decomp) + ' to decomposers'; }).join('; ') + ' (kcal/m²/yr).';
       var host = card.querySelector('.ef-flowfig');
