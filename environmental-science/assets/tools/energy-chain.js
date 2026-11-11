@@ -123,9 +123,10 @@
       // values never sit on a flow: on a phone inside the band itself, on a
       // wide screen in one row above the widest part of the band
       if(i === 0) out.push(vert ? txt(mid, (at(0) + at(1)) / 2 + 5, '100', 'ech-t ech-ev ech-on-band', 'middle') : txt((at(0) + at(1)) / 2, mid + 5, '100', 'ech-t ech-ev ech-on-band', 'middle'));
-      else if(!vert){ if(i === n - 1 || on || o.static) out.push(txt(a, mid - bandMax / 2 - 8, f0(l.e), 'ech-t ech-ev', 'middle')); }
+      // pass 3: what reaches you is written at the band's end, by the outlet
+      else if(!vert){ if(i === n - 1) out.push(txt(a + 8, mid + 5, f1(l.e), 'ech-t ech-ev ech-end', 'start')); else if(on || o.static) out.push(txt(a, mid - bandMax / 2 - 8, f0(l.e), 'ech-t ech-ev', 'middle')); }
       // phone: halfway to the next stage, inside the band when it is wide enough, else just left of it
-      else if(i === n - 1) out.push(txt(mid, a + 16, f0(l.e), 'ech-t ech-ev', 'middle'));
+      else if(i === n - 1) out.push(txt(mid, a + 16, f1(l.e), 'ech-t ech-ev', 'middle'));   // pass 3: the same figure as the To you pill
       else out.push(txt(mid - bandMax / 2 - 6, a + step / 2 + 5, f0(l.e), 'ech-t ech-ev', 'end'));
     });
     // where the 100 units end up (wide screens with room)
@@ -184,7 +185,7 @@
       '<div class="ech-fig"></div>' +
       '<div class="ech-ctl">' +
         '<div class="ech-views ls-seg" role="group" aria-label="View"><button type="button" class="ech-view" data-v="flow" aria-pressed="true">Energy flow</button><button type="button" class="ech-view" data-v="cmp" aria-pressed="false">Compare</button></div>' +
-        '<div class="ech-srcs ech-chips" role="group" aria-label="Power source">' + E.ORDER.map(function(id){ return '<button type="button" class="tchip ech-src" data-id="' + id + '" aria-pressed="false">' + esc(E.SOURCES[id].name) + '</button>'; }).join('') + '</div>' +
+        '<div class="ech-srcs"></div>' +
         '<div class="ech-meas ech-chips" role="group" aria-label="Measure" hidden>' + MEASURES.map(function(m){ return '<button type="button" class="tchip ech-m" data-m="' + m.id + '" aria-pressed="false">' + esc(m.label) + '</button>'; }).join('') + '</div>' +
       '</div>' +
       '<div class="ech-say"></div>' +
@@ -193,6 +194,9 @@
     var say = T.announcer($('.ech-live'));
     var cue = T.cue('Pick a power source, then tap a step to see where its energy goes.');
     $('.ech-ctl').insertBefore(cue.el, $('.ech-ctl').firstChild);
+    // Pass 3: the six power sources are one select (it was six chips).
+    var srcSel = T.choiceSelect({ label: 'Power source', options: E.ORDER.map(function(id){ return { value: id, label: E.SOURCES[id].name }; }), value: st.id, onChange: function(v){ st.id = v; st.sel = null; act(); draw(); say($('.ech-say .bt-say-h').textContent); } });
+    $('.ech-srcs').appendChild(srcSel.el);
     var sK = T.slider({ label: 'Electricity used at home', min: 100, max: 2000, step: 100, value: st.kwh, unit: 'kWh', onInput: function(v){ st.kwh = v; words(); } });
     $('.ech-home').appendChild(sK.el);
     $('.ech-home').insertAdjacentHTML('beforeend', '<div class="ech-homeout"></div>');
@@ -238,7 +242,7 @@
     }
     function sync(){
       var root = LS ? LS.root : host;
-      root.querySelectorAll('.ech-src').forEach(function(b){ var on = b.getAttribute('data-id') === st.id; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
+      if(srcSel.value() !== st.id) srcSel.set(st.id);
       root.querySelectorAll('.ech-view').forEach(function(b){ var on = b.getAttribute('data-v') === st.view; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       root.querySelectorAll('.ech-m').forEach(function(b){ var on = b.getAttribute('data-m') === st.measure; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       var ms = root.querySelector('.ech-meas'), ss = root.querySelector('.ech-srcs');

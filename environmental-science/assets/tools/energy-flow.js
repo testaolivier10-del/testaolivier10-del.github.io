@@ -329,7 +329,7 @@
   /* ------------------------------------------------------- explore */
   function explore(host, data){
     var X = data.explore || {}, st = { view: 'energy', eco: X.eco || 'grassland', gpp: X.gpp || 20000, rPct: X.rPct || 50, eff: X.eff || 10, scale: X.scale || 'log', sel: null, removed: null };
-    var LS = null, touched = false, nid = T.nid('ef'), P = null, live = true, myMk = newMk();
+    var LS = null, setupRow = null, touched = false, nid = T.nid('ef'), P = null, live = true, myMk = newMk();
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     var VIEWS = [['energy', 'Energy'], ['biomass', 'Biomass'], ['number', 'Numbers'], ['web', 'Food web']];
     host.innerHTML = '<section class="bt-problem ef-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Energy flow through an ecosystem</h2>' +
@@ -355,7 +355,7 @@
 
     function onClick(e){
       var b = e.target.closest('.ef-view'); if(b){ st.view = b.getAttribute('data-v'); st.sel = null; act(); draw(true); return; }
-      b = e.target.closest('.ef-eco'); if(b){ st.eco = b.getAttribute('data-e'); st.sel = null; st.removed = null; act(); draw(true); return; }
+      b = e.target.closest('.ef-eco'); if(b){ st.eco = b.getAttribute('data-e'); st.sel = null; st.removed = null; act(); draw(true); if(LS) LS.close(); return; }
       b = e.target.closest('.ef-scale [data-s]'); if(b){ st.scale = b.getAttribute('data-s'); (LS ? LS.root : host).querySelectorAll('.ef-scale [data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); draw(); return; }
       if(e.target.closest('.ef-reset')){ st.removed = null; draw(true); return; }
     }
@@ -423,6 +423,7 @@
       // controls
       (LS ? LS.root : host).querySelectorAll('.ef-view').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === st.view)); });
       (LS ? LS.root : host).querySelectorAll('.ef-eco').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-e') === st.eco)); });
+      if(setupRow && setupRow.setup) setupRow.setup(EF.ECOS[st.eco].title);
       $('.ef-gpp').hidden = st.view === 'web'; $('.ef-webctl').hidden = st.view !== 'web'; $('.ef-reset').disabled = !st.removed;
       cue.el.querySelector('.bt-cue-t').textContent = st.view === 'web' ? 'Tap a species to remove it.' : 'Tap a level of the pyramid to see where its energy goes.';
       var w = words();
@@ -474,7 +475,14 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], moreLabel: 'Efficiency, respiration and scale' });
+      // Pass 3: the ecosystem chips wait in Details (a Setup row names the one
+      // showing); the dock keeps the four views and the GPP slider.
+      var ecos = $('.ef-ecos'), lab = document.createElement('p');
+      lab.className = 'ls-lbl'; lab.textContent = 'Ecosystem';
+      var ms = $('.ef-more-sl'); ms.parentNode.insertBefore(lab, ms); ms.parentNode.insertBefore(ecos, ms);
+      setupRow = T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], setup: 'Ecosystem', moreLabel: 'Ecosystem, efficiency, respiration and scale' });
+      // The Setup row opens Details on these settings: they come first there.
+      var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       draw();

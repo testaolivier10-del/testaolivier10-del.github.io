@@ -1,0 +1,17 @@
+/* Buffer drills, the tool's own sheet (pass 3 cleanup, docs/tool-review/pass3/chem.md). */
+/* The whole buffer curve, faint, under the line the taps trace. */
+.bt-plot .series.bf-ghost,.chem-svg .series.bf-ghost{opacity:.18;stroke-width:6;}
+/* The two-item particle key under the beaker. */
+.bf-pkey{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin:0;font:700 var(--ls-s,13px)/1.3 var(--font-ui);color:var(--muted);}
+.bf-pkey span{display:inline-flex;align-items:center;gap:6px;}
+.bf-pkey b{color:var(--ink);font-weight:900;}
+.bf-pkey svg{width:30px;height:30px;}
+.ls-root .chem-ls-stage .bf-pkey{flex:none;}
+/* Wide stage: the beaker, its key under it, the graph beside them. */
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;column-gap:16px;align-items:center;}
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage .bf-beaker{grid-column:1;grid-row:1;height:100%;}
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage .bf-pkey{grid-column:1;grid-row:2;}
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage .bf-plot{grid-column:2;grid-row:1/-1;height:100%;justify-content:center;}
+.ls-root:not(.ls-phone) .chem-ls-stage.bf-ls-stage .lb-svg{max-width:none;}
+/* Phone: the beaker gets more of the height than the graph, so its particles read. */
+.ls-root.ls-phone .chem-ls-stage .bf-beaker{flex:1.6 1 0;}

@@ -83,7 +83,7 @@
     host.querySelector('.ptx-ctl').insertBefore(start.el, host.querySelector('.ptx-keys'));
     var showVals = true;
     host.querySelectorAll('.ptx-key').forEach(function(b){ b.addEventListener('click', function(){ key = b.getAttribute('data-k'); start.done(); draw(); }); });
-    host.querySelector('.ptx-cmp').addEventListener('click', function(){ comparing = !comparing; if(!comparing) other = null; else if(narrow()){ narrowView = 'table'; } draw(); });
+    host.querySelector('.ptx-cmp').addEventListener('click', function(){ comparing = !comparing; if(!comparing) other = null; else if(narrow()){ narrowView = 'table'; } draw(); if(comparing && LS) LS.close(); });
     host.querySelector('.ptx-full').addEventListener('change', function(e){ full = e.target.checked; if(!full && !TR.mainGroup(sel) && sel.z !== 1) sel = byZ[11]; draw(); });
     host.querySelector('.ptx-vals').addEventListener('change', function(e){ showVals = e.target.checked; draw(); });
     function setView(v){ if(v !== 'table') view = v; narrowView = v; draw(); }
@@ -203,7 +203,10 @@
     }
     function draw(){
       $$('.ptx-key').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === key)); });
-      var cmp = $('.ptx-cmp'); cmp.setAttribute('aria-pressed', String(comparing)); cmp.textContent = comparing ? (other ? 'Done comparing' : 'Cancel compare') : 'Compare two elements';
+      var cmp = $('.ptx-cmp'); cmp.setAttribute('aria-pressed', String(comparing));
+      // Pass 3: Compare waits in Details; while a comparison runs, its Done
+      // button sits in the dock, under the trend buttons.
+      if(cmpHome && cmpSlot){ var to = comparing ? cmpSlot : cmpHome; if(cmp.parentNode !== to) to.appendChild(cmp); cmpSlot.hidden = !comparing; } cmp.textContent = comparing ? (other ? 'Done comparing' : 'Cancel compare') : 'Compare two elements';
       $('.ptx-table').innerHTML = tableSvg();
       $('.ptx-stage').classList.toggle('is-full', full);
       $('.ptx-legend').innerHTML = legend();
@@ -263,14 +266,18 @@
       // No right pill: the trend is the pressed button, the compare step the caption.
       LS.pills([], 'right', 'explore');
       LS.caption(T.sayHead($('.ptx-why')), 'explore');
-      SP.setup(full ? 'Whole table' : 'Main groups');
+      SP.setup((full ? 'Whole table' : 'Main groups') + ', compare two');
       SP.open();
     }
+    var cmpHome = null, cmpSlot = null;
     function studio(pane, s){
       LS = s;
       $('.ptx-cmp').classList.add('ls-btn');
-      SP = T.studioPane(pane, s, { stage: [$('.ptx-stage')], dock: [$('.ptx-keys'), $('.ptx-cmp')], setup: 'Table', moreLabel: 'More of the table, values on the cells, sources',
-        why: [$('.ptx-why')], details: [$('.ptx-el')] });
+      cmpSlot = document.createElement('div'); cmpSlot.className = 'ptx-cmpslot'; cmpSlot.hidden = true;
+      cmpHome = document.createElement('div'); cmpHome.className = 'ptx-cmphome';
+      cmpHome.appendChild($('.ptx-cmp'));
+      SP = T.studioPane(pane, s, { stage: [$('.ptx-stage')], dock: [$('.ptx-keys'), cmpSlot], setup: 'Table', moreLabel: 'More of the table, values on the cells, sources',
+        why: [$('.ptx-why')], details: [cmpHome, $('.ptx-el')] });
       draw();
       T.watchBox($('.ptx-view'), draw);
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ptx-cell.is-sel'), text: 'Tap any element' });

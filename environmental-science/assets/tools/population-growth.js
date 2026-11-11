@@ -67,7 +67,8 @@
       out.push('<g transform="translate(' + r1(dx) + ' ' + r1(dy) + ') scale(' + sc + ')"><path class="pg-deer-l" d="M-3 1 L-3.6 6 M-1 1 L-1 6 M2.5 1 L2.5 6 M4 1 L4.5 6 M5 -3 L6 -7 M6 -6 L7.5 -7"/><ellipse class="pg-deer" cx="0.5" cy="-0.5" rx="5" ry="2.6"/><path class="pg-deer" d="M3.5 -2 L5.6 -5.6 L7.4 -4.6 L5.2 -1Z"/></g>');
     }
     var cap = load > 3 ? 'far over K: the island is overrun' : load > 1.02 ? 'over K: the grass is eaten faster than it grows' : Kc < K0 * 0.9 ? 'the range is damaged: K is lower' : 'one deer drawn = ' + nf(K0 / 10);
-    out.push(tx(x + 8, y + 15, nf(N) + ' deer on the island', 'pg-isl-t', 'start'));
+    // A phone's inset is narrow: a short label, millions written as such (pass 3).
+    out.push(tx(x + 8, y + 15, ph ? (N >= 1e6 ? nf(N / 1e6, 1) + ' million deer' : nf(N) + ' deer') : nf(N) + ' deer on the island', 'pg-isl-t', 'start'));
     if(!ph) out.push(tx(x + 8, y + h - 6, cap, 'pg-isl-s', 'start'));
     return out.join('');
   }
@@ -220,7 +221,7 @@
 
   /* ------------------------------------------------------- explore */
   function explore(host, data){
-    var view = 'growth', model = 'log', r = 0.35, K = 2000, n0 = 100, years = 40, upto = 0, marker = 0, LS = null, touched = false, playing = null, sel = null, nid = T.nid('pg');
+    var view = 'growth', model = 'log', r = 0.35, K = 2000, n0 = 100, years = 40, upto = 0, marker = 0, LS = null, setupRow = null, touched = false, playing = null, sel = null, nid = T.nid('pg');
     var dist = disturbance(), distUpto = dist.Y, distLoop = null;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem pg-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Population growth</h2>' +
@@ -242,7 +243,7 @@
       T.moreHtml('<div class="pg-n0"></div>', 'start size') +
       '<div class="pg-nums"></div><p class="sr-only pg-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.pg-live'));
-    var cue = T.cue('Press Play, then switch to Exponential and Overshoot to compare the curves.');
+    var cue = T.cue('Press Play. Then open Model to try Exponential and Overshoot and compare the curves.');
     $('.pg-ctl').insertBefore(cue.el, $('.pg-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var slR = T.slider({ label: 'Growth rate r (per year)', min: 0.05, max: 0.6, step: 0.05, value: r, decimals: 2, onInput: function(v){ r = v; act(); stop(); upto = years; marker = years; draw(); } });
@@ -273,6 +274,7 @@
         rkWords();
       }
       (LS ? LS.root : host).querySelectorAll('.pg-m').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === model)); });
+      if(setupRow && setupRow.setup) setupRow.setup({ exp: 'Exponential', log: 'Logistic', over: 'Overshoot' }[model] + (model === 'exp' ? '' : ', K = ' + String(K).replace(/\B(?=(\d{3})+(?!\d))/g, ',')));
       (LS ? LS.root : host).querySelectorAll('.pg-view').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
       (LS ? LS.root : host).querySelectorAll('.pg-t').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-t') === sel)); });
       slK.disable(model === 'exp');
@@ -308,7 +310,8 @@
       say(head);
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>', 'explore');
-        LS.pills([{ k: 'Year ' + i, html: esc(nf(s.n[i])) + ' deer', tone: 'readout' }], 'left', 'explore');
+        var big = s.n[i] >= 1e6 && LS.root.classList.contains('ls-phone');   // pass 3: fits a phone's pill
+        LS.pills([{ k: 'Year ' + i, html: big ? esc(nf(s.n[i] / 1e6, 1)) + ' million' : esc(nf(s.n[i])) + ' deer', tone: 'readout' }], 'left', 'explore');
         LS.pills(model === 'exp' ? [{ k: 'Doubles', html: 'every ' + nf(td, 1) + ' yr', tone: 'accent' }] : [], 'right', 'explore');   // pass 2: K is written on its dashed line
       }
     }
@@ -367,7 +370,7 @@
     function onClick(e){
       var b = e.target.closest('button'); if(!b) return;
       if(b.classList.contains('pg-view')){ act(); setView(b.getAttribute('data-v')); return; }
-      if(b.classList.contains('pg-m')){ model = b.getAttribute('data-m'); act(); stop(); upto = years; marker = years; draw(); return; }
+      if(b.classList.contains('pg-m')){ model = b.getAttribute('data-m'); act(); stop(); upto = years; marker = years; draw(); if(LS) LS.close(); return; }
       if(b.classList.contains('pg-play')){ play(); return; }
       if(b.classList.contains('pg-t')){ var t = b.getAttribute('data-t'); sel = sel === t ? null : t; act(); draw(); return; }
       if(b.classList.contains('pg-hit')){ hit(); return; }
@@ -389,7 +392,15 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.pg-stage')], dock: [$('.pg-ctl')], primary: [slR.el, $('.pg-g .pg-act')], why: [$('.pg-say')], details: [$('.pg-nums')] });
+      // Pass 3: the growth model chips and the K slider wait in Details,
+      // behind a Setup row that names the model and K; the dock keeps r,
+      // Play and the three views.
+      var n0b = $('.pg-n0'), lab = document.createElement('p');
+      lab.className = 'ls-lbl'; lab.textContent = 'Growth model';
+      n0b.parentNode.insertBefore(lab, n0b); n0b.parentNode.insertBefore($('.pg-models'), n0b); n0b.parentNode.insertBefore($('.pg-sl-k'), n0b);
+      setupRow = T.studioPane(pane, s, { stage: [$('.pg-stage')], dock: [$('.pg-ctl')], primary: [slR.el, $('.pg-g .pg-act')], why: [$('.pg-say')], details: [$('.pg-nums')], setup: 'Model', moreLabel: 'Growth model, carrying capacity, start size' });
+      // The Setup row opens Details on these settings: they come first there.
+      var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
       host.removeEventListener('click', onClick); s.root.addEventListener('click', onClick);
       draw();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.pg-play'), text: 'Start here: press Play' });

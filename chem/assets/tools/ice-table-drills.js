@@ -121,7 +121,7 @@
       beaker.update(q > 0 && moved ? { counts: counts, Q: q, K: p.K } : { counts: counts });
       var r = q / p.K, cl = Math.abs(r - 1) <= 0.01;
       if(x > 0 && start) start.done();
-      T.explain($('.ic-why'), '<b>' + (!moved ? 'Start: the I row. Move x to react some of it.' : q === 0 ? 'x = 0: no products, Q = 0.' : cl ? 'Q = K: this x is the equilibrium.' : r < 1 ? 'Q < K: more x.' : 'Q > K: too far; less x.') + '</b>',
+      T.explain($('.ic-why'), '<b>' + (!moved ? 'Move x to react some of the I row.' : q === 0 ? 'x = 0: no products, Q = 0.' : cl ? 'Q = K: this x is the equilibrium.' : r < 1 ? 'Q < K: more x.' : 'Q > K: too far; less x.') + '</b>',
         '<p>' + (q === 0 ? 'Nothing has reacted yet, so the forward reaction runs.' : 'Q = ' + p.expr + ' = ' + M.fmt(q, 3) + ' at x = ' + M.fmt(x, 3) + ' ' + p.unit + '. ' + (cl ? 'Every E entry is initial + change with this x; putting them back into the K expression returns K.' : r < 1 ? 'Products are still too low for K: the reaction keeps going forward.' : 'Too much product for K: the real mixture would stop before this x.')) +
         ' K is fixed at this temperature; only Q moves.</p>');
       if(LS) studioDraw(q, r, cl);

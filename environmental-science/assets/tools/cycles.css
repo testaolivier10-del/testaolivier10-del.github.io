@@ -113,3 +113,6 @@
   .ls-root .cy-cycles.ls-scroll,.ls-root .cy-procs.ls-scroll{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
   .ls-root .cy-cycles .tchip,.ls-root .cy-procs .tchip{flex:none;white-space:nowrap;}
 }
+/* Pass 3: an unnamed process is a dot on its arrow (tap it for the name). */
+.cy-plabel.is-dot rect{stroke-width:2.5;}
+.cy-plabel.is-dot:hover rect{fill:var(--cy-arrow);}
