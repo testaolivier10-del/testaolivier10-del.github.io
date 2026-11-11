@@ -852,12 +852,36 @@
 /* ===== Signal cascade (tools upgrade U-Bio-sims) ===== */
 .sg-stagefig{background:var(--paper);border-radius:14px;padding:6px;}
 .sg-fig .sg-tap{cursor:pointer;}
-.sg-fig .sg-tap:hover .stp,.sg-fig .sg-tap:focus-visible .stp{stroke:var(--cink);stroke-width:2.5;}
 .sg-fig .sg-tap:focus{outline:none;}
+.sg-fig .sg-tap:hover .sg-row,.sg-fig .sg-tap:focus-visible .sg-row{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.ls-root.ls-phone .sg-stagefig{padding-bottom:48px;} /* the key line scrolls clear of Enlarge */
+/* The cascade in the cell (signal-transduction-amplification.js drawFig) */
+.sg-fig .sg-row{fill:transparent;stroke:none;}
+.sg-fig .sg-tap .sg-row{stroke:var(--line);stroke-width:1.2;stroke-dasharray:4 4;}
+.sg-fig .sg-tap[aria-pressed=true] .sg-row{stroke:var(--bio-symp);stroke-dasharray:none;fill:var(--bio-symp-fill);fill-opacity:.35;}
+.sg-fig .sg-funnel{fill:var(--bio-aff-fill);opacity:.55;}
+.sg-fig .sg-ring{fill:none;stroke:var(--muted);stroke-width:1;opacity:.35;}
+.sg-fig .sg-n{fill:var(--ink);font:800 11.5px var(--font-ui);paint-order:stroke;stroke:var(--sgs-in);stroke-width:3px;}
+.sg-fig .sg-v{fill:var(--ink);font:900 12.5px var(--font-mono);paint-order:stroke;stroke:var(--sgs-in);stroke-width:3px;}
+.sg-fig .sg-gain{fill:var(--muted);font:700 10.5px var(--font-ui);paint-order:stroke;stroke:var(--sgs-in);stroke-width:3px;}
+.sg-fig .sg-gain.amp{fill:var(--good-text,#2F7A3A);font-weight:800;}
+.sg-fig .sg-chev{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.sg-fig .sg-chev.amp{stroke:var(--good-text,#2F7A3A);stroke-width:2.6;}
+.sg-fig .sg-stop{stroke:var(--bio-symp);stroke-width:2.5;stroke-dasharray:7 5;}
+.sg-fig .sg-key{fill:var(--muted);font:700 10.5px var(--font-ui);}
+.sg-fig .sgs-lab.r{text-transform:none;letter-spacing:0;}
+.sg-fig .sgm-r rect{fill:var(--sgs-rec);stroke:var(--sgs-rece);stroke-width:1.1;} .sg-fig .sgm-r path{fill:none;stroke:var(--sgs-rece);stroke-width:.8;}
+.sg-fig .sgm-g circle{fill:var(--sgs-gon);stroke:var(--sgs-ge);stroke-width:1.1;} .sg-fig .sgm-g .gtp{fill:var(--sgs-ac);stroke:var(--sgs-ace);}
+.sg-fig .sgm-ac rect{fill:var(--sgs-ac);stroke:var(--sgs-ace);stroke-width:1.1;}
+.sg-fig .sgm-c path{fill:var(--sgs-camp);stroke:var(--sgs-campe);stroke-width:1;stroke-linejoin:round;}
+.sg-fig .sgm-p ellipse{fill:var(--sgs-pc);stroke:var(--sgs-pce);stroke-width:1.1;}
+.sg-fig .sgm-k path{fill:#7ED6C8;stroke:#1F7A6E;stroke-width:1.1;} .sg-fig .sgm-gp circle{fill:#C9A6F0;stroke:#6B4FA8;stroke-width:1.1;}
+.sg-fig .ph{fill:var(--sgs-ac);stroke:var(--sgs-ace);stroke-width:.8;}
+.sg-fig .sgm-glc path{fill:#fff;stroke:var(--sgs-glye);stroke-width:1.2;}
+:root[data-theme="dark"] .sg-fig .sgm-glc path{fill:var(--sgs-gly);}
+:root[data-theme="dark"] .sg-fig .sgm-k path{fill:#1F5E56;stroke:#8FE3D6;} :root[data-theme="dark"] .sg-fig .sgm-gp circle{fill:#4A3A6E;stroke:#C9B5F2;}
+.ls-root.ls-phone .sg-fig .sg-n{font-size:12.5px;} .ls-root.ls-phone .sg-fig .sg-v{font-size:13px;} .ls-root.ls-phone .sg-fig .sg-gain,.ls-root.ls-phone .sg-fig .sg-key{font-size:11px;}
 .sg-fig .sg-tapmark{fill:var(--bio-symp);font-weight:900;}
-.sg-fig .sg-dot{fill:none;stroke:var(--line);stroke-width:1.5;}
-.sg-fig .sg-dotf{fill:var(--bio-aff);}
-.sg-fig .arr.amp{stroke-width:3.5;}
 .sg-why:empty{display:none;}
 .sg-fig{--sgs-out:#EAF5FB;--sgs-in:#FFF6E8;--sgs-head:#F2B48A;--sgs-heade:#C6743F;--sgs-tail:#E6C9A8;--sgs-rec:#B9A3E3;--sgs-rece:#6B4FA8;--sgs-ga:#8FD4B8;--sgs-gon:#2FB37E;--sgs-ge:#1F7A58;--sgs-ac:#F5C46B;--sgs-ace:#A86B00;--sgs-camp:#7CC3EA;--sgs-campe:#1F6E9C;--sgs-pr:#9CB7E8;--sgs-pre:#3E5F9E;--sgs-pc:#F2A07B;--sgs-pce:#B4532A;--sgs-gly:#E9DFC6;--sgs-glye:#9C8857;--sgs-epi:#E8789A;--sgs-epie:#A23A5B;}
 :root[data-theme="dark"] .sg-fig{--sgs-out:#14283A;--sgs-in:#2A2419;--sgs-head:#B9744A;--sgs-heade:#F2B48A;--sgs-tail:#5C4632;--sgs-rec:#4F3F7A;--sgs-rece:#C9B5F2;--sgs-ga:#2B6E55;--sgs-gon:#3FD49A;--sgs-ge:#9BE3C5;--sgs-ac:#7A5A14;--sgs-ace:#F5C46B;--sgs-camp:#235F82;--sgs-campe:#9ED6F5;--sgs-pr:#33497A;--sgs-pre:#B4CBF5;--sgs-pc:#7A3A20;--sgs-pce:#F7B797;--sgs-gly:#4A4430;--sgs-glye:#D3BF8A;--sgs-epi:#9C3A5B;--sgs-epie:#F2A5BF;}
@@ -869,8 +893,6 @@
 /* Phone pass: scene labels and gain notes at least 12 px rendered (the cascade is 360 units across a ~352 px stage). */
 .ls-root.ls-phone .sg-fig .sgs-lab,.ls-root.ls-phone .sg-fig .sgs-name,.ls-root.ls-phone .sg-fig .sgs-tag{font-size:12.3px;}
 .ls-root.ls-phone .sg-fig .sgs-mini{font-size:12.3px;}
-.ls-root.ls-phone .sg-stagefig{padding-bottom:52px;}
-.ls-root.ls-phone .sg-fig text.note{font-size:12.3px;}
 .sg-fig .sgs-head circle{fill:var(--sgs-head);stroke:var(--sgs-heade);stroke-width:.6;}
 .sg-fig .sgs-tail{stroke:var(--sgs-tail);stroke-width:.8;}
 .sg-fig .sgs-rec{fill:var(--sgs-rec);stroke:var(--sgs-rece);stroke-width:1;}
@@ -1298,13 +1320,6 @@
 .ls-root .bt-viewpane .bt-tabs .bt-btn[aria-pressed=true]{background:var(--ctint);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);}
 .ls-root .bt-viewpane .bt-stage.two{display:flex;flex-direction:column;gap:10px;margin:0;}
 @media (min-width:900px){.ls-root .bt-viewpane .bt-stage.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);}}
-/* Signal transduction, portrait phone: the ladder in two columns (signal-transduction-amplification.js ladder2) */
-.sg-fig.sg-two .sg2-n{font:800 11.5px var(--font-ui);}
-.sg-fig.sg-two .sg2-v{font:900 12.5px var(--font-mono);}
-.sg-fig.sg-two .sg2-tag{font:900 10.5px var(--font-ui);}
-.sg-fig.sg-two text.note.sg2-g{fill:var(--muted);font:700 11px var(--font-ui);}
-.ls-root.ls-phone .sg-fig.sg-two text.note{font-size:11px;}
-.ls-root.ls-phone .sg-stagefig:has(> svg.sg-two){padding-bottom:48px;} /* the last rung scrolls clear of Enlarge */
 .ls-root.ls-phone .ls-gb-stage .gb-note{padding:0 48px;} /* clear of the Enlarge button */
 /* Water potential (water-potential.js draw): the cell's protoplast, vacuole and solute particles; the beaker's liquid */
 .wp-fig{--wp-gap:#E9F2E0;--wp-vac:#CFE7F3;--wp-suc:#E39A2E;--wp-na:#7A5AC8;--wp-cl:#2E9E6A;}

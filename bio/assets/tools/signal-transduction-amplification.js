@@ -10,14 +10,16 @@
    Job: see how one hormone molecule becomes millions of glucose units, and
    what each blocked step does to everything after it.
 
-   Tools upgrade (U-Bio-sims, lighter version): the cascade is the stage,
-   first in the card. Each rung with a drug is a button: tap the receptor
-   (antagonist), the G protein (normal, locked on, locked off), cAMP (PDE
+   Tools upgrade (U-Bio-sims), redrawn in the tool review of 2026-11: the
+   stage is the cascade inside a liver cell (drawFig), one row of drawn
+   molecules per step on a powers-of-ten scale, so the funnel widens where a
+   step amplifies. Rows with a drug are buttons: tap the receptors
+   (antagonist), the G proteins (normal, locked on, locked off), cAMP (PDE
    inhibitor) or PKA (PKA inhibitor). Counts tween from the old to the new
-   values down the cascade (drain or flood, each rung a little after the one
-   above), with a log bar of dots per rung. "Play 0 to 300 s" sweeps the read
-   time so the signal rises and, after washout, ends. Checkboxes and selects
-   stay as the keyboard path. Reduced motion: no tween. */
+   values down the cascade. "Play 0 to 300 s" sweeps the read time so the
+   signal rises and, after washout, ends; the tool opens at 0 s. Checkboxes
+   and selects stay as the keyboard path. Reduced motion: no tween, and
+   Play jumps to the end state. */
 (function(){
   'use strict';
   var SLUG = 'signal-transduction-amplification';
@@ -32,8 +34,8 @@
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card sg-card" aria-labelledby="sg-h"><h2 id="sg-h">The model</h2>' +
-      '<p class="bt-first">Press Play to send epinephrine down the cascade, then tap a rung to block it.</p>' +
-      '<div class="bt-fig sg-stagefig bt-hero"></div><p class="bt-small">Tap a rung with a ⊘ to block it (tap the G protein to cycle normal, locked on, locked off).</p>' +
+      '<p class="bt-first">Press Play to send epinephrine down the cascade, then tap a row with a ⊘ to block that step.</p>' +
+      '<div class="bt-fig sg-stagefig bt-hero"></div><p class="bt-small">Tap a row with a ⊘ to block that step (tap the G proteins to cycle normal, locked on, locked off). Each row draws 3 more molecules for every 10 times as many.</p>' +
       '<div class="os-play"><button type="button" class="btn-press sm" data-a="sweep">Play 0 to 300 s</button><p class="os-clock sg-clock" aria-hidden="true"></p></div>' +
       '<p class="os-why sg-why" role="status" aria-live="polite"></p>' +
       '<div class="bt-controls" data-primary="2"></div>' +
@@ -122,132 +124,116 @@
       shownA = to;
       tw = requestAnimationFrame(step);
     }
-    /* The cell-surface scene above the ladder: epinephrine outside, a lipid
-       bilayer, the 7-helix receptor, the G protein (α with GDP or GTP, and
-       βγ), adenylyl cyclase, cAMP molecules, PKA (two regulatory and two
-       catalytic subunits that come apart when cAMP binds) and a glycogen
-       granule shedding glucose. Every level comes from the same counts as
-       the ladder: f = active / total. */
-    var SH = 214;
-    function frac(v, tot){ return Math.max(0, Math.min(1, v / tot)); }
+    /* The cascade in the cell (tool review 2026-11: the amplification was
+       only numbers in a ladder of boxes, clipped on a phone). One picture,
+       top to bottom: epinephrine outside, the receptors in the membrane,
+       then a row of drawn molecules per step inside the cell. Each row
+       holds 3 molecule drawings for every power of ten (counts on a powers
+       of ten scale, said in the key), so the rows widen where a step
+       amplifies and pinch where it only passes the signal on (G protein to
+       adenylyl cyclase, cAMP to PKA), and a shaded funnel joins them. A row
+       with a fixed pool (receptors, G proteins, enzymes) shows the rest of
+       its pool as faint rings. The count and the step's gain are labels.
+       Play fills the funnel from the top down (the model's own lags); a
+       blocked row is marked and every row below it drains. Rows with a ⊘
+       are buttons (the same drugs as the checkboxes). */
     function hexP(cx, cy, r, rot){ var d = ''; for(var i = 0; i < 6; i++){ var t = i / 6 * Math.PI * 2 + (rot || 0); d += (i ? 'L' : 'M') + (cx + r * Math.cos(t)).toFixed(1) + ' ' + (cy + r * Math.sin(t)).toFixed(1); } return d + 'Z'; }
     function pentP(cx, cy, r, rot){ var d = ''; for(var i = 0; i < 5; i++){ var t = i / 5 * Math.PI * 2 + (rot || 0); d += (i ? 'L' : 'M') + (cx + r * Math.cos(t)).toFixed(1) + ' ' + (cy + r * Math.sin(t)).toFixed(1); } return d + 'Z'; }
-    function camp(x, y){ return '<path class="sgs-camp" d="' + hexP(x, y, 4.2, Math.PI / 6) + pentP(x + 6.6, y, 3.6, Math.PI) + '"/><circle class="sgs-pho" cx="' + (x + 1) + '" cy="' + (y + 7.4) + '" r="2.4"/>'; }
     function epi(x, y, cls){ return '<g class="' + (cls || 'sgs-epi') + '"><path d="' + hexP(x, y, 5, 0) + '"/><path class="t" d="M' + (x + 5) + ' ' + y + 'l6 -3l5 3M' + (x - 2.5) + ' ' + (y - 4.3) + 'l-2 -4M' + (x - 5) + ' ' + y + 'l-4 0"/></g>'; }
-    function scene(a){
-      var s = [], yT = 62, yB = 86, f = { R: frac(a.R, P.Rtot), G: frac(a.G, P.Gtot * 0.2), AC: frac(a.AC, P.ACtot), PKA: frac(a.PKA, P.PKAtot), GP: frac(a.GP, P.Ptot) };
-      // compartments
-      s.push('<rect class="sgs-out" x="0" y="0" width="360" height="' + yT + '"/><rect class="sgs-in" x="0" y="' + yB + '" width="360" height="' + (SH - yB) + '" rx="0"/>');
-      s.push('<text class="sgs-lab" x="8" y="14">outside the liver cell</text><text class="sgs-lab" x="8" y="' + (SH - 8) + '">cytoplasm</text>');
-      // bilayer: heads in two rows, tails between
-      var heads = '', tails = '';
-      for(var x = 3; x < 360; x += 7){ heads += '<circle cx="' + x + '" cy="' + (yT + 3) + '" r="3.2"/><circle cx="' + x + '" cy="' + (yB - 3) + '" r="3.2"/>'; tails += 'M' + (x - 1) + ' ' + (yT + 6) + 'v7M' + (x + 1) + ' ' + (yT + 6) + 'v7M' + (x - 1) + ' ' + (yB - 6) + 'v-7M' + (x + 1) + ' ' + (yB - 6) + 'v-7'; }
-      s.push('<path class="sgs-tail" d="' + tails + '"/><g class="sgs-head">' + heads + '</g>');
-      // receptor (GPCR): seven helices across the membrane
-      var rx = 52;
-      s.push('<path class="sgs-loop" d="M' + (rx - 21) + ' ' + (yT - 2) + 'q4 -10 8 0q4 -10 8 0q4 -10 8 0M' + (rx - 15) + ' ' + (yB + 2) + 'q4 10 8 0q4 10 8 0q4 10 8 0q6 14 14 6"/>');
-      for(var h = 0; h < 7; h++) s.push('<rect class="sgs-rec" x="' + (rx - 24 + h * 7) + '" y="' + (yT - 6) + '" width="6.5" height="' + (yB - yT + 12) + '" rx="3"/>');
-      if(st.antagonist) s.push('<path class="sgs-ant" d="M' + (rx - 9) + ' ' + (yT - 22) + 'h18v10h-18z"/><text class="sgs-tag" x="' + (rx + 14) + '" y="' + (yT - 14) + '">antagonist</text>');
-      else if(st.L > 0 || f.R > 0.01) s.push('<g opacity="' + Math.max(0.15, Math.min(1, f.R * 1.6)).toFixed(2) + '">' + epi(rx - 4, yT - 16) + '</g>');
-      if(st.L > 0) [[110, 22], [150, 36], [200, 18], [250, 30], [300, 16]].slice(0, Math.max(1, Math.min(5, Math.round(st.L / 20)))).forEach(function(q){ s.push(epi(q[0], q[1])); });
-      s.push('<text class="sgs-name" x="' + rx + '" y="' + (yB + 30) + '" text-anchor="middle">receptor</text>');
-      // G protein: α (GDP or GTP) and βγ on the inner face
-      var gx = 112, gOn = f.G > 0.15 || st.gprotein === 'on', gOff = st.gprotein === 'off';
-      s.push('<path class="sgs-g a' + (gOn ? ' on' : '') + '" d="M' + (gx - 16) + ' ' + (yB + 4) + 'c-6 10 -2 24 12 24c12 0 18 -10 14 -22z"/>');
-      s.push('<ellipse class="sgs-g b" cx="' + (gx + 16) + '" cy="' + (yB + 14) + '" rx="10" ry="8"/><ellipse class="sgs-g c" cx="' + (gx + 25) + '" cy="' + (yB + 6) + '" rx="5" ry="3.5"/>');
-      s.push('<text class="sgs-mini" x="' + (gx - 6) + '" y="' + (yB + 21) + '" text-anchor="middle">' + (gOn && !gOff ? 'GTP' : 'GDP') + '</text>');
-      // a locked G protein says so on a second line, clear of the adenylyl cyclase label
-      s.push('<text class="sgs-name" x="' + (gx - 2) + '" y="' + (yB + 44) + '" text-anchor="middle">G protein</text>' + (st.gprotein !== 'normal' ? '<text class="sgs-name" x="' + (gx - 2) + '" y="' + (yB + 57) + '" text-anchor="middle">(' + (gOff ? 'locked off' : 'locked on') + ')</text>' : ''));
-      // adenylyl cyclase: two membrane bundles and a cytosolic catalytic core
-      var ax = 186;
-      for(var k = 0; k < 2; k++) for(var j = 0; j < 3; j++) s.push('<rect class="sgs-ac" x="' + (ax - 22 + k * 26 + j * 6) + '" y="' + (yT - 4) + '" width="5.5" height="' + (yB - yT + 8) + '" rx="2.6"/>');
-      s.push('<path class="sgs-ac core' + (f.AC > 0.1 ? ' on' : '') + '" d="M' + (ax - 18) + ' ' + (yB + 4) + 'c-6 16 8 26 18 20c10 6 24 -4 18 -20z"/>');
-      s.push('<text class="sgs-name" x="' + (ax + 6) + '" y="' + (yB + 44) + '" text-anchor="middle">adenylyl cyclase</text>');
-      if(gOn && !gOff) s.push('<path class="sgs-flow" d="M' + (gx + 2) + ' ' + (yB + 30) + 'Q' + ((gx + ax) / 2) + ' ' + (yB + 38) + ' ' + (ax - 14) + ' ' + (yB + 18) + '"/>');
-      // cAMP molecules: a log count so 10 and 2 million both read
-      var nC = Math.max(0, Math.min(16, Math.round((Math.log(1 + a.cAMP) / Math.LN10 - 3) * 4)));
-      var cp = [[178, 150], [196, 162], [214, 146], [232, 160], [166, 172], [204, 182], [226, 178], [244, 140], [188, 134], [250, 170], [160, 152], [220, 196], [180, 192], [238, 192], [256, 152], [172, 134]];
-      for(var c = 0; c < nC; c++) s.push(camp(cp[c][0], cp[c][1]));
-      s.push('<text class="sgs-name" x="206" y="' + (SH - 8) + '" text-anchor="middle">cAMP' + (st.pde ? ' (PDE blocked)' : '') + '</text>');
-      // PKA: R2C2; catalytic subunits drift off as it activates
-      var px = 296, py = yB + 34, d = (st.pka ? 0 : f.PKA) * 18;
-      s.push('<ellipse class="sgs-pr" cx="' + (px - 7) + '" cy="' + py + '" rx="7" ry="11"/><ellipse class="sgs-pr" cx="' + (px + 7) + '" cy="' + py + '" rx="7" ry="11"/>');
-      s.push('<ellipse class="sgs-pc' + (d > 4 ? ' on' : '') + '" cx="' + (px - 20 - d * 0.6) + '" cy="' + (py + d * 0.5) + '" rx="8" ry="7"/><ellipse class="sgs-pc' + (d > 4 ? ' on' : '') + '" cx="' + (px + 20 + d * 0.6) + '" cy="' + (py + d * 0.5) + '" rx="8" ry="7"/>');
-      if(st.pka) s.push('<path class="sgs-ant" d="' + hexP(px + 20, py - 9, 4, 0) + '"/>');
-      s.push('<text class="sgs-name" x="' + px + '" y="' + (yB + 64) + '" text-anchor="middle">PKA' + (st.pka ? ' (inhibited)' : '') + '</text>');
-      // glycogen granule and the glucose it sheds (count from the rate)
-      var gx2 = 312, gy2 = 178, br = '';
-      [[0, 0], [-8, -5], [8, -5], [-12, 4], [12, 5], [-4, 9], [5, 10], [0, -10], [-15, -4], [16, -3]].forEach(function(q){ br += '<circle cx="' + (gx2 + q[0]) + '" cy="' + (gy2 + q[1]) + '" r="4.2"/>'; });
-      s.push('<g class="sgs-gly">' + br + '</g>');
-      var nG = Math.max(0, Math.min(6, Math.round((Math.log(1 + a.rate) / Math.LN10 - 2) * 1.4)));
-      for(var gq = 0; gq < nG; gq++) s.push('<path class="sgs-glc" d="' + hexP(gx2 - 30 - gq * 12, gy2 - 18 + (gq % 2) * 9, 4.6, Math.PI / 6) + '"/>');
-      s.push('<text class="sgs-name" x="' + (gx2 + 2) + '" y="' + (SH - 8) + '" text-anchor="middle">glycogen</text>');
-      return s.join('');
+    var W = 400, CX = 200, SP = 15, PER = 3, MAXK = 21, ROWS = { G: 86, AC: 144, cAMP: 202, PKA: 260, PhK: 318, GP: 376, rate: 434 }, YR = 51, FH = 548;
+    var TOT = { R: 'Rtot', G: 'Gtot', AC: 'ACtot', PKA: 'PKAtot', PhK: 'Ktot', GP: 'Ptot' };
+    function kOf(v){ return Math.max(0, Math.min(MAXK, PER * Math.log(1 + Math.max(0, v)) / Math.LN10)); }
+    function f1(v){ return (Math.round(v * 10) / 10).toString(); }
+    /* One molecule drawing per stage, centered on x, y (about 12 px). */
+    function mol(id, x, y, cls){
+      var c = cls ? ' ' + cls : '';
+      switch(id){
+        case 'R': return '<g class="sgm-r' + c + '"><rect x="' + f1(x - 5) + '" y="' + (y - 12) + '" width="10" height="24" rx="4"/><path d="M' + f1(x - 2) + ' ' + (y - 10) + 'v20M' + f1(x + 2) + ' ' + (y - 10) + 'v20"/></g>';
+        case 'G': return '<g class="sgm-g' + c + '"><circle cx="' + f1(x - 1.5) + '" cy="' + y + '" r="5.2"/><circle class="gtp" cx="' + f1(x + 3.8) + '" cy="' + (y - 3.6) + '" r="2.2"/></g>';
+        case 'AC': return '<g class="sgm-ac' + c + '"><rect x="' + f1(x - 6) + '" y="' + (y - 5) + '" width="12" height="10" rx="3.5"/></g>';
+        case 'cAMP': return '<g class="sgm-c' + c + '"><path d="' + hexP(x - 2.6, y, 3.6, Math.PI / 6) + pentP(x + 3.2, y, 3.1, Math.PI) + '"/></g>';
+        case 'PKA': return '<g class="sgm-p' + c + '"><ellipse cx="' + f1(x) + '" cy="' + y + '" rx="6" ry="5"/></g>';
+        case 'PhK': return '<g class="sgm-k' + c + '"><path d="M' + f1(x) + ' ' + (y - 6) + 'l6 6-6 6-6-6z"/><circle class="ph" cx="' + f1(x + 4) + '" cy="' + (y - 4) + '" r="2"/></g>';
+        case 'GP': return '<g class="sgm-gp' + c + '"><circle cx="' + f1(x) + '" cy="' + y + '" r="5.6"/><circle class="ph" cx="' + f1(x + 4.2) + '" cy="' + (y - 4) + '" r="2"/></g>';
+        default: return '<g class="sgm-glc' + c + '"><path d="' + hexP(x, y, 5.2, Math.PI / 6) + '"/></g>';
+      }
     }
-    /* Portrait phone (tool audit 2026-10: the one-column ladder was 835 px
-       in a 477 px stage): the eight rungs sit in two columns under the
-       scene, read like a newspaper: receptor to cAMP down the left, then an
-       arrow across to PKA and down the right to glucose out. Each rung keeps
-       its tap target, log dots, count and drug tag; each arrow its gain. */
-    var SHORT2 = { R: 'Bound receptors', G: 'Active G proteins', AC: 'Adenylyl cyclase', cAMP: 'cAMP', PKA: 'Active PKA', PhK: 'Phosphorylase kinase', GP: 'Glycogen phosphorylase', rate: 'Glucose out (per s)' };
-    function twoCol(){ try{ return !!document.querySelector('.ls-root.ls-phone') && innerHeight > innerWidth; }catch(e){ return false; } }
-    function gainOf(a, i){
-      var ids = S.STAGES, prev = a[ids[i]], next = a[ids[i + 1]], ratio = prev >= 1 ? next / prev : 0;
-      return prev >= 1 ? (ratio >= 10 ? '× ' + fmt(ratio) : ratio >= 0.1 || ratio === 0 ? '× ' + F(ratio, 2) : '1 for every ' + fmt(1 / ratio)) : '—';
+    /* A row of molecules: k drawn (the last one partly, by opacity) over the faint rings of the pool. */
+    function rowMols(id, y, k, kt){
+      var o = '', n = Math.ceil(k - 1e-6), m = Math.max(n, Math.ceil(kt || 0));
+      for(var j = n; j < m; j++) o += '<circle class="sg-ring" cx="' + f1(CX + (j - (m - 1) / 2) * SP) + '" cy="' + y + '" r="5"/>';
+      for(var i = 0; i < n; i++){
+        var x = CX + (i - (m - 1) / 2) * SP, op = i === n - 1 ? k - Math.floor(k - 1e-6) : 1;
+        o += op < 0.999 ? '<g opacity="' + Math.max(0.2, op).toFixed(2) + '">' + mol(id, x, y) + '</g>' : mol(id, x, y);
+      }
+      return { svg: o, hw: Math.max(m, 1) * SP / 2 + 6 };
     }
-    function ladder2(a, tags){
-      var ids = S.STAGES, parts = [], RH = 36, GAP = 19, W = 166, top = SH + 6;
-      ids.forEach(function(id, i){
-        var col = i < 4 ? 0 : 1, row = i % 4, x = col ? 188 : 6, y = top + row * (RH + GAP), v = a[id], tap = TAP[id];
-        var dec = Math.max(0, Math.min(6, Math.log(Math.max(1, v)) / Math.LN10 - 1));
-        var body = '<rect class="stp' + (tags[id] ? ' blocked' : '') + '" x="' + x + '" y="' + y + '" width="' + W + '" height="' + RH + '" rx="8"/>' +
-          '<text class="sg2-n" x="' + (x + 9) + '" y="' + (y + 15) + '">' + esc(SHORT2[id]) + (tap && !tags[id] ? ' <tspan class="sg-tapmark">⊘</tspan>' : '') + '</text>';
-        if(tags[id]) body += '<text class="sg2-tag sg-tapmark" x="' + (x + 9) + '" y="' + (y + 30) + '">⊘ ' + esc(tags[id]) + '</text>';
-        else for(var k = 0; k < 6; k++){ var f = Math.max(0, Math.min(1, dec - k)); body += '<circle class="sg-dot" cx="' + (x + 14 + k * 11) + '" cy="' + (y + 26) + '" r="4"/>' + (f > 0 ? '<circle class="sg-dotf" cx="' + (x + 14 + k * 11) + '" cy="' + (y + 26) + '" r="' + (4 * Math.sqrt(f)).toFixed(2) + '"/>' : ''); }
-        body += '<text class="sg2-v" x="' + (x + W - 8) + '" y="' + (y + 30) + '" text-anchor="end">' + fmt(v) + '</text>';
-        if(tap) parts.push('<g class="sg-tap" data-tap="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(stageOf(id).short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Tap to change the G protein.' : tags[id] ? 'Tap to remove the drug.' : 'Tap to block this step.')) + '">' + body + '</g>');
-        else parts.push(body);
-        if(i === ids.length - 1) return;
-        var amp = stageOf(ids[i + 1]).amplifies, rr = a[ids[i]] >= 1 ? a[ids[i + 1]] / a[ids[i]] : 0, g = gainOf(a, i) + (amp && rr >= 1 ? ', amplifies' : amp ? ', blocked' : ', no gain');
-        if(row < 3){
-          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" d="M' + (x + 18) + ' ' + (y + RH + 1) + 'v' + (GAP - 8) + '"/><path class="arrh" d="M' + (x + 13) + ' ' + (y + RH + GAP - 7) + 'l5 6 5-6z"/>' +
-            '<text class="note sg2-g" x="' + (x + 30) + '" y="' + (y + RH + 14) + '">' + g + '</text>');
-        } else {
-          // cAMP (bottom left) to PKA (top right): along the gutter and in
-          var y2 = top + RH / 2;
-          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" fill="none" d="M' + (x + W + 1) + ' ' + (y + RH / 2) + 'H179V' + y2 + 'H182"/><path class="arrh" d="M182 ' + (y2 - 5) + 'l6 5-6 5z"/>' +
-            '<text class="note sg2-g" x="' + (x + 9) + '" y="' + (y + RH + 15) + '">to PKA: ' + g + '</text>');
-        }
-      });
-      return { svg: parts.join(''), h: top + 4 * RH + 3 * GAP + 22 };
+    var SHORT = { R: 'Bound receptors', G: 'Active G proteins', AC: 'Active adenylyl cyclase', cAMP: 'cAMP', PKA: 'Active PKA', PhK: 'Active phosphorylase kinase', GP: 'Active glycogen phosphorylase', rate: 'Glucose released per second' };
+    function gainText(a, i){
+      var ids = S.STAGES, prev = a[ids[i]], next = a[ids[i + 1]], ratio = prev >= 1 ? next / prev : 0, amp = stageOf(ids[i + 1]).amplifies, to = ids[i + 1];
+      if(prev < 1) return { t: '', amp: false };
+      if(next < 0.5) return { t: '× 0: blocked here, so nothing passes on', amp: false };
+      var r = ratio >= 10 ? '× ' + fmt(ratio) : ratio >= 0.1 || ratio === 0 ? '× ' + F(ratio, 2) : '1 for every ' + fmt(1 / ratio);
+      // PKA: the count ratio is not the binding ratio (each PKA binds 4 cAMP; most cAMP in the cell is free)
+      if(to === 'PKA') return { t: r + ': no gain (each PKA needs 4 cAMP bound)', amp: false };
+      if(!amp) return { t: r + ': one-to-one binding, no gain', amp: false };
+      return { t: r + (ratio >= 1 ? ': each one activates or makes many' : ': blocked'), amp: ratio >= 1 };
     }
+    var nowT = 0;
     function drawFig(a, target){
-      // On a phone each gain note takes two lines (ratio, then why), so it stays at a readable size inside the width.
-      var narrow = !!document.querySelector('.ls-root.ls-phone'), rowH = narrow ? 70 : 56, ids = S.STAGES, parts = [];
-      var tags = { R: st.antagonist ? 'antagonist present' : '', G: st.gprotein === 'on' ? 'locked on' : st.gprotein === 'off' ? 'locked off' : '', cAMP: st.pde ? 'breakdown blocked' : '', PKA: st.pka ? 'inhibitor present' : '' };
+      // a phone draws 400 wide (readable at 390 px); wider stages get room for bigger text
+      W = document.querySelector('.ls-root.ls-phone') ? 400 : 520; CX = W / 2;
+      var ids = S.STAGES, s = [], tags = { R: st.antagonist ? 'antagonist' : '', G: st.gprotein === 'on' ? 'locked on' : st.gprotein === 'off' ? 'locked off' : '', cAMP: st.pde ? 'breakdown blocked' : '', PKA: st.pka ? 'inhibitor' : '' };
+      var stopAt = st.gprotein === 'off' ? 'G' : st.pka ? 'PKA' : ''; // the antagonist competes, so it lowers the signal rather than stopping it
+      var washed = st.tOff < data.washout.max && nowT >= st.tOff;
+      // compartments and membrane
+      s.push('<rect class="sgs-out" x="0" y="0" width="' + W + '" height="42"/><rect class="sgs-in" x="0" y="62" width="' + W + '" height="' + (FH - 62) + '"/>');
+      var heads = '', tails = '';
+      for(var x = 3; x < W; x += 7){ heads += '<circle cx="' + x + '" cy="43" r="3.2"/><circle cx="' + x + '" cy="60" r="3.2"/>'; tails += 'M' + (x - 1) + ' 46v5M' + (x + 1) + ' 46v5M' + (x - 1) + ' 57v-5M' + (x + 1) + ' 57v-5'; }
+      s.push('<path class="sgs-tail" d="' + tails + '"/><g class="sgs-head">' + heads + '</g>');
+      s.push('<text class="sgs-lab" x="8" y="13">outside the liver cell</text><text class="sgs-lab" x="' + (W - 8) + '" y="76" text-anchor="end">inside the cell</text>');
+      // epinephrine in the fluid: more drawn at higher concentration; gone after washout
+      var nE = washed || st.L <= 0 ? 0 : Math.max(1, Math.min(7, Math.round(1 + Math.log(st.L) / Math.LN10 * 2.4)));
+      [[30, 20], [72, 27], [114, 19], [52, 30], [94, 30], [136, 27], [12, 28]].slice(0, nE).forEach(function(q){ s.push(epi(CX + q[0], q[1])); });
+      s.push('<text class="sgs-lab r" x="' + (W - 8) + '" y="13" text-anchor="end">' + (washed ? 'epinephrine washed out' : 'epinephrine ' + F(st.L, 0) + ' nM') + '</text>');
+      // the funnel: each row's half-width
+      var rowY = function(id){ return id === 'R' ? YR : ROWS[id] + 31; }, rows = {}, edge = [];
+      ids.forEach(function(id){ var kt = TOT[id] ? kOf(P[TOT[id]]) : 0; rows[id] = rowMols(id, rowY(id), kOf(a[id]), kt); var k = kOf(a[id]); edge.push([rowY(id), Math.max(10, k * SP / 2 + 6)]); });
+      var fl = '', fr = '';
+      edge.forEach(function(e, i){ fl += (i ? 'L' : 'M') + f1(CX - e[1]) + ' ' + e[0]; });
+      for(var e2 = edge.length - 1; e2 >= 0; e2--) fr += 'L' + f1(CX + edge[e2][1]) + ' ' + edge[e2][0];
+      s.push('<path class="sg-funnel" d="' + fl + fr + 'Z"/>');
+      // rows
       ids.forEach(function(id, i){
-        var y = SH + 12 + i * rowH, s = stageOf(id), v = a[id], dec = Math.max(0, Math.min(7, Math.log(Math.max(1, v)) / Math.LN10));
-        var tap = TAP[id], body = '<rect class="stp' + (tags[id] ? ' blocked' : '') + '" x="6" y="' + y + '" width="348" height="38" rx="8"/>' +
-          '<text x="16" y="' + (y + 16) + '">' + esc(s.short) + (tap ? ' <tspan class="sg-tapmark">' + (tags[id] ? '⊘ ' + esc(tags[id]) : '⊘') + '</tspan>' : '') + '</text>';
-        for(var k = 0; k < 7; k++){ var f = Math.max(0, Math.min(1, dec - k)); body += '<circle class="sg-dot" cx="' + (200 + k * 14) + '" cy="' + (y + 27) + '" r="5"/>' + (f > 0 ? '<circle class="sg-dotf" cx="' + (200 + k * 14) + '" cy="' + (y + 27) + '" r="' + (5 * Math.sqrt(f)).toFixed(2) + '"/>' : ''); }
-        body += '<text x="346" y="' + (y + 16) + '" text-anchor="end">' + fmt(v) + '</text>';
-        if(tap) parts.push('<g class="sg-tap" data-tap="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(s.short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Tap to change the G protein.' : tags[id] ? 'Tap to remove the drug.' : 'Tap to block this step.')) + '">' + body + '</g>');
-        else parts.push(body);
+        var top = id === 'R' ? 26 : ROWS[id], tap = TAP[id], lab = id === 'R' ? 34 : top + 12, body = '';
+        if(id !== 'R') body += '<rect class="sg-row" x="4" y="' + top + '" width="' + (W - 8) + '" height="44" rx="8"/>';
+        else body += '<rect class="sg-row" x="4" y="22" width="' + (W - 8) + '" height="44" rx="8"/>';
+        body += rows[id].svg;
+        body += '<text class="sg-n" x="12" y="' + lab + '">' + esc(SHORT[id]) + (tap ? ' <tspan class="sg-tapmark">' + (tags[id] ? '⊘ ' + esc(tags[id]) : '⊘') + '</tspan>' : '') + '</text>';
+        body += '<text class="sg-v" x="' + (W - 12) + '" y="' + lab + '" text-anchor="end">' + fmt(a[id]) + '</text>';
+        // the antagonist sits on the receptors that epinephrine cannot reach (the faint ones)
+        if(id === 'R' && st.antagonist){ var nb = Math.ceil(kOf(a.R) - 1e-6), mt = Math.max(nb, Math.ceil(kOf(P.Rtot))); for(var q = nb; q < mt; q++) body += '<rect class="sgs-ant" x="' + f1(CX + (q - (mt - 1) / 2) * SP - 5) + '" y="' + (YR - 18) + '" width="10" height="6" rx="2"/>'; }
+        if(id === 'PKA' && st.pka) body += '<path class="sgs-ant" d="' + hexP(CX + rows[id].hw + 4, rowY(id), 5, 0) + '"/>';
+        if(stopAt === id) body += '<path class="sg-stop" d="M20 ' + (rowY(id) + (id === 'R' ? 18 : 15)) + 'H' + (W - 20) + '"/>';
+        if(tap) s.push('<g class="sg-tap" data-tap="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(stageOf(id).short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Tap to change the G protein.' : tags[id] ? 'Tap to remove the drug.' : 'Tap to block this step.')) + '">' + body + '</g>');
+        else s.push('<g>' + body + '</g>');
         if(i < ids.length - 1){
-          var prev = v, next = a[ids[i + 1]], ratio = prev >= 1 ? next / prev : 0, amp = stageOf(ids[i + 1]).amplifies;
-          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" d="M30 ' + (y + 39) + 'v' + (rowH - 41) + '"/><path class="arrh" d="M25 ' + (y + rowH - 7) + 'l5 6 5-6z"/>');
-          var gain = prev >= 1 ? (ratio >= 10 ? '× ' + fmt(ratio) : ratio >= 0.1 || ratio === 0 ? '× ' + F(ratio, 2) : '1 for every ' + fmt(1 / ratio)) : '—', why = amp ? '(each one activates or makes many: amplifies)' : '(binding, one-to-one or less: no gain)';
-          parts.push(narrow ? '<text class="note" x="44" y="' + (y + 53) + '">' + gain + '<tspan x="44" dy="13.5">' + why + '</tspan></text>' : '<text class="note" x="44" y="' + (y + 51) + '">' + gain + ' ' + why + '</text>');
+          var g = gainText(a, i), gy = ROWS[ids[i + 1]] - 4;
+          s.push('<path class="sg-chev' + (g.amp ? ' amp' : '') + '" d="M' + 17 + ' ' + (gy - 5) + 'l5 4 5-4"/>');
+          if(g.t) s.push('<text class="sg-gain' + (g.amp ? ' amp' : '') + '" x="32" y="' + gy + '">' + esc(g.t) + '</text>');
         }
       });
-      var two = twoCol() ? ladder2(a, tags) : null;
+      // glycogen: the granule the glucose comes off
+      var br = '', gy2 = 504;
+      [[0, 0], [-9, -5], [9, -5], [-14, 4], [14, 5], [-5, 9], [6, 10], [0, -10], [-18, -3], [19, -3], [-22, 6], [22, 7]].forEach(function(q){ br += '<circle cx="' + (CX + q[0]) + '" cy="' + (gy2 + q[1]) + '" r="4.6"/>'; });
+      s.push('<path class="sg-chev" d="M' + (CX - 5) + ' 486l5 -4 5 4"/><g class="sgs-gly">' + br + '</g><text class="sgs-name" x="' + (CX + 34) + '" y="' + (gy2 + 4) + '">glycogen (glucose units come off it)</text>');
+      s.push('<text class="sg-key" x="12" y="' + (FH - 10) + '">Drawn on a powers-of-ten scale: 3 more molecules in a row = 10 times as many.</text>');
       var fin = target || a;
-      var lab = 'The pathway at ' + st.readT + ' s, from receptor to response. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(fin[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
-      figEl.innerHTML = '<svg class="sg-fig' + (two ? ' sg-two' : '') + '" viewBox="0 0 360 ' + (two ? two.h : SH + 12 + ids.length * rowH - 10) + '" role="group" aria-label="' + esc(lab) + '"><g class="sgs" aria-hidden="true">' + scene(a) + '</g>' + (two ? two.svg : parts.join('')) + '</svg>';
+      var lab2 = 'The cascade in a liver cell at ' + nowT + ' s, from the receptor in the membrane to glucose release. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(fin[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
+      figEl.innerHTML = '<svg class="sg-fig sg-cell" viewBox="0 0 ' + W + ' ' + FH + '" role="group" aria-label="' + esc(lab2) + '">' + s.join('') + '</svg>';
       var f2 = target ? null : figEl.querySelector('[data-tap="' + lastTap + '"]'); if(f2 && refocus){ refocus = false; f2.focus(); }
     }
-    var lastTap = null, refocus = false, wasTwo = null;
-    window.addEventListener('resize', function(){ var t = twoCol(); if(wasTwo !== null && t !== wasTwo && shownA) drawFig(shownA, null); wasTwo = t; });
+    var lastTap = null, refocus = false;
     function tapRung(id){
       var what;
       if(id === 'G'){ var order = ['normal', 'on', 'off'], n = order[(order.indexOf(st.gprotein) + 1) % 3]; st.gprotein = n; gSel.set(n); what = n === 'on' ? 'G protein locked on: it keeps activating adenylyl cyclase even with no hormone (like cholera toxin), so the signal never ends.' : n === 'off' ? 'G protein locked off: it cannot pick up GTP, so nothing after the receptor turns on, however much epinephrine there is.' : 'G protein back to normal.'; }
@@ -270,8 +256,8 @@
         if(t0 == null) t0 = ts;
         var u = Math.min(1, (ts - t0) / D), t = Math.round(u * P.tEnd / 5) * 5, a = S.at(sim, t);
         if(tw){ cancelAnimationFrame(tw); tw = 0; }
-        drawFig(a, null); shownA = a;
-        clock.textContent = 't = ' + t + ' s' + (t >= st.tOff && st.tOff < data.washout.max ? ' (washed out at ' + st.tOff + ' s)' : '');
+        nowT = t; drawFig(a, null); shownA = a;
+        clock.textContent = 't = ' + t + ' s';
         if(u < 1) sweepT = requestAnimationFrame(go); else { sweepT = 0; sRead.set(t, true); }
       };
       sweepT = requestAnimationFrame(go);
@@ -280,7 +266,7 @@
       var sim = S.simulate(P, cond({})), a = S.at(sim, st.readT), ref = drugged() ? S.simulate(P, cond(NODRUG)) : null;
       var offTxt = st.tOff >= data.washout.max ? 'never' : st.tOff + ' s';
       sOff.el.querySelector('output').textContent = offTxt; sOff.input.setAttribute('aria-valuetext', offTxt);
-      figure(a);
+      nowT = st.readT; figure(a);
       var stage = st.stage, sname = stageOf(stage).name, title, spec;
       if(view === 'time'){
         var top = Math.max.apply(null, sim[stage].concat(ref ? ref[stage] : []).concat([1])), sc = scaleFor(top), ymax = T.niceMax(top / sc.k * 1.05);

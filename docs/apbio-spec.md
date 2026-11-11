@@ -194,7 +194,15 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    scenario without a scene falls back to plain flasks): the organism or apparatus per group, the level under it,
    and the equipment for what is measured and kept the same. Drawn parts are `.dr-part[data-part=i]`, tied to
    variables option i: tapping one answers the drill like its tag, and after Check both show the role. The data
-   are a plain bar chart beside the scene (zero line, negative bars point down, ± error bars). (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
+   are a plain bar chart beside the scene (zero line, negative bars point down, ± error bars).
+   Signal transduction draws the cascade inside a liver cell (`drawFig`): epinephrine outside, receptors in the
+   membrane, then one row of drawn molecules per step on a powers-of-ten scale (3 drawings per factor of 10, the
+   key says so), faint rings for a fixed pool, a shaded funnel joining the rows, counts and gains as labels; rows
+   with a drug are the tap targets; a G protein locked off or a PKA inhibitor draws a stop line. The tool opens at
+   0 s (`readTime.value` 0). The PKA step's note no longer calls 1 PKA per 200 cAMP binding: four cAMP bind each
+   PKA (two per regulatory subunit), freeing two catalytic subunits; the 200 is a count ratio (most cAMP is free),
+   said in "How this model works". The two-column phone ladder (`ladder2`) is gone: one column fits a phone.
+10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;
    `topic.free` in the curriculum carries it to `ApBioCore.locked`, the lesson gate and the
