@@ -18,6 +18,8 @@
   var F = T.F, esc = T.esc;
   var W = 420, L = 18, R = 18, AY = 150, H = 196;
 
+  /* pass 3 (2026-11-11): in Explore (v.drag) only mean and median are named on the plot; the SD band and the SE
+     bracket are named in the key under it. Practice keeps their labels (no key there). */
   /* v: { values, lo, hi, unit, mean, median, sd, se (true or null), mine: {mean, median, sd, se}, drag, dp } */
   function draw(v){
     var p = [], pw = W - L - R, sx = function(x){ return L + (x - v.lo) / (v.hi - v.lo) * pw; };
@@ -26,8 +28,8 @@
     p.push('<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + AY + '" y2="' + AY + '"/>');
     p.push('<text class="sk-ph" x="' + (L + pw / 2) + '" y="' + (H - 4) + '" text-anchor="middle">' + esc((v.label || 'Value') + (v.unit ? ' (' + v.unit + ')' : '')) + '</text>');
     function band(m, sd, se, mine){
-      if(isFinite(m) && isFinite(sd) && sd > 0) p.push('<rect class="ds-sd' + (mine ? ' mine' : '') + '" x="' + sx(m - sd).toFixed(1) + '" y="40" width="' + (sx(m + sd) - sx(m - sd)).toFixed(1) + '" height="' + (AY - 40) + '"/><text class="ds-bl" x="' + sx(m + sd).toFixed(1) + '" y="36" text-anchor="middle">+1 SD</text><text class="ds-bl" x="' + sx(m - sd).toFixed(1) + '" y="36" text-anchor="middle">−1 SD</text>');
-      if(isFinite(m) && isFinite(se) && se > 0) p.push('<path class="ds-se' + (mine ? ' mine' : '') + '" d="M' + sx(m - se).toFixed(1) + ' 58 v-8 M' + sx(m - se).toFixed(1) + ' 54 H' + sx(m + se).toFixed(1) + ' M' + sx(m + se).toFixed(1) + ' 58 v-8"/><text class="ds-bl" x="' + sx(m + se).toFixed(1) + '" y="68" text-anchor="start" dx="3">±1 SE</text>');
+      if(isFinite(m) && isFinite(sd) && sd > 0) p.push('<rect class="ds-sd' + (mine ? ' mine' : '') + '" x="' + sx(m - sd).toFixed(1) + '" y="40" width="' + (sx(m + sd) - sx(m - sd)).toFixed(1) + '" height="' + (AY - 40) + '"/>' + (v.drag ? '' : '<text class="ds-bl" x="' + sx(m + sd).toFixed(1) + '" y="36" text-anchor="middle">+1 SD</text><text class="ds-bl" x="' + sx(m - sd).toFixed(1) + '" y="36" text-anchor="middle">−1 SD</text>'));
+      if(isFinite(m) && isFinite(se) && se > 0) p.push('<path class="ds-se' + (mine ? ' mine' : '') + '" d="M' + sx(m - se).toFixed(1) + ' 58 v-8 M' + sx(m - se).toFixed(1) + ' 54 H' + sx(m + se).toFixed(1) + ' M' + sx(m + se).toFixed(1) + ' 58 v-8"/>' + (v.drag ? '' : '<text class="ds-bl" x="' + sx(m + se).toFixed(1) + '" y="68" text-anchor="start" dx="3">±1 SE</text>'));
     }
     if(v.mean != null) band(v.mean, v.sd, v.se, false);
     else if(v.mine) band(v.mine.mean, v.mine.sd, v.mine.se, true);
