@@ -33,8 +33,12 @@
   /* ------------------------------------------------------- the picture */
   /* stripsSvg(o) -> svg string: the curve or the data points (ApCalcPlot),
      with the strips inserted under the axes. o: { spec, pieces, kind,
-     shown, sel, curve? }. Each strip is the exact shape the sum counts:
-     a rectangle w × h, or a trapezoid split where it crosses the axis. */
+     shown, sel, fn? }. Each strip is the exact shape the sum counts:
+     a rectangle w × h, or a trapezoid split where it crosses the axis.
+     With o.fn (a function, not a table) the slivers between each strip's top
+     and the curve are shaded too: where the curve is above the top the sum
+     misses that area (amber), where it is below the sum counts extra (pink),
+     so "under by 7.9" is a region you can see. */
   function stripsSvg(o){
     var spec = o.spec, Fr = P.frame(spec), y0 = Fr.sy(0), g = [], dots = [];
     var shown = o.shown == null ? o.pieces.length : o.shown;
@@ -54,8 +58,26 @@
         dots.push('<line class="rs-at" x1="' + Fr.sx(p.at).toFixed(1) + '" x2="' + Fr.sx(p.at).toFixed(1) + '" y1="' + y0.toFixed(1) + '" y2="' + Fr.sy(p.h).toFixed(1) + '"/><circle class="rs-dot" cx="' + Fr.sx(p.at).toFixed(1) + '" cy="' + Fr.sy(p.h).toFixed(1) + '" r="3.2"/>');
       }
     });
+    var sl = [];
+    if(o.fn) o.pieces.slice(0, shown).forEach(function(p){
+      var top = o.kind === 'trap' ? function(x){ return p.h0 + (p.h1 - p.h0) * (x - p.x0) / p.w; } : function(){ return p.h; };
+      var m = 32, run = [], sgn = 0;
+      function flush(){ if(run.length > 1 && sgn){ var up = run.map(function(q){ return pt(q[0], q[1]); }), dn = run.slice().reverse().map(function(q){ return pt(q[0], q[2]); }); sl.push('<polygon class="rs-sliver ' + (sgn > 0 ? 'is-miss' : 'is-extra') + '" points="' + up.concat(dn).join(' ') + '"/>'); } run = []; }
+      for(var j = 0; j <= m; j++){
+        var x = p.x0 + p.w * j / m, fy = o.fn(x), ty = top(x), d = fy - ty, sg = Math.abs(d) < 1e-12 ? 0 : d > 0 ? 1 : -1;
+        if(!isFinite(fy)){ flush(); sgn = 0; continue; }
+        if(sg && sgn && sg !== sgn){
+          // the curve crosses the strip's top between samples: end one sliver there and start the other
+          var xa = p.x0 + p.w * (j - 1) / m, da = o.fn(xa) - top(xa), xc = xa + (x - xa) * da / (da - d), yc = top(xc);
+          run.push([xc, yc, yc]); flush(); run.push([xc, yc, yc]);
+        }
+        if(sg) sgn = sg;
+        run.push([x, fy, ty]);
+      }
+      flush();
+    });
     var svg = P.svg(spec);
-    var layer = '<g class="rs-strips">' + g.join('') + '</g>';
+    var layer = '<g class="rs-strips">' + g.join('') + '</g>' + (sl.length ? '<g class="rs-slivers" aria-hidden="true">' + sl.join('') + '</g>' : '');
     svg = svg.replace('<g class="calc-plot-axis">', layer + '<g class="calc-plot-axis">');
     return svg.replace('</svg>', '<g class="rs-dots" aria-hidden="true">' + dots.join('') + '</g>' + (o.marks ? o.marks.svg(Fr) : '') + '</svg>');
   }
@@ -142,7 +164,8 @@
       var curves = [], pts = [];
       if(cur.type === 'table'){
         vals = s.ys.slice();
-        if(s.trend) curves.push({ fn: s.trend, domain: [s.a, s.b], cls: 's1', dashed: true });
+        // No curve through the points: a table does not give f between them, and the smooth "trend" the data came from
+        // would show the over or under the problem says cannot be known. Its area stays in Details, labeled as not given.
         pts = s.xs.map(function(x, i){ return { at: [x, s.ys[i]], cls: 's1' }; });
       } else {
         for(var i = 0; i <= 120; i++) vals.push(s.f(s.a + (s.b - s.a) * i / 120));
@@ -166,7 +189,7 @@
       var host2 = $('.rs-plot'), wh = size(host2), nm = names(), it = cur.it;
       var k = shown == null ? c.ps.length : shown;
       var running = c.ps.slice(0, k).reduce(function(a, p){ return a + p.area; }, 0);
-      host2.innerHTML = stripsSvg({ spec: spec(c, wh[0], wh[1]), pieces: c.ps, kind: kind, shown: k, sel: sel });
+      host2.innerHTML = stripsSvg({ spec: spec(c, wh[0], wh[1]), pieces: c.ps, kind: kind, shown: k, sel: sel, fn: cur.type === 'table' ? null : c.s.f });
       var svg = host2.querySelector('svg');
       svg.addEventListener('click', function(e){ var t = e.target.closest('[data-i]'); if(!t) return; sel = +t.getAttribute('data-i'); act(); draw(); });
       if(cur.type === 'flow'){
@@ -192,6 +215,7 @@
       var why = '<p>' + esc(verdictLine) + '</p>' +
         (meaning ? '<p>' + esc(meaning) + '</p>' : '') +
         (neg ? '<p>Strips below the axis (the second tone) count as negative: the sum is a net, signed amount.</p>' : '') +
+        (cur.type !== 'table' ? '<p>The thin slivers between each strip and the curve are the error: amber where the curve is above the strip (area the sum misses), pink where it is below (area the sum counts but should not).</p>' : '') +
         '<p>' + esc(rule(kind)) + '</p>' +
         (cur.type !== 'table' && err != null ? '<p>' + esc(conv(kind)) + '</p>' : '');
       T.explain($('.rs-say'), '<b>' + esc(headSum) + '</b> ' + esc(selLine || shortVerdict(vd, err, c)), why);
@@ -199,12 +223,12 @@
       if(LS){
         var pills = [{ k: R.SHORT[kind] + (cur.type === 'table' ? '' : ' n=' + n), html: fmt(anim ? running : c.sum), tone: 'readout' }];
         LS.pills(pills, 'left', 'explore');
-        LS.pills(c.exact == null ? [] : [{ k: cur.type === 'table' ? 'Trend' : 'Exact', html: fmt(c.exact), tone: 'ghost' }], 'right', 'explore');
+        LS.pills(c.exact == null || cur.type === 'table' ? [] : [{ k: 'Exact', html: fmt(c.exact), tone: 'ghost' }], 'right', 'explore');
         LS.caption('<b>' + esc(headSum) + '</b> ' + esc(selLine || shortVerdict(vd, err, c)), 'explore');
         var sv = LS.root.querySelector('.calc-ls-setup .ls-v'); if(sv) sv.textContent = cur.it.name;
       }
       host.querySelectorAll('.rs-seg button').forEach(sync); if(LS) LS.root.querySelectorAll('.rs-seg button').forEach(sync);
-      if(!anim) say(headSum + ' ' + (c.exact != null ? (cur.type === 'table' ? 'Trend value ' : 'Exact value ') + fmt(c.exact) + '. ' : '') + verdictLine);
+      if(!anim) say(headSum + ' ' + (c.exact != null && cur.type !== 'table' ? 'Exact value ' + fmt(c.exact) + '. ' : '') + verdictLine);
     }
     function sync(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === kind)); }
     /* Over or under from a table: only what the data can support. Rising or
@@ -254,14 +278,14 @@
       box.innerHTML = '<h3 class="ls-title-l">The sum, strip by strip</h3>' +
         (isT ? '' : '<p>' + tr(dx) + '</p><p>' + tr(sig + ' = ' + M.fmt(c.sum, 6).replace('−', '-')) + '</p>') +
         '<div class="table-wrap" tabindex="0" role="region" aria-label="Every strip of the sum"><table class="ls-tbl rs-tbl"><caption class="sr-only">Every strip: width, height and term</caption><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>' +
-        '<p class="bt-small">Total: ' + fmt(c.sum) + (nm.unitAmt ? ' ' + esc(nm.unitAmt) : '') + (c.exact != null ? '. ' + (isT ? 'Area under the trend curve (not known on the exam): ' : 'Exact area (the definite integral): ') + fmt(c.exact) : '') + '.</p>';
+        '<p class="bt-small">Total: ' + fmt(c.sum) + (nm.unitAmt ? ' ' + esc(nm.unitAmt) : '') + (c.exact != null ? '. ' + (isT ? 'Area under one possible smooth ' + esc(nm.f) + ' through these points (not given; a table cannot know it): ' : 'Exact area (the definite integral): ') + fmt(c.exact) : '') + '.</p>';
       var cmp = $('.rs-cmp'), s = c.s;
       var all = R.KINDS.map(function(kk){
         var ps = isT ? R.tablePieces(s.xs, s.ys, kk) : R.pieces(s.f, R.partition(s.a, s.b, n), kk);
         return ps.length ? '<tr' + (kk === kind ? ' class="hl"' : '') + '><th scope="row">' + R.SHORT[kk] + '</th><td class="r">' + fmt(R.total(ps)) + '</td>' + (c.exact != null ? '<td class="r">' + fmt(R.total(ps) - c.exact) + '</td>' : '') + '</tr>' : '';
       }).join('');
-      cmp.innerHTML = '<h3 class="ls-title-l">All four, side by side</h3><table class="ls-tbl"><caption class="sr-only">Left, right, midpoint and trapezoid sums compared</caption><thead><tr><th scope="col">Sum</th><th scope="col">Value</th>' + (c.exact != null ? '<th scope="col">' + (isT ? 'Minus trend' : 'Minus exact') + '</th>' : '') + '</tr></thead><tbody>' + all + '</tbody></table>' +
-        (c.exact != null ? '<p class="bt-small">' + (isT ? 'Trend' : 'Exact') + ': ' + fmt(c.exact) + '.</p>' : '');
+      cmp.innerHTML = '<h3 class="ls-title-l">All four, side by side</h3><table class="ls-tbl"><caption class="sr-only">Left, right, midpoint and trapezoid sums compared</caption><thead><tr><th scope="col">Sum</th><th scope="col">Value</th>' + (c.exact != null ? '<th scope="col">' + (isT ? 'Minus one possible f' : 'Minus exact') + '</th>' : '') + '</tr></thead><tbody>' + all + '</tbody></table>' +
+        (c.exact != null ? '<p class="bt-small">' + (isT ? 'One possible smooth ' + esc(nm.f) + ' (not given)' : 'Exact') + ': ' + fmt(c.exact) + '.</p>' : '');
     }
     function play(){
       var c = compute(), N = c.ps.length;
