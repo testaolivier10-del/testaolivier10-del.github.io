@@ -198,7 +198,7 @@
         case 'teach_delete_assignment': rep.assignments = rep.assignments.filter(function(x){ return x.id !== a.p_id; }); return true;
         case 'teach_update_class':
           var p = a.p_patch || {};
-          ['name', 'unit_order', 'current_unit', 'archived', 'dept_shared'].forEach(function(k){ if(k in p) rep.class[k] = p[k]; });
+          ['name', 'unit_order', 'current_unit', 'archived', 'dept_shared', 'hide_scores'].forEach(function(k){ if(k in p) rep.class[k] = p[k]; });
           if(p.new_code) rep.class.code = 'SAMPLE0' + (nextId++ % 10);
           return copy(rep.class);
         case 'teach_set_member':

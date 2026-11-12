@@ -9,6 +9,7 @@ import { clsUser, clsReady, clsMailReady } from './class-common.js';
 import { isOwnerEmail } from './umami.js';
 import { sb } from './store.js';
 import { gcAllowed, gcStart, gcCallback, gcFinish, gcStatus, gcDisconnect, gcCourses, gcLink, gcRoster, gcAnnounce, gcPost, gcGrades } from './class-google.js';
+import { classPremiumInfo, classPremiumCheckout } from './class-premium.js';
 import { ltiActivate, ltiAllowed, ltiLogin, ltiLaunch, ltiReturn, ltiRegister, ltiMine, ltiDeepLink, ltiBind, ltiGrades, ltiPublicJwk, ltiCanvasConfig } from './class-lti.js';
 
 /* The hourly housekeeping (index.js cron): the 30-day mail log, expired report links, used launch nonces. */
@@ -44,6 +45,8 @@ const CLASS_API = {
   '/class/report': classReportGet,
   '/class/quote': classQuote,
   '/class/frq/ai': classFrqAi,
+  '/class/premium/info': classPremiumInfo,
+  '/class/premium/checkout': classPremiumCheckout,
   '/class/google/start': gcStart,
   '/class/google/finish': gcFinish,
   '/class/google/status': gcStatus,

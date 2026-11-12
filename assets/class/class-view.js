@@ -70,7 +70,8 @@
   function tag(kind, text){ return '<span class="lvx-tag is-' + kind + '">' + esc(text) + '</span>'; }
   function btn(text, href, ghost){ return '<a class="lvx-btn' + (ghost ? ' is-ghost' : '') + '" href="' + esc(href) + '">' + esc(text) + '</a>'; }
   function bar(p){ return '<div class="lvx-bar"><i style="width:' + Math.max(0, Math.min(100, p)) + '%"></i></div>'; }
-  function scoreText(a, s){
+  function scoreText(a, s, c){
+    if(c && c.hide_scores) return '';   // the teacher keeps scores to themselves (Settings, Class details)
     if(a.kind === 'frq' && s.frq) return s.frq.got + ' of ' + s.frq.of + ' points';
     if(s.score == null) return '';
     if(a.kind === 'mastery') return 'Mastery ' + pct(s.score);
@@ -86,7 +87,7 @@
     var a = x.a, s = x.s, c = m.c, ctl = (a.spec && a.spec.controls) || {}, t = '', meta, b;
     if(s.state === 'done'){
       if(s.late) t = tag('warn', 'Done, late');
-      var sc = scoreText(a, s);
+      var sc = scoreText(a, s, c);
       meta = 'Finished ' + day(s.doneAt) + (s.late && a.due_at ? ', due ' + day(Date.parse(a.due_at)) : '') + (sc ? ' · <b>' + esc(sc) + '</b>' : '');
       b = btn('Open again', S().href(a), true);
     } else if(s.state === 'missing'){
@@ -143,9 +144,9 @@
     var g = m.g, c = m.c, now = m.now, dueSoon = g.todo.filter(function(x){ var d = Date.parse(x.a.due_at); return d && d - now < 2 * 86400000 && !x.s.late; }).length;
     var all = g.todo.length + g.opt.length + g.done.length + g.miss.length;
     var out = liveCard(c);
-    out += '<div class="lvx-stats">' + stat('TO DO', g.todo.length, dueSoon ? dueSoon + ' due today or tomorrow' : g.todo.length ? 'Nothing due in the next 2 days' : 'All caught up') +
+    out += '<div class="lvx-stats' + (c.hide_scores ? ' is-two' : '') + '">' + stat('TO DO', g.todo.length, dueSoon ? dueSoon + ' due today or tomorrow' : g.todo.length ? 'Nothing due in the next 2 days' : 'All caught up') +
       stat('DONE', g.done.length + ' of ' + all, g.miss.length ? g.miss.length + ' missing' : 'None missing') +
-      stat('AVERAGE SCORE', m.avg == null ? '&ndash;' : pct(m.avg), m.avg == null ? 'Nothing scored yet' : 'on finished work') + '</div>';
+      (c.hide_scores ? '' : stat('AVERAGE SCORE', m.avg == null ? '&ndash;' : pct(m.avg), m.avg == null ? 'Nothing scored yet' : 'on finished work')) + '</div>';
     if(g.todo.length) out += card('Next up', row(m, g.todo[0], { primary: true, first: true }));
     var sug = '', rec = g.opt[0], weak = weakTopics(m)[0];
     if(rec) sug += '<div class="lvx-row is-first"><div class="lvx-main">' + tag('rec', (c.teacher || 'Your teacher') + ' recommends') + '<p class="lvx-t">' + esc(rec.a.title) + '</p><p class="lvx-m">' +
@@ -184,8 +185,8 @@
     out += card('Topics', ids.length ? '<p class="lvx-note">How you are doing on each topic, from your answers in this course. Weakest first.</p>' + rows + fold('topics', ids.length, 6, 'more topics')
       : '<p class="lvx-empty">Your topic results show up here once you have answered some questions in this course.</p>');
     var fin = m.g.done, fs = st.older.fin ? fin.length : 5;
-    out += card('Finished work', fin.length ? fin.slice(0, fs).map(function(x, i){
-      var sc = scoreText(x.a, x.s);
+    out += card('Finished work', fin.length ? (m.c.hide_scores ? '<p class="lvx-note">' + esc(m.c.teacher || 'Your teacher') + ' shares scores in class, so they are not shown here.</p>' : '') + fin.slice(0, fs).map(function(x, i){
+      var sc = scoreText(x.a, x.s, m.c);
       return '<div class="lvx-frow' + (i ? '' : ' is-first') + '"><div><p class="lvx-t">' + esc(x.a.title) + '</p><p class="lvx-m">' + esc(KIND[x.a.kind]) + ' · ' + esc(day(x.s.doneAt)) + (x.s.late ? ' · late' : '') +
         '</p></div><b>' + (sc ? esc(sc) : 'Done') + '</b></div>';
     }).join('') + fold('fin', fin.length, 5, 'older') : '<p class="lvx-empty">Nothing finished yet.</p>');

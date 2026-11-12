@@ -15,6 +15,45 @@ path card).
 - Sample class without signing in: `/teach/?demo=1` (AP® Biology) and `/teach/?demo=1&course=nremt`; department
   view `/teach/?demo=1&dept=1`.
 
+## Class readiness (2026-11-11, branch `class-ready`)
+
+Owner asked for the email limit, Google sign-in, Class Premium and hide scores to be fixed before teacher outreach.
+- **Join with Google first.** `join.js` opens sign-in with purpose `class` (`PURPOSE_SUB.class` in `assets/account.js`:
+  "Use your school Google account"), and keeps the class code through Google's redirect (sessionStorage
+  `levlprep_join_code_v1`, 15 minutes), which used to drop `?c=`. Settings, Join code tells teachers to ask for
+  Continue with Google. A Google sign-in sends no email (the Resend limit) and is what Classroom matching needs.
+- **Hide scores.** `classes.hide_scores` (migration `2026-11l-class-ready.sql`), set on Settings, Class details
+  ("What students see") through `teach_update_class`; `class_mine` returns it; `class-view.js` then drops the average
+  score tile and the scores on done work in My class. Teacher pages do not change. A student's own course pages
+  (practice, dashboard) still show their own numbers.
+- **Class Premium.** Price (owner: "research optimal pricing"; research in the Project doc
+  `claude/levlprep-class-pricing.md`): $5 a student for the school year, at least 10 students, never more than
+  $99 a class; from 20 students the class gets all 40 seats. Over 40: the quote form. Table `class_premium` (one row
+  per paid order; seats add up), `class_premium_until(user, course)`, and `my_premium()` now returns the later of a
+  student's own pass and their class's cover, so the site, the vault and the free limits follow. Seats go to members
+  in the order they joined; the owner and co-teachers are covered without a seat; an archived class covers no one.
+  Worker `worker/src/class-premium.js`: `POST /class/premium/checkout` (a teacher of the class; the price is set by the
+  Worker as an ad-hoc fixed price on one Polar product, `"class"` in `POLAR_PRODUCTS`), `order.paid` and
+  `order.refunded` through `premium.js` (`isClassOrder`). The pass ends June 30, 2027 (Hawaii) for every course. The
+  founding discount is not applied. Refunds: by email within 7 days (refund the order in Polar; the webhook removes
+  the seats). No self-serve refund and no pass-ending email for class orders yet.
+- Card: Settings, Class Premium and paperwork (`premiumCard()` in `teach.js`; its numbers `CP` must match
+  `CLASS_PRICE` in the Worker).
+- Tests: `scripts/test/class-ready-sql.test.mjs` (PGlite: seats, order of joining, refunds, own pass wins, hide
+  scores), `scripts/test/worker-class-premium.test.mjs`.
+
+Owner steps for this change, in order:
+1. Merge the pull request (deploys the Worker; Class Premium checkout answers "not set up yet" until step 3).
+2. Supabase SQL editor: run `scripts/sql/migrations/2026-11l-class-ready.sql` (idempotent). Until then the hide
+   scores switch does not save and the teacher report has no `premium` field (the card shows as not bought).
+3. Polar: make a one-time product "LevlPrep Class Premium" (any price; the Worker sets the real one), then add
+   `"class":"<product id>"` to the Worker's `POLAR_PRODUCTS`. Buy once with a 100% discount code to check the seats
+   arrive; the ad-hoc price call has not been tried against Polar yet.
+4. Google Cloud console, project `levlprep-classroom`, Google Auth Platform, Audience: press "Publish app" (Testing
+   to In production). Every scope is non-sensitive, so there is no review; in Testing only listed test users can
+   connect and their connection expires after 7 days.
+5. Supabase, Authentication, Rate Limits: raise emails per hour (the default is low for a class signing in at once).
+
 ## Simplified pages (owner 2026-11-08)
 
 Owner asked to simplify the teacher interface while keeping every feature, approved the mockup ("LevlPrep teacher
@@ -209,7 +248,6 @@ the owner.
   `class_ext_links` columns.
 
 ## Gaps (said in the UI or left out)
-- My class shows scores as the student computes them. A teacher "hide scores from students" setting needs a backend column and is not built.
 - PR #175 (card footnote overlap) is replaced by the My class view; the old "From your teacher" card is gone.
 
 - Controls (time limits, shuffle, held answers, teacher questions) only on the AP® courses; FRQ assignments take no
@@ -218,7 +256,7 @@ the owner.
 - Print: no graph stimuli or non single-choice items.
 - NREMT practice links drill a whole area; ochem has per-question history only from this change on; NREMT and ochem
   picks, `ochem_items_v1` and the NREMT map are per device; no skills report or score band outside AP®.
-- Class Premium checkout. LTI not yet tried on a real Canvas or Schoology.
+- LTI not yet tried on a real Canvas or Schoology. Class Premium: no self-serve refund, no ending email.
 - Google Classroom matches only students who signed in to LevlPrep with Google (the account in the roster); a
   student who signed in with an emailed code shows as not matched and gets no Classroom grade. Not yet tried against
   a real Classroom course.

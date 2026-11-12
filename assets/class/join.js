@@ -12,10 +12,22 @@
   function clean(v){ return String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8); }
   var user = null, pendingCode = null;
 
+  // Google sign-in comes back to this page without its ?c=, so the code waits here for up to 15 minutes.
+  var HOLD = 'levlprep_join_code_v1';
+  function hold(code){ try{ sessionStorage.setItem(HOLD, JSON.stringify({ c: code, t: Date.now() })); }catch(e){} }
+  function held(){
+    try{
+      var o = JSON.parse(sessionStorage.getItem(HOLD) || 'null');
+      sessionStorage.removeItem(HOLD);
+      return o && Date.now() - o.t < 15 * 60000 ? clean(o.c) : '';
+    }catch(e){ return ''; }
+  }
+
   function signInFirst(code){
     pendingCode = code;
-    msg('Sign in first, so your work can reach your teacher.');
-    if(A() && A().openAuthModal) A().openAuthModal();
+    hold(code);
+    msg('Sign in first, so your work can reach your teacher. Your school Google account is the quickest way.');
+    if(A() && A().openAuthModal) A().openAuthModal('signin', { purpose: 'class' });
   }
 
   function find(code){
@@ -91,7 +103,8 @@
   });
 
   function boot(){
-    var code = clean(new URLSearchParams(location.search).get('c'));
+    var code = clean(new URLSearchParams(location.search).get('c')) || held();
+    if(code.length !== 8) code = '';
     if(code) $('jCode').value = code;
     $('jCode').addEventListener('input', function(){ this.value = clean(this.value); });
     $('jForm').addEventListener('submit', function(e){ e.preventDefault(); find(clean($('jCode').value)); });
