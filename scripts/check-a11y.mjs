@@ -33,7 +33,7 @@
    via `npx playwright install chromium`). CI does exactly that.
 */
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync, createReadStream } from 'node:fs';
 import { join, dirname, extname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -266,7 +266,10 @@ function serve(port) {
       res.writeHead(404); res.end('not found'); return;
     }
     res.writeHead(200, { 'Content-Type': MIME[extname(file)] || 'application/octet-stream' });
-    res.end(readFileSync(file));
+    // Streamed, not readFileSync: with several pages loading at once, a synchronous read of a multi-megabyte
+    // bank blocked every other request on this one-threaded server, and a random page missed its timeout in
+    // about half of CI runs (2026-11; the pages themselves load in about 0.3 s).
+    createReadStream(file).on('error', () => res.destroy()).pipe(res);
   });
   return new Promise((ok) => server.listen(port, () => ok(server)));
 }
