@@ -408,6 +408,47 @@
           "Next: planes and cavities"
         ]
       ]
+    },
+    {
+      "id": "3anWfhlw9Hw",
+      "course": "apchem",
+      "title": "Units, Exponents and Scientific Notation for AP Chem",
+      "seconds": 800,
+      "posted": "2026-11-09",
+      "pages": [
+        "chem/notes/math-units.html",
+        "chem/lessons/math-units.html",
+        "chem/notes/math-exponents.html",
+        "chem/lessons/math-exponents.html",
+        "chem/notes/math-scientific-notation.html",
+        "chem/lessons/math-scientific-notation.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          56,
+          "Units and dimensional analysis"
+        ],
+        [
+          313,
+          "Powers of ten"
+        ],
+        [
+          522,
+          "Scientific notation"
+        ],
+        [
+          745,
+          "Recap"
+        ],
+        [
+          771,
+          "Next: significant figures"
+        ]
+      ]
     }
   ]
 }
