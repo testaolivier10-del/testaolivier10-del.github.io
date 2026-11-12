@@ -308,6 +308,9 @@ jobs:
       # not empty before they do.
       - name: the static contents in the NREMT notes match their data file
         run: node scripts/build-nremt-notes-toc.mjs --check
+      # The closed About text on the thin NREMT tool pages, from docs/tool-about.json.
+      - name: the NREMT tool About blocks match docs/tool-about.json
+        run: node scripts/build-nremt-tool-about.mjs --check
       # And a page per chapter under nremt/notes/, generated from the same data
       # file, so the chapter text is readable without JavaScript and by a
       # crawler. A chapter edited or renamed without rebuilding would leave a

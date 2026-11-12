@@ -36,6 +36,7 @@
      node scripts/build-tool-pages.mjs            rewrite
      node scripts/build-tool-pages.mjs --check    fail if stale (CI)
 */
+import { toolAboutExtra } from './lib/tool-about.mjs';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { Hub } from './lib/hub.mjs';
 import { join, dirname } from 'node:path';
@@ -105,7 +106,10 @@ function topHtml(tool) {
       `<span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true">${tool.icon}</svg></span>` +
       `<h1>${esc(tool.name)}</h1>` +
     `</div>` +
-    `<p class="tool-lede">${esc(tool.blurb)}</p>`;
+    `<p class="tool-lede">${esc(tool.blurb)}</p>` +
+    // The closed About text (docs/tool-about.json); tool-shell.js moves it into the studio's About before it
+    // rewrites this block, so it is only in the page before the shell runs.
+    toolAboutExtra(`ochem/${tool.slug}`);
 }
 
 /* The Keep going strip under the tool (docs/tools-upgrade.md, "Related

@@ -45,7 +45,7 @@ and that fewer pages alone does not lift the rest; quality is judged sitewide.
 "how it works" (from `<course>/data/tools/<slug>.json`, math rendered) and a link to its notes page, inside the
 mount as a closed "About this tool" line. The runtime replaces the mount's contents when it mounts and shows the
 same text in its own About panel, so a student with JavaScript sees no change. Median 265 words a page, no new
-wording. Still thin: A&P's 8 tools, ochem's 9 and the NREMT tools (other data formats), unit and chapter hubs.
+wording. A&P's 8 tools, ochem's 9 and the three thin NREMT tools (body map, scenario simulator, sound trainer) followed on 2026-11-12: they had no authored intro, so a short intro and "How it works" were written per tool in `docs/tool-about.json` (checked against each tool's code) and placed the same way, closed in the mount (`toolAboutExtra()`; NREMT through `scripts/build-nremt-tool-about.mjs`). Each course's studio moves that text into its About panel before the tool draws (`tool-kit.js`, `tool-shell.js`, `nremt-studio.js`), so a student sees it only by opening About. Locked Premium A&P tools show the Premium card as before. Still thin: unit and chapter hubs.
 
 ### Bing and IndexNow
 `scripts/indexnow.mjs` tells Bing and the other IndexNow engines which pages changed (sitemap `<lastmod>` in the

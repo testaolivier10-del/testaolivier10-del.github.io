@@ -11,6 +11,7 @@
      node scripts/build-anp.mjs --check   exit 1 if anything on disk is stale
 
    Nothing it writes is edited by hand; docs/anp-phase1-architecture.md. */
+import { toolAboutExtra } from './lib/tool-about.mjs';
 import { Hub } from './lib/hub.mjs';
 import { courseBanner } from './lib/covers.mjs';
 import { r3HomeMain, parseSample } from './lib/r3-home.mjs';
@@ -823,7 +824,7 @@ ${isTool ? `${toolBand({ key: 'anp', up: '../../', slug: entry.slug, title: entr
     : `<header class="hero anp-hero${isTool ? ' anp-tool-hero' : ''}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}${
   // Where site-chrome.js puts a cross-course suggestion (assets/cross-course.js).
   entry.slug === 'dashboard' ? '\n  <div data-levl-cross="anp"></div>' : ''}
-  <div id="app" class="anp-app-mount${study ? ' cx-study' : ''}" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}${isTool && entry.studio ? ' data-studio="1"' : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
+  <div id="app" class="anp-app-mount${study ? ' cx-study' : ''}" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}${isTool && entry.studio ? ' data-studio="1"' : ''}>${mount || `${isTool ? toolAboutExtra('anp/' + entry.slug) : ''}<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}

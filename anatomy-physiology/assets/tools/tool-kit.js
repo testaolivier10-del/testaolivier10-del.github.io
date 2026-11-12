@@ -283,6 +283,13 @@
     var ab = document.createElement('div');
     ab.className = 'ls-sec';
     ab.innerHTML = (lede ? '<p>' + esc(lede.textContent) + '</p>' : '') + (o.about || '');
+    /* The page's closed "About this tool" (docs/tool-about.json, written into #app by the build so the page is not
+       empty before this runs): its text moves into About, then the block goes, so it is never shown twice. */
+    var pre = app.querySelector(':scope > .tool-about');
+    if(pre){
+      Array.prototype.slice.call(pre.childNodes).forEach(function(n){ if(n.nodeName !== 'SUMMARY') ab.appendChild(n); });
+      pre.parentNode.removeChild(pre);
+    }
     var s = window.LevlStudio.mount({
       title: o.title || (h1 ? h1.textContent : document.title), course: 'Anatomy & Physiology',
       back: BASE + 'tools.html', home: BASE, slug: 'anp-' + slug, host: app,

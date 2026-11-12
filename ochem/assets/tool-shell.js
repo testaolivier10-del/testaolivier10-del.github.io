@@ -30,6 +30,11 @@
     return String(s).split(' ').map(function(w, i){ return i && /^[A-Z][a-z]+$/.test(w) ? w.toLowerCase() : w; }).join(' ');
   }
 
+  /* The build writes a closed "About this tool" (docs/tool-about.json) after the lede; keep its text for the studio's
+     About before the block below is rewritten, so it is shown once, in About. */
+  var preAbout = mount.querySelector('.tool-about');
+  if(preAbout) preAbout.parentNode.removeChild(preAbout);
+
   /* Same markup as topHtml() in build-tool-pages.mjs, which writes it into
      the page first; change both together. */
   mount.innerHTML =
@@ -59,6 +64,7 @@
     var about = document.createElement('div');
     about.className = 'ls-sec';
     about.innerHTML = '<p>' + esc(tool.blurb) + '</p><p class="ls-sub">' + esc(tool.tagline) + '</p>';
+    if(preAbout) Array.prototype.slice.call(preAbout.childNodes).forEach(function(n){ if(n.nodeName !== 'SUMMARY') about.appendChild(n); });
     var paid = G && !G.toolFree(slug);
     studio = window.LevlStudio.mount({
       title: sentence(tool.name), course: 'Organic Chemistry', back: '../tools.html', home: '../', slug: 'ochem-' + slug,
