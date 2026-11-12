@@ -508,6 +508,12 @@ const SEEN_KEY = 'nremt_seen_questions';
 // Stored as ids, held in memory as positions. Same for the missed and flagged
 // queues below: every one of these crosses into localStorage, so every one of
 // them goes through QID on the way in and out.
+// Saved progress that no longer parses (cut short, edited, or written by an
+// older version of the page) reads as empty instead of stopping the page.
+// The bad value stays until the next save writes over it.
+function readSaved(key){
+  try{ const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
+}
 function loadSeen(){
   try {
     const raw = localStorage.getItem(SEEN_KEY);
@@ -603,8 +609,8 @@ function clearExamState(){
 }
 
 function loadHistory(){
-  const raw = localStorage.getItem(HISTORY_KEY);
-  return raw ? JSON.parse(raw) : [];
+  const v = readSaved(HISTORY_KEY);
+  return Array.isArray(v) ? v : [];
 }
 function saveHistoryEntry(entry){
   const history = loadHistory();
@@ -896,8 +902,8 @@ const MASTERY_KEY = 'nremt_mastery';
 // Keyed by question id. The keys come back from JSON as strings, which is
 // what QID.indexOf() is string-tolerant for.
 function loadMastery(){
-  const raw = localStorage.getItem(MASTERY_KEY);
-  return raw ? QID.pruneById(JSON.parse(raw)) : {};
+  const v = readSaved(MASTERY_KEY);
+  return v && typeof v === 'object' ? QID.pruneById(v) : {};
 }
 function updateMastery(qIdx, correct, ans){
   const m = loadMastery();
@@ -952,8 +958,8 @@ function loadDueForReview(limit){
 // Weak-spot practice's question weighting and the readiness score's weak-domain check.
 const DOMAIN_STATS_KEY = 'nremt_domain_stats_all';
 function loadDomainStatsAll(){
-  const raw = localStorage.getItem(DOMAIN_STATS_KEY);
-  return raw ? JSON.parse(raw) : {};
+  const v = readSaved(DOMAIN_STATS_KEY);
+  return v && typeof v === 'object' && !Array.isArray(v) ? v : {};
 }
 function recordDomainStatsAll(domainStats){
   const agg = loadDomainStatsAll();
@@ -1052,7 +1058,9 @@ function loadStreak(){
     currentStreak: 0, longestStreak: 0, lastActiveDate: null, dailyCounts: {},
     dailyGoal: 15, remindersEnabled: false, reminderHour: 18, lastNotifiedDate: null,
   };
-  return raw ? Object.assign(defaults, JSON.parse(raw)) : defaults;
+  let v = null;
+  try{ v = raw ? JSON.parse(raw) : null; }catch(e){ v = null; }
+  return v && typeof v === 'object' ? Object.assign(defaults, v) : defaults;
 }
 function saveStreak(s){ localStorage.setItem(STREAK_KEY, JSON.stringify(s)); }
 
@@ -1255,8 +1263,8 @@ function renderStreakWidget(){
 }
 
 function loadMissed(){
-  const raw = localStorage.getItem(MISSED_KEY);
-  return raw ? QID.indicesOf(JSON.parse(raw)) : [];
+  const v = readSaved(MISSED_KEY);
+  return Array.isArray(v) ? QID.indicesOf(v) : [];
 }
 function saveMissed(list){
   localStorage.setItem(MISSED_KEY, JSON.stringify(QID.idsOf(list)));
@@ -1267,8 +1275,8 @@ function saveMissed(list){
 // auto-cleared based on whether the question was answered correctly.
 const FLAGGED_KEY = 'nremt_exam100_flagged';
 function loadFlagged(){
-  const raw = localStorage.getItem(FLAGGED_KEY);
-  return raw ? QID.indicesOf(JSON.parse(raw)) : [];
+  const v = readSaved(FLAGGED_KEY);
+  return Array.isArray(v) ? QID.indicesOf(v) : [];
 }
 function saveFlagged(list){
   localStorage.setItem(FLAGGED_KEY, JSON.stringify(QID.idsOf(list)));
@@ -1281,10 +1289,9 @@ function toggleFlag(qIdx){
 }
 
 function refreshIntroState(){
-  const best = localStorage.getItem(STORAGE_KEY);
+  const data = readSaved(STORAGE_KEY);
   const line = $id('bestScoreLine');
-  if(best){
-    const data = JSON.parse(best);
+  if(data && typeof data.score === 'number'){
     line.textContent = `Your best score so far: ${data.score}/${data.total || 100} (completed in ${formatDuration(data.timeMs)})`;
   }
   const missed = loadMissed();
@@ -2721,8 +2728,7 @@ function showResults(){
   renderEnd({ score, elapsed, examStats, domainStats, xpGained, clearedText, catHtml });
 
   if(mode === 'full'){
-    const best = localStorage.getItem(STORAGE_KEY);
-    const bestData = best ? JSON.parse(best) : null;
+    const bestData = readSaved(STORAGE_KEY);
     if(!bestData || score > bestData.score){
       localStorage.setItem(STORAGE_KEY, JSON.stringify({score, total: activeIndices.length, timeMs: elapsed}));
     }
