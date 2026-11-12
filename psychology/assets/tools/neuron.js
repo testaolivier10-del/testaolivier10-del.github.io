@@ -62,10 +62,13 @@
     var segW = (ax1 - ax0 - gap * (segN + 1)) / segN;
     // dendrites: a seeded tree from the cell body
     var rng = M.rng(o.seed || 41), dend = [], tips = [];
+    // With labels on, the top band belongs to the words "Dendrites" and "Terminals": no branch grows into it,
+    // so no branch runs through a label (it did at phone width).
+    var topPad = o.labels !== false ? (w < 520 ? 11.5 : 13) + 10 : 6;
     function branch(x, y, ang, len, wd, depth){
       var bend = (rng() - 0.5) * 0.5, ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
-      ex = Math.max(x0 + 4, Math.min(sx - rs * 0.2, ex)); ey = Math.max(y0 + 6, Math.min(y0 + h - 6, ey));
-      var cx = (x + ex) / 2 + Math.cos(ang + Math.PI / 2) * len * bend * 0.4, cy = (y + ey) / 2 + Math.sin(ang + Math.PI / 2) * len * bend * 0.4;
+      ex = Math.max(x0 + 4, Math.min(sx - rs * 0.2, ex)); ey = Math.max(y0 + topPad, Math.min(y0 + h - 6, ey));
+      var cx = (x + ex) / 2 + Math.cos(ang + Math.PI / 2) * len * bend * 0.4, cy = Math.max(y0 + topPad, (y + ey) / 2 + Math.sin(ang + Math.PI / 2) * len * bend * 0.4);
       dend.push({ d: 'M' + pt(x, y) + ' Q' + pt(cx, cy) + ' ' + pt(ex, ey), w: wd });
       if(depth > 0){
         branch(ex, ey, ang - 0.42 - rng() * 0.2, len * 0.66, wd * 0.62, depth - 1);

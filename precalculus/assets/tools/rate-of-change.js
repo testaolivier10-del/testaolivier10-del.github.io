@@ -137,7 +137,8 @@
       var sy = function(v){ return Tp + (hi - v) / (hi - lo) * (h - Tp - B); }, o = [];
       bars.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       o.push('<text class="rc-blab" x="' + (L - 6) + '" y="' + (Tp - 4) + '" text-anchor="end">rate</text>');
-      if(S.length > 1) o.push('<text class="rc-blab" x="' + (L - 6) + '" y="' + (h - 4) + '" text-anchor="end">change</text>');
+      // "change" is wider than a narrow left margin: there it starts at the edge, so it is never cut off.
+      if(S.length > 1) o.push(L - 6 < 50 ? '<text class="rc-blab" x="2" y="' + (h - 4) + '" text-anchor="start">change</text>' : '<text class="rc-blab" x="' + (L - 6) + '" y="' + (h - 4) + '" text-anchor="end">change</text>');
       o.push('<line class="rc-bzero" x1="' + L + '" y1="' + r1(sy(0)) + '" x2="' + (w - R) + '" y2="' + r1(sy(0)) + '"/>');
       S.forEach(function(s, i){
         var cx = L + gw * (i + 0.5), y0 = sy(0), y1 = sy(s.m), top = Math.min(y0, y1);

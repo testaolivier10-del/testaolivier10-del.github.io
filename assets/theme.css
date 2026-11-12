@@ -2082,3 +2082,9 @@ mtext{white-space:pre;}
   .chrome-menu:has(#accountBtn[aria-haspopup]) #settingsBtn,
   .chrome-menu:has(#accountBtn[aria-haspopup]) #settingsMenu{display:none !important;}
 }
+
+/* What a tool page says before its script runs (scripts/lib/tool-about.mjs):
+   one closed line, replaced when the tool mounts. */
+.tool-about{margin:1rem 0;line-height:1.55;}
+.tool-about > summary{cursor:pointer;font-weight:800;}
+.tool-about-h{font-size:1.05rem;margin:1rem 0 .4rem;}

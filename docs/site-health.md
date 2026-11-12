@@ -29,6 +29,30 @@ ready for teachers) and the fixes for it. Measurements: Project doc `claude/levl
 - Cloudflare, Workers Routes, `levlprep.com/*`: request limit failure mode set to "Fail open (proceed)". Past the
   100,000 a day limit visitors get the GitHub Pages copy (which has no vault) instead of error 1027.
 
+## Search recovery route (2026-11-11, owner)
+Owner's rule: search should come back without limiting the site, so nothing is hidden or removed. PR #191 (free
+lessons noindex, out of the sitemap) was closed unmerged. Research behind the route is in the Project doc
+`claude/levlprep-search-recovery-2026-11-11.md`: Google says a site recovers over months once its systems see the pattern is gone,
+and that fewer pages alone does not lift the rest; quality is judged sitewide.
+- Audit: a topic's notes and lesson share 3 to 14% of their wording (not copies). 403 of 2,281 listed pages had
+  under 250 words of readable text; 137 of them were tool pages.
+- Not done, on purpose: retitling lessons. "Interactive Lesson" fits the 60 character title on only about 80 of
+  1,221 lessons, so the pages would be inconsistent for no gain. Notes and lesson titles already differ by label.
+- Not done (owner): expert review is not available; new courses are not paused.
+
+### Fuller tool pages
+`scripts/lib/tool-about.mjs`: each AP® tool page (120, twelve courses) now carries the tool's own intro and
+"how it works" (from `<course>/data/tools/<slug>.json`, math rendered) and a link to its notes page, inside the
+mount as a closed "About this tool" line. The runtime replaces the mount's contents when it mounts and shows the
+same text in its own About panel, so a student with JavaScript sees no change. Median 265 words a page, no new
+wording. Still thin: A&P's 8 tools, ochem's 9 and the NREMT tools (other data formats), unit and chapter hubs.
+
+### Bing and IndexNow
+`scripts/indexnow.mjs` tells Bing and the other IndexNow engines which pages changed (sitemap `<lastmod>` in the
+last 2 days) at the end of every deploy; the key is the file `/<key>.txt` at the site root. First run for every
+page: Actions, "Deploy Worker and site", Run workflow with "indexnow_all" ticked. Google does not use IndexNow.
+Owner step still open: Bing Webmaster Tools (sign in, add levlprep.com by importing from Search Console).
+
 ## Open (owner)
 1. Search Console: request indexing for the main notes pages (about 10 a day by hand).
 2. Workers Paid ($5 a month) removes the 100,000 a day limit; worth it near 20,000 page views a day (about 3,800

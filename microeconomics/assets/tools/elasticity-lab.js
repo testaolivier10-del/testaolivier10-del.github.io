@@ -175,8 +175,12 @@
         o.push('<circle class="el-pt ' + r[3] + '" cx="' + f1(xq) + '" cy="' + f1(y1) + '" r="' + (r[4] === 'A' ? 8 : 6.5) + '"/>');
         o.push('<circle class="el-pt ' + r[3] + '" cx="' + f1(xq) + '" cy="' + f1(y2) + '" r="' + (r[4] === 'A' ? 7 : 6) + '"/>');
         var right = r[4] === 'B';
-        o.push('<text class="el-plab ' + (right ? 'el-m2' : 'el-m1') + '" x="' + f1(xq + (right ? 10 : -10)) + '" y="' + f1(y1 - 9) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + r[4] + '</text>');
-        o.push('<text class="el-plab ' + (right ? 'el-m2' : 'el-m1') + '" x="' + f1(xq + (right ? 10 : -10)) + '" y="' + f1(y2 - 9) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + r[4] + '</text>');
+        // The letter sits in a quarter no line runs through. D always falls, so A (left) goes below it and B
+        // (right) above it. On the TR hill the clear quarter flips at the peak (Q = 50): left of a rising curve
+        // is above it, left of a falling curve is below it, and the other way round on the right.
+        var up1 = right, up2 = right ? pt.q >= 50 : pt.q <= 50;
+        o.push('<text class="el-plab ' + (right ? 'el-m2' : 'el-m1') + '" x="' + f1(xq + (right ? 10 : -10)) + '" y="' + f1(up1 ? y1 - 9 : y1 + 21) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + r[4] + '</text>');
+        o.push('<text class="el-plab ' + (right ? 'el-m2' : 'el-m1') + '" x="' + f1(xq + (right ? 10 : -10)) + '" y="' + f1(up2 ? y2 - 9 : y2 + 21) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + r[4] + '</text>');
       });
       // axes, ticks and values: A's and B's values on the axes in their colors, plain ticks kept clear of them
       o.push('<path class="el-axis" d="M' + g.L + ' ' + g.T1 + 'V' + (g.T1 + g.H1) + 'H' + (g.L + PW) + 'M' + g.L + ' ' + T2 + 'V' + (T2 + g.H2) + 'H' + (g.L + PW) + '"/>');
