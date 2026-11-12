@@ -1185,9 +1185,9 @@
   },
   {
    "id": "w1110-01-dive-reflex",
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-11-10",
-   "date": null,
+   "date": "2026-11-15",
    "tiktok_caption": "How the mammalian dive reflex keeps a freediver alive a hundred feet down on one breath.\nDid she choose to slow her heart, or did her body do it for her?\nIn anatomy and physiology this is an autonomic reflex: cold water on the face signals the brainstem, the vagus nerve slows the heart, and vessels in the arms and legs tighten so oxygen goes to the heart and brain.\nlevlprep.com\n#divereflex #freediving #anatomy #physiology",
    "yt_title": "Dive Reflex: Why Her Heart Slows 100 Feet Down",
    "yt_description": "How the mammalian dive reflex keeps a freediver alive a hundred feet down on one breath.\nDid she choose to slow her heart, or did her body do it for her?\nIn anatomy and physiology this is an autonomic reflex: cold water on the face signals the brainstem, the vagus nerve slows the heart, and vessels in the arms and legs tighten so oxygen goes to the heart and brain.\nFree notes and practice: https://levlprep.com/anatomy-physiology/notes/reflexes.html?ref=yt-dive-reflex",
@@ -1195,8 +1195,8 @@
    "hook": "The dive reflex is keeping this woman alive, a hundred feet down on a single breath.",
    "search_phrase": "mammalian dive reflex",
    "yt_no_hashtags": true,
-   "buffer": null,
-   "yt_buffer": null,
+   "buffer": "6af602dbb849e1944c077636",
+   "yt_buffer": "6af602eaaabcbcca5409d5dd",
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -1205,7 +1205,8 @@
    "related_set": false,
    "review_blob": "39bceff2c6afba972d17917c2ce86d00ba810b84",
    "approved_on": "2026-11-10",
-   "approved_blob": "39bceff2c6afba972d17917c2ce86d00ba810b84"
+   "approved_blob": "39bceff2c6afba972d17917c2ce86d00ba810b84",
+   "approved_commit": "734cc3d3e183a9e277669c8d1cc336720284fb0d"
   }
  ]
 }
