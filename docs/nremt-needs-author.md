@@ -116,3 +116,9 @@ names a woman uses it (s2, s7, s15, s16, s17, s20, s24), and those patients get 
 "his" because of "her husband"). Limits: the skeleton is still the male pelvis and the face is a mannequin; a true
 female model would need a second CC BY-SA or similar female mesh, rendered
 through the same pipeline.
+
+Decided (2026-11-12, owner: "do the best possible decision for the NREMT content review"): every point in
+`docs/nremt-reviews/needs-decision-2026-11.md` now has a decision, recorded with its reason in
+`docs/nremt-reviews/decisions-2026-11-12.md` and applied by `scripts/nremt-decisions-2026-11-12.py`. Chapter 27 has a
+"Suicide risk" notes topic (no lesson step yet). Field triage lists are summarized and linked to ACS. Still open: a
+clinician or EMS instructor spot check.
