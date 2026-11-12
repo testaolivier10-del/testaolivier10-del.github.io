@@ -57,7 +57,7 @@
    and this reuses it. CHROMIUM_PATH overrides the browser binary.
 */
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, statSync, createReadStream } from 'node:fs';
 import { join, dirname, extname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -103,7 +103,10 @@ function serve(port) {
       res.writeHead(404); res.end('not found'); return;
     }
     res.writeHead(200, { 'Content-Type': MIME[extname(file)] || 'application/octet-stream' });
-    res.end(readFileSync(file));
+    // Streamed, not readFileSync: with several pages loading at once, a synchronous read of a multi-megabyte
+    // bank blocked every other request on this one-threaded server, and a random page missed its timeout in
+    // about half of CI runs (2026-11; the pages themselves load in about 0.3 s).
+    createReadStream(file).on('error', () => res.destroy()).pipe(res);
   });
   return new Promise((ok) => server.listen(port, () => ok(server)));
 }
