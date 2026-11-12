@@ -29,3 +29,7 @@ node_modules
 
 # The deploy build (scripts/build-deploy.mjs): never committed.
 .deploy/
+
+# scripts/sim-students.mjs scratch output
+sim-results.json
+sim-shots/

@@ -243,6 +243,12 @@ from page text in `scripts/sitemap-dates.json`), cache headers, plan limits and 
 scan, the email offer, the one question after a new account) and the owner decisions behind it. How they are sent:
 README "Nothing brought anyone back" and `worker/README.md`.
 
+## Simulated students
+
+`docs/student-sim.md` is the status file: `scripts/sim-students.mjs` runs headless "students" (practice, phone,
+exam, random clicks, damaged or full storage, offline, path, flashcards, review) through a local copy of every course,
+with all outside requests blocked, and what the first run found.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
