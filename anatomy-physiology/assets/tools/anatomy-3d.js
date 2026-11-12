@@ -36,6 +36,9 @@
   var KIND = 'anatomy-3d';
   var app = document.getElementById('app');
   if(!app) return;   // a Premium gate replaced the mount (AnpCore.mountPremium)
+  // The page's static "About this tool" (scripts/lib/anp-tool-about.mjs) is for readers without JavaScript;
+  // this tool appends to the mount rather than replacing it, so it takes that text out first.
+  [].forEach.call(app.querySelectorAll('.tool-about'), function(n){ n.remove(); });
   var BASE = window.ANP_BASE || '../';
   var SRC = app.getAttribute('data-src') || (BASE + 'assets/tool-data/anatomy-3d.json');
   var PREFS_KEY = 'anp_3d_prefs_v1';

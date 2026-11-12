@@ -33,6 +33,7 @@ import {
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { anpToolAbout } from './lib/anp-tool-about.mjs';
 import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 import { practicePage } from './lib/practice-panel.mjs';
@@ -1038,7 +1039,13 @@ for (const [from, to] of Object.entries(RENAMED)) put(`${from}.html`, `<!DOCTYPE
 </body>
 </html>
 `);
-for (const t of PAGES.tools) put(`tools/${t.slug}.html`, appShell(t, { path: `tools/${t.slug}.html`, depth: '../', h1: t.name, eyebrow: 'A&P tool', lede: t.lede || t.blurb, section: 'tools', isTool: true }));
+/* "About this tool": what is inside each tool, written into the mount (scripts/lib/anp-tool-about.mjs). */
+const toolData = (slug) => { const f = join(C.data, 'tools', `${slug}.json`); return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null; };
+for (const t of PAGES.tools) {
+  const data = toolData(t.slug);
+  const mount = data ? anpToolAbout({ slug: t.slug, data, topic: topicById, built: C.built, esc }) : '';
+  put(`tools/${t.slug}.html`, appShell(t, { path: `tools/${t.slug}.html`, depth: '../', h1: t.name, eyebrow: 'A&P tool', lede: t.lede || t.blurb, section: 'tools', isTool: true, mount }));
+}
 
 /* ------------------------------------------------------------ runtime */
 

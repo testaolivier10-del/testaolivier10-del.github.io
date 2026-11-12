@@ -687,7 +687,9 @@ const BUDGETS = [
   /* 57 -> 57.2 (score card at the end of a call, 2026-11-07): the scoring and card call in the page; measured 57.1 KB, a hair over a 57.1 budget. */
   /* 57.2 -> 57.6 (tool cleanup pass 3, 2026-11-11): the picker opens on six calls and the monitor waits behind
      "Check vitals" at a call's opening; measured 57.5 KB. */
-  ['nremt/scenario-sim.html', 57.6],
+  /* 57.6 -> 61.5 (fuller tool pages, 2026-11-12, docs/site-health.md): each call's title, kind, blurb and opening
+     scene in a closed "About this tool" line, for readers without JavaScript and crawlers. Measured 61.2 KB. */
+  ['nremt/scenario-sim.html', 61.5],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
@@ -777,12 +779,15 @@ const BUDGETS = [
      every notes page; this is the largest notes page. Measured 19.6 KB. */
   /* 19.8 -> 20.1 (course redesign r4, Part C): the share menu in the band and the video strip markup. */
   ['anatomy-physiology/notes/cardiac-cycle.html', 20.1],
-  ['anatomy-physiology/tools/predict.html', 3],
-  ['anatomy-physiology/tools/lab-practical.html', 3],
+  /* 3 -> 4.2 and 3 -> 3.7 (fuller tool pages, 2026-11-12, docs/site-health.md): the closed "About this tool"
+     line listing what is inside (scripts/lib/anp-tool-about.mjs). Measured 4.0 and 3.5 KB. */
+  ['anatomy-physiology/tools/predict.html', 4.2],
+  ['anatomy-physiology/tools/lab-practical.html', 3.7],
   /* The 3D anatomy tool's page (2026-10-27). Its runtime is counted in the anatomy-physiology shell
      (tools/anatomy-3d.js and .css) and the site shell (assets/body3d/viewer.js, which the NREMT body map
      loads too); the model and three.js load on demand and are not counted, as on the body map. */
-  ['anatomy-physiology/tools/anatomy-3d.html', 3],
+  /* 3 -> 3.8 (fuller tool pages, 2026-11-12): its "About this tool" line, as predict.html above. Measured 3.6 KB. */
+  ['anatomy-physiology/tools/anatomy-3d.html', 3.8],
   ['anatomy-physiology/exams.html', 3],
   /* AP® Biology: the home, the app shells and, once a unit is published, its
      first lesson, notes page and unit sheet (BIO_PAGES below, from what the
