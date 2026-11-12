@@ -238,6 +238,41 @@ function bandHtml(tool) {
     .replace(`${BAND_START}\n`, '').replace(`\n${BAND_END}`, '');
 }
 
+
+/* "About this tool", written into the tool's root (docs/site-health.md,
+   "Fuller tool and lesson pages", 2026-11-12). A tool page was about 75 words
+   until its script ran. This closed line says what the tool is for, what it
+   teaches, what each of its topics' notes pages is about (that page's own
+   description) and what its glossary terms mean (the glossary's own
+   definitions). No new wording. Each tool sets root.innerHTML when it starts,
+   so a student with JavaScript sees no change. */
+const ABOUT_START = '<!-- tool-about:start -->', ABOUT_END = '<!-- tool-about:end -->';
+function notesDesc(id) {
+  const f = join(ROOT, 'ochem', 'notes', `${id}.html`);
+  if (!existsSync(f)) return '';
+  const m = /<meta name="description" content="([^"]*)"/.exec(readFileSync(f, 'utf8'));
+  return m ? m[1] : '';
+}
+function aboutHtml(tool) {
+  const topics = tool.topic.map((id) => TOPICS.get(id)).filter(Boolean).map((t) => {
+    const d = notesDesc(t.id);
+    return `<li><a href="../${esc(t.href)}">${esc(t.title)}</a>${d ? `: ${d}` : ''}</li>`;
+  }).join('');
+  const terms = (tool.terms || []).map((id) => TERMS.get(id)).filter(Boolean)
+    .map((g) => `<li><b>${esc(g.term)}</b>: ${esc(g.def)}</li>`).join('');
+  return `<details class="tool-about"><summary>About this tool</summary>` +
+    `<p>${undash(tool.tagline)} ${esc(tool.blurb)}</p>` +
+    `<p>What it teaches: ${esc(tool.teaches)}.</p>` +
+    (topics ? `<h2 class="tool-about-h">The topics it covers</h2><ul>${topics}</ul>` : '') +
+    (terms ? `<h2 class="tool-about-h">Terms you will use</h2><ul>${terms}</ul>` : '') +
+    `</details>`;
+}
+function spliceRoot(html, body) {
+  const re = /(<div id="[A-Za-z0-9]+" class="tool-root"[^>]*>)([\s\S]*?)(<\/div>)/;
+  if (!re.test(html)) return null;
+  return html.replace(re, (m, a, inner, c) => `${a}${ABOUT_START}${body}${ABOUT_END}${c}`);
+}
+
 const tools = loadTools();
 const stale = [];
 const broken = [];
@@ -264,6 +299,9 @@ for (const tool of tools) {
   // Round 3 (scripts/lib/r3-tools.mjs): the tool's cover band, after the breadcrumb.
   next = splice(next, BAND_START, BAND_END, bandHtml(tool), '<!-- crumb:end -->');
   if (next === null) { broken.push(`${tool.slug}: no <!-- crumb:end --> to put the cover band after`); continue; }
+
+  next = spliceRoot(next, aboutHtml(tool));
+  if (next === null) { broken.push(`${tool.slug}: no <div class="tool-root"> to put About this tool in`); continue; }
 
   if (next === current) continue;
   if (check) { stale.push(tool.slug); continue; }

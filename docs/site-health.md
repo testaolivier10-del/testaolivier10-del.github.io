@@ -45,7 +45,26 @@ and that fewer pages alone does not lift the rest; quality is judged sitewide.
 "how it works" (from `<course>/data/tools/<slug>.json`, math rendered) and a link to its notes page, inside the
 mount as a closed "About this tool" line. The runtime replaces the mount's contents when it mounts and shows the
 same text in its own About panel, so a student with JavaScript sees no change. Median 265 words a page, no new
-wording. Still thin: A&P's 8 tools, ochem's 9 and the NREMT tools (other data formats), unit and chapter hubs.
+wording. The pages it did not reach are done in the next section.
+
+### Fuller tool and lesson pages (2026-11-12)
+The same closed "About this tool" line for the pages #192 did not reach, each from the page's own data, and each
+replaced by its runtime when it mounts:
+- A&P's 8 tools (`scripts/lib/anp-tool-about.mjs`, written by `build-anp.mjs`): what is inside (up to 24 items,
+  spread across topics, each with its own title and intro or setup; all 83 lab practical set titles; counts and
+  examples of word parts), then the notes pages of the topics covered. No answers. `anatomy-3d.js` appends to its
+  mount, so it removes the line itself.
+- Ochem's 9 tools (`build-tool-pages.mjs`, `<!-- tool-about -->` inside `.tool-root`): tagline, what it teaches,
+  each topic with its notes page's own description, and each glossary term with its definition.
+- The 21 free ochem lessons (`scripts/build-ochem-lesson-text.mjs`): "Read this lesson as text", the explain
+  steps' titles, text and figures (no questions). Premium lessons are skipped (vault rules), and so is
+  `formal-charge.html`, which predates the lesson engine.
+- The NREMT scenario simulator (`scripts/build-nremt-sim-text.mjs`): each call's title, kind, blurb and opening
+  scene, never the choices.
+Left as they are, on purpose: the course app pages (practice, exams, flashcards, justify, free response, tools
+hubs, about 90 to 150 words each). They are app screens, and filling them would mean the same new wording on
+fifteen courses, which is the pattern the search drop is about. Unit and chapter hubs had already passed 250
+words except AP® Chem's skills chapter.
 
 ### Bing and IndexNow
 `scripts/indexnow.mjs` tells Bing and the other IndexNow engines which pages changed (sitemap `<lastmod>` in the

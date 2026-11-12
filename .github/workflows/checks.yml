@@ -323,6 +323,14 @@ jobs:
       # something the prose next to it no longer says.
       - name: the generated ochem figures are up to date
         run: node scripts/build-ochem-figures.mjs --check
+      # The free ochem lessons, the scenario simulator: the text a reader
+      # without JavaScript (and Bing, and the AI crawlers) sees is copied from
+      # the page's own steps and calls (docs/site-health.md, "Fuller tool and
+      # lesson pages"). After the figures, because the lessons copy them.
+      - name: the static text on the free ochem lessons matches their steps
+        run: node scripts/build-ochem-lesson-text.mjs --check
+      - name: the static call list on the NREMT scenario simulator matches its calls
+        run: node scripts/build-nremt-sim-text.mjs --check
       # And the NREMT ones, which only became possible once the study notes
       # moved out of their page into a JSON file. Same failure mode: a stale
       # figure is a diagram quietly saying something the prose beside it no
