@@ -2341,7 +2341,11 @@ function showCheckedState(q, optsEl){
   fb.innerHTML = `<p class="q-feedback-head cx-fb-head">${right ? 'Correct.' : 'Not quite.'}</p>` +
     (right ? '' : TEI.isTei(q) ? `<p class="q-feedback-key">${TEI.rightCount(q, ans)} of ${q.options.length} rows right. The item counts only when every row is.</p>`
       : `<p class="q-feedback-key">Answer: ${formatCorrectAnswerText(q, LETTERS)}</p>`) +
-    `<div class="q-feedback-explain cx-explain">${q.explain || ''}</div>`;
+    `<div class="q-feedback-explain cx-explain">${q.explain || ''}</div>` +
+    // "This looks wrong" under the explanation, where the AP courses and ochem have it (it had been left only on the
+    // end-of-session review list and flashcards, so practice never offered it; 0 reports ever, 2026-11-12).
+    (window.LevlReport ? `<div class="r-report">${window.LevlReport.button('nremt', QID.idOf(activeIndices[current]))}</div>` : '');
+  if(window.LevlReport) window.LevlReport.paint();
   // The explanation may still be on its way on a slow connection.
   if(!q.explain){
     loadExplanations().then(() => {

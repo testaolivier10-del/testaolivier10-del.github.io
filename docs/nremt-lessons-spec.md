@@ -191,3 +191,11 @@ Stop the Bleed and the standard EMT texts. Logs: `docs/nremt-reviews/lessons-r1.
 - 62 contested points and the chapter 27 suicide gap are in `docs/nremt-needs-author.md` and
   `docs/nremt-reviews/needs-decision-2026-11.md`. No check question is keyed on a contested point.
 - Not done: no clinician has read any of it. That is still the open item for the whole course.
+
+### Owner decisions on the open points (2026-11-12)
+
+All points in `docs/nremt-reviews/needs-decision-2026-11.md` decided; log and reasons in
+`docs/nremt-reviews/decisions-2026-11-12.md`. Two lessons changed: reassessment-and-trending (FIRR label dropped,
+check question 5 stem "What is a field impression?") and multisystem-trauma-and-field-triage (red injury patterns and
+yellow mechanism summarized in our own words, ACS guideline named). Practice now shows the report button under each
+explanation.

@@ -34,7 +34,7 @@
     "Reassessment has <b>four components</b>: repeat the primary assessment, reestablish priority, reassess and record vital signs, and repeat the pertinent history and exam while checking interventions.",
     "<b>Intervals:</b> stable every 15 minutes, unstable or potentially unstable every 5 minutes, and immediately whenever you suspect a change.",
     "<b>Trending</b> is tracking change over time. A pulse that rises while the blood pressure falls points to shock in a way neither number does alone, which is why a trend is worth more than any single set of vital signs.",
-    "<b>FIRR</b> sums up care after the assessment: Field impression (the body system affected and the probable cause), Interventions, Reassessments and Report.",
+    "<b>Care after the assessment</b> comes in four steps: Field impression (the body system affected and the probable cause), Interventions, Reassessments and Report.",
     "<b>Medications beyond oxygen</b> need authorization from medical control, by standing order or direct order per local protocol. Document the time of every intervention and every reassessment.",
     "<b>Reassessment is never skipped.</b> If lifesaving care leaves you no free hands, your partner does it."
   ],
@@ -88,7 +88,7 @@
       "why": "The intervals are a minimum, not a schedule to wait for. Any suspected change means repeating at least the primary assessment immediately. A blood pressure alone skips the airway and breathing check that a change in mental status demands."
     },
     {
-      "q": "In FIRR, what is the field impression?",
+      "q": "What is a field impression?",
       "options": [
         "A final diagnosis confirmed by the hospital",
         "A list of every intervention and its time",
@@ -100,5 +100,5 @@
     }
   ],
   "description": "Reassessment turns a snapshot into a trend: its four components, how often to repeat it, and what a change in the vital signs is telling you.",
-  "summary": "<p>Reassessment turns a snapshot into a trend. Its four components are repeating the primary assessment, reestablishing priority, reassessing and recording vital signs against the baseline, and repeating the pertinent history and exam while checking every intervention. Stable patients are reassessed at least every 15 minutes and unstable or potentially unstable patients at least every 5, and at once when anything changes. Care after the assessment follows FIRR: field impression, interventions, reassessments and a handoff report given in a set order.</p>"
+  "summary": "<p>Reassessment turns a snapshot into a trend. Its four components are repeating the primary assessment, reestablishing priority, reassessing and recording vital signs against the baseline, and repeating the pertinent history and exam while checking every intervention. Stable patients are reassessed at least every 15 minutes and unstable or potentially unstable patients at least every 5, and at once when anything changes. Care after the assessment comes in four steps: field impression, interventions, reassessments and a handoff report given in a set order.</p>"
 }
