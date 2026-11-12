@@ -42,6 +42,14 @@ Owner asked for the email limit, Google sign-in, Class Premium and hide scores t
 - Tests: `scripts/test/class-ready-sql.test.mjs` (PGlite: seats, order of joining, refunds, own pass wins, hide
   scores), `scripts/test/worker-class-premium.test.mjs`.
 
+Done 2026-11-11: PR #193 merged (Worker deployed); `2026-11l-class-ready.sql` applied and checked (class_premium with RLS
+and no browser access, the four Worker-only functions granted to service_role only, `my_premium()` reads class
+cover, hide_scores in `teach_update_class`, `teach_class_report` and `class_mine`); Polar product "LevlPrep Class
+Premium" (private, `c979654e-d531-4aaa-aeff-e19f13fd4b21`) added as `"class"` to `POLAR_PRODUCTS` and deployed;
+Google consent screen already In production (no verification needed); Supabase Auth rate limits for sign-ups and
+sign-ins and for code verifications raised from 30 to 100 per 5 minutes per IP (a class shares one school IP);
+emails stay 100 an hour. Still open: one test purchase with a 100% discount code.
+
 Owner steps for this change, in order:
 1. Merge the pull request (deploys the Worker; Class Premium checkout answers "not set up yet" until step 3).
 2. Supabase SQL editor: run `scripts/sql/migrations/2026-11l-class-ready.sql` (idempotent). Until then the hide

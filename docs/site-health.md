@@ -55,8 +55,9 @@ Owner step still open: Bing Webmaster Tools (sign in, add levlprep.com by import
 
 ## Open (owner)
 1. Search Console: request indexing for the main notes pages (about 10 a day by hand).
-2. Workers Paid ($5 a month) removes the 100,000 a day limit; worth it near 20,000 page views a day (about 3,800
-   on 2026-11-10).
+2. Workers Paid ($5 a month) removes the 100,000 a day limit. Measured 2026-11-11 in the Cloudflare dashboard: about
+   3,800 Worker requests (levlprep-ask 2.5k, levlprep-site 1.3k), under 4% of the free limit, so the "3,800 page views"
+   above was really requests. No rewrite rule or analytics trimming needed until daily requests pass about 50,000.
 3. Email: Resend free is 100 a day. One class signing in with emailed codes can use it up; Resend Pro ($20 a
    month) before teacher outreach, and raise Supabase's emails per hour (Authentication, Rate Limits).
    2026-11-11: class joins now lead with Google (no email sent; docs/teacher-classes.md, Class readiness), so a class
