@@ -33,3 +33,17 @@ export function toolAbout({ file, title, math, esc }) {
     : '';
   return `<details class="tool-about"><summary>About this tool</summary>${html(d.intro || '')}${how}${notes}</details>`;
 }
+
+/* The same closed "About this tool" for the tools whose data has no intro of
+   its own (A&P, ochem and three NREMT tools, 2026-11-12): the text is written
+   once in docs/tool-about.json ("<course>/<slug>": { intro, how }, HTML). Each
+   course's studio reads this block into its own About panel before the tool
+   draws, so a student sees the text only by opening About. */
+const EXTRA_FILE = new URL('../../docs/tool-about.json', import.meta.url);
+let extra = null;
+export function toolAboutExtra(key) {
+  extra ??= JSON.parse(readFileSync(EXTRA_FILE, 'utf8'));
+  const d = extra[key];
+  if (!d) return '';
+  return `<details class="tool-about"><summary>About this tool</summary>${d.intro}<h2 class="tool-about-h">How it works</h2>${d.how}</details>`;
+}

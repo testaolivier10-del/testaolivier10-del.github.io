@@ -44,6 +44,13 @@
     var lede = head && head.querySelector('.lede');
     if(o.about) list(o.about).forEach(function(el){ about.appendChild(el); });
     else if(lede) about.appendChild(lede);
+    // The closed "About this tool" the build writes under the lede (docs/tool-about.json): its text joins About and
+    // the block goes, so it is shown once.
+    var pre = head && head.querySelector('.tool-about');
+    if(pre){
+      Array.prototype.slice.call(pre.childNodes).forEach(function(n){ if(n.nodeName !== 'SUMMARY') about.appendChild(n); });
+      pre.parentNode.removeChild(pre);
+    }
     var opts = {};
     for(var k in o) opts[k] = o[k];
     opts.course = 'NREMT-EMT';

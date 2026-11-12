@@ -425,7 +425,9 @@ const SHELL_BUDGETS = [
   /* 57.5 -> 58 (tools pass 3, docs/tool-review/pass3/anatomy-physiology.md): Predict's whole dial names and larger
      dials without a figure, the chain diagram taking the run feed's place. The lab practical's view split and the
      leader-line work sit in tools/lab-fit.js (first use). Predict measured 57.7 KB. */
-  ['anatomy-physiology', 58],
+  /* 58 -> 58.3 (fuller tool pages, 2026-11-12): tool-kit.js moves the page's closed About text into the studio's
+     About; measured 58.0 KB. */
+  ['anatomy-physiology', 58.3],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -687,7 +689,9 @@ const BUDGETS = [
   /* 57 -> 57.2 (score card at the end of a call, 2026-11-07): the scoring and card call in the page; measured 57.1 KB, a hair over a 57.1 budget. */
   /* 57.2 -> 57.6 (tool cleanup pass 3, 2026-11-11): the picker opens on six calls and the monitor waits behind
      "Check vitals" at a call's opening; measured 57.5 KB. */
-  ['nremt/scenario-sim.html', 57.6],
+  /* 57.6 -> 58.2 (fuller tool pages, 2026-11-12): the closed "About this tool" text (docs/tool-about.json) in the page
+     for readers and crawlers before the script runs; measured 57.8 KB. */
+  ['nremt/scenario-sim.html', 58.2],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
