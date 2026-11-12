@@ -36,6 +36,8 @@
 
    Nothing it writes is edited by hand. Every served path avoids the token
    "ap" (spec decision 2). */
+import { toolAbout } from './lib/tool-about.mjs';
+import { mathHtml as toolMath } from './lib/apprecalc-mathlib.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
 import { apToolsHubMain, swapMain, toolBand, apPageR3, apFrqItemR3 } from './lib/r3-tools.mjs';
@@ -996,7 +998,7 @@ ${toolBand({ key: 'apprecalc', up: '../../', slug: t.slug, title: t.name, hand: 
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
   <header class="hero pcalc-hero"><div class="eyebrow">${COURSE_HTML} ${t.kind === 'simulator' ? 'trainer' : t.kind === 'drill' ? 'drills' : 'skills'} ${BETA_PILL}</div><h1>${esc(t.name)}</h1><p class="lede">${esc(t.lede || t.blurb)}</p></header>
   <div id="app" class="pcalc-app-mount" data-slug="${t.slug}" data-src="${depth}assets/tool-data/${t.slug}.json"${t.premium ? ` data-premium="${t.premium}"` : ''}${t.studio ? ' data-studio="1"' : ''}>${scriptOk
-    ? '<noscript><p>This tool needs JavaScript. Every notes page works without it.</p></noscript>'
+    ? '<noscript><p>This tool needs JavaScript. Every notes page works without it.</p></noscript>' + toolAbout({ file: join(C.data, 'tools', `${t.slug}.json`), title: (id) => (map.topicById(id) || {}).title, math: toolMath, esc })
     : `<p class="pcalc-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `tool:${t.slug}`)}
