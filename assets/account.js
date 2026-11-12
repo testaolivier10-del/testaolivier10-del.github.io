@@ -1104,6 +1104,12 @@
     checkout: {
       signup: 'Create an account to attach your pass. You’ll pay next.',
       signin: 'Sign in to attach your pass to your account. You’ll pay next.'
+    },
+    /* Joining a teacher's class (join.html). Google first: a school account is one tap, sends no email, and is
+       what Google Classroom matches students by (docs/teacher-classes.md). */
+    'class': {
+      signup: 'Use your school Google account to join in one tap. No school Google account? Create an account with any email.',
+      signin: 'Use your school Google account to join in one tap. No school Google account? Sign in with any email.'
     }
   };
   var lastFocused = null;        // restored when the modal closes

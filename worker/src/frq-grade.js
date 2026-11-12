@@ -40,6 +40,7 @@ import { siteUrl } from './config.js';
 import { MODELS, extractText } from './ai.js';
 import { questionText, rubricText } from './frq-text.js';
 import { calibrationText } from './frq-calibration.js';
+import { classCovers } from './class-premium.js';
 
 export const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro', 'aphug'];
 export const DAILY_CAP = 10;
@@ -522,7 +523,9 @@ async function hasPremium(env, userId, course, now) {
     `&refunded_at=is.null&starts_at=lte.${at}&expires_at=gt.${at}&limit=1`);
   if (!res.ok) return null;
   const rows = await res.json();
-  return Array.isArray(rows) && rows.length > 0;
+  if (Array.isArray(rows) && rows.length > 0) return true;
+  // Or the student's class has Class Premium for this course (src/class-premium.js).
+  return classCovers(env, userId, course, now);
 }
 
 /* Takes one of today's grades; returns how many are left after it, -1 when

@@ -10,7 +10,7 @@
  * route cannot create the cron trigger from wrangler.toml, so you have to add
  * it by hand under Settings -> Triggers.
  *
- * Built: config.js, store.js, umami.js, push.js, email.js, reminders.js, premium.js, vault.js, backup.js, ai.js, frq-text.js, frq-calibration.js, frq-grade.js, class-common.js, class-mail.js, class-frq.js, class-google.js, class-lti.js, classes.js, index.js
+ * Built: config.js, store.js, umami.js, push.js, email.js, reminders.js, premium.js, vault.js, backup.js, ai.js, frq-text.js, frq-calibration.js, frq-grade.js, class-common.js, class-premium.js, class-mail.js, class-frq.js, class-google.js, class-lti.js, classes.js, index.js
  */
 
 /* ===========================================================================
@@ -971,6 +971,7 @@ async function runReminders(env, now = Date.now()) {
 
 
 
+
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it), and
    sell every paid course in assets/courses.js (scripts/check-courses.mjs).
    `days` is what one purchase adds. Semester is five months, so a pass bought
@@ -1624,6 +1625,8 @@ function isoOrNull(v) {
 }
 
 async function recordPaid(env, order, now) {
+  // Class Premium (src/class-premium.js): seats for a class, not a pass for the buyer.
+  if (isClassOrder(order)) return await classPaid(env, order);
   const userId = order.metadata?.user_id || order.customer?.external_id || null;
   const passId = (isPass(order.metadata?.pass) ? order.metadata.pass : null)
     || passForProduct(env, order.product_id || order.product?.id);
@@ -1708,6 +1711,10 @@ function isFullRefund(order) {
 
 async function recordRefund(env, order, now) {
   if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
+  if (isClassOrder(order)) {
+    await classRefund(env, order.id, now);
+    return { status: 200, body: { ok: true, class: true } };
+  }
   const changed = await refundOrder(env, order.id, now);
   // Counted once: a self-serve refund already marked the pass, so Polar's
   // own refund event for it changes nothing and is not counted again.
@@ -1935,9 +1942,12 @@ async function reconcilePolar(env, now = Date.now()) {
       if (!row) {
         // Same as the webhook. A paid order later refunded in full never
         // needs a pass; a partial refund keeps it, as it does there.
-        if ((order.status === 'paid' || order.status === 'partially_refunded') && !isFullRefund(order)) {
+        if (isClassOrder(order) && isFullRefund(order)) {
+          // A class order is not in premium_passes; marking its refund twice changes nothing.
+          await recordRefund(env, order, now);
+        } else if ((order.status === 'paid' || order.status === 'partially_refunded') && !isFullRefund(order)) {
           const r = await recordPaid(env, order, now);
-          if (r.body.ok && !r.body.duplicate && !r.body.ignored) {
+          if (r.body.ok && !r.body.duplicate && !r.body.ignored && !r.body.class) {
             out.added++;
             console.log('premium reconcile: added missing pass', order.id);
           }
@@ -2601,6 +2611,7 @@ function calibrationText(course) {
 
 
 
+
 const FRQ_COURSES = ['apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'apmacro', 'apmicro', 'aphug'];
 const DAILY_CAP = 10;
 const DEFAULT_MODEL = 'claude-haiku-5-5';
@@ -3082,7 +3093,9 @@ async function hasPremium(env, userId, course, now) {
     `&refunded_at=is.null&starts_at=lte.${at}&expires_at=gt.${at}&limit=1`);
   if (!res.ok) return null;
   const rows = await res.json();
-  return Array.isArray(rows) && rows.length > 0;
+  if (Array.isArray(rows) && rows.length > 0) return true;
+  // Or the student's class has Class Premium for this course (src/class-premium.js).
+  return classCovers(env, userId, course, now);
 }
 
 /* Takes one of today's grades; returns how many are left after it, -1 when
@@ -3480,6 +3493,146 @@ async function clsPage(title, inner, { status = 200, formAction = "'self'", scri
 
 function clsRedirect(url, status = 302) {
   return new Response(null, { status, headers: { Location: url, 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' } });
+}
+
+/* ===========================================================================
+   class-premium.js
+   =========================================================================== */
+
+/* Class Premium (docs/teacher-classes.md): a teacher pays once and the class has Premium for its course.
+
+   Price (owner 2026-11-11, research in the Project doc "LevlPrep class pricing research"): $5 a student for the
+   school year, at least 10 students, and never more than $99 for a class. From 20 students up the price is the
+   $99 cap and the class gets every seat a class checkout sells (40). Bigger classes use the quote form.
+
+   POST /class/premium/checkout  the owner or a co-teacher of the class, with a session. One Polar product
+     ("class" in POLAR_PRODUCTS) with the price set here for this checkout, so nobody can pick their own.
+   order.paid / order.refunded   arrive through premium.js's webhook (and its hourly reconcile); an order whose
+     metadata says kind "class" comes here. A paid order becomes one row in class_premium; my_premium() then
+     counts every covered member, so the site, the vault and the free limits follow with no other change. */
+
+
+
+
+const CLASS_PRICE = { perSeatCents: 500, minSeats: 10, capCents: 9900, maxSeats: 40 };
+/* The school year every class pass covers: the end of June 30, 2027 in Hawaii, like the AP® passes. */
+const CLASS_UNTIL = '2027-06-30T23:59:59-10:00';
+
+/* -> { seats, cents } for the number of students a teacher asks for, or null when it is not a whole number in
+   range. `seats` is what the class gets: the count asked for (at least the minimum), or every seat at the cap. */
+function classPrice(students) {
+  const n = Number(students);
+  if (!Number.isInteger(n) || n < 1 || n > CLASS_PRICE.maxSeats) return null;
+  const billed = Math.max(n, CLASS_PRICE.minSeats);
+  const cents = Math.min(billed * CLASS_PRICE.perSeatCents, CLASS_PRICE.capCents);
+  return { seats: cents >= CLASS_PRICE.capCents ? CLASS_PRICE.maxSeats : billed, cents };
+}
+
+function classOnSale(now = Date.now()) { return now < Date.parse(CLASS_UNTIL); }
+
+const isClassOrder = (order) => order?.metadata?.kind === 'class';
+
+function classProduct(env) {
+  const m = productMap(env);
+  return Object.prototype.hasOwnProperty.call(m, 'class') && m.class ? m.class : null;
+}
+const classPolarApi = (env) => (env.POLAR_API || 'https://api.polar.sh').replace(/\/+$/, '');
+
+/* POST /class/premium/info -> what the Settings card shows: the price table's numbers, whether
+   checkout is open and the end date. The class's own seats come with teach_class_report. */
+async function classPremiumInfo(request, env) {
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  return {
+    status: 200,
+    body: {
+      open: !!(env.POLAR_ACCESS_TOKEN && classProduct(env)) && classOnSale(),
+      price: CLASS_PRICE, until: new Date(Date.parse(CLASS_UNTIL)).toISOString(),
+    },
+  };
+}
+
+/* POST /class/premium/checkout { classId, students } -> { url } */
+async function classPremiumCheckout(request, env, now = Date.now()) {
+  const user = await clsUser(env, request);
+  if (!user) return { status: 401, body: { error: 'Sign in again.' } };
+  const body = await clsBody(request);
+  if (!body || !clsUuid(body.classId)) return { status: 400, body: { error: 'Pick a class.' } };
+  const price = classPrice(body.students);
+  if (!price) return { status: 400, body: { error: `Enter a number of students from 1 to ${CLASS_PRICE.maxSeats}. For a bigger class, ask for a quote.` } };
+  if (!classOnSale(now)) return { status: 410, body: { error: 'Class Premium for this school year is no longer on sale. Nothing was charged.' } };
+  const productId = classProduct(env);
+  if (!env.POLAR_ACCESS_TOKEN || !productId || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) {
+    return { status: 503, body: { error: 'Class Premium checkout is not set up yet. Email hello@levlprep.com and we will sort it out.' } };
+  }
+  const teach = await clsTeachClass(env, user.id, body.classId);
+  if (!teach) return { status: 403, body: { error: 'Only a teacher of this class can buy Class Premium for it.' } };
+  if (teach.cls.archived) return { status: 409, body: { error: 'This class is archived. Unarchive it first.' } };
+
+  const req = {
+    products: [productId],
+    prices: { [productId]: [{ amount_type: 'fixed', price_amount: price.cents, price_currency: 'usd' }] },
+    external_customer_id: user.id,
+    metadata: { kind: 'class', user_id: user.id, class_id: teach.cls.id, seats: price.seats, course: teach.cls.course },
+    success_url: `https://levlprep.com/teach/?c=${teach.cls.id}&premium=success#settings/school`,
+  };
+  if (user.email) req.customer_email = user.email;
+  const res = await timedFetch(`${classPolarApi(env)}/v1/checkouts/`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(req),
+  });
+  if (!res.ok) {
+    console.log('polar class checkout failed', res.status, (await res.text()).slice(0, 300));
+    return { status: 502, body: { error: 'Checkout is unavailable. Nothing was charged.' } };
+  }
+  const checkout = await res.json();
+  if (!checkout?.url) return { status: 502, body: { error: 'Checkout is unavailable. Nothing was charged.' } };
+  return { status: 200, body: { url: checkout.url, seats: price.seats, cents: price.cents } };
+}
+
+/* order.paid for a class order. The metadata was written by classPremiumCheckout, never by the buyer. */
+async function classPaid(env, order) {
+  const md = order.metadata || {};
+  const seats = Number(md.seats);
+  if (!order.id || !clsUuid(md.class_id) || !Number.isInteger(seats) || seats < 1 || seats > CLASS_PRICE.maxSeats) {
+    console.log('class premium: order.paid not attributable', JSON.stringify({ order: order.id, class: md.class_id, seats: md.seats }));
+    return { status: 200, body: { ok: true, ignored: 'unattributable' } };
+  }
+  const added = await clsRpc(env, 'class_premium_add', {
+    p_class: md.class_id, p_buyer: clsUuid(md.user_id) ? md.user_id : null, p_seats: seats,
+    p_until: new Date(Date.parse(CLASS_UNTIL)).toISOString(), p_order_id: String(order.id),
+    p_amount_cents: Number.isInteger(order.net_amount) ? order.net_amount : null,
+  });
+  if (!added) {
+    // The class was deleted between checkout and payment: nothing to attach it to. A person refunds it.
+    console.log('class premium: paid order for a missing class, refund by hand', order.id);
+    return { status: 200, body: { ok: true, ignored: 'no class' } };
+  }
+  if (!added.inserted) return { status: 200, body: { ok: true, duplicate: true } };
+  if (!(await isOwnerEmail(order.customer?.email))) {
+    await umamiServerEvent('purchase', {
+      course: Object.prototype.hasOwnProperty.call(COURSE_NAMES, md.course) ? md.course : 'unknown', pass: 'class',
+      dollars: Number.isInteger(order.net_amount) ? Math.round(order.net_amount / 100) : 0, ref: 'none', src: 'teacher',
+    });
+  }
+  return { status: 200, body: { ok: true, class: true } };
+}
+
+/* A full refund of a class order. Returns how many rows changed (0 for any other order). */
+async function classRefund(env, orderId, now = Date.now()) {
+  const n = await clsRpc(env, 'class_premium_refund', { p_order_id: String(orderId), p_at: new Date(now).toISOString() });
+  return Number(n) || 0;
+}
+
+/* Class cover for one user and course, for the Worker's own Premium checks (the FRQ grader). */
+async function classCovers(env, userId, course, now = Date.now()) {
+  try {
+    const res = await sb(env, 'rpc/class_premium_until', { method: 'POST', body: JSON.stringify({ p_user: userId, p_course: course }) });
+    if (!res.ok) return false;
+    const until = await res.json();
+    return !!until && Date.parse(until) > now;
+  } catch { return false; }
 }
 
 /* ===========================================================================
@@ -4766,6 +4919,7 @@ async function ltiGrades(request, env, now = Date.now()) {
 
 
 
+
 /* The hourly housekeeping (index.js cron): the 30-day mail log, expired report links, used launch nonces. */
 async function classPurge(env) {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return { skipped: true };
@@ -4799,6 +4953,8 @@ const CLASS_API = {
   '/class/report': classReportGet,
   '/class/quote': classQuote,
   '/class/frq/ai': classFrqAi,
+  '/class/premium/info': classPremiumInfo,
+  '/class/premium/checkout': classPremiumCheckout,
   '/class/google/start': gcStart,
   '/class/google/finish': gcFinish,
   '/class/google/status': gcStatus,

@@ -35,6 +35,8 @@ ready for teachers) and the fixes for it. Measurements: Project doc `claude/levl
    on 2026-11-10).
 3. Email: Resend free is 100 a day. One class signing in with emailed codes can use it up; Resend Pro ($20 a
    month) before teacher outreach, and raise Supabase's emails per hour (Authentication, Rate Limits).
+   2026-11-11: class joins now lead with Google (no email sent; docs/teacher-classes.md, Class readiness), so a class
+   mostly stops using the email allowance. The paid plans stay the answer once daily emails pass about 100.
 4. Teachers: see the Project doc, section 4 (a real class trial, Google consent screen out of Testing, privacy
    agreement, Class Premium price).
 Not done on purpose: long caching of CSS and scripts (file names carry no version, so a deploy would show late).

@@ -24,6 +24,7 @@
 import { umamiServerEvent, isOwnerEmail, isSource } from './umami.js';
 import { sb, sha256Hex, timedFetch, EMAIL_BATCH } from './store.js';
 import { sendPassEndingEmail } from './email.js';
+import { isClassOrder, classPaid, classRefund } from './class-premium.js';
 
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it), and
    sell every paid course in assets/courses.js (scripts/check-courses.mjs).
@@ -678,6 +679,8 @@ function isoOrNull(v) {
 }
 
 async function recordPaid(env, order, now) {
+  // Class Premium (src/class-premium.js): seats for a class, not a pass for the buyer.
+  if (isClassOrder(order)) return await classPaid(env, order);
   const userId = order.metadata?.user_id || order.customer?.external_id || null;
   const passId = (isPass(order.metadata?.pass) ? order.metadata.pass : null)
     || passForProduct(env, order.product_id || order.product?.id);
@@ -762,6 +765,10 @@ function isFullRefund(order) {
 
 async function recordRefund(env, order, now) {
   if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
+  if (isClassOrder(order)) {
+    await classRefund(env, order.id, now);
+    return { status: 200, body: { ok: true, class: true } };
+  }
   const changed = await refundOrder(env, order.id, now);
   // Counted once: a self-serve refund already marked the pass, so Polar's
   // own refund event for it changes nothing and is not counted again.
@@ -989,9 +996,12 @@ export async function reconcilePolar(env, now = Date.now()) {
       if (!row) {
         // Same as the webhook. A paid order later refunded in full never
         // needs a pass; a partial refund keeps it, as it does there.
-        if ((order.status === 'paid' || order.status === 'partially_refunded') && !isFullRefund(order)) {
+        if (isClassOrder(order) && isFullRefund(order)) {
+          // A class order is not in premium_passes; marking its refund twice changes nothing.
+          await recordRefund(env, order, now);
+        } else if ((order.status === 'paid' || order.status === 'partially_refunded') && !isFullRefund(order)) {
           const r = await recordPaid(env, order, now);
-          if (r.body.ok && !r.body.duplicate && !r.body.ignored) {
+          if (r.body.ok && !r.body.duplicate && !r.body.ignored && !r.body.class) {
             out.added++;
             console.log('premium reconcile: added missing pass', order.id);
           }

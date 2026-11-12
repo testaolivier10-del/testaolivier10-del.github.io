@@ -832,9 +832,11 @@
     if(sec === 'order') pane = '<section class="d5-card"><p class="d5-mut" style="margin:0 0 14px">Put the units in the order you teach them and mark the one you’re on. Students can still study ahead on their own.</p><div class="lvt-order">' + rows + '</div>' +
       '<p class="lv-btns" style="margin-top:14px"><button class="lp-btn gold sm" type="button" data-saveorder="1">Save order</button><span class="lv-msg" id="lvtOMsg" role="status" style="margin:0"></span></p></section>';
     else if(sec === 'join') pane = '<section class="d5-card"><p class="d5-lead">Get students in</p><div class="d5-now" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px;margin-top:12px"><span class="lv-code" style="flex:1;color:#fff">' + esc(c.code) + '</span><button class="lp-btn gold sm" data-copy="link" type="button">Copy join link</button><button class="lp-btn sm tm-line" data-show="code" type="button">Show on screen</button></div>' +
-      '<p class="lv-btns" style="margin-top:12px"><button class="lp-btn sm ghost" type="button" data-newcode="1">Make a new code</button><span class="d5-mut">The old code stops working; students already in stay.</span></p><p class="lv-msg" id="lvtCMsg" role="status"></p></section>';
+      '<p class="lv-btns" style="margin-top:12px"><button class="lp-btn sm ghost" type="button" data-newcode="1">Make a new code</button><span class="d5-mut">The old code stops working; students already in stay.</span></p><p class="d5-mut" style="margin-top:10px">Ask students to pick <b>Continue with Google</b> and their school account when they join. It is one tap, and it is how Google Classroom recognizes them.</p><p class="lv-msg" id="lvtCMsg" role="status"></p></section>';
     else if(sec === 'class') pane = '<section class="d5-card"><p class="d5-lead">The class</p><label class="lv-field" style="margin-top:12px"><span>Class name</span><input class="lv-in" id="lvtCName" maxlength="60" value="' + esc(c.name) + '"></label>' +
       '<p class="lv-btns"><button class="lp-btn sm" type="button" data-savename="1">Save</button>' + (isOwner() ? '<button class="lp-btn sm ghost" type="button" data-archive="1">' + (c.archived ? 'Unarchive' : 'Archive at year end') + '</button><button class="lp-btn sm ghost" type="button" data-delclass="1">Delete class</button>' : '') + '</p><p class="lv-msg" id="lvtCMsg" role="status"></p></section>' +
+      '<section class="d5-card"><p class="d5-lead">What students see</p><label class="lvt-check" style="margin-top:10px"><input type="checkbox" id="lvtHideScores"' + (c.hide_scores ? ' checked' : '') + '> Hide scores from students</label>' +
+      '<p class="d5-mut" style="margin:6px 0 0">Students still see what is done and what is missing in My class, without the scores. Your pages do not change.</p><p class="lv-msg" id="lvtHMsg" role="status"></p></section>' +
       '<section class="d5-card"><p class="d5-lead">Copy this class</p><p class="d5-mut" style="margin:0 0 14px">For another period or next year: the same course, unit order and assignments, with every date moved. No students, and a new join code.</p>' +
       '<div class="lv-grid2"><label class="lv-field"><span>Name of the copy</span><input class="lv-in" id="lvtCpName" maxlength="60" value="' + esc(c.name + ' (copy)') + '"></label>' +
       '<label class="lv-field"><span>Move every date by</span><select class="lv-in" id="lvtCpShift">' + [[0, 'Keep the same dates'], [1, '1 day'], [7, '1 week'], [14, '2 weeks'], [126, '18 weeks (next semester)'], [364, '52 weeks (next year, same weekday)']].map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '<option value="custom">Another number of days</option></select></label></div>' +
@@ -845,14 +847,50 @@
       (isOwner() ? '<label class="lvt-check"><input type="checkbox" id="lvtDeptShare"' + (c.dept_shared ? ' checked' : '') + '> Share this class’s numbers with my department</label>' : '<p class="d5-mut">Only the owner can share this class.</p>') +
       '<p class="lv-btns"><a class="lp-btn sm ghost" href="' + deptHref() + '">Department view</a><span class="lv-msg" id="lvtDMsg" role="status" style="margin:0"></span></p></section>';
     else if(sec === 'connect') pane = '<div id="lvtIntS"></div>';
-    else pane = '<div class="lp-card"><span class="lp-pill">Class Premium</span><h2 class="lp-h2">Everything, for <span>the whole class</span></h2><p class="lp-p">Classes work on the free plan, with its normal limits. Class Premium unlocks every lesson, question and exam for every student, at a discount for teachers.</p>' +
-      '<p class="d5-mut" style="margin-top:12px">Coming soon. To get it now for your class, email <b>hello@levlprep.com</b> with your class size.</p></div><div id="lvtIntS"></div>';
+    else pane = premiumCard() + '<div id="lvtIntS"></div>';
     var html = sband({ crumbs: classCrumbs([['Settings']]), issue: classIssue(), title: 'Class settings', lede: 'Your unit order drives every student’s path.' }) +
       body('<div class="tm-set"><nav class="tm-side" aria-label="Settings sections">' + S6.map(function(x){ return '<a class="tm-sidebtn" href="#settings' + (x[0] === 'order' ? '' : '/' + x[0]) + '"' + (x[0] === sec ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</nav>' +
         '<div class="tm-panes">' + pane + '</div></div><p class="tm-note" style="margin-top:14px">Family progress reports are on each student’s page.</p>') + '<div style="height:60px"></div>';
     render(frame(html, c.course), 'settings');
     if(sec === 'connect' || sec === 'school') hook('settings', 'lvtIntS', { part: sec });
   }
+  /* Class Premium (docs/teacher-classes.md, worker/src/class-premium.js). The numbers must match CLASS_PRICE there. */
+  var CP = { seat: 5, min: 10, cap: 99, max: 40, until: 'June 30, 2027' };
+  function cpPrice(n){ n = Math.max(1, Math.min(CP.max, parseInt(n, 10) || 0)); var d = Math.min(Math.max(n, CP.min) * CP.seat, CP.cap); return { n: n, dollars: d, seats: d >= CP.cap ? CP.max : Math.max(n, CP.min) }; }
+  function cpLine(n){
+    var p = cpPrice(n);
+    return '<b>$' + p.dollars + '</b> for ' + (p.dollars >= CP.cap ? 'the whole class, up to ' + CP.max + ' students' : p.seats + ' students') + ', until ' + CP.until;
+  }
+  function premiumCard(){
+    var c = S.rep.class, C = M.COURSES[c.course] || {}, pr = c.premium || {}, has = Number(pr.seats) > 0, n = (S.rep.members || []).length;
+    var start = Math.max(1, Math.min(CP.max, has ? Math.max(1, n - Number(pr.seats)) : n || CP.min));
+    var full = has && Number(pr.seats) >= CP.max;
+    return '<div class="lp-card"><span class="lp-pill">Class Premium</span><h2 class="lp-h2">Everything, for <span>the whole class</span></h2>' +
+      '<p class="lp-p">Classes work on the free plan, with its normal limits. Class Premium unlocks every lesson, question and exam in ' + esc(C.name || 'this course') + ' for your students.</p>' +
+      (has ? '<p class="lv-tag is-done" style="margin-top:12px">On for ' + Number(pr.seats) + ' students until ' + CP.until + '</p><p class="d5-mut" style="margin:8px 0 0">' + Math.min(n, Number(pr.seats)) + ' of ' + Number(pr.seats) + ' seats in use. Seats go to students in the order they joined.</p>' : '') +
+      (!has && params.get('premium') === 'success' ? '<p class="lv-tag is-req" style="margin-top:12px">Payment received</p><p class="d5-mut" style="margin:8px 0 0">Class Premium turns on within a minute. Reload this page to see it.</p>' : '') +
+      (full ? '' :
+      '<div class="lv-grid2" style="margin-top:16px;align-items:end"><label class="lv-field" style="max-width:220px;margin:0"><span>' + (has ? 'Add students' : 'Students') + '</span><input class="lv-in" type="number" id="lvtCpN" min="1" max="' + CP.max + '" value="' + start + '" inputmode="numeric"></label>' +
+      '<p class="lp-p" id="lvtCpLine" style="margin:0 0 10px">' + cpLine(start) + '</p></div>' +
+      '<p class="lv-btns" style="margin-top:14px"><button class="lp-btn gold sm" type="button" data-buyclass="1">' + (has ? 'Add seats' : 'Get Class Premium') + '</button><span class="lv-msg" id="lvtCpBuyMsg" role="status" style="margin:0"></span></p>' +
+      '<p class="d5-mut" style="margin-top:12px">$' + CP.seat + ' a student, never more than $' + CP.cap + ' a class. One payment, nothing renews. Full refund within 7 days by email.</p>') +
+      '</div>';
+  }
+  var API = 'https://api.levlprep.com'; // site-config:API_URL
+  function buyClass(){
+    var m = document.getElementById('lvtCpBuyMsg'), inp = document.getElementById('lvtCpN'), n = parseInt(inp && inp.value, 10);
+    var say = function(t, bad){ if(m){ m.textContent = t; m.className = 'lv-msg' + (bad ? ' is-bad' : ''); } };
+    if(!(n >= 1 && n <= CP.max)){ say('Enter a number of students from 1 to ' + CP.max + '. For a bigger class, ask for a quote below.', true); return; }
+    if(DEMO){ say('This is the sample class, so nothing is charged.'); return; }
+    if(!A() || !A().accessToken){ say('Sign in again.', true); return; }
+    say('Opening checkout…');
+    A().accessToken().then(function(t){
+      if(!t) throw { error: 'Sign in again.' };
+      return fetch(API + '/class/premium/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + t }, body: JSON.stringify({ classId: CLASS_ID, students: n }) });
+    }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(b){ if(!r.ok || !b.url) throw b; location.href = b.url; }); })
+      .catch(function(e){ say((e && e.error) || 'Checkout did not open. Nothing was charged. Try again.', true); });
+  }
+
   function coteachHtml(){
     var c = S.rep.class, list = S.rep.coteachers || [];
     var rows = list.map(function(t){ return '<div class="lvc-row"><div><p class="lvc-t">' + esc(t.name) + '</p><p class="lvc-m">co-teacher since ' + day(Date.parse(t.added_at)) + '</p></div>' + (isOwner() ? '<button class="lp-btn sm ghost" style="grid-column:2" type="button" data-uncoteach="' + esc(t.id) + '">Remove</button>' : '') + '</div>'; }).join('');
@@ -1202,6 +1240,7 @@
     else if(g('data-qnew')){ QE = null; viewBank(); }
     else if(g('data-qaddopt')){ QE = readQForm(); if(QE.options.length < 6) QE.options.push(''); viewBank(); }
     else if(g('data-print')){ window.print(); }
+    else if(g('data-buyclass')){ buyClass(); }
     else if(g('data-deptleave')){ if(confirm('Leave the department? Your classes stop being shared with it.')) call('teach_dept_leave').then(viewDept); }
   });
   function copyClass(){
@@ -1214,10 +1253,14 @@
       location.href = '?c=' + encodeURIComponent(r.id) + '#settings';
     });
   }
+  document.addEventListener('input', function(e){
+    if(e.target.id === 'lvtCpN'){ var ln = document.getElementById('lvtCpLine'); if(ln) ln.innerHTML = cpLine(e.target.value); }
+  });
   // Panels outside the builder: sharing with the department, the copy's custom shift, print options.
   document.addEventListener('change', function(e){
     var t = e.target;
     if(t.id === 'lvtDeptShare') patchClass({ dept_shared: t.checked, dept_stats: t.checked ? deptStats() : undefined }, 'lvtDMsg', t.checked ? 'Shared with your department.' : 'Not shared.');
+    else if(t.id === 'lvtHideScores') patchClass({ hide_scores: t.checked }, 'lvtHMsg', t.checked ? 'Scores are hidden from students.' : 'Students see their scores.');
     else if(t.id === 'lvtCpShift'){ var bx = document.getElementById('lvtCpDaysBox'); if(bx) bx.hidden = t.value !== 'custom'; }
     else if(t.id === 'lvtPrN' || t.id === 'lvtPrV' || t.id === 'lvtPrK'){ PR.n = Math.max(1, Math.min(60, parseInt(document.getElementById('lvtPrN').value, 10) || 20)); PR.version = document.getElementById('lvtPrV').value; PR.key = document.getElementById('lvtPrK').checked; viewPrint(PR.id); }
   });
