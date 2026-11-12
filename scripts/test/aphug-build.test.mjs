@@ -109,7 +109,8 @@ test('published and live everywhere it is registered (spec decision 11), Premium
   assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'aphug'[\s\S]*?aliases: \['human-geography', 'geography', 'humangeo', 'hug'\], paid: true, status: 'live', order: 15/);
   assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'aphug'[^\n]*status: 'live'/);
   assert.match(readFileSync('premium.html', 'utf8'), /AP® Human Geography/, 'on the pricing page');
-  assert.match(readFileSync('sitemap.xml', 'utf8'), /human-geography\/lessons\//, 'in the sitemap');
+  // The notes page is the one listed for each topic (scripts/lib/topic-twin.mjs).
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /human-geography\/notes\//, 'in the sitemap');
   assert.match(readFileSync('sitemap.xml', 'utf8'), /human-geography\/models\.html/, 'the models page in the sitemap');
   assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-hug:start -->\s*<a class="ccard" href="human-geography\/"/, 'a hub card');
   assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-hug:start -->\s*\S/, 'a 404 card');

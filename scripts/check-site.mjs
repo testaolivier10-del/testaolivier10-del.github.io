@@ -9,6 +9,7 @@ import { join, dirname, extname, relative, sep, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { premiumCourse } from './vault/rules.mjs';
+import { notesTwin } from './lib/topic-twin.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 let failures = 0;
@@ -799,6 +800,12 @@ if (existsSync(sitemapForCoverage)) {
     // so it must not be listed (docs/site-health.md).
     if (premiumCourse(path.slice(1), body)) {
       if (listed.has(path)) fail(`sitemap.xml: lists ${path}, a Premium lesson served as a noindex stub. Run scripts/build-sitemap.mjs`);
+      continue;
+    }
+    // A free lesson whose topic has a notes page is noindex in the deployed
+    // copy; the notes page is the one listed (scripts/lib/topic-twin.mjs).
+    if (notesTwin(path.slice(1))) {
+      if (listed.has(path)) fail(`sitemap.xml: lists ${path}, a lesson whose notes page is the one in search. Run scripts/build-sitemap.mjs`);
       continue;
     }
     if (!listed.has(path) && !listed.has(path.replace(/index\.html$/, ''))) {

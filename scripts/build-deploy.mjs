@@ -1,7 +1,8 @@
 /* Builds what the deploy publishes (docs/premium-vault.md):
 
      .deploy/site/    the public site: every tracked site file, minus build-only
-                   folders, with each Premium lesson page replaced by a stub
+                   folders, with each Premium lesson page replaced by a stub and
+                   each free lesson that has a notes page marked noindex
      .deploy/vault/   the Premium lesson pages themselves, plus _index.json
                    (path -> course), shipped only to the Worker's private assets
 
@@ -15,6 +16,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { premiumCourse } from './vault/rules.mjs';
+import { notesTwin, withNoindex } from './lib/topic-twin.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // A dot folder: every site check already skips dot folders, so the build never shows up as a second site.
@@ -131,6 +133,7 @@ function main() {
   if (site.length > MAX_FILES) throw new Error(`deploy: ${site.length} files is over the ${MAX_FILES} limit (docs/premium-vault.md, File limit)`);
 
   fs.rmSync(OUT, { recursive: true, force: true });
+  let twins = 0;
   for (const rel of site) {
     const src = path.join(ROOT, rel);
     const stat = fs.statSync(src);
@@ -143,6 +146,11 @@ function main() {
       fs.mkdirSync(path.dirname(v), { recursive: true });
       fs.writeFileSync(v, html);
       fs.writeFileSync(dest, stubFor(rel, html, vaulted[rel]));
+    } else if (notesTwin(rel)) {
+      // A free lesson whose topic has a notes page: published in full, but the
+      // notes page is the one in search (scripts/lib/topic-twin.mjs).
+      fs.writeFileSync(dest, withNoindex(rel, fs.readFileSync(src, 'utf8')));
+      twins += 1;
     } else {
       fs.copyFileSync(src, dest);
     }
@@ -150,7 +158,7 @@ function main() {
   fs.mkdirSync(VAULT, { recursive: true });
   fs.writeFileSync(path.join(VAULT, '_index.json'), JSON.stringify(vaulted));
   fs.writeFileSync(path.join(SITE, '_headers'), HEADERS);
-  console.log(`.deploy/site: ${site.length} files; .deploy/vault: ${Object.keys(vaulted).length} Premium lesson pages`, counts);
+  console.log(`.deploy/site: ${site.length} files; .deploy/vault: ${Object.keys(vaulted).length} Premium lesson pages; ${twins} free lessons noindex (notes page is the one in search)`, counts);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) main();

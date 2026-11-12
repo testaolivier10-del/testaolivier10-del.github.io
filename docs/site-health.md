@@ -29,6 +29,25 @@ ready for teachers) and the fixes for it. Measurements: Project doc `claude/levl
 - Cloudflare, Workers Routes, `levlprep.com/*`: request limit failure mode set to "Fail open (proceed)". Past the
   100,000 a day limit visitors get the GitHub Pages copy (which has no vault) instead of error 1027.
 
+## One page per topic in search (2026-11-11, owner: "just fix it now")
+Audit of every page (owner asked why Google search is down and for the fix):
+- Not found: copied text. A topic's notes page and lesson page share 3 to 14% of their wording (21% in
+  AP® Precalculus); two random notes pages of one course share 1 to 6%. AP® Calculus BC's pages for AB topics
+  already name the AB page as canonical. The paywall markup is the form Google documents (`isAccessibleForFree:
+  false` with `hasPart`, held by site rule gated-structured-data), so it is not a defect.
+- Found: every topic had two indexable pages whose titles differ by one word ("… Notes | LevlPrep" and
+  "… Lesson | LevlPrep"). 292 free lessons were listed beside their notes page. On a domain two months old with
+  few links, that is two URLs asking for the same search, 2,281 listed URLs in all.
+- Fix: `scripts/lib/topic-twin.mjs`. A lesson whose topic has a notes page is left out of `sitemap.xml`
+  (`build-sitemap.mjs`, 2,281 to 1,989 URLs) and carries `noindex, follow` in the deployed copy
+  (`build-deploy.mjs`; the page itself is unchanged and stays linked from notes, path and textbook). check-site
+  fails if such a lesson is listed. To undo: remove the two `notesTwin` branches.
+- Not changed, for the owner to decide: 137 tool pages have about 18 words of readable text each (the tool is
+  drawn by script), 98 unit pages about 200 words, 244 free-response pages about 320. They stay indexable; a short
+  written explanation on each tool page would do more than hiding them.
+- Expect: Google re-evaluates over months, not days. Nothing here guarantees a recovery; it removes the clearest
+  pattern we control. Links from real sites (listings, teachers) are the other half.
+
 ## Open (owner)
 1. Search Console: request indexing for the main notes pages (about 10 a day by hand).
 2. Workers Paid ($5 a month) removes the 100,000 a day limit; worth it near 20,000 page views a day (about 3,800

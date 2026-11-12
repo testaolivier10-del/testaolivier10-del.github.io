@@ -111,7 +111,8 @@ test('published and live everywhere Macro is registered (spec decision 12), Prem
   assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmicro'[\s\S]*?aliases: \['microeconomics', 'micro', 'mic'\], paid: true, status: 'live', order: 14/);
   assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmicro'[^\n]*status: 'live'/);
   assert.match(readFileSync('premium.html', 'utf8'), /AP® Microeconomics/, 'on the pricing page');
-  assert.match(readFileSync('sitemap.xml', 'utf8'), /microeconomics\/lessons\//, 'in the sitemap');
+  // The notes page is the one listed for each topic (scripts/lib/topic-twin.mjs).
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /microeconomics\/notes\//, 'in the sitemap');
   assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mic:start -->\s*<a class="ccard" href="microeconomics\/"/, 'a hub card');
   assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mic:start -->\s*\S/, 'a 404 card');
   assert.doesNotMatch(readFileSync('assets/premium.js', 'utf8').split('apmicro: {')[1].split('passes:')[0], /onSale: false/, 'on sale since 2026-11-10');

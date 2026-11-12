@@ -20,6 +20,7 @@ import { isNoindex } from './lib/app-pages.mjs';
 import { COURSES } from './lib/courses.mjs';
 import { createHash } from 'node:crypto';
 import { premiumCourse } from './vault/rules.mjs';
+import { notesTwin } from './lib/topic-twin.mjs';
 
 const OUT = 'sitemap.xml';
 const check = process.argv.includes('--check');
@@ -153,6 +154,10 @@ for (const raw of walk('.')) {
   // (751 of 2,700 entries on 2026-11-10). The free notes page for the same
   // topic is the one written to be found.
   if (premiumCourse(file, html)) continue;
+  // A free lesson whose topic has a notes page: the notes page is the one
+  // listed, so two near-identical titles do not ask for the same search
+  // (scripts/lib/topic-twin.mjs; the deployed lesson carries noindex).
+  if (notesTwin(file)) continue;
   entries.push({ loc: m[1], path: new URL(m[1]).pathname, lastmod: lastModified(file, html, m[1]) });
 }
 

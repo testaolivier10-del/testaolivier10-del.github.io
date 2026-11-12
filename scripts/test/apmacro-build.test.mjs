@@ -103,7 +103,8 @@ test('published and live everywhere it is registered (spec decision 13), Premium
   assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'apmacro'[\s\S]*?aliases: \['macroeconomics', 'macro', 'mac'\], paid: true, status: 'live', order: 13/);
   assert.match(readFileSync('assets/site-search-all.js', 'utf8'), /key: 'apmacro'[^\n]*status: 'live'/);
   assert.match(readFileSync('premium.html', 'utf8'), /AP® Macroeconomics/, 'on the pricing page');
-  assert.match(readFileSync('sitemap.xml', 'utf8'), /macroeconomics\/lessons\//, 'in the sitemap');
+  // The notes page is the one listed for each topic (scripts/lib/topic-twin.mjs).
+  assert.match(readFileSync('sitemap.xml', 'utf8'), /macroeconomics\/notes\//, 'in the sitemap');
   assert.match(readFileSync('index.html', 'utf8'), /<!-- hub-mac:start -->\s*<a class="ccard" href="macroeconomics\/"/, 'a hub card');
   assert.match(readFileSync('404.html', 'utf8'), /<!-- nf-mac:start -->\s*\S/, 'a 404 card');
   assert.match(readFileSync('worker/src/premium.js', 'utf8'), /'macro-2027': +\{ course: 'apmacro', until: '2027-06-30T23:59:59-10:00' \}/);
