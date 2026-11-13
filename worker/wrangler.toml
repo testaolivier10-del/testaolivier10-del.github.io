@@ -74,6 +74,9 @@ FRQ_GRADER = "owner"
 # non-sensitive (no classroom.profile.emails), so Google needs no app verification. Needs GOOGLE_CLIENT_ID,
 # GOOGLE_CLIENT_SECRET and CLASS_SECRET; without them it stays off on its own. "off" to stop.
 CLASS_GOOGLE = "on"
+# The study list (src/list.js, docs/study-list.md): the Resend segment confirmed signups go into.
+# Remove to turn the signed-out email box off.
+RESEND_LIST_SEGMENT = "29d8df91-fbb7-4b5c-9e47-1e71f34e0cb1"
 # The new site host's test address (worker/site, docs/premium-vault.md), so the Premium vault answers
 # pages served there while levlprep.com still points at GitHub Pages. Remove after the cutover.
 SITE_PREVIEW_ORIGIN = "https://levlprep-site.testaolivier10.workers.dev"

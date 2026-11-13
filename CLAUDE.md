@@ -243,6 +243,11 @@ from page text in `scripts/sitemap-dates.json`), cache headers, plan limits and 
 scan, the email offer, the one question after a new account) and the owner decisions behind it. How they are sent:
 README "Nothing brought anyone back" and `worker/README.md`.
 
+## Study list (signed-out email signup)
+
+`docs/study-list.md` is the status file: the box (`assets/study-list.js`), the Worker route (`worker/src/list.js`,
+double opt-in into a Resend segment) and the owner steps.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
