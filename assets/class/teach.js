@@ -76,7 +76,7 @@
   // A button that opens a small panel under it (the assignment's Remind, Send grades and More).
   function menu(label, inner, attrs){ return '<details class="tm-menu"' + (attrs || '') + '><summary class="lp-btn sm tm-mline">' + label + '</summary><div class="tm-pop">' + inner + '</div></details>'; }
   function frame(inner, cover, home){
-    return '<main id="lvtMain" class="r3 ' + (home ? 'r3-home' : 'r3-inner') + ' d5" data-cover="' + esc(cover || 'apbio') + '">' + inner + '</main>';
+    return '<main id="lvtMain" class="r3 ' + (home ? 'r3-home' : 'r3-inner') + ' d5" data-cover="' + esc(cover || 'site') + '">' + inner + '</main>';
   }
   function setNav(active){
     var bar = document.getElementById('lvtBar');
@@ -207,7 +207,7 @@
       '<div class="d5-card"><p class="d5-lead">Your order, their path</p><p class="d5-mut">Set the units in the order you teach them. Every student’s study path follows it.</p></div>' +
       '<div class="d5-card"><p class="d5-lead">See the misconception</p><p class="d5-mut">Each question the class misses, with the wrong answer most of them picked.</p></div>' +
       '<div class="d5-card"><p class="d5-lead">Fix it in one tap</p><p class="d5-mut">Turn any weak topic into an assignment from the class page.</p></div></div>' +
-      '<p class="d5-mut" style="margin:28px 0 60px">Free for teachers. Students use the free plan, so nobody has to pay. Students must be 13 or older. <a href="/privacy.html#classes">What teachers see</a>. Student? <a href="/join.html">Join a class</a>.</p></div>', 'apbio', true));
+      '<p class="d5-mut" style="margin:28px 0 60px">Free for teachers. Students use the free plan, so nobody has to pay. Students must be 13 or older. <a href="/privacy.html#classes">What teachers see</a>. Student? <a href="/join.html">Join a class</a>.</p></div>', 'site', true));
     document.getElementById('lvtSignIn').addEventListener('click', function(){ A().openAuthModal(); });
   }
   function viewProfile(){
