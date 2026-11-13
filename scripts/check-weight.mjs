@@ -207,7 +207,9 @@ const SHELL_BUDGETS = [
   /* 349.8 -> 352 (reminders offered in every course, owner 2026-11-10, docs/reminders.md): reminders.js reads what
      is due in every course, offers email where push cannot work and asks once after a new account. Measured 350.8 KB
      with fourteen courses; with AP® Human Geography in its course list as well, see the launch log. */
-  ['site', 352],
+  /* 352 -> 353.5 (the study list box for signed-out visitors, owner 2026-11-12, docs/study-list.md): site-chrome.js
+     decides where it shows; the box itself (assets/study-list.js) loads only on course homes and notes pages. */
+  ['site', 353.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -908,7 +910,8 @@ const BUDGETS = [
   // 15 -> 16: the "For schools" section (docs/apbio-spec.md decision 20).
   /* 16 -> 16.6: the privacy page now describes the analytics added 2026-10-20. */
   /* 16.6 -> 17.3: the "Teacher classes" section, what a teacher sees and how it is deleted (docs/teacher-classes.md). */
-  ['privacy.html', 17.3],
+  /* 17.3 -> 17.6: the "Study tips by email" section (docs/study-list.md). */
+  ['privacy.html', 17.6],
 ];
 
 /* Files fetched at RUNTIME by JavaScript, which the reference walk above

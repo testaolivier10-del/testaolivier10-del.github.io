@@ -21,6 +21,7 @@ import { MODELS, extractText } from './ai.js';
 import { gradeRoute } from './frq-grade.js';
 import { classApiRoute, classPublicRoute, classPurge, CLASS_PUBLIC_PATHS } from './classes.js';
 import { vaultRoute } from './vault.js';
+import { listJoin, listConfirm } from './list.js';
 import { runBackup, BACKUP_CRON } from './backup.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
@@ -352,6 +353,15 @@ export default {
       return new Response(res.body, { status: res.status, headers });
     }
 
+    /* The study list's confirm link (src/list.js): opened from an email, so no Origin. GET shows one
+       button, only the POST adds. Throttled per IP. */
+    if (path === '/list/confirm') {
+      if (await throttled(env, request, 'list')) {
+        return new Response('Too many requests. Try again in a minute.', { status: 429, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Retry-After': '60' } });
+      }
+      return listConfirm(request, env);
+    }
+
     /* Polar's webhook. No Origin (it is a server) and no rate limit (Polar
        retries, and a burst of real orders is the good kind); the signature
        check inside is the whole of its trust. See src/premium.js. */
@@ -401,6 +411,11 @@ export default {
     // so it shares the Origin check and the throttle above, then leaves.
     if (path === '/premium/checkout') {
       const r = await premiumCheckout(request, env);
+      return reply(r.body, r.status);
+    }
+    // A signed-out visitor joining the study list (src/list.js): one confirmation email, nothing stored.
+    if (path === '/list/join') {
+      const r = await listJoin(request, env);
       return reply(r.body, r.status);
     }
     // A refund from the account page: same Origin check and throttle; the

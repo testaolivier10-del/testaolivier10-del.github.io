@@ -582,6 +582,7 @@
     mountMotion();
     mountSheetView();
     mountPath(courseKey);
+    mountStudyList(courseKey);
   }
 
   // assets/course/path.js: on the Path page and home, and on lessons, notes and the textbook once there is a path.
@@ -642,6 +643,25 @@
     var el = document.createElement('script');
     el.src = '/assets/reminders.js';
     el.defer = true;
+    document.head.appendChild(el);
+  }
+
+  /* The study list box (assets/study-list.js, docs/study-list.md): signed-out visitors only, at the end of a
+     course home page or a notes page, never anywhere a session is running (lessons, practice, exams). */
+  function mountStudyList(courseKey){
+    if(window.__levlListMounted) return;
+    var c = null;
+    for(var i = 0; i < COURSE_LIST.length; i++){ if(COURSE_LIST[i].key === courseKey) c = COURSE_LIST[i]; }
+    if(!c || !c.dir) return;
+    var base = '/' + c.dir + '/', p = location.pathname;
+    var home = p === base || p === base + 'index.html';
+    var notes = p.indexOf(base + 'notes/') === 0 || p.indexOf(base + 'chapters/') === 0;
+    if(!home && !notes) return;
+    window.__levlListMounted = true;
+    var el = document.createElement('script');
+    el.src = '/assets/study-list.js';
+    el.defer = true;
+    el.onload = function(){ if(window.LevlStudyList) window.LevlStudyList.mount(c.key, c.key === 'ochem' ? 'organic chemistry' : (/^ap/.test(c.key) ? 'AP\u00ae ' + c.short : c.short)); };
     document.head.appendChild(el);
   }
 
