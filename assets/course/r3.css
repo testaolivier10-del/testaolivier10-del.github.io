@@ -7,21 +7,26 @@
    Course colour: --accent and --ctint (light and dark) and the band's --bbg and --bac, set per
    data-cover below. Neutral colours come from assets/theme.css, so dark mode follows. */
 .r3{--accent:var(--cink);--accent-text:var(--cink);--r3-navy:#0B1A33;--chan:#0B1A33;--chan-press:#16284A;--on-chan:#fff;--display:'Inter Display','Nunito',system-ui,sans-serif;display:block;padding-bottom:24px;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px}
-.r3[data-cover="nremt"]{--accent:#0B6B62;--ctint:#E1F6F2;--bbg:#0D3B36;--bac:#2EE6D6}
-.r3[data-cover="ochem"]{--accent:#4B3BA8;--ctint:#ECE8FB;--bbg:#241A63;--bac:#A18FFF}
-.r3[data-cover="anp"]{--accent:#A33B26;--ctint:#FBE9E4;--bbg:#4A1A1F;--bac:#FF8A6B}
-.r3[data-cover="apbio"]{--accent:#2D6A1F;--ctint:#E4F1DD;--bbg:#1B4422;--bac:#7CCB6B}
-.r3[data-cover="apchem"]{--accent:#1D44A6;--ctint:#E3EAFA;--bbg:#1A2C78;--bac:#8FAEFF}
-.r3[data-cover="apphys"]{--accent:#734200;--ctint:#FBEED5;--bbg:#2A1D06;--bac:#FFB21E}
-.r3[data-cover="apcalc"]{--accent:#8C1036;--ctint:#FCE8EE;--bbg:#4A1230;--bac:#FF5C9A}
-.r3[data-cover="apcalcbc"]{--accent:#5A1E96;--ctint:#F1E7FA;--bbg:#34104C;--bac:#C88CFF}
-.r3[data-cover="apstat"]{--accent:#6E2470;--ctint:#F5E6F4;--bbg:#0E3A52;--bac:#5CC8F0}
-.r3[data-cover="apenv"]{--accent:#474A10;--ctint:#EFF0DA;--bbg:#22400F;--bac:#A6DB5C}
-.r3[data-cover="appsych"]{--accent:#084F78;--ctint:#E3F0F8;--bbg:#07608A;--bac:#FFD23F}
-.r3[data-cover="apprecalc"]{--accent:#11592F;--ctint:#E3F3E8;--bbg:#0B4A33;--bac:#8AF0C0}
-.r3[data-cover="apmacro"]{--accent:#355A0A;--ctint:#EEF4E0;--bbg:#2E4D0C;--bac:#C8F07A}
-.r3[data-cover="apmicro"]{--accent:#7E1A5E;--ctint:#F8E6F1;--bbg:#3D0C35;--bac:#FF9BDF}
-.r3[data-cover="aphug"]{--accent:#094953;--ctint:#E1F1F4;--bbg:#7A3310;--bac:#8FE3EE}
+.r3[data-cover="nremt"],.r3 .d5-card[data-cover="nremt"]{--accent:#0B6B62;--ctint:#E1F6F2;--bbg:#0D3B36;--bac:#2EE6D6}
+.r3[data-cover="ochem"],.r3 .d5-card[data-cover="ochem"]{--accent:#4B3BA8;--ctint:#ECE8FB;--bbg:#241A63;--bac:#A18FFF}
+.r3[data-cover="anp"],.r3 .d5-card[data-cover="anp"]{--accent:#A33B26;--ctint:#FBE9E4;--bbg:#4A1A1F;--bac:#FF8A6B}
+.r3[data-cover="apbio"],.r3 .d5-card[data-cover="apbio"]{--accent:#2D6A1F;--ctint:#E4F1DD;--bbg:#1B4422;--bac:#7CCB6B}
+.r3[data-cover="apchem"],.r3 .d5-card[data-cover="apchem"]{--accent:#1D44A6;--ctint:#E3EAFA;--bbg:#1A2C78;--bac:#8FAEFF}
+.r3[data-cover="apphys"],.r3 .d5-card[data-cover="apphys"]{--accent:#734200;--ctint:#FBEED5;--bbg:#2A1D06;--bac:#FFB21E}
+.r3[data-cover="apcalc"],.r3 .d5-card[data-cover="apcalc"]{--accent:#8C1036;--ctint:#FCE8EE;--bbg:#4A1230;--bac:#FF5C9A}
+.r3[data-cover="apcalcbc"],.r3 .d5-card[data-cover="apcalcbc"]{--accent:#5A1E96;--ctint:#F1E7FA;--bbg:#34104C;--bac:#C88CFF}
+.r3[data-cover="apstat"],.r3 .d5-card[data-cover="apstat"]{--accent:#6E2470;--ctint:#F5E6F4;--bbg:#0E3A52;--bac:#5CC8F0}
+.r3[data-cover="apenv"],.r3 .d5-card[data-cover="apenv"]{--accent:#474A10;--ctint:#EFF0DA;--bbg:#22400F;--bac:#A6DB5C}
+.r3[data-cover="appsych"],.r3 .d5-card[data-cover="appsych"]{--accent:#084F78;--ctint:#E3F0F8;--bbg:#07608A;--bac:#FFD23F}
+.r3[data-cover="apprecalc"],.r3 .d5-card[data-cover="apprecalc"]{--accent:#11592F;--ctint:#E3F3E8;--bbg:#0B4A33;--bac:#8AF0C0}
+.r3[data-cover="apmacro"],.r3 .d5-card[data-cover="apmacro"]{--accent:#355A0A;--ctint:#EEF4E0;--bbg:#2E4D0C;--bac:#C8F07A}
+.r3[data-cover="apmicro"],.r3 .d5-card[data-cover="apmicro"]{--accent:#7E1A5E;--ctint:#F8E6F1;--bbg:#3D0C35;--bac:#FF9BDF}
+.r3[data-cover="aphug"],.r3 .d5-card[data-cover="aphug"]{--accent:#094953;--ctint:#E1F1F4;--bbg:#7A3310;--bac:#8FE3EE}
+/* Pages that belong to no one course (the teacher landing and class list, owner 2026-11-12): the site's own
+   navy and teal, and each class card's pill in that class's course colour (cards above). */
+.r3[data-cover="site"]{--accent:#0B6B62;--ctint:#E1F6F2;--bbg:#0B1A33;--bac:#2EE6D6}
+.r3[data-cover="site"],.r3 .d5-card[data-cover]{--lp-ac:var(--accent);--lp-ct:var(--ctint)}
+:root[data-theme="dark"] .r3 .d5-card[data-cover]{--accent:var(--bac);--accent-text:var(--bac);--ctint:color-mix(in srgb,var(--bac) 15%,transparent)}
 :root[data-theme="dark"] .r3{--accent:var(--bac);--accent-text:var(--bac);--ctint:color-mix(in srgb,var(--bac) 15%,transparent);--r3-navy:#16294A;--chan:#2EE6D6;--chan-press:#5CEDE1;--on-chan:#0B1A33}
 .r3{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;}
 .r3{--chan:#0B1A33;--chan-press:#16284A;--on-chan:#fff;--display:'Inter Display','Nunito',system-ui,sans-serif;}
