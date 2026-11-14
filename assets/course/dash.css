@@ -333,10 +333,8 @@
 /* 2026-11-14 calmer cards: one filled bar, the facts in one row, the hold card as a table (docs/progress-profile.md) */
 .d5v2 .d5-rd-x{margin:6px 0 0;font:700 15px/1.45 var(--font-ui);color:var(--muted);}
 .d5v2 .d5-rd-x b{color:var(--ink);}
-.d5v2 .d5-rd-scale{height:10px;margin-top:18px;}
+.d5v2 .d5-rd-scale{margin-top:20px;}
 .d5v2 .d5-rd-fill{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--accent);}
-.d5v2 .d5-rd-range{background:rgba(14,107,92,.2);}
-:root[data-theme="dark"] .d5v2 .d5-rd-range{background:rgba(255,255,255,.2);}
 .d5v2 .d5-rd-ticks{height:18px;margin-top:6px;}
 .d5v2 .d5-pill{background:none;padding:0;font-size:14px;align-self:flex-end;padding-bottom:9px;}
 .d5v2 .d5-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:0;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}

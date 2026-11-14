@@ -491,10 +491,10 @@
     html += '<p class="d5-rd-n"><b>' + v + '</b><span class="d5-rd-u">' + esc(r.unit || '%') + '</span>' + (r.label ? '<span class="d5-rd-l">' + r.label + '</span>' : '') +
       (r.pill ? '<span class="d5-pill ' + esc(r.pill.tier || 'mid') + '">' + esc(r.pill.text) + '</span>' : '') + '</p>';
     if(r.explain) html += '<p class="d5-rd-x">' + r.explain + '</p>';
-    var bg = 'var(--surface2)';
+    var bg = sc.zones === false ? 'linear-gradient(90deg,var(--d5-ok-bg) 0 ' + v + '%,var(--surface2) ' + v + '% 100%)' : 'linear-gradient(90deg,var(--d5-low-bg) 0 55%,var(--d5-mid-bg) 55% ' + (g || 80) + '%,var(--d5-ok-bg) ' + (g || 80) + '% 100%)';
     var rg = sc.range && sc.range[1] > sc.range[0] ? '<i class="d5-rd-range" style="left:' + sc.range[0] + '%;width:' + (sc.range[1] - sc.range[0]) + '%"></i>' : '';
-    html += '<div class="d5-rd-scale" style="background:' + bg + '" role="img" aria-label="' + esc(sc.aria || (v + (r.unit || '%') + (g != null ? '; ' + (sc.goalText || 'goal ' + g) : '') + (sc.range ? '; likely between ' + sc.range[0] + ' and ' + sc.range[1] : ''))) + '"><i class="d5-rd-fill" style="width:' + v + '%"></i>' + rg +
-      (g != null ? '<i class="d5-rd-goal" style="left:' + g + '%"></i>' : '') + '</div>';
+    html += '<div class="d5-rd-scale" style="background:' + bg + '" role="img" aria-label="' + esc(sc.aria || (v + (r.unit || '%') + (g != null ? '; ' + (sc.goalText || 'goal ' + g) : '') + (sc.range ? '; likely between ' + sc.range[0] + ' and ' + sc.range[1] : ''))) + '">' + rg +
+      (g != null ? '<i class="d5-rd-goal" style="left:' + g + '%"></i>' : '') + '<i class="d5-rd-dot" style="left:' + Math.max(1.5, Math.min(98.5, v)) + '%"></i></div>';
     if(g != null) html += '<div class="d5-rd-ticks" aria-hidden="true"><span class="g" style="left:' + g + '%">' + esc(sc.goalText || g + '%') + '</span></div>';
     html += factsHtml(r.facts);
     if(r.slot) html += '<div id="' + r.slot + '" class="d5-slot"></div>';
