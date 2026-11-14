@@ -111,10 +111,14 @@
      Two drawings of the same numbers, one shaped for a wide column and one for a phone, so the labels stay at
      reading size in both; CSS shows one. Colours are classes, so dark mode follows the theme. */
   function chart(p, tr, W, H, narrow){
-    var weeks = p.weeks || [], exams = p.exams || [], now = Date.now();
+    // Simple (Progress, owner 2026-11-14 "still confusing"): one line, the goal, you. Exams are listed under the
+    // chart and the pace to the goal is said in words above it, so neither is drawn.
+    var simple = !!p.simple;
+    var weeks = p.weeks || [], exams = simple && (p.weeks || []).length ? [] : p.exams || [], now = Date.now();
+    if(simple) tr = { head: tr.head };
     var times = weeks.map(function(w){ return w.t; }).concat(exams.map(function(e){ return e.t; }));
     if(!times.length) return '';
-    var t0 = Math.min.apply(null, times), end = now + 7 * DAY, examT = p.examDate ? p.examDate.t : null;
+    var t0 = Math.min.apply(null, times), end = now + (simple ? 2 : 7) * DAY, examT = simple ? null : p.examDate ? p.examDate.t : null;
     if(tr.goalAt) end = Math.max(end, tr.goalAt.t + 4 * DAY);
     var examIn = examT && examT > now && examT - now <= 75 * DAY;
     if(examIn) end = Math.max(end, examT);
@@ -138,11 +142,11 @@
     // the part of the chart that is still ahead
     var xn = x(now);
     var examLater = examT && examT > now && !examIn;
-    if(end - now > 2 * DAY) s += '<rect class="d5-ahead" x="' + f(xn) + '" y="' + T + '" width="' + f(R - xn) + '" height="' + (B - T) + '"/>' + (narrow || examLater ? '' : '<text class="d5-ahead-t" x="' + f(xn + 8) + '" y="' + (T + 16) + '">ahead</text>');
+    if(!simple && end - now > 2 * DAY) s += '<rect class="d5-ahead" x="' + f(xn) + '" y="' + T + '" width="' + f(R - xn) + '" height="' + (B - T) + '"/>' + (narrow || examLater ? '' : '<text class="d5-ahead-t" x="' + f(xn + 8) + '" y="' + (T + 16) + '">ahead</text>');
     if(p.goal){
       var yg = y(p.goal.pct);
       s += '<line class="d5-goal" x1="' + L + '" y1="' + f(yg) + '" x2="' + R + '" y2="' + f(yg) + '"/>';
-      s += '<text class="d5-goal-t" x="' + (L + 4) + '" y="' + f(yg - 7) + '" font-size="' + hand + '">' + esc(narrow ? p.goal.pct + '% goal' : p.goal.label) + '</text>';
+      s += '<text class="d5-goal-t" x="' + (L + 4) + '" y="' + f(yg - 7) + '" font-size="' + hand + '">' + esc(narrow || simple ? p.goal.pct + '% right' : p.goal.label) + '</text>';
     }
     // weekly accuracy
     var here = null, weekPts = [];
@@ -154,7 +158,7 @@
         s += '<polyline class="d5-line" points="' + line + '"/>';
       }
       here = pts[pts.length - 1]; weekPts = pts;
-      if(!narrow && pts.length > 1) s += '<text class="d5-small" x="' + f(pts[0][0]) + '" y="' + f(pts[0][1] + 20) + '" text-anchor="middle" font-size="' + small + '">' + pts[0][2] + '%</text>';
+      if(!narrow && !simple && pts.length > 1) s += '<text class="d5-small" x="' + f(pts[0][0]) + '" y="' + f(pts[0][1] + 20) + '" text-anchor="middle" font-size="' + small + '">' + pts[0][2] + '%</text>';
     }
     // projection to the goal
     if(tr.goalAt && here){
@@ -192,7 +196,7 @@
       s += '<circle class="d5-here-ring" cx="' + f(here[0]) + '" cy="' + f(here[1]) + '" r="' + (narrow ? 10 : 13) + '"/>';
       s += '<circle class="d5-here" cx="' + f(here[0]) + '" cy="' + f(here[1]) + '" r="' + (narrow ? 5 : 7) + '"/>';
       var right = here[0] < (L + R) / 2, hx = right ? here[0] + 18 : here[0] - 18, hy = Math.min(B - 10, here[1] + (narrow ? 36 : 56));
-      s += '<text class="d5-note-acc" x="' + f(hx) + '" y="' + f(hy) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="' + (hand + 1) + '">' + esc('you are here, ' + here[2] + '%') + '</text>';
+      s += '<text class="d5-note-acc" x="' + f(hx) + '" y="' + f(hy) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="' + (hand + 1) + '">' + esc((simple ? 'you, ' : 'you are here, ') + here[2] + '%') + '</text>';
       if(!narrow) s += arrow(hx + (right ? 12 : -12), hy - 15, here[0] + (right ? 6 : -6), here[1] + 12, 'd5-arrow-acc');
     }
     // exam day
@@ -486,12 +490,12 @@
     var v = Math.max(0, Math.min(100, r.value)), sc = r.scale || {}, g = sc.goal;
     html += '<p class="d5-rd-n"><b>' + v + '</b><span class="d5-rd-u">' + esc(r.unit || '%') + '</span>' + (r.label ? '<span class="d5-rd-l">' + r.label + '</span>' : '') +
       (r.pill ? '<span class="d5-pill ' + esc(r.pill.tier || 'mid') + '">' + esc(r.pill.text) + '</span>' : '') + '</p>';
+    if(r.explain) html += '<p class="d5-rd-x">' + r.explain + '</p>';
     var bg = sc.zones === false ? 'linear-gradient(90deg,var(--d5-ok-bg) 0 ' + v + '%,var(--surface2) ' + v + '% 100%)' : 'linear-gradient(90deg,var(--d5-low-bg) 0 55%,var(--d5-mid-bg) 55% ' + (g || 80) + '%,var(--d5-ok-bg) ' + (g || 80) + '% 100%)';
     var rg = sc.range && sc.range[1] > sc.range[0] ? '<i class="d5-rd-range" style="left:' + sc.range[0] + '%;width:' + (sc.range[1] - sc.range[0]) + '%"></i>' : '';
     html += '<div class="d5-rd-scale" style="background:' + bg + '" role="img" aria-label="' + esc(sc.aria || (v + (r.unit || '%') + (g != null ? '; ' + (sc.goalText || 'goal ' + g) : '') + (sc.range ? '; likely between ' + sc.range[0] + ' and ' + sc.range[1] : ''))) + '">' + rg +
       (g != null ? '<i class="d5-rd-goal" style="left:' + g + '%"></i>' : '') + '<i class="d5-rd-dot" style="left:' + Math.max(1.5, Math.min(98.5, v)) + '%"></i></div>';
-    html += '<div class="d5-rd-ticks" aria-hidden="true"><span class="l">' + esc(sc.lo || '0%') + '</span>' + (g != null ? '<span class="g" style="left:' + g + '%">' + esc(sc.goalText || g + '%') + '</span>' : '') + '<span class="r">' + esc(sc.hi || '100%') + '</span></div>';
-    if(r.explain) html += '<p class="d5-rd-x">' + r.explain + '</p>';
+    if(g != null) html += '<div class="d5-rd-ticks" aria-hidden="true"><span class="g" style="left:' + g + '%">' + esc(sc.goalText || g + '%') + '</span></div>';
     html += factsHtml(r.facts);
     if(r.slot) html += '<div id="' + r.slot + '" class="d5-slot"></div>';
     if(r.foot) html += '<p class="d5-foot">' + r.foot + '</p>';
@@ -499,7 +503,7 @@
   }
   function factsHtml(f){
     if(!f || !f.length) return '';
-    return '<div class="d5-facts">' + f.map(function(x){
+    return '<div class="d5-facts n' + f.length + '">' + f.map(function(x){
       var inner = '<b>' + x.big + '</b><span>' + x.label + (x.note ? ' <em class="' + (x.tone || '') + '">' + x.note + '</em>' : '') + '</span>';
       return x.href ? '<a class="d5-fact"' + (x.id ? ' id="' + x.id + '"' : '') + ' href="' + esc(x.href) + '">' + inner + '</a>' : x.button ? '<button type="button" class="d5-fact" data-d5fact="' + esc(x.button) + '">' + inner + '</button>' : '<div class="d5-fact">' + inner + '</div>';
     }).join('') + '</div>';
@@ -521,24 +525,23 @@
     el.innerHTML = '<p><b>Thank you.</b> <span class="d5-mut">That helps make this estimate honest for the next student.</span></p>';
   }
 
-  // Am I getting better: the chart, then the last few exams as tiles.
+  // Am I getting better: one line, the chart (it labels itself), the last few exams in one row.
   function trendCard(p){
-    var tr = trend(p), has = (p.weeks && p.weeks.length) || (p.exams && p.exams.length), html = '<div class="d5-card d5-tr"><h2 class="d5-lbl" id="d5hTrend">Am I getting better</h2>';
-    if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p><p class="d5-mut">Each week you answer at least 5 questions adds a point, and every exam lands on the same line.</p>' + '</div>';
-    html += '<p class="d5-lead">' + esc(tr.head || '') + '</p>';
-    var sub = [];
-    if(p.sub) sub.push(p.sub);
+    var tr = trend(p), has = (p.weeks && p.weeks.length) || (p.exams && p.exams.length), html = '<div class="d5-card d5-tr"><div class="d5-tr-k"><h2 class="d5-lbl" id="d5hTrend">Am I getting better</h2>' +
+      (p.allHref ? '<a class="d5-tr-all" href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + ' &rarr;</a>' : '') + '</div>';
+    if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p></div>';
+    var w = p.weeks || [], line;
+    if(w.length >= 2){
+      var a = w[0].pct, b = w[w.length - 1].pct, span = Math.max(1, Math.round((w[w.length - 1].t - w[0].t) / (7 * DAY)));
+      line = '<b>' + (b - a >= 3 ? 'Up ' + (b - a) + ' points' : a - b >= 3 ? 'Down ' + (a - b) + ' points' : 'Steady') + '</b> in % right over ' + plural(span, 'week') + '.';
+    } else line = '<b>' + esc(tr.head || '') + '</b>';
     if(tr.goalAt){
       var ex = p.examDate && p.examDate.t > Date.now() ? p.examDate.t : null, lead = ex ? Math.round((ex - tr.goalAt.t) / (7 * DAY)) : null;
-      sub.push('At this pace you reach ' + p.goal.pct + '% around ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam.' : lead !== null && lead <= 0 ? ', after your exam date, so there is ground to make up.' : '.'));
+      line += ' <span class="d5-mut">At this pace, ' + p.goal.pct + '% right by ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam' : lead !== null && lead <= 0 ? ', after your exam date' : '') + '.</span>';
     }
-    if(sub.length) html += '<p class="d5-mut">' + sub.join(' ') + '</p>';
-    html += chart(p, tr, 620, 290, false) + chart(p, tr, 360, 230, true);
-    var key = [];
-    if(p.weeks && p.weeks.length) key.push('<span><i class="d5-k-line"></i>your accuracy each week</span>');
-    if(p.exams && p.exams.length) key.push('<span><i class="d5-k-exam"></i>' + esc(p.examWord || 'exams') + '</span>');
-    if(key.length || p.allHref) html += '<div class="d5-key">' + key.join('') + (p.allHref ? '<span class="d5-spacer"></span><a href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + '</a>' : '') + '</div>';
-    if(p.recent && p.recent.length) html += '<div class="d5-recent">' + p.recent.slice(0, 3).map(function(x){ return '<div class="d5-ex"><b>' + x.big + '</b><span>' + x.sub + '</span></div>'; }).join('') + '</div>';
+    var sp = Object.assign({}, p, { simple: true });
+    html += '<p class="d5-tr-l">' + line + '</p>' + chart(sp, tr, 620, 260, false) + chart(sp, tr, 360, 220, true);
+    if(p.recent && p.recent.length) html += '<p class="d5-recent"><span class="d5-mut">' + esc(p.recentLabel || 'Last exams') + '</span>' + p.recent.slice(0, 3).map(function(x){ return '<span class="d5-ex"><b>' + x.big + '</b> ' + x.sub + '</span>'; }).join('') + '</p>';
     return html + '</div>';
   }
 
@@ -558,25 +561,32 @@
       if(v.locked) html += v.locked;
       else if(v.html) html += v.html;
       else if(!v.rows || !v.rows.length) html += '<p class="d5-empty">' + (v.empty || 'Answer a few questions and this fills in.') + '</p>';
-      else html += v.rows.map(holdRow).join('');
+      else {
+        var cols = Object.assign({ name: 'Area, costliest first', pct: 'Right', gain: '' }, f.cols || {}, v.cols || {}), anyGain = v.rows.some(function(r){ return r.gain; });
+        html += '<div class="d5-hr d5-hr-h" aria-hidden="true"><span>' + esc(cols.name) + '</span><span>' + esc(cols.pct) + '</span><span>' + (anyGain ? esc(cols.gain) : '') + '</span><span></span></div>';
+        html += v.rows.map(function(r, j){ return holdRow(r, j === 0 && !r.off); }).join('');
+      }
       if(v.foot) html += '<p class="d5-mut d5-view-f">' + v.foot + '</p>';
       html += '</div>';
     });
     return html + '</div>';
   }
-  function holdRow(r){
+  function holdRow(r, first){
     var sub = [];
     if(r.off) sub.push(r.sub || 'not started');
     else {
-      if(r.pct != null) sub.push(r.pct + '% ' + esc(r.word || 'right'));
-      if(r.weak) sub.push('weakest: ' + (r.weak.href ? '<a class="d5-weak" href="' + esc(r.weak.href) + '">' : '<b class="d5-weak">') + esc(r.weak.name) + (r.weak.pct != null ? ' ' + r.weak.pct + '%' : '') + (r.weak.href ? '</a>' : '</b>'));
+      if(r.weak) sub.push('Weakest ' + (r.weak.href ? '<a class="d5-weak" href="' + esc(r.weak.href) + '">' : '<b class="d5-weak">') + esc(r.weak.name) + (r.weak.pct != null ? ' ' + r.weak.pct + '%' : '') + (r.weak.href ? '</a>' : '</b>'));
       if(r.cost) sub.push(r.cost);
       if(r.sub) sub.push(r.sub);
     }
-    var links = (r.links || []).map(function(l){ return l.kind === 'tool' ? '<a class="d5-hb-btn g" href="' + esc(l.href) + '">' + esc(l.label) + '</a>' : '<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'; }).join('');
-    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m"><b class="d5-hr-n">' + esc(r.name) + '</b><span class="d5-hr-s">' + sub.join(' &middot; ') + '</span>' +
-      (r.off || r.bar == null ? '' : '<span class="d5-bar d5-hr-bar"><i class="' + esc(r.tier || '') + '" style="width:' + Math.round(Math.max(0, Math.min(1, r.bar)) * 100) + '%"></i></span>') + '</div>' +
-      '<div class="d5-hr-a">' + (r.gain ? '<span class="d5-gain">' + esc(r.gain) + '</span>' : '') + '<a class="d5-hb-btn ' + (r.off ? 'g' : 'p') + '" href="' + esc(r.href) + '">' + esc(r.cta || 'Practice') + ' &rarr;</a>' + links + '</div></div>';
+    var notes = null;
+    (r.links || []).forEach(function(l){ if(!notes && /^notes$/i.test(l.label)){ notes = l; return; } sub.push('<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'); });
+    var num = r.off || r.pct == null ? '' : '<b>' + r.pct + '%</b>' + (r.word && r.word !== 'right' ? '<small>' + esc(r.word) + '</small>' : '');
+    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m">' + (notes ? '<a class="d5-hr-n" href="' + esc(notes.href) + '" title="Notes">' + esc(r.name) + '</a>' : '<b class="d5-hr-n">' + esc(r.name) + '</b>') +
+      (r.off || r.bar == null ? '' : '<span class="d5-bar d5-hr-bar"><i class="' + esc(r.tier || '') + '" style="width:' + Math.round(Math.max(0, Math.min(1, r.bar)) * 100) + '%"></i></span>') +
+      (sub.length ? '<span class="d5-hr-s">' + sub.join(' &middot; ') + '</span>' : '') + '</div>' +
+      '<span class="d5-hr-p">' + num + '</span><span class="d5-gain" title="what this adds to the number above">' + esc(r.gain || '') + '</span>' +
+      (first ? '<a class="d5-hb-btn p" href="' + esc(r.href) + '" aria-label="' + esc(r.cta || 'Practice') + '">Practice</a>' : '<a class="d5-hb-go" href="' + esc(r.href) + '" aria-label="' + esc(r.cta || 'Practice') + '">' + esc(r.off ? (r.cta || 'Start') : 'Practice') + ' &rarr;</a>') + '</div>';
   }
 
   /* The whole page, for the courses whose dashboard is drawn by script. */
@@ -602,9 +612,10 @@
     // The status was written as a lowercase hand line; as the band's sub line it starts with a capital.
     if(hand && b.status) hand.textContent = hand.hasAttribute('data-d5-status') ? b.status.charAt(0).toUpperCase() + b.status.slice(1) : b.status;
     // Owner 2026-11-07: the level chip left the band (it crowded the status line). Owner 2026-11-13: level and streak
-    // live on Profile now, so the band carries one small link to it under the status.
+    // live on Profile now.
     var old = main.querySelector('.band .d5-lvl-row'); if(old) old.remove();
-    if(hand && b.level){
+    // Owner 2026-11-14: dropped; the top bar's level and streak chips show the same and open Profile.
+    if(hand && b.level && false){
       var row = document.createElement('p'); row.className = 'd5-lvl-row';
       row.innerHTML = '<a class="d5-pf" href="/profile.html">Level ' + b.level.level + (b.streak ? ' &middot; ' + plural(b.streak, 'day') + ' streak' : '') + ' &middot; Profile &rarr;</a>';
       hand.parentNode.insertBefore(row, hand.nextSibling);

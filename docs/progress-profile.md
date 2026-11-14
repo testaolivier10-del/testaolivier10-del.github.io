@@ -19,6 +19,14 @@ five-question layout in docs/dashboard.md (design F); the dashboard adapters sta
   by the real exam's blueprint, an 80% range, AP bands from per-course cutoffs with free response, live difficulty
   from question_stats once a question has 20 answers, and an optional outcome question after exam day.
 
+- Simpler look (owner 2026-11-14, approved from full-page screenshots; same information, less to read):
+  chart shows only the weekly % right line, an "80% right" line and "you, N%"; the headline gives the change
+  ("Up 21 points in % right"), the pace in words, the last exams in a row under it. Readiness keeps the colored
+  bar with the dot (owner preferred it), the range under the number, facts as one row, one line of fine print.
+  Holding back is a table (Right, If 80% / If Strong / If Solid), one dark Practice button on the costliest row and
+  "Practice →" links on the rest, the area name opens its notes. Cut as repeats: best exam fact (shown under the
+  chart), the band's Level · streak · Profile line (top bar chips open Profile), the 64% said twice.
+
 ## Readiness model (assets/course/readiness.js, window.LevlReady)
 - 1PL (Rasch) ability per area: P(right) = sigmoid(theta - b). b from live p (n >= 20, worker /qdiff) else the
   authored difficulty (easy 0.82, medium 0.68, hard 0.52 expected right for a typical student; AP d 1/2/3 the same).

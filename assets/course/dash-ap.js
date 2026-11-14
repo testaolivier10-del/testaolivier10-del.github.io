@@ -86,20 +86,19 @@
       proj = window.LevlReady.apBand(key, est, cfg.frqStats || null);
     }
 
-    var facts = [{ big: examIso ? D.shortDate(examT) : 'Set date', label: examIso ? 'exam day, ' + plural(daysLeft, 'day') + ' left' : 'your exam day, for a countdown', button: 'd5ExamCard' }];
-    if(isAP) facts.push(proj ? { big: proj.lo === proj.hi ? String(proj.band) : proj.band + ' <small class="d5-mut">(' + proj.lo + ' to ' + proj.hi + ')</small>', label: 'projected AP&reg; score today' + (proj.low ? ', rough' : '') }
-      : { big: '&mdash;', label: 'projected AP&reg; score, after ' + (30 - allN > 0 ? 30 - allN + ' more answers' : 'a few answers') });
-    if(cfg.frqStats) facts.push(cfg.frqStats.n ? { big: cfg.frqStats.got + ' / ' + cfg.frqStats.of, label: 'free response average, ' + plural(cfg.frqStats.n, 'scored'), href: BASE + 'frq.html' }
-      : { big: '&mdash;', label: 'free response: score one with its rubric', href: BASE + 'frq.html' });
-    if(examIso && leftTopics) facts.push({ big: Math.ceil(leftTopics / Math.max(1, daysLeft)) + ' a day', label: 'topics to Strong covers the rest' });
+    var facts = [{ big: examIso ? plural(daysLeft, 'day') : 'Set date', label: examIso ? 'to your exam, ' + D.shortDate(examT) : 'exam day', button: 'd5ExamCard' }];
+    if(isAP) facts.push(proj ? { big: proj.lo === proj.hi ? String(proj.band) : proj.band + ' <small class="d5-mut">(' + proj.lo + '&ndash;' + proj.hi + ')</small>', label: 'projected AP&reg; score' + (proj.low ? ', rough' : '') }
+      : { big: '&mdash;', label: 'AP&reg; score, after ' + (30 - allN > 0 ? (30 - allN) + ' more answers' : 'a few answers') });
+    if(cfg.frqStats) facts.push(cfg.frqStats.n ? { big: cfg.frqStats.got + '/' + cfg.frqStats.of, label: 'free response, ' + plural(cfg.frqStats.n, 'scored'), href: BASE + 'frq.html' }
+      : { big: '&mdash;', label: 'free response, none yet', href: BASE + 'frq.html' });
+    if(examIso && leftTopics) facts.push({ big: Math.ceil(leftTopics / Math.max(1, daysLeft)) + ' a day', label: 'topics to Strong' });
     var ready = { value: isNew ? null : coverage, unit: '%', label: 'of ' + ofWhat + ' at Strong', facts: facts, slot: 'd5ExamCard',
       empty: 'Every topic you bring to Strong fills this in. Start with a lesson or a few practice questions.',
-      foot: isAP ? 'The projected score uses your answers and published score cutoffs, which move a few points each year. A guide, not a promise.' : 'Every built topic counts once.' };
+      foot: isAP ? 'Projected score: your answers against published cutoffs, which shift yearly. A guide, not a promise.' : 'Every built topic counts once.' };
     if(!isNew){
       ready.scale = paceGoal != null ? { zones: false, goal: paceGoal, goalText: 'on pace for ' + D.shortDate(examT), lo: '0%', hi: '100%' } : { zones: false, lo: '0%', hi: '100%' };
       if(paceGoal != null) ready.pill = coverage >= paceGoal + 5 ? { text: 'Ahead of pace', tier: 'good' } : coverage >= paceGoal - 5 ? { text: 'On pace', tier: 'good' } : coverage >= paceGoal - 20 ? { text: 'A little behind', tier: 'mid' } : { text: 'Behind pace', tier: 'low' };
-      ready.explain = '<b>' + coverage + '%</b> of ' + ofWhat + ' sits in topics you have at Strong' + (cfg.group === 'unit' ? ', units weighted by their share of the AP&reg; exam' : '') + '.' +
-        (accAll != null ? ' You get <b>' + accAll + '%</b> of questions right overall; a topic counts here once it is Strong.' : '');
+      ready.explain = (accAll != null ? 'You get <b>' + accAll + '%</b> right; a topic counts here once it is Strong' : 'A topic counts here once it is Strong') + (cfg.group === 'unit' ? ', weighted by the exam' : '') + '.';
     }
     if(isAP && pastDays !== null && pastDays <= 120 && !isNew) ready.outcome = { course: key, title: 'How did your AP&reg; exam go?', choices: [['5', '5'], ['4', '4'], ['3', '3'], ['2', '2'], ['1', '1'], ['later', 'No score yet']],
       predicted: proj ? { value: proj.composite, lo: proj.cLo, hi: proj.cHi, band: proj.band } : { value: coverage }, n: allN, days: pastDays };
@@ -129,7 +128,7 @@
     var grows = gstarted.slice().sort(function(a, b){ return (b.cost - a.cost) || (b.notStrong - a.notStrong); }).map(function(g){
       var share = g.weight ? g.weight[0] + '&ndash;' + g.weight[1] + '% of the exam' : plural(g.topics.length, 'topic');
       var wk = weakIn(g), gain = g.w ? Math.round(g.cost / wTotal * 100) : 0;
-      return { name: g.label, pct: pct(g.m), word: 'mastery', weak: wk, cost: g.got >= 1 ? 'at Strong' : share, bar: g.m, tier: tierOf(g.m),
+      return { name: g.label, pct: pct(g.m), word: '', weak: wk, cost: g.got >= 1 ? 'at Strong' : share, bar: g.m, tier: tierOf(g.m),
         gain: gain >= 1 ? '+' + gain + '%' : '', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(g.id), cta: 'Practice ' + (cfg.group === 'chapter' ? 'chapter ' + g.n : g.short),
         links: wk ? [{ href: BASE + 'notes/' + wk.id + '.html', label: 'Notes' }] : [] };
     });
@@ -140,25 +139,25 @@
     }
     var trowsT = built.filter(function(t){ return topicM[t.id].answered; }).sort(function(a, b){ return topicM[a.id].value - topicM[b.id].value; }).map(function(t){
       var tm = topicM[t.id];
-      return { name: (t.ced ? t.ced + ' ' : '') + t.title, pct: pct(tm.value), word: 'mastery', cost: plural(tm.answered, 'item') + ' answered', bar: tm.value, tier: tierOf(tm.value),
+      return { name: (t.ced ? t.ced + ' ' : '') + t.title, pct: pct(tm.value), word: '', cost: plural(tm.answered, 'answer'), bar: tm.value, tier: tierOf(tm.value),
         href: BASE + 'practice.html?topic=' + encodeURIComponent(t.id), cta: 'Practice', links: [{ href: BASE + 'notes/' + t.id + '.html', label: 'Notes' }] };
     });
     var sec = cfg.second, srows = sec.items.map(function(it){ var m = sec.mastery(it.id); return { it: it, m: m.value || 0, n: m.answered || 0 }; })
       .filter(function(x){ return x.n; }).sort(function(a, b){ return a.m - b.m; }).map(function(x){
-        return { name: (x.it.short && x.it.short !== x.it.name ? x.it.short + '. ' : '') + x.it.name, pct: pct(x.m), word: 'mastery', cost: plural(x.n, 'item') + ' answered', bar: x.m, tier: tierOf(x.m), href: sec.href(x.it.id), cta: 'Practice' };
+        return { name: (x.it.short && x.it.short !== x.it.name ? x.it.short + '. ' : '') + x.it.name, pct: pct(x.m), word: '', cost: plural(x.n, 'answer'), bar: x.m, tier: tierOf(x.m), href: sec.href(x.it.id), cta: 'Practice' };
       });
     var views = [
       { label: cfg.group === 'unit' ? 'Units' : 'Chapters', rows: gstarted.length ? grows : [], empty: 'Answer a few questions and your ' + cfg.group + 's line up here, the most expensive first.' },
-      { label: 'Topics', rows: trowsT, empty: 'Topics you have started show up here, weakest first.' },
-      { label: sec.label, rows: srows, empty: 'Answer questions tagged with a ' + sec.word + ' and they line up here, weakest first.' }
+      { label: 'Topics', cols: { name: 'Topic, weakest first' }, rows: trowsT, empty: 'Topics you have started show up here, weakest first.' },
+      { label: sec.label, cols: { name: sec.label + ', weakest first' }, rows: srows, empty: 'Answer questions tagged with a ' + sec.word + ' and they line up here, weakest first.' }
     ];
     if(cfg.skillRows){
-      var skv = { label: 'Skills', badge: pill ? ' <span class="premium-badge">Premium</span>' : '' };
+      var skv = { label: 'Skills', cols: { name: 'Skill, weakest first' }, badge: pill ? ' <span class="premium-badge">Premium</span>' : '' };
       if(!analytics) skv.locked = cfg.gate || '<p class="d5-empty">Mastery by skill comes with Premium.</p>';
       else { skv.rows = cfg.skillRows(tierOf); skv.empty = 'Skills appear once you have answered questions.'; }
       views.push(skv);
     }
-    var focus = { note: gstarted.length ? (cfg.group === 'unit' ? 'Ranked by how much of the exam each unit carries that is not at Strong yet' : 'Ranked by how many topics in each chapter are not at Strong yet') + ' &middot; <b class="d5-gain">+</b> is what bringing it to Strong adds to the number above' : '', views: views };
+    var focus = { note: '', cols: { name: (cfg.group === 'chapter' ? 'Chapter' : 'Unit') + ', costliest first', gain: 'If Strong' }, views: views };
 
     var status = isNew ? 'start anywhere, this page fills in as you answer' : coverage + '% of ' + ofWhat + ' at Strong' + (proj ? ', projected ' + proj.band : '') + (rising ? ', and climbing' : '');
     D.render(root, { progress: progress, ready: ready, focus: focus,
@@ -206,7 +205,7 @@
         items: (CU.practices || []).map(function(p){ return { id: p.id, short: p.id, name: p.name, full: p.id + '. ' + p.name }; }),
         mastery: function(id){ return A.practiceMastery(id); }, href: function(id){ return BASE + 'practice.html?practice=' + id; } },
       exams: hist.map(function(x){ return { t: x.ts, pct: pct(x.mcq.c / x.mcq.n) }; }), examWord: 'exams and unit tests',
-      recent: all.slice().reverse().slice(0, 3).map(function(x){ return { big: pct(x.mcq.c / x.mcq.n) + '%' + (o.band && x.band ? ' <small class="d5-mut">band ' + x.band + '</small>' : ''), sub: esc(x.label) + ' &middot; ' + esc(new Date(x.ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })) + (x.frq ? ' &middot; FRQ ' + x.frq.got + '/' + x.frq.of : '') }; }),
+      recent: all.slice().reverse().slice(0, 3).map(function(x){ return { big: pct(x.mcq.c / x.mcq.n) + '%' + (o.band && x.band ? ' (' + x.band + ')' : ''), sub: esc(new Date(x.ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })) + (x.frq ? ', FRQ ' + x.frq.got + '/' + x.frq.of : '') }; }),
       frqStats: (function(){
         var n = 0, got = 0, of = 0; fids.forEach(function(id){ var f = frqScores[id]; if(f && f.of){ n++; got += f.got; of += f.of; } });
         // Free-response sections inside full practice exams count too.
