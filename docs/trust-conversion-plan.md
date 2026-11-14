@@ -127,6 +127,20 @@ safe; research summary in the PR (sources there). Mockups: the "LevlPrep Premium
   the student's); a ratings prompt (no buyers yet to ask); the founder line (owner: skip). Apple Pay and Google Pay
   need Polar to approve levlprep.com for the embedded checkout (owner emails support@polar.sh).
 
+## Daily limit card redesign (2026-11-13, owner approved)
+
+Why: limit-hit rose (12 to 18 a week) while interest fell (11 to 5); the old card was five blocks of text in the
+course color. The owner picked option "C" from four mockups, then "C polished".
+- `limitCard()` in `assets/premium.js` (feature `daily-limit` only; every other locked card is unchanged). Navy half:
+  "Free today", n/n, "You got X right. n more free questions tomorrow." and the course page's free notes link
+  (moved in by `placeLimitNotes()` from the `xxx-gate-notes` line; any other words in that line stay under the card).
+  White half: Premium tag, three points (`limitPoints` per course, default "Unlimited practice and review / Every
+  interactive lesson / Every trainer and tool"; NREMT has its own), the Unlock button, and one fine print line (one
+  time, no subscription, founding price, Pass-or-extend for NREMT).
+- Site colors only: navy and the new `--gold` in `assets/theme.css` (every hard-coded #FFD23F in the CSS now reads
+  `var(--gold,#FFD23F)`). Styles under `.premium-limit`, prefixed `html body` so no course page restyles it.
+- Dropped from this card: the school year line and the long feature list (both stay in the Premium dialog and table).
+
 ## Plan and status (owner decisions 2026-10-08)
 
 | # | Item | Status |

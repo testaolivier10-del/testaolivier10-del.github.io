@@ -78,6 +78,8 @@
         { id: 'nremt-90', label: '90 days', price: 29 },
       ],
       guarantee: true, // Pass-or-extend; the wording is guaranteeText()
+      // The three points on the daily limit card (limitCard); the default's lessons and trainers line fits NREMT less well.
+      limitPoints: ['The full question bank, unlimited', 'Unlimited timed and adaptive exams', 'Lessons after chapter 8 and the simulator'],
       free: [
         'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
         '15 practice or review questions a day, any topic',
@@ -1169,34 +1171,59 @@
   function gate(course, feature, source) {
     var c = COURSES[course];
     if (!c || has(course)) return '';
+    if (feature === 'daily-limit') return limitCard(course, c, source);
     return '<div class="premium-card premium-lock" data-premium-course="' + esc(course) + '" data-premium-feature="' + esc(feature || '') + '">' +
       '<span class="premium-card__tag">Premium</span>' +
       '<b>' + esc(lockTitle(feature)) + '</b>' +
-      scoreLine(course, feature) +
       progressLine(course, feature) +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time. No subscription.</span>' +
       yearLine(c) +
       (c.guarantee ? '<p class="premium-card__guarantee">Includes Pass-or-extend: don’t pass the NREMT, and you can claim a free extension (conditions apply).</p>' : '') +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>' + esc(ctaLabel(c)) + '</button>' +
-      tomorrowLine(course, feature) +
     '</div>';
   }
 
-  /* The other honest answer at the daily limit: the free questions come
-     back. A student who is not buying today should leave knowing there is a
-     reason to return tomorrow, not that the door is shut. */
-  function tomorrowLine(course, feature) {
-    if (feature !== 'daily-limit') return '';
-    return '<p class="premium-card__tomorrow">Not today? You get ' + COURSES[course].dailyFree +
-      ' free questions again tomorrow, and the study notes stay open now.</p>';
+  /* The card at the daily limit (owner 2026-11-13, design "C polished"): navy left half with today's
+     free count and score, white right half with three points, the price button and one line of fine
+     print. Site colors only (navy and --gold), never the course color. Styles: .premium-limit in
+     assets/theme.css. The course page's own "free notes" link is moved into the left half by
+     watchGates() (placeLimitNotes). Three short points per course: `limitPoints`, or the default. */
+  var LIMIT_POINTS = ['Unlimited practice and review', 'Every interactive lesson', 'Every trainer and tool'];
+  function limitCard(course, c, source) {
+    var t = todayScore(course), n = c.dailyFree || 15, low = lowestPass(c);
+    var said = t.total
+      ? 'You got <strong>' + t.right + ' right</strong>. ' + n + ' more free questions tomorrow.'
+      : n + ' more free questions tomorrow.';
+    var fine = ['One time', 'No subscription'];
+    if (foundingLive()) fine.push('Founding price, then $' + money(low.price));
+    if (c.guarantee) fine.push('Pass-or-extend included');
+    var pts = (c.limitPoints || LIMIT_POINTS).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
+    return '<div class="premium-card premium-lock premium-limit" data-premium-course="' + esc(course) + '" data-premium-feature="daily-limit">' +
+      '<div class="premium-limit__today">' +
+        '<span class="premium-limit__kicker">Free today</span>' +
+        '<span class="premium-limit__count">' + n + '<em>/' + n + '</em></span>' +
+        '<p class="premium-limit__said">' + said + '</p>' +
+        '<span class="premium-limit__notes"></span>' +
+      '</div>' +
+      '<div class="premium-limit__offer">' +
+        '<span class="premium-limit__tag">Premium</span>' +
+        '<ul class="premium-limit__points">' + pts + '</ul>' +
+        '<button type="button" class="premium-limit__btn"' + openAttrs(course, source || 'daily-limit') + '>' + esc(ctaLabel(c)) + '</button>' +
+        '<p class="premium-limit__fine">' + esc(fine.join(' · ')) + '</p>' +
+      '</div>' +
+    '</div>';
   }
 
-  function scoreLine(course, feature) {
-    if (feature !== 'daily-limit') return '';
-    var t = todayScore(course);
-    if (!t.total) return '';
-    return '<p class="premium-card__score">You got <strong>' + t.right + ' of ' + t.total + '</strong> right today. Keep going with unlimited practice.</p>';
+  /* The course page puts its own free notes link right after the card (<p class="xxx-gate-notes">);
+     at the limit it belongs inside the card's navy half. Any other words in that line stay below it. */
+  function placeLimitNotes(card) {
+    var slot = card.querySelector('.premium-limit__notes'), p = card.nextElementSibling;
+    if (!slot || !p || p.tagName !== 'P' || !/(-gate-notes|__notes)\b/.test(p.className)) return;
+    var a = p.querySelector('a');
+    if (a) { a.innerHTML = a.innerHTML.replace(/\s*(&rarr;|\u2192)\s*$/, ''); slot.appendChild(a); }
+    if (!p.textContent.replace(/[\s\u2192]/g, '')) p.hidden = true;
+    else p.classList.add('premium-limit__after');
   }
 
   /* On every other locked card: the student's own work in this course so far,
@@ -1204,7 +1231,6 @@
      sales claim (docs/trust-conversion-plan.md, 2026-10-20). */
   var PROGRESS_MIN = 10;
   function progressLine(course, feature) {
-    if (feature === 'daily-limit') return '';
     var a = courseTally(course);
     if (a.total < PROGRESS_MIN) return '';
     return '<p class="premium-card__progress">So far you’ve answered <strong>' + a.total + ' questions</strong> here, ' +
@@ -1221,7 +1247,6 @@
   }
 
   function lockTitle(feature) {
-    if (feature === 'daily-limit') return 'That’s today’s 15 free questions';
     if (feature === 'exam') return 'You’ve used your free timed exam';
     if (feature === 'cat') return 'You’ve used your free adaptive exam';
     return 'This is part of Premium';
@@ -1818,7 +1843,10 @@
     }, { threshold: [0, 0.5] });
     function scan() {
       var cs = document.querySelectorAll(sel);
-      for (var i = 0; i < cs.length; i++) if (!cs[i]._lpW) { cs[i]._lpW = 1; io.observe(cs[i]); }
+      for (var i = 0; i < cs.length; i++) if (!cs[i]._lpW) {
+        cs[i]._lpW = 1; io.observe(cs[i]);
+        if (cs[i].classList.contains('premium-limit')) placeLimitNotes(cs[i]);
+      }
     }
     ['scroll', 'pointerdown', 'keydown'].forEach(function (ev) {
       window.addEventListener(ev, function () {

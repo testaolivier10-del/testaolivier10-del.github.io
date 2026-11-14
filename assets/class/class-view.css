@@ -8,8 +8,8 @@
 .lvs-seg a{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 22px;border-radius:999px;font:800 16px var(--font-ui);color:var(--ink,#0b1a33);text-decoration:none;white-space:nowrap}
 .lvs-seg a[aria-selected="true"]{background:var(--accent,#2c6a2a);color:#fff}
 .lvs-seg a:not([aria-selected="true"]):hover{background:var(--ctint,#e4f1dd)}
-.lvs-seg a:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
-.lvs-b{font:800 12.5px var(--font-ui);background:#ffd23f;color:#0b1a33;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.lvs-seg a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.lvs-b{font:800 12.5px var(--font-ui);background:var(--gold);color:#0b1a33;border-radius:999px;padding:2px 9px;white-space:nowrap}
 .lvs-b.is-live{background:#e0245e;color:#fff}
 .lvs-seg a[aria-selected="true"] .lvs-b{background:#fff;color:var(--accent,#2c6a2a)}
 
@@ -31,7 +31,7 @@
 .lvx-side nav a:hover{background:var(--surface2,#f2f5fa)}
 .lvx-side nav a[aria-current="page"]{background:var(--ctint,#e4f1dd);color:var(--accent,#2c6a2a)}
 .lvx-side nav b{font:800 13px var(--font-ui);background:var(--accent,#2c6a2a);color:#fff;border-radius:999px;padding:1px 9px}
-.lvx-side a:focus-visible,.lvx-btn:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
+.lvx-side a:focus-visible,.lvx-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .lvx-body{min-width:0;display:flex;flex-direction:column;gap:22px}
 
 .lvx-card{background:var(--white,#fff);border:1px solid var(--line,#e3e8f0);border-radius:22px;padding:26px 28px;box-shadow:0 24px 50px -34px rgba(11,26,51,.4)}
@@ -69,12 +69,12 @@
 .lvx-fold{margin-top:10px!important}
 .lvx-fold button{background:none;border:0;padding:6px 0;font:800 15px var(--font-ui);color:var(--accent,#2c6a2a);cursor:pointer;text-decoration:underline}
 
-.lvx-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:12px;border:2px solid #ffd23f;background:#ffd23f;color:#0b1a33;font:900 15.5px var(--font-ui);text-decoration:none;white-space:nowrap;cursor:pointer;flex:none}
+.lvx-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:12px;border:2px solid var(--gold);background:var(--gold);color:#0b1a33;font:900 15.5px var(--font-ui);text-decoration:none;white-space:nowrap;cursor:pointer;flex:none}
 .lvx-btn.is-ghost{background:transparent;border-color:var(--line,#d5dce8);color:var(--ink,#0b1a33)}
 .lvx-btn.is-ghost:hover{border-color:var(--ink,#0b1a33)}
-.lvx-btn.is-gold{background:#ffd23f}
+.lvx-btn.is-gold{background:var(--gold)}
 
-.lvx-live{display:flex;align-items:center;gap:16px;background:#fff7d6;border:2px solid #ffd23f;border-radius:20px;padding:16px 22px}
+.lvx-live{display:flex;align-items:center;gap:16px;background:#fff7d6;border:2px solid var(--gold);border-radius:20px;padding:16px 22px}
 .lvx-live > div{flex:1;min-width:0}.lvx-live .b{font:900 18px var(--font-ui)}.lvx-live p:not(.b){font:700 14.5px var(--font-ui);color:#5a4200}
 .lvx-live .dot{width:12px;height:12px;border-radius:50%;background:#e0245e;flex:none;box-shadow:0 0 0 5px rgba(224,36,94,.2)}
 .lvx-ann{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
