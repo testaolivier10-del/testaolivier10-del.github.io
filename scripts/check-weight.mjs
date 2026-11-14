@@ -209,8 +209,10 @@ const SHELL_BUDGETS = [
      with fourteen courses; with AP® Human Geography in its course list as well, see the launch log. */
   /* 352 -> 353.5 (the daily limit card, owner 2026-11-13, docs/trust-conversion-plan.md): limitCard() in premium.js
      and its .premium-limit styles in theme.css, plus the --gold token. The old card's score and tomorrow lines were
-     removed. Measured 353.2 KB. */
-  ['site', 353.5],
+     removed. Measured 353.2 KB.
+     353.5 -> 353.8 (Progress and Profile, owner 2026-11-13, docs/progress-profile.md): assets/profile.js (loaded
+     only by profile.html, but every file in /assets counts here) and the Profile entry in both menus. Measured 353.5 KB. */
+  ['site', 353.8],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -660,7 +662,7 @@ const BUDGETS = [
   /* 61.1 -> 62.8 (per-option lines 2026-11-10): the engine loads option-whys.json, maps each line through the
      deal and shows it under its option in practice, the answer list and the score card, plus the list's CSS;
      measured 62.7. */
-  ['nremt/practice.html', 62.8],
+  ['nremt/practice.html', 61.5], // 62.8 -> 61.5 (2026-11-13): the readiness card left Practice (docs/progress-profile.md)
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

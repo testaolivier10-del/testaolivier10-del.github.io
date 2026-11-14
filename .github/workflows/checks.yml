@@ -87,6 +87,9 @@ jobs:
       # with no NREMT domain.
       - name: the NREMT glossary matches its source
         run: node scripts/build-nremt-glossary.mjs --check
+      # The question meta the Progress readiness estimate reads (docs/progress-profile.md).
+      - name: the NREMT question meta matches the bank
+        run: node scripts/build-nremt-qmeta.mjs --check
       # The course map's two silent failure modes: a topic that is a dead link,
       # and a mastery percentage that overstates how much of the course has
       # actually been measured. Neither breaks a page, so nothing else here

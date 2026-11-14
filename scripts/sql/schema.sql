@@ -3665,6 +3665,39 @@ revoke all on function public.free_usage_course_ok(text) from public, anon, auth
 revoke all on function public.free_usage_day_ok(text) from public, anon, authenticated;
 grant execute on function public.free_usage_get(text) to authenticated;
 grant execute on function public.free_usage_add(text, text, text, integer) to authenticated;
+-- 2026-11m: readiness accuracy (docs/progress-profile.md, migration 2026-11m-readiness.sql).
+create or replace function public.question_difficulty(p_course text)
+returns table (qid text, n bigint, correct bigint)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select qid, sum(n)::bigint, sum(correct)::bigint
+    from public.question_stats
+   where course = p_course
+   group by qid
+  having sum(n) >= 20;
+$$;
+revoke all on function public.question_difficulty(text) from public, anon, authenticated;
+grant execute on function public.question_difficulty(text) to service_role;
+
+create table if not exists public.exam_outcomes (
+  id        bigint generated always as identity primary key,
+  at        timestamptz not null default now(),
+  course    text not null check (course ~ '^[a-z]{2,12}$'),
+  result    text not null check (result in ('pass', 'fail', 'later', '1', '2', '3', '4', '5')),
+  predicted numeric,
+  lo        numeric,
+  hi        numeric,
+  band      smallint check (band between 1 and 5),
+  answers   integer not null default 0 check (answers >= 0),
+  days      integer check (days between 0 and 400)
+);
+alter table public.exam_outcomes enable row level security;
+revoke all on public.exam_outcomes from public, anon, authenticated;
+grant insert, select on public.exam_outcomes to service_role;
+
 
 -- Class readiness: hide scores and Class Premium (2026-11l-class-ready.sql, docs/teacher-classes.md).
 alter table public.classes add column if not exists hide_scores boolean not null default false;

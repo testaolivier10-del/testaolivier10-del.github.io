@@ -469,24 +469,126 @@
   var LAST = null;
   function rerender(){ if(LAST) render(LAST.root, LAST.m); }
 
+  /* ================================================================ Progress, option 2 (docs/progress-profile.md)
+     Three questions, all visible: how close am I (readiness card) and am I getting better (chart) side by side,
+     what is holding me back (ranked list) full width under them. "What should I do now?" is the course Home's;
+     level, streak, badges, milestones and backup are on Profile; nothing is folded into drawers. */
+
+  // How close am I. r: { value, unit, label, pill: { text, tier }, scale: { goal, goalText, range: [lo, hi], lo, hi },
+  //   explain, facts: [{ big, label, note, href, id }], foot, badge, lockRow, empty, outcome, slot }
+  function readinessCard(r){
+    var html = '<div class="d5-card d5-rd">';
+    html += '<div class="d5-rd-k"><h2 class="d5-lbl" id="d5hReady">How close am I</h2>' + (r.badge || '') + '</div>';
+    if(r.outcome) html += outcomeCard(r.outcome);
+    if(r.lockRow) return html + '<div class="d5-xrow"><span>' + (r.lockRow.text || '<b>' + esc(r.lockRow.label) + '</b>') + ' <span class="d5-xpill">Premium</span></span><span class="d5-spacer"></span><a class="d5-xbtn" href="' + esc(r.lockRow.href) + '">' + esc(r.lockRow.cta || 'Unlock') + '</a></div>' +
+      factsHtml(r.facts) + (r.slot ? '<div id="' + r.slot + '" class="d5-slot"></div>' : '') + '</div>';
+    if(r.value == null) return html + '<p class="d5-lead">' + (r.empty || 'Answer a few questions and this fills in.') + '</p>' + factsHtml(r.facts) + (r.slot ? '<div id="' + r.slot + '" class="d5-slot"></div>' : '') + (r.foot ? '<p class="d5-foot">' + r.foot + '</p>' : '') + '</div>';
+    var v = Math.max(0, Math.min(100, r.value)), sc = r.scale || {}, g = sc.goal;
+    html += '<p class="d5-rd-n"><b>' + v + '</b><span class="d5-rd-u">' + esc(r.unit || '%') + '</span>' + (r.label ? '<span class="d5-rd-l">' + r.label + '</span>' : '') +
+      (r.pill ? '<span class="d5-pill ' + esc(r.pill.tier || 'mid') + '">' + esc(r.pill.text) + '</span>' : '') + '</p>';
+    var bg = sc.zones === false ? 'linear-gradient(90deg,var(--d5-ok-bg) 0 ' + v + '%,var(--surface2) ' + v + '% 100%)' : 'linear-gradient(90deg,var(--d5-low-bg) 0 55%,var(--d5-mid-bg) 55% ' + (g || 80) + '%,var(--d5-ok-bg) ' + (g || 80) + '% 100%)';
+    var rg = sc.range && sc.range[1] > sc.range[0] ? '<i class="d5-rd-range" style="left:' + sc.range[0] + '%;width:' + (sc.range[1] - sc.range[0]) + '%"></i>' : '';
+    html += '<div class="d5-rd-scale" style="background:' + bg + '" role="img" aria-label="' + esc(sc.aria || (v + (r.unit || '%') + (g != null ? '; ' + (sc.goalText || 'goal ' + g) : '') + (sc.range ? '; likely between ' + sc.range[0] + ' and ' + sc.range[1] : ''))) + '">' + rg +
+      (g != null ? '<i class="d5-rd-goal" style="left:' + g + '%"></i>' : '') + '<i class="d5-rd-dot" style="left:' + Math.max(1.5, Math.min(98.5, v)) + '%"></i></div>';
+    html += '<div class="d5-rd-ticks" aria-hidden="true"><span class="l">' + esc(sc.lo || '0%') + '</span>' + (g != null ? '<span class="g" style="left:' + g + '%">' + esc(sc.goalText || g + '%') + '</span>' : '') + '<span class="r">' + esc(sc.hi || '100%') + '</span></div>';
+    if(r.explain) html += '<p class="d5-rd-x">' + r.explain + '</p>';
+    html += factsHtml(r.facts);
+    if(r.slot) html += '<div id="' + r.slot + '" class="d5-slot"></div>';
+    if(r.foot) html += '<p class="d5-foot">' + r.foot + '</p>';
+    return html + '</div>';
+  }
+  function factsHtml(f){
+    if(!f || !f.length) return '';
+    return '<div class="d5-facts">' + f.map(function(x){
+      var inner = '<b>' + x.big + '</b><span>' + x.label + (x.note ? ' <em class="' + (x.tone || '') + '">' + x.note + '</em>' : '') + '</span>';
+      return x.href ? '<a class="d5-fact"' + (x.id ? ' id="' + x.id + '"' : '') + ' href="' + esc(x.href) + '">' + inner + '</a>' : x.button ? '<button type="button" class="d5-fact" data-d5fact="' + esc(x.button) + '">' + inner + '</button>' : '<div class="d5-fact">' + inner + '</div>';
+    }).join('') + '</div>';
+  }
+
+  /* After exam day: one optional question, sent anonymously (worker /outcome) so the estimate can be checked
+     against real results. o: { course, title, choices: [[value, label]], predicted: { value, lo, hi, band }, n } */
+  function outcomeCard(o){
+    var done = null; try{ done = localStorage.getItem('levl_outcome_' + o.course); }catch(e){}
+    if(done) return '';
+    return '<div class="d5-oc" data-d5oc="' + esc(o.course) + '"><p><b>' + esc(o.title || 'How did your exam go?') + '</b> <span class="d5-mut">Optional and anonymous. It is how this estimate gets checked against real results.</span></p>' +
+      '<div class="d5-oc-b">' + o.choices.map(function(c){ return '<button type="button" data-d5ocv="' + esc(c[0]) + '">' + esc(c[1]) + '</button>'; }).join('') + '</div></div>';
+  }
+  function sendOutcome(el, v){
+    var o = LAST && LAST.m && LAST.m.ready && LAST.m.ready.outcome; if(!o) return;
+    try{ localStorage.setItem('levl_outcome_' + o.course, JSON.stringify({ v: v, at: Date.now() })); }catch(e){}
+    var p = o.predicted || {}, body = { course: o.course, result: String(v), predicted: p.value == null ? null : p.value, lo: p.lo == null ? null : p.lo, hi: p.hi == null ? null : p.hi, band: p.band || null, answers: o.n || 0, days: o.days == null ? null : o.days };
+    try{ fetch('https://api.levlprep.com/outcome', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), keepalive: true }).catch(function(){}); }catch(e){} // site-config:API_URL
+    el.innerHTML = '<p><b>Thank you.</b> <span class="d5-mut">That helps make this estimate honest for the next student.</span></p>';
+  }
+
+  // Am I getting better: the chart, then the last few exams as tiles.
+  function trendCard(p){
+    var tr = trend(p), has = (p.weeks && p.weeks.length) || (p.exams && p.exams.length), html = '<div class="d5-card d5-tr"><h2 class="d5-lbl" id="d5hTrend">Am I getting better</h2>';
+    if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p><p class="d5-mut">Each week you answer at least 5 questions adds a point, and every exam lands on the same line.</p>' + '</div>';
+    html += '<p class="d5-lead">' + esc(tr.head || '') + '</p>';
+    var sub = [];
+    if(p.sub) sub.push(p.sub);
+    if(tr.goalAt){
+      var ex = p.examDate && p.examDate.t > Date.now() ? p.examDate.t : null, lead = ex ? Math.round((ex - tr.goalAt.t) / (7 * DAY)) : null;
+      sub.push('At this pace you reach ' + p.goal.pct + '% around ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam.' : lead !== null && lead <= 0 ? ', after your exam date, so there is ground to make up.' : '.'));
+    }
+    if(sub.length) html += '<p class="d5-mut">' + sub.join(' ') + '</p>';
+    html += chart(p, tr, 620, 290, false) + chart(p, tr, 360, 230, true);
+    var key = [];
+    if(p.weeks && p.weeks.length) key.push('<span><i class="d5-k-line"></i>your accuracy each week</span>');
+    if(p.exams && p.exams.length) key.push('<span><i class="d5-k-exam"></i>' + esc(p.examWord || 'exams') + '</span>');
+    if(key.length || p.allHref) html += '<div class="d5-key">' + key.join('') + (p.allHref ? '<span class="d5-spacer"></span><a href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + '</a>' : '') + '</div>';
+    if(p.recent && p.recent.length) html += '<div class="d5-recent">' + p.recent.slice(0, 3).map(function(x){ return '<div class="d5-ex"><b>' + x.big + '</b><span>' + x.sub + '</span></div>'; }).join('') + '</div>';
+    return html + '</div>';
+  }
+
+  /* What is holding me back. f: { note, views: [{ label, badge, rows, locked, empty, foot }] }
+     row: { name, href, cta, pct, word, weak: { name, pct, href }, cost, bar, tier, gain, links: [{ href, label, kind }], off } */
+  var holdSeq = 0;
+  function holdCard(f){
+    var id = 'd5h' + (++holdSeq), views = (f.views || []).filter(Boolean), html = '<div class="d5-card d5-hb"><h2 class="d5-lbl" id="d5hHold">What is holding me back</h2>';
+    html += '<div class="d5-hb-top">';
+    if(views.length > 1) html += '<div class="d5-seg" role="group" aria-label="Group by">' + views.map(function(v, i){
+      return '<button type="button" data-d5view="' + id + '-' + i + '" aria-pressed="' + (i === 0) + '">' + esc(v.label) + (v.badge || '') + '</button>';
+    }).join('') + '</div>';
+    if(f.note) html += '<p class="d5-hb-note">' + f.note + '</p>';
+    html += '</div>';
+    views.forEach(function(v, i){
+      html += '<div class="d5-view" id="' + id + '-' + i + '"' + (i ? ' hidden' : '') + '>' + (v.intro ? '<p class="d5-mut d5-view-i">' + v.intro + '</p>' : '');
+      if(v.locked) html += v.locked;
+      else if(v.html) html += v.html;
+      else if(!v.rows || !v.rows.length) html += '<p class="d5-empty">' + (v.empty || 'Answer a few questions and this fills in.') + '</p>';
+      else html += v.rows.map(holdRow).join('');
+      if(v.foot) html += '<p class="d5-mut d5-view-f">' + v.foot + '</p>';
+      html += '</div>';
+    });
+    return html + '</div>';
+  }
+  function holdRow(r){
+    var sub = [];
+    if(r.off) sub.push(r.sub || 'not started');
+    else {
+      if(r.pct != null) sub.push(r.pct + '% ' + esc(r.word || 'right'));
+      if(r.weak) sub.push('weakest: ' + (r.weak.href ? '<a class="d5-weak" href="' + esc(r.weak.href) + '">' : '<b class="d5-weak">') + esc(r.weak.name) + (r.weak.pct != null ? ' ' + r.weak.pct + '%' : '') + (r.weak.href ? '</a>' : '</b>'));
+      if(r.cost) sub.push(r.cost);
+      if(r.sub) sub.push(r.sub);
+    }
+    var links = (r.links || []).map(function(l){ return l.kind === 'tool' ? '<a class="d5-hb-btn g" href="' + esc(l.href) + '">' + esc(l.label) + '</a>' : '<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'; }).join('');
+    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m"><b class="d5-hr-n">' + esc(r.name) + '</b><span class="d5-hr-s">' + sub.join(' &middot; ') + '</span>' +
+      (r.off || r.bar == null ? '' : '<span class="d5-bar d5-hr-bar"><i class="' + esc(r.tier || '') + '" style="width:' + Math.round(Math.max(0, Math.min(1, r.bar)) * 100) + '%"></i></span>') + '</div>' +
+      '<div class="d5-hr-a">' + (r.gain ? '<span class="d5-gain">' + esc(r.gain) + '</span>' : '') + '<a class="d5-hb-btn ' + (r.off ? 'g' : 'p') + '" href="' + esc(r.href) + '">' + esc(r.cta || 'Practice') + ' &rarr;</a>' + links + '</div></div>';
+  }
+
   /* The whole page, for the courses whose dashboard is drawn by script. */
   function render(root, m){
     if(!root) return;
     LAST = { root: root, m: m };
-    loadPath();
-    var pn = pathNext(), now = pn ? withPath(m.now, pn) : m.now;
-    // A redraw (a sync, another tab, a pass arriving) keeps the drawers the student had open.
-    var open = Array.prototype.map.call(root.querySelectorAll('details.d5-more[open] > summary'), function(x){ return x.textContent; });
-    root.innerHTML = '<div class="d5">' +
-      section(1, 'right now', 'What should I <span>do now?</span>', nowCard(now) + drawers(now.more), null, 'd5-first lap') +
-      section(2, 'progress', 'Am I getting <span>better?</span>', progressCard(m.progress)) +
-      section(3, m.ready.kicker || 'exam day', m.ready.title, readyCard(m.ready)) +
-      section(4, 'focus', 'Where am I <span>losing points?</span>', focusCard(m.focus)) +
-      section(5, 'your record', 'What have I <span>built?</span>', recordCard(m.record)) +
-      footLine(m.foot) + '</div>';
-    if(open.length) Array.prototype.forEach.call(root.querySelectorAll('details.d5-more > summary'), function(x){ if(open.indexOf(x.textContent) > -1) x.parentNode.open = true; });
+    root.innerHTML = '<div class="d5 d5v2">' + (m.top || '') +
+      '<div class="d5-split"><section aria-labelledby="d5hReady">' + readinessCard(m.ready) + '</section><section aria-labelledby="d5hTrend">' + trendCard(m.progress) + '</section></div>' +
+      '<section aria-labelledby="d5hHold">' + holdCard(m.focus) + '</section>' + (m.after || '') + '</div>';
     band(m.band);
     wire(root);
+    if(m.ready && m.ready.onSlot) m.ready.onSlot();
   }
 
   /* The band at the top of the page: its handwritten line becomes the one-sentence status, and the level sits
@@ -499,8 +601,14 @@
     var hand = main.querySelector('.band [data-d5-status]') || main.querySelector('.band .hand');
     // The status was written as a lowercase hand line; as the band's sub line it starts with a capital.
     if(hand && b.status) hand.textContent = hand.hasAttribute('data-d5-status') ? b.status.charAt(0).toUpperCase() + b.status.slice(1) : b.status;
-    // Owner 2026-11-07: the level chip left the band (it crowded the status line); question 5 and the header show it.
+    // Owner 2026-11-07: the level chip left the band (it crowded the status line). Owner 2026-11-13: level and streak
+    // live on Profile now, so the band carries one small link to it under the status.
     var old = main.querySelector('.band .d5-lvl-row'); if(old) old.remove();
+    if(hand && b.level){
+      var row = document.createElement('p'); row.className = 'd5-lvl-row';
+      row.innerHTML = '<a class="d5-pf" href="/profile.html">Level ' + b.level.level + (b.streak ? ' &middot; ' + plural(b.streak, 'day') + ' streak' : '') + ' &middot; Profile &rarr;</a>';
+      hand.parentNode.insertBefore(row, hand.nextSibling);
+    }
     var ctas = main.querySelector('.band .hero-ctas');
     if(ctas && b.level && false){
       var chip = ctas.querySelector('.d5-lvl') || ctas.appendChild(document.createElement('span'));
@@ -526,6 +634,10 @@
     demote();
     if(window.MutationObserver) new MutationObserver(function(){ if(root.querySelector('.d5-more-body h2')) demote(); }).observe(root, { childList: true, subtree: true });
     root.addEventListener('click', function(e){
+      var oc = e.target.closest && e.target.closest('[data-d5ocv]');
+      if(oc){ sendOutcome(oc.closest('[data-d5oc]'), oc.getAttribute('data-d5ocv')); return; }
+      var fb = e.target.closest && e.target.closest('[data-d5fact]');
+      if(fb){ var slot = document.getElementById(fb.getAttribute('data-d5fact')); if(slot){ slot.classList.toggle('open'); if(slot.classList.contains('open')){ var inp = slot.querySelector('input,button'); if(inp) inp.focus(); } } return; }
       // A link to a drawer on this page ("Set one", "See milestones") opens it.
       var a = e.target.closest && e.target.closest('a[href^="#"]');
       if(a){ var t = document.getElementById(a.getAttribute('href').slice(1)); if(t && t.tagName === 'DETAILS') t.open = true; return; }
@@ -546,7 +658,7 @@
   window.addEventListener('storage', function(e){ if(e.key && /_path_v1$/.test(e.key)) { if(!PATH.d) loadPath(); else rerender(); } });
 
   window.LevlDash = {
-    render: render, band: band, wire: wire, section: section, now: nowCard, progress: progressCard, ready: readyCard,
+    render: render, band: band, wire: wire, section: section, readiness: readinessCard, trendCard: trendCard, hold: holdCard, now: nowCard, progress: progressCard, ready: readyCard,
     focus: focusCard, record: recordCard, foot: footLine, drawer: drawer, drawers: drawers, icon: icon,
     rerender: rerender, pathNext: pathNext, dailyWeeks: dailyWeeks, trend: trend, esc: esc, plural: plural, shortDate: shortDate, weekday: weekday, startOfDay: startOfDay
   };

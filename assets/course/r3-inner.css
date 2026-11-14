@@ -263,3 +263,4 @@ body:has(.r3-exams > #quizScreen[style*="grid"]) .r3-focusbar{display:block;posi
 .r3-units-line{margin:18px 0 0;font:600 15px/1.7 var(--font-ui);color:var(--muted)}
 .r3-units-line b{color:var(--ink)}
 .r3-units-line a{color:var(--accent-text,var(--accent));font-weight:800}
+.r3-exams .r3-record-row:has(> :only-child){grid-template-columns:1fr}

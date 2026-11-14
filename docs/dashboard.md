@@ -1,5 +1,8 @@
 # Course dashboards: five questions (status file)
 
+**Superseded 2026-11-13 by docs/progress-profile.md** (Progress option 2: three questions, all visible; level,
+streak, badges and backup moved to Profile). Kept for the history of design F and the adapters.
+
 Approved 2026-10-26: design F ("five questions, with personality") on the dashboard canvas
 (https://claude.ai/artifact/3sR679KQ1mizaV8Sg4TwD2, bottom row), after Olivier asked for research on what students
 want, then for options, then for something "not as busy", "intentional", and finally with more soul. "Apply it now to

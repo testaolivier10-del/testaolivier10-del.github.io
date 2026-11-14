@@ -412,6 +412,7 @@
   }
 
   // Dots for the settings menu and the phone menu (the r4 mockups' header).
+  var PROFILE_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
   var DOTS_ICON =
     '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
       '<circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg>';
@@ -423,6 +424,7 @@
     '@media (min-width:641px){' +
       '.chrome-settings{display:none;position:absolute;right:0;top:calc(100% + 10px);z-index:50;flex-direction:column;align-items:stretch;gap:2px;min-width:230px;padding:8px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-pop)}' +
       '.chrome-settings.open{display:flex}' +
+      '.chrome-settings a.chrome-profile{text-decoration:none;display:flex;align-items:center}' +
       '.chrome-settings .theme-toggle{width:100%;height:44px;max-width:none;border-radius:10px;box-shadow:none;background:none;justify-content:flex-start;gap:12px;padding:0 12px;font:800 14.5px var(--font-ui);color:var(--ink)}' +
       '.chrome-settings .theme-toggle::after{display:none}' +
       '.chrome-settings .theme-toggle:hover,.chrome-settings .theme-toggle:focus-visible{background:var(--hover-tint);color:var(--ink)}' +
@@ -446,8 +448,9 @@
      and theme sit behind the settings button. */
   function headerHtml(o){
     var link = function(cls, id, title, inner, hidden){
+      // Level and streak live on Profile (owner 2026-11-13, docs/progress-profile.md).
       return o.progressHref
-        ? '<a href="' + o.progressHref + '" class="' + cls + '" id="' + id + '" title="' + title + '"' + (hidden ? ' hidden' : '') + '>' + inner + '</a>'
+        ? '<a href="/profile.html" class="' + cls + '" id="' + id + '" title="' + title + '"' + (hidden ? ' hidden' : '') + '>' + inner + '</a>'
         : '<span class="' + cls + '" id="' + id + '" title="' + title + '"' + (hidden ? ' hidden' : '') + '>' + inner + '</span>';
     };
     return '<div class="site-header__inner">' +
@@ -472,6 +475,8 @@
             '<span id="accountSlot"></span>' +
             '<button type="button" class="theme-toggle chrome-set-btn" id="settingsBtn" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu" aria-label="Settings: dark mode and sound" title="Settings">' + DOTS_ICON + '</button>' +
             '<div class="chrome-settings" id="settingsMenu" role="group" aria-label="Settings">' +
+              // Profile for everyone, signed in or not: progress is kept in the browser either way.
+              '<a class="theme-toggle chrome-profile" href="/profile.html">' + PROFILE_ICON + '<span class="chrome-menu__lbl">Profile</span></a>' +
               (window.LevlSound ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>' : '') +
               '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" title="Dark mode">' + THEME_ICONS + '<span class="chrome-menu__lbl">Dark mode</span></button>' +
             '</div>' +

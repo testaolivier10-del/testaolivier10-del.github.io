@@ -72,6 +72,7 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../assets/course/hub.css">
 </head>
 <body>
 <header id="site-header"></header>
@@ -89,6 +90,9 @@
   <div>
     <!-- The queue: what's due today, what's held back, what's coming. -->
     <div id="reviewBody"></div>
+    <!-- Daily Rounds and review debt (game-panel.js), moved here from Progress (docs/progress-profile.md). -->
+    <style>.oc-rounds{margin:18px 0 0;display:grid;gap:12px}.oc-rounds:has(#gameRounds:empty):has(#gameDebt:empty){display:none}main:has(#reviewSession:not([hidden])) .oc-rounds,main:has(#reviewDone:not([hidden])) .oc-rounds{display:none}</style>
+    <section class="oc-rounds" aria-label="Daily Rounds and review debt"><div id="gameRounds"></div><div id="gameDebt"></div></section>
 
     <!-- A running review session; the loop itself is session-runner.js. -->
     <div id="reviewSession" class="practice-view cx-session" hidden>
@@ -130,6 +134,8 @@
 <script src="assets/periodic-table.js" defer></script>
 <script src="../assets/course/study.js" defer></script>
 <script src="assets/review-page.js" defer></script>
+<script src="../assets/course/hub.js" defer></script>
+<script src="assets/game-panel.js" defer></script>
 <div class="xshell">
   <footer>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>

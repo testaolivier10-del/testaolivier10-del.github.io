@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<script>if(window.top!==window.self){document.documentElement.style.display="none";try{window.top.location.replace(window.self.location.href);}catch(e){}}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your profile | LevlPrep</title>
+<meta name="description" content="Your LevlPrep profile: level, streak, daily goal, badges and certificates across every course, and your data.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://levlprep.com/profile.html">
+<meta property="og:title" content="Your profile | LevlPrep">
+<meta property="og:description" content="Your level, streak, badges and certificates across every course.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/profile.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
+<style>
+  /* Profile (assets/profile.js, docs/progress-profile.md): one column, the light channel look of account.html. */
+  .pf{max-width:980px;margin:28px auto 56px;display:grid;gap:18px;}
+  .pf-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 18px 40px -34px rgba(11,26,51,.45);}
+  .pf-card h2{font:900 21px var(--font-display,var(--font-ui));letter-spacing:-.02em;margin:0 0 14px;color:var(--ink);}
+  .pf-mut{color:var(--muted);font:600 14.5px/1.5 var(--font-ui);margin:0;}
+  .pf-mut a{color:var(--accent-text,var(--accent));font-weight:800;}
+  .pf-who{display:flex;align-items:center;gap:16px;}
+  .pf-av{width:64px;height:64px;border-radius:50%;background:#0B1A33;color:#2EE6D6;display:grid;place-items:center;font:900 26px var(--font-ui);flex:none;}
+  .pf-who h1{font:900 clamp(30px,4vw,40px)/1 var(--font-display,var(--font-ui));letter-spacing:-.04em;margin:0 0 6px;color:var(--ink);}
+  .pf-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:18px;}
+  .pf-st{background:var(--surface2);border-radius:14px;padding:12px 14px;}
+  .pf-st b{display:block;font:900 20px var(--font-ui);color:var(--ink);}
+  .pf-st span{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+  .pf-xp{display:block;height:6px;border-radius:99px;background:var(--track,var(--line));margin-top:8px;overflow:hidden;}
+  .pf-xp i{display:block;height:100%;border-radius:99px;background:var(--accent);}
+  .pf-courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+  .pf-co{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px;text-decoration:none;color:var(--ink);}
+  .pf-co:hover{border-color:var(--accent);}
+  .pf-cv{width:56px;height:56px;border-radius:12px;object-fit:cover;object-position:right center;flex:none;background:var(--panel,#0B1A33);}
+  .pf-co b{display:block;font:900 15.5px var(--font-ui);}
+  .pf-co small{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+  .pf-co em{display:block;font:800 13px var(--font-ui);font-style:normal;color:var(--accent-text,var(--accent));margin-top:4px;}
+  .pf-cal{display:grid;grid-template-rows:repeat(7,16px);grid-auto-flow:column;grid-auto-columns:16px;gap:4px;overflow-x:auto;padding-bottom:2px;}
+  .pf-d{border-radius:4px;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);}
+  .pf-d.off{visibility:hidden;}
+  .pf-d.a{background:#9FE3D6;box-shadow:none;}.pf-d.b{background:#2BB3A0;box-shadow:none;}.pf-d.c{background:#0B6B62;box-shadow:none;}
+  .pf-d.t{outline:2px solid var(--ink);outline-offset:1px;}
+  .pf-cal-k{margin-top:10px;font-size:13.5px;}
+  .pf-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line);}
+  .pf-row:first-of-type{margin-top:14px;}
+  .pf-row>div{flex:1;min-width:0;}
+  .pf-row b{display:block;font:800 15px var(--font-ui);color:var(--ink);}
+  .pf-row span{display:block;font:600 13.5px/1.45 var(--font-ui);color:var(--muted);margin-top:2px;}
+  .pf-row .pf-inl{display:flex;align-items:center;gap:10px;margin:0;flex:none;}
+  .pf-row select{font:700 14px var(--font-ui);padding:9px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);}
+  .pf .pf-link{font:800 14px var(--font-ui);color:var(--accent-text,var(--accent));text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:0;cursor:pointer;}
+  .pf-btn{font:800 14px var(--font-ui);padding:10px 14px;border-radius:12px;border:0;background:#0B1A33;color:#fff;cursor:pointer;min-height:42px;}
+  .pf-badges{list-style:none;padding:0;margin:0 0 6px;display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px;}
+  .pf-badges li{text-align:center;padding:12px 8px;border-radius:16px;background:var(--surface2);}
+  .pf-badges li.off{opacity:.5;}
+  .pf-med{width:46px;height:46px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font:900 15px var(--font-ui);color:#fff;background:#0B6B62;}
+  .pf-badges li.off .pf-med{background:#94A3B8;}
+  .pf-badges b{display:block;font:800 13px var(--font-ui);color:var(--ink);}
+  .pf-badges small{display:block;font:700 11.5px var(--font-ui);color:var(--muted);}
+  .pf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+  .pf-ms:empty{display:none;}
+  .pf-grp+.pf-grp{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);}
+  .pf-grp h3{display:flex;align-items:center;gap:10px;font:900 17px var(--font-ui);margin:0 0 12px;color:var(--ink);}
+  .pf-grp h3 img{width:32px;height:32px;border-radius:8px;object-fit:cover;object-position:right center;background:var(--panel,#0B1A33);}
+  .pf-ms h2,.pf-oc h2,.pf-oc h3{font-size:15px !important;margin-top:4px;}
+  .pf-ms,.pf-oc>div:not(:empty){margin-top:16px;}
+  @media (max-width:640px){.pf-card{padding:18px;}.pf-row{flex-wrap:wrap;}.pf-cal{grid-template-rows:repeat(7,12px);grid-auto-columns:12px;gap:3px;}}
+</style>
+</head>
+<body class="sp-page">
+<!-- Like privacy.html, this page draws its own header instead of calling
+     LevlChrome.render, so it carries its own skip link too. -->
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header" data-site-header>
+  <div class="site-header__inner">
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
+  </div>
+</header>
+
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <div class="pf" id="pfRoot"><noscript><p>Your profile is worked out in your browser from your saved progress, so it needs JavaScript.</p></noscript></div>
+</div>
+<div class="xshell narrow">
+  <footer>
+    <p class="tm-note">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="teach/">Teachers</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+
+<script src="assets/errors.js" defer></script>
+<script src="assets/account.js" defer></script>
+<script src="assets/hub-progress.js" defer></script>
+<script src="assets/announce.js" defer></script>
+<script src="assets/premium.js" defer></script>
+<script src="assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="assets/milestones.css">
+<script src="assets/milestones.js" defer></script>
+<script src="assets/progress-backup.js" defer></script>
+<script src="assets/profile.js" defer></script>
+</body>
+</html>
