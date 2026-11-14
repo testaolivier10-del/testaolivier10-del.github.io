@@ -62,14 +62,14 @@
 
   // ---------------------------------------------------------------- Progress option 2 (docs/progress-profile.md)
   var ov = M.overall();
-  var facts = [{ big: examIso ? D.shortDate(examT) : 'Set date', label: examIso ? 'exam day, ' + plural(daysLeft, 'day') + ' left' : 'your exam day, for a countdown', button: 'examDateCard' }];
-  if(ov) facts.push({ big: pct(ov.value) + '%', label: 'strength across the ' + plural(ov.touched, 'concept') + ' you have tried' });
-  if(daysLeft !== null && notSolidAll) facts.push({ big: Math.ceil(notSolidAll / Math.max(1, daysLeft)) + ' a day', label: 'concepts to Solid covers the rest' });
+  var facts = [{ big: examIso ? plural(daysLeft, 'day') : 'Set date', label: examIso ? 'to your exam, ' + D.shortDate(examT) : 'exam day', button: 'examDateCard' }];
+  if(ov) facts.push({ big: pct(ov.value) + '%', label: 'strength, ' + plural(ov.touched, 'concept') + ' tried' });
+  if(daysLeft !== null && notSolidAll) facts.push({ big: Math.ceil(notSolidAll / Math.max(1, daysLeft)) + ' a day', label: 'concepts to Solid' });
   var ready = { value: isNew ? null : coverage, unit: '%', label: 'of the concepts at Solid', facts: facts, slot: 'examDateCard',
     empty: 'Every concept you bring to Solid fills this in. Start with a lesson or a few practice questions.',
     scale: { zones: false, lo: '0%', hi: '100%' },
-    explain: '<b>' + coverage + '%</b> of the course&rsquo;s ' + total + ' concepts are at Solid or better. Strength comes from the concepts each question tests and fades if you stop practising; Solid starts at 70%.',
-    foot: 'Every concept counts once. Not a grade prediction.' };
+    explain: total + ' concepts in the course. Solid starts at 70% strength, which fades without practice.',
+    foot: 'Not a grade prediction.' };
   ready.onSlot = function(){
     if(ED) ED.mount(document.getElementById('examDateCard'), {
       subject: 'ochem', links: { review: 'review.html', exams: 'exams.html' },
@@ -81,7 +81,7 @@
   };
   var progress = { weeks: weeks, exams: hist.map(function(e){ return { t: e.ts, pct: Math.round(e.right / e.total * 100) }; }), examWord: 'exams', firstExamWord: 'first exam',
     examDate: examT ? { t: examT } : null, allHref: hist.length ? 'exams.html' : null, allText: 'Exams',
-    recent: hist.slice(-3).reverse().map(function(e){ return { big: Math.round(e.right / e.total * 100) + '%', sub: D.shortDate(e.ts) + ' &middot; ' + e.total + ' questions' }; }),
+    recent: hist.slice(-3).reverse().map(function(e){ return { big: Math.round(e.right / e.total * 100) + '%', sub: D.shortDate(e.ts) }; }),
     empty: isNew ? 'Your line starts with your first answers.' : 'Your weekly line starts now: each week with 5 or more answers adds a point.' };
 
   function tierOf(v){ return v >= SOLID ? 'ok' : v >= 0.45 ? 'mid' : ''; }
@@ -89,7 +89,7 @@
   var crows = cstarted.slice().sort(function(a, b){ return b.notSolid - a.notSolid; }).map(function(c){
     var wk = M.weakest(50, 1).filter(function(p){ var lt = CN.lessonTopicFor(p.id); return lt && chapterOf[lt.id] === c.id; })[0];
     var gain = Math.round(c.notSolid / total * 100);
-    return { name: c.n + '. ' + c.title, pct: pct(c.strength), word: 'strength', weak: wk ? { name: wk.concept.title, pct: pct(wk.strength), href: 'practice.html?concept=' + wk.id } : null,
+    return { name: c.n + '. ' + c.title, pct: pct(c.strength), word: '', weak: wk ? { name: wk.concept.title, pct: pct(wk.strength), href: 'practice.html?concept=' + wk.id } : null,
       cost: !c.concepts ? 'its concepts are taught in other chapters' : c.notSolid ? plural(c.notSolid, 'concept') + ' not yet Solid' : 'all Solid', bar: c.strength || 0, tier: tierOf(c.strength || 0),
       gain: gain >= 1 ? '+' + gain + '%' : '', href: c.practice, cta: 'Practice chapter ' + c.n };
   });
@@ -100,7 +100,7 @@
   }
   var conceptRows = M.weakest(12, 2).map(function(p){
     var lt = CN.lessonTopicFor(p.id);
-    return { name: p.concept.title, pct: pct(p.strength), word: 'strength', cost: p.correct + '/' + p.attempts + ' right' + (p.isDue ? ' &middot; due now' : '') + (lt ? ' &middot; taught in ' + esc(lt.title) : ''),
+    return { name: p.concept.title, pct: pct(p.strength), word: '', cost: p.correct + '/' + p.attempts + ' right' + (p.isDue ? ' &middot; due now' : '') + (lt ? ' &middot; taught in ' + esc(lt.title) : ''),
       bar: p.strength || 0, tier: tierOf(p.strength || 0), href: 'practice.html?concept=' + p.id, cta: 'Drill', links: lt && lt.href ? [{ href: lt.href, label: 'Lesson' }] : [] };
   });
   var pill = locked ? ' <span class="premium-badge">Premium</span>' : '';
@@ -108,7 +108,7 @@
   // hides them and draws what Premium adds into #ocPremium when locked).
   var gapsView = { label: 'Gaps underneath', badge: pill, html: '<div id="leechAlerts"></div><div id="dependencyAlerts"></div><p class="d5-empty" id="d5OcNoGaps" hidden>Nothing benched, and no gap found underneath a weak concept.</p><div id="recRow"></div>' + (locked ? '<div id="ocPremium"></div>' : '') };
   var famView = { label: 'Concept families', badge: pill, html: '<div id="familyStats"></div>' + (locked ? '<p class="d5-empty">Strength by concept family comes with Premium.</p>' : '') };
-  var focus = { note: cstarted.length ? 'Ranked by how many concepts in each chapter are not Solid yet &middot; <b class="d5-gain">+</b> is what bringing it to Solid adds to the number above' : '',
+  var focus = { note: cstarted.length ? 'Costliest first &middot; <b class="d5-gain">+</b> = gained at Solid' : '',
     views: [{ label: 'Chapters', rows: cstarted.length ? crows : [], empty: 'Answer a few questions and your chapters line up here, the most expensive first.' },
       { label: 'Weakest concepts', rows: conceptRows, empty: 'Concepts you have tried twice or more show up here, weakest first.' }, gapsView, famView] };
 

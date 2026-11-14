@@ -499,7 +499,7 @@
   }
   function factsHtml(f){
     if(!f || !f.length) return '';
-    return '<div class="d5-facts">' + f.map(function(x){
+    return '<div class="d5-facts n' + f.length + '">' + f.map(function(x){
       var inner = '<b>' + x.big + '</b><span>' + x.label + (x.note ? ' <em class="' + (x.tone || '') + '">' + x.note + '</em>' : '') + '</span>';
       return x.href ? '<a class="d5-fact"' + (x.id ? ' id="' + x.id + '"' : '') + ' href="' + esc(x.href) + '">' + inner + '</a>' : x.button ? '<button type="button" class="d5-fact" data-d5fact="' + esc(x.button) + '">' + inner + '</button>' : '<div class="d5-fact">' + inner + '</div>';
     }).join('') + '</div>';
@@ -521,24 +521,18 @@
     el.innerHTML = '<p><b>Thank you.</b> <span class="d5-mut">That helps make this estimate honest for the next student.</span></p>';
   }
 
-  // Am I getting better: the chart, then the last few exams as tiles.
+  // Am I getting better: one line, the chart (it labels itself), the last few exams in one row.
   function trendCard(p){
-    var tr = trend(p), has = (p.weeks && p.weeks.length) || (p.exams && p.exams.length), html = '<div class="d5-card d5-tr"><h2 class="d5-lbl" id="d5hTrend">Am I getting better</h2>';
-    if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p><p class="d5-mut">Each week you answer at least 5 questions adds a point, and every exam lands on the same line.</p>' + '</div>';
-    html += '<p class="d5-lead">' + esc(tr.head || '') + '</p>';
-    var sub = [];
-    if(p.sub) sub.push(p.sub);
+    var tr = trend(p), has = (p.weeks && p.weeks.length) || (p.exams && p.exams.length), html = '<div class="d5-card d5-tr"><div class="d5-tr-k"><h2 class="d5-lbl" id="d5hTrend">Am I getting better</h2>' +
+      (p.allHref ? '<a class="d5-tr-all" href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + ' &rarr;</a>' : '') + '</div>';
+    if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p></div>';
+    var line = '<b>' + esc(tr.head || '') + '</b>';
     if(tr.goalAt){
       var ex = p.examDate && p.examDate.t > Date.now() ? p.examDate.t : null, lead = ex ? Math.round((ex - tr.goalAt.t) / (7 * DAY)) : null;
-      sub.push('At this pace you reach ' + p.goal.pct + '% around ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam.' : lead !== null && lead <= 0 ? ', after your exam date, so there is ground to make up.' : '.'));
+      line += ' <span class="d5-mut">' + p.goal.pct + '% by ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam' : lead !== null && lead <= 0 ? ', after your exam date' : '') + '</span>';
     }
-    if(sub.length) html += '<p class="d5-mut">' + sub.join(' ') + '</p>';
-    html += chart(p, tr, 620, 290, false) + chart(p, tr, 360, 230, true);
-    var key = [];
-    if(p.weeks && p.weeks.length) key.push('<span><i class="d5-k-line"></i>your accuracy each week</span>');
-    if(p.exams && p.exams.length) key.push('<span><i class="d5-k-exam"></i>' + esc(p.examWord || 'exams') + '</span>');
-    if(key.length || p.allHref) html += '<div class="d5-key">' + key.join('') + (p.allHref ? '<span class="d5-spacer"></span><a href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + '</a>' : '') + '</div>';
-    if(p.recent && p.recent.length) html += '<div class="d5-recent">' + p.recent.slice(0, 3).map(function(x){ return '<div class="d5-ex"><b>' + x.big + '</b><span>' + x.sub + '</span></div>'; }).join('') + '</div>';
+    html += '<p class="d5-tr-l">' + line + '</p>' + chart(p, tr, 620, 290, false) + chart(p, tr, 360, 230, true);
+    if(p.recent && p.recent.length) html += '<p class="d5-recent"><span class="d5-mut">' + esc(p.recentLabel || 'Last exams') + '</span>' + p.recent.slice(0, 3).map(function(x){ return '<span class="d5-ex"><b>' + x.big + '</b> ' + x.sub + '</span>'; }).join('') + '</p>';
     return html + '</div>';
   }
 
@@ -568,15 +562,16 @@
     var sub = [];
     if(r.off) sub.push(r.sub || 'not started');
     else {
-      if(r.pct != null) sub.push(r.pct + '% ' + esc(r.word || 'right'));
-      if(r.weak) sub.push('weakest: ' + (r.weak.href ? '<a class="d5-weak" href="' + esc(r.weak.href) + '">' : '<b class="d5-weak">') + esc(r.weak.name) + (r.weak.pct != null ? ' ' + r.weak.pct + '%' : '') + (r.weak.href ? '</a>' : '</b>'));
+      if(r.weak) sub.push('Weakest: ' + (r.weak.href ? '<a class="d5-weak" href="' + esc(r.weak.href) + '">' : '<b class="d5-weak">') + esc(r.weak.name) + (r.weak.pct != null ? ' ' + r.weak.pct + '%' : '') + (r.weak.href ? '</a>' : '</b>'));
       if(r.cost) sub.push(r.cost);
       if(r.sub) sub.push(r.sub);
     }
-    var links = (r.links || []).map(function(l){ return l.kind === 'tool' ? '<a class="d5-hb-btn g" href="' + esc(l.href) + '">' + esc(l.label) + '</a>' : '<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'; }).join('');
-    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m"><b class="d5-hr-n">' + esc(r.name) + '</b><span class="d5-hr-s">' + sub.join(' &middot; ') + '</span>' +
-      (r.off || r.bar == null ? '' : '<span class="d5-bar d5-hr-bar"><i class="' + esc(r.tier || '') + '" style="width:' + Math.round(Math.max(0, Math.min(1, r.bar)) * 100) + '%"></i></span>') + '</div>' +
-      '<div class="d5-hr-a">' + (r.gain ? '<span class="d5-gain">' + esc(r.gain) + '</span>' : '') + '<a class="d5-hb-btn ' + (r.off ? 'g' : 'p') + '" href="' + esc(r.href) + '">' + esc(r.cta || 'Practice') + ' &rarr;</a>' + links + '</div></div>';
+    (r.links || []).forEach(function(l){ sub.push('<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'); });
+    var num = r.off || r.pct == null ? '' : '<span class="d5-hr-p"><b>' + r.pct + '%</b>' + (r.word && r.word !== 'right' ? ' ' + esc(r.word) : '') + '</span>';
+    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m"><div class="d5-hr-t"><b class="d5-hr-n">' + esc(r.name) + '</b>' + num + '</div>' +
+      (r.off || r.bar == null ? '' : '<span class="d5-bar d5-hr-bar"><i class="' + esc(r.tier || '') + '" style="width:' + Math.round(Math.max(0, Math.min(1, r.bar)) * 100) + '%"></i></span>') +
+      (sub.length ? '<span class="d5-hr-s">' + sub.join(' &middot; ') + '</span>' : '') + '</div>' +
+      '<div class="d5-hr-a">' + (r.gain ? '<span class="d5-gain" title="what this adds to the number above">' + esc(r.gain) + '</span>' : '') + '<a class="d5-hb-btn ' + (r.off ? 'g' : 'p') + '" href="' + esc(r.href) + '">' + esc(r.cta || 'Practice') + '</a></div></div>';
   }
 
   /* The whole page, for the courses whose dashboard is drawn by script. */

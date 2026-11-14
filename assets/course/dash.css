@@ -302,3 +302,31 @@
   .d5-recent{grid-template-columns:1fr 1fr 1fr;gap:6px;}
 }
 :root[data-theme="dark"] .d5 .premium-badge{background:rgba(245,176,74,.16);color:#F5B04A;}
+
+/* Simpler Progress (owner 2026-11-14: "too many things visually"): one button a row, links folded into the grey
+   line, the percent beside the name, one line over the chart, recent exams in one row. Same information. */
+.d5v2 .d5-rd-x{font-size:15px;margin-top:10px;}
+.d5v2 .d5-foot{font-size:12.5px;line-height:1.5;margin-top:12px;color:var(--muted);}
+.d5v2 .d5-facts{gap:8px;margin-top:14px;}
+.d5v2 .d5-fact{padding:10px 12px;}
+.d5v2 .d5-fact b{font-size:17px;}
+.d5-tr-k{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.d5 .d5-tr-all{font:800 13.5px var(--font-ui);color:var(--accent-text,var(--accent));text-decoration:none;}
+.d5 .d5-tr-all:hover{text-decoration:underline;}
+.d5-tr-l{margin:2px 0 6px;font:600 15px/1.45 var(--font-ui);color:var(--ink);}
+.d5-tr-l .d5-mut{font-weight:600;}
+.d5v2 .d5-recent{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:10px 0 0;font:600 13.5px var(--font-ui);color:var(--muted);}
+.d5v2 .d5-ex{border:0;padding:0;display:inline;}
+.d5v2 .d5-ex b{display:inline;font:900 15px var(--font-ui);color:var(--ink);}
+.d5-hr-t{display:flex;align-items:baseline;gap:12px;justify-content:space-between;max-width:640px;}
+.d5-hr-p{font:700 13px var(--font-ui);color:var(--muted);white-space:nowrap;}
+.d5-hr-p b{font:900 15px var(--font-ui);color:var(--ink);}
+.d5v2 .d5-hr{padding:12px 0;}
+.d5v2 .d5-hr-bar{margin-top:6px;}
+.d5v2 .d5-hr-s{margin-top:6px;font-size:13px;}
+.d5v2 .d5-hr-s .d5-hb-l{font:700 13px var(--font-ui);color:var(--accent-text,var(--accent));}
+.d5v2 .d5-hb-btn{min-height:38px;padding:8px 14px;font-size:13.5px;}
+.d5v2 .d5-hb-note{font-size:12.5px;}
+@media (max-width:640px){.d5-hr-t{max-width:none;}}
+.d5v2 .d5-hr-t,.d5v2 .d5-hr-bar{max-width:none;}
+.d5v2 .d5-facts.n4{grid-template-columns:1fr 1fr;}

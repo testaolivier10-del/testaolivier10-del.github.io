@@ -171,13 +171,12 @@
 
     // ---------------------------------------------------------------- how close am I
     var GOALT = GOAL + '%, on track';
-    var examFact = { big: examIso ? D.shortDate(examT) : 'Set date', label: examIso ? 'exam day, ' + plural(daysLeft, 'day') + ' left' : 'your exam day, for a countdown', button: 'd5ExamCard' };
+    var examFact = { big: examIso ? plural(daysLeft, 'day') : 'Set date', label: examIso ? 'to your exam, ' + D.shortDate(examT) : 'exam day', button: 'd5ExamCard' };
     var facts = [examFact];
-    if(pace) facts.push({ big: pace + ' s', label: 'a question on full exams', note: 'of ' + EXAM_SECONDS_PER_Q + ', ' + (pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'on pace' : pace <= EXAM_SECONDS_PER_Q ? 'tight' : 'too slow'), tone: pace <= EXAM_SECONDS_PER_Q ? 'ok' : 'warn' });
-    if(history.length){ var bestE = Math.max.apply(null, history.map(function(x){ return Math.round(x.score / x.total * 100); })); facts.push({ big: bestE + '%', label: 'best full exam, of ' + history.length, href: 'exams.html' }); }
-    else facts.push({ big: '100', label: 'questions in a full timed exam', href: 'exams.html' });
-    var ready = { badge: G.badge(), facts: facts, slot: 'd5ExamCard',
-      foot: 'From your own practice answers: not real NREMT results, and not a chance of passing.' };
+    if(pace) facts.push({ big: pace + ' s', label: 'a question, ' + (pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'on pace' : pace <= EXAM_SECONDS_PER_Q ? 'tight' : 'too slow') + ' (' + EXAM_SECONDS_PER_Q + ' s)' });
+    if(history.length){ var bestE = Math.max.apply(null, history.map(function(x){ return Math.round(x.score / x.total * 100); })); facts.push({ big: bestE + '%', label: 'best of ' + plural(history.length, 'exam'), href: 'exams.html' }); }
+    else facts.push({ big: 'Full exam', label: 'take one', href: 'exams.html' });
+    var ready = { badge: G.badge(), facts: facts, slot: 'd5ExamCard', foot: 'From your practice answers. Not a chance of passing.' };
     if(!canReady){
       ready.lockRow = { text: '<b>Readiness estimate</b>: your expected score on the real exam, by domain', href: '../premium.html#nremt' };
     } else if(!est || est.value == null){
@@ -188,8 +187,8 @@
       ready.value = v; ready.unit = '%';
       ready.pill = v >= GOAL ? { text: 'On track', tier: 'good' } : v >= GOAL - 15 ? { text: 'Within reach', tier: 'mid' } : { text: 'Needs more practice', tier: 'low' };
       ready.scale = { goal: GOAL, goalText: GOALT, range: [est.lo, est.hi], lo: '0%', hi: '100%' };
-      ready.explain = 'Your expected score on a full exam today, likely <b>' + est.lo + '% to ' + est.hi + '%</b>. From all ' + Number(est.n).toLocaleString() + ' of your answers: harder questions count more, recent ones most, and each exam domain by its share of the real exam. On track is <b>' + GOAL + '%</b>.' +
-        (est.n < 60 ? ' With this few answers the range is wide; it narrows as you practice.' : '');
+      ready.explain = 'Expected score on a full exam today: likely <b>' + est.lo + '&ndash;' + est.hi + '%</b>.' + (est.n < 60 ? ' The range narrows as you practice.' : '');
+      ready.foot = 'From your ' + Number(est.n).toLocaleString() + ' answers, harder and recent ones counting more, each domain by its share of the exam. Not a chance of passing.';
       if(pastDays !== null && pastDays <= 120) ready.outcome = { course: 'nremt', title: 'How did your NREMT exam go?', choices: [['pass', 'I passed'], ['fail', 'I did not pass'], ['later', 'Not taken yet']], predicted: { value: v, lo: est.lo, hi: est.hi }, n: est.n, days: pastDays };
     }
     if(isNew && canReady){ ready.value = null; ready.empty = 'Answer questions in any mode and your expected exam score shows up here.'; }
@@ -211,7 +210,7 @@
       examWord: 'full exams', firstExamWord: 'first full exam',
       goal: { pct: GOAL, label: GOAL + '%, on track', key: 'on track: 80% on a full exam' },
       examDate: examT ? { t: examT } : null, allHref: history.length ? 'exams.html' : null, allText: 'Exams',
-      recent: history.slice(-3).reverse().map(function(x){ return { big: Math.round(x.score / x.total * 100) + '%', sub: fmtD(x.date) + ' &middot; ' + x.total + ' questions' + (x.timeMs ? ', ' + Math.round(x.timeMs / 60000) + ' min' : '') }; }),
+      recent: history.slice(-3).reverse().map(function(x){ return { big: Math.round(x.score / x.total * 100) + '%', sub: fmtD(x.date) }; }),
       empty: overallPct === null ? 'Your line starts with your first answers.' : 'So far: ' + overallPct + '% on ' + plural(allTotal, 'answer') + '. Your weekly line starts now.'
     };
 
@@ -219,7 +218,7 @@
     var trows = started.slice().sort(function(a, b){ return b.miss - a.miss; }).map(function(r){
       var tool = DOMAIN_TOOL[r.d], n = NOTES[r.d], g = canReady && est ? gainFor(r.d) : 0;
       var links = []; if(tool) links.push({ href: tool[0], label: tool[1], kind: 'tool' }); if(n) links.push({ href: notesHref(n), label: 'Notes' });
-      return { name: r.d, pct: Math.round(r.acc * 100), word: 'right', weak: weakTopic(r.d), cost: r.miss + ' missed of ' + r.total, bar: r.acc, tier: tierOf(r.acc),
+      return { name: r.d, pct: Math.round(r.acc * 100), word: 'right', weak: weakTopic(r.d), cost: r.miss + ' of ' + r.total + ' missed', bar: r.acc, tier: tierOf(r.acc),
         gain: g >= 1 ? '+' + Math.round(g) : '', href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Practice ' + (SHORT[r.d] || r.d), links: links };
     }).concat(topicRows.filter(function(r){ return !r.total; }).map(function(r){
       return { name: r.d, off: true, sub: 'not started', href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Start' };
@@ -227,7 +226,7 @@
     var domView = { label: 'Exam domains', badge: G.badge() ? ' <span class="premium-badge">Premium</span>' : '' };
     if(!canReady) domView.locked = '<p class="d5-empty">Your expected score in each of the five 2025 exam domains, weighted by its share of the exam, comes with Premium.</p>';
     else {
-      domView.intro = 'The five domains of the 2025 EMT exam. Expected score is what the readiness estimate predicts there; right is what you have answered so far.';
+      domView.intro = 'The five 2025 exam domains, by expected score.';
       domView.rows = EXAM_DOMAINS.map(function(x){
         var s = examDomainStats[x.d], a = est && est.areas[x.d], acc = s && s.total ? s.correct / s.total : null, n = NOTES[x.d];
         return { x: x, acc: acc, a: a, row: { name: x.d, pct: a ? a.pct : null, word: 'expected', sub: (acc !== null ? Math.round(acc * 100) + '% right of ' + s.total + ' &middot; ' : '') + x.band + ' of the exam', bar: a ? a.pct / 100 : 0, tier: a ? tierOf(a.pct / 100) : '',
@@ -236,7 +235,7 @@
       if(!est) domView.rows = [];
       domView.empty = 'Answer questions in any mode to see your expected score in each exam domain.';
     }
-    var focus = { note: started.length ? 'Ranked by how many questions each area costs you' + (canReady && est ? ' &middot; <b class="d5-gain">+</b> is what bringing it to 80% adds to your readiness' : '') : '',
+    var focus = { note: started.length ? 'Costliest first' + (canReady && est ? ' &middot; <b class="d5-gain">+</b> = readiness gained at 80% right' : '') : '',
       views: [{ label: 'Topic areas', rows: started.length ? trows : [], empty: 'Answer a few questions and your six topic areas line up here, the most expensive first.' }, domView] };
 
     var status = isNew ? 'start anywhere, this page fills in as you answer'
