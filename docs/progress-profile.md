@@ -78,8 +78,8 @@ route switches each question over as it reaches 20.
 
 ## Owner steps
 - Done 2026-11-14: migration `2026-11m-readiness.sql` applied (owner OK). `question_difficulty()` and
-  `exam_outcomes` exist, RLS on, anon cannot call the function. No question has 20 answers yet (apbio leads with
-  406 answers over 45 questions), so `/qdiff` returns nothing and the model uses written difficulty until one does.
+  `exam_outcomes` exist, RLS on, anon cannot call the function. Only 6 AP Biology questions have 20 answers so far (apbio leads with
+  406 answers over 45 questions); every other question uses its written difficulty until it reaches 20.
 
 ## Status
 - [x] readiness.js + tests
