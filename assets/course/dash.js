@@ -111,10 +111,14 @@
      Two drawings of the same numbers, one shaped for a wide column and one for a phone, so the labels stay at
      reading size in both; CSS shows one. Colours are classes, so dark mode follows the theme. */
   function chart(p, tr, W, H, narrow){
-    var weeks = p.weeks || [], exams = p.exams || [], now = Date.now();
+    // Simple (Progress, owner 2026-11-14 "still confusing"): one line, the goal, you. Exams are listed under the
+    // chart and the pace to the goal is said in words above it, so neither is drawn.
+    var simple = !!p.simple;
+    var weeks = p.weeks || [], exams = simple && (p.weeks || []).length ? [] : p.exams || [], now = Date.now();
+    if(simple) tr = { head: tr.head };
     var times = weeks.map(function(w){ return w.t; }).concat(exams.map(function(e){ return e.t; }));
     if(!times.length) return '';
-    var t0 = Math.min.apply(null, times), end = now + 7 * DAY, examT = p.examDate ? p.examDate.t : null;
+    var t0 = Math.min.apply(null, times), end = now + (simple ? 2 : 7) * DAY, examT = simple ? null : p.examDate ? p.examDate.t : null;
     if(tr.goalAt) end = Math.max(end, tr.goalAt.t + 4 * DAY);
     var examIn = examT && examT > now && examT - now <= 75 * DAY;
     if(examIn) end = Math.max(end, examT);
@@ -138,11 +142,11 @@
     // the part of the chart that is still ahead
     var xn = x(now);
     var examLater = examT && examT > now && !examIn;
-    if(end - now > 2 * DAY) s += '<rect class="d5-ahead" x="' + f(xn) + '" y="' + T + '" width="' + f(R - xn) + '" height="' + (B - T) + '"/>' + (narrow || examLater ? '' : '<text class="d5-ahead-t" x="' + f(xn + 8) + '" y="' + (T + 16) + '">ahead</text>');
+    if(!simple && end - now > 2 * DAY) s += '<rect class="d5-ahead" x="' + f(xn) + '" y="' + T + '" width="' + f(R - xn) + '" height="' + (B - T) + '"/>' + (narrow || examLater ? '' : '<text class="d5-ahead-t" x="' + f(xn + 8) + '" y="' + (T + 16) + '">ahead</text>');
     if(p.goal){
       var yg = y(p.goal.pct);
       s += '<line class="d5-goal" x1="' + L + '" y1="' + f(yg) + '" x2="' + R + '" y2="' + f(yg) + '"/>';
-      s += '<text class="d5-goal-t" x="' + (L + 4) + '" y="' + f(yg - 7) + '" font-size="' + hand + '">' + esc(narrow ? p.goal.pct + '% goal' : p.goal.label) + '</text>';
+      s += '<text class="d5-goal-t" x="' + (L + 4) + '" y="' + f(yg - 7) + '" font-size="' + hand + '">' + esc(narrow || simple ? p.goal.pct + '% goal' : p.goal.label) + '</text>';
     }
     // weekly accuracy
     var here = null, weekPts = [];
@@ -154,7 +158,7 @@
         s += '<polyline class="d5-line" points="' + line + '"/>';
       }
       here = pts[pts.length - 1]; weekPts = pts;
-      if(!narrow && pts.length > 1) s += '<text class="d5-small" x="' + f(pts[0][0]) + '" y="' + f(pts[0][1] + 20) + '" text-anchor="middle" font-size="' + small + '">' + pts[0][2] + '%</text>';
+      if(!narrow && !simple && pts.length > 1) s += '<text class="d5-small" x="' + f(pts[0][0]) + '" y="' + f(pts[0][1] + 20) + '" text-anchor="middle" font-size="' + small + '">' + pts[0][2] + '%</text>';
     }
     // projection to the goal
     if(tr.goalAt && here){
@@ -192,7 +196,7 @@
       s += '<circle class="d5-here-ring" cx="' + f(here[0]) + '" cy="' + f(here[1]) + '" r="' + (narrow ? 10 : 13) + '"/>';
       s += '<circle class="d5-here" cx="' + f(here[0]) + '" cy="' + f(here[1]) + '" r="' + (narrow ? 5 : 7) + '"/>';
       var right = here[0] < (L + R) / 2, hx = right ? here[0] + 18 : here[0] - 18, hy = Math.min(B - 10, here[1] + (narrow ? 36 : 56));
-      s += '<text class="d5-note-acc" x="' + f(hx) + '" y="' + f(hy) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="' + (hand + 1) + '">' + esc('you are here, ' + here[2] + '%') + '</text>';
+      s += '<text class="d5-note-acc" x="' + f(hx) + '" y="' + f(hy) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="' + (hand + 1) + '">' + esc((simple ? 'you, ' : 'you are here, ') + here[2] + '%') + '</text>';
       if(!narrow) s += arrow(hx + (right ? 12 : -12), hy - 15, here[0] + (right ? 6 : -6), here[1] + 12, 'd5-arrow-acc');
     }
     // exam day
@@ -526,12 +530,17 @@
     var tr = trend(p), has = (p.weeks && p.weeks.length) || (p.exams && p.exams.length), html = '<div class="d5-card d5-tr"><div class="d5-tr-k"><h2 class="d5-lbl" id="d5hTrend">Am I getting better</h2>' +
       (p.allHref ? '<a class="d5-tr-all" href="' + esc(p.allHref) + '">' + esc(p.allText || 'All exams') + ' &rarr;</a>' : '') + '</div>';
     if(!has) return html + '<p class="d5-lead">' + (p.empty || 'Your line starts with your first answers.') + '</p></div>';
-    var line = '<b>' + esc(tr.head || '') + '</b>';
+    var w = p.weeks || [], line;
+    if(w.length >= 2){
+      var a = w[0].pct, b = w[w.length - 1].pct, span = Math.max(1, Math.round((w[w.length - 1].t - w[0].t) / (7 * DAY)));
+      line = '<b>' + (b - a >= 3 ? 'Up from ' + a + '% to ' + b + '% right' : a - b >= 3 ? 'Down from ' + a + '% to ' + b + '% right' : 'Steady at ' + b + '% right') + '</b> over ' + plural(span, 'week') + '.';
+    } else line = '<b>' + esc(tr.head || '') + '</b>';
     if(tr.goalAt){
       var ex = p.examDate && p.examDate.t > Date.now() ? p.examDate.t : null, lead = ex ? Math.round((ex - tr.goalAt.t) / (7 * DAY)) : null;
-      line += ' <span class="d5-mut">' + p.goal.pct + '% by ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam' : lead !== null && lead <= 0 ? ', after your exam date' : '') + '</span>';
+      line += ' <span class="d5-mut">At this pace, ' + p.goal.pct + '% by ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam' : lead !== null && lead <= 0 ? ', after your exam date' : '') + '.</span>';
     }
-    html += '<p class="d5-tr-l">' + line + '</p>' + chart(p, tr, 620, 290, false) + chart(p, tr, 360, 230, true);
+    var sp = Object.assign({}, p, { simple: true });
+    html += '<p class="d5-tr-l">' + line + '</p>' + chart(sp, tr, 620, 260, false) + chart(sp, tr, 360, 220, true);
     if(p.recent && p.recent.length) html += '<p class="d5-recent"><span class="d5-mut">' + esc(p.recentLabel || 'Last exams') + '</span>' + p.recent.slice(0, 3).map(function(x){ return '<span class="d5-ex"><b>' + x.big + '</b> ' + x.sub + '</span>'; }).join('') + '</p>';
     return html + '</div>';
   }
