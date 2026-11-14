@@ -133,266 +133,133 @@
     var costly = started.filter(function(r){ return r.total >= 5 && r.acc < 0.8; }).sort(function(a, b){ return b.miss - a.miss; })[0];
     var maxMiss = Math.max.apply(null, [1].concat(started.map(function(r){ return r.miss; })));
 
-    // ---------------------------------------------------------------- 1 now
-    var now;
-    var today = { streak: st.current, count: st.todayCount, goal: st.goal, freezes: st.freezes || 0 };
-    // NREMT's daily goal and in-browser reminders live on this page (moved from Practice, owner 2026-10-26), in the
-    // streak drawer; the link opens it.
-    today.reminder = { text: legacyStreak.remindersEnabled ? 'Goal and reminders (on)' : 'Daily goal and reminders', href: '#d5Streak' };
-    if(isNew){
-      now = { title: 'Nothing here yet, so start <span>here.</span>', body: 'Every question you answer, in any mode, updates this page: your accuracy in six topic areas and the five exam domains, your review queue and your readiness.',
-        steps: ['<a href="practice.html">Start a 20-question domain drill</a>, each answer checked as you go.', 'Or read the <a href="study-notes.html">study notes</a>, chapter by chapter.', 'Warm up with <a href="flashcards.html">flashcards</a> or try a <a href="tools.html">tool</a>.'], today: today };
-    } else {
-      var acts = [];
-      var quota = window.NremtGates && window.NremtGates.quotaLeft ? window.NremtGates.quotaLeft() : Infinity;
-      if(dueCount){
-        var n = Math.min(dueCount, 40, quota === Infinity ? 40 : Math.max(quota, 0));
-        var shaky = levels[0] + levels[1];
-        if(n > 0) acts.push({ title: 'Review your <span>' + plural(n, n === dueCount ? 'question' : 'shakiest question') + '</span>.',
-          body: (shaky ? plural(shaky, 'missed or shaky question') + ' in your queue.' : '') + (pace ? ' About ' + Math.max(1, Math.round(n * pace / 60)) + ' minutes.' : ''),
-          href: 'review.html?start=spaced', cta: 'Start review', then: 'Review ' + plural(n, 'due question'), key: 'review' });
-      }
-      if(costly) acts.push({ title: 'Drill <span>' + esc(costly.d) + '</span>.', body: costly.miss + ' of ' + costly.total + ' missed so far.' + (NOTES[costly.d] ? ' Notes: <a href="' + notesHref(NOTES[costly.d]) + '">' + esc(NOTES[costly.d][1]) + '</a>' : ''),
-        href: 'practice.html?system=' + encodeURIComponent(costly.d), cta: 'Drill it', then: 'Then drill ' + esc(costly.d) + ', your most expensive area', key: 'drill' });
-      if(missedCount) acts.push({ title: 'Redo the <span>' + plural(missedCount, 'question') + '</span> you got wrong.', body: 'From practice and exams, with explanations.', href: 'review.html?start=review', cta: 'Redo them', then: 'Then redo the ' + plural(missedCount, 'question') + ' you got wrong', key: 'missed' });
-      var lastExam = history.length ? history[history.length - 1].date : 0;
-      if(G.canUse('exam') && allTotal >= 40 && (!lastExam || Date.now() - lastExam > 7 * 86400000)) acts.push({ title: history.length ? 'Take a full <span>timed exam</span>.' : 'Take your first <span>full timed exam</span>.',
-        body: history.length ? 'Your last was ' + plural(Math.round((Date.now() - lastExam) / 86400000), 'day') + ' ago. Each one makes the readiness reading steadier.' : 'It is scored by exam domain, and your readiness reading starts from it.', href: 'exams.html', cta: 'Start the exam', then: history.length ? 'Then take a full timed exam' : 'Then take your first full timed exam', key: 'exam' });
-      if(!acts.length) acts.push({ title: 'Keep the habit: <span>a mixed drill.</span>', body: 'Nothing is due and no area is costing you much. A drill across every area keeps it that way.', href: 'practice.html', cta: 'Practice', then: 'Then a mixed drill', key: 'mixed' });
-      var first = acts[0];
-      now = { title: first.title, body: first.body, href: first.href, cta: first.cta, today: today,
-        then: acts.slice(1, 3).map(function(a){ return { text: a.then, href: a.href, cta: a.key === 'exam' ? 'Exam' : a.key === 'missed' ? 'Redo' : 'Go' }; }) };
-    }
+    var pastDays = null;
+    if(ED){ var rawIso = ED.read('nremt'); if(rawIso){ var dd = ED.daysUntil(rawIso); if(dd < 0) pastDays = -dd; } }
 
-    // ---------------------------------------------------------------- 2 progress
+    // ---------------------------------------------------------------- readiness (docs/progress-profile.md)
+    // Every answer in every mode (nremt_mastery), scored against each question's difficulty, each exam domain
+    // weighted by its share of the 2025 exam. Needs the question meta (assets/qmeta.json), loaded once.
+    var RR = window.LevlReady, est = null, answers = [];
+    if(QM && RR){
+      Object.keys(mastery).forEach(function(id){
+        var rec = mastery[id], x = QM.q[id]; if(x == null || !rec) return;
+        var tot = (rec.timesCorrect || 0) + (rec.timesWrong || 0); if(!tot) return;
+        answers.push({ id: id, area: QM.dom[Math.floor(x / 100)], sys: QM.sys[Math.floor(x / 10) % 10], right: rec.timesCorrect || 0, total: tot, t: rec.lastSeen || 0, diff: QM.diff[x % 10] });
+      });
+      var bp = {}; EXAM_DOMAINS.forEach(function(x){ bp[x.d] = x.mid; });
+      var opts = { bank: QM.bank, blueprint: bp, live: LIVE };
+      if(answers.length) est = RR.estimate(Object.assign({ answers: answers }, opts));
+      // What bringing one topic area to 80% right would add: the same estimate with that area's misses turned right.
+      var gainFor = function(sys){
+        if(!est) return 0;
+        var lifted = answers.map(function(a){ return a.sys === sys && a.right / a.total < 0.8 ? Object.assign({}, a, { right: a.total * 0.8 }) : a; });
+        return RR.estimate(Object.assign({ answers: lifted }, opts)).value - est.value;
+      };
+    }
+    var DOMAIN_TOOL = {
+      'Airway & Respiratory': ['sound-trainer.html', 'Sound Trainer'], 'Cardiac & Medical': ['sound-trainer.html', 'Sound Trainer'],
+      'Trauma': ['scenario-sim.html', 'Scenarios'], 'Assessment': ['flowcharts.html', 'Flow Diagrams'],
+      'EMS Operations': ['flowcharts.html', 'Flow Diagrams'], 'OB/Peds & Special Populations': ['scenario-sim.html', 'Choking toddler scenario']
+    };
+    function weakTopic(d){
+      var t = (domainStats[d] || {}).topics || {}, best = null;
+      Object.keys(t).forEach(function(k){ var s = t[k]; if(s && s.total >= 3){ var p = s.correct / s.total; if(!best || p < best.p) best = { name: k, p: p }; } });
+      return best ? { name: best.name, pct: Math.round(best.p * 100) } : null;
+    }
+    var SHORT = { 'OB/Peds & Special Populations': 'OB/Peds', 'Airway & Respiratory': 'Airway', 'Cardiac & Medical': 'Cardiac', 'EMS Operations': 'Operations' };
+    function tierOf(acc){ return acc >= 0.8 ? 'ok' : acc >= 0.55 ? 'mid' : ''; }
+
+    // ---------------------------------------------------------------- how close am I
+    var GOALT = GOAL + '%, on track';
+    var examFact = { big: examIso ? D.shortDate(examT) : 'Set date', label: examIso ? 'exam day, ' + plural(daysLeft, 'day') + ' left' : 'your exam day, for a countdown', button: 'd5ExamCard' };
+    var facts = [examFact];
+    if(pace) facts.push({ big: pace + ' s', label: 'a question on full exams', note: 'of ' + EXAM_SECONDS_PER_Q + ', ' + (pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'on pace' : pace <= EXAM_SECONDS_PER_Q ? 'tight' : 'too slow'), tone: pace <= EXAM_SECONDS_PER_Q ? 'ok' : 'warn' });
+    if(history.length){ var bestE = Math.max.apply(null, history.map(function(x){ return Math.round(x.score / x.total * 100); })); facts.push({ big: bestE + '%', label: 'best full exam, of ' + history.length, href: 'exams.html' }); }
+    else facts.push({ big: '100', label: 'questions in a full timed exam', href: 'exams.html' });
+    var ready = { badge: G.badge(), facts: facts, slot: 'd5ExamCard',
+      foot: 'From your own practice answers: not real NREMT results, and not a chance of passing.' };
+    if(!canReady){
+      ready.lockRow = { text: '<b>Readiness estimate</b>: your expected score on the real exam, by domain', href: '../premium.html#nremt' };
+    } else if(!est || est.value == null){
+      ready.value = null;
+      ready.empty = QM || !answers.length ? 'Answer questions in any mode and your expected exam score shows up here.' : 'Working it out&hellip;';
+    } else {
+      var v = est.value;
+      ready.value = v; ready.unit = '%';
+      ready.pill = v >= GOAL ? { text: 'On track', tier: 'good' } : v >= GOAL - 15 ? { text: 'Within reach', tier: 'mid' } : { text: 'Needs more practice', tier: 'low' };
+      ready.scale = { goal: GOAL, goalText: GOALT, range: [est.lo, est.hi], lo: '0%', hi: '100%' };
+      ready.explain = 'Your expected score on a full exam today, likely <b>' + est.lo + '% to ' + est.hi + '%</b>. From all ' + Number(est.n).toLocaleString() + ' of your answers: harder questions count more, recent ones most, and each exam domain by its share of the real exam. On track is <b>' + GOAL + '%</b>.' +
+        (est.n < 60 ? ' With this few answers the range is wide; it narrows as you practice.' : '');
+      if(pastDays !== null && pastDays <= 120) ready.outcome = { course: 'nremt', title: 'How did your NREMT exam go?', choices: [['pass', 'I passed'], ['fail', 'I did not pass'], ['later', 'Not taken yet']], predicted: { value: v, lo: est.lo, hi: est.hi }, n: est.n, days: pastDays };
+    }
+    if(isNew && canReady){ ready.value = null; ready.empty = 'Answer questions in any mode and your expected exam score shows up here.'; }
+    ready.onSlot = function(){
+      if(ED) ED.mount(document.getElementById('d5ExamCard'), {
+        subject: 'nremt', links: { review: 'review.html', exams: 'exams.html' },
+        target: function(days){
+          if(!bank) return { n: st.goal || 15, unit: 'questions', one: 'question', why: 'is your daily goal' };
+          if(!unseen) return { done: 'You have answered every question in the bank. Days from here are for Review and timed exams.' };
+          return { n: Math.ceil(unseen / days), unit: 'new questions', one: 'new question', why: 'covers the ' + unseen.toLocaleString() + ' you have not answered yet, plus whatever Review has due' };
+        }
+      });
+    };
+
+    // ---------------------------------------------------------------- am I getting better
+    var fmtD = function(ts){ return D.shortDate(ts); };
     var progress = {
       weeks: weeks, exams: history.map(function(x){ return { t: x.date, pct: Math.round(x.score / x.total * 100) }; }),
       examWord: 'full exams', firstExamWord: 'first full exam',
-      sub: '',
-      goal: { pct: GOAL, label: '80%, the full-exam certificate line', key: 'the certificate line: 80% on a full exam (weekly practice accuracy is not an exam score)' },
+      goal: { pct: GOAL, label: GOAL + '%, on track', key: 'on track: 80% on a full exam' },
       examDate: examT ? { t: examT } : null, allHref: history.length ? 'exams.html' : null, allText: 'Exams',
-      empty: overallPct === null ? 'Your line starts with your first answers.' : 'So far: ' + overallPct + '% on ' + plural(allTotal, 'answer') + '. Your weekly line starts now.',
-      more: [{ label: 'Score over time and recent exams', html: '<div id="historyBox"></div><div id="activityBox"></div>' }]
+      recent: history.slice(-3).reverse().map(function(x){ return { big: Math.round(x.score / x.total * 100) + '%', sub: fmtD(x.date) + ' &middot; ' + x.total + ' questions' + (x.timeMs ? ', ' + Math.round(x.timeMs / 60000) + ' min' : '') }; }),
+      empty: overallPct === null ? 'Your line starts with your first answers.' : 'So far: ' + overallPct + '% on ' + plural(allTotal, 'answer') + '. Your weekly line starts now.'
     };
-    if(!history.length) progress.more = [];
 
-    // ---------------------------------------------------------------- 3 ready
-    var title3 = examIso ? 'Will I be ready by <span>' + esc(D.shortDate(examT)) + '?</span>' : 'Will I be <span>ready?</span>';
-    var sideBits = [];
-    if(daysLeft !== null){
-      if(canReady) sideBits.push(plural(daysLeft, 'day') + ' left');
-      if(bank && unseen) sideBits.push('about ' + Math.ceil(unseen / Math.max(1, daysLeft)) + ' new questions a day finishes the bank');
-    }
-    var ready = { title: title3, side: sideBits.join('<br>'), gap: [], more: [
-      { label: daysLeft === null ? 'Exam date <small class="d5-mut">not set</small>' : 'Exam date and daily target', html: '<div id="examDateCard"></div>', open: false, id: 'd5ExamDate' }
-    ] };
-    if(canReady && R.available){
-      var v = R.value;
-      ready.big = String(v); ready.bigSub = ' / 100'; ready.badge = ' ' + G.badge();
-      ready.note = v >= GOAL ? R.label + '. Keep it there.' : (GOAL - v) + ' to go' + (daysLeft !== null ? ', with ' + plural(daysLeft, 'day') + ' left.' : '.');
-      ready.scale = { value: v, goal: GOAL, goalText: GOAL + ', on track', aria: 'Readiness ' + v + ' of 100; on track is ' + GOAL + '.' };
-      // What closes the gap: each line recomputes the same estimate with one thing changed, so the numbers are real.
-      var oneMore = readiness(history.concat([{ score: 80, total: 100 }]), domainStats);
-      if(oneMore.value !== v) ready.gap.push({ text: 'One more full exam at 80% would make it ' + oneMore.value, value: (oneMore.value > v ? '+' : '') + (oneMore.value - v), href: 'exams.html' });
-      if(R.weakestDomain && R.overall !== null && R.overall - R.weakestPct > 15){
-        var lifted = JSON.parse(JSON.stringify(domainStats)), w = lifted[R.weakestDomain];
-        w.correct = Math.ceil((R.overall - 15) / 100 * w.total);
-        var up = readiness(history, lifted);
-        if(up.value > v) ready.gap.push({ text: 'Bring ' + esc(R.weakestDomain) + ' up from ' + R.weakestPct + '% to ' + Math.round(w.correct / w.total * 100) + '%', value: '+' + (up.value - v), href: 'practice.html?system=' + encodeURIComponent(R.weakestDomain) });
-      }
-      if(R.attempts < 5) ready.gap.push({ text: 'It rests on ' + plural(R.attempts, 'full exam') + '. ' + (5 - R.attempts) + ' more and it stops being pulled toward the middle', value: 'steadier', kind: 'mut', href: 'exams.html' });
-      ready.more.push({ label: 'How the readiness estimate works', html: '<div id="readinessBox"></div>' });
-    } else if(canReady){
-      ready.big = '&mdash;'; ready.note = 'One full timed exam starts your readiness reading.';
-      ready.gap.push({ text: 'Take a full timed exam: 100 questions, two hours, scored by domain', value: 'starts it', kind: 'mut', href: 'exams.html' });
-    } else {
-      // Owner 2026-11-07: one row, not a repeat of question 2's accuracy and a sales box.
-      ready.lockRow = { label: 'Readiness estimate', href: '../premium.html#nremt' };
-      if(daysLeft !== null) ready.more[0].label = 'Exam date <small class="d5-mut">' + plural(daysLeft, 'day') + ' left</small>';
-    }
-    if(pace) ready.gap.push({ text: 'Pace on your recent full exams: ' + pace + ' s a question. The practice exam gives you ' + EXAM_SECONDS_PER_Q, value: pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'on track' : pace <= EXAM_SECONDS_PER_Q ? 'tight' : 'too slow', kind: pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'ok' : 'mut' });
-    ready.foot = 'Built from your own practice scores. Not calibrated against real NREMT results and not a chance of passing.';
-    if(!ready.gap.length) delete ready.gap;
-
-    // ---------------------------------------------------------------- 4 focus
-    var trows = started.slice().sort(function(a, b){ return b.miss - a.miss; }).concat(topicRows.filter(function(r){ return !r.total; })).map(function(r){
-      if(!r.total) return { icon: ICON[r.d], name: r.d, sub: 'not started', bar: 0, cost: '', href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Start' };
-      var pct = Math.round(r.acc * 100), tag = started.length > 1 && r === lowest ? ', your lowest' : started.length > 1 && r === best ? ', your best' : '';
-      return { icon: ICON[r.d], warm: r.acc < 0.7, name: r.d, sub: pct + '% right' + tag, bar: r.miss / maxMiss, cost: r.miss + ' missed of ' + r.total, href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Drill' };
-    });
-    // The Premium pill as text: G.badge() is a button, and a button cannot sit inside the view switch's button.
+    // ---------------------------------------------------------------- what is holding me back
+    var trows = started.slice().sort(function(a, b){ return b.miss - a.miss; }).map(function(r){
+      var tool = DOMAIN_TOOL[r.d], n = NOTES[r.d], g = canReady && est ? gainFor(r.d) : 0;
+      var links = []; if(tool) links.push({ href: tool[0], label: tool[1], kind: 'tool' }); if(n) links.push({ href: notesHref(n), label: 'Notes' });
+      return { name: r.d, pct: Math.round(r.acc * 100), word: 'right', weak: weakTopic(r.d), cost: r.miss + ' missed of ' + r.total, bar: r.acc, tier: tierOf(r.acc),
+        gain: g >= 1 ? '+' + Math.round(g) : '', href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Practice ' + (SHORT[r.d] || r.d), links: links };
+    }).concat(topicRows.filter(function(r){ return !r.total; }).map(function(r){
+      return { name: r.d, off: true, sub: 'not started', href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Start' };
+    }));
     var domView = { label: 'Exam domains', badge: G.badge() ? ' <span class="premium-badge">Premium</span>' : '' };
-    if(!canReady) domView.locked = '<p class="d5-empty">Your accuracy in the five 2025 exam domains, weighted by each one&rsquo;s share of the exam, comes with Premium, along with the readiness estimate above.</p>';
+    if(!canReady) domView.locked = '<p class="d5-empty">Your expected score in each of the five 2025 exam domains, weighted by its share of the exam, comes with Premium.</p>';
     else {
-      var drows = EXAM_DOMAINS.map(function(x){ var s = examDomainStats[x.d]; return { x: x, s: s, acc: s && s.total ? s.correct / s.total : null }; })
-        .filter(function(r){ return r.acc !== null; }).map(function(r){ r.cost = r.x.mid * (1 - r.acc); return r; }).sort(function(a, b){ return b.cost - a.cost; });
-      var maxCost = Math.max.apply(null, [0.1].concat(drows.map(function(r){ return r.cost; })));
-      domView.rows = drows.map(function(r){
-        return { icon: r.x.mid + '%', warm: r.acc < 0.7, name: r.x.d, sub: Math.round(r.acc * 100) + '% right &middot; ' + r.x.band + ' of the exam', bar: r.cost / maxCost,
-          cost: '&asymp; ' + (Math.round(r.cost * 10) / 10) + ' of every 100 exam questions', href: 'practice.html?domain=' + encodeURIComponent(r.x.d), cta: 'Drill' };
-      });
-      domView.empty = 'Answer questions in any mode to see your accuracy by exam domain.';
+      domView.intro = 'The five domains of the 2025 EMT exam. Expected score is what the readiness estimate predicts there; right is what you have answered so far.';
+      domView.rows = EXAM_DOMAINS.map(function(x){
+        var s = examDomainStats[x.d], a = est && est.areas[x.d], acc = s && s.total ? s.correct / s.total : null, n = NOTES[x.d];
+        return { x: x, acc: acc, a: a, row: { name: x.d, pct: a ? a.pct : null, word: 'expected', sub: (acc !== null ? Math.round(acc * 100) + '% right of ' + s.total + ' &middot; ' : '') + x.band + ' of the exam', bar: a ? a.pct / 100 : 0, tier: a ? tierOf(a.pct / 100) : '',
+          href: 'practice.html?domain=' + encodeURIComponent(x.d), cta: 'Practice', links: n ? [{ href: notesHref(n), label: 'Notes' }] : [] } };
+      }).sort(function(p, q){ return (q.x.mid * (1 - (q.a ? q.a.pct / 100 : 1))) - (p.x.mid * (1 - (p.a ? p.a.pct / 100 : 1))); }).map(function(z){ return z.row; });
+      if(!est) domView.rows = [];
+      domView.empty = 'Answer questions in any mode to see your expected score in each exam domain.';
     }
-    var focus = { intro: 'Sorted by how many questions each area costs you, not by its percent. A big area at 63% can cost more than a small one at 54%.',
-      views: [{ label: 'Topic areas', rows: started.length ? trows : [], empty: 'Answer a few questions and your six topic areas line up here, the most expensive first.' }, domView],
-      more: [{ label: 'Topic areas with their notes', html: '<div id="topicBox"></div>' }].concat(canReady ? [{ label: 'The five exam domains, in detail', html: '<div id="domainBox"></div>' }] : []) };
-
-    // ---------------------------------------------------------------- 5 record
-    var info = HP ? HP.levelInfo('nremt') : (function(){
-      var total = readJSON('nremt_xp', { total: 0 }).total || 0, f = function(n){ return 100 * (n - 1) * (n - 1); }, lv = 1;
-      while(f(lv + 1) <= total) lv++;
-      return { level: lv, title: 'First Responder', total: total, into: total - f(lv), span: Math.max(1, f(lv + 1) - f(lv)), toNext: f(lv + 1) - total, subjects: { nremt: total } };
-    })();
-    var bestExam = history.length ? Math.max.apply(null, history.map(function(x){ return Math.round(x.score / x.total * 100); })) : 0;
-    var lvl = HP ? HP.level() : info.level;
-    var badgeDefs = [
-      { icon: 'flame', label: '7-day streak', have: st.longest, need: 7, prog: function(n){ return 'best ' + plural(n, 'day'); } },
-      { icon: 'flame', label: '30-day streak', have: st.longest, need: 30, prog: function(n){ return 'best ' + plural(n, 'day'); } },
-      { icon: 'check', label: 'First exam', have: history.length, need: 1, prog: function(){ return 'take one full exam'; } },
-      { icon: 'star', label: '90%+ exam', have: bestExam, need: 90, prog: function(n){ return n ? 'best ' + n + '%' : 'score 90% on a full exam'; } },
-      { icon: 'stack', label: '500 questions', have: allTotal, need: 500, prog: function(n){ return n.toLocaleString() + ' so far'; } },
-      { icon: 'L10', label: 'Level 10', have: lvl, need: 10, prog: function(n){ return plural(10 - n, 'level') + ' away'; } }
-    ];
-    var earnedN = badgeDefs.filter(function(b){ return b.have >= b.need; }).length;
-    var atTop = levels[4] + levels[5];
-    var record = {
-      stats: [
-        { label: 'Level', big: String(info.level), sub: Number(info.toNext).toLocaleString() + ' XP to ' + (info.level + 1), bar: info.into / info.span },
-        { label: 'Answered', big: allTotal.toLocaleString(), sub: totalTracked ? atTop + ' of ' + totalTracked + ' strong' : 'in every mode' },
-        { label: 'Badges', big: earnedN + '<small class="d5-mut" style="display:inline;font-size:14px">/' + badgeDefs.length + '</small>', sub: 'earned' }
-      ],
-      badges: badgeDefs.map(function(b){ var e = b.have >= b.need; return { icon: b.icon, label: b.label, earned: e, sub: e ? 'earned' : b.prog(Math.min(b.have, b.need)) }; }),
-      next: bestExam >= GOAL ? { text: 'Certificate earned: a full exam at ' + GOAL + '% or higher.', sub: 'Your best is ' + bestExam + '%.', href: '#d5Milestones', cta: 'See it' }
-        : { text: 'Next certificate: a full exam at ' + GOAL + '%.', sub: history.length ? 'You are ' + (GOAL - bestExam) + ' points off with ' + bestExam + '%.' : 'Take a full timed exam to start.', href: '#d5Milestones', cta: 'See milestones' },
-      more: [
-        { label: 'Level and topic badges', html: '<div id="levelBox"></div>' },
-        { label: 'Study streak, daily goal and reminders', html: '<div id="streakBox"></div>', id: 'd5Streak' },
-        { label: 'Review queue and mastery levels', html: '<div id="masteryBox"></div>' },
-        { label: 'Badges', html: '<div id="badgeGrid"></div>' },
-        { label: 'Milestones and certificates', html: '<div id="levlMilestones"></div>', id: 'd5Milestones' }
-      ]
-    };
+    var focus = { note: started.length ? 'Ranked by how many questions each area costs you' + (canReady && est ? ' &middot; <b class="d5-gain">+</b> is what bringing it to 80% adds to your readiness' : '') : '',
+      views: [{ label: 'Topic areas', rows: started.length ? trows : [], empty: 'Answer a few questions and your six topic areas line up here, the most expensive first.' }, domView] };
 
     var status = isNew ? 'start anywhere, this page fills in as you answer'
-      : canReady && R.available ? (R.value >= GOAL ? 'on track, and holding' : (GOAL - R.value) + ' points from on track' + (rising ? ', and climbing' : ''))
+      : canReady && est && est.value != null ? (est.value >= GOAL ? est.value + '%, on track' : est.value + '%, ' + (GOAL - est.value) + ' points from on track' + (rising ? ', and climbing' : ''))
       : overallPct !== null ? overallPct + '% across ' + plural(allTotal, 'answer') + (rising ? ', and climbing' : '') : null;
+    var info = HP ? HP.levelInfo('nremt') : null;
 
-    D.render(root, { now: now, progress: progress, ready: ready, focus: focus, record: record,
-      band: { status: status, level: { level: info.level, title: info.title, toNext: info.toNext } }, foot: { account: '../account.html', backup: '../privacy.html#backup', premium: '../premium.html' } });
-
-    // ---- the older panels, drawn into their drawers by the code that always drew them ----
-    function accRow(d, s, sub, param){
-      var v = s && s.total ? s.correct / s.total : 0;
-      return H.row({ label: d, value: v, text: s && s.total ? Math.round(v * 100) + '%' : null, tier: H.tier(v, s && s.total),
-        note: [s && s.total ? s.correct + ' of ' + s.total + ' right' : '', sub || '', s && s.total && s.correct < s.total ? notesLink(d) : ''].filter(Boolean).join(' &middot; '),
-        action: { href: 'practice.html?' + param + '=' + encodeURIComponent(d), label: 'Practice' } });
-    }
-    set('topicBox', H.panel({ id: 'nr-topics', title: 'Topic areas', hint: 'Six study areas, grouped by body system the way the notes are. Every mode counts, weakest first. Always free. They are not the exam&rsquo;s five domains.',
-      body: topicRows.slice().sort(function(a, b){ return (a.acc === null ? 2 : a.acc) - (b.acc === null ? 2 : b.acc); }).map(function(r){ return accRow(r.d, domainStats[r.d], '', 'system'); }).join('') }));
-    if(canReady){
-      var attempted = EXAM_DOMAINS.filter(function(x){ return examDomainStats[x.d] && examDomainStats[x.d].total > 0; });
-      set('domainBox', H.panel({ id: 'nr-domains', title: 'The five 2025 exam domains ' + G.badge(),
-        hint: 'The five domains of the National Registry&rsquo;s EMT exam launched 7 April 2025, with each one&rsquo;s share of the exam. Practice exams here draw questions in the same proportions.',
-        body: (attempted.length ? '' : '<p class="cx-emptynote">Answer questions in any mode to see your accuracy by exam domain.</p>') + EXAM_DOMAINS.map(function(x){ return accRow(x.d, examDomainStats[x.d], x.band + ' of the exam', 'domain'); }).join('') }));
-      if(R.available){
-        var subParts = ['Recent average ' + R.weightedAvg + '% across ' + plural(R.attempts, 'full exam')];
-        if(R.weakestDomain) subParts.push('weakest area: ' + R.weakestDomain + ' (' + R.weakestPct + '%)');
-        set('readinessBox', H.panel({ id: 'nr-ready', title: 'Readiness estimate ' + G.badge(),
-          body: H.row({ label: subParts.join(' &middot; '), value: R.value / 100, text: R.value + '/100', tier: { label: R.label, lvl: R.lvl } }) +
-            '<p class="cx-hint" style="margin:8px 0 0">' + (R.lowConfidence ? 'Based on very few attempts, so take a few more full exams for a steadier number. ' : '') +
-            'A 0 to 100 readiness scale from your own full exam scores, recent ones weighted more, lowered when one area lags your average by more than 15 points. It is not calibrated against real NREMT results and is not a chance of passing.</p>' }));
-      }
-    }
-    if(totalTracked){
-      var maxLevel = Math.max.apply(null, [1].concat(levels));
-      set('masteryBox', H.panel({ id: 'nr-mastery', title: 'Mastery and review queue', hint: 'Each question you have seen, by its level (0 to 5). A level drops by one for every four days it goes unseen.',
-        body: '<div class="progress-stats"><span>Questions tracked: <b>' + totalTracked + '</b></span><span>Due for review: <b>' + dueCount + '</b></span><span>Missed queue: <b>' + missedCount + '</b></span></div>' +
-          '<div class="mastery-bars">' + levels.map(function(c, l){ return '<div class="mastery-bar" style="height:' + Math.max(2, c / maxLevel * 70) + 'px"><span>L' + l + '</span></div>'; }).join('') + '</div>' +
-          '<div class="cx-actions"><a class="btn-press sm" href="review.html">Start review</a><a class="btn-outline" href="practice.html" style="padding:11px 20px;font-size:13.5px">Weak-spot practice</a></div>' }));
-    } else set('masteryBox', '<p class="cx-emptynote">Questions you answer are tracked here by level, 0 to 5.</p>');
-    if(history.length){
-      var fmt = function(ts){ var d = new Date(ts), n = new Date(), days = Math.floor((n.setHours(0, 0, 0, 0) - new Date(ts).setHours(0, 0, 0, 0)) / 86400000);
-        return days === 0 ? 'Today' : days === 1 ? 'Yesterday' : days < 7 ? days + ' days ago' : d.toLocaleDateString(); };
-      set('activityBox', H.panel({ id: 'nr-activity', title: 'Recent exams', body: history.slice(-6).reverse().map(function(x){
-        var r2 = x.score / x.total;
-        return H.row({ label: x.total + '-question exam', value: r2, text: Math.round(r2 * 100) + '%', note: fmt(x.date) + ' &middot; ' + x.score + '/' + x.total + ' correct' + (x.timeMs ? ' &middot; ' + Math.round(x.timeMs / 60000) + ' min' : '') });
-      }).join('') }));
-      var pcts = history.map(function(x){ return Math.round(x.score / x.total * 100); });
-      var avg = Math.round(pcts.reduce(function(a, b){ return a + b; }, 0) / pcts.length);
-      set('historyBox', H.panel({ id: 'nr-history', title: 'Score over time', hint: 'Every full timed exam you have finished, oldest first: the diamonds on the chart above.',
-        body: '<p class="db-figs"><span><b>' + avg + '%</b>average</span><span><b>' + Math.max.apply(null, pcts) + '%</b>best</span><span><b>' + history.length + '</b>' + (history.length === 1 ? 'exam' : 'exams') + '</span></p>' }));
-    }
-    var DOMAIN_TIER_LABELS = ['', 'Proficient', 'Advanced', 'Mastered'];
-    var tiers = HP ? (HP.badges('nremt').domainTiers || {}) : (readJSON('nremt_xp', { domainTiers: {} }).domainTiers || {});
-    var chips = Object.keys(tiers).filter(function(d){ return tiers[d] > 0; }).map(function(d){ return d + ' · ' + DOMAIN_TIER_LABELS[Math.min(tiers[d], 3)]; });
-    var mine = (info.subjects || {}).nremt || 0;
-    set('levelBox', H.level(info, { xpLine: mine.toLocaleString() + ' XP earned in NREMT &middot; ' + Number(info.total).toLocaleString() + ' site-wide',
-      sub: [H.streakLine(st)].concat(chips.length ? [] : ['Answer 20+ questions in a topic area at 70% accuracy to earn your first topic badge.']), chips: chips }));
-    (function(){
-      var counts = Object.keys(st.days || {}).reduce(function(acc, k){ var day = st.days[k] || {}; acc[k] = Object.keys(day).reduce(function(n, s){ return n + (day[s] || 0); }, 0); return acc; }, {});
-      var todayKey = dayKey(0), DOW = ['S', 'M', 'T', 'W', 'T', 'F', 'S'], html = '', studied = 0;
-      for(var i = 13; i >= 0; i--){
-        var d = new Date(); d.setDate(d.getDate() - i);
-        var k = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-        var done = (counts[k] || 0) > 0; if(done) studied++;
-        html += '<div class="cal-day' + (done ? ' done' : '') + (k === todayKey ? ' today' : '') + '" title="' + k + (done ? ', ' + counts[k] + ' questions studied' : '') + '">' + DOW[d.getDay()] + '</div>';
-      }
-      set('streakBox', H.panel({ id: 'nr-cal', title: st.current ? st.current + '-day streak' : 'Study streak',
-        body: '<div class="cal-grid">' + html + '</div><p class="cx-hint" style="margin:12px 0 0">' + studied + ' of 14 days studied &middot; today ' + (counts[todayKey] || 0) + ' of ' + st.goal + (st.freezes ? ' &middot; ' + plural(st.freezes, 'freeze') + ' saved: it covers one missed day' : '') + '</p>' + goalSettings() }));
-      wireGoalSettings();
-    })();
-
-    /* Daily goal and reminders, moved here from the Practice page (Olivier, 2026-10-26: Practice is only for
-       practicing). Same storage as practice-engine.js: the goal goes to HubProgress and nremt_streak.dailyGoal,
-       reminders to nremt_streak.remindersEnabled and reminderHour; the reminder itself still fires from the
-       practice page while it is open. */
-    function nrStreak(){
-      var d = { dailyGoal: 15, remindersEnabled: false, reminderHour: 18 };
-      try{ return Object.assign(d, JSON.parse(localStorage.getItem('nremt_streak') || '{}') || {}); }catch(e){ return d; }
-    }
-    function saveNrStreak(o){ try{ localStorage.setItem('nremt_streak', JSON.stringify(o)); }catch(e){} }
-    function goalSettings(){
-      var sv = nrStreak();
-      var goal = (HP && st.goalBase) || st.goal || sv.dailyGoal;
-      var hours = [12, 14, 16, 18, 19, 20, 21].map(function(h){ return '<option value="' + h + '"' + (sv.reminderHour === h ? ' selected' : '') + '>' + (h > 12 ? (h - 12) + ' PM' : '12 PM') + '</option>'; }).join('');
-      return '<div class="nr-goal"><p class="nr-goal-row"><label for="nrGoalSel">Daily goal</label> <select id="nrGoalSel">' +
-        [10, 15, 20, 30, 50].map(function(g){ return '<option value="' + g + '"' + (goal === g ? ' selected' : '') + '>' + g + ' questions a day</option>'; }).join('') + '</select></p>' +
-        '<p class="nr-goal-row"><label><input type="checkbox" id="nrRemCb"' + (sv.remindersEnabled ? ' checked' : '') + '> Remind me in this browser if I haven&rsquo;t hit my goal by</label> <select id="nrRemHour" aria-label="Reminder time">' + hours + '</select></p>' +
-        '<p class="cx-hint" id="nrRemNote">Reminders only fire while a LevlPrep tab is open. Miss several days and the goal eases off on its own until you&rsquo;re back.</p></div>';
-    }
-    function wireGoalSettings(){
-      var sel = document.getElementById('nrGoalSel'), cb = document.getElementById('nrRemCb'), hr = document.getElementById('nrRemHour'), note = document.getElementById('nrRemNote');
-      if(sel) sel.addEventListener('change', function(){
-        var g = parseInt(sel.value, 10);
-        if(HP && HP.setGoal) HP.setGoal(g);
-        var sv = nrStreak(); sv.dailyGoal = g; saveNrStreak(sv);
-      });
-      if(hr) hr.addEventListener('change', function(){ var sv = nrStreak(); sv.reminderHour = parseInt(hr.value, 10); saveNrStreak(sv); });
-      if(cb) cb.addEventListener('change', function(){
-        var sv = nrStreak();
-        function done(on, msg){ sv.remindersEnabled = on; saveNrStreak(sv); cb.checked = on; if(msg && note) note.textContent = msg; }
-        if(!cb.checked) return done(false);
-        if(typeof Notification === 'undefined') return done(false, 'This browser does not support notifications.');
-        if(Notification.permission === 'denied') return done(false, 'Notifications are blocked for this site in your browser settings. Allow them there, then try again.');
-        if(Notification.permission === 'granted') return done(true);
-        Notification.requestPermission().then(function(pm){ done(pm === 'granted', pm === 'granted' ? '' : 'Reminders need notification permission.'); });
-      });
-    }
-    var EMOJI = { '7-day streak': '🎖️', '30-day streak': '🔥', 'First exam': '🚑', '90%+ exam': '💯', '500 questions': '📚', 'Level 10': '🏅' };
-    set('badgeGrid', H.badges(badgeDefs.map(function(b){
-      var e = b.have >= b.need, p = b.prog(Math.min(b.have, b.need));
-      return { icon: EMOJI[b.label], label: b.label, earned: e, prog: e ? 'Earned' : p.charAt(0).toUpperCase() + p.slice(1), aria: b.label + ': ' + (e ? 'earned' : 'not yet. ' + p) };
-    })));
-    if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'nremt'); });
-    if(ED) ED.mount(document.getElementById('examDateCard'), {
-      subject: 'nremt', links: { review: 'review.html', exams: 'exams.html' },
-      target: function(days){
-        if(!bank) return { n: st.goal || 15, unit: 'questions', one: 'question', why: 'is your daily goal' };
-        if(!unseen) return { done: 'You have answered every question in the bank. Days from here are for Review and timed exams.' };
-        return { n: Math.ceil(unseen / days), unit: 'new questions', one: 'new question', why: 'covers the ' + unseen.toLocaleString() + ' you have not answered yet, plus whatever Review has due' };
-      }
-    });
+    D.render(root, { progress: progress, ready: ready, focus: focus,
+      band: { status: status, level: info ? { level: info.level } : null, streak: st.current } });
   }
+
+  // The question meta and live difficulty, once; each arrival redraws.
+  var QM = null, LIVE = null;
+  function loadMeta(){
+    if(!window.fetch) return;
+    fetch('assets/qmeta.json').then(function(r){ return r.ok ? r.json() : null; }).then(function(m){
+      if(!m || !m.q) return;
+      var bank = {}; Object.keys(m.q).forEach(function(id){ var x = m.q[id], d = m.dom[Math.floor(x / 100)]; (bank[d] || (bank[d] = [])).push(m.diff[x % 10]); });
+      m.bank = bank; QM = m; draw();
+    }).catch(function(){});
+    if(window.LevlReady) window.LevlReady.live('nremt', function(q){ LIVE = q; if(QM) draw(); });
+  }
+  loadMeta();
 
   // Premium's onChange draws once now and again whenever a pass is bought or found (assets/premium.js).
   G.onChange(function(){ draw(); });

@@ -23,6 +23,8 @@
        bank      { <area>: [diff, ...] }               the difficulty mix the real exam draws from
        blueprint { <area>: weight }                    shares of the real exam (any scale)
        live      { <id>: [n, right] }                  optional, from LevlReady.live(course)
+       unseen    theta for an area with no answers yet  optional; AP passes about guessing level (-1.4: 35% on a
+                                                     medium question), since a unit not studied is a unit not known
      LevlReady.apBand(course, mcq, frq) -> { band, lo, hi, composite, cLo, cHi } | null
      LevlReady.live(course, cb)                        cached live difficulty (once a day)
      LevlReady.CUT                                     AP cutoffs and free-response shares */
@@ -75,7 +77,7 @@
     var overall = fit(all, 0, 1.5), areas = {}, wSum = 0, v = 0, lo = 0, hi = 0;
     Object.keys(bp).forEach(function(k){
       var w = +bp[k] || 0; if(!w) return;
-      var items = byArea[k] || [], f = items.length ? fit(items, overall.theta, 0.8) : { theta: overall.theta, se: Math.sqrt(overall.se * overall.se + 0.64) };
+      var items = byArea[k] || [], f = items.length ? fit(items, overall.theta, 0.8) : o.unseen != null && all.length ? { theta: Math.min(overall.theta, o.unseen), se: 0.9 } : { theta: overall.theta, se: Math.sqrt(overall.se * overall.se + 0.64) };
       var bs = (bank[k] || []).map(function(d){ return bOf(null, d); });
       var pct = meanOver(bs, f.theta), pl = meanOver(bs, f.theta - Z * f.se), ph = meanOver(bs, f.theta + Z * f.se);
       var n = items.reduce(function(s, x){ return s + x.n; }, 0);

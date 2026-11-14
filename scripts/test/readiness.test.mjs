@@ -73,3 +73,11 @@ test('AP band: cutoffs per course, free response counted by its share', () => {
   assert.equal(macro.band, 4);
   assert.equal(R.apBand('nope', mcq, null), null);
 });
+
+test('an area with no answers counts at guessing level when asked (AP: a unit not studied)', () => {
+  const a = answers('A', 60, 0.8);
+  const same = R.estimate({ answers: a, bank, blueprint: { A: 1, B: 1 }, now: NOW });
+  const low = R.estimate({ answers: a, bank, blueprint: { A: 1, B: 1 }, now: NOW, unseen: -1.4 });
+  assert.ok(low.value < same.value - 10);
+  assert.ok(low.areas.B.pct < 45);
+});

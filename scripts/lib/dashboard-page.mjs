@@ -33,7 +33,7 @@ export function dashboardPage(html, key = 'apbio', up = '../') {
   if (!/<h1>(?:Progress|Dashboard)<\/h1>/.test(html)) throw new Error('dashboard-page: no "<h1>Progress</h1>" to rebuild');
   // The five-question dashboard (docs/dashboard.md): its styles and the two shared scripts. The course's own
   // dashboard script waits for DOMContentLoaded, so these may come after it in the page.
-  const link = `<link rel="stylesheet" href="${up}assets/course/dashboard.css">\n<link rel="stylesheet" href="${up}assets/course/dash.css">\n<script src="${up}assets/course/dash.js" defer></script>\n<script src="${up}assets/course/dash-ap.js" defer></script>`;
+  const link = `<link rel="stylesheet" href="${up}assets/course/dashboard.css">\n<link rel="stylesheet" href="${up}assets/course/dash.css">\n<script src="${up}assets/course/readiness.js" defer></script>\n<script src="${up}assets/course/dash.js" defer></script>\n<script src="${up}assets/course/dash-ap.js" defer></script>`;
   const out = r3Inner(html, { key, slug: 'dashboard', up });
   const band = /<section class="band short"[\s\S]*?<\/section>/;
   if (!band.test(out)) throw new Error('dashboard-page: r3Inner wrote no band to replace');
