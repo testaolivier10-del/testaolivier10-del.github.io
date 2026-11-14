@@ -81,4 +81,4 @@ route switches each question over as it reaches 20.
 - [x] Review: NREMT levels, ochem Rounds; Tools: already had accuracy
 - [x] Readiness off Practice and Exams
 - [x] Worker /qdiff and /outcome, migration written (not applied: needs the owner)
-- [ ] Screenshots every course, desktop/phone/dark; ci-local; PR
+- [x] Screenshots every course, desktop/phone/dark; ci-local; PR
