@@ -87,6 +87,9 @@
     <p class="lede">Concepts come back when they are closest to being forgotten, inside a fresh problem.</p>
   </header>
   <div>
+    <!-- Daily Rounds and review debt (game-panel.js), moved here from Progress (docs/progress-profile.md). -->
+    <style>.oc-rounds{margin:0 0 18px}main:has(#reviewSession:not([hidden])) .oc-rounds,main:has(#reviewDone:not([hidden])) .oc-rounds{display:none}</style>
+    <div class="oc-rounds"><div id="gameRounds"></div><div id="gameDebt"></div></div>
     <!-- The queue: what's due today, what's held back, what's coming. -->
     <div id="reviewBody"></div>
 
@@ -130,6 +133,8 @@
 <script src="assets/periodic-table.js" defer></script>
 <script src="../assets/course/study.js" defer></script>
 <script src="assets/review-page.js" defer></script>
+<script src="../assets/course/hub.js" defer></script>
+<script src="assets/game-panel.js" defer></script>
 <div class="xshell">
   <footer>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>

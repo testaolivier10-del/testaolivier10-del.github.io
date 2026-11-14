@@ -556,6 +556,7 @@
     views.forEach(function(v, i){
       html += '<div class="d5-view" id="' + id + '-' + i + '"' + (i ? ' hidden' : '') + '>' + (v.intro ? '<p class="d5-mut d5-view-i">' + v.intro + '</p>' : '');
       if(v.locked) html += v.locked;
+      else if(v.html) html += v.html;
       else if(!v.rows || !v.rows.length) html += '<p class="d5-empty">' + (v.empty || 'Answer a few questions and this fills in.') + '</p>';
       else html += v.rows.map(holdRow).join('');
       if(v.foot) html += '<p class="d5-mut d5-view-f">' + v.foot + '</p>';

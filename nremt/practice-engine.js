@@ -694,6 +694,25 @@ function computeReadiness(){
   };
 }
 
+/* The readiness estimate Progress shows (docs/progress-profile.md): every answer in nremt_mastery through
+   assets/course/readiness.js, each exam domain weighted by its share of the 2025 exam. Null without the model. */
+function readinessPct(){
+  const RR = window.LevlReady;
+  if(!RR || !QUESTIONS.length) return null;
+  const mastery = loadMastery(), answers = [], bank = {};
+  QUESTIONS.forEach(q => { (bank[q.domain] || (bank[q.domain] = [])).push(q.diff || 'medium'); });
+  Object.keys(mastery).forEach(id => {
+    const i = QID.indexOf(id), rec = mastery[id]; if(i < 0 || !rec) return;
+    const tot = (rec.timesCorrect || 0) + (rec.timesWrong || 0); if(!tot) return;
+    const q = QUESTIONS[i];
+    answers.push({ id: id, area: q.domain, right: rec.timesCorrect || 0, total: tot, t: rec.lastSeen || 0, diff: q.diff || 'medium' });
+  });
+  if(!answers.length) return null;
+  let live = null; try{ const c = JSON.parse(localStorage.getItem('levl_qdiff_nremt') || 'null'); live = c && c.q; }catch(e){}
+  const e = RR.estimate({ answers, bank, live, blueprint: { 'Scene Size-Up & Safety': 17, 'Primary Assessment': 41, 'Secondary Assessment': 7, 'Patient Treatment & Transport': 22, 'Operations': 12 } });
+  return e.value == null ? null : e;
+}
+
 function renderReadiness(targetId, opts){
   opts = opts || {};
   const el = $id(targetId);
@@ -726,6 +745,22 @@ function renderReadiness(targetId, opts){
     : '') + 'A 0–100 readiness scale from your own practice scores. It is not calibrated against real NREMT results and is not a chance of passing.';
 
   if(opts.compact){
+    // The same estimate Progress shows (assets/course/readiness.js): an exam percentage, on track at 80%.
+    const p = readinessPct();
+    if(p){
+      const tier = p.value >= 80 ? 'good' : p.value >= 65 ? 'mid' : 'low', label = p.value >= 80 ? 'On track' : p.value >= 65 ? 'Within reach' : 'Needs more practice';
+      el.innerHTML = `
+      <div class="readiness-update">
+        <div class="r-head">
+          <span class="r-tag">Updated readiness</span>
+          <span class="r-num">${p.value}<small>%</small></span>
+          <span class="r-label tier-${tier}">${label}</span>
+        </div>
+        <div class="r-sub">Expected score on a full exam, likely ${p.lo}% to ${p.hi}% · on track is 80% · <a href="dashboard.html">Progress</a></div>
+      </div>
+    `;
+      return;
+    }
     el.innerHTML = `
       <div class="readiness-update">
         <div class="r-head">
@@ -1311,9 +1346,8 @@ function refreshIntroState(){
   });
   $id('reviewRow').hidden = !anyQueue;
   renderProgressChart();
-  // Without a pass the readiness card was a full Premium card on every visit to Practice; it now waits on
-  // the dashboard, and Practice shows Premium only at the daily limit, like the AP courses (audit 2026-11, B15).
-  renderReadiness('readinessCard', { noGate: RUNNER_PAGE === 'practice' });
+  // Readiness lives only on Progress (owner 2026-11-13, docs/progress-profile.md); the end of an exam still shows
+  // the short update (renderReadiness compact).
   renderWeakDomainsPanel();
   renderStreakWidget();
   renderResumeCard();
@@ -1453,6 +1487,16 @@ function renderDueSummary(sessionCount){
   document.querySelectorAll('[data-due="session"]').forEach(el => { el.textContent = sessionCount; });
   document.querySelectorAll('[data-due="tracked"]').forEach(el => { el.textContent = tracked.toLocaleString(); });
   document.querySelectorAll('[data-due="mastered"]').forEach(el => { el.textContent = mastered.toLocaleString(); });
+  // Mastery levels, moved here from Progress (docs/progress-profile.md): each tracked question by level, 0 to 5.
+  const lv = document.querySelector('[data-due-levels]');
+  if(lv){
+    const levels = [0, 0, 0, 0, 0, 0];
+    ids.forEach(k => { levels[Math.min(5, Math.max(0, effectiveMasteryLevel(mastery[k])))]++; });
+    const mx = Math.max(1, ...levels);
+    lv.hidden = !tracked;
+    lv.innerHTML = '<p class="nr-lv-h"><b>Your ' + tracked.toLocaleString() + ' questions by level</b> <span>A level drops by one for every four days a question goes unseen; 5 is held.</span></p>' +
+      '<div class="nr-lv">' + levels.map((c, l) => '<div class="nr-lv-c"><span class="nr-lv-b" style="height:' + Math.max(3, Math.round(c / mx * 54)) + 'px"></span><b>' + c + '</b><small>L' + l + '</small></div>').join('') + '</div>';
+  }
   document.querySelectorAll('[data-due-state]').forEach(el => {
     const want = el.getAttribute('data-due-state');
     el.hidden = want === 'ready' ? dueAll === 0 : want === 'empty-new' ? !(dueAll === 0 && tracked === 0) : want === 'empty-done' ? !(dueAll === 0 && tracked > 0) : false;
