@@ -777,6 +777,8 @@
         '<b>' + escapeHtml(currentUser.email || 'Signed in') + '</b>' +
         '<small id="accountMenuState" aria-live="polite">' + escapeHtml(syncStatusText()) + '</small>' +
       '</div>' +
+      // Profile (owner 2026-11-13, docs/progress-profile.md): level, streak, badges, certificates and backup.
+      '<a role="menuitem" href="/profile.html" id="accountProfileLink">Profile</a>' +
       '<a role="menuitem" href="/account.html" id="accountPageLink">Account &amp; Premium</a>' +
       // Answer sounds and dark mode live here while signed in (owner 2026-11-07); the header's own toggles stay
       // the source of truth, so these just press them.

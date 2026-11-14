@@ -650,7 +650,8 @@
 
     function chip(className, id, title, inner_){
       var el = document.createElement(href ? 'a' : 'span');
-      if(href) el.setAttribute('href', href);
+      // Level and streak live on Profile now (docs/progress-profile.md), whatever page the chips sit on.
+      if(href) el.setAttribute('href', '/profile.html');
       el.className = className;
       el.id = id;
       el.title = title;

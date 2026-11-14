@@ -41,6 +41,7 @@ export const TARGETS = [
   'assets/hub-home.js',
   'assets/invite.js',
   'assets/reminders.js',
+  'assets/profile.js',
   // index.html: its only block fed the homepage level card, removed by the owner 2026-11-07.
   'offline.html',
 ];
