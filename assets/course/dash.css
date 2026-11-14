@@ -366,3 +366,5 @@
   .d5v2 .d5-facts,.d5v2 .d5-facts.n4{grid-template-columns:1fr 1fr;row-gap:12px;}
   .d5v2 .d5-fact:nth-child(odd){border-left:0;padding-left:0;}
 }
+.d5 a.d5-hr-n{text-decoration:none;color:var(--ink);}
+.d5 a.d5-hr-n:hover{text-decoration:underline;color:var(--accent-text,var(--accent));}

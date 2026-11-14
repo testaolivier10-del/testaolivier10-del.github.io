@@ -146,7 +146,7 @@
     if(p.goal){
       var yg = y(p.goal.pct);
       s += '<line class="d5-goal" x1="' + L + '" y1="' + f(yg) + '" x2="' + R + '" y2="' + f(yg) + '"/>';
-      s += '<text class="d5-goal-t" x="' + (L + 4) + '" y="' + f(yg - 7) + '" font-size="' + hand + '">' + esc(narrow || simple ? p.goal.pct + '% goal' : p.goal.label) + '</text>';
+      s += '<text class="d5-goal-t" x="' + (L + 4) + '" y="' + f(yg - 7) + '" font-size="' + hand + '">' + esc(narrow || simple ? p.goal.pct + '% right' : p.goal.label) + '</text>';
     }
     // weekly accuracy
     var here = null, weekPts = [];
@@ -533,11 +533,11 @@
     var w = p.weeks || [], line;
     if(w.length >= 2){
       var a = w[0].pct, b = w[w.length - 1].pct, span = Math.max(1, Math.round((w[w.length - 1].t - w[0].t) / (7 * DAY)));
-      line = '<b>' + (b - a >= 3 ? 'Up from ' + a + '% to ' + b + '% right' : a - b >= 3 ? 'Down from ' + a + '% to ' + b + '% right' : 'Steady at ' + b + '% right') + '</b> over ' + plural(span, 'week') + '.';
+      line = '<b>' + (b - a >= 3 ? 'Up ' + (b - a) + ' points' : a - b >= 3 ? 'Down ' + (a - b) + ' points' : 'Steady') + '</b> in % right over ' + plural(span, 'week') + '.';
     } else line = '<b>' + esc(tr.head || '') + '</b>';
     if(tr.goalAt){
       var ex = p.examDate && p.examDate.t > Date.now() ? p.examDate.t : null, lead = ex ? Math.round((ex - tr.goalAt.t) / (7 * DAY)) : null;
-      line += ' <span class="d5-mut">At this pace, ' + p.goal.pct + '% by ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam' : lead !== null && lead <= 0 ? ', after your exam date' : '') + '.</span>';
+      line += ' <span class="d5-mut">At this pace, ' + p.goal.pct + '% right by ' + shortDate(tr.goalAt.t) + (lead && lead > 0 ? ', ' + plural(lead, 'week') + ' before your exam' : lead !== null && lead <= 0 ? ', after your exam date' : '') + '.</span>';
     }
     var sp = Object.assign({}, p, { simple: true });
     html += '<p class="d5-tr-l">' + line + '</p>' + chart(sp, tr, 620, 260, false) + chart(sp, tr, 360, 220, true);
@@ -579,9 +579,10 @@
       if(r.cost) sub.push(r.cost);
       if(r.sub) sub.push(r.sub);
     }
-    (r.links || []).forEach(function(l){ sub.push('<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'); });
+    var notes = null;
+    (r.links || []).forEach(function(l){ if(!notes && /^notes$/i.test(l.label)){ notes = l; return; } sub.push('<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'); });
     var num = r.off || r.pct == null ? '' : '<b>' + r.pct + '%</b>' + (r.word && r.word !== 'right' ? '<small>' + esc(r.word) + '</small>' : '');
-    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m"><b class="d5-hr-n">' + esc(r.name) + '</b>' +
+    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m">' + (notes ? '<a class="d5-hr-n" href="' + esc(notes.href) + '" title="Notes">' + esc(r.name) + '</a>' : '<b class="d5-hr-n">' + esc(r.name) + '</b>') +
       (r.off || r.bar == null ? '' : '<span class="d5-bar d5-hr-bar"><i class="' + esc(r.tier || '') + '" style="width:' + Math.round(Math.max(0, Math.min(1, r.bar)) * 100) + '%"></i></span>') +
       (sub.length ? '<span class="d5-hr-s">' + sub.join(' &middot; ') + '</span>' : '') + '</div>' +
       '<span class="d5-hr-p">' + num + '</span><span class="d5-gain" title="what this adds to the number above">' + esc(r.gain || '') + '</span>' +
@@ -611,9 +612,10 @@
     // The status was written as a lowercase hand line; as the band's sub line it starts with a capital.
     if(hand && b.status) hand.textContent = hand.hasAttribute('data-d5-status') ? b.status.charAt(0).toUpperCase() + b.status.slice(1) : b.status;
     // Owner 2026-11-07: the level chip left the band (it crowded the status line). Owner 2026-11-13: level and streak
-    // live on Profile now, so the band carries one small link to it under the status.
+    // live on Profile now.
     var old = main.querySelector('.band .d5-lvl-row'); if(old) old.remove();
-    if(hand && b.level){
+    // Owner 2026-11-14: dropped; the top bar's level and streak chips show the same and open Profile.
+    if(hand && b.level && false){
       var row = document.createElement('p'); row.className = 'd5-lvl-row';
       row.innerHTML = '<a class="d5-pf" href="/profile.html">Level ' + b.level.level + (b.streak ? ' &middot; ' + plural(b.streak, 'day') + ' streak' : '') + ' &middot; Profile &rarr;</a>';
       hand.parentNode.insertBefore(row, hand.nextSibling);

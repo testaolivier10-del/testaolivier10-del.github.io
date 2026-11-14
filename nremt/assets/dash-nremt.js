@@ -174,8 +174,8 @@
     var examFact = { big: examIso ? plural(daysLeft, 'day') : 'Set date', label: examIso ? 'to your exam, ' + D.shortDate(examT) : 'exam day', button: 'd5ExamCard' };
     var facts = [examFact];
     if(pace) facts.push({ big: pace + ' s', label: 'a question, ' + (pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'on pace' : pace <= EXAM_SECONDS_PER_Q ? 'tight' : 'too slow') + ' (' + EXAM_SECONDS_PER_Q + ' s)' });
-    if(history.length){ var bestE = Math.max.apply(null, history.map(function(x){ return Math.round(x.score / x.total * 100); })); facts.push({ big: bestE + '%', label: 'best of ' + plural(history.length, 'exam'), href: 'exams.html' }); }
-    else facts.push({ big: 'Full exam', label: 'take one', href: 'exams.html' });
+    // Owner 2026-11-14: no best exam here; the last exams sit under the chart beside it.
+    if(!history.length) facts.push({ big: 'Full exam', label: 'take one', href: 'exams.html' });
     var ready = { badge: G.badge(), facts: facts, slot: 'd5ExamCard', foot: 'From your practice answers. Not a chance of passing.' };
     if(!canReady){
       ready.lockRow = { text: '<b>Readiness estimate</b>: your expected score on the real exam, by domain', href: '../premium.html#nremt' };
@@ -208,7 +208,7 @@
     var progress = {
       weeks: weeks, exams: history.map(function(x){ return { t: x.date, pct: Math.round(x.score / x.total * 100) }; }),
       examWord: 'full exams', firstExamWord: 'first full exam',
-      goal: { pct: GOAL, label: GOAL + '%, on track', key: 'on track: 80% on a full exam' },
+      goal: { pct: GOAL, label: GOAL + '% right', key: GOAL + '% right' },
       examDate: examT ? { t: examT } : null, allHref: history.length ? 'exams.html' : null, allText: 'Exams',
       recent: history.slice(-3).reverse().map(function(x){ return { big: Math.round(x.score / x.total * 100) + '%', sub: fmtD(x.date) }; }),
       empty: overallPct === null ? 'Your line starts with your first answers.' : 'So far: ' + overallPct + '% on ' + plural(allTotal, 'answer') + '. Your weekly line starts now.'
