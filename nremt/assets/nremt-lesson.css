@@ -64,7 +64,7 @@
 .nl-hint{flex:1;font:700 13.5px var(--font-ui);color:var(--muted);text-align:right;}
 .nl-back,.nl-go{min-height:44px;padding:0 18px;border-radius:12px;font:900 15px var(--font-ui);cursor:pointer;}
 .nl-back{background:none;border:2px solid var(--line);color:var(--ink);}
-.nl-go{margin-left:auto;background:var(--gold,#FFD23F);border:0;color:var(--gold-ink,#0B1A33);}
+.nl-go{margin-left:auto;background:var(--gold,var(--gold));border:0;color:var(--gold-ink,#0B1A33);}
 .nl-hint:empty + .nl-go{margin-left:auto;}
 .nl-go:disabled{opacity:.5;cursor:not-allowed;}
 .nl-back[hidden],.nl-go[hidden]{display:none;}

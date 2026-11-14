@@ -260,10 +260,10 @@ body[data-course="anp"] .cx-feat{--feat-hi:#F2B9A9;}
 .course-banner .cv-t{position:absolute;left:32px;top:50%;transform:translateY(-50%);max-width:52%;color:#fff;}
 .course-banner .cv-t b{display:block;font:900 clamp(26px,3.4vw,40px)/.95 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.035em;}
 .course-banner .cv-t b span{display:block;color:var(--cac,#2EE6D6);}
-.course-banner .cv-t em{display:block;margin-top:8px;font:700 clamp(16px,1.8vw,21px)/1.15 'Kalam','Nunito',cursive;font-style:normal;color:#FFD23F;}
+.course-banner .cv-t em{display:block;margin-top:8px;font:700 clamp(16px,1.8vw,21px)/1.15 'Kalam','Nunito',cursive;font-style:normal;color:var(--gold);}
 [data-cover="nremt"]{--cbg:#0D3B36;--cac:#2EE6D6;}[data-cover="ochem"]{--cbg:#241A63;--cac:#A18FFF;}[data-cover="anp"]{--cbg:#4A1A1F;--cac:#FF8A6B;}
 [data-cover="apbio"]{--cbg:#1B4422;--cac:#7CCB6B;}[data-cover="apchem"]{--cbg:#1A2C78;--cac:#8FAEFF;}[data-cover="apphys"]{--cbg:#2A1D06;--cac:#FFB21E;}
-[data-cover="apcalc"]{--cbg:#4A1230;--cac:#FF5C9A;}[data-cover="apcalcbc"]{--cbg:#34104C;--cac:#C88CFF;}[data-cover="apstat"]{--cbg:#0E3A52;--cac:#5CC8F0;}[data-cover="apenv"]{--cbg:#22400F;--cac:#A6DB5C;}[data-cover="appsych"]{--cbg:#07608A;--cac:#FFD23F;}[data-cover="apprecalc"]{--cbg:#0B4A33;--cac:#8AF0C0;}[data-cover="apmacro"]{--cbg:#2E4D0C;--cac:#C8F07A;}[data-cover="aphug"]{--cbg:#7A3310;--cac:#8FE3EE;}
+[data-cover="apcalc"]{--cbg:#4A1230;--cac:#FF5C9A;}[data-cover="apcalcbc"]{--cbg:#34104C;--cac:#C88CFF;}[data-cover="apstat"]{--cbg:#0E3A52;--cac:#5CC8F0;}[data-cover="apenv"]{--cbg:#22400F;--cac:#A6DB5C;}[data-cover="appsych"]{--cbg:#07608A;--cac:var(--gold);}[data-cover="apprecalc"]{--cbg:#0B4A33;--cac:#8AF0C0;}[data-cover="apmacro"]{--cbg:#2E4D0C;--cac:#C8F07A;}[data-cover="aphug"]{--cbg:#7A3310;--cac:#8FE3EE;}
 [data-cover="apmicro"]{--cbg:#3D0C35;--cac:#FF9BDF;}
 @media (max-width:640px){
   .course-banner{height:118px;border-radius:16px;margin-bottom:14px;}
@@ -277,7 +277,7 @@ body:has(.course-banner),body:has(.ch-home){background-image:linear-gradient(rgb
 /* ===== Course home, round 2 (docs/site-redesign.md, mockups S01 and S02) =====
    Markup from scripts/lib/course-home.mjs. The channel colors are local tokens with dark values, as on the
    homepage; the cover art keeps its own colors (data-cover) in both themes. */
-.ch-home{--chan:#0B1A33;--chan-press:#16284A;--on-chan:#fff;--gold:#FFD23F;--on-gold:#0B1A33;--hand:var(--amber-text);
+.ch-home{--chan:#0B1A33;--chan-press:#16284A;--on-chan:#fff;--gold:var(--gold);--on-gold:#0B1A33;--hand:var(--amber-text);
   --display:'Inter Display','Nunito',system-ui,sans-serif;--ch-r:22px;}
 :root[data-theme="dark"] .ch-home{--chan:#2EE6D6;--chan-press:#7FF0E6;--on-chan:#081428;--hand:#F2C14E;}
 .ch-home .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
@@ -435,7 +435,7 @@ body:has(.course-banner),body:has(.ch-home){background-image:linear-gradient(rgb
 .r3-home .lp-h2{font:900 28px/1.05 var(--lp-dp);letter-spacing:-.035em;margin:8px 0 6px;color:var(--ink)}
 .r3-home .lp-h2 span,.lp-make h3 span{color:var(--lp-ac)}
 .r3-home .lp-p{margin:0;color:var(--muted);font:700 15px/1.45 var(--font-ui)}
-.r3-home .lp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:12px;border:0;cursor:pointer;font:900 16px var(--font-ui);text-decoration:none;background:#FFD23F;color:#0B1A33}
+.r3-home .lp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:12px;border:0;cursor:pointer;font:900 16px var(--font-ui);text-decoration:none;background:var(--gold);color:#0B1A33}
 .r3-home .lp-btn.sm{min-height:40px;padding:0 14px;font-size:14.5px}
 .lp-selc h3{font:900 25px/1.12 var(--lp-dp);letter-spacing:-.025em;margin:6px 0 12px;color:var(--ink)}
 .lp-selc .act{display:flex;flex-direction:column;gap:12px}
@@ -449,7 +449,7 @@ body:has(.course-banner),body:has(.ch-home){background-image:linear-gradient(rgb
 .lp-u{margin-top:14px}
 .lp-uh{list-style:none;display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:18px;background:var(--white);border:1px solid var(--line);box-shadow:0 6px 18px rgba(11,26,51,.05);cursor:pointer}
 .lp-uh::-webkit-details-marker{display:none}
-.lp-uh.cur{box-shadow:inset 0 0 0 2px #FFD23F,0 6px 18px rgba(11,26,51,.05)}
+.lp-uh.cur{box-shadow:inset 0 0 0 2px var(--gold),0 6px 18px rgba(11,26,51,.05)}
 .lp-uh:focus-visible{outline:3px solid var(--lp-ac);outline-offset:3px}
 .lp-uh .n{font:900 34px/1 var(--lp-dp);letter-spacing:-.04em;color:var(--lp-ac);min-width:46px}
 .lp-uh .n:empty{display:none}
@@ -490,7 +490,7 @@ body:has(.course-banner),body:has(.ch-home){background-image:linear-gradient(rgb
 .lp-prem .pp-day{display:block;font-weight:700;margin-top:2px}
 .lp-prem .pp-day:empty,.lp-prem .pp-msg:empty{display:none}
 .lp-prem .pp-actions{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0}
-.lp-prem .pp-cta{background:var(--gold,#FFD23F);color:var(--gold-ink,#0B1A33);border:0;box-shadow:none;font:900 17px var(--font-ui);padding:14px 24px;min-height:52px;border-radius:14px;cursor:pointer}
+.lp-prem .pp-cta{background:var(--gold,var(--gold));color:var(--gold-ink,#0B1A33);border:0;box-shadow:none;font:900 17px var(--font-ui);padding:14px 24px;min-height:52px;border-radius:14px;cursor:pointer}
 .lp-prem a{color:var(--accent-text,var(--accent));font-weight:800}
 .lp-prem .pp-guarantee{background:var(--tint-accent);border-radius:14px;padding:12px 14px}
 @media (max-width:640px){.lp-prem .pp-course{padding:2px 16px 18px}.lp-prem .pp-cover{width:52px;height:52px}.lp-prem .pp-buy{justify-items:stretch}.lp-prem .pp-cta{width:100%}}

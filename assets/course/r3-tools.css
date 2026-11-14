@@ -38,7 +38,7 @@
 .r3 a.r3-tool .cx-tool-name{font-family:var(--font-ui)}
 .r3 .r3-feat{margin:0 0 40px;grid-template-columns:minmax(0,1fr) minmax(0,46%);gap:28px;padding:26px 28px}
 .r3 .r3-feat h2.cname{font:900 26px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:#fff}
-.r3 .r3-feat .hand{color:#FFD23F;margin:6px 0 8px;font-size:22px}
+.r3 .r3-feat .hand{color:var(--gold);margin:6px 0 8px;font-size:22px}
 .r3 .r3-feat .cdesc{font-size:15.5px;margin:0 0 16px;max-width:34em}
 .r3 .r3-feat .credit{font-size:12.5px;line-height:1.45}
 .r3 .r3-feat .fig.tcfig{border-radius:14px}

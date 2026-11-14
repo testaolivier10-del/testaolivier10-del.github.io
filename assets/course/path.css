@@ -14,7 +14,7 @@ body[data-course="apcalc"]{--lp-ac:#8C1036;--lp-ct:#FCE8EE;--lp-bg:#4A1230;--lp-
 body[data-course="apcalcbc"]{--lp-ac:#5A1E96;--lp-ct:#F1E7FA;--lp-bg:#34104C;--lp-ba:#C88CFF}
 body[data-course="apstat"]{--lp-ac:#6E2470;--lp-ct:#F5E6F4;--lp-bg:#0E3A52;--lp-ba:#5CC8F0}
 body[data-course="apenv"]{--lp-ac:#474A10;--lp-ct:#EFF0DA;--lp-bg:#22400F;--lp-ba:#A6DB5C}
-body[data-course="appsych"]{--lp-ac:#084F78;--lp-ct:#E3F0F8;--lp-bg:#07608A;--lp-ba:#FFD23F}
+body[data-course="appsych"]{--lp-ac:#084F78;--lp-ct:#E3F0F8;--lp-bg:#07608A;--lp-ba:var(--gold)}
 body[data-course="apprecalc"]{--lp-ac:#11592F;--lp-ct:#E3F3E8;--lp-bg:#0B4A33;--lp-ba:#8AF0C0}
 body[data-course="apmacro"]{--lp-ac:#355A0A;--lp-ct:#EEF4E0;--lp-bg:#2E4D0C;--lp-ba:#C8F07A}
 body[data-course="apmicro"]{--lp-ac:#7E1A5E;--lp-ct:#F8E6F1;--lp-bg:#3D0C35;--lp-ba:#FF9BDF}
@@ -28,7 +28,7 @@ body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-b
 .lp-row{display:flex;gap:12px 16px;align-items:center;flex-wrap:wrap}
 .lp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:12px;border:0;cursor:pointer;font:900 16px var(--font-ui);text-decoration:none;background:#0B1A33;color:#fff}
 .lp-btn:hover{background:#16284A;color:#fff}
-.lp-btn.gold{background:#FFD23F;color:#0B1A33}
+.lp-btn.gold{background:var(--gold);color:#0B1A33}
 .lp-btn.gold:hover{background:#FFDB66;color:#0B1A33}
 .lp-btn.ghost{background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
 .lp-btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--muted)}
@@ -55,7 +55,7 @@ body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-b
 /* stop details */
 .lp-det{display:grid;grid-template-columns:minmax(0,1.3fr) auto auto;gap:14px 26px;align-items:center;background:var(--lp-bg);color:#fff;border-radius:18px;padding:22px 24px;margin-top:20px;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:36px 36px}
 .lp-det .tx{min-width:0;display:flex;flex-direction:column;gap:6px}
-.lp-det .lp-k{color:#FFD23F}
+.lp-det .lp-k{color:var(--gold)}
 .lp-det h3{font:900 25px/1.1 var(--lp-dp);letter-spacing:-.03em;margin:0;color:#fff}
 .lp-det p{margin:0;color:rgba(255,255,255,.8);font:600 15px/1.45 var(--font-ui)}
 .lp-det .free{color:var(--lp-ba);font:800 13.5px var(--font-ui)}
@@ -133,7 +133,7 @@ body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-b
 #lpEnd .lp-det{grid-template-columns:1fr;gap:12px;padding:18px 20px;border-radius:16px}
 #lpEnd .lp-det h3{font:900 20px/1.2 var(--lp-dp)!important;letter-spacing:-.02em!important;margin:0!important;color:#fff!important}
 #lpEnd .lp-det p{font:600 14.5px/1.45 var(--font-ui)!important;margin:0!important;color:rgba(255,255,255,.82)!important}
-#lpEnd .lp-det .lp-k{font:800 11.5px var(--font-ui)!important;color:#FFD23F!important}
+#lpEnd .lp-det .lp-k{font:800 11.5px var(--font-ui)!important;color:var(--gold)!important}
 #lpEnd .lp-det .act{flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 16px}
 #lpEnd .lp-steps{flex-direction:row;flex-wrap:wrap;gap:6px 16px}
 #lpEnd .lp-steps a,#lpEnd .lp-det .lp-link{color:#fff!important}
@@ -174,8 +174,8 @@ body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-b
 .lp-map .c{min-width:40px;height:34px;padding:0 6px;border:0;border-radius:9px;cursor:pointer;font:800 12px var(--font-ui);background:#EEF1F5;color:#33404F}
 .lp-map .c.skill{background:transparent;box-shadow:inset 0 0 0 1.5px #B9A3E8;color:#6D28D9}
 .lp-map .c.done{background:var(--lp-ac);color:#fff;box-shadow:none}
-.lp-map .c.now{background:#FFD23F;color:#0B1A33;box-shadow:none}
-.lp-map .c.test,.lp-map .c.exam{background:#0B1A33;color:#FFD23F}
+.lp-map .c.now{background:var(--gold);color:#0B1A33;box-shadow:none}
+.lp-map .c.test,.lp-map .c.exam{background:#0B1A33;color:var(--gold)}
 .lp-map .c.sel{outline:2px solid var(--ink);outline-offset:2px}
 .lp-tr{position:relative}
 .lp-tr > svg{position:absolute;left:0;top:0;overflow:visible}
@@ -188,9 +188,9 @@ body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-b
 .lp-s.skill .dot{border:2px dashed #B9A3E8;color:#6D28D9}
 .lp-s.mix .dot{border-radius:16px;width:54px;height:54px;border:0;background:#E8EEFC;color:#1D4ED8}
 .lp-s.review .dot{border:5px solid #F1D3F6;color:#A21CAF}
-.lp-s.test .dot,.lp-s.exam .dot{width:72px;height:72px;border-radius:20px;border:0;background:#0B1A33;color:#FFD23F;box-shadow:0 5px 0 #000}
+.lp-s.test .dot,.lp-s.exam .dot{width:72px;height:72px;border-radius:20px;border:0;background:#0B1A33;color:var(--gold);box-shadow:0 5px 0 #000}
 .lp-s.done .dot{background:var(--lp-ac);border:0;color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.22);border-radius:50%;width:56px;height:56px}
-.lp-s.now .dot{width:82px;height:82px;border-radius:50%;background:#FFD23F;border:7px solid #FFF3C4;color:#0B1A33;box-shadow:0 5px 0 #C9A100,0 10px 24px rgba(201,161,0,.25)}
+.lp-s.now .dot{width:82px;height:82px;border-radius:50%;background:var(--gold);border:7px solid #FFF3C4;color:#0B1A33;box-shadow:0 5px 0 #C9A100,0 10px 24px rgba(201,161,0,.25)}
 .lp-s.sel .dot{outline:3px solid var(--ink);outline-offset:5px}
 .lp-s:focus-visible .dot{outline:3px solid var(--lp-ac);outline-offset:5px}
 .lp-sl{position:absolute;margin:0;transform:translateY(-50%);width:220px;max-width:calc(100% - 20px);font:700 15px/1.25 var(--font-ui);color:var(--ink);pointer-events:none}
@@ -207,7 +207,7 @@ body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-b
 :root[data-theme="dark"] .lp-s.mix:not(.done):not(.now) .dot{background:rgba(143,174,255,.18);color:#8FAEFF}
 :root[data-theme="dark"] .lp-s.review:not(.done):not(.now) .dot{border-color:rgba(240,171,252,.35);color:#F0ABFC}
 :root[data-theme="dark"] .lp-s.done .dot{color:#0B1A33}
-:root[data-theme="dark"] .lp-s.test .dot,:root[data-theme="dark"] .lp-s.exam .dot{box-shadow:0 0 0 2px #FFD23F}
+:root[data-theme="dark"] .lp-s.test .dot,:root[data-theme="dark"] .lp-s.exam .dot{box-shadow:0 0 0 2px var(--gold)}
 .lp-s.sel.now .dot{outline:none}
 
 /* The end of each topic in the textbook (renderBook): one small line, in the .rt-end strip. */
