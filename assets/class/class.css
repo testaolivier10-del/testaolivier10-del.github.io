@@ -9,7 +9,7 @@
 [data-cover="apcalcbc"]{--accent:#5A1E96;--ctint:#F1E7FA;--bac:#C88CFF}
 [data-cover="apstat"]{--accent:#6E2470;--ctint:#F5E6F4;--bac:#5CC8F0}
 [data-cover="apenv"]{--accent:#474A10;--ctint:#EFF0DA;--bac:#A6DB5C}
-[data-cover="appsych"]{--accent:#084F78;--ctint:#E3F0F8;--bac:#FFD23F}
+[data-cover="appsych"]{--accent:#084F78;--ctint:#E3F0F8;--bac:var(--gold)}
 [data-cover="apprecalc"]{--accent:#11592F;--ctint:#E3F3E8;--bac:#8AF0C0}
 [data-cover="apmacro"]{--accent:#355A0A;--ctint:#EEF4E0;--bac:#C8F07A}
 [data-cover="apmicro"]{--accent:#7E1A5E;--ctint:#F8E6F1;--bac:#FF9BDF}

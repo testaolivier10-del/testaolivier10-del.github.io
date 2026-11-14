@@ -25,7 +25,7 @@ body:has(.r3-inner) > [data-crumb]{display:none}
 .r3-inner .r3-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
 .r3-inner .r3-card a{color:var(--accent-text)}
 .r3-inner .r3-navy{background:var(--r3-navy);color:#fff;border-radius:20px;padding:20px 22px;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px}
-.r3-inner .r3-navy .kicker{color:#FFD23F}
+.r3-inner .r3-navy .kicker{color:var(--gold)}
 .r3-inner .r3-navy p{color:#C4D1E8;font-size:14px;margin:12px 0 0}
 .r3-inner .r3-navy a{color:#fff}
 
@@ -34,7 +34,7 @@ body:has(.r3-inner) > [data-crumb]{display:none}
 .r3-inner .r3-rail{display:grid;gap:14px;position:sticky;top:16px}
 .r3-inner .r3-railbtns{display:grid;gap:8px}
 .r3-inner .r3-railbtns a{display:block;text-align:center;text-decoration:none;font:900 15px var(--font-ui);padding:11px 14px;border-radius:12px}
-.r3-inner .r3-railbtns .btn-gold{background:#FFD23F;color:#0B1A33}
+.r3-inner .r3-railbtns .btn-gold{background:var(--gold);color:#0B1A33}
 .r3-inner .r3-railbtns .btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
 .r3-inner .r3-railbtns .btn-line:hover{box-shadow:inset 0 0 0 1.5px #fff}
 .r3-inner .r3-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px!important}
@@ -90,7 +90,7 @@ body:has(.r3-inner) > [data-crumb]{display:none}
 
 /* the rail: "Your numbers" and its tiles on navy, then white cards */
 .r3-inner .cx-rail{display:grid;gap:12px}
-.r3-inner .cx-rail > .cx-rail-h{margin:0 0 -12px;padding:18px 20px 10px;background:var(--r3-navy);border-radius:20px 20px 0 0;color:#FFD23F;font:900 12px var(--font-ui);letter-spacing:.1em}
+.r3-inner .cx-rail > .cx-rail-h{margin:0 0 -12px;padding:18px 20px 10px;background:var(--r3-navy);border-radius:20px 20px 0 0;color:var(--gold);font:900 12px var(--font-ui);letter-spacing:.1em}
 .r3-inner .cx-rail > .cx-stats{background:var(--r3-navy);border-radius:0 0 20px 20px;padding:0 14px 14px;gap:8px;box-shadow:none}
 .r3-inner .cx-rail > .cx-stats .cx-stat{background:rgba(255,255,255,.07);border-radius:12px;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .r3-inner .cx-rail > .cx-stats .cx-stat *{color:inherit}
@@ -187,9 +187,9 @@ body:has(.r3-inner) > [data-crumb]{display:none}
 .r3-dashboard .r3-db-premium .premium-card *{color:inherit}
 .r3-dashboard .r3-db-premium .premium-card b{font:900 24px/1.2 var(--display);letter-spacing:-.02em;display:block;margin:6px 0 8px}
 .r3-dashboard .r3-db-premium .premium-card p{font-size:14.5px;opacity:.9}
-.r3-dashboard .r3-db-premium .premium-card__price{color:#FFD23F!important;font:900 18px var(--font-ui)!important}
-.r3-dashboard .r3-db-premium .premium-card .btn-press{background:#FFD23F;color:#0B1A33;box-shadow:none;border-radius:12px}
-.r3-dashboard .r3-db-premium .premium-card .premium-badge,.r3-dashboard .r3-db-premium .premium-card .cx-kicker{color:#FFD23F}
+.r3-dashboard .r3-db-premium .premium-card__price{color:var(--gold)!important;font:900 18px var(--font-ui)!important}
+.r3-dashboard .r3-db-premium .premium-card .btn-press{background:var(--gold);color:#0B1A33;box-shadow:none;border-radius:12px}
+.r3-dashboard .r3-db-premium .premium-card .premium-badge,.r3-dashboard .r3-db-premium .premium-card .cx-kicker{color:var(--gold)}
 .r3-dashboard .r3-db-premium .premium-card.is-joined{background:var(--tint-good);color:var(--ink);background-image:none}
 /* a section with only one part filled runs full width */
 .r3-dashboard .r3-db-two:has(> div:empty){grid-template-columns:1fr}
@@ -228,7 +228,7 @@ body:has(.r3-exams > #quizScreen[style*="grid"]) .r3-focusbar{display:block;posi
 .r3-exams > #quizScreen #timerBar{background:var(--r3-navy);color:#fff;padding:16px 18px;margin:0 0 14px;border:0;border-radius:0}
 .r3-exams > #quizScreen #timerBar .timer-row{display:block}
 .r3-exams > #quizScreen #timerBar .timer-row > span:first-child{display:block;font:900 11.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:#B9C8E2}
-.r3-exams > #quizScreen #timerBar .time-remaining{display:block;font:900 44px/1.05 var(--display);letter-spacing:-.03em;color:#FFD23F;font-variant-numeric:tabular-nums}
+.r3-exams > #quizScreen #timerBar .time-remaining{display:block;font:900 44px/1.05 var(--display);letter-spacing:-.03em;color:var(--gold);font-variant-numeric:tabular-nums}
 .r3-exams > #quizScreen #timerBar .pace-line{display:inline-block;margin-top:6px;font:800 12px var(--font-ui);color:#2EE6D6;background:rgba(46,230,214,.12);border-radius:8px;padding:4px 8px}
 .r3-exams > #quizScreen .quiz-side > :not(#timerBar){margin-left:18px;margin-right:18px}
 
@@ -247,7 +247,7 @@ body:has(.r3-exams > #quizScreen[style*="grid"]) .r3-focusbar{display:block;posi
 .r3-exams > #resultsScreen .results-side{grid-area:side;display:grid;gap:14px;align-content:start}
 .r3-exams > #resultsScreen .results-main{grid-area:main}
 .r3-exams > #resultsScreen .score-card{background:var(--r3-navy);color:#fff;border-radius:22px;padding:20px 22px}
-.r3-exams > #resultsScreen .score-card .big{font:900 64px/1 var(--display);letter-spacing:-.04em;color:#FFD23F}
+.r3-exams > #resultsScreen .score-card .big{font:900 64px/1 var(--display);letter-spacing:-.04em;color:var(--gold)}
 .r3-exams > #resultsScreen .score-card .sub{color:#C4D1E8}
 .r3-exams > #resultsScreen .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
 .r3-exams > #resultsScreen .filter-row button{border-radius:999px}

@@ -9,7 +9,7 @@
   --grid:rgba(20,40,60,.035);
   --chan:#0B1A33;--chan-press:#16284A;--on-chan:#FFFFFF;
   --panel:#0B1A33;--panel-ink:#FFFFFF;--panel-muted:#B9C8E2;--panel-line:rgba(255,255,255,.16);
-  --gold:#FFD23F;--gold-ink:#0B1A33;--teal-hi:#2EE6D6;
+  --gold:var(--gold);--gold-ink:#0B1A33;--teal-hi:#2EE6D6;
   --hand:var(--amber-text);
   --display:'Inter Display','Nunito',system-ui,sans-serif;
   --hand-font:'Kalam','Nunito',system-ui,sans-serif;

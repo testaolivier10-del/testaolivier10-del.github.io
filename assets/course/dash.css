@@ -2,7 +2,7 @@
    Scoped to .d5. Course colour comes from the page's data-cover (assets/course/r3.css: --accent, --ctint, --bbg,
    --bac); neutrals from assets/theme.css, so dark mode follows. Fonts: Inter Display for the questions, Kalam for
    the handwritten notes (both in assets/fonts/fonts.css). */
-.d5{--d5-navy:#0B1A33;--d5-gold:#FFD23F;--d5-loss:#D9694F;--d5-loss-t:#B4412F;--d5-warm:#FCE8E3;--d5-cool:var(--ctint);max-width:900px;margin:0 auto;padding:6px 0 0;}
+.d5{--d5-navy:#0B1A33;--d5-gold:var(--gold);--d5-loss:#D9694F;--d5-loss-t:#B4412F;--d5-warm:#FCE8E3;--d5-cool:var(--ctint);max-width:900px;margin:0 auto;padding:6px 0 0;}
 :root[data-theme="dark"] .d5{--d5-navy:#0B1528;--d5-loss:#E07A62;--d5-loss-t:#F0A08C;--d5-warm:rgba(224,122,98,.16);}
 .d5 a{color:var(--accent-text,var(--accent));}
 .d5-sec{margin:56px 0 0;}

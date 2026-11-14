@@ -207,10 +207,12 @@ const SHELL_BUDGETS = [
   /* 349.8 -> 352 (reminders offered in every course, owner 2026-11-10, docs/reminders.md): reminders.js reads what
      is due in every course, offers email where push cannot work and asks once after a new account. Measured 350.8 KB
      with fourteen courses; with AP® Human Geography in its course list as well, see the launch log. */
-  /* 352 -> 354.2 (Progress and Profile, owner 2026-11-13, docs/progress-profile.md): assets/profile.js (loaded only
-     by profile.html, but every file in /assets counts here) and the Profile entry in both menus. Measured 353.5 KB in
-     CI with main's newer commits merged. */
-  ['site', 354.2],
+  /* 352 -> 353.5 (the daily limit card, owner 2026-11-13, docs/trust-conversion-plan.md): limitCard() in premium.js
+     and its .premium-limit styles in theme.css, plus the --gold token. The old card's score and tomorrow lines were
+     removed. Measured 353.2 KB.
+     353.5 -> 353.8 (Progress and Profile, owner 2026-11-13, docs/progress-profile.md): assets/profile.js (loaded
+     only by profile.html, but every file in /assets counts here) and the Profile entry in both menus. Measured 353.5 KB. */
+  ['site', 353.8],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
