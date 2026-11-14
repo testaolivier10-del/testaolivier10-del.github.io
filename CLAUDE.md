@@ -171,6 +171,12 @@ the codes and claims in `scripts/sql/migrations/2026-10m-referrals.sql`, `assets
 `docs/dashboard.md` is the status file: the five-question dashboard every course uses (design F, owner 2026-10-26),
 its files, the daily accuracy log `hub_daily_v1` and what was left out.
 
+## Progress, Profile and readiness (2026-11-13)
+
+`docs/progress-profile.md` is the status file: Progress option 2 (how close, holding back, getting better; nothing
+folded), the Profile page, the readiness model (`assets/course/readiness.js`: difficulty, recency, blueprint, range,
+AP cutoffs), the worker `/qdiff` and `/outcome` routes and the owner's migration step.
+
 ## Guided study path
 
 `docs/guided-path.md` is the status file: the three ways to study, the rules that keep a student from getting stuck,

@@ -81,3 +81,21 @@ test('an area with no answers counts at guessing level when asked (AP: a unit no
   assert.ok(low.value < same.value - 10);
   assert.ok(low.areas.B.pct < 45);
 });
+
+test('worker /outcome keeps only the allowed fields and values', async () => {
+  const { outcomeRoute } = await import('../../worker/src/readiness.js');
+  const sent = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init) => { sent.push({ url: String(url), body: JSON.parse(init.body) }); return { ok: true }; };
+  try {
+    const env = { SUPABASE_URL: 'https://x.supabase.co', SUPABASE_SERVICE_KEY: 'k' };
+    const req = b => ({ json: async () => b });
+    assert.equal((await outcomeRoute(req({ course: 'nremt', result: 'maybe' }), env)).status, 400);
+    assert.equal((await outcomeRoute(req({ course: 'NREMT!', result: 'pass' }), env)).status, 400);
+    const ok = await outcomeRoute(req({ course: 'apbio', result: '4', predicted: 140, lo: -5, hi: 70, band: 9, answers: 120, days: 3, email: 'a@b.c' }), env);
+    assert.equal(ok.status, 200);
+    const row = sent[0].body;
+    assert.match(sent[0].url, /exam_outcomes$/);
+    assert.deepEqual(row, { course: 'apbio', result: '4', predicted: 100, lo: 0, hi: 70, band: 5, answers: 120, days: 3 });
+  } finally { globalThis.fetch = realFetch; }
+});

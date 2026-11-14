@@ -613,87 +613,6 @@ function saveHistoryEntry(entry){
   localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
 }
 
-// Synthesizes full-exam attempt history into a single estimated pass-likelihood
-// number. This is a study-tool heuristic, not a statistical model of the real
-// NREMT (which is computer-adaptive) — it exists to give a rough, single-number
-// signal of "are you there yet," not a certified prediction.
-function computeReadiness(){
-  const history = loadHistory().filter(h => h.total > 0);
-  if(history.length === 0) return {available:false};
-
-  const n = history.length;
-  const pcts = history.map(h => h.score / h.total * 100);
-
-  // Recent attempts matter more than old ones: linear recency weighting.
-  let weightedSum = 0, weightTotal = 0;
-  pcts.forEach((p,i) => { const w = i + 1; weightedSum += p * w; weightTotal += w; });
-  const weightedAvg = weightedSum / weightTotal;
-
-  // Per-domain accuracy aggregated across every mode you've practiced in (full exams,
-  // domain drills, adaptive sessions, review) — not just full-exam attempts — so
-  // targeted practice in a weak area is reflected here even between full exams.
-  const domainAgg = loadDomainStatsAll();
-  let weakestDomain = null, weakestPct = null, penaltyApplied = false;
-  const domainEntries = Object.entries(domainAgg).filter(([,s]) => s.total >= 5);
-  let adjusted = weightedAvg;
-  if(domainEntries.length > 0){
-    const withPct = domainEntries.map(([d,s]) => [d, s.correct / s.total * 100]);
-    withPct.sort((a,b) => a[1] - b[1]);
-    weakestDomain = withPct[0][0];
-    weakestPct = withPct[0][1];
-    const totalCorrect = domainEntries.reduce((a,[,s]) => a + s.correct, 0);
-    const totalQs = domainEntries.reduce((a,[,s]) => a + s.total, 0);
-    const overallDomainPct = totalCorrect / totalQs * 100;
-    // A weak domain drags real readiness down even if the overall average looks fine —
-    // NREMT requires competency across content areas, not just a good aggregate score.
-    // Only penalize the gap beyond a normal 15-point spread between domains.
-    const gap = overallDomainPct - weakestPct;
-    if(gap > 15){
-      adjusted -= (gap - 15) * 0.5;
-      penaltyApplied = true;
-    }
-  }
-  adjusted = Math.max(0, Math.min(100, adjusted));
-
-  // Drill into the weakest domain one level further: which sub-topic inside it is
-  // actually dragging it down, so the hint says something actionable ("Toxicology")
-  // instead of just re-naming the domain the user already knows is weak.
-  let weakestTopic = null, weakestTopicPct = null;
-  if(weakestDomain){
-    const topics = subtopicStatsAll()[weakestDomain] || {};
-    const topicEntries = Object.entries(topics).filter(([,s]) => s.total >= 3);
-    if(topicEntries.length > 0){
-      const withPct = topicEntries.map(([t,s]) => [t, s.correct / s.total * 100]);
-      withPct.sort((a,b) => a[1] - b[1]);
-      weakestTopic = withPct[0][0];
-      weakestTopicPct = Math.round(withPct[0][1]);
-    }
-  }
-
-  // Logistic curve centered around ~72% (a commonly cited practice-exam benchmark
-  // for NREMT readiness), so scores well above it read as confident and scores
-  // well below it read as clearly not ready, with a smooth swing in between.
-  const rawProb = 1 / (1 + Math.exp(-0.13 * (adjusted - 72)));
-  // With very few attempts, hedge the estimate toward a neutral 50/50 rather than
-  // reporting false confidence off one data point.
-  const confidence = Math.min(1, n / 5);
-  const blendedProb = rawProb * confidence + 0.5 * (1 - confidence);
-  const probabilityPct = Math.max(2, Math.min(98, Math.round(blendedProb * 100)));
-
-  let label, tier;
-  if(probabilityPct >= 80){ label = 'On track'; tier = 'good'; }
-  else if(probabilityPct >= 55){ label = 'Within reach'; tier = 'mid'; }
-  else { label = 'Needs more practice'; tier = 'low'; }
-
-  return {
-    available: true, probabilityPct, label, tier, attempts: n,
-    weightedAvg: Math.round(weightedAvg),
-    weakestDomain, weakestPct: weakestPct !== null ? Math.round(weakestPct) : null,
-    weakestTopic, weakestTopicPct,
-    penaltyApplied, lowConfidence: n < 3,
-  };
-}
-
 /* The readiness estimate Progress shows (docs/progress-profile.md): every answer in nremt_mastery through
    assets/course/readiness.js, each exam domain weighted by its share of the 2025 exam. Null without the model. */
 function readinessPct(){
@@ -713,43 +632,15 @@ function readinessPct(){
   return e.value == null ? null : e;
 }
 
-function renderReadiness(targetId, opts){
-  opts = opts || {};
+/* The end-of-exam readiness update: the same estimate as Progress (Premium; readiness itself lives only on
+   Progress since 2026-11-13). Nothing without a pass or without answers. */
+function renderReadiness(targetId){
   const el = $id(targetId);
   if(!el) return;
-  // Premium: the score and the domain picture behind it. The history it is
-  // computed from is kept, and the card comes back with a pass.
-  if(!G.canUse('readiness')){
-    el.innerHTML = opts.compact || opts.noGate ? '' : G.gate('readiness', 'readiness');
-    return;
-  }
-  const r = computeReadiness();
-  if(!r.available){
-    el.innerHTML = opts.compact
-      ? `<div class="readiness-update"><div class="r-sub">Take a full practice exam to unlock your estimated readiness score.</div></div>`
-      : `<div class="readiness-empty">Take a full exam to see your readiness score.</div>`;
-    return;
-  }
-  const subParts = [`Recent average ${r.weightedAvg}% across ${r.attempts} full exam${r.attempts===1?'':'s'}`];
-  if(r.weakestDomain){
-    const weakLabel = r.weakestTopic
-      ? `${r.weakestDomain} → ${r.weakestTopic} (${r.weakestTopicPct}%)`
-      : `${r.weakestDomain} (${r.weakestPct}%)`;
-    subParts.push(`weakest area: ${weakLabel}`);
-  }
-  // Not a probability. The number is a smooth curve over this browser's own
-  // practice scores; nobody has checked it against real NREMT outcomes, so it
-  // is named and explained as a readiness scale, never as odds of passing.
-  const note = (r.lowConfidence
-    ? 'Based on very few attempts. Take a few more full exams for a steadier number. '
-    : '') + 'A 0–100 readiness scale from your own practice scores. It is not calibrated against real NREMT results and is not a chance of passing.';
-
-  if(opts.compact){
-    // The same estimate Progress shows (assets/course/readiness.js): an exam percentage, on track at 80%.
-    const p = readinessPct();
-    if(p){
-      const tier = p.value >= 80 ? 'good' : p.value >= 65 ? 'mid' : 'low', label = p.value >= 80 ? 'On track' : p.value >= 65 ? 'Within reach' : 'Needs more practice';
-      el.innerHTML = `
+  const p = G.canUse('readiness') ? readinessPct() : null;
+  if(!p){ el.innerHTML = ''; return; }
+  const tier = p.value >= 80 ? 'good' : p.value >= 65 ? 'mid' : 'low', label = p.value >= 80 ? 'On track' : p.value >= 65 ? 'Within reach' : 'Needs more practice';
+  el.innerHTML = `
       <div class="readiness-update">
         <div class="r-head">
           <span class="r-tag">Updated readiness</span>
@@ -759,65 +650,6 @@ function renderReadiness(targetId, opts){
         <div class="r-sub">Expected score on a full exam, likely ${p.lo}% to ${p.hi}% · on track is 80% · <a href="dashboard.html">Progress</a></div>
       </div>
     `;
-      return;
-    }
-    el.innerHTML = `
-      <div class="readiness-update">
-        <div class="r-head">
-          <span class="r-tag">Updated readiness estimate</span>
-          <span class="r-num">${r.probabilityPct}<small>/100</small></span>
-          <span class="r-label tier-${r.tier}">${r.label}</span>
-        </div>
-        <div class="r-sub">${subParts.join(' · ')}</div>
-      </div>
-    `;
-  } else {
-    el.innerHTML = `
-      <div class="readiness-card">
-        <span class="r-tag">Readiness estimate ${G.badge()}</span>
-        <div class="r-head">
-          <span class="r-num">${r.probabilityPct}<small>/100</small></span>
-          <span class="r-label tier-${r.tier}">${r.label}</span>
-        </div>
-        <div class="r-sub">${subParts.join(' · ')}</div>
-        ${toolForDomain(r.weakestDomain)}
-        <div class="r-note">${note}</div>
-      </div>
-    `;
-  }
-}
-
-/* The tool for whatever you are worst at.
-
-   The readiness card names your weakest domain and then offers nothing to do
-   about it except more of the same questions. Three of the tools on this site
-   — the sound trainer, the scenarios, the flow diagrams — were linked from the
-   tools page and nowhere else, and a student whose weakest domain is Airway &
-   Respiratory is the exact person who should be told a wheeze is two clicks
-   away.
-
-   Keyed on the six domains the question bank actually uses. Only on the full
-   card, never the compact mid-exam update, because a suggestion that appears
-   between questions is an interruption. */
-const DOMAIN_TOOL = {
-  'Airway & Respiratory': { href:'sound-trainer.html', label:'Sound Trainer',
-    why:'wheezes, crackles and stridor by ear, the distinction these questions turn on' },
-  'Cardiac & Medical': { href:'sound-trainer.html', label:'Sound Trainer',
-    why:'heart sounds and murmur timing, plus the chest pain scenario' },
-  'Trauma': { href:'scenario-sim.html', label:'Scenarios',
-    why:'run a bleeding or crash call from dispatch to handover' },
-  'Assessment': { href:'flowcharts.html', label:'Flow Diagrams',
-    why:'drill the primary assessment order until it is automatic' },
-  'EMS Operations': { href:'flowcharts.html', label:'Flow Diagrams',
-    why:'START triage, drilled rather than read' },
-  'OB/Peds & Special Populations': { href:'scenario-sim.html', label:'Scenarios',
-    why:'the choking toddler call, start to finish' }
-};
-
-function toolForDomain(domain){
-  const t = DOMAIN_TOOL[domain];
-  if(!t) return '';
-  return `<a class="r-tool" href="${t.href}"><b>${t.label}</b>: ${t.why} &rarr;</a>`;
 }
 function renderProgressChart(){
   const history = loadHistory();
@@ -2783,7 +2615,7 @@ function showResults(){
     if(lastCat && lastCat.d.n >= CAT.MIN && window.LevlPremium && window.LevlPremium.recordExam) window.LevlPremium.recordExam('nremt', lastCat.d.n);
     $id('readinessUpdate').innerHTML = '';
   } else if(mode === 'full' || mode === 'domain' || mode === 'adaptive' || mode === 'spaced'){
-    renderReadiness('readinessUpdate', {compact: true});
+    renderReadiness('readinessUpdate');
   } else {
     $id('readinessUpdate').innerHTML = '';
   }

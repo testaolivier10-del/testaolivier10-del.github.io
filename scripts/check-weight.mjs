@@ -657,7 +657,7 @@ const BUDGETS = [
   /* 61.1 -> 62.8 (per-option lines 2026-11-10): the engine loads option-whys.json, maps each line through the
      deal and shows it under its option in practice, the answer list and the score card, plus the list's CSS;
      measured 62.7. */
-  ['nremt/practice.html', 62.8],
+  ['nremt/practice.html', 61.5], // 62.8 -> 61.5 (2026-11-13): the readiness card left Practice (docs/progress-profile.md)
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

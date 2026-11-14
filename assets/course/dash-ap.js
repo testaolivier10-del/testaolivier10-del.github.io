@@ -130,13 +130,13 @@
       var share = g.weight ? g.weight[0] + '&ndash;' + g.weight[1] + '% of the exam' : plural(g.topics.length, 'topic');
       var wk = weakIn(g), gain = g.w ? Math.round(g.cost / wTotal * 100) : 0;
       return { name: g.label, pct: pct(g.m), word: 'mastery', weak: wk, cost: g.got >= 1 ? 'at Strong' : share, bar: g.m, tier: tierOf(g.m),
-        gain: gain >= 1 ? '+' + gain + '%' : '', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(g.id), cta: 'Practice ' + g.short,
+        gain: gain >= 1 ? '+' + gain + '%' : '', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(g.id), cta: 'Practice ' + (cfg.group === 'chapter' ? 'chapter ' + g.n : g.short),
         links: wk ? [{ href: BASE + 'notes/' + wk.id + '.html', label: 'Notes' }] : [] };
     });
     if(unstarted.length){
       var nx = unstarted[0];
       grows.push({ name: unstarted.length > 1 ? plural(unstarted.length, cfg.group).replace(/^./, function(c){ return c.toUpperCase(); }) + ' not started yet' : nx.label, off: true,
-        sub: unstarted.length > 1 ? 'next in order: ' + esc(nx.label) : 'not started yet', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(nx.id), cta: 'Start ' + nx.short });
+        sub: unstarted.length > 1 ? 'next in order: ' + esc(nx.label) : 'not started yet', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(nx.id), cta: 'Start ' + (cfg.group === 'chapter' ? 'chapter ' + nx.n : nx.short) });
     }
     var trowsT = built.filter(function(t){ return topicM[t.id].answered; }).sort(function(a, b){ return topicM[a.id].value - topicM[b.id].value; }).map(function(t){
       var tm = topicM[t.id];

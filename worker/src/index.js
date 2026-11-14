@@ -21,6 +21,7 @@ import { MODELS, extractText } from './ai.js';
 import { gradeRoute } from './frq-grade.js';
 import { classApiRoute, classPublicRoute, classPurge, CLASS_PUBLIC_PATHS } from './classes.js';
 import { vaultRoute } from './vault.js';
+import { qdiffRoute, outcomeRoute } from './readiness.js';
 import { runBackup, BACKUP_CRON } from './backup.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
@@ -426,6 +427,21 @@ export default {
       const r = await classApiRoute(request, env, path);
       if (r) return reply(r.body, r.status);
       return reply({ error: 'Not found' }, 404);
+    }
+
+    /* Readiness accuracy (src/readiness.js, docs/progress-profile.md): live question difficulty for the
+       estimate, and the optional exam outcome. Anonymous, from the site's own pages. */
+    if (path === '/qdiff') {
+      if (request.method !== 'GET') return reply({ error: 'GET only' }, 405);
+      if (await throttled(env, request, 'qdiff')) return reply({ error: 'Rate limited' }, 429);
+      return qdiffRoute(request, env, corsHeaders(origin, env), ctx);
+    }
+    if (path === '/outcome') {
+      if (request.method !== 'POST') return reply({ error: 'POST only' }, 405);
+      if (!allowedOrigins(env).includes(origin)) return reply({ error: 'Origin not allowed' }, 403);
+      if (await throttled(env, request, 'outcome')) return reply({ error: 'Rate limited' }, 429);
+      const r = await outcomeRoute(request, env);
+      return reply(r.body, r.status);
     }
 
     // Pass-or-extend (NREMT); its rules are in premiumGuarantee().
