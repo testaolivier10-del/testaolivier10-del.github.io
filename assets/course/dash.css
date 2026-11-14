@@ -301,3 +301,4 @@
   .d5-gain{text-align:left;min-width:0;}
   .d5-recent{grid-template-columns:1fr 1fr 1fr;gap:6px;}
 }
+:root[data-theme="dark"] .d5 .premium-badge{background:rgba(245,176,74,.16);color:#F5B04A;}
