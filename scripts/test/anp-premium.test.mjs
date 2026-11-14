@@ -112,7 +112,7 @@ test('launched without a pass: Foundations unlimited, 15 other questions a day, 
   assert.equal(Core.serve(q('cells-99', 'cells')), true, 'Foundations stays open after the limit');
   const g = Core.gate('daily-limit', 'practice-limit');
   assert.match(g, /premium-lock/);
-  assert.match(g, /15 free questions/);
+  assert.match(g, /15 more free questions tomorrow/);
 
   await Core.loadBank('../', { why: false });
   assert.equal(fetched.length, 27, 'the whole bank loads: other chapters are served under the allowance');
