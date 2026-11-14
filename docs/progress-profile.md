@@ -77,9 +77,9 @@ route switches each question over as it reaches 20.
 - Worker: `worker/src/readiness.js` (`/qdiff`, `/outcome`), migration `scripts/sql/migrations/2026-11m-readiness.sql`.
 
 ## Owner steps
-- Apply migration `2026-11m-readiness.sql` (adds `question_difficulty()` and `exam_outcomes`). Until then `/qdiff`
-  returns nothing (the model uses written difficulty) and `/outcome` answers are not stored. The worker deploys
-  itself on merge (deploy-worker.yml).
+- Done 2026-11-14: migration `2026-11m-readiness.sql` applied (owner OK). `question_difficulty()` and
+  `exam_outcomes` exist, RLS on, anon cannot call the function. No question has 20 answers yet (apbio leads with
+  406 answers over 45 questions), so `/qdiff` returns nothing and the model uses written difficulty until one does.
 
 ## Status
 - [x] readiness.js + tests
