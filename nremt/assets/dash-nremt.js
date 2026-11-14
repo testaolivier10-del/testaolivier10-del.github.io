@@ -187,8 +187,8 @@
       ready.value = v; ready.unit = '%';
       ready.pill = v >= GOAL ? { text: 'On track', tier: 'good' } : v >= GOAL - 15 ? { text: 'Within reach', tier: 'mid' } : { text: 'Needs more practice', tier: 'low' };
       ready.scale = { goal: GOAL, goalText: GOALT, range: [est.lo, est.hi], lo: '0%', hi: '100%' };
-      ready.explain = 'Expected score on a full exam today: likely <b>' + est.lo + '&ndash;' + est.hi + '%</b>.' + (est.n < 60 ? ' The range narrows as you practice.' : '');
-      ready.foot = 'From your ' + Number(est.n).toLocaleString() + ' answers, harder and recent ones counting more, each domain by its share of the exam. Not a chance of passing.';
+      ready.explain = 'Likely <b>' + est.lo + '&ndash;' + est.hi + '%</b> on a full exam today' + (est.n < 60 ? '; narrows as you practice' : '') + '.';
+      ready.foot = 'From ' + Number(est.n).toLocaleString() + ' answers; harder and recent ones count more, domains by exam share. Not a chance of passing.';
       if(pastDays !== null && pastDays <= 120) ready.outcome = { course: 'nremt', title: 'How did your NREMT exam go?', choices: [['pass', 'I passed'], ['fail', 'I did not pass'], ['later', 'Not taken yet']], predicted: { value: v, lo: est.lo, hi: est.hi }, n: est.n, days: pastDays };
     }
     if(isNew && canReady){ ready.value = null; ready.empty = 'Answer questions in any mode and your expected exam score shows up here.'; }
@@ -223,7 +223,7 @@
     }).concat(topicRows.filter(function(r){ return !r.total; }).map(function(r){
       return { name: r.d, off: true, sub: 'not started', href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Start' };
     }));
-    var domView = { label: 'Exam domains', badge: G.badge() ? ' <span class="premium-badge">Premium</span>' : '' };
+    var domView = { label: 'Exam domains', cols: { name: 'Exam domain' }, badge: G.badge() ? ' <span class="premium-badge">Premium</span>' : '' };
     if(!canReady) domView.locked = '<p class="d5-empty">Your expected score in each of the five 2025 exam domains, weighted by its share of the exam, comes with Premium.</p>';
     else {
       domView.intro = 'The five 2025 exam domains, by expected score.';
@@ -235,7 +235,7 @@
       if(!est) domView.rows = [];
       domView.empty = 'Answer questions in any mode to see your expected score in each exam domain.';
     }
-    var focus = { note: started.length ? 'Costliest first' + (canReady && est ? ' &middot; <b class="d5-gain">+</b> = readiness gained at 80% right' : '') : '',
+    var focus = { note: '', cols: { gain: 'If 80%' },
       views: [{ label: 'Topic areas', rows: started.length ? trows : [], empty: 'Answer a few questions and your six topic areas line up here, the most expensive first.' }, domView] };
 
     var status = isNew ? 'start anywhere, this page fills in as you answer'

@@ -490,12 +490,12 @@
     var v = Math.max(0, Math.min(100, r.value)), sc = r.scale || {}, g = sc.goal;
     html += '<p class="d5-rd-n"><b>' + v + '</b><span class="d5-rd-u">' + esc(r.unit || '%') + '</span>' + (r.label ? '<span class="d5-rd-l">' + r.label + '</span>' : '') +
       (r.pill ? '<span class="d5-pill ' + esc(r.pill.tier || 'mid') + '">' + esc(r.pill.text) + '</span>' : '') + '</p>';
-    var bg = sc.zones === false ? 'linear-gradient(90deg,var(--d5-ok-bg) 0 ' + v + '%,var(--surface2) ' + v + '% 100%)' : 'linear-gradient(90deg,var(--d5-low-bg) 0 55%,var(--d5-mid-bg) 55% ' + (g || 80) + '%,var(--d5-ok-bg) ' + (g || 80) + '% 100%)';
-    var rg = sc.range && sc.range[1] > sc.range[0] ? '<i class="d5-rd-range" style="left:' + sc.range[0] + '%;width:' + (sc.range[1] - sc.range[0]) + '%"></i>' : '';
-    html += '<div class="d5-rd-scale" style="background:' + bg + '" role="img" aria-label="' + esc(sc.aria || (v + (r.unit || '%') + (g != null ? '; ' + (sc.goalText || 'goal ' + g) : '') + (sc.range ? '; likely between ' + sc.range[0] + ' and ' + sc.range[1] : ''))) + '">' + rg +
-      (g != null ? '<i class="d5-rd-goal" style="left:' + g + '%"></i>' : '') + '<i class="d5-rd-dot" style="left:' + Math.max(1.5, Math.min(98.5, v)) + '%"></i></div>';
-    html += '<div class="d5-rd-ticks" aria-hidden="true"><span class="l">' + esc(sc.lo || '0%') + '</span>' + (g != null ? '<span class="g" style="left:' + g + '%">' + esc(sc.goalText || g + '%') + '</span>' : '') + '<span class="r">' + esc(sc.hi || '100%') + '</span></div>';
     if(r.explain) html += '<p class="d5-rd-x">' + r.explain + '</p>';
+    var bg = 'var(--surface2)';
+    var rg = sc.range && sc.range[1] > sc.range[0] ? '<i class="d5-rd-range" style="left:' + sc.range[0] + '%;width:' + (sc.range[1] - sc.range[0]) + '%"></i>' : '';
+    html += '<div class="d5-rd-scale" style="background:' + bg + '" role="img" aria-label="' + esc(sc.aria || (v + (r.unit || '%') + (g != null ? '; ' + (sc.goalText || 'goal ' + g) : '') + (sc.range ? '; likely between ' + sc.range[0] + ' and ' + sc.range[1] : ''))) + '"><i class="d5-rd-fill" style="width:' + v + '%"></i>' + rg +
+      (g != null ? '<i class="d5-rd-goal" style="left:' + g + '%"></i>' : '') + '</div>';
+    if(g != null) html += '<div class="d5-rd-ticks" aria-hidden="true"><span class="g" style="left:' + g + '%">' + esc(sc.goalText || g + '%') + '</span></div>';
     html += factsHtml(r.facts);
     if(r.slot) html += '<div id="' + r.slot + '" class="d5-slot"></div>';
     if(r.foot) html += '<p class="d5-foot">' + r.foot + '</p>';
@@ -561,26 +561,31 @@
       if(v.locked) html += v.locked;
       else if(v.html) html += v.html;
       else if(!v.rows || !v.rows.length) html += '<p class="d5-empty">' + (v.empty || 'Answer a few questions and this fills in.') + '</p>';
-      else html += v.rows.map(holdRow).join('');
+      else {
+        var cols = Object.assign({ name: 'Area, costliest first', pct: 'Right', gain: '' }, f.cols || {}, v.cols || {}), anyGain = v.rows.some(function(r){ return r.gain; });
+        html += '<div class="d5-hr d5-hr-h" aria-hidden="true"><span>' + esc(cols.name) + '</span><span>' + esc(cols.pct) + '</span><span>' + (anyGain ? esc(cols.gain) : '') + '</span><span></span></div>';
+        html += v.rows.map(function(r, j){ return holdRow(r, j === 0 && !r.off); }).join('');
+      }
       if(v.foot) html += '<p class="d5-mut d5-view-f">' + v.foot + '</p>';
       html += '</div>';
     });
     return html + '</div>';
   }
-  function holdRow(r){
+  function holdRow(r, first){
     var sub = [];
     if(r.off) sub.push(r.sub || 'not started');
     else {
-      if(r.weak) sub.push('Weakest: ' + (r.weak.href ? '<a class="d5-weak" href="' + esc(r.weak.href) + '">' : '<b class="d5-weak">') + esc(r.weak.name) + (r.weak.pct != null ? ' ' + r.weak.pct + '%' : '') + (r.weak.href ? '</a>' : '</b>'));
+      if(r.weak) sub.push('Weakest ' + (r.weak.href ? '<a class="d5-weak" href="' + esc(r.weak.href) + '">' : '<b class="d5-weak">') + esc(r.weak.name) + (r.weak.pct != null ? ' ' + r.weak.pct + '%' : '') + (r.weak.href ? '</a>' : '</b>'));
       if(r.cost) sub.push(r.cost);
       if(r.sub) sub.push(r.sub);
     }
     (r.links || []).forEach(function(l){ sub.push('<a class="d5-hb-l" href="' + esc(l.href) + '">' + esc(l.label) + '</a>'); });
-    var num = r.off || r.pct == null ? '' : '<span class="d5-hr-p"><b>' + r.pct + '%</b>' + (r.word && r.word !== 'right' ? ' ' + esc(r.word) : '') + '</span>';
-    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m"><div class="d5-hr-t"><b class="d5-hr-n">' + esc(r.name) + '</b>' + num + '</div>' +
+    var num = r.off || r.pct == null ? '' : '<b>' + r.pct + '%</b>' + (r.word && r.word !== 'right' ? '<small>' + esc(r.word) + '</small>' : '');
+    return '<div class="d5-hr' + (r.off ? ' off' : '') + '"><div class="d5-hr-m"><b class="d5-hr-n">' + esc(r.name) + '</b>' +
       (r.off || r.bar == null ? '' : '<span class="d5-bar d5-hr-bar"><i class="' + esc(r.tier || '') + '" style="width:' + Math.round(Math.max(0, Math.min(1, r.bar)) * 100) + '%"></i></span>') +
       (sub.length ? '<span class="d5-hr-s">' + sub.join(' &middot; ') + '</span>' : '') + '</div>' +
-      '<div class="d5-hr-a">' + (r.gain ? '<span class="d5-gain" title="what this adds to the number above">' + esc(r.gain) + '</span>' : '') + '<a class="d5-hb-btn ' + (r.off ? 'g' : 'p') + '" href="' + esc(r.href) + '">' + esc(r.cta || 'Practice') + '</a></div></div>';
+      '<span class="d5-hr-p">' + num + '</span><span class="d5-gain" title="what this adds to the number above">' + esc(r.gain || '') + '</span>' +
+      (first ? '<a class="d5-hb-btn p" href="' + esc(r.href) + '" aria-label="' + esc(r.cta || 'Practice') + '">Practice</a>' : '<a class="d5-hb-go" href="' + esc(r.href) + '" aria-label="' + esc(r.cta || 'Practice') + '">' + esc(r.off ? (r.cta || 'Start') : 'Practice') + ' &rarr;</a>') + '</div>';
   }
 
   /* The whole page, for the courses whose dashboard is drawn by script. */

@@ -148,16 +148,16 @@
       });
     var views = [
       { label: cfg.group === 'unit' ? 'Units' : 'Chapters', rows: gstarted.length ? grows : [], empty: 'Answer a few questions and your ' + cfg.group + 's line up here, the most expensive first.' },
-      { label: 'Topics', rows: trowsT, empty: 'Topics you have started show up here, weakest first.' },
-      { label: sec.label, rows: srows, empty: 'Answer questions tagged with a ' + sec.word + ' and they line up here, weakest first.' }
+      { label: 'Topics', cols: { name: 'Topic, weakest first' }, rows: trowsT, empty: 'Topics you have started show up here, weakest first.' },
+      { label: sec.label, cols: { name: sec.label + ', weakest first' }, rows: srows, empty: 'Answer questions tagged with a ' + sec.word + ' and they line up here, weakest first.' }
     ];
     if(cfg.skillRows){
-      var skv = { label: 'Skills', badge: pill ? ' <span class="premium-badge">Premium</span>' : '' };
+      var skv = { label: 'Skills', cols: { name: 'Skill, weakest first' }, badge: pill ? ' <span class="premium-badge">Premium</span>' : '' };
       if(!analytics) skv.locked = cfg.gate || '<p class="d5-empty">Mastery by skill comes with Premium.</p>';
       else { skv.rows = cfg.skillRows(tierOf); skv.empty = 'Skills appear once you have answered questions.'; }
       views.push(skv);
     }
-    var focus = { note: gstarted.length ? 'Costliest first &middot; <b class="d5-gain">+</b> = gained at Strong' : '', views: views };
+    var focus = { note: '', cols: { name: (cfg.group === 'chapter' ? 'Chapter' : 'Unit') + ', costliest first', gain: 'If Strong' }, views: views };
 
     var status = isNew ? 'start anywhere, this page fills in as you answer' : coverage + '% of ' + ofWhat + ' at Strong' + (proj ? ', projected ' + proj.band : '') + (rising ? ', and climbing' : '');
     D.render(root, { progress: progress, ready: ready, focus: focus,

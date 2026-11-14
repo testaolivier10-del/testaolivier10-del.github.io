@@ -108,9 +108,9 @@
   // hides them and draws what Premium adds into #ocPremium when locked).
   var gapsView = { label: 'Gaps underneath', badge: pill, html: '<div id="leechAlerts"></div><div id="dependencyAlerts"></div><p class="d5-empty" id="d5OcNoGaps" hidden>Nothing benched, and no gap found underneath a weak concept.</p><div id="recRow"></div>' + (locked ? '<div id="ocPremium"></div>' : '') };
   var famView = { label: 'Concept families', badge: pill, html: '<div id="familyStats"></div>' + (locked ? '<p class="d5-empty">Strength by concept family comes with Premium.</p>' : '') };
-  var focus = { note: cstarted.length ? 'Costliest first &middot; <b class="d5-gain">+</b> = gained at Solid' : '',
+  var focus = { note: '', cols: { name: 'Chapter, costliest first', gain: 'If Solid' },
     views: [{ label: 'Chapters', rows: cstarted.length ? crows : [], empty: 'Answer a few questions and your chapters line up here, the most expensive first.' },
-      { label: 'Weakest concepts', rows: conceptRows, empty: 'Concepts you have tried twice or more show up here, weakest first.' }, gapsView, famView] };
+      { label: 'Weakest concepts', cols: { name: 'Concept, weakest first' }, rows: conceptRows, empty: 'Concepts you have tried twice or more show up here, weakest first.' }, gapsView, famView] };
 
   var status = isNew ? 'start anywhere, this page fills in as you answer' : coverage + '% of the concepts at Solid' + (rising ? ', and climbing' : '');
   D.render(root, { progress: progress, ready: ready, focus: focus,
