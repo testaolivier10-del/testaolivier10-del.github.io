@@ -65,7 +65,7 @@ export const COURSE_NAME = COURSE.name;
 export const COURSE_HTML = COURSE.html;
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
-export const BETA_NOTE = `This course has not yet been reviewed by an ${COURSE.name} teacher.`;
+export const BETA_NOTE = `No ${COURSE.name} teacher has reviewed it yet.`;
 // Units 1 and 2 are free, and every math-skills lesson (as AP® Chemistry,
 // apchem-spec decision 6; docs/apcalc-spec.md decision 6).
 export const FREE_UNITS = COURSE.freeUnits;
@@ -503,7 +503,7 @@ export const reportButton = (pageId) => `<button type="button" class="report-btn
    apcalc-beta-and-report). */
 export function footer(depth, pageId) {
   return `<footer class="calc-foot xshell">
-  <p class="calc-accuracy-note">${BETA_PILL} ${esc(BETA_NOTE)} It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref">${reportButton(pageId)}</span></p>
+  <p class="calc-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref">${reportButton(pageId)}</span></p>
   <p class="calc-disclaimer">${esc(DISCLAIMER)}</p>
   ${footerLinks(depth + '../')}
 </footer>`;

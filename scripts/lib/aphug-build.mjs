@@ -36,7 +36,7 @@ export const COURSE_NAME = 'AP® Human Geography';
 export const COURSE_HTML = 'AP&reg; Human Geography';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
-export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Human Geography teacher.';
+export const BETA_NOTE = 'No AP® Human Geography teacher has reviewed it yet.';
 /* THE COURSE IDENTITY, in one place (docs/aphug-spec.md decisions 9 and 11,
    final at launch; owner to confirm). The accent's CSS values live in
    assets/theme.css (body[data-course="aphug"], with the contrast ratios in
@@ -437,7 +437,7 @@ export const reportButton = (pageId) => `<button type="button" class="report-btn
    aphug-beta-and-report). */
 export function footer(depth, pageId) {
   return `<footer class="hug-foot xshell">
-  <p class="hug-accuracy-note">${BETA_PILL} ${esc(BETA_NOTE)} It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="hug-nav-ref">${reportButton(pageId)}</span></p>
+  <p class="hug-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="hug-nav-ref">${reportButton(pageId)}</span></p>
   <p class="hug-disclaimer">${esc(DISCLAIMER)}</p>
   ${footerLinks(depth + '../')}
 </footer>`;

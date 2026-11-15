@@ -869,7 +869,7 @@ ${bodyOpen(' data-app="teachers"')}
 
   <section class="xsection" aria-labelledby="h-align">
     <h2 id="h-align">Alignment with the course framework</h2>
-    <p>The units and topics follow the order of the 2025 course framework, mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. It has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
+    <p>The units and topics follow the order of the 2025 course framework, mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text.</p>
     ${units.map(unitTable).join('\n    ')}
     ${skills.length ? `<h3 class="bio-tc-skills">Skills</h3><p class="bio-small">Each skills topic sits right after the framework topic it supports.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>

@@ -1091,7 +1091,7 @@
           return location.origin + location.pathname + (code ? '?seed=' + code.textContent : '');
         },
         report: { course: CK, id: 'tool:' + slug },
-        note: { label: 'Note.', html: 'This course has not yet been reviewed by an ' + CN + ' teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+        note: { label: 'Note.', html: 'Made by Olivier Testa. It follows the published course framework and open textbooks: <a href="' + base() + '../sources.html">Sources</a>' }
       }
     });
     if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }

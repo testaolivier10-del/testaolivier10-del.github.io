@@ -22,6 +22,8 @@ import { createHash } from 'node:crypto';
 import { premiumCourse } from './vault/rules.mjs';
 
 const OUT = 'sitemap.xml';
+// New course folders held out until their pages have depth (scripts/sitemap-hold.json).
+const HOLD = new Set(JSON.parse(readFileSync('scripts/sitemap-hold.json', 'utf8')).hold);
 const check = process.argv.includes('--check');
 
 // Same exclusions as the Open Graph tags, for the same reasons: 404.html and
@@ -153,6 +155,8 @@ for (const raw of walk('.')) {
   // (751 of 2,700 entries on 2026-11-10). The free notes page for the same
   // topic is the one written to be found.
   if (premiumCourse(file, html)) continue;
+  // A new course stays out until it has depth (owner decision 2026-11-14).
+  if (top && HOLD.has(top)) continue;
   entries.push({ loc: m[1], path: new URL(m[1]).pathname, lastmod: lastModified(file, html, m[1]) });
 }
 

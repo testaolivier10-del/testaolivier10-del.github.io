@@ -29,7 +29,7 @@ export const COURSE_NAME = 'AP® Physics 1';
 export const COURSE_HTML = 'AP&reg; Physics 1';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
-export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Physics 1 teacher.';
+export const BETA_NOTE = 'No AP® Physics 1 teacher has reviewed it yet.';
 // Units 1 and 2 are free, and every math-skills lesson (as AP® Chemistry,
 // apchem-spec decision 6; docs/apphys-spec.md decision 6).
 export const FREE_UNITS = ['unit-1', 'unit-2'];
@@ -287,7 +287,7 @@ export const reportButton = (pageId) => `<button type="button" class="report-btn
    apphys-beta-and-report). */
 export function footer(depth, pageId) {
   return `<footer class="phys-foot xshell">
-  <p class="phys-accuracy-note">${BETA_PILL} ${esc(BETA_NOTE)} It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref">${reportButton(pageId)}</span></p>
+  <p class="phys-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref">${reportButton(pageId)}</span></p>
   <p class="phys-disclaimer">${esc(DISCLAIMER)}</p>
   ${footerLinks(depth + '../')}
 </footer>`;

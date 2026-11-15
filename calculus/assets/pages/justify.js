@@ -74,7 +74,7 @@
     LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: CN, back: BASE + 'index.html', backLabel: 'Back to ' + CN,
       slug: CK + '-justify', host: app, detailsTitle: 'Topic',
       menu: { copyLink: true, report: { course: CK, id: 'page:justify' }, allTools: { label: 'Course home' },
-        note: { label: 'Note.', html: 'This course has not yet been reviewed by an ' + CN + ' teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
+        note: { label: 'Note.', html: 'Made by Olivier Testa. It follows the published course framework and open textbooks: <a href="' + BASE + '../sources.html">Sources</a>' } } });
     if(lede){ var pp = document.createElement('p'); pp.textContent = lede.textContent; LS.add('about', pp); }
     app.hidden = true;
     return LS;
