@@ -361,7 +361,10 @@
   /* After a lesson or an exam. `topic` narrows the celebration to what that
      lesson finished; without it (an NREMT exam) anything new is celebrated.
      Waits a beat so the lesson's own "complete" line and XP land first. */
-  function check(course, topic){
+  /* attempt: the exam just finished ({ score, total }), from the NREMT exam page. The exam milestone is
+     celebrated only by an attempt that itself reached 80%: an older qualifying score found in the history
+     (another device's backup, a restore) is recorded quietly, never announced over a lower result. */
+  function check(course, topic, attempt){
     return ensure(course).then(function(){
       var unseen = list(course).fresh;
       if(!unseen.length) return null;
@@ -369,7 +372,9 @@
       unseen.forEach(function(x){
         if(window.LevlAnalytics) window.LevlAnalytics.event('milestone', { course: course, kind: x.kind, id: x.chapter || x.id });
       });
+      var passed = !!(attempt && attempt.total >= EXAM_LEN && attempt.score / attempt.total * 100 >= EXAM_PCT);
       var fresh = unseen.filter(function(m){
+        if(m.kind === 'exam') return passed;
         return !topic || m.kind === 'course' || m.lessons.indexOf(topic) > -1;
       });
       if(!fresh.length) return null;
