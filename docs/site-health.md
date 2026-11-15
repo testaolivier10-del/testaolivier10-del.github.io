@@ -75,11 +75,13 @@ Owner step still open: Bing Webmaster Tools (sign in, add levlprep.com by import
 ### Trust line and new courses (2026-11-14, owner)
 After the 2026-11-14 check (Google still about 9 impressions a day, and a search for "levlprep" is corrected to
 "level prep" with the site shown only under "Search instead for levlprep"), the owner chose:
-- Author byline. Every AP® and A&P footer (the `BETA_NOTE` lines in `scripts/lib/*-build.mjs`) now opens with
-  "Made by Olivier Testa, an EMT and pre-med student at UC San Diego" linked to about.html, then the sources
-  line, then the review fact reworded and kept: "No AP® Biology teacher has reviewed it yet." The site rules
-  (`scripts/site-rules/*-beta-and-report.mjs`) still require that sentence. The course home, teachers and About
-  pages keep their longer review wording on purpose.
+- Author byline. Every AP® and A&P footer (`scripts/lib/*-build.mjs`) and the footer note on tool and justify pages
+  (`<course>/assets/tools/*-tools.js`, `assets/pages/justify.js`) now says "Made by Olivier Testa, an EMT and
+  pre-med student at UC San Diego" (linked to about.html), then the sources line. The owner chose to stop saying on
+  every page that no teacher has reviewed the course, without ever claiming a review: the About and Sources pages
+  and each course home's FAQ answer to "Has it been reviewed?" still say it. The teachers pages' alignment note
+  dropped the sentence too. The `*-beta-and-report` site rules no longer require it (they still require the report
+  buttons); `BETA_NOTE` stays exported but unused in footers.
 - New courses and the sitemap. A new course goes live for students as usual, but its folder goes in
   `scripts/sitemap-hold.json` at launch so `build-sitemap.mjs` leaves it out until its pages have real depth;
   then remove it from the list. Courses live before 2026-11-14 are not held.

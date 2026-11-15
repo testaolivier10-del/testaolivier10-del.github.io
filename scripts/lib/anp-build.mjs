@@ -190,7 +190,7 @@ export const BETA_NOTE = 'No licensed A&amp;P instructor has reviewed it yet.';
 
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. ${BETA_NOTE} Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one. <a href="${depth}credits.html">Figure credits</a>.</p>
+  <p class="anp-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one. <a href="${depth}credits.html">Figure credits</a>.</p>
   ${footerLinks(depth + '../')}
 </footer>`;
 }

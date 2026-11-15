@@ -18,8 +18,7 @@ export default function aphugBetaAndReport({ ROOT, fail, htmlFiles }) {
     if (!rel.startsWith('human-geography/') || rel.startsWith('human-geography/data/')) continue;
     const html = readFileSync(file, 'utf8');
     if (/<meta http-equiv="refresh"/i.test(html)) continue;
-    if (!html.includes(BETA_NOTE)) fail(`${rel}: missing the Beta note ("${BETA_NOTE}")`);
-    // The Beta pill is gone (Olivier, 2026-10-26: "the label of beta should be removed"); the review note stays.
+    // The review note left the footer too (Olivier, 2026-11-14; About and Sources say it). The Beta pill is gone (Olivier, 2026-10-26: "the label of beta should be removed"); the review note stays.
     if (!/class="report-btn"[^>]*data-report-course="aphug"/.test(html)) fail(`${rel}: no "Report a problem" button for the course (data-report-course="aphug")`);
     if (!/assets\/report-question\.js/.test(html)) fail(`${rel}: has a Report button but does not load assets/report-question.js`);
     const m = rel.match(/^human-geography\/notes\/([^/]+)\.html$/);

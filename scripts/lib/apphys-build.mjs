@@ -287,7 +287,7 @@ export const reportButton = (pageId) => `<button type="button" class="report-btn
    apphys-beta-and-report). */
 export function footer(depth, pageId) {
   return `<footer class="phys-foot xshell">
-  <p class="phys-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. ${esc(BETA_NOTE)} Spot a mistake? <span class="phys-nav-ref">${reportButton(pageId)}</span></p>
+  <p class="phys-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref">${reportButton(pageId)}</span></p>
   <p class="phys-disclaimer">${esc(DISCLAIMER)}</p>
   ${footerLinks(depth + '../')}
 </footer>`;

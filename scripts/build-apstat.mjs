@@ -904,7 +904,7 @@ ${bodyOpen(' data-app="teachers"')}
 
   <section class="xsection" aria-labelledby="h-align">
     <h2 id="h-align">Alignment with the course framework</h2>
-    <p>The units and topics follow the order of the course framework (Statistics topics only; the BC-only topics are left out), mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. It has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
+    <p>The units and topics follow the order of the course framework (Statistics topics only; the BC-only topics are left out), mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text.</p>
     ${units.map(unitTable).join('\n    ')}
     ${skills.length ? `<h3 class="stat-tc-skills">Skills</h3><p class="stat-small">Each math topic sits right before the framework topic that first needs it.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>
