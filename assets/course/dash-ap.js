@@ -104,7 +104,7 @@
       predicted: proj ? { value: proj.composite, lo: proj.cLo, hi: proj.cHi, band: proj.band } : { value: coverage }, n: allN, days: pastDays };
     ready.onSlot = function(){
       if(ED) ED.mount(document.getElementById('d5ExamCard'), {
-        subject: key, links: { review: BASE + 'review.html', exams: BASE + 'exams.html' },
+        subject: key, links: { review: BASE + 'review.html', exams: BASE + 'practice.html?m=exam' },
         target: function(days){
           if(!leftTopics) return { done: cfg.doneLine || 'Every published topic is at Strong or better. Keep Review clear and take a practice exam.' };
           return { n: Math.ceil(leftTopics / Math.max(1, days)), unit: 'topics', one: 'topic', why: 'brought to Strong covers the ' + leftTopics + ' not there yet' };
@@ -113,7 +113,7 @@
     };
 
     var progress = { weeks: weeks, exams: exams, examWord: cfg.examWord || 'exams', firstExamWord: 'first exam',
-      examDate: examT ? { t: examT } : null, allHref: exams.length ? BASE + 'exams.html' : (cfg.cram ? BASE + 'cram.html' : null), allText: exams.length ? 'Exams' : 'Cram plan',
+      examDate: examT ? { t: examT } : null, allHref: exams.length ? BASE + 'practice.html?m=exam' : (cfg.cram ? BASE + 'cram.html' : null), allText: exams.length ? 'Exams' : 'Cram plan',
       recent: cfg.recent || [],
       empty: isNew ? 'Your line starts with your first answers.' : 'Your weekly line starts now: each week with 5 or more answers adds a point.' };
 
@@ -182,7 +182,7 @@
     var hist = all.filter(function(x){ return x.mcq.n >= 5; }); // chart points: a 2-question quiz is not a point
     var full = hist.filter(function(x){ return x.kind === 'full' && x.band; });
     var frqScores = prefs.frqScores || {}, fids = Object.keys(frqScores).sort(function(a, b){ return (frqScores[b].ts || 0) - (frqScores[a].ts || 0); });
-    var exHtml = !H ? '' : !all.length ? H.panel({ id: o.key + '-db-ex', title: 'Exam history', body: '<p class="cx-emptynote">No exams yet. <a href="' + esc(BASE + 'exams.html') + '">Take a unit test or a practice exam</a>.</p>' }) : (H ? H.panel({ id: o.key + '-db-ex', title: 'Exam history', body: '<ul class="' + o.cls + '-db-list">' + all.slice().reverse().slice(0, 8).map(function(x){
+    var exHtml = !H ? '' : !all.length ? H.panel({ id: o.key + '-db-ex', title: 'Exam history', body: '<p class="cx-emptynote">No exams yet. <a href="' + esc(BASE + 'practice.html?m=exam') + '">Take a unit test or a practice exam</a>.</p>' }) : (H ? H.panel({ id: o.key + '-db-ex', title: 'Exam history', body: '<ul class="' + o.cls + '-db-list">' + all.slice().reverse().slice(0, 8).map(function(x){
         return '<li><b>' + esc(x.label) + '</b> <span class="' + o.cls + '-small">' + esc(new Date(x.ts).toLocaleDateString()) + '</span><br>Multiple choice ' + x.mcq.c + '/' + x.mcq.n + ' (' + pct(x.mcq.c / x.mcq.n) + '%)' +
           (x.frq ? ' &middot; free response ' + x.frq.got + '/' + x.frq.of : '') + (o.band && x.band ? ' &middot; rough band ' + x.band + ' of 5 <span class="' + o.cls + '-small">(not calibrated)</span>' : '') + '</li>';
       }).join('') + '</ul>' }) : '');

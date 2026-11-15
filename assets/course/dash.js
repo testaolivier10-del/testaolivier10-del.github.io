@@ -83,11 +83,14 @@
       if(b - a >= 3) out.head = 'Yes. ' + a + '% to ' + b + '% in ' + weeksTxt + '.';
       else if(a - b >= 3) out.head = 'Not this stretch. ' + a + '% to ' + b + '% over ' + weeksTxt + '.';
       else out.head = 'Holding steady around ' + b + '%.';
-    } else if(ex.length >= 2){
-      var e0 = ex[0].pct, e1 = ex[ex.length - 1].pct;
-      out.head = e1 > e0 ? 'Yes. Your exams went from ' + e0 + '% to ' + e1 + '%.' : e1 < e0 ? 'Your last exam was lower: ' + e0 + '% then ' + e1 + '%.' : 'Your exams are level at ' + e1 + '%.';
     } else if(w.length === 1){
+      // The headline speaks about the line the chart draws (owner 2026-11-14: an exam sentence over a weekly dot
+      // was confusing); the exams are listed under the chart.
       out.head = 'This week so far: ' + w[0].pct + '% on ' + plural(w[0].n, 'answer') + '.';
+    } else if(ex.length >= 2){
+      // The last two, the same order the list under the chart reads.
+      var e0 = ex[ex.length - 2].pct, e1 = ex[ex.length - 1].pct;
+      out.head = e1 > e0 ? 'Yes. Your exams went from ' + e0 + '% to ' + e1 + '%.' : e1 < e0 ? 'Your last exam was lower: ' + e0 + '% then ' + e1 + '%.' : 'Your last two exams were level at ' + e1 + '%.';
     } else if(ex.length === 1){
       out.head = 'One exam so far: ' + ex[0].pct + '%.';
     }

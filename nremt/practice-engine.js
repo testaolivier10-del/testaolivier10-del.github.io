@@ -11,7 +11,7 @@
 const RUNNER_PAGE = (document.body && document.body.getAttribute('data-runner')) || 'practice';
 // Which page owns each mode, so an attempt is resumed under the tab it was
 // started from.
-const RUNNER_HOME = { full: 'exams.html', cat: 'exams.html', spaced: 'review.html' };
+const RUNNER_HOME = { full: 'practice.html?m=exam', cat: 'practice.html?m=cat', spaced: 'review.html' };
 // The drag-and-drop, options-table and build-list interactions (assets/tei-items.js)
 // and the adaptive exam's model (assets/cat.js, loaded by exams.html only).
 const TEI = window.NremtTei;
@@ -2603,7 +2603,7 @@ function showResults(){
     if(!bestData || score > bestData.score){
       localStorage.setItem(STORAGE_KEY, JSON.stringify({score, total: activeIndices.length, timeMs: elapsed}));
     }
-    saveHistoryEntry({score, total: activeIndices.length, timeMs: elapsed, date: Date.now(), domainStats, examStats});
+    saveHistoryEntry({score, total: activeIndices.length, answered: activeIndices.length - activeIndices.reduce((k, qIdx, i) => k + (isAnswered(QUESTIONS[qIdx], answers[i]) ? 0 : 1), 0), timeMs: elapsed, date: Date.now(), domainStats, examStats});
     // Server-stamped record for the Pass-or-extend (assets/premium.js).
     if(window.LevlPremium && window.LevlPremium.recordExam) window.LevlPremium.recordExam('nremt', activeIndices.length);
   }
@@ -2693,12 +2693,6 @@ function renderEnd(o){
     return { name: d, href: notes ? notes[0] : '', c: s.correct, n: s.total, mastery: a && a.total ? a.correct / a.total : null,
       links: notes ? [{ label: 'Notes', href: notes[0] }] : [] };
   }));
-  // The topic areas each domain's questions came from, as before, one compact list per domain.
-  const subs = doms.map(([d, s]) => {
-    const rows = Object.entries(s.topics || {}).sort((a, b) => a[0].localeCompare(b[0]));
-    return `<div class="nr-sub"><h3>${endEsc(d)}</h3><ul class="cx-prac">${rows.map(([t, ts]) =>
-      `<li><span>${endEsc(t)}</span><span class="cx-mbar" aria-hidden="true"><i style="width:${Math.round(ts.correct / ts.total * 100)}%"></i></span><b>${ts.correct}/${ts.total}</b></li>`).join('')}</ul></div>`;
-  }).join('');
   const cat = mode === 'cat' && lastCat ? lastCat : null;
   const nMiss = lastSessionMisses.length;
   const shareR = { course: 'nremt', right: score, total: n,
@@ -2715,15 +2709,12 @@ function renderEnd(o){
     // today's free questions used, the due queue cannot start until tomorrow, so it is not offered (B5).
     stepHtml: window.LevlNextStep ? LevlNextStep('nremt', { skip: mode === 'spaced' || mode === 'review' || !G.canUse('review') ? ['review'] : [],
       tags: Object.values(o.domainStats).flatMap(s => Object.keys(s.topics).filter(t => s.topics[t].total >= 5)).map(t => 'nremt:' + t) }) : '',
-    extras: '<div class="nr-end-x">' + (o.xpGained ? `<p class="next-xp">+${o.xpGained} XP</p>` : '') +
-      (o.clearedText ? `<p class="cleared-note">${endEsc(o.clearedText)}</p>` : '') +
-      '<p class="nr-end-links"><button type="button" class="link-quiet" data-act="share">Share result</button>' +
-      '<button type="button" class="link-quiet" data-act="print">Print or save as PDF</button>' +
-      '<button type="button" class="link-quiet" data-act="start">Back to Start</button></p></div>',
+    // Score card v4 (owner 2026-11-14): no XP, print or Back to Start on the card; the domains are the one
+    // breakdown (topic areas left); readiness shows only after a full or adaptive exam.
+    extras: o.clearedText ? `<p class="cleared-note">${endEsc(o.clearedText)}</p>` : '',
     nextTitle: 'Exam domains', next: topics,
     more: (cat ? '<h2 class="cx-endp-h">Against the passing line</h2>' + o.catHtml : '') +
-      '<div id="readinessUpdate"></div>' +
-      (subs ? '<h2 class="cx-endp-h">Topic areas in each domain</h2><div class="nr-subs">' + subs + '</div>' : ''),
+      '<div id="readinessUpdate"' + (timed ? '' : ' hidden') + '></div>',
     kept: '<h2 class="cx-endp-h">Every question, with the why</h2><div class="nr-kept"></div>'
   });
   const slot = host.querySelector('.nr-kept');

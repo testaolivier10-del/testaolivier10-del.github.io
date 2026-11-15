@@ -2250,6 +2250,23 @@
     st.stake = { streak: stake.streak, level: stake.level };
     writePromptState(st);
 
+    // On a score card the offer is one quiet line inside the card, never a box over its buttons (score card v4,
+    // owner 2026-11-14).
+    var card = document.querySelector('.cx-v4 .cx-endp-card');
+    if(card && !card.querySelector('.cx-save')){
+      var line = document.createElement('p');
+      line.className = 'cx-save';
+      line.innerHTML = 'Saved on this device only. <button type="button" class="cx-save-go">Sign in to keep it everywhere</button>';
+      card.appendChild(line);
+      if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-shown', { variant: copy.id + '-card' });
+      line.querySelector('button').addEventListener('click', function(){
+        if(window.LevlAnalytics) window.LevlAnalytics.event('save-prompt-accepted', { variant: copy.id + '-card' });
+        rememberSignupSource(copy.id + '-card');
+        openAuthModal('signup');
+      });
+      return true;
+    }
+
     var el = document.createElement('div');
     el.id = 'savePrompt';
     el.className = 'levl-prompt';

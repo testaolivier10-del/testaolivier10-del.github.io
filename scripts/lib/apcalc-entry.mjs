@@ -201,7 +201,7 @@ ${bodyOpen(' data-app="formula-sheet"')}
     <ul class="calc-eq-not">${NOTS.map(r => `<li><b>${R(r[0])}.</b> ${R(r[1])} <span class="calc-small">${topicLink(r[2], depth)}</span></li>`).join('')}</ul>
   </section>` : ''}
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[COURSE.scoreCalculator && `<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[COURSE.scoreCalculator && `<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="practice.html?m=exam">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:formula-sheet')}
@@ -241,7 +241,7 @@ ${bodyOpen(' data-app="score-calculator"')}
   </section>
   <section class="xsection" aria-labelledby="sc-next"><h2 id="sc-next">Raise your score</h2>
     <ul class="calc-links">
-      <li><a href="exams.html">Full practice exams</a> in the real format, with this estimate at the end.</li>
+      <li><a href="practice.html?m=exam">Full practice exams</a> in the real format, with this estimate at the end.</li>
       <li><a href="justify.html">The justification trainer</a> for the justification points free response is built on.</li>
       <li><a href="formula-sheet.html">The formulas and theorems to know</a>${firstTest ? `, and ${testLink('', 'free unit practice tests')}` : ''}.</li>
     </ul>

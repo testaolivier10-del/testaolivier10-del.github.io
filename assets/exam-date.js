@@ -10,7 +10,7 @@
          // unit is the plural; one: the singular, used when n is 1 (else the
          // plural minus its final s)
        },
-       links: { practice: 'practice.html', review: 'review.html', exams: 'exams.html' }
+       links: { practice: 'practice.html', review: 'review.html', exams: 'practice.html?m=exam' }
      });
 
    The date stays on this device. It is not added to the course's sync

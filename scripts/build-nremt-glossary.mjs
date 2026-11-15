@@ -136,7 +136,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 <body data-course="nremt">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+<noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="practice.html?m=exam">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <main id="main" class="xshell">
   ${glossaryMain({
     crumbs: [{ name: 'LevlPrep', href: '/' }, { name: 'NREMT-EMT', href: '/nremt/' }, { name: 'Glossary' }],

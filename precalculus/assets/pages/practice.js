@@ -228,7 +228,7 @@
       due: { n: due, href: BASE + 'review.html', pill: pill() },
       links: [
         { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
-        { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit tests and full practice exams.' },
+        { href: BASE + 'practice.html?m=exam', title: 'Exams', sub: 'Unit tests and full practice exams.' },
         { href: BASE + 'frq.html', title: 'Free-response practice', sub: 'All four types, with rubrics.' }
       ]
     });
@@ -496,7 +496,7 @@
       retry: stillWrong.length ? { act: 'retry', label: 'Retry ' + plural(missedQs || stillWrong.length, 'miss', 'misses') } : null,
       step: due ? { href: BASE + 'review.html', label: 'Review ' + plural(due, 'due question') }
         : { act: 'again', label: again.label },
-      also: due ? [again, change] : weak.length ? [change] : [change, { href: BASE + 'exams.html', label: 'Try a unit test' }],
+      also: due ? [again, change] : weak.length ? [change] : [change, { href: BASE + 'practice.html?m=exam', label: 'Try a unit test' }],
       more:
       LevlStudy.bars('Mathematical practices', byPractice.map(function(x){ var p = PRACTICE[x.key]; return { label: x.key + (p ? '. ' + p.name : ''), c: x.c, n: x.n }; })) +
       '',

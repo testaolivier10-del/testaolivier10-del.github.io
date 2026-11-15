@@ -245,7 +245,7 @@ ${bodyOpen(' data-app="formula-sheet"')}
     <ul class="hug-eq-not">${TABLES.map(r => `<li><b>${esc(r[0])}.</b> ${R(r[1])}</li>`).join('')}</ul>
   </section>
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Formulas flashcards</a>`, `<a href="flashcards.html?unit=geo-skills">Skills terms flashcards</a>`, `<a href="models.html">Models you must know</a>`, `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Formulas flashcards</a>`, `<a href="flashcards.html?unit=geo-skills">Skills terms flashcards</a>`, `<a href="models.html">Models you must know</a>`, `<a href="learn.html">Free notes for every topic</a>`, `<a href="practice.html?m=exam">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:formula-sheet')}
@@ -302,7 +302,7 @@ ${bodyOpen(' data-app="models"')}
   </section>
   ${groups}
   <section class="xsection" aria-labelledby="mdl-next"><h2 id="mdl-next">Practice with it</h2>
-    <p>${[studioLive ? '<a href="tools/model-studio.html">Model Studio: build every model by hand</a>' : '', testLink('', 'Free unit practice tests'), '<a href="formula-sheet.html">Formulas you must know</a>', '<a href="justify.html">Make it specific</a>', '<a href="exams.html">Full practice exams</a>'].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[studioLive ? '<a href="tools/model-studio.html">Model Studio: build every model by hand</a>' : '', testLink('', 'Free unit practice tests'), '<a href="formula-sheet.html">Formulas you must know</a>', '<a href="justify.html">Make it specific</a>', '<a href="practice.html?m=exam">Full practice exams</a>'].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:models')}

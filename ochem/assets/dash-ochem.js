@@ -72,7 +72,7 @@
     foot: 'Not a grade prediction.' };
   ready.onSlot = function(){
     if(ED) ED.mount(document.getElementById('examDateCard'), {
-      subject: 'ochem', links: { review: 'review.html', exams: 'exams.html' },
+      subject: 'ochem', links: { review: 'review.html', exams: 'practice.html?m=exam' },
       target: function(days){
         if(!notSolidAll) return { done: 'Every concept is solid or mastered. Keep the review queue clear and take a timed exam.' };
         return { n: Math.ceil(notSolidAll / days), unit: notSolidAll === 1 ? 'concept' : 'concepts', why: 'to solid covers the ' + notSolidAll + ' that are not there yet' };
@@ -80,7 +80,7 @@
     });
   };
   var progress = { weeks: weeks, exams: hist.map(function(e){ return { t: e.ts, pct: Math.round(e.right / e.total * 100) }; }), examWord: 'exams', firstExamWord: 'first exam',
-    examDate: examT ? { t: examT } : null, allHref: hist.length ? 'exams.html' : null, allText: 'Exams',
+    examDate: examT ? { t: examT } : null, allHref: hist.length ? 'practice.html?m=exam' : null, allText: 'Exams',
     recent: hist.slice(-3).reverse().map(function(e){ return { big: Math.round(e.right / e.total * 100) + '%', sub: D.shortDate(e.ts) }; }),
     empty: isNew ? 'Your line starts with your first answers.' : 'Your weekly line starts now: each week with 5 or more answers adds a point.' };
 

@@ -99,7 +99,7 @@
         text: dueCount ? 'Each comes back inside a fresh problem, not the same card.' : 'Concepts come back here when they are closest to being forgotten.' },
       links: [
         { href: 'flashcards.html', title: 'Flashcards', sub: 'Concepts, pKa, IR and NMR values and reagents.' },
-        { href: 'exams.html', title: 'Exams', sub: 'Timed tests on a chapter, a range or the course.' }
+        { href: 'practice.html?m=exam', title: 'Exams', sub: 'Timed tests on a chapter, a range or the course.' }
       ]
     });
   }

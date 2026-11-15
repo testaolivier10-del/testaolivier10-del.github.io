@@ -1,5 +1,23 @@
 # Score card (end of every session)
 
+## v4 (owner approved canvas 2026-11-14, live)
+Canvas: https://claude.ai/artifact/PEmVSWMZnqfaLpSSYXQPP9. Same `LevlStudy.end(o)` API; every course and mode picks it up.
+Every card answers: how did I do, what did I get wrong, what next, where did the points go. Nothing else.
+- Band: kind and course, score, one handwritten line (names the weak area from `topics()`, else an honest word),
+  bar, one meta line (estimate, time, unanswered, at most 3 items; any chip naming XP is dropped).
+- Card: misses one line each (3, then "Show all N"); tap opens You said / Answer / why / lesson. One main button
+  and one alternative: Retry leads when there are misses, the next step (o.step or LevlNextStep) is the
+  alternative. Backlog counts over 20 read "Review due questions" (`capLabel`, `assets/next-step.js`). `also` is
+  used only when no step or retry exists. Signed out: one quiet "Saved on this device only" line in the card
+  (`assets/account.js`) instead of the floating prompt.
+- "Where you lost points": `topics()` lists only missed areas (name, right/total, Study); the rest in one line.
+  `bars()` returns nothing (one breakdown only). Mastery, "vs last time", Personal best, path line: gone.
+- `o.kept` (every question) folds under "See all N questions". NREMT: topic areas, XP, print and Back to Start
+  left the card; readiness shows only after a full or adaptive exam.
+- The 80% NREMT milestone celebrates only the attempt just finished (`LevlMilestones.check(course, topic, attempt)`).
+
+## v3 (2026-11-07, replaced)
+
 Owner approved the improved mockup on 2026-11-07 ("make that live"). One layout for every course and mode, drawn by
 `LevlStudy.end(o)` in `assets/course/study.js` with styles in `assets/course/study.css` (`.cx-endp3`).
 

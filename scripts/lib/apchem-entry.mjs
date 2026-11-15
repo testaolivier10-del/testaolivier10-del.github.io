@@ -159,7 +159,7 @@ ${bodyOpen(' data-app="equations-sheet"')}
     <p>The sheet also lists unit symbols, conversions (1 atm = 760 mm Hg = 760 torr; 1 V = 1 J/C; 1 A = 1 C/s) and the metric prefixes from giga to pico.</p>
   </section>
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[`<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[`<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="practice.html?m=exam">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:equations-sheet')}
@@ -198,7 +198,7 @@ ${bodyOpen(' data-app="score-calculator"')}
   </section>
   <section class="xsection" aria-labelledby="sc-next"><h2 id="sc-next">Raise your score</h2>
     <ul class="chem-links">
-      <li><a href="exams.html">Full practice exams</a> in the real format, with this estimate at the end.</li>
+      <li><a href="practice.html?m=exam">Full practice exams</a> in the real format, with this estimate at the end.</li>
       <li><a href="justify.html">The justification trainer</a> for the explain and justify points free response is built on.</li>
       <li><a href="equations-sheet.html">The equations sheet, explained</a>${firstTest ? `, and ${testLink('', 'free unit practice tests')}` : ''}.</li>
     </ul>
