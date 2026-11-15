@@ -94,16 +94,6 @@
      o: { course, kind, right, total, skipped, unit ('right'), chips: [text], sub, timed: { used, limit, pace },
           missed: [LevlStudy.miss(...)], missedTitle, hand, step, retry, also, stepHtml, extras, next, nextTitle,
           more, kept, estimate: { value, range, label } } */
-  var LS = { get: function(k){ try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } },
-             set: function(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
-  function courseKey(){ return (document.body && document.body.getAttribute('data-course')) || 'site'; }
-  var UPS = null;   // mastery moves counted by topics() for the handwritten line
-  var ICO = {
-    clock: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-    up: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg>',
-    down: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>',
-    star: '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21l1.5-7L2 9.3l7-.8z"/></svg>'
-  };
   /* One missed question for the card, from a question object and the student's pick. Works with every course's
      shapes: options + correct index, a correct list (select all), a number or text answer; anything else shows the
      stem only. stem, options and explanations are the courses' own authored markup. */
