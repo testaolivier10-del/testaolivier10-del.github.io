@@ -211,7 +211,7 @@
     var s = a.spec || {}, t = s.topics || [];
     if(course === 'nremt'){
       if(a.kind === 'review') return 'review.html?start=review';
-      if(a.kind === 'exam') return 'practice.html?m=exam';
+      if(a.kind === 'exam') return 'exams.html';
       return t.length ? topicHref(course, t[0]) : 'practice.html';
     }
     if(course === 'ochem'){
