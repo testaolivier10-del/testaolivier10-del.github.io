@@ -153,7 +153,7 @@
       due: { n: due, href: BASE + 'review.html', pill: pill() },
       links: [
         { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
-        { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit quizzes, system exams, A&amp;P I and II finals.' }
+        { href: BASE + 'practice.html?m=exam', title: 'Exams', sub: 'Unit quizzes, system exams, A&amp;P I and II finals.' }
       ]
     });
   }

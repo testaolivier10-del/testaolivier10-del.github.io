@@ -199,6 +199,8 @@
   }
   var DEEP = ['units', 'chapters', 'unit', 'chapter', 'area', 'topic', 'practice', 'core', 'from', 'mode', 'type', 'diff', 'tier', 'level', 'n', 'count', 'timer', 'expl'];
   function fromUrl(p){
+    // ?m=<mode> opens that tile (links that used to go to the old exams.html setup page, owner 2026-11-14).
+    if(has(MODES, p.get('m'))) S.m = p.get('m');
     if(!DEEP.some(function(k){ return p.get(k) !== null; })) return;
     var s = parseSet(p, defaultsOf('set'));
     if(s.from === 'due'){ S.m = 'rev'; S.rev = { units: s.units, topic: s.topic, n: s.n || 0 }; }

@@ -46,7 +46,9 @@
   var G = window.NremtGates || { canUse: function(){ return true; }, gate: function(){ return ''; }, badge: function(){ return ''; }, onChange: function(fn){ fn(); } };
 
   function draw(){
-    var history = readJSON('nremt_exam100_history', []).filter(function(x){ return x && x.total > 0; });
+    // An exam ended before half of it was answered is not a score (owner 2026-11-14: two 0% exams quit in
+    // seconds read as "your last exam was lower"). Older entries without an answered count: a 0 is a quit.
+    var history = readJSON('nremt_exam100_history', []).filter(function(x){ return x && x.total > 0 && (x.answered != null ? x.answered >= x.total / 2 : x.score > 0); });
     var mastery = readJSON('nremt_mastery', {});
     var domainStats = readJSON('nremt_domain_stats_all', {});
     var examDomainStats = readJSON('nremt_exam_domain_stats', {});
@@ -175,7 +177,7 @@
     var facts = [examFact];
     if(pace) facts.push({ big: pace + ' s', label: 'a question, ' + (pace <= EXAM_SECONDS_PER_Q * 0.9 ? 'on pace' : pace <= EXAM_SECONDS_PER_Q ? 'tight' : 'too slow') + ' (' + EXAM_SECONDS_PER_Q + ' s)' });
     // Owner 2026-11-14: no best exam here; the last exams sit under the chart beside it.
-    if(!history.length) facts.push({ big: 'Full exam', label: 'take one', href: 'exams.html' });
+    if(!history.length) facts.push({ big: 'Full exam', label: 'take one', href: 'practice.html?m=exam' });
     var ready = { badge: G.badge(), facts: facts, slot: 'd5ExamCard', foot: 'From your practice answers. Not a chance of passing.' };
     if(!canReady){
       ready.lockRow = { text: '<b>Readiness estimate</b>: your expected score on the real exam, by domain', href: '../premium.html#nremt' };
@@ -194,7 +196,7 @@
     if(isNew && canReady){ ready.value = null; ready.empty = 'Answer questions in any mode and your expected exam score shows up here.'; }
     ready.onSlot = function(){
       if(ED) ED.mount(document.getElementById('d5ExamCard'), {
-        subject: 'nremt', links: { review: 'review.html', exams: 'exams.html' },
+        subject: 'nremt', links: { review: 'review.html', exams: 'practice.html?m=exam' },
         target: function(days){
           if(!bank) return { n: st.goal || 15, unit: 'questions', one: 'question', why: 'is your daily goal' };
           if(!unseen) return { done: 'You have answered every question in the bank. Days from here are for Review and timed exams.' };
@@ -209,7 +211,7 @@
       weeks: weeks, exams: history.map(function(x){ return { t: x.date, pct: Math.round(x.score / x.total * 100) }; }),
       examWord: 'full exams', firstExamWord: 'first full exam',
       goal: { pct: GOAL, label: GOAL + '% right', key: GOAL + '% right' },
-      examDate: examT ? { t: examT } : null, allHref: history.length ? 'exams.html' : null, allText: 'Exams',
+      examDate: examT ? { t: examT } : null, allHref: history.length ? 'practice.html?m=exam' : null, allText: 'Exams',
       recent: history.slice(-3).reverse().map(function(x){ return { big: Math.round(x.score / x.total * 100) + '%', sub: fmtD(x.date) }; }),
       empty: overallPct === null ? 'Your line starts with your first answers.' : 'So far: ' + overallPct + '% on ' + plural(allTotal, 'answer') + '. Your weekly line starts now.'
     };

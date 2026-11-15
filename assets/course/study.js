@@ -133,98 +133,97 @@
     list = (list || []).filter(Boolean);
     if(!list.length) return '';
     var row = function(m, i){
-      return '<details class="cx-mq"' + (i >= 3 ? ' hidden data-more' : '') + '><summary><span class="cx-mq-x" aria-hidden="true">&#x2715;</span><span class="cx-mq-q"><span class="cx-mq-stem">' + lineHtml(m.stem) + '</span>' +
-        (m.ans ? '<small>' + (m.you ? 'You said ' + lineHtml(m.you) + ' · ' : '') + 'Answer: <b>' + lineHtml(m.ans) + '</b></small>' : '') + '</span><span class="cx-mq-ch" aria-hidden="true">&rsaquo;</span></summary>' +
-        '<div class="cx-mq-body">' + (m.youWhy ? '<p><b>Your answer:</b> ' + m.youWhy + '</p>' : '') + (m.why ? '<p>' + m.why + '</p>' : '') +
-          (m.href ? '<p><a href="' + esc(m.href) + '">Open the lesson</a></p>' : (!m.why && !m.youWhy ? '<p class="cx-small">The explanation is in the answer list below.</p>' : '')) + '</div></details>';
+      var pair = m.ans ? '<p class="cx-mq-pair">' + (m.you ? '<span class="cx-mq-you"><b>You said</b>' + lineHtml(m.you) + '</span>' : '') +
+        '<span class="cx-mq-ans"><b>Answer</b>' + lineHtml(m.ans) + '</span></p>' : '';
+      return '<details class="cx-mq"' + (i >= 3 ? ' hidden data-more' : '') + '><summary><span class="cx-mq-x" aria-hidden="true">&#x2715;</span><span class="cx-mq-q"><span class="cx-mq-stem">' + lineHtml(m.stem) + '</span></span><span class="cx-mq-ch" aria-hidden="true">&rsaquo;</span></summary>' +
+        '<div class="cx-mq-body">' + pair + (m.why ? '<div class="cx-mq-why">' + m.why + '</div>' : '') +
+          (m.href ? '<p><a href="' + esc(m.href) + '">Open the lesson</a></p>' : (!m.why && !m.ans ? '<p class="cx-small">The explanation is in the answer list below.</p>' : '')) + '</div></details>';
     };
     return '<div class="cx-missed"><p class="cx-card-k">' + esc(title || ('You missed ' + list.length)) + '</p>' + list.map(row).join('') +
-      (list.length > 3 ? '<button type="button" class="cx-mq-more" data-act="moremiss">+ ' + (list.length - 3) + ' more</button>' : '') + '</div>';
+      (list.length > 3 ? '<button type="button" class="cx-mq-more" data-act="moremiss">Show all ' + list.length + '</button>' : '') + '</div>';
   }
-  function handLine(o, pct, best){
+  /* The handwritten line names something the rest of the card does not already say: the weak spot when a
+     breakdown found one, otherwise an honest word on the score. */
+  function handLine(o, pct){
     if(o.hand != null) return o.hand;
     if(!o.total) return '';
-    if(pct === 100) return o.total >= 3 ? 'Every one right!' : 'All right!';
-    if(best) return 'Your best yet!';
-    if(UPS && UPS.up >= 2) return UPS.up + ' topics went up!';
+    if(pct === 100) return o.total >= 3 ? 'Every one right.' : 'All right.';
+    if(WEAK) return WEAK + ' cost you the most.';
     if(pct >= 80) return 'Strong set.';
-    if(pct >= 50) return 'Misses come back in review.';
+    if(pct >= 50) return 'Getting there.';
     return 'The misses are where it sticks.';
   }
+  /* A backlog is not a next step: "Review 555 due questions" reads as a pile (owner 2026-11-14). */
+  function capLabel(s){
+    return String(s || '').replace(/Review ([\d,]+) due ([a-z]+?)s?\b/g, function(m, n, w){ return +n.replace(/,/g, '') > 20 ? 'Review due ' + w + 's' : m; });
+  }
+  function stripTags(h){ return String(h || '').replace(/<[^>]*>/g, ''); }
+  /* Score card v4 (owner approved canvas, 2026-11-14; docs/score-card.md). Every card answers the same questions:
+     how did I do (band: score, one handwritten line, bar, one meta line), what did I get wrong (one line per miss,
+     tap for your answer, the answer and why), what next (one main button, one alternative), where did the points
+     go (only the areas missed), and every question one tap away. XP, path, badges and "vs last time" are gone. */
   function end(o){
     lastTotal = +(o && o.total) || 0;
-    var also = (o.also || []).filter(Boolean).slice(0, 2);
     var right = o.right || 0, total = o.total || 0, skip = o.skipped || 0, miss_ = Math.max(0, total - right - skip);
-    var pct = total ? Math.round(100 * right / total) : 0, ck = courseKey(), kind = o.kind || 'Practice set', short = total < 5;
+    var pct = total ? Math.round(100 * right / total) : 0, kind = o.kind || 'Practice set', short = total < 5;
     if(o.title == null){ var cn = document.querySelector('.site-header__course-full'); o.title = cn ? cn.textContent : ''; }
-    // Last time and personal best, per course and kind of session (this device).
-    var lk = 'levl_card_v1', st = LS.get(lk) || {}, key = ck + '|' + kind, prev = st[key], best = false, chips = [];
-    // One question per page (free response, justify, a scenario): last time and best would compare different questions.
-    var oneQ = o.noHistory || /^(Free response|Justify|Scenario)/.test(kind);
-    if(total >= 3 && !oneQ){
-      if(prev && prev.n >= 3){ var d = pct - prev.p; if(d) chips.push('<span class="cx-chip ' + (d > 0 ? 'up' : 'dn') + '">' + (d > 0 ? ICO.up : ICO.down) + (d > 0 ? '+' : '') + d + '% vs last time</span>'); }
-      best = !!(prev && total >= 5 && pct > (prev.b || 0) && pct < 100);
-      st[key] = { p: pct, n: total, b: Math.max(pct, prev && prev.b || 0), at: Date.now() }; LS.set(lk, st);
-    }
-    if(o.timed){ chips.unshift('<span class="cx-chip">' + ICO.clock + esc(o.timed.used + (o.timed.limit ? ' of ' + o.timed.limit : '')) + '</span>' + (o.timed.pace ? '<span class="cx-chip">' + esc(o.timed.pace) + ' a question</span>' : '')); }
-    if(skip) chips.push('<span class="cx-chip">' + skip + ' unanswered</span>');
-    (o.chips || []).forEach(function(c){ if(c) chips.push('<span class="cx-chip">' + c + '</span>'); });
-    if(o.sub) chips.push('<span class="cx-chip cx-chip-txt">' + o.sub + '</span>');
-    // The path line, from the summary the path keeps (assets/course/path.js saveSum).
-    var ps = LS.get(ck + '_path_sum_v1'), pl = '';
-    if(ps && ps.next){
-      var pk = 'levl_card_path_v1', pseen = LS.get(pk) || {}, was = pseen[ck];
-      pl = '<p class="cx-pathln"><span>Path</span><span class="cx-pb" aria-hidden="true"><i style="width:' + ps.pct + '%"></i></span><span>' + (was != null && was !== ps.pct ? was + '% &rarr; ' : '') + ps.pct + '%</span>' +
-        '<span class="cx-nx">· Up next: ' + (ps.href ? '<a href="' + esc(ps.href) + '">' + esc(ps.next) + '</a>' : esc(ps.next)) + '</span></p>';
-      pseen[ck] = ps.pct; LS.set(pk, pseen);
-    }
-    var hand = handLine(o, pct, best);
-    var badges = (best ? '<span class="cx-bdg">' + ICO.star + 'Personal best</span>' : '') + (o.badges || []).map(function(b){ return '<span class="cx-bdg">' + ICO.star + esc(b) + '</span>'; }).join('');
+    var meta = [];
+    if(o.estimate) meta.push(esc(o.estimate.label || 'Estimated score') + ' <b>' + esc(o.estimate.value) + '</b>' + (o.estimate.range ? ' (' + esc(o.estimate.range) + ')' : ''));
+    if(o.timed) meta.push(esc(o.timed.used + (o.timed.limit ? ' of ' + o.timed.limit : '')));
+    if(skip) meta.push(skip + ' unanswered');
+    (o.chips || []).forEach(function(c){ var t = stripTags(c); if(t && !/\bXP\b/.test(t)) meta.push(c); });
+    if(o.sub) meta.push(o.sub);
+    meta = meta.slice(0, 3);
+    var hand = handLine(o, pct);
     var bar = total ? '<span class="cx-bar" role="img" aria-label="' + right + ' right, ' + miss_ + ' missed' + (skip ? ', ' + skip + ' unanswered' : '') + '"><i class="ok" style="--w:' + (right / total * 100) + '%"></i><i class="no" style="--w:' + (miss_ / total * 100) + '%"></i>' + (skip ? '<i class="sk" style="--w:' + (skip / total * 100) + '%"></i>' : '') + '</span>' : '';
-    var est = o.estimate ? '<span class="cx-est"><small>' + esc(o.estimate.label || 'Estimated score') + '</small><b>' + esc(o.estimate.value) + '</b>' + (o.estimate.range ? '<em>' + esc(o.estimate.range) + '</em>' : '') + '</span>' : '';
-    var rt = o.retry ? ctl('btn-outline cx-endp-retry2', o.retry) : '';
-    var acts = o.stepHtml ? o.stepHtml + (rt ? '<div class="cx-endp-acts">' + rt + '</div>' : '')
-      : '<div class="cx-endp-acts">' + (o.step ? ctl('btn-press', o.step) : '') + rt + also.map(function(a){ return ctl('link-quiet', a); }).join('') + '</div>';
-    UPS = null;
-    return '<section class="cx-endp cx-endp3' + (short ? ' is-short' : '') + '" aria-label="Session results">' +
+    // One main button and one alternative: fixing the misses leads when there are any.
+    var lead = o.retry && miss_ > 0, step = o.step ? { href: o.step.href, act: o.step.act, label: capLabel(o.step.label) } : null;
+    var acts;
+    if(o.stepHtml){
+      var sh = capLabel(o.stepHtml);
+      // The next step (filled in by assets/next-step.js) sits beside Retry as the alternative: its button only.
+      acts = '<div class="cx-endp-acts cx-acts-step' + (lead ? ' is-alt' : '') + '">' + (lead ? ctl('btn-press', o.retry) + sh : sh + (o.retry ? ctl('btn-outline', o.retry) : '')) + '</div>';
+    } else {
+      var main = lead ? o.retry : step, alt = lead ? step : o.retry;
+      if(!main && !alt && o.also && o.also[0]) main = o.also[0];
+      else if(!alt && o.also && o.also[0]) alt = o.also[0];
+      acts = '<div class="cx-endp-acts">' + (main ? ctl('btn-press', main) : '') + (alt ? ctl('btn-outline', alt) : '') + '</div>';
+    }
+    var kept = o.kept ? '<details class="cx-all"><summary>See all ' + (total ? total + ' ' : '') + (/Flashcards/.test(kind) ? 'cards' : 'questions') + '</summary>' +
+      String(o.kept).replace(/<h2 class="cx-endp-h">[\s\S]*?<\/h2>/, '') + '</details>' : '';
+    var html = '<section class="cx-endp cx-endp3 cx-v4' + (short ? ' is-short' : '') + '" aria-label="Session results">' +
       '<div class="cx-band">' +
         '<p class="cx-kick">' + esc(kind) + '<i></i>' + esc(o.title || '') + '</p>' +
         '<div class="cx-endp-score" tabindex="-1"><span class="cx-big" data-n="' + right + '">' + right + '<small>/' + total + '</small></span>' +
-          '<span class="cx-hero-side">' + (o.unit ? '<b>' + esc(o.unit) + '</b>' : '') + (hand ? '<span class="cx-hand">' + esc(hand) + '</span>' : '') + '</span>' + est + '</div>' +
-        bar + (chips.length ? '<p class="cx-chips">' + chips.join('') + '</p>' : '') + pl +
+          (hand ? '<span class="cx-hand">' + esc(hand) + '</span>' : '') + '</div>' +
+        bar + (meta.length ? '<p class="cx-meta">' + meta.join(' &middot; ') + '</p>' : '') +
       '</div>' +
-      '<div class="cx-endp-card">' + missedHtml(o.missed, o.missedTitle) + (badges ? '<p class="cx-bdgs">' + badges + '</p>' : '') + acts + (o.extras || '') + '</div>' +
-      (short ? '' : (o.next ? '<h2 class="cx-endp-h">' + (o.nextTitle || 'Topics') + '</h2>' + o.next : '') + (o.more || '')) +
-      (o.kept || '') + premiumAtLimit(o.course) +
+      '<div class="cx-endp-card">' + missedHtml(o.missed, o.missedTitle) + acts + (o.extras || '') + '</div>' +
+      (short || !o.next ? '' : '<h2 class="cx-endp-h">Where you lost points</h2>' + o.next) +
+      (o.more || '') + kept + premiumAtLimit(o.course) +
     '</section>';
-  }
-  /* End screen v2b helpers (owner 2026-11-07), one look in every course.
-     topics(rows): one table, misses first. Row: { name, href, c, n, mastery (0..1 or null), links: [{ label, href }] }.
-     bars(title, rows): a compact breakdown. Row: { label, c, n }. */
-  function topics(rows){
-    rows = rows.slice().sort(function(a, b){ return (b.n - b.c) - (a.n - a.c) || a.c / a.n - b.c / b.n; });
-    var hasM = rows.some(function(r){ return r.mastery != null; }), ck = courseKey(), mk = 'levl_mast_seen_v1', ms = LS.get(mk) || {}, seen = ms[ck] || (ms[ck] = {});
-    UPS = { up: 0, down: 0 };
-    var html = '<div class="cx-topics' + (hasM ? '' : ' no-m') + '" role="table" aria-label="Results by topic"><div class="cx-topics-h" role="row"><span role="columnheader">Topic</span><span role="columnheader">Right</span>' +
-      (hasM ? '<span role="columnheader">Mastery</span>' : '') + '<span></span></div>' + rows.map(function(r){
-        var mp = r.mastery == null ? null : Math.round(r.mastery * 100), was = seen[r.name], dl = '';
-        if(mp != null){ if(was != null && was !== mp){ var d = mp - was; UPS[d > 0 ? 'up' : 'down']++; dl = '<span class="cx-dl ' + (d > 0 ? 'up' : 'dn') + '">' + (d > 0 ? '&#9650;' : '&#9660;') + ' ' + Math.abs(d) + '%</span>'; } seen[r.name] = mp; }
-        var study = r.c < r.n && r.links && r.links.length ? '<a class="btn-outline sm" href="' + esc(r.links[0].href) + '">Study</a>' : '';
-        return '<div class="cx-topic' + (r.c < r.n ? ' is-miss' : '') + '" role="row">' +
-          (r.href ? '<a class="cx-topic-name" role="cell" href="' + esc(r.href) + '">' + esc(r.name) + '</a>' : '<span class="cx-topic-name" role="cell">' + esc(r.name) + '</span>') +
-          '<span class="cx-topic-r" role="cell">' + r.c + '/' + r.n + '</span>' +
-          (hasM ? '<span class="cx-topic-m" role="cell">' + (mp == null ? '' : '<span class="cx-mbar" aria-hidden="true"><i style="width:' + mp + '%"></i></span>' + mp + '% ' + dl) + '</span>' : '') +
-          '<span class="cx-topic-go" role="cell">' + study + '</span></div>';
-      }).join('') + '</div>';
-    LS.set(mk, ms);
+    WEAK = null;
     return html;
   }
-  function bars(title, rows){
-    if(!rows || !rows.length) return '';
-    return '<h2 class="cx-endp-h">' + esc(title) + '</h2><ul class="cx-prac">' + rows.map(function(r){
-      return '<li><span>' + esc(r.label) + '</span><span class="cx-mbar" aria-hidden="true"><i style="width:' + Math.round(r.n ? r.c / r.n * 100 : 0) + '%"></i></span><b>' + r.c + '/' + r.n + '</b></li>';
-    }).join('') + '</ul>';
+  /* The breakdown (owner 2026-11-14): only the areas with a miss, worst first, each with Study; the rest named in
+     one line. Row: { name, href, c, n, mastery, links: [{ label, href }] }. Empty when nothing was missed. */
+  var WEAK = null;
+  function topics(rows){
+    rows = rows.filter(function(r){ return r && r.n; });
+    var lost = rows.filter(function(r){ return r.c < r.n; }).sort(function(a, b){ return (b.n - b.c) - (a.n - a.c) || a.c / a.n - b.c / b.n; });
+    var fine = rows.filter(function(r){ return r.c >= r.n; });
+    WEAK = lost.length && rows.length > 1 && (lost.length === 1 || (lost[0].n - lost[0].c) > (lost[1].n - lost[1].c)) ? lost[0].name : null;
+    if(!lost.length) return '';
+    var names = fine.map(function(r){ return '<b>' + esc(r.name) + '</b>'; });
+    var okLine = names.length ? '<p class="cx-lost-ok">All right in ' + (names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1] : names[0]) + '.</p>' : '';
+    return '<div class="cx-lost" role="list">' + lost.map(function(r){
+      var go = (r.links && r.links[0] && r.links[0].href) || r.href;
+      return '<div class="cx-lost-r" role="listitem"><span class="cx-lost-n">' + esc(r.name) + '</span><span class="cx-lost-c">' + r.c + '/' + r.n + '</span>' +
+        (go ? '<a class="cx-lost-go" href="' + esc(go) + '">Study<span class="sr-only">: ' + esc(r.name) + '</span></a>' : '<span></span>') + '</div>';
+    }).join('') + okLine + '</div>';
   }
+  /* Second breakdowns (science practices, topic areas) left the card: one breakdown is enough (owner 2026-11-14). */
+  function bars(){ return ''; }
   /* Wires an end panel's data-act buttons to handlers, then puts the focus on the score. */
   function wire(root, handlers){
     if(!root) return;

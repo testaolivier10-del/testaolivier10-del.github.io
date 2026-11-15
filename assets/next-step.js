@@ -190,7 +190,7 @@
       // deck's remaining cards are due work the student is already inside.
       var d = ctx.due && ctx.due.n > 0 ? ctx.due : ask(A.due);
       if(d && d.n > 0){
-        return { kind: 'review', label: d.label || 'Review ' + plural(d.n, 'due ' + d.noun), href: d.href, act: d.act,
+        return { kind: 'review', label: d.label || (d.n > 20 ? 'Review due ' + d.noun + 's' : 'Review ' + plural(d.n, 'due ' + d.noun)), href: d.href, act: d.act,
           reason: d.reason || 'Still waiting in today\u2019s queue, while this session is fresh.' };
       }
     }

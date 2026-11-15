@@ -341,7 +341,7 @@
         ],
         links: [
           { href: 'flashcards.html', title: 'Flashcards', sub: 'pKa, IR and NMR values and reagents.' },
-          { href: 'exams.html', title: 'Exams', sub: 'Timed tests on a chapter, a range or the course.' }
+          { href: 'practice.html?m=exam', title: 'Exams', sub: 'Timed tests on a chapter, a range or the course.' }
         ]
       }) + '</div>';
 

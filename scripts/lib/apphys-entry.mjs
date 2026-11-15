@@ -195,7 +195,7 @@ ${bodyOpen(' data-app="equations-sheet"')}
     <p>The sheet also lists the conventions every question assumes unless it says otherwise (inertial frames, no air resistance, ideal springs, strings and fluids), unit symbols, the metric prefixes from tera to pico, and sine, cosine and tangent at 0°, 30°, 37°, 45°, 53°, 60° and 90°.</p>
   </section>
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[`<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[`<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="practice.html?m=exam">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:equations-sheet')}
@@ -234,7 +234,7 @@ ${bodyOpen(' data-app="score-calculator"')}
   </section>
   <section class="xsection" aria-labelledby="sc-next"><h2 id="sc-next">Raise your score</h2>
     <ul class="phys-links">
-      <li><a href="exams.html">Full practice exams</a> in the real format, with this estimate at the end.</li>
+      <li><a href="practice.html?m=exam">Full practice exams</a> in the real format, with this estimate at the end.</li>
       <li><a href="justify.html">The justification trainer</a> for the claim-and-reasoning points free response is built on.</li>
       <li><a href="equations-sheet.html">The equations sheet, explained</a>${firstTest ? `, and ${testLink('', 'free unit practice tests')}` : ''}.</li>
     </ul>

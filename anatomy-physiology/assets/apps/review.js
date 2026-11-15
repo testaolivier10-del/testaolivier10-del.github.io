@@ -134,7 +134,7 @@
         ],
         links: [
           { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Glossary terms on spaced cards.' },
-          { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit quizzes, system exams and finals.' }
+          { href: BASE + 'practice.html?m=exam', title: 'Exams', sub: 'Unit quizzes, system exams and finals.' }
         ]
       }) + '</div>';
     if(!items.length){
