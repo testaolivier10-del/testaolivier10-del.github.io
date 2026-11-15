@@ -2575,7 +2575,8 @@ function showResults(){
 
   // The 80% milestone for a full timed exam (assets/milestones.js, fetched on demand). check() reads the exam
   // history asynchronously, after it is saved below. Share result is a quiet link on the card (shareResult).
-  if(window.LevlLazy && mode === 'full') window.LevlLazy('milestones', M => M.check('nremt'));
+  // Only this attempt can set off the celebration (owner, 2026-11-14: a 0/100 showed "80% or higher").
+  if(window.LevlLazy && mode === 'full'){ const attempt = { score, total: activeIndices.length }; window.LevlLazy('milestones', M => M.check('nremt', null, attempt)); }
 
   resultsScreen.setAttribute('data-mode', mode);
   // The adaptive exam's verdict, its scale and each domain against the line (sets lastCat for the history).
