@@ -10,7 +10,7 @@
    teacher-review). */
 import { readFileSync } from 'node:fs';
 import { relative, sep } from 'node:path';
-const BETA_NOTE = 'This course has not yet been reviewed by an AP® Calculus BC teacher.';
+const BETA_NOTE = 'No AP® Calculus BC teacher has reviewed it yet.';
 
 export default function apcalcbcBetaAndReport({ ROOT, fail, htmlFiles }) {
   for (const file of htmlFiles) {

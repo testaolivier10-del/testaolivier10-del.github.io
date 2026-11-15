@@ -9,7 +9,7 @@
 import { readFileSync } from 'node:fs';
 import { relative, sep } from 'node:path';
 
-const NOTE = 'not yet been reviewed by a licensed A&amp;P instructor';
+const NOTE = 'licensed A&amp;P instructor has reviewed it yet';
 
 export default function anpBetaAndReport({ ROOT, fail, htmlFiles }) {
   for (const file of htmlFiles) {

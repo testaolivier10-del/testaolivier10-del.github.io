@@ -186,11 +186,11 @@ export function crumbNav(items, depth) {
 // to a title like "Cell cycle" read as "beta cell").
 /* The Beta label is gone (Olivier, 2026-10-26); the export stays so the pages that place it need no change. */
 export const BETA_PILL = '';
-export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&amp;P instructor.';
+export const BETA_NOTE = 'No licensed A&amp;P instructor has reviewed it yet.';
 
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">${BETA_PILL} ${BETA_NOTE} It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one. <a href="${depth}credits.html">Figure credits</a>.</p>
+  <p class="anp-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. ${BETA_NOTE} Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one. <a href="${depth}credits.html">Figure credits</a>.</p>
   ${footerLinks(depth + '../')}
 </footer>`;
 }

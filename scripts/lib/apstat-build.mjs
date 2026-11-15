@@ -31,7 +31,7 @@ export const COURSE_NAME = 'AP® Statistics';
 export const COURSE_HTML = 'AP&reg; Statistics';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
-export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Statistics teacher.';
+export const BETA_NOTE = 'No AP® Statistics teacher has reviewed it yet.';
 /* THE COURSE IDENTITY, in one place (docs/apstat-spec.md decision 5,
    proposed; owner to confirm). The accent's CSS values live in
    assets/theme.css (body[data-course="apstat"]) and statistics/assets/stat.css
@@ -485,7 +485,7 @@ export const reportButton = (pageId) => `<button type="button" class="report-btn
    apstat-beta-and-report). */
 export function footer(depth, pageId) {
   return `<footer class="stat-foot xshell">
-  <p class="stat-accuracy-note">${BETA_PILL} ${esc(BETA_NOTE)} It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref">${reportButton(pageId)}</span></p>
+  <p class="stat-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. ${esc(BETA_NOTE)} Spot a mistake? <span class="stat-nav-ref">${reportButton(pageId)}</span></p>
   <p class="stat-disclaimer">${esc(DISCLAIMER)}</p>
   ${footerLinks(depth + '../')}
 </footer>`;

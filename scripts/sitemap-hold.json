@@ -1,0 +1,4 @@
+{
+  "_why": "Course folders held out of sitemap.xml (owner decision 2026-11-14). A new course goes live for students as usual, but its folder is listed here at launch so Google is not asked to crawl another batch of new pages while it is still judging the site (docs/site-health.md, 'New courses and the sitemap'). Remove the folder once its pages have real depth.",
+  "hold": []
+}

@@ -36,7 +36,7 @@ export const COURSE_NAME = 'AP® Microeconomics';
 export const COURSE_HTML = 'AP&reg; Microeconomics';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
-export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Microeconomics teacher.';
+export const BETA_NOTE = 'No AP® Microeconomics teacher has reviewed it yet.';
 /* THE COURSE IDENTITY, in one place (docs/apmicro-spec.md decision 13:
    the accent, icon, headline and ranks; owner to confirm). The accent's CSS values live in assets/theme.css
    (body[data-course="apmicro"]) and microeconomics/assets/mic.css (body.mic);
@@ -420,7 +420,7 @@ export const reportButton = (pageId) => `<button type="button" class="report-btn
    apmicro-beta-and-report). */
 export function footer(depth, pageId) {
   return `<footer class="mic-foot xshell">
-  <p class="mic-accuracy-note">${BETA_PILL} ${esc(BETA_NOTE)} It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="mic-nav-ref">${reportButton(pageId)}</span></p>
+  <p class="mic-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. ${esc(BETA_NOTE)} Spot a mistake? <span class="mic-nav-ref">${reportButton(pageId)}</span></p>
   <p class="mic-disclaimer">${esc(DISCLAIMER)}</p>
   ${footerLinks(depth + '../')}
 </footer>`;

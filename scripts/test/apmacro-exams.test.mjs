@@ -257,7 +257,7 @@ test('with every unit published: the exams with five options, the prompts, the f
   for (const sl of [...eq.matchAll(/href="tools\/([a-z-]+)\.html"/g)].map(m => m[1])) assert.ok(existsSync(join(out, 'tools', `${sl}.html`)), `the page links only live trainers (${sl})`);
   const page = readFileSync(join(out, 'exams.html'), 'utf8');
   assert.doesNotMatch(page, /Beta|score-calculator|readiness/i, 'no Beta label, no score calculator, no band');
-  assert.match(page, /has not yet been reviewed by an AP® Macroeconomics teacher/, "the review note stays");
+  assert.match(page, /No AP® Macroeconomics teacher has reviewed it yet/, "the review note stays");
 });
 
 /* Phase 3: the two real forms, their fifth options and exam-only items. */

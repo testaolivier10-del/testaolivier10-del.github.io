@@ -33,7 +33,7 @@ export const COURSE_NAME = 'AP® Precalculus';
 export const COURSE_HTML = 'AP&reg; Precalculus';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
-export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Precalculus teacher.';
+export const BETA_NOTE = 'No AP® Precalculus teacher has reviewed it yet.';
 // Unit 1 is free, and every "Algebra you need" lesson (docs/apprecalc-spec.md
 // decision 6, proposed; owner to confirm). Keep in step with freeChapters in assets/premium.js.
 export const FREE_UNITS = ['unit-1'];
@@ -372,7 +372,7 @@ export const reportButton = (pageId) => `<button type="button" class="report-btn
    apprecalc-beta-and-report). */
 export function footer(depth, pageId) {
   return `<footer class="pcalc-foot xshell">
-  <p class="pcalc-accuracy-note">${BETA_PILL} ${esc(BETA_NOTE)} It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? <span class="pcalc-nav-ref">${reportButton(pageId)}</span></p>
+  <p class="pcalc-accuracy-note">${BETA_PILL} Made by <a href="${depth}../about.html">Olivier Testa</a>, an EMT and pre-med student at UC San Diego. It follows the published course framework and open textbooks, listed on the <a href="${depth}../sources.html">Sources</a> page. ${esc(BETA_NOTE)} Spot a mistake? <span class="pcalc-nav-ref">${reportButton(pageId)}</span></p>
   <p class="pcalc-disclaimer">${esc(DISCLAIMER)}</p>
   ${footerLinks(depth + '../')}
 </footer>`;
