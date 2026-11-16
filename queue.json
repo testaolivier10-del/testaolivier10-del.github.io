@@ -1209,12 +1209,12 @@
    "approved_commit": "734cc3d3e183a9e277669c8d1cc336720284fb0d"
   },
   {
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-11-11",
-   "date": null,
+   "date": "2026-11-16",
    "yt_no_hashtags": true,
-   "buffer": null,
-   "yt_buffer": null,
+   "buffer": "manual",
+   "yt_buffer": "manual",
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -1240,7 +1240,11 @@
    },
    "review_blob": "7a569d0bf3fd9ab746618121fe274ee503411223",
    "approved_on": "2026-11-11",
-   "approved_blob": "7a569d0bf3fd9ab746618121fe274ee503411223"
+   "approved_blob": "7a569d0bf3fd9ab746618121fe274ee503411223",
+   "posted_tt": false,
+   "posted_yt": false,
+   "handoff_sent": null,
+   "poll_reminded": null
   },
   {
    "status": "approved",
