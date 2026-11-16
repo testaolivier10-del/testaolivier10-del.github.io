@@ -1271,12 +1271,12 @@
    "approved_blob": "952ff9b99c0ff63c5db06f47558d5bcdfa34217e"
   },
   {
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-11-11",
-   "date": null,
+   "date": "2026-11-18",
    "yt_no_hashtags": true,
-   "buffer": null,
-   "yt_buffer": null,
+   "buffer": "6afa99b5ff465c57dad6fd29",
+   "yt_buffer": "6afa99b58e87c256a3b632e3",
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
