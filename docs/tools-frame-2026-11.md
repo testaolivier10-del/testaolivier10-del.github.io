@@ -65,8 +65,10 @@ card), a Share button in the bar on desktop, the "what to do" line under the tas
   try (four letters written in step 1). Done (`frq-coach.js`: "Show the rubric line", then the sample in place).
 - HuG Map reader: no "Map" pill in the std frame (the picker names the map). Done.
 - Macro / Micro / HuG finished cards: a short takeaway per problem type where the last solution line reads oddly out
-  of context. Done: `TAKE` maps in `mac-tools.js`, `mic-tools.js`, `hug-tools.js` (slug:type, slug:* for all types of
-  a tool); every other type keeps its last line. Also fixed "a inflationary gap" (adas-lab model, two lines).
+  of context. F6b built the `TAKE` maps (`TAKE[slug][type]`, in `mac-tools.js`, `mic-tools.js`, `hug-tools.js`) and
+  wrote most of them; F6a added the types whose last line still read oddly: adas-lab phillips, indicators-lab
+  gdp-calc, multiplier-lab gap, policy-chain open; cost-lab shutdown, externality-lab public, factor-lab hire,
+  surplus-lab control, trade, tariff; population-lab cohort. Every other type keeps its last line.
 - Micro Firm and market shock select: left as is.
 - Macro Policy chain "Write it out" row: value now "a sentence, then your words" (fits 390 px).
 - APES / Psych: views stay a button row in the side panel; Psych formulas stay the first hint (no change needed).
@@ -90,7 +92,7 @@ card), a Share button in the bar on desktop, the "what to do" line under the tas
   the plot; the f' plot under the tree is no longer held to 320 px wide.
 - Phone quiz figure: a quiz stage with a figure keeps at least about 40% of the screen height (was 30%).
 
-New copy for the accuracy check (F6a): the takeaways in the three `TAKE` maps; the FRQ coach lines "Show the rubric
+New copy for the accuracy check (F6a): the eleven F6a takeaways listed above (after F6b's pass); the FRQ coach lines "Show the rubric
 line" and "A full-credit answer opens once you write yours in step 1."; the search panel's "Type to search" and
 "Nothing matches. Try fewer letters."
 
