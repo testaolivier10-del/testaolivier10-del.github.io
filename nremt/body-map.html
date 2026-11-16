@@ -628,7 +628,8 @@ document.addEventListener('DOMContentLoaded', function(){
     new MutationObserver(() => bodyPick.set({ label: 'Find a part by name', value: bodyPick.value(), groups: pickGroups(), onChange: onPick }))
       .observe(document.getElementById('landmarkList'), { childList: true });
   }
-  if (studio) studio.hint({ target: anchor, text: 'Tap any part of the body', key: 'nremt-body-map' });
+  // Opened on Burns (?mode=burns): only Burns' own first-run line shows, not the 3D one as well.
+  if (studio && params.get('mode') !== 'burns') studio.hint({ target: anchor, text: 'Tap any part of the body', key: 'nremt-body-map' });
 
   const toggle = document.getElementById('huntToggle');
   const panel = document.getElementById('huntPanel');
