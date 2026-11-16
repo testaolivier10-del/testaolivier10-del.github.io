@@ -119,3 +119,9 @@
 
 /* Pass 3: the beat strip waits for the first Play. */
 .nx-sound-trainer .st-side:not(.st-played) .st-strip[data-strip="a"]{display:none;}
+/* Standard frame (F2): the sounds are one grouped dropdown on the stage, so the chip rows step aside (they stay in
+   the page and the dropdown drives them); the sound and the spot head the side panel. */
+.nx-sound-trainer.ls-std .st-pick{display:none;}
+.nx-sound-trainer.ls-std .ls-pills{left:12px;right:64px;justify-content:space-between;}
+.nx-sound-trainer.ls-std .ls-pills-r:empty{display:none;}
+.nx-sound-trainer.ls-std[data-mode=test] .st-side .st-q{display:none;}

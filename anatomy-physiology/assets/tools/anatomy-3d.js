@@ -305,6 +305,7 @@
     quiet = true; viewer.clear(); quiet = false;
   }
   function ask(){
+    if(ST && ST.done) ST.done(false);
     var it = round.items[round.i];
     it.done = false;
     cleanModel();
@@ -465,6 +466,15 @@
     }).join('') + '</ol>' + (missed.length ? '<p class="a3-muted">Misses are in your <a href="' + esc(BASE + 'review.html') + '">review queue</a>; your accuracy by chapter is on the <a href="' + esc(BASE + 'dashboard.html') + '">dashboard</a>.</p>' : '') : '';
     live.textContent = n ? r.right + ' of ' + n + ' right.' : 'Quiz ended.';
     round = { items: r.items, results: r.results, right: r.right, timed: r.timed, secs: r.secs, over: true, i: 0 };
+    /* The finished card (standard frame): the score, Retry the misses (or New round), then New round and Every
+       question (Explanation); the misses glow on the model beside it. */
+    if(ST && ST.done && n){
+      var rb = dockQ.querySelector('.a3-retry'), ab = dockQ.querySelector('.a3-again');
+      var fwd = function(b){ return { label: b.textContent.trim(), onClick: function(){ ST.done(false); b.click(); } }; };
+      ST.done({ kicker: r.timed ? 'Practical done' : 'Round done', title: r.right + ' of ' + n + ' right',
+        text: missed.length ? 'Missed structures glow on the model and go into your review queue.' : 'Nothing missed.',
+        next: fwd(rb || ab), links: (rb ? [fwd(ab)] : []).concat([{ label: 'Every ' + (r.timed ? 'station' : 'question') + ', one by one', open: 'why' }]) });
+    }
     if(early && !n) go('explore');
   }
   function retryMissed(){
@@ -502,6 +512,7 @@
     if(round && !round.over && round.results.length && (MODE === 'quiz' || MODE === 'timed') && m !== MODE) endRound(true);
     MODE = m;
     if(ST) ST.mode(m);
+    if(ST && ST.done && m !== 'quiz' && m !== 'timed') ST.done(false);
     try{ history.replaceState(null, '', location.pathname + location.search + '#' + (opts.first ? opts.first.id : m)); }catch(e){}
     viewer.marks({}); viewer.highlight([]); viewer.tag(null);
     pills([], 'left'); pills([], 'right');

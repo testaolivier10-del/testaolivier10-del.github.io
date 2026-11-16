@@ -163,8 +163,40 @@
 
   /* ------------------------------------------------------------ picker */
   var pid = 0;
+  /* The standard frame (docs/tools-frame-2026-11.md, F2): with the studio on, the chooser is ONE grouped dropdown at
+     the stage's top left (s.picker; "3 of 12", a tick on the done ones, the full list as the last choice). It is
+     made once and refilled by each render; the disclosure below is still built (and found by the tool) but stays
+     out of sight. A render that has no chooser hides it (s.reset). */
+  function stdPicker(opts){
+    if(!S || !S.picker || !S.root.classList.contains('ls-std')) return false;
+    var flat = [], gs = opts.groups.filter(function(g){ return g.items.length; }).map(function(g){
+      return { label: g.title || opts.label, items: g.items.map(function(it){ flat.push(it); return { value: it.id, label: (it.done ? '\u2713 ' : '') + it.title }; }) };
+    });
+    var n = flat.length;
+    var more = n > 12 ? [{ value: '__search', label: 'Search all ' + n + ' ' + opts.noun, sub: 'Search' }] : [];
+    if(opts.allHref || opts.onAll) more.push({ value: '__all', label: opts.allLabel || 'Browse the full list', sub: n + ' ' + opts.noun });
+    if(more.length) gs.push({ label: 'More', items: more });
+    var cur = flat.filter(function(it){ return it.id === opts.current; })[0];
+    gs.forEach(function(g){ g.items.forEach(function(it){ if(String(it.value).indexOf('__') !== 0) it.sub = (flat.map(function(f){ return f.id; }).indexOf(it.value) + 1) + ' of ' + n; }); });
+    var o = { label: opts.label + ': choose one of ' + n + ' ' + opts.noun, groups: gs, value: cur ? cur.id : (flat[0] && flat[0].id), onChange: function(v){
+      if(v === '__all'){ if(opts.onAll) opts.onAll(); else if(opts.allHref) location.href = opts.allHref; return; }
+      if(v === '__search'){
+        S._pick.value(cur ? cur.id : '');
+        var k = S._kp; if(!k) return;
+        k.hidden = false; k.classList.remove('kp-ls'); k.open = true;
+        var qi = k.querySelector('input'); if(qi) setTimeout(function(){ qi.focus(); }, 30);
+        return;
+      }
+      var it = flat.filter(function(f){ return f.id === v; })[0];
+      if(it && it.href) location.href = it.href; else if(opts.onPick) opts.onPick(v);
+    } };
+    if(!S._pick) S._pick = S.picker(o); else S._pick.set(o);
+    S._pick.el.classList.remove('ls-off');
+    return true;
+  }
   function picker(host, opts){
     if(!host) return null;
+    var std = stdPicker(opts);
     var n = 0, cur = null;
     opts.groups.forEach(function(g){ g.items.forEach(function(it){ n++; if(it.id === opts.current) cur = it; }); });
     var p = 'kp' + (++pid);
@@ -189,6 +221,11 @@
         (opts.allHref || opts.onAll ? '<p class="kp-all"><a href="' + esc(opts.allHref || '#') + '" class="kp-alllink">' + esc(opts.allLabel || 'Browse the full list') + ' &rarr;</a></p>' : '') +
       '</div>';
     host.appendChild(el);
+    if(std){
+      el.hidden = true; el.classList.add('kp-ls'); S._kp = el;
+      // "Search all n" (the dropdown's last choice) brings this searchable list back, open, until it closes.
+      el.addEventListener('toggle', function(){ if(!el.open){ el.hidden = true; el.classList.add('kp-ls'); } });
+    }
     var q = el.querySelector('input'), st = el.querySelector('[role="status"]'), none = el.querySelector('.kp-none'), timer = 0;
     function filter(){
       var words = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean), shown = 0;
@@ -274,6 +311,17 @@
      s.mirror(el, mode, fallback)         the caption follows el's content
      s.modeBar(on)                        show or hide the mode switch */
   var S = null;
+  // One line on what each tool is for (the bar under the name).
+  var LEDE = {
+    'feedback-loops': 'See how the body pulls a variable back to its set point.',
+    calculators: 'Change the numbers and watch the body respond.',
+    graphs: 'Read the curves of physiology, one point at a time.',
+    pathways: 'Follow a pathway step by step, in order.',
+    'lab-practical': 'Name the structures on real figures, like a lab practical.',
+    predict: 'Predict what changes, then watch the chain play out.',
+    'word-roots': 'Take medical words apart and build your own.',
+    'anatomy-3d': 'Turn a 3D body and find each structure.'
+  };
   function studio(o){
     if(S) return S;
     var app = document.getElementById('app');
@@ -284,6 +332,9 @@
     ab.className = 'ls-sec';
     ab.innerHTML = (lede ? '<p>' + esc(lede.textContent) + '</p>' : '') + (o.about || '');
     var s = window.LevlStudio.mount({
+      // The standard frame (docs/tools-frame-2026-11.md, F2): name and one line in the bar, the modes there too,
+      // Share and "?" (the second tab: topic, settings, reference).
+      std: true, lede: o.lede || LEDE[slug] || (lede ? lede.textContent.replace(/\s+/g, ' ').trim() : ''),
       title: o.title || (h1 ? h1.textContent : document.title), course: 'Anatomy & Physiology',
       back: BASE + 'tools.html', home: BASE, slug: 'anp-' + slug, host: app,
       // the shell's quiz modes plus the pathway drills (Order, Missing step, Spot the error)
@@ -317,6 +368,10 @@
     s.reset = function(){
       owned.forEach(function(el){ if(el.parentNode) el.parentNode.removeChild(el); });
       owned = [];
+      // A new render is not the finished screen any more (a finished card is set again by the render that needs it).
+      if(s.done) s.done(false);
+      // The dropdown shows while its chooser is part of what is on screen (a list or setup view has none).
+      if(s._pick) setTimeout(function(){ var k = s._kp; s._pick.el.classList.toggle('ls-off', !(k && k.isConnected && s.root.contains(k))); }, 0);
       return s;
     };
     s.mirror = function(el, mode, fallback){
@@ -331,5 +386,9 @@
     return s;
   }
 
+  // Locked Premium tools are mounted by tool-studio.js itself (adopt): tell it this course is on the standard frame.
+  function stdKit(){ if(window.LevlStudio && window.LevlStudio.stdKit) window.LevlStudio.stdKit({ lede: LEDE }); }
+  stdKit();
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', stdKit);
   window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, a3dId: a3dId, A3D: A3D, body3d: body3d, status: status, first: first, why: why, more: more, about: about, studio: studio, BODY: BODY, ALIAS: ALIAS };
 })();

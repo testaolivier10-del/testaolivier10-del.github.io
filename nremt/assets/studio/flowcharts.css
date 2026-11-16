@@ -192,3 +192,6 @@
 .nx-flowcharts .bd-pick__k{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
 .nx-flowcharts .bd-later{margin:2px 0 0;padding:12px;border:1.5px dashed var(--line);border-radius:14px;text-align:center;font:700 var(--ls-s) var(--font-ui);color:var(--muted);}
 @media print{.nx-flowcharts .fc-later{display:revert !important;}.nx-flowcharts .fc-more{display:none;}}
+/* Standard frame (F2): the protocol is the stage's dropdown (Read and Build it); the old select and the board's
+   own select stay in the page, out of sight, and the dropdown drives them. */
+.nx-flowcharts.ls-std .fl-ls-off,.nx-flowcharts.ls-std #flowBuild .bd-pick{display:none;}

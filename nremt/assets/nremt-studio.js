@@ -10,6 +10,10 @@
    .wrap (the old title card). Each page then moves its own parts with s.add,
    so its element references, listeners and deep links keep working.
 
+   Since F2 (docs/tools-frame-2026-11.md) mount() opts into the standard frame (std: true): the page head's lede,
+   or o.lede, is the one line under the name; the modes sit in the bar; "?" opens the second tab. Each page
+   sets its task, picker and finished card itself.
+
    NremtStudio.slim(opts) is the reference-page version: the same slim top bar
    over the page's own content, which keeps scrolling as a normal page (for
    long cheat sheets, where a stage and dock would hide the information).
@@ -46,6 +50,12 @@
     else if(lede) about.appendChild(lede);
     var opts = {};
     for(var k in o) opts[k] = o[k];
+    /* The standard frame (docs/tools-frame-2026-11.md, F2): name and one line in the bar, the modes there too,
+       Share and "?" (the second tab: reference and settings). o.std === false keeps the calm frame. */
+    if(o.std !== false){
+      opts.std = true;
+      if(!opts.lede && lede) opts.lede = lede.textContent.replace(/\s+/g, ' ').trim();
+    }
     opts.course = 'NREMT-EMT';
     opts.back = opts.back || 'tools.html';
     opts.home = opts.home || 'index.html';

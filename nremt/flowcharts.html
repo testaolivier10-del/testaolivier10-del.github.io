@@ -939,8 +939,10 @@ document.addEventListener('DOMContentLoaded', function(){
     studio.mode(m);
     if(m === 'read'){
       var h = shown();
-      studio.caption(h ? '<b>' + h.textContent + '.</b> Read down to the first fork, then tap Next to follow the chart.' : 'Every sequence, one after another.', 'read');
-      var onB = chips.querySelector('[aria-pressed="true"]'); if(onB) sel.value = onB.dataset.i;
+      studio.task(h ? { kicker: 'Read', title: h.textContent + '.', todo: 'Read down to the first fork, then Next part of the chart.' }
+        : { kicker: 'Read', title: 'Every sequence, one after another.' }, 'read');
+      studio.caption('', 'read');
+      var onB = chips.querySelector('[aria-pressed="true"]'); if(onB){ sel.value = onB.dataset.i; if(readPick) readPick.value(onB.dataset.i); }
       var on = chips.querySelector('[aria-pressed="true"]');
       if(on && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = Math.max(0, on.offsetLeft - 16);
       var card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];
@@ -949,10 +951,12 @@ document.addEventListener('DOMContentLoaded', function(){
         '<p>Each fork under a question is labeled with its answer; follow the one that fits the patient. The notes under a chart say why the order is what it is.</p>' +
         [].map.call(notes, function(n){ return '<p>' + n.innerHTML + '</p>'; }).join('');
     } else if(m === 'build'){
-      studio.caption('Drag each step into the chart, or tap a step and then the place it goes. Two steps belong to other protocols.', 'build');
+      studio.task({ kicker: 'Build it', title: 'Put each step in its place.', todo: 'Drag a step into the chart, or tap it and then its place. Two steps belong to other protocols.' }, 'build');
+      studio.caption('', 'build');
       how.innerHTML = '<h3 class="ls-title-l">Build it</h3><p>Producing a sequence from its parts is the skill the scene asks for. Diamonds are questions; each arm is labeled with its answer. A step in the wrong place bounces and says why; two tiles are from other protocols. A chart you misplaced a step in goes to your Review list until you build it clean.</p>';
     } else {
-      studio.caption('Which step comes next? Pick it below.', 'drill');
+      studio.task({ kicker: 'Drill me', title: 'Which step comes next?', todo: 'Pick it below.' }, 'drill');
+      studio.caption('', 'drill');
       how.innerHTML = '<h3 class="ls-title-l">Drill me</h3><p>Each question shows the sequence so far, or a decision and which way it went, and asks what follows. The wrong choices are real steps from the other protocols, because mixing them up is the actual mistake. A miss goes to your Review list with a link to its diagram.</p>';
     }
   }
@@ -962,6 +966,8 @@ document.addEventListener('DOMContentLoaded', function(){
   // A drill verdict lands on the stage.
   new MutationObserver(function(){
     var v = dock.querySelector('.drill-verdict');
+    studio.task(v ? { kicker: v.classList.contains('ok') ? 'Right' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad', title: 'Which step comes next?', todo: 'The answer is marked below. Next for another.' }
+      : { kicker: 'Drill me', title: 'Which step comes next?', todo: 'Pick it below.' }, 'drill');
     studio.pills(v ? [{ html: v.classList.contains('ok') ? 'Yes' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', 'drill');
   }).observe(dock, { childList: true, subtree: true });
   /* Build and Drill name each sequence by Read mode's short name (the long
@@ -995,8 +1001,38 @@ document.addEventListener('DOMContentLoaded', function(){
     var t = done ? done.textContent : fb && fb.textContent ? (fb.classList.contains('ok') ? 'Placed' : 'Bounced') : '';
     studio.pills(t ? [{ html: t, tone: done || fb.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', 'build');
   }).observe($('flowBuild'), { childList: true, subtree: true, characterData: true });
+  /* The standard frame (docs/tools-frame-2026-11.md): the protocol is one dropdown at the stage's top left in Read
+     (it drives the old select, which drives the chips) and in Build it (it drives the board's own select). A
+     finished build gets the finished card; the board's own summary stays on the stage beside it. */
+  var items = [].map.call(chips.querySelectorAll('button'), function(b){ return { value: b.dataset.i, label: b.textContent.trim() }; });
+  var onB0 = chips.querySelector('[aria-pressed="true"]');
+  var readPick = studio.picker ? studio.picker({ label: 'Protocol', items: items, count: true, value: onB0 ? onB0.dataset.i : items[0] && items[0].value,
+    onChange: function(v){ sel.value = v; sel.dispatchEvent(new Event('change')); } }, 'read') : null;
+  if(readPick) $('flowPick').classList.add('fl-ls-off');
+  function buildItems(){ var bs = fb.querySelector('.bd-picksel'); return bs ? [].map.call(bs.options, function(o){ return { value: o.value, label: o.textContent }; }) : []; }
+  var buildPick = null;
+  function syncBuild(){
+    var bs = fb.querySelector('.bd-picksel');
+    if(!bs || !studio.picker) return;
+    if(!buildPick) buildPick = studio.picker({ label: 'Protocol to build', items: buildItems(), count: true, value: bs.value, onChange: function(v){
+      var b2 = fb.querySelector('.bd-picksel'); if(b2){ b2.value = v; b2.dispatchEvent(new Event('change', { bubbles: true })); } } }, 'build');
+    else if(buildPick.value() !== bs.value) buildPick.value(bs.value);
+    var dn = fb.querySelector('.bd-done');
+    if(dn && !dn.getAttribute('data-ls')){
+      dn.setAttribute('data-ls', '1');
+      var wrong = [].map.call(dn.querySelectorAll('li'), function(li){ return li.textContent; });
+      studio.done({ kicker: 'Chart built', title: dn.querySelector('.bd-done-h').textContent,
+        text: wrong.length ? 'Tried in the wrong place: ' + wrong.join('; ') + '. The chart is on your Review list until you build it clean.' : 'Every step went where it belongs.',
+        next: { label: 'Build it again', onClick: function(){ var a = fb.querySelector('[data-again]'); if(a) a.click(); } },
+        links: [{ label: 'See the diagram', onClick: function(){ var a = fb.querySelector('[data-see]'); if(a) a.click(); setTimeout(paint, 0); } }] }, 'build');
+    } else if(!dn) studio.done(false, 'build');
+  }
+  new MutationObserver(syncBuild).observe(fb, { childList: true, subtree: true });
+  syncBuild();
   paint();
-  studio.hint({ target: mode.querySelector('[data-mode="drill"]'), text: 'Read a flow, or test yourself' });
+  // The first move is in the chart itself: Next part of the chart (Read opens a part at a time).
+  var nx = host.querySelector('.diagram-card:not([hidden]) .fc-more:not([hidden]) .fc-next') || host.querySelector('.fc-next');
+  studio.hint({ target: nx || mode.querySelector('[data-mode="drill"]'), text: nx ? 'Read down, then tap for the next part' : 'Read a flow, or test yourself' });
 });
 </script>
 

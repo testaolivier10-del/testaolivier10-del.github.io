@@ -683,6 +683,16 @@
     S.put('stage', app.querySelector('.pc-summary'));
     S.caption('<b>' + right + ' of ' + total + '</b> predictions right this session.');
     S.stage.scrollTop = 0;
+    /* The finished card (standard frame): the score and the same next actions as the summary's Next step block,
+       which stays on the stage with the scenario by scenario list. */
+    if(S.done) setTimeout(function(){
+      var also = [].slice.call(S.stage.querySelectorAll('.levl-next__also [data-n]')), go = S.stage.querySelector('.levl-next__go');
+      var fwd = function(el){ return { label: el.textContent.trim(), onClick: function(){ el.click(); } }; };
+      S.done({ kicker: 'Session done', title: right + ' of ' + total + ' predictions right',
+        text: total && right < total ? 'Every miss is in your review queue.' : 'A clean sweep. Try a higher level next.',
+        next: also[0] ? fwd(also[0]) : go ? fwd(go) : { label: 'Choose new scenarios', onClick: renderSetup },
+        links: (also[0] && go ? [fwd(go)] : []) });
+    }, 60);
   }
 
   /* ------------------------------------------------------------ summary */

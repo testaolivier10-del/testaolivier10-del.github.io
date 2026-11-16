@@ -109,6 +109,7 @@
   .mn-stage .card[hidden]{display:none;}
   .ls-root .mn-cue{margin:0;}
   .mn-dock{display:flex;flex-direction:column;gap:10px;}
+  .ls-std .mn-dock{flex:1 1 auto;} .ls-std .mn-dock > .ls-push{margin-top:auto;}
   .mn-pick-l{font:800 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
   .mn-pick{width:100%;min-height:48px;padding:0 14px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);
     color:var(--ink);font:700 16px var(--font-ui);}
@@ -455,6 +456,11 @@ document.addEventListener('DOMContentLoaded', function(){
   if(cue) s.add('why', cue);
   var pick = dock.querySelector('#mnPick'), prev = dock.querySelector('.mn-prev'), next = dock.querySelector('.mn-next'), at = dock.querySelector('.mn-at');
   var cur = -1;
+  /* The standard frame (docs/tools-frame-2026-11.md): the mnemonic is one dropdown at the stage's top left ("3 of
+     19"); the dock's own list stays in the page, out of sight, and Back / Next stay at the dock's foot. */
+  var mnPick = s.picker ? s.picker({ label: 'Mnemonic', count: true, items: cards.map(function(c, i){ return { value: String(i), label: name(c) }; }),
+    onChange: function(v){ go(+v, true); } }) : null;
+  if(mnPick){ dock.querySelector('.mn-pick-l').hidden = true; pick.hidden = true; dock.querySelector('.mn-nav').classList.add('ls-push'); }
   function go(i, push){
     i = Math.max(0, Math.min(cards.length - 1, i));
     cur = i;
@@ -465,8 +471,13 @@ document.addEventListener('DOMContentLoaded', function(){
     var used = cards[i].querySelector('.used-for');
     var u = used ? used.textContent.trim().replace(/&/g, '&amp;').replace(/</g, '&lt;') : '';
     if(u && !/[.!?]$/.test(u)) u += '.';
-    s.caption('<b>' + name(cards[i]).replace(/&/g, '&amp;').replace(/</g, '&lt;') + '.</b> ' + u +
-      (cards[i].querySelector('.mn-test') ? ' Read it, then press Fill the letters.' : ''));
+    var nm = name(cards[i]).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    if(s.task){
+      // The standard frame: the mnemonic heads the side panel; the picker on the stage follows.
+      s.task({ kicker: 'Mnemonic', title: nm, todo: u + (cards[i].querySelector('.mn-test') ? ' Read it, then Fill the letters to test yourself.' : '') });
+      s.caption('');
+      if(mnPick) mnPick.value(String(i));
+    } else s.caption('<b>' + nm + '.</b> ' + u + (cards[i].querySelector('.mn-test') ? ' Read it, then press Fill the letters.' : ''));
     stage.scrollTop = 0;
     if(push && history.replaceState) history.replaceState(null, '', '#' + cards[i].id);
   }

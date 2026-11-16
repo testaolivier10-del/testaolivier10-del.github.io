@@ -286,7 +286,7 @@
       '<div class="drill-verdict ' + (right ? 'ok' : 'no') + '">' +
         (right ? 'Yes.' : 'Not here.') +
         (current.note ? ' ' + esc(current.note) : '') +
-        (right ? '' : ' The step that follows is shown above — the option you picked belongs to a different protocol.') +
+        (right ? '' : ' The step that follows is shown above; the option you picked belongs to a different protocol.') +
       '</div>' +
       (right ? '' : '<a class="drill-see" href="#' + current.anchor + '" data-see="' + current.anchor + '">See the whole diagram</a> ') +
       '<button type="button" class="drill-next" id="drillNext">Next</button>';

@@ -496,3 +496,9 @@ Site audit follow-up (2026-10-02, workstream W6):
     painted) and round one bend, to the drawing's colour; a straight upright run passing a label's side is an
     outline and is no longer erased (it had cut the elbow's skin line, a gland figure's bracket and a leg's edge).
     Presentation only: pins, places, labels, item ids, scoring, recording and deep links are unchanged.
+99. (2026-11-16) Tool frame, third round (docs/tools-frame-2026-11.md F2; notes docs/tools-frame-notes/anp.md).
+    AnpToolKit.studio mounts the standard frame (std: true, one line per tool in the bar, modes in the bar, Share,
+    "?" for topic and settings). AnpToolKit.picker becomes one grouped dropdown at the stage's top left ("n of N",
+    ticks on done items, "Search all" reopens the searchable list, the full list stays a choice). Finished cards
+    after a lab practical quiz or timed practical, a predict session, a built feedback loop and a 3D anatomy round.
+    Presentation only: item ids, scoring, recording, deep links and reviewed text are unchanged.

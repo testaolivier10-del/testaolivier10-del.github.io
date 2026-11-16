@@ -506,7 +506,7 @@
             '<span class="k">Time</span>' +
             '<span class="v' + (over ? ' over' : '') + '">' + clockText(sec) +
               ' against a ' + targetMin + ' minute target' +
-              (over ? ' — over' : '') + '</span>' +
+              (over ? ', over' : '') + '</span>' +
           '</div>' +
           '<div class="run-result__row">' +
             '<span class="k">Phases ticked</span>' +
@@ -536,7 +536,7 @@
                        ' left unticked.</p>' : '') +
 
         '<p class="run-note"><b>No score, and no pass or fail.</b> This is your own run through the ' +
-          'general structure — the real sheet has a point list and a critical-criteria list this page ' +
+          'general structure: the real sheet has a point list and a critical-criteria list this page ' +
           'deliberately does not reproduce. Check your program’s copy for both.</p>' +
 
         (dk() ? '' : again) +

@@ -110,3 +110,14 @@
 .nx-body-map .bm-sum-acts .bm-new{background:var(--cink);color:var(--white);box-shadow:none;}
 .nx-body-map .hunt-panel.bm-done{display:none;}
 .nx-body-map .bn-ls-bar > .bn-quiz:not([aria-pressed=true]){color:var(--ink);border:0;}
+/* Standard frame (F2, docs/tools-frame-2026-11.md): the question is the side panel's head, so the hunt panel's
+   own heading and tally hide under it (they stay in the page; the live region still speaks). */
+.nx-body-map.ls-std .hunt-q,.nx-body-map.ls-std .hunt-tally{display:none;}
+.nx-body-map .bm-hintrow.bm-off{display:none;}
+/* The 3D model fills the stage: the picker and the pills float over its top edge instead of taking a band. */
+.nx-body-map.ls-std .ls-stage:not(.is-big) .ls-pills{position:absolute;left:0;right:0;top:0;z-index:4;pointer-events:none;}
+.nx-body-map.ls-std .ls-pills > *{pointer-events:auto;}
+.nx-body-map.ls-std .ls-pills-l:empty,.nx-body-map.ls-std .ls-pills-r:empty{display:none;}
+.nx-body-map.ls-std .ls-pick{background:var(--overlay-bg,rgba(255,255,255,.92));box-shadow:var(--elev-1);}
+:root[data-theme="dark"] .nx-body-map.ls-std .ls-pick{background:var(--surface2);}
+.nx-body-map.ls-std .bn-qpanel > strong{display:none;}

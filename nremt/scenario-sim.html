@@ -2241,6 +2241,22 @@ if (studio) {
     const b = document.querySelector('[data-simview="pt"]'); if (b) { b.click(); b.focus(); }
   });
 }
+/* The standard frame (docs/tools-frame-2026-11.md): the side panel's head names the call (or asks for one), the
+   situation stays the caption under it, and during a call one grouped dropdown at the stage's top left switches
+   calls (the list of calls is still the landing, with each call's line). */
+let callPick = null;
+function simTask(){
+  if (!studio || !studio.task) return;
+  studio.done(false);
+  const locked = window.NremtGates && !window.NremtGates.canUse('scenarios');
+  if (!currentScenario) { studio.task(locked ? { kicker: 'Premium', title: 'Part of NREMT-EMT Premium.', todo: 'Unlock it to run every call.' }
+      : { kicker: 'Scenario', title: 'Pick a call.', todo: 'You choose each step; the patient responds.' }); studio.caption(''); if (callPick) callPick.el.classList.add('ls-off'); return; }
+  studio.task({ kicker: currentScenario.domain, title: currentScenario.title, todo: pathLog.length ? 'What do you do next? Pick below.' : 'Read the scene, then pick what you would do.' });
+  if (studio.picker && !callPick) callPick = studio.picker({ label: 'Switch to another call', value: currentScenario.id,
+    groups: CATS.map(c => ({ label: c.label, items: SCENARIOS.filter(x => catOf(x) === c.k).map(x => ({ value: x.id, label: x.title, sub: c.label })) })).filter(g => g.items.length),
+    onChange: v => startScenario(v) });
+  if (callPick) { callPick.el.classList.remove('ls-off'); callPick.value(currentScenario.id); }
+}
 /* Why: the call so far, newest last. */
 function studioWhy(){
   if (!simWhy) return;
@@ -2250,6 +2266,7 @@ function studioWhy(){
         : '<p>No choices yet. The monitor shows the numbers from the case; tap the body or a survey step to see what the call has shown you.</p>');
 }
 studioWhy();
+simTask();
 
 // Premium (assets/premium-gates.js): the simulator is part of it. Before launch,
 // or with the gate files missing, it is open as it always was, with a badge.
@@ -2259,6 +2276,7 @@ function renderPicker(){
   const grid = document.getElementById('pickerGrid');
   const badgeSlot = document.getElementById('premiumBadge');
   if(badgeSlot) badgeSlot.innerHTML = G.badge();
+  if (studio && !currentScenario) simTask();
   if(!G.canUse('scenarios')){
     grid.innerHTML = G.gate('scenarios', 'scenario-sim');
     document.querySelector('.picker-cue').hidden = true;
@@ -2356,6 +2374,7 @@ function backToPicker(){
     simDock.innerHTML = '';
     studio.root.setAttribute('data-sim', 'picker');
     studio.pills([]); studio.caption('Pick a call. You choose each step; the patient responds.');
+    simTask();
     studioWhy();
     return;
   }
@@ -2562,6 +2581,17 @@ function renderNode(consequenceText){
       const nxt = nxtCall;
       document.getElementById('simAgain').addEventListener('click', () => startScenario(currentScenario.id));
       document.getElementById('simNext').addEventListener('click', () => startScenario(nxt.id));
+      /* The finished card (standard frame): how the call went, Next call, then Try again, All scenarios and the
+         Keep going links; the path and the debrief stay on the stage, where each decision can be gone back to. */
+      if (studio.done) {
+        const keep = document.createElement('div'); keep.innerHTML = window.LevlNextStep ? LevlNextStep('nremt', { tags: ['nremt:' + currentScenario.id] }) : '';
+        studio.done({ kicker: 'Call ended · ' + outcome, title: currentScenario.title,
+          text: (missedSteps ? missedSteps + ' skipped or out-of-order step' + (missedSteps === 1 ? '' : 's') + ' went to your Review queue. ' : '') +
+            (pathLog.some(p => p.alternatives.length) ? 'Go back to any decision in your path to try the other branch.' : ''),
+          next: { label: 'Next call: ' + nxt.title, onClick: () => startScenario(nxt.id) },
+          links: [{ label: 'Try this call again', onClick: () => startScenario(currentScenario.id) }, { label: 'All scenarios', onClick: () => backToPicker() }]
+            .concat([].slice.call(keep.querySelectorAll('a[href]'), 0, 2).map(a => ({ label: a.textContent.replace(/\s+/g, ' ').trim(), href: a.getAttribute('href') }))) });
+      }
       box.innerHTML = `
       <div class="sim-card"></div>
       <span class="ending-badge ${node.ending}">${outcome}</span>
@@ -2649,6 +2679,7 @@ function renderNode(consequenceText){
   if(patient) patient.update(seenNodes());
   if (studio) {
     studio.root.setAttribute('data-sim', 'call');
+    simTask();
     studio.pills(hesitateTo ? [{ html: 'Time-critical', tone: 'bad' }] : [], 'right');
     // The caption is the situation; what the last choice did lands on the stage.
     // The opening call is never clamped: its details are the case (audit 2026-10).

@@ -834,7 +834,7 @@ function submitAnswer(chosenId, round){
     href: 'sound-trainer.html#snd-' + round.id
   });
   fb.innerHTML = `
-    <div class="feedback-verdict ${correct ? 'correct' : 'incorrect'}">${correct ? 'Correct — that\'s ' + round.label + '.' : 'Not quite — that was ' + round.label + '.'}</div>
+    <div class="feedback-verdict ${correct ? 'correct' : 'incorrect'}">${correct ? 'Correct: that\'s ' + round.label + '.' : 'Not quite: that was ' + round.label + '.'}</div>
     <p>${round.clinical}</p>
     <div class="fb-strip" id="fbStrip"></div>
     <button type="button" class="next-btn" id="nextRoundBtn">${quizState.current + 1 >= quizState.rounds.length ? 'See results' : 'Next clip'}</button>
@@ -984,7 +984,15 @@ if (studio) (function(){
     if (!exploring) {
       const k = kind(), box = k === 'where' ? side : k === 'timing' ? timing : quiz;
       const v = box.querySelector('.st-verdict, .feedback-verdict');
-      studio.caption(v ? '<b>' + v.textContent + '</b> Why? has the reason.' : CAP[k] || '', 'test');
+      const ok = v && /\b(ok|correct)\b/.test(v.className);
+      // The standard frame: the test's own question is the side panel's head; after an answer, the verdict.
+      const KIND = { name: 'Name it', where: 'Where to listen', timing: 'When in the beat' };
+      const asked = k === 'where' ? side.querySelector('.st-q strong') : null;
+      const res = k === 'name' && box.querySelector('.results-box');
+      studio.task(v ? { kicker: ok ? 'Right' : 'Not quite', tone: ok ? 'good' : 'bad', title: v.innerHTML, todo: 'Explanation has the reason.' }
+        : { kicker: 'Test yourself · ' + KIND[k], title: asked ? asked.innerHTML : CAP[k] || '', todo: k === 'where' ? CAP.where : '' }, 'test');
+      studio.caption('', 'test');
+      testDone(res);
       const ask = box.querySelector('.st-q strong');
       why.innerHTML = v ? (ask && k === 'where' ? '<h3 class="ls-title-l">' + ask.textContent + '</h3>' : '') + '<p><b>' + v.textContent + '</b></p>' +
         [...box.querySelectorAll('.st-side > p, .st-timing > p, .feedback > p')].filter(x => x.textContent.trim()).map(x => x.outerHTML).join('')
@@ -992,7 +1000,10 @@ if (studio) (function(){
       return;
     }
     const now = side.querySelector('.st-now'), here = side.querySelector('.st-here');
-    if (now) studio.caption(now.innerHTML.replace(/ <span class="st-muted">\(its best spot\)<\/span>/, '') + '. ' + (here ? here.innerHTML : ''), 'explore');
+    if (now) studio.task({ kicker: 'Explore', title: now.innerHTML.replace(/ <span class="st-muted">\(its best spot\)<\/span>/, '') + '.',
+      todo: (here ? here.textContent.trim() + ' ' : '') + 'Tap another spot on the chest, or Play.' }, 'explore');
+    studio.caption('', 'explore');
+    if (soundPick) { const on = side.querySelector('[data-finding][aria-pressed="true"]'); if (on) soundPick.value(on.dataset.finding); }
     const w = side.querySelector('details.st-why');
     const chip = side.querySelector('[data-finding][aria-pressed="true"]');
     const snd = chip && SOUNDS.find(x => x.id === chip.dataset.finding);
@@ -1005,6 +1016,28 @@ if (studio) (function(){
     if (here) studio.pills([{ html: here.textContent, tone: here.classList.contains('is-best') ? 'good' : here.classList.contains('is-faint') ? 'warn' : 'accent' }], 'right', 'explore');
   }
   pick.addEventListener('click', () => setTimeout(paint));
+  /* The sound picker (standard frame): the Heart and Lung & airway chips as one grouped dropdown on the stage.
+     The chips are redrawn with every pick, so a pick clicks the current chip and the module's handler runs. */
+  const groupOf = id => { const s = SOUNDS.find(x => x.id === id); return s && s.group === 'heart' ? 'heart' : 'lung'; };
+  const chipItems = g => [...side.querySelectorAll('.st-pick [data-finding]')].filter(b => groupOf(b.dataset.finding) === g)
+    .map(b => ({ value: b.dataset.finding, label: b.textContent.trim() }));
+  var soundPick = studio.picker ? studio.picker({ label: 'Sound', groups: [{ label: 'Heart (generated)', items: chipItems('heart') }, { label: 'Lung and airway (recorded)', items: chipItems('lung') }],
+    value: (side.querySelector('[data-finding][aria-pressed="true"]') || {}).dataset ? side.querySelector('[data-finding][aria-pressed="true"]').dataset.finding : undefined,
+    onChange: v => { const b = side.querySelector('[data-finding="' + v + '"]'); if (b) b.click(); } }, 'explore') : null;
+  /* Name it ends after its rounds: the finished card (score, Try again); the results and the misses to hear again
+     stay on the stage beside it. */
+  let doneShown = false;
+  function testDone(res){
+    if (!res) { if (doneShown) { studio.done(false, 'test'); doneShown = false; } return; }
+    if (doneShown) return;
+    doneShown = true;
+    const sc = res.querySelector('.results-score'), missed = res.querySelector('.missed-review');
+    studio.done({ kicker: 'Quiz complete', title: (sc ? sc.textContent.replace('/', ' of ') : '') + ' right',
+      text: missed ? 'Play each miss again, knowing what it is.' : 'Every sound named.',
+      next: { label: 'Try again', onClick: () => { const b = document.getElementById('retryQuizBtn'); if (b) b.click(); } },
+      links: [{ label: 'Every sound, described', open: 'details', focus: document.getElementById('listenSection') },
+        { label: 'Back to Explore', onClick: () => { top('explore').click(); paint(); } }] }, 'test');
+  }
   // Name it opens on round 1, not on a start screen (audit 2026-10).
   const autoStart = () => { if (!quiz.hidden && !quizState) startQuiz(); };
   new MutationObserver(autoStart).observe(quiz, { attributes: true, attributeFilter: ['hidden'] });
