@@ -354,7 +354,7 @@
     host.addEventListener('click', onClick); host.addEventListener('change', onChange);
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ap-fig')], dock: [$('.ap-ctl')], primary: [sH.el, $('.ap-btns'), sLoad.el], why: [$('.ap-say')], details: [$('.ap-nums')] });
+      T.studioPane(pane, s, { task: { title: 'See how smog builds over a day, and how acid rain forms.' }, stage: [$('.ap-fig')], dock: [$('.ap-ctl')], primary: [sH.el, $('.ap-btns'), sLoad.el], why: [$('.ap-say')], details: [$('.ap-nums')] });
       host.removeEventListener('click', onClick); host.removeEventListener('change', onChange);
       s.root.addEventListener('click', onClick); s.root.addEventListener('change', onChange);
       draw();

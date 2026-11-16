@@ -649,7 +649,7 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ec-fig')], dock: [$('.ec-ctl')], primary: [sDay.el, sW.el, go, $('.ec-enso')], why: [$('.ec-say')], details: [$('.ec-nums')] });
+      T.studioPane(pane, s, { task: { title: 'See what drives seasons, winds, rain shadows and El Niño.' }, stage: [$('.ec-fig')], dock: [$('.ec-ctl')], primary: [sDay.el, sW.el, go, $('.ec-enso')], why: [$('.ec-say')], details: [$('.ec-nums')] });
       host.removeEventListener('click', onClick);
       s.root.addEventListener('click', onClick);
       draw();

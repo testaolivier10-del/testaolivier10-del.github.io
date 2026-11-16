@@ -142,6 +142,8 @@
       if(go) go.textContent = phase === 'study' || phase === 'delay' ? 'Stop' : phase === 'recall' ? 'Done: score my recall' : phase === 'done' ? 'Try another list' : 'Start: study 10 words';
       if(rc) rc.hidden = phase !== 'recall';
       if(LS && LS.setupRow) LS.setupRow.setup(view === 'list' ? (delayed ? 'Recall after 30 s' : 'Recall at once') : view === 'forget' ? reviews.length + ' review' + (reviews.length === 1 ? '' : 's') : ML.SCENES[story].what);
+      // The standard frame: the story is the dropdown, so the row (which held only that) goes in that view.
+      if(LS && LS.setupRow && LS.setupRow.row && T.isStd(LS)) LS.setupRow.row.hidden = view === 'interf';
     }
     function same(a, b){ return a.length === b.length && a.every(function(x, i){ return Math.abs(x - b[i]) < 1e-9; }); }
 
@@ -428,10 +430,12 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.ml-fig')], dock: [$('.ml-ctl')], setup: 'Setup', moreLabel: 'List, review days and story', why: [$('.ml-say')], details: [$('.ml-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Test your memory, then see why you forget.' }, stage: [$('.ml-fig')], dock: [$('.ml-ctl')], setup: 'Setup', moreLabel: 'List, review days and story', why: [$('.ml-say')], details: [$('.ml-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
+      // The standard frame: the interference story is that view's dropdown on the stage.
+      T.stagePick(s, selStory.el, { label: 'Story' });
       sync(); redraw();
       if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.ml-go'), 'Start here: study ten words');
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(redraw, 60); }).observe($('.ml-fig')); }

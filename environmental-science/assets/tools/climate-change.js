@@ -495,7 +495,7 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.cc-fig')], dock: [$('.cc-ctl')], primary: [sCO2.el, sCFC.el, sOc.el, sW.el], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'See how gases trap heat and how CFCs thin the ozone layer.' }, stage: [$('.cc-fig')], dock: [$('.cc-ctl')], primary: [sCO2.el, sCFC.el, sOc.el, sW.el], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;

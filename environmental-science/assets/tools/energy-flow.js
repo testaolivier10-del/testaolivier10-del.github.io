@@ -423,7 +423,7 @@
       // controls
       (LS ? LS.root : host).querySelectorAll('.ef-view').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === st.view)); });
       (LS ? LS.root : host).querySelectorAll('.ef-eco').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-e') === st.eco)); });
-      if(setupRow && setupRow.setup) setupRow.setup(EF.ECOS[st.eco].title);
+      if(setupRow && setupRow.setup) setupRow.setup(LS && T.isStd(LS) ? 'Efficiency, respiration, scale' : EF.ECOS[st.eco].title);
       $('.ef-gpp').hidden = st.view === 'web'; $('.ef-webctl').hidden = st.view !== 'web'; $('.ef-reset').disabled = !st.removed;
       cue.el.querySelector('.bt-cue-t').textContent = st.view === 'web' ? 'Tap a species to remove it.' : 'Tap a level of the pyramid to see where its energy goes.';
       var w = words();
@@ -480,9 +480,11 @@
       var ecos = $('.ef-ecos'), lab = document.createElement('p');
       lab.className = 'ls-lbl'; lab.textContent = 'Ecosystem';
       var ms = $('.ef-more-sl'); ms.parentNode.insertBefore(lab, ms); ms.parentNode.insertBefore(ecos, ms);
-      setupRow = T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], setup: 'Ecosystem', moreLabel: 'Ecosystem, efficiency, respiration and scale' });
+      setupRow = T.studioPane(pane, s, { task: { title: 'Follow energy up a food chain.' }, stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], setup: T.isStd(s) ? 'Settings' : 'Ecosystem', moreLabel: 'Ecosystem, efficiency, respiration and scale' });
       // The Setup row opens Details on these settings: they come first there.
       var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
+      // The standard frame: the ecosystems are the scenario dropdown on the stage; the Setup row keeps the rest.
+      if(T.stagePick(s, ecos, { label: 'Ecosystem' })) lab.hidden = true;
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       draw();

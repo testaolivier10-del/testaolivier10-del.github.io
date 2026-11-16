@@ -260,13 +260,15 @@
     host.addEventListener('click', onClick); host.addEventListener('keydown', onKey);
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ech-fig')], dock: [$('.ech-ctl')], why: [$('.ech-say')], details: [$('.ech-nums')] });
+      T.studioPane(pane, s, { task: { title: 'Follow energy from a power source to your home.' }, stage: [$('.ech-fig')], dock: [$('.ech-ctl')], why: [$('.ech-say')], details: [$('.ech-nums')] });
+      // The standard frame: the power source is the scenario dropdown on the stage (the Flow view's).
+      var pk = T.stagePick(s, srcSel.el, { label: 'Power source' });
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       draw();
       if(s.mode() === 'explore'){
         // The six sources became one select (pass 3): the hint points at it, the true first action.
-        s.hint({ target: srcSel.el.querySelector('select'), text: 'Pick a source, then tap a step' });
+        s.hint({ target: pk ? pk.el : srcSel.el.querySelector('select'), text: 'Pick a source, then tap a step' });
       }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.ech-fig')); }
     }

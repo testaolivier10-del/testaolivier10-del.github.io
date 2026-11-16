@@ -57,5 +57,5 @@ card), a Share button in the bar on desktop, the "what to do" line under the tas
 | F2 | NREMT, A&P | not started |
 | F3 | AP Bio, AP Chem, AP Physics 1 | not started |
 | F4 | AP Calc AB, AP Calc BC, AP Precalc, AP Stats | not started |
-| F5 | APES, AP Psych, AP Macro, AP Micro, AP Human Geography | not started |
+| F5 | APES, AP Psych, AP Macro, AP Micro, AP Human Geography | F5a done 2026-11-16: APES (12) and AP Psych (10) on the std frame through `env-tools.js` / `psy-tools.js` (task, kinds dropdown, hint ladder per step, finished card, `stagePick` for scenario selects and chips); notes in `docs/tools-frame-notes/apes.md` and `psychology.md`. Macro, Micro, HuG: not started |
 | F6 | Fresh-eyes pass on every tool, fixes, done | not started |

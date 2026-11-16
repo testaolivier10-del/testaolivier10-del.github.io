@@ -504,7 +504,7 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.bm-fig')], dock: [$('.bm-ctl')], setup: 'Settings', moreLabel: 'Labels, every structure, fMRI tasks', why: [$('.bm-say')], details: [$('.bm-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Learn what each part of the brain does.' }, stage: [$('.bm-fig')], dock: [$('.bm-ctl')], setup: 'Settings', moreLabel: 'Labels, every structure, fMRI tasks', why: [$('.bm-say')], details: [$('.bm-nums')] });
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       LS.setupRow = sp;

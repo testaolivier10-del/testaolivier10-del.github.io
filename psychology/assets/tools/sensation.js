@@ -311,6 +311,8 @@
       if(go) go.hidden = scene === 'weber';
       var a = $('.sn-act'); if(a) a.textContent = actLabel();
       if(LS && LS.setupRow) LS.setupRow.setup(scene === 'detect' ? 'Signal strength ' + d : scene === 'weber' ? 'Starting at ' + I : scene === 'color' ? secs + ' second stare' : figName(fig));
+      // The standard frame: the figure is the dropdown on the stage, so the row (which held only that) goes there.
+      if(LS && LS.setupRow && LS.setupRow.row && T.isStd(LS)) LS.setupRow.row.hidden = ['detect', 'weber', 'color'].indexOf(scene) < 0;
       svg.classList.toggle('is-drag', scene === 'detect');
     }
     function actLabel(){
@@ -405,10 +407,12 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.sn-fig')], dock: [$('.sn-ctl')], setup: 'Settings', moreLabel: 'Signal strength, starting brightness, stare time', why: [$('.sn-say')], details: [$('.sn-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Detect a faint signal, then see what shapes what you sense.' }, stage: [$('.sn-fig')], dock: [$('.sn-ctl')], setup: 'Settings', moreLabel: 'Signal strength, starting brightness, stare time', why: [$('.sn-say')], details: [$('.sn-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
+      // The standard frame: the figure is that view's dropdown on the stage.
+      T.stagePick(s, s.root.querySelector('.sn-exsel'), { label: 'Figure' });
       sync(); draw(); words();
       if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.sn-act'), 'Start here: run 20 trials', { cls: 'sn-tipslot' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.sn-fig')); }
