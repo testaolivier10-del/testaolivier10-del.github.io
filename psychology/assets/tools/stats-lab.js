@@ -190,7 +190,7 @@
     function cur(){ var b = SC(); return SL.normalAt(x, b.mean, b.sd); }
     function curveLine(){
       var b = SC(), n = cur();
-      return 'Score ' + x + ': z = ' + zTxt(n.z) + '. ' + (n.whole ? 'By the 68-95-99.7 rule, ' + n2(n.rule) + '% score lower' : 'About ' + pctTxt(n.pct) + '% score lower') + ' (the ' + ord(Math.max(1, Math.min(99, Math.round(n.whole ? n.rule : n.pct)))) + ' percentile).';
+      return 'Score ' + x + ': z = ' + zTxt(n.z) + '. ' + (n.whole ? 'By the 68-95-99.7 rule, about ' + n2(n.rule) + '% score lower; a z table gives ' + pctTxt(n.pct) + '%' : 'About ' + pctTxt(n.pct) + '% score lower') + ' (the ' + ord(Math.max(1, Math.min(99, Math.round(n.pct)))) + ' percentile).';
     }
     function cst(){ return SL.center(values()); }
     function shape(c){ var d = c.mean - c.median, s = c.sd || 1; return Math.abs(d) < 0.15 * s ? 'roughly symmetric' : d > 0 ? 'positively skewed (tail to the right)' : 'negatively skewed (tail to the left)'; }
@@ -233,7 +233,7 @@
         if(view === 'curve'){
           var nn = cur();
           LS.pills([{ k: 'z', html: zTxt(nn.z), tone: 'readout' }], 'left', 'explore');
-          LS.pills([{ k: 'Percentile', html: ord(Math.max(1, Math.min(99, Math.round(nn.whole ? nn.rule : nn.pct)))), tone: 'accent' }], 'right', 'explore');
+          LS.pills([{ k: 'Percentile', html: ord(Math.max(1, Math.min(99, Math.round(nn.pct)))), tone: 'accent' }], 'right', 'explore');
         } else if(view === 'center'){
           var cc = cst();
           LS.pills([{ k: 'Mean', html: f1(cc.mean), tone: 'accent' }], 'left', 'explore');

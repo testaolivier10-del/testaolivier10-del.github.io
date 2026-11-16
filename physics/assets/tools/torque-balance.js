@@ -468,6 +468,8 @@
       det.querySelector('.tb-beam-set').hidden = sc !== 'beam';
       det.querySelector('.tb-nums-h').textContent = sc === 'beam' ? 'The torques about the fulcrum' : 'The two wheels';
       if(sc === 'beam'){ holdLevel(); build(); draw(); } else { rt = 0; rdone = false; zoomFor(); drawRace(); }
+      // F7: the Explore question follows the scene (Balance keeps the tool's own question).
+      if(s && T.sceneAsk) T.sceneAsk(s, sc === 'race' ? 'Two wheels, same mass: which one speeds up faster, and why?' : '', sc === 'race' ? 'Move each wheel\u2019s sliders in or out, then press Race.' : '');
       T.event('apphys-tool-scene', { tool: 'torque-balance', scene: sc });
     }
 

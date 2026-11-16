@@ -123,6 +123,8 @@
   var LOBE = { frontal: 'f', parietal: 'p', temporal: 't', occipital: 'o', prefrontal: 'f', motor: 'f', broca: 'f', somatosensory: 'p', wernicke: 't', auditory: 't', visual: 'o' };
   var SHORT = { somatosensory: 'Somatosensory', reticular: 'RAS', ras: 'Reticular activating system' };
   function nameOf(k){ return R[k].name; }
+  // F7: "Broca’s area" takes no article and keeps its capital; other names read "the motor cortex".
+  function theN(k){ var n = nameOf(k); return /[’']s\b/.test(n) ? n : 'the ' + lc(n); }
 
   /* Text width in px (canvas), for the label layout. */
   var MEAS = null;
@@ -400,13 +402,13 @@
       if(t){ sel = t.region; damage = false; view = R[t.region].view === 'inside' ? 'inside' : 'outside'; mirror = t.side === 'right'; }
       else mirror = false;
       sync(); draw(); words();
-      if(t) say('fMRI while participants ' + t.task + ': the ' + lc(nameOf(t.region)) + ' lights up.');
+      if(t) say('fMRI while participants ' + t.task + ': ' + theN(t.region) + ' lights up.');
     }
     function onClick(e){
       var b;
       if((b = e.target.closest('.bm-scenes button'))){ act(); stop(); scene = b.getAttribute('data-s'); sync(); draw(); words(); return; }
       if((b = e.target.closest('.bm-views button'))){ act(); var v = b.getAttribute('data-v'); if(v !== view){ view = v; mirror = false; task = ''; sTask.set(''); if(sel && R[sel].view !== 'both' && R[sel].view !== v){ sel = null; damage = false; } sync(); draw(); words(); say(v === 'outside' ? 'Outside view: the left side of the brain.' : 'Inside view: the brain cut down the middle.'); } return; }
-      if((b = e.target.closest('.bm-dmg'))){ act(); if(!sel) return; damage = !damage; sync(); draw(); words(); if(damage) say('Damage to the ' + lc(nameOf(sel)) + ': ' + R[sel].damage); return; }
+      if((b = e.target.closest('.bm-dmg'))){ act(); if(!sel) return; damage = !damage; sync(); draw(); words(); if(damage) say('Damage to ' + theN(sel) + ': ' + R[sel].damage); return; }
       if((b = e.target.closest('.bm-fields button'))){ act(); stop(); field = b.getAttribute('data-f'); stage = 0; sync(); draw(); words(); return; }
       if((b = e.target.closest('.bm-cuts button'))){ act(); stop(); cut = b.getAttribute('data-c') === 'cut'; stage = 0; sync(); draw(); words(); return; }
       if(e.target.closest('.bm-flash')){ act(); flash(); return; }
@@ -444,7 +446,7 @@
       var head, sub = '', why = '';
       if(scene === 'map'){
         var t = task && TASKS.filter(function(x){ return x.id === task; })[0];
-        if(t){ head = 'fMRI while participants ' + t.task + ': the ' + lc(nameOf(t.region)) + ' becomes more active' + (t.side ? ' (in the ' + t.side + ' hemisphere)' : '') + '.'; sub = R[t.region].does; }
+        if(t){ head = 'fMRI while participants ' + t.task + ': ' + theN(t.region) + ' becomes more active' + (t.side ? ' (in the ' + t.side + ' hemisphere)' : '') + '.'; sub = R[t.region].does; }
         else if(sel){ head = nameOf(sel) + ': ' + R[sel].does; sub = damage ? 'If it is damaged: ' + R[sel].damage : (R[sel].deep ? 'Deep inside the brain, drawn dashed as if seen through.' : (sel === 'motor' || sel === 'somatosensory') ? 'Contralateral: the left hemisphere serves the right side of the body.' : ''); }
         else { head = view === 'outside' ? 'The left side of the brain. Tap a part to see what it does.' : 'The brain cut down the middle. Tap a part to see what it does.'; sub = 'Switch to ' + (view === 'outside' ? 'Inside for the corpus callosum, thalamus and the limbic system.' : 'Outside for the lobes and the language areas.'); }
         why = mapWhy();

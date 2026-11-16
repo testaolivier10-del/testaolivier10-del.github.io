@@ -125,6 +125,8 @@
     return step(key, label, { kind: 'choice', options: opts.map(function(x){ return x[0]; }), why: opts.map(function(x){ return x[1]; }), correct: 0 });
   }
   function nm(k){ return REGIONS[k].name; }
+  // F7: a possessive name ("Broca’s area") takes no article: "Broca’s area does...", not "The Broca’s area".
+  function the(k, cap){ var n = nm(k); return /[’']s\b/.test(n) ? n : (cap ? 'The ' : 'the ') + lc(n); }
   function lc(s){ return /^(Broca|Wernicke)/.test(s) ? s : s.charAt(0).toLowerCase() + s.slice(1); }   // names keep their capital
   /* Three distractors a student would confuse with the key. */
   var NEAR = {
@@ -153,12 +155,12 @@
   }
   function regionChoice(r, key, why, excl){
     var wrong = wrongs(r, key, excl);
-    return [[nm(key), 'Right. ' + why]].concat(wrong.map(function(k){ return [nm(k), 'The ' + lc(nm(k)) + ': ' + lc(REGIONS[k].does) + ' That does not fit this case.']; }));
+    return [[nm(key), 'Right. ' + why]].concat(wrong.map(function(k){ return [nm(k), the(k, true) + ': ' + lc(REGIONS[k].does) + ' That does not fit this case.']; }));
   }
 
   function genLesion(r, c){
     var pool = LESIONS.filter(function(x){ return !c.cases || c.cases.indexOf(x.id) > -1; }), cs = r.pick(pool), key = cs.region;
-    var steps = [choice('region', 'Damage to which structure best explains this?', regionChoice(r, key, 'The ' + lc(nm(key)) + ': ' + lc(REGIONS[key].does)))];
+    var steps = [choice('region', 'Damage to which structure best explains this?', regionChoice(r, key, the(key, true) + ': ' + lc(REGIONS[key].does)))];
     if(cs.real || cs.id === 'hunger'){
       var isLes = cs.id === 'hunger';
       steps.push(choice('also', 'What research method is this?', isLes ? [
@@ -178,15 +180,15 @@
         ['A correlational study of many people.', 'This is one person, not many: a case study.']
       ]));
     } else {
-      steps.push(choice('also', 'What does the ' + lc(nm(key)) + ' do in a healthy brain?', alsoOpts(r, key)));
+      steps.push(choice('also', 'What does ' + the(key) + ' do in a healthy brain?', alsoOpts(r, key)));
     }
-    var sol = ['The ' + lc(nm(key)) + ': ' + lc(REGIONS[key].does), 'Damage there: ' + lc(REGIONS[key].damage)];
+    var sol = [the(key, true) + ': ' + lc(REGIONS[key].does), 'Damage there: ' + lc(REGIONS[key].damage)];
     return { ctx: c.id, topic: c.topic, type: 'lesion', text: '<p>' + (c.lead ? c.lead + ' ' : '') + cs.text + (cs.real ? ' (A real case: ' + cs.real + '.)' : '') + '</p>', steps: steps, solution: sol,
       given: { case: cs.id, region: key }, figure: { kind: 'brain', view: REGIONS[key].view === 'inside' ? 'inside' : 'outside', region: key, show: 'after' } };
   }
   function alsoOpts(r, key){
     var others = wrongs(r, key);
-    return [[REGIONS[key].does, 'Right. Damage there: ' + lc(REGIONS[key].damage)]].concat(others.map(function(k){ return [REGIONS[k].does, 'That is the ' + lc(nm(k)) + ', not the ' + lc(nm(key)) + '.']; }));
+    return [[REGIONS[key].does, 'Right. Damage there: ' + lc(REGIONS[key].damage)]].concat(others.map(function(k){ return [REGIONS[k].does, 'That is ' + the(k) + ', not ' + the(key) + '.']; }));
   }
 
   function genImaging(r, c){
@@ -200,8 +202,8 @@
     }[m];
     var steps = [choice('method', 'Which method fits best?', [[METHODS[m].name, 'Right. ' + why[m]]].concat(Object.keys(METHODS).filter(function(k){ return k !== m; }).map(function(k){ return [METHODS[k].name, slip[k]]; })))];
     var a = r.pick(ACTIVE), key = a.region;
-    steps.push(choice('where', 'In an fMRI study, participants ' + a.task + '. Which area should become most active?', regionChoice(r, key, 'The ' + lc(nm(key)) + (a.side ? ' (in the ' + a.side + ' hemisphere)' : '') + ': ' + lc(REGIONS[key].does), a.also)));
-    var sol = [METHODS[m].long + ': ' + METHODS[m].does, 'To ' + a.task + ', the ' + lc(nm(key)) + ' works hardest' + (a.side ? ', in the ' + a.side + ' hemisphere' + (a.region === 'motor' || a.region === 'somatosensory' ? ' (the opposite side from the hand)' : ' for most people') : '') + '.'];
+    steps.push(choice('where', 'In an fMRI study, participants ' + a.task + '. Which area should become most active?', regionChoice(r, key, the(key, true) + (a.side ? ' (in the ' + a.side + ' hemisphere)' : '') + ': ' + lc(REGIONS[key].does), a.also)));
+    var sol = [METHODS[m].long + ': ' + METHODS[m].does, 'To ' + a.task + ', ' + the(key) + ' works hardest' + (a.side ? ', in the ' + a.side + ' hemisphere' + (a.region === 'motor' || a.region === 'somatosensory' ? ' (the opposite side from the hand)' : ' for most people') : '') + '.'];
     return { ctx: c.id, topic: c.topic, type: 'imaging', text: '<p>' + (c.lead ? c.lead + ' ' : '') + cs.text + '</p>', steps: steps, solution: sol,
       given: { case: cs.id, method: m, task: a.id, region: key }, figure: { kind: 'brain', view: REGIONS[key].view === 'inside' ? 'inside' : 'outside', region: key, show: 'after', glow: true } };
   }
@@ -282,10 +284,10 @@
   function genLocate(r, c){
     var key = r.pick(c.regions || LOCATE), view = REGIONS[key].view === 'inside' ? 'inside' : REGIONS[key].view === 'both' ? r.pick(['outside', 'inside']) : 'outside';
     if(key === 'callosum' || key === 'thalamus' || key === 'hypothalamus' || key === 'pituitary' || key === 'hippocampus' || key === 'amygdala') view = 'inside';
-    var steps = [choice('name', 'Name the highlighted structure.', [[nm(key), 'Right. That is the ' + lc(nm(key)) + '.']].concat(wrongs(r, key).map(function(k){ return [nm(k), 'The ' + lc(nm(k)) + ' is ' + where(k) + '. The highlighted one is the ' + lc(nm(key)) + ', ' + where(key) + '.']; })))];
+    var steps = [choice('name', 'Name the highlighted structure.', [[nm(key), 'Right. That is ' + the(key) + '.']].concat(wrongs(r, key).map(function(k){ return [nm(k), the(k, true) + ' is ' + where(k) + '. The highlighted one is ' + the(key) + ', ' + where(key) + '.']; })))];
     var others = wrongs(r, key);
-    steps.push(choice('job', 'What does the ' + lc(nm(key)) + ' do?', [[REGIONS[key].does, 'Right.']].concat(others.map(function(k){ return [REGIONS[k].does, 'That is the ' + lc(nm(k)) + '.']; }))));
-    var sol = ['The ' + lc(nm(key)) + ', ' + where(key) + '.', REGIONS[key].does];
+    steps.push(choice('job', 'What does ' + the(key) + ' do?', [[REGIONS[key].does, 'Right.']].concat(others.map(function(k){ return [REGIONS[k].does, 'That is ' + the(k) + '.']; }))));
+    var sol = [the(key, true) + ', ' + where(key) + '.', REGIONS[key].does];
     return { ctx: c.id, topic: c.topic, type: 'locate', text: '<p>' + (c.lead ? c.lead + ' ' : '') + (view === 'inside' ? 'The brain, cut down the middle and seen from the inside. Front is on the left.' : 'The left side of the brain, seen from the outside. Front is on the left.') + '</p>', steps: steps, solution: sol,
       given: { region: key, view: view }, figure: { kind: 'brain', view: view, region: key, show: 'before' } };
   }

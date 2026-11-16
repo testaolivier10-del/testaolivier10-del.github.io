@@ -38,7 +38,7 @@
       payoffs: [[[30, 30], [70, 10]], [[10, 70], [50, 50]]], policy: { player: 0, strategy: 0 } },
     { id: 'ads', name: 'Advertising', short: 'Advertising', shape: 'one',
       story: 'Two soda makers decide whether to run a TV campaign. Payoffs are monthly profits in thousands of dollars.', unitLabel: 'thousands of dollars',
-      players: [{ name: 'Fizzco', strategies: ['Advertise', 'Do not'] }, { name: 'Popwell', strategies: ['Advertise', 'Do not'] }],
+      players: [{ name: 'Fizzco', strategies: ['Advertise', 'Don\'t advertise'] }, { name: 'Popwell', strategies: ['Advertise', 'Don\'t advertise'] }],
       payoffs: [[[40, 25], [60, 20]], [[30, 35], [45, 40]]], policy: { player: 1, strategy: 0 } },
     { id: 'standard', name: 'Pick a standard', short: 'Standard', shape: 'coord',
       story: 'Two phone makers each pick a charging plug. Sales are best when both pick the same one. Payoffs are profits in millions of dollars.', unitLabel: 'millions of dollars',

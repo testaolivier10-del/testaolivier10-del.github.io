@@ -785,8 +785,15 @@
       s.lsCue = t2 ? t2.innerHTML : c2.innerHTML.replace(k2 ? k2.outerHTML : '', '').trim();
       c2.hidden = true;
     }
-    var ask = STD_ASK[curSlug], cue = s.lsCue || '';
+    var ask = s.lsAsk || STD_ASK[curSlug], cue = s.lsTodo || s.lsCue || '';
     if(ask || cue) s.task({ kicker: kicker || 'Explore', title: esc(ask || '') || cue, todo: ask ? cue : '' }, 'explore');
+  }
+  /* F7: sceneAsk(s, ask, todo): an Explore question (and its what to do line) for the scene showing; with no ask the
+     tool's own question (STD_ASK) and cue come back. */
+  function sceneAsk(s, ask, todo){
+    if(!s || !s.root || !s.root.classList.contains('ls-std')) return;
+    s.lsAsk = ask || ''; s.lsTodo = ask ? todo || '' : '';
+    stdExplore(s);
   }
   function studioOf(app){
     var s = window.LevlStudio && window.LevlStudio.get();
@@ -984,7 +991,7 @@
 
   window.ApPhysTools = {
     stdPicker: stdPicker,
-    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
+    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, sceneAsk: sceneAsk,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

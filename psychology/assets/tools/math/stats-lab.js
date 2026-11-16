@@ -112,7 +112,7 @@
     var z = E('z', [x, sc.mean, sc.sd]), below = E('percentileRule', [k]), mid = E('rulePct', [-Math.abs(k), Math.abs(k)]);
     var person = r.pick(c.people || ['Ava', 'Jordan', 'Mateo', 'Priya', 'Sam']);
     var text = '<p>' + c.lead + ' Scores are normally distributed with a mean of ' + sc.mean + ' and a standard deviation of ' + sc.sd + '. ' + person + ' scores ' + x + '.</p>';
-    var oneSide = E('rulePct', k > 0 ? [0, k] : [k, 0]);
+    var oneSide = E('rulePct', k > 0 ? [0, k] : [k, 0]), exact = M.round(E('percentile', [x, sc.mean, sc.sd]), 1);
     var steps = [
       num('z', 'What is ' + person + '’s z score?', z, 1, { hint: 'z = (score − mean) ÷ standard deviation.', mistakes: [
         { value: E('sub', [x, sc.mean]), why: 'That is the distance from the mean in ' + (sc.unitWord || 'points') + '. Divide it by the standard deviation, ' + sc.sd + '.' }] }),
@@ -130,7 +130,8 @@
     var sol = [
       'z = (' + x + ' − ' + sc.mean + ') ÷ ' + sc.sd + ' = ' + sgn(z) + '.',
       'Below z = ' + sgn(k) + ' by the rule: ' + ruleSum(k) + ' = ' + g(below) + '%.',
-      'So ' + person + ' is at about the ' + ord(below) + ' percentile: about ' + g(below) + '% of scores are lower.'
+      // F7: the percentile itself comes from the normal table, not the rule (z = −2: 2.28%, the 2nd percentile).
+      'From a z table, about ' + g(exact) + '% of scores are lower, so ' + person + ' is at about the ' + ord(Math.max(1, Math.min(99, exact))) + ' percentile (the rule\u2019s ' + g(below) + '% is a close estimate).'
     ];
     return { ctx: c.id, topic: c.topic, type: 'rule', text: text, steps: steps, solution: sol,
       given: { mean: sc.mean, sd: sc.sd, x: x }, figure: { kind: 'normal', mean: sc.mean, sd: sc.sd, marks: [x], region: { from: null, to: x }, show: 'below' } };

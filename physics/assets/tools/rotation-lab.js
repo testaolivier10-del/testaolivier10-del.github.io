@@ -365,6 +365,9 @@
       stage.classList.toggle('is-orbit', sc === 'orbit');
       if(sc === 'orbit' && !os) os = RL.orbit.start({ r0: R0o, k: kO, GM: GM });
       sbuilt = false; draw();
+      // F7: the Explore question follows the scene (the race keeps the tool's own question).
+      if(s && T.sceneAsk) T.sceneAsk(s, ({ stool: 'Why does pulling the weights in make the stool spin faster?', orbit: 'Why does a planet move fastest when it is closest to the star?' })[sc],
+        ({ stool: 'Slide the dumbbells in or out, then press Spin.', orbit: 'Set the launch speed, then press Launch.' })[sc]);
       T.event('apphys-tool-scene', { tool: 'rotation-lab', scene: sc });
     }
     dock.querySelectorAll('[data-sc]').forEach(function(b){ b.addEventListener('click', function(){ setScene(b.getAttribute('data-sc')); }); });
