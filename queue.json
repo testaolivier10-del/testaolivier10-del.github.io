@@ -1209,7 +1209,7 @@
    "approved_commit": "734cc3d3e183a9e277669c8d1cc336720284fb0d"
   },
   {
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-11",
    "date": null,
    "yt_no_hashtags": true,
@@ -1238,10 +1238,12 @@
     ],
     "place": "upper middle, from the first second"
    },
-   "review_blob": "7a569d0bf3fd9ab746618121fe274ee503411223"
+   "review_blob": "7a569d0bf3fd9ab746618121fe274ee503411223",
+   "approved_on": "2026-11-11",
+   "approved_blob": "7a569d0bf3fd9ab746618121fe274ee503411223"
   },
   {
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-11",
    "date": null,
    "yt_no_hashtags": true,
@@ -1260,10 +1262,12 @@
    "hook": "There's a bank run on his bank, and the line already goes around the block. Should he stay and get his cash out, or go home?",
    "search_phrase": "bank run",
    "cta": "spoken",
-   "review_blob": "952ff9b99c0ff63c5db06f47558d5bcdfa34217e"
+   "review_blob": "952ff9b99c0ff63c5db06f47558d5bcdfa34217e",
+   "approved_on": "2026-11-11",
+   "approved_blob": "952ff9b99c0ff63c5db06f47558d5bcdfa34217e"
   },
   {
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-11",
    "date": null,
    "yt_no_hashtags": true,
@@ -1282,7 +1286,9 @@
    "hook": "In the Great Smog of London, this bus conductor has to guide his own bus on foot, with a flare.",
    "search_phrase": "Great Smog of London",
    "cta": "none",
-   "review_blob": "cdd2a95cabfc50f5269052a52fc4e85c88b79bf2"
+   "review_blob": "cdd2a95cabfc50f5269052a52fc4e85c88b79bf2",
+   "approved_on": "2026-11-11",
+   "approved_blob": "cdd2a95cabfc50f5269052a52fc4e85c88b79bf2"
   }
  ]
 }
