@@ -779,7 +779,7 @@
     } else if(!res.agrees){
       /* The interesting case. Saying "the rules say X, the measurement says Y"
          is more useful than picking whichever one makes the lesson tidy. */
-      html += '<p class="tmuted" style="margin:0 0 6px;">Careful: the usual rules point the other way here. Open Why? to see what decides it.</p>';
+      html += '<p class="tmuted" style="margin:0 0 6px;">Careful: the usual rules point the other way here. Open Explanation to see what decides it.</p>';
       why += '<div class="tnote tnote--warn"><span class="tnote__k">The rules and the measurement disagree here</span>' +
         'Walking the factors in order, ' + esc(res.deciding.factor.toLowerCase()) + ' points at ' + esc(res.deciding.winner.name) +
         ' — but the measured pK<sub>a</sub> says ' + esc(res.truth.name) + '. These two are close enough that something the ' +
@@ -1066,11 +1066,11 @@
     var cap, pills = [];
     if(left.id === right.id){ cap = '<b>Same compound.</b> Pick two different acids.'; }
     else if(!revealed){
-      cap = '<b>' + esc(left.name) + ' or ' + esc(right.name) + '?</b> Pick the stronger acid below. Why? has a hint.';
+      cap = '<b>' + esc(left.name) + ' or ' + esc(right.name) + '?</b> Pick the stronger acid below. Explanation has a hint.';
       pills.push({ html: 'Your call', tone: 'ghost' });
     } else {
       var res = analyse(left, right), other = res.truth === left ? right : left, ok = guess === res.truth.id;
-      cap = '<b>' + (ok ? 'Right.' : 'Not this time.') + '</b> ' + esc(res.truth.name) + ': its conjugate base holds the charge better. Why? walks the factors.';
+      cap = '<b>' + (ok ? 'Right.' : 'Not this time.') + '</b> ' + esc(res.truth.name) + ': its conjugate base holds the charge better. Explanation walks the factors.';
       pills.push({ html: ok ? 'Right' : 'Not this time', tone: ok ? 'good' : 'bad' });
       if(res.deciding && !res.agrees) pills.push({ html: 'The rules disagree here', tone: 'warn' });
     }
@@ -1088,7 +1088,7 @@
       cap = '<b>Most acidic first.</b> Drag the cards, or tap two to swap them. Then put them on the pK<sub>a</sub> line.';
       pills.push({ html: 'Your order', tone: 'ghost' });
     } else {
-      cap = '<b>' + (placed === 4 ? 'All four in order.' : placed + ' of 4 in the right place.') + '</b> Most acidic to least: ' + truth.map(function(a){ return esc(a.name); }).join(', ') + '. Why? explains each gap.';
+      cap = '<b>' + (placed === 4 ? 'All four in order.' : placed + ' of 4 in the right place.') + '</b> Most acidic to least: ' + truth.map(function(a){ return esc(a.name); }).join(', ') + '. Explanation explains each gap.';
       pills.push({ html: placed === 4 ? 'All four in order' : placed + ' of 4 placed', tone: placed === 4 ? 'good' : 'bad' });
     }
     studio.caption(cap, 'rank');
@@ -1106,7 +1106,7 @@
     } else {
       var order = siteMol.sites.map(function(st, i){ return { st: st, i: i }; }).sort(function(a, b){ return a.st.pKa - b.st.pKa; });
       var ok = order[0].i === siteGuess;
-      cap = '<b>' + (ok ? 'Right.' : 'Not that one.') + '</b> ' + esc(order[0].st.label) + ' goes first, at pK<sub>a</sub> ' + esc(siteText(order[0].st)) + '. Why? has the order and the reasons.';
+      cap = '<b>' + (ok ? 'Right.' : 'Not that one.') + '</b> ' + esc(order[0].st.label) + ' goes first, at pK<sub>a</sub> ' + esc(siteText(order[0].st)) + '. Explanation has the order and the reasons.';
       pills.push({ html: ok ? 'Right' : 'Not that one', tone: ok ? 'good' : 'bad' });
     }
     // Try another is the next move: it sits with the picks in the dock.

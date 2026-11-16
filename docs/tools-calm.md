@@ -71,6 +71,17 @@ tool-studio.js; the short version:
   controls (`.tchip`, `.tseg`, `.bt-btn`, `.bt-step`, `.bt-select`, `.bt-part`, `.btn-press`, `.tool-more`, `.bt-more`)
   are restyled inside `.ls-root`.
 
+### The standard frame (2026-11-15, docs/tools-frame-2026-11.md)
+`mount({ std: true, lede })` opts a tool into the third round's frame; without it nothing changes, so the other
+courses keep the calm frame until their own pass. With it: name and lede, modes, Ask the tutor, Share, "?" and the
+menu in the bar (modes on a second row on a phone; a locked tool hides modes and Share); "?" opens the second tab
+(reference) and the dock loses its second-tab button; Explanation shows only while Why has something. New calls:
+`s.task(t, mode)` (kicker, title, the one "what to do" line), `s.picker(o, mode)` (one grouped native dropdown at
+the stage's top left), `s.hints(o)` (hint ladder: first hint instant, Next hint, the answer button after
+`attempt()`), `s.done(o, mode)` (finished card: takeaway, Next, then Full explanation, Check yourself, the lesson),
+region `'foot'` for Undo / Reset and `.ls-push` for the dock's foot. Full signatures in the tool-studio.js header.
+Ochem uses all of it (`tool-shell.js` mounts std; `OchemStudioKit.extras()`, `.chipPicker()`, `.menuItems`).
+
 ### Switching a tool on (per course frame; P1)
 - **Ochem:** `studio: true` in `ochem/assets/tools-registry.js`, then `node scripts/build-tool-pages.mjs` (adds the
   css/js block). `tool-shell.js` mounts the frame (`window.OchemStudio`, root also gets `.tool-root`), moves

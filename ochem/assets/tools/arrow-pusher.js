@@ -170,106 +170,140 @@
   function setStep(src){ document.getElementById('apStep').innerHTML = STEP[src] || STEP.lib; }
   setStep('lib');
 
-  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
-     With the studio on (registry `studio: true`; tool-shell.js mounts it), the
-     same elements move into the calm frame: the arrow editor and what your
-     arrows make (or the challenge's target) side by side on the stage, the
-     mode switch, the molecules and the one next action in the dock, the
-     readout and the nudge in Why, the bookkeeping table in Details.
-     studioAfter() runs after every readout and lifts the product drawing and
-     the action buttons out of it; everything else stays where it was drawn. */
+  /* ---- Tool Studio, the standard frame (docs/tools-frame-2026-11.md, F1) ----
+     tool-shell.js mounts the frame; setupStudio() (near the end, once the
+     challenges exist) moves these same elements into it:
+       Explore    the 21 ready-made molecules in one grouped dropdown on the
+                  stage; your arrows and what they make side by side; Undo and
+                  Reset at the stage's foot; "What happened" (the readout and
+                  the chemistry notes) in the side panel; each molecule's
+                  nudge in the hint ladder.
+       Build      the builder only (type, the canvas and its tools on the
+                  stage, "Start from" in the dropdown); "Push electrons on
+                  this" carries the drawing to Explore; sending it to another
+                  tool is in the menu.
+       Challenge  7 challenges in the dropdown, the target behind "Show target
+                  structure", a Step marker and the intermediate for the two
+                  step ones, Check first, hints (first instant, Show one arrow
+                  after one wrong check), and the finished card.
+     The formal charge table, how an arrow works and the keys are behind "?".
+     studioAfter() runs after every readout and lifts the product drawing,
+     the notes and the actions out of it; nothing else is redrawn. */
   var studio = window.OchemStudio || null, ls = null;
-  if(studio){
-    var Kit = window.OchemStudioKit;
-    var byId = function(id){ return document.getElementById(id); };
-    var pics = document.createElement('div'); pics.className = 'ls-pics';
-    var edBox = byId('apEditor'); edBox.classList.add('ls-ed');
-    var outPane = document.createElement('div'); outPane.className = 'ls-pane'; outPane.hidden = true;
-    pics.appendChild(edBox); pics.appendChild(outPane);
-    var act = document.createElement('div'); act.className = 'ap-ls-act';
-    var kbd = document.createElement('div'); kbd.className = 'ls-sec';
-    kbd.innerHTML = '<h3 class="ls-h">Using the keyboard</h3><p class="ls-sub">Tab moves between atoms and bonds, Enter picks one. An arrow is two picks: where the electrons start, then where they go. Pick a drawn arrow to remove it.</p>';
-    studio.root.classList.add('ap-ls');
-    Kit.scrollChips(elPicker);
-    studio.add('stage', [byId('apSteps'), pics]);
-    // Short names, so the three fit one switch on a phone.
-    [['build', 'Build'], ['chal', 'Challenge']].forEach(function(x){ var b = byId('apSrc').querySelector('[data-src="' + x[0] + '"]'); if(b) b.textContent = x[1]; });
-    var apMode = Kit.seg(byId('apSrc'), 'data-src');
-    studio.add('dock', elPicker, { mode: 'lib' });
-    studio.add('dock', byId('apChalPick'), { mode: 'chal' });
-    studio.add('dock', elBuilder, { mode: 'build' });
-    studio.add('why', elBuildMsg, { mode: 'build' });
-    studio.add('dock', act);
-    studio.add('why', [elResult, elHintBox]);
-    // The numbers first, then the ways onward, then Check yourself and Keep going.
-    var detFirst = studio.details.firstChild;
-    [byId('apBooksBox'), byId('apSend'), kbd].forEach(function(el){ studio.details.insertBefore(el, detFirst); });
-    studio.add('details', byId('apSend'), { mode: 'build' });
-    studio.details.insertBefore(byId('apSend'), kbd);
-    byId('apBooksBox').open = true; showBooks = true;
-    root.hidden = true;
-    ls = { out: outPane, act: act, mode: apMode };
-  }
   function firstSentence(t){ var m = /^.*?[.!?](?=\s|$)/.exec(String(t || '')); return m ? m[0] : String(t || ''); }
   function upper1(s){ s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function fragsOf(st){ return C.fragments(st).map(function(f){ return C.formula(st, f); }).join(' + '); }
 
-  /* The studio's view of one readout: the product (or target) on the stage,
-     the next action in the dock, a caption and pills saying what happened. */
   function studioAfter(){
     if(!ls) return;
     var m = ls.mode() || 'lib';
-    ls.out.innerHTML = ''; ls.act.innerHTML = '';
+    if(m === 'build'){ buildAfter(); return; }
+    ls.out.innerHTML = ''; ls.act.innerHTML = ''; ls.notes.innerHTML = '';
     var pic = elResult.querySelector('.tstage'), fr = elResult.querySelector('.tfrags');
     if(pic){
-      ls.out.innerHTML = '<p class="ls-pane-k">' + (chal.on ? 'Target' : 'What your arrows make') + '</p>';
+      ls.out.innerHTML = '<p class="ls-pane-k">' + (chal.on ? 'Target' : 'What they make') + '</p>';
       ls.out.appendChild(pic); if(fr) ls.out.appendChild(fr);
     }
-    ls.out.hidden = !pic;
-    // "See it in 3D" is a way onward, not the next move: it waits in Why.
-    var to3d = elResult.querySelector('.trow a[href^="viewer-3d"]');
-    if(to3d){ var tags = document.createElement('div'); tags.className = 'ls-tags'; to3d.className = 'ls-tag'; tags.appendChild(to3d); elResult.appendChild(tags); }
-    elResult.querySelectorAll('.trow').forEach(function(r){ ls.act.appendChild(r); });
-    // A re-render replaced the button that had focus: keep the keyboard in the dock.
-    if((!document.activeElement || document.activeElement === document.body) && ls.act.querySelector('button')) ls.act.querySelector('button').focus({ preventScroll: true });
-    document.querySelectorAll('#apChalPick .tchips').forEach(function(c){ c.classList.add('ls-scroll'); });
-    var cap, left = [], right = [], name = esc(elName.textContent || '');
-    if(chal.on){
-      var def = chal.def, done = chal.i >= def.steps.length;
-      right.push({ html: done ? 'Done' : 'Step ' + (chal.i + 1) + ' of ' + def.steps.length, tone: 'ghost' });
-      if(chal.verdict && chal.verdict.ok){
-        left.push({ html: done ? 'Mechanism complete' : 'Step ' + (chal.verdict.step + 1) + ' right', tone: 'good' });
-        cap = done ? '<b>That is the whole mechanism.</b> Try the next challenge.' : '<b>Step ' + (chal.verdict.step + 1) + ' right.</b> Draw the next step on the intermediate.';
-      } else if(chal.verdict){
-        left.push({ html: 'Not this step yet', tone: 'bad' });
-        cap = '<b>Not this step yet.</b> ' + esc(firstSentence(chal.verdict.text)) + ' Why? has the rest.';
-      } else {
-        cap = '<b>' + esc(def.label) + '.</b> ' + esc(def.goal) + (lastArrows.length ? ' Then check the step.' : '');
-      }
-    } else if(m === 'build' && !lastBuilt){
-      cap = '<b>Build a molecule.</b> Type a formula or a name and tap Build, then push electrons on it.';
-    } else if(!lastArrows.length){
-      cap = '<b>' + name + '.</b> Tap a lone pair or a bond, then tap where those electrons go.';
-      elResult.insertAdjacentHTML('beforeend', '<h3 class="ls-title-l">How an arrow works</h3>' +
-        '<p>Each curved arrow moves two electrons. It starts where they are now, a lone pair or a bond, and ends where they go: an atom, or the space between two atoms to make a new bond.</p>' +
-        '<p>Draw one and what your arrows make appears beside your drawing, with formal charges recalculated. Nothing here is graded, but an arrow that could not have happened is told so.</p>');
+    ls.out.hidden = !pic || (chal.on && !ls.showTarget);
+    ls.to.hidden = ls.out.hidden || chal.on;
+    ls.note.hidden = true; ls.note.className = 'ap-note';
+    function note(html, tone){ ls.note.innerHTML = html; ls.note.hidden = false; ls.note.className = 'ap-note ap-note--' + tone; }
+    if(chal.on){ chalAfter(note); return; }
+    studio.done(false, 'lib');
+    var name = esc(elName.textContent || ''), left = [];
+    if(!lastArrows.length){
+      studio.task({ kicker: 'Explore', title: 'Push electrons on ' + (ls.built ? 'your molecule' : name) + '.',
+        todo: 'Tap a lone pair or a bond, then tap where those electrons go.' }, 'lib');
     } else {
       var res = C.apply(start, lastArrows);
       var err = res.issues.filter(function(i){ return i.level === 'error'; })[0];
+      var notes = [].slice.call(elResult.querySelectorAll('.tnote'));
+      // "What you drew" repeats the head when there is one arrow; with more it lists them all.
+      if(res.steps.length < 2) notes = notes.slice(1);
+      notes.forEach(function(n){ n.style.marginTop = ''; ls.notes.appendChild(n); });
       if(err){
         left.push({ html: 'That cannot happen', tone: 'bad' });
-        cap = '<b>That cannot happen.</b> ' + esc(firstSentence(upper1(err.text))) + ' Why? has the rest.';
+        note('<b>That cannot happen.</b> ' + esc(firstSentence(upper1(err.text))), 'bad');
+        studio.task({ kicker: 'That cannot happen', tone: 'bad', title: esc(firstSentence(upper1(err.text))),
+          todo: 'Undo it, or tap the arrow to remove it.' }, 'lib');
       } else {
         if(fr) left.push({ html: esc(fr.textContent.replace(/\s*\+\s*/g, ' + ')) });
         if(elResult.querySelector('.tnote--warn')) left.push({ html: 'Legal, but…', tone: 'warn' });
         else if(elResult.querySelector('.tnote--good')) left.push({ html: 'Looks right', tone: 'good' });
-        cap = '<b>' + esc(upper1(res.steps[0] || 'Nothing legal to apply')) + '.</b>' +
-          (res.steps.length > 1 ? ' Plus ' + (res.steps.length - 1) + ' more arrow' + (res.steps.length > 2 ? 's' : '') + '.' : '') +
-          ' Tap Why? for what it means.';
+        studio.task({ kicker: 'What happened', title: esc(upper1(res.steps[0] || 'Nothing legal to apply')) + '.' +
+          (res.steps.length > 1 ? ' Plus ' + (res.steps.length - 1) + ' more arrow' + (res.steps.length > 2 ? 's' : '') + '.' : '') }, 'lib');
+      }
+      // The ways onward: use the product as the next step (a mechanism is several), or see it in 3D.
+      var row = elResult.querySelector('.trow'), more = elResult.querySelector('.trow + .tmuted');
+      if(row){
+        var to3d = row.querySelector('a[href^="viewer-3d"]');
+        ls.act.appendChild(row);
+        if(more){ more.style.margin = ''; ls.act.appendChild(more); }
+        if(to3d){ var tags = document.createElement('div'); tags.className = 'ls-tags'; to3d.className = 'ls-tag'; tags.appendChild(to3d); ls.notes.appendChild(tags); }
       }
     }
-    studio.caption(cap, m);
-    studio.pills(left, 'left', m);
-    studio.pills(right, 'right', m);
+    studio.pills(left, 'left', 'lib');
+    studio.pills([], 'right', 'lib');
+    ls.hintsLib.paint();
+    keepFocus();
+  }
+  // A re-render replaced the button that had focus: keep the keyboard in the panel.
+  function keepFocus(){
+    if((!document.activeElement || document.activeElement === document.body) && ls.act.querySelector('button')) ls.act.querySelector('button').focus({ preventScroll: true });
+  }
+
+  function chalAfter(note){
+    var def = chal.def, n = def.steps.length, done = chal.i >= n, target = chal.states[chal.states.length - 1];
+    studio.pills([{ html: esc(fragsOf(target)), k: 'Target', tone: 'readout' }], 'right', 'chal');
+    var left = [];
+    ls.stepMark.innerHTML = n > 1 ? def.steps.map(function(_, i){
+      var d = i < chal.i, now = i === chal.i && !done;
+      return '<span class="ap-sm' + (d ? ' is-done' : now ? ' is-now' : '') + '">' + (d ? LevlStudio.icon('check') : '') + 'Step ' + (i + 1) + (now ? ' of ' + n : '') + '</span>';
+    }).join('<span class="ap-sm-line" aria-hidden="true"></span>') : '';
+    ls.stepMark.hidden = n < 2 || done;
+    if(done){
+      left.push({ html: n > 1 ? 'Mechanism complete' : 'Both arrows right', tone: 'good' });
+      if(def.steps[0].length === 1 && n === 1) left[0].html = 'Arrow right';
+      var tk = def.take || [def.label + ' done.', ''];
+      var Kit = window.OchemStudioKit;
+      studio.done({
+        kicker: 'Solved', title: esc(tk[0]),
+        text: esc(tk[1]) + ' ' + (chal.wrong ? 'You got there with ' + chal.wrong + ' wrong check' + (chal.wrong > 1 ? 's' : '') + '.' : 'First time.'),
+        next: { label: 'Next challenge', onClick: function(){ var i = CHALLENGES.indexOf(def); startChal(CHALLENGES[(i + 1) % CHALLENGES.length]); } },
+        links: [{ label: 'Try it again', onClick: function(){ startChal(def); } }].concat(Kit ? Kit.extras({ topic: def.topic }) : [])
+      }, 'chal');
+      ls.why.innerHTML = '<h3 class="ls-title-l">' + esc(def.label) + ', arrow by arrow</h3>' +
+        '<ol class="ls-steps">' + def.steps.map(function(arr, i){
+          return '<li><span>' + (n > 1 ? '<b>Step ' + (i + 1) + '.</b> ' : '') + arrowsOf(arr).map(function(a){ return esc(upper1(C.deltaFor(chal.states[i], a).text)) + '.'; }).join(' ') + '</span></li>';
+        }).join('') + '</ol><p>' + esc(tk[1]) + '</p>';
+      note('<b>' + (n > 1 ? 'That is the whole mechanism.' : 'Right.') + '</b> The drawing now shows what your arrows made.', 'good');
+    } else {
+      studio.done(false, 'chal');
+      ls.why.innerHTML = '';
+      var goal = def.stepGoals ? def.stepGoals[chal.i] : def.goal;
+      studio.task({ kicker: 'Challenge', title: esc(goal),
+        todo: chal.i ? 'Step ' + chal.i + ' gave you this intermediate. Draw step ' + (chal.i + 1) + ' on it.' : 'Tap a lone pair or a bond, then tap where those electrons go.' }, 'chal');
+      if(chal.verdict && chal.verdict.ok){
+        left.push({ html: 'Step ' + (chal.verdict.step + 1) + ' right', tone: 'good' });
+        note('<b>Step ' + (chal.verdict.step + 1) + ' right.</b> The drawing is now the intermediate.', 'good');
+      } else if(chal.verdict){
+        left.push({ html: 'Not this step yet', tone: 'bad' });
+        // Short on the molecule; the whole reading of your arrows is the panel's Explanation.
+        note('<b>Not this step yet.</b> ' + esc(firstSentence(chal.verdict.text)), 'bad');
+        ls.why.innerHTML = '<h3 class="ls-title-l">Not this step yet</h3><p>' + esc(chal.verdict.text) + '</p>';
+      }
+      var ck = elResult.querySelector('#apChalCheck');
+      if(ck){ ck.textContent = n > 1 ? 'Check step ' + (chal.i + 1) : 'Check'; ck.className = 'ls-btn ls-pri ap-check'; ls.act.appendChild(ck); }
+    }
+    studio.pills(left, 'left', 'chal');
+    ls.hintsChal.paint();
+    keepFocus();
+  }
+
+  function buildAfter(){
+    studio.task({ kicker: 'Build your own', title: 'Draw any molecule, then push electrons on it.',
+      todo: 'Type a formula or a name, or tap the canvas to place atoms and tap two atoms to bond them.' }, 'build');
+    if(ls.push) ls.push.disabled = !lastBuilt;
   }
 
   elPicker.querySelectorAll('.tchip').forEach(function(b){
@@ -291,6 +325,7 @@
     if(inMore) document.getElementById('apMore').open = true;
 
     var mol = Mol.get(pick.id);
+    if(ls){ ls.built = false; ls.pickLib.set(libPicks(pick.id)); ls.hintsLib.reset(); }
     begin(C.fromMolecule(mol), mol.name);
 
     if(pick.hint){
@@ -307,10 +342,10 @@
      library, the builder, or the product of a step that has just been
      committed. Everything that used to live inside select() is here, so a
      built molecule is not a second-class citizen with its own code path. */
-  function begin(st, name){
+  function begin(st, name, builtText){
     if(window.OchemToolState){
       var typed = document.getElementById('mbText');
-      var built = elBuilder && !elBuilder.hidden && typed && typed.value ? typed.value : null;
+      var built = builtText || (elBuilder && !elBuilder.hidden && typed && typed.value ? typed.value : null);
       window.OchemToolState.write({
         start: built ? null : (current && current.id),
         build: built
@@ -337,6 +372,8 @@
       arrows: lastArrows,
       maxArrows: 4,
       caption: '',
+      // A wrong challenge check draws the arrows it did not want in red, on the molecule.
+      marks: ls && ls.marks || null,
       // Once a source is picked, the likely ends pulse (audit 2026-10).
       targets: C.destinations ? function(src){ return C.destinations(start, src); } : null,
       onChange: function(state){ lastArrows = state.arrows; update(); }
@@ -426,6 +463,17 @@
       onChange: function(st, report){
         lastBuilt = report.empty ? null : (report.ok ? st : null);
         if(sendApi) sendApi.refresh();
+        /* The standard frame: Build is the builder only. The drawing waits for "Push electrons on this",
+           which carries it to Explore (pushBuilt). */
+        if(ls){
+          ls.builtName = report.ok ? (st.name || report.formula) : '';
+          elBuildMsg.innerHTML = report.empty ? '' : report.ok
+            ? '<div class="tnote tnote--good"><b>' + esc(st.name ? st.name + ', ' + report.formula : report.formula) + '.</b> Every atom checks out.</div>'
+            : '<div class="tnote tnote--bad">Fix what is flagged on the canvas first. Arrows on a structure that could not exist teach nothing.</div>';
+          buildAfter();
+          if(ls.autoPush && lastBuilt){ ls.autoPush = false; pushBuilt(); }
+          return;
+        }
         if(report.empty){ elBuildMsg.innerHTML = ''; return; }
         if(!report.ok){
           elBuildMsg.innerHTML = '<div class="tnote tnote--bad" style="margin-top:12px;">' +
@@ -446,7 +494,30 @@
         update();
       }
     });
-    if(ls) window.OchemStudioKit.builder(elBuilder);
+    if(ls){
+      // Its own Undo and Clear go to the stage's foot, with Undo / Reset like the other modes.
+      var u = document.getElementById('mbUndo'), c = document.getElementById('mbClear');
+      if(c) c.textContent = 'Reset';
+      studio.add('foot', [u, c].filter(Boolean), { mode: 'build' });
+    }
+  }
+
+  /* "Push electrons on this": the drawing, hydrogens drawn as atoms like the ready-made molecules (so it
+     offers the same C–H bonds), becomes Explore's molecule. A fresh copy, so editing the drawing later does
+     not reach into a mechanism part way through. */
+  function pushBuilt(){
+    if(!lastBuilt || !ls) return;
+    ls.pushing = true;
+    var b = document.getElementById('apSrc').querySelector('[data-src="lib"]');
+    if(b) b.click();
+  }
+  function beginBuilt(){
+    var B0 = window.OchemBuilder, st = lastBuilt, typed = document.getElementById('mbText');
+    ls.built = true;
+    ls.pickLib.set(libPicks('__built'));
+    ls.hintsLib.reset();
+    begin(B0 && B0.withHydrogens ? B0.withHydrogens(st) : C.clone(st), ls.builtName || 'Your molecule', typed && typed.value ? typed.value : null);
+    update();
   }
 
   document.getElementById('apSrc').querySelectorAll('button').forEach(function(b){
@@ -460,10 +531,12 @@
       setStep(src);
       elBuilder.hidden = (src !== 'build');
       document.getElementById('apChalPick').hidden = (src !== 'chal');
-      if(src === 'chal'){ elBuildMsg.innerHTML = ''; startChal(chal.def || CHALLENGES[0]); return; }
+      if(src === 'chal'){ if(!ls) elBuildMsg.innerHTML = ''; startChal(chal.def || CHALLENGES[0]); return; }
       chal.on = false;
-      if(src === 'build'){ openBuilder(); }
-      else { elBuildMsg.innerHTML = ''; select(current); }
+      if(src === 'build'){ openBuilder(); if(ls) buildAfter(); }
+      else if(ls && ls.pushing){ ls.pushing = false; beginBuilt(); }
+      else if(ls && ls.built && lastBuilt){ beginBuilt(); }
+      else { if(!ls) elBuildMsg.innerHTML = ''; select(current); }
     });
   });
 
@@ -704,21 +777,44 @@
      The answer arrows below are the textbook ones and the product shown is
      computed by applying them with chem-core.js, so the target can never
      disagree with the arrows that make it. */
+  /* hints: per step, the hint ladder's lines, from the idea down to the move (the answer itself, arrow by
+     arrow, is Show one arrow). take: the finished card's takeaway. stepGoals: a two step challenge's task,
+     step by step. topic: the lesson the finished card links. */
   var CHALLENGES = [
-    { id:'sn2', label:'SN2', mol:'sn2-bromoethane', goal:'Make ethanol and bromide in one concerted step.',
-      steps:[ [['nucO','c1'], ['bond:c1-br','br']] ] },
+    { id:'sn2', label:'SN2', mol:'sn2-bromoethane', goal:'Make ethanol and bromide in one concerted step.', topic:'sn2',
+      steps:[ [['nucO','c1'], ['bond:c1-br','br']] ],
+      hints:[[ 'The nucleophile is the one with a negative charge and lone pairs to give.',
+               'It attacks the carbon that holds bromine. In the same step the C–Br bond breaks onto bromine.' ]],
+      take:[ 'SN2 happens in one step.', 'Hydroxide attacks the carbon from the back while bromide leaves. One arrow makes a bond, one breaks a bond.' ] },
     { id:'acid-base', label:'Acid–base', mol:'acetic-acid-hydroxide', goal:'Hydroxide takes the acid proton.',
-      steps:[ [['nucO','h'], ['bond:o2-h','o2']] ] },
+      steps:[ [['nucO','h'], ['bond:o2-h','o2']] ],
+      hints:[[ 'A base uses a lone pair to take a proton.',
+               'As the new bond to the proton forms, the old O–H bond breaks and its electrons stay on the acid’s oxygen.' ]],
+      take:[ 'The base takes the proton.', 'Hydroxide’s lone pair makes the new O–H bond, and the old O–H bond’s electrons stay on oxygen as acetate. Every proton transfer is these two arrows.' ] },
     { id:'sn1', label:'SN1 step 1', mol:'sn1-secondary', goal:'Ionize: make the carbocation and bromide.',
-      steps:[ [['bond:c1-br','br']] ] },
+      steps:[ [['bond:c1-br','br']] ],
+      hints:[[ 'Nothing attacks in this step.', 'One bond breaks, and both of its electrons leave with the more electronegative atom.' ]],
+      take:[ 'Ionization comes first in SN1.', 'The C–Br bond breaks on its own and bromide leaves with both electrons. The carbocation meets its nucleophile in a separate step.' ] },
     { id:'protonate', label:'Protonate a C=O', mol:'fischer-protonation', goal:'Acid catalysis, step 1: put the proton on the carbonyl oxygen.',
-      steps:[ [['o1','ha'], ['bond:ac-ha','ac']] ] },
+      steps:[ [['o1','ha'], ['bond:ac-ha','ac']] ],
+      hints:[[ 'The carbonyl oxygen has lone pairs to give.', 'One lone pair takes the acid’s proton, and the acid’s bond to that proton breaks onto the acid.' ]],
+      take:[ 'Acid makes the carbonyl a better electrophile.', 'A lone pair on oxygen takes the proton. The positive oxygen pulls electrons away from the carbonyl carbon, so even a weak nucleophile can attack it next.' ] },
     { id:'aldol', label:'Aldol addition', mol:'enolate-plus-acetone', goal:'The enolate carbon attacks the second carbonyl; give the alkoxide.',
-      steps:[ [['ca','c2'], ['bond:c2-o2','o2']] ] },
+      steps:[ [['ca','c2'], ['bond:c2-o2','o2']] ],
+      hints:[[ 'The enolate’s carbon is the nucleophile.', 'It attacks the carbonyl carbon of the other molecule, and the C=O pi bond moves up onto oxygen.' ]],
+      take:[ 'An enolate is a carbon nucleophile.', 'Its carbon makes a new C–C bond to the carbonyl carbon and the pi electrons move onto oxygen, which gives the alkoxide.' ] },
     { id:'acyl', label:'Acyl substitution', mol:'acetyl-chloride-nu', goal:'Two steps: add methoxide to make the tetrahedral intermediate, then collapse it and expel chloride.',
-      steps:[ [['nuO','c'], ['bond:c-o1','o1']], [['o1','bond:c-o1'], ['bond:c-cl','cl']] ] },
+      stepGoals:[ 'Add methoxide to the carbonyl to make the tetrahedral intermediate.', 'Collapse the intermediate and expel chloride.' ],
+      steps:[ [['nuO','c'], ['bond:c-o1','o1']], [['o1','bond:c-o1'], ['bond:c-cl','cl']] ],
+      hints:[[ 'Methoxide is the nucleophile.', 'It adds to the carbonyl carbon, and the C=O pi bond moves onto oxygen.' ],
+             [ 'The negative oxygen pushes a lone pair back down to remake C=O.', 'Carbon can keep only four bonds, so the C–Cl bond breaks and chloride leaves.' ]],
+      take:[ 'Add, then eliminate.', 'The nucleophile adds to make a tetrahedral intermediate, then C=O forms again and pushes out chloride, the best leaving group on that carbon.' ] },
     { id:'claisen', label:'Claisen', mol:'enolate-plus-ester', goal:'Two steps: the enolate adds to the ester, then the intermediate collapses and expels ethoxide.',
-      steps:[ [['ca','c2'], ['bond:c2-o2','o2']], [['o2','bond:c2-o2'], ['bond:c2-o3','o3']] ] }
+      stepGoals:[ 'The enolate adds to the ester carbonyl.', 'Collapse the intermediate and expel ethoxide.' ],
+      steps:[ [['ca','c2'], ['bond:c2-o2','o2']], [['o2','bond:c2-o2'], ['bond:c2-o3','o3']] ],
+      hints:[[ 'The enolate’s carbon is the nucleophile.', 'It adds to the ester’s carbonyl carbon, and the C=O pi bond moves onto oxygen.' ],
+             [ 'The negative oxygen pushes a lone pair back down to remake C=O.', 'The bond to the ethoxy oxygen breaks, and ethoxide leaves.' ]],
+      take:[ 'Add, then eliminate, again.', 'The enolate adds to the ester carbonyl and the intermediate collapses to push out ethoxide: acyl substitution with a carbon nucleophile.' ] }
   ];
   var chal = { on:false, def:null, i:0, states:[], wrong:0, right:0, total:0, verdict:null, shown:0 };
 
@@ -755,6 +851,7 @@
     });
     history = [];
     elHintBox.style.display = 'none';
+    if(ls){ ls.pickChal.value(def.id); ls.hintsChal.reset(); }
     startStep(C.clone(st0), Mol.get(def.mol).name);
     if(window.OchemToolState) window.OchemToolState.write({ chal: def.id });
     update();
@@ -769,7 +866,8 @@
       chal.right++;
       chal.verdict = { ok:true, step: chal.i };
       history.push({ st: start, arrows: lastArrows.slice() });
-      chal.i++;
+      chal.i++; chal.shown = 0;
+      if(ls) ls.hintsChal.reset();
       startStep(C.clone(chal.states[chal.i]));
       update();
       return;
@@ -785,6 +883,12 @@
     if(missing.length) lines.push(missing.length === need.length && !drawn.length ? 'Start with the electron source.'
       : 'Still needed: something to happen at ' + C.describeKey(start, missing[0].to) + '.');
     chal.verdict = { ok:false, text: lines.join(' '), arrows: JSON.stringify(lastArrows) };
+    if(ls){
+      // A real try: the full answer (Show one arrow) opens. The arrows the step does not want turn red.
+      ls.hintsChal.attempt();
+      var wrong = []; drawn.forEach(function(d, i){ if(!need.some(function(n){ return sameArrow(d, n); })) wrong.push(i); });
+      ls.marks = { wrong: wrong }; baseRemount(); ls.marks = null;
+    }
     update();
   }
 
@@ -840,6 +944,113 @@
 
   window.OchemArrowChallenge = { CHALLENGES: CHALLENGES, sameStructure: sameStructure };
 
+  /* The standard frame's arrangement (see the block comment at studioAfter). */
+  function libPicks(value){
+    var groups = GROUPS.map(function(g){ return { label: g.label, items: g.picks.map(function(p){ return { value: p.id, label: p.label }; }) }; });
+    if(ls && ls.built && lastBuilt) groups.push({ label: 'Yours', items: [{ value: '__built', label: ls.builtName || 'Your molecule' }] });
+    return { label: 'Molecule', groups: groups, value: value, onChange: function(v){
+      if(v === '__built'){ beginBuilt(); return; }
+      ALL.forEach(function(p){ if(p.id === v) select(p); });
+    } };
+  }
+  function setupStudio(){
+    var Kit = window.OchemStudioKit, I = window.LevlStudio.icon;
+    var byId = function(id){ return document.getElementById(id); };
+    function mk(tag, cls, html){ var e = document.createElement(tag); e.className = cls; if(html) e.innerHTML = html; return e; }
+    studio.root.classList.add('ap-ls');
+    ls = { mode: null, built: false };
+    // Stage: your arrows | what they make (or the target), the mechanism strip above, the note under them.
+    var pics = mk('div', 'ls-pics'), edBox = byId('apEditor');
+    edBox.classList.add('ls-ed');
+    ls.to = mk('span', 'ap-to', I('chev')); ls.to.setAttribute('aria-hidden', 'true'); ls.to.hidden = true;
+    ls.out = mk('div', 'ls-pane'); ls.out.hidden = true;
+    pics.appendChild(edBox); pics.appendChild(ls.to); pics.appendChild(ls.out);
+    ls.note = mk('p', 'ap-note'); ls.note.setAttribute('role', 'status'); ls.note.hidden = true;
+    studio.add('stage', [byId('apSteps'), pics, ls.note], { mode: 'lib chal' });
+    studio.add('stage', elBuilder, { mode: 'build' });
+    // The modes, short so the three fit one switch on a phone.
+    [['lib', 'Explore'], ['build', 'Build'], ['chal', 'Challenge']].forEach(function(x){ var b = byId('apSrc').querySelector('[data-src="' + x[0] + '"]'); if(b) b.textContent = x[1]; });
+    ls.mode = Kit.seg(byId('apSrc'), 'data-src');
+    // The dropdowns: 21 molecules in their four groups, 7 challenges, and where a drawing starts.
+    ls.pickLib = studio.picker(libPicks(current.id), 'lib');
+    ls.pickChal = studio.picker({ label: 'Challenge', count: true, items: CHALLENGES.map(function(c){ return { value: c.id, label: c.label }; }),
+      onChange: function(v){ CHALLENGES.forEach(function(c){ if(c.id === v) startChal(c); }); } }, 'chal');
+    studio.picker({ label: 'Start from', value: '', items: [{ value: '', label: 'Start from', sub: 'Blank' }].concat(
+      ['CH3CH2OH', '(CH3)3CBr', 'CH3COCH3', 'CH3COOH', 'benzene', 'cyclohexane'].map(function(q){ return { value: q, label: 'Start from', sub: q }; })),
+      onChange: function(v){
+        if(!builderApi) return;
+        var t = byId('mbText');
+        if(!v){ if(t) t.value = ''; builderApi.clear(); return; }
+        if(t) t.value = v;
+        builderApi.build(v);
+      } }, 'build');
+    // Undo and Reset at the stage's foot drive the editor's own buttons; the target's structure is one tap.
+    function edAct(a){ return function(){ var b = edBox.querySelector('.med-btn[data-act="' + a + '"]'); if(b && !b.disabled) b.click(); }; }
+    var undo = mk('button', 'ls-btn ap-undo', I('undo') + '<span>Undo</span>'); undo.type = 'button'; undo.addEventListener('click', edAct('undo'));
+    var reset = mk('button', 'ls-btn', 'Reset'); reset.type = 'button'; undo.disabled = reset.disabled = true; reset.addEventListener('click', edAct('clear'));
+    var tgt = mk('button', 'ls-btn ap-tgt', 'Show target structure'); tgt.type = 'button';
+    tgt.setAttribute('aria-pressed', 'false');
+    tgt.addEventListener('click', function(){ ls.showTarget = !ls.showTarget; tgt.setAttribute('aria-pressed', String(ls.showTarget)); tgt.textContent = ls.showTarget ? 'Hide target structure' : 'Show target structure'; update(); });
+    studio.add('foot', [undo, reset], { mode: 'lib chal' });
+    studio.add('foot', tgt, { mode: 'chal' });
+    // Undo and Reset follow the editor's own (off with no arrows to take back).
+    if(window.MutationObserver) new MutationObserver(function(){
+      var u = edBox.querySelector('.med-btn[data-act="undo"]');
+      undo.disabled = reset.disabled = !u || u.disabled;
+    }).observe(edBox, { childList: true });
+    // Side panel: the step marker, What happened and its notes, the hint ladders, the action.
+    ls.stepMark = mk('div', 'ap-stepmark'); ls.stepMark.hidden = true;
+    ls.notes = mk('div', 'ap-ls-notes');
+    ls.act = mk('div', 'ap-ls-act ls-push');
+    ls.hintsLib = studio.hints({ label: 'Nudge for this molecule', hints: function(){ return !ls.built && current && current.hint ? [esc(current.hint)] : []; } });
+    ls.hintsChal = studio.hints({
+      hints: function(){ var h = chal.def && chal.def.hints && chal.def.hints[chal.i]; return (h || []).map(esc); },
+      answer: { label: 'Show one arrow', onShow: function(){
+        var want = arrowsOf(chal.def.steps[chal.i]);
+        chal.shown = Math.min(chal.shown + 1, want.length);
+        return want.slice(0, chal.shown).map(function(a, i){ return '<p>' + (want.length > 1 ? 'Arrow ' + (i + 1) + ': ' : '') + esc(upper1(C.deltaFor(start, a).text)) + '.</p>'; }).join('');
+      } }
+    });
+    var pushRow = mk('div', 'ls-push ap-ls-pushrow');
+    ls.push = mk('button', 'ls-btn ls-pri', 'Push electrons on this'); ls.push.type = 'button'; ls.push.disabled = true;
+    ls.push.addEventListener('click', pushBuilt);
+    pushRow.appendChild(ls.push);
+    pushRow.appendChild(mk('p', 'ls-sub ap-ls-sendnote', 'Open it in another tool from the … menu.'));
+    studio.add('dock', ls.stepMark, { mode: 'chal' });
+    // The step marker heads the panel, above the task.
+    studio.dockEl.insertBefore(ls.stepMark, studio.dockEl.querySelector('.ls-task'));
+    studio.add('dock', [ls.notes, ls.hintsLib.card], { mode: 'lib' });
+    studio.add('dock', ls.hintsChal.card, { mode: 'chal' });
+    studio.add('dock', ls.act, { mode: 'lib chal' });
+    studio.add('dock', ls.hintsLib.row, { mode: 'lib' });
+    studio.add('dock', ls.hintsChal.row, { mode: 'chal' });
+    studio.add('dock', [elBuildMsg, pushRow], { mode: 'build' });
+    // Why: the finished challenge, arrow by arrow (Full explanation on the finished card).
+    ls.why = mk('div', 'ls-sec ap-ls-why');
+    studio.add('why', ls.why, { mode: 'chal' });
+    // "?": formal charges, how an arrow works, the keys; sending a drawing on (Build) is there and in the menu.
+    var how = mk('div', 'ls-sec', '<h3 class="ls-h">How an arrow works</h3>' +
+      '<p>Each curved arrow moves two electrons. It starts where they are now, a lone pair or a bond, and ends where they go: an atom, or the space between two atoms to make a new bond.</p>' +
+      '<p>In Explore, what your arrows make appears beside your drawing with formal charges worked out again. Nothing there is graded, but an arrow that could not have happened is told so, and a legal one that rarely happens gets a second look.</p>' +
+      '<p>A mechanism is several steps: Use this as the next step carries the product on, and the strip above the drawing takes you back to any step.</p>');
+    var kbd = mk('div', 'ls-sec', '<h3 class="ls-h">Using the keyboard</h3><p class="ls-sub">Tab moves between atoms and bonds, Enter picks one. An arrow is two picks: where the electrons start, then where they go. Pick a drawn arrow to remove it.</p>');
+    var books = byId('apBooksBox'), send = byId('apSend');
+    books.querySelector('summary').textContent = 'Formal charges';
+    var first = studio.details.firstChild;
+    [books, how, kbd, send].forEach(function(el){ studio.details.insertBefore(el, first); });
+    studio.add('details', send, { mode: 'build' });
+    studio.details.insertBefore(send, first);
+    books.open = true; showBooks = true;
+    var KitItems = (Kit && Kit.menuItems) || [];
+    studio.menu({ items: KitItems.concat([{ label: 'Open in another tool', icon: 'grid', onClick: function(){
+      if(ls.mode() !== 'build'){ var b = byId('apSrc').querySelector('[data-src="build"]'); if(b) b.click(); }
+      studio.open('details', null);
+      setTimeout(function(){ send.scrollIntoView({ block: 'start' }); var a = send.querySelector('a'); if(a) a.focus({ preventScroll: true }); else studio.say('Build a molecule first, then send it on.'); }, 80);
+    } }]) });
+    root.hidden = true;
+  }
+  if(studio && studio.task) setupStudio();
+
   var fromLink = fromUrl();
   // Read before select(), which rewrites the address bar.
   var chalWanted = window.OchemToolState && window.OchemToolState.read().chal;
@@ -862,6 +1073,8 @@
         srcBtn.click();
         // In the type box too, so the address (and Copy link) keeps it.
         var typedIn = document.getElementById('mbText'); if(typedIn) typedIn.value = built;
+        // A shared link with a drawing opens on pushing electrons on it.
+        if(ls) ls.autoPush = true;
         if(builderApi) builderApi.build(built);
       }
     }

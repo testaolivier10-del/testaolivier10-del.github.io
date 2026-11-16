@@ -1490,12 +1490,12 @@
     var res = routes(S.from, S.to, { skeleton: S.skeleton }), r = res.shortest[S.pick], cap, pills = [];
     if(S.from === S.to){ cap = '<b>Start and target are the same group.</b> Pick two different ones.'; }
     else if(!r){
-      cap = '<b>No route from ' + esc(lc0(nodeName(S.from))) + ' to ' + esc(lc0(nodeName(S.to))) + (S.skeleton ? ' keeping the skeleton' : '') + '.</b> Why? says what would.';
+      cap = '<b>No route from ' + esc(lc0(nodeName(S.from))) + ' to ' + esc(lc0(nodeName(S.to))) + (S.skeleton ? ' keeping the skeleton' : '') + '.</b> Explanation says what would.';
       pills.push({ html: 'No route', tone: 'warn' });
     } else {
       // Pass 3: the step count is said once (here), the skeleton once (the switch in the dock).
       cap = '<b>' + esc(nodeName(r.nodes[0])) + ' to ' + esc(lc0(nodeName(r.nodes[r.nodes.length - 1]))) + ' in ' + res.length + ' step' + (res.length > 1 ? 's' : '') + '.</b> ' +
-        'The reagents ride the arrows. Why? has more' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
+        'The reagents ride the arrows. Explanation has more' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
     }
     studio.caption(cap, 'route');
     studio.pills(pills, 'left', 'route');
@@ -1523,7 +1523,7 @@
     put('groups-why', [elGroups.querySelector('#rrGroupOut')]);
     var out = OUT[n.id].length, into = IN[n.id].filter(function(e){ return e.from !== e.to; }).length;
     // Pass 2: the switch on the stage carries the counts of groups; the caption says what to do.
-    studio.caption('<b>' + esc(n.name) + ' (' + esc(n.short) + ').</b> Tap a card to move there. Why? lists all ' + (out + into) + ' reactions' +
+    studio.caption('<b>' + esc(n.name) + ' (' + esc(n.short) + ').</b> Tap a card to move there. Explanation lists all ' + (out + into) + ' reactions' +
       (n.dead && n.dead.length ? ' and ' + n.dead.length + ' trap' + (n.dead.length > 1 ? 's' : '') + ' to avoid' : '') + '.', 'groups');
     studio.pills([{ html: esc(n.name) }], 'left', 'groups');
   }
@@ -1539,14 +1539,14 @@
     var goal = 'Get from <b>' + esc(nodeName(P.from)) + '</b> to <b>' + esc(nodeName(P.to)) + '</b>';
     if(P.done){
       var par = P.steps.length === P.best;
-      cap = '<b>' + (par ? 'Made it in the fewest steps.' : 'Made it.') + '</b> ' + P.steps.length + ' step' + (P.steps.length > 1 ? 's' : '') + (par ? '' : '; the shortest takes ' + P.best) + '. Why? has your route.';
+      cap = '<b>' + (par ? 'Made it in the fewest steps.' : 'Made it.') + '</b> ' + P.steps.length + ' step' + (P.steps.length > 1 ? 's' : '') + (par ? '' : '; the shortest takes ' + P.best) + '. Explanation has your route.';
       pills.push({ html: par ? 'Fewest steps' : 'Made it', tone: 'good' });
     } else if(P.note && P.note.step && last){
       cap = last.dead ? '<b>Dead end.</b> From ' + esc(lc0(nodeName(P.at))) + ' nothing reaches ' + esc(lc0(nodeName(P.to))) + ' keeping the skeleton. Undo it.'
         : '<b>Step ' + P.steps.length + ': ' + esc(last.e.name) + '.</b> Now at ' + esc(lc0(nodeName(P.at))) + '. Tap the next reagent.';
       pills.push({ html: last.dead ? 'Dead end' : 'Step ' + P.steps.length, tone: last.dead ? 'bad' : 'accent' });
     } else if(P.note && P.note.bad){
-      cap = '<b>Not a step from ' + esc(lc0(nodeName(P.at))) + '.</b> Why? says what that reagent is for. Try another.';
+      cap = '<b>Not a step from ' + esc(lc0(nodeName(P.at))) + '.</b> Explanation says what that reagent is for. Try another.';
       pills.push({ html: 'Nothing happens', tone: 'bad' });
     } else {
       cap = goal + '. Tap reagents to build the route, keeping the carbon skeleton.';

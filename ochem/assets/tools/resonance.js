@@ -181,6 +181,7 @@
     // The structure you are handed counts as one you have already got.
     found[R.key(start)] = 'given';
 
+    if(ls && ls.hints){ ls.hints.reset(); if(ls.pick) ls.pick.value(st.builtHere ? '__built' : current.id); }
     mountEditor();
     renderVerdict(null);
     renderFound();
@@ -886,7 +887,23 @@
     Kit.scrollChips(byId('resPickPanel'));
     studio.add('stage', pics, { mode: 'hunt' });
     studio.add('stage', cmpStage, { mode: 'compare' });
-    studio.add('dock', [elPicker, byId('resMore'), act, tools], { mode: 'hunt' });
+    /* The standard frame (F1): the species in one dropdown on the stage (the chips stay, out of sight, for the
+       tool's own state); Build your own keeps its disclosure; Show me one I'm missing is the hint ladder's answer,
+       open after one real try (an arrow drawn and judged), with two hints before it. */
+    byId('resMore').querySelector('summary').textContent = 'Build your own';
+    var pickGroups = function(){ return [{ label: 'Start here', items: SPECIES.slice(0, FIRST).map(function(x){ return { value: x.id, label: x.label }; }) },
+      { label: 'More species', items: SPECIES.slice(FIRST).map(function(x){ return { value: x.id, label: x.label }; }) }]; };
+    var hints = studio.hints({ hints: [
+        'Look for a lone pair or a π bond next to another π bond, or next to an atom that is short of electrons.',
+        'Move a pair one place over, into the neighboring bond, and push the π bond it meets onto the far atom. Atoms stay put; only electrons move.'
+      ], answer: { label: 'Show me one I’m missing', onShow: function(){ byId('resReveal').click(); return ''; } } });
+    byId('resReveal').hidden = true;
+    act.classList.add('ls-push');
+    studio.add('dock', [byId('resMore'), hints.card, act, hints.row, tools], { mode: 'hunt' });
+    var pick = studio.picker({ label: 'Molecule or ion', groups: pickGroups(), value: current.id, onChange: function(v){
+      SPECIES.forEach(function(x){ if(x.id === v) select(x); });
+    } }, 'hunt');
+    elPicker.hidden = true; byId('resPicker2').hidden = true;
     studio.add('dock', cmpDock, { mode: 'compare' });
     studio.add('why', [elVerdict, prog, elSummary, formsWhy], { mode: 'hunt' });
     studio.add('why', cmpWhy, { mode: 'compare' });
@@ -900,10 +917,11 @@
     studio.details.insertBefore(cmpDet, detFirst);
     root.hidden = true;
     byId('resBuildToggle').addEventListener('click', function(){ Kit.builder(elBuilder); });
-    ls = { act: act, mode: resMode, cmpStage: cmpStage, cmpDock: cmpDock, cmpWhy: cmpWhy, cmpDet: cmpDet, formsWhy: formsWhy };
+    ls = { act: act, mode: resMode, cmpStage: cmpStage, cmpDock: cmpDock, cmpWhy: cmpWhy, cmpDet: cmpDet, formsWhy: formsWhy, hints: hints, pick: pick };
 
     var baseVerdict = renderVerdict, baseFound = renderFound, baseCompare = renderCompare;
-    renderVerdict = function(v){ baseVerdict(v); ls.v = v; studioHunt(); };
+    // A judged set of arrows is a real try: it opens the answer.
+    renderVerdict = function(v){ baseVerdict(v); ls.v = v; if(v) hints.attempt(); studioHunt(); };
     renderFound = function(){ baseFound(); studioHunt(); };
     renderCompare = function(){ baseCompare(); studioCompare(); };
   }
@@ -929,12 +947,22 @@
       pills.push({ html: 'A resonance form', tone: 'good' });
       cap = '<b>That is a resonance form.</b> Add it to the collection.';
     } else if(!left){
-      cap = '<b>All ' + target.length + ' forms of ' + name + '.</b> Why? says which one the molecule is most like.';
+      cap = '<b>All ' + target.length + ' forms of ' + name + '.</b> Explanation says which one the molecule is most like.';
     } else {
       cap = '<b>' + name + ':</b> ' + left + ' more form' + (left === 1 ? '' : 's') + ' to find. Tap a lone pair or a π bond, then tap where it goes.';
     }
     studio.caption(cap, 'hunt');
     studio.pills(pills, 'left', 'hunt');
+    // Finished: every form found, at least one of them by the student (not on landing).
+    var mine = Object.keys(found).some(function(k){ return found[k] !== 'given'; });
+    if(!left && mine && studio.done){
+      var i = SPECIES.indexOf(current), Kit = window.OchemStudioKit;
+      studio.done({ kicker: 'All found', title: 'All ' + target.length + ' forms of ' + name + '.',
+        text: 'The real ' + name.toLowerCase() + ' is a blend of them, most like the best form. The full explanation ranks them.',
+        next: { label: 'Next molecule', onClick: function(){ select(SPECIES[(i + 1) % SPECIES.length]); } },
+        links: [{ label: 'Start over', onClick: function(){ byId('resReset').click(); } }].concat(Kit ? Kit.extras({ topic: 'resonance' }) : [])
+      }, 'hunt');
+    } else if(studio.done) studio.done(false, 'hunt');
     // The forms on the stage are pictures; what each one is, in words, is in Why.
     ls.formsWhy.innerHTML = '<h3 class="ls-h">The forms so far</h3><ol class="ls-steps">' + target.filter(function(f){ return found[R.key(f)]; }).map(function(f){
       var d = R.describe(f, target), how = found[R.key(f)];
@@ -970,7 +998,7 @@
       var v = judge(stabilization(cmpLeft.st), stabilization(cmpRight.st)), right = cmpGuess === v.winner;
       var win = v.winner === 'tie' ? 'Neither' : (v.winner === 'a' ? la : lb);
       pills.push({ html: right ? 'Right' : 'Not quite', tone: right ? 'good' : 'bad' }, { html: v.winner === 'tie' ? 'About the same' : esc(win) + ' wins', tone: 'ghost' });
-      cap = '<b>' + (right ? 'Right.' : 'Not quite.') + '</b> ' + (v.winner === 'tie' ? 'Resonance does not separate them' : esc(win) + ' is more stabilized') + ': ' + esc(v.rule.toLowerCase()) + '. Why? has the reasoning.';
+      cap = '<b>' + (right ? 'Right.' : 'Not quite.') + '</b> ' + (v.winner === 'tie' ? 'Resonance does not separate them' : esc(win) + ' is more stabilized') + ': ' + esc(v.rule.toLowerCase()) + '. Explanation has the reasoning.';
     }
     studio.caption(cap, 'compare');
     studio.pills(pills, 'left', 'compare');

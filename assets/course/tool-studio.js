@@ -90,6 +90,26 @@
                                     "Start over" button, else a reload without the setup
                                     saved in the link.
      s.root, s.stage, s.dock, s.why, s.details, s.about   the regions
+   The standard frame (opts.std: true; docs/tools-frame-2026-11.md). Off by default, so a tool keeps the
+   calm frame until its own pass. With std: the bar holds the name and opts.lede (one line on what the tool
+   is for), the mode switch (a second row on a phone), Share (copies the link, when menu.copyLink) and "?",
+   which opens the second tab (reference: tables, keys, how it works) instead of Why; the dock's second-tab
+   button goes, and its Explanation button shows only while Why holds something.
+     s.task({ kicker, title, todo, tone: 'good'|'bad' }, mode?)   the side panel's head: what the task is
+                                    (or what happened) and the one line on what to do; kept per mode
+     s.picker({ label, groups: [{ label, items: [{ value, label, sub }] }] | items, value, onChange(v, item),
+                count }, mode?) -> { el, select, value(v?), set(o) }   the scenario picker: ONE native
+                                    dropdown, groups kept, top left of the stage; shows the pick and its
+                                    sub ("2 of 7" with count, else its group)
+     s.hints({ hints: [..] | fn, answer: { label, onShow() -> html? }, gate: 1, label })
+                -> { card, row, attempt(), reset(list?), shown(), paint() }   the hint ladder: the first
+                                    hint instant, then Next hint; the answer button opens after `gate`
+                                    calls to attempt() (one real try). The tool places card and row.
+     s.done({ kicker, title, text, next: { label, onClick }, links: [{ label, onClick | href | open,
+                focus }] } | false, mode?)   the finished card in the side panel's place (the rest
+                                    steps aside, untouched); not for the landing screen
+     s.add('foot', els, { mode })   Undo / Reset at the stage's foot, clear of Enlarge
+     .ls-push on a dock child       it sits at the dock's foot on a desktop (the actions)
    LevlStudio.stepper(container, opts) -> { go(i, focus?), refresh(), review(on) }
      One step at a time over existing graded inputs. opts:
        items   selector (inside container) of the step elements
@@ -170,6 +190,10 @@
     atom: '<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
     sliders: '<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
     chev: '<path d="M9 6l6 6-6 6"/>',
+    down: '<path d="M6 9l6 6 6-6"/>',
+    share: '<path d="M12 3v12M7 8l5-5 5 5M5 13v7h14v-7"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    undo: '<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>',
     star: '<path d="M12 4l2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z"/>',
     expand: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
     plus: '<path d="M12 5v14M5 12h14"/>',
@@ -188,20 +212,23 @@
     opts = opts || {};
     if(current) return current;
     var s = {}, mode = null, lastFocus = null, sheetOpen = false, tab = 'why', locked = false;
-    var menuO = opts.menu || {}, slim = !!opts.slim;
+    var menuO = opts.menu || {}, slim = !!opts.slim, std = !!opts.std && !slim;
     var ids = { title: nid('t'), why: nid('why'), det: nid('det'), sheetH: nid('sh'), menu: nid('m'), cap: nid('cap') };
 
     var root = document.createElement('div');
-    root.className = 'ls-root' + (slim ? ' ls-slim' : '');
+    root.className = 'ls-root' + (slim ? ' ls-slim' : '') + (std ? ' ls-std' : '');
     root.setAttribute('data-ls', '');
+    var h1 = '<h1 class="ls-title" id="' + ids.title + '"><span class="ls-title-t">' + esc(opts.title || document.title) + '</span>' +
+      (opts.course ? ' <span class="ls-course">' + esc(opts.course) + '</span>' : '') + '</h1>';
     root.innerHTML =
       '<header class="ls-bar">' +
         '<a class="ls-ib ls-back" href="' + esc(opts.back || '../tools.html') + '" aria-label="' + esc(opts.backLabel || 'Back to all tools') + '">' + icon('back') + '</a>' +
-        '<h1 class="ls-title" id="' + ids.title + '"><span class="ls-title-t">' + esc(opts.title || document.title) + '</span>' +
-          (opts.course ? ' <span class="ls-course">' + esc(opts.course) + '</span>' : '') + '</h1>' +
+        (std ? '<div class="ls-tblock">' + h1 + (opts.lede ? '<p class="ls-lede">' + esc(opts.lede) + '</p>' : '') + '</div>' : h1) +
         '<span class="ls-sp"></span>' +
         (menuO.tutor === false ? '' : '<button type="button" class="ls-tutor-btn" data-ls-act="tutor"><span class="ls-tutor-dot">' + icon('bot') + '</span>Ask the tutor</button>') +
-        (slim ? '' : '<button type="button" class="ls-ib ls-help" aria-label="Explanation of what is on screen" aria-controls="' + ids.why + '">' + icon('help') + '</button>') +
+        (std && menuO.copyLink ? '<button type="button" class="ls-ib ls-share" data-ls-act="copy" aria-label="Share: copy a link to this setup">' + icon('share') + '</button>' : '') +
+        (slim ? '' : std ? '<button type="button" class="ls-ib ls-help" aria-label="Help and reference" aria-controls="' + ids.det + '">' + icon('help') + '</button>'
+          : '<button type="button" class="ls-ib ls-help" aria-label="Explanation of what is on screen" aria-controls="' + ids.why + '">' + icon('help') + '</button>') +
         '<div class="ls-menu-wrap"><button type="button" class="ls-ib ls-more" aria-label="More" aria-haspopup="true" aria-expanded="false" aria-controls="' + ids.menu + '">' + icon('more') + '</button>' +
           '<div class="ls-menu" id="' + ids.menu + '" hidden></div></div>' +
       '</header>' +
@@ -215,10 +242,12 @@
             '<button type="button" class="ls-ib ls-enl-x" aria-label="Close the enlarged picture">' + icon('close') + '</button></div>' +
           '<div class="ls-pills"><div class="ls-pills-l"></div><div class="ls-pills-r"></div></div>' +
           '<div class="ls-stage-body"></div>' +
+          '<div class="ls-sfoot"></div>' +
           '<button type="button" class="ls-ib ls-enl" aria-label="Enlarge the picture" hidden>' + icon('expand') + '</button>' +
         '</section>' +
         '<section class="ls-dock" aria-label="Controls">' +
           '<div class="ls-modes"></div>' +
+          (std ? '<div class="ls-task" hidden><p class="ls-task-k"></p><h2 class="ls-task-t" tabindex="-1"></h2><p class="ls-task-d"></p></div><div class="ls-donew" hidden></div>' : '') +
           '<div class="ls-cap"><div class="ls-capw"><p class="ls-caption" id="' + ids.cap + '" aria-live="polite"></p>' +
             '<button type="button" class="ls-capmore" aria-controls="' + ids.cap + '" aria-expanded="false" hidden>More</button></div>' +
             '<button type="button" class="ls-why" aria-controls="' + ids.why + '">' + icon('bulb') + '<span>' + esc(opts.whyTitle || 'Explanation') + '</span></button></div>' +
@@ -255,7 +284,9 @@
       detP = q('.ls-det-body'), aboutS = q('.ls-about'), aboutB = q('.ls-about-body'), sheet = q('.ls-sheet'),
       scrim = q('.ls-scrim'), menu = q('.ls-menu'), moreBtn = q('.ls-more'), toast = q('.ls-toast'),
       modesEl = q('.ls-modes'), capEl = q('.ls-caption');
-    var regions = { stage: stageBody, dock: dockBody, why: whyP, details: detP, about: aboutB };
+    var regions = { stage: stageBody, dock: dockBody, why: whyP, details: detP, about: aboutB, foot: q('.ls-sfoot') };
+    // std: the mode switch sits in the bar (a second row on a phone).
+    if(std) q('.ls-bar').insertBefore(modesEl, q('.ls-sp').nextSibling);
     s.root = root; s.stage = stageBody; s.dock = dockBody; s.why = whyP; s.details = detP; s.about = aboutB;
     s.stageEl = q('.ls-stage'); s.dockEl = q('.ls-dock');
 
@@ -290,7 +321,8 @@
       var has = detHas(), t = has ? (detTitle || 'Data & settings') : 'About';
       detTab.textContent = t;
       // About gets its own button too, so credits and how-to are never hidden behind Explanation.
-      detBtn.hidden = !has && aboutS.hidden;
+      // std: "?" in the bar opens it, so the dock has no second button for it.
+      detBtn.hidden = std || (!has && aboutS.hidden);
       detBtn.querySelector('.ls-detbtn-t').textContent = t;
     }
     s.detailsTitle = function(t){ detTitle = t || ''; paintDet(); return s; };
@@ -310,6 +342,7 @@
       if(modeBtns) modeBtns.forEach(function(b){ var on = b.getAttribute('data-v') === v; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       paintMode();
       if(capEl){ showCap(); showPills(); }
+      if(std){ showTask(); showDone(); paintWhy(); }
       if(current === s){ fitN = 0; fitRevUntil = Date.now() + 2500; queueFit(30); queueTidy(true); }
       return s;
     };
@@ -382,6 +415,147 @@
     };
     s.pill = function(html, tone, side, m){ return s.pills(html ? [{ html: html, tone: tone }] : [], side, m); };
 
+    /* ---------------- the standard frame (opts.std; docs/tools-frame-2026-11.md) */
+    /* s.task({ kicker, title, todo, tone }, mode?): the side panel's head, kept per mode like the caption: a short
+       kicker (Challenge, What happened), the task or result in one line, and the one line on what to do. */
+    var taskBy = {}, doneBy = {}, taskEl = q('.ls-task'), doneW = q('.ls-donew'), whyBtn = q('.ls-why');
+    function showTask(){
+      if(!taskEl) return;
+      var t = taskBy[key()] || taskBy['*'];
+      taskEl.hidden = !t;
+      if(!t) return;
+      var k = taskEl.querySelector('.ls-task-k');
+      k.innerHTML = (t.tone === 'good' ? icon('check') : '') + esc(t.kicker || '');
+      k.hidden = !t.kicker;
+      taskEl.className = 'ls-task' + (t.tone ? ' is-' + t.tone : '');
+      taskEl.querySelector('.ls-task-t').innerHTML = t.title || '';
+      var d = taskEl.querySelector('.ls-task-d'); d.innerHTML = t.todo || ''; d.hidden = !t.todo;
+    }
+    s.task = function(t, m){ taskBy[key(m)] = t || null; if(key(m) === key() || key(m) === '*') showTask(); return s; };
+    // std: the dock's Explanation button shows only while Why holds something.
+    function paintWhy(){
+      if(!std || !whyBtn) return;
+      whyBtn.hidden = !Array.prototype.some.call(whyP.children, function(c){ return !c.hidden && !c.classList.contains('ls-off') && c.textContent.trim(); });
+    }
+    if(std && window.MutationObserver) new MutationObserver(paintWhy).observe(whyP, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'class'] });
+
+    /* s.picker({ label, groups: [{ label, items: [{ value, label, sub }] }] | items, value, onChange(v, item), count },
+       mode?) -> { el, value(v?), set(o) }: the scenario picker, ONE dropdown at the stage's top left that keeps the
+       groups (a native select, so phones get their own list). It shows the choice and, beside it, its sub, "2 of 7"
+       (count) or its group's name. With a mode it shows only in that mode. */
+    var pickBox = null;
+    s.picker = function(o, m){
+      if(!pickBox){
+        pickBox = document.createElement('div'); pickBox.className = 'ls-pills-p';
+        var pl = q('.ls-pills'); pl.insertBefore(pickBox, pl.firstChild);
+      }
+      var w = document.createElement('label'), cur = null, flat = [];
+      w.className = 'ls-pick';
+      w.innerHTML = '<span class="ls-pick-t"></span><span class="ls-pick-s"></span>' + icon('down') + '<select class="ls-pick-sel"></select>';
+      var sel = w.querySelector('select');
+      sel.setAttribute('aria-label', o.label || 'Choose');
+      function paint(){
+        var it = flat.filter(function(x){ return String(x.value) === String(cur); })[0] || flat[0];
+        if(!it) return;
+        sel.value = String(it.value);
+        w.querySelector('.ls-pick-t').textContent = it.label;
+        var sub = it.sub != null ? it.sub : o.count ? (flat.indexOf(it) + 1) + ' of ' + flat.length : (it.group || '');
+        var sb = w.querySelector('.ls-pick-s'); sb.textContent = sub; sb.hidden = !sub;
+      }
+      function build(x){
+        o = x; flat = [];
+        var gs = x.groups || [{ items: x.items || [] }];
+        sel.innerHTML = gs.map(function(g){
+          var h = g.items.map(function(it){ flat.push({ value: it.value, label: it.label, sub: it.sub, group: g.label, item: it }); return '<option value="' + esc(it.value) + '">' + esc(it.label) + '</option>'; }).join('');
+          return g.label ? '<optgroup label="' + esc(g.label) + '">' + h + '</optgroup>' : h;
+        }).join('');
+        cur = x.value != null ? x.value : (flat[0] && flat[0].value);
+        paint();
+      }
+      sel.addEventListener('change', function(){
+        cur = sel.value; paint();
+        var it = flat.filter(function(x){ return String(x.value) === String(cur); })[0];
+        if(o.onChange) o.onChange(it ? it.value : cur, it && it.item);
+      });
+      build(o);
+      pickBox.appendChild(w);
+      if(m){ w.setAttribute('data-ls-only', m); modeOnly.push(w); if(mode) paintMode(); }
+      return { el: w, select: sel, value: function(v){ if(v === undefined) return cur; cur = v; paint(); }, set: build };
+    };
+
+    /* s.hints({ hints: [..] | fn() -> [..], answer: { label, onShow() -> html? }, gate: 1, label: 'Hint' })
+       -> { card, row, attempt(), reset(), shown() }: the hint ladder. The first hint is instant; more come one at a
+       time ("Next hint"); the full answer (Show one arrow, Show solution) opens only after `gate` real attempts
+       (attempt() after a Check that was wrong). Nothing else is locked. The tool puts card and row where they go
+       (the card above its Check, the row below). */
+    s.hints = function(o){
+      var card = document.createElement('div'), row = document.createElement('div'), n = 0, tries = 0, ans = '';
+      card.className = 'ls-hintc'; card.hidden = true; card.setAttribute('role', 'status');
+      card.innerHTML = '<p class="ls-hint-k"></p><div class="ls-hint-t"></div><p class="ls-hint-n" hidden></p>';
+      row.className = 'ls-hintr';
+      row.innerHTML = '<button type="button" class="ls-btn ls-hint-b">' + icon('bulb') + '<span>' + esc(o.label || 'Hint') + '</span></button>' +
+        (o.answer ? '<button type="button" class="ls-btn ls-ans" hidden>' + esc(o.answer.label || 'Show solution') + '</button>' : '');
+      var hb = row.querySelector('.ls-hint-b'), ab = row.querySelector('.ls-ans'), gate = o.gate == null ? 1 : o.gate;
+      function all(){ var h = typeof o.hints === 'function' ? o.hints() : o.hints; return (h || []).filter(Boolean); }
+      function paint(){
+        var h = all(), open = !!ab && tries >= gate;
+        hb.hidden = n >= h.length;
+        hb.querySelector('span').textContent = n ? 'Next hint' : (o.label || 'Hint');
+        if(ab) ab.hidden = !open;
+        card.hidden = !n && !ans;
+        card.querySelector('.ls-hint-k').textContent = ans ? (o.answer.label || 'Solution') : 'Hint ' + n + ' of ' + h.length;
+        card.querySelector('.ls-hint-t').innerHTML = ans || (n ? h[n - 1] : '');
+        var nt = card.querySelector('.ls-hint-n');
+        nt.hidden = !(open && n && !ans);
+        nt.textContent = 'You tried, so ' + (o.answer ? o.answer.label || 'the answer' : '') + ' is open too.';
+        row.hidden = hb.hidden && (!ab || ab.hidden);
+      }
+      hb.addEventListener('click', function(){ ans = ''; n = Math.min(n + 1, all().length); paint(); });
+      if(ab) ab.addEventListener('click', function(){ var r = o.answer.onShow ? o.answer.onShow() : ''; ans = typeof r === 'string' ? r : ''; paint(); });
+      paint();
+      return { card: card, row: row, attempt: function(){ tries++; paint(); }, reset: function(x){ if(x) o.hints = x; n = 0; tries = 0; ans = ''; paint(); }, shown: function(){ return n; }, paint: paint };
+    };
+
+    /* s.done({ kicker: 'Solved', title, text, next: { label, onClick }, links: [{ label, onClick | href | open:
+       'why' | 'details', focus }] } | false, mode?): the finished card. It takes the side panel's place (the task,
+       caption and dock controls step aside, nothing is removed) with a short takeaway, Next, then the extras: Full
+       explanation, Check yourself, the lesson. Not on the landing screen: only after a finish. */
+    function showDone(){
+      if(!doneW) return;
+      var d = doneBy[key()];
+      doneW.hidden = !d;
+      s.dockEl.classList.toggle('is-done', !!d);
+      doneW.innerHTML = '';
+      if(!d) return;
+      var h = '<p class="ls-task-k">' + icon('check') + esc(d.kicker || 'Solved') + '</p><h2 class="ls-task-t" tabindex="-1">' + (d.title || '') + '</h2>' +
+        (d.text ? '<p class="ls-done-x">' + d.text + '</p>' : '') + '<span class="ls-done-sp"></span>' +
+        (d.next ? '<button type="button" class="ls-btn ls-pri ls-done-next">' + esc(d.next.label || 'Next') + '</button>' : '') +
+        ((d.links || []).length ? '<div class="ls-done-l">' + d.links.map(function(l, i){
+          return (l.href ? '<a class="ls-done-a" href="' + esc(l.href) + '"' : '<button type="button" class="ls-done-a" data-i="' + i + '"') + '><span>' + esc(l.label) + '</span>' + icon('chev') + (l.href ? '</a>' : '</button>');
+        }).join('') + '</div>' : '');
+      doneW.innerHTML = h;
+      doneW.className = 'ls-donew ls-task is-good';
+      var nb = doneW.querySelector('.ls-done-next');
+      if(nb) nb.addEventListener('click', function(){ d.next.onClick(); });
+      Array.prototype.forEach.call(doneW.querySelectorAll('button[data-i]'), function(b){
+        b.addEventListener('click', function(){
+          var l = d.links[+b.getAttribute('data-i')];
+          if(l.onClick) l.onClick();
+          else if(l.open){ s.open(l.open, l.focus || null); if(l.focus && l.focus.scrollIntoView) setTimeout(function(){ l.focus.scrollIntoView({ block: 'start' }); }, 60); }
+        });
+      });
+    }
+    s.done = function(d, m){
+      var a = document.activeElement, inDock = !a || a === document.body || s.dockEl.contains(a);
+      doneBy[key(m)] = d || null;
+      if(key(m) === key()){
+        showDone();
+        // The Check that had focus is gone: focus the takeaway, so a screen reader reads it next.
+        if(d && inDock){ var t = doneW.querySelector('.ls-task-t'); if(t) try{ t.focus({ preventScroll: true }); }catch(e){} }
+      }
+      return s;
+    };
+
     /* ---------------- sheet (Why / Details) */
     function setTab(t){
       tab = t === 'about' ? 'details' : t;
@@ -439,7 +613,8 @@
       if(lastFocus && document.contains(lastFocus) && lastFocus.focus){ try{ lastFocus.focus({ preventScroll: true }); }catch(e){ lastFocus.focus(); } }
       return s;
     };
-    if(!slim) q('.ls-help').addEventListener('click', function(){ sheetOpen && tab === 'why' ? s.close() : s.open('why'); });
+    var helpTab = std ? 'details' : 'why';
+    if(!slim) q('.ls-help').addEventListener('click', function(){ sheetOpen && tab === helpTab ? s.close() : s.open(helpTab); });
     q('.ls-why').addEventListener('click', function(){ sheetOpen && tab === 'why' ? s.close() : s.open('why'); });
     q('.ls-close').addEventListener('click', s.close);
     scrim.addEventListener('click', s.close);
@@ -1230,6 +1405,7 @@
     ['stage', 'dock', 'why', 'details', 'about'].forEach(function(r){ if(opts[r]) s.add(r, opts[r]); });
     s.caption(opts.caption || '');
     if(opts.hint) s.hint(opts.hint);
+    paintWhy();
     return s;
   }
 
@@ -1288,6 +1464,8 @@
       var band = stickyBand(target);
       if(band) return { parent: band, before: band.firstChild, band: true };
       var cap = s.root.querySelector('.ls-cap');
+      // std: with no caption showing, the line goes under the side panel's task.
+      if(cap && !cap.getClientRects().length){ var tk = s.root.querySelector('.ls-dock .ls-task:not([hidden])'); if(tk) cap = tk; }
       if(target.closest('.ls-stage') && !target.closest('.ls-dock')){
         // Under the caption; on a phone whose sticky band covers the caption, at the top of that band.
         var bands = Array.prototype.filter.call(s.root.querySelectorAll('.ls-pbar, .ls-dock .ls-act, .ls-dock .bt-actions'), function(a){

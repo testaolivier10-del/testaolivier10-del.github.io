@@ -46,7 +46,7 @@
   /* Premium tools (all but OchemPremium.FREE_TOOLS): a badge by the name,
      and once Premium launches, the gate in place of the tool for anyone
      without it. The tool's own script still runs underneath, unseen. */
-  var G = window.OchemPremium, studio = null;
+  var G = window.OchemPremium, studio = null, quizEl = null, footEl = null, openAt = null, menuItems = [];
 
   /* Tool Studio (docs/tools-calm.md): a tool with `studio: true` in the
      registry gets the calm frame: slim top bar, stage + dock, Why / Details.
@@ -60,17 +60,23 @@
     about.className = 'ls-sec';
     about.innerHTML = '<p>' + esc(tool.blurb) + '</p><p class="ls-sub">' + esc(tool.tagline) + '</p>';
     var paid = G && !G.toolFree(slug);
+    quizEl = document.getElementById('tool-quiz'); footEl = document.getElementById('tool-foot');
+    openAt = function(el){ return function(){ studio.open('details', null); setTimeout(function(){ if(el && el.scrollIntoView) el.scrollIntoView({ block: 'start' }); var f = el && el.querySelector('h2, h3, summary, button, a'); if(f) try{ f.focus({ preventScroll: true }); }catch(e){} }, 80); }; }
+    /* The standard frame (docs/tools-frame-2026-11.md, F1): name and one line in the bar, the modes there too,
+       Share, "?" for the reference. Check yourself and Keep going stay in that sheet and are one tap from the menu
+       (and from the finished card). */
     studio = window.LevlStudio.mount({
       title: sentence(tool.name), course: 'Organic Chemistry', back: '../tools.html', home: '../', slug: 'ochem-' + slug,
-      host: mount,
-      // the second tab and its dock button, named for what is in it
-      detailsTitle: ({ 'acid-base': 'More practice', 'reaction-predictor': 'Product mix & practice', 'reagent-roadmap': 'More practice',
-        'arrow-pusher': 'Bookkeeping & keys', 'conformations': 'Build your own', 'resonance': 'Charge map & practice',
-        'spectroscopy': 'Tables & practice', 'viewer-3d': 'View options', 'synthesis': 'Problems' })[slug] || 'More practice',
+      host: mount, std: true,
+      lede: ({ 'arrow-pusher': 'See how electrons move when bonds form and break.' })[slug] || tool.blurb,
+      // "?" opens this sheet: named for what is in it
+      detailsTitle: ({ 'synthesis': 'Problems and help', 'viewer-3d': 'View options and help', 'conformations': 'Ring builder and help' })[slug] || 'Help and reference',
       menu: {
         copyLink: true,
         report: { course: 'ochem', id: 'tool:' + slug },
-        note: paid ? { label: 'Premium tool.', html: 'Part of Organic Chemistry Premium.' } : null
+        note: paid ? { label: 'Premium tool.', html: 'Part of Organic Chemistry Premium.' } : null,
+        items: menuItems = [quizEl ? { label: 'Check yourself', icon: 'star', onClick: openAt(quizEl) } : null,
+          footEl ? { label: 'Keep going', icon: 'chev', onClick: openAt(footEl) } : null].filter(Boolean)
       },
       about: about,
       details: [document.getElementById('tool-quiz'), document.getElementById('tool-foot')]
@@ -92,7 +98,55 @@
                          atom tools behind "Draw it yourself".
        scrollChips(el)   every .tchips row inside el becomes one scrolling
                          row on a phone; group labels become .ls-lbl. */
+  /* The finished card's extras, the same for every ochem tool: Full explanation (Why), Check yourself (the
+     quiz, with its length), and the lesson (topic: a data-topic in Keep going; else its first lesson). */
+  function extras(o){
+    o = o || {};
+    var out = [];
+    if(o.why !== false) out.push({ label: o.whyLabel || 'Full explanation', open: 'why' });
+    if(quizEl) out.push({ label: 'Check yourself, ' + (o.rounds || 6) + ' questions', onClick: openAt(quizEl) });
+    var a = footEl && ((o.topic && footEl.querySelector('.tool-foot__list a[data-topic="' + o.topic + '"]')) || footEl.querySelector('.tool-foot__list a[data-topic]'));
+    if(a) out.push({ label: 'Read the lesson: ' + a.textContent.trim(), href: a.getAttribute('href') });
+    return out;
+  }
+
+  /* extras(o) above; menuItems: the menu's Check yourself and Keep going, for a tool that adds its own
+     items (studio.menu({ items: Kit.menuItems.concat([...]) })). */
+  /* chipPicker(sets, o): a tool's rows of scenario chips become ONE grouped dropdown on the stage (the standard
+     frame). sets: [{ el, label }]; an .ap-group inside a set is its own group, named by its .ap-group__label.
+     The chips stay in the page, out of sight: a pick clicks the chip, so the tool's own handler runs, and the
+     dropdown follows whichever chip is on. o: { label, mode }. Returns the picker. */
+  function chipPicker(sets, o){
+    if(!studio || !studio.picker) return null;
+    var groups = [], first = null;
+    sets.forEach(function(set){
+      if(!set.el) return;
+      var gs = set.el.querySelectorAll('.ap-group');
+      (gs.length ? [].slice.call(gs) : [set.el]).forEach(function(g){
+        var lab = g.querySelector('.ap-group__label');
+        var items = [].slice.call(g.querySelectorAll('[data-id]')).map(function(b){ return { value: b.getAttribute('data-id'), label: b.textContent.trim() }; });
+        if(items.length){ groups.push({ label: lab ? lab.textContent.trim() : set.label, items: items }); if(!first) first = items[0].value; }
+      });
+    });
+    function onChip(){ var on = null; sets.forEach(function(s){ if(!on && s.el) on = s.el.querySelector('[data-id].on'); }); return on; }
+    var cur = onChip();
+    var p = studio.picker({ label: o.label, groups: groups, value: cur ? cur.getAttribute('data-id') : first, onChange: function(v){
+      var b = null; sets.forEach(function(s){ if(!b && s.el) b = s.el.querySelector('[data-id="' + v + '"]'); });
+      if(b) b.click();
+    } }, o.mode);
+    sets.forEach(function(s){
+      if(!s.el) return;
+      s.el.classList.add('ls-chips-hidden');
+      if(window.MutationObserver) new MutationObserver(function(){ var b = onChip(); if(b) p.value(b.getAttribute('data-id')); })
+        .observe(s.el, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    });
+    return p;
+  }
+
   window.OchemStudioKit = {
+    extras: extras,
+    menuItems: menuItems,
+    chipPicker: chipPicker,
     seg: function(seg, attr){
       if(!studio || !seg) return function(){ return null; };
       function now(){ var b = seg.querySelector('button.on') || seg.querySelector('button'); return b ? b.getAttribute(attr) : null; }

@@ -1293,7 +1293,7 @@
     if(tsel){ var onChip = tp.querySelector('.tchip.on'); tsel.value = onChip ? onChip.getAttribute('data-id') : ''; }
     if(nq.on){
       var okq = nq.done && nq.pick !== null && nqSame(nq.pick);
-      studio.caption(nq.done ? '<b>' + (nq.pick === null ? 'The answer is on the curve.' : okq ? 'Right.' : 'Not that one.') + '</b> Green is where it sits' + (nq.pick !== null && !okq ? ', red is your pick' : '') + '. Why? has the reasoning.'
+      studio.caption(nq.done ? '<b>' + (nq.pick === null ? 'The answer is on the curve.' : okq ? 'Right.' : 'Not that one.') + '</b> Green is where it sits' + (nq.pick !== null && !okq ? ', red is your pick' : '') + '. Explanation has the reasoning.'
         : '<b>' + esc(tor.name) + '.</b> Tap the energy curve where this conformation sits.', 'newman');
       studio.pills(nq.done ? [{ html: nq.pick === null ? 'Shown' : okq ? 'Right' : 'Not that one', tone: nq.pick === null ? 'ghost' : okq ? 'good' : 'bad' }] : [{ html:'Your call', tone:'ghost' }], 'left', 'newman');
       studio.pills(nq.total ? [{ html: nq.right + ' of ' + nq.total + ' right', tone:'ghost' }] : [], 'right', 'newman');
@@ -1327,7 +1327,7 @@
       if(say){ ls.verdict.appendChild(say); }
       if(chal.done){
         pills.push({ html: chal.ok ? 'Right' : 'The other chair', tone: chal.ok ? 'good' : 'bad' }, { html: chal.right + ' of ' + chal.total + ' right', tone: 'ghost' });
-        cap = '<b>' + (chal.ok ? 'Right: the left chair is the stable one.' : 'Not quite: the flipped chair is the stable one.') + '</b> Why? has the numbers.';
+        cap = '<b>' + (chal.ok ? 'Right: the left chair is the stable one.' : 'Not quite: the flipped chair is the stable one.') + '</b> Explanation has the numbers.';
       } else {
         pills.push({ html: 'Your call', tone: 'ghost' });
         cap = q ? q.innerHTML.replace(/<span class="tmuted">.*<\/span>/, '') : '';

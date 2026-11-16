@@ -474,6 +474,83 @@ html.ls-page{scroll-padding-bottom:calc(var(--ls-act-h, 0px) + var(--ls-pbar-h, 
 .ls-sheet .ls-sheet-t{margin:0;font:900 17px var(--font-ui);letter-spacing:-.01em;color:var(--ink)}
 .ls-sheet-head .ls-sheet-t{flex:1}
 
+/* ---------------------------------------------- the standard frame (mount({ std: true }); docs/tools-frame-2026-11.md)
+   Bar: name and one line on what it is for, the modes, Ask the tutor, Share, "?" (reference) and the menu. Stage: the
+   scenario dropdown top left, Undo / Reset bottom left (region 'foot'). Side panel: the task, one line on what to do,
+   the actions, the hint ladder; the finished card in its place after a finish. */
+.ls-tblock{flex:0 1 auto;min-width:0;display:flex;flex-direction:column;gap:1px;}
+.ls-lede{display:none;margin:0;padding-left:4px;font-size:var(--ls-s);font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ls-std .ls-bar .ls-modes{flex:none;min-width:0;}
+.ls-std .ls-bar .ls-modes > .ls-seg{width:auto;}
+.ls-std .ls-bar .ls-modes > .ls-seg > *{flex:none;padding:0 16px;}
+.ls-share{display:none;}
+.ls-why[hidden]{display:none;}
+.ls-cap.is-empty:has(> .ls-why[hidden]){display:none;}
+@media (min-width:1000px){
+  .ls-std .ls-bar{height:76px;gap:12px;padding:0 24px;}
+  .ls-std .ls-title{font-size:20px;}
+  .ls-lede{display:block;}
+  .ls-ib.ls-share{display:inline-grid;background:var(--white);box-shadow:var(--elev-1);}
+  .ls-std .ls-dock-body{flex:1 0 auto;}
+  .ls-std .ls-dock-body > .ls-push{margin-top:auto;}
+}
+@media (max-width:999.98px){
+  .ls-std .ls-bar{flex-wrap:wrap;height:auto;min-height:52px;row-gap:2px;padding-bottom:6px;}
+  .ls-std .ls-bar .ls-modes{order:9;flex:1 0 100%;padding:0 4px;}
+  .ls-std .ls-bar .ls-modes > .ls-seg{width:100%;}
+  .ls-std .ls-bar .ls-modes > .ls-seg > *{flex:1 1 0;padding:0 8px;}
+}
+/* the scenario picker: one dropdown, top left of the stage */
+.ls-pills:has(.ls-pick:not(.ls-off)){display:flex;}
+.ls-pills-p{display:flex;flex:0 0 auto;min-width:0;max-width:100%;}
+.ls-std .ls-pills{flex-wrap:wrap;row-gap:8px;}
+.ls-pills-p:not(:has(.ls-pick:not(.ls-off))){display:none;}
+.ls-std .ls-pills-l{flex:1 1 auto;}
+.ls-pick{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;max-width:100%;min-width:0;padding:0 14px;border-radius:12px;
+  background:var(--ctint);color:var(--cink);font:800 var(--ls-m)/1.2 var(--font-ui);cursor:pointer;}
+.ls-pick-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+.ls-pick-s{font-size:var(--ls-s);font-weight:700;color:var(--muted);white-space:nowrap;}
+.ls-pick-s[hidden]{display:none;}
+.ls-pick .ls-i{width:16px;height:16px;stroke-width:2.6;}
+.ls-pick-sel{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;font-size:16px;}
+.ls-pick:focus-within{outline:3px solid var(--cink);outline-offset:2px;}
+:root[data-theme="dark"] .ls-pick-s{color:#B4C6C0;}
+/* the side panel's head */
+.ls-task{display:flex;flex-direction:column;gap:8px;}
+.ls-task[hidden],.ls-donew[hidden],.ls-task-k[hidden],.ls-task-d[hidden]{display:none;}
+.ls-task-k{display:flex;align-items:center;gap:6px;margin:0;font:800 var(--ls-s)/1.2 var(--font-ui);color:var(--cink);}
+.ls-task-k .ls-i{width:18px;height:18px;stroke-width:3;}
+.ls-task.is-good .ls-task-k{color:var(--good-text);}
+.ls-task.is-bad .ls-task-k{color:var(--bad-text);}
+.ls-task-t{margin:0;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;color:var(--ink);}
+.ls-task-t:focus{outline:none;}
+.ls-task-d,.ls-done-x{margin:0;font-size:var(--ls-m);line-height:1.45;color:var(--muted);}
+/* the finished card takes the panel's place; the rest steps aside, untouched */
+.ls-dock.is-done > :not(.ls-donew){display:none !important;}
+.ls-donew{flex:1 0 auto;gap:12px;}
+.ls-done-sp{flex:1 1 auto;min-height:4px;}
+.ls-done-next{width:100%;min-height:52px;}
+.ls-done-l{display:flex;flex-direction:column;border-top:1px solid var(--line-soft);}
+.ls-done-a{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:48px;padding:0 4px;border:0;
+  border-bottom:1px solid var(--line-soft);background:none;color:var(--ink);font:700 var(--ls-m) var(--font-ui);text-align:left;text-decoration:none;cursor:pointer;}
+.ls-done-a:last-child{border-bottom:0;}
+.ls-done-a:hover{color:var(--cink);}
+.ls-done-a .ls-i{width:18px;height:18px;color:var(--muted);}
+/* the hint ladder */
+.ls-hintc{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:16px;background:var(--ctint);}
+.ls-hintc[hidden],.ls-hintr[hidden],.ls-hintr > [hidden],.ls-hint-n[hidden]{display:none;}
+.ls-hint-k{margin:0;font:800 var(--ls-s) var(--font-ui);color:var(--cink);}
+.ls-hint-t{font-size:var(--ls-m);line-height:1.45;color:var(--ink);}
+.ls-hint-t > p{margin:0;}
+.ls-hint-n{margin:0;font-size:var(--ls-s);color:var(--muted);}
+.ls-hintr{display:flex;gap:10px;}
+.ls-hintr > .ls-btn{flex:1 1 0;min-width:0;padding:0 12px;}
+.ls-hintr .ls-i{width:18px;height:18px;}
+/* Undo / Reset at the stage's foot, clear of Enlarge */
+.ls-sfoot{flex:none;display:flex;flex-wrap:wrap;gap:8px;padding:0 64px 12px 12px;}
+.ls-sfoot:not(:has(> :not(.ls-off))){display:none;}
+@media (min-width:1000px){.ls-sfoot{padding:0 72px 20px 22px;}}
+
 /* ---------------------------------------------- a locked Premium tool (s.lock; consistency audit 2026-11, C1)
    The tool screen stays (the bar: back, ?, the menu); the lock card takes the stage and dock's place, centred in a
    readable column, as on NREMT scenario-sim. */
@@ -489,3 +566,5 @@ html.ls-page{scroll-padding-bottom:calc(var(--ls-act-h, 0px) + var(--ls-pbar-h, 
   .ls-root.is-locked.is-sheet .ls-main{display:grid;grid-template-columns:minmax(0,1fr) 380px;}
   .ls-lockp{margin-top:32px;}
 }
+/* std: a locked tool's bar has no modes or Share (nothing to switch or share). */
+.ls-root.is-locked .ls-bar .ls-modes,.ls-root.is-locked .ls-share{display:none !important;}
