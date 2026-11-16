@@ -1247,12 +1247,12 @@
    "poll_reminded": null
   },
   {
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-11-11",
-   "date": null,
+   "date": "2026-11-17",
    "yt_no_hashtags": true,
-   "buffer": null,
-   "yt_buffer": null,
+   "buffer": "6afa99a38e87c256a3b62f28",
+   "yt_buffer": "6afa99a48e87c256a3b62f58",
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
