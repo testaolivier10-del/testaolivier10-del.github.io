@@ -1008,7 +1008,7 @@
     'ci-capture': { task: 'What does the confidence level mean?', takeaway: 'About C% of intervals made this way capture the true parameter; any one interval either does or does not.' },
     'data-explorer': { task: 'Which summaries resist an outlier?', takeaway: 'The median and IQR resist outliers; the mean and standard deviation do not.' },
     'design-randomizer': { task: 'What does random assignment do?', takeaway: 'Random assignment tends to balance other variables across groups, so a convincing difference can show cause and effect.' },
-    'distribution-areas': { task: 'What probability is shaded?', takeaway: 'For a continuous distribution, a probability is the area under the curve over that interval.' },
+    'distribution-areas': { task: 'What probability is shaded?', takeaway: 'A probability is the shaded part: the area under a normal curve, or the sum of the binomial bars that fit the event.' },
     'p-value-explorer': { task: 'Where does a p-value come from?', takeaway: 'The p-value is the probability of a result at least as extreme as the one observed, assuming H₀ is true.' },
     'probability-trees': { task: 'How do a tree, a table and a Venn diagram show the same events?', takeaway: 'Multiply along a path of branches for "and"; add the paths that fit for "or".' },
     'regression-lab': { task: 'How does one point move the line and r?', takeaway: 'A point far from the others in x can pull the line toward it and change r a lot.' },
