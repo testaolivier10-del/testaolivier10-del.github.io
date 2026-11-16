@@ -845,6 +845,7 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .chem-ls-dock .bf-add{min-height:56px;border-radius:18px;background:var(--surface2);font-size:var(--ls-l);}
 .ls-root .chem-ls-dock .bf-add span{font-size:var(--ls-s);}
 .ls-root .bf-ls-reset{width:100%;}
+.ls-root .ls-sfoot > .bf-ls-reset{width:auto;}
 
 /* Q vs K: the equation, then the vessel over its Q-K gauge (the meter and
    the direction line are the stage's pills); the amounts in a compact grid. */

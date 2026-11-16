@@ -428,7 +428,7 @@
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim): two cards,
     // two modes. Read: the tree is the stage; pick a tree, tap tips, ask.
     // Build: the character table and your tree are the stage; join pieces.
-    studio: { sim: true, cards: [
+    studio: { foot: ['[data-a="none"]', '[data-b="reset"]'], sim: true, cards: [
       // The tree choice is a setting (Details); the dock keeps the pieces
       // and the questions, each one scrolling row on a phone.
       { mode: 'read', label: 'Read a tree', stage: ['.tr-figwrap'], stageAlso: ['.tr-chips'], dock: ['.tr-tips'], live: '.tr-result',

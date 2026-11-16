@@ -45,7 +45,7 @@
   function explore(host, data, M){
     var F = T.F, esc = T.esc, TT = M.titration;
     // Lookups reach the Tool Studio too, where these parts move (studio()).
-    var LS = null;
+    var LS = null, txReset = null;
     function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
     function $$(sel){ var a = Array.prototype.slice.call(host.querySelectorAll(sel)); return LS ? a.concat(Array.prototype.slice.call(LS.root.querySelectorAll(sel))) : a; }
     var ctxs = data.contexts || [], kinds = ['wa', 'sa', 'wb', 'di'].filter(function(k){ return ctxs.some(function(c){ return c.kind === k; }); });
@@ -83,7 +83,11 @@
       slider = T.slider({ label: 'Volume of ' + ctx.titrant + ' added', min: 0, max: p.vmax, step: 0.05, value: 0, unit: 'mL', decimals: 2, onInput: function(x){ stop(); v = x; draw(); } });
       ctl.appendChild(slider.el);
       ctl.insertAdjacentHTML('beforeend', '<div class="bt-buttons tx-btns"><button type="button" class="bt-btn tx-run" aria-pressed="false">▶ Run</button><button type="button" class="bt-btn" data-add="reset">Start over</button></div>');
-      ctl.querySelector('[data-add="reset"]').addEventListener('click', function(){ stop(); setV(0); });
+      // F6: in the studio Start over sits at the stage's foot; a rebuild swaps in the new button there.
+      var nr = ctl.querySelector('[data-add="reset"]');
+      nr.addEventListener('click', function(){ stop(); setV(0); });
+      if(txReset && LS && LS.toFoot){ if(txReset.parentNode) txReset.parentNode.removeChild(txReset); LS.toFoot(nr); }
+      txReset = nr;
       ctl.querySelector('.tx-run').addEventListener('click', function(){ timer ? stop() : run(); });
       if(beaker) beaker.destroy();
       beaker = window.ApChemBeaker.mount($('.tx-beaker'), { species: speciesList(), readout: 'pH', title: 'The flask', max: 32, seed: seed, vessel: 'flask' });
@@ -161,7 +165,7 @@
       paint(pH);
       if(v > 0 && start) start.done();
       // Start over shows once there is something to undo (pass 2).
-      var rs = ctl.querySelector('[data-add="reset"]'); if(rs) rs.style.display = v > 0 ? '' : 'none';
+      var rs = txReset; if(rs) rs.style.display = v > 0 ? '' : 'none';
       T.explain($('.tx-meaning'), '<b>' + m.head + '</b> <span class="tx-at">' + m.at + '</span>', '<p>' + m.text + '</p>');
       if(LS) studioDraw(pH, m);
     }
@@ -218,6 +222,7 @@
       setup.setAttribute('aria-label', 'Setup: kind of titration, indicator and new numbers (opens Details)');
       setup.addEventListener('click', function(){ s.open('details', s.root.querySelector('.tx-ls-more summary')); });
       s.add('dock', [dock, setup], o);
+      if(s.toFoot) s.toFoot(txReset); // F6: Start over at the stage's foot
       var why = document.createElement('div'); why.className = 'ls-sec tx-ls-why';
       why.innerHTML = '<p class="ls-sub">Drag the slider to add titrant from the burette, or press Run. Tap the curve to jump to a volume.</p>';
       why.appendChild(q('.tx-meaning')); why.appendChild(q('.tx-ind')); why.appendChild(q('.tx-head'));

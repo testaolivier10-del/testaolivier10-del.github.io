@@ -95,6 +95,16 @@
       var ta = $('.hug-fc-write'); if(!ta) return;
       drafts[key()] = ta.value; save(drafts);
       flags(ta.value);
+      // F6 (owner): the rubric line opens any time; the full-credit sample only after a real try at writing.
+      var lock = $('.hug-fc-lock'); if(lock && tried()){ lock.outerHTML = sampleHtml(); say('A full-credit answer is open under the rubric line.'); }
+      var sb = $('.hug-fc-show'); if(sb) sb.textContent = showLabel();
+    }
+    function tried(){ return ((drafts[key()] || '').match(/[A-Za-z]/g) || []).length >= 4; }
+    function showLabel(){ return tried() ? 'Show the rubric line and a sample' : 'Show the rubric line'; }
+    function sampleHtml(){
+      var p = part();
+      return tried() ? '<p class="hug-fc-rk">A full-credit answer</p><p class="hug-fc-sample">' + esc(p.sample) + '</p>'
+        : '<p class="bt-small hug-fc-lock">A full-credit answer opens once you write yours in step 1.</p>';
     }
     function flags(text){
       var G = window.ApHugGrade, ul = $('.hug-fc-flags'), p = part();
@@ -141,8 +151,8 @@
           '<textarea id="' + tid + '" class="hug-fc-write" rows="4" aria-describedby="' + tid + '-f">' + esc(drafts[key()] || '') + '</textarea>' +
           '<ul class="hug-fc-flags" id="' + tid + '-f" aria-live="polite"></ul><p class="bt-small">The checklist gives hints, never a score.</p></div>' +
         '<div class="hug-fc-step"><p class="hug-fc-sh"><span class="hug-fc-n">2</span> Check it against the rubric</p>' +
-          (s.shown ? '<div class="hug-fc-rub" tabindex="-1"><p class="hug-fc-rk">Rubric line (1 point)</p><p>' + esc(p.rubric) + '</p><p class="hug-fc-rk">A full-credit answer</p><p class="hug-fc-sample">' + esc(p.sample) + '</p></div>'
-            : '<button type="button" class="bt-btn hug-fc-show">Show the rubric line and a sample</button>') + '</div>' +
+          (s.shown ? '<div class="hug-fc-rub" tabindex="-1"><p class="hug-fc-rk">Rubric line (1 point)</p><p>' + esc(p.rubric) + '</p>' + sampleHtml() + '</div>'
+            : '<button type="button" class="bt-btn hug-fc-show">' + showLabel() + '</button>') + '</div>' +
         '<div class="hug-fc-step"><fieldset class="hug-fc-earn"><legend class="hug-fc-sh"><span class="hug-fc-n">3</span> Which answer earns the point?</legend>' +
           s.order.map(function(o){ var id = nid + '-e' + k + '-' + o; return '<div class="bt-radio hug-fc-opt"><input type="radio" name="' + nid + '-earn" id="' + id + '" value="' + o + '"' + (s.pick === o ? ' checked' : '') + '><label for="' + id + '">' + esc(opts[o]) + '</label></div>'; }).join('') +
           '</fieldset><div class="bt-actions"><button type="button" class="btn-press sm hug-fc-check">Check</button></div><div class="hug-fc-efb" role="status" aria-live="polite"></div></div>' +

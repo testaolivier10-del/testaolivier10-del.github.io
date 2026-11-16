@@ -98,7 +98,7 @@
 .rd-treebox{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0;max-width:100%;}
 .rd-dplot{flex:1 1 auto;width:100%;max-width:720px;min-height:140px;display:flex;flex-direction:column;gap:2px;}
 .rd-dplot[hidden]{display:none;}
-.rd-dplot svg{width:100%;height:auto;max-height:100%;}
+.rd-dplot svg,.cd-fig .rd-dplot svg{width:100%;max-width:none;height:auto;max-height:100%;}
 .rd-dplot-k{margin:0;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font:800 12.5px var(--font-ui);color:var(--muted);}
 .rd-sw{display:inline-block;width:18px;height:0;border-top:3px solid #00805C;margin-left:6px;}
 .rd-sw-y{border-top:3px dashed #D55E00;}

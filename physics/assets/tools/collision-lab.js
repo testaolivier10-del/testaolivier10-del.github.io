@@ -301,6 +301,7 @@
     function studio(p, s){
       LS = s;
       T.studioPane(pane, s, { stage: [$('.cl-stage')], dock: [ctl], moreLabel: 'Velocities, masses, stiffness and time', why: [start.el, $('.cl-say')], details: [$('.cl-nums')] });
+      if(s.toFoot) s.toFoot(btns.querySelector('.cl-reset')); // F6: Reset at the stage's foot, as in the other courses
       draw();
       // Redraw at the new box shape when the window turns or Enlarge opens or zooms.
       var rq = 0; window.addEventListener('resize', function(){ if(rq || playing) return; rq = requestAnimationFrame(function(){ rq = 0; if(R) draw(); }); });

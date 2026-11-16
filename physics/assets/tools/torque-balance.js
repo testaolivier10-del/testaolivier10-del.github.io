@@ -480,6 +480,7 @@
         var o = { mode: 'explore' };
         s.add('stage', stage, o);
         s.add('dock', dock, o);
+        if(s.toFoot) s.toFoot(dock.querySelectorAll('.tb-race-reset')); // F6: Reset at the stage's foot
         var w = document.createElement('div'); w.className = 'ls-sec phys-ls-why';
         w.appendChild(cue.el); w.appendChild(why);
         s.add('why', w, o);

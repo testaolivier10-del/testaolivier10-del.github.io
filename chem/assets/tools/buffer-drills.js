@@ -190,6 +190,7 @@
       SP = T.studioPane(pane, s, { stage: [$('.bf-beaker'), $('.bf-plot')], dock: [$('.bf-btns'), resetBtn], setup: 'Buffer', moreLabel: 'Another buffer, amounts',
         why: [$('.bf-why')], details: [nums, parts] });
       $('.bf-beaker').parentNode.classList.add('bf-ls-stage');
+      if(s.toFoot) s.toFoot(resetBtn); // F6: Start over at the stage's foot, as in the other courses
       var pk = $('.chem-ls-det .bf-pkey') || $('.bf-pkey'), bk = $('.bf-beaker');
       if(pk) bk.parentNode.insertBefore(pk, bk.nextSibling);
       draw(false);

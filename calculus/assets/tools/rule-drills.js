@@ -197,7 +197,7 @@
       if(!shown || !box.isConnected) return;
       var r = box.getBoundingClientRect(), W = Math.max(240, Math.min(720, Math.round(r.width) || 360)), Hh = Math.max(140, Math.min(260, Math.round(r.height) > 100 ? Math.round(r.height) : W * 0.42));
       var fs = [dd].concat(yours ? [yours] : []);
-      var spec = { label: 'Graph of the derivative f prime' + (yours ? ' and of your answer' : ''), width: W, height: Hh, x: x, y: yRange(fs, x[0], x[1]), xLabel: 'x', yLabel: '' };
+      var spec = { label: 'Graph of the derivative f prime' + (yours ? ' and of your answer' : ''), width: W, height: Hh, x: x, y: yours && T.bothWindow ? T.bothWindow(fs, x[0], x[1]) : yRange(fs, x[0], x[1]), xLabel: 'x', yLabel: '' };
       box.innerHTML = '<p class="rd-dplot-k"><span class="rd-sw rd-sw-r"></span>f′(x), right' + (yours ? '<span class="rd-sw rd-sw-y"></span>yours' : '') + '</p>' + P.svg(spec).replace(/<\/svg>$/, marks.svg(P.frame(spec)) + '</svg>');
     }
     if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe(box); }

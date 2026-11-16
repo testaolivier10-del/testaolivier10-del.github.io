@@ -80,14 +80,16 @@
       var w = sol.filter(function(l){ return /^With /.test(l); })[0];
       return (w ? w.replace(/\s*\(Also accepted:[^)]*\)\.?$/, '') : sol[sol.length - 2] || '') + ' ' + last;
     } },
-    'indicators-lab': {
+    'indicators-lab': { 'gdp-calc': 'GDP counts final goods and services produced this year; transfer payments, used goods and financial trades are left out.',
       'gdp-count': 'GDP counts the market value of new final goods and services made inside the country this year.',
       utype: 'Frictional is searching between jobs, structural is a mismatch of skills or place, and cyclical comes from a downturn.' },
-    'multiplier-lab': {
+    'multiplier-lab': { gap: 'To close a gap, divide it by the right multiplier (spending or tax) to find the change needed.',
       total: 'The multiplier gives the largest possible change: rising prices and other leakages make the real effect smaller.',
       money: 'The money multiplier belongs to the limited-reserves model; with ample reserves the Fed sets its rate with administered rates instead.' },
     'ppc-trade': { output: 'Comparative advantage, the lower opportunity cost, decides who should make what; absolute advantage does not.' },
-    'reserves-lab': { multiplier: 'In the limited-reserves model the money multiplier is a maximum: excess reserves banks keep and cash people hold make the real change smaller.' }
+    'reserves-lab': { multiplier: 'In the limited-reserves model the money multiplier is a maximum: excess reserves banks keep and cash people hold make the real change smaller.' },
+    'adas-lab': { phillips: 'In the long run unemployment returns to the natural rate: the long-run Phillips curve is vertical there.' },
+    'policy-chain': { open: 'In an open economy policy also works through the exchange rate: it changes net exports, which shift AD.' }
   };
   function takeaway(p, html){
     var own = p && TAKE[curSlug] && (TAKE[curSlug][p.type] || TAKE[curSlug]['*']);

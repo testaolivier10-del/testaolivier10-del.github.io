@@ -103,6 +103,8 @@
       if(studio){
         var so = opts.studio || {};
         if(so.arrange) so.arrange(app, studio, slug, so); else if(so.sim) studioSim(app, studio, slug, so); else studioArrange(app, studio, slug, so);
+        // F6: a Reset / Start over that resets the stage goes to the stage's foot, as in the other courses.
+        if(so.foot && studio.toFoot) studio.toFoot(studio.root.querySelectorAll(so.foot.join(', ')));
         return;
       }
       figureFirst(app);
