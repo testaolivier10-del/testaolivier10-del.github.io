@@ -703,7 +703,7 @@
         }
         function lock(){
           locked = true;
-          if(lad){ lad.row.remove(); var ln = lad.card.querySelector('.ls-hint-n'); if(ln) ln.remove(); }
+          if(lad){ lad.row.remove(); lad.card.classList.add('bt-lad-done'); }
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'text') x.readOnly = true; else x.disabled = true; });
           var act = el.querySelector('.bt-part-act'); if(act) act.remove();
         }

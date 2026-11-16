@@ -607,7 +607,7 @@
         el.addEventListener('submit', function(e){ e.preventDefault(); check(); });
         function lock(){
           done = true;
-          if(lad){ lad.row.remove(); var ln = lad.card.querySelector('.ls-hint-n'); if(ln) ln.remove(); }
+          if(lad){ lad.row.remove(); lad.card.classList.add('bt-lad-done'); }
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
           if(s.row) row1('[data-row="' + s.row + '"]').classList.remove('is-active');
